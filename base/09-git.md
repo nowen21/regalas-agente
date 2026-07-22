@@ -1,80 +1,51 @@
 # 09 · Control de versiones
 
-> **Capa 2 · agnóstica al stack.** Cómo se usa el control de versiones. El mínimo innegociable está blindado en el núcleo (`00` · N2): las operaciones que escriben historia o publican (**commit**, **push**) solo se ejecutan bajo pedido explícito del usuario, y la autorización es de un solo uso. Aquí, cómo se hace bien cuando toca hacerlo.
+El mínimo está en `00` · N2: **commit** y **push** solo bajo pedido explícito, autorización de un solo uso. Aquí, cómo hacerlo bien cuando toca.
 
 ---
 
-## G1 · Commits atómicos y con un solo propósito
+## G1 · Commits atómicos, un solo propósito
 
-Un commit representa **un cambio coherente**: una funcionalidad, una corrección, un refactor. No mezclar cambios sin relación en el mismo commit (una corrección + un refactor + un ajuste de estilo → tres commits).
-
-- Un commit debería poder revertirse solo sin arrastrar cosas ajenas.
-- Evitar el commit gigante que toca medio proyecto y no se puede revisar.
+Un commit = un cambio coherente (una feature, un fix, un refactor). No mezcles cosas sin relación. Debe poder revertirse solo, sin arrastrar lo ajeno.
 
 ```
-INCORRECTO: un commit "varios cambios" con la feature, un bugfix y reformateo mezclados
-CORRECTO:   un commit por la feature, otro por el bugfix, otro por el formateo
+INCORRECTO: un commit "varios cambios" con feature + fix + reformateo
+CORRECTO:   uno por la feature, otro por el fix, otro por el formateo
 ```
 
----
+## G2 · Mensajes que explican qué y por qué
 
-## G2 · Mensajes que explican el qué y el porqué
-
-- Primera línea breve e imperativa que resume el cambio; si hace falta, un cuerpo que explica **por qué** se hizo (el qué ya está en el diff).
-- En el idioma del proyecto (`01-conducta.md` C8).
-- Registrar en el mensaje (o en la documentación) las **decisiones** que el diff no revela por sí solo.
+Primera línea breve e imperativa; si hace falta, un cuerpo con el **por qué** (el qué ya está en el diff). En el idioma del proyecto (`01` · C8).
 
 ```
 INCORRECTO: "cambios", "fix", "wip"
-CORRECTO:   "Corrige el cálculo de saldo cuando hay documentos anulados
+CORRECTO:   "Corrige el saldo cuando hay documentos anulados
 
-            Los anulados se sumaban al total; ahora se excluyen en la consulta."
+            Se sumaban al total; ahora se excluyen en la consulta."
 ```
-
----
 
 ## G3 · Qué nunca se versiona
 
-No entra al control de versiones:
-
-- **Secretos** (claves, tokens, credenciales, archivos de entorno con valores reales) — blindado en `00` · N6.
-- **Datos sensibles o personales**, ni bases de datos con datos reales.
-- **Artefactos generados** (dependencias instaladas, compilados, cachés, logs).
-- **Archivos locales de cada máquina/editor** (configuración personal del entorno).
-
-Todo eso va al archivo de exclusión (`.gitignore` o equivalente). Se versiona una **plantilla de ejemplo** de la configuración, sin valores reales.
+Al archivo de exclusión (`.gitignore`): **secretos** (claves, tokens, entorno real — `00` · N6), **datos sensibles/reales**, **artefactos generados** (dependencias, compilados, cachés, logs), **config local** de máquina/editor. Se versiona una **plantilla de ejemplo** sin valores.
 
 ```
 INCORRECTO: commitear el archivo de entorno con la clave de producción
-CORRECTO:   ignorar el archivo real; versionar solo una plantilla sin secretos
+CORRECTO:   ignorar el real; versionar solo la plantilla sin secretos
+```
+
+## G4 · Trabaja en ramas, integra limpio
+
+El trabajo va en una **rama** dedicada (salvo que la capa 3 diga otra cosa). Mantenla al día con la principal. La rama principal queda siempre **funcional**.
+
+## G5 · No reescribas historia compartida ni fuerces sin necesidad
+
+Reescribir historia (rebase, enmienda, purga) y **push forzado** solo sobre historia no compartida, o con acuerdo explícito si ya es pública (afecta a quien la clonó). Cada una requiere autorización (`00` · N2). No fuerces con banderas destructivas (`00` · N3).
+
+```
+INCORRECTO: rechazan el push → hago push --force por mi cuenta
+CORRECTO:   reporto el rechazo, explico la causa y espero decisión
 ```
 
 ---
 
-## G4 · Trabajar en ramas, integrar limpio
-
-- El trabajo va en una **rama** dedicada, no directo sobre la rama principal (salvo que el proyecto lo defina distinto en capa 3).
-- Mantener la rama al día con la principal para reducir conflictos.
-- La rama principal se mantiene en estado **funcional** (integrable): no se sube algo que la deja rota.
-
----
-
-## G5 · No reescribir historia compartida ni forzar sin necesidad
-
-- La reescritura de historia (rebase, enmienda, purga) y el **push forzado** son operaciones sensibles: solo sobre historia **no compartida**, o con acuerdo explícito cuando la historia ya es pública (puede afectar a otros que la clonaron).
-- Cada una de estas operaciones requiere autorización explícita del usuario (núcleo `00` · N2), y la autorización no se extiende a la siguiente.
-- Ante un obstáculo (hook fallido, conflicto), no se fuerza el paso con banderas destructivas (`--no-verify` y equivalentes) — blindado en `00` · N3.
-
-```
-INCORRECTO: el push es rechazado → el agente hace push --force por su cuenta
-CORRECTO:   el agente reporta el rechazo, explica la causa y espera decisión del usuario
-```
-
----
-
-## Relación con el resto del estándar
-
-- **Núcleo `00` · N2** — commit y push solo bajo pedido; autorización de un solo uso.
-- **Núcleo `00` · N3/N6** — no forzar con banderas destructivas; no versionar secretos.
-- **`11-configuracion-entornos.md`** — configuración fuera del código, plantilla de ejemplo versionada.
-- **`13-documentacion.md`** — las decisiones importantes viven también en la documentación, no solo en el mensaje del commit.
+Ver: `00` N2/N3/N6, `11` (config fuera del código), `13` (decisiones también en docs).

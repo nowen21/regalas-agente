@@ -1,94 +1,68 @@
 # 05 · Manejo de errores y logging
 
-> **Capa 2 · agnóstica al stack.** Cómo tratar los fallos y qué registrar. Un buen manejo de errores hace el sistema diagnosticable sin filtrar información ni ocultar problemas. La capa 3 declara el framework de logging concreto y los destinos (archivo, servicio, consola).
+Cómo tratar fallos y qué registrar, sin filtrar información ni ocultar problemas. La capa 3 declara el framework de logging y los destinos.
 
 ---
 
-## E1 · No tragarse los errores en silencio
+## E1 · No te tragues los errores en silencio
 
-Un error capturado se maneja de forma **visible y trazable**. Nunca un bloque que atrapa la excepción y no hace nada, ni un catch que oculta el fallo para "que no moleste".
+Un error capturado se maneja **visible y trazable**. Nada de `catch` vacío.
 
-- Si el error es recuperable: manejarlo explícitamente y dejar constancia (log) de que ocurrió.
-- Si no es recuperable: **dejarlo propagar** hasta un manejador central que lo registre y responda de forma controlada.
-- No convertir un error en un valor de retorno ambiguo (`null`, `false`, `0`) sin registrar la causa: el siguiente que lea el código no sabrá si fue éxito vacío o fallo.
-
-```
-INCORRECTO: try { ... } catch (e) { }          // silencia el fallo
-CORRECTO:   try { ... } catch (e) { log.error(...); rethrow o manejar explícito }
-```
-
----
-
-## E2 · Fallar de forma controlada, no rodear el problema
-
-Ante un error que bloquea la operación, el sistema (y el agente que lo desarrolla) **reporta y detiene de forma limpia**, no fuerza el paso.
-
-- Validar las precondiciones al inicio y **abortar temprano** con un mensaje claro si no se cumplen, en vez de fallar a mitad con un estado inconsistente.
-- Las operaciones que tocan varios registros que deben quedar consistentes van en una **transacción**: o se aplican todas, o ninguna.
-- No dejar el sistema en estado a medias por atrapar un error y seguir como si nada.
-
-> Para el agente: la variante destructiva de "no rodear el obstáculo" (no `--no-verify`, no borrar el test que falla) está blindada en el núcleo (`00` · N3).
+- Recuperable: manéjalo y deja constancia (log).
+- No recuperable: déjalo **propagar** a un manejador central que lo registre y responda controlado.
+- No lo conviertas en un retorno ambiguo (`null`/`false`) sin registrar la causa.
 
 ```
-INCORRECTO: crear el registro padre, fallar al crear el hijo, y dejar el padre huérfano
-CORRECTO:   envolver ambos en una transacción → si el hijo falla, se revierte el padre
+INCORRECTO: try { ... } catch (e) { }
+CORRECTO:   try { ... } catch (e) { log.error(...); manejar o propagar }
 ```
 
----
+## E2 · Falla controlado, no rodees el problema
 
-## E3 · Mensajes de error en dos niveles: usuario y diagnóstico
+- Valida precondiciones al inicio y **aborta temprano** con mensaje claro, en vez de fallar a mitad con estado inconsistente.
+- Operaciones que dejan varios registros consistentes van en **transacción**: todo o nada.
 
-Separar siempre lo que ve el usuario de lo que necesita quien diagnostica:
-
-- **Al usuario:** un mensaje claro, en su idioma, **accionable** ("No se pudo guardar: el correo ya está registrado"), sin jerga técnica ni internos.
-- **Al log:** el detalle completo para diagnosticar (tipo de excepción, contexto, identificador de correlación).
-- **Nunca** exponer al usuario trazas de pila, consultas, rutas del sistema o versiones (es fuga de información — `04-seguridad.md` S8).
+> La variante destructiva ("no `--no-verify`, no borrar el test") está en `00` · N3.
 
 ```
-INCORRECTO: al usuario: "SQLSTATE[23000]: Integrity constraint violation... INSERT INTO..."
-CORRECTO:   al usuario: "Ese registro ya existe."   ·   al log: la excepción completa
+INCORRECTO: creo el padre, falla el hijo, y dejo el padre huérfano
+CORRECTO:   ambos en transacción → si falla el hijo, se revierte el padre
 ```
 
----
+## E3 · Mensajes en dos niveles: usuario y diagnóstico
 
-## E4 · Loguear con niveles y con propósito
-
-Cada registro de log tiene un **nivel** acorde a su gravedad y un contenido útil para diagnosticar:
-
-- **error / crítico:** fallos que requieren atención (excepción no manejada, operación abortada).
-- **warning:** situaciones anómalas pero manejadas (reintento, dato faltante con fallback, archivo no encontrado).
-- **info:** hitos operativos relevantes (operación masiva ejecutada, proceso batch completado).
-- **debug:** detalle fino, normalmente apagado en producción.
-
-Buenas prácticas:
-
-- Incluir **contexto** que permita rastrear (identificadores de entidad, de usuario, de correlación), no solo "algo falló".
-- No loguear en exceso: ruido constante entierra las señales reales.
-- Registrar las **operaciones sensibles y masivas** para auditoría (quién, qué, cuántos, cuándo) — núcleo `00` · N5.
+- **Al usuario:** claro, en su idioma, **accionable** ("Ese correo ya está registrado"), sin jerga ni internos.
+- **Al log:** el detalle completo (excepción, contexto, id de correlación).
+- **Nunca** trazas/consultas/rutas al usuario (es fuga de info — `04` · S8).
 
 ```
-INCORRECTO: log.error("error")                       // sin contexto, inservible
+INCORRECTO: al usuario: "SQLSTATE[23000]... INSERT INTO..."
+CORRECTO:   al usuario: "Ese registro ya existe."  ·  al log: la excepción completa
+```
+
+## E4 · Loguea con niveles y con propósito
+
+- **error/crítico:** fallos que requieren atención.
+- **warning:** anómalo pero manejado (reintento, fallback, no encontrado).
+- **info:** hitos operativos (masiva ejecutada, batch completado).
+- **debug:** detalle fino, apagado en producción.
+
+Incluye **contexto** para rastrear (ids de entidad/usuario/correlación). No loguees de más (el ruido entierra la señal). Registra las operaciones masivas para auditoría (`00` · N5).
+
+```
+INCORRECTO: log.error("error")
 CORRECTO:   log.error("Falló causar factura", { factura_id, usuario_id, causa })
 ```
 
----
+## E5 · Nunca registres secretos ni datos sensibles
 
-## E5 · Nunca registrar secretos ni datos sensibles
-
-> Blindado en el núcleo (`00` · N6).
-
-Los logs **no** contienen contraseñas, tokens, claves, ni más datos personales de los estrictamente necesarios. Enmascarar o excluir esos campos antes de registrar. Un log es un artefacto que se copia, se envía a terceros y se conserva: tratarlo como potencialmente público.
+Blindado en `00` · N6. Los logs no llevan contraseñas, tokens, ni más datos personales de los necesarios. Enmascara o excluye. Trata el log como potencialmente público.
 
 ```
-INCORRECTO: log.info("Login", { email, password })       // secreto en el log
-CORRECTO:   log.info("Login", { usuario_id })            // sin credenciales
+INCORRECTO: log.info("Login", { email, password })
+CORRECTO:   log.info("Login", { usuario_id })
 ```
 
 ---
 
-## Relación con el resto del estándar
-
-- **Núcleo `00` · N3/N5/N6** — no rodear obstáculos con acciones destructivas; auditar operaciones masivas; no exponer secretos.
-- **`04-seguridad.md`** — no filtrar internos ni datos sensibles.
-- **`01-conducta.md` C9** — para el agente: reportar el obstáculo, no esconderlo.
-- **`12-privacidad-datos.md`** — minimización de datos personales, también en logs.
+Ver: `00` N3/N5/N6, `04` S8 (no filtrar), `01` C9 (reportar, no esconder), `12` (privacidad en logs).
