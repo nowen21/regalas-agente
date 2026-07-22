@@ -1,0 +1,38 @@
+# «Nombre del proyecto» — instrucciones del agente  ·  `[CAPA 3]`
+
+> Plantilla. Cópiala como `CLAUDE.md` en la raíz del proyecto, reemplaza los `«…»` y borra esta caja.
+
+Este proyecto sigue el **Estándar de Agente para Desarrollo de Software**. Antes de actuar, el agente aplica ese estándar + lo que este archivo y sus anexos declaran.
+
+## Precedencia (no negociable)
+
+1. **Núcleo blindado** (`base/00`, reglas `[BLINDADA]`) — gana siempre. Nada aquí lo desactiva.
+2. **Convenciones base** (`base/01`–`16`) — se aplican por defecto.
+3. **Capa 3 — este proyecto** — ajusta las convenciones base (nunca el núcleo). Es la capa que declara lo concreto.
+
+Si algo de este archivo choca con el núcleo, **gana el núcleo**.
+
+## Dónde está el estándar
+
+- Las reglas base viven en `«ruta al plugin / carpeta base»`. Léelas al iniciar cada sesión.
+
+## Anexos de capa 3 (léelos antes de desarrollar)
+
+- [`stack.md`](«ruta») — lenguajes, frameworks, comandos, entorno de pruebas.
+- [`dominio.md`](«ruta») — qué hace el sistema, entidades y reglas de negocio.
+- [`mapeo-nombres.md`](«ruta») — cómo se llaman aquí los conceptos abstractos de la base.
+- [`marco-normativo.md`](«ruta») — sector, jurisdicción, leyes y frameworks aplicables.
+
+## Ajustes de capa 2 (overrides de este proyecto)
+
+> Lista solo lo que este proyecto cambia respecto al default de la base. Si no cambia nada, deja "Sin overrides".
+
+- **Idioma del proyecto (`01` · C8):** «español / …»
+- **Rama principal y flujo (`09` · G4):** «main; trabajo en ramas / commit directo / …»
+- **Spec obligatoria (`02` · F2):** «activada / ajuste»
+- **Patrones opt-in activados:** «`15` registros inmutables / `16` cumplimiento — sí/no»
+- «Otro override — regla base afectada + qué cambia + por qué»
+
+## Dónde vive la documentación
+
+- Specs de módulo: `«ruta»` · Trabajo/pruebas/resultado por fase: `«ruta»` (base `13`).
