@@ -66,6 +66,12 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
 - _(próximas)_ `CLAUDE.md`, mapa de proyecto (stack, dominio, mapeo de nombres), plantilla de módulo
 
+## Skills
+
+Herramientas activables que aplican el estándar:
+
+- [`analizar-proyecto`](skills/analizar-proyecto/SKILL.md) — diagnostica un proyecto existente: inventario (qué hay), brechas (qué falta), plan priorizado (qué sigue), estrategia de pruebas y tecnologías necesarias.
+
 ## Estado
 
-**Base completa (00–16).** Núcleo + 16 convenciones redactadas y etiquetadas por capa. En marcha la capa 3: la plantilla `marco-normativo.md` ya está; siguen `CLAUDE.md`, el mapa de proyecto y la skill `analizar-proyecto` (diagnóstico: qué hay / qué falta / qué sigue).
+**Base completa (00–16)** y etiquetada por capa. Capa 3 en marcha: plantilla `marco-normativo.md` lista. Skills: `analizar-proyecto` lista. Siguen `CLAUDE.md`, el mapa de proyecto y la plantilla de módulo.
