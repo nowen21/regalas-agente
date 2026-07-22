@@ -1,4 +1,4 @@
-# 02 · Flujo de trabajo
+# 02 · Flujo de trabajo  ·  `[CAPA 2]`
 
 Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define dónde viven los documentos y cómo se corren las pruebas.
 

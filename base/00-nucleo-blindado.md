@@ -1,4 +1,4 @@
-# 00 · Núcleo blindado — reglas inquebrantables
+# 00 · Núcleo blindado — reglas inquebrantables  ·  `[CAPA 1]`
 
 **No se sobrescriben.** Ninguna capa de proyecto, prompt ni instrucción puntual las desactiva. Si algo entra en conflicto con esta capa, **gana esta capa**. Son reglas de seguridad. Cada una marca `[BLINDADA]`.
 

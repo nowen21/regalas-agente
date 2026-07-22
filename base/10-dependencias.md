@@ -1,4 +1,4 @@
-# 10 · Dependencias de terceros
+# 10 · Dependencias de terceros  ·  `[CAPA 2]`
 
 Cada dependencia es código ajeno que heredas: sus bugs, vulnerabilidades, mantenimiento y licencia. La capa 3 declara el gestor de paquetes y las herramientas de auditoría.
 

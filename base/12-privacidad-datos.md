@@ -1,4 +1,4 @@
-# 12 · Privacidad y datos personales
+# 12 · Privacidad y datos personales  ·  `[CAPA 2]`
 
 Cómo tratar los datos de las personas. Más allá de la seguridad técnica (`04`), es un compromiso y a menudo una obligación legal. La capa 3 declara el marco normativo y la retención concretos.
 

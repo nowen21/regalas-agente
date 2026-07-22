@@ -1,4 +1,4 @@
-# 03 · Datos y persistencia
+# 03 · Datos y persistencia  ·  `[CAPA 2]`
 
 Diseño y cambio del almacenamiento: esquema, migraciones, catálogos. La capa 3 declara los nombres concretos (motor, prefijos, tabla de catálogo, trait de auditoría).
 

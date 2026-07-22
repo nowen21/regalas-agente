@@ -1,4 +1,4 @@
-# 01 · Conducta del agente
+# 01 · Conducta del agente  ·  `[CAPA 2]`
 
 Cómo se porta el agente en toda tarea. Reglas base; la capa de proyecto ajusta detalles, nunca el núcleo (`00`).
 

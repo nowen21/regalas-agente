@@ -23,23 +23,27 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 
 | Capa | Qué contiene | Dónde vive | ¿Se sobrescribe? |
 |---|---|---|---|
-| **1 · Núcleo blindado** | Seguridad crítica: proteger datos reales, control de versiones bajo demanda, no exponer secretos | [`base/00-nucleo-blindado.md`](base/00-nucleo-blindado.md) | **Nunca.** Gana a cualquier regla o instrucción. |
-| **2 · Convenciones base** | Buenas prácticas agnósticas al stack (conducta, flujo, datos, seguridad, rendimiento…) | [`base/01..15-*.md`](base/) | Solo la capa de proyecto puede ajustarlas. |
-| **3 · Capa de proyecto** | Stack concreto, dominio del negocio, nombres y convenciones propias | En el repo de cada proyecto | Es la capa que ajusta. |
+| **1 · Núcleo blindado** | Seguridad crítica: proteger datos reales, control de versiones bajo demanda, no exponer secretos | `base/00` | **Nunca.** Gana a cualquier regla o instrucción. |
+| **2 · Convenciones base** | Buenas prácticas agnósticas al stack (conducta, flujo, datos, seguridad, cumplimiento…) | `base/01`–`base/16` | Solo la capa de proyecto puede ajustarlas. |
+| **3 · Capa de proyecto** | Stack, dominio, sector, marco normativo y nombres propios | `plantillas/` (para copiar) → en el repo de cada proyecto | Es la capa que ajusta. |
 
-**Precedencia:** la capa 3 ajusta la capa 2, pero **nunca** la capa 1. Cada regla del núcleo lleva la marca `[BLINDADA]`.
+**Precedencia:** la capa 3 ajusta la capa 2, pero **nunca** la capa 1. Cada archivo de la base lleva su etiqueta de capa (`[CAPA 1]` / `[CAPA 2]`), y cada regla del núcleo la marca `[BLINDADA]`.
 
 ## Cómo lo usa un proyecto
 
 1. Instalar/activar este plugin.
-2. Crear el `CLAUDE.md` del proyecto que **importe la base** y declare los ajustes de capa 3 (stack, dominio, nombres).
-3. A partir de ahí, el agente arranca cada sesión entendiendo el estándar + lo específico del proyecto.
+2. Crear el `CLAUDE.md` del proyecto que **importe la base** y declare los ajustes de capa 3 (stack, dominio, sector).
+3. Copiar y llenar las plantillas de capa 3 (`plantillas/`), p. ej. `marco-normativo.md`.
+4. A partir de ahí, el agente arranca cada sesión entendiendo el estándar + lo específico del proyecto.
 
-> Las plantillas para la capa 3 (`CLAUDE.md`, mapa de proyecto, plantilla de módulo) se agregarán en `plantillas/`.
+## La base por capas
 
-## Índice de la base
+### Capa 1 · Núcleo blindado — no se sobrescribe
 
-- [`00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — seguridad crítica (Capa 1)
+- [`00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — seguridad crítica innegociable
+
+### Capa 2 · Convenciones base — agnósticas, ajustables por el proyecto
+
 - [`01-conducta.md`](base/01-conducta.md) — cómo se comporta el agente
 - [`02-flujo-de-trabajo.md`](base/02-flujo-de-trabajo.md) — spec → plan → pruebas → docs
 - [`03-datos.md`](base/03-datos.md) — diseño de BD, migraciones, catálogos, cero-hardcode
@@ -54,8 +58,14 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`12-privacidad-datos.md`](base/12-privacidad-datos.md) — datos personales y retención
 - [`13-documentacion.md`](base/13-documentacion.md) — persistir trabajo y decisiones
 - [`14-estructura-codigo.md`](base/14-estructura-codigo.md) — organización y nomenclatura
-- [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only (opt-in)
+- [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only *(opt-in)*
+- [`16-cumplimiento-y-calidad.md`](base/16-cumplimiento-y-calidad.md) — leyes, frameworks (COBIT, ISO, OWASP…), cumplimiento por construcción *(opt-in)*
+
+### Capa 3 · Proyecto — vive en cada repo (plantillas para copiar)
+
+- [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
+- _(próximas)_ `CLAUDE.md`, mapa de proyecto (stack, dominio, mapeo de nombres), plantilla de módulo
 
 ## Estado
 
-**Base completa.** Las 16 secciones de convenciones (núcleo + 01–15) están redactadas. Siguiente etapa: las plantillas de la capa 3 (`plantillas/`: `CLAUDE.md`, mapa de proyecto y plantilla de módulo) y las skills de apoyo.
+**Base completa (00–16).** Núcleo + 16 convenciones redactadas y etiquetadas por capa. En marcha la capa 3: la plantilla `marco-normativo.md` ya está; siguen `CLAUDE.md`, el mapa de proyecto y la skill `analizar-proyecto` (diagnóstico: qué hay / qué falta / qué sigue).

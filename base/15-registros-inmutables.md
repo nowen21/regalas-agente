@@ -1,4 +1,4 @@
-# 15 · Registros inmutables (patrón opt-in)
+# 15 · Registros inmutables (patrón opt-in)  ·  `[CAPA 2 · opt-in]`
 
 **Opt-in.** Para registros cuyo hecho ya se materializó y tiene valor legal/contable/de auditoría: **no se editan ni se borran, se anulan con trazabilidad**. La capa 3 lo **activa** y dice a qué entidades aplica (documentos contables, transacciones, actas, comprobantes).
 

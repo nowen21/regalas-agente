@@ -1,4 +1,4 @@
-# 08 · Estrategia de pruebas
+# 08 · Estrategia de pruebas  ·  `[CAPA 2]`
 
 Las pruebas permiten cambiar el código sin miedo y prueban que la spec se cumplió. La capa 3 declara framework, entorno y comandos.
 

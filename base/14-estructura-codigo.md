@@ -1,4 +1,4 @@
-# 14 · Estructura del código y nomenclatura
+# 14 · Estructura del código y nomenclatura  ·  `[CAPA 2]`
 
 Dónde vive cada archivo y cómo se nombra, para que cualquiera lo encuentre donde espera. La capa 3 declara los nombres concretos (namespaces, prefijos, convenciones del lenguaje).
 

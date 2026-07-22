@@ -1,4 +1,4 @@
-# 13 · Documentación
+# 13 · Documentación  ·  `[CAPA 2]`
 
 El chat se pierde y el contexto se comprime; los archivos quedan. Documentar es parte del entregable. La capa 3 declara ubicación, nombres y estructura.
 

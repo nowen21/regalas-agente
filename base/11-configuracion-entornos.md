@@ -1,4 +1,4 @@
-# 11 · Configuración y entornos
+# 11 · Configuración y entornos  ·  `[CAPA 2]`
 
 Lo que cambia entre entornos (local, pruebas, producción) y lo que se configura sin tocar código. La capa 3 declara los entornos y el mecanismo concretos.
 

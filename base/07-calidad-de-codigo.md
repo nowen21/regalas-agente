@@ -1,4 +1,4 @@
-# 07 · Calidad de código
+# 07 · Calidad de código  ·  `[CAPA 2]`
 
 El código se lee más veces de las que se escribe: optimiza para el lector. La capa 3 declara linter, formateador y estilo.
 

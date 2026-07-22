@@ -1,4 +1,4 @@
-# 05 · Manejo de errores y logging
+# 05 · Manejo de errores y logging  ·  `[CAPA 2]`
 
 Cómo tratar fallos y qué registrar, sin filtrar información ni ocultar problemas. La capa 3 declara el framework de logging y los destinos.
 
