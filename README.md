@@ -19,10 +19,9 @@ Este estándar convierte todo eso en un **contrato explícito y versionado** que
 
 ## Qué contiene el repositorio
 
-| Carpeta / archivo | Qué es |
+| Carpeta | Qué es |
 |---|---|
 | [`estandar-agente-dev/`](estandar-agente-dev/) | **El estándar reutilizable.** Reglas agnósticas al stack, empaquetadas como plugin para heredar en cualquier proyecto y extender con lo propio. Es el corazón del repo. |
-| [`reglas_agente.md`](reglas_agente.md) | **El origen.** El conjunto completo de reglas tal como nacieron en un proyecto real (un ERP en Laravel). Sirve de referencia y caso de estudio del que se extrae el estándar general. |
 
 ## El estándar en tres capas
 
