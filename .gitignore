@@ -1,5 +1,6 @@
-# Archivo base de trabajo local — NO se versiona ni se sube
+# Archivos base de trabajo local (referencia) — NO se versionan ni se suben
 reglas_agente.md
+_base_modulo.md
 
 # Configuración local de la herramienta
 .claude/
