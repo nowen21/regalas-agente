@@ -1,4 +1,4 @@
-# 06 · Rendimiento y eficiencia
+# 06 · Rendimiento y eficiencia  ·  `[CAPA 2]`
 
 Código que no se degrada con el volumen. Regla general: **mide antes de optimizar**, pero no metas ineficiencias evidentes. La capa 3 declara herramientas (caché, profiler, límites).
 

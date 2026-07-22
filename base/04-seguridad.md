@@ -1,4 +1,4 @@
-# 04 · Seguridad de la aplicación
+# 04 · Seguridad de la aplicación  ·  `[CAPA 2]`
 
 Seguridad más allá de los archivos. El núcleo (`00`) blinda los mínimos; aquí el detalle. La capa 3 declara los mecanismos concretos (permisos, plantillas, almacenamiento).
 

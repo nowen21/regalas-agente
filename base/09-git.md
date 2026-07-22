@@ -1,4 +1,4 @@
-# 09 · Control de versiones
+# 09 · Control de versiones  ·  `[CAPA 2]`
 
 El mínimo está en `00` · N2: **commit** y **push** solo bajo pedido explícito, autorización de un solo uso. Aquí, cómo hacerlo bien cuando toca.
 
