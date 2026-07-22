@@ -63,8 +63,11 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 
 ### Capa 3 · Proyecto — vive en cada repo (plantillas para copiar)
 
+- [`plantillas/CLAUDE.md.plantilla`](plantillas/CLAUDE.md.plantilla) — el `CLAUDE.md` del proyecto: precedencia, ajustes y punteros a los anexos
+- [`plantillas/stack.md`](plantillas/stack.md) — lenguajes, frameworks, comandos, entorno de pruebas
+- [`plantillas/dominio.md`](plantillas/dominio.md) — qué hace el sistema, entidades y reglas de negocio
+- [`plantillas/mapeo-nombres.md`](plantillas/mapeo-nombres.md) — cómo se llaman aquí los conceptos abstractos de la base
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
-- _(próximas)_ `CLAUDE.md`, mapa de proyecto (stack, dominio, mapeo de nombres), plantilla de módulo
 
 ## Skills
 
@@ -74,4 +77,4 @@ Herramientas activables que aplican el estándar:
 
 ## Estado
 
-**Base completa (00–16)** y etiquetada por capa. Capa 3 en marcha: plantilla `marco-normativo.md` lista. Skills: `analizar-proyecto` lista. Siguen `CLAUDE.md`, el mapa de proyecto y la plantilla de módulo.
+**Base completa (00–16)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres` y `marco-normativo`. **Skills:** `analizar-proyecto`. Siguiente: la plantilla de spec de módulo (genérica) y la skill para generarla.
