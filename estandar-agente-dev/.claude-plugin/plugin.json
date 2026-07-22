@@ -1,0 +1,8 @@
+{
+  "name": "estandar-agente-dev",
+  "version": "0.1.0",
+  "description": "Estandar de buenas practicas de desarrollo de software para agentes de codigo. Base agnostica heredable + capa de proyecto extensible. Precedencia: nucleo blindado > convenciones base > capa de proyecto.",
+  "author": {
+    "name": "Ing. Jose"
+  }
+}
