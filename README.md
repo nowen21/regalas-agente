@@ -42,20 +42,20 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — seguridad crítica (Capa 1)
 - [`01-conducta.md`](base/01-conducta.md) — cómo se comporta el agente
 - [`02-flujo-de-trabajo.md`](base/02-flujo-de-trabajo.md) — spec → plan → pruebas → docs
-- `03-datos.md` — diseño de BD, migraciones, catálogos, cero-hardcode
-- `04-seguridad.md` — authz, secretos, validación, inyección, archivos sensibles
-- `05-errores-y-logging.md` — manejo de excepciones y logging
-- `06-rendimiento.md` — eficiencia, N+1, caché, paginación
-- `07-calidad-de-codigo.md` — legibilidad, DRY, complejidad, lint
-- `08-pruebas.md` — estrategia de pruebas
-- `09-git.md` — control de versiones
-- `10-dependencias.md` — librerías de terceros
-- `11-configuracion-entornos.md` — configuración y entornos
-- `12-privacidad-datos.md` — datos personales y retención
-- `13-documentacion.md` — persistir trabajo y decisiones
-- `14-estructura-codigo.md` — organización y nomenclatura
-- `15-registros-inmutables.md` — patrón append-only (opt-in)
+- [`03-datos.md`](base/03-datos.md) — diseño de BD, migraciones, catálogos, cero-hardcode
+- [`04-seguridad.md`](base/04-seguridad.md) — authz, secretos, validación, inyección, archivos sensibles
+- [`05-errores-y-logging.md`](base/05-errores-y-logging.md) — manejo de excepciones y logging
+- [`06-rendimiento.md`](base/06-rendimiento.md) — eficiencia, N+1, caché, paginación
+- [`07-calidad-de-codigo.md`](base/07-calidad-de-codigo.md) — legibilidad, DRY, complejidad, lint
+- [`08-pruebas.md`](base/08-pruebas.md) — estrategia de pruebas
+- [`09-git.md`](base/09-git.md) — control de versiones
+- [`10-dependencias.md`](base/10-dependencias.md) — librerías de terceros
+- [`11-configuracion-entornos.md`](base/11-configuracion-entornos.md) — configuración y entornos
+- [`12-privacidad-datos.md`](base/12-privacidad-datos.md) — datos personales y retención
+- [`13-documentacion.md`](base/13-documentacion.md) — persistir trabajo y decisiones
+- [`14-estructura-codigo.md`](base/14-estructura-codigo.md) — organización y nomenclatura
+- [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only (opt-in)
 
 ## Estado
 
-En construcción. La base de comportamiento (núcleo, conducta y flujo de trabajo) ya está redactada; el resto de las convenciones está en desarrollo (los ítems sin enlace en el índice de arriba).
+**Base completa.** Las 16 secciones de convenciones (núcleo + 01–15) están redactadas. Siguiente etapa: las plantillas de la capa 3 (`plantillas/`: `CLAUDE.md`, mapa de proyecto y plantilla de módulo) y las skills de apoyo.
