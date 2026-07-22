@@ -1,4 +1,6 @@
-# reglas-agente
+# Estándar de Agente para Desarrollo de Software
+
+> Reglas y buenas prácticas que guían a un agente de IA al programar.
 
 **Un estándar de buenas prácticas de desarrollo de software para agentes de código.**
 
