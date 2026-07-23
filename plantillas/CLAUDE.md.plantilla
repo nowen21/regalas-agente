@@ -1,38 +1,80 @@
-# «Nombre del proyecto» — instrucciones del agente  ·  `[CAPA 3]`
+# Configuración del agente — «NOMBRE DEL PROYECTO»   ·   `[CAPA 3 · LOCAL · NO versionar]`
 
-> Plantilla. Cópiala como `CLAUDE.md` en la raíz del proyecto, reemplaza los `«…»` y borra esta caja.
+> **BORRAR ESTE RECUADRO AL TERMINAR DE CONFIGURAR.**
+> Pasos para dejar este archivo listo:
+> 1. Guardar este archivo como `CLAUDE.md` en la carpeta raíz del proyecto.
+> 2. Reemplazar cada `«…»` por el valor real.
+> 3. Agregar al `.gitignore` del proyecto estas dos líneas exactas:
+>    ```
+>    CLAUDE.md
+>    .agente/
+>    ```
+> Motivo: `CLAUDE.md` y la carpeta `.agente/` son configuración local de la máquina; no forman parte del repositorio del proyecto.
 
-Este proyecto sigue el **Estándar de Agente para Desarrollo de Software**. Antes de actuar, el agente aplica ese estándar + lo que este archivo y sus anexos declaran.
+El estándar (las reglas) está instalado en una carpeta central **fuera de este proyecto**. El agente (Claude Code) lo lee desde ahí; no se copia dentro del proyecto.
 
-## Precedencia (no negociable)
+---
 
-1. **Núcleo blindado** (`base/00`, reglas `[BLINDADA]`) — gana siempre. Nada aquí lo desactiva.
-2. **Convenciones base** (`base/01`–`16`) — se aplican por defecto.
-3. **Capa 3 — este proyecto** — ajusta las convenciones base (nunca el núcleo). Es la capa que declara lo concreto.
+## 1. Ubicación del estándar (rutas fijas de esta máquina)
 
-Si algo de este archivo choca con el núcleo, **gana el núcleo**.
+- **Reglas base:** `c:\Ing. Jose\ia\agente\base`
+- **Plantillas:** `c:\Ing. Jose\ia\agente\plantillas`
+- **Base módulo:** `c:\Ing. Jose\ia\agente\_base_modulo.md`
 
-## Dónde está el estándar
+> Si el estándar se mueve a otra carpeta, actualizar estas rutas.
 
-- Las reglas base viven en `«ruta al plugin / carpeta base»`. Léelas al iniciar cada sesión.
+## 2. Carpetas de este proyecto
 
-## Anexos de capa 3 (léelos antes de desarrollar)
+Son **dos** carpetas distintas, con reglas opuestas de versionado:
 
-- [`stack.md`](«ruta») — lenguajes, frameworks, comandos, entorno de pruebas.
-- [`dominio.md`](«ruta») — qué hace el sistema, entidades y reglas de negocio.
-- [`mapeo-nombres.md`](«ruta») — cómo se llaman aquí los conceptos abstractos de la base.
-- [`marco-normativo.md`](«ruta») — sector, jurisdicción, leyes y frameworks aplicables.
+### 2.1 Configuración del agente — LOCAL, se ignora
 
-## Ajustes de capa 2 (overrides de este proyecto)
+- **Ruta:** `./.agente/`
+- **La crea el agente** la primera vez (ver paso 3). Contendrá los 4 archivos de configuración: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md` (y opcionalmente `reglas-proyecto.md`, ver 5.2).
+- **Va en el `.gitignore`** (`.agente/`): es configuración local de la máquina, no parte del repositorio.
 
-> Lista solo lo que este proyecto cambia respecto al default de la base. Si no cambia nada, deja "Sin overrides".
+### 2.2 Documentación del trabajo — DEL PROYECTO, se versiona
 
-- **Idioma del proyecto (`01` · C8):** «español / …»
-- **Rama principal y flujo (`09` · G4):** «main; trabajo en ramas / commit directo / …»
-- **Spec obligatoria (`02` · F2):** «activada / ajuste»
-- **Patrones opt-in activados:** «`15` registros inmutables / `16` cumplimiento — sí/no»
-- «Otro override — regla base afectada + qué cambia + por qué»
+- **Ruta:** `./documentacion/`
+- Aquí el agente guarda **todo lo que produce el proceso**: specs de módulo, planes de trabajo, planes de pruebas, funcionalidad implementada, decisiones y trazabilidad (regla base `13`).
+- **NO va en el `.gitignore`:** es conocimiento del proyecto y se versiona junto con el código.
 
-## Dónde vive la documentación
+## 3. Qué hace el agente al iniciar CADA sesión (en este orden exacto)
 
-- Specs de módulo: `«ruta»` · Trabajo/pruebas/resultado por fase: `«ruta»` (base `13`).
+1. **Cargar y obedecer las reglas base** desde la ruta de `base` del punto 1: los archivos `00` a `16`. El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
+2. **Comprobar si existe la carpeta `./.agente/`:**
+   - **Si NO existe:** crearla y copiar en ella **únicamente estos 4 archivos** desde la ruta de `plantillas` del punto 1: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. No copiar ningún otro archivo. No copiar este `CLAUDE.md`. Luego llenarlos: **deducir del proyecto** lo que se pueda (lenguaje, dependencias, estructura de carpetas) y **preguntar al usuario** lo que no se pueda deducir (reglas de negocio, sector, normas). No inventar datos.
+   - **Si SÍ existe:** leer esos 4 archivos y trabajar según lo que declaran. No volver a copiarlos ni sobrescribirlos.
+3. **Si existe `./.agente/reglas-proyecto.md`,** leerlo y aplicarlo (reglas propias del proyecto — ver punto 5.2).
+4. **Aplicar los ajustes** del punto 5.1.
+
+## 4. Precedencia (no se negocia)
+
+`base/00` (núcleo blindado)  →  `base/01`–`16` (convenciones)  →  esta configuración de proyecto.
+
+La configuración de proyecto puede **ajustar** las convenciones (`01`–`16`), pero **nunca** el núcleo (`00`). Ante cualquier choque, gana el núcleo.
+
+## 5. Cómo extender el estándar en este proyecto
+
+El estándar de la carpeta central **no se modifica**. Lo que este proyecto necesite distinto se declara **aquí**, en dos formas:
+
+### 5.1 Ajustar una regla que ya existe en la base (override)
+
+Cambiar el comportamiento por defecto de una regla `01`–`16`. Si no cambia nada, escribir "Sin ajustes".
+
+- **Idioma de respuestas y textos:** `«español»`
+- **Patrón opt-in `15` (registros inmutables):** `«sí / no»`
+- **Patrón opt-in `16` (cumplimiento normativo):** `«sí / no»`
+- `«Otro ajuste: número de regla (01–16) + qué cambia + por qué»`
+
+> Límite: un ajuste puede cambiar una convención (`01`–`16`), **nunca** el núcleo (`00`). Ver precedencia (punto 4).
+
+### 5.2 Agregar reglas nuevas, propias de este proyecto
+
+Reglas que la base **no** cubre (una convención del equipo, una regla del negocio, un patrón propio):
+
+1. Crear el archivo `./.agente/reglas-proyecto.md`.
+2. Escribir ahí cada regla nueva, numerada y con un ejemplo si ayuda.
+3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`16`), que siguen mandando.
+
+- **Reglas propias de este proyecto:** `«ninguna por ahora / ver ./.agente/reglas-proyecto.md»`
