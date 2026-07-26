@@ -18,6 +18,7 @@
 - ✅ **Triangulación de pruebas + corner cases**: derivar los casos con método (frontera, equivalencia, tablas de decisión, negativos) y triangular el resultado esperado desde fuentes independientes. — `08` · T7
 - ✅ **Trazabilidad spec → implementación**: checklist ítem por ítem antes de cerrar. — `13` · DOC3
 - ✅ **Git, dependencias, configuración/entornos, privacidad, documentación, estructura/nomenclatura**. — `09`–`14`
+- ✅ **Concurrencia/idempotencia** (`03`·D6), **CI/CD gate** (`09`·G6), **UI/UX** (`17`, opt-in) y **backup antes de operación irreversible** (`00`·N4) — agregados tras la auditoría del estándar (3 sub-agentes en paralelo).
 - ✅ **Memoria institucional (dentro del proyecto)**: la spec como memoria de largo plazo, decisiones con porqué, carga de contexto, trazabilidad. — `02`·F1/F2/F6, `13`
 - ✅ **Memoria por señales (archivos)**: log de señales tipadas (`13`·DOC5 + `plantillas/senales.md`) con what/why/where/learned.
 - ✅ **Memoria buscable central (SQLite+FTS5) — OPERATIVA**: helper `memoria/memoria.py` (init/add/search/supersede) + skill `usar-memoria` + base central con `scope` (una sola para todos los proyectos; las lecciones `organizacion` viajan entre proyectos). Ver [`memoria-buscable-fts5.md`](memoria-buscable-fts5.md). ⏳ Solo queda la búsqueda **semántica** (embeddings/MCP); la léxica ya está.

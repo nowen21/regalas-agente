@@ -24,7 +24,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 | Capa | Qué contiene | Dónde vive | ¿Se sobrescribe? |
 |---|---|---|---|
 | **1 · Núcleo blindado** | Seguridad crítica: proteger datos reales, control de versiones bajo demanda, no exponer secretos | `base/00` | **Nunca.** Gana a cualquier regla o instrucción. |
-| **2 · Convenciones base** | Buenas prácticas agnósticas al stack (conducta, flujo, datos, seguridad, cumplimiento…) | `base/01`–`base/16` | Solo la capa de proyecto puede ajustarlas. |
+| **2 · Convenciones base** | Buenas prácticas agnósticas al stack (conducta, flujo, datos, seguridad, cumplimiento, UI…) | `base/01`–`base/17` | Solo la capa de proyecto puede ajustarlas. |
 | **3 · Capa de proyecto** | Stack, dominio, sector, marco normativo y nombres propios | `plantillas/` (para copiar) → en el repo de cada proyecto | Es la capa que ajusta. |
 
 **Precedencia:** la capa 3 ajusta la capa 2, pero **nunca** la capa 1. Cada archivo de la base lleva su etiqueta de capa (`[CAPA 1]` / `[CAPA 2]`), y cada regla del núcleo la marca `[BLINDADA]`.
@@ -60,6 +60,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`14-estructura-codigo.md`](base/14-estructura-codigo.md) — organización y nomenclatura
 - [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only *(opt-in)*
 - [`16-cumplimiento-y-calidad.md`](base/16-cumplimiento-y-calidad.md) — leyes, frameworks (COBIT, ISO, OWASP…), cumplimiento por construcción *(opt-in)*
+- [`17-interfaz.md`](base/17-interfaz.md) — UI/UX: estados de vista, validación, accesibilidad, texto para el usuario *(opt-in)*
 
 ### Capa 3 · Proyecto — vive en cada repo (plantillas para copiar)
 
@@ -93,4 +94,4 @@ Herramientas activables que aplican el estándar:
 
 ## Estado
 
-**Base completa (00–16)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres`, `marco-normativo` y `plantilla-spec-modulo`. **10 skills** (los 8 roles de la línea de montaje + el `sdd-orchestrator` + `generar-casos-prueba`, más `usar-memoria`). **Memoria por señales** operativa (archivo o SQLite+FTS5). **Visor local** (Django + AdminLTE) para leer el estándar y la memoria. Pendiente: mejoras opcionales (búsqueda semántica de memoria, ejecución paralela en vivo, assets del visor offline).
+**Base completa (00–17)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres`, `marco-normativo` y `plantilla-spec-modulo`. **10 skills** (los 8 roles de la línea de montaje + el `sdd-orchestrator` + `generar-casos-prueba`, más `usar-memoria`). **Memoria por señales** operativa (archivo o SQLite+FTS5). **Visor local** (Django + AdminLTE) para leer el estándar y la memoria. Pendiente: mejoras opcionales (búsqueda semántica de memoria, ejecución paralela en vivo, assets del visor offline).

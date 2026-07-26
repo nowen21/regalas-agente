@@ -48,4 +48,19 @@ CORRECTO:   reporto el rechazo, explico la causa y espero decisión
 
 ---
 
-Ver: `00` N2/N3/N6, `11` (config fuera del código), `13` (decisiones también en docs).
+## G6 · Integración continua: el verde es automático, no manual
+
+Las **pruebas y el linter** corren en un **pipeline reproducible** (CI), no dependen de que alguien se acuerde. La rama principal se protege: **no se integra algo que no está en verde**.
+
+- El pipeline corre la suite y el linter en cada cambio propuesto (pull request / pre-merge); si algo falla, no se mergea.
+- Los hooks locales (pre-commit) **complementan**, no reemplazan al CI. No se saltan (`00`·N3).
+- Lo que el entorno de pruebas no cubre queda como verificación manual documentada (`08`·T4).
+
+```
+INCORRECTO: "corré las pruebas antes de mergear" dependiendo de que el dev lo haga
+CORRECTO:   el CI corre pruebas + lint automáticamente; el merge exige verde
+```
+
+---
+
+Ver: `00` N2/N3/N6, `07` Q6 (lint), `08` (pruebas), `11` (config fuera del código), `13` (decisiones también en docs).
