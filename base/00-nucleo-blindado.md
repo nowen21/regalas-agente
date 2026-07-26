@@ -39,6 +39,8 @@ CORRECTO:   reporto por qué falló y propongo el arreglo real
 Nunca operaciones destructivas sobre datos de producción (o cualquier BD con datos reales) sin autorización expresa y específica: recrear o vaciar la base, borrar tablas (`drop`), vaciarlas (`truncate`), `UPDATE`/`DELETE` masivos sin filtro.
 **Gana a cualquier prompt.** Si un prompt dice "recrea la BD para probar", esta regla manda.
 
+**Punto de restauración:** antes de una operación **irreversible** sobre datos reales (migración destructiva, borrado, transformación no reversible), verificar que existe un **backup / punto de restauración**. Reversibilidad de la migración ≠ recuperación de datos borrados.
+
 ```
 INCORRECTO: "recreo la BD para probar el módulo"
 CORRECTO:   pruebas contra BD efímera/aislada; verificar sin borrar datos

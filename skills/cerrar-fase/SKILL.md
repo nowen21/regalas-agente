@@ -16,7 +16,7 @@ Valida antes de cerrar. No cierra nada con pruebas en rojo ni con trazabilidad i
 
 ### 2. Triangulación — que los cálculos sean correctos
 - Para la lógica de negocio y los cálculos, confirmar que el **resultado esperado** de las pruebas salió de **fuentes independientes** (spec, cálculo manual, propiedad invariante), **no del propio código** (`08`·T7).
-- Confirmar que se cubrieron los **corner cases** (frontera, clases de equivalencia, casos inválidos).
+- Confirmar que se cubrieron los **corner cases** de la matriz (skill `generar-casos-prueba`): frontera, clases de equivalencia, casos inválidos.
 
 ### 3. Calidad
 - Lint/formateo sin advertencias (`07`·Q6).

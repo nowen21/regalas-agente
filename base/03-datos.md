@@ -78,4 +78,19 @@ CORRECTO:   validación en el servicio + prueba + nota en la migración
 
 ---
 
-Ver: `00` N4/N5 (datos reales, masivas), `04` (validación/authz), `06` (índices, N+1), `15` (registros inmutables).
+## D6 · Concurrencia e idempotencia
+
+Cuando dos operaciones pueden tocar el mismo dato a la vez, protegé la integridad — no confíes en que "no va a pasar".
+
+- **Idempotencia:** una operación repetida (doble clic, doble submit, reintento) no debe duplicar efectos. Usá una clave de idempotencia o verificá el estado antes de aplicar.
+- **Actualización concurrente (lost update):** al modificar un valor compartido (un saldo, un contador), usá **bloqueo optimista** (una versión / `updated_at` que se revalida al guardar) o una operación **atómica** en la BD; nunca leer-modificar-escribir sin control.
+- **Duplicados por carrera:** una restricción `UNIQUE` en la BD es la **única** garantía real contra dos inserciones simultáneas del mismo registro; la validación en la app no alcanza (dos procesos la pasan a la vez).
+
+```
+INCORRECTO: leer saldo → sumar en memoria → guardar   (dos procesos se pisan, se pierde una suma)
+CORRECTO:   incrementar el saldo de forma atómica en la BD, o bloqueo optimista con revalidación
+```
+
+---
+
+Ver: `00` N4/N5 (datos reales, masivas), `04` (validación/authz), `05` E2 (transacciones), `06` (índices, N+1), `15` (registros inmutables).

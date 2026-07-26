@@ -27,6 +27,7 @@ Coordina las 8 skills-rol como una **línea de montaje**: llama a cada una en su
 
 - **No saltar ni reordenar** estaciones. **No avanzar** si la puerta no pasa.
 - Las puertas de **usuario** (2, 3, 5, 10, 11) exigen OK explícito. Las **internas** son checkpoints de calidad que el director verifica.
+- En la estación 5, el Task Planner deriva la **matriz de casos de prueba** con la skill `generar-casos-prueba` (corner cases + triangulación) como parte del plan de pruebas.
 - En la estación 6, usar el **grafo de dependencias** del Task Planner: ejecutar en **orden topológico** y, si el entorno lo permite, correr en **paralelo** las tareas independientes.
 - **Aislamiento:** cada rol puede correr como **sub-agente** con su propio contexto (entrada acotada: la spec al Designer, el plan al Implementer). Si no hay sub-agentes disponibles, el mismo agente cambia de rol por estación.
 - El núcleo manda: no commit/push por iniciativa (`00`·N2), no romper para pasar (`00`·N3), no tocar datos reales (`00`·N4).

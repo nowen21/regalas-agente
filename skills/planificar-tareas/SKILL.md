@@ -26,7 +26,7 @@ Cada tarea deja sin ambigüedad (`02`·F4.3): **QUÉ** (acción concreta), **CÓ
 
 ### 4. Responder las 13 preguntas + plan de pruebas
 - El plan responde las 13 preguntas de `02`·F4.1 (alcance, dónde queda accesible, permisos, archivos, cómo se verifica, cómo se revierte, etc.).
-- Adjuntar el **plan de pruebas** (`02`·F4): escenarios + corner cases derivados y triangulación (`08`·T7).
+- Adjuntar el **plan de pruebas** (`02`·F4): escenarios + corner cases. Derivar la matriz de casos con la skill **`generar-casos-prueba`** (frontera, equivalencia, negativos) y triangular el esperado (`08`·T7).
 
 ### 5. Presentar para aprobación
 - Pausar y presentar `plan_trabajo` + `plan_pruebas` al usuario (`02`·F4.2, etapas 4-5).
