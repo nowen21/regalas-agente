@@ -23,12 +23,12 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 | ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verifier) |
 | 4 | **Skill `generar-casos-prueba`** (matriz de corner cases) | Bajo-medio | `08`·T7 (ya está) | rol Verifier / Task Planner |
 | ~~5~~ | ~~**Roles especializados como skills**~~ | — | — | ✅ **Hechos** — los 7 obreros + Reviewer/Crítico (`skills/`) |
-| 6 | **Grafo de dependencias entre tareas** | Medio | rol Task Planner | [orquestador](orquestador-y-triangulacion.md) |
-| 7 | **SDD Orchestrator** (línea de montaje con puertas) | Medio-alto | roles + grafo | coordina todo |
-| 8 | **Orquestación con sub-agentes en paralelo** | — | ✅ disponible (workflows) — falta construir | [subagentes-y-entorno](subagentes-y-entorno.md) |
-| 9 | **Aislamiento de contexto** (cada rol en su contexto) | Medio | ✅ disponible (sub-agentes) — falta cablear | [subagentes-y-entorno](subagentes-y-entorno.md) |
-| 10 | **Checkpoints de calidad** (imponer las puertas) | Bajo-medio | orquestador | [aislamiento-checkpoints-memoria](aislamiento-checkpoints-memoria.md) |
-| 11 | **Memoria institucional entre proyectos** (org) | Medio | — | dentro del proyecto ya está (`13`) |
+| ~~6~~ | ~~**Grafo de dependencias entre tareas**~~ | — | — | ✅ Task Planner lo produce · Orchestrator lo ejecuta |
+| ~~7~~ | ~~**SDD Orchestrator**~~ | — | — | ✅ **Hecho** — `skills/sdd-orchestrator/` |
+| 8 | **Ejecución paralela real** (sub-agentes) | — | entorno (workflows) | dispuesta por el Orchestrator; la corre el entorno |
+| 9 | **Aislamiento de contexto** (cada rol como sub-agente) | — | entorno (sub-agentes) | dispuesto por el Orchestrator |
+| ~~10~~ | ~~**Checkpoints de calidad**~~ | — | — | ✅ el Orchestrator impone las puertas |
+| 11 | **Memoria institucional entre proyectos** (semántica) | Medio | MCP / vector | dentro del proyecto ya está (`13`) |
 
 ## Ya resuelto
 

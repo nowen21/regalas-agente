@@ -83,6 +83,7 @@ Herramientas activables que aplican el estándar:
 - [`disenar-arquitectura`](skills/disenar-arquitectura/SKILL.md) — define el diseño técnico desde la spec: datos, estructura, decisiones. (rol Designer)
 - [`planificar-tareas`](skills/planificar-tareas/SKILL.md) — divide el trabajo en tareas con grafo de dependencias y plan de pruebas, para aprobación. (rol Task Planner)
 - [`implementar`](skills/implementar/SKILL.md) — ejecuta un plan aprobado: código + pruebas, de corrido. (rol Implementer)
+- [`sdd-orchestrator`](skills/sdd-orchestrator/SKILL.md) — dirige la línea de montaje: llama a cada rol, controla las puertas, usa el grafo y persiste el estado. (rol Orchestrator)
 
 ## Estado
 

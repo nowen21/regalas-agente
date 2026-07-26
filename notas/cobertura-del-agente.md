@@ -30,18 +30,18 @@
 
 ## ⏳ Lo que NO cumple todavía (pendiente)
 
-- ⏳ **SDD Orchestrator** (línea de montaje con puertas): el flujo de `02` existe como reglas, pero **no** hay un orquestador que controle las fases y **bloquee el avance** en cada puerta (spec → plan → código → pruebas → trazabilidad → cierre). Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
-- ⏳ **Orquestación con sub-agentes en paralelo**: depende de las capacidades del entorno (workflows / sub-agentes de Claude Code), no solo del estándar.
+- ✅ **SDD Orchestrator** (línea de montaje con puertas): `skills/sdd-orchestrator/` — dirige las estaciones, controla las puertas, usa el grafo y persiste el estado. Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
+- ⚠️ **Orquestación con sub-agentes en paralelo**: el Orchestrator la dispone; la ejecución paralela real usa los sub-agentes/workflows del entorno (ya disponibles).
 - ✅ **Skill `cerrar-fase`** (rol Verifier): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
 - ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
 - ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
 - ✅ **Skill `planificar-tareas`** (rol Task Planner): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
 - ✅ **Skills `proponer-alcance` (Proposer), `disenar-arquitectura` (Designer), `implementar` (Implementer)**: completan los **7 roles obreros** de la línea de montaje.
-- ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), y los roles proposer / designer / task planner / implementer.
-- ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md` — esqueleto para redactar la spec de cualquier módulo.
-- ⏳ **Roles especializados** (explorer, proposer, spec writer, designer, task planner, implementer, verifier): las responsabilidades están como reglas, pero los roles como actores separados no existen. Ver [`roles-especializados.md`](roles-especializados.md).
-- ⚠️ **Grafo de dependencias entre tareas**: el Task Planner (`skills/planificar-tareas/`) ya lo **produce** (prerrequisitos, orden topológico, paralelizables, detección de ciclos). Falta que el **orquestador lo ejecute** (ordenar/paralelizar de verdad). Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
-- ⏳ **Aislamiento de contexto** (cada rol en su propio contexto), **checkpoints de calidad impuestos** (las puertas), y **memoria institucional entre proyectos**. Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
+- ⏳ **Skill aún no creada**: `generar-casos-prueba` (matriz de corner cases; el método ya está en `08`·T7).
+- ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md`.
+- ✅ **Roles especializados**: los 7 obreros + Reviewer/Crítico + Orchestrator existen como skills en `skills/`. Ver [`roles-especializados.md`](roles-especializados.md).
+- ✅ **Grafo de dependencias entre tareas**: el Task Planner lo produce y el Orchestrator lo ejecuta (orden topológico + paralelizables).
+- ✅ **Checkpoints de calidad impuestos** (las puertas): el Orchestrator los controla. ⚠️ **Aislamiento de contexto** (cada rol como sub-agente): dispuesto por el Orchestrator, ejecutado por los sub-agentes del entorno. ⏳ **Memoria institucional entre proyectos** (semántica / MCP). Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
 
 > **Nota sobre sub-agentes:** el aislamiento de contexto, los roles como actores separados y la orquestación en paralelo **ya son posibles** — Claude Code provee sub-agentes con contexto aislado y workflows. No es falta de capacidad, sino de **construcción**. Ver [`subagentes-y-entorno.md`](subagentes-y-entorno.md).
 
@@ -65,4 +65,4 @@
 ## Resumen
 
 - **Fuerte hoy**: spec-driven development, seguridad, datos, pruebas (con triangulación), trazabilidad, cumplimiento por construcción.
-- **Falta**: el **orquestador** que convierta el flujo en una línea de montaje con puertas, y algunas **skills** de apoyo.
+- **Falta poco**: la skill `generar-casos-prueba`, la **ejecución paralela real** (usa sub-agentes del entorno) y la **memoria semántica entre proyectos** (MCP/vector). El orquestador y los 8 roles ya están.
