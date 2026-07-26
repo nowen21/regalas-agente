@@ -20,8 +20,11 @@ El estándar (las reglas) está instalado en una carpeta central **fuera de este
 - **Reglas base:** `c:\Ing. Jose\ia\agente\base`
 - **Plantillas:** `c:\Ing. Jose\ia\agente\plantillas`
 - **Base módulo:** `c:\Ing. Jose\ia\agente\_base_modulo.md`
+- **Memoria (señales):** `c:\Ing. Jose\ia\agente\memoria\memoria.py` — base central buscable (SQLite+FTS5), compartida por todos los proyectos. Skill `usar-memoria`.
 
 > Si el estándar se mueve a otra carpeta, actualizar estas rutas.
+>
+> **Memoria:** antes de trabajar un tema, consultar señales relevantes (`search` con `--scope proyecto:«slug»` y `--scope organizacion`); al cerrar o aprender algo, registrarlas (`add`). Slug de este proyecto para el scope: `«slug-proyecto»`.
 
 ## 2. Carpetas de este proyecto
 

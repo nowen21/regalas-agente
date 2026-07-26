@@ -20,7 +20,7 @@
 - ✅ **Git, dependencias, configuración/entornos, privacidad, documentación, estructura/nomenclatura**. — `09`–`14`
 - ✅ **Memoria institucional (dentro del proyecto)**: la spec como memoria de largo plazo, decisiones con porqué, carga de contexto, trazabilidad. — `02`·F1/F2/F6, `13`
 - ✅ **Memoria por señales (archivos)**: log de señales tipadas (`13`·DOC5 + `plantillas/senales.md`) con what/why/where/learned.
-- ✅ **Memoria buscable (SQLite+FTS5)** — diseño documentado (esquema + consultas listos) como backend opcional de capa 3. Ver [`memoria-buscable-fts5.md`](memoria-buscable-fts5.md). ⏳ Solo queda la capa **semántica entre proyectos** (MCP/vector).
+- ✅ **Memoria buscable central (SQLite+FTS5) — OPERATIVA**: helper `memoria/memoria.py` (init/add/search/supersede) + skill `usar-memoria` + base central con `scope` (una sola para todos los proyectos; las lecciones `organizacion` viajan entre proyectos). Ver [`memoria-buscable-fts5.md`](memoria-buscable-fts5.md). ⏳ Solo queda la búsqueda **semántica** (embeddings/MCP); la léxica ya está.
 - ✅ **Registros inmutables** (patrón opt-in). — `15`
 - ✅ **Cumplimiento normativo por construcción** (opt-in): OWASP, ISO 25010, y marco legal declarado por proyecto. — `16`
 

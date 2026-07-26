@@ -85,6 +85,7 @@ Herramientas activables que aplican el estándar:
 - [`implementar`](skills/implementar/SKILL.md) — ejecuta un plan aprobado: código + pruebas, de corrido. (rol Implementer)
 - [`sdd-orchestrator`](skills/sdd-orchestrator/SKILL.md) — dirige la línea de montaje: llama a cada rol, controla las puertas, usa el grafo y persiste el estado. (rol Orchestrator)
 - [`generar-casos-prueba`](skills/generar-casos-prueba/SKILL.md) — deriva la matriz de casos (corner cases) y triangula el resultado esperado. (apoya Task Planner / Verifier)
+- [`usar-memoria`](skills/usar-memoria/SKILL.md) — consulta y registra señales en la memoria central buscable (SQLite+FTS5, con `scope`). Helper en [`memoria/`](memoria/).
 
 ## Estado
 

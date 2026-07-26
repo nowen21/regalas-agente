@@ -29,7 +29,8 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 | 8 | **Ejecución paralela real** (sub-agentes) | — | entorno (workflows) | dispuesta por el Orchestrator; la corre el entorno |
 | 9 | **Aislamiento de contexto** (cada rol como sub-agente) | — | entorno (sub-agentes) | dispuesto por el Orchestrator |
 | ~~10~~ | ~~**Checkpoints de calidad**~~ | — | — | ✅ el Orchestrator impone las puertas |
-| 11 | **Memoria institucional entre proyectos** (semántica) | Medio | MCP / vector | dentro del proyecto ya está (`13`) |
+| ~~11a~~ | ~~**Memoria buscable central con scope**~~ | — | — | ✅ **Hecha** — `memoria/` + skill `usar-memoria` (léxica, entre proyectos) |
+| 11b | **Búsqueda semántica** (por significado) | Medio | MCP / vector | la léxica ya está; falta embeddings |
 
 ## Ya resuelto
 

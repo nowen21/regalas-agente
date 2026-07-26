@@ -4,3 +4,7 @@ _base_modulo.md
 
 # Configuración local de la herramienta
 .claude/
+
+# Datos locales de la memoria por señales (la base es del usuario, no del estándar)
+*.db
+memoria/senales.db
