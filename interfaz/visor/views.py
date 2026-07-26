@@ -1,8 +1,21 @@
-import os
+import os, json
 from django.shortcuts import render
 from django.http import Http404
 from django.utils.safestring import mark_safe
 from . import core
+
+
+def panel(request):
+    r = core.resumen_memoria()
+    ctx = {'r': r, 'db': core.DB}
+    if r and not r.get('vacia'):
+        ctx['tipos_labels'] = json.dumps([x['tipo'] for x in r['por_tipo']])
+        ctx['tipos_data'] = json.dumps([x['n'] for x in r['por_tipo']])
+        labels = (['organizacion (repisa)'] if r['org'] else []) + [p['scope'] for p in r['proyectos']]
+        data = ([r['org']] if r['org'] else []) + [p['n'] for p in r['proyectos']]
+        ctx['scope_labels'] = json.dumps(labels)
+        ctx['scope_data'] = json.dumps(data)
+    return render(request, 'visor/panel.html', ctx)
 
 
 def home(request):

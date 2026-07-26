@@ -1,0 +1,89 @@
+{% extends "visor/base.html" %}
+{% block titulo %}Panel de memoria — visor{% endblock %}
+{% block encabezado %}Panel de memoria{% endblock %}
+{% block contenido %}
+{% if not r %}
+  <div class="card"><div class="card-body">La base de memoria no existe todavía (<code>{{ db }}</code>). Se crea con <code>python memoria/memoria.py init</code>.</div></div>
+{% elif r.vacia %}
+  <div class="card"><div class="card-body">La memoria está creada pero <b>vacía</b>. Registrá señales con <code>python memoria/memoria.py add …</code> o con la skill <code>usar-memoria</code>.</div></div>
+{% else %}
+
+  <!-- KPIs -->
+  <div class="row g-3 mb-2">
+    <div class="col-6 col-md"><div class="small-box text-bg-primary"><div class="inner"><h3>{{ r.total }}</h3><p>Señales</p></div><i class="small-box-icon bi bi-hdd-stack"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-success"><div class="inner"><h3>{{ r.activas }}</h3><p>Activas</p></div><i class="small-box-icon bi bi-check-circle"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-secondary"><div class="inner"><h3>{{ r.otras }}</h3><p>Reemplazadas</p></div><i class="small-box-icon bi bi-arrow-repeat"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-info"><div class="inner"><h3>{{ r.org }}</h3><p>En la repisa (org.)</p></div><i class="small-box-icon bi bi-building"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-warning"><div class="inner"><h3>{{ r.n_proyectos }}</h3><p>Proyectos</p></div><i class="small-box-icon bi bi-folder"></i></div></div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="row g-3">
+    <div class="col-lg-5">
+      <div class="card h-100"><div class="card-header"><h3 class="card-title">Señales por tipo</h3></div>
+        <div class="card-body"><canvas id="chTipos" height="220"></canvas></div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card h-100"><div class="card-header"><h3 class="card-title">Señales por scope (cajas vs repisa)</h3></div>
+        <div class="card-body"><canvas id="chScope" height="220"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-0">
+    <!-- Últimas señales -->
+    <div class="col-lg-7">
+      <div class="card"><div class="card-header"><h3 class="card-title">Últimas señales</h3>
+        <div class="card-tools"><a href="/memoria/" class="btn btn-sm btn-outline-primary">Ver todas</a></div></div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            {% for s in r.recientes %}
+            <li class="list-group-item">
+              <span class="fw-bold text-primary">{{ s.id }}</span>
+              <span class="badge text-bg-secondary">{{ s.tipo }}</span>
+              <span class="badge text-bg-light border">{{ s.scope }}</span>
+              <div class="small">{{ s.titulo }}</div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cómo funciona -->
+    <div class="col-lg-5">
+      <div class="card"><div class="card-header"><h3 class="card-title">Cómo funciona la memoria</h3></div>
+        <div class="card-body">
+          <p class="mb-2">El agente guarda <b>señales</b> —conocimiento que no se recupera del código— y las consulta después.</p>
+          <ul class="mb-2">
+            <li><b>Tipos:</b> decisión, error resuelto, patrón, aprendizaje, gotcha…</li>
+            <li><b>Scope = a quién sirve:</b> <span class="badge text-bg-info">organizacion</span> = la "repisa" común (viaja a todos los proyectos); <span class="badge text-bg-light border">proyecto:X</span> = la "caja" de ese proyecto.</li>
+          </ul>
+          <p class="mb-0 small text-body-secondary">Una lección de la repisa aprendida en un proyecto aparece en cualquier otro —aunque sea de otro lenguaje— porque lo compartido es conocimiento, no código.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{% if r and not r.vacia %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const PAL = ['#3554a5','#1e7a33','#b02a2a','#0e6b7b','#c98a00','#6a4fb0','#3fb0c1','#888','#d16a2a','#4a7a1e'];
+new Chart(document.getElementById('chTipos'), {
+  type: 'doughnut',
+  data: { labels: {{ tipos_labels|safe }}, datasets: [{ data: {{ tipos_data|safe }}, backgroundColor: PAL }] },
+  options: { plugins: { legend: { position: 'right' } } }
+});
+new Chart(document.getElementById('chScope'), {
+  type: 'bar',
+  data: { labels: {{ scope_labels|safe }}, datasets: [{ label: 'Señales', data: {{ scope_data|safe }}, backgroundColor: '#3554a5' }] },
+  options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { precision: 0 } } } }
+});
+</script>
+{% endif %}
+{% endblock %}

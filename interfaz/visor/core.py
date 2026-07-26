@@ -131,3 +131,36 @@ def scopes_y_tipos():
 
 def contar_docs():
     return {t: len(_items(c)) for t, c in SECCIONES}
+
+def resumen_memoria():
+    """Datos agregados de la memoria para el panel."""
+    if not os.path.exists(DB):
+        return None
+    from collections import Counter
+    con = _con(); con.row_factory = sqlite3.Row
+    try:
+        rows = [dict(r) for r in con.execute("SELECT rowid, * FROM senales ORDER BY rowid").fetchall()]
+    except sqlite3.OperationalError:
+        return {'vacia': True}
+    finally:
+        con.close()
+
+    total = len(rows)
+    activas = sum(1 for r in rows if r['estado'] == 'activa')
+    por_tipo = Counter(r['tipo'] for r in rows)
+    por_scope = Counter(r['scope'] for r in rows)
+    org = sum(v for k, v in por_scope.items() if k == 'organizacion')
+    proyectos = {k: v for k, v in sorted(por_scope.items()) if k != 'organizacion'}
+    recientes = list(reversed(rows))[:6]
+    return {
+        'vacia': total == 0,
+        'total': total,
+        'activas': activas,
+        'otras': total - activas,
+        'n_tipos': len(por_tipo),
+        'n_proyectos': len(proyectos),
+        'org': org,
+        'por_tipo': [{'tipo': k, 'n': v} for k, v in por_tipo.most_common()],
+        'proyectos': [{'scope': k, 'n': v} for k, v in proyectos.items()],
+        'recientes': recientes,
+    }
