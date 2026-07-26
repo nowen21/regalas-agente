@@ -21,7 +21,10 @@ TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
     'DIRS': [],
     'APP_DIRS': True,
-    'OPTIONS': {'context_processors': ['visor.core.nav']},
+    'OPTIONS': {'context_processors': [
+        'django.template.context_processors.request',
+        'visor.core.nav',
+    ]},
 }]
 
 WSGI_APPLICATION = 'config.wsgi.application'

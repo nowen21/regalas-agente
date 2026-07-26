@@ -75,7 +75,15 @@ def listar_docs():
     return [{'titulo': t, 'items': _items(c)} for t, c in SECCIONES]
 
 def nav(request):
-    return {'secciones': listar_docs()}
+    """Menú lateral con la sección del doc activo marcada como abierta."""
+    activo = request.GET.get('p', '') if request.path.startswith('/doc') else ''
+    secs = []
+    for t, c in SECCIONES:
+        items = _items(c)
+        for it in items:
+            it['activo'] = (it['rel'] == activo)
+        secs.append({'titulo': t, 'items': items, 'abierta': any(i['activo'] for i in items)})
+    return {'secciones': secs}
 
 def leer_doc(rel):
     p = os.path.normpath(os.path.join(RAIZ, rel))

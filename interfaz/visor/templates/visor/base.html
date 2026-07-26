@@ -35,14 +35,21 @@
     </div>
     <div class="sidebar-wrapper">
       <nav class="mt-2">
-        <ul class="nav sidebar-menu flex-column" role="menu">
-          <li class="nav-item"><a href="/" class="nav-link"><i class="nav-icon bi bi-house-door"></i><p>Inicio</p></a></li>
-          <li class="nav-item"><a href="/memoria/" class="nav-link"><i class="nav-icon bi bi-hdd-stack"></i><p>Memoria (señales)</p></a></li>
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+          <li class="nav-item"><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}"><i class="nav-icon bi bi-house-door"></i><p>Inicio</p></a></li>
+          <li class="nav-item"><a href="/memoria/" class="nav-link {% if request.path == '/memoria/' %}active{% endif %}"><i class="nav-icon bi bi-hdd-stack"></i><p>Memoria (señales)</p></a></li>
           {% for sec in secciones %}
-            <li class="nav-header">{{ sec.titulo|upper }}</li>
-            {% for d in sec.items %}
-              <li class="nav-item"><a href="/doc/?p={{ d.rel|urlencode }}" class="nav-link"><i class="nav-icon bi bi-dot"></i><p>{{ d.nombre }}</p></a></li>
-            {% endfor %}
+            <li class="nav-item {% if sec.abierta %}menu-open{% endif %}">
+              <a href="#" class="nav-link {% if sec.abierta %}active{% endif %}">
+                <i class="nav-icon bi bi-folder2"></i>
+                <p>{{ sec.titulo }} <span class="nav-badge badge text-bg-secondary">{{ sec.items|length }}</span><i class="nav-arrow bi bi-chevron-right"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                {% for d in sec.items %}
+                  <li class="nav-item"><a href="/doc/?p={{ d.rel|urlencode }}" class="nav-link {% if d.activo %}active{% endif %}"><i class="nav-icon bi bi-dot"></i><p>{{ d.nombre }}</p></a></li>
+                {% endfor %}
+              </ul>
+            </li>
           {% endfor %}
         </ul>
       </nav>
