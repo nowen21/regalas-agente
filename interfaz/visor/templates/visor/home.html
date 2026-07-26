@@ -1,0 +1,25 @@
+{% extends "visor/base.html" %}
+{% block encabezado %}Inicio{% endblock %}
+{% block contenido %}
+<div class="row g-3 mb-3">
+  {% for k in kpis %}
+  <div class="col-6 col-md-4 col-xl">
+    <div class="small-box text-bg-primary">
+      <div class="inner"><h3>{{ k.n }}</h3><p>{{ k.label }}</p></div>
+      <i class="small-box-icon bi {{ k.icon }}"></i>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Qué es esto</h5>
+    <p class="mb-2">Un visor de todo lo que hace el agente y de lo que guarda en su memoria.</p>
+    <ul class="mb-0">
+      <li>En el <b>menú izquierdo</b> están las reglas del agente, sus roles/skills, las plantillas y las notas de diseño.</li>
+      <li>En <a href="/memoria/"><b>Memoria</b></a> ves lo que el agente ha guardado (decisiones, errores resueltos, lecciones), con búsqueda y filtro por proyecto.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

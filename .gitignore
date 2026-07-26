@@ -8,3 +8,6 @@ _base_modulo.md
 # Datos locales de la memoria por señales (la base es del usuario, no del estándar)
 *.db
 memoria/senales.db
+
+# Base interna de Django del visor (no es data del usuario)
+interfaz/_visor.sqlite3

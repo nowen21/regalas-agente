@@ -87,6 +87,10 @@ Herramientas activables que aplican el estándar:
 - [`generar-casos-prueba`](skills/generar-casos-prueba/SKILL.md) — deriva la matriz de casos (corner cases) y triangula el resultado esperado. (apoya Task Planner / Verifier)
 - [`usar-memoria`](skills/usar-memoria/SKILL.md) — consulta y registra señales en la memoria central buscable (SQLite+FTS5, con `scope`). Helper en [`memoria/`](memoria/).
 
+## Visor (interfaz local)
+
+- [`interfaz/`](interfaz/) — app local (Django + Bootstrap 5 + AdminLTE 4) para **leer todo lo que hace el agente** (reglas, roles, plantillas, notas) y **ver la memoria** (señales, con búsqueda y filtro por `scope`). Se corre con `python interfaz/manage.py runserver` → http://127.0.0.1:8000.
+
 ## Estado
 
 **Base completa (00–16)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres` y `marco-normativo`. **Skills:** `analizar-proyecto`. Siguiente: la plantilla de spec de módulo (genérica) y la skill para generarla.
