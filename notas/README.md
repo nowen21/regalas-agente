@@ -19,7 +19,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 | # | Pendiente | Tamaño | Depende de | Nota |
 |---|---|---|---|---|
 | ~~1~~ | ~~**Plantilla genérica de spec de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/plantilla-spec-modulo.md` |
-| 2 | **Skill `generar-spec-modulo`** | Bajo-medio | pendiente 1 | rol Spec Writer |
+| ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Spec Writer) |
 | ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verifier) |
 | 4 | **Skill `generar-casos-prueba`** (matriz de corner cases) | Bajo-medio | `08`·T7 (ya está) | rol Verifier / Task Planner |
 | 5 | **Roles especializados como skills** (explorer ya ≈ `analizar-proyecto`) | Medio | — | [roles-especializados](roles-especializados.md) |

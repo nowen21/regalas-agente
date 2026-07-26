@@ -33,7 +33,8 @@
 - ⏳ **SDD Orchestrator** (línea de montaje con puertas): el flujo de `02` existe como reglas, pero **no** hay un orquestador que controle las fases y **bloquee el avance** en cada puerta (spec → plan → código → pruebas → trazabilidad → cierre). Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
 - ⏳ **Orquestación con sub-agentes en paralelo**: depende de las capacidades del entorno (workflows / sub-agentes de Claude Code), no solo del estándar.
 - ✅ **Skill `cerrar-fase`** (rol Verifier): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
-- ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), `generar-spec-modulo`.
+- ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
+- ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), y los roles proposer / designer / task planner / implementer.
 - ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md` — esqueleto para redactar la spec de cualquier módulo.
 - ⏳ **Roles especializados** (explorer, proposer, spec writer, designer, task planner, implementer, verifier): las responsabilidades están como reglas, pero los roles como actores separados no existen. Ver [`roles-especializados.md`](roles-especializados.md).
 - ⏳ **Grafo de dependencias entre tareas**: hoy el flujo es lineal; falta que el Task Planner genere prerrequisitos y el orquestador ejecute en orden topológico y detecte tareas paralelizables. Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).

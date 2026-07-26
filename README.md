@@ -77,6 +77,7 @@ Herramientas activables que aplican el estándar:
 
 - [`analizar-proyecto`](skills/analizar-proyecto/SKILL.md) — diagnostica un proyecto existente: inventario (qué hay), brechas (qué falta), plan priorizado (qué sigue), estrategia de pruebas y tecnologías necesarias. (rol Explorer)
 - [`cerrar-fase`](skills/cerrar-fase/SKILL.md) — valida antes de cerrar: pruebas + triangulación + calidad + trazabilidad spec→implementación. (rol Verifier)
+- [`generar-spec-modulo`](skills/generar-spec-modulo/SKILL.md) — redacta la spec de un módulo antes de programarlo, guiando la plantilla. (rol Spec Writer)
 
 ## Estado
 
