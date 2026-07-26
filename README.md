@@ -90,7 +90,18 @@ Herramientas activables que aplican el estándar:
 
 ## Visor (interfaz local)
 
-- [`interfaz/`](interfaz/) — app local (Django + Bootstrap 5 + AdminLTE 4) para **leer todo lo que hace el agente** (reglas, roles, plantillas, notas) y **ver la memoria** (señales, con búsqueda y filtro por `scope`). Se corre con `python interfaz/manage.py runserver` → http://127.0.0.1:8000.
+[`interfaz/`](interfaz/) — app local (Django + Bootstrap 5 + AdminLTE 4) para **leer todo lo que hace el agente** (reglas, roles, plantillas, notas) y **ver la memoria** (panel + tabla de señales con filtro dinámico, colores por tipo, orden, detalle, registro y export CSV). Funciona sin internet.
+
+**Cómo se corre** (desde la raíz del proyecto):
+
+```
+python interfaz/manage.py runserver
+```
+
+Luego abrir **http://127.0.0.1:8000** · parar con **Ctrl + C**.
+
+- Si el puerto 8000 está ocupado: `python interfaz/manage.py runserver 8010`
+- Requisitos: Python 3.11+ y Django 5 (`pip install -r interfaz/requirements.txt`).
 
 ## Estado
 
