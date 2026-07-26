@@ -1,4 +1,5 @@
-import os, json
+import os, json, math
+from urllib.parse import urlencode
 from django.shortcuts import render
 from django.http import Http404
 from django.utils.safestring import mark_safe
@@ -22,13 +23,13 @@ def panel(request):
 
 def home(request):
     conteo = core.contar_docs()
-    senales = core.consultar_senales('', '', '')
+    mem = core.consultar_senales('', '', '', por_pagina=1)
     iconos = {"Reglas (núcleo + convenciones)": "bi-shield-check",
               "Roles / skills": "bi-diagram-3",
               "Plantillas (capa 3)": "bi-ui-checks-grid",
               "Notas de diseño": "bi-journal-text"}
     kpis = [{'n': v, 'label': t, 'icon': iconos.get(t, 'bi-file-earmark')} for t, v in conteo.items()]
-    kpis.append({'n': len(senales) if senales else 0, 'label': 'Señales en memoria', 'icon': 'bi-hdd-stack'})
+    kpis.append({'n': mem['total'] if mem else 0, 'label': 'Señales en memoria', 'icon': 'bi-hdd-stack'})
     return render(request, 'visor/home.html', {'kpis': kpis})
 
 
@@ -45,10 +46,27 @@ def memoria(request):
     q = request.GET.get('q', '').strip()
     scope = request.GET.get('scope', '').strip()
     tipo = request.GET.get('tipo', '').strip()
-    filas = core.consultar_senales(q, scope, tipo)
+    try:
+        pagina = int(request.GET.get('pag', '1'))
+    except ValueError:
+        pagina = 1
+    res = core.consultar_senales(q, scope, tipo, pagina=pagina)
     sc, tp = core.scopes_y_tipos()
-    return render(request, 'visor/memoria.html', {
-        'q': q, 'scope': scope, 'tipo': tipo,
-        'filas': filas, 'scopes': sc, 'tipos': tp,
-        'no_db': filas is None, 'db': core.DB,
-    })
+    ctx = {'q': q, 'scope': scope, 'tipo': tipo, 'scopes': sc, 'tipos': tp,
+           'no_db': res is None, 'db': core.DB}
+    if res is not None:
+        por = res['por_pagina']
+        paginas = max(1, math.ceil(res['total'] / por))
+        pag = min(res['pagina'], paginas)
+        ctx.update({
+            'filas': res['filas'], 'total': res['total'],
+            'pagina': pag, 'paginas': paginas,
+            'desde': (pag - 1) * por + (1 if res['total'] else 0),
+            'hasta': (pag - 1) * por + len(res['filas']),
+            'prev': pag - 1, 'next': pag + 1,
+            'tiene_prev': pag > 1, 'tiene_next': pag < paginas,
+            'rango': range(max(1, pag - 2), min(paginas, pag + 2) + 1),
+            # querystring de filtros (sin 'pag') para los enlaces de página
+            'qs': urlencode({k: v for k, v in {'q': q, 'scope': scope, 'tipo': tipo}.items() if v}),
+        })
+    return render(request, 'visor/memoria.html', ctx)

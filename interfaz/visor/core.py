@@ -111,24 +111,32 @@ def _fts_query(q):
     toks = re.findall(r'\w+', q, re.UNICODE)
     return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
 
-def consultar_senales(q, scope, tipo):
+def consultar_senales(q, scope, tipo, pagina=1, por_pagina=25):
+    """Devuelve una PÁGINA de señales (no todas): {filas, total, pagina, por_pagina}.
+    Pagina a nivel SQL (LIMIT/OFFSET) para no cargar todo cuando hay muchas."""
     if not os.path.exists(DB):
         return None
     con = _con(); con.row_factory = sqlite3.Row
     try:
         fts = _fts_query(q) if q else None
         if fts:
-            sql = ("SELECT s.* FROM senales_fts f JOIN senales s ON s.rowid=f.rowid "
-                   "WHERE senales_fts MATCH ?"); params = [fts]; pfx = "s."; order = " ORDER BY bm25(senales_fts)"
+            desde = "FROM senales_fts f JOIN senales s ON s.rowid=f.rowid WHERE senales_fts MATCH ?"
+            params = [fts]; pfx = "s."; order = " ORDER BY bm25(senales_fts)"; sel = "SELECT s.*"
         else:
-            sql = "SELECT * FROM senales WHERE 1=1"; params = []; pfx = ""; order = " ORDER BY rowid DESC"
+            desde = "FROM senales WHERE 1=1"; params = []; pfx = ""; order = " ORDER BY rowid DESC"; sel = "SELECT *"
         if scope:
-            sql += " AND %sscope = ?" % pfx; params.append(scope)   # exacto: evita que 'organizacion' traiga 'organizacion-beta'
+            desde += " AND %sscope = ?" % pfx; params.append(scope)   # exacto: evita que 'organizacion' traiga 'organizacion-beta'
         if tipo:
-            sql += " AND %stipo = ?" % pfx; params.append(tipo)
-        return [dict(r) for r in con.execute(sql + order, params).fetchall()]
+            desde += " AND %stipo = ?" % pfx; params.append(tipo)
+        total = con.execute("SELECT COUNT(*) " + desde, params).fetchone()[0]
+        paginas = max(1, -(-total // por_pagina))     # techo de total/por_pagina
+        pagina = min(max(1, pagina), paginas)          # clamp antes de consultar
+        offset = (pagina - 1) * por_pagina
+        filas = [dict(r) for r in con.execute(sel + " " + desde + order + " LIMIT ? OFFSET ?",
+                                              params + [por_pagina, offset]).fetchall()]
+        return {'filas': filas, 'total': total, 'pagina': pagina, 'por_pagina': por_pagina}
     except sqlite3.OperationalError:
-        return []
+        return {'filas': [], 'total': 0, 'pagina': pagina, 'por_pagina': por_pagina}
     finally:
         con.close()
 
