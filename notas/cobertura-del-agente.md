@@ -37,7 +37,7 @@
 - ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
 - ✅ **Skill `planificar-tareas`** (rol Task Planner): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
 - ✅ **Skills `proponer-alcance` (Proposer), `disenar-arquitectura` (Designer), `implementar` (Implementer)**: completan los **7 roles obreros** de la línea de montaje.
-- ⏳ **Skill aún no creada**: `generar-casos-prueba` (matriz de corner cases; el método ya está en `08`·T7).
+- ✅ **Skill `generar-casos-prueba`**: `skills/generar-casos-prueba/` — deriva la matriz de casos y triangula el esperado (operacionaliza `08`·T7).
 - ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md`.
 - ✅ **Roles especializados**: los 7 obreros + Reviewer/Crítico + Orchestrator existen como skills en `skills/`. Ver [`roles-especializados.md`](roles-especializados.md).
 - ✅ **Grafo de dependencias entre tareas**: el Task Planner lo produce y el Orchestrator lo ejecuta (orden topológico + paralelizables).

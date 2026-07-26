@@ -84,6 +84,7 @@ Herramientas activables que aplican el estándar:
 - [`planificar-tareas`](skills/planificar-tareas/SKILL.md) — divide el trabajo en tareas con grafo de dependencias y plan de pruebas, para aprobación. (rol Task Planner)
 - [`implementar`](skills/implementar/SKILL.md) — ejecuta un plan aprobado: código + pruebas, de corrido. (rol Implementer)
 - [`sdd-orchestrator`](skills/sdd-orchestrator/SKILL.md) — dirige la línea de montaje: llama a cada rol, controla las puertas, usa el grafo y persiste el estado. (rol Orchestrator)
+- [`generar-casos-prueba`](skills/generar-casos-prueba/SKILL.md) — deriva la matriz de casos (corner cases) y triangula el resultado esperado. (apoya Task Planner / Verifier)
 
 ## Estado
 

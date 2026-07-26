@@ -21,7 +21,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 | ~~1~~ | ~~**Plantilla genérica de spec de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/plantilla-spec-modulo.md` |
 | ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Spec Writer) |
 | ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verifier) |
-| 4 | **Skill `generar-casos-prueba`** (matriz de corner cases) | Bajo-medio | `08`·T7 (ya está) | rol Verifier / Task Planner |
+| ~~4~~ | ~~**Skill `generar-casos-prueba`**~~ | — | — | ✅ **Hecha** — `skills/generar-casos-prueba/` |
 | ~~5~~ | ~~**Roles especializados como skills**~~ | — | — | ✅ **Hechos** — los 7 obreros + Reviewer/Crítico (`skills/`) |
 | ~~6~~ | ~~**Grafo de dependencias entre tareas**~~ | — | — | ✅ Task Planner lo produce · Orchestrator lo ejecuta |
 | ~~7~~ | ~~**SDD Orchestrator**~~ | — | — | ✅ **Hecho** — `skills/sdd-orchestrator/` |
