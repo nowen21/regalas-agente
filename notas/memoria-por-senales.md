@@ -81,6 +81,31 @@ Hay tres niveles, de más simple a más potente:
 
 > MCP = Model Context Protocol: el mecanismo para conectarle al agente herramientas o servidores externos. El estándar no lo exige; es una opción de backend para la memoria entre proyectos.
 
+## Dónde vive la memoria: por proyecto vs central (el `scope`)
+
+Con **muchos proyectos**, el campo `scope` de cada señal permite **una sola memoria central** en vez de una por proyecto. Cada señal va a "su caja" (el proyecto) o a "la repisa" (la organización):
+
+```
+        ┌──── REPISA COMPARTIDA (scope = organizacion) ────┐
+        │  lo que sirve para CUALQUIER proyecto            │
+        └──────────────────────────────────────────────────┘
+   ┌── Laravel ──┐   ┌── Python ──┐   ┌── Spring ──┐
+   │ solo tienda │   │ solo pipe  │   │ solo API   │   (scope = proyecto:X)
+   └─────────────┘   └────────────┘   └────────────┘
+```
+
+**En las cajas (scope=proyecto):** "Producto usa borrado lógico" (Laravel), "el pipeline corre a las 2am" (Python), "OrderService usa bloqueo optimista" (Spring). No le sirve a los otros.
+
+**En la repisa (scope=organizacion):** "nunca loguear tarjetas completas — nos marcó una auditoría", "el servidor de prod tiene 2GB, no cargar datasets enormes", "este cliente redondea a 2 decimales hacia arriba", "commits en español".
+
+**El momento clave:** una lección aprendida en el proyecto Laravel (subir a la repisa) **aparece** al arrancar el proyecto Python semanas después → **no repetís el error**, aunque sea otro stack.
+
+**Por qué funciona entre stacks distintos:** la repisa **no guarda código** — guarda **lecciones, decisiones, reglas del cliente y preferencias**, que **no dependen del lenguaje**. "No loguear tarjetas" vale igual en Laravel, Python o Spring.
+
+**Sin repisa (archivo por proyecto):** la lección queda atrapada en un proyecto; los otros **tropiezan con la misma piedra**.
+
+Por eso, para muchos proyectos, **una DB central con `scope`** (no una por proyecto) es lo que habilita la memoria **entre proyectos**. Coincide con el agente centralizado: el agente es único, su memoria también.
+
 ## Memoria vs reglas (no se reemplazan)
 
 Fácil de confundir, pero son cosas distintas que **conviven**:
