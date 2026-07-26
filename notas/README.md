@@ -14,6 +14,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 - [memoria-buscable-fts5.md](memoria-buscable-fts5.md) — backend opcional SQLite+FTS5 para hacer buscables las señales (esquema y consultas listos).
 - [subagentes-y-entorno.md](subagentes-y-entorno.md) — qué sub-agentes ofrece Claude Code y qué pendientes desbloquea (falta construir, no capacidad).
 - [velocidad-consistencia-calidad.md](velocidad-consistencia-calidad.md) — el estándar frente a los tres: consistencia y calidad de fábrica, velocidad con matiz.
+- [agente-24-7-y-tareas.md](agente-24-7-y-tareas.md) — automatización: 24/7, rutinas y cola de tareas, con el trade-off de seguridad.
 
 ## Hoja de ruta (pendientes, por orden sugerido)
 
