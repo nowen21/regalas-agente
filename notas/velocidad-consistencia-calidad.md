@@ -6,7 +6,7 @@
 |---|---|---|
 | **Consistencia** | ✅ **Su fuerza #1** | Toda sesión trabaja igual: mismas reglas (`00`–`16`), la spec evita que cada charla reinterprete el negocio, la memoria conserva las decisiones. Mismo resultado con distinto día, proyecto o modelo. |
 | **Calidad** | ✅ **Fuerte** | Pruebas + triangulación (`08`, `T7`), calidad de código (`07`), seguridad (`04`), trazabilidad (`13`·DOC3), atributos ISO 25010 (`16`), puertas de calidad. |
-| **Velocidad** | ⚠️ **Matizado** | No optimiza el **primer borrador**; agrega fricción a propósito (spec antes de código, aprobar plan, correr pruebas, documentar). |
+| **Velocidad** | ⚠️ **Matizado** | Sacrifica el **arranque** (spec, plan, pruebas) por el **neto** — más lento en lo trivial, más rápido en la vida del proyecto. La **velocidad cruda** la habilita el orquestador en paralelo (ya construido; la ejecuta el entorno). |
 
 ## El matiz de la velocidad
 
