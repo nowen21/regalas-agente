@@ -1,6 +1,7 @@
+{% load visor_extras %}
 <div class="mb-2">
   <span class="fw-bold text-primary fs-5">{{ s.id }}</span>
-  <span class="badge text-bg-secondary">{{ s.tipo }}</span>
+  <span class="badge {{ s.tipo|color_tipo }}">{{ s.tipo }}</span>
   <span class="badge text-bg-light border">{{ s.scope }}</span>
   {% if s.estado == 'activa' %}<span class="badge text-bg-success">activa</span>{% else %}<span class="badge text-bg-danger">{{ s.estado }}</span>{% endif %}
 </div>

@@ -8,4 +8,5 @@ urlpatterns = [
     path('memoria/', views.memoria, name='memoria'),
     path('memoria/senal/', views.senal_detalle, name='senal_detalle'),
     path('memoria/crear/', views.crear_senal, name='crear_senal'),
+    path('memoria/export/', views.export_senales, name='export_senales'),
 ]

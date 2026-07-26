@@ -8,7 +8,10 @@
     Se crea con <code>python memoria/memoria.py init</code>.
   </div></div>
 {% else %}
-  <div class="d-flex justify-content-end mb-2">
+  <div class="d-flex justify-content-end gap-2 mb-2">
+    <button class="btn btn-sm btn-outline-secondary" id="btn-export" title="Exportar lo filtrado a CSV">
+      <i class="bi bi-download"></i> Exportar CSV
+    </button>
     <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
       <i class="bi bi-plus-lg"></i> Registrar señal
     </button>
@@ -119,11 +122,13 @@
   const cont = document.getElementById('resultados');
   const q = document.getElementById('q');
   let timer = null, ultimo = 0;
+  let estadoOrden = { orden: '{{ orden|default_if_none:"" }}', dir: '{{ direccion|default:"" }}' };
 
   function params(extra) {
     const p = new URLSearchParams();
     const fd = new FormData(form);
     for (const [k, v] of fd.entries()) if (String(v).trim()) p.set(k, v);
+    if (estadoOrden.orden) { p.set('orden', estadoOrden.orden); p.set('dir', estadoOrden.dir || 'asc'); }
     if (extra) for (const k in extra) p.set(k, extra[k]);
     return p;
   }
@@ -146,6 +151,14 @@
   cont.addEventListener('click', async (e) => {
     const a = e.target.closest('a.page-link');
     if (a) { e.preventDefault(); const u = new URL(a.getAttribute('href'), location.origin); actualizar({ pag: u.searchParams.get('pag') || '1' }); return; }
+    const th = e.target.closest('a.th-sort');
+    if (th) {
+      e.preventDefault();
+      const col = th.dataset.orden;
+      if (estadoOrden.orden === col) estadoOrden.dir = (estadoOrden.dir === 'asc' ? 'desc' : 'asc');
+      else { estadoOrden.orden = col; estadoOrden.dir = 'asc'; }
+      actualizar(); return;
+    }
     const tr = e.target.closest('tr[data-id]');
     if (tr) {
       const cuerpo = document.getElementById('detalle-cuerpo');
@@ -172,6 +185,9 @@
       await actualizar();
     } finally { btn.disabled = false; }
   });
+
+  const btnExport = document.getElementById('btn-export');
+  if (btnExport) btnExport.addEventListener('click', () => { window.location = '/memoria/export/?' + params().toString(); });
 })();
 </script>
 {% endif %}

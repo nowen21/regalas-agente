@@ -1,16 +1,26 @@
+{% load visor_extras %}
 <p class="text-body-secondary small mb-2">{{ total }} señal(es){% if total %} · mostrando {{ desde }}–{{ hasta }} · página {{ pagina }} de {{ paginas }}{% endif %}</p>
 
 <div class="card">
   <div class="table-responsive">
     <table class="table table-hover table-sm align-middle mb-0">
       <thead class="table-light">
-        <tr><th style="width:6rem">ID</th><th>Tipo</th><th>Scope</th><th>Estado</th><th>Señal</th></tr>
+        <tr>
+          {% for col, etq, w in cols %}
+          <th {% if w %}style="width:{{ w }}"{% endif %}>
+            <a href="#" class="th-sort text-reset text-decoration-none" data-orden="{{ col }}">
+              {{ etq }}{% if orden == col %} <i class="bi bi-caret-{% if direccion == 'asc' %}up{% else %}down{% endif %}-fill small"></i>{% endif %}
+            </a>
+          </th>
+          {% endfor %}
+          <th>Señal</th>
+        </tr>
       </thead>
       <tbody>
         {% for r in filas %}
         <tr data-id="{{ r.id }}" role="button" style="cursor:pointer" title="Ver detalle">
           <td class="fw-bold text-primary">{{ r.id }}</td>
-          <td><span class="badge text-bg-secondary">{{ r.tipo }}</span></td>
+          <td><span class="badge {{ r.tipo|color_tipo }}">{{ r.tipo }}</span></td>
           <td><span class="badge text-bg-light border">{{ r.scope }}</span></td>
           <td>{% if r.estado == 'activa' %}<span class="badge text-bg-success">activa</span>{% else %}<span class="badge text-bg-danger">{{ r.estado }}</span>{% endif %}</td>
           <td>

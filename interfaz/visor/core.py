@@ -114,9 +114,11 @@ def _fts_query(q):
     toks = re.findall(r'\w+', q, re.UNICODE)
     return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
 
-def consultar_senales(q, scope, tipo, pagina=1, por_pagina=10):
-    """Devuelve una PÁGINA de señales (no todas): {filas, total, pagina, por_pagina}.
-    Pagina a nivel SQL (LIMIT/OFFSET) para no cargar todo cuando hay muchas."""
+_COLS_ORDEN = {'id', 'tipo', 'scope', 'estado', 'creada', 'titulo'}
+
+def consultar_senales(q, scope, tipo, pagina=1, por_pagina=10, orden=None, direccion='desc'):
+    """Devuelve una PÁGINA de señales (no todas): {filas, total, pagina, por_pagina, orden, direccion}.
+    Pagina a nivel SQL (LIMIT/OFFSET). `orden` opcional (columna) con `direccion` asc/desc."""
     if not os.path.exists(DB):
         return None
     con = _con(); con.row_factory = sqlite3.Row
@@ -124,22 +126,28 @@ def consultar_senales(q, scope, tipo, pagina=1, por_pagina=10):
         fts = _fts_query(q) if q else None
         if fts:
             desde = "FROM senales_fts f JOIN senales s ON s.rowid=f.rowid WHERE senales_fts MATCH ?"
-            params = [fts]; pfx = "s."; order = " ORDER BY bm25(senales_fts)"; sel = "SELECT s.*"
+            params = [fts]; pfx = "s."; sel = "SELECT s.*"; defecto = " ORDER BY bm25(senales_fts)"
         else:
-            desde = "FROM senales WHERE 1=1"; params = []; pfx = ""; order = " ORDER BY rowid DESC"; sel = "SELECT *"
+            desde = "FROM senales WHERE 1=1"; params = []; pfx = ""; sel = "SELECT *"; defecto = " ORDER BY rowid DESC"
         if scope:
             desde += " AND %sscope = ?" % pfx; params.append(scope)   # exacto: evita que 'organizacion' traiga 'organizacion-beta'
         if tipo:
             desde += " AND %stipo = ?" % pfx; params.append(tipo)
+        if orden in _COLS_ORDEN:
+            d = 'ASC' if direccion == 'asc' else 'DESC'
+            order = " ORDER BY %s%s %s" % (pfx, orden, d)
+        else:
+            orden = None; order = defecto
         total = con.execute("SELECT COUNT(*) " + desde, params).fetchone()[0]
         paginas = max(1, -(-total // por_pagina))     # techo de total/por_pagina
         pagina = min(max(1, pagina), paginas)          # clamp antes de consultar
         offset = (pagina - 1) * por_pagina
         filas = [dict(r) for r in con.execute(sel + " " + desde + order + " LIMIT ? OFFSET ?",
                                               params + [por_pagina, offset]).fetchall()]
-        return {'filas': filas, 'total': total, 'pagina': pagina, 'por_pagina': por_pagina}
+        return {'filas': filas, 'total': total, 'pagina': pagina, 'por_pagina': por_pagina,
+                'orden': orden, 'direccion': direccion if orden else ''}
     except sqlite3.OperationalError:
-        return {'filas': [], 'total': 0, 'pagina': pagina, 'por_pagina': por_pagina}
+        return {'filas': [], 'total': 0, 'pagina': pagina, 'por_pagina': por_pagina, 'orden': None, 'direccion': ''}
     finally:
         con.close()
 

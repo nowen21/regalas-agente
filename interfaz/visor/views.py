@@ -1,7 +1,8 @@
 import os, json, math
 from urllib.parse import urlencode
 from django.shortcuts import render
-from django.http import Http404, JsonResponse
+import csv
+from django.http import Http404, JsonResponse, HttpResponse
 from django.utils.safestring import mark_safe
 from django.views.decorators.csrf import csrf_exempt
 from . import core
@@ -23,6 +24,27 @@ def crear_senal(request):
     if err:
         return JsonResponse({'ok': False, 'error': err}, status=400)
     return JsonResponse({'ok': True, 'id': sid})
+
+
+def export_senales(request):
+    q = request.GET.get('q', '').strip()
+    scope = request.GET.get('scope', '').strip()
+    tipo = request.GET.get('tipo', '').strip()
+    orden = request.GET.get('orden', '').strip()
+    direccion = request.GET.get('dir', 'desc').strip()
+    res = core.consultar_senales(q, scope, tipo, pagina=1, por_pagina=10 ** 9,
+                                 orden=orden or None, direccion=direccion)
+    resp = HttpResponse(content_type='text/csv; charset=utf-8')
+    resp['Content-Disposition'] = 'attachment; filename="senales.csv"'
+    resp.write('﻿')  # BOM para que Excel abra los acentos bien
+    w = csv.writer(resp)
+    w.writerow(['id', 'tipo', 'scope', 'estado', 'titulo', 'what', 'why', 'where', 'learned', 'reemplaza', 'creada', 'autor'])
+    if res:
+        for r in res['filas']:
+            w.writerow([r.get('id'), r.get('tipo'), r.get('scope'), r.get('estado'), r.get('titulo'),
+                        r.get('what'), r.get('why'), r.get('where_'), r.get('learned'),
+                        r.get('reemplaza'), r.get('creada'), r.get('autor')])
+    return resp
 
 
 def panel(request):
@@ -69,10 +91,14 @@ def memoria(request):
         pagina = int(request.GET.get('pag', '1'))
     except ValueError:
         pagina = 1
-    res = core.consultar_senales(q, scope, tipo, pagina=pagina)
+    orden = request.GET.get('orden', '').strip()
+    direccion = request.GET.get('dir', 'desc').strip()
+    res = core.consultar_senales(q, scope, tipo, pagina=pagina, orden=orden or None, direccion=direccion)
     sc, tp = core.scopes_y_tipos()
     ctx = {'q': q, 'scope': scope, 'tipo': tipo, 'scopes': sc, 'tipos': tp,
-           'tipos_todos': core.TIPOS, 'no_db': res is None, 'db': core.DB}
+           'tipos_todos': core.TIPOS, 'no_db': res is None, 'db': core.DB,
+           'orden': res['orden'] if res else None, 'direccion': res['direccion'] if res else '',
+           'cols': [('id', 'ID', '6rem'), ('tipo', 'Tipo', ''), ('scope', 'Scope', ''), ('estado', 'Estado', '')]}
     if res is not None:
         por = res['por_pagina']
         paginas = max(1, math.ceil(res['total'] / por))
@@ -85,8 +111,9 @@ def memoria(request):
             'prev': pag - 1, 'next': pag + 1,
             'tiene_prev': pag > 1, 'tiene_next': pag < paginas,
             'rango': range(max(1, pag - 2), min(paginas, pag + 2) + 1),
-            # querystring de filtros (sin 'pag') para los enlaces de página
-            'qs': urlencode({k: v for k, v in {'q': q, 'scope': scope, 'tipo': tipo}.items() if v}),
+            # querystring de filtros + orden (sin 'pag') para los enlaces de página
+            'qs': urlencode({k: v for k, v in {'q': q, 'scope': scope, 'tipo': tipo,
+                                               'orden': res['orden'] or '', 'dir': res['direccion']}.items() if v}),
         })
     # AJAX: solo la tabla (filtro dinámico, sin recargar la página)
     if request.GET.get('parcial') and res is not None:
