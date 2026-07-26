@@ -68,12 +68,15 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`plantillas/dominio.md`](plantillas/dominio.md) — qué hace el sistema, entidades y reglas de negocio
 - [`plantillas/mapeo-nombres.md`](plantillas/mapeo-nombres.md) — cómo se llaman aquí los conceptos abstractos de la base
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
+- [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md) — esqueleto para redactar la spec de un módulo (se copia por módulo a `documentacion/`)
+- [`plantillas/senales.md`](plantillas/senales.md) — log de señales (memoria: decisiones, errores resueltos, patrones, aprendizajes)
 
 ## Skills
 
 Herramientas activables que aplican el estándar:
 
-- [`analizar-proyecto`](skills/analizar-proyecto/SKILL.md) — diagnostica un proyecto existente: inventario (qué hay), brechas (qué falta), plan priorizado (qué sigue), estrategia de pruebas y tecnologías necesarias.
+- [`analizar-proyecto`](skills/analizar-proyecto/SKILL.md) — diagnostica un proyecto existente: inventario (qué hay), brechas (qué falta), plan priorizado (qué sigue), estrategia de pruebas y tecnologías necesarias. (rol Explorer)
+- [`cerrar-fase`](skills/cerrar-fase/SKILL.md) — valida antes de cerrar: pruebas + triangulación + calidad + trazabilidad spec→implementación. (rol Verifier)
 
 ## Estado
 
