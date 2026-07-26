@@ -130,7 +130,7 @@ Un `plan_trabajo` no es un documento de intenciones ni una aproximación — es 
 
 - Marcas de incertidumbre visibles: `(o donde esté)`, `(o similar)`, `(revisar)`, `(por confirmar)`, `TBD`, `?`, `~`.
 - Aproximaciones de ruta: "en algún archivo de tal carpeta" cuando puedes listar el directorio y saber la ruta exacta.
-- Nombres genéricos donde el nombre real existe: "el manager de X", "el servicio de Y", cuando el archivo ya tiene nombre concreto.
+- Nombres genéricos donde el nombre real existe: "el componente de X", "el servicio de Y", cuando el archivo ya tiene nombre concreto.
 - Alcance abierto: "y lo demás que aplique", "más lo necesario".
 
 **Cómo se construye la línea base (obligatorio antes de redactar el plan — etapa 3 del ciclo F4.2):**
