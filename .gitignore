@@ -11,3 +11,7 @@ memoria/senales.db
 
 # Base interna de Django del visor (no es data del usuario)
 interfaz/_visor.sqlite3
+
+# Compilados de Python
+__pycache__/
+*.pyc
