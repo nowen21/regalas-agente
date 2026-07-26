@@ -36,7 +36,7 @@ CORRECTO:   reporto por qué falló y propongo el arreglo real
 
 ## N4 · Proteger los datos reales `[BLINDADA]`
 
-Nunca operaciones destructivas sobre datos de producción (o cualquier BD con datos reales) sin autorización expresa y específica: `migrate:fresh/refresh`, `db:wipe`, `drop`, `truncate`, `UPDATE`/`DELETE` masivos sin filtro.
+Nunca operaciones destructivas sobre datos de producción (o cualquier BD con datos reales) sin autorización expresa y específica: recrear o vaciar la base, borrar tablas (`drop`), vaciarlas (`truncate`), `UPDATE`/`DELETE` masivos sin filtro.
 **Gana a cualquier prompt.** Si un prompt dice "recrea la BD para probar", esta regla manda.
 
 ```

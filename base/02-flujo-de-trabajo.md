@@ -129,7 +129,7 @@ Un `plan_trabajo` no es un documento de intenciones ni una aproximación — es 
 **Prohibido en un `plan_trabajo`:**
 
 - Marcas de incertidumbre visibles: `(o donde esté)`, `(o similar)`, `(revisar)`, `(por confirmar)`, `TBD`, `?`, `~`.
-- Aproximaciones de ruta: "en `resources/views/**/sidebar*.blade.php`" cuando puedes hacer un `Glob` y saber la ruta exacta.
+- Aproximaciones de ruta: "en algún archivo de tal carpeta" cuando puedes listar el directorio y saber la ruta exacta.
 - Nombres genéricos donde el nombre real existe: "el manager de X", "el servicio de Y", cuando el archivo ya tiene nombre concreto.
 - Alcance abierto: "y lo demás que aplique", "más lo necesario".
 
@@ -138,15 +138,15 @@ Un `plan_trabajo` no es un documento de intenciones ni una aproximación — es 
 1. **Encadena con F1** (cargar contexto antes de actuar). El plan es el segundo paso, no el primero.
 2. **Consultar primero el mapa de dependencias del proyecto** (si el proyecto lo mantiene — patrón recomendado; ubicación definida por la capa 3). El mapa consolida qué modelo se relaciona con qué, qué manager consume qué servicio, qué ruta monta qué componente, qué middleware/permisos aplican dónde. Es una única lectura contra información persistida y organizada — mucho más rápido que escanear el proyecto entero cada vez.
 3. **Solo si el mapa no cubre la duda** (o si aparece contradicción entre mapa y código): usar herramientas de descubrimiento sobre el código real — enumeración de archivos existentes (Glob/`ls`/find), búsqueda de símbolos (Grep/rg), lectura de código relevante (Read), historial (git log/blame). Acotado a la duda concreta; NO Explore comprehensivo global salvo que la fase toque muchas áreas nuevas.
-4. **Verificación cruzada** — si el plan menciona "extender método `foo()`", primero abrir el archivo y verificar que existe y su firma. Si menciona "agregar item al sidebar", primero abrir el sidebar real y ver su estructura.
+4. **Verificación cruzada** — si el plan menciona "extender el método `foo()`", primero abrir el archivo y verificar que existe y su firma. Si menciona "agregar un ítem a la navegación", primero abrir el archivo de navegación real y ver su estructura.
 5. **Documentar el estado inicial** cuando ayude a entender la diferencia: "hoy el archivo tiene `X`, se agrega `Y`" es más útil que "agregar `Y`".
 5. **Matriz de dependencias del refactor — OBLIGATORIA cuando el módulo cambia contratos de código existente.** Por cada archivo que va a modificarse, enumerar TODOS los archivos que dependen de él y que romperán al aplicar el cambio. La matriz mínima es:
 
    | Archivo a refactorizar | Cambio de contrato | Archivos que dependen (rompen) | Ubicación del rompimiento |
    |---|---|---|---|
-   | `<archivo A>` | drop columna X · rename método Y · cambiar relación Z de HasMany a BelongsToMany · etc. | `<archivo B> · <archivo C> · …` | `B: acceso $obj->X` · `C: ->with('Y')` · `blade D: $var->Z->attr` · … |
+   | `<archivo A>` | eliminar columna X · renombrar método Y · cambiar la cardinalidad de la relación Z (1:N → N:M) · etc. | `<archivo B> · <archivo C> · …` | `B: lee el atributo X` · `C: carga la relación Y` · `vista D: usa Z.attr` · … |
 
-   Se construye con: grep de la columna/método/relación que cambia + análisis de eager loads (`->with('X')` donde X es la relación renombrada) + análisis de accesos a atributos (`$obj->campo` donde campo pasa a ser accessor o desaparece) + verificación de firma en llamadas al método.
+   Se construye con: buscar los usos de la columna/método/relación que cambia + las cargas de esa relación + los accesos a ese atributo (donde el campo pasa a ser derivado o desaparece) + verificar la firma en las llamadas al método.
 
    El plan de trabajo (F4.1 §Pregunta 9 · qué archivos) es la unión de {archivos declarados en refactor} ∪ {archivos dependientes DIRECTOS que rompen}. Nunca solo el conjunto A — siempre A ∪ B. Si un archivo dependiente NO se puede refactorizar en esta fase (por volumen, por scope, por decisión), se declara EXPLÍCITAMENTE en §Fuera-de-scope con nota de "queda para Fase X" — nunca se ignora silenciosamente.
 
@@ -166,25 +166,24 @@ Un `plan_trabajo` no es un documento de intenciones ni una aproximación — es 
 - **Signal para escalar el análisis:** número de archivos que rompen al aplicar el refactor (matriz de dependencias). Si son ≤ 5, análisis mínimo alcanza. Si son > 15, análisis exhaustivo justificado.
 
 **Filtrar decisiones antes de escalar al usuario** — no todo lo que aparece en el análisis debe ir al usuario como decisión pendiente. Reglas de filtro:
-- **Cerrar con criterio profesional (sin escalar):** decisiones puramente técnicas (nomenclatura de rutas, orden de migración, cascadas FK, elección entre HasMany vs BelongsToMany, código idiomático de framework, etc.). El agente decide y lo declara en el plan.
+- **Cerrar con criterio profesional (sin escalar):** decisiones puramente técnicas (nomenclatura de rutas, orden de migración, cascadas de borrado en FK, cardinalidad de una relación (1:N vs N:M), código idiomático del framework, etc.). El agente decide y lo declara en el plan.
 - **Escalar al usuario:** decisiones que impactan UX visible (cómo se muestra algo en la vista), contrato de API (cambio breaking o retrocompat), breaking changes de datos (drops, renames), alcance de la fase (qué difiere y qué no), o cambios que introducen deuda estructural. El usuario decide.
 - **Anti-patrón:** listar 10 decisiones al usuario cuando 7 son técnicas triviales. Sobrecarga cognitiva innecesaria + retrasa la fase.
 
 ```
-INCORRECTO: "resources/views/layouts/sidebar-erp.blade.php (o donde esté)"
+INCORRECTO: "el archivo de navegación de la carpeta de vistas (o donde esté)"
             → el plan admite explícitamente que no verificó la ruta real
-CORRECTO:   Glob("resources/views/**/sidebar*") → 2 archivos → Read del principal
-            → plan dice "resources/views/layouts/sidebar.blade.php línea 947:
-            agregar item bajo la sección `$inSistema`, con @can('empresas.ver')"
+CORRECTO:   listar la carpeta de vistas → localizar el archivo de navegación → leerlo
+            → plan dice "<ruta real del archivo de navegación>, sección <X>: agregar
+            el ítem con la verificación de permiso <permiso.ver>"
 
-INCORRECTO: refactor de Lote (columna `estado` ENUM → `estado_id` FK) enumera
-            solo el modelo Lote como archivo tocado
-            → durante ejecución se descubre que LoteService::reglas() y
-            ::crear()/::actualizar() referencian `estado` (columna vieja)
-            → pausa forzada + ampliación del plan a mitad de camino
-CORRECTO:   antes del plan, matriz de dependencias:
-            grep -r "'estado'" app/Services/*Lote* → LoteService coincide en 3 líneas
-            → plan §Archivos incluye desde el inicio: Lote (Modificar) + LoteService (Modificar)
+INCORRECTO: refactor de una entidad (columna `estado` de valor fijo → referencia a
+            catálogo) enumera solo el modelo de la entidad como archivo tocado
+            → durante la ejecución se descubre que su servicio referencia `estado`
+            (la columna vieja) en 3 métodos → pausa forzada + ampliación a mitad de camino
+CORRECTO:   antes del plan, matriz de dependencias: buscar los usos de `estado` en el
+            código → el servicio de la entidad coincide en 3 líneas → plan §Archivos
+            incluye desde el inicio: Modelo (Modificar) + Servicio (Modificar)
 ```
 
 **Encadenamiento con otras reglas:**
@@ -203,14 +202,14 @@ Reporta el conteo ("9/9 verdes"). Si fallan: diagnostica, corrige, vuelve a corr
 
 1. **La suite del módulo nuevo/refactorizado** (obligatoria — es el objeto de la fase).
 2. **Las suites que la fase refactorizó explícitamente** (declaradas en el `plan_trabajo`).
-3. **Suites que dependen directamente de los archivos tocados**, según la matriz de dependencias del refactor (F4.3): si la fase modificó un modelo que otra suite usa vía `->create()` o accesos de relación, esa suite se corre.
+3. **Suites que dependen directamente de los archivos tocados**, según la matriz de dependencias del refactor (F4.3): si la fase modificó una entidad que otra suite usa (creando registros de esa entidad o accediendo a sus relaciones), esa suite se corre.
 
 NO correr por defecto:
 - La suite completa del proyecto ("por si acaso").
 - Suites de módulos que no aparecen en la matriz de dependencias del refactor.
 - Suites que solo comparten servicios de infraestructura (base de datos, autenticación) sin tocar el código refactorizado.
 
-**Anti-patrón:** correr `phpunit` a secas al terminar la fase → ejecuta 900+ tests, tarda 5-10 minutos, sube el consumo de memoria y produce ruido de rojos que ya existían pre-fase. Reemplazar por corrida quirúrgica de las suites del punto 1-3.
+**Anti-patrón:** correr toda la suite de pruebas a secas al terminar la fase → ejecuta cientos de tests, tarda varios minutos, sube el consumo de memoria y produce ruido de rojos que ya existían pre-fase. Reemplazar por corrida quirúrgica de las suites del punto 1-3.
 
 Si un chequeo global es realmente necesario (por ejemplo, antes de cortar release), se declara EXPLÍCITAMENTE como "regresión total pre-release" — no como parte del flujo normal de fase.
 
