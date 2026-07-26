@@ -1,9 +1,28 @@
 import os, json, math
 from urllib.parse import urlencode
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.utils.safestring import mark_safe
+from django.views.decorators.csrf import csrf_exempt
 from . import core
+
+
+def senal_detalle(request):
+    s = core.get_senal(request.GET.get('id', ''))
+    if not s:
+        raise Http404('Señal no encontrada')
+    return render(request, 'visor/_senal_detalle.html', {'s': s})
+
+
+@csrf_exempt
+def crear_senal(request):
+    if request.method != 'POST':
+        return JsonResponse({'ok': False, 'error': 'Método no permitido'}, status=405)
+    campos = ['tipo', 'titulo', 'what', 'why', 'where', 'learned', 'scope', 'autor', 'reemplaza']
+    sid, err = core.registrar_senal({k: request.POST.get(k, '') for k in campos})
+    if err:
+        return JsonResponse({'ok': False, 'error': err}, status=400)
+    return JsonResponse({'ok': True, 'id': sid})
 
 
 def panel(request):
@@ -53,7 +72,7 @@ def memoria(request):
     res = core.consultar_senales(q, scope, tipo, pagina=pagina)
     sc, tp = core.scopes_y_tipos()
     ctx = {'q': q, 'scope': scope, 'tipo': tipo, 'scopes': sc, 'tipos': tp,
-           'no_db': res is None, 'db': core.DB}
+           'tipos_todos': core.TIPOS, 'no_db': res is None, 'db': core.DB}
     if res is not None:
         por = res['por_pagina']
         paginas = max(1, math.ceil(res['total'] / por))

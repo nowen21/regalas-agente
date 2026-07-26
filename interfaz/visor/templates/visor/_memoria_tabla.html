@@ -8,7 +8,7 @@
       </thead>
       <tbody>
         {% for r in filas %}
-        <tr>
+        <tr data-id="{{ r.id }}" role="button" style="cursor:pointer" title="Ver detalle">
           <td class="fw-bold text-primary">{{ r.id }}</td>
           <td><span class="badge text-bg-secondary">{{ r.tipo }}</span></td>
           <td><span class="badge text-bg-light border">{{ r.scope }}</span></td>

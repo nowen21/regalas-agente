@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Lógica del visor: leer los documentos del estándar y consultar la memoria."""
-import os, re, html, sqlite3
+import os, re, html, sqlite3, datetime
+
+TIPOS = ["decision", "error-resuelto", "patron", "aprendizaje", "alternativa-descartada",
+         "supuesto", "restriccion", "pregunta-abierta", "gotcha", "deuda-tecnica"]
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DB = os.environ.get("MEMORIA_DB", os.path.join(RAIZ, "memoria", "senales.db"))
@@ -139,6 +142,47 @@ def consultar_senales(q, scope, tipo, pagina=1, por_pagina=10):
         return {'filas': [], 'total': 0, 'pagina': pagina, 'por_pagina': por_pagina}
     finally:
         con.close()
+
+def get_senal(sid):
+    if not os.path.exists(DB):
+        return None
+    con = _con(); con.row_factory = sqlite3.Row
+    try:
+        r = con.execute("SELECT * FROM senales WHERE id = ?", (sid,)).fetchone()
+        return dict(r) if r else None
+    except sqlite3.OperationalError:
+        return None
+    finally:
+        con.close()
+
+
+def registrar_senal(d):
+    """Inserta una señal nueva. d: dict con tipo, titulo, what, why, where, learned,
+    scope, autor, reemplaza. Devuelve (id, None) o (None, 'error')."""
+    if d.get('tipo') not in TIPOS:
+        return None, 'Tipo inválido.'
+    if not (d.get('titulo') or '').strip():
+        return None, 'Falta el título.'
+    con = sqlite3.connect(DB); con.row_factory = sqlite3.Row  # conexión de ESCRITURA (no read-only)
+    try:
+        r = con.execute("SELECT id FROM senales ORDER BY rowid DESC LIMIT 1").fetchone()
+        n = (int(r['id'].split('-')[1]) + 1) if r else 1
+        sid = 'S-%03d' % n
+        con.execute(
+            "INSERT INTO senales(id,tipo,titulo,what,why,where_,learned,scope,estado,reemplaza,creada,autor)"
+            " VALUES(?,?,?,?,?,?,?,?, 'activa', ?, ?, ?)",
+            (sid, d['tipo'], d['titulo'].strip(), d.get('what', ''), d.get('why', ''),
+             d.get('where', ''), d.get('learned', ''), (d.get('scope') or 'proyecto').strip(),
+             d.get('reemplaza') or None, datetime.date.today().isoformat(), (d.get('autor') or 'visor').strip()))
+        if d.get('reemplaza'):
+            con.execute("UPDATE senales SET estado='reemplazada' WHERE id=?", (d['reemplaza'],))
+        con.commit()
+        return sid, None
+    except sqlite3.Error as e:
+        return None, str(e)
+    finally:
+        con.close()
+
 
 def scopes_y_tipos():
     if not os.path.exists(DB):

@@ -8,6 +8,12 @@
     Se crea con <code>python memoria/memoria.py init</code>.
   </div></div>
 {% else %}
+  <div class="d-flex justify-content-end mb-2">
+    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
+      <i class="bi bi-plus-lg"></i> Registrar señal
+    </button>
+  </div>
+
   <form id="filtros" class="row g-2 mb-3" onsubmit="return false">
     <div class="col-md-5">
       <div class="input-group">
@@ -35,6 +41,73 @@
   <div id="resultados">
     {% include "visor/_memoria_tabla.html" %}
   </div>
+
+  <!-- Modal: detalle -->
+  <div class="modal fade" id="modalDetalle" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Detalle de la señal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body" id="detalle-cuerpo"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: registrar -->
+  <div class="modal fade" id="modalCrear" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <form id="form-crear" class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Registrar señal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body">
+          <div class="row g-2">
+            <div class="col-md-4">
+              <label class="form-label small mb-1">Tipo *</label>
+              <select class="form-select form-select-sm" name="tipo" required>
+                {% for t in tipos_todos %}<option>{{ t }}</option>{% endfor %}
+              </select>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label small mb-1">Scope *</label>
+              <input class="form-control form-control-sm" name="scope" value="proyecto:" placeholder="proyecto:mi-app · organizacion · modulo:x" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label small mb-1">Título *</label>
+              <input class="form-control form-control-sm" name="titulo" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label small mb-1">Qué</label>
+              <textarea class="form-control form-control-sm" name="what" rows="2"></textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label small mb-1">Por qué</label>
+              <textarea class="form-control form-control-sm" name="why" rows="2"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-1">Dónde (archivo:línea o área)</label>
+              <input class="form-control form-control-sm" name="where">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-1">Reemplaza a (id, opcional)</label>
+              <input class="form-control form-control-sm" name="reemplaza" placeholder="S-000">
+            </div>
+            <div class="col-12">
+              <label class="form-label small mb-1">Lección</label>
+              <textarea class="form-control form-control-sm" name="learned" rows="2"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-1">Autor</label>
+              <input class="form-control form-control-sm" name="autor" value="usuario">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar señal</button>
+        </div>
+      </form>
+    </div>
+  </div>
 {% endif %}
 {% endblock %}
 
@@ -58,24 +131,46 @@
   async function actualizar(extra) {
     const p = params(extra);
     const url = '/memoria/?' + p.toString();
-    const token = ++ultimo;                       // evita que una respuesta vieja pise a una nueva
+    const token = ++ultimo;
     const r = await fetch(url + (p.toString() ? '&' : '') + 'parcial=1');
     const html = await r.text();
     if (token !== ultimo) return;
     cont.innerHTML = html;
-    history.replaceState(null, '', url);          // URL compartible (sin parcial)
+    history.replaceState(null, '', url);
   }
+  window._actualizarMemoria = actualizar;
 
   q.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => actualizar(), 300); });
   form.querySelectorAll('select').forEach(s => s.addEventListener('change', () => actualizar()));
 
-  // paginación (delegada, porque el contenido se reemplaza)
-  cont.addEventListener('click', (e) => {
+  cont.addEventListener('click', async (e) => {
     const a = e.target.closest('a.page-link');
-    if (!a) return;
+    if (a) { e.preventDefault(); const u = new URL(a.getAttribute('href'), location.origin); actualizar({ pag: u.searchParams.get('pag') || '1' }); return; }
+    const tr = e.target.closest('tr[data-id]');
+    if (tr) {
+      const cuerpo = document.getElementById('detalle-cuerpo');
+      cuerpo.innerHTML = '<div class="text-body-secondary">Cargando…</div>';
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetalle')).show();
+      const r = await fetch('/memoria/senal/?id=' + encodeURIComponent(tr.dataset.id));
+      cuerpo.innerHTML = r.ok ? await r.text() : '<div class="text-danger">No se pudo cargar.</div>';
+    }
+  });
+
+  const formCrear = document.getElementById('form-crear');
+  formCrear.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const u = new URL(a.getAttribute('href'), location.origin);
-    actualizar({ pag: u.searchParams.get('pag') || '1' });
+    const btn = formCrear.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try {
+      const r = await fetch('/memoria/crear/', { method: 'POST', body: new FormData(formCrear) });
+      const j = await r.json();
+      if (!j.ok) { alert('No se pudo registrar: ' + j.error); return; }
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCrear')).hide();
+      formCrear.reset();
+      formCrear.querySelector('[name=scope]').value = 'proyecto:';
+      formCrear.querySelector('[name=autor]').value = 'usuario';
+      await actualizar();
+    } finally { btn.disabled = false; }
   });
 })();
 </script>

@@ -7,7 +7,7 @@ Es una herramienta compañera, no parte del estándar agnóstico. Corre en tu m�
 ## Requisitos
 
 - Python 3.11+ y Django 5 (`pip install -r requirements.txt`).
-- Conexión a internet la primera vez (Bootstrap y AdminLTE se cargan por CDN).
+- **Funciona sin internet:** Bootstrap 5, AdminLTE 4, los iconos y Chart.js están incluidos en `visor/static/vendor/`.
 
 ## Cómo se corre
 
@@ -23,7 +23,8 @@ Luego abrir **http://127.0.0.1:8000** en el navegador.
 
 - **Inicio** — resumen (cuántas reglas, roles, plantillas, notas y señales hay).
 - **Menú izquierdo** — las reglas base, los roles/skills, las plantillas y las notas, renderizadas.
-- **Memoria** — las señales guardadas, con **búsqueda por palabra** (FTS5) y **filtro por scope y tipo**.
+- **Memoria** — tabla paginada de señales, con **filtro dinámico** (búsqueda por palabra FTS5 + scope + tipo, sin botón), **detalle** al hacer clic en una fila, y **registro** de señales nuevas desde la web.
+- **Modo oscuro** — botón en la barra superior (se recuerda).
 
 ## Notas
 

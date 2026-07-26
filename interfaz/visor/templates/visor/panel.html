@@ -1,4 +1,5 @@
 {% extends "visor/base.html" %}
+{% load static %}
 {% block titulo %}Panel de memoria — visor{% endblock %}
 {% block encabezado %}Panel de memoria{% endblock %}
 {% block contenido %}
@@ -71,7 +72,7 @@
 
 {% block extra_js %}
 {% if r and not r.vacia %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{% static 'vendor/chartjs/chart.umd.min.js' %}"></script>
 <script>
 const PAL = ['#3554a5','#1e7a33','#b02a2a','#0e6b7b','#c98a00','#6a4fb0','#3fb0c1','#888','#d16a2a','#4a7a1e'];
 new Chart(document.getElementById('chTipos'), {

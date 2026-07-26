@@ -1,0 +1,15 @@
+<div class="mb-2">
+  <span class="fw-bold text-primary fs-5">{{ s.id }}</span>
+  <span class="badge text-bg-secondary">{{ s.tipo }}</span>
+  <span class="badge text-bg-light border">{{ s.scope }}</span>
+  {% if s.estado == 'activa' %}<span class="badge text-bg-success">activa</span>{% else %}<span class="badge text-bg-danger">{{ s.estado }}</span>{% endif %}
+</div>
+<h5>{{ s.titulo }}</h5>
+<dl class="row mb-0 small mt-3">
+  {% if s.what %}<dt class="col-sm-3 text-body-secondary">Qué</dt><dd class="col-sm-9">{{ s.what }}</dd>{% endif %}
+  {% if s.why %}<dt class="col-sm-3 text-body-secondary">Por qué</dt><dd class="col-sm-9">{{ s.why }}</dd>{% endif %}
+  {% if s.where_ %}<dt class="col-sm-3 text-body-secondary">Dónde</dt><dd class="col-sm-9">{{ s.where_ }}</dd>{% endif %}
+  {% if s.learned %}<dt class="col-sm-3 text-body-secondary">Lección</dt><dd class="col-sm-9">{{ s.learned }}</dd>{% endif %}
+  {% if s.reemplaza %}<dt class="col-sm-3 text-body-secondary">Reemplaza a</dt><dd class="col-sm-9">{{ s.reemplaza }}</dd>{% endif %}
+  <dt class="col-sm-3 text-body-secondary">Registrada</dt><dd class="col-sm-9">{{ s.creada }} · {{ s.autor }}</dd>
+</dl>
