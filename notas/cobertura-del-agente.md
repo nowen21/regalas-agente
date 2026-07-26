@@ -34,6 +34,7 @@
 - ⏳ **Orquestación con sub-agentes en paralelo**: depende de las capacidades del entorno (workflows / sub-agentes de Claude Code), no solo del estándar.
 - ✅ **Skill `cerrar-fase`** (rol Verifier): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
 - ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
+- ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
 - ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), y los roles proposer / designer / task planner / implementer.
 - ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md` — esqueleto para redactar la spec de cualquier módulo.
 - ⏳ **Roles especializados** (explorer, proposer, spec writer, designer, task planner, implementer, verifier): las responsabilidades están como reglas, pero los roles como actores separados no existen. Ver [`roles-especializados.md`](roles-especializados.md).

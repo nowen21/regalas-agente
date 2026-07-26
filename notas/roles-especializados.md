@@ -63,6 +63,25 @@ Regla de oro: **nada avanza a la estación siguiente si no pasa la puerta de la 
 - **Reglas base:** `08` (pruebas) + `08` T7 (triangulación), `13` DOC3 (trazabilidad), `07` (calidad), `04` (seguridad).
 - **Puerta final:** ¿pruebas verdes + trazabilidad sin faltantes? Solo entonces se cierra.
 
+## Roles adicionales (más allá de los 7)
+
+Los 7 cubren el flujo completo. Para un set serio se suman:
+
+**Esencial (el director):**
+- **Orchestrator / Coordinador** — no es un obrero; **maneja la línea**: llama a cada rol en orden, controla las puertas/checkpoints, persiste el estado. Sin él, los 7 existen pero nadie los coordina. (pendiente `sdd-orchestrator`)
+
+**Alto valor:**
+- **Reviewer / Crítico** — revisión **adversarial e independiente**: intenta *refutar*, busca bugs y agujeros de seguridad. Distinto del Verifier (que comprueba **conformidad con la spec**); el Crítico pregunta "¿qué puede salir mal?".
+
+**Opcionales (se pueden plegar):**
+- **Documenter / Scribe** — mantiene la memoria por señales al día; puede ir integrado al flujo.
+- **Researcher** — mira **hacia afuera**: docs, mejores prácticas, evaluar librerías (el Explorer mira adentro).
+- **Deployer** — pasos de despliegue (etapa 11); es una etapa más que un rol permanente.
+
+**Se pliegan en existentes:** seguridad → Reviewer/Verifier · debugger/refactorer → Implementer.
+
+**Set mínimo serio = los 7 + Orchestrator + Reviewer/Crítico.** Los 7 hacen el trabajo, el Orchestrator los dirige, el Crítico da la segunda mirada independiente.
+
 ## Cómo se relaciona con lo pendiente
 
 - Estos roles son **skills** que hoy no existen (salvo el Explorer ≈ `analizar-proyecto`).
