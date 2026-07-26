@@ -81,6 +81,26 @@ Hay tres niveles, de más simple a más potente:
 
 > MCP = Model Context Protocol: el mecanismo para conectarle al agente herramientas o servidores externos. El estándar no lo exige; es una opción de backend para la memoria entre proyectos.
 
+## Memoria vs reglas (no se reemplazan)
+
+Fácil de confundir, pero son cosas distintas que **conviven**:
+
+| | `reglas-proyecto.md` | Memoria (señales) |
+|---|---|---|
+| **Qué es** | Reglas propias del proyecto | Historia: decisiones, errores resueltos, gotchas, aprendizajes |
+| **Naturaleza** | Obligación ("siempre hacé X") | Conocimiento ("decidimos X porque Y") |
+| **Cuándo aplica** | **Siempre** — cargada en cada sesión | **Cuando es relevante** — se busca y se trae |
+| **Tipo** | Prescriptiva (manda) | Descriptiva (informa) |
+
+**Por qué la memoria NO reemplaza a las reglas:** una regla debe aplicarse **siempre**; si se vuelve "buscable" (solo aparece si la consulta coincide), una regla no recuperada es una regla **incumplida** (ej. "todo endpoint va con HTTPS" no puede depender de que alguien busque "https"). La memoria es distinto: traer solo la porción relevante está bien; no recuperar una señal vieja no es grave.
+
+```
+Siempre cargado (obligaciones):  base/00–16 + .agente/reglas-proyecto.md
+Se consulta cuando sirve (saber): memoria de señales (archivo hoy, buscable mañana)
+```
+
+Una dice "hacelo así"; la otra dice "ojo, esto ya lo vivimos". Se necesitan las dos.
+
 ## Relación con el resto
 
 - Es el **diseño concreto** de la "memoria institucional" (hoy `✅` dentro del proyecto, `⏳` entre proyectos) — ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
