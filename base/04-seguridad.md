@@ -41,8 +41,8 @@ CORRECTO:   escapar la salida al renderizar (XSS)
 INCORRECTO: "SELECT * FROM users WHERE email = '" + input + "'"
 CORRECTO:   consulta parametrizada con el input como parámetro
 
-INCORRECTO: Modelo::create(request.all())
-CORRECTO:   asignar solo los campos permitidos
+INCORRECTO: crear el registro volcando todo el payload de la petición
+CORRECTO:   asignar solo los campos permitidos explícitamente
 ```
 
 ## S4 · Gestión de secretos

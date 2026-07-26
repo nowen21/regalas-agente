@@ -46,15 +46,21 @@ Los pasos de despliegue (cambios de esquema, datos base, permisos, comandos post
 
 ## DOC5 · Registrar señales (memoria) — *opt-in*
 
-Guardar las **señales** de alto valor que **no se pueden recuperar del código** en un log versionado (`documentacion/senales.md`, plantilla `plantillas/senales.md`). Una señal = **what / why / where / learned** + un **tipo**: `decisión`, `error-resuelto`, `patrón`, `aprendizaje`, `alternativa-descartada`, `supuesto`, `restricción`, `pregunta-abierta`, `gotcha`, `deuda-técnica`.
+Guardar las **señales** de alto valor que **no se pueden recuperar del código**. Una señal = **what / why / where / learned** + un **tipo** (`decisión`, `error-resuelto`, `patrón`, `aprendizaje`, `alternativa-descartada`, `supuesto`, `restricción`, `pregunta-abierta`, `gotcha`, `deuda-técnica`) + un **scope** (a quién sirve: proyecto o toda la organización).
+
+**Dónde se guardan (backend — lo elige la capa 3, uno solo):**
+- **Archivo** `documentacion/senales.md` (versionado, simple) — plantilla `plantillas/senales.md`. Para pocas señales.
+- **Base central buscable** `memoria/` (SQLite+FTS5, con `scope`, buscable y compartida entre proyectos) — se opera con la skill `usar-memoria`; es data local, no se versiona. Para muchas señales.
+
+Guardan la **misma** señal; se elige por volumen (ver [`notas/memoria-por-senales.md`](../notas/memoria-por-senales.md)). **Opt-in**: se activa cuando la capa 3 declara el backend (el `CLAUDE.md` del proyecto).
 
 - **No borrar** una señal revertida: marcarla `reemplazada` y enlazar la nueva (rastro, como `## Decisiones` clásico).
 - **Verificar antes de confiar:** una señal vieja puede estar obsoleta (`01`·C2).
-- Es la defensa contra "la compactación mata decisiones": la señal vive en archivo, no en el chat.
+- Es la defensa contra "la compactación mata decisiones": la señal vive en la memoria, no en el chat.
 
 ```
 INCORRECTO: la decisión "elegimos X y no Y porque Z" queda solo en el chat → se pierde al compactar
-CORRECTO:   se registra como señal (decisión) en senales.md con what/why/where/learned
+CORRECTO:   se registra como señal (decisión) en la memoria con what/why/where/learned
 ```
 
 ---

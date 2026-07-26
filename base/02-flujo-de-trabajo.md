@@ -140,7 +140,7 @@ Un `plan_trabajo` no es un documento de intenciones ni una aproximación — es 
 3. **Solo si el mapa no cubre la duda** (o si aparece contradicción entre mapa y código): usar herramientas de descubrimiento sobre el código real — enumeración de archivos existentes (Glob/`ls`/find), búsqueda de símbolos (Grep/rg), lectura de código relevante (Read), historial (git log/blame). Acotado a la duda concreta; NO Explore comprehensivo global salvo que la fase toque muchas áreas nuevas.
 4. **Verificación cruzada** — si el plan menciona "extender el método `foo()`", primero abrir el archivo y verificar que existe y su firma. Si menciona "agregar un ítem a la navegación", primero abrir el archivo de navegación real y ver su estructura.
 5. **Documentar el estado inicial** cuando ayude a entender la diferencia: "hoy el archivo tiene `X`, se agrega `Y`" es más útil que "agregar `Y`".
-5. **Matriz de dependencias del refactor — OBLIGATORIA cuando el módulo cambia contratos de código existente.** Por cada archivo que va a modificarse, enumerar TODOS los archivos que dependen de él y que romperán al aplicar el cambio. La matriz mínima es:
+6. **Matriz de dependencias del refactor — OBLIGATORIA cuando el módulo cambia contratos de código existente.** Por cada archivo que va a modificarse, enumerar TODOS los archivos que dependen de él y que romperán al aplicar el cambio. La matriz mínima es:
 
    | Archivo a refactorizar | Cambio de contrato | Archivos que dependen (rompen) | Ubicación del rompimiento |
    |---|---|---|---|

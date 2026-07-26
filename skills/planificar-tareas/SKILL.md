@@ -29,7 +29,7 @@ Cada tarea deja sin ambigüedad (`02`·F4.3): **QUÉ** (acción concreta), **CÓ
 - Adjuntar el **plan de pruebas** (`02`·F4): escenarios + corner cases derivados y triangulación (`08`·T7).
 
 ### 5. Presentar para aprobación
-- Pausar y presentar `plan_trabajo` + `plan_pruebas` al usuario (`02`·F4, etapas 4-5).
+- Pausar y presentar `plan_trabajo` + `plan_pruebas` al usuario (`02`·F4.2, etapas 4-5).
 - **No tocar código** hasta el OK explícito.
 - Filtrar: cerrar las decisiones técnicas triviales con criterio; escalar solo las que impactan UX, contrato, datos o alcance (`02`·F4.3).
 

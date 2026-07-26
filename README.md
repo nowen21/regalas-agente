@@ -93,4 +93,4 @@ Herramientas activables que aplican el estándar:
 
 ## Estado
 
-**Base completa (00–16)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres` y `marco-normativo`. **Skills:** `analizar-proyecto`. Siguiente: la plantilla de spec de módulo (genérica) y la skill para generarla.
+**Base completa (00–16)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres`, `marco-normativo` y `plantilla-spec-modulo`. **10 skills** (los 8 roles de la línea de montaje + el `sdd-orchestrator` + `generar-casos-prueba`, más `usar-memoria`). **Memoria por señales** operativa (archivo o SQLite+FTS5). **Visor local** (Django + AdminLTE) para leer el estándar y la memoria. Pendiente: mejoras opcionales (búsqueda semántica de memoria, ejecución paralela en vivo, assets del visor offline).

@@ -54,8 +54,8 @@ Excepciones (cero hardcode ≠ cero literales): constantes técnicas (columnas, 
 INCORRECTO: if (saldo < 100000)                          // umbral quemado
 CORRECTO:   leer el umbral del catálogo
 
-INCORRECTO: 'modalidad' => 'required|in:efectivo,especie' // lista quemada
-CORRECTO:   validar contra los códigos del catálogo
+INCORRECTO: validar: modalidad ∈ {'efectivo','especie'}   // lista fija quemada en el código
+CORRECTO:   validar contra los códigos leídos del catálogo
 
 INCORRECTO: if (tipo_id === 3)                            // id opaco
 CORRECTO:   if (tipo_codigo === 'especie')               // código semántico

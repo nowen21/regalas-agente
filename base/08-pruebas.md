@@ -73,7 +73,7 @@ Para la **lógica de negocio y los cálculos**, los casos de prueba no se eligen
 **Nunca** derivar el resultado esperado leyendo lo que el código produce hoy: eso solo prueba que el código hace lo que hace, no que sea correcto.
 
 ```
-INCORRECTO: assertEquals($factura->total, $resultado)   // el esperado sale del propio código
+INCORRECTO: comparar(resultado, entidad.total)          // el "esperado" sale del propio código
 CORRECTO:   esperado = cálculo manual (spec) Y propiedad (subtotal+iva); ambos coinciden → se prueba contra ese valor
 
 INCORRECTO: probar solo "el caso que se me ocurrió"

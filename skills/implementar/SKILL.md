@@ -10,7 +10,7 @@ Ejecuta un **plan aprobado**: escribe el código y sus pruebas. Requiere que el 
 ## Procedimiento (en orden)
 
 1. **Verificar aprobación:** el plan de trabajo + plan de pruebas están aprobados (`02`·F4). Si no, detenerse.
-2. **Ejecutar de corrido** (`02`·F3): implementar todos los cambios del plan sin pedir permiso por cada archivo. Pausar solo ante algo **no cubierto** por el plan (`02`·F4 excepción).
+2. **Ejecutar de corrido** (`02`·F3): implementar todos los cambios del plan sin pedir permiso por cada archivo. Pausar solo ante algo **no cubierto** por el plan (`02`·F3).
 3. **Aplicar las reglas base al codificar:**
    - Calidad: código legible, como el que lo rodea, funciones pequeñas, sin duplicar (`07`).
    - Datos, seguridad, errores, rendimiento según corresponda (`03`/`04`/`05`/`06`).
