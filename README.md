@@ -79,7 +79,10 @@ Herramientas activables que aplican el estándar:
 - [`cerrar-fase`](skills/cerrar-fase/SKILL.md) — valida antes de cerrar: pruebas + triangulación + calidad + trazabilidad spec→implementación. (rol Verifier)
 - [`generar-spec-modulo`](skills/generar-spec-modulo/SKILL.md) — redacta la spec de un módulo antes de programarlo, guiando la plantilla. (rol Spec Writer)
 - [`revisar-critico`](skills/revisar-critico/SKILL.md) — revisión adversarial: busca bugs, seguridad y casos que la spec no anticipó. (rol Reviewer/Crítico)
+- [`proponer-alcance`](skills/proponer-alcance/SKILL.md) — traduce una solicitud en un alcance concreto (dentro/fuera) para aprobar. (rol Proposer)
+- [`disenar-arquitectura`](skills/disenar-arquitectura/SKILL.md) — define el diseño técnico desde la spec: datos, estructura, decisiones. (rol Designer)
 - [`planificar-tareas`](skills/planificar-tareas/SKILL.md) — divide el trabajo en tareas con grafo de dependencias y plan de pruebas, para aprobación. (rol Task Planner)
+- [`implementar`](skills/implementar/SKILL.md) — ejecuta un plan aprobado: código + pruebas, de corrido. (rol Implementer)
 
 ## Estado
 

@@ -36,6 +36,7 @@
 - ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
 - ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
 - ✅ **Skill `planificar-tareas`** (rol Task Planner): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
+- ✅ **Skills `proponer-alcance` (Proposer), `disenar-arquitectura` (Designer), `implementar` (Implementer)**: completan los **7 roles obreros** de la línea de montaje.
 - ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), y los roles proposer / designer / task planner / implementer.
 - ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md` — esqueleto para redactar la spec de cualquier módulo.
 - ⏳ **Roles especializados** (explorer, proposer, spec writer, designer, task planner, implementer, verifier): las responsabilidades están como reglas, pero los roles como actores separados no existen. Ver [`roles-especializados.md`](roles-especializados.md).

@@ -22,7 +22,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 | ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Spec Writer) |
 | ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verifier) |
 | 4 | **Skill `generar-casos-prueba`** (matriz de corner cases) | Bajo-medio | `08`·T7 (ya está) | rol Verifier / Task Planner |
-| 5 | **Roles especializados como skills** (explorer ya ≈ `analizar-proyecto`) | Medio | — | [roles-especializados](roles-especializados.md) |
+| ~~5~~ | ~~**Roles especializados como skills**~~ | — | — | ✅ **Hechos** — los 7 obreros + Reviewer/Crítico (`skills/`) |
 | 6 | **Grafo de dependencias entre tareas** | Medio | rol Task Planner | [orquestador](orquestador-y-triangulacion.md) |
 | 7 | **SDD Orchestrator** (línea de montaje con puertas) | Medio-alto | roles + grafo | coordina todo |
 | 8 | **Orquestación con sub-agentes en paralelo** | — | ✅ disponible (workflows) — falta construir | [subagentes-y-entorno](subagentes-y-entorno.md) |
