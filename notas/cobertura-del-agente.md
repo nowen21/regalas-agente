@@ -35,10 +35,11 @@
 - ✅ **Skill `cerrar-fase`** (rol Verifier): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
 - ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
 - ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
+- ✅ **Skill `planificar-tareas`** (rol Task Planner): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
 - ⏳ **Skills aún no creadas**: `sdd-orchestrator`, `generar-casos-prueba` (matriz de corner cases), y los roles proposer / designer / task planner / implementer.
 - ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md` — esqueleto para redactar la spec de cualquier módulo.
 - ⏳ **Roles especializados** (explorer, proposer, spec writer, designer, task planner, implementer, verifier): las responsabilidades están como reglas, pero los roles como actores separados no existen. Ver [`roles-especializados.md`](roles-especializados.md).
-- ⏳ **Grafo de dependencias entre tareas**: hoy el flujo es lineal; falta que el Task Planner genere prerrequisitos y el orquestador ejecute en orden topológico y detecte tareas paralelizables. Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
+- ⚠️ **Grafo de dependencias entre tareas**: el Task Planner (`skills/planificar-tareas/`) ya lo **produce** (prerrequisitos, orden topológico, paralelizables, detección de ciclos). Falta que el **orquestador lo ejecute** (ordenar/paralelizar de verdad). Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
 - ⏳ **Aislamiento de contexto** (cada rol en su propio contexto), **checkpoints de calidad impuestos** (las puertas), y **memoria institucional entre proyectos**. Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
 
 > **Nota sobre sub-agentes:** el aislamiento de contexto, los roles como actores separados y la orquestación en paralelo **ya son posibles** — Claude Code provee sub-agentes con contexto aislado y workflows. No es falta de capacidad, sino de **construcción**. Ver [`subagentes-y-entorno.md`](subagentes-y-entorno.md).
