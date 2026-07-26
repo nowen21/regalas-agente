@@ -111,7 +111,7 @@ def _fts_query(q):
     toks = re.findall(r'\w+', q, re.UNICODE)
     return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
 
-def consultar_senales(q, scope, tipo, pagina=1, por_pagina=25):
+def consultar_senales(q, scope, tipo, pagina=1, por_pagina=10):
     """Devuelve una PÁGINA de señales (no todas): {filas, total, pagina, por_pagina}.
     Pagina a nivel SQL (LIMIT/OFFSET) para no cargar todo cuando hay muchas."""
     if not os.path.exists(DB):

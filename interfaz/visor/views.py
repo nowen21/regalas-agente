@@ -69,4 +69,7 @@ def memoria(request):
             # querystring de filtros (sin 'pag') para los enlaces de página
             'qs': urlencode({k: v for k, v in {'q': q, 'scope': scope, 'tipo': tipo}.items() if v}),
         })
+    # AJAX: solo la tabla (filtro dinámico, sin recargar la página)
+    if request.GET.get('parcial') and res is not None:
+        return render(request, 'visor/_memoria_tabla.html', ctx)
     return render(request, 'visor/memoria.html', ctx)
