@@ -13,8 +13,10 @@ def panel(request):
         ctx['tipos_data'] = json.dumps([x['n'] for x in r['por_tipo']])
         labels = (['organizacion (repisa)'] if r['org'] else []) + [p['scope'] for p in r['proyectos']]
         data = ([r['org']] if r['org'] else []) + [p['n'] for p in r['proyectos']]
+        valores = (['organizacion'] if r['org'] else []) + [p['scope'] for p in r['proyectos']]
         ctx['scope_labels'] = json.dumps(labels)
         ctx['scope_data'] = json.dumps(data)
+        ctx['scope_values'] = json.dumps(valores)
     return render(request, 'visor/panel.html', ctx)
 
 

@@ -10,11 +10,11 @@
 
   <!-- KPIs -->
   <div class="row g-3 mb-2">
-    <div class="col-6 col-md"><div class="small-box text-bg-primary"><div class="inner"><h3>{{ r.total }}</h3><p>Señales</p></div><i class="small-box-icon bi bi-hdd-stack"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-primary"><div class="inner"><h3>{{ r.total }}</h3><p>Señales</p></div><i class="small-box-icon bi bi-hdd-stack"></i><a href="/memoria/" class="small-box-footer">Ver todas <i class="bi bi-arrow-right-circle"></i></a></div></div>
     <div class="col-6 col-md"><div class="small-box text-bg-success"><div class="inner"><h3>{{ r.activas }}</h3><p>Activas</p></div><i class="small-box-icon bi bi-check-circle"></i></div></div>
     <div class="col-6 col-md"><div class="small-box text-bg-secondary"><div class="inner"><h3>{{ r.otras }}</h3><p>Reemplazadas</p></div><i class="small-box-icon bi bi-arrow-repeat"></i></div></div>
-    <div class="col-6 col-md"><div class="small-box text-bg-info"><div class="inner"><h3>{{ r.org }}</h3><p>En la repisa (org.)</p></div><i class="small-box-icon bi bi-building"></i></div></div>
-    <div class="col-6 col-md"><div class="small-box text-bg-warning"><div class="inner"><h3>{{ r.n_proyectos }}</h3><p>Proyectos</p></div><i class="small-box-icon bi bi-folder"></i></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-info"><div class="inner"><h3>{{ r.org }}</h3><p>En la repisa (org.)</p></div><i class="small-box-icon bi bi-building"></i><a href="/memoria/?scope=organizacion" class="small-box-footer">Ver la repisa <i class="bi bi-arrow-right-circle"></i></a></div></div>
+    <div class="col-6 col-md"><div class="small-box text-bg-warning"><div class="inner"><h3>{{ r.n_proyectos }}</h3><p>Proyectos</p></div><i class="small-box-icon bi bi-folder"></i><a href="/memoria/" class="small-box-footer">Ver por proyecto <i class="bi bi-arrow-right-circle"></i></a></div></div>
   </div>
 
   <!-- Gráficos -->
@@ -79,10 +79,16 @@ new Chart(document.getElementById('chTipos'), {
   data: { labels: {{ tipos_labels|safe }}, datasets: [{ data: {{ tipos_data|safe }}, backgroundColor: PAL }] },
   options: { plugins: { legend: { position: 'right' } } }
 });
+const SCOPES = {{ scope_values|safe }};
 new Chart(document.getElementById('chScope'), {
   type: 'bar',
   data: { labels: {{ scope_labels|safe }}, datasets: [{ label: 'Señales', data: {{ scope_data|safe }}, backgroundColor: '#3554a5' }] },
-  options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { precision: 0 } } } }
+  options: {
+    indexAxis: 'y',
+    onClick: (e, els) => { if (els.length) location.href = '/memoria/?scope=' + encodeURIComponent(SCOPES[els[0].index]); },
+    plugins: { legend: { display: false }, tooltip: { callbacks: { footer: () => 'Clic para ver estas señales' } } },
+    scales: { x: { ticks: { precision: 0 } } }
+  }
 });
 </script>
 {% endif %}
