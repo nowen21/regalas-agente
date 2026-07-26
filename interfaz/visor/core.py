@@ -86,8 +86,13 @@ def nav(request):
     return {'secciones': secs}
 
 def leer_doc(rel):
-    p = os.path.normpath(os.path.join(RAIZ, rel))
-    if not p.startswith(RAIZ) or not os.path.isfile(p):
+    # Solo se sirven los documentos listados en el menú (las carpetas de SECCIONES,
+    # extensiones .md/.plantilla). Bloquea rutas arbitrarias como config/settings.py o traversal.
+    permitidos = {it['rel'] for sec in listar_docs() for it in sec['items']}
+    if rel not in permitidos:
+        return None
+    p = os.path.join(RAIZ, rel)
+    if not os.path.isfile(p):
         return None
     with open(p, encoding='utf-8') as f:
         return f.read()
@@ -96,18 +101,29 @@ def leer_doc(rel):
 def _con():
     return sqlite3.connect('file:%s?mode=ro' % DB, uri=True)
 
+def _fts_query(q):
+    """Convierte la búsqueda del usuario en términos FTS5 seguros.
+
+    Extrae solo palabras (ignora símbolos como - + " que rompen la sintaxis
+    FTS5) y las une como prefijos. Así 'git add -A' → '"git"* "add"* "a"*'
+    en vez de reventar con OperationalError.
+    """
+    toks = re.findall(r'\w+', q, re.UNICODE)
+    return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
+
 def consultar_senales(q, scope, tipo):
     if not os.path.exists(DB):
         return None
     con = _con(); con.row_factory = sqlite3.Row
     try:
-        if q:
+        fts = _fts_query(q) if q else None
+        if fts:
             sql = ("SELECT s.* FROM senales_fts f JOIN senales s ON s.rowid=f.rowid "
-                   "WHERE senales_fts MATCH ?"); params = [q]; pfx = "s."; order = " ORDER BY bm25(senales_fts)"
+                   "WHERE senales_fts MATCH ?"); params = [fts]; pfx = "s."; order = " ORDER BY bm25(senales_fts)"
         else:
             sql = "SELECT * FROM senales WHERE 1=1"; params = []; pfx = ""; order = " ORDER BY rowid DESC"
         if scope:
-            sql += " AND %sscope LIKE ?" % pfx; params.append(scope + '%')
+            sql += " AND %sscope = ?" % pfx; params.append(scope)   # exacto: evita que 'organizacion' traiga 'organizacion-beta'
         if tipo:
             sql += " AND %stipo = ?" % pfx; params.append(tipo)
         return [dict(r) for r in con.execute(sql + order, params).fetchall()]

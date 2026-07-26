@@ -12,7 +12,7 @@ Uso:
 La base por defecto es memoria/senales.db (junto a este script); se puede
 cambiar con --db o la variable de entorno MEMORIA_DB.
 """
-import argparse, os, sqlite3, sys, datetime
+import argparse, os, re, sqlite3, sys, datetime
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DB_DEFAULT = os.environ.get("MEMORIA_DB", os.path.join(AQUI, "senales.db"))
@@ -60,14 +60,23 @@ def cmd_add(a):
     print(f"OK: {sid} registrada ({a.tipo}, scope={a.scope})")
 
 
+def _fts(q):
+    """Términos FTS5 seguros: solo palabras (ignora - + " que rompen la sintaxis)."""
+    toks = re.findall(r'\w+', q, re.UNICODE)
+    return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
+
+
 def cmd_search(a):
+    fts = _fts(a.query)
+    if not fts:
+        print("(término de búsqueda vacío)"); return
     con = conectar(a.db)
     sql = ("SELECT s.id, s.tipo, s.titulo, s.scope, s.estado "
            "FROM senales_fts f JOIN senales s ON s.rowid=f.rowid "
            "WHERE senales_fts MATCH ? AND s.estado='activa' ")
-    params = [a.query]
+    params = [fts]
     if a.scope:
-        sql += "AND s.scope LIKE ? "; params.append(a.scope + "%")
+        sql += "AND s.scope = ? "; params.append(a.scope)
     if a.tipo:
         sql += "AND s.tipo=? "; params.append(a.tipo)
     sql += "ORDER BY bm25(senales_fts) LIMIT ?"; params.append(a.limit)
