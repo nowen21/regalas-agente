@@ -51,6 +51,35 @@ INCORRECTO: pruebas que suben el porcentaje verificando un getter
 CORRECTO:   pruebas sobre reglas, límites y errores que importan
 ```
 
+## T7 · Triangulación: derivar los casos, no adivinarlos
+
+**Qué es.** Triangular es confirmar que algo es correcto mirándolo desde **varias fuentes independientes que deben coincidir**, en vez de confiar en una sola. El nombre viene de la topografía: un punto se ubica con precisión midiendo desde varios puntos de referencia conocidos. En pruebas se aplica en dos frentes: **de dónde salen los casos** y **de dónde sale el resultado esperado**.
+
+Para la **lógica de negocio y los cálculos**, los casos de prueba no se eligen a ojo: se **derivan** con método y se **triangulan**.
+
+**Derivar los casos** (matriz obligatoria en lógica crítica; en el resto, al menos límites y errores):
+
+- **Valores de frontera:** 0, el máximo, vacío, uno más y uno menos del límite.
+- **Clases de equivalencia:** agrupar entradas que se comportan igual y probar una de cada grupo.
+- **Tablas de decisión:** combinaciones de condiciones cuando varias banderas se cruzan.
+- **Casos negativos / adversariales:** entradas inválidas, maliciosas o fuera de rango.
+
+**Triangular el resultado esperado** — el valor correcto se confirma desde **fuentes independientes** que deben **coincidir**, no desde el propio código:
+
+- **Mínimo 2** fuentes para lógica normal; **3** para lógica crítica (dinero, seguridad, legal).
+- Fuentes válidas: la **spec**, un **cálculo manual**, una **propiedad invariante** (p. ej. "débito = crédito"), un **oráculo** conocido.
+- Si las fuentes no coinciden, la spec o la implementación tienen un error: se resuelve antes de dar la prueba por buena.
+
+**Nunca** derivar el resultado esperado leyendo lo que el código produce hoy: eso solo prueba que el código hace lo que hace, no que sea correcto.
+
+```
+INCORRECTO: assertEquals($factura->total, $resultado)   // el esperado sale del propio código
+CORRECTO:   esperado = cálculo manual (spec) Y propiedad (subtotal+iva); ambos coinciden → se prueba contra ese valor
+
+INCORRECTO: probar solo "el caso que se me ocurrió"
+CORRECTO:   frontera (0, máx, vacío) + clases de equivalencia + casos inválidos, derivados con método
+```
+
 ---
 
 Ver: `02` F4/F5, `00` N3/N4, `03` D5 (validación en app), `13` (persistir el plan de pruebas).

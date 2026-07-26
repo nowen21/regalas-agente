@@ -44,6 +44,19 @@ CORRECTO:   "pruebas verdes + tabla de trazabilidad sin faltantes → cierro"
 
 Los pasos de despliegue (cambios de esquema, datos base, permisos, comandos post-deploy) se documentan **auto-suficientes y ejecutables**. Quien despliega lo hace leyendo el entregable, sin volver a mirar el código.
 
+## DOC5 · Registrar señales (memoria) — *opt-in*
+
+Guardar las **señales** de alto valor que **no se pueden recuperar del código** en un log versionado (`documentacion/senales.md`, plantilla `plantillas/senales.md`). Una señal = **what / why / where / learned** + un **tipo**: `decisión`, `error-resuelto`, `patrón`, `aprendizaje`, `alternativa-descartada`, `supuesto`, `restricción`, `pregunta-abierta`, `gotcha`, `deuda-técnica`.
+
+- **No borrar** una señal revertida: marcarla `reemplazada` y enlazar la nueva (rastro, como `## Decisiones` clásico).
+- **Verificar antes de confiar:** una señal vieja puede estar obsoleta (`01`·C2).
+- Es la defensa contra "la compactación mata decisiones": la señal vive en archivo, no en el chat.
+
+```
+INCORRECTO: la decisión "elegimos X y no Y porque Z" queda solo en el chat → se pierde al compactar
+CORRECTO:   se registra como señal (decisión) en senales.md con what/why/where/learned
+```
+
 ---
 
 Ver: `02` F1/F2/F6/F7, `08` (plan de pruebas y verificaciones manuales), `07` Q5 (documentar, no solo comentar), `11` CFG3.
