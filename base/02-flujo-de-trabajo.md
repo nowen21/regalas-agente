@@ -16,7 +16,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · `00-identidad` |
 | 4 | **Épica / Feature** | el bloque grande de funcionalidad | `plantillas/epica.md` → `13·DOC16` (definición abajo) |
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | `13·DOC15` |
-| 6 | **Plan → implementar → probar → cerrar** | cómo y cuándo se construye | `F2`–`F11` (el resto de este capítulo) |
+| 6 | **Fase (ejecución)** — spec → **plan** → implementar → probar → cerrar → commit | cómo y cuándo se construye | `F2`–`F11` · las 11 etapas de `F4.2` |
 
 **Orden inquebrantable:** cada paso se apoya en el anterior. No se escriben HUs sin épica/alcance; no se planifica sin HU (o sin spec que la recoja, `F2`); no se codifica sin plan aprobado (`F4`). Planificar o descomponer sin el encuadre de arriba es construir sobre el vacío.
 
@@ -25,7 +25,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
 - **Módulo** — unidad **técnica** (un dominio del sistema con su código y rutas · `13·DOC13`).
-- **Fase** — unidad de **ejecución** (un plan de trabajo con su cierre · `F4.2`).
+- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Una fase cubre **1+ HU** (paso 5); una HU grande se parte en **varias fases**. Es lo que sigue después de la HU.
 - **Épica** — unidad de **necesidad**: agrupa historias afines por el valor que entregan.
 
 Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
