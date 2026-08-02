@@ -57,7 +57,7 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
 
 `base/00` (núcleo blindado)  →  `base/01`–`17` (convenciones)  →  esta configuración de proyecto.
 
-La configuración de proyecto puede **ajustar** las convenciones (`01`–`16`), pero **nunca** el núcleo (`00`). Ante cualquier choque, gana el núcleo.
+La configuración de proyecto puede **ajustar** las convenciones (`01`–`17`), pero **nunca** el núcleo (`00`). Ante cualquier choque, gana el núcleo.
 
 ## 5. Cómo extender el estándar en este proyecto
 
@@ -65,15 +65,15 @@ El estándar de la carpeta central **no se modifica**. Lo que este proyecto nece
 
 ### 5.1 Ajustar una regla que ya existe en la base (override)
 
-Cambiar el comportamiento por defecto de una regla `01`–`16`. Si no cambia nada, escribir "Sin ajustes".
+Cambiar el comportamiento por defecto de una regla `01`–`17`. Si no cambia nada, escribir "Sin ajustes".
 
 - **Idioma de respuestas y textos:** `«español»`
 - **Patrón opt-in `15` (registros inmutables):** `«sí / no»`
 - **Patrón opt-in `16` (cumplimiento normativo):** `«sí / no»`
 - **Patrón opt-in `17` (interfaz / UI):** `«sí / no»`
-- `«Otro ajuste: número de regla (01–16) + qué cambia + por qué»`
+- `«Otro ajuste: número de regla (01–17) + qué cambia + por qué»`
 
-> Límite: un ajuste puede cambiar una convención (`01`–`16`), **nunca** el núcleo (`00`). Ver precedencia (punto 4).
+> Límite: un ajuste puede cambiar una convención (`01`–`17`), **nunca** el núcleo (`00`). Ver precedencia (punto 4).
 
 ### 5.2 Agregar reglas nuevas, propias de este proyecto
 
@@ -81,6 +81,6 @@ Reglas que la base **no** cubre (una convención del equipo, una regla del negoc
 
 1. Crear el archivo `./.agente/reglas-proyecto.md`.
 2. Escribir ahí cada regla nueva, numerada y con un ejemplo si ayuda.
-3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`16`), que siguen mandando.
+3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`17`), que siguen mandando.
 
 - **Reglas propias de este proyecto:** `«ninguna por ahora / ver ./.agente/reglas-proyecto.md»`
