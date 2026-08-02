@@ -63,4 +63,17 @@ CORRECTO:   el CI corre pruebas + lint automáticamente; el merge exige verde
 
 ---
 
+## G7 · Todo commit se muestra al usuario y se aprueba antes de ejecutarlo
+
+Antes de `git commit` (y del `push`), el agente **muestra al usuario el mensaje completo del commit y los archivos afectados**, y **espera aprobación explícita**. El usuario primero lee, luego aprueba; recién ahí se ejecuta.
+
+Aceptar un cambio en los archivos **no** autoriza a commitearlo: son dos permisos distintos (`00`·N2 — autorización de un solo uso). No encadenar el commit en la misma acción que produjo el cambio.
+
+```
+INCORRECTO: hago el cambio y en el mismo paso hago commit/push · "ya que estaba, lo subí"
+CORRECTO:   hago el cambio → muestro el mensaje + los archivos → espero "sube / aprobado" → recién ahí commit/push
+```
+
+---
+
 Ver: `00` N2/N3/N6, `07` Q6 (lint), `08` (pruebas), `11` (config fuera del código), `13` (decisiones también en docs).
