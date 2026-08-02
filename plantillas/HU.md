@@ -80,6 +80,21 @@ Cuando [acción]
 Entonces [resultado esperado]
 ```
 
+### Criterios de aceptación transversales
+
+> Calidad que aplica a casi toda HU (no son de negocio). **Marque los que apliquen** y elimine el resto — una HU de solo lectura no necesita atomicidad de escritura, etc. Se verifican como los CA funcionales.
+
+- [ ] **Validación** — toda entrada obligatoria se valida; un dato inválido se rechaza con mensaje claro y **el estado no cambia** (`04`, `03`).
+- [ ] **Límites** — vacío, nulo, mínimo, máximo y duplicado tienen comportamiento definido (`08`).
+- [ ] **Autorización** — solo quien tiene permiso ejecuta la acción; sin permiso se deniega **sin filtrar datos ni su existencia**, y no se elude cambiando parámetros/ruta (`04`).
+- [ ] **Errores** — un fallo previsto da mensaje accionable **sin exponer detalles internos**; el sistema queda consistente, sin datos a medias (`05`, `00·N3`).
+- [ ] **Atomicidad** — las operaciones que escriben son todo-o-nada (`03`).
+- [ ] **Idempotencia** — reintentar o doble-enviar **no duplica** efectos (`03·D6`).
+- [ ] **Privacidad** — datos personales/sensibles no se exponen ni se registran en claro; se tratan según `marco-normativo` (`12`, `00·N4`).
+- [ ] **Auditoría** — las acciones relevantes quedan registradas (quién, qué, cuándo) (`05`, `15`).
+- [ ] **Rendimiento** — responde dentro del umbral acordado con un **volumen realista** (`06`).
+- [ ] **No regresión** — lo existente sigue funcionando; la suite relacionada queda verde (`08`, `02·F5`).
+
 ---
 
 ## 5. Requisitos no funcionales
