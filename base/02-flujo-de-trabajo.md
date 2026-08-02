@@ -81,6 +81,8 @@ CORRECTO:   ejecuto todo el plan → reporto el resultado
 
 Cada plan se acompaña de las pruebas: qué se prueba, escenarios (feliz, límites, errores, permisos), qué archivo, qué se verifica. Si no amerita prueba (visual/trivial), decláralo: "Sin pruebas — cambio visual".
 
+**Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a las HU/CA que cubre la fase); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/fase-<XX>-<slug>/`. La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
+
 **La aprobación no es un hito abstracto — es una acción operativa obligatoria del agente:**
 
 1. **Redactar** `plan_trabajo` + `plan_pruebas` respondiendo lo que exige F4.1.
