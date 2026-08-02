@@ -38,3 +38,18 @@
 ## Tecnologías de apoyo
 
 - Caché: «…» · Colas / segundo plano: «…» · Almacenamiento de archivos: «…»
+
+## Herramientas del proyecto
+
+> Por cada herramienta o comando **propio del proyecto** (motor de pruebas, CLI de memoria, scripts, importadores, pasarelas, generadores…). NO las genéricas del agente (Read, Edit, Bash, Grep…) — esas son del entorno. Aquí se gana o se pierde la confiabilidad: sin esto, el agente adivina cómo usar cada tool.
+
+### «nombre-de-la-herramienta»
+
+- **Propósito:** «para qué sirve, en una frase».
+- **Cuándo usarla:** «la situación en que corresponde».
+- **Cuándo NO:** «cuándo evitarla o usar otra».
+- **Parámetros clave:** «flags/argumentos importantes y sus valores válidos».
+- **Costo / latencia:** «rápida / lenta / cara (tokens, tiempo, red) — para no abusarla».
+- **Si falla:** «qué hacer — reintentar, fallback, o pausar y reportar al usuario (`00`·N3: no rodear el obstáculo)».
+
+_(Repetir el bloque por cada herramienta. Si el proyecto no tiene herramientas propias, dejar "Ninguna — solo las genéricas del agente".)_
