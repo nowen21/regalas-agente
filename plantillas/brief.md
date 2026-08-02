@@ -62,6 +62,14 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 - «Mockups, documentos funcionales, prompts previos, specs de módulos con los que convive.»
 
+## 10. Épicas derivadas
+
+> Trazabilidad hacia abajo: se completa **a medida** que el brief se descompone en épicas (`02·F0` paso 4). Normalmente **1**; un brief grande puede dar varias. Cada épica apunta de vuelta a este brief (`epica.md §1`).
+
+| Épica | Título | Estado |
+|---|---|---|
+| EP-«NNN» | «…» | Propuesta / Aprobada / En curso / Completada |
+
 ---
 
 > **No incluir en un brief** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior…" (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el brief se convirtió en orden y va a chocar con el flujo.
