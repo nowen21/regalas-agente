@@ -181,7 +181,7 @@ Ver: `01` C10 (mensaje del usuario como posible mejora del setup), `13` DOC5 (se
 
 **Regla operativa:** si al revisar la tabla aparece un faltante que **debería** estar en esta unidad, se **corrige in situ** — no se difiere. La tabla es el arbitraje final antes de cerrar. Los diferimientos legítimos se registran como `❌` con destino explícito, no como N/A.
 
-**Ubicación de la tabla:** el documento de cierre de la unidad de trabajo (la capa 3 declara la ruta canónica — típicamente `funcionalidad_implementada.md` o equivalente).
+**Ubicación de la tabla:** el documento de cierre de la unidad de trabajo (la capa 3 declara la ruta canónica — típicamente `funcionalidad_implementada.md` o equivalente). Plantilla: `plantillas/funcionalidad-implementada.md`.
 
 ```
 INCORRECTO: cerrar con tabla incompleta o con "N/A porque sí" · próximo trabajo no sabe qué quedó pendiente ni por qué

@@ -79,7 +79,7 @@ Cambiar el comportamiento por defecto de una regla `01`–`17`. Si no cambia nad
 
 Reglas que la base **no** cubre (una convención del equipo, una regla del negocio, un patrón propio):
 
-1. Crear el archivo `./.agente/reglas-proyecto.md`.
+1. Crear el archivo `./.agente/reglas-proyecto.md` (desde la plantilla `plantillas/reglas-proyecto.md`).
 2. Escribir ahí cada regla nueva, numerada y con un ejemplo si ayuda.
 3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`17`), que siguen mandando.
 
