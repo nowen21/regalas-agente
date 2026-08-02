@@ -83,6 +83,15 @@ Cada plan se acompaña de las pruebas: qué se prueba, escenarios (feliz, límit
 
 **Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a las HU/CA que cubre la fase); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/fase-<XX>-<slug>/`. La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
 
+**Antes de redactar el plan — verificar la cadena que lo respalda.** Un plan no nace de la nada: se deriva de una **HU con sus criterios de aceptación** (y la **spec del módulo**, `F2`). Si te piden "creá el plan de X" y falta el eslabón que lo respalda (no hay HU/spec, o no se sabe de qué épica/necesidad sale), **PAUSAR y retroceder** al paso faltante — no inventar el plan. Para trabajo **chico** el eslabón puede ser la necesidad clara del chat; para trabajo **grande**, la cadena `brief → épica → HU → spec`. Encadena con `F0` (orden inquebrantable) y `F2` (sin spec no hay código).
+
+```
+INCORRECTO: "creá el plan de trabajo de X" → el agente redacta el plan sin que exista
+            HU ni spec que respalde X → planifica sobre supuestos
+CORRECTO:   "creá el plan de trabajo de X" → ¿hay HU/spec de X? · no → "no hay HU que
+            respalde X; ¿la creamos primero?" · sí → el plan se deriva de esa HU
+```
+
 **La aprobación no es un hito abstracto — es una acción operativa obligatoria del agente:**
 
 1. **Redactar** `plan_trabajo` + `plan_pruebas` respondiendo lo que exige F4.1.
