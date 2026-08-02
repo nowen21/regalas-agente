@@ -10,7 +10,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 
 | # | Paso | Qué responde | Dónde está la regla |
 |---|---|---|---|
-| 0 | **Necesidad / idea** | qué quiere resolver el negocio | disparo del usuario (materia prima) |
+| 0 | **Necesidad / idea** | qué quiere resolver el negocio | disparo del usuario · si se escribe, va como **brief** (`plantillas/brief.md` → `prompts/<slug>-brief.md`) |
 | 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | `F1` · `F4.3` · skill `analizar-proyecto` |
 | 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | `00-identidad` · skill `proponer-alcance` |
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · `00-identidad` |
@@ -19,6 +19,8 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 | 6 | **Plan → implementar → probar → cerrar** | cómo y cuándo se construye | `F2`–`F11` (el resto de este capítulo) |
 
 **Orden inquebrantable:** cada paso se apoya en el anterior. No se escriben HUs sin épica/alcance; no se planifica sin HU (o sin spec que la recoja, `F2`); no se codifica sin plan aprobado (`F4`). Planificar o descomponer sin el encuadre de arriba es construir sobre el vacío.
+
+**El brief (paso 0)** es la necesidad escrita y sus restricciones — el insumo del flujo, no una orden. Un brief **nunca** pide entregar código de una vez ni fija el orden de implementación (eso lo pone este capítulo): si lo hace, choca con `F2`/`F4`. Plantilla: `plantillas/brief.md` → se copia al proyecto como `prompts/<slug>-brief.md`.
 
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
