@@ -4,6 +4,41 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 
 ---
 
+## F0 · La secuencia completa — de la necesidad al cierre
+
+Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Pero un desarrollo empieza **antes** del plan. Esta es la secuencia macro completa, con dónde vive la regla de cada paso:
+
+| # | Paso | Qué responde | Dónde está la regla |
+|---|---|---|---|
+| 0 | **Necesidad / idea** | qué quiere resolver el negocio | disparo del usuario (materia prima) |
+| 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | `F1` · `F4.3` · skill `analizar-proyecto` |
+| 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | `00-identidad` · skill `proponer-alcance` |
+| 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · `00-identidad` |
+| 4 | **Épica / Feature** | el bloque grande de funcionalidad | este `F0` (definición abajo) |
+| 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | `13·DOC15` |
+| 6 | **Plan → implementar → probar → cerrar** | cómo y cuándo se construye | `F2`–`F11` (el resto de este capítulo) |
+
+**Orden inquebrantable:** cada paso se apoya en el anterior. No se escriben HUs sin épica/alcance; no se planifica sin HU (o sin spec que la recoja, `F2`); no se codifica sin plan aprobado (`F4`). Planificar o descomponer sin el encuadre de arriba es construir sobre el vacío.
+
+**Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
+
+- **Módulo** — unidad **técnica** (un dominio del sistema con su código y rutas · `13·DOC13`).
+- **Fase** — unidad de **ejecución** (un plan de trabajo con su cierre · `F4.2`).
+- **Épica** — unidad de **necesidad**: agrupa historias afines por el valor que entregan.
+
+Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
+
+**Proporcionalidad:** en un cambio chico los pasos 0–5 pueden ser una sola conversación corta — una necesidad clara ya alcanza para una HU, sin épica formal ni spec separada. Lo que **no** cambia es el **orden lógico**: entender → definir necesidad y borde → descomponer → planificar → construir.
+
+```
+INCORRECTO: llega una idea → se escribe el plan de trabajo directo
+            (sin contexto, sin objetivo, sin alcance, sin HU)
+CORRECTO:   idea → análisis (F1) → objetivo + alcance (proponer-alcance)
+            → épica → HU (13·DOC15) → spec (F2) → plan (F4) → construir
+```
+
+**Encadenamiento:** los pasos 0–5 alimentan al 6. `F1` (contexto) y `F4.3` (línea base) cubren el análisis; `00-identidad` y la skill `proponer-alcance` cubren objetivo y alcance; `13·DOC15` cubre las HU; `F2`–`F11` cubren el plan y la ejecución.
+
 ## F1 · Carga el contexto antes de actuar
 
 Antes de analizar o implementar, revisa la documentación del proyecto (qué existe, qué se decidió, qué está probado). Aplica también **antes** de decir "esto no existe". Si el usuario menciona algo existente, primero búscalo.
@@ -358,6 +393,6 @@ CORRECTO:   fase A toca solo archivos de A; los cambios necesarios en B, C, D se
 
 ---
 
-**Secuencia:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
+**Secuencia macro (0–6):** en `F0`. **Secuencia del plan hacia abajo:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
 
 Consolidado como **ciclo de 11 etapas en F4.2** — usar esa tabla como referencia operativa canónica del flujo completo de una fase.
