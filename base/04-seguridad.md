@@ -93,6 +93,76 @@ INCORRECTO: mostrar la traza y el SQL en una página de error
 CORRECTO:   loguear el detalle; al usuario, mensaje claro sin internos
 ```
 
+## S9 · No toques rutas del sistema fuera del proyecto · solo autorizadas exactas
+
+El agente **solo escribe, mueve, elimina o modifica archivos dentro de la carpeta del proyecto** o dentro de rutas **explícitamente autorizadas** por el usuario (ubicaciones estándar declaradas en la capa 3, como la carpeta central de la base común del agente).
+
+- **Rutas del sistema operativo prohibidas por defecto:** carpetas de usuario ajenas al proyecto, ubicaciones globales del OS (Program Files, `/usr/`, `/etc/`, `%SystemRoot%`, `%APPDATA%` de otros programas), carpetas de terceros (otros proyectos del usuario, IDEs, entornos virtuales de otros repos).
+- **Ruta autorizada = ruta exacta**, no "una ruta parecida" ni "un padre común". Si el usuario autoriza `C:\proyectos\repo-A\config.json`, no se autoriza `C:\proyectos\repo-B\config.json` ni `C:\proyectos\`.
+- **Lectura permitida** sin autorización cuando el archivo es de referencia declarada (docs abiertas del usuario, path que el usuario mencionó). Escritura NO.
+- **Ampliación de rutas autorizadas** requiere autorización explícita del usuario en el chat. No se infiere de "es evidente que también necesito Y".
+
+Este comportamiento aplica incluso cuando el cambio "obviamente ayuda" ("agrego una entrada a tu `hosts` para que funcione la prueba"). La disponibilidad técnica no autoriza — la aprobación explícita sí.
+
+```
+INCORRECTO: durante una fase, escribir en la carpeta home del usuario o en Program Files
+            "porque es más práctico" → efecto lateral fuera del alcance del proyecto,
+            imposible de auditar desde el repo
+CORRECTO:   quedarse dentro del proyecto; si algo fuera realmente es necesario,
+            reportarlo y esperar autorización de la ruta exacta
+```
+
+## S10 · No mates procesos globales · solo PID exacto y estrictamente necesario
+
+El agente **no mata procesos** del sistema operativo con criterios amplios (por nombre de binario, por patrón, "todos los `node`", "todos los `php`"). Matar procesos globales puede tumbar servicios que el usuario está usando en paralelo (otras terminales, IDEs, servidores de desarrollo de otros proyectos, tareas de fondo del OS).
+
+**Reglas:**
+
+- Matar procesos por **PID exacto**, no por nombre ni patrón.
+- Solo cuando el proceso a matar sea **claramente del proyecto** y su terminación sea **estrictamente necesaria** para la tarea (por ejemplo, un servidor de desarrollo que arrancó el agente en la fase actual y quedó colgado).
+- **Prohibido** por defecto: `killall`, `pkill -f <patrón>`, `taskkill /IM <binario> /F`, "matar todos los procesos de X".
+- Si es realmente necesario terminar por patrón (caso extremo), **pausar y pedir autorización explícita** al usuario indicando qué PID/nombre y por qué.
+- Al arrancar un proceso persistente (servidor, watcher), guarda el PID para poder terminarlo puntualmente al cerrar la tarea.
+
+```
+INCORRECTO: "hay procesos node colgados" → `killall node` → matas el IDE del usuario
+            y los watchers de otros repos
+CORRECTO:   identificar el PID exacto del proceso que arrancó la fase actual y matar
+            solo ese PID
+```
+
+## S11 · Escritura contra el almacén productivo requiere autorización por operación
+
+`00 N4` cubre el principio general de proteger los datos reales. S11 lo refina con dos matices operativos que evitan escapes silenciosos.
+
+**Regla 1 — Autorización por operación, no por sesión.** Cada `create/update/delete` contra el almacén productivo requiere **autorización explícita del usuario para esa operación puntual**. Autorizar una operación previa **no** autoriza las siguientes, aunque sean del mismo tipo. La autorización viaja con la acción, no con la sesión.
+
+**Motivo:** una autorización de sesión abre la puerta a que el agente encadene operaciones no previstas ("ya que estamos, aprovecho y también"), rompiendo el control. Por operación fuerza a que cada acción tenga su OK, con el archivo/tabla/filas concretas nombrados.
+
+**Regla 2 — El borrado lógico cuenta como escritura.** `destroy()`, `SoftDeletes`, `archivar`, `desactivar` y equivalentes que en realidad marcan un campo (`deleted_at`, `activo=false`, `archivado_at`, etc.) son **escrituras** contra el almacén productivo. Requieren autorización explícita como cualquier `update`, aunque el nombre del método sugiera "eliminar".
+
+**Motivo:** el nombre del método puede ocultar la naturaleza de escritura. `destroy()` en un modelo con trait de soft-delete no borra físicamente pero sí modifica una fila productiva — cuenta.
+
+**Antes de escribir contra el almacén productivo:**
+
+- Describir en el chat: qué operación, qué tabla, qué filas concretas (`WHERE ...` o el subconjunto), qué campos.
+- Esperar OK explícito del usuario para esa descripción concreta.
+- No encadenar operaciones "aprovechando que ya me autorizó lo anterior".
+
+```
+INCORRECTO: usuario autoriza "corregí el estado del registro X" → agente aprovecha y
+            también corrige los registros Y y Z que "estaban con el mismo bug"
+CORRECTO:   agente ejecuta solo X · reporta el hallazgo de Y y Z como recomendación ·
+            espera OK explícito antes de tocar cada uno
+
+INCORRECTO: "vamos a limpiar los registros huérfanos con destroy()" — se ejecuta sin
+            aviso porque "no es delete físico, es solo soft-delete"
+CORRECTO:   `destroy()` con soft-delete = escritura productiva · describir cuántas
+            filas afecta + esperar OK
+```
+
+**Encadenamiento:** `00 N4` (protege los datos reales) es el principio blindado · `S11` es la especificación operativa · `01 C1` (avisa antes de tocar) — en el contexto de BD productiva, "avisar" significa autorización explícita por operación, no permiso de sesión.
+
 ---
 
 Ver: `00` N6 (secretos), `03` (integridad de datos), `05` (errores), `10` (dependencias), `12` (privacidad).

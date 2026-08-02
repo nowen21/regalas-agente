@@ -231,8 +231,133 @@ INCORRECTO: "pruebas verdes → cierro"
 CORRECTO:   "pruebas verdes + trazabilidad sin faltantes → cierro"
 ```
 
+## F8 · Solo se tocan archivos declarados en el plan aprobado — descubrimiento pausa
+
+El `plan_trabajo` aprobado (F4 §5, F4.1 pregunta 9) es un **contrato**, no una guía flexible. El agente **solo edita los archivos declarados** en la tabla de archivos del plan. Descubrir en mitad de la ejecución que otro archivo también necesita cambios es una señal legítima — pero **detiene la ejecución**, no la extiende.
+
+**Protocolo obligatorio al descubrir un archivo fuera del plan:**
+
+1. **PAUSAR** — no editar ese archivo.
+2. **Reportar el descubrimiento** al usuario: qué archivo, qué hallazgo lo hace necesario, qué impacto tiene ignorarlo.
+3. **Proponer la ampliación del plan** — agregar el archivo a la tabla F4.1 pregunta 9 y actualizar §Alcance / §Fuera-de-scope si cambia.
+4. **Esperar OK explícito** del usuario para ampliar.
+5. Solo con el OK, retomar la ejecución con el plan ampliado.
+
+Este comportamiento aplica también cuando el archivo "obviamente" necesita el cambio ("es evidente que también hay que tocar Y para que X funcione"). La obviedad no autoriza — la aprobación del plan sí. Si el análisis previo (F4.3) fue insuficiente, la ampliación es la corrección — no un atajo silencioso.
+
+**El plan de trabajo es contrato, no guía flexible.** Ejecutar cambios fuera del plan es la ruta más rápida a que el usuario pierda visibilidad de lo que el agente realmente tocó.
+
+```
+INCORRECTO: durante la ejecución de la fase, el agente descubre que también hay que
+            editar el archivo Y (dependencia transitiva) → lo edita en el mismo commit
+            "porque era necesario" → el usuario descubre después que se cambió algo
+            que no estaba en el plan
+CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario aprueba
+            (o rechaza y difiere Y a otra fase) → sigue con el plan actualizado
+```
+
+**Encadenamiento:** F4.3 (matriz de dependencias antes de aprobar) es la primera defensa contra este escenario — reduce los descubrimientos. F8 es la segunda defensa — cuando el descubrimiento ocurre a pesar del análisis previo, el agente no lo procesa en silencio.
+
+## F9 · Plan aprobado se ejecuta completo — sin subdividir post-aprobación
+
+Cuando el usuario aprueba explícitamente un plan (con "arranque", "hágale", "ok con eso", "sí" o equivalente), ese plan se ejecuta **completo** de principio a fin **sin**:
+
+- Volver a pedir confirmación por sub-decisiones que ya cabían en el plan aprobado.
+- Subdividir arbitrariamente en sub-fases pequeñas después de aprobado (excepto si el usuario lo pide explícitamente).
+- Ofrecer nuevas opciones sobre detalles que ya estaban implícitos o resueltos con criterio profesional.
+- Entregar "a medias" con la excusa del volumen — la solución se entrega funcional, no en pedacitos que dejan al usuario decidiendo cada micro-paso.
+
+**Motivo:** el usuario aprobó porque confía en que la ejecución es coherente con lo pactado. Cada nueva pregunta después de "aprobado" rompe esa confianza y transfiere el peso decisional que YA estaba resuelto.
+
+**Momento correcto para dividir en subfases:** durante el diseño del plan (antes de aprobar) — si el agente evalúa profesionalmente que el volumen amerita subdivisión, la propone en el plan como XX.1/XX.2/XX.3 con criterios de aceptación por subfase. El usuario aprueba el plan **con** la subdivisión ya dentro. Luego cada subfase se ejecuta completa cuando llega su turno.
+
+**Qué SÍ interrumpe legítimamente el flujo:**
+
+- **Descubrimiento genuino** durante la ejecución que NO estaba anticipado en el plan y **requiere** decisión del usuario (bug de negocio no acordado, hallazgo que contradice el plan, dependencia nueva).
+- **Hallazgo bloqueante** que impide continuar (dependencia rota, credencial faltante).
+
+Ambos se reportan como "hallazgo derivado", NO como "opción a elegir". Ver también `F8` (archivos fuera del plan) — mismo espíritu: la pausa es la excepción, no el modo de operación.
+
+```
+INCORRECTO: usuario aprueba el plan → agente lo divide en 4 sub-fases y vuelve a
+            pedir 4 aprobaciones "para hacerlo manejable"
+CORRECTO:   si el volumen era problema, se propone la subdivisión ANTES de aprobar;
+            después, ejecución continua
+```
+
+**Encadenamiento:** `F3` (plan aprobado = ejecución continua) es el enunciado base; `F8` protege archivos fuera del plan; `F9` protege el compromiso de completud post-aprobación.
+
+## F10 · Producción no bloquea el desarrollo — se planifica migración incremental adecuada
+
+Cuando una decisión de diseño requiere modificar algo que **está o puede estar en producción**, el agente **no posterga el trabajo** ni bloquea la fase con la pregunta "¿está en prod?". Asume por defecto **"probablemente sí está en producción"** y **planifica migración incremental adecuada** dentro del mismo plan de trabajo.
+
+**Migración incremental adecuada, según el tipo de cambio:**
+
+- **Cambio aditivo** (agregar columna, agregar tabla): migración nueva. Backfill dentro del script si aplica. Nada destructivo.
+- **Rename** (columna, tabla, artefacto persistente): migración nueva reversible. NO editar la migración original de una fase cerrada.
+- **Drop de columna/tabla con datos**: **avisar al usuario del riesgo específico** antes de aplicar (posible pérdida de datos). Si aprueba, migración con `down()` que reconstruye el tipo original.
+- **Cambio de tipo o restricción** (NOT NULL → NULL, INT → BIGINT, ampliar enum, etc.): **avisar del riesgo específico** (truncamiento, incompatibilidad con datos existentes). Si aprueba, estrategia zero-downtime documentada.
+- **Refactor grande** que toca múltiples tablas en producción: dividir en fases pequeñas ordenadas por seguridad — aditivas primero, destructivas al final con backfill previo.
+
+**Qué NO es válido:**
+
+- Preguntar "¿está en producción?" para decidir si hacer o no el trabajo (usar la pregunta solo para elegir estrategia: editar migración original vs. crear migración nueva).
+- Postergar una fase "porque está en producción" sin haber propuesto migración incremental.
+- Editar migración de fase cerrada asumiendo "no está en producción" sin confirmarlo explícitamente con el usuario.
+
+**Qué SÍ es válido:**
+
+- Preguntar por prod solo para **elegir estrategia** (editar original vs. nueva). Ambas rutas producen el resultado correcto.
+- Avisar del **riesgo específico** cuando el cambio incluye drop / tipo / restricción con datos vivos.
+
+**Motivo:** el sistema es vivo y evoluciona. Preguntar "¿está en producción?" antes de cada cambio y postergar por miedo convierte el desarrollo en parálisis. Producción se mejora con migración incremental disciplinada — no se congela.
+
+```
+INCORRECTO: "antes de arrancar la fase necesito confirmar si X está en producción" →
+            fase bloqueada esperando información que se puede asumir
+CORRECTO:   plan de trabajo asume "probablemente está en prod" + declara la estrategia
+            de migración (aditiva / rename / drop con aviso / tipo con aviso)
+```
+
+**Encadenamiento:** no modera `00 N4` (proteger datos reales) — este sigue vigente para operaciones directas sobre BD. Complementa `02 F4.1` pregunta 12 ("¿toca algo que puede estar en producción?") con la filosofía operativa.
+
+## F11 · Una fase solo modifica código de su propio módulo — cross-módulo prohibido
+
+Una fase pertenece a **un** módulo. El módulo se declara al abrir la fase (ver `DOC12` — ORIGEN). Todos los archivos que la fase modifica deben pertenecer a ese módulo. Cross-módulo está prohibido por defecto.
+
+**Si al diseñar la fase (etapa 3 del ciclo `F4.2`) aparece que también hay que modificar archivos de OTROS módulos:**
+
+1. **Descomponer:** crear una fase propia por cada módulo afectado.
+2. **Documentar el diferimiento:** listar en el spec del módulo actual los artefactos que quedan pendientes por-módulo (§Fuera-de-scope + tabla "Módulos que requieren fase propia").
+3. **NO agrupar** todos los cambios ajenos en una única "fase transversal de reparación". Eso destruye la trazabilidad por módulo.
+
+**Excepciones legítimas — infraestructura compartida que TODA fase puede tocar:**
+
+- Rutas globales del framework (agregar middleware al grupo de la fase).
+- Registro de servicios / alias / bindings globales, cuando el módulo lo requiera.
+- Mapas y catálogos centrales del proyecto (por ejemplo el mapa de dependencias vivo del `DOC9`, la descripción de módulos declarada por la capa 3).
+- Layouts globales SOLO si el cambio es necesario para el módulo de la fase.
+
+**Si durante la ejecución aparece un archivo de otro módulo que rompería por la fase actual:** pausar (`F8` aplica), notificar al usuario, y proponer:
+
+- **Opción A** — documentar el break como esperado en el spec del módulo dueño + agendar fase propia.
+- **Opción B** — hacer el cambio mínimo indispensable con nota explícita en el commit + registro en el spec del dueño.
+
+La decisión es del usuario, no del agente.
+
+**Trabajo adelantado que "se metió" en una fase por error:** si el usuario lo aprueba post-hoc, se mantiene y se documenta con nota explícita en el spec del módulo dueño (mecanismo bidireccional de referencias entre specs · ver `13 DOC7`) y NO se documenta como "cerrado" — cada módulo debe tener su fase formal cuando toque.
+
+```
+INCORRECTO: fase de módulo A arranca tocando 20 archivos de módulos B, C, D "porque
+            el refactor es transversal" → destruye la trazabilidad por módulo
+CORRECTO:   fase A toca solo archivos de A; los cambios necesarios en B, C, D se
+            agendan como fases propias (o se difieren en §Fuera-de-scope)
+```
+
+**Encadenamiento:** `01 C3` (alcance quirúrgico) es el principio base; `F11` lo eleva a nivel de fase completa. `F8` (archivos fuera del plan) es la línea de defensa dentro de la fase; `F11` es la línea de defensa entre fases y módulos.
+
 ---
 
-**Secuencia:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
+**Secuencia:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
 
 Consolidado como **ciclo de 11 etapas en F4.2** — usar esa tabla como referencia operativa canónica del flujo completo de una fase.
