@@ -127,7 +127,7 @@
 
 ### 10.2 Decisiones de arquitectura (ADR)
 
-- **ADR-00:** [Decisión y justificación breve] → [enlace al ADR completo]
+- **ADR-00:** [Decisión y justificación breve] → [enlace al ADR completo · plantilla `plantillas/ADR.md`]
 
 ### 10.3 Integraciones
 

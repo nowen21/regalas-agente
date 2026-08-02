@@ -107,7 +107,7 @@ CORRECTO:   A dice "consume la columna X de B por Y motivo · aplicó la mejora 
 
 Todo análisis persistido bajo `analisis/<...>.md` (DOC6 paso 2 · exploraciones · auditorías) genera al terminar un **archivo de cierre** que consolida lo que quedó:
 
-- **Ruta canónica:** `analisis/<modulo>-YYYY-MM-DD-cierre.md`.
+- **Ruta canónica:** `analisis/<modulo>-YYYY-MM-DD-cierre.md`. Plantilla: `plantillas/cierre-analisis.md`.
 - **Contenido mínimo:** tabla de mapeo con una fila por pregunta abierta o hallazgo detectado durante el análisis:
 
 | Pregunta / hallazgo | Decisión tomada | Estado | Gap generado (si aplica) |
@@ -126,7 +126,7 @@ CORRECTO:   análisis → chat con respuestas → archivo de cierre con tabla + 
 
 ## DOC9 · Mapa de dependencias vivo — consultar antes, actualizar después
 
-Existe un **artefacto vivo** por proyecto (ruta canónica declarada en la capa 3 · ej. `.agente/mapa-dependencias.md`) que consolida el conocimiento del sistema: modelos → tablas → columnas, componentes → qué consumen, rutas → destinos, middleware, permisos, traits, layouts, pruebas.
+Existe un **artefacto vivo** por proyecto (ruta canónica declarada en la capa 3 · ej. `.agente/mapa-dependencias.md`) que consolida el conocimiento del sistema: modelos → tablas → columnas, componentes → qué consumen, rutas → destinos, middleware, permisos, traits, layouts, pruebas. Plantilla: `plantillas/mapa-dependencias.md`.
 
 **Es la fuente autoritativa consultable** de "cómo está armado esto hoy". No versionado si es local al desarrollador; declarado como pública si el equipo lo comparte.
 
@@ -236,7 +236,7 @@ CORRECTO:   ORIGEN declarado con 1 de las 3 categorías · lector entiende de d�
 
 Todo proyecto con múltiples módulos mantiene un **catálogo de módulos** consolidado — un índice de "qué existe" a nivel de módulo. Distinto del mapa de dependencias vivo (`DOC9`) que consolida las relaciones técnicas (modelos, componentes, rutas); el catálogo de módulos es la vista de más alto nivel: **qué módulos tiene el proyecto y qué hace cada uno**.
 
-**Ruta canónica** — declarada por la capa 3 del proyecto (típicamente `.agente/dominio.md`, `documentacion/modulos.md` o equivalente).
+**Ruta canónica** — declarada por la capa 3 del proyecto (típicamente `.agente/dominio.md`, `documentacion/modulos.md` o equivalente). Plantilla: `plantillas/catalogo-modulos.md`.
 
 **Contenido mínimo por entrada:**
 

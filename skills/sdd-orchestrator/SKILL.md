@@ -39,7 +39,7 @@ Coordina las 8 skills-rol (más las estaciones **Épica** y **HU**, dirigidas po
 
 ## Estado persistido (checkpointing)
 
-En **cada puerta**, escribir el estado en un archivo (ubicación de la capa 3, p. ej. `documentacion/«modulo»/estado-fase.md`):
+En **cada puerta**, escribir el estado en un archivo (ubicación de la capa 3, p. ej. `documentacion/«modulo»/estado-fase.md` · plantilla `plantillas/estado-fase.md`):
 
 - En qué **estación** va y qué puertas ya pasó.
 - Las **decisiones y señales** generadas (`13`·DOC5) — para no perderlas al compactar.
