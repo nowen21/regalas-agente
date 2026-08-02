@@ -367,6 +367,25 @@ CORRECTO:   copiar de plantillas/HU.md (central) → rellenar con datos reales �
 
 **Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — las HU se agrupan por `<modulo>` del catálogo; el `README.md` de `hus/` es el índice navegable de ese árbol · `DOC9` (mapa vivo) — mismo principio de "índice que se actualiza al cerrar, no foto" · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
 
+## DOC16 · Épicas desde plantilla central
+
+Al crear una Épica, el agente parte de `plantillas/epica.md` (fuente única, agnóstica) — no de memoria ni de una copia local. El resultado, rellenado, se guarda versionado en `documentacion/epicas/EP-<NNN>-<slug>.md`.
+
+- **La plantilla NO se copia** a `.agente/`: se lee del centro **cada vez** (misma razón que `DOC15`·HU — es formato, no datos de proyecto).
+- **Nomenclatura:** `EP-<NNN>` correlativo por proyecto · `<slug>` corto en kebab-case.
+- **Enlace bidireccional con las HU:** la épica lista sus HUs (§9 de la plantilla) y cada HU declara a qué épica pertenece (`HU.md §1`). Al crear o mover una HU se actualizan **los dos lados**.
+- **Criterios de resultado, no de pantalla:** los criterios de aceptación de la épica (§7) son de negocio/resultado; el detalle de comportamiento vive en las HU.
+- **Cuándo NO amerita épica:** en trabajos chicos, una necesidad clara va directo a una o pocas HU, sin épica formal (proporcionalidad `02·F0`). La épica se justifica cuando agrupa **varias** HU con un objetivo común que abarca varias fases/sprints.
+- **Índice vivo:** el árbol `documentacion/epicas/` sigue el mismo `README.md` por nivel de `DOC15`.
+- **Override capa 3:** ruta, nomenclatura o secciones ajustables en `reglas-proyecto.md` (nunca el núcleo `00`).
+
+```
+INCORRECTO: escribir la épica de memoria · o meter en la épica criterios de pantalla que son de HU · o listar HUs en la épica pero no declarar la épica en cada HU
+CORRECTO:   copiar de plantillas/epica.md → rellenar → guardar en documentacion/epicas/EP-NNN-<slug>.md → enlazar con sus HU en ambos sentidos
+```
+
+**Encadenamiento:** `DOC15` (HU) — la épica agrupa HUs con enlace bidireccional · `DOC13` (catálogo de módulos) — una épica puede cruzar varios módulos · `02·F0` paso 4 (la épica en el flujo macro) · `02·F0` estación de épica en el orquestador (`sdd-orchestrator`).
+
 ---
 
 Ver: `02` F1/F2/F6/F7, `08` (plan de pruebas y verificaciones manuales), `07` Q5 (documentar, no solo comentar), `11` CFG3.

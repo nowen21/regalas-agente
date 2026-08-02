@@ -14,7 +14,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 | 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | `F1` · `F4.3` · skill `analizar-proyecto` |
 | 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | `00-identidad` · skill `proponer-alcance` |
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · `00-identidad` |
-| 4 | **Épica / Feature** | el bloque grande de funcionalidad | este `F0` (definición abajo) |
+| 4 | **Épica / Feature** | el bloque grande de funcionalidad | `plantillas/epica.md` → `13·DOC16` (definición abajo) |
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | `13·DOC15` |
 | 6 | **Plan → implementar → probar → cerrar** | cómo y cuándo se construye | `F2`–`F11` (el resto de este capítulo) |
 
