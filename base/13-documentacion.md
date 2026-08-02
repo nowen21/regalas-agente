@@ -304,23 +304,19 @@ Toda referencia desde cualquier archivo `.md` a **otro `.md` del proyecto** usa 
    `documentacion/organizacion-jerarquica/fase-hg-slug/plan_trabajo.md`
 ```
 
-**Requisito del proyecto** (para que funcione la parte "local render HTML"): existe un route que atrapa cualquier URL terminada en `.md` y la renderiza como HTML. Ejemplo Laravel:
+**Requisito del proyecto** (para que funcione la parte "local render HTML"): existe una ruta que atrapa cualquier URL terminada en `.md` y la renderiza como HTML. En pseudocódigo agnóstico:
 
-```php
-Route::get('/{path}.md', function (string $path) {
-    abort_unless(app()->isLocal(), 404);
-    // Fallback: intentar primero el path literal, luego bajo el prefijo canónico
-    // (ej. documentacion/) — permite que links relativos servidos desde rutas
-    // "atajo" (que no incluyen ese prefijo en la URL) resuelvan al archivo real.
-    $candidatos = [
-        base_path($path . '.md'),
-        base_path('documentacion/' . $path . '.md'),
-    ];
-    $file = collect($candidatos)->first(fn ($p) => file_exists($p));
-    abort_unless($file, 404);
-    return renderMarkdownAsHtml($file);
-})->where('path', '.+');
 ```
+RUTA  GET  /<path>.md          # el comodín <path> captura también las barras "/"
+    si el entorno NO es local            → 404
+    candidatos = [ raíz_proyecto/<path>.md,
+                   raíz_proyecto/<prefijo_canónico>/<path>.md ]   # <prefijo> = documentacion/ u el que aplique
+    archivo = primer candidato que exista en disco
+    si no existe ninguno                 → 404
+    devolver  render_markdown_a_html(archivo)
+```
+
+El **fallback** al segundo candidato (bajo el prefijo canónico) permite que los links relativos servidos desde rutas "atajo" —que no incluyen ese prefijo en la URL— resuelvan igual al archivo real.
 
 **Requisito crítico del fallback:** cuando el proyecto usa un route "atajo" que renderiza `.md` con URLs cortas (ej. `/prompt/<slug>` sin prefijo de carpeta), los links relativos dentro del `.md` se resuelven contra la URL del navegador — no contra el path físico del archivo. Sin el fallback, un link válido a nivel de filesystem falla como 404 al hacer clic desde el atajo. El fallback bajo el prefijo canónico (`documentacion/` en este proyecto · el que aplique en cada uno) mantiene el patrón funcional en las dos formas de acceso.
 
@@ -330,9 +326,26 @@ Con ese route en su sitio, el mismo link relativo funciona en los 3 contextos (G
 
 **No aplica** a:
 - Nombres cortos usados como identificadores (`_base_modulo.md`, `MEMORY.md`) mencionados en prosa cuando el lector ya sabe dónde viven.
-- Referencias a **código fuente** (`.php`, `.js`, `.blade.php`, migraciones, seeds): esas también son links relativos, pero se abren directamente en el editor (`[app/Models/User.php](../../../app/Models/User.php)`).
+- Referencias a **código fuente** (archivos de código, plantillas de vista, migraciones, seeds — cualquier extensión del stack): también son links relativos, pero se abren directamente en el editor, no como HTML (ej. `[<ruta/legible/al/archivo>](../../../ruta/relativa/al/archivo)`).
 
 **Encadenamiento:** `DOC7` (referencias entre docs con historial cruzado bidireccional) — DOC14 define el **formato del link**; DOC7 el **contenido del cruce** (por qué + qué mejora aporta). Los dos aplican juntos.
+
+## DOC15 · Historias de Usuario desde plantilla central
+
+Al crear una Historia de Usuario (HU), el agente parte de la plantilla central `plantillas/HU.md` (fuente única, agnóstica) — **no** de una copia local ni de memoria. El resultado, ya rellenado, se escribe versionado en `documentacion/hus/<modulo>/HU-<NNN>-<slug>.md`.
+
+- **La plantilla NO se copia** a `.agente/` ni al proyecto: se lee del centro **cada vez**. Así, una mejora a `plantillas/HU.md` llega a todos los proyectos sin drift (a diferencia de los 4 archivos de `.agente/`, que sí se copian porque guardan datos propios de cada proyecto — la HU es formato, no datos).
+- **Nomenclatura:** `HU-<NNN>` correlativo por proyecto (o por módulo si la capa 3 lo declara) · `<slug>` corto en kebab-case.
+- **Contenido real, no plantilla en crudo:** rol específico (no "usuario" genérico), criterios de aceptación en Gherkin que cubran camino feliz + validación/error + caso borde, y las secciones que no apliquen se eliminan (no se dejan con los `[…]`).
+- **Trazabilidad:** cada HU nace en `Backlog`/`Ready` según su DoR; la §12 (bitácora) registra creación y cambios. Las tareas técnicas derivadas (§7) alimentan la planificación (`02` F4).
+- **Override capa 3:** un proyecto puede ajustar ruta, nomenclatura o secciones de la HU en `reglas-proyecto.md` (nunca el núcleo `00`).
+
+```
+INCORRECTO: escribir la HU de memoria o inventando el formato · o copiar HU.md dentro de .agente/ (se vuelve vieja)
+CORRECTO:   copiar de plantillas/HU.md (central) → rellenar con datos reales → guardar en documentacion/hus/<modulo>/HU-NNN-<slug>.md
+```
+
+**Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — las HU se agrupan por `<modulo>` del catálogo · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
 
 ---
 
