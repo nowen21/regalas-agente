@@ -6,6 +6,13 @@
 
 «Una o dos frases: qué resuelve, para quién.»
 
+## Contexto operativo
+
+- **Dominio:** «rubro / sector — ej. contable, salud, logística».
+- **Usuario típico:** «quién lo usa a diario y para qué — ej. contador, operario de campo, administrador».
+- **Sistemas con los que convive:** «integraciones y dependencias externas — APIs, pasarelas de pago, otros módulos/servicios, base compartida».
+- **Supuestos:** «lo que se da por cierto del entorno (volúmenes esperados, disponibilidad, versiones) — cada supuesto es un riesgo si resulta falso».
+
 ## Entidades del negocio
 
 Las cosas centrales del dominio y qué representan:
