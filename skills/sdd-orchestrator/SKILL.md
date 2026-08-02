@@ -5,7 +5,7 @@ description: Dirige el flujo completo de desarrollo (spec-driven) de punta a pun
 
 # SDD Orchestrator (el director)
 
-Coordina las 8 skills-rol como una **línea de montaje**: llama a cada una en su estación, **controla la puerta** de cada estación (nada avanza si no pasa), usa el **grafo de dependencias** del Task Planner para ordenar/paralelizar, y **persiste el estado** en cada puerta para sobrevivir a la compactación. No hace el trabajo de los roles; los **dirige**. Respeta el núcleo (`00`) por encima de todo.
+Coordina las 8 skills-rol (más la estación **HU**, dirigida por la regla `13·DOC15`) como una **línea de montaje**: llama a cada una en su estación, **controla la puerta** de cada estación (nada avanza si no pasa), usa el **grafo de dependencias** del Task Planner para ordenar/paralelizar, y **persiste el estado** en cada puerta para sobrevivir a la compactación. No hace el trabajo de los roles; los **dirige**. Respeta el núcleo (`00`) por encima de todo.
 
 ## Las estaciones y sus puertas
 
@@ -13,22 +13,24 @@ Coordina las 8 skills-rol como una **línea de montaje**: llama a cada una en su
 |---|---|---|---|
 | 1 | Explorer · `analizar-proyecto` | Contexto entendido, sin supuestos sin verificar | interna |
 | 2 | Proposer · `proponer-alcance` | **Alcance aprobado** | **usuario** |
-| 3 | Spec Writer · `generar-spec-modulo` | **Spec aprobada** | **usuario** |
-| 4 | Designer · `disenar-arquitectura` | Diseño coherente con la spec | interna |
-| 5 | Task Planner · `planificar-tareas` | **Plan + pruebas aprobados** | **usuario** |
-| 6 | Implementer · `implementar` | Plan implementado + pruebas verdes | interna |
-| 7 | Verifier · `cerrar-fase` | Trazabilidad sin faltantes | interna |
-| 8 | Crítico · `revisar-critico` | Sin hallazgos graves (o corregidos) | interna |
-| 9 | Cierre documental + señales | Docs y señales al día (`13`) | interna |
-| 10 | Commit | **Autorizado** | **usuario** (`00`·N2) |
-| 11 | Publicación / despliegue | **Autorizado** | **usuario** (`00`·N2) |
+| 3 | HU Writer · `13·DOC15` (desde `plantillas/HU.md`) | **HUs aprobadas** (épica descompuesta + criterios de aceptación) | **usuario** |
+| 4 | Spec Writer · `generar-spec-modulo` | **Spec aprobada** | **usuario** |
+| 5 | Designer · `disenar-arquitectura` | Diseño coherente con la spec | interna |
+| 6 | Task Planner · `planificar-tareas` | **Plan + pruebas aprobados** | **usuario** |
+| 7 | Implementer · `implementar` | Plan implementado + pruebas verdes | interna |
+| 8 | Verifier · `cerrar-fase` | Trazabilidad sin faltantes | interna |
+| 9 | Crítico · `revisar-critico` | Sin hallazgos graves (o corregidos) | interna |
+| 10 | Cierre documental + señales | Docs y señales al día (`13`) | interna |
+| 11 | Commit | **Autorizado** | **usuario** (`00`·N2) |
+| 12 | Publicación / despliegue | **Autorizado** | **usuario** (`00`·N2) |
 
 ## Reglas del director
 
 - **No saltar ni reordenar** estaciones. **No avanzar** si la puerta no pasa.
-- Las puertas de **usuario** (2, 3, 5, 10, 11) exigen OK explícito. Las **internas** son checkpoints de calidad que el director verifica.
-- En la estación 5, el Task Planner deriva la **matriz de casos de prueba** con la skill `generar-casos-prueba` (corner cases + triangulación) como parte del plan de pruebas.
-- En la estación 6, usar el **grafo de dependencias** del Task Planner: ejecutar en **orden topológico** y, si el entorno lo permite, correr en **paralelo** las tareas independientes.
+- Las puertas de **usuario** (2, 3, 4, 6, 11, 12) exigen OK explícito. Las **internas** son checkpoints de calidad que el director verifica.
+- En la estación 3 (**HU Writer**), generar las HUs según `13·DOC15` desde `plantillas/HU.md`, guardarlas en `documentacion/hus/<modulo>/` con su índice `README.md`. Cada HU declara la **épica** a la que pertenece (`F0` paso 4) y sus **criterios de aceptación**, que la spec (estación 4) recoge. En trabajos chicos la estación 3 puede **fundirse con el alcance** (una HU simple, sin épica formal) — declarándolo, no omitiéndolo (proporcionalidad `02·F0`).
+- En la estación 6, el Task Planner deriva la **matriz de casos de prueba** con la skill `generar-casos-prueba` (corner cases + triangulación) como parte del plan de pruebas.
+- En la estación 7, usar el **grafo de dependencias** del Task Planner: ejecutar en **orden topológico** y, si el entorno lo permite, correr en **paralelo** las tareas independientes.
 - **Aislamiento:** cada rol puede correr como **sub-agente** con su propio contexto (entrada acotada: la spec al Designer, el plan al Implementer). Si no hay sub-agentes disponibles, el mismo agente cambia de rol por estación.
 - El núcleo manda: no commit/push por iniciativa (`00`·N2), no romper para pasar (`00`·N3), no tocar datos reales (`00`·N4).
 
@@ -48,6 +50,6 @@ Si una puerta **no pasa** (pruebas rojas, hallazgo grave del Crítico, trazabili
 
 ## Salida
 
-Reporte del recorrido: hasta qué estación se llegó, qué puertas pasaron, y — si se bloqueó — en cuál y qué falta. Al llegar a la 9, la fase está lista para el commit que el usuario autorice.
+Reporte del recorrido: hasta qué estación se llegó, qué puertas pasaron, y — si se bloqueó — en cuál y qué falta. Al llegar a la 10, la fase está lista para el commit que el usuario autorice.
 
 Ver: los 8 roles en `skills/`, el flujo `02` (F1–F7, F4.2 las 11 etapas), el grafo del Task Planner, la memoria por señales (`13`·DOC5), y las notas de diseño en `notas/`.
