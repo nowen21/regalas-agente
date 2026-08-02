@@ -1,0 +1,67 @@
+# Brief — «Nombre del módulo / épica»   ·   `[CAPA 3]`
+
+> **Qué es este archivo.** El **brief de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo `02·F0`). Es el **insumo** del agente, no la spec ni una orden de entregar código.
+>
+> **Cómo usarlo.**
+> 1. Copiar esta plantilla al proyecto como `prompts/<slug>-brief.md` (un brief por módulo/épica).
+> 2. Reemplazar los `«…»` y borrar las secciones que no apliquen.
+> 3. Borrar este recuadro.
+>
+> **Regla de oro.** El brief responde **QUÉ se necesita y QUÉ no se negocia**. El **CÓMO y el CUÁNDO** (alcance, HU, spec, plan, orden, entrega) los pone el estándar. En cuanto un brief dice "dame el código de X", dejó de ser brief y choca con el flujo (`02·F2` sin spec no hay código · `F4` sin plan aprobado no hay código).
+
+**Encuadre para el agente:** este documento es el brief de entrada. El agente sigue el flujo del estándar — análisis (`F1`) → alcance (`proponer-alcance`) → épica/HU (`13·DOC15`) → spec (`F2`) → plan aprobado (`F4`) → implementación. **No generar código hasta que el plan esté aprobado.**
+
+---
+
+## 1. Necesidad — en una frase
+
+«Qué quiere resolver el negocio, en lenguaje de negocio, sin detalle técnico.»
+
+## 2. Contexto
+
+«Situación actual, problema que se resuelve, quién lo usa hoy, antecedentes.»
+
+> Si el punto de partida (un solo usuario, corre en local, etc.) **no** es un límite del diseño, decláralo: "esto es el punto de partida, no un tope — no recortar estructura apoyándose en ello".
+
+## 3. Objetivo y criterio de éxito
+
+- **Objetivo:** «qué se logra cuando esto esté hecho».
+- **Criterio de éxito:** «cómo se sabe, de forma medible, que se logró».
+
+## 4. Alcance esperado (acota expectativas)
+
+- **Qué SÍ se pide:** «capacidades que entran».
+- **Qué NO se pide / fuera de alcance:** «lo que explícitamente queda afuera».
+
+> El alcance **formal** se acuerda en la estación `proponer-alcance`. Esto es solo el borde inicial para que el agente no asuma de más.
+
+## 5. Restricciones técnicas (si el proyecto las fija)
+
+«Stack obligatorio, motor de BD, versiones, integraciones. Para los datos ya verificados del entorno (versiones, puertos, rutas), remitir a `.agente/stack.md` — no repetirlos aquí para no tener dos versiones que se contradigan.»
+
+## 6. Requerimientos funcionales
+
+Numerados. Uno por capacidad. Marcar el central si hay uno.
+
+1. «Requerimiento…»
+2. «Requerimiento…  ← REQUISITO CENTRAL» (si aplica)
+
+## 7. Restricciones no negociables
+
+Reglas duras que el diseño debe cumplir sí o sí (seguridad, privacidad, decisiones de arquitectura ya tomadas).
+
+- «Restricción…»
+
+## 8. Casos borde a considerar
+
+Lo que el agente debe contemplar aunque no sea el camino feliz.
+
+- «Encoding raro, archivos enormes, permisos, concurrencia, entradas inválidas…»
+
+## 9. Referencias
+
+- «Mockups, documentos funcionales, prompts previos, specs de módulos con los que convive.»
+
+---
+
+> **No incluir en un brief** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior…" (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el brief se convirtió en orden y va a chocar con el flujo.
