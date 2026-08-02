@@ -340,12 +340,32 @@ Al crear una Historia de Usuario (HU), el agente parte de la plantilla central `
 - **Trazabilidad:** cada HU nace en `Backlog`/`Ready` según su DoR; la §12 (bitácora) registra creación y cambios. Las tareas técnicas derivadas (§7) alimentan la planificación (`02` F4).
 - **Override capa 3:** un proyecto puede ajustar ruta, nomenclatura o secciones de la HU en `reglas-proyecto.md` (nunca el núcleo `00`).
 
+**Índice `README.md` en cada nivel del árbol de HU.** Ninguna carpeta bajo `documentacion/hus/` queda "muda": cada una —empezando por `documentacion/hus/` misma y bajando a cada subcarpeta— tiene un `README.md` que **lista y explica su contenido inmediato** (solo lo que cuelga directo de ella, no el árbol entero):
+
+- Si la carpeta tiene **subcarpetas** (una por módulo/épica/lo que aplique): una línea por subcarpeta con su nombre y una frase de qué contiene. **Cada subcarpeta repite el patrón** (su propio `README.md`) — recursivo hasta el último nivel.
+- Si la carpeta **solo tiene archivos** (las HU sueltas): igual se listan uno por uno, cada uno con su título y estado (`HU-012 — Alta de cliente · Ready`).
+- El `README.md` es **vivo**: se actualiza en el mismo cambio en que se crea, mueve o cierra una HU o carpeta. No es una foto de una fecha.
+
 ```
-INCORRECTO: escribir la HU de memoria o inventando el formato · o copiar HU.md dentro de .agente/ (se vuelve vieja)
-CORRECTO:   copiar de plantillas/HU.md (central) → rellenar con datos reales → guardar en documentacion/hus/<modulo>/HU-NNN-<slug>.md
+documentacion/hus/
+├── README.md            lista: "clientes/ — HU del módulo de clientes", "facturacion/ — …"
+├── clientes/
+│   ├── README.md        lista las HU de este módulo (o sus subcarpetas, si las hay)
+│   ├── HU-001-alta-cliente.md
+│   └── HU-002-editar-cliente.md
+└── facturacion/
+    ├── README.md
+    └── HU-003-emitir-factura.md
 ```
 
-**Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — las HU se agrupan por `<modulo>` del catálogo · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
+```
+INCORRECTO: escribir la HU de memoria o inventando el formato · o copiar HU.md dentro de .agente/ (se vuelve vieja)
+            · o dejar carpetas de hus/ sin README que diga qué hay dentro
+CORRECTO:   copiar de plantillas/HU.md (central) → rellenar con datos reales → guardar en documentacion/hus/<modulo>/HU-NNN-<slug>.md
+            + actualizar el README.md de esa carpeta (y los de arriba si se creó una carpeta nueva)
+```
+
+**Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — las HU se agrupan por `<modulo>` del catálogo; el `README.md` de `hus/` es el índice navegable de ese árbol · `DOC9` (mapa vivo) — mismo principio de "índice que se actualiza al cerrar, no foto" · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
 
 ---
 
