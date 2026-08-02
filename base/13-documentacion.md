@@ -375,7 +375,7 @@ Al crear una Épica, el agente parte de `plantillas/epica.md` (fuente única, ag
 - **Nomenclatura:** `EP-<NNN>` correlativo por proyecto · `<slug>` corto en kebab-case.
 - **Enlace bidireccional con las HU:** la épica lista sus HUs (§9 de la plantilla) y cada HU declara a qué épica pertenece (`HU.md §1`). Al crear o mover una HU se actualizan **los dos lados**.
 - **Criterios de resultado, no de pantalla:** los criterios de aceptación de la épica (§7) son de negocio/resultado; el detalle de comportamiento vive en las HU.
-- **Cuándo NO amerita épica:** en trabajos chicos, una necesidad clara va directo a una o pocas HU, sin épica formal (proporcionalidad `02·F0`). La épica se justifica cuando agrupa **varias** HU con un objetivo común que abarca varias fases/sprints.
+- **La épica es obligatoria:** toda HU pertenece a una épica, aunque la épica agrupe **una sola** HU. No se omite ni se fusiona por tamaño (`02·F0` cadena obligatoria). El brief le da origen: sin brief no hay épica.
 - **Índice vivo:** el árbol `documentacion/epicas/` sigue el mismo `README.md` por nivel de `DOC15`.
 - **Override capa 3:** ruta, nomenclatura o secciones ajustables en `reglas-proyecto.md` (nunca el núcleo `00`).
 

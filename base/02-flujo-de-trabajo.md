@@ -10,7 +10,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 
 | # | Paso | Qué responde | Dónde está la regla |
 |---|---|---|---|
-| 0 | **Necesidad / idea** | qué quiere resolver el negocio | disparo del usuario · si se escribe, va como **brief** (`plantillas/brief.md` → `prompts/<slug>-brief.md`) |
+| 0 | **Necesidad / idea** | qué quiere resolver el negocio | se escribe **siempre** como **brief** (`plantillas/brief.md` → `prompts/<slug>-brief.md`) · **obligatorio** |
 | 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | `F1` · `F4.3` · skill `analizar-proyecto` |
 | 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | `00-identidad` · skill `proponer-alcance` |
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · `00-identidad` |
@@ -18,9 +18,9 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | `13·DOC15` |
 | 6 | **Fase (ejecución)** — spec → **plan** → implementar → probar → cerrar → commit | cómo y cuándo se construye | `F2`–`F11` · las 11 etapas de `F4.2` |
 
-**Orden inquebrantable:** cada paso se apoya en el anterior. No se escriben HUs sin épica/alcance; no se planifica sin HU (o sin spec que la recoja, `F2`); no se codifica sin plan aprobado (`F4`). Planificar o descomponer sin el encuadre de arriba es construir sobre el vacío.
+**Cadena obligatoria — sin excepción por tamaño.** Sin **brief** no hay **épica**, sin épica no hay **HU**, sin HU no hay **spec/plan**, sin plan aprobado no hay **código**. Ningún eslabón se salta, se fusiona con otro ni se omite por ser el trabajo "chico": **todo desarrollo** (funcionalidad nueva o cambio de comportamiento) recorre la cadena completa `brief → épica → HU → spec → plan → código`, grande o chico. Si te piden un paso y falta el anterior, **PAUSAR y crearlo primero** — nunca inventar hacia adelante. Lo **único** fuera de la cadena es lo que **no es desarrollo**: lectura/investigación, config local, comandos que el usuario pide y bugfix que solo realinea el código a la spec existente (`F2` excepciones).
 
-**El brief (paso 0)** es la necesidad escrita y sus restricciones — el insumo del flujo, no una orden. Un brief **nunca** pide entregar código de una vez ni fija el orden de implementación (eso lo pone este capítulo): si lo hace, choca con `F2`/`F4`. Plantilla: `plantillas/brief.md` → se copia al proyecto como `prompts/<slug>-brief.md`.
+**El brief (paso 0)** es la necesidad escrita y sus restricciones — el insumo del flujo, no una orden. Plantilla: `plantillas/brief.md` → se copia al proyecto como `prompts/<slug>-brief.md`.
 
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
@@ -30,7 +30,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 
 Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
 
-**Proporcionalidad:** en un cambio chico los pasos 0–5 pueden ser una sola conversación corta — una necesidad clara ya alcanza para una HU, sin épica formal ni spec separada. Lo que **no** cambia es el **orden lógico**: entender → definir necesidad y borde → descomponer → planificar → construir.
+**Sin atajos por tamaño.** Un trabajo chico **no** exime de la cadena: igual lleva su brief, su épica, su HU, su spec y su plan — cada uno **existe como artefacto propio**, no se omite ni se fusiona con otro. El orden es siempre: entender → definir necesidad y borde → descomponer (épica → HU) → planificar → construir.
 
 ```
 INCORRECTO: llega una idea → se escribe el plan de trabajo directo
@@ -83,7 +83,7 @@ Cada plan se acompaña de las pruebas: qué se prueba, escenarios (feliz, límit
 
 **Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a las HU/CA que cubre la fase); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/fase-<XX>-<slug>/`. La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
 
-**Antes de redactar el plan — verificar la cadena que lo respalda.** Un plan no nace de la nada: se deriva de una **HU con sus criterios de aceptación** (y la **spec del módulo**, `F2`). Si te piden "creá el plan de X" y falta el eslabón que lo respalda (no hay HU/spec, o no se sabe de qué épica/necesidad sale), **PAUSAR y retroceder** al paso faltante — no inventar el plan. Para trabajo **chico** el eslabón puede ser la necesidad clara del chat; para trabajo **grande**, la cadena `brief → épica → HU → spec`. Encadena con `F0` (orden inquebrantable) y `F2` (sin spec no hay código).
+**Antes de redactar el plan — verificar la cadena que lo respalda.** Un plan no nace de la nada: se deriva de una **HU con sus criterios de aceptación** (y la **spec del módulo**, `F2`). Si te piden "creá el plan de X" y falta el eslabón que lo respalda (no hay HU/spec, o no se sabe de qué épica/brief sale), **PAUSAR y retroceder** al paso faltante — no inventar el plan. La cadena `brief → épica → HU → spec` es **obligatoria siempre**, sin atajo por tamaño. Encadena con `F0` (cadena obligatoria) y `F2` (sin spec no hay código).
 
 ```
 INCORRECTO: "creá el plan de trabajo de X" → el agente redacta el plan sin que exista

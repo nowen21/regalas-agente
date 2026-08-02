@@ -28,8 +28,9 @@ Coordina las 8 skills-rol (más las estaciones **Épica** y **HU**, dirigidas po
 ## Reglas del director
 
 - **No saltar ni reordenar** estaciones. **No avanzar** si la puerta no pasa.
+- **Precondición (paso 0):** antes de la estación 1 debe existir el **brief** (`plantillas/brief.md` → `prompts/<slug>-brief.md`). Es **obligatorio** (`02·F0` cadena). Si no existe, el director lo pide o ayuda a redactarlo y el usuario lo aprueba antes de arrancar. Sin brief no se orquesta.
 - Las puertas de **usuario** (2, 3, 4, 5, 7, 12, 13) exigen OK explícito. Las **internas** son checkpoints de calidad que el director verifica.
-- En la estación 3 (**Épica Writer**), generar la épica según `13·DOC16` desde `plantillas/epica.md`, guardarla en `documentacion/epicas/EP-<NNN>-<slug>.md`. Define problema, valor, criterios de **resultado** y las HUs que la componen. En trabajos chicos se **funde con las HU** (sin épica formal) — declarándolo, no omitiéndolo (proporcionalidad `02·F0`).
+- En la estación 3 (**Épica Writer**), generar la épica según `13·DOC16` desde `plantillas/epica.md`, guardarla en `documentacion/epicas/EP-<NNN>-<slug>.md`. Define problema, valor, criterios de **resultado** y las HUs que la componen. **Obligatoria siempre** — no se funde con las HU ni se omite por tamaño (`02·F0` cadena obligatoria); requiere el brief (precondición) que le da origen.
 - En la estación 4 (**HU Writer**), generar las HUs según `13·DOC15` desde `plantillas/HU.md`, guardarlas en `documentacion/hus/<modulo>/` con su índice `README.md`. Cada HU declara su **épica** (estación 3) y sus **criterios de aceptación**, que la spec (estación 5) recoge.
 - En la estación 7, el Task Planner deriva la **matriz de casos de prueba** con la skill `generar-casos-prueba` (corner cases + triangulación) como parte del plan de pruebas.
 - En la estación 8, usar el **grafo de dependencias** del Task Planner: ejecutar en **orden topológico** y, si el entorno lo permite, correr en **paralelo** las tareas independientes.
