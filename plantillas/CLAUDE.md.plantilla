@@ -49,7 +49,8 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
 1. **Cargar y obedecer las reglas base** desde la ruta de `base` del punto 1: **todos** los archivos numerados de `base/` (de `00` en adelante — así, si el estándar agrega secciones nuevas, se cargan solas). El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
 2. **Comprobar si existe la carpeta `./.agente/`:**
    - **Si NO existe:** crearla y copiar en ella **únicamente estos 4 archivos** desde la ruta de `plantillas` del punto 1: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. No copiar ningún otro archivo. No copiar este `CLAUDE.md`. Luego llenarlos: **deducir del proyecto** lo que se pueda (lenguaje, dependencias, estructura de carpetas) y **preguntar al usuario** lo que no se pueda deducir (reglas de negocio, sector, normas). No inventar datos.
-   - **Si SÍ existe:** leer esos 4 archivos y trabajar según lo que declaran. No volver a copiarlos ni sobrescribirlos.
+   - **Si SÍ existe:** leer esos 4 archivos y trabajar según lo que declaran. **No sobrescribirlos** (guardan datos del proyecto).
+   - **Chequeo de sincronización aditiva:** comparar cada archivo de `./.agente/` con su plantilla central (`plantillas/`). Si la plantilla ganó **secciones nuevas** que el archivo local no tiene, **avisar al usuario y ofrecer agregarlas vacías** para que las llene. Regla: **solo añadir** las secciones faltantes — **nunca** sobrescribir, reordenar ni borrar lo ya escrito. Aplica igual a `reglas-proyecto.md`. Así las mejoras de estructura del estándar llegan a los proyectos sin pisar sus datos.
 3. **Si existe `./.agente/reglas-proyecto.md`,** leerlo y aplicarlo (reglas propias del proyecto — ver punto 5.2).
 4. **Aplicar los ajustes** del punto 5.1.
 
