@@ -9,6 +9,8 @@
 >    CLAUDE.md
 >    .agente/
 >    ```
+> 4. **Registrar este proyecto** en el registro central de la carpeta del estándar: `«ruta-al-estandar»\plantillas\proyectos.md`. Agregar una fila con: nombre · ruta · scope de memoria (`proyecto:<slug>`) · stack. Ese archivo es la **lista única** de proyectos que usan el agente (es local, no versionado). Este apartado (el recuadro) se borra de este `CLAUDE.md`, así que la lista **solo** vive en el registro central.
+>
 > Motivo: `CLAUDE.md` y la carpeta `.agente/` son configuración local de la máquina; no forman parte del repositorio del proyecto.
 
 El estándar (las reglas) está instalado en una carpeta central **fuera de este proyecto**. El agente (Claude Code) lo lee desde ahí; no se copia dentro del proyecto.

@@ -15,3 +15,6 @@ interfaz/_visor.sqlite3
 # Compilados de Python
 __pycache__/
 *.pyc
+
+# Registro local de proyectos que usan el agente (data de la maquina, no del estandar)
+plantillas/proyectos.md
