@@ -25,7 +25,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
 - **Módulo** — unidad **técnica** (un dominio del sistema con su código y rutas · `13·DOC13`).
-- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Es lo que sigue después de la HU; su **relación con la HU y su nomenclatura** las define `F12` (fuente única).
+- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Es lo que sigue después de la HU; su **relación con la HU** (`F12.1`) y su **nomenclatura** (`F12.6`) las define F12 (fuente única).
 - **Épica** — unidad de **necesidad**: agrupa historias afines por el valor que entregan.
 
 Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
@@ -81,7 +81,7 @@ CORRECTO:   ejecuto todo el plan → reporto el resultado
 
 Cada plan se acompaña de las pruebas: qué se prueba, escenarios (feliz, límites, errores, permisos), qué archivo, qué se verifica. Si no amerita prueba (visual/trivial), decláralo: "Sin pruebas — cambio visual".
 
-**Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a la HU/CA que cubre la fase — **una sola HU**, `F12`); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/<identificador-de-fase>/` (identificador según `F12`). La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
+**Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a la HU/CA que cubre la fase — **una sola HU**, `F12.1`); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en la ruta de la fase (`F12.13`; identificador `F12.6`). La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
 
 **Antes de redactar el plan — verificar la cadena que lo respalda.** Un plan no nace de la nada: se deriva de una **HU con sus criterios de aceptación** (y la **spec del módulo**, `F2`). Si te piden "creá el plan de X" y falta el eslabón que lo respalda (no hay HU/spec, o no se sabe de qué épica/brief sale), **PAUSAR y retroceder** al paso faltante — no inventar el plan. La cadena `brief → épica → HU → spec` es **obligatoria siempre**, sin atajo por tamaño. Encadena con `F0` (cadena obligatoria) y `F2` (sin spec no hay código).
 
@@ -146,7 +146,7 @@ Cada fase de trabajo (spec + plan + código + pruebas + docs + commit) sigue **1
 
 | # | Etapa | Quién actúa | Hito de cierre |
 |---|---|---|---|
-| 1 | **Declaración macro de la fase** en el spec/prompt del módulo (§Fases). | Agente (redacta) + usuario (aprueba spec en su momento) | Bloque de fase con su **identificador** (`F12`), origen, alcance macro, fuera-de-scope |
+| 1 | **Declaración macro de la fase** en el spec/prompt del módulo (§Fases). | Agente (redacta) + usuario (aprueba spec en su momento) | Bloque de fase con su **identificador** (`F12.6`), origen, alcance macro, fuera-de-scope |
 | 2 | **Disparo / autorización de inicio** de la fase | Usuario ("arranque con X", "siga con Y") | El agente entiende que puede empezar a diseñar el plan detallado |
 | 3 | **Diseño del plan detallado** — `plan_trabajo` (responde F4.1) + `plan_pruebas` | Agente | Documentos redactados. NO toca código todavía |
 | 4 | **Pausa + presentación** del par de documentos al usuario | Agente | Mensaje al usuario con resumen y punteros a los documentos |
@@ -266,7 +266,7 @@ Toda intervención listada en el plan (código · migración · seed · vista ·
 - Escribir el plan "según lo que la IA infirió" cuando el usuario dio N CA concretos — el plan debe ceñirse a esos N.
 
 **Encadenamiento:**
-- **F12** — el punto «una fase puede corresponder directamente a un CA» (`02-flujo-de-trabajo/F12/base.md`); F4.4 desarrolla que el `plan_trabajo` se deriva de esos CA de la HU.
+- **F12.9** — «una fase puede corresponder directamente a un CA»; F4.4 desarrolla que el `plan_trabajo` se deriva de esos CA de la HU.
 - **F4.1** — la pregunta 3 (qué gap cierra) y la pregunta 9 (qué archivos se tocan) se cruzan en una tabla ítem→CA.
 - **F4.2 · etapa 3** — el diseño del plan es DERIVADO de los CA aprobados, no invención.
 - **F4.5** — lo que "convendría" agregar pero no está en CA sigue la ruta de propuesta (parar + mostrar + esperar), no se cuela al plan.
@@ -304,7 +304,7 @@ Toda intervención listada en el plan (código · migración · seed · vista ·
 
 **Encadenamiento:**
 - **F4.4** — proveedor del "plan deriva de CA"; F4.5 añade que **descubrimientos** fuera de CA también se proponen (no solo se filtran del plan · se pausan y consultan).
-- **F12** — los puntos «una fase puede corresponder a un CA» y «no crear una fase solo por nomenclatura» (`02-flujo-de-trabajo/F12/base.md`); F4.5 asegura que la ejecución sea **literal** a esos CA.
+- **F12.9 / F12.10** — «una fase puede corresponder a un CA» y «no crear una fase solo por nomenclatura»; F4.5 asegura que la ejecución sea **literal** a esos CA.
 - **C17** — la confirmación previa y F4.5 se refuerzan: C17 dice "no ejecutar sin OK explícito"; F4.5 dice "los descubrimientos no son excepción a C17".
 - **C3** — preguntas del usuario NO son autorización de acción; una pregunta se responde y se espera instrucción.
 - **F8** — solo se tocan archivos declarados en el plan aprobado; los descubrimientos activan la vía "PAUSAR + reportar + esperar OK" para ampliar el plan.
@@ -439,7 +439,7 @@ CORRECTO:   plan de trabajo asume "probablemente está en prod" + declara la est
 
 ## F11 · Una fase solo modifica código de su propio módulo — cross-módulo prohibido
 
-Una fase pertenece a **un** módulo **y** a **una sola HU** (`F12`) — las dos condiciones aplican a la vez. Si una HU abarca varios módulos, se parte en **una fase por módulo**, todas bajo esa misma HU. El módulo se declara al abrir la fase (ver `DOC12` — ORIGEN). Todos los archivos que la fase modifica deben pertenecer a ese módulo. Cross-módulo está prohibido por defecto.
+Una fase pertenece a **un** módulo **y** a **una sola HU** (`F12.1`) — las dos condiciones aplican a la vez. Si una HU abarca varios módulos, se parte en **una fase por módulo**, todas bajo esa misma HU. El módulo se declara al abrir la fase (ver `DOC12` — ORIGEN). Todos los archivos que la fase modifica deben pertenecer a ese módulo. Cross-módulo está prohibido por defecto.
 
 **Si al diseñar la fase (etapa 3 del ciclo `F4.2`) aparece que también hay que modificar archivos de OTROS módulos:**
 
@@ -486,6 +486,6 @@ Regla completa (fuente única): [`02-flujo-de-trabajo/F12/base.md`](02-flujo-de-
 
 **Secuencia macro (0–6):** en `F0`. **Secuencia del plan hacia abajo:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) **derivado de los CA de la HU (F4.4)** → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **literal a los CA · descubrimientos se proponen (F4.5)** · **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
 
-**Fases:** identificador y relación con la HU en `F12`.
+**Fases:** identificador (`F12.6`) y relación con la HU (`F12.1`) en `F12`.
 
 Consolidado como **ciclo de 11 etapas en F4.2** — usar esa tabla como referencia operativa canónica del flujo completo de una fase.

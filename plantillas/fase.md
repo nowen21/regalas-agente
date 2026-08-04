@@ -1,6 +1,6 @@
 # Fase «A-EP01-HU03-Descripción de lo realizado»   ·   `[CAPA 3]`
 
-> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** `02·F12` → `base/02-flujo-de-trabajo/F12/base.md` (aquí **no** se duplican). La carpeta de la fase se guarda en `documentacion/<modulo>/<identificador-de-fase>/`. Reemplaza los `«…»` y borra esta caja.
+> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** `02·F12` → `base/02-flujo-de-trabajo/F12/base.md` (aquí **no** se duplican). La ruta de la carpeta de la fase es `02·F12.13`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -11,19 +11,19 @@
 | **Identificador** | `«A-EP01-HU03-Configuración de la estructura inicial»` |
 | **Consecutivo** (orden dentro de la HU) | `«A»` (A, B, C, …, Z, AA, AB, …) |
 | **Épica** | `EP«01»` |
-| **HU** | `HU«03»` — **una sola** (`02·F12`) |
+| **HU** | `HU«03»` — **una sola** (`02·F12.1`) |
 | **Descripción** | «qué se realiza en esta fase» |
 | **Módulo** | «M» |
 
-> **El formato del nombre y sus reglas** (consecutivo alfabético, orden, variante de complemento) son la fuente única `02·F12`. Ej.: `A-EP01-HU03-Configuración de la estructura inicial`.
+> **El formato del nombre y sus reglas:** nomenclatura `02·F12.6`, orden/consecutivo `02·F12.7`, variante de complemento `02·F12.12`. Ej.: `A-EP01-HU03-Configuración de la estructura inicial`.
 
 ---
 
 ## 2. Origen  ·  `13·DOC12`
 
-Declarar 1 de 3 (o híbrido) — las reglas de origen y complemento son la fuente única `02·F12`:
+Declarar 1 de 3 (o híbrido) — regla de origen (complementar/ampliar/continuar) en `02·F12.8`:
 
-- 📝 **Continúa / modifica fase(s) anterior(es):** «cuál(es) de esta HU y qué retoma, complementa o amplía». Si **complementa**, el identificador usa el formato con complemento (`02·F12`).
+- 📝 **Continúa / modifica fase(s) anterior(es):** «cuál(es) de esta HU y qué retoma, complementa o amplía». Si **complementa**, el identificador usa el formato con complemento (`02·F12.12`).
 - ✨ **Funcionalidad nueva:** «qué introduce que no cubrían las fases previas de la HU».
 - 🔀 **Híbrido:** ambos.
 
@@ -31,7 +31,7 @@ Declarar 1 de 3 (o híbrido) — las reglas de origen y complemento son la fuent
 
 ## 3. Criterios de aceptación que cubre
 
-Reglas sobre qué CA cubre una fase (y el principio "no crear una fase solo por nomenclatura"): fuente única `02·F12`.
+Reglas sobre qué CA cubre una fase: `02·F12.9`; el principio "no crear una fase solo por nomenclatura": `02·F12.10`.
 
 | CA de la HU | ¿Se delimita/valida aparte en esta fase? |
 |---|---|
@@ -56,4 +56,4 @@ La carpeta `documentacion/<modulo>/<identificador-de-fase>/` contiene:
 
 ## 5. Jerarquía y relación con la HU
 
-`Épica → HU → Fases`. Las reglas (una fase = una sola HU, ningún identificador bajo dos HU, etc.) son la fuente única `02·F12` → `base/02-flujo-de-trabajo/F12/base.md`.
+`Épica → HU → Fases` (`02·F12.11`). Reglas relacionadas: una fase = una sola HU (`F12.1`), ningún identificador bajo dos HU (`F12.4`). Fuente única: `base/02-flujo-de-trabajo/F12/base.md`.

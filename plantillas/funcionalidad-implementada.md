@@ -1,6 +1,6 @@
 # Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
-> Documento de **cierre de una fase** (`02·F6`/`F7`). Consolida qué se implementó, la **trazabilidad spec → código** (`13·DOC11`), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en `documentacion/<modulo>/<identificador-de-fase>/funcionalidad_implementada.md` (identificador según `02·F12`). Reemplaza los `«…»` y borra esta caja.
+> Documento de **cierre de una fase** (`02·F6`/`F7`). Consolida qué se implementó, la **trazabilidad spec → código** (`13·DOC11`), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12`) | `«A-EP01-HU03-Descripción»` |
+| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
 | **Spec del módulo** | [enlace · `02·F2`] |
 | **Plan de trabajo** | [enlace · `plan_trabajo.md`] |

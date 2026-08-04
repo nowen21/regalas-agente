@@ -8,7 +8,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12`) | `«A-EP01-HU03-Descripción»` |
+| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
 | **Brief / Épica / HU** | «punteros» |
 | **Última actualización** | AAAA-MM-DD |
