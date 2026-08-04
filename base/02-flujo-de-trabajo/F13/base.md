@@ -1,5 +1,7 @@
-# F13 · Estructura base obligatoria del proyecto
+# F13 · Estructura base obligatoria del proyecto   ·   `[GATE DE ARRANQUE · PRECONDICIÓN]`
 
+> **Precondición de arranque:** aunque su ID sea `F13`, esta regla **corre primero** — antes de cargar contexto (`F1`) y de cualquier paso del flujo. El número es solo un identificador de catálogo, no orden de ejecución. Se aplica en `CLAUDE.md §3` (paso previo obligatorio).
+>
 > **Fuente única de la regla F13.** El índice `02-flujo-de-trabajo.md` solo la referencia; el detalle vive aquí. La estructura está definida en la plantilla `plantillas/base-proyecto.md`.
 
 ## Alcance — solo valida estructura
@@ -13,7 +15,23 @@ Si durante F13 el agente usa información del stack, el propósito o el dominio,
 Al arrancar, el agente valida **un solo hecho**: **¿existe la carpeta `proyectos/`?** — donde el usuario coloca el/los código(s) fuente.
 
 - **SÍ** → el agente **crea su espacio de trabajo** (`.agente/`, `prompts/`, `documentacion/`) al lado y continúa.
-- **NO** → **no cumple**: el agente **no crea nada**, **se detiene** y **orienta al usuario** para que cree `proyectos/` y coloque ahí el código. El usuario decide la ubicación y los nombres (ej. RNI: `proyectos/rni-back/` + `proyectos/rni-front/`) — el agente **no lo asume**.
+- **NO** → **no cumple**: el agente **no crea nada**, **se detiene** y **muestra al usuario el mensaje de orientación** (abajo). El usuario decide la ubicación y los nombres (ej. RNI: `proyectos/rni-back/` + `proyectos/rni-front/`) — el agente **no lo asume**.
+
+**Mensaje de orientación (cuando `proyectos/` NO existe):**
+
+```
+⚠️ No puedo continuar: falta la estructura base.
+
+No existe la carpeta `proyectos/`, donde debe vivir el código fuente.
+
+Para continuar, creá:
+    proyectos/
+    └── <tu-proyecto>/     ← coloca aquí tu código (uno o varios proyectos)
+
+Vos decidís la organización y los nombres. Cuando `proyectos/` exista,
+creo mi espacio (.agente/, prompts/, documentacion/) y sigo.
+No adecúo el proyecto por mi cuenta.
+```
 
 ## Qué crea el agente y qué no
 

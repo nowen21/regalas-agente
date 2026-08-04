@@ -243,3 +243,24 @@ Ante un pedido que admita más de una lectura razonable, **antes** de mover cód
 > "Entiendo que quieres [X con matiz Y]. ¿Confirmas antes de tocar código?"
 
 **Encadenamiento:** balancea `C1` (avisa antes de tocar) con la ejecución fluida — la aprobación previa evita el ciclo *"tocar → corregir → deshacer"*. Encadena con `F4.4` (plan_trabajo derivado de los CA aprobados): la confirmación previa asegura que los CA reflejen el pedido REAL antes de derivar el plan.
+
+## C18 · Auto-sincronización del `CLAUDE.md` con la plantilla central
+
+El `CLAUDE.md` de cada proyecto es una **copia local** de `plantillas/CLAUDE.md.plantilla`. Cuando el estándar mejora la plantilla (un paso nuevo en §3, una sección nueva), el `CLAUDE.md` del proyecto queda **viejo**. Esta regla vive en `base/` **a propósito**: `base/` se carga siempre, así que corre **aunque el `CLAUDE.md` local esté desactualizado** (no puede vivir dentro del propio `CLAUDE.md` — un `CLAUDE.md` viejo no la tendría).
+
+**Al iniciar cada sesión**, el agente:
+
+1. **Compara** el `CLAUDE.md` local contra `plantillas/CLAUDE.md.plantilla` (central).
+2. Si la plantilla tiene **secciones o pasos nuevos** que el local no tiene, **avisa al usuario y ofrece aplicarlos**.
+3. **Solo añade/actualiza lo estructural común** (los pasos del arranque §3, precedencia §4, etc.); **preserva** siempre lo específico del proyecto: rutas de §1, ajustes de §5.1, slug, y todo valor ya llenado. **Nunca** sobrescribe ni borra lo configurado.
+4. Es **aditivo y con OK del usuario** — jamás cambia el `CLAUDE.md` en silencio.
+
+Así, un cambio a `CLAUDE.md.plantilla` **se propaga solo** a cada proyecto en su próxima sesión — sin edición manual proyecto por proyecto.
+
+```
+INCORRECTO: se mejora CLAUDE.md.plantilla · hay que editar a mano el CLAUDE.md de cada proyecto
+CORRECTO:   se mejora la plantilla una vez · cada proyecto detecta el cambio al arrancar,
+            avisa y ofrece aplicarlo (aditivo, preservando lo propio)
+```
+
+**Encadenamiento:** complementa el "chequeo de sincronización aditiva" de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
