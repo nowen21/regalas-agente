@@ -25,7 +25,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
 - **Módulo** — unidad **técnica** (un dominio del sistema con su código y rutas · `13·DOC13`).
-- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Pertenece a **una sola HU** (paso 5 · `F12`); una HU tiene **1+ fases** (una HU grande se parte en varias). Es lo que sigue después de la HU.
+- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Es lo que sigue después de la HU; su **relación con la HU y su nomenclatura** las define `F12` (fuente única).
 - **Épica** — unidad de **necesidad**: agrupa historias afines por el valor que entregan.
 
 Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
@@ -266,6 +266,7 @@ Toda intervención listada en el plan (código · migración · seed · vista ·
 - Escribir el plan "según lo que la IA infirió" cuando el usuario dio N CA concretos — el plan debe ceñirse a esos N.
 
 **Encadenamiento:**
+- **F12** — el punto «una fase puede corresponder directamente a un CA» (`02-flujo-de-trabajo/F12/base.md`); F4.4 desarrolla que el `plan_trabajo` se deriva de esos CA de la HU.
 - **F4.1** — la pregunta 3 (qué gap cierra) y la pregunta 9 (qué archivos se tocan) se cruzan en una tabla ítem→CA.
 - **F4.2 · etapa 3** — el diseño del plan es DERIVADO de los CA aprobados, no invención.
 - **F4.5** — lo que "convendría" agregar pero no está en CA sigue la ruta de propuesta (parar + mostrar + esperar), no se cuela al plan.
@@ -303,6 +304,7 @@ Toda intervención listada en el plan (código · migración · seed · vista ·
 
 **Encadenamiento:**
 - **F4.4** — proveedor del "plan deriva de CA"; F4.5 añade que **descubrimientos** fuera de CA también se proponen (no solo se filtran del plan · se pausan y consultan).
+- **F12** — los puntos «una fase puede corresponder a un CA» y «no crear una fase solo por nomenclatura» (`02-flujo-de-trabajo/F12/base.md`); F4.5 asegura que la ejecución sea **literal** a esos CA.
 - **C17** — la confirmación previa y F4.5 se refuerzan: C17 dice "no ejecutar sin OK explícito"; F4.5 dice "los descubrimientos no son excepción a C17".
 - **C3** — preguntas del usuario NO son autorización de acción; una pregunta se responde y se espera instrucción.
 - **F8** — solo se tocan archivos declarados en el plan aprobado; los descubrimientos activan la vía "PAUSAR + reportar + esperar OK" para ampliar el plan.
@@ -437,7 +439,7 @@ CORRECTO:   plan de trabajo asume "probablemente está en prod" + declara la est
 
 ## F11 · Una fase solo modifica código de su propio módulo — cross-módulo prohibido
 
-Una fase pertenece a **un** módulo. El módulo se declara al abrir la fase (ver `DOC12` — ORIGEN). Todos los archivos que la fase modifica deben pertenecer a ese módulo. Cross-módulo está prohibido por defecto.
+Una fase pertenece a **un** módulo **y** a **una sola HU** (`F12`) — las dos condiciones aplican a la vez. Si una HU abarca varios módulos, se parte en **una fase por módulo**, todas bajo esa misma HU. El módulo se declara al abrir la fase (ver `DOC12` — ORIGEN). Todos los archivos que la fase modifica deben pertenecer a ese módulo. Cross-módulo está prohibido por defecto.
 
 **Si al diseñar la fase (etapa 3 del ciclo `F4.2`) aparece que también hay que modificar archivos de OTROS módulos:**
 
