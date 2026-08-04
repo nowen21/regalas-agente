@@ -25,7 +25,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo** (F2 en adelante). Per
 **Épica / Feature (paso 4)** — un bloque de funcionalidad con valor de negocio, demasiado grande para una sola HU. Se descompone en varias HUs, y cada HU declara a qué épica pertenece (`HU.md §1`). No confundir con:
 
 - **Módulo** — unidad **técnica** (un dominio del sistema con su código y rutas · `13·DOC13`).
-- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Una fase cubre **1+ HU** (paso 5); una HU grande se parte en **varias fases**. Es lo que sigue después de la HU.
+- **Fase** — unidad de **ejecución** (**el paso 6**): un plan de trabajo con su cierre y commit (`F4.2`). Pertenece a **una sola HU** (paso 5 · `F12`); una HU tiene **1+ fases** (una HU grande se parte en varias). Es lo que sigue después de la HU.
 - **Épica** — unidad de **necesidad**: agrupa historias afines por el valor que entregan.
 
 Ejemplo: épica *"Facturación electrónica"* → HU *"emitir factura"* + HU *"anular factura"* + HU *"consultar factura"*.
@@ -81,7 +81,7 @@ CORRECTO:   ejecuto todo el plan → reporto el resultado
 
 Cada plan se acompaña de las pruebas: qué se prueba, escenarios (feliz, límites, errores, permisos), qué archivo, qué se verifica. Si no amerita prueba (visual/trivial), decláralo: "Sin pruebas — cambio visual".
 
-**Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a las HU/CA que cubre la fase); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/fase-<XX>-<slug>/`. La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
+**Plantillas canónicas** (capa 3): el `plan_trabajo` sigue `plantillas/planes/trabajo.md` (responde las 13 preguntas de `F4.1` sobre la línea base de `F4.3`, con trazabilidad a la HU/CA que cubre la fase — **una sola HU**, `F12`); el `plan_pruebas` sigue `plantillas/planes/pruebas.md` (triangulación de casos, trazabilidad CA→caso y alcance quirúrgico de la corrida `F5`). Ambos se guardan en `documentacion/<modulo>/<identificador-de-fase>/` (identificador según `F12`). La capa 3 puede ajustar las secciones opcionales (equipo/sprint) por proporcionalidad.
 
 **Antes de redactar el plan — verificar la cadena que lo respalda.** Un plan no nace de la nada: se deriva de una **HU con sus criterios de aceptación** (y la **spec del módulo**, `F2`). Si te piden "creá el plan de X" y falta el eslabón que lo respalda (no hay HU/spec, o no se sabe de qué épica/brief sale), **PAUSAR y retroceder** al paso faltante — no inventar el plan. La cadena `brief → épica → HU → spec` es **obligatoria siempre**, sin atajo por tamaño. Encadena con `F0` (cadena obligatoria) y `F2` (sin spec no hay código).
 
@@ -146,7 +146,7 @@ Cada fase de trabajo (spec + plan + código + pruebas + docs + commit) sigue **1
 
 | # | Etapa | Quién actúa | Hito de cierre |
 |---|---|---|---|
-| 1 | **Declaración macro de la fase** en el spec/prompt del módulo (§Fases). | Agente (redacta) + usuario (aprueba spec en su momento) | Bloque `### Fase XX` con origen, alcance macro, fuera-de-scope |
+| 1 | **Declaración macro de la fase** en el spec/prompt del módulo (§Fases). | Agente (redacta) + usuario (aprueba spec en su momento) | Bloque de fase con su **identificador** (`F12`), origen, alcance macro, fuera-de-scope |
 | 2 | **Disparo / autorización de inicio** de la fase | Usuario ("arranque con X", "siga con Y") | El agente entiende que puede empezar a diseñar el plan detallado |
 | 3 | **Diseño del plan detallado** — `plan_trabajo` (responde F4.1) + `plan_pruebas` | Agente | Documentos redactados. NO toca código todavía |
 | 4 | **Pausa + presentación** del par de documentos al usuario | Agente | Mensaje al usuario con resumen y punteros a los documentos |
@@ -240,6 +240,72 @@ CORRECTO:   antes del plan, matriz de dependencias: buscar los usos de `estado` 
 - **F4.1 pregunta 9** — el listado de archivos es verificado, no aproximado.
 - **F4.2 etapa 3** — "diseño del plan detallado" implica análisis previo del proyecto para construir la línea base.
 - La capa 3 del proyecto puede endurecer con reglas como "línea base inquebrantable del prompt del módulo" y equivalentes.
+
+## F4.4 · `plan_trabajo` se deriva de los CA de la HU — nunca de la proactividad
+
+El `plan_trabajo.md` de toda fase se construye a partir de los **Criterios de Aceptación** aprobados de la HU madre — específicamente, los CA etiquetados para esa fase (`[XX]` cuando aplique). El plan NO se construye a partir de:
+
+- Lo que al agente le parece que "también debería ir".
+- Proactividad sobre "aprovechamos y arreglamos también Y".
+- Lecturas del código que revelan "código legacy que podríamos limpiar de paso".
+
+**Trazabilidad obligatoria — cada intervención rastrea a un CA:**
+
+Toda intervención listada en el plan (código · migración · seed · vista · test) debe tener **rastro explícito** al CA que la justifica. La `F4.1 · pregunta 9` (qué archivos se tocan) se combina con la `pregunta 3` (qué gap/CA cierra) en una tabla o listado del plan donde cada línea muestre `intervención → CA`.
+
+**Ítem sin CA asociado — dos rutas y solo dos:**
+
+1. **Soporte técnico obligatorio:** limpiar código legacy que impide el nuevo comportamiento · crear helper que evita duplicar código · agregar la columna sin la cual el CA es imposible. **Declararlo** en el §Alcance como "soporte de CA-X" y **explicar** por qué es indispensable para cumplir ese CA. Si sin ese ítem el CA no funciona, es soporte legítimo.
+2. **Proactividad:** todo lo demás. **Retirarlo del plan** y proponerlo como fase separada con su propia HU/CA (F4.5). No se agrega "por conveniencia" al plan actual.
+
+**Anti-patrones rechazados:**
+
+- Escribir el plan **antes** de tener los CA aprobados de la HU.
+- Empezar a tocar código antes de que el plan esté persistido como archivo Y aprobado explícitamente por el usuario (`F4` requiere la aprobación previa).
+- Agregar en §Alcance "También aprovechamos para X" cuando X no es CA de esta fase.
+- Escribir el plan "según lo que la IA infirió" cuando el usuario dio N CA concretos — el plan debe ceñirse a esos N.
+
+**Encadenamiento:**
+- **F4.1** — la pregunta 3 (qué gap cierra) y la pregunta 9 (qué archivos se tocan) se cruzan en una tabla ítem→CA.
+- **F4.2 · etapa 3** — el diseño del plan es DERIVADO de los CA aprobados, no invención.
+- **F4.5** — lo que "convendría" agregar pero no está en CA sigue la ruta de propuesta (parar + mostrar + esperar), no se cuela al plan.
+- **F9** — una vez presentado y aprobado el plan derivado de CA, se ejecuta completo; no se re-piden opciones sobre CA ya aprobados.
+- **C17** — la confirmación previa de entendimiento asegura que los CA reflejen el pedido REAL antes de derivar el plan.
+
+## F4.5 · Ejecutar LITERAL los CA · descubrimientos fuera de CA se PROPONEN, no se actúan
+
+**Dos partes indivisibles.**
+
+**(1) Ejecución literal de los CA.** La implementación debe hacer LITERAL lo que dicen los CA aprobados — ni más, ni menos, ni "más seguro por si acaso", ni "de paso arreglamos". La redacción de un CA es la especificación funcional; el agente no la interpreta libremente ni la endurece unilateralmente.
+
+**(2) Descubrimientos fuera de CA → proponer, no actuar.** Si durante el análisis, la construcción del plan, o la ejecución el agente detecta algo que "convendría" agregar (defensa en profundidad · limpieza · validación extra · UX complementaria · refactor colateral · guard adicional), la única ruta válida es:
+
+1. **PARAR** de tocar código, plan o análisis.
+2. **MOSTRAR** al usuario la propuesta con: qué observó · por qué considera que aportaría · impacto (líneas de código · tests nuevos · migración · etc.) · qué CA quedaría sin cambios y qué CA se sumaría (si aplica).
+3. **ESPERAR** decisión del usuario:
+   - **"Sí, agrégalo"** → o bien se agrega como CA nuevo a la HU antes de continuar (recomendado si es funcional), o bien se declara como soporte técnico obligatorio de un CA (F4.4) con justificación explícita.
+   - **"No"** → se descarta y NO se menciona más.
+   - **"Después"** → se anota como brecha (en el prompt del módulo si el proyecto lo mantiene) y se retoma en fase futura.
+
+**Anti-patrones rechazados:**
+
+- Agregar un guard server-side cuando el CA solo pide "botón oculto en UI" → NO. El CA es la especificación; endurecerlo es rewrite unilateral.
+- Ante una pregunta del usuario ("¿de dónde sale X?") · interpretarla como corrección y **editar el plan/código** para "corregir". La pregunta pide EXPLICACIÓN, no acción. Se responde y se espera instrucción explícita.
+- "Aprovechamos y limpiamos código legacy" cuando la limpieza no está en CA → NO. Se propone como fase separada.
+- "El CA dice X pero técnicamente conviene X + Y" → NO se implementa Y. Se propone Y al usuario.
+- "Es defensa en profundidad, es buena práctica" → aunque lo sea, si no está en CA se propone, no se actúa.
+
+**Aplica a los tres momentos donde el agente históricamente se desvía:**
+
+1. **Al construir el `plan_trabajo`** — cada ítem debe rastrear a un CA (F4.4); un ítem "conviene técnicamente" que no viene de CA se propone antes de agregarlo al plan.
+2. **Al escribir código** — la implementación debe cumplir el CA sin agregar guards, validaciones o efectos que no estén en el CA.
+3. **Al responder a una pregunta del usuario** — la pregunta se responde, no se convierte en autorización para editar/corregir/refactorizar (`C3` · quédate en tu tarea).
+
+**Encadenamiento:**
+- **F4.4** — proveedor del "plan deriva de CA"; F4.5 añade que **descubrimientos** fuera de CA también se proponen (no solo se filtran del plan · se pausan y consultan).
+- **C17** — la confirmación previa y F4.5 se refuerzan: C17 dice "no ejecutar sin OK explícito"; F4.5 dice "los descubrimientos no son excepción a C17".
+- **C3** — preguntas del usuario NO son autorización de acción; una pregunta se responde y se espera instrucción.
+- **F8** — solo se tocan archivos declarados en el plan aprobado; los descubrimientos activan la vía "PAUSAR + reportar + esperar OK" para ampliar el plan.
 
 ## F5 · Ejecuta las pruebas antes de dar por terminado
 
@@ -406,6 +472,54 @@ CORRECTO:   fase A toca solo archivos de A; los cambios necesarios en B, C, D se
 
 ---
 
-**Secuencia macro (0–6):** en `F0`. **Secuencia del plan hacia abajo:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
+
+
+
+## F12 · Regla de relación y nomenclatura de fases
+
+> **Texto literal del usuario, 2026-08-03.** No se reescribe, no se resume y no se
+> interpreta. Cualquier ajuste lo hace el usuario.
+
+* **Una fase pertenece exclusivamente a una sola HU.**
+
+* **Una HU debe tener al menos una fase y puede tener múltiples fases.**
+
+* **Una misma fase no puede estar asociada a dos o más HU.**
+
+* **Ningún identificador de fase puede aparecer bajo dos HU diferentes.**
+
+* Las fases deben identificarse mediante un **consecutivo alfabético** dentro de cada HU:
+  **A, B, C, ..., Z, AA, AB, AC, ..., AZ, BA, BB, ...**
+
+* El nombre de cada fase debe seguir la estructura:
+
+  **`[Consecutivo alfabético] + [Número de Épica] + [Número de HU] + [Descripción de lo realizado en la fase]`**
+
+  Por ejemplo:
+
+  **`A-EP01-HU03-Configuración de la estructura inicial`**
+  **`B-EP01-HU03-Implementación de la lógica de negocio`**
+  **`C-EP01-HU03-Validación de permisos`**
+
+* El consecutivo alfabético representa el **orden de las fases dentro de la HU**, por lo que no debe reiniciarse arbitrariamente ni repetirse dentro de la misma HU.
+
+* Una fase puede **complementar, ampliar o continuar el trabajo realizado en una fase anterior**. Por tanto, las fases no necesariamente representan actividades completamente independientes.
+
+* Una fase también puede corresponder directamente a un **criterio de aceptación (CA)** cuando su implementación pueda ser delimitada y validada de manera independiente.
+
+* Si una HU requiere varios criterios de aceptación, estos pueden materializarse en diferentes fases cuando corresponda. Sin embargo, **no se debe crear una fase únicamente por cumplir una estructura de nomenclatura**; cada fase debe representar un trabajo real, verificable y trazable.
+
+* La relación debe mantener siempre la jerarquía:
+
+  **Épica → HU → Fases**
+
+  Una Épica puede contener múltiples HU, una HU puede contener múltiples fases, pero **una fase no puede ser compartida entre diferentes HU**.
+
+
+---
+
+**Secuencia macro (0–6):** en `F0`. **Secuencia del plan hacia abajo:** contexto (F1) → spec (F2) → **línea base verificada del proyecto (F4.3)** → plan + pruebas (F4) responde las 13 preguntas (F4.1) **derivado de los CA de la HU (F4.4)** → **pausa + aprobación explícita (F4 §2-5)** → ejecutar (F3) — **literal a los CA · descubrimientos se proponen (F4.5)** · **solo archivos del plan (F8)** · **completo sin subdividir (F9)** · **solo el propio módulo (F11)** · **con migración incremental cuando toca prod (F10)** → correr pruebas (F5) → persistir (F6) → trazabilidad (F7) → cerrar.
+
+**Fases:** identificador y relación con la HU en `F12`.
 
 Consolidado como **ciclo de 11 etapas en F4.2** — usar esa tabla como referencia operativa canónica del flujo completo de una fase.

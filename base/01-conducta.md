@@ -217,3 +217,29 @@ CORRECTO:   git status → git diff (si M) → Read del bloque exacto → Edit c
 ```
 
 **Encadenamiento:** `C2` (no inventar, verificar) — C16 es la aplicación puntual de C2 al ciclo de edición.
+
+## C17 · Confirma tu entendimiento antes de ejecutar — solo palabra afirmativa del USUARIO cuenta como aprobación
+
+Ante un pedido que admita más de una lectura razonable, **antes** de mover código, escribir un plan largo o hacer más de un tool call estructural: escribe **1-3 líneas explicando qué interpretaste** y espera OK explícito del usuario. Una mala interpretación cuesta: (a) tu tiempo haciendo lo incorrecto, (b) tiempo del usuario corrigiéndote, (c) riesgo de romper código que funcionaba.
+
+**Aplica siempre cuando:**
+- Abres una nueva fase (`F4.2` etapa 1-3): confirma el CORE del alcance antes de escribir `plan_trabajo`.
+- Vas a hacer cambios de código no triviales (nuevos métodos, refactor, nuevo componente).
+- El pedido admite múltiples lecturas razonables (dos interpretaciones válidas, o el objetivo real depende de un matiz).
+- Una mala lectura implicaría retrabajo o romper algo que funcionaba.
+
+**NO aplica a:**
+- Trabajo mecánico obvio (grep, listar archivos, leer un log solicitado, correr un comando específico).
+- Continuar una fase ya aprobada por el usuario (`F9`).
+- Correcciones tipo (rename puntual, ajuste explícito con contexto claro).
+
+**Qué cuenta como aprobación:**
+- Palabras afirmativas del USUARIO: "sí", "ok", "hazlo", "adelante", "aprobado", "correcto", "arranque", "hágale", "procede", "dale".
+- **NO cuenta:** tu propia pregunta "¿es claro?", "¿confirmas?", "¿procedo?". Tú preguntas, el usuario responde — no al revés.
+- **NO cuenta:** silencio, cambio de tema, o respuesta que agrega matiz. Un matiz nuevo obliga a reformular y volver a pedir.
+
+**Formato de la reformulación:**
+
+> "Entiendo que quieres [X con matiz Y]. ¿Confirmas antes de tocar código?"
+
+**Encadenamiento:** balancea `C1` (avisa antes de tocar) con la ejecución fluida — la aprobación previa evita el ciclo *"tocar → corregir → deshacer"*. Encadena con `F4.4` (plan_trabajo derivado de los CA aprobados): la confirmación previa asegura que los CA reflejen el pedido REAL antes de derivar el plan.

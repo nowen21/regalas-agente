@@ -1,8 +1,8 @@
-# Plan de Trabajo — Fase «XX» «slug» (módulo «M»)   ·   `[CAPA 3]`
+# Plan de Trabajo — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
-> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F4.1`** sobre una **línea base verificada** (`02·F4.3`). Se guarda en `documentacion/<modulo>/fase-<XX>-<slug>/plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja.
+> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F4.1`** sobre una **línea base verificada** (`02·F4.3`). Se guarda en `documentacion/<modulo>/<identificador-de-fase>/plan_trabajo.md` (identificador según `02·F12`). Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja.
 >
-> **Unidad = fase, no HU.** Una fase cubre 1+ HU (o parte de una HU grande); cada fase declara qué HU/CA satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
+> **Unidad = fase.** Una fase pertenece a **una sola HU** (`02·F12`); declara qué CA de esa HU satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
 
 ---
 
@@ -10,11 +10,13 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** | «XX» · slug `«slug»` |
+| **Fase** (identificador · `02·F12`) | `«A-EP01-HU03-Descripción»` |
+| **Épica** | `EP«01»` |
+| **HU** | `HU«03»` — **una sola** (`F12`) |
 | **Módulo** | «M» (`13·DOC13`) |
 | **Spec del módulo** | [enlace al prompt/spec · `02·F2`] |
 | **Fecha apertura** | AAAA-MM-DD |
-| **Rama** | `«feature/fase-XX-slug»` |
+| **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
 
 **ORIGEN** (1 de 3, o híbrido · `DOC12`):
@@ -22,12 +24,12 @@
 - ✨ **Funcionalidad nueva:** «qué introduce que no estaba en el roadmap».
 - 🔀 **Híbrido:** ambos.
 
-**HU y CA que cubre esta fase** (trazabilidad HU → fase · `DOC11`):
+**CA de la HU que cubre esta fase** (una sola HU · `02·F12` · trazabilidad `DOC11`):
 
-| HU | Criterios de aceptación que cierra | Estado |
-|---|---|---|
-| HU-«NNN» | CA-01, CA-02 | ☐ |
-| HU-«NNN» | CA-01 | ☐ |
+| CA de `HU«03»` que cierra esta fase | Estado |
+|---|---|
+| CA-01 | ☐ |
+| CA-02 | ☐ |
 
 ---
 

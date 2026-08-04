@@ -203,7 +203,7 @@ Toda fase nueva declarada en el spec de un módulo (§Fases) debe abrir con un c
 **Formato canónico del bloque de fase en el spec:**
 
 ```
-### Fase «YY» — «Nombre de la fase»
+### Fase «A-EP01-HU03-Descripción»   (identificador según 02·F12)
 
 ORIGEN: <una o más categorías>
 - 📝 Modifica fases anteriores: <lista>. <qué defecto/promesa se retoma>. Referencia: <cierre DOC8 si aplica>.
@@ -221,7 +221,7 @@ Criterios de aceptación: «medibles».
 - Fases ya cerradas (retroactivo no) — quedan inmutables per DOC1 · su origen se infiere del historial.
 - Sub-fases o hitos intermedios dentro de una fase (esos no son "fase" en el sentido de una unidad de trabajo con cierre propio).
 
-**Réplica en el plan de trabajo:** la carpeta de la fase (`<docs>/<modulo>/fase-<XX>-<slug>/plan_trabajo.md`) replica el ORIGEN en su cabecera. Así el spec y el plan de trabajo coinciden en la trazabilidad de origen.
+**Réplica en el plan de trabajo:** la carpeta de la fase (`<docs>/<modulo>/<identificador-de-fase>/plan_trabajo.md`, identificador según `02·F12`) replica el ORIGEN en su cabecera. Así el spec y el plan de trabajo coinciden en la trazabilidad de origen.
 
 ```
 INCORRECTO: "Fase XX — cambios menores" sin ORIGEN · lector no sabe si es continuación

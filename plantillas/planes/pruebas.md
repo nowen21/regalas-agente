@@ -11,7 +11,7 @@
 | **Aprobado por** | [Nombre — PO] |
 | **Estado** | Borrador / Aprobado / En ejecución / Cerrado |
 
-> Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en `documentacion/<modulo>/fase-<XX>-<slug>/plan_pruebas.md`.
+> Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en `documentacion/<modulo>/<identificador-de-fase>/plan_pruebas.md` (identificador según `02·F12`).
 >
 > **Proporcionalidad:** este formato completo es para un release/épica. Para una **sola fase o HU**, usar únicamente las secciones **3, 5, 6, 9 y 12** — el resto es opcional. No inflar una fase chica con un plan de release.
 

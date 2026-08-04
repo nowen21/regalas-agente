@@ -1,4 +1,4 @@
-# Estado de fase — Fase «XX» «slug» (módulo «M»)   ·   `[CAPA 3]`
+# Estado de fase — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
 > **Checkpoint del orquestador** (`sdd-orchestrator`): el estado persistido en cada puerta para **sobrevivir a la compactación** ("la compactación mata decisiones"). Se escribe/actualiza en **cada puerta** que pasa. Al reanudar, el director lee este archivo y continúa desde la última puerta pasada. Se guarda en `documentacion/<modulo>/estado-fase.md`. Reemplaza los `«…»` y borra esta caja.
 
@@ -8,7 +8,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** | «XX» · slug `«slug»` |
+| **Fase** (identificador · `02·F12`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
 | **Brief / Épica / HU** | «punteros» |
 | **Última actualización** | AAAA-MM-DD |
