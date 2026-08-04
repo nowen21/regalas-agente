@@ -53,6 +53,15 @@
 ## 4. Criterios de aceptación
 
 > Formato Gherkin. Cubra: camino feliz, casos borde, errores y validaciones.
+>
+> **Cada CA lleva, debajo de su Gherkin, un apartado `Cómo validarlo`** que describe de forma **clara, detallada y secuencial** cómo verificar el CA. **No asume** que quien valida conoce el sistema, la ubicación de la funcionalidad ni dónde se evidencia el resultado. Los pasos guían al validador **de principio a fin**, indicando cuando corresponda:
+> - **Dónde** ingresar / desde qué módulo, pantalla o funcionalidad iniciar.
+> - **Qué acción** realizar y con qué datos o condiciones.
+> - **Qué resultado** debe observarse después de cada acción.
+> - **Dónde verificar** la evidencia de que el comportamiento esperado se cumplió.
+> - **Qué condición** determina que el CA está aprobado.
+>
+> Cada paso es **verificable** y con resultado esperado claro. El CA se aprueba **solo** cuando **todos** sus pasos se ejecutan satisfactoriamente. **Prohibido** lenguaje ambiguo — "verificar que funcione correctamente", "comprobar que se procese", "validar que aparezca" — sin indicar exactamente **cómo, dónde y qué** comprobar.
 
 ### CA-01 — [Nombre del escenario: camino feliz]
 
@@ -63,6 +72,12 @@ Entonces [resultado observable]
 Y [efecto secundario verificable]
 ```
 
+**Cómo validarlo:**
+1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
+2. [Qué acción realizar y con qué datos/condiciones]: … → resultado esperado: …
+3. [Dónde verificar la evidencia del resultado]: …
+- **Aprobado cuando:** [condición concreta y observable].
+
 ### CA-02 — [Nombre del escenario: validación / error]
 
 ```gherkin
@@ -72,6 +87,12 @@ Entonces [mensaje o comportamiento esperado]
 Y [el estado del sistema no cambia]
 ```
 
+**Cómo validarlo:**
+1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
+2. [Qué acción inválida realizar y con qué datos]: … → resultado esperado: [mensaje/comportamiento] …
+3. [Dónde verificar que el estado NO cambió]: …
+- **Aprobado cuando:** [condición concreta y observable].
+
 ### CA-03 — [Nombre del escenario: caso borde]
 
 ```gherkin
@@ -79,6 +100,12 @@ Dado que [condición límite]
 Cuando [acción]
 Entonces [resultado esperado]
 ```
+
+**Cómo validarlo:**
+1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
+2. [Qué acción realizar en la condición límite y con qué datos]: … → resultado esperado: …
+3. [Dónde verificar la evidencia del resultado]: …
+- **Aprobado cuando:** [condición concreta y observable].
 
 ### Criterios de aceptación transversales
 
