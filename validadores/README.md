@@ -1,0 +1,83 @@
+# Validadores del estándar
+
+Comprueban **lo que se puede comprobar sin criterio**. Cierran la brecha entre "el estándar dice" y "el estándar se cumple" — pendiente [01](../pendientes/01-validadores-y-hooks.md).
+
+Solo biblioteca estándar de Python 3.11+. Sin dependencias, sin instalación.
+
+## El principio
+
+> Si dos personas pueden discutir si se cumplió → se queda en el `.md`.
+> Si un script puede decir sí/no sin opinar → validador.
+
+**La norma no se duplica aquí.** El validador de plantillas abre `plantillas/X.md` y compara; si la plantilla cambia, el validador cambia con ella sin tocar código. Los validadores **reportan, no arreglan**.
+
+## Dos severidades
+
+| | Significado | ¿Rompe? |
+|---|---|---|
+| `FALLA` | Incumplimiento claro, sin ambigüedad. | Sí — código de salida 1 |
+| `AVISO` | Algo que un humano debe mirar. | No — código de salida 0 |
+
+La distinción no es cosmética. Las plantillas dicen *"elimine las secciones que no apliquen"*, así que una sección ausente **no** es un incumplimiento: es un `AVISO`. Un validador que grita por todo se termina ignorando.
+
+## Uso
+
+```sh
+# Coherencia de este repositorio: enlaces rotos e índices desactualizados
+python validadores/validar.py estandar
+
+# Un documento contra su plantilla (la deduce del ID: HU-014 -> plantillas/HU.md)
+python validadores/validar.py plantilla proyectos/pos/HU-014.md
+python validadores/validar.py plantilla doc.md --contra plantillas/epica.md
+
+# Mensaje de commit
+python validadores/validar.py commit                          # HEAD
+python validadores/validar.py commit --archivo .git/COMMIT_EDITMSG
+
+# Suite
+python validadores/pruebas.py
+```
+
+## Qué comprueba cada uno
+
+| Archivo | Comprueba | Contra |
+|---|---|---|
+| [enlaces.py](enlaces.py) | Enlaces `.md` rotos; índices que no listan todos sus archivos | El disco |
+| [plantillas.py](plantillas.py) | Marcadores sin llenar, notas de plantilla sin borrar, secciones ausentes | `plantillas/*.md` |
+| [commits.py](commits.py) | Asunto con contenido, línea en blanco antes del cuerpo, rastros de herramienta | [`base/09-git.md`](../base/09-git.md) · G2 |
+
+### Lo que deliberadamente NO comprueba
+
+- **Enlaces a código de proyecto** (`app/PagoService.php`). Ese código no vive en este repositorio por diseño; exigir que exista sería exigir que el estándar contenga los proyectos que lo usan.
+- **Ejemplos de formato** (`[<ruta legible>](<path-relativo>.md)`). Llevan `<>` y son documentación, no enlaces.
+- **Anclas** (`archivo.md#seccion`). Se comprueba el archivo, no la sección.
+- **Trazabilidad épica → HU → fase → commit** y **puertas del flujo**. Necesitan un proyecto con estructura `proyectos/`, que aquí no existe. Quedan para cuando haya un proyecto real que validar.
+
+## Enganche automático (hooks) — instalado
+
+Los dos enganches están activos y probados de punta a punta. **No se solapan**: cada uno cubre un momento distinto.
+
+**1. Git — [`.githooks/commit-msg`](../.githooks/commit-msg).** Revisa el mensaje antes de aceptar el commit. Si incumple, el commit **no se crea**.
+
+Aplica a **todo** commit del repositorio, venga de una persona o del agente — por eso no hace falta un hook aparte en Claude Code para lo mismo.
+
+```sh
+git config core.hooksPath .githooks     # activar
+git config --unset core.hooksPath       # desactivar
+```
+
+> Va en `.githooks/` y no en `.git/hooks/` porque **`.git/hooks/` no se versiona**. Así el hook viaja con el repo; cada clon nuevo solo necesita correr el `git config` de arriba una vez (y `chmod +x .githooks/commit-msg` en Unix).
+
+**2. Claude Code — `PostToolUse` sobre `Write|Edit`.** Tras editar un `.md`, corre [`hook_md.py`](hook_md.py), que comprueba enlaces e índices. Si la edición rompió algo, devuelve el detalle al agente para que lo corrija en el momento, sin esperar al commit. Configurado en [`.claude/settings.json`](../.claude/settings.json).
+
+Ignora en silencio lo que no le toca: archivos que no son `.md`, y `.md` fuera de este repositorio.
+
+> Usa Python y no `jq` a propósito: en esta máquina no hay `jq`, y así el hook no depende de qué trae instalado cada equipo.
+
+## Regla de oro
+
+**Nada se comprueba aquí que no esté escrito en la norma.**
+
+Si aparece la necesidad de exigir algo nuevo, el orden es: **primero se escribe en `base/`**, después se comprueba. Al revés, un validador bloquea trabajo por un motivo que nadie puede consultar.
+
+Ya pasó una vez: la prohibición de `Co-Authored-By` estuvo en el código antes que en la norma. Se corrigió escribiéndola en [`base/09-git.md`](../base/09-git.md) · **G8**.

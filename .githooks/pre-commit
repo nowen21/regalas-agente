@@ -1,0 +1,31 @@
+#!/bin/sh
+# generado por validadores/instalar.py del estándar del agente
+# Revisa que no entren secretos ni artefactos (09-git.md · G3).
+#
+# Se activa con:    git config core.hooksPath .githooks
+# Se desactiva con: git config --unset core.hooksPath
+
+ESTANDAR="C:/Ing. Jose/ia/agente"
+
+if command -v python > /dev/null 2>&1; then
+    PY=python
+elif command -v python3 > /dev/null 2>&1; then
+    PY=python3
+else
+    echo "pre-commit: no se encontró Python; no se pudo revisar." >&2
+    echo "Instala Python o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+
+if [ ! -f "$ESTANDAR/validadores/validar.py" ]; then
+    echo "pre-commit: no se encontró el estándar en $ESTANDAR" >&2
+    echo "Reinstala el enganche o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+
+# Solo lo que entra en ESTE commit — no el repositorio entero. Ver G3.
+"$PY" "$ESTANDAR/validadores/validar.py" versionado --raiz "$(pwd)" --preparados || {
+    echo "" >&2
+    echo "Commit rechazado: saca del commit lo que no debe versionarse." >&2
+    exit 1
+}

@@ -1,0 +1,352 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Instala los enganches automáticos en un proyecto que usa el estándar.
+
+    python validadores/instalar.py                    # muestra el registro
+    python validadores/instalar.py C:/ruta/proyecto   # simula (no toca nada)
+    python validadores/instalar.py C:/ruta --aplicar  # instala de verdad
+    python validadores/instalar.py --todos --aplicar  # en todos los del registro
+
+**Por defecto solo simula.** Instalar cambia el comportamiento de un repositorio
+ajeno — a partir de ahí un commit con mal mensaje se rechaza allí también — así
+que hay que pedirlo explícitamente con `--aplicar`.
+
+Nada se copia: los dos enganches llaman a los validadores **en su sitio**, por
+ruta absoluta. Una sola copia del estándar sirve a todos los proyectos, y al
+cambiar una regla aquí cambia en todos a la vez.
+"""
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from comun import RAIZ, leer, preparar_salida           # noqa: E402
+
+REGISTRO = os.path.join(RAIZ, "plantillas", "proyectos.md")
+
+# Fila del registro: | Nombre | `ruta` | scope | stack |
+_FILA = re.compile(r"^\|([^|]+)\|([^|]+)\|")
+
+MARCA = "# generado por validadores/instalar.py del estándar del agente"
+
+# Preámbulo común: localizar el intérprete y el estándar, o fallar diciendo por
+# qué. Un enganche que calla cuando no puede correr es peor que no tenerlo.
+_PREAMBULO = """#!/bin/sh
+{marca}
+# {descripcion}
+#
+# Se activa con:    git config core.hooksPath .githooks
+# Se desactiva con: git config --unset core.hooksPath
+
+ESTANDAR="{estandar}"
+
+if command -v python > /dev/null 2>&1; then
+    PY=python
+elif command -v python3 > /dev/null 2>&1; then
+    PY=python3
+else
+    echo "{nombre}: no se encontró Python; no se pudo revisar." >&2
+    echo "Instala Python o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+
+if [ ! -f "$ESTANDAR/validadores/validar.py" ]; then
+    echo "{nombre}: no se encontró el estándar en $ESTANDAR" >&2
+    echo "Reinstala el enganche o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+"""
+
+PLANTILLA_COMMIT_MSG = _PREAMBULO + """
+"$PY" "$ESTANDAR/validadores/validar.py" commit --archivo "$1" || {{
+    echo "" >&2
+    echo "Commit rechazado: corrige el mensaje y vuelve a intentar." >&2
+    exit 1
+}}
+"""
+
+PLANTILLA_PRE_COMMIT = _PREAMBULO + """
+# Solo lo que entra en ESTE commit — no el repositorio entero. Ver G3.
+"$PY" "$ESTANDAR/validadores/validar.py" versionado --raiz "$(pwd)" --preparados || {{
+    echo "" >&2
+    echo "Commit rechazado: saca del commit lo que no debe versionarse." >&2
+    exit 1
+}}
+"""
+
+HOOKS = [
+    ("commit-msg", PLANTILLA_COMMIT_MSG,
+     "Revisa el mensaje del commit antes de aceptarlo (09-git.md · G2, G8)."),
+    ("pre-commit", PLANTILLA_PRE_COMMIT,
+     "Revisa que no entren secretos ni artefactos (09-git.md · G3)."),
+]
+
+
+def proyectos_registrados():
+    """Lee `plantillas/proyectos.md` y devuelve [(nombre, ruta), ...]."""
+    if not os.path.isfile(REGISTRO):
+        return []
+
+    salida = []
+    for linea in leer(REGISTRO).splitlines():
+        m = _FILA.match(linea.strip())
+        if not m:
+            continue
+        nombre, ruta = m.group(1).strip(), m.group(2).strip()
+        # Se saltan el encabezado y la línea de guiones de la tabla.
+        if not ruta.startswith("`") or nombre.lower() == "proyecto":
+            continue
+        salida.append((nombre, ruta.strip("`").strip()))
+    return salida
+
+
+def _mandar_git(ruta, *args):
+    return subprocess.run(["git", "-C", ruta, *args],
+                          capture_output=True, text=True, encoding="utf-8")
+
+
+MENSAJE_F13 = """    No existe la carpeta `proyectos/`, donde debe vivir el código fuente.
+
+    Para continuar, creá:
+        proyectos/
+        └── <tu-proyecto>/     ← coloca aquí tu código (uno o varios proyectos)
+
+    Vos decidís la organización y los nombres."""
+
+
+def cumple_f13(ruta):
+    """El gate de arranque de `02·F13`: ¿existe la carpeta `proyectos/`?
+
+    Es la precondición de todo lo demás. Si el espacio de trabajo no está
+    armado según la norma, instalar enganches sería poner el techo antes que
+    las paredes: se estaría vigilando una estructura que aún no existe.
+    """
+    return os.path.isdir(os.path.join(ruta, "proyectos"))
+
+
+def es_repositorio_git(ruta):
+    """¿`ruta` es la raíz de un repositorio (no una subcarpeta de otro)?"""
+    return os.path.isdir(os.path.join(ruta, ".git"))
+
+
+def repositorios_git(ruta):
+    """Todos los repositorios de un espacio de trabajo.
+
+    Según `02·F13`, el código vive en `proyectos/` y puede ser **uno o varios**
+    repositorios independientes (ej. RNI: `proyectos/rni-back/` +
+    `proyectos/rni-front/`). El espacio del agente (`documentacion/`, `.agente/`)
+    va al lado, y puede o no estar versionado él mismo.
+
+    Por eso se mira en dos sitios: la raíz, y cada carpeta de `proyectos/`.
+    """
+    encontrados = []
+    if es_repositorio_git(ruta):
+        encontrados.append(ruta)
+
+    proyectos = os.path.join(ruta, "proyectos")
+    if os.path.isdir(proyectos):
+        for nombre in sorted(os.listdir(proyectos)):
+            sub = os.path.join(proyectos, nombre)
+            if os.path.isdir(sub) and es_repositorio_git(sub):
+                encontrados.append(sub)
+
+    return encontrados
+
+
+# Enganches de Claude Code: (evento, matcher, guion, mensaje del indicador).
+# `matcher` en None = el evento no filtra por herramienta (SessionStart).
+HOOKS_CLAUDE = [
+    ("PostToolUse", "Write|Edit", "hook_md.py",
+     "Revisando los enlaces del proyecto..."),
+    ("SessionStart", None, "hook_sesion.py",
+     "Revisando el estándar..."),
+]
+
+
+def _hook_claude(estandar, proyecto, guion, mensaje):
+    return {
+        "type": "command",
+        "command": (f'python "{estandar}/validadores/{guion}" '
+                    f'--raiz "{proyecto}"'),
+        "statusMessage": mensaje,
+    }
+
+
+def instalar_git(ruta, estandar, aplicar):
+    """Escribe los enganches en .githooks/ y apunta core.hooksPath ahí."""
+    pasos = []
+    carpeta = os.path.join(ruta, ".githooks")
+
+    actual = _mandar_git(ruta, "config", "--get", "core.hooksPath").stdout.strip()
+    if actual and actual != ".githooks":
+        return [f"OMITIDO: core.hooksPath ya apunta a «{actual}» — "
+                f"no se pisa; revísalo a mano"]
+
+    for nombre, plantilla, descripcion in HOOKS:
+        archivo = os.path.join(carpeta, nombre)
+        contenido = plantilla.format(marca=MARCA, estandar=estandar,
+                                     nombre=nombre, descripcion=descripcion)
+        if os.path.isfile(archivo) and leer(archivo) == contenido:
+            pasos.append(f"{nombre} ya estaba al día")
+            continue
+        pasos.append(f"escribir {os.path.join('.githooks', nombre)}")
+        if aplicar:
+            os.makedirs(carpeta, exist_ok=True)
+            with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+                f.write(contenido)
+            os.chmod(archivo, 0o755)
+
+    if actual == ".githooks":
+        pasos.append("core.hooksPath ya estaba puesto")
+    else:
+        pasos.append("git config core.hooksPath .githooks")
+        if aplicar:
+            _mandar_git(ruta, "config", "core.hooksPath", ".githooks")
+
+    return pasos
+
+
+def instalar_claude(ruta, estandar, aplicar):
+    """Agrega los enganches de Claude Code al .claude/settings.json."""
+    pasos = []
+    carpeta = os.path.join(ruta, ".claude")
+    archivo = os.path.join(carpeta, "settings.json")
+    destino = os.path.join(".claude", "settings.json")
+
+    datos = {}
+    if os.path.isfile(archivo):
+        try:
+            datos = json.loads(leer(archivo))
+        except (json.JSONDecodeError, ValueError):
+            return ["OMITIDO: .claude/settings.json tiene JSON inválido — "
+                    "no se toca; arréglalo a mano"]
+
+    cambios = False
+    for evento, matcher, guion, mensaje in HOOKS_CLAUDE:
+        nuevo = _hook_claude(estandar, ruta.replace("\\", "/"), guion, mensaje)
+
+        # Se respeta lo que ya hubiera; solo se toca el grupo propio.
+        ganchos = datos.setdefault("hooks", {}).setdefault(evento, [])
+        grupo = next((g for g in ganchos if g.get("matcher") == matcher), None)
+        if grupo is None:
+            grupo = {"hooks": []}
+            if matcher:
+                grupo["matcher"] = matcher
+            ganchos.append(grupo)
+
+        # Se reconoce un enganche propio por el guion al que llama, no por el
+        # comando exacto: así una versión anterior se REEMPLAZA en vez de
+        # quedar duplicada corriendo en paralelo.
+        propios = [i for i, h in enumerate(grupo["hooks"])
+                   if guion in (h.get("command") or "")]
+
+        if len(propios) == 1 and grupo["hooks"][propios[0]] == nuevo:
+            pasos.append(f"enganche {evento} ya estaba puesto")
+            continue
+
+        if propios:
+            for i in reversed(propios):
+                grupo["hooks"].pop(i)
+            pasos.append(f"reemplazar el enganche {evento} en {destino}")
+        else:
+            pasos.append(f"agregar enganche {evento} a {destino}")
+        grupo["hooks"].append(nuevo)
+        cambios = True
+
+    if cambios and aplicar:
+        os.makedirs(carpeta, exist_ok=True)
+        with open(archivo, "w", encoding="utf-8") as f:
+            json.dump(datos, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+    return pasos
+
+
+def instalar(nombre, ruta, aplicar):
+    print(f"\n— {nombre}\n  {ruta}")
+
+    # Se normaliza para que la ruta escrita en el hook no dependa de cómo llegó
+    # (`.` vs absoluta, `c:` vs `C:`); si no, cada corrida la reescribiría.
+    # `abspath` no toca la letra de la unidad en Windows, así que se fuerza.
+    unidad, resto = os.path.splitdrive(os.path.abspath(ruta))
+    ruta = unidad.upper() + resto
+
+    if not os.path.isdir(ruta):
+        print("  OMITIDO: la carpeta no existe")
+        return False
+
+    # Gate de F13. El propio estándar queda exento: no es un proyecto que use
+    # el agente, es donde viven las reglas.
+    if os.path.normcase(ruta) != os.path.normcase(RAIZ) and not cumple_f13(ruta):
+        print("  BLOQUEADO: no cumple 02·F13 — falta la estructura base.\n")
+        print(MENSAJE_F13)
+        print("\n  Cuando `proyectos/` exista, volvé a correr el instalador.")
+        return False
+
+    estandar = RAIZ.replace("\\", "/")
+    marca = "·" if aplicar else "(simulado)"
+
+    # Los dos enganches son independientes y tienen alcance distinto:
+    #   - el de commits va en CADA repositorio (pueden ser varios);
+    #   - el de edición va UNA vez, en la raíz del espacio de trabajo, porque
+    #     la documentación que revisa vive ahí y no dentro del código.
+    repos = repositorios_git(ruta)
+    if not repos:
+        print("  · commit-msg: OMITIDO — no hay repositorios git aquí")
+    for repo in repos:
+        etiqueta = os.path.relpath(repo, ruta).replace("\\", "/")
+        if etiqueta != ".":
+            print(f"  repositorio {etiqueta}/")
+        for paso in instalar_git(repo, estandar, aplicar):
+            print(f"  {marca} {paso}")
+
+    for paso in instalar_claude(ruta, estandar, aplicar):
+        print(f"  {marca} {paso}")
+    return True
+
+
+def main():
+    preparar_salida()
+
+    p = argparse.ArgumentParser(
+        description="Instala los enganches del estándar en un proyecto.")
+    p.add_argument("ruta", nargs="?", help="carpeta del proyecto")
+    p.add_argument("--todos", action="store_true",
+                   help="todos los proyectos de plantillas/proyectos.md")
+    p.add_argument("--aplicar", action="store_true",
+                   help="instalar de verdad (sin esto solo simula)")
+    a = p.parse_args()
+
+    registrados = proyectos_registrados()
+
+    if a.todos:
+        objetivos = registrados
+    elif a.ruta:
+        ruta = os.path.abspath(a.ruta)
+        nombre = next((n for n, r in registrados
+                       if os.path.abspath(r) == ruta), "(fuera del registro)")
+        objetivos = [(nombre, ruta)]
+    else:
+        print("Proyectos registrados en plantillas/proyectos.md:\n")
+        for nombre, ruta in registrados:
+            estado = "" if os.path.isdir(ruta) else "   (no existe)"
+            print(f"  {nombre}{estado}\n    {ruta}")
+        print("\nIndica una ruta, o --todos. Agrega --aplicar para instalar.")
+        return 0
+
+    if not a.aplicar:
+        print("MODO SIMULACIÓN — no se modifica nada. Agrega --aplicar.")
+
+    hechos = sum(1 for nombre, ruta in objetivos
+                 if instalar(nombre, ruta, a.aplicar))
+
+    print(f"\n{hechos} de {len(objetivos)} proyecto(s) "
+          f"{'procesados' if a.aplicar else 'simulados'}.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

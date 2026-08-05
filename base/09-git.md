@@ -76,4 +76,29 @@ CORRECTO:   hago el cambio → muestro el mensaje + los archivos → espero "sub
 
 ---
 
+## G8 · El mensaje es del proyecto, no de la herramienta
+
+El historial cuenta **qué se decidió y por qué**, no con qué se escribió. Dos consecuencias:
+
+**El cuerpo arranca con la idea del usuario, y después lo que hizo el agente.** El origen del cambio es la necesidad, no la ejecución. Quien lea el historial mañana busca el porqué, no el cómo.
+
+**Nunca se firman los commits con la herramienta.** Sin `Co-Authored-By`, sin líneas de "generado con", sin marcas de agente. El autor del commit ya lo dice el propio git.
+
+```
+INCORRECTO: "Agrega validación de saldo
+
+            Se implementó el chequeo en el servicio.
+
+            Co-Authored-By: <herramienta>"
+
+CORRECTO:   "Agrega validación de saldo
+
+            El usuario reportó que se podían registrar pagos mayores al
+            saldo pendiente. Se agrega el chequeo en el servicio y su prueba."
+```
+
+Comprobable: `validadores/validar.py commit` (regla `01`·C8 para el idioma).
+
+---
+
 Ver: `00` N2/N3/N6, `07` Q6 (lint), `08` (pruebas), `11` (config fuera del código), `13` (decisiones también en docs).

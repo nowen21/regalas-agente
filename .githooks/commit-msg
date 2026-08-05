@@ -1,0 +1,30 @@
+#!/bin/sh
+# generado por validadores/instalar.py del estándar del agente
+# Revisa el mensaje del commit antes de aceptarlo (09-git.md · G2, G8).
+#
+# Se activa con:    git config core.hooksPath .githooks
+# Se desactiva con: git config --unset core.hooksPath
+
+ESTANDAR="C:/Ing. Jose/ia/agente"
+
+if command -v python > /dev/null 2>&1; then
+    PY=python
+elif command -v python3 > /dev/null 2>&1; then
+    PY=python3
+else
+    echo "commit-msg: no se encontró Python; no se pudo revisar." >&2
+    echo "Instala Python o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+
+if [ ! -f "$ESTANDAR/validadores/validar.py" ]; then
+    echo "commit-msg: no se encontró el estándar en $ESTANDAR" >&2
+    echo "Reinstala el enganche o desactiva: git config --unset core.hooksPath" >&2
+    exit 1
+fi
+
+"$PY" "$ESTANDAR/validadores/validar.py" commit --archivo "$1" || {
+    echo "" >&2
+    echo "Commit rechazado: corrige el mensaje y vuelve a intentar." >&2
+    exit 1
+}

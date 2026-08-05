@@ -23,6 +23,7 @@ El estándar (las reglas) está instalado en una carpeta central **fuera de este
 - **Plantillas:** `c:\Ing. Jose\ia\agente\plantillas`
 - **Base módulo:** `c:\Ing. Jose\ia\agente\_base_modulo.md`
 - **Memoria (señales):** `c:\Ing. Jose\ia\agente\memoria\memoria.py` — base central buscable (SQLite+FTS5), compartida por todos los proyectos. Skill `usar-memoria`.
+- **Validadores:** `c:\Ing. Jose\ia\agente\validadores\validar.py` — hacen cumplir las reglas que se pueden medir. Se llaman **en su sitio**, no se copian al proyecto.
 
 > Si el estándar se mueve a otra carpeta, actualizar estas rutas.
 >
@@ -54,6 +55,15 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
    - **Chequeo de sincronización aditiva:** comparar cada archivo de `./.agente/` con su plantilla central (`plantillas/`). Si la plantilla ganó **secciones nuevas** que el archivo local no tiene, **avisar al usuario y ofrecer agregarlas vacías** para que las llene. Regla: **solo añadir** las secciones faltantes — **nunca** sobrescribir, reordenar ni borrar lo ya escrito. Aplica igual a `reglas-proyecto.md`. Así las mejoras de estructura del estándar llegan a los proyectos sin pisar sus datos.
 4. **Si existe `./.agente/reglas-proyecto.md`,** leerlo y aplicarlo (reglas propias del proyecto — ver punto 5.2).
 5. **Aplicar los ajustes** del punto 5.1.
+6. **Instalar o actualizar los enganches automáticos** — correr, desde la carpeta del estándar:
+
+   ```
+   python validadores/instalar.py "«ruta-de-este-proyecto»" --aplicar
+   ```
+
+   Deja funcionando el bloqueo de commits (`09`·G2, G8, G3) y el aviso de enlaces rotos al editar un `.md`. **Es idempotente:** si ya están al día no toca nada, así que se corre en cada sesión sin miedo. Necesario porque los enganches viven dentro del proyecto: las reglas y los validadores llegan solos desde el estándar, pero un enganche **nuevo** no.
+
+   Si el paso 2 (`F13`) no pasó, este paso tampoco corre — el propio instalador lo vuelve a verificar y se detiene.
 
 ## 4. Precedencia (no se negocia)
 

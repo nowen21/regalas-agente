@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Validadores del estándar — punto de entrada único.
+
+Uso:
+  python validadores/validar.py estandar
+  python validadores/validar.py plantilla <documento.md> [--contra <plantilla.md>]
+  python validadores/validar.py commit [--archivo <ruta> | --revision HEAD]
+
+Código de salida: 0 si no hay FALLA, 1 si hay al menos una.
+Los AVISO no rompen la ejecución: señalan lo que un humano debe mirar.
+"""
+import argparse
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import commits          # noqa: E402
+import enlaces          # noqa: E402
+import fases            # noqa: E402
+import instalar         # noqa: E402
+import plantillas       # noqa: E402
+import versionado       # noqa: E402
+from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
+
+
+def cmd_estandar(a):
+    hallazgos = enlaces.validar_enlaces(a.raiz) + enlaces.validar_indices(a.raiz)
+    return reportar(hallazgos, "Coherencia del estándar")
+
+
+def cmd_plantilla(a):
+    if not os.path.isfile(a.documento):
+        sys.exit(f"no existe el documento: {a.documento}")
+
+    texto = leer(a.documento)
+    ruta_plantilla = a.contra or plantillas.deducir_plantilla(a.documento, texto)
+
+    if not ruta_plantilla:
+        sys.exit(
+            f"no se pudo deducir la plantilla de {relativo(a.documento)}.\n"
+            f"Indícala con --contra plantillas/<archivo>.md")
+    if not os.path.isfile(ruta_plantilla):
+        sys.exit(f"no existe la plantilla: {ruta_plantilla}")
+
+    hallazgos = plantillas.validar(a.documento, ruta_plantilla)
+    return reportar(
+        hallazgos,
+        f"{relativo(a.documento)} contra {relativo(ruta_plantilla)}")
+
+
+def cmd_fases(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(fases.validar(raiz), f"Épica → HU → Fase · {relativo(raiz)}")
+
+
+def cmd_versionado(a):
+    raiz = os.path.abspath(a.raiz)
+    repos = instalar.repositorios_git(raiz)
+    if not repos:
+        sys.exit(f"no hay repositorios git en {relativo(raiz)}")
+
+    hallazgos = []
+    for repo in repos:
+        etiqueta = os.path.relpath(repo, raiz).replace("\\", "/")
+        hallazgos += versionado.validar(
+            repo, repo if etiqueta == "." else f"{etiqueta}/",
+            solo_preparados=a.preparados)
+
+    alcance = "lo que entra en el commit" if a.preparados else "todo el repositorio"
+    return reportar(hallazgos, f"Qué está versionado ({alcance}) · {relativo(raiz)}")
+
+
+def cmd_commit(a):
+    if a.archivo:
+        mensaje, origen = leer(a.archivo), a.archivo
+    else:
+        mensaje, origen = commits.leer_de_git(a.revision), f"commit {a.revision}"
+    return reportar(commits.validar(mensaje, origen), f"Mensaje de {origen}")
+
+
+def main():
+    preparar_salida()
+
+    p = argparse.ArgumentParser(
+        description="Comprueba lo que del estándar se puede comprobar sin criterio.")
+    sub = p.add_subparsers(dest="comando", required=True)
+
+    e = sub.add_parser("estandar", help="enlaces rotos e índices desactualizados")
+    e.add_argument("--raiz", default=RAIZ)
+    e.set_defaults(func=cmd_estandar)
+
+    pl = sub.add_parser("plantilla", help="un documento contra su plantilla")
+    pl.add_argument("documento")
+    pl.add_argument("--contra", help="ruta de la plantilla (si no se deduce sola)")
+    pl.set_defaults(func=cmd_plantilla)
+
+    fs = sub.add_parser("fases",
+                        help="jerarquía y nombres de épica/HU/fase · 02·F12")
+    fs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    fs.set_defaults(func=cmd_fases)
+
+    v = sub.add_parser("versionado",
+                       help="secretos y artefactos versionados · 09-git.md · G3")
+    v.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    v.add_argument("--preparados", action="store_true",
+                   help="solo lo que entra en el commit actual (para el enganche)")
+    v.set_defaults(func=cmd_versionado)
+
+    c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
+    c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")
+    c.add_argument("--revision", default="HEAD", help="commit ya hecho (por defecto HEAD)")
+    c.set_defaults(func=cmd_commit)
+
+    a = p.parse_args()
+    sys.exit(a.func(a))
+
+
+if __name__ == "__main__":
+    main()
