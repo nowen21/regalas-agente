@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~22 |
-| 🟡 **Validables, faltan** | ~38 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
+| ✅ **Ya son validadores** | ~23 |
+| 🟡 **Validables, faltan** | ~37 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -29,6 +29,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `G3` | `versionado.py` | no versionar secretos/artefactos/config local (por nombre) |
 | `04·S4` · `00·N6` | `secretos.py` | secretos incrustados en el código (claves, tokens, `password="…"`) |
 | `10·DEP2` | `dependencias.py` | lockfile del ecosistema presente y versionado |
+| `09·G4` | `rama.py` | rama dedicada (no la principal) y al día con ella |
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
@@ -91,7 +92,6 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Regla | Qué comprobaría | 🔶 |
 |---|---|---|
-| `G4` | trabajo en rama ≠ principal, al día | 🔶 |
 | `G6` | pipeline CI con pruebas + lint | 🔶 |
 | `10·DEP3` | audit de vulnerabilidades sin pendientes | 🔶 |
 | `10·DEP4` | carpeta instalada no versionada | 🔶 |
@@ -124,4 +124,4 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra agro-system (Laravel real) — `S4` y `DEP2` ya corren ahí. Las ~38 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.
+Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra código real — `S4`, `DEP2` y `G4` ya corren, y son multiproyecto (universales o por detección de stack). Las ~37 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.

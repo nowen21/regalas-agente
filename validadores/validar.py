@@ -22,6 +22,7 @@ import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import rama             # noqa: E402
 import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
@@ -92,6 +93,11 @@ def cmd_dependencias(a):
                     f"Lockfile versionado · {relativo(raiz)}")
 
 
+def cmd_rama(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(rama.validar(raiz), f"Rama de trabajo · {relativo(raiz)}")
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -142,6 +148,11 @@ def main():
                         help="lockfile presente y versionado · 10·DEP2")
     dp.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     dp.set_defaults(func=cmd_dependencias)
+
+    rm = sub.add_parser("rama",
+                        help="trabajo en rama dedicada y al día · 09·G4")
+    rm.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    rm.set_defaults(func=cmd_rama)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")

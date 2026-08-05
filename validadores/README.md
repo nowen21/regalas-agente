@@ -50,6 +50,7 @@ python validadores/pruebas.py
 | [versionado.py](versionado.py) | Secretos/artefactos/config local versionados (por **nombre** de archivo) | `base/09-git.md` · G3 |
 | [secretos.py](secretos.py) | Secretos **incrustados en el código** (claves AWS, tokens, `password = "…"`) | `base/04·S4` · `00·N6` |
 | [dependencias.py](dependencias.py) | Lockfile del ecosistema presente y versionado | `base/10·DEP2` |
+| [rama.py](rama.py) | Trabajo en rama dedicada (no la principal) y al día con ella | `base/09-git.md` · G4 |
 
 ### Lo que deliberadamente NO comprueba
 

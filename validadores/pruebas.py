@@ -21,6 +21,7 @@ import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import rama             # noqa: E402
 import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
@@ -479,6 +480,36 @@ class Dependencias(unittest.TestCase):
         # `vendor/.../composer.json` es de un paquete, no la raíz del proyecto.
         self.assertEqual(
             dependencias.revisar(["vendor/laravel/framework/composer.json"]), [])
+
+
+class Rama(unittest.TestCase):
+    """`09·G4` — rama dedicada y al día. Núcleo puro, sin git."""
+
+    def test_rama_dedicada_al_dia_no_reporta(self):
+        self.assertEqual(rama.evaluar("HU-003-login", "main", 0), [])
+
+    def test_trabajar_en_la_principal_avisa(self):
+        h = rama.evaluar("main", "main", 0)
+        self.assertEqual(len(h), 1)
+        self.assertEqual(h[0].severidad, AVISO)
+
+    def test_no_asume_el_nombre_de_la_principal(self):
+        # `master`, `trunk`… valen igual: lo que importa es que actual == principal.
+        self.assertEqual(len(rama.evaluar("master", "master", 0)), 1)
+        self.assertEqual(rama.evaluar("feature-x", "master", 0), [])
+
+    def test_rama_atrasada_avisa(self):
+        h = rama.evaluar("feature-x", "main", 4)
+        self.assertEqual(len(h), 1)
+        self.assertIn("4 commit", h[0].mensaje)
+
+    def test_head_desprendido_avisa(self):
+        h = rama.evaluar("HEAD", "main", 0)
+        self.assertEqual(len(h), 1)
+        self.assertEqual(h[0].severidad, AVISO)
+
+    def test_sin_principal_detectable_no_opina(self):
+        self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
 
 
 class Instalador(unittest.TestCase):
