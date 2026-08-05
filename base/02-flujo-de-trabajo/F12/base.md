@@ -24,9 +24,9 @@
 
   Por ejemplo:
 
-  **`A-EP01-HU03-Configuración de la estructura inicial`**
-  **`B-EP01-HU03-Implementación de la lógica de negocio`**
-  **`C-EP01-HU03-Validación de permisos`**
+  **`A-EP-001-HU-003-Configuración de la estructura inicial`**
+  **`B-EP-001-HU-003-Implementación de la lógica de negocio`**
+  **`C-EP-001-HU-003-Validación de permisos`**
 
 * **F12.7** — El consecutivo alfabético representa el **orden de las fases dentro de la HU**, por lo que no debe reiniciarse arbitrariamente ni repetirse dentro de la misma HU.
 
@@ -48,7 +48,7 @@
 
 **`[Consecutivo] + [Consecutivo-fase-complementa] + [Número de Épica] + [Número de HU] + [Descripción]`**
 
-Ej.: `D-B-EP01-HU03-Ajuste de la validación de permisos` (la fase `D` complementa a la `B`).
+Ej.: `D-B-EP-001-HU-003-Ajuste de la validación de permisos` (la fase `D` complementa a la `B`).
 
 ---
 
@@ -57,11 +57,11 @@ Ej.: `D-B-EP01-HU03-Ajuste de la validación de permisos` (la fase `D` complemen
 ```
 documentacion/
 └── epicas/
-    └── EP01-«slug»/                          # Épica
+    └── EP-001-«slug»/                          # Épica
         ├── epica.md
-        └── HU03-«slug»/                      # HU (dentro de su épica)
-            ├── HU03-«slug».md
-            └── A-EP01-HU03-«slug»/           # Fase (dentro de su HU · identificador F12)
+        └── HU-003-«slug»/                      # HU (dentro de su épica)
+            ├── HU-003-«slug».md
+            └── A-EP-001-HU-003-«slug»/           # Fase (dentro de su HU · identificador F12)
                 ├── plan_trabajo.md
                 ├── plan_pruebas.md
                 ├── funcionalidad_implementada.md
