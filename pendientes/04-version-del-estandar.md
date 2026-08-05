@@ -26,4 +26,4 @@ Sin esto, "el proyecto cumple el estándar" es una frase sin fecha — no se pue
 
 ## Relación con otros pendientes
 
-Un validador del [01 · validadores y hooks](01-validadores-y-hooks.md) puede comprobar el desfase automáticamente al abrir fase — por eso conviene que el 01 ya esté hecho.
+Un validador del [01 · validadores y hooks](01-validadores-de-codigo-de-proyecto.md) puede comprobar el desfase automáticamente al abrir fase — por eso conviene que el 01 ya esté hecho.

@@ -2,6 +2,8 @@
 
 Backlog de mejoras del estándar del agente que aún no se implementan. Un archivo por ítem, **numerado en el orden en que conviene ejecutarlos**. Al cerrar un pendiente, se implementa en la base/plantillas/skills y se borra su archivo de aquí (o se marca como hecho con la fecha).
 
+Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por tema, nombrado por lo que resuelve. Es la contraparte de este backlog: allí se ve lo hecho, aquí lo que falta.
+
 **El número es el orden, no la prioridad.** Los pendientes se ejecutan de menor a mayor porque cada uno se apoya en los anteriores. Al cerrar uno, el número no se reutiliza ni se renumeran los demás: los huecos son historia.
 
 ## Abiertos
@@ -10,7 +12,7 @@ Backlog de mejoras del estándar del agente que aún no se implementan. Un archi
 
 | # | Pendiente | Qué resuelve | Por qué va aquí |
 |---|---|---|---|
-| 01 | [Validadores automáticos + hooks](01-validadores-y-hooks.md) | Scripts que comprueban lo comprobable (plantillas, commits, trazabilidad, puertas) disparados por hooks. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple". Da garantía sobre la cobertura que **ya existe**, y produce los datos que necesita el 06. |
+| 01 | [Validadores de código de proyecto](01-validadores-de-codigo-de-proyecto.md) | Los validadores que faltan: los que leen el código/config del proyecto o corren una herramienta (linter, pruebas, audit), más las puertas de flujo. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple", y produce los datos que necesita el 06. La **base ya está hecha** ([hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): hooks + validadores de documentación y estructura. Aquí queda la mitad que necesita un proyecto real. |
 | 02 | [Vigencia y poda de la memoria](02-vigencia-y-poda-de-memoria.md) | Caducidad, revisión y ranking por recencia en `senales.db`. | Evita que la pieza más valiosa construida hasta hoy se degrade sola de activo a ruido. Bloquea al 05. |
 | 03 | [Ciclo de vida de pendientes y deuda](03-ciclo-de-vida-de-pendientes.md) | Cerrar lo que el agente difiere: estado `cerrada` en las señales + comandos `pendientes` / `cerrar`. | Toca el **mismo esquema** que el 02: van seguidos para diseñar los cambios de `estado` en una sola migración. |
 | 04 | [Versión del estándar](04-version-del-estandar.md) | Versionar `base/` y que cada proyecto fije la versión que sigue, con regla de retroactividad. | Independiente, pero su comprobación automática se apoya en el 01. |
