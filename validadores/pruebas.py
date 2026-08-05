@@ -20,6 +20,7 @@ import dependencias     # noqa: E402
 import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
+import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
 import secretos         # noqa: E402
@@ -480,6 +481,63 @@ class Dependencias(unittest.TestCase):
         # `vendor/.../composer.json` es de un paquete, no la raíz del proyecto.
         self.assertEqual(
             dependencias.revisar(["vendor/laravel/framework/composer.json"]), [])
+
+
+class Migraciones(unittest.TestCase):
+    """`03·D2` — reversibilidad, multi-stack por detección. Núcleo puro."""
+
+    def _m(self, ruta, texto, hermanos=()):
+        return migraciones.revisar_migracion(ruta, texto, hermanos)
+
+    def test_laravel_up_sin_down_avisa(self):
+        php = "class X extends Migration {\n  public function up() {}\n}"
+        self.assertIsNotNone(self._m("database/migrations/2024_x.php", php))
+
+    def test_laravel_up_y_down_ok(self):
+        php = "public function up() {}\n  public function down() {}"
+        self.assertIsNone(self._m("database/migrations/2024_x.php", php))
+
+    def test_alembic_sin_downgrade_avisa(self):
+        py = "revision = 'ab12'\ndef upgrade():\n    pass"
+        self.assertIsNotNone(self._m("alembic/versions/ab12.py", py))
+
+    def test_django_runpython_sin_reverse_avisa(self):
+        py = ("from django.db import migrations\n"
+              "class Migration(migrations.Migration):\n"
+              "    operations = [migrations.RunPython(poblar)]")
+        self.assertIsNotNone(self._m("app/migrations/0002_x.py", py))
+
+    def test_django_schema_op_es_reversible(self):
+        # AddField y demás se revierten solas: no se aviso.
+        py = ("from django.db import migrations, models\n"
+              "class Migration(migrations.Migration):\n"
+              "    operations = [migrations.AddField('t', 'c', models.IntegerField())]")
+        self.assertIsNone(self._m("app/migrations/0003_x.py", py))
+
+    def test_rails_change_es_reversible(self):
+        rb = "class X < ActiveRecord::Migration[7.0]\n  def change\n  end\nend"
+        self.assertIsNone(self._m("db/migrate/2024_x.rb", rb))
+
+    def test_node_up_sin_down_avisa(self):
+        js = "exports.up = (knex) => knex.schema.createTable('t')"
+        self.assertIsNotNone(self._m("migrations/2024_x.js", js))
+
+    def test_par_sql_sin_reversion_avisa(self):
+        self.assertIsNotNone(
+            self._m("migrations/001_init.up.sql", "CREATE TABLE t;", {"001_init.up.sql"}))
+
+    def test_par_sql_con_reversion_ok(self):
+        hermanos = {"001_init.up.sql", "001_init.down.sql"}
+        self.assertIsNone(
+            self._m("migrations/001_init.up.sql", "CREATE TABLE t;", hermanos))
+
+    def test_detecta_las_candidatas_sin_asumir_stack(self):
+        self.assertTrue(migraciones.es_candidata("database/migrations/x.php"))
+        self.assertTrue(migraciones.es_candidata("app/migrations/0001.py"))
+        self.assertTrue(migraciones.es_candidata("db/migrate/x.rb"))
+        self.assertTrue(migraciones.es_candidata("m/001.up.sql"))
+        self.assertFalse(migraciones.es_candidata("vendor/pkg/migrations/x.php"))
+        self.assertFalse(migraciones.es_candidata("app/Models/User.php"))
 
 
 class Rama(unittest.TestCase):

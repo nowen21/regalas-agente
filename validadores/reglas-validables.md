@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~23 |
-| 🟡 **Validables, faltan** | ~37 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
+| ✅ **Ya son validadores** | ~24 |
+| 🟡 **Validables, faltan** | ~36 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -30,6 +30,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `04·S4` · `00·N6` | `secretos.py` | secretos incrustados en el código (claves, tokens, `password="…"`) |
 | `10·DEP2` | `dependencias.py` | lockfile del ecosistema presente y versionado |
 | `09·G4` | `rama.py` | rama dedicada (no la principal) y al día con ella |
+| `03·D2` | `migraciones.py` | cada migración declara su reversión (multi-stack por detección) |
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
@@ -69,7 +70,6 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Regla | Qué comprobaría | 🔶 |
 |---|---|---|
 | `03·D1` | columnas de auditoría + FK con política + índices/UNIQUE | 🔶 |
-| `03·D2` | cada migración tiene `up` y `down` | 🔶 |
 | `03·D3` | columna `NOT NULL` sin default en migración | 🔶 |
 | `04·S3` | concatenación en SQL/shell, mass-assignment (regex/linter) | 🔶 |
 | `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
@@ -124,4 +124,4 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra código real — `S4`, `DEP2` y `G4` ya corren, y son multiproyecto (universales o por detección de stack). Las ~37 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.
+Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra código real — `S4`, `DEP2`, `G4` y `D2` ya corren, y son multiproyecto (universales o por detección de stack). Las ~36 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.
