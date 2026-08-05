@@ -13,11 +13,11 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~20 |
-| 🟡 **Validables, faltan** | ~40 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
+| ✅ **Ya son validadores** | ~22 |
+| 🟡 **Validables, faltan** | ~38 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
-> Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre). Corren contra el árbol `documentacion/epicas/` de un proyecto.
+> Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
 
 ---
 
@@ -26,7 +26,9 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Regla | Validador | Comprueba |
 |---|---|---|
 | `G2` | `commits.py` | asunto con contenido, línea en blanco, idioma |
-| `G3` | `versionado.py` | no versionar secretos/artefactos/config local |
+| `G3` | `versionado.py` | no versionar secretos/artefactos/config local (por nombre) |
+| `04·S4` · `00·N6` | `secretos.py` | secretos incrustados en el código (claves, tokens, `password="…"`) |
+| `10·DEP2` | `dependencias.py` | lockfile del ecosistema presente y versionado |
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
@@ -69,7 +71,6 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `03·D2` | cada migración tiene `up` y `down` | 🔶 |
 | `03·D3` | columna `NOT NULL` sin default en migración | 🔶 |
 | `04·S3` | concatenación en SQL/shell, mass-assignment (regex/linter) | 🔶 |
-| `04·S4` | `.env` en gitignore + plantilla + escaneo de secretos | 🔶 |
 | `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
 | `04·S7` | audit de vulnerabilidades del ecosistema | 🔶 |
 | `05·E1` | `catch` vacío (regex/linter) | 🔶 |
@@ -92,7 +93,6 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 |---|---|---|
 | `G4` | trabajo en rama ≠ principal, al día | 🔶 |
 | `G6` | pipeline CI con pruebas + lint | 🔶 |
-| `10·DEP2` | lockfile existe y está versionado | 🔶 |
 | `10·DEP3` | audit de vulnerabilidades sin pendientes | 🔶 |
 | `10·DEP4` | carpeta instalada no versionada | 🔶 |
 | `11·CFG2` | `.env` real ignorado + plantilla sin valores | 🔶 |
@@ -124,4 +124,4 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conclusión
 
-Sobre el **estándar solo**, ya está prácticamente todo lo validable (las ~15 hechas). Para sumar las ~45 pendientes hace falta un **proyecto real con la estructura `proyectos/`** (agro-system o rni), porque validan artefactos del proyecto, no las plantillas base.
+Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra agro-system (Laravel real) — `S4` y `DEP2` ya corren ahí. Las ~38 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.

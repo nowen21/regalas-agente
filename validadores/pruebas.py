@@ -16,10 +16,12 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import commits          # noqa: E402
+import dependencias     # noqa: E402
 import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
@@ -396,6 +398,87 @@ class Versionado(unittest.TestCase):
         # Puede ser deliberado (compartir tareas del equipo): se señala, no bloquea.
         veredicto = self._clasificar(".vscode/tasks.json")
         self.assertEqual(veredicto[0], AVISO)
+
+
+class Secretos(unittest.TestCase):
+    """`04·S4` / `00·N6` — secretos incrustados en el código."""
+
+    def _sev(self, linea):
+        h = secretos.revisar_texto(linea)
+        return h[0].severidad if h else None
+
+    def test_clave_aws_es_falla(self):
+        # Los tokens de estos tests se arman en runtime (prefijo + cuerpo): el
+        # literal completo nunca queda en el archivo. Si no, el escaneo de
+        # secretos de la plataforma lo toma por real y bloquea el push — que es,
+        # justamente, lo que secretos.py hace y este test comprueba.
+        aws = "AKIA" + "IOSFODNN7EXAMPLE"
+        self.assertEqual(self._sev(f'$key = "{aws}";'), FALLA)
+
+    def test_bloque_de_clave_privada_es_falla(self):
+        self.assertEqual(
+            self._sev("-----BEGIN RSA PRIVATE KEY-----"), FALLA)
+
+    def test_tokens_de_proveedor_son_falla(self):
+        for prefijo, cuerpo in (("sk_live_", "abcdef0123456789ABCD"),
+                                ("xoxb-", "1234567890-abcdefghijklmno"),
+                                ("ghp_", "0123456789abcdefghijklmnopqrstuvwxyz")):
+            with self.subTest(prefijo=prefijo):
+                self.assertEqual(self._sev(f'x = "{prefijo}{cuerpo}"'), FALLA)
+
+    def test_password_a_texto_fijo_avisa(self):
+        self.assertEqual(self._sev("password = 'S3cretoReal!'"), AVISO)
+
+    def test_leer_del_entorno_no_se_marca(self):
+        # Lo correcto: el valor sale de la configuración, no del código.
+        for linea in ("$key = env('API_KEY');",
+                      "password = os.environ['DB_PASS']",
+                      "secret = process.env.CLIENT_SECRET",
+                      "token = config('services.slack.token')"):
+            with self.subTest(linea=linea):
+                self.assertIsNone(self._sev(linea))
+
+    def test_placeholder_no_se_marca(self):
+        # Un molde evidente no es un secreto.
+        for linea in ("password = 'changeme'",
+                      "api_key = 'your-api-key'",
+                      "secret = '<tu-secreto>'",
+                      "password = 'xxxxxxxx'"):
+            with self.subTest(linea=linea):
+                self.assertIsNone(self._sev(linea))
+
+    def test_una_linea_un_hallazgo(self):
+        # Regresión: no reportar el mismo renglón por dos motivos.
+        h = secretos.revisar_texto('key = "' + "AKIA" + 'IOSFODNN7EXAMPLE"')
+        self.assertEqual(len(h), 1)
+
+
+class Dependencias(unittest.TestCase):
+    """`10·DEP2` — lockfile presente y versionado."""
+
+    def test_manifiesto_con_lockfile_no_reporta(self):
+        self.assertEqual(
+            dependencias.revisar(["composer.json", "composer.lock"]), [])
+
+    def test_manifiesto_sin_lockfile_avisa(self):
+        h = dependencias.revisar(["composer.json", "app/Http/Kernel.php"])
+        self.assertEqual(len(h), 1)
+        self.assertEqual(h[0].severidad, AVISO)
+
+    def test_cualquiera_de_los_lockfiles_aceptados_sirve(self):
+        # npm/Node admite varios; basta uno.
+        self.assertEqual(
+            dependencias.revisar(["package.json", "yarn.lock"]), [])
+
+    def test_el_lockfile_debe_estar_en_la_misma_carpeta(self):
+        # Un lock en otra carpeta no cubre este manifiesto.
+        h = dependencias.revisar(["front/package.json", "package-lock.json"])
+        self.assertEqual(len(h), 1)
+
+    def test_manifiesto_de_dependencia_instalada_se_ignora(self):
+        # `vendor/.../composer.json` es de un paquete, no la raíz del proyecto.
+        self.assertEqual(
+            dependencias.revisar(["vendor/laravel/framework/composer.json"]), [])
 
 
 class Instalador(unittest.TestCase):

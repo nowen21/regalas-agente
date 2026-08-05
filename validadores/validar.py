@@ -17,10 +17,12 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import commits          # noqa: E402
+import dependencias     # noqa: E402
 import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
@@ -79,6 +81,17 @@ def cmd_versionado(a):
     return reportar(hallazgos, f"Qué está versionado ({alcance}) · {relativo(raiz)}")
 
 
+def cmd_secretos(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(secretos.validar(raiz), f"Secretos en el código · {relativo(raiz)}")
+
+
+def cmd_dependencias(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(dependencias.validar(raiz),
+                    f"Lockfile versionado · {relativo(raiz)}")
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -119,6 +132,16 @@ def main():
     v.add_argument("--preparados", action="store_true",
                    help="solo lo que entra en el commit actual (para el enganche)")
     v.set_defaults(func=cmd_versionado)
+
+    se = sub.add_parser("secretos",
+                        help="secretos incrustados en el código · 04·S4")
+    se.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    se.set_defaults(func=cmd_secretos)
+
+    dp = sub.add_parser("dependencias",
+                        help="lockfile presente y versionado · 10·DEP2")
+    dp.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    dp.set_defaults(func=cmd_dependencias)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")
