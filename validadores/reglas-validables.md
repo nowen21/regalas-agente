@@ -13,9 +13,11 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~15 |
-| 🟡 **Validables, faltan** | ~45 (casi todas necesitan un proyecto real) |
+| ✅ **Ya son validadores** | ~20 |
+| 🟡 **Validables, faltan** | ~40 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
 | 🔴 **No validables** (criterio humano) | ~93 |
+
+> Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre). Corren contra el árbol `documentacion/epicas/` de un proyecto.
 
 ---
 
@@ -28,7 +30,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
-| `F12.1/3/4/6/7/11/13` | `fases.py` | una fase = una HU · id único · nomenclatura · jerarquía · ruta física |
+| `F12.1/2/3/4/5/6/7/11/12/13` | `fases.py` | jerarquía épica→HU→fase · id único · nomenclatura · consecutivo sin huecos · ruta física |
+| `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
 | `DOC14` (resolución de enlaces) | `enlaces.py` | enlaces `.md` resuelven |
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
@@ -50,19 +53,13 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `F4.1` | el `plan_trabajo` tiene las 13 secciones | 🔶 |
 | `F4.3` | regex de marcas de incertidumbre (`TBD`, `(o similar)`, `?`, `~`) en el plan | 🔶 |
 | `F4.4` | cada intervención del plan referencia un CA | 🔶 |
-| `F12.2` | cada HU tiene ≥1 carpeta de fase | 🔶 |
-| `F12.5` | consecutivo alfabético sin huecos/reinicios | 🔶 |
-| `F12.12` | formato del nombre complementario (`D-B-EP-…`) por regex | 🔶 |
 | `DOC1` | doc de cierre con secciones plan/pruebas/resultado | 🔶 |
-| `DOC3` / `DOC11` | tabla de trazabilidad sin `❌` injustificados | 🔶 |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | 🔶 |
 | `DOC8` | cierre de análisis: tabla + banner + puntero en prompt vivo | 🔶 |
 | `DOC10` | regla `P` numerada + banner si promovida + puntero de señal | 🔶 |
-| `DOC12` | bloque de fase con campo ORIGEN (1 de 3) + réplica en el plan | 🔶 |
 | `DOC13` | entradas de catálogo con campos mínimos | 🔶 |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta, link=relativo `.md` | 🔶 |
 | `DOC15` | README por carpeta del árbol · HU-NNN · sin placeholders `[…]` | 🔶 |
-| `DOC16` | enlace bidireccional épica↔HU · toda HU con épica · EP-NNN | 🔶 |
 
 ### Código, datos, pruebas (`03`–`08`)
 

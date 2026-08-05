@@ -47,6 +47,14 @@ def _numero(texto):
     return int(texto)
 
 
+def _orden_letras(letras):
+    """A=1, B=2, …, Z=26, AA=27, AB=28… (base 26 bijectiva). Ordena el consecutivo."""
+    n = 0
+    for c in letras.upper():
+        n = n * 26 + (ord(c) - ord("A") + 1)
+    return n
+
+
 def _subcarpetas(ruta):
     if not os.path.isdir(ruta):
         return []
@@ -165,5 +173,15 @@ def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
             hallazgos.append(Hallazgo(
                 AVISO, donde, 0,
                 f"faltan documentos de la fase (F12.13): {', '.join(faltan)}"))
+
+    # F12.5 · el consecutivo alfabético forma la secuencia A, B, C… sin huecos.
+    # AVISO y no FALLA: una fase diferida deja un hueco legítimo que mira un humano.
+    if vistos:
+        orden = sorted(_orden_letras(c) for c in vistos)
+        if orden != list(range(1, len(orden) + 1)):
+            hallazgos.append(Hallazgo(
+                AVISO, donde_hu, 0,
+                "el consecutivo de fases no es A, B, C… sin huecos (F12.5): "
+                + ", ".join(sorted(vistos))))
 
     return hallazgos

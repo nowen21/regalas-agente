@@ -45,13 +45,16 @@ python validadores/pruebas.py
 | [enlaces.py](enlaces.py) | Enlaces `.md` rotos; índices que no listan todos sus archivos | El disco |
 | [plantillas.py](plantillas.py) | Marcadores sin llenar, notas de plantilla sin borrar, secciones ausentes | `plantillas/*.md` |
 | [commits.py](commits.py) | Asunto con contenido, línea en blanco antes del cuerpo, rastros de herramienta | [`base/09-git.md`](../base/09-git.md) · G2 |
+| [fases.py](fases.py) | Jerarquía y nomenclatura épica→HU→fase; consecutivo sin huecos; los 4 documentos | `02·F12` (`F12.1/2/3/4/5/6/7/11/12/13`) |
+| [trazabilidad.py](trazabilidad.py) | Enlace bidireccional épica↔HU; ORIGEN en el plan; tabla de cierre | `13·DOC16/DOC12/DOC3/DOC11` |
+| [versionado.py](versionado.py) | Secretos/artefactos/config local versionados | `base/09-git.md` · G3 |
 
 ### Lo que deliberadamente NO comprueba
 
 - **Enlaces a código de proyecto** (`app/PagoService.php`). Ese código no vive en este repositorio por diseño; exigir que exista sería exigir que el estándar contenga los proyectos que lo usan.
 - **Ejemplos de formato** (`[<ruta legible>](<path-relativo>.md)`). Llevan `<>` y son documentación, no enlaces.
 - **Anclas** (`archivo.md#seccion`). Se comprueba el archivo, no la sección.
-- **Trazabilidad épica → HU → fase → commit** y **puertas del flujo**. Necesitan un proyecto con estructura `proyectos/`, que aquí no existe. Quedan para cuando haya un proyecto real que validar.
+- **Puertas del flujo** (código de fase sin spec + plan aprobado · `F2`) y la **trazabilidad hasta el commit**. Necesitan inspeccionar el código del proyecto, no solo su documentación; quedan para cuando haya un proyecto real bajo `proyectos/`. La trazabilidad **de la documentación** (épica↔HU, ORIGEN, tabla de cierre) sí está: `trazabilidad.py` — corre contra el árbol `documentacion/epicas/` de un proyecto.
 
 ## Enganche automático (hooks) — instalado
 

@@ -21,6 +21,7 @@ import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
@@ -53,6 +54,12 @@ def cmd_plantilla(a):
 def cmd_fases(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(fases.validar(raiz), f"Épica → HU → Fase · {relativo(raiz)}")
+
+
+def cmd_trazabilidad(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(trazabilidad.validar(raiz),
+                    f"Trazabilidad épica↔HU · plan · cierre · {relativo(raiz)}")
 
 
 def cmd_versionado(a):
@@ -100,6 +107,11 @@ def main():
                         help="jerarquía y nombres de épica/HU/fase · 02·F12")
     fs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     fs.set_defaults(func=cmd_fases)
+
+    tz = sub.add_parser("trazabilidad",
+                        help="enlace épica↔HU, ORIGEN y tabla de cierre · F4/DOC")
+    tz.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    tz.set_defaults(func=cmd_trazabilidad)
 
     v = sub.add_parser("versionado",
                        help="secretos y artefactos versionados · 09-git.md · G3")

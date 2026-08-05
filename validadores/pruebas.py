@@ -20,6 +20,7 @@ import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import plantillas       # noqa: E402
+import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
 
@@ -211,8 +212,15 @@ class Fases(unittest.TestCase):
         self.assertEqual(fases.validar(raiz), [])
 
     def test_fase_que_complementa_es_valida(self):
-        # F12.12 · `D-B-EP01-HU03-…` (la fase D complementa a la B).
-        raiz = self._armar("EP-001-x", "HU-003-y", "D-B-EP-001-HU-003-ajuste")
+        # F12.12 · `C-B-EP01-HU03-…` (la fase C complementa a la B), en una
+        # secuencia A, B, C sin huecos (F12.5).
+        raiz = self._armar("EP-001-x", "HU-003-y", "A-EP-001-HU-003-uno")
+        hu = os.path.join(raiz, "documentacion", "epicas", "EP-001-x", "HU-003-y")
+        for nombre in ("B-EP-001-HU-003-dos", "C-B-EP-001-HU-003-ajuste"):
+            ruta = os.path.join(hu, nombre)
+            os.makedirs(ruta)
+            for d in fases.DOCUMENTOS:
+                open(os.path.join(ruta, d), "w").close()
         self.assertEqual(fases.validar(raiz), [])
 
     def test_nombre_de_fase_fuera_de_f12_6(self):
@@ -252,9 +260,85 @@ class Fases(unittest.TestCase):
         raiz = self._armar("EP-001-x", "HU-003-y")
         self.assertEqual(severidades(fases.validar(raiz)), [AVISO])
 
+    def test_consecutivo_contiguo_no_reporta(self):
+        # F12.5 · A, B sin huecos.
+        raiz = self._armar("EP-001-x", "HU-003-y", "A-EP-001-HU-003-uno")
+        b = os.path.join(raiz, "documentacion", "epicas", "EP-001-x",
+                         "HU-003-y", "B-EP-001-HU-003-dos")
+        os.makedirs(b)
+        for d in fases.DOCUMENTOS:
+            open(os.path.join(b, d), "w").close()
+        self.assertEqual(fases.validar(raiz), [])
+
+    def test_consecutivo_con_hueco_avisa(self):
+        # F12.5 · A y C sin B → hueco.
+        raiz = self._armar("EP-001-x", "HU-003-y", "A-EP-001-HU-003-uno")
+        c = os.path.join(raiz, "documentacion", "epicas", "EP-001-x",
+                         "HU-003-y", "C-EP-001-HU-003-tres")
+        os.makedirs(c)
+        for d in fases.DOCUMENTOS:
+            open(os.path.join(c, d), "w").close()
+        hallazgos = fases.validar(raiz)
+        self.assertIn(AVISO, severidades(hallazgos))
+        self.assertIn("F12.5", mensajes(hallazgos))
+
     def test_sin_la_carpeta_epicas_es_falla(self):
         hallazgos = fases.validar(self.tmp.name)
         self.assertEqual(severidades(hallazgos), [FALLA])
+
+
+class Trazabilidad(unittest.TestCase):
+    """`02·F4` y `13·DOC` — enlace bidireccional, ORIGEN, tabla de cierre."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+
+    def _armar(self, doc_epica, doc_hu, plan="", cierre=""):
+        base = os.path.join(self.tmp.name, "documentacion", "epicas",
+                            "EP-002-aportes")
+        hu = os.path.join(base, "HU-013-socios")
+        fase = os.path.join(hu, "A-EP-002-HU-013-alta")
+        os.makedirs(fase, exist_ok=True)
+        self._escribir(os.path.join(base, "epica.md"), doc_epica)
+        self._escribir(os.path.join(hu, "HU-013-socios.md"), doc_hu)
+        self._escribir(os.path.join(fase, "plan_trabajo.md"), plan)
+        self._escribir(os.path.join(fase, "funcionalidad_implementada.md"), cierre)
+        return self.tmp.name
+
+    @staticmethod
+    def _escribir(ruta, texto):
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(texto)
+
+    def test_todo_conforme_no_reporta(self):
+        raiz = self._armar(
+            doc_epica="Épica EP-002. HUs: HU-013, HU-014.",
+            doc_hu="HU de la épica EP-002.",
+            plan="## 0. Identificación\nORIGEN: funcionalidad nueva.",
+            cierre="| Ítem | Estado |\n|---|---|\n| x | ✅ |")
+        self.assertEqual(trazabilidad.validar(raiz), [])
+
+    def test_hu_no_declara_su_epica(self):
+        raiz = self._armar("HUs: HU-013.", "Socios, sin decir de qué épica.")
+        self.assertIn("DOC16", mensajes(trazabilidad.validar(raiz)))
+
+    def test_epica_no_lista_la_hu(self):
+        raiz = self._armar("Épica EP-002, sin listar sus HU.", "De la épica EP-002.")
+        msgs = mensajes(trazabilidad.validar(raiz))
+        self.assertIn("no lista la HU-13", msgs)
+
+    def test_plan_sin_origen_avisa(self):
+        raiz = self._armar("HU-013", "EP-002", plan="## Plan sin campo de origen.")
+        self.assertIn("ORIGEN", mensajes(trazabilidad.validar(raiz)))
+
+    def test_cierre_con_pendiente_avisa(self):
+        raiz = self._armar("HU-013", "EP-002",
+                           cierre="| Ítem | Estado |\n|---|---|\n| y | ❌ |")
+        self.assertIn("❌", mensajes(trazabilidad.validar(raiz)))
+
+    def test_sin_carpeta_epicas_es_falla(self):
+        self.assertEqual(severidades(trazabilidad.validar(self.tmp.name)), [FALLA])
 
 
 class Versionado(unittest.TestCase):
