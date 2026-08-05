@@ -75,6 +75,52 @@
 
 - [Funcionalidad postergada y en qué condiciones se retomaría]
 
+### 5.4 Alcance funcional completo — el detalle que la épica resuelve ANTES de crear las HU
+
+La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que el alcance se descubra al crear las HU. Debe dar la **visión completa del proceso, de inicio a fin**. Las **HU son la descomposición** de este alcance en unidades implementables y verificables — por eso el alcance se define **primero**, aquí. Con este detalle se identifican las funcionalidades, se dividen en HU, se derivan sus CA y se fijan dependencias y orden de implementación.
+
+> **Agnóstico:** las preguntas aplican a **cualquier** épica de **cualquier** proyecto. Reemplaza el ejemplo por tu caso. Marca **"No aplica porque …"** en las que no correspondan — no se omiten en silencio.
+>
+> **Nivel de detalle — de alcance, no de spec.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno) — pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / spec de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
+
+**La épica debe responder, como mínimo:**
+
+| # | Pregunta | Qué precisar |
+|---|---|---|
+| 1 | **Finalidad** | qué problema resuelve y qué objetivo funcional persigue |
+| 2 | **Actores / roles** | quién puede consultar, crear, modificar, eliminar, activar, inactivar, administrar |
+| 3 | **Información** | qué datos identifican a la entidad y qué información adicional se maneja |
+| 4 | **Campos** | que la entidad **tiene** campos y qué dimensiones se definirán de cada uno (nombre, tipo, obligatoriedad, formato, longitud, valores) — **sin listarlos ni especificarlos**; ese detalle es de la HU/spec |
+| 5 | **Validaciones** | obligatoriedad, formato, rangos, unicidad, existencia, duplicidad, dependencias entre campos |
+| 6 | **Reglas de negocio** | condiciones para crear, modificar, activar, inactivar u otras operaciones |
+| 7 | **Estados y transiciones** | qué estados existen, qué significan, qué operaciones se permiten en cada uno (máquina de estados) |
+| 8 | **Operaciones** | crear, consultar, editar, cambiar estado, buscar, filtrar, asociar, ver detalle, etc. |
+| 9 | **Restricciones** | qué NO se permite, quién y bajo qué condiciones |
+| 10 | **Relaciones** | con qué entidades/módulos se relaciona y con qué cardinalidad |
+| 11 | **Consultas y listados** | columnas, filtros, ordenamiento, paginación, búsquedas, acciones disponibles |
+| 12 | **Mensajes / notificaciones** | éxito, error, advertencia, validación, confirmaciones; a quién y por qué canal |
+| 13 | **Errores y excepciones** | qué pasa ante dato inválido, duplicado, no encontrado, sin permiso, fallo de operación |
+| 14 | **Permisos y control de acceso** | qué rol puede cada operación y qué restringe el sistema |
+| 15 | **Auditoría / trazabilidad** | qué acciones se registran, qué se conserva, quién hizo cada operación |
+| 16 | **Resultado final** | cómo debe quedar el sistema al terminar y qué condiciones dan la épica por completa |
+
+**Detalle adicional (cuando aplique):**
+
+| # | Pregunta | Qué precisar |
+|---|---|---|
+| 17 | **Ciclo de vida completo** | del alta al archivado/baja/eliminación (¿borrado lógico o físico? ¿reactivable?) |
+| 18 | **Integraciones externas** | qué sistemas/APIs de terceros intervienen y con qué contrato |
+| 19 | **Datos maestros / catálogos** | qué catálogos consume o alimenta, y quién los administra |
+| 20 | **Importación / exportación** | carga masiva, exportación, formatos |
+| 21 | **Reportes e indicadores** | qué reportes/KPIs debe producir el proceso |
+| 22 | **Configurabilidad** | qué es parametrizable sin tocar código (reglas, catálogos, umbrales) |
+| 23 | **Concurrencia y volumen** | usuarios/registros simultáneos esperados y comportamiento bajo carga |
+| 24 | **Datos sensibles / privacidad** | qué datos son personales/sensibles, cómo se protegen y quién los ve |
+| 25 | **Migración / convivencia** | si reemplaza o convive con algo existente y cómo migran los datos |
+| 26 | **Idioma / formato / zona** | idioma de textos, formato de fechas/números/moneda, zona horaria (si aplica) |
+
+**Cierre:** la épica da la **visión completa** de lo que se quiere lograr; las **HU** son la **descomposición** de ese alcance en unidades implementables y verificables (§9). Sin este detalle, el alcance se "descubre" a mitad de camino — lo que rompe la trazabilidad y la estimación.
+
 ---
 
 ## 6. Usuarios y actores
