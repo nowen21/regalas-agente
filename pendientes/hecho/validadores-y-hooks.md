@@ -31,6 +31,8 @@ Instalación en `validadores/instalar.py`; enganche en `.githooks/` y `.claude/s
 | `versionado.py` | `G3` | secretos/artefactos/config por **nombre** de archivo |
 | `fases.py` | `F12.1–13` | jerarquía épica→HU→fase, nomenclatura, consecutivo |
 | `trazabilidad.py` | `DOC16/DOC12/DOC3/DOC11` | épica↔HU, ORIGEN, tabla de cierre |
+| `flujo.py` | `F0` · `F4.1` · `F4.3` | padres de la fase; 13 preguntas del plan; sin incertidumbre |
+| `plantillas.py` | `DOC1/DOC8/DOC10/DOC13/DOC15` | completitud de cada doc del proyecto contra su plantilla |
 
 **Código del proyecto** — multiproyecto (universales o por detección de stack); probados contra agro-system con hallazgos reales:
 
@@ -43,9 +45,10 @@ Instalación en `validadores/instalar.py`; enganche en `.githooks/` y `.claude/s
 | `esquema.py` | `D1` (FK) · `D3` · `EST2` (longitud) | FK con política; `NOT NULL` nuevo sin default; identificador sobre el límite |
 | `errores.py` | `E1` · `E5` | capturas de error vacías; secretos en logs |
 | `rendimiento.py` | `R2` · `R1` | `SELECT *`; consulta en bucle (N+1) |
-| `seguridad.py` | `S3` | concatenación SQL/shell; asignación masiva |
+| `seguridad.py` | `S3` · `S5` | concatenación SQL/shell; asignación masiva; flags de cookie |
 | `calidad.py` | `Q3` | funciones demasiado largas |
-| `aislamiento.py` | `T4` | pruebas contra BD efímera (Laravel `phpunit.xml`) |
+| `aislamiento.py` | `T4` · `T3` | BD efímera; orden aleatorio; fuentes flaky |
+| `ci.py` | `G6` | existe pipeline de CI con pruebas y linter |
 | `codigo.py` | — | base común: recorre el código fuente versionado |
 
 **Corren la herramienta del stack** — a demanda, no en hook (dependen del toolchain, tardan, tienen efectos):
@@ -56,8 +59,8 @@ Instalación en `validadores/instalar.py`; enganche en `.githooks/` y `.claude/s
 | `herramientas.py` · `suite` | `T5` | phpunit · npm test · pytest |
 | `herramientas.py` · `audit` | `DEP3`/`S7` | composer/npm/pip audit |
 
-**~37 reglas** con validador; **119 pruebas** verdes. Detalle regla por regla en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
+(`DEP4` y `CFG2` los cubre `versionado.py`.) **~50 reglas** con validador; **137 pruebas** verdes. Detalle regla por regla en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
 
 ## Lo que sigue abierto en el 01
 
-Las **~22** reglas restantes son del mismo tipo (leen código/config del proyecto): entre otras `S5` (flags de cookies/HTTPS en config), `T3` (orden aleatorio de la suite), el resto de `D1` (auditoría, `UNIQUE`, índices) y `15·IM` (anulación). Varias —como `EST1` y el resto de `EST2`— necesitan que el proyecto **declare su convención** en `.agente/` para comprobar contra ella. Más las **puertas de flujo** (`F2`: código de fase sin spec) y las **precondiciones de cierre**.
+Quedan **~9** reglas. Cuatro son fuzzy o pesadas: `F2` (cruzar código de fase con su spec), `F4.4` (intervención→CA), `DOC7` (cruce narrativo A↔B), `DOC14`-formato (forzar texto=ruta marca todo link descriptivo). Cinco necesitan que el proyecto **declare** en `.agente/` su convención o dominio: `EST1`, resto de `EST2`, resto de `D1` (auditoría), `IM2`, `IM5`.
