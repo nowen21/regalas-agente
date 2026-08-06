@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~24 |
-| 🟡 **Validables, faltan** | ~36 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
+| ✅ **Ya son validadores** | ~27 |
+| 🟡 **Validables, faltan** | ~33 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -31,6 +31,9 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `10·DEP2` | `dependencias.py` | lockfile del ecosistema presente y versionado |
 | `09·G4` | `rama.py` | rama dedicada (no la principal) y al día con ella |
 | `03·D2` | `migraciones.py` | cada migración declara su reversión (multi-stack por detección) |
+| `03·D1` (FK) | `esquema.py` | clave foránea con política de borrado explícita (Laravel/SQL) |
+| `05·E1` | `errores.py` | capturas de error vacías (multi-lenguaje) |
+| `06·R2` (`SELECT *`) | `rendimiento.py` | traer solo las columnas necesarias |
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
@@ -69,15 +72,13 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Regla | Qué comprobaría | 🔶 |
 |---|---|---|
-| `03·D1` | columnas de auditoría + FK con política + índices/UNIQUE | 🔶 |
+| `03·D1` (resto) | columnas de auditoría + `UNIQUE` + índices en lo que se filtra (la FK con política ya la hace `esquema.py`) | 🔶 |
 | `03·D3` | columna `NOT NULL` sin default en migración | 🔶 |
 | `04·S3` | concatenación en SQL/shell, mass-assignment (regex/linter) | 🔶 |
 | `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
 | `04·S7` | audit de vulnerabilidades del ecosistema | 🔶 |
-| `05·E1` | `catch` vacío (regex/linter) | 🔶 |
 | `05·E5` | campos sensibles en llamadas de log (regex) | 🔶 |
 | `06·R1` | heurística de consulta en bucle (N+1) | 🔶 |
-| `06·R2` | `SELECT *` y listados sin paginar | 🔶 |
 | `07·Q3` | longitud/complejidad de función (métrica) | 🔶 |
 | `07·Q6` | linter + formateador sin advertencias | 🔶 |
 | `08·T3` | suite en orden aleatorio + detectar rand/fecha/red | 🔶 |

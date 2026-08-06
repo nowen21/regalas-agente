@@ -20,9 +20,12 @@ import dependencias     # noqa: E402
 import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
+import errores          # noqa: E402
+import esquema          # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
+import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
@@ -481,6 +484,73 @@ class Dependencias(unittest.TestCase):
         # `vendor/.../composer.json` es de un paquete, no la raíz del proyecto.
         self.assertEqual(
             dependencias.revisar(["vendor/laravel/framework/composer.json"]), [])
+
+
+class Errores(unittest.TestCase):
+    """`05·E1` — capturas de error vacías, multi-lenguaje. Núcleo puro."""
+
+    def _n(self, texto):
+        return len(errores.revisar_texto(texto))
+
+    def test_catch_con_llaves_vacio_avisa(self):
+        self.assertEqual(self._n("try { x(); } catch (e) {}"), 1)
+
+    def test_catch_vacio_en_varias_lineas(self):
+        self.assertEqual(self._n("catch (Exception $e) {\n\n}"), 1)
+
+    def test_catch_js_sin_parentesis(self):
+        self.assertEqual(self._n("try { a() } catch {  }"), 1)
+
+    def test_except_pass_python(self):
+        self.assertEqual(self._n("try:\n    x()\nexcept ValueError:\n    pass"), 1)
+
+    def test_catch_con_manejo_no_avisa(self):
+        self.assertEqual(self._n("catch (e) { log(e); }"), 0)
+
+    def test_except_con_manejo_no_avisa(self):
+        self.assertEqual(self._n("except ValueError:\n    log(e)\n    raise"), 0)
+
+
+class Rendimiento(unittest.TestCase):
+    """`06·R2` — `SELECT *`. Núcleo puro."""
+
+    def test_select_estrella_avisa(self):
+        self.assertEqual(len(rendimiento.revisar_texto('q = "SELECT * FROM t"')), 1)
+
+    def test_select_estrella_minuscula(self):
+        self.assertEqual(len(rendimiento.revisar_texto("select * from t")), 1)
+
+    def test_select_con_columnas_no_avisa(self):
+        self.assertEqual(len(rendimiento.revisar_texto("SELECT id, nombre FROM t")), 0)
+
+
+class Esquema(unittest.TestCase):
+    """`03·D1` — FK con política de borrado, multi-stack. Núcleo puro."""
+
+    def test_laravel_fk_sin_politica_avisa(self):
+        php = "$table->foreignId('user_id')->constrained();"
+        self.assertEqual(len(esquema.revisar_esquema("m.php", php)), 1)
+
+    def test_laravel_fk_con_ondelete_no_avisa(self):
+        php = "$table->foreign('user_id')->references('id')->on('u')->onDelete('cascade');"
+        self.assertEqual(esquema.revisar_esquema("m.php", php), [])
+
+    def test_laravel_cascade_on_delete_helper_no_avisa(self):
+        php = "$table->foreignId('user_id')->constrained()->cascadeOnDelete();"
+        self.assertEqual(esquema.revisar_esquema("m.php", php), [])
+
+    def test_sql_references_sin_on_delete_avisa(self):
+        sql = "FOREIGN KEY (user_id) REFERENCES users(id)"
+        self.assertEqual(len(esquema.revisar_esquema("m.sql", sql)), 1)
+
+    def test_sql_references_con_on_delete_no_avisa(self):
+        sql = "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE"
+        self.assertEqual(esquema.revisar_esquema("m.sql", sql), [])
+
+    def test_una_sentencia_un_hallazgo(self):
+        # `foreignId` + `constrained` en la misma línea = un solo aviso.
+        php = "$table->foreignId('u')->constrained('users');"
+        self.assertEqual(len(esquema.revisar_esquema("m.php", php)), 1)
 
 
 class Migraciones(unittest.TestCase):

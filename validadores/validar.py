@@ -19,11 +19,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import commits          # noqa: E402
 import dependencias     # noqa: E402
 import enlaces          # noqa: E402
+import errores          # noqa: E402
+import esquema          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
+import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
@@ -105,6 +108,22 @@ def cmd_migraciones(a):
                     f"Migraciones reversibles · {relativo(raiz)}")
 
 
+def cmd_errores(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(errores.validar(raiz), f"Errores tragados · {relativo(raiz)}")
+
+
+def cmd_rendimiento(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(rendimiento.validar(raiz),
+                    f"Cargas sin límite · {relativo(raiz)}")
+
+
+def cmd_esquema(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(esquema.validar(raiz), f"Integridad de esquema · {relativo(raiz)}")
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -165,6 +184,18 @@ def main():
                         help="cada migración declara su reversión · 03·D2")
     mg.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     mg.set_defaults(func=cmd_migraciones)
+
+    er = sub.add_parser("errores", help="capturas de error vacías · 05·E1")
+    er.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    er.set_defaults(func=cmd_errores)
+
+    rd = sub.add_parser("rendimiento", help="`SELECT *` y cargas sin límite · 06·R2")
+    rd.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    rd.set_defaults(func=cmd_rendimiento)
+
+    es = sub.add_parser("esquema", help="FK con política de borrado · 03·D1")
+    es.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    es.set_defaults(func=cmd_esquema)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")
