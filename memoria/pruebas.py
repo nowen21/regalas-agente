@@ -102,6 +102,45 @@ class Vigencia(unittest.TestCase):
         con.close()
         self.assertEqual(n, 0)
 
+    # -- ciclo de la deuda (03) -------------------------------------------
+    def test_migrar_agrega_columnas_de_cierre(self):
+        con = self._con()
+        memoria.migrar(con)
+        cols = [r[1] for r in con.execute("PRAGMA table_info(senales)")]
+        con.close()
+        self.assertIn("cerrada_en", cols)
+        self.assertIn("cierra_ref", cols)
+
+    def test_cerrar_marca_estado_fecha_y_ref(self):
+        self._add(tipo="deuda-tecnica", titulo="Falta índice")
+        memoria.cmd_cerrar(_ns(db=self.db, id="S-001", ref="F3 / abc123"))
+        con = self._con()
+        r = con.execute("SELECT estado,cerrada_en,cierra_ref FROM senales WHERE id='S-001'").fetchone()
+        con.close()
+        self.assertEqual(r["estado"], "cerrada")
+        self.assertEqual(r["cerrada_en"], datetime.date.today().isoformat())
+        self.assertEqual(r["cierra_ref"], "F3 / abc123")
+
+    def test_pendientes_solo_deuda_y_preguntas_abiertas(self):
+        self._add(tipo="deuda-tecnica", titulo="Falta índice")
+        self._add(tipo="pregunta-abierta", titulo="¿IVA por línea?")
+        self._add(tipo="decision", titulo="Usar Redis")          # no es deuda
+        con = self._con()
+        abiertas = con.execute(
+            "SELECT id FROM senales WHERE estado='activa' AND tipo IN ('deuda-tecnica','pregunta-abierta')"
+        ).fetchall()
+        con.close()
+        self.assertEqual({r["id"] for r in abiertas}, {"S-001", "S-002"})
+
+    def test_cerrada_fuera_de_pendientes(self):
+        self._add(tipo="deuda-tecnica", titulo="Falta índice")
+        memoria.cmd_cerrar(_ns(db=self.db, id="S-001", ref="x"))
+        con = self._con()
+        n = con.execute("SELECT COUNT(*) FROM senales WHERE estado='activa'"
+                        " AND tipo IN ('deuda-tecnica','pregunta-abierta')").fetchone()[0]
+        con.close()
+        self.assertEqual(n, 0)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

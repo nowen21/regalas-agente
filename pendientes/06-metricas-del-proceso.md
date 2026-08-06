@@ -26,6 +26,6 @@ Una métrica visible se convierte en objetivo y deja de medir. "Cero fases reabi
 ## Relación con otros pendientes
 
 - Se alimenta de los [01 · validadores](01-validadores-de-codigo-de-proyecto.md): cada fallo de validador es un dato objetivo, sin que nadie tenga que anotarlo.
-- Y del [03 · ciclo de vida de pendientes](03-ciclo-de-vida-de-pendientes.md): sin cierre de deuda no hay serie de abierta-vs-cerrada que medir.
+- Y del [03 · ciclo de vida de pendientes](hecho/ciclo-de-vida-de-pendientes.md) (ya hecho): el estado `cerrada` con `cerrada_en` ya da la serie de deuda **abierta vs cerrada** que medir.
 
-Va de último de su bloque porque **no tiene qué medir hasta que 01 y 03 estén hechos**.
+Va de último de su bloque: el 03 ya está y el 01 casi; queda por medir cuando esos datos se acumulen.

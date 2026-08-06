@@ -10,6 +10,8 @@ Uso:
   python memoria.py revisar S-003                      # marca revisada hoy
   python memoria.py revisar --viejas --scope proyecto:x # ritual: lista las más viejas
   python memoria.py archivar S-003                     # poda: fuera de search, se conserva
+  python memoria.py pendientes [--scope modulo:facturacion]  # deuda/preguntas sin cerrar
+  python memoria.py cerrar S-014 --ref "F3 / commit abc1234" # cierra deuda resuelta
   python memoria.py list [--scope ...] [--tipo ...]
 
 La base por defecto es memoria/senales.db (junto a este script); se puede
@@ -42,9 +44,15 @@ def migrar(con):
     `creada` (una señal vieja se considera revisada por última vez al crearse).
     """
     cols = [r[1] for r in con.execute("PRAGMA table_info(senales)")]
-    if cols and "revisada" not in cols:
+    if not cols:
+        return
+    if "revisada" not in cols:
         con.execute("ALTER TABLE senales ADD COLUMN revisada TEXT")
         con.execute("UPDATE senales SET revisada = creada WHERE revisada IS NULL")
+    if "cerrada_en" not in cols:                 # ciclo de vida de la deuda (03)
+        con.execute("ALTER TABLE senales ADD COLUMN cerrada_en TEXT")
+    if "cierra_ref" not in cols:
+        con.execute("ALTER TABLE senales ADD COLUMN cierra_ref TEXT")
 
 
 def cmd_init(a):
@@ -177,6 +185,40 @@ def cmd_archivar(a):
     print(f"OK: {a.id} archivada (fuera de search){aviso}")
 
 
+DEUDA = ("deuda-tecnica", "pregunta-abierta")
+
+
+def cmd_pendientes(a):
+    """Lo que el agente difirió y sigue abierto: deuda técnica y preguntas."""
+    con = conectar(a.db)
+    migrar(con)
+    sql = ("SELECT id,tipo,scope,revisada,titulo FROM senales "
+           "WHERE estado='activa' AND tipo IN (?,?) ")
+    params = list(DEUDA)
+    if a.scope:
+        sql += "AND scope = ? "; params.append(a.scope)
+    sql += "ORDER BY revisada ASC, rowid ASC"
+    filas = con.execute(sql, params).fetchall()
+    con.close()
+    if not filas:
+        print("(sin deuda abierta en ese scope)"); return
+    for r in filas:
+        print(f"{r['id']} · {r['tipo']} · [{r['scope']}] {r['titulo']}"
+              + marca_vigencia(r["revisada"], MESES_VIGENCIA))
+
+
+def cmd_cerrar(a):
+    """Cierra una deuda/pregunta resuelta: fuera de search, con fecha y referencia."""
+    con = conectar(a.db)
+    migrar(con)
+    hoy = datetime.date.today().isoformat()
+    n = con.execute(
+        "UPDATE senales SET estado='cerrada', cerrada_en=?, cierra_ref=? WHERE id=?",
+        (hoy, a.ref, a.id)).rowcount
+    con.commit(); con.close()
+    print(f"OK: {a.id} cerrada ({hoy}) — {a.ref}" if n else f"no existe {a.id}")
+
+
 def cmd_list(a):
     con = conectar(a.db)
     migrar(con)
@@ -230,6 +272,15 @@ def main():
     ar = sub.add_parser("archivar", help="poda: saca la señal de search (se conserva)")
     ar.add_argument("id")
     ar.set_defaults(fn=cmd_archivar)
+
+    pe = sub.add_parser("pendientes", help="deuda técnica y preguntas abiertas sin cerrar")
+    pe.add_argument("--scope", default=None)
+    pe.set_defaults(fn=cmd_pendientes)
+
+    ce = sub.add_parser("cerrar", help="cierra una deuda/pregunta resuelta, con referencia")
+    ce.add_argument("id")
+    ce.add_argument("--ref", required=True, help="commit / fase / HU que la cerró")
+    ce.set_defaults(fn=cmd_cerrar)
 
     li = sub.add_parser("list")
     li.add_argument("--scope", default=None); li.add_argument("--tipo", default=None)

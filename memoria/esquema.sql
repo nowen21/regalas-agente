@@ -14,18 +14,21 @@ CREATE TABLE IF NOT EXISTS senales (
   why       TEXT,
   where_    TEXT,                                 -- archivo:linea o area
   learned   TEXT,
-  scope     TEXT NOT NULL DEFAULT 'proyecto',     -- organizacion | proyecto:<slug> | modulo:<slug>
-  estado    TEXT NOT NULL DEFAULT 'activa',       -- activa | reemplazada | revertida | archivada
-  reemplaza TEXT,                                 -- id de la señal que reemplaza
-  creada    TEXT NOT NULL,                        -- ISO date de creación
-  revisada  TEXT,                                 -- ISO date de última revisión (vigencia)
-  autor     TEXT
+  scope      TEXT NOT NULL DEFAULT 'proyecto',    -- organizacion | proyecto:<slug> | modulo:<slug>
+  estado     TEXT NOT NULL DEFAULT 'activa',      -- activa | reemplazada | revertida | archivada | cerrada
+  reemplaza  TEXT,                                -- id de la señal que reemplaza
+  creada     TEXT NOT NULL,                       -- ISO date de creación
+  revisada   TEXT,                                -- ISO date de última revisión (vigencia)
+  cerrada_en TEXT,                                -- ISO date en que se cerró la deuda/pregunta
+  cierra_ref TEXT,                                -- commit / fase / HU que la cerró
+  autor      TEXT
 );
--- estado: solo 'activa' aparece en `search`. 'archivada' = podada (fuera de
--- búsqueda, pero se conserva; nunca se borra). 'reemplazada'/'revertida' = ya
--- existían. `revisada` marca la vigencia: una señal sin revisar hace meses se
--- muestra atenuada. En bases previas, la migración agrega `revisada` y la
--- rellena con `creada` (ver memoria.py · cmd_init).
+-- estado: solo 'activa' aparece en `search`. 'archivada' = podada (poda del 02);
+-- 'cerrada' = deuda diferida o pregunta abierta que ya se resolvió (03), con
+-- fecha y referencia de cierre. Ninguna se borra. 'reemplazada'/'revertida' ya
+-- existían. `revisada` marca la vigencia (una señal sin revisar hace meses se
+-- muestra atenuada). En bases previas, la migración agrega las columnas nuevas
+-- (`revisada`←`creada`, `cerrada_en`, `cierra_ref`) — ver memoria.py · migrar().
 
 -- Índice de texto completo (FTS5), contenido externo sincronizado por triggers.
 CREATE VIRTUAL TABLE IF NOT EXISTS senales_fts USING fts5(
