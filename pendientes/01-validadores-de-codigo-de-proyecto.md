@@ -4,7 +4,7 @@
 
 Extender la capa de **verificación mecánica** del estándar a lo que vive **dentro del código de un proyecto**: los validadores que no se pueden construir "en seco" sobre el estándar porque necesitan inspeccionar código/config o correr una herramienta instalada (linter, pruebas, audit).
 
-> **Buena parte ya está hecha** — hooks activos y ~30 reglas con validador (95 pruebas verdes): documentación/estructura, y ya varios que leen el código del proyecto (`S4`, `DEP2`, `G4`, `D2`, `D1`, `E1`, `R2`) y que corren la herramienta del stack (`Q6`, `T5`, `DEP3`). Se registra en [hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md). Este pendiente es **lo que queda**: ~29 reglas del mismo tipo, que se van sumando apuntando a un proyecto real (agro-system o rni).
+> **La mayor parte ya está hecha** — hooks activos y ~37 reglas con validador (119 pruebas verdes): documentación/estructura, los que leen el código del proyecto (`S4`, `DEP2`, `G4`, `D2`, `D1`, `D3`, `E1`, `E5`, `R2`, `R1`, `S3`, `Q3`, `T4`, `EST2` longitud) y los que corren la herramienta del stack (`Q6`, `T5`, `DEP3`). Se registra en [hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md). Este pendiente es **lo que queda**: ~22 reglas del mismo tipo, apuntando a un proyecto real (agro-system o rni).
 
 ## El principio que lo ordena
 
@@ -22,9 +22,9 @@ Todo lo de aquí necesita un **proyecto real** más allá de su documentación �
 - **Puertas del flujo** (`02·F2`) — que no haya código de una fase sin su spec acordada y su plan de trabajo. Requiere leer el código de la fase, no solo su carpeta de documentación.
 - **Precondiciones de cierre** (`cerrar-fase`) — pruebas ejecutadas, checklist de trazabilidad marcado.
 - **Trazabilidad hasta el commit** — el tramo documentación→commit (la parte épica↔HU/ORIGEN/tabla ya la hace `trazabilidad.py`).
-- **Las ~29 reglas de código/config restantes** — entre otras: migraciones `NOT NULL` sin default (`D3`), concatenación en SQL/shell (`S3`), secretos en logs (`E5`), N+1 (`R1`), complejidad de función (`Q3`), BD efímera en pruebas (`T4`), ubicación/nombres de módulos (`EST1`/`EST2`)… El inventario regla por regla, con su estado, está en [validadores/reglas-validables.md](../validadores/reglas-validables.md).
+- **Las ~22 reglas de código/config restantes** — entre otras: flags de cookies/HTTPS en config (`S5`), orden aleatorio de la suite (`T3`), el resto de `D1` (auditoría, `UNIQUE`, índices), anulación (`15·IM`)… Algunas —`EST1` y el resto de `EST2`— necesitan que el proyecto **declare su convención** en `.agente/` para comprobar contra ella. El inventario regla por regla, con su estado, está en [validadores/reglas-validables.md](../validadores/reglas-validables.md).
 
-> Ya hechos (en [hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): `S4`, `DEP2`, `G4`, `D2`, `D1` (FK), `E1`, `R2` y los que corren herramienta `Q6`, `T5`, `DEP3`.
+> Ya hechos (en [hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): `S4`, `DEP2`, `G4`, `D2`, `D1` (FK), `D3`, `E1`, `E5`, `R2`, `R1`, `S3`, `Q3`, `T4`, `EST2` (longitud), y los que corren herramienta `Q6`, `T5`, `DEP3`.
 
 ## Forma (ya establecida)
 

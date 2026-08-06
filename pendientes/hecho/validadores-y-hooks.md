@@ -40,9 +40,12 @@ Instalación en `validadores/instalar.py`; enganche en `.githooks/` y `.claude/s
 | `dependencias.py` | `DEP2` | lockfile presente y versionado |
 | `rama.py` | `G4` | rama dedicada y al día con la principal |
 | `migraciones.py` | `D2` | cada migración declara su reversión |
-| `esquema.py` | `D1` (FK) | clave foránea con política de borrado |
-| `errores.py` | `E1` | capturas de error vacías |
-| `rendimiento.py` | `R2` | `SELECT *` |
+| `esquema.py` | `D1` (FK) · `D3` · `EST2` (longitud) | FK con política; `NOT NULL` nuevo sin default; identificador sobre el límite |
+| `errores.py` | `E1` · `E5` | capturas de error vacías; secretos en logs |
+| `rendimiento.py` | `R2` · `R1` | `SELECT *`; consulta en bucle (N+1) |
+| `seguridad.py` | `S3` | concatenación SQL/shell; asignación masiva |
+| `calidad.py` | `Q3` | funciones demasiado largas |
+| `aislamiento.py` | `T4` | pruebas contra BD efímera (Laravel `phpunit.xml`) |
 | `codigo.py` | — | base común: recorre el código fuente versionado |
 
 **Corren la herramienta del stack** — a demanda, no en hook (dependen del toolchain, tardan, tienen efectos):
@@ -53,8 +56,8 @@ Instalación en `validadores/instalar.py`; enganche en `.githooks/` y `.claude/s
 | `herramientas.py` · `suite` | `T5` | phpunit · npm test · pytest |
 | `herramientas.py` · `audit` | `DEP3`/`S7` | composer/npm/pip audit |
 
-**~30 reglas** con validador; **95 pruebas** verdes. Detalle regla por regla en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
+**~37 reglas** con validador; **119 pruebas** verdes. Detalle regla por regla en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
 
 ## Lo que sigue abierto en el 01
 
-Las **~29** reglas restantes son del mismo tipo (leen código/config del proyecto): entre otras `NOT NULL` sin default (`D3`), concatenación en SQL/shell (`S3`), secretos en logs (`E5`), N+1 (`R1`), complejidad de función (`Q3`), ubicación/nombres de módulos (`EST1`/`EST2`)… más las **puertas de flujo** (`F2`: código de fase sin spec) y las **precondiciones de cierre**.
+Las **~22** reglas restantes son del mismo tipo (leen código/config del proyecto): entre otras `S5` (flags de cookies/HTTPS en config), `T3` (orden aleatorio de la suite), el resto de `D1` (auditoría, `UNIQUE`, índices) y `15·IM` (anulación). Varias —como `EST1` y el resto de `EST2`— necesitan que el proyecto **declare su convención** en `.agente/` para comprobar contra ella. Más las **puertas de flujo** (`F2`: código de fase sin spec) y las **precondiciones de cierre**.
