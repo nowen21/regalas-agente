@@ -56,9 +56,10 @@ python validadores/pruebas.py
 | [esquema.py](esquema.py) | FK con política de borrado; `NOT NULL` nuevo sin default; longitud de identificador | `base/03·D1/D3` · `14·EST2` |
 | [errores.py](errores.py) | Capturas de error vacías; secretos en llamadas de log | `base/05·E1/E5` |
 | [rendimiento.py](rendimiento.py) | `SELECT *`; consulta ejecutada dentro de un bucle (N+1) | `base/06·R2/R1` |
-| [seguridad.py](seguridad.py) | Concatenación SQL/shell; asignación masiva sin freno | `base/04·S3` |
+| [seguridad.py](seguridad.py) | Concatenación SQL/shell; asignación masiva; flags de cookie de sesión | `base/04·S3/S5` |
 | [calidad.py](calidad.py) | Funciones demasiado largas | `base/07·Q3` |
-| [aislamiento.py](aislamiento.py) | Pruebas contra BD efímera, no real (Laravel `phpunit.xml`) | `base/08·T4` |
+| [aislamiento.py](aislamiento.py) | Pruebas contra BD efímera; orden aleatorio; fuentes flaky | `base/08·T4/T3` |
+| [ci.py](ci.py) | Existe un pipeline de CI que corre pruebas y linter | `base/09·G6` |
 
 ### Validadores que corren una herramienta (a demanda)
 

@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Consultas y comandos por concatenación — `04·S3`.
+"""Concatenación, inyección y flags de sesión — `04·S3` y `04·S5`.
 
 S3 prohíbe construir consultas o comandos pegando entrada:
-
   BD    · consultas parametrizadas / ORM; nunca concatenar en la consulta.
   Shell · no armar comandos con entrada; separar comando y argumentos.
   Masiva· declarar qué campos son asignables; no volcar todo el payload al modelo.
 
-Se marcan las tres señales detectables sin criterio: una cadena con SQL pegada a
-una variable, una llamada a shell con concatenación, y la asignación masiva sin
-freno (`$guarded = []`, `create($request->all())`).
+S5 (parte comprobable): las cookies de sesión llevan `HttpOnly` y `Secure`; se
+marca cuando alguien los **apaga** (`'http_only' => false`). El resto de S5
+(CSRF, HTTPS, hashing) depende del contexto y queda como juicio humano.
 
 Multiproyecto: los patrones son de PHP/JS/Python. Todo **AVISO** y **heurístico**:
 una cadena SQL con un nombre de tabla fijo no es inyección; lo confirma un humano.
@@ -38,6 +37,10 @@ _GUARDED_VACIO = re.compile(r"\$guarded\s*=\s*\[\s*\]")
 _TODO_AL_MODELO = re.compile(
     r"(->|::)\s*(create|update|fill|forceCreate|forceFill)\s*\(\s*\$\w+->\s*all\(\)")
 
+# S5 · un flag de cookie de sesión apagado a mano.
+_COOKIE_INSEGURA = re.compile(
+    r"(?i)['\"]?(http_?only|secure|cookie_httponly|cookie_secure)['\"]?\s*(=>|:|=)\s*(false|0)\b")
+
 
 def revisar_texto(texto, donde="", hallazgos=None):
     """Núcleo puro: marca concatenación SQL/shell y asignación masiva."""
@@ -56,7 +59,8 @@ def revisar_texto(texto, donde="", hallazgos=None):
 
     for patron, motivo in (
         (_GUARDED_VACIO, "asignación masiva sin freno (`$guarded = []`) — S3"),
-        (_TODO_AL_MODELO, "todo el payload al modelo (`->…($req->all())`) — S3: declarar asignables")):
+        (_TODO_AL_MODELO, "todo el payload al modelo (`->…($req->all())`) — S3: declarar asignables"),
+        (_COOKIE_INSEGURA, "flag de cookie de sesión apagado (`HttpOnly`/`Secure`) — S5")):
         for m in patron.finditer(texto):
             hallazgos.append(Hallazgo(
                 AVISO, donde, codigo.linea_de(texto, m.start()), motivo))

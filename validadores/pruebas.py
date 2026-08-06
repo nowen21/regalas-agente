@@ -22,6 +22,7 @@ import fases            # noqa: E402
 import instalar         # noqa: E402
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
+import ci               # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import flujo            # noqa: E402
@@ -694,6 +695,36 @@ class Rama(unittest.TestCase):
         self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
 
 
+class CI(unittest.TestCase):
+    """`09·G6` — pipeline de CI. Núcleo puro."""
+
+    def test_sin_ci_avisa(self):
+        self.assertEqual(len(ci.revisar_ci([])), 1)
+
+    def test_ci_con_pruebas_y_linter_no_avisa(self):
+        yml = "jobs:\n  test:\n    run: phpunit\n  lint:\n    run: pint --test"
+        self.assertEqual(ci.revisar_ci([yml]), [])
+
+    def test_ci_sin_linter_avisa(self):
+        self.assertTrue(any("linter" in m for m in ci.revisar_ci(["run: phpunit"])))
+
+    def test_detecta_los_archivos_de_ci(self):
+        for ruta in (".github/workflows/ci.yml", ".gitlab-ci.yml", "Jenkinsfile"):
+            self.assertRegex(ruta, ci._CI)
+
+
+class Seguridad_S5(unittest.TestCase):
+    """`04·S5` — flags de cookie de sesión (en seguridad.py)."""
+
+    def test_http_only_false_avisa(self):
+        self.assertTrue(any("S5" in h.mensaje
+                            for h in seguridad.revisar_texto("'http_only' => false,")))
+
+    def test_secure_true_no_avisa(self):
+        self.assertFalse(any("S5" in h.mensaje
+                             for h in seguridad.revisar_texto("'secure' => true,")))
+
+
 class Flujo(unittest.TestCase):
     """`02·F4.1`/`F4.3` — el plan de trabajo. Núcleo puro."""
 
@@ -779,6 +810,18 @@ class Aislamiento(unittest.TestCase):
     def test_bd_real_avisa(self):
         xml = '<env name="DB_DATABASE" value="agro_produccion"/>'
         self.assertIsNotNone(aislamiento.revisar_phpunit(xml))
+
+    def test_orden_aleatorio_no_avisa(self):
+        self.assertIsNone(aislamiento.revisar_orden('<phpunit executionOrder="random">'))
+
+    def test_sin_orden_aleatorio_avisa(self):
+        self.assertIsNotNone(aislamiento.revisar_orden("<phpunit>"))
+
+    def test_fuente_flaky_en_prueba_se_reporta(self):
+        self.assertEqual(len(aislamiento.revisar_test("$x = mt_rand(1, 9);")), 1)
+
+    def test_prueba_determinista_no_se_reporta(self):
+        self.assertEqual(aislamiento.revisar_test("$x = 5;"), [])
 
     def test_sin_config_ni_env_testing_avisa(self):
         self.assertIsNotNone(aislamiento.revisar_phpunit("<phpunit></phpunit>", hay_env_testing=False))

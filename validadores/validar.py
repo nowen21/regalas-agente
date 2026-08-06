@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
+import ci               # noqa: E402
 import commits          # noqa: E402
 import dependencias     # noqa: E402
 import enlaces          # noqa: E402
@@ -132,6 +133,11 @@ def cmd_esquema(a):
 def cmd_flujo(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(flujo.validar(raiz), f"Plan de trabajo · {relativo(raiz)}")
+
+
+def cmd_ci(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(ci.validar(raiz), f"Integración continua · {relativo(raiz)}")
 
 
 def cmd_seguridad(a):
@@ -253,6 +259,10 @@ def main():
     cl = sub.add_parser("calidad", help="funciones demasiado largas · 07·Q3")
     cl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     cl.set_defaults(func=cmd_calidad)
+
+    ci_ = sub.add_parser("ci", help="pipeline de CI con pruebas y linter · 09·G6")
+    ci_.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ci_.set_defaults(func=cmd_ci)
 
     ai = sub.add_parser("aislamiento",
                         help="pruebas contra BD efímera, no real · 08·T4")

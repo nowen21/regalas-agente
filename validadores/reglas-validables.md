@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~39 |
-| 🟡 **Validables, faltan** | ~20 (inspeccionan código/config del proyecto; varias necesitan una convención declarada) |
+| ✅ **Ya son validadores** | ~44 |
+| 🟡 **Validables, faltan** | ~15 (la mayoría documentación de flujo; 5 necesitan que el proyecto declare su convención/dominio) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -34,9 +34,11 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `03·D1` (FK) · `03·D3` · `14·EST2` (longitud) | `esquema.py` | FK con política; `NOT NULL` nuevo sin default; identificador sobre el límite |
 | `05·E1` · `05·E5` | `errores.py` | capturas de error vacías; secretos en logs (multi-lenguaje) |
 | `06·R2` (`SELECT *`) · `06·R1` | `rendimiento.py` | traer solo lo necesario; consulta en bucle (N+1) |
-| `04·S3` | `seguridad.py` | concatenación SQL/shell; asignación masiva sin freno |
+| `04·S3` · `04·S5` | `seguridad.py` | concatenación SQL/shell; asignación masiva; flags de cookie |
 | `07·Q3` | `calidad.py` | funciones demasiado largas |
-| `08·T4` | `aislamiento.py` | pruebas contra BD efímera, no real (Laravel `phpunit.xml`) |
+| `08·T4` · `08·T3` | `aislamiento.py` | BD efímera; orden aleatorio; fuentes flaky |
+| `09·G6` | `ci.py` | existe pipeline de CI que corre pruebas y linter |
+| `10·DEP4` · `11·CFG2` | `versionado.py` | carpeta instalada no versionada; `.env` real ignorado + molde |
 | `07·Q6` | `herramientas.py` (`linter`) | corre el linter/formateador del stack |
 | `08·T5` | `herramientas.py` (`suite`) | corre la suite de pruebas del stack |
 | `10·DEP3` · `04·S7` | `herramientas.py` (`audit`) | corre el audit de vulnerabilidades del stack (misma herramienta) |
@@ -73,25 +75,20 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta, link=relativo `.md` | 🔶 |
 | `DOC15` | README por carpeta del árbol · HU-NNN · sin placeholders `[…]` | 🔶 |
 
-### Código, datos, pruebas (`03`–`08`)
+### Necesitan que el proyecto **declare** su convención o dominio
 
-| Regla | Qué comprobaría | 🔶 |
+No son mecánicas "en seco": hace falta que el proyecto declare, en `.agente/`,
+contra qué comparar (su convención de estructura/nombres, qué entidades son
+inmutables, qué tablas llevan auditoría). Sin esa declaración, dos personas
+pueden discutir si se cumplen → hoy las interpreta el agente.
+
+| Regla | Qué comprobaría | Necesita |
 |---|---|---|
-| `03·D1` (resto) | columnas de auditoría + `UNIQUE` + índices en lo que se filtra (la FK con política ya la hace `esquema.py`) | 🔶 |
-| `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
-| `08·T3` | suite en orden aleatorio + detectar rand/fecha/red | 🔶 |
-| `14·EST1` | módulos en su ubicación según la convención declarada | 🔶 |
-| `14·EST2` (resto) | nombres siguen la convención declarada (la longitud ya la hace `esquema.py`) | 🔶 |
-| `15·IM2` | tres estados + campos de anulación en el esquema | 🔶 |
-| `15·IM5` | permiso "anular" separado de "eliminar" en el catálogo | 🔶 |
-
-### Git / CI / dependencias (`09`–`11`)
-
-| Regla | Qué comprobaría | 🔶 |
-|---|---|---|
-| `G6` | pipeline CI con pruebas + lint | 🔶 |
-| `10·DEP4` | carpeta instalada no versionada | 🔶 |
-| `11·CFG2` | `.env` real ignorado + plantilla sin valores | 🔶 |
+| `03·D1` (resto) | columnas de auditoría + `UNIQUE` + índices en lo que se filtra | qué tablas son de dominio (no framework) |
+| `14·EST1` | módulos en su ubicación | la convención de estructura declarada |
+| `14·EST2` (resto) | nombres siguen la convención | la convención de nombres declarada |
+| `15·IM2` | tres estados + campos de anulación en el esquema | qué entidades son inmutables |
+| `15·IM5` | permiso "anular" separado de "eliminar" | qué entidades son inmutables |
 
 ---
 
