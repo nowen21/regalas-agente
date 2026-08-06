@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~37 |
-| 🟡 **Validables, faltan** | ~22 (inspeccionan código/config del proyecto; varias necesitan una convención declarada) |
+| ✅ **Ya son validadores** | ~39 |
+| 🟡 **Validables, faltan** | ~20 (inspeccionan código/config del proyecto; varias necesitan una convención declarada) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -45,6 +45,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
 | `F12.1/2/3/4/5/6/7/11/12/13` | `fases.py` | jerarquía épica→HU→fase · id único · nomenclatura · consecutivo sin huecos · ruta física |
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
+| `F4.1` · `F4.3` | `flujo.py` | el plan trae las 13 preguntas · sin marcas de incertidumbre |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
 | `DOC14` (resolución de enlaces) | `enlaces.py` | enlaces `.md` resuelven |
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
@@ -62,9 +63,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 |---|---|---|
 | `F0` | existen brief/épica/HU/spec padres de cada fase | 🔶 |
 | `F2` | ¿código de fase sin spec referenciado? | 🔶 |
-| `F4` | `plan_pruebas` junto al `plan_trabajo` | 🔶 |
-| `F4.1` | el `plan_trabajo` tiene las 13 secciones | 🔶 |
-| `F4.3` | regex de marcas de incertidumbre (`TBD`, `(o similar)`, `?`, `~`) en el plan | 🔶 |
+| `F4` | `plan_pruebas` junto al `plan_trabajo` (ya lo cubre `fases.py`: los 4 documentos) | ✅ |
 | `F4.4` | cada intervención del plan referencia un CA | 🔶 |
 | `DOC1` | doc de cierre con secciones plan/pruebas/resultado | 🔶 |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | 🔶 |

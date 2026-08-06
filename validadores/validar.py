@@ -24,6 +24,7 @@ import enlaces          # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import fases            # noqa: E402
+import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import instalar         # noqa: E402
 import migraciones      # noqa: E402
@@ -126,6 +127,11 @@ def cmd_rendimiento(a):
 def cmd_esquema(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(esquema.validar(raiz), f"Integridad de esquema · {relativo(raiz)}")
+
+
+def cmd_flujo(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(flujo.validar(raiz), f"Plan de trabajo · {relativo(raiz)}")
 
 
 def cmd_seguridad(a):
@@ -233,6 +239,11 @@ def main():
     es = sub.add_parser("esquema", help="FK con política de borrado · 03·D1")
     es.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     es.set_defaults(func=cmd_esquema)
+
+    fl = sub.add_parser("flujo",
+                        help="el plan de trabajo: 13 preguntas e incertidumbre · 02·F4.1/F4.3")
+    fl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    fl.set_defaults(func=cmd_flujo)
 
     sg = sub.add_parser("seguridad",
                         help="concatenación SQL/shell y asignación masiva · 04·S3")

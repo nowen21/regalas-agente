@@ -24,6 +24,7 @@ import aislamiento      # noqa: E402
 import calidad          # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
+import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
@@ -691,6 +692,34 @@ class Rama(unittest.TestCase):
 
     def test_sin_principal_detectable_no_opina(self):
         self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
+
+
+class Flujo(unittest.TestCase):
+    """`02·F4.1`/`F4.3` — el plan de trabajo. Núcleo puro."""
+
+    def _plan_completo(self):
+        return "\n".join(f"## {n}. Sección" for n in range(0, 14))
+
+    def test_plan_completo_no_reporta(self):
+        faltan, inc = flujo.revisar_plan(self._plan_completo())
+        self.assertEqual(faltan, [])
+        self.assertEqual(inc, [])
+
+    def test_secciones_faltantes_se_listan(self):
+        texto = "## 0. Id\n## 1. Alcance\n## 13. Cierre"
+        faltan, _ = flujo.revisar_plan(texto)
+        self.assertIn(5, faltan)
+        self.assertNotIn(0, faltan)
+        self.assertNotIn(13, faltan)
+
+    def test_marca_de_incertidumbre_se_reporta(self):
+        texto = self._plan_completo() + "\n- ruta: app/Foo.php (o similar)"
+        _, inc = flujo.revisar_plan(texto)
+        self.assertEqual(len(inc), 1)
+
+    def test_tbd_se_reporta(self):
+        _, inc = flujo.revisar_plan("## 0.\ntabla: TBD")
+        self.assertTrue(any("TBD" in frag for _, frag in inc))
 
 
 class Seguridad(unittest.TestCase):
