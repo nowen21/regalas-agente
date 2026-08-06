@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~44 |
-| 🟡 **Validables, faltan** | ~15 (la mayoría documentación de flujo; 5 necesitan que el proyecto declare su convención/dominio) |
+| ✅ **Ya son validadores** | ~50 |
+| 🟡 **Validables, faltan** | ~9 (4 fuzzy o pesadas: `F2`, `F4.4`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -47,7 +47,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
 | `F12.1/2/3/4/5/6/7/11/12/13` | `fases.py` | jerarquía épica→HU→fase · id único · nomenclatura · consecutivo sin huecos · ruta física |
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
-| `F4.1` · `F4.3` | `flujo.py` | el plan trae las 13 preguntas · sin marcas de incertidumbre |
+| `F0` · `F4.1` · `F4.3` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |
+| `DOC1` · `DOC8` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (cierre, análisis, reglas, catálogo, HU) |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
 | `DOC14` (resolución de enlaces) | `enlaces.py` | enlaces `.md` resuelven |
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
@@ -61,19 +62,12 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ### Flujo y trazabilidad (`02`, `13·DOC`)
 
-| Regla | Qué comprobaría el script | 🔶 |
+| Regla | Qué comprobaría el script | Por qué falta |
 |---|---|---|
-| `F0` | existen brief/épica/HU/spec padres de cada fase | 🔶 |
-| `F2` | ¿código de fase sin spec referenciado? | 🔶 |
-| `F4` | `plan_pruebas` junto al `plan_trabajo` (ya lo cubre `fases.py`: los 4 documentos) | ✅ |
-| `F4.4` | cada intervención del plan referencia un CA | 🔶 |
-| `DOC1` | doc de cierre con secciones plan/pruebas/resultado | 🔶 |
-| `DOC7` | cruce bidireccional A↔B en §Historial cruzado | 🔶 |
-| `DOC8` | cierre de análisis: tabla + banner + puntero en prompt vivo | 🔶 |
-| `DOC10` | regla `P` numerada + banner si promovida + puntero de señal | 🔶 |
-| `DOC13` | entradas de catálogo con campos mínimos | 🔶 |
-| `DOC14` (formato) | link de 2 partes: texto=ruta absoluta, link=relativo `.md` | 🔶 |
-| `DOC15` | README por carpeta del árbol · HU-NNN · sin placeholders `[…]` | 🔶 |
+| `F2` | ¿código de fase sin spec referenciado? | cruzar el código con su spec; es el más pesado |
+| `F4.4` | cada intervención del plan referencia un CA | mapear intervención→CA dentro del plan (fuzzy) |
+| `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
+| `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
 
 ### Necesitan que el proyecto **declare** su convención o dominio
 
@@ -117,4 +111,4 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos y ya corre contra código real, todo multiproyecto: los que **leen el código** (`S4`, `DEP2`, `G4`, `D2`, `D1`, `D3`, `E1`, `E5`, `R2`, `R1`, `S3`, `Q3`, `T4`, `EST2` longitud) y los que **corren la herramienta del stack** a demanda (`Q6`, `T5`, `DEP3`). Las ~22 restantes son del mismo tipo; varias (como `EST1` y el resto de `EST2`) necesitan que el proyecto **declare su convención** en `.agente/` para poder comprobarlas contra ella.
+Sobre el **estándar solo** ya está todo lo validable, y la mayor parte de lo que vive en los proyectos también — ~50 reglas, todo multiproyecto: leen el código, corren la herramienta del stack, o revisan la documentación de flujo (fases, plan, padres, completitud contra plantilla). Quedan **~9**: 4 son fuzzy o pesadas (`F2` cruzar código↔spec, `F4.4`, `DOC7`, `DOC14`), y 5 necesitan que el proyecto **declare su convención/dominio** en `.agente/` (`EST1`, resto de `EST2`, `D1`-resto, `IM2`, `IM5`) — sin esa declaración las interpreta el agente.

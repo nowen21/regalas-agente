@@ -47,7 +47,7 @@ python validadores/pruebas.py
 | [commits.py](commits.py) | Asunto con contenido, línea en blanco antes del cuerpo, rastros de herramienta | [`base/09-git.md`](../base/09-git.md) · G2 |
 | [fases.py](fases.py) | Jerarquía y nomenclatura épica→HU→fase; consecutivo sin huecos; los 4 documentos | `02·F12` (`F12.1/2/3/4/5/6/7/11/12/13`) |
 | [trazabilidad.py](trazabilidad.py) | Enlace bidireccional épica↔HU; ORIGEN en el plan; tabla de cierre | `13·DOC16/DOC12/DOC3/DOC11` |
-| [flujo.py](flujo.py) | El plan de trabajo trae las 13 preguntas y no deja marcas de incertidumbre | `02·F4.1/F4.3` |
+| [flujo.py](flujo.py) | Cada fase tiene sus padres (épica/HU); el plan trae las 13 preguntas y sin incertidumbre | `02·F0/F4.1/F4.3` |
 | [versionado.py](versionado.py) | Secretos/artefactos/config local versionados (por **nombre** de archivo) | `base/09-git.md` · G3 |
 | [secretos.py](secretos.py) | Secretos **incrustados en el código** (claves AWS, tokens, `password = "…"`) | `base/04·S4` · `00·N6` |
 | [dependencias.py](dependencias.py) | Lockfile del ecosistema presente y versionado | `base/10·DEP2` |

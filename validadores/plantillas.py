@@ -38,6 +38,15 @@ POR_NOMBRE = {
     "mapeo-nombres": "plantillas/mapeo-nombres.md",
     "cierre-analisis": "plantillas/cierre-analisis.md",
     "estado-fase": "plantillas/estado-fase.md",
+    # Documentos del proyecto con su nombre real en `documentacion/…`.
+    "plan_trabajo": "plantillas/planes/trabajo.md",
+    "plan_pruebas": "plantillas/planes/pruebas.md",
+    "funcionalidad_implementada": "plantillas/funcionalidad-implementada.md",
+    "catalogo-modulos": "plantillas/catalogo-modulos.md",
+    "modulos": "plantillas/catalogo-modulos.md",
+    "reglas-proyecto": "plantillas/reglas-proyecto.md",
+    "mapa-dependencias": "plantillas/mapa-dependencias.md",
+    "adr": "plantillas/ADR.md",
 }
 
 _H1 = re.compile(r"^#\s+(.*?)\s*$")

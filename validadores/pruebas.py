@@ -753,6 +753,52 @@ class Flujo(unittest.TestCase):
         self.assertTrue(any("TBD" in frag for _, frag in inc))
 
 
+class FlujoF0(unittest.TestCase):
+    """`02·F0` — padres de cada fase. Contra un árbol temporal."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+
+    def _fase(self, con_doc_hu, con_doc_epica):
+        base = os.path.join(self.tmp.name, "documentacion", "epicas",
+                            "EP-001-x", "HU-001-y", "A-EP-001-HU-001-z")
+        os.makedirs(base)
+        hu = os.path.join(self.tmp.name, "documentacion", "epicas", "EP-001-x", "HU-001-y")
+        ep = os.path.join(self.tmp.name, "documentacion", "epicas", "EP-001-x")
+        if con_doc_hu:
+            open(os.path.join(hu, "HU-001-y.md"), "w").close()
+        if con_doc_epica:
+            open(os.path.join(ep, "epica.md"), "w").close()
+        return self.tmp.name
+
+    def test_padres_presentes_no_reportan_f0(self):
+        raiz = self._fase(True, True)
+        self.assertFalse(any("F0" in h.mensaje for h in flujo.validar(raiz)))
+
+    def test_hu_sin_documento_reporta_f0(self):
+        raiz = self._fase(False, True)
+        self.assertTrue(any("F0" in h.mensaje and "HU" in h.mensaje
+                            for h in flujo.validar(raiz)))
+
+    def test_epica_sin_documento_reporta_f0_una_vez(self):
+        raiz = self._fase(True, False)
+        n = sum(1 for h in flujo.validar(raiz) if "F0" in h.mensaje and "épica" in h.mensaje)
+        self.assertEqual(n, 1)
+
+
+class Plantillas_docs(unittest.TestCase):
+    """El mapeo cubre los documentos del proyecto por su nombre real."""
+
+    def test_deduce_docs_del_proyecto(self):
+        for base, esperado in (("plan_trabajo", "planes/trabajo.md"),
+                               ("funcionalidad_implementada", "funcionalidad-implementada.md"),
+                               ("reglas-proyecto", "reglas-proyecto.md")):
+            ruta = plantillas.deducir_plantilla(f"documentacion/x/{base}.md", "")
+            self.assertIsNotNone(ruta, base)
+            self.assertTrue(ruta.replace("\\", "/").endswith(esperado), base)
+
+
 class Seguridad(unittest.TestCase):
     """`04·S3` — concatenación e inyección. Núcleo puro."""
 

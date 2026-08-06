@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""El plan de trabajo de cada fase — `02·F4.1` y `02·F4.3`.
+"""El plan y los padres de cada fase — `02·F4.1`, `02·F4.3` y `02·F0`.
 
-Recorre `documentacion/epicas/…/<fase>/plan_trabajo.md` (la misma estructura que
-`fases.py`) y comprueba dos cosas del plan sin criterio:
+Recorre `documentacion/epicas/…/<fase>/` (la misma estructura que `fases.py`) y
+comprueba sin criterio:
 
+  F0   · cada fase tiene sus **padres**: la épica y la HU de las que cuelga
+         existen como documento (no solo como carpeta).
   F4.1 · el plan responde las 13 preguntas obligatorias. La plantilla las numera
          como secciones `## 0.` … `## 13.`; se marca cuáles faltan.
   F4.3 · el plan no deja **incertidumbre** sin resolver: `TBD`, `(o similar)`,
          `(o donde esté)`, `(o parecido)`. La línea base debe ir verificada.
 
-No juzga el contenido de cada sección (eso es humano); solo su presencia y las
-marcas de duda. **AVISO**: un plan en curso puede estar incompleto a propósito.
+No juzga el contenido de cada sección (eso es humano); solo presencia y marcas de
+duda. **AVISO**: un plan en curso puede estar incompleto a propósito.
 
 Nota: los planes que **preceden** a esta plantilla marcarán secciones faltantes.
 Es correcto —no conforman a F4.1—, no un falso positivo.
@@ -64,8 +66,20 @@ def validar(proyecto):
     hallazgos = []
     for nombre_epica in fases._subcarpetas(raiz):
         ruta_epica = os.path.join(raiz, nombre_epica)
+        # F0 · la épica existe como documento, no solo como carpeta.
+        tiene_doc_epica = any(
+            os.path.isfile(os.path.join(ruta_epica, n))
+            for n in ("epica.md", f"{nombre_epica}.md"))
+        epica_con_fases = False
         for nombre_hu in fases._subcarpetas(ruta_epica):
             ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            tiene_fases = bool(fases._subcarpetas(ruta_hu))
+            epica_con_fases = epica_con_fases or tiene_fases
+            # F0 · la HU existe como documento.
+            if tiene_fases and not os.path.isfile(os.path.join(ruta_hu, f"{nombre_hu}.md")):
+                hallazgos.append(Hallazgo(
+                    AVISO, f"{CARPETA}/{nombre_epica}/{nombre_hu}", 0,
+                    "hay fases pero la HU no tiene su documento (F0: falta el padre)"))
             for nombre_fase in fases._subcarpetas(ruta_hu):
                 plan = os.path.join(ruta_hu, nombre_fase, "plan_trabajo.md")
                 if not os.path.isfile(plan):
@@ -82,4 +96,8 @@ def validar(proyecto):
                         AVISO, donde, linea,
                         f"marca de incertidumbre `{frag}` en el plan — F4.3 pide "
                         f"la línea base verificada"))
+        if epica_con_fases and not tiene_doc_epica:
+            hallazgos.append(Hallazgo(
+                AVISO, f"{CARPETA}/{nombre_epica}", 0,
+                "hay fases pero la épica no tiene su documento (F0: falta el padre)"))
     return hallazgos
