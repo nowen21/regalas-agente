@@ -44,5 +44,5 @@ Enganches en el flujo (`02`):
 
 ## Relación con otros pendientes
 
-- Comparte migración de esquema con la [02 · vigencia y poda de la memoria](02-vigencia-y-poda-de-memoria.md) — diseñar los estados juntos, una sola vez. Por eso van seguidos.
+- El [02 · vigencia y poda de la memoria](hecho/vigencia-y-poda-de-memoria.md) ya dejó el gancho de migración idempotente (`memoria.py · migrar()`) y `estado` abierto; este solo suma el valor `'cerrada'`, sin otra migración.
 - Los [01 · validadores](01-validadores-de-codigo-de-proyecto.md) pueden comprobar que todo `§Fuera-de-scope` tenga su señal registrada.

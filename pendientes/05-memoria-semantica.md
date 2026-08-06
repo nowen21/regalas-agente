@@ -25,4 +25,6 @@ Decisión abierta: **qué modelo genera los embeddings** y si corre local. De es
 
 ## Relación con otros pendientes
 
-Depende de la [02 · vigencia y poda de la memoria](02-vigencia-y-poda-de-memoria.md) — la búsqueda semántica **agrava** el problema de la memoria vieja: encuentra más señales obsoletas que la léxica, no menos. Por eso el 02 va antes; abrir este sin haber resuelto la vigencia empeora el problema.
+Se apoyaba en el [02 · vigencia y poda de la memoria](hecho/vigencia-y-poda-de-memoria.md) —la búsqueda semántica **agrava** el problema de la memoria vieja: encuentra más señales obsoletas que la léxica—; ya está hecho, así que la vigencia (`revisada`, marca de sin-verificar, recencia en el orden) está en su lugar antes de abrir este.
+
+**Hereda del 02 la detección de contradicciones.** Dos señales activas del mismo scope que se contradicen es un problema semántico, no léxico: un detector por palabras miente en las dos direcciones (se le escapan las dichas con otras palabras, marca de más las del mismo tema). Se resuelve aquí, con embeddings; mientras tanto la cubre el ritual humano de `revisar --viejas`.

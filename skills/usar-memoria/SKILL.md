@@ -47,6 +47,19 @@ python <ruta-estandar>/memoria/memoria.py add --tipo decision --titulo "..." --r
 
 Marca `S-003` como `reemplazada` y deja rastro (`13`·DOC5, patrón "Decisiones ya tomadas").
 
+## Vigencia y poda (que lo viejo no tape lo nuevo)
+
+Cada señal guarda su **última revisión** (`revisada`), no solo cuándo se creó. En `search` y `list`, una señal sin revisar hace más de 6 meses sale marcada `⚠ sin verificar hace Nm` (ajustable con `--meses`); a igualdad de relevancia, la más reciente va primero.
+
+```
+python .../memoria.py revisar S-003                      # la confirmo: revisada = hoy
+python .../memoria.py revisar --viejas --scope proyecto:x # ritual: las más viejas primero
+python .../memoria.py archivar S-003                     # poda: sale de search, se conserva
+```
+
+- **Ritual de revisión:** cada tanto, `revisar --viejas` de un scope y, señal por señal, confirmar (`revisar <id>`), reemplazar (`add --reemplaza`) o podar (`archivar`).
+- **Podar ≠ borrar:** `archivar` deja `estado='archivada'` (fuera de `search`, pero la señal se conserva). No hay comando de borrado. Las `decision` y `restriccion` son historia: se pueden archivar, nunca borrar.
+
 ## Primera vez
 
 Si la base no existe: `python <ruta-estandar>/memoria/memoria.py init` (crea `memoria/senales.db`, ignorado por git — es data del usuario).

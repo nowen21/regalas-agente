@@ -15,11 +15,17 @@ CREATE TABLE IF NOT EXISTS senales (
   where_    TEXT,                                 -- archivo:linea o area
   learned   TEXT,
   scope     TEXT NOT NULL DEFAULT 'proyecto',     -- organizacion | proyecto:<slug> | modulo:<slug>
-  estado    TEXT NOT NULL DEFAULT 'activa',       -- activa | reemplazada | revertida
+  estado    TEXT NOT NULL DEFAULT 'activa',       -- activa | reemplazada | revertida | archivada
   reemplaza TEXT,                                 -- id de la señal que reemplaza
-  creada    TEXT NOT NULL,                        -- ISO date
+  creada    TEXT NOT NULL,                        -- ISO date de creación
+  revisada  TEXT,                                 -- ISO date de última revisión (vigencia)
   autor     TEXT
 );
+-- estado: solo 'activa' aparece en `search`. 'archivada' = podada (fuera de
+-- búsqueda, pero se conserva; nunca se borra). 'reemplazada'/'revertida' = ya
+-- existían. `revisada` marca la vigencia: una señal sin revisar hace meses se
+-- muestra atenuada. En bases previas, la migración agrega `revisada` y la
+-- rellena con `creada` (ver memoria.py · cmd_init).
 
 -- Índice de texto completo (FTS5), contenido externo sincronizado por triggers.
 CREATE VIRTUAL TABLE IF NOT EXISTS senales_fts USING fts5(
