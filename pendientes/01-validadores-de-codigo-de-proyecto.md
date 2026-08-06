@@ -51,4 +51,4 @@ Es la brecha entre **"el estándar dice"** y **"el estándar se cumple"**. Todo 
 ## Relación con otros pendientes
 
 - Los validadores son el consumidor natural del [03 · ciclo de vida de pendientes](hecho/ciclo-de-vida-de-pendientes.md) (ya hecho): comprobar que todo `§Fuera-de-scope` tenga su señal registrada es uno de los validadores fuzzy que quedan (cruzar spec↔señales, como `F2`).
-- Alimentan las [06 · métricas del proceso](06-metricas-del-proceso.md): cada fallo de validador es un dato.
+- Alimentan las [06 · métricas del proceso](hecho/metricas-del-proceso.md) (ya hecho): contar los hallazgos de validador por regla es "las puertas que fallan" — es la extensión anotada en `metricas/README.md`.

@@ -17,7 +17,7 @@ Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por 
 | ~~03~~ | **hecho** → [Ciclo de vida de pendientes y deuda](hecho/ciclo-de-vida-de-pendientes.md) | Estado `cerrada` + `cerrada_en`/`cierra_ref`; comandos `pendientes` / `cerrar`. | Cierra lo que el agente difiere (deuda, preguntas). Cerrado 2026-08-06, sobre el gancho de migración del 02. |
 | ~~04~~ | **hecho** → [Versión del estándar](hecho/version-del-estandar.md) | `VERSION` + `CHANGELOG`, fijación por proyecto, retroactividad y validador de desfase. | "El proyecto cumple el estándar" pasa a tener fecha. Cerrado 2026-08-06. |
 | 05 | [Memoria semántica](05-memoria-semantica.md) | Búsqueda por significado sobre `senales.db` (híbrida con FTS5), con `sqlite-vec` para no perder el modo offline. | El 02 (vigencia) ya está; este hereda además la **detección de contradicciones**, que es semántica. |
-| 06 | [Métricas del proceso](06-metricas-del-proceso.md) | Medir si el estándar sirve: fases reabiertas, puertas que fallan, decisiones escaladas, deuda abierta vs cerrada. | Último: el 03 ya da la serie de deuda abierta/cerrada; queda medir cuando los datos (01 + 03) se acumulen. |
+| ~~06~~ | **hecho** → [Métricas del proceso](hecho/metricas-del-proceso.md) | Lee `senales.db` y reporta deuda abierta/cerrada, vigencia y pulso de señales. | Para decidir qué reglas cambiar, no para calificar. Cerrado 2026-08-06 (falta lo que necesita instrumentación nueva). |
 
 ### Patrones opt-in de dominio (07–08, fuera de la fila)
 
