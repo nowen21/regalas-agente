@@ -22,6 +22,7 @@ python <ruta-estandar>/memoria/memoria.py search "palabras clave" --scope organi
 
 - Buscar en **dos alcances**: el del proyecto actual **y** `organizacion` (las lecciones universales).
 - **Verificar antes de confiar** (`01`·C2): una señal vieja puede estar obsoleta; si nombra un archivo/función, confirmar que aún existe.
+- **Búsqueda por significado (opcional):** si están instalados los extras (`memoria/requirements-semantica.txt`), `search` es **híbrida** —léxica (FTS5) ∪ semántica— y encuentra señales relevantes aunque no compartan las palabras exactas. Corre local, offline; el contenido no sale de la máquina. Tras agregar señales, actualizar los vectores con `memoria.py indexar` (incremental). Sin los extras, `search` sigue funcionando solo con FTS5. `--lexica` fuerza solo palabras.
 
 ## Registrar (al cerrar o aprender algo)
 

@@ -1,0 +1,10 @@
+# Búsqueda semántica de la memoria — OPCIONAL (pendiente 05).
+# Sin esto, memoria.py funciona igual con FTS5 (léxica). Instalar solo si se
+# quiere búsqueda por significado además de por palabra:
+#     python -m pip install -r memoria/requirements-semantica.txt
+#     python memoria/memoria.py indexar
+#
+# Todo corre local: el contenido de las señales nunca sale de la máquina (00·N6).
+# El modelo (~30 MB) se descarga una vez desde Hugging Face y luego es offline.
+model2vec>=0.8
+numpy>=1.24

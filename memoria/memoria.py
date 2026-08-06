@@ -5,7 +5,8 @@
 Uso:
   python memoria.py init
   python memoria.py add --tipo decision --titulo "..." --why "..." [--scope organizacion] [...]
-  python memoria.py search "facturacion iva" [--scope proyecto:tienda] [--tipo gotcha] [--limit 5] [--meses 6]
+  python memoria.py search "facturacion iva" [--scope proyecto:tienda] [--tipo gotcha] [--limit 5] [--lexica]
+  python memoria.py indexar                            # vectores semánticos (opcional)
   python memoria.py supersede S-003 --by S-012
   python memoria.py revisar S-003                      # marca revisada hoy
   python memoria.py revisar --viejas --scope proyecto:x # ritual: lista las más viejas
@@ -18,6 +19,9 @@ La base por defecto es memoria/senales.db (junto a este script); se puede
 cambiar con --db o la variable de entorno MEMORIA_DB.
 """
 import argparse, os, re, sqlite3, sys, datetime
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import semantica  # búsqueda semántica opcional; degrada solo si falta (pendiente 05)
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DB_DEFAULT = os.environ.get("MEMORIA_DB", os.path.join(AQUI, "senales.db"))
@@ -110,29 +114,57 @@ def _fts(q):
     return ' '.join('"%s"*' % t.lower() for t in toks) if toks else None
 
 
+def _rrf(listas, K=60):
+    """Fusión por rango recíproco: combina varias listas ordenadas de rowids en
+    una sola, sin necesitar que sus puntajes sean comparables. Núcleo puro."""
+    puntajes = {}
+    for lista in listas:
+        for rango, rid in enumerate(lista):
+            puntajes[rid] = puntajes.get(rid, 0.0) + 1.0 / (K + rango)
+    return sorted(puntajes, key=lambda r: -puntajes[r])
+
+
 def cmd_search(a):
     fts = _fts(a.query)
     if not fts:
         print("(término de búsqueda vacío)"); return
     con = conectar(a.db)
     migrar(con)
-    # Solo señales 'activa' (deja fuera archivada/reemplazada/revertida).
-    # Orden: relevancia léxica y, a igualdad, la revisada más reciente primero,
-    # para que lo viejo no tape lo nuevo (F1 · recencia + relevancia).
-    sql = ("SELECT s.id, s.tipo, s.titulo, s.scope, s.revisada "
-           "FROM senales_fts f JOIN senales s ON s.rowid=f.rowid "
-           "WHERE senales_fts MATCH ? AND s.estado='activa' ")
-    params = [fts]
+    # Solo señales 'activa' (deja fuera archivada/reemplazada/revertida/cerrada).
+    filtro = "s.estado='activa' "
+    fp = []
     if a.scope:
-        sql += "AND s.scope = ? "; params.append(a.scope)
+        filtro += "AND s.scope = ? "; fp.append(a.scope)
     if a.tipo:
-        sql += "AND s.tipo=? "; params.append(a.tipo)
-    sql += "ORDER BY bm25(senales_fts), s.revisada DESC LIMIT ?"; params.append(a.limit)
-    filas = con.execute(sql, params).fetchall()
-    con.close()
-    if not filas:
+        filtro += "AND s.tipo = ? "; fp.append(a.tipo)
+
+    # Léxica (FTS5): relevancia y, a igualdad, la revisada más reciente primero.
+    lex = [r[0] for r in con.execute(
+        "SELECT s.rowid FROM senales_fts f JOIN senales s ON s.rowid=f.rowid "
+        "WHERE senales_fts MATCH ? AND " + filtro +
+        "ORDER BY bm25(senales_fts), s.revisada DESC LIMIT 50", [fts] + fp)]
+
+    modo, orden = "léxica", lex
+    if not a.lexica and semantica.disponible():
+        semantica.indexar(con)                          # incremental; barato si nada cambió
+        permitidos = {r[0] for r in con.execute(
+            "SELECT s.rowid FROM senales s WHERE " + filtro, fp)}
+        sem = [rid for rid, _ in semantica.buscar(con, a.query, k=50) if rid in permitidos]
+        if sem:
+            orden, modo = _rrf([lex, sem]), "híbrida"   # léxica ∪ semántica (F1)
+    elif not a.lexica:
+        modo = "léxica (semántica no instalada)"
+
+    orden = orden[:a.limit]
+    if not orden:
         print("(sin señales relevantes)"); return
-    for r in filas:
+    filas = {r["rowid"]: r for r in con.execute(
+        "SELECT rowid,id,tipo,titulo,scope,revisada FROM senales WHERE rowid IN (%s)"
+        % ",".join("?" * len(orden)), orden)}
+    con.close()
+    print(f"[búsqueda {modo}]")
+    for rid in orden:
+        r = filas[rid]
         print(f"{r['id']} · {r['tipo']} · [{r['scope']}] {r['titulo']}"
               + marca_vigencia(r["revisada"], a.meses))
 
@@ -219,6 +251,16 @@ def cmd_cerrar(a):
     print(f"OK: {a.id} cerrada ({hoy}) — {a.ref}" if n else f"no existe {a.id}")
 
 
+def cmd_indexar(a):
+    if not semantica.disponible():
+        print("semántica no disponible: instalá `requirements-semantica.txt`"); return
+    con = conectar(a.db)
+    migrar(con)
+    n = semantica.indexar(con)
+    con.close()
+    print(f"OK: {n} señal(es) (re)indexada(s) para búsqueda semántica")
+
+
 def cmd_list(a):
     con = conectar(a.db)
     migrar(con)
@@ -255,7 +297,12 @@ def main():
     se.add_argument("--limit", type=int, default=5)
     se.add_argument("--meses", type=int, default=MESES_VIGENCIA,
                     help="marca 'sin verificar' pasados N meses (por defecto 6)")
+    se.add_argument("--lexica", action="store_true",
+                    help="solo FTS5, sin semántica aunque esté instalada")
     se.set_defaults(fn=cmd_search)
+
+    ix = sub.add_parser("indexar", help="calcula/actualiza los vectores semánticos")
+    ix.set_defaults(fn=cmd_indexar)
 
     su = sub.add_parser("supersede")
     su.add_argument("id"); su.add_argument("--by", required=True)

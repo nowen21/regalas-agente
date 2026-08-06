@@ -15,6 +15,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import memoria  # noqa: E402
+import semantica  # noqa: E402
 
 
 def _ns(**kw):
@@ -140,6 +141,35 @@ class Vigencia(unittest.TestCase):
                         " AND tipo IN ('deuda-tecnica','pregunta-abierta')").fetchone()[0]
         con.close()
         self.assertEqual(n, 0)
+
+
+class Semantica(unittest.TestCase):
+    """Búsqueda semántica (05). Núcleo puro, sin base ni modelo."""
+
+    def test_rrf_fusiona_por_rango(self):
+        # b aparece bien rankeada en ambas listas -> gana; c solo en una.
+        orden = memoria._rrf([["a", "b", "c"], ["b", "d", "a"]])
+        self.assertEqual(orden[0], "b")
+        self.assertIn("a", orden[:3])
+
+    def test_rrf_lista_unica_conserva_orden(self):
+        self.assertEqual(memoria._rrf([["x", "y", "z"]]), ["x", "y", "z"])
+
+    def test_ranking_ordena_por_coseno(self):
+        import numpy as np
+        matriz = np.array([[1, 0, 0], [0, 1, 0], [0.9, 0.1, 0]], dtype="float32")
+        res = semantica.ranking(np.array([1, 0, 0], dtype="float32"),
+                                [10, 20, 30], matriz)
+        self.assertEqual(res[0][0], 10)      # idéntico primero
+        self.assertEqual(res[1][0], 30)      # casi paralelo segundo
+
+    def test_ranking_vacio(self):
+        import numpy as np
+        self.assertEqual(semantica.ranking(np.zeros(3, "float32"), [],
+                                           np.zeros((0, 3), "float32")), [])
+
+    def test_disponible_es_bool(self):
+        self.assertIsInstance(semantica.disponible(), bool)
 
 
 if __name__ == "__main__":

@@ -23,4 +23,4 @@ Cerrado el 2026-08-06.
 
 ## Lo que se movió al 05
 
-La **detección de contradicciones** (dos señales activas del mismo scope que se contradicen) **no** se hizo aquí: contradecir es semántico, no léxico —un detector por palabras miente en las dos direcciones—. Se movió al [05 · memoria semántica](../05-memoria-semantica.md), que es donde se puede hacer bien. Mientras tanto, la cubre el ritual humano de `revisar --viejas`.
+La **detección de contradicciones** (dos señales activas del mismo scope que se contradicen) **no** se hizo aquí: contradecir es semántico, no léxico —un detector por palabras miente en las dos direcciones—. Se movió al [05 · memoria semántica](memoria-semantica.md), que es donde se puede hacer bien. Mientras tanto, la cubre el ritual humano de `revisar --viejas`.
