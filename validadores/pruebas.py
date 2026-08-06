@@ -34,6 +34,7 @@ import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
+import version          # noqa: E402
 import versionado       # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
 
@@ -693,6 +694,32 @@ class Rama(unittest.TestCase):
 
     def test_sin_principal_detectable_no_opina(self):
         self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
+
+
+class Version(unittest.TestCase):
+    """`pendiente 04` — desfase de versión. Núcleo puro."""
+
+    def test_extrae_la_version_adoptada(self):
+        txt = "- **Versión del estándar adoptada:** `1.2.0` · sellada `2026-08-06`"
+        self.assertEqual(version.extraer_adoptada(txt), "1.2.0")
+
+    def test_placeholder_sin_llenar_no_matchea(self):
+        self.assertIsNone(version.extraer_adoptada("adoptada: `«X.Y.Z»`"))
+
+    def test_al_dia_no_avisa(self):
+        self.assertIsNone(version.comparar("1.0.0", "1.0.0"))
+        self.assertIsNone(version.comparar("1.1.0", "1.0.0"))     # adelante: tampoco
+
+    def test_por_detras_avisa(self):
+        m = version.comparar("1.0.0", "1.2.0")
+        self.assertIsNotNone(m)
+        self.assertIn("1.2.0", m)
+
+    def test_sin_declarar_avisa(self):
+        self.assertIsNotNone(version.comparar(None, "1.0.0"))
+
+    def test_estandar_sin_version_no_opina(self):
+        self.assertIsNone(version.comparar(None, None))
 
 
 class CI(unittest.TestCase):

@@ -107,6 +107,16 @@ Luego abrir **http://127.0.0.1:8000** · parar con **Ctrl + C**.
 - Si el puerto 8000 está ocupado: `python interfaz/manage.py runserver 8010`
 - Requisitos: Python 3.11+ y Django 5 (`pip install -r interfaz/requirements.txt`).
 
+## Versión del estándar
+
+El estándar se versiona. La versión actual vive en [`VERSION`](VERSION); qué cambió en cada una, en [`CHANGELOG.md`](CHANGELOG.md).
+
+**`MAYOR.MENOR.PARCHE`:** MAYOR = una norma que **obliga** (hay que hacer algo para cumplir); MENOR = algo **aditivo** que no invalida nada (regla opcional, plantilla, validador); PARCHE = redacción o ejemplos.
+
+**Cada proyecto fija la versión que sigue.** Su `CLAUDE.md` (capa 3) declara, en el punto 1, la versión adoptada y la fecha (`Versión del estándar adoptada: X.Y.Z · sellada YYYY-MM-DD`). Al abrir sesión, si el proyecto quedó por detrás de `VERSION`, el estándar lo **avisa** (`validadores/validar.py version --raiz .`) — no migra solo.
+
+**Retroactividad:** un cambio de norma **no reabre** fases ya cerradas; quedan selladas con su versión. Lo nuevo aplica al trabajo en curso y al que viene. Así afinar una redacción no obliga a re-tocar trabajo terminado.
+
 ## Estado
 
 **Base completa (00–17)** y etiquetada por capa. **Capa 3 lista:** `CLAUDE.md`, `stack`, `dominio`, `mapeo-nombres`, `marco-normativo` y `plantilla-spec-modulo`. **10 skills** (los 8 roles de la línea de montaje + el `sdd-orchestrator` + `generar-casos-prueba`, más `usar-memoria`). **Memoria por señales** operativa (archivo o SQLite+FTS5). **Visor local** (Django + AdminLTE) para leer el estándar y la memoria. Pendiente: mejoras opcionales (búsqueda semántica de memoria, ejecución paralela en vivo, assets del visor offline).

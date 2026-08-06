@@ -24,6 +24,7 @@ El estándar (las reglas) está instalado en una carpeta central **fuera de este
 - **Base módulo:** `c:\Ing. Jose\ia\agente\_base_modulo.md`
 - **Memoria (señales):** `c:\Ing. Jose\ia\agente\memoria\memoria.py` — base central buscable (SQLite+FTS5), compartida por todos los proyectos. Skill `usar-memoria`.
 - **Validadores:** `c:\Ing. Jose\ia\agente\validadores\validar.py` — hacen cumplir las reglas que se pueden medir. Se llaman **en su sitio**, no se copian al proyecto.
+- **Versión del estándar adoptada:** `«X.Y.Z»` · sellada `«YYYY-MM-DD»`. Es la versión de `base/`+`plantillas/` que este proyecto sigue (ver `VERSION`/`CHANGELOG.md` del estándar). Un cambio de norma **no reabre** fases ya cerradas: quedan selladas con su versión. Subir de versión es una decisión explícita del usuario, no automática.
 
 > Si el estándar se mueve a otra carpeta, actualizar estas rutas.
 >
@@ -64,6 +65,13 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
    Deja funcionando el bloqueo de commits (`09`·G2, G8, G3) y el aviso de enlaces rotos al editar un `.md`. **Es idempotente:** si ya están al día no toca nada, así que se corre en cada sesión sin miedo. Necesario porque los enganches viven dentro del proyecto: las reglas y los validadores llegan solos desde el estándar, pero un enganche **nuevo** no.
 
    Si el paso 2 (`F13`) no pasó, este paso tampoco corre — el propio instalador lo vuelve a verificar y se detiene.
+7. **Comprobar el desfase de versión** — correr desde la carpeta del estándar:
+
+   ```
+   python validadores/validar.py version --raiz "«ruta-de-este-proyecto»"
+   ```
+
+   Compara la **versión adoptada** (punto 1) con la `VERSION` del estándar. Si el proyecto quedó por detrás, **avisa** (no migra solo): subir de versión es decisión del usuario, y las fases ya cerradas quedan selladas con su versión.
 
 ## 4. Precedencia (no se negocia)
 

@@ -35,6 +35,7 @@ import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
+import version          # noqa: E402
 import versionado       # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
@@ -173,6 +174,11 @@ def cmd_auditoria(a):
                     f"Audit de vulnerabilidades · {relativo(raiz)}")
 
 
+def cmd_version(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(version.validar(raiz), f"Versión del estándar · {relativo(raiz)}")
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -283,6 +289,11 @@ def main():
                         help="audit de vulnerabilidades del stack · 10·DEP3")
     au.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     au.set_defaults(func=cmd_auditoria)
+
+    vr = sub.add_parser("version",
+                        help="desfase de versión del estándar vs la que declara el proyecto")
+    vr.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    vr.set_defaults(func=cmd_version)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")
