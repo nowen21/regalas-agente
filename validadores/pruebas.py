@@ -20,6 +20,8 @@ import dependencias     # noqa: E402
 import enlaces          # noqa: E402
 import fases            # noqa: E402
 import instalar         # noqa: E402
+import aislamiento      # noqa: E402
+import calidad          # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import herramientas     # noqa: E402
@@ -28,6 +30,7 @@ import plantillas       # noqa: E402
 import rama             # noqa: E402
 import rendimiento      # noqa: E402
 import secretos         # noqa: E402
+import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
@@ -511,6 +514,15 @@ class Errores(unittest.TestCase):
     def test_except_con_manejo_no_avisa(self):
         self.assertEqual(self._n("except ValueError:\n    log(e)\n    raise"), 0)
 
+    def test_e5_log_con_password_avisa(self):
+        self.assertEqual(self._n('Log::info("Login", ["email" => $email, "password" => $pass]);'), 1)
+
+    def test_e5_console_log_con_token_avisa(self):
+        self.assertEqual(self._n("console.log('auth', token)"), 1)
+
+    def test_e5_log_sin_secreto_no_avisa(self):
+        self.assertEqual(self._n('Log::info("Login ok", ["user_id" => $id]);'), 0)
+
 
 class Rendimiento(unittest.TestCase):
     """`06·R2` — `SELECT *`. Núcleo puro."""
@@ -523,6 +535,21 @@ class Rendimiento(unittest.TestCase):
 
     def test_select_con_columnas_no_avisa(self):
         self.assertEqual(len(rendimiento.revisar_texto("SELECT id, nombre FROM t")), 0)
+
+    def _n1(self, texto):
+        return sum(1 for h in rendimiento.revisar_texto(texto) if "N+1" in h.mensaje)
+
+    def test_r1_consulta_en_foreach_avisa(self):
+        php = "foreach ($ids as $id) {\n  $c = Cliente::find($id);\n}"
+        self.assertEqual(self._n1(php), 1)
+
+    def test_r1_consulta_en_for_python_avisa(self):
+        py = "for id in ids:\n    c = Cliente.objects.get(pk=id)\n    print(c)"
+        self.assertEqual(self._n1(py), 1)
+
+    def test_r1_bucle_sin_consulta_no_avisa(self):
+        php = "foreach ($items as $i) {\n  $total += $i->precio;\n}"
+        self.assertEqual(self._n1(php), 0)
 
 
 class Esquema(unittest.TestCase):
@@ -552,6 +579,31 @@ class Esquema(unittest.TestCase):
         # `foreignId` + `constrained` en la misma línea = un solo aviso.
         php = "$table->foreignId('u')->constrained('users');"
         self.assertEqual(len(esquema.revisar_esquema("m.php", php)), 1)
+
+    def _motivos(self, ruta, texto):
+        return [mot for _, mot in esquema.revisar_esquema(ruta, texto)]
+
+    def test_d3_columna_nueva_sin_default_en_alter_avisa(self):
+        php = "Schema::table('users', function (Blueprint $table) {\n  $table->string('nit');\n});"
+        self.assertTrue(any("D3" in m for m in self._motivos("m.php", php)))
+
+    def test_d3_columna_con_default_o_nullable_no_avisa(self):
+        php = "Schema::table('users', function ($t) {\n  $t->string('nit')->default('');\n});"
+        self.assertFalse(any("D3" in m for m in self._motivos("m.php", php)))
+
+    def test_d3_no_aplica_al_crear_tabla(self):
+        # En una tabla nueva NOT NULL está bien: no hay filas que romper.
+        php = "Schema::create('t', function ($t) {\n  $t->string('nit');\n});"
+        self.assertFalse(any("D3" in m for m in self._motivos("m.php", php)))
+
+    def test_d3_sql_add_not_null_sin_default_avisa(self):
+        sql = "ALTER TABLE users ADD COLUMN nit VARCHAR(20) NOT NULL;"
+        self.assertTrue(any("D3" in m for m in self._motivos("m.sql", sql)))
+
+    def test_est2_identificador_muy_largo_avisa(self):
+        largo = "x" + "a" * 70
+        php = f"$table->boolean('{largo}');"
+        self.assertTrue(any("EST2" in m for m in self._motivos("m.php", php)))
 
 
 class Migraciones(unittest.TestCase):
@@ -639,6 +691,71 @@ class Rama(unittest.TestCase):
 
     def test_sin_principal_detectable_no_opina(self):
         self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
+
+
+class Seguridad(unittest.TestCase):
+    """`04·S3` — concatenación e inyección. Núcleo puro."""
+
+    def _msgs(self, texto):
+        return [h.mensaje for h in seguridad.revisar_texto(texto)]
+
+    def test_sql_concatenado_avisa(self):
+        php = '$q = "SELECT * FROM users WHERE id = " . $id;'
+        self.assertTrue(any("SQL" in m for m in self._msgs(php)))
+
+    def test_consulta_parametrizada_no_avisa(self):
+        php = 'DB::select("SELECT * FROM users WHERE id = ?", [$id]);'
+        self.assertFalse(any("SQL" in m for m in self._msgs(php)))
+
+    def test_shell_con_concatenacion_avisa(self):
+        php = 'exec("convert " . $archivo . " out.png");'
+        self.assertTrue(any("shell" in m.lower() for m in self._msgs(php)))
+
+    def test_guarded_vacio_avisa(self):
+        self.assertTrue(any("masiva" in m for m in self._msgs("protected $guarded = [];")))
+
+    def test_all_al_modelo_avisa(self):
+        self.assertTrue(any("payload" in m for m in self._msgs("User::create($request->all());")))
+
+
+class Calidad(unittest.TestCase):
+    """`07·Q3` — funciones largas. Núcleo puro."""
+
+    def test_funcion_larga_avisa(self):
+        cuerpo = "\n".join(f"    $x = {i};" for i in range(calidad.TOPE + 5))
+        php = "function grande() {\n" + cuerpo + "\n}"
+        self.assertEqual(len(calidad.revisar_texto(php)), 1)
+
+    def test_funcion_corta_no_avisa(self):
+        php = "function chica() {\n  return 1;\n}"
+        self.assertEqual(calidad.revisar_texto(php), [])
+
+    def test_def_python_largo_avisa(self):
+        cuerpo = "\n".join(f"    x = {i}" for i in range(calidad.TOPE + 5))
+        py = "def grande():\n" + cuerpo
+        self.assertEqual(len(calidad.revisar_texto(py)), 1)
+
+
+class Aislamiento(unittest.TestCase):
+    """`08·T4` — pruebas contra BD efímera. Núcleo puro."""
+
+    def test_memoria_no_avisa(self):
+        xml = '<env name="DB_CONNECTION" value="sqlite"/><env name="DB_DATABASE" value=":memory:"/>'
+        self.assertIsNone(aislamiento.revisar_phpunit(xml))
+
+    def test_bd_de_test_no_avisa(self):
+        xml = '<env name="DB_DATABASE" value="agro_testing"/>'
+        self.assertIsNone(aislamiento.revisar_phpunit(xml))
+
+    def test_bd_real_avisa(self):
+        xml = '<env name="DB_DATABASE" value="agro_produccion"/>'
+        self.assertIsNotNone(aislamiento.revisar_phpunit(xml))
+
+    def test_sin_config_ni_env_testing_avisa(self):
+        self.assertIsNotNone(aislamiento.revisar_phpunit("<phpunit></phpunit>", hay_env_testing=False))
+
+    def test_sin_config_pero_con_env_testing_no_avisa(self):
+        self.assertIsNone(aislamiento.revisar_phpunit("<phpunit></phpunit>", hay_env_testing=True))
 
 
 class Herramientas(unittest.TestCase):

@@ -16,6 +16,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import aislamiento      # noqa: E402
+import calidad          # noqa: E402
 import commits          # noqa: E402
 import dependencias     # noqa: E402
 import enlaces          # noqa: E402
@@ -29,6 +31,7 @@ import plantillas       # noqa: E402
 import rama             # noqa: E402
 import rendimiento      # noqa: E402
 import secretos         # noqa: E402
+import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import versionado       # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
@@ -125,6 +128,23 @@ def cmd_esquema(a):
     return reportar(esquema.validar(raiz), f"Integridad de esquema · {relativo(raiz)}")
 
 
+def cmd_seguridad(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(seguridad.validar(raiz),
+                    f"Concatenación e inyección · {relativo(raiz)}")
+
+
+def cmd_calidad(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(calidad.validar(raiz), f"Funciones largas · {relativo(raiz)}")
+
+
+def cmd_aislamiento(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(aislamiento.validar(raiz),
+                    f"Pruebas aisladas · {relativo(raiz)}")
+
+
 def cmd_linter(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(herramientas.linter(raiz), f"Linter/formateador · {relativo(raiz)}")
@@ -213,6 +233,20 @@ def main():
     es = sub.add_parser("esquema", help="FK con política de borrado · 03·D1")
     es.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     es.set_defaults(func=cmd_esquema)
+
+    sg = sub.add_parser("seguridad",
+                        help="concatenación SQL/shell y asignación masiva · 04·S3")
+    sg.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    sg.set_defaults(func=cmd_seguridad)
+
+    cl = sub.add_parser("calidad", help="funciones demasiado largas · 07·Q3")
+    cl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    cl.set_defaults(func=cmd_calidad)
+
+    ai = sub.add_parser("aislamiento",
+                        help="pruebas contra BD efímera, no real · 08·T4")
+    ai.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ai.set_defaults(func=cmd_aislamiento)
 
     ln = sub.add_parser("linter",
                         help="corre el linter/formateador del stack · 07·Q6")

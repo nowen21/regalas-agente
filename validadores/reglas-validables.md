@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~30 |
-| 🟡 **Validables, faltan** | ~29 (inspeccionan código/config del proyecto; las de herramienta pesada ya están) |
+| ✅ **Ya son validadores** | ~37 |
+| 🟡 **Validables, faltan** | ~22 (inspeccionan código/config del proyecto; varias necesitan una convención declarada) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -31,9 +31,12 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `10·DEP2` | `dependencias.py` | lockfile del ecosistema presente y versionado |
 | `09·G4` | `rama.py` | rama dedicada (no la principal) y al día con ella |
 | `03·D2` | `migraciones.py` | cada migración declara su reversión (multi-stack por detección) |
-| `03·D1` (FK) | `esquema.py` | clave foránea con política de borrado explícita (Laravel/SQL) |
-| `05·E1` | `errores.py` | capturas de error vacías (multi-lenguaje) |
-| `06·R2` (`SELECT *`) | `rendimiento.py` | traer solo las columnas necesarias |
+| `03·D1` (FK) · `03·D3` · `14·EST2` (longitud) | `esquema.py` | FK con política; `NOT NULL` nuevo sin default; identificador sobre el límite |
+| `05·E1` · `05·E5` | `errores.py` | capturas de error vacías; secretos en logs (multi-lenguaje) |
+| `06·R2` (`SELECT *`) · `06·R1` | `rendimiento.py` | traer solo lo necesario; consulta en bucle (N+1) |
+| `04·S3` | `seguridad.py` | concatenación SQL/shell; asignación masiva sin freno |
+| `07·Q3` | `calidad.py` | funciones demasiado largas |
+| `08·T4` | `aislamiento.py` | pruebas contra BD efímera, no real (Laravel `phpunit.xml`) |
 | `07·Q6` | `herramientas.py` (`linter`) | corre el linter/formateador del stack |
 | `08·T5` | `herramientas.py` (`suite`) | corre la suite de pruebas del stack |
 | `10·DEP3` · `04·S7` | `herramientas.py` (`audit`) | corre el audit de vulnerabilidades del stack (misma herramienta) |
@@ -76,16 +79,10 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Regla | Qué comprobaría | 🔶 |
 |---|---|---|
 | `03·D1` (resto) | columnas de auditoría + `UNIQUE` + índices en lo que se filtra (la FK con política ya la hace `esquema.py`) | 🔶 |
-| `03·D3` | columna `NOT NULL` sin default en migración | 🔶 |
-| `04·S3` | concatenación en SQL/shell, mass-assignment (regex/linter) | 🔶 |
 | `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
-| `05·E5` | campos sensibles en llamadas de log (regex) | 🔶 |
-| `06·R1` | heurística de consulta en bucle (N+1) | 🔶 |
-| `07·Q3` | longitud/complejidad de función (métrica) | 🔶 |
 | `08·T3` | suite en orden aleatorio + detectar rand/fecha/red | 🔶 |
-| `08·T4` | config de pruebas apunta a BD efímera, no real | 🔶 |
 | `14·EST1` | módulos en su ubicación según la convención declarada | 🔶 |
-| `14·EST2` | nombres siguen convención/regex + límite de longitud | 🔶 |
+| `14·EST2` (resto) | nombres siguen la convención declarada (la longitud ya la hace `esquema.py`) | 🔶 |
 | `15·IM2` | tres estados + campos de anulación en el esquema | 🔶 |
 | `15·IM5` | permiso "anular" separado de "eliminar" en el catálogo | 🔶 |
 
@@ -124,4 +121,4 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos y ya corre contra código real, todo multiproyecto: los que **leen el código** (`S4`, `DEP2`, `G4`, `D2`, `D1`, `E1`, `R2`) y los que **corren la herramienta del stack** a demanda (`Q6`, `T5`, `DEP3`). Las ~29 restantes son del mismo tipo —código/config del proyecto— y se van sumando apuntando a un proyecto real.
+Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos y ya corre contra código real, todo multiproyecto: los que **leen el código** (`S4`, `DEP2`, `G4`, `D2`, `D1`, `D3`, `E1`, `E5`, `R2`, `R1`, `S3`, `Q3`, `T4`, `EST2` longitud) y los que **corren la herramienta del stack** a demanda (`Q6`, `T5`, `DEP3`). Las ~22 restantes son del mismo tipo; varias (como `EST1` y el resto de `EST2`) necesitan que el proyecto **declare su convención** en `.agente/` para poder comprobarlas contra ella.

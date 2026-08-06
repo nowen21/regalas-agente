@@ -52,9 +52,12 @@ python validadores/pruebas.py
 | [dependencias.py](dependencias.py) | Lockfile del ecosistema presente y versionado | `base/10·DEP2` |
 | [rama.py](rama.py) | Trabajo en rama dedicada (no la principal) y al día con ella | `base/09-git.md` · G4 |
 | [migraciones.py](migraciones.py) | Cada migración declara su reversión (multi-stack: Laravel/Django/Alembic/Rails/Node/SQL) | `base/03·D2` |
-| [esquema.py](esquema.py) | FK con política de borrado explícita (Laravel/SQL) | `base/03·D1` |
-| [errores.py](errores.py) | Capturas de error vacías (`catch {}`, `except: pass`) | `base/05·E1` |
-| [rendimiento.py](rendimiento.py) | `SELECT *` (traer solo lo necesario) | `base/06·R2` |
+| [esquema.py](esquema.py) | FK con política de borrado; `NOT NULL` nuevo sin default; longitud de identificador | `base/03·D1/D3` · `14·EST2` |
+| [errores.py](errores.py) | Capturas de error vacías; secretos en llamadas de log | `base/05·E1/E5` |
+| [rendimiento.py](rendimiento.py) | `SELECT *`; consulta ejecutada dentro de un bucle (N+1) | `base/06·R2/R1` |
+| [seguridad.py](seguridad.py) | Concatenación SQL/shell; asignación masiva sin freno | `base/04·S3` |
+| [calidad.py](calidad.py) | Funciones demasiado largas | `base/07·Q3` |
+| [aislamiento.py](aislamiento.py) | Pruebas contra BD efímera, no real (Laravel `phpunit.xml`) | `base/08·T4` |
 
 ### Validadores que corren una herramienta (a demanda)
 
