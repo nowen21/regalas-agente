@@ -13,8 +13,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~27 |
-| 🟡 **Validables, faltan** | ~33 (necesitan inspeccionar código/config del proyecto o correr herramientas) |
+| ✅ **Ya son validadores** | ~30 |
+| 🟡 **Validables, faltan** | ~29 (inspeccionan código/config del proyecto; las de herramienta pesada ya están) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
@@ -34,6 +34,9 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `03·D1` (FK) | `esquema.py` | clave foránea con política de borrado explícita (Laravel/SQL) |
 | `05·E1` | `errores.py` | capturas de error vacías (multi-lenguaje) |
 | `06·R2` (`SELECT *`) | `rendimiento.py` | traer solo las columnas necesarias |
+| `07·Q6` | `herramientas.py` (`linter`) | corre el linter/formateador del stack |
+| `08·T5` | `herramientas.py` (`suite`) | corre la suite de pruebas del stack |
+| `10·DEP3` · `04·S7` | `herramientas.py` (`audit`) | corre el audit de vulnerabilidades del stack (misma herramienta) |
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
@@ -76,14 +79,11 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `03·D3` | columna `NOT NULL` sin default en migración | 🔶 |
 | `04·S3` | concatenación en SQL/shell, mass-assignment (regex/linter) | 🔶 |
 | `04·S5` | flags `HttpOnly`/`Secure`/HTTPS/hashing en config | 🔶 |
-| `04·S7` | audit de vulnerabilidades del ecosistema | 🔶 |
 | `05·E5` | campos sensibles en llamadas de log (regex) | 🔶 |
 | `06·R1` | heurística de consulta en bucle (N+1) | 🔶 |
 | `07·Q3` | longitud/complejidad de función (métrica) | 🔶 |
-| `07·Q6` | linter + formateador sin advertencias | 🔶 |
 | `08·T3` | suite en orden aleatorio + detectar rand/fecha/red | 🔶 |
 | `08·T4` | config de pruebas apunta a BD efímera, no real | 🔶 |
-| `08·T5` | corre la suite y reporta conteo | 🔶 |
 | `14·EST1` | módulos en su ubicación según la convención declarada | 🔶 |
 | `14·EST2` | nombres siguen convención/regex + límite de longitud | 🔶 |
 | `15·IM2` | tres estados + campos de anulación en el esquema | 🔶 |
@@ -94,7 +94,6 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Regla | Qué comprobaría | 🔶 |
 |---|---|---|
 | `G6` | pipeline CI con pruebas + lint | 🔶 |
-| `10·DEP3` | audit de vulnerabilidades sin pendientes | 🔶 |
 | `10·DEP4` | carpeta instalada no versionada | 🔶 |
 | `11·CFG2` | `.env` real ignorado + plantilla sin valores | 🔶 |
 
@@ -125,4 +124,4 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos: se empezó a validar contra código real — `S4`, `DEP2`, `G4` y `D2` ya corren, y son multiproyecto (universales o por detección de stack). Las ~36 restantes son del mismo tipo (código/config/herramientas del proyecto) y se van sumando apuntando a un proyecto real; varias necesitan además correr una herramienta (linter, pruebas, audit) instalada en él.
+Sobre el **estándar solo** ya está todo lo validable. Lo demás vive en los proyectos y ya corre contra código real, todo multiproyecto: los que **leen el código** (`S4`, `DEP2`, `G4`, `D2`, `D1`, `E1`, `R2`) y los que **corren la herramienta del stack** a demanda (`Q6`, `T5`, `DEP3`). Las ~29 restantes son del mismo tipo —código/config del proyecto— y se van sumando apuntando a un proyecto real.

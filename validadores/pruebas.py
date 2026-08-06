@@ -22,6 +22,7 @@ import fases            # noqa: E402
 import instalar         # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
+import herramientas     # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
@@ -638,6 +639,23 @@ class Rama(unittest.TestCase):
 
     def test_sin_principal_detectable_no_opina(self):
         self.assertEqual(rama.evaluar("cualquiera", None, 0), [])
+
+
+class Herramientas(unittest.TestCase):
+    """Q6/T5/DEP3 — corren la herramienta del stack. Se prueba la detección
+    (lo puro); la ejecución depende del toolchain y se verifica a mano."""
+
+    def test_detecta_el_ecosistema_por_manifiesto(self):
+        self.assertEqual(herramientas.stack_de_manifiesto("composer.json"), "php")
+        self.assertEqual(herramientas.stack_de_manifiesto("package.json"), "node")
+        self.assertEqual(herramientas.stack_de_manifiesto("pyproject.toml"), "python")
+        self.assertEqual(herramientas.stack_de_manifiesto("Gemfile"), "ruby")
+        self.assertIsNone(herramientas.stack_de_manifiesto("README.md"))
+
+    def test_ignora_manifiestos_de_dependencias_instaladas(self):
+        self.assertTrue(herramientas._es_instalado("vendor/x/composer.json"))
+        self.assertTrue(herramientas._es_instalado("node_modules/y/package.json"))
+        self.assertFalse(herramientas._es_instalado("proyectos/app/composer.json"))
 
 
 class Instalador(unittest.TestCase):

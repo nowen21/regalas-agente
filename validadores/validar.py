@@ -22,6 +22,7 @@ import enlaces          # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import fases            # noqa: E402
+import herramientas     # noqa: E402
 import instalar         # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
@@ -124,6 +125,22 @@ def cmd_esquema(a):
     return reportar(esquema.validar(raiz), f"Integridad de esquema · {relativo(raiz)}")
 
 
+def cmd_linter(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(herramientas.linter(raiz), f"Linter/formateador · {relativo(raiz)}")
+
+
+def cmd_suite(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(herramientas.suite(raiz), f"Suite de pruebas · {relativo(raiz)}")
+
+
+def cmd_auditoria(a):
+    raiz = os.path.abspath(a.raiz)
+    return reportar(herramientas.auditoria(raiz),
+                    f"Audit de vulnerabilidades · {relativo(raiz)}")
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -196,6 +213,21 @@ def main():
     es = sub.add_parser("esquema", help="FK con política de borrado · 03·D1")
     es.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     es.set_defaults(func=cmd_esquema)
+
+    ln = sub.add_parser("linter",
+                        help="corre el linter/formateador del stack · 07·Q6")
+    ln.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ln.set_defaults(func=cmd_linter)
+
+    su = sub.add_parser("suite",
+                        help="corre la suite de pruebas del stack · 08·T5")
+    su.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    su.set_defaults(func=cmd_suite)
+
+    au = sub.add_parser("audit",
+                        help="audit de vulnerabilidades del stack · 10·DEP3")
+    au.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    au.set_defaults(func=cmd_auditoria)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")

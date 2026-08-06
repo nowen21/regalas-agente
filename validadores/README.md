@@ -56,6 +56,18 @@ python validadores/pruebas.py
 | [errores.py](errores.py) | Capturas de error vacías (`catch {}`, `except: pass`) | `base/05·E1` |
 | [rendimiento.py](rendimiento.py) | `SELECT *` (traer solo lo necesario) | `base/06·R2` |
 
+### Validadores que corren una herramienta (a demanda)
+
+Categoría aparte, en [herramientas.py](herramientas.py). No leen archivos: **invocan la herramienta del ecosistema** y traducen su salida. Detectan el stack por el manifiesto (`composer.json`, `package.json`…) y corren en su carpeta.
+
+| Subcomando | Corre | Regla |
+|---|---|---|
+| `linter` | pint/phpstan · eslint/prettier · ruff/flake8 | `07·Q6` |
+| `suite` | phpunit · npm test · pytest | `08·T5` |
+| `audit` | composer/npm/pip audit | `10·DEP3` |
+
+**No van en el hook automático**: dependen del toolchain instalado, tardan y tienen efectos (`suite` toca la BD, `audit` va a la red). Se corren a demanda. Si no encuentran la herramienta, avisan; no inventan.
+
 ### Lo que deliberadamente NO comprueba
 
 - **Enlaces a código de proyecto** (`app/PagoService.php`). Ese código no vive en este repositorio por diseño; exigir que exista sería exigir que el estándar contenga los proyectos que lo usan.
