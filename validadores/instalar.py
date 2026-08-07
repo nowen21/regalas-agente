@@ -315,21 +315,87 @@ def instalar_historico(ruta, aplicar):
     cualquier proyecto donde corra sorprende al usuario. El instalador se corre
     a propósito y avisa qué hace.
 
-    Si el README ya existe no se toca — puede haberlo editado el proyecto.
+    Si el README ya existe **no se pisa** —puede haberlo editado el proyecto—,
+    pero sí se le refresca el sello: quedar viejo tiene que poder detectarse
+    aunque el texto local difiera del original.
     """
+    import versiones
+
+    comp = versiones.POR_ID["historico"]
     carpeta = os.path.join(ruta, "historico-chat")
     archivo = os.path.join(carpeta, "README.md")
 
-    if os.path.isfile(archivo):
-        return ["historico-chat/ ya estaba"]
     if not os.path.isfile(PLANTILLA_HISTORICO):
         return ["OMITIDO: falta plantillas/historico-chat.md en el estándar"]
 
+    if not os.path.isfile(archivo):
+        if aplicar:
+            os.makedirs(carpeta, exist_ok=True)
+            _escribir_sellado(archivo, leer(PLANTILLA_HISTORICO), comp, ruta)
+        return ["crear historico-chat/README.md"]
+
+    return _refrescar_sello(archivo, comp, ruta, aplicar,
+                            "historico-chat/README.md")
+
+
+def _escribir_sellado(archivo, texto, componente, proyecto):
+    """Escribe `texto` en `archivo` con el sello de su plantilla al día."""
+    import version
+    import versiones
+
+    sellado = versiones.poner_sello(
+        texto, versiones.huella_central(componente, RAIZ),
+        version.version_estandar())
+    with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+        f.write(sellado)
+
+
+def _refrescar_sello(archivo, componente, proyecto, aplicar, etiqueta):
+    """Pone al día solo el sello de un archivo que el proyecto llena.
+
+    No toca una línea del contenido: el `CLAUDE.md` y el README del histórico
+    son del proyecto. Lo único que el estándar escribe ahí es la marca de contra
+    qué plantilla se sincronizaron, que es lo que permite decir después si
+    quedaron viejos.
+    """
+    import version
+    import versiones
+
+    actual = versiones.huella_central(componente, RAIZ)
+    sellada, ver = versiones.leer_sello(archivo)
+    if sellada == actual and ver == (version.version_estandar() or "?"):
+        return [f"{etiqueta} ya estaba sellado al día"]
+
     if aplicar:
-        os.makedirs(carpeta, exist_ok=True)
+        texto = versiones.poner_sello(leer(archivo), actual,
+                                      version.version_estandar())
         with open(archivo, "w", encoding="utf-8", newline="\n") as f:
-            f.write(leer(PLANTILLA_HISTORICO))
-    return ["crear historico-chat/README.md"]
+            f.write(texto)
+    return [f"sellar {etiqueta} contra la plantilla ({sellada or 'sin sello'} → {actual})"]
+
+
+def sellar_claude_md(ruta, aplicar):
+    """Sella el `CLAUDE.md` del proyecto contra la plantilla central.
+
+    El sello **no** es la huella del `CLAUDE.md`: es la de la plantilla contra la
+    que se sincronizó. Tiene que ser así porque cada proyecto lo llena con lo
+    suyo, así que su contenido nunca coincide con el original — y aun así hay
+    que poder decir si quedó viejo.
+
+    Antes esto se detectaba comparando títulos de sección y fechas de archivo.
+    Los dos fallan: un paso nuevo dentro de una sección que ya existía no cambia
+    ningún título, y la fecha miente en cuanto alguien clona el repositorio o
+    edita el archivo por cualquier motivo.
+    """
+    import versiones
+
+    comp = versiones.POR_ID["claude-md"]
+    archivo = os.path.join(ruta, "CLAUDE.md")
+    if not os.path.isfile(archivo):
+        return ["OMITIDO: el proyecto todavía no tiene CLAUDE.md"]
+    if not os.path.isfile(comp.ruta_plantilla(RAIZ)):
+        return ["OMITIDO: falta plantillas/CLAUDE.md.plantilla en el estándar"]
+    return _refrescar_sello(archivo, comp, ruta, aplicar, "CLAUDE.md")
 
 
 def instalar(nombre, ruta, aplicar):
@@ -373,12 +439,71 @@ def instalar(nombre, ruta, aplicar):
     for paso in instalar_claude(ruta, estandar, aplicar):
         print(f"  {marca} {paso}")
 
-    for paso in instalar_historico(ruta, aplicar):
+    # Huellas y versión ANTES de tocar nada: es la única forma de decir después
+    # qué cambió de verdad, y no repetir el inventario entero en cada registro.
+    # La versión hay que leerla aquí: en cuanto se sella, los sellos ya dicen la
+    # nueva y una instalación desde cero declararía venir de sí misma.
+    antes = _huellas(ruta)
+    anterior = _version_anterior(ruta)
+
+    pasos = []
+    for instalador in (instalar_historico, instalar_stack):
+        pasos += instalador(ruta, aplicar)
+    pasos += sellar_claude_md(ruta, aplicar)
+
+    for paso in pasos:
         print(f"  {marca} {paso}")
 
-    for paso in instalar_stack(ruta, aplicar):
+    for paso in registrar_version(ruta, antes, pasos, aplicar, anterior):
         print(f"  {marca} {paso}")
     return True
+
+
+def _huellas(ruta):
+    """{id: huella sellada} de cada documento heredado, ahora mismo."""
+    import versiones
+    return {e.id: e.sellada for e in versiones.estado(ruta, RAIZ)}
+
+
+def _version_anterior(ruta):
+    """Con qué versión venía el proyecto: "" si es la primera instalación."""
+    import versiones
+    return versiones.version_registrada(ruta) or versiones.version_sellada(ruta)
+
+
+def _pendientes(ruta):
+    """Lo que el instalador no puede aplicar: es decisión del usuario."""
+    import checklist
+    manuales = {"f13", "claude-md", "gitignore", "agente-config",
+                "documentacion", "registro", "version"}
+    return [f"**{p.id}** — {p.detalle or p.componente}"
+            for p in checklist.pendientes(checklist.revisar(ruta, RAIZ))
+            if p.id in manuales]
+
+
+def registrar_version(ruta, antes, pasos, aplicar, anterior=""):
+    """Deja constancia en `documentacion/versiones/` de la actualización aplicada.
+
+    Solo cuando algo cambió de huella. Un registro por corrida —aunque no
+    hubiera nada que hacer— convertiría la carpeta en ruido y taparía las
+    actualizaciones de verdad.
+    """
+    import version
+    import versiones
+
+    despues = _huellas(ruta)
+    cambios = [id for id in despues if antes.get(id, "") != despues.get(id, "")]
+    if not cambios:
+        return ["versiones: nada cambió, no hay actualización que registrar"]
+
+    if not aplicar:
+        return [f"registrar la actualización en {versiones.CARPETA} "
+                f"({', '.join(sorted(cambios))})"]
+
+    archivo = versiones.registrar(
+        ruta, version.version_estandar() or "?", antes, despues, pasos,
+        pendientes=_pendientes(ruta), estandar=RAIZ, anterior=anterior)
+    return [f"registrar {os.path.relpath(archivo, ruta)}"]
 
 
 def main():

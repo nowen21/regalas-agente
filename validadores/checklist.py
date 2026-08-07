@@ -18,7 +18,6 @@ Tres cosas se reportan por separado, porque se arreglan distinto:
   - el stack de instalación cambió -> reinstalar, hay componentes nuevos;
   - el estándar subió de versión -> decisión del usuario, no se aplica sola.
 """
-import hashlib
 import json
 import os
 import re
@@ -27,6 +26,7 @@ from datetime import datetime
 import instalar
 import sesion
 import version
+import versiones
 from comun import FALLA, RAIZ, leer
 
 PLANTILLA = "plantillas/stack-instalacion.md"
@@ -38,7 +38,6 @@ CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
 
 # Fila de la tabla de componentes: | `id` | Componente | Cómo se instala |
 _FILA = re.compile(r"^\|\s*`([a-z0-9-]+)`\s*\|([^|]+)\|([^|]+)\|")
-_HUELLA = re.compile(r"<!--\s*huella:\s*([0-9a-f]+)")
 
 
 class Punto:
@@ -73,27 +72,25 @@ def componentes(estandar=None):
     return salida
 
 
+# El sello lo define `versiones.py`, que es el dueño del tema: una sola forma
+# de sellar para todos los documentos heredados. Aquí solo se usa (`M2`).
+_STACK = versiones.POR_ID["stack-instalacion"]
+
+
 def huella(estandar=None):
     """Huella del stack central. Cambia cuando cambia la lista."""
-    archivo = ruta_plantilla(estandar)
-    if not os.path.isfile(archivo):
-        return ""
-    return hashlib.sha256(leer(archivo).encode("utf-8")).hexdigest()[:12]
+    return versiones.huella_central(_STACK, estandar)
 
 
 def huella_instalada(proyecto):
     """La huella que quedó sellada en la copia del proyecto, o ""."""
-    archivo = os.path.join(proyecto, COPIA)
-    if not os.path.isfile(archivo):
-        return ""
-    m = _HUELLA.search(leer(archivo))
-    return m.group(1) if m else ""
+    return versiones.huella_sellada(proyecto, _STACK)
 
 
 def sello(estandar=None):
     """La línea que se le agrega a la copia para poder comparar después."""
-    return (f"\n<!-- huella: {huella(estandar)} · "
-            f"estandar {version.version_estandar() or '?'} -->\n")
+    return ("\n" + versiones.texto_sello(huella(estandar),
+                                         version.version_estandar()) + "\n")
 
 
 # ── Las comprobaciones, una por `id` de la plantilla ──────────────────────
@@ -103,9 +100,27 @@ def _f13(proyecto, estandar):
 
 
 def _claude_md(proyecto, estandar):
+    """Existe, está lleno **y** está sincronizado con la plantilla central.
+
+    Lo tercero es lo que antes se escapaba: `revisar_claude_md` detecta las
+    secciones que faltan y la diferencia de fechas, pero las reporta como AVISO
+    —y aquí solo cuentan las FALLA—, así que un `CLAUDE.md` viejo figuraba como
+    instalación completa. Peor: un cambio *dentro* de una sección que ya existía
+    no lo veía ninguno de los dos, y la fecha del archivo miente en cuanto
+    alguien clona el repositorio o edita el archivo por cualquier motivo.
+
+    El sello no depende de nada de eso: compara la huella de la plantilla contra
+    la que este `CLAUDE.md` declara haber seguido.
+    """
     fallas = [h for h in sesion.revisar_claude_md(proyecto, estandar)
               if h.severidad == FALLA]
-    return not fallas, (fallas[0].mensaje if fallas else "")
+    if fallas:
+        return False, fallas[0].mensaje
+
+    est = versiones.estado_de(proyecto, "claude-md", estandar)
+    if est and not est.al_dia:
+        return False, est.mensaje()
+    return True, ""
 
 
 def _gitignore(proyecto, estandar):
@@ -141,8 +156,16 @@ def _documentacion(proyecto, estandar):
 
 
 def _historico(proyecto, estandar):
-    return (os.path.isfile(os.path.join(proyecto, "historico-chat", "README.md")),
-            "falta `historico-chat/` con su README")
+    if not os.path.isfile(os.path.join(proyecto, "historico-chat", "README.md")):
+        return False, "falta `historico-chat/` con su README"
+    est = versiones.estado_de(proyecto, "historico", estandar)
+    if est and not est.al_dia:
+        return False, est.mensaje()
+    return True, ""
+
+
+def _versiones(proyecto, estandar):
+    return versiones.revisar_registro(proyecto, estandar)
 
 
 def _enganches_git(proyecto, estandar):
@@ -184,8 +207,24 @@ def _registro(proyecto, estandar):
 
 
 def _version(proyecto, estandar):
-    hallazgos = version.validar(proyecto)
-    return not hallazgos, (hallazgos[0].mensaje if hallazgos else "")
+    """Que el proyecto **declare** qué versión sigue. El número en sí no reprueba.
+
+    Antes cualquier subida del estándar dejaba al proyecto en rojo, incluso un
+    PARCHE que solo corrige una redacción y no le pide nada. Eso es ruido, y el
+    ruido enseña a ignorar la alerta.
+
+    Al proyecto le importa lo que **tiene que aplicar**, no el número: de eso se
+    encargan los sellos, que solo se quejan cuando cambió algo que el proyecto
+    usa de verdad. Aquí solo se exige que la versión adoptada esté declarada —
+    sin ella no hay contra qué comparar ni con qué sellar las fases cerradas.
+    """
+    claude = os.path.join(proyecto, "CLAUDE.md")
+    if not os.path.isfile(claude):
+        return False, "no se encontró CLAUDE.md; no se puede leer la versión adoptada"
+    if not version.extraer_adoptada(leer(claude)):
+        return False, ("el proyecto no declara qué versión del estándar sigue "
+                       "— fijarla en su CLAUDE.md")
+    return True, ""
 
 
 COMPROBACIONES = {
@@ -200,6 +239,7 @@ COMPROBACIONES = {
     "enganches-claude": _enganches_claude,
     "registro": _registro,
     "version": _version,
+    "versiones": _versiones,
 }
 
 

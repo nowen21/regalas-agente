@@ -41,12 +41,14 @@ Son **tres** carpetas distintas, con reglas propias de versionado:
 - Ahí mismo quedan dos archivos que **no se editan a mano**, porque los escribe el estándar:
   - `stack-instalacion.md` — la lista de todo lo que este proyecto debe tener para que el agente esté completo. Es copia de la del estándar; si allá cambia, acá se avisa.
   - `INSTALACION-INCOMPLETA.md` — **solo existe si falta algo.** Mientras esté, el agente no está completo y lo dice en cada mensaje, con qué falta y cómo se arregla. Cuando ya no falta nada, desaparece solo.
+- **Nada heredado del estándar puede quedar viejo.** Este `CLAUDE.md`, el `README.md` de `historico-chat/` y `stack-instalacion.md` llevan al final un sello (`<!-- huella: … · estandar X.Y.Z -->`) con la huella de la plantilla contra la que se sincronizaron. Si la plantilla cambia en el estándar, la huella deja de coincidir y el componente **reprueba** el checklist: no es un aviso, es instalación incompleta. Se resuelve con el paso 6, y queda registrado en `documentacion/versiones/` (punto 2.2).
 - **Va en el `.gitignore`** (`.agente/`): es configuración local de la máquina, no parte del repositorio.
 
 ### 2.2 Documentación del trabajo — DEL PROYECTO, se versiona
 
 - **Ruta:** `./documentacion/`
 - Aquí el agente guarda **todo lo que produce el proceso**: specs de módulo, planes de trabajo, planes de pruebas, funcionalidad implementada, decisiones y trazabilidad (regla base `13`).
+- **`versiones/`** — la escribe el instalador del paso 6: un registro por actualización, con desde cuándo este proyecto usa cada versión del estándar, qué componentes se actualizaron y qué quedó pendiente. Su `README.md` es el índice. Va acá y no en `./.agente/` porque tiene que **viajar con el repositorio**: un cambio de norma no reabre fases ya cerradas, y para saber bajo qué versión cerró cada una hay que poder mirarlo desde cualquier copia.
 - **NO va en el `.gitignore`:** es conocimiento del proyecto y se versiona junto con el código.
 
 ### 2.3 Histórico de sesiones — DEL PROYECTO, se versiona

@@ -39,6 +39,7 @@ import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import version          # noqa: E402
 import versionado       # noqa: E402
+import versiones        # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
 
 
@@ -1007,12 +1008,58 @@ class Instalador(unittest.TestCase):
         indice = os.path.join(raiz, "historico-chat", "README.md")
         self.assertTrue(os.path.isfile(indice))
 
+        # Se crea ya sellado: quedar viejo tiene que poder detectarse después.
+        comp = versiones.POR_ID["historico"]
+        self.assertEqual(versiones.huella_sellada(raiz, comp),
+                         versiones.huella_central(comp))
+
         with open(indice, "a", encoding="utf-8") as f:
             f.write("\n- línea del proyecto\n")
         self.assertEqual(instalar.instalar_historico(raiz, aplicar=True),
-                         ["historico-chat/ ya estaba"])
+                         ["historico-chat/README.md ya estaba sellado al día"])
         with open(indice, encoding="utf-8") as f:
             self.assertIn("línea del proyecto", f.read())
+
+    def test_al_readme_del_historico_solo_se_le_refresca_el_sello(self):
+        # El contenido es del proyecto y no se pisa; lo único que el estándar
+        # escribe ahí es contra qué plantilla se sincronizó.
+        raiz = self._espacio()
+        instalar.instalar_historico(raiz, aplicar=True)
+        indice = os.path.join(raiz, "historico-chat", "README.md")
+
+        with open(indice, "w", encoding="utf-8") as f:
+            f.write("# El mío, reescrito entero\n")
+        pasos = instalar.instalar_historico(raiz, aplicar=True)
+        self.assertTrue(any("sellar" in p for p in pasos), pasos)
+
+        with open(indice, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("El mío, reescrito entero", texto)
+        self.assertIn("<!-- huella:", texto)
+
+    def test_sella_el_claude_md_sin_tocarle_el_contenido(self):
+        raiz = self._espacio()
+        local = os.path.join(raiz, "CLAUDE.md")
+        with open(local, "w", encoding="utf-8") as f:
+            f.write("# Config del proyecto\n\nlo mío\n")
+
+        instalar.sellar_claude_md(raiz, aplicar=True)
+        with open(local, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("lo mío", texto)
+        self.assertEqual(
+            versiones.huella_sellada(raiz, versiones.POR_ID["claude-md"]),
+            versiones.huella_central(versiones.POR_ID["claude-md"]))
+
+        # Segunda corrida: idempotente, no reescribe ni duplica el sello.
+        self.assertEqual(instalar.sellar_claude_md(raiz, aplicar=True),
+                         ["CLAUDE.md ya estaba sellado al día"])
+        with open(local, encoding="utf-8") as f:
+            self.assertEqual(f.read().count("<!-- huella:"), 1)
+
+    def test_sin_claude_md_no_se_inventa_uno(self):
+        pasos = instalar.sellar_claude_md(self._espacio(), aplicar=True)
+        self.assertIn("todavía no tiene CLAUDE.md", pasos[0])
 
 
 class Historico(unittest.TestCase):
@@ -1156,6 +1203,225 @@ class Checklist(unittest.TestCase):
         punto = checklist.revisar(self._proyecto())[0]
         self.assertFalse(punto.cumple)
         self.assertIn("no sabe comprobar", punto.detalle)
+
+
+class Versiones(unittest.TestCase):
+    """Nada heredado del estándar puede quedar viejo."""
+
+    def _proyecto(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        return tmp.name
+
+    def _estandar(self, **plantillas):
+        """Un estándar de mentira con las plantillas que se le pasen."""
+        raiz = self._proyecto()
+        os.makedirs(os.path.join(raiz, "plantillas"))
+        for nombre, texto in plantillas.items():
+            with open(os.path.join(raiz, "plantillas", nombre), "w",
+                      encoding="utf-8") as f:
+                f.write(texto)
+        return raiz
+
+    # ── El sello ──────────────────────────────────────────────────────────
+
+    def test_el_sello_se_reemplaza_en_su_sitio_y_nunca_se_duplica(self):
+        texto = versiones.poner_sello("hola\n", "aaa111", "1.0.0")
+        self.assertIn("<!-- huella: aaa111 · estandar 1.0.0 -->", texto)
+
+        de_nuevo = versiones.poner_sello(texto, "bbb222", "2.0.0")
+        self.assertEqual(de_nuevo.count("<!-- huella:"), 1,
+                         "quedaron dos sellos: no se sabría cuál rige")
+        self.assertIn("bbb222", de_nuevo)
+        self.assertNotIn("aaa111", de_nuevo)
+        self.assertIn("hola", de_nuevo, "el sello se comió el contenido")
+
+    def test_el_sello_se_lee_de_vuelta(self):
+        archivo = os.path.join(self._proyecto(), "x.md")
+        with open(archivo, "w", encoding="utf-8") as f:
+            f.write(versiones.poner_sello("contenido\n", "abc123", "1.2.3"))
+        self.assertEqual(versiones.leer_sello(archivo), ("abc123", "1.2.3"))
+
+    def test_sin_sello_no_se_inventa_uno(self):
+        archivo = os.path.join(self._proyecto(), "x.md")
+        with open(archivo, "w", encoding="utf-8") as f:
+            f.write("sin sello\n")
+        self.assertEqual(versiones.leer_sello(archivo), ("", ""))
+
+    # ── Detectar que algo quedó viejo ─────────────────────────────────────
+
+    def test_un_cambio_dentro_de_una_seccion_existente_se_detecta(self):
+        # Es el caso que se escapaba: comparar títulos no lo ve, y la fecha del
+        # archivo miente en cuanto alguien edita el CLAUDE.md por otra razón.
+        estandar = self._estandar(**{
+            "CLAUDE.md.plantilla": "# C\n\n## 6. Instalación\n\n- paso uno\n"})
+        proyecto = self._proyecto()
+        comp = versiones.POR_ID["claude-md"]
+
+        local = os.path.join(proyecto, "CLAUDE.md")
+        with open(local, "w", encoding="utf-8") as f:
+            f.write(versiones.poner_sello(
+                "# C del proyecto\n\n## 6. Instalación\n\n- paso uno\n",
+                versiones.huella_central(comp, estandar), "1.0.0"))
+        self.assertTrue(versiones.estado_de(proyecto, "claude-md", estandar).al_dia)
+
+        # La plantilla gana un paso DENTRO de la sección que ya existía.
+        with open(os.path.join(estandar, "plantillas", "CLAUDE.md.plantilla"),
+                  "w", encoding="utf-8") as f:
+            f.write("# C\n\n## 6. Instalación\n\n- paso uno\n- paso dos\n")
+
+        est = versiones.estado_de(proyecto, "claude-md", estandar)
+        self.assertFalse(est.al_dia)
+        self.assertEqual(est.situacion, versiones.VIEJO)
+        self.assertIn("quedó viejo", est.mensaje())
+
+    def test_un_documento_heredado_sin_sello_no_pasa_por_al_dia(self):
+        estandar = self._estandar(**{"CLAUDE.md.plantilla": "# C\n"})
+        proyecto = self._proyecto()
+        with open(os.path.join(proyecto, "CLAUDE.md"), "w",
+                  encoding="utf-8") as f:
+            f.write("# el mío, sin sello\n")
+
+        est = versiones.estado_de(proyecto, "claude-md", estandar)
+        self.assertEqual(est.situacion, versiones.SIN_SELLO)
+        self.assertIn("no declara", est.mensaje())
+
+    def test_el_checklist_reprueba_un_claude_md_viejo(self):
+        # Antes esto era un AVISO y el componente pasaba igual: un proyecto con
+        # el CLAUDE.md viejo figuraba como instalación completa.
+        proyecto = self._proyecto()
+        with open(os.path.join(proyecto, "CLAUDE.md"), "w",
+                  encoding="utf-8") as f:
+            f.write(versiones.poner_sello("# mío\n", "000000000000", "0.0.1"))
+
+        cumple, detalle = checklist._claude_md(proyecto, instalar.RAIZ)
+        self.assertFalse(cumple)
+        self.assertIn("viejo", detalle)
+
+    # ── El registro ───────────────────────────────────────────────────────
+
+    def test_registrar_deja_el_archivo_con_lo_que_cambio(self):
+        proyecto = self._proyecto()
+        archivo = versiones.registrar(
+            proyecto, "1.5.0",
+            antes={"claude-md": "aaa"}, despues={"claude-md": "bbb"},
+            pasos=["sellar CLAUDE.md"], pendientes=["**f13** — falta proyectos/"])
+
+        with open(archivo, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("1.5.0", texto)
+        self.assertIn("claude-md", texto)
+        self.assertIn("aaa", texto)
+        self.assertIn("bbb", texto)
+        self.assertIn("sellar CLAUDE.md", texto)
+        self.assertIn("pendiente", texto.lower())
+        self.assertIn("1.5.0", os.path.basename(archivo))
+
+    def test_solo_se_listan_los_componentes_que_cambiaron(self):
+        proyecto = self._proyecto()
+        archivo = versiones.registrar(
+            proyecto, "1.5.0",
+            antes={"claude-md": "aaa", "historico": "zzz"},
+            despues={"claude-md": "bbb", "historico": "zzz"},
+            pasos=[])
+        with open(archivo, encoding="utf-8") as f:
+            texto = f.read()
+        tabla = texto.split("## Componentes actualizados")[1].split("##")[0]
+        self.assertIn("claude-md", tabla)
+        self.assertNotIn("historico", tabla,
+                         "se listó un componente que no cambió")
+
+    def test_una_instalacion_desde_cero_no_declara_venir_de_si_misma(self):
+        # Para cuando se registra, los sellos YA dicen la versión nueva. Si la
+        # versión anterior se preguntara aquí, un proyecto virgen diría venir
+        # de la misma que acaba de instalar.
+        proyecto = self._proyecto()
+        os.makedirs(os.path.join(proyecto, ".agente"))
+        with open(os.path.join(proyecto, ".agente", "stack-instalacion.md"),
+                  "w", encoding="utf-8") as f:
+            f.write(versiones.poner_sello("copia\n", "abc123", "1.4.0"))
+
+        archivo = versiones.registrar(proyecto, "1.4.0", {}, {"x": "a"}, [],
+                                      anterior="")
+        with open(archivo, encoding="utf-8") as f:
+            self.assertIn("(primera instalación)", f.read())
+
+    def test_una_actualizacion_declara_de_donde_viene(self):
+        proyecto = self._proyecto()
+        archivo = versiones.registrar(proyecto, "1.5.0", {}, {"x": "b"}, [],
+                                      anterior="1.4.0")
+        with open(archivo, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("| Versión anterior | 1.4.0 |", texto)
+
+    def test_dos_registros_el_mismo_dia_no_se_pisan(self):
+        proyecto = self._proyecto()
+        uno = versiones.registrar(proyecto, "1.5.0", {}, {"x": "a"}, [])
+        dos = versiones.registrar(proyecto, "1.5.0", {}, {"x": "b"}, [])
+        self.assertNotEqual(uno, dos)
+        self.assertTrue(os.path.isfile(uno))
+        self.assertTrue(os.path.isfile(dos))
+
+    def test_el_indice_lista_los_registros(self):
+        proyecto = self._proyecto()
+        versiones.registrar(proyecto, "1.5.0", {}, {"x": "a"}, [])
+        indice = os.path.join(versiones.carpeta_registros(proyecto), "README.md")
+        with open(indice, encoding="utf-8") as f:
+            self.assertIn("1.5.0", f.read())
+
+    def _con_claude(self, adoptada):
+        proyecto = self._proyecto()
+        with open(os.path.join(proyecto, "CLAUDE.md"), "w",
+                  encoding="utf-8") as f:
+            f.write(f"# C\n\n- Versión del estándar adoptada: {adoptada}\n")
+        return proyecto
+
+    def test_una_version_vieja_del_estandar_ya_no_reprueba_por_si_sola(self):
+        # Al proyecto le importa lo que tiene que APLICAR, no el número. Antes
+        # un PARCHE que no le pedía nada lo dejaba en rojo, y el ruido enseña a
+        # ignorar la alerta.
+        cumple, _ = checklist._version(self._con_claude("0.0.1"), instalar.RAIZ)
+        self.assertTrue(cumple)
+
+    def test_no_declarar_la_version_si_reprueba(self):
+        # Sin versión declarada no hay con qué sellar una fase cerrada.
+        cumple, detalle = checklist._version(self._con_claude("«X.Y.Z»"),
+                                             instalar.RAIZ)
+        self.assertFalse(cumple)
+        self.assertIn("no declara", detalle)
+
+    def test_el_registro_no_vive_en_una_carpeta_ignorada(self):
+        # `.agente/` va en el .gitignore: ahí el historial se quedaría en una
+        # sola máquina. Saber bajo qué versión cerró cada fase tiene que poder
+        # mirarse desde cualquier copia del repositorio.
+        partes = versiones.CARPETA.replace("\\", "/").split("/")
+        self.assertNotIn(".agente", partes)
+        self.assertEqual(partes[0], "documentacion")
+
+    def test_sin_carpeta_de_versiones_el_componente_reprueba(self):
+        cumple, detalle = versiones.revisar_registro(self._proyecto())
+        self.assertFalse(cumple)
+        self.assertIn("versiones", detalle)
+
+    def test_instalado_una_version_y_registrado_otra_reprueba(self):
+        proyecto = self._proyecto()
+        versiones.registrar(proyecto, "1.0.0", {}, {"x": "a"}, [])
+        os.makedirs(os.path.join(proyecto, ".agente"), exist_ok=True)
+        with open(os.path.join(proyecto, ".agente", "stack-instalacion.md"),
+                  "w", encoding="utf-8") as f:
+            f.write(versiones.poner_sello("copia\n", "abc123", "2.0.0"))
+
+        cumple, detalle = versiones.revisar_registro(proyecto)
+        self.assertFalse(cumple)
+        self.assertIn("falta registrar", detalle)
+
+    def test_la_lista_de_componentes_heredados_no_se_desincroniza(self):
+        # Cada componente heredado tiene que existir de verdad en el estándar,
+        # o el sello compararía contra la nada y todo pasaría por "al día".
+        for c in versiones.COMPONENTES:
+            self.assertTrue(os.path.isfile(c.ruta_plantilla()),
+                            f"{c.id}: no existe {c.plantilla}")
+            self.assertTrue(versiones.huella_central(c), f"{c.id}: huella vacía")
 
 
 class EnlacesDelHistorico(unittest.TestCase):

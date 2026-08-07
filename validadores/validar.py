@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
+import versiones        # noqa: E402
 import ci               # noqa: E402
 import commits          # noqa: E402
 import dependencias     # noqa: E402
@@ -194,7 +195,35 @@ def cmd_checklist(a):
     print(f"\n{checklist.resumen(raiz, puntos)}")
     if faltan:
         print(f"\n{checklist.detalle(puntos)}")
+
+    # El desfase de número se informa, no reprueba: lo que el proyecto tiene
+    # que aplicar ya lo dicen los componentes de arriba.
+    for h in version.validar(raiz):
+        print(f"\nAl margen: {h.mensaje}")
     return 1 if faltan else 0
+
+
+def cmd_versiones(a):
+    raiz = os.path.abspath(a.raiz)
+    print(f"== Documentos heredados del estándar · {relativo(raiz)} ==")
+    for e in versiones.estado(raiz):
+        marca = "ok" if e.al_dia else "VIEJO"
+        print(f"  [{marca}] {e.id} — {e.mensaje() or e.componente.destino}")
+
+    ultima = versiones.version_registrada(raiz)
+    print(f"\nÚltima actualización registrada: {ultima or '(ninguna)'}")
+    for nombre, fecha, ver in versiones.registros(raiz)[-5:]:
+        print(f"  {fecha}  {ver:<10} {nombre}")
+
+    atrasados = versiones.viejos(raiz)
+    cumple, detalle = versiones.revisar_registro(raiz)
+    if not cumple:
+        print(f"\n{detalle}")
+    if atrasados:
+        print("\nSe pone al día con:")
+        print(f'  python "{RAIZ.replace(os.sep, "/")}/validadores/instalar.py" '
+              f'"{raiz.replace(os.sep, "/")}" --aplicar')
+    return 1 if (atrasados or not cumple) else 0
 
 
 def cmd_commit(a):
@@ -317,6 +346,11 @@ def main():
                         help="stack de instalación del agente: qué le falta al proyecto")
     ck.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     ck.set_defaults(func=cmd_checklist)
+
+    vs = sub.add_parser("versiones",
+                        help="documentos heredados del estándar: cuáles quedaron viejos")
+    vs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    vs.set_defaults(func=cmd_versiones)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")
