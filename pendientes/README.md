@@ -28,6 +28,14 @@ Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por 
 
 Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps o RPA, se adelantan sin esperar la fila.
 
+### Backlog temático (09)
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 09 | [Autonomía sin IA](09-autonomia-sin-ia.md) | Inventario de 16 automatizaciones para lo que hoy depende de que el agente se acuerde: versionado, secretos en el histórico, sello de puertas, manifiesto de convenciones, gate `F2`, instrumentación de métricas y andamiaje de fases. |
+
+**No es un ítem, es un tema.** Cada una de sus 16 propuestas se promueve a su propio pendiente numerado cuando se vaya a construir; el `09` reserva el lugar del tema en la fila, no de las tareas. Comparte frontera con el 01: aquel cubre los validadores que faltan, este cubre todo lo demás que podría dejar de depender de la IA.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:
