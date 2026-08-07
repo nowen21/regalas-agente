@@ -164,7 +164,7 @@ Fuera de la corrida quedan la suite completa del proyecto "por si acaso", las su
 
 **1)** PAUSAR, sin editar ese archivo · **2)** reportar qué archivo, qué hallazgo lo hace necesario y qué impacto tiene ignorarlo · **3)** proponer la ampliación del plan, actualizando la tabla de archivos y el §Alcance si cambia · **4)** esperar el OK explícito · **5)** solo con el OK, retomar.
 
-Si el análisis previo ([`F4.3`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) fue insuficiente, la ampliación es la corrección — no un atajo silencioso. [`F4.3`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) es la primera defensa: reduce los descubrimientos. [`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) es la segunda: cuando ocurren igual, no se procesan en silencio.
+Si el análisis previo ([`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) fue insuficiente, la ampliación es la corrección — no un atajo silencioso. [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) es la primera defensa: reduce los descubrimientos. [`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) es la segunda: cuando ocurren igual, no se procesan en silencio.
 
 ### F9 — por qué la pausa es la excepción
 
