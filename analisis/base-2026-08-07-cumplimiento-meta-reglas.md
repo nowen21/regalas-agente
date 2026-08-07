@@ -22,7 +22,7 @@ El estándar **define bien la norma y la cumple a medias**. Las meta-reglas son 
 
 **Los cinco hallazgos que mandan** (detalle en §4):
 
-1. **El capítulo 20 documenta una corrección que nunca se aplicó.** `estructura-regla.md` diseca `F0`, concluye que dentro hay una sola regla, y publica la versión corregida completa. `F0` en [`base/02-flujo-de-trabajo.md:7`](../base/02-flujo-de-trabajo.md#L7) sigue con sus 36 líneas originales. Hoy conviven **dos textos de `F0`** y ninguno declara cuál manda → rompe `M2` (fuente única) en el peor sitio posible.
+1. **El capítulo 20 documenta una corrección que nunca se aplicó.** `estructura-regla.md` diseca `F0`, concluye que dentro hay una sola regla, y publica la versión corregida completa. `F0` en [`base/02-flujo-de-trabajo/reglas/F0…`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) sigue con sus 36 líneas originales. Hoy conviven **dos textos de `F0`** y ninguno declara cuál manda → rompe `M2` (fuente única) en el peor sitio posible.
 2. **Existe una cuarta forma de dependencia que `M7` no declara.** El bloque `**Encadenamiento:**` aparece **22 veces** en 5 capítulos y es hoy la forma dominante de relacionar reglas. `M7` solo admite `extiende` / `depende de` / `deroga`, entre paréntesis, en el cuerpo. O `M7` la absorbe o 22 reglas migran.
 3. **Cuatro reglas están escondidas.** `CQ1`–`CQ4` usan `###` en vez de `##`. `estructura-regla.md` nombra exactamente este error: *"con tres, la regla se esconde: no sale en la lista y el programa que las revisa no la ve"*.
 4. **`M8` se contradice con `N1`.** `M8` dice que las `[BLINDADA]` no admiten excepciones; `N1` es `[BLINDADA]` y tiene una excepción escrita. Por `M6` paso 6, un choque irresoluble es **defecto del estándar** y se reporta, no se elige en silencio.
@@ -36,7 +36,7 @@ El estándar **define bien la norma y la cumple a medias**. Las meta-reglas son 
 
 ### 2.1 · Qué se leyó
 
-Los 23 archivos de norma: `base/00-identidad-y-rol.md`, `base/00-nucleo-blindado.md`, `base/01`–`base/19`, `base/20-meta-reglas/{base.md, estructura-regla.md}`, y las fuentes únicas `base/02-flujo-de-trabajo/F12/base.md` y `F13/{base.md, estructura-base.md}`. Contraste contra `validadores/reglas-validables.md`, `CHANGELOG.md` y `VERSION`.
+Los 23 archivos de norma: `base/00-identidad-y-rol.md`, `base/00-nucleo-blindado.md`, `base/01`–`base/19`, `base/20-meta-reglas/{base.md, estructura-regla.md}`, y las fuentes únicas `base/02-flujo-de-trabajo/reglas/F12-…`, `base/02-flujo-de-trabajo/reglas/F13-…` y `base/02-flujo-de-trabajo/estructura-base.md`. Contraste contra `validadores/reglas-validables.md`, `CHANGELOG.md` y `VERSION`.
 
 ### 2.2 · Los criterios, derivados de cada meta-regla
 
@@ -97,7 +97,7 @@ Cada hallazgo aplica a varias reglas a la vez. El inventario regla por regla (§
 
 **Qué se encontró.** [`estructura-regla.md:109-170`](../base/20-meta-reglas/estructura-regla.md#L109) toma `F0` como caso de estudio, la descompone en 7 trozos, concluye que **solo dos son regla** y publica la versión corregida completa: título imperativo (*"Recorre la cadena completa, sin saltar eslabones"*), cuerpo de doce líneas, excepción con sus tres partes, y el destino de cada trozo sobrante. El texto cierra: *"El número sigue siendo `F0`. Eso no se toca nunca."*
 
-`F0` en [`base/02-flujo-de-trabajo.md:7-42`](../base/02-flujo-de-trabajo.md#L7) no cambió: 36 líneas, título nominal (*"La secuencia completa — de la necesidad al cierre"*), la tabla-mapa de 7 pasos dentro de la regla, las definiciones de épica/módulo/fase que pertenecen a otros capítulos, la repetición del trozo 5 (*"Sin atajos por tamaño"*, que ya dice el trozo 2), y la excepción sin `autoriza`.
+`F0` en [`base/02-flujo-de-trabajo/reglas/F0…`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) no cambió: 36 líneas, título nominal (*"La secuencia completa — de la necesidad al cierre"*), la tabla-mapa de 7 pasos dentro de la regla, las definiciones de épica/módulo/fase que pertenecen a otros capítulos, la repetición del trozo 5 (*"Sin atajos por tamaño"*, que ya dice el trozo 2), y la excepción sin `autoriza`.
 
 **Incumplimientos.** Dos textos de `F0` conviven sin declarar cuál rige (`M2`). El vigente tiene título no imperativo, cuerpo de 36 líneas y ≥2 exigencias (`M5`), excepción incompleta (`M8`), y explica temas de otros capítulos (`M2`).
 
@@ -335,7 +335,7 @@ Las cuatro pasan la prueba de `estructura-regla.md`: *"¿se pueden cumplir por s
 
 **Meta-reglas:** `M4` (ID) · `M5` (encabezado, marcas, molde) · `M2` (un tema, un dueño)
 
-**`F12` — 13 subpartes bajo un ID, sin encabezados.** [`base/02-flujo-de-trabajo/F12/base.md`](../base/02-flujo-de-trabajo/F12/base.md) no tiene **ningún** encabezado `##`: las 13 partes son viñetas `* **F12.1** — …`. El archivo declara la razón: *"Texto literal del usuario, 2026-08-03. No se reescribe, no se resume y no se interpreta."*
+**`F12` — 13 subpartes bajo un ID, sin encabezados.** [`reglas/F12-relacion-y-nomenclatura-de-fases.md`](../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) no tiene **ningún** encabezado `##`: las 13 partes son viñetas `* **F12.1** — …`. El archivo declara la razón: *"Texto literal del usuario, 2026-08-03. No se reescribe, no se resume y no se interpreta."*
 
 Esa congelación es **decisión del usuario y se respeta** — pero hoy es una excepción **no escrita** al molde, y `M8` es explícita: *"Si aparece un caso que pide una excepción **no escrita**: PAUSAR y preguntar."*
 
@@ -605,7 +605,7 @@ En la misma columna, `F0` cita como "regla" a `plantillas/brief.md`, `skill anal
 | `C17 · Confirma tu entendimiento antes de ejecutar` | `:221` | ❌ | `M5` `M7` `M8` | unicidad / dependencias / excepción | H-02, H-09, H-12 · 26 líneas; tres exigencias (confirmar · qué cuenta como aprobación · formato); la lista "NO aplica a" no dice quién autoriza | Partir "qué cuenta como aprobación" a regla propia (la citan `F4`, `F9`, `F4.4`) | Media |
 | `C18 · Auto-sincronización del `CLAUDE.md` con la plantilla central` | `:247` | 🟡 | `M5` `M7` `M9` | tamaño / dependencias | H-02, H-15 · 20 líneas; `Encadenamiento` fuera de `M7`. Validable y **registrada** (`sesion.py`) ✅ | Comprimir; el porqué de vivir en `base/` va a `notas/` | Baja |
 
-### 5.3 · `02 · Flujo de trabajo` — 19 reglas (+13 subpartes) · [`base/02-flujo-de-trabajo.md`](../base/02-flujo-de-trabajo.md)
+### 5.3 · `02 · Flujo de trabajo` — 19 reglas (+13 subpartes) · [`base/02-flujo-de-trabajo/`](../base/02-flujo-de-trabajo/base.md)
 
 | Regla | Ubic. | Estado | Meta-reglas | Criterios evaluados | Hallazgos e incumplimientos | Recomendación | Prio. |
 |---|---|---|---|---|---|---|---|
@@ -626,9 +626,9 @@ En la misma columna, `F0` cita como "regla" a `plantillas/brief.md`, `skill anal
 | `F9 · Plan aprobado se ejecuta completo` | `:377` | ❌ | `M2` `M12` `M7` | duplicación | H-02, H-06 · su propio `Encadenamiento` admite que `F3` *"es el enunciado base"*; 28 líneas | Fusionar con `F3` o declarar `(extiende 02·F3)` y comprimir | Media |
 | `F10 · Producción no bloquea el desarrollo` | `:406` | 🟡 | `M5` `M7` | tamaño | H-02, H-15 · 33 líneas; la casuística por tipo de cambio es anexo | Comprimir; casuística a anexo | Media |
 | `F11 · Una fase solo modifica código de su propio módulo` | `:440` | ❌ | `M5` `M8` `M7` | unicidad / excepción | H-02, H-09, H-12 · dos exigencias (un módulo **y** una sola HU); excepciones de infraestructura sin autorizador; 34 líneas | Partir la condición "una sola HU" (ya vive en `F12.1`) → enlazar; completar excepción | Media |
-| `F12 · Relación y nomenclatura de fases` | `:480` → [`F12/base.md`](../base/02-flujo-de-trabajo/F12/base.md) | ❌ | `M4` `M5` `M2` `M8` | ID / molde / dueño | **H-11** · 13 subpartes sin encabezado ni molde; congelación no escrita como excepción; mezcla relación + nomenclatura + ruta física | Preguntar al usuario la vía (envolver en molde sin tocar texto, o legalizar la congelación en `M5`) | **Alta** |
-| `F13 · Estructura base obligatoria del proyecto` | `:484` → [`F13/base.md`](../base/02-flujo-de-trabajo/F13/base.md) | ❌ | `M5` `M13` | marca / molde | **H-11** · marca inventada `[GATE DE ARRANQUE · PRECONDICIÓN]`, que es el anti-ejemplo literal de `estructura-regla.md:60`; el archivo fuente única no tiene encabezado de regla | Quitar la marca; añadir encabezado de regla en la fuente única. Validable y registrada (`sesion.py`) ✅ | **Alta** |
-| `F12.1`–`F12.13` | `F12/base.md` | ❌ | `M4` `M5` | ID / molde | H-11 · viñetas sin encabezado; `F12.13` (ruta física) es un tema distinto al de las otras doce y es fuente única citada por `DOC15`, `DOC16`, `F13` | Promover `F12.13` a regla propia del capítulo | **Alta** |
+| `F12 · Relación y nomenclatura de fases` | `:480` → [`reglas/F12-…`](../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) | ❌ | `M4` `M5` `M2` `M8` | ID / molde / dueño | **H-11** · 13 subpartes sin encabezado ni molde; congelación no escrita como excepción; mezcla relación + nomenclatura + ruta física | Preguntar al usuario la vía (envolver en molde sin tocar texto, o legalizar la congelación en `M5`) | **Alta** |
+| `F13 · Estructura base obligatoria del proyecto` | `:484` → [`reglas/F13-…`](../base/02-flujo-de-trabajo/reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md) | ❌ | `M5` `M13` | marca / molde | **H-11** · marca inventada `[GATE DE ARRANQUE · PRECONDICIÓN]`, que es el anti-ejemplo literal de `estructura-regla.md:60`; el archivo fuente única no tiene encabezado de regla | Quitar la marca; añadir encabezado de regla en la fuente única. Validable y registrada (`sesion.py`) ✅ | **Alta** |
+| `F12.1`–`F12.13` | `reglas/F12-…` | ❌ | `M4` `M5` | ID / molde | H-11 · viñetas sin encabezado; `F12.13` (ruta física) es un tema distinto al de las otras doce y es fuente única citada por `DOC15`, `DOC16`, `F13` | Promover `F12.13` a regla propia del capítulo | **Alta** |
 
 ### 5.4 · `03 · Datos y persistencia` — 8 reglas · [`base/03-datos.md`](../base/03-datos.md)
 
@@ -938,7 +938,7 @@ Choques que `M6` clasifica como **defecto del estándar** — se resuelven en el
 | Quién autoriza la excepción | `F0` `F2` `F4.2` `F11` `D1` `D4` `D5` `D7` `D8` `C1` `C17` `T1` | Media |
 | Clasificación de validable | los 8 `DP` · los 6 `OB` · las 13 `M` | **Alta** |
 | Enlace desde `M5` a `estructura-regla.md` | `M5` | **Alta** |
-| Encabezado de regla en la fuente única | `F12/base.md` · `F13/base.md` | **Alta** |
+| Encabezado de regla en la fuente única | `reglas/F12-…` · `reglas/F13-…` | **Alta** |
 | Título imperativo | `F0` `D6` `S4` `S5` `G3` `PR5` `CQ4` `DOC5` `DP2` `DP6` `OB1` `I6` `F12` `F13` | Media |
 
 ### 7.5 · Eliminar

@@ -11,6 +11,100 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 2.5.0 — 2026-08-07
+
+**MENOR** (las diecinueve reglas del flujo pasan por el molde y por el checklist; ninguna cambia qué exige).
+
+**El capítulo 02 se somete al estándar, como ya hizo el 20.** `M14` dice que ninguna regla nace fuera del procedimiento y que su cierre es el checklist. Se aplicó a `F0`–`F13`. **Resultado: 9 cumplen, 10 no** — y las diez reprueban por cosas que solo el usuario puede decidir.
+
+**La regla se separó de su explicación.** Cada archivo de `reglas/` conserva **solo la exigencia**: encabezado, cuerpo de una a cuatro líneas, dependencia declarada, excepción con sus tres partes y ejemplo. Todo lo que desarrollaba, ilustraba o justificaba —la tabla de once etapas, la construcción de la línea base, la casuística de migración, el protocolo de `F8`, el mensaje de orientación de `F13`— pasó a `base.md`, a una sección `### F<n>` por regla. `F4.3`, que era la regla más larga del catálogo con 78 líneas, quedó en cinco.
+
+- **`F0` toma el texto corregido que `estructura-regla.md` ya publicaba** desde la v2.2.0 sin que nadie lo aplicara. Convivían dos versiones de la misma regla y ninguna decía cuál mandaba.
+- **Los títulos que contaban ahora mandan** (`M5`): `F0 · Recorre la cadena completa, sin saltar eslabones` · `F3 · Ejecuta seguido el plan aprobado` · `F5 · Corre solo las suites que la fase toca` · `F7 · No cierres una fase con trazabilidad incompleta` · `F9 · No subdividas ni renegocies un plan ya aprobado` · `F13 · Detente si el proyecto no tiene su estructura base`, entre otros. **Ningún ID cambió** (`M4`); los archivos se renombraron detrás del título.
+- **`F13` pierde la marca inventada** `[GATE DE ARRANQUE · PRECONDICIÓN]`, que el propio `estructura-regla.md` usaba como anti-ejemplo literal. Que corra primero lo dice el capítulo, no una etiqueta.
+- **Ocho excepciones que decían cuándo no aplican pero no hasta dónde ni quién autoriza** quedaron completas (`M8`): `F0`, `F2`, `F4`, `F4.2`, `F4.4`, `F9`, `F10`, `F11`.
+- **Se rompió el ciclo de dependencias `F4.4 ↔ F4.5`** y la duplicación `F3`/`F9`, que ahora es `extiende 02·F3` (`M7`). El texto que `F5`, `F6` y `F7` copiaban de `08·T5`, `13·DOC1` y `13·DOC3` —ejemplo incluido, palabra por palabra— se reemplazó por el enlace (`M5`).
+
+**Las diez que reprueban, y por qué.** No son defectos de redacción: son decisiones de catálogo, y el catálogo lo decide el usuario.
+
+| Reglas | Fila | Qué falta decidir |
+|---|---|---|
+| `F4.1`–`F4.5` | 6 | el sub-ID decimal no lo contempla `M4`: legalizarlo o promoverlas a `F14`… |
+| `F4`, `F4.3`, `F4.5` | 8 · 9 | llevan dos exigencias que se cumplen por separado; partirlas crea IDs nuevos |
+| `F5`, `F6`, `F7` | 2 · 4 | el dueño del tema es `08` y `13`; derogarlas a favor de `T5`, `DOC1` y `DOC3` es `M11` |
+| `F12` | 8 · 9 · 10 | su texto está **congelado por decisión del usuario** y el agente no lo reescribe |
+
+Cada una lo dice en su propio archivo, con la marca *"regla vigente y reprobada"* que ya usa `M4`: siguen rigiendo (`M10` — un cambio de norma no reabre lo cerrado), pero no son conformes hasta que se resuelva.
+
+## 2.4.0 — 2026-08-07
+
+**MENOR** (el capítulo 02 pasa a carpeta; ninguna regla cambia qué exige ni qué ID tiene).
+
+**`02 · Flujo de trabajo` se muda a su carpeta.** Era el archivo más grande del estándar —46 KB, catorce reglas y cinco subpartes en un solo `.md`— y ya tenía dos reglas viviendo aparte (`F12/`, `F13/`), así que el capítulo se leía en dos sitios a la vez. Ahora sigue el mismo molde que `00-identidad-y-rol/` y `20-meta-reglas/`: `base.md` es el índice y cada regla tiene su archivo en `reglas/`.
+
+- `base/02-flujo-de-trabajo.md` → `base/02-flujo-de-trabajo/base.md`. Queda como índice: la tabla de las catorce reglas con qué exige cada una, y la secuencia del flujo. De 494 líneas a 36.
+- `base/02-flujo-de-trabajo/reglas/` — **una regla, un archivo `<ID>-<título>.md`**, igual que `ID1`–`ID6` y `M1`–`M15`: `F0`–`F13`, más las cinco partes `F4.1`–`F4.5`, con el texto sin reescribir. Sin subcarpetas: `F12/` y `F13/` colgaban del capítulo y eran las únicas reglas fuera del sitio de las reglas.
+- `base/02-flujo-de-trabajo/estructura-base.md` — el anexo de `F13` (el árbol obligatorio) pasa a la raíz del capítulo, donde `20-meta-reglas/` ya tiene los suyos (`checklist.md`, `estructura-regla.md`).
+- **Las citas se reenlazaron al archivo de destino**, no a un ancla del índice: `02·F5` ahora abre la regla `F5`, no un encabezado dentro de un archivo de 46 KB. Aplica `M15`.
+
+**Efecto en el arranque:** el cargador inyecta el índice de los capítulos temáticos, no su texto. Antes el índice de `02` era una línea de 46 KB; ahora son quince líneas que dicen de qué trata cada regla, y el agente lee **solo la que va a tocar**. El gate `F13` se sigue cargando literal — cambió su ruta (`validadores/cargador.py`).
+
+Lo que **no** cambió: ningún ID, ningún texto de regla, ninguna exigencia. `F12` conserva intacto el texto literal del usuario.
+
+## 2.3.0 — 2026-08-07
+
+**MENOR** (aditivo: una regla nueva y un validador; ningún proyecto que herede el estándar tiene que hacer nada).
+
+**Toda cita a otra regla lleva su enlace.** Citar por ID —`M5`, `09·G6`— obliga a quien lee a salir a buscar: abrir el capítulo, encontrar el encabezado. Con 206 citas repartidas en 43 archivos eso es fricción suficiente para que nadie compruebe nada, y una cita que nadie sigue es una dependencia que nadie verifica.
+
+- `base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md` — la regla. Extiende `M4`, que fija el ID y la forma `NN·ID`.
+- **Las 206 citas de `base/` quedan enlazadas**, al archivo y al ancla del encabezado. Las que viven en su propio archivo enlazan al archivo, sin ancla: un ancla de más se rompe al renombrar el título.
+- **De paso se normalizaron tres formatos que convivían** — `` `04·S4` ``, `` `00` · N3 `` y `` `00`·N3 `` — a la única forma que `M4` admite. No es un cambio de norma: es aplicar la que ya estaba escrita.
+
+Lo cercado no se tocó: ahí las citas son el molde que alguien va a copiar, no citas a nadie.
+
+Detrás: `validadores/citas.py` (nuevo) — indexa dónde vive cada regla leyendo `base/`, enlaza y valida. Entra en `validar.py estandar`, así que una cita suelta o un enlace a una regla inexistente se reportan solos. 11 pruebas nuevas (191 en total).
+
+## 2.2.0 — 2026-08-07
+
+**MENOR** (las catorce meta-reglas pasan a archivo propio y se les aplica el checklist; ninguna cambia qué exige).
+
+**El capítulo 20 se somete a sí mismo.** `M14` dice que ninguna regla nace fuera del procedimiento y que su cierre es el checklist en `CUMPLE`. Se aplicó a `M1`–`M14`. **Resultado: 10 cumplen, 4 no** — y las cuatro reprueban la misma fila, la 17, que exige decisión del usuario.
+
+**La regla se separó de su explicación.** Cada archivo de `reglas/` conserva **solo la exigencia**: encabezado, cuerpo de una a cuatro líneas, ejemplo y checklist. Lo que desarrollaba, ilustraba o justificaba la regla —tablas, listas de apoyo, el porqué— vuelve a `base.md`, a una sección `### M<n>` por regla, enlazada desde el cuerpo. Con eso las filas 9 (una sola exigencia) y 10 (de una a cuatro líneas) pasan a verde en `M2`, `M5`, `M7` y `M12`, que antes las reprobaban.
+
+**Efecto que conviene tener presente:** varias piezas movidas **mandan**, no solo explican — los tipos MAYOR/MENOR/PARCHE de `M10`, las dos prohibiciones de `M7` (sin ciclos, nunca hacia arriba), las tres aclaraciones de `M8`, el orden de búsqueda de `M12`, la tabla de destinos de `M13`. Siguen siendo texto del capítulo y el agente las lee igual, pero **ya no son texto de una regla citable por ID**. Si alguna debe poder citarse, se promueve a regla propia (`M15`…) — es decisión del usuario.
+
+- `base/20-meta-reglas/reglas/` — las catorce, una por archivo, con el texto sin reescribir. `base.md` queda como capítulo e índice (de 204 líneas a 60).
+- Se añadió el ejemplo INCORRECTO/CORRECTO que faltaba en nueve (`M2`, `M4`, `M5`, `M7`, `M9`, `M10`, `M11`, `M12`, `M13`) y el enlace de `M5` a su propio anexo `estructura-regla.md`, que no tenía — rompía la fuente única que `M2` exige.
+- `validadores/reglas-validables.md` — las catorce clasificadas (`M9`). Siete se validan **en seco** sobre el propio estándar (`M3`, `M4`, `M5`, `M7`, `M9`, `M10`, `M14`): son las más rentables del catálogo y hoy no existe ninguna.
+- `validadores/cargador.py` — el índice listaba las reglas nuevas como "(sin título)": un archivo de una sola regla no lleva `H1`, su encabezado es el `##` de la regla. Ahora lo usa como respaldo.
+- `base/00-identidad-y-rol/reglas/` — corregida la aritmética de los seis sellos: eran `17 ✅ · 3 N/A`, no `16 ✅ · 4 N/A`.
+
+**Las cuatro que no cumplen** quedan marcadas en su propio archivo, vigentes y reprobadas (`M10`: un cambio de norma no reabre lo cerrado). Las cuatro reprueban **solo la fila 17** — no choca con ninguna regla vigente:
+
+| Regla | Con qué choca |
+|---|---|
+| `M2` | no contempla que el preámbulo comparta el número `00` con el núcleo |
+| `M4` | no contempla los sub-ID decimales que el catálogo ya usa (`F4.1`–`F4.5`, `F12.1`–`F12.13`) |
+| `M7` | el catálogo usa una cuarta forma de dependencia —el bloque `Encadenamiento`— 22 veces |
+| `M8` | dice que las `[BLINDADA]` no admiten excepción, y `00·N1` es blindada y tiene una escrita |
+
+Ninguna se puede cerrar sin decidir qué gana: o la meta-regla absorbe la práctica, o la práctica se corrige. Es del usuario.
+
+## 2.1.0 — 2026-08-07
+
+**MENOR** (aditivo: una regla nueva; ningún proyecto que herede el estándar tiene que hacer nada).
+
+**`20·M14` · Ninguna regla nace fuera del procedimiento.** El capítulo tenía trece meta-reglas que gobernaban **cada pieza** de la creación de una regla —dónde va, qué ID lleva, qué forma tiene, cómo se versiona— pero ninguna gobernaba **el acto completo**. El procedimiento de nueve pasos existía como *sección*, sin identificador: no se podía citar desde un commit ni desde una spec, ni exigir por ID. `M14` cierra ese hueco.
+
+Su cierre es el checklist en `CUMPLE`: sin eso la regla no se publica, se corrige o se retira.
+
+- `base/20-meta-reglas/base.md` — la regla, con su checklist aplicado al pie. Se aplicó a sí misma: sería incoherente que la regla que exige el checklist naciera sin él.
+- `validadores/reglas-validables.md` — `M14` clasificada (`M9`) como validable parcial: que la regla haya recorrido el procedimiento no lo decide un script, pero su cierre sí — la fila 19 ya la comprueba `version.py`, y la presencia del bloque de checklist es mecánica.
+
+Queda anotado que las otras trece `M` siguen sin evaluar, igual que el resto del catálogo.
+
 ## 2.0.0 — 2026-08-07
 
 **MAYOR** · `⚠ obliga a migrar`. Un proyecto al día tiene que correr el instalador **una vez**.

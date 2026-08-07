@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Jerarquía y nomenclatura de fases — `base/02-flujo-de-trabajo/F12`.
+"""Jerarquía y nomenclatura de fases — `base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md`.
 
 Recorre `documentacion/epicas/` y comprueba lo que F12 dice sin ambigüedad:
 

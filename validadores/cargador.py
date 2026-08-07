@@ -11,7 +11,7 @@ criterio del agente.
 
 **Por qué no se inyecta todo.** Los archivos completos son ~162 KB (~46k
 tokens, casi una cuarta parte de la ventana de contexto) y la mitad de ese peso
-—`02-flujo-de-trabajo.md` y `13-documentacion.md`— son reglas temáticas que
+—`02-flujo-de-trabajo/` y `13-documentacion.md`— son reglas temáticas que
 solo aplican cuando se toca el tema. Peor: llenar la ventana adelanta el
 resumen automático del contexto, y lo primero que se resume es justo lo que se
 inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca.
@@ -36,15 +36,16 @@ NUCLEO = ("00-", "01-")
 
 # El gate de arranque. Vive en una subcarpeta, así que un glob plano sobre
 # `base/*.md` no lo ve.
-GATE = "02-flujo-de-trabajo/F13/base.md"
+GATE = "02-flujo-de-trabajo/reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md"
 
 
 def reglas(base):
     """Todos los `.md` bajo `base/`, en orden de precedencia.
 
     El orden alfabético de la ruta relativa ya es el de precedencia: `00`
-    antes que `01`, y `02-flujo-de-trabajo.md` antes que sus subcarpetas
-    (`.` pesa menos que `/`). No hay que ordenar por nada más.
+    antes que `01`, y el índice de un capítulo (`02-flujo-de-trabajo/base.md`)
+    antes que sus reglas (`02-flujo-de-trabajo/reglas/…`). No hay que ordenar
+    por nada más.
     """
     salida = []
     for carpeta, subcarpetas, archivos in os.walk(base):
@@ -63,11 +64,19 @@ def _titulo(texto):
     Se saca del propio archivo y no de una tabla escrita a mano para que el
     índice no envejezca: si el estándar renombra una regla, el índice cambia
     solo.
+
+    Un archivo que contiene **una sola regla** no lleva H1: su encabezado es el
+    de la regla (`## M4 · …`), porque el molde de `M5` empieza en `##`. Para
+    esos, el título es ese encabezado — si no, el índice los listaría a todos
+    como "(sin título)" y no diría nada.
     """
+    respaldo = None
     for _, linea in lineas_utiles(texto):
         if linea.startswith("# "):
             return linea[2:].strip()
-    return "(sin título)"
+        if respaldo is None and linea.startswith("## "):
+            respaldo = linea[3:].strip()
+    return respaldo or "(sin título)"
 
 
 def _kb(texto):

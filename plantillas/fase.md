@@ -1,6 +1,6 @@
 # Fase «A-EP01-HU03-Descripción de lo realizado»   ·   `[CAPA 3]`
 
-> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** `02·F12` → `base/02-flujo-de-trabajo/F12/base.md` (aquí **no** se duplican). La ruta de la carpeta de la fase es `02·F12.13`. Reemplaza los `«…»` y borra esta caja.
+> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** `02·F12` → `base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md` (aquí **no** se duplican). La ruta de la carpeta de la fase es `02·F12.13`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -56,4 +56,4 @@ La carpeta `documentacion/<modulo>/<identificador-de-fase>/` contiene:
 
 ## 5. Jerarquía y relación con la HU
 
-`Épica → HU → Fases` (`02·F12.11`). Reglas relacionadas: una fase = una sola HU (`F12.1`), ningún identificador bajo dos HU (`F12.4`). Fuente única: `base/02-flujo-de-trabajo/F12/base.md`.
+`Épica → HU → Fases` (`02·F12.11`). Reglas relacionadas: una fase = una sola HU (`F12.1`), ningún identificador bajo dos HU (`F12.4`). Fuente única: `base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md`.

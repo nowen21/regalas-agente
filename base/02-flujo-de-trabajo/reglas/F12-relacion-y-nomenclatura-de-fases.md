@@ -1,11 +1,9 @@
-# F12 · Regla de relación y nomenclatura de fases
+> Regla del capítulo [`02 · Flujo de trabajo`](../base.md).
 
-> **Fuente única de la regla F12.** El índice `02-flujo-de-trabajo.md` solo la referencia; el detalle vive aquí. El molde para crear una fase es `plantillas/fase.md`, que apunta a este archivo.
->
-> **Cómo referenciar:** cada parte tiene su identificador `F12.N`. Al citar, se referencia **la parte** (ej. `F12.9`), no toda la regla.
+## F12 · Relación y nomenclatura de fases
 
 > **Texto literal del usuario, 2026-08-03.** No se reescribe, no se resume y no se
-> interpreta. Cualquier ajuste lo hace el usuario. (Los `F12.N` son solo **anclas de referencia**; no cambian el texto.)
+> interpreta. Cualquier ajuste lo hace el usuario. Por eso esta regla conserva la forma que él le dio y no el molde de [`20·M5`](../../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md). Los `F12.N` son solo **anclas de referencia**; no cambian el texto. Al citar se referencia **la parte** (ej. `F12.9`), no toda la regla.
 
 * **F12.1** — **Una fase pertenece exclusivamente a una sola HU.**
 
@@ -68,4 +66,26 @@ documentacion/
                 └── estado-fase.md
 ```
 
-`F13/estructura-base.md`, `13·DOC15`, `13·DOC16` y las plantillas **referencian** esta ruta — no la duplican.
+[`estructura-base.md`](../estructura-base.md), [`13·DOC15`](../../13-documentacion.md#doc15--historias-de-usuario-desde-plantilla-central), [`13·DOC16`](../../13-documentacion.md#doc16--épicas-desde-plantilla-central) y las plantillas **referencian** esta ruta — no la duplican.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v2.5.0**, el **2026-08-07**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ N/A ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 13 ✅ · 3 ❌ · 4 N/A.** N/A — **12**: la regla no se puede malinterpretar, y `F12.6` ya trae tres ejemplos de nombre · **14**, **15** y **16**: no declara dependencia ni excepción.
+
+**❌** — **8**: el título es nominal, no imperativo · **9**: trece exigencias bajo un ID, y `F12.13` (la ruta física) es además un tema distinto del resto · **10**: no cabe en cuatro líneas.
+
+> **Regla vigente y reprobada, y así se queda.** El texto está **congelado por decisión del usuario**: es suyo, literal, y el agente no lo reescribe. Las tres ❌ son consecuencia de esa congelación, no un defecto por corregir por cuenta propia — se resuelven el día que el usuario decida la vía (envolverlo en el molde, o legalizar la congelación en [`M5`](../../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

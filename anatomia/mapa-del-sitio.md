@@ -41,12 +41,10 @@ agente/
 │   │   ├── base.md ................... quién es el agente y qué puede decidir
 │   │   └── reglas/ ................... ID1–ID6, una regla por archivo
 │   ├── 01-conducta.md ................ cómo se comporta en la sesión
-│   ├── 02-flujo-de-trabajo.md ........ índice del flujo (F1…F13)
 │   ├── 02-flujo-de-trabajo/
-│   │   ├── F12/base.md ............... nomenclatura y relación épica → HU → fase
-│   │   └── F13/
-│   │       ├── base.md ............... gate de arranque: el proyecto debe tener estructura
-│   │       └── estructura-base.md .... el árbol obligatorio del proyecto
+│   │   ├── base.md ................... índice del flujo (F0…F13)
+│   │   ├── estructura-base.md ........ anexo de F13: el árbol obligatorio del proyecto
+│   │   └── reglas/ ................... F0–F13 (+ F4.1–F4.5), una regla por archivo
 │   ├── 03-datos.md ................... modelo de datos y migraciones
 │   ├── 04-seguridad.md ............... secretos, inyección, sesiones
 │   ├── 05-errores-y-logging.md

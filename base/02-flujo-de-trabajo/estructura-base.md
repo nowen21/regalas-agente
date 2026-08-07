@@ -1,6 +1,6 @@
 # F13 · Estructura base del proyecto   ·   `[CAPA 2 · OBLIGATORIA]`
 
-> **Anexo de la regla F13** — solo el árbol. La regla (alcance, gate, mensaje de orientación y regla de cumplimiento) vive en [`base.md`](base.md), aquí **no se duplica**.
+> **Anexo de la regla F13** — solo el árbol. La regla (alcance, gate, mensaje de orientación y regla de cumplimiento) vive en [`F13`](reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md), aquí **no se duplica**.
 >
 > **Línea base oficial** de organización. Separa dos mundos: el **código del usuario** (que el agente **nunca** toca) y el **espacio de trabajo del agente** (que el agente crea y gestiona, al lado del código).
 
@@ -32,4 +32,4 @@
     └── epicas/                       #   Épica → HU → Fase · jerarquía y ruta: fuente única 02·F12 (F12.11 · F12.13)
 ```
 
-> La organización interna de `epicas/` (jerarquía **Épica → HU → Fase** en `F12.11`, anidamiento y ruta física en `F12.13`, nomenclatura en `F12.6`) es la **fuente única `02·F12`** — aquí **no se duplica**.
+> La organización interna de `epicas/` (jerarquía **Épica → HU → Fase** en [`F12.11`](reglas/F12-relacion-y-nomenclatura-de-fases.md), anidamiento y ruta física en [`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md), nomenclatura en [`F12.6`](reglas/F12-relacion-y-nomenclatura-de-fases.md)) es la **fuente única [`02·F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md)** — aquí **no se duplica**.

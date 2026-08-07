@@ -49,7 +49,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 ### Capa 2 · Convenciones base — agnósticas, ajustables por el proyecto
 
 - [`01-conducta.md`](base/01-conducta.md) — cómo se comporta el agente
-- [`02-flujo-de-trabajo.md`](base/02-flujo-de-trabajo.md) — spec → plan → pruebas → docs
+- [`02-flujo-de-trabajo/`](base/02-flujo-de-trabajo/base.md) — spec → plan → pruebas → docs
 - [`03-datos.md`](base/03-datos.md) — diseño de BD, migraciones, catálogos, cero-hardcode
 - [`04-seguridad.md`](base/04-seguridad.md) — authz, secretos, validación, inyección, archivos sensibles
 - [`05-errores-y-logging.md`](base/05-errores-y-logging.md) — manejo de excepciones y logging

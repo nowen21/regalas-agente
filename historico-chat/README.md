@@ -55,3 +55,7 @@ y qué archivo se tocó.
 - [2026-08-07-sesion-3.md](2026-08-07-sesion-3.md) — sesión del 2026-08-07.
 - [2026-08-07-analisis-cumplimiento-reglas.md](2026-08-07-analisis-cumplimiento-reglas.md) — auditoría de las 170 reglas de `base/` contra las 13 meta-reglas del capítulo 20; informe en `analisis/`.
 - [2026-08-07-sesion-5.md](2026-08-07-sesion-5.md) — sesión del 2026-08-07.
+- [2026-08-07-sesion-7.md](2026-08-07-sesion-7.md) — el capítulo `02 · Flujo de trabajo` pasa a carpeta y se somete al molde y al checklist: 9 CUMPLE, 10 NO (v2.5.0).
+- [2026-08-07-sesion-8.md](2026-08-07-sesion-8.md) — sesión del 2026-08-07.
+- [2026-08-07-sesion-9.md](2026-08-07-sesion-9.md) — granularidad de la fase: cuándo un CA por fase (`F12.9`) y cuándo varios (`F12.10`).
+- [2026-08-07-sesion-10.md](2026-08-07-sesion-10.md) — sesión del 2026-08-07.
