@@ -63,6 +63,7 @@ Es el renglón de arriba: el nombre de la regla. Tiene cinco piezas.
 
 | Letras | Capítulo | De qué habla |
 |---|---|---|
+| `ID` | 00 · Identidad y rol | Quién es el agente, qué asume y dónde está su borde. |
 | `N` | 00 · Núcleo blindado | Lo que no se toca nunca: seguridad. Todas van marcadas `[BLINDADA]`. |
 | `C` | 01 · Conducta | Cómo se porta el agente: cuándo avisa, cuándo pregunta, cuándo para. |
 | `F` | 02 · Flujo de trabajo | El orden para trabajar: entender, planear, hacer, probar, cerrar. |

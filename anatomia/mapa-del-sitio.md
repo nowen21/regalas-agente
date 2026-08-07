@@ -2,7 +2,7 @@
 
 Dónde está cada cosa y para qué sirve. Si busca un archivo y no sabe por dónde empezar, empiece aquí.
 
-> Estándar **v1.3.0** · actualizado el **2026-08-07**.
+> Estándar **v1.4.0** · actualizado el **2026-08-07**.
 > Para entender *cómo funciona* el agente: [componentes-del-agente.md](componentes-del-agente.md).
 
 ---
@@ -30,14 +30,16 @@ agente/
 ├── README.md ......................... qué es el estándar y qué problema resuelve
 ├── CLAUDE.md ......................... cómo se trabaja DENTRO de este repo
 ├── CHANGELOG.md ...................... qué cambió en cada versión
-├── VERSION ........................... versión del estándar (hoy 1.3.0)
+├── VERSION ........................... versión del estándar (hoy 1.4.0)
 ├── LICENSE
 ├── Manual-Estandar-Agente.docx ....... manual en Word
 ├── _base_modulo.md ................... plantilla canónica de spec de módulo (no se versiona)
 │
 ├── 🟦 base/ .......................... LA NORMA · 21 capítulos (00–20)
 │   ├── 00-nucleo-blindado.md ......... reglas que nunca se pueden relajar
-│   ├── 00-identidad-y-rol.md ......... quién es el agente y qué puede decidir
+│   ├── 00-identidad-y-rol/
+│   │   ├── base.md ................... quién es el agente y qué puede decidir
+│   │   └── reglas/ ................... ID1–ID6, una regla por archivo
 │   ├── 01-conducta.md ................ cómo se comporta en la sesión
 │   ├── 02-flujo-de-trabajo.md ........ índice del flujo (F1…F13)
 │   ├── 02-flujo-de-trabajo/

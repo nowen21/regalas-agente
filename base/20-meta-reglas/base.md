@@ -12,7 +12,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 
 | Nivel | Qué es | Dónde vive | ¿Se ajusta? |
 |---|---|---|---|
-| **Preámbulo** | Quién es el agente y cómo funcionan las reglas | `base/00-identidad-y-rol.md`, este archivo | No: describe, no exige. |
+| **Preámbulo** | Quién es el agente y cómo funcionan las reglas | `base/00-identidad-y-rol/`, este archivo | No: describe, no exige. |
 | **Capa 1 · Núcleo** | Seguridad innegociable. Cada regla marca `[BLINDADA]` | `base/00-nucleo-blindado.md` | **Nunca.** |
 | **Capa 2 · Convenciones** | Buenas prácticas por dominio, agnósticas | `base/01`–`base/NN` | Solo la capa 3. |
 | **Capa 3 · Proyecto** | Stack, dominio, sector, nombres propios, reglas del equipo | `CLAUDE.md` + `.agente/` de cada proyecto | Es la capa que ajusta. |

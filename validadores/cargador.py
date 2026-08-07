@@ -27,6 +27,11 @@ from comun import EXCLUIDAS, leer, lineas_utiles
 # Prefijos que van literales: gobiernan todos los turnos, no un tema concreto.
 # Por prefijo y no por lista fija, para que un `01-` nuevo del estándar entre
 # solo, sin tocar este archivo.
+#
+# Se mira el **primer tramo** de la ruta, no el nombre del archivo: un capítulo
+# puede vivir en un archivo suelto (`00-nucleo-blindado.md`) o en su carpeta
+# (`00-identidad-y-rol/base.md`). Mirando el nombre, el segundo caería al
+# índice y el agente arrancaría sin su identidad.
 NUCLEO = ("00-", "01-")
 
 # El gate de arranque. Vive en una subcarpeta, así que un glob plano sobre
@@ -102,7 +107,7 @@ def contexto(estandar, gate_ok=True):
     literal, indice = [], []
     for rel, ruta in encontradas:
         texto = leer(ruta)
-        if os.path.basename(rel).startswith(NUCLEO):
+        if rel.split("/")[0].startswith(NUCLEO):
             literal.append(f"<<< base/{rel} >>>\n{texto}")
         else:
             indice.append(f"  base/{rel}  ({_kb(texto)} KB) — {_titulo(texto)}")

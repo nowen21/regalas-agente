@@ -563,6 +563,8 @@ En la misma columna, `F0` cita como "regla" a `plantillas/brief.md`, `skill anal
 
 **Recomendación.** Dos cosas pequeñas: (a) `M2` reconoce que el preámbulo no consume número de capítulo (o se le da uno propio), (b) `F0` renombra la columna a *"Dónde se define"* y, para los pasos 2 y 3, se crean reglas con ID donde hoy hay prosa — o se acepta que esos pasos los gobiernan las skills y se dice así.
 
+> **Corregido en** [`base/00-identidad-y-rol/`](../base/00-identidad-y-rol/base.md) — el capítulo tiene ahora seis reglas con ID (`ID1`–`ID6`), una por archivo en [`reglas/`](../base/00-identidad-y-rol/reglas/), con el prefijo `ID` registrado en la tabla de letras ocupadas. Queda abierto lo demás del hallazgo: el número `00` sigue compartido y `F0` sigue citando skills y plantillas como si fueran reglas.
+
 ---
 
 ## 5 · Inventario regla por regla
