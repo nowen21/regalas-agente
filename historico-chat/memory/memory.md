@@ -1,12 +1,14 @@
 # Memoria del agente — cómo se trabaja en este repo
 
-Lo que el agente debe recordar entre sesiones se escribe **aquí**, en el repo. Su memoria local (`~/.claude/projects/<proyecto>/memory/`) solo **apunta** a estos archivos: allá queda una línea, acá el texto completo.
+Lo que el agente debe recordar entre sesiones se escribe **aquí**, en el repo. El almacén de memoria de la herramienta (`~/.claude/projects/<proyecto>/memory/`) queda **vacío** — ni el texto ni un puntero: dos versiones del mismo recuerdo terminan diciendo cosas distintas, y la que manda es la que nadie puede leer.
 
-**Por qué acá y no solo allá:** la memoria local no se ve en git, no se puede revisar, no se versiona y no viaja a otra máquina. Esto sí.
+**Por qué acá:** lo local no se ve en git, no se puede revisar, no se versiona y no viaja a otra máquina. Esto sí.
 
-**Un archivo por recuerdo**, con el mismo nombre que su puntero en la memoria local. Cada uno lleva la misma forma: **qué se pide**, **por qué** y **cómo se aplica**.
+**Un archivo por recuerdo.** Cada uno lleva la misma forma: **qué se pide**, **por qué** y **cómo se aplica**.
 
-No es norma (`20·M13`): la norma vive en `base/`. Esto es preferencia del usuario sobre cómo trabajar.
+Lo mueve el programa, no el agente: `validadores/hook_recuerdos.py` recoge el almacén local al abrir la sesión y cada vez que se escribe un archivo.
+
+Lo que obliga a guardarlo acá es norma del estándar (`01·C19`); lo que dice cada recuerdo es preferencia del usuario sobre cómo trabajar, y eso no va en `base/` (`20·M13`).
 
 ---
 
@@ -29,3 +31,5 @@ No es norma (`20·M13`): la norma vive en `base/`. Esto es preferencia del usuar
 | [Trabajo confinado a la carpeta](trabajo-confinado-a-la-carpeta.md) | Mientras se trabaja un tema, todo va dentro de su carpeta; replicar al resto lo indica el usuario. |
 | [Una pregunta no es una instrucción](pregunta-no-es-instruccion.md) | Si el usuario pregunta, se responde en el chat y no se edita nada. |
 | [Convención de commits](sin-coauthored-by.md) | El cuerpo arranca con la idea del usuario y sigue con lo que hizo el agente; nunca `Co-Authored-By`. |
+
+<!-- huella: 135525008665 · estandar 3.1.0 -->

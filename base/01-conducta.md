@@ -264,3 +264,16 @@ CORRECTO:   se mejora la plantilla una vez · cada proyecto detecta el cambio al
 ```
 
 **Encadenamiento:** complementa el "chequeo de sincronización aditiva" de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
+
+## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
+
+Todo lo que el agente deba recordar entre sesiones —preferencias del usuario, acuerdos sobre cómo trabajar— se escribe en `historico-chat/memory/` del proyecto, un archivo por recuerdo. El almacén de memoria de la herramienta queda **vacío**: lo que aparezca ahí se mueve, sin dejar copia ni puntero. Lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar.
+
+No es la memoria por señales del proyecto ([`13·DOC5`](13-documentacion.md#doc5--registrar-señales-memoria--opt-in)): aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
+
+```
+INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá
+            un puntero al archivo del repositorio
+CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionado,
+            y el almacén de la herramienta vacío
+```

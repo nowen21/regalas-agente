@@ -47,6 +47,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `G8` | `commits.py` | sin atribución de herramienta |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
+| `C19` | `recuerdos.py` · `checklist.py` | la memoria vive en `historico-chat/memory/`; el almacén de la herramienta, vacío |
 | `F12.1/2/3/4/5/6/7/11/12/13` | `fases.py` | jerarquía épica→HU→fase · id único · nomenclatura · consecutivo sin huecos · ruta física |
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
 | `F0` · `F4.1` · `F4.3` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |

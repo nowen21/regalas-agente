@@ -135,12 +135,14 @@ agente/
 │   ├── sesion.py ..................... revisión de arranque de sesión
 │   ├── cargador.py ................... carga las reglas base al contexto del agente
 │   ├── historico.py .................. ESCRIBE la transcripción de la sesión
+│   ├── recuerdos.py .................. MUEVE la memoria del agente al repositorio
 │   │
 │   ├── ── enganches (los llama Claude Code) ──
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
-│   ├── hook_sesion.py ................ al abrir sesión → revisa el estándar
+│   ├── hook_sesion.py ................ al abrir sesión → revisa y carga reglas, memoria e histórico
 │   ├── hook_historico.py ............. cada mensaje y cada respuesta → al histórico
 │   ├── hook_checklist.py ............. cada mensaje → revisa la instalación
+│   ├── hook_recuerdos.py ............. al abrir sesión y al escribir → recoge la memoria
 │   │
 │   ├── pruebas.py .................... suite de los validadores
 │   └── reglas-validables.md .......... qué regla se puede comprobar y cuál no
@@ -193,13 +195,16 @@ agente/
 ├── 🟨 historico-chat/ ................ TRANSCRIPCIÓN LITERAL DE CADA SESIÓN
 │   ├── README.md ..................... formato y plantilla + índice de sesiones
 │   ├── AAAA-MM-DD-tema.md ............ una por sesión; las escribe hook_historico.py
+│   ├── memory/ ....................... LA MEMORIA DEL AGENTE (01·C19)
+│   │   ├── memory.md ................. índice de los recuerdos
+│   │   └── <recuerdo>.md ............. uno por recuerdo: qué se pide · por qué · cómo se aplica
 │   └── reglas-2026-08-06/
 │
 ├── ⬜ prompts/ ....................... (vacía)
 │
 ├── ⬜ diplomado-ia/ .................. apuntes de clase — NO es parte del estándar
 │
-├── ⬜ .claude/settings.json .......... configuración de los 5 enganches (NO se versiona)
+├── ⬜ .claude/settings.json .......... configuración de los 7 enganches (NO se versiona)
 ├── ⬜ .claude-plugin/plugin.json ..... empaqueta el repo como plugin de Claude Code
 ├── ⬜ .githooks/
 │   ├── commit-msg .................... bloquea el commit con mensaje mal formado
@@ -219,7 +224,8 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 | `validadores/checklist.py` | `plantillas/stack-instalacion.md` | La lista de componentes vive en la plantilla, no en el código. Una prueba exige que coincidan. |
 | `validadores/cargador.py` | `base/*.md` | Mete las reglas al contexto del agente al abrir la sesión, sin depender de que se acuerde. |
 | `validadores/sesion.py` | `plantillas/CLAUDE.md.plantilla` | Avisa si el `CLAUDE.md` del proyecto quedó desfasado. |
-| `validadores/instalar.py` | `.githooks/` · `historico-chat/` · `plantillas/stack-instalacion.md` | Es lo que replica el agente a otro proyecto. |
+| `validadores/instalar.py` | `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/stack-instalacion.md` | Es lo que replica el agente a otro proyecto. |
+| `validadores/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
 | `metricas/metricas.py` | `memoria/senales.db` | Solo agrega lo que ya se registró; no instrumenta nada nuevo. |
 | `interfaz/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |
 | `.githooks/commit-msg` | `validadores/validar.py commit` | El hook es una cáscara; la regla está en el validador. |

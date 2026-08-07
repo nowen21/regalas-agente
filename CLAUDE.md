@@ -37,9 +37,11 @@ Nada se renumera ni se borra: las reglas se derogan (`M11`), porque specs, commi
 | **Por qué** se diseñó algo así (razonamiento, alternativas) | `notas/` |
 | Mejora acordada pero aún no hecha | `pendientes/` |
 | Qué pasó en una sesión | `historico-chat/` |
-| Preferencia del usuario sobre cómo trabajar | memoria del agente |
+| Preferencia del usuario sobre cómo trabajar | [`historico-chat/memory/`](historico-chat/memory/memory.md) |
 
 Regla que solo sirve a un stack o a un cliente: no va en `base/` (`M3`, `M13`).
+
+**La memoria del agente es un archivo del repo, no un ajuste de la herramienta** (`01·C19`). Todo recuerdo se escribe en [`historico-chat/memory/`](historico-chat/memory/memory.md) —uno por archivo, con su línea en el índice— y el almacén de Claude Code (`~/.claude/projects/<proyecto>/memory/`) queda **vacío**: ni el texto ni un puntero. Lo que aparezca ahí lo mueve solo `validadores/hook_recuerdos.py`.
 
 ## 4 · Antes de commitear
 

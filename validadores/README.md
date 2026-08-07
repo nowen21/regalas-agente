@@ -61,6 +61,7 @@ python validadores/pruebas.py
 | [aislamiento.py](aislamiento.py) | Pruebas contra BD efímera; orden aleatorio; fuentes flaky | `base/08·T4/T3` |
 | [ci.py](ci.py) | Existe un pipeline de CI que corre pruebas y linter | `base/09·G6` |
 | [checklist.py](checklist.py) | El stack de instalación del agente: qué componentes le faltan al proyecto y si alguno quedó viejo | [`plantillas/stack-instalacion.md`](../plantillas/stack-instalacion.md) |
+| [recuerdos.py](recuerdos.py) | La memoria del agente está en `historico-chat/memory/` y el almacén de la herramienta, vacío | `base/01·C19` |
 
 ### Validadores que corren una herramienta (a demanda)
 
@@ -111,6 +112,7 @@ Este es el único que **escribe** en vez de comprobar, y a propósito: la regla 
 - Los mensajes entran **antes** de `## Abierto`, no al final del archivo.
 - Cada respuesta lleva `<!-- agente: <uuid> -->`, que evita que se duplique si el enganche vuelve a correr.
 - No copia el razonamiento del agente ni la salida de herramientas: el histórico es la conversación.
+- **Cada sesión queda en el índice del `README.md`** de la carpeta. La línea se pone al crear el archivo y se vuelve a comprobar en cada mensaje — es idempotente. Una sesión sin su línea es una sesión que la siguiente no va a encontrar, y por eso `enlaces.py` la reporta como falla.
 - Un proyecto sin carpeta `historico-chat/` no se ve afectado — el enganche sale sin hacer nada.
 
 **4. Claude Code — `UserPromptSubmit`.** [`hook_checklist.py`](hook_checklist.py) revisa el **stack de instalación** en cada mensaje: qué componentes le faltan al proyecto y si alguno quedó viejo.
@@ -124,7 +126,29 @@ La lista no vive en el código: está en [`plantillas/stack-instalacion.md`](../
 
 A mano: `python validadores/validar.py checklist --raiz "<proyecto>"`.
 
-**Se replica solo.** Los cuatro enganches, la carpeta `historico-chat/` y la copia del stack los instala [`instalar.py`](instalar.py) en cualquier proyecto, y el paso 6 de [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) lo corre en cada sesión. Una herramienta nueva del estándar se agrega a `HOOKS_CLAUDE` (y al stack, si el proyecto tiene que tener algo) y llega sola a todos los proyectos: si exige configurarla a mano, está mal hecha.
+**5. Claude Code — `SessionStart` y `PostToolUse` sobre `Write|Edit`.** [`hook_recuerdos.py`](hook_recuerdos.py) mueve la memoria del agente a `historico-chat/memory/` del proyecto (`01·C19`). Claude Code la guarda en una carpeta suya, fuera del repositorio, donde no se ve en `git`, no se puede revisar y no viaja a otra máquina.
+
+Es el otro que **escribe**, por el mismo motivo que el histórico: dónde guarda su memoria lo decide la herramienta, no el agente; pedírselo por escrito no lo cambia.
+
+- En `SessionStart` recoge lo que quedó de sesiones anteriores; en `PostToolUse` recoge el recuerdo **en el momento** en que se escribió — si no, pasaría toda la sesión en la carpeta equivocada y el agente lo daría por guardado.
+- **Mueve, no copia.** Dos versiones del mismo recuerdo terminan diciendo cosas distintas, y la que manda es la que nadie puede leer.
+- Un archivo idéntico al que ya está en el repositorio se borra; uno con el nombre ocupado entra como `<nombre>-local.md` y se avisa. Nada se pisa: cuál manda lo decide el usuario.
+- La comparación de nombres ignora mayúsculas — en Windows `MEMORY.md` y `memory.md` son el mismo archivo, y moverlo encima borraría el índice del proyecto en silencio.
+- Es el único enganche que **sí** corre en el propio estándar: ahí vive la memoria del usuario.
+
+**6. Claude Code — `SessionStart`.** [`hook_sesion.py`](hook_sesion.py) revisa cómo quedó el arranque (`sesion.py`) y **carga** lo que la sesión nueva no puede saber sola. Un chat empieza en blanco: lo que no se le inyecta, no existe para él.
+
+| Qué se carga | De dónde | Cómo |
+|---|---|---|
+| Las reglas base | [`cargador.py`](cargador.py) · `base/` | `00` y `01` literales; del resto, el índice |
+| La memoria del proyecto | [`recuerdos.py`](recuerdos.py) · `historico-chat/memory/memory.md` | el índice completo — dice de qué trata cada recuerdo |
+| El histórico de sesiones | [`historico.py`](historico.py) · `historico-chat/README.md` | el índice de las últimas 40, con el tema de cada una |
+
+De la memoria y del histórico va el **índice**, no el contenido: las transcripciones son la conversación entera y llenarían la ventana con lo que casi nunca hace falta. El agente abre con `Read` la que le sirve — pero para eso tiene que saber que existe.
+
+Estos dos se cargan **también en el propio estándar**: ahí no hay instalación que revisar, pero la memoria y el histórico son los del usuario.
+
+**Se replica solo.** Los cinco enganches de Claude Code, las carpetas `historico-chat/` y `historico-chat/memory/`, y la copia del stack los instala [`instalar.py`](instalar.py) en cualquier proyecto, y el paso 6 de [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) lo corre en cada sesión. Una herramienta nueva del estándar se agrega a `HOOKS_CLAUDE` (y al stack, si el proyecto tiene que tener algo) y llega sola a todos los proyectos: si exige configurarla a mano, está mal hecha.
 
 ## Regla de oro
 

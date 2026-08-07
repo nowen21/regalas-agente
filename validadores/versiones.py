@@ -90,6 +90,11 @@ COMPONENTES = [
         "El `README.md` de `historico-chat/`",
         "plantillas/historico-chat.md", "historico-chat/README.md",
         se_pisa=False),
+    Componente(
+        "recuerdos",
+        "El índice de `historico-chat/memory/`, la memoria del agente",
+        "plantillas/memoria.md", "historico-chat/memory/memory.md",
+        se_pisa=False),
 ]
 
 POR_ID = {c.id: c for c in COMPONENTES}

@@ -19,6 +19,7 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 | `stack-instalacion` | Este mismo archivo, copiado a `./.agente/` y al día con el del estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
 | `documentacion` | La carpeta `documentacion/`, donde el agente deja specs, planes y trazabilidad (regla `13`). | La crea el agente al producir el primer documento; también sirve crearla vacía. |
 | `historico` | La carpeta `historico-chat/` con su `README.md`: la transcripción de cada sesión. | `python validadores/instalar.py "<proyecto>" --aplicar` |
+| `recuerdos` | La carpeta `historico-chat/memory/` con su índice: la memoria del agente, versionada. Y la carpeta local de la herramienta (`~/.claude/projects/<proyecto>/memory/`) **vacía**: lo que aparezca ahí se mueve acá. | `python validadores/instalar.py "<proyecto>" --aplicar` |
 | `enganches-git` | Los enganches `commit-msg` y `pre-commit` en cada repositorio, apuntando a este estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
 | `enganches-claude` | Los enganches de Claude Code en `.claude/settings.json`, apuntando a este estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
 | `registro` | El proyecto anotado en `plantillas/proyectos.md` del estándar: la lista única de proyectos que usan el agente. | Agregar la fila: nombre · ruta · scope de memoria · stack. |
@@ -52,8 +53,9 @@ Si la plantilla cambia en el estándar, la huella deja de coincidir y el compone
 | `CLAUDE.md` | `plantillas/CLAUDE.md.plantilla` |
 | `.agente/stack-instalacion.md` | `plantillas/stack-instalacion.md` |
 | `historico-chat/README.md` | `plantillas/historico-chat.md` |
+| `historico-chat/memory/memory.md` | `plantillas/memoria.md` |
 
-Del `CLAUDE.md` y del README del histórico **solo se refresca el sello**: el contenido es del proyecto y no se pisa. La copia del stack sí se reescribe entera — no la llena nadie.
+Del `CLAUDE.md`, del README del histórico y del índice de la memoria **solo se refresca el sello**: el contenido es del proyecto y no se pisa. La copia del stack sí se reescribe entera — no la llena nadie.
 
 ## Cómo se detectan las actualizaciones
 

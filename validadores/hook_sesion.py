@@ -8,8 +8,18 @@ Hace dos cosas, y conviene no confundirlas:
 
   - **Avisa:** revisa que el estándar esté bien puesto (`sesion.py`) y devuelve
     un `systemMessage` que Claude Code le muestra al usuario.
-  - **Carga:** mete las reglas base en el contexto del agente (`cargador.py`),
-    que antes dependía de que el agente se acordara de leerlas.
+  - **Carga:** mete en el contexto del agente lo que la sesión nueva no tiene
+    forma de saber sola — antes dependía de que se acordara de leerlo:
+      · las reglas base (`cargador.py`);
+      · la memoria del proyecto (`recuerdos.py`), que dejó de vivir en la
+        herramienta y por eso ya no la carga nadie;
+      · el índice del histórico (`historico.py`): qué se habló en cada sesión
+        anterior. Un chat nuevo arranca sin memoria de los anteriores, y sin el
+        índice no sabe siquiera que existen.
+
+Lo del proyecto —memoria e histórico— se carga **también en el propio
+estándar**: ahí no hay instalación que revisar, pero la memoria y el histórico
+son los del usuario.
 
 Siempre sale con código 0: esto **informa**, no bloquea — una sesión que no
 arranca porque falta una sección del `CLAUDE.md` sería peor que el problema
@@ -22,7 +32,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import cargador                                 # noqa: E402
+import historico                                # noqa: E402
 import instalar                                 # noqa: E402
+import recuerdos                                # noqa: E402
 import sesion                                   # noqa: E402
 from comun import RAIZ, preparar_salida         # noqa: E402
 
@@ -35,18 +47,36 @@ def raiz_pedida(argv):
     return os.path.abspath(os.getcwd())
 
 
+def _del_proyecto(proyecto):
+    """La memoria y el índice del histórico. Nunca rompe el arranque."""
+    partes = []
+    for cargar in (recuerdos.contexto, historico.contexto):
+        try:
+            texto = cargar(proyecto)
+        except Exception as e:  # noqa: BLE001 — nunca romper el arranque
+            texto = f"[No se pudo cargar {cargar.__module__}: {e}]"
+        if texto:
+            partes.append(texto)
+    return "\n\n".join(partes)
+
+
 def main():
     preparar_salida()
     proyecto = raiz_pedida(sys.argv[1:])
+    del_proyecto = _del_proyecto(proyecto)
 
-    # El propio estándar no se revisa a sí mismo como si fuera un proyecto.
+    # El propio estándar no se revisa a sí mismo como si fuera un proyecto —
+    # pero su memoria y su histórico sí son los del usuario, y se cargan igual.
     if os.path.normcase(proyecto) == os.path.normcase(RAIZ):
+        if del_proyecto:
+            _responder("", [], del_proyecto)
         return 0
 
     try:
         hallazgos = sesion.revisar(proyecto, RAIZ)
     except Exception as e:      # noqa: BLE001 — nunca romper el arranque
-        _responder(f"No se pudo revisar el arranque del estándar: {e}", [], "")
+        _responder(f"No se pudo revisar el arranque del estándar: {e}", [],
+                   del_proyecto)
         return 0
 
     # Las reglas se cargan aunque la revisión encuentre fallas: un CLAUDE.md
@@ -57,7 +87,8 @@ def main():
     except Exception as e:      # noqa: BLE001 — nunca romper el arranque
         reglas = f"[No se pudieron cargar las reglas base: {e}]"
 
-    _responder(sesion.resumen(proyecto, hallazgos), hallazgos, reglas)
+    _responder(sesion.resumen(proyecto, hallazgos), hallazgos,
+               f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas)
     return 0
 
 
@@ -73,11 +104,14 @@ def _responder(resumen, hallazgos, reglas):
     Las reglas van **solo** por `additionalContext`. En `systemMessage` serían
     decenas de KB de banner en la pantalla del usuario.
     """
-    detalle = "\n".join(f"  - {h}" for h in hallazgos)
-    contexto = resumen if not detalle else f"{resumen}\n{detalle}"
-    contexto = f"[Revisión de arranque del estándar]\n{contexto}"
+    partes = []
+    if resumen:
+        detalle = "\n".join(f"  - {h}" for h in hallazgos)
+        partes.append(f"[Revisión de arranque del estándar]\n{resumen}"
+                      + (f"\n{detalle}" if detalle else ""))
     if reglas:
-        contexto = f"{contexto}\n\n{reglas}"
+        partes.append(reglas)
+    contexto = "\n\n".join(partes)
 
     print(json.dumps({
         "systemMessage": resumen,

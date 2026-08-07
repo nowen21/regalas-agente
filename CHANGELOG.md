@@ -36,6 +36,40 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Cada una lo dice en su propio archivo, con la marca *"regla vigente y reprobada"* que ya usa `M4`: siguen rigiendo (`M10` — un cambio de norma no reabre lo cerrado), pero no son conformes hasta que se resuelva.
 
+## 3.1.0 — 2026-08-07
+
+**MENOR** (aditivo: la sesión nueva arranca sabiendo qué pasó en las anteriores; ningún proyecto tiene que hacer nada más que reinstalar).
+
+**Un chat nuevo empieza en blanco: lo que no se le inyecta, no existe para él.** El histórico se venía escribiendo desde `2.0.0`, pero nadie lo leía — la sesión siguiente no sabía siquiera que existía. Y la memoria acababa de mudarse al repositorio (`3.0.0`), donde la herramienta ya no la carga sola. Las dos cosas se resuelven igual: al abrir la sesión se inyecta el **índice**, no el contenido.
+
+- `validadores/hook_sesion.py` — además de las reglas base, carga el índice de la memoria (`historico-chat/memory/memory.md`) y el del histórico (las últimas 40 sesiones, con el tema de cada una), con la orden de abrir con `Read` la que haga falta. Las transcripciones enteras no van: son la conversación completa y llenarían la ventana con lo que casi nunca se necesita.
+- **Las dos se cargan también en el propio estándar.** Ahí no hay instalación que revisar —el enganche salía sin hacer nada—, pero la memoria y el histórico sí son los del usuario.
+- `validadores/historico.py` — `sesiones()` y `contexto()` leen el índice del `README.md`; la línea de la sesión se comprueba **en cada mensaje** y no solo al crear el archivo: si al crearlo no había índice, esa sesión quedaba invisible para siempre.
+- `validadores/enlaces.py` — `historico-chat/` entra en las carpetas con índice obligatorio. Una sesión sin su línea pasa a ser **falla**, no descuido; una línea que apunta a un archivo renombrado, aviso.
+- `plantillas/historico-chat.md` — nueva sección: el índice es lo que lee la próxima sesión, y renombrar el archivo sin corregir la línea lo rompe.
+
+Detrás: 6 pruebas nuevas (205 en total).
+
+## 3.0.0 — 2026-08-07
+
+**MAYOR** ⚠ obliga a migrar (la memoria del agente pasa al repositorio; un proyecto al día tiene que reinstalar para mover la suya).
+
+**La memoria del agente deja de vivir en la herramienta.** Claude Code guardaba lo que el agente debe recordar entre sesiones en `~/.claude/projects/<ruta-del-proyecto>/memory/`, fuera del proyecto. Ahí no se ve en `git`, no se puede revisar en un cambio, no se versiona y no viaja a otra máquina: al clonar el proyecto en otro equipo, la memoria se queda atrás y nadie se entera. Ahora va en `historico-chat/memory/` del proyecto, y el almacén local queda **vacío** — sin copia ni puntero, porque dos versiones del mismo recuerdo terminan diciendo cosas distintas y la que manda es la que nadie puede leer.
+
+- `base/01-conducta.md` · **`C19`** (nueva) — la memoria se escribe en `historico-chat/memory/`, un archivo por recuerdo; el almacén de la herramienta queda vacío. Vive en `01` y no en `13` por lo mismo que `C18`: el capítulo se carga literal en cada sesión, así que rige aunque el proyecto todavía no tenga la carpeta.
+- `plantillas/memoria.md` (nueva) — el índice que se instala como `historico-chat/memory/memory.md`: la norma, la forma de cada recuerdo (qué se pide · por qué · cómo se aplica) y la tabla. Es documento heredado con sello; **no se pisa**, lo llena el proyecto.
+- `plantillas/CLAUDE.md.plantilla` · **§2.4** (nueva) — la cuarta carpeta del proyecto, con su regla de versionado. El paso 6 la nombra entre lo que deja instalado.
+- `plantillas/stack-instalacion.md` — componente **`recuerdos`**: la carpeta con su índice **y** el almacén local vacío. Las dos mitades son la misma exigencia: tener la carpeta y dejar los recuerdos afuera es no tener memoria.
+
+Detrás, para que no dependa de que el agente se acuerde:
+
+- `validadores/recuerdos.py` (nuevo) — resuelve dónde guarda la herramienta la memoria de cada proyecto (reemplaza por `-` todo lo que no sea letra o dígito de la ruta) y la **mueve**. Un archivo idéntico al que ya está en el repositorio se borra; uno con el nombre ocupado entra como `<nombre>-local.md` y se avisa — nada se pisa. La comparación de nombres ignora mayúsculas: en Windows `MEMORY.md` y `memory.md` son el mismo archivo.
+- `validadores/hook_recuerdos.py` (nuevo) — enganche en `SessionStart` (recoge lo que quedó de sesiones anteriores) y en `PostToolUse`·`Write|Edit` (recoge el recuerdo en el momento en que se escribió; si no, pasaría toda la sesión en la carpeta equivocada y el agente lo daría por guardado). Es el único enganche que **sí** corre en el propio estándar: ahí vive la memoria del usuario.
+- `validadores/instalar.py` — `instalar_recuerdos()`: crea la carpeta con el índice sellado y vacía el almacén local en la misma corrida.
+- `validadores/checklist.py` · `versiones.py` — el componente `recuerdos` reprueba si falta la carpeta, si el índice quedó viejo o si algo sigue en el almacén local.
+
+**Qué hay que hacer en un proyecto ya instalado:** correr `python validadores/instalar.py "<proyecto>" --aplicar`. Crea la carpeta y mueve lo que hubiera. Lo que entre como `-local` lo decide el usuario.
+
 ## 2.4.0 — 2026-08-07
 
 **MENOR** (el capítulo 02 pasa a carpeta; ninguna regla cambia qué exige ni qué ID tiene).

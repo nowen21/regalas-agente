@@ -24,6 +24,7 @@ import re
 from datetime import datetime
 
 import instalar
+import recuerdos
 import sesion
 import version
 import versiones
@@ -164,6 +165,23 @@ def _historico(proyecto, estandar):
     return True, ""
 
 
+def _recuerdos(proyecto, estandar):
+    """La memoria del agente: existe en el repositorio y **solo** ahí (`01·C19`).
+
+    Las dos mitades son la misma exigencia. Tener la carpeta y dejar los
+    recuerdos en el almacén de la herramienta es no tener memoria: lo que manda
+    sigue siendo lo que no se puede revisar ni viaja al repositorio.
+    """
+    if not os.path.isfile(recuerdos.ruta_indice(proyecto)):
+        return False, (f"falta `{recuerdos.CARPETA.replace(os.sep, '/')}/` "
+                       f"con su índice")
+
+    est = versiones.estado_de(proyecto, "recuerdos", estandar)
+    if est and not est.al_dia:
+        return False, est.mensaje()
+    return recuerdos.revisar(proyecto)
+
+
 def _versiones(proyecto, estandar):
     return versiones.revisar_registro(proyecto, estandar)
 
@@ -235,6 +253,7 @@ COMPROBACIONES = {
     "stack-instalacion": _stack_instalacion,
     "documentacion": _documentacion,
     "historico": _historico,
+    "recuerdos": _recuerdos,
     "enganches-git": _enganches_git,
     "enganches-claude": _enganches_claude,
     "registro": _registro,

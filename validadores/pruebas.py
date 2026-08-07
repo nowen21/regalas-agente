@@ -34,6 +34,7 @@ import historico        # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
+import recuerdos        # noqa: E402
 import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
@@ -1117,6 +1118,53 @@ class Historico(unittest.TestCase):
         self.assertTrue(historico.anotar_agente(raiz, "s3", transcripcion))
         self.assertEqual(historico.anotar_agente(raiz, "s3", transcripcion), "")
 
+    def test_la_sesion_queda_en_el_indice_aunque_el_readme_llegue_despues(self):
+        # La línea del índice es lo único por lo que la próxima sesión
+        # encuentra a esta: si al crear el archivo no había README, la sesión
+        # quedaba invisible para siempre.
+        raiz = self._carpeta()
+        carpeta = os.path.join(raiz, "historico-chat")
+        ruta = historico.anotar_usuario(raiz, "s4", "primero")
+
+        with open(os.path.join(carpeta, "README.md"), "w",
+                  encoding="utf-8") as f:
+            f.write("# Histórico\n\n## Índice\n\n")
+
+        historico.anotar_usuario(raiz, "s4", "segundo")
+        indice = self._leer(os.path.join(carpeta, "README.md"))
+        self.assertIn(f"({os.path.basename(ruta)})", indice)
+        self.assertEqual(indice.count(os.path.basename(ruta)), 2,
+                         "la línea se duplicó: el índice no es idempotente")
+
+    def test_el_indice_alimenta_el_arranque_de_la_proxima_sesion(self):
+        raiz = self._carpeta()
+        with open(os.path.join(raiz, "historico-chat", "README.md"), "w",
+                  encoding="utf-8") as f:
+            f.write("# Histórico\n\n## Índice\n\n"
+                    "- [2026-01-01-x.md](2026-01-01-x.md) — de qué se trató.\n"
+                    "- [README.md](README.md) — no es una sesión.\n")
+
+        self.assertEqual(historico.sesiones(raiz),
+                         [("2026-01-01-x.md", "de qué se trató.")])
+        texto = historico.contexto(raiz)
+        self.assertIn("historico-chat/2026-01-01-x.md — de qué se trató.", texto)
+        self.assertNotIn("README.md", texto)
+
+    def test_sin_sesiones_no_se_inyecta_nada(self):
+        self.assertEqual(historico.contexto(self._carpeta()), "")
+
+    def test_se_recortan_las_sesiones_viejas_y_se_dice(self):
+        raiz = self._carpeta()
+        filas = "".join(f"- [s{n}.md](s{n}.md) — tema {n}.\n" for n in range(10))
+        with open(os.path.join(raiz, "historico-chat", "README.md"), "w",
+                  encoding="utf-8") as f:
+            f.write(f"# Histórico\n\n## Índice\n\n{filas}")
+
+        texto = historico.contexto(raiz, limite=3)
+        self.assertIn("últimas 3 de 10", texto)
+        self.assertIn("s9.md", texto)
+        self.assertNotIn("s6.md", texto, "se listó una fuera del recorte")
+
     def test_junta_el_texto_partido_por_herramientas_y_descarta_lo_ajeno(self):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
@@ -1140,6 +1188,125 @@ class Historico(unittest.TestCase):
         texto, marca = historico.ultima_respuesta(ruta)
         self.assertEqual(texto, "Primero.\n\nDespués.")
         self.assertEqual(marca, "a2")
+
+
+class Recuerdos(unittest.TestCase):
+    """La memoria del agente: en el repositorio, y solo ahí (`01·C19`)."""
+
+    def _monta(self, locales=None, repo=None):
+        """Un proyecto temporal con su carpeta local y su carpeta del repo."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        proyecto = os.path.join(tmp.name, "proyecto")
+        casa = os.path.join(tmp.name, "casa")
+
+        for carpeta, archivos in ((recuerdos.carpeta_local(proyecto, casa),
+                                   locales or {}),
+                                  (recuerdos.carpeta_repo(proyecto),
+                                   repo or {})):
+            if archivos:
+                os.makedirs(carpeta, exist_ok=True)
+            for nombre, texto in archivos.items():
+                with open(os.path.join(carpeta, nombre), "w",
+                          encoding="utf-8") as f:
+                    f.write(texto)
+        return proyecto, casa
+
+    def _leer(self, *partes):
+        with open(os.path.join(*partes), encoding="utf-8") as f:
+            return f.read()
+
+    def test_la_carpeta_local_es_la_que_usa_la_herramienta(self):
+        proyecto, casa = self._monta()
+        local = recuerdos.carpeta_local(os.path.join(proyecto, "Ing. Jose"),
+                                        casa)
+        self.assertTrue(local.startswith(
+            os.path.join(casa, ".claude", "projects")))
+        self.assertEqual(os.path.basename(local), "memory")
+        # El punto y el espacio son dos caracteres: dan dos guiones, no uno.
+        self.assertTrue(os.path.basename(os.path.dirname(local))
+                        .endswith("Ing--Jose"))
+
+    def test_mueve_el_recuerdo_al_repositorio(self):
+        proyecto, casa = self._monta({"lo-mio.md": "el recuerdo"})
+        self.assertEqual(recuerdos.migrar(proyecto, True, casa),
+                         [("lo-mio.md", "lo-mio.md")])
+        self.assertEqual(recuerdos.sueltos(proyecto, casa), [])
+        self.assertEqual(
+            self._leer(recuerdos.carpeta_repo(proyecto), "lo-mio.md"),
+            "el recuerdo")
+
+    def test_simular_no_toca_nada(self):
+        proyecto, casa = self._monta({"lo-mio.md": "el recuerdo"})
+        self.assertTrue(recuerdos.migrar(proyecto, False, casa))
+        self.assertTrue(recuerdos.sueltos(proyecto, casa),
+                        "sin --aplicar no se mueve nada")
+
+    def test_el_duplicado_identico_se_borra_sin_dejar_copia(self):
+        proyecto, casa = self._monta({"x.md": "igual"}, {"x.md": "igual"})
+        self.assertEqual(recuerdos.migrar(proyecto, True, casa),
+                         [("x.md", "")])
+        self.assertEqual(recuerdos.sueltos(proyecto, casa), [])
+        self.assertEqual(self._leer(recuerdos.carpeta_repo(proyecto), "x.md"),
+                         "igual")
+
+    def test_un_nombre_ocupado_no_se_pisa(self):
+        # Lo local puede ser otra versión: decidir cuál manda es del usuario.
+        proyecto, casa = self._monta({"x.md": "la local"}, {"x.md": "la del repo"})
+        self.assertEqual(recuerdos.migrar(proyecto, True, casa),
+                         [("x.md", "x-local.md")])
+        repo = recuerdos.carpeta_repo(proyecto)
+        self.assertEqual(self._leer(repo, "x.md"), "la del repo")
+        self.assertEqual(self._leer(repo, "x-local.md"), "la local")
+
+    def test_el_indice_no_se_pierde_por_las_mayusculas(self):
+        # Regresión: en Windows `MEMORY.md` y `memory.md` son el MISMO archivo.
+        # Moviendo uno sobre otro se borraba el índice del proyecto en silencio.
+        proyecto, casa = self._monta({"MEMORY.md": "el índice de la herramienta"},
+                                     {"memory.md": "el índice del proyecto"})
+        movidos = recuerdos.migrar(proyecto, True, casa)
+        self.assertEqual(movidos, [("MEMORY.md", "MEMORY-local.md")])
+        self.assertEqual(self._leer(recuerdos.carpeta_repo(proyecto),
+                                    "memory.md"), "el índice del proyecto")
+
+    def test_reprueba_mientras_quede_algo_en_la_carpeta_local(self):
+        proyecto, casa = self._monta({"x.md": "lo mío"})
+        cumple, detalle = recuerdos.revisar(proyecto, casa)
+        self.assertFalse(cumple)
+        self.assertIn("x.md", detalle)
+
+        recuerdos.migrar(proyecto, True, casa)
+        self.assertEqual(recuerdos.revisar(proyecto, casa), (True, ""))
+
+    def test_la_memoria_se_inyecta_al_arrancar(self):
+        # La herramienta solo carga sola lo que guarda ella, y ahí ya no hay
+        # nada: sin esto, la memoria del repositorio no la vería nadie.
+        proyecto, _ = self._monta(repo={"memory.md": "# Índice\n\n| a | b |\n"})
+        texto = recuerdos.contexto(proyecto)
+        self.assertIn("MEMORIA DEL AGENTE", texto)
+        self.assertIn("| a | b |", texto)
+
+    def test_sin_indice_no_se_inyecta_nada(self):
+        proyecto, _ = self._monta()
+        self.assertEqual(recuerdos.contexto(proyecto), "")
+
+    def test_el_instalador_crea_el_indice_sellado_y_no_lo_pisa(self):
+        proyecto, _ = self._monta()
+        os.makedirs(proyecto, exist_ok=True)
+        pasos = instalar.instalar_recuerdos(proyecto, aplicar=True)
+        self.assertIn("crear historico-chat/memory/memory.md", pasos)
+
+        comp = versiones.POR_ID["recuerdos"]
+        self.assertEqual(versiones.huella_sellada(proyecto, comp),
+                         versiones.huella_central(comp))
+
+        indice = recuerdos.ruta_indice(proyecto)
+        with open(indice, "a", encoding="utf-8") as f:
+            f.write("\n| lo mío | una línea del proyecto |\n")
+        self.assertEqual(instalar.instalar_recuerdos(proyecto, aplicar=True),
+                         ["historico-chat/memory/memory.md ya estaba sellado "
+                          "al día"])
+        self.assertIn("una línea del proyecto", self._leer(indice))
 
 
 class Checklist(unittest.TestCase):

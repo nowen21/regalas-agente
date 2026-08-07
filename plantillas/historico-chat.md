@@ -24,9 +24,16 @@ La hora sale del reloj de la máquina en ese instante — no de la memoria del a
 - Cada respuesta lleva `<!-- agente: <uuid> -->`, que evita que se duplique si el enganche vuelve a correr.
 - No se guarda el razonamiento interno del agente ni la salida cruda de las herramientas: esto es la conversación, no la máquina por dentro.
 
+## El índice es lo que lee la próxima sesión
+
+Un chat nuevo arranca sin memoria de los anteriores. Al abrir la sesión, el enganche le inyecta al agente **este índice** —no las transcripciones, que son la conversación entera— para que sepa qué se habló antes y pueda abrir con `Read` la sesión que le sirva.
+
+Por eso cada sesión que se crea queda anotada aquí: la línea la pone el enganche al crear el archivo y la vuelve a comprobar en cada mensaje. Una sesión sin su línea es una sesión que la siguiente no va a encontrar, y el validador de índices la reporta como falla.
+
 ## Qué hace el agente aquí
 
-- **Ponerle tema al nombre.** El enganche crea `AAAA-MM-DD-sesion.md` porque no sabe de qué se va a tratar. Cuando el tema esté claro, se renombra a `AAAA-MM-DD-<tema>.md` y se corrige la línea del índice.
+- **Ponerle tema al nombre.** El enganche crea `AAAA-MM-DD-sesion.md` porque no sabe de qué se va a tratar. Cuando el tema esté claro, se renombra a `AAAA-MM-DD-<tema>.md` y se corrige la línea del índice — **las dos cosas**, o el índice queda apuntando a un archivo que ya no está.
+- **Decir de qué se trató.** La línea del índice nace como "sesión del AAAA-MM-DD"; se reemplaza por el tema real. Es lo único que la próxima sesión ve de esta.
 - **Mantener `## Abierto`**: lo que quedó sin cerrar, o "nada".
 - **No copiar a mano lo que el enganche ya escribió.** Si falta algo, se agrega; no se reescribe encima.
 

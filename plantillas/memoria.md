@@ -1,0 +1,31 @@
+# Memoria del agente
+
+Lo que el agente debe recordar entre sesiones se escribe **aquí**, dentro del repositorio: preferencias del usuario, acuerdos sobre cómo trabajar, correcciones que valen para mañana.
+
+**No en el almacenamiento local de la herramienta.** Claude Code guarda su memoria en `~/.claude/projects/<ruta-del-proyecto>/memory/`; esa carpeta queda **vacía**. Lo que aparezca ahí se mueve acá, y no se deja copia ni puntero: dos versiones del mismo recuerdo terminan diciendo cosas distintas, y la que manda es la que nadie puede leer.
+
+**Por qué acá:** lo local no se ve en `git`, no se puede revisar en un cambio, no se versiona y no viaja a otra máquina. Al clonar el proyecto en otro equipo, esa memoria se queda atrás y nadie se entera.
+
+Lo mueve el programa, no el agente: un enganche recoge la carpeta local al abrir la sesión y cada vez que se escribe un archivo. No hay que acordarse.
+
+## Cómo es cada recuerdo
+
+**Un archivo por recuerdo**, `<nombre-corto>.md` en kebab-case, con las mismas tres partes:
+
+- **Qué se pide** — la instrucción, en una o dos líneas.
+- **Por qué** — de dónde salió. Sin el motivo, el recuerdo se reinterpreta hasta que deja de cumplirse.
+- **Cómo se aplica** — qué hace el agente distinto por saberlo.
+
+Un recuerdo que se contradice con otro se corrige; no se agrega al lado. Al crear uno, se agrega su línea al índice de abajo.
+
+> Esto **no** es la memoria por señales del proyecto (regla `DOC5` del capítulo 13, la que registra decisiones y aprendizajes del sistema). Aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
+
+> Tampoco es norma del estándar: la norma es la regla `C19` del capítulo 01, que obliga a guardar la memoria acá. Lo que va dentro de cada archivo es preferencia del usuario de este proyecto.
+
+> Si en este proyecto la memoria **no** debe versionarse, agregar `historico-chat/memory/` al `.gitignore`. Se sigue escribiendo acá; solo que no viaja al repositorio.
+
+## Índice
+
+| Recuerdo | De qué se trata |
+|---|---|
+| (una línea por recuerdo; se agrega al crearlo) | |

@@ -60,6 +60,13 @@ Son **tres** carpetas distintas, con reglas propias de versionado:
 
 > Si en este proyecto la conversación **no** debe versionarse (por ejemplo, porque en el chat se manejan datos sensibles), agregar `historico-chat/` al `.gitignore`. El histórico se sigue escribiendo en la máquina; solo que no viaja al repositorio.
 
+### 2.4 Memoria del agente — DEL PROYECTO, se versiona
+
+- **Ruta:** `./historico-chat/memory/` — un archivo por recuerdo, más `memory.md` como índice.
+- **Ahí va TODO lo que el agente debe recordar** entre sesiones: preferencias del usuario, acuerdos sobre cómo trabajar. **Nunca** en el almacén de memoria de la herramienta (`~/.claude/projects/<ruta-de-este-proyecto>/memory/`), que queda **vacío** — ni siquiera un puntero (regla base `01·C19`).
+- **La vacía el programa, no el agente:** un enganche mueve acá lo que aparezca en el almacén local, al abrir la sesión y cada vez que se escribe un archivo.
+- **NO va en el `.gitignore`:** lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar. Si en este proyecto la memoria no debe versionarse, agregar `historico-chat/memory/` al `.gitignore`; se sigue escribiendo acá.
+
 ## 3. Qué hace el agente al iniciar CADA sesión (en este orden exacto)
 
 1. **Cargar y obedecer las reglas base** desde la ruta de `base` del punto 1: **todos** los archivos numerados de `base/` (de `00` en adelante — así, si el estándar agrega secciones nuevas, se cargan solas). El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
@@ -81,6 +88,7 @@ Son **tres** carpetas distintas, con reglas propias de versionado:
    - el bloqueo de commits con mal mensaje o con lo que no debe versionarse (`09`·G2, G8, G3);
    - el aviso de enlaces rotos al editar un `.md`;
    - el histórico de la sesión en `./historico-chat/` (punto 2.3) — carpeta, `README.md` y los dos enganches que lo escriben;
+   - la memoria del agente en `./historico-chat/memory/` (punto 2.4) — carpeta, índice y el enganche que la recoge del almacén local;
    - el **stack de instalación** copiado a `./.agente/stack-instalacion.md`, y el enganche que lo revisa en cada mensaje.
 
    **Es idempotente:** si ya están al día no toca nada, así que se corre en cada sesión sin miedo. Necesario porque los enganches viven dentro del proyecto: las reglas y los validadores llegan solos desde el estándar, pero una herramienta **nueva** no.

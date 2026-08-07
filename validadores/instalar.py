@@ -16,8 +16,8 @@ absoluta. Una sola copia del estándar sirve a todos los proyectos, y al cambiar
 una regla aquí cambia en todos a la vez.
 
 Lo único que sí se crea dentro del proyecto es lo que el proyecto necesita tener
-para que un enganche funcione — hoy, la carpeta `historico-chat/`. Sin ella, el
-enganche del histórico no tendría dónde escribir.
+para que un enganche funcione — hoy, `historico-chat/` y su `memory/`. Sin ellas,
+los enganches del histórico y de la memoria no tendrían dónde escribir.
 """
 import argparse
 import json
@@ -176,6 +176,10 @@ HOOKS_CLAUDE = [
      "Anotando en el histórico...", "--modo agente"),
     ("UserPromptSubmit", None, "hook_checklist.py",
      "Revisando la instalación del agente...", ""),
+    ("SessionStart", None, "hook_recuerdos.py",
+     "Recogiendo la memoria del agente...", ""),
+    ("PostToolUse", "Write|Edit", "hook_recuerdos.py",
+     "Recogiendo la memoria del agente...", ""),
 ]
 
 
@@ -280,6 +284,7 @@ def instalar_claude(ruta, estandar, aplicar):
 
 
 PLANTILLA_HISTORICO = os.path.join(RAIZ, "plantillas", "historico-chat.md")
+PLANTILLA_MEMORIA = os.path.join(RAIZ, "plantillas", "memoria.md")
 
 
 def instalar_stack(ruta, aplicar):
@@ -336,6 +341,40 @@ def instalar_historico(ruta, aplicar):
 
     return _refrescar_sello(archivo, comp, ruta, aplicar,
                             "historico-chat/README.md")
+
+
+def instalar_recuerdos(ruta, aplicar):
+    """Crea `historico-chat/memory/` y vacía ahí la memoria de la herramienta.
+
+    Dos cosas que van juntas y por eso viven en la misma función: no sirve
+    declarar dónde va la memoria si lo que ya está escrito se queda donde no
+    debe. El índice se crea sellado y **no se pisa** —lo llena el proyecto—,
+    igual que el README del histórico.
+
+    Mover es del instalador y del enganche, nunca del agente: la herramienta
+    escribe su memoria donde ella decide, no donde el agente se acuerde.
+    """
+    import recuerdos
+    import versiones
+
+    comp = versiones.POR_ID["recuerdos"]
+    archivo = recuerdos.ruta_indice(ruta)
+
+    if not os.path.isfile(PLANTILLA_MEMORIA):
+        return ["OMITIDO: falta plantillas/memoria.md en el estándar"]
+
+    if not os.path.isfile(archivo):
+        pasos = [f"crear {recuerdos.CARPETA.replace(os.sep, '/')}/"
+                 f"{recuerdos.INDICE}"]
+        if aplicar:
+            os.makedirs(os.path.dirname(archivo), exist_ok=True)
+            _escribir_sellado(archivo, leer(PLANTILLA_MEMORIA), comp, ruta)
+    else:
+        pasos = _refrescar_sello(
+            archivo, comp, ruta, aplicar,
+            f"{recuerdos.CARPETA.replace(os.sep, '/')}/{recuerdos.INDICE}")
+
+    return pasos + recuerdos.pasos(recuerdos.migrar(ruta, aplicar))
 
 
 def _escribir_sellado(archivo, texto, componente, proyecto):
@@ -447,7 +486,7 @@ def instalar(nombre, ruta, aplicar):
     anterior = _version_anterior(ruta)
 
     pasos = []
-    for instalador in (instalar_historico, instalar_stack):
+    for instalador in (instalar_historico, instalar_recuerdos, instalar_stack):
         pasos += instalador(ruta, aplicar)
     pasos += sellar_claude_md(ruta, aplicar)
 

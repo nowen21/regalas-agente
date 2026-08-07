@@ -10,11 +10,17 @@ import os
 from comun import (AVISO, FALLA, Hallazgo, RAIZ, enlaces, leer, recorrer_md,
                    relativo)
 
-# Carpetas cuyo README.md debe listar todos sus .md.
-CON_INDICE = ["pendientes", "notas"]
-
 # Carpeta de transcripciones: se escribe sola y copia el diálogo literal.
 HISTORICO = "historico-chat"
+
+# Carpetas cuyo README.md debe listar todos sus .md.
+#
+# El histórico entra aquí aunque nadie lo escriba a mano: una sesión que no está
+# en el índice es una sesión que la siguiente no va a encontrar — y el índice es
+# lo único que se le carga al agente al arrancar. La línea la pone el enganche
+# al crear el archivo; esto detecta la que se perdió o quedó vieja tras un
+# renombre.
+CON_INDICE = ["pendientes", "notas", HISTORICO]
 
 EXTERNOS = ("http://", "https://", "mailto:", "ftp://", "//")
 

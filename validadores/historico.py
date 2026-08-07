@@ -29,7 +29,17 @@ from datetime import datetime
 CARPETA = "historico-chat"
 INDICE = "README.md"
 
+# Cuántas sesiones se listan al arrancar. Las viejas siguen en el índice del
+# README; lo que se recorta es el bloque que se le inyecta al agente.
+LIMITE = 40
+
 _NUMERO = re.compile(r"^### (\d+) · ", re.MULTILINE)
+
+# Una línea del índice: `- [nombre.md](nombre.md) — de qué se trató.`
+_LINEA = re.compile(r"^- \[[^\]]*\]\(([^)#\s]+\.md)\)\s*(?:—\s*(.*?))?\s*$")
+
+# La fecha con la que empieza el nombre del archivo de una sesión.
+_FECHA = re.compile(r"^(\d{4}-\d{2}-\d{2})")
 
 
 def anotar_usuario(raiz, sesion, mensaje):
@@ -45,6 +55,14 @@ def anotar_usuario(raiz, sesion, mensaje):
     cita = "\n".join(f"> {l}" if l.strip() else ">"
                      for l in mensaje.rstrip().splitlines())
     _anotar(ruta, f"\n### {numero} · Usuario — {_ahora()}\n{cita}\n")
+
+    # En cada mensaje, no solo al crear el archivo: la línea del índice es lo
+    # único por lo que la próxima sesión encuentra a esta. Si al crearlo no
+    # había README —o alguien lo rehízo—, la sesión quedaría invisible. Es
+    # idempotente: si la línea ya está, no hace nada.
+    carpeta = os.path.dirname(ruta)
+    nombre = os.path.basename(ruta)
+    _indexar(carpeta, nombre, _fecha_de(nombre))
     return ruta
 
 
@@ -177,6 +195,55 @@ def _indexar(carpeta, nombre, fecha):
         return
     linea = f"- [{nombre}]({nombre}) — sesión del {fecha}.\n"
     _agregar(ruta, linea if texto.endswith("\n") else f"\n{linea}")
+
+
+def _fecha_de(nombre):
+    """La fecha del nombre del archivo (`AAAA-MM-DD-tema.md`), o la de hoy."""
+    m = _FECHA.match(nombre)
+    return m.group(1) if m else datetime.now().strftime("%Y-%m-%d")
+
+
+def sesiones(raiz):
+    """Las sesiones registradas: `[(archivo, de qué se trató)]`, en orden.
+
+    Se leen del índice y no de la carpeta: el índice es lo que dice **de qué
+    trató** cada sesión, y un listado de nombres de archivo no serviría para
+    decidir cuál abrir.
+    """
+    salida = []
+    for linea in _leer(os.path.join(raiz, CARPETA, INDICE)).splitlines():
+        m = _LINEA.match(linea.strip())
+        if m and m.group(1).lower() != INDICE.lower():
+            salida.append((m.group(1), (m.group(2) or "").strip()))
+    return salida
+
+
+def contexto(raiz, limite=LIMITE):
+    """El índice de sesiones que se le inyecta al agente al abrir la sesión.
+
+    Va el índice, **no** las transcripciones: son la conversación entera y
+    llenarían la ventana con lo que casi nunca hace falta. El agente abre la que
+    le sirve — pero para eso tiene que saber que existe, y el chat nuevo arranca
+    sin memoria de los anteriores.
+    """
+    hechas = sesiones(raiz)
+    if not hechas:
+        return ""
+
+    recorte = hechas[-limite:]
+    cabeza = [
+        "[HISTÓRICO DE SESIONES — NO ESTÁ CARGADO, SOLO EL ÍNDICE]",
+        "Cada sesión con este proyecto quedó transcrita literal. Antes de "
+        "retomar un tema, leer con Read la sesión que lo trató: ahí está qué se "
+        "decidió y por qué. No suponer qué dice una sesión por su título.",
+    ]
+    if len(hechas) > len(recorte):
+        cabeza.append(f"Se listan las últimas {len(recorte)} de {len(hechas)}; "
+                      f"el resto, en {CARPETA}/{INDICE}.")
+
+    cuerpo = [f"  {CARPETA}/{archivo}" + (f" — {tema}" if tema else "")
+              for archivo, tema in recorte]
+    return "\n".join(cabeza + [""] + cuerpo)
 
 
 def _siguiente_numero(texto):
