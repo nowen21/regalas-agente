@@ -132,9 +132,83 @@ Las menciones de `02-flujo-de-trabajo.md` (líneas 15, 16, 42) dicen `` `00-iden
 
 La carpeta queda con `base.md` solo. Si la idea es desarrollar el capítulo —darle reglas con ID, que hoy no tiene— los anexos entran al lado, como `estructura-regla.md` en `20-meta-reglas/`. Aviso de un efecto del cargador: **todo** `.md` que se ponga en esa carpeta se cargará literal en cada turno, porque el primer tramo empieza por `00-`. Para un anexo largo eso pesa; si se llega a ese caso, conviene decidir entonces si el anexo va ahí o fuera.
 
+### 3 · Usuario — hora no registrada
+> suba todo menos lo que dependa de los cambios realizado en base
+
+**Agente** — 2026-08-07 09:30:01
+
+Subido a `main` (`f6e3460..08fe06f`), en cuatro commits con un propósito cada uno (`09·G1`):
+
+| Commit | Qué |
+|---|---|
+| `6dfeeb1` | `anatomia:` mapa del sitio y componentes del agente |
+| `34fce01` | `pendientes:` backlog 09 — autonomía sin IA |
+| `bdd4471` | `analisis:` auditoría de las 170 reglas contra las meta-reglas |
+| `08fe06f` | `historico:` transcripciones del 06 y 07, memoria e índice |
+
+**Qué quedó fuera, y por qué cada uno depende de `base/`:**
+
+| Archivo | Por qué depende |
+|---|---|
+| `base/00-identidad-y-rol/base.md` | es el movimiento |
+| `validadores/cargador.py` | el arreglo existe solo por el movimiento; sin él, sobra |
+| `README.md` | su enlace apunta a la ruta nueva |
+| `base/20-meta-reglas/base.md` | la tabla de `M1` nombra la ruta nueva |
+| `CHANGELOG.md` · `VERSION` | la entrada 1.3.1 es exactamente ese movimiento |
+
+**Un caso que hubo que deshacer:** el árbol de `anatomia/mapa-del-sitio.md` ya estaba editado con la carpeta nueva. Si subía así, el mapa describiría un repo que no es el que se sube. Se devolvió la línea a `00-identidad-y-rol.md` y el mapa quedó coherente con el `base/` publicado; se vuelve a cambiar cuando suba el movimiento.
+
+**Comprobaciones antes de subir**, no después:
+
+- `validar.py estandar` → `OK: sin incumplimientos` (ningún enlace roto entre lo que se sube y lo que se queda).
+- `validar.py secretos` marcó 1 falla y 3 avisos, **todos en archivos ya commiteados** (`validadores/pruebas.py`, `validadores/secretos.py`): son los fixtures del propio validador de secretos. No entraban en esta subida. Queda anotado como cosa a revisar aparte — un fixture con forma de secreto real puede hacer que GitHub bloquee un push futuro.
+- Los enganches del repo corrieron en cada commit (`versionado` y `commit`): OK las cuatro veces.
+- Se revisó el contenido de cada archivo no rastreado antes de montarlo. Nada se subió sin leer.
+
+También se corrigió una línea del histórico que decía "Commit no solicitado ni hecho" y ya no era cierta.
+
+### 4 · Usuario — hora no registrada
+> ajuste: 00-identidad-y-rol a: 20-meta-reglas y cada regla créela dento de la carpeta: 00-identidad-y-rol/reglas con su respectivo: <PREFIJO><n>-<Título> y cada regla va linkiada a 00-identidad-y-ro/base.md
+
+*(y a continuación, dos veces)*
+
+> el informe no lo toque solo agregue el link donde se corrige
+
+**Agente** — 2026-08-07 09:40:39
+
+El capítulo del preámbulo deja de ser prosa suelta y pasa a tener reglas con identificador.
+
+**Prefijo elegido: `ID`.** Se verificó libre contra la tabla de letras ocupadas de `estructura-regla.md` antes de estrenarlo, como exige `M4`, y se registró ahí mismo — la tabla dice que un capítulo nuevo "elige unas letras que no estén en esta lista y **se agrega aquí**".
+
+**Seis reglas, una por archivo**, en `base/00-identidad-y-rol/reglas/`:
+
+| Archivo | Qué exige |
+|---|---|
+| `ID1-trabaja-con-criterio-de-desarrollador-senior.md` | resolver con el criterio del oficio, no con lo mínimo que funciona |
+| `ID2-escribe-en-registro-tecnico-sin-adornos.md` | preciso y sin relleno; el texto del usuario final es lo contrario (`17·I4`) |
+| `ID3-no-des-por-entregado-lo-que-no-esta-terminado.md` | spec cumplida + pruebas verdes + nada roto + rastro escrito |
+| `ID4-asume-el-ciclo-completo-de-entender-a-documentar.md` | la unidad se entrega entera, no media cadena |
+| `ID5-no-salgas-del-borde-del-rol.md` | seis cosas fuera por definición; cada una se autoriza aparte y cada vez |
+| `ID6-toma-el-rol-especializado-que-pide-la-etapa.md` | el rol cambia el foco, nunca la precedencia ni el borde |
+
+Cada archivo abre con una línea de vuelta a `../base.md` y sigue el molde de `M5`: encabezado `##` con ID y título imperativo, cuerpo de una a cuatro líneas, y ejemplo INCORRECTO/CORRECTO. `base.md` pasa a ser el capítulo con la tabla índice enlazada a las seis.
+
+**El criterio que gobernó la partición fue `M5` "sin texto prestado".** La prosa original decía cosas que ya tienen dueño en otros capítulos: "en el idioma del proyecto" es `01·C8`, "pruebas en verde" es `08·T5`, "sin romper lo existente" es `02·F7`, "dejando rastro" es `13·DOC1`, y las cinco cosas del "No hace" son `C4`, `N4`, `N2`, `F2` y `S9`. Copiarlas habría creado seis duplicados nuevos — justo el defecto que el informe de esta misma sesión marca como el más caro. Se enlazan. Lo que cada regla aporta de propio es lo que solo este capítulo puede decir: la postura (`ID1`), el registro (`ID2`), la **conjunción** que define "entregado" (`ID3`), el alcance del rol (`ID4`), que el borde es del rol y no un permiso negociable (`ID5`), y que cambiar de rol no cambia las reglas (`ID6`).
+
+**`M9`:** las seis quedan clasificadas en `validadores/reglas-validables.md` como criterio humano, con la nota de que `ID3` es parcial — sus cuatro condiciones ya se validan por separado; lo que ningún script comprueba es la conjunción.
+
+**`M10`:** `VERSION` 1.3.1 → **1.4.0**, entrada **MENOR** en el `CHANGELOG` (aditivo: reglas nuevas donde no había ninguna).
+
+**El informe no se tocó.** Solo se le agregó, al final del hallazgo **H-22**, una línea de "Corregido en" con el enlace al capítulo nuevo — y diciendo qué del hallazgo queda abierto: el número `00` sigue compartido con el núcleo y `F0` sigue citando skills y plantillas como si fueran reglas.
+
+**Comprobado:** `validar.py estandar` → `OK: sin incumplimientos`. El cargador levanta las siete piezas literales en cada turno (`base.md` + las seis reglas), que es lo que corresponde a un preámbulo; el capítulo pasó de ~1 KB a ~4 KB de contexto por turno.
+
+**Lo que quedó pendiente de decisión, y no se tocó:** `20·M1` clasifica el preámbulo como *"No: describe, no exige"*. Con `ID1`–`ID6` el capítulo ahora **sí exige**. Es un choque de los que `M6` manda reportar en vez de resolver en silencio, y arreglarlo significa elegir entre dos cosas — que `M1` acepte que el preámbulo tenga reglas propias, o que el capítulo deje de ser preámbulo y pase a capa 2. Lo segundo cambia la precedencia, así que es decisión del usuario.
+
 ## Abierto
 
+- **`20·M1` dice que el preámbulo "describe, no exige", y el capítulo `00 · Identidad y rol` ahora exige.** Decidir si `M1` lo acepta o si el capítulo cambia de capa.
 - Decisión del usuario sobre `F12` (texto congelado) y sobre `estructura-regla.md` (registro y ubicación). Hasta que responda, la Ola 2 queda incompleta.
 - Aprobación para ejecutar las olas 1 y 2, que sí pueden arrancar sin esas dos respuestas.
-- Qué contenido llevará `base/00-identidad-y-rol/` ahora que tiene carpeta: hoy es preámbulo sin reglas con ID, y `F0` lo cita como si las tuviera (H-22).
-- **Sin subir:** el movimiento de `base/00-identidad-y-rol/`, el arreglo de `cargador.py` y sus referencias (`README.md`, `20-meta-reglas/base.md`, el árbol de `anatomia/`), más `CHANGELOG.md` y `VERSION` 1.3.1. El usuario pidió subir todo **menos** lo que dependa de los cambios en `base/`; ese conjunto queda en el árbol de trabajo esperando su turno.
+- **En el árbol de trabajo, sin subir:** el movimiento de identidad-y-rol, sus seis reglas nuevas, el arreglo de `cargador.py`, las referencias (`README.md`, `20-meta-reglas/base.md`, `estructura-regla.md`), `reglas-validables.md`, el enlace de H-22 en el informe, y `CHANGELOG.md` + `VERSION` 1.4.0. Falta el visto bueno del usuario y volver a poner el árbol de `anatomia/` con la carpeta nueva en ese mismo commit.
+- Los fixtures con forma de secreto real en `validadores/pruebas.py` y `validadores/secretos.py`.
