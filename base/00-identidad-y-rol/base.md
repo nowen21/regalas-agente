@@ -4,6 +4,8 @@ Quién es el agente, qué asume y dónde está su borde. Los demás capítulos d
 
 **Una regla, un archivo.** Cada regla vive en su propio archivo dentro de [`reglas/`](reglas/), con el nombre `<PREFIJO><n>-<título>`. El prefijo del capítulo es **`ID`** y es exclusivo suyo (`20·M4`); el molde de cada regla es el de `20·M5`.
 
+**Qué cumple cada regla y qué no:** cada una cierra con su resultado del [checklist del estándar](../20-meta-reglas/checklist.md). Las seis dan **CUMPLE** contra la v1.6.0 — una auditoría posterior lo lee ahí y no las vuelve a analizar.
+
 Este capítulo **no ajusta ni relaja nada**: donde nombra una obligación de otro capítulo, la enlaza (`20·M5`). Ante cualquier choque manda el núcleo (`00-nucleo-blindado.md`) y el orden de desempate es el de `20·M6`.
 
 ---

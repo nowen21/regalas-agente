@@ -12,7 +12,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 
 | Nivel | Qué es | Dónde vive | ¿Se ajusta? |
 |---|---|---|---|
-| **Preámbulo** | Quién es el agente y cómo funcionan las reglas | `base/00-identidad-y-rol/`, este archivo | No: describe, no exige. |
+| **Preámbulo** | Quién es el agente y cómo funcionan las reglas | `base/00-identidad-y-rol/`, este archivo | No: un proyecto no redefine quién es el agente ni el molde de las reglas. |
 | **Capa 1 · Núcleo** | Seguridad innegociable. Cada regla marca `[BLINDADA]` | `base/00-nucleo-blindado.md` | **Nunca.** |
 | **Capa 2 · Convenciones** | Buenas prácticas por dominio, agnósticas | `base/01`–`base/NN` | Solo la capa 3. |
 | **Capa 3 · Proyecto** | Stack, dominio, sector, nombres propios, reglas del equipo | `CLAUDE.md` + `.agente/` de cada proyecto | Es la capa que ajusta. |
@@ -188,6 +188,14 @@ Meter en `base/` lo que no es regla universal la infla y se lo impone a todos lo
 7. **Decidir si es validable** y registrarlo (`M9`).
 8. **Versionar:** `CHANGELOG.md` + `VERSION` (`M10`).
 9. **Revisar el conjunto:** que no choque con nada; si choca, resolver el choque en el texto, no dejarlo para el desempate (`M6`).
+
+## Checklist de la regla — qué cumple y qué no
+
+El procedimiento de arriba dice cómo se agrega una regla. El **checklist** dice si quedó bien: veinte filas, cada una con la meta-regla que la respalda y su criterio de aprobado, y un resultado que dice **CUMPLE** o **NO CUMPLE**. Una sola fila en ❌ y la regla no se publica.
+
+Instrumento completo (fuente única): [`checklist.md`](checklist.md).
+
+Se aplica al escribir la regla —**paso 9** del procedimiento— y su resultado se escribe **dentro de la regla**, al final de su archivo, enlazando al instrumento. Así una auditoría posterior no vuelve a analizar lo ya verificado, y quien abre una regla suelta ve de dónde sale su evaluación. Editar la regla **anula** el resultado (`checklist.md` §3).
 
 ## Higiene del conjunto
 
