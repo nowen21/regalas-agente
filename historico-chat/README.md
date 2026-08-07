@@ -60,3 +60,4 @@ y qué archivo se tocó.
 - [2026-08-07-sesion-8.md](2026-08-07-sesion-8.md) — sesión del 2026-08-07.
 - [2026-08-07-sesion-9.md](2026-08-07-sesion-9.md) — granularidad de la fase: cuándo un CA por fase (`F12.9`) y cuándo varios (`F12.10`).
 - [2026-08-07-memoria-del-agente-en-el-repo.md](2026-08-07-memoria-del-agente-en-el-repo.md) — la memoria del agente pasa a `historico-chat/memory/`; el almacén de la herramienta queda vacío (`01·C19`, v3.0.0).
+- [2026-08-07-sesion-11.md](2026-08-07-sesion-11.md) — sesión del 2026-08-07.

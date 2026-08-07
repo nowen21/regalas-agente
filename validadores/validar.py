@@ -303,7 +303,7 @@ def main():
     es.set_defaults(func=cmd_esquema)
 
     fl = sub.add_parser("flujo",
-                        help="el plan de trabajo: 13 preguntas e incertidumbre · 02·F4.1/F4.3")
+                        help="el plan de trabajo: 13 preguntas e incertidumbre · 02·F14/F17")
     fl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     fl.set_defaults(func=cmd_flujo)
 

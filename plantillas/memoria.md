@@ -6,7 +6,9 @@ Lo que el agente debe recordar entre sesiones se escribe **aquí**, dentro del r
 
 **Por qué acá:** lo local no se ve en `git`, no se puede revisar en un cambio, no se versiona y no viaja a otra máquina. Al clonar el proyecto en otro equipo, esa memoria se queda atrás y nadie se entera.
 
-Lo mueve el programa, no el agente: un enganche recoge la carpeta local al abrir la sesión y cada vez que se escribe un archivo. No hay que acordarse.
+Lo mueve el programa, no el agente: un enganche recoge la carpeta local al abrir la sesión y cada vez que se escribe un archivo. No hay que acordarse. **Solo mueve: no borra nada, nunca.** Si el nombre ya está ocupado, el que llega entra como `<nombre>-local.md` y decide el usuario cuál manda.
+
+**La otra forma de cumplir: enlazar.** Si la carpeta de la herramienta es un *junction* (o un enlace simbólico) a esta, la herramienta ya escribe dentro del repositorio y no hay nada que mover — el estándar lo detecta y no toca la carpeta. Un aviso para ese montaje: en Windows `MEMORY.md` y `memory.md` son el mismo archivo, así que la herramienta puede sobrescribir este índice con el suyo.
 
 ## Cómo es cada recuerdo
 

@@ -1,12 +1,12 @@
 # Plan de Trabajo — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
-> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F4.1`** sobre una **línea base verificada** (`02·F4.3`). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja.
+> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F14`** sobre una **línea base verificada** (`02·F16` · `02·F17`). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja.
 >
 > **Unidad = fase.** Una fase pertenece a **una sola HU** (`02·F12.1`); declara qué CA de esa HU satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
 
 ---
 
-## 0. Identificación y origen  ·  `F4.1` Q1–Q2 · `DOC12`
+## 0. Identificación y origen  ·  `F14` Q1–Q2 · `DOC12`
 
 | Campo | Valor |
 |---|---|
@@ -33,7 +33,7 @@
 
 ---
 
-## 1. Objetivo y alcance  ·  `F4.1` Q4
+## 1. Objetivo y alcance  ·  `F14` Q4
 
 **Objetivo:** ejecutar y verificar los CA declarados en §0 hasta dejarlos cumplidos con evidencia (§5).
 
@@ -51,17 +51,17 @@
 
 ---
 
-## 2. Análisis previo — línea base verificada  ·  `F4.3`
+## 2. Análisis previo — línea base verificada  ·  `F17`
 
 > Todo lo de esta sección se **verifica contra el proyecto real** antes de escribir el plan. **Prohibido** `(o donde esté)`, `(o similar)`, `TBD`, `?`. Si algo no se puede verificar, va como duda abierta (§2.7), no como suposición.
 
-### 2.1 Archivos que se crean o modifican  ·  `F4.1` Q9
+### 2.1 Archivos que se crean o modifican  ·  `F14` Q9
 
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|
 | `[ruta/exacta]` | Nuevo / Modificar | BD / Modelo / Servicio / Endpoint / UI / Test | |
 
-### 2.2 Matriz de dependencias del refactor  ·  `F4.3` (obligatoria si se cambian contratos de código existente)
+### 2.2 Matriz de dependencias del refactor  ·  `F17` (obligatoria si se cambian contratos de código existente)
 
 > Por cada archivo que cambia un contrato, TODOS los que dependen de él y rompen. El §2.1 es la unión de {archivos a tocar} ∪ {dependientes directos que rompen}. Lo que no se refactoriza en esta fase se difiere explícito en §1 (fuera de alcance).
 
@@ -69,7 +69,7 @@
 |---|---|---|---|
 | `[archivo A]` | [elimina columna X · renombra método Y · cambia cardinalidad] | `[B] · [C]` | `B: lee X` · `C: carga relación Y` |
 
-### 2.3 Rutas / endpoints y control de acceso  ·  `F4.1` Q6
+### 2.3 Rutas / endpoints y control de acceso  ·  `F14` Q6
 
 | Método + ruta | Autenticación | Permiso | Alcance |
 |---|---|---|---|
@@ -84,11 +84,11 @@ Response 200: { }
 Errores:  400 | 401 | 403 | 404 | 422
 ```
 
-### 2.4 Punto de entrada en la UI  ·  `F4.1` Q7
+### 2.4 Punto de entrada en la UI  ·  `F14` Q7
 
 - **Dónde queda accesible al usuario final:** [menú / navegación / dashboard / link desde otra vista, con el archivo de navegación real]. Si la fase no introduce UI navegable, declararlo: "No aplica porque …".
 
-### 2.5 Permisos / roles a sembrar  ·  `F4.1` Q8
+### 2.5 Permisos / roles a sembrar  ·  `F14` Q8
 
 - [Permisos o roles nuevos, con la nomenclatura del proyecto. "Ninguno" si no aplica.]
 
@@ -155,7 +155,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ---
 
-## 5. Verificación de criterios de aceptación  ·  `F4.1` Q10
+## 5. Verificación de criterios de aceptación  ·  `F14` Q10
 
 > Un CA no se marca cumplido sin evidencia. La fase no cierra con algún CA en rojo. El detalle de casos vive en el `plan_pruebas`.
 
@@ -186,13 +186,13 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ---
 
-## 7. Reversión / rollback  ·  `F4.1` Q11
+## 7. Reversión / rollback  ·  `F14` Q11
 
 Plan B concreto si algo sale mal: [reversión de commit · rollback de esquema (`down()`) · backfill inverso · feature flag · script de emergencia]. Cada cambio destructivo declara cómo se revierte.
 
 ---
 
-## 8. Producción y migración incremental  ·  `F4.1` Q12 · `F10`
+## 8. Producción y migración incremental  ·  `F14` Q12 · `F10`
 
 Asumir **"probablemente está en producción"**. Estrategia según el tipo de cambio:
 - **Aditivo** (columna/tabla nueva): migración nueva, backfill si aplica.
@@ -202,7 +202,7 @@ Asumir **"probablemente está en producción"**. Estrategia según el tipo de ca
 
 ---
 
-## 9. Reglas del estándar y del proyecto aplicadas  ·  `F4.1` Q13
+## 9. Reglas del estándar y del proyecto aplicadas  ·  `F14` Q13
 
 Trazabilidad de decisiones — reglas por su identificador:
 - Base: [ej. `02·F8`, `04·S…`, `08·T4`, `13·DOC11`].

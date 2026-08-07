@@ -2,7 +2,7 @@
 
 ## F5 · Corre solo las suites que la fase toca
 
-La corrida que cierra una fase alcanza la suite del módulo de la fase, las suites que la fase refactorizó y las que dependen de los archivos tocados según la matriz de [`02·F4.3`](F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) — no la suite completa del proyecto (extiende [`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta), que ya obliga a correrlas y a reportar el conteo).
+La corrida que cierra una fase alcanza la suite del módulo de la fase, las suites que la fase refactorizó y las que dependen de los archivos tocados según la matriz de [`02·F17`](F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) — no la suite completa del proyecto (extiende [`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta), que ya obliga a correrlas y a reportar el conteo).
 
 **Excepción** — la corrida global se hace cuando se declara **explícitamente** como "regresión total pre-release" (condición). No entra en el flujo normal de fase (límite) y la pide el usuario (autoriza).
 

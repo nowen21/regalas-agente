@@ -759,7 +759,7 @@ class Seguridad_S5(unittest.TestCase):
 
 
 class Flujo(unittest.TestCase):
-    """`02·F4.1`/`F4.3` — el plan de trabajo. Núcleo puro."""
+    """`02·F14`/`F17` — el plan de trabajo. Núcleo puro."""
 
     def _plan_completo(self):
         return "\n".join(f"## {n}. Sección" for n in range(0, 14))
@@ -1242,13 +1242,53 @@ class Recuerdos(unittest.TestCase):
         self.assertTrue(recuerdos.sueltos(proyecto, casa),
                         "sin --aplicar no se mueve nada")
 
-    def test_el_duplicado_identico_se_borra_sin_dejar_copia(self):
+    def test_el_duplicado_identico_tampoco_se_borra(self):
+        # Antes se borraba el del almacén "porque no se pierde nada". Con el
+        # almacén enlazado al repositorio, ese razonamiento destruyó memoria
+        # real: los dos eran el mismo archivo. Aquí no se borra nunca.
         proyecto, casa = self._monta({"x.md": "igual"}, {"x.md": "igual"})
         self.assertEqual(recuerdos.migrar(proyecto, True, casa),
-                         [("x.md", "")])
-        self.assertEqual(recuerdos.sueltos(proyecto, casa), [])
-        self.assertEqual(self._leer(recuerdos.carpeta_repo(proyecto), "x.md"),
-                         "igual")
+                         [("x.md", "x-local.md")])
+        repo = recuerdos.carpeta_repo(proyecto)
+        self.assertEqual(self._leer(repo, "x.md"), "igual")
+        self.assertEqual(self._leer(repo, "x-local.md"), "igual")
+
+    def test_el_almacen_enlazado_a_la_carpeta_del_repo_ya_cumple(self):
+        # Caso real: la carpeta de la herramienta es un junction a
+        # `historico-chat/memory/`. Origen y destino son el MISMO archivo —
+        # moverlo o compararlo consigo mismo es la forma de perderlo.
+        proyecto, casa = self._monta(repo={"x.md": "el recuerdo",
+                                           "memory.md": "# Índice"})
+        original = recuerdos.carpeta_local
+        recuerdos.carpeta_local = lambda p, c=None: recuerdos.carpeta_repo(p)
+        self.addCleanup(setattr, recuerdos, "carpeta_local", original)
+
+        self.assertTrue(recuerdos.enlazada(proyecto))
+        self.assertEqual(recuerdos.sueltos(proyecto), [])
+        self.assertEqual(recuerdos.migrar(proyecto, True), [])
+        self.assertEqual(recuerdos.revisar(proyecto), (True, ""))
+
+        repo = recuerdos.carpeta_repo(proyecto)
+        self.assertEqual(sorted(os.listdir(repo)), ["memory.md", "x.md"],
+                         "el enlace se llevó la memoria por delante")
+
+        # Y el instalador tampoco toca la carpeta.
+        self.assertEqual(instalar.instalar_recuerdos(proyecto, aplicar=True),
+                         ["memoria enlazada a `historico-chat/memory/`: "
+                          "ya cumple, no se toca"])
+        self.assertEqual(self._leer(repo, "memory.md"), "# Índice")
+
+    def test_el_indice_de_la_herramienta_cuenta_como_indice(self):
+        # En Windows `MEMORY.md` y `memory.md` son el mismo archivo: preguntar
+        # por el nombre exacto haría que el instalador lo diera por ausente y
+        # lo escribiera encima.
+        proyecto, _ = self._monta(repo={"MEMORY.md": "el índice del proyecto"})
+        self.assertTrue(recuerdos.indice_presente(proyecto))
+        instalar.instalar_recuerdos(proyecto, aplicar=True)
+        # Se le agrega el sello —eso sí lo escribe el estándar—, pero el
+        # contenido del proyecto queda intacto: no se escribió uno nuevo encima.
+        self.assertIn("el índice del proyecto",
+                      self._leer(recuerdos.carpeta_repo(proyecto), "MEMORY.md"))
 
     def test_un_nombre_ocupado_no_se_pisa(self):
         # Lo local puede ser otra versión: decidir cuál manda es del usuario.

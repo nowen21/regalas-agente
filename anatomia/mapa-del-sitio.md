@@ -44,7 +44,7 @@ agente/
 │   ├── 02-flujo-de-trabajo/
 │   │   ├── base.md ................... índice del flujo (F0…F13)
 │   │   ├── estructura-base.md ........ anexo de F13: el árbol obligatorio del proyecto
-│   │   └── reglas/ ................... F0–F13 (+ F4.1–F4.5), una regla por archivo
+│   │   └── reglas/ ................... F0–F20, una por archivo (F4.1–F4.5 derogadas)
 │   ├── 03-datos.md ................... modelo de datos y migraciones
 │   ├── 04-seguridad.md ............... secretos, inyección, sesiones
 │   ├── 05-errores-y-logging.md

@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""El plan y los padres de cada fase — `02·F4.1`, `02·F4.3` y `02·F0`.
+"""El plan y los padres de cada fase — `02·F14`, `02·F17` y `02·F0`.
 
 Recorre `documentacion/epicas/…/<fase>/` (la misma estructura que `fases.py`) y
 comprueba sin criterio:
 
   F0   · cada fase tiene sus **padres**: la épica y la HU de las que cuelga
          existen como documento (no solo como carpeta).
-  F4.1 · el plan responde las 13 preguntas obligatorias. La plantilla las numera
+  F14 · el plan responde las 13 preguntas obligatorias. La plantilla las numera
          como secciones `## 0.` … `## 13.`; se marca cuáles faltan.
-  F4.3 · el plan no deja **incertidumbre** sin resolver: `TBD`, `(o similar)`,
+  F17 · el plan no deja **incertidumbre** sin resolver: `TBD`, `(o similar)`,
          `(o donde esté)`, `(o parecido)`. La línea base debe ir verificada.
 
 No juzga el contenido de cada sección (eso es humano); solo presencia y marcas de
 duda. **AVISO**: un plan en curso puede estar incompleto a propósito.
 
 Nota: los planes que **preceden** a esta plantilla marcarán secciones faltantes.
-Es correcto —no conforman a F4.1—, no un falso positivo.
+Es correcto —no conforman a F14—, no un falso positivo.
 """
 import os
 import re
@@ -26,11 +26,11 @@ from comun import AVISO, FALLA, Hallazgo, leer
 
 CARPETA = "documentacion/epicas"
 
-# F4.1 · las secciones que la plantilla numera 0..13 (una por bloque de preguntas).
+# F14 · las secciones que la plantilla numera 0..13 (una por bloque de preguntas).
 _SECCIONES = list(range(0, 14))
 _ENCABEZADO = re.compile(r"(?m)^#{1,4}\s*(\d{1,2})\.")
 
-# F4.3 · marcas de que la línea base no se verificó.
+# F17 · marcas de que la línea base no se verificó.
 _INCERTIDUMBRE = re.compile(
     r"(?i)\bTBD\b|\bpor\s+definir\b|\(o\s+(similar|donde\s+est[eé]|parecid[oa]|equivalente)\)")
 
@@ -44,7 +44,7 @@ def _texto(ruta):
 
 def revisar_plan(texto):
     """Núcleo puro: (faltan_secciones, incertidumbres) de un plan_trabajo.
-    `faltan_secciones` es la lista de números F4.1 ausentes; `incertidumbres`
+    `faltan_secciones` es la lista de números F14 ausentes; `incertidumbres`
     es la lista de (linea, fragmento). Aislado de git."""
     presentes = {int(n) for n in _ENCABEZADO.findall(texto)}
     faltan = [n for n in _SECCIONES if n not in presentes]
@@ -89,12 +89,12 @@ def validar(proyecto):
                 if faltan:
                     hallazgos.append(Hallazgo(
                         AVISO, donde, 0,
-                        "al plan le faltan secciones de las 13 preguntas (F4.1): "
+                        "al plan le faltan secciones de las 13 preguntas (F14): "
                         + ", ".join(map(str, faltan))))
                 for linea, frag in incertidumbres:
                     hallazgos.append(Hallazgo(
                         AVISO, donde, linea,
-                        f"marca de incertidumbre `{frag}` en el plan — F4.3 pide "
+                        f"marca de incertidumbre `{frag}` en el plan — F17 pide "
                         f"la línea base verificada"))
         if epica_con_fases and not tiene_doc_epica:
             hallazgos.append(Hallazgo(

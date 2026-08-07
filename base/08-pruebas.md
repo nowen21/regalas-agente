@@ -6,7 +6,7 @@ Las pruebas permiten cambiar el código sin miedo y prueban que la spec se cumpl
 
 ## T1 · Todo cambio con lógica lleva prueba
 
-Toda funcionalidad o corrección con lógica se acompaña de pruebas ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita)). El plan de pruebas se aprueba junto con el plan de trabajo. Si no amerita (visual/trivial), decláralo explícito.
+Toda funcionalidad o corrección con lógica se acompaña de pruebas ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)). El plan de pruebas se aprueba junto con el plan de trabajo. Si no amerita (visual/trivial), decláralo explícito.
 
 ## T2 · Prueba el comportamiento, no la implementación
 

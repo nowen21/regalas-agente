@@ -172,7 +172,7 @@ def _recuerdos(proyecto, estandar):
     recuerdos en el almacén de la herramienta es no tener memoria: lo que manda
     sigue siendo lo que no se puede revisar ni viaja al repositorio.
     """
-    if not os.path.isfile(recuerdos.ruta_indice(proyecto)):
+    if not recuerdos.indice_presente(proyecto):
         return False, (f"falta `{recuerdos.CARPETA.replace(os.sep, '/')}/` "
                        f"con su índice")
 

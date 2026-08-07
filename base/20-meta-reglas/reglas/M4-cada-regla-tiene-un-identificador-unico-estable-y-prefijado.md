@@ -25,7 +25,7 @@ Aplicado el [checklist del estándar](../checklist.md) contra **v2.2.0**, el **2
 
 **20 filas: 16 ✅ · 1 ❌ · 3 N/A.** **N/A** — **14**: no declara dependencia `extiende`/`depende de`/`deroga`; sus citas son referencia, que [`M5`](M5-toda-regla-se-escribe-en-el-mismo-formato.md) permite · **15**: va con la 14 · **16**: no tiene excepción.
 
-**❌** — **17**: no contempla los sub-ID decimales que el catálogo ya usa ([`F4.1`](../../02-flujo-de-trabajo/reglas/F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)–[`F4.5`](../../02-flujo-de-trabajo/reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md), [`F12.1`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)–[`F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)).
+**❌** — **17**: no contempla los sub-ID decimales que el catálogo todavía usa en [`F12.1`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)–`F12.13`. Los de `F4.1`–`F4.5` dejaron de chocar en la 3.1.0, promovidos a `F14`–`F20`; los de `F12` no, porque su texto está congelado por decisión del usuario.
 
 > **Regla vigente y reprobada.** Sigue rigiendo —[`M10`](M10-todo-cambio-de-regla-se-versiona-y-se-registra.md): un cambio de norma no reabre lo cerrado— pero no es conforme hasta resolver el choque, y eso es decisión del usuario.
 

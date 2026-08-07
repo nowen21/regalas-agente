@@ -16,6 +16,11 @@ Mientras esto dependa de que el agente se acuerde, no se cumple: la herramienta
 escribe su memoria donde ella decide. Una instrucción **informa**; un enganche
 **ejecuta** (`01·C19`).
 
+**Solo mueve. No borra nada, nunca**, y no hace nada si el almacén ya está
+enlazado a la carpeta del repositorio (ver `recuerdos.py`). Un enganche que
+corre solo, en cada arranque y en cada edición, no puede tener permiso de
+destruir: se equivoca una vez y se lleva la memoria entera sin que nadie lo pida.
+
 A diferencia de los demás enganches, este **sí corre en el propio estándar**:
 ahí es justamente donde vive la memoria del usuario.
 

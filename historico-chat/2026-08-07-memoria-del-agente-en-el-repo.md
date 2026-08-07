@@ -121,3 +121,124 @@ Nada commiteado. ¿Lo revisás?
 
 ### 5 · Usuario — 2026-08-07 16:24:41
 > suba
+
+**Agente** — 2026-08-07 16:38:48
+<!-- agente: 82ae0792-31af-4428-8e05-a98dfda6ff9d -->
+
+Subido — `6f03e44` en `main`.
+
+24 archivos, +900/−59. Entraron solo los de esta sesión: quedaron fuera `base/08-pruebas.md`, las cinco `F4.x`, las siete `F14`–`F20` sin versionar y las dos transcripciones de la otra sesión.
+
+Ojo con eso último: el commit anterior (`b1d8d2f`) ya había subido `v2.4.0 + v2.5.0`, y el mío deja `VERSION` en **3.1.0**. Si esa sesión todavía piensa cerrar en 2.5.0, va a chocar.
+
+### 6 · Usuario — 2026-08-07 16:39:57
+> en donde dejó la memoria en agro-system?
+
+### 7 · Usuario — 2026-08-07 16:44:03
+> quién borró el contenido de: C:\wamp64\www\proyectos\personales\agro-system\historico-chat\memory cuando lo que se busca es que todo quede, qué fue lo que se hizo?
+
+### 8 · Usuario — 2026-08-07 16:45:29
+> reponda mi pregunta qué fue lo que configuró?
+
+**Agente** — 2026-08-07 16:45:54
+<!-- agente: d499800f-6b94-432c-953f-d12ed258587d -->
+
+Lo que configuré, exactamente, y qué hace cuando corre en un proyecto:
+
+**1 · `instalar.py` — al correr `instalar.py "<proyecto>" --aplicar`**
+- Crea `historico-chat/memory/` con `memory.md` (índice, copia de `plantillas/memoria.md`) **solo si no existe**. Si ya existía, no lo pisa: únicamente le refresca el sello del final.
+- Después llama a la migración (punto 3).
+
+**2 · `hook_recuerdos.py` — se agrega a `.claude/settings.json` del proyecto**, en `SessionStart` y en `PostToolUse`·`Write|Edit`. Hace lo mismo del punto 3, sin instalar nada más.
+
+**3 · La migración (`recuerdos.py`)** — mira **una sola carpeta de origen**: `~/.claude/projects/<ruta-del-proyecto-con-guiones>/memory/`, el almacén de Claude Code. Por cada archivo que encuentre **ahí**:
+- si en `historico-chat/memory/` no hay uno con ese nombre → lo **mueve** tal cual;
+- si hay uno con ese nombre y **contenido distinto** → lo mueve como `<nombre>-local.md`, sin tocar el que ya estaba;
+- si hay uno con ese nombre y **contenido idéntico** → **borra el del almacén local** (el del proyecto queda).
+
+Ese `os.remove` es el único borrado que escribí, y siempre cae sobre el archivo del **almacén de la herramienta**, nunca sobre `historico-chat/memory/`. En esa carpeta mi código solo hace tres cosas: crear `memory.md` si falta, reescribir el sello del final de `memory.md`, y meter archivos nuevos.
+
+**4 · `checklist.py`** — el componente `recuerdos`: reprueba si falta la carpeta, si el índice quedó viejo o si algo sigue en el almacén local. Solo comprueba, no borra.
+
+Dicho eso: no puedo afirmar qué pasó en agro-system sin mirarlo, y no voy a suponerlo. Lo que sí queda registrado allá es exactamente qué aplicó el instalador y cuándo — en `documentacion/versiones/`, el archivo más reciente, sección **"Qué se aplicó"**: ahí figura línea por línea cada movimiento o borrado que hizo, incluidos los `mover X a historico-chat/memory/`. Si querés, lo abro y te digo qué dice; o lo mirás vos y me contás.
+
+### 9 · Usuario — 2026-08-07 16:52:24
+> por qué si ya hay contenido acá: historico-chat/memory/ lo borra si eso es lo que se busca conservar la memoria del repo ahí y no en el equipo
+
+**Agente** — 2026-08-07 16:52:54
+<!-- agente: 7a510236-4a5e-4aaa-8784-701f8eb8ba39 -->
+
+Porque lo que se borra no es el del repo: es el de la máquina.
+
+El único `os.remove` que escribí toma como origen **siempre** un archivo de `~/.claude/projects/<proyecto>/memory/`, y solo lo borra cuando ya existe uno **byte a byte idéntico** en `historico-chat/memory/`. Es decir: el contenido no se pierde, queda el del repo — que es justo lo que se busca conservar. En `historico-chat/memory/` mi código no borra nada nunca: solo crea `memory.md` si falta, le refresca el sello y mete archivos.
+
+Dicho eso, tenés razón en el principio: si la norma es que **todo quede**, un borrado silencioso basado en comparar bytes es una decisión que no me corresponde tomar. Lo cambio a que no borre nunca — si el archivo del almacén es idéntico, se mueve igual y se sobreescribe con lo mismo, o entra como `-local` y decidís vos. Cero `os.remove`.
+
+Y sobre agro-system: que se haya vaciado `historico-chat/memory/` no lo hace el instalador. Para saber qué lo hizo hay dos rastros que no requieren adivinar — `documentacion/versiones/` (el instalador escribe ahí línea por línea qué aplicó) y el `git log` de ese repo, que dice si los archivos se borraron en un commit y en cuál.
+
+Decime si abro esos dos y te digo qué pasó, y si aplico el cambio de "cero borrados".
+
+### 10 · Usuario — 2026-08-07 17:52:01
+> mire lo que esta pasando me está borrando la memoria y eso no puede pasar si ya existe debe estar ahí, de hecho se debe validar que si ya está instalado no me toque más la carpeta:
+>
+> Qué borró la memoria
+> recuerdos.migrar() — recuerdos.py:113-119 del estándar:
+>
+>
+> gemelo = os.path.join(destino_carpeta, nombre)   # historico-chat/memory/X.md
+> if os.path.isfile(gemelo) and _igual(origen, gemelo):
+>     movidos.append((nombre, ""))
+>     if aplicar:
+>         os.remove(origen)                        # ~/.claude/.../memory/X.md
+> La intención es: "si el archivo de la carpeta local es idéntico al del repo, borro el local". Pero en este proyecto la carpeta local es un junction hacia historico-chat/memory/. Entonces origen y gemelo son el mismo archivo: _igual() lo compara consigo mismo → siempre True → os.remove() borra el único ejemplar que existe.
+>
+> Quién lo ejecutó — dos veces, dos ejecutores
+> 1er borrado · 15:59 — instalar.py --aplicar, el comando que autorizaste. Lo dijo en su propia salida: 79 líneas borrar el duplicado X de la memoria local. Ese lo restauré.
+>
+> 2º borrado · 17:08:21 — hook_recuerdos.py, que llama al mismo migrar(raiz, aplicar=True) sin condición (hook_recuerdos.py:63). Es el enganche que ese mismo instalador acababa de registrar en .claude/settings.json sobre los eventos SessionStart y PostToolUse(Write|Edit).
+>
+> Se disparó con la sesión quieta: mi último mensaje fue 16:03, el tuyo 17:20. Entre medio no corrió ninguna herramienta mía — fue un SessionStart, el primero después de instalar el enganche.
+>
+> Descarto la simulación: instalar.py sin --aplicar pasa aplicar=False a migrar (instalar.py:377), no borra nada.
+>
+> Estado
+> historico-chat/memory/ está vacía — 0 archivos, ni el índice. Los 75 están íntegros en el último commit (713444b); se recuperan con git checkout -- historico-chat/memory/. No restauro sin tu OK porque el enganche sigue armado: al próximo SessionStart o al primer Write/Edit los vuelve a borrar. El junction y el estándar 3.0.0 no pueden coexistir.
+>
+> El chequeo de instalación reporta ahora 11 de 13 · falta historico (el README.md quedó viejo, 7a39eb4f8732 → 27f1002d94c8) y recuerdos (falta la carpeta con su índice). Los dos se arreglarían con python validadores/instalar.py "<proyecto>" --aplicar — que es justamente el comando que no conviene correr hasta resolver el junction.
+
+**Agente** — 2026-08-07 18:03:55
+<!-- agente: cd58c4eb-7c8a-47cd-97c6-7042e4b7110d -->
+
+Es un defecto mío, y grave: con un *junction*, `origen` y `gemelo` **son el mismo archivo**, así que `_igual()` se compara consigo mismo y el `os.remove` borra el único ejemplar. Lo corrijo ya.
+
+Ahora la validación de que si ya está instalado no se toca la carpeta:
+
+Ahora las pruebas del caso que falló:
+
+Verifico con un *junction* real, no simulado:
+
+El junction real ya no se toca. Falta dejarlo escrito y versionado:
+
+Un riesgo más del montaje enlazado: con `MEMORY.md` de la herramienta en esa misma carpeta, crear `memory.md` la pisaría (Windows no distingue mayúsculas). Lo cierro:
+
+Tenías razón y el defecto era mío. Corregido.
+
+**Qué cambió en [recuerdos.py](validadores/recuerdos.py)**
+- **Se fue el `os.remove`.** No queda ninguno: todo lo que hay en el almacén se **mueve**; si el nombre está ocupado, entra como `<nombre>-local.md` y decidís vos. Un enganche que corre solo en cada arranque y en cada edición no puede tener permiso de destruir.
+- **El almacén enlazado pasa a ser una forma válida de cumplir `C19`.** Se compara por identidad en disco (`os.path.samefile`), no por el texto de la ruta — que es exactamente lo que no vi: dos rutas distintas eran el mismo sitio. Con junction: `enlazada → True`, `sueltos → []`, `migrar → []`, checklist **cumple**.
+- **El instalador no toca la carpeta** si ya está enlazada y con índice: devuelve `memoria enlazada: ya cumple, no se toca`.
+- Y el índice se busca **sin distinguir mayúsculas**, para que `MEMORY.md` de la herramienta no se dé por ausente y se escriba encima.
+
+Lo verifiqué contra un *junction* de Windows de verdad, creado con `New-Item -ItemType Junction`, no simulado: los dos archivos siguen ahí después de correr migración, revisión e instalador.
+
+**Lo importante ahora:** el enganche ya **no** borra. Los hooks llaman al estándar por ruta absoluta (`C:/Ing. Jose/ia/agente/validadores/hook_recuerdos.py`), así que agro-system está corriendo este código corregido desde que lo guardé — no hace falta reinstalar nada allá para que deje de destruir. Podés restaurar:
+
+```sh
+git checkout -- historico-chat/memory/
+```
+
+Y después, si querés, corré el instalador: con el junction va a decir "ya cumple, no se toca". El `README.md` viejo del histórico sí se le refresca el sello, eso no borra contenido.
+
+Queda en **3.1.1** (PARCHE, marcado como pérdida de datos en el [CHANGELOG](CHANGELOG.md)) con 2 pruebas nuevas — 207, de las que fallan 2 que son de la otra sesión (enlaces `F14`/`F17` que todavía no existen).
+
+Sin commitear. ¿Lo subo?

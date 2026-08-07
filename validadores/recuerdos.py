@@ -17,6 +17,16 @@ Este módulo hace que esa carpeta quede **vacía**: cada recuerdo se **mueve** a
 Mover y no copiar es lo que evita la trampa: dos copias del mismo recuerdo
 terminan diciendo cosas distintas, y la que manda es la que nadie puede leer.
 
+**Nada se borra.** Un recuerdo que ya existe tiene que seguir existiendo — es la
+razón entera de haberlo traído al repositorio. Si el nombre ya está ocupado, el
+que llega entra como `<nombre>-local.md` y decide el usuario.
+
+**El almacén puede estar enlazado** a `historico-chat/memory/` con un *junction*
+o un enlace simbólico. Ahí la herramienta ya escribe dentro del repositorio: la
+norma está cumplida, no hay nada que mover, y hacerlo sería mover cada archivo
+sobre sí mismo. Por eso todo lo de aquí pregunta primero si las dos rutas son el
+mismo sitio en disco, no si se escriben igual.
+
 No confundir con la memoria por señales (`13·DOC5`, la base de `memoria/`):
 aquella guarda lo que el **proyecto** aprendió; esta, cómo quiere el usuario que
 el **agente** trabaje.
@@ -54,25 +64,56 @@ def ruta_indice(proyecto):
     return os.path.join(carpeta_repo(proyecto), INDICE)
 
 
+def indice_presente(proyecto):
+    """¿Ya hay índice? Sin distinguir mayúsculas, a propósito.
+
+    En Windows `MEMORY.md` —el índice que escribe la herramienta— y `memory.md`
+    son el mismo archivo. Preguntar por el nombre exacto haría que el instalador
+    creyera que falta y lo escribiera encima.
+    """
+    carpeta = carpeta_repo(proyecto)
+    if not os.path.isdir(carpeta):
+        return False
+    return INDICE.lower() in {n.lower() for n in os.listdir(carpeta)}
+
+
+def _es_el_mismo(uno, otro):
+    """¿Las dos rutas son el **mismo** archivo o carpeta en disco?
+
+    No basta comparar los textos de las rutas: un *junction* de Windows —o un
+    enlace simbólico— hace que dos rutas distintas apunten al mismo sitio.
+    """
+    try:
+        if os.path.exists(uno) and os.path.exists(otro):
+            return os.path.samefile(uno, otro)
+    except OSError:
+        pass
+    return (os.path.normcase(os.path.realpath(uno))
+            == os.path.normcase(os.path.realpath(otro)))
+
+
+def enlazada(proyecto, casa=None):
+    """¿El almacén de la herramienta **es** la carpeta del repositorio?
+
+    Se resuelve enlazando una a la otra: entonces la herramienta escribe
+    directamente dentro del repositorio y `01·C19` ya está cumplido — no hay
+    nada que mover, y tratar de moverlo sería mover un archivo sobre sí mismo.
+    """
+    return _es_el_mismo(carpeta_local(proyecto, casa), carpeta_repo(proyecto))
+
+
 def sueltos(proyecto, casa=None):
     """Los archivos que quedaron en la carpeta de la herramienta.
 
-    Vacío = no hay nada que mover, que es como tiene que estar siempre.
+    Vacío = no hay nada que mover, que es como tiene que estar siempre. Con el
+    almacén enlazado a la carpeta del repositorio también es vacío: esos
+    archivos ya están donde deben.
     """
     local = carpeta_local(proyecto, casa)
-    if not os.path.isdir(local):
+    if not os.path.isdir(local) or enlazada(proyecto, casa):
         return []
     return [os.path.join(local, n) for n in sorted(os.listdir(local))
             if os.path.isfile(os.path.join(local, n))]
-
-
-def _igual(uno, otro):
-    """¿Los dos archivos dicen exactamente lo mismo?"""
-    try:
-        with open(uno, "rb") as a, open(otro, "rb") as b:
-            return a.read() == b.read()
-    except OSError:
-        return False
 
 
 def _libre(carpeta, nombre):
@@ -99,9 +140,18 @@ def _libre(carpeta, nombre):
 def migrar(proyecto, aplicar=True, casa=None):
     """Vacía la carpeta de la herramienta hacia `historico-chat/memory/`.
 
-    Devuelve `[(nombre_de_origen, nombre_de_destino)]`. Un destino vacío
-    significa que ese archivo era **idéntico** a uno que ya estaba en el
-    repositorio: se borra el suelto y no se duplica nada.
+    Devuelve `[(nombre_de_origen, nombre_de_destino)]`.
+
+    **Aquí no se borra nada, nunca.** Todo lo que hay en el almacén se mueve;
+    si el nombre ya está ocupado, entra como `<nombre>-local.md` y decide el
+    usuario cuál manda. Un recuerdo que ya existe tiene que seguir existiendo:
+    esa es toda la razón de haberlo traído al repositorio.
+
+    La versión anterior borraba el archivo del almacén cuando era idéntico a
+    uno del repositorio —"no se pierde nada, queda el del repo"— y con eso
+    destruyó memoria real: si el almacén es un *junction* a la carpeta del
+    repositorio, los dos son **el mismo archivo**, compararlos da idéntico
+    siempre y el borrado se lleva el único ejemplar.
     """
     pendientes = sueltos(proyecto, casa)
     if not pendientes:
@@ -111,11 +161,9 @@ def migrar(proyecto, aplicar=True, casa=None):
     movidos = []
     for origen in pendientes:
         nombre = os.path.basename(origen)
-        gemelo = os.path.join(destino_carpeta, nombre)
-        if os.path.isfile(gemelo) and _igual(origen, gemelo):
-            movidos.append((nombre, ""))
-            if aplicar:
-                os.remove(origen)
+        # Cinturón, además del de `sueltos`: mover un archivo sobre sí mismo
+        # es la forma de perderlo.
+        if _es_el_mismo(origen, os.path.join(destino_carpeta, nombre)):
             continue
 
         nuevo = _libre(destino_carpeta, nombre)
@@ -131,10 +179,7 @@ def pasos(movidos):
     salida = []
     ruta = CARPETA.replace(os.sep, "/")
     for nombre, destino in movidos:
-        if not destino:
-            salida.append(f"borrar el duplicado `{nombre}` de la memoria local "
-                          f"(ya estaba igual en `{ruta}/`)")
-        elif destino == nombre:
+        if destino == nombre:
             salida.append(f"mover `{nombre}` a `{ruta}/`")
         else:
             salida.append(f"mover `{nombre}` a `{ruta}/{destino}` "

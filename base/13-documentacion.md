@@ -130,7 +130,7 @@ Existe un **artefacto vivo** por proyecto (ruta canónica declarada en la capa 3
 
 **Es la fuente autoritativa consultable** de "cómo está armado esto hoy". No versionado si es local al desarrollador; declarado como pública si el equipo lo comparte.
 
-**Al planificar cualquier unidad de trabajo** (etapa de análisis de un plan · `02` F4.3): consultar primero el mapa. Solo hacer exploración amplia si el mapa NO cubre la duda o si aparece contradicción con el código real (indicador de que el mapa envejeció). Orden operativo:
+**Al planificar cualquier unidad de trabajo** (etapa de análisis de un plan · `02·F17`): consultar primero el mapa. Solo hacer exploración amplia si el mapa NO cubre la duda o si aparece contradicción con el código real (indicador de que el mapa envejeció). Orden operativo:
 
 1. Leer el mapa.
 2. Si duda puntual → verificación con búsqueda + lectura del archivo concreto.

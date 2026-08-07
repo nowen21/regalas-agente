@@ -99,7 +99,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 1. La **suite del módulo** nuevo/refactorizado (obligatoria).
 2. Las suites que la fase **refactorizó explícitamente** (declaradas en el `plan_trabajo`).
-3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · `F4.3`).
+3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · `F17`).
 
 **NO** correr por defecto la suite entera del proyecto ni módulos ajenos a la matriz. Una **regresión total** se declara aparte y explícita (ej. pre-release), no como parte del flujo normal de fase.
 

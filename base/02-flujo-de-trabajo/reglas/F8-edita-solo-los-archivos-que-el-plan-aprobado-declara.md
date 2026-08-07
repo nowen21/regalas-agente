@@ -2,7 +2,7 @@
 
 ## F8 · Edita solo los archivos que el plan aprobado declara
 
-El agente edita únicamente los archivos de la tabla del plan aprobado ([`02·F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 9). Descubrir a mitad de la ejecución que otro archivo también necesita cambios **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera OK explícito. Que el cambio sea obvio no autoriza — la aprobación del plan sí. El protocolo completo está en [`base.md`](../base.md).
+El agente edita únicamente los archivos de la tabla del plan aprobado ([`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 9). Descubrir a mitad de la ejecución que otro archivo también necesita cambios **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera OK explícito. Que el cambio sea obvio no autoriza — la aprobación del plan sí. El protocolo completo está en [`base.md`](../base.md).
 
 ```
 INCORRECTO: durante la ejecución el agente descubre que también hay que editar el

@@ -4,7 +4,7 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 
 **Una regla, un archivo.** Cada regla vive en su propio archivo dentro de [`reglas/`](reglas/), con el nombre `<PREFIJO><n>-<título>`. El prefijo del capítulo es **`F`** y es exclusivo suyo ([`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)); el molde de cada regla es el de [`20·M5`](../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md). En el archivo de la regla queda **solo la exigencia**; lo que la desarrolla, la ilustra o la justifica está aquí abajo, en [§ Detalle de cada regla](#detalle-de-cada-regla).
 
-**Qué cumple cada regla y qué no:** cada una cierra con su resultado del [checklist del estándar](../20-meta-reglas/checklist.md). De las diecinueve, **nueve dan CUMPLE y diez no** — y las diez reprueban por cosas que solo el usuario puede decidir: partir una regla en dos IDs, legalizar los sub-ID `F4.N`, derogar a favor del capítulo dueño, o desactivar la congelación de [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md). Una auditoría posterior lo lee ahí y no las vuelve a analizar.
+**Qué cumple cada regla y qué no:** cada una cierra con su resultado del [checklist del estándar](../20-meta-reglas/checklist.md). De las veintiuna vigentes, **dieciséis dan CUMPLE y cinco no**: [`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) por llevar dos exigencias, [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md), [`F6`](reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md) y [`F7`](reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md) porque el dueño del tema es otro capítulo, y [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md). Una auditoría posterior lo lee ahí y no las vuelve a analizar.
 
 **El gate corre antes que todo.** [`F13`](reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md) se aplica antes que [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) y que cualquier paso del flujo; el número es catálogo, no orden de ejecución. Su árbol de estructura está en [`estructura-base.md`](estructura-base.md).
 
@@ -19,11 +19,6 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 | [`F2 · Sin spec acordada no hay código`](reglas/F2-sin-spec-acordada-no-hay-codigo.md) | Sin spec el código es opinión del agente; primero se acuerda, después se codifica. | CUMPLE |
 | [`F3 · Ejecuta seguido el plan aprobado`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md) | Todos los cambios seguidos; solo pausa lo que el plan no cubre. | CUMPLE |
 | [`F4 · Todo plan lleva su plan de pruebas y su aprobación explícita`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) | Plan y pruebas presentados, y OK explícito antes de tocar código. | NO CUMPLE |
-| [`F4.1 · Responde las trece preguntas en todo plan de trabajo`](reglas/F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) | Las trece cierran la ambigüedad antes de escribir código. | NO CUMPLE |
-| [`F4.2 · No saltes ni reordenes las once etapas de la fase`](reglas/F4.2-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) | El ciclo va en orden, de la declaración macro a la publicación. | NO CUMPLE |
-| [`F4.3 · Verifica contra el proyecto real todo lo que el plan afirma`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) | Rutas y firmas comprobadas; nada aproximado ni `TBD`. | NO CUMPLE |
-| [`F4.4 · Deriva el plan de los CA aprobados, no de la proactividad`](reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) | Cada intervención del plan rastrea a un criterio de aceptación. | NO CUMPLE |
-| [`F4.5 · Implementa literal el CA y propón lo que sobre`](reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md) | Ni más ni menos que el CA; lo descubierto se propone y espera decisión. | NO CUMPLE |
 | [`F5 · Corre solo las suites que la fase toca`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) | Corrida quirúrgica: el módulo, lo refactorizado y lo que la matriz señala. | NO CUMPLE |
 | [`F6 · Persiste el trabajo y las decisiones antes de cerrar la fase`](reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md) | El chat se pierde; qué se planeó, qué se probó y el porqué quedan versionados. | NO CUMPLE |
 | [`F7 · No cierres una fase con trazabilidad incompleta`](reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md) | Ítem por ítem antes de cerrar; sin faltantes injustificados. | NO CUMPLE |
@@ -33,6 +28,15 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 | [`F11 · Una fase solo modifica código de su propio módulo`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) | Lo que toca a otro módulo se agenda como fase propia. | CUMPLE |
 | [`F12 · Relación y nomenclatura de fases`](reglas/F12-relacion-y-nomenclatura-de-fases.md) | Épica → HU → Fases, con el identificador y la ruta física de la fase. | NO CUMPLE |
 | [`F13 · Detente si el proyecto no tiene su estructura base`](reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md) | Existe la carpeta `proyectos/` o el arranque se detiene. | CUMPLE |
+| [`F14 · Responde las trece preguntas en todo plan de trabajo`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) | Las trece cierran la ambigüedad antes de escribir código. | CUMPLE |
+| [`F15 · No saltes ni reordenes las once etapas de la fase`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) | El ciclo va en orden, de la declaración macro a la publicación. | CUMPLE |
+| [`F16 · Declara los cinco componentes de cada intervención del plan`](reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) | Qué, cómo, dónde, por qué y con qué impacto — sin verbos vagos. | CUMPLE |
+| [`F17 · Verifica contra el proyecto real todo lo que el plan afirma`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) | Rutas y firmas comprobadas; nada aproximado ni `TBD`. | CUMPLE |
+| [`F18 · Deriva el plan de los CA aprobados, no de la proactividad`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) | Cada intervención del plan rastrea a un criterio de aceptación. | CUMPLE |
+| [`F19 · Implementa literal el criterio de aceptación`](reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) | Ni más ni menos que el CA; su redacción es la especificación. | CUMPLE |
+| [`F20 · Para y propón lo que descubras fuera del CA`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) | Lo que "convendría" agregar se muestra y espera decisión. | CUMPLE |
+
+**Derogadas** ([`20·M11`](../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) — el texto se conserva y el ID no se reutiliza): [`F4.1`](reglas/F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) → `F14` · [`F4.2`](reglas/F4.2-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) → `F15` · [`F4.3`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) → `F16` y `F17` · [`F4.4`](reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) → `F18` · [`F4.5`](reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md) → `F19` y `F20`.
 
 ---
 
@@ -43,16 +47,16 @@ Este capítulo detalla sobre todo **del plan hacia abajo**. Pero un desarrollo e
 | # | Paso | Qué responde | Dónde está la regla |
 |---|---|---|---|
 | 0 | **Necesidad / idea** | qué quiere resolver el negocio | se escribe **siempre** como **brief** (`plantillas/brief.md` → `prompts/<slug>-brief.md`) |
-| 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) · [`F4.3`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) · skill `analizar-proyecto` |
+| 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) · [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) · skill `analizar-proyecto` |
 | 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | [`00 · Identidad y rol`](../00-identidad-y-rol/base.md) · skill `proponer-alcance` |
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · [`01·C3`](../01-conducta.md#c3--quédate-en-tu-tarea) |
 | 4 | **Épica / Feature** | el bloque grande de funcionalidad | [`13·DOC16`](../13-documentacion.md#doc16--épicas-desde-plantilla-central) |
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | [`13·DOC15`](../13-documentacion.md#doc15--historias-de-usuario-desde-plantilla-central) |
-| 6 | **Fase (ejecución)** — spec → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)–[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F4.2`](reglas/F4.2-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
+| 6 | **Fase (ejecución)** — spec → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)–[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F15`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
 
 **Épica, módulo y fase no son lo mismo.** La **épica** es unidad de *necesidad* —agrupa historias afines por el valor que entregan— y su definición vive en [`13·DOC16`](../13-documentacion.md#doc16--épicas-desde-plantilla-central). El **módulo** es unidad *técnica* y vive en [`13·DOC13`](../13-documentacion.md#doc13--catálogo-de-módulos-vivo--registrar-cada-módulo-al-crearlo). La **fase** es unidad de *ejecución* —un plan con su cierre y su commit— y su relación con la HU y su nomenclatura las fija [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md), fuente única.
 
-**Secuencia del plan hacia abajo:** contexto ([`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md)) → spec ([`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → línea base verificada ([`F4.3`](reglas/F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) → plan y pruebas ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) que responden las trece preguntas ([`F4.1`](reglas/F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)) derivadas de los CA ([`F4.4`](reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) → pausa y aprobación explícita ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → ejecutar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)), literal a los CA ([`F4.5`](reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md)), solo los archivos del plan ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), completo ([`F9`](reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)), dentro del módulo ([`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md)) y con migración incremental cuando toca prod ([`F10`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)) → pruebas ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) → persistir ([`F6`](reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)) → trazabilidad ([`F7`](reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)) → cerrar.
+**Secuencia del plan hacia abajo:** contexto ([`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md)) → spec ([`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → línea base verificada ([`F16`](reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) · [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) → plan y pruebas ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) que responden las trece preguntas ([`F14`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)) derivadas de los CA ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) → pausa y aprobación explícita ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → ejecutar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)), literal a los CA ([`F19`](reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) · [`F20`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)), solo los archivos del plan ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), completo ([`F9`](reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)), dentro del módulo ([`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md)) y con migración incremental cuando toca prod ([`F10`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)) → pruebas ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) → persistir ([`F6`](reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)) → trazabilidad ([`F7`](reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)) → cerrar.
 
 ---
 
@@ -73,13 +77,27 @@ El `plan_trabajo` sigue `plantillas/planes/trabajo.md`; el `plan_pruebas` sigue 
 
 La aprobación no es un hito abstracto, es una secuencia operativa: **1)** redactar los dos documentos · **2)** PAUSAR, sin tocar código · **3)** presentarlos con un resumen corto de qué hará · **4)** esperar el OK explícito o la iteración de cambios · **5)** solo con el OK, implementar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)).
 
-### F4.1 — por qué trece y qué ajusta el proyecto
+### F14 — las trece preguntas
 
-Un plan de trabajo no es texto libre: es un contrato con el usuario y con quien continúe el proyecto. Un lector nuevo —otro dev, el futuro yo, el usuario en seis meses— tiene que leer solo el plan y saber qué se va a hacer, dónde queda visible, cómo se verifica y cómo se revierte, sin abrir código.
+Un plan de trabajo no es texto libre: es un contrato con el usuario y con quien continúe el proyecto. Un lector nuevo —otro dev, el futuro yo, el usuario en seis meses— tiene que leer solo el plan y saber qué se va a hacer, dónde queda visible, cómo se verifica y cómo se revierte, sin abrir código. Estas son las trece:
+
+1. **¿Qué es esta fase y a qué módulo pertenece?** Código de fase, slug, fecha de apertura, referencia al spec del módulo.
+2. **¿Por qué nace esta fase?** Origen: funcionalidad nueva, modificación de una fase anterior, híbrido. Qué requerimiento, gap o hallazgo la dispara.
+3. **¿Qué carencias documentadas del módulo cierra?** Puntero explícito al documento de origen.
+4. **¿Qué entra en el alcance y qué NO?** Fuera-de-scope explícito.
+5. **¿Qué cambia técnicamente?** Un bloque por artefacto —esquema, modelos, servicios, eventos, componentes, comandos— con su firma y la regla que aplica.
+6. **¿Qué rutas o endpoints nuevos se exponen y con qué control de acceso?** Autenticación, permiso y alcance.
+7. **¿Dónde queda accesible para el usuario final?** El punto de entrada en la interfaz. Si la fase no introduce navegación, se declara.
+8. **¿Qué permisos o roles nuevos hay que sembrar?** Con la nomenclatura del proyecto.
+9. **¿Qué archivos se crean o modifican?** Tabla `Archivo | Nuevo/Modificar | Nota`, con cada ruta verificada contra el proyecto real ([`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
+10. **¿Cómo se verifica que quedó bien?** Criterios de aceptación medibles.
+11. **¿Cómo se revierte si algo sale mal?** Plan B concreto.
+12. **¿Toca algo que puede estar en producción y cómo se migra sin bloquear?** ([`F10`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)).
+13. **¿Qué reglas del estándar y del proyecto se aplican?** Lista por identificador.
 
 Las trece son **genéricas**: aplican a cualquier proyecto. La capa 3 (`.agente/`) especializa **cómo** se responde cada una —qué archivo es la navegación, qué framework de permisos usa, dónde vive el plan—, pero no reduce la lista.
 
-### F4.2 — las once etapas, quién actúa y qué cierra cada una
+### F15 — las once etapas, quién actúa y qué cierra cada una
 
 | # | Etapa | Quién actúa | Hito de cierre |
 |---|---|---|---|
@@ -97,7 +115,11 @@ Las trece son **genéricas**: aplican a cualquier proyecto. La capa 3 (`.agente/
 
 Las etapas 4, 5, 10 y 11 son las que el flujo suele saltarse: separan el disparo macro (2) de la aprobación del plan detallado (5), y el commit (9) de la publicación (11).
 
-### F4.3 — cómo se construye la línea base
+### F16 — qué se espera de cada componente
+
+**QUÉ** es la acción concreta —crear, modificar, eliminar, migrar—, no un verbo vago. **CÓMO** es el mecanismo técnico específico: agregar el campo `X` a la tabla `Y`, extender `foo()` con el parámetro `bar`, inyectar el servicio `Z` en el constructor. Con suficiente detalle para que otro dev lo ejecute igual. **DÓNDE** es la ruta exacta; si el archivo todavía no existe, "crear en `<ruta exacta>`". **POR QUÉ** es qué gap cierra, qué requerimiento cumple o qué defecto corrige. **IMPACTO** es qué más se ve afectado: consumidores del código tocado, pruebas que hay que actualizar, riesgos y reversibilidad.
+
+### F17 — cómo se construye la línea base
 
 Antes de redactar el plan (etapa 3 del ciclo):
 
@@ -112,7 +134,7 @@ Antes de redactar el plan (etapa 3 del ciclo):
 |---|---|---|---|
 | `<archivo A>` | eliminar columna X · renombrar método Y · cambiar la cardinalidad de Z | `<archivo B> · <archivo C>` | `B: lee el atributo X` · `C: carga la relación Y` |
 
-La tabla de archivos del plan ([`F4.1`](reglas/F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 9) es la unión de {archivos del refactor} ∪ {dependientes **directos** que rompen} — nunca solo el primer conjunto. Lo que no se pueda refactorizar en esta fase se declara en §Fuera-de-scope con su "queda para Fase X"; nunca se ignora en silencio.
+La tabla de archivos del plan ([`F14`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 9) es la unión de {archivos del refactor} ∪ {dependientes **directos** que rompen} — nunca solo el primer conjunto. Lo que no se pueda refactorizar en esta fase se declara en §Fuera-de-scope con su "queda para Fase X"; nunca se ignora en silencio.
 
 **No se encadenan dependencias transitivas.** Si A depende de B, ajustar B es necesario o se difiere explícitamente; pero no se sigue la cadena B→C→D, que expande la fase infinitamente. Cuando un archivo se difiere, **todo lo que depende de él se difiere con él** — incluidas sus pruebas. De ahí la regla derivada: una prueba refactorizada solo puede depender de código refactorizado en la misma fase o del código base ya estable. Jamás se refactoriza una prueba esperando que quede verde contra algo que se difirió.
 
@@ -120,17 +142,19 @@ La tabla de archivos del plan ([`F4.1`](reglas/F4.1-responde-las-trece-preguntas
 
 **Qué se escala al usuario y qué no.** Se cierran con criterio profesional las decisiones puramente técnicas —nomenclatura de rutas, orden de migración, cascadas en claves foráneas, cardinalidad, código idiomático del framework— y se declaran en el plan. Se escalan las que impactan la interfaz visible, el contrato de una API, los cambios destructivos de datos, el alcance de la fase o la deuda estructural. Listar diez decisiones cuando siete son triviales sobrecarga al usuario y retrasa la fase.
 
-### F4.4 — las dos rutas del ítem sin CA
+### F18 — las dos rutas del ítem sin CA
 
 Un ítem que no rastrea a ningún criterio de aceptación tiene **dos salidas y solo dos**: es **soporte técnico obligatorio** —sin él el CA no funciona—, y entonces se declara en §Alcance con su justificación; o es **proactividad**, y entonces se retira del plan y se propone como fase separada con su propia HU.
 
 Anti-patrones: escribir el plan antes de tener los CA aprobados · tocar código antes de que el plan esté persistido y aprobado · agregar "también aprovechamos para X" · ceñirse a lo que el agente infirió cuando el usuario dio N criterios concretos.
 
-### F4.5 — los tres momentos donde el agente se desvía
+### F19 y F20 — los tres momentos donde el agente se desvía
 
 Al **construir el plan**, un ítem que "conviene técnicamente" pero no viene de CA se propone antes de agregarlo. Al **escribir código**, la implementación cumple el CA sin agregar guards, validaciones o efectos que el CA no pide. Al **responder una pregunta**, la pregunta se responde: no se convierte en autorización para editar, corregir o refactorizar ([`01·C3`](../01-conducta.md#c3--quédate-en-tu-tarea)).
 
 Anti-patrones concretos: agregar un guard en el servidor cuando el CA solo pide ocultar un botón · interpretar "¿de dónde sale X?" como orden de corregir · "aprovechamos y limpiamos el legacy" · "el CA dice X pero conviene X + Y" · "es defensa en profundidad, es buena práctica" — aunque lo sea, si no está en el CA se propone, no se actúa.
+
+**Las tres respuestas posibles a una propuesta de `F20`.** *"Sí, agrégalo"* → o entra como CA nuevo de la HU antes de continuar (lo recomendable si es funcional), o se declara soporte técnico obligatorio de un CA existente ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) con su justificación. *"No"* → se descarta y no se vuelve a mencionar. *"Después"* → se anota como brecha en el spec del módulo y se retoma en fase futura.
 
 ### F5 — qué no se corre por defecto
 

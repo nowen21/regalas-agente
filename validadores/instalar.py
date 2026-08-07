@@ -353,6 +353,10 @@ def instalar_recuerdos(ruta, aplicar):
 
     Mover es del instalador y del enganche, nunca del agente: la herramienta
     escribe su memoria donde ella decide, no donde el agente se acuerde.
+
+    **Lo que ya está instalado no se vuelve a tocar.** Si el índice existe y el
+    almacén está enlazado a esta carpeta, aquí no se escribe una línea: la
+    memoria de un proyecto no es sitio para que una reinstalación pruebe nada.
     """
     import recuerdos
     import versiones
@@ -363,7 +367,11 @@ def instalar_recuerdos(ruta, aplicar):
     if not os.path.isfile(PLANTILLA_MEMORIA):
         return ["OMITIDO: falta plantillas/memoria.md en el estándar"]
 
-    if not os.path.isfile(archivo):
+    if recuerdos.enlazada(ruta) and recuerdos.indice_presente(ruta):
+        return ["memoria enlazada a `historico-chat/memory/`: ya cumple, "
+                "no se toca"]
+
+    if not recuerdos.indice_presente(ruta):
         pasos = [f"crear {recuerdos.CARPETA.replace(os.sep, '/')}/"
                  f"{recuerdos.INDICE}"]
         if aplicar:

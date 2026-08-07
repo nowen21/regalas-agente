@@ -2,7 +2,7 @@
 
 ## F10 · Planifica la migración en vez de postergar por producción
 
-Cuando el cambio toca algo que está o puede estar en producción, el plan asume **"probablemente sí lo está"** y declara la estrategia de migración incremental que corresponde al tipo de cambio (extiende [`02·F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 12). No se posterga la fase ni se bloquea preguntando "¿está en prod?": esa pregunta solo sirve para elegir entre editar la migración original o crear una nueva. La casuística por tipo de cambio está en [`base.md`](../base.md).
+Cuando el cambio toca algo que está o puede estar en producción, el plan asume **"probablemente sí lo está"** y declara la estrategia de migración incremental que corresponde al tipo de cambio (extiende [`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) pregunta 12). No se posterga la fase ni se bloquea preguntando "¿está en prod?": esa pregunta solo sirve para elegir entre editar la migración original o crear una nueva. La casuística por tipo de cambio está en [`base.md`](../base.md).
 
 **Excepción** — el cambio destructivo o con riesgo de pérdida (drop con datos, cambio de tipo o de restricción) se **avisa antes** con su riesgo concreto (condición). El aviso no reemplaza la migración reversible ([`03·D2`](../../03-datos.md#d2--cada-cambio-de-esquema-es-una-migración-reversible)) ni habilita operar la base directamente ([`00·N4`](../../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)) (límite). Aplicarlo lo autoriza el usuario (autoriza).
 

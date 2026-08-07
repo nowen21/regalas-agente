@@ -36,6 +36,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Cada una lo dice en su propio archivo, con la marca *"regla vigente y reprobada"* que ya usa `M4`: siguen rigiendo (`M10` — un cambio de norma no reabre lo cerrado), pero no son conformes hasta que se resuelva.
 
+## 3.1.1 — 2026-08-07
+
+**PARCHE** ⚠ **corrige una pérdida de datos.** Quien tenga 3.0.0 o 3.1.0 instalado debe actualizar antes de abrir otra sesión.
+
+**La migración borraba memoria real.** `recuerdos.migrar()` borraba el archivo del almacén de la herramienta cuando era idéntico a uno del repositorio, con el argumento de que no se perdía nada. El argumento se cae cuando el almacén es un *junction* a `historico-chat/memory/`: origen y destino son **el mismo archivo**, compararlo consigo mismo da idéntico siempre, y el borrado se llevaba el único ejemplar. Pasó en un proyecto real, dos veces — una desde el instalador y otra desde el enganche, que corre solo en cada arranque y en cada edición.
+
+- **Ya no se borra nada, nunca.** Todo lo que hay en el almacén se mueve; si el nombre está ocupado, entra como `<nombre>-local.md` y decide el usuario. Un enganche que corre solo no puede tener permiso de destruir: se equivoca una vez y se lleva la memoria entera sin que nadie lo pida.
+- **El almacén enlazado pasa a ser una forma válida de cumplir `01·C19`.** Si es un *junction* o un enlace simbólico a la carpeta del repositorio, la herramienta ya escribe dentro del repositorio: no hay nada que mover, el checklist da por cumplido y el instalador **no toca la carpeta**. Se compara por identidad en disco (`os.path.samefile`), no por el texto de la ruta — dos rutas distintas pueden ser el mismo sitio.
+- Cinturón además de eso: mover un archivo sobre sí mismo se detecta y se salta.
+
+Lo escrito antes no se recupera solo: si la carpeta quedó vacía, se restaura del último commit (`git checkout -- historico-chat/memory/`).
+
+Detrás: 2 pruebas nuevas —el duplicado idéntico que ya no se borra y el almacén enlazado que no se toca— y una verificación contra un *junction* de Windows de verdad, no simulado (206 en total).
+
 ## 3.1.0 — 2026-08-07
 
 **MENOR** (aditivo: la sesión nueva arranca sabiendo qué pasó en las anteriores; ningún proyecto tiene que hacer nada más que reinstalar).
