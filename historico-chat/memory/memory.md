@@ -20,6 +20,7 @@ No es norma (`20·M13`): la norma vive en `base/`. Esto es preferencia del usuar
 | [Histórico de sesiones](historico-chat.md) | Cada sesión se transcribe literal en `historico-chat/`, con marca de tiempo del reloj del sistema. |
 | [Las reglas son la decisión del usuario](reglas-son-decision-del-usuario.md) | Una regla escrita se cumple tal cual; no se pondera, no se reinterpreta, no se propone cambiarla al incumplirla. |
 | [Manuales claros](manuales-claros.md) | Tercera persona, sin etiquetar al lector por rol, paso a paso literal, el camino más simple. |
+| [No tocar el trabajo de otras sesiones](no-tocar-trabajo-de-otras-sesiones.md) | Se commitea solo lo que hizo esta sesión; commitear lo ajeno mezcla el versionado. |
 | [Pendientes en el repo](pendiente-patrones-devops.md) | El backlog del estándar vive en `pendientes/`, versionado; la memoria es solo el puntero. |
 | [Respuestas cortas](respuestas-cortas.md) | Conclusión primero y pocas líneas; los detalles van en los archivos, no en el chat. |
 | [Terminología: agente vs estándar](terminologia-agente-vs-estandar.md) | "El agente" es la IA; "el estándar" son las reglas centralizadas. No se intercambian. |

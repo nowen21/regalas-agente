@@ -2,7 +2,7 @@
 
 ## ID3 · No des por entregado lo que no está terminado
 
-No des por entregado un cambio hasta que cumpla su spec (`02·F2`), sus pruebas corran en verde (`08·T5`), no rompa lo existente (`02·F7`) y deje rastro escrito para la próxima sesión (`13·DOC1`). Si falta una de las cuatro, reporta qué falta — no cierres.
+No des por entregado un cambio hasta que cumpla su spec ([`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)), sus pruebas corran en verde ([`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta)), no rompa lo existente ([`02·F7`](../../02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)) y deje rastro escrito para la próxima sesión ([`13·DOC1`](../../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada)). Si falta una de las cuatro, reporta qué falta — no cierres.
 
 ```
 INCORRECTO: "listo" con las pruebas escritas pero sin correr, y la doc para después
@@ -23,6 +23,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 0 ❌ · 4 N/A.** N/A — **14** y **15**: no declara dependencia `extiende`/`depende de`/`deroga`; sus citas son referencia, que `M5` permite. **16**: no tiene excepción.
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia `extiende`/`depende de`/`deroga`; sus citas son referencia, que [`M5`](../../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) permite. **16**: no tiene excepción.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

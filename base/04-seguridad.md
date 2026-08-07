@@ -47,7 +47,7 @@ CORRECTO:   asignar solo los campos permitidos explícitamente
 
 ## S4 · Gestión de secretos
 
-El mínimo está en `00` · N6. Además:
+El mínimo está en [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Además:
 
 - Secretos (claves, credenciales, tokens) en **configuración de entorno**, fuera del código (ver `11`).
 - El archivo de entorno real está **ignorado** por el control de versiones; se versiona solo una plantilla sin valores.
@@ -72,7 +72,7 @@ Todo archivo no público (financiero, jurídico, personal):
 - **Almacenamiento privado**, nunca en ubicación pública ni con URL adivinable.
 - Acceso por un **punto controlado** (auth + permiso + scope); forzar descarga.
 - Guarda metadatos (ubicación, tipo, tamaño) para poder migrar de almacenamiento sin tocar código.
-- **Preservación:** al borrar (lógico) la entidad padre, el archivo **no se elimina físico**. La purga física es operación admin con preview (`00` · N5).
+- **Preservación:** al borrar (lógico) la entidad padre, el archivo **no se elimina físico**. La purga física es operación admin con preview ([`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada)).
 - **Backup** junto con la BD. Carga con lista blanca de tipos y tamaño máximo.
 
 ```

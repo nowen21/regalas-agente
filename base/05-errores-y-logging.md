@@ -22,7 +22,7 @@ CORRECTO:   try { ... } catch (e) { log.error(...); manejar o propagar }
 - Valida precondiciones al inicio y **aborta temprano** con mensaje claro, en vez de fallar a mitad con estado inconsistente.
 - Operaciones que dejan varios registros consistentes van en **transacción**: todo o nada.
 
-> La variante destructiva ("no `--no-verify`, no borrar el test") está en `00` · N3.
+> La variante destructiva ("no `--no-verify`, no borrar el test") está en [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada).
 
 ```
 INCORRECTO: creo el padre, falla el hijo, y dejo el padre huérfano
@@ -33,7 +33,7 @@ CORRECTO:   ambos en transacción → si falla el hijo, se revierte el padre
 
 - **Al usuario:** claro, en su idioma, **accionable** ("Ese correo ya está registrado"), sin jerga ni internos.
 - **Al log:** el detalle completo (excepción, contexto, id de correlación).
-- **Nunca** trazas/consultas/rutas al usuario (es fuga de info — `04` · S8).
+- **Nunca** trazas/consultas/rutas al usuario (es fuga de info — [`04·S8`](04-seguridad.md#s8--no-filtres-información-en-errores)).
 
 ```
 INCORRECTO: al usuario: "SQLSTATE[23000]... INSERT INTO..."
@@ -47,7 +47,7 @@ CORRECTO:   al usuario: "Ese registro ya existe."  ·  al log: la excepción com
 - **info:** hitos operativos (masiva ejecutada, batch completado).
 - **debug:** detalle fino, apagado en producción.
 
-Incluye **contexto** para rastrear (ids de entidad/usuario/correlación). No loguees de más (el ruido entierra la señal). Registra las operaciones masivas para auditoría (`00` · N5).
+Incluye **contexto** para rastrear (ids de entidad/usuario/correlación). No loguees de más (el ruido entierra la señal). Registra las operaciones masivas para auditoría ([`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada)).
 
 ```
 INCORRECTO: log.error("error")
@@ -56,7 +56,7 @@ CORRECTO:   log.error("Falló causar factura", { factura_id, usuario_id, causa }
 
 ## E5 · Nunca registres secretos ni datos sensibles
 
-Blindado en `00` · N6. Los logs no llevan contraseñas, tokens, ni más datos personales de los necesarios. Enmascara o excluye. Trata el log como potencialmente público.
+Blindado en [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Los logs no llevan contraseñas, tokens, ni más datos personales de los necesarios. Enmascara o excluye. Trata el log como potencialmente público.
 
 ```
 INCORRECTO: log.info("Login", { email, password })

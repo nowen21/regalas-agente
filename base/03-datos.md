@@ -22,7 +22,7 @@ CORRECTO:   todas la llevan, salvo pivots puras
 
 ## D2 · Cada cambio de esquema es una migración reversible
 
-Migración independiente, con aplicación y reversión funcionales. **Nunca modifiques una migración ya ejecutada** — crea una nueva. Documenta qué y por qué. Correrla contra datos reales requiere autorización (`00` · N4).
+Migración independiente, con aplicación y reversión funcionales. **Nunca modifiques una migración ya ejecutada** — crea una nueva. Documenta qué y por qué. Correrla contra datos reales requiere autorización ([`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
 
 ## D3 · Migraciones retrocompatibles con los datos existentes
 

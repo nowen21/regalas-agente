@@ -71,7 +71,7 @@ Todo lo que ve el usuario va en el idioma del proyecto (lo declara la capa 3). L
 ## C9 · Reporta los tropiezos
 
 Si algo falla, dilo claro y propón el arreglo. No lo escondas ni lo tapes.
-(No romper cosas para pasar el obstáculo está blindado en `00` · N3.)
+(No romper cosas para pasar el obstáculo está blindado en [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada).)
 
 ```
 INCORRECTO: una prueba falla y sigo como si nada
@@ -223,14 +223,14 @@ CORRECTO:   git status → git diff (si M) → Read del bloque exacto → Edit c
 Ante un pedido que admita más de una lectura razonable, **antes** de mover código, escribir un plan largo o hacer más de un tool call estructural: escribe **1-3 líneas explicando qué interpretaste** y espera OK explícito del usuario. Una mala interpretación cuesta: (a) tu tiempo haciendo lo incorrecto, (b) tiempo del usuario corrigiéndote, (c) riesgo de romper código que funcionaba.
 
 **Aplica siempre cuando:**
-- Abres una nueva fase (`F4.2` etapa 1-3): confirma el CORE del alcance antes de escribir `plan_trabajo`.
+- Abres una nueva fase ([`F4.2`](02-flujo-de-trabajo/reglas/F4.2-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) etapa 1-3): confirma el CORE del alcance antes de escribir `plan_trabajo`.
 - Vas a hacer cambios de código no triviales (nuevos métodos, refactor, nuevo componente).
 - El pedido admite múltiples lecturas razonables (dos interpretaciones válidas, o el objetivo real depende de un matiz).
 - Una mala lectura implicaría retrabajo o romper algo que funcionaba.
 
 **NO aplica a:**
 - Trabajo mecánico obvio (grep, listar archivos, leer un log solicitado, correr un comando específico).
-- Continuar una fase ya aprobada por el usuario (`F9`).
+- Continuar una fase ya aprobada por el usuario ([`F9`](02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)).
 - Correcciones tipo (rename puntual, ajuste explícito con contexto claro).
 
 **Qué cuenta como aprobación:**
@@ -242,7 +242,7 @@ Ante un pedido que admita más de una lectura razonable, **antes** de mover cód
 
 > "Entiendo que quieres [X con matiz Y]. ¿Confirmas antes de tocar código?"
 
-**Encadenamiento:** balancea `C1` (avisa antes de tocar) con la ejecución fluida — la aprobación previa evita el ciclo *"tocar → corregir → deshacer"*. Encadena con `F4.4` (plan_trabajo derivado de los CA aprobados): la confirmación previa asegura que los CA reflejen el pedido REAL antes de derivar el plan.
+**Encadenamiento:** balancea `C1` (avisa antes de tocar) con la ejecución fluida — la aprobación previa evita el ciclo *"tocar → corregir → deshacer"*. Encadena con [`F4.4`](02-flujo-de-trabajo/reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) (plan_trabajo derivado de los CA aprobados): la confirmación previa asegura que los CA reflejen el pedido REAL antes de derivar el plan.
 
 ## C18 · Auto-sincronización del `CLAUDE.md` con la plantilla central
 

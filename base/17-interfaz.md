@@ -10,7 +10,7 @@ Ninguna pantalla queda en blanco ni muestra un error crudo. Siempre se definen:
 
 - **Vacío:** cuando no hay datos → un mensaje claro y, si aplica, una acción ("Aún no hay X. Crear el primero").
 - **Cargando:** mientras trae datos → un indicador (spinner/skeleton), no una pantalla congelada.
-- **Error:** cuando algo falla → un mensaje entendible y accionable, **nunca** una traza técnica (`05`·E3).
+- **Error:** cuando algo falla → un mensaje entendible y accionable, **nunca** una traza técnica ([`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico)).
 
 ```
 INCORRECTO: la tabla aparece vacía sin explicar si no hay datos o si falló la carga
@@ -19,7 +19,7 @@ CORRECTO:   estado vacío ("no hay registros"), estado cargando, y estado de err
 
 ## I2 · Feedback de validación claro
 
-Cuando el usuario se equivoca en un formulario, se le dice **qué campo** y **qué falta**, en su idioma (`01`·C8), antes o al enviar. No se rechaza en silencio ni con un mensaje genérico.
+Cuando el usuario se equivoca en un formulario, se le dice **qué campo** y **qué falta**, en su idioma ([`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto)), antes o al enviar. No se rechaza en silencio ni con un mensaje genérico.
 
 ```
 INCORRECTO: "Error al guardar" sin decir qué campo está mal
@@ -54,4 +54,4 @@ La interfaz se ve y funciona en los tamaños de pantalla que el proyecto soporta
 
 ---
 
-Ver: `01`·C8 (idioma del proyecto), `05`·E3 (mensajes de error accionables), `16` (accesibilidad/WCAG si aplica). El framework y el sistema de diseño concretos van en la capa 3.
+Ver: [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto) (idioma del proyecto), [`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico) (mensajes de error accionables), `16` (accesibilidad/WCAG si aplica). El framework y el sistema de diseño concretos van en la capa 3.

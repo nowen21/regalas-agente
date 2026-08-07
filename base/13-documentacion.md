@@ -6,7 +6,7 @@ El chat se pierde y el contexto se comprime; los archivos quedan. Documentar es 
 
 ## DOC1 · Persiste el trabajo de cada unidad completada
 
-Al cerrar, guarda en documentación versionada: **qué se planeó** (el plan aprobado), **qué se probó** (escenarios + verificaciones manuales que el entorno automático no cubre — `08` · T4), **qué quedó** (cómo usarlo, puntos de entrada, enlaces al código). El chat no sustituye los archivos.
+Al cerrar, guarda en documentación versionada: **qué se planeó** (el plan aprobado), **qué se probó** (escenarios + verificaciones manuales que el entorno automático no cubre — [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)), **qué quedó** (cómo usarlo, puntos de entrada, enlaces al código). El chat no sustituye los archivos.
 
 ```
 INCORRECTO: implementar, mostrar todo en el chat y cerrar
@@ -25,7 +25,7 @@ CORRECTO:   registrar la decisión y su motivo en la doc, enlazando al código
 
 ## DOC3 · Verifica la trazabilidad spec → implementación antes de cerrar
 
-Revisa ítem por ítem que cada afirmación técnica de la spec (`02` · F2) esté en el código, el esquema, las pruebas y los docs. No cierres con faltantes sin justificar.
+Revisa ítem por ítem que cada afirmación técnica de la spec ([`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)) esté en el código, el esquema, las pruebas y los docs. No cierres con faltantes sin justificar.
 
 Formato: una tabla persistida en el documento de resultado, una fila por afirmación:
 
@@ -55,7 +55,7 @@ Guardar las **señales** de alto valor que **no se pueden recuperar del código*
 Guardan la **misma** señal; se elige por volumen (ver [`notas/memoria-por-senales.md`](../notas/memoria-por-senales.md)). **Opt-in**: se activa cuando la capa 3 declara el backend (el `CLAUDE.md` del proyecto).
 
 - **No borrar** una señal revertida: marcarla `reemplazada` y enlazar la nueva (rastro, como `## Decisiones` clásico).
-- **Verificar antes de confiar:** una señal vieja puede estar obsoleta (`01`·C2).
+- **Verificar antes de confiar:** una señal vieja puede estar obsoleta ([`01·C2`](01-conducta.md#c2--no-inventes-verifica)).
 - Es la defensa contra "la compactación mata decisiones": la señal vive en la memoria, no en el chat.
 
 ```
@@ -221,7 +221,7 @@ Criterios de aceptación: «medibles».
 - Fases ya cerradas (retroactivo no) — quedan inmutables per DOC1 · su origen se infiere del historial.
 - Sub-fases o hitos intermedios dentro de una fase (esos no son "fase" en el sentido de una unidad de trabajo con cierre propio).
 
-**Réplica en el plan de trabajo:** la carpeta de la fase (ruta según `02·F12.13`, identificador `02·F12.6`) replica el ORIGEN en su cabecera. Así el spec y el plan de trabajo coinciden en la trazabilidad de origen.
+**Réplica en el plan de trabajo:** la carpeta de la fase (ruta según [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), identificador [`02·F12.6`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) replica el ORIGEN en su cabecera. Así el spec y el plan de trabajo coinciden en la trazabilidad de origen.
 
 ```
 INCORRECTO: "Fase XX — cambios menores" sin ORIGEN · lector no sabe si es continuación
@@ -332,7 +332,7 @@ Con ese route en su sitio, el mismo link relativo funciona en los 3 contextos (G
 
 ## DOC15 · Historias de Usuario desde plantilla central
 
-Al crear una Historia de Usuario (HU), el agente parte de la plantilla central `plantillas/HU.md` (fuente única, agnóstica) — **no** de una copia local ni de memoria. El resultado, ya rellenado, se escribe versionado en la ubicación de la HU según `02·F12.13` (la HU vive dentro de su épica).
+Al crear una Historia de Usuario (HU), el agente parte de la plantilla central `plantillas/HU.md` (fuente única, agnóstica) — **no** de una copia local ni de memoria. El resultado, ya rellenado, se escribe versionado en la ubicación de la HU según [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) (la HU vive dentro de su épica).
 
 - **La plantilla NO se copia** a `.agente/` ni al proyecto: se lee del centro **cada vez**. Así, una mejora a `plantillas/HU.md` llega a todos los proyectos sin drift (a diferencia de los 4 archivos de `.agente/`, que sí se copian porque guardan datos propios de cada proyecto — la HU es formato, no datos).
 - **Nomenclatura:** `HU-<NNN>` correlativo por proyecto (o por módulo si la capa 3 lo declara) · `<slug>` corto en kebab-case.
@@ -340,13 +340,13 @@ Al crear una Historia de Usuario (HU), el agente parte de la plantilla central `
 - **Trazabilidad:** cada HU nace en `Backlog`/`Ready` según su DoR; la §12 (bitácora) registra creación y cambios. Las tareas técnicas derivadas (§7) alimentan la planificación (`02` F4).
 - **Override capa 3:** un proyecto puede ajustar ruta, nomenclatura o secciones de la HU en `reglas-proyecto.md` (nunca el núcleo `00`).
 
-**Índice `README.md` en cada nivel del árbol.** Ninguna carpeta del árbol de la HU (`02·F12.13`: épicas → HU → fases) queda "muda": cada una —empezando por la raíz y bajando a cada subcarpeta— tiene un `README.md` que **lista y explica su contenido inmediato** (solo lo que cuelga directo de ella, no el árbol entero):
+**Índice `README.md` en cada nivel del árbol.** Ninguna carpeta del árbol de la HU ([`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md): épicas → HU → fases) queda "muda": cada una —empezando por la raíz y bajando a cada subcarpeta— tiene un `README.md` que **lista y explica su contenido inmediato** (solo lo que cuelga directo de ella, no el árbol entero):
 
 - Si la carpeta tiene **subcarpetas** (una por módulo/épica/lo que aplique): una línea por subcarpeta con su nombre y una frase de qué contiene. **Cada subcarpeta repite el patrón** (su propio `README.md`) — recursivo hasta el último nivel.
 - Si la carpeta **solo tiene archivos** (las HU sueltas): igual se listan uno por uno, cada uno con su título y estado (`HU-012 — Alta de cliente · Ready`).
 - El `README.md` es **vivo**: se actualiza en el mismo cambio en que se crea, mueve o cierra una HU o carpeta. No es una foto de una fecha.
 
-> El árbol es el de `02·F12.13` (épicas → HU → fases). La regla del README aplica a **cada carpeta** de ese árbol.
+> El árbol es el de [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) (épicas → HU → fases). La regla del README aplica a **cada carpeta** de ese árbol.
 
 ```
 INCORRECTO: escribir la HU de memoria o inventando el formato · o copiar HU.md dentro de .agente/ (se vuelve vieja)
@@ -355,18 +355,18 @@ CORRECTO:   copiar de plantillas/HU.md (central) → rellenar con datos reales �
             + actualizar el README.md de esa carpeta (y los de arriba si se creó una carpeta nueva)
 ```
 
-**Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — la HU declara su módulo; el `README.md` del árbol (`F12.13`) es su índice navegable · `DOC9` (mapa vivo) — mismo principio de "índice que se actualiza al cerrar, no foto" · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
+**Encadenamiento:** `DOC1` (persistir el trabajo) — la HU es entregable versionado · `DOC13` (catálogo de módulos) — la HU declara su módulo; el `README.md` del árbol ([`F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) es su índice navegable · `DOC9` (mapa vivo) — mismo principio de "índice que se actualiza al cerrar, no foto" · `02` F1/F2/F4 (contexto → spec → plan) — la HU precede o acompaña al spec del módulo y sus §7 tareas alimentan el plan.
 
 ## DOC16 · Épicas desde plantilla central
 
-Al crear una Épica, el agente parte de `plantillas/epica.md` (fuente única, agnóstica) — no de memoria ni de una copia local. El resultado, rellenado, se guarda versionado en la ubicación de la épica según `02·F12.13` (la épica es la raíz de su subárbol HU → fases).
+Al crear una Épica, el agente parte de `plantillas/epica.md` (fuente única, agnóstica) — no de memoria ni de una copia local. El resultado, rellenado, se guarda versionado en la ubicación de la épica según [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) (la épica es la raíz de su subárbol HU → fases).
 
 - **La plantilla NO se copia** a `.agente/`: se lee del centro **cada vez** (misma razón que `DOC15`·HU — es formato, no datos de proyecto).
 - **Nomenclatura:** `EP-<NNN>` correlativo por proyecto · `<slug>` corto en kebab-case.
 - **Enlace bidireccional con las HU:** la épica lista sus HUs (§9 de la plantilla) y cada HU declara a qué épica pertenece (`HU.md §1`). Al crear o mover una HU se actualizan **los dos lados**.
 - **Criterios de resultado, no de pantalla:** los criterios de aceptación de la épica (§7) son de negocio/resultado; el detalle de comportamiento vive en las HU.
-- **La épica es obligatoria:** toda HU pertenece a una épica, aunque la épica agrupe **una sola** HU. No se omite ni se fusiona por tamaño (`02·F0` cadena obligatoria). El brief le da origen: sin brief no hay épica.
-- **Índice vivo:** el árbol de `02·F12.13` sigue el mismo `README.md` por nivel de `DOC15`.
+- **La épica es obligatoria:** toda HU pertenece a una épica, aunque la épica agrupe **una sola** HU. No se omite ni se fusiona por tamaño ([`02·F0`](02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) cadena obligatoria). El brief le da origen: sin brief no hay épica.
+- **Índice vivo:** el árbol de [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) sigue el mismo `README.md` por nivel de `DOC15`.
 - **Override capa 3:** ruta, nomenclatura o secciones ajustables en `reglas-proyecto.md` (nunca el núcleo `00`).
 
 ```
@@ -374,7 +374,7 @@ INCORRECTO: escribir la épica de memoria · o meter en la épica criterios de p
 CORRECTO:   copiar de plantillas/epica.md → rellenar → guardar en la ubicación de `02·F12.13` → enlazar con sus HU en ambos sentidos
 ```
 
-**Encadenamiento:** `DOC15` (HU) — la épica agrupa HUs con enlace bidireccional · `DOC13` (catálogo de módulos) — una épica puede cruzar varios módulos · `02·F0` paso 4 (la épica en el flujo macro) · `02·F0` estación de épica en el orquestador (`sdd-orchestrator`).
+**Encadenamiento:** `DOC15` (HU) — la épica agrupa HUs con enlace bidireccional · `DOC13` (catálogo de módulos) — una épica puede cruzar varios módulos · [`02·F0`](02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) paso 4 (la épica en el flujo macro) · [`02·F0`](02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) estación de épica en el orquestador (`sdd-orchestrator`).
 
 ---
 

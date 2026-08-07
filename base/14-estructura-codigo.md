@@ -28,7 +28,7 @@ CORRECTO:   pasar un nombre corto y explícito
 
 ## EST3 · Respeta el legacy — la convención es para lo nuevo
 
-Las convenciones aplican a lo **nuevo**. El código existente que no las sigue **no se renombra ni se mueve** solo "para ordenar": rompe referencias, infla el diff, sale del alcance (`01` · C3). Migrar legacy a la convención es una tarea **propia y acordada**, no un efecto colateral.
+Las convenciones aplican a lo **nuevo**. El código existente que no las sigue **no se renombra ni se mueve** solo "para ordenar": rompe referencias, infla el diff, sale del alcance ([`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea)). Migrar legacy a la convención es una tarea **propia y acordada**, no un efecto colateral.
 
 ```
 INCORRECTO: mover y renombrar legacy "de paso" mientras hago otra cosa

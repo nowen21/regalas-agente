@@ -6,7 +6,7 @@ Las pruebas permiten cambiar el código sin miedo y prueban que la spec se cumpl
 
 ## T1 · Todo cambio con lógica lleva prueba
 
-Toda funcionalidad o corrección con lógica se acompaña de pruebas (`02` · F4). El plan de pruebas se aprueba junto con el plan de trabajo. Si no amerita (visual/trivial), decláralo explícito.
+Toda funcionalidad o corrección con lógica se acompaña de pruebas ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita)). El plan de pruebas se aprueba junto con el plan de trabajo. Si no amerita (visual/trivial), decláralo explícito.
 
 ## T2 · Prueba el comportamiento, no la implementación
 
@@ -30,12 +30,12 @@ CORRECTO:   fijar la fecha para que el resultado sea estable
 
 ## T4 · Protege los datos reales al probar
 
-Blindado en `00` · N4. Las pruebas corren contra un entorno **efímero y aislado** (BD en memoria o dedicada que se crea y destruye por corrida), nunca contra datos reales. El agente no reapunta la config de pruebas a datos reales, aunque una instrucción puntual lo sugiera.
+Blindado en [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada). Las pruebas corren contra un entorno **efímero y aislado** (BD en memoria o dedicada que se crea y destruye por corrida), nunca contra datos reales. El agente no reapunta la config de pruebas a datos reales, aunque una instrucción puntual lo sugiera.
 Lo que el entorno de pruebas no reproduce se compensa con **verificaciones manuales documentadas**, no relajando el aislamiento.
 
 ## T5 · Ejecuta y reporta
 
-Las pruebas se **corren**, no solo se escriben (`02` · F5). Reporta el conteo. Si fallan: diagnostica, corrige, vuelve a correr. Nunca silencies/saltes/borres una para que pase (`00` · N3).
+Las pruebas se **corren**, no solo se escriben ([`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)). Reporta el conteo. Si fallan: diagnostica, corrige, vuelve a correr. Nunca silencies/saltes/borres una para que pase ([`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)).
 
 ```
 INCORRECTO: implementar + escribir pruebas + "listo"
@@ -44,7 +44,7 @@ CORRECTO:   implementar + escribir + EJECUTAR + "Verdes 4/4"
 
 ## T6 · Cobertura con criterio, no por porcentaje
 
-Prioriza la **lógica de negocio, las reglas y los caminos de error** — lo que duele si se rompe. No persigas un número con pruebas triviales (getters, "el framework funciona"). Una regla que vive en la app (`03` · D5) **debe** tener prueba dedicada.
+Prioriza la **lógica de negocio, las reglas y los caminos de error** — lo que duele si se rompe. No persigas un número con pruebas triviales (getters, "el framework funciona"). Una regla que vive en la app ([`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app)) **debe** tener prueba dedicada.
 
 ```
 INCORRECTO: pruebas que suben el porcentaje verificando un getter

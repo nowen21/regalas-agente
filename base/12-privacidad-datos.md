@@ -15,15 +15,15 @@ CORRECTO:   guardar solo lo que la función usa de verdad
 
 ## PR2 · Úsalos solo para lo que se recolectaron
 
-Los datos se usan para el propósito con que se obtuvieron. No los reutilices para otro fin (analítica, marketing, terceros) sin base legítima y consentimiento. No los envíes a servicios externos sin autorización (`00` · N6).
+Los datos se usan para el propósito con que se obtuvieron. No los reutilices para otro fin (analítica, marketing, terceros) sin base legítima y consentimiento. No los envíes a servicios externos sin autorización ([`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)).
 
 ## PR3 · Protégelos en reposo y en tránsito
 
-Datos personales cifrados en tránsito (`04` · S5) y, si son sensibles, en reposo o con acceso restringido (`04` · S6). Acceso limitado por **permiso y scope** (`04` · S1). Credenciales con hashing fuerte, nunca en claro (`04` · S5).
+Datos personales cifrados en tránsito ([`04·S5`](04-seguridad.md#s5--csrf-sesiones-y-transporte)) y, si son sensibles, en reposo o con acceso restringido ([`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado)). Acceso limitado por **permiso y scope** ([`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)). Credenciales con hashing fuerte, nunca en claro ([`04·S5`](04-seguridad.md#s5--csrf-sesiones-y-transporte)).
 
 ## PR4 · No los expongas en logs, errores ni mensajes
 
-Logs y errores sin datos personales más allá de lo imprescindible: usa identificadores, no el dato en claro (`05` · E5). Los mensajes a otros usuarios no filtran datos de terceros. Reportes y pantallas muestran datos solo a quien tiene derecho.
+Logs y errores sin datos personales más allá de lo imprescindible: usa identificadores, no el dato en claro ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles)). Los mensajes a otros usuarios no filtran datos de terceros. Reportes y pantallas muestran datos solo a quien tiene derecho.
 
 ```
 INCORRECTO: loguear nombre, correo y teléfono en cada operación

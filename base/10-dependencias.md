@@ -6,7 +6,7 @@ Cada dependencia es código ajeno que heredas: sus bugs, vulnerabilidades, mante
 
 ## DEP1 · Agregar una dependencia es una decisión
 
-Antes de sumar una librería: ¿la necesito o lo resuelvo con lo que ya tengo? ¿Está **mantenida** y es confiable? ¿Su **licencia** es compatible? ¿Cuánto **peso** y cuántas transitivas arrastra? Es una decisión funcional: el agente la **propone**, no la mete por su cuenta (`01` · C4).
+Antes de sumar una librería: ¿la necesito o lo resuelvo con lo que ya tengo? ¿Está **mantenida** y es confiable? ¿Su **licencia** es compatible? ¿Cuánto **peso** y cuántas transitivas arrastra? Es una decisión funcional: el agente la **propone**, no la mete por su cuenta ([`01·C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta)).
 
 ```
 INCORRECTO: sumar una librería pesada para formatear una fecha en un solo lugar
@@ -24,11 +24,11 @@ CORRECTO:   versionarlo → instalación idéntica en todos lados
 
 ## DEP3 · Audita vulnerabilidades y mantén al día
 
-Revisa **vulnerabilidades conocidas** con la herramienta del ecosistema (`04` · S7). No dejes una dependencia con vulnerabilidades sin resolver. Quedarse muy atrás vuelve caro e inseguro actualizar después.
+Revisa **vulnerabilidades conocidas** con la herramienta del ecosistema ([`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas)). No dejes una dependencia con vulnerabilidades sin resolver. Quedarse muy atrás vuelve caro e inseguro actualizar después.
 
 ## DEP4 · No versiones lo instalado
 
-Las dependencias instaladas (carpetas de paquetes, binarios) no van al control de versiones (`09` · G3): se reconstruyen del manifiesto + lockfile. Versiona la **declaración**, no el **resultado**.
+Las dependencias instaladas (carpetas de paquetes, binarios) no van al control de versiones ([`09·G3`](09-git.md#g3--qué-nunca-se-versiona)): se reconstruyen del manifiesto + lockfile. Versiona la **declaración**, no el **resultado**.
 
 ```
 INCORRECTO: commitear la carpeta de dependencias instaladas

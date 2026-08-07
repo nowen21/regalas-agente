@@ -17,6 +17,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | 🟡 **Validables, faltan** | ~9 (4 fuzzy o pesadas: `F2`, `F4.4`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
+> Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
+>
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
 
 ---
@@ -69,6 +71,22 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
 
+### Meta-reglas (`20`) — se validan **en seco**, sobre el propio estándar
+
+No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy no existe ninguna. Alimentan un validador `metareglas.py` pendiente.
+
+| Regla | Qué comprobaría el script |
+|---|---|
+| `M3` | ninguna regla de `base/` nombra lenguaje, framework, motor, nube ni ruta de un proyecto real (lista negra + revisión de rutas) |
+| `M4` | ID único, prefijo exclusivo del capítulo y registrado, consecutivo sin reutilizar |
+| `M5` | encabezado `##`, marca de la lista cerrada, presencia del ejemplo, tamaño del cuerpo |
+| `M7` | toda dependencia declarada apunta a un ID que existe · sin ciclos · ninguna de capa 2 sobre una `[BLINDADA]` |
+| `M9` | toda regla de `base/` aparece clasificada en este archivo |
+| `M10` | `CHANGELOG.md` y `VERSION` suben juntos — ya lo hace `version.py`, falta atarlo a la regla |
+| `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
+
+`M14` es **parcial**: que la regla haya recorrido de verdad los nueve pasos no lo decide un script, pero la **presencia y el resultado** del bloque sí.
+
 ### Necesitan que el proyecto **declare** su convención o dominio
 
 No son mecánicas "en seco": hace falta que el proyecto declare, en `.agente/`,
@@ -88,6 +106,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 
 ## 🔴 No validables (se quedan en el `.md` — criterio humano)
 
+- **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
 - **`00` identidad y rol:** ID1, ID2, ID3, ID4, ID5, ID6 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o "sin adornos" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
 - **`01`:** C1–C17 (todas menos C18).

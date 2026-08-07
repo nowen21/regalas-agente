@@ -6,7 +6,7 @@ El código se lee más veces de las que se escribe: optimiza para el lector. La 
 
 ## Q1 · Escribe como el código que lo rodea
 
-El código nuevo imita al vecino: mismas convenciones, mismos nombres, mismo idioma (`01` · C8). No metas un paradigma ajeno sin acordarlo. La consistencia vale más que la preferencia personal.
+El código nuevo imita al vecino: mismas convenciones, mismos nombres, mismo idioma ([`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto)). No metas un paradigma ajeno sin acordarlo. La consistencia vale más que la preferencia personal.
 
 ```
 INCORRECTO: el archivo nuevo trae un estilo distinto al del módulo
@@ -51,11 +51,11 @@ CORRECTO:   // reintenta 3 veces porque el servicio externo falla intermitente
 
 ## Q6 · Linter y formateador automáticos
 
-El estilo lo resuelve una **herramienta**, no el criterio manual. Entrega el código formateado y sin advertencias del linter. No desactives reglas para "que pase" (`00` · N3); si una estorba, ajusta la config, no la silencies caso por caso.
+El estilo lo resuelve una **herramienta**, no el criterio manual. Entrega el código formateado y sin advertencias del linter. No desactives reglas para "que pase" ([`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)); si una estorba, ajusta la config, no la silencies caso por caso.
 
 ## Q7 · Deja el código mejor, pero en tu alcance
 
-Corregir algo pequeño y cercano está bien. Refactorizar de más o "mejorar de paso" fuera de la tarea, no (`01` · C3): infla el diff y mezcla intenciones. Si algo cercano merece mejora, dilo y déjalo para su tarea.
+Corregir algo pequeño y cercano está bien. Refactorizar de más o "mejorar de paso" fuera de la tarea, no ([`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea)): infla el diff y mezcla intenciones. Si algo cercano merece mejora, dilo y déjalo para su tarea.
 
 ---
 

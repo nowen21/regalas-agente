@@ -24,7 +24,7 @@ Al menos tres estados: **borrador** (editable), **materializado** (inmutable), *
 3. En **transacción**: revierte todos los efectos (movimientos, saldos, derivados) y marca anulado con su trazabilidad.
 4. Avisa a los demás módulos (evento) para invalidar cachés/agregados.
 
-Si algo de la reversión falla, se revierte entera: sin estados a medias (`05` · E2).
+Si algo de la reversión falla, se revierte entera: sin estados a medias ([`05·E2`](05-errores-y-logging.md#e2--falla-controlado-no-rodees-el-problema)).
 
 ## IM4 · Las consultas agregadoras excluyen los anulados
 
@@ -37,7 +37,7 @@ CORRECTO:   la consulta excluye anulados por defecto
 
 ## IM5 · Permiso propio para anular
 
-Anular pesa más que crear o editar: **permiso separado** del de eliminar, para roles con responsabilidad (`04` · S1). En la UI, los materializados ofrecen "Anular" (motivo obligatorio) en vez de "Eliminar"; los anulados quedan visibles, marcados y con su motivo.
+Anular pesa más que crear o editar: **permiso separado** del de eliminar, para roles con responsabilidad ([`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)). En la UI, los materializados ofrecen "Anular" (motivo obligatorio) en vez de "Eliminar"; los anulados quedan visibles, marcados y con su motivo.
 
 ---
 

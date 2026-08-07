@@ -25,6 +25,7 @@ import aislamiento      # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
 import ci               # noqa: E402
+import citas            # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import flujo            # noqa: E402
@@ -1203,6 +1204,77 @@ class Checklist(unittest.TestCase):
         punto = checklist.revisar(self._proyecto())[0]
         self.assertFalse(punto.cumple)
         self.assertIn("no sabe comprobar", punto.detalle)
+
+
+class Citas(unittest.TestCase):
+    """Una regla que se cita se enlaza: quien lee no sale a buscarla."""
+
+    def test_el_ancla_pone_un_guion_por_espacio(self):
+        # El `·` va entre espacios: al quitarlo quedan dos, y el ancla real de
+        # GitHub lleva `--`. Colapsarlos daría un enlace que no lleva a nada.
+        self.assertEqual(citas.ancla("N3 · No romper cosas"),
+                         "n3--no-romper-cosas")
+
+    def test_el_ancla_conserva_las_tildes_y_quita_los_signos(self):
+        self.assertEqual(citas.ancla("G2 · Mensajes: qué y por qué"),
+                         "g2--mensajes-qué-y-por-qué")
+
+    def test_una_regla_en_su_propio_archivo_no_lleva_ancla(self):
+        idx = citas.indice()
+        self.assertIn("M5", idx)
+        self.assertEqual(idx["M5"][1], "",
+                         "el enlace al archivo ya es el enlace a la regla")
+
+    def test_una_regla_dentro_de_un_capitulo_si_lleva_ancla(self):
+        idx = citas.indice()
+        self.assertTrue(idx["G2"][1].startswith("g2--"))
+
+    def test_las_tres_formas_de_citar_quedan_normalizadas(self):
+        idx = citas.indice()
+        origen = os.path.join(instalar.RAIZ, "base", "09-git.md")
+        for entrada in ("`00·N3`", "`00` · N3", "`00`·N3"):
+            salida, n = citas.enlazar(f"texto {entrada} más texto", origen, idx)
+            self.assertEqual(n, 1, entrada)
+            self.assertIn("[`00·N3`](00-nucleo-blindado.md#n3--", salida, entrada)
+
+    def test_la_dependencia_entre_parentesis_tambien_se_enlaza(self):
+        idx = citas.indice()
+        origen = os.path.join(instalar.RAIZ, "base", "09-git.md")
+        salida, n = citas.enlazar("(extiende 00·N3)", origen, idx)
+        self.assertEqual(n, 1)
+        self.assertTrue(salida.startswith("(extiende [`00·N3`]("), salida)
+
+    def test_lo_cercado_no_se_toca(self):
+        # Ahí las citas son el molde que alguien va a copiar, no citas a nadie.
+        idx = citas.indice()
+        origen = os.path.join(instalar.RAIZ, "base", "09-git.md")
+        texto = "```\nver `00·N3`\n```\n"
+        salida, n = citas.enlazar(texto, origen, idx)
+        self.assertEqual((salida, n), (texto, 0))
+
+    def test_un_id_que_no_existe_no_se_enlaza(self):
+        # Un enlace roto es peor que ninguno: el validador lo reporta y ya.
+        idx = citas.indice()
+        origen = os.path.join(instalar.RAIZ, "base", "09-git.md")
+        salida, n = citas.enlazar("ver `ZZ99`", origen, idx)
+        self.assertEqual((salida, n), ("ver `ZZ99`", 0))
+
+    def test_una_regla_no_se_enlaza_a_si_misma(self):
+        idx = citas.indice()
+        origen = idx["G2"][0]
+        _, n = citas.enlazar("como dice `G2`", origen, idx)
+        self.assertEqual(n, 0)
+
+    def test_no_queda_ninguna_cita_suelta_en_base(self):
+        # Es la regla que el usuario pidió: toda cita lleva su enlace.
+        self.assertEqual(citas.validar(), [])
+
+    def test_enlazar_dos_veces_no_cambia_nada(self):
+        idx = citas.indice()
+        origen = os.path.join(instalar.RAIZ, "base", "09-git.md")
+        una, _ = citas.enlazar("ver `00·N3`", origen, idx)
+        dos, n = citas.enlazar(una, origen, idx)
+        self.assertEqual((dos, n), (una, 0))
 
 
 class Versiones(unittest.TestCase):

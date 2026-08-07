@@ -1,6 +1,6 @@
 # 20 · Anatomía de una regla — el molde
 
-> **De dónde sale.** La regla `M5` dice que todas las reglas se escriben igual. Aquí se explica ese "igual" con calma. En [`base.md`](base.md) queda el resumen; el detalle está solo aquí, para no tenerlo escrito en dos sitios (`M2`).
+> **De dónde sale.** La regla [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) dice que todas las reglas se escriben igual. Aquí se explica ese "igual" con calma. En [`base.md`](base.md) queda el resumen; el detalle está solo aquí, para no tenerlo escrito en dos sitios ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)).
 >
 > **Para qué sirve.** Una regla es una orden que el agente tiene que cumplir. Todas se escriben con la misma forma, y esa forma es la de abajo. Quien vaya a escribir una regla nueva, copia el molde y lo rellena.
 >
@@ -54,10 +54,10 @@ Es el renglón de arriba: el nombre de la regla. Tiene cinco piezas.
 | Pieza | Qué es | Así se ve | ¿Va siempre? | Lo que sale mal |
 |---|---|---|---|---|
 | `##` | Dos gatitos, siempre dos. Son los que convierten el renglón en un título. | `## R7 · Mide antes de optimizar` | Sí | `### R7 · Mide antes…` — con tres, la regla se esconde: no sale en la lista y el programa que las revisa no la ve. |
-| PREFIJO | Las letras. Dicen de qué capítulo es la regla. Cada capítulo tiene las suyas y nadie más las usa (`M4`). | git → `G2` · documentación → `DOC3` · rendimiento → `R7` | Sí | Ponerle `G9` a una regla del capítulo de pruebas, cuando `G` es de git. |
-| `n` | El número. Se pone el siguiente que esté libre. | Si ya están el `R1`, `R2`… hasta el `R6`, la nueva es la `R7` | Sí | Renumerar para "dejarlo ordenado": borrar la `R3` y correr la `R4` a `R3`. **El número no se cambia nunca** (`M4`). Es como el número de la camiseta: aunque el jugador se corte el pelo, sigue siendo el 7. Muchos papeles ya la llaman por ese número; si se lo cambias, todos apuntan a nadie. |
+| PREFIJO | Las letras. Dicen de qué capítulo es la regla. Cada capítulo tiene las suyas y nadie más las usa ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)). | git → [`G2`](../09-git.md#g2--mensajes-que-explican-qué-y-por-qué) · documentación → [`DOC3`](../13-documentacion.md#doc3--verifica-la-trazabilidad-spec--implementación-antes-de-cerrar) · rendimiento → `R7` | Sí | Ponerle `G9` a una regla del capítulo de pruebas, cuando `G` es de git. |
+| `n` | El número. Se pone el siguiente que esté libre. | Si ya están el [`R1`](../06-rendimiento.md#r1--evita-consultas-en-bucle-n1), [`R2`](../06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite)… hasta el [`R6`](../06-rendimiento.md#r6--mide-antes-de-optimizar), la nueva es la `R7` | Sí | Renumerar para "dejarlo ordenado": borrar la [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y correr la [`R4`](../06-rendimiento.md#r4--cachea-lo-caro-y-estable-con-invalidación-clara) a [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena). **El número no se cambia nunca** ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)). Es como el número de la camiseta: aunque el jugador se corte el pelo, sigue siendo el 7. Muchos papeles ya la llaman por ese número; si se lo cambias, todos apuntan a nadie. |
 | Título | Lo que hay que hacer, dicho como una orden. Tiene que entenderse leyéndolo solo, sin abrir nada más. | `Recorre la cadena completa, sin saltar eslabones` | Sí | `La secuencia completa, de la necesidad al cierre` — eso cuenta algo, no manda nada. |
-| marca | Una etiqueta al final. Solo hay tres. | `[BLINDADA]` = nadie la puede saltar → `## N4 · Proteger los datos reales · [BLINDADA]`<br>`*opt-in*` = cada proyecto decide si la usa → `## DOC5 · Registrar señales — *opt-in*`<br>`[DEROGADA…]` = ya no manda, y dice cuál la reemplazó → `## G4 · Trabaja en ramas · [DEROGADA en 2.0.0 → ver G9]` | No | Inventarse una etiqueta: `## F13 · … · [GATE DE ARRANQUE]`. Si de verdad hace falta una nueva, primero se agrega a la lista de `M5`. |
+| marca | Una etiqueta al final. Solo hay tres. | `[BLINDADA]` = nadie la puede saltar → `## N4 · Proteger los datos reales · [BLINDADA]`<br>`*opt-in*` = cada proyecto decide si la usa → `## DOC5 · Registrar señales — *opt-in*`<br>`[DEROGADA…]` = ya no manda, y dice cuál la reemplazó → `## G4 · Trabaja en ramas · [DEROGADA en 2.0.0 → ver G9]` | No | Inventarse una etiqueta: `## F13 · … · [GATE DE ARRANQUE]`. Si de verdad hace falta una nueva, primero se agrega a la lista de [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md). |
 
 **Las letras que ya están ocupadas.** Antes de estrenar letras nuevas hay que mirar esta lista: si están aquí, ya son de otro capítulo y no se pueden repetir.
 
@@ -90,16 +90,16 @@ Si nace un capítulo nuevo, elige unas letras que no estén en esta lista y **se
 
 ### 2 · Cuerpo
 
-Es lo que la regla pide. **Pide una sola cosa.** Esta es la prueba más fácil: si al leerla aparece un "y además", ahí hay dos reglas metidas en una y hay que separarlas. La vieja se queda con su número y la nueva toma el siguiente libre (`M4`).
+Es lo que la regla pide. **Pide una sola cosa.** Esta es la prueba más fácil: si al leerla aparece un "y además", ahí hay dos reglas metidas en una y hay que separarlas. La vieja se queda con su número y la nueva toma el siguiente libre ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)).
 
 **Cómo darse cuenta de que son varias.** Estas pistas casi nunca fallan:
 
 | La pista | Regla mal armada | Por qué son dos | Cómo queda separada |
 |---|---|---|---|
-| Un **"y además"**, un "también" | "Todo cambio lleva prueba **y además** se documenta." | Son dos trabajos. Puedes hacer uno hoy y el otro mañana. | `T1` lleva prueba · `DOC1` se documenta |
-| Dos **órdenes** pegadas con "y" | "**Valida** la entrada **y registra** el intento fallido." | Una cuida que no entre basura. La otra deja constancia. No se parecen. | `S2` valida · `E4` registra |
-| **El título** lleva "y" | `## G2 · Mensajes claros y ramas limpias` | Una dice cómo contar lo hecho. La otra, dónde trabajar. | `G2` mensajes · `G4` ramas |
-| Se puede **cumplir la mitad** | "Prueba el código **y** borra el que ya no se usa." | Si prueba todo y no borra nada, probó bien. Le falta otra cosa, no media prueba. | `T1` prueba · `Q7` borra |
+| Un **"y además"**, un "también" | "Todo cambio lleva prueba **y además** se documenta." | Son dos trabajos. Puedes hacer uno hoy y el otro mañana. | [`T1`](../08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba) lleva prueba · [`DOC1`](../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada) se documenta |
+| Dos **órdenes** pegadas con "y" | "**Valida** la entrada **y registra** el intento fallido." | Una cuida que no entre basura. La otra deja constancia. No se parecen. | [`S2`](../04-seguridad.md#s2--valida-y-sanea-toda-entrada-externa) valida · [`E4`](../05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito) registra |
+| **El título** lleva "y" | `## G2 · Mensajes claros y ramas limpias` | Una dice cómo contar lo hecho. La otra, dónde trabajar. | [`G2`](../09-git.md#g2--mensajes-que-explican-qué-y-por-qué) mensajes · [`G4`](../09-git.md#g4--trabaja-en-ramas-integra-limpio) ramas |
+| Se puede **cumplir la mitad** | "Prueba el código **y** borra el que ya no se usa." | Si prueba todo y no borra nada, probó bien. Le falta otra cosa, no media prueba. | [`T1`](../08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba) prueba · [`Q7`](../07-calidad-de-codigo.md#q7--deja-el-código-mejor-pero-en-tu-alcance) borra |
 | Hacen falta **dos ejemplos** | Uno para cada mitad | Un ejemplo enseña una cosa. Dos ejemplos, dos cosas. | Cada ejemplo, su regla |
 | Una **lista** donde cada punto manda algo distinto | "hazlo así", "guárdalo allá", "avisa a fulano" | Cada punto se cumple solo. | Una regla por punto |
 
@@ -109,7 +109,7 @@ Por eso hay "y" que no cuentan. `G2 · Mensajes que explican qué y por qué` es
 
 ### Probemos con una regla de verdad: `F0`
 
-`F0` se llama "La secuencia completa — de la necesidad al cierre" y ocupa casi una página. Vamos a abrirla y ver qué hay dentro. Son **siete trozos**:
+[`F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) se llama "La secuencia completa — de la necesidad al cierre" y ocupa casi una página. Vamos a abrirla y ver qué hay dentro. Son **siete trozos**:
 
 | # | Trozo | Qué dice | ¿Manda algo? |
 |---|---|---|---|
@@ -133,7 +133,7 @@ Así queda cada trozo:
 
 | Trozo | A dónde va |
 |---|---|
-| 2 y 6 | Se quedan. Son `F0`, con su número de siempre. |
+| 2 y 6 | Se quedan. Son [`F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), con su número de siempre. |
 | 1 y 7 | Suben al principio del capítulo: ahí va lo que orienta. |
 | 3 y 4 | Se borran de aquí y se pone un enlace al capítulo que ya los explica. |
 | 5 | Se borra. Ya lo dice el trozo 2. |
@@ -168,25 +168,25 @@ Tres cosas que cambiaron, y ninguna es lo que la regla exige:
 - **Pasó de casi una página a doce líneas.** Lo que se fue no se perdió: está en el encabezado del capítulo y en los capítulos dueños de cada tema.
 - **La excepción quedó completa.** Antes decía cuándo no aplica, pero no hasta dónde llega ni quién da el permiso. Ahora tiene las tres partes.
 
-El número sigue siendo `F0`. Eso no se toca nunca.
+El número sigue siendo [`F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md). Eso no se toca nunca.
 
-Cabe en una a cuatro líneas, y se escribe mandando. Si no cabe, casi siempre pasa una de dos: hay dos órdenes juntas, o se está contando **por qué** existe la regla — y el porqué se guarda en `notas/`, no aquí (`M13`).
+Cabe en una a cuatro líneas, y se escribe mandando. Si no cabe, casi siempre pasa una de dos: hay dos órdenes juntas, o se está contando **por qué** existe la regla — y el porqué se guarda en `notas/`, no aquí ([`M13`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md)).
 
 Tres cosas que **no** van aquí:
 
-- **Copiar lo que ya dice otra regla.** Un día alguien arregla una copia y se olvida de la otra. Entonces las dos dicen cosas distintas y nadie sabe a cuál hacerle caso. Se pone un enlace a la otra (`ver 04·S4`) (`M5`, `M12`).
-- **Nombres de herramientas.** Nada de nombrar un programa, una marca, un cliente. La regla tiene que servirle a cualquier proyecto, use lo que use. Se dice la idea, y después cada proyecto anota aparte con qué la cumple (`M3`).
-- **Explicar algo que explica otro capítulo.** Si el tema ya tiene dueño, se enlaza al dueño en vez de contarlo otra vez (`M2`).
+- **Copiar lo que ya dice otra regla.** Un día alguien arregla una copia y se olvida de la otra. Entonces las dos dicen cosas distintas y nadie sabe a cuál hacerle caso. Se pone un enlace a la otra (`ver 04·S4`) ([`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md), [`M12`](reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md)).
+- **Nombres de herramientas.** Nada de nombrar un programa, una marca, un cliente. La regla tiene que servirle a cualquier proyecto, use lo que use. Se dice la idea, y después cada proyecto anota aparte con qué la cumple ([`M3`](reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md)).
+- **Explicar algo que explica otro capítulo.** Si el tema ya tiene dueño, se enlaza al dueño en vez de contarlo otra vez ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)).
 
 ### 3 · Dependencia — solo hay tres, y se escriben
 
-A veces una regla no se sostiene sola: necesita a otra. Eso se escribe entre paréntesis, dentro del cuerpo. Solo hay tres maneras (`M7`):
+A veces una regla no se sostiene sola: necesita a otra. Eso se escribe entre paréntesis, dentro del cuerpo. Solo hay tres maneras ([`M7`](reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md)):
 
 | Forma | Significa | Ejemplo |
 |---|---|---|
 | `(extiende NN·ID)` | "Además de lo que ya pide la otra, esto." Las dos siguen mandando. | `18·DP1 extiende 09·G6` |
 | `(depende de NN·ID)` | "Esto va después de aquello." Si lo otro no se hizo, esto no se puede hacer. | `13·DOC3 depende de 02·F2` |
-| `(deroga NN·ID)` | "Esta reemplaza a aquella." De ahora en adelante manda la nueva. Se hace siguiendo `M11`. | `G9 deroga G4` |
+| `(deroga NN·ID)` | "Esta reemplaza a aquella." De ahora en adelante manda la nueva. Se hace siguiendo [`M11`](reglas/M11-las-reglas-no-se-borran-se-derogan.md). | `G9 deroga G4` |
 
 Dos cosas están prohibidas. **Dar vueltas en círculo:** si A necesita que B esté hecha, y B necesita que A esté hecha, no se puede empezar por ninguna — alguna de las dos está mal escrita. Y **mandar hacia arriba:** una regla normal no puede cambiar ni reemplazar una `[BLINDADA]`; esas están por encima de todo.
 
@@ -194,7 +194,7 @@ Si un capítulo entero se apoya en otro, se dice **una vez al principio del cap�
 
 ### 4 · Excepción — dentro de la regla, con sus tres partes
 
-Hay reglas que tienen un caso especial donde no aplican. Ese caso se escribe **dentro de la misma regla** (`M8`). Nunca en otro papel, y nunca solo dicho de palabra: lo que no está escrito, no existe. Y hay que decir tres cosas, las tres:
+Hay reglas que tienen un caso especial donde no aplican. Ese caso se escribe **dentro de la misma regla** ([`M8`](reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md)). Nunca en otro papel, y nunca solo dicho de palabra: lo que no está escrito, no existe. Y hay que decir tres cosas, las tres:
 
 - **condición** — cuándo vale.
 - **límite** — hasta dónde llega, y qué **no** permite.
@@ -202,7 +202,7 @@ Hay reglas que tienen un caso especial donde no aplican. Ese caso se escribe **d
 
 La tercera es la que más se olvida, y es la más importante. **Si nadie tiene que dar permiso, la excepción se vuelve costumbre** y al final la regla no se cumple nunca.
 
-No vale la excepción a medias, ni "solo por esta vez", ni "es que hay prisa". Si aparece un caso que necesita una excepción **que no está escrita**: se **para y se pregunta**. Si dicen que sí, se **escribe dentro de la regla** y se anota el cambio (`M10`).
+No vale la excepción a medias, ni "solo por esta vez", ni "es que hay prisa". Si aparece un caso que necesita una excepción **que no está escrita**: se **para y se pregunta**. Si dicen que sí, se **escribe dentro de la regla** y se anota el cambio ([`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 
 Las `[BLINDADA]` no aceptan ninguna excepción: eso es lo que quiere decir estar blindada. Y cuidado con confundirse: una regla `*opt-in*` **no es una excepción**. Es una regla que el proyecto enciende o no enciende; si la enciende, se cumple entera.
 
@@ -210,7 +210,7 @@ Las `[BLINDADA]` no aceptan ninguna excepción: eso es lo que quiere decir estar
 
 Son dos renglones: uno con lo que se hace mal y otro con lo que hay que hacer.
 
-Hay que ponerlo cuando la regla se puede entender de dos formas, o cuando el error se comete mucho. Si la regla es obvia, no hace falta (`M5`).
+Hay que ponerlo cuando la regla se puede entender de dos formas, o cuando el error se comete mucho. Si la regla es obvia, no hace falta ([`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)).
 
 El renglón de INCORRECTO se escribe con **el error que la gente comete de verdad**. Si se pone uno exagerado, que nadie cometería, no sirve de nada: todos lo leen, piensan "yo no hago eso", y siguen cometiendo el error de siempre.
 
@@ -242,15 +242,15 @@ Ranura por ranura:
 
 | Ranura | Qué quedó | Regla |
 |---|---|---|
-| PREFIJO | `R`, las letras del capítulo que habla de que las cosas vayan rápido | `M4` |
-| `n` | `7`, porque ya estaban ocupados del `R1` al `R6` | `M4` |
-| Título | Manda, y se entiende sin leer nada más | `M5` |
-| marca | Ninguna: no está blindada, no es opcional, no está jubilada | `M5` |
-| cuerpo | Pide **una** sola cosa: decir de a cuántos se trabaja por vez | `M5` |
-| sirve a cualquier proyecto | Dice "N" y "el proyecto lo decide"; no nombra ninguna herramienta | `M3` |
-| dependencia | `extiende 06·R2`, y `R2` sigue mandando | `M7` |
-| excepción | Con las tres partes: cuándo vale, hasta dónde, quién da permiso | `M8` |
-| ejemplo | Sí, porque ese error se comete mucho | `M5` |
+| PREFIJO | `R`, las letras del capítulo que habla de que las cosas vayan rápido | [`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) |
+| `n` | `7`, porque ya estaban ocupados del [`R1`](../06-rendimiento.md#r1--evita-consultas-en-bucle-n1) al [`R6`](../06-rendimiento.md#r6--mide-antes-de-optimizar) | [`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) |
+| Título | Manda, y se entiende sin leer nada más | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) |
+| marca | Ninguna: no está blindada, no es opcional, no está jubilada | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) |
+| cuerpo | Pide **una** sola cosa: decir de a cuántos se trabaja por vez | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) |
+| sirve a cualquier proyecto | Dice "N" y "el proyecto lo decide"; no nombra ninguna herramienta | [`M3`](reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) |
+| dependencia | `extiende 06·R2`, y [`R2`](../06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite) sigue mandando | [`M7`](reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) |
+| excepción | Con las tres partes: cuándo vale, hasta dónde, quién da permiso | [`M8`](reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) |
+| ejemplo | Sí, porque ese error se comete mucho | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) |
 
 ## Ejemplo mínimo — lo que se puede omitir
 
@@ -270,7 +270,7 @@ Nombre y cuerpo: eso sí lo lleva toda regla, siempre.
 
 ## Lo que la regla obliga fuera de su propio texto
 
-Escribir la regla no es el final. Faltan cuatro cosas, y se hacen **en el mismo rato**, no otro día (`M9`, `M10`):
+Escribir la regla no es el final. Faltan cuatro cosas, y se hacen **en el mismo rato**, no otro día ([`M9`](reglas/M9-toda-regla-declara-si-es-validable.md), [`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)):
 
 ```
 validadores/reglas-validables.md  → ¿un programa puede decir "sí se cumplió" o

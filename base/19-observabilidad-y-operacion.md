@@ -6,7 +6,7 @@
 
 ## OB1 · Logs estructurados y correlacionables
 
-Los logs se emiten como **datos** (clave-valor / JSON), no como texto libre para leer con el ojo: nivel, marca de tiempo, y un **identificador de correlación** que permita seguir una operación de punta a punta. Nunca llevan secretos ni datos sensibles (`05·E5`, `00·N6`). Sin estructura, un log a escala no se puede buscar ni agregar.
+Los logs se emiten como **datos** (clave-valor / JSON), no como texto libre para leer con el ojo: nivel, marca de tiempo, y un **identificador de correlación** que permita seguir una operación de punta a punta. Nunca llevan secretos ni datos sensibles ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles), [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)). Sin estructura, un log a escala no se puede buscar ni agregar.
 
 ## OB2 · Se mide lo que le duele al usuario
 
@@ -18,12 +18,12 @@ Los objetivos de servicio (SLO) y las alertas se declaran **versionados**, no se
 
 ## OB4 · Runbooks para lo que se opera
 
-Las operaciones recurrentes y las de emergencia se documentan como **runbook** versionado: respaldo y restauración, recuperación ante fallo, rotación de un secreto expuesto (`04·S4`), reversión de un release (`18·DP5`). Un procedimiento crítico que solo vive en la cabeza de alguien no existe cuando esa persona no está.
+Las operaciones recurrentes y las de emergencia se documentan como **runbook** versionado: respaldo y restauración, recuperación ante fallo, rotación de un secreto expuesto ([`04·S4`](04-seguridad.md#s4--gestión-de-secretos)), reversión de un release ([`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta)). Un procedimiento crítico que solo vive en la cabeza de alguien no existe cuando esa persona no está.
 
 ## OB5 · Postmortem sin culpa
 
-Tras un incidente relevante se escribe un **postmortem** (del [plantillas/postmortem.md](../plantillas/postmortem.md)): qué pasó, impacto, causa raíz, línea de tiempo y **acciones para que no vuelva** — centrado en el sistema y el proceso, **no en culpar a una persona**. El aprendizaje se registra como señal (`13·DOC5`, tipo `error-resuelto`/`aprendizaje`) para que la memoria lo tenga.
+Tras un incidente relevante se escribe un **postmortem** (del [plantillas/postmortem.md](../plantillas/postmortem.md)): qué pasó, impacto, causa raíz, línea de tiempo y **acciones para que no vuelva** — centrado en el sistema y el proceso, **no en culpar a una persona**. El aprendizaje se registra como señal ([`13·DOC5`](13-documentacion.md#doc5--registrar-señales-memoria--opt-in), tipo `error-resuelto`/`aprendizaje`) para que la memoria lo tenga.
 
 ## OB6 · Operar en vivo lo hace el humano
 
-**Fuera de alcance por diseño:** ejecutar la operación, vigilar dashboards en tiempo real y responder incidentes en caliente son del humano. El agente **deja el sistema observable y los procedimientos escritos** para que esa operación sea posible y barata — no la reemplaza. Igual que en `18·DP8`, la identidad es *desarrollador senior*, no SRE de guardia.
+**Fuera de alcance por diseño:** ejecutar la operación, vigilar dashboards en tiempo real y responder incidentes en caliente son del humano. El agente **deja el sistema observable y los procedimientos escritos** para que esa operación sea posible y barata — no la reemplaza. Igual que en [`18·DP8`](18-despliegue-e-infraestructura.md#dp8--correr-contra-producción-lo-autoriza-el-humano), la identidad es *desarrollador senior*, no SRE de guardia.

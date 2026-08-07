@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
+import citas            # noqa: E402
 import versiones        # noqa: E402
 import ci               # noqa: E402
 import commits          # noqa: E402
@@ -43,7 +44,9 @@ from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
 def cmd_estandar(a):
-    hallazgos = enlaces.validar_enlaces(a.raiz) + enlaces.validar_indices(a.raiz)
+    hallazgos = (enlaces.validar_enlaces(a.raiz)
+                 + enlaces.validar_indices(a.raiz)
+                 + citas.validar(a.raiz))
     return reportar(hallazgos, "Coherencia del estándar")
 
 

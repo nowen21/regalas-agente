@@ -1,6 +1,6 @@
 # 18 · Despliegue e infraestructura  ·  `[CAPA 2 · opt-in]`
 
-**Opt-in.** Reglas agnósticas para que lo que el agente entrega quede **listo para desplegarse de forma reproducible**. Aplican a proyectos que se despliegan (servicio, web, app); una librería o un script suelto las omiten. El agente **produce los artefactos** (pipeline, manifiestos, scripts, checklist); **no ejecuta** el despliegue en producción — eso lo autoriza y lo corre el humano (`00·N2`, `00·N4`). La herramienta concreta (CI, orquestador, nube, IaC) la declara la capa 3 (`.agente/stack.md`). Extiende `09·G6`.
+**Opt-in.** Reglas agnósticas para que lo que el agente entrega quede **listo para desplegarse de forma reproducible**. Aplican a proyectos que se despliegan (servicio, web, app); una librería o un script suelto las omiten. El agente **produce los artefactos** (pipeline, manifiestos, scripts, checklist); **no ejecuta** el despliegue en producción — eso lo autoriza y lo corre el humano ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)). La herramienta concreta (CI, orquestador, nube, IaC) la declara la capa 3 (`.agente/stack.md`). Extiende [`09·G6`](09-git.md#g6--integración-continua-el-verde-es-automático-no-manual).
 
 ---
 
@@ -18,11 +18,11 @@ Se compila/empaqueta **una sola vez** y ese mismo artefacto inmutable (imagen, p
 
 ## DP4 · Config por entorno, fuera del artefacto
 
-El artefacto es **agnóstico del entorno**; la configuración y los secretos se inyectan al desplegar, no se hornean adentro (`11`, `04·S4`). Así la misma imagen corre en cualquier entorno cambiando solo su config, y un secreto no viaja dentro del build.
+El artefacto es **agnóstico del entorno**; la configuración y los secretos se inyectan al desplegar, no se hornean adentro (`11`, [`04·S4`](04-seguridad.md#s4--gestión-de-secretos)). Así la misma imagen corre en cualquier entorno cambiando solo su config, y un secreto no viaja dentro del build.
 
 ## DP5 · Release reversible, con plan de vuelta
 
-Toda estrategia de release define **cómo se revierte** antes de aplicarse: volver a la versión anterior del artefacto, revertir la migración (`03·D2`), restaurar datos. Preferir releases graduales (canario/azul-verde) cuando el riesgo lo amerite. Un release sin rollback pensado no está listo.
+Toda estrategia de release define **cómo se revierte** antes de aplicarse: volver a la versión anterior del artefacto, revertir la migración ([`03·D2`](03-datos.md#d2--cada-cambio-de-esquema-es-una-migración-reversible)), restaurar datos. Preferir releases graduales (canario/azul-verde) cuando el riesgo lo amerite. Un release sin rollback pensado no está listo.
 
 ## DP6 · Checklist de despliegue
 
@@ -34,4 +34,4 @@ El servicio ofrece un punto de **readiness/health** (¿está vivo?, ¿listo para
 
 ## DP8 · Correr contra producción lo autoriza el humano
 
-El agente **prepara** el despliegue; **ejecutarlo contra producción** (o contra datos reales) requiere autorización explícita del usuario (`00·N2`, `00·N4`), nunca por iniciativa propia ni "para probar". **Fuera de alcance por diseño:** operar el sistema vivo, vigilar dashboards, responder incidentes en caliente — eso es del humano (la observabilidad la cubre `19`). La identidad del agente es *desarrollador senior*, no SRE.
+El agente **prepara** el despliegue; **ejecutarlo contra producción** (o contra datos reales) requiere autorización explícita del usuario ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)), nunca por iniciativa propia ni "para probar". **Fuera de alcance por diseño:** operar el sistema vivo, vigilar dashboards, responder incidentes en caliente — eso es del humano (la observabilidad la cubre `19`). La identidad del agente es *desarrollador senior*, no SRE.
