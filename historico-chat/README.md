@@ -54,3 +54,4 @@ y qué archivo se tocó.
 - [2026-08-07-sesion-2.md](2026-08-07-sesion-2.md) — sesión del 2026-08-07.
 - [2026-08-07-sesion-3.md](2026-08-07-sesion-3.md) — sesión del 2026-08-07.
 - [2026-08-07-analisis-cumplimiento-reglas.md](2026-08-07-analisis-cumplimiento-reglas.md) — auditoría de las 170 reglas de `base/` contra las 13 meta-reglas del capítulo 20; informe en `analisis/`.
+- [2026-08-07-sesion-5.md](2026-08-07-sesion-5.md) — sesión del 2026-08-07.
