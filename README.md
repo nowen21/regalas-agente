@@ -65,6 +65,8 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only *(opt-in)*
 - [`16-cumplimiento-y-calidad.md`](base/16-cumplimiento-y-calidad.md) — leyes, frameworks (COBIT, ISO, OWASP…), cumplimiento por construcción *(opt-in)*
 - [`17-interfaz.md`](base/17-interfaz.md) — UI/UX: estados de vista, validación, accesibilidad, texto para el usuario *(opt-in)*
+- [`18-despliegue-e-infraestructura.md`](base/18-despliegue-e-infraestructura.md) — CI/CD e IaC como código, release reversible, checklist de despliegue *(opt-in)*
+- [`19-observabilidad-y-operacion.md`](base/19-observabilidad-y-operacion.md) — logs estructurados, métricas/SLO, runbooks, postmortem *(opt-in)*
 
 ### Capa 3 · Proyecto — vive en cada repo (plantillas para copiar)
 
@@ -75,6 +77,8 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
 - [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md) — esqueleto para redactar la spec de un módulo (se copia por módulo a `documentacion/`)
 - [`plantillas/senales.md`](plantillas/senales.md) — log de señales (memoria: decisiones, errores resueltos, patrones, aprendizajes)
+- [`plantillas/checklist-despliegue.md`](plantillas/checklist-despliegue.md) — checklist de un despliegue (opt-in `18`)
+- [`plantillas/postmortem.md`](plantillas/postmortem.md) — postmortem de incidente, sin culpa (opt-in `19`)
 
 ## Skills
 

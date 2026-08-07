@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
+import checklist        # noqa: E402
 import ci               # noqa: E402
 import commits          # noqa: E402
 import dependencias     # noqa: E402
@@ -179,6 +180,23 @@ def cmd_version(a):
     return reportar(version.validar(raiz), f"Versión del estándar · {relativo(raiz)}")
 
 
+def cmd_checklist(a):
+    raiz = os.path.abspath(a.raiz)
+    puntos = checklist.revisar(raiz)
+    if not puntos:
+        sys.exit("no se pudo leer plantillas/stack-instalacion.md")
+
+    print(f"== Instalación del agente · {relativo(raiz)} ==")
+    for p in puntos:
+        print(f"  {p}")
+
+    faltan = checklist.pendientes(puntos)
+    print(f"\n{checklist.resumen(raiz, puntos)}")
+    if faltan:
+        print(f"\n{checklist.detalle(puntos)}")
+    return 1 if faltan else 0
+
+
 def cmd_commit(a):
     if a.archivo:
         mensaje, origen = leer(a.archivo), a.archivo
@@ -294,6 +312,11 @@ def main():
                         help="desfase de versión del estándar vs la que declara el proyecto")
     vr.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     vr.set_defaults(func=cmd_version)
+
+    ck = sub.add_parser("checklist",
+                        help="stack de instalación del agente: qué le falta al proyecto")
+    ck.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ck.set_defaults(func=cmd_checklist)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
     c.add_argument("--archivo", help="archivo con el mensaje (p. ej. COMMIT_EDITMSG)")

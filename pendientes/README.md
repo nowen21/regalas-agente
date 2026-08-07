@@ -23,7 +23,7 @@ Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por 
 
 | # | Pendiente | Qué resuelve |
 |---|---|---|
-| 07 | [Patrones DevOps 18 y 19](07-patrones-devops.md) | Patrones opt-in de despliegue/infraestructura y observabilidad/operación. |
+| ~~07~~ | **hecho** → [Patrones DevOps 18 y 19](hecho/patrones-devops.md) | Capítulos opt-in `18` (despliegue/infra) y `19` (observabilidad/operación) + plantillas. Cerrado 2026-08-06 (v1.1.0). |
 | 08 | [Patrón RPA](08-patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
 
 Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps o RPA, se adelantan sin esperar la fila.

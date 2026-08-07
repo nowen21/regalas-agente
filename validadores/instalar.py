@@ -11,9 +11,13 @@
 ajeno — a partir de ahí un commit con mal mensaje se rechaza allí también — así
 que hay que pedirlo explícitamente con `--aplicar`.
 
-Nada se copia: los dos enganches llaman a los validadores **en su sitio**, por
-ruta absoluta. Una sola copia del estándar sirve a todos los proyectos, y al
-cambiar una regla aquí cambia en todos a la vez.
+Nada se copia: los enganches llaman a los validadores **en su sitio**, por ruta
+absoluta. Una sola copia del estándar sirve a todos los proyectos, y al cambiar
+una regla aquí cambia en todos a la vez.
+
+Lo único que sí se crea dentro del proyecto es lo que el proyecto necesita tener
+para que un enganche funcione — hoy, la carpeta `historico-chat/`. Sin ella, el
+enganche del histórico no tendría dónde escribir.
 """
 import argparse
 import json
@@ -157,21 +161,30 @@ def repositorios_git(ruta):
     return encontrados
 
 
-# Enganches de Claude Code: (evento, matcher, guion, mensaje del indicador).
+# Enganches de Claude Code: (evento, matcher, guion, mensaje, argumentos).
 # `matcher` en None = el evento no filtra por herramienta (SessionStart).
+# `argumentos` deja que un mismo guion sirva a dos eventos con papeles distintos,
+# como el histórico: uno anota al usuario y el otro al agente.
 HOOKS_CLAUDE = [
     ("PostToolUse", "Write|Edit", "hook_md.py",
-     "Revisando los enlaces del proyecto..."),
+     "Revisando los enlaces del proyecto...", ""),
     ("SessionStart", None, "hook_sesion.py",
-     "Revisando el estándar..."),
+     "Revisando el estándar...", ""),
+    ("UserPromptSubmit", None, "hook_historico.py",
+     "Anotando en el histórico...", "--modo usuario"),
+    ("Stop", None, "hook_historico.py",
+     "Anotando en el histórico...", "--modo agente"),
+    ("UserPromptSubmit", None, "hook_checklist.py",
+     "Revisando la instalación del agente...", ""),
 ]
 
 
-def _hook_claude(estandar, proyecto, guion, mensaje):
+def _hook_claude(estandar, proyecto, guion, mensaje, argumentos=""):
+    extra = f"{argumentos} " if argumentos else ""
     return {
         "type": "command",
         "command": (f'python "{estandar}/validadores/{guion}" '
-                    f'--raiz "{proyecto}"'),
+                    f'{extra}--raiz "{proyecto}"'),
         "statusMessage": mensaje,
     }
 
@@ -226,8 +239,9 @@ def instalar_claude(ruta, estandar, aplicar):
                     "no se toca; arréglalo a mano"]
 
     cambios = False
-    for evento, matcher, guion, mensaje in HOOKS_CLAUDE:
-        nuevo = _hook_claude(estandar, ruta.replace("\\", "/"), guion, mensaje)
+    for evento, matcher, guion, mensaje, argumentos in HOOKS_CLAUDE:
+        nuevo = _hook_claude(estandar, ruta.replace("\\", "/"),
+                             guion, mensaje, argumentos)
 
         # Se respeta lo que ya hubiera; solo se toca el grupo propio.
         ganchos = datos.setdefault("hooks", {}).setdefault(evento, [])
@@ -263,6 +277,59 @@ def instalar_claude(ruta, estandar, aplicar):
             json.dump(datos, f, indent=2, ensure_ascii=False)
             f.write("\n")
     return pasos
+
+
+PLANTILLA_HISTORICO = os.path.join(RAIZ, "plantillas", "historico-chat.md")
+
+
+def instalar_stack(ruta, aplicar):
+    """Copia el stack de instalación a `.agente/`, sellado con su huella.
+
+    Esta copia **sí** se pisa, al revés que los 4 archivos de configuración: no
+    la llena nadie, es el retrato de lo que el estándar exige hoy. Comparar su
+    huella con la del original es lo que delata que hay componentes nuevos.
+    """
+    # Se importa aquí y no arriba: `checklist` usa a `instalar` para saber qué
+    # enganches y repositorios espera, así que a nivel de módulo sería un ciclo.
+    import checklist
+
+    original = checklist.ruta_plantilla(RAIZ)
+    if not os.path.isfile(original):
+        return ["OMITIDO: falta plantillas/stack-instalacion.md en el estándar"]
+
+    if checklist.huella_instalada(ruta) == checklist.huella(RAIZ):
+        return ["stack de instalación ya estaba al día"]
+
+    if aplicar:
+        destino = os.path.join(ruta, ".agente", "stack-instalacion.md")
+        os.makedirs(os.path.dirname(destino), exist_ok=True)
+        with open(destino, "w", encoding="utf-8", newline="\n") as f:
+            f.write(leer(original) + checklist.sello(RAIZ))
+    return ["copiar .agente/stack-instalacion.md"]
+
+
+def instalar_historico(ruta, aplicar):
+    """Crea `historico-chat/` con su README, desde la plantilla del estándar.
+
+    Va aquí y no en el enganche: un hook que crea carpetas por su cuenta en
+    cualquier proyecto donde corra sorprende al usuario. El instalador se corre
+    a propósito y avisa qué hace.
+
+    Si el README ya existe no se toca — puede haberlo editado el proyecto.
+    """
+    carpeta = os.path.join(ruta, "historico-chat")
+    archivo = os.path.join(carpeta, "README.md")
+
+    if os.path.isfile(archivo):
+        return ["historico-chat/ ya estaba"]
+    if not os.path.isfile(PLANTILLA_HISTORICO):
+        return ["OMITIDO: falta plantillas/historico-chat.md en el estándar"]
+
+    if aplicar:
+        os.makedirs(carpeta, exist_ok=True)
+        with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write(leer(PLANTILLA_HISTORICO))
+    return ["crear historico-chat/README.md"]
 
 
 def instalar(nombre, ruta, aplicar):
@@ -304,6 +371,12 @@ def instalar(nombre, ruta, aplicar):
             print(f"  {marca} {paso}")
 
     for paso in instalar_claude(ruta, estandar, aplicar):
+        print(f"  {marca} {paso}")
+
+    for paso in instalar_historico(ruta, aplicar):
+        print(f"  {marca} {paso}")
+
+    for paso in instalar_stack(ruta, aplicar):
         print(f"  {marca} {paso}")
     return True
 

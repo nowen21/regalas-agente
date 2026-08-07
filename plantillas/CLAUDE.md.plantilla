@@ -32,12 +32,15 @@ El estándar (las reglas) está instalado en una carpeta central **fuera de este
 
 ## 2. Carpetas de este proyecto
 
-Son **dos** carpetas distintas, con reglas opuestas de versionado:
+Son **tres** carpetas distintas, con reglas propias de versionado:
 
 ### 2.1 Configuración del agente — LOCAL, se ignora
 
 - **Ruta:** `./.agente/`
 - **La crea el agente** la primera vez (ver paso 3). Contendrá los 4 archivos de configuración: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md` (y opcionalmente `reglas-proyecto.md`, ver 5.2).
+- Ahí mismo quedan dos archivos que **no se editan a mano**, porque los escribe el estándar:
+  - `stack-instalacion.md` — la lista de todo lo que este proyecto debe tener para que el agente esté completo. Es copia de la del estándar; si allá cambia, acá se avisa.
+  - `INSTALACION-INCOMPLETA.md` — **solo existe si falta algo.** Mientras esté, el agente no está completo y lo dice en cada mensaje, con qué falta y cómo se arregla. Cuando ya no falta nada, desaparece solo.
 - **Va en el `.gitignore`** (`.agente/`): es configuración local de la máquina, no parte del repositorio.
 
 ### 2.2 Documentación del trabajo — DEL PROYECTO, se versiona
@@ -45,6 +48,15 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
 - **Ruta:** `./documentacion/`
 - Aquí el agente guarda **todo lo que produce el proceso**: specs de módulo, planes de trabajo, planes de pruebas, funcionalidad implementada, decisiones y trazabilidad (regla base `13`).
 - **NO va en el `.gitignore`:** es conocimiento del proyecto y se versiona junto con el código.
+
+### 2.3 Histórico de sesiones — DEL PROYECTO, se versiona
+
+- **Ruta:** `./historico-chat/`
+- **La crea el instalador** del paso 6, con su `README.md`. No hay que armarla a mano.
+- **La escribe el programa, no el agente:** un enganche anota cada mensaje del usuario apenas lo envía y otro anota la respuesta del agente apenas termina, con la hora del reloj de la máquina. Así queda registrado **desde el primer mensaje**, aunque sea un "hola".
+- **NO va en el `.gitignore`:** es el registro de por qué el proyecto quedó como quedó. El chat se borra; el repositorio no.
+
+> Si en este proyecto la conversación **no** debe versionarse (por ejemplo, porque en el chat se manejan datos sensibles), agregar `historico-chat/` al `.gitignore`. El histórico se sigue escribiendo en la máquina; solo que no viaja al repositorio.
 
 ## 3. Qué hace el agente al iniciar CADA sesión (en este orden exacto)
 
@@ -62,7 +74,16 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
    python validadores/instalar.py "«ruta-de-este-proyecto»" --aplicar
    ```
 
-   Deja funcionando el bloqueo de commits (`09`·G2, G8, G3) y el aviso de enlaces rotos al editar un `.md`. **Es idempotente:** si ya están al día no toca nada, así que se corre en cada sesión sin miedo. Necesario porque los enganches viven dentro del proyecto: las reglas y los validadores llegan solos desde el estándar, pero un enganche **nuevo** no.
+   Deja funcionando, sin ningún paso manual:
+
+   - el bloqueo de commits con mal mensaje o con lo que no debe versionarse (`09`·G2, G8, G3);
+   - el aviso de enlaces rotos al editar un `.md`;
+   - el histórico de la sesión en `./historico-chat/` (punto 2.3) — carpeta, `README.md` y los dos enganches que lo escriben;
+   - el **stack de instalación** copiado a `./.agente/stack-instalacion.md`, y el enganche que lo revisa en cada mensaje.
+
+   **Es idempotente:** si ya están al día no toca nada, así que se corre en cada sesión sin miedo. Necesario porque los enganches viven dentro del proyecto: las reglas y los validadores llegan solos desde el estándar, pero una herramienta **nueva** no.
+
+   > Esto es lo que hace que el estándar sea replicable: **toda herramienta nueva del estándar se instala sola por aquí.** Si algo exige configurar a mano, es un defecto del estándar, no una tarea del proyecto — se reporta y se corrige en `validadores/instalar.py`.
 
    Si el paso 2 (`F13`) no pasó, este paso tampoco corre — el propio instalador lo vuelve a verificar y se detiene.
 7. **Comprobar el desfase de versión** — correr desde la carpeta del estándar:
@@ -72,6 +93,15 @@ Son **dos** carpetas distintas, con reglas opuestas de versionado:
    ```
 
    Compara la **versión adoptada** (punto 1) con la `VERSION` del estándar. Si el proyecto quedó por detrás, **avisa** (no migra solo): subir de versión es decisión del usuario, y las fases ya cerradas quedan selladas con su versión.
+8. **Comprobar que la instalación esté completa** — correr desde la carpeta del estándar:
+
+   ```
+   python validadores/validar.py checklist --raiz "«ruta-de-este-proyecto»"
+   ```
+
+   Recorre el stack de instalación (`./.agente/stack-instalacion.md`) y dice qué falta. Esto **ya corre solo** en cada mensaje del usuario; el comando sirve para verlo completo.
+
+   Mientras exista `./.agente/INSTALACION-INCOMPLETA.md`, **el agente no está completo**: en cada respuesta debe decir qué falta y cómo se arregla, antes de seguir con lo que se le pidió. No detiene el trabajo — el único que detiene es el gate `F13` del paso 2.
 
 ## 4. Precedencia (no se negocia)
 
@@ -91,9 +121,11 @@ Cambiar el comportamiento por defecto de una regla `01`–`17`. Si no cambia nad
 - **Patrón opt-in `15` (registros inmutables):** `«sí / no»`
 - **Patrón opt-in `16` (cumplimiento normativo):** `«sí / no»`
 - **Patrón opt-in `17` (interfaz / UI):** `«sí / no»`
-- `«Otro ajuste: número de regla (01–17) + qué cambia + por qué»`
+- **Patrón opt-in `18` (despliegue e infraestructura):** `«sí / no»`
+- **Patrón opt-in `19` (observabilidad y operación):** `«sí / no»`
+- `«Otro ajuste: número de regla (01–19) + qué cambia + por qué»`
 
-> Límite: un ajuste puede cambiar una convención (`01`–`17`), **nunca** el núcleo (`00`). Ver precedencia (punto 4).
+> Límite: un ajuste puede cambiar una convención (`01`–`19`), **nunca** el núcleo (`00`). Ver precedencia (punto 4).
 
 ### 5.2 Agregar reglas nuevas, propias de este proyecto
 

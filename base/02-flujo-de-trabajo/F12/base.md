@@ -24,9 +24,9 @@
 
   Por ejemplo:
 
-  **`A-EP-001-HU-003-Configuración de la estructura inicial`**
-  **`B-EP-001-HU-003-Implementación de la lógica de negocio`**
-  **`C-EP-001-HU-003-Validación de permisos`**
+  - **`A-EP-001-HU-003-Configuración de la estructura inicial`**
+  - **`B-EP-001-HU-003-Implementación de la lógica de negocio`**
+  - **`C-EP-001-HU-003-Validación de permisos`**
 
 * **F12.7** — El consecutivo alfabético representa el **orden de las fases dentro de la HU**, por lo que no debe reiniciarse arbitrariamente ni repetirse dentro de la misma HU.
 
@@ -68,4 +68,4 @@ documentacion/
                 └── estado-fase.md
 ```
 
-`base-proyecto.md`, `13·DOC15`, `13·DOC16` y las plantillas **referencian** esta ruta — no la duplican.
+`F13/estructura-base.md`, `13·DOC15`, `13·DOC16` y las plantillas **referencian** esta ruta — no la duplican.

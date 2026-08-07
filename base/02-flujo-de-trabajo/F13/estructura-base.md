@@ -1,6 +1,8 @@
-# Estructura base del proyecto   ·   `[CAPA 2 · OBLIGATORIA]`
+# F13 · Estructura base del proyecto   ·   `[CAPA 2 · OBLIGATORIA]`
 
-> **Línea base oficial** de organización. Su obligatoriedad y el gate de verificación los fija `02·F13`. Separa dos mundos: el **código del usuario** (que el agente **nunca** toca) y el **espacio de trabajo del agente** (que el agente crea y gestiona, al lado del código).
+> **Anexo de la regla F13** — solo el árbol. La regla (alcance, gate, mensaje de orientación y regla de cumplimiento) vive en [`base.md`](base.md), aquí **no se duplica**.
+>
+> **Línea base oficial** de organización. Separa dos mundos: el **código del usuario** (que el agente **nunca** toca) y el **espacio de trabajo del agente** (que el agente crea y gestiona, al lado del código).
 
 ---
 
@@ -31,22 +33,3 @@
 ```
 
 > La organización interna de `epicas/` (jerarquía **Épica → HU → Fase** en `F12.11`, anidamiento y ruta física en `F12.13`, nomenclatura en `F12.6`) es la **fuente única `02·F12`** — aquí **no se duplica**.
-
----
-
-## Qué se verifica (F13 · gate de arranque)
-
-F13 hace **un solo chequeo**, sin leer el contenido de nada:
-
-**¿Existe la carpeta `proyectos/`?**
-
-- **SÍ** → el agente **crea su espacio de trabajo** (`.agente/`, `prompts/`, `documentacion/`) al lado y continúa.
-- **NO** → **no cumple**: el agente **se detiene** y **orienta al usuario** para que cree `proyectos/` y coloque ahí el/los código(s) fuente. La ubicación y los nombres los decide el **usuario** (ej. RNI: `proyectos/rni-back/` + `proyectos/rni-front/`) — el agente no los asume.
-
----
-
-## Regla de cumplimiento
-
-- El agente **crea y gestiona solo su espacio** (`.agente/`, `prompts/`, `documentacion/`).
-- El agente **nunca toca, modifica ni reestructura el código** dentro de `proyectos/`.
-- La existencia y organización de `proyectos/` corresponde **exclusivamente al usuario**; el agente no la crea ni la asume por iniciativa propia.

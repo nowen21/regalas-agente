@@ -60,6 +60,7 @@ python validadores/pruebas.py
 | [calidad.py](calidad.py) | Funciones demasiado largas | `base/07·Q3` |
 | [aislamiento.py](aislamiento.py) | Pruebas contra BD efímera; orden aleatorio; fuentes flaky | `base/08·T4/T3` |
 | [ci.py](ci.py) | Existe un pipeline de CI que corre pruebas y linter | `base/09·G6` |
+| [checklist.py](checklist.py) | El stack de instalación del agente: qué componentes le faltan al proyecto y si alguno quedó viejo | [`plantillas/stack-instalacion.md`](../plantillas/stack-instalacion.md) |
 
 ### Validadores que corren una herramienta (a demanda)
 
@@ -78,11 +79,12 @@ Categoría aparte, en [herramientas.py](herramientas.py). No leen archivos: **in
 - **Enlaces a código de proyecto** (`app/PagoService.php`). Ese código no vive en este repositorio por diseño; exigir que exista sería exigir que el estándar contenga los proyectos que lo usan.
 - **Ejemplos de formato** (`[<ruta legible>](<path-relativo>.md)`). Llevan `<>` y son documentación, no enlaces.
 - **Anclas** (`archivo.md#seccion`). Se comprueba el archivo, no la sección.
+- **Los enlaces dentro de una transcripción de `historico-chat/`.** Las escribe el enganche copiando el chat **literal**, y en el chat los enlaces se escriben relativos a la raíz del proyecto, no a esa carpeta: se romperían por definición. Reescribirlos al copiar dejaría de ser literal, y el histórico vale por eso. El `README.md` de la carpeta sí se comprueba — ese lo escribe una persona.
 - **Puertas del flujo** (código de fase sin spec + plan aprobado · `F2`) y la **trazabilidad hasta el commit**. Necesitan inspeccionar el código del proyecto, no solo su documentación; quedan para cuando haya un proyecto real bajo `proyectos/`. La trazabilidad **de la documentación** (épica↔HU, ORIGEN, tabla de cierre) sí está: `trazabilidad.py` — corre contra el árbol `documentacion/epicas/` de un proyecto.
 
 ## Enganche automático (hooks) — instalado
 
-Los dos enganches están activos y probados de punta a punta. **No se solapan**: cada uno cubre un momento distinto.
+Los enganches están activos y probados de punta a punta. **No se solapan**: cada uno cubre un momento distinto.
 
 **1. Git — [`.githooks/commit-msg`](../.githooks/commit-msg).** Revisa el mensaje antes de aceptar el commit. Si incumple, el commit **no se crea**.
 
@@ -100,6 +102,29 @@ git config --unset core.hooksPath       # desactivar
 Ignora en silencio lo que no le toca: archivos que no son `.md`, y `.md` fuera de este repositorio.
 
 > Usa Python y no `jq` a propósito: en esta máquina no hay `jq`, y así el hook no depende de qué trae instalado cada equipo.
+
+**3. Claude Code — `UserPromptSubmit` y `Stop`.** Escriben el histórico de la sesión con [`hook_historico.py`](hook_historico.py): el primero anota el mensaje del usuario apenas lo envía, el segundo anota la respuesta del agente apenas termina, leyéndola del transcript. La hora sale del reloj de la máquina en ese instante.
+
+Este es el único que **escribe** en vez de comprobar, y a propósito: la regla dice que toda sesión queda registrada, y mientras eso dependa de que el agente se acuerde, no se cumple siempre. Un `CLAUDE.md` informa; un enganche ejecuta.
+
+- Cada archivo lleva `<!-- sesion: <id> -->` en la primera línea. La sesión se busca por esa marca, no por el nombre — así el archivo se puede renombrar para ponerle el tema real sin que se parta en dos.
+- Los mensajes entran **antes** de `## Abierto`, no al final del archivo.
+- Cada respuesta lleva `<!-- agente: <uuid> -->`, que evita que se duplique si el enganche vuelve a correr.
+- No copia el razonamiento del agente ni la salida de herramientas: el histórico es la conversación.
+- Un proyecto sin carpeta `historico-chat/` no se ve afectado — el enganche sale sin hacer nada.
+
+**4. Claude Code — `UserPromptSubmit`.** [`hook_checklist.py`](hook_checklist.py) revisa el **stack de instalación** en cada mensaje: qué componentes le faltan al proyecto y si alguno quedó viejo.
+
+La lista no vive en el código: está en [`plantillas/stack-instalacion.md`](../plantillas/stack-instalacion.md), que se copia a `.agente/` de cada proyecto. `checklist.py` solo aporta la comprobación de cada `id`, y una prueba exige que las dos listas coincidan — si se separan, el checklist mentiría por omisión.
+
+- Mientras falte algo, escribe `.agente/INSTALACION-INCOMPLETA.md` con el detalle, se lo muestra al usuario y se lo pasa al agente para que lo diga.
+- Cuando ya no falta nada, **borra** la marca y calla. Su ausencia es la señal de instalación completa; un aviso permanente se deja de leer.
+- **No bloquea.** El único que detiene es el gate `02·F13`, y eso ya era así.
+- La copia del stack en `.agente/` lleva la huella del original: si el estándar agrega un componente, la huella deja de coincidir y se reporta como actualización pendiente.
+
+A mano: `python validadores/validar.py checklist --raiz "<proyecto>"`.
+
+**Se replica solo.** Los cuatro enganches, la carpeta `historico-chat/` y la copia del stack los instala [`instalar.py`](instalar.py) en cualquier proyecto, y el paso 6 de [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) lo corre en cada sesión. Una herramienta nueva del estándar se agrega a `HOOKS_CLAUDE` (y al stack, si el proyecto tiene que tener algo) y llega sola a todos los proyectos: si exige configurarla a mano, está mal hecha.
 
 ## Regla de oro
 

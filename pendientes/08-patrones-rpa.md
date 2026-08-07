@@ -21,4 +21,4 @@ El agente **desarrolla** la solución RPA (código/config/docs del bot) — todo
 
 ## Relación con otros pendientes
 
-Comparte espíritu con los [07 · patrones DevOps](07-patrones-devops.md) (18/19): son extensiones opt-in de dominio; el agente produce artefactos, no opera en vivo. Ninguno de los dos depende de los pendientes 01–06 — si un proyecto los necesita, se adelantan.
+Comparte espíritu con los [07 · patrones DevOps](hecho/patrones-devops.md) (18/19, ya hechos): son extensiones opt-in de dominio; el agente produce artefactos, no opera en vivo. Ninguno de los dos depende de los pendientes 01–06.

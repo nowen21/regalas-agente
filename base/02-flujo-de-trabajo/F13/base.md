@@ -2,7 +2,7 @@
 
 > **Precondición de arranque:** aunque su ID sea `F13`, esta regla **corre primero** — antes de cargar contexto (`F1`) y de cualquier paso del flujo. El número es solo un identificador de catálogo, no orden de ejecución. Se aplica en `CLAUDE.md §3` (paso previo obligatorio).
 >
-> **Fuente única de la regla F13.** El índice `02-flujo-de-trabajo.md` solo la referencia; el detalle vive aquí. La estructura está definida en la plantilla `plantillas/base-proyecto.md`.
+> **Fuente única de la regla F13.** El índice `02-flujo-de-trabajo.md` solo la referencia; el detalle vive aquí. El árbol de la estructura está en el anexo [`estructura-base.md`](estructura-base.md), al lado de este archivo.
 
 ## Alcance — solo valida estructura
 

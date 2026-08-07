@@ -8,6 +8,7 @@ Cubre las reglas y, sobre todo, los **falsos positivos** que se detectaron al
 probar contra el repositorio real: son los que hacen que nadie confíe en un
 validador y termine ignorándolo.
 """
+import json
 import os
 import sys
 import tempfile
@@ -22,11 +23,13 @@ import fases            # noqa: E402
 import instalar         # noqa: E402
 import aislamiento      # noqa: E402
 import calidad          # noqa: E402
+import checklist        # noqa: E402
 import ci               # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
+import historico        # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
@@ -983,6 +986,189 @@ class Instalador(unittest.TestCase):
         self.assertEqual(propios, [1], "no reconoció el enganche propio")
         self.assertEqual(len(grupo["hooks"]) - len(propios), 1,
                          "no debe tocar los hooks ajenos")
+
+    def test_el_historico_se_instala_en_dos_eventos(self):
+        # El mismo guion cumple dos papeles; si se instalara uno solo, la
+        # transcripción quedaría a medias (sin usuario, o sin agente).
+        eventos = {e: args for e, _, g, _, args in instalar.HOOKS_CLAUDE
+                   if g == "hook_historico.py"}
+        self.assertEqual(eventos, {"UserPromptSubmit": "--modo usuario",
+                                   "Stop": "--modo agente"})
+
+    def test_los_argumentos_van_antes_de_la_raiz(self):
+        cmd = instalar._hook_claude("/estandar", "/proy", "hook_historico.py",
+                                    "…", "--modo agente")["command"]
+        self.assertIn('hook_historico.py" --modo agente --raiz "/proy"', cmd)
+
+    def test_crea_la_carpeta_del_historico_y_no_la_pisa(self):
+        raiz = self._espacio()
+        self.assertEqual(instalar.instalar_historico(raiz, aplicar=True),
+                         ["crear historico-chat/README.md"])
+        indice = os.path.join(raiz, "historico-chat", "README.md")
+        self.assertTrue(os.path.isfile(indice))
+
+        with open(indice, "a", encoding="utf-8") as f:
+            f.write("\n- línea del proyecto\n")
+        self.assertEqual(instalar.instalar_historico(raiz, aplicar=True),
+                         ["historico-chat/ ya estaba"])
+        with open(indice, encoding="utf-8") as f:
+            self.assertIn("línea del proyecto", f.read())
+
+
+class Historico(unittest.TestCase):
+    """El enganche que escribe la transcripción de la sesión."""
+
+    def _carpeta(self, contenido=None):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(os.path.join(tmp.name, "historico-chat"))
+        if contenido is not None:
+            ruta = os.path.join(tmp.name, "historico-chat", "2026-01-01-x.md")
+            with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+                f.write(contenido)
+        return tmp.name
+
+    def _leer(self, ruta):
+        with open(ruta, encoding="utf-8") as f:
+            return f.read()
+
+    def test_el_primer_mensaje_crea_el_archivo(self):
+        raiz = self._carpeta()
+        ruta = historico.anotar_usuario(raiz, "s1", "hola")
+        self.assertTrue(ruta, "un saludo también abre el histórico")
+        texto = self._leer(ruta)
+        self.assertIn("<!-- sesion: s1 -->", texto)
+        self.assertIn("### 1 · Usuario — ", texto)
+        self.assertIn("> hola", texto)
+
+    def test_sin_carpeta_no_inventa_nada(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.assertEqual(historico.anotar_usuario(tmp.name, "s1", "hola"), "")
+
+    def test_sigue_la_numeracion_y_respeta_abierto(self):
+        raiz = self._carpeta("<!-- sesion: s2 -->\n\n# t\n\n## Conversación\n\n"
+                             "### 7 · Usuario — 2026-01-01 00:00:00\n> vieja\n\n"
+                             "## Abierto\n- nada.\n")
+        ruta = historico.anotar_usuario(raiz, "s2", "nueva")
+        texto = self._leer(ruta)
+        self.assertIn("### 8 · Usuario — ", texto)
+        self.assertLess(texto.index("### 8"), texto.index("## Abierto"),
+                        "el mensaje nuevo quedó por debajo de `## Abierto`")
+
+    def test_no_duplica_la_respuesta_si_el_enganche_repite(self):
+        raiz = self._carpeta("<!-- sesion: s3 -->\n\n# t\n\n## Conversación\n")
+        transcripcion = os.path.join(raiz, "t.jsonl")
+        with open(transcripcion, "w", encoding="utf-8") as f:
+            f.write(json.dumps({"type": "user",
+                                "message": {"content": "pregunta"}}) + "\n")
+            f.write(json.dumps({"type": "assistant", "uuid": "u1",
+                                "message": {"content": [
+                                    {"type": "text", "text": "respuesta"}]}}))
+
+        self.assertTrue(historico.anotar_agente(raiz, "s3", transcripcion))
+        self.assertEqual(historico.anotar_agente(raiz, "s3", transcripcion), "")
+
+    def test_junta_el_texto_partido_por_herramientas_y_descarta_lo_ajeno(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        ruta = os.path.join(tmp.name, "t.jsonl")
+        filas = [
+            {"type": "user", "message": {"content": "pregunta real"}},
+            {"type": "assistant", "uuid": "a1", "message": {"content": [
+                {"type": "thinking", "thinking": "razonamiento"},
+                {"type": "text", "text": "Primero."},
+                {"type": "tool_use", "name": "Bash"}]}},
+            {"type": "user", "message": {"content": [
+                {"type": "tool_result", "content": "salida cruda"}]}},
+            {"type": "assistant", "uuid": "a2", "message": {"content": [
+                {"type": "text", "text": "Después."}]}},
+            {"type": "assistant", "uuid": "a3", "isSidechain": True,
+             "message": {"content": [{"type": "text", "text": "subagente"}]}},
+        ]
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("\n".join(json.dumps(x) for x in filas))
+
+        texto, marca = historico.ultima_respuesta(ruta)
+        self.assertEqual(texto, "Primero.\n\nDespués.")
+        self.assertEqual(marca, "a2")
+
+
+class Checklist(unittest.TestCase):
+    """El stack de instalación: qué le falta a un proyecto."""
+
+    def test_la_lista_y_las_comprobaciones_no_se_separan(self):
+        # La lista vive en la plantilla y las comprobaciones en el código: si
+        # se desincronizan, el checklist mentiría por omisión.
+        ids = {i for i, _, _ in checklist.componentes()}
+        self.assertTrue(ids, "no se leyó plantillas/stack-instalacion.md")
+        self.assertEqual(ids, set(checklist.COMPROBACIONES),
+                         "la plantilla y COMPROBACIONES no listan lo mismo")
+
+    def test_cada_componente_dice_como_se_instala(self):
+        for id, componente, arreglo in checklist.componentes():
+            self.assertTrue(componente.strip(), f"{id} sin descripción")
+            self.assertTrue(arreglo.strip(), f"{id} no dice cómo se instala")
+
+    def _proyecto(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        return tmp.name
+
+    def test_un_proyecto_vacio_no_pasa_nada(self):
+        puntos = checklist.revisar(self._proyecto())
+        self.assertEqual(len(puntos), len(checklist.COMPROBACIONES))
+        self.assertTrue(checklist.pendientes(puntos))
+        self.assertIn("INSTALACIÓN INCOMPLETA",
+                      checklist.resumen("x", puntos))
+
+    def test_la_marca_se_escribe_y_se_borra_sola(self):
+        raiz = self._proyecto()
+        puntos = checklist.revisar(raiz)
+        archivo = checklist.escribir_marca(raiz, puntos)
+        self.assertTrue(os.path.isfile(archivo))
+
+        # Al quedar todo cumplido, la ausencia del archivo es la señal.
+        for p in puntos:
+            p.cumple = True
+        self.assertEqual(checklist.escribir_marca(raiz, puntos), "")
+        self.assertFalse(os.path.isfile(archivo))
+
+    def test_detecta_que_el_stack_central_cambio(self):
+        raiz = self._proyecto()
+        copia = os.path.join(raiz, ".agente", "stack-instalacion.md")
+        os.makedirs(os.path.dirname(copia))
+        with open(copia, "w", encoding="utf-8") as f:
+            f.write("lo que sea\n<!-- huella: 000000000000 -->\n")
+
+        self.assertEqual(checklist.huella_instalada(raiz), "000000000000")
+        cumple, detalle = checklist._stack_instalacion(raiz, instalar.RAIZ)
+        self.assertFalse(cumple)
+        self.assertIn("cambió en el estándar", detalle)
+
+    def test_un_componente_que_el_validador_no_conoce_se_dice(self):
+        # Estándar viejo contra una plantilla nueva: callar sería peor.
+        original = checklist.componentes
+        checklist.componentes = lambda estandar=None: [
+            ("inventado", "Algo nuevo", "correr el instalador")]
+        self.addCleanup(setattr, checklist, "componentes", original)
+
+        punto = checklist.revisar(self._proyecto())[0]
+        self.assertFalse(punto.cumple)
+        self.assertIn("no sabe comprobar", punto.detalle)
+
+
+class EnlacesDelHistorico(unittest.TestCase):
+
+    def test_no_comprueba_los_enlaces_de_una_transcripcion(self):
+        # La transcripción copia el chat literal, y ahí los enlaces se escriben
+        # relativos a la raíz del proyecto: dentro de la carpeta se romperían.
+        self.assertTrue(enlaces._es_transcripcion(
+            os.path.join("x", "historico-chat", "2026-01-01-t.md")))
+
+    def test_el_indice_del_historico_si_se_comprueba(self):
+        self.assertFalse(enlaces._es_transcripcion(
+            os.path.join("x", "historico-chat", "README.md")))
 
 
 if __name__ == "__main__":

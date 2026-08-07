@@ -483,7 +483,7 @@ Regla completa (fuente única): [`02-flujo-de-trabajo/F12/base.md`](02-flujo-de-
 
 ## F13 · Estructura base obligatoria del proyecto   ·   `[GATE DE ARRANQUE · PRECONDICIÓN]`
 
-**Corre primero**, antes de `F1` y de todo el flujo (el ID `F13` es solo catálogo, no orden). Regla completa (fuente única): [`02-flujo-de-trabajo/F13/base.md`](02-flujo-de-trabajo/F13/base.md). Estructura: `plantillas/base-proyecto.md`. Gate: existe la carpeta `proyectos/`.
+**Corre primero**, antes de `F1` y de todo el flujo (el ID `F13` es solo catálogo, no orden). Regla completa (fuente única): [`02-flujo-de-trabajo/F13/base.md`](02-flujo-de-trabajo/F13/base.md). Estructura (anexo): [`02-flujo-de-trabajo/F13/estructura-base.md`](02-flujo-de-trabajo/F13/estructura-base.md). Gate: existe la carpeta `proyectos/`.
 
 ---
 

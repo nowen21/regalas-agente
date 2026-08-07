@@ -13,6 +13,9 @@ from comun import (AVISO, FALLA, Hallazgo, RAIZ, enlaces, leer, recorrer_md,
 # Carpetas cuyo README.md debe listar todos sus .md.
 CON_INDICE = ["pendientes", "notas"]
 
+# Carpeta de transcripciones: se escribe sola y copia el diálogo literal.
+HISTORICO = "historico-chat"
+
 EXTERNOS = ("http://", "https://", "mailto:", "ftp://", "//")
 
 
@@ -39,12 +42,30 @@ def _comprobable(texto, destino):
     return ruta.lower().endswith(".md") or ruta.endswith("/")
 
 
+def _es_transcripcion(archivo):
+    """¿Es una sesión de `historico-chat/`, y no su índice?
+
+    Esos archivos los escribe el enganche del histórico copiando el diálogo
+    **literal**, y en el chat los enlaces se escriben relativos a la raíz del
+    proyecto (`validadores/README.md`), no a la carpeta donde termina la copia.
+    Se rompen por definición.
+
+    La alternativa sería reescribirlos al copiar, y eso ya no sería literal: el
+    histórico dejaría de ser prueba de lo que se dijo. Se prefiere no comprobar.
+    El `README.md` de la carpeta sí se comprueba — ese lo escribe una persona.
+    """
+    return (os.path.basename(os.path.dirname(archivo)) == HISTORICO
+            and os.path.basename(archivo).lower() != "readme.md")
+
+
 def validar_enlaces(raiz=None):
     """Todo enlace comprobable de un .md apunta a algo que existe."""
     raiz = raiz or RAIZ
     hallazgos = []
 
     for archivo in recorrer_md(raiz):
+        if _es_transcripcion(archivo):
+            continue
         carpeta = os.path.dirname(archivo)
         for n, texto, destino in enlaces(leer(archivo)):
             if not _es_interno(destino) or not _comprobable(texto, destino):
