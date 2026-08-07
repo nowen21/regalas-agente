@@ -50,3 +50,7 @@ y qué archivo se tocó.
 - [2026-08-06-sesion-7.md](2026-08-06-sesion-7.md) — el agente no recibe audio; alternativas para transcribir.
 - [2026-08-06-sesion-8.md](2026-08-06-sesion-8.md) — sesión del 2026-08-06.
 - [2026-08-06-sesion-9.md](2026-08-06-sesion-9.md) — se crea la carpeta `diplomado-ia/`.
+- [2026-08-07-sesion.md](2026-08-07-sesion.md) — sesión del 2026-08-07.
+- [2026-08-07-sesion-2.md](2026-08-07-sesion-2.md) — sesión del 2026-08-07.
+- [2026-08-07-sesion-3.md](2026-08-07-sesion-3.md) — sesión del 2026-08-07.
+- [2026-08-07-analisis-cumplimiento-reglas.md](2026-08-07-analisis-cumplimiento-reglas.md) — auditoría de las 170 reglas de `base/` contra las 13 meta-reglas del capítulo 20; informe en `analisis/`.
