@@ -22,7 +22,7 @@ Las operaciones recurrentes y las de emergencia se documentan como **runbook** v
 
 ## OB5 · Postmortem sin culpa
 
-Tras un incidente relevante se escribe un **postmortem** (del [plantillas/postmortem.md](../plantillas/postmortem.md)): qué pasó, impacto, causa raíz, línea de tiempo y **acciones para que no vuelva** — centrado en el sistema y el proceso, **no en culpar a una persona**. El aprendizaje se registra como señal ([`13·DOC5`](13-documentacion.md#doc5--registrar-señales-memoria--opt-in), tipo `error-resuelto`/`aprendizaje`) para que la memoria lo tenga.
+Tras un incidente relevante se escribe un **postmortem** (del [plantillas/postmortem.md](../plantillas/postmortem.md)): qué pasó, impacto, causa raíz, línea de tiempo y **acciones para que no vuelva** — centrado en el sistema y el proceso, **no en culpar a una persona**. El aprendizaje se registra como señal ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), tipo `error-resuelto`/`aprendizaje`) para que la memoria lo tenga.
 
 ## OB6 · Operar en vivo lo hace el humano
 

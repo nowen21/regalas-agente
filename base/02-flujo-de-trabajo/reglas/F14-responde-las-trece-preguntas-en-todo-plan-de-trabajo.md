@@ -25,6 +25,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Toma el contenido de `F4.1`, cuyo ID decimal no admitía [`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md); la enumeración de las trece pasó a [`base.md`](../base.md), que es lo que le cerraba la fila 10.
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Toma el contenido de [`F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), cuyo ID decimal no admitía [`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md); la enumeración de las trece pasó a [`base.md`](../base.md), que es lo que le cerraba la fila 10.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

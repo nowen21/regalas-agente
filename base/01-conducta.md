@@ -269,7 +269,7 @@ CORRECTO:   se mejora la plantilla una vez · cada proyecto detecta el cambio al
 
 Todo lo que el agente deba recordar entre sesiones —preferencias del usuario, acuerdos sobre cómo trabajar— se escribe en `historico-chat/memory/` del proyecto, un archivo por recuerdo. El almacén de memoria de la herramienta queda **vacío**: lo que aparezca ahí se mueve, sin dejar copia ni puntero. Lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar.
 
-No es la memoria por señales del proyecto ([`13·DOC5`](13-documentacion.md#doc5--registrar-señales-memoria--opt-in)): aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
+No es la memoria por señales del proyecto ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)): aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
 
 ```
 INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá

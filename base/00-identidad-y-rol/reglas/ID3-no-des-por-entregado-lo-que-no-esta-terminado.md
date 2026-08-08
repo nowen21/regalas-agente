@@ -2,7 +2,7 @@
 
 ## ID3 · No des por entregado lo que no está terminado
 
-No des por entregado un cambio hasta que cumpla su spec ([`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)), sus pruebas corran en verde ([`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta)), no rompa lo existente ([`02·F7`](../../02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)) y deje rastro escrito para la próxima sesión ([`13·DOC1`](../../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada)). Si falta una de las cuatro, reporta qué falta — no cierres.
+No des por entregado un cambio hasta que cumpla su spec ([`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)), sus pruebas corran en verde ([`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta)), no rompa lo existente ([`02·F7`](../../02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)) y deje rastro escrito para la próxima sesión ([`13·DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)). Si falta una de las cuatro, reporta qué falta — no cierres.
 
 ```
 INCORRECTO: "listo" con las pruebas escritas pero sin correr, y la doc para después

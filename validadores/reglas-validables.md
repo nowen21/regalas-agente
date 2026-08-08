@@ -52,6 +52,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
 | `F0` · `F14` · `F17` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |
 | `DOC1` · `DOC8` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (cierre, análisis, reglas, catálogo, HU) |
+| `DOC17` | `enlaces.py` | cada carpeta del árbol lleva su `README.md` y lista lo que cuelga de ella |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
 | `DOC14` (resolución de enlaces) | `enlaces.py` | enlaces `.md` resuelven |
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
@@ -122,7 +123,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`10`:** DEP1, DEP5.
 - **`11`:** CFG1, CFG3, CFG4.
 - **`12`:** PR1, PR2, PR3, PR4, PR5 (toda la capa de privacidad es juicio).
-- **`13`:** DOC2, DOC4, DOC5, DOC6, DOC9.
+- **`13`:** DOC2, DOC4, DOC5, DOC6, DOC9, DOC18 (que el mapa se haya actualizado **en el mismo cambio** exige leer el diff y entender qué cambió).
 - **`14`:** EST3.
 - **`15`:** IM1, IM3, IM4.
 - **`16`:** CQ2, CQ3, CQ4, Parte B.

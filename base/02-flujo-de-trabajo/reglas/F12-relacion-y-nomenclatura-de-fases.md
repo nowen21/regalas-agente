@@ -66,7 +66,7 @@ documentacion/
                 └── estado-fase.md
 ```
 
-[`estructura-base.md`](../estructura-base.md), [`13·DOC15`](../../13-documentacion.md#doc15--historias-de-usuario-desde-plantilla-central), [`13·DOC16`](../../13-documentacion.md#doc16--épicas-desde-plantilla-central) y las plantillas **referencian** esta ruta — no la duplican.
+[`estructura-base.md`](../estructura-base.md), [`13·DOC15`](../../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), [`13·DOC16`](../../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) y las plantillas **referencian** esta ruta — no la duplican.
 
 ---
 

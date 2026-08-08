@@ -11,7 +11,7 @@ criterio del agente.
 
 **Por qué no se inyecta todo.** Los archivos completos son ~162 KB (~46k
 tokens, casi una cuarta parte de la ventana de contexto) y la mitad de ese peso
-—`02-flujo-de-trabajo/` y `13-documentacion.md`— son reglas temáticas que
+—`02-flujo-de-trabajo/` y `13-documentacion/`— son reglas temáticas que
 solo aplican cuando se toca el tema. Peor: llenar la ventana adelanta el
 resumen automático del contexto, y lo primero que se resume es justo lo que se
 inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca.

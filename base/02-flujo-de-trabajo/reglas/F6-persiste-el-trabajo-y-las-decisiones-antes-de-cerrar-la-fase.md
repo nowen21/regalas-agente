@@ -1,8 +1,10 @@
 > Regla del capítulo [`02 · Flujo de trabajo`](../base.md).
 
-## F6 · Persiste el trabajo y las decisiones antes de cerrar la fase
+## F6 · Persiste el trabajo y las decisiones antes de cerrar la fase  ·  `[DEROGADA en 4.0.0 → ver 13·DOC1]`
 
-Ninguna fase se cierra sin dejar en documentación versionada qué se planeó, qué se probó, qué quedó y **las decisiones no obvias con su porqué** (depende de [`13·DOC1`](../../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada), que fija el formato). El chat se pierde; los archivos quedan.
+> **Ya no rige.** Lo que exigía lo exige [`13·DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md), dueño del tema *documentación* ([`M2`](../../20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md)). El momento —el cierre de la fase— es cuando se cierra la unidad de trabajo, que es lo que [`DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md) ya dice. El texto original se conserva debajo y el ID no se reutiliza ([`M11`](../../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
+
+Ninguna fase se cierra sin dejar en documentación versionada qué se planeó, qué se probó, qué quedó y **las decisiones no obvias con su porqué** (depende de [`13·DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md), que fija el formato). El chat se pierde; los archivos quedan.
 
 ```
 INCORRECTO: fase terminada y probada → commit → la decisión de por qué se eligió
@@ -13,22 +15,8 @@ CORRECTO:   fase terminada → se escribe qué se planeó, qué se probó y por 
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **DEROGADA**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v2.5.0**, el **2026-08-07**.
+Reprobaba las filas **2** y **4** contra **v2.5.0** por duplicar a [`13·DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md) ([`M2`](../../20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md), [`M12`](../../20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md)). Se resolvió derogándola en **4.0.0**, no reescribiéndola: quien citaba `02·F6` cita ahora [`13·DOC1`](../../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md).
 
-| Bloque | Filas | Resultado |
-|---|---|---|
-| A · Dónde va | 1–4 | ✅ ❌ ✅ ❌ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
-
-**20 filas: 17 ✅ · 2 ❌ · 1 N/A.** N/A — **16**: no tiene excepción.
-
-**❌** — **2** y **4**: [`13·DOC1`](../../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada) ya exige lo mismo, y el dueño del tema *documentación* es el capítulo [`13`](../../13-documentacion.md) ([`M2`](../../20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md), [`M12`](../../20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md)). Lo que aporta `F6` es el momento —el cierre de la fase—, no la obligación. Derogarla a favor de [`13·DOC1`](../../13-documentacion.md#doc1--persiste-el-trabajo-de-cada-unidad-completada) lo decide el usuario ([`M11`](../../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
-
-> **Regla vigente y reprobada.** Sigue rigiendo hasta que el usuario decida la vía.
-
-> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+> A una regla derogada no se le vuelve a aplicar el checklist: ya no rige. Queda para que las citas viejas resuelvan.

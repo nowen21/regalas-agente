@@ -55,7 +55,8 @@ agente/
 │   ├── 10-dependencias.md
 │   ├── 11-configuracion-entornos.md
 │   ├── 12-privacidad-datos.md
-│   ├── 13-documentacion.md ........... trazabilidad de la documentación
+│   ├── 13-documentacion/ ............. qué se documenta y con qué índices vivos
+│   │   ├── base.md · reglas/DOC1–DOC18 · render-local-de-md.md
 │   ├── 14-estructura-codigo.md
 │   ├── 15-registros-inmutables.md
 │   ├── 16-cumplimiento-y-calidad.md

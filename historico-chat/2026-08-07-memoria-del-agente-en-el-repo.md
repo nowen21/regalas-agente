@@ -290,3 +290,119 @@ Sobre esa carpeta el código solo puede: crear `memory.md` si no hay ninguno, re
 
 ### 14 · Usuario — 2026-08-07 18:44:55
 > que regla hace que el proyecto cree sus propias reglas?
+
+**Agente** — 2026-08-07 18:45:12
+<!-- agente: 0ca490d6-00f6-424a-a5c0-06aff4f517fc -->
+
+Tres, y cada una hace una parte:
+
+- **[`13·DOC10`](base/13-documentacion.md#doc10--catálogo-de-reglas-del-proyecto-sincronizado-con-la-memoria)** — la que obliga. Todo proyecto tiene un catálogo de reglas propias en la ruta que declara su capa 3 (típicamente `.agente/reglas-proyecto.md`), numeradas `P1`, `P2`… para poder citarlas. Plantilla: [plantillas/reglas-proyecto.md](plantillas/reglas-proyecto.md).
+- **[`01·C10`](base/01-conducta.md#c10--cada-mensaje-del-usuario-se-evalúa-como-posible-mejora-del-setup)** — la que dispara. Cada instrucción tuya se evalúa por si trae un principio generalizable, y ahí se decide el alcance: transversal a cualquier proyecto → va a `base/`; acoplada a un stack, un dominio o una decisión interna → nace como `P` local.
+- **[`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md)** y **[`20·M13`](base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md)** — el filtro. Si la regla no se puede escribir sin nombrar una herramienta, un cliente o un dominio, no es del estándar: es de ese proyecto.
+
+La prueba para decidir la da `C10`: *"¿esta regla tendría sentido en un proyecto React + Django de otra empresa?"*. Sí → `base/`. No → `P` en el catálogo del proyecto.
+
+### 15 · Usuario — 2026-08-07 18:47:57
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\base\20-meta-reglas\reglas\M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> a qué corresponde esta regla: 13·DOC10
+
+**Agente** — 2026-08-07 18:48:12
+<!-- agente: 05646870-a1f8-42c0-8a29-c2771f19f620 -->
+
+`13` es el capítulo **Documentación** ([base/13-documentacion.md](base/13-documentacion.md)) y `DOC10` su décima regla: **Catálogo de reglas del proyecto sincronizado con la memoria** ([DOC10](base/13-documentacion.md#doc10--catálogo-de-reglas-del-proyecto-sincronizado-con-la-memoria)).
+
+Exige dos cosas:
+
+1. **El catálogo.** Todo proyecto tiene sus reglas propias en la ruta que declara su capa 3 (típicamente `.agente/reglas-proyecto.md`), numeradas `P1`, `P2`… para poder citarlas de forma estable. Cada `P` es una restricción, convención o principio que complementa o ajusta la base.
+2. **El sync bidireccional con la memoria de señales** ([`13·DOC5`](base/13-documentacion.md#doc5--registrar-señales-memoria--opt-in)):
+   - regla nueva o endurecida → se registra la señal (`restriccion` / `patron` / `aprendizaje`) apuntando a `P<N>`;
+   - señal generalizable → se evalúa si merece ser regla del catálogo, y se crea en el mismo cierre;
+   - `P` promovida a `base/` → queda banner "promovida a base" y la `P` se compacta al matiz específico: nunca cuerpo duplicado entre catálogo y base, porque dos fuentes autoritativas divergen.
+
+Aclaración que aplica después de esta sesión: la "memoria" de `DOC10` es la de **señales** (`DOC5`, la base de `memoria/`) — lo que el proyecto aprendió. No es `historico-chat/memory/` (`01·C19`), que es cómo pedís que se trabaje. Son dos cosas distintas.
+
+### 16 · Usuario — 2026-08-07 18:48:34
+> ya cumplen el stándart?
+
+### 17 · Usuario — 2026-08-07 18:49:43
+> le estoy preguntando si esas reglas ya cumplen este stándar: 20-meta-reglas
+
+**Agente** — 2026-08-07 18:50:30
+<!-- agente: 7f3d9dd2-b6fd-41ca-b571-9ec1c31467af -->
+
+No.
+
+| Regla | ¿Pasó el checklist de `20`? |
+|---|---|
+| [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) | Sí — **CUMPLE**, contra v2.2.0 |
+| [`20·M13`](base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) | Sí — **CUMPLE**, contra v2.2.0 |
+| [`13·DOC10`](base/13-documentacion.md) | **No.** Nunca se le aplicó |
+| [`01·C10`](base/01-conducta.md) | **No.** Nunca se le aplicó |
+
+Solo tres capítulos se sometieron al molde: `00` (ID1–ID6), `02` (F0–F20) y `20` (M1–M14) — 43 reglas con su bloque, **34 CUMPLE y 9 NO CUMPLE**. Los capítulos `01` y `03`–`19` no tienen ni un bloque de checklist.
+
+Y a ojo, `DOC10` y `C10` reprobarían la fila de [`M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) que exige **una sola exigencia y un cuerpo de una a cuatro líneas**: `DOC10` pide tres cosas (tener el catálogo, sincronizarlo con la memoria, y cómo compactar una `P` promovida a base) y `C10` pide dos (aplicar y evaluar el alcance).
+
+Falta una que es mía: **`C19`, la que escribí hoy, tampoco lleva su bloque de checklist**, y [`M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md) dice que ninguna regla nace fuera del procedimiento y que su cierre es el checklist en CUMPLE. La dejé incompleta.
+
+¿Le aplico el checklist a `C19` ahora, y de paso te digo si `DOC10` y `C10` habría que partirlas?
+
+### 18 · Usuario — 2026-08-07 18:51:13
+> estoy preguntando por las DOC
+
+**Agente** — 2026-08-07 18:52:15
+<!-- agente: 2495a1df-3dfe-489e-aea1-44791eb74545 -->
+
+No. De las 16 `DOC`, **una** cumple. Está auditado hoy mismo en [analisis/base-2026-08-07-cumplimiento-meta-reglas.md](analisis/base-2026-08-07-cumplimiento-meta-reglas.md) §5.14:
+
+| | Reglas | Qué las reprueba |
+|---|---|---|
+| ✅ **1** | `DOC2` | — |
+| 🟡 **5** | `DOC4` `DOC7` `DOC8` `DOC9` `DOC16` | `M5`: sin ejemplo (`DOC4`), o de 18–20 líneas cuando el molde pide 1–4. `DOC9` además pide dos cosas — lo dice su propio título: *consultar antes* **y** *actualizar después* |
+| ❌ **10** | `DOC1` `DOC3` `DOC5` `DOC6` `DOC10` `DOC11` `DOC12` `DOC13` `DOC14` `DOC15` | duplicación, agnosticismo y unicidad |
+
+Las de prioridad **alta**:
+
+- **`DOC1`** y **`DOC3`** — duplicadas por `02·F6` y `02·F7`, ejemplo incluido. `DOC` es el dueño correcto; las `F` se derogan.
+- **`DOC3` ⊂ `DOC11`** — `DOC11` se declara *"extiende DOC3"* y después repite su tabla entera.
+- **`DOC10`** — cita `P28`, una regla de **capa 3**, desde capa 2: dependencia hacia arriba, que `M7` prohíbe. Y cierra con una enumeración congelada (`C1-C10 · DOC1-DOC10 · F1-F5`) que quedó vieja.
+- **`DOC14`** — 58 líneas, nombra GitHub, VSCode, `404`, "route", y trae **rutas reales de un cliente** en los ejemplos: viola `M3` de frente.
+
+Y aparte de eso: **ninguna de las 16 lleva su bloque de checklist**. Solo lo tienen los capítulos `00`, `02` y `20` — 43 reglas. Así que formalmente el capítulo 13 entero está sin cerrar según `M14`.
+
+### 19 · Usuario — 2026-08-07 18:52:31
+> coríjalas
+
+**Agente** — 2026-08-07 19:05:14
+<!-- agente: 6f7fe9fc-2fd7-4860-85f2-1d61d7715c77 -->
+
+Voy a corregirlas. Primero veo con qué herramientas cuento para no romper las 200+ citas al mover el capítulo:
+
+Tengo el instrumento. Empiezo por el índice del capítulo y las primeras reglas:
+
+Faltan los dos anexos que reciben lo que salió de las reglas:
+
+Corregidas. El capítulo `13` pasó por el molde y por el checklist: **18 reglas, 16 CUMPLE y 2 NO CUMPLE**, cada una con su resultado escrito y su motivo.
+
+**Lo de fondo que se arregló**
+
+- **`DOC14`** — era la más larga (58 líneas) y traía **rutas reales de un cliente** en los ejemplos, más visor, editor, código de error y "route": `M3` de frente. Ejemplos ficticios, y el montaje del render local salió al anexo [render-local-de-md.md](base/13-documentacion/render-local-de-md.md) — es infraestructura del proyecto, no regla de enlaces.
+- **`DOC10`** — citaba `P28`, una regla de **capa 3**, desde capa 2: dependencia hacia arriba, que `M7` prohíbe. Y la enumeración congelada de IDs citables, fuera: eso lo garantiza `M4`.
+- **`DOC3` / `DOC11`** — `DOC11` decía "extiende DOC3" y copiaba entera su tabla. El principio queda en `DOC3`, la tabla solo en `DOC11`.
+- **`DOC5`** — el backend descrito en concepto; el motor y la herramienta concretos los declara la capa 3.
+- **`DOC12`** — la excepción tenía condición pero ni límite ni autorizador. Ahora las tres. **`DOC4`** ganó el ejemplo que le faltaba.
+- **Dos IDs nuevos, ninguna exigencia nueva:** [`DOC17`](base/13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md) (README por nivel) estaba enterrado dentro de `DOC15` —y `DOC16` ya lo citaba como si fuera regla propia— y [`DOC18`](base/13-documentacion/reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md) era la segunda mitad de `DOC9`.
+
+El capítulo es ahora carpeta ([base.md](base/13-documentacion/base.md) + `reglas/`), como `00`, `02` y `20`. Los procedimientos que ocupaban el cuerpo se fueron a `plantillas/` — una nueva, [retrodocumentacion.md](plantillas/retrodocumentacion.md).
+
+**Las 2 que no cumplen:** `DOC1` y `DOC3`, filas 2 y 4 — `02·F6` y `02·F7` exigen lo mismo. Los cuatro archivos ya coinciden en que el dueño es el capítulo `13`; consolidarlas es **derogar `F6` y `F7`**, que es MAYOR y decisión tuya. No lo hice.
+
+**207 pruebas OK y `validar.py estandar` limpio** — sin fallas ni avisos, algo que no pasaba desde hace varias sesiones.
+
+Un aviso sobre el commit: al mover el capítulo, `citas.py` reenlazó solo las citas de **25 archivos de otros capítulos**, incluidos los `F14`–`F20` que la otra sesión tiene sin versionar. Son reparaciones de enlace, no cambios de contenido, pero decidí no meterlas a ciegas.
+
+¿Subo solo lo mío —capítulo 13, plantilla, `CHANGELOG`/`VERSION` en **3.2.0** y los índices— y dejo los reenlaces para que los commitee esa sesión? ¿O va todo junto?
+
+### 20 · Usuario — 2026-08-07 19:06:18
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\base\README.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> y qué espera que le diga que la o corrija o qué corto y conciso

@@ -25,6 +25,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Es la segunda de las dos partes que `F4.5` declaraba *"indivisibles"*; la primera es [`F19`](F19-implementa-literal-el-criterio-de-aceptacion.md).
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Es la segunda de las dos partes que [`F4.5`](F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md) declaraba *"indivisibles"*; la primera es [`F19`](F19-implementa-literal-el-criterio-de-aceptacion.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

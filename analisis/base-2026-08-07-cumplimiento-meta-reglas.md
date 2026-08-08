@@ -746,7 +746,7 @@ En la misma columna, `F0` cita como "regla" a `plantillas/brief.md`, `skill anal
 | `PR4 · No los expongas en logs, errores ni mensajes` | `:24` | 🟡 | `M12` | texto prestado | H-06 · reformula `05·E5`, que a su vez reformula `00·N6` — tres capas del mismo criterio | Dejar enlace + la parte propia (reportes y pantallas) | Baja |
 | `PR5 · Retención y borrado` | `:33` | ✅ | `M5` | molde / ejemplo | Cumple (título nominal, H-13, es lo único) | Título imperativo | Baja |
 
-### 5.14 · `13 · Documentación` — 16 reglas · [`base/13-documentacion.md`](../base/13-documentacion.md)
+### 5.14 · `13 · Documentación` — 16 reglas · [`base/13-documentacion/`](../base/13-documentacion/base.md)
 
 | Regla | Ubic. | Estado | Meta-reglas | Criterios evaluados | Hallazgos e incumplimientos | Recomendación | Prio. |
 |---|---|---|---|---|---|---|---|

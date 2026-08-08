@@ -27,6 +27,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | D · Cómo se relaciona | 14–17 | ✅ ✅ ✅ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 20 ✅ · 0 ❌ · 0 N/A.** Toma el contenido de `F4.2`, cuyo ID decimal no admitía [`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) — era su único ❌.
+**20 filas: 20 ✅ · 0 ❌ · 0 N/A.** Toma el contenido de [`F4.2`](F4.2-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md), cuyo ID decimal no admitía [`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) — era su único ❌.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

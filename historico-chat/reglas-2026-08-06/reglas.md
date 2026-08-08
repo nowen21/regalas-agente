@@ -284,7 +284,7 @@ Y lo deja como decisión del usuario, sin resolver.
 
 **Decisión que sigue abierta** (la dejó abierta la sesión 3 y sigue igual): si va a `base/` aplica a **todos** los proyectos y es cambio versionado; si va a `plantillas/CLAUDE.md.plantilla`, queda opt-in por proyecto. Como hay chats que manejan datos sensibles, la salida intermedia es regla en `base/` marcada `*opt-in*`, que es exactamente para lo que `M5` reserva esa marca.
 
-**Cómo quedaría escrita** — en [`base/13-documentacion.md`](../../base/13-documentacion.md), escrita con la marca `*opt-in*`:
+**Cómo quedaría escrita** — en [`base/13-documentacion.md`](../../base/13-documentacion/base.md), escrita con la marca `*opt-in*`:
 
 ````markdown
 ## DOC17 · Toda sesión de trabajo se registra en `historico-chat/`  ·  *opt-in*

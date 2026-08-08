@@ -2,7 +2,7 @@
 
 ## F0 · Recorre la cadena completa, sin saltar eslabones
 
-Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre `brief → épica → HU → spec → plan → código`, grande o chico. Ningún eslabón se salta, se fusiona ni se omite por tamaño. Si te piden un paso y falta el anterior, **PAUSAR y crearlo primero** (depende de [`02·F2`](F2-sin-spec-acordada-no-hay-codigo.md), [`13·DOC15`](../../13-documentacion.md#doc15--historias-de-usuario-desde-plantilla-central), [`13·DOC16`](../../13-documentacion.md#doc16--épicas-desde-plantilla-central)).
+Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre `brief → épica → HU → spec → plan → código`, grande o chico. Ningún eslabón se salta, se fusiona ni se omite por tamaño. Si te piden un paso y falta el anterior, **PAUSAR y crearlo primero** (depende de [`02·F2`](F2-sin-spec-acordada-no-hay-codigo.md), [`13·DOC15`](../../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), [`13·DOC16`](../../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md)).
 
 **Excepción** — lo que **no es desarrollo** queda fuera de la cadena: leer o investigar, configuración local, comandos que el usuario pide, y el arreglo que solo devuelve el código a lo que ya decía la spec (condición). Cubre ese trabajo puntual; no habilita a construir funcionalidad sin cadena (límite). Si hay duda de si el caso es desarrollo, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza).
 

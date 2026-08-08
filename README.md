@@ -60,7 +60,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`10-dependencias.md`](base/10-dependencias.md) — librerías de terceros
 - [`11-configuracion-entornos.md`](base/11-configuracion-entornos.md) — configuración y entornos
 - [`12-privacidad-datos.md`](base/12-privacidad-datos.md) — datos personales y retención
-- [`13-documentacion.md`](base/13-documentacion.md) — persistir trabajo y decisiones
+- [`13-documentacion/`](base/13-documentacion/base.md) — persistir trabajo y decisiones
 - [`14-estructura-codigo.md`](base/14-estructura-codigo.md) — organización y nomenclatura
 - [`15-registros-inmutables.md`](base/15-registros-inmutables.md) — patrón append-only *(opt-in)*
 - [`16-cumplimiento-y-calidad.md`](base/16-cumplimiento-y-calidad.md) — leyes, frameworks (COBIT, ISO, OWASP…), cumplimiento por construcción *(opt-in)*

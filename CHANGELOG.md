@@ -11,30 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
-## 2.5.0 — 2026-08-07
+## 4.0.0 — 2026-08-08
 
-**MENOR** (las diecinueve reglas del flujo pasan por el molde y por el checklist; ninguna cambia qué exige).
+**MAYOR** ⚠ obliga a migrar (dos reglas del capítulo `02` quedan derogadas: quien cite `02·F6` o `02·F7` tiene que citar `13·DOC1` y `13·DOC3`).
 
-**El capítulo 02 se somete al estándar, como ya hizo el 20.** `M14` dice que ninguna regla nace fuera del procedimiento y que su cierre es el checklist. Se aplicó a `F0`–`F13`. **Resultado: 9 cumplen, 10 no** — y las diez reprueban por cosas que solo el usuario puede decidir.
+**`13 · Documentación` se somete al checklist.** Era el único capítulo grande que nunca había pasado por [`M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md): 16 reglas, 30 KB, cero bloques de checklist. La auditoría de [`analisis/base-2026-08-07-cumplimiento-meta-reglas.md`](analisis/base-2026-08-07-cumplimiento-meta-reglas.md) §5.14 lo había medido — **1 cumplía, 5 al borde y 10 no**. Ahora son **18 reglas, las 18 CUMPLE**, cada una con su resultado escrito y su motivo.
 
-**La regla se separó de su explicación.** Cada archivo de `reglas/` conserva **solo la exigencia**: encabezado, cuerpo de una a cuatro líneas, dependencia declarada, excepción con sus tres partes y ejemplo. Todo lo que desarrollaba, ilustraba o justificaba —la tabla de once etapas, la construcción de la línea base, la casuística de migración, el protocolo de `F8`, el mensaje de orientación de `F13`— pasó a `base.md`, a una sección `### F<n>` por regla. `F4.3`, que era la regla más larga del catálogo con 78 líneas, quedó en cinco.
+- `base/13-documentacion.md` → `base/13-documentacion/base.md` + `reglas/`, el mismo molde que `00-identidad-y-rol/`, `02-flujo-de-trabajo/` y `20-meta-reglas/`. El índice del capítulo dice qué exige cada regla en una línea; el cuerpo de cada una pasó de párrafos a una a cuatro líneas.
+- **Dos reglas nuevas, ninguna exigencia nueva.** [`DOC17`](base/13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md) (un `README.md` por nivel del árbol) vivía dentro de `DOC15`, y `DOC16` ya la citaba como si fuera regla propia. [`DOC18`](base/13-documentacion/reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md) (actualizar el mapa al cerrar) era la segunda mitad de `DOC9`, que pedía dos cosas cumplibles por separado — lo anunciaba su propio título. Quien las citaba dentro de la regla vieja ahora las cita por su ID.
+- **`DOC14` deja de nombrar herramientas.** Era la regla más larga del capítulo (58 líneas): nombraba visor de repositorio, editor, código de error y "route", y traía **rutas reales de un cliente** en los ejemplos — `M3` de frente. Los ejemplos son ficticios y el montaje del render local salió a [`base/13-documentacion/render-local-de-md.md`](base/13-documentacion/render-local-de-md.md), anexo del capítulo: es infraestructura del proyecto, no regla de redacción de enlaces.
+- **`DOC5` describe el backend en concepto**, no con un motor, una herramienta y una carpeta concretos. Cuál se usa lo declara la capa 3, que es donde `M3` lo manda.
+- **`DOC10` deja de depender hacia arriba.** Citaba `P28` —una regla del catálogo de **un proyecto**— desde capa 2, que [`M7`](base/20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) prohíbe, y cerraba con una enumeración congelada de IDs citables que ya estaba vieja; lo que garantiza que toda regla se pueda citar es `M4`.
+- **`DOC3` y `DOC11` dejan de repetirse.** `DOC11` se declaraba *"extiende DOC3"* y a continuación copiaba entera su tabla. El principio queda en `DOC3`, la tabla solo en `DOC11`.
+- **`DOC12` completa su excepción** —tenía condición, le faltaban límite y autorizador ([`M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md))— y **`DOC4` gana el ejemplo** que no tenía.
+- Los procedimientos y formatos que ocupaban el cuerpo de `DOC6`, `DOC8`, `DOC12` y `DOC13` viven donde corresponde: `plantillas/`. Nueva: [`plantillas/retrodocumentacion.md`](plantillas/retrodocumentacion.md), los seis pasos de `DOC6`.
 
-- **`F0` toma el texto corregido que `estructura-regla.md` ya publicaba** desde la v2.2.0 sin que nadie lo aplicara. Convivían dos versiones de la misma regla y ninguna decía cuál mandaba.
-- **Los títulos que contaban ahora mandan** (`M5`): `F0 · Recorre la cadena completa, sin saltar eslabones` · `F3 · Ejecuta seguido el plan aprobado` · `F5 · Corre solo las suites que la fase toca` · `F7 · No cierres una fase con trazabilidad incompleta` · `F9 · No subdividas ni renegocies un plan ya aprobado` · `F13 · Detente si el proyecto no tiene su estructura base`, entre otros. **Ningún ID cambió** (`M4`); los archivos se renombraron detrás del título.
-- **`F13` pierde la marca inventada** `[GATE DE ARRANQUE · PRECONDICIÓN]`, que el propio `estructura-regla.md` usaba como anti-ejemplo literal. Que corra primero lo dice el capítulo, no una etiqueta.
-- **Ocho excepciones que decían cuándo no aplican pero no hasta dónde ni quién autoriza** quedaron completas (`M8`): `F0`, `F2`, `F4`, `F4.2`, `F4.4`, `F9`, `F10`, `F11`.
-- **Se rompió el ciclo de dependencias `F4.4 ↔ F4.5`** y la duplicación `F3`/`F9`, que ahora es `extiende 02·F3` (`M7`). El texto que `F5`, `F6` y `F7` copiaban de `08·T5`, `13·DOC1` y `13·DOC3` —ejemplo incluido, palabra por palabra— se reemplazó por el enlace (`M5`).
+**Se consolidan los dos duplicados.** [`02·F6`](base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md) y [`02·F7`](base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md) exigían lo mismo que `DOC1` y `DOC3` —el ejemplo de `F7` era idéntico palabra por palabra— y las cuatro reprobaban por eso. Quedan **derogadas** ([`M11`](base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)): marca en el encabezado, texto original conservado debajo, ID no reutilizado. Con eso, `DOC1` y `DOC3` pasan a CUMPLE y el capítulo `13` queda **18 de 18**.
 
-**Las diez que reprueban, y por qué.** No son defectos de redacción: son decisiones de catálogo, y el catálogo lo decide el usuario.
+**Qué hay que hacer en un proyecto:** cambiar `02·F6` por `13·DOC1` y `02·F7` por `13·DOC3` donde se los cite —specs, planes, fases abiertas—. Las fases ya cerradas no se reabren: quedan selladas con la versión bajo la que cerraron.
 
-| Reglas | Fila | Qué falta decidir |
-|---|---|---|
-| `F4.1`–`F4.5` | 6 | el sub-ID decimal no lo contempla `M4`: legalizarlo o promoverlas a `F14`… |
-| `F4`, `F4.3`, `F4.5` | 8 · 9 | llevan dos exigencias que se cumplen por separado; partirlas crea IDs nuevos |
-| `F5`, `F6`, `F7` | 2 · 4 | el dueño del tema es `08` y `13`; derogarlas a favor de `T5`, `DOC1` y `DOC3` es `M11` |
-| `F12` | 8 · 9 · 10 | su texto está **congelado por decisión del usuario** y el agente no lo reescribe |
-
-Cada una lo dice en su propio archivo, con la marca *"regla vigente y reprobada"* que ya usa `M4`: siguen rigiendo (`M10` — un cambio de norma no reabre lo cerrado), pero no son conformes hasta que se resuelva.
+Las citas del resto del estándar se reenlazaron solas a los archivos de destino (`validadores/citas.py`).
 
 ## 3.1.1 — 2026-08-07
 
@@ -83,6 +79,31 @@ Detrás, para que no dependa de que el agente se acuerde:
 - `validadores/checklist.py` · `versiones.py` — el componente `recuerdos` reprueba si falta la carpeta, si el índice quedó viejo o si algo sigue en el almacén local.
 
 **Qué hay que hacer en un proyecto ya instalado:** correr `python validadores/instalar.py "<proyecto>" --aplicar`. Crea la carpeta y mueve lo que hubiera. Lo que entre como `-local` lo decide el usuario.
+
+## 2.5.0 — 2026-08-07
+
+**MENOR** (las diecinueve reglas del flujo pasan por el molde y por el checklist; ninguna cambia qué exige).
+
+**El capítulo 02 se somete al estándar, como ya hizo el 20.** `M14` dice que ninguna regla nace fuera del procedimiento y que su cierre es el checklist. Se aplicó a `F0`–`F13`. **Resultado: 9 cumplen, 10 no** — y las diez reprueban por cosas que solo el usuario puede decidir.
+
+**La regla se separó de su explicación.** Cada archivo de `reglas/` conserva **solo la exigencia**: encabezado, cuerpo de una a cuatro líneas, dependencia declarada, excepción con sus tres partes y ejemplo. Todo lo que desarrollaba, ilustraba o justificaba —la tabla de once etapas, la construcción de la línea base, la casuística de migración, el protocolo de `F8`, el mensaje de orientación de `F13`— pasó a `base.md`, a una sección `### F<n>` por regla. `F4.3`, que era la regla más larga del catálogo con 78 líneas, quedó en cinco.
+
+- **`F0` toma el texto corregido que `estructura-regla.md` ya publicaba** desde la v2.2.0 sin que nadie lo aplicara. Convivían dos versiones de la misma regla y ninguna decía cuál mandaba.
+- **Los títulos que contaban ahora mandan** (`M5`): `F0 · Recorre la cadena completa, sin saltar eslabones` · `F3 · Ejecuta seguido el plan aprobado` · `F5 · Corre solo las suites que la fase toca` · `F7 · No cierres una fase con trazabilidad incompleta` · `F9 · No subdividas ni renegocies un plan ya aprobado` · `F13 · Detente si el proyecto no tiene su estructura base`, entre otros. **Ningún ID cambió** (`M4`); los archivos se renombraron detrás del título.
+- **`F13` pierde la marca inventada** `[GATE DE ARRANQUE · PRECONDICIÓN]`, que el propio `estructura-regla.md` usaba como anti-ejemplo literal. Que corra primero lo dice el capítulo, no una etiqueta.
+- **Ocho excepciones que decían cuándo no aplican pero no hasta dónde ni quién autoriza** quedaron completas (`M8`): `F0`, `F2`, `F4`, `F4.2`, `F4.4`, `F9`, `F10`, `F11`.
+- **Se rompió el ciclo de dependencias `F4.4 ↔ F4.5`** y la duplicación `F3`/`F9`, que ahora es `extiende 02·F3` (`M7`). El texto que `F5`, `F6` y `F7` copiaban de `08·T5`, `13·DOC1` y `13·DOC3` —ejemplo incluido, palabra por palabra— se reemplazó por el enlace (`M5`).
+
+**Las diez que reprueban, y por qué.** No son defectos de redacción: son decisiones de catálogo, y el catálogo lo decide el usuario.
+
+| Reglas | Fila | Qué falta decidir |
+|---|---|---|
+| `F4.1`–`F4.5` | 6 | el sub-ID decimal no lo contempla `M4`: legalizarlo o promoverlas a `F14`… |
+| `F4`, `F4.3`, `F4.5` | 8 · 9 | llevan dos exigencias que se cumplen por separado; partirlas crea IDs nuevos |
+| `F5`, `F6`, `F7` | 2 · 4 | el dueño del tema es `08` y `13`; derogarlas a favor de `T5`, `DOC1` y `DOC3` es `M11` |
+| `F12` | 8 · 9 · 10 | su texto está **congelado por decisión del usuario** y el agente no lo reescribe |
+
+Cada una lo dice en su propio archivo, con la marca *"regla vigente y reprobada"* que ya usa `M4`: siguen rigiendo (`M10` — un cambio de norma no reabre lo cerrado), pero no son conformes hasta que se resuelva.
 
 ## 2.4.0 — 2026-08-07
 
