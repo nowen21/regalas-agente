@@ -63,3 +63,4 @@ y qué archivo se tocó.
 - [2026-08-07-sesion-11.md](2026-08-07-sesion-11.md) — sesión del 2026-08-07.
 - [2026-08-07-sesion-12.md](2026-08-07-sesion-12.md) — sesión del 2026-08-07.
 - [2026-08-08-sesion.md](2026-08-08-sesion.md) — el `CLAUDE.md` pasa a ser el setup del agente: la instalación se hace sola con una línea y `02·F13` deja de detener el arranque (v5.0.0).
+- [2026-08-08-sesion-2.md](2026-08-08-sesion-2.md) — documentación técnica de `validadores/`: un `.md` por archivo en `validadores/docs/`.
