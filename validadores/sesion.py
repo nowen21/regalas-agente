@@ -25,8 +25,11 @@ from comun import AVISO, FALLA, Hallazgo, encabezados, leer
 
 PLANTILLA_CLAUDE = "plantillas/CLAUDE.md.plantilla"
 
-# La plantilla marca lo que hay que reemplazar con «comillas angulares».
-_SIN_LLENAR = re.compile(r"«[^»\n]+»")
+# La plantilla marca lo que hay que reemplazar con «comillas angulares». Se
+# excluye «…» a propósito: no es un marcador, es cómo se nombra a un marcador
+# cuando el texto habla de ellos. Tratarlo como hueco deja al `CLAUDE.md`
+# reprobando por una frase que está bien escrita.
+_SIN_LLENAR = re.compile(r"«(?!…»)[^»\n]+»")
 
 
 def _ruta_plantilla(estandar):
@@ -120,10 +123,14 @@ def revisar(proyecto, estandar):
     """Todas las comprobaciones de arranque, en orden de precedencia."""
     proyecto = os.path.abspath(proyecto)
 
-    # F13 es el gate: si no pasa, lo demás no tiene sentido todavía.
+    # F13 primero: sin la estructura base, lo demás no tiene sentido todavía.
+    # Ya no es un muro — la carpeta la crea el instalador—, así que si falta es
+    # que el proyecto nunca se instaló, y eso se arregla con una línea.
     if not instalar.cumple_f13(proyecto):
         return [Hallazgo(FALLA, proyecto, 0,
-                         "no cumple 02·F13 — falta la carpeta `proyectos/`")]
+                         "falta la carpeta `proyectos/` (02·F13): este proyecto "
+                         "no está instalado — correr validadores/instalar.py "
+                         "--aplicar")]
 
     return revisar_claude_md(proyecto, estandar) + \
         revisar_enganches(proyecto, estandar)

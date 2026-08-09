@@ -6,25 +6,35 @@ Este archivo vive en el estándar y se copia a `./.agente/stack-instalacion.md` 
 
 > **No se edita la copia.** La reescribe el instalador. Lo que se ajusta por proyecto va en `CLAUDE.md` o en `.agente/reglas-proyecto.md`.
 
+## Todo se instala con una sola línea
+
+```sh
+python validadores/instalar.py "<proyecto>" --aplicar
+```
+
+**Ningún componente de esta lista se instala a mano.** El instalador lee el estado del proyecto, calcula qué falta y lo deja puesto; después vuelve a comprobar y dice si algo quedó fuera. Es idempotente: lo que ya está al día no se toca, no se duplica y no se pisa.
+
+Lo que **no** decide el instalador —porque no es suyo— es qué código va dentro de `proyectos/` y cuándo el proyecto sube la versión adoptada del estándar. Ni lo pregunta al arrancar: crea la carpeta vacía y deja declarada la versión con la que se instaló.
+
 ## Componentes
 
-La columna `id` es la que usa el validador; no se renombra ni se reordena por gusto.
+La columna `id` es la que usa el validador; no se renombra ni se reordena por gusto. Todos se instalan con la línea de arriba: la tercera columna dice qué hace el instalador con cada uno.
 
-| id | Componente | Cómo se instala |
+| id | Componente | Qué hace el instalador |
 |---|---|---|
-| `f13` | La carpeta `proyectos/`, donde vive el código (`02·F13`). Es la precondición de todo lo demás. | La crea el usuario: `proyectos/<su-proyecto>/`. El agente no la inventa. |
-| `claude-md` | El `CLAUDE.md` del proyecto: existe, sin `«marcadores»` sin reemplazar, y **sincronizado** con la plantilla central. | Copiar `plantillas/CLAUDE.md.plantilla` a la raíz como `CLAUDE.md` y llenar cada `«…»`. Si la plantilla cambió: aplicar lo nuevo y `python validadores/instalar.py "<proyecto>" --aplicar` para volver a sellarlo. |
-| `gitignore` | El `.gitignore` con las líneas `CLAUDE.md` y `.agente/`: son configuración local, no del repositorio. | Agregar las dos líneas al `.gitignore` del proyecto. |
-| `agente-config` | Los 4 archivos de `./.agente/`: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. | Los copia y llena el agente al abrir sesión (paso 3 del `CLAUDE.md`). |
-| `stack-instalacion` | Este mismo archivo, copiado a `./.agente/` y al día con el del estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
-| `documentacion` | La carpeta `documentacion/`, donde el agente deja specs, planes y trazabilidad (regla `13`). | La crea el agente al producir el primer documento; también sirve crearla vacía. |
-| `historico` | La carpeta `historico-chat/` con su `README.md`: la transcripción de cada sesión. | `python validadores/instalar.py "<proyecto>" --aplicar` |
-| `recuerdos` | La carpeta `historico-chat/memory/` con su índice: la memoria del agente, versionada. Y la carpeta local de la herramienta (`~/.claude/projects/<proyecto>/memory/`) **vacía**: lo que aparezca ahí se mueve acá. | `python validadores/instalar.py "<proyecto>" --aplicar` |
-| `enganches-git` | Los enganches `commit-msg` y `pre-commit` en cada repositorio, apuntando a este estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
-| `enganches-claude` | Los enganches de Claude Code en `.claude/settings.json`, apuntando a este estándar. | `python validadores/instalar.py "<proyecto>" --aplicar` |
-| `registro` | El proyecto anotado en `plantillas/proyectos.md` del estándar: la lista única de proyectos que usan el agente. | Agregar la fila: nombre · ruta · scope de memoria · stack. |
-| `version` | Que el proyecto **declare** qué versión del estándar sigue. El número en sí no reprueba: que sea más viejo que el central no obliga a nada por sí solo. | Fijar «Versión del estándar adoptada» en el `CLAUDE.md`. Subir de versión es decisión del usuario. |
-| `versiones` | La carpeta `./documentacion/versiones/`: un registro por actualización, con desde cuándo el proyecto usa cada versión y qué se actualizó. Se versiona. | `python validadores/instalar.py "<proyecto>" --aplicar` |
+| `f13` | La carpeta `proyectos/`, donde vive el código (`02·F13`). | La crea vacía. **No** mueve ni reorganiza código: qué va adentro es del usuario. |
+| `claude-md` | El `CLAUDE.md` del proyecto: existe, sin marcadores sin reemplazar, y **sincronizado** con la plantilla central. | Si falta, lo genera desde `plantillas/CLAUDE.md.plantilla` con las rutas de esta máquina, el nombre y el slug del proyecto y la versión del estándar. Si ya está, llena los marcadores que queden, agrega al final las secciones que la plantilla sumó —sin pisar lo escrito— y lo vuelve a sellar. |
+| `gitignore` | El `.gitignore` con las líneas `CLAUDE.md` y `.agente/`: son configuración local, no del repositorio. | Agrega las líneas que falten. Nunca reescribe ni reordena el resto. |
+| `agente-config` | Los 4 archivos de `./.agente/`: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. | Los pone desde sus plantillas si faltan; si ya están, no los toca. Llenarlos con los datos del proyecto es del agente al abrir sesión (paso 3 del `CLAUDE.md`). |
+| `stack-instalacion` | Este mismo archivo, copiado a `./.agente/` y al día con el del estándar. | Lo copia y lo sella. Esta copia sí se reescribe entera: no la llena nadie. |
+| `documentacion` | La carpeta `documentacion/`, donde el agente deja specs, planes y trazabilidad (regla `13`). | La crea vacía. |
+| `historico` | La carpeta `historico-chat/` con su `README.md`: la transcripción de cada sesión. | La crea con su `README.md` desde la plantilla; si ya está, solo refresca el sello. |
+| `recuerdos` | La carpeta `historico-chat/memory/` con su índice: la memoria del agente, versionada. Y la carpeta local de la herramienta (`~/.claude/projects/<proyecto>/memory/`) **vacía**: lo que aparezca ahí se mueve acá. | Crea la carpeta y el índice, y vacía el almacén local moviendo lo que haya. |
+| `enganches-git` | Los enganches `commit-msg` y `pre-commit` en cada repositorio, apuntando a este estándar. | Los escribe en `.githooks/` y apunta `core.hooksPath` ahí, en cada repositorio que encuentre. |
+| `enganches-claude` | Los enganches de Claude Code en `.claude/settings.json`, apuntando a este estándar. | Los agrega al `settings.json`, respetando lo que ya hubiera. Una versión anterior del mismo enganche se reemplaza, no se duplica. |
+| `registro` | El proyecto anotado en `plantillas/proyectos.md` del estándar: la lista única de proyectos que usan el agente. | Agrega la fila con nombre, ruta y scope de memoria. El stack queda «por detectar» hasta que el agente llene `.agente/stack.md`. |
+| `version` | Que el proyecto **declare** qué versión del estándar sigue. El número en sí no reprueba: que sea más viejo que el central no obliga a nada por sí solo. | La deja declarada en el `CLAUDE.md` al instalarlo. **Subirla después es decisión del usuario:** un cambio de norma no reabre fases ya cerradas. |
+| `versiones` | La carpeta `./documentacion/versiones/`: un registro por actualización, con desde cuándo el proyecto usa cada versión y qué se actualizó. Se versiona. | Escribe un registro cada vez que algo cambia de huella. |
 
 ## Cómo se comprueba
 
@@ -32,9 +42,11 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 python validadores/validar.py checklist --raiz "<proyecto>"
 ```
 
-Y solo: en cada mensaje de la sesión, el enganche `UserPromptSubmit` repite la comprobación. Si falta algo, escribe `./.agente/INSTALACION-INCOMPLETA.md` con la lista y se lo pasa al agente, que debe decirlo. Cuando ya no falta nada, **borra** ese archivo: su ausencia es la señal de instalación completa.
+El instalador la corre solo al terminar, así que instalar y comprobar son el mismo paso: no se declara completo lo que no se miró.
 
-No bloquea el trabajo. El único que detiene es el gate `f13`, que ya era así: sin `proyectos/` no hay dónde trabajar.
+Y además: en cada mensaje de la sesión, el enganche `UserPromptSubmit` repite la comprobación. Si falta algo, escribe `./.agente/INSTALACION-INCOMPLETA.md` con la lista y se lo pasa al agente, que debe decirlo. Cuando ya no falta nada, **borra** ese archivo: su ausencia es la señal de instalación completa.
+
+No bloquea el trabajo. Lo que aparezca después de haber instalado es, por definición, algo que exige una decisión del usuario — y entonces se dice cuál es y por qué.
 
 ## Nada de lo que el proyecto usa puede quedar viejo
 
@@ -75,7 +87,7 @@ Aplicar la actualización es siempre lo mismo:
 python validadores/instalar.py "<proyecto>" --aplicar
 ```
 
-Es idempotente: lo que ya está al día no se toca. Lo único que no aplica solo es subir la **versión adoptada** del estándar — esa es decisión del usuario, porque un cambio de norma no reabre fases ya cerradas.
+Es la misma línea que instala desde cero: instalar y actualizar son el mismo proceso, y es idempotente. Lo único que no aplica solo es subir la **versión adoptada** del estándar — esa es decisión del usuario, porque un cambio de norma no reabre fases ya cerradas.
 
 ## Dónde queda registrada cada actualización
 

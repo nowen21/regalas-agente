@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 5.0.0 — 2026-08-08
+
+**MAYOR** ⚠ obliga a migrar (`02·F13` cambia de exigencia: el agente ya no se detiene a esperar que el usuario cree la estructura, la crea él).
+
+**El `CLAUDE.md` pasa a ser el setup del agente, y la instalación se hace sola.** Instalar un proyecto pedía siete pasos a mano —copiar la plantilla, reemplazar cada `«…»`, crear `proyectos/`, editar el `.gitignore`, poner los 4 archivos de `.agente/`, anotar el proyecto en el registro central y fijar la versión adoptada— y hasta que alguien los hiciera, el proyecto trabajaba **sin reglas**. Ahora los pone el instalador: una línea deja el entorno completo, operativo y comprobado.
+
+```sh
+python validadores/instalar.py "<proyecto>" --aplicar
+```
+
+- **[`plantillas/CLAUDE.md.plantilla`](plantillas/CLAUDE.md.plantilla) — sin el recuadro de pasos manuales.** Se abría con *"BORRAR ESTE RECUADRO"* y cuatro instrucciones para el usuario; ese recuadro **era** el proceso de instalación, y era lo que fallaba. En su lugar, la sección **Instalación** con la única línea que hay que correr, qué deja puesto y qué no decide. Los marcadores (`«RUTA-ESTANDAR»`, `«NOMBRE-PROYECTO»`, `«SLUG-PROYECTO»`, `«VERSION-ESTANDAR»`) los llena el instalador; los opt-in `15`–`19` traen su valor por defecto (`no`) en vez de un `«sí / no»` que dejaba el archivo reprobando hasta que alguien lo editara. Nueva sección **2.5** (el código del usuario) y arranque de sesión reordenado: instalar es el paso 1.
+- **[`validadores/instalar.py`](validadores/instalar.py) instala el proyecto entero**, no solo los enganches: estructura base (`proyectos/`, `documentacion/`, `prompts/`), `CLAUDE.md` generado desde la plantilla con las rutas de la máquina, `.gitignore`, los 4 archivos de `.agente/`, la fila en el registro central — y al terminar corre el checklist y reporta lo que quedó. Sobre un proyecto ya instalado no duplica ni pisa nada; sobre uno con el `CLAUDE.md` viejo, llena los marcadores que queden (incluidos los de plantillas anteriores) y agrega solo las secciones que la plantilla sumó.
+- **[`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) deja de ser un muro.** Pasa de *"Detente si el proyecto no tiene su estructura base"* a *"Deja la estructura base puesta antes de trabajar"*: crear una carpeta que la norma exige no es una decisión del usuario, es la norma. Lo que sigue siendo suyo —y la regla lo dice más fuerte que antes— es **qué va dentro de `proyectos/`**: el agente crea la carpeta vacía y **nunca** mueve, reorganiza ni acomoda código que ya exista. Se retiran el mensaje de orientación y el bloqueo del arranque. El resultado del checklist de la regla queda **anulado**: se vuelve a aplicar en el próximo repaso del capítulo.
+- **[`01·C18`](base/01-conducta.md) se aplica sola.** Pedía *"avisa al usuario y ofrece aplicarlos"* y *"jamás en silencio"*: una pregunta cuya única respuesta útil es "sí", que mientras no se contestaba dejaba el `CLAUDE.md` viejo. Ahora el instalador aplica lo aditivo y **dice qué agregó** — en su salida y en el registro de `documentacion/versiones/`. Sigue sin pisar, reordenar ni borrar lo escrito.
+- **[`plantillas/stack-instalacion.md`](plantillas/stack-instalacion.md)** cambia la columna *"Cómo se instala"* por *"Qué hace el instalador"*: los 13 componentes se instalan con la misma línea. Ninguna fila le pide nada al usuario.
+- Un `«…»` dentro de una frase deja de contar como marcador sin llenar: es cómo se nombra a un marcador, no un hueco.
+- **El propio estándar queda fuera** de la configuración de proyecto: no es un proyecto que use el agente, es donde viven las reglas. Recibe los enganches, el histórico y la memoria; no `proyectos/`, ni `.agente/`, ni un `.gitignore` que borraría su `CLAUDE.md` del repositorio.
+
 ## 4.0.0 — 2026-08-08
 
 **MAYOR** ⚠ obliga a migrar (dos reglas del capítulo `02` quedan derogadas: quien cite `02·F6` o `02·F7` tiene que citar `13·DOC1` y `13·DOC3`).

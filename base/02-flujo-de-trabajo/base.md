@@ -6,7 +6,7 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 
 **Qué cumple cada regla y qué no:** cada una cierra con su resultado del [checklist del estándar](../20-meta-reglas/checklist.md). De las diecinueve vigentes, **dieciséis dan CUMPLE y tres no**: [`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) por llevar dos exigencias, [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) porque el dueño del tema es otro capítulo, y [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md). [`F6`](reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md) y [`F7`](reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md) quedaron **derogadas** en 4.0.0 a favor de [`13·DOC1`](../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md) y [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md). Una auditoría posterior lo lee ahí y no las vuelve a analizar.
 
-**El gate corre antes que todo.** [`F13`](reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md) se aplica antes que [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) y que cualquier paso del flujo; el número es catálogo, no orden de ejecución. Su árbol de estructura está en [`estructura-base.md`](estructura-base.md).
+**La estructura se pone antes que todo.** [`F13`](reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) se aplica antes que [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) y que cualquier paso del flujo; el número es catálogo, no orden de ejecución. Su árbol de estructura está en [`estructura-base.md`](estructura-base.md).
 
 ---
 
@@ -27,7 +27,7 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 | [`F10 · Planifica la migración en vez de postergar por producción`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md) | Asumir "probablemente está en prod" y declarar la estrategia. | CUMPLE |
 | [`F11 · Una fase solo modifica código de su propio módulo`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) | Lo que toca a otro módulo se agenda como fase propia. | CUMPLE |
 | [`F12 · Relación y nomenclatura de fases`](reglas/F12-relacion-y-nomenclatura-de-fases.md) | Épica → HU → Fases, con el identificador y la ruta física de la fase. | NO CUMPLE |
-| [`F13 · Detente si el proyecto no tiene su estructura base`](reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md) | Existe la carpeta `proyectos/` o el arranque se detiene. | CUMPLE |
+| [`F13 · Deja la estructura base puesta antes de trabajar`](reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) | La estructura se crea sola; qué va dentro de `proyectos/` lo decide el usuario. | pendiente |
 | [`F14 · Responde las trece preguntas en todo plan de trabajo`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) | Las trece cierran la ambigüedad antes de escribir código. | CUMPLE |
 | [`F15 · No saltes ni reordenes las once etapas de la fase`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) | El ciclo va en orden, de la declaración macro a la publicación. | CUMPLE |
 | [`F16 · Declara los cinco componentes de cada intervención del plan`](reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) | Qué, cómo, dónde, por qué y con qué impacto — sin verbos vagos. | CUMPLE |
@@ -188,27 +188,15 @@ Si durante la ejecución aparece un archivo de otro módulo que rompería por la
 
 Trabajo adelantado que "se metió" en una fase por error: si el usuario lo aprueba después, se mantiene y se documenta con nota en el spec del módulo dueño ([`13·DOC7`](../13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md)), pero **no** se documenta como cerrado — cada módulo tendrá su fase formal cuando le toque.
 
-### F13 — el alcance del gate y el mensaje de orientación
+### F13 — el alcance de la estructura y quién decide qué
 
-**Solo valida estructura.** No detecta el stack, no conoce el propósito, el dominio ni la funcionalidad del proyecto. Si durante el gate el agente usa información del stack o del dominio, el flujo está mal: eso corresponde a etapas posteriores.
+**Solo pone estructura.** No detecta el stack, no conoce el propósito, el dominio ni la funcionalidad del proyecto. Si al crear la estructura el agente usa información del stack o del dominio, el flujo está mal: eso corresponde a etapas posteriores.
 
-**Dos mundos separados.** `proyectos/` es del usuario y el agente **nunca** lo toca: no lo modifica, no lo reestructura, no asume su organización. `.agente/`, `prompts/` y `documentacion/` son el espacio del agente, que él crea y gestiona al lado. Crear y organizar `proyectos/` corresponde **exclusivamente al usuario**.
+**Dos mundos separados.** `proyectos/` es del usuario: el agente crea la **carpeta** —la exige la norma, no es una decisión— pero **nunca toca su contenido**: no lo modifica, no lo reestructura, no asume su organización, no mueve código adentro. `.agente/`, `prompts/` y `documentacion/` son el espacio del agente, que él crea y gestiona al lado. Organizar `proyectos/` corresponde **exclusivamente al usuario**.
 
-**Mensaje de orientación cuando `proyectos/` no existe:**
+**Quién crea la estructura.** El instalador del estándar (`validadores/instalar.py`), en el primer paso de cada sesión. Crearla es parte de la instalación, no una tarea que se le encarga al usuario: pedirle que hiciera a mano una carpeta que la norma ya exige dejaba la instalación parada en el primer paso, y un proyecto a medio instalar es un proyecto sin reglas.
 
-```
-⚠️ No puedo continuar: falta la estructura base.
-
-No existe la carpeta `proyectos/`, donde debe vivir el código fuente.
-
-Para continuar, creá:
-    proyectos/
-    └── <tu-proyecto>/     ← coloca aquí tu código (uno o varios proyectos)
-
-Vos decidís la organización y los nombres. Cuando `proyectos/` exista,
-creo mi espacio (.agente/, prompts/, documentacion/) y sigo.
-No adecúo el proyecto por mi cuenta.
-```
+**Cuando hay código fuera de `proyectos/`,** el agente crea la carpeta vacía, avisa qué encontró afuera y **no mueve nada**: si el código se muda o se queda es decisión del usuario, y moverlo rompe rutas, importaciones y despliegues que el agente no conoce.
 
 ---
 

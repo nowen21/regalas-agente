@@ -36,7 +36,7 @@ NUCLEO = ("00-", "01-")
 
 # El gate de arranque. Vive en una subcarpeta, así que un glob plano sobre
 # `base/*.md` no lo ve.
-GATE = "02-flujo-de-trabajo/reglas/F13-detente-si-el-proyecto-no-tiene-su-estructura-base.md"
+GATE = "02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md"
 
 
 def reglas(base):

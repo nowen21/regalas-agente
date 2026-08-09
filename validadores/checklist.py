@@ -34,8 +34,9 @@ PLANTILLA = "plantillas/stack-instalacion.md"
 COPIA = os.path.join(".agente", "stack-instalacion.md")
 MARCA = os.path.join(".agente", "INSTALACION-INCOMPLETA.md")
 
-CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
-                 "marco-normativo.md"]
+# La lista vive en `instalar.py`, que es quien pone esos archivos. Dos listas
+# que declaren lo mismo terminan diciendo cosas distintas (`20·M2`).
+CONFIG_AGENTE = instalar.CONFIG_AGENTE
 
 # Fila de la tabla de componentes: | `id` | Componente | Cómo se instala |
 _FILA = re.compile(r"^\|\s*`([a-z0-9-]+)`\s*\|([^|]+)\|([^|]+)\|")
@@ -97,7 +98,8 @@ def sello(estandar=None):
 # ── Las comprobaciones, una por `id` de la plantilla ──────────────────────
 
 def _f13(proyecto, estandar):
-    return instalar.cumple_f13(proyecto), "falta la carpeta `proyectos/`"
+    return (instalar.cumple_f13(proyecto),
+            "falta la carpeta `proyectos/` — el proyecto no está instalado")
 
 
 def _claude_md(proyecto, estandar):
@@ -345,13 +347,15 @@ def escribir_marca(proyecto, puntos):
         "en cada mensaje. Lo escribe y lo borra el enganche; no se edita a mano.\n\n"
         "## Qué falta\n\n"
         f"{detalle(puntos)}\n\n"
-        "## Casi todo se resuelve con una línea\n\n"
+        "## Se resuelve con una línea\n\n"
         "```sh\n"
         f'python "{RAIZ.replace(os.sep, "/")}/validadores/instalar.py" '
         f'"{proyecto.replace(os.sep, "/")}" --aplicar\n'
         "```\n\n"
-        "Lo que no: crear `proyectos/`, llenar el `CLAUDE.md` y subir la versión "
-        "adoptada del estándar. Eso es decisión del usuario.\n\n"
+        "El instalador pone todo lo de la lista y comprueba el resultado. Si "
+        "después de correrlo algo sigue apareciendo aquí, es porque exige una "
+        "decisión del usuario: qué código va en `proyectos/`, o subir la "
+        "versión adoptada del estándar.\n\n"
         "> La lista completa de componentes está en `.agente/stack-instalacion.md`.\n")
 
     os.makedirs(os.path.dirname(archivo), exist_ok=True)

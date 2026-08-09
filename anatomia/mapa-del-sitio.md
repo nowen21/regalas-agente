@@ -130,7 +130,7 @@ agente/
 │   ├── herramientas.py ............... corre linter / suite / audit del stack real
 │   │
 │   ├── ── instalación y estado ──
-│   ├── instalar.py ................... replica el agente a otro proyecto
+│   ├── instalar.py ................... deja el agente instalado y operativo en otro proyecto
 │   ├── checklist.py .................. qué componentes le faltan al proyecto
 │   ├── version.py .................... desfase de versión estándar vs proyecto
 │   ├── sesion.py ..................... revisión de arranque de sesión
@@ -225,7 +225,7 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 | `validadores/checklist.py` | `plantillas/stack-instalacion.md` | La lista de componentes vive en la plantilla, no en el código. Una prueba exige que coincidan. |
 | `validadores/cargador.py` | `base/*.md` | Mete las reglas al contexto del agente al abrir la sesión, sin depender de que se acuerde. |
 | `validadores/sesion.py` | `plantillas/CLAUDE.md.plantilla` | Avisa si el `CLAUDE.md` del proyecto quedó desfasado. |
-| `validadores/instalar.py` | `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/stack-instalacion.md` | Es lo que replica el agente a otro proyecto. |
+| `validadores/instalar.py` | `plantillas/CLAUDE.md.plantilla` · `plantillas/stack-instalacion.md` · `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/proyectos.md` | Es lo que deja el agente instalado y operativo en otro proyecto, sin pasos manuales. |
 | `validadores/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
 | `metricas/metricas.py` | `memoria/senales.db` | Solo agrega lo que ya se registró; no instrumenta nada nuevo. |
 | `interfaz/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |

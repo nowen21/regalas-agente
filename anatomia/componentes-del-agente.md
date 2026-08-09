@@ -144,10 +144,10 @@ Django + Bootstrap 5 + AdminLTE 4, con todo el vendor incluido: **funciona sin i
 ### 3.6 · Instalador — cómo llega el agente a otro proyecto
 
 ```sh
-python validadores/instalar.py --raiz "<ruta del proyecto>"
+python validadores/instalar.py "<ruta del proyecto>" --aplicar
 ```
 
-Copia los cinco enganches, la carpeta `historico-chat/` y la lista de componentes al proyecto destino. La regla de diseño:
+Una sola línea deja el proyecto instalado y operativo: la estructura base, el `CLAUDE.md` con las rutas de esta máquina, el `.gitignore`, los archivos de `.agente/`, el histórico, la memoria, los enganches de git y de Claude Code, el registro central y el registro de versión. Al terminar comprueba el resultado. Es idempotente, y no pregunta nada que el estándar ya haya decidido. Sin `--aplicar` solo simula. La regla de diseño:
 
 > Una herramienta nueva del estándar se agrega a la lista y **llega sola** a todos los proyectos. Si exige configurarla a mano, está mal hecha.
 

@@ -1,23 +1,37 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Instala los enganches automáticos en un proyecto que usa el estándar.
+"""Deja instalado y operativo el agente en un proyecto que usa el estándar.
 
     python validadores/instalar.py                    # muestra el registro
     python validadores/instalar.py C:/ruta/proyecto   # simula (no toca nada)
     python validadores/instalar.py C:/ruta --aplicar  # instala de verdad
     python validadores/instalar.py --todos --aplicar  # en todos los del registro
 
+**Una sola línea instala todo.** El proceso no le pide al usuario guardar, copiar
+ni crear nada a mano: lee el estado del proyecto, calcula qué falta y lo deja
+puesto — la estructura base, el `CLAUDE.md` con las rutas de esta máquina, el
+`.gitignore`, los archivos de `.agente/`, el histórico, la memoria, los enganches
+de git y de Claude Code, el registro central y el registro de versión. Al final
+comprueba el resultado y dice si algo quedó fuera.
+
+**Es idempotente.** Lo que ya está al día no se toca, no se duplica y no se pisa:
+los documentos que llena el proyecto (`CLAUDE.md`, los 4 de `.agente/`, el índice
+de la memoria) solo se crean si faltan; después, solo se les agrega lo que el
+estándar sumó. Correrlo dos veces da el mismo resultado que correrlo una.
+
+**No pregunta.** Lo que ya está decidido —por `CLAUDE.md`, por las reglas de
+`base/` o por la estructura estándar— se aplica sin consultar. Lo único que se
+reporta como pendiente es lo que de verdad exige una decisión del usuario, y se
+dice cuál es y por qué.
+
 **Por defecto solo simula.** Instalar cambia el comportamiento de un repositorio
 ajeno — a partir de ahí un commit con mal mensaje se rechaza allí también — así
 que hay que pedirlo explícitamente con `--aplicar`.
 
-Nada se copia: los enganches llaman a los validadores **en su sitio**, por ruta
-absoluta. Una sola copia del estándar sirve a todos los proyectos, y al cambiar
-una regla aquí cambia en todos a la vez.
-
-Lo único que sí se crea dentro del proyecto es lo que el proyecto necesita tener
-para que un enganche funcione — hoy, `historico-chat/` y su `memory/`. Sin ellas,
-los enganches del histórico y de la memoria no tendrían dónde escribir.
+Las reglas y los validadores **no se copian**: los enganches los llaman en su
+sitio, por ruta absoluta. Una sola copia del estándar sirve a todos los
+proyectos, y al cambiar una regla aquí cambia en todos a la vez. Dentro del
+proyecto solo se crea lo que el proyecto necesita tener para funcionar.
 """
 import argparse
 import json
@@ -25,6 +39,8 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
+from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -113,23 +129,24 @@ def _mandar_git(ruta, *args):
                           capture_output=True, text=True, encoding="utf-8")
 
 
-MENSAJE_F13 = """    No existe la carpeta `proyectos/`, donde debe vivir el código fuente.
-
-    Para continuar, creá:
-        proyectos/
-        └── <tu-proyecto>/     ← coloca aquí tu código (uno o varios proyectos)
-
-    Vos decidís la organización y los nombres."""
-
-
 def cumple_f13(ruta):
-    """El gate de arranque de `02·F13`: ¿existe la carpeta `proyectos/`?
+    """El arranque de `02·F13`: ¿existe la carpeta `proyectos/`?
 
-    Es la precondición de todo lo demás. Si el espacio de trabajo no está
-    armado según la norma, instalar enganches sería poner el techo antes que
-    las paredes: se estaría vigilando una estructura que aún no existe.
+    Es la precondición de todo lo demás. Ya no es un muro: si falta, el
+    instalador la crea vacía (`instalar_estructura`). Lo que sigue siendo del
+    usuario es **qué va adentro** — el agente no mueve ni reorganiza código.
     """
     return os.path.isdir(os.path.join(ruta, "proyectos"))
+
+
+def es_el_estandar(ruta):
+    """¿`ruta` es la carpeta del propio estándar?
+
+    No es un proyecto que use el agente: es donde viven las reglas. No tiene
+    `proyectos/`, y su `CLAUDE.md` sí se versiona — meterlo al `.gitignore`
+    borraría del repositorio el instructivo del estándar.
+    """
+    return os.path.normcase(os.path.abspath(ruta)) == os.path.normcase(RAIZ)
 
 
 def es_repositorio_git(ruta):
@@ -421,28 +438,264 @@ def _refrescar_sello(archivo, componente, proyecto, aplicar, etiqueta):
     return [f"sellar {etiqueta} contra la plantilla ({sellada or 'sin sello'} → {actual})"]
 
 
-def sellar_claude_md(ruta, aplicar):
-    """Sella el `CLAUDE.md` del proyecto contra la plantilla central.
+# ── El `CLAUDE.md`: el setup del agente en el proyecto ────────────────────
 
-    El sello **no** es la huella del `CLAUDE.md`: es la de la plantilla contra la
-    que se sincronizó. Tiene que ser así porque cada proyecto lo llena con lo
+# Lo que la plantilla deja marcado para que lo llene el instalador. Nada de esto
+# es una decisión del usuario: sale de esta máquina, de la carpeta del proyecto
+# y del `VERSION` del estándar. Preguntarlo sería preguntar lo que ya se sabe.
+_MARCADOR = re.compile(r"«(?!…»)[^»\n]+»")
+
+
+def _slug(texto):
+    """`Proyecto de grado` -> `proyecto-de-grado`. Sin tildes ni espacios."""
+    plano = unicodedata.normalize("NFKD", texto)
+    plano = plano.encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"[^a-z0-9]+", "-", plano.lower()).strip("-") or "proyecto"
+
+
+def _rellenos(ruta):
+    """Qué valor le corresponde a cada marcador de la plantilla."""
+    import version
+
+    nombre = os.path.basename(os.path.abspath(ruta).rstrip("\\/")) or "proyecto"
+    slug = _slug(nombre)
+    estandar = RAIZ.replace("\\", "/")
+    proyecto = os.path.abspath(ruta).replace("\\", "/")
+    ver = version.version_estandar() or "?"
+    hoy = datetime.now().strftime("%Y-%m-%d")
+
+    return {
+        "«NOMBRE-PROYECTO»": nombre,
+        "«SLUG-PROYECTO»": slug,
+        "«RUTA-ESTANDAR»": estandar,
+        "«RUTA-PROYECTO»": proyecto,
+        "«VERSION-ESTANDAR»": ver,
+        "«FECHA»": hoy,
+        # Marcadores de plantillas anteriores. Se traducen igual, para que un
+        # proyecto viejo converja al correr el instalador en vez de quedarse
+        # con huecos que reprueban el checklist para siempre.
+        "«NOMBRE DEL PROYECTO»": nombre,
+        "«slug-proyecto»": slug,
+        "«slug»": slug,
+        "«ruta-al-estandar»": estandar,
+        "«ruta-de-este-proyecto»": proyecto,
+        "«X.Y.Z»": ver,
+        "«YYYY-MM-DD»": hoy,
+        "«español»": "español",
+        "«sí / no»": "no",
+        "«Otro ajuste: número de regla (01–19) + qué cambia + por qué»": "ninguno",
+        "«ninguna por ahora / ver ./.agente/reglas-proyecto.md»":
+            "ninguna por ahora",
+    }
+
+
+def _rellenar(texto, rellenos):
+    for marcador, valor in rellenos.items():
+        texto = texto.replace(marcador, valor)
+    return texto
+
+
+def _secciones(texto):
+    """[(título, líneas)] por cada encabezado `##` o menor. Ignora el H1.
+
+    El H1 lleva el nombre del proyecto, así que nunca coincide entre la
+    plantilla y el archivo local — compararlo solo daría falsos faltantes.
+    """
+    salida = []
+    dentro_de_codigo = False
+    for linea in texto.splitlines():
+        if linea.lstrip().startswith("```"):
+            dentro_de_codigo = not dentro_de_codigo
+        m = None if dentro_de_codigo else re.match(r"^(#{2,6})\s+(.*)$", linea)
+        if m:
+            salida.append((m.group(2).strip(), [linea]))
+        elif salida:
+            salida[-1][1].append(linea)
+    return salida
+
+
+def _completar_secciones(local, plantilla):
+    """Agrega al final las secciones que la plantilla tiene y el local no.
+
+    `01·C18` es aditiva: nunca se pisa, se reordena ni se borra lo escrito. Se
+    agrega la sección **con su texto**, no vacía — el punto es que la
+    instalación quede operativa sin que nadie tenga que ir a copiarla.
+    """
+    presentes = {t for t, _ in _secciones(local)}
+    faltan = [(t, cuerpo) for t, cuerpo in _secciones(plantilla)
+              if t not in presentes]
+    if not faltan:
+        return local, []
+
+    partes = [local.rstrip("\n")]
+    for _, cuerpo in faltan:
+        partes.append("\n".join(cuerpo).rstrip("\n"))
+    return "\n\n".join(partes) + "\n", [t for t, _ in faltan]
+
+
+def instalar_claude_md(ruta, aplicar):
+    """Deja el `CLAUDE.md` del proyecto puesto, lleno y sellado.
+
+    Tres casos, y ninguno le pide nada al usuario:
+
+      - **no existe** -> se genera desde la plantilla central con las rutas de
+        esta máquina, el nombre y el slug del proyecto y la versión del
+        estándar. Antes había que copiarlo y llenarlo a mano, que es justo lo
+        que dejaba a medio instalar a casi todos los proyectos.
+      - **existe con marcadores sin llenar** -> se llenan los que el instalador
+        sabe calcular, incluidos los de plantillas anteriores.
+      - **existe y la plantilla ganó secciones** -> se agregan al final, sin
+        tocar una línea de lo que el proyecto escribió.
+
+    El sello **no** es la huella del `CLAUDE.md`: es la de la plantilla contra
+    la que se sincronizó. Tiene que ser así porque cada proyecto lo llena con lo
     suyo, así que su contenido nunca coincide con el original — y aun así hay
     que poder decir si quedó viejo.
-
-    Antes esto se detectaba comparando títulos de sección y fechas de archivo.
-    Los dos fallan: un paso nuevo dentro de una sección que ya existía no cambia
-    ningún título, y la fecha miente en cuanto alguien clona el repositorio o
-    edita el archivo por cualquier motivo.
     """
     import versiones
 
     comp = versiones.POR_ID["claude-md"]
+    plantilla = comp.ruta_plantilla(RAIZ)
     archivo = os.path.join(ruta, "CLAUDE.md")
-    if not os.path.isfile(archivo):
-        return ["OMITIDO: el proyecto todavía no tiene CLAUDE.md"]
-    if not os.path.isfile(comp.ruta_plantilla(RAIZ)):
+
+    if not os.path.isfile(plantilla):
         return ["OMITIDO: falta plantillas/CLAUDE.md.plantilla en el estándar"]
-    return _refrescar_sello(archivo, comp, ruta, aplicar, "CLAUDE.md")
+
+    rellenos = _rellenos(ruta)
+    molde = _rellenar(leer(plantilla), rellenos)
+
+    if not os.path.isfile(archivo):
+        if aplicar:
+            _escribir_sellado(archivo, molde, comp, ruta)
+        return ["crear CLAUDE.md desde la plantilla, con las rutas y la "
+                "versión de esta máquina"]
+
+    original = leer(archivo)
+    cuerpo = versiones.quitar_sello(_rellenar(original, rellenos))
+
+    pasos = []
+    if _MARCADOR.search(original) and not _MARCADOR.search(cuerpo):
+        pasos.append("llenar en CLAUDE.md los marcadores que quedaban sin valor")
+    cuerpo, agregadas = _completar_secciones(cuerpo, versiones.quitar_sello(molde))
+    if agregadas:
+        pasos.append("agregar a CLAUDE.md lo que la plantilla sumó: "
+                     + ", ".join(agregadas))
+
+    if not pasos:
+        return _refrescar_sello(archivo, comp, ruta, aplicar, "CLAUDE.md")
+
+    if aplicar:
+        _escribir_sellado(archivo, cuerpo, comp, ruta)
+    return pasos + ["sellar CLAUDE.md contra la plantilla"]
+
+
+# ── Lo que el proyecto necesita tener para que el agente funcione ─────────
+
+# `02·F13`: el código del usuario en `proyectos/`, y al lado el espacio del
+# agente. Se crean vacías: qué va adentro de `proyectos/` lo decide el usuario.
+CARPETAS_BASE = ["proyectos", "documentacion", "prompts"]
+
+# Los 4 archivos de configuración del proyecto. La lista vive aquí porque es el
+# instalador quien los pone; `checklist.py` la lee de acá (`20·M2`).
+CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
+                 "marco-normativo.md"]
+
+# Configuración local de la máquina: no es del repositorio.
+IGNORADOS = ["CLAUDE.md", ".agente/"]
+
+
+def instalar_estructura(ruta, aplicar):
+    """Crea la estructura base de `02·F13`.
+
+    La carpeta se crea; el contenido no se inventa. Que `proyectos/` exista es
+    una condición de la norma, no una decisión: exigirle al usuario que la
+    creara a mano dejaba la instalación parada en el primer paso. Dónde va cada
+    fuente **sí** es decisión suya, y por eso el agente nunca mueve ni
+    reorganiza lo que ya esté ahí.
+    """
+    pasos = []
+    for nombre in CARPETAS_BASE:
+        destino = os.path.join(ruta, nombre)
+        if os.path.isdir(destino):
+            continue
+        pasos.append(f"crear {nombre}/")
+        if aplicar:
+            os.makedirs(destino, exist_ok=True)
+    return pasos or ["la estructura base ya estaba"]
+
+
+def instalar_gitignore(ruta, aplicar):
+    """Agrega al `.gitignore` lo que no es del repositorio.
+
+    Solo agrega, nunca reescribe ni reordena: el `.gitignore` es del proyecto.
+    """
+    archivo = os.path.join(ruta, ".gitignore")
+    texto = leer(archivo) if os.path.isfile(archivo) else ""
+    puestas = {l.strip() for l in texto.splitlines()}
+    faltan = [x for x in IGNORADOS if x not in puestas]
+    if not faltan:
+        return ["el .gitignore ya ignoraba la configuración local"]
+
+    if aplicar:
+        if texto and not texto.endswith("\n"):
+            texto += "\n"
+        bloque = ("\n# Configuración local del agente — no es del repositorio.\n"
+                  + "\n".join(faltan) + "\n")
+        with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto + bloque)
+    return [f"agregar al .gitignore: {', '.join(faltan)}"]
+
+
+def instalar_agente_config(ruta, aplicar):
+    """Pone los 4 archivos de `.agente/` desde las plantillas centrales.
+
+    Se crean solo si faltan: los llena el proyecto con sus datos y pisarlos
+    sería borrar lo único que el estándar no sabe. Llenarlos es del agente al
+    abrir sesión — deduce lo que se ve en el proyecto y deja marcado lo que no.
+    """
+    pasos = []
+    carpeta = os.path.join(ruta, ".agente")
+    for nombre in CONFIG_AGENTE:
+        destino = os.path.join(carpeta, nombre)
+        if os.path.isfile(destino):
+            continue
+        origen = os.path.join(RAIZ, "plantillas", nombre)
+        if not os.path.isfile(origen):
+            pasos.append(f"OMITIDO: falta plantillas/{nombre} en el estándar")
+            continue
+        pasos.append(f"crear .agente/{nombre} desde su plantilla")
+        if aplicar:
+            os.makedirs(carpeta, exist_ok=True)
+            with open(destino, "w", encoding="utf-8", newline="\n") as f:
+                f.write(leer(origen))
+    return pasos or ["los 4 archivos de .agente/ ya estaban"]
+
+
+def instalar_registro(ruta, aplicar):
+    """Anota el proyecto en `plantillas/proyectos.md`, la lista única.
+
+    El stack queda «por detectar»: es un dato, no una decisión, y lo completa el
+    agente cuando llene `.agente/stack.md`. Dejar la fila sin escribir hasta
+    entonces era peor — el proyecto no figuraba en ningún lado.
+    """
+    if not os.path.isfile(REGISTRO):
+        return ["OMITIDO: falta plantillas/proyectos.md en el estándar"]
+
+    esperado = os.path.normcase(os.path.abspath(ruta))
+    for _, registrada in proyectos_registrados():
+        if os.path.normcase(os.path.abspath(registrada)) == esperado:
+            return ["el proyecto ya estaba en el registro central"]
+
+    nombre = os.path.basename(os.path.abspath(ruta).rstrip("\\/"))
+    fila = (f"| {nombre} | `{os.path.abspath(ruta)}` | "
+            f"`proyecto:{_slug(nombre)}` | por detectar |\n")
+    if aplicar:
+        texto = leer(REGISTRO)
+        if not texto.endswith("\n"):
+            texto += "\n"
+        with open(REGISTRO, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto + fila)
+    return [f"anotar «{nombre}» en plantillas/proyectos.md"]
 
 
 def instalar(nombre, ruta, aplicar):
@@ -455,19 +708,33 @@ def instalar(nombre, ruta, aplicar):
     ruta = unidad.upper() + resto
 
     if not os.path.isdir(ruta):
-        print("  OMITIDO: la carpeta no existe")
-        return False
-
-    # Gate de F13. El propio estándar queda exento: no es un proyecto que use
-    # el agente, es donde viven las reglas.
-    if os.path.normcase(ruta) != os.path.normcase(RAIZ) and not cumple_f13(ruta):
-        print("  BLOQUEADO: no cumple 02·F13 — falta la estructura base.\n")
-        print(MENSAJE_F13)
-        print("\n  Cuando `proyectos/` exista, volvé a correr el instalador.")
+        # Único bloqueo que queda: una ruta que no existe suele ser un error de
+        # tecleo, y crear una carpeta ahí sería adivinar dónde vive el proyecto.
+        print("  BLOQUEADO: la carpeta no existe — revisá la ruta")
         return False
 
     estandar = RAIZ.replace("\\", "/")
     marca = "·" if aplicar else "(simulado)"
+
+    # Huellas y versión ANTES de tocar nada: es la única forma de decir después
+    # qué cambió de verdad, y no repetir el inventario entero en cada registro.
+    # La versión hay que leerla aquí: en cuanto se sella, los sellos ya dicen la
+    # nueva y una instalación desde cero declararía venir de sí misma.
+    antes = _huellas(ruta)
+    anterior = _version_anterior(ruta)
+
+    # El propio estándar queda exento de las dos primeras: no es un proyecto que
+    # use el agente, es donde viven las reglas. No tiene `proyectos/`, y su
+    # `CLAUDE.md` se versiona — ignorarlo borraría el instructivo del estándar.
+    propio = es_el_estandar(ruta)
+    if propio:
+        print("  · es la carpeta del propio estándar: se ponen los enganches, "
+              "el histórico y la memoria; nada de configuración de proyecto")
+    else:
+        for paso in instalar_estructura(ruta, aplicar):
+            print(f"  {marca} {paso}")
+        for paso in instalar_gitignore(ruta, aplicar):
+            print(f"  {marca} {paso}")
 
     # Los dos enganches son independientes y tienen alcance distinto:
     #   - el de commits va en CADA repositorio (pueden ser varios);
@@ -486,24 +753,54 @@ def instalar(nombre, ruta, aplicar):
     for paso in instalar_claude(ruta, estandar, aplicar):
         print(f"  {marca} {paso}")
 
-    # Huellas y versión ANTES de tocar nada: es la única forma de decir después
-    # qué cambió de verdad, y no repetir el inventario entero en cada registro.
-    # La versión hay que leerla aquí: en cuanto se sella, los sellos ya dicen la
-    # nueva y una instalación desde cero declararía venir de sí misma.
-    antes = _huellas(ruta)
-    anterior = _version_anterior(ruta)
-
+    # El histórico y la memoria sí valen para el propio estándar: ahí también se
+    # transcribe cada sesión y se guarda lo que el usuario pide recordar.
     pasos = []
-    for instalador in (instalar_historico, instalar_recuerdos, instalar_stack):
+    for instalador in (instalar_historico, instalar_recuerdos):
         pasos += instalador(ruta, aplicar)
-    pasos += sellar_claude_md(ruta, aplicar)
+    if not propio:
+        for instalador in (instalar_stack, instalar_agente_config,
+                           instalar_claude_md, instalar_registro):
+            pasos += instalador(ruta, aplicar)
 
     for paso in pasos:
         print(f"  {marca} {paso}")
 
     for paso in registrar_version(ruta, antes, pasos, aplicar, anterior):
         print(f"  {marca} {paso}")
+
+    comprobar(ruta, aplicar, propio)
     return True
+
+
+def comprobar(ruta, aplicar, propio=False):
+    """La comprobación final: ¿quedó completo? Y si no, qué falta y por qué.
+
+    Instalar y decir "listo" sin mirar es prometer, no entregar. Aquí se recorre
+    el mismo stack que revisa el enganche de cada mensaje, y lo que siga
+    faltando después de haber instalado todo es, por definición, algo que exige
+    una decisión del usuario.
+    """
+    import checklist
+
+    if propio:
+        # El stack de instalación describe un proyecto que **usa** el agente.
+        # Medir con esa vara la carpeta donde viven las reglas daría siempre
+        # once faltantes que no son faltantes.
+        return
+    if not aplicar:
+        print("  (simulado) la comprobación final corre al aplicar")
+        return
+
+    puntos = checklist.revisar(ruta, RAIZ)
+    print(f"\n  {checklist.resumen(ruta, puntos)}")
+
+    faltan = checklist.pendientes(puntos)
+    if not faltan:
+        return
+    print("\n  Esto no se pudo resolver solo — necesita una decisión tuya:\n")
+    for linea in checklist.detalle(puntos).splitlines():
+        print(f"  {linea}")
 
 
 def _huellas(ruta):
@@ -519,13 +816,17 @@ def _version_anterior(ruta):
 
 
 def _pendientes(ruta):
-    """Lo que el instalador no puede aplicar: es decisión del usuario."""
+    """Lo que quedó sin resolver después de instalar todo.
+
+    Ya no se filtra por una lista de "componentes manuales": el instalador pone
+    todos. Lo que aparezca aquí es lo que de verdad exige una decisión del
+    usuario, o una falla que hay que mirar — en los dos casos, va al registro.
+    """
     import checklist
-    manuales = {"f13", "claude-md", "gitignore", "agente-config",
-                "documentacion", "registro", "version"}
+    if es_el_estandar(ruta):
+        return []
     return [f"**{p.id}** — {p.detalle or p.componente}"
-            for p in checklist.pendientes(checklist.revisar(ruta, RAIZ))
-            if p.id in manuales]
+            for p in checklist.pendientes(checklist.revisar(ruta, RAIZ))]
 
 
 def registrar_version(ruta, antes, pasos, aplicar, anterior=""):

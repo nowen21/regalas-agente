@@ -133,6 +133,16 @@ def texto_sello(huella, version_estandar):
     return f"<!-- huella: {huella} · estandar {version_estandar or '?'} -->"
 
 
+def quitar_sello(texto):
+    """`texto` sin su sello, para poder agregarle contenido al final.
+
+    El sello va último: si se le anexa una sección después, deja de estar al
+    final y el archivo queda con la marca en medio. Se quita, se escribe, y
+    `poner_sello` lo vuelve a dejar donde corresponde.
+    """
+    return _SELLO.sub("", texto).rstrip("\n") + "\n"
+
+
 def poner_sello(texto, huella, version_estandar):
     """Devuelve `texto` con su sello al día.
 

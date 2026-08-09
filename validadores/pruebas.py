@@ -42,7 +42,15 @@ import trazabilidad     # noqa: E402
 import version          # noqa: E402
 import versionado       # noqa: E402
 import versiones        # noqa: E402
+import comun            # noqa: E402
 from comun import AVISO, FALLA, lineas_utiles, marcadores  # noqa: E402
+
+
+def _claude_md_completo(proyecto="demo"):
+    """La plantilla central ya rellenada, como la deja el instalador."""
+    plantilla = versiones.POR_ID["claude-md"].ruta_plantilla()
+    return instalar._rellenar(comun.leer(plantilla),
+                              instalar._rellenos(proyecto))
 
 
 def severidades(hallazgos):
@@ -1042,10 +1050,12 @@ class Instalador(unittest.TestCase):
     def test_sella_el_claude_md_sin_tocarle_el_contenido(self):
         raiz = self._espacio()
         local = os.path.join(raiz, "CLAUDE.md")
+        # Con todas las secciones de la plantilla, para que no haya nada que
+        # agregar: lo único que debe pasar es que se selle.
         with open(local, "w", encoding="utf-8") as f:
-            f.write("# Config del proyecto\n\nlo mío\n")
+            f.write(_claude_md_completo() + "\nlo mío\n")
 
-        instalar.sellar_claude_md(raiz, aplicar=True)
+        instalar.instalar_claude_md(raiz, aplicar=True)
         with open(local, encoding="utf-8") as f:
             texto = f.read()
         self.assertIn("lo mío", texto)
@@ -1054,14 +1064,98 @@ class Instalador(unittest.TestCase):
             versiones.huella_central(versiones.POR_ID["claude-md"]))
 
         # Segunda corrida: idempotente, no reescribe ni duplica el sello.
-        self.assertEqual(instalar.sellar_claude_md(raiz, aplicar=True),
+        self.assertEqual(instalar.instalar_claude_md(raiz, aplicar=True),
                          ["CLAUDE.md ya estaba sellado al día"])
+        # Solo los sellos de verdad: la plantilla menciona uno de ejemplo
+        # dentro de una frase, y ese no es un sello.
         with open(local, encoding="utf-8") as f:
-            self.assertEqual(f.read().count("<!-- huella:"), 1)
+            sellos = [l for l in f.read().splitlines()
+                      if l.startswith("<!-- huella:")]
+        self.assertEqual(len(sellos), 1, sellos)
 
-    def test_sin_claude_md_no_se_inventa_uno(self):
-        pasos = instalar.sellar_claude_md(self._espacio(), aplicar=True)
-        self.assertIn("todavía no tiene CLAUDE.md", pasos[0])
+    def test_sin_claude_md_se_genera_lleno_desde_la_plantilla(self):
+        """Antes había que copiarlo y llenarlo a mano; ahora lo pone el instalador.
+
+        Que no queden marcadores es lo que se comprueba: un `CLAUDE.md` con
+        huecos reprueba el checklist, así que generarlo a medias sería mover el
+        trabajo manual de sitio, no quitarlo.
+        """
+        raiz = self._espacio()
+        pasos = instalar.instalar_claude_md(raiz, aplicar=True)
+        self.assertIn("crear CLAUDE.md", pasos[0])
+
+        with open(os.path.join(raiz, "CLAUDE.md"), encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIsNone(instalar._MARCADOR.search(texto), texto[:400])
+        self.assertIn(version.version_estandar(), texto)
+        self.assertIn(comun.RAIZ.replace("\\", "/"), texto)
+
+    def test_al_claude_md_solo_se_le_agrega_lo_que_la_plantilla_sumo(self):
+        """`01·C18` es aditiva: no se pisa, no se reordena, no se borra."""
+        raiz = self._espacio()
+        local = os.path.join(raiz, "CLAUDE.md")
+        completo = _claude_md_completo()
+        recortado = completo.split("## 4. Precedencia")[0]
+        with open(local, "w", encoding="utf-8") as f:
+            f.write(recortado + "\n## Sección propia\n\nmía y de nadie más\n")
+
+        pasos = instalar.instalar_claude_md(raiz, aplicar=True)
+        self.assertTrue(any("lo que la plantilla sumó" in p for p in pasos), pasos)
+
+        with open(local, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("mía y de nadie más", texto)
+        self.assertIn("## 4. Precedencia", texto)
+        self.assertEqual(texto.count("## 1. Ubicación del estándar"), 1)
+
+    def test_la_estructura_base_se_crea_sola_y_no_toca_lo_que_hay(self):
+        """`02·F13`: la carpeta la crea el instalador, el contenido es del usuario."""
+        raiz = self._espacio()
+        ajeno = os.path.join(raiz, "proyectos", "app")
+        os.makedirs(ajeno)
+
+        instalar.instalar_estructura(raiz, aplicar=True)
+        for carpeta in instalar.CARPETAS_BASE:
+            self.assertTrue(os.path.isdir(os.path.join(raiz, carpeta)), carpeta)
+        self.assertTrue(os.path.isdir(ajeno), "se tocó el código del usuario")
+
+        self.assertEqual(instalar.instalar_estructura(raiz, aplicar=True),
+                         ["la estructura base ya estaba"])
+
+    def test_el_gitignore_solo_se_le_agrega_lo_que_falta(self):
+        raiz = self._espacio()
+        archivo = os.path.join(raiz, ".gitignore")
+        with open(archivo, "w", encoding="utf-8") as f:
+            f.write("# lo mío\nnode_modules/\nCLAUDE.md\n")
+
+        instalar.instalar_gitignore(raiz, aplicar=True)
+        with open(archivo, encoding="utf-8") as f:
+            lineas = f.read().splitlines()
+        self.assertIn("node_modules/", lineas)
+        self.assertEqual(lineas.count("CLAUDE.md"), 1, "se duplicó una línea")
+        self.assertIn(".agente/", lineas)
+
+        self.assertEqual(instalar.instalar_gitignore(raiz, aplicar=True),
+                         ["el .gitignore ya ignoraba la configuración local"])
+
+    def test_los_cuatro_archivos_de_agente_se_ponen_y_no_se_pisan(self):
+        raiz = self._espacio()
+        instalar.instalar_agente_config(raiz, aplicar=True)
+        stack = os.path.join(raiz, ".agente", "stack.md")
+        for nombre in instalar.CONFIG_AGENTE:
+            self.assertTrue(os.path.isfile(os.path.join(raiz, ".agente", nombre)))
+
+        with open(stack, "w", encoding="utf-8") as f:
+            f.write("# lo que declaró el proyecto\n")
+        self.assertEqual(instalar.instalar_agente_config(raiz, aplicar=True),
+                         ["los 4 archivos de .agente/ ya estaban"])
+        with open(stack, encoding="utf-8") as f:
+            self.assertIn("lo que declaró el proyecto", f.read())
+
+    def test_el_propio_estandar_no_se_trata_como_un_proyecto(self):
+        """Es donde viven las reglas: no tiene `proyectos/` ni ignora su CLAUDE.md."""
+        self.assertTrue(instalar.es_el_estandar(comun.RAIZ))
+        self.assertFalse(instalar.es_el_estandar(self._espacio()))
 
 
 class Historico(unittest.TestCase):

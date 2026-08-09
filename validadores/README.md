@@ -148,7 +148,9 @@ De la memoria y del histórico va el **índice**, no el contenido: las transcrip
 
 Estos dos se cargan **también en el propio estándar**: ahí no hay instalación que revisar, pero la memoria y el histórico son los del usuario.
 
-**Se replica solo.** Los cinco enganches de Claude Code, las carpetas `historico-chat/` y `historico-chat/memory/`, y la copia del stack los instala [`instalar.py`](instalar.py) en cualquier proyecto, y el paso 6 de [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) lo corre en cada sesión. Una herramienta nueva del estándar se agrega a `HOOKS_CLAUDE` (y al stack, si el proyecto tiene que tener algo) y llega sola a todos los proyectos: si exige configurarla a mano, está mal hecha.
+**Se replica solo.** [`instalar.py`](instalar.py) deja el proyecto entero puesto y operativo con una sola línea —estructura base, `CLAUDE.md`, `.gitignore`, los archivos de `.agente/`, el histórico, la memoria, los enganches de git y de Claude Code, el registro central— y al terminar lo comprueba. El primer paso de arranque de [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) lo corre en cada sesión; es idempotente y no pregunta nada que el estándar ya haya decidido.
+
+Una herramienta nueva del estándar se agrega a `HOOKS_CLAUDE` (y al stack, si el proyecto tiene que tener algo) y llega sola a todos los proyectos: **si exige configurarla a mano, está mal hecha.**
 
 ## Regla de oro
 

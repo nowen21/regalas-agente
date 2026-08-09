@@ -248,22 +248,24 @@ Ante un pedido que admita más de una lectura razonable, **antes** de mover cód
 
 El `CLAUDE.md` de cada proyecto es una **copia local** de `plantillas/CLAUDE.md.plantilla`. Cuando el estándar mejora la plantilla (un paso nuevo en §3, una sección nueva), el `CLAUDE.md` del proyecto queda **viejo**. Esta regla vive en `base/` **a propósito**: `base/` se carga siempre, así que corre **aunque el `CLAUDE.md` local esté desactualizado** (no puede vivir dentro del propio `CLAUDE.md` — un `CLAUDE.md` viejo no la tendría).
 
-**Al iniciar cada sesión**, el agente:
+**Al iniciar cada sesión** corre el instalador del estándar, que:
 
 1. **Compara** el `CLAUDE.md` local contra `plantillas/CLAUDE.md.plantilla` (central).
-2. Si la plantilla tiene **secciones o pasos nuevos** que el local no tiene, **avisa al usuario y ofrece aplicarlos**.
-3. **Solo añade/actualiza lo estructural común** (los pasos del arranque §3, precedencia §4, etc.); **preserva** siempre lo específico del proyecto: rutas de §1, ajustes de §5.1, slug, y todo valor ya llenado. **Nunca** sobrescribe ni borra lo configurado.
-4. Es **aditivo y con OK del usuario** — jamás cambia el `CLAUDE.md` en silencio.
+2. Si el local **no existe**, lo genera desde la plantilla con las rutas de la máquina, el nombre y el slug del proyecto y la versión del estándar. Nada de eso es una decisión: no se pregunta.
+3. Si la plantilla tiene **secciones o pasos nuevos** que el local no tiene, los **agrega**, y llena los marcadores que hayan quedado sin valor.
+4. **Preserva** siempre lo específico del proyecto: rutas, ajustes de §5.1, slug, secciones propias y todo valor ya llenado. Es **aditivo**: nunca sobrescribe, reordena ni borra lo escrito.
+5. **Dice qué agregó.** Aplicar sin avisar no es lo mismo que aplicar en silencio: el paso queda listado en la salida del instalador y en el registro de `documentacion/versiones/`.
 
-Así, un cambio a `CLAUDE.md.plantilla` **se propaga solo** a cada proyecto en su próxima sesión — sin edición manual proyecto por proyecto.
+Así, un cambio a `CLAUDE.md.plantilla` **se propaga solo** a cada proyecto en su próxima sesión — sin edición manual proyecto por proyecto y sin una pregunta cuya única respuesta útil es "sí".
 
 ```
-INCORRECTO: se mejora CLAUDE.md.plantilla · hay que editar a mano el CLAUDE.md de cada proyecto
-CORRECTO:   se mejora la plantilla una vez · cada proyecto detecta el cambio al arrancar,
-            avisa y ofrece aplicarlo (aditivo, preservando lo propio)
+INCORRECTO: se mejora CLAUDE.md.plantilla · el agente pregunta en cada proyecto si aplica
+            lo que el estándar ya decidió, y hasta que no contesten queda viejo
+CORRECTO:   se mejora la plantilla una vez · cada proyecto lo aplica al arrancar
+            (aditivo, preservando lo propio) y reporta qué agregó
 ```
 
-**Encadenamiento:** complementa el "chequeo de sincronización aditiva" de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
+**Encadenamiento:** complementa el paso de arranque de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
 
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
 
