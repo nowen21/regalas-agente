@@ -37,7 +37,7 @@ CORRECTO:   "El correo no es válido" junto al campo correspondiente
 
 ## I4 · Texto para el usuario, no jerga
 
-Lo que el usuario lee se entiende sin ser del oficio: **claro, directo, que hasta un niño lo entienda**. Sin siglas internas, sin códigos de sistema, sin jerga técnica. (Esto es lo contrario del estilo de las reglas del agente, que sí es técnico — acá el lector es una persona usando el producto.)
+Lo que el usuario lee se entiende sin ser del oficio: **claro, directo, que hasta un niño lo entienda**. Sin siglas internas, sin códigos de sistema, sin jerga técnica. (Es el mismo estándar de [`00·ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) llevado a la pantalla del producto; lo que se suma acá es que no asomen siglas ni códigos internos.)
 
 ```
 INCORRECTO: "Error 422: constraint violation en FK proyecto_id"

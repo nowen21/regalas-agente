@@ -32,8 +32,16 @@ Por eso cada sesión que se crea queda anotada aquí: la línea la pone el engan
 
 ## Qué hace el agente aquí
 
-- **Ponerle tema al nombre.** El enganche crea `AAAA-MM-DD-sesion.md` porque no sabe de qué se va a tratar. Cuando el tema esté claro, se renombra a `AAAA-MM-DD-<tema>.md` y se corrige la línea del índice — **las dos cosas**, o el índice queda apuntando a un archivo que ya no está.
-- **Decir de qué se trató.** La línea del índice nace como "sesión del AAAA-MM-DD"; se reemplaza por el tema real. Es lo único que la próxima sesión ve de esta.
+- **Ponerle tema al nombre.** El enganche crea `AAAA-MM-DD-sesion.md` porque al abrir el chat todavía no se sabe de qué se va a tratar. Apenas hay una respuesta el tema ya está claro, y el propio enganche se lo recuerda al agente —**una sola vez** en la sesión, no en cada mensaje—: propone nombre y resumen en una línea y espera. El nombre lo aprueba el usuario; nada se renombra solo.
+- **Renombrar con el comando, no a mano.** Cuando el usuario aprueba:
+
+  ```sh
+  python "<estándar>/validadores/historico.py" --renombrar "<archivo>" --tema "<tema>" --resumen "<de qué se trató>"
+  ```
+
+  El recordatorio del enganche trae esa línea con la ruta ya puesta. Cambia el nombre del archivo, su título y la línea del índice — **las tres cosas**. Renombrar a mano deja el índice apuntando a un archivo que ya no está, y esa línea es por donde la próxima sesión llega a esta.
+- **El mismo nombre en la sesión de Claude Code.** Junto con el comando, el agente le pasa al usuario la línea `/rename <tema>`, que le pone ese nombre a la sesión: es lo que se ve en la pestaña, en la barra del prompt y en `/resume`. La pega el usuario — `/rename` es un comando suyo y el agente no lo puede ejecutar. Así el archivo del histórico y la sesión abierta se llaman igual.
+- **Decir de qué se trató.** La línea del índice nace como "sesión del AAAA-MM-DD"; el `--resumen` la reemplaza por el tema real. Es lo único que la próxima sesión ve de esta.
 - **Mantener `## Abierto`**: lo que quedó sin cerrar, o "nada".
 - **No copiar a mano lo que el enganche ya escribió.** Si falta algo, se agrega; no se reescribe encima.
 

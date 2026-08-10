@@ -36,6 +36,14 @@ Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque
 
 **No es un ítem, es un tema.** Cada una de sus 16 propuestas se promueve a su propio pendiente numerado cuando se vaya a construir; el `09` reserva el lugar del tema en la fila, no de las tareas. Comparte frontera con el 01: aquel cubre los validadores que faltan, este cubre todo lo demás que podría dejar de depender de la IA.
 
+### Ideas por desarrollar (10)
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 10 | [Ideas](10-ideas.md) | Ideas del usuario todavía sin desarrollar. La 2 —que la sesión pida el nombre con el que se guarda— **quedó hecha** en la v6.1.0: el enganche del histórico lo recuerda una sola vez y `historico.py --renombrar` hace el cambio. |
+
+**Tampoco es un ítem.** Es la libreta: cada idea se promueve a su propio pendiente numerado cuando se vaya a construir.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

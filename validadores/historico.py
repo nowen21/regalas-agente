@@ -20,10 +20,17 @@ es justo lo que un agente no puede garantizar de memoria.
 Cómo se sabe a qué archivo va cada sesión: la primera línea del archivo lleva
 `<!-- sesion: <id> -->`. Se busca esa marca, no el nombre — así el archivo se
 puede renombrar (para ponerle el tema real) sin que la sesión pierda el hilo.
+
+Ese renombre es lo tercero que hay acá. El archivo nace `AAAA-MM-DD-sesion.md`
+porque al abrir el chat nadie sabe de qué va a tratar; cuando ya hubo una
+respuesta, el tema está claro y `aviso_de_nombre` le recuerda al agente que le
+ponga uno. `renombrar` hace el cambio: mueve el archivo y corrige la línea del
+índice, que es lo único por lo que la próxima sesión encuentra a esta.
 """
 import json
 import os
 import re
+import unicodedata
 from datetime import datetime
 
 CARPETA = "historico-chat"
@@ -40,6 +47,12 @@ _LINEA = re.compile(r"^- \[[^\]]*\]\(([^)#\s]+\.md)\)\s*(?:—\s*(.*?))?\s*$")
 
 # La fecha con la que empieza el nombre del archivo de una sesión.
 _FECHA = re.compile(r"^(\d{4}-\d{2}-\d{2})")
+
+# El nombre que pone el enganche mientras no se sabe el tema: `2026-08-09-sesion.md`.
+_GENERICO = re.compile(r"^\d{4}-\d{2}-\d{2}-sesion(?:-\d+)?\.md$", re.IGNORECASE)
+
+# Queda en el archivo cuando ya se pidió el nombre, para no pedirlo otra vez.
+MARCA_NOMBRE = "<!-- nombre: preguntado -->"
 
 
 def anotar_usuario(raiz, sesion, mensaje):
@@ -203,6 +216,154 @@ def _fecha_de(nombre):
     return m.group(1) if m else datetime.now().strftime("%Y-%m-%d")
 
 
+# ── Ponerle el tema al nombre ─────────────────────────────────────────────
+
+def aviso_de_nombre(ruta):
+    """Lo que hay que recordarle al agente para que nombre la sesión, o "".
+
+    Se pide **una sola vez** y no en el primer mensaje: al abrir el chat ni el
+    usuario ni el agente saben todavía de qué va a tratar, así que preguntar
+    ahí solo gasta un turno. Se pide cuando ya hubo una respuesta —ahí el tema
+    está claro— y queda la marca en el archivo para no volver a pedirlo.
+
+    No renombra nada por su cuenta: el nombre lo aprueba el usuario.
+    """
+    if not ruta:
+        return ""
+    nombre = os.path.basename(ruta)
+    if not _GENERICO.match(nombre):
+        return ""                       # ya tiene tema
+    texto = _leer(ruta)
+    if MARCA_NOMBRE in texto or "\n**Agente**" not in texto:
+        return ""                       # ya se pidió, o todavía no hay tema
+
+    _marcar(ruta)
+    orden = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "historico.py").replace(os.sep, "/")
+    return "\n".join([
+        "[HISTÓRICO — ESTA SESIÓN TODAVÍA NO TIENE NOMBRE]",
+        f"Se está guardando en `{CARPETA}/{nombre}`, que no dice de qué trata. "
+        "Ese nombre y su línea en el índice son lo único que la próxima sesión "
+        "va a ver de esta.",
+        "Antes de seguir, proponer en una línea el nombre y el resumen — por "
+        "ejemplo: «esta sesión la guardo como "
+        f"{_fecha_de(nombre)}-<tema>.md — <de qué se trató>, ¿va?».",
+        "Si el usuario aprueba, correr esto, que renombra el archivo y corrige "
+        "la línea del índice (las dos cosas, o el índice apunta a un archivo "
+        "que ya no está):",
+        f'    python "{orden}" --renombrar "{os.path.abspath(ruta).replace(os.sep, "/")}" '
+        '--tema "<tema-en-guiones>" --resumen "<de qué se trató>"',
+        "Y pedirle que pegue esta línea, que le pone el mismo nombre a la "
+        "sesión de Claude Code —lo que se ve en la pestaña, en la barra del "
+        "prompt y en `/resume`—. Es un comando del usuario: el agente no puede "
+        "escribirlo por él.",
+        "    /rename <tema-en-guiones>",
+        "Si no quiere ponerle nombre, se deja como está. Esto se pide una sola "
+        "vez en la sesión.",
+    ])
+
+
+def renombrar(archivo, tema, resumen=""):
+    """Le pone el tema al nombre del archivo y corrige el índice. Ruta nueva.
+
+    Las dos cosas van juntas a propósito: renombrar sin tocar el índice deja
+    una línea apuntando a un archivo que ya no existe, y esa línea es por donde
+    la próxima sesión llega a esta.
+
+    La fecha no se toca — sale del nombre viejo, no del reloj: una sesión que
+    se nombra al otro día sigue siendo la del día que ocurrió.
+    """
+    archivo = os.path.abspath(archivo)
+    if not os.path.isfile(archivo):
+        raise FileNotFoundError(f"no existe el archivo de sesión: {archivo}")
+    if not _slug(tema):
+        raise ValueError("el tema queda vacío al pasarlo a nombre de archivo")
+
+    carpeta = os.path.dirname(archivo)
+    viejo = os.path.basename(archivo)
+    nuevo = _libre(carpeta, f"{_fecha_de(viejo)}-{_slug(tema)}.md", viejo)
+
+    _titular(archivo, _fecha_de(viejo), tema)
+    if nuevo != viejo:
+        os.rename(archivo, os.path.join(carpeta, nuevo))
+    _reindexar(carpeta, viejo, nuevo, resumen)
+    return os.path.join(carpeta, nuevo)
+
+
+def _marcar(ruta):
+    """Deja `MARCA_NOMBRE` bajo la marca de sesión, en la cabecera del archivo."""
+    lineas = _leer(ruta).split("\n")
+    lineas.insert(1 if lineas and lineas[0].startswith("<!-- sesion:") else 0,
+                  MARCA_NOMBRE)
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lineas))
+
+
+def _titular(ruta, fecha, tema):
+    """Cambia el título `# AAAA-MM-DD — Sesión` por el tema real."""
+    texto = _leer(ruta)
+    nuevo = re.sub(rf"^# {re.escape(fecha)} — .*$",
+                   f"# {fecha} — {_legible(tema)}", texto, count=1,
+                   flags=re.MULTILINE)
+    if nuevo != texto:
+        with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(nuevo)
+
+
+def _reindexar(carpeta, viejo, nuevo, resumen):
+    """Deja la línea del índice apuntando al nombre nuevo, con el resumen."""
+    ruta = os.path.join(carpeta, INDICE)
+    if not os.path.isfile(ruta):
+        return
+    resumen = (resumen or "").strip() or f"sesión del {_fecha_de(nuevo)}"
+    if not resumen.endswith((".", "!", "?")):
+        resumen += "."
+    linea = f"- [{nuevo}]({nuevo}) — {resumen}"
+
+    salida, puesta = [], False
+    for cruda in _leer(ruta).splitlines():
+        m = _LINEA.match(cruda.strip())
+        if m and m.group(1) == viejo:
+            salida.append(linea)
+            puesta = True
+        else:
+            salida.append(cruda)
+    texto = "\n".join(salida).rstrip("\n") + "\n"
+    if not puesta:
+        texto += f"{linea}\n"           # no estaba indexada: se agrega ahora
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+        f.write(texto)
+
+
+def _libre(carpeta, nombre, actual):
+    """`nombre`, o con sufijo `-2`, `-3` si ese ya está ocupado por otro."""
+    if nombre == actual or not os.path.exists(os.path.join(carpeta, nombre)):
+        return nombre
+    raiz, ext = os.path.splitext(nombre)
+    n = 2
+    while os.path.exists(os.path.join(carpeta, f"{raiz}-{n}{ext}")):
+        n += 1
+    return f"{raiz}-{n}{ext}"
+
+
+def _slug(tema):
+    """El tema como parte de un nombre de archivo: minúsculas y guiones.
+
+    Se quitan las tildes y la eñe pasa a `n`: el nombre viaja en enlaces, rutas
+    y URLs, donde un carácter fuera del inglés se escribe distinto según quién
+    lo lea. El texto con tildes se conserva en el título y en el índice.
+    """
+    plano = unicodedata.normalize("NFKD", str(tema or ""))
+    plano = "".join(c for c in plano if not unicodedata.combining(c))
+    return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", plano.lower())).strip("-")
+
+
+def _legible(tema):
+    """El tema para el título: guiones a espacios y la primera en mayúscula."""
+    texto = str(tema or "").replace("-", " ").replace("_", " ").strip()
+    return texto[:1].upper() + texto[1:] if texto else "Sesión"
+
+
 def sesiones(raiz):
     """Las sesiones registradas: `[(archivo, de qué se trató)]`, en orden.
 
@@ -268,6 +429,38 @@ def _agregar(ruta, texto):
         f.write(texto)
 
 
+def main(argv=None):
+    """`--renombrar <archivo> --tema <tema> [--resumen <texto>]`.
+
+    Es lo que corre el agente cuando el usuario aprueba el nombre. Va por
+    comando y no a mano para que el archivo y el índice cambien juntos.
+    """
+    import argparse
+    import sys
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from comun import preparar_salida
+    preparar_salida()
+
+    p = argparse.ArgumentParser(description="Le pone el tema al nombre de una "
+                                            "sesión del histórico.")
+    p.add_argument("--renombrar", metavar="ARCHIVO", required=True,
+                   help="el archivo de la sesión, tal como está hoy")
+    p.add_argument("--tema", required=True,
+                   help="de qué trató, en pocas palabras")
+    p.add_argument("--resumen", default="",
+                   help="la línea del índice; si falta, queda la fecha")
+    a = p.parse_args(argv)
+
+    try:
+        ruta = renombrar(a.renombrar, a.tema, a.resumen)
+    except (OSError, ValueError) as e:
+        print(f"No se pudo renombrar: {e}", file=sys.stderr)
+        return 1
+    print(f"Sesión guardada como {os.path.basename(ruta)}; índice al día.")
+    return 0
+
+
 def _anotar(ruta, bloque):
     """Mete el bloque al final de la conversación, no al final del archivo.
 
@@ -285,3 +478,8 @@ def _anotar(ruta, bloque):
              f"{texto[corte:].lstrip()}")
     with open(ruta, "w", encoding="utf-8", newline="\n") as f:
         f.write(nuevo)
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main())

@@ -11,6 +11,13 @@ El primero anota el mensaje del usuario apenas lo envía; el segundo anota la
 respuesta del agente apenas termina. Entre los dos, la transcripción queda
 completa sin que nadie tenga que acordarse de escribirla.
 
+El de `UserPromptSubmit` hace algo más: cuando el archivo todavía se llama
+`AAAA-MM-DD-sesion.md` y la sesión ya tuvo una respuesta, escribe en la salida
+el recordatorio de ponerle el tema al nombre. Claude Code le pasa al agente lo
+que este enganche imprime, así que el recordatorio le llega en ese turno. Se
+pide una sola vez por sesión y lo aprueba el usuario: el enganche no renombra
+nada por su cuenta.
+
 Sin `--raiz` usa el `cwd` que manda Claude Code, así que el mismo archivo sirve
 para cualquier proyecto que tenga carpeta `historico-chat/`. El que no la tenga
 no se ve afectado: el enganche sale sin hacer nada.
@@ -70,7 +77,10 @@ def main():
         if modo == "agente":
             historico.anotar_agente(raiz, sesion, datos.get("transcript_path", ""))
         else:
-            historico.anotar_usuario(raiz, sesion, datos.get("prompt", ""))
+            ruta = historico.anotar_usuario(raiz, sesion, datos.get("prompt", ""))
+            aviso = historico.aviso_de_nombre(ruta)
+            if aviso:
+                print(aviso)
     except Exception as e:               # noqa: BLE001 — nunca romper la sesión
         print(f"No se pudo escribir el histórico: {e}", file=sys.stderr)
 

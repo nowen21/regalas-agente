@@ -7,6 +7,13 @@ No es parte del estándar (`base/`, `plantillas/`, `skills/`); es bitácora, igu
 ## Cómo se escribe
 
 - Un archivo por sesión: `AAAA-MM-DD-tema.md` (si hay dos sesiones el mismo día, `AAAA-MM-DD-tema-2.md`).
+- **El nombre se pone en la sesión, no al final.** El enganche crea `AAAA-MM-DD-sesion.md` porque al abrir el chat todavía no se sabe el tema; apenas hay una respuesta, le recuerda al agente que proponga nombre y resumen —una sola vez— y el usuario aprueba. El cambio lo hace el comando, que mueve el archivo, cambia el título y corrige la línea del índice a la vez:
+
+  ```sh
+  python "<estándar>/validadores/historico.py" --renombrar "<archivo>" --tema "<tema>" --resumen "<de qué se trató>"
+  ```
+
+  Con el comando, el agente pasa también la línea `/rename <tema>` para que la sesión de Claude Code —la pestaña, la barra del prompt, `/resume`— se llame igual que el archivo. Esa la pega el usuario: `/rename` es un comando suyo.
 - **Es la transcripción del diálogo, no un resumen.** Va **cada** mensaje del usuario y **cada** respuesta del agente, en orden, sin saltarse ninguno.
 - **Ambos lados van literales:** el mensaje del usuario tal como lo escribió, y la respuesta del agente tal como la dio (tablas, bloques de código y ejemplos incluidos). No se condensa ni se parafrasea: si el agente dio un ejemplo de 20 líneas, esas 20 líneas quedan.
 - Lo único que se omite es la salida cruda de herramientas (listados, resultados de comandos): eso no es diálogo.
@@ -63,4 +70,7 @@ y qué archivo se tocó.
 - [2026-08-07-sesion-11.md](2026-08-07-sesion-11.md) — sesión del 2026-08-07.
 - [2026-08-07-sesion-12.md](2026-08-07-sesion-12.md) — sesión del 2026-08-07.
 - [2026-08-08-sesion.md](2026-08-08-sesion.md) — el `CLAUDE.md` pasa a ser el setup del agente: la instalación se hace sola con una línea y `02·F13` deja de detener el arranque (v5.0.0).
-- [2026-08-08-sesion-2.md](2026-08-08-sesion-2.md) — documentación técnica de `validadores/`: un `.md` por archivo en `validadores/docs/`.
+- [2026-08-08-sesion-2.md](2026-08-08-sesion-2.md) — sesión del 2026-08-08.
+- [2026-08-08-sesion-3.md](2026-08-08-sesion-3.md) — sesión del 2026-08-08.
+- [2026-08-08-sesion-4.md](2026-08-08-sesion-4.md) — la redacción del estándar pasa a entenderse sin saber del tema: nace `00·ID7` y se deroga `00·ID2` (v6.0.0).
+- [2026-08-09-sesion.md](2026-08-09-sesion.md) — sesión del 2026-08-09.

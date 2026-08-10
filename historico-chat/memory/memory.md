@@ -18,7 +18,7 @@ Lo que obliga a guardarlo acá es norma del estándar (`01·C19`); lo que dice c
 |---|---|
 | [Aprobar antes de commit](aprobar-antes-de-commit.md) | No hay commit ni push hasta que el usuario lea el cambio y lo apruebe; "sí" al cambio no es "sí" al commit. |
 | [Corregir el defecto detectado](corregir-el-defecto-que-uno-mismo-detecta.md) | Lo que el agente reporta como mal, lo arregla; no pregunta "¿lo corrijo?". |
-| [Estilo de redacción simple](estilo-redaccion-simple.md) | Las reglas que lee el agente son técnicas y precisas; "que un niño lo entienda" es solo para la UI del usuario final. |
+| [Estilo de redacción simple](estilo-redaccion-simple.md) | Todo lo que se escribe lo entiende quien no sabe del tema, e idealmente un niño — también las reglas (`00·ID7`). |
 | [Fixtures sin secretos literales](fixtures-sin-secretos-literales.md) | En tests y ejemplos, los tokens se arman en runtime: GitHub bloquea el push si ve un secreto con forma real. |
 | [Histórico de sesiones](historico-chat.md) | Cada sesión se transcribe literal en `historico-chat/`, con marca de tiempo del reloj del sistema. |
 | [Las reglas son la decisión del usuario](reglas-son-decision-del-usuario.md) | Una regla escrita se cumple tal cual; no se pondera, no se reinterpreta, no se propone cambiarla al incumplirla. |

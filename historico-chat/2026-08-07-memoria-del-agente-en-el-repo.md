@@ -406,3 +406,27 @@ Un aviso sobre el commit: al mover el capítulo, `citas.py` reenlazó solo las c
 ### 20 · Usuario — 2026-08-07 19:06:18
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\base\README.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > y qué espera que le diga que la o corrija o qué corto y conciso
+
+**Agente** — 2026-08-08 15:19:43
+<!-- agente: 9f4a50ea-4b25-425b-afc9-a4f2c12f22e6 -->
+
+Entendido: las corrijo. Leo el procedimiento de derogación y lo aplico:
+
+Ahora `DOC1` y `DOC3` pasan a CUMPLE, y el índice del capítulo 02:
+
+Corregidas, derogadas las duplicadas y subido — `db19943`.
+
+**Capítulo 13: 18 reglas, las 18 CUMPLE.**
+
+- `DOC14` — fuera las rutas reales del cliente y los nombres de herramientas; el render local salió al anexo.
+- `DOC10` — ya no cita `P28`, que era depender de capa 3 desde capa 2.
+- `DOC3`/`DOC11` — la tabla vive en un solo sitio.
+- `DOC5` — backend en concepto · `DOC12` — excepción completa · `DOC4` — con ejemplo.
+- `DOC17` y `DOC18` — IDs propios para lo que estaba enterrado en `DOC15` y `DOC9`.
+- Los procedimientos se fueron a `plantillas/` (nueva: [retrodocumentacion.md](plantillas/retrodocumentacion.md)).
+
+**`02·F6` y `02·F7` quedan derogadas** a favor de `13·DOC1` y `13·DOC3` — marca en el encabezado, texto conservado, ID no reutilizado. Por eso **4.0.0**: quien las citaba cambia la cita.
+
+207 pruebas OK y `validar.py estandar` sin fallas ni avisos.
+
+Dejé fuera del commit `base/README.md` y dos transcripciones que son de la sesión que trabaja el capítulo 02.

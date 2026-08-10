@@ -1,12 +1,9 @@
 # Estilo de redacción simple
 
-Dos estándares de redacción distintos según quién lee:
+Todo lo que el agente escriba —chat, documentación, manuales, mensajes y las reglas del propio estándar— tiene que entenderlo alguien que no sepa del tema, e idealmente un niño. La exigencia completa es norma del estándar: [`00·ID7`](../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md). Acá queda solo el registro de que el usuario lo decidió así.
 
-1. **Reglas y specs que lee el AGENTE** (`base/*.md`): **concisas, precisas y técnicas**. Cortar palabrería —introducciones adornadas, párrafos de motivación, secciones de relleno— pero **conservar los términos técnicos exactos y las condiciones y excepciones**: el agente necesita esa precisión para actuar bien. Simplificar de más lo perjudica y lo vuelve menos productivo.
-2. **Texto que el agente PRODUCE para el usuario final** (UI, ayuda, mensajes): ahí sí, "que hasta un niño lo entienda", cero jerga, legible en 20 segundos. Eso es capa 3 (convenciones de UI del proyecto), no el rulebook.
+**Por qué:** el 2026-08-08 el usuario leyó una línea de documentación correcta pero opaca —*"Entrega, uno por uno, los archivos de código de un proyecto ya leídos y listos para revisar"*— y preguntó si la entendería un niño. No la entendía. Antes de eso la norma decía lo contrario ([`00·ID2`](../../base/00-identidad-y-rol/reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md), derogada en 6.0.0): escribir "para quien lee código". El objetivo es hacerse entender, no demostrar conocimientos.
 
-**Por qué:** el usuario confundió ambos al pedir simplicidad; se aclaró que la base la lee el agente para obedecerla — *"la escribe el usuario, la obedece el agente, como un contrato"*. Se optimiza el estilo para el lector real de cada texto.
+**Cómo se aplica:** palabras de todos los días, ideas directas, párrafos cortos; el término técnico que no se pueda evitar se explica en sencillo la primera vez. Se cambia la palabra difícil por la fácil, nunca el dato exacto por uno vago. Antes de entregar, releer y comprobar que se entiende sin saber del tema.
 
-**Cómo se aplica:** en `base/*.md`, regla en una línea en negrita + una o dos frases planas; mantener la jerga técnica y las excepciones; conservar los ejemplos INCORRECTO/CORRECTO; reducir intros y secciones de "relación" a una línea.
-
-Relacionado: [manuales claros](manuales-claros.md) — esa es para los manuales que leen personas, no para las reglas.
+Relacionado: [manuales claros](manuales-claros.md) · [respuestas cortas](respuestas-cortas.md).

@@ -11,6 +11,29 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 6.1.0 — 2026-08-09
+
+**MENOR** (aditivo: nada de lo que ya se cumplía deja de cumplirse).
+
+**Cada sesión pide su nombre mientras todavía hay con quién acordarlo.** El enganche crea el archivo como `AAAA-MM-DD-sesion.md` porque al abrir el chat nadie sabe de qué va a tratar, y ponerle el tema después quedaba en que el agente se acordara — que es justo lo que el estándar no da por hecho. En el histórico de este repositorio se veía el resultado: ocho sesiones quedaron llamándose "sesión del AAAA-MM-DD", y esa línea del índice es lo único que la siguiente sesión ve de ellas.
+
+- **[`validadores/historico.py`](validadores/historico.py) — `aviso_de_nombre`.** Cuando el archivo todavía tiene el nombre genérico y la sesión ya tuvo una respuesta, devuelve el recordatorio de proponerle al usuario nombre y resumen. [`hook_historico.py`](validadores/hook_historico.py) lo escribe en su salida del `UserPromptSubmit`, que Claude Code le entrega al agente en ese mismo turno. **Se pide una sola vez**: queda la marca `<!-- nombre: preguntado -->` en el archivo. No se pide en el primer mensaje —ahí el tema todavía no existe— y **nada se renombra solo**: el nombre lo aprueba el usuario.
+- **`--renombrar`, el comando que hace el cambio completo.** `python validadores/historico.py --renombrar "<archivo>" --tema "<tema>" --resumen "<de qué se trató>"` mueve el archivo, corrige su título y arregla la línea del índice — las tres cosas. Renombrar a mano dejaba el índice apuntando a un archivo que ya no está. La fecha sale del nombre viejo y no del reloj: una sesión que se nombra al otro día sigue siendo la del día que ocurrió. Las tildes se conservan en el título y en el índice, y se quitan del nombre del archivo, que viaja en enlaces y rutas.
+- **El mismo nombre en la sesión de Claude Code.** El recordatorio trae también la línea `/rename <tema>` para que el usuario la pegue: pone ese nombre en la pestaña, en la barra del prompt y en `/resume`. La pega él porque `/rename` es un comando del usuario — el agente no lo puede ejecutar y ningún enganche fija el título de la sesión. Lo que se automatiza es que los dos nombres salgan de la misma propuesta, en el mismo momento.
+- **[`plantillas/historico-chat.md`](plantillas/historico-chat.md)** documenta las tres cosas en *Qué hace el agente aquí*. Como la plantilla cambió de huella, el `historico-chat/README.md` de cada proyecto queda marcado viejo hasta la próxima corrida del instalador; el texto local no se pisa.
+
+## 6.0.0 — 2026-08-08
+
+**MAYOR** ⚠ obliga a migrar (`00·ID2` queda derogada: lo que se escriba desde ahora sigue `00·ID7`, y quien cite `ID2` tiene que citar `ID7`).
+
+**Todo lo que el agente escribe se entiende sin saber del tema.** Hasta ahora la norma decía lo contrario: [`00·ID2`](base/00-identidad-y-rol/reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md) pedía escribir *"para quien lee código: preciso, técnico"*, y el "que hasta un niño lo entienda" quedaba reservado a la pantalla del producto ([`17·I4`](base/17-interfaz.md#i4--texto-para-el-usuario-no-jerga)). El resultado se veía en la práctica: documentación correcta que solo entiende quien ya sabe. Ahora el estándar es uno solo, y las reglas mismas entran en él.
+
+- **Nueva [`00·ID7 · Escribe para que lo entienda quien no sabe del tema`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md)** (deroga `ID2`). Alcanza a todo lo que el agente produce —respuestas, documentación, manuales, mensajes y las reglas del propio estándar—: palabras de todos los días, ideas directas, párrafos cortos, y el término técnico que no se pueda evitar explicado en sencillo la primera vez. Cada cosa se explica diciendo **qué hace**, **para qué sirve** y **qué resultado deja**. El ejemplo se agrega solo si aclara. Antes de dar un texto por terminado se relee comprobando que se entiende sin conocimiento previo.
+- **La claridad no se compra con imprecisión.** Se cambia la palabra difícil por la fácil, nunca el dato exacto por uno vago: la documentación técnica también sigue la regla, sin perder lo que la hace exacta.
+- **[`00·ID2`](base/00-identidad-y-rol/reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md) queda `[DEROGADA]`**, con su texto intacto y la nota de qué la reemplaza ([`20·M11`](base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)). Lo único suyo que sobrevive —sin relleno ni fórmulas de cortesía— lo conserva `ID7`.
+- **[`17·I4`](base/17-interfaz.md#i4--texto-para-el-usuario-no-jerga) deja de ser "lo contrario"** de cómo escribe el agente: pasa a ser el mismo estándar llevado a la pantalla del producto, donde además no asoman siglas ni códigos internos.
+- **La higiene de [`20 · Meta-reglas`](base/20-meta-reglas/base.md) se alinea:** el lenguaje de una regla ya no es "técnico", es imperativo, corto y en palabras de todos los días.
+
 ## 5.0.0 — 2026-08-08
 
 **MAYOR** ⚠ obliga a migrar (`02·F13` cambia de exigencia: el agente ya no se detiene a esperar que el usuario cree la estructura, la crea él).

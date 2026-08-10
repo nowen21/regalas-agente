@@ -109,7 +109,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 ## 🔴 No validables (se quedan en el `.md` — criterio humano)
 
 - **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
-- **`00` identidad y rol:** ID1, ID2, ID3, ID4, ID5, ID6 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o "sin adornos" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
+- **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
 - **`01`:** C1–C17 (todas menos C18).
 - **`02`:** F1, F3, F5, F6, F7, F8, F9, F10, F11, F15, F16, F19, F20 · F12.8, F12.9, F12.10.
