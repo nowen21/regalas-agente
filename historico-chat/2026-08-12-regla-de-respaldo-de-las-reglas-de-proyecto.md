@@ -108,3 +108,76 @@ Dos cosas antes de seguir:
 
 ### 3 · Usuario — 2026-08-12 22:35:01
 > si para las 2
+
+**Agente** — 2026-08-12 22:41:53
+<!-- agente: f137a180-267c-4fd2-9c04-1d394edb91b5 -->
+
+Renombrada, y el índice quedó al día. Antes de commitear hay algo que decidir: el árbol trae trabajo sin commitear de una sesión anterior (la `00·ID8` y la versión 7.0.0), y en `CHANGELOG.md` y `VERSION` va pegado al mío.
+
+Los dos commits quedaron, en orden y cada versión con su cambio.
+
+| Commit | Qué lleva |
+|---|---|
+| `6b2bef8` | `00·ID8` + `marcadores-de-ia.md` + pendiente 11, `VERSION` en 7.0.0. Trabajo de la sesión anterior, tal como estaba. |
+| `543869e` | `20·M16` + índice y detalle del capítulo 20 + plantilla del catálogo + registro de validable + histórico, `VERSION` en 8.0.0. |
+
+`CHANGELOG.md` quedó 8.0.0 → 7.0.0 → 6.1.0, y `citas.py`, `enlaces.py` e índices dan 0 hallazgos. Sin `push`: eso no se pidió.
+
+Queda sin versionar `prompts/`, con el texto suyo del que salió `M16`. No está en la tabla de `M13`, así que no sé si lo quiere en el repo o era un borrador de trabajo. Dígame y lo commiteo o lo dejo así.
+
+### 4 · Usuario — 2026-08-12 22:44:12
+> suba también la carpeta prompts
+
+**Agente** — 2026-08-12 22:46:28
+<!-- agente: abae18dc-2a1f-44e5-b009-97b6fc90b2ab -->
+
+Y la fila en la tabla de `CLAUDE.md`, para que quede claro dónde va cada cosa:
+
+Subida en `88bfe60`.
+
+| Qué | Dónde |
+|---|---|
+| El pedido, sin tocar | [prompts/regla-reglas-proyecto.md](prompts/regla-reglas-proyecto.md) |
+| Índice: qué pidió cada uno y en qué quedó | [prompts/README.md](prompts/README.md) |
+| Fila en *Dónde va cada cosa* | [CLAUDE.md](CLAUDE.md) |
+| Rama en el árbol del repo | [anatomia/mapa-del-sitio.md](anatomia/mapa-del-sitio.md) |
+
+Sin subir `VERSION` ni `CHANGELOG.md`: `M10` versiona `base/` y `plantillas/`, y esto no toca ninguna de las dos.
+
+En el README dejé escrito que un prompt no se corrige después. En este caso importa: el pedido dice "respaldada por una regla del agente" a secas, y `M16` quedó exigiendo el respaldo del **criterio**; la diferencia queda contada en el `CHANGELOG` y en el índice, no reescribiendo lo que usted pidió.
+
+Queda modificado solo el archivo del histórico, que el enganche sigue escribiendo con la conversación.
+
+### 5 · Usuario — 2026-08-12 22:48:43
+> que se puede rescatar de: historico-chat que pueda servir como relgas? agréguelas como archivos .md independientes en prompts
+
+### 6 · Usuario — 2026-08-12 22:51:45
+> solo tiene que leer la carpeta que le dije y pasar a la que le dije no tiene que leer nada más ni hacer
+
+**Agente** — 2026-08-12 22:57:17
+<!-- agente: 32b0494f-3dac-4e46-8b0f-2e77b5893c62 -->
+
+Entendido. Solo `historico-chat/` → `prompts/`.
+
+Ahora el índice del README con las 26:
+
+26 fichas nuevas en [prompts/](prompts/), una por pedido, cada una con la cita literal suya y el enlace a la sesión de donde sale.
+
+| Grupo | Fichas |
+|---|---|
+| Cómo se escribe | redacción clara · menos es más · sin marcadores de IA · español colombiano |
+| Cómo se trabaja con el usuario | una pregunta no es instrucción · preguntas en el chat · corregir lo detectado · trabajo confinado a la carpeta · no tocar otras sesiones |
+| Memoria e histórico | histórico de cada sesión · la sesión se nombra al abrirla · memoria en el repo |
+| Instalación | toda herramienta se replica sola · CLAUDE.md es el setup · checklist de instalación incompleta · stack y actualizaciones · instalar no borra lo que existe |
+| Reglas | la regla en `reglas/`, la explicación en `base.md` · cada cita lleva su link · checklist dentro de cada regla · análisis de candidatas · análisis de cumplimiento · el informe no se corrige |
+| Documentación | un documento por archivo de código · mapa del sitio al día · lo que pueda un script no lo hace la IA |
+
+El [README](prompts/README.md) los indexa por grupo. No marqué cuáles ya son regla y cuáles no: eso implica leer `base/`, que es lo que me dijo que no hiciera. Cuando quiera, esa revisión sale con el formato que usted mismo dejó escrito en [analisis-de-reglas-candidatas.md](prompts/analisis-de-reglas-candidatas.md).
+
+De las 26, la que veo sin regla es [espanol-colombiano-correcto.md](prompts/espanol-colombiano-correcto.md), y no por deducción: el `CHANGELOG` de la 7.0.0 lo dice con todas las letras («la primera todavía no tiene regla»).
+
+Sin commitear. ¿Las subo?
+
+### 7 · Usuario — 2026-08-13 10:34:20
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\CLAUDE.md.plantilla in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> si
