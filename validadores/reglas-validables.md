@@ -14,7 +14,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Categoría | Cuántas |
 |---|---|
 | ✅ **Ya son validadores** | ~50 |
-| 🟡 **Validables, faltan** | ~9 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio) |
+| 🟡 **Validables, faltan** | ~10 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
@@ -88,6 +88,14 @@ No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy n
 | `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
 
 `M14` es **parcial**: que la regla haya recorrido de verdad los nueve pasos no lo decide un script, pero la **presencia y el resultado** del bloque sí.
+
+### Redacción (`00·ID8`) — se valida **en seco**, sobre los `.md` que se entregan
+
+| Regla | Qué comprobaría el script | Por qué falta |
+|---|---|---|
+| `00·ID8` (parte mecánica) | las marcas que se ven sin entender el texto: raya larga como inciso, comillas curvas mezcladas con rectas, punto medio fuera de una cita `NN·ID`, emojis en documento formal, espacio antes del `%`, y las muletillas de lista cerrada (*«no solo… sino también»*, *«Es importante destacar que»*, *«Cabe señalar que»*) | hay que decidir sobre qué archivos corre y dejar fuera bloques de código y citas; el resto de la regla (estructura, tono, contraste de registro) es criterio humano |
+
+`ID8` es **parcial**, como `M14`: las marcas de palabra y tipografía las cuenta un script; que el documento no suene a máquina lo decide quien lo lee.
 
 ### Necesitan que el proyecto **declare** su convención o dominio
 

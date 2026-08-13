@@ -44,6 +44,14 @@ Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque
 
 **Tampoco es un ítem.** Es la libreta: cada idea se promueve a su propio pendiente numerado cuando se vaya a construir.
 
+### Deuda que dejó una regla nueva (11)
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 11 | [Limpiar los marcadores de IA del texto del estándar](11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `00·ID8` (v7.0.0) prohíbe las marcas de generación automática, y el texto ya escrito de `base/` y `plantillas/` las trae. La norma no reabre lo cerrado, pero mientras no se limpie el estándar enseña lo contrario de lo que pide. |
+
+Depende del validador de la parte mecánica de `ID8`: sin él, el recuento sobre 200 archivos se hace a mano.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

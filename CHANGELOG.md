@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 7.0.0 — 2026-08-10
+
+**MAYOR** ⚠ obliga a migrar (todo documento que se entregue desde ahora se relee contra la lista de marcadores; un proyecto al día tiene que empezar a hacerlo).
+
+**Lo que el agente entrega deja de leerse como escrito por una máquina.** Hasta ahora el estándar solo pedía que el texto se entendiera ([`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md)), y un documento puede entenderse perfecto y venir lleno de muletillas, rayas largas y secciones todas del mismo tamaño. Eso lo nota cualquiera que lo lea, y en un entregable pesa.
+
+- **Nueva [`00·ID8 · Escribe sin las marcas que delatan generación automática`](base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md)** (extiende `ID7`). Alcanza a documentación, manuales, informes y a cualquier texto que una persona vaya a leer como trabajo terminado. Ningún documento se entrega sin releerlo contra la lista.
+- **Nuevo anexo del capítulo [`marcadores-de-ia.md`](base/00-identidad-y-rol/marcadores-de-ia.md)**, la lista cerrada: 62 marcas en ocho secciones, cada una con qué se escribe en su lugar. Van ordenadas de la más fácil de ver a la más difícil de disimular: palabras y muletillas, puntuación y tipografía, marcas invisibles, estructura, el español que no es de acá, contenido y tono, metadatos del archivo, y el contraste con lo escrito antes. Va como anexo y no dentro de la regla porque el cuerpo de una regla son cuatro líneas ([`20·M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)), y vive en `base/` porque es lo único que heredan los proyectos.
+- **Dos secciones que no venían en la guía de origen.** *Marcas invisibles* (espacio duro, caracteres de ancho cero, guion suave, `…` como carácter único): no se ven leyendo, sobreviven a cualquier reescritura y son las únicas que un script cuenta sin equivocarse. Y *El español que no es de acá*: el léxico de España, el `vosotros`, el pretérito compuesto donde va el simple y el español neutro sin acento de ninguna parte, que en Colombia salta a la primera lectura.
+- **Qué no cuenta como marca.** La notación que el propio estándar define (la cita `NN·ID`, los `[BLINDADA]` y `*opt-in*`, los bloques `INCORRECTO / CORRECTO`, los ✅ ❌ de la tabla del checklist), la flecha dentro de una notación, la sección fija que pide una plantilla, los bloques de código y la salida de herramientas. Y el límite: la lista quita adorno, nunca precisión. Si quitar una marca vuelve el texto confuso, manda `ID7`.
+- **Lo que la lista no cubre, dicho en la lista.** La norma del español —ortografía, gramática, sintaxis, variedad del país— no está en el estándar: [`01·C8`](base/01-conducta.md#c8--habla-el-idioma-del-proyecto) fija el idioma y nada más. Escribir bien y no sonar a máquina son dos exigencias distintas, y la primera todavía no tiene regla.
+- **[`00·ID8` queda registrada como validable parcial**](validadores/reglas-validables.md): un script puede contar las marcas de palabra y tipografía; que el documento suene o no a máquina lo decide quien lo lee.
+- **Lo que esto deja pendiente.** El texto que ya está escrito —`base/`, `plantillas/`, los README del repositorio— usa la raya larga como inciso por todas partes. La norma nueva no reabre lo cerrado, así que rige para lo que se escriba desde ahora; limpiar lo anterior es un trabajo aparte que todavía no se hizo.
+
 ## 6.1.0 — 2026-08-09
 
 **MENOR** (aditivo: nada de lo que ya se cumplía deja de cumplirse).
