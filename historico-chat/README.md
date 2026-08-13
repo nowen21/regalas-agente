@@ -74,3 +74,4 @@ y qué archivo se tocó.
 - [2026-08-08-sesion-3.md](2026-08-08-sesion-3.md) — sesión del 2026-08-08.
 - [2026-08-08-sesion-4.md](2026-08-08-sesion-4.md) — la redacción del estándar pasa a entenderse sin saber del tema: nace `00·ID7` y se deroga `00·ID2` (v6.0.0).
 - [2026-08-09-sesion.md](2026-08-09-sesion.md) — sesión del 2026-08-09.
+- [2026-08-12-regla-de-respaldo-de-las-reglas-de-proyecto.md](2026-08-12-regla-de-respaldo-de-las-reglas-de-proyecto.md) — nace 20·M16: ninguna regla de proyecto existe sin un criterio de la base que la respalde (8.0.0).

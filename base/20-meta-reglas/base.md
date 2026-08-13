@@ -27,6 +27,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 | [`M13 · Lo que no es regla del estándar tiene su propio sitio`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) | Antes de escribir en `base/`, verificar que ahí es donde va. |
 | [`M14 · Ninguna regla nace fuera del procedimiento`](reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md) | El acto completo: los nueve pasos, con el checklist en CUMPLE como cierre. |
 | [`M15 · Toda cita a otra regla lleva su enlace`](reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) | Citar por ID no basta: la cita se escribe como enlace al sitio exacto. |
+| [`M16 · Toda regla de proyecto nombra la regla de base que concreta`](reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) | La capa 3 concreta un criterio de la base; si no existe, se crea en la base primero. |
 
 Además del catálogo, este capítulo tiene el molde de una regla parte por parte ([`estructura-regla.md`](estructura-regla.md)) y el instrumento con que se comprueba ([`checklist.md`](checklist.md)).
 
@@ -147,6 +148,19 @@ Dos reglas que dicen lo mismo con palabras distintas terminan contradiciéndose 
 | Qué pasó en una sesión | `historico-chat/` |
 
 Meter en `base/` lo que no es regla universal la infla y se lo impone a todos los proyectos que heredan el estándar.
+
+### M16 — el respaldo es del criterio, no del detalle
+
+La base no puede llevar el detalle de un proyecto ([`M3`](reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md)) y la capa 3 no puede inventar criterios que la base no tiene. Las dos cosas se sostienen porque cada una pone una mitad: la base dice **qué hay que decidir**, la regla `P` dice **con qué valor se decide aquí**.
+
+| Capa | Qué pone | Ejemplo |
+|---|---|---|
+| Base (capa 2) | El criterio, sin valores ni nombres propios | [`06·R4`](../06-rendimiento.md#r4--cachea-lo-caro-y-estable-con-invalidación-clara) · lo caro y estable se cachea, con invalidación clara |
+| Proyecto (capa 3) | El valor concreto, citando ese criterio | `P4` · el catálogo se cachea 10 minutos, y se invalida al publicar |
+
+Cuando la regla que pide el proyecto no encaja en ningún criterio de la base, casi siempre es que el criterio sí es universal y todavía no está escrito: se escribe en `base/` sin el detalle del proyecto, y la `P` queda como su valor local. Si al quitarle el detalle no queda nada que valga para otro proyecto, no era una regla: era una decisión de configuración, y va donde va la configuración.
+
+Esto también le pone freno a la capa 3. Un catálogo que crece con reglas sueltas termina siendo un estándar paralelo, sin checklist, sin versión y sin nadie que lo audite.
 
 ## Cómo se agrega una regla nueva (procedimiento)
 

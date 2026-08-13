@@ -14,7 +14,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Categoría | Cuántas |
 |---|---|
 | ✅ **Ya son validadores** | ~50 |
-| 🟡 **Validables, faltan** | ~10 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial) |
+| 🟡 **Validables, faltan** | ~11 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto) |
 | 🔴 **No validables** (criterio humano) | ~93 |
 
 > Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
@@ -88,6 +88,8 @@ No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy n
 | `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
 
 `M14` es **parcial**: que la regla haya recorrido de verdad los nueve pasos no lo decide un script, pero la **presencia y el resultado** del bloque sí.
+
+`M16` es del mismo capítulo pero **no se valida en seco** (🔶): el catálogo vive en el proyecto. El script abre `reglas-proyecto.md`, comprueba que cada `P` trae su **Respaldo** y que el ID citado existe en `base/`. Que el criterio citado sea de verdad el que la `P` concreta lo decide quien lee.
 
 ### Redacción (`00·ID8`) — se valida **en seco**, sobre los `.md` que se entregan
 

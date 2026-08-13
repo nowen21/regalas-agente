@@ -11,6 +11,19 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 8.0.0 — 2026-08-12
+
+**MAYOR** ⚠ obliga a migrar (todo catálogo de proyecto con reglas `P` ya escritas tiene que agregarles su respaldo; la que no lo tenga se queda sin respaldo hasta que se cree la regla de base que le falta).
+
+**Las reglas de un proyecto dejan de nacer sueltas.** Hasta ahora la capa 3 podía escribir cualquier regla `P` sin más justificación que "lo acordó el equipo": la plantilla del catálogo lo admitía de frente, con un campo que aceptaba *"regla nueva, no cubierta por la base"*. Un catálogo así crece hasta volverse un estándar paralelo, con la diferencia de que ese no pasa por checklist, no se versiona y nadie lo audita.
+
+- **Nueva [`20·M16 · Toda regla de proyecto nombra la regla de base que concreta`](base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md)** (extiende [`M1`](base/20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)). Cada `P` declara, con su enlace, la regla de `base/` cuyo criterio concreta o endurece. Si ningún criterio la cubre, la regla de base se escribe primero, agnóstica y por el procedimiento completo ([`M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md)); hasta entonces la `P` no se publica.
+- **El respaldo es del criterio, no del detalle**, y por eso la regla no choca con [`M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). La base dice **qué hay que decidir** (`06·R4`: lo caro y estable se cachea, con invalidación clara); la `P` dice **con qué valor se decide aquí** (el catálogo, 10 minutos). Sin esa separación la regla se trancaba: una `P` de stack no puede subir a `base/`, y sin respaldo tampoco podría existir. El desarrollo, con la tabla de las dos mitades, queda en [`base.md`](base/20-meta-reglas/base.md).
+- **Qué pasa con lo que no encaja.** Si al quitarle el detalle del proyecto no queda nada que le sirva a otro, no era una regla: era una decisión de configuración, y va donde va la configuración.
+- **[`plantillas/reglas-proyecto.md`](plantillas/reglas-proyecto.md) cambia de forma.** El campo *Relación con la base* pasa a llamarse **Respaldo**, es obligatorio y lleva enlace; desaparece la salida *"regla nueva, no cubierta por la base"*. Se suma la sección *Ninguna `P` se sostiene sola*. Como la plantilla cambió de huella, el catálogo de cada proyecto queda marcado viejo hasta la próxima corrida del instalador; el texto local no se pisa.
+- **[`20·M16` queda registrada como validable](validadores/reglas-validables.md)**, y no en seco: el catálogo vive en el proyecto. El script comprueba que cada `P` trae su respaldo y que el ID citado existe en `base/`; que el criterio citado sea de verdad el que la `P` concreta lo decide quien lee.
+- **[`13·DOC10`](base/13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md) no se toca.** Esa regla exige registrar y numerar la regla propia, que es otra exigencia; el respaldo es de dónde sale, y son dos cosas que se cumplen por separado ([`M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)).
+
 ## 7.0.0 — 2026-08-10
 
 **MAYOR** ⚠ obliga a migrar (todo documento que se entregue desde ahora se relee contra la lista de marcadores; un proyecto al día tiene que empezar a hacerlo).

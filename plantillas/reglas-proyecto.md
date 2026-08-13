@@ -10,6 +10,12 @@
 
 Una regla `P` puede **endurecer o complementar** una convención (`01`–`17`), pero **nunca** contradecir el núcleo (`00`). Ante choque, gana el núcleo.
 
+## Ninguna `P` se sostiene sola  ·  `20·M16`
+
+Toda `P` declara, con su enlace, la regla de la base cuyo criterio concreta: la base dice **qué hay que decidir**, la `P` dice **con qué valor se decide en este proyecto**.
+
+Si ningún criterio de la base la cubre, la regla **no se escribe todavía**: primero se crea la regla en el estándar, sin el detalle de este proyecto, y después la `P` la concreta. Sin ese respaldo el catálogo se vuelve un estándar paralelo, sin checklist, sin versión y sin nadie que lo audite.
+
 ## Sincronización con la memoria  ·  `13·DOC10`
 
 - **Al crear o endurecer una regla `P`:** registrar la señal correspondiente en la memoria (`tipo` `restriccion` / `patron` / `aprendizaje`) con puntero `Ver P<N>`.
@@ -23,16 +29,16 @@ Una regla `P` puede **endurecer o complementar** una convención (`01`–`17`), 
 ### P1 · «Título corto»
 
 - **Regla:** «qué se debe / no se debe hacer, sin ambigüedad».
-- **Por qué:** «el motivo — qué problema evita o qué convención del equipo fija».
+- **Respaldo:** [`NN·Xn · Título de la regla de la base`](«enlace al archivo de la regla») · «concreta / endurece: qué mitad pone esta `P`». Obligatorio (`20·M16`).
+- **Por qué:** «el motivo: qué problema evita o qué convención del equipo fija».
 - **Ejemplo:** «un caso concreto» (si ayuda a entenderla).
-- **Relación con la base:** «endurece / complementa `NN·Xn`» — o «regla nueva, no cubierta por la base».
 - **Señal asociada:** «id o enlace en la memoria (`13·DOC5`)».
 
 ### P2 · «…»
 
 - **Regla:** «…»
+- **Respaldo:** «…»
 - **Por qué:** «…»
-- **Relación con la base:** «…»
 - **Señal asociada:** «…»
 
 ---
