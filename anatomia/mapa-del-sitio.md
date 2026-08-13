@@ -15,7 +15,7 @@ El repositorio se divide en **cuatro zonas**. Toda carpeta pertenece a una:
 |---|---|---|
 | 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` |
 | 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `memoria/` · `metricas/` · `interfaz/` |
-| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `anatomia/` |
+| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` |
 | ⬜ **Apoyo** | Configuración, empaquetado y material que no es del estándar. | `.claude/` · `.claude-plugin/` · `.githooks/` · `diplomado-ia/` |
 
 La distinción importa: **solo la zona Norma viaja a los proyectos** que heredan el estándar. Lo demás se queda aquí.
@@ -186,6 +186,10 @@ agente/
 │   ├── compactacion-mata-decisiones.md · aislamiento-checkpoints-memoria.md
 │   ├── agente-24-7-y-tareas.md · subagentes-y-entorno.md
 │   ├── velocidad-consistencia-calidad.md · que-es-triangulacion-de-pruebas.md
+│
+├── 🟨 prompts/ ....................... LO QUE PIDIÓ EL USUARIO, CON SUS PALABRAS
+│   ├── README.md ..................... índice: qué pidió cada uno y en qué quedó
+│   └── regla-reglas-proyecto.md ...... el pedido del que salió `20·M16`
 │
 ├── 🟨 pendientes/ .................... BACKLOG DEL ESTÁNDAR
 │   ├── README.md ..................... el número es el orden, no la prioridad

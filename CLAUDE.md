@@ -36,6 +36,7 @@ Nada se renumera ni se borra: las reglas se derogan (`M11`), porque specs, commi
 | Instructivo para mantener el estándar | este `CLAUDE.md` |
 | **Por qué** se diseñó algo así (razonamiento, alternativas) | `notas/` |
 | Mejora acordada pero aún no hecha | `pendientes/` |
+| Lo que pidió el usuario, con sus palabras | `prompts/` |
 | Qué pasó en una sesión | `historico-chat/` |
 | Preferencia del usuario sobre cómo trabajar | [`historico-chat/memory/`](historico-chat/memory/memory.md) |
 
