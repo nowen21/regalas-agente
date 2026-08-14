@@ -115,34 +115,36 @@ Errores:  400 | 401 | 403 | 404 | 422
 ## 3. Desglose de tareas por criterio de aceptación
 
 > Cada CA se descompone en tareas atómicas (≤ 4 h). **Depende de** ordena la ejecución; **Ev.** referencia la evidencia de §5.
+>
+> **Sin columna de estado, a propósito.** Este documento se aprueba y no se vuelve a tocar: el avance en vivo va en el `estado-fase.md` §1.2, y la verificación de qué se hizo de verdad, en el `funcionalidad_implementada.md` §2.2. Marcar el avance acá pisa el plan que el usuario aprobó y deja sin contra qué comparar.
 
 ### CA-01 — [Nombre del escenario]
 
-| ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
-|---|---|---|:--:|---|---|---|
-| T-01 | Crear migración `[nombre]` | BD | 1 h | — | ☐ | |
-| T-02 | Definir modelo / entidad | Backend | 1 h | T-01 | ☐ | |
-| T-03 | Implementar lógica en servicio | Backend | 3 h | T-02 | ☐ | |
-| T-04 | Exponer endpoint y validaciones | Backend | 2 h | T-03 | ☐ | |
-| T-05 | Prueba del servicio | Test | 2 h | T-03 | ☐ | EV-01 |
-| T-06 | Consumir API desde la UI | Frontend | 2 h | T-04 | ☐ | |
-| T-07 | Construir vista / componente | Frontend | 3 h | T-06 | ☐ | EV-02 |
+| ID | Tarea | Capa | Est. | Depende de | Ev. |
+|---|---|---|:--:|---|---|
+| T-01 | Crear migración `[nombre]` | BD | 1 h | — | |
+| T-02 | Definir modelo / entidad | Backend | 1 h | T-01 | |
+| T-03 | Implementar lógica en servicio | Backend | 3 h | T-02 | |
+| T-04 | Exponer endpoint y validaciones | Backend | 2 h | T-03 | |
+| T-05 | Prueba del servicio | Test | 2 h | T-03 | EV-01 |
+| T-06 | Consumir API desde la UI | Frontend | 2 h | T-04 | |
+| T-07 | Construir vista / componente | Frontend | 3 h | T-06 | EV-02 |
 
 ### CA-02 — [Nombre del escenario: validación / error]
 
-| ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
-|---|---|---|:--:|---|---|---|
-| T-08 | Validaciones de entrada | Backend | 2 h | T-04 | ☐ | |
-| T-09 | Manejo y mensajes de error en UI | Frontend | 2 h | T-07 | ☐ | EV-03 |
-| T-10 | Prueba de caso negativo | Test | 1 h | T-08 | ☐ | EV-03 |
+| ID | Tarea | Capa | Est. | Depende de | Ev. |
+|---|---|---|:--:|---|---|
+| T-08 | Validaciones de entrada | Backend | 2 h | T-04 | |
+| T-09 | Manejo y mensajes de error en UI | Frontend | 2 h | T-07 | EV-03 |
+| T-10 | Prueba de caso negativo | Test | 1 h | T-08 | EV-03 |
 
 ### RNF — Requisitos no funcionales
 
-| ID | Tarea | Categoría | Est. | Estado | Ev. |
-|---|---|---|:--:|---|---|
-| T-11 | Verificar autorización por rol | Seguridad | 1 h | ☐ | EV-04 |
-| T-12 | Registrar evento en bitácora | Auditoría | 1 h | ☐ | EV-05 |
-| T-13 | Medir respuesta con [n] registros | Rendimiento | 1 h | ☐ | EV-06 |
+| ID | Tarea | Categoría | Est. | Ev. |
+|---|---|---|:--:|---|
+| T-11 | Verificar autorización por rol | Seguridad | 1 h | EV-04 |
+| T-12 | Registrar evento en bitácora | Auditoría | 1 h | EV-05 |
+| T-13 | Medir respuesta con [n] registros | Rendimiento | 1 h | EV-06 |
 
 **Total estimado:** [suma] h
 
@@ -244,12 +246,4 @@ Trazabilidad de decisiones — reglas por su identificador:
 
 ## 13. Cierre
 
-**Resultado:** [CA cumplidos / total] · **Esfuerzo real vs. estimado:** [h] / [h]
-
-**Lecciones aprendidas:** [qué se subestimó, qué patrón conviene reutilizar → señal `DOC5`].
-
-**Deuda técnica generada:**
-
-| Descripción | Registro / ticket |
-|---|---|
-| | |
+**No se escribe acá.** El cierre de la fase vive en el `funcionalidad_implementada.md` (plantilla `funcionalidad-implementada.md`): qué se hizo de cada tarea (§2.2), qué se probó (§3), qué se decidió (§5) y qué deuda quedó (§6). Este plan se queda como se aprobó, para poder comparar lo que se dijo contra lo que pasó.

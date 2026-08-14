@@ -101,38 +101,40 @@ Ninguna tarea de construcción arranca con una duda abierta que la bloquee. Las 
 
 ## 3. Desglose de tareas por criterio de aceptación
 
+Sin columna de estado, a propósito: este plan se aprueba y no se vuelve a tocar. El avance en vivo va en [estado-fase.md](estado-fase.md) §1.2, y la verificación de qué se hizo, en el documento de cierre §2.2.
+
 ### CA-01 — Una regla escrita con el molde queda citable y comprobable
 
-| ID | Tarea | Est. | Depende de | Estado | Evidencia |
-|---|---|:--:|---|---|---|
-| T-01 | Resolver las tres dudas de §2.7 con el usuario | 1 h | — | Pendiente | EV-01 |
-| T-02 | Escribir el molde: partes obligatorias, opcionales y qué va en cada una | 3 h | T-01 | Pendiente | EV-02 |
-| T-03 | Escribir la regla del identificador y de la forma de citar entre capítulos | 2 h | T-02 | Pendiente | EV-03 |
-| T-04 | Escribir la regla que obliga al molde | 2 h | T-02 | Pendiente | EV-03 |
-| T-05 | Crear el capítulo con su índice y el índice de capítulos | 1 h | T-03, T-04 | Pendiente | EV-04 |
-| T-06 | Citar una regla desde otro documento y comprobar que el enlace llega | 1 h | T-05 | Pendiente | EV-05 |
+| ID | Tarea | Est. | Depende de | Evidencia |
+|---|---|:--:|---|---|
+| T-01 | Resolver las tres dudas de §2.7 con el usuario | 1 h | — | EV-01 |
+| T-02 | Escribir el molde: partes obligatorias, opcionales y qué va en cada una | 3 h | T-01 | EV-02 |
+| T-03 | Escribir la regla del identificador y de la forma de citar entre capítulos | 2 h | T-02 | EV-03 |
+| T-04 | Escribir la regla que obliga al molde | 2 h | T-02 | EV-03 |
+| T-05 | Crear el capítulo con su índice y el índice de capítulos | 1 h | T-03, T-04 | EV-04 |
+| T-06 | Citar una regla desde otro documento y comprobar que el enlace llega | 1 h | T-05 | EV-05 |
 
 ### CA-02 — Una regla que exige dos cosas no pasa
 
-| ID | Tarea | Est. | Depende de | Estado | Evidencia |
-|---|---|:--:|---|---|---|
-| T-07 | Escribir en el molde la exigencia de una sola cosa por regla, con su ejemplo | 1 h | T-02 | Pendiente | EV-02 |
-| T-08 | Escribir a propósito una regla con dos exigencias y revisarla contra el molde | 1 h | T-07 | Pendiente | EV-06 |
-| T-09 | Partirla en dos y verificar que ambas pasan | 1 h | T-08 | Pendiente | EV-06 |
+| ID | Tarea | Est. | Depende de | Evidencia |
+|---|---|:--:|---|---|
+| T-07 | Escribir en el molde la exigencia de una sola cosa por regla, con su ejemplo | 1 h | T-02 | EV-02 |
+| T-08 | Escribir a propósito una regla con dos exigencias y revisarla contra el molde | 1 h | T-07 | EV-06 |
+| T-09 | Partirla en dos y verificar que ambas pasan | 1 h | T-08 | EV-06 |
 
 ### CA-03 — Un identificador repetido se detecta
 
-| ID | Tarea | Est. | Depende de | Estado | Evidencia |
-|---|---|:--:|---|---|---|
-| T-10 | Escribir en el molde cómo se elige un identificador libre | 1 h | T-03 | Pendiente | EV-02 |
-| T-11 | Duplicar a propósito un identificador y revisar el capítulo | 1 h | T-10 | Pendiente | EV-07 |
+| ID | Tarea | Est. | Depende de | Evidencia |
+|---|---|:--:|---|---|
+| T-10 | Escribir en el molde cómo se elige un identificador libre | 1 h | T-03 | EV-02 |
+| T-11 | Duplicar a propósito un identificador y revisar el capítulo | 1 h | T-10 | EV-07 |
 
 ### Requisitos no funcionales
 
-| ID | Tarea | Categoría | Est. | Estado | Evidencia |
-|---|---|---|:--:|---|---|
-| T-12 | Releer el molde y las dos reglas contra la exigencia de que lo entienda quien no sabe del tema | Legibilidad | 1 h | Pendiente | EV-08 |
-| T-13 | Marcar en el molde qué partes puede comprobar un programa | Comprobabilidad | 1 h | Pendiente | EV-02 |
+| ID | Tarea | Categoría | Est. | Evidencia |
+|---|---|---|:--:|---|
+| T-12 | Releer el molde y las dos reglas contra la exigencia de que lo entienda quien no sabe del tema | Legibilidad | 1 h | EV-08 |
+| T-13 | Marcar en el molde qué partes puede comprobar un programa | Comprobabilidad | 1 h | EV-02 |
 
 **Total estimado:** 17 h
 
@@ -213,14 +215,4 @@ Lo que sí guía la fase son los criterios de aceptación de [HU-001](../HU-001-
 
 ## 12. Cierre
 
-Se llena al cerrar la fase.
-
-**Resultado:** pendiente.
-**Esfuerzo real contra estimado:** pendiente.
-**Lecciones aprendidas:** pendiente.
-
-**Deuda técnica generada**
-
-| Descripción | Dónde queda registrada |
-|---|---|
-| Pendiente | |
+No se escribe acá. El cierre de la fase vive en el `funcionalidad_implementada.md`: qué se hizo de cada tarea, qué se probó, qué se decidió y qué deuda quedó. Este plan se queda como se aprobó, para poder comparar lo que se dijo contra lo que pasó.

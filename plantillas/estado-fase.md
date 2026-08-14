@@ -51,6 +51,18 @@
 
 ---
 
+## 1.2 Avance de las tareas del plan
+
+> El seguimiento **en vivo**, mientras la fase corre. Los identificadores se copian del `plan_trabajo` §3, que no se toca. Al cerrar, esto se consolida en el `funcionalidad_implementada.md` §2.2, que es la verificación de registro.
+
+| Tarea | Estado | Nota |
+|---|---|---|
+| T-01 | Pendiente / En curso / Hecha / Bloqueada | «si está bloqueada, por qué» |
+
+**Hechas:** «N de N». **Bloqueadas:** «cuáles».
+
+---
+
 ## 2. Decisiones y señales generadas  ·  `13·DOC5`
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |

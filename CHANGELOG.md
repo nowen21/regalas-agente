@@ -11,6 +11,17 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 9.1.0 — 2026-08-14
+
+**MENOR** (aditivo: una subsección nueva en el cierre y una en el estado de fase; el plan de trabajo pierde una columna y una sección que ya vivían mejor en otro lado).
+
+**Nada verificaba que el plan de trabajo se hubiera cumplido.** El `resultado_pruebas` que trajo [`9.0.0`](#900--2026-08-13) comprueba que **el resultado sirve**. Pero que **se haya hecho lo que se dijo que se iba a hacer** no lo revisaba nadie: el avance se marcaba con una casilla dentro del propio plan, que es autorreporte y encima pisa el documento aprobado, y el `funcionalidad_implementada` trazaba solo contra la spec. Una fase podía pasar todas las pruebas y haber dejado tres tareas sin tocar, o haber tocado archivos que el plan no declaraba, sin que quedara rastro.
+
+- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §2 pasa a tener dos trazabilidades**, porque responden preguntas distintas: **§2.1 spec → implementación** (qué había que lograr) y **§2.2 plan de trabajo → ejecución** (qué se iba a hacer para lograrlo). La §2.2 va tarea por tarea, con su identificador copiado del plan, y suma dos cosas que antes no se preguntaban: las **tareas que no se hicieron** y los **archivos tocados que el plan no declaraba** ([`02·F8`](base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). "Ninguno" es la respuesta esperada; que quede escrito cuando no lo es permite ver si el plan se amplía sobre la marcha y por qué.
+- **[`plantillas/planes/trabajo.md`](plantillas/planes/trabajo.md) pierde la columna `Estado` de §3 y el §13 de cierre.** Marcar avance ahí pisaba el plan aprobado y dejaba sin contra qué comparar, el mismo defecto que `9.0.0` corrigió en el plan de pruebas. El cierre ya vivía completo en el `funcionalidad_implementada`, duplicado.
+- **[`plantillas/estado-fase.md`](plantillas/estado-fase.md) gana §1.2 · Avance de las tareas del plan**, que es donde va el seguimiento **en vivo** mientras la fase corre. Queda la cadena completa: el plan dice qué se va a hacer, el estado dice por dónde va, el cierre dice qué se hizo.
+- **Retroactividad.** Las fases cerradas no se reabren. Los planes ya aprobados conservan su columna de estado; el cambio aplica a los que se escriban desde acá.
+
 ## 9.0.0 — 2026-08-13
 
 **MAYOR** ⚠ obliga a migrar (toda fase que se abra desde ahora produce un quinto documento; el plan de pruebas deja de ser donde se anotan los resultados).

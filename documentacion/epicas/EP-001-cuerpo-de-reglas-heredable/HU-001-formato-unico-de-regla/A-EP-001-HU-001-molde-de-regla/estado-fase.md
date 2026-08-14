@@ -43,6 +43,16 @@
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §6 |
 
+## 1.2 Avance de las tareas del plan
+
+Los identificadores se copian de [plan_trabajo.md](plan_trabajo.md) §3, que no se toca. Al cerrar, esto se consolida en el documento de cierre §2.2.
+
+| Tarea | Estado | Nota |
+|---|---|---|
+| T-01 a T-13 | Pendiente | Ninguna arrancó. La fase espera aprobación de los dos planes y las tres respuestas de §2.7 |
+
+**Hechas:** 0 de 13. **Bloqueadas:** las trece, por la misma causa.
+
 ## 2. Decisiones y aprendizajes
 
 | Decisión | Dónde quedó registrada |

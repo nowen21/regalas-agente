@@ -24,7 +24,11 @@
 
 ---
 
-## 2. Trazabilidad spec → implementación  ·  `13·DOC11`
+## 2. Trazabilidad  ·  `13·DOC11`
+
+Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la spec dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+
+### 2.1 Spec → implementación
 
 > Una fila por **afirmación técnica del spec**. No se cierra con faltantes sin justificar.
 >
@@ -35,6 +39,28 @@
 | (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `[ruta real]` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
 
 **Faltantes / diferimientos** (si hay `❌` o parcial): [qué queda y a qué fase se traslada].
+
+### 2.2 Plan de trabajo → ejecución
+
+> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
+
+| Tarea | Qué era | Estado | Dónde quedó | Evidencia |
+|---|---|---|---|---|
+| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `[ruta real]` | (commit, prueba, archivo) |
+
+**Correspondencia con el plan:** [N tareas en el plan, N acá]. Si no cuadra, cuáles bailan y por qué.
+
+**Tareas que no se hicieron:** [cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas].
+
+**Archivos tocados que el plan no declaraba**  ·  `02·F8`:
+
+| Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
+|---|---|---|
+| `[ruta]` | | |
+
+> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y `F8` pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
+
+**Esfuerzo real contra estimado:** [horas reales] contra [horas del plan]. [Qué se subestimó, en una línea].
 
 ---
 
