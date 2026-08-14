@@ -19,14 +19,15 @@ Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por 
 | ~~05~~ | **hecho** → [Memoria semántica](hecho/memoria-semantica.md) | Búsqueda híbrida (FTS5 ∪ semántica) local y opcional; `model2vec` + coseno en numpy. | Encuentra por significado lo que la palabra no alcanza. Cerrado 2026-08-06 (la detección de contradicciones queda como mejora sobre esta base). |
 | ~~06~~ | **hecho** → [Métricas del proceso](hecho/metricas-del-proceso.md) | Lee `senales.db` y reporta deuda abierta/cerrada, vigencia y pulso de señales. | Para decidir qué reglas cambiar, no para calificar. Cerrado 2026-08-06 (falta lo que necesita instrumentación nueva). |
 
-### Patrones opt-in de dominio (07–08, fuera de la fila)
+### Patrones opt-in de dominio (07–08 y 12, fuera de la fila)
 
 | # | Pendiente | Qué resuelve |
 |---|---|---|
 | ~~07~~ | **hecho** → [Patrones DevOps 18 y 19](hecho/patrones-devops.md) | Capítulos opt-in `18` (despliegue/infra) y `19` (observabilidad/operación) + plantillas. Cerrado 2026-08-06 (v1.1.0). |
 | 08 | [Patrón RPA](08-patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
+| 12 | [Patrón IA](12-patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. |
 
-Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps o RPA, se adelantan sin esperar la fila.
+Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps, RPA o IA, se adelantan sin esperar la fila.
 
 ### Backlog temático (09)
 
@@ -51,6 +52,19 @@ Estos dos **no dependen de 01–06 ni entre sí**. Van numerados al final porque
 | 11 | [Limpiar los marcadores de IA del texto del estándar](11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `00·ID8` (v7.0.0) prohíbe las marcas de generación automática, y el texto ya escrito de `base/` y `plantillas/` las trae. La norma no reabre lo cerrado, pero mientras no se limpie el estándar enseña lo contrario de lo que pide. |
 
 Depende del validador de la parte mecánica de `ID8`: sin él, el recuento sobre 200 archivos se hace a mano.
+
+### El estándar aplicado a sí mismo (13–16)
+
+Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../proyecto-grado/diplomado-ia/`) contra este repo. Son la primera aplicación de la idea 1 de [10-ideas](10-ideas.md): que lo que el usuario aprende en el posgrado entre al estándar. Los cuatro parten de lo mismo, y es que el estándar le exige a los proyectos cosas que no se exige a sí mismo.
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 13 | [Inventario y riesgo de las acciones del agente](13-inventario-y-riesgo-de-las-acciones-del-agente.md) | Nadie ha listado todo lo que el agente puede hacer. `N1` a `N6` cubren los casos que dolieron, y todo lo demás cae en una sola exigencia pareja que en la práctica se aprueba en bloque. |
+| 14 | [Las reglas no tienen fecha de revisión](14-las-reglas-no-tienen-fecha-de-revision.md) | Una regla que dejó de valer se comporta igual que una correcta: nada se rompe. La memoria ya recibió vigencia en el pendiente 02; las reglas no. |
+| 15 | [El estándar depende de una sola herramienta](15-el-estandar-depende-de-una-sola-herramienta.md) | Las reglas son portables, lo que las hace cumplir no. Hoy no hay ni un mapa de cuáles piezas están amarradas a Claude Code. |
+| 16 | [Primero que el proceso sirva, después se automatiza](16-primero-que-el-proceso-sirva-despues-se-automatiza.md) | Al 09 le falta el criterio de *si conviene* automatizar, no solo *si se puede*. Automatizar una regla mal escrita la congela y la pone a fallar sola. |
+
+**El 13 conviene primero:** es una lista y una tabla, y el 12 reusa esa misma tabla de riesgo para los modelos de un proyecto. El 16 se resuelve al escribirlo, no construyendo nada.
 
 ## Dependencias duras
 
