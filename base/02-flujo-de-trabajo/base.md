@@ -75,6 +75,8 @@ La capa 3 puede ajustar cuán estricta es la regla, pero viene **activada por de
 
 El `plan_trabajo` sigue `plantillas/planes/trabajo.md`; el `plan_pruebas` sigue `plantillas/planes/pruebas.md`, con trazabilidad CA→caso y el alcance de corrida de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
 
+Lo que **se aprueba** son esos dos. Lo que pasa al ejecutarlos va en el `resultado_pruebas` (`plantillas/planes/resultados.md`), que se crea al correr la primera prueba y de donde sale el veredicto de la fase: **el plan aprobado no se modifica para anotarle resultados**, porque entonces se pierde contra qué comparar.
+
 La aprobación no es un hito abstracto, es una secuencia operativa: **1)** redactar los dos documentos · **2)** PAUSAR, sin tocar código · **3)** presentarlos con un resumen corto de qué hará · **4)** esperar el OK explícito o la iteración de cambios · **5)** solo con el OK, implementar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)).
 
 ### F14 — las trece preguntas
@@ -107,7 +109,7 @@ Las trece son **genéricas**: aplican a cualquier proyecto. La capa 3 (`.agente/
 | 4 | **Pausa y presentación** al usuario | Agente | Mensaje con resumen y punteros a los documentos |
 | 5 | **Aprobación del plan detallado** | Usuario | OK explícito → pasa a 6 · pide cambios → vuelve a 3 |
 | 6 | **Ejecución continua** ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)) | Agente | Plan implementado; pausa solo por descubrimiento genuino |
-| 7 | **Pruebas** ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) | Agente | Conteo verde reportado. Si falla: diagnostica, corrige, vuelve a correr |
+| 7 | **Pruebas** ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) | Agente | `resultado_pruebas` escrito, con veredicto por CA. Si falla: diagnostica, corrige, vuelve a correr y agrega el ciclo nuevo sin pisar el anterior |
 | 8 | **Cierre documental** ([`13·DOC1`](../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)) | Agente | Documentación completa; trazabilidad sin faltantes |
 | 9 | **Commit único** de la fase | Agente | Mensaje que resume el porqué. Publicar es acción aparte |
 | 10 | **Reporte al usuario** | Agente | Hash + resumen + estado de pruebas + próxima fase natural |

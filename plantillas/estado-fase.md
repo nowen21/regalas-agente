@@ -37,6 +37,20 @@
 
 ---
 
+## 1.1 Veredicto de las pruebas
+
+> De dónde sale el estado de la estación 9. **No se escribe de memoria ni "porque se vio funcionar"**: se copia del `resultado_pruebas.md` de la fase, §6.
+
+| Campo | Valor |
+|---|---|
+| **Concepto** | «Cumple / Cumple con observaciones / No cumple / Todavía no se ejecutó» |
+| **CA cumplidos** | «cuántos de cuántos» |
+| **CA en "No"** | «cuáles. Con uno solo, la fase no cierra» |
+| **Defectos abiertos aceptados** | «cuáles y quién los aceptó» |
+| **Fuente** | [`resultado_pruebas.md`] |
+
+---
+
 ## 2. Decisiones y señales generadas  ·  `13·DOC5`
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |

@@ -1,6 +1,8 @@
 # Plan de Trabajo — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
-> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F14`** sobre una **línea base verificada** (`02·F16` · `02·F17`). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja.
+**Para qué sirve este documento.** Dice **qué se va a hacer en esta fase, en qué orden, sobre qué archivos y cómo se comprueba** cada criterio de aceptación antes de darlo por cumplido. Se escribe **antes** de tocar nada y se aprueba antes de empezar: quien lo aprueba está aceptando el alcance y el costo. El requisito vive en la HU; el detalle de las pruebas, en el `plan_pruebas` de esta misma fase; lo que quedó hecho, en el `funcionalidad_implementada.md` del cierre.
+
+> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F14`** sobre una **línea base verificada** (`02·F16` · `02·F17`). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja. **La línea de arriba, la de para qué sirve, se queda** — es lo que le dice a quien abre el documento dentro de un año qué está leyendo.
 >
 > **Unidad = fase.** Una fase pertenece a **una sola HU** (`02·F12.1`); declara qué CA de esa HU satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
 

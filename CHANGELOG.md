@@ -11,6 +11,53 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 9.0.0 — 2026-08-13
+
+**MAYOR** ⚠ obliga a migrar (toda fase que se abra desde ahora produce un quinto documento; el plan de pruebas deja de ser donde se anotan los resultados).
+
+**El plan de pruebas se aprobaba antes y se sobreescribía después.** La plantilla traía la tabla de ejecución dentro de cada caso y el resumen de la corrida en §12: el mismo archivo que el usuario aprueba **antes** de probar terminaba pisado con lo que pasó **después**. Tres consecuencias: se pierde la línea base aprobada, así que no hay contra qué comparar lo que se acordó probar; no queda un veredicto formal de si la fase cumple; y el documento de cierre tenía que redactar de memoria la sección "qué se probó". Además la plantilla decía apoyarse en ISO/IEC/IEEE 29119-3, que separa el plan del registro de ejecución, y la nuestra los juntaba.
+
+- **Nueva plantilla [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**, el `resultado_pruebas.md` de la fase. Registra qué se ejecutó, con qué resultado, qué defectos salieron, y sobre todo el **veredicto por criterio de aceptación** y el **veredicto de la fase**. Se crea **junto con los dos planes**, no cuando se corre la primera prueba: el formato puesto desde el principio se ve, se revisa y no se olvida. Lo que no se ha corrido se escribe **"no ejecutado"**, nunca en blanco ni como aprobado, y el veredicto arranca en *"todavía no se ejecutó"*, que no es lo mismo que "no cumple". Los ciclos de reprueba se apilan sin pisar el anterior, porque saber que algo falló y después pasó vale más que ver solo el resultado final.
+- **[`02·F12.13`](base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) suma el quinto documento al árbol de la fase.** El cambio a `F12` lo **decidió el usuario el 2026-08-13**; esa regla está congelada como texto suyo y el agente no la ajusta por cuenta propia.
+- **El resultado se arma desde el plan, no desde lo que se hizo.** La lista de casos, su criterio y su prioridad **se copian** del `plan_pruebas`; un caso que esté en uno y no en el otro es defecto de trazabilidad y se arregla antes de dar veredicto. Y §5.1 pone frente a frente **cada meta que el plan fijó** (cobertura, casos críticos ejecutados, métricas propias, criterios de salida) contra lo que dio de verdad: sin eso, el plan podía exigir el 100% de los críticos y el resultado no decirlo nunca.
+- **[`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md) deja de recibir resultados.** Se le quitan la tabla de ejecución por caso y el resumen de corrida; en su lugar apunta al documento nuevo. El plan define **qué se va a medir**; el resultado dice **cuánto dio**.
+- **[`plantillas/estado-fase.md`](plantillas/estado-fase.md) gana §1.1 · Veredicto de las pruebas**, que se **copia** del resultado y no se escribe de memoria. Es de donde sale el estado de la estación de verificación, y con un criterio en "No" la fase no cierra.
+- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §3 pasa a resumir del resultado**, no a redactarlo: si dice algo que el resultado no respalda, manda el resultado.
+- **[`plantillas/HU.md`](plantillas/HU.md)** suma la columna de resultado a la tabla de fases y la fila correspondiente a la tabla de qué documento responde qué.
+- **[`base/02`](base/02-flujo-de-trabajo/base.md)**: `F4` aclara que lo que se aprueba son los dos planes y que el plan aprobado no se modifica para anotarle resultados; la etapa 7 de `F15` cierra ahora con el `resultado_pruebas` escrito, no con un conteo verde reportado de palabra.
+- **[`validadores/fases.py`](validadores/fases.py)** incluye `resultado_pruebas.md` entre los documentos que espera de una fase. Sigue siendo **aviso**, no falla: una fase recién abierta todavía no lo tiene, y eso no es incumplimiento.
+- **Retroactividad.** Las fases ya cerradas no se reabren para producirlo. Aplica a las que se abran desde esta versión.
+
+## 8.2.0 — 2026-08-13
+
+**MENOR** (aditivo: una sección nueva en la plantilla de HU; no invalida ninguna HU ya escrita).
+
+**La cadena de trazabilidad se cortaba en la HU.** El brief lista sus épicas, la épica lista sus HU y cada HU nombra su épica ([`13·DOC16`](base/13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md)). De ahí para abajo el hilo se perdía: la HU no nombraba las fases que la implementan ni sus planes, así que desde el requisito no había cómo llegar a la ejecución. Se llegaba al revés —la fase sí declara qué CA cubre— y un enlace de una sola vía no se mantiene: cuando la fase se mueve o se divide, nadie actualiza el otro lado porque el otro lado no existe.
+
+- **[`plantillas/HU.md`](plantillas/HU.md) gana la sección `8 · Fases que la implementan`**: una fila por fase con los CA que cubre, sus dos planes y su estado. Las secciones siguientes corren de número.
+- **Se completa a medida**, igual que la lista de épicas del brief y la de HU de la épica. Una HU recién escrita la tiene vacía, y eso es correcto: las fases se definen después.
+- **Además, una tabla de qué documento responde qué** (el requisito, el plan, las pruebas, el estado, el cierre), para no ir a buscar al documento equivocado. Es el mismo problema que resolvió [`8.1.0`](#810--2026-08-13) en los dos planes, visto desde arriba.
+- **Retroactividad.** Una HU ya escrita y aceptada no se reabre por esto; la sección se agrega cuando se le definan fases.
+
+## 8.1.0 — 2026-08-13
+
+**MENOR** (aditivo: dos secciones nuevas en dos plantillas; no invalida ningún plan ya escrito).
+
+**Un documento terminado no decía qué era.** El propósito de cada plantilla vivía dentro de la caja de instrucciones, y esa caja la plantilla manda borrar al llenarla. Resultado: el `plan_trabajo` y el `plan_pruebas` de una fase quedaban sin una sola línea que explicara para qué existe cada uno. Quien los abre meses después tiene que deducirlo del contenido, y quien tiene que aprobarlos no sabe qué está aprobando.
+
+- **[`plantillas/planes/trabajo.md`](plantillas/planes/trabajo.md) y [`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md)** ganan una línea fija bajo el título: **para qué sirve** el documento, y dónde vive lo que no le toca a él. Va fuera de la caja de instrucciones y **sobrevive al llenado**.
+- **Una línea, no dos.** La primera versión traía además un apartado *"qué no es"*. Se descartó: si el "para qué sirve" está bien escrito, ya excluye lo demás, y la negación repetía en forma de contraposición lo que la [lista de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) señala como adorno. Lo que sí valía era decir **dónde vive lo otro**, y eso se dice en positivo, dentro de la misma línea.
+- **La caja de instrucciones lo dice explícito**: se borra ella, no la línea de arriba.
+- **Retroactividad.** Un plan ya escrito y aprobado no se reabre por esto. Las dos líneas se agregan al escribir el siguiente.
+- Como las plantillas cambiaron de huella, su copia local en cada proyecto queda marcada vieja hasta la próxima corrida del instalador; el texto local no se pisa.
+
+## 8.0.1 — 2026-08-13
+
+**PARCHE** (no cambia qué se exige: la narrativa ya tenía que estar; ahora se ve).
+
+- **[`plantillas/HU.md`](plantillas/HU.md) §2 · Narrativa.** Las tres líneas (`Como`, `Quiero`, `Para`) pasan a lista. Sin el guion, Markdown junta los tres renglones en un solo párrafo corrido y la narrativa, que es lo primero que alguien lee de una HU, queda ilegible. Se agrega la nota que dice por qué van como lista, para que nadie las vuelva a dejar sueltas.
+- Como la plantilla cambió de huella, la copia local del catálogo de cada proyecto queda marcada vieja hasta la próxima corrida del instalador; el texto local no se pisa.
+
 ## 8.0.0 — 2026-08-12
 
 **MAYOR** ⚠ obliga a migrar (todo catálogo de proyecto con reglas `P` ya escritas tiene que agregarles su respaldo; la que no lo tenga se queda sin respaldo hasta que se cree la regla de base que le falta).

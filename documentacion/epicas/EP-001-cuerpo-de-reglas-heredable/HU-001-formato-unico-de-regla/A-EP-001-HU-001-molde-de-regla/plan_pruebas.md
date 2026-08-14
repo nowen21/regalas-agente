@@ -1,6 +1,6 @@
 # Plan de Pruebas — Fase A-EP-001-HU-001-molde-de-regla
 
-**Para qué sirve este documento.** Dice cómo se comprueba que el molde hace lo que [HU-001](../HU-001-formato-unico-de-regla.md) pidió: con qué casos, sobre qué reglas de ejemplo y qué resultado se espera de cada paso. Su exigencia central es que ningún criterio de aceptación quede sin al menos un caso. Existe antes de correr la primera prueba; los resultados se van anotando encima. La lista de tareas vive en el [plan_trabajo.md](plan_trabajo.md) de esta misma fase.
+**Para qué sirve este documento.** Dice cómo se comprueba que el molde hace lo que [HU-001](../HU-001-formato-unico-de-regla.md) pidió: con qué casos, sobre qué reglas de ejemplo y qué resultado se espera de cada paso. Su exigencia central es que ningún criterio de aceptación quede sin al menos un caso. Se aprueba antes de correr la primera prueba y no se modifica al ejecutar: lo que pase al correrlas va en el `resultado_pruebas.md` de esta fase. La lista de tareas vive en el [plan_trabajo.md](plan_trabajo.md).
 
 | Campo | Valor |
 |---|---|

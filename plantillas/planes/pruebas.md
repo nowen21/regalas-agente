@@ -1,5 +1,7 @@
 # Plan de Pruebas — «alcance»   ·   `[CAPA 3]`
 
+**Para qué sirve este documento.** Dice **cómo se comprueba que lo construido hace lo que la HU pidió**: con qué casos, con qué datos, en qué ambiente y qué resultado se espera de cada paso. Su exigencia central es que **ningún criterio de aceptación quede sin al menos un caso**, para que nadie pueda dar por probado lo que nunca se probó. Se aprueba **antes** de correr la primera prueba y **no se modifica al ejecutar**: lo que pasó al correrlas va en el `resultado_pruebas.md` de la misma fase, para no perder la línea base aprobada. La lista de tareas vive en el `plan_trabajo` de esta misma fase.
+
 | Campo | Valor |
 |---|---|
 | **Código** | PP-000 |
@@ -11,7 +13,7 @@
 | **Aprobado por** | [Nombre — PO] |
 | **Estado** | Borrador / Aprobado / En ejecución / Cerrado |
 
-> Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en la carpeta de la fase (ruta `02·F12.13`), como `plan_pruebas.md`.
+> Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en la carpeta de la fase (ruta `02·F12.13`), como `plan_pruebas.md`. Al llenar la plantilla se borra esta caja, pero **la línea de arriba, la de para qué sirve, se queda**.
 >
 > **Proporcionalidad:** este formato completo es para un release/épica. Para una **sola fase o HU**, usar únicamente las secciones **3, 5, 6, 9 y 12** — el resto es opcional. No inflar una fase chica con un plan de release.
 
@@ -171,11 +173,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 **Resultado esperado final:** [Estado observable del sistema]
 **Postcondiciones:** [Registros creados, estados modificados, eventos de auditoría]
 
-**Ejecución**
-
-| Fecha | Ejecutado por | Ambiente | Build | Resultado | Defecto | Evidencia |
-|---|---|---|---|---|---|---|
-| | | QA | v1.0.0 | Aprobado / Fallido / Bloqueado | DEF-00 | [enlace] |
+> El resultado de haberlo corrido **no se anota acá**: va en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`).
 
 ---
 
@@ -322,17 +320,9 @@ Nuevo → Asignado → En corrección → Listo para pruebas → Verificado → 
 | Efectividad de detección | Defectos en QA / (QA + producción) | ≥ 90% |
 | Tasa de reapertura | Reabiertos / corregidos | ≤ 10% |
 
-### 12.2 Resumen de ejecución
+### 12.2 Dónde se miden
 
-| Ciclo | Diseñados | Ejecutados | Aprobados | Fallidos | Bloqueados | % Aprobación |
-|---|---:|---:|---:|---:|---:|---:|
-| 1 | | | | | | |
-| 2 | | | | | | |
-
-### 12.3 Concepto final
-
-**Recomendación:** Apto para producción / Apto con observaciones / No apto
-**Riesgos residuales aceptados:** [defectos abiertos y su justificación]
+El resumen de la corrida, el veredicto por criterio y el concepto final **no van acá**: son resultado de ejecutar, y viven en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`). Este plan define **qué se va a medir**; aquel documento dice **cuánto dio**.
 
 ---
 

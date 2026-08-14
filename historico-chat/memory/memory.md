@@ -26,7 +26,7 @@ Lo que obliga a guardarlo acá es norma del estándar (`01·C19`); lo que dice c
 | [No tocar el trabajo de otras sesiones](no-tocar-trabajo-de-otras-sesiones.md) | Se commitea solo lo que hizo esta sesión; commitear lo ajeno mezcla el versionado. |
 | [Pendientes en el repo](pendiente-patrones-devops.md) | El backlog del estándar vive en `pendientes/`, versionado; la memoria es solo el puntero. |
 | [Respuestas cortas](respuestas-cortas.md) | Conclusión primero y pocas líneas; los detalles van en los archivos, no en el chat. |
-| [Terminología: agente vs estándar](terminologia-agente-vs-estandar.md) | "El agente" es la IA; "el estándar" son las reglas centralizadas. No se intercambian. |
+| [Terminología: agente vs estándar vs Claude](terminologia-agente-vs-estandar.md) | El agente es lo que se instala; el estándar son `base/` + `plantillas/`; Claude es la IA que lo opera. Claude no es el agente. |
 | [Toda herramienta se autoinstala](herramienta-se-autoinstala.md) | Llega sola a cada proyecto vía `instalar.py`; exigir configuración manual es defecto del estándar. |
 | [Todo multiproyecto](todo-multiproyecto.md) | Lo que se construya sirve a cualquier proyecto: universal de raíz, o universal por detección de stack. |
 | [Trabajo confinado a la carpeta](trabajo-confinado-a-la-carpeta.md) | Mientras se trabaja un tema, todo va dentro de su carpeta; replicar al resto lo indica el usuario. |

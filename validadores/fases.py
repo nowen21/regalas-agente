@@ -26,7 +26,7 @@ from comun import AVISO, FALLA, Hallazgo
 CARPETA = "documentacion/epicas"
 
 # F12.13 · los cuatro documentos de una fase.
-DOCUMENTOS = ["plan_trabajo.md", "plan_pruebas.md",
+DOCUMENTOS = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
               "funcionalidad_implementada.md", "estado-fase.md"]
 
 _EPICA = re.compile(r"^EP-(\d+)-(.+)$")

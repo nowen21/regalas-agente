@@ -23,9 +23,11 @@
 
 ## 2. Narrativa
 
-**Como** [rol específico — evite "usuario" genérico]
-**Quiero** [acción o capacidad concreta]
-**Para** [beneficio de negocio medible]
+- **Como** [rol específico — evite "usuario" genérico]
+- **Quiero** [acción o capacidad concreta]
+- **Para** [beneficio de negocio medible]
+
+> Las tres van como lista. Sin el guion, Markdown las une en un solo párrafo corrido y la narrativa deja de leerse de un vistazo.
 
 ---
 
@@ -156,7 +158,28 @@ Entonces [resultado esperado]
 
 ---
 
-## 8. Dependencias y riesgos
+## 8. Fases que la implementan
+
+> **Trazabilidad hacia abajo.** Se completa **a medida** que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe **en los dos lados**: la fase declara qué CA cubre (`plan_trabajo` §0) y aquí se nombra la fase con sus documentos. Una fase pertenece a **una sola** HU (`02·F12.1`).
+
+| Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
+|---|---|---|---|---|---|
+| `A-EP-000-HU-000-«slug»` | CA-01, CA-02 | [enlace] | [enlace] | [enlace · cuando se ejecute] | Sin empezar / En curso / Cerrada |
+
+**Qué documento responde qué**, para no buscar en el que no es:
+
+| Pregunta | Documento |
+|---|---|
+| Qué se pide y cuándo se da por aceptado | Esta HU |
+| Qué se va a hacer, en qué orden y sobre qué archivos | `plan_trabajo.md` de la fase |
+| Con qué casos se comprueba cada CA | `plan_pruebas.md` de la fase |
+| Qué se ejecutó, con qué resultado, y si el CA quedó cumplido | `resultado_pruebas.md` de la fase |
+| En qué estación va y qué la tiene detenida | `estado-fase.md` de la fase |
+| Qué quedó hecho al final | `funcionalidad_implementada.md` de la fase |
+
+---
+
+## 9. Dependencias y riesgos
 
 | Tipo | Descripción | Impacto |
 |---|---|---|
@@ -165,7 +188,7 @@ Entonces [resultado esperado]
 
 ---
 
-## 9. Definition of Ready (DoR)
+## 10. Definition of Ready (DoR)
 
 - [ ] Narrativa clara con rol, acción y beneficio
 - [ ] Criterios de aceptación definidos y testeables
@@ -175,7 +198,7 @@ Entonces [resultado esperado]
 - [ ] Estimada por el equipo
 - [ ] Cumple criterios INVEST
 
-## 10. Definition of Done (DoD)
+## 11. Definition of Done (DoD)
 
 - [ ] Código implementado y en rama principal
 - [ ] Pruebas unitarias e integración pasando
@@ -188,7 +211,7 @@ Entonces [resultado esperado]
 
 ---
 
-## 11. Validación INVEST
+## 12. Validación INVEST
 
 | Criterio | ✅ | Observación |
 |---|:--:|---|
@@ -201,7 +224,7 @@ Entonces [resultado esperado]
 
 ---
 
-## 12. Bitácora
+## 13. Bitácora
 
 | Fecha | Autor | Cambio |
 |---|---|---|

@@ -121,9 +121,9 @@ Entonces se detecta el choque antes de aceptarla
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-| Fase | Criterios que cubre | Plan de trabajo | Plan de pruebas | Estado |
-|---|---|---|---|---|
-| `A-EP-001-HU-001-molde-de-regla` | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-001-molde-de-regla/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-001-molde-de-regla/plan_pruebas.md) | Sin empezar |
+| Fase | Criterios que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
+|---|---|---|---|---|---|
+| `A-EP-001-HU-001-molde-de-regla` | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-001-molde-de-regla/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-001-molde-de-regla/plan_pruebas.md) | [resultado_pruebas.md](A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) | Sin empezar |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -132,6 +132,7 @@ Entonces se detecta el choque antes de aceptarla
 | Qué se pide y cuándo se da por aceptado | Esta historia de usuario |
 | Qué se va a hacer, en qué orden y sobre qué archivos | `plan_trabajo.md` de la fase |
 | Con qué casos se comprueba cada criterio | `plan_pruebas.md` de la fase |
+| Qué se ejecutó, con qué resultado, y si el criterio quedó cumplido | `resultado_pruebas.md` de la fase |
 | En qué estación va y qué la tiene detenida | `estado-fase.md` de la fase |
 | Qué quedó hecho al final | `funcionalidad_implementada.md` de la fase |
 

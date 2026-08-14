@@ -128,6 +128,7 @@ Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empez
 | Qué se pide y cuándo se da por aceptado | Esta historia de usuario |
 | Qué se va a hacer, en qué orden y sobre qué archivos | `plan_trabajo.md` de la fase |
 | Con qué casos se comprueba cada criterio | `plan_pruebas.md` de la fase |
+| Qué se ejecutó, con qué resultado, y si el criterio quedó cumplido | `resultado_pruebas.md` de la fase |
 | En qué estación va y qué la tiene detenida | `estado-fase.md` de la fase |
 | Qué quedó hecho al final | `funcionalidad_implementada.md` de la fase |
 

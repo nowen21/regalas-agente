@@ -33,6 +33,16 @@
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.
 
+## 1.1 Veredicto de las pruebas
+
+| Campo | Valor |
+|---|---|
+| **Concepto** | Todavía no se ejecutó |
+| **Criterios cumplidos** | 0 de 3 |
+| **Criterios en "No"** | Ninguno, porque no se ha corrido nada |
+| **Defectos abiertos aceptados** | Ninguno |
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §6 |
+
 ## 2. Decisiones y aprendizajes
 
 | Decisión | Dónde quedó registrada |
