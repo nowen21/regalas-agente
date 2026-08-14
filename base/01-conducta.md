@@ -306,3 +306,28 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v10.
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Que el término sin traducción se deje en su idioma no es un permiso para incumplir, es hasta dónde llega la exigencia. La fila **2** se revisó contra [`C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto), que exige el idioma y no dice nada de los términos que no lo tienen; son dos cosas que se cumplen por separado, así que son dos reglas. La fila **5** no nombra ninguna tecnología: "el idioma del proyecto" lo declara la capa 3.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## C21 · Pide el dato que falte antes de arrancar
+
+Un pedido de trabajo declara cuatro cosas: **sobre qué** (el archivo, la carpeta o el tema, con nombre), **qué quiere** (responder, opinar o ejecutar), **qué debe quedar hecho** y **qué no se toca**. El mensaje que solo pide información declara las dos primeras. Si falta alguna, pregunta por esa, en una línea, y no toques nada mientras esperas; nunca la supongas (extiende [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta)).
+
+```
+INCORRECTO: "arregle eso" → el agente deduce a qué apunta "eso" y edita
+CORRECTO:   "¿sobre qué archivo?" y no toca nada hasta la respuesta
+```
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v11.0.0**, el **2026-08-14**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción; el pedido que solo busca información no es un caso exento, es el mismo pedido con dos campos en vez de cuatro. La fila **2** se revisó contra [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta) y [`C17`](01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación), que cubren el pedido que admite **dos lecturas**; este cubre el que no trae el dato, donde no hay dos lecturas sino ninguna. La fila **9** pide una sola exigencia, y la exigencia es una: no arrancar sin el dato. Los cuatro campos no son cuatro órdenes, son qué cuenta como pedido completo. La fila **17** se resolvió releyendo el capítulo: [`C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta) prohíbe decidir por cuenta propia y esta dice qué hacer en su lugar cuando lo que falta es un dato del pedido.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

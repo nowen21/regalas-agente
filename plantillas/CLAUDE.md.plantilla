@@ -145,3 +145,16 @@ Reglas que la base **no** cubre (una convención del equipo, una regla del negoc
 3. El agente las aplica **junto con** la base, en el nivel de "configuración de proyecto" de la precedencia: por debajo del núcleo (`00`) y de las convenciones (`01`–`19`), que siguen mandando.
 
 - **Reglas propias de este proyecto:** ninguna por ahora — ver `./.agente/reglas-proyecto.md` si se crea.
+
+## 6. Cómo pedirle trabajo al agente
+
+Para que el agente arranque, el mensaje declara cuatro cosas (`01·C21`, en `«RUTA-ESTANDAR»/base/01-conducta.md`). Si falta alguna, pregunta por esa y no toca nada mientras espera.
+
+| Campo | Ejemplo |
+|---|---|
+| **Sobre qué** | `en validadores/enlaces.py` |
+| **Qué quiere** | `solo responda`, `opine` o `hágalo` |
+| **Qué debe quedar hecho** | `que no queden enlaces rotos` |
+| **Qué no se toca** | `sin tocar los otros validadores` |
+
+El mensaje que solo pide información declara los dos primeros: *"¿qué hace validadores/enlaces.py? solo responda"*.

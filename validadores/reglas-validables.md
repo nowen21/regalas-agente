@@ -15,7 +15,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 |---|---|
 | ✅ **Ya son validadores** | ~50 |
 | 🟡 **Validables, faltan** | ~11 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto) |
-| 🔴 **No validables** (criterio humano) | ~93 |
+| 🔴 **No validables** (criterio humano) | ~94 |
 
 > Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
 >
@@ -121,7 +121,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
 - **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
-- **`01`:** C1–C17 (todas menos C18) y C20. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
+- **`01`:** C1–C17 (todas menos C18), C20 y C21. `C21` (pedir el dato que falte antes de arrancar) se cumple sobre el mensaje del usuario en el chat, y ningún script lee el chat. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
 - **`02`:** F1, F3, F5, F6, F7, F8, F9, F10, F11, F15, F16, F19, F20 · F12.8, F12.9, F12.10.
 - **`03`:** D4, D5, D6, D7, D8.
 - **`04`:** S1, S2, S6, S8, S9, S10, S11.

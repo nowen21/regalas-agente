@@ -11,6 +11,17 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 11.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (desde ahora, el agente no arranca con un pedido al que le falte un dato: pregunta por ese dato y espera).
+
+**El pedido incompleto se completaba adivinando.** [`01·C7`](base/01-conducta.md#c7--ante-dos-lecturas-pregunta) y [`01·C17`](base/01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación) cubrían el pedido que admite **dos lecturas**, pero no el que no trae el dato: *"arregle eso"* no tiene dos lecturas, no tiene ninguna. El agente deducía a qué apuntaba "eso" por el contexto, acertaba a veces, y el trabajo quedaba a medias o en el archivo equivocado.
+
+- **Nace [`01·C21`](base/01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar)**: un pedido de trabajo declara **sobre qué**, **qué quiere**, **qué debe quedar hecho** y **qué no se toca**; el que solo pide información declara los dos primeros. Si falta alguno, el agente pregunta por ese y no toca nada mientras espera. Extiende `C7`.
+- **[`plantillas/CLAUDE.md.plantilla`](plantillas/CLAUDE.md.plantilla) gana el punto 6**, con los cuatro campos y un ejemplo de cada uno. Llega solo a cada proyecto por [`01·C18`](base/01-conducta.md#c18--auto-sincronización-del-claudemd-con-la-plantilla-central), que es aditivo: nadie copia nada a mano.
+- **Sin validador.** Lo que se exige pasa en el chat y ningún script lo lee ([`20·M9`](base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md)). Queda anotada como no validable.
+- **Retroactividad.** No reabre nada. Aplica a los mensajes que lleguen desde ahora.
+
 ## 10.0.0 — 2026-08-14
 
 **MAYOR** ⚠ obliga a migrar (desde ahora, el documento que use una palabra de otro idioma la traduce o la explica la primera vez).
