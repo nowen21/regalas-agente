@@ -134,13 +134,13 @@ Se repite el mismo error en proyectos distintos, y las decisiones ya tomadas se 
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Definir qué se guarda, con qué tipos y qué alcances | Must | S |
-| HU-002 | Guardar lo aprendido en el repositorio | Must | M |
-| HU-003 | Buscar por palabra sin instalar nada | Must | M |
-| HU-004 | Buscar por significado con un modelo local y opcional | Should | L |
-| HU-005 | Separar lo que el proyecto aprendió de cómo el usuario quiere trabajar | Must | S |
-| HU-006 | Sacar del almacén local lo que deba vivir en el repositorio | Must | M |
-| HU-007 | Marcar lo que dejó de aplicar sin borrarlo | Should | S |
+| [HU-001](HU-001-que-se-guarda-tipos-y-alcances/HU-001-que-se-guarda-tipos-y-alcances.md) | Definir qué se guarda, con qué tipos y qué alcances | Must | S |
+| [HU-002](HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) | Guardar lo aprendido en el repositorio | Must | M |
+| [HU-003](HU-003-busqueda-por-palabra/HU-003-busqueda-por-palabra.md) | Buscar por palabra sin instalar nada | Must | M |
+| [HU-004](HU-004-busqueda-por-significado/HU-004-busqueda-por-significado.md) | Buscar por significado con un modelo local y opcional | Should | L |
+| [HU-005](HU-005-separar-aprendizaje-de-preferencia/HU-005-separar-aprendizaje-de-preferencia.md) | Separar lo que el proyecto aprendió de cómo el usuario quiere trabajar | Must | S |
+| [HU-006](HU-006-sacar-del-almacen-local/HU-006-sacar-del-almacen-local.md) | Sacar del almacén local lo que deba vivir en el repositorio | Must | M |
+| [HU-007](HU-007-marcar-lo-que-dejo-de-aplicar/HU-007-marcar-lo-que-dejo-de-aplicar.md) | Marcar lo que dejó de aplicar sin borrarlo | Should | S |
 
 ## 10. Consideraciones técnicas
 

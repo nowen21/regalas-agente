@@ -133,13 +133,13 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Escribir la sesión a medida que pasa, con hora del reloj | Must | M |
-| HU-002 | Enmascarar una clave antes de que quede escrita | Must | M |
-| HU-003 | Disparar las comprobaciones al escribir un archivo | Must | M |
-| HU-004 | Controlar el mensaje con que se guarda un cambio | Must | S |
-| HU-005 | Impedir guardar un cambio de reglas sin versión ni registro | Must | M |
-| HU-006 | Correr la batería completa antes de publicar | Should | M |
-| HU-007 | Recoger al abrir sesión lo que quedó guardado por fuera del repositorio | Should | S |
+| [HU-001](HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) | Escribir la sesión a medida que pasa, con hora del reloj | Must | M |
+| [HU-002](HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) | Enmascarar una clave antes de que quede escrita | Must | M |
+| [HU-003](HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md) | Disparar las comprobaciones al escribir un archivo | Must | M |
+| [HU-004](HU-004-control-del-mensaje-de-cambio/HU-004-control-del-mensaje-de-cambio.md) | Controlar el mensaje con que se guarda un cambio | Must | S |
+| [HU-005](HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) | Impedir guardar un cambio de reglas sin versión ni registro | Must | M |
+| [HU-006](HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) | Correr la batería completa antes de publicar | Should | M |
+| [HU-007](HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md) | Recoger al abrir sesión lo que quedó guardado por fuera del repositorio | Should | S |
 
 ## 10. Consideraciones técnicas
 

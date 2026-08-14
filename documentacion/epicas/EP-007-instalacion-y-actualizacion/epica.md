@@ -134,13 +134,13 @@ Lo construido en las otras épicas se queda en un solo proyecto. Y los que sí l
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Instalar todo con una sola línea | Must | M |
-| HU-002 | Mostrar qué va a hacer antes de hacerlo | Must | S |
-| HU-003 | Crear la estructura de carpetas del trabajo | Must | S |
-| HU-004 | Generar y poner los automatismos | Must | M |
-| HU-005 | No pisar lo que escribió la persona | Must | M |
-| HU-006 | Poner al día lo ya instalado | Should | M |
-| HU-007 | Revisar qué le falta al proyecto | Should | M |
+| [HU-001](HU-001-instalar-con-una-linea/HU-001-instalar-con-una-linea.md) | Instalar todo con una sola línea | Must | M |
+| [HU-002](HU-002-mostrar-antes-de-hacer/HU-002-mostrar-antes-de-hacer.md) | Mostrar qué va a hacer antes de hacerlo | Must | S |
+| [HU-003](HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md) | Crear la estructura de carpetas del trabajo | Must | S |
+| [HU-004](HU-004-generar-los-automatismos/HU-004-generar-los-automatismos.md) | Generar y poner los automatismos | Must | M |
+| [HU-005](HU-005-no-pisar-lo-escrito/HU-005-no-pisar-lo-escrito.md) | No pisar lo que escribió la persona | Must | M |
+| [HU-006](HU-006-poner-al-dia/HU-006-poner-al-dia.md) | Poner al día lo ya instalado | Should | M |
+| [HU-007](HU-007-revisar-que-falta/HU-007-revisar-que-falta.md) | Revisar qué le falta al proyecto | Should | M |
 
 ## 10. Consideraciones técnicas
 
