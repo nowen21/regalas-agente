@@ -132,6 +132,7 @@ Un proyecto puede estar incumpliendo una regla que se agregó hace meses y nadie
 | [HU-003](HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) | Declarar en el proyecto la versión adoptada y la fecha | Must | S |
 | [HU-004](HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md) | Avisar al abrir sesión cuando el proyecto quedó atrás | Must | M |
 | [HU-005](HU-005-sellar-el-trabajo-cerrado/HU-005-sellar-el-trabajo-cerrado.md) | Sellar el trabajo cerrado con su versión | Should | S |
+| [HU-006](HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) | Quién sube la versión cuando hay dos sesiones abiertas | Must | S |
 
 ## 10. Consideraciones técnicas
 

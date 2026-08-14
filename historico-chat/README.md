@@ -21,6 +21,7 @@ No es parte del estándar (`base/`, `plantillas/`, `skills/`); es bitácora, igu
 - La hora se **lee del reloj del sistema**, nunca se inventa: `date "+%Y-%m-%d %H:%M:%S"` (o `Get-Date -Format "yyyy-MM-dd HH:mm:ss"`). Se toma una al recibir el mensaje del usuario y otra al escribir la respuesta.
 - Se crea **apenas la sesión produce su primera decisión o cambio**, y se **actualiza cada vez que se cierra un tema**. No se espera al final: un chat rara vez tiene cierre explícito.
 - Los pendientes reales siguen viviendo en `pendientes/`; aquí solo se apunta a ellos.
+- **El resumen de la sesión va aparte, en [resumenes/](resumenes/README.md).** Es parte del histórico y por eso vive dentro, pero no se mezcla con la transcripción: aquella guarda lo que se dijo, el resumen guarda lo que quedó — los hallazgos, su estado y la pregunta que sigue viva.
 
 ## Plantilla
 
@@ -75,7 +76,10 @@ y qué archivo se tocó.
 - [2026-08-08-sesion-4.md](2026-08-08-sesion-4.md) — la redacción del estándar pasa a entenderse sin saber del tema: nace `00·ID7` y se deroga `00·ID2` (v6.0.0).
 - [2026-08-09-sesion.md](2026-08-09-sesion.md) — sesión del 2026-08-09.
 - [2026-08-12-regla-de-respaldo-de-las-reglas-de-proyecto.md](2026-08-12-regla-de-respaldo-de-las-reglas-de-proyecto.md) — nace 20·M16: ninguna regla de proyecto existe sin un criterio de la base que la respalde (8.0.0).
-- [2026-08-13-sesion.md](2026-08-13-sesion.md) — sesión del 2026-08-13.
+- [2026-08-13-del-brief-a-los-planes-de-la-fase-a.md](2026-08-13-del-brief-a-los-planes-de-la-fase-a.md) — nace el brief del agente y sus siete épicas; las ocho HU de EP-001 y la fase A de HU-001 con sus planes (8.0.1, 8.1.0, 8.2.0, 9.0.0).
+- [2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md](2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md) — sigue la sesión anterior: el cierre verifica que el plan de trabajo se hizo, y la deuda técnica dice de dónde salió (9.1.0, 9.2.0).
 - [2026-08-13-pendientes-del-diplomado-de-ia.md](2026-08-13-pendientes-del-diplomado-de-ia.md) — cinco pendientes (12–16) que salen de comparar los apuntes del diplomado de IA contra el estándar.
 - [2026-08-13-hu-de-la-comprobacion-automatica.md](2026-08-13-hu-de-la-comprobacion-automatica.md) — las 12 HU de EP-004 y donde cae lo que falta del pendiente 01.
 - [2026-08-14-plan-de-trabajo-de-la-ep-001.md](2026-08-14-plan-de-trabajo-de-la-ep-001.md) — el plan de trabajo de la EP-001: bajar sus HU a fases.
+- [2026-08-14-molde-para-pedir-en-la-sesion.md](2026-08-14-molde-para-pedir-en-la-sesion.md) — analisis del prompt base del usuario: el molde obligatorio con que se le pide trabajo al agente.
+- [2026-08-14-indice-tematico-del-historico.md](2026-08-14-indice-tematico-del-historico.md) — cargar el histórico al iniciar ya lo hace un hook; nace la idea de un índice por temáticas y qué manda entre el brief y el histórico.

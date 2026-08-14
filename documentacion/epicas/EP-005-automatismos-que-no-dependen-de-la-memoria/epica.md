@@ -140,6 +140,7 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-005](HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) | Impedir guardar un cambio de reglas sin versión ni registro | Must | M |
 | [HU-006](HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) | Correr la batería completa antes de publicar | Should | M |
 | [HU-007](HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md) | Recoger al abrir sesión lo que quedó guardado por fuera del repositorio | Should | S |
+| [HU-008](HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) | El enganche que sostiene el resumen de la sesión | Must | M |
 
 ## 10. Consideraciones técnicas
 

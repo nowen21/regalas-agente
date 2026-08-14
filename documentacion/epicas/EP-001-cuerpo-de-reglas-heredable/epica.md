@@ -140,6 +140,8 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-006](HU-006-capa-propia-del-proyecto/HU-006-capa-propia-del-proyecto.md) | La capa propia de cada proyecto | Must | M |
 | [HU-007](HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) | La regla que gobierna cómo se escriben las reglas | Must | M |
 | [HU-008](HU-008-derogacion-sin-borrar/HU-008-derogacion-sin-borrar.md) | Derogar una regla sin borrarla ni renumerarla | Must | S |
+| [HU-009](HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) | Poner al día las reglas que no pasan su propio checklist | Must | L |
+| [HU-010](HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) | Cuándo no aplica la exigencia de especificación | Must | S |
 
 Sin estimar en puntos todavía.
 

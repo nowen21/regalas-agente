@@ -13,3 +13,5 @@ Contenido inmediato de esta carpeta.
 | [HU-006-procedimientos-por-rol/](HU-006-procedimientos-por-rol/) | Historia de usuario: procedimientos por rol |
 | [HU-007-procedimiento-que-dirige/](HU-007-procedimiento-que-dirige/) | Historia de usuario: el procedimiento que dirige |
 | [HU-008-puntos-de-aprobacion/](HU-008-puntos-de-aprobacion/) | Historia de usuario: puntos de aprobación |
+| [HU-009-modelo-del-resumen-de-sesion/](HU-009-modelo-del-resumen-de-sesion/) | Historia de usuario: modelo del resumen de sesión |
+| [HU-010-glosario-de-la-terminologia/](HU-010-glosario-de-la-terminologia/) | Historia de usuario: glosario de la terminología |

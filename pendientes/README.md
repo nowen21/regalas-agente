@@ -66,6 +66,21 @@ Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../p
 
 **El 13 conviene primero:** es una lista y una tabla, y el 12 reusa esa misma tabla de riesgo para los modelos de un proyecto. El 16 se resuelve al escribirlo, no construyendo nada.
 
+### Lo que dejó la sesión del 2026-08-14 (17–22)
+
+Salieron de trabajar el pendiente 01 y quedaron anotados en su [resumen](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 17 | [Las señales no tienen dónde escribirse](17-las-senales-no-tienen-donde-escribirse.md) | `13·DOC5` manda registrar lo aprendido y el archivo no existía. Falta el enganche que lo recuerde en el momento. |
+| 18 | [Los enlaces del estándar no cumplen `DOC14`](18-los-enlaces-del-estandar-no-cumplen-doc14.md) | 354 enlaces del propio estándar cuyo texto no dice dónde vive el archivo. |
+| 19 | [El capítulo 20 no se cumple a sí mismo](19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | De 188 reglas, 129 sin checklist, 7 publicadas en "no cumple" y 33 sin clasificar. |
+| 20 | [`F2` no dice cuándo no aplica](20-f2-no-dice-cuando-no-aplica.md) | Dos fases seguidas se abrieron sin especificación con buenos motivos, y la regla no las contempla. |
+| 21 | [El glosario, y lo que quedó en inglés](21-el-glosario-y-los-terminos-en-ingles.md) | Los trece roles siguen en inglés y no hay glosario de la terminología del estándar. |
+| 22 | [Dos sesiones versionando a la vez](22-dos-sesiones-versionando-a-la-vez.md) | Dos sesiones abiertas dejaron dos numeraciones vivas en el mismo archivo. |
+
+**El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

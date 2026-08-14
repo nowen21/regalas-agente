@@ -11,6 +11,39 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 12.2.0 — 2026-08-14
+
+**MENOR** (aditivo: una plantilla nueva; no cambia nada de lo escrito).
+
+**Lo que una sesión deja se quedaba en la transcripción.** Una sesión entera produjo cinco aprendizajes y nueve pendientes, y ninguno tenía dónde escribirse: había que releer la conversación para encontrarlos. La transcripción guarda **lo que se dijo**; faltaba el molde de **lo que quedó**.
+
+- **Nueva plantilla [`plantillas/sesion.md`](plantillas/sesion.md)**: cuatro campos por hallazgo — qué pasó, por qué importa, qué se decidió y dónde queda.
+- **No es un resumen de cierre.** Se llena en el momento en que aparece el hallazgo. Es la misma lección de la transcripción de sesiones: lo que se deja para el final no se escribe nunca, porque un chat no tiene final.
+- **Cada hallazgo termina en uno de cuatro sitios**, y la plantilla lo dice: señal, pendiente, regla o memoria del usuario. Lo que no cabe en ninguno era conversación, y ya está en la transcripción.
+- **Falta el enganche** que lo recuerde en el momento. Mientras dependa de que el agente se acuerde, se va a olvidar, y eso queda anotado como pendiente.
+
+## 12.1.0 — 2026-08-14
+
+**MENOR** (precisa el alcance de una regla que ya existía; no invalida nada escrito).
+
+**"Responde corto" se cumplía en los reportes y no en las explicaciones.** [`01·C5`](base/01-conducta.md#c5--responde-corto) pedía respuestas cortas, y el agente las daba al reportar trabajo. Al explicar un concepto hacía lo contrario: párrafos, tablas y opciones para responder una pregunta de una línea. El usuario lo cortó tres veces en la misma sesión, la última con *"explicar algo no es extenderse en prosa y que no se entienda nada, explicar es poder decir algo en pocas palabras pero que se entienda"*.
+
+- **`C5` dice ahora que la explicación también va corta**, y que si no cabe en dos o tres frases el asunto todavía no se entendió: se piensa más, no se escribe más.
+- **Queda fijado qué significa "menos es más"** dicho por el usuario: lo anterior fue largo y no se entendió, y se responde otra vez más corto. Antes era una señal que el agente podía leer como un comentario de estilo.
+- **El ejemplo es el de la sesión**: tres párrafos y una tabla para explicar qué es una especificación, contra una sola frase.
+- La regla trae su bloque de checklist, que antes no tenía.
+
+## 12.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (desde ahora, un comando rechazado no cancela lo que el usuario pidió: el agente corrige el comando y vuelve a intentar).
+
+**Un rechazo se leía como "olvídelo todo".** El usuario aprobó un renombrado, rechazó el comando con que el agente iba a hacerlo, y el agente dio el encargo por cancelado y respondió con una explicación. Hubo que pedirlo tres veces. [`01·C1`](base/01-conducta.md#c1--avisa-antes-de-tocar) y [`01·C17`](base/01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación) dicen qué cuenta como **aprobación**; ninguna decía qué significa un **no** al comando, y el agente lo resolvió a su criterio, que es lo que las reglas existen para impedir.
+
+- **Nace [`01·C22`](base/01-conducta.md#c22--ante-un-comando-rechazado-corrige-el-comando--la-orden-sigue-en-pie)**: lo que el usuario rechaza es **cómo** el agente iba a hacerlo, no lo que pidió. El agente corrige la llamada y reintenta, o pregunta en una línea qué cambiarle; la orden solo la retira el usuario, diciéndolo. Extiende `C17`.
+- **Nace en `base/` y no en la memoria del agente.** Es conducta de cualquier agente, no preferencia de un usuario: `base/` es la línea de comportamiento y la memoria se construye encima ([`01·C19`](base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto), [`20·M13`](base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md)). Escribirla en la memoria era conducta sin versionar.
+- **Sin validador.** Lo que se exige pasa después del rechazo y no queda en ningún archivo ([`20·M9`](base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md)). Queda anotada como no validable.
+- **Retroactividad.** No reabre nada. Aplica a los rechazos que lleguen desde ahora.
+
 ## 11.0.0 — 2026-08-14
 
 **MAYOR** ⚠ obliga a migrar (desde ahora, el agente no arranca con un pedido al que le falte un dato: pregunta por ese dato y espera).

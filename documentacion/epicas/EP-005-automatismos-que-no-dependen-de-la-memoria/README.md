@@ -12,3 +12,4 @@ Contenido inmediato de esta carpeta.
 | [HU-005-cambio-de-reglas-con-version/](HU-005-cambio-de-reglas-con-version/) | Historia de usuario: cambio de reglas con versión |
 | [HU-006-bateria-antes-de-publicar/](HU-006-bateria-antes-de-publicar/) | Historia de usuario: batería antes de publicar |
 | [HU-007-recoger-lo-guardado-por-fuera/](HU-007-recoger-lo-guardado-por-fuera/) | Historia de usuario: recoger lo guardado por fuera |
+| [HU-008-enganche-del-resumen/](HU-008-enganche-del-resumen/) | Historia de usuario: el enganche del resumen |

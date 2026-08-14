@@ -13,3 +13,5 @@ Contenido inmediato de esta carpeta.
 | [HU-006-capa-propia-del-proyecto/](HU-006-capa-propia-del-proyecto/) | Historia de usuario: capa propia del proyecto |
 | [HU-007-regla-de-las-reglas/](HU-007-regla-de-las-reglas/) | Historia de usuario: regla de las reglas |
 | [HU-008-derogacion-sin-borrar/](HU-008-derogacion-sin-borrar/) | Historia de usuario: derogacion sin borrar |
+| [HU-009-reglas-sin-checklist-al-dia/](HU-009-reglas-sin-checklist-al-dia/) | Historia de usuario: reglas sin checklist al día |
+| [HU-010-cuando-no-aplica-la-especificacion/](HU-010-cuando-no-aplica-la-especificacion/) | Historia de usuario: cuándo no aplica la especificación |

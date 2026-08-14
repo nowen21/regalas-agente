@@ -136,6 +136,8 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | [HU-006](HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) | Escribir los procedimientos de cada rol del trabajo | Must | L |
 | [HU-007](HU-007-procedimiento-que-dirige/HU-007-procedimiento-que-dirige.md) | Escribir el procedimiento que dirige a los demás y controla los cortes | Must | L |
 | [HU-008](HU-008-puntos-de-aprobacion/HU-008-puntos-de-aprobacion.md) | Declarar los puntos donde aprueba una persona | Must | S |
+| [HU-009](HU-009-modelo-del-resumen-de-sesion/HU-009-modelo-del-resumen-de-sesion.md) | Crear el modelo del resumen de sesión | Must | S |
+| [HU-010](HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) | Crear el glosario de la terminología del estándar | Should | M |
 
 ## 10. Consideraciones técnicas
 
