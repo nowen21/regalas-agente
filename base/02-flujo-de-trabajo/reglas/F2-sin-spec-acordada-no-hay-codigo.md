@@ -1,15 +1,15 @@
 > Regla del capítulo [`02 · Flujo de trabajo`](../base.md).
 
-## F2 · Sin spec acordada no hay código
+## F2 · Sin especificación acordada no hay código
 
-Ningún desarrollo, refactor o migración sin una **spec acordada** que lo respalde —alcance, reglas de negocio, datos, pruebas, permisos—. Si no existe, el agente **no toca código**: ofrece redactar el borrador y lo hace aprobar primero. Sin spec, el código es opinión del agente.
+Ningún desarrollo, refactor o migración sin una **especificación acordada** que lo respalde —alcance, reglas de negocio, datos, pruebas, permisos—. Si no existe, el agente **no toca código**: ofrece redactar el borrador y lo hace aprobar primero. Sin especificación, el código es opinión del agente.
 
-**Excepción** — no requieren spec la corrección trivial, el bugfix que solo realinea el código a la spec vigente, la configuración local, el comando que el usuario pide y la lectura o investigación (condición). Cubren ese trabajo puntual; no habilitan funcionalidad nueva ni cambio de comportamiento (límite). Ante la duda de si el caso entra, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza).
+**Excepción** — no requieren especificación la corrección trivial, el bugfix que solo realinea el código a la especificación vigente, la configuración local, el comando que el usuario pide y la lectura o investigación (condición). Cubren ese trabajo puntual; no habilitan funcionalidad nueva ni cambio de comportamiento (límite). Ante la duda de si el caso entra, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza).
 
 ```
 INCORRECTO: "hacé que el módulo permita X" → escribo código directo
-CORRECTO:   busco X en la spec → si no está: "no está en la spec; ¿lo agrego a la fase Y
-            o es dominio nuevo?" → aprueban → actualizo spec → implemento + pruebas
+CORRECTO:   busco X en la especificación → si no está: "no está en la especificación; ¿lo agrego a la fase Y
+            o es dominio nuevo?" → aprueban → actualizo especificación → implemento + pruebas
 ```
 
 ---

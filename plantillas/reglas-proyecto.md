@@ -1,6 +1,6 @@
 # Reglas del proyecto — «Nombre»   ·   `[CAPA 3 · LOCAL]`
 
-> Catálogo de reglas **propias de este proyecto** (`13·DOC10`) que sobrescriben o complementan la base común. Cada regla va numerada `P<N>` para poder citarse de forma estable desde specs, planes y señales. Vive en `.agente/reglas-proyecto.md` (**local, no versionado** — es configuración del agente). Reemplaza los `«…»` y borra esta caja.
+> Catálogo de reglas **propias de este proyecto** (`13·DOC10`) que sobrescriben o complementan la base común. Cada regla va numerada `P<N>` para poder citarse de forma estable desde especificaciones, planes y señales. Vive en `.agente/reglas-proyecto.md` (**local, no versionado** — es configuración del agente). Reemplaza los `«…»` y borra esta caja.
 
 ---
 

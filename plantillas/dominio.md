@@ -15,17 +15,25 @@
 
 ## Entidades del negocio
 
-Las cosas centrales del dominio y qué representan:
+Las cosas centrales del dominio y qué representan. Las cuatro primeras columnas también las lee un programa, así que se escriben con cuidado; la última es para quien lee.
 
-| Entidad | Qué representa | Notas |
-|---|---|---|
-| «…» | «…» | «…» |
+| Entidad | Tabla | Clave natural | Inmutable | Qué representa |
+|---|---|---|---|---|
+| «…» | `«tabla»` | `«columna, columna»` | no | «…» |
+
+- **Tabla** — el nombre real en la base de datos. Vacío o `—` si la entidad no se persiste; entonces el validador la salta.
+- **Clave natural** — las columnas que no pueden repetirse juntas en dos filas (`03`·D1 pide su `UNIQUE`). `—` si la entidad no tiene una.
+- **Inmutable** — `sí` para lo que ya surtió efecto y solo se anula, nunca se edita ni se borra (`15`). Con `sí`, se comprueban los estados y los campos de anulación que declara `mapeo-nombres.md`.
+
+Solo se listan las tablas **de dominio**: las que trae el framework (sesiones, colas, migraciones, caché) no van, y por eso no se les exige auditoría.
 
 ## Módulos
 
-Las grandes áreas funcionales del sistema:
+Las grandes áreas funcionales del sistema. La carpeta y la especificación también las lee un programa: con ellas se comprueba que ningún módulo tenga código sin especificación (`02`·F2) y que cada uno viva donde la convención dice (`14`·EST1).
 
-- **«Módulo»** — «qué hace».
+| Módulo | Carpeta | Especificación | Qué hace |
+|---|---|---|---|
+| `«modulo»` | `«ruta/desde/la/raiz»` | `«documentacion/«modulo»/spec.md»` | «…» |
 
 ## Reglas de negocio clave
 

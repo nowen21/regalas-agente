@@ -21,7 +21,7 @@
 
 ## 3. Contexto y descripción
 
-Las specs, los commits y el trabajo cerrado citan las reglas por su identificador. Si una regla se borra, todas esas citas quedan apuntando a nada. Si se renumera, quedan apuntando a otra cosa, que es peor: se lee como si el trabajo hubiera cumplido algo que nunca se le exigió.
+Las especificaciones, los commits y el trabajo cerrado citan las reglas por su identificador. Si una regla se borra, todas esas citas quedan apuntando a nada. Si se renumera, quedan apuntando a otra cosa, que es peor: se lee como si el trabajo hubiera cumplido algo que nunca se le exigió.
 
 Esta historia define qué se hace cuando una regla deja de aplicar. La respuesta es derogarla: se queda escrita, marcada como sin vigencia, diciendo desde cuándo y qué la reemplaza.
 

@@ -1,11 +1,11 @@
 > Regla del capítulo [`13 · Documentación`](../base.md).
 
-## DOC6 · Retro-documenta el módulo sin spec antes de tocarlo
+## DOC6 · Retro-documenta el módulo sin especificación antes de tocarlo
 
-Un módulo productivo sin spec —o con una spec más vieja que el código— se retro-documenta como **unidad de trabajo formal** antes de intervenirlo, siguiendo [`plantillas/retrodocumentacion.md`](../../../plantillas/retrodocumentacion.md). Queda en estado provisional: cierra en el primer audit profundo.
+Un módulo productivo sin especificación —o con una especificación más vieja que el código— se retro-documenta como **unidad de trabajo formal** antes de intervenirlo, siguiendo [`plantillas/retrodocumentacion.md`](../../../plantillas/retrodocumentacion.md). Queda en estado provisional: cierra en el primer audit profundo.
 
 ```
-INCORRECTO: encontrar un módulo sin spec y decir "asumo que hace X" en la próxima fase
+INCORRECTO: encontrar un módulo sin especificación y decir "asumo que hace X" en la próxima fase
 CORRECTO:   retro-documentarlo primero · el análisis persistido queda como fotografía
             del punto de partida
 ```

@@ -1,6 +1,6 @@
 # 08 · Estrategia de pruebas  ·  `[CAPA 2]`
 
-Las pruebas permiten cambiar el código sin miedo y prueban que la spec se cumplió. La capa 3 declara framework, entorno y comandos.
+Las pruebas permiten cambiar el código sin miedo y prueban que la especificación se cumplió. La capa 3 declara framework, entorno y comandos.
 
 ---
 
@@ -67,14 +67,14 @@ Para la **lógica de negocio y los cálculos**, los casos de prueba no se eligen
 **Triangular el resultado esperado** — el valor correcto se confirma desde **fuentes independientes** que deben **coincidir**, no desde el propio código:
 
 - **Mínimo 2** fuentes para lógica normal; **3** para lógica crítica (dinero, seguridad, legal).
-- Fuentes válidas: la **spec**, un **cálculo manual**, una **propiedad invariante** (p. ej. "débito = crédito"), un **oráculo** conocido.
-- Si las fuentes no coinciden, la spec o la implementación tienen un error: se resuelve antes de dar la prueba por buena.
+- Fuentes válidas: la **especificación**, un **cálculo manual**, una **propiedad invariante** (p. ej. "débito = crédito"), un **oráculo** conocido.
+- Si las fuentes no coinciden, la especificación o la implementación tienen un error: se resuelve antes de dar la prueba por buena.
 
 **Nunca** derivar el resultado esperado leyendo lo que el código produce hoy: eso solo prueba que el código hace lo que hace, no que sea correcto.
 
 ```
 INCORRECTO: comparar(resultado, entidad.total)          // el "esperado" sale del propio código
-CORRECTO:   esperado = cálculo manual (spec) Y propiedad (subtotal+iva); ambos coinciden → se prueba contra ese valor
+CORRECTO:   esperado = cálculo manual (especificación) Y propiedad (subtotal+iva); ambos coinciden → se prueba contra ese valor
 
 INCORRECTO: probar solo "el caso que se me ocurrió"
 CORRECTO:   frontera (0, máx, vacío) + clases de equivalencia + casos inválidos, derivados con método

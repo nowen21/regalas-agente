@@ -4,9 +4,9 @@
 
 La verificación que exige [`DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) se escribe siempre con la misma tabla (extiende [`13·DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)), en el documento de cierre de la unidad:
 
-| Ítem de la spec | Categoría | Ubicación esperada | Estado | Evidencia |
+| Ítem de la especificación | Categoría | Ubicación esperada | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase de la spec) | (esquema · modelo · servicio · vista · prueba · permiso · ruta · doc) | (archivo real) | ✅ · ❌ · N/A · parcial | (prueba concreta o commit) |
+| (frase de la especificación) | (esquema · modelo · servicio · vista · prueba · permiso · ruta · doc) | (archivo real) | ✅ · ❌ · N/A · parcial | (prueba concreta o commit) |
 
 Todo lo que no sea ✅ lleva justificación escrita: el ❌ dice a qué unidad se traslada, el parcial qué parte queda, el N/A por qué no aplica. Un faltante que debería estar en esta unidad se corrige aquí, no se difiere.
 

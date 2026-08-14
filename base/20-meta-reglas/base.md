@@ -58,7 +58,7 @@ Si una sola regla crece más de una página, se le abre subcarpeta (`base/02-flu
 
 Se cita entre capítulos como `NN·ID` — [`00·N4`](../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada), [`09·G6`](../09-git.md#g6--integración-continua-el-verde-es-automático-no-manual), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md).
 
-El ID es la referencia que usan las specs, los planes, los commits, los validadores y las fases ya cerradas. Renumerar rompe el rastro de todo lo anterior. Si una regla se parte en dos, la original conserva su ID y la nueva toma el siguiente consecutivo libre.
+El ID es la referencia que usan las especificaciones, los planes, los commits, los validadores y las fases ya cerradas. Renumerar rompe el rastro de todo lo anterior. Si una regla se parte en dos, la original conserva su ID y la nueva toma el siguiente consecutivo libre.
 
 ### M5 — el molde, y sus cinco reglas de formato
 
@@ -117,7 +117,7 @@ Si la regla es nueva o cambió de exigencia, revisar además los enlaces que la 
 
 ### M11 — por qué se derogan en vez de borrarse
 
-Las fases cerradas, las specs y los commits antiguos citan la regla por su ID; borrarla deja huérfano ese rastro y hace imposible entender por qué algo se hizo así.
+Las fases cerradas, las especificaciones y los commits antiguos citan la regla por su ID; borrarla deja huérfano ese rastro y hace imposible entender por qué algo se hizo así.
 
 ### M12 — el orden de búsqueda y el de decisión
 

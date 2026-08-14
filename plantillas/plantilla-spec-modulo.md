@@ -1,6 +1,6 @@
-# Spec del módulo «NOMBRE DEL MÓDULO»  ·  `[CAPA 3 · plantilla de spec]`
+# Especificación del módulo «NOMBRE DEL MÓDULO»  ·  `[CAPA 3 · plantilla de especificación]`
 
-> **Cómo se usa.** Es el esqueleto para redactar la spec de **un** módulo. Se copia a `documentacion/«slug-modulo»/spec.md`, se reemplaza cada `«…»`, se responde cada `[[guía]]` y se borran las guías. **Antes de escribir código, esta spec debe estar completa y aprobada** (regla base `02`·F2). Ninguna sección se borra: si no aplica, se deja el título con "No aplica porque …".
+> **Cómo se usa.** Es el esqueleto para redactar la especificación de **un** módulo. Se copia a `documentacion/«slug-modulo»/spec.md`, se reemplaza cada `«…»`, se responde cada `[[guía]]` y se borran las guías. **Antes de escribir código, esta especificación debe estar completa y aprobada** (regla base `02`·F2). Ninguna sección se borra: si no aplica, se deja el título con "No aplica porque …".
 
 - **Slug del módulo:** `«slug-en-kebab»`
 - **Estado:** `«borrador / aprobada / en implementación / cerrada»`
@@ -67,7 +67,7 @@
 
 ## 10. Plan de pruebas
 
-[[Regla base `08` + triangulación `T7`. Se aprueba junto con esta spec.]]
+[[Regla base `08` + triangulación `T7`. Se aprueba junto con esta especificación.]]
 
 - **Escenarios:** caso feliz, casos límite, errores, permisos, validaciones.
 - **Corner cases (derivados):** «valores de frontera, clases de equivalencia, casos inválidos».
@@ -76,9 +76,9 @@
 
 ## 11. Criterios de aceptación (Definition of Done)
 
-- [ ] «Comportamiento X funciona según esta spec.»
+- [ ] «Comportamiento X funciona según esta especificación.»
 - [ ] Pruebas verdes (incluida la triangulación de los cálculos).
-- [ ] Trazabilidad spec → implementación sin faltantes (regla `13`·DOC3).
+- [ ] Trazabilidad especificación → implementación sin faltantes (regla `13`·DOC3).
 - [ ] Documentación persistida (regla `13`).
 - [ ] «…»
 
@@ -90,8 +90,26 @@
 
 ## 13. Trazabilidad (se completa al implementar)
 
-[[Tabla de la regla `13`·DOC3: una fila por afirmación técnica de esta spec, con dónde quedó implementada y su evidencia. Se llena al cerrar.]]
+[[Tabla de la regla `13`·DOC3: una fila por afirmación técnica de esta especificación, con dónde quedó implementada y su evidencia. Se llena al cerrar.]]
 
-| Ítem de la spec | Categoría | Ubicación | Estado | Evidencia |
+| Ítem de la especificación | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
 | «…» | «modelo/servicio/vista/prueba/permiso» | «archivo» | ⏳ | «enlace» |
+
+## 14. Cruces con otros módulos
+
+[[Regla `13`·DOC7: el cruce se registra en los **dos** documentos. Si esta especificación consume otro módulo, se anota abajo **y** el módulo consumido lo registra en su historial cruzado. Una mención de paso ("algo parecido se hizo en X") no es un cruce: no se anota.]]
+
+**Qué consume este módulo de otros:**
+
+| Módulo | Qué consume | Por qué |
+|---|---|---|
+| `«slug-del-otro-modulo»` | «servicio, tabla, evento, permiso» | «para qué lo necesita» |
+
+**Historial cruzado — quién consume de este módulo:**
+
+| Fecha | Módulo que consume | Qué cambió acá por eso |
+|---|---|---|
+| AAAA-MM-DD | `«slug-del-otro-modulo»` | «nada / se expuso X / se estabilizó el contrato de Y» |
+
+_(Si no hay cruces en un sentido, se deja la tabla con una fila "Ninguno". Vacía no dice si es que no hay o si es que nadie lo revisó.)_

@@ -16,7 +16,7 @@ Este capítulo **no ajusta ni relaja nada**: donde nombra una obligación de otr
 |---|---|
 | [`ID1 · Trabaja con criterio de desarrollador senior`](reglas/ID1-trabaja-con-criterio-de-desarrollador-senior.md) | Resolver con el criterio del oficio, no con lo mínimo que funciona. |
 | [`ID2 · Escribe en registro técnico, sin adornos`](reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md) | `[DEROGADA en 6.0.0 → ver ID7]` |
-| [`ID3 · No des por entregado lo que no está terminado`](reglas/ID3-no-des-por-entregado-lo-que-no-esta-terminado.md) | Spec cumplida + pruebas verdes + nada roto + rastro escrito. |
+| [`ID3 · No des por entregado lo que no está terminado`](reglas/ID3-no-des-por-entregado-lo-que-no-esta-terminado.md) | Especificación cumplida + pruebas verdes + nada roto + rastro escrito. |
 | [`ID4 · Asume el ciclo completo, de entender a documentar`](reglas/ID4-asume-el-ciclo-completo-de-entender-a-documentar.md) | La unidad se entrega entera, no media cadena. |
 | [`ID5 · No salgas del borde del rol`](reglas/ID5-no-salgas-del-borde-del-rol.md) | Seis cosas fuera por definición; cada una se autoriza aparte y cada vez. |
 | [`ID6 · Toma el rol especializado que pide la etapa`](reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md) | El rol cambia el foco, nunca la precedencia ni el borde. |

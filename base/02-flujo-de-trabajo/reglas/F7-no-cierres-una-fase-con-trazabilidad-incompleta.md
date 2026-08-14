@@ -4,7 +4,7 @@
 
 > **Ya no rige.** Lo que exigía lo exige [`13·DOC3`](../../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md), dueño del tema *documentación* ([`M2`](../../20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md)), con el formato de la tabla en [`13·DOC11`](../../13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md). El texto original se conserva debajo y el ID no se reutiliza ([`M11`](../../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
 
-Antes de cerrar, revisa ítem por ítem que cada afirmación técnica de la spec esté en el código, el esquema, las pruebas y los docs, y no cierres con faltantes sin justificar (depende de [`13·DOC3`](../../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md), que fija el formato de la tabla de cierre).
+Antes de cerrar, revisa ítem por ítem que cada afirmación técnica de la especificación esté en el código, el esquema, las pruebas y los docs, y no cierres con faltantes sin justificar (depende de [`13·DOC3`](../../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md), que fija el formato de la tabla de cierre).
 
 ```
 INCORRECTO: "pruebas verdes → cierro"

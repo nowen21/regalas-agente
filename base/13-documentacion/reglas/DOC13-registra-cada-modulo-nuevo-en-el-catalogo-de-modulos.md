@@ -2,7 +2,7 @@
 
 ## DOC13 · Registra cada módulo nuevo en el catálogo de módulos
 
-Un módulo nuevo —dominio funcional propio, con su prefijo de rutas o su spec separada— se registra en el catálogo de módulos del proyecto **antes de cerrar** la unidad que lo creó, con el contenido que pide [`plantillas/catalogo-modulos.md`](../../../plantillas/catalogo-modulos.md). No cuentan como módulo nuevo una fase de uno existente, un arreglo interno ni un componente hijo. Sin el catálogo, la próxima sesión planifica creyendo que el sistema es solo lo que alcanzó a leer.
+Un módulo nuevo —dominio funcional propio, con su prefijo de rutas o su especificación separada— se registra en el catálogo de módulos del proyecto **antes de cerrar** la unidad que lo creó, con el contenido que pide [`plantillas/catalogo-modulos.md`](../../../plantillas/catalogo-modulos.md). No cuentan como módulo nuevo una fase de uno existente, un arreglo interno ni un componente hijo. Sin el catálogo, la próxima sesión planifica creyendo que el sistema es solo lo que alcanzó a leer.
 
 ```
 INCORRECTO: se crea un módulo · las sesiones siguientes asumen que el proyecto

@@ -55,4 +55,4 @@
 ## 6. Enlaces
 
 - **Señal asociada** (`13·DOC5`): «id/enlace en la memoria — tipo `decisión`».
-- **Afecta a:** «módulos, specs o ADR relacionados».
+- **Afecta a:** «módulos, especificaciones o ADR relacionados».

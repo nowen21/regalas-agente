@@ -27,7 +27,7 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 | `gitignore` | El `.gitignore` con las líneas `CLAUDE.md` y `.agente/`: son configuración local, no del repositorio. | Agrega las líneas que falten. Nunca reescribe ni reordena el resto. |
 | `agente-config` | Los 4 archivos de `./.agente/`: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. | Los pone desde sus plantillas si faltan; si ya están, no los toca. Llenarlos con los datos del proyecto es del agente al abrir sesión (paso 3 del `CLAUDE.md`). |
 | `stack-instalacion` | Este mismo archivo, copiado a `./.agente/` y al día con el del estándar. | Lo copia y lo sella. Esta copia sí se reescribe entera: no la llena nadie. |
-| `documentacion` | La carpeta `documentacion/`, donde el agente deja specs, planes y trazabilidad (regla `13`). | La crea vacía. |
+| `documentacion` | La carpeta `documentacion/`, donde el agente deja especificaciones, planes y trazabilidad (regla `13`). | La crea vacía. |
 | `historico` | La carpeta `historico-chat/` con su `README.md`: la transcripción de cada sesión. | La crea con su `README.md` desde la plantilla; si ya está, solo refresca el sello. |
 | `recuerdos` | La carpeta `historico-chat/memory/` con su índice: la memoria del agente, versionada. Y la carpeta local de la herramienta (`~/.claude/projects/<proyecto>/memory/`) **vacía**: lo que aparezca ahí se mueve acá. | Crea la carpeta y el índice, y vacía el almacén local moviendo lo que haya. |
 | `enganches-git` | Los enganches `commit-msg` y `pre-commit` en cada repositorio, apuntando a este estándar. | Los escribe en `.githooks/` y apunta `core.hooksPath` ahí, en cada repositorio que encuentre. |

@@ -26,7 +26,7 @@ El procedimiento completo está en las meta-reglas del preámbulo — se sigue t
 - **MENOR** — aditivo: regla opt-in, plantilla, validador, capítulo.
 - **PARCHE** — redacción, ejemplos, correcciones que no cambian qué se exige.
 
-Nada se renumera ni se borra: las reglas se derogan (`M11`), porque specs, commits y fases cerradas citan por ID.
+Nada se renumera ni se borra: las reglas se derogan (`M11`), porque especificaciones, commits y fases cerradas citan por ID.
 
 ## 3 · Dónde va cada cosa
 

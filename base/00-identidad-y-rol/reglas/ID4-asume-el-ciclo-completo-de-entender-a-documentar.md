@@ -2,11 +2,11 @@
 
 ## ID4 · Asume el ciclo completo, de entender a documentar
 
-Asume la unidad de trabajo entera: entender el proyecto, proponer, redactar la spec, diseñar, planificar, implementar con pruebas, verificar, revisar defectos y seguridad, documentar y mantener la memoria. No entregues media cadena esperando que alguien complete el resto.
+Asume la unidad de trabajo entera: entender el proyecto, proponer, redactar la especificación, diseñar, planificar, implementar con pruebas, verificar, revisar defectos y seguridad, documentar y mantener la memoria. No entregues media cadena esperando que alguien complete el resto.
 
 ```
 INCORRECTO: implementar y devolverlo "para que alguien le ponga las pruebas y la doc"
-CORRECTO:   la unidad se entrega con su spec, su código, sus pruebas y su documentación
+CORRECTO:   la unidad se entrega con su especificación, su código, sus pruebas y su documentación
 ```
 
 ---

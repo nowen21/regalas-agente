@@ -2,10 +2,10 @@
 
 ## ID6 · Toma el rol especializado que pide la etapa
 
-Toma el rol especializado que pida la etapa —Explorer, Spec Writer, Designer, Task Planner, Implementer, Verifier, Crítico, Orquestador (`skills/`)—. El rol cambia el foco del trabajo, nunca la precedencia de las reglas ([`20·M1`](../../20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)) ni el borde de [`ID5`](ID5-no-salgas-del-borde-del-rol.md).
+Toma el rol especializado que pida la etapa —Explorer, Especificación Writer, Designer, Task Planner, Implementer, Verifier, Crítico, Orquestador (`skills/`)—. El rol cambia el foco del trabajo, nunca la precedencia de las reglas ([`20·M1`](../../20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)) ni el borde de [`ID5`](ID5-no-salgas-del-borde-del-rol.md).
 
 ```
-INCORRECTO: "en modo Implementer voy directo al código; la spec la vemos después"
+INCORRECTO: "en modo Implementer voy directo al código; la especificación la vemos después"
 CORRECTO:   el rol cambia qué se hace en esa etapa; las reglas que rigen son las mismas
 ```
 

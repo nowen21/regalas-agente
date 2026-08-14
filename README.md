@@ -49,7 +49,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 ### Capa 2 · Convenciones base — agnósticas, ajustables por el proyecto
 
 - [`01-conducta.md`](base/01-conducta.md) — cómo se comporta el agente
-- [`02-flujo-de-trabajo/`](base/02-flujo-de-trabajo/base.md) — spec → plan → pruebas → docs
+- [`02-flujo-de-trabajo/`](base/02-flujo-de-trabajo/base.md) — especificación → plan → pruebas → docs
 - [`03-datos.md`](base/03-datos.md) — diseño de BD, migraciones, catálogos, cero-hardcode
 - [`04-seguridad.md`](base/04-seguridad.md) — authz, secretos, validación, inyección, archivos sensibles
 - [`05-errores-y-logging.md`](base/05-errores-y-logging.md) — manejo de excepciones y logging
@@ -75,7 +75,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`plantillas/dominio.md`](plantillas/dominio.md) — qué hace el sistema, entidades y reglas de negocio
 - [`plantillas/mapeo-nombres.md`](plantillas/mapeo-nombres.md) — cómo se llaman aquí los conceptos abstractos de la base
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
-- [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md) — esqueleto para redactar la spec de un módulo (se copia por módulo a `documentacion/`)
+- [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md) — esqueleto para redactar la especificación de un módulo (se copia por módulo a `documentacion/`)
 - [`plantillas/senales.md`](plantillas/senales.md) — log de señales (memoria: decisiones, errores resueltos, patrones, aprendizajes)
 - [`plantillas/checklist-despliegue.md`](plantillas/checklist-despliegue.md) — checklist de un despliegue (opt-in `18`)
 - [`plantillas/postmortem.md`](plantillas/postmortem.md) — postmortem de incidente, sin culpa (opt-in `19`)
@@ -85,11 +85,11 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 Herramientas activables que aplican el estándar:
 
 - [`analizar-proyecto`](skills/analizar-proyecto/SKILL.md) — diagnostica un proyecto existente: inventario (qué hay), brechas (qué falta), plan priorizado (qué sigue), estrategia de pruebas y tecnologías necesarias. (rol Explorer)
-- [`cerrar-fase`](skills/cerrar-fase/SKILL.md) — valida antes de cerrar: pruebas + triangulación + calidad + trazabilidad spec→implementación. (rol Verifier)
-- [`generar-spec-modulo`](skills/generar-spec-modulo/SKILL.md) — redacta la spec de un módulo antes de programarlo, guiando la plantilla. (rol Spec Writer)
-- [`revisar-critico`](skills/revisar-critico/SKILL.md) — revisión adversarial: busca bugs, seguridad y casos que la spec no anticipó. (rol Reviewer/Crítico)
+- [`cerrar-fase`](skills/cerrar-fase/SKILL.md) — valida antes de cerrar: pruebas + triangulación + calidad + trazabilidad especificación→implementación. (rol Verifier)
+- [`generar-spec-modulo`](skills/generar-spec-modulo/SKILL.md) — redacta la especificación de un módulo antes de programarlo, guiando la plantilla. (rol Spec Writer)
+- [`revisar-critico`](skills/revisar-critico/SKILL.md) — revisión adversarial: busca bugs, seguridad y casos que la especificación no anticipó. (rol Reviewer/Crítico)
 - [`proponer-alcance`](skills/proponer-alcance/SKILL.md) — traduce una solicitud en un alcance concreto (dentro/fuera) para aprobar. (rol Proposer)
-- [`disenar-arquitectura`](skills/disenar-arquitectura/SKILL.md) — define el diseño técnico desde la spec: datos, estructura, decisiones. (rol Designer)
+- [`disenar-arquitectura`](skills/disenar-arquitectura/SKILL.md) — define el diseño técnico desde la especificación: datos, estructura, decisiones. (rol Designer)
 - [`planificar-tareas`](skills/planificar-tareas/SKILL.md) — divide el trabajo en tareas con grafo de dependencias y plan de pruebas, para aprobación. (rol Task Planner)
 - [`implementar`](skills/implementar/SKILL.md) — ejecuta un plan aprobado: código + pruebas, de corrido. (rol Implementer)
 - [`sdd-orchestrator`](skills/sdd-orchestrator/SKILL.md) — dirige la línea de montaje: llama a cada rol, controla las puertas, usa el grafo y persiste el estado. (rol Orchestrator)

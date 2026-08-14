@@ -68,7 +68,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Regla | Qué comprobaría el script | Por qué falta |
 |---|---|---|
-| `F2` | ¿código de fase sin spec referenciado? | cruzar el código con su spec; es el más pesado |
+| `F2` | ¿código de fase sin especificación referenciado? | cruzar el código con su especificación; es el más pesado |
 | `F18` | cada intervención del plan referencia un CA | mapear intervención→CA dentro del plan (fuzzy) |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
@@ -121,7 +121,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
 - **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
-- **`01`:** C1–C17 (todas menos C18).
+- **`01`:** C1–C17 (todas menos C18) y C20. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
 - **`02`:** F1, F3, F5, F6, F7, F8, F9, F10, F11, F15, F16, F19, F20 · F12.8, F12.9, F12.10.
 - **`03`:** D4, D5, D6, D7, D8.
 - **`04`:** S1, S2, S6, S8, S9, S10, S11.
@@ -143,4 +143,4 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 
 ## Conclusión
 
-Sobre el **estándar solo** ya está todo lo validable, y la mayor parte de lo que vive en los proyectos también — ~50 reglas, todo multiproyecto: leen el código, corren la herramienta del stack, o revisan la documentación de flujo (fases, plan, padres, completitud contra plantilla). Quedan **~9**: 4 son fuzzy o pesadas (`F2` cruzar código↔spec, `F4.4`, `DOC7`, `DOC14`), y 5 necesitan que el proyecto **declare su convención/dominio** en `.agente/` (`EST1`, resto de `EST2`, `D1`-resto, `IM2`, `IM5`) — sin esa declaración las interpreta el agente.
+Sobre el **estándar solo** ya está todo lo validable, y la mayor parte de lo que vive en los proyectos también — ~50 reglas, todo multiproyecto: leen el código, corren la herramienta del stack, o revisan la documentación de flujo (fases, plan, padres, completitud contra plantilla). Quedan **~9**: 4 son fuzzy o pesadas (`F2` cruzar código↔especificación, `F4.4`, `DOC7`, `DOC14`), y 5 necesitan que el proyecto **declare su convención/dominio** en `.agente/` (`EST1`, resto de `EST2`, `D1`-resto, `IM2`, `IM5`) — sin esa declaración las interpreta el agente.

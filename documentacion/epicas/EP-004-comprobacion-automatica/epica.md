@@ -71,7 +71,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 
 ### 5.3 Diferido
 
-- Comprobaciones que necesiten que el proyecto declare sus convenciones propias, como dónde viven sus módulos. Se retoman cuando exista esa declaración.
+- Comprobaciones que necesiten que el proyecto declare sus convenciones propias, como dónde viven sus módulos. **Retomado el 2026-08-14 en [HU-010](HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md)**, que empieza por definir esa declaración y después compara contra ella.
 
 ## 5.4 Alcance funcional completo
 
@@ -129,15 +129,18 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Fijar el criterio de qué se comprueba con un programa | Must | S |
-| HU-002 | Marcar en cada regla si es comprobable | Must | M |
-| HU-003 | Definir el formato de un hallazgo y su severidad | Must | S |
-| HU-004 | Comprobar la forma de los documentos y sus espacios sin llenar | Must | M |
-| HU-005 | Comprobar los enlaces y las citas a reglas | Must | M |
-| HU-006 | Comprobar la nomenclatura y la estructura de carpetas del trabajo | Must | M |
-| HU-007 | Comprobar que no salgan claves ni datos sensibles | Must | M |
-| HU-008 | Correr todas las comprobaciones de una sola vez | Must | S |
-| HU-009 | Registrar cuántos hallazgos hubo por regla | Should | S |
+| [HU-001](HU-001-criterio-de-lo-comprobable/HU-001-criterio-de-lo-comprobable.md) | Fijar el criterio de qué se comprueba con un programa | Must | S |
+| [HU-002](HU-002-marca-de-comprobable-en-cada-regla/HU-002-marca-de-comprobable-en-cada-regla.md) | Marcar en cada regla si es comprobable | Must | M |
+| [HU-003](HU-003-formato-del-hallazgo/HU-003-formato-del-hallazgo.md) | Definir el formato de un hallazgo y su severidad | Must | S |
+| [HU-004](HU-004-forma-de-los-documentos/HU-004-forma-de-los-documentos.md) | Comprobar la forma de los documentos y sus espacios sin llenar | Must | M |
+| [HU-005](HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) | Comprobar los enlaces y las citas a reglas | Must | M |
+| [HU-006](HU-006-nomenclatura-y-estructura/HU-006-nomenclatura-y-estructura.md) | Comprobar la nomenclatura y la estructura de carpetas del trabajo | Must | M |
+| [HU-007](HU-007-claves-y-datos-sensibles/HU-007-claves-y-datos-sensibles.md) | Comprobar que no salgan claves ni datos sensibles | Must | M |
+| [HU-008](HU-008-corrida-completa/HU-008-corrida-completa.md) | Correr todas las comprobaciones de una sola vez | Must | S |
+| [HU-009](HU-009-conteo-por-regla/HU-009-conteo-por-regla.md) | Registrar cuántos hallazgos hubo por regla | Should | S |
+| [HU-010](HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) | Comprobar el código contra la convención que el proyecto declara | Must | L |
+| [HU-011](HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) | Comprobar que cada regla del estándar cumple su propio molde | Must | M |
+| [HU-012](HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) | Comprobar las marcas de generación automática en lo que se entrega | Should | S |
 
 ## 10. Consideraciones técnicas
 
@@ -194,6 +197,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 2 | Comprobaciones de documentos y enlaces | HU-004, HU-005 |
 | Fase 3 | Comprobaciones de estructura y de datos sensibles | HU-006, HU-007 |
 | Fase 4 | Corrida completa y conteo por regla | HU-008, HU-009 |
+| Fase 5 | El estándar comprobándose a sí mismo, y el proyecto contra lo que declara | HU-010, HU-011, HU-012 |
 
 ## 15. Definition of Ready
 

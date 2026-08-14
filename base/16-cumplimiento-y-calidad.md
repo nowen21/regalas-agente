@@ -19,7 +19,7 @@ CORRECTO:   "¿Qué sector y jurisdicción? ¿Qué normas/frameworks aplican?" a
 
 ### CQ2 · Cumple por construcción y déjalo trazable
 
-Traduce cada control del marco a una **decisión concreta** (esquema, validación, permiso, cifrado, log, retención) y verifícalo junto con la trazabilidad spec→implementación ([`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)). Si un requisito **no se puede cumplir**, avísalo — no lo omitas en silencio.
+Traduce cada control del marco a una **decisión concreta** (esquema, validación, permiso, cifrado, log, retención) y verifícalo junto con la trazabilidad especificación→implementación ([`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)). Si un requisito **no se puede cumplir**, avísalo — no lo omitas en silencio.
 
 ```
 INCORRECTO: implementar y dar por hecho que "cumple"

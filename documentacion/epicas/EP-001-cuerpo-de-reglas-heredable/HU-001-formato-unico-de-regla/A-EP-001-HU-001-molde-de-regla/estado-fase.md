@@ -21,7 +21,7 @@
 | 2 | Alcance | alcance aprobado por el usuario | Escrito en el brief, sin aprobación formal |
 | 3 | Épica | épica aprobada por el usuario | Escrita, pendiente de aprobación |
 | 4 | Historias de usuario | historias aprobadas por el usuario | Escritas las ocho de EP-001, pendientes de aprobación |
-| 5 | Spec del módulo | spec aprobada por el usuario | No se hizo. Está en duda si aplica a un entregable de texto normativo |
+| 5 | Especificación del módulo | especificación aprobada por el usuario | No se hizo. Está en duda si aplica a un entregable de texto normativo |
 | 6 | Diseño | diseño coherente | No se hizo como estación aparte. Las decisiones de forma están en §2.6 del plan de trabajo |
 | 7 | Plan de tareas | plan y pruebas aprobados por el usuario | Los dos escritos, pendientes de aprobación |
 | 8 | Implementación | implementado y pruebas en verde | Pendiente |
@@ -67,7 +67,7 @@ Todavía no hay dónde registrarlas como aprendizaje buscable: la memoria es [EP
 
 Tres dudas bloquean el arranque. Están en §2.7 del [plan de trabajo](plan_trabajo.md) y son la tarea T-01:
 
-1. Si un entregable de texto normativo necesita spec aparte, o si la historia de usuario con sus criterios hace las veces de spec.
+1. Si un entregable de texto normativo necesita especificación aparte, o si la historia de usuario con sus criterios hace las veces de especificación.
 2. Si el capítulo de reglas sobre reglas se numera 20, al final, o 00, al principio.
 3. Qué partes del molde siguen siendo obligatorias cuando la regla no admite ejemplo.
 

@@ -144,20 +144,20 @@ Y así queda la regla, ya con el molde:
 ## F0 · Recorre la cadena completa, sin saltar eslabones
 
 Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre
-`brief → épica → HU → spec → plan → código`, grande o chico. Ningún eslabón se
+`brief → épica → HU → especificación → plan → código`, grande o chico. Ningún eslabón se
 salta, se fusiona ni se omite por tamaño. Si te piden un paso y falta el
 anterior, **PAUSAR y crearlo primero** (depende de `02·F2`, `13·DOC15`,
 `13·DOC16`).
 
 **Excepción** — lo que **no es desarrollo** queda fuera de la cadena: leer o
 investigar, configuración local, comandos que el usuario pide, y el arreglo que
-solo devuelve el código a lo que ya decía la spec (condición). Cubre ese trabajo
+solo devuelve el código a lo que ya decía la especificación (condición). Cubre ese trabajo
 puntual; no habilita a construir funcionalidad sin cadena (límite). Si hay duda
 de si el caso es desarrollo, decide el usuario (`01·C7`) (autoriza).
 
 ```
 INCORRECTO: llega una idea → se escribe el plan de trabajo directo
-CORRECTO:   idea → análisis → objetivo y alcance → épica → HU → spec
+CORRECTO:   idea → análisis → objetivo y alcance → épica → HU → especificación
             → plan → construir
 ```
 ````

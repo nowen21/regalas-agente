@@ -11,6 +11,28 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 10.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (desde ahora, el documento que use una palabra de otro idioma la traduce o la explica la primera vez).
+
+**El estándar escribía en inglés y exigía escribir en español.** [`01·C8`](base/01-conducta.md#c8--habla-el-idioma-del-proyecto) manda que todo lo que ve el usuario vaya en el idioma del proyecto, y el propio estándar usaba "spec" en 53 archivos. Quien lee "falta la spec" no sabe qué documento le piden ni dónde ponerlo, que es justo lo que [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) vino a evitar.
+
+- **Nace [`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica)**: el término de otro idioma se traduce, y el que no tenga traducción usada se explica la primera vez que aparece. Extiende `C8`, que fijaba el idioma pero no decía qué hacer con las palabras que no lo tienen.
+- **"spec" pasa a "especificación"** en el texto de `base/`, `plantillas/`, `validadores/` y `documentacion/`: 162 cambios. **Los nombres de archivo y las rutas no se tocan** — `spec.md`, `plantilla-spec-modulo.md` y el archivo de `F2` siguen igual, así que ningún proyecto tiene que renombrar nada. Fue decisión del usuario, para que el cambio no obligara a mover archivos.
+- **Los identificadores no cambian.** `F2` sigue siendo `F2`; lo que cambió es su título, que ahora dice *"Sin especificación acordada no hay código"*.
+- **Se anula el checklist de las reglas cuyo texto se tocó** ([`20·M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md)): `F2`, `F7`, `DOC3`, `DOC6`, `DOC11`, `DOC12`, `DOC13` y las cuatro `F4.x` derogadas. Cambió una palabra y no lo que exigen, pero las filas 8 a 11 se juzgan sobre el texto. Se vuelven a aplicar en la fase que las toque.
+- **Retroactividad.** Un documento ya escrito y aceptado no se reabre para traducirle las palabras. Aplica a lo que se escriba desde ahora.
+
+## 9.2.0 — 2026-08-14
+
+**MENOR** (aditivo: una columna nueva en la tabla de deuda del cierre).
+
+**La deuda se anotaba sin decir de dónde salía.** Se registraba qué quedó pendiente y a dónde se traslada, pero no por qué apareció. Y no todas las deudas dicen lo mismo: una que sale de no haber visto lo que se iba a romper señala que la línea base de [`02·F17`](base/02-flujo-de-trabajo/base.md) se hizo floja; una que se decidió por tiempo, o que la produjo el propio plan al diferir algo, no señala nada malo. Sin separarlas, no se puede saber si el análisis previo se está haciendo bien.
+
+- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §6 gana la columna `Origen`**, con cuatro valores: *no previsto*, *atajo decidido*, *cambio del entorno* y *diferido por el plan*. Cada uno con qué pasó y qué significa.
+- **Para qué sirve.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase se repite *"no previsto"*, el problema no es la deuda: es que la línea base se está haciendo por encima. Antes eso no se veía en ningún lado.
+- **Retroactividad.** Las fases cerradas no se reabren para clasificar su deuda.
+
 ## 9.1.0 — 2026-08-14
 
 **MENOR** (aditivo: una subsección nueva en el cierre y una en el estado de fase; el plan de trabajo pierde una columna y una sección que ya vivían mejor en otro lado).

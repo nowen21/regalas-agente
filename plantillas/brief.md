@@ -1,15 +1,15 @@
 # Brief — «Nombre del módulo / épica»   ·   `[CAPA 3]`
 
-> **Qué es este archivo.** El **brief de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo `02·F0`). Es el **insumo** del agente, no la spec ni una orden de entregar código.
+> **Qué es este archivo.** El **brief de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo `02·F0`). Es el **insumo** del agente, no la especificación ni una orden de entregar código.
 >
 > **Cómo usarlo.**
 > 1. Copiar esta plantilla al proyecto como `prompts/<slug>-brief.md` (un brief por módulo/épica).
 > 2. Reemplazar los `«…»` y borrar las secciones que no apliquen.
 > 3. Borrar este recuadro.
 >
-> **Regla de oro.** El brief responde **QUÉ se necesita y QUÉ no se negocia**. El **CÓMO y el CUÁNDO** (alcance, HU, spec, plan, orden, entrega) los pone el estándar. En cuanto un brief dice "dame el código de X", dejó de ser brief y choca con el flujo (`02·F2` sin spec no hay código · `F4` sin plan aprobado no hay código).
+> **Regla de oro.** El brief responde **QUÉ se necesita y QUÉ no se negocia**. El **CÓMO y el CUÁNDO** (alcance, HU, especificación, plan, orden, entrega) los pone el estándar. En cuanto un brief dice "dame el código de X", dejó de ser brief y choca con el flujo (`02·F2` sin especificación no hay código · `F4` sin plan aprobado no hay código).
 
-**Encuadre para el agente:** este documento es el brief de entrada. El agente sigue el flujo del estándar — análisis (`F1`) → alcance (`proponer-alcance`) → épica/HU (`13·DOC15`) → spec (`F2`) → plan aprobado (`F4`) → implementación. **No generar código hasta que el plan esté aprobado.**
+**Encuadre para el agente:** este documento es el brief de entrada. El agente sigue el flujo del estándar — análisis (`F1`) → alcance (`proponer-alcance`) → épica/HU (`13·DOC15`) → especificación (`F2`) → plan aprobado (`F4`) → implementación. **No generar código hasta que el plan esté aprobado.**
 
 ---
 
@@ -60,7 +60,7 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 ## 9. Referencias
 
-- «Mockups, documentos funcionales, prompts previos, specs de módulos con los que convive.»
+- «Mockups, documentos funcionales, prompts previos, especificaciones de módulos con los que convive.»
 
 ## 10. Épicas derivadas
 

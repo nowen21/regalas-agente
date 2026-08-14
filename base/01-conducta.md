@@ -141,7 +141,7 @@ CORRECTO:   pregunta abierta con contexto, ejemplos, y "¿cómo lo tratas?" — 
 
 ## C14 · Aplicar el estándar profesional del dominio como default — no ofrecer opciones minimalistas
 
-Cada dominio (SaaS, ERP, banca, salud, e-commerce, reservas, logística) tiene un **estándar profesional** con expectativas mínimas bien establecidas por la industria. Cuando la spec del proyecto pertenece a un dominio con estándar reconocido, **aplícalo directo como default** — no ofrezcas "opciones minimalistas" que reducen el alcance al mínimo aceptable.
+Cada dominio (SaaS, ERP, banca, salud, e-commerce, reservas, logística) tiene un **estándar profesional** con expectativas mínimas bien establecidas por la industria. Cuando la especificación del proyecto pertenece a un dominio con estándar reconocido, **aplícalo directo como default** — no ofrezcas "opciones minimalistas" que reducen el alcance al mínimo aceptable.
 
 **Cuándo aplicar el estándar directo (sin preguntar):**
 
@@ -279,3 +279,30 @@ INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar all
 CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionado,
             y el almacén de la herramienta vacío
 ```
+
+## C20 · La palabra de otro idioma se traduce, y si no se puede, se explica
+
+Todo término que no esté en el idioma del proyecto se escribe traducido (extiende [`C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto)). El que no tenga traducción usada se deja tal cual y se explica **la primera vez que aparece**, en una frase.
+
+```
+INCORRECTO: "sin spec acordada no hay código"
+CORRECTO:   "sin especificación acordada no hay código"
+CORRECTO:   "se guarda en formato JSON, que es texto que un programa lee como
+            datos" — se queda en inglés porque no tiene traducción usada
+```
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v10.0.0**, el **2026-08-14**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Que el término sin traducción se deje en su idioma no es un permiso para incumplir, es hasta dónde llega la exigencia. La fila **2** se revisó contra [`C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto), que exige el idioma y no dice nada de los términos que no lo tienen; son dos cosas que se cumplen por separado, así que son dos reglas. La fila **5** no nombra ninguna tecnología: "el idioma del proyecto" lo declara la capa 3.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

@@ -81,7 +81,7 @@ Categoría aparte, en [herramientas.py](herramientas.py). No leen archivos: **in
 - **Ejemplos de formato** (`[<ruta legible>](<path-relativo>.md)`). Llevan `<>` y son documentación, no enlaces.
 - **Anclas** (`archivo.md#seccion`). Se comprueba el archivo, no la sección.
 - **Los enlaces dentro de una transcripción de `historico-chat/`.** Las escribe el enganche copiando el chat **literal**, y en el chat los enlaces se escriben relativos a la raíz del proyecto, no a esa carpeta: se romperían por definición. Reescribirlos al copiar dejaría de ser literal, y el histórico vale por eso. El `README.md` de la carpeta sí se comprueba — ese lo escribe una persona.
-- **Puertas del flujo** (código de fase sin spec + plan aprobado · `F2`) y la **trazabilidad hasta el commit**. Necesitan inspeccionar el código del proyecto, no solo su documentación; quedan para cuando haya un proyecto real bajo `proyectos/`. La trazabilidad **de la documentación** (épica↔HU, ORIGEN, tabla de cierre) sí está: `trazabilidad.py` — corre contra el árbol `documentacion/epicas/` de un proyecto.
+- **Puertas del flujo** (código de fase sin especificación + plan aprobado · `F2`) y la **trazabilidad hasta el commit**. Necesitan inspeccionar el código del proyecto, no solo su documentación; quedan para cuando haya un proyecto real bajo `proyectos/`. La trazabilidad **de la documentación** (épica↔HU, ORIGEN, tabla de cierre) sí está: `trazabilidad.py` — corre contra el árbol `documentacion/epicas/` de un proyecto.
 
 ## Enganche automático (hooks) — instalado
 

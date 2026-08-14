@@ -2,7 +2,7 @@
 
 ## F11 · Una fase solo modifica código de su propio módulo
 
-Todos los archivos que una fase modifica pertenecen al módulo que la fase declaró al abrirse ([`13·DOC12`](../../13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)). Si el trabajo alcanza a otros módulos, se descompone en **una fase por módulo** y el diferimiento se documenta en el spec — nunca se agrupa en una "fase transversal de reparación", que destruye la trazabilidad por módulo. Cuántas HU puede cubrir una fase lo fija [`02·F12`](F12-relacion-y-nomenclatura-de-fases.md).
+Todos los archivos que una fase modifica pertenecen al módulo que la fase declaró al abrirse ([`13·DOC12`](../../13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)). Si el trabajo alcanza a otros módulos, se descompone en **una fase por módulo** y el diferimiento se documenta en el especificación — nunca se agrupa en una "fase transversal de reparación", que destruye la trazabilidad por módulo. Cuántas HU puede cubrir una fase lo fija [`02·F12`](F12-relacion-y-nomenclatura-de-fases.md).
 
 **Excepción** — la infraestructura compartida que toda fase puede tocar: rutas globales, registro de servicios o bindings, mapas y catálogos centrales del proyecto, y layouts globales (condición). Solo con el cambio mínimo que el módulo de la fase necesita, y sin arrastrar funcionalidad de otro módulo (límite). Cualquier archivo ajeno fuera de esa lista pausa y lo decide el usuario (autoriza).
 

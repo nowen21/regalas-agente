@@ -45,7 +45,7 @@ Cuando dos reglas parecen chocar, gana la de más arriba en esa tabla. El orden 
 | Capítulo | De qué trata |
 |---|---|
 | [`01 · Conducta del agente`](01-conducta.md) | Cómo se porta en toda tarea: avisar antes de tocar, no inventar, no decidir por su cuenta. |
-| [`02 · Flujo de trabajo`](02-flujo-de-trabajo/base.md) | El orden en que se hace el trabajo: spec, plan, aprobación, implementación, cierre. |
+| [`02 · Flujo de trabajo`](02-flujo-de-trabajo/base.md) | El orden en que se hace el trabajo: especificación, plan, aprobación, implementación, cierre. |
 | [`09 · Control de versiones`](09-git.md) | Ramas, commits y qué se sube al repositorio. |
 | [`13 · Documentación`](13-documentacion/base.md) | Qué queda escrito de cada trabajo y dónde. |
 

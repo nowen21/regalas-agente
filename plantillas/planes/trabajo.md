@@ -16,7 +16,7 @@
 | **Épica** | `EP«01»` |
 | **HU** | `HU«03»` — **una sola** (`F12.1`) |
 | **Módulo** | «M» (`13·DOC13`) |
-| **Spec del módulo** | [enlace al prompt/spec · `02·F2`] |
+| **Especificación del módulo** | [enlace a la especificación · `02·F2`] |
 | **Fecha apertura** | AAAA-MM-DD |
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
@@ -227,7 +227,7 @@ Trazabilidad de decisiones — reglas por su identificador:
 - [ ] Todos los CA de §0 verificados con evidencia (§5)
 - [ ] Requisitos no funcionales validados
 - [ ] Pruebas de la fase en verde (alcance quirúrgico · `F5`)
-- [ ] Trazabilidad spec → implementación sin faltantes (`DOC11`)
+- [ ] Trazabilidad especificación → implementación sin faltantes (`DOC11`)
 - [ ] Sin errores de linter / análisis estático (`07`)
 - [ ] Documentación e índices/mapas del proyecto actualizados (`13`)
 - [ ] Señales registradas (`DOC5`)

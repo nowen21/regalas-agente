@@ -10,7 +10,7 @@
 | **Épica** | [EP-001](../../epica.md) |
 | **HU** | [HU-001 Formato único para escribir una regla](../HU-001-formato-unico-de-regla.md) |
 | **Módulo** | Cuerpo de reglas |
-| **Spec del módulo** | No hay spec aparte. El entregable es texto normativo, no código, y su especificación son los criterios de aceptación de la HU. Confirmarlo antes de arrancar (duda 1 de §2.7) |
+| **Especificación del módulo** | No hay especificación aparte. El entregable es texto normativo, no código, y su especificación son los criterios de aceptación de la HU. Confirmarlo antes de arrancar (duda 1 de §2.7) |
 | **Fecha apertura** | 2026-08-13 |
 | **Rama** | `feature/A-EP-001-HU-001-molde-de-regla` |
 
@@ -93,7 +93,7 @@ Estas decisiones se registran como señal cuando exista la memoria (EP-006). Mie
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si un entregable de texto normativo necesita spec aparte o si la HU con sus CA hace las veces de spec | Usuario | Pendiente |
+| 1 | Si un entregable de texto normativo necesita especificación aparte o si la HU con sus CA hace las veces de especificación | Usuario | Pendiente |
 | 2 | Si el capítulo de reglas sobre reglas se numera 20, al final, o 00, al principio | Usuario | Pendiente |
 | 3 | Cuántas partes del molde son obligatorias y cuáles opcionales cuando la regla no admite ejemplo | Usuario | Pendiente |
 

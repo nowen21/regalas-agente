@@ -4,12 +4,12 @@
 
 ---
 
-| Módulo | Prefijo de rutas / namespace | Descripción (1–2 líneas) | Estado | Spec | Entidades principales |
+| Módulo | Prefijo de rutas / namespace | Descripción (1–2 líneas) | Estado | Especificación | Entidades principales |
 |---|---|---|---|---|---|
-| `«módulo»` | `«/prefijo»` | «qué hace y a quién sirve» | activo / en desarrollo / scaffold / deprecado | [enlace al spec] | `«Entidad1, Entidad2»` |
+| `«módulo»` | `«/prefijo»` | «qué hace y a quién sirve» | activo / en desarrollo / scaffold / deprecado | [enlace al especificación] | `«Entidad1, Entidad2»` |
 
 ---
 
-**Qué cuenta como módulo nuevo** (se registra aquí): prefijo de rutas propio o dominio funcional autónomo con permisos propios · submódulo con semántica y spec separados.
+**Qué cuenta como módulo nuevo** (se registra aquí): prefijo de rutas propio o dominio funcional autónomo con permisos propios · submódulo con semántica y especificación separados.
 
 **Qué NO cuenta:** una fase de un módulo existente · un fix o refactor interno · un componente hijo reutilizable dentro de un módulo ya registrado.

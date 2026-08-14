@@ -79,7 +79,7 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | # | Pregunta | Respuesta |
 |---|---|---|
 | 1 | Finalidad | Que la IA tenga qué leer antes de actuar, y que ese texto sea el mismo para todos los proyectos |
-| 2 | Actores | Quien escribe reglas (una persona), quien las lee y aplica (la IA), quien las cita (specs, commits, trabajo cerrado) |
+| 2 | Actores | Quien escribe reglas (una persona), quien las lee y aplica (la IA), quien las cita (especificaciones, commits, trabajo cerrado) |
 | 3 | Información | Cada regla se identifica por un capítulo y un identificador propio, y lleva su exigencia, su ejemplo y sus dependencias |
 | 4 | Campos | Una regla tiene campos definidos: identificador, título, exigencia, ejemplo incorrecto, ejemplo correcto, dependencias, excepciones, si es comprobable. El detalle de cada campo baja a la historia de usuario |
 | 5 | Validaciones | El identificador es único y no repite el prefijo del capítulo; la exigencia es una sola; el ejemplo está presente; la dependencia apunta a una regla que existe |

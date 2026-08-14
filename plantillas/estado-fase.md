@@ -25,7 +25,7 @@
 | 2 | Proposer · alcance | 👤 alcance aprobado | ☐ |
 | 3 | Épica Writer | 👤 épica aprobada | ☐ |
 | 4 | HU Writer | 👤 HUs aprobadas | ☐ |
-| 5 | Spec Writer | 👤 spec aprobada | ☐ |
+| 5 | Spec Writer | 👤 especificación aprobada | ☐ |
 | 6 | Designer | diseño coherente | ☐ |
 | 7 | Task Planner | 👤 plan + pruebas aprobados | ☐ |
 | 8 | Implementer | implementado + pruebas verdes | ☐ |

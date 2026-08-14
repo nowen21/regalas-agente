@@ -1,6 +1,6 @@
 # Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
-> Documento de **cierre de una fase** (`02·F6`/`F7`). Consolida qué se implementó, la **trazabilidad spec → código** (`13·DOC11`), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
+> Documento de **cierre de una fase** (`02·F6`/`F7`). Consolida qué se implementó, la **trazabilidad especificación → código** (`13·DOC11`), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
-| **Spec del módulo** | [enlace · `02·F2`] |
+| **Especificación del módulo** | [enlace · `02·F2`] |
 | **Plan de trabajo** | [enlace · `plan_trabajo.md`] |
 | **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01) |
 | **Fecha de cierre** | AAAA-MM-DD |
@@ -26,15 +26,15 @@
 
 ## 2. Trazabilidad  ·  `13·DOC11`
 
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la spec dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
 
-### 2.1 Spec → implementación
+### 2.1 Especificación → implementación
 
-> Una fila por **afirmación técnica del spec**. No se cierra con faltantes sin justificar.
+> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
 >
 > **Estados:** ✅ implementado · ❌ pendiente (con destino explícito) · N/A (con motivo) · parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ — no se difiere como N/A.
 
-| Ítem del spec | Categoría | Ubicación (archivo real) | Estado | Evidencia |
+| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
 | (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `[ruta real]` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
 
@@ -93,9 +93,20 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 ## 6. Deuda técnica y pendientes generados
 
-| Descripción | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|
-| | |
+| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
+|---|---|---|
+| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
+
+**Los cuatro orígenes**, y qué dice cada uno:
+
+| Origen | Qué pasó | Qué significa |
+|---|---|---|
+| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
+| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
+| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
+| **Diferido por el plan** | El propio `F17` mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
+
+> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
 
 ---
 
@@ -104,7 +115,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 - [ ] Mapa de dependencias vivo actualizado (`DOC9`).
 - [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo (`DOC13`).
 - [ ] Índice `README.md` de la carpeta de docs actualizado (`DOC15`).
-- [ ] Spec del módulo actualizado con lo realmente implementado.
+- [ ] Especificación del módulo actualizado con lo realmente implementado.
 
 ---
 

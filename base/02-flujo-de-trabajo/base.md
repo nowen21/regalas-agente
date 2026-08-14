@@ -14,9 +14,9 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 
 | Regla | Qué exige | Checklist |
 |---|---|---|
-| [`F0 · Recorre la cadena completa, sin saltar eslabones`](reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) | `brief → épica → HU → spec → plan → código`: ningún eslabón se salta por tamaño. | CUMPLE |
+| [`F0 · Recorre la cadena completa, sin saltar eslabones`](reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) | `brief → épica → HU → especificación → plan → código`: ningún eslabón se salta por tamaño. | CUMPLE |
 | [`F1 · Carga el contexto antes de actuar`](reglas/F1-carga-el-contexto-antes-de-actuar.md) | Revisar la documentación del proyecto antes de analizar, implementar o negar que algo exista. | CUMPLE |
-| [`F2 · Sin spec acordada no hay código`](reglas/F2-sin-spec-acordada-no-hay-codigo.md) | Sin spec el código es opinión del agente; primero se acuerda, después se codifica. | CUMPLE |
+| [`F2 · Sin especificación acordada no hay código`](reglas/F2-sin-spec-acordada-no-hay-codigo.md) | Sin especificación el código es opinión del agente; primero se acuerda, después se codifica. | CUMPLE |
 | [`F3 · Ejecuta seguido el plan aprobado`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md) | Todos los cambios seguidos; solo pausa lo que el plan no cubre. | CUMPLE |
 | [`F4 · Todo plan lleva su plan de pruebas y su aprobación explícita`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) | Plan y pruebas presentados, y OK explícito antes de tocar código. | NO CUMPLE |
 | [`F5 · Corre solo las suites que la fase toca`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) | Corrida quirúrgica: el módulo, lo refactorizado y lo que la matriz señala. | NO CUMPLE |
@@ -52,11 +52,11 @@ Este capítulo detalla sobre todo **del plan hacia abajo**. Pero un desarrollo e
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · [`01·C3`](../01-conducta.md#c3--quédate-en-tu-tarea) |
 | 4 | **Épica / Feature** | el bloque grande de funcionalidad | [`13·DOC16`](../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) |
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | [`13·DOC15`](../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md) |
-| 6 | **Fase (ejecución)** — spec → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)–[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F15`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
+| 6 | **Fase (ejecución)** — especificación → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)–[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F15`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
 
 **Épica, módulo y fase no son lo mismo.** La **épica** es unidad de *necesidad* —agrupa historias afines por el valor que entregan— y su definición vive en [`13·DOC16`](../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md). El **módulo** es unidad *técnica* y vive en [`13·DOC13`](../13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md). La **fase** es unidad de *ejecución* —un plan con su cierre y su commit— y su relación con la HU y su nomenclatura las fija [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md), fuente única.
 
-**Secuencia del plan hacia abajo:** contexto ([`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md)) → spec ([`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → línea base verificada ([`F16`](reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) · [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) → plan y pruebas ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) que responden las trece preguntas ([`F14`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)) derivadas de los CA ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) → pausa y aprobación explícita ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → ejecutar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)), literal a los CA ([`F19`](reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) · [`F20`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)), solo los archivos del plan ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), completo ([`F9`](reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)), dentro del módulo ([`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md)) y con migración incremental cuando toca prod ([`F10`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)) → pruebas ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) → persistir ([`13·DOC1`](../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)) → trazabilidad ([`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)) → cerrar.
+**Secuencia del plan hacia abajo:** contexto ([`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md)) → especificación ([`F2`](reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → línea base verificada ([`F16`](reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) · [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)) → plan y pruebas ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) que responden las trece preguntas ([`F14`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)) derivadas de los CA ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) → pausa y aprobación explícita ([`F4`](reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → ejecutar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)), literal a los CA ([`F19`](reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) · [`F20`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)), solo los archivos del plan ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), completo ([`F9`](reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)), dentro del módulo ([`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md)) y con migración incremental cuando toca prod ([`F10`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)) → pruebas ([`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)) → persistir ([`13·DOC1`](../13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)) → trazabilidad ([`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)) → cerrar.
 
 ---
 
@@ -66,8 +66,8 @@ Lo que desarrolla, ilustra o justifica cada regla. La **exigencia** vive en su a
 
 ### F2 — el orden de los dos pasos
 
-1. **¿Existe la spec?** (la capa 3 dice dónde). Si no, ofrece redactar un borrador y hacerlo aprobar antes de tocar nada.
-2. **¿El requerimiento ya está dentro?** Si está y falta implementarlo, se implementa donde debía ir. Si no está, **primero se actualiza la spec** y después se codifica.
+1. **¿Existe la especificación?** (la capa 3 dice dónde). Si no, ofrece redactar un borrador y hacerlo aprobar antes de tocar nada.
+2. **¿El requerimiento ya está dentro?** Si está y falta implementarlo, se implementa donde debía ir. Si no está, **primero se actualiza la especificación** y después se codifica.
 
 La capa 3 puede ajustar cuán estricta es la regla, pero viene **activada por defecto**.
 
@@ -83,7 +83,7 @@ La aprobación no es un hito abstracto, es una secuencia operativa: **1)** redac
 
 Un plan de trabajo no es texto libre: es un contrato con el usuario y con quien continúe el proyecto. Un lector nuevo —otro dev, el futuro yo, el usuario en seis meses— tiene que leer solo el plan y saber qué se va a hacer, dónde queda visible, cómo se verifica y cómo se revierte, sin abrir código. Estas son las trece:
 
-1. **¿Qué es esta fase y a qué módulo pertenece?** Código de fase, slug, fecha de apertura, referencia al spec del módulo.
+1. **¿Qué es esta fase y a qué módulo pertenece?** Código de fase, slug, fecha de apertura, referencia al especificación del módulo.
 2. **¿Por qué nace esta fase?** Origen: funcionalidad nueva, modificación de una fase anterior, híbrido. Qué requerimiento, gap o hallazgo la dispara.
 3. **¿Qué carencias documentadas del módulo cierra?** Puntero explícito al documento de origen.
 4. **¿Qué entra en el alcance y qué NO?** Fuera-de-scope explícito.
@@ -103,7 +103,7 @@ Las trece son **genéricas**: aplican a cualquier proyecto. La capa 3 (`.agente/
 
 | # | Etapa | Quién actúa | Hito de cierre |
 |---|---|---|---|
-| 1 | **Declaración macro de la fase** en el spec del módulo (§Fases) | Agente redacta · usuario aprueba la spec en su momento | Bloque de fase con su identificador ([`F12.6`](reglas/F12-relacion-y-nomenclatura-de-fases.md)), origen, alcance macro y fuera-de-scope |
+| 1 | **Declaración macro de la fase** en el especificación del módulo (§Fases) | Agente redacta · usuario aprueba la especificación en su momento | Bloque de fase con su identificador ([`F12.6`](reglas/F12-relacion-y-nomenclatura-de-fases.md)), origen, alcance macro y fuera-de-scope |
 | 2 | **Disparo / autorización de inicio** | Usuario ("arranque con X") | El agente puede empezar a diseñar el plan detallado |
 | 3 | **Diseño del plan detallado** — `plan_trabajo` + `plan_pruebas` | Agente | Documentos redactados. NO toca código todavía |
 | 4 | **Pausa y presentación** al usuario | Agente | Mensaje con resumen y punteros a los documentos |
@@ -156,7 +156,7 @@ Al **construir el plan**, un ítem que "conviene técnicamente" pero no viene de
 
 Anti-patrones concretos: agregar un guard en el servidor cuando el CA solo pide ocultar un botón · interpretar "¿de dónde sale X?" como orden de corregir · "aprovechamos y limpiamos el legacy" · "el CA dice X pero conviene X + Y" · "es defensa en profundidad, es buena práctica" — aunque lo sea, si no está en el CA se propone, no se actúa.
 
-**Las tres respuestas posibles a una propuesta de [`F20`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md).** *"Sí, agrégalo"* → o entra como CA nuevo de la HU antes de continuar (lo recomendable si es funcional), o se declara soporte técnico obligatorio de un CA existente ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) con su justificación. *"No"* → se descarta y no se vuelve a mencionar. *"Después"* → se anota como brecha en el spec del módulo y se retoma en fase futura.
+**Las tres respuestas posibles a una propuesta de [`F20`](reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md).** *"Sí, agrégalo"* → o entra como CA nuevo de la HU antes de continuar (lo recomendable si es funcional), o se declara soporte técnico obligatorio de un CA existente ([`F18`](reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)) con su justificación. *"No"* → se descarta y no se vuelve a mencionar. *"Después"* → se anota como brecha en el especificación del módulo y se retoma en fase futura.
 
 ### F5 — qué no se corre por defecto
 
@@ -186,9 +186,9 @@ No es válido preguntar "¿está en producción?" para decidir **si** hacer el t
 
 ### F11 — qué hacer cuando aparece un archivo ajeno
 
-Si durante la ejecución aparece un archivo de otro módulo que rompería por la fase actual, se pausa ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), se notifica y se proponen dos opciones: **A)** documentar el break como esperado en el spec del módulo dueño y agendar su fase propia · **B)** hacer el cambio mínimo indispensable con nota explícita en el commit y registro en el spec del dueño. **Decide el usuario, no el agente.**
+Si durante la ejecución aparece un archivo de otro módulo que rompería por la fase actual, se pausa ([`F8`](reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)), se notifica y se proponen dos opciones: **A)** documentar el break como esperado en el especificación del módulo dueño y agendar su fase propia · **B)** hacer el cambio mínimo indispensable con nota explícita en el commit y registro en el especificación del dueño. **Decide el usuario, no el agente.**
 
-Trabajo adelantado que "se metió" en una fase por error: si el usuario lo aprueba después, se mantiene y se documenta con nota en el spec del módulo dueño ([`13·DOC7`](../13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md)), pero **no** se documenta como cerrado — cada módulo tendrá su fase formal cuando le toque.
+Trabajo adelantado que "se metió" en una fase por error: si el usuario lo aprueba después, se mantiene y se documenta con nota en el especificación del módulo dueño ([`13·DOC7`](../13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md)), pero **no** se documenta como cerrado — cada módulo tendrá su fase formal cuando le toque.
 
 ### F13 — el alcance de la estructura y quién decide qué
 

@@ -81,7 +81,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 > **Agnóstico:** las preguntas aplican a **cualquier** épica de **cualquier** proyecto. Reemplaza el ejemplo por tu caso. Marca **"No aplica porque …"** en las que no correspondan — no se omiten en silencio.
 >
-> **Nivel de detalle — de alcance, no de spec.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno) — pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / spec de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
+> **Nivel de detalle — de alcance, no de especificación.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno) — pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / especificación de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
 
 **La épica debe responder, como mínimo:**
 
@@ -90,7 +90,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | 1 | **Finalidad** | qué problema resuelve y qué objetivo funcional persigue |
 | 2 | **Actores / roles** | quién puede consultar, crear, modificar, eliminar, activar, inactivar, administrar |
 | 3 | **Información** | qué datos identifican a la entidad y qué información adicional se maneja |
-| 4 | **Campos** | que la entidad **tiene** campos y qué dimensiones se definirán de cada uno (nombre, tipo, obligatoriedad, formato, longitud, valores) — **sin listarlos ni especificarlos**; ese detalle es de la HU/spec |
+| 4 | **Campos** | que la entidad **tiene** campos y qué dimensiones se definirán de cada uno (nombre, tipo, obligatoriedad, formato, longitud, valores) — **sin listarlos ni especificarlos**; ese detalle es de la HU o de la especificación |
 | 5 | **Validaciones** | obligatoriedad, formato, rangos, unicidad, existencia, duplicidad, dependencias entre campos |
 | 6 | **Reglas de negocio** | condiciones para crear, modificar, activar, inactivar u otras operaciones |
 | 7 | **Estados y transiciones** | qué estados existen, qué significan, qué operaciones se permiten en cada uno (máquina de estados) |
