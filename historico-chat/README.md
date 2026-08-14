@@ -78,3 +78,4 @@ y qué archivo se tocó.
 - [2026-08-13-sesion.md](2026-08-13-sesion.md) — sesión del 2026-08-13.
 - [2026-08-13-pendientes-del-diplomado-de-ia.md](2026-08-13-pendientes-del-diplomado-de-ia.md) — cinco pendientes (12–16) que salen de comparar los apuntes del diplomado de IA contra el estándar.
 - [2026-08-13-hu-de-la-comprobacion-automatica.md](2026-08-13-hu-de-la-comprobacion-automatica.md) — las 12 HU de EP-004 y donde cae lo que falta del pendiente 01.
+- [2026-08-14-plan-de-trabajo-de-la-ep-001.md](2026-08-14-plan-de-trabajo-de-la-ep-001.md) — el plan de trabajo de la EP-001: bajar sus HU a fases.

@@ -118,7 +118,9 @@ Entonces la regla sigue mandando
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Criterios que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
+|---|---|---|---|---|---|
+| `A-EP-001-HU-002-capas-y-precedencia` | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-002-capas-y-precedencia/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-002-capas-y-precedencia/plan_pruebas.md) | [resultado_pruebas.md](A-EP-001-HU-002-capas-y-precedencia/resultado_pruebas.md) | Sin empezar |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
