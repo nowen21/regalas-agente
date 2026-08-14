@@ -19,7 +19,7 @@
 
 Tener reglas escritas no alcanza. Una regla dice qué se exige, pero no dice cómo se ve un documento que la cumple ni en qué orden se hacen las cosas. Sin eso, cada sesión inventa su propio formato y dos trabajos parecidos terminan documentados de forma distinta.
 
-Esta épica entrega dos cosas que van juntas. Los documentos modelo, que son esqueletos para copiar y llenar: el brief, la épica, la historia de usuario, el plan de trabajo, el plan de pruebas, la spec de un módulo. Y los procedimientos, que son instrucciones paso a paso que la IA sigue para producir cada uno de esos documentos y para pasar de un paso al siguiente.
+Esta épica entrega dos cosas que van juntas. Los documentos modelo, que son esqueletos para copiar y llenar: el brief, la épica, la historia de usuario, el plan de trabajo, el plan de pruebas, la especificación de un módulo. Y los procedimientos, que son instrucciones paso a paso que la IA sigue para producir cada uno de esos documentos y para pasar de un paso al siguiente.
 
 El resultado es que el trabajo deja de depender de cómo la IA se sienta ese día. Sigue un libreto.
 
@@ -58,7 +58,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 ### 5.1 Dentro del alcance
 
 - Documentos modelo para cada paso del trabajo, con los espacios por llenar marcados.
-- Procedimientos activables para la IA, uno por rol del trabajo: analizar, proponer alcance, escribir la spec, diseñar, planear, implementar, revisar, cerrar.
+- Procedimientos activables para la IA, uno por rol del trabajo: analizar, proponer alcance, escribir la especificación, diseñar, planear, implementar, revisar, cerrar.
 - Un procedimiento que dirija a los demás en orden y controle que no se salte un paso.
 - Los puntos donde una persona tiene que aprobar antes de seguir.
 
@@ -81,7 +81,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | 3 | Información | Cada modelo define qué secciones tiene el documento y qué va en cada una; cada procedimiento define los pasos, sus entradas y su salida |
 | 4 | Campos | Un modelo tiene espacios por llenar, marcados de forma que se note cuando quedaron vacíos. El detalle de cada marca baja a la historia de usuario |
 | 5 | Validaciones | Un documento entregado con espacios sin llenar no está terminado; un procedimiento no arranca sin la entrada que necesita |
-| 6 | Reglas de negocio | Sin spec acordada no hay código; sin plan aprobado no hay código; el alcance se acuerda antes de descomponer |
+| 6 | Reglas de negocio | Sin especificación acordada no hay código; sin plan aprobado no hay código; el alcance se acuerda antes de descomponer |
 | 7 | Estados y transiciones | Un documento está en borrador, en revisión o aprobado. Un paso del flujo está pendiente, en curso o cerrado |
 | 8 | Operaciones | Copiar un modelo, llenarlo, pedir aprobación, pasar al paso siguiente, devolverse a un paso anterior |
 | 9 | Restricciones | La IA no salta un paso ni aprueba en nombre de la persona |
@@ -128,14 +128,14 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Definir cómo se marca un espacio por llenar en un modelo | Must | S |
-| HU-002 | Crear los modelos del encargo: brief, épica, historia de usuario | Must | M |
-| HU-003 | Crear los modelos de la fase: plan de trabajo, plan de pruebas, cierre | Must | M |
-| HU-004 | Crear el modelo de la spec de un módulo | Must | M |
-| HU-005 | Crear los modelos de la capa de proyecto: stack, dominio, nombres propios | Must | M |
-| HU-006 | Escribir los procedimientos de cada rol del trabajo | Must | L |
-| HU-007 | Escribir el procedimiento que dirige a los demás y controla los cortes | Must | L |
-| HU-008 | Declarar los puntos donde aprueba una persona | Must | S |
+| [HU-001](HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md) | Definir cómo se marca un espacio por llenar en un modelo | Must | S |
+| [HU-002](HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) | Crear los modelos del encargo: brief, épica, historia de usuario | Must | M |
+| [HU-003](HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) | Crear los modelos de la fase: plan de trabajo, plan de pruebas, cierre | Must | M |
+| [HU-004](HU-004-modelo-de-la-especificacion/HU-004-modelo-de-la-especificacion.md) | Crear el modelo de la especificación de un módulo | Must | M |
+| [HU-005](HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md) | Crear los modelos de la capa de proyecto: stack, dominio, nombres propios | Must | M |
+| [HU-006](HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) | Escribir los procedimientos de cada rol del trabajo | Must | L |
+| [HU-007](HU-007-procedimiento-que-dirige/HU-007-procedimiento-que-dirige.md) | Escribir el procedimiento que dirige a los demás y controla los cortes | Must | L |
+| [HU-008](HU-008-puntos-de-aprobacion/HU-008-puntos-de-aprobacion.md) | Declarar los puntos donde aprueba una persona | Must | S |
 
 ## 10. Consideraciones técnicas
 
@@ -188,7 +188,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | Fase | Contenido | HU |
 |---|---|---|
 | Fase 1 | Marcas y modelos del encargo | HU-001, HU-002 |
-| Fase 2 | Modelos de fase, spec y capa de proyecto | HU-003, HU-004, HU-005 |
+| Fase 2 | Modelos de fase, especificación y capa de proyecto | HU-003, HU-004, HU-005 |
 | Fase 3 | Procedimientos por rol | HU-006 |
 | Fase 4 | Dirección del flujo y cortes de aprobación | HU-007, HU-008 |
 

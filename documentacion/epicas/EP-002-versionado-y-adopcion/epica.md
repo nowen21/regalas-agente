@@ -127,11 +127,11 @@ Un proyecto puede estar incumpliendo una regla que se agregó hace meses y nadie
 
 | ID | Título | Prioridad | Estimación |
 |---|---|---|---|
-| HU-001 | Fijar el número de versión y qué significa cada parte | Must | S |
-| HU-002 | Llevar el registro de qué cambió en cada versión | Must | S |
-| HU-003 | Declarar en el proyecto la versión adoptada y la fecha | Must | S |
-| HU-004 | Avisar al abrir sesión cuando el proyecto quedó atrás | Must | M |
-| HU-005 | Sellar el trabajo cerrado con su versión | Should | S |
+| [HU-001](HU-001-numero-de-version-y-que-significa/HU-001-numero-de-version-y-que-significa.md) | Fijar el número de versión y qué significa cada parte | Must | S |
+| [HU-002](HU-002-registro-de-cambios/HU-002-registro-de-cambios.md) | Llevar el registro de qué cambió en cada versión | Must | S |
+| [HU-003](HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) | Declarar en el proyecto la versión adoptada y la fecha | Must | S |
+| [HU-004](HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md) | Avisar al abrir sesión cuando el proyecto quedó atrás | Must | M |
+| [HU-005](HU-005-sellar-el-trabajo-cerrado/HU-005-sellar-el-trabajo-cerrado.md) | Sellar el trabajo cerrado con su versión | Should | S |
 
 ## 10. Consideraciones técnicas
 
