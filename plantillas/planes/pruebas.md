@@ -95,13 +95,13 @@
 | Media | Funcionalidad secundaria | ≥ 80% |
 | Baja | Casos poco frecuentes | Según tiempo |
 
-### 3.5 Alcance de la corrida automatizada  ·  `02·F5`
+### 3.5 Alcance de la corrida automatizada  ·  [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
 La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 1. La **suite del módulo** nuevo/refactorizado (obligatoria).
 2. Las suites que la fase **refactorizó explícitamente** (declaradas en el `plan_trabajo`).
-3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · `F17`).
+3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
 
 **NO** correr por defecto la suite entera del proyecto ni módulos ajenos a la matriz. Una **regresión total** se declara aparte y explícita (ej. pre-release), no como parte del flujo normal de fase.
 
@@ -214,7 +214,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 | DS-01 | «Usuarios y roles de prueba» | Script `seed.sql` | N/A |
 | DS-02 | «Registros de negocio» | Copia de producción | Requerida |
 
-> **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción (`00·N4` · `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
+> **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción ([`00·N4`](../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) · `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
 
 ### 7.3 Usuarios de prueba
 
@@ -224,7 +224,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 | `qa.operador` | Operador | Limitados | Verificar restricciones |
 | `qa.consulta` | Consulta | Solo lectura | Pruebas negativas de autorización |
 
-### 7.4 Qué NO reproduce el entorno de pruebas  ·  `08·T4`
+### 7.4 Qué NO reproduce el entorno de pruebas  ·  [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
 
 Lo que el entorno automático **no** cubre y exige **verificación manual documentada** (para no dar por probado lo que no se probó):
 

@@ -127,6 +127,16 @@ La lista no vive en el código: está en [`plantillas/stack-instalacion.md`](../
 
 A mano: `python validadores/validar.py checklist --raiz "<proyecto>"`.
 
+**4.b Claude Code — `SessionStart` y `UserPromptSubmit`.** [`hook_resumen.py`](hook_resumen.py) sostiene el resumen de la sesión, lo que la sesión **deja** ([`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md)). La lógica vive en [`resumen.py`](resumen.py), que se puede probar sin simular un enganche.
+
+Hace tres cosas y ninguna más:
+
+- **Crea** el archivo al abrir la sesión, con el modelo puesto y sin hallazgos. Los del ejemplo del modelo no se copian: un hallazgo escrito por el programa se contaría como trabajo hecho.
+- **Avisa qué falta**, una vez por cada cosa y máximo dos veces: que no haya ningún hallazgo, y que nadie haya dicho si la sesión se puede cerrar. La marca del aviso queda dentro del propio resumen, así que no se repite.
+- **Muestra lo que sigue abierto del propósito** que la sesión declara en su «viene de». Solo el del propósito: una sesión abierta para un tema no tiene por qué ver los hallazgos de otro, y ese ruido es lo que hace que los avisos se dejen de leer.
+
+Lo que no hace: escribir hallazgos ni interpretarlos. Reconocer uno es criterio. Y el resumen se mueve junto con la transcripción cuando la sesión se nombra, porque los dos se llaman igual: de eso se encarga `renombrar()` en [`historico.py`](historico.py).
+
 **5. Claude Code — `SessionStart` y `PostToolUse` sobre `Write|Edit`.** [`hook_recuerdos.py`](hook_recuerdos.py) mueve la memoria del agente a `historico-chat/memory/` del proyecto (`01·C19`). Claude Code la guarda en una carpeta suya, fuera del repositorio, donde no se ve en `git`, no se puede revisar y no viaja a otra máquina.
 
 Es el otro que **escribe**, por el mismo motivo que el histórico: dónde guarda su memoria lo decide la herramienta, no el agente; pedírselo por escrito no lo cambia.

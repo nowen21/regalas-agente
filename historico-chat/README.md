@@ -86,3 +86,5 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-14-molde-para-pedir-en-la-sesion.md](2026-08-14-molde-para-pedir-en-la-sesion.md) — analisis del prompt base del usuario: el molde obligatorio con que se le pide trabajo al agente.
 - [2026-08-14-indice-tematico-del-historico.md](2026-08-14-indice-tematico-del-historico.md) — cargar el histórico al iniciar ya lo hace un hook; nace la idea de un índice por temáticas y qué manda entre el brief y el histórico.
 - [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche. · [resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md)
+
+<!-- huella: 2a3060c58acb · estandar 15.0.0 -->

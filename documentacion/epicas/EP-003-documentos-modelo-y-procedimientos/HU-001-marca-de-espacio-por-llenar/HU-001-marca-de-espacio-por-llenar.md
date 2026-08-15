@@ -203,4 +203,4 @@ Una sola fase para los tres criterios: los tres se apoyan en la misma decisión 
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase A con sus dos planes. Verificado que la marca `«…»` ya se usa de hecho en 25 de las 30 plantillas, sin regla que la respalde |
-| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nacen `13·DOC19`, `DOC20` y `DOC21`, y 179 huecos pasan a la marca acordada. Los tres CA en verde |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nacen `13·DOC19`, [`DOC20`](../../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) y [`DOC21`](../../../../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md), y 179 huecos pasan a la marca acordada. Los tres CA en verde |

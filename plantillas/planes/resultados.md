@@ -40,9 +40,35 @@
 >
 > Ningún caso se marca aprobado sin evidencia.
 
-| Caso | CA | Prioridad (del plan) | Fecha | Resultado | Evidencia | Defecto |
-|---|---|---|---|---|---|---|
-| CP-001 | CA-01 | Crítica | AAAA-MM-DD | Aprobado / Fallido / Bloqueado / No ejecutado | EV-01 | — |
+| Caso | CA | Prioridad (del plan) | Fecha | Con qué se probó | Resultado | Evidencia | Defecto |
+|---|---|---|---|---|---|---|---|
+| CP-001 | CA-01 | Crítica | AAAA-MM-DD | «el dato, el archivo o el comando concretos» | Aprobado / Fallido / Bloqueado / No ejecutado | EV-01 | — |
+
+**«Con qué se probó» lleva lo que se hizo y lo que salió, no un puntero.** El plan dice qué **tipo** de dato usar; este documento dice **qué se ejecutó exactamente y qué se obtuvo**. Sin eso, "aprobado" es una afirmación sin respaldo: nadie puede repetir la prueba ni ver por qué el caso quedó en cumple.
+
+```
+INCORRECTO: | CP-002 | CA-02 | Crítica | 2026-01-05 | un usuario sin permiso | Aprobado | EV-02 | — |
+            — no dice qué usuario, sobre qué, ni qué pasó
+INCORRECTO: | CP-002 | CA-02 | Crítica | 2026-01-05 | ver la suite | Aprobado | EV-02 | — |
+            — manda a buscarlo a otra parte
+CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POST /facturas/42/anular`
+            y recibió 403; la factura siguió en estado `emitida` | Aprobado | EV-02 | — |
+```
+
+**Cuando lo que se hizo no cabe en la celda**, la fila queda con lo esencial y debajo va un bloque `**Detalle de CP-00N**`: **un renglón por paso, en palabras sencillas**, diciendo qué se hizo y qué salió. Y al final, **por qué eso lo deja en cumple**.
+
+**Lo que hace que un caso cumpla** es que lo que salió sea lo que el `plan_pruebas` dijo que iba a salir. El resultado esperado se fijó antes de correr nada; acá solo se compara.
+
+```
+**Detalle de CP-002**
+
+1. Un usuario sin permiso pidió anular la factura 42: se le denegó, sin decirle si la factura existe.
+2. Se consultó la factura: sigue emitida, no cambió nada.
+
+**Cumple** porque los dos pasos dieron lo que el plan esperaba: deniega y no toca el estado.
+```
+
+Si un paso sale distinto de lo esperado, se dice cuál y qué pasó, debajo del bloque. Un paso que no coincide y nadie explica convierte el "cumple" en una afirmación sin respaldo.
 
 **Correspondencia con el plan:** «N casos en el plan, N acá. Ninguno de más, ninguno de menos». Si no cuadra, decir cuáles bailan y por qué.
 
@@ -50,7 +76,7 @@
 
 ---
 
-## 3. Verificaciones manuales  ·  `08·T4`
+## 3. Verificaciones manuales  ·  [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
 
 > Lo que el entorno automático **no** reproduce y hubo que comprobar a mano. Se listan aunque hayan salido bien: lo que no está acá se lee como no probado.
 

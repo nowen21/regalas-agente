@@ -27,7 +27,7 @@ El entregable es un modelo de documento. La prueba no es una suite: es **usar el
 
 **Tipos que aplican:** funcional (los tres CA) y usabilidad (brevedad y autonomía). No aplican seguridad, rendimiento, migración de datos ni recuperación.
 
-**Alcance de la corrida automatizada (`02·F5`):** solo `python validadores/validar.py estandar`.
+**Alcance de la corrida automatizada ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)):** solo `python validadores/validar.py estandar`.
 
 ---
 
@@ -162,7 +162,7 @@ El entregable es un modelo de documento. La prueba no es una suite: es **usar el
 |---|---|---|
 | 1 | Listar los campos de cada hallazgo en los dos resúmenes | La misma lista en los dos |
 | 2 | Compararla con la del modelo | No falta ninguno ni sobra ninguno |
-| 3 | Buscar campos con la marca `«…»` sin reemplazar | Ninguno (`13·DOC20`) |
+| 3 | Buscar campos con la marca `«…»` sin reemplazar | Ninguno ([`13·DOC20`](../../../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md)) |
 
 ---
 

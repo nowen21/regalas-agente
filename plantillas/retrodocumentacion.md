@@ -1,6 +1,6 @@
 # Retro-documentar un módulo sin especificación — el procedimiento
 
-> **Cuándo.** Un módulo ya en producción que nunca tuvo especificación, o cuya especificación quedó más vieja que el código. Lo exige la regla `DOC6` del capítulo 13 · Documentación.
+> **Cuándo.** Un módulo ya en producción que nunca tuvo especificación, o cuya especificación quedó más vieja que el código. Lo exige la regla [`13·DOC6`](../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) del capítulo 13 · Documentación.
 >
 > **Qué es.** Una unidad de trabajo formal, con sus entregables, no un comentario apurado antes de tocar el código.
 
@@ -18,7 +18,7 @@
 
 **5 · Listar los huecos.** Lo que el código hace y no debería —deuda—, y lo que debería hacer y no hace. Van numerados, para poder citarlos después desde una fase.
 
-**6 · Registrar el módulo.** En el catálogo de módulos del proyecto (`DOC13`), con un puntero a la especificación recién creada.
+**6 · Registrar el módulo.** En el catálogo de módulos del proyecto ([`13·DOC13`](../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)), con un puntero a la especificación recién creada.
 
 ---
 
@@ -26,4 +26,4 @@
 
 En el primer audit profundo del módulo —una fase dedicada— cuando la especificación se completa según la plantilla canónica. Hasta entonces, quien la lea tiene que saber que es una reconstrucción, no un acuerdo.
 
-Las preguntas del paso 4, cuando el usuario las responda, se cierran con la tabla de decisiones que pide `DOC8` — no en el chat.
+Las preguntas del paso 4, cuando el usuario las responda, se cierran con la tabla de decisiones que pide [`13·DOC8`](../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) — no en el chat.

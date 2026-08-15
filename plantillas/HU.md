@@ -116,13 +116,13 @@ Entonces «resultado esperado»
 - [ ] **Validación** — toda entrada obligatoria se valida; un dato inválido se rechaza con mensaje claro y **el estado no cambia** (`04`, `03`).
 - [ ] **Límites** — vacío, nulo, mínimo, máximo y duplicado tienen comportamiento definido (`08`).
 - [ ] **Autorización** — solo quien tiene permiso ejecuta la acción; sin permiso se deniega **sin filtrar datos ni su existencia**, y no se elude cambiando parámetros/ruta (`04`).
-- [ ] **Errores** — un fallo previsto da mensaje accionable **sin exponer detalles internos**; el sistema queda consistente, sin datos a medias (`05`, `00·N3`).
+- [ ] **Errores** — un fallo previsto da mensaje accionable **sin exponer detalles internos**; el sistema queda consistente, sin datos a medias (`05`, [`00·N3`](../base/00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)).
 - [ ] **Atomicidad** — las operaciones que escriben son todo-o-nada (`03`).
-- [ ] **Idempotencia** — reintentar o doble-enviar **no duplica** efectos (`03·D6`).
-- [ ] **Privacidad** — datos personales/sensibles no se exponen ni se registran en claro; se tratan según `marco-normativo` (`12`, `00·N4`).
+- [ ] **Idempotencia** — reintentar o doble-enviar **no duplica** efectos ([`03·D6`](../base/03-datos.md#d6--concurrencia-e-idempotencia)).
+- [ ] **Privacidad** — datos personales/sensibles no se exponen ni se registran en claro; se tratan según `marco-normativo` (`12`, [`00·N4`](../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
 - [ ] **Auditoría** — las acciones relevantes quedan registradas (quién, qué, cuándo) (`05`, `15`).
 - [ ] **Rendimiento** — responde dentro del umbral acordado con un **volumen realista** (`06`).
-- [ ] **No regresión** — lo existente sigue funcionando; la suite relacionada queda verde (`08`, `02·F5`).
+- [ ] **No regresión** — lo existente sigue funcionando; la suite relacionada queda verde (`08`, [`02·F5`](../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)).
 
 ---
 

@@ -290,10 +290,47 @@ def renombrar(archivo, tema, resumen=""):
     nuevo = _libre(carpeta, f"{_fecha_de(viejo)}-{_slug(tema)}.md", viejo)
 
     _titular(archivo, _fecha_de(viejo), tema)
+    _mover_resumen(carpeta, viejo, nuevo)
     if nuevo != viejo:
         os.rename(archivo, os.path.join(carpeta, nuevo))
     _reindexar(carpeta, viejo, nuevo, resumen)
     return os.path.join(carpeta, nuevo)
+
+
+def _mover_resumen(carpeta, viejo, nuevo):
+    """Le pone el nombre nuevo al resumen de esa sesión, si ya existe.
+
+    Va **antes** de mover la transcripción y de tocar el índice: si algo falla,
+    lo que queda mal es el resumen, que se puede volver a mover, y no el índice,
+    que es por donde la próxima sesión llega a esta.
+
+    El resumen se llama igual que la transcripción sin la fecha, así que los dos
+    nombres tienen que moverse juntos: renombrar solo uno deja el enlace del
+    índice apuntando a un archivo que no está.
+    """
+    fecha = _fecha_de(viejo)
+    dia = os.path.join(carpeta, RESUMENES, fecha)
+    origen = os.path.join(dia, os.path.basename(viejo)[len(fecha) + 1:])
+    destino = os.path.join(dia, os.path.basename(nuevo)[len(fecha) + 1:])
+    if origen == destino or not os.path.isfile(origen) or os.path.exists(destino):
+        return
+    try:
+        os.rename(origen, destino)
+    except OSError:
+        return                          # no poder moverlo no detiene el renombrado
+    _reindexar_dia(dia, os.path.basename(origen), os.path.basename(destino))
+
+
+def _reindexar_dia(dia, viejo, nuevo):
+    """Deja la línea del índice del día apuntando al nombre nuevo."""
+    ruta = os.path.join(dia, INDICE)
+    if not os.path.isfile(ruta):
+        return
+    texto = _leer(ruta)
+    if f"({viejo})" not in texto:
+        return
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+        f.write(texto.replace(f"[{viejo}]({viejo})", f"[{nuevo}]({nuevo})"))
 
 
 def _marcar(ruta):

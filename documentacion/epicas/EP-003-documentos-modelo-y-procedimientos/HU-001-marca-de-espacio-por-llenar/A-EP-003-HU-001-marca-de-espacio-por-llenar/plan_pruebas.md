@@ -34,7 +34,7 @@ Lo que se entrega es texto: una regla y unas plantillas. No hay código que ejec
 
 **Tipos que aplican:** funcional (los tres CA) y usabilidad (que la marca no estorbe la lectura). No aplican seguridad, rendimiento, migración de datos ni recuperación: no hay datos ni servicio.
 
-**Alcance de la corrida automatizada (`02·F5`):** solo `python validadores/validar.py estandar`. No se corre la suite entera "por si acaso".
+**Alcance de la corrida automatizada ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)):** solo `python validadores/validar.py estandar`. No se corre la suite entera "por si acaso".
 
 ---
 

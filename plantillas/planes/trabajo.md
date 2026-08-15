@@ -2,31 +2,31 @@
 
 **Para qué sirve este documento.** Dice **qué se va a hacer en esta fase, en qué orden, sobre qué archivos y cómo se comprueba** cada criterio de aceptación antes de darlo por cumplido. Se escribe **antes** de tocar nada y se aprueba antes de empezar: quien lo aprueba está aceptando el alcance y el costo. El requisito vive en la HU; el detalle de las pruebas, en el `plan_pruebas` de esta misma fase; lo que quedó hecho, en el `funcionalidad_implementada.md` del cierre.
 
-> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de `02·F14`** sobre una **línea base verificada** (`02·F16` · `02·F17`). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** (`F4`). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja. **La línea de arriba, la de para qué sirve, se queda** — es lo que le dice a quien abre el documento dentro de un año qué está leyendo.
+> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)** sobre una **línea base verificada** ([`02·F16`](../../base/02-flujo-de-trabajo/reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) · [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja. **La línea de arriba, la de para qué sirve, se queda** — es lo que le dice a quien abre el documento dentro de un año qué está leyendo.
 >
 > **Unidad = fase.** Una fase pertenece a **una sola HU** (`02·F12.1`); declara qué CA de esa HU satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
 
 ---
 
-## 0. Identificación y origen  ·  `F14` Q1–Q2 · `DOC12`
+## 0. Identificación y origen  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q1–Q2 · [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
 
 | Campo | Valor |
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Épica** | `EP«01»` |
 | **HU** | `HU«03»` — **una sola** (`F12.1`) |
-| **Módulo** | «M» (`13·DOC13`) |
-| **Especificación del módulo** | «enlace a la especificación · `02·F2`» |
+| **Módulo** | «M» ([`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)) |
+| **Especificación del módulo** | «enlace a la especificación · [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)» |
 | **Fecha apertura** | AAAA-MM-DD |
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
 
-**ORIGEN** (1 de 3, o híbrido · `DOC12`):
-- 📝 **Modifica fase(s):** «cuáles y qué gap/promesa retoma» · ref. cierre de análisis (`DOC8`) si aplica.
+**ORIGEN** (1 de 3, o híbrido · [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)):
+- 📝 **Modifica fase(s):** «cuáles y qué gap/promesa retoma» · ref. cierre de análisis ([`13·DOC8`](../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)) si aplica.
 - ✨ **Funcionalidad nueva:** «qué introduce que no estaba en el roadmap».
 - 🔀 **Híbrido:** ambos.
 
-**CA de la HU que cubre esta fase** (una sola HU · `02·F12.1` · trazabilidad `DOC11`):
+**CA de la HU que cubre esta fase** (una sola HU · `02·F12.1` · trazabilidad [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)):
 
 | CA de `HU«03»` que cierra esta fase | Estado |
 |---|---|
@@ -35,7 +35,7 @@
 
 ---
 
-## 1. Objetivo y alcance  ·  `F14` Q4
+## 1. Objetivo y alcance  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q4
 
 **Objetivo:** ejecutar y verificar los CA declarados en §0 hasta dejarlos cumplidos con evidencia (§5).
 
@@ -53,17 +53,17 @@
 
 ---
 
-## 2. Análisis previo — línea base verificada  ·  `F17`
+## 2. Análisis previo — línea base verificada  ·  [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)
 
 > Todo lo de esta sección se **verifica contra el proyecto real** antes de escribir el plan. **Prohibido** `(o donde esté)`, `(o similar)`, `TBD`, `?`. Si algo no se puede verificar, va como duda abierta (§2.7), no como suposición.
 
-### 2.1 Archivos que se crean o modifican  ·  `F14` Q9
+### 2.1 Archivos que se crean o modifican  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q9
 
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|
 | `«ruta/exacta»` | Nuevo / Modificar | BD / Modelo / Servicio / Endpoint / UI / Test | |
 
-### 2.2 Matriz de dependencias del refactor  ·  `F17` (obligatoria si se cambian contratos de código existente)
+### 2.2 Matriz de dependencias del refactor  ·  [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) (obligatoria si se cambian contratos de código existente)
 
 > Por cada archivo que cambia un contrato, TODOS los que dependen de él y rompen. El §2.1 es la unión de {archivos a tocar} ∪ {dependientes directos que rompen}. Lo que no se refactoriza en esta fase se difiere explícito en §1 (fuera de alcance).
 
@@ -71,7 +71,7 @@
 |---|---|---|---|
 | `«archivo A»` | «elimina columna X · renombra método Y · cambia cardinalidad» | `«B» · «C»` | `B: lee X` · `C: carga relación Y` |
 
-### 2.3 Rutas / endpoints y control de acceso  ·  `F14` Q6
+### 2.3 Rutas / endpoints y control de acceso  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q6
 
 | Método + ruta | Autenticación | Permiso | Alcance |
 |---|---|---|---|
@@ -86,11 +86,11 @@ Response 200: { }
 Errores:  400 | 401 | 403 | 404 | 422
 ```
 
-### 2.4 Punto de entrada en la UI  ·  `F14` Q7
+### 2.4 Punto de entrada en la UI  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q7
 
 - **Dónde queda accesible al usuario final:** «menú / navegación / dashboard / link desde otra vista, con el archivo de navegación real». Si la fase no introduce UI navegable, declararlo: "No aplica porque …".
 
-### 2.5 Permisos / roles a sembrar  ·  `F14` Q8
+### 2.5 Permisos / roles a sembrar  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q8
 
 - «Permisos o roles nuevos, con la nomenclatura del proyecto. "Ninguno" si no aplica.»
 
@@ -100,7 +100,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 |---|---|---|
 | | | |
 
-> Las decisiones no obvias se registran también como señal (`13·DOC5`).
+> Las decisiones no obvias se registran también como señal ([`13·DOC5`](../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)).
 
 ### 2.7 Dudas por resolver antes de codificar
 
@@ -157,11 +157,11 @@ Errores:  400 | 401 | 403 | 404 | 422
 **Ruta crítica:** T-01 → T-02 → T-03 → T-04 → T-06 → T-07
 **Paralelizables:** «tareas independientes que pueden avanzar en simultáneo».
 
-> Solo se tocan los archivos declarados en §2.1 (`F8`). Descubrir uno nuevo → PAUSAR, reportar, ampliar el plan con OK, no editar por iniciativa.
+> Solo se tocan los archivos declarados en §2.1 ([`02·F8`](../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). Descubrir uno nuevo → PAUSAR, reportar, ampliar el plan con OK, no editar por iniciativa.
 
 ---
 
-## 5. Verificación de criterios de aceptación  ·  `F14` Q10
+## 5. Verificación de criterios de aceptación  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q10
 
 > Un CA no se marca cumplido sin evidencia. La fase no cierra con algún CA en rojo. El detalle de casos vive en el `plan_pruebas`.
 
@@ -184,7 +184,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 | Elemento | Detalle |
 |---|---|
-| Ambiente | «dónde corren las pruebas — nunca datos reales, `00·N4`/`08·T4`» |
+| Ambiente | «dónde corren las pruebas — nunca datos reales, [`00·N4`](../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)/[`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)» |
 | Usuarios de prueba | «rol + credencial de prueba, sin claves reales» |
 | Datos precargados | «script / dataset» |
 
@@ -192,13 +192,13 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ---
 
-## 7. Reversión / rollback  ·  `F14` Q11
+## 7. Reversión / rollback  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q11
 
 Plan B concreto si algo sale mal: «reversión de commit · rollback de esquema (`down()`) · backfill inverso · feature flag · script de emergencia». Cada cambio destructivo declara cómo se revierte.
 
 ---
 
-## 8. Producción y migración incremental  ·  `F14` Q12 · `F10`
+## 8. Producción y migración incremental  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q12 · [`02·F10`](../../base/02-flujo-de-trabajo/reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md)
 
 Asumir **"probablemente está en producción"**. Estrategia según el tipo de cambio:
 - **Aditivo** (columna/tabla nueva): migración nueva, backfill si aplica.
@@ -208,10 +208,10 @@ Asumir **"probablemente está en producción"**. Estrategia según el tipo de ca
 
 ---
 
-## 9. Reglas del estándar y del proyecto aplicadas  ·  `F14` Q13
+## 9. Reglas del estándar y del proyecto aplicadas  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q13
 
 Trazabilidad de decisiones — reglas por su identificador:
-- Base: «ej. `02·F8`, `04·S…`, `08·T4`, `13·DOC11`».
+- Base: «ej. [`02·F8`](../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), `04·S…`, [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar), [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)».
 - Proyecto: «ej. `P<N>` de `.agente/reglas-proyecto.md`».
 
 ---
@@ -228,12 +228,12 @@ Trazabilidad de decisiones — reglas por su identificador:
 
 - [ ] Todos los CA de §0 verificados con evidencia (§5)
 - [ ] Requisitos no funcionales validados
-- [ ] Pruebas de la fase en verde (alcance quirúrgico · `F5`)
-- [ ] Trazabilidad especificación → implementación sin faltantes (`DOC11`)
+- [ ] Pruebas de la fase en verde (alcance quirúrgico · [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md))
+- [ ] Trazabilidad especificación → implementación sin faltantes ([`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md))
 - [ ] Sin errores de linter / análisis estático (`07`)
 - [ ] Documentación e índices/mapas del proyecto actualizados (`13`)
-- [ ] Señales registradas (`DOC5`)
-- [ ] Rama lista para el commit único de la fase (`G1`)
+- [ ] Señales registradas ([`13·DOC5`](../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md))
+- [ ] Rama lista para el commit único de la fase ([`09·G1`](../../base/09-git.md#g1--commits-atómicos-un-solo-propósito))
 - *(opcional)* Aceptada por el Product Owner / usuario
 
 ---

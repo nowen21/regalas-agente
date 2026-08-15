@@ -25,22 +25,26 @@
 
 ## 2. Casos ejecutados
 
-| Caso | Exigencia | Veredicto | Evidencia |
-|---|---|---|---|
-| [CP-001](plan_pruebas.md#cp-001--el-resumen-y-la-transcripción-responden-preguntas-distintas) | [CA-01](../HU-009-modelo-del-resumen-de-sesion.md#ca-01--el-modelo-existe-y-se-distingue-de-la-transcripción) | Cumple | La tabla "cuál de los dos abrir" del índice de resúmenes |
-| [CP-002](plan_pruebas.md#cp-002--un-hallazgo-abierto-se-retoma-sin-preguntarle-a-nadie) | [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue) · [RNF-02](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | Cumple | Los 16 hallazgos abiertos y cerrados, con su pregunta viva |
-| [CP-003](plan_pruebas.md#cp-003--un-hallazgo-que-se-arrastra-se-puede-seguir) | [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue) | Cumple | El H-4 del 2026-08-14, seguido en las dos direcciones |
-| [CP-004](plan_pruebas.md#cp-004--la-sección-de-cierre-dice-qué-falta) | [CA-03](../HU-009-modelo-del-resumen-de-sesion.md#ca-03--el-resumen-dice-si-la-sesión-se-puede-cerrar) | Cumple | Las secciones de cierre de los dos resúmenes |
-| [CP-005](plan_pruebas.md#cp-005--el-resumen-se-lee-de-una-vez) | [RNF-01](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | Cumple | 2.426 y 1.733 palabras |
-| [CP-006](plan_pruebas.md#cp-006--los-dos-resúmenes-traen-los-mismos-campos) | [RNF-03](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | Cumple | Los 12 campos, idénticos en los dos |
+| Caso | Exigencia | Con qué se probó | Veredicto | Evidencia |
+|---|---|---|---|---|
+| [CP-001](plan_pruebas.md#cp-001--el-resumen-y-la-transcripción-responden-preguntas-distintas) | [CA-01](../HU-009-modelo-del-resumen-de-sesion.md#ca-01--el-modelo-existe-y-se-distingue-de-la-transcripción) | El resumen `hu-de-la-comprobacion-automatica.md` contra su transcripción de 1.400 líneas | Cumple | La tabla "cuál de los dos abrir" del índice de resúmenes |
+| [CP-002](plan_pruebas.md#cp-002--un-hallazgo-abierto-se-retoma-sin-preguntarle-a-nadie) | [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue) · [RNF-02](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | Los 9 hallazgos abiertos de los dos resúmenes, leídos sin abrir sus transcripciones | Cumple | Cada uno con su pregunta viva |
+| [CP-003](plan_pruebas.md#cp-003--un-hallazgo-que-se-arrastra-se-puede-seguir) | [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue) | El `H-4` del 2026-08-14, que nació en `hu-de-la-comprobacion-automatica` y lo trabajó `h4-cerrar-…` | Cumple | Seguido en las dos direcciones, sin copias |
+| [CP-004](plan_pruebas.md#cp-004--la-sección-de-cierre-dice-qué-falta) | [CA-03](../HU-009-modelo-del-resumen-de-sesion.md#ca-03--el-resumen-dice-si-la-sesión-se-puede-cerrar) | Las secciones de cierre de los dos resúmenes del 2026-08-14 | Cumple | Las dos dicen qué falta, casilla por casilla |
+| [CP-005](plan_pruebas.md#cp-005--el-resumen-se-lee-de-una-vez) | [RNF-01](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | El resumen más largo: 198 líneas y 2.426 palabras, con 9 hallazgos | Cumple | Se lee de corrido, unos 10 minutos |
+| [CP-006](plan_pruebas.md#cp-006--los-dos-resúmenes-traen-los-mismos-campos) | [RNF-03](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | Los dos resúmenes del 2026-08-14, campo por campo, contra `plantillas/sesion.md` | Cumple | Los 12 campos, idénticos en los dos |
 
 **Detalle de CP-001.** El resumen responde qué quedó abierto y por dónde se sigue; la transcripción responde qué se dijo y en qué orden. Se comprobó buscando en el resumen una frase textual del usuario: no está, y no tiene por qué estar. Ninguno de los dos resúmenes copia diálogo.
 
+**Detalle de CP-002.** Se tomaron los 9 hallazgos abiertos de los dos resúmenes y se leyeron sin abrir sus transcripciones. En los 9 se entendió qué falta y por dónde arrancar; todos nombran las historias que disparan, y esas historias existen o están declaradas como faltantes; y todos traen una pregunta concreta en «con qué se retoma», no un "seguir con el tema".
+
 **Detalle de CP-003.** El H-4 nació el 2026-08-14 en la sesión `hu-de-la-comprobacion-automatica` y lo trabajó `h4-cerrar-h-4-…`. Desde el resumen que lo trabajó, su «viene de» nombra el original con fecha, tema y número; desde el original, su «nace en» sigue siendo la sesión donde apareció. No hay dos copias del hallazgo: lo que se decidió se escribió en un solo sitio.
+
+**Detalle de CP-004.** Se abrió la sección de cierre de los dos resúmenes. El de esta sesión decía "todavía no" con tres casillas sin marcar, y cada una nombra el trabajo concreto que la marcaría: el pendiente de H-1, la historia que dispara, y el commit. El otro, lo mismo con cuatro.
 
 **Detalle de CP-005.** El resumen más largo tiene 198 líneas y 2.426 palabras, con 9 hallazgos: unos 10 minutos de lectura contra las 1.400 líneas de su transcripción. Se lee de una vez.
 
-**Detalle de CP-006.** Los dos resúmenes usan exactamente los mismos 12 campos por hallazgo, sin faltar ni sobrar ninguno. Las dos apariciones de `«…»` que encontró el paso 3 están dentro de comillas de código, citando la marca como tema del hallazgo; no son huecos sin llenar (`13·DOC19`).
+**Detalle de CP-006.** Los dos resúmenes usan exactamente los mismos 12 campos por hallazgo, sin faltar ni sobrar ninguno. Las dos apariciones de `«…»` que encontró el paso 3 están dentro de comillas de código, citando la marca como tema del hallazgo; no son huecos sin llenar ([`13·DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md)).
 
 ---
 

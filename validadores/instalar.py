@@ -197,6 +197,10 @@ HOOKS_CLAUDE = [
      "Recogiendo la memoria del agente...", ""),
     ("PostToolUse", "Write|Edit", "hook_recuerdos.py",
      "Recogiendo la memoria del agente...", ""),
+    ("SessionStart", None, "hook_resumen.py",
+     "Preparando el resumen de la sesión...", "--modo inicio"),
+    ("UserPromptSubmit", None, "hook_resumen.py",
+     "Revisando el resumen de la sesión...", "--modo aviso"),
 ]
 
 

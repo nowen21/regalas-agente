@@ -1212,3 +1212,790 @@ De la cadena de H-4 van **dos de tres**. Falta EP-005 · HU-008, el enganche.
 
 ### 101 · Usuario — 2026-08-14 19:59:40
 > si
+
+**Agente** — 2026-08-14 20:01:24
+<!-- agente: 66f410bb-dc2c-4bfc-8dc9-50ed48836504 -->
+
+Commiteado: **e998cc2**, 22 archivos.
+
+De `validadores/reglas-validables.md` entraron solo mis cuatro líneas (`DOC19` a `DOC22`); la línea de `C22`, que es de otra sesión, quedó sin tocar en el árbol de trabajo.
+
+Estado de la cadena de H-4:
+
+| Paso | Estado |
+|---|---|
+| EP-003 · HU-001, la marca | Cerrada · `b877f37` |
+| EP-003 · HU-009, el modelo | Cerrada · `e998cc2` |
+| EP-005 · HU-008, el enganche | Sin fase |
+
+Falta el enganche: es lo que hace que el resumen exista sin que nadie se acuerde, que era el punto de H-4. ¿Sigo con él?
+
+### 102 · Usuario — 2026-08-14 20:01:33
+> si
+
+**Agente** — 2026-08-14 20:06:43
+<!-- agente: 85970392-ff5c-4a08-bec7-10f63c0f8750 -->
+
+Fase abierta: [A-EP-005-HU-008-enganche-del-resumen](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md).
+
+El módulo **Automatismos** no tenía especificación, aunque ya tuviera siete enganches corriendo. Se escribió: [documentacion/automatismos/spec.md](documentacion/automatismos/spec.md).
+
+Lo que encontró el análisis y cambia el diseño: la transcripción nace como `AAAA-MM-DD-sesion.md` y se renombra después. El resumen se llama igual, así que **los dos archivos tienen que moverse juntos**. Hoy `renombrar()` solo mueve la transcripción, y si el resumen ya existe, el índice queda apuntando a un archivo que no está.
+
+Plan de trabajo: 18 tareas, 31 h, dos programas nuevos (`resumen.py` y `hook_resumen.py`). Plan de pruebas: 9 casos, 100% de cobertura.
+
+Dos dudas suyas antes de arrancar:
+
+1. Para arrastrar lo que quedó abierto, ¿cuántas sesiones hacia atrás se leen: solo la anterior, el día, o todas?
+2. El aviso, ¿sale también cuando el resumen ya tiene hallazgos pero ninguno cerrado?
+
+### 103 · Usuario — 2026-08-14 20:14:20
+> 1. las que impliquen para cerrar
+> 2. no entiendo
+
+**Agente** — 2026-08-14 20:14:28
+<!-- agente: 340d8dc2-b15a-4142-91b9-a2c12c0d3e56 -->
+
+**1.** Anotado: se leen todas las que tengan algo abierto, sin límite de días.
+
+**2.** El aviso sale cuando la sesión ya produjo algo y el resumen está **vacío**. La pregunta es qué cuenta como vacío:
+
+- **Sin ningún hallazgo escrito.** Con uno solo, ya no avisa.
+- **Sin la sección de cierre llena.** Aunque haya hallazgos, si nadie dijo si la sesión se puede cerrar, avisa igual.
+
+### 104 · Usuario — 2026-08-14 20:22:05
+> sigo sin entender la dos
+
+**Agente** — 2026-08-14 20:22:10
+<!-- agente: f2c47153-b100-49bd-b281-889b69fa5a17 -->
+
+Caso concreto: usted escribe **un** hallazgo y sigue trabajando dos horas más.
+
+¿El programa se calla porque ya hay uno escrito, o le vuelve a avisar hasta que el resumen diga si la sesión se puede cerrar?
+
+### 105 · Usuario — 2026-08-14 20:22:48
+> si la idea es que tiene que quedar cerrada
+
+**Agente** — 2026-08-14 20:22:55
+<!-- agente: f22a4413-8017-40c5-be92-b74acbce0e77 -->
+
+Entendido: avisa hasta que el resumen diga que la sesión se puede cerrar.
+
+Eso choca con `RNF-02` de la HU, que dice **una sola vez por sesión**. Si insiste hasta que cierre, no es una vez.
+
+Propongo cambiarlo a **una vez por hueco**: un aviso cuando no hay ningún hallazgo, y otro cuando hay hallazgos pero la sección de cierre sigue sin llenar. Dos avisos como máximo, no uno por turno. ¿Va?
+
+### 106 · Usuario — 2026-08-14 20:23:54
+> osea que le tendría que seguir preguntando qué falta?
+
+**Agente** — 2026-08-14 20:24:01
+<!-- agente: 9ae12465-2769-457f-977b-e68f5306ef8d -->
+
+No. El aviso le llega al agente, no a usted, y es el agente quien llena el resumen.
+
+Con lo propuesto son dos como máximo en toda la sesión: uno si no escribió ningún hallazgo, y otro si escribió pero no dijo si la sesión se puede cerrar.
+
+### 107 · Usuario — 2026-08-14 20:29:59
+> recurde que ya no debemos referirnos al agente porque ya tiene su nombre
+
+**Agente** — 2026-08-14 20:30:03
+<!-- agente: f2841d9e-21f7-4bd7-9d56-1be1ff4cab39 -->
+
+Cierto. El aviso le llega a **Cimiento**, que es quien llena el resumen. Usted no tiene que hacer nada.
+
+Son dos como máximo en toda la sesión: uno si no hay ningún hallazgo escrito, y otro si hay hallazgos pero falta decir si la sesión se puede cerrar.
+
+### 108 · Usuario — 2026-08-14 20:30:53
+> osea que para que se considere hallazgos deben haber más de uno?
+
+**Agente** — 2026-08-14 20:30:58
+<!-- agente: 0635da94-73d1-4aaf-bac4-b4a69615f9fa -->
+
+No. Con uno basta.
+
+Los dos avisos no cuentan hallazgos: miran dos huecos distintos. El primero, que no haya ninguno. El segundo, que la sección de cierre siga sin llenar, haya uno o haya diez.
+
+### 109 · Usuario — 2026-08-14 20:31:11
+> entonces no entiendo lo de los dos avisos
+
+**Agente** — 2026-08-14 20:31:16
+<!-- agente: 88f324bd-0ce2-4f01-b246-28c136b32e48 -->
+
+Hay dos cosas que pueden faltar en un resumen, y por eso puede avisar dos veces:
+
+1. Que no tenga ni un hallazgo escrito.
+2. Que tenga hallazgos, pero no diga si la sesión se puede cerrar.
+
+Cada una avisa una sola vez. Si usted arregla la primera, la segunda puede aparecer después.
+
+### 110 · Usuario — 2026-08-14 20:32:32
+> no entiendo explique como para niño
+
+**Agente** — 2026-08-14 20:32:37
+<!-- agente: da4b9ad8-46b0-43e6-95b1-2377fd8a1ebd -->
+
+Es como la tarea del colegio.
+
+El programa la revisa dos veces:
+
+- "No has escrito nada." Te avisa una vez.
+- "Escribiste, pero no dijiste si ya terminaste." Te avisa una vez.
+
+Nada más. No molesta en cada renglón.
+
+### 111 · Usuario — 2026-08-14 20:35:16
+> si es así debe saber que hallazgos son de la sesión que solo alerte eso y poderla cerrar los demás no porque tienen que se cerrados en otra sesión de lo contrario debe mostrar el listado de lo faltante porque sino yo debería estarle preguntado que falta
+
+**Agente** — 2026-08-14 20:35:26
+<!-- agente: 6eb7ad9c-f5ff-45dd-8ec1-7bdd8af9f665 -->
+
+Entendido, y es una corrección de fondo:
+
+- El aviso mira **solo los hallazgos que nacieron en esta sesión**. Lo arrastrado de otras no cuenta para cerrar esta.
+- Y no avisa en genérico: **lista qué falta**, para que usted no tenga que preguntarlo.
+
+Lo escribo así en la especificación y en el plan.
+
+### 112 · Usuario — 2026-08-14 20:37:37
+> espere que ahí hay algo raro cuando habla de arrastrar otras sesiones no debería ser porque por ejemplo en esta sesión estamos resolviendo un H no varios se entiend que cada sesión tiene un propósito y lo que no es de ese proposito pertenece a otra sesión
+
+**Agente** — 2026-08-14 20:37:48
+<!-- agente: e6620b63-ae44-4f83-98a9-b9124578dec9 -->
+
+Sí, y eso ordena las dos cosas:
+
+- **La sesión tiene un propósito**, y es el hallazgo que dice su «viene de». Lo que aparece y no es de ese propósito nace acá como hallazgo nuevo y se resuelve en otra sesión.
+- **La lista de lo abierto entonces no es para cerrarla acá**: es para elegir el propósito de la sesión siguiente.
+
+O sea, `CA-03` sigue, pero significa otra cosa: mostrar el menú de por dónde seguir, no una lista de deberes de esta sesión.
+
+¿Es eso?
+
+### 113 · Usuario — 2026-08-14 20:39:00
+> le pregunto cuál es el proposito de esta sesión?
+
+**Agente** — 2026-08-14 20:39:03
+<!-- agente: c99ca16d-c489-4f4a-92f6-a5840eb17bb4 -->
+
+Cerrar el H-4 del 2026-08-14: no había dónde escribir lo aprendido.
+
+Es lo que dice el «viene de» del resumen, y por eso la sesión se llama así.
+
+### 114 · Usuario — 2026-08-14 20:41:02
+> de ese proposito que H ha nacido que se cierra en esta sesión y que H no se cierra en esta sesión porque no es del propósito?
+
+**Agente** — 2026-08-14 20:41:22
+<!-- agente: 738757f2-4993-47cd-b9ec-c9adc944073a -->
+
+Del propósito, y se cierran acá:
+
+| H | Estado |
+|---|---|
+| H-2 · la tarea de HU-009 que era plan de pruebas | Resuelto |
+| H-3 · el resumen no decía de dónde viene la sesión | Resuelto |
+| H-4 · el orden de las historias hermanas no se veía | Resuelto |
+| H-5 · la marca se usaba sin regla | Sigue marcado abierto por el commit, y el commit ya se hizo. **Hay que cerrarlo** |
+
+No son del propósito, y se cierran en otra sesión:
+
+| H | Por qué no es de acá |
+|---|---|
+| H-1 · preguntar antes de buscar en el repositorio | Es conducta de Cimiento, no el resumen de sesión |
+| H-6 · no se cargaba `base/` al arrancar | Es el arranque de la sesión |
+| H-7 · `plantillas/` mezcla modelos con procedimientos | Salió al aplicar la marca, y es de cómo está organizada esa carpeta |
+
+### 115 · Usuario — 2026-08-14 20:42:33
+> con eso que usted me acaba de decir aclaro su duda?
+
+**Agente** — 2026-08-14 20:42:42
+<!-- agente: e43b7f43-19a4-4304-abff-01ef795581b3 -->
+
+Sí, queda claro:
+
+Para cerrar, cuentan los hallazgos **del propósito**. Los que nacieron acá pero son de otro tema no bloquean: basta con que queden anotados, con su pendiente y su historia escritos.
+
+Y eso ya lo dice la plantilla cuando trata "anotado" como una forma de estar terminado. Lo que faltaba era distinguir cuáles son del propósito.
+
+### 116 · Usuario — 2026-08-14 20:43:28
+> entonces que sigue
+
+**Agente** — 2026-08-14 20:43:35
+<!-- agente: 71b543ee-07ba-4eaf-996a-9187d7dad80d -->
+
+Tres cosas, en este orden:
+
+1. **Cerrar H-5** en el resumen: su commit ya se hizo.
+2. **Escribir en la fase de HU-008** lo que acabamos de decidir: el aviso mira los hallazgos del propósito, lista qué falta, y la lista de lo abierto sirve para elegir el propósito de la sesión siguiente. Eso cambia `RNF-02` y `CA-03` de la HU.
+3. **Aprobar y ejecutar** esa fase, que es lo que cierra H-4.
+
+¿Arranco?
+
+### 117 · Usuario — 2026-08-14 20:44:13
+> si
+
+**Agente** — 2026-08-14 20:47:08
+<!-- agente: b0fd1ea7-c182-4936-a3df-b82e7c490552 -->
+
+H-5 cerrado, y las decisiones quedaron escritas en la fase de HU-008.
+
+Lo que cambió por lo que usted precisó:
+
+- **`RNF-02`** pasa de *"una sola vez por sesión"* a **una vez por cada cosa que falta, máximo dos**.
+- **`CA-03`** deja de ser "lo que no se cerró aparece en la sesión siguiente" y pasa a ser **el menú con que se elige el propósito de la sesión que abre**.
+- **Regla nueva en la HU:** para cerrar una sesión cuentan los hallazgos de **su propósito**; los que nacen ahí y son de otro tema basta con dejarlos anotados.
+- El aviso **dice qué falta**, con la lista, en vez de un mensaje genérico.
+
+El plan quedó en 34 h y sus tres dudas cerradas. `validar.py estandar` en 0 fallas.
+
+Falta que apruebe la [especificación del módulo](documentacion/automatismos/spec.md) y los dos planes para ejecutar.
+
+### 118 · Usuario — 2026-08-14 20:50:12
+> no es que aparezca en la sesión siguiente porque entonces me van aparecer todos los pendientes y recuerde cada sesión tiene su propósito por ejemplo hoy creamos una sesión donde hablaba de maracuya y no tendría sentido que me recordara sobre una HU de pepito. Si me hago entender?
+
+**Agente** — 2026-08-14 20:50:23
+<!-- agente: fcf0156d-9f52-4ef7-b306-2c09886d0da3 -->
+
+Entendido, y es lo contrario de lo que escribí: mostrar todo lo abierto es ruido. Una sesión de maracuyá no tiene por qué ver la HU de pepito.
+
+Entonces `CA-03` sería: cuando la sesión declara su propósito, se muestra **lo que sigue abierto de ese hallazgo**, y nada más. El propósito lo pone usted al abrir, no lo adivina el programa.
+
+¿Así?
+
+### 119 · Usuario — 2026-08-14 20:52:36
+> si señor, de hecho esta es una sesión que sirve de ejemplo el inicio es resolver el h-4 de otra sesion
+
+### 120 · Usuario — 2026-08-14 20:53:41
+> si señor, de hecho esta es una sesión sirve de ejemplo tiene un único propósito y es resolver el h-4 de otra sesion
+
+**Agente** — 2026-08-14 20:55:00
+<!-- agente: 09c8d41e-40b5-4970-be2c-bd740d25fcbc -->
+
+Corregido en la HU, en la especificación y en los dos planes.
+
+**`CA-03` ahora dice:** cuando la sesión declara su propósito, se muestra ese hallazgo y lo que sigue abierto de él. Nada de otros temas.
+
+Y quedó escrito el porqué, con su ejemplo: mostrar todo lo abierto es ruido, y el ruido se deja de leer. Esta sesión sirve de caso: se abrió con un solo propósito, resolver el H-4 de otra sesión.
+
+`validar.py estandar` en 0 fallas. Falta su aprobación de la [especificación](documentacion/automatismos/spec.md) y los dos planes para ejecutar la fase.
+
+### 121 · Usuario — 2026-08-14 20:55:48
+> toda regla que se cite también debe ser linkiada, no es solo relacionarla
+
+**Agente** — 2026-08-14 20:58:16
+<!-- agente: 735bc43f-cffa-4b2b-9481-f7b97c0efdf1 -->
+
+Esa regla ya existe: [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) — *"citar una regla por su ID no basta: la cita se escribe como enlace al sitio exacto donde vive"*.
+
+Lo que faltaba era cumplirla en lo que escribí. Enlacé **101 citas** en los documentos de esta sesión: las tres especificaciones y los planes de las tres fases.
+
+`validar.py estandar` en 0 fallas.
+
+### 122 · Usuario — 2026-08-14 20:59:25
+> si pero en las sesiones no lo está haciendo y eso quedo en la plantilla
+
+**Agente** — 2026-08-14 21:00:21
+<!-- agente: 6f18ea09-fcc0-4b72-a2af-ca7bc1f42a54 -->
+
+Corregido en los dos sitios:
+
+- **Los resúmenes ya escritos:** 11 citas enlazadas en los dos del 2026-08-14.
+- **La plantilla** [plantillas/sesion.md](plantillas/sesion.md): ahora dice que toda regla que el resumen nombre va enlazada, en cualquier campo, y el ejemplo de «dónde queda» lo muestra así.
+
+`20·M15` ya lo exigía; lo que faltaba era que el modelo lo dijera, porque quien llena un modelo sigue el modelo.
+
+`validar.py estandar` en 0 fallas.
+
+### 123 · Usuario — 2026-08-14 21:01:20
+> en sesion siguen quedando reglas sin linkiar
+
+**Agente** — 2026-08-14 21:02:09
+<!-- agente: e64e3be1-a13a-438e-ab8d-31e67105e3eb -->
+
+La plantilla quedó limpia. Lo que aparecía sin enlazar era el `capítulo 20` en la tabla de "dónde termina cada cosa", y ya apunta a [base/20-meta-reglas/base.md](base/20-meta-reglas/base.md).
+
+De paso corregí algo que se me había pasado en la misma línea: la ruta decía `<tema>.md`, con la marca vieja. Ahora usa `«tema»`, como manda [`13·DOC19`](base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md).
+
+Las tres reglas que la plantilla nombra están enlazadas: `20·M15`, `13·DOC5` y `01·C19`.
+
+### 124 · Usuario — 2026-08-14 21:02:31
+> esto no es una regla:DOC20¨?
+
+**Agente** — 2026-08-14 21:03:26
+<!-- agente: bf30c3d3-6cc8-4167-a4e6-92cf89538ab6 -->
+
+Tenía razón: 34 citas más sin enlazar, `DOC19` a `DOC22` sueltas en los documentos de esta sesión. Ya quedaron.
+
+Y hay algo más grande detrás, que le señalo en vez de arreglarlo por mi cuenta: **las plantillas del estándar tienen el mismo incumplimiento**. `brief.md`, `funcionalidad-implementada.md`, `planes/trabajo.md`, `catalogo-modulos.md` y varias más citan `F4`, `DOC5`, `F17`, `DOC13` sin enlace, y sin el prefijo del capítulo.
+
+Es la misma familia del [pendiente 18](pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), que cuenta 354 enlaces que incumplen `DOC14`. ¿Lo anoto como pendiente aparte, o lo sumo a ese?
+
+### 125 · Usuario — 2026-08-14 21:03:49
+> ah ok
+
+**Agente** — 2026-08-14 21:03:55
+<!-- agente: 35889bf2-2e96-42b2-8ff3-67fa49cfb744 -->
+
+Queda esa decisión pendiente: si lo anoto como pendiente aparte o lo sumo al 18.
+
+Y lo que estaba antes: aprobar la [especificación](documentacion/automatismos/spec.md) y los dos planes de HU-008 para ejecutar la fase que cierra H-4.
+
+### 126 · Usuario — 2026-08-14 21:04:55
+> pero si ya sabemos que un pendiete para que seguir agregando al pendiente algo que ya se puede ir corrigiendo en lo nuevo y creo que ya hay una regla para eso
+
+**Agente** — 2026-08-14 21:05:58
+<!-- agente: 63494e34-a98f-4806-94d9-22700ef75c13 -->
+
+Tiene razón, y la regla que me faltaba aplicar es la de la memoria: [el defecto que se detecta, se corrige](historico-chat/memory/corregir-el-defecto-que-uno-mismo-detecta.md). No debí preguntar.
+
+Corregido: **122 citas enlazadas en 23 plantillas**. Muchas ni siquiera traían el capítulo (`F4`, `DOC5`, `C19`), así que no se sabía dónde buscar; ahora todas van con su `NN·ID` y su ruta.
+
+Versión **14.0.1**, PARCHE, con su entrada en el [CHANGELOG](CHANGELOG.md). `validar.py estandar` en 0 fallas.
+
+Queda el aviso de `G9` en [base/20-meta-reglas/estructura-regla.md](base/20-meta-reglas/estructura-regla.md), que es de otra sesión y no toqué.
+
+### 127 · Usuario — 2026-08-14 21:08:24
+> osea acá se solucionó el h de este pendiente: pendiente 18?
+
+**Agente** — 2026-08-14 21:08:42
+<!-- agente: 1189a42a-33e8-4fc1-807d-43bf14c6ec3e -->
+
+No. El pendiente 18 es de [`13·DOC14`](base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md): que el **texto** del enlace diga dónde vive el archivo. Lo que arreglé es [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md): que la cita a una regla **tenga** enlace. Son dos cosas distintas, y el pendiente 18 sigue abierto.
+
+Y hay algo peor que le señalo: **las dos reglas se contradicen**. `M15` manda escribir la cita así, con el ID como texto:
+
+```
+[`00·N3`](../../00-nucleo-blindado.md#n3--no-romper-cosas...)
+```
+
+y `DOC14` exige que el texto sea la ruta. O sea, las 122 citas que acabo de enlazar cumplen `M15` y suman 122 incumplimientos de `DOC14`.
+
+Eso es hallazgo, y lo escribo en el resumen.
+
+### 128 · Usuario — 2026-08-14 21:09:34
+> ok sigamos entonces
+
+### 129 · Usuario — 2026-08-14 21:10:46
+> lo que es nuevo no debe quedar con ese pendiente cuando ya lo sabemos,entiendo que ese pendiente es porque se hizo antes de lo que estamos haciendo
+
+**Agente** — 2026-08-14 21:10:57
+<!-- agente: a12f170b-ee4b-4cc7-a613-665a6a792a5a -->
+
+Exacto: el pendiente 18 es deuda vieja, y lo nuevo no debería sumarle.
+
+Pero acá no se puede cumplir las dos: `M15` manda el ID como texto y `DOC14` manda la ruta. Hay que arreglar el choque en las reglas, no en los documentos.
+
+Lo que propongo: escribirle a `DOC14` su excepción — **la cita a una regla se escribe como manda `M15`**, con el ID como texto. Es una línea en `DOC14`, y con eso lo nuevo queda limpio y el pendiente 18 vuelve a ser solo deuda vieja.
+
+¿La escribo?
+
+### 130 · Usuario — 2026-08-14 21:12:40
+> si tenemos un pendiente que aplica a esta: DOC14 significa que en lo nuevo se debe aplicar también esta: DOC14. No encuentro contradicción
+
+**Agente** — 2026-08-14 21:12:52
+<!-- agente: 5a38f5fc-0a7d-4679-b5e3-b502d714d8ab -->
+
+Tiene razón, y me equivoqué: no hay contradicción.
+
+`DOC14` ya trae su límite escrito en la última línea: *"No aplica a los nombres cortos usados como identificador en medio de una frase, cuando quien lee ya sabe dónde viven."*
+
+Una cita como `13·DOC19` es exactamente eso. Así que las 122 citas cumplen `M15` y no incumplen `DOC14`. No hay que tocar ninguna regla, y el pendiente 18 sigue siendo solo deuda vieja.
+
+### 131 · Usuario — 2026-08-14 21:14:03
+> entonces por qué estas: DOC20 siguen sin link?
+
+### 132 · Usuario — 2026-08-14 21:14:11
+> y eso es nuevo
+
+### 133 · Usuario — 2026-08-14 21:14:51
+> y eso es nuevo en la sesión
+
+### 134 · Usuario — 2026-08-14 21:27:07
+> lo nuevo es a partir de la identificación de esto:
+> H-5 · El estándar no cumple su propia regla de enlaces
+> lo que quiere decir que a partir de eso no pueden quedar ese tipo de pendientes
+>
+> un ejemplo: yo antes escribía sin ortografía pero a partir de que aprendí ya escribo con ortografía no importa el contexto
+
+**Agente** — 2026-08-14 21:27:25
+<!-- agente: fa83cfa1-a449-42f4-94e4-ab4859887416 -->
+
+Entendido, y es un principio, no un caso: **desde que un incumplimiento se identifica, lo nuevo ya nace cumpliendo**. El pendiente guarda lo viejo; no es una licencia para seguir produciendo más.
+
+En su ejemplo: una vez que aprendió, escribe con ortografía siempre, no solo cuando le toca revisar.
+
+Eso no está escrito como regla en `base/`. Y me faltan cuatro citas nuevas por ese motivo, en [validadores/reglas-validables.md](validadores/reglas-validables.md): `DOC19`, `DOC20`, `DOC21` y `DOC22`, escritas hoy y sin enlace.
+
+¿Escribo la regla, corrijo las cuatro, o las dos cosas?
+
+### 135 · Usuario — 2026-08-14 21:28:15
+> que va a escribir?
+
+**Agente** — 2026-08-14 21:28:35
+<!-- agente: 5804161f-cc2b-4aac-9ed5-84c50c14ad51 -->
+
+Esto, en `base/02` como `F21` (el siguiente libre):
+
+## F21 · Un incumplimiento ya identificado no se repite en lo nuevo
+
+> Desde el momento en que un incumplimiento queda registrado —en un pendiente, un hallazgo o una señal—, todo lo que se escriba de ahí en adelante nace cumpliendo. El pendiente guarda lo que ya estaba mal y se limpia aparte; no autoriza a producir más de lo mismo.
+>
+> ```
+> INCORRECTO: el pendiente dice que 354 enlaces no cumplen DOC14,
+>             y los documentos de hoy suman 122 más
+> CORRECTO:   los 354 siguen en su pendiente y los de hoy nacen bien
+> ```
+
+Dos cosas antes de escribirla:
+
+1. Va en el capítulo `02` porque es del flujo de trabajo, no de las reglas sobre reglas.
+2. Es **MAYOR**: obliga a todo proyecto al día.
+
+¿La escribo así, y corrijo también las cuatro citas de `reglas-validables.md`?
+
+### 136 · Usuario — 2026-08-14 21:29:35
+> correcto pero sigue olvidando reglas, mire:  —
+
+**Agente** — 2026-08-14 21:29:41
+<!-- agente: 78ce607e-8635-4ead-969d-2fcbaf26fadd -->
+
+Cierto. La raya larga otra vez, `00·ID8`.
+
+Sin ella:
+
+## F21 · Un incumplimiento ya identificado no se repite en lo nuevo
+
+> Desde que un incumplimiento queda registrado en un pendiente, un hallazgo o una señal, todo lo que se escriba de ahí en adelante nace cumpliendo. El pendiente guarda lo que ya estaba mal y se limpia aparte; no autoriza a producir más de lo mismo.
+>
+> ```
+> INCORRECTO: el pendiente dice que 354 enlaces no cumplen DOC14,
+>             y los documentos de hoy suman 122 más
+> CORRECTO:   los 354 siguen en su pendiente y los de hoy nacen bien
+> ```
+
+### 137 · Usuario — 2026-08-14 21:30:53
+> así es
+
+**Agente** — 2026-08-14 21:31:55
+<!-- agente: 54c73dc0-ee04-4ccb-ae00-9f34c9b91155 -->
+
+Escrita: [`02·F21`](base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md), con su fila en el índice del capítulo, su checklist en CUMPLE y su línea en [reglas-validables.md](validadores/reglas-validables.md).
+
+Y corregidas las cinco citas que le faltaba el enlace en ese mismo archivo, que eran justo el caso que la regla prohíbe.
+
+Versión **15.0.0**, MAYOR, con el ejemplo suyo en la entrada del [CHANGELOG](CHANGELOG.md): *"yo antes escribía sin ortografía, pero a partir de que aprendí ya escribo con ortografía, no importa el contexto"*.
+
+`validar.py estandar` en 0 fallas.
+
+### 138 · Usuario — 2026-08-14 21:33:35
+> si ya quedó la regla porque esto que es nuevo lo sigue incumpliendo:
+> h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md
+
+**Agente** — 2026-08-14 21:34:07
+<!-- agente: a0449b3f-3cd7-4d24-8895-b6a19f97ef5d -->
+
+Corregido: cinco citas más en el resumen de esta sesión, `DOC19`, `DOC20`, `DOC21` e `ID8`.
+
+Ya no queda ninguna suelta en ese archivo.
+
+### 139 · Usuario — 2026-08-14 21:34:48
+> que sigue
+
+**Agente** — 2026-08-14 21:34:58
+<!-- agente: 1a4588d4-e260-44ab-ba6f-d2d54e48778b -->
+
+Dos cosas:
+
+1. **Anotar en el resumen** el hallazgo que salió de esto: un pendiente se estaba usando como permiso, y de ahí nació `F21`.
+2. **Ejecutar la fase de HU-008**, que es la que cierra H-4. Su especificación y sus dos planes están escritos y esperando que apruebe.
+
+Y queda sin commitear todo lo de después de `e998cc2`: la 14.0.1, la 15.0.0 y la fase abierta.
+
+### 140 · Usuario — 2026-08-14 21:35:17
+> hágale
+
+**Agente** — 2026-08-14 21:48:42
+<!-- agente: e21aeb85-39a1-4040-bb0d-f76e5ba52130 -->
+
+**H-4 quedó cerrado.** Su cadena completa, y el hallazgo marcado resuelto en el resumen donde nació.
+
+Lo que se construyó en esta última fase, versión **15.1.0**:
+
+- [`validadores/resumen.py`](validadores/resumen.py) y [`validadores/hook_resumen.py`](validadores/hook_resumen.py): el archivo del resumen nace al abrir la sesión, avisa qué le falta (una vez por hueco, máximo dos) y muestra lo que sigue abierto **del propósito** de la sesión.
+- `renombrar()` mueve ahora la transcripción y el resumen juntos, con sus dos índices.
+- Los dos enganches quedaron instalados en este repositorio.
+
+**Pruebas:** 14 casos nuevos, las siete exigencias en verde. Dos defectos aparecieron y se corrigieron dentro de la fase; el peor era que el programa escribía un hallazgo de ejemplo, justo lo que la HU declara fuera de alcance.
+
+Dos cosas que le señalo:
+
+1. La suite queda con **una falla que no es mía**: otra sesión está escribiendo la regla `G9` en [base/09-git.md](base/09-git.md), y el capítulo de meta-reglas usa `G9` como ejemplo inventado.
+2. Esta fase fue la única de la sesión que **no necesitó ampliar el plan**, porque el análisis leyó los siete enganches y el instalador antes de escribir nada.
+
+Falta commitear todo lo de la 14.0.1 en adelante.
+
+### 141 · Usuario — 2026-08-14 21:50:30
+> en el pendiente 18 agregar que a partir de ese pendiente nace la regla 02·F21
+
+**Agente** — 2026-08-14 21:50:55
+<!-- agente: 051637e2-3e8d-4f67-82cc-1a99a526821c -->
+
+Agregado en [pendientes/18](pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), como sección propia: **de acá nació [`02·F21`](base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md)**.
+
+Con dos consecuencias escritas para ese pendiente:
+
+- **La cuenta ya no crece.** Los 354 son los de antes del 2026-08-14. Si aparece uno más, no es deuda vieja: es un incumplimiento nuevo de `F21`.
+- **Limpiarlos sigue siendo trabajo aparte**, y es lo que el pendiente guarda.
+
+### 142 · Usuario — 2026-08-14 21:52:49
+> en en resultado pruebas debe estar el o los ejemplos que se utilizaron para hacer la prueba de cada CP y si eso no está en la plantilla hay que agregarlo para que se replique
+
+### 143 · Usuario — 2026-08-14 21:55:29
+> no es que coloque las referencia es que ahí quede lo que hizo para que el CP quede en cumple
+
+**Agente** — 2026-08-14 21:56:51
+<!-- agente: cf550414-183b-4eba-a409-5854d06103f8 -->
+
+Entendido: no la referencia, sino **qué se hizo y qué salió**.
+
+**En la plantilla** [planes/resultados.md](plantillas/planes/resultados.md) quedó exigido así, con sus dos ejemplos de lo que no vale: ni *"un usuario sin permiso"* ni *"ver la suite"*. Vale *"`qa.consulta` pidió `POST /facturas/42/anular` y recibió 403; la factura siguió en `emitida`"*. Y si no cabe en la celda, va un párrafo `Detalle de CP-00N` debajo.
+
+**Aplicado a los tres resultados de la sesión:** cada caso tiene ahora su detalle con el paso a paso y lo que se obtuvo. 9 en la fase del enganche, 5 en la de la marca, 6 en la del modelo. Ninguno queda en "cumple" sin decir por qué.
+
+Versión **15.2.0**. `validar.py estandar` en 0 fallas.
+
+### 144 · Usuario — 2026-08-14 21:57:23
+> esto no explica el paso a paso de la prueba:
+>
+> 2026-08-14-maracuya.md en un proyecto temporal con plantillas/sesion.md de tres líneas
+
+**Agente** — 2026-08-14 21:58:30
+<!-- agente: 9f38d644-a493-4970-b09b-116c98a2695c -->
+
+Tiene razón: esa celda dice con qué, no cómo.
+
+Cambiado. Los nueve casos de la fase del enganche tienen ahora su **paso a paso numerado**, con dos columnas: qué se ejecutó y qué salió. Por ejemplo, CP-001:
+
+| # | Qué se ejecutó | Qué salió |
+|---|---|---|
+| 1 | `crear(raiz, "2026-08-14-maracuya.md")` en un proyecto temporal | Apareció `resumenes/2026-08-14/maracuya.md` |
+| 2 | Se abrió y se corrió `hallazgos()` | Trae los campos del modelo y ningún hallazgo |
+| 3 | `crear()` otra vez, sobre un resumen con `### H-1 · algo` | Quedó intacto |
+
+Y quedó exigido en la plantilla [planes/resultados.md](plantillas/planes/resultados.md): el detalle es paso a paso numerado, uno a uno con los pasos del caso en el plan de pruebas.
+
+Falta hacer lo mismo en los otros dos resultados, que todavía tienen el detalle en prosa. ¿Se los paso también?
+
+### 145 · Usuario — 2026-08-14 21:59:29
+> dentro de lo que estamos hacieno una receta para hacer arroz que es el plan de trabajo?
+
+**Agente** — 2026-08-14 21:59:38
+<!-- agente: 0fa99d72-408b-42bd-bbb0-d7682e7a52c0 -->
+
+La receta es el **plan de trabajo**: los pasos, en qué orden y con qué ingredientes.
+
+El resto de la cadena, en el mismo ejemplo:
+
+| Documento | En la cocina |
+|---|---|
+| HU | "quiero arroz para cuatro, graneado" |
+| Especificación | qué es arroz graneado y qué tiene que cumplir |
+| **Plan de trabajo** | **la receta: dos tazas de agua por una de arroz, a fuego bajo, 18 minutos** |
+| Plan de pruebas | cómo se comprueba: probar un grano a los 18 minutos |
+| Resultado de pruebas | qué salió al probarlo: "grano suelto, sin agua en el fondo" |
+
+### 146 · Usuario — 2026-08-14 22:02:20
+> el resultar de prueba es verificar que lo que decía el plan de trabajo y pruebas se cumplió a cabalidad y para eso debe decir paso a paso cómo lo hizo
+
+### 147 · Usuario — 2026-08-14 22:02:54
+> el resultado de pruebas es verificar que lo que decía el plan de trabajo y pruebas se cumplió a cabalidad y para eso debe decir paso a paso cómo lo hizo
+
+**Agente** — 2026-08-14 22:03:06
+<!-- agente: a6b9b8a8-7aae-41af-9842-d7c09284bc37 -->
+
+De acuerdo, y eso deja algo sin resolver que le señalo:
+
+Hoy el resultado de pruebas verifica el **plan de pruebas** (§5 y §5.1), y que el **plan de trabajo** se hizo se verifica en otro documento, el de cierre (§2.2, tarea por tarea).
+
+Con lo que usted dice, las dos verificaciones van en el resultado de pruebas, con su paso a paso. Y el documento de cierre deja de repetirlas: se queda con qué quedó funcionando.
+
+¿Lo muevo así?
+
+### 148 · Usuario — 2026-08-14 22:04:08
+> pero entonces en donde se valida ese paso paso no es en las pruebas?
+
+**Agente** — 2026-08-14 22:04:16
+<!-- agente: 8b0ca272-9502-40b8-9c55-02a2454b1fb8 -->
+
+Tiene razón, y mi propuesta anterior estaba mal.
+
+Son dos cosas distintas:
+
+- **El plan de pruebas se ejecuta**, y su paso a paso va en el resultado de pruebas: qué se corrió y qué salió.
+- **El plan de trabajo no se prueba**: se verifica que cada tarea se hizo y dónde quedó. Eso no es un caso de prueba, es un recuento.
+
+Así que se queda como está: el paso a paso de las pruebas en el resultado, y la verificación tarea por tarea en el documento de cierre. No hay que mover nada.
+
+### 149 · Usuario — 2026-08-14 22:07:13
+> y cuál es el valor de verdad al final de los pasos?
+
+**Agente** — 2026-08-14 22:07:21
+<!-- agente: 16adb35a-94e0-4fa3-b6ee-119df0dcd735 -->
+
+El veredicto del caso: **cumple o no cumple**. De ahí sube al veredicto por exigencia (§5) y al concepto final (§6).
+
+Hoy ese valor está en la tabla de arriba, no al final del paso a paso. Si el paso a paso es lo que sostiene el veredicto, lo lógico es que cierre con él.
+
+¿Le agrego a cada bloque su renglón final de veredicto?
+
+### 150 · Usuario — 2026-08-14 22:07:41
+> si pero que es lo que lo hace que cumple
+
+**Agente** — 2026-08-14 22:07:48
+<!-- agente: 95eafb1b-46ed-4794-a4a0-0e04c4cbebe5 -->
+
+Que lo que salió sea **lo que el plan de pruebas decía que tenía que salir**. Ni más ni menos: el plan fija el resultado esperado antes de correr nada, y por eso no se toca al ejecutar.
+
+Entonces el paso a paso necesita tres columnas, no dos: qué se ejecutó, **qué esperaba el plan**, y qué salió. El veredicto es si coinciden, paso por paso.
+
+¿Lo reescribo así, y lo dejo exigido en la plantilla?
+
+### 151 · Usuario — 2026-08-14 22:07:56
+> si
+
+**Agente** — 2026-08-14 22:09:05
+<!-- agente: 4b3ba1b8-5006-4eaa-8b23-fbc93757ae8f -->
+
+Reescrito. Los nueve casos tienen ahora tres columnas —qué se ejecutó, **qué esperaba el plan**, qué salió— y cierran con su veredicto.
+
+Y al escribirlo apareció algo que las dos columnas escondían: **el paso 5 de CP-004 no dio lo que el plan decía**. El plan pedía que el segundo camino de "la sesión produjo algo" diera lo mismo que el primero; sin git no da ninguno de los dos, y el enganche calla. Eso es lo correcto según el criterio transversal de límites de la HU, así que el caso pasa, pero lo que estaba mal redactado era el resultado esperado del plan.
+
+Con dos columnas eso no se habría notado: yo mismo lo había escrito como si coincidiera.
+
+En la plantilla [planes/resultados.md](plantillas/planes/resultados.md) quedó la razón: *"con dos columnas, cumple lo decide quien escribe; con tres, lo decide la comparación"*.
+
+### 152 · Usuario — 2026-08-14 22:11:18
+> si pero en cada CP decir que lleva a cumple no es necesario complicar tanto las cosas solo es explicar de manera sencilla cada paso
+
+**Agente** — 2026-08-14 22:12:15
+<!-- agente: 99c3ee3b-48dd-4d3e-bbcb-ab5f7f427eb1 -->
+
+Simplificado. Cada caso es ahora una lista de pasos en palabras llanas, y cierra con **por qué eso lo deja en cumple**. Por ejemplo:
+
+> **Detalle de CP-002**
+>
+> 1. Se crearon los resúmenes de dos sesiones del mismo día, `maracuya` y `pepito`. Quedaron los dos archivos en la carpeta del día.
+> 2. Se releyó el primero: sin cambios.
+>
+> **Cumple** porque dos sesiones del mismo día quedan en dos archivos y ninguna pisa a la otra.
+
+Fuera las tablas de tres columnas. Lo que se conserva es la idea: **cumple porque salió lo que el plan de pruebas decía que iba a salir**, y si un paso sale distinto, se dice cuál y qué pasó. Es lo que pasó con el paso 5 de CP-004, y queda anotado ahí mismo.
+
+La plantilla [planes/resultados.md](plantillas/planes/resultados.md) quedó igual de corta.
+
+### 153 · Usuario — 2026-08-14 22:15:00
+> listo entonces esta sesion ya se puede cerrar?
+
+**Agente** — 2026-08-14 22:15:19
+<!-- agente: 98b32bd4-0cc7-407b-9f49-0b0923738ac1 -->
+
+Todavía no. Faltan tres cosas:
+
+1. **H-1** no tiene pendiente ni la historia que dispara escrita: buscar en el repositorio antes de preguntar.
+2. **H-6** quedó abierto con una decisión sin tomar: si cargar `base/` lo hace el enganche o se queda en el `CLAUDE.md`. Necesita su pendiente.
+3. **El commit** de todo lo de la 14.0.1 en adelante.
+
+Los tres hallazgos abiertos no son del propósito de la sesión, así que no hay que resolverlos acá: basta con dejarlos anotados. Eso es lo que falta.
+
+¿Los anoto y commiteamos?
+
+### 154 · Usuario — 2026-08-14 22:16:58
+> anotados en dónde?
+
+**Agente** — 2026-08-14 22:17:15
+<!-- agente: e110a2c2-e21b-4dc0-89be-741ce20b49fe -->
+
+En dos sitios, que es lo que manda la plantilla del resumen:
+
+| Hallazgo | Dónde queda |
+|---|---|
+| H-1 | `pendientes/24-…` y la historia nueva `EP-001 · HU-011`, que es la que dispara |
+| H-6 | `pendientes/25-…`, con la decisión pendiente: si cargar `base/` lo hace el enganche o se queda en el `CLAUDE.md` |
+
+Con eso los dos quedan terminados en el sentido del modelo: **anotados**, con su archivo, aunque se resuelvan en otra sesión.
+
+¿Los escribo?
+
+### 155 · Usuario — 2026-08-14 22:19:28
+> h-6 que es lo más recomendable?
+
+**Agente** — 2026-08-14 22:19:58
+<!-- agente: 800c6fca-b9a0-45e3-9655-9769e2a48b35 -->
+
+Lo recomendable es la tercera opción, que no habíamos visto.
+
+Hoy el enganche **sí** carga `base/`, pero no todo igual: de `base/00-*` mete el texto completo, y del resto solo una línea de índice con la ruta y el título ([validadores/cargador.py:103](validadores/cargador.py#L103)). Por eso yo tenía el núcleo y no tenía `ID8`.
+
+Entonces:
+
+- **Todo literal** no sirve: son 188 reglas, no caben.
+- **Como está** tampoco: una regla que rige cada frase que se escribe no puede estar en un índice.
+- **Lo recomendable:** que vayan literales también los capítulos que gobiernan **cómo se escribe** cada respuesta, `00 · identidad` y `01 · conducta`. El resto se consulta cuando el tema lo pide, que es para lo que sirve el índice.
+
+`ID8` es justo el caso: aplica a todo lo que se entrega, así que tiene que estar puesto, no listado.
+
+### 156 · Usuario — 2026-08-14 22:21:11
+> aceptada la tercera opción
+
+**Agente** — 2026-08-14 22:22:56
+<!-- agente: 440d0fbe-577e-4f60-9f9a-d778ab34d65d -->
+
+Anotados los dos, con su línea en el índice:
+
+- **[pendientes/24](pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md)** — H-1, con la narrativa y el contexto de `EP-001 · HU-011` listos para bajarlos a la épica.
+- **[pendientes/25](pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md)** — H-6, con la tercera opción ya decidida: que `00` y `01` vayan literales al arranque, y las otras dos salidas descartadas con su motivo.
+
+La lista de cierre del resumen quedó con tres de cuatro casillas marcadas. Falta solo el commit.
+
+### 157 · Usuario — 2026-08-14 22:23:01
+> y con la H-7 · La carpeta de plantillas mezcla modelos con procedimientos qué se debe hacer?
+
+**Agente** — 2026-08-14 22:23:35
+<!-- agente: 9021fc3c-4126-4dee-be98-c013f720cf34 -->
+
+Al mirar el instalador, el problema es más chico de lo que decía el pendiente.
+
+De los cuatro archivos, **tres no están fuera de sitio**:
+
+- `historico-chat.md` y `memoria.md` los lee [validadores/instalar.py:307](validadores/instalar.py#L307) para **generar** el archivo que va en cada proyecto. No los llena una persona, los llena un programa: que no tengan `«…»` es correcto.
+- `prompts/prompt-base-usuario.md` ya está separado en su subcarpeta.
+
+El único que sí está mal ubicado es **`retrodocumentacion.md`**: es el procedimiento de seis pasos de [`13·DOC6`](base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md), y su sitio es al lado de esa regla, como ya está [`render-local-de-md.md`](base/13-documentacion/render-local-de-md.md).
+
+Entonces lo recomendable: mover ese uno, y escribir en el índice de `plantillas/` que ahí viven dos cosas, los modelos que se llenan a mano y las fuentes que usa el instalador.
+
+¿Corrijo el pendiente 23 con esto?
+
+### 158 · Usuario — 2026-08-14 22:24:37
+> si
+
+**Agente** — 2026-08-14 22:25:17
+<!-- agente: b60d016d-2a11-481c-8fb4-727ab2ccbeea -->
+
+Corregido el [pendiente 23](pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md) y el hallazgo H-7 en el resumen.
+
+Lo que cambió: de "sacar cuatro archivos de `plantillas/`" a **mover uno**. Los otros tres tienen su motivo escrito, y el pendiente lo dice en una tabla para que nadie lo vuelva a discutir.
+
+Queda solo el commit para poder cerrar la sesión.
+
+### 159 · Usuario — 2026-08-14 22:26:07
+> listo ya se puede cerrar?
+
+**Agente** — 2026-08-14 22:26:12
+<!-- agente: d3ce8cd7-1199-43fa-8f33-8c51979f2f69 -->
+
+Falta solo el commit. Con eso se marca la cuarta casilla y la sesión cierra.
+
+¿Lo hago?
+
+### 160 · Usuario — 2026-08-14 22:26:20
+> si

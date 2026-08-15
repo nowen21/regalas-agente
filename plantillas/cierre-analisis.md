@@ -1,6 +1,6 @@
 # Cierre de análisis — «módulo» «tema»   ·   `[CAPA 3]`
 
-> Consolida un análisis persistido (`13·DOC8`): qué se preguntó, qué se decidió, qué quedó. Se crea al terminar un análisis (`analisis/<...>.md` de `DOC6` · exploraciones · auditorías). Ruta canónica: `analisis/<modulo>-YYYY-MM-DD-cierre.md`. Reemplaza los `«…»` y borra esta caja.
+> Consolida un análisis persistido ([`13·DOC8`](../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)): qué se preguntó, qué se decidió, qué quedó. Se crea al terminar un análisis (`analisis/<...>.md` de [`13·DOC6`](../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) · exploraciones · auditorías). Ruta canónica: `analisis/<modulo>-YYYY-MM-DD-cierre.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -31,4 +31,4 @@
   `> Cerrado en <ruta-de-este-cierre> — consultar allí el estado vigente de cada decisión.`
 - **Registro en el prompt vivo** — agregar a su `## Historial de análisis`:
   `YYYY-MM-DD · <tema> · <ruta-a-este-cierre>`.
-- **Gaps generados** — cada `«gap-N»` queda en la §Qué falta del prompt vivo, listo para una fase futura (`DOC12` ORIGEN).
+- **Gaps generados** — cada `«gap-N»` queda en la §Qué falta del prompt vivo, listo para una fase futura ([`13·DOC12`](../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md) ORIGEN).

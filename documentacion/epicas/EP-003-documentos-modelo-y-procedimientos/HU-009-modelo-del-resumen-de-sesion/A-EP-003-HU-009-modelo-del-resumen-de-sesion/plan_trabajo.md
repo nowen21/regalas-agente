@@ -6,7 +6,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
+| **Fase** (identificador · [`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
 | **Épica** | [EP-003](../../epica.md) |
 | **HU** | [HU-009 Crear el modelo del resumen de sesión](../HU-009-modelo-del-resumen-de-sesion.md) |
 | **Módulo** | Documentos modelo |
@@ -16,7 +16,7 @@
 
 **ORIGEN** (`DOC12`): ✨ **Funcionalidad nueva.** Segundo eslabón de la cadena que abre el hallazgo H-4 del 2026-08-14. El primero, [`A-EP-003-HU-001`](../../HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md), cerró el 2026-08-14 con el commit `b877f37`. El tercero es EP-005 · HU-008, el enganche, que escribe el archivo con este modelo adentro.
 
-**CA de la HU que cubre esta fase** (una sola HU · `02·F12.1` · trazabilidad `DOC11`)
+**CA de la HU que cubre esta fase** (una sola HU · [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) · trazabilidad `DOC11`)
 
 | CA de HU-009 | Qué valida | Estado |
 |---|---|---|
@@ -83,7 +83,7 @@
 | `base/13-documentacion/base.md` | Modificar | Regla | La fila nueva en el índice del capítulo |
 | `validadores/historico.py` | Modificar | Programa | Reconocer y escribir la línea del índice con el enlace al resumen |
 | `validadores/reglas-validables.md` | Modificar | Documentación | La regla nueva, en la lista que le toque |
-| `CHANGELOG.md` · `VERSION` | Modificar | Versionado | Entrada y subida de versión (`20·M10`) |
+| `CHANGELOG.md` · `VERSION` | Modificar | Versionado | Entrada y subida de versión ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)) |
 
 > **`validadores/reglas-validables.md` lo está editando otra sesión.** Las tres filas de la fase anterior siguen sin commitear por eso. Esta fase escribe la suya igual, y el commit decide qué se puede guardar sin arrastrar trabajo ajeno.
 
@@ -114,13 +114,13 @@ N/A.
 | El hallazgo se identifica con `AAAA-MM-DD · tema · H-N` | Numeración corrida entre todas las sesiones | La numeración corrida obliga a un contador central, y dos sesiones abiertas a la vez lo rompen. Ya pasó con la versión, y está anotado en el pendiente 22 |
 | La sesión que hereda un hallazgo **no lo copia**: lo nombra y trabaja sobre el original | Copiarlo al resumen nuevo | Dos copias del mismo hallazgo terminan diciendo cosas distintas, y la que manda es la que nadie está mirando |
 
-> Las decisiones no obvias se registran también como señal (`13·DOC5`).
+> Las decisiones no obvias se registran también como señal ([`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)).
 
 ### 2.7 Dudas por resolver antes de codificar
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si la regla nueva `DOC22` obliga a todo proyecto a escribir resumen de sesión, o si es *opt-in* | usuario | **Resuelta** el 2026-08-14: obliga. Este repositorio es la línea base de todo proyecto, y lo que acá se exige se hereda. El cambio es MAYOR |
+| 1 | Si la regla nueva [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) obliga a todo proyecto a escribir resumen de sesión, o si es *opt-in* | usuario | **Resuelta** el 2026-08-14: obliga. Este repositorio es la línea base de todo proyecto, y lo que acá se exige se hereda. El cambio es MAYOR |
 | 2 | Si el resumen se enlaza desde el índice del histórico o desde cada línea de sesión | usuario | **Resuelta** el 2026-08-14: por sesión. Cada sesión resuelve un tema, así que su resumen va pegado a su línea |
 
 > Ninguna tarea de construcción inicia con una duda abierta que la bloquee.
@@ -138,7 +138,7 @@ N/A.
 | ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
 |---|---|---|:--:|---|---|---|
 | T-01 | Escribir en `historico-chat/resumenes/README.md` qué responde el resumen y qué la transcripción | Documentación | 1 h | — | ☑ | EV-01 |
-| T-02 | Escribir `DOC22`, con su ejemplo y su checklist | Regla | 2 h | T-01 | ☑ | EV-01 |
+| T-02 | Escribir [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md), con su ejemplo y su checklist | Regla | 2 h | T-01 | ☑ | EV-01 |
 | T-03 | Sumar su fila al índice de `base/13-documentacion/base.md` | Regla | 1 h | T-02 | ☑ | EV-01 |
 
 ### [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue) — Un hallazgo dice si está cerrado y por dónde sigue
@@ -164,8 +164,8 @@ N/A.
 | T-09 | Medir cuánto se demora en leer un resumen real y decidir si hay que acortar el modelo | [RNF-01](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | 1 h | ☑ | EV-04 |
 | T-10 | Leer un hallazgo abierto sin abrir la transcripción y ver si se puede retomar | [RNF-02](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | 1 h | ☑ | EV-04 |
 | T-11 | Comparar los dos resúmenes campo por campo | [RNF-03](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) | 1 h | ☑ | EV-04 |
-| T-12 | Anotar `DOC22` en `validadores/reglas-validables.md` | Documentación | 1 h | ☑ | EV-04 |
-| T-13 | Entrada en `CHANGELOG.md` y subida de `VERSION` (`20·M10`) | Documentación | 1 h | ☑ | EV-04 |
+| T-12 | Anotar [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) en `validadores/reglas-validables.md` | Documentación | 1 h | ☑ | EV-04 |
+| T-13 | Entrada en `CHANGELOG.md` y subida de `VERSION` ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)) | Documentación | 1 h | ☑ | EV-04 |
 
 **Total estimado:** 17 h. Eran 15 al aprobar; las dos de más son la modificación de `historico.py` que descubrió T-06.
 
@@ -225,7 +225,7 @@ Todo es texto y no toca datos: se revierte con la reversión del commit. `planti
 
 ## 8. Producción y migración incremental  ·  `F10` · `F14` Q12
 
-**Obliga.** `DOC22` exige a todo proyecto escribir el resumen de cada sesión, así que el cambio es MAYOR y lleva su aviso de migración.
+**Obliga.** [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) exige a todo proyecto escribir el resumen de cada sesión, así que el cambio es MAYOR y lleva su aviso de migración.
 
 Qué tiene que hacer un proyecto al día: correr el instalador para recibir el modelo, y crear la carpeta de resúmenes la primera vez que la use. Lo que ya está escrito no se rehace, y una sesión vieja sin resumen no se reabre: la regla aplica al trabajo en curso y al que viene.
 
@@ -235,7 +235,7 @@ Lo que hace llevadera la migración es que el archivo lo va a crear el enganche 
 
 ## 9. Reglas del estándar y del proyecto aplicadas  ·  `F14` Q13
 
-- Base: `02·F2`, `02·F8`, `02·F12.1`, `02·F17`, `13·DOC5`, `13·DOC11`, `13·DOC12`, `13·DOC17`, `13·DOC19`, `20·M5`, `20·M9`, `20·M10`, `20·M13`.
+- Base: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`13·DOC17`](../../../../../base/13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md), [`13·DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md), [`20·M5`](../../../../../base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md), [`20·M9`](../../../../../base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M13`](../../../../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md).
 - Proyecto: N/A. Este repositorio es el estándar y no tiene catálogo de reglas propias.
 
 ---
@@ -281,4 +281,4 @@ Lo que hace llevadera la migración es que el archivo lo va a crear el enganche 
 | Descripción | Registro / ticket |
 |---|---|
 | El resumen más viejo no tiene el campo «viene de» | DEF-01 del resultado de pruebas. Se llena si alguna vez se toca ese archivo |
-| La regla `DOC22` obliga y todavía no la valida ningún programa | Anotada en `validadores/reglas-validables.md`; la construye EP-004 |
+| La regla [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) obliga y todavía no la valida ningún programa | Anotada en `validadores/reglas-validables.md`; la construye EP-004 |

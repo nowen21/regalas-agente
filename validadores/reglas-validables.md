@@ -53,6 +53,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `F0` · `F14` · `F17` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |
 | `DOC1` · `DOC8` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (cierre, análisis, reglas, catálogo, HU) |
 | `DOC17` | `enlaces.py` | cada carpeta del árbol lleva su `README.md` y lista lo que cuelga de ella |
+| [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (existencia) | `resumen.py` · `hook_resumen.py` | el resumen existe, se mueve con la transcripción, y se avisa qué le falta |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
 | `DOC14` (resolución de enlaces) | `enlaces.py` | enlaces `.md` resuelven |
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
@@ -70,12 +71,13 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 |---|---|---|
 | `F2` | ¿código de fase sin especificación referenciado? | cruzar el código con su especificación; es el más pesado |
 | `F18` | cada intervención del plan referencia un CA | mapear intervención→CA dentro del plan (fuzzy) |
+| [`02·F21`](../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) | que un archivo nuevo no traiga un incumplimiento que ya está anotado en `pendientes/` | necesita saber qué comprueba cada pendiente; hoy eso está en prosa |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
-| `DOC19` | toda plantilla marca sus huecos `«…»` y ninguna usa otra marca | se valida en seco sobre `plantillas/`; lo construye EP-004 |
-| `DOC20` | un documento entregado no conserva ningún `«…»` | necesita saber qué documento se da por terminado, y eso hoy no está declarado |
-| `DOC21` | ninguna sección de un documento queda con su marca puesta en vez de `N/A` | va con `DOC20`: el mismo recorrido distingue hueco sin llenar de sección no aplicable |
-| `DOC22` | cada sesión del histórico tiene su resumen, y ese resumen trae los campos del modelo | se valida en seco sobre `historico-chat/`; lo construye EP-004 |
+| [`13·DOC19`](../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) | toda plantilla marca sus huecos `«…»` y ninguna usa otra marca | se valida en seco sobre `plantillas/`; lo construye EP-004 |
+| [`13·DOC20`](../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) | un documento entregado no conserva ningún `«…»` | necesita saber qué documento se da por terminado, y eso hoy no está declarado |
+| [`13·DOC21`](../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) | ninguna sección de un documento queda con su marca puesta en vez de `N/A` | va con [`13·DOC20`](../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md): el mismo recorrido distingue hueco sin llenar de sección no aplicable |
+| [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (contenido) | que el resumen traiga hallazgos de verdad y no solo el molde | reconocer un hallazgo es criterio; el programa solo ve si hay alguno |
 
 ### Meta-reglas (`20`) — se validan **en seco**, sobre el propio estándar
 

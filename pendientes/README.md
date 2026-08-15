@@ -66,9 +66,9 @@ Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../p
 
 **El 13 conviene primero:** es una lista y una tabla, y el 12 reusa esa misma tabla de riesgo para los modelos de un proyecto. El 16 se resuelve al escribirlo, no construyendo nada.
 
-### Lo que dejó la sesión del 2026-08-14 (17–22)
+### Lo que dejaron las sesiones del 2026-08-14 (17–25)
 
-Salieron de trabajar el pendiente 01 y quedaron anotados en su [resumen](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md). Del 23 al 25 salieron de cerrar el hallazgo H-4 de esa sesión, y quedaron en el [suyo](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
 
 | # | Pendiente | Qué resuelve |
 |---|---|---|
@@ -78,7 +78,9 @@ Salieron de trabajar el pendiente 01 y quedaron anotados en su [resumen](../hist
 | 20 | [`F2` no dice cuándo no aplica](20-f2-no-dice-cuando-no-aplica.md) | Dos fases seguidas se abrieron sin especificación con buenos motivos, y la regla no las contempla. |
 | 21 | [El glosario, y lo que quedó en inglés](21-el-glosario-y-los-terminos-en-ingles.md) | Los trece roles siguen en inglés y no hay glosario de la terminología del estándar. |
 | 22 | [Dos sesiones versionando a la vez](22-dos-sesiones-versionando-a-la-vez.md) | Dos sesiones abiertas dejaron dos numeraciones vivas en el mismo archivo. |
-| 23 | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Cuatro archivos de `plantillas/` no se llenan, y obligan a mantener una lista de excepciones. |
+| 23 | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. |
+| 24 | [Buscar en el repositorio antes de preguntar](24-buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. |
+| 25 | [Las reglas de cómo se escribe llegan en el índice, no puestas](25-las-reglas-de-como-se-escribe-van-en-el-indice.md) | `ID8` llegaba como una línea de índice, y por eso todo lo escrito en una sesión la incumplió. |
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 

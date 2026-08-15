@@ -45,19 +45,19 @@
 
 | Clave | Qué declara | Cómo se escribe | Ejemplo |
 |---|---|---|---|
-| `modulos.ruta` | dónde vive cada módulo (`14·EST1`) | una ruta con `<modulo>` en el lugar del nombre, desde la raíz del repositorio | `app/Modules/<modulo>` |
-| `tablas.caso` | cómo se escribe un nombre de tabla (`14·EST2`) | uno de: `snake_case` · `PascalCase` · `camelCase` · `kebab-case` · `SCREAMING_SNAKE` | `snake_case` |
+| `modulos.ruta` | dónde vive cada módulo ([`14·EST1`](../base/14-estructura-codigo.md#est1--organiza-el-código-nuevo-por-módulo-en-ubicación-predecible)) | una ruta con `<modulo>` en el lugar del nombre, desde la raíz del repositorio | `app/Modules/<modulo>` |
+| `tablas.caso` | cómo se escribe un nombre de tabla ([`14·EST2`](../base/14-estructura-codigo.md#est2--nomenclatura-consistente)) | uno de: `snake_case` · `PascalCase` · `camelCase` · `kebab-case` · `SCREAMING_SNAKE` | `snake_case` |
 | `columnas.caso` | ídem para columnas | los mismos cinco | `snake_case` |
 | `clases.caso` | ídem para clases | los mismos cinco | `PascalCase` |
 | `fk.sufijo` | cómo termina una clave foránea | el sufijo tal cual; varios separados por coma | `_id` |
 | `booleanos.prefijo` | cómo empieza una columna booleana | el prefijo tal cual; varios separados por coma | `es_, tiene_` |
 | `timestamps.sufijo` | cómo termina una fecha de evento | el sufijo tal cual; varios separados por coma | `_at` |
-| `permisos.formato` | la forma de un permiso (`04·S1`) | un patrón con `<recurso>` y `<accion>` | `<recurso>.<accion>` |
-| `auditoria.columnas` | qué lleva toda tabla de dominio (`03·D1`) | las columnas separadas por coma, o `mecanismo:<Nombre>` si las pone un trait, un mixin o una clase base | `usercreate_id, userupdate_id, created_at, updated_at` |
-| `inmutables.estados` | los tres estados de `15·IM2` | los códigos reales, en orden borrador → materializado → anulado | `borrador, materializado, anulado` |
-| `inmutables.anulacion` | los campos de anulación de `15·IM2` | las columnas de cuándo, quién y motivo | `anulado_at, anulado_por, motivo_anulacion` |
-| `inmutables.permiso` | el permiso propio de anular (`15·IM5`) | el permiso con `<recurso>` en el lugar de la entidad | `<recurso>.anular` |
-| `legacy.ignorar` | qué código quedó fuera de la convención y no se renombra (`14·EST3`) | rutas o patrones separados por coma; lo que encaje no se revisa | `app/Legacy/*, database/migrations/2019_*` |
+| `permisos.formato` | la forma de un permiso ([`04·S1`](../base/04-seguridad.md#s1--autorización-en-cada-acción-sensible)) | un patrón con `<recurso>` y `<accion>` | `<recurso>.<accion>` |
+| `auditoria.columnas` | qué lleva toda tabla de dominio ([`03·D1`](../base/03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría)) | las columnas separadas por coma, o `mecanismo:<Nombre>` si las pone un trait, un mixin o una clase base | `usercreate_id, userupdate_id, created_at, updated_at` |
+| `inmutables.estados` | los tres estados de [`15·IM2`](../base/15-registros-inmutables.md#im2--estados-y-campos-de-anulación) | los códigos reales, en orden borrador → materializado → anulado | `borrador, materializado, anulado` |
+| `inmutables.anulacion` | los campos de anulación de [`15·IM2`](../base/15-registros-inmutables.md#im2--estados-y-campos-de-anulación) | las columnas de cuándo, quién y motivo | `anulado_at, anulado_por, motivo_anulacion` |
+| `inmutables.permiso` | el permiso propio de anular ([`15·IM5`](../base/15-registros-inmutables.md#im5--permiso-propio-para-anular)) | el permiso con `<recurso>` en el lugar de la entidad | `<recurso>.anular` |
+| `legacy.ignorar` | qué código quedó fuera de la convención y no se renombra ([`14·EST3`](../base/14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo)) | rutas o patrones separados por coma; lo que encaje no se revisa | `app/Legacy/*, database/migrations/2019_*` |
 
 Qué entidades son de dominio y cuáles son inmutables **no se declara aquí**: eso es dominio, y va en la tabla de entidades de `dominio.md`, el archivo vecino de esta misma carpeta.
 

@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
+| **Fase** (identificador · [`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
 | **Módulo** | Documentos modelo |
 | **Brief / Épica / HU** | [EP-003](../../epica.md) · [HU-009](../HU-009-modelo-del-resumen-de-sesion.md) |
 | **Última actualización** | 2026-08-14 |
@@ -24,7 +24,7 @@
 | 5 | Spec Writer | 👤 especificación aprobada | ☑ la del módulo, ampliada con las reglas 8 a 16 |
 | 6 | Designer | diseño coherente | ☑ las decisiones están en §2.6 del plan de trabajo |
 | 7 | Task Planner | 👤 plan + pruebas aprobados | ☑ aprobados, con una ampliación también aprobada |
-| 8 | Implementer | implementado + pruebas verdes | ☑ `DOC22`, el índice enlazado y el modelo con la herencia |
+| 8 | Implementer | implementado + pruebas verdes | ☑ [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md), el índice enlazado y el modelo con la herencia |
 | 9 | Verifier | trazabilidad sin faltantes | ☑ las seis exigencias en verde |
 | 10 | Crítico | sin hallazgos graves | ☑ un defecto abierto, DEF-01, declarado fuera de alcance |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ **acá está detenida**: falta el `funcionalidad_implementada.md` |
@@ -55,7 +55,7 @@
 
 ---
 
-## 2. Decisiones y señales generadas  ·  `13·DOC5`
+## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
@@ -67,7 +67,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **El `funcionalidad_implementada.md`**, y después el commit, que el usuario autoriza aparte.
-- Las dos dudas de §2.7 quedaron respondidas el 2026-08-14: `DOC22` obliga, y el resumen se enlaza en la línea de cada sesión.
+- Las dos dudas de §2.7 quedaron respondidas el 2026-08-14: [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) obliga, y el resumen se enlaza en la línea de cada sesión.
 
 ---
 

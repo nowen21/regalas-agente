@@ -36,6 +36,7 @@ import plantillas       # noqa: E402
 import rama             # noqa: E402
 import recuerdos        # noqa: E402
 import rendimiento      # noqa: E402
+import resumen          # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
@@ -1808,6 +1809,141 @@ class EnlacesDelHistorico(unittest.TestCase):
     def test_el_indice_del_historico_si_se_comprueba(self):
         self.assertFalse(enlaces._es_transcripcion(
             os.path.join("x", "historico-chat", "README.md")))
+
+
+
+class ResumenDeLaSesion(unittest.TestCase):
+    """El enganche que sostiene el resumen: crea, avisa y muestra lo abierto."""
+
+    def _proyecto(self):
+        raiz = tempfile.mkdtemp()
+        os.makedirs(os.path.join(raiz, "historico-chat", "resumenes", "2026-08-14"))
+        os.makedirs(os.path.join(raiz, "plantillas"))
+        with open(os.path.join(raiz, "plantillas", "sesion.md"), "w",
+                  encoding="utf-8") as f:
+            f.write("# Modelo\n\n## Hallazgos de esta sesión\n\n"
+                    "### H-1 · «título»\n- **Estado:** «resuelto acá / abierto»\n")
+        return raiz
+
+    def _resumen(self, raiz, nombre, cuerpo):
+        ruta = os.path.join(raiz, "historico-chat", "resumenes", "2026-08-14", nombre)
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(cuerpo)
+        return ruta
+
+    # CP-001 · el archivo nace al abrir la sesión
+    def test_crea_el_archivo_con_el_modelo_y_sin_hallazgos(self):
+        raiz = self._proyecto()
+        ruta = resumen.crear(raiz, "2026-08-14-maracuya.md", raiz)
+        self.assertTrue(os.path.isfile(ruta))
+        self.assertEqual(resumen.hallazgos(ruta), [])
+
+    def test_no_pisa_el_resumen_que_ya_existe(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md",
+                             "### H-1 · algo\n- **Estado:** abierto\n")
+        resumen.crear(raiz, "2026-08-14-maracuya.md", raiz)
+        with open(ruta, encoding="utf-8") as f:
+            self.assertIn("H-1 · algo", f.read())
+
+    # CP-002 · dos sesiones el mismo día no se pisan
+    def test_dos_sesiones_del_mismo_dia_son_dos_archivos(self):
+        raiz = self._proyecto()
+        a = resumen.crear(raiz, "2026-08-14-maracuya.md", raiz)
+        b = resumen.crear(raiz, "2026-08-14-pepito.md", raiz)
+        self.assertNotEqual(a, b)
+        self.assertTrue(os.path.isfile(a) and os.path.isfile(b))
+
+    # CP-003 · el renombrado mueve los dos archivos
+    def test_renombrar_mueve_tambien_el_resumen(self):
+        raiz = self._proyecto()
+        carpeta = os.path.join(raiz, "historico-chat")
+        ruta = os.path.join(carpeta, "2026-08-14-sesion.md")
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("<!-- sesion: x -->\n\n# 2026-08-14 — Sesión\n")
+        self._resumen(raiz, "sesion.md", "# lo que quedó\n")
+        historico.renombrar(ruta, "maracuya", "prueba")
+        dia = os.path.join(carpeta, "resumenes", "2026-08-14")
+        self.assertTrue(os.path.isfile(os.path.join(dia, "maracuya.md")))
+        self.assertFalse(os.path.isfile(os.path.join(dia, "sesion.md")))
+
+    def test_renombrar_sin_resumen_no_falla(self):
+        raiz = self._proyecto()
+        carpeta = os.path.join(raiz, "historico-chat")
+        ruta = os.path.join(carpeta, "2026-08-14-sesion.md")
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write("<!-- sesion: x -->\n\n# 2026-08-14 — Sesión\n")
+        historico.renombrar(ruta, "pepito", "prueba")
+        self.assertTrue(os.path.isfile(os.path.join(carpeta, "2026-08-14-pepito.md")))
+
+    # CP-004 y CP-005 · qué falta, y cuándo se calla
+    def test_avisa_que_no_hay_ningun_hallazgo(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md", "# lo que quedó\n")
+        self.assertEqual(resumen.falta(ruta), ["vacio"])
+
+    def test_avisa_que_falta_decir_si_se_puede_cerrar(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md",
+                             "### H-1 · algo\n- **Estado:** abierto\n\n"
+                             "## ¿Se puede cerrar la sesión?\n\n| x | ☐ |\n")
+        self.assertEqual(resumen.falta(ruta), ["cierre"])
+
+    def test_calla_cuando_no_falta_nada(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md",
+                             "### H-1 · algo\n- **Estado:** resuelto acá\n\n"
+                             "## ¿Se puede cerrar la sesión?\n\n| x | ☑ |\n")
+        self.assertEqual(resumen.falta(ruta), [])
+
+    # CP-007 · el aviso no se repite
+    def test_el_aviso_no_se_repite(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md", "# lo que quedó\n")
+        self.assertEqual(resumen.falta(ruta), ["vacio"])
+        resumen.marcar_avisado(ruta, "vacio")
+        self.assertEqual(resumen.falta(ruta), [])
+
+    def test_la_marca_del_aviso_vive_en_el_propio_resumen(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "maracuya.md", "# lo que quedó\n")
+        resumen.marcar_avisado(ruta, "vacio")
+        with open(ruta, encoding="utf-8") as f:
+            self.assertIn(resumen.MARCA_VACIO, f.read())
+
+    # CP-006 · se muestra lo abierto del propósito, y nada de otros temas
+    def test_muestra_el_hallazgo_del_proposito_si_sigue_abierto(self):
+        raiz = self._proyecto()
+        self._resumen(raiz, "maracuya.md",
+                      "### H-4 · el hueco\n- **Estado:** abierto\n"
+                      "- **Con qué se retoma:** la pregunta viva\n")
+        ruta = self._resumen(raiz, "pepito.md",
+                             "**Viene de:** 2026-08-14 · maracuya · H-4\n")
+        p = resumen.proposito(raiz, ruta)
+        self.assertIsNotNone(p)
+        self.assertEqual(p[1], "H-4")
+        self.assertEqual(p[3], "la pregunta viva")
+
+    def test_no_muestra_lo_abierto_de_otro_tema(self):
+        raiz = self._proyecto()
+        self._resumen(raiz, "otro-tema.md",
+                      "### H-9 · nada que ver\n- **Estado:** abierto\n")
+        self._resumen(raiz, "maracuya.md",
+                      "### H-4 · el hueco\n- **Estado:** resuelto acá\n")
+        ruta = self._resumen(raiz, "pepito.md",
+                             "**Viene de:** 2026-08-14 · maracuya · H-4\n")
+        self.assertIsNone(resumen.proposito(raiz, ruta))
+
+    def test_sin_proposito_declarado_no_muestra_nada(self):
+        raiz = self._proyecto()
+        ruta = self._resumen(raiz, "pepito.md",
+                             "**Viene de:** «AAAA-MM-DD · tema · H-N»\n")
+        self.assertIsNone(resumen.proposito(raiz, ruta))
+
+    # CP-009 · no se mete donde no lo llaman
+    def test_un_proyecto_sin_carpeta_de_resumenes_no_se_ve_afectado(self):
+        raiz = tempfile.mkdtemp()
+        self.assertEqual(resumen.crear(raiz, "2026-08-14-maracuya.md", raiz), "")
 
 
 if __name__ == "__main__":

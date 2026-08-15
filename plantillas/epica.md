@@ -1,6 +1,6 @@
 # EP-000 — «Título de la épica»
 
-> Plantilla general de Épica. Una épica agrupa historias de usuario que comparten un objetivo de negocio común y suele abarcar varios sprints. Reemplaza los `«…»` y borra esta caja. La sección que no aplique se escribe `N/A`, no se borra (`13·DOC21`).
+> Plantilla general de Épica. Una épica agrupa historias de usuario que comparten un objetivo de negocio común y suele abarcar varios sprints. Reemplaza los `«…»` y borra esta caja. La sección que no aplique se escribe `N/A`, no se borra ([`13·DOC21`](../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md)).
 
 ---
 

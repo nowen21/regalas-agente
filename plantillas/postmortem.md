@@ -1,6 +1,6 @@
 # Postmortem — «título del incidente»   ·   `[CAPA 3]`
 
-Se escribe tras un incidente relevante (`19·OB5`). **Sin culpa:** el foco es el sistema y el proceso, no la persona. El objetivo es que **no vuelva a pasar**, no señalar a nadie.
+Se escribe tras un incidente relevante ([`19·OB5`](../base/19-observabilidad-y-operacion.md#ob5--postmortem-sin-culpa)). **Sin culpa:** el foco es el sistema y el proceso, no la persona. El objetivo es que **no vuelva a pasar**, no señalar a nadie.
 
 - **Fecha del incidente:** «…» · **detectado por:** «alerta / usuario / …» · **duración:** «…»
 - **Severidad:** «alta / media / baja»
@@ -33,4 +33,4 @@ Se escribe tras un incidente relevante (`19·OB5`). **Sin culpa:** el foco es el
 |---|---|---|---|
 | «…» | «…» | «…» | «abierta» |
 
-> Registrar la lección como señal (`13·DOC5`, tipo `error-resuelto` / `aprendizaje`) y abrir las acciones como deuda (`deuda-tecnica`) para que la memoria y el backlog las tengan.
+> Registrar la lección como señal ([`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), tipo `error-resuelto` / `aprendizaje`) y abrir las acciones como deuda (`deuda-tecnica`) para que la memoria y el backlog las tengan.

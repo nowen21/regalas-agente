@@ -4,7 +4,7 @@
 
 ## El problema
 
-`13·DOC14` pide que el texto de un enlace sea la ruta completa desde la raíz y el destino la ruta relativa. Al escribir el validador de ese formato aparecieron **354 enlaces** del propio estándar que no lo cumplen.
+[`13·DOC14`](../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) pide que el texto de un enlace sea la ruta completa desde la raíz y el destino la ruta relativa. Al escribir el validador de ese formato aparecieron **354 enlaces** del propio estándar que no lo cumplen.
 
 No son falsos positivos. Son enlaces cuyo texto dice el nombre del archivo pero no dónde vive: `[00-nucleo-blindado.md]` en vez de `[base/00-nucleo-blindado.md]`.
 
@@ -29,3 +29,14 @@ No son falsos positivos. Son enlaces cuyo texto dice el nombre del archivo pero 
 ## El límite
 
 El validador solo mira el enlace cuyo texto ya tiene forma de ruta. El de texto descriptivo no se toca: la propia regla lo permite.
+
+## De acá nació [`02·F21`](../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md)
+
+Este pendiente se estaba usando como permiso. El 2026-08-14, con los 354 ya contados, los documentos escritos ese mismo día sumaron 122 incumplimientos nuevos de la misma familia: la deuda dejaba de ser deuda y pasaba a ser costumbre.
+
+De ahí salió la regla: **desde que un incumplimiento queda registrado, lo que se escriba de ahí en adelante nace cumpliendo.** El usuario lo dijo así: *"yo antes escribía sin ortografía, pero a partir de que aprendí ya escribo con ortografía, no importa el contexto"*.
+
+Para este pendiente eso significa dos cosas:
+
+- **La cuenta ya no crece.** Los 354 son los de antes del 2026-08-14; si aparecen más, no es deuda vieja, es un incumplimiento nuevo de `F21`.
+- **Limpiarlos sigue siendo trabajo aparte**, y es lo que este pendiente guarda.

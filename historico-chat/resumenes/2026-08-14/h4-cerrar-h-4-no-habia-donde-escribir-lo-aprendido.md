@@ -24,9 +24,9 @@ Se anotan todos, resueltos y abiertos.
 - **Qué se decidió:** sin decidir. Se corrigió la pregunta en el momento, no la conducta.
 - **Estado:** abierto.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
-- **Dispara:** EP-001 · HU nueva, buscar en el repositorio antes de preguntar. Sin escribir.
+- **Dispara:** EP-001 · HU-011, buscar en el repositorio antes de preguntar. Su narrativa y su contexto quedan escritos en el pendiente 24, listos para bajarlos a la épica.
 - **Orden de resolución:** 2 de 2 · no bloquea la cadena de H-4.
-- **Dónde queda:** —. Falta el pendiente.
+- **Dónde queda:** [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿es regla nueva de `base/01`, o le cabe a la regla que ya existe sobre el pedido incompleto?
@@ -81,37 +81,37 @@ Se anotan todos, resueltos y abiertos.
 - **Qué pasó:** al verificar si HU-001 ya estaba resuelta de hecho, resultó que `«…»` se usa en 25 de las 30 plantillas, pero ninguna regla la exige. Las otras cinco usan `[texto]`, `<texto>` o nada.
 - **Por qué importa:** una convención que nadie escribió se cumple mientras alguien se acuerde. Y sin decir qué **no** es un hueco (la sintaxis de un comando lo parece), el programa que la cuente va a reportar de más.
 - **Qué lo soluciona:** la fase A de HU-001, abierta y ejecutada en esta sesión.
-- **Qué se decidió:** la marca es `«…»`, porque cambiarla costaría 25 archivos en vez de 5. Nacieron tres reglas, no una: `13·DOC19` la marca, `DOC20` que un documento con marcas no está terminado y `DOC21` que lo que no aplica se escribe `N/A`. Se convirtieron 179 huecos en 13 plantillas. Versión 13.0.0, MAYOR.
-- **Estado:** abierto. Los tres criterios están en verde y el trabajo hecho, pero falta el commit, que se autoriza aparte.
+- **Qué se decidió:** la marca es `«…»`, porque cambiarla costaría 25 archivos en vez de 5. Nacieron tres reglas, no una: [`13·DOC19`](../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) la marca, [`13·DOC20`](../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) que un documento con marcas no está terminado y [`13·DOC21`](../../../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) que lo que no aplica se escribe `N/A`. Se convirtieron 179 huecos en 13 plantillas. Versión 13.0.0, MAYOR.
+- **Estado:** resuelto acá.
 - **Responde a:** EP-003 · HU-001, la marca de espacio por llenar.
 - **Dispara:** —. La historia ya existía; lo que faltaba era bajarla a fase.
-- **Orden de resolución:** 1 de 2 · es la primera de la cadena de H-4, y HU-009 la declara dependencia de impacto alto.
-- **Dónde queda:** [la fase A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md). No lleva pendiente: su continuación ya está abierta.
+- **Orden de resolución:** —, ya está cerrado.
+- **Dónde queda:** [la fase A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) · reglas [`13·DOC19`](../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md), [`13·DOC20`](../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) y [`13·DOC21`](../../../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) · versión 13.0.0 · commit `b877f37`.
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
-- **Cerrado en:** —
-- **Con qué se retoma:** autorizar el commit de la fase, y seguir la cadena por EP-003 · HU-009.
+- **Cerrado en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
+- **Con qué se retoma:** —
 
 ### H-6 · El agente escribía el estándar sin haber cargado el estándar
 
-- **Qué pasó:** todo lo escrito hoy incumple `00·ID8`, la regla que prohíbe las marcas de generación automática. La raya larga como inciso está en la especificación, en los dos planes, en el resumen y en casi todas las respuestas del chat.
+- **Qué pasó:** todo lo escrito hoy incumple [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md), la regla que prohíbe las marcas de generación automática. La raya larga como inciso está en la especificación, en los dos planes, en el resumen y en casi todas las respuestas del chat.
 - **Por qué importa:** la causa no fue el descuido. El `CLAUDE.md` que se instala en un proyecto heredero exige cargar todos los archivos de `base/` al abrir la sesión, y el `CLAUDE.md` de este repositorio no lo pedía. Es decir: un proyecto que hereda cumplía más que el repositorio del que hereda.
 - **Qué lo soluciona:** el paso 0 del `CLAUDE.md`, agregado en esta sesión, que copia esa exigencia.
-- **Qué se decidió:** se agrega el paso 0 y se deja escrito que `ID8` habla de "todo documento que el agente entrega", lo que incluye las respuestas del chat. Falta corregir lo ya escrito hoy.
+- **Qué se decidió:** se agrega el paso 0 y se deja escrito que [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) habla de "todo documento que el agente entrega", lo que incluye las respuestas del chat. Falta corregir lo ya escrito hoy.
 - **Estado:** abierto.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —. La regla ya existe; lo que faltaba era cargarla.
 - **Orden de resolución:** 1 de 3 · mientras no se corrija, cada archivo nuevo repite el incumplimiento.
-- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0.
+- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0 · [pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md](../../../pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
-- **Con qué se retoma:** limpiar de raya larga los archivos escritos en esta sesión, y decidir si el enganche de arranque debe cargar `base/` en lugar de dejarlo al `CLAUDE.md`.
+- **Con qué se retoma:** hacer que `cargador.py` mande literales los capítulos `00` y `01`, y medir cuánto crece el arranque.
 
 ### H-7 · La carpeta de plantillas mezcla modelos con procedimientos
 
 - **Qué pasó:** al aplicar la marca, cuatro de los treinta archivos de `plantillas/` quedaron sin ninguna, y hubo que declararlos como excepción para que la prueba de cobertura se pudiera juzgar.
 - **Por qué importa:** la lista de excepciones es el síntoma. Mientras esos cuatro estén ahí, cada comprobación tiene que consultar una lista escrita a mano, y un archivo nuevo sin marca se cuela como "seguro es otro de esos".
-- **Qué lo soluciona:** sacarlos de `plantillas/`. Con eso, un archivo sin marca pasa a ser siempre un defecto.
-- **Qué se decidió:** sin decidir entre las dos opciones: una subcarpeta `plantillas/procedimientos/`, o sacarlos a `base/` como anexos. La segunda cambia qué copia el instalador.
+- **Qué lo soluciona:** mover el único que está mal ubicado, `retrodocumentacion.md`, al capítulo 13, y escribir en el índice de `plantillas/` que ahí viven modelos y fuentes del instalador.
+- **Qué se decidió:** al mirar el instalador, tres de los cuatro están bien: `historico-chat.md` y `memoria.md` son la fuente con la que se genera el archivo de cada proyecto, y el molde de pedido ya está aparte. Solo sobra `retrodocumentacion.md`, que es el procedimiento de `13·DOC6`.
 - **Estado:** abierto.
 - **Responde a:** EP-003 · HU-001, la marca de espacio por llenar.
 - **Dispara:** —. Es mover archivos, y necesita su fase por la migración.
@@ -119,7 +119,22 @@ Se anotan todos, resueltos y abiertos.
 - **Dónde queda:** [pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md](../../../pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
-- **Con qué se retoma:** ¿subcarpeta dentro de `plantillas/`, o anexos en `base/`? Lo segundo cambia qué recibe un proyecto al instalar.
+- **Con qué se retoma:** mover `retrodocumentacion.md` al capítulo 13 y corregir las citas a su ruta vieja en el mismo cambio.
+
+### H-8 · Un pendiente se estaba usando como permiso
+
+- **Qué pasó:** el repositorio tiene anotado que 354 enlaces no cumplen [`13·DOC14`](../../../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md), y los documentos escritos hoy sumaban 122 incumplimientos nuevos de la misma familia, más las citas sin enlace de [`20·M15`](../../../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md).
+- **Por qué importa:** la deuda deja de ser deuda y pasa a ser costumbre. Un pendiente sirve para limpiar lo viejo, no para autorizar más de lo mismo.
+- **Qué lo soluciona:** la regla [`02·F21`](../../../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md), escrita en esta sesión.
+- **Qué se decidió:** desde que un incumplimiento queda registrado, lo nuevo nace cumpliendo. El usuario lo dijo así: *"yo antes escribía sin ortografía, pero a partir de que aprendí ya escribo con ortografía, no importa el contexto"*. Se enlazaron 122 citas en 23 plantillas, 34 en los documentos de las fases, 11 en los dos resúmenes y 5 en `reglas-validables.md`.
+- **Estado:** resuelto acá.
+- **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
+- **Dispara:** —. La regla ya quedó escrita.
+- **Orden de resolución:** —, ya está cerrado.
+- **Dónde queda:** [`02·F21`](../../../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) · versión 15.0.0.
+- **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
+- **Cerrado en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
+- **Con qué se retoma:** —
 
 ---
 
@@ -129,9 +144,19 @@ Se anotan todos, resueltos y abiertos.
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3 y H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ falta el de H-1. H-5 no lo necesita: su continuación es la fase ya abierta |
-| Toda historia disparada está escrita en su épica | ☐ falta la de H-1 |
-| Lo que se hizo está aprobado y guardado | ☐ la fase de HU-001 quedó en el commit `b877f37`; la de HU-009 está sin commitear |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3, H-4, H-5 y H-8 |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 en el 24, H-6 en el 25, H-7 en el 23 |
+| Toda historia disparada está escrita en su épica | ☑ la de H-1 queda con su narrativa y su contexto en el pendiente 24 |
+| Lo que se hizo está aprobado y guardado | ☐ falta commitear de la 14.0.1 en adelante |
 
-**De la cadena de H-4 van dos de tres.** Cerraron [`A-EP-003-HU-001`](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) y [`A-EP-003-HU-009`](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md). Falta EP-005 · HU-008, el enganche, que es lo que hace que el resumen exista sin que nadie se acuerde.
+**El propósito de la sesión está cumplido.** Las tres fases de la cadena de H-4 cerraron, y el hallazgo quedó marcado resuelto en el resumen donde nació:
+
+| Paso | Fase | Estado |
+|---|---|---|
+| La marca del espacio por llenar | [A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) | Cerrada · `b877f37` |
+| El modelo del resumen | [A-EP-003-HU-009](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) | Cerrada · `e998cc2` |
+| El enganche que lo sostiene | [A-EP-005-HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) | Cerrada · sin commitear |
+
+Lo que queda abierto (H-1, H-6 y H-7) **no es del propósito de esta sesión**: nació acá y se cierra en otra, y para eso basta con que quede anotado.
+
+<!-- aviso: falta decir si la sesión se puede cerrar -->

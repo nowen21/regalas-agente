@@ -4,7 +4,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
+| **Fase** (identificador · [`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-009-modelo-del-resumen-de-sesion` |
 | **Módulo** | Documentos modelo |
 | **Especificación del módulo** | [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md) |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
@@ -22,7 +22,7 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 
 ---
 
-## 2. Trazabilidad  ·  `13·DOC11`
+## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
 
 ### 2.1 Especificación → implementación
 
@@ -43,7 +43,7 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
 | T-01 | Qué responde el resumen y qué la transcripción | ✅ hecha | `historico-chat/resumenes/README.md` | La tabla de "cuál de los dos abrir" |
-| T-02 | Escribir `DOC22` con su checklist | ✅ hecha | `base/13-documentacion/reglas/DOC22-…` | La regla, checklist en CUMPLE |
+| T-02 | Escribir [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) con su checklist | ✅ hecha | `base/13-documentacion/reglas/DOC22-…` | La regla, checklist en CUMPLE |
 | T-03 | Su fila en el índice del capítulo | ✅ hecha | `base/13-documentacion/base.md` | El índice |
 | T-04 | Cómo se identifica un hallazgo entre sesiones | ✅ hecha | `plantillas/sesion.md` | `AAAA-MM-DD · tema · H-N` |
 | T-05 | Qué hace la sesión que hereda un hallazgo | ✅ hecha | `plantillas/sesion.md` | "El hallazgo que se hereda no se copia" |
@@ -54,14 +54,14 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 | T-09 | Medir cuánto se demora leer un resumen | ✅ hecha | — | CP-005: 2.426 palabras el más largo |
 | T-10 | Retomar un hallazgo sin la transcripción | ✅ hecha | — | CP-002 |
 | T-11 | Comparar los dos resúmenes campo por campo | ✅ hecha | — | CP-006: los 12 campos, idénticos |
-| T-12 | `DOC22` en `reglas-validables.md` | ✅ hecha | `validadores/reglas-validables.md` | Su fila |
+| T-12 | [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) en `reglas-validables.md` | ✅ hecha | `validadores/reglas-validables.md` | Su fila |
 | T-13 | `CHANGELOG.md` y `VERSION` | ✅ hecha | — | Versión 14.0.0 |
 
 **Correspondencia con el plan:** 14 tareas en el plan, 14 acá. Cuadra.
 
 **Tareas que no se hicieron:** ninguna.
 
-**Archivos tocados que el plan no declaraba**  ·  `02·F8`:
+**Archivos tocados que el plan no declaraba**  ·  [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
 
 | Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
 |---|---|---|
@@ -71,11 +71,11 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 
 ---
 
-## 3. Qué se probó  ·  `08` / `02·F5`
+## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
 - **Fuente:** [resultado_pruebas.md](resultado_pruebas.md) · **Veredicto:** Cumple.
 - **Suites corridas + resultado:** `validar.py estandar`, 0 fallas y 2 avisos que ya venían de antes.
-- **Verificaciones manuales** (`08·T4`):
+- **Verificaciones manuales** ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
   - Retomar un hallazgo abierto real sin abrir su transcripción.
   - Seguir el H-4 del 2026-08-14 en las dos direcciones, entre las dos sesiones que lo tocaron.
   - Leer entero el resumen más largo y comparar campo por campo los dos.
@@ -84,14 +84,14 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 
 ---
 
-## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
+## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
 
 - **Punto de entrada:** el índice de [`historico-chat/README.md`](../../../../../historico-chat/README.md). Cada línea de sesión lleva su transcripción y, después del `·`, su resumen.
 - **Permisos o datos base sembrados:** N/A.
 
 ---
 
-## 5. Decisiones no obvias  ·  `13·DOC2` / `DOC5`
+## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / `DOC5`
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
@@ -106,25 +106,25 @@ Sirve a quien retoma un trabajo días después: entra por el índice del histór
 
 | Descripción | Origen | Destino |
 |---|---|---|
-| `DOC22` obliga y ningún programa lo comprueba todavía | Diferido por el plan | EP-004, anotado en `validadores/reglas-validables.md` |
+| [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) obliga y ningún programa lo comprueba todavía | Diferido por el plan | EP-004, anotado en `validadores/reglas-validables.md` |
 | El resumen más viejo no tiene el campo «viene de» | Diferido por el plan | Se llena si alguna vez se toca ese archivo |
 | El índice del histórico se declaró como documentación cuando lo escribe un programa | No previsto | Ya corregido en esta misma fase; queda la lección en §13 del plan |
 
 ---
 
-## 7. Índices y mapas actualizados  ·  `13·DOC9` / `DOC13`
+## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / `DOC13`
 
-- [x] Índice del capítulo 13 con `DOC22`.
+- [x] Índice del capítulo 13 con [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md).
 - [x] Índice del histórico con el enlace al resumen de cada sesión.
 - [x] Índice de la carpeta de resúmenes, con los dos días.
-- [x] `validadores/reglas-validables.md` con `DOC22`.
+- [x] `validadores/reglas-validables.md` con [`DOC22`](../../../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md).
 - [x] Especificación del módulo al día con lo realmente implementado.
 - [ ] Mapa de dependencias vivo (`DOC9`): N/A, este repositorio no lo tiene.
 - [ ] Catálogo de módulos (`DOC13`): N/A, este repositorio no lo tiene.
 
 ---
 
-## 8. Despliegue — si aplica  ·  `13·DOC4`
+## 8. Despliegue — si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
 
 - Cambios de esquema / migraciones: N/A.
 - Datos base / permisos: N/A.

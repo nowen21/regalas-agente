@@ -63,7 +63,7 @@
 
 ---
 
-## 2. Decisiones y señales generadas  ·  `13·DOC5`
+## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|

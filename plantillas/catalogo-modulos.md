@@ -1,6 +1,6 @@
 # Catálogo de módulos — «Proyecto»   ·   `[CAPA 3]`
 
-> Índice **vivo** de alto nivel (`13·DOC13`): **qué módulos tiene el proyecto y qué hace cada uno**. Se consulta al inicio de cada unidad de trabajo (`02·F1`) y **cada módulo nuevo se registra antes de cerrar** la unidad que lo crea (obligatorio, no se pregunta). Distinto del mapa de dependencias (`DOC9`, detalle técnico interno). La capa 3 declara su ruta (ej. `documentacion/modulos.md` o `.agente/dominio.md`). Reemplaza los `«…»` y borra esta caja.
+> Índice **vivo** de alto nivel ([`13·DOC13`](../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)): **qué módulos tiene el proyecto y qué hace cada uno**. Se consulta al inicio de cada unidad de trabajo ([`02·F1`](../base/02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md)) y **cada módulo nuevo se registra antes de cerrar** la unidad que lo crea (obligatorio, no se pregunta). Distinto del mapa de dependencias ([`13·DOC9`](../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md), detalle técnico interno). La capa 3 declara su ruta (ej. `documentacion/modulos.md` o `.agente/dominio.md`). Reemplaza los `«…»` y borra esta caja.
 
 ---
 

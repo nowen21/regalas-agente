@@ -11,6 +11,49 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 15.2.0 — 2026-08-14
+
+**MENOR** (una columna más en una plantilla; no invalida los resultados ya escritos).
+
+**Un caso de prueba aprobado no decía con qué se probó.** El plan dice qué **tipo** de dato usar; el resultado decía solo "aprobado". Con eso nadie puede repetir la prueba, y un caso que no se puede repetir no es una prueba: es un recuerdo.
+
+- **Columna nueva `Con qué se probó`** en [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md), con el ejemplo real: el archivo, el valor o el comando que se corrió.
+- Su ejemplo lo deja claro: no vale *"un usuario sin permiso"*, vale *"`qa.consulta` sobre `/facturas/42/anular`"*.
+
+## 15.1.0 — 2026-08-14
+
+**MENOR** (dos enganches nuevos; nadie queda obligado a nada que no estuviera ya exigido).
+
+**El resumen de la sesión dependía de que alguien se acordara.** Desde la 14.0.0 [`13·DOC22`](base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) lo exige, el modelo existe y el índice lo enlaza. Faltaba el programa. Es la misma lección de la transcripción, que solo empezó a escribirse siempre cuando la escribió un programa.
+
+- **[`validadores/resumen.py`](validadores/resumen.py) y [`validadores/hook_resumen.py`](validadores/hook_resumen.py)**: el archivo se crea al abrir la sesión, con el modelo puesto y sin hallazgos.
+- **Avisa qué falta**, una vez por cada cosa y máximo dos: que no haya ningún hallazgo, y que nadie haya dicho si la sesión se puede cerrar. La marca del aviso vive dentro del propio resumen.
+- **Muestra lo que sigue abierto del propósito** que la sesión declara, y nada de otros temas. Una sesión abierta para un tema no tiene por qué ver los hallazgos de otro: eso es ruido, y el ruido se deja de leer.
+- **El resumen se mueve con la transcripción** al ponerle el tema a la sesión. Los dos se llaman igual, así que renombrar solo uno dejaba el índice apuntando a un archivo que no está.
+- **Lo que el enganche no hace:** escribir hallazgos ni interpretarlos. Reconocer uno es criterio, y el criterio no lo tiene un programa. Lo que sí puede es que el hueco se vea.
+
+**Qué tiene que hacer un proyecto al día.** Correr el instalador para recibir los dos enganches. Un proyecto sin carpeta de resúmenes no se ve afectado.
+
+## 15.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (una regla nueva que exige algo a todo proyecto al día).
+
+**Un pendiente se estaba usando como permiso.** El repositorio tenía anotado que 354 enlaces no cumplen [`13·DOC14`](base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md), y los documentos escritos ese mismo día sumaban 122 incumplimientos nuevos de la misma familia. La deuda dejaba de ser deuda y pasaba a ser costumbre.
+
+- **[`02·F21`](base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md)**: desde que un incumplimiento queda registrado en un pendiente, un hallazgo o una señal, lo que se escriba de ahí en adelante nace cumpliendo. El pendiente guarda lo viejo y se limpia aparte; no autoriza a producir más.
+- El usuario lo dijo así: *"yo antes escribía sin ortografía, pero a partir de que aprendí ya escribo con ortografía, no importa el contexto"*.
+
+**Qué tiene que hacer un proyecto al día.** Nada hacia atrás: sus pendientes siguen como están. Lo que cambia es de aquí en adelante, y el costo de cumplirla es cero cuando el incumplimiento ya se conoce.
+
+## 14.0.1 — 2026-08-14
+
+**PARCHE** (enlaces; no cambia qué se exige).
+
+**Las plantillas citaban reglas por su ID y sin enlace**, contra [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md), que exige que toda cita lleve el enlace al sitio donde vive la regla. Peor: muchas citaban sin el prefijo del capítulo —`F4`, `DOC5`, `C19`—, y así ni siquiera se sabía dónde buscar.
+
+- **122 citas enlazadas en 23 plantillas**, cada una con su capítulo y su ruta.
+- **El modelo del resumen de sesión lo deja escrito**: toda regla que se nombre va enlazada, en cualquier campo del hallazgo.
+
 ## 14.0.0 — 2026-08-14
 
 **MAYOR** ⚠ obliga a migrar (una regla nueva que exige algo a todo proyecto al día).
@@ -22,6 +65,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 - **Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`.** Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada. La numeración corrida entre sesiones se descartó: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen, que es justo lo que ya pasó con la versión.
 - **El hallazgo que se hereda no se copia.** La sesión que retoma uno abierto lo nombra en su «viene de» y trabaja sobre el original. Dos copias del mismo hallazgo terminan diciendo cosas distintas, y manda la que nadie está mirando.
 - **Cuál de los dos documentos abrir** queda escrito en [`historico-chat/resumenes/README.md`](historico-chat/resumenes/README.md): se arranca siempre por el resumen, y la transcripción se abre cuando el resumen no alcanza.
+- **Toda regla que el resumen nombre va enlazada.** [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) ya lo exigía y el modelo no lo decía, así que los resúmenes citaban por ID y quien los leía tenía que salir a buscar.
 
 **Qué tiene que hacer un proyecto al día.** Correr el instalador para recibir el modelo, y crear la carpeta de resúmenes la primera vez que la use. Lo ya escrito no se rehace y una sesión vieja sin resumen no se reabre: la norma aplica al trabajo en curso y al que viene.
 

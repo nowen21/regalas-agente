@@ -22,7 +22,7 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 
 | id | Componente | Qué hace el instalador |
 |---|---|---|
-| `f13` | La carpeta `proyectos/`, donde vive el código (`02·F13`). | La crea vacía. **No** mueve ni reorganiza código: qué va adentro es del usuario. |
+| `f13` | La carpeta `proyectos/`, donde vive el código ([`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md)). | La crea vacía. **No** mueve ni reorganiza código: qué va adentro es del usuario. |
 | `claude-md` | El `CLAUDE.md` del proyecto: existe, sin marcadores sin reemplazar, y **sincronizado** con la plantilla central. | Si falta, lo genera desde `plantillas/CLAUDE.md.plantilla` con las rutas de esta máquina, el nombre y el slug del proyecto y la versión del estándar. Si ya está, llena los marcadores que queden, agrega al final las secciones que la plantilla sumó —sin pisar lo escrito— y lo vuelve a sellar. |
 | `gitignore` | El `.gitignore` con las líneas `CLAUDE.md` y `.agente/`: son configuración local, no del repositorio. | Agrega las líneas que falten. Nunca reescribe ni reordena el resto. |
 | `agente-config` | Los 4 archivos de `./.agente/`: `stack.md`, `dominio.md`, `mapeo-nombres.md`, `marco-normativo.md`. | Los pone desde sus plantillas si faltan; si ya están, no los toca. Llenarlos con los datos del proyecto es del agente al abrir sesión (paso 3 del `CLAUDE.md`). |

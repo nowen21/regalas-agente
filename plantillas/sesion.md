@@ -2,7 +2,7 @@
 
 > Plantilla. **No es el resumen del final**: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena **en el momento en que aparece el hallazgo**, con doce campos. Reemplaza los `«…»` y borra esta caja.
 >
-> La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/<tema>.md`: **una carpeta por día y un archivo por sesión**, con su línea en el índice de ese día.
+> La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/«tema».md`: **una carpeta por día y un archivo por sesión**, con su línea en el índice de ese día.
 
 ## Doce campos
 
@@ -16,7 +16,7 @@
 | **Responde a** | La épica, la historia y el criterio de aceptación que este hallazgo cumple. `—` si no cae dentro de nada planeado. |
 | **Dispara** | La épica, la historia o el criterio **nuevo** que hace falta crear por causa de este hallazgo. Si es más de uno, **numerados en el orden en que se resuelven**, y cada uno con por qué va ahí. `—` si no abre trabajo. |
 | **Orden de resolución** | En qué puesto va este hallazgo entre los que quedaron abiertos, y por qué. En los resueltos, `—`. |
-| **Dónde queda** | Señal, pendiente, regla o memoria. |
+| **Dónde queda** | Señal, pendiente, regla o memoria. Si es una regla, **enlazada** al archivo donde vive ([`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). |
 | **Nace en** | La sesión donde apareció: `AAAA-MM-DD · tema`. No cambia nunca, ni cuando el hallazgo se arrastra a otra sesión. |
 | **Cerrado en** | La sesión donde se cerró: `AAAA-MM-DD · tema`. Mientras esté abierto, `—`. |
 | **Con qué se retoma** | La pregunta que quedó viva. En los resueltos, `—`. |
@@ -49,16 +49,18 @@
 
 **Los dos del medio son los que enganchan el hallazgo con el trabajo.** Uno mira hacia atrás: esto que apareció, ¿ya estaba pedido en alguna parte? El otro mira hacia adelante: resolverlo, ¿obliga a abrir una historia nueva? Un hallazgo con los dos en `—` no es trabajo: es una nota, y probablemente sea una señal y nada más.
 
+**Toda regla que se nombre va enlazada.** Citarla por su ID no basta: quien lea el resumen meses después tiene que llegar a la regla en un clic, no salir a buscarla ([`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). Vale para cualquier campo del hallazgo, no solo para «dónde queda».
+
 **Se anotan todos**, los resueltos también. El que se resolvió en la sesión sirve para que nadie vuelva a discutirlo, y el que quedó abierto sirve para arrancar la próxima discusión sin empezar de cero. Por eso el estado, el «cerrado en» y el «con qué se retoma» importan más que el resto: dicen si está cerrado, dónde se cerró y por dónde sigue.
 
 ## Dónde termina cada cosa
 
 | Si es… | Va a… |
 |---|---|
-| Algo que se **aprendió** y no se recupera del código | `documentacion/senales.md` (`13·DOC5`) |
+| Algo que se **aprendió** y no se recupera del código | `documentacion/senales.md` ([`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)) |
 | Algo que **falta hacer** | `pendientes/` |
-| Algo que **hay que exigir siempre** | Una regla de `base/`, por el procedimiento del capítulo `20` |
-| Cómo quiere trabajar **el usuario** | `historico-chat/memory/` (`01·C19`) |
+| Algo que **hay que exigir siempre** | Una regla de `base/`, por el procedimiento del [capítulo `20`](../base/20-meta-reglas/base.md) |
+| Cómo quiere trabajar **el usuario** | `historico-chat/memory/` ([`01·C19`](../base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)) |
 
 Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era conversación, y ya quedó en la transcripción.
 
@@ -95,7 +97,7 @@ Si la sesión atiende más de un hallazgo, se nombran todos.
 - **Responde a:** «EP-000 · HU-000 · CA-00» / «—»
 - **Dispara:** «EP-000 · HU-000 nueva» / «numeradas, si son varias» / «—»
 - **Orden de resolución:** «n de N · por qué va ahí» / «—»
-- **Dónde queda:** «señal S-00 / pendiente NN / regla NN·Xn / memoria»
+- **Dónde queda:** «señal S-00 / pendiente NN / [`NN·Xn`](ruta a la regla) / memoria»
 - **Nace en:** «AAAA-MM-DD · tema de la sesión»
 - **Cerrado en:** «AAAA-MM-DD · tema de la sesión» / «—»
 - **Con qué se retoma:** «la pregunta que quedó viva» / «—»

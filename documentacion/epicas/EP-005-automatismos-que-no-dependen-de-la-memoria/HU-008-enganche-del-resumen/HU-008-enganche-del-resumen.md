@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación |
 
 ---
 
@@ -38,10 +38,12 @@ Lo que un programa no puede hacer es reconocer el hallazgo ni redactarlo: eso es
 | ID | Regla |
 |---|---|
 | RN-01 | El archivo del resumen se crea solo al abrir la sesión, con el modelo puesto |
-| RN-02 | Cuando la sesión ya produjo algo y el resumen sigue vacío, se avisa una sola vez |
-| RN-03 | Al abrir la sesión siguiente, lo que quedó sin cerrar en la anterior se muestra |
-| RN-04 | El enganche no escribe hallazgos: solo crea, avisa y arrastra |
-| RN-05 | No detiene el trabajo |
+| RN-02 | Cuando la sesión ya produjo algo y falta llenar el resumen, se avisa: una vez por hueco y máximo dos veces en la sesión |
+| RN-03 | Se muestra lo que sigue abierto **del propósito de la sesión**, y nada de otros temas |
+| RN-04 | El aviso dice **qué falta**, con la lista; no avisa en genérico |
+| RN-05 | Para cerrar una sesión cuentan los hallazgos de su propósito; los que nacieron acá y son de otro tema basta con que queden anotados |
+| RN-06 | El enganche no escribe hallazgos: solo crea, avisa y arrastra |
+| RN-07 | No detiene el trabajo |
 
 ### 3.2 Supuestos
 
@@ -75,47 +77,51 @@ Entonces existe el archivo de esa sesión, con el modelo puesto y sin hallazgos
 
 ```gherkin
 Dado que la sesión hizo un commit o cambió una regla
-Cuando el resumen todavía no tiene hallazgos
-Entonces se avisa una sola vez
+Cuando al resumen le falta algo por llenar
+Entonces se avisa una vez por cada cosa que falte, y se dice cuál es
 ```
 
 **Cómo validarlo:**
 
 1. En la sesión de prueba, hacer un cambio y guardarlo sin escribir el resumen.
-2. Seguir trabajando. Resultado esperado: aparece el aviso, una vez.
-3. Escribir un hallazgo y seguir. Resultado esperado: no vuelve a avisar.
-- **Aprobado cuando:** avisa cuando falta y calla cuando no.
+2. Seguir trabajando. Resultado esperado: aparece el aviso, y dice que no hay ningún hallazgo escrito.
+3. Escribir un hallazgo y seguir. Resultado esperado: no repite ese aviso; si la sección de cierre sigue vacía, avisa eso, una vez.
+4. Llenar la sección de cierre y seguir. Resultado esperado: no vuelve a avisar.
+- **Aprobado cuando:** avisa qué falta, una vez por cada cosa, y calla cuando no falta nada.
 
-### CA-03 — Lo que no se cerró aparece en la sesión siguiente
+### CA-03 — Del propósito se muestra lo que sigue abierto, y nada más
 
 ```gherkin
-Dado que la sesión anterior quedó con hallazgos abiertos
-Cuando se abre una sesión nueva
-Entonces se muestra qué quedó sin cerrar y dónde está
+Dado que la sesión declara su propósito, el hallazgo que viene a resolver
+Cuando se abre o se le pone el nombre
+Entonces se muestra ese hallazgo y lo que sigue abierto de él
+Y no se muestra ningún hallazgo de otro tema
 ```
 
 **Cómo validarlo:**
 
-1. Dejar una sesión con dos hallazgos abiertos.
-2. Abrir una sesión nueva. Resultado esperado: se listan los dos, con su archivo.
-3. Cerrarlos y abrir otra. Resultado esperado: ya no aparecen.
-- **Aprobado cuando:** lo abierto se persigue solo.
+1. Dejar hallazgos abiertos en dos temas distintos, en sesiones de días distintos.
+2. Abrir una sesión que declara como propósito uno de los dos. Resultado esperado: se muestra ese, con su pregunta viva; el otro no aparece.
+3. Cerrarlo y abrir otra sesión con el mismo propósito. Resultado esperado: ya no aparece.
+- **Aprobado cuando:** se retoma sin ir a buscar, y sin que sobre nada.
+
+> **El propósito lo pone el usuario, no lo adivina el programa.** Una sesión abierta para resolver un hallazgo no tiene por qué ver los de otro tema: eso es ruido, y el ruido se deja de leer. Esta sesión sirve de ejemplo: se abrió con un solo propósito, resolver el H-4 de otra sesión.
 
 ### Criterios de aceptación transversales
 
-- [ ] **Inocuidad** — el enganche no modifica los hallazgos ya escritos.
-- [ ] **Límites** — un proyecto sin carpeta de resúmenes no se ve afectado.
-- [ ] **Errores** — si no puede escribir, avisa y la sesión sigue.
+- [x] **Inocuidad** — el enganche no modifica los hallazgos ya escritos.
+- [x] **Límites** — un proyecto sin carpeta de resúmenes no se ve afectado.
+- [x] **Errores** — si no puede escribir, avisa y la sesión sigue.
 
 ---
 
 ## 5. Requisitos no funcionales
 
-| Categoría | Requisito |
-|---|---|
-| **Oportunidad** | Avisa durante la sesión, no al cerrarla |
-| **Silencio** | Una sola vez por sesión |
-| **Rendimiento** | No demora el arranque |
+| ID | Categoría | Requisito |
+|---|---|---|
+| RNF-01 | **Oportunidad** | Avisa durante la sesión, no al cerrarla |
+| RNF-02 | **Silencio** | Una vez por cada cosa que falta, máximo dos en la sesión |
+| RNF-03 | **Rendimiento** | No demora el arranque |
 
 ---
 
@@ -130,10 +136,10 @@ Entonces se muestra qué quedó sin cerrar y dónde está
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Crear el archivo del resumen al abrir la sesión.
-- [ ] Detectar que la sesión ya produjo algo.
-- [ ] Avisar una sola vez, con la marca que evita repetirlo.
-- [ ] Arrastrar a la sesión siguiente lo que quedó abierto.
+- [x] Crear el archivo del resumen al abrir la sesión.
+- [x] Detectar que la sesión ya produjo algo.
+- [x] Avisar una vez por hueco, con la marca que evita repetirlo.
+- [x] Mostrar lo que sigue abierto del propósito de la sesión.
 
 ---
 
@@ -141,7 +147,9 @@ Entonces se muestra qué quedó sin cerrar y dónde está
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-005-HU-008-enganche-del-resumen](A-EP-005-HU-008-enganche-del-resumen/README.md) | CA-01, CA-02 y CA-03 | Estación 11: las siete exigencias en verde, esperando el commit |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -162,24 +170,24 @@ Todavía no se descompuso en fases.
 |---|---|---|
 | Dependencia | EP-003 · HU-009, porque crea el archivo con ese modelo | Alto |
 | Dependencia | HU-001 de esta épica, porque comparte el momento de la sesión | Medio |
-| Riesgo | Que el aviso se vuelva ruido | Una vez por sesión, y solo cuando falta |
+| Riesgo | Que el aviso se vuelva ruido | Una vez por cada cosa que falta, y solo cuando de verdad falta |
 | Riesgo | Que el archivo vacío se quede vacío igual | Se arrastra a la sesión siguiente, así que no desaparece |
 
 ---
 
 ## 10. Definition of Ready (DoR)
 
-- [ ] Narrativa clara con rol, acción y beneficio
-- [ ] Criterios de aceptación definidos y testeables
-- [ ] Reglas de negocio documentadas
-- [ ] Dependencias identificadas
+- [x] Narrativa clara con rol, acción y beneficio
+- [x] Criterios de aceptación definidos y testeables
+- [x] Reglas de negocio documentadas
+- [x] Dependencias identificadas
 
 ## 11. Definition of Done (DoD)
 
-- [ ] El archivo se crea solo
-- [ ] Avisa una vez cuando falta
-- [ ] Lo abierto aparece en la sesión siguiente
-- [ ] Todos los criterios de aceptación verificados
+- [x] El archivo se crea solo
+- [x] Avisa qué falta, una vez por cada cosa
+- [x] Del propósito de la sesión se muestra lo que sigue abierto, y nada de otros temas
+- [x] Todos los criterios de aceptación verificados
 
 ---
 
@@ -201,3 +209,6 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-4 del 2026-08-14 |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase A con la especificación del módulo y sus dos planes. Los requisitos no funcionales quedan numerados |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nacen `resumen.py` y `hook_resumen.py`, y el renombrado mueve los dos archivos. Con esto cierra la cadena de H-4 |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | El aviso pasa a decir **qué** falta y a salir una vez por hueco. `CA-03` se acota al propósito de la sesión: mostrar todo lo abierto es ruido, y el propósito lo pone el usuario |

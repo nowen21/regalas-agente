@@ -6,19 +6,19 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `A-EP-003-HU-001-marca-de-espacio-por-llenar` |
+| **Fase** (identificador · [`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-001-marca-de-espacio-por-llenar` |
 | **Épica** | [EP-003](../../epica.md) |
 | **HU** | [HU-001 Definir cómo se marca un espacio por llenar en un modelo](../HU-001-marca-de-espacio-por-llenar.md) |
 | **Módulo** | Documentos modelo |
-| **Especificación del módulo** | [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md). Sí la lleva aparte, por decisión del usuario del 2026-08-14: `02·F2` se cumple y no lleva excepción. Eso cierra la duda que arrastraban las fases `A-EP-001-HU-001-molde-de-regla` y `A-EP-004-HU-010-declaracion-y-comprobacion`, que se habían abierto declarando que no la necesitaban |
+| **Especificación del módulo** | [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md). Sí la lleva aparte, por decisión del usuario del 2026-08-14: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) se cumple y no lleva excepción. Eso cierra la duda que arrastraban las fases `A-EP-001-HU-001-molde-de-regla` y `A-EP-004-HU-010-declaracion-y-comprobacion`, que se habían abierto declarando que no la necesitaban |
 | **Fecha apertura** | 2026-08-14 |
 | **Rama** | `feature/A-EP-003-HU-001-marca-de-espacio-por-llenar` |
 
 **ORIGEN** (`DOC12`): ✨ **Funcionalidad nueva.** Es la primera historia de EP-003 y la primera de la cadena que abre el hallazgo [H-4 del 2026-08-14](../../../../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md): el resumen de sesión no tiene dónde escribirse. Esa cadena es EP-003 · HU-001 → EP-003 · HU-009 → EP-005 · HU-008, y HU-009 declara esta historia como dependencia de impacto alto.
 
-**Por qué una sola fase para los tres CA.** Los tres se apoyan en la misma decisión (cuál es la marca), y ninguno se puede probar sin ella. Partirlos daría dos fases esperando a la primera, que es lo que `02·F12.10` manda evitar.
+**Por qué una sola fase para los tres CA.** Los tres se apoyan en la misma decisión (cuál es la marca), y ninguno se puede probar sin ella. Partirlos daría dos fases esperando a la primera, que es lo que [`02·F12.10`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) manda evitar.
 
-**CA de la HU que cubre esta fase** (una sola HU · `02·F12.1` · trazabilidad `DOC11`)
+**CA de la HU que cubre esta fase** (una sola HU · [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) · trazabilidad `DOC11`)
 
 | CA de HU-001 | Qué valida | Estado |
 |---|---|---|
@@ -98,14 +98,14 @@
 | `plantillas/senales.md` · `plantillas/proyectos.md` · `plantillas/estado-fase.md` · `plantillas/catalogo-modulos.md` | Modificar | Plantilla | 1 hueco cada una |
 | `plantillas/memoria.md` · `plantillas/historico-chat.md` · `plantillas/retrodocumentacion.md` | Sin tocar | Plantilla | No son modelos que alguien llene: son procedimientos y explicaciones. Queda escrito en la nota |
 | `validadores/reglas-validables.md` | Modificar | Documentación | La regla nueva entra como validable, pendiente de EP-004 |
-| `CHANGELOG.md` · `VERSION` | Modificar | Versionado | Entrada y subida de versión (`20·M10`) |
+| `CHANGELOG.md` · `VERSION` | Modificar | Versionado | Entrada y subida de versión ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)) |
 
 ### 2.2 Matriz de dependencias del refactor  ·  `F17`
 
 | Archivo a refactorizar | Cambio de contrato | Archivos que dependen (rompen) | Dónde rompe |
 |---|---|---|---|
 | `plantillas/*.md` | Cambia el contenido, no la ruta ni el nombre | `validadores/instalar.py` | No rompe: las copia sin leerlas. Sí les cambia la huella, así que la copia de cada proyecto queda marcada vieja hasta la siguiente corrida |
-| `base/13-documentacion.md` | Suma una regla; ninguna existente cambia de ID ni de texto | Lo que cite el capítulo 13 | No rompe: nada se renumera (`20·M11`) |
+| `base/13-documentacion.md` | Suma una regla; ninguna existente cambia de ID ni de texto | Lo que cite el capítulo 13 | No rompe: nada se renumera ([`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)) |
 
 ### 2.3 Rutas / endpoints y control de acceso  ·  `F14` Q6
 
@@ -125,10 +125,10 @@ Ninguno.
 |---|---|---|
 | La marca es `«…»` | `[texto]`, `<texto>`, `{{texto}}`, `XXX` | Ya se usa en 25 de 30 plantillas: elegir otra obliga a cambiar 25 archivos en vez de 5. Y las descartadas chocan con sintaxis que el propio documento usa: `[]` con los enlaces de markdown, `<>` con las etiquetas y con la sintaxis de los comandos, `{{}}` con los motores de plantillas |
 | La sintaxis de un comando no es un hueco | Marcar todo `<algo>` como hueco | Un comando que el usuario copia y pega tiene su propia sintaxis. Contarla como hueco daría falsos positivos, y el riesgo de la épica es perder la confianza por eso |
-| La regla va en el capítulo 13 | Un capítulo nuevo de documentos modelo | `20·M13` manda enrutar a lo que ya existe: la marca es cómo se escribe la documentación, y ese es el capítulo 13 |
+| La regla va en el capítulo 13 | Un capítulo nuevo de documentos modelo | [`20·M13`](../../../../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) manda enrutar a lo que ya existe: la marca es cómo se escribe la documentación, y ese es el capítulo 13 |
 | El porqué de la marca va a `notas/` | Dejarlo dentro de la regla | Una regla dice qué se exige, no por qué se eligió entre alternativas. El `CLAUDE.md` de este repositorio manda el razonamiento a `notas/` |
 
-> Las decisiones no obvias se registran también como señal (`13·DOC5`).
+> Las decisiones no obvias se registran también como señal ([`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)).
 
 ### 2.7 Dudas por resolver antes de codificar
 
@@ -151,8 +151,8 @@ Ninguno.
 | ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
 |---|---|---|:--:|---|---|---|
 | T-01 | Escribir en `notas/` por qué `«…»` y no las cuatro alternativas | Documentación | 1 h | — | ☑ | EV-01 |
-| T-02 | Escribir `DOC19` con su ejemplo INCORRECTO/CORRECTO (`20·M5`) y aplicarle el checklist | Regla | 2 h | T-01 | ☑ | EV-01 |
-| T-03 | Escribir dentro de `DOC19` qué es un hueco y qué no lo es: la sintaxis de comando queda fuera | Regla | 1 h | T-02 | ☑ | EV-01 |
+| T-02 | Escribir [`DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) con su ejemplo INCORRECTO/CORRECTO ([`20·M5`](../../../../../base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)) y aplicarle el checklist | Regla | 2 h | T-01 | ☑ | EV-01 |
+| T-03 | Escribir dentro de [`DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) qué es un hueco y qué no lo es: la sintaxis de comando queda fuera | Regla | 1 h | T-02 | ☑ | EV-01 |
 | T-03b | Sumar las tres filas nuevas al índice de `base/13-documentacion/base.md` | Regla | 1 h | T-02, T-08, T-09 | ☑ | EV-01 |
 
 ### CA-02 — Todos los modelos usan la misma marca
@@ -169,8 +169,8 @@ Ninguno.
 
 | ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
 |---|---|---|:--:|---|---|---|
-| T-08 | Escribir `DOC20`, con su ejemplo y su checklist: un documento con marcas sin reemplazar no está terminado | Regla | 2 h | T-02 | ☑ | EV-03 |
-| T-09 | Escribir `DOC21`, con su ejemplo y su checklist: la sección que no aplica se escribe `N/A` | Regla | 2 h | T-08 | ☑ | EV-03 |
+| T-08 | Escribir [`DOC20`](../../../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md), con su ejemplo y su checklist: un documento con marcas sin reemplazar no está terminado | Regla | 2 h | T-02 | ☑ | EV-03 |
+| T-09 | Escribir [`DOC21`](../../../../../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md), con su ejemplo y su checklist: la sección que no aplica se escribe `N/A` | Regla | 2 h | T-08 | ☑ | EV-03 |
 
 ### RNF — Requisitos no funcionales
 
@@ -178,7 +178,7 @@ Ninguno.
 |---|---|---|:--:|---|---|
 | T-10 | Anotar las tres reglas en `validadores/reglas-validables.md`, en la lista que le toque a cada una | Documentación | 1 h | ☑ | EV-04 |
 | T-11 | Correr `validar.py estandar` y comprobar que la regla nueva no rompe nada | Pruebas | 1 h | ☑ | EV-04 |
-| T-12 | Entrada en `CHANGELOG.md` y subida de `VERSION` (`20·M10`) | Documentación | 1 h | ☑ | EV-04 |
+| T-12 | Entrada en `CHANGELOG.md` y subida de `VERSION` ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)) | Documentación | 1 h | ☑ | EV-04 |
 
 **Total estimado:** 19 h. Eran 13 al aprobar. Las tres primeras horas de más son las dos reglas que se separaron y su fila en el índice; las otras tres, los 11 archivos que la línea base no había contado.
 
@@ -244,7 +244,7 @@ Todo lo de esta fase es texto y no toca datos: se revierte con la reversión del
 
 ## 9. Reglas del estándar y del proyecto aplicadas  ·  `F14` Q13
 
-- Base: `02·F2`, `02·F8`, `02·F12.1`, `02·F12.10`, `02·F17`, `13·DOC5`, `13·DOC11`, `13·DOC12`, `20·M5`, `20·M9`, `20·M10`, `20·M11`, `20·M13`.
+- Base: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F12.10`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`20·M5`](../../../../../base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md), [`20·M9`](../../../../../base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), [`20·M13`](../../../../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md).
 - Proyecto: no aplica. Este repositorio es el estándar y no tiene catálogo de reglas propias.
 
 ---

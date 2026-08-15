@@ -26,15 +26,15 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 
 ### H-2 · El estándar escribía en inglés lo que exige escribir en español
 
-- **Qué pasó:** "spec" aparecía en 53 archivos, contra su propia regla `01·C8`.
+- **Qué pasó:** "spec" aparecía en 53 archivos, contra su propia regla [`01·C8`](../../../base/01-conducta.md#c8--habla-el-idioma-del-proyecto).
 - **Por qué importa:** quien lee "falta la spec" no sabe qué documento le piden ni dónde ponerlo.
-- **Qué lo soluciona:** la regla `01·C20` y la traducción del texto, hechas en esta sesión. No dispara historias nuevas: cabía entero en EP-001 · HU-004.
+- **Qué lo soluciona:** la regla [`01·C20`](../../../base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) y la traducción del texto, hechas en esta sesión. No dispara historias nuevas: cabía entero en EP-001 · HU-004.
 - **Qué se decidió:** se tradujo el texto, sin tocar rutas ni nombres de archivo, y nació la regla que faltaba.
 - **Estado:** resuelto acá.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —
 - **Orden de resolución:** —, ya está cerrado.
-- **Dónde queda:** regla `01·C20` · señal S-001 · versión 10.0.0.
+- **Dónde queda:** regla [`01·C20`](../../../base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) · señal S-001 · versión 10.0.0.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Con qué se retoma:** —
@@ -43,20 +43,20 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 
 - **Qué pasó:** una pregunta de una línea se contestó tres veces seguidas con párrafos, tablas y opciones.
 - **Por qué importa:** lo largo no se lee, así que la información se pierde igual que si no se hubiera escrito.
-- **Qué lo soluciona:** la regla `01·C5`, reescrita en esta sesión para cubrir también las explicaciones. No dispara historias nuevas.
+- **Qué lo soluciona:** la regla [`01·C5`](../../../base/01-conducta.md#c5--responde-corto), reescrita en esta sesión para cubrir también las explicaciones. No dispara historias nuevas.
 - **Qué se decidió:** `C5` pasa a cubrir también las explicaciones, y "menos es más" queda fijado como señal de que hay que responder otra vez, más corto.
 - **Estado:** resuelto acá.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —
 - **Orden de resolución:** —, ya está cerrado.
-- **Dónde queda:** regla `01·C5` · memoria [respuestas-cortas.md](../../memory/respuestas-cortas.md) · versión 12.1.0.
+- **Dónde queda:** regla [`01·C5`](../../../base/01-conducta.md#c5--responde-corto) · memoria [respuestas-cortas.md](../../memory/respuestas-cortas.md) · versión 12.1.0.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Con qué se retoma:** —
 
 ### H-4 · No había dónde escribir lo aprendido
 
-- **Qué pasó:** `13·DOC5` manda registrar señales y este repositorio no tenía el archivo donde escribirlas.
+- **Qué pasó:** [`13·DOC5`](../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) manda registrar señales y este repositorio no tenía el archivo donde escribirlas.
 - **Por qué importa:** todo lo aprendido en la sesión iba a quedar solo en la transcripción, que nadie relee.
 - **Qué lo soluciona:**
 
@@ -72,14 +72,14 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
   - **Para** no depender de la memoria del agente
   - **Contexto:** hoy la plantilla y la carpeta están, pero llenarlas depende de que el agente se acuerde. Es lo mismo que pasaba con la transcripción, que solo se escribió siempre cuando la escribió un programa. Tres piezas: crear el archivo al abrir la sesión, avisar cuando la sesión ya produjo algo y el resumen sigue vacío, y arrastrar a la siguiente lo que quedó sin cerrar.
 - **Qué se decidió:** se creó el archivo de señales y la plantilla de lo que deja una sesión, con estado, trazabilidad y pregunta viva.
-- **Estado:** abierto. Se hizo el archivo de señales y la plantilla, pero dispara dos historias sin escribir: mientras eso quede, no está resuelto.
+- **Estado:** resuelto. Cerrado en la sesión `h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido`, que se abrió con este hallazgo como único propósito.
 - **Responde a:** EP-006 · HU-002, guardar lo aprendido en el repositorio.
 - **Dispara:** EP-003 · HU-009 (el modelo del resumen) y EP-005 · HU-008 (el enganche que lo sostiene). Ya están escritas.
-- **Orden de resolución:** 1 de 7 · sin el enganche, la próxima sesión vuelve a perder lo que deja.
-- **Dónde queda:** [documentacion/senales.md](../../../documentacion/senales.md) · [plantillas/sesion.md](../../../plantillas/sesion.md) · [pendientes/17-las-senales-no-tienen-donde-escribirse.md](../../../pendientes/17-las-senales-no-tienen-donde-escribirse.md).
+- **Orden de resolución:** —, ya está cerrado.
+- **Dónde queda:** las tres fases de la cadena: [A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md), [A-EP-003-HU-009](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) y [A-EP-005-HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) · reglas [`13·DOC19`](../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) a [`13·DOC22`](../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) · [plantillas/sesion.md](../../../plantillas/sesion.md) · [validadores/resumen.py](../../../validadores/resumen.py) · versiones 13.0.0 a 15.1.0.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
-- **Cerrado en:** —
-- **Con qué se retoma:** todo lo que falta de la plantilla de sesión pasa a otra sesión: escribir las dos historias y decidir con qué señal detecta el enganche que el tema ya cerró. Se propuso el commit hecho durante la sesión.
+- **Cerrado en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
+- **Con qué se retoma:** —. Queda una pregunta que no bloquea: con qué señal se sabe que un tema cerró de verdad. El enganche mira si la sección de cierre está llena, que no es lo mismo.
 
 ### H-5 · El estándar no cumple su propia regla de enlaces
 
