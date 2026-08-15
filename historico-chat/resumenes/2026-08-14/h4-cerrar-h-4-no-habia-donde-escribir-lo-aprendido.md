@@ -132,4 +132,6 @@ Se anotan todos, resueltos y abiertos.
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3 y H-4 |
 | Todo hallazgo abierto tiene su pendiente creado | ☐ falta el de H-1. H-5 no lo necesita: su continuación es la fase ya abierta |
 | Toda historia disparada está escrita en su épica | ☐ falta la de H-1 |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Lo que se hizo está aprobado y guardado | ☐ la fase de HU-001 quedó en el commit `b877f37`; la de HU-009 está sin commitear |
+
+**De la cadena de H-4 van dos de tres.** Cerraron [`A-EP-003-HU-001`](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) y [`A-EP-003-HU-009`](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md). Falta EP-005 · HU-008, el enganche, que es lo que hace que el resumen exista sin que nadie se acuerde.

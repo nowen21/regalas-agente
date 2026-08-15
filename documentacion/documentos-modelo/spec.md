@@ -3,7 +3,12 @@
 - **Slug del módulo:** `documentos-modelo`
 - **Estado:** en implementación
 
-> Primera entrega de este módulo: la marca del espacio por llenar. El módulo es más grande (los diez modelos de EP-003), y esta especificación crece con cada fase. Lo que hoy cubre es lo que construye la fase [`A-EP-003-HU-001-marca-de-espacio-por-llenar`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md).
+> El módulo son los diez modelos de EP-003, y esta especificación crece con cada fase. Lo que cubre hoy:
+>
+> | Incremento | Fase | Estado |
+> |---|---|---|
+> | La marca del espacio por llenar | [`A-EP-003-HU-001-marca-de-espacio-por-llenar`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) | Cerrada el 2026-08-14 |
+> | El modelo del resumen de sesión | [`A-EP-003-HU-009-modelo-del-resumen-de-sesion`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) | Cerrada el 2026-08-14 |
 
 ---
 
@@ -11,12 +16,16 @@
 
 Un modelo es un esqueleto con huecos. Este módulo define **cómo se marca un hueco** para que se vea al leer y para que un programa lo pueda contar, y **qué significa** que un documento entregado todavía traiga marcas.
 
-- **Dentro de alcance:** la marca, qué es un hueco y qué no lo es, qué se escribe cuando una sección no aplica, y la aplicación de todo eso a las 30 plantillas que ya existen.
+- **Dentro de alcance:**
+  - **De HU-001:** la marca, qué es un hueco y qué no lo es, qué se escribe cuando una sección no aplica, y la aplicación de todo eso a las 30 plantillas que ya existen.
+  - **De HU-009:** el modelo con que cada sesión escribe lo que dejó, desde dónde se enlaza para que se encuentre, y qué pasa con un hallazgo que se arrastra de una sesión a otra.
 - **Fuera de alcance:**
   - El programa que cuenta las marcas. Es de EP-004, y se apoya en lo que esta especificación define.
   - El contenido de cada modelo. Acá se toca la marca, no lo que el modelo pide.
   - Los documentos ya llenados en `documentacion/`, `historico-chat/` y `pendientes/`: son documentos terminados, no modelos.
-  - Los otros nueve modelos de EP-003. Son incrementos posteriores de este mismo módulo y se suman a esta especificación cuando abran su fase.
+  - El enganche que crea el resumen y avisa cuando falta. Es de EP-005 · HU-008, la siguiente de la cadena.
+  - La transcripción de la sesión, que sigue su curso y no cambia.
+  - Los otros ocho modelos de EP-003. Son incrementos posteriores de este mismo módulo y se suman a esta especificación cuando abran su fase.
 
 ## 2. Contexto — qué hay hoy
 
@@ -49,6 +58,18 @@ Lo más cercano a una norma escrita es la frase que repiten las cajas de instruc
 5. **Un documento entregado con marcas sin reemplazar no está terminado.** La condición de terminado es objetiva y se puede señalar dónde falla.
 6. **Una sección que no aplica se escribe `N/A`**, no se deja con la marca ni se borra. Borrarla haría creer que el modelo no la pedía.
 7. **La caja de instrucciones del modelo se borra al llenarlo; lo que explica para qué sirve el documento se queda.**
+
+Del resumen de sesión (HU-009):
+
+8. **El resumen es un documento aparte de la transcripción**, y vive dentro del histórico. La transcripción prueba lo que se dijo; el resumen guarda lo que quedó.
+9. **Una carpeta por día y un archivo por sesión**, con su línea en el índice del día.
+10. **Cada hallazgo dice si está resuelto o abierto, y dónde queda** — señal, pendiente, regla o memoria.
+11. **Cada hallazgo dice a qué trabajo ya pedido responde y qué trabajo nuevo dispara**, y cuando dispara más de uno los numera en el orden en que se resuelven.
+12. **El hallazgo abierto dice con qué pregunta se retoma.**
+13. **Se anotan todos**, resueltos y abiertos.
+14. **El resumen dice si la sesión se puede cerrar**, y con qué le falta.
+15. **El resumen dice de dónde viene la sesión**: si se abrió para resolver un hallazgo de otra, lo nombra con su fecha, su tema y su número.
+16. **Un hallazgo que se arrastra conserva dónde nació.** El «nace en» no cambia nunca; el «cerrado en» se llena el día que se cierre, aunque sea tres sesiones después.
 
 ## 5. Modelo de datos
 

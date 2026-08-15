@@ -72,6 +72,10 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `F18` | cada intervención del plan referencia un CA | mapear intervención→CA dentro del plan (fuzzy) |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
+| `DOC19` | toda plantilla marca sus huecos `«…»` y ninguna usa otra marca | se valida en seco sobre `plantillas/`; lo construye EP-004 |
+| `DOC20` | un documento entregado no conserva ningún `«…»` | necesita saber qué documento se da por terminado, y eso hoy no está declarado |
+| `DOC21` | ninguna sección de un documento queda con su marca puesta en vez de `N/A` | va con `DOC20`: el mismo recorrido distingue hueco sin llenar de sección no aplicable |
+| `DOC22` | cada sesión del histórico tiene su resumen, y ese resumen trae los campos del modelo | se valida en seco sobre `historico-chat/`; lo construye EP-004 |
 
 ### Meta-reglas (`20`) — se validan **en seco**, sobre el propio estándar
 

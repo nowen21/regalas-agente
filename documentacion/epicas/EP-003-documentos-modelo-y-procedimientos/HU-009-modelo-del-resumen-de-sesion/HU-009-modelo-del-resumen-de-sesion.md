@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación |
 
 ---
 
@@ -105,18 +105,18 @@ Entonces dice qué falta para poder cerrarla
 
 ### Criterios de aceptación transversales
 
-- [ ] **Límites** — una sesión que no dejó nada escribe "nada", que es un dato.
-- [ ] **No regresión** — la transcripción no cambia de forma por esto.
+- [x] **Límites** — una sesión que no dejó nada escribe "nada", que es un dato.
+- [x] **No regresión** — la transcripción no cambia de forma por esto.
 
 ---
 
 ## 5. Requisitos no funcionales
 
-| Categoría | Requisito |
-|---|---|
-| **Brevedad** | El resumen se lee de una vez; si no, no cumple su función |
-| **Autonomía** | Se entiende sin abrir la transcripción |
-| **Uniformidad** | Todos los resúmenes traen los mismos campos |
+| ID | Categoría | Requisito |
+|---|---|---|
+| RNF-01 | **Brevedad** | El resumen se lee de una vez; si no, no cumple su función |
+| RNF-02 | **Autonomía** | Se entiende sin abrir la transcripción |
+| RNF-03 | **Uniformidad** | Todos los resúmenes traen los mismos campos |
 
 ---
 
@@ -131,8 +131,8 @@ Entonces dice qué falta para poder cerrarla
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Dejar enlazado el resumen desde el índice del histórico.
-- [ ] Definir qué se hace con un hallazgo que se arrastra de otra sesión.
+- [x] Dejar enlazado el resumen desde el índice del histórico.
+- [x] Definir qué se hace con un hallazgo que se arrastra de otra sesión.
 
 ---
 
@@ -140,7 +140,9 @@ Entonces dice qué falta para poder cerrarla
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-003-HU-009-modelo-del-resumen-de-sesion](A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) | CA-01, CA-02 y CA-03 | Estación 11: las seis exigencias en verde, esperando el commit |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -168,17 +170,17 @@ Todavía no se descompuso en fases.
 
 ## 10. Definition of Ready (DoR)
 
-- [ ] Narrativa clara con rol, acción y beneficio
-- [ ] Criterios de aceptación definidos y testeables
-- [ ] Reglas de negocio documentadas
-- [ ] Dependencias identificadas
+- [x] Narrativa clara con rol, acción y beneficio
+- [x] Criterios de aceptación definidos y testeables
+- [x] Reglas de negocio documentadas
+- [x] Dependencias identificadas
 
 ## 11. Definition of Done (DoD)
 
-- [ ] El modelo existe, con sus campos decididos
-- [ ] El resumen se distingue de la transcripción
-- [ ] Dice si la sesión se puede cerrar
-- [ ] Todos los criterios de aceptación verificados
+- [x] El modelo existe, con sus campos decididos
+- [x] El resumen se distingue de la transcripción
+- [x] Dice si la sesión se puede cerrar
+- [x] Todos los criterios de aceptación verificados
 
 ---
 
@@ -201,3 +203,5 @@ Todavía no se descompuso en fases.
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-4 del 2026-08-14 |
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se quita de las tareas "probar el modelo con más de una sesión": eso lo comprueban los CA, no es trabajo de la HU |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase A con sus dos planes. Los requisitos no funcionales quedan numerados |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nace `13·DOC22`, el índice del histórico enlaza cada resumen, y el modelo dice cómo se nombra y se hereda un hallazgo |

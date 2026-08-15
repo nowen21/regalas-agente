@@ -42,8 +42,14 @@ LIMITE = 40
 
 _NUMERO = re.compile(r"^### (\d+) · ", re.MULTILINE)
 
-# Una línea del índice: `- [nombre.md](nombre.md) — de qué se trató.`
-_LINEA = re.compile(r"^- \[[^\]]*\]\(([^)#\s]+\.md)\)\s*(?:—\s*(.*?))?\s*$")
+# Una línea del índice, con su resumen de sesión al final si ya lo tiene:
+# `- [nombre.md](nombre.md) — de qué se trató. · [resumenes/AAAA-MM-DD/tema.md](…)`
+_LINEA = re.compile(
+    r"^- \[[^\]]*\]\(([^)#\s]+\.md)\)\s*(?:—\s*(.*?))?"
+    r"\s*(?:·\s*\[[^\]]*\]\([^)]+\))?\s*$")
+
+# Dónde vive el resumen de una sesión, relativo a la carpeta del histórico.
+RESUMENES = "resumenes"
 
 # La fecha con la que empieza el nombre del archivo de una sesión.
 _FECHA = re.compile(r"^(\d{4}-\d{2}-\d{2})")
@@ -318,7 +324,7 @@ def _reindexar(carpeta, viejo, nuevo, resumen):
     resumen = (resumen or "").strip() or f"sesión del {_fecha_de(nuevo)}"
     if not resumen.endswith((".", "!", "?")):
         resumen += "."
-    linea = f"- [{nuevo}]({nuevo}) — {resumen}"
+    linea = f"- [{nuevo}]({nuevo}) — {resumen}{_enlace_al_resumen(carpeta, nuevo)}"
 
     salida, puesta = [], False
     for cruda in _leer(ruta).splitlines():
@@ -333,6 +339,27 @@ def _reindexar(carpeta, viejo, nuevo, resumen):
         texto += f"{linea}\n"           # no estaba indexada: se agrega ahora
     with open(ruta, "w", encoding="utf-8", newline="\n") as f:
         f.write(texto)
+
+
+def _enlace_al_resumen(carpeta, nombre):
+    """` · [ruta](ruta)` al resumen de esa sesión, o "" si todavía no existe.
+
+    El resumen se llama igual que la transcripción, sin la fecha, y vive en la
+    carpeta del día: `resumenes/AAAA-MM-DD/<tema>.md`. Se enlaza por sesión y
+    no por día porque cada sesión resuelve un tema, y quien busca qué quedó
+    busca el de una sesión concreta.
+
+    Si el archivo no está, no se inventa el enlace: un enlace roto en el índice
+    es peor que no tenerlo. La próxima vez que se renombre, se pone.
+    """
+    fecha = _fecha_de(nombre)
+    tema = os.path.basename(nombre)[len(fecha) + 1:]
+    if not tema:
+        return ""
+    rel = f"{RESUMENES}/{fecha}/{tema}"
+    if not os.path.isfile(os.path.join(carpeta, RESUMENES, fecha, tema)):
+        return ""
+    return f" · [{rel}]({rel})"
 
 
 def _libre(carpeta, nombre, actual):

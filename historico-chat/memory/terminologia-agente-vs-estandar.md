@@ -1,8 +1,10 @@
-# Terminología: agente vs estándar vs Claude
+# Terminología: Cimiento vs estándar vs Claude
+
+**Se llama Cimiento.** El 2026-08-14 el usuario le puso nombre para dejar de decirle "el agente": es la palabra de lo que sostiene, la línea base sobre la que se apoya todo proyecto. Donde este archivo y el resto del repositorio dicen "el agente", se lee **Cimiento**; cambiarlo en todos los documentos es trabajo aparte y todavía no se hizo.
 
 Decisión de nomenclatura para este repo y todos sus documentos. Son **tres** cosas distintas y no se intercambian:
 
-- **El agente** = lo que construye este repositorio: los programas que se instalan en cada proyecto con `instalar.py` (validadores, enganches, memoria, métricas) más el texto que los guía (reglas, plantillas, skills). Tiene dos mitades: la determinista corre sola; la de criterio es papel hasta que alguien la aplica ([`anatomia/componentes-del-agente.md`](../../anatomia/componentes-del-agente.md)).
+- **Cimiento** (antes "el agente") = lo que construye este repositorio: los programas que se instalan en cada proyecto con `instalar.py` (validadores, enganches, memoria, métricas) más el texto que los guía (reglas, plantillas, skills). Tiene dos mitades: la determinista corre sola; la de criterio es papel hasta que alguien la aplica ([`anatomia/componentes-del-agente.md`](../../anatomia/componentes-del-agente.md)).
 - **El estándar** = la parte del agente que es norma: `base/` + `plantillas/`. Vive en una carpeta central y **no** se copia dentro de cada proyecto.
 - **Claude** (o Claude Code) = la IA que opera el agente leyendo el estándar. Se usa como app de escritorio, comando de terminal o extensión del editor. **No es el agente**: el agente no incluye a la IA, la IA lo usa.
 

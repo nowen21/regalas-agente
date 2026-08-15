@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 14.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (una regla nueva que exige algo a todo proyecto al día).
+
+**Lo que una sesión dejaba se perdía dentro de su propia transcripción.** La transcripción prueba lo que se dijo, y por eso es larga: nadie la relee. Una sesión produjo cinco aprendizajes y nueve pendientes que hubo que ir a rescatar leyendo el chat. El molde para escribir lo que quedó existía desde la 12.2.0, pero nada lo exigía y nada lo enlazaba, así que dependía de que alguien se acordara.
+
+- **[`13·DOC22`](base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md)**: cada sesión deja su resumen en un documento aparte, escrito **en el momento en que aparece cada hallazgo**, no al cerrar. Un chat no tiene final, y lo que se deja para el final no se escribe.
+- **El resumen se encuentra desde donde se busca.** El índice del histórico enlaza, en la misma línea de cada sesión, su transcripción y su resumen. [`validadores/historico.py`](validadores/historico.py) escribe ese enlace al ponerle nombre a la sesión, y solo si el resumen ya existe: un enlace roto en el índice es peor que no tenerlo.
+- **Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`.** Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada. La numeración corrida entre sesiones se descartó: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen, que es justo lo que ya pasó con la versión.
+- **El hallazgo que se hereda no se copia.** La sesión que retoma uno abierto lo nombra en su «viene de» y trabaja sobre el original. Dos copias del mismo hallazgo terminan diciendo cosas distintas, y manda la que nadie está mirando.
+- **Cuál de los dos documentos abrir** queda escrito en [`historico-chat/resumenes/README.md`](historico-chat/resumenes/README.md): se arranca siempre por el resumen, y la transcripción se abre cuando el resumen no alcanza.
+
+**Qué tiene que hacer un proyecto al día.** Correr el instalador para recibir el modelo, y crear la carpeta de resúmenes la primera vez que la use. Lo ya escrito no se rehace y una sesión vieja sin resumen no se reabre: la norma aplica al trabajo en curso y al que viene.
+
 ## 13.1.0 — 2026-08-14
 
 **MENOR** (dos precisiones en tres plantillas; no invalida nada escrito).

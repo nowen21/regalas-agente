@@ -4,6 +4,21 @@ Lo que **dejó** cada sesión: los hallazgos, con su estado y con la pregunta qu
 
 Es parte del histórico y por eso vive dentro, pero no se mezcla con la transcripción. [`historico-chat/`](../README.md) guarda **lo que se dijo**, literal, y lo escribe el enganche. Esto guarda **lo que quedó**, y lo escribe el agente a medida que aparece cada hallazgo.
 
+## Cuál de los dos abrir
+
+Son dos documentos por sesión y responden preguntas distintas. Abrir el que no es cuesta media hora de lectura.
+
+| Lo que se busca | Dónde está |
+|---|---|
+| Qué quedó abierto y por dónde se sigue | El resumen |
+| Qué se decidió y por qué | El resumen |
+| Qué hay que hacer para poder cerrar | El resumen |
+| Qué dijo exactamente el usuario, con sus palabras | La transcripción |
+| En qué orden pasaron las cosas | La transcripción |
+| Qué se probó y qué dio | El resumen apunta; el detalle está en la fase |
+
+La regla práctica: **se arranca siempre por el resumen.** La transcripción se abre cuando el resumen no alcanza, y si eso pasa seguido, lo que falla es el resumen.
+
 ## Cómo se organiza
 
 ```
@@ -19,4 +34,4 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 
 ## Días
 
-- [2026-08-14/](2026-08-14/) — una sesión: las HU de la comprobación automática.
+- [2026-08-14/](2026-08-14/) — dos sesiones: las HU de la comprobación automática, y el cierre de su hallazgo H-4.

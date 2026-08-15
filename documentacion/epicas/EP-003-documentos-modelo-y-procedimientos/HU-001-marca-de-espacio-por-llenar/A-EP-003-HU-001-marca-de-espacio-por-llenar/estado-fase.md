@@ -13,7 +13,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 11 — Cierre documental. **Última puerta pasada:** 10.
+**Estación actual:** 13 — Publicación. **Última puerta pasada:** 12.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -27,9 +27,9 @@
 | 8 | Implementer | implementado + pruebas verdes | ☑ tres reglas nuevas y 179 huecos convertidos |
 | 9 | Verifier | trazabilidad sin faltantes | ☑ los tres CA y los tres RNF en verde |
 | 10 | Crítico | sin hallazgos graves | ☑ un defecto aceptado, DEF-03, que no toca ningún CA |
-| 11 | Cierre documental + señales | docs y señales al día | ☐ **acá está detenida**: falta el `funcionalidad_implementada.md` |
-| 12 | Commit | 👤 autorizado | ☐ |
-| 13 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 11 | Cierre documental + señales | docs y señales al día | ☑ |
+| 12 | Commit | 👤 autorizado | ☑ `b877f37`, autorizado el 2026-08-14 |
+| 13 | Publicación / despliegue | 👤 autorizado | ☐ sin `push` |
 
 ---
 
@@ -68,11 +68,11 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **El `funcionalidad_implementada.md`**, que se escribe al cerrar, y después el commit, que el usuario autoriza aparte.
+- **`validadores/reglas-validables.md` quedó fuera del commit**: ese archivo lo está editando otra sesión, y commitearlo arrastraría su trabajo. Las tres filas de `DOC19`, `DOC20` y `DOC21` están escritas pero sin guardar.
 - Las tres dudas de §2.7 del plan de trabajo quedaron respondidas el 2026-08-14 y escritas en la especificación §12.
 
 ---
 
 ## 4. Si se bloqueó
 
-- **Estación:** 11. **Motivo:** falta el documento de cierre. **Qué falta para desbloquear:** escribirlo, y que el usuario autorice el commit.
+- **Estación:** 13. **Motivo:** no se ha publicado. **Qué falta para desbloquear:** que el usuario autorice el `push`.

@@ -43,6 +43,10 @@
 
 **Nace en y cerrado en son el rastro del hallazgo.** El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
 
+**Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`.** Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada: "el H-4" existe en todas las sesiones que tuvieron cuatro hallazgos. La numeración corrida entre sesiones no sirve: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen.
+
+**El hallazgo que se hereda no se copia.** La sesión que retoma un hallazgo abierto de otra lo **nombra** en su «viene de» y trabaja sobre el original: ahí actualiza el estado, el «cerrado en» y lo que se decidió. Copiarlo al resumen nuevo deja dos versiones del mismo hallazgo, y la que manda termina siendo la que nadie está mirando.
+
 **Los dos del medio son los que enganchan el hallazgo con el trabajo.** Uno mira hacia atrás: esto que apareció, ¿ya estaba pedido en alguna parte? El otro mira hacia adelante: resolverlo, ¿obliga a abrir una historia nueva? Un hallazgo con los dos en `—` no es trabajo: es una nota, y probablemente sea una señal y nada más.
 
 **Se anotan todos**, los resueltos también. El que se resolvió en la sesión sirve para que nadie vuelva a discutirlo, y el que quedó abierto sirve para arrancar la próxima discusión sin empezar de cero. Por eso el estado, el «cerrado en» y el «con qué se retoma» importan más que el resto: dicen si está cerrado, dónde se cerró y por dónde sigue.
@@ -69,6 +73,8 @@ Una sesión se abre por dos motivos: porque hay trabajo nuevo, o porque alguien 
 Es el enlace hacia adelante. El de vuelta ya existe: el «cerrado en» de ese hallazgo apunta a esta sesión el día que se cierre. Sin los dos, un hallazgo que se arrastra tres sesiones no se puede seguir en ninguna dirección.
 
 Si la sesión atiende más de un hallazgo, se nombran todos.
+
+**Ese hallazgo no se copia acá.** Se nombra, y lo que se decida se escribe en el resumen donde nació. Este resumen anota los hallazgos **nuevos**, los que aparecieron en esta sesión.
 
 ---
 

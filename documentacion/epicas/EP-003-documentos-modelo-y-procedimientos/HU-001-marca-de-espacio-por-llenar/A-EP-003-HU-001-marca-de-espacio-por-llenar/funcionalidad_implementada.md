@@ -10,7 +10,7 @@
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / CA cubiertas** | HU-001: [CA-01](../HU-001-marca-de-espacio-por-llenar.md#ca-01--la-marca-se-ve-y-se-distingue-del-texto), [CA-02](../HU-001-marca-de-espacio-por-llenar.md#ca-02--todos-los-modelos-usan-la-misma-marca), [CA-03](../HU-001-marca-de-espacio-por-llenar.md#ca-03--un-documento-con-marcas-sin-llenar-no-se-da-por-terminado) y los tres [RNF](../HU-001-marca-de-espacio-por-llenar.md#5-requisitos-no-funcionales) |
 | **Fecha de cierre** | 2026-08-14 |
-| **Commit** | Sin commitear: el usuario lo autoriza aparte |
+| **Commit** | `b877f37`, autorizado el 2026-08-14 |
 
 ---
 

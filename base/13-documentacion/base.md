@@ -43,6 +43,7 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 | [`DOC19`](reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) | Los espacios por llenar de un modelo se marcan `«…»`, la misma marca en todos. |
 | [`DOC20`](reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) | Un documento que todavía trae una marca no está terminado. |
 | [`DOC21`](reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) | La sección que no aplica se escribe `N/A`: no se deja marcada ni se borra. |
+| [`DOC22`](reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) | Cada sesión deja su resumen aparte, escrito mientras aparece cada hallazgo. |
 
 ---
 

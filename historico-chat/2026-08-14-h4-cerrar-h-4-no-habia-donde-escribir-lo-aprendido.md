@@ -1072,3 +1072,143 @@ Antes de seguir, una decisión: HU-009 es del **mismo módulo** que HU-001, así
 
 ### 93 · Usuario — 2026-08-14 19:26:14
 > comité y continuamos
+
+**Agente** — 2026-08-14 19:27:44
+<!-- agente: 22ae8a8e-2173-42bb-b118-6e8844ef1600 -->
+
+Commiteado: **b877f37**, 36 archivos, solo los de esta sesión. Los enganches de git pasaron sin incumplimientos.
+
+Una cosa quedó por fuera a propósito: **`validadores/reglas-validables.md`**. Otra sesión lo está editando, y commitearlo habría arrastrado su trabajo. Mis tres filas de `DOC19`, `DOC20` y `DOC21` están escritas pero sin guardar. Queda anotado en el estado de la fase.
+
+Sin `push`: eso se autoriza aparte.
+
+Sigo con HU-009, extendiendo la especificación del mismo módulo.
+
+### 94 · Usuario — 2026-08-14 19:34:29
+> si siga con la: HU-009
+
+**Agente** — 2026-08-14 19:38:51
+<!-- agente: caa95010-343c-40a3-84c5-439f1a625b6a -->
+
+Fase de HU-009 abierta: [A-EP-003-HU-009-modelo-del-resumen-de-sesion](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md). No lleva especificación nueva: crece la del módulo, con las reglas 8 a 16.
+
+El análisis encontró **tres huecos**, y ese es el trabajo:
+
+1. **El resumen no se enlaza desde ningún lado.** El índice del histórico lista transcripciones y no menciona los resúmenes, así que quien busca qué dejó una sesión llega justo al documento que el resumen viene a evitar.
+2. **El hallazgo heredado no tiene regla.** El modelo dice dónde nació y dónde se cerró, pero no qué hace la sesión que lo recibe. Hoy pasó con H-4 y se resolvió a mano.
+3. **Los hallazgos no se identifican entre sesiones.** Cada resumen numera desde `H-1`, así que "el H-4" no dice nada sin la fecha.
+
+Plan de trabajo con 13 tareas y 15 h; plan de pruebas con 6 casos, uno por exigencia.
+
+Dos dudas que le tocan a usted:
+
+1. La regla nueva `DOC22`, ¿obliga a todo proyecto a escribir resumen de sesión, o es *opt-in*? De eso depende que la versión sea MAYOR o MENOR.
+2. El resumen del día, ¿se enlaza desde el índice del histórico, o desde cada línea de sesión?
+
+### 95 · Usuario — 2026-08-14 19:40:18
+> 1. explique mejor
+> 2. explique mejor
+
+**Agente** — 2026-08-14 19:40:26
+<!-- agente: 7975089c-5b62-4c20-9aae-3e4735b044d5 -->
+
+**1.** La regla nueva diría "cada sesión deja escrito lo que dejó". La pregunta es a quién obliga:
+
+- **Obliga:** todo proyecto que use el estándar tiene que escribir resumen de cada sesión. Versión MAYOR.
+- **Opt-in:** solo lo hace el proyecto que lo active. Este repositorio ya lo hace. Versión MENOR.
+
+**2.** El índice del histórico tiene hoy una línea por sesión, con su transcripción. Dónde va el resumen:
+
+- **Por día:** una línea nueva que lleva a la carpeta del día.
+- **Por sesión:** la misma línea que ya existe lleva dos enlaces, la transcripción y el resumen.
+
+### 96 · Usuario — 2026-08-14 19:43:10
+> 1. recuede el agente es la linea base de todo proyecto
+> 2. Por sesión porque cada sesión resuelve una situación o tema
+>
+> a propósito que nombre recomienda para el agente?
+
+**Agente** — 2026-08-14 19:43:20
+<!-- agente: 9c044672-aed6-41c8-883f-cf3d37c01a47 -->
+
+Anotado: `DOC22` obliga (MAYOR), y el enlace va por sesión.
+
+Sobre el nombre, recomiendo **Andamio**.
+
+Es lo que hace: se monta alrededor del trabajo, sostiene mientras se construye y obliga a que cada piso se apoye en el anterior. Es una palabra de acá, se dice fácil y no hay que traducirla.
+
+Dos alternativas: **Cimiento**, si prefiere la idea de línea base sobre la que todo se apoya; **Molde**, si lo que quiere resaltar es que cada documento sale de un modelo.
+
+### 97 · Usuario — 2026-08-14 19:44:36
+> si prefiero Cimiento para ya no refirirnos más a agente
+
+**Agente** — 2026-08-14 19:45:01
+<!-- agente: c6ab2a52-4e44-4a81-8e33-9a389098096a -->
+
+Anotado en la memoria: [terminologia-agente-vs-estandar.md](historico-chat/memory/terminologia-agente-vs-estandar.md) ahora dice que se llama **Cimiento**, y que "el agente" se lee así de aquí en adelante.
+
+Dos cosas que dejo señaladas en vez de hacer por mi cuenta:
+
+- **Cambiarlo en todo el repositorio es trabajo aparte.** "El agente" aparece en el README, el manual, las plantillas, las reglas y las épicas. Es una fase, con su plan.
+- **No toqué el índice de la memoria.** `historico-chat/memory/memory.md` lo está editando otra sesión, igual que `reglas-validables.md`.
+
+¿Abro el pendiente para el cambio de nombre, o lo dejamos para cuando cerremos la cadena de H-4?
+
+### 98 · Usuario — 2026-08-14 19:46:08
+> déjelo para cuando cierre
+
+**Agente** — 2026-08-14 19:46:38
+<!-- agente: 627bfa7f-1260-4f56-917d-5200a89999e4 -->
+
+Sus dos respuestas quedaron escritas en el plan:
+
+1. **`DOC22` obliga**, porque este repositorio es la línea base de todo proyecto y lo que acá se exige se hereda. El cambio será **MAYOR**, con su aviso de migración.
+2. **El enlace va por sesión**, en la misma línea del índice donde ya está su transcripción.
+
+La fase queda en la estación 7, con sus dos dudas cerradas y esperando que apruebe los dos planes:
+
+- [plan_trabajo.md](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/plan_trabajo.md) — 13 tareas, 15 h.
+- [plan_pruebas.md](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/plan_pruebas.md) — 6 casos, uno por exigencia.
+
+### 99 · Usuario — 2026-08-14 19:47:16
+> aprobado
+
+**Agente** — 2026-08-14 19:48:55
+<!-- agente: 49b7c590-9d8f-4007-9776-09d49e5f2d2e -->
+
+Voy en 7 de 13 tareas. Paré en T-07, como manda `F8`.
+
+**Lo que encontró T-06:** el índice del histórico no es una lista cualquiera. Lo escribe [validadores/historico.py](validadores/historico.py), que reconoce cada línea con esta forma exacta:
+
+```
+- [nombre.md](nombre.md) — de qué se trató.
+```
+
+Si le agrego el enlace al resumen en la misma línea, el programa deja de reconocerla, y la próxima vez que renombre una sesión escribiría una línea duplicada en vez de corregir la que ya está.
+
+O sea: enlazar por sesión, como usted decidió, obliga a tocar `validadores/historico.py`, y ese archivo el plan solo lo declaraba para *revisar*.
+
+¿Amplío el plan para modificarlo?
+
+### 100 · Usuario — 2026-08-14 19:50:34
+> si
+
+**Agente** — 2026-08-14 19:57:21
+<!-- agente: 4d490559-1407-4f8e-8b74-7b7706bf8d49 -->
+
+HU-009 ejecutada: las seis exigencias en verde, `validar.py estandar` en 0 fallas. Versión **14.0.0** (MAYOR).
+
+Lo que quedó:
+
+- **[`13·DOC22`](base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md)** — cada sesión deja su resumen aparte, escrito mientras aparece cada hallazgo.
+- **El índice del histórico enlaza cada resumen** al lado de su transcripción, y [validadores/historico.py](validadores/historico.py) lo escribe solo si el resumen existe.
+- **Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`**, y el que se hereda no se copia: se nombra y se trabaja sobre el original.
+
+Lo que salvó la fase fue la tarea que decía "revisar antes de tocar": el índice lo escribe un programa, y agregarle el enlace a mano habría dejado líneas duplicadas sin que nadie se diera cuenta hasta la sesión siguiente.
+
+De la cadena de H-4 van **dos de tres**. Falta EP-005 · HU-008, el enganche.
+
+¿Commiteo esto antes de seguir?
+
+### 101 · Usuario — 2026-08-14 19:59:40
+> si

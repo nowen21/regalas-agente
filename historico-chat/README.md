@@ -49,6 +49,8 @@ y qué archivo se tocó.
 
 ## Índice
 
+Cada línea es una sesión: primero su transcripción, y después del `·` el enlace a **lo que dejó**, si ya tiene resumen ([`resumenes/`](resumenes/README.md)). Para retomar un tema se arranca por el resumen; la transcripción se abre cuando el resumen no alcanza.
+
 - [2026-08-06-historico-chat.md](2026-08-06-historico-chat.md) — se crea esta carpeta; queda el trabajo previo de despliegue y observabilidad (`base/18`, `base/19`).
 - [2026-08-06-meta-reglas-2.md](2026-08-06-meta-reglas-2.md) — la regla de reglas (`base/00-meta-reglas.md`); formato del histórico: transcripción literal con marca de tiempo.
 - [2026-08-06-sesion-3.md](2026-08-06-sesion-3.md) — sesión nueva; el histórico no se estaba escribiendo, se crea al ser señalado.
@@ -79,8 +81,8 @@ y qué archivo se tocó.
 - [2026-08-13-del-brief-a-los-planes-de-la-fase-a.md](2026-08-13-del-brief-a-los-planes-de-la-fase-a.md) — nace el brief del agente y sus siete épicas; las ocho HU de EP-001 y la fase A de HU-001 con sus planes (8.0.1, 8.1.0, 8.2.0, 9.0.0).
 - [2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md](2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md) — sigue la sesión anterior: el cierre verifica que el plan de trabajo se hizo, y la deuda técnica dice de dónde salió (9.1.0, 9.2.0).
 - [2026-08-13-pendientes-del-diplomado-de-ia.md](2026-08-13-pendientes-del-diplomado-de-ia.md) — cinco pendientes (12–16) que salen de comparar los apuntes del diplomado de IA contra el estándar.
-- [2026-08-13-hu-de-la-comprobacion-automatica.md](2026-08-13-hu-de-la-comprobacion-automatica.md) — las 12 HU de EP-004 y donde cae lo que falta del pendiente 01.
+- [2026-08-13-hu-de-la-comprobacion-automatica.md](2026-08-13-hu-de-la-comprobacion-automatica.md) — las 12 HU de EP-004 y donde cae lo que falta del pendiente 01. · [resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md](resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md)
 - [2026-08-14-plan-de-trabajo-de-la-ep-001.md](2026-08-14-plan-de-trabajo-de-la-ep-001.md) — el plan de trabajo de la EP-001: bajar sus HU a fases.
 - [2026-08-14-molde-para-pedir-en-la-sesion.md](2026-08-14-molde-para-pedir-en-la-sesion.md) — analisis del prompt base del usuario: el molde obligatorio con que se le pide trabajo al agente.
 - [2026-08-14-indice-tematico-del-historico.md](2026-08-14-indice-tematico-del-historico.md) — cargar el histórico al iniciar ya lo hace un hook; nace la idea de un índice por temáticas y qué manda entre el brief y el histórico.
-- [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche.
+- [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche. · [resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md)
