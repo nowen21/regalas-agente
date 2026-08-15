@@ -1,4 +1,4 @@
-# HU-000 — [Título corto en lenguaje de negocio]
+# HU-000 — «Título corto en lenguaje de negocio»
 
 > Plantilla general de Historia de Usuario. Elimine las secciones que no apliquen y las notas entre paréntesis.
 
@@ -9,23 +9,23 @@
 | Campo | Valor |
 |---|---|
 | **ID** | HU-000 |
-| **Épica / Feature** | [Épica padre] |
-| **Módulo / Componente** | [Módulo del sistema] |
+| **Épica / Feature** | «Épica padre» |
+| **Módulo / Componente** | «Módulo del sistema» |
 | **Tipo** | Funcional / Técnica / Spike / Bug |
 | **Prioridad** | Must / Should / Could / Won't (MoSCoW) |
-| **Estimación** | [Story points] |
-| **Sprint** | [Sprint asignado] |
-| **Solicitante** | [Product Owner / área usuaria] |
-| **Responsable** | [Dev asignado] |
+| **Estimación** | «Story points» |
+| **Sprint** | «Sprint asignado» |
+| **Solicitante** | «Product Owner / área usuaria» |
+| **Responsable** | «Dev asignado» |
 | **Estado** | Backlog / Ready / En curso / En QA / Done |
 
 ---
 
 ## 2. Narrativa
 
-- **Como** [rol específico — evite "usuario" genérico]
-- **Quiero** [acción o capacidad concreta]
-- **Para** [beneficio de negocio medible]
+- **Como** «rol específico — evite "usuario" genérico»
+- **Quiero** «acción o capacidad concreta»
+- **Para** «beneficio de negocio medible»
 
 > Las tres van como lista. Sin el guion, Markdown las une en un solo párrafo corrido y la narrativa deja de leerse de un vistazo.
 
@@ -33,22 +33,22 @@
 
 ## 3. Contexto y descripción
 
-[Situación actual, problema que se resuelve, antecedentes relevantes.]
+«Situación actual, problema que se resuelve, antecedentes relevantes.»
 
 ### 3.1 Reglas de negocio
 
 | ID | Regla |
 |---|---|
-| RN-01 | [Regla que debe cumplirse siempre] |
+| RN-01 | «Regla que debe cumplirse siempre» |
 | RN-02 | |
 
 ### 3.2 Supuestos
 
-- [Lo que se asume verdadero al iniciar]
+- «Lo que se asume verdadero al iniciar»
 
 ### 3.3 Fuera de alcance
 
-- [Lo que explícitamente NO incluye esta HU]
+- «Lo que explícitamente NO incluye esta HU»
 
 ---
 
@@ -65,49 +65,49 @@
 >
 > Cada paso es **verificable** y con resultado esperado claro. El CA se aprueba **solo** cuando **todos** sus pasos se ejecutan satisfactoriamente. **Prohibido** lenguaje ambiguo — "verificar que funcione correctamente", "comprobar que se procese", "validar que aparezca" — sin indicar exactamente **cómo, dónde y qué** comprobar.
 
-### CA-01 — [Nombre del escenario: camino feliz]
+### CA-01 — «Nombre del escenario: camino feliz»
 
 ```gherkin
-Dado que [precondición]
-Cuando [acción del usuario]
-Entonces [resultado observable]
-Y [efecto secundario verificable]
+Dado que «precondición»
+Cuando «acción del usuario»
+Entonces «resultado observable»
+Y «efecto secundario verificable»
 ```
 
 **Cómo validarlo:**
-1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
-2. [Qué acción realizar y con qué datos/condiciones]: … → resultado esperado: …
-3. [Dónde verificar la evidencia del resultado]: …
-- **Aprobado cuando:** [condición concreta y observable].
+1. «Dónde iniciar — módulo / pantalla / URL / menú»: …
+2. «Qué acción realizar y con qué datos/condiciones»: … → resultado esperado: …
+3. «Dónde verificar la evidencia del resultado»: …
+- **Aprobado cuando:** «condición concreta y observable».
 
-### CA-02 — [Nombre del escenario: validación / error]
+### CA-02 — «Nombre del escenario: validación / error»
 
 ```gherkin
-Dado que [precondición]
-Cuando [acción inválida]
-Entonces [mensaje o comportamiento esperado]
-Y [el estado del sistema no cambia]
+Dado que «precondición»
+Cuando «acción inválida»
+Entonces «mensaje o comportamiento esperado»
+Y «el estado del sistema no cambia»
 ```
 
 **Cómo validarlo:**
-1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
-2. [Qué acción inválida realizar y con qué datos]: … → resultado esperado: [mensaje/comportamiento] …
-3. [Dónde verificar que el estado NO cambió]: …
-- **Aprobado cuando:** [condición concreta y observable].
+1. «Dónde iniciar — módulo / pantalla / URL / menú»: …
+2. «Qué acción inválida realizar y con qué datos»: … → resultado esperado: «mensaje/comportamiento» …
+3. «Dónde verificar que el estado NO cambió»: …
+- **Aprobado cuando:** «condición concreta y observable».
 
-### CA-03 — [Nombre del escenario: caso borde]
+### CA-03 — «Nombre del escenario: caso borde»
 
 ```gherkin
-Dado que [condición límite]
-Cuando [acción]
-Entonces [resultado esperado]
+Dado que «condición límite»
+Cuando «acción»
+Entonces «resultado esperado»
 ```
 
 **Cómo validarlo:**
-1. [Dónde iniciar — módulo / pantalla / URL / menú]: …
-2. [Qué acción realizar en la condición límite y con qué datos]: … → resultado esperado: …
-3. [Dónde verificar la evidencia del resultado]: …
-- **Aprobado cuando:** [condición concreta y observable].
+1. «Dónde iniciar — módulo / pantalla / URL / menú»: …
+2. «Qué acción realizar en la condición límite y con qué datos»: … → resultado esperado: …
+3. «Dónde verificar la evidencia del resultado»: …
+- **Aprobado cuando:** «condición concreta y observable».
 
 ### Criterios de aceptación transversales
 
@@ -128,33 +128,35 @@ Entonces [resultado esperado]
 
 ## 5. Requisitos no funcionales
 
-| Categoría | Requisito |
-|---|---|
-| **Rendimiento** | [p. ej. respuesta < 2 s con 500 registros] |
-| **Seguridad** | [autenticación, autorización, roles con acceso] |
-| **Auditoría** | [eventos a registrar en bitácora] |
-| **Accesibilidad** | [nivel WCAG aplicable] |
-| **Compatibilidad** | [navegadores, dispositivos, versiones] |
-| **Trazabilidad** | [norma o requisito legal asociado] |
+> **Cada requisito lleva su identificador `RNF-0N`**, igual que los criterios de aceptación. Sin número no se puede citar desde el plan ni desde las pruebas, y termina verificándose "de vista".
+
+| ID | Categoría | Requisito |
+|---|---|---|
+| RNF-01 | **Rendimiento** | «p. ej. respuesta < 2 s con 500 registros» |
+| RNF-02 | **Seguridad** | «autenticación, autorización, roles con acceso» |
+| RNF-03 | **Auditoría** | «eventos a registrar en bitácora» |
+| RNF-04 | **Accesibilidad** | «nivel WCAG aplicable» |
+| RNF-05 | **Compatibilidad** | «navegadores, dispositivos, versiones» |
+| RNF-06 | **Trazabilidad** | «norma o requisito legal asociado» |
 
 ---
 
 ## 6. Diseño y referencias
 
-- **Mockup / Prototipo:** [enlace]
-- **Documento funcional:** [enlace]
-- **Contrato de API:** [endpoint, método, request/response]
-- **Modelo de datos afectado:** [tablas o entidades]
+- **Mockup / Prototipo:** «enlace»
+- **Documento funcional:** «enlace»
+- **Contrato de API:** «endpoint, método, request/response»
+- **Modelo de datos afectado:** «tablas o entidades»
 
 ---
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] [Backend] …
-- [ ] [Frontend] …
-- [ ] [Base de datos] …
-- [ ] [Pruebas] …
-- [ ] [Documentación] …
+- [ ] «Backend» …
+- [ ] «Frontend» …
+- [ ] «Base de datos» …
+- [ ] «Pruebas» …
+- [ ] «Documentación» …
 
 ---
 
@@ -164,7 +166,7 @@ Entonces [resultado esperado]
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| `A-EP-000-HU-000-«slug»` | CA-01, CA-02 | [enlace] | [enlace] | [enlace · cuando se ejecute] | Sin empezar / En curso / Cerrada |
+| `A-EP-000-HU-000-«slug»` | CA-01, CA-02 | «enlace» | «enlace» | «enlace · cuando se ejecute» | Sin empezar / En curso / Cerrada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -183,8 +185,8 @@ Entonces [resultado esperado]
 
 | Tipo | Descripción | Impacto |
 |---|---|---|
-| Dependencia | [HU o servicio previo requerido] | Alto / Medio / Bajo |
-| Riesgo | [Riesgo identificado] | [Mitigación] |
+| Dependencia | «HU o servicio previo requerido» | Alto / Medio / Bajo |
+| Riesgo | «Riesgo identificado» | «Mitigación» |
 
 ---
 
@@ -228,4 +230,4 @@ Entonces [resultado esperado]
 
 | Fecha | Autor | Cambio |
 |---|---|---|
-| AAAA-MM-DD | [Nombre] | Creación de la HU |
+| AAAA-MM-DD | «Nombre» | Creación de la HU |

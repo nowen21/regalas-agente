@@ -15,6 +15,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 - [subagentes-y-entorno.md](subagentes-y-entorno.md) — qué sub-agentes ofrece Claude Code y qué pendientes desbloquea (falta construir, no capacidad).
 - [velocidad-consistencia-calidad.md](velocidad-consistencia-calidad.md) — el estándar frente a los tres: consistencia y calidad de fábrica, velocidad con matiz.
 - [agente-24-7-y-tareas.md](agente-24-7-y-tareas.md) — automatización: 24/7, rutinas y cola de tareas, con el trade-off de seguridad.
+- [marca-del-espacio-por-llenar.md](marca-del-espacio-por-llenar.md) — por qué los huecos de un modelo se marcan `«…»` y qué marcas se descartaron.
 
 ## Hoja de ruta (pendientes, por orden sugerido)
 

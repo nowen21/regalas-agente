@@ -10,17 +10,17 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
-| **Especificación del módulo** | [enlace · `02·F2`] |
-| **Plan de trabajo** | [enlace · `plan_trabajo.md`] |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01) |
+| **Especificación del módulo** | «enlace · `02·F2`» |
+| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
+| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
 | **Fecha de cierre** | AAAA-MM-DD |
-| **Commit** | [hash — se completa al commitear] |
+| **Commit** | «hash — se completa al commitear» |
 
 ---
 
 ## 1. Qué se implementó — resumen
 
-[2–4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.]
+«2–4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
 
 ---
 
@@ -36,9 +36,9 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 | Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `[ruta real]` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
+| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
 
-**Faltantes / diferimientos** (si hay `❌` o parcial): [qué queda y a qué fase se traslada].
+**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
 
 ### 2.2 Plan de trabajo → ejecución
 
@@ -46,21 +46,21 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `[ruta real]` | (commit, prueba, archivo) |
+| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
 
-**Correspondencia con el plan:** [N tareas en el plan, N acá]. Si no cuadra, cuáles bailan y por qué.
+**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
 
-**Tareas que no se hicieron:** [cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas].
+**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
 
 **Archivos tocados que el plan no declaraba**  ·  `02·F8`:
 
 | Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
 |---|---|---|
-| `[ruta]` | | |
+| `«ruta»` | | |
 
 > "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y `F8` pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
 
-**Esfuerzo real contra estimado:** [horas reales] contra [horas del plan]. [Qué se subestimó, en una línea].
+**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
 
 ---
 
@@ -68,18 +68,18 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 > **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
 
-- **Fuente:** [`resultado_pruebas.md`] · **Veredicto:** «Cumple / Cumple con observaciones».
+- **Fuente:** «`resultado_pruebas.md`» · **Veredicto:** «Cumple / Cumple con observaciones».
 - **Suites corridas + resultado:** «X/X verdes» (alcance quirúrgico — solo las suites que la fase toca).
 - **Verificaciones manuales** — lo que el entorno automático **no** reproduce (`08·T4`):
-  - [Lista de comprobaciones hechas a mano y su resultado.]
+  - «Lista de comprobaciones hechas a mano y su resultado.»
 - **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
 
 ---
 
 ## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-- **Punto de entrada** (UI / endpoint / comando): [dónde y cómo se accede].
-- **Permisos o datos base sembrados:** [si aplica].
+- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
+- **Permisos o datos base sembrados:** «si aplica».
 
 ---
 
@@ -87,7 +87,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| | | [id / enlace en la memoria] |
+| | | «id / enlace en la memoria» |
 
 ---
 
@@ -123,7 +123,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
 
-- Cambios de esquema / migraciones a correr: [orden].
-- Datos base / permisos a sembrar: [comandos].
-- Comandos post-deploy: [si aplica].
-- Reversión: [rollback previsto · ver §7 del `plan_trabajo`].
+- Cambios de esquema / migraciones a correr: «orden».
+- Datos base / permisos a sembrar: «comandos».
+- Comandos post-deploy: «si aplica».
+- Reversión: «rollback previsto · ver §7 del `plan_trabajo`».

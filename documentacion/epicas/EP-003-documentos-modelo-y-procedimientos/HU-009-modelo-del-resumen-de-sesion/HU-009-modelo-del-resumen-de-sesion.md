@@ -31,7 +31,7 @@ La transcripción de la sesión guarda lo que se dijo, literal y completo. Es la
 
 Lo que quedó —los hallazgos, las decisiones, las preguntas vivas— no tenía forma ni sitio, así que se perdía dentro de esa transcripción. Una sesión entera produjo cinco aprendizajes y nueve pendientes que había que ir a rescatar leyendo el chat.
 
-El modelo existe desde el 2026-08-14, con ocho campos por hallazgo, y falta someterlo al procedimiento de un documento modelo: probarlo con más de una sesión, ajustar lo que sobre y dejarlo enlazado desde donde corresponde.
+El modelo existe desde el 2026-08-14, con doce campos por hallazgo. Lo que falta es decidir dos cosas que hoy no dice: desde dónde se enlaza el resumen para que se encuentre, y qué se hace con un hallazgo que viene arrastrado de otra sesión. Comprobar que el modelo sirve no es trabajo de esta historia: eso lo dicen sus criterios de aceptación.
 
 ### 3.1 Reglas de negocio
 
@@ -131,7 +131,6 @@ Entonces dice qué falta para poder cerrarla
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Probar el modelo con más de una sesión y quitar lo que no aporte.
 - [ ] Dejar enlazado el resumen desde el índice del histórico.
 - [ ] Definir qué se hace con un hallazgo que se arrastra de otra sesión.
 
@@ -176,7 +175,7 @@ Todavía no se descompuso en fases.
 
 ## 11. Definition of Done (DoD)
 
-- [ ] El modelo existe y se probó con varias sesiones
+- [ ] El modelo existe, con sus campos decididos
 - [ ] El resumen se distingue de la transcripción
 - [ ] Dice si la sesión se puede cerrar
 - [ ] Todos los criterios de aceptación verificados
@@ -201,3 +200,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-4 del 2026-08-14 |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se quita de las tareas "probar el modelo con más de una sesión": eso lo comprueban los CA, no es trabajo de la HU |

@@ -14,7 +14,7 @@
 | **Qué se decidió** | La decisión, o "sin decidir" si quedó abierta. |
 | **Estado** | `resuelto acá` o `abierto`. |
 | **Responde a** | La épica, la historia y el criterio de aceptación que este hallazgo cumple. `—` si no cae dentro de nada planeado. |
-| **Dispara** | La épica, la historia o el criterio **nuevo** que hace falta crear por causa de este hallazgo. `—` si no abre trabajo. |
+| **Dispara** | La épica, la historia o el criterio **nuevo** que hace falta crear por causa de este hallazgo. Si es más de uno, **numerados en el orden en que se resuelven**, y cada uno con por qué va ahí. `—` si no abre trabajo. |
 | **Orden de resolución** | En qué puesto va este hallazgo entre los que quedaron abiertos, y por qué. En los resueltos, `—`. |
 | **Dónde queda** | Señal, pendiente, regla o memoria. |
 | **Nace en** | La sesión donde apareció: `AAAA-MM-DD · tema`. No cambia nunca, ni cuando el hallazgo se arrastra a otra sesión. |
@@ -32,6 +32,14 @@
 ```
 
 **Una pieza, una historia.** Si una pieza no aparece en «dispara», o una historia disparada no sale de ninguna pieza, el hallazgo está mal escrito.
+
+**El orden de las historias se escribe en el hallazgo, y en ninguna otra parte.** Las épicas están cortadas por tipo de entregable (un documento modelo y el programa que lo llena caen en épicas distintas), así que un problema partido en dos historias no deja ver su orden desde ninguna de las dos. El hallazgo es el único sitio donde el problema está entero. Por eso «dispara» los numera, y nombra también lo que las bloquea aunque este hallazgo no lo haya disparado:
+
+```
+**Dispara:**
+1. EP-000 · HU-000 — «por qué va primero». No sale de este hallazgo: la bloquea.
+2. EP-000 · HU-000 — «por qué va después de la anterior».
+```
 
 **Nace en y cerrado en son el rastro del hallazgo.** El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
 
@@ -52,6 +60,18 @@ Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era convers
 
 ---
 
+## De dónde viene esta sesión
+
+Una sesión se abre por dos motivos: porque hay trabajo nuevo, o porque alguien fue a buscar un hallazgo que otra sesión dejó abierto. En el segundo caso hay que decir **cuál**, con su fecha, su tema y su número:
+
+**Viene de:** «AAAA-MM-DD · tema · H-N» / «—, es trabajo nuevo»
+
+Es el enlace hacia adelante. El de vuelta ya existe: el «cerrado en» de ese hallazgo apunta a esta sesión el día que se cierre. Sin los dos, un hallazgo que se arrastra tres sesiones no se puede seguir en ninguna dirección.
+
+Si la sesión atiende más de un hallazgo, se nombran todos.
+
+---
+
 ## Hallazgos de esta sesión
 
 ### H-1 · «título corto»
@@ -67,7 +87,7 @@ Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era convers
 - **Qué se decidió:** «…»
 - **Estado:** «resuelto acá / abierto»
 - **Responde a:** «EP-000 · HU-000 · CA-00» / «—»
-- **Dispara:** «EP-000 · HU-000 nueva» / «—»
+- **Dispara:** «EP-000 · HU-000 nueva» / «numeradas, si son varias» / «—»
 - **Orden de resolución:** «n de N · por qué va ahí» / «—»
 - **Dónde queda:** «señal S-00 / pendiente NN / regla NN·Xn / memoria»
 - **Nace en:** «AAAA-MM-DD · tema de la sesión»

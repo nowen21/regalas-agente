@@ -43,11 +43,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | «Cumple / Cumple con observaciones / No cumple / Todavía no se ejecutó» |
+| **Concepto** | «Cumple / No cumple / Todavía no se ejecutó». Sin estado intermedio: lo que falta hace que sea No cumple |
 | **CA cumplidos** | «cuántos de cuántos» |
 | **CA en "No"** | «cuáles. Con uno solo, la fase no cierra» |
 | **Defectos abiertos aceptados** | «cuáles y quién los aceptó» |
-| **Fuente** | [`resultado_pruebas.md`] |
+| **Fuente** | «`resultado_pruebas.md`» |
 
 ---
 

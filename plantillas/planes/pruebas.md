@@ -8,9 +8,9 @@
 | **Versión** | 1.0 |
 | **Alcance del plan** | Proyecto / Release / Épica EP-000 / HU-000 |
 | **Fecha** | AAAA-MM-DD |
-| **Elaborado por** | [Nombre — QA Lead] |
-| **Revisado por** | [Nombre] |
-| **Aprobado por** | [Nombre — PO] |
+| **Elaborado por** | «Nombre — QA Lead» |
+| **Revisado por** | «Nombre» |
+| **Aprobado por** | «Nombre — PO» |
 | **Estado** | Borrador / Aprobado / En ejecución / Cerrado |
 
 > Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en la carpeta de la fase (ruta `02·F12.13`), como `plan_pruebas.md`. Al llenar la plantilla se borra esta caja, pero **la línea de arriba, la de para qué sirve, se queda**.
@@ -23,24 +23,24 @@
 
 ### 1.1 Propósito
 
-[Qué se busca validar con este plan y ante quién responde.]
+«Qué se busca validar con este plan y ante quién responde.»
 
 ### 1.2 Alcance
 
 **Se prueba**
-- [Módulo, funcionalidad, integración incluida]
+- «Módulo, funcionalidad, integración incluida»
 
 **No se prueba**
-- [Exclusión explícita y su justificación]
+- «Exclusión explícita y su justificación»
 
 ### 1.3 Documentos de referencia
 
 | Documento | Ubicación |
 |---|---|
-| Historias de usuario / Épica | [enlace] |
-| Contrato de API | [enlace] |
-| Diseño / Prototipos | [enlace] |
-| Normativa aplicable | [enlace] |
+| Historias de usuario / Épica | «enlace» |
+| Contrato de API | «enlace» |
+| Diseño / Prototipos | «enlace» |
+| Normativa aplicable | «enlace» |
 
 ---
 
@@ -74,7 +74,7 @@
 | Rendimiento | ☐ | Tiempo de respuesta y carga concurrente |
 | Usabilidad | ☐ | Flujo comprensible sin capacitación |
 | Compatibilidad | ☐ | Navegadores y dispositivos soportados |
-| Accesibilidad | ☐ | WCAG 2.1 nivel [A/AA] |
+| Accesibilidad | ☐ | WCAG 2.1 nivel «A/AA» |
 | Migración de datos | ☐ | Integridad y completitud |
 | Recuperación | ☐ | Comportamiento ante fallo y rollback |
 
@@ -121,7 +121,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 ### 4.2 Criterios de salida
 
 - [ ] 100% de los casos críticos y altos ejecutados
-- [ ] ≥ [95]% de casos ejecutados en total
+- [ ] ≥ «95»% de casos ejecutados en total
 - [ ] 0 defectos abiertos de severidad crítica o alta
 - [ ] Defectos medios/bajos documentados y aceptados por el PO
 - [ ] Pruebas de regresión ejecutadas sin nuevos hallazgos
@@ -129,55 +129,57 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 ### 4.3 Criterios de suspensión y reanudación
 
-**Suspender si:** el ambiente cae, un defecto bloqueante impide más del [30]% de los casos, o el build no cumple las pruebas de humo.
+**Suspender si:** el ambiente cae, un defecto bloqueante impide más del «30»% de los casos, o el build no cumple las pruebas de humo.
 **Reanudar cuando:** se despliegue una corrección verificada y las pruebas de humo pasen.
 
 ---
 
 ## 5. Matriz de trazabilidad
 
-> Ningún criterio de aceptación puede quedar sin al menos un caso de prueba.
+> Ningún criterio de aceptación **ni requisito no funcional** puede quedar sin al menos un caso de prueba. Los `RNF-0N` van en esta misma tabla, con su fila propia: un requisito sin caso es un requisito que nadie comprobó.
+>
+> **Cada `CP-00N` se escribe como enlace a su caso de §6, y cada `CA-0N` o `RNF-0N` como enlace a su exigencia en la HU**, acá y en el `resultado_pruebas`. Un identificador suelto obliga a buscarlo a mano, y así es como se termina juzgando un caso sin haber leído lo que exigía.
 
 | HU | CA | Caso(s) de prueba | Tipo | Prioridad | Automatizado | Estado |
 |---|---|---|---|---|:--:|---|
-| HU-001 | CA-01 | CP-001, CP-002 | Funcional | Crítica | Sí | ☐ |
-| HU-001 | CA-02 | CP-003 | Funcional | Alta | Sí | ☐ |
-| HU-001 | RNF-01 | CP-004 | Seguridad | Crítica | No | ☐ |
-| HU-002 | CA-01 | CP-005 | Funcional | Alta | No | ☐ |
+| HU-001 | CA-01 | [CP-001](#cp-001--título-del-caso), [CP-002](#cp-002--título-del-caso-negativo) | Funcional | Crítica | Sí | ☐ |
+| HU-001 | CA-02 | «CP-003» | Funcional | Alta | Sí | ☐ |
+| HU-001 | RNF-01 | «CP-004» | Seguridad | Crítica | No | ☐ |
+| HU-002 | CA-01 | «CP-005» | Funcional | Alta | No | ☐ |
 
-**Cobertura:** [n] CA cubiertos de [n] totales = [%]
+**Cobertura:** «n» de «n» exigencias cubiertas = «%». Cuentan los `CA-0N` y los `RNF-0N`, cada uno por separado.
 
 ---
 
 ## 6. Casos de prueba
 
-### CP-001 — [Título del caso]
+### CP-001 — «Título del caso»
 
 | Campo | Valor |
 |---|---|
 | **HU / CA** | HU-001 / CA-01 |
 | **Tipo** | Funcional — camino feliz |
 | **Prioridad** | Crítica |
-| **Precondiciones** | [Estado previo del sistema y datos requeridos] |
-| **Datos de entrada** | [Valores concretos] |
+| **Precondiciones** | «Estado previo del sistema y datos requeridos» |
+| **Datos de entrada** | «Valores concretos» |
 | **Diseñado por** | |
 
 **Pasos**
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | [Acción del usuario] | [Respuesta del sistema] |
+| 1 | «Acción del usuario» | «Respuesta del sistema» |
 | 2 | | |
 | 3 | | |
 
-**Resultado esperado final:** [Estado observable del sistema]
-**Postcondiciones:** [Registros creados, estados modificados, eventos de auditoría]
+**Resultado esperado final:** «Estado observable del sistema»
+**Postcondiciones:** «Registros creados, estados modificados, eventos de auditoría»
 
 > El resultado de haberlo corrido **no se anota acá**: va en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`).
 
 ---
 
-### CP-002 — [Título del caso negativo]
+### CP-002 — «Título del caso negativo»
 
 | Campo | Valor |
 |---|---|
@@ -185,13 +187,13 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 | **Tipo** | Funcional — validación |
 | **Prioridad** | Alta |
 | **Precondiciones** | |
-| **Datos de entrada** | [Datos inválidos deliberados] |
+| **Datos de entrada** | «Datos inválidos deliberados» |
 
 **Pasos**
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | | [Mensaje de error específico; el estado no cambia] |
+| 1 | | «Mensaje de error específico; el estado no cambia» |
 
 ---
 
@@ -209,8 +211,8 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 | Conjunto | Descripción | Origen | Anonimización |
 |---|---|---|---|
-| DS-01 | [Usuarios y roles de prueba] | Script `seed.sql` | N/A |
-| DS-02 | [Registros de negocio] | Copia de producción | Requerida |
+| DS-01 | «Usuarios y roles de prueba» | Script `seed.sql` | N/A |
+| DS-02 | «Registros de negocio» | Copia de producción | Requerida |
 
 > **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción (`00·N4` · `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
 
@@ -226,7 +228,7 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 Lo que el entorno automático **no** cubre y exige **verificación manual documentada** (para no dar por probado lo que no se probó):
 
-- [Integraciones externas reales, comportamiento del navegador, permisos del SO, symlinks/rutas especiales, concurrencia real, archivos con encoding/tamaño extremos, rendimiento sobre volúmenes reales, etc.]
+- «Integraciones externas reales, comportamiento del navegador, permisos del SO, symlinks/rutas especiales, concurrencia real, archivos con encoding/tamaño extremos, rendimiento sobre volúmenes reales, etc.»
 
 ---
 
@@ -234,13 +236,13 @@ Lo que el entorno automático **no** cubre y exige **verificación manual docume
 
 | Propósito | Herramienta | Responsable |
 |---|---|---|
-| Gestión de casos y defectos | [Jira / Azure Test Plans] | |
-| Automatización UI | [Playwright / Cypress / Selenium] | |
-| Automatización API | [Postman / pytest / RestAssured] | |
-| Pruebas unitarias | [pytest / PHPUnit / Jest] | |
-| Rendimiento | [k6 / JMeter] | |
-| Análisis estático y seguridad | [SonarQube / OWASP ZAP] | |
-| Cobertura de código | [coverage.py / Istanbul] | |
+| Gestión de casos y defectos | «Jira / Azure Test Plans» | |
+| Automatización UI | «Playwright / Cypress / Selenium» | |
+| Automatización API | «Postman / pytest / RestAssured» | |
+| Pruebas unitarias | «pytest / PHPUnit / Jest» | |
+| Rendimiento | «k6 / JMeter» | |
+| Análisis estático y seguridad | «SonarQube / OWASP ZAP» | |
+| Cobertura de código | «coverage.py / Istanbul» | |
 
 ---
 
@@ -313,10 +315,10 @@ Nuevo → Asignado → En corrección → Listo para pruebas → Verificado → 
 
 | Métrica | Fórmula | Meta |
 |---|---|---|
-| Cobertura de requisitos | CA con caso / CA totales | 100% |
+| Cobertura de exigencias | (CA + RNF) con caso / (CA + RNF) totales | 100% |
 | Casos ejecutados | Ejecutados / diseñados | ≥ 95% |
 | Tasa de aprobación | Aprobados / ejecutados | ≥ 95% |
-| Densidad de defectos | Defectos / punto de historia | ≤ [n] |
+| Densidad de defectos | Defectos / punto de historia | ≤ «n» |
 | Efectividad de detección | Defectos en QA / (QA + producción) | ≥ 90% |
 | Tasa de reapertura | Reabiertos / corregidos | ≤ 10% |
 

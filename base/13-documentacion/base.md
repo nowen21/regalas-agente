@@ -36,6 +36,14 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 | [`DOC17`](reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md) | Ninguna carpeta del árbol queda muda: cada una lista lo suyo. |
 | [`DOC18`](reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md) | El mapa se actualiza en el mismo cambio que cierra la unidad. |
 
+**(c) Cómo se llena un documento modelo**
+
+| Regla | Qué exige |
+|---|---|
+| [`DOC19`](reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) | Los espacios por llenar de un modelo se marcan `«…»`, la misma marca en todos. |
+| [`DOC20`](reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) | Un documento que todavía trae una marca no está terminado. |
+| [`DOC21`](reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) | La sección que no aplica se escribe `N/A`: no se deja marcada ni se borra. |
+
 ---
 
 Ver: [`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) y [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) (contexto y especificación, de donde sale lo que aquí se persiste), [`08`](../08-pruebas.md) (plan de pruebas y verificaciones manuales), [`07·Q5`](../07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué) (documentar, no solo comentar), [`11·CFG3`](../11-configuracion-entornos.md#cfg3--paridad-entre-entornos).

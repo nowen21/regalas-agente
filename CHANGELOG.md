@@ -11,6 +11,51 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 13.1.0 — 2026-08-14
+
+**MENOR** (dos precisiones en tres plantillas; no invalida nada escrito).
+
+**Un veredicto de pruebas que decía "cumple con observaciones" no dice nada.** Si el carro vuelve del taller sin frenos, no está arreglado: "cumple con observaciones" era la forma amable de decir que no cumple, y quien lo lee después no sabe si podía cerrar la fase o no.
+
+- **Los requisitos no funcionales de una HU van numerados `RNF-0N`** en [`plantillas/HU.md`](plantillas/HU.md), igual que los criterios de aceptación. Sin número no se pueden citar desde el plan ni desde las pruebas, y terminaban verificándose de vista.
+- **Y cuentan como exigencia propia.** En [`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md) y [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) cada `RNF-0N` lleva su fila en la matriz y en el veredicto, y la cobertura suma criterios y requisitos por separado. En la fase donde salió esto, tres requisitos venían contados como uno solo: la cobertura decía 4 de 4 cuando era 6 de 6.
+- **El veredicto pasa a ser binario** en [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) y en [`plantillas/estado-fase.md`](plantillas/estado-fase.md): cumple o no cumple. Lo que falte hace que sea no cumple. Los defectos ya tienen su tabla, con severidad y con quién los aceptó.
+- **Cada `CP-00N` se escribe como enlace a su caso, y cada `CA-0N` o `RNF-0N` como enlace a su exigencia en la HU**, en el plan de trabajo, el plan de pruebas, el resultado y el documento de cierre. Un identificador suelto obliga a buscarlo a mano, y así es como se termina juzgando un caso sin haber leído lo que exigía. Salió de una fase real: el caso decía "los que se declaró" sin decir dónde, y quien ejecutaba acababa decidiendo la lista.
+
+## 13.0.0 — 2026-08-14
+
+**MAYOR** ⚠ obliga a migrar (tres reglas nuevas que exigen algo a todo proyecto al día).
+
+**Los huecos de un modelo se marcaban de tres formas distintas, y ninguna estaba escrita.** Al contarlo archivo por archivo: 25 de 30 plantillas usaban `«…»`, once convivían con `[texto]` y dos con `<texto>`. La convención se cumplía porque alguien se acordaba, no porque estuviera en ninguna regla. Un documento entregado a medias dejaba sus huecos confundidos con el texto, y nadie los veía al aprobarlo.
+
+- **[`13·DOC19`](base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md)**: los espacios por llenar se marcan `«…»`, la misma marca en todos los modelos. Deja escrito además qué **no** es un hueco: la sintaxis de un comando que se copia y se pega la llena quien lo corre.
+- **[`13·DOC20`](base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md)**: un documento que conserva una sola marca no está terminado, y no se presenta como tal.
+- **[`13·DOC21`](base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md)**: la sección que no aplica se escribe `N/A`. Dejarla marcada la vuelve un hueco; borrarla hace creer que el modelo nunca la pidió.
+- **179 huecos convertidos** en 13 plantillas, sin tocar enlaces, casillas ni bloques de guía. Tres archivos de `plantillas/` quedaron sin marca a propósito: `historico-chat.md`, `memoria.md` y `retrodocumentacion.md` no son modelos que alguien llene, y así queda escrito.
+- **Por qué esa marca y no otra**, con las cuatro descartadas y el motivo de cada una: [`notas/marca-del-espacio-por-llenar.md`](notas/marca-del-espacio-por-llenar.md).
+
+**Qué tiene que hacer un proyecto al día.** Correr el instalador para recibir las plantillas nuevas. Los documentos que ya llenó no se tocan: un documento terminado no es un modelo.
+
+## 12.4.0 — 2026-08-14
+
+**MENOR** (precisa un campo que ya existía; no invalida los resúmenes ya escritos).
+
+**Un problema partido en dos historias no dejaba ver cuál va primero.** Las épicas están cortadas por tipo de entregable: el documento modelo cae en una y el programa que lo llena, en otra. Un hallazgo que dispara las dos queda repartido, y entrando por cualquiera de las dos épicas el orden no se ve. Pasó con el resumen de sesión: su modelo es de EP-003 y su enganche de EP-005, y hubo que deducir a mano que el enganche va después porque escribe el archivo con el modelo adentro.
+
+- **El campo `Dispara` de [`plantillas/sesion.md`](plantillas/sesion.md) numera las historias** en el orden en que se resuelven, y cada una dice por qué va ahí.
+- **También nombra lo que las bloquea aunque el hallazgo no lo haya disparado.** Una historia vieja en backlog puede estar deteniendo a una nueva, y eso solo se ve desde acá.
+- **Por qué en el hallazgo y no en la épica:** el hallazgo es el único sitio donde el problema está entero. Recortar las épicas por problema costaría rehacer las 54 historias ya colgadas.
+
+## 12.3.0 — 2026-08-14
+
+**MENOR** (aditivo: un campo nuevo en una plantilla; no invalida los resúmenes ya escritos).
+
+**Una sesión que va a resolver un hallazgo no decía cuál.** El resumen de sesión guardaba de dónde nace cada hallazgo y dónde se cierra, pero no de dónde nace **la sesión**. Cuando alguien abre una sesión con un hallazgo en la mano ("trabajemos en H-4"), ese origen no quedaba escrito en ninguna parte: se perdía en la transcripción, que es justo lo que el resumen viene a evitar.
+
+- **Campo nuevo `Viene de`** en [`plantillas/sesion.md`](plantillas/sesion.md), al principio del resumen: la fecha, el tema y el número del hallazgo que se fue a resolver, o `—` si es trabajo nuevo.
+- **Es el enlace hacia adelante.** El de vuelta ya existía: el `cerrado en` del hallazgo apunta a la sesión que lo cerró. Con los dos, un hallazgo que se arrastra tres sesiones se sigue en cualquier dirección; con uno solo, no.
+- Si la sesión atiende más de un hallazgo, se nombran todos.
+
 ## 12.2.0 — 2026-08-14
 
 **MENOR** (aditivo: una plantilla nueva; no cambia nada de lo escrito).

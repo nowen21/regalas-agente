@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación |
 
 ---
 
@@ -103,18 +103,18 @@ Entonces el documento no se considera terminado
 
 ### Criterios de aceptación transversales
 
-- [ ] **Límites** — está definido qué se escribe cuando una sección no aplica, en vez de dejarla con la marca.
-- [ ] **No regresión** — los modelos ya escritos se pasan a la marca acordada.
+- [x] **Límites** — está definido qué se escribe cuando una sección no aplica, en vez de dejarla con la marca.
+- [x] **No regresión** — los modelos ya escritos se pasan a la marca acordada.
 
 ---
 
 ## 5. Requisitos no funcionales
 
-| Categoría | Requisito |
-|---|---|
-| **Legibilidad** | La marca no estorba la lectura del modelo |
-| **Detectabilidad** | Un programa la encuentra sin falsos positivos |
-| **Uniformidad** | Una sola marca en todo el catálogo de modelos |
+| ID | Categoría | Requisito |
+|---|---|---|
+| RNF-01 | **Legibilidad** | La marca no estorba la lectura del modelo |
+| RNF-02 | **Detectabilidad** | Un programa la encuentra sin falsos positivos |
+| RNF-03 | **Uniformidad** | Una sola marca en todo el catálogo de modelos |
 
 ---
 
@@ -129,9 +129,9 @@ Entonces el documento no se considera terminado
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Elegir la marca y escribir por qué esa y no otra.
-- [ ] Escribir qué se pone cuando una sección no aplica.
-- [ ] Pasar los modelos existentes a la marca acordada.
+- [x] Elegir la marca y escribir por qué esa y no otra.
+- [x] Escribir qué se pone cuando una sección no aplica.
+- [x] Pasar los modelos existentes a la marca acordada.
 
 ---
 
@@ -139,7 +139,11 @@ Entonces el documento no se considera terminado
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-003-HU-001-marca-de-espacio-por-llenar](A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) | CA-01, CA-02 y CA-03 | Estación 11: los tres CA en verde, esperando el commit |
+
+Una sola fase para los tres criterios: los tres se apoyan en la misma decisión (cuál es la marca) y ninguno se puede probar sin ella (`02·F12.10`).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -166,17 +170,17 @@ Todavía no se descompuso en fases.
 
 ## 10. Definition of Ready (DoR)
 
-- [ ] Narrativa clara con rol, acción y beneficio
-- [ ] Criterios de aceptación definidos y testeables
-- [ ] Reglas de negocio documentadas
-- [ ] Dependencias identificadas
+- [x] Narrativa clara con rol, acción y beneficio
+- [x] Criterios de aceptación definidos y testeables
+- [x] Reglas de negocio documentadas
+- [x] Dependencias identificadas
 
 ## 11. Definition of Done (DoD)
 
-- [ ] La marca está elegida y escrita
-- [ ] Todos los modelos la usan
-- [ ] Está definido qué se escribe cuando algo no aplica
-- [ ] Todos los criterios de aceptación verificados
+- [x] La marca está elegida y escrita
+- [x] Todos los modelos la usan
+- [x] Está definido qué se escribe cuando algo no aplica
+- [x] Todos los criterios de aceptación verificados
 
 ---
 
@@ -198,3 +202,5 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase A con sus dos planes. Verificado que la marca `«…»` ya se usa de hecho en 25 de las 30 plantillas, sin regla que la respalde |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nacen `13·DOC19`, `DOC20` y `DOC21`, y 179 huecos pasan a la marca acordada. Los tres CA en verde |

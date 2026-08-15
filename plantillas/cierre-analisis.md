@@ -8,10 +8,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Análisis original** | [enlace al `analisis/<...>.md`] |
+| **Análisis original** | «enlace al `analisis/<...>.md`» |
 | **Módulo** | «…» |
 | **Fecha de cierre** | AAAA-MM-DD |
-| **Prompt vivo del módulo** | [enlace] |
+| **Prompt vivo del módulo** | «enlace» |
 
 ---
 
@@ -21,7 +21,7 @@
 
 | Pregunta / hallazgo | Decisión tomada | Estado | Gap generado (si aplica) |
 |---|---|---|---|
-| (frase original) | (respuesta del usuario o decisión de diseño) | resuelta / diferida / descartada | `[gap-N]` → §Qué falta del prompt vivo |
+| (frase original) | (respuesta del usuario o decisión de diseño) | resuelta / diferida / descartada | `«gap-N»` → §Qué falta del prompt vivo |
 
 ---
 
@@ -31,4 +31,4 @@
   `> Cerrado en <ruta-de-este-cierre> — consultar allí el estado vigente de cada decisión.`
 - **Registro en el prompt vivo** — agregar a su `## Historial de análisis`:
   `YYYY-MM-DD · <tema> · <ruta-a-este-cierre>`.
-- **Gaps generados** — cada `[gap-N]` queda en la §Qué falta del prompt vivo, listo para una fase futura (`DOC12` ORIGEN).
+- **Gaps generados** — cada `«gap-N»` queda en la §Qué falta del prompt vivo, listo para una fase futura (`DOC12` ORIGEN).

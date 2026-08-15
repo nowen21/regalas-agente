@@ -13,8 +13,8 @@
 | Campo | Valor |
 |---|---|
 | **Fase** (`02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **HU** | [HU-«NNN»] |
-| **Plan de pruebas de origen** | [`plan_pruebas.md`] |
+| **HU** | «HU-NNN» |
+| **Plan de pruebas de origen** | «`plan_pruebas.md`» |
 | **Ciclo** | «1» (se agrega un bloque por cada reprueba, no se pisa el anterior) |
 | **Fecha de ejecución** | AAAA-MM-DD |
 | **Ejecutado por** | «quién» |
@@ -33,6 +33,8 @@
 ---
 
 ## 2. Ejecución caso por caso
+
+> **Cada `CP-00N` se escribe como enlace al caso del `plan_pruebas` de la fase, y cada `CA-0N` o `RNF-0N` como enlace a su exigencia en la HU**, acá y en las tablas que siguen. Un identificador suelto obliga a buscarlo a mano, y así es como se termina juzgando un caso sin haber leído lo que exigía.
 
 > **Este documento se arma desde el `plan_pruebas`, no desde lo que se hizo.** Se copia la lista de casos del plan, con su CA y su prioridad, y se le agrega qué pasó. Un caso que esté acá y no en el plan, o al revés, es un defecto de trazabilidad y se arregla antes de dar veredicto.
 >
@@ -68,13 +70,13 @@
 
 ---
 
-## 5. Veredicto por criterio de aceptación
+## 5. Veredicto por criterio de aceptación y requisito no funcional
 
-> Esta es la tabla que decide. Un CA sin caso ejecutado **no** se marca cumplido, aunque "se haya visto funcionar".
+> Esta es la tabla que decide. Un `CA-0N` o un `RNF-0N` sin caso ejecutado **no** se marca cumplido, aunque "se haya visto funcionar". Los requisitos no funcionales llevan su fila igual que los criterios: si van sueltos en un renglón de prosa, nadie los verifica.
 
-| CA de la HU | Casos que lo cubren | Resultado | Cumple |
+| Exigencia de la HU (`CA-0N` · `RNF-0N`) | Casos que la cubren | Resultado | Cumple |
 |---|---|---|---|
-| CA-01 | CP-001, CP-002 | | Sí / No / Parcial |
+| CA-01 | CP-001, CP-002 | | Sí / No |
 
 **Los que no cumplen:** «qué falta exactamente y a qué tarea o fase se traslada».
 
@@ -86,7 +88,7 @@
 
 | Lo que el plan exige | Dónde lo dice | Meta | Resultado | Cumple |
 |---|---|---|---|---|
-| Cobertura de criterios de aceptación | Plan §5 | 100% | | Sí / No |
+| Cobertura de criterios y requisitos no funcionales | Plan §5 | 100% | | Sí / No |
 | Casos críticos y altos ejecutados | Plan §3.4 | 100% | | Sí / No |
 | «Métrica propia del plan» | Plan §12.1 | «meta» | | Sí / No |
 | Criterios de salida | Plan §4.2 | Todos | | Sí / No |
@@ -97,9 +99,9 @@
 
 ## 6. Veredicto de la fase
 
-**Concepto:** «Cumple / Cumple con observaciones / No cumple».
+**Concepto:** «Cumple / No cumple». No hay estado intermedio: si algo de lo pedido falta, es **No cumple**. Los defectos van en §4 con su severidad, y ahí se ve qué se aceptó y quién lo aceptó.
 
-**Justificación:** «en dos o tres líneas, apoyada en §5. Si es "cumple con observaciones", cuáles son y quién las aceptó».
+**Justificación:** «en dos o tres líneas, apoyada en §5».
 
 **Qué falta para que cumpla** (si no cumple): «lista concreta».
 
@@ -111,7 +113,7 @@
 
 | ID | Tipo | Dónde está |
 |---|---|---|
-| EV-01 | Salida de la corrida / captura / archivo resultante | `[ruta o enlace]` |
+| EV-01 | Salida de la corrida / captura / archivo resultante | `«ruta o enlace»` |
 
 ---
 
