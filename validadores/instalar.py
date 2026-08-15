@@ -358,10 +358,44 @@ def instalar_historico(ruta, aplicar):
         if aplicar:
             os.makedirs(carpeta, exist_ok=True)
             _escribir_sellado(archivo, leer(PLANTILLA_HISTORICO), comp, ruta)
-        return ["crear historico-chat/README.md"]
+        return ["crear historico-chat/README.md"] + _instalar_resumenes(ruta, aplicar)
 
     return _refrescar_sello(archivo, comp, ruta, aplicar,
-                            "historico-chat/README.md")
+                            "historico-chat/README.md") + _instalar_resumenes(ruta, aplicar)
+
+
+def _instalar_resumenes(ruta, aplicar):
+    """Deja puesta `historico-chat/resumenes/` con su índice.
+
+    El enganche del resumen no crea nada si esta carpeta falta, y sin ella queda
+    mudo: el proyecto recibe los dos enganches en su configuración y ninguno
+    escribe. Dejarlo como paso a mano era exigir configuración que nadie
+    documentó. Como el README del histórico, si ya existe no se pisa.
+    """
+    carpeta = os.path.join(ruta, "historico-chat", "resumenes")
+    archivo = os.path.join(carpeta, "README.md")
+    if os.path.isfile(archivo):
+        return []
+    if aplicar:
+        os.makedirs(carpeta, exist_ok=True)
+        with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write(TEXTO_RESUMENES)
+    return ["crear historico-chat/resumenes/README.md"]
+
+
+TEXTO_RESUMENES = """# Lo que dejó cada sesión
+
+Una carpeta por día y un archivo por sesión: `AAAA-MM-DD/«tema».md`. Las crea el
+enganche del resumen en el primer mensaje de la sesión, con el modelo del
+estándar puesto.
+
+**Se arranca por acá, no por la transcripción.** La transcripción de
+`historico-chat/` guarda lo que se dijo, y es larga. Acá queda lo que la sesión
+**dejó**: los hallazgos, qué se decidió en cada uno y qué quedó abierto.
+
+Llenarlo es del agente: reconocer un hallazgo es criterio, y el programa solo
+deja el hueco a la vista.
+"""
 
 
 def instalar_recuerdos(ruta, aplicar):

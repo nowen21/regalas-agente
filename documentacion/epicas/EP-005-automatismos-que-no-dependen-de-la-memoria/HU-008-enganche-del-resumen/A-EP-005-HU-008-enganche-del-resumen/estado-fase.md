@@ -13,7 +13,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 11 — Cierre documental. **Última puerta pasada:** 10.
+**Estación actual:** 8 — Implementer, **reabierta** el 2026-08-14. **Última puerta pasada:** 7.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -21,14 +21,14 @@
 | 2 | Proposer · alcance | 👤 alcance aprobado | ☑ |
 | 3 | Épica Writer | 👤 épica aprobada | ☑ |
 | 4 | HU Writer | 👤 HUs aprobadas | ☑ |
-| 5 | Spec Writer | 👤 especificación aprobada | ☑ [documentacion/automatismos/spec.md](../../../../automatismos/spec.md), aprobada el 2026-08-14 |
-| 6 | Designer | diseño coherente | ☑ las decisiones están en §2.6 del plan de trabajo |
-| 7 | Task Planner | 👤 plan + pruebas aprobados | ☑ aprobados el 2026-08-14 |
-| 8 | Implementer | implementado + pruebas verdes | ☑ dos programas nuevos y 14 casos en la suite |
-| 9 | Verifier | trazabilidad sin faltantes | ☑ las siete exigencias en verde |
-| 10 | Crítico | sin hallazgos graves | ☑ dos defectos, los dos corregidos en la fase |
-| 11 | Cierre documental + señales | docs y señales al día | ☐ **acá está detenida**: falta el `funcionalidad_implementada.md` |
-| 12 | Commit | 👤 autorizado | ☑ `40f9937` |
+| 5 | Spec Writer | 👤 especificación aprobada | ☑ [documentacion/automatismos/spec.md](../../../../automatismos/spec.md), aprobada el 2026-08-14 y corregida al reabrir |
+| 6 | Designer | diseño coherente | ☑ las decisiones están en §2.6 del plan de trabajo, con las cuatro de la reapertura |
+| 7 | Task Planner | 👤 plan + pruebas aprobados | ☑ el plan y su ampliación, aprobados el 2026-08-14 |
+| 8 | Implementer | implementado + pruebas verdes | ☐ **acá está**: T-19 a T-24, la corrección y su corrida 2 |
+| 9 | Verifier | trazabilidad sin faltantes | ☐ vuelve a hacerse con la corrida 2 |
+| 10 | Crítico | sin hallazgos graves | ☐ |
+| 11 | Cierre documental + señales | docs y señales al día | ☐ el `funcionalidad_implementada.md` se reescribe al cerrar |
+| 12 | Commit | 👤 autorizado | ☑ `40f9937` el trabajo de la corrida 1; falta el de la corrección |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
@@ -37,11 +37,15 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Cumple |
-| **CA cumplidos** | 3 de 3, los 3 requisitos no funcionales y los transversales |
-| **CA en "No"** | Ninguno |
+| **Concepto** | Corrida 1: **anulada**. Corrida 2: en ejecución |
+| **CA cumplidos** | De la corrida 1, ninguno de los tres: CA-01 no cumplía porque el archivo no nacía, y CA-02 y CA-03 quedaron sin probar |
+| **CA en "No"** | CA-01, hasta que la corrida 2 lo declare |
 | **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md), con la anulación al principio |
+
+> **Por qué se reabrió la fase.** Seis de los nueve casos se corrieron llamando la función por dentro, con la precondición armada a mano. El enganche nunca se disparó, y disparado no creaba el archivo. Lo destapó la sesión [`el-enganche-del-resumen-no-crea-el-resumen`](../../../../../historico-chat/resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md).
+>
+> **No se abrió una fase B.** Lo que falló es el trabajo de esta fase, y su documentación decía que estaba hecho: corregirlo en otra carpeta habría dejado esta diciendo que cumple. La fase vuelve a la estación 8 y se cierra cuando la corrida 2 pase.
 
 ---
 

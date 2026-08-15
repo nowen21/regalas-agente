@@ -7,9 +7,14 @@ Se conectan en `.claude/settings.json`:
     SessionStart      -> python hook_resumen.py --modo inicio --raiz <proyecto>
     UserPromptSubmit  -> python hook_resumen.py --modo aviso  --raiz <proyecto>
 
-El primero crea el archivo del resumen con el modelo puesto y muestra lo que
-sigue abierto del propósito de la sesión. El segundo avisa qué le falta al
-resumen, una vez por cada cosa que falte.
+Los dos aseguran el archivo del resumen con el modelo puesto y muestran lo que
+sigue abierto del propósito de la sesión; el segundo avisa además qué le falta,
+una vez por cada cosa que falte.
+
+**El archivo nace en el primer mensaje del usuario, no al abrir.** Al abrir, la
+transcripción de la sesión todavía no existe, y de su nombre sale el nombre del
+resumen. Por eso los dos modos crean: la sesión que se retoma lo tiene desde el
+arranque, y la nueva lo tiene en el primer turno.
 
 Es la misma lección de la transcripción: lo que depende de que alguien se
 acuerde, no pasa. El enganche **no escribe hallazgos** ni los interpreta: crea,
@@ -47,15 +52,37 @@ def _sesion_y_transcripcion(raiz, sesion):
     return ""
 
 
-def inicio(raiz, sesion, estandar):
-    """Crea el resumen y devuelve lo que hay que mostrarle al agente."""
+def _asegurar(raiz, sesion, estandar):
+    """El resumen de esta sesión, creándolo si falta. Devuelve (ruta, si nació).
+
+    Se llama desde los **dos** modos, y no solo al abrir, porque al abrir la
+    transcripción todavía no existe: la escribe `hook_historico.py` en el primer
+    mensaje del usuario. Colgar la creación solo de `SessionStart` era pedirle el
+    archivo a un programa que no tenía todavía de dónde sacarle el nombre.
+
+    Los enganches de un mismo evento pueden correr a la vez, así que el orden no
+    se da por hecho: si en este turno la transcripción no está, el turno
+    siguiente lo crea.
+    """
     transcripcion = _sesion_y_transcripcion(raiz, sesion)
     if not transcripcion:
-        return ""                       # sin transcripción todavía: nada que hacer
+        return "", False
+    antes = R.ruta_de(raiz, transcripcion)
+    existia = bool(antes) and os.path.isfile(antes)
     ruta = R.crear(raiz, transcripcion, estandar)
+    return ruta, bool(ruta) and not existia
+
+
+def inicio(raiz, sesion, estandar):
+    """Crea el resumen y devuelve lo que hay que mostrarle al agente."""
+    ruta, _ = _asegurar(raiz, sesion, estandar)
     if not ruta:
         return ""
+    return _arranque(raiz, ruta)
 
+
+def _arranque(raiz, ruta):
+    """El mensaje de cuando el archivo ya está: dónde vive y qué sigue abierto."""
     rel = os.path.relpath(ruta, raiz).replace("\\", "/")
     lineas = ["[LO QUE ESTA SESIÓN DEJA SE ESCRIBE EN SU RESUMEN]",
               f"El archivo ya está creado: `{rel}`. Se llena **en el momento en que "
@@ -73,14 +100,19 @@ def inicio(raiz, sesion, estandar):
     return "\n".join(l for l in lineas if l)
 
 
-def aviso(raiz, sesion):
-    """Lo que hay que avisar sobre el resumen en este turno, o ""."""
-    transcripcion = _sesion_y_transcripcion(raiz, sesion)
-    if not transcripcion:
+def aviso(raiz, sesion, estandar=""):
+    """Lo que hay que avisar sobre el resumen en este turno, o "".
+
+    Asegura el archivo antes de mirarlo: este es el primer momento de la sesión
+    en que la transcripción ya existe, así que acá es donde el resumen nace de
+    verdad. El turno en que nace muestra el mensaje de arranque, no el aviso: lo
+    que falta se dice desde el turno siguiente.
+    """
+    ruta, nacio = _asegurar(raiz, sesion, estandar)
+    if not ruta:
         return ""
-    ruta = R.ruta_de(raiz, transcripcion)
-    if not ruta or not os.path.isfile(ruta):
-        return ""
+    if nacio:
+        return _arranque(raiz, ruta)
     if not _produjo_algo(raiz):
         return ""                       # todavía no hay nada que anotar
 
@@ -139,7 +171,8 @@ def main():
     estandar = args.estandar or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     try:
-        texto = inicio(raiz, sesion, estandar) if args.modo == "inicio" else aviso(raiz, sesion)
+        texto = (inicio(raiz, sesion, estandar) if args.modo == "inicio"
+                 else aviso(raiz, sesion, estandar))
     except Exception as e:                                  # noqa: BLE001
         texto = f"[el enganche del resumen no pudo correr: {e}]"
     if texto:

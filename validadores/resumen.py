@@ -111,14 +111,19 @@ def _desde_modelo(modelo, transcripcion):
     programa se contaría como trabajo hecho, y el enganche no escribe hallazgos.
     Lo que sí se copia es la sección de cierre, que es la pregunta que hay que
     responder para poder cerrar la sesión.
+
+    El encabezado **no enlaza `plantillas/sesion.md`**: esa carpeta es del
+    estándar y no viaja a los proyectos que lo heredan, así que ahí el enlace
+    nacía roto. Se enlaza el índice del histórico, que sí lo deja el instalador
+    en todos.
     """
     fecha = transcripcion[:10]
     partes = modelo.split(_CIERRE, 1)
     cola = ("\n\nNada todavía.\n\n---\n\n" + _CIERRE + partes[1]) if len(partes) > 1 else "\n"
     return (f"# {fecha} \u00b7 lo que qued\u00f3\n\n"
             f"Hallazgos de la sesi\u00f3n transcrita en "
-            f"[{CARPETA}/{transcripcion}](../../{transcripcion}), con la plantilla "
-            f"[`plantillas/sesion.md`](../../../plantillas/sesion.md). "
+            f"[{CARPETA}/{transcripcion}](../../{transcripcion}). C\u00f3mo se llena "
+            f"est\u00e1 en [{CARPETA}/README.md](../../README.md). "
             f"La conversaci\u00f3n est\u00e1 all\u00e1; ac\u00e1 queda lo que la sesi\u00f3n dej\u00f3.\n\n"
             f"**Viene de:** \u00ab...\u00bb\n\n---\n\n"
             f"## Hallazgos de esta sesi\u00f3n{cola}")

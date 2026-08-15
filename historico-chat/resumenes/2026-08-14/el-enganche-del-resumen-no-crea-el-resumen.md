@@ -1,0 +1,70 @@
+# 2026-08-14 · lo que quedó
+
+Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md](../../2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md), con la plantilla [`plantillas/sesion.md`](../../../plantillas/sesion.md). La conversación está allá; acá queda lo que la sesión dejó.
+
+Se anotan todos, resueltos y abiertos.
+
+**Viene de:** 2026-08-14 · hu-de-la-comprobacion-automatica · [H-4 · No había dónde escribir lo aprendido](hu-de-la-comprobacion-automatica.md#h-4--no-había-dónde-escribir-lo-aprendido), reabierto en esta sesión.
+
+---
+
+## Hallazgos de esta sesión
+
+### H-1 · El enganche del resumen no crea el resumen
+
+- **Qué pasó:** el enganche de apertura busca la transcripción de la sesión para saber cómo llamar al resumen ([hook_resumen.py:52](../../../validadores/hook_resumen.py)), y en ese momento la transcripción todavía no existe: la escribe `hook_historico.py` en el primer mensaje del usuario. Sin transcripción se sale sin crear nada, y el modo de aviso tampoco crea: si el archivo no está, también se sale.
+- **Por qué importa:** era la mitad de H-4, la que decía *"que el resumen exista aunque nadie se acuerde"*. Los dos resúmenes que hay en el repositorio los escribió el agente a mano, no el programa. La prueba de que no funciona es esta misma sesión: su transcripción existe y su resumen no apareció.
+- **Qué lo soluciona:** reabrir la fase A de EP-005 · HU-008. La historia ya existe y sus tres criterios ya están escritos; lo que falla es lo construido, no lo pedido.
+- **Qué se decidió:** el usuario decidió **no abrir una fase nueva**: se reabre la que cerró mal, porque su documentación decía que estaba hecho y corregirlo en otra carpeta la habría dejado mintiendo. El archivo pasa a nacer en el primer mensaje de la sesión, que es cuando ya existe la conversación de donde sale su nombre.
+- **Estado:** resuelto acá, salvo la comprobación en una sesión real.
+- **Responde a:** [EP-005 · HU-008 · CA-01](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md), el archivo nace solo.
+- **Dispara:** —. Es arreglar lo que una fase dio por hecho.
+- **Orden de resolución:** 1 de 3 · mientras no se cree el archivo, el aviso y el propósito tampoco pueden funcionar: los dos leen ese archivo.
+- **Dónde queda:** la [fase A de HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md), reabierta, con su ampliación y su corrida 2 · versión 15.4.0.
+- **Nace en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
+- **Cerrado en:** —
+- **Con qué se retoma:** falta la única prueba que no se puede simular: abrir una sesión nueva en este repositorio y ver si el archivo aparece solo.
+
+### H-2 · Seis de nueve pruebas pasaron sobre un mundo que el agente montó
+
+- **Qué pasó:** el caso [CP-001](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/plan_pruebas.md) decía *"correr el enganche de `SessionStart`"* y lo que se corrió fue `crear(raiz, "2026-08-14-maracuya.md")`, con la transcripción inventada. CP-002, CP-004, CP-005, CP-006 y CP-007 parten del mismo supuesto: que el archivo del resumen ya existe. Como nadie lo crea, ese estado no ocurre nunca.
+- **Por qué importa:** los tres criterios de la HU quedaron en cumple sin estar probados, y la fase cerró. Una prueba que se salta el disparador no prueba nada: deja exactamente el hueco por donde el programa falla.
+- **Qué se decidió:** el usuario lo dijo con el ejemplo del arroz: el resultado de pruebas es probar el arroz que salió, no uno cocinado aparte. Se descartó escribir una regla nueva de pruebas: primero la solución. Lo que sí quedó es el molde. El detalle de cada caso pasa a tener cinco partes fijas —el problema que resuelve, la precondición, qué hacer para que cumpla, con qué reprueba y los pasos que se siguieron de verdad—, y si lo ejecutado no son esos pasos, el caso no cumple aunque haya salido bien.
+- **Estado:** resuelto acá.
+- **Responde a:** EP-005 · HU-008, sus tres CA.
+- **Dispara:** —. Por decisión del usuario, la regla del capítulo de pruebas queda sin escribir.
+- **Orden de resolución:** 2 de 3 · se cerró con la corrida 2, que reemplaza al veredicto viejo.
+- **Dónde queda:** [`plantillas/planes/resultados.md`](../../../plantillas/planes/resultados.md) · la corrida 2 y la anulación de la corrida 1, en el [resultado de pruebas de la fase](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) · versión 15.4.0.
+- **Nace en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
+- **Cerrado en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
+- **Con qué se retoma:** —
+
+### H-3 · En un proyecto que hereda, el resumen no tiene ni carpeta ni modelo
+
+- **Qué pasó:** el programa no crea nada si falta `historico-chat/resumenes/` ([resumen.py:86](../../../validadores/resumen.py)), y [`validadores/instalar.py`](../../../validadores/instalar.py) nunca crea esa carpeta. Además, el encabezado que el programa escribe enlaza a `plantillas/sesion.md` con una ruta relativa que solo existe en este repositorio.
+- **Por qué importa:** el estándar se hereda. Un proyecto instalado hoy recibe los dos enganches en su configuración, y los dos quedan mudos: exigen un paso a mano que nadie le dijo a nadie.
+- **Qué lo soluciona:** que el instalador deje la carpeta puesta, como ya deja el histórico y la memoria, y que el encabezado del resumen apunte a algo que sí viaja al proyecto.
+- **Qué se decidió:** se resolvió en la misma fase reabierta. El instalador deja la carpeta con su índice, y el encabezado del resumen enlaza el índice del histórico del propio proyecto, que sí viaja. La decisión vieja, *"el enganche no crea el resumen si no hay carpeta del día"*, se conserva: lo que cambia es que la carpeta llegue instalada.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-005 · HU-008 · CA-01](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+- **Dispara:** —
+- **Orden de resolución:** 3 de 3 · sin lo de H-1 resuelto, instalar la carpeta no cambiaba nada.
+- **Dónde queda:** [`validadores/instalar.py`](../../../validadores/instalar.py) y [`validadores/resumen.py`](../../../validadores/resumen.py) · versión 15.4.0.
+- **Nace en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
+- **Cerrado en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
+- **Con qué se retoma:** —
+
+---
+
+## ¿Se puede cerrar la sesión?
+
+**Todavía no.** Falta la única prueba que no se puede simular, y falta el commit.
+
+| Para cerrar | Estado |
+|---|---|
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-3 |
+| Todo hallazgo abierto tiene su pendiente creado | ☐ H-1 sigue abierto, y no necesita pendiente: se cierra acá mismo cuando la próxima sesión muestre que el archivo apareció solo |
+| Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia nueva |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit |
+
+<!-- aviso: falta decir si la sesión se puede cerrar -->

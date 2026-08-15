@@ -5,7 +5,7 @@
 | Campo | Valor |
 |---|---|
 | **Código** | PP-A-EP-005-HU-008 |
-| **Versión** | 1.0 |
+| **Versión** | 1.1 — la 1.0 se aprobó el 2026-08-14; la 1.1 agrega los casos de la corrida 2, al reabrirse la fase |
 | **Alcance del plan** | Fase `A-EP-005-HU-008-enganche-del-resumen` |
 | **Fecha** | 2026-08-14 |
 | **Elaborado por** | Ing. José Dúmar Jiménez Ruíz |
@@ -49,6 +49,16 @@ Acá sí hay código, así que la mayor parte se automatiza. Lo que no se puede 
 | HU-008 | Transversales de la HU | [CP-009](#cp-009--no-toca-lo-escrito-no-se-mete-donde-no-lo-llaman-y-no-detiene) | Funcional | Crítica | Sí | ☐ |
 
 **Cobertura:** 7 de 7 exigencias cubiertas = 100%.
+
+**Los casos de la corrida 2** ([§6.1](#61-corrida-2--los-mismos-criterios-disparados-de-verdad)), que reemplazan a los que no probaron su camino:
+
+| Exigencia | Caso(s) | Reemplaza a | Automatizado |
+|---|---|---|:--:|
+| [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo) | [CP-010](#cp-010--el-resumen-aparece-solo-en-una-sesión-nueva), [CP-011](#cp-011--el-instalador-deja-el-proyecto-listo), [CP-012](#cp-012--dos-sesiones-el-mismo-día-no-se-pisan), [CP-013](#cp-013--el-encabezado-no-enlaza-a-nada-que-no-exista), [CP-018](#cp-018--el-archivo-aparece-solo-en-una-sesión-real) | CP-001 y CP-002 | Sí, salvo CP-018 |
+| [CA-02](../HU-008-enganche-del-resumen.md#ca-02--avisa-cuando-la-sesión-ya-produjo-algo-y-el-resumen-sigue-vacío) | [CP-014](#cp-014--avisa-qué-falta-cuando-la-sesión-produjo-algo) | CP-004 | Sí |
+| [CA-03](../HU-008-enganche-del-resumen.md#ca-03--del-propósito-se-muestra-lo-que-sigue-abierto-y-nada-más) | [CP-015](#cp-015--del-propósito-se-muestra-lo-abierto-y-nada-de-otros-temas) | CP-006 | Sí |
+| [RNF-02](../HU-008-enganche-del-resumen.md#5-requisitos-no-funcionales) | [CP-016](#cp-016--correr-los-dos-modos-no-pisa-ni-duplica) | CP-007 | Sí |
+| Transversales | [CP-017](#cp-017--un-proyecto-sin-instalar-no-se-ve-afectado) | la parte de límites de CP-009 | Sí |
 
 ---
 
@@ -205,6 +215,151 @@ Acá sí hay código, así que la mayor parte se automatiza. Lo que no se puede 
 | 1 | Correr los enganches sobre un resumen con hallazgos ya escritos | Ni una línea cambia |
 | 2 | Correrlos en un proyecto sin carpeta de resúmenes | No hace nada y no falla |
 | 3 | Correrlos sobre una carpeta sin permiso de escritura | Avisa el motivo y sale con código 0 |
+
+---
+
+## 6.1 Corrida 2 — los mismos criterios, disparados de verdad
+
+> **Por qué existen estos casos.** Los de arriba se corrieron llamando por dentro a `resumen.crear()`, con la transcripción y la carpeta puestas a mano. Ese estado no ocurre nunca, así que seis de ellos no probaron nada. Un caso de esta sección **no vale, aunque pase**, si incumple alguna de estas tres:
+>
+> 1. **Se dispara por donde dispara el sistema:** el enganche se corre como orden del sistema operativo, con el mismo JSON que le manda Claude Code (`session_id`, `cwd`, `prompt`).
+> 2. **La precondición la produce el sistema:** el proyecto se arma corriendo `instalar.py --aplicar`, y la transcripción la escribe `hook_historico.py`. El que prueba no crea carpetas ni archivos del flujo.
+> 3. **El resultado escribe la orden literal y su salida**, paso a paso.
+
+### CP-010 — El resumen aparece solo en una sesión nueva
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo). Reemplaza a [CP-001](#cp-001--el-archivo-nace-al-abrir-la-sesión) |
+| **Tipo** | Funcional — el que reproduce el defecto |
+| **Prioridad** | Crítica |
+| **Precondiciones** | Carpeta temporal con `git init`, pasada por `instalar.py --aplicar`. Nada se crea a mano |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | `hook_resumen.py --modo inicio` con `{"session_id":"s1","cwd":"<tmp>"}` | Sale con 0 y no imprime: la sesión no tiene transcripción todavía |
+| 2 | `hook_historico.py --modo usuario` con el mismo `session_id` | Aparece la transcripción del día |
+| 3 | `hook_resumen.py --modo aviso` con el mismo `session_id` | Aparece el resumen en la carpeta del día, y el enganche dice dónde quedó |
+| 4 | Abrir el archivo | Trae el modelo, ningún hallazgo y la sección de cierre |
+| 5 | Mirar el índice del día | Tiene la línea de esa sesión, una sola vez |
+
+### CP-011 — El instalador deja el proyecto listo
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo) |
+| **Tipo** | Funcional — el hueco del proyecto heredero |
+| **Prioridad** | Crítica |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | `instalar.py <tmp> --aplicar` sobre una carpeta nueva | Existe `historico-chat/resumenes/README.md` |
+
+### CP-012 — Dos sesiones el mismo día no se pisan
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo). Reemplaza a [CP-002](#cp-002--dos-sesiones-el-mismo-día-no-se-pisan) |
+| **Tipo** | Funcional — límite |
+| **Prioridad** | Alta |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | Repetir CP-010 con `s1` y después con `s2` | Quedan dos archivos distintos en la carpeta del día |
+
+### CP-013 — El encabezado no enlaza a nada que no exista
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo) |
+| **Tipo** | Funcional — el que rompe en el proyecto heredero |
+| **Prioridad** | Alta |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | Buscar `plantillas/sesion.md` en el resumen nacido en CP-010 | No aparece |
+| 2 | Seguir cada enlace del encabezado desde la carpeta del archivo | Todos llegan a un archivo que existe |
+
+### CP-014 — Avisa qué falta cuando la sesión produjo algo
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-02](../HU-008-enganche-del-resumen.md#ca-02--avisa-cuando-la-sesión-ya-produjo-algo-y-el-resumen-sigue-vacío). Reemplaza a [CP-004](#cp-004--avisa-qué-falta-cuando-la-sesión-produjo-algo) |
+| **Tipo** | Funcional |
+| **Prioridad** | Crítica |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | En el proyecto de CP-010, escribir un archivo y hacer `git add` | El proyecto tiene un cambio preparado |
+| 2 | `hook_resumen.py --modo aviso` | Avisa que el resumen no tiene ni un hallazgo |
+
+### CP-015 — Del propósito se muestra lo abierto, y nada de otros temas
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-03](../HU-008-enganche-del-resumen.md#ca-03--del-propósito-se-muestra-lo-que-sigue-abierto-y-nada-más). Reemplaza a [CP-006](#cp-006--se-muestra-lo-abierto-del-propósito-y-nada-de-otros-temas) |
+| **Tipo** | Funcional |
+| **Prioridad** | Crítica |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | En el resumen nacido en CP-010, escribir el «viene de» apuntando a un hallazgo abierto, y dejar otro resumen con un hallazgo abierto de otro tema | Los dos existen en la carpeta del día |
+| 2 | `hook_resumen.py --modo inicio` | Imprime el hallazgo del «viene de» y su pregunta viva |
+| 3 | Leer la salida | El hallazgo del otro tema no aparece |
+
+### CP-016 — Correr los dos modos no pisa ni duplica
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [RNF-02](../HU-008-enganche-del-resumen.md#5-requisitos-no-funcionales). Reemplaza a [CP-007](#cp-007--el-aviso-no-se-repite) |
+| **Tipo** | Funcional — concurrencia |
+| **Prioridad** | Alta |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | Con un hallazgo escrito a mano en el resumen, correr los dos modos otra vez | El texto queda intacto y el índice del día no gana una línea repetida |
+
+### CP-017 — Un proyecto sin instalar no se ve afectado
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / transversal de límites. Reemplaza esa parte de [CP-009](#cp-009--no-toca-lo-escrito-no-se-mete-donde-no-lo-llaman-y-no-detiene) |
+| **Tipo** | Funcional — límite |
+| **Prioridad** | Crítica |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | Correr los dos modos sobre una carpeta temporal vacía | Salen con 0, sin imprimir nada y sin escribir nada |
+
+### CP-018 — El archivo aparece solo en una sesión real
+
+| Campo | Valor |
+|---|---|
+| **HU / exigencia** | HU-008 / [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo) |
+| **Tipo** | Manual — no se puede automatizar |
+| **Prioridad** | Crítica |
+
+**Pasos**
+
+| # | Acción | Resultado esperado |
+|---|---|---|
+| 1 | Abrir una sesión nueva en este repositorio y escribir el primer mensaje | El resumen de esa sesión aparece en la carpeta del día sin que nadie lo pida |
 
 ---
 

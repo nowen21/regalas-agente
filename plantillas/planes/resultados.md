@@ -55,20 +55,43 @@ CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POS
             y recibió 403; la factura siguió en estado `emitida` | Aprobado | EV-02 | — |
 ```
 
-**Cuando lo que se hizo no cabe en la celda**, la fila queda con lo esencial y debajo va un bloque `**Detalle de CP-00N**`: **un renglón por paso, en palabras sencillas**, diciendo qué se hizo y qué salió. Y al final, **por qué eso lo deja en cumple**.
+**Cuando lo que se hizo no cabe en la celda**, la fila queda con lo esencial y debajo va un bloque `**Detalle de CP-00N**` con **cinco partes, siempre las mismas y en este orden**:
 
-**Lo que hace que un caso cumpla** es que lo que salió sea lo que el `plan_pruebas` dijo que iba a salir. El resultado esperado se fijó antes de correr nada; acá solo se compara.
+| Parte | Qué se escribe |
+|---|---|
+| **El problema que resuelve** | Una frase: qué se rompe si esto no funciona. Es lo que el criterio y el caso vienen a asegurar, no lo que hace la HU entera |
+| **La precondición** | Desde dónde se arranca. Si para llegar ahí hay que **hacer** algo, no es precondición: es el primer paso |
+| **Para que cumpla** | Los pasos, en infinitivo y en palabras sencillas, cada uno con lo que tiene que pasar |
+| **Para que reprube** | Con qué queda reprobado, uno a uno con lo anterior. Si no se puede decir cómo falla, no se puede decir que pasa |
+| **Los pasos que se siguieron** | Lo que se hizo **de verdad**, numerado, cada uno con lo que salió. Y al final el veredicto |
+
+**Lo que hace que un caso cumpla** es que los pasos que se siguieron sean los de "para que cumpla" y hayan dado lo que ahí dice. Si se hizo otra cosa —aunque haya salido bien—, el caso **no cumple**: se probó otra cosa.
 
 ```
 **Detalle de CP-002**
 
-1. Un usuario sin permiso pidió anular la factura 42: se le denegó, sin decirle si la factura existe.
-2. Se consultó la factura: sigue emitida, no cambió nada.
+**El problema que resuelve:** que nadie pueda anular una factura que no le corresponde.
 
-**Cumple** porque los dos pasos dieron lo que el plan esperaba: deniega y no toca el estado.
+**La precondición:** una factura emitida y un usuario sin permiso para anular.
+
+**Para que cumpla:**
+
+1. Pedir la anulación con ese usuario. Se deniega, sin decir si la factura existe.
+2. Consultar la factura. Sigue emitida.
+
+**Para que reprube:** la anulación pasa; o la respuesta deja ver que la factura existe; o la factura cambia de estado.
+
+**Los pasos que se siguieron:**
+
+1. Se pidió la anulación de la factura 42 con un usuario sin permiso. **Salió:** denegada, sin filtrar si existe.
+2. Se consultó la factura. **Salió:** sigue emitida.
+
+**Cumple.**
 ```
 
 Si un paso sale distinto de lo esperado, se dice cuál y qué pasó, debajo del bloque. Un paso que no coincide y nadie explica convierte el "cumple" en una afirmación sin respaldo.
+
+> **Por qué las cinco partes, y no solo lo que se hizo.** Con el detalle a medias —"se creó el archivo y apareció"— un caso puede pasar habiendo probado otra cosa. Pasó: un caso decía *"correr el enganche"* y lo que se corrió fue la función que ese enganche usa, con el dato que el enganche no tiene. Los tres criterios de esa fase quedaron en "cumple" sin estar probados, y el defecto salió a la sesión siguiente.
 
 **Correspondencia con el plan:** «N casos en el plan, N acá. Ninguno de más, ninguno de menos». Si no cuadra, decir cuáles bailan y por qué.
 

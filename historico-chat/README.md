@@ -88,3 +88,4 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche. · [resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md)
 
 <!-- huella: 2a3060c58acb · estandar 15.0.0 -->
+- [2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md](2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md) — por qué lo de H-4 no funciona: el enganche nunca crea el resumen y la prueba lo dio por bueno.

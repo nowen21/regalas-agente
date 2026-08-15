@@ -176,6 +176,34 @@ Ninguno.
 
 **Total estimado:** 34 h. Eran 31 antes de que el usuario precisara el aviso: dice qué falta, sale una vez por hueco y mira solo los hallazgos del propósito.
 
+### Ampliación del 2026-08-14 — la fase se reabre
+
+> **Por qué.** La fase se dio por cerrada y el programa no hace lo que [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo) pide: el archivo no nace nunca. Las tareas de arriba quedaron hechas, pero seis de los nueve casos se corrieron llamando la función por dentro, así que no probaron el camino. El usuario decidió reabrir esta fase y no abrir una nueva: lo que falla es este trabajo, y su documentación decía que estaba hecho.
+
+| ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
+|---|---|---|:--:|---|---|---|
+| T-19 | Sacar la creación de `inicio()` a una función que usen los dos modos, porque al abrir la sesión la transcripción todavía no existe | Backend | 2 h | — | ☑ | EV-05 |
+| T-20 | Que el turno en que nace el archivo muestre el mensaje de arranque, y el aviso empiece en el siguiente | Backend | 1 h | T-19 | ☑ | EV-05 |
+| T-21 | Que el instalador deje puesta `historico-chat/resumenes/` con su índice | Backend | 1,5 h | — | ☑ | EV-05 |
+| T-22 | Quitar del encabezado del resumen el enlace a `plantillas/`, que no viaja al proyecto | Backend | 0,5 h | — | ☑ | EV-05 |
+| T-23 | Corrida 2 de las pruebas: cada caso dispara el enganche como orden del sistema, sobre un proyecto que instala el instalador | Test | 3 h | T-19 a T-22 | ☑ | EV-05 |
+| T-24 | Anular la corrida 1 en el resultado, corregir la especificación del módulo y versionar | Documentación | 2 h | T-23 | ☐ | EV-05 |
+
+**Ampliación:** 6 tareas · 10 h. **Total de la fase:** 44 h.
+
+**Archivos que suma esta ampliación a §2.1:** `validadores/hook_resumen.py` (modificar), `validadores/resumen.py` (modificar), `validadores/instalar.py` (modificar), `validadores/pruebas.py` (modificar), `documentacion/automatismos/spec.md` (modificar).
+
+**Decisiones de la ampliación:**
+
+| Decisión | Alternativa descartada | Justificación |
+|---|---|---|
+| El archivo se asegura en los dos modos | Solo en el mensaje del usuario | Así la sesión que se retoma lo tiene desde el arranque y la nueva en el primer turno |
+| Si en un turno la transcripción no está, el siguiente lo crea | Ordenar los enganches del evento | Los enganches del mismo evento pueden correr a la vez y el orden no está garantizado |
+| La carpeta la deja el instalador | Que el programa la cree | Así sigue en pie el límite de la HU: un proyecto sin instalar no se ve afectado |
+| El encabezado enlaza el índice del histórico del proyecto | Enlazar `plantillas/sesion.md` | `plantillas/` es del estándar y no viaja: ahí el enlace nacía roto |
+
+> **Corrige la decisión de §2.6** *"el enganche no crea el resumen si la sesión no tiene todavía carpeta del día"*: la decisión se conserva, lo que cambia es que la carpeta llegue instalada.
+
 ---
 
 ## 4. Secuencia de ejecución

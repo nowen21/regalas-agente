@@ -58,7 +58,7 @@ Verificado el 2026-08-14.
 
 ## 4. Reglas de negocio
 
-1. **El archivo del resumen se crea solo al abrir la sesión**, con el modelo puesto y sin hallazgos.
+1. **El archivo del resumen se crea solo, en el primer mensaje de la sesión**, con el modelo puesto y sin hallazgos. No al abrir: en ese momento la transcripción todavía no existe, y de su nombre sale el nombre del resumen. Si la sesión se retoma y ya tiene transcripción, el archivo está desde el arranque.
 2. **El resumen se renombra con la transcripción.** Los dos nombres se mueven en la misma operación, o el índice queda apuntando a un archivo que no existe.
 3. **Cuando la sesión ya produjo algo y al resumen le falta algo, se avisa una vez por cada cosa que falte.** Son dos como máximo: que no haya ningún hallazgo escrito, y que no se haya dicho si la sesión se puede cerrar. Un aviso repetido se vuelve ruido y se deja de leer.
 4. **El aviso dice qué falta**, con la lista. Un aviso genérico obliga a preguntar, y preguntar es justo lo que se quiere evitar.
@@ -74,7 +74,9 @@ No aplica porque el entregable son programas de línea de comandos sobre archivo
 
 ## 6. Comportamiento y flujos
 
-**Al abrir la sesión.** El enganche mira si existe el resumen del día para esa sesión. Si no está, lo crea con el modelo y sin hallazgos.
+**Al abrir la sesión y en cada mensaje del usuario.** El enganche mira si existe el resumen del día para esa sesión. Si no está y la transcripción ya nació, lo crea con el modelo y sin hallazgos. Los dos momentos hacen lo mismo a propósito: al abrir, la transcripción de una sesión nueva todavía no existe, así que ahí no hay de dónde sacarle el nombre. El turno en que el archivo nace muestra dónde quedó; los avisos empiezan en el siguiente.
+
+**La carpeta la deja el instalador.** `historico-chat/resumenes/` llega puesta con su índice, como el histórico y la memoria. Sin ella el enganche calla, y eso sigue siendo lo correcto para un proyecto que no instaló el estándar.
 
 **Al declararse el propósito.** Cuando la sesión dice qué hallazgo viene a resolver —en su «viene de»—, el enganche va a buscarlo, y muestra ese hallazgo y lo que siga abierto de él. Nada de otros temas: una sesión abierta para una cosa no tiene por qué ver las demás.
 

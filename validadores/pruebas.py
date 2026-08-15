@@ -10,6 +10,7 @@ validador y termine ignorándolo.
 """
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -1015,9 +1016,14 @@ class Instalador(unittest.TestCase):
     def test_crea_la_carpeta_del_historico_y_no_la_pisa(self):
         raiz = self._espacio()
         self.assertEqual(instalar.instalar_historico(raiz, aplicar=True),
-                         ["crear historico-chat/README.md"])
+                         ["crear historico-chat/README.md",
+                          "crear historico-chat/resumenes/README.md"])
         indice = os.path.join(raiz, "historico-chat", "README.md")
         self.assertTrue(os.path.isfile(indice))
+        # La carpeta de resúmenes va en la misma instalación: sin ella el
+        # enganche del resumen queda mudo en el proyecto.
+        self.assertTrue(os.path.isfile(
+            os.path.join(raiz, "historico-chat", "resumenes", "README.md")))
 
         # Se crea ya sellado: quedar viejo tiene que poder detectarse después.
         comp = versiones.POR_ID["historico"]
@@ -1944,6 +1950,179 @@ class ResumenDeLaSesion(unittest.TestCase):
     def test_un_proyecto_sin_carpeta_de_resumenes_no_se_ve_afectado(self):
         raiz = tempfile.mkdtemp()
         self.assertEqual(resumen.crear(raiz, "2026-08-14-maracuya.md", raiz), "")
+
+
+class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
+    """Los mismos criterios, disparados como los dispara Claude Code.
+
+    La clase de arriba prueba las piezas: llama a `resumen.crear()` con la
+    transcripción ya en la mano. Eso dejó pasar el defecto que esta clase
+    reproduce: al abrir la sesión esa transcripción **no existe**, así que el
+    archivo nunca nacía. Acá no se arma ninguna precondición a mano — el
+    proyecto lo instala el instalador y la transcripción la escribe su enganche.
+    """
+
+    VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+
+    def _hay_git(self):
+        try:
+            subprocess.run(["git", "--version"], capture_output=True, timeout=10)
+            return True
+        except (OSError, subprocess.SubprocessError):
+            return False
+
+    def _proyecto_instalado(self):
+        """Una carpeta temporal pasada por el instalador de verdad.
+
+        El instalador anota el proyecto en `plantillas/proyectos.md` del
+        estándar; eso es su conducta normal, no un efecto de la prueba, así que
+        se deja correr y se devuelve el archivo como estaba.
+        """
+        if not self._hay_git():
+            self.skipTest("sin git")
+        raiz = tempfile.mkdtemp()
+        subprocess.run(["git", "init"], cwd=raiz, capture_output=True, timeout=30)
+
+        registro = instalar.REGISTRO
+        antes = comun.leer(registro) if os.path.isfile(registro) else None
+        if antes is not None:
+            self.addCleanup(self._restaurar, registro, antes)
+
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.VALIDADORES, "instalar.py"),
+             raiz, "--aplicar"], capture_output=True, text=True, timeout=180)
+        self.assertEqual(salida.returncode, 0, salida.stdout + salida.stderr)
+        return raiz
+
+    def _restaurar(self, ruta, texto):
+        with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto)
+
+    def _correr(self, guion, modo, raiz, sesion, prompt="hola"):
+        """Corre el enganche como orden del sistema, con el JSON que recibe."""
+        entrada = json.dumps({"session_id": sesion, "cwd": raiz,
+                              "prompt": prompt, "transcript_path": ""})
+        return subprocess.run(
+            [sys.executable, os.path.join(self.VALIDADORES, guion),
+             "--modo", modo, "--raiz", raiz],
+            input=entrada, capture_output=True, text=True, timeout=60)
+
+    def _transcripcion(self, raiz, sesion):
+        carpeta = os.path.join(raiz, "historico-chat")
+        for nombre in sorted(os.listdir(carpeta)):
+            if not nombre.endswith(".md") or nombre == "README.md":
+                continue
+            if f"<!-- sesion: {sesion} -->" in comun.leer(os.path.join(carpeta, nombre)):
+                return nombre
+        return ""
+
+    def _abrir_sesion(self, raiz, sesion, prompt="hola"):
+        """Los tres enganches del arranque, en el orden en que ocurren."""
+        self._correr("hook_resumen.py", "inicio", raiz, sesion)
+        self._correr("hook_historico.py", "usuario", raiz, sesion, prompt)
+        self._correr("hook_resumen.py", "aviso", raiz, sesion, prompt)
+        transcripcion = self._transcripcion(raiz, sesion)
+        return os.path.join(raiz, "historico-chat", "resumenes",
+                            transcripcion[:10], transcripcion[11:])
+
+    # CP-002 · el instalador deja el proyecto listo
+    def test_el_instalador_deja_la_carpeta_de_resumenes(self):
+        raiz = self._proyecto_instalado()
+        self.assertTrue(os.path.isfile(
+            os.path.join(raiz, "historico-chat", "resumenes", "README.md")))
+
+    # CP-001 · el archivo aparece en una sesión nueva sin que nadie lo pida
+    def test_el_resumen_aparece_solo_en_una_sesion_nueva(self):
+        raiz = self._proyecto_instalado()
+        ruta = self._abrir_sesion(raiz, "s1")
+        self.assertTrue(os.path.isfile(ruta), "el resumen no nació")
+        self.assertEqual(resumen.hallazgos(ruta), [])
+        self.assertIn("¿Se puede cerrar la sesión?", comun.leer(ruta))
+
+    def test_al_abrir_todavia_no_hay_transcripcion_y_no_falla(self):
+        raiz = self._proyecto_instalado()
+        salida = self._correr("hook_resumen.py", "inicio", raiz, "s1")
+        self.assertEqual(salida.returncode, 0)
+        self.assertEqual(salida.stdout.strip(), "")
+
+    def test_el_indice_del_dia_queda_con_su_linea(self):
+        raiz = self._proyecto_instalado()
+        ruta = self._abrir_sesion(raiz, "s1")
+        indice = os.path.join(os.path.dirname(ruta), "README.md")
+        self.assertIn(os.path.basename(ruta), comun.leer(indice))
+
+    # CP-003 · dos sesiones el mismo día no se pisan
+    def test_dos_sesiones_el_mismo_dia_dan_dos_archivos(self):
+        raiz = self._proyecto_instalado()
+        a = self._abrir_sesion(raiz, "s1")
+        b = self._abrir_sesion(raiz, "s2", "otra cosa")
+        self.assertNotEqual(a, b)
+        self.assertTrue(os.path.isfile(a) and os.path.isfile(b))
+
+    # CP-004 · el encabezado no enlaza a nada que no exista
+    def test_el_encabezado_no_enlaza_fuera_del_proyecto(self):
+        raiz = self._proyecto_instalado()
+        ruta = self._abrir_sesion(raiz, "s1")
+        texto = comun.leer(ruta)
+        self.assertNotIn("plantillas/sesion.md", texto)
+        for destino in ("../../" + os.path.basename(self._transcripcion(raiz, "s1")),
+                        "../../README.md"):
+            self.assertTrue(
+                os.path.isfile(os.path.join(os.path.dirname(ruta), destino)),
+                f"enlace roto: {destino}")
+
+    # CP-005 · avisa qué falta cuando la sesión produjo algo
+    def test_avisa_que_el_resumen_sigue_vacio(self):
+        raiz = self._proyecto_instalado()
+        self._abrir_sesion(raiz, "s1")
+        with open(os.path.join(raiz, "algo.txt"), "w", encoding="utf-8") as f:
+            f.write("cambio\n")
+        subprocess.run(["git", "add", "algo.txt"], cwd=raiz,
+                       capture_output=True, timeout=30)
+        salida = self._correr("hook_resumen.py", "aviso", raiz, "s1", "seguimos")
+        self.assertIn("SIGUE VAC", salida.stdout.upper())
+
+    # CP-006 · del propósito se muestra lo abierto, y nada de otros temas
+    def test_muestra_lo_abierto_del_proposito_y_nada_mas(self):
+        raiz = self._proyecto_instalado()
+        ruta = self._abrir_sesion(raiz, "s1")
+        dia = os.path.dirname(ruta)
+        with open(os.path.join(dia, "maracuya.md"), "w", encoding="utf-8") as f:
+            f.write("### H-4 · el hueco\n- **Estado:** abierto\n"
+                    "- **Con qué se retoma:** la pregunta viva\n")
+        with open(os.path.join(dia, "pepito.md"), "w", encoding="utf-8") as f:
+            f.write("### H-9 · nada que ver\n- **Estado:** abierto\n")
+        texto = comun.leer(ruta).replace(
+            "**Viene de:** «...»",
+            f"**Viene de:** {os.path.basename(dia)} · maracuya · H-4")
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(texto)
+
+        salida = self._correr("hook_resumen.py", "inicio", raiz, "s1")
+        self.assertIn("H-4", salida.stdout)
+        self.assertIn("la pregunta viva", salida.stdout)
+        self.assertNotIn("H-9", salida.stdout)
+
+    # CP-007 · correr el enganche dos veces no pisa ni duplica
+    def test_correr_los_dos_modos_no_pisa_lo_escrito(self):
+        raiz = self._proyecto_instalado()
+        ruta = self._abrir_sesion(raiz, "s1")
+        with open(ruta, "a", encoding="utf-8") as f:
+            f.write("\n### H-1 · algo escrito a mano\n- **Estado:** abierto\n")
+        self._correr("hook_resumen.py", "inicio", raiz, "s1")
+        self._correr("hook_resumen.py", "aviso", raiz, "s1", "otra vez")
+        self.assertIn("algo escrito a mano", comun.leer(ruta))
+        indice = comun.leer(os.path.join(os.path.dirname(ruta), "README.md"))
+        self.assertEqual(indice.count(f"({os.path.basename(ruta)})"), 1)
+
+    # CP-008 · un proyecto sin instalar no se ve afectado
+    def test_un_proyecto_sin_instalar_no_se_ve_afectado(self):
+        raiz = tempfile.mkdtemp()
+        for modo in ("inicio", "aviso"):
+            salida = self._correr("hook_resumen.py", modo, raiz, "s1")
+            self.assertEqual(salida.returncode, 0)
+            self.assertEqual(salida.stdout.strip(), "")
+        self.assertEqual(os.listdir(raiz), [])
 
 
 if __name__ == "__main__":

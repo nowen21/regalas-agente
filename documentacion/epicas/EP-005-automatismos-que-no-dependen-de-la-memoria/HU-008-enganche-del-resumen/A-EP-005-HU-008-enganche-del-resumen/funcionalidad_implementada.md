@@ -9,8 +9,16 @@
 | **Especificación del módulo** | [documentacion/automatismos/spec.md](../../../../automatismos/spec.md) |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-008: [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo), [CA-02](../HU-008-enganche-del-resumen.md#ca-02--avisa-cuando-la-sesión-ya-produjo-algo-y-el-resumen-sigue-vacío), [CA-03](../HU-008-enganche-del-resumen.md#ca-03--del-propósito-se-muestra-lo-que-sigue-abierto-y-nada-más) y los tres [RNF](../HU-008-enganche-del-resumen.md#5-requisitos-no-funcionales) |
-| **Fecha de cierre** | 2026-08-14 |
-| **Commit** | `40f9937`, autorizado el 2026-08-14 |
+| **Fecha de cierre** | Sin cerrar: la fase se **reabrió** el 2026-08-14 |
+| **Commit** | `40f9937` el trabajo de la corrida 1; falta el de la corrección |
+
+---
+
+> ## ⚠ Este documento se escribió con la fase cerrada, y la fase se reabrió
+>
+> Lo de abajo dice que el resumen nace solo al abrir la sesión. **No nacía nunca.** El detalle está en el [resultado de pruebas](resultado_pruebas.md), defecto DEF-03, y en la [ampliación del plan](plan_trabajo.md).
+>
+> Se reescribe cuando la fase vuelva a cerrar, y para eso falta [CP-018](plan_pruebas.md#cp-018--el-archivo-aparece-solo-en-una-sesión-real): que en una sesión nueva de verdad el archivo aparezca solo.
 
 ---
 

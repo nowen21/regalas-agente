@@ -72,14 +72,14 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
   - **Para** no depender de la memoria del agente
   - **Contexto:** hoy la plantilla y la carpeta están, pero llenarlas depende de que el agente se acuerde. Es lo mismo que pasaba con la transcripción, que solo se escribió siempre cuando la escribió un programa. Tres piezas: crear el archivo al abrir la sesión, avisar cuando la sesión ya produjo algo y el resumen sigue vacío, y arrastrar a la siguiente lo que quedó sin cerrar.
 - **Qué se decidió:** se creó el archivo de señales y la plantilla de lo que deja una sesión, con estado, trazabilidad y pregunta viva.
-- **Estado:** resuelto. Cerrado en la sesión `h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido`, que se abrió con este hallazgo como único propósito.
+- **Estado:** **reabierto** el 2026-08-14 en la sesión `el-enganche-del-resumen-no-crea-el-resumen`. Se había cerrado ese mismo día, y el cierre no era cierto: el enganche que sostiene el resumen nunca lo crea, así que la mitad del hallazgo, *"que exista aunque nadie se acuerde"*, sigue sin cumplirse. La otra mitad, el sitio y el modelo, sí quedó.
 - **Responde a:** EP-006 · HU-002, guardar lo aprendido en el repositorio.
 - **Dispara:** EP-003 · HU-009 (el modelo del resumen) y EP-005 · HU-008 (el enganche que lo sostiene). Ya están escritas.
 - **Orden de resolución:** —, ya está cerrado.
 - **Dónde queda:** las tres fases de la cadena: [A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md), [A-EP-003-HU-009](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) y [A-EP-005-HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) · reglas [`13·DOC19`](../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) a [`13·DOC22`](../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) · [plantillas/sesion.md](../../../plantillas/sesion.md) · [validadores/resumen.py](../../../validadores/resumen.py) · versiones 13.0.0 a 15.1.0.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
-- **Cerrado en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
-- **Con qué se retoma:** —. Queda una pregunta que no bloquea: con qué señal se sabe que un tema cerró de verdad. El enganche mira si la sección de cierre está llena, que no es lo mismo.
+- **Cerrado en:** —. El `cerrado en` anterior, `2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido`, quedó anulado.
+- **Con qué se retoma:** la fase A de EP-005 · HU-008 se reabrió y ya corrige el programa; falta lo único que no se puede simular, que en una sesión nueva de verdad el archivo aparezca solo. Sigue viva, sin bloquear, la pregunta de con qué señal se sabe que un tema cerró: el enganche mira si la sección de cierre está llena, que no es lo mismo.
 
 ### H-5 · El estándar no cumple su propia regla de enlaces
 

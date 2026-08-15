@@ -11,6 +11,41 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 15.4.0 — 2026-08-14
+
+**MENOR** (el instalador deja una carpeta más; nadie tiene que hacer nada nuevo).
+
+**El enganche que sostenía el resumen de la sesión no creaba el resumen.** La fase que lo construyó cerró el mismo día con sus tres criterios en "cumple", y el programa no hacía lo que esos criterios piden: los dos resúmenes que había en el repositorio los había escrito el agente a mano. Se reabrió la fase [`A-EP-005-HU-008`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) en vez de abrir una nueva: lo que fallaba era ese trabajo, y su documentación decía que estaba hecho.
+
+- **El archivo nace en el primer mensaje de la sesión, no al abrir.** Al abrir, la transcripción todavía no existe, y de su nombre sale el del resumen. Los dos modos del enganche lo aseguran: la sesión que se retoma lo tiene desde el arranque y la nueva en el primer turno.
+- **`instalar.py` deja puesta `historico-chat/resumenes/` con su índice.** Sin ella el enganche quedaba mudo en todo proyecto que hereda el estándar, y crearla era un paso a mano que nadie había documentado.
+- **El encabezado del resumen ya no enlaza `plantillas/sesion.md`.** Esa carpeta es del estándar y no viaja al proyecto: ahí el enlace nacía roto. Enlaza el índice del histórico, que el instalador sí deja en todos.
+- **La corrida 2 de las pruebas dispara el enganche como orden del sistema**, con el JSON que le manda Claude Code, sobre un proyecto que arma el instalador. Ninguna precondición se monta a mano: eso fue lo que dejó pasar el defecto. La fase no se declara cumplida hasta que el archivo aparezca solo en una sesión real.
+- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: el detalle de un caso pasa a tener cinco partes fijas — el problema que resuelve, la precondición, qué hacer para que cumpla, con qué reprueba y los pasos que se siguieron de verdad. Con el detalle a medias un caso puede pasar habiendo probado otra cosa, y eso fue lo que pasó. Queda escrito que si lo ejecutado no son los pasos de "para que cumpla", el caso no cumple, aunque haya salido bien.
+
+## 15.4.0 — 2026-08-15
+
+**MENOR** (una sección más en una plantilla; ningún brief ya escrito deja de valer).
+
+**El brief no decía cómo se llama el proyecto.** La plantilla tenía el nombre solo en el título, y ese título nombra el módulo o la épica. Un proyecto entero no tenía dónde decir cómo se llama, y el nombre es lo primero que heredan todos los documentos que salen de ahí.
+
+- **Sección 0, Identificación**, en [`plantillas/brief.md`](plantillas/brief.md): nombre del proyecto, qué cubre el encargo y fecha.
+- El [`brief.md`](brief.md) de este repositorio la estrena: el proyecto se llama **Cimiento**.
+
+## 15.3.0 — 2026-08-14
+
+**MENOR** (nace un documento de consulta; nadie queda obligado a nada nuevo).
+
+**Las reglas usaban palabras que no estaban definidas en ningún lado.** Para saber qué es una especificación había que encontrar la regla que la exige; para saber qué es una señal, otra; para saber qué es una fase, un capítulo entero. El caso que lo destapó: el usuario preguntó qué significaba "spec", y la respuesta tomó tres intentos y terminó cambiando una regla.
+
+- **[`base/glosario.md`](base/glosario.md)**: 67 términos en cuatro grupos (la cadena de trabajo, las reglas, lo que comprueba y lo que se guarda). Cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Es un anexo, no una regla: no exige nada y por eso no lleva checklist.
+- **Una columna dice qué quiere decir el nombre**, no solo qué es la cosa: por qué a una fase le decimos estación, de dónde sale bitácora, qué significa brief. Sin eso, un término se puede leer y seguir sin entender por qué se llama así.
+- **Cada entrada enlaza a su regla y no copia su texto.** Dos copias de la misma norma se desincronizan, y manda la que nadie relee.
+- **Se alcanza desde las tres puertas de entrada**: [`README.md`](README.md), [`base/README.md`](base/README.md) y [`anatomia/mapa-del-sitio.md`](anatomia/mapa-del-sitio.md).
+- **Queda el inventario de lo que sigue en otro idioma**: 10 términos que se quedan con su motivo escrito y 12 que faltan traducir, con el archivo donde vive cada uno. Renombrarlos es trabajo aparte, porque rompe las citas.
+
+Cierra la parte del glosario del [pendiente 21](pendientes/21-el-glosario-y-los-terminos-en-ingles.md), que nace del hallazgo H-8 del 2026-08-14. La parte de los roles queda abierta.
+
 ## 15.2.0 — 2026-08-14
 
 **MENOR** (una columna más en una plantilla; no invalida los resultados ya escritos).
