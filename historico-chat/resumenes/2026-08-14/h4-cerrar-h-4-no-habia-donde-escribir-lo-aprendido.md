@@ -140,14 +140,14 @@ Se anotan todos, resueltos y abiertos.
 
 ## ¿Se puede cerrar la sesión?
 
-**Todavía no.**
+**Sí.** Las cuatro condiciones están cumplidas.
 
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3, H-4, H-5 y H-8 |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 en el 24, H-6 en el 25, H-7 en el 23 |
 | Toda historia disparada está escrita en su épica | ☑ la de H-1 queda con su narrativa y su contexto en el pendiente 24 |
-| Lo que se hizo está aprobado y guardado | ☐ falta commitear de la 14.0.1 en adelante |
+| Lo que se hizo está aprobado y guardado | ☑ `b877f37`, `e998cc2` y `40f9937` |
 
 **El propósito de la sesión está cumplido.** Las tres fases de la cadena de H-4 cerraron, y el hallazgo quedó marcado resuelto en el resumen donde nació:
 
@@ -155,7 +155,7 @@ Se anotan todos, resueltos y abiertos.
 |---|---|---|
 | La marca del espacio por llenar | [A-EP-003-HU-001](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) | Cerrada · `b877f37` |
 | El modelo del resumen | [A-EP-003-HU-009](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) | Cerrada · `e998cc2` |
-| El enganche que lo sostiene | [A-EP-005-HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) | Cerrada · sin commitear |
+| El enganche que lo sostiene | [A-EP-005-HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) | Cerrada · `40f9937` |
 
 Lo que queda abierto (H-1, H-6 y H-7) **no es del propósito de esta sesión**: nació acá y se cierra en otra, y para eso basta con que quede anotado.
 

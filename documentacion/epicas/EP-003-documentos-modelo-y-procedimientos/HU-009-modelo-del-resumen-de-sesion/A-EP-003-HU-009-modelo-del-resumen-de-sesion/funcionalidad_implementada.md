@@ -10,7 +10,7 @@
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-009: [CA-01](../HU-009-modelo-del-resumen-de-sesion.md#ca-01--el-modelo-existe-y-se-distingue-de-la-transcripción), [CA-02](../HU-009-modelo-del-resumen-de-sesion.md#ca-02--un-hallazgo-dice-si-está-cerrado-y-por-dónde-sigue), [CA-03](../HU-009-modelo-del-resumen-de-sesion.md#ca-03--el-resumen-dice-si-la-sesión-se-puede-cerrar) y los tres [RNF](../HU-009-modelo-del-resumen-de-sesion.md#5-requisitos-no-funcionales) |
 | **Fecha de cierre** | 2026-08-14 |
-| **Commit** | Sin commitear: el usuario lo autoriza aparte |
+| **Commit** | `e998cc2`, autorizado el 2026-08-14 |
 
 ---
 

@@ -10,7 +10,7 @@
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-008: [CA-01](../HU-008-enganche-del-resumen.md#ca-01--el-archivo-nace-solo), [CA-02](../HU-008-enganche-del-resumen.md#ca-02--avisa-cuando-la-sesión-ya-produjo-algo-y-el-resumen-sigue-vacío), [CA-03](../HU-008-enganche-del-resumen.md#ca-03--del-propósito-se-muestra-lo-que-sigue-abierto-y-nada-más) y los tres [RNF](../HU-008-enganche-del-resumen.md#5-requisitos-no-funcionales) |
 | **Fecha de cierre** | 2026-08-14 |
-| **Commit** | Sin commitear: el usuario lo autoriza aparte |
+| **Commit** | `40f9937`, autorizado el 2026-08-14 |
 
 ---
 

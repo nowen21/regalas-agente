@@ -28,7 +28,7 @@
 | 9 | Verifier | trazabilidad sin faltantes | ☑ las siete exigencias en verde |
 | 10 | Crítico | sin hallazgos graves | ☑ dos defectos, los dos corregidos en la fase |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ **acá está detenida**: falta el `funcionalidad_implementada.md` |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ☑ `40f9937` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
