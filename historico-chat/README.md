@@ -89,4 +89,4 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-15-la-plantilla-del-resultado-de-pruebas.md](2026-08-15-la-plantilla-del-resultado-de-pruebas.md) — cada sección de la plantilla dice qué pregunta responde; aplicarla destapa que una fase cerrada no cumplía. · [resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md](resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md)
 - [2026-08-15-los-resumenes-que-faltan.md](2026-08-15-los-resumenes-que-faltan.md) — el inventario del histórico: cuántas sesiones no tienen resumen y qué bloquea escribirlos. · [resumenes/2026-08-15/los-resumenes-que-faltan.md](resumenes/2026-08-15/los-resumenes-que-faltan.md)
 - [2026-08-16-sesion.md](2026-08-16-sesion.md) — sesión del 2026-08-16.
-- [2026-08-16-sesion-2.md](2026-08-16-sesion-2.md) — sesión del 2026-08-16.
+- [2026-08-16-la-prioridad-de-los-pendientes.md](2026-08-16-la-prioridad-de-los-pendientes.md) — se analizaron los 28 pendientes abiertos y se les dio un orden de prioridad. · [resumenes/2026-08-16/la-prioridad-de-los-pendientes.md](resumenes/2026-08-16/la-prioridad-de-los-pendientes.md)

@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 - **Responde a:** —.
 - **Dispara:** —, es revisar y correr un comando.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md) — estuvo en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) hasta el 2026-08-16, cuando se promovió a pendiente propio.
 - **Nace en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿qué proyectos tenían el enganche el 2026-08-07, y les quedó memoria borrada sin recuperar?

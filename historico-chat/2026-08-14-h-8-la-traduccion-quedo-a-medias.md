@@ -1067,3 +1067,41 @@ Faltan tres cosas para cerrar:
 
 ### 55 · Usuario — 2026-08-16 12:22:10
 > si
+
+**Agente** — 2026-08-16 12:31:28
+<!-- agente: e3aaf893-5191-4dee-ba35-4cb0205fdad0 -->
+
+El heredoc sin comillas ejecutó los backticks y metió texto corrupto. Reviso y rehago.
+
+Reparado. Ahora el resto del cierre.
+
+Ahora el resumen de la sesión, con lo que pasó después.
+
+Sesión cerrada. Commit **`c48fde5`**, 44 archivos.
+
+**CP-006 quedó ejecutado, y lo corrió usted.** Salió negativa y por eso sirvió: destapó tres defectos, los tres corregidos.
+
+| Versión | Qué cambió |
+|---|---|
+| **17.0.0** | Nace [`13·DOC23`](base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md): cada proyecto escribe el glosario de su negocio |
+| **17.0.1** | Las 27 celdas del nombre, reescritas en español de acá |
+| **17.0.2** | 48 de 72 definiciones no decían qué clase de cosa era. Ahora las 72 pasan la prueba de reemplazo |
+| **18.0.0** | `brief` pasa a **planteamiento**: dos archivos renombrados, la ruta del proyecto cambiada, 13 archivos con sus enlaces corregidos |
+
+La fase **A-EP-003-HU-010** pasa de "No cumple" a **Cumple**, con dos salvedades escritas: se probó una entrada de las cinco, y la meta de cero preguntas no se alcanzó.
+
+**Queda abierto y anotado:** los 12 términos que siguen en inglés (H-2), el validador de enlaces contra la excepción de `DOC14` (H-3), el mapa del sitio en v1.4.0 (H-4), y la palabra `planteamiento` sin propagar a `documentacion/`, `pendientes/`, `analisis/` e `historico-chat/` (H-7).
+
+No commiteé lo de las otras sesiones: los pendientes 35 y 36 y la sesión del 16.
+
+¿Hago push?
+
+### 56 · Usuario — 2026-08-16 12:34:11
+> si
+
+**Agente** — 2026-08-16 12:34:28
+<!-- agente: 0cccdc6b-f93f-4a29-8ffe-db6a0490f058 -->
+
+Publicado: `e95a679..c48fde5` en `origin/main`.
+
+Con eso queda cerrada la sesión. Lo que sigue, cuando retome, está escrito en [el resumen](historico-chat/resumenes/2026-08-14/h-8-la-traduccion-quedo-a-medias.md): cuatro hallazgos abiertos, cada uno con la pregunta con la que se retoma.

@@ -18,6 +18,18 @@ Decidir quién manda sobre la versión y escribirlo. Tres opciones sobre la mesa
 
 **3. Una sola sesión a la vez toca el estándar.** Es lo más simple y lo más incómodo.
 
+## No es solo la versión: es cualquier archivo que dos sesiones editen
+
+**Ampliado el 2026-08-16**, después de que volviera a pasar en otro archivo.
+
+Mientras una sesión reescribía [`pendientes/README.md`](README.md) para ponerle la columna de prioridad, otra sesión le agregó los pendientes 37 y 38. La escritura falló, hubo que releer el archivo, incorporar lo ajeno y volver a escribir — que es exactamente lo que este pendiente describe: *«para guardar lo propio hay que arrastrar lo ajeno»*.
+
+La diferencia con el caso del 2026-08-14: acá **no se perdió nada, porque la herramienta avisó** antes de sobrescribir. Con `VERSION` no avisó nadie y quedaron dos numeraciones vivas.
+
+Eso cambia el alcance de lo que hay que decidir. `VERSION` y `CHANGELOG.md` son los que más duelen, pero el problema es de **cualquier archivo único que dos sesiones toquen a la vez**: este README, los índices del histórico, `plantillas/proyectos.md`. Las tres opciones de arriba se evalúan contra eso, no solo contra la versión.
+
+**Sin decidir:** si el acuerdo cubre cualquier archivo compartido o se deja acotado a la versión.
+
 ## El límite
 
 Esto no lo resuelve un validador: puede detectar el cruce, no evitarlo. Lo que hace falta primero es el acuerdo.
