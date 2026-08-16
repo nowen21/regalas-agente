@@ -1,0 +1,59 @@
+<!-- sesion: 8ae57a60-9530-4962-aec0-a48a76e1924a -->
+
+# 2026-08-07 — Granularidad de la fase
+
+## Conversación
+
+### 1 · Usuario — 2026-08-07 14:32:51
+> que es mejor que el plan de trabajo se ejecute por los CA de la HU o por cada CA de la HU?
+
+**Agente** — 2026-08-07 14:34:38
+<!-- agente: 395fa8a1-7437-4729-a08f-f68ebe1c49c2 -->
+
+**Depende de si el CA se puede validar solo — y el estándar ya lo decide: `F12.9` + `F12.10`.**
+
+Primero una distinción: *dentro* de un plan la ejecución siempre va CA por CA, literal ([F4.5](base/02-flujo-de-trabajo/reglas/F4/F4.5-ejecutar-literal-los-ca-descubrimientos-fuera-de-ca-se-proponen-no-se-actuan.md)). Lo que se está preguntando en realidad es **cuántos CA lleva cada fase/plan**.
+
+| Opción | Cuándo | Regla |
+|---|---|---|
+| **Una fase por CA** | el CA se implementa, prueba y cierra solo — entrega demostrable por sí misma | [`F12.9`](base/02-flujo-de-trabajo/reglas/F12/base.md) |
+| **Una fase con varios CA** | los CA comparten línea base técnica y solo se validan juntos (migración + endpoint + vista del mismo comportamiento) | [`F12.10`](base/02-flujo-de-trabajo/reglas/F12/base.md) |
+
+Dos límites que ya están escritos:
+
+- **No partir por nomenclatura** — `F12.10`: cada fase debe ser trabajo real, verificable y trazable, no una fase por CA "para que cuadre la numeración".
+- **La granularidad se decide al diseñar el plan, antes de aprobar** — [`F9`](base/02-flujo-de-trabajo/reglas/F9-plan-aprobado-se-ejecuta-completo-sin-subdividir-post-aprobacion.md): aprobado el plan, no se subdivide.
+
+Criterio práctico: **agrupar los CA que cierran con la misma prueba; separar en cuanto un CA pueda demostrarse solo.** Y en todo caso el plan lista `intervención → CA` ([`F4.4`](base/02-flujo-de-trabajo/reglas/F4/F4.4-plan-trabajo-se-deriva-de-los-ca-de-la-hu-nunca-de-la-proactividad.md)), así que la trazabilidad por CA existe aunque la fase cubra varios.
+
+No toqué ningún archivo del estándar. Registro la sesión en el histórico.
+
+Sesión registrada en [2026-08-07-sesion-9.md](historico-chat/2026-08-07-sesion-9.md) y agregada al índice del [README](historico-chat/README.md).
+
+### 2 · Usuario — 2026-08-07 14:58:29
+> osea que es mejor que antes de crear los CA de una HU si cada CA tiene dependencia y cuán es esa dependencia?
+
+**Agente** — 2026-08-07 14:59:30
+<!-- agente: 6b883934-cb41-4d3d-9e30-b52d9d4cf2af -->
+
+**Sí, pero la dependencia no se escribe dentro del CA.** El CA sigue siendo comportamiento observable (Gherkin + `Cómo validarlo`); si le metes "requiere que antes exista X" lo conviertes en tarea técnica y lo atas a la implementación.
+
+Lo que sí conviene es **mapear la dependencia entre CA antes de armar las fases**, porque ese mapa es justo el insumo que decide `F12.9` vs `F12.10` y el **orden**. Sin él, la dependencia se descubre a mitad de ejecución y toca pausar ([`F8`](base/02-flujo-de-trabajo/reglas/F8-solo-se-tocan-archivos-declarados-en-el-plan-aprobado-descubrimiento-pausa.md)/[`F9`](base/02-flujo-de-trabajo/reglas/F9-plan-aprobado-se-ejecuta-completo-sin-subdividir-post-aprobacion.md)).
+
+Hay que separar dos cosas que se confunden:
+
+| Tipo | Ejemplo | Dónde vive |
+|---|---|---|
+| **De validación** — CA-03 no se puede probar si CA-01 no existe | "editar factura" necesita "crear factura" | mapa CA→fase; define orden y agrupación |
+| **Técnica** — dos CA comparten migración o helper | misma tabla nueva | el plan, como *soporte de CA-X* ([`F4.4`](base/02-flujo-de-trabajo/reglas/F4/F4.4-plan-trabajo-se-deriva-de-los-ca-de-la-hu-nunca-de-la-proactividad.md)) — no es dependencia del CA |
+
+Solo la primera manda sobre las fases.
+
+Dos advertencias:
+
+- **INVEST "Independiente" es de la HU, no de los CA.** Que un CA dependa de otro es normal y no es defecto.
+- **Si casi todos los CA dependen en cadena**, la señal es que no son criterios de aceptación sino tareas descompuestas — ahí el arreglo es reescribir los CA, no ordenarlos.
+
+Hoy la plantilla ([plantillas/HU.md §8](plantillas/HU.md#L159)) declara dependencias **a nivel HU** ("HU o servicio previo requerido"), no CA→CA. Si quieres que quede explícito, se puede agregar en §8 una fila `CA-0X depende de CA-0Y (motivo)`. **¿Lo agrego a la plantilla, o lo dejo como pendiente?** No toco nada hasta que digas.
+
+Histórico actualizado con este intercambio en [2026-08-07-sesion-9.md](historico-chat/2026-08-07-sesion-9.md). Queda abierta la decisión sobre §8 de la plantilla HU.

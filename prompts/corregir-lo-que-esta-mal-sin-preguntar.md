@@ -2,7 +2,7 @@
 
 Lo que pidió el usuario, con sus palabras. Rescatado de las sesiones del histórico.
 
-## De [2026-08-07-sesion-11.md](../historico-chat/2026-08-07-sesion-11.md) · 2026-08-07 18:41:46
+## De [2026-08-07-por-que-pide-tanto-permiso.md](../historico-chat/2026-08-07-por-que-pide-tanto-permiso.md) · 2026-08-07 18:41:46
 
 si está mal para qué me pide permiso para corregir?
 

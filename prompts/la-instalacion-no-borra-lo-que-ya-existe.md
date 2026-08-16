@@ -10,6 +10,6 @@ mire lo que esta pasando me está borrando la memoria y eso no puede pasar si ya
 
 por qué si ya hay contenido acá: historico-chat/memory/ lo borra si eso es lo que se busca conservar la memoria del repo ahí y no en el equipo
 
-## De [2026-08-08-sesion.md](../historico-chat/2026-08-08-sesion.md) · 2026-08-08 15:27:10
+## De [2026-08-08-la-instalacion-se-hace-sola.md](../historico-chat/2026-08-08-la-instalacion-se-hace-sola.md) · 2026-08-08 15:27:10
 
 El proceso debe ser **idempotente**: si se ejecuta nuevamente sobre un proyecto ya instalado, debe detectar lo que ya existe y no duplicar ni sobrescribir innecesariamente elementos.

@@ -88,16 +88,17 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
-### Lo que dejó revisar el histórico (31–32)
+### Lo que dejó revisar el histórico (31–33)
 
 Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-15/los-resumenes-que-faltan.md).
 
 | # | Pendiente | Qué resuelve |
 |---|---|---|
-| 31 | [33 de las 39 sesiones no tienen resumen](31-los-resumenes-de-las-sesiones-viejas.md) | El enganche solo cubre la sesión que corre; de las anteriores no se ocupa nadie. Antes hay que nombrar 22 sesiones y decidir cómo se llenan cuatro campos hacia atrás. |
+| ~~31~~ | **hecho** → [33 de las 39 sesiones no tienen resumen](31-los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
 | 32 | [La carpeta del día nace sin su línea en el índice](32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
+| 33 | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Ocho puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. **El más urgente:** nadie revisó a qué proyectos les borró la memoria el enganche del 2026-08-07. |
 
-**El 32 va antes del 31:** si no, los 33 resúmenes nacen fuera del índice y hay que volver a pasar por todos.
+**El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
 
 ## Dependencias duras
 

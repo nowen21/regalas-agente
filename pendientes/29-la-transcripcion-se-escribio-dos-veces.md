@@ -22,7 +22,18 @@ El `CLAUDE.md` de este repositorio manda escribir la transcripción a mano —«
 
 **2. Que el `CLAUDE.md` deje de pedir lo que el programa ya hace.** Hoy su sección 1 describe el trabajo a mano como si nadie lo automatizara. Tiene que decir que el enganche escribe la transcripción y que el agente **no** la escribe: solo se asegura de que exista.
 
-**3. Comprobar si le pasa a otras sesiones.** Revisar si hay más archivos del histórico con encabezados repetidos.
+**3. Comprobar si le pasa a otras sesiones.** ✅ **Hecho el 2026-08-16.** Al escribir los resúmenes de las sesiones viejas aparecieron **cuatro copias a mano** más, todas sin la marca `<!-- sesion: … -->`:
+
+| Copia borrada | Repetía a |
+|---|---|
+| `2026-08-06-sesion-7.md` | [no se puede transcribir audio](../historico-chat/2026-08-06-no-se-puede-transcribir-audio.md) |
+| `2026-08-06-sesion-9.md` | [la clase del diplomado](../historico-chat/2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) — con la hora del usuario y la del agente idénticas al segundo en los 21 intercambios |
+| `2026-08-07-sesion-9.md` | [granularidad de la fase](../historico-chat/2026-08-07-granularidad-de-la-fase.md) |
+| `2026-08-07-analisis-cumplimiento-reglas.md` | [el checklist de la regla](../historico-chat/2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md), sus primeros doce intercambios |
+
+Las cuatro se borraron por instrucción del usuario y siguen en el historial de git. Una quinta la había borrado el propio agente el 2026-08-07, en caliente. **Se perdió una cosa al hacerlo**: la copia del diplomado describía cada diapositiva (`[imagen: …]`) y la que quedó no, porque las imágenes llegaron pegadas al chat. Está en el historial.
+
+Sigue faltando el punto 1: la transcripción del 2026-08-15, con 61 encabezados de usuario para unos 30 mensajes.
 
 ## El límite
 

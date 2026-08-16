@@ -89,13 +89,19 @@ Se anotan todos, resueltos y abiertos.
 
 ## ¿Se puede cerrar la sesión?
 
-**Todavía no.** Falta la única prueba que no se puede simular, y falta el commit.
+**Sí.** Las cuatro condiciones están cumplidas.
 
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-3 |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ H-1 se cierra cuando la próxima sesión muestre que el archivo apareció solo. H-4 no necesita pendiente: sus tres historias ya están escritas |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 vive en la [fase A de HU-008](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md), detenida con su caso `CP-018` escrito. H-4 no necesita pendiente: sus tres historias ya están en sus épicas |
 | Toda historia disparada está escrita en su épica | ☑ las tres de H-4, en EP-004 y EP-005 |
-| Lo que se hizo está aprobado y guardado | ☑ `6391e79`, sin `push` |
+| Lo que se hizo está aprobado y guardado | ☑ `6391e79` y `cd94e5b`, los dos subidos |
 
-<!-- aviso: falta decir si la sesión se puede cerrar -->
+**El propósito se cumplió a medias, y a propósito.** Lo que se vino a arreglar quedó arreglado y probado: el resumen nace solo, el instalador deja la carpeta y los enlaces no nacen rotos. Lo que falta no se puede hacer hoy: **abrir una sesión nueva y ver si el archivo aparece solo**. Eso es `CP-018`, y hasta que pase, la fase de HU-008 no cierra y H-1 se queda sin su «cerrado en».
+
+**Lo que la sesión deja para la próxima**, en orden:
+
+1. Mirar si el resumen de la sesión nueva apareció solo. Si sí, cierran `CP-018`, la fase de HU-008, H-1 y el H-4 del 2026-08-14 que se reabrió acá.
+2. Bajar a fase [EP-005 · HU-010](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md), que es la que evita lo que pasó con `F9`.
+3. Después [EP-004 · HU-013](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md), que es lo único que caza una regla incumplida habiendo llegado completa.

@@ -2,7 +2,7 @@
 
 Lo que pidió el usuario, con sus palabras. Rescatado de las sesiones del histórico.
 
-## De [2026-08-08-sesion.md](../historico-chat/2026-08-08-sesion.md) · 2026-08-08 15:27:10
+## De [2026-08-08-la-instalacion-se-hace-sola.md](../historico-chat/2026-08-08-la-instalacion-se-hace-sola.md) · 2026-08-08 15:27:10
 
 Corrija el proceso de instalación para que `CLAUDE.md` sea tratado como el **setup principal del agente**.
 El objetivo es que, al ejecutar el proceso de instalación, el agente sea capaz de **instalar, configurar y dejar completamente operativo el entorno por sí mismo**, sin depender de que el usuario tenga que intervenir manualmente.

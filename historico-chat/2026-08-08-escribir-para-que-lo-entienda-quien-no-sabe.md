@@ -1,0 +1,278 @@
+<!-- sesion: 1f7992b5-f26e-48d3-b069-a4be1a55b7df -->
+
+# 2026-08-08 — Escribir para que lo entienda quien no sabe
+
+## Conversación
+
+### 1 · Usuario — 2026-08-08 23:10:47
+> esto:
+> Entrega, uno por uno, los archivos de código de un proyecto ya leídos y listos para revisar.
+>  si un niño o una persona que sabe lo lee lo entiende?
+
+### 2 · Usuario — 2026-08-08 23:12:09
+> está en en: c:\Ing. Jose\ia\agente\validadores\docs\codigo.md para que no se ponga a leer todo el proyecto
+
+**Agente** — 2026-08-08 23:12:20
+<!-- agente: 7a774dfc-aac0-4dc1-8256-615d58552da7 -->
+
+Está en [validadores/docs/codigo.md:3](validadores/docs/codigo.md#L3). Respondo, no toco nada.
+
+**Quien sabe: sí. Un niño: a medias.**
+
+Tres puntos donde se traba:
+
+1. **"ya leídos"** — cuelga mal. Se lee como "un proyecto ya leído". Y "leído" acá significa *con el contenido cargado*, que no es el sentido normal de la palabra.
+2. **"Entrega"** — no dice a quién. Un niño pregunta "¿a quién se lo entrega?".
+3. **"listos para revisar"** — tampoco dice quién revisa ni qué.
+
+La línea 9 del mismo archivo sí lo explica bien: *"va entregando pares de «ruta del archivo» y «contenido del archivo»"*. La de arriba es la que se queda corta.
+
+Redacción que sí pasa la prueba:
+
+> Recorre el proyecto, abre cada archivo de código y lo va pasando de a uno —su ruta y su contenido— a los validadores que lo revisan.
+
+¿La cambio? Si sí, también hay que ajustar la línea gemela en [validadores/docs/README.md:16](validadores/docs/README.md#L16).
+
+### 3 · Usuario — 2026-08-08 23:13:30
+> le estoy preguntando si lo van a entender no que me haga división etimologica
+
+**Agente** — 2026-08-08 23:13:34
+<!-- agente: 89705f9b-e3c2-4cc5-8677-195656d960b4 -->
+
+Quien sabe, sí. Un niño, no.
+
+### 4 · Usuario — 2026-08-08 23:19:11
+> Cree una **regla general de redacción** para todo el proyecto que establezca que cualquier contenido generado debe ser **claro, sencillo, directo y conciso**.
+>
+> La información debe poder ser comprendida por **una persona que no tenga conocimientos técnicos sobre el tema e, idealmente, por un niño**.
+>
+> La regla debe establecer que:
+>
+> * Se utilice lenguaje cotidiano y fácil de entender.
+> * Se evite el uso innecesario de términos técnicos, palabras complejas o lenguaje especializado.
+> * Cuando sea indispensable utilizar un término técnico, se explique de forma sencilla la primera vez que aparezca.
+> * Las ideas se expresen de manera directa, evitando párrafos innecesariamente largos.
+> * No se utilicen palabras complicadas cuando exista una alternativa sencilla.
+> * Se explique **qué se hace, para qué sirve y qué resultado se espera** utilizando palabras fáciles de comprender.
+> * Si considera que un **ejemplo ayuda a comprender mejor una idea**, puede incluirlo. El ejemplo debe ser sencillo, concreto y estar directamente relacionado con lo que se está explicando.
+> * Los ejemplos deben utilizarse para **aclarar**, no para agregar complejidad o generar confusión.
+> * Si un ejemplo hace que la explicación sea más difícil de entender, debe omitirse.
+> * La claridad debe tener prioridad sobre la sofisticación del lenguaje.
+> * La documentación técnica también debe seguir esta regla, sin perder la precisión necesaria.
+> * Antes de finalizar cualquier contenido, debe comprobar que la explicación realmente sea fácil de entender y que no esté utilizando términos o explicaciones innecesariamente complejas.
+>
+> **Objetivo principal:** hacerse entender, no demostrar conocimientos técnicos. Toda explicación debe buscar que el lector comprenda fácilmente la idea sin necesidad de conocimientos previos sobre programación, el sistema o el tema tratado.
+
+**Agente** — 2026-08-08 23:25:45
+<!-- agente: 8cdb496d-0698-4f21-8459-8f541219cd04 -->
+
+Hecho. La regla nació en el preámbulo, no en conducta: el lugar de "cómo escribe el agente" ya estaba ocupado por [`00·ID2`](base/00-identidad-y-rol/reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md), que pedía lo contrario — *"escribe para quien lee código: preciso, técnico"*. Dos reglas opuestas sobre el mismo tema se contradicen, así que `ID2` queda **derogada** y nace [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md).
+
+**El texto:**
+
+> Todo lo que el agente escribe —respuestas, documentación, manuales, mensajes y las reglas mismas— se entiende sin saber del tema, e idealmente lo entiende un niño: palabras de todos los días, ideas directas, párrafos cortos, y el término técnico que no se pueda evitar explicado en sencillo la primera vez que aparece. Cada cosa se explica diciendo **qué hace**, **para qué sirve** y **qué resultado deja**.
+> Se cambia la palabra difícil por la fácil, nunca el dato exacto por uno vago: la claridad no se compra con imprecisión, y la documentación técnica también entra acá.
+> Un ejemplo concreto se agrega solo si aclara; si complica, se quita.
+> Antes de dar por terminado un texto se relee comprobando que se entiende sin conocimiento previo.
+
+**Qué se tocó**
+
+| Archivo | Qué cambió |
+|---|---|
+| [ID7-…md](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | **Nueva**, con ejemplo y checklist en CUMPLE (19 ✅ · 1 N/A) |
+| [ID2-…md](base/00-identidad-y-rol/reglas/ID2-escribe-en-registro-tecnico-sin-adornos.md) | `[DEROGADA en 6.0.0 → ver 00·ID7]`, texto intacto |
+| [00-identidad-y-rol/base.md](base/00-identidad-y-rol/base.md) | Índice y nota del checklist |
+| [17-interfaz.md](base/17-interfaz.md) `I4` | Decía que la UI era "lo contrario" del estilo del agente; ya no |
+| [20-meta-reglas/base.md](base/20-meta-reglas/base.md) | La higiene del lenguaje de una regla deja de decir "técnico" |
+| [reglas-validables.md](validadores/reglas-validables.md) | `ID7` como no validable (`M9`) |
+| [CHANGELOG.md](CHANGELOG.md) · [VERSION](VERSION) | **6.0.0 MAYOR** ⚠ obliga a migrar |
+| [estilo-redaccion-simple.md](historico-chat/memory/estilo-redaccion-simple.md) | El recuerdo decía justo lo contrario; reescrito |
+
+Sesión escrita en [2026-08-08-sesion-4.md](historico-chat/2026-08-08-sesion-4.md).
+
+**Sin hacer:** la línea de [validadores/docs/codigo.md:3](validadores/docs/codigo.md#L3) que abrió la conversación sigue igual. La regla ya existe; reescribir con ella los textos viejos es trabajo aparte. ¿Lo hago?
+
+### 5 · Usuario — 2026-08-08 23:27:47
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\base\00-identidad-y-rol\reglas\ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> pero ID7 cumpele 20-meta-regla y por qué derogó ID2?
+
+**Agente** — 2026-08-08 23:29:56
+<!-- agente: 356abd2c-74d7-4a6d-83ea-1bbc04bc38d1 -->
+
+Dos respuestas, y una de ellas es que me pasé de generoso con el checklist.
+
+Dos cosas, y en la primera me equivoqué:
+
+**1 · No cumplía del todo. Ya lo corregí.**
+
+El bloque decía CUMPLE, pero dos filas no se sostenían:
+
+- **Fila 9 — una sola exigencia.** El cuerpo pedía cuatro cosas que se pueden cumplir por separado (escribir simple · explicar el término · el ejemplo solo si aclara · releer antes de entregar). Por la prueba de `M5`, eso son cuatro reglas, no una.
+- **Fila 10 — cuerpo de 1 a 4 líneas.** Eran seis frases repartidas en cuatro párrafos. No cabía.
+
+Reescribí el cuerpo: la exigencia es **una sola** —que el texto lo entienda quien no sabe del tema— y lo demás pasó a ser *cómo se consigue*, *su límite* y *su comprobación*, subordinados a ella. Quedó en cuatro líneas y no se perdió ninguno de los doce puntos que pediste. El resultado del checklist quedó reaplicado en [ID7](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md), con las filas 9 y 10 anotadas.
+
+**2 · Por qué se derogó `ID2`.**
+
+Porque ocupaba el mismo lugar diciendo lo contrario. `ID2` era *"escribe para quien lee código: preciso, técnico"*. La regla nueva es *"escribe para quien no sabe del tema"*. No es un matiz: sobre el mismo tema, una manda una cosa y la otra la opuesta.
+
+Las salidas posibles eran tres, y `M12` las ordena así:
+
+| Salida | Por qué no / sí |
+|---|---|
+| **Afinar `ID2`** | `M12` solo llama "afinar" a cambiar redacción o ejemplo. Acá cambia **qué se exige** — no aplica. |
+| **Extender `ID2`** | `M7`: extender es agregar detalle *sin contradecir*, y la extendida **sigue rigiendo**. Contradice de frente. |
+| **Derogar `ID2`** ✅ | `M7`: `deroga` = la reemplaza. `M11`: no se borra, se marca `[DEROGADA]` y se conserva el texto, porque hay commits y fases cerradas que la citan por su ID. |
+
+Reescribir `ID2` en su sitio habría sido peor: un commit viejo que cita `ID2` quería decir *"escribí técnico"*, y al leerlo hoy diría lo opuesto. Derogar deja el rastro intacto.
+
+También quité de [la sesión](historico-chat/2026-08-08-sesion-4.md) un bloque que yo había escrito a mano: el enganche ya transcribe cada respuesta con su hora, así que estaba duplicado.
+
+### 6 · Usuario — 2026-08-08 23:31:00
+> en si cumple o no?
+
+**Agente** — 2026-08-08 23:31:04
+<!-- agente: c7da36db-428e-4586-aa03-5b7f5961ea84 -->
+
+Sí. Cumple: 20 filas, 19 ✅, 0 ❌, 1 N/A.
+
+### 7 · Usuario — 2026-08-08 23:32:26
+> si cumple entonces pásele ese estándard a validadores/docs
+
+**Agente** — 2026-08-09 07:42:35
+<!-- agente: ce64d4b8-5806-4eba-8654-4a0b76a414d3 -->
+
+41 archivos, 4.735 líneas. Voy uno por uno; empiezo por el que abrió la conversación.
+
+Los 41 documentos de [validadores/docs/](validadores/docs/) pasaron por `00·ID7`. Los enlaces y las citas quedan verdes.
+
+**Qué cambió, en concreto**
+
+No fue reescribirlo todo: la documentación ya estaba bastante llana. Lo que rompía la regla eran dos cosas.
+
+1. **Las frases de apertura**, comprimidas hasta volverse ambiguas. La que abrió la conversación es el ejemplo:
+
+| Antes | Ahora |
+|---|---|
+| «Entrega, uno por uno, los archivos de código de un proyecto ya leídos y listos para revisar.» | «Abre los archivos de código del proyecto y los va pasando de a uno, con su nombre y su contenido, a los programas que los revisan.» |
+
+2. **Los términos técnicos sueltos**, que nadie explicaba nunca. Ahora cada uno se explica la primera vez que aparece en su documento, y se explica **qué es y por qué importa**, no solo cómo se llama:
+
+- *migración* → un archivo que cambia la forma de las tablas, para que el cambio se aplique igual en todas partes
+- *llave foránea sin política de borrado* → «cada factura apunta a un cliente; si borran ese cliente, hay que haber dicho antes qué pasa con sus facturas»
+- *N+1* → «con mil elementos se hacen mil consultas, una por una»
+- *lockfile* → «la lista de lo que llegó», frente a la «lista de pedidos»
+- *hook* → un programa que arranca solo cuando pasa algo
+- *huella*, *repositorio*, *commit*, *rama*, *bucle*, *linter*, *pipeline*, *JSON*, *UTF-8*, *markdown*, *épica/HU/fase*
+
+Los nombres reales del código (`archivos_versionados`, `_cmd_linter`, `severidad`) quedaron como están: son identificadores, no prosa.
+
+**Una falla que no toqué:** `pendientes/README.md` no menciona `pendientes/10-ideas.md`. Es de otra sesión y venía de antes; no la corregí para no mezclar trabajos.
+
+### 8 · Usuario — 2026-08-09 08:00:21
+> <ide_selection>The user selected the lines 32 to 32 from c:\Ing. Jose\ia\agente\validadores\comun.py:
+> Hallazgo
+>
+> This may or may not be related to the current task.</ide_selection>
+> Dónde está la regla que manda detenerse cuando al proyecto le faltan sus carpetas.
+> Cuáles carpetas?
+
+**Agente** — 2026-08-09 08:01:36
+<!-- agente: 42a6925c-2e86-47cf-9e89-36fc14144c67 -->
+
+Buena pregunta: era vago. Es **una sola**, `proyectos/`, la carpeta donde va el código. Lo corrijo.
+
+**Una sola: `proyectos/`**, la carpeta donde va el código del proyecto.
+
+Lo comprobé en el código, no lo supuse: `GATE` en [cargador.py:39](validadores/cargador.py#L39) apunta a la regla `02·F13`, y quien responde si se cumple es `instalar.cumple_f13`, que mira exactamente una cosa — si existe `proyectos/`. Que falte significa que el estándar nunca se instaló ahí.
+
+Corregido en [cargador.md](validadores/docs/cargador.md) (cuatro sitios) y en [hook_sesion.md](validadores/docs/hook_sesion.md). Además de nombrarla, ahora dice **por qué** importa que falte.
+
+### 9 · Usuario — 2026-08-09 08:03:41
+> esto no es claro :
+>
+> Con qué empiezan los nombres de lo que va completo: 00- y 01-. Se mira el comienzo de la dirección y no el nombre del archivo, porque un capítulo puede ser un archivo suelto o una carpeta entera. agregue ejemplos
+
+**Agente** — 2026-08-09 08:04:07
+<!-- agente: 81e5b4af-3cbc-48fc-8809-6c1b9f4984c8 -->
+
+Listo. La fila quedó corta y debajo va la explicación con tres casos reales:
+
+| Dirección del archivo | Cómo está guardado | ¿Empieza por `00-` o `01-`? | Resultado |
+|---|---|---|---|
+| `01-conducta.md` | archivo suelto | Sí | va completo |
+| `00-identidad-y-rol/reglas/ID7-…md` | carpeta | Sí, la dirección empieza por `00-` | va completo |
+| `13-documentacion/reglas/DOC1-…md` | carpeta | No | va solo su línea de la lista |
+
+Y el motivo, que antes estaba dicho en abstracto: en la segunda fila el **archivo** se llama `ID7-…`, que no empieza por `00-`. Lo que empieza por `00-` es la **carpeta** que lo contiene. Mirando solo el nombre del archivo, esa regla del núcleo se quedaría fuera.
+
+Está en [cargador.md](validadores/docs/cargador.md), justo debajo de la tabla de valores fijos.
+
+### 10 · Usuario — 2026-08-09 08:09:12
+> si un niño lee esto: "Los dos comienzos que marcan lo que va completo: 00- y 01-." lo entiende?
+
+**Agente** — 2026-08-09 08:09:27
+<!-- agente: cb694ea7-bb38-4bfb-ac33-ed0f4b1bee84 -->
+
+No. Falla en dos puntos: «comienzos que marcan» no es lenguaje de todos los días, y «lo que va completo» no dice completo *qué* ni frente a qué. Lo cambio.
+
+Antes / ahora:
+
+> **Antes:** Los dos comienzos que marcan lo que va completo: `00-` y `01-`.
+>
+> **Ahora:** Qué capítulos se le entregan enteros al agente: los que empiezan por `00-` y los que empiezan por `01-`. De los demás solo se le manda la lista.
+
+Ahora dice quién recibe, qué recibe entero y con qué se compara.
+
+### 11 · Usuario — 2026-08-09 08:09:57
+> de qué capítulos habla?
+
+**Agente** — 2026-08-09 08:10:30
+<!-- agente: 273b9ecc-d4d1-492d-b132-0c764c26cf8d -->
+
+De los capítulos de `base/`, que es donde viven las reglas del estándar. Están repartidas por tema y numeradas: `00 · Identidad y rol`, `01 · Conducta`, `04 · Seguridad`, `13 · Documentación`, hasta el `20`.
+
+Los `00` y `01` van enteros porque mandan siempre —quién es el agente y cómo se porta—; los demás solo cuando se toca su tema.
+
+El documento usaba la palabra «capítulo» desde la primera línea sin decir nunca qué era. Lo agregué al comienzo de [cargador.md](validadores/docs/cargador.md), y de paso puse por qué esos dos y no otros.
+
+### 12 · Usuario — 2026-08-09 08:11:04
+> osea que en base se guardan capítulos?
+
+**Agente** — 2026-08-09 08:11:14
+<!-- agente: 1eba6049-9637-4340-ac62-cd4034b1fbc2 -->
+
+Sí. `base/` es la estantería; cada cosa que hay adentro es un capítulo.
+
+Lo único que se sale de eso es el `README.md`, que es el índice de la estantería.
+
+Un capítulo está guardado de una de dos formas, según cuánto tenga adentro:
+
+| Forma | Ejemplo | Cuándo |
+|---|---|---|
+| Un archivo suelto | `01-conducta.md` | El capítulo cabe cómodo en un archivo. |
+| Una carpeta | `00-identidad-y-rol/` con `base.md` y `reglas/` | Creció, y se le da un archivo a cada regla. |
+
+Hoy hay cuatro en carpeta —`00-identidad-y-rol`, `02-flujo-de-trabajo`, `13-documentacion` y `20-meta-reglas`— y el resto en archivo suelto.
+
+### 13 · Usuario — 2026-08-09 08:13:34
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\base\README.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> pensé que en esa carpeta se almacenan las reglas del agente, de hecho el readme lo dice.
+> Que todas estás le falta describir lo que hace esa carpeta
+
+**Agente** — 2026-08-09 08:15:17
+<!-- agente: aa25d8c5-8420-43a6-a022-e7438c9c3ec1 -->
+
+El README de `base/` es una línea con un error de escritura: `# Resmen reglas creadas en base`. Tiene razón: no describe nada. Lo escribo.
+
+Tiene razón en las dos cosas, y la segunda era la de fondo: **`base/` guarda las reglas**; los capítulos son solo cómo están repartidas. Yo respondí por la forma y no por el contenido.
+
+El README decía `# Resmen reglas creadas en base` y nada más. Ahora [base/README.md](base/README.md) explica:
+
+- **Qué es la carpeta** — las reglas que el agente obedece; el usuario las escribe, el agente las cumple. Solo las que sirven a cualquier proyecto.
+- **Cómo está organizado** — capítulos por tema; cada uno es un archivo suelto o una carpeta, según cuánto tenga. Y qué es el código corto de una regla (`01·C5`, `02·F13`), con ejemplos que enlazan a la regla real.
+- **Las tres clases de capítulo** — preámbulo, capa 1 blindada, capa 2 y capa 2 opt-in, con qué puede tocar un proyecto de cada una y cuál gana si dos chocan.
+- **Los 22 capítulos**, agrupados por para qué sirven: los que se leen primero, cómo se trabaja, cómo se escribe el código, y los que se encienden solo si el proyecto los necesita.
+- **Cómo se agrega una regla**, con el enlace al procedimiento y al checklist.
+
+Enlaces y citas verdes. Sigue en pie la falla ajena de `pendientes/README.md`.

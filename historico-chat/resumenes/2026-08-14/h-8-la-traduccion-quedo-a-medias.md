@@ -14,7 +14,7 @@ Se anotan todos, resueltos y abiertos.
 
 - **Qué pasó:** la terminología del estándar estaba repartida en las reglas que usan cada palabra. Para saber qué es una especificación había que encontrar la regla que la exige; para saber qué es una señal, otra; para saber qué es una fase, un capítulo entero.
 - **Por qué importa:** era la mitad del hallazgo H-8, el que quedó abierto el 2026-08-14 por no mezclarlo con el cambio de la 10.0.0. Sin glosario, entrar al estándar exigía leerlo entero.
-- **Qué lo soluciona:** la fase [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md), que entregó [base/glosario.md](../../../base/glosario.md): 67 términos en cuatro grupos, cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Enlazado desde las tres puertas de entrada.
+- **Qué lo soluciona:** la fase [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md), que entregó [base/glosario.md](../../../base/glosario.md): 72 términos en cuatro grupos, cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Enlazado desde las tres puertas de entrada.
 - **Qué se decidió:** vive en `base/`, porque es lo que heredan los proyectos; sin número de capítulo y sin checklist, porque es anexo y no exige nada; en cuatro grupos temáticos y no en una lista alfabética, porque la lista alfabética sirve para buscar lo que ya se sabe cómo se llama.
 - **Estado:** resuelto.
 - **Responde a:** [EP-003 · HU-010](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md), sus tres criterios.
@@ -101,6 +101,15 @@ Se anotan todos, resueltos y abiertos.
 
 ## ¿Se puede cerrar la sesión?
 
-Sí, con dos cosas anotadas: falta la prueba CP-006, que es la lectura del glosario por alguien que no lo escribió, y falta el commit, que lo autoriza el usuario.
+**Todavía no.** La fase A de EP-003 · HU-010 da veredicto **No cumple** en su [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) §6, y una fase no cierra con una exigencia en "No".
+
+| Para cerrar | Estado |
+|---|---|
+| Los tres criterios de aceptación de la HU | Cumplen |
+| RNF-01, que el glosario se entienda sin saber del tema | **Falta.** CP-006 necesita que lo lea alguien que no lo escribió |
+| Los 16 pasos que el ciclo 1 dejó sin registro | Hecho el 2026-08-15: 12 corridos, 3 rehechos, 4 imposibles porque son de CP-006 |
+| Los tres documentos de cierre alineados con el veredicto | Hecho el 2026-08-15 |
+| Commit de la fase | Falta. Lo autoriza el usuario |
+| H-2, H-3 y H-4 | Abiertos, y así se quedan: están anotados con dónde se retoman |
 
 <!-- aviso: falta decir si la sesión se puede cerrar -->

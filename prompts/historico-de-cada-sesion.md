@@ -14,7 +14,7 @@ no es resumen es cada una de la cosas que escribo y lo que responde la IA
 
 debe quedar fecha hora minutos y segundos para que así quede mejor el historial de cada una de las interacciones del usuario y de la IA
 
-## De [2026-08-06-sesion-3.md](../historico-chat/2026-08-06-sesion-3.md) · 2026-08-06 16:38:32
+## De [2026-08-06-el-torniquete-del-historico.md](../historico-chat/2026-08-06-el-torniquete-del-historico.md) · 2026-08-06 16:38:32
 
 Pues no es así, porque no está teniendo en cuenta lo que el usuario decide, sino lo que usted decide. Precisamente la regla existe para que se tenga en cuenta mi decisión, y mi decisión es que, si yo digo **"hola"**, eso debe quedar como histórico.
 

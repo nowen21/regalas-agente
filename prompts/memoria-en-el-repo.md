@@ -10,7 +10,7 @@ hay que agregar a la instalacion que nada debe quedar en "C:/Users/user/.claude/
 
 toda la memoria se guarda en el <proyecto>/historico-chat/memory/
 
-## De [2026-08-07-sesion-3.md](../historico-chat/2026-08-07-sesion-3.md) · 2026-08-07 12:49:50
+## De [2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md](../historico-chat/2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md) · 2026-08-07 12:49:50
 
 es al contrario se debe guardar historico-chat/memory y allá solo se referencia que se está guardando en su propio proyecto
 

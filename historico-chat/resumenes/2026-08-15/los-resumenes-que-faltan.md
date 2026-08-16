@@ -17,30 +17,30 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Qué pasó:** hay 39 transcripciones en [historico-chat/](../../README.md) y 6 resúmenes escritos —contando este—, todos del 2026-08-13 en adelante. [`validadores/hook_resumen.py`](../../../validadores/hook_resumen.py) crea el archivo de la sesión que está corriendo; de las anteriores no se ocupa nadie.
 - **Por qué importa:** el resumen es por donde se arranca a retomar un tema. Sin él hay que releer 700 KB de transcripción — o, lo que pasa de verdad, no se retoma y el trabajo se repite.
 - **Qué lo soluciona:** escribirlos hacia atrás, de a uno, con la plantilla [plantillas/sesion.md](../../../plantillas/sesion.md), y anotar en el índice qué sesión dejó qué.
-- **Qué se decidió:** sin decidir. Esta sesión solo levantó el inventario y qué bloquea el trabajo.
-- **Estado:** abierto.
+- **Qué se decidió:** escribirlos todos, del más viejo al más nuevo. Se escribieron **los 33** en esta misma sesión, el 2026-08-16: las 35 sesiones que no son copia quedaron con su resumen, y los seis días que faltaban con su carpeta y su índice.
+- **Estado:** resuelto acá.
 - **Responde a:** EP-006, memoria de lo aprendido.
 - **Dispara:** —, no abre capacidad nueva: es escribir el contenido que falta.
-- **Orden de resolución:** 4 de 5. Va después de H-2, H-5 y H-3: sin nombre, sin criterio y sin carpeta no se puede escribir ninguno.
-- **Dónde queda:** [pendientes/31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md).
+- **Orden de resolución:** —.
+- **Dónde queda:** [resumenes/](../README.md), y el [pendiente 31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md), cerrado. Lo que esas sesiones dejaron abierto quedó junto en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
-- **Cerrado en:** —.
-- **Con qué se retoma:** ¿se escriben los 33, o solo los de las 16 sesiones que pasaron de diez mensajes?
+- **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
+- **Con qué se retoma:** —.
 
 ### H-2 · 23 sesiones no tienen tema en el nombre, y el resumen se llama por el tema
 
 - **Qué pasó:** 23 de las 39 transcripciones se llaman `AAAA-MM-DD-sesion-N.md` —una es esta—, y su línea del índice dice «sesión del 2026-08-07». El resumen vive en `resumenes/AAAA-MM-DD/«tema».md`: con `sesion-5` no hay tema que poner.
 - **Por qué importa:** un índice de resúmenes donde la mitad se llama «sesión-5» no sirve para encontrar nada, que es lo único para lo que existe.
 - **Qué lo soluciona:** renombrar las 22 viejas antes de escribir su resumen, con `python validadores/historico.py --renombrar «archivo» --tema «tema» --resumen «de qué se trató»`, que mueve el archivo, el título y la línea del índice a la vez — y el resumen con él.
-- **Qué se decidió:** sin decidir.
-- **Estado:** abierto.
+- **Qué se decidió:** se renombraron **23**, cada una con el tema que salió de leerla. Quedan tres sin tema, y las tres son copias a mano de otra sesión: ponerle nombre a un archivo que el [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) puede borrar rompe enlaces por nada.
+- **Estado:** resuelto acá.
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, la herramienta de renombrar ya existe.
-- **Orden de resolución:** 1 de 5. Va primero: el nombre del resumen sale del nombre de la sesión.
-- **Dónde queda:** [pendientes/31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md).
+- **Orden de resolución:** —.
+- **Dónde queda:** el índice de [historico-chat/](../../README.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
-- **Cerrado en:** —.
-- **Con qué se retoma:** el tema lo propone el agente leyendo cada transcripción, ¿y el usuario aprueba los 23 de una o de a uno?
+- **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
+- **Con qué se retoma:** —, salvo el nombre de las tres copias, que espera al [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
 
 ### H-3 · Faltan las carpetas por día y el índice no las lista
 
@@ -51,41 +51,41 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Estado:** abierto.
 - **Responde a:** EP-005 · HU-008, el enganche del resumen.
 - **Dispara:** —, es completar lo que ya hace [`hook_resumen.py`](../../../validadores/hook_resumen.py).
-- **Orden de resolución:** 3 de 5. Va antes de escribir los resúmenes: si no, cada uno nace fuera del índice.
+- **Orden de resolución:** 1 de 2. Va primero: cada resumen que nazca sin su línea hay que volver a buscarlo.
 - **Dónde queda:** [pendientes/32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** —.
-- **Con qué se retoma:** ¿lo escribe el enganche al crear la carpeta, o lo comprueba un validador al cerrar?
+- **Con qué se retoma:** ¿lo escribe el enganche al crear la carpeta, o lo comprueba un validador al cerrar? Los 33 de esta sesión se anotaron a mano, uno por uno.
 
-### H-4 · Dos transcripciones son la misma conversación
+### H-4 · Cinco pares de transcripciones son la misma conversación
 
-- **Qué pasó:** [2026-08-06-sesion-6.md](../../2026-08-06-sesion-6.md) y [2026-08-06-sesion-7.md](../../2026-08-06-sesion-7.md) tienen el mismo diálogo — las mismas dos preguntas sobre transcribir audio — con horas distintas por medio minuto. La `-7` no trae la marca `<!-- sesion: uuid -->`: la escribió el agente a mano encima de la que ya había puesto el enganche.
-- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), y confirma lo que ese pendiente dejó preguntado: sí le pasó a otras sesiones. Dos archivos de una sola sesión son dos resúmenes de algo que pasó una vez.
+- **Qué pasó:** [2026-08-06-no-se-puede-transcribir-audio.md](../../2026-08-06-no-se-puede-transcribir-audio.md) —que entonces se llamaba `sesion-6`— y `2026-08-06-sesion-7.md` tienen el mismo diálogo — las mismas dos preguntas sobre transcribir audio — con horas distintas por medio minuto. La `-7` no trae la marca `<!-- sesion: uuid -->`: la escribió el agente a mano encima de la que ya había puesto el enganche.
+- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), y responde lo que ese pendiente dejó preguntado: sí le pasó a otras sesiones. Al escribir los 33 resúmenes aparecieron **cuatro copias en total** —dos el 2026-08-06 y dos el 2026-08-07—, más una quinta que el propio agente borró en caliente el 07. En dos de ellas las horas están inventadas: la del usuario y la del agente, idénticas al segundo.
 - **Qué lo soluciona:** revisar el histórico completo buscando transcripciones sin la marca de sesión, y decidir cuál queda.
-- **Qué se decidió:** sin decidir. No se borró nada.
-- **Estado:** abierto.
+- **Qué se decidió:** el usuario mandó borrarlas: *«si es copia bórrelo»*. Las cuatro salieron del repositorio el 2026-08-16 y siguen en el historial de git. Quedan 35 transcripciones y 35 resúmenes, uno por sesión.
+- **Estado:** resuelto acá.
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, cae dentro del pendiente 29, que ya está escrito.
-- **Orden de resolución:** 5 de 5. Va último: son dos archivos de una sesión de dos mensajes, no bloquea nada.
-- **Dónde queda:** [pendientes/29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), donde se anota lo encontrado.
+- **Orden de resolución:** —.
+- **Dónde queda:** [pendientes/29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), que sigue abierto por su otra mitad: la transcripción del 2026-08-15 con 61 encabezados para 30 mensajes.
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
-- **Cerrado en:** —.
-- **Con qué se retoma:** ¿se borra la copia escrita a mano, o se deja porque tiene la sección «Abierto» que la otra no tiene?
+- **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
+- **Con qué se retoma:** —.
 
 ### H-5 · Hacia atrás, «Responde a» y «Dispara» no tienen a qué apuntar
 
 - **Qué pasó:** los doce campos de [plantillas/sesion.md](../../../plantillas/sesion.md) suponen que el hallazgo se escribe cuando aparece. Las épicas y las historias nacieron el 2026-08-13: ninguna sesión anterior puede citar una épica que todavía no existía, y «estado» y «cerrado en» hay que buscarlos en sesiones posteriores, no en la que se está resumiendo.
 - **Por qué importa:** sin criterio, cada resumen viejo se llena distinto y el conjunto no se puede leer como uno solo.
 - **Qué lo soluciona:** fijar antes de arrancar qué se hace con esos cuatro campos en un resumen escrito hacia atrás.
-- **Qué se decidió:** sin decidir. Es la pregunta que esta sesión deja sobre la mesa.
-- **Estado:** abierto.
+- **Qué se decidió:** se fijó el criterio y se aplicó a los 33: «responde a» y «dispara» van en `—` para todo lo anterior al 2026-08-13, y cada resumen lo dice en una nota al principio; «estado» y «cerrado en» sí se buscan hacia adelante, y un hallazgo cerrado tres días después queda «resuelto, pero en otra sesión»; «dónde queda» apunta a donde vive hoy, no a donde vivía entonces.
+- **Estado:** resuelto acá.
 - **Responde a:** EP-003, documentos modelo y procedimientos.
 - **Dispara:** —, si se decide que la plantilla lo diga, es un cambio de plantilla, no una historia.
-- **Orden de resolución:** 2 de 5. Va después del nombre y antes de escribir: es el criterio con el que se escriben los 34.
-- **Dónde queda:** [pendientes/31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md).
+- **Orden de resolución:** —.
+- **Dónde queda:** el [pendiente 31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md), donde quedaron escritos los cuatro supuestos.
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
-- **Cerrado en:** —.
-- **Con qué se retoma:** ¿«responde a» y «dispara» se dejan en `—` para todo lo anterior al 2026-08-13, o se mapea cada hallazgo a la épica que hoy le correspondería?
+- **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
+- **Con qué se retoma:** —.
 
 ---
 
@@ -98,10 +98,10 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ ninguno se resolvió acá: esta sesión levantó el inventario |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md) y [32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md); H-4 va al [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), que ya estaba |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-5: los 33 resúmenes escritos, 23 sesiones renombradas, las 4 copias borradas y el criterio fijado |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia nueva |
-| Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario y subido en el commit de esta sesión |
+| Lo que se hizo está aprobado y guardado | ☐ el inventario se subió en `c08c4ea`; los 33 resúmenes siguen sin commitear |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

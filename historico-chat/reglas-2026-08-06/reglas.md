@@ -14,13 +14,13 @@
 |---|---|---|
 | [2026-08-06-historico-chat.md](../2026-08-06-historico-chat.md) | Se crea la carpeta del histórico | Sí |
 | [2026-08-06-meta-reglas-2.md](../2026-08-06-meta-reglas-2.md) | Nace la regla de reglas (`M1`–`M13`) | Sí |
-| [2026-08-06-sesion-3.md](../2026-08-06-sesion-3.md) | El histórico no se escribía · el torniquete · el checklist de instalación | Sí |
-| [2026-08-06-sesion-4.md](../2026-08-06-sesion-4.md) | Solo un saludo | Sí (sin material) |
-| [2026-08-06-sesion-5.md](../2026-08-06-sesion-5.md) | Auditoría de las meta-reglas · anatomía de una regla · capítulo 20 | Sí |
-| [2026-08-06-sesion-6.md](../2026-08-06-sesion-6.md) | Audio: el agente no oye | Sí (sin material) |
-| [2026-08-06-sesion-7.md](../2026-08-06-sesion-7.md) | Duplicado del anterior, sin marca de sesión | Sí (sin material) |
-| [2026-08-06-sesion-8.md](../2026-08-06-sesion-8.md) | Transcripción de imágenes del diplomado + dos intercambios sobre `F0` | Parcial |
-| [2026-08-06-sesion-9.md](../2026-08-06-sesion-9.md) | Carpeta `diplomado-ia` | **Excluida** (lo pidió el usuario) |
+| [2026-08-06-el-torniquete-del-historico.md](../2026-08-06-el-torniquete-del-historico.md) | El histórico no se escribía · el torniquete · el checklist de instalación | Sí |
+| [2026-08-06-prueba-del-torniquete.md](../2026-08-06-prueba-del-torniquete.md) | Solo un saludo | Sí (sin material) |
+| [2026-08-06-la-anatomia-de-la-regla.md](../2026-08-06-la-anatomia-de-la-regla.md) | Auditoría de las meta-reglas · anatomía de una regla · capítulo 20 | Sí |
+| [2026-08-06-no-se-puede-transcribir-audio.md](../2026-08-06-no-se-puede-transcribir-audio.md) | Audio: el agente no oye | Sí (sin material) |
+| `2026-08-06-sesion-7.md` | Duplicado del anterior, sin marca de sesión | Sí (sin material) |
+| [2026-08-06-la-clase-del-diplomado-en-el-repositorio.md](../2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) | Transcripción de imágenes del diplomado + dos intercambios sobre `F0` | Parcial |
+| `2026-08-06-sesion-9.md` | Carpeta `diplomado-ia` | **Excluida** (lo pidió el usuario) |
 
 De la sesión 8 se toma solo lo que es del estándar: los intercambios sobre `F0` y el criterio con que se transcribieron las imágenes. El contenido del diplomado no se analiza.
 
@@ -83,7 +83,7 @@ Tres apartados de su ejemplo —*qué problema resuelve*, *cuándo aplica* y *un
 
 ### P1 · `M14` — La regla escrita es la decisión del usuario, no un contexto que se pondera
 
-**De dónde sale.** [Sesión 3](../2026-08-06-sesion-3.md), intercambios 7 y 8. El usuario, literal:
+**De dónde sale.** [Sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambios 7 y 8. El usuario, literal:
 
 > *"Pues no es así, porque no está teniendo en cuenta lo que el usuario decide, sino lo que usted decide. Precisamente la regla existe para que se tenga en cuenta mi decisión, y mi decisión es que, si yo digo **hola**, eso debe quedar como histórico."*
 
@@ -128,7 +128,7 @@ CORRECTO:   llega "hola" → abro el histórico → respondo el saludo
 
 ### P2 · `M15` — Ante el propio incumplimiento, cumplir la regla; no proponer cambiarla
 
-**De dónde sale.** [Sesión 3](../2026-08-06-sesion-3.md), intercambio 7. El usuario pregunta *"si la regla es clara ¿qué le permite tener esa autonomía de cambiarla?"*, y el agente:
+**De dónde sale.** [Sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambio 7. El usuario pregunta *"si la regla es clara ¿qué le permite tener esa autonomía de cambiarla?"*, y el agente:
 
 > *"el paso siguiente —proponer reescribir el disparador— fue peor: acababa de incumplir una regla y lo primero que ofrecí fue cambiarla, que es mover la culpa de mí a la regla. […] Retiro la propuesta."*
 
@@ -167,7 +167,7 @@ CORRECTO:   no escribí el histórico → lo escribo ahora → si creo que la re
 
 ### P3 · `M16` — Toda regla de cumplimiento obligatorio declara quién la ejecuta
 
-**De dónde sale.** [Sesión 3](../2026-08-06-sesion-3.md), intercambios 11 a 13. La imagen que cerró la discusión:
+**De dónde sale.** [Sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambios 11 a 13. La imagen que cerró la discusión:
 
 > *"Un letrero en la pared dice 'antes de atender, escriba el acta'. El empleado lo lee todos los días. Entra un cliente saludando, el empleado saluda y atiende — y el acta no se escribió. El letrero informa; no mueve la mano. Un torniquete es otra cosa: no informa, bloquea."*
 
@@ -212,7 +212,7 @@ CORRECTO:   la regla escrita + el enganche que la escribe sin intervención del 
 
 ### P4 · Mejora a `M10` — Un borrador no se enlaza ni se versiona hasta que el usuario lo adopta
 
-**De dónde sale.** [Sesión 5](../2026-08-06-sesion-5.md). El agente escribió el anexo pedido y de paso enlazó desde `M5`, subió `VERSION` y agregó entrada al `CHANGELOG`. El usuario:
+**De dónde sale.** [Sesión 5](../2026-08-06-la-anatomia-de-la-regla.md). El agente escribió el anexo pedido y de paso enlazó desde `M5`, subió `VERSION` y agregó entrada al `CHANGELOG`. El usuario:
 
 > *"espere todavía no le he dicho si se aplica la estoy validando"*
 
@@ -259,7 +259,7 @@ CORRECTO:   escribo el anexo, lo dejo suelto en su carpeta y aviso: "el enlace,
 
 ### P5 · `DOC17` — Toda sesión se registra en `historico-chat/`
 
-**De dónde sale.** Las tres primeras sesiones del día. En [sesión 3](../2026-08-06-sesion-3.md), intercambio 16, el agente identifica el hueco exacto:
+**De dónde sale.** Las tres primeras sesiones del día. En [sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambio 16, el agente identifica el hueco exacto:
 
 > *"**No hay regla que lo pida en un proyecto.** La obligación de registrar la sesión está en el `CLAUDE.md` de este repo, que no viaja. En `base/00-meta-reglas.md`, `historico-chat/` solo aparece en la tabla de dónde va cada cosa. Un proyecto que hereda el estándar no tiene la carpeta ni la regla."*
 
@@ -314,7 +314,7 @@ No lleva excepción: los proyectos cuyo chat maneja datos sensibles simplemente 
 
 > *"Los bloques 1–7 quedan como 'hora no registrada': esas horas no se guardaron y ponerlas de memoria sería inventarlas."*
 
-[Sesión 8](../2026-08-06-sesion-8.md), intercambios 6 y 10 — sobre cifras leídas de un gráfico:
+[Sesión 8](../2026-08-06-la-clase-del-diplomado-en-el-repositorio.md), intercambios 6 y 10 — sobre cifras leídas de un gráfico:
 
 > *"Las cifras de 2025 no vienen rotuladas en el gráfico — las leí sobre el eje, así que son aproximadas y lo dejé dicho en el archivo."*
 
@@ -356,7 +356,7 @@ CORRECTO:   "hora no registrada"  ·  "≈68 % (leído sobre el eje, aproximado)
 
 ### P7 · Mejora a `M4` — El número es de catálogo, no de orden de ejecución ni de lectura
 
-**De dónde sale.** [Sesión 5](../2026-08-06-sesion-5.md). El usuario pidió *"00-meta-reglas cambie a 20"*, que es lo correcto según `M2` (los capítulos se numeran en el orden en que nacen). Al hacerlo apareció la contradicción: el cargador arma el contexto en orden alfabético, así que el capítulo 20 se carga **último** — pero su propio encabezado dice *"Se lee **antes** que las reglas que gobierna"*.
+**De dónde sale.** [Sesión 5](../2026-08-06-la-anatomia-de-la-regla.md). El usuario pidió *"00-meta-reglas cambie a 20"*, que es lo correcto según `M2` (los capítulos se numeran en el orden en que nacen). Al hacerlo apareció la contradicción: el cargador arma el contexto en orden alfabético, así que el capítulo 20 se carga **último** — pero su propio encabezado dice *"Se lee **antes** que las reglas que gobierna"*.
 
 No es un caso aislado: `F13` ya vive con lo mismo, y lo resolvió declarándolo en su encabezado — *"aunque su ID sea F13, esta regla corre primero […] El número es solo un identificador de catálogo, no orden de ejecución"*.
 
@@ -399,7 +399,7 @@ CORRECTO:   "aunque su ID sea F13, esta regla corre primero: el número es de ca
 
 ### P8 · Mejora a `M5` — El texto de la regla es para el agente; su explicación, para una persona
 
-**De dónde sale.** [Sesión 5](../2026-08-06-sesion-5.md). El usuario lo planteó y pidió corrección:
+**De dónde sale.** [Sesión 5](../2026-08-06-la-anatomia-de-la-regla.md). El usuario lo planteó y pidió corrección:
 
 > *"Las explicaciones sobre la estructura y la base deben estar redactadas de forma que cualquier persona pueda entenderlas […] La explicación está dirigida a las personas, mientras que la estructura está diseñada para que el agente la entienda e interprete correctamente. Eso es lo que entiendo; si no es así, corríjame."*
 
@@ -436,7 +436,7 @@ La corrección acordada: las **explicaciones** van en lenguaje llano; el **texto
 
 ### P9 · Mejora a `M4` — Legalizar el sub-ID
 
-**De dónde sale.** [Sesión 5](../2026-08-06-sesion-5.md), la auditoría del primer intercambio. `M4` exige el formato `<PREFIJO><n>`, pero el estándar usa `F4.1`–`F4.5` y `F12.1`–`F12.13` en todas partes: los citan `13-documentacion.md`, `validadores/reglas-validables.md` y `validadores/fases.py`.
+**De dónde sale.** [Sesión 5](../2026-08-06-la-anatomia-de-la-regla.md), la auditoría del primer intercambio. `M4` exige el formato `<PREFIJO><n>`, pero el estándar usa `F4.1`–`F4.5` y `F12.1`–`F12.13` en todas partes: los citan `13-documentacion.md`, `validadores/reglas-validables.md` y `validadores/fases.py`.
 
 **Qué exigiría.** Reconocer el sub-ID como formato válido cuando una regla se subdivide, con la misma condición que el ID: no se renumera y no se reutiliza.
 
@@ -472,7 +472,7 @@ Va en `M4` y no aparte porque es el mismo tema —qué forma tiene un identifica
 
 ### P10 · Mejora a `C7` — Si el usuario no responde y el trabajo sigue, el supuesto se declara aparte
 
-**De dónde sale.** [Sesión 3](../2026-08-06-sesion-3.md), intercambio 26. El agente hizo tres preguntas, recibió respuesta a una, y siguió:
+**De dónde sale.** [Sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambio 26. El agente hizo tres preguntas, recibió respuesta a una, y siguió:
 
 > *"**Lo que decidí** (no me contestó la 2 y la 3, así que asumí y lo digo claro): la marca va en `.agente/INSTALACION-INCOMPLETA.md` […] Se revisa en cada mensaje suyo […] **Avisa, no bloquea.**"*
 
@@ -507,7 +507,7 @@ decisión del usuario.
 
 ### P11 · Una herramienta no está terminada hasta que se instala sola — **y no va en `base/`**
 
-**De dónde sale.** [Sesión 3](../2026-08-06-sesion-3.md), intercambios 17 y 18. El usuario, dos veces:
+**De dónde sale.** [Sesión 3](../2026-08-06-el-torniquete-del-historico.md), intercambios 17 y 18. El usuario, dos veces:
 
 > *"la idea es que toda erramienta que se cree quede replicable a los proyectos que usen el agente sin que se tenga que hacer mecánico"*
 >
@@ -661,7 +661,7 @@ No son candidatas a regla: son incumplimientos de reglas que ya existen. Se list
 | D5 | El capítulo 20 dice *"Se lee antes que las reglas que gobierna"*, pero con el número 20 el cargador lo pone último | Contradicción interna → la resuelve **P7** |
 | D6 | El ejemplo de derogación de `M11` usa `G4`, que existe y **rige**. Leído rápido parece que `G4` está derogada | Riesgo de confusión; `M11` |
 | D7 | `02-flujo-de-trabajo` (F0–F13 + 5 sub-reglas) y `13-documentacion` (DOC1–DOC16) pasan el umbral de ~15 reglas | Higiene del capítulo 20 (guía, no exigencia) |
-| D8 | [`2026-08-06-sesion-7.md`](../2026-08-06-sesion-7.md) no tiene la marca `<!-- sesion: … -->` y duplica el contenido de la sesión 6. [`2026-08-06-sesion-4.md`](../2026-08-06-sesion-4.md) tiene 270 bytes | Defecto del enganche del histórico, no del estándar |
+| D8 | ``2026-08-06-sesion-7.md`` no tiene la marca `<!-- sesion: … -->` y duplica el contenido de la sesión 6. [`2026-08-06-prueba-del-torniquete.md`](../2026-08-06-prueba-del-torniquete.md) tiene 270 bytes | Defecto del enganche del histórico, no del estándar |
 
 **El más caro es D4 + D3**, y son el mismo problema: nada comprueba que `base/` cumpla sus propias meta-reglas, así que los desvíos solo aparecen cuando alguien los busca a mano — como hoy. Un validador que corra las meta-reglas sobre `base/` (formato del encabezado, prefijo exclusivo, marcas permitidas, IDs citados que existen, capítulo presente en `reglas-validables.md`) convierte esta auditoría en automática. Es, además, **P3 aplicado a las propias meta-reglas**: hoy son letrero, no torniquete.
 

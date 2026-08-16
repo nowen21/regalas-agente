@@ -2,7 +2,7 @@
 
 Lo que pidió el usuario, con sus palabras. Rescatado de las sesiones del histórico.
 
-## De [2026-08-07-sesion-3.md](../historico-chat/2026-08-07-sesion-3.md) · 2026-08-07 08:28:31
+## De [2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md](../historico-chat/2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md) · 2026-08-07 08:28:31
 
 Genere un documento en formato **Markdown (.md)** que contenga el análisis de todas las reglas existentes en el agente, tomando como referencia las reglas definidas en **`20-meta-reglas`**.
 ## Objetivo
