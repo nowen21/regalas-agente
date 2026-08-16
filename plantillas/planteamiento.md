@@ -1,15 +1,15 @@
-# Brief — «Nombre del módulo / épica»   ·   `[CAPA 3]`
+# Planteamiento — «Nombre del módulo / épica»   ·   `[CAPA 3]`
 
-> **Qué es este archivo.** El **brief de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo [`02·F0`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)). Es el **insumo** del agente, no la especificación ni una orden de entregar código.
+> **Qué es este archivo.** El **planteamiento de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo [`02·F0`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)). Es el **insumo** del agente, no la especificación ni una orden de entregar código.
 >
 > **Cómo usarlo.**
-> 1. Copiar esta plantilla al proyecto como `prompts/<slug>-brief.md` (un brief por módulo/épica).
+> 1. Copiar esta plantilla al proyecto como `prompts/<slug>-planteamiento.md` (un planteamiento por módulo/épica).
 > 2. Reemplazar los `«…»` y borrar las secciones que no apliquen.
 > 3. Borrar este recuadro.
 >
-> **Regla de oro.** El brief responde **QUÉ se necesita y QUÉ no se negocia**. El **CÓMO y el CUÁNDO** (alcance, HU, especificación, plan, orden, entrega) los pone el estándar. En cuanto un brief dice "dame el código de X", dejó de ser brief y choca con el flujo ([`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) sin especificación no hay código · [`02·F4`](../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) sin plan aprobado no hay código).
+> **Regla de oro.** El planteamiento responde **QUÉ se necesita y QUÉ no se negocia**. El **CÓMO y el CUÁNDO** (alcance, HU, especificación, plan, orden, entrega) los pone el estándar. En cuanto un planteamiento dice "dame el código de X", dejó de ser planteamiento y choca con el flujo ([`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) sin especificación no hay código · [`02·F4`](../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) sin plan aprobado no hay código).
 
-**Encuadre para el agente:** este documento es el brief de entrada. El agente sigue el flujo del estándar — análisis ([`02·F1`](../base/02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md)) → alcance (`proponer-alcance`) → épica/HU ([`13·DOC15`](../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)) → especificación ([`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → plan aprobado ([`02·F4`](../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → implementación. **No generar código hasta que el plan esté aprobado.**
+**Encuadre para el agente:** este documento es el planteamiento de entrada. El agente sigue el flujo del estándar — análisis ([`02·F1`](../base/02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md)) → alcance (`proponer-alcance`) → épica/HU ([`13·DOC15`](../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)) → especificación ([`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)) → plan aprobado ([`02·F4`](../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → implementación. **No generar código hasta que el plan esté aprobado.**
 
 ---
 
@@ -72,7 +72,7 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 ## 10. Épicas derivadas
 
-> Trazabilidad hacia abajo: se completa **a medida** que el brief se descompone en épicas ([`02·F0`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) paso 4). Normalmente **1**; un brief grande puede dar varias. Cada épica apunta de vuelta a este brief (`epica.md §1`).
+> Trazabilidad hacia abajo: se completa **a medida** que el planteamiento se descompone en épicas ([`02·F0`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) paso 4). Normalmente **1**; un planteamiento grande puede dar varias. Cada épica apunta de vuelta a este planteamiento (`epica.md §1`).
 
 | Épica | Título | Estado |
 |---|---|---|
@@ -80,4 +80,4 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 ---
 
-> **No incluir en un brief** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior…" (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el brief se convirtió en orden y va a chocar con el flujo.
+> **No incluir en un planteamiento** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior…" (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el planteamiento se convirtió en orden y va a chocar con el flujo.

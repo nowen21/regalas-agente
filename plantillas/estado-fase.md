@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
-| **Brief / Épica / HU** | «punteros» |
+| **Planteamiento / Épica / HU** | «punteros» |
 | **Última actualización** | AAAA-MM-DD |
 
 ---

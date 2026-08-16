@@ -105,7 +105,7 @@ Comprobable: `validadores/validar.py commit` (regla [`01·C8`](01-conducta.md#c8
 
 Lo que pertenece a una historia de usuario (su documento, sus fases, su código) se guarda en un commit que **no toca otra historia**, y lo que todavía no tiene su historia escrita no se sube: espera a tenerla.
 Concreta a [`G1`](#g1--commits-atómicos-un-solo-propósito), que pide un propósito por commit: acá el propósito es la HU ([`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)).
-Excepción: lo que no es de ninguna HU y una HU necesita para no citar lo que no está (el brief, el documento de su épica) sube con la primera que lo necesite.
+Excepción: lo que no es de ninguna HU y una HU necesita para no citar lo que no está (el planteamiento, el documento de su épica) sube con la primera que lo necesite.
 
 ```
 INCORRECTO: un commit con HU-002, HU-003 y las épicas que todavía no

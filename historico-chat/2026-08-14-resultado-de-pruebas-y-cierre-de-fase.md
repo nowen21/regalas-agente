@@ -281,7 +281,7 @@ Resumen de la sesión, que ahora vive en dos archivos porque cruzó la medianoch
 
 **Lo que se construyó** (partiendo del supuesto de que no existe nada):
 
-- El [brief.md](brief.md) del agente y las **siete épicas** que salen de él.
+- El [planteamiento.md](planteamiento.md) del agente y las **siete épicas** que salen de él.
 - Las **ocho HU de EP-001**, y para HU-001 su **fase A** con plan de trabajo, plan de pruebas, resultado de pruebas y estado de fase.
 
 **Lo que cambió en el estándar**, y por qué:

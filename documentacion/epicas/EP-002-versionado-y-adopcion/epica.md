@@ -5,7 +5,7 @@
 | Campo | Valor |
 |---|---|
 | **ID** | EP-002 |
-| **Brief de origen** | [brief.md](../../../brief.md) |
+| **Brief de origen** | [planteamiento.md](../../../planteamiento.md) |
 | **Iniciativa** | Que una IA que programa trabaje siempre igual |
 | **Producto** | Estándar de agente para desarrollo de software |
 | **Tipo** | Técnica (habilitadora) |

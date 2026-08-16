@@ -70,7 +70,7 @@ agente/
 │
 ├── 🟦 plantillas/ .................... 23 MOLDES DE DOCUMENTO
 │   ├── CLAUDE.md.plantilla ........... el CLAUDE.md que recibe cada proyecto
-│   ├── brief.md · epica.md · HU.md · fase.md · estado-fase.md
+│   ├── planteamiento.md · epica.md · HU.md · fase.md · estado-fase.md
 │   ├── planes/
 │   │   ├── trabajo.md ................ plan de trabajo (las 13 preguntas)
 │   │   └── pruebas.md

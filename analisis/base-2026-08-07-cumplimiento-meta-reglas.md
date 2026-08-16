@@ -559,7 +559,7 @@ Se recomienda la primera y **escribirla en `M2`**, para que deje de figurar como
 
 `00-identidad-y-rol.md` (Preámbulo) y `00-nucleo-blindado.md` (Capa 1) comparten el `00`. `M1` los separa por capa, así que la convivencia es intencional, pero `M2` no la contempla y el efecto colateral es real: **`00-identidad-y-rol.md` no tiene ninguna regla con ID** (0 encabezados `##`) y sin embargo `F0` lo cita dos veces en la columna *"Dónde está la regla"* de su tabla de pasos (pasos 2 y 3). Se cita como fuente de regla algo que no tiene reglas citables.
 
-En la misma columna, `F0` cita como "regla" a `plantillas/brief.md`, `skill analizar-proyecto` y `skill proponer-alcance`. Ninguno es regla con ID.
+En la misma columna, `F0` cita como "regla" a `plantillas/planteamiento.md`, `skill analizar-proyecto` y `skill proponer-alcance`. Ninguno es regla con ID.
 
 **Recomendación.** Dos cosas pequeñas: (a) `M2` reconoce que el preámbulo no consume número de capítulo (o se le da uno propio), (b) `F0` renombra la columna a *"Dónde se define"* y, para los pasos 2 y 3, se crean reglas con ID donde hoy hay prosa — o se acepta que esos pasos los gobiernan las skills y se dice así.
 

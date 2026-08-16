@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **ID** | EP-000 |
-| **Brief de origen** | `prompts/«slug»-brief.md`, del paso 0 del flujo |
+| **Planteamiento de origen** | `prompts/«slug»-planteamiento.md`, del paso 0 del flujo |
 | **Iniciativa / Objetivo estratégico** | «Iniciativa padre o OKR» |
 | **Producto / Sistema** | «Sistema al que pertenece» |
 | **Tipo** | Negocio / Técnica (habilitadora) / Cumplimiento |

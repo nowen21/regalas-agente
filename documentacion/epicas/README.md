@@ -1,6 +1,6 @@
 # Épicas
 
-Contenido inmediato de esta carpeta. Todas nacen de [brief.md](../../brief.md).
+Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../planteamiento.md).
 
 | Épica | De qué se trata | Estado |
 |---|---|---|

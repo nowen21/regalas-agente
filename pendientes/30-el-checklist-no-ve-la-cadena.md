@@ -10,14 +10,14 @@ Resultado: un proyecto puede tener código commiteado, `prompts/` sin un solo ar
 
 Que el checklist reporte como **pendiente** que la cadena esté vacía. Como mínimo:
 
-- `prompts/` sin ningún `<slug>-brief.md`.
+- `prompts/` sin ningún `<slug>-planteamiento.md`.
 - Código de proyecto en `proyectos/` con `documentacion/epicas/` vacía.
 
 No es un componente que falte instalar, así que probablemente no va como los trece actuales: es una comprobación de proceso sobre un proyecto que ya está completo. Si el checklist solo admite componentes, el sitio puede ser el validador de flujo del pendiente [01](01-validadores-de-codigo-de-proyecto.md), que es el que ya cubre las puertas de flujo.
 
 ## Lo que NO se propone
 
-**Que el instalador deje el brief.** No puede: el brief lo escribe el agente con lo que el usuario quiere (`base/glosario.md`), y el instalador no pregunta. Copiar `plantillas/brief.md` con los marcadores sin llenar sería peor que no dejar nada — parecería un brief y no lo es, y el checklist lo daría por cumplido.
+**Que el instalador deje el brief.** No puede: el brief lo escribe el agente con lo que el usuario quiere (`base/glosario.md`), y el instalador no pregunta. Copiar `plantillas/planteamiento.md` con los marcadores sin llenar sería peor que no dejar nada — parecería un brief y no lo es, y el checklist lo daría por cumplido.
 
 Lo que falta no es dejarlo puesto: es **decir que falta**.
 

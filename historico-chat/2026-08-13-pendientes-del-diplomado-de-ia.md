@@ -55,7 +55,7 @@ Subido.
 
 Tres cosas que conviene que sepa:
 
-- **Staged a mano.** El árbol tenía trabajo de otra sesión sin commitear (`CHANGELOG`, `VERSION`, `plantillas/HU.md`, `documentacion/`, `brief.md`, `prompts/`). No lo toqué. En `historico-chat/README.md` había dos líneas nuevas, la mía y la de la otra sesión; subí solo la mía, porque su archivo todavía no está en git y el índice habría quedado apuntando a nada.
+- **Staged a mano.** El árbol tenía trabajo de otra sesión sin commitear (`CHANGELOG`, `VERSION`, `plantillas/HU.md`, `documentacion/`, `planteamiento.md`, `prompts/`). No lo toqué. En `historico-chat/README.md` había dos líneas nuevas, la mía y la de la otra sesión; subí solo la mía, porque su archivo todavía no está en git y el índice habría quedado apuntando a nada.
 - **El push arrastró tres commits viejos** (`543869e`, `88bfe60`, `0e7d9a9`) que estaban hechos y sin publicar. Eran suyos, no de esta sesión.
 - Los enganches de commit pasaron: `0 fallas` en versionado y en el mensaje.
 
@@ -89,7 +89,7 @@ Subí EP-001 en ocho commits, uno por HU: [`31f2434`](https://github.com/nowen21
 
 **Dos consecuencias de dejarlas fuera**, para que las sepa y no lo descubra el validador:
 
-- [brief.md](brief.md#L93-L98) enlaza a las seis épicas que no subieron. Seis enlaces rotos hasta que suban.
+- [planteamiento.md](planteamiento.md#L93-L98) enlaza a las seis épicas que no subieron. Seis enlaces rotos hasta que suban.
 - Los planes de la fase de HU-001 citan `EP-004` y `EP-006` con enlace ([plan_pruebas.md:30](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/plan_pruebas.md#L30), [estado-fase.md:44](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/estado-fase.md#L44)). Dos más. Se cierran solos cuando esas épicas suban con sus HU.
 
 **La regla**, escrita en [base/09-git.md](base/09-git.md) como `G9`, que es el capítulo dueño de los commits:

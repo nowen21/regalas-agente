@@ -341,3 +341,19 @@ Dos cosas para vos: **el `push`** (hay commits de otras sesiones por delante, as
 
 ### 15 · Usuario — 2026-08-16 10:19:11
 > haga commit para todo porque hay muchos archivos sin subir
+
+**Agente** — 2026-08-16 10:20:06
+<!-- agente: e2019f3a-63bf-441e-a4b4-6e7544106270 -->
+
+**El árbol quedó limpio: 0 archivos sin guardar.** Commit `b279c35`, 49 archivos.
+
+Lo que entró, que es trabajo de otras sesiones:
+
+- **Cinco validadores nuevos** — `metareglas`, `estructura`, `entidades`, `cruces`, `declaracion` — más ajustes en `comun`, `enlaces`, `esquema` y `flujo`.
+- **La fase A de EP-003 · HU-010** completa: su resultado de pruebas, su estado y su cierre.
+- El glosario y `09-git`, el brief y su plantilla, el documento modelo de la especificación.
+- Los pendientes 21, 30 y 34, la carpeta `prompts/analisis`, dos recuerdos y tres transcripciones que estaban a medio escribir.
+
+**La advertencia que ya te había hecho, ahora es un hecho:** al ir todo junto, las entradas del `CHANGELOG` de varias sesiones caen en el mismo movimiento, así que **ningún commit corresponde a un salto de versión**. Para saber qué cambio trajo qué versión hay que leer el `CHANGELOG`, no el historial. Lo dejé escrito en el cuerpo del commit, junto con el inventario de lo que entró — no un relato de por qué se hizo, porque eso no lo hice yo.
+
+Cuatro commits en total y ninguno publicado. El `push` sigue siendo tuyo.

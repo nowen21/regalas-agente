@@ -351,7 +351,7 @@ No. La plantilla es [plantillas/plantilla-spec-modulo.md](plantillas/plantilla-s
 [documentacion/documentos-modelo/spec.md](documentacion/documentos-modelo/spec.md) es el documento ya llenado con ella, para este módulo.
 
 ### 33 · Usuario — 2026-08-14 17:59:49
-> no entiendo la diferencia entre plantilla-spec-modulo y brief.md
+> no entiendo la diferencia entre plantilla-spec-modulo y planteamiento.md
 
 **Agente** — 2026-08-14 17:59:56
 <!-- agente: 81cba167-5bd4-49c4-be01-2704134dcc42 -->
@@ -1525,7 +1525,7 @@ Las tres reglas que la plantilla nombra están enlazadas: `20·M15`, `13·DOC5` 
 
 Tenía razón: 34 citas más sin enlazar, `DOC19` a `DOC22` sueltas en los documentos de esta sesión. Ya quedaron.
 
-Y hay algo más grande detrás, que le señalo en vez de arreglarlo por mi cuenta: **las plantillas del estándar tienen el mismo incumplimiento**. `brief.md`, `funcionalidad-implementada.md`, `planes/trabajo.md`, `catalogo-modulos.md` y varias más citan `F4`, `DOC5`, `F17`, `DOC13` sin enlace, y sin el prefijo del capítulo.
+Y hay algo más grande detrás, que le señalo en vez de arreglarlo por mi cuenta: **las plantillas del estándar tienen el mismo incumplimiento**. `planteamiento.md`, `funcionalidad-implementada.md`, `planes/trabajo.md`, `catalogo-modulos.md` y varias más citan `F4`, `DOC5`, `F17`, `DOC13` sin enlace, y sin el prefijo del capítulo.
 
 Es la misma familia del [pendiente 18](pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), que cuenta 354 enlaces que incumplen `DOC14`. ¿Lo anoto como pendiente aparte, o lo sumo a ese?
 

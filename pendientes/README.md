@@ -88,14 +88,18 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
-### Lo que dejó un proyecto real (30, 34)
+### Lo que dejó un proyecto real (30, 34–36)
 
 Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código. Es la primera vez que un pendiente nace de un proyecto ajeno al estándar y no de trabajar el estándar mismo — que es justamente lo que el [pendiente 01](01-validadores-de-codigo-de-proyecto.md) decía que hacía falta.
 
-| # | Pendiente | Qué resuelve |
-|---|---|---|
-| 30 | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. |
-| 34 | [Las plantillas enlazan una carpeta `base/` que el proyecto no tiene](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) | Los 77 enlaces `../base/…` de las plantillas nacen rotos al copiarse dentro de un proyecto. El marcador `«RUTA-ESTANDAR»` ya existe y los arregla. |
+**Los reporta el proyecto y los corrige el estándar.** Cada uno nombra su proyecto de origen y tiene allá un pendiente de seguimiento que sigue abierto: **al cerrar uno de estos hay que avisarle al proyecto**, o se queda esperando para siempre.
+
+| # | Pendiente | Origen | Qué resuelve |
+|---|---|---|---|
+| 30 | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. |
+| 34 | [Las plantillas enlazan una carpeta `base/` que el proyecto no tiene](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) | shopnest-mesa | Los 77 enlaces `../base/…` de las plantillas nacen rotos al copiarse dentro de un proyecto. El marcador `«RUTA-ESTANDAR»` ya existe y los arregla. |
+| 35 | [Renombrar una sesión deja roto el enlace de su resumen](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) | shopnest-mesa | `historico.py --renombrar` arrastra el resumen pero no corrige el enlace de adentro. El estándar pide ponerle nombre a la sesión y el comando que ofrece rompe un enlace. |
+| 36 | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. |
 
 ### Lo que dejó revisar el histórico (31–33)
 

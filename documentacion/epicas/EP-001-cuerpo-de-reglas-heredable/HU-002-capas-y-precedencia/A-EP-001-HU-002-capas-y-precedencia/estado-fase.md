@@ -6,7 +6,7 @@
 |---|---|
 | **Fase** | `A-EP-001-HU-002-capas-y-precedencia` |
 | **Módulo** | Cuerpo de reglas |
-| **Brief** | [brief.md](../../../../../brief.md) |
+| **Brief** | [planteamiento.md](../../../../../planteamiento.md) |
 | **Épica** | [EP-001](../../epica.md) |
 | **HU** | [HU-002](../HU-002-capas-y-precedencia.md) |
 | **Última actualización** | 2026-08-14 |

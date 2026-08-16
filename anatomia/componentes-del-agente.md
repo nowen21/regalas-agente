@@ -26,7 +26,7 @@ Por eso el estándar puede exigir cosas y además comprobarlas. La regla vive en
 | Carpeta | Contiene | ¿Corre sin IA? |
 |---|---|---|
 | [`base/`](../base/) | 21 capítulos de reglas (00–20). Es la norma que heredan los proyectos. | No — es texto |
-| [`plantillas/`](../plantillas/) | 23 plantillas de documentos (épica, HU, fase, ADR, brief, postmortem…). | No — es texto |
+| [`plantillas/`](../plantillas/) | 23 plantillas de documentos (épica, HU, fase, ADR, planteamiento, postmortem…). | No — es texto |
 | [`skills/`](../skills/) | 11 procedimientos para la IA (analizar proyecto, diseñar arquitectura, generar spec…). | No — es texto |
 | [`validadores/`](../validadores/) | 23 comprobaciones + 5 enganches automáticos + el instalador. | **Sí** |
 | [`memoria/`](../memoria/) | Memoria por señales (SQLite + FTS5) y búsqueda semántica local. | **Sí** |

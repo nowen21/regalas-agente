@@ -97,19 +97,62 @@ Se anotan todos, resueltos y abiertos.
 - **Cerrado en:** 2026-08-14 · h-8-la-traduccion-quedo-a-medias.
 - **Con qué se retoma:** nada.
 
+### H-6 · El glosario no se entendía, y lo probó quien no lo escribió
+
+- **Qué pasó:** el usuario leyó el glosario para entender una frase y no pudo. La entrada de `brief` decía *"el primer papel"* y la columna del nombre decía *"quiere decir breve"*. Ninguna de las dos le decía qué es. Lo resumió así: *"para qué tener un glosario si tengo que ir a buscar significados en otro lado porque no lo entendí"*.
+- **Por qué importa:** era la prueba CP-006 de la fase, la única que el agente no podía correr, y salió negativa. Un glosario que no resuelve la palabra ahí mismo no cumple para lo que existe.
+- **Qué lo soluciona:** ya hecho. Las 72 definiciones se reescribieron con la prueba de reemplazo: cambiar la palabra por su definición y que la frase siga teniendo sentido. 48 de 72 no la pasaban.
+- **Qué se decidió:** el molde de la definición lo puso el usuario con sus palabras, y no se toca: *"El documento donde se escribe qué se necesita, antes de que exista una solución"*. Cada definición empieza diciendo qué clase de cosa es.
+- **Estado:** resuelto.
+- **Responde a:** [EP-003 · HU-010 · RNF-01](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md).
+- **Dispara:** H-7 y H-8 de esta sesión.
+- **Orden de resolución:** hecho.
+- **Dónde queda:** estándar 17.0.2 · ciclo 3 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md).
+- **Nace en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
+- **Cerrado en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
+- **Con qué se retoma:** falta probar las otras cuatro entradas con lector de fuera. Se probó una de cinco.
+
+### H-7 · "Brief" nombraba el largo del documento, no lo que trae
+
+- **Qué pasó:** traducir `brief` literal da "breve", que habla del tamaño. Lo que hay que entender de ese documento es que va primero y trae lo que no se negocia. La traducción no ayudaba, y la palabra seguía en inglés.
+- **Por qué importa:** era el primer término de la cadena de trabajo. Quien no lo entiende no entiende por dónde arranca todo.
+- **Qué lo soluciona:** ya hecho. `brief` pasa a **planteamiento** en toda la zona normativa, estándar 18.0.0. Se renombraron `plantillas/brief.md` y el `brief.md` de la raíz, cambió la ruta `prompts/<slug>-planteamiento.md`, y se corrigieron los enlaces en 13 archivos, incluidas fases cerradas.
+- **Qué se decidió:** entre planteamiento, pedido y punto de partida, el usuario escogió **planteamiento**. "Encargo" se había descartado antes por poco diciente y por sonar a mandado.
+- **Estado:** resuelto en la zona normativa, abierto en el resto.
+- **Responde a:** [`01·C20`](../../../base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica).
+- **Dispara:** limpiar la palabra en `documentacion/` (18 archivos), `pendientes/` (5), `analisis/` (1) e `historico-chat/` (22).
+- **Orden de resolución:** 1 de 2 · las épicas son documentos vivos y hoy nombran algo que ya no se llama así.
+- **Dónde queda:** estándar 18.0.0.
+- **Nace en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
+- **Cerrado en:** —
+- **Con qué se retoma:** ¿se cambia la palabra en las épicas y los pendientes, que son documentos vivos, o solo se deja en la norma?
+
+### H-8 · Un glosario obligatorio para cada proyecto no tenía regla
+
+- **Qué pasó:** el glosario del estándar define las palabras del estándar. Las del negocio de cada proyecto no las definía nadie. La sección Glosario de `plantillas/dominio.md` existía desde antes, vacía, sin ninguna regla que obligara a llenarla.
+- **Por qué importa:** dos documentos del mismo proyecto pueden llamarle distinto a la misma cosa sin que nadie lo note.
+- **Qué lo soluciona:** ya hecho. Nace [`13·DOC23`](../../../base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md), estándar 17.0.0, MAYOR.
+- **Qué se decidió:** se buscó antes de crear (`20·M12`). `DOC10` cataloga las reglas del proyecto y `DOC13` sus módulos; `mapeo-nombres.md` hace lo contrario, traduce un concepto de la base al nombre de acá. Ninguna servía.
+- **Estado:** resuelto.
+- **Responde a:** el usuario, que lo pidió así: *"cada proyecto debe tener su glosario y debe ser establecido mediante regla"*.
+- **Dispara:** todo proyecto al día tiene que llenar su glosario.
+- **Orden de resolución:** hecho.
+- **Dónde queda:** estándar 17.0.0.
+- **Nace en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
+- **Cerrado en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
+- **Con qué se retoma:** nada.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
 
-**Todavía no.** La fase A de EP-003 · HU-010 da veredicto **No cumple** en su [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) §6, y una fase no cierra con una exigencia en "No".
+**Sí.** La fase A de EP-003 · HU-010 cierra con veredicto **Cumple**, y lo que quedó abierto está anotado con dónde se retoma.
 
 | Para cerrar | Estado |
 |---|---|
-| Los tres criterios de aceptación de la HU | Cumplen |
-| RNF-01, que el glosario se entienda sin saber del tema | **Falta.** CP-006 necesita que lo lea alguien que no lo escribió |
-| Los 16 pasos que el ciclo 1 dejó sin registro | Hecho el 2026-08-15: 12 corridos, 3 rehechos, 4 imposibles porque son de CP-006 |
-| Los tres documentos de cierre alineados con el veredicto | Hecho el 2026-08-15 |
-| Commit de la fase | Falta. Lo autoriza el usuario |
-| H-2, H-3 y H-4 | Abiertos, y así se quedan: están anotados con dónde se retoman |
+| Los tres criterios de aceptación y los dos requisitos no funcionales | Cumplen |
+| CP-006, la prueba de legibilidad | Corrida el 2026-08-16 por el usuario. Destapó tres defectos, los tres corregidos |
+| Los documentos de cierre alineados con el veredicto | Hecho |
+| Commit de la fase y de las versiones 17.0.0 a 18.0.0 | Autorizado por el usuario |
+| H-2, H-3, H-4 y H-7 | Abiertos, y así se quedan: cada uno con dónde se retoma |
 
-<!-- aviso: falta decir si la sesión se puede cerrar -->

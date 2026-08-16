@@ -24,7 +24,7 @@
 │   ├── reglas-proyecto.md            #   si aplica (DOC10)
 │   └── mapa-dependencias.md          #   mapa vivo (DOC9)
 │
-├── prompts/                          # briefs de entrada · <slug>-brief.md — la crea el instalador
+├── prompts/                          # planteamientos de entrada · <slug>-planteamiento.md — la crea el instalador
 │
 └── documentacion/                    # VERSIONADO — lo que produce el flujo — la crea el instalador
     ├── modulos.md                    #   catálogo de módulos (DOC13)

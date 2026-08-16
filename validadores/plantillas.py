@@ -28,7 +28,7 @@ POR_PREFIJO = {
 
 # Cuando el ID no dice nada, se deduce por el nombre del archivo.
 POR_NOMBRE = {
-    "brief": "plantillas/brief.md",
+    "planteamiento": "plantillas/planteamiento.md",
     "dominio": "plantillas/dominio.md",
     "stack": "plantillas/stack.md",
     "fase": "plantillas/fase.md",

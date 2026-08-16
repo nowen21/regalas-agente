@@ -1,6 +1,14 @@
 # Pendiente · Las plantillas enlazan una carpeta `base/` que el proyecto no tiene
 
-**Estado:** abierto · anotado 2026-08-16 · sale de instalar el estándar en `shopnest-mesa` ([pendiente 01 de ese proyecto](../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/01-los-enlaces-a-las-reglas-nacen-rotos.md), cerrado allá al traspasarlo acá).
+**Estado:** abierto · anotado 2026-08-16.
+
+| | |
+|---|---|
+| **Proyecto de origen** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
+| **Su pendiente de seguimiento** | [`pendientes/01-los-enlaces-a-las-reglas-nacen-rotos.md`](../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/01-los-enlaces-a-las-reglas-nacen-rotos.md) — queda **abierto allá** hasta que este se corrija |
+| **A quién avisar al cerrar** | a `shopnest-mesa`, para que cierre el suyo. Sin ese aviso el proyecto no se entera y el pendiente queda abierto para siempre |
+
+El proyecto no tocó nada del estándar: reportó y siguió con lo suyo.
 
 ## El problema
 
@@ -30,7 +38,7 @@ Falta usarlo en los enlaces:
 
 | Plantilla | Enlaces | Plantilla | Enlaces |
 |---|---|---|---|
-| [`funcionalidad-implementada.md`](../plantillas/funcionalidad-implementada.md) | 16 | [`brief.md`](../plantillas/brief.md) | 4 |
+| [`funcionalidad-implementada.md`](../plantillas/funcionalidad-implementada.md) | 16 | [`planteamiento.md`](../plantillas/planteamiento.md) | 4 |
 | [`checklist-despliegue.md`](../plantillas/checklist-despliegue.md) | 9 | [`CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) | 4 |
 | [`mapeo-nombres.md`](../plantillas/mapeo-nombres.md) | 8 | [`HU.md`](../plantillas/HU.md) | 4 |
 | [`reglas-proyecto.md`](../plantillas/reglas-proyecto.md) | 5 | [`retrodocumentacion.md`](../plantillas/retrodocumentacion.md) | 3 |

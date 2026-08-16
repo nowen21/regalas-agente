@@ -56,14 +56,14 @@ Aparte: esta sesión se está guardando como `2026-08-14-sesion-4.md`, que no di
 **Agente** — 2026-08-14 12:35:54
 <!-- agente: 5baf1796-4b1e-4c86-8ea5-8d89fb0557bf -->
 
-Sí. La fuente primaria es el brief y su bajada: `brief.md` → épicas → HU → fases. Ahí está **qué se está construyendo y qué falta**, en estado actual.
+Sí. La fuente primaria es el brief y su bajada: `planteamiento.md` → épicas → HU → fases. Ahí está **qué se está construyendo y qué falta**, en estado actual.
 
 El histórico no manda: es la evidencia de **qué se decidió y por qué**. Se consulta cuando el porqué no quedó escrito en ningún otro lado — que pasa seguido, porque una épica dice el qué pero no las alternativas que se descartaron.
 
 El orden, cuando dos cosas se contradicen:
 
 1. `base/` y `plantillas/` — lo que se exige hoy. Es la norma.
-2. `brief.md` y su estructura — lo que se está haciendo y lo que falta.
+2. `planteamiento.md` y su estructura — lo que se está haciendo y lo que falta.
 3. `historico-chat/` — por qué quedó así. Explica, no obliga.
 
 Por eso el índice temático que propuso debería colgar de los IDs de épica y HU: si la estructura es la puerta de entrada, el histórico se busca por el mismo nombre con que se piensa el trabajo, no por uno nuevo.

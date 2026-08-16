@@ -114,8 +114,8 @@ Por eso hay "y" que no cuentan. `G2 · Mensajes que explican qué y por qué` es
 | # | Trozo | Qué dice | ¿Manda algo? |
 |---|---|---|---|
 | 1 | Una tabla de 7 pasos | Paso 0 la necesidad, paso 1 el análisis… hasta el paso 6, construir. Y dónde está la regla de cada paso. | **No.** Es un mapa: sirve para ubicarse. |
-| 2 | La cadena obligatoria | Sin brief no hay épica, sin épica no hay historia, sin historia no hay plan, sin plan no hay código. No se salta ninguno, ni aunque el trabajo sea chico. | **Sí.** Esta es la orden. |
-| 3 | Qué es un brief | "La necesidad escrita y sus restricciones." | No. Es una explicación. |
+| 2 | La cadena obligatoria | Sin planteamiento no hay épica, sin épica no hay historia, sin historia no hay plan, sin plan no hay código. No se salta ninguno, ni aunque el trabajo sea chico. | **Sí.** Esta es la orden. |
+| 3 | Qué es un planteamiento | "La necesidad escrita y sus restricciones." | No. Es una explicación. |
 | 4 | Qué es una épica, un módulo y una fase | Tres explicaciones y un ejemplo de facturación. | No. Explicaciones, y de otros capítulos. |
 | 5 | "Sin atajos por tamaño" | Un trabajo chico tampoco se salta la cadena. | Sí… pero es **la misma orden del trozo 2**, otra vez. |
 | 6 | El ejemplo INCORRECTO/CORRECTO | Mal: idea → plan directo. Bien: idea → análisis → épica → historia → plan. | Es el ejemplo de la orden del trozo 2. |
@@ -144,7 +144,7 @@ Y así queda la regla, ya con el molde:
 ## F0 · Recorre la cadena completa, sin saltar eslabones
 
 Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre
-`brief → épica → HU → especificación → plan → código`, grande o chico. Ningún eslabón se
+`planteamiento → épica → HU → especificación → plan → código`, grande o chico. Ningún eslabón se
 salta, se fusiona ni se omite por tamaño. Si te piden un paso y falta el
 anterior, **PAUSAR y crearlo primero** (depende de `02·F2`, `13·DOC15`,
 `13·DOC16`).

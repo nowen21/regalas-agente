@@ -42,7 +42,7 @@ plantillas.py
 | Nombre | Qué guarda |
 |---|---|
 | `POR_PREFIJO` | Cómo averiguar el molde por cómo empieza el título: `HU-` es una historia de usuario y sale de `plantillas/HU.md`; `EP-` es una épica, que agrupa varias historias; `ADR-` es una decisión de arquitectura escrita para que después se sepa por qué se eligió eso. |
-| `POR_NOMBRE` | Cómo averiguarlo por el nombre del archivo, cuando el título no lo dice. Cubre `brief`, `dominio`, `stack`, `fase`, `plan_trabajo`, `plan_pruebas`, `funcionalidad_implementada`, `estado-fase` y once más. |
+| `POR_NOMBRE` | Cómo averiguarlo por el nombre del archivo, cuando el título no lo dice. Cubre `planteamiento`, `dominio`, `stack`, `fase`, `plan_trabajo`, `plan_pruebas`, `funcionalidad_implementada`, `estado-fase` y once más. |
 | `_H1` | Reconoce el título principal del documento. |
 | `_MARCADOR_EN_TITULO` | Reconoce un hueco metido dentro de un título. |
 

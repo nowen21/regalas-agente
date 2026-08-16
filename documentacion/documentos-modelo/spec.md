@@ -39,7 +39,7 @@ Verificado el 2026-08-14, contando archivo por archivo en `plantillas/`:
 
 | Situación | Cuántos | Cuáles |
 |---|---|---|
-| Usan `«…»` | 25 de 30 | `ADR.md`, `brief.md`, `HU.md`, `fase.md`, `senales.md`, `sesion.md`, `planes/trabajo.md`, `CLAUDE.md.plantilla` y 17 más |
+| Usan `«…»` | 25 de 30 | `ADR.md`, `planteamiento.md`, `HU.md`, `fase.md`, `senales.md`, `sesion.md`, `planes/trabajo.md`, `CLAUDE.md.plantilla` y 17 más |
 | Usan otra marca | 2 | [`plantillas/epica.md`](../../plantillas/epica.md) con `[Resultado observable…]` y `<slug>`; [`plantillas/marco-normativo.md`](../../plantillas/marco-normativo.md) con `` `<nombre>` `` |
 | Por decidir | 3 | [`memoria.md`](../../plantillas/memoria.md), [`historico-chat.md`](../../plantillas/historico-chat.md) y [`retrodocumentacion.md`](../../plantillas/retrodocumentacion.md) |
 

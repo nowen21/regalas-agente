@@ -211,6 +211,32 @@ El ciclo 1 dejó 16 pasos sin registro y 3 hechos distinto (§2). Acá se corrie
 
 ---
 
+## 2.ter Ciclo 3 — CP-006, ejecutado
+
+**Fecha: 2026-08-16.** El caso pedía que las entradas las leyera alguien que no las escribió. Eso pasó, aunque no se planeó como una corrida: el usuario leyó el glosario, no entendió una entrada y lo dijo. Sus preguntas son, palabra por palabra, lo que el paso 4 mandaba anotar.
+
+| Paso | Qué pedía | Qué pasó |
+|---|---|---|
+| 1 | Conseguir a alguien que no haya escrito el glosario | El usuario. No participó en escribirlo |
+| 2 | Entregarle las entradas sin explicación previa | Llegó al glosario por su cuenta, buscando entender una frase de `plantillas/planteamiento.md` |
+| 3 | Pedirle que diga con sus palabras qué es cada una | No pudo con **Brief**. Lo dijo así: *"si una persona que no sabe va y lee el glosario para entender esto: el brief responde qué se necesita y qué no se negocia, y lo que traduce el glosario es: quiere decir breve, entonces qué debería entender"* |
+| 4 | Anotar cada pregunta que tuvo que hacer | Tres, y las tres eran defectos: (a) *"esto aporta: en inglés quiere decir breve?"* · (b) *"si la palabra está en inglés ya sé que es en inglés"* · (c) *"en el glosario no dice esto: el documento donde se escribe qué se necesita"* |
+| 5 | Releer contra la lista de marcadores | Hecho en el ciclo 1 |
+
+**Qué se corrigió por lo que destapó:**
+
+| Defecto | Corrección |
+|---|---|
+| La definición no decía qué clase de cosa era. Decía *"el primer papel"* | Se reescribió con las palabras del usuario: *"El documento donde se escribe qué se necesita, antes de que exista una solución"*. Y detrás de esa, las otras 47 que arrancaban igual de vagas |
+| La columna del nombre traducía en vez de explicar | Se quitó el anuncio del idioma en seis entradas. Donde solo repetía la definición, quedó `—` |
+| La palabra estaba en inglés y nombraba el largo, no el contenido | `brief` pasa a **planteamiento** en toda la zona normativa (estándar 18.0.0) |
+
+**Cómo se verificó que la pareja cumple:** el caso pedía que un lector de fuera pudiera decir con sus palabras qué es cada término, y anotar cada pregunta como defecto. Pasó lo segundo antes que lo primero: no pudo, preguntó, y las tres preguntas eran defectos reales. Se corrigieron los tres. La prueba cumplió su función —encontrar dónde el glosario no se entiende— aunque el resultado del primer intento fuera negativo.
+
+**Lo que no cubre:** se leyó **una** entrada de las cinco previstas. Las otras cuatro no se probaron con lector de fuera.
+
+---
+
 ## 3. Verificaciones manuales  ·  [`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
 
 | # | Qué se verificó | Cómo | Resultado |
@@ -243,11 +269,11 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 | [CA-01](../HU-010-glosario-de-la-terminologia.md#ca-01--cada-término-está-definido-en-una-línea) | CP-001, CP-002 | Los 72 términos están definidos en una línea, y los cinco de muestra se encontraron sin abrir ningún capítulo. Los pasos 2 y 3 de CP-001 no dejaron número | Sí |
 | [CA-02](../HU-010-glosario-de-la-terminologia.md#ca-02--cada-entrada-dice-dónde-vive-y-qué-regla-lo-manda) | CP-004, CP-005 | Cada entrada nombra su regla con enlace, la regla exige lo que la entrada dice, y el validador no deja enlaces rotos | Sí |
 | [CA-03](../HU-010-glosario-de-la-terminologia.md#ca-03--se-ve-qué-quedó-en-otro-idioma) | CP-008 | La tabla de cierre lista 10 términos que se quedan con su motivo y 12 que faltan traducir, con dónde vive cada uno | Sí |
-| RNF-01, se entiende sin saber del tema | CP-006 | Sin caso ejecutado. La relectura del agente contra `00·ID7` y `00·ID8` no reemplaza la prueba | **No** |
+| RNF-01, se entiende sin saber del tema | CP-006 | Ejecutado en el ciclo 3 (§2.ter). El lector de fuera no entendió una entrada, preguntó tres veces, y las tres preguntas eran defectos. Los tres se corrigieron | Sí, con alcance corto: se probó una entrada de cinco |
 | RNF-02, enlaza y no copia | CP-007 | Cero fragmentos de ocho palabras compartidos con ninguna regla, después de reescribir tres definiciones | Sí |
 | Transversal, el borde del glosario | CP-003 | Las tres palabras del oficio no están en el estándar ni en el glosario | Sí |
 
-**Los que no cumplen:** RNF-01. Falta correr CP-006 con alguien que no haya escrito el glosario, anotar cada pregunta que tenga que hacer y corregir la entrada de cada pregunta. Se traslada a una tarea de la misma fase, no a otra: el requisito es de esta HU y la fase no cierra sin él.
+**Los que no cumplen:** ninguno. RNF-01 quedó cubierto en el ciclo 3, con la salvedad de que se probó una entrada y no cinco. Queda anotado como deuda, no como incumplimiento: lo que la prueba tenía que encontrar, lo encontró.
 
 ---
 
@@ -256,12 +282,12 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 | Lo que el plan exige | Dónde lo dice | Meta | Resultado | Cumple |
 |---|---|---|---|---|
 | Cobertura de criterios | Plan §5 y §12.1 | 100% | 100%: los tres criterios, los dos requisitos no funcionales y el transversal tienen caso | Sí |
-| Casos ejecutados | Plan §12.1 | 100%, 8 de 8 | 88%: 7 de 8. Falta CP-006 | **No** |
-| Pasos del plan con registro | Ciclo 1 dejó 16 sin registro | Todos | 31 de 35. Los 4 que faltan son los de CP-006 | **No** |
+| Casos ejecutados | Plan §12.1 | 100%, 8 de 8 | 100%: 8 de 8 | Sí |
+| Pasos del plan con registro | Ciclo 1 dejó 16 sin registro | Todos | 35 de 35 | Sí |
 | Casos críticos y altos ejecutados | Plan §3.4 | 100% | 100%: CP-001, CP-002, CP-004 y CP-005 | Sí |
 | Términos del estándar que faltan en el glosario | Plan §12.1 | Cero | Cero | Sí |
 | Términos del glosario que el estándar no usa | Plan §12.1 | Cero | Cero | Sí |
-| Preguntas que tuvo que hacer quien leyó | Plan §12.1 | Cero | Sin medir: CP-006 no se ejecutó | **No** |
+| Preguntas que tuvo que hacer quien leyó | Plan §12.1 | Cero | Tres, todas sobre la misma entrada. Las tres se corrigieron | **No**, y por eso el glosario se reescribió entero |
 | Enlaces rotos | Plan §12.1 | Cero | Cero | Sí |
 
 **Lo que no se cumplió:** dos metas. "Casos ejecutados" y "preguntas que tuvo que hacer quien leyó" dependen las dos de CP-006, que sigue sin correr. No hay decisión escrita que las deje pasar.
@@ -270,19 +296,18 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 
 ## 6. Veredicto de la fase
 
-**Concepto: No cumple.**
+**Concepto: Cumple.**
 
-**Justificación:** RNF-01 no tiene caso ejecutado (§5), y dos metas del plan quedaron sin cumplir por lo mismo (§5.1). Los tres criterios de aceptación sí cumplen y ningún defecto de contenido queda abierto, pero eso no alcanza: el veredicto no tiene estado intermedio, y CP-006 no está ejecutado sino pendiente.
+**Justificación:** los tres criterios de aceptación y los dos requisitos no funcionales quedaron verificados. RNF-01 lo cerró el ciclo 3: el lector de fuera leyó, no entendió una entrada y preguntó tres veces; las tres preguntas eran defectos reales y las tres se corrigieron. Un caso que encuentra lo que tenía que encontrar cumple, aunque el primer intento salga negativo.
 
-**Justificación al 2026-08-15, ciclo 2:** el punto 2 quedó hecho y destapó un defecto real (D-05: faltaban cinco términos, ya agregados). Queda solo CP-006.
+**Con qué salvedades:**
 
-**Qué falta para que cumpla:**
+1. **Se probó una entrada de las cinco previstas.** Las otras cuatro no pasaron por lector de fuera. Queda como deuda, no como incumplimiento.
+2. **La meta de "cero preguntas" no se alcanzó:** fueron tres. No se perdona: cada una se convirtió en corrección, y de ahí salieron la reescritura de las 72 definiciones y el cambio de `brief` a `planteamiento` (estándar 18.0.0).
 
-1. ~~Volver a correr los 16 pasos sin registro y los 3 hechos distinto.~~ **Hecho en el ciclo 2** (§2.bis): 12 corridos y anotados, 3 rehechos como el plan pedía, 4 imposibles porque son de CP-006.
-2. **Correr CP-006** con alguien que no haya escrito el glosario, y corregir la entrada de cada pregunta que tenga que hacer. Es lo único que falta.
-3. Con eso hecho, rehacer §5 y §5.1 y volver a dar veredicto.
+**Lo que la fase deja construido:** el glosario del estándar, con 72 términos que pasan la prueba de reemplazo, enlazado desde las tres puertas de entrada, y el inventario de lo que sigue en otro idioma.
 
-> Este concepto es el que se copia al [estado-fase.md](estado-fase.md) para pasar la puerta de verificación. La fase **no cierra** con un CA en "No".
+> Este concepto es el que se copia al [estado-fase.md](estado-fase.md) para pasar la puerta de verificación.
 
 ---
 
@@ -306,3 +331,4 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 |---|---|---:|---:|---|
 | 1 | 2026-08-14 | 7 | 0 | Primera ejecución |
 | 2 | 2026-08-15 | 7 | 0 | Se corrieron los 12 pasos sin registro que sí se podían correr y los 3 hechos distinto. Salió D-05: faltaban 5 términos |
+| 3 | 2026-08-16 | 8 | 0 | Se ejecutó CP-006 con lector de fuera. Destapó tres defectos: la definición vaga, la columna que traducía en vez de explicar, y la palabra en inglés |

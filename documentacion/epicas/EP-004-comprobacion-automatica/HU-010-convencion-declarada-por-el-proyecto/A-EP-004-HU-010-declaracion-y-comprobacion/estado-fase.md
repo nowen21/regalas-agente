@@ -6,7 +6,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `A-EP-004-HU-010-declaracion-y-comprobacion` |
 | **Módulo** | Programas de comprobación |
-| **Brief / Épica / HU** | [brief.md](../../../../../brief.md) · [EP-004](../../epica.md) · [HU-010](../HU-010-convencion-declarada-por-el-proyecto.md) |
+| **Brief / Épica / HU** | [planteamiento.md](../../../../../planteamiento.md) · [EP-004](../../epica.md) · [HU-010](../HU-010-convencion-declarada-por-el-proyecto.md) |
 | **Última actualización** | 2026-08-14 |
 
 ---

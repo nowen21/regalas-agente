@@ -258,13 +258,13 @@ Lo agregué a [terminologia-agente-vs-estandar.md](historico-chat/memory/termino
 **Agente** — 2026-08-13 20:11:08
 <!-- agente: dd2cbd57-2a0c-4720-b70f-cc775eefd40d -->
 
-Creado [brief.md](brief.md), en la raíz del repo como lo pidió.
+Creado [planteamiento.md](planteamiento.md), en la raíz del repo como lo pidió.
 
-Sigue las 10 secciones de [plantillas/brief.md](plantillas/brief.md), llenadas con el contexto real del proyecto: qué problema resuelve, criterio de éxito medible, qué queda fuera, las restricciones duras del núcleo y los casos borde que ya aparecieron (Windows, proyecto con reglas propias, versión atrasada, clave pegada en el chat).
+Sigue las 10 secciones de [plantillas/planteamiento.md](plantillas/planteamiento.md), llenadas con el contexto real del proyecto: qué problema resuelve, criterio de éxito medible, qué queda fuera, las restricciones duras del núcleo y los casos borde que ya aparecieron (Windows, proyecto con reglas propias, versión atrasada, clave pegada en el chat).
 
 Dos cosas para su revisión:
 
-- La plantilla dice que un brief va en `prompts/<slug>-brief.md`. Este quedó en la raíz porque así lo pidió; si prefiere moverlo, dígame.
+- La plantilla dice que un brief va en `prompts/<slug>-planteamiento.md`. Este quedó en la raíz porque así lo pidió; si prefiere moverlo, dígame.
 - La sección 10 quedó sin épicas. Se llena cuando se decida descomponer el trabajo.
 
 ### 19 · Usuario — 2026-08-13 20:28:52
@@ -294,7 +294,7 @@ Es el primer papel de la cadena: brief, épica, historias, spec, plan, código.
 
 Porque lo escribí al revés: describí **lo que el agente ya tiene** en vez de **lo que se necesita**. Quedó como un inventario de carpetas, no como un encargo. Lo corrijo.
 
-Reescrito [brief.md](brief.md). Lo que cambió:
+Reescrito [planteamiento.md](planteamiento.md). Lo que cambió:
 
 - **Antes:** "Reglas que sirvan a cualquier proyecto (`base/`)", "memoria buscable (`memoria/`)". Nombraba carpetas, o sea, describía lo construido.
 - **Ahora:** "se necesita un lugar donde quede lo aprendido, buscable". Dice la necesidad, sin decir con qué se resuelve.
@@ -309,7 +309,7 @@ También agregué en el contexto quién sufre el problema, que faltaba, y una l�
 
 Tiene razón: "recién ahí" es del Cono Sur, no de acá. En Colombia se dice "solo ahí".
 
-Corregido en [brief.md](brief.md).
+Corregido en [planteamiento.md](planteamiento.md).
 
 Es justo lo que marca la sección 5 de [marcadores-de-ia.md](base/00-identidad-y-rol/marcadores-de-ia.md): el español de ninguna parte, o de otra parte, delata al que escribió. Ahí está listado el caso general, pero "recién" con ese sentido no aparece en la lista. Si quiere, lo agrego.
 
@@ -319,7 +319,7 @@ Es justo lo que marca la sección 5 de [marcadores-de-ia.md](base/00-identidad-y
 **Agente** — 2026-08-13 20:38:10
 <!-- agente: 313d03b2-8fb5-47c5-a8c0-4a56a75b7c0d -->
 
-Listo. [brief.md](brief.md) ahora parte de cero:
+Listo. [planteamiento.md](planteamiento.md) ahora parte de cero:
 
 - El encuadre dice "no hay nada construido todavía".
 - Las referencias ya no apuntan a archivos del repo, porque no existirían. La fuente es la experiencia de haber trabajado así.
@@ -335,12 +335,12 @@ El resto ya estaba escrito como necesidad, así que no lo toqué.
 
 No, sobra. Un brief se escribe antes de que exista nada; decirlo es repetir lo obvio.
 
-Quitado en [brief.md](brief.md).
+Quitado en [planteamiento.md](planteamiento.md).
 
 Borré también la sección de referencias, que caía en lo mismo: decía "no hay documentos previos". La plantilla manda borrar la sección que no aplica, así que Épicas derivadas pasó a ser la 9.
 
 ### 24 · Usuario — 2026-08-13 20:56:10
-> listo ahora cree las epicas también partiendo del supuesto que no se tiene nada y documentadas con base a esto: brief.md.
+> listo ahora cree las epicas también partiendo del supuesto que no se tiene nada y documentadas con base a esto: planteamiento.md.
 
 **Agente** — 2026-08-13 21:04:16
 <!-- agente: e3cb4d8d-8f93-42a0-a88e-ba3b8504ba3d -->
@@ -366,7 +366,7 @@ Dos cosas que decidí y conviene que revise:
 - **El corte en siete.** Agrupé por capacidad, no por carpeta. El versionado quedó aparte de las reglas porque tiene sus propias historias (subir número, registrar el cambio, avisar, sellar lo cerrado).
 - **Las métricas no traen cifras inventadas.** Donde no hay línea base medida, dice "sin medir". Poner un "mejora un 30%" sin de dónde salió es justo lo que prohíbe la lista de marcadores.
 
-Llené también la sección 9 de [brief.md](brief.md), que la plantilla manda completar a medida que el brief se descompone.
+Llené también la sección 9 de [planteamiento.md](planteamiento.md), que la plantilla manda completar a medida que el brief se descompone.
 
 ### 25 · Usuario — 2026-08-13 21:31:05
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\historico-chat\memory\terminologia-agente-vs-estandar.md in the IDE. This may or may not be related to the current task.</ide_opened_file>

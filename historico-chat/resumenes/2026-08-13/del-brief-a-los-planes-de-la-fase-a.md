@@ -47,12 +47,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-del-brief-a-los
 - **Qué pasó:** el usuario pidió el brief del agente, preguntó qué era un brief, y con la respuesta en la mano objetó lo que estaba escrito: *«si un brief es la necesidad, ¿por qué el que redactó no lo hizo de esa manera?»*. Y puso la condición: *«asuma que no existe nada todavía, porque precisamente estamos arrancando con la necesidad»*.
 - **Por qué importa:** un brief que parte de lo ya construido no puede cuestionarlo. Escribirlo desde cero es lo que permitió que las épicas salieran de la necesidad y no del inventario de lo que ya había.
 - **Qué lo soluciona:** reescribirlo desde la necesidad, sin dar por hecho nada de lo existente.
-- **Qué se decidió:** nace [brief.md](../../../brief.md) con esa premisa, y de él salen las **siete épicas**.
+- **Qué se decidió:** nace [planteamiento.md](../../../planteamiento.md) con esa premisa, y de él salen las **siete épicas**.
 - **Estado:** resuelto acá.
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [brief.md](../../../brief.md) y [documentacion/epicas/](../../../documentacion/epicas/README.md), versiones 8.0.1 y 8.1.0 del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [planteamiento.md](../../../planteamiento.md) y [documentacion/epicas/](../../../documentacion/epicas/README.md), versiones 8.0.1 y 8.1.0 del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Cerrado en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Con qué se retoma:** —.

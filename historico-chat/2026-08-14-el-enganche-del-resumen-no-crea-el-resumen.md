@@ -582,7 +582,7 @@ Entonces el paso 1 queda: *"instalar Cimiento en una carpeta nueva y vacía"*.
 **Agente** — 2026-08-15 00:15:38
 <!-- agente: f849c814-8a14-4e7c-a3ed-563af6c2ec5c -->
 
-En el [brief.md](brief.md), que hoy se titula *"Brief del agente"* y nunca dice cómo se llama. Ahí es donde se declara qué es el producto, así que el nombre es de ese documento.
+En el [planteamiento.md](planteamiento.md), que hoy se titula *"Brief del agente"* y nunca dice cómo se llama. Ahí es donde se declara qué es el producto, así que el nombre es de ese documento.
 
 Y en un sitio más, porque la palabra viaja: [`base/00-identidad-y-rol`](base/00-identidad-y-rol/base.md) es el capítulo que dice **quién** trabaja, y es lo que cada proyecto hereda. Si el nombre no está ahí, en un proyecto instalado nadie sabe cómo se llama lo que tiene corriendo.
 
@@ -620,7 +620,7 @@ En el molde quedó escrito lo que faltaba decir: **si lo que se ejecutó no son 
 
 Pruebas: 236 casos con una falla que no es de acá, la de las citas de `base/09-git.md` y `base/glosario.md`, que los está escribiendo otra sesión. `validar.py estandar` en 0 fallas. Enlaces del resultado y del resumen, sin roturas.
 
-Falta el commit, que usted autoriza aparte. Y quedan dos cosas menores sin hacer: los tres casos de la corrida 1 que siguen en pie (`CP-003`, `CP-008`, `CP-009`) todavía tienen el detalle viejo, y el nombre Cimiento sigue sin estar en el [brief](brief.md).
+Falta el commit, que usted autoriza aparte. Y quedan dos cosas menores sin hacer: los tres casos de la corrida 1 que siguen en pie (`CP-003`, `CP-008`, `CP-009`) todavía tienen el detalle viejo, y el nombre Cimiento sigue sin estar en el [brief](planteamiento.md).
 
 ### 41 · Usuario — 2026-08-15 06:41:30
 > entonces en dónde quedamos?
@@ -695,7 +695,7 @@ Lo que las otras sesiones tienen sin guardar sigue intacto en el árbol de traba
 
 **Falta una sola cosa:** abrir la próxima sesión y ver si el resumen aparece solo. Es `CP-018`, y con eso cierran la fase y H-4.
 
-Y dos menores que quedaron anotadas: tres casos viejos con el detalle a la antigua, y el nombre Cimiento fuera del [brief](brief.md).
+Y dos menores que quedaron anotadas: tres casos viejos con el detalle a la antigua, y el nombre Cimiento fuera del [brief](planteamiento.md).
 
 ### 45 · Usuario — 2026-08-15 06:47:10
 > quite esto:
