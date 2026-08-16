@@ -514,3 +514,191 @@ Es H-9 pasando otra vez. `VERSION` va en 16.0.0, así que lo mío debería renum
 Y de antes sigue en pie: **CP-006** y **el commit**.
 
 Lo 2 y lo 3 los arreglo en un movimiento —renumerar mi entrada a 16.1.0, subir `VERSION`, y commitear junto lo del brief con lo del ciclo 2—, pero toca el registro que otras sesiones también están editando. ¿Lo hago?
+
+### 24 · Usuario — 2026-08-16 10:22:19
+> ya se puede cerrar esta sesión?
+
+**Agente** — 2026-08-16 10:23:40
+<!-- agente: ee9a5c42-e91e-4e6c-9c9b-5ddf7be63e99 -->
+
+**No.** Todo lo mío ya está commiteado (`b279c35`), pero quedan tres cosas y una es suya.
+
+| Qué | Estado |
+|---|---|
+| **CP-006** — las cinco frases | **Falta.** El veredicto de la fase sigue en **"No cumple"** |
+| El `15.4.0` duplicado en el registro de cambios | **Sigue.** Dos entradas con el mismo número, ya en la historia |
+| Lo demás | Resuelto: el ciclo 2, los 72 términos y la sección del brief entraron al commit |
+
+Lo bueno: el desajuste 3 que le reporté se arregló solo con ese commit — `plantillas/brief.md` y `brief.md` ya están en el repositorio, así que el registro de cambios ya no promete algo que no existe.
+
+Lo que queda es lo mismo de hace tres respuestas:
+
+```
+Puerta   →
+Derogar  →
+Enganche →
+Señal    →
+Molde    →
+```
+
+Complete esas cinco líneas y la fase cierra. Si prefiere no correr esa prueba, dígalo y lo anoto como desvío aceptado por usted; también cierra, pero con el requisito perdonado en vez de verificado. Y aparte: ¿renumero mi `15.4.0` a `16.1.0` para deshacer el duplicado?
+
+### 25 · Usuario — 2026-08-16 10:36:58
+> menos es más
+
+**Agente** — 2026-08-16 10:37:02
+<!-- agente: 4b21f1b1-8710-4a4e-882e-5cca180c5989 -->
+
+No.
+
+Falta que me diga qué entendió de estas cinco:
+
+```
+Puerta   →
+Derogar  →
+Enganche →
+Señal    →
+Molde    →
+```
+
+### 26 · Usuario — 2026-08-16 10:37:44
+> para qué necesita eso?
+
+**Agente** — 2026-08-16 10:37:48
+<!-- agente: 65d668f9-f24c-4229-a235-706f1e9bb132 -->
+
+Para probar que el glosario se entiende. Lo escribí yo, así que yo no sirvo de lector.
+
+Es la última prueba de la fase (CP-006). Si las cinco le salen sin releer, cierra.
+
+### 27 · Usuario — 2026-08-16 10:39:52
+> pues sieso hace parte del glosario eso debe quedar de tal manera que si un niño lee lo entienda
+
+**Agente** — 2026-08-16 10:42:06
+<!-- agente: a4e15045-755c-400e-8dfe-7ba1d4fa11e6 -->
+
+Es `00·ID7`. Reviso las 72 definiciones y reescribo las que no pasan.
+
+18 definiciones reescritas. Ahora ninguna pasa de 110 caracteres, ninguna encadena comas y ninguna usa palabra de oficio.
+
+Así quedaron las cinco que le iba a preguntar:
+
+| Término | Antes | Ahora |
+|---|---|---|
+| **Fase** | El pedazo de trabajo que de verdad se ejecuta: un plan, sus pruebas, su cierre y su commit | Un pedazo de trabajo que se hace de principio a fin y se guarda |
+| **Señal** | Lo aprendido que no se recupera leyendo el código: una decisión, un error resuelto, una trampa | Algo que se aprendió y que el código no cuenta. Por ejemplo por qué se decidió así, o dónde está la trampa |
+| **Regla** | Una exigencia, una sola, vaciada en el molde del estándar y acompañada de su ejemplo | Una sola cosa que hay que hacer, escrita siempre igual y con un ejemplo |
+| **Evidencia** | La prueba de que un criterio de aceptación quedó cumplido; sin ella no se marca cumplido | La prueba de que algo quedó hecho. Sin ella no se puede decir que está hecho |
+| **Tarea** | El pedazo más chico del plan, de cuatro horas o menos, que rastrea a un criterio de aceptación | El pedacito más chico del plan. No debería tomar más de media jornada |
+
+Enlaces en cero rotos.
+
+Aun así, esto no reemplaza CP-006: yo medí largo y palabras difíciles, que es lo que un programa puede medir. Si se entiende o no, eso solo lo dice alguien que lea.
+
+### 28 · Usuario — 2026-08-16 10:46:50
+> osea que lo que hizo no va a funcionar?
+
+**Agente** — 2026-08-16 10:46:56
+<!-- agente: 1d23b3e1-320c-4abf-a26e-3a1170ff1841 -->
+
+No. Lo que hice sí sirve: las definiciones quedaron más cortas y sin palabras de oficio, y eso se puede medir.
+
+Lo que no puedo es **probar que se entienden**. Eso solo lo dice alguien que las lea.
+
+Son dos cosas: escribir fácil, y comprobar que quedó fácil. Hice la primera.
+
+### 29 · Usuario — 2026-08-16 10:47:32
+> ah ok
+
+**Agente** — 2026-08-16 10:47:37
+<!-- agente: 51d99f89-842e-4997-aa59-59057b378328 -->
+
+Listo. El glosario queda con las 18 definiciones reescritas y sin enlaces rotos.
+
+Cuando quiera cerrar, faltan dos cosas suyas: leer cinco entradas para dar por corrido CP-006, y decirme si renumero mi `15.4.0` a `16.1.0` para deshacer el duplicado.
+
+### 30 · Usuario — 2026-08-16 10:48:26
+> osea ya la sesión se puede cerrar?
+
+**Agente** — 2026-08-16 10:48:31
+<!-- agente: 0fb3b2d9-1199-48c6-acf5-695d3a75e964 -->
+
+No. La fase sigue en "No cumple" porque CP-006 no se ha corrido.
+
+Se cierra de dos maneras:
+
+- Me dice qué entendió de cinco entradas, o
+- Me dice "ciérrela sin esa prueba" y lo anoto como decisión suya.
+
+Cualquiera de las dos, y cierro.
+
+### 31 · Usuario — 2026-08-16 10:49:16
+> y por qué no ha corrido la fase?
+
+**Agente** — 2026-08-16 10:49:21
+<!-- agente: c2f8f133-2344-4b5d-a272-a8198c128501 -->
+
+Corrió entera, menos una prueba: CP-006.
+
+Esa pide un lector que no haya escrito el glosario, y lo escribí yo. Si me la aplico, estoy calificando mi propia tarea.
+
+Por eso quedó esperándolo a usted.
+
+### 32 · Usuario — 2026-08-16 10:50:03
+> en dónde está el glosario?
+
+**Agente** — 2026-08-16 10:50:07
+<!-- agente: 577c6024-ee8f-4665-bb70-8c094d7f05d6 -->
+
+El glosario está en [base/glosario.md](base/glosario.md).
+
+Se llega a él desde tres lados: [README.md](README.md), [base/README.md](base/README.md) y [anatomia/mapa-del-sitio.md](anatomia/mapa-del-sitio.md).
+
+### 33 · Usuario — 2026-08-16 10:54:41
+> aunque el glosario no sea una regla si es es obligatorio que Cimiento y los proyecto lo implemente
+
+**Agente** — 2026-08-16 10:54:59
+<!-- agente: deaf27db-1c1d-4d8f-9139-bc53f52209c9 -->
+
+Si es obligatorio, deja de ser solo anexo: nace una regla, y las reglas siguen el procedimiento (`20·M14`).
+
+Antes de escribirla necesito saber cuál de las tres obliga, porque son trabajos distintos:
+
+1. **Que el agente lo use.** Hoy `base/glosario.md` no está numerado, así que el cargador no lo mete en la sesión. La regla lo volvería de carga obligatoria.
+2. **Que cada proyecto escriba el suyo.** El del estándar define las palabras del estándar; el del proyecto definiría las de su negocio (factura, aporte, tenant).
+3. **Las dos.**
+
+¿Cuál?
+
+### 34 · Usuario — 2026-08-16 10:59:33
+> es ciero cada proyecto debe tener su glosario y debe ser establecido mediante regla
+
+**Agente** — 2026-08-16 11:01:59
+<!-- agente: d1bff616-8633-4307-933c-a6941d11889c -->
+
+Paso 1 del procedimiento (`20·M12`): buscar antes de crear. Hay dos candidatos que se le parecen mucho.
+
+El artefacto ya existe: `plantillas/dominio.md` tiene una sección **Glosario**. Lo que no existe es la regla que obligue a llenarla. Eso es lo que falta.
+
+Escribo `13·DOC23`.
+
+Nace **[`13·DOC23`](base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md)** — versión **17.0.0**, MAYOR: obliga a migrar.
+
+> Todo proyecto mantiene el glosario de las palabras de su negocio: cada término en una línea, entendible por quien no conoce el dominio, y actualizado en el mismo cambio que introduce el término.
+
+Los nueve pasos del procedimiento, cumplidos:
+
+- **Buscar** (`M12`): no existía. `DOC10` cataloga las reglas del proyecto, `DOC13` sus módulos. `mapeo-nombres.md` era lo más cercano, pero hace lo contrario: traduce un concepto de la base al nombre de acá. Acá se definen las palabras que el negocio ya trae.
+- **Enrutar** (`M13`, `M2`): capítulo 13, capa 2. ID libre: `DOC23`.
+- **Agnóstica** (`M3`): sin sector ni cliente.
+- **Molde** (`M5`): una exigencia, dos líneas, con su ejemplo.
+- **Validable** (`M9`): a medias, y así quedó registrado. Un programa ve si el glosario existe y tiene entradas; si se entiende, no.
+- **Versionar** (`M10`): `VERSION` a 17.0.0 y su entrada en el [CHANGELOG](CHANGELOG.md).
+- **Checklist** (`M14`): **CUMPLE**, 17 ✅ · 0 ❌ · 3 N/A, escrito dentro de la regla.
+
+Y la sección **Glosario** de [plantillas/dominio.md](plantillas/dominio.md) deja de ser un espacio en blanco: dice qué entra, qué no y cuándo se actualiza. Existía desde antes; le faltaba la regla.
+
+Enlaces en cero rotos. Sin commitear.
+
+### 35 · Usuario — 2026-08-16 11:03:25
+> comite

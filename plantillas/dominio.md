@@ -44,9 +44,13 @@ Invariantes que el código debe garantizar y que no se ven leyendo un archivo su
 
 ## Glosario
 
-Términos del negocio que el agente debe entender (evita malinterpretaciones):
+Las palabras de este negocio, cada una en una línea que entienda quien no lo conoce. Lo exige [`13·DOC23`](../base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md); el modelo es [`base/glosario.md`](../base/glosario.md).
 
-- **«Término»** — «significado en este dominio».
+Entra la palabra que el negocio ya trae y la base no nombra. La que sí nombra la base va en `mapeo-nombres.md`, que es otra cosa: ahí se dice cómo se llama acá un concepto del estándar.
+
+Se actualiza en el mismo cambio que introduce el término, no después.
+
+- **«Término»** — «qué es, en una línea».
 
 ## Decisiones ya tomadas
 

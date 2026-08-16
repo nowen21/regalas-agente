@@ -35,6 +35,7 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 | [`DOC16`](reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) | La épica se parte de la plantilla central, no de memoria. |
 | [`DOC17`](reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md) | Ninguna carpeta del árbol queda muda: cada una lista lo suyo. |
 | [`DOC18`](reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md) | El mapa se actualiza en el mismo cambio que cierra la unidad. |
+| [`DOC23`](reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md) | Cada proyecto define en una línea las palabras de su negocio. |
 
 **(c) Cómo se llena un documento modelo**
 

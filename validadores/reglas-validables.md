@@ -78,6 +78,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | [`13·DOC20`](../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) | un documento entregado no conserva ningún `«…»` | necesita saber qué documento se da por terminado, y eso hoy no está declarado |
 | [`13·DOC21`](../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) | ninguna sección de un documento queda con su marca puesta en vez de `N/A` | va con [`13·DOC20`](../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md): el mismo recorrido distingue hueco sin llenar de sección no aplicable |
 | [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (contenido) | que el resumen traiga hallazgos de verdad y no solo el molde | reconocer un hallazgo es criterio; el programa solo ve si hay alguno |
+| [`13·DOC23`](../base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md) (existencia) | que el proyecto tenga su glosario y que no esté vacío | un programa ve si el documento existe y si tiene entradas; que la definición se entienda, no |
 
 ### Meta-reglas (`20`) — se validan **en seco**, sobre el propio estándar
 

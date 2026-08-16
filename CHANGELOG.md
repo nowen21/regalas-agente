@@ -11,6 +11,19 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 17.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar (todo proyecto al día tiene que escribir su glosario).
+
+**Las palabras del negocio no estaban definidas en ninguna parte.** El estándar ya tiene su glosario desde la 15.3.0, pero eso define las palabras del estándar. Las del negocio de cada proyecto —cómo se llama acá un cliente, qué cuenta como pedido, qué es un cierre— seguían en la cabeza de quien las usaba, y dos documentos del mismo proyecto podían llamarle distinto a la misma cosa sin que nadie lo notara.
+
+- **[`13·DOC23`](base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md)**: todo proyecto mantiene el glosario de sus términos, cada uno en una línea entendible por quien no conoce el dominio, actualizado en el mismo cambio que introduce el término.
+- **La sección Glosario de [`plantillas/dominio.md`](plantillas/dominio.md)** deja de ser un espacio en blanco y dice qué entra, qué no, y cuándo se actualiza. Existía desde antes; lo que faltaba era la regla que obligara a llenarla.
+- **Qué entra y qué no.** La palabra que el negocio ya trae va acá. El concepto de la base que en este proyecto se llama de otro modo va en `mapeo-nombres.md`, que sigue siendo otra cosa.
+- **Validable a medias**, y así queda registrado: un programa puede ver si el glosario existe y si tiene entradas; si la definición se entiende, no.
+
+**Qué hacer para quedar al día:** llenar la sección Glosario de `dominio.md` con las palabras del negocio que ya usan las especificaciones del proyecto.
+
 ## 16.0.0 — 2026-08-15
 
 **MAYOR** ⚠ obliga a migrar (un plan de pruebas en curso con pasos de dos acciones hay que partirlo).
