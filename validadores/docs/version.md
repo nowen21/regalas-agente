@@ -8,7 +8,7 @@ El estándar tiene un archivo `VERSION` con un número como `5.0.0`. Cada proyec
 
 Este archivo lee las dos y las compara. Si el proyecto quedó atrás, **avisa; no actualiza nada**: subir de versión es decisión del usuario.
 
-Todo lo que reporta es aviso, nunca falla.
+Quedarse atrás es aviso, salvo en un caso: que en el atraso haya una regla **derogada** que el proyecto todavía no adoptó. Ahí sí falla, porque `02·F22` dice que un proyecto así no abre ni cierra ninguna fase. Esa parte la hace `validar_fase`, y quien la llama es `flujo.py`, que es el que recorre las fases.
 
 ## De qué depende y quién lo usa
 
@@ -27,6 +27,7 @@ version.py
    ├── checklist.py ··· para exigir que el proyecto declare su versión
    ├── instalar.py ···· para escribirla en las marcas de huella
    ├── validar.py ····· cuando alguien pide revisar "version"
+   ├── flujo.py ······· para cobrar `02·F22` donde hay fases
    └── pruebas.py
 ```
 
@@ -37,6 +38,7 @@ version.py
 | Nombre | Qué guarda |
 |---|---|
 | `_ADOPTADA` | La búsqueda que reconoce la línea «Versión del estándar adoptada: X.Y.Z» dentro del `CLAUDE.md`. No distingue mayúsculas ni tildes. |
+| `_ENCABEZADO_DEROGADA` | La búsqueda que reconoce el título de una regla jubilada: `## F6 · … · [DEROGADA en 4.0.0 → ver 13·DOC1]`. Solo mira títulos, así que no confunde con los ejemplos del molde ni con las tablas de los índices, que repiten la misma marca sin ser reglas. |
 
 ### Funciones
 
@@ -73,6 +75,28 @@ Está separada del resto para poder probarla sin archivos en disco.
 - **Recibe:** la carpeta del proyecto.
 - **Hace:** lee el `VERSION` del estándar y el `CLAUDE.md` del proyecto, y los compara.
 - **Retorna:** una lista con un aviso, o vacía si está al día. Si no hay `CLAUDE.md`, retorna un aviso diciendo que no se pudo leer la versión.
+
+**`derogaciones(base)`**
+
+- **Recibe:** la carpeta `base/` del estándar; si no se le pasa nada, usa la del estándar.
+- **Hace:** recorre todos los `.md` y junta los títulos de reglas que llevan la marca de jubilada.
+- **Retorna:** una lista de tres datos por regla: en qué versión se jubiló, cómo se llama y cuál la reemplazó. Ordenada de la versión más vieja a la más nueva.
+
+Se lee de la marca y no del `CHANGELOG.md` a propósito: el changelog es prosa, y que ahí aparezca la palabra "derogación" no significa que se haya jubilado ninguna regla.
+
+**`sin_adoptar(adoptada, estandar, derogadas)`**
+
+- **Recibe:** la versión que declara el proyecto, la del estándar, y la lista de reglas jubiladas.
+- **Hace:** se queda con las que se jubilaron **después** de la versión que el proyecto declara y hasta la vigente.
+- **Retorna:** esas reglas. Si el proyecto no declara versión, retorna vacío: sin saber dónde está parado no se puede decir qué le falta.
+
+Está separada del resto para poder probarla sin archivos en disco.
+
+**`validar_fase(raiz)`**
+
+- **Recibe:** la carpeta del proyecto.
+- **Hace:** mira si hay reglas jubiladas que el proyecto no adoptó.
+- **Retorna:** una lista con una falla que nombra cada regla pendiente, o vacía si no hay ninguna. Sin `CLAUDE.md`, retorna vacío: de eso ya se queja `validar`.
 
 ## Cómo se ejecuta
 
@@ -134,5 +158,22 @@ validar('C:/proyectos/pos')
 [AVISO] CLAUDE.md — el proyecto declara v4.0.0, el estándar va en v5.0.0: ...
 
 validar('C:/proyectos/al-dia')
+[]
+
+derogaciones()
+[('3.1.0', 'F4.1', 'F14'), ('4.0.0', 'F6', '13·DOC1'), ('6.0.0', 'ID2', '00·ID7')]
+
+sin_adoptar('4.0.0', '18.0.0', derogaciones())
+[('6.0.0', 'ID2', '00·ID7')]     # las de 3.1.0 y 4.0.0 ya las tiene
+
+sin_adoptar('18.0.0', '18.0.0', derogaciones())
+[]                                # al día
+
+validar_fase('C:/proyectos/pos')
+[Hallazgo(FALLA, 'CLAUDE.md', 0, 'hay derogaciones sin adoptar y ninguna
+          fase se abre ni se cierra hasta adoptarlas (F22): ID2 (derogada
+          en 6.0.0 → 00·ID7). ...')]
+
+validar_fase('C:/proyectos/al-dia')
 []
 ```

@@ -9,14 +9,16 @@ Recorre las mismas carpetas que `fases.py` —`documentacion/epicas/`— y compr
 1. **Existe lo de arriba.** Una fase va adentro de una historia de usuario, y esa historia adentro de una épica. Si la historia tiene fases, tiene que tener su documento; si la épica tiene fases colgando, también. No alcanza con que exista la carpeta vacía.
 2. **El plan responde las trece preguntas.** El molde del plan las numera de la 0 a la 13. Acá se mira cuáles no están.
 3. **El plan no deja dudas.** Frases como `TBD`, `por definir`, `(o similar)`, `(o donde esté)`, `(o parecido)` o `(o equivalente)` quieren decir que algo se dio por supuesto sin ir a comprobarlo.
+4. **No hay una regla jubilada sin adoptar.** Si el estándar jubiló una regla después de la versión que el proyecto declara, el proyecto no puede abrir ni cerrar fases hasta ponerse al día (`02·F22`). Esto se pregunta acá, y no en cualquier momento, porque acá es donde están las fases. Lo responde `version.py`.
 
-No juzga qué dice cada parte del plan, solo si está y si hay dudas sueltas. Todo lo que reporta es **aviso**, porque un plan que todavía se está escribiendo puede estar incompleto a propósito.
+Lo del plan no lo juzga: mira si está y si hay dudas sueltas, y todo eso lo reporta como **aviso**, porque un plan que todavía se está escribiendo puede estar incompleto a propósito. Lo único que **falla** es el punto 4.
 
 ## De qué depende y quién lo usa
 
 ```
 flujo.py
    ├── fases.py ····· le pide _subcarpetas para recorrer las carpetas
+   ├── version.py ··· le pregunta si hay reglas jubiladas sin adoptar
    └── comun.py ····· AVISO, FALLA, Hallazgo y leer
 ```
 

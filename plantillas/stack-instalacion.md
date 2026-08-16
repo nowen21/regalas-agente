@@ -81,6 +81,8 @@ Cuatro cosas distintas, y se reportan por separado porque se arreglan distinto:
 
 **Al proyecto no le interesan todos los cambios del estándar: solo los que tiene que aplicar.** Por eso el número de versión **no reprueba**. Que el estándar vaya en 2.1.0 y el proyecto declare 1.8.0 no dice nada por sí solo — puede que ninguno de esos cambios lo toque. Lo que sí reprueba es el sello: se queja cuando cambió un documento que **este** proyecto usa. El desfase de número se informa al margen, para que el usuario decida si sube la versión adoptada.
 
+**La única excepción es la derogación.** Si entre la versión que el proyecto declara y la vigente se derogó una regla que el proyecto cumplía, el desfase deja de ser informativo: el proyecto no abre ni cierra fase hasta adoptarla (`02·F22`).
+
 Aplicar la actualización es siempre lo mismo:
 
 ```sh

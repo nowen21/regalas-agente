@@ -113,7 +113,7 @@ De ahí se sigue **preferir la redacción verificable**: "el plan lo aprueba el 
 
 Si la regla es nueva o cambió de exigencia, revisar además los enlaces que la citan y `validadores/reglas-validables.md`.
 
-**Retroactividad:** un cambio de norma **no reabre** fases ya cerradas — quedan selladas con la versión bajo la que cerraron. Lo nuevo aplica al trabajo en curso y al que viene. Cada proyecto fija la versión que sigue y el desfase **se avisa**, no se migra solo.
+**Retroactividad:** un cambio de norma **no reabre** fases ya cerradas — quedan selladas con la versión bajo la que cerraron. Lo nuevo aplica al trabajo en curso y al que viene. Cada proyecto fija la versión que sigue y el desfase **se avisa**, no se migra solo — con una salvedad: si en ese desfase hay una **derogación** sin adoptar, el proyecto no abre ni cierra fase hasta ponerse al día ([`02·F22`](../02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)).
 
 ### M11 — por qué se derogan en vez de borrarse
 

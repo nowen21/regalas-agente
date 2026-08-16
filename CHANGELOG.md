@@ -7,9 +7,76 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 - **MENOR** — algo **aditivo** que no invalida nada: regla opcional nueva, plantilla, validador, sección.
 - **PARCHE** — redacción, ejemplos, correcciones que no cambian qué se exige.
 
-> Retroactividad: un cambio de norma **no reabre** fases ya cerradas — quedan selladas con la versión bajo la que cerraron. La versión nueva aplica al trabajo en curso y al que viene. El aviso de desfase (al abrir sesión/fase) informa, no migra solo.
+> Retroactividad: un cambio de norma **no reabre** fases ya cerradas — quedan selladas con la versión bajo la que cerraron. La versión nueva aplica al trabajo en curso y al que viene. El aviso de desfase (al abrir sesión/fase) informa, no migra solo — salvo que en el desfase haya una derogación sin adoptar, que sí detiene la fase ([`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)).
 
 ---
+
+## 20.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar (cambia cómo se entrega todo lo que el agente escribe).
+
+**Explicar más largo no es explicar mejor.** El usuario lo cortó otra vez con dos palabras —*"menos es más"*— después de un reporte de cinco bloques y tres listas. [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) ya pedía que el texto se entienda sin saber del tema, pero eso no alcanza: un texto puede entenderse perfecto y no leerse por largo, y lo que no se lee no comunicó nada.
+
+- **[`00·ID9`](base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)**: se entrega en la menor extensión con la que se entienda — la conclusión primero, y nada que no cambie lo que el lector va a decidir o a hacer.
+- **Qué se recorta y qué no.** Sobra el repaso de lo ya dicho, la justificación que nadie pidió y el recuento paso a paso. El dato exacto nunca. Lo que no cabe corto va al archivo del repositorio que le corresponde, y en el mensaje queda su enlace.
+- **Extiende a `ID7`, no la repite.** Aquella se ocupa de que se entienda; esta, de que se lea.
+- **No es validable**, y así queda registrado en [`validadores/reglas-validables.md`](validadores/reglas-validables.md): contar renglones es fácil, pero decidir cuál sobra exige entender qué cambia la decisión del que lee.
+
+**Qué hacer para quedar al día:** nada en los archivos del proyecto; cambia cómo se escribe de acá en adelante.
+
+## 19.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar (todo proyecto con una derogación sin adoptar tiene que ponerse al día antes de su próxima fase).
+
+**Derogar una regla no llegaba a los proyectos.** El estándar es central, así que al derogar una regla todo proyecto deja de leerla ese mismo día — pero ninguno se pone al día solo: cada uno declara su versión en su `CLAUDE.md` y ahí se queda. [`validadores/version.py`](validadores/version.py) reportaba ese desfase como **aviso**, sin límite escrito de hasta cuándo se podía sostener. Un proyecto podía quedarse tres versiones atrás para siempre y ningún reporte lo llamaba incumplimiento.
+
+- **[`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)**: ninguna fase se abre ni se cierra mientras el proyecto declare una versión anterior a la que derogó una regla que ese proyecto cumplía.
+- **Adoptar no es cambiar el número.** Lo único que se abre es la fase que adopta la derogación, una por cada HU que implementaba la regla derogada ([`02·F12`](base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)); ahí se aplica la regla que la reemplazó, y al cerrarla se sube la versión declarada. Sin eso, subir el número deja el trabajo viejo tal como estaba y la regla nueva sin aplicar.
+- **El amarre es la fase, no la sesión.** Abrir y cerrar una fase ya son momentos donde alguien revisa y firma, así que la comprobación se cuelga de una parada que ya existe en vez de inventar otra. Fuera de esos dos momentos el desfase se reporta pero no detiene nada: un proyecto que solo hace el trabajo que [`02·F0`](base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) exceptúa queda marcado, no bloqueado.
+- **Dos textos decían lo contrario y se corrigieron:** la nota de retroactividad de [`base/20-meta-reglas/base.md`](base/20-meta-reglas/base.md) y [`plantillas/stack-instalacion.md`](plantillas/stack-instalacion.md), que daban el desfase de versión como informativo siempre.
+- **Ya la comprueba un programa.** [`version.py`](validadores/version.py) suma `derogaciones()`, `sin_adoptar()` y `validar_fase()`, y [`flujo.py`](validadores/flujo.py) —el que recorre las fases— la cobra donde hay fases. Las reglas jubiladas se leen de la marca `[DEROGADA en X.Y.Z → ver ID]` del título de cada regla, que es dato exacto; el `CHANGELOG.md` es prosa y nombrar ahí la palabra "derogación" no jubila nada. Queda un filtro fino sin hacer, anotado en [`validadores/reglas-validables.md`](validadores/reglas-validables.md): si la regla derogada era una `*opt-in*` que el proyecto nunca encendió, hoy igual se le cuenta.
+
+**Qué hacer para quedar al día:** mirar si entre la versión declarada y la vigente hay alguna derogación; si la hay, abrir una fase por cada HU que implementaba la regla derogada, aplicar ahí la regla que la reemplazó, y al cerrarla subir la versión declarada en el `CLAUDE.md` del proyecto.
+
+## 18.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar (cambia el nombre de una plantilla y de una ruta del proyecto).
+
+**"Brief" se dice planteamiento.** La palabra estaba en inglés y nombraba el largo del documento, no su contenido: traducida literal queda "breve", que no dice nada de lo que hay que entender. El usuario lo destapó con un caso: alguien lee *"el brief responde qué se necesita y qué no se negocia"*, no sabe qué es, va al glosario y lo que encuentra no lo saca del apuro.
+
+- **`plantillas/brief.md` pasa a [`plantillas/planteamiento.md`](plantillas/planteamiento.md)**, y el `brief.md` de la raíz a [`planteamiento.md`](planteamiento.md).
+- **La ruta del proyecto pasa de `prompts/<slug>-brief.md` a `prompts/<slug>-planteamiento.md`.**
+- **La palabra cambia en la zona normativa**: `base/`, `plantillas/`, `skills/`, `anatomia/` y el validador de plantillas. 30 ocurrencias.
+- **Los enlaces que apuntaban al archivo viejo se corrigieron en todo el repositorio**, incluidos los de fases ya cerradas: un enlace roto no le sirve a nadie. El texto de esos registros no se tocó.
+
+**Qué hacer para quedar al día:** renombrar `prompts/<slug>-brief.md` a `prompts/<slug>-planteamiento.md`.
+
+**Lo que queda pendiente:** la palabra sigue escrita en `documentacion/`, `pendientes/`, `analisis/` e `historico-chat/`, que son registros de otras sesiones y de fases cerradas.
+
+## 17.0.2 — 2026-08-16
+
+**PARCHE** (redacción; no cambia qué se exige).
+
+**Un glosario es un mini diccionario, y varias entradas no lo eran.** Lo destapó el usuario con un caso: alguien lee *"el brief responde qué se necesita y qué no se negocia"*, no sabe qué es un brief, va al glosario y encuentra *"el primer papel"*. No se entiende, y entonces el glosario no sirvió para lo que existe.
+
+- **La prueba que ahora pasan las 72 entradas:** reemplazar la palabra por su definición y que la frase siga teniendo sentido. *"El **documento donde se escribe qué se necesita, antes de que exista una solución** responde qué se necesita y qué no se negocia."*
+- **Cada definición empieza diciendo qué clase de cosa es** —el documento, la lista, la acción, el conjunto, el apunte— y sigue con qué hace. Antes 48 de 72 arrancaban en el aire: *"el primer papel"*, *"qué se va a hacer"*, *"lo que se escribe"*.
+- **Ninguna pasa de 115 caracteres.**
+- **Se quitó el anuncio del idioma, no la explicación.** *"En inglés quiere decir breve"* empieza informando algo que ya se ve: que la palabra está en inglés. Se recortó ese arranque en seis entradas y quedó solo lo que explica el nombre. Donde el idioma no es obvio se conserva: *postmortem* en latín, *meta* como "sobre", *retro* como "hacia atrás", y el inglés *hook* detrás de enganche.
+
+La definición de **brief** es literal del usuario y no se toca.
+
+## 17.0.1 — 2026-08-16
+
+**PARCHE** (redacción; no cambia qué se exige).
+
+**La columna "Qué quiere decir el nombre" estaba escrita en español de ninguna parte.** [`00·ID8`](base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) lo nombra en su sección 5: el español neutro, del que nadie reconoce de dónde es, delata que lo armó una máquina. Las 27 celdas llenas de [`base/glosario.md`](base/glosario.md) se reescribieron como se habla acá.
+
+- *"Lo que se halla trabajando"* pasa a *"lo que uno se encuentra trabajando, sin andarlo buscando"*.
+- *"Como la señal de una carretera"* pasa a *"como una señal de tránsito"*.
+- *"Línea de montaje"* pasa a *"línea de ensamble"*; *"antes de salir"*, a *"antes de arrancar"*.
+- *"Blindada contra cambios"*, que repetía la palabra, pasa a *"como un carro blindado: por más que le den, no cede"*.
+- Se quitaron las comillas de las traducciones: *"En inglés, «pila»"* pasa a *"en inglés quiere decir pila"*.
 
 ## 17.0.0 — 2026-08-16
 
@@ -83,8 +150,8 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **El brief no decía cómo se llama el proyecto.** La plantilla tenía el nombre solo en el título, y ese título nombra el módulo o la épica. Un proyecto entero no tenía dónde decir cómo se llama, y el nombre es lo primero que heredan todos los documentos que salen de ahí.
 
-- **Sección 0, Identificación**, en [`plantillas/brief.md`](plantillas/brief.md): nombre del proyecto, qué cubre el encargo y fecha.
-- El [`brief.md`](brief.md) de este repositorio la estrena: el proyecto se llama **Cimiento**.
+- **Sección 0, Identificación**, en [`plantillas/planteamiento.md`](plantillas/planteamiento.md): nombre del proyecto, qué cubre el encargo y fecha.
+- El [`planteamiento.md`](planteamiento.md) de este repositorio la estrena: el proyecto se llama **Cimiento**.
 
 ## 15.3.0 — 2026-08-14
 

@@ -32,6 +32,7 @@ import re
 
 import declaracion
 import fases
+import version
 from comun import AVISO, FALLA, Hallazgo, filas_de, leer, valor_limpio
 
 CARPETA = "documentacion/epicas"
@@ -177,6 +178,7 @@ def validar(proyecto):
         return [Hallazgo(FALLA, proyecto, 0, f"no existe `{CARPETA}` (F12.13)")]
 
     hallazgos = []
+    hay_fases = False
     for nombre_epica in fases._subcarpetas(raiz):
         ruta_epica = os.path.join(raiz, nombre_epica)
         # F0 · la épica existe como documento, no solo como carpeta.
@@ -246,4 +248,10 @@ def validar(proyecto):
             hallazgos.append(Hallazgo(
                 AVISO, f"{CARPETA}/{nombre_epica}", 0,
                 "hay fases pero la épica no tiene su documento (F0: falta el padre)"))
+        hay_fases = hay_fases or epica_con_fases
+
+    # F22 · con una derogación sin adoptar no se abre ni se cierra fase. Solo
+    # se cobra donde hay fases: sin ellas, el desfase se queda en aviso.
+    if hay_fases:
+        hallazgos += version.validar_fase(proyecto)
     return hallazgos + _modulos_sin_especificacion(proyecto)

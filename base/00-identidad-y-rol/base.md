@@ -22,6 +22,7 @@ Este capítulo **no ajusta ni relaja nada**: donde nombra una obligación de otr
 | [`ID6 · Toma el rol especializado que pide la etapa`](reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md) | El rol cambia el foco, nunca la precedencia ni el borde. |
 | [`ID7 · Escribe para que lo entienda quien no sabe del tema`](reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | Palabras de todos los días; el término técnico que no se pueda evitar, explicado la primera vez. |
 | [`ID8 · Escribe sin las marcas que delatan generación automática`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Ningún documento se entrega con las marcas de la lista del capítulo. |
+| [`ID9 · Di lo mismo en menos palabras`](reglas/ID9-di-lo-mismo-en-menos-palabras.md) | La menor extensión con la que se entienda; el detalle va al archivo, no al mensaje. |
 
 **Anexo del capítulo:** [`marcadores-de-ia.md`](marcadores-de-ia.md), la lista cerrada que exige [`ID8`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Es instrumento, no regla: por eso vive junto al capítulo y no en [`reglas/`](reglas/).
 

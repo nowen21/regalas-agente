@@ -13,7 +13,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~50 |
+| ✅ **Ya son validadores** | ~51 |
 | 🟡 **Validables, faltan** | ~11 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto) |
 | 🔴 **No validables** (criterio humano) | ~94 |
 
@@ -51,6 +51,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `F12.1/2/3/4/5/6/7/11/12/13` | `fases.py` | jerarquía épica→HU→fase · id único · nomenclatura · consecutivo sin huecos · ruta física |
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
 | `F0` · `F14` · `F17` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |
+| [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md) | `version.py` (`validar_fase`) · `flujo.py` | ninguna regla derogada entre la versión que el proyecto declara y la vigente; se cobra donde hay fases. Falta el filtro fino: si la derogada era una `*opt-in*` que el proyecto nunca encendió, hoy igual la cuenta |
 | `DOC1` · `DOC8` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (cierre, análisis, reglas, catálogo, HU) |
 | `DOC17` | `enlaces.py` | cada carpeta del árbol lleva su `README.md` y lista lo que cuelga de ella |
 | [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (existencia) | `resumen.py` · `hook_resumen.py` | el resumen existe, se mueve con la transcripción, y se avisa qué le falta |
@@ -126,7 +127,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 ## 🔴 No validables (se quedan en el `.md` — criterio humano)
 
 - **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
-- **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
+- **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7, ID9 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID9` (decir lo mismo en menos palabras) tampoco: contar renglones es fácil, pero decidir cuál sobra exige entender qué cambia la decisión del que lee. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
 - **`01`:** C1–C17 (todas menos C18), C20, C21 y C22. `C22` (el comando rechazado se corrige, la orden sigue en pie) se cumple sobre lo que el agente hace **después** de un rechazo, que no queda en ningún archivo: ningún script puede ver si retomó el encargo o lo abandonó. `C21` (pedir el dato que falte antes de arrancar) se cumple sobre el mensaje del usuario en el chat, y ningún script lee el chat. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
 - **`02`:** F1, F3, F5, F6, F7, F8, F9, F10, F11, F15, F16, F19, F20 · F12.8, F12.9, F12.10.
