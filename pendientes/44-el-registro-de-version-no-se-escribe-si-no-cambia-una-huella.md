@@ -42,6 +42,9 @@ En `shopnest-mesa`, el 2026-08-16:
 1. El estándar pasó de `20.0.1` a `21.1.0` sin tocar ninguna plantilla que el proyecto herede.
 2. Se corrió el instalador. Todo salió `ya estaba al día`, salvo `versiones`.
 3. Se volvió a correr. Idéntico.
+4. El estándar subió a `21.1.1` y se corrió una tercera vez. Idéntico, y **el desfase creció**: el último registro sigue diciendo `20.0.1`.
+
+**El hueco se ensancha solo.** Cada publicación del estándar que no toque las plantillas de un proyecto le suma una versión de atraso al registro, sin que exista forma de ponerlo al día.
 
 ## Qué falta
 
