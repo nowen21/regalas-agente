@@ -76,6 +76,10 @@ enlaces.py
   3. Por cada enlace que se pueda comprobar, arma la dirección contándola desde la carpeta donde está el archivo, y mira si existe. Lo que va después de un `#` no se comprueba: se mira el archivo, no en qué parte de él cae.
 - **Retorna:** una lista de fallas, una por enlace roto.
 
+**El enlace que empieza con `«RUTA-ESTANDAR»` es la excepción, y se cuenta desde otra parte.** Ese marcador lo llevan las plantillas para citar una regla, y lo rellena el instalador cuando la plantilla se copia a un proyecto. Cuando todavía está sin llenar, la dirección se cuenta desde **la carpeta donde vive el estándar**, no desde la que se está revisando.
+
+Suena a detalle y no lo es. Este programa vive en el estándar y se le pasa el proyecto como parámetro, así que las dos carpetas casi nunca son la misma: contándolo desde la que se revisa, iría a buscar `«proyecto»/base/…` — una carpeta que ningún proyecto tiene, porque las reglas no se copian, se enganchan por su dirección completa. El enlace bueno saldría roto y el roto también, o sea que el resultado dependería de desde dónde se corriera el programa.
+
 **`validar_indices(raiz=None, carpetas=None)`**
 
 - **Recibe:** opcionalmente la carpeta a revisar y la lista de carpetas con índice.

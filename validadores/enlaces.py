@@ -27,9 +27,18 @@ EXTERNOS = ("http://", "https://", "mailto:", "ftp://", "//")
 # Las plantillas citan las reglas con este marcador delante, y no con `../base/`.
 # Tienen que hacerlo: la plantilla se copia dentro de un proyecto, y allá
 # `../base/` es la carpeta que está encima del proyecto — nunca el estándar.
-# `instalar.py` lo reemplaza por la ruta real al instalar. Acá, donde todavía
-# está sin llenar, apunta a la raíz de este repositorio.
+# `instalar.py` lo reemplaza por la ruta real al instalar.
 MARCADOR_RAIZ = "«RUTA-ESTANDAR»"
+
+# Y cuando todavía está sin llenar, se resuelve contra la carpeta donde vive el
+# estándar — que es la de este archivo —, **no** contra la que se está
+# validando. No es lo mismo: los enganches corren este programa desde el
+# estándar y le pasan el proyecto como `--raiz`, así que dentro de un proyecto
+# la raíz validada no es el estándar y el marcador apuntaría a
+# `<proyecto>/base/…`, una carpeta que nunca existe. Corriendo sobre el propio
+# estándar las dos coinciden y el resultado es el mismo; la diferencia aparece
+# justo donde importa.
+ESTANDAR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def _es_interno(destino):
@@ -88,7 +97,7 @@ def validar_enlaces(raiz=None):
             if not ruta:
                 continue
             if ruta.startswith(MARCADOR_RAIZ):
-                base = raiz
+                base = ESTANDAR
                 ruta = ruta[len(MARCADOR_RAIZ):].lstrip("/")
             else:
                 base = carpeta

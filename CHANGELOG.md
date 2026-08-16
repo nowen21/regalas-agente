@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.1.1 — 2026-08-16
+
+**PARCHE** — el revisor de enlaces daba un veredicto distinto según desde dónde se lo corriera. No cambia qué se exige.
+
+**Un enlace bueno salía roto dentro de un proyecto.** [`validadores/enlaces.py`](validadores/enlaces.py) resolvía `«RUTA-ESTANDAR»` contra la carpeta que estaba revisando, dando por hecho que esa carpeta era el estándar. No lo es: los enganches corren el programa desde el estándar y le pasan el proyecto como `--raiz`, así que iba a buscar `«proyecto»/base/…`, una carpeta que ningún proyecto tiene — las reglas no se copian, se enganchan por su dirección completa. Dentro de un proyecto el marcador **no se resolvía bien nunca**, ni cuando estaba bien puesto.
+
+Es la otra mitad de lo que dejó la [20.0.1](#2001--2026-08-16), y se construyó en la fase [`A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar`](documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/).
+
+- **El marcador se resuelve contra la carpeta donde vive el estándar.** Corriendo sobre el propio estándar las dos coinciden, así que acá no cambia nada: se comprobó comparando la salida antes y después, y son idénticas.
+- **Se queda aunque la [21.1.0](#2110--2026-08-16) haga que dejen de llegar marcadores.** Aquella quita la causa; esta es la red para el que se escape mañana.
+- **Su prueba:** [`validadores/tests/test_enlaces_marcador.py`](validadores/tests/test_enlaces_marcador.py). Comprueba que la misma cita da el mismo veredicto desde dos carpetas distintas, y que lo que no resuelve se sigue reportando — un arreglo que callara sería peor que el defecto.
+
+**Qué hacer para quedar al día:** nada. El programa vive en el estándar y los proyectos lo llaman por su dirección, así que ya corren esta versión.
+
 ## 21.1.0 — 2026-08-16
 
 **MENOR** — arregla la instalación y suma la prueba que faltaba. No cambia qué se exige.
