@@ -44,7 +44,7 @@ Invariantes que el código debe garantizar y que no se ven leyendo un archivo su
 
 ## Glosario
 
-Las palabras de este negocio, cada una en una línea que entienda quien no lo conoce. Lo exige [`13·DOC23`](../base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md); el modelo es [`base/glosario.md`](../base/glosario.md).
+Las palabras de este negocio, cada una en una línea que entienda quien no lo conoce. Lo exige [`13·DOC23`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md); el modelo es [`base/glosario.md`](«RUTA-ESTANDAR»/base/glosario.md).
 
 Entra la palabra que el negocio ya trae y la base no nombra. La que sí nombra la base va en `mapeo-nombres.md`, que es otra cosa: ahí se dice cómo se llama acá un concepto del estándar.
 

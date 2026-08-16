@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; quedan 30, porque ese mismo día se cerró el 39. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -105,7 +105,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 26 | **P4** | [«Corrida» es jerga y no está definida](26-corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. **Conviene hacerlo con el 21:** es el mismo cambio de vocabulario en los mismos archivos. |
 | 27 | **P1** | [La fase A de EP-003 · HU-010 cerró sin cumplir](27-la-fase-a-de-hu-010-cerro-sin-cumplir.md) | `RNF-01` sin caso ejecutado y 16 de 35 pasos sin registro de qué salió. El veredicto real es «No cumple». **Ojo:** CP-006 necesita a alguien que no escribió el glosario, y eso no lo agenda el agente. |
 | 28 | **P1** | [El veredicto de la fase vive en dos sitios](28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) | El `resultado_pruebas` y el `estado-fase` lo escriben a mano cada uno, y ya dicen cosas distintas. Va justo después del 27, que es el caso que lo destapó. |
-| 29 | **P0** | [La transcripción se escribió dos veces, y con horas inventadas](29-la-transcripcion-se-escribio-dos-veces.md) | El enganche ya escribe el histórico y el agente lo escribió otra vez a mano: 61 encabezados de usuario para 30 mensajes, y horas estimadas en vez de leídas del reloj. **El P0 es su punto 2:** mientras el `CLAUDE.md` mande escribir la transcripción a mano, vuelve a pasar, y ya pasó seis veces. Son dos párrafos. Limpiar el archivo (punto 1) es P2. |
+| 29 | **P2** | [La transcripción se escribió dos veces, y con horas inventadas](29-la-transcripcion-se-escribio-dos-veces.md) | El enganche ya escribe el histórico y el agente lo escribió otra vez a mano: 61 encabezados de usuario para 30 mensajes, y horas estimadas en vez de leídas del reloj. **Su punto 2 —el `P0`— se cerró el 2026-08-16:** el `CLAUDE.md` y el `historico-chat/README.md` ya no mandan escribir la transcripción a mano. Queda el punto 1, limpiar el archivo del 2026-08-15. |
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
@@ -118,7 +118,7 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 30 | **P1** | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. Es lo que el agente lee en **cada** mensaje para saber si el entorno está completo. |
-| 34 | **P0** | [Las plantillas enlazan una carpeta `base/` que el proyecto no tiene](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) | shopnest-mesa | Los 77 enlaces `../base/…` de las plantillas nacen rotos al copiarse dentro de un proyecto. **Cada proyecto nuevo nace roto**, y el daño real no son los enlaces: es que `hook_md.py` queda siempre en rojo y se deja de leer. El marcador `«RUTA-ESTANDAR»` ya existe y los arregla. |
+| ~~34~~ | — | **hecho** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **Falta avisarle a `shopnest-mesa`** para que cierre el suyo. |
 | 35 | **P1** | [Renombrar una sesión deja roto el enlace de su resumen](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) | shopnest-mesa | `historico.py --renombrar` arrastra el resumen pero no corrige el enlace de adentro. **Se reprodujo acá el 2026-08-16**, al nombrar la sesión de esta priorización: deja de ser defecto de un proyecto ajeno y le pasa al estándar cada vez que nombra una sesión, que es lo que el propio enganche pide. Es de los más baratos. |
 | 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
 
@@ -130,7 +130,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 |---|---|---|---|
 | ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](31-los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
 | 32 | **P2** | [La carpeta del día nace sin su línea en el índice](32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
-| 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada a los proyectos— **salió de acá el 2026-08-16** y es ahora el [39](39-a-que-proyectos-les-borro-la-memoria-el-enganche.md). |
+| 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
 
 **El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
 
@@ -138,7 +138,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 
 | Punto | P | Qué es |
 |---|---|---|
-| ~~6~~ · a qué proyectos les borró la memoria el enganche | — | **Promovido** al [39](39-a-que-proyectos-les-borro-la-memoria-el-enganche.md) el 2026-08-16 |
+| ~~6~~ · a qué proyectos les borró la memoria el enganche | — | **Cerrado** el 2026-08-16 → [hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md) |
 | 7 · un checklist anulado que nadie volvió a aplicar | **P1** | El sello caduca con el texto y nada lo comprueba. Se cruza con el [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
 | 5 · falta la prueba que protege el `GATE` del arranque | **P2** | Una prueba. Esa puerta ya desapareció en silencio una vez |
 | 1 · el validador da por rotos los enlaces con espacios | **P2** | Un `unquote`. Falsos positivos en el validador que más se corre |
@@ -147,13 +147,13 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 | 3 · una sesión que cruza la medianoche queda con el nombre de otro día | **P3** | Decidir si se parte o se queda entera |
 | 8 · doce huecos chicos | **P6** | Casi todos son «decidir algo». **Excepción:** si las fases de EP-001 son plan o retrodocumentación **bloquea 24 documentos**, y ese sube a P3 |
 
-**Conviene seguir promoviéndolos a pendientes numerados propios**, como ya se dice del 09 y del 10. El punto 6 fue el primero, el 2026-08-16: mientras vivió dentro de este archivo heredó la prioridad del promedio de los otros siete, y era lo más urgente del backlog.
+**Conviene seguir promoviéndolos a pendientes numerados propios**, como ya se dice del 09 y del 10. El punto 6 fue el primero, el 2026-08-16: mientras vivió dentro de este archivo heredó la prioridad del promedio de los otros siete, y parecía lo más urgente del backlog. **Sacarlo a su propio archivo fue lo que permitió cerrarlo**, ese mismo día: al leerlo solo se vio que la pregunta que hacía ya tenía respuesta.
 
-### Lo más urgente, promovido desde el 33 (39)
+### Lo que promovió el 33, y cerró (39)
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 39 | **P0** | [A qué proyectos les borró la memoria el enganche](39-a-que-proyectos-les-borro-la-memoria-el-enganche.md) | El 2026-08-07 `recuerdos.py` borró memoria de proyectos. El código está corregido desde la 3.1.1, pero **el arreglo no deshace el borrado**, y nadie revisó proyecto por proyecto qué quedó. Es el único pendiente donde se pierde información que no está en ninguna otra parte: lo que no se saque del commit no está en ningún lado, y cada commit nuevo lo entierra más. |
+| ~~39~~ | — | **hecho** → [La memoria que borró el enganche](hecho/memoria-borrada-por-el-enganche.md) | El 2026-08-07 `recuerdos.py` borró memoria. Lo reportó **`agro-system`**, que era el único proyecto con el almacén enlazado por *junction* —la condición que dispara el defecto— y que ya se recuperó. El código está corregido desde la 3.1.1. Cerrado 2026-08-16, al comprobar que ninguna otra carpeta de memoria, ni del registro ni de la herramienta, estuvo enlazada. |
 
 ### Lo que dejó la sesión de la derogación (37–38)
 
@@ -173,4 +173,4 @@ Todo lo demás es preferencia y se puede reordenar:
 - **09 · ítem 04 → 01.** Cinco de los nueve validadores que faltan necesitan que el proyecto declare su convención en `.agente/`, y eso es el manifiesto del 09.
 - **16 → 09.** Ningún ítem del 09 se promueve sin pasar antes por el criterio de *si conviene* automatizarlo.
 - **27 → 28.** Primero hay que saber cuál es el veredicto bueno de esa fase.
-- **29 · punto 2 → 29 · punto 1.** Limpiar el archivo antes de quitarle al `CLAUDE.md` la instrucción que lo ensucia es limpiar para volver a ensuciar.
+- **29 · punto 2 → 29 · punto 1.** ✅ resuelta el 2026-08-16: la instrucción que ensuciaba ya no está, así que limpiar el archivo del 2026-08-15 no se vuelve a deshacer.

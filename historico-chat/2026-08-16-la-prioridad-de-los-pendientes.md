@@ -25,7 +25,7 @@ Dos cosas antes de la tabla:
 | # | Pendiente | Por qué acá | Costo |
 |---|---|---|---|
 | **1** | [33 · punto 6](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) — a qué proyectos les borró la memoria el enganche | Es lo único del backlog donde **hay información que no está en ninguna otra parte**. En agro-system se recuperó del último commit; de los demás no se sabe. Cada día que pasa hay más commits encima. | Horas |
-| **2** | [34](pendientes/34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) — las plantillas enlazan una `base/` que el proyecto no tiene | **Cada proyecto nuevo nace roto**, y el efecto real no son los 14 enlaces: es que `hook_md.py` queda siempre en rojo y se deja de leer. En shopnest-mesa ya se perdieron fallas reales por eso. El marcador `«RUTA-ESTANDAR»` ya existe: es buscar y reemplazar. | Bajo |
+| **2** | [34](pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md) — las plantillas enlazan una `base/` que el proyecto no tiene | **Cada proyecto nuevo nace roto**, y el efecto real no son los 14 enlaces: es que `hook_md.py` queda siempre en rojo y se deja de leer. En shopnest-mesa ya se perdieron fallas reales por eso. El marcador `«RUTA-ESTANDAR»` ya existe: es buscar y reemplazar. | Bajo |
 | **3** | [29 · punto 2](pendientes/29-la-transcripcion-se-escribio-dos-veces.md) — que el `CLAUDE.md` deje de pedir lo que el enganche ya hace | **La causa sigue viva.** Mientras la §1 mande escribir la transcripción a mano, cualquier sesión vuelve a duplicarla. Ya pasó 6 veces (1 + 4 encontradas + 1 borrada en caliente). Son dos párrafos. | Muy bajo |
 | **4** | [36](pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) — la regla de reportar al estándar | Es el de fondo del 34 y el 35: llegaron acá por criterio de una sesión, no por norma. Sin el paso 6 (el aviso de vuelta), cada pendiente reportado deja uno abierto para siempre en el proyecto. El usuario ya dictó el procedimiento completo. | Medio |
 
@@ -285,7 +285,7 @@ Todo hecho y con enlaces en cero. Esto es lo que iría al commit:
 | Archivo | Qué cambia |
 |---|---|
 | [pendientes/README.md](pendientes/README.md) | La columna `P` en las nueve tablas + la sección que explica los siete niveles |
-| [pendientes/39-…](pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md) | **Nuevo.** El punto 6 del 33, promovido. Único P0 |
+| [pendientes/39-…](pendientes/hecho/memoria-borrada-por-el-enganche.md) | **Nuevo.** El punto 6 del 33, promovido. Único P0 |
 | [pendientes/33-…](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) | El punto 6 se va y queda el puntero al 39 |
 | [pendientes/22-…](pendientes/22-dos-sesiones-versionando-a-la-vez.md) | Sección nueva: no es solo `VERSION`, es cualquier archivo compartido |
 | [resumenes/2026-08-07/memoria-del-agente-en-el-repo.md](historico-chat/resumenes/2026-08-07/memoria-del-agente-en-el-repo.md) | Su H-3 ahora apunta al 39 y no al 33 |
@@ -306,7 +306,7 @@ Commit `a9b9890`, 13 archivos. Las cuatro casillas de cierre quedaron marcadas: 
 
 Queda un cambio suelto sin commitear: la casilla que acabo de marcar en el resumen. Y falta el `push` — eso no lo hago sin que lo digas aparte.
 
-Lo que sigue, según lo que quedó priorizado: el [39](pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), que es el único P0 y el único donde se pierde algo que no está en otra parte.
+Lo que sigue, según lo que quedó priorizado: el [39](pendientes/hecho/memoria-borrada-por-el-enganche.md), que es el único P0 y el único donde se pierde algo que no está en otra parte.
 
 ### 11 · Usuario — 2026-08-16 13:06:18
 > no entendí lo de P0
@@ -354,6 +354,29 @@ Enlaces en cero. Sin commitear: este cambio y la casilla de cierre del resumen. 
 
 ### 13 · Usuario — 2026-08-16 13:10:58
 > si
+
+**Agente** — 2026-08-16 13:11:28
+<!-- agente: 27f06816-518b-4bc2-a405-d19881c0e650 -->
+
+Commit `19179ab`. Nada queda sin guardar.
+
+Resumen de lo que dejó la sesión:
+
+- Los 31 pendientes abiertos priorizados en [pendientes/README.md](pendientes/README.md), con la equivalencia en palabras de cada nivel.
+- El [39](pendientes/hecho/memoria-borrada-por-el-enganche.md) creado: la memoria que el enganche les borró a los proyectos el 2026-08-07, que estaba escondida dentro del 33 y es lo único del backlog donde se pierde algo irrecuperable.
+- El [22](pendientes/22-dos-sesiones-versionando-a-la-vez.md) ampliado y el [35](pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) subido a P1, los dos porque volvieron a pasar hoy.
+
+Falta el `push`, que no hago sin que lo pidas.
+
+### 14 · Usuario — 2026-08-16 13:11:37
+> haga push
+
+**Agente** — 2026-08-16 13:11:55
+<!-- agente: 1bb90e4c-3d69-41b6-a6e9-89b2336f8afd -->
+
+Push hecho: `c48fde5..19179ab` a `main`.
+
+Se subieron tres commits — el `27af83d` de la otra sesión de hoy iba también sin subir, y salió en el mismo empujón.
 
 ## Abiertos                          ← acá arrancan las tablas de los 28
 

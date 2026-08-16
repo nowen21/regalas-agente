@@ -28,7 +28,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-la-prioridad-de
 
 **Por qué importa.** Un número en la fila esconde ocho urgencias distintas. Mientras 33 sea un archivo, su punto 6 hereda la prioridad del promedio de los otros siete.
 
-**Dónde queda.** ✅ **Resuelto.** El punto 6 se promovió al [pendiente 39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), único **P0** del backlog. En el 33 quedó el puntero, el README lo lista aparte y bajó al 33 a P1, y el [resumen del 2026-08-07](../2026-08-07/memoria-del-agente-en-el-repo.md) —donde nació el hallazgo— ahora apunta al 39 y no al 33.
+**Dónde queda.** ✅ **Resuelto.** El punto 6 se promovió al [pendiente 39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), único **P0** del backlog. En el 33 quedó el puntero, el README lo lista aparte y bajó al 33 a P1, y el [resumen del 2026-08-07](../2026-08-07/memoria-del-agente-en-el-repo.md) —donde nació el hallazgo— ahora apunta al 39 y no al 33.
 
 Los otros siete puntos siguen dentro del 33, con su prioridad escrita punto por punto en el README. Se promueven igual cuando se vayan a trabajar.
 
@@ -59,8 +59,8 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: los cuatro son de backlog y de conducta |
 | Lo que se hizo está aprobado y guardado | ☑ commit `a9b9890`, aprobado por el usuario. Incluye los pendientes 35 y 36 que había dejado sin commitear otra sesión, por pedido suyo |
 

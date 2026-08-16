@@ -14,12 +14,9 @@ No es parte del estándar (`base/`, `plantillas/`, `skills/`); es bitácora, igu
   ```
 
   Con el comando, el agente pasa también la línea `/rename <tema>` para que la sesión de Claude Code —la pestaña, la barra del prompt, `/resume`— se llame igual que el archivo. Esa la pega el usuario: `/rename` es un comando suyo.
-- **Es la transcripción del diálogo, no un resumen.** Va **cada** mensaje del usuario y **cada** respuesta del agente, en orden, sin saltarse ninguno.
-- **Ambos lados van literales:** el mensaje del usuario tal como lo escribió, y la respuesta del agente tal como la dio (tablas, bloques de código y ejemplos incluidos). No se condensa ni se parafrasea: si el agente dio un ejemplo de 20 líneas, esas 20 líneas quedan.
-- Lo único que se omite es la salida cruda de herramientas (listados, resultados de comandos): eso no es diálogo.
-- **Cada interacción lleva marca de tiempo** `AAAA-MM-DD HH:MM:SS`, tanto la del usuario como la del agente. Así se ve cuándo pasó cada cosa y cuánto tomó.
-- La hora se **lee del reloj del sistema**, nunca se inventa: `date "+%Y-%m-%d %H:%M:%S"` (o `Get-Date -Format "yyyy-MM-dd HH:mm:ss"`). Se toma una al recibir el mensaje del usuario y otra al escribir la respuesta.
-- Se crea **apenas la sesión produce su primera decisión o cambio**, y se **actualiza cada vez que se cierra un tema**. No se espera al final: un chat rara vez tiene cierre explícito.
+- **La escribe el programa, no el agente.** [`hook_historico.py`](../validadores/hook_historico.py) anota cada mensaje del usuario apenas lo envía y cada respuesta del agente apenas termina, con la hora del reloj, y le pone su línea al índice. Queda registrada desde el primer mensaje, aunque sea un "hola".
+- **El agente no la escribe a mano.** Hacerlo la duplica —la misma conversación dos veces— y le mete horas estimadas donde el enganche puso las reales.
+- Es la **transcripción** del diálogo, no un resumen: van los dos lados literales, con tablas, código y ejemplos. Lo único que no entra es la salida cruda de herramientas, que no es diálogo.
 - Los pendientes reales siguen viviendo en `pendientes/`; aquí solo se apunta a ellos.
 - **El resumen de la sesión va aparte, en [resumenes/](resumenes/README.md).** Es parte del histórico y por eso vive dentro, pero no se mezcla con la transcripción: aquella guarda lo que se dijo, el resumen guarda lo que quedó — los hallazgos, su estado y la pregunta que sigue viva.
 
@@ -90,3 +87,5 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-15-los-resumenes-que-faltan.md](2026-08-15-los-resumenes-que-faltan.md) — el inventario del histórico: cuántas sesiones no tienen resumen y qué bloquea escribirlos. · [resumenes/2026-08-15/los-resumenes-que-faltan.md](resumenes/2026-08-15/los-resumenes-que-faltan.md)
 - [2026-08-16-sesion.md](2026-08-16-sesion.md) — sesión del 2026-08-16.
 - [2026-08-16-la-prioridad-de-los-pendientes.md](2026-08-16-la-prioridad-de-los-pendientes.md) — se analizaron los 28 pendientes abiertos y se les dio un orden de prioridad. · [resumenes/2026-08-16/la-prioridad-de-los-pendientes.md](resumenes/2026-08-16/la-prioridad-de-los-pendientes.md)
+- [2026-08-16-que-pendientes-trabajamos.md](2026-08-16-que-pendientes-trabajamos.md) — qué hay que hacer con los P0 del backlog; se cierran el 39 y el punto 2 del 29. · [resumenes/2026-08-16/que-pendientes-trabajamos.md](resumenes/2026-08-16/que-pendientes-trabajamos.md)
+- [2026-08-16-por-que-dice-instalacion-incompleta.md](2026-08-16-por-que-dice-instalacion-incompleta.md) — por que el checklist marca «falta» cuando lo que hay son copias viejas del estandar. · [resumenes/2026-08-16/por-que-dice-instalacion-incompleta.md](resumenes/2026-08-16/por-que-dice-instalacion-incompleta.md)

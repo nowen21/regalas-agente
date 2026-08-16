@@ -41,7 +41,7 @@ Una regla que fije el procedimiento. El usuario lo dictó completo el 2026-08-16
 - La del estándar: cabecera con **proyecto de origen**, pendiente de seguimiento y a quién avisar al cerrar.
 - La del proyecto: cabecera con **dónde está el defecto**, qué se reportó allá, qué se espera y cuándo cierra.
 
-Los pendientes [34](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) y [35](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) ya están escritos con esa forma; sirven de molde.
+Los pendientes [34](hecho/enlaces-de-las-plantillas-al-estandar.md) y [35](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) ya están escritos con esa forma; sirven de molde.
 
 **3 · El aviso de vuelta (paso 6).** Es la mitad que nadie tiene hoy. El estándar sabe qué proyectos lo usan —[`plantillas/proyectos.md`](../plantillas/proyectos.md)— y sabe dónde está cada uno, así que puede escribir el aviso en el proyecto al cerrar el pendiente. Sin esto, el paso 7 deja pendientes abiertos para siempre y la regla se vuelve papel.
 

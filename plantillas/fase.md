@@ -1,6 +1,6 @@
 # Fase «A-EP01-HU03-Descripción de lo realizado»   ·   `[CAPA 3]`
 
-> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** [`02·F12`](../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) → `base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md` (aquí **no** se duplican). La ruta de la carpeta de la fase es `02·F12.13`. Reemplaza los `«…»` y borra esta caja.
+> Molde para **crear una fase** (unidad de ejecución). Las reglas de **relación y nomenclatura** que gobiernan esta plantilla son la **fuente única** [`02·F12`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) → `base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md` (aquí **no** se duplican). La ruta de la carpeta de la fase es `02·F12.13`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ---
 
-## 2. Origen  ·  [`13·DOC12`](../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
+## 2. Origen  ·  [`13·DOC12`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
 
 Declarar 1 de 3 (o híbrido) — regla de origen (complementar/ampliar/continuar) en `02·F12.8`:
 

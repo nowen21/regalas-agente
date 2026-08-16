@@ -14,7 +14,7 @@ python "«RUTA-ESTANDAR»/validadores/instalar.py" "«RUTA-PROYECTO»" --aplicar
 
 Eso es **todo** el proceso de instalación. Deja el entorno completo y operativo sin un solo paso manual:
 
-- la estructura base — `proyectos/`, `documentacion/`, `prompts/` ([`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md));
+- la estructura base — `proyectos/`, `documentacion/`, `prompts/` ([`02·F13`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md));
 - este mismo `CLAUDE.md`, generado desde la plantilla central con las rutas y la versión de esta máquina;
 - el `.gitignore` con `CLAUDE.md` y `.agente/`;
 - los 4 archivos de configuración de `./.agente/`;
@@ -76,14 +76,14 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 ### 2.4 Memoria del agente — DEL PROYECTO, se versiona
 
 - **Ruta:** `./historico-chat/memory/` — un archivo por recuerdo, más `memory.md` como índice.
-- **Ahí va TODO lo que el agente debe recordar** entre sesiones: preferencias del usuario, acuerdos sobre cómo trabajar. **Nunca** en el almacén de memoria de la herramienta (`~/.claude/projects/<ruta-de-este-proyecto>/memory/`), que queda **vacío** — ni siquiera un puntero (regla base [`01·C19`](../base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)).
+- **Ahí va TODO lo que el agente debe recordar** entre sesiones: preferencias del usuario, acuerdos sobre cómo trabajar. **Nunca** en el almacén de memoria de la herramienta (`~/.claude/projects/<ruta-de-este-proyecto>/memory/`), que queda **vacío** — ni siquiera un puntero (regla base [`01·C19`](«RUTA-ESTANDAR»/base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)).
 - **La vacía el programa, no el agente:** un enganche mueve acá lo que aparezca en el almacén local, al abrir la sesión y cada vez que se escribe un archivo.
 - **NO va en el `.gitignore`:** lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar. Si en este proyecto la memoria no debe versionarse, agregar `historico-chat/memory/` al `.gitignore`; se sigue escribiendo acá.
 
 ### 2.5 Código fuente — DEL USUARIO
 
 - **Ruta:** `./proyectos/<nombre>/` — uno o varios proyectos, cada uno con la estructura propia de su stack.
-- **El instalador crea la carpeta; el contenido es del usuario.** El agente nunca mueve, reorganiza ni acomoda código existente dentro de ella: dónde va cada cosa es decisión del usuario ([`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md)).
+- **El instalador crea la carpeta; el contenido es del usuario.** El agente nunca mueve, reorganiza ni acomoda código existente dentro de ella: dónde va cada cosa es decisión del usuario ([`02·F13`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md)).
 
 ## 3. Qué hace el agente al iniciar CADA sesión (en este orden exacto)
 
@@ -148,7 +148,7 @@ Reglas que la base **no** cubre (una convención del equipo, una regla del negoc
 
 ## 6. Cómo pedirle trabajo al agente
 
-Para que el agente arranque, el mensaje declara cuatro cosas ([`01·C21`](../base/01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar), en `«RUTA-ESTANDAR»/base/01-conducta.md`). Si falta alguna, pregunta por esa y no toca nada mientras espera.
+Para que el agente arranque, el mensaje declara cuatro cosas ([`01·C21`](«RUTA-ESTANDAR»/base/01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar), en `«RUTA-ESTANDAR»/base/01-conducta.md`). Si falta alguna, pregunta por esa y no toca nada mientras espera.
 
 | Campo | Ejemplo |
 |---|---|

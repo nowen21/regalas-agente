@@ -20,9 +20,9 @@ Lo mueve el programa, no el agente: un enganche recoge la carpeta local al abrir
 
 Un recuerdo que se contradice con otro se corrige; no se agrega al lado. Al crear uno, se agrega su línea al índice de abajo.
 
-> Esto **no** es la memoria por señales del proyecto (regla [`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) del capítulo 13, la que registra decisiones y aprendizajes del sistema). Aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
+> Esto **no** es la memoria por señales del proyecto (regla [`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) del capítulo 13, la que registra decisiones y aprendizajes del sistema). Aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
 
-> Tampoco es norma del estándar: la norma es la regla [`01·C19`](../base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) del capítulo 01, que obliga a guardar la memoria acá. Lo que va dentro de cada archivo es preferencia del usuario de este proyecto.
+> Tampoco es norma del estándar: la norma es la regla [`01·C19`](«RUTA-ESTANDAR»/base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) del capítulo 01, que obliga a guardar la memoria acá. Lo que va dentro de cada archivo es preferencia del usuario de este proyecto.
 
 > Si en este proyecto la memoria **no** debe versionarse, agregar `historico-chat/memory/` al `.gitignore`. Se sigue escribiendo acá; solo que no viaja al repositorio.
 

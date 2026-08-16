@@ -47,15 +47,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 - **Qué pasó:** el usuario preguntó dos veces, y la segunda cortó las salvedades: *«no me haga salvedades, ¿está o no?»*. La respuesta honesta fue: el código está corregido y los proyectos lo corren sin reinstalar nada, porque los enganches llaman al estándar por ruta absoluta. Pero **la memoria borrada no vuelve sola**, y el agente no revisó proyecto por proyecto cuál tiene el enganche ni cómo quedó su memoria.
 - **Por qué importa:** que el arreglo se propague no significa que el daño esté deshecho. Son dos cosas y se responden por separado.
 - **Qué lo soluciona:** recuperar del último commit en cada proyecto afectado, y revisar uno por uno.
-- **Qué se decidió:** se dio el comando de recuperación. La revisión proyecto por proyecto **no se hizo**.
-- **Estado:** abierto.
+- **Qué se decidió:** se dio el comando de recuperación. La revisión proyecto por proyecto **no se hizo** ese día; se hizo el 2026-08-16 y cerró el hallazgo.
+- **Estado:** resuelto. La revisión dio que **ningún otro proyecto pudo estar afectado**: el defecto solo se dispara con el almacén enlazado por *junction*, y ninguna de las nueve carpetas `historico-chat/memory/` del registro ni ninguno de los 16 almacenes de `~/.claude/projects/*/memory/` lo está. `agro-system` —el que lo reportó y el único que lo tuvo— ya había restaurado los 75 archivos y sacado la memoria del junction, en su commit `6d4b130`.
 - **Responde a:** —.
-- **Dispara:** —, es revisar y correr un comando.
+- **Dispara:** —, era revisar y correr un comando.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md) — estuvo en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) hasta el 2026-08-16, cuando se promovió a pendiente propio.
+- **Dónde queda:** [pendientes/hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md) — estuvo en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) hasta el 2026-08-16, cuando se promovió a pendiente propio y se cerró.
 - **Nace en:** 2026-08-07 · la memoria del agente en el repositorio.
-- **Cerrado en:** —.
-- **Con qué se retoma:** ¿qué proyectos tenían el enganche el 2026-08-07, y les quedó memoria borrada sin recuperar?
+- **Cerrado en:** 2026-08-16 · [qué pendientes trabajamos](../2026-08-16/que-pendientes-trabajamos.md).
+- **Con qué se retoma:** —.
 
 ### H-4 · Las reglas de documentación tampoco cumplían el molde
 

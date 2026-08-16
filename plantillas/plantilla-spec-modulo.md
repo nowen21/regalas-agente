@@ -67,7 +67,7 @@
 
 ## 10. Plan de pruebas
 
-[[Regla base `08` + triangulación [`08·T7`](../base/08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos). Se aprueba junto con esta especificación.]]
+[[Regla base `08` + triangulación [`08·T7`](«RUTA-ESTANDAR»/base/08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos). Se aprueba junto con esta especificación.]]
 
 - **Escenarios:** caso feliz, casos límite, errores, permisos, validaciones.
 - **Corner cases (derivados):** «valores de frontera, clases de equivalencia, casos inválidos».

@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 20.0.1 — 2026-08-16
+
+**PARCHE** — arregla enlaces que nacían rotos. No cambia qué se exige.
+
+**Cada proyecto nacía con las citas a las reglas rotas.** Las plantillas citan sus reglas con enlace, como pide [`20·M15`](base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md), y el destino era relativo: `../base/…`. Dentro de este repositorio abre. Pero la plantilla no se queda acá: el instalador la copia dentro de un proyecto, y allá `../base/` es la carpeta que está **encima** del proyecto — nunca el estándar. Lo reportó `shopnest-mesa`, donde `hook_md.py` quedaba siempre en rojo por catorce enlaces muertos; un aviso que siempre suena se deja de leer, y por eso se perdieron fallas reales durante media sesión.
+
+- **Los 91 enlaces de las 22 plantillas pasan a `«RUTA-ESTANDAR»/base/…`.** El marcador ya existía y lo resuelve [`instalar.py · _rellenos()`](validadores/instalar.py) contra la carpeta donde corre el estándar. No está escrito a mano en ningún lado: si el estándar se muda, basta reinstalar desde la carpeta nueva.
+- **[`validadores/enlaces.py`](validadores/enlaces.py) aprende el marcador.** Sin esto el arreglo rompía la comprobación acá: 87 enlaces daban por rotos porque el marcador solo se llena al instalar. Ahora, sin llenar, se resuelve contra la raíz del repositorio.
+- **El límite:** la ruta que entra al archivo es la de la máquina donde se instaló, y los documentos generados sí se versionan. En otra máquina ese enlace no abre. No empeora nada —hoy no abre en ninguna—, pero tampoco lo resuelve del todo.
+
+**Qué hacer para quedar al día:** volver a correr la instalación, y los enlaces quedan apuntando al estándar de esta máquina.
+
 ## 20.0.0 — 2026-08-16
 
 **MAYOR** ⚠ obliga a migrar (cambia cómo se entrega todo lo que el agente escribe).

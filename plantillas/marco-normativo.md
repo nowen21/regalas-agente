@@ -1,6 +1,6 @@
 # Marco normativo del proyecto  ·  `[CAPA 3 · plantilla]`
 
-> Plantilla de capa 3. Cópiala al proyecto y **llénala** con lo que aplica a *este* cliente. El agente la lee para cumplir por construcción (base `16` · CQ1/CQ2). Borra los ejemplos y deja solo lo real. Reemplaza los `«…»`. Lo que no aplique se escribe `N/A` con su razón, no se borra ([`13·DOC21`](../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md)).
+> Plantilla de capa 3. Cópiala al proyecto y **llénala** con lo que aplica a *este* cliente. El agente la lee para cumplir por construcción (base `16` · CQ1/CQ2). Borra los ejemplos y deja solo lo real. Reemplaza los `«…»`. Lo que no aplique se escribe `N/A` con su razón, no se borra ([`13·DOC21`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md)).
 
 ---
 

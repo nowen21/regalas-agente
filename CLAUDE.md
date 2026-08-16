@@ -16,13 +16,13 @@ Las reglas se aplican a lo que el agente entrega en este repo, sin excepción. `
 
 Es obligatorio, no una cortesía. El chat se borra; el repo no.
 
-- **Cuándo crear el archivo:** apenas la sesión produce su primera decisión o su primer cambio. No al cerrar: un chat rara vez tiene cierre explícito, y esperarlo es la forma segura de no escribirlo nunca.
-- **Cuándo actualizarlo:** después de **cada** intercambio. No se acumula para el final.
-- **Qué va:** la transcripción literal — cada mensaje del usuario tal como lo escribió y cada respuesta del agente tal como la dio, con sus tablas, código y ejemplos. No se condensa ni se parafrasea. Solo se omite la salida cruda de herramientas.
-- **Marca de tiempo:** cada interacción, la del usuario y la del agente, lleva `AAAA-MM-DD HH:MM:SS` **leída del reloj del sistema** (`date "+%Y-%m-%d %H:%M:%S"`). Se toma una lectura al recibir el mensaje y otra al escribir la respuesta. Una hora que no se registró se escribe `hora no registrada`; **no se estima ni se reconstruye de memoria**.
-- **Formato y plantilla:** [`historico-chat/README.md`](historico-chat/README.md). Al crear un archivo, agregar su línea al índice de ese README.
+**La escribe el programa, no el agente.** [`validadores/hook_historico.py`](validadores/hook_historico.py) anota cada mensaje del usuario apenas lo envía y cada respuesta del agente apenas termina, con la hora del reloj de la máquina, y le pone su línea al índice. Así queda registrado desde el primer mensaje, aunque sea un "hola".
 
-El nombre del archivo es `AAAA-MM-DD-tema.md`; si hay más de una sesión el mismo día, se sufija `-2`, `-3`.
+**El agente no la escribe.** Solo comprueba que el archivo exista y, cuando el enganche se lo pide, propone el nombre del tema. Escribir la transcripción a mano la duplica y le mete horas inventadas: ya pasó seis veces.
+
+Lo que sí escribe el agente es el **resumen** de la sesión, en `historico-chat/resumenes/` — lo que quedó, no lo que se dijo. Va en el momento en que aparece cada hallazgo, no al cerrar.
+
+Formato y plantilla, en [`historico-chat/README.md`](historico-chat/README.md).
 
 ## 2 · Agregar o cambiar una regla del estándar
 

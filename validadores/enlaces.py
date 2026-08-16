@@ -24,6 +24,13 @@ CON_INDICE = ["pendientes", "notas", HISTORICO]
 
 EXTERNOS = ("http://", "https://", "mailto:", "ftp://", "//")
 
+# Las plantillas citan las reglas con este marcador delante, y no con `../base/`.
+# Tienen que hacerlo: la plantilla se copia dentro de un proyecto, y allá
+# `../base/` es la carpeta que está encima del proyecto — nunca el estándar.
+# `instalar.py` lo reemplaza por la ruta real al instalar. Acá, donde todavía
+# está sin llenar, apunta a la raíz de este repositorio.
+MARCADOR_RAIZ = "«RUTA-ESTANDAR»"
+
 
 def _es_interno(destino):
     return not (destino.startswith(EXTERNOS) or destino.startswith("#"))
@@ -80,7 +87,12 @@ def validar_enlaces(raiz=None):
             ruta = destino.split("#", 1)[0]
             if not ruta:
                 continue
-            objetivo = os.path.normpath(os.path.join(carpeta, ruta))
+            if ruta.startswith(MARCADOR_RAIZ):
+                base = raiz
+                ruta = ruta[len(MARCADOR_RAIZ):].lstrip("/")
+            else:
+                base = carpeta
+            objetivo = os.path.normpath(os.path.join(base, ruta))
             if not os.path.exists(objetivo):
                 hallazgos.append(Hallazgo(
                     FALLA, archivo, n, f"enlace roto: {destino}"))

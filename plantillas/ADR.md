@@ -1,6 +1,6 @@
 # ADR-000 — «Título de la decisión»   ·   `[CAPA 3]`
 
-> **Architecture Decision Record**: registra una decisión de arquitectura **no obvia** y su porqué ([`13·DOC2`](../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md)), para que no se pierda ni se re-discuta. La produce la estación de diseño (`disenar-arquitectura`) y la referencia la épica (`epica.md §10.2`). Se guarda en `documentacion/adr/ADR-<NNN>-<slug>.md`. Reemplaza los `«…»` y borra esta caja.
+> **Architecture Decision Record**: registra una decisión de arquitectura **no obvia** y su porqué ([`13·DOC2`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md)), para que no se pierda ni se re-discuta. La produce la estación de diseño (`disenar-arquitectura`) y la referencia la épica (`epica.md §10.2`). Se guarda en `documentacion/adr/ADR-<NNN>-<slug>.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 
@@ -54,5 +54,5 @@
 
 ## 6. Enlaces
 
-- **Señal asociada** ([`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)): «id/enlace en la memoria — tipo `decisión`».
+- **Señal asociada** ([`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)): «id/enlace en la memoria — tipo `decisión`».
 - **Afecta a:** «módulos, especificaciones o ADR relacionados».

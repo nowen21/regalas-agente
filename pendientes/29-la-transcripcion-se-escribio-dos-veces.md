@@ -20,7 +20,11 @@ El `CLAUDE.md` de este repositorio manda escribir la transcripción a mano —«
 
 **1. Limpiar el archivo del 2026-08-15.** Quitar los bloques que escribió el agente a mano y dejar los del enganche, que son los que traen la hora real. Se distinguen: los del enganche llevan `<!-- agente: … -->`. Después renumerar.
 
-**2. Que el `CLAUDE.md` deje de pedir lo que el programa ya hace.** Hoy su sección 1 describe el trabajo a mano como si nadie lo automatizara. Tiene que decir que el enganche escribe la transcripción y que el agente **no** la escribe: solo se asegura de que exista.
+**2. Que el `CLAUDE.md` deje de pedir lo que el programa ya hace.** ✅ **Hecho el 2026-08-16.** Su sección 1 describía el trabajo a mano como si nadie lo automatizara. Ahora dice que lo escribe el enganche y que el agente no lo toca.
+
+Eran **dos** archivos, no uno: el [`CLAUDE.md`](../CLAUDE.md) y el [`historico-chat/README.md`](../historico-chat/README.md), que repetía la misma orden y es a donde el primero manda para el formato. Arreglar uno solo dejaba la orden viva.
+
+La redacción no hubo que inventarla: [`plantillas/CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) ya decía *«La escribe el programa, no el agente»* desde que se automatizó el histórico. Se actualizó la plantilla que viaja a los proyectos y no la del repo que la escribe, así que **el defecto era solo de acá**: un proyecto instalado leía la versión buena.
 
 **3. Comprobar si le pasa a otras sesiones.** ✅ **Hecho el 2026-08-16.** Al escribir los resúmenes de las sesiones viejas aparecieron **cuatro copias a mano** más, todas sin la marca `<!-- sesion: … -->`:
 
@@ -33,7 +37,7 @@ El `CLAUDE.md` de este repositorio manda escribir la transcripción a mano —«
 
 Las cuatro se borraron por instrucción del usuario y siguen en el historial de git. Una quinta la había borrado el propio agente el 2026-08-07, en caliente. **Se perdió una cosa al hacerlo**: la copia del diplomado describía cada diapositiva (`[imagen: …]`) y la que quedó no, porque las imágenes llegaron pegadas al chat. Está en el historial.
 
-Sigue faltando el punto 1: la transcripción del 2026-08-15, con 61 encabezados de usuario para unos 30 mensajes.
+**Sigue faltando solo el punto 1:** limpiar la transcripción del 2026-08-15, con 61 encabezados de usuario para unos 30 mensajes. Ya se puede hacer sin que se vuelva a ensuciar, que era la dependencia.
 
 ## El límite
 

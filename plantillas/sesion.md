@@ -16,7 +16,7 @@
 | **Responde a** | La épica, la historia y el criterio de aceptación que este hallazgo cumple. `—` si no cae dentro de nada planeado. |
 | **Dispara** | La épica, la historia o el criterio **nuevo** que hace falta crear por causa de este hallazgo. Si es más de uno, **numerados en el orden en que se resuelven**, y cada uno con por qué va ahí. `—` si no abre trabajo. |
 | **Orden de resolución** | En qué puesto va este hallazgo entre los que quedaron abiertos, y por qué. En los resueltos, `—`. |
-| **Dónde queda** | Señal, pendiente, regla o memoria. Si es una regla, **enlazada** al archivo donde vive ([`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). |
+| **Dónde queda** | Señal, pendiente, regla o memoria. Si es una regla, **enlazada** al archivo donde vive ([`20·M15`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). |
 | **Nace en** | La sesión donde apareció: `AAAA-MM-DD · tema`. No cambia nunca, ni cuando el hallazgo se arrastra a otra sesión. |
 | **Cerrado en** | La sesión donde se cerró: `AAAA-MM-DD · tema`. Mientras esté abierto, `—`. |
 | **Con qué se retoma** | La pregunta que quedó viva. En los resueltos, `—`. |
@@ -49,7 +49,7 @@
 
 **Los dos del medio son los que enganchan el hallazgo con el trabajo.** Uno mira hacia atrás: esto que apareció, ¿ya estaba pedido en alguna parte? El otro mira hacia adelante: resolverlo, ¿obliga a abrir una historia nueva? Un hallazgo con los dos en `—` no es trabajo: es una nota, y probablemente sea una señal y nada más.
 
-**Toda regla que se nombre va enlazada.** Citarla por su ID no basta: quien lea el resumen meses después tiene que llegar a la regla en un clic, no salir a buscarla ([`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). Vale para cualquier campo del hallazgo, no solo para «dónde queda».
+**Toda regla que se nombre va enlazada.** Citarla por su ID no basta: quien lea el resumen meses después tiene que llegar a la regla en un clic, no salir a buscarla ([`20·M15`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). Vale para cualquier campo del hallazgo, no solo para «dónde queda».
 
 **Se anotan todos**, los resueltos también. El que se resolvió en la sesión sirve para que nadie vuelva a discutirlo, y el que quedó abierto sirve para arrancar la próxima discusión sin empezar de cero. Por eso el estado, el «cerrado en» y el «con qué se retoma» importan más que el resto: dicen si está cerrado, dónde se cerró y por dónde sigue.
 
@@ -57,10 +57,10 @@
 
 | Si es… | Va a… |
 |---|---|
-| Algo que se **aprendió** y no se recupera del código | `documentacion/senales.md` ([`13·DOC5`](../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)) |
+| Algo que se **aprendió** y no se recupera del código | `documentacion/senales.md` ([`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)) |
 | Algo que **falta hacer** | `pendientes/` |
-| Algo que **hay que exigir siempre** | Una regla de `base/`, por el procedimiento del [capítulo `20`](../base/20-meta-reglas/base.md) |
-| Cómo quiere trabajar **el usuario** | `historico-chat/memory/` ([`01·C19`](../base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)) |
+| Algo que **hay que exigir siempre** | Una regla de `base/`, por el procedimiento del [capítulo `20`](«RUTA-ESTANDAR»/base/20-meta-reglas/base.md) |
+| Cómo quiere trabajar **el usuario** | `historico-chat/memory/` ([`01·C19`](«RUTA-ESTANDAR»/base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)) |
 
 Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era conversación, y ya quedó en la transcripción.
 
