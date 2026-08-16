@@ -329,8 +329,9 @@ def instalar_stack(ruta, aplicar):
     if aplicar:
         destino = os.path.join(ruta, ".agente", "stack-instalacion.md")
         os.makedirs(os.path.dirname(destino), exist_ok=True)
+        cuerpo = _rellenar(leer(original), _rellenos(ruta))
         with open(destino, "w", encoding="utf-8", newline="\n") as f:
-            f.write(leer(original) + checklist.sello(RAIZ))
+            f.write(cuerpo + checklist.sello(RAIZ))
     return ["copiar .agente/stack-instalacion.md"]
 
 
@@ -431,7 +432,9 @@ def instalar_recuerdos(ruta, aplicar):
                  f"{recuerdos.INDICE}"]
         if aplicar:
             os.makedirs(os.path.dirname(archivo), exist_ok=True)
-            _escribir_sellado(archivo, leer(PLANTILLA_MEMORIA), comp, ruta)
+            _escribir_sellado(
+                archivo, _rellenar(leer(PLANTILLA_MEMORIA), _rellenos(ruta)),
+                comp, ruta)
     else:
         pasos = _refrescar_sello(
             archivo, comp, ruta, aplicar,
@@ -693,6 +696,7 @@ def instalar_agente_config(ruta, aplicar):
     """
     pasos = []
     carpeta = os.path.join(ruta, ".agente")
+    rellenos = _rellenos(ruta)
     for nombre in CONFIG_AGENTE:
         destino = os.path.join(carpeta, nombre)
         if os.path.isfile(destino):
@@ -705,7 +709,7 @@ def instalar_agente_config(ruta, aplicar):
         if aplicar:
             os.makedirs(carpeta, exist_ok=True)
             with open(destino, "w", encoding="utf-8", newline="\n") as f:
-                f.write(leer(origen))
+                f.write(_rellenar(leer(origen), rellenos))
     return pasos or ["los 4 archivos de .agente/ ya estaban"]
 
 

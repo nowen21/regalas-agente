@@ -141,7 +141,9 @@ Entonces se dice cuál y por qué
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
+|---|---|---|---|---|---|
+| [`A-EP-007-HU-001-rellenar-los-marcadores-al-copiar`](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/) | CA-01, CA-02 | [plan_trabajo.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/plan_trabajo.md) | [plan_pruebas.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/plan_pruebas.md) | [resultado_pruebas.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/resultado_pruebas.md) · **Cumple** | Cerrada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.1.0 — 2026-08-16
+
+**MENOR** — arregla la instalación y suma la prueba que faltaba. No cambia qué se exige.
+
+**Tres de los cuatro sitios donde el instalador copia no llenaban los huecos.** Solo el del `CLAUDE.md` pasaba el texto por `_rellenar()`; el del stack, el de la memoria y el de los cuatro archivos de `.agente/` escribían la plantilla cruda. Así, `«RUTA-ESTANDAR»` llegaba intacto al proyecto y la cita a la regla no abría. Lo reportó `shopnest-mesa`, mirando el enlace a [`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) de su `.agente/stack-instalacion.md`.
+
+Es la deuda que dejó cerrar la [20.0.1](#2001--2026-08-16) sin fase ni plan de pruebas — el caso que motivó [`02·F23`](base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Esta vez sí hubo fase: [`A-EP-007-HU-001-rellenar-los-marcadores-al-copiar`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/).
+
+- **Los tres puntos de copia de [`validadores/instalar.py`](validadores/instalar.py) rellenan.** Se verificó que el sello no se ve afectado: la huella sale del stack central, no del texto copiado.
+- **Nace la primera prueba del repositorio**, [`validadores/tests/test_instalar_marcadores.py`](validadores/tests/test_instalar_marcadores.py). Se corre con `python -m unittest discover -s validadores/tests` y usa la biblioteca estándar: sin internet y sin instalar nada.
+- **Qué comprueba, y qué no.** Solo los marcadores que `_rellenos()` sabe llenar. Los otros huecos —a qué se dedica el negocio, quién usa el sistema— llegan vacíos **a propósito**: los contesta el proyecto, y borrarlos sería inventar la respuesta.
+- **Se comprobó que la prueba no es vacía:** con el defecto reintroducido se pone roja y nombra cada marcador.
+
+**Qué hacer para quedar al día:** los proyectos **nuevos** nacen bien desde ya. Los que ya estaban instalados **no se arreglan reinstalando**, y son dos motivos distintos:
+
+- Los cuatro archivos de `.agente/` no se pisan una vez creados, porque los llena el proyecto.
+- El `stack-instalacion.md` sí se pisaría, pero la huella se calcula del stack central y no del archivo copiado: como la plantilla no cambió, el instalador dice «ya estaba al día» y no reescribe. Lo comprobó `shopnest-mesa` el mismo día, y quedó como [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md).
+
+Mientras el 42 no cierre, un proyecto viejo se repara a mano: reemplazar `«RUTA-ESTANDAR»` por la ruta del estándar, o borrar el archivo y reinstalar si todavía nadie lo había llenado.
+
 ## 21.0.0 — 2026-08-16
 
 **MAYOR** ⚠ obliga a migrar (cambia por dónde entra al trabajo lo que dice el backlog).

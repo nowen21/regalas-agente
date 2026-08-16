@@ -128,7 +128,7 @@ Agrega los siete enganches al archivo de ajustes `.claude/settings.json`. Respet
 
 **`instalar_stack(ruta, aplicar)`**
 
-Copia `plantillas/stack-instalacion.md` a `.agente/` y le pone su **huella**, que es una marca corta que dice de qué versión salió la copia; sirve para saber después si quedó vieja. Esta copia **sí se pisa**, porque nadie escribe nada adentro: es la foto de lo que el estándar exige hoy.
+Copia `plantillas/stack-instalacion.md` a `.agente/`, **llena sus huecos** y le pone su **huella**, que es una marca corta que dice de qué versión salió la copia; sirve para saber después si quedó vieja. Esta copia **sí se pisa**, porque nadie escribe nada adentro: es la foto de lo que el estándar exige hoy.
 
 **`instalar_historico(ruta, aplicar)`**
 
@@ -136,7 +136,7 @@ Crea `historico-chat/README.md` desde la plantilla. Si ya existe no lo pisa; sol
 
 **`instalar_recuerdos(ruta, aplicar)`**
 
-Crea `historico-chat/memory/memory.md` desde la plantilla y después mueve ahí lo que haya quedado en la memoria de la herramienta. Si la carpeta ya está enlazada y el índice existe, no toca nada.
+Crea `historico-chat/memory/memory.md` desde la plantilla —con sus huecos llenos— y después mueve ahí lo que haya quedado en la memoria de la herramienta. Si la carpeta ya está enlazada y el índice existe, no toca nada.
 
 **`instalar_estructura(ruta, aplicar)`**
 
@@ -148,7 +148,9 @@ Agrega al `.gitignore` las líneas de `IGNORADOS` que falten. Solo agrega: nunca
 
 **`instalar_agente_config(ruta, aplicar)`**
 
-Copia los cuatro archivos de `CONFIG_AGENTE` desde `plantillas/`, solo si faltan.
+Copia los cuatro archivos de `CONFIG_AGENTE` desde `plantillas/`, solo si faltan, llenando los huecos que el instalador sabe llenar.
+
+**Dos clases de hueco, y solo una la llena el instalador.** Estos cuatro archivos llegan al proyecto **a propósito con huecos**: son las preguntas que nadie puede responder desde afuera —a qué se dedica el negocio, quién usa el sistema— y las contesta el proyecto después. Lo que sí se llena es lo que el instalador sabe: dónde vive el estándar, cómo se llama el proyecto, la fecha. Si uno de esos sobrevive a la copia, la cita a una regla llega muerta.
 
 **`instalar_claude_md(ruta, aplicar)`**
 
@@ -185,7 +187,8 @@ Actualiza solo la marca de huella de un archivo, sin tocar su contenido.
 **`_rellenos(ruta)`**
 
 - **Recibe:** la carpeta del proyecto.
-- **Retorna:** la lista de «hueco → con qué se llena» para completar el molde del `CLAUDE.md`: el nombre del proyecto, su nombre corto, dónde está el estándar, dónde está el proyecto, qué versión del estándar es y la fecha de hoy. Incluye también los huecos de moldes anteriores, para que un proyecto viejo se ponga al día solo.
+- **Retorna:** la lista de «hueco → con qué se llena» para completar los moldes que se copian al proyecto: el nombre del proyecto, su nombre corto, dónde está el estándar, dónde está el proyecto, qué versión del estándar es y la fecha de hoy. Incluye también los huecos de moldes anteriores, para que un proyecto viejo se ponga al día solo.
+- **Es además la lista de lo que el instalador se comprometió a llenar.** La prueba `validadores/tests/test_instalar_marcadores.py` la usa como criterio: ningún archivo copiado puede conservar uno de estos. Al salir de acá, el marcador que se agregue mañana queda cubierto sin tocar la prueba.
 
 **`_rellenar(texto, rellenos)`**
 
