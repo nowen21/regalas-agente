@@ -18,3 +18,4 @@ Contenido inmediato de esta carpeta.
 | [HU-011-molde-de-las-reglas/](HU-011-molde-de-las-reglas/) | Historia de usuario: molde de las reglas |
 | [HU-012-marcas-de-generacion-automatica/](HU-012-marcas-de-generacion-automatica/) | Historia de usuario: marcas de generación automática |
 | [HU-013-comparar-el-plan-con-lo-hecho/](HU-013-comparar-el-plan-con-lo-hecho/) | Historia de usuario: comparar el plan aprobado con lo que se hizo |
+| [HU-014-un-solo-veredicto-por-fase/](HU-014-un-solo-veredicto-por-fase/) | Historia de usuario: un solo veredicto por fase |

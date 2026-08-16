@@ -142,6 +142,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-011](HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) | Comprobar que cada regla del estándar cumple su propio molde | Must | M |
 | [HU-012](HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) | Comprobar las marcas de generación automática en lo que se entrega | Should | S |
 | [HU-013](HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) | Comparar el plan aprobado con lo que se hizo | Must | M |
+| [HU-014](HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) | Que el veredicto de una fase no diga dos cosas distintas | Must | S |
 
 ## 10. Consideraciones técnicas
 
@@ -199,6 +200,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 3 | Comprobaciones de estructura y de datos sensibles | HU-006, HU-007 |
 | Fase 4 | Corrida completa y conteo por regla | HU-008, HU-009 |
 | Fase 5 | El estándar comprobándose a sí mismo, y el proyecto contra lo que declara | HU-010, HU-011, HU-012 |
+| Fase 6 | Un documento contra otro: el plan contra lo hecho, y el veredicto contra sí mismo | HU-013, HU-014 |
 
 ## 15. Definition of Ready
 

@@ -172,6 +172,15 @@ La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
 | 2 | | |
 | 3 | | |
 
+**Un paso, una acción.** Cada fila lleva un solo verbo y un solo resultado esperado. Dos acciones en la misma fila comparten un único renglón de resultado: al ejecutar se registra el de la segunda y el de la primera se pierde, sin que nadie lo note.
+
+```
+INCORRECTO: | 1 | Tomar la lista de origen y contar cuántos términos tiene | Queda un número por grupo |
+            — se anota el conteo y no queda rastro de qué lista se tomó
+CORRECTO:   | 1 | Tomar la lista de origen                | Queda a la vista, con su archivo |
+            | 2 | Contar cuántos términos tiene por grupo | Queda un número por grupo        |
+```
+
 **Resultado esperado final:** «Estado observable del sistema»
 **Postcondiciones:** «Registros creados, estados modificados, eventos de auditoría»
 

@@ -81,6 +81,9 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 23 | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. |
 | 24 | [Buscar en el repositorio antes de preguntar](24-buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. |
 | 25 | [Las reglas de cómo se escribe llegan en el índice, no puestas](25-las-reglas-de-como-se-escribe-van-en-el-indice.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
+| 26 | [«Corrida» es jerga y no está definida](26-corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. |
+| 27 | [La fase A de EP-003 · HU-010 cerró sin cumplir](27-la-fase-a-de-hu-010-cerro-sin-cumplir.md) | `RNF-01` sin caso ejecutado y 16 de 35 pasos sin registro de qué salió. El veredicto real es «No cumple». |
+| 28 | [El veredicto de la fase vive en dos sitios](28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) | El `resultado_pruebas` y el `estado-fase` lo escriben a mano cada uno, y ya dicen cosas distintas. |
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 

@@ -89,3 +89,4 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 
 <!-- huella: 2a3060c58acb · estandar 15.0.0 -->
 - [2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md](2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md) — por qué lo de H-4 no funciona: el enganche nunca crea el resumen y la prueba lo dio por bueno.
+- [2026-08-15-la-plantilla-del-resultado-de-pruebas.md](2026-08-15-la-plantilla-del-resultado-de-pruebas.md) — cada sección de la plantilla dice qué pregunta responde; aplicarla destapa que una fase cerrada no cumplía. · [resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md](resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md)
