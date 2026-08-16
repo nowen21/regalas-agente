@@ -34,4 +34,5 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 
 ## Días
 
-- [2026-08-14/](2026-08-14/) — dos sesiones: las HU de la comprobación automática, y el cierre de su hallazgo H-4.
+- [2026-08-14/](2026-08-14/) — cuatro sesiones: las HU de la comprobación automática, el cierre de su hallazgo H-4, por qué ese cierre no funcionó, y el glosario de la terminología.
+- [2026-08-15/](2026-08-15/) — dos sesiones: la plantilla del resultado de pruebas, y el inventario de los resúmenes que faltan.
