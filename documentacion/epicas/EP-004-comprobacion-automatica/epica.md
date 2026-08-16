@@ -144,6 +144,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-013](HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) | Comparar el plan aprobado con lo que se hizo | Must | M |
 | [HU-014](HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) | Que el veredicto de una fase no diga dos cosas distintas | Must | S |
 | [HU-015](HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) | Comprobar que no haya una regla derogada sin adoptar antes de avanzar de fase | Must | S |
+| [HU-016](HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) | Comprobar que un pendiente marcado hecho nombre la historia y la fase donde se construyó | Should | S |
 
 ## 10. Consideraciones técnicas
 
@@ -203,6 +204,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 5 | El estándar comprobándose a sí mismo, y el proyecto contra lo que declara | HU-010, HU-011, HU-012 |
 | Fase 6 | Un documento contra otro: el plan contra lo hecho, y el veredicto contra sí mismo | HU-013, HU-014 |
 | Fase 7 | Retrodocumentar la comprobación de la derogación sin adoptar, que se construyó antes de tener su fase | HU-015 |
+| Fase 8 | Que el backlog no se construya saltándose la cadena: el pendiente cerrado nombra su fase | HU-016 |
 
 ## 15. Definition of Ready
 

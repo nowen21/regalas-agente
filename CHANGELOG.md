@@ -11,6 +11,19 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar (cambia por dónde entra al trabajo lo que dice el backlog).
+
+**Un pendiente se estaba ejecutando como si fuera un plan.** El backlog dice qué falta y por qué, y eso se leía como permiso para editar directo: se cambiaba el código, se subía la versión y se marcaba hecho. Sin fase no hay plan de pruebas, y sin plan de pruebas nadie escribe qué había que comprobar. Se vio el mismo día en la [20.0.1](#2001--2026-08-16): los enlaces de las plantillas se arreglaron sin fase, y la única prueba que importaba —instalar en un proyecto y hacer clic— no la corrió nadie. El defecto salió del proyecto que lo sufrió, no del estándar que lo produjo.
+
+- **[`02·F23`](base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)**: el pendiente se baja a historia de usuario de su épica y se construye como fase de esa historia. El archivo del backlog no es el plan.
+- **Extiende a [`02·F0`](base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)**, y hereda su excepción: el pendiente que solo pide decidir algo o leer no es desarrollo y no abre fase.
+- **Dos procedimientos decían lo contrario y quedan corregidos.** Los nueve pasos de [`20 · base.md`](base/20-meta-reglas/base.md) y el §2 del [`CLAUDE.md`](CLAUDE.md) del estándar describían cambiar una regla como *buscar → enrutar → escribir → versionar*. Eso sigue siendo cómo queda **escrita** la regla; no reemplaza la cadena.
+- **Validable, falta el validador**, y así queda en [`validadores/reglas-validables.md`](validadores/reglas-validables.md): un programa puede comprobar que el pendiente cerrado nombre su HU y su fase, pero antes hay que fijar dónde se escribe esa referencia.
+
+**Qué hacer para quedar al día:** el pendiente que ya esté en curso se termina como venía; el siguiente que se abra entra por su HU. Lo cerrado no se reabre — salvo lo que quedó sin probar, que se retrodocumenta con su fase.
+
 ## 20.0.1 — 2026-08-16
 
 **PARCHE** — arregla enlaces que nacían rotos. No cambia qué se exige.

@@ -28,6 +28,8 @@ Formato y plantilla, en [`historico-chat/README.md`](historico-chat/README.md).
 
 El procedimiento completo está en las meta-reglas del preámbulo — se sigue tal cual, sin atajos. En corto: buscar antes de crear (`M12`), enrutar (`M13`, `M1`, `M2`), verificar que sea agnóstica de stack (`M3`), ID libre del prefijo del capítulo (`M4`), formato canónico con una sola exigencia y ejemplo INCORRECTO/CORRECTO (`M5`), declarar dependencias y excepciones (`M7`, `M8`), decidir si es validable (`M9`), versionar (`M10`).
 
+**Y si el cambio sale de un pendiente, primero va la cadena.** El backlog de [`pendientes/`](pendientes/) no se ejecuta desde su archivo: cada uno se baja a historia de usuario y se construye como fase, con su plan y sus pruebas (`02·F23`). Ese procedimiento dice cómo queda escrita la regla; no reemplaza los eslabones de `02·F0`.
+
 **Versionar no es opcional** (`M10`): todo cambio de `base/` o `plantillas/` suma entrada en [`CHANGELOG.md`](CHANGELOG.md) y sube [`VERSION`](VERSION).
 
 - **MAYOR** — obliga a un proyecto al día a hacer algo nuevo.

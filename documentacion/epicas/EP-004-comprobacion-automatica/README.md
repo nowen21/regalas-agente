@@ -19,3 +19,5 @@ Contenido inmediato de esta carpeta.
 | [HU-012-marcas-de-generacion-automatica/](HU-012-marcas-de-generacion-automatica/) | Historia de usuario: marcas de generación automática |
 | [HU-013-comparar-el-plan-con-lo-hecho/](HU-013-comparar-el-plan-con-lo-hecho/) | Historia de usuario: comparar el plan aprobado con lo que se hizo |
 | [HU-014-un-solo-veredicto-por-fase/](HU-014-un-solo-veredicto-por-fase/) | Historia de usuario: un solo veredicto por fase |
+| [HU-015-derogacion-sin-adoptar/](HU-015-derogacion-sin-adoptar/) | Historia de usuario: derogación sin adoptar |
+| [HU-016-el-pendiente-cerrado-nombra-su-fase/](HU-016-el-pendiente-cerrado-nombra-su-fase/) | Historia de usuario: el pendiente cerrado nombra su fase |

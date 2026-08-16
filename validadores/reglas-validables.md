@@ -14,7 +14,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Categoría | Cuántas |
 |---|---|
 | ✅ **Ya son validadores** | ~51 |
-| 🟡 **Validables, faltan** | ~11 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto) |
+| 🟡 **Validables, faltan** | ~12 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto; `02·F23` necesita que el pendiente cerrado declare su fase) |
 | 🔴 **No validables** (criterio humano) | ~94 |
 
 > Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
@@ -73,6 +73,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `F2` | ¿código de fase sin especificación referenciado? | cruzar el código con su especificación; es el más pesado |
 | `F18` | cada intervención del plan referencia un CA | mapear intervención→CA dentro del plan (fuzzy) |
 | [`02·F21`](../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) | que un archivo nuevo no traiga un incumplimiento que ya está anotado en `pendientes/` | necesita saber qué comprueba cada pendiente; hoy eso está en prosa |
+| [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) | que todo pendiente marcado hecho nombre la HU y la fase donde se construyó | el pendiente cerrado no declara esa referencia en un sitio fijo; hay que fijarlo en la plantilla del pendiente antes de poder leerlo |
 | `DOC7` | cruce bidireccional A↔B en §Historial cruzado | narrativa de complemento entre fases (fuzzy) |
 | `DOC14` (formato) | link de 2 partes: texto=ruta absoluta | forzarlo marca los links de texto descriptivo (alto FP) |
 | [`13·DOC19`](../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) | toda plantilla marca sus huecos `«…»` y ninguna usa otra marca | se valida en seco sobre `plantillas/`; lo construye EP-004 |

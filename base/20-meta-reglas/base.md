@@ -164,6 +164,8 @@ Esto también le pone freno a la capa 3. Un catálogo que crece con reglas suelt
 
 ## Cómo se agrega una regla nueva (procedimiento)
 
+**Antes del paso 1, si el cambio sale de un pendiente:** el pendiente se baja a historia de usuario y se construye como fase ([`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)). Estos nueve pasos dicen cómo queda escrita la regla, no reemplazan la cadena de [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md).
+
 1. **Buscar** si ya existe o si basta afinar una ([`M12`](reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md)).
 2. **Enrutar:** ¿va en `base/`? ([`M13`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md)). ¿Capa 1 o 2? ([`M1`](reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)). ¿Qué capítulo? ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)).
 3. **Verificar que es agnóstica** de stack y dominio ([`M3`](reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md)).
