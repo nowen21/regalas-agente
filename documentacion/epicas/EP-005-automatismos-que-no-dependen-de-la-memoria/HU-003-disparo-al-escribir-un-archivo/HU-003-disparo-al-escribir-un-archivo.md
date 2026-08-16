@@ -40,6 +40,8 @@ El momento correcto es al escribir el archivo, no al final del día. Un enlace r
 | RN-03 | Solo corre lo que es rápido: lo lento se corre a demanda |
 | RN-04 | Lo que no le toca se ignora en silencio, sin ruido |
 | RN-05 | La comprobación no modifica el archivo |
+| RN-06 | Cada hallazgo es **duro** o **blando**: el duro detiene el trabajo hasta que se arregle, el blando avisa y el trabajo sigue |
+| RN-07 | Cuál es duro lo dice la regla que se incumplió, no el programa ni el momento: así no cambia según quién lo corra |
 
 ### 3.2 Supuestos
 
@@ -84,10 +86,27 @@ Entonces no pasa nada ni se muestra ningún mensaje
 2. Guardar. Resultado esperado: no aparece ningún mensaje.
 - **Aprobado cuando:** el automatismo no genera ruido.
 
+### CA-03 — El hallazgo grave detiene; el resto avisa
+
+```gherkin
+Dado que la comprobación encontró algo al escribir el archivo
+Cuando ese hallazgo es de los que la regla marca como duros
+Entonces el trabajo se detiene y se dice qué hay que arreglar
+Y cuando no lo es, se avisa y el trabajo sigue
+```
+
+**Cómo validarlo:**
+
+1. Escribir un archivo con un hallazgo de los blandos, como una errata de forma. Resultado esperado: sale el aviso y se puede seguir.
+2. Escribir uno con un hallazgo duro, de los que la regla marca así. Resultado esperado: no se puede seguir hasta arreglarlo, y se dice cuál es.
+3. Arreglarlo y volver a guardar. Resultado esperado: sigue.
+- **Aprobado cuando:** lo grave no se puede ignorar por descuido, y lo leve no estorba.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Rendimiento** — el disparo no se nota en el ritmo de trabajo.
 - [ ] **Errores** — si la comprobación falla, se avisa y el trabajo continúa.
+- [ ] **Reversibilidad** — detener nunca deja el archivo a medias: lo escrito queda como estaba.
 
 ---
 
@@ -182,3 +201,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Nacen `RN-06`, `RN-07` y `CA-03`: la historia decía que la comprobación corre y que el resultado vuelve, pero no qué pasa cuando el hallazgo es grave. Con eso, un hallazgo crítico y una errata valían igual, y los dos se podían ignorar. Sale del hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen` |

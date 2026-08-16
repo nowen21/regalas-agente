@@ -17,6 +17,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import cargador         # noqa: E402
 import commits          # noqa: E402
 import dependencias     # noqa: E402
 import enlaces          # noqa: E402
@@ -1950,6 +1951,93 @@ class ResumenDeLaSesion(unittest.TestCase):
     def test_un_proyecto_sin_carpeta_de_resumenes_no_se_ve_afectado(self):
         raiz = tempfile.mkdtemp()
         self.assertEqual(resumen.crear(raiz, "2026-08-14-maracuya.md", raiz), "")
+
+
+class RepartoDeLasReglas(unittest.TestCase):
+    """Qué llega puesto al abrir la sesión y qué llega como índice.
+
+    El reparto existía desde la 5.0.0 y nadie lo probaba: una línea cambiada
+    dejaba al agente sin identidad y nada avisaba. Estas pruebas son esa red.
+    Se comprueba **el reparto**, no el texto de una regla concreta, para que
+    renombrar una regla no las rompa.
+    """
+
+    def _base(self, *nombres):
+        """Un cuerpo de reglas de prueba, con un archivo por nombre pedido."""
+        raiz = tempfile.mkdtemp()
+        base = os.path.join(raiz, "base")
+        for nombre in nombres:
+            ruta = os.path.join(base, nombre)
+            os.makedirs(os.path.dirname(ruta), exist_ok=True)
+            with open(ruta, "w", encoding="utf-8") as f:
+                f.write(f"# Título de {nombre}\n\nCuerpo de {nombre}.\n")
+        return raiz
+
+    # CP-001 · los capítulos que rigen cada frase llegan con su texto
+    def test_los_capitulos_00_y_01_llegan_completos(self):
+        raiz = self._base("00-nucleo.md", "00-identidad/base.md",
+                          "01-conducta.md", "05-tema/base.md")
+        texto = cargador.contexto(raiz)
+        for nombre in ("00-nucleo.md", "00-identidad/base.md", "01-conducta.md"):
+            self.assertIn(f"Cuerpo de {nombre}", texto, nombre)
+
+    def test_el_resto_llega_solo_como_indice(self):
+        raiz = self._base("00-nucleo.md", "05-tema/base.md")
+        texto = cargador.contexto(raiz)
+        self.assertNotIn("Cuerpo de 05-tema/base.md", texto)
+        self.assertIn("base/05-tema/base.md", texto)
+        self.assertIn("Título de 05-tema/base.md", texto)
+
+    def test_un_capitulo_nuevo_del_prefijo_entra_solo(self):
+        # El reparto mira el prefijo de la ruta, así que un `01-` nuevo no
+        # obliga a tocar el programa (RN-14).
+        raiz = self._base("00-nucleo.md", "01-conducta.md", "01-otro-nuevo.md")
+        self.assertIn("Cuerpo de 01-otro-nuevo.md", cargador.contexto(raiz))
+
+    def test_el_capitulo_en_carpeta_no_cae_al_indice(self):
+        # Se decide por el primer tramo de la ruta y no por el nombre del
+        # archivo: si no, `00-identidad/base.md` caería al índice (RN-12).
+        raiz = self._base("00-identidad/base.md")
+        self.assertIn("Cuerpo de 00-identidad/base.md", cargador.contexto(raiz))
+
+    # CP-002 · el contexto dice qué llegó puesto y qué hay que abrir
+    def test_dice_que_lo_cargado_es_obligatorio(self):
+        raiz = self._base("00-nucleo.md", "05-tema/base.md")
+        self.assertIn("CARGADAS, OBLIGATORIAS", cargador.contexto(raiz))
+
+    def test_dice_que_el_indice_hay_que_abrirlo(self):
+        raiz = self._base("00-nucleo.md", "05-tema/base.md")
+        texto = cargador.contexto(raiz)
+        self.assertIn("NO ESTÁN CARGADAS, SOLO EL ÍNDICE", texto)
+        self.assertIn("leer el archivo completo", texto)
+
+    # CP-003 · sin cuerpo de reglas no entrega nada
+    def test_sin_carpeta_base_no_entrega_nada(self):
+        raiz = tempfile.mkdtemp()
+        self.assertEqual(cargador.contexto(raiz), "")
+        self.assertEqual(os.listdir(raiz), [])
+
+    def test_con_base_vacia_no_entrega_nada(self):
+        raiz = tempfile.mkdtemp()
+        os.makedirs(os.path.join(raiz, "base"))
+        self.assertEqual(cargador.contexto(raiz), "")
+
+    # CP-005 · con el gate sin pasar entrega solo esa regla
+    def test_sin_pasar_el_gate_entrega_solo_esa_regla(self):
+        raiz = self._base("00-nucleo.md", cargador.GATE)
+        texto = cargador.contexto(raiz, gate_ok=False)
+        self.assertIn("ARRANQUE DETENIDO", texto)
+        self.assertIn(f"Cuerpo de {cargador.GATE}", texto)
+        self.assertNotIn("Cuerpo de 00-nucleo.md", texto)
+
+    # CP-004 · lo que cuesta el arranque, medido contra el repositorio real
+    def test_lo_que_se_inyecta_de_este_repositorio_se_puede_medir(self):
+        texto = cargador.contexto(comun.RAIZ if hasattr(comun, "RAIZ") else ".")
+        if not texto:
+            self.skipTest("sin base/ en la raíz de la corrida")
+        kb = len(texto.encode("utf-8")) / 1024
+        self.assertGreater(kb, 1)
+        self.assertLess(kb, 120, "el arranque creció más de lo medido en la fase")
 
 
 class EngancheDelResumenPorElCaminoReal(unittest.TestCase):

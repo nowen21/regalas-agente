@@ -141,6 +141,8 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-006](HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) | Correr la batería completa antes de publicar | Should | M |
 | [HU-007](HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md) | Recoger al abrir sesión lo que quedó guardado por fuera del repositorio | Should | S |
 | [HU-008](HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) | El enganche que sostiene el resumen de la sesión | Must | M |
+| [HU-009](HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) | Lo que gobierna cada frase llega puesto al abrir la sesión | Must | M |
+| [HU-010](HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | El capítulo que rige lo que se escribe llega al escribirlo | Must | M |
 
 ## 10. Consideraciones técnicas
 

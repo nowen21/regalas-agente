@@ -11,6 +11,47 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 16.0.0 — 2026-08-15
+
+**MAYOR** ⚠ obliga a migrar (un plan de pruebas en curso con pasos de dos acciones hay que partirlo).
+
+**Un paso de dos acciones pierde la mitad de lo que salió.** El plan de una fase decía *«tomar la lista de origen **y** contar cuántos términos tiene»* en una sola fila, con un solo renglón de resultado esperado. Al ejecutar quedó anotado el conteo y se perdió de dónde había salido la lista, que era lo que había que comprobar. El caso quedó en "aprobado" con la mitad sin registro, y eso no se vio hasta bajar el resultado a la forma nueva de [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md).
+
+- **[`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md)** §6: **un paso, una acción**. Cada fila lleva un solo verbo y un solo resultado esperado, con su ejemplo INCORRECTO/CORRECTO.
+- **Se aplicó al plan que lo destapó**, [la fase A de EP-003 · HU-010](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/plan_pruebas.md), versión 1.1: seis pasos partidos o reescritos en CP-001, CP-002, CP-004, CP-005, CP-007 y CP-008. Ningún caso cambia lo que comprueba.
+- **El resultado de esa fase pasa de «aprobada con una prueba pendiente» a «No cumple».** No es un cambio de criterio: la plantilla no admite estado intermedio y `RNF-01` no tiene caso ejecutado. Con los pasos partidos se ve además que 15 de los 33 no dejaron registro de qué salió.
+- **La regla «se arranca desde cero» destapó dos pasos dados por supuestos** en el mismo plan (versión 1.2): CP-004 no decía cómo se eligen las tres entradas de muestra, y CP-006 no decía que hay que conseguir a alguien que no haya escrito el glosario — que era justo lo que tenía el caso bloqueado, sin que apareciera en ninguna fila.
+- **La sección 2 de [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) pedía lo mismo dos veces** —un bloque por pareja `CA`–`CP` arriba y un «Detalle de `CP-00N`» abajo—, y quien leyera no sabía cuál mandaba. Queda un solo bloque, con sus tres partes y **cuatro reglas que dicen qué es "detallado"**: un paso por cada fila del plan, se arranca desde cero, ningún paso queda vacío, y está detallado cuando alguien que no estuvo puede repetir la prueba sin preguntar nada.
+
+## 15.4.3 — 2026-08-15
+
+**PARCHE** (se documenta y se prueba algo que ya corría; nadie tiene que hacer nada nuevo).
+
+**El reparto de las reglas al abrir la sesión no estaba escrito en ninguna parte, y nadie lo probaba.** [`validadores/cargador.py`](validadores/cargador.py) manda completos los capítulos que empiezan por `00-` y `01-` y del resto manda el índice, desde la versión 5.0.0. Esa decisión solo vivía en un comentario del programa: una línea cambiada dejaba al agente sin identidad y nada avisaba.
+
+- **[`documentacion/automatismos/spec.md`](documentacion/automatismos/spec.md)** gana la sección 4.1 con siete reglas de negocio: qué llega completo, qué llega en índice, por qué se decide por la ruta y no por el nombre del archivo, qué pasa cuando el arranque está detenido y por qué no se puede cargar todo.
+- **Diez pruebas nuevas** en la clase `RepartoDeLasReglas`, y se comprobó que cazan el defecto: con el reparto roto a propósito, el capítulo de conducta deja de llegar y la prueba lo detecta.
+- **Medido y escrito:** 73 KB de 369 KB, y 0,21 s el enganche que los entrega.
+- **El [pendiente 25](pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md) se cierra por falso.** Decía que `ID8` se incumplió porque llegaba como línea de índice; llegaba completa. La causa se había deducido en vez de verificarse, y esa es la parte que no se puede repetir.
+
+## 15.4.2 — 2026-08-15
+
+**PARCHE** (deja escrita la pregunta que la sección ya venía respondiendo; no exige nada nuevo).
+
+**La sección de identificación no decía qué se responde ahí.** Arrancaba directo en la tabla, así que se llenaba como un trámite. Ahora abre con su pregunta: **¿qué se está probando?**
+
+- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: una línea al abrir la sección 0.
+- **«Corrida» pasa a «ejecución»** en esa plantilla, y la sección 1 dice qué es: correr las pruebas de principio a fin. «Corrida» era jerga y no estaba en el [glosario](base/glosario.md) como término propio.
+- **Las secciones 1 y 2 también abren con su pregunta**, y la 2 pide explicar qué problema resuelve cada pareja `CA`–`CP`, con su ejemplo: el problema, las condiciones, los pasos con lo que salió, y cómo se verificó que la pareja cumple.
+
+## 15.4.1 — 2026-08-15
+
+**PARCHE** (le da forma a lo que pidió la 15.4.0; no exige nada nuevo).
+
+**El detalle de un caso quedó en tres partes, no en cinco.** Al aplicarlo a los diecisiete casos de una fase se vio que dos sobraban: los pasos esperados y los que se siguieron son los mismos pasos, así que van en una sola tabla de tres columnas —qué hacer, qué tiene que pasar y qué salió—, y el desvío se lee en la fila. El veredicto tampoco se repite en el detalle: ya vive en la tabla de casos ejecutados.
+
+- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: las tres partes, con el ejemplo en esa forma.
+
 ## 15.4.0 — 2026-08-14
 
 **MENOR** (el instalador deja una carpeta más; nadie tiene que hacer nada nuevo).

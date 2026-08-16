@@ -13,3 +13,5 @@ Contenido inmediato de esta carpeta.
 | [HU-006-bateria-antes-de-publicar/](HU-006-bateria-antes-de-publicar/) | Historia de usuario: batería antes de publicar |
 | [HU-007-recoger-lo-guardado-por-fuera/](HU-007-recoger-lo-guardado-por-fuera/) | Historia de usuario: recoger lo guardado por fuera |
 | [HU-008-enganche-del-resumen/](HU-008-enganche-del-resumen/) | Historia de usuario: el enganche del resumen |
+| [HU-009-lo-que-rige-cada-frase-llega-puesto/](HU-009-lo-que-rige-cada-frase-llega-puesto/) | Historia de usuario: lo que gobierna cada frase llega puesto al abrir la sesión |
+| [HU-010-la-regla-llega-al-escribir-el-archivo/](HU-010-la-regla-llega-al-escribir-el-archivo/) | Historia de usuario: el capítulo que rige lo que se escribe llega al escribirlo |

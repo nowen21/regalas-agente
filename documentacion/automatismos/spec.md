@@ -17,7 +17,9 @@
 
 Lo que depende de que alguien se acuerde, no pasa. El módulo existe para que las cosas que el estándar exige en cada sesión las haga un programa, no la memoria de quien esté trabajando.
 
-- **Dentro de alcance:** el enganche del resumen de sesión, con sus tres comportamientos: crear el archivo al abrir, avisar qué le falta al resumen cuando la sesión ya produjo algo, y mostrar lo que sigue abierto del propósito que la sesión declara.
+- **Dentro de alcance:**
+  - El enganche del resumen de sesión, con sus tres comportamientos: crear el archivo, avisar qué le falta cuando la sesión ya produjo algo, y mostrar lo que sigue abierto del propósito que la sesión declara.
+  - **El reparto de las reglas al abrir la sesión** ([EP-005 · HU-009](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md)): qué capítulos del cuerpo de reglas llegan con su texto y cuáles llegan como índice. El programa existe desde la 5.0.0; lo que faltaba era esta parte, la que dice qué se le exige.
 - **Fuera de alcance:**
   - **Escribir los hallazgos.** Reconocer un hallazgo y redactarlo es criterio, y el criterio no lo tiene un programa. El enganche crea, avisa y arrastra.
   - **Decidir qué es un hallazgo.** Eso lo decide quien trabaja.
@@ -68,11 +70,25 @@ Verificado el 2026-08-14.
 8. **El enganche no detiene el trabajo.** Si no puede escribir, avisa y la sesión sigue.
 9. **El enganche no modifica un hallazgo ya escrito.**
 
+### 4.1 El reparto de las reglas al abrir la sesión
+
+10. **Llegan con su texto completo los capítulos que gobiernan todos los turnos**, sin importar el tema: los que empiezan por `00-` y por `01-`, con sus anexos. Son la identidad, el núcleo blindado y la conducta.
+11. **Del resto llega el índice:** una línea por archivo, con su ruta, su peso y su título sacado del propio archivo. El índice dice de qué trata cada uno, no qué manda.
+12. **El reparto se decide por el primer tramo de la ruta, no por el nombre del archivo.** Un capítulo puede vivir en un archivo suelto o en su carpeta; mirando el nombre, el que vive en carpeta caería al índice y la sesión arrancaría sin identidad.
+13. **Se dice cuál es cuál.** Lo cargado se entrega diciendo que rige la sesión y es obligatorio; el índice se entrega diciendo que hay que abrir el archivo antes de tocar su tema.
+14. **Un capítulo nuevo entra solo.** El reparto mira el prefijo, así que agregar un `01-` al estándar no obliga a tocar el programa.
+15. **Si el arranque no pasa el gate [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md), llega esa regla y nada más.** Cargar las reglas de trabajo ahí invitaría a trabajar sobre una estructura que el propio estándar manda detener.
+16. **Cargarlo todo no es una opción, y el motivo se escribe:** el cuerpo entero pesa mucho más que la ventana de contexto que se le puede dedicar, y llenarla adelanta el resumen automático, que borra justo lo que se inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca.
+
+> **Que la regla llegue es necesario y no es suficiente.** El 2026-08-14 se incumplió [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante una sesión entera, y esa regla llegaba completa. Lo que falta después es comprobar lo entregado, y eso es de EP-004.
+
 ## 5. Modelo de datos
 
 No aplica porque el entregable son programas de línea de comandos sobre archivos de texto: no hay entidades, tablas ni catálogos.
 
 ## 6. Comportamiento y flujos
+
+**Al abrir la sesión, qué reglas llegan.** El enganche de apertura recorre `base/` en orden de precedencia, y de cada archivo decide por el primer tramo de su ruta: si empieza por `00-` o `01-`, entrega el texto completo; si no, una línea de índice con la ruta, el peso y el título. Después entrega las dos partes con su encabezado, para que se sepa cuál rige ya y cuál hay que abrir. Medido el 2026-08-15 sobre este repositorio: 73 KB completos de 369 KB que existen.
 
 **Al abrir la sesión y en cada mensaje del usuario.** El enganche mira si existe el resumen del día para esa sesión. Si no está y la transcripción ya nació, lo crea con el modelo y sin hallazgos. Los dos momentos hacen lo mismo a propósito: al abrir, la transcripción de una sesión nueva todavía no existe, así que ahí no hay de dónde sacarle el nombre. El turno en que el archivo nace muestra dónde quedó; los avisos empiezan en el siguiente.
 
@@ -144,12 +160,17 @@ El detalle vive en el [plan_pruebas.md](../epicas/EP-005-automatismos-que-no-dep
 
 | Ítem de la especificación | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
-| RN-01 · el archivo se crea al abrir | programa | `validadores/resumen.py` | ✅ | CP-001 |
+| RN-01 · el archivo se crea en el primer mensaje | programa | `validadores/resumen.py` | ✅ | CP-010 |
 | RN-02 · se renombra con la transcripción | programa | `validadores/historico.py` | ✅ | CP-003 |
 | RN-03 · avisa qué falta, una vez por hueco | programa | `validadores/hook_resumen.py` | ✅ | CP-004 y CP-007 |
 | RN-04 a RN-06 · qué falta, qué cuenta para cerrar, y lo abierto del propósito | programa | `validadores/resumen.py` | ✅ | CP-006 |
 | RN-07 a RN-09 · límites del enganche | programa | `validadores/hook_resumen.py` | ✅ | CP-009 |
 | Instalación en cada proyecto | programa | `validadores/instalar.py` | ✅ | Los dos enganches en `.claude/settings.json` |
+| RN-10 a RN-12 · qué llega completo y qué llega en índice | programa | `validadores/cargador.py` | ✅ | CP-001 de la fase A de HU-009 |
+| RN-13 · se dice cuál rige ya y cuál hay que abrir | programa | `validadores/cargador.py` | ✅ | CP-002 de esa fase |
+| RN-14 · un capítulo nuevo entra solo | programa | `validadores/cargador.py` | ✅ | CP-001, paso 4 |
+| RN-15 · con el gate sin pasar llega solo esa regla | programa | `validadores/cargador.py` | ✅ | CP-005 de esa fase |
+| RN-16 · el motivo de no cargarlo todo queda escrito | documentación | Esta especificación, §4.1 | ✅ | — |
 
 ## 14. Cruces con otros módulos
 

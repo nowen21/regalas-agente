@@ -80,7 +80,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 22 | [Dos sesiones versionando a la vez](22-dos-sesiones-versionando-a-la-vez.md) | Dos sesiones abiertas dejaron dos numeraciones vivas en el mismo archivo. |
 | 23 | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. |
 | 24 | [Buscar en el repositorio antes de preguntar](24-buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. |
-| 25 | [Las reglas de cómo se escribe llegan en el índice, no puestas](25-las-reglas-de-como-se-escribe-van-en-el-indice.md) | `ID8` llegaba como una línea de índice, y por eso todo lo escrito en una sesión la incumplió. |
+| 25 | [Las reglas de cómo se escribe llegan en el índice, no puestas](25-las-reglas-de-como-se-escribe-van-en-el-indice.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 

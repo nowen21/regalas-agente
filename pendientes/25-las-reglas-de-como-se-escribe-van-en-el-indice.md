@@ -1,6 +1,20 @@
 # Pendiente · Las reglas de cómo se escribe llegan en el índice, no puestas
 
-**Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-6 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
+**Estado:** **cerrado el 2026-08-15, por falso.** Anotado el 2026-08-14 · nace del hallazgo H-6 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
+
+> ## Lo que pedía ya estaba hecho
+>
+> Verificado el 2026-08-15 corriendo el programa: [`validadores/cargador.py`](../validadores/cargador.py) manda completos **todos** los capítulos que empiezan por `00-` y por `01-`, desde la versión 5.0.0. Son 73 KB de 369 KB. [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) llegaba completa.
+>
+> **Entonces el diagnóstico era falso.** `ID8` no se incumplió por no llegar: llegó, y se incumplió igual. Escribirlo como "llegaba en el índice" dio por cerrada una causa que nadie había mirado, y esa es la parte que hay que no repetir: **la causa se verifica corriendo el programa, no se deduce**.
+>
+> **Lo que sí falta, y vive en otro sitio:** el capítulo [`02 · flujo de trabajo`](../base/02-flujo-de-trabajo/base.md) llega como índice, y ahí está lo que gobierna cada movimiento de una fase. Eso es [EP-005 · HU-010](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md).
+>
+> **Y lo que este pendiente nunca vio:** que la regla llegue no alcanza. Comprobar lo entregado es [EP-004 · HU-013](../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md).
+>
+> El reparto quedó documentado y probado en la [fase A de EP-005 · HU-009](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas/README.md).
+>
+> Lo de abajo queda tal cual, sin corregir: es lo que se creyó, y sirve para no volver a creerlo.
 
 ## El problema
 

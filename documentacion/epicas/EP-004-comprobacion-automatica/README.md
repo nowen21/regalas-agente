@@ -17,3 +17,4 @@ Contenido inmediato de esta carpeta.
 | [HU-010-convencion-declarada-por-el-proyecto/](HU-010-convencion-declarada-por-el-proyecto/) | Historia de usuario: convención declarada por el proyecto |
 | [HU-011-molde-de-las-reglas/](HU-011-molde-de-las-reglas/) | Historia de usuario: molde de las reglas |
 | [HU-012-marcas-de-generacion-automatica/](HU-012-marcas-de-generacion-automatica/) | Historia de usuario: marcas de generación automática |
+| [HU-013-comparar-el-plan-con-lo-hecho/](HU-013-comparar-el-plan-con-lo-hecho/) | Historia de usuario: comparar el plan aprobado con lo que se hizo |

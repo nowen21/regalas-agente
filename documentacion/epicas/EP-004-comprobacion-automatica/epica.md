@@ -141,6 +141,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-010](HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) | Comprobar el código contra la convención que el proyecto declara | Must | L |
 | [HU-011](HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) | Comprobar que cada regla del estándar cumple su propio molde | Must | M |
 | [HU-012](HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) | Comprobar las marcas de generación automática en lo que se entrega | Should | S |
+| [HU-013](HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) | Comparar el plan aprobado con lo que se hizo | Must | M |
 
 ## 10. Consideraciones técnicas
 
