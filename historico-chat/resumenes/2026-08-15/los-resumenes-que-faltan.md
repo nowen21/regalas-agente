@@ -101,7 +101,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-5: los 33 resúmenes escritos, 23 sesiones renombradas, las 4 copias borradas y el criterio fijado |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia nueva |
-| Lo que se hizo está aprobado y guardado | ☐ el inventario se subió en `c08c4ea`; los 33 resúmenes siguen sin commitear |
+| Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario: `c08c4ea` el inventario y `57a0657` los 33 resúmenes |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
