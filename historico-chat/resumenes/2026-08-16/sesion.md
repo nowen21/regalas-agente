@@ -17,8 +17,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 - **Estado:** abierto.
 - **Responde a:** —
 - **Dispara:** —, mientras no haya decisión.
-- **Orden de resolución:** 1 de 1 · es el único que queda abierto.
-- **Dónde queda:** solo acá, en este resumen.
+- **Orden de resolución:** 2 de 2 · va después del H-3, que es deuda de esta misma sesión.
+- **Dónde queda:** [pendientes/37](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md).
 - **Nace en:** 2026-08-16 · sesión sin nombrar.
 - **Cerrado en:** —
 - **Con qué se retoma:** si la base de datos guarda las reglas, ¿con qué se reemplaza lo que hoy da git — ver qué cambió en una regla y aprobarlo antes de que rija?
@@ -36,7 +36,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 - **Qué se decidió:** ninguna fase se abre ni se cierra mientras el proyecto declare una versión anterior a la que derogó una regla que ese proyecto cumplía. Lo único que se abre es la fase que la adopta, una por cada HU que implementaba la regla derogada, y al cerrarla se sube la versión declarada — lo puso el usuario: adoptar no es cambiar el número, es trabajo, y el trabajo va en fases. Fuera de esos momentos el desfase se reporta pero no detiene nada. Quedó como [`02·F22`](../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md) en la versión 19.0.0 (MAYOR) — se numeró así porque otra sesión, en paralelo, ya había tomado la 18.0.0 para el cambio de «brief» a «planteamiento».
 - **Estado:** resuelto acá — la regla, escrita; su comprobación automática, programada.
 - **Responde a:** —
-- **Dispara:** 1. EP-004 · la HU de la comprobación del desfase con derogación: se construyó en esta sesión, pero sin su épica ni su HU escritas (ver H-3).
+- **Dispara:** 1. [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) — la comprobación del desfase con derogación; se construyó en esta sesión y le falta su fase (ver H-3).
 - **Orden de resolución:** —
 - **Dónde queda:** la regla, en [`02·F22`](../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md); la comprobación, en [`validadores/version.py`](../../../validadores/version.py) (`derogaciones`, `sin_adoptar`, `validar_fase`) llamada desde [`validadores/flujo.py`](../../../validadores/flujo.py), registrada en [`validadores/reglas-validables.md`](../../../validadores/reglas-validables.md) y documentada en [`validadores/docs/version.md`](../../../validadores/docs/version.md); versionada en [`CHANGELOG.md`](../../../CHANGELOG.md) 19.0.0. Se corrigieron dos textos que decían lo contrario: la nota de retroactividad de [`base/20-meta-reglas/base.md`](../../../base/20-meta-reglas/base.md) y [`plantillas/stack-instalacion.md`](../../../plantillas/stack-instalacion.md).
 - **Nace en:** 2026-08-16 · sesión sin nombrar.
@@ -56,9 +56,9 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 - **Qué se decidió:** sin decidir — el agente lo reporta, el usuario decide si se retrodocumenta o se deja anotado.
 - **Estado:** abierto.
 - **Responde a:** —
-- **Dispara:** 1. EP-004 · HU nueva, la de arriba, con su fase de retrodocumentación.
+- **Dispara:** 1. [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md), escrita, con su fase de retrodocumentación todavía sin abrir.
 - **Orden de resolución:** 1 de 2 · va antes del H-1: es deuda de esta misma sesión.
-- **Dónde queda:** solo acá, en este resumen.
+- **Dónde queda:** [pendientes/38](../../../pendientes/38-el-validador-de-la-f22-se-escribio-sin-su-fase.md).
 - **Nace en:** 2026-08-16 · sesión sin nombrar.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se retrodocumenta el validador como fase de EP-004, o se deja el código con su registro pendiente?
@@ -89,12 +89,12 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, con su regla, su validador y su versión |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ faltan los del H-1 y el H-3 |
-| Toda historia disparada está escrita en su épica | ☐ falta la HU de EP-004 |
-| Lo que se hizo está aprobado y guardado | ☐ sin commitear |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-4, con su regla y su versión |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [37](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md) y [38](../../../pendientes/38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) |
+| Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) |
+| Lo que se hizo está aprobado y guardado | ☑ commit `2030a4c` · falta commitear lo de este cierre |
 
-**Todavía no se puede cerrar.** Faltan los pendientes del H-1 y el H-3, la HU de EP-004, y el commit.
+**Se puede cerrar** en cuanto se commitee este cierre. Los dos hallazgos abiertos quedaron anotados con su archivo, que es la otra forma válida de terminarlos.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

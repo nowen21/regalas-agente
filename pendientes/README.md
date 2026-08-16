@@ -113,6 +113,15 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 
 **El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
 
+### Lo que dejó la sesión de la derogación (37–38)
+
+Salieron de escribir [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md), y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-16/sesion.md).
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 37 | [Dónde vive la fuente de las reglas](37-donde-vive-la-fuente-de-las-reglas.md) | Si las reglas pueden guardarse en una base de datos, o el texto sigue mandando y la base se genera de él. Falta la decisión del usuario. |
+| 38 | [El validador de la F22 se escribió sin su fase](38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) | El programa que comprueba la regla se hizo sin épica, HU ni fase. Hay que retrodocumentarlo como fase de [EP-004 · HU-015](../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md). |
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:
