@@ -1,7 +1,8 @@
-<!-- sesion: 818566a2-46c6-4cc1-bf85-57c0c8a0c15a -->
 <!-- nombre: preguntado -->
 
-# 2026-08-13 — Sesión
+# 2026-08-13 — Del brief a los planes de la fase A
+
+> La sesión siguió el 2026-08-14 y continúa en [2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md](2026-08-14-resultado-de-pruebas-y-cierre-de-fase.md), desde la interacción 39. Es la misma conversación, partida por día para no perder la trazabilidad.
 
 ## Conversación
 
@@ -681,109 +682,3 @@ Ahora el resultado sí se ata al plan, en tres puntos:
 Sin la 5.1 el plan podía exigir el 100% de los casos críticos y el resultado no mencionarlo nunca.
 
 Cambios en [plantillas/planes/resultados.md](plantillas/planes/resultados.md) y en el [resultado_pruebas.md](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) de la fase. La entrada `9.0.0` del CHANGELOG lo recoge; sigue sin commitear, así que no abrí versión nueva.
-
-### 39 · Usuario — 2026-08-14 08:15:40
-> suba entonces
-
-**Agente** — 2026-08-14 08:17:50
-<!-- agente: 17c520b4-c20e-4078-98e2-2016afd4f893 -->
-
-Subido: `59007cb` en `main`, 40 archivos.
-
-**Qué entró:** las siete épicas, las ocho HU de EP-001, la fase A con sus cuatro documentos, la plantilla nueva del resultado de pruebas, los cambios en `F12.13`, `base/02`, las cinco plantillas tocadas, `validadores/fases.py`, la memoria corregida, `VERSION` en `9.0.0` con su CHANGELOG y la transcripción de la sesión.
-
-**Qué dejé por fuera, a propósito.** El árbol tenía trabajo de otras sesiones sin commitear, y commitear lo ajeno mezcla el versionado:
-
-- `prompts/` (README, el archivo renombrado, la carpeta `analisis/`)
-- `validadores/comun.py`, `enlaces.py`, `esquema.py`, `flujo.py` y cuatro archivos nuevos (`cruces.py`, `declaracion.py`, `entidades.py`, `estructura.py`)
-- `plantillas/dominio.md`, `mapeo-nombres.md`, `plantilla-spec-modulo.md`
-- `base/09-git.md`
-- `historico-chat/2026-08-12-*`, `2026-08-13-pendientes-del-diplomado-de-ia.md` y `2026-08-13-sesion-3.md`
-
-En el índice de `historico-chat/README.md` había dos líneas nuevas, la mía y la de otra sesión. Subí solo la mía; la otra sigue en el árbol de trabajo, esperando a que esa sesión la commitee.
-
-Un aviso del validador de commits: el asunto quedó en 75 caracteres y `09·G2` pide 72. No lo corté porque la versión en el asunto es lo que hace ubicable el commit.
-
-### 40 · Usuario — 2026-08-14 08:35:14
-> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\planes\resultados.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
-> en dónde se verifica que el plan de trabajo se llevó a cabo?
-
-**Agente** — 2026-08-14 08:35:45
-<!-- agente: e35158fe-4675-40e8-a5e5-9f28e22620fb -->
-
-Hoy, en ningún lado bien. Se verifica **dentro del propio plan**, que es el mismo defecto que acabamos de corregir en pruebas.
-
-Los tres sitios donde algo se marca:
-
-| Dónde | Qué dice | Problema |
-|---|---|---|
-| `plan_trabajo` §3, columna Estado | Cada tarea con su casilla | Se escribe encima del documento aprobado. Se pierde el plan tal como se aprobó |
-| `plan_trabajo` §11, Definition of Done | Casillas de cierre | Autorreporte. Nadie contrasta tarea por tarea |
-| `plan_trabajo` §13, Cierre | Criterios cumplidos y esfuerzo real contra estimado | Dos números al final, sin decir qué tarea quedó sin hacer |
-
-Y el documento de cierre, [funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) §2, traza contra **la spec**, no contra el plan. Si la spec no existe, como en esta fase, no traza contra nada.
-
-Así que queda un hueco: el `resultado_pruebas` comprueba que **el resultado sirve**; nada comprueba que **se hizo lo que se dijo que se iba a hacer**. Son cosas distintas: una fase puede pasar todas las pruebas y haber dejado tres tareas sin tocar, o haber tocado archivos que el plan no declaraba, que es justo lo que `F8` prohíbe.
-
-Dos formas de cerrarlo:
-
-- **Un documento aparte**, simétrico al de pruebas: `resultado_trabajo.md`, tarea por tarea, con qué se hizo, qué no y qué se tocó fuera del plan. Sexto documento de la fase, otro cambio a `F12.13`.
-- **Dentro del `funcionalidad_implementada`**, agregándole una sección que trace **tarea del plan → qué quedó**, además de la que traza la spec. No toca `F12` y aprovecha un documento que ya es de cierre.
-
-Me inclino por la segunda: el cierre ya existe para eso, y un sexto archivo por fase empieza a pesar. ¿Cuál prefiere?
-
-### 41 · Usuario — 2026-08-14 08:40:49
-> de qué se trata este:  funcionalidad_implementada
-
-**Agente** — 2026-08-14 08:41:04
-<!-- agente: 176a74ac-0953-43d6-8a74-1252b933e225 -->
-
-Es el **documento de cierre de una fase**: se escribe cuando la fase termina, antes del commit, y deja constancia de qué quedó hecho.
-
-Sirve para que alguien que llegue después entienda qué se construyó sin tener que leer el código. Sus ocho secciones ([plantillas/funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md)):
-
-| Sección | Qué responde |
-|---|---|
-| 1 · Resumen | Qué quedó funcionando y para quién, en lenguaje claro |
-| 2 · Trazabilidad | Cada afirmación de la spec, dónde quedó implementada y con qué evidencia |
-| 3 · Qué se probó | Se resume del `resultado_pruebas` |
-| 4 · Cómo se usa | Por dónde se entra a lo que se construyó |
-| 5 · Decisiones no obvias | Lo que se decidió y qué se descartó |
-| 6 · Deuda técnica | Lo que quedó pendiente y a dónde se traslada |
-| 7 · Índices actualizados | Si los mapas y catálogos del proyecto quedaron al día |
-| 8 · Despliegue | Los pasos para llevarlo a producción, si aplica |
-
-Es el único de los cinco documentos de la fase que todavía no creé en la fase A, porque no hay nada cerrado que reportar.
-
-Y es el que le proponía en la respuesta anterior para tapar el hueco: hoy su sección 2 traza contra **la spec**. Si le agregamos que trace también contra **las tareas del plan de trabajo**, queda verificado que se hizo lo que se dijo, sin necesidad de un sexto documento.
-
-### 42 · Usuario — 2026-08-14 08:47:32
-> si entonces modificar la plantilla para agregar eso
-
-**Agente** — 2026-08-14 08:50:46
-<!-- agente: a7828177-9327-477f-95cd-a6cbbc847f10 -->
-
-El cambio pedido crea una contradicción: si el cierre verifica las tareas, la columna "Estado" dentro del plan sobra y además vuelve a escribir sobre el documento aprobado. La resuelvo igual que en pruebas.
-
-Ahora los documentos reales de la fase A:
-
-Listo. La verificación de que el plan se cumplió quedó en el cierre.
-
-**[funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) §2 ahora tiene dos trazabilidades**, porque responden preguntas distintas:
-
-- **2.1 · Spec → implementación.** Qué había que lograr.
-- **2.2 · Plan de trabajo → ejecución.** Qué se iba a hacer para lograrlo, tarea por tarea, con dos preguntas que antes nadie hacía: **qué tareas no se hicieron** y **qué archivos se tocaron que el plan no declaraba** (`02·F8`). "Ninguno" es la respuesta esperada; cuando no lo es, queda escrito quién autorizó ampliar el plan.
-
-**Dos cosas que toqué de más, y que conviene que revise**, porque el cambio pedido las dejaba contradictorias:
-
-- **El plan de trabajo pierde la columna "Estado" y su sección de cierre.** Marcar avance ahí pisa el documento aprobado, que es el mismo defecto que corregimos en el plan de pruebas. Y el cierre ya vivía completo en el otro documento, duplicado.
-- **El estado de fase gana §1.2 · Avance de las tareas**, que es donde va el seguimiento mientras la fase corre.
-
-Queda la cadena entera: el plan dice qué se va a hacer, el estado dice por dónde va, el cierre dice qué se hizo.
-
-Apliqué lo mismo a los documentos reales de la fase A. [VERSION](VERSION) en `9.1.0` con su entrada en el [CHANGELOG.md](CHANGELOG.md). Validadores en `0 fallas`.
-
-Sin commitear, esperando que lo lea.
-
-### 43 · Usuario — 2026-08-14 08:52:57
-> commité

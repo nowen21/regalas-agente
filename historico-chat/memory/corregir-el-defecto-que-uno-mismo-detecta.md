@@ -6,6 +6,8 @@ Cuando el agente encuentra algo mal —un enlace roto, una cita a una regla dero
 
 **Cómo se aplica:** decir qué estaba mal y que se corrigió, en la misma respuesta. La pregunta se reserva para lo que de verdad es una decisión —qué versión se deja, si se deroga o se parte una regla, qué entra en el commit—, no para ejecutar una corrección evidente.
 
-**Lo que sigue necesitando permiso:** el `commit` y el `push` ([aprobar antes de commit](aprobar-antes-de-commit.md)), y editar cuando el usuario solo preguntó algo ([una pregunta no es una instrucción](pregunta-no-es-instruccion.md)). Corregir un defecto que el agente detectó no es ninguna de las dos.
+**Dónde vale esta regla:** **mientras el agente ejecuta algo que ya le autorizaron**. Si está escribiendo lo que le pidieron y encuentra un enlace roto o una cita a una regla derogada, lo arregla sin preguntar.
+
+**Dónde no vale:** cuando el usuario **pregunta** o **observa** algo. Ahí el defecto se reporta y se espera, aunque sea evidente ([pregunta, afirmación o indicación](pregunta-no-es-instruccion.md)). El usuario lo cortó así — *"no asuma que porque digo algo ya tiene que modificar"*. Y sigue necesitando permiso aparte el `commit` y el `push` ([aprobar antes de commit](aprobar-antes-de-commit.md)).
 
 Relacionado: [una pregunta no es una instrucción](pregunta-no-es-instruccion.md) · [aprobar antes de commit](aprobar-antes-de-commit.md) · [respuestas cortas](respuestas-cortas.md).

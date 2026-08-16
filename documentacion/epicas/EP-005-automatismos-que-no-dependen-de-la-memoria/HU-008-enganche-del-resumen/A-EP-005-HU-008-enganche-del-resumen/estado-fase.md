@@ -37,9 +37,9 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Corrida 1: **anulada**. Corrida 2: en ejecución |
-| **CA cumplidos** | De la corrida 1, ninguno de los tres: CA-01 no cumplía porque el archivo no nacía, y CA-02 y CA-03 quedaron sin probar |
-| **CA en "No"** | CA-01, hasta que la corrida 2 lo declare |
+| **Concepto** | **No cumple**, todavía |
+| **CA cumplidos** | CA-02 y CA-03, con el ciclo 2. El ciclo 1 quedó anulado |
+| **CA en "No"** | CA-01: le falta el caso que solo se puede correr en una sesión real |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | [resultado_pruebas.md](resultado_pruebas.md), con la anulación al principio |
 

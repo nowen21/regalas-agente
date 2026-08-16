@@ -3,12 +3,13 @@
 - **Slug del módulo:** `documentos-modelo`
 - **Estado:** en implementación
 
-> El módulo son los diez modelos de EP-003, y esta especificación crece con cada fase. Lo que cubre hoy:
+> El módulo son los diez modelos de EP-003 y el glosario del estándar, y esta especificación crece con cada fase. Lo que cubre hoy:
 >
 > | Incremento | Fase | Estado |
 > |---|---|---|
 > | La marca del espacio por llenar | [`A-EP-003-HU-001-marca-de-espacio-por-llenar`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/README.md) | Cerrada el 2026-08-14 |
 > | El modelo del resumen de sesión | [`A-EP-003-HU-009-modelo-del-resumen-de-sesion`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/A-EP-003-HU-009-modelo-del-resumen-de-sesion/README.md) | Cerrada el 2026-08-14 |
+> | El glosario de la terminología | [`A-EP-003-HU-010-glosario-de-la-terminologia`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md) | Cerrada el 2026-08-14 |
 
 ---
 
@@ -19,12 +20,15 @@ Un modelo es un esqueleto con huecos. Este módulo define **cómo se marca un hu
 - **Dentro de alcance:**
   - **De HU-001:** la marca, qué es un hueco y qué no lo es, qué se escribe cuando una sección no aplica, y la aplicación de todo eso a las 30 plantillas que ya existen.
   - **De HU-009:** el modelo con que cada sesión escribe lo que dejó, desde dónde se enlaza para que se encuentre, y qué pasa con un hallazgo que se arrastra de una sesión a otra.
+  - **De HU-010:** el glosario de la terminología del estándar, qué término entra y cuál no, qué dice cada entrada, y el inventario de lo que sigue en otro idioma.
 - **Fuera de alcance:**
   - El programa que cuenta las marcas. Es de EP-004, y se apoya en lo que esta especificación define.
   - El contenido de cada modelo. Acá se toca la marca, no lo que el modelo pide.
   - Los documentos ya llenados en `documentacion/`, `historico-chat/` y `pendientes/`: son documentos terminados, no modelos.
   - El enganche que crea el resumen y avisa cuando falta. Es de EP-005 · HU-008, la siguiente de la cadena.
   - La transcripción de la sesión, que sigue su curso y no cambia.
+  - Renombrar los términos que el glosario deja marcados como pendientes de traducir. El glosario levanta el inventario; cambiarlos es trabajo aparte con su propia historia de usuario.
+  - Los términos del dominio de un proyecto que hereda el estándar. Esos van en su capa 3.
   - Los otros ocho modelos de EP-003. Son incrementos posteriores de este mismo módulo y se suman a esta especificación cuando abran su fase.
 
 ## 2. Contexto — qué hay hoy

@@ -10,4 +10,4 @@ Contenido inmediato de esta carpeta.
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | El cierre: qué quedó hecho y qué deuda queda |
 | [estado-fase.md](estado-fase.md) | En qué estación va la fase |
 
-**Lo que entregó:** [base/glosario.md](../../../../../base/glosario.md), con 67 términos y el inventario de lo que sigue en otro idioma. Cerrada el 2026-08-14, a la espera del commit.
+**Lo que entregó:** [base/glosario.md](../../../../../base/glosario.md), con 72 términos y el inventario de lo que sigue en otro idioma. **La fase no cierra todavía:** el veredicto es "No cumple" mientras RNF-01 no tenga su prueba. Falta CP-006, que lo corre alguien que no escribió el glosario.

@@ -79,7 +79,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Las reglas usaban palabras que no estaban definidas en ningún lado.** Para saber qué es una especificación había que encontrar la regla que la exige; para saber qué es una señal, otra; para saber qué es una fase, un capítulo entero. El caso que lo destapó: el usuario preguntó qué significaba "spec", y la respuesta tomó tres intentos y terminó cambiando una regla.
 
-- **[`base/glosario.md`](base/glosario.md)**: 67 términos en cuatro grupos (la cadena de trabajo, las reglas, lo que comprueba y lo que se guarda). Cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Es un anexo, no una regla: no exige nada y por eso no lleva checklist.
+- **[`base/glosario.md`](base/glosario.md)**: 72 términos en cuatro grupos (la cadena de trabajo, las reglas, lo que comprueba y lo que se guarda). Cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Es un anexo, no una regla: no exige nada y por eso no lleva checklist.
 - **Una columna dice qué quiere decir el nombre**, no solo qué es la cosa: por qué a una fase le decimos estación, de dónde sale bitácora, qué significa brief. Sin eso, un término se puede leer y seguir sin entender por qué se llama así.
 - **Cada entrada enlaza a su regla y no copia su texto.** Dos copias de la misma norma se desincronizan, y manda la que nadie relee.
 - **Se alcanza desde las tres puertas de entrada**: [`README.md`](README.md), [`base/README.md`](base/README.md) y [`anatomia/mapa-del-sitio.md`](anatomia/mapa-del-sitio.md).

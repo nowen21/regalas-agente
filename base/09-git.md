@@ -101,4 +101,20 @@ Comprobable: `validadores/validar.py commit` (regla [`01·C8`](01-conducta.md#c8
 
 ---
 
+## G9 · La historia de usuario es la unidad del commit
+
+Lo que pertenece a una historia de usuario (su documento, sus fases, su código) se guarda en un commit que **no toca otra historia**, y lo que todavía no tiene su historia escrita no se sube: espera a tenerla.
+Concreta a [`G1`](#g1--commits-atómicos-un-solo-propósito), que pide un propósito por commit: acá el propósito es la HU ([`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)).
+Excepción: lo que no es de ninguna HU y una HU necesita para no citar lo que no está (el brief, el documento de su épica) sube con la primera que lo necesite.
+
+```
+INCORRECTO: un commit con HU-002, HU-003 y las épicas que todavía no
+            tienen historias escritas
+CORRECTO:   un commit por historia; la épica sin historias espera a tenerlas
+```
+
+Comprobable: un commit que toca dos carpetas de HU distintas se detecta comparando rutas.
+
+---
+
 Ver: `00` N2/N3/N6, `07` Q6 (lint), `08` (pruebas), `11` (config fuera del código), `13` (decisiones también en docs).

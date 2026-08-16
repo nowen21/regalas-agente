@@ -316,3 +316,28 @@ Con el commit hecho, la sesión cierra. ¿Subo?
 ### 14 · Usuario — 2026-08-16 10:13:10
 > 1. Haga el commit
 > 1. si es copia bórrelo
+
+**Agente** — 2026-08-16 10:18:46
+<!-- agente: b7a143f1-3531-4ed6-b1d1-269aad8ae0b9 -->
+
+**Hecho, y la sesión cierra.** Dos commits: `57a0657` con los 96 archivos y `e33b796` con la casilla de cierre.
+
+**Las copias, borradas.** Eran cuatro, no tres — la del 2026-08-07 tenía nombre propio pero también era copia:
+
+| Borrada | Repetía a |
+|---|---|
+| `2026-08-06-sesion-7.md` | no-se-puede-transcribir-audio |
+| `2026-08-06-sesion-9.md` | la-clase-del-diplomado |
+| `2026-08-07-sesion-9.md` | granularidad-de-la-fase |
+| `2026-08-07-analisis-cumplimiento-reglas.md` | el-checklist-de-la-regla |
+
+Siguen en el historial de git. **Una cosa se pierde de la vista**: la copia del diplomado describía cada diapositiva (`[imagen: …]`) y la que quedó no, porque esas imágenes llegaron pegadas al chat. Lo dejé anotado en el [pendiente 29](pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+
+Quedan **35 transcripciones y 35 resúmenes**, uno por sesión, y ya no hay ningún archivo llamado «sesión-N».
+
+Fuera del commit, como corresponde: `CHANGELOG`, `base/`, `documentacion/`, `validadores/`, la carpeta `prompts/analisis` y el renombre de la ficha de marcadores de IA — todo de otras sesiones.
+
+Dos cosas para vos: **el `push`** (hay commits de otras sesiones por delante, así que subirlos es tu decisión), y el [pendiente 33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), cuyo primer punto es el urgente: nadie revisó a qué proyectos les borró la memoria el enganche del 2026-08-07.
+
+### 15 · Usuario — 2026-08-16 10:19:11
+> haga commit para todo porque hay muchos archivos sin subir

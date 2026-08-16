@@ -342,3 +342,48 @@ Falta su aprobación para commitear. ¿Reviso algo antes?
 
 ### 24 · Usuario — 2026-08-14 12:44:35
 > comite
+
+**Agente** — 2026-08-14 12:45:20
+<!-- agente: 392c4941-6a0e-4341-bde5-f3d8cbce3cb9 -->
+
+Commiteado: `973ff57`, siete archivos. Los enganches de versionado y de mensaje pasaron sin incumplimientos.
+
+Dejé fuera dos cosas a propósito:
+
+- **`historico-chat/README.md`.** Trae la línea del índice de esta sesión, pero también líneas de otras dos sesiones que están sin commitear. Meterlo habría versionado trabajo ajeno.
+- **El resto de archivos modificados** (`base/09-git.md`, `prompts/`, `validadores/*.py`, las épicas): son de otras sesiones.
+
+No hice `push`: eso se pregunta aparte. ¿Lo subo?
+
+### 25 · Usuario — 2026-08-14 13:05:35
+> suba
+
+**Agente** — 2026-08-14 13:05:52
+<!-- agente: f14571a4-8d02-4d81-b3f5-115157eb041d -->
+
+Subido a `main`. El push llevó `973ff57` y, con él, dos commits anteriores que ya estaban en la rama local sin subir (`597355c` y `7b2b8da`, de las versiones 9.1.0 y 10.0.0).
+
+### 26 · Usuario — 2026-08-14 13:06:42
+> cual es el resumen de esta sesión ?
+
+**Agente** — 2026-08-14 13:06:54
+<!-- agente: 20506b27-7eb4-4f10-8279-19991241b537 -->
+
+Se analizó el prompt `plantillas/prompts/prompt-base-usuario.md`, que pedía una estructura para escribirle al agente sin dejar cosas sueltas, y de ahí salió una regla nueva del estándar.
+
+**Lo que se decidió**
+
+- El molde tiene **dos niveles**: todo mensaje declara *sobre qué* y *qué quiere*; el que pide trabajo agrega *qué debe quedar hecho* y *qué no se toca*. Son cuatro campos, no cinco: *para qué* y *cómo se sabe que quedó bien* se cayeron por repetir a otros.
+- **Es obligatorio.** Un molde que no se exige no cambia nada. Y como obliga, cada campo entra solo si evita una ambigüedad concreta.
+- **El agente se detiene** cuando falta un campo: pregunta por ese, en una línea, y no toca nada mientras espera.
+- Vive en `base/`, y cada proyecto lo ve en su `CLAUDE.md`.
+
+**Lo que quedó escrito** (commit `973ff57`, ya subido)
+
+- `01·C21`, la regla, con su ejemplo y el checklist de 20 filas aplicado: CUMPLE.
+- Punto 6 de `CLAUDE.md.plantilla`, con los campos y un ejemplo de cada uno.
+- `C21` anotada como no validable, y el `CHANGELOG` con la entrada MAYOR.
+
+La transcripción completa está en [2026-08-14-molde-para-pedir-en-la-sesion.md](historico-chat/2026-08-14-molde-para-pedir-en-la-sesion.md).
+
+Un dato: el commit dejó `VERSION` en 11.0.0, y ahora el archivo marca **12.0.0**. Ese cambio es de otra sesión, no de esta.

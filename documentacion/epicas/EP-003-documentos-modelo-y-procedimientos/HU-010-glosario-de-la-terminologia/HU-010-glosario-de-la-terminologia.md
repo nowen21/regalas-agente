@@ -202,4 +202,4 @@ Una sola fase para los tres criterios: los tres se validan sobre el mismo docume
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-8 del 2026-08-14 |
-| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se descompone en la fase A y se cierra: el glosario existe, con 67 términos y el inventario de lo que falta traducir |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se descompone en la fase A y se cierra: el glosario existe, con 72 términos y el inventario de lo que falta traducir |

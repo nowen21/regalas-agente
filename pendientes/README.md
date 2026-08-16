@@ -88,6 +88,15 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
+### Lo que dejó un proyecto real (30, 34)
+
+Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código. Es la primera vez que un pendiente nace de un proyecto ajeno al estándar y no de trabajar el estándar mismo — que es justamente lo que el [pendiente 01](01-validadores-de-codigo-de-proyecto.md) decía que hacía falta.
+
+| # | Pendiente | Qué resuelve |
+|---|---|---|
+| 30 | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. |
+| 34 | [Las plantillas enlazan una carpeta `base/` que el proyecto no tiene](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md) | Los 77 enlaces `../base/…` de las plantillas nacen rotos al copiarse dentro de un proyecto. El marcador `«RUTA-ESTANDAR»` ya existe y los arregla. |
+
 ### Lo que dejó revisar el histórico (31–33)
 
 Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-15/los-resumenes-que-faltan.md).

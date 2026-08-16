@@ -1300,3 +1300,52 @@ Nada de lo de esta última parte está guardado: las tres historias nuevas, la f
 ### 82 · Usuario — 2026-08-15 21:06:47
 > 1. no
 > 2. autorizado
+
+**Agente** — 2026-08-15 21:10:10
+<!-- agente: 7dae1953-a642-4ba4-ba41-a01dc7f67f74 -->
+
+`CA-03` en cumple con su decisión escrita, la fase de `HU-009` cerrada, y commiteado: **`cd94e5b`**, 24 archivos, solo los de esta sesión.
+
+| Qué quedó | Estado |
+|---|---|
+| El reparto de las reglas, escrito en la especificación del módulo | Hecho |
+| Diez pruebas donde no había ninguna, y comprobadas contra un reparto roto | Hecho |
+| La medición con su fecha: 73 KB de 369, 0,21 s | Hecha |
+| El pendiente 25, cerrado por falso con su motivo | Hecho |
+| Tres historias nuevas y `HU-003` completa | Escritas |
+| Versión **15.4.3** | Subida |
+
+Sin `push`: eso se autoriza aparte.
+
+Y queda una sola cosa de la sesión entera: mañana, al abrir, mirar si el resumen aparece solo. Con eso cierra la fase del enganche y el H-4 que reabrimos.
+
+### 83 · Usuario — 2026-08-15 21:10:40
+> suba a gitt
+
+**Agente** — 2026-08-15 21:10:55
+<!-- agente: b472a71b-1afa-4f0d-b752-50a0b05e7eed -->
+
+Subido: `6391e79..cd94e5b` a `main`, un commit.
+
+Lo que otras sesiones tienen sin guardar sigue intacto en el árbol de trabajo.
+
+### 84 · Usuario — 2026-08-15 21:11:12
+> osea ya se puede cerrar esta sesión?
+
+**Agente** — 2026-08-15 21:11:50
+<!-- agente: d1b138ce-42c7-4aa7-a3b8-4500a58de838 -->
+
+Sí, se puede cerrar. Las cuatro condiciones quedaron marcadas en [el resumen](historico-chat/resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md):
+
+| Para cerrar | Estado |
+|---|---|
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-3 |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 vive en la fase de HU-008, detenida con `CP-018` escrito. H-4 tiene sus tres historias en sus épicas |
+| Toda historia disparada está escrita en su épica | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ `6391e79` y `cd94e5b`, subidos |
+
+**El propósito se cumplió a medias, y a propósito:** lo que se vino a arreglar está arreglado y probado, pero la última comprobación no se puede hacer hoy. Se hace sola mañana, al abrir.
+
+Lo que deja para la próxima sesión, en orden: mirar si el resumen apareció solo, después bajar a fase `HU-010`, y después `HU-013`.
+
+Falta guardar este último cambio del resumen. ¿Lo commiteo?

@@ -4,6 +4,14 @@
 
 ---
 
+## 0. Identificación
+
+| Campo | Valor |
+|---|---|
+| **Nombre del proyecto** | Cimiento |
+| **Qué cubre este encargo** | Todo el proyecto |
+| **Fecha** | 2026-08-15 |
+
 ## 1. Necesidad en una frase
 
 Se necesita que una IA que programa trabaje siempre igual, con las mismas reglas y la misma memoria, sin que cada sesión reinterprete el proyecto a su manera.

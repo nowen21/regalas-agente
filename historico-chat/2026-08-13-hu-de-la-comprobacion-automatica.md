@@ -1385,5 +1385,24 @@ Corregido. La plantilla queda con los doce campos, y el bloque de ejemplo los tr
 ### 90 · Usuario — 2026-08-14 16:42:40
 > listo suba a git
 
+**Agente** — 2026-08-14 16:43:14
+<!-- agente: 4e7b4759-b7c2-4d46-b347-4e03c59abbca -->
+
+Subido: `f51962a`, 39 archivos.
+
+Con eso las cuatro casillas de cierre quedan marcadas. **La sesión se puede cerrar.**
+
+Lo que sigue, cuando abra la próxima: el orden es **H-4** (el enganche del resumen), y después H-8, H-1, H-7, H-6, H-9 y H-5.
+
+### 91 · Usuario — 2026-08-14 16:43:48
+> me gustó eso último
+
+**Agente** — 2026-08-14 16:43:53
+<!-- agente: 86a09573-4112-4573-abf4-19192c4f8e18 -->
+
+Es lo que ahora garantiza el resumen: al cerrar, lo que sigue ya está escrito y en orden.
+
+Antes eso vivía en la conversación, y la conversación se cierra.
+
 ## Abierto
 - Nada: fue una consulta, no se tocó ningún archivo del estándar.

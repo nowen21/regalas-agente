@@ -88,6 +88,46 @@ def validar_enlaces(raiz=None):
     return hallazgos
 
 
+def _ruta_desde_raiz(raiz, archivo, destino):
+    """La ruta del destino contada desde la raíz, que es lo que `DOC14` pide
+    como texto del enlace."""
+    objetivo = os.path.normpath(
+        os.path.join(os.path.dirname(archivo), destino.split("#", 1)[0]))
+    return os.path.relpath(objetivo, raiz).replace("\\", "/")
+
+
+def validar_formato(raiz=None):
+    """`13·DOC14`: el texto del enlace es la ruta completa desde la raíz.
+
+    Solo se mira el enlace cuyo texto **ya tiene forma de ruta** — lleva `/` o
+    termina en `.md`. Ese es el caso que la regla resuelve: el que dice dónde
+    vive algo, pero lo dice mal. El enlace de texto descriptivo (`[la guía]`) no
+    se toca: la propia regla lo permite cuando quien lee ya sabe dónde vive, y
+    marcarlo llenaría de ruido todo documento del proyecto.
+    """
+    raiz = raiz or RAIZ
+    hallazgos = []
+
+    for archivo in recorrer_md(raiz):
+        if _es_transcripcion(archivo):
+            continue
+        for n, texto, destino in enlaces(leer(archivo)):
+            if not _es_interno(destino) or not _comprobable(texto, destino):
+                continue
+            limpio = texto.strip().strip("`").strip()
+            if "/" not in limpio and not limpio.lower().endswith(".md"):
+                continue
+            esperado = _ruta_desde_raiz(raiz, archivo, destino)
+            # La barra final de una carpeta no cambia a dónde apunta el enlace;
+            # exigirla sería inventar una regla que `DOC14` no pide.
+            if limpio.lstrip("./").rstrip("/") != esperado.rstrip("/"):
+                hallazgos.append(Hallazgo(
+                    AVISO, archivo, n,
+                    f"el texto del enlace dice «{limpio}» y el destino es "
+                    f"«{esperado}» — DOC14 pide la ruta desde la raíz"))
+    return hallazgos
+
+
 def validar_indices(raiz=None, carpetas=None):
     """Cada .md de una carpeta con índice está enlazado desde su README."""
     raiz = raiz or RAIZ

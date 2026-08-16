@@ -181,3 +181,137 @@ Sin commitear. ¿Las subo?
 ### 7 · Usuario — 2026-08-13 10:34:20
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\CLAUDE.md.plantilla in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > si
+
+**Agente** — 2026-08-13 10:34:56
+<!-- agente: d47875f2-1366-4d37-84cb-c313e2d325a7 -->
+
+Subido en `0e7d9a9`: las 26 fichas, el README con el índice por grupo y el histórico de esta sesión. Árbol limpio, sin `push`.
+
+### 8 · Usuario — 2026-08-13 10:35:44
+> solo responda una regla puede tener reglas hijas o que la complementen o siempre debe ser la regla sola?
+
+**Agente** — 2026-08-13 10:35:56
+<!-- agente: 0bba62c9-2e48-45cf-b3f7-aa63686f4de2 -->
+
+Puede tener reglas que la complementen, pero cada una sigue siendo una regla completa por su cuenta.
+
+El estándar lo permite de dos maneras:
+
+- **Complementarla** — una regla nueva la extiende y lo declara: `(extiende 09·G6)`. Son dos reglas, con su ID, su ejemplo y su checklist cada una. La extendida sigue rigiendo igual ([`M7`](base/20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md)).
+- **Partirla en hijas numeradas** — cuando una sola regla crece más de una página se le abre subcarpeta y sus partes quedan como `F12.1`, `F12.2`, `F12.3`. El capítulo deja el resumen y el enlace ([`M2`](base/20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md)).
+
+Lo que no se puede es meter dos exigencias dentro del mismo texto. Si al leerla aparece un "y además", son dos reglas y hay que separarlas ([`M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)): la vieja conserva su número y la nueva toma el siguiente libre.
+
+### 9 · Usuario — 2026-08-13 10:58:48
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\prompts\analisis\prompt-analisis-reglas.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> analice este archivo:  prompt-analisis-reglas.md y con base a ese cree una copia para que le haga las modificaciones que considere pretinentes
+
+**Agente** — 2026-08-13 11:00:33
+<!-- agente: e0c2759e-2169-4848-9aa2-f6b423b84ab7 -->
+
+La copia quedó en [prompts/analisis/prompt-analisis-reglas-v2.md](prompts/analisis/prompt-analisis-reglas-v2.md). El original no lo toqué.
+
+Lo que le corregí, en orden de importancia:
+
+1. **El vocabulario no se podía escribir.** «Regla hija» y «hija de varias» no existen en el estándar: las relaciones declarables son tres — `extiende`, `depende de`, `deroga` ([`M7`](base/20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md)). Tal como estaba, el análisis iba a producir recomendaciones que después no se pueden redactar. Las seis opciones quedaron traducidas.
+2. **Faltaban dos salidas, y son las más frecuentes**: «ya está cubierta» y «afinar la existente». [`M12`](base/20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md) manda decidir en ese orden; el prompt ponía «crear nueva» de primera.
+3. **Quité la exclusión de `sin-marcadores-de-ia`.** No es la única ficha que ya tiene regla: también histórico, memoria, `CLAUDE.md`, checklist, cada cita con su link. Excluir a mano esconde el dato más útil, que es cuánto de lo pedido ya está hecho.
+4. **«No convertirla en regla» ahora obliga a decir a dónde va** — `notas/`, `pendientes/`, memoria o `CLAUDE.md` ([`M13`](base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md)). Si no, lo descartado se pierde.
+5. **Le pedí los datos que el procedimiento va a exigir después**: capa, capítulo dueño, ID libre, si es agnóstica, si es validable y si el cambio es MAYOR, MENOR o PARCHE. Sin eso el mapa no alcanza para planear.
+
+Y una decisión que conviene que revise: puse el entregable en `analisis/`, no en `prompts/analisis/`. Esa carpeta ya existe para las auditorías del estándar, con nomenclatura e índice propios; dos sitios de análisis parten el rastro. Si prefiere dejarlo dentro de `prompts/`, se cambia esa línea.
+
+### 10 · Usuario — 2026-08-13 18:30:49
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\prompts\analisis\prompt-analisis-reglas-v2.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> listo lo analizó y dio sus obsevaciones pero no me queda claro como queda al fín en ese v2
+
+### 11 · Usuario — 2026-08-13 18:31:47
+> ya no necesito explicaciones porque ya las dio en el análisis quiero ver el resultado según su análisis como queda
+
+**Agente** — 2026-08-13 18:32:12
+<!-- agente: a28162ff-6d82-4374-9543-ba89e724f09a -->
+
+Ese es el v2 completo, ya sin la tabla de cambios: [prompts/analisis/prompt-analisis-reglas-v2.md](prompts/analisis/prompt-analisis-reglas-v2.md).
+
+### 12 · Usuario — 2026-08-13 18:32:39
+> no que la cambie sino que agregue como debe quedar
+
+**Agente** — 2026-08-13 18:33:38
+<!-- agente: 88680059-fcb7-41de-b09f-9ca44cd9510a -->
+
+[prompts/analisis/prompt-analisis-reglas-v2.md](prompts/analisis/prompt-analisis-reglas-v2.md) quedó con tres partes:
+
+| Sección | Qué es |
+|---|---|
+| Del inicio a *Límite* | El prompt corregido, explicado con enlaces. |
+| *Qué cambió respecto de la versión anterior* | Las nueve correcciones, restaurada. |
+| *Cómo debe quedar el prompt* | El texto final en un bloque, listo para copiar y pegar tal cual. |
+
+### 13 · Usuario — 2026-08-13 18:41:34
+> aplica el prompt de este archivo: prompt-analisis-reglas-v2.md
+
+**Agente** — 2026-08-13 18:46:39
+<!-- agente: 794f0936-c2e5-46d3-ab48-1a3c316237fd -->
+
+Aplico el prompt. Con el catálogo de `base/` ya leído, escribo el análisis.
+
+El análisis quedó en [analisis/prompts-2026-08-13-candidatas-a-regla.md](analisis/prompts-2026-08-13-candidatas-a-regla.md), con su línea en el [índice](analisis/README.md). 27 fichas, 0 hallazgos de enlaces.
+
+**El resultado, en corto:**
+
+| Salida | Cuántas |
+|---|---|
+| Ya está cubierta | 13 |
+| Regla nueva o complemento | 7 |
+| Se resuelve afinando | 3 |
+| No es regla del estándar | 4 |
+
+**Lo que hay que escribir**, en el orden que propone el cierre:
+
+| Regla | Qué exigiría | Versión |
+|---|---|---|
+| `13·DOC19` | Toda sesión queda escrita en el histórico | MAYOR |
+| `13·DOC20` | La sesión se nombra por su tema (extiende `DOC19`) | MENOR |
+| `01·C20` | Una pregunta no es una instrucción (extiende `C4`) | MAYOR |
+| `09·G9` | Se versiona solo lo que hizo esta sesión (extiende `G1`) | MAYOR |
+| `11·CFG5` | Instalar no destruye lo que ya existe | MAYOR |
+| `00·ID9` | La norma del idioma que el proyecto declara (extiende `ID7`) | MAYOR |
+| `13·DOC21` | Un documento por archivo de código, *opt-in* (extiende `DOC13`) | MENOR |
+
+Tres hallazgos que vale la pena que mire:
+
+1. **El histórico no es regla de nadie.** Se sostiene en el `CLAUDE.md` de este repo, una plantilla y un enganche. Un proyecto que herede el estándar y apague el enganche no incumple nada. Es el hueco más grande.
+2. **`corregir-lo-que-esta-mal-sin-preguntar` choca de frente con [`02·F20`](base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)**, que manda parar y proponer. No es redacción, es fondo: hay que separar en el texto el defecto que el propio agente reportó de la mejora fuera de alcance.
+3. **Son cinco MAYOR seguidas.** De a una, un proyecto al día recibiría cinco avisos de migración el mismo día. Conviene agruparlas en una sola entrada del `CHANGELOG`.
+
+Sin commitear. ¿Lo subo?
+
+### 14 · Usuario — 2026-08-13 18:50:39
+> pero ese análisis debe ir dentro de los análisis de los prompts
+
+**Agente** — 2026-08-13 18:51:50
+<!-- agente: 4aaaedd4-65a7-4cf1-804b-c6fe589be114 -->
+
+Ahora el README de la carpeta y el prompt v2, que apuntaba al sitio anterior:
+
+Movido. Quedó así:
+
+| Archivo | Qué es |
+|---|---|
+| [prompts/analisis/analisis-reglas.md](prompts/analisis/analisis-reglas.md) | El análisis de las 27 fichas. |
+| [prompts/analisis/prompt-analisis-reglas-v2.md](prompts/analisis/prompt-analisis-reglas-v2.md) | El prompt, ya apuntando a ese sitio. |
+| [prompts/analisis/README.md](prompts/analisis/README.md) | Índice de la carpeta: el prompt original, el corregido y el resultado. |
+| [prompts/README.md](prompts/README.md) | Le agregué la línea que manda a `analisis/`. |
+| [analisis/README.md](analisis/README.md) | Le quité la fila; esa carpeta vuelve a ser solo auditorías del estándar. |
+
+Los enlaces del análisis se recalcularon al bajar un nivel. `citas`, `enlaces` e índices: 0 hallazgos.
+
+El contenido no cambió, solo la ubicación. ¿Commiteo?
+
+### 15 · Usuario — 2026-08-13 18:52:19
+> pero dejela con el nombre que estaba
+
+**Agente** — 2026-08-13 18:52:37
+<!-- agente: 12949f44-5b0c-406b-b366-d5496bbfe333 -->
+
+Listo: [prompts/analisis/prompts-2026-08-13-candidatas-a-regla.md](prompts/analisis/prompts-2026-08-13-candidatas-a-regla.md), con su nombre original y dentro de los análisis de los prompts. El README de la carpeta y el prompt v2 quedaron apuntando ahí. Enlaces e índices: 0 hallazgos.

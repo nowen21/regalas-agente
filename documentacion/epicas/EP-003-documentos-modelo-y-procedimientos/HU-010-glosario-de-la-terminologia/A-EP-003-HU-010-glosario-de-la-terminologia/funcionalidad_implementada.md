@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Es el cierre de la fase: qué quedó hecho de cada tarea, qué se probó, qué se decidió y qué deuda quedó, comparado contra lo que el [plan_trabajo.md](plan_trabajo.md) prometió. El plan no se toca; acá se dice qué pasó de verdad.
 
+> **Estado al 2026-08-15: la fase no cierra.** El [resultado_pruebas.md](resultado_pruebas.md) §6 da **No cumple**: RNF-01 no tiene caso ejecutado. Lo de abajo es lo que quedó construido, que sí está; lo que falta es la prueba de que se entiende, y esa la corre alguien que no escribió el glosario.
+
 ## 1. Qué quedó hecho
 
 El estándar tiene glosario. Un lector que se atraviesa con una palabra —especificación, señal, fase, puerta, enganche— la busca en [base/glosario.md](../../../../../base/glosario.md) y la encuentra explicada en una línea, con quién la escribe, dónde vive y qué regla la manda. Antes había que leer el capítulo entero.
@@ -26,7 +28,7 @@ Y quedó el inventario de lo que sigue en inglés: 12 términos con traducción 
 |---|---|---|
 | T-01 | Listar los términos por grupo | Hecho, recorriendo `base/`, `plantillas/` y `skills/` |
 | T-02 | Descartar lo que no es del estándar | Hecho. CP-003 lo comprobó con tres palabras del oficio que el estándar no usa |
-| T-03 | Definir cada término en una línea | Hecho: 67 definiciones |
+| T-03 | Definir cada término en una línea | Hecho: 72 definiciones. Eran 67 hasta que el ciclo 2 destapó cinco que faltaban |
 | T-04 | Armar el documento con sus cuatro grupos | Hecho, con orden alfabético dentro de cada grupo |
 | T-05 | Agregar quién lo escribe, dónde vive y qué regla lo manda | Hecho, con el enlace resuelto en cada cita |
 | T-06 | Enlazarlo desde las tres puertas de entrada | Hecho en [README.md](../../../../../README.md), [base/README.md](../../../../../base/README.md) y [anatomia/mapa-del-sitio.md](../../../../../anatomia/mapa-del-sitio.md) |
@@ -34,7 +36,7 @@ Y quedó el inventario de lo que sigue en inglés: 12 términos con traducción 
 | T-08 | Marcar lo que sigue en otro idioma | Hecho: 10 términos se quedan, con su motivo |
 | T-09 | Cerrar con la tabla de lo que falta traducir | Hecho: 12 términos, con el archivo de cada uno |
 | T-10 | Releer contra `00·ID7` y `00·ID8` | Hecho por el agente. La lectura por alguien de fuera queda pendiente (CP-006) |
-| T-11 | Comprobar que ninguna entrada copia su regla | Hecho. Destapó el defecto D-03, corregido |
+| T-11 | Comprobar que ninguna entrada copia su regla | Hecho dos veces. El ciclo 1 destapó D-03, corregido; el ciclo 2 lo rehízo contra la regla que cada entrada nombra y dio cero |
 | T-12 | Sumarle el incremento a la especificación del módulo | Hecho en [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md) |
 | T-13 | Registro de cambios y `VERSION` | Hecho: entrada 15.3.0 y `VERSION` de 15.2.0 a 15.3.0 |
 | T-14 | HU, su índice, el mapa del sitio y este cierre | Hecho |
@@ -44,9 +46,9 @@ Y quedó el inventario de lo que sigue en inglés: 12 términos con traducción 
 
 ## 3. Qué se probó
 
-Ocho casos diseñados, siete ejecutados, siete aprobados, cero fallidos. El detalle está en el [resultado_pruebas.md](resultado_pruebas.md). El que falta, CP-006, es la lectura por alguien que no escribió el glosario, y no la puede correr el agente.
+Dos ciclos. Ocho casos diseñados, siete ejecutados, siete aprobados, cero fallidos. El ciclo 2 corrió los 12 pasos que el ciclo 1 había dejado sin registro y rehízo los 3 que se habían hecho distinto; ahí salió D-05, que faltaban cinco términos, ya agregados. El detalle está en el [resultado_pruebas.md](resultado_pruebas.md). El que falta, CP-006, es la lectura por alguien que no escribió el glosario, y no la puede correr el agente.
 
-Tres defectos aparecieron y dos se corrigieron dentro de la fase: enlaces que no cumplían `13·DOC14` y tres definiciones que copiaban el texto de su fuente. El tercero se aceptó: el glosario tiene 67 entradas y la historia suponía unas treinta.
+Cinco defectos aparecieron y tres se corrigieron dentro de la fase: enlaces que no cumplían `13·DOC14` y tres definiciones que copiaban el texto de su fuente. Dos se aceptaron: que el glosario tenga 72 entradas donde la historia suponía unas treinta, y que cinco definiciones cierren repitiendo lo que exige su regla sin llegar a copiarla.
 
 ## 4. Qué no se hizo, y por qué
 
@@ -70,6 +72,6 @@ Tres defectos aparecieron y dos se corrigieron dentro de la fase: enlaces que no
 | Los 12 términos que faltan traducir, empezando por los roles | CA-03 de esta fase | El cierre de [base/glosario.md](../../../../../base/glosario.md) y el [pendiente 21](../../../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md) |
 | CP-006, la lectura por alguien que no escribió el glosario | RNF-01, sin verificar | §5 del [resultado_pruebas.md](resultado_pruebas.md) |
 | El validador de enlaces marca como aviso los enlaces a la misma carpeta, que `13·DOC14` exime | Se vio al correr CP-005 | Hallazgo de la sesión del 2026-08-14 |
-| El encabezado de [anatomia/mapa-del-sitio.md](../../../../../anatomia/mapa-del-sitio.md) dice v1.4.0 del 2026-08-07, con el estándar en 15.3.0 | Se vio al tocar el árbol en T-06 | Hallazgo de la sesión del 2026-08-14 |
+| El encabezado de [anatomia/mapa-del-sitio.md](../../../../../anatomia/mapa-del-sitio.md) dice v1.4.0 del 2026-08-07, con el estándar en 15.4.0 | Se vio al tocar el árbol en T-06 | Hallazgo de la sesión del 2026-08-14 |
 
 Las dos últimas se vieron trabajando y no se tocaron: están fuera de los archivos que el plan declara (`02·F8`).

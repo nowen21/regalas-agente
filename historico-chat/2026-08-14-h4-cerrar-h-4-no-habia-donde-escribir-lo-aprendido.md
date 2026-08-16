@@ -1999,3 +1999,35 @@ Falta solo el commit. Con eso se marca la cuarta casilla y la sesión cierra.
 
 ### 160 · Usuario — 2026-08-14 22:26:20
 > si
+
+**Agente** — 2026-08-14 22:31:11
+<!-- agente: aaffe1c4-e695-40fa-9dca-13149fff3e05 -->
+
+Commiteado. **La sesión ya se puede cerrar.**
+
+| Para cerrar | Estado |
+|---|---|
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3, H-4, H-5 y H-8 |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 en el 24, H-6 en el 25, H-7 en el 23 |
+| Toda historia disparada está escrita | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ `b877f37`, `e998cc2`, `40f9937`, `730feef` |
+
+**El propósito se cumplió:** H-4 cerrado, con sus tres fases y el hallazgo marcado resuelto en el resumen donde nació. El estándar pasó de 12.2.0 a **15.2.0**: cinco reglas nuevas (`DOC19` a `DOC22` y `F21`), dos programas, y el resumen de sesión sostenido por un enganche en vez de por la memoria.
+
+Sin `push`: eso se autoriza aparte.
+
+### 161 · Usuario — 2026-08-14 22:31:37
+> suba git
+
+**Agente** — 2026-08-14 22:31:56
+<!-- agente: b38a112a-d883-49fb-a7f7-c22fe542f188 -->
+
+Subido: `973ff57..730feef` a `main`, cinco commits.
+
+- `f51962a` ya estaba (de otra sesión).
+- `b877f37` — la marca del espacio por llenar (13.1.0).
+- `e998cc2` — el modelo del resumen y su enlace (14.0.0).
+- `40f9937` — el enganche que lo sostiene, más `F21` (15.2.0).
+- `730feef` — los hashes anotados y la sesión cerrada.
+
+Lo que otra sesión tiene sin guardar sigue intacto en el árbol de trabajo: nada de eso viajó.

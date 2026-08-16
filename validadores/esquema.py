@@ -54,6 +54,96 @@ _LIMITE = 64
 _IDENTIFICADOR = re.compile(r"['\"]([a-z_][a-z0-9_]{%d,})['\"]" % _LIMITE)
 
 
+# ── Lectura de la migración: qué tablas crea y con qué columnas ───────────
+#
+# Lo usan los validadores que necesitan mirar dentro del `CREATE`: `entidades.py`
+# (auditoría, UNIQUE, índices, estados de anulación) y `estructura.py`
+# (convención de nombres). Vive aquí porque aquí está lo que sabe leer
+# migraciones; duplicarlo en cada uno terminaría con tres lectores distintos.
+
+_CREATE_LARAVEL = re.compile(r"Schema::create\(\s*['\"]([^'\"]+)['\"]")
+_BLOQUE_LARAVEL = re.compile(r"Schema::\w+\(")
+_CREATE_SQL = re.compile(
+    r"(?is)\bCREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?[`\"\[]?([\w.]+)[`\"\]]?"
+    r"\s*\((.*?)\)[^;()]*;")
+
+_COLUMNA_PHP = re.compile(r"->\s*([A-Za-z]+)\s*\(\s*['\"]([^'\"]+)['\"]")
+_SIN_NOMBRE_PHP = re.compile(r"->\s*(timestamps|timestampsTz|softDeletes|"
+                             r"softDeletesTz|rememberToken|id|ulid|uuid)\s*\(\s*\)")
+_NO_ES_COLUMNA = {
+    "default", "comment", "index", "unique", "primary", "constrained", "on",
+    "references", "onDelete", "onUpdate", "after", "change", "nullable",
+    "unsigned", "charset", "collation", "storedAs", "virtualAs", "from", "table",
+}
+_CONSTRAINT_SQL = re.compile(
+    r"(?i)^\s*(PRIMARY|UNIQUE|KEY|INDEX|CONSTRAINT|FOREIGN|CHECK|FULLTEXT|SPATIAL)\b")
+_COLUMNA_SQL = re.compile(r"^\s*[`\"\[]?(\w+)[`\"\]]?\s+([A-Za-z]+)")
+
+
+def tablas_creadas(ruta, texto):
+    """Las tablas que esta migración **crea**: `[(tabla, cuerpo, línea)]`.
+
+    El `cuerpo` es el trozo de texto donde se definen sus columnas. Solo el
+    `CREATE`: un `ALTER` posterior no dice qué tiene la tabla, dice qué le
+    cambió, y exigirle la auditoría completa a un `ALTER` sería un falso
+    positivo garantizado.
+    """
+    ext = os.path.splitext(ruta.lower())[1]
+    salida = []
+
+    if ext == ".php":
+        for m in _CREATE_LARAVEL.finditer(texto):
+            siguiente = _BLOQUE_LARAVEL.search(texto, m.end())
+            fin = siguiente.start() if siguiente else len(texto)
+            salida.append((m.group(1), texto[m.end():fin],
+                           codigo.linea_de(texto, m.start())))
+    elif ext == ".sql":
+        for m in _CREATE_SQL.finditer(texto):
+            salida.append((m.group(1), m.group(2),
+                           codigo.linea_de(texto, m.start())))
+    return salida
+
+
+def columnas_de(cuerpo, ruta):
+    """Las columnas declaradas en el cuerpo de un `CREATE`: `[(nombre, tipo)]`.
+
+    Las que el framework agrega sin nombrarlas (`timestamps()`, `softDeletes()`)
+    se expanden a sus columnas reales: si no, una tabla que las usa parecería no
+    tener auditoría.
+    """
+    ext = os.path.splitext(ruta.lower())[1]
+    salida = []
+
+    if ext == ".php":
+        for m in _COLUMNA_PHP.finditer(cuerpo):
+            tipo, nombre = m.group(1), m.group(2)
+            if tipo in _NO_ES_COLUMNA:
+                continue
+            salida.append((nombre, tipo))
+        for m in _SIN_NOMBRE_PHP.finditer(cuerpo):
+            expandido = {
+                "timestamps": [("created_at", "timestamp"),
+                               ("updated_at", "timestamp")],
+                "timestampsTz": [("created_at", "timestamp"),
+                                 ("updated_at", "timestamp")],
+                "softDeletes": [("deleted_at", "timestamp")],
+                "softDeletesTz": [("deleted_at", "timestamp")],
+                "rememberToken": [("remember_token", "string")],
+                "id": [("id", "bigIncrements")],
+                "ulid": [("ulid", "ulid")],
+                "uuid": [("uuid", "uuid")],
+            }[m.group(1)]
+            salida += expandido
+    elif ext == ".sql":
+        for linea in cuerpo.splitlines():
+            if _CONSTRAINT_SQL.match(linea):
+                continue
+            m = _COLUMNA_SQL.match(linea)
+            if m:
+                salida.append((m.group(1), m.group(2).lower()))
+    return salida
+
+
 def _limites_sentencia(texto, pos):
     """La sentencia PHP que contiene `pos`, entre el `;` anterior y el siguiente."""
     ini = texto.rfind(";", 0, pos) + 1

@@ -13,6 +13,14 @@
 
 ---
 
+## 0. Identificación
+
+| Campo | Valor |
+|---|---|
+| **Nombre del proyecto** | «Cómo se llama el proyecto. Es el nombre con que lo van a nombrar todos los documentos que salgan de acá, así que se decide una vez y no se cambia sin plan» |
+| **Qué cubre este encargo** | «Todo el proyecto, o el módulo o la épica a la que corresponde» |
+| **Fecha** | «AAAA-MM-DD» |
+
 ## 1. Necesidad — en una frase
 
 «Qué quiere resolver el negocio, en lenguaje de negocio, sin detalle técnico.»

@@ -163,7 +163,9 @@
 | CP-004 | CA-02 | Alta | 2026-08-14 | Tres entradas de tres grupos: **Fase** → `02·F12`, **Derogar** → `20·M11`, **Señal** → `13·DOC5`. Los tres enlaces llegan y las tres reglas exigen lo que la entrada dice | Aprobado | EV-04 | — |
 | CP-005 | CA-02 | Alta | 2026-08-14 | `validadores/enlaces.py` sobre los archivos de la fase: 2 rotos y 24 avisos de `13·DOC14` antes de corregir; 0 rotos después | Aprobado | EV-04 | D-02 |
 | CP-006 | RNF-01 | Media | — | No ejecutado: necesita que lo lea alguien que no lo escribió | No ejecutado | — | — |
-| CP-007 | RNF-02 | Media | 2026-08-14 | Comparación automática de cada definición contra `base/` por fragmentos de ocho palabras: tres copias, reescritas; segunda corrida en cero | Aprobado tras corrección | EV-06 | D-03 |
+| CP-007 | RNF-02 | Media | 2026-08-14 | Comparación automática de cada definición contra `base/` por fragmentos de ocho palabras: tres copias, reescritas; segunda corrida en cero | Aprobado tras corrección | EV-06 | D-04 | Cinco definiciones cierran repitiendo lo que exige su regla | CP-007 p3 | Baja | Aceptado | **Checklist del estándar**, **Identificador**, **N/A**, **Evidencia** y **Rol**. No se recortaron: la cláusula es justo lo que hace entendible el término, y quitarla deja una definición más pobre. No son copias literales, lo probó CP-007 p2 |
+| D-05 | Faltaban 5 términos del estándar en el glosario | CP-001 p1 y p3, ciclo 2 | Alta | Corregido | Se agregaron checklist de despliegue, mapeo de nombres, marco normativo, postmortem y stack. El glosario pasa de 67 a 72 entradas, y `postmortem` y `stack` entran además en la tabla de lo que se queda en otro idioma |
+| D-03 |
 | CP-008 | CA-03 | Media | 2026-08-14 | Recorrido del glosario: 10 términos que se quedan con motivo y 12 que faltan traducir, con el archivo de cada uno | Aprobado | EV-05 | — |
 
 **Correspondencia con el plan:** 8 casos en el plan, 8 acá. Ninguno de más, ninguno de menos.
@@ -182,6 +184,30 @@
 | CP-008 | 4 | 4 | — |
 
 Un paso sin registro no se puede dar por cumplido. Los casos quedan con el resultado que se les asignó al ejecutarlos, pero el respaldo de esos 16 pasos no está en ninguna parte y habría que volver a correrlos para tenerlo.
+
+---
+
+## 2.bis Ciclo 2 — los pasos que el ciclo 1 no dejó registrados
+
+El ciclo 1 dejó 16 pasos sin registro y 3 hechos distinto (§2). Acá se corrieron otra vez, con el método escrito para que se puedan repetir. **Fecha: 2026-08-15.**
+
+| Caso | Paso | Cómo se corrió esta vez | Qué salió | Cumple |
+|---|---|---|---|---|
+| CP-001 | 1 y 3 | La lista de origen se construyó de forma repetible: los 28 artefactos que nombra cada plantilla de `plantillas/`. Se buscó cada uno en el glosario | **Faltaban 5**: checklist de despliegue, mapeo de nombres, marco normativo, postmortem y stack. Se agregaron. Segunda corrida: cero faltantes | Sí, tras corregir |
+| CP-001 | 2 | Se contaron las entradas por grupo **y** los artefactos de la lista de origen, que es lo que el paso pedía | 72 entradas contra 28 artefactos de origen, todos cubiertos | Sí |
+| CP-001 | 4 | Por cada término del glosario se buscó cada una de sus palabras, tolerando plural y guion, en `base/`, `plantillas/` y `skills/` | Cero términos con palabras que el estándar no use. El ciclo 1 había reportado 6, y eran falsos: la búsqueda exigía la frase literal y no toleraba "marcador" contra "marcadores" | Sí |
+| CP-002 | 4 | Por cada una de las cinco definiciones se buscó si usa otro término del glosario sin explicarlo | Cuatro no usan ninguno. **Publicación** usa "commit", que está en el mismo glosario dos filas más arriba: no manda a buscar afuera | Sí |
+| CP-004 | 5 | Se siguió el "dónde vive" de las tres entradas | **Señal** apunta a `documentacion/senales.md`, que existe. **Derogar** no da ruta, da ubicación ("en el archivo de la propia regla"), que es correcto. **Fase** da un patrón con huecos, no una ruta; se comprobó contra una instancia real y calza | Sí |
+| CP-005 | 3 | Se cambió el enlace de **Derogar** por `M11-esta-regla-no-existe.md` | El archivo quedó con un enlace que no resuelve | Sí |
+| CP-005 | 4 | Se corrió `validadores/enlaces.py` | Señaló 1 enlace roto en `base/glosario.md` | Sí |
+| CP-005 | 5 | Se restauró el archivo | Idéntico al original, comprobado carácter por carácter | Sí |
+| CP-005 | 6 | Se corrió el validador otra vez | Cero rotos en el glosario, y cero en todo el repositorio | Sí |
+| CP-006 | 1 a 4 | — | **Sigue sin ejecutar.** Necesita a alguien que no escribió el glosario | **No** |
+| CP-007 | 1 y 2 | Esta vez sí contra la regla que cada entrada nombra, no contra todo `base/`: se abrió el archivo enlazado en la columna **Regla** y se comparó la definición contra él por fragmentos de ocho palabras | Cero copias en las 72 entradas | Sí |
+| CP-007 | 3 y 4 | Se buscó en cada definición la redacción de exigencia (deber, nunca, no se, se exige) | Cinco entradas cierran con una cláusula que repite lo que la regla exige: **Checklist del estándar**, **Identificador**, **N/A**, **Evidencia** y **Rol**. No son copias (lo probó el paso 2), pero difuminan la frontera entre definir y exigir | Sí, con desvío D-04 |
+| CP-008 | 4 | Se buscó en la tabla de cierre la frase que dice que renombrar es trabajo aparte | Está: "trabajo aparte", "esta tabla es el inventario, no la orden" | Sí |
+
+**Qué queda del reproche del ciclo 1:** de los 16 pasos sin registro, 12 quedaron corridos y anotados; los 4 restantes son los de CP-006 y siguen sin poderse correr. De los 3 hechos distinto, los 3 se rehicieron como el plan pedía.
 
 ---
 
@@ -204,7 +230,7 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 | D-01 | El glosario tiene 67 entradas y la HU suponía unas treinta | CP-001 | Baja | Aceptado | Acá, §4. No se recortó: la regla de entrada es RN-05 de la HU, que deja pasar todo lo que aparece en una regla o una plantilla, y las 67 la cumplen. Lo que estaba mal era la estimación, no el contenido. Queda como desvío del supuesto §3.2 de la HU |
 | D-02 | Enlaces nuevos que no cumplían `13·DOC14` | CP-005 | Alta | Corregido | [pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md](../../../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md). Se reescribieron 30 enlaces de los documentos de esta fase para que el texto sea la ruta desde la raíz; los de la misma carpeta se dejaron con nombre corto, que es la excepción escrita en la propia `DOC14`. Lo obliga [`02·F21`](../../../../../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) |
 | D-03 | Tres definiciones copiaban el texto de su fuente | CP-007 | Media | Corregido | Acá, §4. Se reescribieron **Marcador de generación automática**, **Meta-regla** y **Regla** |
-| D-04 | Dieciséis pasos del plan no dejaron registro de qué salió, y tres se hicieron distinto | §2 | Media | Abierto | Acá, §2, tabla de «qué salió distinto de lo esperado» |
+| D-04 | Dieciséis pasos del plan no dejaron registro de qué salió, y tres se hicieron distinto | §2 | Media | Abierto | Acá, §2, tabla de "qué salió distinto de lo esperado" |
 
 **Defectos abiertos que se aceptan y por qué:** ninguno se acepta. D-04 queda abierto y sin autorización para dejarlo pasar.
 
@@ -214,7 +240,7 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 
 | Exigencia de la HU (`CA-0N` · `RNF-0N`) | Casos que la cubren | Resultado | Cumple |
 |---|---|---|---|
-| [CA-01](../HU-010-glosario-de-la-terminologia.md#ca-01--cada-término-está-definido-en-una-línea) | CP-001, CP-002 | Los 67 términos están definidos en una línea, y los cinco de muestra se encontraron sin abrir ningún capítulo. Los pasos 2 y 3 de CP-001 no dejaron número | Sí |
+| [CA-01](../HU-010-glosario-de-la-terminologia.md#ca-01--cada-término-está-definido-en-una-línea) | CP-001, CP-002 | Los 72 términos están definidos en una línea, y los cinco de muestra se encontraron sin abrir ningún capítulo. Los pasos 2 y 3 de CP-001 no dejaron número | Sí |
 | [CA-02](../HU-010-glosario-de-la-terminologia.md#ca-02--cada-entrada-dice-dónde-vive-y-qué-regla-lo-manda) | CP-004, CP-005 | Cada entrada nombra su regla con enlace, la regla exige lo que la entrada dice, y el validador no deja enlaces rotos | Sí |
 | [CA-03](../HU-010-glosario-de-la-terminologia.md#ca-03--se-ve-qué-quedó-en-otro-idioma) | CP-008 | La tabla de cierre lista 10 términos que se quedan con su motivo y 12 que faltan traducir, con dónde vive cada uno | Sí |
 | RNF-01, se entiende sin saber del tema | CP-006 | Sin caso ejecutado. La relectura del agente contra `00·ID7` y `00·ID8` no reemplaza la prueba | **No** |
@@ -231,13 +257,14 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 |---|---|---|---|---|
 | Cobertura de criterios | Plan §5 y §12.1 | 100% | 100%: los tres criterios, los dos requisitos no funcionales y el transversal tienen caso | Sí |
 | Casos ejecutados | Plan §12.1 | 100%, 8 de 8 | 88%: 7 de 8. Falta CP-006 | **No** |
+| Pasos del plan con registro | Ciclo 1 dejó 16 sin registro | Todos | 31 de 35. Los 4 que faltan son los de CP-006 | **No** |
 | Casos críticos y altos ejecutados | Plan §3.4 | 100% | 100%: CP-001, CP-002, CP-004 y CP-005 | Sí |
 | Términos del estándar que faltan en el glosario | Plan §12.1 | Cero | Cero | Sí |
 | Términos del glosario que el estándar no usa | Plan §12.1 | Cero | Cero | Sí |
 | Preguntas que tuvo que hacer quien leyó | Plan §12.1 | Cero | Sin medir: CP-006 no se ejecutó | **No** |
 | Enlaces rotos | Plan §12.1 | Cero | Cero | Sí |
 
-**Lo que no se cumplió:** dos metas. «Casos ejecutados» y «preguntas que tuvo que hacer quien leyó» dependen las dos de CP-006, que sigue sin correr. No hay decisión escrita que las deje pasar.
+**Lo que no se cumplió:** dos metas. "Casos ejecutados" y "preguntas que tuvo que hacer quien leyó" dependen las dos de CP-006, que sigue sin correr. No hay decisión escrita que las deje pasar.
 
 ---
 
@@ -247,11 +274,13 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 
 **Justificación:** RNF-01 no tiene caso ejecutado (§5), y dos metas del plan quedaron sin cumplir por lo mismo (§5.1). Los tres criterios de aceptación sí cumplen y ningún defecto de contenido queda abierto, pero eso no alcanza: el veredicto no tiene estado intermedio, y CP-006 no está ejecutado sino pendiente.
 
+**Justificación al 2026-08-15, ciclo 2:** el punto 2 quedó hecho y destapó un defecto real (D-05: faltaban cinco términos, ya agregados). Queda solo CP-006.
+
 **Qué falta para que cumpla:**
 
-1. Correr CP-006 con alguien que no haya escrito el glosario, y corregir la entrada de cada pregunta que tenga que hacer.
-2. Volver a correr los 16 pasos que no dejaron registro y los 3 que se hicieron distinto (§2) y anotar qué salió en cada uno, o dejar escrito por qué no se van a correr.
-3. Con los dos anteriores hechos, rehacer §5 y §5.1 y volver a dar veredicto.
+1. ~~Volver a correr los 16 pasos sin registro y los 3 hechos distinto.~~ **Hecho en el ciclo 2** (§2.bis): 12 corridos y anotados, 3 rehechos como el plan pedía, 4 imposibles porque son de CP-006.
+2. **Correr CP-006** con alguien que no haya escrito el glosario, y corregir la entrada de cada pregunta que tenga que hacer. Es lo único que falta.
+3. Con eso hecho, rehacer §5 y §5.1 y volver a dar veredicto.
 
 > Este concepto es el que se copia al [estado-fase.md](estado-fase.md) para pasar la puerta de verificación. La fase **no cierra** con un CA en "No".
 
@@ -276,3 +305,4 @@ No hubo datos reales de por medio: la fase solo escribe archivos de texto del re
 | Ciclo | Fecha | Aprobados | Fallidos | Qué cambió entre ciclos |
 |---|---|---:|---:|---|
 | 1 | 2026-08-14 | 7 | 0 | Primera ejecución |
+| 2 | 2026-08-15 | 7 | 0 | Se corrieron los 12 pasos sin registro que sí se podían correr y los 3 hechos distinto. Salió D-05: faltaban 5 términos |

@@ -117,6 +117,79 @@ def enlaces(texto):
     return salida
 
 
+def _celdas(linea):
+    """Las celdas de una fila markdown, sin los bordes ni los espacios."""
+    return [c.strip() for c in linea.strip().strip("|").split("|")]
+
+
+def _es_separador(celdas):
+    return bool(celdas) and all(re.fullmatch(r":?-{2,}:?", c) for c in celdas)
+
+
+def tablas(texto):
+    """Las tablas markdown del documento.
+
+    Devuelve `[(encabezados, filas)]`, donde `filas` es `[(numero_de_linea,
+    celdas)]`. Se salta los bloques de código, así que una tabla de ejemplo
+    dentro de ``` no cuenta como tabla del documento.
+
+    Una tabla es un bloque de renglones que empiezan por `|` cuya segunda línea
+    es la de guiones. Sin esa línea, markdown no la dibuja como tabla y aquí
+    tampoco cuenta.
+    """
+    salida = []
+    bloque = []
+
+    def cerrar():
+        if len(bloque) >= 2 and _es_separador(_celdas(bloque[1][1])):
+            encabezados = _celdas(bloque[0][1])
+            filas = [(n, _celdas(l)) for n, l in bloque[2:]]
+            salida.append((encabezados, filas))
+        bloque.clear()
+
+    for n, linea in lineas_utiles(texto):
+        if linea.strip().startswith("|"):
+            bloque.append((n, linea))
+        else:
+            cerrar()
+    cerrar()
+    return salida
+
+
+def filas_de(texto, *columnas):
+    """Las filas de la primera tabla que tenga todas esas columnas.
+
+    Devuelve `[(numero_de_linea, {columna: valor})]`. Busca por nombre de
+    columna y no por posición: así una tabla que gane una columna al final no
+    rompe a quien la lee.
+    """
+    objetivo = [c.lower() for c in columnas]
+    for encabezados, filas in tablas(texto):
+        bajos = [e.lower() for e in encabezados]
+        if not all(c in bajos for c in objetivo):
+            continue
+        salida = []
+        for n, celdas in filas:
+            fila = {e: (celdas[i] if i < len(celdas) else "")
+                    for i, e in enumerate(bajos)}
+            salida.append((n, fila))
+        return salida
+    return []
+
+
+def valor_limpio(celda):
+    """El contenido de una celda, sin comillas invertidas ni marcador de plantilla.
+
+    Una celda que sigue trayendo el `«…»` de la plantilla es una celda **sin
+    llenar**: vale lo mismo que vacía, y devolver el marcador haría que el
+    validador comparara contra un texto que nadie escribió.
+    """
+    v = celda.strip().strip("`").strip()
+    if not v or v in ("—", "-", "–") or ("«" in v and "»" in v):
+        return ""
+    return v
+
+
 def recorrer_md(raiz):
     """Todos los .md bajo `raiz`, saltando las carpetas excluidas."""
     for carpeta, subcarpetas, archivos in os.walk(raiz):

@@ -6,6 +6,8 @@ Textos que el usuario escribe para pedir una regla, un cambio o un trabajo, guar
 
 Un prompt **no se corrige ni se reescribe** cuando la regla que salió de él quedó redactada de otro modo. Si la regla terminó diciendo algo distinto, eso se explica en el `CHANGELOG.md` y en el histórico de la sesión, no editando el pedido.
 
+Qué hacer con cada ficha —cuál ya es regla, cuál falta escribir y cuál no es regla— se decide en [`analisis/`](analisis/README.md), no acá.
+
 ## Índice
 
 | Prompt | Qué pidió |
@@ -22,7 +24,7 @@ Pedidos que quedaron dichos en las sesiones y que sirven como regla. Cada ficha 
 |---|---|
 | [redaccion-clara-para-quien-no-sabe.md](redaccion-clara-para-quien-no-sabe.md) | Que todo lo escrito lo entienda quien no sabe del tema, e idealmente un niño. |
 | [menos-es-mas.md](menos-es-mas.md) | Explicaciones cortas: menos es más. |
-| [sin-marcadores-de-ia.md](sin-marcadores-de-ia.md) | Que ningún documento lleve las marcas que delatan generación automática. |
+| [sin-marcadores-de-ia.md](1. sin-marcadores-de-ia.md) | Que ningún documento lleve las marcas que delatan generación automática. |
 | [espanol-colombiano-correcto.md](espanol-colombiano-correcto.md) | Español colombiano, con ortografía, gramática y sintaxis correctas. |
 
 ### Cómo se trabaja con el usuario
