@@ -121,6 +121,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 
 ---
 
+### H-8 · La transcripción de esta sesión se escribió dos veces, y con horas inventadas
+
+- **Qué pasó:** [`validadores/hook_historico.py`](../../../validadores/hook_historico.py) ya escribe el histórico con la hora del reloj, y el agente lo escribió otra vez a mano: 61 encabezados de usuario para unos 30 mensajes, con la numeración pisada. Además estimó las horas en vez de leerlas: la última escrita a mano decía 11:58 cuando el reloj marcaba 21:41.
+- **Por qué importa:** el histórico es lo único que queda de la sesión cuando el chat se borra. Duplicado y con horas falsas deja de servir para reconstruir qué pasó y cuándo, que es para lo que existe.
+- **Qué lo soluciona:** limpiar el archivo dejando lo que escribió el enganche, y que el [`CLAUDE.md`](../../../CLAUDE.md) deje de pedir a mano lo que el programa ya hace.
+- **Qué se decidió:** no se limpió en caliente. Un `git checkout --` en el intento de arreglo ya había descartado las horas reales de los seis últimos mensajes.
+- **Estado:** abierto.
+- **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
+- **Dispara:** —, es corregir el `CLAUDE.md` y limpiar un archivo.
+- **Orden de resolución:** 4 de 4. Va último: el archivo se lee igual, aunque tenga el doble de encabezados.
+- **Dónde queda:** [pendientes/29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Nace en:** 2026-08-15 · la-plantilla-del-resultado-de-pruebas.
+- **Cerrado en:** —.
+- **Con qué se retoma:** ¿le pasó a otras sesiones? Hay que revisar si más archivos del histórico traen encabezados repetidos.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -131,9 +148,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md) y [28](../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md), [28](../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) y [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
-| Lo que se hizo está aprobado y guardado | ☐ sin aprobar y sin commit |
+| Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario y subido en `8ed276c` y `439c47e` |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
