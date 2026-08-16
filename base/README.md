@@ -6,6 +6,8 @@ Son las reglas que sirven para **cualquier** proyecto. Lo que solo vale para un 
 
 Cada proyecto que use el estándar recibe esta carpeta entera. Al empezar a trabajar, [`validadores/cargador.py`](../validadores/cargador.py) arma con ella el texto que se le entrega al agente.
 
+**¿Se atravesó una palabra?** Está en el [glosario](glosario.md): cada término del estándar explicado en una línea, con qué regla lo manda y dónde vive.
+
 ## Cómo está organizado
 
 Las reglas están repartidas por tema en **capítulos numerados**. Cada capítulo está guardado de una de dos formas, según cuánto tenga adentro:

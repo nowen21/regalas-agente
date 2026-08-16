@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Terminada el 2026-08-14 |
 
 ---
 
@@ -139,7 +139,11 @@ Entonces se puede listar qué términos siguen en otro idioma y por qué
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué cubre | CA | Estado |
+|---|---|---|---|
+| [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/](A-EP-003-HU-010-glosario-de-la-terminologia/README.md) | El glosario entero y el inventario de lo que sigue en otro idioma | CA-01, CA-02, CA-03 | Cerrada el 2026-08-14 |
+
+Una sola fase para los tres criterios: los tres se validan sobre el mismo documento y ninguno se puede probar sin él (`02·F12.10`).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -198,3 +202,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-8 del 2026-08-14 |
+| 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se descompone en la fase A y se cierra: el glosario existe, con 67 términos y el inventario de lo que falta traducir |

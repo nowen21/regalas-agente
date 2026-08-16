@@ -1,6 +1,6 @@
 # Pendiente · El glosario, y lo que quedó en inglés
 
-**Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-8 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+**Estado:** abierto en su segunda mitad · anotado 2026-08-14 · nace del hallazgo H-8 de [historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
 ## El problema
 
@@ -12,9 +12,13 @@ El 2026-08-14 se tradujo "spec" a "especificación" en 53 archivos y nació [`01
 
 ## Qué falta
 
-**1. El glosario**, primero. Unos treinta términos en cuatro grupos: la cadena de trabajo, las reglas, lo que comprueba y lo que se guarda. Cada uno con qué es, quién lo escribe, dónde vive y qué regla lo manda.
+**1. El glosario.** **Hecho el 2026-08-14**, estándar 15.3.0. Está en [base/glosario.md](../base/glosario.md): 67 términos en cuatro grupos, cada uno en una línea, con quién lo escribe, dónde vive y qué regla lo manda. Lo entregó la fase [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md).
 
-**2. Los roles, después.** Con el glosario escrito se ve cuáles términos siguen en inglés sin necesidad y se cambian todos de una vez, en lugar de uno por sesión.
+Salieron 67 y no los treinta que se estimaban. No se recortó: entra todo lo que aparece en una regla o en una plantilla, y las 67 lo cumplen.
+
+**2. Los roles.** Sigue abierto. El glosario ya dejó el inventario: **12 términos con traducción usada que todavía están en inglés**, cada uno con el archivo donde vive, en la sección [Lo que sigue en otro idioma](../base/glosario.md#lo-que-sigue-en-otro-idioma). Son trece nombres en diez archivos entre `base/`, `plantillas/`, `skills/` y `notas/`, más los nombres de archivo que llevan `spec`.
+
+Renombrar un archivo rompe todo enlace que apunte a él, así que el cambio va de una vez, con su historia de usuario y su plan. No de a poco.
 
 ## El límite
 

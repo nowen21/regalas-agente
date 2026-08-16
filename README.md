@@ -38,6 +38,8 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 
 ## La base por capas
 
+**Antes de leer, el [glosario](base/glosario.md):** cada término del estándar explicado en una línea, con qué regla lo manda y dónde vive.
+
 ### Preámbulo
 
 - [`00-identidad-y-rol/base.md`](base/00-identidad-y-rol/base.md) — quién es el agente, su rol, misión y principios (el marco del que derivan las reglas)

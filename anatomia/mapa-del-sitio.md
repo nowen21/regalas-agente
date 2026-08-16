@@ -35,7 +35,8 @@ agente/
 ├── Manual-Estandar-Agente.docx ....... manual en Word
 ├── _base_modulo.md ................... plantilla canónica de spec de módulo (no se versiona)
 │
-├── 🟦 base/ .......................... LA NORMA · 21 capítulos (00–20)
+├── 🟦 base/ .......................... LA NORMA · 21 capítulos (00–20) + el glosario
+│   ├── glosario.md ................... anexo: cada término del estándar en una línea
 │   ├── 00-nucleo-blindado.md ......... reglas que nunca se pueden relajar
 │   ├── 00-identidad-y-rol/
 │   │   ├── base.md ................... quién es el agente y qué puede decidir
