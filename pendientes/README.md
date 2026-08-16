@@ -10,16 +10,18 @@ Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por 
 
 El número dice en qué orden **se puede** construir, o sea qué se apoya en qué. La `P` dice qué tan urgente es **hoy**. No son lo mismo, y por eso son dos columnas y no una: si el número absorbiera la prioridad habría que renumerar, y renumerar rompe los enlaces de los pendientes que se citan entre sí.
 
-| P | Qué significa |
-|---|---|
-| **P0** | Se está perdiendo algo, o el daño se sigue produciendo cada día que pasa |
-| **P1** | Un documento del estándar afirma algo que no es cierto |
-| **P2** | Barato, y evita volver a hacer a mano el mismo trabajo |
-| **P3** | Falta una decisión escrita: nadie puede construir hasta que se tome |
-| **P4** | Limpieza de texto ya escrito. Grande, mecánica, no bloquea nada |
-| **P5** | Construcción grande. Se adelanta cuando haya un proyecto que la pida |
-| **P6** | Cobertura opt-in sin demanda hoy |
-| — | Cerrado |
+La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más urgente y `P6` lo que más puede esperar**. Es una abreviatura, así que acá queda su equivalencia en palabras, para no tener que saberla de antemano:
+
+| P | Se lee | Qué significa |
+|---|---|---|
+| **P0** | Se pierde algo | Se está perdiendo algo, o el daño se sigue produciendo cada día que pasa |
+| **P1** | Dice algo falso | Un documento del estándar afirma algo que no es cierto |
+| **P2** | Barato | Cuesta poco, y evita volver a hacer a mano el mismo trabajo |
+| **P3** | Falta decidir | Nadie puede construir hasta que la decisión esté escrita |
+| **P4** | Limpieza | Texto ya escrito que hay que corregir. Grande, mecánica, no bloquea nada |
+| **P5** | Obra grande | Construcción de peso. Se adelanta cuando haya un proyecto que la pida |
+| **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
+| — | — | Cerrado |
 
 Priorizado el **2026-08-16** sobre los 31 abiertos. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 

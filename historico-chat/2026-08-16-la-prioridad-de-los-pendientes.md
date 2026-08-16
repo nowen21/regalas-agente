@@ -299,6 +299,62 @@ Una cosa antes: los pendientes **35 y 36 nunca se commitearon** — los dejó ot
 ### 10 · Usuario — 2026-08-16 13:04:37
 > suba todo
 
+**Agente** — 2026-08-16 13:05:38
+<!-- agente: df6dcb45-bce5-4dfe-8c8e-914e83b377db -->
+
+Commit `a9b9890`, 13 archivos. Las cuatro casillas de cierre quedaron marcadas: la sesión se puede cerrar.
+
+Queda un cambio suelto sin commitear: la casilla que acabo de marcar en el resumen. Y falta el `push` — eso no lo hago sin que lo digas aparte.
+
+Lo que sigue, según lo que quedó priorizado: el [39](pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), que es el único P0 y el único donde se pierde algo que no está en otra parte.
+
+### 11 · Usuario — 2026-08-16 13:06:18
+> no entendí lo de P0
+
+**Agente** — 2026-08-16 13:06:35
+<!-- agente: fe7e2655-cecb-40e3-a098-38684a3189d3 -->
+
+P0 es la prioridad más alta: los niveles van de **P0 = lo más urgente** a **P6 = lo que puede esperar**. La «P» es de prioridad y el número es el puesto en la fila.
+
+Pero que preguntes es la prueba de que está mal escrito. `00·ID7` pide que se entienda sin saber del tema, y «P0» es jerga de oficina de proyectos — el mismo defecto que el [pendiente 26](pendientes/26-corrida-y-ejecucion-en-el-estandar.md) le reclama a la palabra «corrida». Acabo de meterle jerga nueva al estándar mientras priorizaba los pendientes que se quejan de la jerga.
+
+La arreglo cambiando el código por el nombre. En vez de `P0`, la columna diría:
+
+| Nivel | En vez de… | Diría |
+|---|---|---|
+| 0 | P0 | **Se pierde algo** |
+| 1 | P1 | **Dice algo falso** |
+| 2 | P2 | **Barato** |
+| 3 | P3 | **Falta decidir** |
+| 4 | P4 | **Limpieza** |
+| 5 | P5 | **Obra grande** |
+| 6 | P6 | **Sin demanda** |
+
+Se lee sin tabla de equivalencias: «el 39 es de los que **se pierde algo**» se entiende solo.
+
+Lo cambio en el README y en el resumen, ¿va?
+
+### 12 · Usuario — 2026-08-16 13:08:37
+> no lo cambie solo deje la equivalencia
+
+**Agente** — 2026-08-16 13:09:40
+<!-- agente: 0db0e14f-9e08-4680-be91-304bd8d22cd6 -->
+
+Hecho. La tabla de niveles ahora trae una columna **«Se lee»**, con la frase corta al lado del código:
+
+```
+| P | Se lee | Qué significa |
+| P0 | Se pierde algo | Se está perdiendo algo, o el daño se sigue produciendo… |
+| P1 | Dice algo falso | Un documento del estándar afirma algo que no es cierto |
+```
+
+Y arriba queda dicho que la `P` es de prioridad y que va de `P0`, lo más urgente, a `P6`, lo que más puede esperar. Los códigos de las 31 filas no se tocaron.
+
+Enlaces en cero. Sin commitear: este cambio y la casilla de cierre del resumen. ¿Los subo?
+
+### 13 · Usuario — 2026-08-16 13:10:58
+> si
+
 ## Abiertos                          ← acá arrancan las tablas de los 28
 
 ### Garantía y sostenimiento del estándar (01–06, en orden)

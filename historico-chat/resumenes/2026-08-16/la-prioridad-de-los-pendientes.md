@@ -16,7 +16,9 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-la-prioridad-de
 
 **Dónde queda.** ✅ **Resuelto.** Se escribió en [pendientes/README.md](../../../pendientes/README.md): una columna `P` con siete niveles (P0 a P6), en las nueve tablas, y una sección arriba que explica qué significa cada uno. El usuario eligió marcar los 30 abiertos —opción A— sobre la alternativa de un bloque corto de «lo próximo». El validador de enlaces queda en cero.
 
-**El riesgo asumido.** Treinta marcas envejecen y hay que mantenerlas. Queda escrito en el propio README que la `P` se revisa **al cerrar un pendiente**, no cada vez que se mira la lista.
+**La jerga que se coló, y qué se decidió.** El usuario preguntó qué era «P0»: la abreviatura no se entiende sin saberla de antemano, que es lo que `00·ID7` prohíbe y lo mismo que el [pendiente 26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md) le reclama a la palabra «corrida». El agente propuso cambiar el código por el nombre —«se pierde algo» en vez de `P0`—. **El usuario decidió dejar el código y escribir la equivalencia**, y así quedó: una columna «Se lee» al lado de cada nivel.
+
+**El riesgo asumido.** Treinta y una marcas envejecen y hay que mantenerlas. Queda escrito en el propio README que la `P` se revisa **al cerrar un pendiente**, no cada vez que se mira la lista.
 
 **Lo que quedó dicho de paso, y no estaba escrito en ninguna parte:** por qué el número no puede absorber la prioridad. Renumerar rompe los enlaces de los pendientes que se citan entre sí —el 30 nombra al 01 y al 20, el 36 al 34 y al 35—, que es el mismo defecto de los pendientes [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y 33 · punto 4.
 
@@ -60,7 +62,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/39-a-que-proyectos-les-borro-la-memoria-el-enganche.md), el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: los cuatro son de backlog y de conducta |
-| Lo que se hizo está aprobado y guardado | ☐ **falta** |
+| Lo que se hizo está aprobado y guardado | ☑ commit `a9b9890`, aprobado por el usuario. Incluye los pendientes 35 y 36 que había dejado sin commitear otra sesión, por pedido suyo |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
