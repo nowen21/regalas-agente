@@ -31,7 +31,7 @@ Tres cosas, y la tercera es la que hace daño:
 
 1. **El proyecto queda en 12 de 13 para siempre.** Nada de lo que el instalador sabe hacer lo sube.
 2. **La única salida es escribir el archivo a mano**, y esos archivos terminan diciendo *«Lo escribió `validadores/instalar.py`. No se edita a mano.»* La salida disponible es la que el propio estándar prohíbe.
-3. **El aviso de instalación incompleta se vuelve permanente.** El agente lo repite en cada mensaje, y un aviso que siempre suena se deja de leer — con él se pierden las incompletitudes de verdad. Es el mismo daño del [pendiente 34](34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md), por otra puerta.
+3. **El aviso de instalación incompleta se vuelve permanente.** El agente lo repite en cada mensaje, y un aviso que siempre suena se deja de leer — con él se pierden las incompletitudes de verdad. Es el mismo daño del [pendiente 34](hecho/enlaces-de-las-plantillas-al-estandar.md), por otra puerta.
 
 Además, el mensaje de ayuda es engañoso: *«Escribe un registro cada vez que algo cambia de huella»* describe lo que el instalador **ya hizo** y no arregla nada. Quien lo lea vuelve a correr el instalador y vuelve al mismo sitio.
 

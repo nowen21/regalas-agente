@@ -10,6 +10,18 @@ Origen: pendiente 34.
 
 Cerrado el 2026-08-16, versión **20.0.1**.
 
+## ⚠️ El proyecto comprobó y no está — 2026-08-16
+
+`shopnest-mesa` corrió el instalador y comprobó, que era lo que se le pidió. **El enlace sigue roto.** En su `.agente/stack-instalacion.md`, línea 25, el marcador entró literal:
+
+```
+([`02·F13`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F13-…md))
+```
+
+Las plantillas quedaron bien —eso sí se hizo—, pero el instalador no reemplaza el marcador al copiar ese archivo dentro del proyecto. Y `enlaces.py`, que en el paso 3 aprendió a resolver el marcador sin llenar contra la raíz, ahora **calla** el enlace en vez de reportarlo. Un aviso ruidoso se cambió por un fallo mudo, que para el proyecto que reportó es peor que como estaba.
+
+Lo que falta está en el [pendiente 40](../40-el-instalador-copia-sin-rellenar-los-marcadores.md) —que además encontró que son **tres** los puntos de copia sin rellenar, no uno— y en el [41](../41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md), que es la pregunta de qué debe hacer `enlaces.py` con un marcador sin llenar dentro de un proyecto. Este archivo se queda acá porque lo suyo —las 22 plantillas— sí se hizo; lo que no se hizo se sigue allá.
+
 ---
 
 ## Qué era

@@ -40,7 +40,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 explicado y escrito acá; H-2 corregido acá |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ reinstalar **no** es pendiente de este repositorio: cada proyecto lo hace en su propia sesión, y el aviso es justamente lo que se lo dice — el usuario confirmó que dos ya lo detectaron. H-2 vive en el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: son de instalación y de redacción de un aviso |
-| Lo que se hizo está aprobado y guardado | ☐ **falta** — sin commit todavía |
+| Lo que se hizo está aprobado y guardado | ☑ commit `c2ded0e`, aprobado por el usuario y publicado |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

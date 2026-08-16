@@ -113,7 +113,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 y H-2 en [hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md); H-3 en el [`CLAUDE.md`](../../../CLAUDE.md) y el [README del histórico](../../README.md); H-6 en [hecho/enlaces-de-las-plantillas-al-estandar.md](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md) |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ quedan anotados el H-4 y el H-5, los dos acá; lo que sigue del 29 es su punto 1, ya en el [pendiente](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia. El H-6 disparó el aviso a `shopnest-mesa`, escrito allá |
-| Lo que se hizo está aprobado y guardado | ☐ aprobado por el usuario; falta el commit, que se pide aparte |
+| Lo que se hizo está aprobado y guardado | ☑ commit `1c0b70f`, 41 archivos. Sin `push`, y sin commitear el aviso a `shopnest-mesa`: el usuario pidió solo este repositorio |
 
 **Sí se puede cerrar**, salvo el commit. La sesión entró con cuatro `P0` y sale con uno: el **36**. Se cerraron el 39, el punto 2 del 29 y el 34.
 

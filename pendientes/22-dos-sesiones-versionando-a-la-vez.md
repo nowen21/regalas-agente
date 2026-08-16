@@ -30,6 +30,20 @@ Eso cambia el alcance de lo que hay que decidir. `VERSION` y `CHANGELOG.md` son 
 
 **Sin decidir:** si el acuerdo cubre cualquier archivo compartido o se deja acotado a la versión.
 
+## Tercer caso: casi cuesta el mismo trabajo hecho dos veces
+
+**Ampliado el 2026-08-16**, esa misma tarde, desde el proyecto `rni-dp`.
+
+Una sesión de otro proyecto repasó esta cola para decidir con qué seguir, propuso arrancar por el [pendiente 40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) —el único `P0`— y el usuario aprobó. Al ir a tocar `instalar.py` resultó que **otra sesión ya lo había ejecutado entero**: las tres funciones rellenando, la prueba escrita y corrida, y la fase `A-EP-007-HU-001` en la estación 9. Nada estaba commiteado; vivía solo en el árbol de trabajo.
+
+En el rato que duró esa conversación también cambió lo que se había leído al empezar: había dos archivos numerados 40 y se reportaron como defecto; media hora después la otra sesión los había fundido y el sobrante ya no existía.
+
+Lo único que evitó el choque fue mirar la hora de modificación de los archivos y el `git status` **antes** de editar. No hubo aviso de ninguna herramienta, porque no hubo escritura: el trabajo duplicado se habría descubierto al commitear.
+
+**Sube el costo del problema.** Los dos casos anteriores eran arreglables —dos numeraciones vivas, una escritura que hubo que rehacer—. Este es trabajo entero hecho por segunda vez, y el árbol de trabajo sin commitear lo hace invisible para cualquiera que mire el historial.
+
+**Sin decidir, además:** cómo se entera una sesión de que otra está viva sobre el mismo repositorio. Hoy solo lo dicen las fechas de los archivos, y solo si a alguien se le ocurre mirarlas.
+
 ## El límite
 
 Esto no lo resuelve un validador: puede detectar el cruce, no evitarlo. Lo que hace falta primero es el acuerdo.

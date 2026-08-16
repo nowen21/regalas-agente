@@ -179,3 +179,22 @@ Queda registrado como descartado en el resumen, y no se abre nada.
 
 ### 12 · Usuario — 2026-08-16 15:09:29
 > listo suba
+
+**Agente** — 2026-08-16 15:11:31
+<!-- agente: a7bebb97-5640-497b-a120-9b0eba854894 -->
+
+Subido: commit `c2ded0e`, publicado en `main`.
+
+Van la transcripción, el resumen y su línea en el índice del día. Dejé fuera lo de la sesión 5 y de la sesión de pendientes, que son de otras sesiones.
+
+Con eso la sesión **cierra**: las cuatro casillas quedaron marcadas. Falta un último commit menor con esa marca, si quiere que lo haga.
+
+### 13 · Usuario — 2026-08-16 15:11:57
+> cierro?
+
+**Agente** — 2026-08-16 15:12:04
+<!-- agente: 1379f713-68f9-4e75-8703-347f3179f5e0 -->
+
+Sí, cierra: las cuatro casillas están marcadas.
+
+Queda una línea sin guardar — la casilla que dice que ya está commiteado. ¿La subo y con eso terminamos?

@@ -639,3 +639,75 @@ Falta que **vos** lo revises y me digas si commiteo. Son dos repositorios aparte
 
 ### 32 · Usuario — 2026-08-16 14:57:14
 > solo de este
+
+**Agente** — 2026-08-16 14:58:12
+<!-- agente: ebf01234-f13c-4b2a-9144-314d7e28ee9d -->
+
+Commiteado: `1c0b70f` — 41 archivos. Los enganches de git pasaron sin incumplimientos.
+
+**Quedaron fuera a propósito** dos archivos de otra sesión que está corriendo en paralelo:
+
+- `historico-chat/2026-08-16-por-que-dice-instalacion-incompleta.md`
+- `historico-chat/resumenes/2026-08-16/por-que-dice-instalacion-incompleta.md`
+
+Esos los commitea esa sesión.
+
+**Dos avisos por lo mismo:**
+
+Los índices que sí subieron ([historico-chat/README.md](historico-chat/README.md) y [resumenes/2026-08-16/README.md](historico-chat/resumenes/2026-08-16/README.md)) ya nombran esa sesión, así que hasta que ella commitee sus archivos, el índice apunta a algo que no está en el repositorio.
+
+Y subí **VERSION a 20.0.1**. Si la otra sesión también versiona, se pisan.
+
+Las dos cosas son el [pendiente 22](pendientes/22-dos-sesiones-versionando-a-la-vez.md) pasando otra vez, en vivo.
+
+No hice `push` — no lo pediste.
+
+### 33 · Usuario — 2026-08-16 14:59:37
+> osea acá ya quedó ok?
+
+**Agente** — 2026-08-16 14:59:41
+<!-- agente: 7eef7143-0983-4e37-a02f-03a44710c84d -->
+
+Sí. Este repositorio está limpio y commiteado.
+
+Queda pendiente por decisión tuya, no por falta de trabajo:
+
+- **`push`** — no lo pedí ni lo hice.
+- **`shopnest-mesa`** — el aviso está escrito allá, sin commitear. Dijiste «solo de este».
+
+### 34 · Usuario — 2026-08-16 15:00:18
+> como se entera: shopnest-mesa que ya está?
+
+**Agente** — 2026-08-16 15:00:30
+<!-- agente: bc0af6db-d406-4718-a3e8-451e8b17baf8 -->
+
+Porque alguien abra el proyecto y lea el archivo.
+
+No hay envío. Lo que hice fue escribir en sus archivos: su [pendiente 01](file:///C:/DesarrollosClaude/personales/shopnest-mesa/pendientes/01-los-enlaces-a-las-reglas-nacen-rotos.md) y la fila de su README. La próxima sesión que se abra ahí los va a ver.
+
+**Si nadie abre el proyecto, nadie se entera.** Y como no commiteé allá, si alguien clona ese repositorio en otra máquina, el aviso no viaja.
+
+Eso es el [pendiente 36](pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) — el único `P0` que queda. Lo que le falta construir es justamente esta pieza: que el estándar escriba el aviso solo al cerrar un pendiente reportado, en vez de depender de que yo me acuerde.
+
+Hoy el aviso existe porque me lo pediste. Esa es toda la garantía.
+
+### 35 · Usuario — 2026-08-16 15:04:26
+> esta sesión se puede cerrar?
+
+**Agente** — 2026-08-16 15:04:42
+<!-- agente: 78d83e97-7249-431e-bb24-04bd11ed689e -->
+
+Sí. Las cuatro casillas quedaron marcadas:
+
+| Para cerrar | |
+|---|---|
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-3, H-6 |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-4 y H-5, anotados en el resumen |
+| Toda historia disparada está escrita en su épica | ☑ ninguna dispara historia |
+| Lo que se hizo está aprobado y guardado | ☑ `1c0b70f` |
+
+Seis hallazgos, ninguno a medias.
+
+**Lo que sigue vivo y no es de esta sesión:** el punto 1 del [29](pendientes/29-la-transcripcion-se-escribio-dos-veces.md), el [36](pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) como único `P0`, y el hueco del sello entre el `CLAUDE.md` y su plantilla — hablado acá, sin pendiente, porque no lo pediste.
+
+Ese cambio del resumen quedó sin commitear, es una línea. Si querés lo sumo; si no, entra en el próximo.

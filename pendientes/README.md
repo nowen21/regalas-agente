@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; quedan 30, porque ese mismo día se cerró el 39. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **32**. Ese mismo día se cerraron el 39, el 40 y el 41 —los dos últimos nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43 y el 44. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -118,9 +118,11 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 30 | **P1** | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. Es lo que el agente lee en **cada** mensaje para saber si el entorno está completo. |
-| ~~34~~ | — | **hecho** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **Falta avisarle a `shopnest-mesa`** para que cierre el suyo. |
+| ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md). |
 | 35 | **P1** | [Renombrar una sesión deja roto el enlace de su resumen](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) | shopnest-mesa | `historico.py --renombrar` arrastra el resumen pero no corrige el enlace de adentro. **Se reprodujo acá el 2026-08-16**, al nombrar la sesión de esta priorización: deja de ser defecto de un proyecto ajeno y le pasa al estándar cada vez que nombra una sesión, que es lo que el propio enganche pide. Es de los más baratos. |
 | 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
+
+**Lo que el 34 dejó a medias vive en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
 
 ### Lo que dejó revisar el histórico (31–33)
 
@@ -164,6 +166,31 @@ Salieron de escribir [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avanc
 | 37 | **P3** | [Dónde vive la fuente de las reglas](37-donde-vive-la-fuente-de-las-reglas.md) | Si las reglas pueden guardarse en una base de datos, o el texto sigue mandando y la base se genera de él. Falta la decisión del usuario, y sin ella la discusión vuelve a empezar de cero. |
 | 38 | **P1** | [El validador de la F22 se escribió sin su fase](38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) | El programa que comprueba la regla se hizo sin épica, HU ni fase. Hay que retrodocumentarlo como fase de [EP-004 · HU-015](../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md). **Es el mismo hueco del [30](30-el-checklist-no-ve-la-cadena.md), visto desde adentro:** allá un proyecto llegó a código sin cadena, acá el propio estándar. Conviene mirarlos juntos. |
 
+### Lo que dejó cerrar un pendiente sin fase (40–42)
+
+Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fase, así que nadie escribió el plan de pruebas y el arreglo se publicó sin probarse. De ahí nació [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y estos dos son el defecto que se coló. Quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-16/un-pendiente-no-es-un-plan.md).
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~40~~ | — | **hecho** → [El instalador copia tres archivos sin rellenar los marcadores](40-el-instalador-copia-sin-rellenar-los-marcadores.md) | Los tres puntos de copia rellenan, y nace la primera prueba del repositorio. Cerrado 2026-08-16 (v21.1.0) en la fase [`A-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). **Falta avisarle a `shopnest-mesa`.** |
+| ~~41~~ | — | **hecho** → [El marcador no se resuelve dentro de un proyecto](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) | El marcador se resuelve contra la carpeta del estándar, así que el veredicto ya no depende de desde dónde se corra el revisor. Cerrado 2026-08-16 (v21.1.1) en la fase [`A-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/). |
+| 42 | **P0** | [El arreglo del 40 no llega a los proyectos ya instalados](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) | El 40 arregló los puntos de copia, pero la huella se calcula del stack central y no del archivo copiado: la plantilla no cambió, así que el instalador dice «ya estaba al día» y no reescribe. **Reinstalar no repara** — no hay bandera que fuerce. Lo comprobó `shopnest-mesa` el mismo día del cierre. |
+
+**El 40 fue primero** —quitó la causa— y el 41 después, poniendo la red que atrapa el marcador que se escape mañana. Los dos cerraron el 2026-08-16. Pero eso vale **en una instalación nueva**: el 42 es que en las viejas siguen todos donde estaban, y ese sigue abierto.
+
+**Es el primer pendiente que se cierra por la cadena de [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)**, la regla que nació el mismo día porque este defecto se coló. Y la prueba de que sirve está en el propio cierre: el criterio del plan salió mal escrito, la prueba lo destapó y se corrigió antes de publicar — que es exactamente lo que no pasó la vez anterior.
+
+### Lo que dejó un proyecto real, segunda tanda (43–44)
+
+Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pendiente de seguimiento abierto: **al cerrarlos hay que avisarle**, o quedan esperando para siempre.
+
+| # | P | Pendiente | Origen | Qué resuelve |
+|---|---|---|---|---|
+| 43 | **P1** | [La plantilla de spec no pide de dónde sale la regla](43-la-plantilla-de-spec-no-pide-de-donde-sale-la-regla.md) | shopnest-mesa | El §4 pide `«Regla — por qué existe.»`: el porqué, nunca el de dónde. Una regla de negocio nació en la especificación de un módulo, sin pedirla nadie, y bajó sola a decisión, trazabilidad, dos pruebas y un criterio de aceptación. Tardó un día en verse. **Es el hueco del [30](30-el-checklist-no-ve-la-cadena.md) y el [38](38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) por el otro lado**: allá el código se saltó la cadena hacia arriba, acá una regla hacia abajo. |
+| 44 | **P0** | [El registro de versión no se escribe si no cambió una huella](44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) | shopnest-mesa | El instalador dice «nada cambió, no hay actualización que registrar» y el checklist dice «falta: versiones». Reinstalar da lo mismo, y la única salida es editar a mano un archivo que dice que no se edita a mano. **Deja el aviso de instalación incompleta sonando para siempre**, que es el daño del [34](hecho/enlaces-de-las-plantillas-al-estandar.md) por otra puerta. |
+
+**El 44 es hermano del [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md):** los dos son el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Conviene mirarlos juntos.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:
@@ -174,3 +201,4 @@ Todo lo demás es preferencia y se puede reordenar:
 - **16 → 09.** Ningún ítem del 09 se promueve sin pasar antes por el criterio de *si conviene* automatizarlo.
 - **27 → 28.** Primero hay que saber cuál es el veredicto bueno de esa fase.
 - **29 · punto 2 → 29 · punto 1.** ✅ resuelta el 2026-08-16: la instrucción que ensuciaba ya no está, así que limpiar el archivo del 2026-08-15 no se vuelve a deshacer.
+- **40 → 41.** El 40 quita la causa —que el marcador salga sin rellenar—; el 41 es la red para el que se escape después. Al revés, el 41 tapa el síntoma y el 40 se olvida.
