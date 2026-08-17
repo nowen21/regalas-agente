@@ -20,7 +20,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-la-prioridad-de
 
 **El riesgo asumido.** Treinta y una marcas envejecen y hay que mantenerlas. Queda escrito en el propio README que la `P` se revisa **al cerrar un pendiente**, no cada vez que se mira la lista.
 
-**Lo que quedó dicho de paso, y no estaba escrito en ninguna parte:** por qué el número no puede absorber la prioridad. Renumerar rompe los enlaces de los pendientes que se citan entre sí —el 30 nombra al 01 y al 20, el 36 al 34 y al 35—, que es el mismo defecto de los pendientes [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y 33 · punto 4.
+**Lo que quedó dicho de paso, y no estaba escrito en ninguna parte:** por qué el número no puede absorber la prioridad. Renumerar rompe los enlaces de los pendientes que se citan entre sí —el 30 nombra al 01 y al 20, el 36 al 34 y al 35—, que es el mismo defecto de los pendientes [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) y 33 · punto 4.
 
 ### H-2 · El pendiente 33 no es un pendiente: son ocho, y uno es el más urgente del repositorio
 
@@ -34,7 +34,7 @@ Los otros siete puntos siguen dentro del 33, con su prioridad escrita punto por 
 
 ### H-3 · El pendiente 35 se reprodujo acá, en el repositorio del estándar
 
-**Qué pasó.** Al renombrar esta sesión con `historico.py --renombrar`, el enlace de la primera línea de este resumen quedó apuntando a `../../2026-08-16-sesion-2.md`, que ya no existe. Es exactamente el [pendiente 35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md), reportado desde `shopnest-mesa` el 2026-08-16.
+**Qué pasó.** Al renombrar esta sesión con `historico.py --renombrar`, el enlace de la primera línea de este resumen quedó apuntando a `../../2026-08-16-sesion-2.md`, que ya no existe. Es exactamente el [pendiente 35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md), reportado desde `shopnest-mesa` el 2026-08-16.
 
 **Por qué importa.** Deja de ser un defecto de un proyecto ajeno: le pasa al estándar cada vez que una sesión se renombra, que es lo que el propio enganche pide en el primer mensaje. Sube la prioridad del 35.
 
@@ -60,7 +60,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), el [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: los cuatro son de backlog y de conducta |
 | Lo que se hizo está aprobado y guardado | ☑ commit `a9b9890`, aprobado por el usuario. Incluye los pendientes 35 y 36 que había dejado sin commitear otra sesión, por pedido suyo |
 

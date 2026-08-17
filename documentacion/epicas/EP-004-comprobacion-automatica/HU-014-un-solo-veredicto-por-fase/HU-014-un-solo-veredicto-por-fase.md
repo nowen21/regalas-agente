@@ -59,7 +59,7 @@ No hace falta criterio para verlo. Son dos valores que tienen que ser el mismo:
 ### 3.3 Fuera de alcance
 
 - Decidir si el veredicto es correcto. Eso sale de la sección 5 del resultado, y comprobarlo es [HU-013](../HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md).
-- Quitar la copia cambiando el molde del `estado-fase` para que enlace en vez de repetir. Es la otra salida del [pendiente 28](../../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) y se decide aparte.
+- Quitar la copia cambiando el molde del `estado-fase` para que enlace en vez de repetir. Es la otra salida del [pendiente 28](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y se decide aparte.
 - Detener el trabajo cuando aparece el hallazgo: eso es [EP-005 · HU-003](../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
 
 ---
@@ -129,7 +129,7 @@ Entonces sale un hallazgo por cada número que no cuadra
 ## 6. Diseño y referencias
 
 - **Documento funcional:** el hallazgo H-7 del [2026-08-15 · la-plantilla-del-resultado-de-pruebas](../../../../historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md).
-- **Pendiente que la origina:** [pendientes/28](../../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md).
+- **Pendiente que la origina:** [pendientes/28](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md).
 - **Modelo de datos afectado:** ninguno.
 
 ---
@@ -157,7 +157,7 @@ Entonces sale un hallazgo por cada número que no cuadra
 | Tipo | Descripción | Impacto |
 |---|---|---|
 | Dependencia | [HU-003](../HU-003-formato-del-hallazgo/HU-003-formato-del-hallazgo.md), la forma del hallazgo | Medio |
-| Dependencia | [pendientes/28](../../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md), que decide si se compara o se quita la copia. Si se quita, esta historia sobra | Alto |
+| Dependencia | [pendientes/28](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md), que decide si se compara o se quita la copia. Si se quita, esta historia sobra | Alto |
 | Riesgo | Que el veredicto esté escrito con palabras distintas en cada fase y la normalización falle | La plantilla ya fija «Cumple / No cumple» sin estado intermedio; lo que no encaje se reporta como aviso, no como falla |
 | Riesgo | Que el hallazgo salga y nadie lo atienda | Depende de [EP-005 · HU-003](../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md), que decide qué detiene |
 
@@ -197,3 +197,4 @@ Entonces sale un hallazgo por cada número que no cuadra
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-7 del 2026-08-15 · `la-plantilla-del-resultado-de-pruebas` |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Fase `A` (v23.1.0): un programa compara el veredicto del `resultado_pruebas` con el del `estado-fase`. De las dos salidas del pendiente 28 se eligió la que no cambia ningún molde |

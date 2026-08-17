@@ -103,6 +103,24 @@ Entonces ahí está registrado quién lo consume y desde cuándo
 3. Abrir la segunda. Resultado esperado: hay dónde registrar que la primera la consume, y queda escrito.
 - **Aprobado cuando:** ningún cruce queda escrito en un solo lado.
 
+### CA-04 — Toda regla de negocio dice de dónde baja
+
+```gherkin
+Dado que se escribe una regla de negocio en la especificación de un módulo
+Cuando se llena la sección de reglas de negocio
+Entonces la regla dice de dónde baja, con el identificador del requisito, la historia o la decisión
+Y la que no tenga procedencia no se escribe ahí: se sube a la historia que corresponda
+```
+
+**Cómo validarlo:**
+
+1. Escribir una regla que baje de un requisito con identificador. Resultado esperado: cabe en el molde y se sabe quién la pidió sin salir del documento.
+2. Intentar escribir una regla que no pida nadie. Resultado esperado: el hueco del origen queda a la vista, y el modelo dice qué hacer con ella.
+3. Leer una especificación escrita antes de este cambio. Resultado esperado: le falta un dato, no queda inválida.
+- **Aprobado cuando:** una regla sin fuente no puede entrar en silencio.
+
+> **Se pide un identificador, no una frase.** «Lo pidió el cliente» no se puede seguir hasta ninguna parte, y el programa que lo comprueba —otra historia, en EP-004— necesita algo que exista de verdad para poder buscarlo.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un módulo que ya existe sin especificación tiene un camino definido para documentarse.
@@ -142,7 +160,11 @@ Entonces ahí está registrado quién lo consume y desde cuándo
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-003-HU-004-el-origen-de-la-regla-de-negocio](A-EP-003-HU-004-el-origen-de-la-regla-de-negocio/README.md) | CA-04 | Cerrada 2026-08-16 (v22.0.0) |
+
+**Los tres primeros criterios no tienen fase**, y es a propósito: el modelo ya existía cuando la épica se descompuso. Se dan por cumplidos por el documento mismo, no por una fase que lo construyera.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -202,3 +224,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04`: el §4 pedía el porqué de cada regla de negocio y nunca su procedencia, así que una regla que no pedía nadie entraba sin resistencia. Lo reportó `shopnest-mesa`. Se abre y cierra la fase `A` (v22.0.0) |

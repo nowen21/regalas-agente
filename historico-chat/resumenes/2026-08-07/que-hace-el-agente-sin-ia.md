@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/01](../../../pendientes/01-validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/30-el-checklist-no-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
+- **Dónde queda:** [pendientes/01](../../../pendientes/01-validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** la respuesta del propio agente: probarlo de brief a fase cerrada en un proyecto real **antes** de construir nada más.

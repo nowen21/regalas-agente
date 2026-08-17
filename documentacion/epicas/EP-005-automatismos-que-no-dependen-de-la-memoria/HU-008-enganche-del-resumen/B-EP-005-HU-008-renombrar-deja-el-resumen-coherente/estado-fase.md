@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
+**Estación actual:** 10 — reporte al usuario. **Última puerta pasada:** 9, commit `9ea5a5b`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -28,10 +28,12 @@
 | 5 | Aprobación del plan detallado | 👤 «arranque» | ☑ |
 | 6 | Ejecución continua | 7 tareas | ☑ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ **acá está detenida** |
-| 9 | Commit único | 👤 pendiente de autorización | ☐ |
-| 10 | Reporte al usuario | hash, resumen y estado | ☐ |
-| 11 | Publicación / despliegue | 👤 falta el `push` | ☐ |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ con una deuda: los nueve enlaces del §3 |
+| 9 | Commit único | 👤 autorizado · `9ea5a5b`, 19 archivos | ☑ |
+| 10 | Reporte al usuario | hash, resumen y estado | ☑ |
+| 11 | Publicación / despliegue | 👤 **acá está detenida** — falta el `push` | ☐ |
+
+**El commit se hizo con los nueve enlaces rotos puestos.** Se reportaron antes y el usuario pidió commitear igual; quedan escritos en el §3 y en el resumen de la sesión, no se perdieron.
 
 ---
 

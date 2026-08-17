@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Construida sin fase — pendiente de retrodocumentar |
+| **Estado** | Cerrada — retrodocumentada en la fase `A`, 2026-08-16 |
 
 ---
 
@@ -129,7 +129,7 @@ Entonces no sale la falla, solo el aviso de desfase
 - [x] Quedarse con las que caen dentro del atraso (`sin_adoptar`).
 - [x] Emitir la falla que las nombra (`validar_fase`).
 - [x] Llamarla desde el recorrido de fases (`flujo.py`).
-- [ ] Retrodocumentar todo lo anterior como fase, con su plan y su cierre.
+- [x] Retrodocumentar todo lo anterior como fase, con su plan y su cierre.
 
 ---
 
@@ -137,7 +137,18 @@ Entonces no sale la falla, solo el aviso de desfase
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| «…» | CA-01, CA-02, CA-03 | Sin abrir — el código existe y la fase no |
+| [A-EP-004-HU-015-retrodocumentar-la-comprobacion-de-la-f22](A-EP-004-HU-015-retrodocumentar-la-comprobacion-de-la-f22/README.md) | CA-01, CA-02, CA-03 y los transversales | Cerrada 2026-08-16 (v21.3.1). Veredicto **Cumple**, 4 casos ejecutados |
+
+**Qué documento responde qué**, para no buscar en el que no es:
+
+| Pregunta | Documento |
+|---|---|
+| Qué se pide y cuándo se da por aceptado | Esta HU |
+| Qué se va a hacer, en qué orden y sobre qué archivos | `plan_trabajo.md` de la fase |
+| Con qué casos se comprueba cada CA | `plan_pruebas.md` de la fase |
+| Qué se ejecutó, con qué resultado, y si el CA quedó cumplido | `resultado_pruebas.md` de la fase |
+| En qué estación va y qué la tiene detenida | `estado-fase.md` de la fase |
+| Qué quedó hecho al final | `funcionalidad_implementada.md` de la fase |
 
 ---
 
@@ -163,7 +174,7 @@ Entonces no sale la falla, solo el aviso de desfase
 - [x] Falla el proyecto con una derogación sin adoptar
 - [x] No cuenta lo que ya está adoptado
 - [x] Sin fases no se cobra
-- [ ] La fase que lo implementa, escrita y cerrada
+- [x] La fase que lo implementa, escrita y cerrada
 
 ---
 
@@ -185,3 +196,4 @@ Entonces no sale la falla, solo el aviso de desfase
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde los hallazgos H-2 y H-3 del 2026-08-16, para retrodocumentar el código que ya se escribió |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Retrodocumentada en la fase `A` (v21.3.1). Los tres CA quedaron con evidencia de una corrida real; el código no se tocó. Se supo además que lo que le faltaba al trabajo sin cadena no era documentación —ya la tenía— sino prueba |

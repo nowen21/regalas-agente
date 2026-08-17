@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9 — commit único. **Última puerta pasada:** 8.
+**Estación actual:** 10 — reporte al usuario. **Última puerta pasada:** 9, commit `1b01451`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -29,9 +29,9 @@
 | 6 | Ejecución continua | 6 tareas | ☑ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 2 |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
-| 9 | Commit único | 👤 **acá está detenida** | ☐ |
-| 10 | Reporte al usuario | hash, resumen y estado | ☐ |
-| 11 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 9 | Commit único | 👤 autorizado · `1b01451`, 17 archivos | ☑ |
+| 10 | Reporte al usuario | hash, resumen y estado | ☑ |
+| 11 | Publicación / despliegue | 👤 **acá está detenida** — falta el `push` | ☐ |
 
 **La fase se detuvo una vez, en la estación 7.** El CP-001 pasaba en verde con el arreglo revertido: instalaba en carpeta vacía, y esa corrida nunca imprime una flecha. Lo destapó el CP-002, que existe para eso. Se corrigió el caso y se volvió a correr.
 

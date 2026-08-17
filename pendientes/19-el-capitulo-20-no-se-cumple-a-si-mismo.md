@@ -1,6 +1,6 @@
 # Pendiente · El capítulo de meta-reglas no se cumple a sí mismo
 
-**Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+**Estado:** abierto, con una de sus tres deudas cerrada · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
 ## El problema
 
@@ -20,9 +20,11 @@ Las 33 sin clasificar incluyen los capítulos `18` y `19` completos, que ese arc
 
 **1. Decidir qué se hace con las siete.** Tres caminos: corregirlas, derogarlas, o aceptar que el checklist no aplica hacia atrás y dejarlo escrito.
 
-**2. Clasificar las 33.** Es mecánico: cada una va a una de las tres listas.
+**2. Clasificar las 33.** ✅ **Hecho el 2026-08-16** (v23.1.1), en la fase [`A-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan/). Bajaron a cero.
 
-**3. Las 129 sin bloque.** Aplicarles el checklist es trabajo largo y con criterio. Conviene por capítulo, no de a una.
+**Y cambió el diagnóstico:** quince de las 33 **ya estaban clasificadas**. El registro decía `C1–C17`, un rango, y el programa busca cada identificador literal. Las que faltaban de verdad eran 18 — los capítulos `18` y `19` completos, más `G9`, `M15`, `F4` y `F12`.
+
+**3. Las 121 sin bloque** (eran 129 cuando se anotó). Aplicarles el checklist es trabajo largo y con criterio. Conviene por capítulo, no de a una.
 
 ## El límite
 

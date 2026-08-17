@@ -43,4 +43,4 @@ Las cuatro se borraron por instrucción del usuario y siguen en el historial de 
 
 No se toca lo que el enganche escribió: es el registro con hora real. Lo que se quita es la copia a mano.
 
-**Va después de los pendientes [27](27-la-fase-a-de-hu-010-cerro-sin-cumplir.md) y [28](28-el-veredicto-de-la-fase-vive-en-dos-sitios.md):** el archivo se puede leer igual, aunque tenga el doble de encabezados.
+**Va después de los pendientes [27](hecho/el-veredicto-de-la-fase-a-de-hu-010.md) y [28](hecho/un-solo-veredicto-por-fase.md):** el archivo se puede leer igual, aunque tenga el doble de encabezados.

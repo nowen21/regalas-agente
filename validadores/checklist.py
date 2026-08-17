@@ -247,6 +247,40 @@ def _version(proyecto, estandar):
     return True, ""
 
 
+def _cadena(proyecto, estandar):
+    """`02·F0` — el proyecto arrancó la cadena, o todavía no empezó por donde va.
+
+    **El único punto de la lista que el instalador no instala.** No mira si
+    falta un archivo del andamiaje: mira si hay por dónde empezar. Un proyecto
+    puede tener los trece componentes puestos, código commiteado y `prompts/`
+    sin un solo planteamiento — y eso fue exactamente lo que pasó, con la
+    revisión diciendo «13 de 13, instalación completa».
+
+    La épica se exige **solo si ya hay código**: pedírsela a un proyecto recién
+    instalado es ruido, y el ruido se deja de leer.
+    """
+    prompts = os.path.join(proyecto, "prompts")
+    hay_planteamiento = any(
+        n.lower().endswith("planteamiento.md")
+        for n in (os.listdir(prompts) if os.path.isdir(prompts) else []))
+    if not hay_planteamiento:
+        return (False, "no hay ningún planteamiento en `prompts/` — la cadena "
+                       "de `02·F0` arranca ahí, y lo escribe el agente con lo "
+                       "que el usuario quiere, no el instalador")
+
+    codigo = os.path.join(proyecto, "proyectos")
+    hay_codigo = bool(os.path.isdir(codigo) and os.listdir(codigo))
+    epicas = os.path.join(proyecto, "documentacion", "epicas")
+    hay_epica = any(
+        os.path.isdir(os.path.join(epicas, n))
+        for n in (os.listdir(epicas) if os.path.isdir(epicas) else []))
+    if hay_codigo and not hay_epica:
+        return (False, "hay código en `proyectos/` y ninguna épica en "
+                       "`documentacion/epicas/` — se construyó saltando la "
+                       "cadena (`02·F0`)")
+    return True, ""
+
+
 COMPROBACIONES = {
     "f13": _f13,
     "claude-md": _claude_md,
@@ -261,6 +295,7 @@ COMPROBACIONES = {
     "registro": _registro,
     "version": _version,
     "versiones": _versiones,
+    "cadena": _cadena,
 }
 
 

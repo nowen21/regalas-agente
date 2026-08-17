@@ -125,7 +125,9 @@ Entonces no aparece ningún aviso de instalación
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-007-HU-007-la-revision-ve-la-cadena](A-EP-007-HU-007-la-revision-ve-la-cadena/README.md) | CA-01 y CA-02 | Cerrada 2026-08-16 (v23.0.0) |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -185,3 +187,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Fase `A` (v23.0.0): la revisión pasa a 14 puntos y mira si el proyecto arrancó la cadena de `02·F0`. Es el único punto que el instalador no instala, y por eso su fila lo dice |

@@ -332,3 +332,59 @@ Falta el commit de esta fase, que se pide aparte. ¿Lo hago?
 
 ### 17 · Usuario — 2026-08-16 19:55:35
 > si
+
+**Agente** — 2026-08-16 19:56:32
+<!-- agente: 86f4fcd6-9008-4fa1-85cc-b76d6f8a29f0 -->
+
+Commit `1b01451` — 17 archivos, validadores del enganche en verde.
+
+Las dos fases del día quedan cerradas hasta la estación 10:
+
+| Commit | Versión | Qué dejó |
+|---|---|---|
+| `9846650` | 21.2.0 | Pendientes 42 y 44 — un proyecto ya instalado se repara y se registra corriendo el instalador |
+| `1b01451` | 21.2.1 | Pendiente 45 — `instalar()` prepara su propia salida |
+
+El backlog queda en **30 abiertos, sin ningún `P0`**. Lo más urgente hoy son los `P1`: el 19, el 27, el 28, el 30, el 33, el 35 y el 43.
+
+Siguen sin commitear, a propósito, la transcripción y el resumen de `un-pendiente-no-es-un-plan` — son de otra sesión.
+
+Falta el `push`, que se pide aparte.
+
+### 18 · Usuario — 2026-08-16 19:56:51
+> haga push
+
+**Agente** — 2026-08-16 19:57:35
+<!-- agente: 5189f1d8-de23-46e8-abb1-52fbf80fc0a7 -->
+
+Push hecho: `main` al día con `origin`.
+
+Subieron **9 commits**, no 2 — los 7 anteriores estaban commiteados desde sesiones previas y nunca se habían empujado. Los míos son los dos de arriba.
+
+Quedan dos archivos modificados sin commitear:
+
+- `estado-fase.md` de la fase B — le anoté el hash `1b01451` después de commitear, que es lo que la deja en estación 10.
+- La transcripción de esta sesión, que el enganche sigue escribiendo mientras hablamos.
+
+Los dos se cierran con un commit corto cuando usted diga, y también siguen ahí los dos de `un-pendiente-no-es-un-plan`, esperando a su sesión.
+
+### 19 · Usuario — 2026-08-16 20:00:23
+> osea esta ya se puede cerrar. Responda
+
+**Agente** — 2026-08-16 20:00:42
+<!-- agente: b686d284-e5fa-4f8b-bd53-e1f619d83e1d -->
+
+Sí. Las cuatro condiciones quedaron cumplidas.
+
+Sí, se puede cerrar.
+
+| Para cerrar | |
+|---|---|
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ |
+| Toda historia disparada está escrita en su épica | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ |
+
+Ocho hallazgos, todos con su sitio. Tres pendientes cerrados —42, 44 y 45—, dos versiones publicadas y empujadas, y el proyecto que los reportó avisado y corregido.
+
+Lo único vivo son dos archivos sin commitear: el `estado-fase.md` con el hash de la fase B, y la transcripción, que el enganche sigue escribiendo hasta este mensaje. Eso no es un hallazgo a medias — es el cierre mecánico de la sesión, y se guarda con un commit corto cuando usted diga.

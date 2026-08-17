@@ -21,7 +21,7 @@
 - 📝 **Modifica fase(s):** ninguna. No corrige lo que la fase `A` hizo; corrige algo que ya estaba desde que el instalador existe.
 - ✨ **Funcionalidad nueva:** ninguna. Es robustez.
 
-**De dónde sale:** el [pendiente 45](../../../../../pendientes/45-el-instalador-revienta-al-imprimir-sin-preparar-la-salida.md), que nació en [validadores-y-hooks](../../../../../pendientes/hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` de [poner-al-dia-lo-ya-instalado](../../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md).
+**De dónde sale:** el [pendiente 45](../../../../../pendientes/hecho/instalar-prepara-su-propia-salida.md), que nació en [validadores-y-hooks](../../../../../pendientes/hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` de [poner-al-dia-lo-ya-instalado](../../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md).
 
 **CA de la HU que cubre esta fase:**
 

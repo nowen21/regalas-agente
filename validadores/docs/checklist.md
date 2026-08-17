@@ -77,6 +77,13 @@ Una pieza a instalar y cómo quedó al revisarla.
 - **Hace:** lee la plantilla y saca las filas de la tabla.
 - **Retorna:** una lista de tríos: identificador, descripción del componente y cómo se instala. Si la plantilla no existe, retorna una lista vacía.
 
+**`_cadena(proyecto, estandar)`** — desde la v23.0.0
+
+- **Hace:** mira si el proyecto **arrancó la cadena** de `02·F0`: al menos un planteamiento en `prompts/`, y una épica si ya hay código en `proyectos/`.
+- **Es el único punto de la lista que el instalador no instala**, y por eso su columna de «qué hace el instalador» dice que no hace nada. El planteamiento lo escribe el agente con lo que el usuario quiere, y el instalador no pregunta.
+- **Por qué está acá.** Un proyecto podía tener los trece componentes puestos, código commiteado y `prompts/` sin un solo archivo, y la revisión decía «13 de 13, instalación completa» — afirmando algo que `02·F0` contradice. Lo notó el usuario preguntando, no el estándar.
+- La épica se exige **solo si ya hay código**: pedírsela a un proyecto recién instalado es ruido, y el ruido se deja de leer.
+
 **`huella(estandar=None)`**
 
 - **Retorna:** la **huella** de la lista central: una marca corta que cambia cada vez que la lista cambia. Comparando huellas se sabe si una copia quedó vieja, sin tener que leer los dos archivos enteros.

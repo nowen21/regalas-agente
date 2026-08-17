@@ -8,11 +8,12 @@ Los documentos de trabajo no se escriben desde cero: se copian de un molde que e
 
 El molde es la única referencia: **acá no hay ninguna regla escrita**. El validador abre el molde, mira qué partes y qué huecos tiene, y compara. Si el molde cambia, la comprobación cambia con él sin que nadie toque el código.
 
-Tres comprobaciones:
+Cuatro comprobaciones:
 
 1. **Huecos sin llenar** — falla. Hay líneas que quedaron iguales a las del molde.
 2. **Instrucciones sin borrar** — aviso. Las líneas que empiezan con `>` explican cómo llenar el documento y deberían desaparecer al llenarlo.
 3. **Partes que no están** — aviso. Los moldes dicen que se pueden borrar las partes que no apliquen, así que faltar no es lo mismo que estar mal.
+4. **Reglas de negocio sin decir de dónde bajan** — falla, y **solo en las especificaciones de módulo**. Desde la v22.0.0 cada regla dice de qué requisito, historia o decisión baja; la que no lo diga se reporta. Es la única comprobación atada a un molde concreto, porque una sección con ese nombre en otro documento puede querer decir otra cosa.
 
 Además sabe averiguar solo de qué molde salió cada documento.
 

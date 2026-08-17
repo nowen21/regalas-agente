@@ -596,3 +596,21 @@ Más el archivo de la transcripción, que el renombrado movió. Mensaje: `Corrig
 
 ### 20 · Usuario — 2026-08-17 09:00:08
 > si
+
+**Agente** — 2026-08-17 09:01:56
+<!-- agente: 9be961fd-27df-4b88-a053-c4d93201e02f -->
+
+Sí, ya se puede cerrar.
+
+**`3b51065`** — el renombrado y los dos enlaces corregidos. Los dos validadores de commit, limpios. Las cuatro casillas del resumen marcadas.
+
+Lo que deja la sesión:
+
+| | |
+|---|---|
+| [pendientes/48-inventario-hu.md](pendientes/48-inventario-hu.md) | 68 HU en una tabla · 14 completas, 54 no |
+| [plantillas/inventario-hu.md](plantillas/inventario-hu.md) | el molde, v23.2.0 |
+| [EP-004 · HU-017](documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | las dos historias, fase 9 de la épica |
+| [el resumen](historico-chat/resumenes/2026-08-16/las-hu-sin-su-fase.md) | tres hallazgos: H-1 y H-2 abiertos, H-3 resuelto |
+
+Dos cosas para la próxima, que están en el resumen: por cuál fila del inventario empezar, y que el trabajo de la otra sesión sigue sin commitear en el árbol.

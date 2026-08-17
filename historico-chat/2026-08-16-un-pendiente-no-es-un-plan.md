@@ -540,3 +540,175 @@ Archivos, sin `pendientes/README.md` ni nada de la otra sesión:
 
 ### 22 · Usuario — 2026-08-16 18:21:28
 > si
+
+**Agente** — 2026-08-16 18:24:40
+<!-- agente: 98feb9fb-5c2a-450a-9e6c-2ed46fed4972 -->
+
+Cuatro commits, cada uno con su versión. Sin push — eso se pide aparte.
+
+```
+bd56000  Deja escrito lo que la sesion dejo
+a22f37f  Resuelve el marcador contra el estandar y no contra la raiz que revisa   21.1.1
+fe6c579  Rellena los marcadores al copiar en la instalacion                       21.1.0
+77db52b  Ejecuta un pendiente como fase de una historia de usuario                 21.0.0
+```
+
+Los enganches pasaron en los cuatro: versionado y mensaje, `OK: sin incumplimientos`. Las 12 pruebas siguen verdes.
+
+Lo que quedó **sin commitear es todo de la otra sesión**, tal como acordamos:
+
+| Archivo | Por qué |
+|---|---|
+| `pendientes/README.md` | mezcla mis filas 40 y 41 con las suyas |
+| `pendientes/42-…md` | su pendiente, todavía sin subir |
+| `pendientes/22-…md` · `pendientes/hecho/enlaces-…md` | los editó ella |
+| Las dos transcripciones y resúmenes del 2026-08-16 | sus sesiones |
+
+Vale la pena avisarle a esa sesión que el `README` la está esperando: mientras no lo suba, el cierre del 40 y del 41 no queda registrado en el índice del backlog.
+
+### 23 · Usuario — 2026-08-16 18:29:10
+> que hago?
+
+**Agente** — 2026-08-16 18:29:23
+<!-- agente: 70505c43-8285-442a-a82b-0b044120e651 -->
+
+Tres cosas, en orden:
+
+**1 · En la otra sesión, pídele que suba lo suyo.** Tiene `pendientes/README.md` sin commitear con mis filas adentro, su pendiente 42, y dos enlaces rotos que dejó: apunta a `34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md`, que ya se movió a `hecho/`. Mientras no lo suba, el cierre del 40 y del 41 no aparece en el índice del backlog.
+
+**2 · Acá, decide si publicas.** Los cuatro commits están en `main` local. `git push` es acción aparte y no la he hecho.
+
+**3 · Lo siguiente natural es el [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md)** — es `P0` y es el que deja el trabajo de hoy a medias: los proyectos nuevos nacen bien, los viejos siguen con los enlaces muertos y reinstalar no los repara.
+
+Si me dices cuál, sigo.
+
+### 24 · Usuario — 2026-08-16 18:30:16
+> cual otra sesion?
+
+**Agente** — 2026-08-16 18:30:42
+<!-- agente: 62598274-a265-403c-8545-a6260b05d5ce -->
+
+Es una sesión tuya de Claude Code corriendo en paralelo sobre este mismo repo. La evidencia:
+
+**Dos commits que no hice yo**, mientras esta sesión trabajaba:
+
+```
+18:01  f19b821  Recibe dos defectos que reporta shopnest-mesa       (pendientes 43 y 44)
+18:06  fc36e73  Anota que el desfase del 44 crece con cada publicacion
+```
+
+**Y dos transcripciones que siguen escribiéndose**, las dos con una pregunta abierta al final:
+
+- [2026-08-16-que-pendientes-trabajamos.md](historico-chat/2026-08-16-que-pendientes-trabajamos.md) — *«Ese cambio del resumen quedó sin commitear, es una línea. Si querés lo sumo»*
+- [2026-08-16-por-que-dice-instalacion-incompleta.md](historico-chat/2026-08-16-por-que-dice-instalacion-incompleta.md) — *«¿La subo y con eso terminamos?»*
+
+Esa —o esas— son las que escribieron el pendiente 42 y editaron `pendientes/README.md` mientras yo lo editaba. Si están cerradas, sus archivos quedaron a medio guardar y los puedo subir yo. Si siguen abiertas en otra ventana, ahí es donde hay que contestar esas dos preguntas.
+
+¿Las tienes abiertas todavía?
+
+### 25 · Usuario — 2026-08-16 18:31:45
+> no
+
+**Agente** — 2026-08-16 18:32:28
+<!-- agente: a266b266-14b2-457b-880a-cbb9a9e786e2 -->
+
+Entonces sus archivos quedaron a medio guardar, y se pierden si nadie los sube. Propongo cerrarlo yo:
+
+**1 · Arreglar los dos enlaces rotos que dejó.** Los dos apuntan a `34-las-plantillas-enlazan-una-carpeta-base-que-el-proyecto-no-tiene.md`, que ya no existe: el pendiente 34 se cerró y su archivo es [hecho/enlaces-de-las-plantillas-al-estandar.md](pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md). Es cambiar el destino en [pendientes/44](pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y en la fila 190 del [índice](pendientes/README.md).
+
+**2 · Subir lo que dejó**, en un commit aparte del mío para que se vea de dónde salió:
+
+| Archivo | Qué es |
+|---|---|
+| `pendientes/42-…md` | el pendiente nuevo, sin subir |
+| `pendientes/README.md` | sus filas 42, 43 y 44, el 34 pasado a «hecho a medias», y mis filas 40 y 41 |
+| `pendientes/22-…md` · `pendientes/hecho/enlaces-…md` | lo que anotó en cada uno |
+| Las dos transcripciones y sus resúmenes | el registro de esas sesiones |
+
+Va todo junto porque es de las mismas sesiones; separarlo más no aporta.
+
+Después de eso el repositorio queda en verde: **0 fallas**.
+
+¿Lo hago?
+
+### 26 · Usuario — 2026-08-16 18:42:12
+> si
+
+**Agente** — 2026-08-16 18:43:11
+<!-- agente: 7f5b188c-865d-4bfc-9262-fc27b210dc16 -->
+
+Hecho. **0 fallas** en todo el repositorio.
+
+```
+b1044ba  Rescata lo que dejaron sin guardar dos sesiones cerradas
+bd56000  Deja escrito lo que la sesion dejo
+a22f37f  Resuelve el marcador contra el estandar y no contra la raiz     21.1.1
+fe6c579  Rellena los marcadores al copiar en la instalacion              21.1.0
+77db52b  Ejecuta un pendiente como fase de una historia de usuario       21.0.0
+```
+
+Lo rescatado: el pendiente 42, lo anotado en el 22 y en el 34, las dos transcripciones con sus resúmenes, y los dos enlaces rotos corregidos. Lo único sin commitear es la transcripción de esta sesión, que el enganche sigue escribiendo mientras hablamos.
+
+`estandar`, `versionado` y `trazabilidad` en verde; las 12 pruebas pasan.
+
+Queda sin hacer, y no es poco:
+
+- **[Pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md), `P0`** — los proyectos ya instalados siguen con los enlaces muertos y reinstalar no los repara. Es lo que deja el trabajo de hoy a medias.
+- **[Pendiente 44](pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md), `P0`** — lo mismo por el lado del registro de versión.
+- **`git push`** — no lo hice; se pide aparte.
+
+### 27 · Usuario — 2026-08-16 18:44:12
+> ya se solucionó?
+
+**Agente** — 2026-08-16 18:44:21
+<!-- agente: 47f19208-ce63-48dd-b694-f142d857f397 -->
+
+Depende de qué:
+
+**Sí quedó solucionado** — el defecto que reportó el proyecto: los tres puntos de copia rellenan, el revisor de enlaces resuelve bien, y la regla `F23` cierra el hueco de proceso que lo produjo. Todo probado y commiteado.
+
+**No quedó solucionado** — que eso llegue a los proyectos que ya estaban instalados. Un proyecto instalado antes de hoy sigue con sus enlaces muertos, y reinstalar **no** los repara: la huella se calcula del stack central, así que el instalador dice «ya estaba al día» y no reescribe. Eso es el [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md), y sigue abierto.
+
+O sea: **los proyectos nuevos nacen bien; los viejos siguen rotos.**
+
+Si preguntabas por otra cosa, dime cuál.
+
+### 28 · Usuario — 2026-08-16 18:44:42
+> ningún depende eso me sirve si o no?
+
+**Agente** — 2026-08-16 18:44:47
+<!-- agente: 3d751af8-39c5-49d5-8b2c-c7719a4d95af -->
+
+**No.**
+
+El proyecto que lo reportó sigue con el enlace muerto. Se arregló para los que se instalen de ahora en adelante, no para los que ya estaban — y ese era el caso real.
+
+Falta el [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md). ¿Lo trabajo?
+
+### 29 · Usuario — 2026-08-16 18:45:06
+> si
+
+### 30 · Usuario — 2026-08-16 18:45:33
+> ya podemos cerrar esta sesión?
+
+### 31 · Usuario — 2026-08-16 18:46:01
+> siga
+
+**Agente** — 2026-08-16 18:46:24
+<!-- agente: 7a014fc2-a8c1-4cae-a61d-fd6e173a9e17 -->
+
+**Sí, la sesión cierra.** Las cuatro casillas del [resumen](historico-chat/resumenes/2026-08-16/un-pendiente-no-es-un-plan.md) están marcadas.
+
+Lo que deja:
+
+| | |
+|---|---|
+| Regla nueva | [`02·F23`](base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) — un pendiente se ejecuta como fase de una HU |
+| Pendientes cerrados | 40 y 41, los dos con su fase y veredicto Cumple |
+| Historia nueva | [EP-004 · HU-016](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/), el validador de `F23` |
+| Código | las primeras 12 pruebas del repositorio |
+| Versión | 21.1.1 · cinco commits, del `77db52b` al `b1044ba` |
+
+Falta commitear esa casilla que acabo de marcar, y la transcripción que el enganche sigue escribiendo. Te lo dejo en un commit cuando digas.
+
+Y para retomar, lo primero es el [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md): **necesita una decisión tuya**, no trabajo. Trae tres salidas escritas —que la huella mire el archivo copiado, una bandera `--forzar`, o subir la huella a mano— y sin elegir una, `shopnest-mesa` se queda con su enlace roto.

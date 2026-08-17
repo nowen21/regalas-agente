@@ -22,6 +22,78 @@ Nace [`plantillas/inventario-hu.md`](plantillas/inventario-hu.md), el inventario
 - **Los dos contadores se corrigen juntos.** Al cerrar una fila, `Completas` sube uno e `Incompletas` baja uno en la misma edición; si se pierde la cuenta, se recuenta mirando la tabla.
 - **Separa construcción de retrodocumentación**, que es casi todo lo que falta acá: el código existe y lo que no existe es el documento que diga con qué plan se hizo y qué salió — el mismo hallazgo del pendiente [38](pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md).
 
+## 23.1.1 — 2026-08-16
+
+**PARCHE** — ninguna regla del estándar queda fuera del registro de lo validable. No cambia qué se exige ni el texto de ninguna regla.
+
+El validador de meta-reglas reportaba **33 reglas sin clasificar**, incluidos los capítulos `18` y `19` completos. Bajaron a cero en la fase [`A-EP-001-HU-009-clasificar-las-que-faltan`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan/).
+
+- **Quince ya estaban clasificadas**, y el problema era cómo: el registro decía `C1–C17` y el programa busca cada identificador literal. **Un documento que alimenta a un programa se escribe como el programa lee.**
+- **Los capítulos `18` y `19` no aparecían ni una vez**, ni para decir que no se validan. Ser opt-in no exime: `20·M9` no exceptúa a las reglas opcionales.
+- **`20·M15` y `02·F12` ya estaban construidas** y no figuraban entre los validadores hechos.
+- La lista de validables **creció** de ~12 a ~22: clasificar de más como «no validable» era el camino cómodo.
+
+**El [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) no cierra:** siguen las siete publicadas en «no cumple» —que necesitan una decisión de quien define el estándar— y las 121 sin bloque de checklist.
+
+## 23.1.0 — 2026-08-16
+
+**MENOR** — una fase ya no puede tener dos veredictos distintos sin que se note. Aditivo: no cambia ningún molde.
+
+El veredicto de una fase se escribe **dos veces a mano** —en el §6 del `resultado_pruebas` y en el `estado-fase`— y nada comprobaba que dijeran lo mismo. Ya habían dejado de decirlo: en `A-EP-003-HU-010` el resultado decía «No cumple» y el estado-fase seguía diciendo «aprobada». El `estado-fase` es el que se mira para pasar la puerta de verificación. Se construyó en la fase [`A-EP-004-HU-014-comparar-los-dos-veredictos`](documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/A-EP-004-HU-014-comparar-los-dos-veredictos/).
+
+- **`veredicto()` en [`validadores/fases.py`](validadores/fases.py)** compara tres cosas: el concepto, las exigencias en «No» del §5 con la fase dada por cumplida, y el conteo de criterios. Comparar solo el concepto dejaría medio archivo verificado.
+- **Dos límites a propósito:** si falta uno de los dos documentos calla —una fase a medio escribir no es una contradicción—, y «Cumple, con una salvedad» no contradice a «Cumple».
+- **Cuatro casos de prueba nuevos.** El repositorio pasa de 32 a 36.
+
+**La decisión que faltaba, tomada y escrita:** compara un programa, y el `estado-fase` sigue escribiendo su veredicto. La otra salida —que lo enlace en vez de copiarlo— obligaría a reescribir todas las fases cerradas; si algún día se hace, esta comprobación se retira.
+
+## 23.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar — la revisión de la instalación deja de decir «completo» con la cadena vacía.
+
+`02·F0` exige `planteamiento → épica → HU → especificación → plan → código`, y la revisión no miraba ninguno de los tres primeros: un proyecto podía tener código commiteado, `prompts/` sin un solo archivo y ninguna épica, con el arranque diciendo **«13 de 13, instalación completa»**. Pasó en `shopnest-mesa`, y lo notó el usuario preguntando. Se construyó en la fase [`A-EP-007-HU-007-la-revision-ve-la-cadena`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-007-revisar-que-falta/A-EP-007-HU-007-la-revision-ve-la-cadena/).
+
+- **La lista de componentes pasa de 13 a 14**, con el punto `cadena` en [`plantillas/stack-instalacion.md`](plantillas/stack-instalacion.md): al menos un planteamiento en `prompts/`, y una épica si ya hay código en `proyectos/`.
+- **Es el único punto que el instalador no instala**, y su columna lo dice. El planteamiento lo escribe el agente con lo que el usuario quiere; dejar la plantilla cruda sería peor, porque parecería un planteamiento y la revisión lo daría por cumplido.
+- **La épica solo se exige si ya hay código.** A un proyecto recién instalado no se le pide: el ruido se deja de leer.
+- **Tres casos de prueba nuevos.** El repositorio pasa de 29 a 32.
+
+**Qué tiene que hacer un proyecto al día:** correr el instalador una vez —la huella del stack cambió— y escribir su planteamiento si no lo tiene. Hasta entonces dirá «13 de 14», que es el punto.
+
+## 22.1.0 — 2026-08-16
+
+**MENOR** — un programa comprueba que cada regla de negocio diga de dónde baja. Aditivo: lo que obliga ya lo declaró la 22.0.0.
+
+La 22.0.0 fijó el molde; esta escribe el programa que lo mira. Se construyó en la fase [`A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen`](documentacion/epicas/EP-004-comprobacion-automatica/HU-004-forma-de-los-documentos/A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen/).
+
+- **`reglas_sin_origen()` en [`validadores/plantillas.py`](validadores/plantillas.py)** marca como **falla** cada regla del §4 sin identificador de procedencia. Es falla y no aviso: una regla sin fuente ya llegó hasta un criterio de aceptación en un proyecto real, y lo que avisa se ignora.
+- **Un `spec.md` ahora se reconoce.** Antes no se comparaba contra ninguna plantilla —el programa no sabía cuál le tocaba—, así que el documento más importante de un módulo era invisible para el validador de forma. Sin esto, la comprobación nueva no se habría disparado nunca.
+- **Tres casos de prueba nuevos**, con las dos reglas reales del caso que lo destapó. El repositorio pasa de 26 a 29 pruebas.
+
+**Lo primero que encontró fue deuda propia:** las dos especificaciones de este repositorio traen **31 reglas de negocio sin origen**. No se apagó la comprobación para que el número diera cero; quedaron en el [pendiente 47](pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md).
+
+## 22.0.0 — 2026-08-16
+
+**MAYOR** ⚠ obliga a migrar — toda regla de negocio dice de dónde baja.
+
+El §4 del modelo de especificación pedía `«Regla — por qué existe.»`: **el porqué, nunca el de dónde**. Una regla de negocio no se inventa en la especificación de un módulo —baja de un requisito, de una historia o de una decisión—, pero como nadie lo preguntaba, una regla con buena justificación y ninguna procedencia entraba sin resistencia. En `shopnest-mesa` una así bajó sola a una decisión, una fila de trazabilidad, dos escenarios de prueba y un criterio de aceptación; tardó un día en verse, y solo porque alguien preguntó de dónde salía. Se construyó en la fase [`A-EP-003-HU-004-el-origen-de-la-regla-de-negocio`](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/A-EP-003-HU-004-el-origen-de-la-regla-de-negocio/).
+
+- **El molde pasa a ser** `«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»`, en [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md).
+- **Se pide un identificador, no una frase.** «Lo pidió el cliente» no se puede seguir hasta ninguna parte.
+- **La regla sin procedencia no se escribe ahí:** se sube a la historia que corresponda y baja desde allá.
+
+**Qué tiene que hacer un proyecto al día:** escribir la procedencia en cada regla de negocio que agregue de acá en adelante. **No** hay que reescribir las especificaciones ya escritas: quedan selladas con su versión, les falta un dato y no quedan inválidas.
+
+## 21.3.1 — 2026-08-16
+
+**PARCHE** — el programa que comprueba la `F22` queda retrodocumentado y bajo prueba. No cambia qué se exige ni una línea de producción.
+
+El 2026-08-16 se escribió [`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md) y, en la misma sesión, el programa que la comprueba — sin épica, sin historia y sin fase. El repositorio que escribe la regla, incumpliéndola mientras la escribe. Se retrodocumentó en la fase [`A-EP-004-HU-015-retrodocumentar-la-comprobacion-de-la-f22`](documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/A-EP-004-HU-015-retrodocumentar-la-comprobacion-de-la-f22/).
+
+- **Los tres criterios de la HU-015 quedaron con evidencia de una corrida real**, en [`validadores/tests/test_version_derogaciones.py`](validadores/tests/test_version_derogaciones.py): el proyecto atrasado con fases falla y la falla nombra la regla, lo ya adoptado no se vuelve a cobrar, sin fases no se cobra, y los límites callan en vez de romper. El repositorio pasa de 22 a 26 pruebas.
+- **Los casos corren contra las derogaciones reales del estándar.** Si cambia la marca del encabezado que [`20·M11`](base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) exige, la prueba lo dice en vez de pasar contra un dato inventado.
+- **Lo que le faltaba al trabajo sin cadena no era documentación, era prueba.** `validadores/docs/version.md` ya explicaba las tres funciones con ejemplos; lo que nadie había escrito era con qué se comprobaban.
+
 ## 21.3.0 — 2026-08-16
 
 **MENOR** — renombrar una sesión deja coherente el resumen que arrastra. Aditivo: ningún proyecto tiene que hacer nada.

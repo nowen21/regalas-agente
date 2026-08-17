@@ -47,3 +47,11 @@ Lo único que evitó el choque fue mirar la hora de modificación de los archivo
 ## El límite
 
 Esto no lo resuelve un validador: puede detectar el cruce, no evitarlo. Lo que hace falta primero es el acuerdo.
+
+---
+
+## Tercer caso: el número del pendiente, 2026-08-16
+
+No fue el `CHANGELOG` esta vez. Dos sesiones abiertas a la vez crearon **tres pendientes con el número 48**: una escribió `48-el-sello-del-checklist-caduca-con-el-texto.md` y la otra `48-hu-incompletas-ep-001-cuerpo-de-reglas.md` y `48-hu-incompletas-ep-006-memoria.md`.
+
+Se resolvió a mano —la primera cedió el número y se corrió al `52`—, y eso es justo lo que este pendiente dice que no debería hacer falta. **Amplía el alcance:** lo que dos sesiones se pisan no es solo la versión; es cualquier numeración que se calcule mirando lo que ya existe.

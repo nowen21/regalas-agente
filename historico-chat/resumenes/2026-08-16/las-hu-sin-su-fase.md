@@ -72,11 +72,9 @@
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ commit `333c3a1` · ☐ el renombrado |
+| Lo que se hizo está aprobado y guardado | ☑ commits `333c3a1` y `3b51065` |
 
-**Casi.** El trabajo está en el commit `333c3a1`, con los 12 archivos de esta sesión y ninguno de la otra: los cinco borrados que ya estaban en el índice se sacaron, y de `CHANGELOG.md` y del índice de pendientes se tomó solo la parte propia.
-
-Después de ese commit el renombrado movió el archivo de la sesión y de su resumen, y dejó **tres cambios sin guardar**: los dos `README` con el enlace corregido (H-3) y este resumen. Falta un segundo commit para eso.
+**Cerrada.** Dos commits: `333c3a1` con los 12 archivos del trabajo y `3b51065` con el renombrado y los dos enlaces que rompió. En los dos, nada de la otra sesión: los cinco borrados que ya estaban en el índice se sacaron, y de `CHANGELOG.md`, del índice de pendientes y del índice del día se tomó solo la parte propia.
 
 **Lo que había antes:** Las dos historias quedaron escritas en EP-004 —[HU-017](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md)—, con su línea en la épica, su lugar en la hoja de ruta como fase 9 y su fila en el inventario. Lo único que queda es la aprobación y el commit, que son del usuario.
 

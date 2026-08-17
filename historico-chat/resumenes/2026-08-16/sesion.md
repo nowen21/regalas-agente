@@ -58,7 +58,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 - **Responde a:** —
 - **Dispara:** 1. [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md), escrita, con su fase de retrodocumentación todavía sin abrir.
 - **Orden de resolución:** 1 de 2 · va antes del H-1: es deuda de esta misma sesión.
-- **Dónde queda:** [pendientes/38](../../../pendientes/38-el-validador-de-la-f22-se-escribio-sin-su-fase.md).
+- **Dónde queda:** [pendientes/38](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md).
 - **Nace en:** 2026-08-16 · sesión sin nombrar.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se retrodocumenta el validador como fase de EP-004, o se deja el código con su registro pendiente?
@@ -90,7 +90,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-4, con su regla y su versión |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [37](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md) y [38](../../../pendientes/38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [37](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md) y [38](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) |
 | Lo que se hizo está aprobado y guardado | ☑ commit `2030a4c` · falta commitear lo de este cierre |
 

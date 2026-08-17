@@ -77,11 +77,11 @@ Y sacó una conclusión equivocada: que el 42 cerró «de rebote» porque la pla
 
 ### H-6 · Renombrar la sesión volvió a dejar el enlace roto
 
-**Qué se encontró.** Se nombró la sesión con `historico.py --renombrar` y el resumen quedó apuntando a `2026-08-16-sesion-6.md`, que ya no existe. Es el [pendiente 35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md), reproducido por segunda vez en el mismo día y en esta misma casa.
+**Qué se encontró.** Se nombró la sesión con `historico.py --renombrar` y el resumen quedó apuntando a `2026-08-16-sesion-6.md`, que ya no existe. Es el [pendiente 35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md), reproducido por segunda vez en el mismo día y en esta misma casa.
 
 **Qué se decidió.** Se corrigió el enlace a mano y el pendiente **sigue abierto**: arreglarlo es su propia fase.
 
-**Dónde queda.** El enlace corregido, en la cabecera de este archivo. El defecto, en el [pendiente 35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md).
+**Dónde queda.** El enlace corregido, en la cabecera de este archivo. El defecto, en el [pendiente 35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md).
 
 ---
 
@@ -109,7 +109,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ — el 35 ya existía; el H-5 se resolvió acá |
 | Toda historia disparada está escrita en su épica | ☑ — HU-006, con su fase |
-| Lo que se hizo está aprobado y guardado | ☐ — falta el commit |
+| Lo que se hizo está aprobado y guardado | ☑ — commits `9846650` y `1b01451`, empujados |
+
+**La sesión se puede cerrar.** Ocho hallazgos, todos con su decisión escrita y su sitio. Lo único que queda vivo son dos archivos sin commitear —el `estado-fase.md` con el hash de la fase B y la transcripción, que el enganche sigue escribiendo hasta el último mensaje—, y eso no es un hallazgo a medias: es el cierre mecánico de la propia sesión.
+
+**Lo que sigue, si esto abre otra sesión:** el backlog quedó en 30 abiertos y sin ningún `P0`. Lo más urgente son los `P1` — el 19, el 27, el 28, el 30, el 33, el 35 y el 43.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

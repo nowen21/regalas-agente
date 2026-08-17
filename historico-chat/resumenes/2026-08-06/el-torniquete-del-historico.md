@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-el-torniquete-d
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** versión **1.3.0** del [CHANGELOG](../../../CHANGELOG.md); hoy el checklist tiene su propio hueco abierto en el [pendiente 30](../../../pendientes/30-el-checklist-no-ve-la-cadena.md).
+- **Dónde queda:** versión **1.3.0** del [CHANGELOG](../../../CHANGELOG.md); hoy el checklist tiene su propio hueco abierto en el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md).
 - **Nace en:** 2026-08-06 · el torniquete del histórico.
 - **Cerrado en:** 2026-08-06 · el torniquete del histórico.
 - **Con qué se retoma:** —.

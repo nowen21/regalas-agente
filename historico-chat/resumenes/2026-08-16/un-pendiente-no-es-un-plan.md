@@ -83,7 +83,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ los tres |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ ninguno quedó abierto: el [40](../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) cerraron el mismo día |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/) nueva, y las dos fases colgando de HU existentes |
-| Lo que se hizo está aprobado y guardado | ☐ **sin commit** — es lo único que falta |
+| Lo que se hizo está aprobado y guardado | ☑ cinco commits, del `77db52b` al `b1044ba` |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

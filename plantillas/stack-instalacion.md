@@ -35,6 +35,7 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 | `registro` | El proyecto anotado en `plantillas/proyectos.md` del estándar: la lista única de proyectos que usan el agente. | Agrega la fila con nombre, ruta y scope de memoria. El stack queda «por detectar» hasta que el agente llene `.agente/stack.md`. |
 | `version` | Que el proyecto **declare** qué versión del estándar sigue. El número en sí no reprueba: que sea más viejo que el central no obliga a nada por sí solo. | La deja declarada en el `CLAUDE.md` al instalarlo. **Subirla después es decisión del usuario:** un cambio de norma no reabre fases ya cerradas. |
 | `versiones` | La carpeta `./documentacion/versiones/`: un registro por actualización, con desde cuándo el proyecto usa cada versión y qué se actualizó. Se versiona. | Lo escribe el instalador: corriéndolo otra vez queda el registro que falte. Hay registro cuando baja una plantilla nueva **o** cuando sube la versión del estándar, aunque al proyecto no le cambie ninguna plantilla. |
+| `cadena` | Que el proyecto haya **arrancado la cadena** de [`02·F0`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md): al menos un planteamiento en `prompts/`, y una épica en `documentacion/epicas/` si ya hay código en `proyectos/`. | **Nada: este no lo instala el instalador**, y es el único de la lista así. El planteamiento lo escribe el agente con lo que el usuario quiere, y el instalador no pregunta. Dejar la plantilla con los marcadores sin llenar sería peor: parecería un planteamiento y esta revisión lo daría por cumplido. |
 
 ## Cómo se comprueba
 
@@ -90,6 +91,8 @@ python validadores/instalar.py "<proyecto>" --aplicar
 ```
 
 Es la misma línea que instala desde cero: instalar y actualizar son el mismo proceso, y es idempotente. Lo único que no aplica solo es subir la **versión adoptada** del estándar — esa es decisión del usuario, porque un cambio de norma no reabre fases ya cerradas.
+
+**Uno de los catorce no se instala.** El punto `cadena` no mira si falta un archivo del andamiaje: mira si el proyecto empezó por donde `02·F0` manda empezar. Está en esta lista porque es lo que el agente lee en cada mensaje para saber si el entorno está completo, y decir «completo» con la cadena vacía es afirmar algo que `F0` contradice. Se apaga escribiendo el planteamiento, no corriendo el instalador.
 
 ## Dónde queda registrada cada actualización
 

@@ -221,9 +221,14 @@ class ReparaLoYaInstalado(unittest.TestCase):
                                                      self.estandar)
         self.assertTrue(cumple, f"el checklist sigue reprobando: {detalle}")
 
+        # Lo que se comprueba es que el instalador deje puesto **todo lo que
+        # puede instalar**. Desde la v23.0.0 la lista trae un punto que no
+        # instala nadie —`cadena`, el planteamiento de `02·F0`, que lo escribe
+        # el agente con lo que el usuario quiere—, así que exigir cero
+        # faltantes le pediría al instalador algo que por definición no hace.
         faltan = checklist.pendientes(
             checklist.revisar(self.proyecto, self.estandar))
-        self.assertEqual([p.id for p in faltan], [],
+        self.assertEqual([p.id for p in faltan if p.id != "cadena"], [],
                          "el proyecto no llegó a la instalación completa")
 
     def test_cp_004_el_propio_estandar_no_se_escribe_registros(self):

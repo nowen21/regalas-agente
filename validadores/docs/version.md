@@ -98,6 +98,8 @@ Está separada del resto para poder probarla sin archivos en disco.
 - **Hace:** mira si hay reglas jubiladas que el proyecto no adoptó.
 - **Retorna:** una lista con una falla que nombra cada regla pendiente, o vacía si no hay ninguna. Sin `CLAUDE.md`, retorna vacío: de eso ya se queja `validar`.
 
+**Las tres están bajo prueba** desde la fase `A-EP-004-HU-015`, en [`validadores/tests/test_version_derogaciones.py`](../tests/test_version_derogaciones.py). Los casos corren contra las derogaciones **reales** del estándar, así que si cambia la marca del encabezado la prueba lo dice en vez de pasar contra un dato inventado. La excepción es el filtro del rango, que se prueba con versiones de mentira a propósito: es aritmética, y con datos reales cambiaría de significado cada vez que se derogue una regla.
+
 ## Cómo se ejecuta
 
 ```

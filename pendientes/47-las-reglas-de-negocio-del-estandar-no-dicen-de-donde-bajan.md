@@ -1,0 +1,42 @@
+# Pendiente · Las reglas de negocio del propio estándar no dicen de dónde bajan
+
+**Estado:** abierto · anotado 2026-08-16.
+
+| | |
+|---|---|
+| **Nace de cerrar** | el [43](hecho/el-origen-de-la-regla-de-negocio.md) (v22.0.0 y v22.1.0). Es lo que su validador destapó, no su reapertura |
+| **Proyecto de origen** | El estándar mismo |
+
+## El problema
+
+La v22.0.0 empezó a exigir que toda regla de negocio diga de dónde baja, y la v22.1.0 escribió el programa que lo comprueba. Al correrlo por primera vez sobre esta casa:
+
+| Especificación | Reglas sin origen |
+|---|---:|
+| `documentacion/automatismos/spec.md` | 16 |
+| `documentacion/documentos-modelo/spec.md` | 15 |
+| **Total** | **31** |
+
+**El estándar no cumple la regla que acaba de escribir.** Es el mismo tipo de hueco que el [pendiente 11](11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) —una norma nueva y el texto viejo diciendo lo contrario— y el [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+## Qué falta
+
+**No es trabajo mecánico**, y por eso no se hizo al cerrar el 43: hay que decidir, regla por regla, de dónde baja. Tres salidas por cada una:
+
+1. **Baja de algo que existe** — se le escribe el identificador y listo.
+2. **No baja de nada pero debería existir** — se sube a la historia que corresponda y baja desde allá, que es lo que la regla nueva manda.
+3. **No baja de nada y no hace falta** — se borra. Que esté escrita no la vuelve necesaria.
+
+La tercera es la incómoda, y es la razón de ser de todo esto: alguna de esas 31 seguramente no la pidió nadie.
+
+## Conviene hacerlo por archivo
+
+Son dos especificaciones y se pueden cerrar por separado. Cada una es una fase de la historia de su módulo, no una fase de EP-003 ni de EP-004: lo que cambia es el documento de un módulo, no el molde ni el validador.
+
+## El límite
+
+**El estándar no reabre lo cerrado.** Estas 31 quedaron escritas bajo una versión que no pedía la procedencia, así que no son un incumplimiento retroactivo: son deuda visible. Lo que no se puede es dejarlas ahí y seguir exigiéndoles la regla a los proyectos herederos.
+
+## Cómo se sabrá que cerró
+
+`validar.py plantilla` sobre las dos especificaciones no reporta ninguna regla sin origen, y de cada una que se haya borrado quedó escrito por qué.

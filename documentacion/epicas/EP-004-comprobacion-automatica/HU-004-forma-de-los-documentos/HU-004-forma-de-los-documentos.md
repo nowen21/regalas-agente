@@ -105,6 +105,23 @@ Y nombra la regla que se incumple
 4. Declarar esa misma tarea como soporte de un criterio y volver a correr. Resultado esperado: deja de reportarla.
 - **Aprobado cuando:** los tres casos se reportan y el soporte declarado deja de reportarse.
 
+### CA-04 — Una regla de negocio sin origen se marca
+
+```gherkin
+Dado que una especificación de módulo trae una regla de negocio
+Cuando esa regla no dice de dónde baja
+Entonces se reporta como falla, con la línea y el texto de la regla
+```
+
+**Cómo validarlo:**
+
+1. Escribir una especificación con una regla que baje de un requisito y otra que no baje de nada. Comprobar. Resultado esperado: sale una sola falla, la de la segunda.
+2. Ponerle una procedencia a la segunda y volver a comprobar. Resultado esperado: ninguna falla.
+3. Dejar el molde de la plantilla sin llenar. Resultado esperado: no se reporta dos veces; de eso ya se queja la comprobación de marcadores.
+- **Aprobado cuando:** una regla sin fuente no pasa en silencio.
+
+> **Es falla y no aviso.** Una regla sin procedencia ya se coló hasta un criterio de aceptación en un proyecto real. Lo que avisa, se ignora.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un documento vacío, uno sin encabezados y uno que no salió de ninguna plantilla tienen comportamiento definido.
@@ -146,7 +163,11 @@ Y nombra la regla que se incumple
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen](A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen/README.md) | CA-04 | Cerrada 2026-08-16 (v22.1.0) |
+
+**Los tres primeros criterios no tienen fase:** las comprobaciones que los cumplen se escribieron antes de que la épica se descompusiera.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -206,3 +227,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04`, del pendiente 43: una regla de negocio sin procedencia se reporta. Al construirlo se vio que un `spec.md` no se comparaba contra ninguna plantilla, y que las dos especificaciones de este repositorio traen 31 reglas sin origen |

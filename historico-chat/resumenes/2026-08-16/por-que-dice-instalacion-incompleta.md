@@ -22,9 +22,9 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-por-que-dice-in
 
 **Qué pasó.** Al renombrar la sesión con `historico.py --renombrar`, el archivo del resumen se renombró bien, pero su primera línea siguió apuntando a `../../2026-08-16-sesion-4.md`, que ya no existe. Se corrigió a mano.
 
-**Por qué importa.** Es el [pendiente 35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md), reproducido acá por segunda vez en el mismo día — la sesión de [la prioridad de los pendientes](la-prioridad-de-los-pendientes.md) ya lo había registrado como su H-3. Pasa **cada vez** que se renombra una sesión, que es lo que el propio enganche pide en el primer mensaje.
+**Por qué importa.** Es el [pendiente 35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md), reproducido acá por segunda vez en el mismo día — la sesión de [la prioridad de los pendientes](la-prioridad-de-los-pendientes.md) ya lo había registrado como su H-3. Pasa **cada vez** que se renombra una sesión, que es lo que el propio enganche pide en el primer mensaje.
 
-**Dónde queda.** Enlace corregido acá. El defecto de `--renombrar` sigue abierto en el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md), que ya está en P1. Esta es la segunda reproducción documentada.
+**Dónde queda.** Enlace corregido acá. El defecto de `--renombrar` sigue abierto en el [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md), que ya está en P1. Esta es la segunda reproducción documentada.
 
 ---
 
@@ -38,7 +38,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 explicado y escrito acá; H-2 corregido acá |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ reinstalar **no** es pendiente de este repositorio: cada proyecto lo hace en su propia sesión, y el aviso es justamente lo que se lo dice — el usuario confirmó que dos ya lo detectaron. H-2 vive en el [35](../../../pendientes/35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ reinstalar **no** es pendiente de este repositorio: cada proyecto lo hace en su propia sesión, y el aviso es justamente lo que se lo dice — el usuario confirmó que dos ya lo detectaron. H-2 vive en el [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: son de instalación y de redacción de un aviso |
 | Lo que se hizo está aprobado y guardado | ☑ commit `c2ded0e`, aprobado por el usuario y publicado |
 

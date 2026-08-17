@@ -47,7 +47,22 @@ POR_NOMBRE = {
     "reglas-proyecto": "plantillas/reglas-proyecto.md",
     "mapa-dependencias": "plantillas/mapa-dependencias.md",
     "adr": "plantillas/ADR.md",
+    "spec": "plantillas/plantilla-spec-modulo.md",
 }
+
+# La especificación de módulo, para saber cuándo mirar sus reglas de negocio.
+SPEC_MODULO = "plantillas/plantilla-spec-modulo.md"
+
+# `## 4. Reglas de negocio` y el siguiente encabezado del mismo nivel.
+_SECCION_REGLAS = re.compile(
+    r"^##\s+\d*\.?\s*Reglas de negocio\s*$(.*?)(?=^##\s|\Z)",
+    re.M | re.S | re.I)
+
+# Un ítem de la lista numerada del §4.
+_REGLA = re.compile(r"^\s*\d+\.\s+(.*\S)\s*$", re.M)
+
+# Un identificador de origen: `RF-13`, `HU-001`, `D-22`, `RN-05`, `CA-01`…
+_IDENTIFICADOR = re.compile(r"\b[A-ZÁÉÍÓÚÑ]{1,6}-\d+\b")
 
 _H1 = re.compile(r"^#\s+(.*?)\s*$")
 _MARCADOR_EN_TITULO = re.compile(r"\[[^\[\]\n]+\](?!\()")
@@ -83,6 +98,41 @@ def _notas(texto):
         if recortada.startswith(">"):
             salida.append((n, recortada))
     return salida
+
+
+def reglas_sin_origen(texto, plantilla_texto=""):
+    """Las reglas de negocio del §4 que no dicen de dónde bajan: `[(línea, regla)]`.
+
+    Una regla de negocio no se inventa en la especificación de un módulo: baja
+    de un requisito, de una historia o de una decisión. Cuando la plantilla
+    pedía solo el porqué, una regla con buena justificación y ninguna
+    procedencia entraba sin resistencia — y de ahí bajaba sola a decisiones,
+    trazabilidad, pruebas y criterios de aceptación (v22.0.0).
+
+    Se busca un identificador (`RF-13`, `HU-001`, `D-22`) y no una frase:
+    «lo pidió el cliente» no se puede seguir hasta ninguna parte.
+
+    Lo que sigue igual que en la plantilla no se cuenta: de eso ya se queja la
+    comprobación de líneas sin llenar, y reportar dos veces lo mismo enseña a
+    ignorar los hallazgos.
+    """
+    seccion = _SECCION_REGLAS.search(texto)
+    if not seccion:
+        return []
+    del_molde = {m.group(1).strip()
+                 for s in _SECCION_REGLAS.finditer(plantilla_texto or "")
+                 for m in _REGLA.finditer(s.group(1))}
+
+    sin_origen = []
+    for m in _REGLA.finditer(seccion.group(1)):
+        regla = m.group(1).strip()
+        if regla in del_molde or not regla.strip("«»…. "):
+            continue
+        if _IDENTIFICADOR.search(regla):
+            continue
+        linea = texto[:seccion.start(1) + m.start()].count("\n") + 1
+        sin_origen.append((linea, regla))
+    return sin_origen
 
 
 def validar(ruta_documento, ruta_plantilla):
@@ -134,5 +184,18 @@ def validar(ruta_documento, ruta_plantilla):
                 AVISO, ruta_documento, 0,
                 f"sección de la plantilla ausente: «{titulo}» "
                 f"— confirma que no aplica"))
+
+    # 4. Reglas de negocio sin procedencia, solo en la especificación de módulo.
+    #    Un `## 4. Reglas de negocio` en otro documento puede querer decir otra
+    #    cosa, así que la comprobación se ata a la plantilla, no al título.
+    if os.path.normpath(ruta_plantilla) == _ruta(SPEC_MODULO):
+        for linea, regla in reglas_sin_origen(documento, plantilla):
+            recorte = regla if len(regla) <= 60 else regla[:57] + "..."
+            hallazgos.append(Hallazgo(
+                FALLA, ruta_documento, linea,
+                f"regla de negocio sin decir de dónde baja: {recorte} "
+                f"— falta el identificador del requisito, la historia o la "
+                f"decisión; si no lo tiene, la regla se sube a la historia "
+                f"que corresponda y baja desde allá"))
 
     return hallazgos

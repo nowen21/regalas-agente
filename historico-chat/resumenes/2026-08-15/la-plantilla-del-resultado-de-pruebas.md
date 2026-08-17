@@ -95,7 +95,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003 · HU-010 · RNF-01.
 - **Dispara:** —, no abre historia nueva: es reabrir la fase A que ya existe.
 - **Orden de resolución:** 1 de 3. Va primero: mientras no se resuelva, la fase está cerrada con un veredicto que no era.
-- **Dónde queda:** [pendientes/27](../../../pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md), y D-04 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
+- **Dónde queda:** [pendientes/27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), y D-04 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿quién lee las cinco entradas de CP-006, y se reejecutan los 16 pasos sin registro o se deja escrito por qué no?
@@ -114,7 +114,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
   - **Para** no pasar una puerta de verificación con un veredicto viejo
   - **Contexto:** hoy el veredicto se escribe a mano en los dos archivos. Nada comprueba que coincidan, y esta sesión dejó un caso donde ya no coinciden. Si no se hace, la puerta de verificación se apoya en el archivo que nadie actualizó.
 - **Orden de resolución:** 2 de 3. Va después de H-6: primero hay que saber cuál es el veredicto bueno.
-- **Dónde queda:** [pendientes/28](../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) y [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md).
+- **Dónde queda:** [pendientes/28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se corrige el `estado-fase` a mano ahora, o se espera al validador que lo compare?
@@ -148,7 +148,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md), [28](../../../pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) y [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), [28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
 | Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario y subido en `8ed276c` y `439c47e` |
 

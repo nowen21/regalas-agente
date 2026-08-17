@@ -31,8 +31,10 @@
 
 [[Las invariantes que el código debe garantizar y que no se ven leyendo un archivo suelto — regla `13`·DOC2.]]
 
-1. «Regla — por qué existe.»
+1. «Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»
 2. «…»
+
+[[**Una regla de negocio no nace acá.** Baja de un requisito, de una historia de usuario o de una decisión ya tomada, y por eso se pide el identificador y no una frase: «lo pidió el cliente» no se puede seguir hasta ninguna parte. La que no tenga procedencia **no se escribe en esta sección**: se sube a la historia que corresponda y baja desde allá. Una regla con buena justificación y ningún origen entra sin resistencia y sin dejar rastro de que entró — y de ahí baja sola a decisiones, trazabilidad, pruebas y criterios de aceptación.]]
 
 ## 5. Modelo de datos
 

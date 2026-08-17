@@ -131,7 +131,7 @@ Entonces todas sus reglas traen el bloque con su resultado
 ## 7. Tareas técnicas derivadas
 
 - [ ] Decidir qué se hace con las siete en "no cumple".
-- [ ] Clasificar las 33 que faltan en el registro.
+- [x] Clasificar las 33 que faltan en el registro.
 - [ ] Aplicar el checklist por capítulo a las 129 sin bloque.
 - [ ] Versionar y registrar cada tanda.
 
@@ -141,7 +141,11 @@ Entonces todas sus reglas traen el bloque con su resultado
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-009-clasificar-las-que-faltan](A-EP-001-HU-009-clasificar-las-que-faltan/README.md) | CA-02 | Cerrada 2026-08-16 (v23.1.1) |
+
+**Faltan los otros dos CA.** El `CA-01` —las siete publicadas en «no cumple»— espera una decisión de quien define el estándar; el `CA-03` —las 121 sin bloque— es trabajo por capítulo.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -176,7 +180,7 @@ Todavía no se descompuso en fases.
 ## 11. Definition of Done (DoD)
 
 - [ ] Ninguna regla vigente en "no cumple"
-- [ ] Ninguna regla sin clasificar
+- [x] Ninguna regla sin clasificar
 - [ ] Los capítulos cerrados traen su bloque en todas sus reglas
 - [ ] Todos los criterios de aceptación verificados
 
@@ -200,3 +204,4 @@ Todavía no se descompuso en fases.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-6 del 2026-08-14 |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Fase `A` (v23.1.1): las 33 sin clasificar bajan a cero. Quince ya estaban clasificadas por rango —«C1–C17»— y el programa no lee rangos; los capítulos `18` y `19` no aparecían ni una vez |

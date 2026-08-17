@@ -11,8 +11,8 @@
 | **Fase** (`02·F12.6`) | `A-EP-003-HU-010-glosario-de-la-terminologia` |
 | **HU** | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md](../HU-010-glosario-de-la-terminologia.md) |
 | **Plan de pruebas de origen** | [plan_pruebas.md](plan_pruebas.md), versión 1.2 |
-| **Ciclo** | 1 |
-| **Fecha de ejecución** | 2026-08-14 |
+| **Ciclo** | 3 — el último. Los tres están en §8 |
+| **Fecha de ejecución** | 2026-08-14 (ciclo 1) · 2026-08-15 (ciclo 2) · 2026-08-16 (ciclo 3) |
 | **Ejecutado por** | Agente |
 | **Ambiente y versión** | El repositorio del estándar, rama `main`, sobre la versión 15.2.0 |
 
@@ -23,8 +23,12 @@
 | Ciclo | Diseñados | Ejecutados | Aprobados | Fallidos | Bloqueados | No ejecutados |
 |---|---:|---:|---:|---:|---:|---:|
 | 1 | 8 | 7 | 7 | 0 | 0 | 1 |
+| 2 | 8 | 7 | 7 | 0 | 0 | 1 |
+| 3 | 8 | 8 | 8 | 0 | 0 | 0 |
 
-**Casos no ejecutados y por qué:** CP-006. Necesita que las entradas las lea alguien que no las escribió, y eso no lo puede hacer el agente. Queda sin ejecutar, no aprobado.
+**El CP-006 quedó sin ejecutar dos ciclos**, y por un motivo que el agente no podía resolver solo: necesita que las entradas las lea alguien que no las escribió. Se ejecutó en el ciclo 3 (§2.ter) cuando el usuario leyó el glosario por su cuenta y no entendió una entrada — sus preguntas son, palabra por palabra, lo que el paso 4 del caso mandaba anotar.
+
+> **Esta tabla decía «ciclo 1» hasta el 2026-08-16**, con el cuerpo del documento ya en el ciclo 3. La cabecera afirmaba que faltaba correr el CP-006 y el §5 decía que estaba corrido: es lo que quedaba abierto del [pendiente 27](../../../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md).
 
 ---
 

@@ -187,3 +187,12 @@ validar('C:/proyectos/pos')          # con problemas
  Hallazgo(AVISO, '…/HU-003-registrar', 0,
           'el consecutivo de fases no es A, B, C… sin huecos (F12.5): A, C')]
 ```
+
+## La comprobación del veredicto — desde la v23.1.0
+
+**`veredicto(ruta_fase, donde)`**
+
+- **Hace:** compara lo que dicen el `resultado_pruebas.md` y el `estado-fase.md` de la misma fase, y reporta como **falla** tres cosas: que el concepto no coincida, que la fase se dé por cumplida con una exigencia en «No» en el §5 del resultado, y que los dos cuenten criterios distintos.
+- **Por qué existe.** El veredicto se escribe **dos veces a mano**, y el `estado-fase` es el que se mira para pasar la puerta de verificación: si dice «cumple», la fase pasa sin que nadie abra el resultado, que es donde está la verdad. Ya pasó una vez.
+- **Qué no hace:** decir si el veredicto es **cierto**. Eso no lo puede saber un programa.
+- **Los dos límites.** Si falta uno de los dos documentos, calla: una fase a medio escribir no es una contradicción. Y una salvedad al lado del concepto —«Cumple, con una salvedad»— tampoco lo es: se comparan conceptos normalizados.

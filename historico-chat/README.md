@@ -92,3 +92,5 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-16-un-pendiente-no-es-un-plan.md](2026-08-16-un-pendiente-no-es-un-plan.md) — el backlog se ejecutaba sin cadena, y por eso un arreglo se publico sin probarse. · [resumenes/2026-08-16/un-pendiente-no-es-un-plan.md](resumenes/2026-08-16/un-pendiente-no-es-un-plan.md)
 - [2026-08-16-que-pendiente-sigue.md](2026-08-16-que-pendiente-sigue.md) — Consulta del backlog y ejecucion de los dos P0: el 42 y el 44. · [resumenes/2026-08-16/que-pendiente-sigue.md](resumenes/2026-08-16/que-pendiente-sigue.md)
 - [2026-08-16-sesion-7.md](2026-08-16-sesion-7.md) — sesión del 2026-08-16.
+- [2026-08-16-las-hu-sin-su-fase.md](2026-08-16-las-hu-sin-su-fase.md) — inventario de las 66 HU: 52 sin su fase completa, y la plantilla del tablero. · [resumenes/2026-08-16/las-hu-sin-su-fase.md](resumenes/2026-08-16/las-hu-sin-su-fase.md)
+- [2026-08-16-sesion-9.md](2026-08-16-sesion-9.md) — sesión del 2026-08-16.

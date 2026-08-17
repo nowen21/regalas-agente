@@ -42,6 +42,19 @@ _FASE = re.compile(
     r"-(?P<descripcion>.+)$")
 
 
+# El veredicto, en las dos formas que hay escritas en el repositorio.
+_CONCEPTO_FILA = re.compile(r"^\|\s*\*\*Concepto\*\*\s*\|([^|]+)\|", re.M)
+_CONCEPTO_SUELTO = re.compile(r"\*\*Concepto:\s*([^*.]+)", re.M)
+
+# `CA cumplidos` en las fases nuevas, `Criterios cumplidos` en las viejas.
+_CONTEO = re.compile(
+    r"\*\*(?:CA|Criterios)\s+cumplidos\*\*\s*\|\s*\**(\d+)\**\s+de\s+\**(\d+)",
+    re.I)
+
+# El §5 del resultado: la tabla de veredicto por exigencia.
+_SECCION_5 = re.compile(r"^##\s+5\.[^\n]*\n(.*?)(?=^##\s)", re.M | re.S)
+
+
 def _numero(texto):
     """`002` y `2` son el mismo número de épica."""
     return int(texto)
@@ -120,6 +133,96 @@ def validar(proyecto):
     return hallazgos
 
 
+def _leer(ruta):
+    try:
+        with open(ruta, encoding="utf-8", errors="replace") as f:
+            return f.read()
+    except OSError:
+        return ""
+
+
+def _concepto(texto):
+    """El veredicto que declara un documento, normalizado, o "" si no lo dice.
+
+    Se reconocen las dos formas que hay escritas: la fila de tabla
+    `| **Concepto** | Cumple |` y la del molde viejo, `**Concepto: Cumple.**`.
+    Reprobar por la forma vieja sería reabrir fases cerradas, y el estándar no
+    reabre lo cerrado.
+    """
+    m = _CONCEPTO_FILA.search(texto) or _CONCEPTO_SUELTO.search(texto)
+    if not m:
+        return ""
+    # La salvedad que va al lado —«Cumple, con una salvedad»— no es otro
+    # veredicto: se compara lo que el concepto dice, no cómo se matiza.
+    crudo = m.group(1).strip().lower().replace("*", "")
+    return "no cumple" if crudo.startswith("no cumple") else (
+        "cumple" if crudo.startswith("cumple") else "")
+
+
+def _conteo(texto):
+    """`(cumplidos, total)` de los criterios, o None si el documento no lo dice."""
+    m = _CONTEO.search(texto)
+    return (m.group(1), m.group(2)) if m else None
+
+
+def _exigencias_en_no(texto):
+    """Las filas del §5 del resultado cuya última columna es «No»."""
+    seccion = _SECCION_5.search(texto)
+    if not seccion:
+        return []
+    salida = []
+    for fila in seccion.group(1).splitlines():
+        celdas = [c.strip() for c in fila.strip().strip("|").split("|")]
+        if len(celdas) >= 3 and celdas[-1].replace("*", "").lower() == "no":
+            nombre = celdas[0].replace("*", "").strip()
+            if nombre and not nombre.startswith("-"):
+                salida.append(nombre)
+    return salida
+
+
+def veredicto(ruta_fase, donde):
+    """`HU-014` — el `resultado_pruebas` y el `estado-fase` dicen lo mismo.
+
+    El veredicto de una fase se escribe **dos veces a mano**, y el `estado-fase`
+    es el que se mira para pasar la puerta de verificación: si dice que cumple,
+    la fase pasa sin que nadie abra el resultado, que es donde está la verdad.
+    Ya pasó una vez, en `A-EP-003-HU-010`.
+
+    No comprueba si el veredicto es **cierto** —eso no lo puede saber un
+    programa—: comprueba que los dos documentos no digan cosas distintas.
+    """
+    resultado = _leer(os.path.join(ruta_fase, "resultado_pruebas.md"))
+    estado = _leer(os.path.join(ruta_fase, "estado-fase.md"))
+    if not resultado or not estado:
+        return []                       # una fase a medio escribir no se cobra acá
+
+    hallazgos = []
+    v_resultado, v_estado = _concepto(resultado), _concepto(estado)
+
+    if v_resultado and v_estado and v_resultado != v_estado:
+        hallazgos.append(Hallazgo(
+            FALLA, donde, 0,
+            f"los dos veredictos de la fase no coinciden (HU-014): "
+            f"`resultado_pruebas` dice «{v_resultado}» y `estado-fase` dice "
+            f"«{v_estado}». La puerta de verificación mira el segundo"))
+
+    if v_estado == "cumple":
+        for exigencia in _exigencias_en_no(resultado):
+            hallazgos.append(Hallazgo(
+                FALLA, donde, 0,
+                f"la fase se da por cumplida y el `resultado_pruebas` tiene "
+                f"«{exigencia}» en No (HU-014)"))
+
+    c_resultado, c_estado = _conteo(resultado), _conteo(estado)
+    if c_resultado and c_estado and c_resultado != c_estado:
+        hallazgos.append(Hallazgo(
+            FALLA, donde, 0,
+            f"el conteo de criterios no cuadra (HU-014): `resultado_pruebas` "
+            f"dice {c_resultado[0]} de {c_resultado[1]} y `estado-fase` dice "
+            f"{c_estado[0]} de {c_estado[1]}"))
+    return hallazgos
+
+
 def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
     hallazgos = []
     fases = _subcarpetas(ruta_hu)
@@ -173,6 +276,8 @@ def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
             hallazgos.append(Hallazgo(
                 AVISO, donde, 0,
                 f"faltan documentos de la fase (F12.13): {', '.join(faltan)}"))
+
+        hallazgos += veredicto(os.path.join(ruta_hu, nombre), donde)
 
     # F12.5 · el consecutivo alfabético forma la secuencia A, B, C… sin huecos.
     # AVISO y no FALLA: una fase diferida deja un hueco legítimo que mira un humano.

@@ -27,7 +27,7 @@
 | 8 | Implementación | implementado y pruebas en verde | Hecho. Las quince tareas del plan, y siete de ocho casos aprobados |
 | 9 | Verificación | trazabilidad sin faltantes | Pasada el 2026-08-16, cuando el ciclo 3 cerró RNF-01 |
 | 10 | Revisión crítica | sin hallazgos graves | Cinco defectos: tres corregidos, dos aceptados. Ninguno grave |
-| 11 | Cierre documental | documentos y aprendizajes al día | Hecho, pendiente de rehacer si CP-006 destapa algo: especificación del módulo, registro de cambios, `VERSION`, HU, índices y pendiente 21 |
+| 11 | Cierre documental | documentos y aprendizajes al día | Hecho. El CP-006 corrió en el ciclo 3 y sí destapó: se rehicieron las 72 definiciones, se quitó el anuncio de idioma de seis entradas y `brief` pasó a **planteamiento** (v18.0.0) |
 | 12 | Commit | autorizado por el usuario | Autorizado por el usuario el 2026-08-16 |
 | 13 | Publicación | autorizada por el usuario | Pendiente |
 
@@ -35,7 +35,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Cumple**, con dos salvedades anotadas |
+| **Concepto** | **Cumple**, con una salvedad: el lector de fuera leyó **una** entrada de las cinco previstas |
 | **Criterios cumplidos** | 3 de 3 criterios de aceptación · 2 de 2 requisitos no funcionales |
 | **Criterios en "No"** | Ninguno |
 | **Defectos abiertos aceptados** | D-01: el glosario tiene 67 entradas y la historia suponía unas treinta |

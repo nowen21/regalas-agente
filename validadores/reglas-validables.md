@@ -13,9 +13,11 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 | Categoría | Cuántas |
 |---|---|
-| ✅ **Ya son validadores** | ~51 |
-| 🟡 **Validables, faltan** | ~12 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto; `02·F23` necesita que el pendiente cerrado declare su fase) |
-| 🔴 **No validables** (criterio humano) | ~94 |
+| ✅ **Ya son validadores** | ~53 (se sumaron `20·M15` y `02·F12`, que ya estaban construidas y no figuraban) |
+| 🟡 **Validables, faltan** | ~22 (4 fuzzy o pesadas: `F2`, `F18`, `DOC7`, `DOC14`; 5 necesitan que el proyecto declare su convención/dominio; **8 de los capítulos `18` y `19`, todas contra proyecto real**; `02·F4` y `09·G9`; `00·ID8` en seco y parcial; `20·M16` sobre el catálogo del proyecto; `02·F23` necesita que el pendiente cerrado declare su fase) |
+| 🔴 **No validables** (criterio humano) | ~100 (se sumaron los 6 de conducta que faltaban por escribir uno a uno, y 6 de los capítulos `18` y `19`) |
+
+> **Puesto al día el 2026-08-16**, en la fase `A-EP-001-HU-009`. Las 33 que el validador reportaba como sin clasificar bajaron a **cero**. Quince de ellas **ya estaban clasificadas** —el registro decía «C1–C17» y el programa no lee rangos—; las otras dieciocho no aparecían de verdad.
 
 > Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
 >
@@ -61,6 +63,13 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | **enlaces/índices** | `enlaces.py` | enlaces rotos, índices desactualizados |
 
 ---
+
+**Dos que ya estaban construidas y no figuraban** (agregadas el 2026-08-16):
+
+| Regla | Validador | Comprueba |
+|---|---|---|
+| `20·M15` | `enlaces.py` | que toda cita a otra regla lleve su enlace; reporta «la cita X no lleva enlace» |
+| `02·F12` | `fases.py` | la nomenclatura de la fase, que no se repita el consecutivo, que declare la épica y la historia donde está guardada, y su ruta física |
 
 ## 🟡 Validables, faltan (PENDIENTE)
 
@@ -122,6 +131,23 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 | `14·EST2` (resto) | nombres siguen la convención | la convención de nombres declarada |
 | `15·IM2` | tres estados + campos de anulación en el esquema | qué entidades son inmutables |
 | `15·IM5` | permiso "anular" separado de "eliminar" | qué entidades son inmutables |
+| `18·DP1` | que el despliegue esté descrito en un archivo versionado, no en instrucciones sueltas | un proyecto con despliegue |
+| `18·DP2` | que exista la definición de infraestructura en el repositorio | un proyecto con infraestructura propia |
+| `18·DP4` | que la configuración por entorno no viaje dentro del artefacto | saber qué es artefacto en ese stack |
+| `18·DP6` | que exista el checklist de despliegue | un proyecto con despliegue |
+| `18·DP7` | que la aplicación exponga su punto de salud | saber cuál es su punto de entrada |
+| `19·OB1` | que los registros salgan estructurados y con identificador de correlación | un proyecto con registros |
+| `19·OB3` | que los objetivos de servicio y las alertas vivan en un archivo versionado | un proyecto que los tenga |
+| `19·OB4` | que exista el runbook de lo que se opera | un proyecto en operación |
+
+**Estas ocho entraron el 2026-08-16** con los capítulos `18` y `19`. Ninguna se puede comprobar sobre el estándar en seco: **todas necesitan un proyecto real**, así que van con el pendiente 01.
+
+### Validables, y lo que les falta es construirlas
+
+| Regla | Qué comprobaría | Qué falta |
+|---|---|---|
+| `02·F4` | que la fase tenga su plan de trabajo **y** su plan de pruebas | que existan ya se comprueba; **la aprobación explícita no**, y esa es la mitad que importa. Hoy no queda escrita en ningún archivo que un programa pueda leer |
+| `09·G9` | que el mensaje del commit nombre la historia de usuario a la que pertenece | decidir si se exige el identificador en el asunto o en el cuerpo, y agregarlo a `commits.py` |
 
 ---
 
@@ -130,15 +156,15 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`20` meta-reglas:** `M1`, `M2`, `M6`, `M8`, `M11`, `M12`, `M13` — enrutar, desempatar, decidir si una excepción está completa o si dos reglas dicen lo mismo es criterio: dos personas pueden discutir el resultado.
 - **`00` identidad y rol:** ID1, ID2 (derogada en 6.0.0), ID3, ID4, ID5, ID6, ID7, ID9 — postura, registro y borde del rol: qué cuenta como "criterio de senior" o como texto "que lo entienda quien no sabe del tema" lo discute una persona, no un script. `ID9` (decir lo mismo en menos palabras) tampoco: contar renglones es fácil, pero decidir cuál sobra exige entender qué cambia la decisión del que lee. `ID3` es la excepción parcial: sus cuatro condiciones ya las validan por separado `08·T5`, `02·F7` y `13·DOC1`; lo que no se valida es la conjunción.
 - **`00` núcleo:** N1, N2, N3, N4, N5, N6.
-- **`01`:** C1–C17 (todas menos C18), C20, C21 y C22. `C22` (el comando rechazado se corrige, la orden sigue en pie) se cumple sobre lo que el agente hace **después** de un rechazo, que no queda en ningún archivo: ningún script puede ver si retomó el encargo o lo abandonó. `C21` (pedir el dato que falte antes de arrancar) se cumple sobre el mensaje del usuario en el chat, y ningún script lee el chat. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
-- **`02`:** F1, F3, F5, F6, F7, F8, F9, F10, F11, F15, F16, F19, F20 · F12.8, F12.9, F12.10.
+- **`01`:** `C1`, `C2`, `C3`, `C4`, `C5`, `C6`, `C7`, `C8`, `C9`, `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17` (todas menos `C18`), `C20`, `C21` y `C22`. **Se escriben una por una y no como rango:** hasta el 2026-08-16 decían «C1–C17» y el programa que comprueba `M9` no lee rangos, así que quince reglas figuraban como sin clasificar estando clasificadas. `C22` (el comando rechazado se corrige, la orden sigue en pie) se cumple sobre lo que el agente hace **después** de un rechazo, que no queda en ningún archivo: ningún script puede ver si retomó el encargo o lo abandonó. `C21` (pedir el dato que falte antes de arrancar) se cumple sobre el mensaje del usuario en el chat, y ningún script lee el chat. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
+- **`02`:** `F1`, `F3`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F15`, `F16`, `F19`, `F20` · `F12.8`, `F12.9`, `F12.10`.
 - **`03`:** D4, D5, D6, D7, D8.
 - **`04`:** S1, S2, S6, S8, S9, S10, S11.
 - **`05`:** E2, E3, E4.
 - **`06`:** R3, R4, R5, R6.
 - **`07`:** Q1, Q2, Q4, Q5, Q7.
 - **`08`:** T1, T2, T6, T7.
-- **`09`:** G1, G5, G7.
+- **`09`:** `G1`, `G5`, `G7`.
 - **`10`:** DEP1, DEP5.
 - **`11`:** CFG1, CFG3, CFG4.
 - **`12`:** PR1, PR2, PR3, PR4, PR5 (toda la capa de privacidad es juicio).
@@ -146,7 +172,11 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`14`:** EST3.
 - **`15`:** IM1, IM3, IM4.
 - **`16`:** CQ2, CQ3, CQ4, Parte B.
-- **`17`:** I1, I2, I3, I4, I5, I6.
+- **`17`:** `I1`, `I2`, `I3`, `I4`, `I5`, `I6`.
+- **`18` despliegue (opt-in):** `DP3` (que el artefacto promovido sea el mismo se decide mirando el proceso, no un archivo), `DP5` (que el plan de vuelta sirva lo dice quien lo lee) y `DP8` (correr contra producción lo autoriza una persona, y eso pasa fuera del repositorio).
+- **`19` observabilidad (opt-in):** `OB2` (qué le duele al usuario es criterio de producto), `OB5` (que un postmortem sea sin culpa lo juzga quien lo lee) y `OB6` (operar en vivo lo hace una persona).
+
+> **Los capítulos `18` y `19` entraron a este registro el 2026-08-16**, en la fase `A-EP-001-HU-009`. Nacieron después de la foto del 2026-08-05 y no aparecían ni una vez, ni siquiera para decir que no se validan. Ser **opt-in no exime**: `20·M9` no exceptúa a las reglas opcionales, y no clasificarlas es lo que las volvió invisibles.
 
 ---
 
