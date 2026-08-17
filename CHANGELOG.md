@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.2.0 — 2026-08-16
+
+**MENOR** — el instalador repara lo que ya estaba instalado, y registra la versión aunque no cambie ninguna plantilla. No cambia qué se exige.
+
+**Lo que la [21.1.0](#2110--2026-08-16) arregló no llegaba a los proyectos ya instalados, y el registro de versión se quedaba atrás para siempre.** Dos defectos que reportó `shopnest-mesa` y que resultaron ser el mismo: el instalador decide si hay trabajo mirando una huella, y cuando la huella no cambia se queda quieto aunque el proyecto sí esté mal. Se cerraron juntos en la fase [`A-EP-007-HU-006-poner-al-dia-lo-ya-instalado`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/).
+
+- **Toda copia que ya existe pasa por `_reparar_marcadores`.** Rellena en el sitio los huecos que quedaron crudos de una instalación anterior y no reescribe nada más. Sin bandera: reinstalar repara. Antes, «al día» se medía contra la plantilla central, así que una copia podía estar al día y mal escrita a la vez.
+- **Lo que llena el proyecto no se toca.** `_rellenar` solo conoce los huecos que el instalador sabe calcular; `«motor»` o `«manual / pipeline»` salen intactos, y un caso de prueba cuenta los huecos antes y después para comprobarlo.
+- **Subir de versión es por sí solo motivo de registro.** Antes el instalador decía «nada que registrar» y la revisión decía «falta el registro»: el proyecto se quedaba en 12 de 13 para siempre, con el aviso de instalación incompleta sonando en cada mensaje y sin más salida que editar a mano un archivo que dice que no se edita a mano. A la carpeta del propio estándar no se le escribe registro: lleva este `CHANGELOG`.
+- **Se corrigió el texto de ayuda de la fila `versiones`** en [`plantillas/stack-instalacion.md`](plantillas/stack-instalacion.md), que mandaba hacer lo que el instalador ya había hecho.
+- **Su prueba:** [`validadores/tests/test_instalar_reparar.py`](validadores/tests/test_instalar_reparar.py), seis casos. Los cinco automáticos corren contra una copia desechable del estándar, para poder editarle una plantilla y subirle la versión sin tocar el de verdad ([`00·N4`](base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
+
+**Qué hacer para quedar al día:** correr el instalador una vez. Repara la copia y escribe el registro que falte, sin banderas y sin editar nada a mano. Es lo que la [21.1.0](#2110--2026-08-16) decía que no se podía.
+
 ## 21.1.1 — 2026-08-16
 
 **PARCHE** — el revisor de enlaces daba un veredicto distinto según desde dónde se lo corriera. No cambia qué se exige.

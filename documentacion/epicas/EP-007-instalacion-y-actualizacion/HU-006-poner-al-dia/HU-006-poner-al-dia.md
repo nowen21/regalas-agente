@@ -124,7 +124,11 @@ Entonces dice qué componentes cambiaron y desde cuándo
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué cubre | Estado |
+|---|---|---|
+| [`A-EP-007-HU-006-poner-al-dia-lo-ya-instalado`](A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/) | CA-01 y CA-02 | Cerrada 2026-08-16 |
+
+Sale de dos pendientes que reportó `shopnest-mesa` y que resultaron ser el mismo defecto: el instalador decide si hay trabajo mirando una huella, y se queda quieto cuando la huella no cambia. El [42](../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md) es el CA-01 —una copia mal escrita que no se repara— y el [44](../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md) es el CA-02 —una versión que sube y no se registra—.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

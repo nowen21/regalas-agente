@@ -323,11 +323,16 @@ def instalar_stack(ruta, aplicar):
     if not os.path.isfile(original):
         return ["OMITIDO: falta plantillas/stack-instalacion.md en el estándar"]
 
+    destino = os.path.join(ruta, ".agente", "stack-instalacion.md")
+
     if checklist.huella_instalada(ruta) == checklist.huella(RAIZ):
-        return ["stack de instalación ya estaba al día"]
+        # "Al día" es contra la plantilla, y una copia puede estar al día y mal
+        # escrita a la vez: es lo que pasó con la 21.1.0.
+        return (_reparar_marcadores(destino, ruta, aplicar,
+                                    ".agente/stack-instalacion.md")
+                or ["stack de instalación ya estaba al día"])
 
     if aplicar:
-        destino = os.path.join(ruta, ".agente", "stack-instalacion.md")
         os.makedirs(os.path.dirname(destino), exist_ok=True)
         cuerpo = _rellenar(leer(original), _rellenos(ruta))
         with open(destino, "w", encoding="utf-8", newline="\n") as f:
@@ -423,22 +428,24 @@ def instalar_recuerdos(ruta, aplicar):
     if not os.path.isfile(PLANTILLA_MEMORIA):
         return ["OMITIDO: falta plantillas/memoria.md en el estándar"]
 
+    etiqueta = f"{recuerdos.CARPETA.replace(os.sep, '/')}/{recuerdos.INDICE}"
+
     if recuerdos.enlazada(ruta) and recuerdos.indice_presente(ruta):
-        return ["memoria enlazada a `historico-chat/memory/`: ya cumple, "
-                "no se toca"]
+        # "No se toca" es no escribir memoria; rellenar un marcador que se coló
+        # al copiar el índice no es escribir memoria, es terminar la copia.
+        return (_reparar_marcadores(archivo, ruta, aplicar, etiqueta)
+                + ["memoria enlazada a `historico-chat/memory/`: ya cumple, "
+                   "no se toca"])
 
     if not recuerdos.indice_presente(ruta):
-        pasos = [f"crear {recuerdos.CARPETA.replace(os.sep, '/')}/"
-                 f"{recuerdos.INDICE}"]
+        pasos = [f"crear {etiqueta}"]
         if aplicar:
             os.makedirs(os.path.dirname(archivo), exist_ok=True)
             _escribir_sellado(
                 archivo, _rellenar(leer(PLANTILLA_MEMORIA), _rellenos(ruta)),
                 comp, ruta)
     else:
-        pasos = _refrescar_sello(
-            archivo, comp, ruta, aplicar,
-            f"{recuerdos.CARPETA.replace(os.sep, '/')}/{recuerdos.INDICE}")
+        pasos = _refrescar_sello(archivo, comp, ruta, aplicar, etiqueta)
 
     return pasos + recuerdos.pasos(recuerdos.migrar(ruta, aplicar))
 
@@ -466,17 +473,20 @@ def _refrescar_sello(archivo, componente, proyecto, aplicar, etiqueta):
     import version
     import versiones
 
+    pasos = _reparar_marcadores(archivo, proyecto, aplicar, etiqueta)
+
     actual = versiones.huella_central(componente, RAIZ)
     sellada, ver = versiones.leer_sello(archivo)
     if sellada == actual and ver == (version.version_estandar() or "?"):
-        return [f"{etiqueta} ya estaba sellado al día"]
+        return pasos or [f"{etiqueta} ya estaba sellado al día"]
 
     if aplicar:
         texto = versiones.poner_sello(leer(archivo), actual,
                                       version.version_estandar())
         with open(archivo, "w", encoding="utf-8", newline="\n") as f:
             f.write(texto)
-    return [f"sellar {etiqueta} contra la plantilla ({sellada or 'sin sello'} → {actual})"]
+    return pasos + [f"sellar {etiqueta} contra la plantilla "
+                    f"({sellada or 'sin sello'} → {actual})"]
 
 
 # ── El `CLAUDE.md`: el setup del agente en el proyecto ────────────────────
@@ -534,6 +544,35 @@ def _rellenar(texto, rellenos):
     for marcador, valor in rellenos.items():
         texto = texto.replace(marcador, valor)
     return texto
+
+
+def _reparar_marcadores(archivo, ruta, aplicar, etiqueta):
+    """Rellena en sitio los marcadores que quedaron crudos en una copia vieja.
+
+    Arreglar el punto de copia solo alcanza a lo que se instale **desde ahora**:
+    un proyecto que ya tenía la copia mala se queda con ella, porque la huella
+    sale de la plantilla central y esa no cambió. Por eso toda copia que ya
+    existe pasa por aquí.
+
+    **No reescribe el archivo: sustituye marcadores.** `_rellenar` solo conoce
+    los de `_rellenos`, que son los que el instalador sabe calcular. Un hueco que
+    llena el proyecto —`«motor»`, `«manual / pipeline»`— no está en ese
+    diccionario y sale intacto. Si no hay nada que sustituir, no se escribe ni se
+    reporta paso: repetir la instalación no tiene por qué tocar la fecha de un
+    archivo que está bien.
+    """
+    if not os.path.isfile(archivo):
+        return []
+
+    original = leer(archivo)
+    reparado = _rellenar(original, _rellenos(ruta))
+    if reparado == original:
+        return []
+
+    if aplicar:
+        with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write(reparado)
+    return [f"rellenar los marcadores que quedaron crudos en {etiqueta}"]
 
 
 def _secciones(texto):
@@ -700,6 +739,11 @@ def instalar_agente_config(ruta, aplicar):
     for nombre in CONFIG_AGENTE:
         destino = os.path.join(carpeta, nombre)
         if os.path.isfile(destino):
+            # No se pisa, pero sí se le rellenan los marcadores que el
+            # instalador sabe llenar: un enlace muerto no es contenido del
+            # proyecto, es un hueco que se escapó al copiarlo.
+            pasos += _reparar_marcadores(destino, ruta, aplicar,
+                                         f".agente/{nombre}")
             continue
         origen = os.path.join(RAIZ, "plantillas", nombre)
         if not os.path.isfile(origen):
@@ -874,24 +918,42 @@ def _pendientes(ruta):
 def registrar_version(ruta, antes, pasos, aplicar, anterior=""):
     """Deja constancia en `documentacion/versiones/` de la actualización aplicada.
 
-    Solo cuando algo cambió de huella. Un registro por corrida —aunque no
-    hubiera nada que hacer— convertiría la carpeta en ruido y taparía las
-    actualizaciones de verdad.
+    Se registra por dos motivos, y basta con uno:
+
+      - **cambió alguna huella**: al proyecto le bajó una plantilla nueva;
+      - **subió la versión del estándar**, aunque ninguna plantilla del proyecto
+        cambiara. La carpeta promete decir *desde cuándo* el proyecto usa cada
+        versión, y sin este caso el registro se queda atrás para siempre: el
+        instalador decía "nada que registrar" y el checklist "falta el
+        registro", sin más salida que editar a mano un archivo que dice que no
+        se edita a mano.
+
+    Sin ninguno de los dos no se escribe nada: un registro por corrida
+    convertiría la carpeta en ruido y taparía las actualizaciones de verdad.
     """
     import version
     import versiones
 
+    # El estándar no hereda de sí mismo: lleva su `CHANGELOG`, su `versiones` ni
+    # siquiera se revisa, y un registro por publicación sería ruido puro.
+    if es_el_estandar(ruta):
+        return []
+
+    actual = version.version_estandar() or "?"
     despues = _huellas(ruta)
     cambios = [id for id in despues if antes.get(id, "") != despues.get(id, "")]
-    if not cambios:
-        return ["versiones: nada cambió, no hay actualización que registrar"]
+    subio = bool(anterior) and anterior != actual
+
+    if not cambios and not subio:
+        return ["versiones: ni las plantillas ni la versión cambiaron, "
+                "no hay actualización que registrar"]
 
     if not aplicar:
-        return [f"registrar la actualización en {versiones.CARPETA} "
-                f"({', '.join(sorted(cambios))})"]
+        detalle = ", ".join(sorted(cambios)) if cambios else f"{anterior} → {actual}"
+        return [f"registrar la actualización en {versiones.CARPETA} ({detalle})"]
 
     archivo = versiones.registrar(
-        ruta, version.version_estandar() or "?", antes, despues, pasos,
+        ruta, actual, antes, despues, pasos,
         pendientes=_pendientes(ruta), estandar=RAIZ, anterior=anterior)
     return [f"registrar {os.path.relpath(archivo, ruta)}"]
 

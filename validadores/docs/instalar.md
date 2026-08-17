@@ -194,6 +194,14 @@ Actualiza solo la marca de huella de un archivo, sin tocar su contenido.
 
 Reemplaza cada hueco por su valor y retorna el texto resultante.
 
+**`_reparar_marcadores(archivo, ruta, aplicar, etiqueta)`**
+
+- **Recibe:** un archivo que **ya existía** en el proyecto, la carpeta del proyecto, si se aplica de verdad y con qué nombre reportarlo.
+- **Hace:** rellena en el sitio los huecos que quedaron crudos de una copia anterior, sin reescribir nada más. Si no hay nada que rellenar, no toca el archivo ni reporta paso.
+- **Por qué existe:** arreglar el punto de copia solo alcanza a lo que se instale desde ahí en adelante. Un proyecto que ya tenía la copia mala se queda con ella, porque la huella sale del molde central y ese no cambió. Por eso toda copia que ya existe pasa por acá.
+- **Qué no toca:** los huecos que llena el proyecto. `_rellenar` solo conoce los de `_rellenos`, así que un hueco como `«motor»` sale intacto.
+- **Quién lo usa:** `instalar_stack`, `instalar_agente_config` y `_refrescar_sello` —o sea el histórico y la memoria—. El `CLAUDE.md` ya lo hacía por su cuenta desde antes.
+
 **`_secciones(texto)`**
 
 - **Recibe:** el contenido de un documento de texto.
@@ -218,7 +226,9 @@ Reemplaza cada hueco por su valor y retorna el texto resultante.
 
 **`registrar_version(ruta, antes, pasos, aplicar, anterior="")`**
 
-Escribe el archivo de registro en `documentacion/versiones/`, pero solo si alguna huella cambió.
+Escribe el archivo de registro en `documentacion/versiones/`. Lo escribe por dos motivos, y basta con uno: que alguna huella haya cambiado, o que **haya subido la versión del estándar** aunque al proyecto no le cambie ningún molde. Sin ninguno de los dos no escribe nada, y a la carpeta del propio estándar no le escribe nunca.
+
+El segundo motivo es el que evita que el proyecto se quede atrás para siempre: sin él, el instalador decía «nada que registrar» y la revisión decía «falta el registro», sin más salida que editar a mano un archivo que dice que no se edita a mano.
 
 ### Funciones principales
 
@@ -263,7 +273,7 @@ Lo que pasa dentro de `instalar()`, en orden:
 10. instalar_recuerdos
 11. si no es el estándar → instalar_stack, instalar_agente_config,
                             instalar_claude_md, instalar_registro
-12. registrar_version        (solo si alguna huella cambió)
+12. registrar_version        (si cambió una huella o subió la versión)
 13. comprobar                (vuelve a revisar y dice qué falta)
 ```
 
@@ -365,8 +375,17 @@ instalar_registro('C:/proyectos/pos', aplicar=True)
 registrar_version('C:/proyectos/pos', antes, pasos, aplicar=True)
 ['registrar documentacion\versiones\2026-08-09-5.0.0.md']
 
-registrar_version(...)   # cuando nada cambió de huella
-['versiones: nada cambió, no hay actualización que registrar']
+registrar_version(...)   # subió la versión, ningún molde cambió
+['registrar documentacion\versiones\2026-08-16-21.2.0.md']
+
+registrar_version(...)   # ni los moldes ni la versión cambiaron
+['versiones: ni las plantillas ni la versión cambiaron, no hay actualización que registrar']
+
+_reparar_marcadores('C:/proyectos/pos/.agente/stack-instalacion.md', ...)
+['rellenar los marcadores que quedaron crudos en .agente/stack-instalacion.md']
+
+_reparar_marcadores(...)   # cuando no quedaba ninguno
+[]
 
 instalar('POS', 'C:/proyectos/pos', aplicar=True)
 True             # False solo si la carpeta no existe

@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **32**. Ese mismo día se cerraron el 39, el 40 y el 41 —los dos últimos nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43 y el 44. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **30**. Ese mismo día se cerraron el 39, el 40, el 41, el 42 y el 44 —el 40, el 41, el 42 y el 44 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43 y el 44. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -174,9 +174,9 @@ Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fas
 |---|---|---|---|
 | ~~40~~ | — | **hecho** → [El instalador copia tres archivos sin rellenar los marcadores](40-el-instalador-copia-sin-rellenar-los-marcadores.md) | Los tres puntos de copia rellenan, y nace la primera prueba del repositorio. Cerrado 2026-08-16 (v21.1.0) en la fase [`A-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). **Falta avisarle a `shopnest-mesa`.** |
 | ~~41~~ | — | **hecho** → [El marcador no se resuelve dentro de un proyecto](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) | El marcador se resuelve contra la carpeta del estándar, así que el veredicto ya no depende de desde dónde se corra el revisor. Cerrado 2026-08-16 (v21.1.1) en la fase [`A-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/). |
-| 42 | **P0** | [El arreglo del 40 no llega a los proyectos ya instalados](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) | El 40 arregló los puntos de copia, pero la huella se calcula del stack central y no del archivo copiado: la plantilla no cambió, así que el instalador dice «ya estaba al día» y no reescribe. **Reinstalar no repara** — no hay bandera que fuerce. Lo comprobó `shopnest-mesa` el mismo día del cierre. |
+| ~~42~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) | Toda copia que ya existe pasa por el relleno: lo que quedó crudo se repara en el sitio, sin bandera y sin pisar lo que llenó el proyecto. Cerrado 2026-08-16 (v21.2.0) junto con el [44](hecho/poner-al-dia-lo-ya-instalado.md), en la fase [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
-**El 40 fue primero** —quitó la causa— y el 41 después, poniendo la red que atrapa el marcador que se escape mañana. Los dos cerraron el 2026-08-16. Pero eso vale **en una instalación nueva**: el 42 es que en las viejas siguen todos donde estaban, y ese sigue abierto.
+**El 40 fue primero** —quitó la causa— y el 41 después, poniendo la red que atrapa el marcador que se escape mañana. Pero eso valía **en una instalación nueva**: el 42 era que en las viejas seguían todos donde estaban. Los tres cerraron el 2026-08-16, el 42 con el 44 y en la misma fase.
 
 **Es el primer pendiente que se cierra por la cadena de [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)**, la regla que nació el mismo día porque este defecto se coló. Y la prueba de que sirve está en el propio cierre: el criterio del plan salió mal escrito, la prueba lo destapó y se corrigió antes de publicar — que es exactamente lo que no pasó la vez anterior.
 
@@ -187,9 +187,9 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 43 | **P1** | [La plantilla de spec no pide de dónde sale la regla](43-la-plantilla-de-spec-no-pide-de-donde-sale-la-regla.md) | shopnest-mesa | El §4 pide `«Regla — por qué existe.»`: el porqué, nunca el de dónde. Una regla de negocio nació en la especificación de un módulo, sin pedirla nadie, y bajó sola a decisión, trazabilidad, dos pruebas y un criterio de aceptación. Tardó un día en verse. **Es el hueco del [30](30-el-checklist-no-ve-la-cadena.md) y el [38](38-el-validador-de-la-f22-se-escribio-sin-su-fase.md) por el otro lado**: allá el código se saltó la cadena hacia arriba, acá una regla hacia abajo. |
-| 44 | **P0** | [El registro de versión no se escribe si no cambió una huella](44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) | shopnest-mesa | El instalador dice «nada cambió, no hay actualización que registrar» y el checklist dice «falta: versiones». Reinstalar da lo mismo, y la única salida es editar a mano un archivo que dice que no se edita a mano. **Deja el aviso de instalación incompleta sonando para siempre**, que es el daño del [34](hecho/enlaces-de-las-plantillas-al-estandar.md) por otra puerta. |
+| ~~44~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) | shopnest-mesa | Subir de versión es por sí solo motivo de registro, así que el proyecto llega a 13 de 13 corriendo el instalador. Cerrado 2026-08-16 (v21.2.0) junto con el [42](hecho/poner-al-dia-lo-ya-instalado.md). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
-**El 44 es hermano del [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md):** los dos son el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Conviene mirarlos juntos.
+**El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
 ## Dependencias duras
 

@@ -34,7 +34,7 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 | `enganches-claude` | Los enganches de Claude Code en `.claude/settings.json`, apuntando a este estándar. | Los agrega al `settings.json`, respetando lo que ya hubiera. Una versión anterior del mismo enganche se reemplaza, no se duplica. |
 | `registro` | El proyecto anotado en `plantillas/proyectos.md` del estándar: la lista única de proyectos que usan el agente. | Agrega la fila con nombre, ruta y scope de memoria. El stack queda «por detectar» hasta que el agente llene `.agente/stack.md`. |
 | `version` | Que el proyecto **declare** qué versión del estándar sigue. El número en sí no reprueba: que sea más viejo que el central no obliga a nada por sí solo. | La deja declarada en el `CLAUDE.md` al instalarlo. **Subirla después es decisión del usuario:** un cambio de norma no reabre fases ya cerradas. |
-| `versiones` | La carpeta `./documentacion/versiones/`: un registro por actualización, con desde cuándo el proyecto usa cada versión y qué se actualizó. Se versiona. | Escribe un registro cada vez que algo cambia de huella. |
+| `versiones` | La carpeta `./documentacion/versiones/`: un registro por actualización, con desde cuándo el proyecto usa cada versión y qué se actualizó. Se versiona. | Lo escribe el instalador: corriéndolo otra vez queda el registro que falte. Hay registro cuando baja una plantilla nueva **o** cuando sube la versión del estándar, aunque al proyecto no le cambie ninguna plantilla. |
 
 ## Cómo se comprueba
 

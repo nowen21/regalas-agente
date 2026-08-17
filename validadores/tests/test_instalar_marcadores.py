@@ -81,7 +81,18 @@ class InstalacionSinMarcadores(unittest.TestCase):
         self.proyecto = os.path.join(self.temporal, self.nombre_carpeta)
         os.makedirs(self.proyecto)
 
+        # El registro central de proyectos se apunta a una copia desechable.
+        # Instalar anota el proyecto en `plantillas/proyectos.md`, y una prueba
+        # que escriba ahí deja una fila muerta por corrida: la lista real
+        # terminó con 99 carpetas temporales que ya no existen, y es la que
+        # `instalar.py --todos` recorre (`08·T4`: no se prueba contra lo real).
+        self.registro = os.path.join(self.temporal, "proyectos.md")
+        shutil.copy2(instalar.REGISTRO, self.registro)
+        self.registro_real = instalar.REGISTRO
+        instalar.REGISTRO = self.registro
+
     def tearDown(self):
+        instalar.REGISTRO = self.registro_real
         shutil.rmtree(self.temporal, ignore_errors=True)
 
     def _instalar(self):
