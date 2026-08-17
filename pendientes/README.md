@@ -202,6 +202,14 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 
 **El 46 es la otra mitad de lo mismo.** El [44](hecho/poner-al-dia-lo-ya-instalado.md) hizo que el registro se escriba; el 46 es que se escribe diciendo que no se escribió. Lo reporta `dp` el mismo día en que corrió el instalador que trae la corrección del 44, así que es el primer proyecto que ve el residuo.
 
+### Las HU que se quedaron sin su fase (48)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 48 | **P1** | [Inventario de HU — 54 de las 68 no tienen su fase completa](48-inventario-hu.md) | 51 HU sin ninguna fase y 3 con la fase a medias. `02·F12.2` pide al menos una, y casi todas están **construidas y cerradas**: sus §8 dicen «todavía no se descompuso en fases» sobre código que ya corre. Es una tabla con casilla por documento, y se llena una fila a la vez. |
+
+**No es construcción, es retrodocumentación.** El trabajo está hecho; lo que falta es el documento que diga con qué plan se hizo, con qué casos se probó y qué salió — el mismo hallazgo del [38](hecho/el-validador-de-la-f22-tiene-su-fase.md).
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

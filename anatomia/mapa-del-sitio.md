@@ -68,7 +68,7 @@ agente/
 │       ├── base.md ................... M1…M13: dónde vive cada regla, cuál gana, cómo se agrega
 │       └── estructura-regla.md ....... el molde exacto de una regla (M5)
 │
-├── 🟦 plantillas/ .................... 23 MOLDES DE DOCUMENTO
+├── 🟦 plantillas/ .................... 24 MOLDES DE DOCUMENTO
 │   ├── CLAUDE.md.plantilla ........... el CLAUDE.md que recibe cada proyecto
 │   ├── planteamiento.md · epica.md · HU.md · fase.md · estado-fase.md
 │   ├── planes/
@@ -80,6 +80,7 @@ agente/
 │   ├── reglas-proyecto.md ............ reglas propias del proyecto
 │   ├── stack-instalacion.md .......... qué componentes debe tener instalados un proyecto
 │   ├── senales.md .................... formato de las señales de memoria
+│   ├── inventario-hu.md ............. qué HU están completas y qué documento le falta a cada una
 │   ├── historico-chat.md · cierre-analisis.md · funcionalidad-implementada.md
 │   ├── checklist-despliegue.md · postmortem.md
 │   └── proyectos.md .................. registro local de proyectos (no se versiona)

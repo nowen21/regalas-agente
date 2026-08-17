@@ -11,6 +11,17 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.2.0 — 2026-08-16
+
+**MENOR** — plantilla nueva. No cambia qué se exige: `02·F12.2` ya pedía la fase, y esto es el molde del tablero que muestra cuáles la tienen.
+
+Nace [`plantillas/inventario-hu.md`](plantillas/inventario-hu.md), el inventario de historias de usuario: **una fila por HU y una casilla por documento** de la fase (`plan_trabajo`, `plan_pruebas`, `resultado_pruebas`, `estado-fase`, `funcionalidad_implementada`).
+
+- **Sale de un caso real.** En este repositorio, **52 de las 66 HU** no tienen su fase completa: 49 sin ninguna carpeta de fase y 3 a medias. El inventario quedó en el pendiente [48](pendientes/48-inventario-hu.md).
+- **Lleva todas las HU, también las completas.** Un tablero que solo anota lo que falta no deja decir cuántas hay ni de dónde salió el número.
+- **Los dos contadores se corrigen juntos.** Al cerrar una fila, `Completas` sube uno e `Incompletas` baja uno en la misma edición; si se pierde la cuenta, se recuenta mirando la tabla.
+- **Separa construcción de retrodocumentación**, que es casi todo lo que falta acá: el código existe y lo que no existe es el documento que diga con qué plan se hizo y qué salió — el mismo hallazgo del pendiente [38](pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md).
+
 ## 21.3.0 — 2026-08-16
 
 **MENOR** — renombrar una sesión deja coherente el resumen que arrastra. Aditivo: ningún proyecto tiene que hacer nada.

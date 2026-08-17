@@ -145,6 +145,8 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-014](HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) | Que el veredicto de una fase no diga dos cosas distintas | Must | S |
 | [HU-015](HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) | Comprobar que no haya una regla derogada sin adoptar antes de avanzar de fase | Must | S |
 | [HU-016](HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) | Comprobar que un pendiente marcado hecho nombre la historia y la fase donde se construyó | Should | S |
+| [HU-017](HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) | Decir cuántas HU quedan sin su fase completa | Should | S |
+| [HU-018](HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | Avisar cuando dos pendientes se disputan el mismo número | Should | S |
 
 ## 10. Consideraciones técnicas
 
@@ -205,6 +207,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 6 | Un documento contra otro: el plan contra lo hecho, y el veredicto contra sí mismo | HU-013, HU-014 |
 | Fase 7 | Retrodocumentar la comprobación de la derogación sin adoptar, que se construyó antes de tener su fase | HU-015 |
 | Fase 8 | Que el backlog no se construya saltándose la cadena: el pendiente cerrado nombra su fase | HU-016 |
+| Fase 9 | Contar lo que falta sin recorrerlo a mano: HU sin fase y números de pendiente disputados | HU-017, HU-018 |
 
 ## 15. Definition of Ready
 
