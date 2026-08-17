@@ -48,6 +48,8 @@ historico.py
 | `_NUMERO` | Reconoce el número con que va marcado cada mensaje dentro del archivo de la conversación. |
 | `_LINEA` | Reconoce una línea del índice: el enlace al archivo y el tema. |
 | `_FECHA` | Reconoce la fecha con la que empieza el nombre de un archivo de sesión. |
+| `RESUMENES` | `resumenes`, la carpeta donde vive el resumen de cada sesión. |
+| `HACIA_HISTORICO` | `../../`. Cómo se sube desde un resumen hasta la transcripción, que está dos carpetas más arriba. |
 
 ### Funciones principales
 
@@ -96,6 +98,18 @@ Se lee del índice y no de la carpeta porque el índice es lo que dice de qué t
 - **Hace:** toma las últimas sesiones y arma el bloque de texto que se le entrega al agente al arrancar, con la advertencia de que ahí solo está el índice y de que hay que abrir la sesión que corresponda.
 - **Retorna:** ese texto, o texto vacío si no hay sesiones.
 
+**`renombrar(archivo, tema, resumen="")`**
+
+- **Recibe:** la transcripción, el tema con el que se la quiere nombrar y, opcional, de qué se trató.
+- **Hace:**
+  1. Le cambia el título al archivo, dejándole la misma fecha.
+  2. Arrastra el resumen de esa sesión al nombre nuevo, y le deja al día el enlace que apunta de vuelta a la transcripción.
+  3. Renombra la transcripción.
+  4. Corrige su línea en el índice.
+- **Retorna:** la ruta nueva de la transcripción.
+
+La fecha nunca sale del reloj: sale del nombre viejo. Una sesión que se nombra al otro día sigue siendo la del día en que ocurrió.
+
 ### Funciones de apoyo
 
 **`_es_usuario(dato)`**
@@ -122,6 +136,15 @@ Se lee del índice y no de la carpeta porque el índice es lo que dice de qué t
 **`_indexar(carpeta, nombre, fecha)`**
 
 - **Hace:** agrega la línea de la sesión al README, si no estaba ya. Si no hay README, no hace nada.
+
+**`_mover_resumen(carpeta, viejo, nuevo)`**
+
+- **Hace:** le pone el nombre nuevo al resumen de esa sesión, si ya existe, corrige su línea en el índice del día y le deja al día el enlace de adentro. Va **antes** de mover la transcripción: si algo falla, lo que queda mal es el resumen —que se puede volver a mover— y no el índice, que es por donde la próxima sesión llega a esta.
+
+**`_reenlazar(resumen, carpeta, viejo, nuevo)`**
+
+- **Hace:** dentro del resumen, deja con el nombre nuevo el enlace que apunta de vuelta a la transcripción. Cambia las dos partes, el texto que se ve y el destino: un enlace que abre pero se anuncia con el nombre viejo también miente (`13·DOC14`).
+- Se reemplaza el par exacto y no toda aparición del nombre viejo, porque un resumen puede nombrar otras sesiones y a esas no hay que tocarles nada.
 
 **`_fecha_de(nombre)`**
 

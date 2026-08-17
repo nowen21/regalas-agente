@@ -51,6 +51,10 @@ _LINEA = re.compile(
 # Dónde vive el resumen de una sesión, relativo a la carpeta del histórico.
 RESUMENES = "resumenes"
 
+# Cómo se sube desde el resumen (`resumenes/AAAA-MM-DD/tema.md`) hasta la
+# transcripción, que vive en la raíz de la carpeta del histórico.
+HACIA_HISTORICO = "../../"
+
 # La fecha con la que empieza el nombre del archivo de una sesión.
 _FECHA = re.compile(r"^(\d{4}-\d{2}-\d{2})")
 
@@ -319,6 +323,38 @@ def _mover_resumen(carpeta, viejo, nuevo):
     except OSError:
         return                          # no poder moverlo no detiene el renombrado
     _reindexar_dia(dia, os.path.basename(origen), os.path.basename(destino))
+    _reenlazar(destino, carpeta, os.path.basename(viejo), os.path.basename(nuevo))
+
+
+def _reenlazar(resumen, carpeta, viejo, nuevo):
+    """Deja con el nombre nuevo el enlace que el resumen le hace a su sesión.
+
+    Mover el archivo no basta: adentro, la primera línea nombra la
+    transcripción con un enlace, y ese enlace se queda apuntando al nombre que
+    ya no existe. Se cambian **las dos partes** —el texto que se ve y el
+    destino—, porque `13·DOC14` pide que el texto diga dónde vive el archivo:
+    un enlace que abre pero se anuncia con el nombre viejo también miente.
+
+    Se reemplaza el par exacto, no toda aparición del nombre viejo: un resumen
+    puede nombrar otras sesiones, y a esas no hay que tocarles nada.
+    """
+    texto = _leer(resumen)
+    if not texto:
+        return
+    hist = os.path.basename(carpeta.rstrip(os.sep + "/"))
+    nuevo_texto = texto.replace(
+        f"[{hist}/{viejo}]({HACIA_HISTORICO}{viejo})",
+        f"[{hist}/{nuevo}]({HACIA_HISTORICO}{nuevo})")
+    # Y el que lleve otro texto, que igual apunta a la misma sesión.
+    nuevo_texto = nuevo_texto.replace(f"]({HACIA_HISTORICO}{viejo})",
+                                      f"]({HACIA_HISTORICO}{nuevo})")
+    if nuevo_texto == texto:
+        return
+    try:
+        with open(resumen, "w", encoding="utf-8", newline="\n") as f:
+            f.write(nuevo_texto)
+    except OSError:
+        return                          # tampoco esto detiene el renombrado
 
 
 def _reindexar_dia(dia, viejo, nuevo):

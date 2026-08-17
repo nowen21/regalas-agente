@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **30**. Ese mismo día se cerraron el 39, el 40, el 41, el 42 y el 44 —el 40, el 41, el 42 y el 44 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43 y el 44. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **30**. Ese mismo día se cerraron el 39, el 40, el 41, el 42, el 44 y el 45 —el 40, el 41, el 42, el 44 y el 45 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43, el 44, el 45 y el **46**, este último reportado por `dp`. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -119,7 +119,7 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 |---|---|---|---|---|
 | 30 | **P1** | [El checklist no ve la cadena](30-el-checklist-no-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. Es lo que el agente lee en **cada** mensaje para saber si el entorno está completo. |
 | ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md). |
-| 35 | **P1** | [Renombrar una sesión deja roto el enlace de su resumen](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) | shopnest-mesa | `historico.py --renombrar` arrastra el resumen pero no corrige el enlace de adentro. **Se reprodujo acá el 2026-08-16**, al nombrar la sesión de esta priorización: deja de ser defecto de un proyecto ajeno y le pasa al estándar cada vez que nombra una sesión, que es lo que el propio enganche pide. Es de los más baratos. |
+| ~~35~~ | — | **hecho** → [Renombrar deja coherente su resumen](hecho/renombrar-deja-el-resumen-coherente.md) | shopnest-mesa | `--renombrar` corrige el enlace de adentro del resumen que arrastra, y nace la primera suite de pruebas de `historico.py`. Cerrado 2026-08-16 (v21.3.0) en la fase [`B-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/). **Falta avisarle a `shopnest-mesa`.** |
 | 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
 
 **Lo que el 34 dejó a medias vive en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
@@ -144,7 +144,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 | 7 · un checklist anulado que nadie volvió a aplicar | **P1** | El sello caduca con el texto y nada lo comprueba. Se cruza con el [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
 | 5 · falta la prueba que protege el `GATE` del arranque | **P2** | Una prueba. Esa puerta ya desapareció en silencio una vez |
 | 1 · el validador da por rotos los enlaces con espacios | **P2** | Un `unquote`. Falsos positivos en el validador que más se corre |
-| 4 · renombrar deja rotos los enlaces de fuera | **P2** | Ya costó 41 enlaces arreglados a mano. `citas.py` ya tiene el modo que repara. Hermano del [35](35-renombrar-una-sesion-deja-roto-el-enlace-de-su-resumen.md) |
+| 4 · renombrar deja rotos los enlaces de fuera | **P2** | Ya costó 41 enlaces arreglados a mano. `citas.py` ya tiene el modo que repara. Hermano del [35](hecho/renombrar-deja-el-resumen-coherente.md), que cerró el de adentro y dejó ver que **cerrar un pendiente rompe lo mismo**: mover su archivo a `hecho/` dejó 12 enlaces huérfanos |
 | 2 · el barrido de candidatas a regla no tiene disparador | **P3** | Falta la plantilla y la regla que obliga al barrido |
 | 3 · una sesión que cruza la medianoche queda con el nombre de otro día | **P3** | Decidir si se parte o se queda entera |
 | 8 · doce huecos chicos | **P6** | Casi todos son «decidir algo». **Excepción:** si las fases de EP-001 son plan o retrodocumentación **bloquea 24 documentos**, y ese sube a P3 |
@@ -191,13 +191,16 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 
 **El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
-### Lo que dejó cerrar los dos anteriores (45)
+### Lo que dejó cerrar los dos anteriores (45–46)
 
-| # | P | Pendiente | Qué resuelve |
-|---|---|---|---|
-| ~~45~~ | — | **hecho** → [El instalador prepara su propia salida](hecho/instalar-prepara-su-propia-salida.md) | `instalar()` se moría al imprimir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Cerrado 2026-08-16 (v21.2.1) en la fase [`B-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/). |
+| # | P | Pendiente | Origen | Qué resuelve |
+|---|---|---|---|---|
+| ~~45~~ | — | **hecho** → [El instalador prepara su propia salida](hecho/instalar-prepara-su-propia-salida.md) | — | `instalar()` se moría al imprimir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Cerrado 2026-08-16 (v21.2.1) en la fase [`B-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/). |
+| 46 | **P1** | [El registro de versión dice que falta escribirse](46-el-registro-de-version-dice-que-falta-escribirse.md) | dp | El apartado «Qué quedó pendiente» del registro se calcula antes de escribirlo, así que el archivo recién nacido se lista a sí mismo como faltante. Queda versionado un documento que afirma algo falso y manda a buscar lo que se tiene delante. |
 
-**Nació en un cerrado y no lo reabrió.** El defecto venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [42/44](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
+**Nació en un cerrado y no lo reabrió.** El defecto del 45 venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [42/44](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
+
+**El 46 es la otra mitad de lo mismo.** El [44](hecho/poner-al-dia-lo-ya-instalado.md) hizo que el registro se escriba; el 46 es que se escribe diciendo que no se escribió. Lo reporta `dp` el mismo día en que corrió el instalador que trae la corrección del 44, así que es el primer proyecto que ve el residuo.
 
 ## Dependencias duras
 

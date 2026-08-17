@@ -11,6 +11,17 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.3.0 — 2026-08-16
+
+**MENOR** — renombrar una sesión deja coherente el resumen que arrastra. Aditivo: ningún proyecto tiene que hacer nada.
+
+`historico.py --renombrar` movía el resumen de la sesión a su nombre nuevo, pero adentro el enlace de vuelta a la transcripción se quedaba apuntando al nombre viejo. Es el propio estándar el que pide nombrar la sesión, y el comando que ofrecía para hacerlo dejaba el repositorio con un enlace roto. Lo reportó `shopnest-mesa` y le pasó tres veces a esta casa el mismo día. Se construyó en la fase [`B-EP-005-HU-008-renombrar-deja-el-resumen-coherente`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/).
+
+- **`_reenlazar()` corrige el enlace de adentro del resumen**, texto y destino: un enlace que abre pero se anuncia con el nombre viejo también miente ([`13·DOC14`](base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md)). Se reemplaza el par exacto, así que un resumen que nombre otras sesiones las conserva intactas.
+- **Nace la primera suite de pruebas de `historico.py`** — [`validadores/tests/test_historico_renombrar.py`](validadores/tests/test_historico_renombrar.py), tres casos: el normal, el que nombra otra sesión y el de una sesión sin resumen. El repositorio pasa de 19 a 22 pruebas.
+- **La HU-008 gana su `CA-04`.** Su `RN-06` pedía el arrastre desde el principio y ningún criterio lo medía, así que no había de dónde derivar el plan ([`02·F18`](base/02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)).
+- **`validadores/docs/historico.md`** documenta `renombrar()`, `_mover_resumen()` y `_reenlazar()`, que no estaban.
+
 ## 21.2.1 — 2026-08-16
 
 **PARCHE** — el instalador se moría al imprimir si nadie le había preparado la consola. No cambia qué se exige.

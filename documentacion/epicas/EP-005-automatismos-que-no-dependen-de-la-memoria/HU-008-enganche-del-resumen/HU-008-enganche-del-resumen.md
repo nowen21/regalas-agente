@@ -107,6 +107,25 @@ Y no se muestra ningún hallazgo de otro tema
 
 > **El propósito lo pone el usuario, no lo adivina el programa.** Una sesión abierta para resolver un hallazgo no tiene por qué ver los de otro tema: eso es ruido, y el ruido se deja de leer. Esta sesión sirve de ejemplo: se abrió con un solo propósito, resolver el H-4 de otra sesión.
 
+### CA-04 — Renombrar la sesión deja el resumen coherente
+
+```gherkin
+Dado que una sesión ya tiene su resumen escrito
+Cuando se le pone nombre con el comando que el propio enganche ofrece
+Entonces el resumen queda con el nombre nuevo
+Y el enlace que lleva de vuelta a la transcripción abre
+```
+
+**Cómo validarlo:**
+
+1. Escribir el resumen de una sesión que todavía se llama por su marca.
+2. Ponerle nombre con el comando que el enganche propone. Resultado esperado: el resumen se llama igual que la sesión, sin la fecha.
+3. Abrir el resumen y seguir su primer enlace. Resultado esperado: llega a la transcripción.
+4. Correr el validador de enlaces. Resultado esperado: cero rotos.
+- **Aprobado cuando:** nombrar una sesión no deja nada que arreglar a mano.
+
+> **El arrastre ya lo pedía la `RN-06`** —crear, avisar y **arrastrar**— y ninguno de los tres criterios anteriores lo medía. Mover el archivo sin corregir lo que dice adentro es medio arrastre: el resumen queda con el nombre nuevo y apuntando al viejo.
+
 ### Criterios de aceptación transversales
 
 - [x] **Inocuidad** — el enganche no modifica los hallazgos ya escritos.
@@ -140,6 +159,7 @@ Y no se muestra ningún hallazgo de otro tema
 - [x] Detectar que la sesión ya produjo algo.
 - [x] Avisar una vez por hueco, con la marca que evita repetirlo.
 - [x] Mostrar lo que sigue abierto del propósito de la sesión.
+- [ ] Que el renombrado deje al día el enlace de adentro del resumen.
 
 ---
 
@@ -150,6 +170,7 @@ Y no se muestra ningún hallazgo de otro tema
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-005-HU-008-enganche-del-resumen](A-EP-005-HU-008-enganche-del-resumen/README.md) | CA-01, CA-02 y CA-03 | Estación 11: las siete exigencias en verde, esperando el commit |
+| [B-EP-005-HU-008-renombrar-deja-el-resumen-coherente](B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/README.md) | CA-04 | En ejecución |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -212,3 +233,4 @@ Y no se muestra ningún hallazgo de otro tema
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase A con la especificación del módulo y sus dos planes. Los requisitos no funcionales quedan numerados |
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Fase ejecutada: nacen `resumen.py` y `hook_resumen.py`, y el renombrado mueve los dos archivos. Con esto cierra la cadena de H-4 |
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | El aviso pasa a decir **qué** falta y a salir una vez por hueco. `CA-03` se acota al propósito de la sesión: mostrar todo lo abierto es ruido, y el propósito lo pone el usuario |
+| 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04`: el arrastre que pedía la `RN-06` no tenía criterio que lo midiera, y el renombrado dejaba el resumen apuntando al nombre viejo. Se abre la fase `B` |
