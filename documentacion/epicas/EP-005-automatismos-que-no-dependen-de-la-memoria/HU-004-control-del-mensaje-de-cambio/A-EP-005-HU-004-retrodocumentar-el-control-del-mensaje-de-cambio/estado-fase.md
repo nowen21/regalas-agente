@@ -1,0 +1,91 @@
+# Estado de fase — Fase A-EP-005-HU-004-retrodocumentar-el-control-del-mensaje-de-cambio (módulo Automatismos)   ·   `[CAPA 3]`
+
+**Para qué sirve este documento.** Dice **en qué estación va la fase y qué la tiene detenida**, para que una sesión nueva lo lea y siga desde ahí sin releer la conversación.
+
+---
+
+## 0. Identificación
+
+| Campo | Valor |
+|---|---|
+| **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-005-HU-004-retrodocumentar-el-control-del-mensaje-de-cambio` |
+| **Módulo** | Automatismos — [`validadores/commits.py`](../../../../../validadores/commits.py) |
+| **Épica / HU / origen** | [EP-005](../../epica.md) · [HU-004](../HU-004-control-del-mensaje-de-cambio.md) · 🔀 híbrido: la comprobación existe, el disparo no. Fila de HU-004 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
+| **Última actualización** | 2026-08-17 |
+
+---
+
+## 1. En qué estación va
+
+**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+
+| # | Etapa | Puerta | Estado |
+|---|---|---|---|
+| 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
+| 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
+| 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
+| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo y resolver las dudas 1 y 2 | ☐ |
+| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
+| 6 | Ejecución continua | 5 tareas, ninguna empezada | ☐ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 9 | Commit único | 👤 pendiente de autorización | ☐ |
+| 10 | Reporte al usuario | — | ☐ |
+| 11 | Publicación / despliegue | 👤 pendiente | ☐ |
+
+**Nada se ejecutó todavía.** Un enganche en el momento de guardar cambia cómo trabaja quien usa el estándar: no entra sin aprobación.
+
+---
+
+## 1.1 Veredicto de las pruebas
+
+| Campo | Valor |
+|---|---|
+| **Concepto** | **Todavía no se ejecutó** |
+| **CA cumplidos** | 0 de 2 |
+| **CA en "No"** | Ninguno todavía. Los **dos están a medias de entrada**: la comprobación existe y **nadie la llama al guardar** |
+| **Defectos abiertos aceptados** | Ninguno |
+| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+
+---
+
+## 1.2 Avance de las tareas del plan
+
+> Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
+
+| Tarea | Estado | Nota |
+|---|---|---|
+| T-01 | Bloqueada | Que la comprobación corra al guardar. Dudas 1 y 2 |
+| T-02 | Pendiente | Caso del mensaje vacío y el corto informativo — CP-001 |
+| T-03 | Pendiente | Caso de la firma de la herramienta — CP-003 |
+| T-04 | Pendiente | Caso del orden del cuerpo — CP-004 |
+| T-05 | Pendiente | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
+
+**Hechas:** 0 de 5. **Bloqueadas:** T-01.
+
+---
+
+## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+
+| Decisión / aprendizaje | Señal registrada |
+|---|---|
+| El disparo se coordina con la fase de [HU-005](../../HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md): dos enganches en el mismo momento se estorban y se ordenan mal. Uno llama a las dos comprobaciones | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
+| La comprobación a mano **se queda**: correrla antes de guardar sirve para arreglar el mensaje sin que el commit falle | §2.6 del plan |
+| Los mensajes viejos no se revisan: el historial es rastro y no se reescribe | §2.6 del plan |
+| Un mensaje corto pero informativo tiene que pasar: sin ese caso, la comprobación podría estar midiendo largo en vez de contenido | CP-001 del [`plan_pruebas.md`](plan_pruebas.md) |
+
+---
+
+## 3. Pendiente / preguntas abiertas
+
+- **Duda 1 de §2.7:** si el disparo es un enganche de la herramienta o del control de versiones — uno viaja con el proyecto, el otro se queda en la máquina.
+- **Duda 2 de §2.7:** si un mensaje que no pasa detiene el commit o solo avisa.
+- **La aprobación del plan.** Sin ella no se instala el disparo.
+- **Si detiene, el rechazo tiene que ser accionable** (riesgo `R-01`): un "no pasa" sin motivo bloquea el trabajo en el peor momento.
+- **Cruce con la fase de HU-005** (riesgo `R-02`): las dos necesitan disparar en el mismo momento y se coordinan.
+
+---
+
+## 4. Si se bloqueó
+
+- **Estación:** 4 — pausa y presentación. **Motivo:** el plan está escrito y sin aprobar, y las dos dudas bloquean el disparo, que es lo único que falta construir. **Qué falta para desbloquear:** que el usuario apruebe el plan, diga dónde vive el disparo y si detiene o avisa. Los tres casos de prueba pueden escribirse apenas se apruebe.

@@ -1,0 +1,92 @@
+# Estado de fase — Fase A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica (módulo Comprobación automática)   ·   `[CAPA 3]`
+
+**Para qué sirve este documento.** Dice **en qué estación va la fase y qué la tiene detenida**, para que una sesión nueva lo lea y siga desde ahí sin releer la conversación.
+
+---
+
+## 0. Identificación
+
+| Campo | Valor |
+|---|---|
+| **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica` |
+| **Módulo** | Comprobación automática — [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) y [`marcadores-de-ia.md`](../../../../../base/00-identidad-y-rol/marcadores-de-ia.md) |
+| **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-012](../HU-012-marcas-de-generacion-automatica.md) · ✨ funcionalidad nueva. Fila de HU-012 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
+| **Última actualización** | 2026-08-17 |
+
+---
+
+## 1. En qué estación va
+
+**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+
+| # | Etapa | Puerta | Estado |
+|---|---|---|---|
+| 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
+| 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
+| 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
+| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo y resolver la duda 1 | ☐ |
+| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
+| 6 | Ejecución continua | 7 tareas, ninguna empezada | ☐ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 9 | Commit único | 👤 pendiente de autorización | ☐ |
+| 10 | Reporte al usuario | — | ☐ |
+| 11 | Publicación / despliegue | 👤 pendiente | ☐ |
+
+**Nada se ejecutó todavía.** Ningún programa comprueba hoy las marcas de generación automática: la fase construye el primero.
+
+---
+
+## 1.1 Veredicto de las pruebas
+
+| Campo | Valor |
+|---|---|
+| **Concepto** | **Todavía no se ejecutó** |
+| **CA cumplidos** | 0 de 3 |
+| **CA en "No"** | Los **tres están en «No» de entrada**: la exigencia está escrita y ningún programa la mira |
+| **Defectos abiertos aceptados** | Ninguno |
+| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+
+---
+
+## 1.2 Avance de las tareas del plan
+
+> Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
+
+| Tarea | Estado | Nota |
+|---|---|---|
+| T-01 | Bloqueada | Comprobación de las marcas de tipografía. Duda 1: cambia qué archivos recorre |
+| T-02 | Bloqueada | Caso del texto con marcas — CP-002 |
+| T-03 | Bloqueada | Comprobación de los caracteres invisibles |
+| T-04 | Bloqueada | Caso de las marcas invisibles — CP-003 |
+| T-05 | Pendiente | Lista de lo que es notación del estándar. **Va primero: sin ella el programa reporta todo** |
+| T-06 | Bloqueada | Caso de la corrida sobre `base/` — CP-001 |
+| T-07 | Bloqueada | Correr, escribir el resultado y cerrar la trazabilidad |
+
+**Hechas:** 0 de 7. **Bloqueadas:** todas menos T-05.
+
+---
+
+## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+
+| Decisión / aprendizaje | Señal registrada |
+|---|---|
+| La lista de marcas se **lee** del capítulo y no se copia dentro del programa: dos listas de lo mismo se separan solas, y la del capítulo es la que manda | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
+| La notación propia se declara en el mismo capítulo, no como excepción escondida en el código: quien reciba un hallazgo tiene que poder leer por qué su símbolo cuenta y otro no | §2.6 del plan |
+| El programa cuenta y **no corrige**: borrar marcas de un texto ajeno sin aprobación es cambiar el entregable | §2.6 del plan |
+| El caso del falso positivo se prueba **antes** que el acierto: un programa que reporta el estándar entero no llega a correrse dos veces | CP-001 del [`plan_pruebas.md`](plan_pruebas.md) |
+
+---
+
+## 3. Pendiente / preguntas abiertas
+
+- **Duda 1 de §2.7:** si la comprobación aplica a todo el repositorio o solo a lo que se entrega. El histórico, por ejemplo, es transcripción y no entregable. Cambia qué archivos recorre el programa.
+- **La aprobación del plan.** Sin ella no se escribe el validador.
+- **El propio estándar tiene marcas** (pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md)). La corrida va a dar una cuenta alta; se presenta **aparte** de la de un entregable nuevo, o el programa parece inservible (riesgo `R-01`).
+- **Si un símbolo no se puede clasificar por contexto** (riesgo `R-02`): se declara no comprobable y se escribe por qué.
+
+---
+
+## 4. Si se bloqueó
+
+- **Estación:** 4 — pausa y presentación. **Motivo:** el plan está escrito y sin aprobar, y la duda 1 cambia qué recorre el programa. **Qué falta para desbloquear:** que el usuario apruebe el plan y diga si la comprobación aplica a todo el repositorio o solo a lo entregable. La lista de notación propia (T-05) puede escribirse apenas se apruebe, y conviene que sea lo primero.

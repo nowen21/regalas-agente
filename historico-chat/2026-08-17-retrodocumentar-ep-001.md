@@ -250,3 +250,42 @@ Entonces solo falta el 2. ¿Commiteo?
 
 ### 13 · Usuario — 2026-08-17 12:22:22
 > si
+
+**Agente** — 2026-08-17 12:26:19
+<!-- agente: 47b6b0da-5711-485e-a8c0-51fe79eb57dd -->
+
+Guardado: commit `e3bc9fe`, 172 archivos, en `main`.
+
+**Y un error mío que tiene que quedar dicho:** agregué la carpeta `documentacion/epicas` completa, y se colaron **nueve archivos de la otra sesión abierta hoy** — el `plan_pruebas.md` y el `estado-fase.md` que está escribiendo para cinco fases de EP-001. Excluí a mano los tres que había visto en `A-EP-001-HU-003`; los otros nueve entraron.
+
+No se perdió nada, pero el commit dice que lleva lo de esta sesión y lleva también lo de otra. No reescribí el historial: lo dejé anotado como H-11 en el resumen y como tercer caso vivo del pendiente 22.
+
+Fuera del commit quedó lo demás de esa sesión: el pendiente 58, el borrado del 57 y el índice del backlog.
+
+Con eso la sesión cierra. Falta commitear el resumen con ese último hallazgo — una línea, si quiere que lo haga.
+
+### 14 · Usuario — 2026-08-17 12:37:45
+> suba solo lo suyo
+
+**Agente** — 2026-08-17 12:40:51
+<!-- agente: c74edbb2-d511-49ce-8b0a-8584aa92f4bd -->
+
+Rehecho: commit `4109363`, **163 archivos, solo los míos**. El anterior no estaba publicado, así que se deshizo sin dejar rastro.
+
+Los nueve archivos de la otra sesión volvieron a quedar sin guardar, intactos en el disco. Ahora son más: esa sesión siguió escribiendo `plan_pruebas.md` y `estado-fase.md` en más de veinte de las fases que abrí hoy. Todo eso, más el pendiente 58, el borrado del 57 y el índice del backlog, queda para su sesión — 37 archivos fuera.
+
+Lo único que sí entró de ella es su transcripción y su línea del índice del histórico: las escribe el enganche, y sin ellas el índice apuntaría a un archivo que no está.
+
+La lección quedó como H-11: con dos sesiones abiertas, agregar una carpeta no es seguro ni revisando antes — lo que se agrega cambia entre que se mira y que se guarda. Se enumeran los archivos.
+
+La sesión cierra.
+
+### 15 · Usuario — 2026-08-17 12:41:11
+> oesa ya cierro la sesión?
+
+**Agente** — 2026-08-17 12:41:32
+<!-- agente: 55167052-5ef9-449b-97ab-6bdb3729a2bb -->
+
+Sí, ya puede cerrarla. Las cuatro casillas están marcadas y el trabajo está en `4109363`.
+
+Lo único que quedó fuera es lo que crece solo: la transcripción, que el enganche siguió escribiendo con estos últimos mensajes. Si quiere que también quede guardada, es un commit de un archivo. Si no, se va con la próxima sesión.

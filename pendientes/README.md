@@ -234,7 +234,6 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | 48 | **P1** | [Inventario de HU — 54 de las 68 no tienen su fase completa](48-inventario-hu.md) | 51 HU sin ninguna fase y 3 con la fase a medias. `02·F12.2` pide al menos una, y casi todas están **construidas y cerradas**: sus §8 dicen «todavía no se descompuso en fases» sobre código que ya corre. Es una tabla con casilla por documento, y se llena una fila a la vez. |
-| 57 | **P1** | [La fase recién abierta no queda en el repositorio](57-la-fase-recien-abierta-no-queda-en-el-repositorio.md) | **Va antes que el 48 y lo bloquea.** Su paso 2 manda crear la carpeta de la fase y marcar la casilla, pero git no guarda carpetas vacías: la ☑ afirmaría algo que ningún clon puede ver. Falta la decisión de con qué archivo se hace visible una fase que todavía no tiene su `plan_trabajo.md`. |
 
 **No es construcción, es retrodocumentación.** El trabajo está hecho; lo que falta es el documento que diga con qué plan se hizo, con qué casos se probó y qué salió — el mismo hallazgo del [38](hecho/el-validador-de-la-f22-tiene-su-fase.md).
 
