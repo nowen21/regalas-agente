@@ -85,6 +85,18 @@ Y sacó una conclusión equivocada: que el 42 cerró «de rebote» porque la pla
 
 ---
 
+### H-8 · El instalador se moría al imprimir, y el pendiente nuevo salió de dos cerrados
+
+**Qué se encontró.** `instalar()` reventaba al escribir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Nació en [validadores-y-hooks](../../../pendientes/hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del 42/44.
+
+**Qué se decidió.** No se reabre un cerrado —queda sellado con su versión—: va como pendiente nuevo, el 45, citando a los dos. Se construyó de una, en la fase [`B-EP-007-HU-001`](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/), y salió la **[21.2.1](../../../CHANGELOG.md)**.
+
+**Lo que dejó, y vale más que el arreglo:** el caso de prueba **pasaba en verde con el defecto puesto**. Instalaba en carpeta vacía, y esa corrida nunca imprime una flecha. Lo destapó el paso del plan que obliga a ver fallar la prueba antes de confiar en ella. Sin ese paso, la fase habría cerrado con una prueba que no comprueba nada.
+
+**Dónde queda.** En [hecho/instalar-prepara-su-propia-salida.md](../../../pendientes/hecho/instalar-prepara-su-propia-salida.md) y en el `DEF-01` de su [resultado de pruebas](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/resultado_pruebas.md).
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:

@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9 — commit único. **Última puerta pasada:** 8.
+**Estación actual:** 10 — reporte al usuario. **Última puerta pasada:** 9, commit `9846650`.
 
 Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md)**, que es la fuente única del ciclo de una fase en este repositorio.
 
@@ -31,9 +31,9 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 | 6 | Ejecución continua | plan implementado, 13 tareas | ☑ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto por CA | ☑ Cumple, ciclo 2 · 6 de 6 |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
-| 9 | Commit único | 👤 **acá está detenida** | ☐ |
-| 10 | Reporte al usuario | hash, resumen y estado | ☐ |
-| 11 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 9 | Commit único | 👤 autorizado · `9846650`, 22 archivos | ☑ |
+| 10 | Reporte al usuario | hash, resumen y estado | ☑ |
+| 11 | Publicación / despliegue | 👤 **acá está detenida** — falta el `push` | ☐ |
 
 **El CP-006 no lo corrió esta casa:** lo corrió `shopnest-mesa`, que es quien reportó los dos defectos, y desde acá se verificó leyendo sus archivos sin escribir nada. Vale más así — el que reporta es el que dice si desapareció.
 
@@ -86,7 +86,8 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 
 ## 3. Pendiente / preguntas abiertas
 
-- **El commit.** Lo autoriza el usuario aparte ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)). Es lo único que detiene la fase.
+- **El `push`.** Lo autoriza el usuario aparte, y la autorización del commit no lo cubre ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)). Es lo único que detiene la fase.
+- **Dos archivos de otra sesión quedaron sin commitear** a propósito: la transcripción y el resumen de `un-pendiente-no-es-un-plan`. Son de otra sesión y mezclarlos ensucia el versionado.
 - **Avisado a `shopnest-mesa`** el 2026-08-16, en sus pendientes `01` y `06`. Se le corrigió además una conclusión equivocada: había entendido que el 42 cerró «de rebote» y que un proyecto ya instalado solo se repara si cambia la huella de la plantilla. Que el aviso haya tenido que salir a mano sigue siendo el [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
 - **Dos hallazgos fuera del criterio**, en el §4 del [`resultado_pruebas.md`](resultado_pruebas.md). El primero —las 99 filas de prueba en `plantillas/proyectos.md`— lo amplió el usuario al plan y quedó resuelto. El segundo sigue abierto: `instalar()` revienta al imprimir si nadie llamó antes a `preparar_salida()`.
 

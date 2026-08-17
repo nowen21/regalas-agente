@@ -785,6 +785,13 @@ def instalar_registro(ruta, aplicar):
 
 
 def instalar(nombre, ruta, aplicar):
+    # Prepara su propia salida. Imprime tildes y flechas, y la consola de
+    # Windows tal como arranca no las admite: sin esto el programa se muere al
+    # escribir en pantalla, no instalando. Dependía de que lo hiciera `main()`,
+    # así que quien llamara a `instalar()` como biblioteca tenía que conocer un
+    # detalle que no es suyo — y una prueba se lo encontró de frente.
+    preparar_salida()
+
     print(f"\n— {nombre}\n  {ruta}")
 
     # Se normaliza para que la ruta escrita en el hook no dependa de cómo llegó

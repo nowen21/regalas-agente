@@ -263,3 +263,72 @@ Falta el commit, que lo autoriza usted. ¿Lo hago?
 
 ### 13 · Usuario — 2026-08-16 19:32:57
 > si
+
+**Agente** — 2026-08-16 19:34:34
+<!-- agente: d75c0ba8-e025-4240-afc5-02a25564e104 -->
+
+Commit `9846650` — 22 archivos, y los dos validadores del enganche pasaron en verde.
+
+Dejé **fuera dos archivos que no son de esta sesión**: la transcripción y el resumen de `un-pendiente-no-es-un-plan`, que ya venían modificados al abrir. Siguen sin commitear, esperando a su sesión.
+
+La fase queda en estación 10 de 11. Falta el `push`, que se pide aparte.
+
+Y quedó una cosa sin resolver de las que salieron en el camino: **`instalar()` revienta al imprimir si nadie llamó antes a `preparar_salida()`**. Hoy solo lo llama `main()`. ¿Le abro pendiente?
+
+### 14 · Usuario — 2026-08-16 19:35:59
+> de qué pendiente es?
+
+**Agente** — 2026-08-16 19:36:18
+<!-- agente: 0d24c5d6-6974-410f-87ea-e46c1e79f287 -->
+
+De ninguno. Busqué en los 30 abiertos y no hay nada de consola ni de codificación: sería **nuevo, el 45**.
+
+Por tamaño es `P2` —una línea dentro de `instalar()`— y por daño es bajo: hoy solo se dispara si un programa llama al instalador como biblioteca, que es lo que hace una prueba. Desde la línea de comandos no pasa nunca, porque `main()` sí lo prepara.
+
+¿Se lo abro?
+
+### 15 · Usuario — 2026-08-16 19:36:35
+> de los cerrados
+
+**Agente** — 2026-08-16 19:37:02
+<!-- agente: 1a394cc2-c5a5-4fe1-aa6e-93866be7be58 -->
+
+Nació en **[validadores-y-hooks](pendientes/hecho/validadores-y-hooks.md)** — el commit `4000f40`, que trajo `preparar_salida()` y el instalador de línea de comandos. Ahí se decidió que la salida la prepara `main()`, y nadie más.
+
+Se destapó en **[poner-al-dia-lo-ya-instalado](pendientes/hecho/poner-al-dia-lo-ya-instalado.md)**, el que acabamos de cerrar: es su `DEF-02`. Hasta que existió una prueba que llama a `instalar()` como biblioteca, el hueco no tenía cómo verse.
+
+Reabrir un cerrado no se hace — quedó sellado con su versión. Va como pendiente nuevo, citando a los dos.
+
+### 16 · Usuario — 2026-08-16 19:37:42
+> listo cree el nuevo y de una soluciónelo
+
+**Agente** — 2026-08-16 19:46:09
+<!-- agente: 78a42849-1d2b-49f7-96a6-6ae3e0eee6bd -->
+
+Va como fase `B` de la HU-001 —«una línea deja el proyecto listo», y un programa que revienta al imprimir no la deja—, y tomo su «de una» como la autorización para no parar entre el plan y la ejecución.
+
+Planes escritos. Ejecuto.
+
+El CP-002 hizo su trabajo: la prueba pasó **sin** el arreglo. El caso no reproducía el defecto — una instalación en carpeta vacía nunca llega a imprimir la flecha, porque esa sale al refrescar un sello que ya existía. Corrijo el caso.
+
+Rojo sin el arreglo, verde con él. Cierro la fase.
+
+Pendiente 45 creado y cerrado el mismo día, en la **21.2.1**.
+
+| | |
+|---|---|
+| Arreglo | Una línea: `instalar()` llama a `preparar_salida()` al entrar |
+| Fase | [`B-EP-007-HU-001-prepara-su-propia-salida`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/) · veredicto Cumple |
+| Pendiente | [hecho/instalar-prepara-su-propia-salida.md](pendientes/hecho/instalar-prepara-su-propia-salida.md) |
+| Pruebas | 19 de 19 en verde |
+
+**Lo que costó fue la prueba, no el arreglo — y ahí está lo que se aprendió.** El primer caso instalaba en carpeta vacía y **pasaba en verde con el arreglo revertido**: esa corrida nunca imprime una flecha, porque la flecha sale al refrescar un sello que ya existía. Lo destapó el paso del plan que obliga a ver la prueba en rojo antes de confiar en ella. Sin ese paso, la fase cerraba con una prueba que no comprobaba nada.
+
+El caso quedó así: instalar, subir la versión para que los sellos queden viejos, correr con una consola `cp1252` — y comprobar que esa corrida sí imprimió la `→`.
+
+No reabrí ningún cerrado: el 45 cita a [validadores-y-hooks](pendientes/hecho/validadores-y-hooks.md), donde nació, y a [poner-al-dia-lo-ya-instalado](pendientes/hecho/poner-al-dia-lo-ya-instalado.md), donde se destapó.
+
+Falta el commit de esta fase, que se pide aparte. ¿Lo hago?
+
+### 17 · Usuario — 2026-08-16 19:55:35
+> si

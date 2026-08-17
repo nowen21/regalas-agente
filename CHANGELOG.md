@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 21.2.1 — 2026-08-16
+
+**PARCHE** — el instalador se moría al imprimir si nadie le había preparado la consola. No cambia qué se exige.
+
+`validadores/instalar.py` escribe su avance con tildes y con una flecha `→`, y la consola de Windows tal como arranca no admite esos caracteres: al llegarle uno, el programa **se muere ahí mismo**, no instalando sino escribiendo en pantalla. Para eso existe `preparar_salida()`, pero solo la llamaba `main()` — o sea únicamente al correrlo desde la línea de comandos. Un programa que llamara a `instalar()` como biblioteca lo mataba. Se construyó en la fase [`B-EP-007-HU-001-prepara-su-propia-salida`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/).
+
+- **`instalar()` prepara su propia salida al entrar.** Delegarlo en quien lo llame era pedirle al de afuera que conociera las tripas del de adentro.
+- **Su prueba comprueba que se pone roja sin el arreglo**, que no es un lujo: el primer caso instalaba en carpeta vacía y **pasaba en verde con el defecto puesto**, porque esa corrida nunca imprime una flecha. Ahora instala, sube la versión para que los sellos queden viejos, y comprueba que la corrida medida sí imprimió una `→`.
+- **Se quitó el rodeo** que la [21.2.0](#2120--2026-08-16) había puesto en su propia prueba para esquivar esto.
+
+**Qué hacer para quedar al día:** nada. El programa vive en el estándar y los proyectos lo llaman por su dirección.
+
 ## 21.2.0 — 2026-08-16
 
 **MENOR** — el instalador repara lo que ya estaba instalado, y registra la versión aunque no cambie ninguna plantilla. No cambia qué se exige.

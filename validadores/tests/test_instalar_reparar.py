@@ -22,6 +22,7 @@ Cómo se corre:
 """
 
 import contextlib
+import io
 import os
 import shutil
 import sys
@@ -34,14 +35,9 @@ import checklist  # noqa: E402
 import instalar  # noqa: E402
 import version  # noqa: E402
 import versiones  # noqa: E402
-from comun import RAIZ, leer, preparar_salida  # noqa: E402
+from comun import RAIZ, leer  # noqa: E402
 
 MARCADOR = "«RUTA-ESTANDAR»"
-
-# La instalación imprime flechas y acentos, y la consola de Windows no siempre
-# es UTF-8. `main()` lo prepara antes de correr; una prueba que llama a
-# `instalar()` como biblioteca tiene que hacer lo mismo o revienta al imprimir.
-preparar_salida()
 
 
 def _escribir(archivo, texto):
@@ -259,6 +255,69 @@ class ReparaLoYaInstalado(unittest.TestCase):
 
         self.assertEqual(len(versiones.registros(self.proyecto)), antes,
                          "reinstalar sin novedad agregó un registro")
+
+
+class PreparaSuPropiaSalida(unittest.TestCase):
+    """Fase `B-EP-007-HU-001-prepara-su-propia-salida`, caso CP-001.
+
+    Vive en este archivo y no en uno aparte porque necesita exactamente el
+    mismo montaje: un proyecto temporal y una copia desechable del estándar.
+    """
+
+    def setUp(self):
+        self.temporal = tempfile.mkdtemp(prefix="cimiento-")
+        self.proyecto = os.path.join(self.temporal, "proyecto de prueba")
+        os.makedirs(self.proyecto)
+        self.contexto = _estandar_temporal()
+        self.estandar = self.contexto.__enter__()
+
+    def tearDown(self):
+        self.contexto.__exit__(None, None, None)
+        shutil.rmtree(self.temporal, ignore_errors=True)
+
+    @staticmethod
+    def _consola_pobre():
+        """Una salida que escribe en `cp1252` y no perdona lo que no cabe.
+
+        Es la consola con la que arranca Windows. `errors="strict"` es lo que
+        la hace reventar en vez de dibujar un signo de pregunta, que es el
+        comportamiento que se quiere reproducir.
+        """
+        return io.TextIOWrapper(io.BytesIO(), encoding="cp1252", errors="strict")
+
+    def test_cp_001_instalar_no_revienta_con_una_consola_pobre(self):
+        """CP-001 · el instalador prepara su propia salida.
+
+        Antes dependía de que lo hiciera `main()`, así que llamarlo como
+        biblioteca lo mataba al imprimir el primer `→`.
+
+        **La corrida que importa es la segunda.** Instalar en carpeta vacía
+        nunca imprime una flecha: esa sale al refrescar un sello que ya
+        existía. Por eso primero se instala, se sube la versión del estándar
+        para que los sellos queden viejos, y recién ahí se corre con la consola
+        pobre. Diseñado al revés, el caso pasa en verde con el defecto puesto —
+        y así pasó la primera vez.
+        """
+        # La consola armada de verdad no admite la flecha. Sin comprobarlo, el
+        # caso pasaría siempre y no probaría nada.
+        with self.assertRaises(UnicodeEncodeError):
+            self._consola_pobre().write("→")
+
+        instalar.instalar("proyecto de prueba", self.proyecto, aplicar=True)
+        _escribir(os.path.join(self.estandar, "VERSION"), "99.0.0\n")
+
+        original = sys.stdout
+        sys.stdout = self._consola_pobre()
+        try:
+            instalar.instalar("proyecto de prueba", self.proyecto, aplicar=True)
+            sys.stdout.flush()
+            escrito = sys.stdout.buffer.getvalue().decode("utf-8", "replace")
+        finally:
+            sys.stdout = original
+
+        self.assertIn("→", escrito,
+                      "el caso no reproduce el defecto: no se imprimió ninguna "
+                      "flecha, así que la consola pobre nunca se puso a prueba")
 
 
 if __name__ == "__main__":

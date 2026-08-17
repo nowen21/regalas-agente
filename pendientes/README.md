@@ -191,6 +191,14 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 
 **El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
+### Lo que dejó cerrar los dos anteriores (45)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~45~~ | — | **hecho** → [El instalador prepara su propia salida](hecho/instalar-prepara-su-propia-salida.md) | `instalar()` se moría al imprimir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Cerrado 2026-08-16 (v21.2.1) en la fase [`B-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/). |
+
+**Nació en un cerrado y no lo reabrió.** El defecto venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [42/44](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

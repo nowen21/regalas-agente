@@ -144,6 +144,7 @@ Entonces se dice cuál y por qué
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
 | [`A-EP-007-HU-001-rellenar-los-marcadores-al-copiar`](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/) | CA-01, CA-02 | [plan_trabajo.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/plan_trabajo.md) | [plan_pruebas.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/plan_pruebas.md) | [resultado_pruebas.md](A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/resultado_pruebas.md) · **Cumple** | Cerrada |
+| [`B-EP-007-HU-001-prepara-su-propia-salida`](B-EP-007-HU-001-prepara-su-propia-salida/) | CA-01 | [plan_trabajo.md](B-EP-007-HU-001-prepara-su-propia-salida/plan_trabajo.md) | [plan_pruebas.md](B-EP-007-HU-001-prepara-su-propia-salida/plan_pruebas.md) | [resultado_pruebas.md](B-EP-007-HU-001-prepara-su-propia-salida/resultado_pruebas.md) · **Cumple** | Cerrada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

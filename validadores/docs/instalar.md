@@ -237,6 +237,7 @@ El segundo motivo es el que evita que el proyecto se quede atrás para siempre: 
 - **Recibe:** el nombre del proyecto, su carpeta y si se aplica de verdad.
 - **Hace:** todo el proceso, en el orden del apartado siguiente.
 - **Retorna:** verdadero si se procesó, falso si la carpeta no existe.
+- **Prepara su propia salida.** Imprime tildes y flechas, y la consola de Windows tal como arranca no las admite: sin eso el programa se muere al escribir en pantalla, no instalando. Se puede llamar desde otro programa sin preparar nada antes.
 
 **`comprobar(ruta, aplicar, propio=False)`**
 
