@@ -48,6 +48,21 @@
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿el número de pendiente lo asigna una herramienta, o basta con listar la carpeta antes de escribir?
 
+### H-3 · Renombrar la sesión rompió dos enlaces de fuera
+
+- **Qué pasó:** al renombrar la sesión con `historico.py --renombrar`, el resumen pasó de `sesion-8.md` a `las-hu-sin-su-fase.md`. Los dos `README` de las HU nuevas lo citaban por el nombre viejo, y quedaron rotos. El revisor pasó de 3 fallas a 5 en la misma corrida.
+- **Por qué importa:** es el punto 4 del pendiente [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) —renombrar deja rotos los enlaces de fuera— y no es teoría: pasó a los diez minutos de que el mismo comando dejara «índice al día». El [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) cerró el enlace de **adentro** del resumen; los de afuera siguen a cargo de quien se acuerde.
+- **Qué lo soluciona:** ya está escrito en el punto 4 del 33, y `citas.py` tiene el modo que repara. No hace falta historia nueva: hace falta que `--renombrar` lo llame.
+- **Qué se decidió:** arreglar los dos a mano y dejar el caso anotado como evidencia del 33. No se abre pendiente nuevo: sería el tercero sobre lo mismo.
+- **Estado:** resuelto acá
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** pendiente [33 · punto 4](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md)
+- **Nace en:** 2026-08-16 · las HU sin su fase
+- **Cerrado en:** 2026-08-16 · las HU sin su fase
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -57,9 +72,13 @@
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Lo que se hizo está aprobado y guardado | ☑ commit `333c3a1` · ☐ el renombrado |
 
-**Falta una.** Las dos historias quedaron escritas en EP-004 —[HU-017](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md)—, con su línea en la épica, su lugar en la hoja de ruta como fase 9 y su fila en el inventario. Lo único que queda es la aprobación y el commit, que son del usuario.
+**Casi.** El trabajo está en el commit `333c3a1`, con los 12 archivos de esta sesión y ninguno de la otra: los cinco borrados que ya estaban en el índice se sacaron, y de `CHANGELOG.md` y del índice de pendientes se tomó solo la parte propia.
+
+Después de ese commit el renombrado movió el archivo de la sesión y de su resumen, y dejó **tres cambios sin guardar**: los dos `README` con el enlace corregido (H-3) y este resumen. Falta un segundo commit para eso.
+
+**Lo que había antes:** Las dos historias quedaron escritas en EP-004 —[HU-017](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md)—, con su línea en la épica, su lugar en la hoja de ruta como fase 9 y su fila en el inventario. Lo único que queda es la aprobación y el commit, que son del usuario.
 
 Los dos hallazgos siguen **abiertos**, y eso está bien: lo que cierra la sesión es que quedaran anotados con su archivo, no que se resolvieran. Se retoman por el pendiente [48](../../../pendientes/48-inventario-hu.md) y por el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
 
