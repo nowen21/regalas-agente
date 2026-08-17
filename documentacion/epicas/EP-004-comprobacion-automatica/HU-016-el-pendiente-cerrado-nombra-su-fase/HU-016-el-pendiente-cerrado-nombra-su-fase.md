@@ -161,7 +161,11 @@ Y la corrida no falla por ellos
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase](A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase/README.md) | CA-01, CA-02, CA-03 y CA-04 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye.** `02·F23` existe y nadie comprueba que el pendiente cerrado diga en qué fase se hizo: hay 17 cerrados y 12 lo nombran, cada uno a su manera. El trabajo fino son las tres excepciones.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

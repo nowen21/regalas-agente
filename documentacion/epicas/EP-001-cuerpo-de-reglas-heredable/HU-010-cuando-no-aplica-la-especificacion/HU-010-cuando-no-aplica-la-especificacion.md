@@ -123,7 +123,11 @@ Entonces las dos quedan conformes o se les escribe lo que falta
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion](A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye: acá no hay nada que retro-documentar.** Y trae una corrección al CA-02: las fases abiertas sin especificación aparte **ya no son dos**. Contadas el 2026-08-17 son diecisiete — nueve que se apoyan en su historia de usuario y ocho que declararon la deuda.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

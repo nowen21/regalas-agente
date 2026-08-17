@@ -124,7 +124,11 @@ Y se dice cuál lo impidió
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-005-HU-006-la-bateria-antes-de-publicar](A-EP-005-HU-006-la-bateria-antes-de-publicar/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye, y depende de otra:** la batería es la corrida completa de EP-004 · HU-008. Y tiene un límite claro — publicar lo autoriza una persona (`00·N2`), así que la batería niega el visto bueno, no impide la acción de nadie.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

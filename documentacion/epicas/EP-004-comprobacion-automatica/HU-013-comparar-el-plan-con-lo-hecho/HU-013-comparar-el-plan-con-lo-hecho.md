@@ -147,7 +147,9 @@ Entonces sale un hallazgo
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| «…» | «…» | Sin abrir |
+| [A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado](A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**Mitad retro-documentación, mitad construcción.** Ya se compara parte —cada tarea cuelga de un criterio, los dos veredictos se contrastan—, y falta la mitad concreta de `02·F8`: **nadie compara los archivos tocados con los que el plan declaró**.
 
 ---
 

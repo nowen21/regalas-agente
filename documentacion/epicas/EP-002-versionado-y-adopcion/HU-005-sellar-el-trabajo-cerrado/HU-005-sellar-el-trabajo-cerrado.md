@@ -122,7 +122,11 @@ Entonces ese trabajo no se marca como incumplido
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-002-HU-005-el-sello-de-version-en-el-cierre](A-EP-002-HU-005-el-sello-de-version-en-el-cierre/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**Mitad retro-documentación, mitad construcción.** La regla de que un cambio de normas no reabre lo cerrado está escrita. Lo que **no existe** es el campo: ningún modelo de cierre pide bajo qué versión cerró la fase, así que el sello se escribe cuando alguien se acuerda. Tocar los modelos sube versión.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

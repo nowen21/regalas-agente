@@ -119,7 +119,11 @@ Y un proyecto que no la activa no queda incumpliendo nada
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-005-retrodocumentar-las-convenciones-agnosticas](A-EP-001-HU-005-retrodocumentar-las-convenciones-agnosticas/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta y no toca `base/`.** Los diecisiete capítulos de convenciones existen, todos `[CAPA 2]` y cinco marcados `opt-in`. Lo que falta es demostrarlo: la misma convención cumplida en dos proyectos de lenguajes distintos, y la revisión de si algún tema aparece en dos capítulos.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

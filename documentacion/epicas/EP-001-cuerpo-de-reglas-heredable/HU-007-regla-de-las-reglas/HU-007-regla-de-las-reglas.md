@@ -121,7 +121,11 @@ Entonces indica partirla antes de aceptarla
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta y no toca el capítulo `20`.** El procedimiento existe y se usa en cada cambio: dieciséis meta-reglas, el molde y un checklist de veinte filas. Lo que falta es el caso escrito que muestre una candidata enrutada, otra rechazada por nombrar una tecnología y otra partida en dos.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

@@ -145,7 +145,11 @@ Y también reporta la línea del índice cuyo archivo no existe
 
 ## 8. Fases que la implementan
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-018-el-numero-de-pendiente-libre](A-EP-004-HU-018-el-numero-de-pendiente-libre/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye.** El número se elige a ojo leyendo un índice que puede estar más viejo que la carpeta: el 2026-08-16 dos sesiones tomaron el 52. La fase avisa; repartir turnos es la decisión del pendiente 22.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

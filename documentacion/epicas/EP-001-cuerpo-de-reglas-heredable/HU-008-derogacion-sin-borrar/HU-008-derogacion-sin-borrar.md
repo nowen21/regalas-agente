@@ -116,7 +116,11 @@ Entonces la derogada no aparece como algo por cumplir
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-008-retrodocumentar-la-derogacion](A-EP-001-HU-008-retrodocumentar-la-derogacion/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta y agrega dos pruebas.** La derogación ya se usó ocho veces —`F4.1` a `F4.5`, `F6`, `F7` e `ID2`—, y nada comprueba que sigan ahí: si mañana alguien borra una, nadie se entera.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

@@ -26,6 +26,8 @@ Un validador que calla sin haber mirado es peor que ninguno: el que no existe se
 1. Que `enlaces.py` **tenga punto de entrada**, o que se muera diciendo por dónde se corre.
 2. **Revisar los demás.** Son unos treinta programas en `validadores/`; no se sabe cuántos tienen el mismo hueco, y esa es media gracia de este pendiente.
 
+   **Segundo caso encontrado: `metareglas.py`** (2026-08-17, retro-documentando EP-001). Mismo síntoma —`python validadores/metareglas.py` no imprime nada y sale con 0— y sin subcomando en `validar.py`. Pesa más que el de `enlaces.py`: es el único programa que comprueba once de las veinte filas del [checklist del estándar](../base/20-meta-reglas/checklist.md) —entre ellas la 5, que `M3` necesita, y la 15, que impide que una regla normal mande sobre una `[BLINDADA]`— y además `M16`, el respaldo de toda regla de proyecto. El pendiente [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md) cita una medición hecha con él el 2026-08-14: hoy esa medición no se puede repetir por la línea de comandos.
+
 ## Con qué se cruza
 
 - El [55](55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) y el punto 1 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md), que son del mismo archivo: los tres hacen que sus hallazgos no se puedan creer, unos por callar y otros por hablar de más.

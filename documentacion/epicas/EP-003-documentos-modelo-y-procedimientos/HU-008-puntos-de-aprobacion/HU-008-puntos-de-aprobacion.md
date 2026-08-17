@@ -139,7 +139,11 @@ Entonces se pide esa aprobación aparte
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-003-HU-008-retrodocumentar-los-puntos-de-aprobacion](A-EP-003-HU-008-retrodocumentar-los-puntos-de-aprobacion/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**Mitad retro-documentación, mitad construcción.** Los puntos existen y las reglas que los sostienen también. Lo que falta es la lista: hoy vive dentro de un procedimiento y no en `base/`, así que un proyecto que hereda no la recibe.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

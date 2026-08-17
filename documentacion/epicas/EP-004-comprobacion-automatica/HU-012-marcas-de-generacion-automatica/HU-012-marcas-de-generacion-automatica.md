@@ -141,7 +141,11 @@ Entonces no las reporta
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica](A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye.** La exigencia existe —`00·ID8` y su lista— y ningún programa la comprueba. Lo que decide si sirve es el CA-03: el estándar usa a propósito el punto medio y las comillas angulares, y un programa ingenuo reportaría casi cada línea.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

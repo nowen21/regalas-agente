@@ -140,7 +140,11 @@ Y ningún archivo del proyecto cambió por el aviso
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase](A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** El aviso sale solo al abrir la sesión. Lo que le falta es la tercera parte de la RN-02: **no dice qué cambió entre las dos versiones**. Y el CA-03 tiene una excepción que hay que dejar escrita — la derogación sin adoptar sí detiene la fase (`02·F22`).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

@@ -137,7 +137,11 @@ Entonces se ve desde cuándo usó cada versión
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-002-HU-003-retrodocumentar-la-version-adoptada](A-EP-002-HU-003-retrodocumentar-la-version-adoptada/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta y mide sin corregir.** La declaración se lee y el historial de adopciones existe. Lo que falta: que la versión declarada **exista de verdad** no lo comprueba nadie, y el registro arrastra los pendientes 44 y 46.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

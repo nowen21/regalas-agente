@@ -142,7 +142,11 @@ Y cuando no lo es, se avisa y el trabajo sigue
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** El enganche corre con cada escritura y comprueba los enlaces. Lo que tiene que responder es el CA-03: hoy devuelve el detalle y no distingue entre detener y avisar, como sí hace la línea de comandos.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

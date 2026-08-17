@@ -126,7 +126,11 @@ Y se dice que la búsqueda por significado no está disponible
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** Está construido y es opcional: los vectores se calculan en la máquina y, sin el modelo, la memoria sigue funcionando. Las dos mitades que la fase prueba son justo esas, y hoy solo están escritas en un comentario del programa.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

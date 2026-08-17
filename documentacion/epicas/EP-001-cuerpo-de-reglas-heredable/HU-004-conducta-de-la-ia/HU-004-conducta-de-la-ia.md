@@ -119,7 +119,11 @@ Entonces el documento no trae esas marcas
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia](A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase es mitad retro-documentación y mitad construcción.** Cinco de las siete reglas de negocio ya son regla del estándar. Las de la pregunta que no es orden y del defecto que se corrige sin preguntar **no lo son**: viven como preferencia del usuario en la memoria del repositorio, y subirlas a `base/` es decisión suya.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

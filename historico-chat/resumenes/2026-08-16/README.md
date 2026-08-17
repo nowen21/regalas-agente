@@ -12,4 +12,4 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 | [que-pendiente-sigue.md](que-pendiente-sigue.md) | Los dos `P0` del backlog eran el mismo defecto —el instalador decidiendo por huella— y se cerraron en una sola fase, la v21.2.0: un proyecto ya instalado se repara y se registra corriendo el instalador. El backlog queda en 30 abiertos y sin ningún `P0`. |
 | [sesion-7.md](sesion-7.md) | Los ocho pendientes `P1` bajados cada uno a su historia de usuario, y el primero construido: renombrar una sesión ya deja coherente el resumen que arrastra (v21.3.0). Quedan tres decisiones del usuario y tres hallazgos sin pendiente propio. |
 | [las-hu-sin-su-fase.md](las-hu-sin-su-fase.md) | 52 de las 66 HU no tienen su fase completa —49 sin ninguna—, y casi todas están construidas: falta retrodocumentar. Queda el inventario en el pendiente 48, su molde en `plantillas/inventario-hu.md` (v23.2.0) y dos historias nuevas en EP-004. Dos sesiones abiertas se disputaron el mismo número del backlog. |
-| [sesion-9.md](sesion-9.md) | Sin escribir todavía. |
+| [el-inventario-de-hu.md](el-inventario-de-hu.md) | Sin escribir todavía. |

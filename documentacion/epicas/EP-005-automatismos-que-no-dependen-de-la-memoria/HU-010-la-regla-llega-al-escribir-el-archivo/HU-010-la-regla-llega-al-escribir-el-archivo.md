@@ -138,7 +138,9 @@ Entonces no llega nada y no se dice nada
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| «…» | «…» | Sin abrir |
+| [A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo](A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye.** El disparo existe y lo que hace es comprobar enlaces: al escribir un plan de trabajo, el capítulo que lo rige no llega. El límite es el costo — el arranque ya pesa unos 73 KB, medidos en la fase A de HU-009.
 
 ---
 

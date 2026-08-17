@@ -121,7 +121,11 @@ Y las marcadas se ven como tales
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** Cinco estados, la señal que reemplaza apuntando a la reemplazada, y la regla de que ninguna se borra. Lo que falta es la prueba de esa regla: desde la búsqueda, «no aparece» y «no existe» se ven igual.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

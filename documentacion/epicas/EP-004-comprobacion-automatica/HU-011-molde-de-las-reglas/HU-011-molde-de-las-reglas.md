@@ -181,7 +181,11 @@ Y también reporta la que cita una regla de la base que no existe
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr](A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/README.md) | CA-01, CA-02, CA-03, CA-04 y CA-05 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**Mitad retro-documentación, mitad construcción.** El programa está escrito y comprueba once de las veinte filas del checklist — incluida la que impide que una regla normal mande sobre una blindada. Lo que falta es **poder correrlo**: hoy calla y sale con código 0.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

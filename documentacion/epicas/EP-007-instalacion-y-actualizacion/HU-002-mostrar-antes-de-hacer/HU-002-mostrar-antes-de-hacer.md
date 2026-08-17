@@ -122,7 +122,11 @@ Entonces hace exactamente eso
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta, y empieza midiendo.** Si el instalador **muestra antes** lo que va a hacer o lo cuenta mientras lo hace es lo que nadie anotó. Se mide antes de proponer: ya pasó que una HU naciera pidiendo algo que ya existía.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

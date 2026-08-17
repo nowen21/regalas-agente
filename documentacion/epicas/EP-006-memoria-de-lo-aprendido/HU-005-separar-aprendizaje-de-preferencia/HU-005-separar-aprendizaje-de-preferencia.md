@@ -120,7 +120,11 @@ Entonces dice qué pidió, por qué lo pidió y cómo se aplica
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia](A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** La separación se usa: señales para lo que el proyecto aprendió, recuerdos para cómo el usuario quiere trabajar. Lo que falta es el criterio escrito de cuál va dónde, y en particular el caso de borde: una preferencia que en realidad es regla para cualquier proyecto.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

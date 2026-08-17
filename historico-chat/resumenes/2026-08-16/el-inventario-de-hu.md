@@ -1,6 +1,6 @@
 # 2026-08-16 · lo que quedó
 
-Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-9.md](../../2026-08-16-sesion-9.md). Cómo se llena está en [historico-chat/README.md](../../README.md). La conversación está allá; acá queda lo que la sesión dejó.
+Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-el-inventario-de-hu.md](../../2026-08-16-el-inventario-de-hu.md). Cómo se llena está en [historico-chat/README.md](../../README.md). La conversación está allá; acá queda lo que la sesión dejó.
 
 **Viene de:** 2026-08-16 · las HU sin su fase · H-1. Ese hallazgo sigue abierto y se trabaja allá; acá solo van los nuevos.
 
@@ -23,7 +23,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-9.md](..
 - **Responde a:** EP-004 · HU-017 — el inventario que esa HU va a contar es este mismo.
 - **Dispara:** 1. EP-003 · HU nueva — el procedimiento del inventario declara qué deja en el repositorio. Va antes de llenar las 51 filas: si se llenan primero, hay que rehacerlas.
 - **Orden de resolución:** 1 de 2 · bloquea el trabajo que pidió la sesión.
-- **Dónde queda:** pendiente [57](../../../pendientes/57-la-fase-recien-abierta-no-queda-en-el-repositorio.md), con las tres salidas y la recomendación escritas · toca el [48](../../../pendientes/48-inventario-hu.md) y la plantilla [`inventario-hu.md`](../../../plantillas/inventario-hu.md)
+- **Dónde queda:** el paso 2 del [48](../../../pendientes/48-inventario-hu.md), con las tres salidas y la recomendación escritas ahí mismo. **No lleva pendiente propio:** se abrió el 57 y el usuario lo quitó — el tablero de las HU faltantes es lo que sostiene este trabajo, y un pendiente aparte duplicaba lo que esa tabla ya lleva. Cuando se decida, el mismo paso cambia en la plantilla [`inventario-hu.md`](../../../plantillas/inventario-hu.md)
 - **Nace en:** 2026-08-16 · el inventario de HU
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿con qué archivo se hace visible una fase recién abierta, antes de que tenga su `plan_trabajo.md`?
@@ -55,7 +55,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ · el H-2 dice qué se corrigió y qué se dejó intacto |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-1 quedó en el [57](../../../pendientes/57-la-fase-recien-abierta-no-queda-en-el-repositorio.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-1 quedó en el paso 2 del [48](../../../pendientes/48-inventario-hu.md), que es el pendiente donde se trabaja |
 | Toda historia disparada está escrita en su épica | ☐ · la HU de EP-003 que dispara el H-1 no se escribió: qué exige depende de la decisión que el 57 deja abierta |
 | Lo que se hizo está aprobado y guardado | ☑ · el usuario pidió subir todo lo que había |
 

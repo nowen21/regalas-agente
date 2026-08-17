@@ -121,7 +121,11 @@ Entonces dice de qué tipo es y a quién le sirve
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** Los diez tipos y los tres alcances están en producción, con el criterio de qué merece guardarse en `13·DOC5`. Lo que la fase mide es cuáles de los diez tipos se usan de verdad: si tres no se usan nunca, el criterio no está funcionando.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

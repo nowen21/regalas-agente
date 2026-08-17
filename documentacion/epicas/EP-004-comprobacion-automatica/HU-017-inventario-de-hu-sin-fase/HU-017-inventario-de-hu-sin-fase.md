@@ -161,7 +161,11 @@ Y esa carpeta no entra en el total
 
 ## 8. Fases que la implementan
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase](A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/README.md) | CA-01, CA-02, CA-03 y CA-04 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye, y es la más chica de la épica.** `fases.py` ya sabe qué HU no tiene fase; lo único que no hace es sumar. La cuenta del 2026-08-16 se hizo con un script que no quedó en el repositorio.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

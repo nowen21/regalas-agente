@@ -119,7 +119,11 @@ Y no presenta el trabajo como terminado
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado](A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** Las seis reglas del núcleo existen y mandan desde la primera versión; lo que faltaba era la cadena. Lo único nuevo que le entra a `base/` es el criterio de entrada al núcleo, que la RN-06 pide y no está escrito.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

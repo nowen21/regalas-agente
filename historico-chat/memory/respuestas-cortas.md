@@ -8,6 +8,8 @@ La exigencia completa es norma del estándar desde la 20.0.0: [`00·ID9`](../../
 
 El 2026-08-16 volvió a cortar con dos palabras —*"menos es más"*— después de una respuesta que reportaba un trabajo terminado en cinco bloques y tres listas. El patrón es siempre el mismo: entre más se hizo, más largo sale el reporte, y menos se lee.
 
+El 2026-08-17 lo cortó otra vez con las mismas tres palabras, y en el mismo sitio: el reporte de siete planes de trabajo salió con cuatro bloques, tres tablas y una lista de decisiones. Dos veces seguidas, en dos días, por reportar trabajo terminado.
+
 El 2026-08-14 lo dijo de la forma más corta: *"explicar algo no es extenderse en prosa y que no se entienda nada, explicar es poder decir algo en pocas palabras pero que se entienda"*. Fue tras dos respuestas seguidas donde una pregunta de una línea se contestó con tablas y tres bloques.
 
 **Cómo se aplica:** decir qué pasó y qué falta decidir, en pocas líneas. Los detalles van en los archivos del repo, no en el chat. Sin tecnicismos salvo que el usuario los use primero. Una explicación cabe en una o dos frases; si hace falta una tabla y tres párrafos, es que todavía no se entendió el asunto y hay que pensarlo más, no escribir más.

@@ -120,7 +120,11 @@ Entonces la primera puede guardar lo suyo sin llevarse lo ajeno
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-002-HU-006-quien-manda-sobre-la-version](A-EP-002-HU-006-quien-manda-sobre-la-version/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase construye: acá no hay nada que retro-documentar.** Ninguna regla dice quién manda sobre `VERSION` con dos sesiones abiertas. Hay cinco casos ocurridos, el último del 2026-08-17. Las tres salidas del pendiente 22 siguen sobre la mesa y son la duda 1 de la fase.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

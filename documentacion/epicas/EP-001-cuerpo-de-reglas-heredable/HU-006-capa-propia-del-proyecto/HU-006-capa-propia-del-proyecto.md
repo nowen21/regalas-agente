@@ -118,7 +118,11 @@ Entonces sigue mandando el núcleo
 
 > Trazabilidad hacia abajo. Se completa a medida que la historia se descompone en fases (`02·F12.2`). El enlace se escribe en los dos lados: la fase declara qué criterios cubre y acá se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases. `02·F12.2` pide al menos una antes de empezar a trabajarla.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto](A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta y no toca `base/` ni `plantillas/`.** La capa propia existe, tiene su molde y su regla de respaldo. Lo que falta es probar el desempate — que el ajuste propio gane a la convención general y pierda contra el núcleo — y decir que la comprobación de `20·M16` hoy no se puede correr.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

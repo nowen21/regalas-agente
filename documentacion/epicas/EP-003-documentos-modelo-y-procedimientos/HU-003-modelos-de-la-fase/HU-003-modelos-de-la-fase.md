@@ -145,7 +145,11 @@ Y cada tarea del plan cuelga de un criterio
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase](A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** Los cinco modelos sostienen las 32 fases del árbol y dos programas ya comprueban que estén. Lo que nadie comprueba es que el plan aprobado **no se haya reescrito** después.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

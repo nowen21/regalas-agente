@@ -144,7 +144,11 @@ Entonces la sesión está listada
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta**, y se puede ver funcionando en cualquier sesión: el enganche escribe cada mensaje con la hora del reloj. El caso que la fase fija es el defecto que ya pasó seis veces — el agente escribiendo la transcripción a mano, con horas inventadas.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

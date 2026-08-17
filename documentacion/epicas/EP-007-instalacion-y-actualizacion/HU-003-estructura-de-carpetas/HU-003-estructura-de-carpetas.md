@@ -121,7 +121,11 @@ Entonces esa carpeta queda como estaba
 
 > **Trazabilidad hacia abajo.** Se completa a medida que la HU se descompone en fases (`02·F12.2`: al menos una). El enlace se escribe en los dos lados: la fase declara qué CA cubre y aquí se nombra la fase con sus documentos.
 
-Todavía no se descompuso en fases.
+| Fase | Qué CA cubre | Estado |
+|---|---|---|
+| [A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas](A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+
+**La fase retro-documenta.** La estructura está exigida, declarada, creada por el instalador y comprobada por la revisión. La prueba que falta es la que más importa: que instalar sobre un proyecto que ya trabajó no le borre nada — y eso se rompe en la segunda corrida.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
