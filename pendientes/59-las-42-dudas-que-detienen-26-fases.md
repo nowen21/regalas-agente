@@ -130,7 +130,19 @@ Buscadas antes de volver a preguntarlas ([`01·C23`](../base/01-conducta.md#c23-
 | **21** · si la comprobación de marcas cubre todo el repositorio | El [pendiente 11](hecho/../11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), paso 3, desde el 2026-08-10 | *«No tocar el histórico: es transcripción literal»*. **Ya está construido así** — se cuenta aparte, y `validar.py marcas` mira solo `base/` y `plantillas/` |
 | **18** · cuál de los dos caminos del pendiente 20 | Sigue abierta, pero el [20](20-f2-no-dice-cuando-no-aplica.md) ya trae las dos salidas evaluadas | No hace falta pensarla de cero: hay que elegir |
 
-**Quedan 39 que sí necesitan una respuesta.**
+### Y cuatro más las contesta lo que ya está construido
+
+| # | Duda | Qué hay hoy |
+|---|---|---|
+| **23** | ¿La corrida completa incluye linter, pruebas y audit? | **No.** `validar.py estandar` no los llama; `linter`, `suite` y `audit` son subcomandos aparte. Ya se decidió al construirlo — falta escribirlo, no decidirlo |
+| **31** · **33** | ¿Esperan a la corrida completa de `EP-004·HU-008`? | **No esperan: está construida.** `validar.py estandar` corre desde la fase `A` de esa historia |
+| **38** | ¿Un subcomando con dos modos, o dos subcomandos? | **Uno con dos modos.** `validar.py metareglas --catalogo` ya funciona así |
+
+**Las cuatro se contestan mirando el programa, no decidiendo.** Lo que falta es escribir la respuesta en el plan de cada fase.
+
+**Quedan 35 que sí necesitan una respuesta.**
+
+> **Y dos que parecían contestadas y no lo están:** la **26** y la **27** —desde cuándo se exige que el pendiente cerrado nombre su fase, y dónde se declara—. Solo **uno de los 35** archivos de `hecho/` lleva la fila fija, y `pendientes.py` no la comprueba. La convención no está asentada.
 
 > **La 16 y la 21 llevaban un día y ocho días detenidas, y las dos estaban escritas.** Es el mismo defecto que `C23` vino a cerrar, y es la segunda vez que aparece hoy.
 

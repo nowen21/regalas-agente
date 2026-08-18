@@ -300,6 +300,18 @@ De las 42 que detienen 26 fases ([59](../../../pendientes/59-las-42-dudas-que-de
 
 **Y una que vale la pena decir:** ese mismo análisis tiene una ficha llamada **«menos es más»**, evaluada el 2026-08-13 y marcada *«ya está cubierta»* por `01·C5` y `00·ID7`. Hoy volvió a aparecer, con razón — porque estar cubierta no es lo mismo que cumplirse.
 
+### H-27 · Cuatro dudas más las contesta el programa que ya corre
+
+Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md): **cuatro no hay que decidirlas, hay que mirarlas.**
+
+- **23** — la corrida completa **no** incluye linter, pruebas ni audit: son subcomandos aparte. Se decidió al construirlo.
+- **31 y 33** — dos fases preguntan si esperan a la corrida completa de `EP-004·HU-008`. **No esperan: está construida** y corre desde su fase `A`.
+- **38** — un subcomando con dos modos, y `validar.py metareglas --catalogo` ya funciona así.
+
+**De 42 a 35.** Siete contestadas hoy sin que el usuario tuviera que responder ninguna.
+
+**Y dos que parecían contestadas y no lo están:** la 26 y la 27, sobre el pendiente cerrado que nombra su fase. **Solo uno de los 35 archivos de `hecho/` lleva la fila fija**, y ningún programa la comprueba. Ahí la convención no existe todavía — que es distinto de que falte decidirla.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
