@@ -1,6 +1,6 @@
 # Pendiente · Falta la regla que obliga a reportar lo que es del estándar
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado** el 2026-08-18. Anotado el 2026-08-16.
 
 | | |
 |---|---|
@@ -51,3 +51,37 @@ Los pendientes [34](hecho/enlaces-de-las-plantillas-al-estandar.md) y [35](hecho
 ## Cómo se sabe que cerró
 
 La regla está escrita en `base/` con su checklist, las dos plantillas existen, un pendiente reportado desde un proyecto se puede cerrar y el aviso llega solo al proyecto de origen.
+
+---
+
+# Cómo cerró — 2026-08-18
+
+Fase: [`A-EP-007-HU-008`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/), veredicto **Cumple**.
+
+## Lo que faltaba de verdad era el paso 6
+
+Los siete pasos los dictó el usuario y los cinco primeros se venían haciendo por criterio de cada sesión. **El aviso de vuelta no lo hacía nadie**, y sin él el paso 7 —el pendiente del proyecto queda abierto hasta confirmar— deja pendientes abiertos para siempre: nadie vuelve a mirar el repositorio ajeno.
+
+## Las cuatro piezas
+
+**1 · La regla.** [`02·F24`](../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), con su checklist en CUMPLE. **Va al capítulo `02` y no a la épica de instalación:** lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
+
+**Y resuelve el choque con `02·F20`** que estaba anotado en el punto 8 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md): `F20` manda parar y proponer, y no decía qué hacer cuando lo descubierto es del estándar. Ahora `F20` para y `F24` dice a dónde va.
+
+**2 · Las dos plantillas.** [pendiente-reportado](../plantillas/pendiente-reportado.md) y [pendiente-de-seguimiento](../plantillas/pendiente-de-seguimiento.md), **cada una nombrando a la otra** — porque uno sin el otro es exactamente la mitad que falló los dos días de agosto que originaron esto.
+
+**3 · El aviso de vuelta.** `cerrar.py` lo escribe en cada proyecto al que le toca. **Un archivo de pendiente y nada más: nunca toca código**, y hay una prueba que compara la raíz del proyecto antes y después. Idempotente.
+
+**4 · La comprobación.** `validar.py pendientes` reporta el pendiente que dice venir de un proyecto sin nombrarlo. **Los 34 del backlog pasan sin tocar ninguno**, que es la señal de que la regla describe lo que ya se hacía bien en vez de inventar una exigencia.
+
+## Lo que este pendiente decía, comprobado
+
+Decía: *«sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto»*. **Tres cierres lo demuestran** y quedaron anotados: dos los espera `shopnest-mesa` y uno `dp`, y ninguno lo sabe.
+
+**No se mandan hacia atrás.** Inventar hoy un aviso sobre una corrección de hace dos días es escribir una fecha falsa.
+
+## Lo que queda abierto
+
+**Que el proyecto compruebe el aviso no lo hace nadie.** El aviso llega solo; abrirlo, verificar y cerrar el pendiente de seguimiento sigue dependiendo de que alguien lo lea — y ningún programa de acá puede verlo, porque ese pendiente vive en otro repositorio.
+
+**Y falta avisarles.** La propia regla manda avisarle a **todos los proyectos instalados** al cerrar esto, no solo a `shopnest-mesa`: la regla los rige a todos.

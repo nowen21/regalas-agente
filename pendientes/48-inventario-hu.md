@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 32 |
-| **Incompletas** | 42 |
+| **Completas** | 33 |
+| **Incompletas** | 41 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -21,7 +21,9 @@
 >
 > **39 → 31 completas.** Ocho historias que estaban completas ganaron una fase **sin terminar**, y una fase a medias vuelve incompleta a su historia. Seis vienen de la sesión que ejecutaba los 51 planes y quedó detenida; la séptima es la fase `B` de [EP-004 · HU-016](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/), que espera aprobación.
 >
-> **2026-08-18 · sube a 32.** La [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) —buscar en el repositorio antes de preguntar— cerró su fase `A` con los cinco documentos. Nació ayer al enrutar el backlog y se construyó hoy.
+> **2026-08-18 · sube a 33.** La [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) —buscar en el repositorio antes de preguntar— cerró su fase `A` con los cinco documentos. Nació ayer al enrutar el backlog y se construyó hoy. Y la [EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) —el proyecto reporta lo que es del estándar y el estándar le avisa de vuelta— cerró la suya, también del día a la mañana siguiente.
+>
+> **Y las seis histórias nuevas entran a la tabla.** Contaban en el total desde ayer, pero no tenían fila: el total decía 74 y la tabla listaba 68. Un inventario al que hay que creerle el encabezado porque su propia tabla no lo respalda no sirve de inventario.
 >
 > **No se deshizo nada.** Las 39 que estaban cerradas siguen cerradas; lo que pasó es que se abrió trabajo encima. El número baja porque mide *historias sin nada pendiente*, no *trabajo hecho*.
 
@@ -42,6 +44,9 @@
 | EP-001 | [HU-008 — Derogar una regla sin borrarla ni renumerarla](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-008-derogacion-sin-borrar/HU-008-derogacion-sin-borrar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-001 | [HU-009 — Poner al día las reglas que no pasan su propio checklist](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-001 | [HU-010 — Cuándo no aplica la exigencia de especificación](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-001 | [HU-011 — Buscar en el repositorio antes de preguntar](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
+| EP-001 | [HU-012 — Inventario de las acciones del agente y su riesgo](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| EP-001 | [HU-013 — Capítulos opt-in de dominio](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | EP-002 | [HU-001 — Fijar el número de versión y qué significa cada parte](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-001-numero-de-version-y-que-significa/HU-001-numero-de-version-y-que-significa.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-002 | [HU-002 — Llevar el registro de qué cambió en cada versión](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-002-registro-de-cambios/HU-002-registro-de-cambios.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-002 | [HU-003 — Declarar en el proyecto la versión adoptada y la fecha](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
@@ -86,6 +91,8 @@
 | EP-005 | [HU-008 — El enganche que sostiene el resumen de la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-009 — Lo que gobierna cada frase llega puesto al abrir la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-010 — El capítulo que rige lo que se escribe llega al escribirlo](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-005 | [HU-011 — Dónde termina el estándar y dónde empieza el adaptador](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| EP-005 | [HU-012 — Hacer cumplir lo que hoy solo se recuerda](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | EP-006 | [HU-001 — Definir qué se guarda, con qué tipos y qué alcances](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-001-que-se-guarda-tipos-y-alcances/HU-001-que-se-guarda-tipos-y-alcances.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-006 | [HU-002 — Guardar lo aprendido en el repositorio](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-006 | [HU-003 — Buscar por palabra sin instalar nada](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-003-busqueda-por-palabra/HU-003-busqueda-por-palabra.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
@@ -100,6 +107,7 @@
 | EP-007 | [HU-005 — No pisar lo que escribió la persona](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-005-no-pisar-lo-escrito/HU-005-no-pisar-lo-escrito.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-007 | [HU-006 — Poner al día lo ya instalado](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-007 | [HU-007 — Revisar qué le falta al proyecto](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-007-revisar-que-falta/HU-007-revisar-que-falta.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
+| EP-007 | [HU-008 — El proyecto reporta lo que es del estándar, y el estándar le avisa de vuelta](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 
 ## Cómo se llena la tabla
 

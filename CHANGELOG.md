@@ -11,6 +11,38 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.0 — 2026-08-18
+
+**MENOR** — el defecto del estándar se reporta, y al corregirlo el estándar avisa de vuelta. Aditivo: un proyecto al día no tiene que hacer nada.
+
+### La regla que faltaba: `02·F24`
+
+Nace [`02·F24`](base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md). Un proyecto que encuentra un defecto del estándar tenía tres caminos y **ninguno escrito**: parcharlo por su cuenta —y pisar a los demás—, anotarlo solo en su repositorio —donde el estándar nunca lo ve— o no hacer nada. Los tres pasaron en `shopnest-mesa` el mismo fin de semana, y ninguno incumplió nada, porque la regla no existía.
+
+**Va al capítulo `02` y no a la épica de instalación:** lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
+
+**Y cierra el choque con [`02·F20`](base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md):** `F20` manda parar y proponer, y no decía a dónde va lo propuesto cuando es del estándar. Ahora `F20` para y `F24` dice a dónde.
+
+### El paso que nadie hacía era el sexto
+
+Los siete pasos estaban dictados desde el 2026-08-16. Los cinco primeros se venían haciendo por criterio de cada sesión; **el aviso de vuelta no lo hacía nadie**, y sin él el séptimo —el pendiente del proyecto queda abierto hasta confirmar— deja pendientes abiertos para siempre: nadie vuelve a mirar el repositorio ajeno.
+
+Ahora lo escribe [`validadores/cerrar.py`](validadores/cerrar.py) al cerrar, porque **el aviso es parte de cerrar**: un programa aparte abre la puerta a cerrar sin avisar, que es justo el defecto.
+
+**Escribe un pendiente y nada más — nunca toca código**, y hay una prueba que compara la raíz del proyecto antes y después. Escribir en el repositorio de otro es bastante delicado como para que el alcance sea de una línea. Es idempotente, va solo a proyectos del registro, y al que no lleva backlog no se le inventa la carpeta.
+
+### Dos plantillas, cada una nombrando a la otra
+
+[pendiente-reportado](plantillas/pendiente-reportado.md) —el del estándar— y [pendiente-de-seguimiento](plantillas/pendiente-de-seguimiento.md) —el del proyecto, que **no se cierra al reportar**. Se nombran entre sí a propósito: uno sin el otro es exactamente la mitad que falló los dos días de agosto que originaron esto.
+
+### Y se comprueba por programa
+
+`validar.py pendientes` reporta el pendiente que dice venir de un proyecto sin nombrarlo — casilla vacía o con el molde `«…»` todavía puesto. **Los 34 del backlog pasan sin tocar ninguno**, que es la señal de que la regla describe lo que ya se hacía bien en vez de inventar una exigencia.
+
+Fase: [`A-EP-007-HU-008`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/) · pendiente [36](pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
+
+---
+
 ## 23.6.0 — 2026-08-18
 
 **MENOR** — el enganche que recuerda escribir la señal, y su molde recortado. Aditivo.

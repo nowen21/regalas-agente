@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | `shopnest-mesa`, que lo reportó |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Done |
 
 ---
 
@@ -184,7 +184,7 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| — | — | — | — | — | Sin empezar |
+| [`A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta`](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/) | CA-01 a CA-04 | [plan_trabajo.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/plan_trabajo.md) | [plan_pruebas.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/plan_pruebas.md) | [resultado_pruebas.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/resultado_pruebas.md) · **Cumple** | Cerrada |
 
 **De dónde sale esta historia:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), reportado por `shopnest-mesa`.
 
@@ -220,16 +220,17 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 - [x] Criterios de aceptación definidos y testeables
 - [x] Reglas de negocio documentadas
 - [x] Dependencias identificadas
-- [ ] Decidido en qué capítulo va la regla
+- [x] Decidido en qué capítulo va la regla — el `02`, por la fila 4 del checklist
 
 ## 11. Definition of Done (DoD)
 
-- [ ] La regla escrita en `base/` con su checklist
-- [ ] Las dos plantillas del pendiente, una por lado
-- [ ] Los cuatro criterios de aceptación verificados
-- [ ] El aviso de vuelta funcionando, comprobado sobre un proyecto real
-- [ ] Versionada (`20·M10`)
-- [ ] El pendiente 36 cerrado nombrando la fase, y avisado a todos los proyectos instalados
+- [x] La regla escrita en `base/` con su checklist — [`02·F24`](../../../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), en CUMPLE
+- [x] Las dos plantillas del pendiente, una por lado, cada una nombrando a la otra
+- [x] Los cuatro criterios de aceptación verificados
+- [x] El aviso de vuelta funcionando, comprobado sobre proyectos de mentira — **no sobre uno real**: escribe en repositorios ajenos y eso se prueba en carpetas desechables (`00·N4`)
+- [x] Versionada (`20·M10`) — 23.7.0
+- [x] El pendiente 36 cerrado nombrando la fase
+- [ ] **Falta:** avisarle a todos los proyectos instalados, que es lo que la propia regla manda
 
 ---
 

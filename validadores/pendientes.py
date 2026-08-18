@@ -103,6 +103,38 @@ def proximo_libre(proyecto):
     return max(ocupados) + 1 if ocupados else 1
 
 
+# `02·F24` · El pendiente que nace de un proyecto lo nombra.
+#
+# Sin el nombre no hay trazabilidad entre el estándar, la corrección y el
+# proyecto que la espera — y ese proyecto se queda con su pendiente abierto
+# para siempre, porque nadie sabe a quién avisarle al cerrar.
+#
+# Se busca la fila de la ficha, no el texto suelto: un pendiente puede nombrar
+# tres proyectos en su prosa y no venir de ninguno.
+_DE_UN_PROYECTO = re.compile(
+    r"(?im)^\|\s*\*\*Proyecto de origen\*\*\s*\|(.*?)\|\s*$")
+
+# Lo que no es un nombre de proyecto, aunque llene la casilla.
+_SIN_PROYECTO = re.compile(
+    r"(?i)^\s*(el est[áa]ndar mismo|—|-|n/?a|ninguno|este repositorio)\s*$")
+
+
+def sin_proyecto_de_origen(proyecto):
+    """Los pendientes que dicen venir de un proyecto sin decir de cuál."""
+    raiz = os.path.join(os.path.abspath(proyecto), CARPETA)
+    salida = []
+    for nombre in _archivos(raiz):
+        texto = _leer(os.path.join(raiz, nombre))
+        m = _DE_UN_PROYECTO.search(texto)
+        if not m:
+            continue                    # no declara origen: no es de esta regla
+        valor = m.group(1).strip().strip("*` ")
+        # Vacío o con el marcador de la plantilla sin llenar.
+        if not valor or ("«" in valor and "»" in valor):
+            salida.append((nombre, "la casilla está vacía"))
+    return salida
+
+
 def validar(proyecto):
     proyecto = os.path.abspath(proyecto)
     raiz = os.path.join(proyecto, CARPETA)
@@ -143,6 +175,14 @@ def validar(proyecto):
             hallazgos.append(Hallazgo(
                 AVISO, f"{CARPETA}/{INDICE}", 0,
                 f"el índice enlaza `{nombre}`, que no está en la carpeta (HU-018)"))
+
+    # `02·F24` · el proyecto de origen se nombra o no se declara.
+    for nombre, motivo in sin_proyecto_de_origen(proyecto):
+        hallazgos.append(Hallazgo(
+            FALLA, f"{CARPETA}/{nombre}", 0,
+            f"declara «Proyecto de origen» y {motivo} — sin el nombre nadie "
+            f"sabe a quién avisarle al cerrar, y ese proyecto se queda "
+            f"esperando para siempre (02·F24)"))
 
     return hallazgos
 

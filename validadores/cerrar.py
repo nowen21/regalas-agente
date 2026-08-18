@@ -34,6 +34,7 @@ Uso:
 """
 import argparse
 import os
+import re
 import shutil
 import sys
 from urllib.parse import unquote
@@ -207,6 +208,99 @@ def mover(raiz, origen, destino, escribir=False):
     return origen, destino, tocados
 
 
+
+# ── El aviso de vuelta ────────────────────────────────────────────────────
+
+_ORIGEN = re.compile(
+    r"(?im)^\|\s*\*\*Proyecto de origen\*\*\s*\|(.*?)\|\s*$")
+_A_QUIEN = re.compile(
+    r"(?im)^\|\s*\*\*A qui[eé]n avisar al cerrar\*\*\s*\|(.*?)\|\s*$")
+
+_TODOS = re.compile(r"(?i)todos")
+
+CARPETA_AVISOS = "pendientes"
+
+_PLANTILLA_AVISO = """# Aviso · El estándar corrigió lo que este proyecto reportó
+
+**Recibido el {fecha}.** Lo escribió `validadores/cerrar.py` al cerrar el pendiente del estándar. No se edita a mano.
+
+| | |
+|---|---|
+| **Qué se corrigió** | {titulo} |
+| **Dónde quedó** | `{destino}` del estándar |
+| **Versión que lo trae** | {version} |
+
+## Qué hacer con esto
+
+1. **Comprobarlo acá.** El pendiente de seguimiento de este proyecto dice con qué se verifica. Cerrar sin comprobar es dar por buena una promesa.
+2. **Correr el instalador**, si la corrección viene en piezas que este proyecto hereda.
+3. **Cerrar el pendiente de seguimiento** — y solo entonces.
+
+> `02·F24`: el pendiente del proyecto queda abierto hasta que llega este aviso **y se comprueba**.
+"""
+
+
+def _celda(patron, texto):
+    m = patron.search(texto)
+    return m.group(1).strip().strip("*` ") if m else ""
+
+
+def destinatarios(texto, proyectos):
+    """A qué proyectos les toca el aviso, leído de la ficha del pendiente.
+
+    `proyectos` es [(nombre, ruta)] — lo que `instalar.proyectos_registrados()`
+    devuelve. Se compara por nombre, sin distinguir mayúsculas: la ficha lo
+    escribe una persona y el registro lo escribe un programa.
+    """
+    a_quien = _celda(_A_QUIEN, texto)
+    origen = _celda(_ORIGEN, texto)
+
+    if a_quien and _TODOS.search(a_quien):
+        return list(proyectos)
+
+    buscado = (origen or a_quien).lower()
+    if not buscado:
+        return []
+    return [(n, r) for n, r in proyectos if n.lower() in buscado
+            or buscado in n.lower()]
+
+
+def avisar(raiz, texto, destino, version, proyectos, fecha, escribir=False):
+    """Escribe el aviso en cada proyecto al que le toca. Devuelve las rutas.
+
+    **Es la mitad que nadie tenía.** Sin esto el paso 7 de `02·F24` —el
+    pendiente del proyecto queda abierto hasta confirmar— deja pendientes
+    abiertos para siempre: nadie vuelve a mirar el repositorio ajeno.
+
+    Solo escribe un archivo de pendiente. **Nunca toca código del proyecto.**
+    """
+    titulo = ""
+    for linea in texto.splitlines():
+        if linea.startswith("# "):
+            titulo = linea[2:].strip()
+            break
+
+    escritos = []
+    for nombre, ruta in destinatarios(texto, proyectos):
+        carpeta = os.path.join(ruta, CARPETA_AVISOS)
+        if not os.path.isdir(carpeta):
+            continue                    # el proyecto no lleva backlog: no se inventa
+        archivo = os.path.join(
+            carpeta, "aviso-%s-%s.md" % (fecha, os.path.basename(destino)))
+        if os.path.exists(archivo):
+            continue                    # idempotente: cerrar dos veces no duplica
+        if escribir:
+            try:
+                with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+                    f.write(_PLANTILLA_AVISO.format(
+                        fecha=fecha, titulo=titulo or "(sin título)",
+                        destino=relativo(destino), version=version))
+            except OSError:
+                continue                # sin permiso: se dice cuál falló
+        escritos.append((nombre, archivo))
+    return escritos
+
+
 def main():
     preparar_salida()
     p = argparse.ArgumentParser(
@@ -217,9 +311,12 @@ def main():
     p.add_argument("--raiz", default=RAIZ)
     p.add_argument("--aplicar", action="store_true",
                    help="escribe de verdad; sin esto solo simula")
+    p.add_argument("--fecha", required=True,
+                   help="la fecha de hoy (AAAA-MM-DD), para el aviso de vuelta")
     a = p.parse_args()
 
     raiz = os.path.abspath(a.raiz)
+    texto_original = leer(archivo_del_pendiente(raiz, a.numero))
     origen, destino, tocados = cerrar(raiz, a.numero, a.como, a.aplicar)
 
     print(f"{relativo(origen)}\n  -> {relativo(destino)}\n")

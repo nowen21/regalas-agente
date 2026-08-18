@@ -95,6 +95,28 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Por qué importa.** Esto es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) pasando en vivo, y hoy se resolvió a mano leyendo horas de modificación. **Nada lo impide ni lo avisa.** El día que las dos sesiones toquen el mismo archivo, una pisa a la otra en silencio.
 
+### 10 · El paso que nadie hacía era el sexto, y hay tres cierres que lo prueban
+
+**Qué se midió.** El [pendiente 36](../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) traía siete pasos dictados por el usuario para reportar un defecto del estándar sin tocarlo. Los cinco primeros se venían haciendo por criterio de cada sesión. **El sexto —avisarle al proyecto cuando la corrección esté— no lo hacía nadie.**
+
+**Por qué importa.** Sin el aviso, el séptimo paso —el pendiente del proyecto queda abierto hasta confirmar— deja pendientes abiertos **para siempre**: nadie vuelve a mirar el repositorio ajeno. Y no es una hipótesis. Al construirlo aparecieron **tres cierres anteriores que se fueron sin aviso**: dos los espera `shopnest-mesa` y uno `dp`, y ninguno de los dos proyectos lo sabe.
+
+**No se mandan hacia atrás.** Inventar hoy un aviso sobre una corrección de hace dos días es escribir una fecha falsa. Se anota quiénes son y quién los espera, en la §3 del [resultado_pruebas](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/resultado_pruebas.md).
+
+**Y la señal de que la regla no inventa nada:** los 34 pendientes del backlog pasan la comprobación nueva **sin tocar ninguno**. Una regla que hay que salir a acomodarle el repositorio para que pase está describiendo otra cosa.
+
+**Dónde queda.** [`02·F24`](../../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), las dos plantillas, el aviso en `cerrar.py`, y la versión **23.7.0**.
+
+### 11 · El inventario decía 74 y su tabla listaba 68
+
+**Qué pasó.** Al cerrar el 36 falló una prueba: la cuenta del programa daba `(74, 33, 41)` y el [48](../../../pendientes/48-inventario-hu.md) tenía escrito `(74, 32, 42)`. Al ir a corregirlo se vio lo otro: **las seis historias nuevas de ayer contaban en el encabezado pero no tenían fila en la tabla.**
+
+**Por qué importa.** El encabezado se actualizó a mano al crearlas; la tabla no. Un inventario al que hay que creerle el encabezado porque su propia tabla no lo respalda **no sirve de inventario** — y las dos únicas de las seis que ya están construidas eran invisibles justo en el documento que existe para que nada quede invisible.
+
+**Lo que lo destapó fue la prueba que compara las dos cuentas**, no una lectura. Es la razón por la que esa prueba existe.
+
+**Dónde queda.** Las seis filas puestas, con lo que cada una tiene hoy en disco. 74 filas y 74 en el encabezado.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
