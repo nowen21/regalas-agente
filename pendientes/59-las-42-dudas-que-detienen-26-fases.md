@@ -1,6 +1,6 @@
 # Pendiente · Las 42 dudas que detienen 26 fases
 
-**Estado:** abierto · anotado 2026-08-17.
+**Estado:** **decidido** el 2026-08-18; **abierto** hasta que las 26 fases lleven su respuesta al plan y arranquen. Abierto · anotado 2026-08-17.
 
 | | |
 |---|---|
@@ -154,6 +154,106 @@ Buscadas antes de volver a preguntarlas ([`01·C23`](../base/01-conducta.md#c23-
 > **Y dos que parecían contestadas y no lo están:** la **26** y la **27** —desde cuándo se exige que el pendiente cerrado nombre su fase, y dónde se declara—. Solo **uno de los 35** archivos de `hecho/` lleva la fila fija, y `pendientes.py` no la comprueba. La convención no está asentada.
 
 > **La 16 y la 21 llevaban un día y ocho días detenidas, y las dos estaban escritas.** Es el mismo defecto que `C23` vino a cerrar, y es la segunda vez que aparece hoy.
+
+---
+
+## Las 33 resueltas — 2026-08-18
+
+El usuario pidió resolverlas. Cada una lleva **su motivo**, y casi todos salen de algo que este repositorio ya demostró. **Lo que no se puede decidir sin un dato suyo va marcado 👤.**
+
+### A · ¿Entra a `base/` como regla? (6)
+
+El criterio no hay que inventarlo: es la fila 1 del checklist, [`20·M13`](../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md). **Entra a `base/` lo que le exige algo a cualquier proyecto; lo demás tiene su sitio.**
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 1 | **Se difiere a HU-007.** El criterio de entrada al núcleo es *la regla de las reglas*, y esa es HU-007 | `M13` y `M2`: un tema, un dueño |
+| 2 | **Sí suben** al capítulo `01` | Le exigen algo al agente en cualquier proyecto |
+| 3 | **El recuerdo se recorta a un puntero.** Si la exigencia vive en `base/`, el recuerdo repitiéndola es texto prestado | La fila 11, y lo que hoy costó `07·Q7` y `12·PR4` |
+| 4 | **Documento, no regla.** Una lista de puntos de aprobación es un mapa; la exigencia de aprobar ya está en `02·F4` | `M13`: *«no es regla del estándar»*. Precedente: [`base/20-meta-reglas/checklist.md`](../base/20-meta-reglas/checklist.md) |
+| 5 | **`M9` lo enlaza; el criterio vive en `validadores/`.** Meter el criterio en el cuerpo de `M9` la saca del molde de cuatro líneas | La fila 10, y hoy se acortaron diez reglas por eso |
+| 6 | **Capítulo `02`.** Quién sube la versión es un paso del flujo, no del control de versiones | Es el mismo razonamiento con el que `02·F24` fue al `02` y no a la épica de instalación |
+
+### B · ¿Detiene, o solo avisa? (4)
+
+**Una sola respuesta para las cuatro: detiene lo que se puede comprobar sin criterio; avisa lo que necesita juicio.**
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 7 | **Detiene.** Que falte el sello de versión se comprueba mirando el archivo | Sin criterio de por medio |
+| 8 | **Detiene.** El molde del mensaje es forma, y la forma se comprueba | Igual |
+| 9 | **Detiene**, y no depende del tipo de cambio: si `base/` cambió y `VERSION` no, falta la versión | `20·M10` no admite excepción por tamaño |
+| 10 | **Criterio humano, y se declara.** Comparar lo hecho con lo planeado necesita leer los dos | Fingir que se comprueba es peor que decir que no |
+
+> **La evidencia de esta sesión está toda del mismo lado.** La fase `A-EP-005-HU-003` cerró en «No cumple» porque nada detiene; `ID9` se incumplió todo un día y nada avisó; las marcas de `ID8` crecieron ocho días después de registrarse. **Un aviso que nada respalda se ignora.**
+
+### C · Sobre qué se prueba (5)  ·  👤
+
+Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dice [`plantillas/proyectos.md`](../plantillas/proyectos.md):**
+
+| # | Propuesta | Por qué |
+|---|---|---|
+| 11 | **AgroSystem** (Laravel · PHP) y **RNI** (Angular + Python) | Son los dos stacks más distintos del registro, que es lo que la prueba necesita |
+| 12–15 | **shopnest-mesa** para las cuatro | Es el único que ya reporta al estándar, tiene estructura completa y carpeta de pendientes. Una respuesta para cuatro fases |
+
+**Falta el encargo chico y real de las dudas 14 y 15**, y ese no está en ningún archivo.
+
+### D · Lo que solo el usuario recuerda (1)  ·  👤
+
+| # | Propuesta | Por qué |
+|---|---|---|
+| 17 | **El usuario, leyendo una entrada del registro de una versión que no siguió** | Es el único lector disponible que cumple la condición: no siguió esos cambios |
+
+### E · Qué alcance tiene la comprobación (5)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 18 | **El camino 2 del [pendiente 20](20-f2-no-dice-cuando-no-aplica.md):** la historia hace de especificación cuando el entregable no es código | El camino 1 abre una excepción en `F2`, y una excepción es la puerta que después nadie cierra. `08·T1` es el ejemplo vivo |
+| 19 | **Cualquier proyecto cuyo entregable no sea código**, no solo el estándar | `20·M3`: la base no se escribe para un caso |
+| 20 | **Le basta con que el archivo exista.** Distinguir las dos formas de llenar la casilla es criterio | Igual que la 10 |
+| 22 | **Contra el commit del que salió la fase.** Ni la rama —que arrastra lo ajeno— ni lo sin guardar, que cambia mientras se mira | Es lo que hizo falta hoy, dos sesiones sobre el mismo árbol |
+| 24 | **Sí dice qué cambió, al nivel de entrada del registro:** la versión, su tipo y su título | El detalle mayor obliga a mantener dos textos que dicen lo mismo |
+
+### F · Dónde vive el dato (3)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 26 | **Desde el 2026-08-16**, que es cuando nació la exigencia. Lo cerrado antes no se reabre | [`20·M10`](../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md): un cambio de norma no reabre lo cerrado |
+| 27 | **Una fila fija en la ficha de cabecera**, como la de «Historia de usuario» | Una sección se olvida; una fila de la ficha se ve vacía. **Hoy solo 1 de 35 la lleva** |
+| 28 | **Solo en el modelo del cierre.** El sello dice bajo qué versión cerró algo, y solo el cierre cierra | Ponerlo en los dos obliga a llenarlo cuando todavía no hay nada que sellar |
+
+### G · Cómo se enmascara una clave (2)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 29 | **`«enmascarado»`**, la misma marca que el estándar ya usa para el espacio por llenar | No se inventa una marca nueva; se ve que hubo algo y se distingue del texto |
+| 30 | **La vieja se enmascara igual, y queda dicho en el archivo que se hizo.** No se borra el bloque | Borrar un bloque de una transcripción pierde lo dicho — es lo que hoy casi pasa con el pendiente 29 |
+
+### H · Orden entre fases (2)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 32 | **`HU-004` crea el disparo y `HU-005` se suma.** Dos enganches sobre el mismo momento se pisan | Un solo dueño por punto de disparo |
+| 34 | **En otra fase.** Enlazar la lista desde el procedimiento del director es trabajo de ese procedimiento | `M2`: un tema, un dueño |
+
+### I · Las que quedan (6)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 35 | **Se escribe en un proyecto de mentira, en carpeta temporal.** Nunca en uno real | [`00·N4`](../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) |
+| 36 | **La salida 1 del [pendiente 22](22-dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar | La 3 —una sola sesión— ya se incumplió dos veces esta semana. Una regla que la práctica salta no es una regla |
+| 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro | Ya pasó con `pendientes/README.md`, y está escrito en el propio 22 |
+| 39 | **Enganche de la herramienta.** El del control de versiones no corre cuando el agente escribe | Y el precio está anotado: es el [pendiente 15](15-el-estandar-depende-de-una-sola-herramienta.md) |
+| 41 | **Por carpeta, no por tipo de documento.** `base/` → capítulo `20`; `documentacion/epicas/` → `02` y `13`; `pendientes/` → `02·F23` | El tipo hay que adivinarlo; la carpeta se lee de la ruta, que es lo mismo que hace `cargador.py` |
+| 42 | **Solo la regla que aplica.** El capítulo entero repite el problema que `cargador.py` ya resolvió cargando índices | Está medido en la especificación de automatismos, regla 16 |
+
+---
+
+## Lo que sigue
+
+**Las decisiones están escritas; las 26 fases siguen detenidas.** Cada una tiene que llevar su respuesta a la §2.7 de su plan y arrancar. Eso es trabajo de cada fase, no de este pendiente.
+
+**Cuatro siguen necesitando un dato del usuario:** las 11 a 15 —qué proyectos y qué encargo— y la 17 —quién lee—. Van con propuesta, y una propuesta que nadie corrige se toma por aceptada.
 
 ---
 

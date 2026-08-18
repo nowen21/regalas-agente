@@ -325,6 +325,22 @@ Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-2
 
 **Y hay que decir el límite:** las 33 que quedan sí son decisiones. Buscar más no las va a contestar.
 
+### H-29 · Las 42 dudas, decididas
+
+El usuario pidió resolver las 33 que quedaban, y están escritas en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) con su motivo cada una.
+
+**Casi ninguna hizo falta inventarla.** El grupo A lo resuelve la fila 1 del checklist; el B, una sola regla —**detiene lo que se comprueba sin criterio, avisa lo que necesita juicio**— con toda la evidencia de esta sesión del mismo lado; el resto sale de reglas que ya existen.
+
+**Las tres decisiones que más cambian algo:**
+
+- **La 18** — la historia hace de especificación cuando el entregable no es código, en vez de abrirle una excepción a `F2`. **Una excepción es la puerta que después nadie cierra**, y `08·T1` es el ejemplo vivo.
+- **La 36** — la versión se sube al guardar, no al editar. La otra salida —una sola sesión a la vez— ya se incumplió dos veces esta semana, y una regla que la práctica salta no es una regla.
+- **La 30** — una clave en una transcripción vieja se enmascara, no se borra el bloque. Borrar pierde lo dicho, que es lo que hoy casi pasó con el pendiente 29.
+
+**Cuatro van con propuesta y no con decisión** —qué proyectos, qué encargo, quién lee—: hacen falta datos que no están en ningún archivo.
+
+**Y el pendiente sigue abierto a propósito.** Decidir no es ejecutar: las 26 fases siguen detenidas hasta que cada una lleve su respuesta a la §2.7 de su plan.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
