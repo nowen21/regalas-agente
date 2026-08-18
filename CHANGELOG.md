@@ -83,7 +83,14 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `10` entero**: `DEP1`, `DEP2`, `DEP4` y `DEP5` en CUMPLE; `DEP3` en NO CUMPLE por repetir `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7`. `DEP3` y `DEP5` ganan el ejemplo que les faltaba.
 - **El capítulo `05` entero**: `E1`, `E3` y `E5` en CUMPLE; `E2` y `E4` en NO CUMPLE. `E2` son dos exigencias y **la mitad que sobra ya se cita desde fuera** —`15·IM3` y el `13` apuntan acá para la transacción—, así que al partirla hay que llevar esas citas. `E4` no cabe: su escala de cuatro niveles es una tabla de referencia dentro de una regla.
 - **El capítulo `06` entero, y es el primero que queda sin una sola regla reprobada:** `R1` a `R6`, las seis en CUMPLE. Sirve de referencia de qué aspecto tiene un capítulo al día.
-- **Las reglas sin sello bajan de 121 a 87**; las publicadas en NO CUMPLE suben de 7 a 17. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
+- **El capítulo `07` entero**: `Q1` a `Q6` en CUMPLE; `Q7` en NO CUMPLE por reformular `01·C3` en vez de enlazarla. `Q6` gana el ejemplo que le faltaba.
+- **Las reglas sin sello bajan de 121 a 80**; las publicadas en NO CUMPLE suben de 7 a 18.
+
+### `citas.py` no pedía enlace dos veces… salvo en el mismo renglón
+
+La regla que nació con el pendiente 55 —la segunda mención no pide enlace si la primera lo lleva— miraba solo las **líneas anteriores**. Dos menciones en el mismo renglón se le escapaban, y el reparador quería enlazar la segunda.
+
+Ahora mira el tramo de línea que queda a la izquierda, incluidos los enlaces que ya venían escritos. Se descubrió sellando `07·Q4`. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
 
 ### La fila 10 medía mal, y castigaba a las reglas que citan bien
 

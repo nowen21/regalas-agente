@@ -164,7 +164,7 @@ def enlazar(texto, origen, idx):
     dentro = False
     estado = {"encabezados": [], "linea": "", "previo": ""}
 
-    def enlace(capitulo, id, literal):
+    def enlace(capitulo, id, literal, antes=""):
         """El enlace, o el texto original si la regla no existe."""
         ruta = destino(origen, id, idx)
         # Sin destino no se inventa un enlace: la cita queda como estaba y el
@@ -176,8 +176,12 @@ def enlazar(texto, origen, idx):
         # era una cita — y eso es peor que reportar de más.
         if _es_muestra(estado["linea"], estado["encabezados"], id):
             return literal
-        if (f"[`{id}`](" in estado["previo"]
-                or f"·{id}`](" in estado["previo"]):
+        # Ya enlazada antes: en una línea anterior, o **en esta misma antes de
+        # esta mención** —incluidos los enlaces que ya venían escritos, que
+        # `_CITA` no ve porque los descarta—. `antes` es el tramo de línea que
+        # queda a la izquierda.
+        previo = estado["previo"] + antes
+        if f"[`{id}`](" in previo or f"·{id}`](" in previo:
             return literal
         cambios[0] += 1
         return f"[`{f'{capitulo}·{id}' if capitulo else id}`]({ruta})"
@@ -205,12 +209,15 @@ def enlazar(texto, origen, idx):
         # El orden importa: la partida primero, porque su `NN` entre comillas
         # también encajaría a medias en las otras.
         linea = _CITA_PARTIDA.sub(
-            lambda m: enlace(m.group(1), m.group(2), m.group(0)), linea)
+            lambda m: enlace(m.group(1), m.group(2), m.group(0),
+                             m.string[:m.start()]), linea)
         linea = _DEPENDENCIA.sub(
             lambda m: (f"({m.group(1)} "
-                       f"{enlace(m.group(2), m.group(3), m.group(3))})"), linea)
+                       f"{enlace(m.group(2), m.group(3), m.group(3), m.string[:m.start()])})"),
+            linea)
         linea = _CITA.sub(
-            lambda m: enlace(m.group(1), m.group(2), m.group(0)), linea)
+            lambda m: enlace(m.group(1), m.group(2), m.group(0),
+                             m.string[:m.start()]), linea)
         salida.append(linea)
         estado["previo"] = anterior + linea
 
@@ -305,9 +312,13 @@ def validar(raiz=None):
                     continue          # no es una cita: es texto que se le parece
                 if idx[id][0] == archivo:
                     continue          # se cita a sí misma o a una vecina del archivo
-                if (f"[`{id}`](" in texto_previo_sin_esta
-                        or f"·{id}`](" in texto_previo_sin_esta):
-                    continue          # `55` · ya se enlazó antes en este archivo
+                # `55` · Ya se enlazó antes: en una línea anterior, o en
+                # esta misma antes de esta mención. Lo segundo se descubrió el
+                # 2026-08-18, sellando `07·Q4`: dos menciones en el mismo
+                # párrafo y en el mismo renglón, la primera con su enlace.
+                antes = texto_previo_sin_esta + linea[:m.start()]
+                if f"[`{id}`](" in antes or f"·{id}`](" in antes:
+                    continue
                 if _es_muestra(linea, encabezados, id):
                     continue          # `55` · es una muestra, no una cita
                 hallazgos.append(Hallazgo(

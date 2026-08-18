@@ -68,12 +68,14 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `10` Dependencias de terceros | 5 | `DEP1`, `DEP2`, `DEP4`, `DEP5` | `DEP3` |
 | `05` Errores y logging | 5 | `E1`, `E3`, `E5` | `E2`, `E4` |
 | **`06` Rendimiento y eficiencia** | 6 | **los seis** | — |
+| `07` Calidad de código | 7 | `Q1` a `Q6` | `Q7` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
 - `EST3` reprobaba la fila 10 por **tres caracteres**. Se recortó el porqué.
 - `IM2` reprobaba la fila 8 con el título «Estados y campos de anulación», que nombra un tema sin decir ninguna norma. Pasa a *Guarda los tres estados y la trazabilidad de quien anula*.
 - `DEP3` y `DEP5` reprobaban la fila 12 por no tener ejemplo. Se les agregó.
+- `Q6` reprobaba la fila 12 por lo mismo. El ejemplo salió de su propio cuerpo: silenciar la regla del linter en doce sitios en vez de decidir si aplica.
 - `PR5` reprobaba la fila 8 con el título «Retención y borrado», que nombra un tema. Pasa a *Define cuánto se conservan y qué pasa después*.
 - `PR2` reprobaba la fila 12 por no tener ejemplo. Se le agregó el error de verdad: los correos que se pidieron para avisar del pedido y terminan en una campaña.
 - `CFG4` reprobaba la fila 12 por no tener ejemplo, y el análisis del 2026-08-07 decía por qué hacía falta: *«la bandera eterna es error frecuente»*. Una regla que nombra un error frecuente no entra en la excepción de «evidente». Se le agregó el ejemplo de verdad.
@@ -91,6 +93,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
 | `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
 | `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
+| `07·Q7` | Fila 11 | Reformula `01·C3` entera antes de enlazarla, y lo propio es una frase al final. **`14·EST3` toma de `C3` lo mismo y sí cumple**: aquella la nombra como motivo y dice lo suyo; esta la repite |
 | `10·DEP3` | Fila 11 | Repite `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7` |
 
 ### Lo que se supo aplicando el checklist
@@ -113,6 +116,14 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
+### Una recomendación del análisis que no se aplicó, y por qué
+
+Para `07·Q4` —«No repitas, pero no abstraigas de más»— el análisis proponía escribir la segunda mitad como **excepción formal** de [`20·M8`](../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). No se hizo, y la regla queda en CUMPLE igual.
+
+`M8` pide **condición, límite y quién autoriza**. En `Q4` no hay quién autorice: no abstraer de más no es un permiso que alguien concede, es criterio de diseño que se ejerce al escribir. Forzarla a ese molde la haría decir algo falso.
+
+**Leer el análisis no es obedecerlo.** Sus veredictos de las once filas contables se comprueban con el programa; sus recomendaciones son propuestas, y esta no encajaba. Queda escrito en el bloque de `Q4` para que nadie la vuelva a proponer sin saber que ya se descartó.
+
 ### El primer capítulo entero en CUMPLE
 
 El `06` es el primero que queda sin una sola regla reprobada: **las seis pasan las veinte filas**. Sirve de referencia de qué aspecto tiene un capítulo al día.
@@ -131,10 +142,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **87** |
-| Publicadas en NO CUMPLE | 7 | 7 | **17** |
+| Sin bloque de checklist | 129 | 121 | **80** |
+| Publicadas en NO CUMPLE | 7 | 7 | **18** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Treinta y cuatro reglas ganaron su sello hoy, en siete capítulos —el `05`, el `06`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Diez de esas treinta y cuatro dicen NO CUMPLE.
+Cuarenta y una reglas ganaron su sello hoy, en ocho capítulos —el `05`, el `06`, el `07`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Once de esas cuarenta y una dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
