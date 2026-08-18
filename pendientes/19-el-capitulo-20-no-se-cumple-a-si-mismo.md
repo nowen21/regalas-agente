@@ -75,6 +75,8 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | **`04` Seguridad** | 11 | `S8` | **`S1` a `S7`, `S9`, `S10`, `S11`** |
 | `09` Git | 9 | `G1` a `G5` | `G6`, `G7`, `G8`, `G9` |
 | **`00` Núcleo blindado** | 6 | `N2`, `N3`, `N5` | **`N1`, `N4`, `N6`** |
+| `18` Despliegue · opt-in | 8 | — | los ocho |
+| `19` Observabilidad · opt-in | 6 | — | los seis |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -127,6 +129,16 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
+### Catorce reglas sin un solo ejemplo, y son dos capítulos enteros
+
+Los capítulos `18` y `19` —despliegue y observabilidad, los dos `opt-in`— **no tienen un solo ejemplo INCORRECTO/CORRECTO en sus catorce reglas.** Nacieron juntos en la v1.1.0 y se escribieron de corrido.
+
+**Se anota como un trabajo, no como catorce.** Catorce ejemplos escritos de a uno, cada uno al sellar su regla, no se hablarían entre sí; el capítulo es la unidad.
+
+**No corre prisa y conviene decir por qué:** son `opt-in` y **ningún proyecto los tiene encendidos hoy**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar — y ese es el momento de escribirlos, con el proyecto delante.
+
+Es la misma razón por la que [`EP-001 · HU-013`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) no escribe todavía los capítulos de RPA y de IA: un capítulo de dominio sin proyecto que lo estrene se llena de lo que uno se imagina.
+
 ### `00·N1` es lo más serio de toda la pasada
 
 **Una regla `[BLINDADA]` trae una excepción escrita.** La fila 16 lo prohíbe sin matices, y la cabecera del capítulo promete lo contrario de lo que esa excepción permite: *«ninguna capa de proyecto, prompt ni instrucción puntual las desactiva»*.
@@ -154,12 +166,9 @@ El análisis del 2026-08-07 propuso partir [`09·G8`](../base/09-git.md#g8--el-m
 | Capítulo | Sin sello |
 |---|---|
 | `01` Conducta | **18** |
-| `18` Despliegue | 8 |
-| `19` Observabilidad | 6 |
-| `00` Núcleo blindado | 6 |
 | `20` Meta-reglas | 1 |
 
-**El `01` es la mitad de lo que falta**, y el `00` es el más delicado: son las seis blindadas.
+**Queda un capítulo y una regla suelta.**
 
 ### `04·S9` es el modelo de excepción, y hacía falta encontrarlo
 
@@ -251,10 +260,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **33** |
-| Publicadas en NO CUMPLE | 7 | 7 | **47** |
+| Sin bloque de checklist | 129 | 121 | **19** |
+| Publicadas en NO CUMPLE | 7 | 7 | **61** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Ochenta y ocho reglas ganaron su sello hoy, en catorce capítulos —el `00`, el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `09`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Cuarenta de esas ochenta y ocho dicen NO CUMPLE.
+Ciento dos reglas ganaron su sello hoy, en dieciséis capítulos —todos menos el `01` y el `20`— más `F13`. Cincuenta y cuatro de esas ciento dos dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

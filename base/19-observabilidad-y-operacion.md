@@ -8,22 +8,195 @@
 
 Los logs se emiten como **datos** (clave-valor / JSON), no como texto libre para leer con el ojo: nivel, marca de tiempo, y un **identificador de correlación** que permita seguir una operación de punta a punta. Nunca llevan secretos ni datos sensibles ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles), [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)). Sin estructura, un log a escala no se puede buscar ni agregar.
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas.**
+
+- **Fila 10 · no cabe:** 334 caracteres.
+- **Fila 12 · sin ejemplo.**
+
+**Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## OB2 · Se mide lo que le duele al usuario
 
 La instrumentación cubre las **señales doradas** del servicio: latencia, tráfico, errores y saturación. Las trazas permiten seguir una petición por los componentes que atraviesa. Se mide el **síntoma que sufre el usuario** (una página que no carga), no solo recursos internos (CPU) que no dicen si el sistema sirve.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 12 · sin ejemplo.** **Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+Cabe por poco: 315 de 320. **No hay margen** para agregarle nada sin recortar.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## OB3 · SLO y alertas como código, sobre síntomas
 
 Los objetivos de servicio (SLO) y las alertas se declaran **versionados**, no se configuran a mano en un dashboard. Una alerta se dispara por un **síntoma que exige acción humana** (el error del usuario supera el umbral), no por ruido que nadie atiende: una alerta que se ignora siempre es peor que ninguna. Cada alerta apunta a su runbook.
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas.**
+
+- **Fila 10 · no cabe:** 340 caracteres.
+- **Fila 12 · sin ejemplo**, y es de las que más lo necesitan: *«una alerta que se ignora siempre es peor que ninguna»* nombra un error concreto y frecuente sin mostrarlo.
+
+**Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## OB4 · Runbooks para lo que se opera
 
 Las operaciones recurrentes y las de emergencia se documentan como **runbook** versionado: respaldo y restauración, recuperación ante fallo, rotación de un secreto expuesto ([`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)), reversión de un release ([`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta)). Un procedimiento crítico que solo vive en la cabeza de alguien no existe cuando esa persona no está.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 12 · sin ejemplo.** **Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+Cabe justo: **320 de 320**, el límite exacto. Quien la edite tiene que quitar antes de poner.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## OB5 · Postmortem sin culpa
 
 Tras un incidente relevante se escribe un **postmortem** (del [plantillas/postmortem.md](../plantillas/postmortem.md)): qué pasó, impacto, causa raíz, línea de tiempo y **acciones para que no vuelva** — centrado en el sistema y el proceso, **no en culpar a una persona**. El aprendizaje se registra como señal ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), tipo `error-resuelto`/`aprendizaje`) para que la memoria lo tenga.
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas.**
+
+- **Fila 10 · no cabe:** 357 caracteres.
+- **Fila 12 · sin ejemplo.**
+
+**Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+La fila **11** pasa: enlaza [plantillas/postmortem.md](../plantillas/postmortem.md) y [`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) en vez de repetir lo que dicen.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## OB6 · Operar en vivo lo hace el humano
 
 **Fuera de alcance por diseño:** ejecutar la operación, vigilar dashboards en tiempo real y responder incidentes en caliente son del humano. El agente **deja el sistema observable y los procedimientos escritos** para que esa operación sea posible y barata — no la reemplaza. Igual que en [`18·DP8`](18-despliegue-e-infraestructura.md#dp8--correr-contra-producción-lo-autoriza-el-humano), la identidad es *desarrollador senior*, no SRE de guardia.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas.**
+
+- **Fila 10 · no cabe:** 356 caracteres.
+- **Fila 12 · sin ejemplo.**
+
+**Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
+
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
+
+**Es la que menos lo necesita de las catorce:** declara un fuera de alcance —operar en vivo es del humano— y un límite no se ilustra con un error, se lee.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
