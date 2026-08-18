@@ -11,6 +11,73 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.4.0 — 2026-08-18
+
+**MENOR** — cuatro comprobaciones nuevas, una herramienta que mueve sin romper, y un procedimiento que se va a su capítulo. Aditivo: ningún proyecto al día tiene que hacer nada.
+
+### Ningún validador termina en silencio
+
+**Treinta y tres de los cuarenta y cinco programas de `validadores/` salían con código 0 sin imprimir nada.** Un módulo que calla no es que falte: **afirma** — sale igual que cuando ha mirado todo y está en orden. Una fase se lo creyó y escribió «cero enlaces rotos» sobre veinte.
+
+Ahora cada uno muere diciendo por dónde se corre, con su subcomando exacto, y sale con **código 2**: ni 0 ni 1, para que «no comprobé nada» no se confunda ni con «todo bien» ni con «hay fallas».
+
+- **`validar.py metareglas`**, que faltaba. Es el único programa que comprueba once de las veinte filas del [checklist del estándar](base/20-meta-reglas/checklist.md) —entre ellas la 5, que `M3` necesita, y la 15, que impide que una regla normal mande sobre una `[BLINDADA]`— y no tenía por dónde correrse desde el 2026-08-14.
+- La prueba que lo protege **lee los módulos del disco, no una lista**, así que el programa número 46 entra solo. Uno de sus casos comprueba que la lista no esté vacía: un barrido sobre cero archivos pasaría diciendo lo mismo que uno sobre cuarenta.
+
+### Un sello de checklist vencido se reporta
+
+Cada bloque de checklist cierra con «vale mientras el texto de arriba no cambie», y **nada lo comprobaba**. Una regla podía editarse y seguir mostrando un CUMPLE aplicado contra otro texto, otra versión y otro día. Es peor que no tener sello: el que no lo tiene al menos no engaña.
+
+- Se compara **la fecha del sello contra la del último cambio**, y la fecha sale del control de versiones y no del disco: la del sistema de archivos cambia con un `clone`, un `checkout` o un antivirus, y daría vencidos falsos en cada máquina nueva. Sin dato **no se inventa un vencimiento**.
+- Sale como **aviso**. Que un sello caducó no es que la regla esté mal escrita: es que hay que volver a mirarla.
+- **Son 36 de 73.** Casi la mitad de las reglas selladas. Ese número no se sabía.
+
+### Los enlaces y las citas dejan de reportar lo que no es
+
+Cinco falsos positivos en `base/`, resueltos **sin tocar una línea de `base/`** — torcer el texto para callar al validador era la salida mala.
+
+- Un enlace escrito entre comillas invertidas es una **muestra**, no un enlace: `comun.enlaces()` ya no mira ahí, igual que cualquier lector de Markdown.
+- Un identificador en una **columna de ejemplos** —«Lo que sale mal»— muestra, no cita.
+- La **segunda mención** del mismo archivo no pide enlace si la primera lo lleva.
+- El **ancla al mismo archivo** es la forma correcta de citar a una vecina.
+- Un enlace con `%20` se decodifica antes de buscarlo en disco.
+
+**Y el reparador obedece al validador.** Medido antes de arreglarlo, `citas.py --aplicar` habría **escrito** esos cinco errores en `base/`. Si el validador no lo reporta, el reparador no lo toca.
+
+### La carpeta del día nace con su línea en el índice
+
+El enganche del resumen creaba la carpeta y el archivo, y no anotaba ninguno de los dos índices. Un resumen que no está en el índice es un resumen que nadie va a abrir — el defecto que el resumen existe para arreglar.
+
+Se cerró por los dos caminos, porque hacen falta los dos: el enganche **escribe** la línea, y un validador **rompe** si falta. El enganche solo cubre lo que nazca de aquí en adelante.
+
+**El enganche sigue sin escribir hallazgos:** poner el nombre de una carpeta en una lista no interpreta nada.
+
+### Mover un documento ya no rompe sus citas
+
+Nace [`validadores/cerrar.py`](validadores/cerrar.py). **No busca texto:** resuelve cada enlace contra el disco y compara rutas absolutas, así que da igual cuántos `../` lleve delante.
+
+- Cerrar un pendiente a mano dejaba **58 enlaces rotos en 39 archivos**. Se midió al mover el 53.
+- Recalcula **las dos direcciones**: lo que cita al archivo y lo que el archivo cita. Mover un documento lo baja un nivel y sus propios `../` quedan cortos.
+- `mover()` sirve para cualquier `.md`, no solo para un pendiente.
+
+### El registro de versión ya no dice que falta escribirse
+
+El apartado «Qué quedó pendiente» se calculaba **antes** de escribir el archivo, así que el registro recién nacido se listaba a sí mismo como faltante. Ahora se calcula después: la foto se toma con el trabajo terminado.
+
+Cuesta escribir el archivo dos veces. Es el precio de que diga la verdad.
+
+### `base/13-documentacion/retrodocumentacion.md`
+
+**Un procedimiento no es un molde:** no se copia ni se llena, se lee y se sigue. Estaba en `plantillas/` y pasa a vivir junto a la regla que lo exige, donde ya estaba `render-local-de-md.md`. Sus citas se arrastraron con él, y sus enlaces pasaron de `«RUTA-ESTANDAR»` a rutas relativas: `plantillas/` se copia dentro de los proyectos y `base/` no.
+
+Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **dos** cosas —modelos que llena una persona y fuentes con las que el instalador genera— y trae la pregunta que las separa. Con eso, un archivo sin marcas `«…»` deja de necesitar una lista de excepciones escrita a mano.
+
+### Reglas puestas al día
+
+- **`02·F13`** tiene su checklist aplicado otra vez. Decía «pendiente de aplicar» desde el 2026-08-08, una forma que el validador no reconocía: figuraba como aviso cuando era una regla publicada sin sello válido. **Reprueba la fila 10** —631 caracteres para un molde de 320— y así queda escrito.
+- **`14·EST3`** reprobaba la misma fila por **tres caracteres**. Se recortó el porqué y quedó en CUMPLE. No cambia qué exige.
+- **`14·EST1` y `14·EST3`** quedan selladas en CUMPLE; **`14·EST2` en NO CUMPLE**, y su bloque dice por qué: son tres reglas metidas en una, y por eso ni el título puede ser imperativo ni el cuerpo cabe.
+
 ## 23.3.0 — 2026-08-17
 
 **MENOR** — dos comprobaciones nuevas que cuentan lo que antes se contaba a mano. Aditivo: ningún proyecto al día tiene que hacer nada.
