@@ -4,6 +4,17 @@
 >
 > **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje…), se agrega una entrada abajo con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, verificar que sigue vigente (regla `01`·C2).
 
+## Lo que se aprendió va acá; lo que falta hacer, a `pendientes/`
+
+Los dos salen del mismo momento y por eso se confunden. La pregunta que los separa:
+
+| Si la frase dice… | Es | Va a |
+|---|---|---|
+| …**qué pasó y qué se decidió** | Señal | Este archivo |
+| …**qué falta hacer** | Pendiente | `pendientes/`, con su historia de usuario |
+
+Una misma conversación suele dejar las dos. Escribir solo una de ellas es lo que hace que el aprendizaje se pierda o que el trabajo pendiente se olvide.
+
 ## Tipos de señal
 
 `decisión` · `error-resuelto` · `patrón` · `aprendizaje` · `alternativa-descartada` · `supuesto` · `restricción` · `pregunta-abierta` · `gotcha` · `deuda-técnica`
@@ -12,14 +23,15 @@
 
 ```
 ## S-000 · «título corto»  ·  tipo · estado
-- **What:** qué se decidió / hizo / encontró.
-- **Why:** por qué (la razón que no está en el código).
-- **Where:** [archivo:línea](ruta)  ·  o el módulo/área.
-- **Learned:** la lección para la próxima vez (si aplica).
-- **When/Who:** «fecha» · «quién o qué rol».
-- **Scope:** módulo «X» / proyecto / organización.
-- **Rel:** reemplaza a S-00 / relacionada con S-00 / —.
+- **Qué pasó:** qué se decidió, se hizo o se encontró.
+- **Por qué importa:** la razón que no está en el código.
+- **Qué se decidió:** la lección para la próxima vez.
+- **Dónde queda:** [archivo:línea](ruta) · o el módulo/área.
 ```
+
+**Cuatro campos, no siete.** El molde tenía además `When/Who`, `Scope` y `Rel`, y **siete campos se llenan las dos primeras veces**: a la tercera la señal no se escribe, que es peor que escribirla incompleta. La fecha y quién la escribió ya los guarda el control de versiones; el alcance y las relaciones se dicen en el texto cuando hacen falta.
+
+Si una señal necesita decir a cuál reemplaza, se escribe en **Qué se decidió** — es parte de la decisión, no un campo aparte.
 
 - **estado:** `activa` · `reemplazada` · `revertida`.
 - **id:** `S-001`, `S-002`… correlativo, para poder referenciar y enlazar.

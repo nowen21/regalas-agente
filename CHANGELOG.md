@@ -11,6 +11,28 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.6.0 — 2026-08-18
+
+**MENOR** — el enganche que recuerda escribir la señal, y su molde recortado. Aditivo.
+
+### El recordatorio llega en el turno, no al cerrar
+
+Nace [`validadores/hook_senales.py`](validadores/hook_senales.py), conectado a `UserPromptSubmit`. Al cerrar la sesión no sirve: **un chat no tiene final** y nadie sabe cuál fue el último mensaje hasta mucho después.
+
+**Lo difícil no era avisar: era que no se volviera ruido**, que es lo que pasa con un aviso en cada turno. Tres condiciones lo evitan, y las tres tienen prueba: una vez por sesión, solo si el proyecto lleva señales, y **nunca escribe una señal** — reconocer qué merece serlo es criterio del agente.
+
+La marca de «ya avisé» vive dentro del propio archivo, en un comentario invisible al leerlo. Un temporal se borraría al reiniciar y el aviso volvería.
+
+### El molde de la señal pasa de siete campos a cuatro
+
+**Qué pasó · por qué importa · qué se decidió · dónde queda.** Siete campos se llenan las dos primeras veces, y a la tercera la señal no se escribe — que es peor que escribirla incompleta.
+
+Nada se pierde: la fecha y el autor los guarda el control de versiones.
+
+### La plantilla dice qué es señal y qué es pendiente
+
+Lo que se aprendió va a las señales; lo que falta hacer, a `pendientes/`. **Los dos salen del mismo momento y por eso se confunden**, y una misma conversación suele dejar las dos.
+
 ## 23.5.0 — 2026-08-18
 
 **MENOR** — una regla nueva de conducta. Aditiva: ningún proyecto al día tiene que hacer nada.
