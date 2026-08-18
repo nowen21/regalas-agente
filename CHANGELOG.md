@@ -11,6 +11,25 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.5.0 — 2026-08-18
+
+**MENOR** — una regla nueva de conducta. Aditiva: ningún proyecto al día tiene que hacer nada.
+
+### `01·C23` · Busca en el repositorio antes de preguntar
+
+Antes de pedirle una decisión al usuario se busca si ya la dejó escrita, **en este orden**: la historia y su §9 · la épica · el resumen de sesión · el histórico · la memoria. De lo más específico a lo más general, parando en cuanto se encuentra.
+
+Si está, se sigue **citando dónde** —o se muestra, si contradice lo pedido—. Si no, se pregunta **diciendo dónde se buscó**.
+
+- **De dónde sale:** el 2026-08-14 el agente preguntó en qué orden trabajar dos historias y ofreció tres opciones. La respuesta estaba en la §9 de una de ellas. **La pregunta tenía premisa falsa:** cualquiera de las tres respuestas habría contradicho algo ya decidido.
+- **No reduce las preguntas, cambia cuáles.** Preguntar lo que de verdad no está decidido es lo que evita adivinar.
+- **Extiende [`01·C7`](base/01-conducta.md#c7--ante-dos-lecturas-pregunta)**, que manda preguntar ante dos lecturas y **da por hecho que el dato no está**.
+- **Validable a medias, y así queda registrada:** que el agente haya buscado no lo puede ver ningún programa; que la respuesta traiga su cita, sí — y esa mitad queda pendiente.
+
+**El orden no salió de una preferencia:** salió de dónde el estándar ya manda escribir cada cosa. Una decisión sobre una historia vive en la historia antes que en el histórico.
+
+**Dos cosas las destapó el plan de pruebas, no la lectura.** La primera redacción no cubría el `CA-03` —mostrar la contradicción— y no cabía en el molde: 368 caracteres para 320. Se corrigió la regla, no el criterio, y el porqué del orden se fue a la historia.
+
 ## 23.4.0 — 2026-08-18
 
 **MENOR** — cuatro comprobaciones nuevas, una herramienta que mueve sin romper, y un procedimiento que se va a su capítulo. Aditivo: ningún proyecto al día tiene que hacer nada.

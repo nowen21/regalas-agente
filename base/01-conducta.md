@@ -831,3 +831,42 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción; que el agente pueda preguntar en vez de reintentar no es un caso exento, son las dos formas de cumplir lo mismo. La fila **2** se buscó por concepto y se leyó el capítulo entero: [`C1`](01-conducta.md#c1--avisa-antes-de-tocar) y [`C17`](01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación) fijan qué cuenta como **aprobación**, y ninguna dice qué significa un rechazo; son cosas distintas y se cumplen por separado. La fila **9** pide una sola exigencia, y es una: no dar por retirado lo que el usuario no retiró. La fila **17** no choca con `C1`: esta no autoriza a seguir sin el sí, dice hasta dónde llega el no.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## C23 · Busca en el repositorio antes de preguntar
+
+Lo ya decidido no se pregunta otra vez. Antes de pedir una decisión se busca si está escrita —la historia y su §9, la épica, el resumen de sesión, el histórico, la memoria— y si está, se sigue **citando dónde** —o se muestra, si contradice lo pedido—. Si no, se pregunta diciendo dónde se buscó (extiende [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta)).
+
+```
+INCORRECTO: "¿en qué orden trabajo estas dos historias?" — y la §9 de una de
+            ellas ya declaraba que depende de la otra
+CORRECTO:   "voy por HU-009 primero: la §9 de HU-008 la declara como
+            dependencia con impacto alto"
+```
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**El orden de búsqueda se recortó del cuerpo y no se perdió**, que es lo que la fila 10 pide cuando algo no cabe: la regla nombra los cinco sitios en una línea, y el porqué de ese orden —de lo más específico a lo más general, y parar en cuanto se encuentre— vive en la historia que la origina, [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). El cuerpo pasó de 368 a 271 caracteres, y volvió a 311 al cubrir el tercer criterio de la historia —mostrar la contradicción— que la primera redacción se había dejado. **Ese hueco lo destapó el plan de pruebas, no la lectura:** su caso `CP-001` decía «este es el que hay que mirar con cuidado» antes de mirarlo.
+
+La fila **2** se buscó por concepto y se leyó el capítulo entero. [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta) dice que se pregunte cuando hay dos lecturas posibles, y [`C21`](01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar) que se pida el dato que falta: **las dos dan por hecho que el dato no está**. Ninguna dice que haya que mirar antes. Por eso esta **extiende** a `C7` en vez de repetirla: agrega el paso previo.
+
+La fila **9** es una sola exigencia. Buscar y citar dónde no son dos cosas: una búsqueda cuyo resultado no se puede comprobar no sirve de nada, y la cita es lo único que la hace comprobable.
+
+La fila **16** es N/A: no tiene excepción. **Que se pregunte lo que no está escrito no es un caso exento — es la regla funcionando.** Esta no reduce las preguntas, cambia cuáles.
+
+La fila **17** no choca con `C7`. Al revés: sin este paso, `C7` autoriza a preguntar algo que ya tiene respuesta, y eso le devuelve al usuario el trabajo de leer lo que él mismo dejó escrito.
+
+**Es validable a medias, y así queda registrada:** que se haya buscado no lo puede ver ningún programa. Que la respuesta traiga su cita, sí.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

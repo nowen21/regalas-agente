@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Done |
 
 ---
 
@@ -109,8 +109,8 @@ Y pregunta cuál de las dos manda antes de tocar nada
 
 ### Criterios de aceptación transversales
 
-- [ ] **Límites** — la decisión escrita en dos sitios que dicen distinto, y la escrita en un sitio que el orden de búsqueda no cubre, tienen comportamiento definido.
-- [ ] **No regresión** — la exigencia de preguntar el pedido incompleto sigue vigente y no se debilita.
+- [x] **Límites** — el orden para en cuanto encuentra, así que la decisión escrita en dos sitios se resuelve por el primero; la que el orden no cubre cae en «no está» y se pregunta.
+- [x] **No regresión** — [`01·C7`](../../../../base/01-conducta.md#c7--ante-dos-lecturas-pregunta) y [`01·C21`](../../../../base/01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar) siguen vigentes: `C23` las extiende, no las debilita.
 
 ---
 
@@ -134,10 +134,11 @@ Y pregunta cuál de las dos manda antes de tocar nada
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Escribir la regla en el capítulo `01 · Conducta de la IA`, con el orden de búsqueda.
-- [ ] Decidir y escribir el orden: la historia y su §9, la épica, el resumen de sesión, el histórico, la memoria del agente.
-- [ ] Declarar si es validable (`20·M9`) y por qué. Buscar antes de preguntar no se puede comprobar desde afuera; lo que sí se puede es exigir la cita en la respuesta.
-- [ ] Versionar el cambio (`20·M10`).
+- [x] Escribir la regla en el capítulo `01 · Conducta de la IA`, con el orden de búsqueda — es [`01·C23`](../../../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar).
+- [x] Decidir y escribir el orden: la historia y su §9, la épica, el resumen de sesión, el histórico, la memoria del agente.
+- [x] Declarar si es validable (`20·M9`) y por qué. **Validable a medias:** que se haya buscado no se ve; que la respuesta traiga su cita, sí.
+- [x] Versionar el cambio (`20·M10`) — 23.5.0, **MENOR**.
+- [ ] **Queda:** el programa que comprueba la mitad validable. Es su propia fase.
 
 ---
 
@@ -147,7 +148,7 @@ Y pregunta cuál de las dos manda antes de tocar nada
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| — | — | — | — | — | Sin empezar |
+| [`A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar`](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/) | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md) | [resultado_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md) · **Cumple** | Cerrada |
 
 **De dónde sale esta historia:** el [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md), que la redactó y le puso este mismo identificador.
 
@@ -180,15 +181,15 @@ Y pregunta cuál de las dos manda antes de tocar nada
 - [x] Criterios de aceptación definidos y testeables
 - [x] Reglas de negocio documentadas
 - [x] Dependencias identificadas
-- [ ] Decidido el orden de búsqueda
+- [x] Decidido el orden de búsqueda
 
 ## 11. Definition of Done (DoD)
 
-- [ ] La regla escrita en el capítulo `01`, con su orden de búsqueda
-- [ ] Los tres criterios de aceptación verificados
-- [ ] Declarada validable o no, con su motivo (`20·M9`)
-- [ ] Versionada (`20·M10`)
-- [ ] El pendiente 24 cerrado nombrando la fase
+- [x] La regla escrita en el capítulo `01`, con su orden de búsqueda
+- [x] Los tres criterios de aceptación verificados
+- [x] Declarada validable a medias, con su motivo (`20·M9`)
+- [x] Versionada (`20·M10`) — 23.5.0
+- [x] El pendiente 24 cerrado nombrando la fase
 
 ---
 
