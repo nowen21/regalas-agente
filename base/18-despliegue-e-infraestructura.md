@@ -18,7 +18,7 @@ Se compila/empaqueta **una sola vez** y ese mismo artefacto inmutable (imagen, p
 
 ## DP4 · Config por entorno, fuera del artefacto
 
-El artefacto es **agnóstico del entorno**; la configuración y los secretos se inyectan al desplegar, no se hornean adentro (`11`, [`04·S4`](04-seguridad.md#s4--gestión-de-secretos)). Así la misma imagen corre en cualquier entorno cambiando solo su config, y un secreto no viaja dentro del build.
+El artefacto es **agnóstico del entorno**; la configuración y los secretos se inyectan al desplegar, no se hornean adentro (`11`, [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)). Así la misma imagen corre en cualquier entorno cambiando solo su config, y un secreto no viaja dentro del build.
 
 ## DP5 · Release reversible, con plan de vuelta
 

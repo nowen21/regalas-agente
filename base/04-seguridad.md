@@ -17,6 +17,30 @@ INCORRECTO: oculto el botón "Eliminar" y confío en que no llamen al endpoint
 CORRECTO:   verifico permiso en el servidor + valido el scope del registro
 ```
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 437 caracteres para un molde de 320.** El análisis del 2026-08-07 la daba por cumplida; es el cuarto caso en que esa fila estaba medida a ojo.
+
+Lo demás pasa, y la regla es de las que más se citan del capítulo. **Acortarla es delicado justamente por eso:** lo que sobra hay que quitarlo sin tocar lo que otras reglas dan por dicho.
+
+Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## S2 · Valida y sanea toda entrada externa
 
 Todo dato de afuera (formularios, URL, cabeceras, archivos, APIs) es **no confiable** hasta validarlo.
@@ -30,6 +54,28 @@ Todo dato de afuera (formularios, URL, cabeceras, archivos, APIs) es **no confia
 INCORRECTO: renderizar directo lo que escribió el usuario
 CORRECTO:   escapar la salida al renderizar (XSS)
 ```
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 349 caracteres.** Se pasa por poco y lo demás pasa.
+
+Está clasificada y con validador escrito —`seguridad.py`—, así que la fila **18** pasa con programa detrás.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S3 · Nunca construyas consultas ni comandos por concatenación
 
@@ -45,7 +91,32 @@ INCORRECTO: crear el registro volcando todo el payload de la petición
 CORRECTO:   asignar solo los campos permitidos explícitamente
 ```
 
-## S4 · Gestión de secretos
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas.**
+
+- **Fila 9 · son tres frentes**, y el análisis del 2026-08-07 nombró el que sobra: la **asignación masiva** no es concatenación. Los otros dos —consultas y comandos de shell— sí son la misma exigencia vista en dos sitios.
+- **Fila 10 · no cabe:** 358 caracteres, y se pasa por el tercer frente.
+
+El corte propuesto entonces sigue valiendo: la asignación masiva a una `S12` propia.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## S4 · Guarda los secretos fuera del código y rota el que se expuso
 
 El mínimo está en [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Además:
 
@@ -58,12 +129,65 @@ INCORRECTO: const API_KEY = "sk-live-abc123"
 CORRECTO:   leerla de la configuración de entorno; el valor real no se versiona
 ```
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Gestión de secretos»: nombra un tema y no enuncia ninguna norma. Pasa a *Guarda los secretos fuera del código y rota el que se expuso*. **No cambia qué exige la regla.** Es el quinto título así corregido hoy.
+
+**Quedan dos filas, y las dos ya estaban señaladas.**
+
+- **Fila 11 · texto prestado.** Sus dos primeros puntos son [`11·CFG1`](11-configuracion-entornos.md#cfg1--la-configuración-vive-fuera-del-código) y [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla) dichas otra vez. Lo propio es **la rotación**: que un secreto expuesto se rota y no basta con borrarlo. Eso no lo dice nadie más.
+- **Fila 10 · no cabe:** 324 caracteres, y se pasa **por lo prestado**.
+
+**Es el mismo caso que [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)**: quitar lo repetido la deja cabiendo sola. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## S5 · CSRF, sesiones y transporte
 
 - **CSRF:** token anti-falsificación en acciones que cambian estado por navegador; no lo desactives por comodidad.
 - **Sesiones:** cookies `HttpOnly` y `Secure`; invalidar al cerrar sesión; expiración razonable.
 - **Transporte:** datos sensibles siempre por HTTPS.
 - **Contraseñas:** hashing fuerte con salt, nunca en texto plano.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+
+**Tres filas, y el análisis del 2026-08-07 ya la tenía en rojo.**
+
+- **Fila 8 · el título junta cuatro temas con comas y una «y»:** CSRF, sesiones, transporte. Y adentro hay una cuarta que el título ni nombra — el hashing de contraseñas.
+- **Fila 9 · son cuatro exigencias** y se cumplen por separado con toda facilidad: un sistema puede tener el token anti-falsificación puesto y las contraseñas en texto plano.
+- **Fila 12 · sin ejemplo.**
+
+**No se le agregó el ejemplo, y es a propósito:** con cuatro exigencias adentro, cualquier ejemplo cubre una y deja tres sin ilustrar. El ejemplo llega cuando se sepa con qué se queda cada regla. Partirla en cuatro va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S6 · Archivos sensibles: privado + acceso controlado
 
@@ -80,9 +204,59 @@ INCORRECTO: documento sensible en carpeta pública con URL directa
 CORRECTO:   almacenamiento privado + endpoint con auth/permiso/scope
 ```
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Fila 9 · cinco sub-exigencias**, y la fila **10** en consecuencia: 542 caracteres.
+
+El análisis del 2026-08-07 proponía sacar de ahí la **preservación** y el **respaldo**, que son otro tema —qué pasa con el archivo después—, y dejar la regla con lo suyo: que el archivo sensible nace privado y se sirve con control de acceso.
+
+También solapa con [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Ahí la salida es la de siempre: que el núcleo **enlace** hacia acá, no que esta repita al núcleo.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## S7 · Dependencias sin vulnerabilidades conocidas
 
 Mantén las dependencias al día y **audita vulnerabilidades** con la herramienta del ecosistema. No introduzcas una con vulnerabilidades sin resolver (detalle en `10`).
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ❌ N/A ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+
+**Fila 11 · texto prestado, y en referencia circular.** Esta regla y [`10·DEP3`](10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día) dicen lo mismo y se citan entre sí. El análisis del 2026-08-07 fue explícito sobre cuál sobra: **`DEP3` es el dueño** —una vulnerabilidad de una dependencia es asunto de dependencias— y la salida es **derogar esta**.
+
+**Es la otra mitad de lo que ya quedó anotado al sellar `DEP3` hoy.** Las dos reprueban la misma fila por el mismo motivo, y la única forma de arreglarlas es la misma: una de las dos deja de existir.
+
+**Cabe de sobra —167 de 320— y aun así no se puede quedar.** Que una regla esté bien escrita no la salva de sobrar.
+
+Derogarla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y no es lo mismo que borrarla: [`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) fija cómo se hace sin romper las citas.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S8 · No filtres información en errores
 
@@ -92,6 +266,30 @@ Los errores de cara al usuario no exponen internos (trazas, consultas, rutas, ve
 INCORRECTO: mostrar la traza y el SQL en una página de error
 CORRECTO:   loguear el detalle; al usuario, mensaje claro sin internos
 ```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cabe —175 de 320—, tiene su ejemplo y dice lo suyo.
+
+**El análisis del 2026-08-07 la marcaba por duplicar el tercer punto de [`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico), y pedía elegir dueño. Ya está elegido, y es esta:** `E3` la **enlaza** como el motivo de que la traza no llegue al usuario, y se quedó con lo suyo —los dos niveles de mensaje—.
+
+Se comprobó al sellar el capítulo `05` hoy, desde el otro lado, y coincide. **Es la misma solución que arregló [`08·T5`](08-pruebas.md#t5--ejecuta-y-reporta) y [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md):** no derogar ninguna, sino que la de al lado declare qué toma y se quede con lo que agrega.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S9 · No toques rutas del sistema fuera del proyecto · solo autorizadas exactas
 
@@ -112,6 +310,32 @@ CORRECTO:   quedarse dentro del proyecto; si algo fuera realmente es necesario,
             reportarlo y esperar autorización de la ruta exacta
 ```
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 1278 caracteres, cuatro veces el molde.**
+
+**Pero conviene leerla antes de acortarla, porque es el modelo de referencia del cuerpo entero.** El análisis del 2026-08-07 la señaló así: *«la excepción declara condición, límite y autorizador»* y recomendaba **usarla como plantilla**. Es la única del estándar que cumple [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) entera.
+
+Eso importa hoy más que cuando se escribió: al aplicar el checklist aparecieron **tres excepciones sin autorizador** —[`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--valores-configurables-van-a-catálogo--cero-hardcode) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app)— y esta es de dónde copiar la forma.
+
+**Al acortarla, la excepción no se toca.** Lo que sobra es lo de alrededor.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## S10 · No mates procesos globales · solo PID exacto y estrictamente necesario
 
 El agente **no mata procesos** del sistema operativo con criterios amplios (por nombre de binario, por patrón, "todos los `node`", "todos los `php`"). Matar procesos globales puede tumbar servicios que el usuario está usando en paralelo (otras terminales, IDEs, servidores de desarrollo de otros proyectos, tareas de fondo del OS).
@@ -130,6 +354,30 @@ INCORRECTO: "hay procesos node colgados" → `killall node` → matas el IDE del
 CORRECTO:   identificar el PID exacto del proceso que arrancó la fase actual y matar
             solo ese PID
 ```
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 1028 caracteres.** Es lo único que reprueba.
+
+La fila **5** pasa, y vale decir por qué porque no es evidente: la regla nombra `killall`, `pkill` y `taskkill`. El análisis del 2026-08-07 lo miró y lo dio por **defendible** — no son producto ni framework sino los nombres del oficio para la misma acción en cada sistema, y quitarlos dejaría la regla sin decir qué prohíbe.
+
+Su excepción está completa, como la de `S9`.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S11 · Escritura contra el almacén productivo requiere autorización por operación
 
@@ -162,6 +410,32 @@ CORRECTO:   `destroy()` con soft-delete = escritura productiva · describir cuá
 ```
 
 **Encadenamiento:** `00 N4` (protege los datos reales) es el principio blindado · `S11` es la especificación operativa · `01 C1` (avisa antes de tocar) — en el contexto de BD productiva, "avisar" significa autorización explícita por operación, no permiso de sesión.
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+
+**Era el otro ❌ de prioridad alta del análisis del 2026-08-07, junto con [`03·D1`](03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría).**
+
+- **Fila 9 · se autodeclara doble.** Dice literalmente *«Regla 1»* y *«Regla 2»* dentro de su propio cuerpo. Cuando una regla necesita numerar sus partes, ya son dos: la autorización por operación y que el borrado lógico cuenta como escritura.
+- **Fila 5 · nombra un stack.** `destroy()`, `SoftDeletes` y `deleted_at` son de un framework concreto. Es el segundo caso hoy, tras [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos), y aquí **no se corrigió**: a diferencia de aquel, el ejemplo no es un añadido sino que el nombre del método **es el argumento** —el punto de la regla es que `destroy()` suena a borrar y escribe—. Reescribirlo en concepto es parte de partirla, no un arreglo aparte.
+- **Fila 10 · no cabe:** 1859 caracteres.
+
+Va entera al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). **Su segunda mitad es la que más vale:** que el borrado lógico cuente como escritura es el matiz que evita el escape silencioso, y ninguna otra regla lo dice.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ---
 

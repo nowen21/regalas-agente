@@ -6,7 +6,7 @@ Lo que cambia entre entornos (local, pruebas, producción) y lo que se configura
 
 ## CFG1 · La configuración vive fuera del código
 
-Lo que cambia entre entornos (credenciales, URLs, claves, flags de entorno) se lee de la **configuración de entorno**. El mismo código corre en todos lados; cambia la config que recibe. Secretos, nunca en el código ([`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada), [`04·S4`](04-seguridad.md#s4--gestión-de-secretos)).
+Lo que cambia entre entornos (credenciales, URLs, claves, flags de entorno) se lee de la **configuración de entorno**. El mismo código corre en todos lados; cambia la config que recibe. Secretos, nunca en el código ([`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada), [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)).
 
 > Esto es config de **infraestructura**. Los valores **del negocio** que un admin cambiaría (umbrales, listas, textos) van a **catálogo en la BD** ([`03·D4`](03-datos.md#d4--valores-configurables-van-a-catálogo--cero-hardcode)).
 
@@ -31,7 +31,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**El análisis del 2026-08-07 la marcaba en amarillo por dueño**, porque solapa con [`04·S4`](04-seguridad.md#s4--gestión-de-secretos). Se revisó: **no la repite, la enlaza** — la regla dice que la configuración vive fuera del código y remite a `S4` para el secreto en sí. Eso es exactamente lo que pide la fila 4 cuando dos capítulos se rozan, y lo que la 11 prohíbe es copiar el cuerpo, no nombrar al vecino.
+**El análisis del 2026-08-07 la marcaba en amarillo por dueño**, porque solapa con [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso). Se revisó: **no la repite, la enlaza** — la regla dice que la configuración vive fuera del código y remite a `S4` para el secreto en sí. Eso es exactamente lo que pide la fila 4 cuando dos capítulos se rozan, y lo que la 11 prohíbe es copiar el cuerpo, no nombrar al vecino.
 
 La nota que la separa de [`03·D4`](03-datos.md#d4--valores-configurables-van-a-catálogo--cero-hardcode) —config de infraestructura contra valores de negocio— es lo que evita el choque de la fila 17, y el propio análisis la daba por «bien resuelta».
 

@@ -72,6 +72,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `08` Estrategia de pruebas | 7 | `T2`, `T3`, `T5`, `T6` | `T1`, `T4`, `T7` |
 | `17` Interfaz | 6 | `I2`, `I4`, `I5`, `I6` | `I1`, `I3` |
 | **`03` Datos** | 8 | `D2` | **`D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`** |
+| **`04` Seguridad** | 11 | `S8` | **`S1` a `S7`, `S9`, `S10`, `S11`** |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -124,7 +125,27 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
-### El capítulo `03` es el peor, y con diferencia
+### `04·S9` es el modelo de excepción, y hacía falta encontrarlo
+
+Al sellar el `04` apareció lo que resuelve las tres excepciones incompletas: **[`04·S9`](../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es la única regla del estándar cuya excepción declara condición, límite y autorizador**, como pide `M8`. El análisis del 2026-08-07 ya recomendaba usarla de plantilla.
+
+**Al acortarla, su excepción no se toca.** Es lo único de esa regla que hay que preservar entero.
+
+### La cuenta por capítulo, para decidir por dónde seguir
+
+| Capítulo | Reglas | Reprueban | Nota |
+|---|---|---|---|
+| `04` Seguridad | 11 | **10** | Nueve se pasan del molde; `S5` y `S11` hay que partirlas |
+| `03` Datos | 8 | **7** | `D7` mide 3839 caracteres |
+| `08` Pruebas | 7 | 3 | `T1` es la de la excepción que se autoriza sola |
+| `17` Interfaz | 6 | 2 | |
+| `05`, `12` | 5 y 5 | 2 y 2 | |
+| `07`, `10`, `11`, `14`, `15` | | 1 cada uno | |
+| **`06` Rendimiento** | 6 | **0** | El único al día |
+
+**El `04` y el `03` juntos son 17 de las 33 que reprueban.** Son los dos que más pesan y los dos que más cuesta tocar — seguridad y datos—, así que conviene tomarlos con tiempo y no de a ratos.
+
+### El capítulo `03` es el segundo peor
 
 **Siete de sus ocho reglas reprueban.** Solo `D2` cabe en el molde, y las otras siete se pasan de largo: `D7` mide **3839 caracteres —doce veces el molde y la regla más larga del cuerpo entero—**, `D8` mide 1962 y `D4` 1546.
 
@@ -194,10 +215,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **59** |
-| Publicadas en NO CUMPLE | 7 | 7 | **30** |
+| Sin bloque de checklist | 129 | 121 | **48** |
+| Publicadas en NO CUMPLE | 7 | 7 | **40** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Sesenta y dos reglas ganaron su sello hoy, en once capítulos —el `03`, el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Veintitrés de esas sesenta y dos dicen NO CUMPLE.
+Setenta y tres reglas ganaron su sello hoy, en doce capítulos —el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Treinta y tres de esas setenta y tres dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

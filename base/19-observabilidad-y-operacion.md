@@ -18,7 +18,7 @@ Los objetivos de servicio (SLO) y las alertas se declaran **versionados**, no se
 
 ## OB4 · Runbooks para lo que se opera
 
-Las operaciones recurrentes y las de emergencia se documentan como **runbook** versionado: respaldo y restauración, recuperación ante fallo, rotación de un secreto expuesto ([`04·S4`](04-seguridad.md#s4--gestión-de-secretos)), reversión de un release ([`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta)). Un procedimiento crítico que solo vive en la cabeza de alguien no existe cuando esa persona no está.
+Las operaciones recurrentes y las de emergencia se documentan como **runbook** versionado: respaldo y restauración, recuperación ante fallo, rotación de un secreto expuesto ([`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)), reversión de un release ([`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta)). Un procedimiento crítico que solo vive en la cabeza de alguien no existe cuando esa persona no está.
 
 ## OB5 · Postmortem sin culpa
 
