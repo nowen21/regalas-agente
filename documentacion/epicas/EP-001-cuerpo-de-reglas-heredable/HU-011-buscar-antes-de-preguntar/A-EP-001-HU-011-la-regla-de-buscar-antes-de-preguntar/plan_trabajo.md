@@ -16,7 +16,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** No hay fase previa en esta HU. La historia nació el 2026-08-17 al enrutar el backlog, con el texto que el propio pendiente traía redactado.
 
-**De dónde sale:** el [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md), del hallazgo H-1 del 2026-08-14.
+**De dónde sale:** el [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md), del hallazgo H-1 del 2026-08-14.
 
 **CA de la HU que cubre esta fase**
 

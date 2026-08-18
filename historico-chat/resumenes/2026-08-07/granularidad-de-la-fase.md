@@ -24,7 +24,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-granularidad-de
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [`F12.9` y `F12.10`](../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Ocho días después nace la memoria [buscar en el repositorio antes de preguntar](../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md) por el defecto contrario.
+- **Dónde queda:** [`F12.9` y `F12.10`](../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Ocho días después nace la memoria [buscar en el repositorio antes de preguntar](../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md) por el defecto contrario.
 - **Nace en:** 2026-08-07 · granularidad de la fase.
 - **Cerrado en:** 2026-08-07 · granularidad de la fase.
 - **Con qué se retoma:** —.

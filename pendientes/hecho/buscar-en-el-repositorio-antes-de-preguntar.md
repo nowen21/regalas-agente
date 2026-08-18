@@ -1,14 +1,14 @@
 # Pendiente · Buscar en el repositorio antes de preguntar
 
-**Estado:** **cerrado** el 2026-08-18. Anotado el 2026-08-14 · nace del hallazgo H-1 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
+**Estado:** **cerrado** el 2026-08-18. Anotado el 2026-08-14 · nace del hallazgo H-1 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-011 — Buscar en el repositorio antes de preguntar](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) — el propio pendiente la redactó; acá queda creada con ese texto |
+| **Historia de usuario** | [EP-001 · HU-011 — Buscar en el repositorio antes de preguntar](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) — el propio pendiente la redactó; acá queda creada con ese texto |
 
 ## El problema
 
-El agente le preguntó al usuario en qué orden trabajar dos historias, ofreciéndole tres opciones. La respuesta ya estaba escrita: [HU-008](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) declara en su sección 9 que depende de HU-009, con impacto alto.
+El agente le preguntó al usuario en qué orden trabajar dos historias, ofreciéndole tres opciones. La respuesta ya estaba escrita: [HU-008](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) declara en su sección 9 que depende de HU-009, con impacto alto.
 
 La pregunta tenía premisa falsa: cualquiera de las tres respuestas habría contradicho una dependencia ya escrita. Y le devuelve al usuario el trabajo de leer lo que él mismo dejó escrito.
 
@@ -32,7 +32,7 @@ No es "no preguntar". Preguntar lo que no está decidido es lo que evita adivina
 
 # Cómo cerró — 2026-08-18
 
-Nace [`01·C23` · Busca en el repositorio antes de preguntar](../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar), con su bloque de checklist en **CUMPLE**. La fase es [`A-EP-001-HU-011`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/).
+Nace [`01·C23` · Busca en el repositorio antes de preguntar](../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar), con su bloque de checklist en **CUMPLE**. La fase es [`A-EP-001-HU-011`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar).
 
 ## El orden de búsqueda, que era lo único que faltaba decidir
 
@@ -54,6 +54,6 @@ Decía: *«no es "no preguntes"; preguntar lo que no está decidido es lo que ev
 
 ## Lo que queda abierto
 
-**La mitad comprobable no tiene programa.** Que el agente haya buscado no se puede ver; que la respuesta traiga su cita, sí — y nada lo comprueba. Está declarado en [validadores/reglas-validables.md](../validadores/reglas-validables.md).
+**La mitad comprobable no tiene programa.** Que el agente haya buscado no se puede ver; que la respuesta traiga su cita, sí — y nada lo comprueba. Está declarado en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
 
-Sin eso, `C23` depende de que el agente se acuerde, que es exactamente lo que el [58](58-nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí falló siete veces en tres días.
+Sin eso, `C23` depende de que el agente se acuerde, que es exactamente lo que el [58](../58-nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí falló siete veces en tres días.

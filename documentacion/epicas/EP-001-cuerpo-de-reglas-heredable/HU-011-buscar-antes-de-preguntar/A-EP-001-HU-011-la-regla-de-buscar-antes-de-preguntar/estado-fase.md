@@ -5,7 +5,7 @@
 | Campo | Valor |
 |---|---|
 | **Módulo** | Cuerpo de reglas — capítulo `01` |
-| **Épica / HU / Pendiente** | [EP-001](../../epica.md) · [HU-011](../HU-011-buscar-antes-de-preguntar.md) · [pendiente 24](../../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md) |
+| **Épica / HU / Pendiente** | [EP-001](../../epica.md) · [HU-011](../HU-011-buscar-antes-de-preguntar.md) · [pendiente 24](../../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md) |
 | **Última actualización** | 2026-08-18 |
 
 ---

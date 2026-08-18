@@ -26,7 +26,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** EP-001 · HU-011, buscar en el repositorio antes de preguntar. Su narrativa y su contexto quedan escritos en el pendiente 24, listos para bajarlos a la épica.
 - **Orden de resolución:** 2 de 2 · no bloquea la cadena de H-4.
-- **Dónde queda:** [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md).
+- **Dónde queda:** [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿es regla nueva de `base/01`, o le cabe a la regla que ya existe sobre el pedido incompleto?

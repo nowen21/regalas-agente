@@ -8,7 +8,7 @@
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
 
-**Qué cerró.** El [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md): nace [`01·C23`](../../../../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar), con su bloque de checklist en **CUMPLE**.
+**Qué cerró.** El [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md): nace [`01·C23`](../../../../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar), con su bloque de checklist en **CUMPLE**.
 
 **Por qué importaba.** El agente preguntó en qué orden trabajar dos historias y ofreció tres opciones; la respuesta ya estaba escrita en la §9 de una de ellas. La pregunta tenía premisa falsa —cualquiera de las tres respuestas habría contradicho una dependencia ya escrita— y le devolvía al usuario el trabajo de leer lo que él mismo dejó.
 

@@ -8,4 +8,4 @@ Contenido inmediato de esta carpeta.
 
 Todavía no tiene fases. Antes hay que decidir el **orden de búsqueda** —qué se lee primero y qué después—, porque sin ese orden la regla dice qué hacer pero no dónde, y cada sesión buscaría en un sitio distinto.
 
-De dónde sale: el [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md).
+De dónde sale: el [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md).

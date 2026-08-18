@@ -54,7 +54,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-checklist-de
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** en ninguna parte. Ocho días después el mismo problema, visto desde el otro lado, deja el [pendiente 24](../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md).
+- **Dónde queda:** en ninguna parte. Ocho días después el mismo problema, visto desde el otro lado, deja el [pendiente 24](../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md).
 - **Nace en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Cerrado en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Con qué se retoma:** —.

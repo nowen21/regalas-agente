@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-006 · HU-002 — Guardar en el repositorio](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — la señal es memoria de lo aprendido, y lo que falta es dónde se guarda |
+| **Historia de usuario** | [EP-006 · HU-002 — Guardar en el repositorio](../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — la señal es memoria de lo aprendido, y lo que falta es dónde se guarda |
 
 ## El problema
 
@@ -32,9 +32,9 @@ Decidir qué merece ser señal es criterio. Lo que se automatiza es el recordato
 
 ## 1 · El enganche
 
-[validadores/hook_senales.py](../validadores/hook_senales.py), conectado a `UserPromptSubmit`. Recuerda escribir la señal **en el turno**, no al cerrar — porque al cerrar no sirve: un chat no tiene final y nadie sabe cuál fue el último mensaje hasta mucho después.
+[validadores/hook_senales.py](../../validadores/hook_senales.py), conectado a `UserPromptSubmit`. Recuerda escribir la señal **en el turno**, no al cerrar — porque al cerrar no sirve: un chat no tiene final y nadie sabe cuál fue el último mensaje hasta mucho después.
 
-**Lo difícil no era que avisara: era que no se volviera ruido.** Un aviso que sale en cada turno se deja de leer, y entonces vale lo mismo que no tenerlo — es exactamente lo que el [58](58-nada-hace-cumplir-id9.md) describe con `ID9`, donde anotar el incumplimiento se volvió el sustituto de corregirlo.
+**Lo difícil no era que avisara: era que no se volviera ruido.** Un aviso que sale en cada turno se deja de leer, y entonces vale lo mismo que no tenerlo — es exactamente lo que el [58](../58-nada-hace-cumplir-id9.md) describe con `ID9`, donde anotar el incumplimiento se volvió el sustituto de corregirlo.
 
 Tres condiciones lo evitan, y las tres tienen su prueba:
 
@@ -67,4 +67,4 @@ Decidir qué merece ser señal sigue siendo criterio. **Lo que se automatizó es
 
 ## Cómo quedó comprobado
 
-[validadores/tests/test_enganche_de_senales.py](../validadores/tests/test_enganche_de_senales.py), 10 casos. Siete al aviso y tres a que **no detenga el trabajo**: sale con código 0 sobre una carpeta vacía, sobre una ruta que no existe y sobre este repositorio. Un enganche que rompe el turno es peor que el problema que resuelve.
+[validadores/tests/test_enganche_de_senales.py](../../validadores/tests/test_enganche_de_senales.py), 10 casos. Siete al aviso y tres a que **no detenga el trabajo**: sale con código 0 sobre una carpeta vacía, sobre una ruta que no existe y sobre este repositorio. Un enganche que rompe el turno es peor que el problema que resuelve.

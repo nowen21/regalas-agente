@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Cierra** | El [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md) |
+| **Cierra** | El [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md) |
 | **Fecha de cierre** | 2026-08-18 |
 | **Veredicto** | **Cumple** — [resultado_pruebas.md](resultado_pruebas.md) §5 |
 | **Versión** | 23.5.0 (**MENOR** — regla nueva, aditiva) |
