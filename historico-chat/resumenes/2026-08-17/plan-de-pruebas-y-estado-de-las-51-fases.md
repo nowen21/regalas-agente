@@ -8,19 +8,19 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-plan-de-pruebas
 
 ## Hallazgos de esta sesión
 
-### 1 · Las 51 fases abiertas tenían plan de trabajo pero no plan de pruebas ni estado
+### H-1 · Las 51 fases abiertas tenían plan de trabajo pero no plan de pruebas ni estado
 
 **Qué pasó.** La sesión anterior abrió 51 fases —una por cada HU sin fase del pendiente [48](../../../pendientes/48-inventario-hu.md)— y les dejó `plan_trabajo.md` y `README.md`. Faltaban los otros dos documentos que la fase necesita **antes** de ejecutarse: el `plan_pruebas.md`, que se aprueba junto con el plan ([`02·F4`](../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)), y el `estado-fase.md`, que dice en qué estación va.
 
 **Dónde queda.** Se escribieron los dos en cada fase. Los otros dos que faltan —`resultado_pruebas.md` y `funcionalidad_implementada.md`— **salen de ejecutar**, y ninguna de las 51 está aprobada todavía: escribirlos ahora sería inventar el resultado.
 
-### 2 · Una fase sin aprobar tiene un estado que decir, y no es "vacío"
+### H-2 · Una fase sin aprobar tiene un estado que decir, y no es "vacío"
 
 **Qué se aprendió.** El `estado-fase.md` no es un documento de cierre: es el que permite retomar. Escrito antes de ejecutar, dice la estación 4 —pausa y presentación—, el veredicto **«Todavía no se ejecutó»**, las tareas en Pendiente o **Bloqueada** con la duda que las bloquea, y qué falta para desbloquear.
 
 **Dónde queda.** En las 51 fases. En varias, la §1.2 deja a la vista que **casi todas las tareas están bloqueadas por una duda de §2.7 del plan** — no es un detalle de forma: es la lista de lo que hay que preguntarle al usuario para que la épica pueda avanzar.
 
-### 3 · Los CA que ya se sabe que van a quedar en «No» se declaran en el plan, no al correr
+### H-3 · Los CA que ya se sabe que van a quedar en «No» se declaran en el plan, no al correr
 
 **Qué se aprendió.** Varias fases retrodocumentan algo que **no está cumplido**: el cambio sin entrada en el registro no lo frena nadie ([EP-002 · HU-002](../../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-002-registro-de-cambios/HU-002-registro-de-cambios.md) CA-02), la regla sin clasificar tampoco ([EP-004 · HU-002](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-002-marca-de-comprobable-en-cada-regla/HU-002-marca-de-comprobable-en-cada-regla.md) CA-03), y el aviso de desfase no dice qué cambió ([EP-002 · HU-004](../../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md) CA-01).
 
@@ -28,7 +28,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-plan-de-pruebas
 
 **Dónde queda.** En el `plan_pruebas.md` de esas fases, y en el §1.1 de su `estado-fase.md`, que lo dice antes de correr.
 
-### 4 · El marcador `«RUTA-ESTANDAR»` deja 28 enlaces rotos en los documentos de fase de esta casa
+### H-4 · El marcador `«RUTA-ESTANDAR»` deja 28 enlaces rotos en los documentos de fase de esta casa
 
 **Qué se midió.** Al comprobar los 1438 enlaces relativos de los 140 `plan_pruebas.md` y `estado-fase.md` del árbol, salieron **28 rotos**. Ninguno en lo escrito hoy: los 28 están en las 19 fases que ya tenían esos documentos, y **todos** son el marcador `«RUTA-ESTANDAR»` sin resolver. En `documentacion/` la marca aparece en 47 archivos.
 

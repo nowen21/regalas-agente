@@ -11,6 +11,51 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.3 — 2026-08-18
+
+**PARCHE** — cuatro reglas nombraban un stack, un dominio o una herramienta. Se dicen en concepto; **ninguna cambia lo que exige**.
+
+### Quien heredaba el estándar leía reglas escritas para el stack de otro
+
+[`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre lenguaje, framework, motor, herramienta ni dominio real. Cuatro reglas lo hacían:
+
+| Regla | Decía |
+|---|---|
+| [`01·C10`](base/01-conducta.md#c10--cada-mensaje-del-usuario-se-evalúa-como-posible-mejora-del-setup) | `SQLite`, `MariaDB`, `React`, `Django` y «este ERP» |
+| [`01·C15`](base/01-conducta.md#c15--al-replicar-un-patrón-replicar-la-paridad-completa) | «el módulo Aportes», de un proyecto real |
+| [`01·C16`](base/01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo) | Las órdenes de lectura y edición del agente, y dos del control de versiones |
+| [`04·S10`](base/04-seguridad.md#s10--no-mates-procesos-globales--solo-pid-exacto-y-estrictamente-necesario) | `node` y `php` |
+
+**No rompe nada, y por eso duraba:** un proyecto lee la regla, la entiende a medias y la aplica peor.
+
+### `C10` no pasaba la pregunta que ella misma manda hacerse
+
+Es la regla que enseña a decidir si algo es transversal o local, y **su criterio para decidirlo nombraba dos frameworks**: *«¿esta regla tendría sentido en un proyecto React + Django de otra empresa?»*. Ahora pregunta por otra empresa, otro lenguaje y otro negocio.
+
+### La cuarta la encontró el programa, no una lectura
+
+`S10` no estaba en la lista, y su sello explica por qué: **sí había argumentado la fila 5** —para defender `killall`, `pkill` y `taskkill`— y **al hacerlo la dio por revisada**. Los dos intérpretes estaban tres líneas más arriba.
+
+**Un argumento sobre una fila no es una revisión de la fila.** Quien lee el sello ve que alguien la miró; no ve qué parte miró.
+
+Y el detector callaba la mitad: `node` no estaba en su lista, así que de los dos nombres solo reportaba `php`. Ahora conoce `node`, `deno`, `bun`, `dotnet` y `softdeletes` — **solo lo que se le escapó de verdad**, porque una lista inflada por precaución empieza a reportar de más y una comprobación que reporta de más se apaga.
+
+### Lo que se conserva, y por qué se escribió en una prueba
+
+**`killall`, `pkill` y `taskkill` se quedan.** No son producto ni framework: son cómo se llama la misma acción en cada sistema, y quitarlos deja a `S10` sin decir qué prohíbe.
+
+**Tienen su caso de prueba, y es el que más pesa de los nueve.** Un criterio que solo vive en un sello se pierde; uno que vive en una prueba se defiende solo — sin él, la próxima pasada los borra creyendo que mejora.
+
+**Y [`04·S11`](base/04-seguridad.md#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación) sigue nombrando `SoftDeletes`**, también a propósito: ahí el nombre del método **es el argumento** —suena a borrar y escribe—, así que reescribirlo es parte de partir la regla. La prueba contra `base/` no exige cero: exige exactamente esa lista.
+
+### El costo, dicho
+
+`C10` pasó de 1724 a 1780 caracteres. **Escribir en concepto es más largo que nombrar la herramienta**, y es por eso que el nombre propio sobrevive: se lee más fácil y convence más. El ejemplo con código real de `03·D8` duró cuatro meses.
+
+Fase: [`C-EP-001-HU-009`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/).
+
+---
+
 ## 23.7.2 — 2026-08-18
 
 **PARCHE** — dieciséis sellos de checklist decían dos cosas contrarias. Se corrige la descripción del veredicto; **ninguna regla cambia de texto**.

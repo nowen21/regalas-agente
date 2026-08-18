@@ -161,6 +161,27 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 
 ---
 
+## Las reglas con nombre propio: cerradas — 2026-08-18
+
+**Era el punto 2 de «por dónde conviene seguir», y decía tres. Eran cuatro.** Cerrado en la fase [`C-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/), v23.7.3.
+
+| Regla | Nombraba | Ahora dice |
+|---|---|---|
+| `01·C10` | `SQLite`, `MariaDB`, `React`, `Django`, «este ERP» | una base en memoria contra el motor de producción · un identificador de rol · «otra empresa, con otro lenguaje y otro negocio» |
+| `01·C15` | «el módulo Aportes» | «el módulo de referencia» |
+| `01·C16` | las órdenes del agente y dos del control de versiones | el paso, no la orden |
+| `04·S10` | `node` y `php` | «todos los procesos de tal intérprete» |
+
+**`C10` era la peor y por dónde falla:** es la regla que enseña a decidir si algo es transversal o local, y **su criterio nombraba dos frameworks**. La pregunta que le pedía al agente hacerse era la que ella misma no pasaba.
+
+**`S10` no estaba en la lista de tres**, y su sello dice por qué: había argumentado la fila 5 —para defender `killall`, `pkill` y `taskkill`— y **al hacerlo la dio por revisada**. Los dos intérpretes estaban tres líneas más arriba. La encontró el programa, no una lectura.
+
+**Se conservan tres a propósito**, con caso de prueba propio: `killall`, `pkill` y `taskkill` no son producto sino cómo se llama la misma acción en cada sistema. **Y `04·S11` sigue nombrando `SoftDeletes`**, porque ahí el nombre del método es el argumento y reescribirlo es parte de partirla — pero ahora el programa lo dice en vez de callar.
+
+**Esto no baja las 72**, porque las cuatro reprobaban otras filas además de la 5. Lo que baja a cero es **el daño a quien hereda**: ningún proyecto vuelve a leer una regla escrita para el stack de otro.
+
+---
+
 ## Lo que queda: 72 reglas que reprueban
 
 **El sello ya no es el problema. Lo es lo que el sello dice.** Agrupado por qué hay que hacer:
@@ -173,13 +194,13 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 | **Dejar de repetir al vecino** | ~8 | `12·PR3`, `12·PR4`, `07·Q7`, `01·C16` |
 | **Derogar** — sobra entera | 1 | `04·S7` |
 | **Completar la excepción** — falta quién autoriza | 5 | `00·N1`, `08·T1`, `03·D4`, `03·D5`, `01·C17` |
-| **Quitar el nombre propio** — stack o dominio real | 3 | `04·S11`, `01·C10`, `01·C15` |
+| ~~**Quitar el nombre propio** — stack o dominio real~~ · **CERRADO 2026-08-18** | eran 3, eran 4 | `01·C10`, `01·C15`, `01·C16`, `04·S10`. `04·S11` queda declarado |
 | **Escribir los ejemplos que faltan** | 14 | los capítulos `18` y `19` enteros |
 
 **Por dónde conviene seguir**, y no es por el capítulo más grande:
 
 1. **Las cinco excepciones sin autorizador.** Son la única categoría donde el defecto *deja pasar algo*: `00·N1` es una blindada con excepción y `08·T1` deja al agente autorizándose a no probar. [`04·S9`](../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es el modelo de cómo se escribe una completa, y [`01·C7`](../base/01-conducta.md#c7--ante-dos-lecturas-pregunta) probablemente sea el autorizador que les falta.
-2. **Las tres con nombre propio.** Son de una línea cada una y hoy cualquier proyecto que herede el estándar lee el stack de otro.
+2. ~~**Las tres con nombre propio.**~~ **Hecho el 2026-08-18** — eran cuatro, y la cuarta la encontró el programa. Ver arriba.
 3. **El `03` y el `04`.** Diecisiete de las 72 entre los dos, y son los que más cuesta tocar.
 
 ### Catorce reglas sin un solo ejemplo, y son dos capítulos enteros

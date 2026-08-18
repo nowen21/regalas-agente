@@ -297,9 +297,9 @@ Si sí, el agente **propone la absorción** antes de cerrar la tarea (crear regl
 **Criterio de ubicación** — antes de crear la regla, evaluar su **alcance**:
 
 - **🌐 Transversal a cualquier proyecto** (regla agnóstica de stack, dominio, negocio · ejemplo: "toda fase debe tener HU madre", "el número de documento se guarda sin puntos", "los archivos productivos no incluyen tests/migraciones/docs") → se crea/mejora **directamente en la base común del agente** (este mismo catálogo `base/XX Cnn`). NO se crea versión local si la regla aplica a cualquier proyecto — se sube directo, sin duplicar.
-- **🏠 Específica del proyecto** (regla acoplada a un stack concreto, un dominio de negocio, o decisiones internas del proyecto · ejemplo: "tests con SQLite in-memory · nunca MariaDB", "el rol id=2 es X en este ERP") → se crea como P local en el catálogo del proyecto (`.agente/reglas-proyecto.md` o equivalente).
+- **🏠 Específica del proyecto** (regla acoplada a un stack concreto, un dominio de negocio, o decisiones internas del proyecto · ejemplo: "las pruebas corren contra una base en memoria, nunca contra el motor de producción", "el identificador 2 es el rol que aprueba") → se crea como P local en el catálogo del proyecto (`.agente/reglas-proyecto.md` o equivalente).
 
-**Regla operativa para decidir:** pregúntate *"¿esta regla tendría sentido en un proyecto React + Django de otra empresa?"*. Si sí → transversal (base común). Si no → local.
+**Regla operativa para decidir:** pregúntate *"¿esta regla tendría sentido en otra empresa, con otro lenguaje y otro negocio?"*. Si sí → transversal (base común). Si no → local.
 
 **No aplica** a instrucciones tan puntuales que no generan patrón (por ejemplo: "renombra este archivo") — solo cuando el pedido tiene fondo generalizable.
 
@@ -315,25 +315,28 @@ Ver: `13` DOC10 (catálogo de reglas del proyecto y su sync con la memoria).
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ❌ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
 
-**1724 caracteres y tres exigencias.** Era ❌ en el análisis del 2026-08-07 y no ha cambiado.
+**La fila 5 reprobaba y se corrigió en esta pasada.** Sus ejemplos decían `SQLite`, `MariaDB`, `React`, `Django` y «este ERP», contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Ahora dicen lo mismo en concepto: una base en memoria contra el motor de producción, un identificador de rol, y «otra empresa, con otro lenguaje y otro negocio». **No cambia qué exige la regla.**
 
-- **Fila 5 · nombra tecnología.** Sus ejemplos dicen `SQLite`, `MariaDB`, `React`, `Django` y «este ERP». [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre ninguno.
+**Es la peor de las tres, y por dónde falla:** `C10` es justamente la regla que enseña a decidir si algo es transversal o local — y su criterio para decidirlo nombraba dos frameworks. La pregunta que le pedía al agente hacerse era la que ella misma no pasaba.
+
+**Costó 56 caracteres:** de 1724 a 1780. Escribir en concepto es más largo que nombrar la herramienta, y ese es el precio de que la base sirva a cualquier proyecto.
+
 - **Fila 9 · son tres:** aplicar lo que el mensaje pide, evaluar si tiene alcance más allá, y proponer absorberlo al estándar.
-- **Fila 10 · no cabe**, por las otras dos.
+- **Fila 10 · no cabe:** 1780 caracteres para un molde de 320, por las otras dos.
 
-**Los ejemplos de stack no se borran: se mudan.** Son útiles, y su sitio es `plantillas/` o un anexo — no el cuerpo de una regla que hereda cualquier proyecto. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -516,15 +519,15 @@ Cuando el usuario dice "hazlo como en X" o "replica el patrón de Y", implica **
 - **Datos** — no solo el modelo, también sus relaciones consumidas por la UI referente, sus scopes de consulta, sus caches, sus eventos.
 - **Tests** — el patrón replicado también replica su cobertura mínima.
 
-**Cuándo pedir aclaración**: si el referente tiene un feature que **no aplica** al nuevo caso (ej. un tooltip contextual con dato que no existe en el nuevo dominio), preguntar antes de omitirlo — no dar por asumido que "no hace falta".
+**Cuándo pedir aclaración**: si el referente tiene algo que **no aplica** al nuevo caso (por ejemplo, una ayuda contextual con un dato que no existe en el nuevo dominio), preguntar antes de omitirlo — no dar por asumido que "no hace falta".
 
 **Anti-patrón rechazado:** "implementé la lógica igual que X, la UX la vemos después" — divide el patrón en dos entregas parciales que rompen la referencia. La paridad se replica en la misma unidad de trabajo, no en fases sucesivas.
 
 ```
-INCORRECTO: "hazlo como el módulo Aportes" → solo se implementa el modelo + CRUD básico
-            sin tooltips, popovers ni botón + de creación inline que Aportes sí tiene
-CORRECTO:   listar lo que Aportes tiene (UI, interacciones, tests) y replicarlo entero
-            en el nuevo módulo · si algo no aplica, preguntar antes de omitir
+INCORRECTO: "hazlo como el módulo de referencia" → solo se implementa el modelo y el
+            alta/baja básicos, sin las ayudas ni el alta rápida que el referente sí tiene
+CORRECTO:   listar lo que el referente tiene (pantalla, interacciones, pruebas) y
+            replicarlo entero · si algo no aplica, preguntar antes de omitir
 ```
 
 **Encadenamiento:** `C14` (estándar profesional del dominio como default) — la paridad completa es la aplicación puntual de C14 cuando existe un referente concreto en el mismo proyecto.
@@ -534,49 +537,49 @@ CORRECTO:   listar lo que Aportes tiene (UI, interacciones, tests) y replicarlo 
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ❌ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
+**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
 
-**Fila 5 · nombra un módulo de un proyecto real** —«módulo Aportes»—, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Es el tercer caso hoy, tras [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos) y [`04·S11`](04-seguridad.md#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación). **El arreglo es de una línea:** sustituirlo por «el módulo referente».
+**La fila 5 reprobaba y se corrigió en esta pasada.** Nombraba «el módulo Aportes», de un proyecto real, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Pasa a «el módulo de referencia», que es lo que la regla quería decir. **No cambia qué exige.**
 
-**Fila 10 · no cabe:** 1436 caracteres.
+**Fila 10 · no cabe:** 1441 caracteres.
 
-Y su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas de este capítulo —`C15`, `C16`, `C18` y `03·D8`— y conviene normalizarlo de una vez, no regla por regla.
+**Fila 14 ·** su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas —`C15`, `C16`, `C18` y [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos)— y conviene normalizarlo de una vez, no regla por regla.
 
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C16 · Re-lee justo antes de editar — nunca sobre contexto viejo
 
-Antes de aplicar un `Edit` sobre un archivo que el usuario abrió, mostró en el IDE, o pudo modificar entre lecturas, verifica el estado actual. Un `Edit` sobre contexto viejo sobrescribe silenciosamente los cambios que no viste — el usuario los pierde sin aviso.
+Antes de editar un archivo que el usuario abrió, mostró en el editor, o pudo modificar entre lecturas, verifica el estado actual. Editar sobre contexto viejo sobrescribe en silencio los cambios que no viste — el usuario los pierde sin aviso.
 
 **Siempre aplica cuando:**
-- El archivo tiene marca `M` / `??` en `git status` (cambios sin commit).
-- El usuario lo abrió recientemente en el IDE (aviso `ide_opened_file`) o mostró un extracto reciente.
+- El control de versiones lo da por modificado o sin rastrear (cambios sin confirmar).
+- El usuario lo tiene abierto en el editor, o mostró un extracto reciente.
 - La sesión se reanudó tras compactación (el estado leído en el turno viejo pudo haber cambiado).
-- Han pasado varios turnos u otras ediciones entre el último `Read` y el próximo `Edit` del mismo archivo.
+- Han pasado varios turnos u otras ediciones entre la última lectura y la próxima escritura del mismo archivo.
 
 **Cómo:**
-1. `git status --short <archivo>` — ¿tiene cambios sin commit?
-2. Si `M`: `git diff <archivo>` para ver qué cambió el usuario, y decidir si tu edición sigue siendo válida o hay que rehacerla.
-3. `Read` de la sección que vas a tocar — confirma que el `old_string` de tu `Edit` sigue siendo literalmente el que existe.
-4. Solo entonces aplica el `Edit`.
+1. Pregúntale al control de versiones si ese archivo tiene cambios sin confirmar.
+2. Si los tiene, mira **qué** cambió y decide si tu edición sigue valiendo o hay que rehacerla.
+3. Relee la sección que vas a tocar — confirma que el texto que vas a reemplazar sigue siendo literalmente el que existe.
+4. Solo entonces edita.
 
 ```
-INCORRECTO: aplicar Edit basándote en un Read de hace 20 turnos, sin verificar
-            cambios manuales del usuario en ese archivo
-CORRECTO:   git status → git diff (si M) → Read del bloque exacto → Edit con
-            old_string verificado
+INCORRECTO: editar sobre una lectura de hace veinte turnos, sin verificar los
+            cambios que el usuario haya hecho a mano en ese archivo
+CORRECTO:   estado → diferencias (si las hay) → releer el bloque exacto → editar
+            contra el texto verificado
 ```
 
 **Encadenamiento:** `C2` (no inventar, verificar) — C16 es la aplicación puntual de C2 al ciclo de edición.
@@ -586,26 +589,27 @@ CORRECTO:   git status → git diff (si M) → Read del bloque exacto → Edit c
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ❌ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 4 ❌ · 2 N/A.**
+**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
 
-**Cuatro filas. Es la que más acumula del capítulo.**
+**La fila 5 reprobaba y se corrigió en esta pasada**, y era la peor del capítulo: el procedimiento entero estaba escrito en nombres de herramienta —las órdenes de lectura y edición del agente, y dos órdenes del control de versiones—. Ahora dice el paso, no la orden.
 
-- **Fila 5 · nombra herramientas concretas** —órdenes del control de versiones, y las herramientas de lectura y edición del agente por su nombre—. Contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md), y peor que en `C15`: acá el procedimiento entero está escrito en términos de una herramienta.
+**Lo del control de versiones se comprobó antes de tocarlo.** El capítulo `09` se titula **Control de versiones**, no por el nombre de la herramienta, y **ninguna otra regla del cuerpo nombraba una orden concreta**: `C16` era la única. Nombrarlas no era la costumbre de la casa, era su excepción.
+
+- **Fila 10 · no cabe:** 1070 caracteres.
 - **Fila 11 · texto prestado**, y lo admite ella misma: su `Encadenamiento` dice que duplica [`C2`](#c2--no-inventes-verifica).
-- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de `M7`. Lo que corresponde es declarar `(extiende 01·C2)`.
-- **Fila 10 · no cabe:** 1130 caracteres.
+- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Lo que corresponde es declarar `(extiende 01·C2)`.
 
-**Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo.** El aviso estaba dentro de la propia regla, y nadie lo leyó como lo que era. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo**, y sigue igual: el aviso estaba dentro de la propia regla. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

@@ -8,7 +8,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ## Hallazgos de esta sesión
 
-### 1 · El pedido cambió al mirar el backlog, y el cambio fue el hallazgo
+### H-1 · El pedido cambió al mirar el backlog, y el cambio fue el hallazgo
 
 **Qué pasó.** Se pidió «resolver los pendientes». Al triar los 30 abiertos, el agente los separó en tres montones —los que solo esperan una decisión, los que se construyen, los de limpieza— y propuso empezar por el más urgente. El usuario cortó eso con una sola línea:
 
@@ -18,7 +18,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** En el trabajo entero de esta sesión, y en las `RN-06` a `RN-08` de [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md).
 
-### 2 · Seis pendientes no tenían ninguna historia que los recibiera
+### H-2 · Seis pendientes no tenían ninguna historia que los recibiera
 
 **Qué se midió.** Se enrutaron los 33 archivos de [pendientes/](../../../pendientes/README.md) contra las 68 historias del árbol de épicas. **Veintisiete cabían** en una historia que ya existía. **Seis no cabían en ninguna**, y hubo que escribirlas:
 
@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** Las seis escritas con el molde completo, en su épica y en los dos índices.
 
-### 3 · El campo que la HU-016 pedía ya existía a medias, y en el sitio equivocado
+### H-3 · El campo que la HU-016 pedía ya existía a medias, y en el sitio equivocado
 
 **Qué se encontró.** [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) decía desde el 2026-08-16 que faltaba «una pieza antes del programa: un sitio fijo donde el pendiente declare su fase». Al enrutar se vio que el [52](../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md) ya traía una fila `Historia que lo recibiría` y ningún otro la tenía. Un solo archivo de 33 con el campo, y con otro nombre.
 
@@ -45,7 +45,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** El campo quedó fijo y con un solo nombre —`Historia de usuario`— en la ficha de cabecera de los **33** archivos. La tarea de la HU-016 que pedía fijarlo está marcada como hecha.
 
-### 4 · El script de enrutamiento metió la fila dentro de la tabla equivocada, en tres archivos
+### H-4 · El script de enrutamiento metió la fila dentro de la tabla equivocada, en tres archivos
 
 **Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
 
@@ -53,7 +53,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** Los tres archivos revertidos y rehechos. La regla del programa quedó siendo «encabezado sin nombres de columna», que es lo que distingue la ficha de una tabla cualquiera.
 
-### 5 · El nombre de la HU-016 se quedó corto y no se cambia
+### H-5 · El nombre de la HU-016 se quedó corto y no se cambia
 
 **Qué se decidió.** La historia se llama «el pendiente **cerrado** nombra su fase» y desde hoy cubre también al abierto. Renombrar la carpeta habría dejado rotos todos los enlaces que la citan.
 
@@ -61,7 +61,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** Escrito dentro de la propia historia y en su `README`, para que nadie lo «arregle» después.
 
-### 6 · Lo que esta sesión **no** hizo, y por qué
+### H-6 · Lo que esta sesión **no** hizo, y por qué
 
 **Ningún pendiente se cerró.** El pedido inicial era resolverlos; el segundo fue enrutarlos, y eso es lo que se hizo. Los 30 siguen abiertos.
 
@@ -71,7 +71,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Lo que quedó comprobado:** `validar.py estandar` da **0 fallas** con los mismos 5 avisos conocidos —los falsos positivos del [55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md)—, y las 36 pruebas del repositorio pasan.
 
-### 7 · La HU ya existía, así que la fase es la `B` — y no está detenida, al revés que la `A`
+### H-7 · La HU ya existía, así que la fase es la `B` — y no está detenida, al revés que la `A`
 
 **Qué pasó.** Al ir a construir la comprobación, `EP-004 · HU-016` ya tenía fase `A` —una de los 51 planes, abierta y sin aprobar—. El usuario lo zanjó en una línea: *«si ya existe la HU se crea otra fase»*. Quedó abierta [`B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md), con sus dos planes y su estado, en la estación 4.
 
@@ -79,7 +79,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Y un plan que quedó viejo.** La fase `A` declara en su §2.1 que **crea** `validadores/pendientes.py`. El archivo ya existe —156 líneas, escrito para HU-018 y commiteado ayer—. Se reporta, no se corrige desde acá.
 
-### 8 · Se fue a cambiar `02·F23` y no hubo dónde bajarlo
+### H-8 · Se fue a cambiar `02·F23` y no hubo dónde bajarlo
 
 **Qué se buscó.** La fase `B` construye el programa que comprueba, pero el texto de [`02·F23`](../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) no dice «desde que se abre». Hacer fallar por algo que la regla no exige es peor que no comprobarlo, así que había que escribir la frase. **No hubo dónde:** ninguna historia declara el capítulo `02` como su módulo. El `00` y el `01` tienen la suya; el `02`, no.
 
@@ -87,7 +87,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md): los tres son el mismo hueco a distinta altura.
 
-### 9 · Dos sesiones sobre el mismo árbol, y una falla que no es de nadie de acá
+### H-9 · Dos sesiones sobre el mismo árbol, y una falla que no es de nadie de acá
 
 **Qué pasó.** Al commitear se vio que otra sesión está trabajando en el mismo directorio: sus archivos se tocaron a las 20:14 y 20:21, los de esta a las 20:22, y ya había commiteado a `main`. Se separó archivo por archivo mirando las horas de modificación, y el commit `1c36481` llevó **solo** lo de esta sesión: 58 archivos, dejando fuera seis fases nuevas y cuatro transcripciones suyas.
 
@@ -95,7 +95,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Por qué importa.** Esto es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) pasando en vivo, y hoy se resolvió a mano leyendo horas de modificación. **Nada lo impide ni lo avisa.** El día que las dos sesiones toquen el mismo archivo, una pisa a la otra en silencio.
 
-### 10 · El paso que nadie hacía era el sexto, y hay tres cierres que lo prueban
+### H-10 · El paso que nadie hacía era el sexto, y hay tres cierres que lo prueban
 
 **Qué se midió.** El [pendiente 36](../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) traía siete pasos dictados por el usuario para reportar un defecto del estándar sin tocarlo. Los cinco primeros se venían haciendo por criterio de cada sesión. **El sexto —avisarle al proyecto cuando la corrección esté— no lo hacía nadie.**
 
@@ -107,7 +107,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** [`02·F24`](../../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), las dos plantillas, el aviso en `cerrar.py`, y la versión **23.7.0**.
 
-### 11 · El inventario decía 74 y su tabla listaba 68
+### H-11 · El inventario decía 74 y su tabla listaba 68
 
 **Qué pasó.** Al cerrar el 36 falló una prueba: la cuenta del programa daba `(74, 33, 41)` y el [48](../../../pendientes/48-inventario-hu.md) tenía escrito `(74, 32, 42)`. Al ir a corregirlo se vio lo otro: **las seis historias nuevas de ayer contaban en el encabezado pero no tenían fila en la tabla.**
 
@@ -117,7 +117,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** Las seis filas puestas, con lo que cada una tiene hoy en disco. 74 filas y 74 en el encabezado.
 
-### 12 · Siete pendientes decían «cerrado» y seguían en la carpeta de abiertos
+### H-12 · Siete pendientes decían «cerrado» y seguían en la carpeta de abiertos
 
 **Qué se midió.** Al buscar qué construir después del 36 se revisó el estado escrito dentro de cada archivo, y **siete de los abiertos ya decían «cerrado»**: el 23, el 32, el 36, el 46, el 52, el 54 y el 55. Su trabajo estaba hecho y commiteado; lo que faltaba era mover el archivo.
 
@@ -127,7 +127,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** Los siete en [`pendientes/hecho/`](../../../pendientes/hecho/), con el nombre de cómo cerraron y no del problema. Ninguno roto: `validar.py estandar` sin incumplimientos.
 
-### 13 · El aviso de vuelta estaba escrito, probado, y desconectado
+### H-13 · El aviso de vuelta estaba escrito, probado, y desconectado
 
 **Qué pasó.** La versión 23.7.0 se publicó diciendo que `cerrar.py` manda el aviso al cerrar. La función estaba, con doce casos, todos pasando. **`main()` no la llamaba.** Cerrar un pendiente no avisaba a nadie — el defecto exacto que [`02·F24`](../../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md) acababa de venir a cerrar.
 
@@ -140,7 +140,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** La 23.7.1, con un caso por cada uno — escritos sobre **lo que se vio fallar**, no sobre lo que debería pasar.
 
-### 14 · «Avisar a todos» llegó a uno de nueve
+### H-14 · «Avisar a todos» llegó a uno de nueve
 
 **Qué se midió.** La ficha del 36 decía avisar a **todos** los proyectos instalados. El aviso llegó a **shopnest-mesa** y a nadie más: los otros ocho **no tienen carpeta `pendientes/`**, y a un proyecto que no lleva backlog no se le inventa.
 
@@ -150,7 +150,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** El [61](../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con las tres decisiones que hacen falta y cuál de ellas importa.
 
-### 15 · Cinco sellos del estándar decían dos cosas contrarias
+### H-15 · Cinco sellos del estándar decían dos cosas contrarias
 
 **Qué se midió.** Cada bloque de checklist tiene dos mitades: una tabla de veinte casillas y un texto que explica qué falla. **En cinco reglas no coincidían** — el texto reprobaba una fila que la tabla mostraba en ✅. Más diez resúmenes que no cuadraban con su propia tabla, y una regla con **dos sellos apilados**.
 
@@ -163,6 +163,34 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 **Lo difícil fue no inventar.** La primera corrida reportó seis; el sexto estaba bien —un CUMPLE que cuenta qué reprobaba **antes** de corregirlo—. La mitad de los quince casos son de silencio: una comprobación que reporta de más se apaga a la semana, y apagada no encuentra nada.
 
 **Dónde queda.** La fase [`B-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/) y la v23.7.2. **No baja el 19 —las 72 siguen siendo 72—: lo vuelve confiable**, porque cualquier lista sacada de esos sellos habría estado mal contada.
+
+### H-16 · Este resumen no existía para el programa que lo cuenta
+
+**Qué pasó.** El enganche avisó *«el resumen de esta sesión sigue vacío»* teniendo quince hallazgos escritos. No era un defecto del enganche: **los hallazgos estaban escritos como `### 1 ·` y el programa busca `### H-1 ·`**, que es lo que dice [`plantillas/sesion.md`](../../../plantillas/sesion.md).
+
+**Cuánto había.** Tres resúmenes, los tres del 2026-08-17, con **29 hallazgos invisibles** entre los tres. Los otros 44 del histórico sí siguen el molde.
+
+**Por qué importa más de lo que parece.** No es solo que no se cuenten. La comprobación de *«¿se puede cerrar la sesión?»* **necesita encontrar un hallazgo antes de mirar el cierre**, así que en esos tres nunca corrió. Y el aviso de «sigue vacío» se marca a sí mismo como ya dado: se ve **una vez** y después calla para siempre. Un resumen escrito con la numeración equivocada queda mudo y nadie se entera.
+
+**Lo destapó el enganche diciendo algo que parecía falso.** Es lo que hay que aprender: un aviso que contradice lo que uno ve suele estar leyendo otra cosa, no equivocándose.
+
+**Dónde queda.** Los tres reescritos, 29 hallazgos legibles. **Falta la comprobación**: que un resumen con `### N ·` y sin ningún `H-` se reporte, en vez de contarse como vacío.
+
+### H-17 · La regla que enseña a no nombrar frameworks nombraba dos
+
+**Qué se midió.** Cuatro reglas de `base/` nombraban un stack, un dominio real o una herramienta del agente. El pendiente 19 decía **tres**; la cuarta la encontró el programa.
+
+**Por qué importa.** Es el defecto que **daña a quien hereda, no a quien escribe**: un proyecto que instala el estándar lee reglas redactadas para el stack de otro. No rompe nada — se lee, se entiende a medias y se aplica peor. Por eso duraba.
+
+**Y la peor es `01·C10`:** es justamente la regla que enseña a decidir si algo es transversal o local, y su criterio para decidirlo era *«¿tendría sentido en un proyecto React + Django de otra empresa?»*. **La pregunta que le pedía al agente hacerse era la que ella misma no pasaba.**
+
+**Cómo se le pasó la cuarta.** El sello de `04·S10` **sí había argumentado la fila 5** —para defender `killall`, `pkill` y `taskkill`, que es lo llamativo— y al hacerlo la dio por revisada. Los dos intérpretes estaban tres líneas más arriba.
+
+> **Un argumento sobre una fila no es una revisión de la fila.** Quien lee el sello ve que alguien la miró; no ve qué parte miró. Es lo mismo que la fase `B` encontró en las tablas, un nivel más adentro.
+
+**Lo que más pesa no es lo que se quitó.** Tres nombres se conservan —`killall`, `pkill`, `taskkill`—, y se les escribió **un caso de prueba** en vez de dejarlo en el sello: un criterio que solo vive en un sello se pierde, y la próxima pasada los borra creyendo que mejora.
+
+**Dónde queda.** La fase [`C-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/) y la v23.7.3. **Las 72 siguen siendo 72** —las cuatro reprobaban otras filas también—, pero el daño a quien hereda baja a cero.
 
 ---
 
@@ -187,3 +215,5 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 ---
 
 **Lo que sigue, cuando se retome:** aprobar y ejecutar la fase `B-EP-004-HU-016`. Sin ella el enrutamiento de hoy es un estado que nada sostiene. Y decidir el [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), que es lo único que permite escribir el texto de la regla.
+
+<!-- aviso: resumen sin hallazgos -->

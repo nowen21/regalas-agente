@@ -79,6 +79,8 @@ _ENLACE_MD = re.compile(r"\[([^\]]*)\]\([^)]*\)")
 _TECNOLOGIA = re.compile(
     r"(?i)(?<![\w-])("
     r"laravel|django|rails|symfony|spring|flask|fastapi|express|"
+    r"node|node\.js|nodejs|deno|bun|dotnet|\.net|"
+    r"softdeletes|"
     r"react|vue\.js|angular|svelte|next\.js|nuxt|"
     r"pytest|phpunit|jest|mocha|vitest|eslint|prettier|phpstan|ruff|flake8|"
     r"composer|npm|yarn|pnpm|pip|poetry|maven|gradle|"

@@ -8,7 +8,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-3.md](..
 
 ## Hallazgos de esta sesión
 
-### 1 · De las 51 fases aprobadas, 26 tienen una duda de §2.7 que solo el usuario puede resolver
+### H-1 · De las 51 fases aprobadas, 26 tienen una duda de §2.7 que solo el usuario puede resolver
 
 **Qué se midió.** Se leyó la §2.7 de los 51 `plan_trabajo.md`. **25 fases no tienen ninguna duda** y se pueden ejecutar enteras. Las otras **26 suman 40 dudas**, todas dirigidas al usuario, y todas bloquean al menos una tarea.
 
@@ -16,7 +16,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-3.md](..
 
 **Dónde queda.** Las 40 preguntas se le presentan al usuario en el chat, agrupadas. Mientras tanto se ejecuta todo lo que no depende de ellas.
 
-### 2 · Una fase puede hacer todo lo que su plan aprobado pedía y aun así no cumplir
+### H-2 · Una fase puede hacer todo lo que su plan aprobado pedía y aun así no cumplir
 
 **Qué pasó.** La primera fase ejecutada —[`A-EP-006-HU-001`](../../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-001-que-se-guarda-tipos-y-alcances/A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/resultado_pruebas.md)— corrió sus tres casos, cumplió sus dos CA numerados… y quedó en **No cumple**. La HU tiene además dos criterios **transversales**, y el plan de pruebas no les escribió caso mientras declaraba «cobertura 100%».
 
@@ -26,7 +26,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-3.md](..
 
 **Dónde queda.** En el veredicto de esa fase, y la fase `B-EP-006-HU-001` queda propuesta —sin abrir— para los dos transversales.
 
-### 3 · Los 51 planes de pruebas omiten los criterios transversales — los 51
+### H-3 · Los 51 planes de pruebas omiten los criterios transversales — los 51
 
 **Qué se midió.** Al descubrir el hallazgo 2 en una fase, se midió en todas antes de ejecutar las otras 50. El resultado no admite lectura amable:
 
@@ -42,7 +42,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Lo que hay que decidir, y no lo decide el agente:** si el molde de `plantillas/planes/pruebas.md` pasa a exigir una fila por transversal. Es cambio de plantilla, y va al usuario.
 
-### 4 · La búsqueda de la memoria encuentra, pero no dice dónde está lo que encontró
+### H-4 · La búsqueda de la memoria encuentra, pero no dice dónde está lo que encontró
 
 **Qué pasó.** Al ejecutar [`A-EP-006-HU-003`](../../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-003-busqueda-por-palabra/A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/resultado_pruebas.md) salieron **dos defectos** que llevaban ahí desde que existe la búsqueda:
 
@@ -57,7 +57,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Dónde queda.** Fase `B-EP-006-HU-003` propuesta, sin abrir.
 
-### 5 · EP-006 entera ejecutada: **las 7 fases cierran en «No cumple»**, y ninguna por no haberse hecho
+### H-5 · EP-006 entera ejecutada: **las 7 fases cierran en «No cumple»**, y ninguna por no haberse hecho
 
 **Qué pasó.** Las 7 fases de la épica de la memoria corrieron completas —39 pruebas nuevas en `memoria/pruebas.py` y 12 en `validadores/pruebas.py`— y **las 7 dieron «No cumple»**. En todas, el trabajo del plan se hizo entero y lo que falla es una exigencia que la corrida destapó.
 
@@ -77,7 +77,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Lo que esto enseña de método, y se repitió cuatro veces:** las metas de los planes de pruebas quedaron **todas en verde** y las fases no cumplen. Medían cobertura, acentos, señales perdidas, herramientas instaladas — y ninguna medía lo que fallaba. **Un tablero verde no es un veredicto.**
 
-### 6 · Lo único que se escribió de nuevo en toda la épica: el criterio de cuál va dónde
+### H-6 · Lo único que se escribió de nuevo en toda la épica: el criterio de cuál va dónde
 
 **Qué pasó.** De las 7 fases, solo una tenía que **escribir** algo: el criterio que separa la preferencia del usuario del aprendizaje del proyecto. No existía — se venía aplicando por costumbre.
 
@@ -85,7 +85,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Y al aplicarlo apareció el duplicado.** El índice advertía desde siempre que dos copias terminan diciendo cosas distintas; lo decía del almacén de la herramienta, y estaba pasando **entre los dos sitios del repositorio**, donde nadie miraba.
 
-### 7 · Tres defectos previos que tenían la suite en rojo, corregidos
+### H-7 · Tres defectos previos que tenían la suite en rojo, corregidos
 
 **Qué se encontró** al correr la suite completa antes de ejecutar:
 
@@ -93,7 +93,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 2. **Cinco «citas sueltas» en `base/`, y las cinco son falsos positivos**: `citas.py` cuenta como cita un identificador usado **como ejemplo** en prosa —«como `C20` o `F12`», «ponerle `G9` a una regla de pruebas»—, y `G9` ni existe. **No se editó `base/`**, que está bien escrito: se midió y se agregó al [pendiente 55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md), que ya cubre esta familia.
 3. **`validar.py estandar` tenía 5 fallas**, todas previas: un enlace a una sesión renombrada, un pendiente cerrado en otro proyecto que se movió a `hecho/`, y tres pendientes sin línea en el índice — uno de ellos, el 44, **se declaraba abierto mientras el índice lo daba por cerrado**. **Las cinco corregidas**; `estandar` quedó en cero.
 
-### 8 · Las 25 fases libres, ejecutadas: **9 cumplen y 16 no**, y ninguna por trabajo sin hacer
+### H-8 · Las 25 fases libres, ejecutadas: **9 cumplen y 16 no**, y ninguna por trabajo sin hacer
 
 **Qué se hizo.** Las 25 fases sin duda en §2.7 corrieron completas, con sus cinco documentos. El inventario [48](../../../pendientes/48-inventario-hu.md) pasó de **14 completas a 39** de 68.
 
@@ -122,7 +122,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Lo construido de nuevo, versionado:** `validadores/pendientes.py` con su subcomando, y la línea del inventario de HU en `validar.py fases` (**23.3.0**), más el arreglo del enganche del resumen (**23.2.1**).
 
-### 9 · Las 26 fases con duda quedan aprobadas y **detenidas**, con sus 42 preguntas en un solo sitio
+### H-9 · Las 26 fases con duda quedan aprobadas y **detenidas**, con sus 42 preguntas en un solo sitio
 
 **Qué se hizo.** Las 26 pasaron de la estación 4 —esperando aprobación— a la **6, detenidas**: el plan **está aprobado** desde hoy, y lo que falta ya no es la aprobación sino **la respuesta**. Su `estado-fase.md` lo dice, para que la sesión que siga no vuelva a buscar.
 
@@ -130,7 +130,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Va como `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro en la transcripción, que se versiona**. Se comprobó. Nada enmascara, y lo que falta para construirlo son dos decisiones.
 
-### 10 · El repositorio que define el criterio de qué se guarda tiene una sola señal en 237
+### H-10 · El repositorio que define el criterio de qué se guarda tiene una sola señal en 237
 
 **Qué se midió.** `memoria/senales.db`, el 2026-08-17: **237 señales**, y de alcance `proyecto:estandar-agente` hay **una**, la `S-003`, del 2026-07-25 — anterior a que se abriera ninguna épica. De cinco decisiones reales de fases cerradas de este repositorio, cuatro son señal según [`13·DOC5`](../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) y ninguna se guardó.
 

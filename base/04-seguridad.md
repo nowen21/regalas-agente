@@ -338,7 +338,7 @@ Eso importa hoy más que cuando se escribió: al aplicar el checklist apareciero
 
 ## S10 · No mates procesos globales · solo PID exacto y estrictamente necesario
 
-El agente **no mata procesos** del sistema operativo con criterios amplios (por nombre de binario, por patrón, "todos los `node`", "todos los `php`"). Matar procesos globales puede tumbar servicios que el usuario está usando en paralelo (otras terminales, IDEs, servidores de desarrollo de otros proyectos, tareas de fondo del OS).
+El agente **no mata procesos** del sistema operativo con criterios amplios (por nombre de binario, por patrón, "todos los procesos de tal intérprete"). Matar procesos globales puede tumbar servicios que el usuario está usando en paralelo (otras terminales, IDEs, servidores de desarrollo de otros proyectos, tareas de fondo del OS).
 
 **Reglas:**
 
@@ -359,7 +359,7 @@ CORRECTO:   identificar el PID exacto del proceso que arrancó la fase actual y 
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -371,9 +371,13 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 1028 caracteres.** Es lo único que reprueba.
+**Fila 10 · no cabe: 1029 caracteres.** Es lo único que reprueba.
 
-La fila **5** pasa, y vale decir por qué porque no es evidente: la regla nombra `killall`, `pkill` y `taskkill`. El análisis del 2026-08-07 lo miró y lo dio por **defendible** — no son producto ni framework sino los nombres del oficio para la misma acción en cada sistema, y quitarlos dejaría la regla sin decir qué prohíbe.
+**La fila 5 reprobaba por dos intérpretes nombrados, y se corrigió en esta pasada.** Sus ejemplos de patrón amplio decían `node` y `php`; ahora dicen «todos los procesos de tal intérprete», que es lo mismo sin nombrar ninguno. **No cambia qué prohíbe.**
+
+**Lo que hay que anotar es cómo se le pasó.** El sello anterior sí argumentó la fila 5 —para defender `killall`, `pkill` y `taskkill`, que es lo llamativo— y **al hacerlo dio la fila por revisada**. Los dos intérpretes estaban tres líneas más arriba. Un argumento sobre una fila no es una revisión de la fila: quien lee el sello ve que alguien la miró, y no ve qué parte miró. Lo encontró la comprobación de [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md), no una lectura.
+
+**Los tres nombres del oficio se quedan**, y el motivo sigue valiendo: `killall`, `pkill` y `taskkill` no son producto ni framework sino cómo se llama la misma acción en cada sistema, y quitarlos dejaría la regla sin decir qué prohíbe. Es el mismo criterio con el que [`04·S11`](#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación) conserva el suyo.
 
 Su excepción está completa, como la de `S9`.
 

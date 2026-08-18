@@ -145,6 +145,7 @@ Entonces todas sus reglas traen el bloque con su resultado
 |---|---|---|
 | [A-EP-001-HU-009-clasificar-las-que-faltan](A-EP-001-HU-009-clasificar-las-que-faltan/README.md) | CA-02 | Cerrada 2026-08-16 (v23.1.1) |
 | [B-EP-001-HU-009-el-sello-no-se-contradice](B-EP-001-HU-009-el-sello-no-se-contradice/README.md) | CA-01, su parte comprobable | Cerrada 2026-08-18 (v23.7.2) |
+| [C-EP-001-HU-009-las-tres-reglas-con-nombre-propio](C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/README.md) | CA-01, la fila 5 | Cerrada 2026-08-18 (v23.7.3) |
 
 **El `CA-03` cerró: las 121 sin bloque bajaron a cero** el 2026-08-18 — las 200 reglas del cuerpo tienen su sello. **El `CA-01` sigue abierto**, y lo que queda ya no son siete sino **72**: el número subió porque ahora todas dicen la verdad.
 
