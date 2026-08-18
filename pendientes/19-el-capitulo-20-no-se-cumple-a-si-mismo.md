@@ -65,11 +65,13 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `15` Registros inmutables | 5 | `IM1`, `IM4`, `IM5` | `IM2`, `IM3` |
 | `11` Configuración y entornos | 4 | `CFG1`, `CFG2`, `CFG4` | `CFG3` |
 | `12` Privacidad y datos personales | 5 | `PR1`, `PR2`, `PR5` | `PR3`, `PR4` |
+| `10` Dependencias de terceros | 5 | `DEP1`, `DEP2`, `DEP4`, `DEP5` | `DEP3` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
 - `EST3` reprobaba la fila 10 por **tres caracteres**. Se recortó el porqué.
 - `IM2` reprobaba la fila 8 con el título «Estados y campos de anulación», que nombra un tema sin decir ninguna norma. Pasa a *Guarda los tres estados y la trazabilidad de quien anula*.
+- `DEP3` y `DEP5` reprobaban la fila 12 por no tener ejemplo. Se les agregó.
 - `PR5` reprobaba la fila 8 con el título «Retención y borrado», que nombra un tema. Pasa a *Define cuánto se conservan y qué pasa después*.
 - `PR2` reprobaba la fila 12 por no tener ejemplo. Se le agregó el error de verdad: los correos que se pidieron para avisar del pedido y terminan en una campaña.
 - `CFG4` reprobaba la fila 12 por no tener ejemplo, y el análisis del 2026-08-07 decía por qué hacía falta: *«la bandera eterna es error frecuente»*. Una regla que nombra un error frecuente no entra en la excepción de «evidente». Se le agregó el ejemplo de verdad.
@@ -84,6 +86,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `11·CFG3` | Filas 9 y 12 | **Son tres**: que los entornos se parezcan, que lo que las pruebas no reproducen se cubra con verificación manual documentada, y que los cambios de producción se documenten en vez de aplicarse de memoria |
 | `12·PR3` | Filas 9 y 11 | **No exige nada propio**: sus cuatro frases remiten al capítulo `04`. Un índice con forma de regla. O se queda con lo que `04` no dice, o se deroga |
 | `12·PR4` | Fila 11 | **Reformula `05·E5`, que a su vez reformula `00·N6`** — tres capas del mismo criterio. Tiene parte propia (pantallas y reportes) y esa es la que se queda |
+| `10·DEP3` | Fila 11 | Repite `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7` |
 
 ### Lo que se supo aplicando el checklist
 
@@ -109,10 +112,10 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **103** |
-| Publicadas en NO CUMPLE | 7 | 7 | **14** |
+| Sin bloque de checklist | 129 | 121 | **98** |
+| Publicadas en NO CUMPLE | 7 | 7 | **15** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Dieciocho reglas ganaron su sello hoy: las tres del `14`, las cinco del `15`, las cuatro del `11`, las cinco del `12` y `F13`. Siete de esas dieciocho dicen NO CUMPLE.
+Veintitrés reglas ganaron su sello hoy, en cinco capítulos: el `10`, el `11`, el `12`, el `14`, el `15` y `F13`. Ocho de esas veintitrés dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

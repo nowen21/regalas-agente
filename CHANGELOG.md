@@ -80,7 +80,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `15` entero**: `IM1`, `IM4` e `IM5` en CUMPLE; `IM2` e `IM3` en NO CUMPLE. `IM2` pasa a llamarse *Guarda los tres estados y la trazabilidad de quien anula* — el título anterior nombraba un tema sin decir ninguna norma. No cambia qué exige.
 - **El capítulo `11` entero**: `CFG1`, `CFG2` y `CFG4` en CUMPLE; `CFG3` en NO CUMPLE — son tres exigencias en una. A `CFG4` se le agregó el ejemplo INCORRECTO/CORRECTO que le faltaba: la bandera que se enciende al liberar y nadie quita.
 - **El capítulo `12` entero**: `PR1`, `PR2` y `PR5` en CUMPLE; `PR3` y `PR4` en NO CUMPLE. `PR5` pasa a llamarse *Define cuánto se conservan y qué pasa después* y `PR2` gana su ejemplo. **`PR3` es la grave: no exige nada propio** — sus cuatro frases remiten al capítulo `04`, así que quien la cumple no hace nada distinto de cumplir aquel. Es un índice con forma de regla.
-- **Las reglas sin sello bajan de 121 a 103**; las publicadas en NO CUMPLE suben de 7 a 14. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
+- **El capítulo `10` entero**: `DEP1`, `DEP2`, `DEP4` y `DEP5` en CUMPLE; `DEP3` en NO CUMPLE por repetir `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7`. `DEP3` y `DEP5` ganan el ejemplo que les faltaba.
+- **Las reglas sin sello bajan de 121 a 98**; las publicadas en NO CUMPLE suben de 7 a 15. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
 
 ### La fila 10 medía mal, y castigaba a las reglas que citan bien
 
