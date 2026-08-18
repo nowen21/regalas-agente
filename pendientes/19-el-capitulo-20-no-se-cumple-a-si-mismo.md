@@ -73,6 +73,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `17` Interfaz | 6 | `I2`, `I4`, `I5`, `I6` | `I1`, `I3` |
 | **`03` Datos** | 8 | `D2` | **`D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`** |
 | **`04` Seguridad** | 11 | `S8` | **`S1` a `S7`, `S9`, `S10`, `S11`** |
+| `09` Git | 9 | `G1` a `G5` | `G6`, `G7`, `G8`, `G9` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -124,6 +125,26 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 **No relaja la fila.** La regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
+
+### El número que `G8` necesita ya está ocupado
+
+El análisis del 2026-08-07 propuso partir [`09·G8`](../base/09-git.md#g8--el-mensaje-es-del-proyecto-no-de-la-herramienta) en dos: *«`G8` orden del cuerpo · `G9` sin firma de herramienta»*. Desde entonces nació una `G9` —la historia de usuario como unidad del commit— **que es otra cosa**.
+
+**El corte sigue siendo el correcto; el número no.** La mitad que salga se lleva `G10`. Es la clase de detalle que hace perder una tarde si se descubre a mitad del cambio, y [`20·M4`](../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) no deja reutilizar el ocupado.
+
+**Lo mismo puede pasarle a las otras propuestas del análisis** —`D9`/`D10`, `S12`, `T8`, `E6`— y conviene comprobar cada número contra el cuerpo de hoy antes de escribir nada.
+
+### Lo que queda: cinco capítulos
+
+| Capítulo | Sin sello |
+|---|---|
+| `01` Conducta | **18** |
+| `18` Despliegue | 8 |
+| `19` Observabilidad | 6 |
+| `00` Núcleo blindado | 6 |
+| `20` Meta-reglas | 1 |
+
+**El `01` es la mitad de lo que falta**, y el `00` es el más delicado: son las seis blindadas.
 
 ### `04·S9` es el modelo de excepción, y hacía falta encontrarlo
 
@@ -215,10 +236,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **48** |
-| Publicadas en NO CUMPLE | 7 | 7 | **40** |
+| Sin bloque de checklist | 129 | 121 | **39** |
+| Publicadas en NO CUMPLE | 7 | 7 | **44** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Setenta y tres reglas ganaron su sello hoy, en doce capítulos —el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Treinta y tres de esas setenta y tres dicen NO CUMPLE.
+Ochenta y dos reglas ganaron su sello hoy, en trece capítulos —el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `09`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Treinta y siete de esas ochenta y dos dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

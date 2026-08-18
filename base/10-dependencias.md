@@ -105,7 +105,7 @@ Eso es un cambio en **otro capítulo**, y va al [pendientes/19-el-capitulo-20-no
 
 ## DEP4 · No versiones lo instalado
 
-Las dependencias instaladas (carpetas de paquetes, binarios) no van al control de versiones ([`09·G3`](09-git.md#g3--qué-nunca-se-versiona)): se reconstruyen del manifiesto + lockfile. Versiona la **declaración**, no el **resultado**.
+Las dependencias instaladas (carpetas de paquetes, binarios) no van al control de versiones ([`09·G3`](09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado)): se reconstruyen del manifiesto + lockfile. Versiona la **declaración**, no el **resultado**.
 
 ```
 INCORRECTO: commitear la carpeta de dependencias instaladas
@@ -130,7 +130,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 Cumplía ya en el análisis del 2026-08-07.
 
-La fila **11** pasa aunque nombre a [`09·G3`](09-git.md#g3--qué-nunca-se-versiona): `G3` dice qué no se versiona en general y esta dice **qué se versiona en su lugar** —la declaración, no el resultado—. Es la parte propia, no una copia. La misma distinción que salva a [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla) y que hunde a `DEP3`.
+La fila **11** pasa aunque nombre a [`09·G3`](09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado): `G3` dice qué no se versiona en general y esta dice **qué se versiona en su lugar** —la declaración, no el resultado—. Es la parte propia, no una copia. La misma distinción que salva a [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla) y que hunde a `DEP3`.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

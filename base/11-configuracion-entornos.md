@@ -39,7 +39,7 @@ La nota que la separa de [`03·D4`](03-datos.md#d4--valores-configurables-van-a-
 
 ## CFG2 · El entorno real no se versiona; sí una plantilla
 
-El archivo con valores reales está **ignorado** ([`09·G3`](09-git.md#g3--qué-nunca-se-versiona)). Se versiona una **plantilla de ejemplo** con todas las variables **sin valores**, y se documenta qué es cada una y cuáles son obligatorias.
+El archivo con valores reales está **ignorado** ([`09·G3`](09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado)). Se versiona una **plantilla de ejemplo** con todas las variables **sin valores**, y se documenta qué es cada una y cuáles son obligatorias.
 
 ```
 INCORRECTO: versionar el archivo de entorno con las claves reales
@@ -62,7 +62,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-Mismo caso que `CFG1`: el análisis la marcaba por solapar con [`09·G3`](09-git.md#g3--qué-nunca-se-versiona) y con `04·S4`, y **las enlaza en vez de repetirlas**. `G3` dice qué no se versiona; esta dice qué se versiona **en su lugar** —la plantilla sin valores— y qué hay que documentar de ella. Son dos caras, no una copia.
+Mismo caso que `CFG1`: el análisis la marcaba por solapar con [`09·G3`](09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado) y con `04·S4`, y **las enlaza en vez de repetirlas**. `G3` dice qué no se versiona; esta dice qué se versiona **en su lugar** —la plantilla sin valores— y qué hay que documentar de ella. Son dos caras, no una copia.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
