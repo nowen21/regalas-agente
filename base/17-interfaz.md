@@ -17,6 +17,32 @@ INCORRECTO: la tabla aparece vacía sin explicar si no hay datos o si falló la 
 CORRECTO:   estado vacío ("no hay registros"), estado cargando, y estado de error diferenciados
 ```
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · el cuerpo no cabe: 395 caracteres para un molde de 320.**
+
+El análisis del 2026-08-07 la daba por cumplida. Es el segundo caso —después de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito)— en que esa fila se midió a ojo, y confirma el criterio: **las once filas que un programa cuenta se vuelven a contar**.
+
+La fila **9** sí pasa: los tres estados no se cumplen por separado. Una vista que resuelve el vacío y no el error deja la pantalla en blanco igual, que es lo que la regla prohíbe. **Son las tres caras de una sola exigencia**, como las tres de [`08·T3`](08-pruebas.md#t3--aisladas-deterministas-repetibles).
+
+Por eso el arreglo no es partirla sino **acortarla**: lo que sobra es la explicación de cada estado, no el estado. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## I2 · Feedback de validación claro
 
 Cuando el usuario se equivoca en un formulario, se le dice **qué campo** y **qué falta**, en su idioma ([`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto)), antes o al enviar. No se rechaza en silencio ni con un mensaje genérico.
@@ -25,6 +51,26 @@ Cuando el usuario se equivoca en un formulario, se le dice **qué campo** y **qu
 INCORRECTO: "Error al guardar" sin decir qué campo está mal
 CORRECTO:   "El correo no es válido" junto al campo correspondiente
 ```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07 y se volvió a contar: 186 de 320.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## I3 · Accesibilidad mínima
 
@@ -35,6 +81,32 @@ CORRECTO:   "El correo no es válido" junto al campo correspondiente
 
 > El nivel exigido (p. ej. WCAG AA) y si es obligatorio por ley lo declara la capa 3 / `16` (accesibilidad).
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ N/A ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+
+**Fila 9 · son cuatro exigencias, y se cumplen por separado.** Etiquetas asociadas, contraste, navegación por teclado y no transmitir información solo por color: una interfaz puede tener las etiquetas impecables y el contraste ilegible. El análisis del 2026-08-07 ya lo decía.
+
+**Y ofrecía la salida buena, que no es partirla en cuatro:** *«partir o declarar checklist»*. Cuatro reglas de una línea cada una llenan el capítulo de ruido; **un checklist de accesibilidad con su regla que obliga a pasarlo** dice lo mismo y se puede comprobar. Es lo mismo que el estándar hace consigo en [base/20-meta-reglas/checklist.md](20-meta-reglas/checklist.md).
+
+Cuál de las dos, y el ejemplo que también le falta, van al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+La nota sobre el nivel exigido —WCAG y si es obligatorio por ley— remite bien a la capa 3 y al capítulo `16`: eso no es lo que falla.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## I4 · Texto para el usuario, no jerga
 
 Lo que el usuario lee se entiende sin ser del oficio: **claro, directo, que hasta un niño lo entienda**. Sin siglas internas, sin códigos de sistema, sin jerga técnica. (Es el mismo estándar de [`00·ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) llevado a la pantalla del producto; lo que se suma acá es que no asomen siglas ni códigos internos.)
@@ -44,13 +116,95 @@ INCORRECTO: "Error 422: constraint violation en FK proyecto_id"
 CORRECTO:   "No se pudo guardar: primero elegí un proyecto"
 ```
 
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07, que además anota algo útil: **es la regla que fija la frontera de qué se le escribe al usuario y qué al registro**, y por eso el capítulo `20` la cita al explicar cómo se redacta.
+
+Se volvió a contar: 303 de 320. **Pasa raspando**, y queda dicho.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## I5 · Consistencia con el sistema de diseño
 
 Usar los componentes y patrones que el proyecto ya tiene (el sistema de diseño lo declara la capa 3) antes de inventar unos nuevos. Una pantalla nueva se parece a las demás: mismos componentes, misma ubicación de las acciones, mismos estados.
 
-## I6 · Adaptable
+```
+INCORRECTO: la pantalla nueva trae su propio botón, su propio modal y las
+            acciones a la izquierda, porque «quedaba mejor»
+CORRECTO:   los componentes que ya existen, y las acciones donde el usuario
+            ya sabe buscarlas
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**La fila 12 reprobaba y se corrigió en esta pasada:** no tenía ejemplo. El que se agregó es el error de verdad —la pantalla nueva con su propio botón y las acciones donde no van, «porque quedaba mejor»—. **No cambia qué exige la regla.**
+
+La fila **9** pasa: usar los componentes que ya existen y que la pantalla nueva se parezca a las demás son la misma exigencia dicha desde el medio y desde el resultado.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## I6 · Funciona en los tamaños de pantalla que el proyecto soporta
 
 La interfaz se ve y funciona en los tamaños de pantalla que el proyecto soporta (declarados en capa 3). El contenido ancho (tablas, diagramas) no rompe el layout: se desplaza en su propio contenedor.
+
+```
+INCORRECTO: una tabla de doce columnas que empuja el layout y saca una barra
+            de desplazamiento a la página entera
+CORRECTO:   la tabla se desplaza dentro de su contenedor; la página no
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Dos filas reprobaban y las dos se corrigieron en esta pasada. Ninguna cambia qué exige la regla.**
+
+- **Fila 8 · el título manda.** Se llamaba «Adaptable»: **una sola palabra**, que ni ordena ni enuncia nada. Pasa a *Funciona en los tamaños de pantalla que el proyecto soporta*, que es lo que la regla pide y se entiende leyéndolo en un índice.
+- **Fila 12 · ejemplo.** No tenía. El que se agregó es el caso concreto que la regla ya nombraba sin mostrar: la tabla ancha que saca una barra de desplazamiento a la página entera.
+
+Es el tercer título de una palabra o de tema que se corrige hoy, después de [`15·IM2`](15-registros-inmutables.md#im2--guarda-los-tres-estados-y-la-trazabilidad-de-quien-anula) y [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después). **Los tres estaban en capítulos que nadie había vuelto a mirar desde julio.**
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ---
 

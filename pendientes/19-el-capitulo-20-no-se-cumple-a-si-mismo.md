@@ -70,6 +70,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | **`06` Rendimiento y eficiencia** | 6 | **los seis** | — |
 | `07` Calidad de código | 7 | `Q1` a `Q6` | `Q7` |
 | `08` Estrategia de pruebas | 7 | `T2`, `T3`, `T5`, `T6` | `T1`, `T4`, `T7` |
+| `17` Interfaz | 6 | `I2`, `I4`, `I5`, `I6` | `I1`, `I3` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -94,6 +95,8 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
 | `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
 | `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
+| `17·I1` | Fila 10 | 395 caracteres. **No hay que partirla**: los tres estados son una sola exigencia. Lo que sobra es la explicación de cada uno |
+| `17·I3` | Fila 9 | Cuatro exigencias de accesibilidad que se cumplen sueltas. **La salida buena no es partirla en cuatro** sino un checklist con su regla que obliga a pasarlo |
 | `08·T1` | Fila 16 | **La excepción deja al agente autorizándose a sí mismo.** La regla que obliga a probar trae dentro el permiso de no probar, sin límite ni autorizador. Ponérselo es **MAYOR** |
 | `08·T4` | Filas 10 y 11 | Reformula `00·N4` y se pasa del molde **por lo prestado**. Lo suyo —el entorno efímero— cabe de sobra |
 | `08·T7` | Filas 8, 9 y 10 | **1645 caracteres, cinco veces el molde.** Ella misma declara «dos frentes». El corte ya está propuesto: `T7` derivar los casos · `T8` triangular el resultado |
@@ -119,6 +122,14 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 **No relaja la fila.** La regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
+
+### Los títulos que no dicen nada aparecen en racimo
+
+Tres títulos corregidos hoy por la fila 8, y los tres nombran un tema en vez de enunciar una norma: `15·IM2` («Estados y campos de anulación»), `12·PR5` («Retención y bordado») y `17·I6` —**«Adaptable», una sola palabra**—.
+
+**Los tres viven en capítulos que nadie había vuelto a mirar desde julio.** No es casualidad: el título nominal es lo que sale cuando se escribe el índice antes que la regla, y se queda mientras nadie relea el capítulo entero.
+
+Es barato de arreglar —no cambia qué exige la regla— y conviene mirarlo primero al tomar un capítulo nuevo: se ve leyendo solo los encabezados.
 
 ### Una duplicación se puede resolver sin derogar nada
 
@@ -154,10 +165,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **73** |
-| Publicadas en NO CUMPLE | 7 | 7 | **21** |
+| Sin bloque de checklist | 129 | 121 | **67** |
+| Publicadas en NO CUMPLE | 7 | 7 | **23** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Cuarenta y ocho reglas ganaron su sello hoy, en nueve capítulos —el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Catorce de esas cuarenta y ocho dicen NO CUMPLE.
+Cincuenta y cuatro reglas ganaron su sello hoy, en diez capítulos —el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Dieciséis de esas cincuenta y cuatro dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
