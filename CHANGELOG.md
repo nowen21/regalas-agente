@@ -77,6 +77,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **`02·F13`** tiene su checklist aplicado otra vez. Decía «pendiente de aplicar» desde el 2026-08-08, una forma que el validador no reconocía: figuraba como aviso cuando era una regla publicada sin sello válido. **Reprueba la fila 10** —631 caracteres para un molde de 320— y así queda escrito.
 - **`14·EST3`** reprobaba la misma fila por **tres caracteres**. Se recortó el porqué y quedó en CUMPLE. No cambia qué exige.
 - **`14·EST1` y `14·EST3`** quedan selladas en CUMPLE; **`14·EST2` en NO CUMPLE**, y su bloque dice por qué: son tres reglas metidas en una, y por eso ni el título puede ser imperativo ni el cuerpo cabe.
+- **El capítulo `15` entero**: `IM1`, `IM4` e `IM5` en CUMPLE; `IM2` e `IM3` en NO CUMPLE. `IM2` pasa a llamarse *Guarda los tres estados y la trazabilidad de quien anula* — el título anterior nombraba un tema sin decir ninguna norma. No cambia qué exige.
+- **Las reglas sin sello bajan de 121 a 112**; las publicadas en NO CUMPLE suben de 7 a 11. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
 
 ## 23.3.0 — 2026-08-17
 

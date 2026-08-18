@@ -13,9 +13,61 @@ INCORRECTO: editar un documento materializado con un update, sin revertir su efe
 CORRECTO:   anularlo (con motivo, revirtiendo el efecto en transacción) y preservar la fila
 ```
 
-## IM2 · Estados y campos de anulación
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+La fila **8** pasa con un título declarativo, no imperativo. Es la misma forma que [`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), sellada en CUMPLE: el título **enuncia la norma** en vez de ordenarla, y se entiende leyéndolo en un índice. Lo que la fila no admite es un título que nombre un tema sin decir nada.
+
+La fila **13** pasa sin marca propia: el `*opt-in*` está en la cabecera del capítulo y rige a las cinco reglas. Repetirlo en cada una sería el texto prestado que prohíbe la 11.
+
+Las **14 a 16** son N/A: no declara dependencia en ninguna de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), y no tiene excepción.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## IM2 · Guarda los tres estados y la trazabilidad de quien anula
 
 Al menos tres estados: **borrador** (editable), **materializado** (inmutable), **anulado** (revertido, fila preservada). Para anular guarda: cuándo, quién y **el motivo** (obligatorio, con sustancia).
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ N/A ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+
+**La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Estados y campos de anulación»: nombra un tema y no dice ninguna norma, que es lo único que la fila no admite. Pasa a *Guarda los tres estados y la trazabilidad de quien anula*. **No cambia qué exige la regla** — el cuerpo es el mismo.
+
+**La fila 9 reprueba: son dos exigencias.** Los tres estados y los campos de la anulación **se pueden cumplir por separado** —un sistema puede tener `borrador`/`materializado`/`anulado` y no guardar quién anuló ni por qué—, y esa es exactamente la prueba que la fila propone.
+
+**Esto ya estaba dictaminado y casi se sella en contra.** El análisis del 2026-08-07 en [analisis/base-2026-08-07-cumplimiento-meta-reglas.md](../analisis/base-2026-08-07-cumplimiento-meta-reglas.md) ya decía de `IM2`: *«dos exigencias (tres estados · campos de anulación)»*, y recomendaba partirla. Al aplicar el checklist se razonó lo contrario, y el razonamiento era malo. **Aplicar un checklist sin buscar si alguien ya lo aplicó es rehacer el juicio con menos datos**, y aquí habría sellado en CUMPLE una regla que un análisis anterior ya había reprobado.
+
+Partirla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), con el repaso del capítulo.
+
+La fila **12** es N/A: la regla enumera qué guardar, y una lista de campos no se puede malinterpretar.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## IM3 · Anular revierte el efecto en transacción
 
@@ -26,6 +78,32 @@ Al menos tres estados: **borrador** (editable), **materializado** (inmutable), *
 
 Si algo de la reversión falla, se revierte entera: sin estados a medias ([`05·E2`](05-errores-y-logging.md#e2--falla-controlado-no-rodees-el-problema)).
 
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ N/A ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+
+**La fila 10 reprueba: 459 caracteres para un molde de 320.**
+
+No es que sobre porqué —el cuerpo es un procedimiento de cuatro pasos y los cuatro son la exigencia—. Es que **un procedimiento de cuatro pasos no cabe en el molde de una regla**, y ese es justamente el caso que la fila prevé cuando manda abrir subcarpeta: la regla se queda con la exigencia y el procedimiento se va a un anexo al lado, como [base/13-documentacion/retrodocumentacion.md](13-documentacion/retrodocumentacion.md).
+
+**Hacerlo es un cambio de regla y no se hace acá.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), con el repaso del capítulo.
+
+La fila **12** es N/A: los cuatro pasos **son** el ejemplo: dicen literalmente qué hacer y en qué orden.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## IM4 · Las consultas agregadoras excluyen los anulados
 
 Toda consulta que sume/cuente/promedie **excluye** los anulados. Idealmente por **defecto** en el modelo/consulta, no confiando en que cada consulta lo recuerde.
@@ -35,9 +113,55 @@ INCORRECTO: un reporte que suma incluyendo anulados "y que el usuario tenga cuid
 CORRECTO:   la consulta excluye anulados por defecto
 ```
 
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Título declarativo, como el de `IM1`: enuncia la norma. La fila **9** pasa porque el «idealmente por defecto en el modelo» no es una segunda exigencia sino **cómo** cumplir la primera sin depender de que cada consulta se acuerde — que es la diferencia entre una regla que se cumple y una que se recuerda.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## IM5 · Permiso propio para anular
 
 Anular pesa más que crear o editar: **permiso separado** del de eliminar, para roles con responsabilidad ([`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)). En la UI, los materializados ofrecen "Anular" (motivo obligatorio) en vez de "Eliminar"; los anulados quedan visibles, marcados y con su motivo.
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ N/A ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
+
+El título dice la norma: **debe haber** un permiso propio. No nombra un tema.
+
+La fila **9** pasa: lo de la interfaz —ofrecer «Anular» en vez de «Eliminar»— no es una exigencia aparte sino dónde se nota la primera. Sin permiso separado, la interfaz no tendría qué distinguir.
+
+La fila **12** es N/A: la regla ya contrasta los dos comportamientos dentro de su propio cuerpo.
+
+La cita a [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible) es el motivo de que el permiso sea propio, no una de las tres dependencias de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Por eso las **14 a 16** son N/A.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ---
 

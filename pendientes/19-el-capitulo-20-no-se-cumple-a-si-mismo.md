@@ -54,3 +54,42 @@ Y llegó con un defecto que hay que resolver acá, el `D-02`: **una regla nueva 
 **Y una regla más en NO CUMPLE: `F13`, ahora son ocho.** No es que haya empeorado: decía «pendiente de aplicar», una forma que el validador no reconocía, así que figuraba como «no trae su bloque» —un aviso— cuando era una regla publicada sin sello válido. Se le aplicó el checklist y reprueba por **una sola fila, la 10**: el cuerpo mide 631 caracteres y el molde da 320. Su bloque deja escrito qué falla, para no volver a medirlo.
 
 **Recortar `F13` es trabajo de este pendiente**, no del 52: es un cambio de regla y va con el repaso del capítulo `02`.
+
+## Los dos primeros capítulos con su checklist aplicado — 2026-08-18
+
+El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por los más chicos.
+
+| Capítulo | Reglas | CUMPLE | NO CUMPLE |
+|---|---|---|---|
+| `14` Estructura del código | 3 | `EST1`, `EST3` | `EST2` |
+| `15` Registros inmutables | 5 | `IM1`, `IM4`, `IM5` | `IM2`, `IM3` |
+
+**Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
+
+- `EST3` reprobaba la fila 10 por **tres caracteres**. Se recortó el porqué.
+- `IM2` reprobaba la fila 8 con el título «Estados y campos de anulación», que nombra un tema sin decir ninguna norma. Pasa a *Guarda los tres estados y la trazabilidad de quien anula*.
+
+**Las tres que quedan en NO CUMPLE necesitan partirse o mudar su procedimiento, y eso ya no es redacción:**
+
+| Regla | Qué falla | Qué hay que hacer |
+|---|---|---|
+| `14·EST2` | Filas 8, 9 y 10 | **Son tres reglas en una**: una convención por tipo, nombres con significado por contexto, y los límites de longitud del motor. Dos IDs nuevos |
+| `15·IM2` | Fila 9 | **Son dos**: los tres estados, y los campos de la anulación. Se pueden cumplir por separado |
+| `15·IM3` | Fila 10 | **Un procedimiento de cuatro pasos no cabe en el molde de una regla.** El caso que la fila prevé: la regla se queda con la exigencia y el procedimiento se va a un anexo al lado |
+
+### Lo que se supo aplicando el checklist
+
+**Hay un análisis del 2026-08-07 que ya había medido esto**, en [analisis/base-2026-08-07-cumplimiento-meta-reglas.md](../analisis/base-2026-08-07-cumplimiento-meta-reglas.md), regla por regla y con recomendación. Al sellar `IM2` se razonó sin mirarlo y casi queda en CUMPLE una regla que ese análisis ya había reprobado — por el mismo motivo, la fila 9.
+
+**Antes de aplicarle el checklist a un capítulo, hay que leer ese análisis.** Aplicarlo sin mirarlo es rehacer el juicio con menos datos.
+
+### Cómo va la cuenta
+
+| | Al anotarse | Antes de hoy | Hoy |
+|---|---|---|---|
+| Sin bloque de checklist | 129 | 121 | **112** |
+| Publicadas en NO CUMPLE | 7 | 7 | **11** |
+
+Nueve reglas ganaron su sello hoy: las tres del `14`, las cinco del `15` y `F13`. Cuatro de esas nueve dicen NO CUMPLE.
+
+**Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
