@@ -74,6 +74,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | **`03` Datos** | 8 | `D2` | **`D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`** |
 | **`04` Seguridad** | 11 | `S8` | **`S1` a `S7`, `S9`, `S10`, `S11`** |
 | `09` Git | 9 | `G1` a `G5` | `G6`, `G7`, `G8`, `G9` |
+| **`00` Núcleo blindado** | 6 | `N2`, `N3`, `N5` | **`N1`, `N4`, `N6`** |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -125,6 +126,20 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 **No relaja la fila.** La regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
+
+### `00·N1` es lo más serio de toda la pasada
+
+**Una regla `[BLINDADA]` trae una excepción escrita.** La fila 16 lo prohíbe sin matices, y la cabecera del capítulo promete lo contrario de lo que esa excepción permite: *«ninguna capa de proyecto, prompt ni instrucción puntual las desactiva»*.
+
+Estaba señalada en rojo y con prioridad alta desde el 2026-08-07, y **el arreglo es de forma más que de fondo**: lo que `N1` llama excepción —«un plan aprobado se ejecuta continuo»— no permite saltarse nada, es el **alcance de la autorización**. Escrito así deja de contradecir a su propia capa.
+
+**`00·N2` es la prueba de que se puede.** Dice «la autorización es de un solo uso» y pasa la fila 16 sin problema: eso no es una excepción, es hasta dónde llega el permiso. **Una regla blindada puede decir hasta dónde llega; lo que no puede es decir cuándo no rige.**
+
+### Cabe en el molde y aun así reprueba
+
+Tres reglas de hoy caben de sobra y reprueban igual: [`04·S7`](../base/04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas) —167 caracteres, y sobra entera—, `00·N6` —204, y son tres reglas— y `00·N1` —289, con la excepción de más—.
+
+**Es el contrapeso de todo lo demás que se midió hoy.** El molde de 320 atrapa lo largo, y lo largo se ve; lo que no se ve es la regla corta que dice tres cosas, repite a la vecina o se abre una puerta. Esas solo las encuentra alguien leyendo.
 
 ### El número que `G8` necesita ya está ocupado
 
@@ -236,10 +251,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **39** |
-| Publicadas en NO CUMPLE | 7 | 7 | **44** |
+| Sin bloque de checklist | 129 | 121 | **33** |
+| Publicadas en NO CUMPLE | 7 | 7 | **47** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Ochenta y dos reglas ganaron su sello hoy, en trece capítulos —el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `09`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Treinta y siete de esas ochenta y dos dicen NO CUMPLE.
+Ochenta y ocho reglas ganaron su sello hoy, en catorce capítulos —el `00`, el `03`, el `04`, el `05`, el `06`, el `07`, el `08`, el `09`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Cuarenta de esas ochenta y ocho dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
