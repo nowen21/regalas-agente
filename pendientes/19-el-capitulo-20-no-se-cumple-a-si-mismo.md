@@ -69,6 +69,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `05` Errores y logging | 5 | `E1`, `E3`, `E5` | `E2`, `E4` |
 | **`06` Rendimiento y eficiencia** | 6 | **los seis** | — |
 | `07` Calidad de código | 7 | `Q1` a `Q6` | `Q7` |
+| `08` Estrategia de pruebas | 7 | `T2`, `T3`, `T5`, `T6` | `T1`, `T4`, `T7` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -93,6 +94,9 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
 | `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
 | `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
+| `08·T1` | Fila 16 | **La excepción deja al agente autorizándose a sí mismo.** La regla que obliga a probar trae dentro el permiso de no probar, sin límite ni autorizador. Ponérselo es **MAYOR** |
+| `08·T4` | Filas 10 y 11 | Reformula `00·N4` y se pasa del molde **por lo prestado**. Lo suyo —el entorno efímero— cabe de sobra |
+| `08·T7` | Filas 8, 9 y 10 | **1645 caracteres, cinco veces el molde.** Ella misma declara «dos frentes». El corte ya está propuesto: `T7` derivar los casos · `T8` triangular el resultado |
 | `07·Q7` | Fila 11 | Reformula `01·C3` entera antes de enlazarla, y lo propio es una frase al final. **`14·EST3` toma de `C3` lo mismo y sí cumple**: aquella la nombra como motivo y dice lo suyo; esta la repite |
 | `10·DEP3` | Fila 11 | Repite `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7` |
 
@@ -115,6 +119,14 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 **No relaja la fila.** La regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
+
+### Una duplicación se puede resolver sin derogar nada
+
+`08·T5` era el único ❌ de prioridad **alta** de todo el análisis: *«idéntica a `02·F5`, ejemplo incluido»*, y la recomendación era que `T5` recibiera el tema **tras derogar `F5`**.
+
+No hizo falta. `F5` declara hoy en su cuerpo *«extiende `08·T5`, que ya obliga a correrlas y a reportar el conteo»* —la forma que `M7` admite— y con eso cada una dice lo suyo: `T5` que se corran y se reporte, `F5` **cuáles**.
+
+**Vale anotarlo porque el reflejo ante una duplicación es derogar una de las dos.** A veces basta con que la de abajo declare que extiende a la de arriba y se quede solo con lo que agrega. Es lo que hay que intentar antes con `10·DEP3` y `12·PR3`.
 
 ### Una recomendación del análisis que no se aplicó, y por qué
 
@@ -142,10 +154,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **80** |
-| Publicadas en NO CUMPLE | 7 | 7 | **18** |
+| Sin bloque de checklist | 129 | 121 | **73** |
+| Publicadas en NO CUMPLE | 7 | 7 | **21** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Cuarenta y una reglas ganaron su sello hoy, en ocho capítulos —el `05`, el `06`, el `07`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Once de esas cuarenta y una dicen NO CUMPLE.
+Cuarenta y ocho reglas ganaron su sello hoy, en nueve capítulos —el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Catorce de esas cuarenta y ocho dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

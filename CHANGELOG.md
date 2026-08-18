@@ -84,7 +84,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `05` entero**: `E1`, `E3` y `E5` en CUMPLE; `E2` y `E4` en NO CUMPLE. `E2` son dos exigencias y **la mitad que sobra ya se cita desde fuera** —`15·IM3` y el `13` apuntan acá para la transacción—, así que al partirla hay que llevar esas citas. `E4` no cabe: su escala de cuatro niveles es una tabla de referencia dentro de una regla.
 - **El capítulo `06` entero, y es el primero que queda sin una sola regla reprobada:** `R1` a `R6`, las seis en CUMPLE. Sirve de referencia de qué aspecto tiene un capítulo al día.
 - **El capítulo `07` entero**: `Q1` a `Q6` en CUMPLE; `Q7` en NO CUMPLE por reformular `01·C3` en vez de enlazarla. `Q6` gana el ejemplo que le faltaba.
-- **Las reglas sin sello bajan de 121 a 80**; las publicadas en NO CUMPLE suben de 7 a 18.
+- **El capítulo `08` entero**: `T2`, `T3`, `T5` y `T6` en CUMPLE; `T1`, `T4` y `T7` en NO CUMPLE. **`T7` es la regla más larga del cuerpo: 1645 caracteres para un molde de 320**, y ella misma declara que cubre «dos frentes». **`T1` es la más delicada:** su excepción deja al agente autorizándose a sí mismo a no probar.
+- **Las reglas sin sello bajan de 121 a 73**; las publicadas en NO CUMPLE suben de 7 a 21.
 
 ### `citas.py` no pedía enlace dos veces… salvo en el mismo renglón
 
