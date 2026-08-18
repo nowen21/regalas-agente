@@ -91,7 +91,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `09` entero**: `G1` a `G5` en CUMPLE; `G6` a `G9` en NO CUMPLE. `G3` pasa a llamarse *Deja fuera del control de versiones los secretos y lo generado* y `G4` gana su ejemplo. **El corte que el análisis proponía para `G8` reservaba el número `G9`, y ese número ya está ocupado** por una regla que nació después: la mitad que salga se lleva `G10`.
 - **El núcleo blindado, las seis:** `N2`, `N3` y `N5` en CUMPLE; `N1`, `N4` y `N6` en NO CUMPLE. **`N1` es lo más serio de la pasada: una regla `[BLINDADA]` con una excepción escrita**, cuando la cabecera del capítulo promete que nada las desactiva. El arreglo es de forma —eso no es excepción sino el alcance de la autorización— y no se toca acá: el núcleo cambia con decisión del usuario.
 - **Los capítulos `18` y `19` enteros**, los dos `opt-in` de DevOps: catorce reglas, **y ninguna tiene un solo ejemplo INCORRECTO/CORRECTO**. Nacieron juntos y se escribieron de corrido. Se anota como un trabajo y no como catorce: el capítulo es la unidad, y hoy ningún proyecto los tiene encendidos.
-- **Las reglas sin sello bajan de 121 a 19**; las publicadas en NO CUMPLE suben de 7 a 61.
+- **El capítulo `01` y `20·M15`, los últimos que faltaban. Las 200 reglas del cuerpo tienen ya su bloque de checklist**, y **`01·C14` traía la peor cita del estándar**: atribuía a `01·C1` un texto que `C1` no dice. Es el único hallazgo de la pasada falso de contenido y no de forma. Corregida.
+- **Las reglas sin sello bajan de 121 a 0**; las publicadas en NO CUMPLE suben de 7 a 72. Ese número sube porque ahora todas dicen la verdad: **el sello ya no es el problema, lo es lo que el sello dice.**
 
 ### `citas.py` no pedía enlace dos veces… salvo en el mismo renglón
 

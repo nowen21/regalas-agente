@@ -14,6 +14,32 @@ INCORRECTO: editar sin avisar
 CORRECTO:   "Agrego la verificación de permiso en X porque Z. ¿Procedo?"
 ```
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ❌ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Dos filas, y las dos son la misma excepción.**
+
+- **Fila 16 · incompleta.** «(No aplica dentro de un plan ya aprobado)» declara condición y no dice ni límite ni quién autoriza. Es la **cuarta** que aparece así, con [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--valores-configurables-van-a-catálogo--cero-hardcode) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app).
+- **Fila 11 · texto prestado.** Esa excepción es [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) dicha otra vez — **y es la tercera vez que se dice**, porque [`00·N1`](00-nucleo-blindado.md#n1--no-ejecutar-sin-validación-blindada) también la repite.
+
+**Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: `F3` es la dueña y las otras dos la enlazan. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C2 · No inventes: verifica
 
 No uses un nombre (archivo, función, permiso, ruta) sin confirmar que existe **ahora**. Lo que existía ayer pudo cambiar.
@@ -22,6 +48,29 @@ No uses un nombre (archivo, función, permiso, ruta) sin confirmar que existe **
 INCORRECTO: "usá el permiso 'gastos.crear'" sin mirar
 CORRECTO:   buscarlo → confirmar que existe → recomendarlo
 ```
+
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07 y se volvió a contar: 121 de 320.
+
+**Su tensión con [`C11`](#c11--confía-en-las-afirmaciones-del-usuario-sobre-estado-del-sistema) está resuelta en el texto de aquella**, no acá: `C2` dice que no se inventa y se verifica; `C11` dice cuándo se le cree al usuario sin verificar. La fila **17** pasa porque el choque quedó zanjado **en el texto**, que es lo que pide — no dejado para el desempate.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C3 · Quédate en tu tarea
 
@@ -32,6 +81,29 @@ INCORRECTO: tarea en A → "aprovecho" y refactorizo B
 CORRECTO:   menciono lo de B y sigo en A
 ```
 
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07. Se volvió a contar: 121 de 320.
+
+**Es la dueña del tema alcance**, y eso importa más de lo que parece: [`07·Q7`](07-calidad-de-codigo.md#q7--deja-el-código-mejor-pero-en-tu-alcance) reprueba hoy por repetirla y [`14·EST3`](14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo) pasa por enlazarla. Las dos toman de acá; la diferencia es cómo.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C4 · No decidas por tu cuenta
 
 Puedes **sugerir**, no **decidir**. Cambiar comportamiento, permisos, esquema o borrar código "sin uso" se consulta antes.
@@ -40,6 +112,27 @@ Puedes **sugerir**, no **decidir**. Cambiar comportamiento, permisos, esquema o 
 INCORRECTO: "esto no se usa" → lo borro
 CORRECTO:   "esto parece sin uso (lo verifiqué). ¿Lo borro?"
 ```
+
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07. Se volvió a contar: 122 de 320.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C5 · Responde corto
 
@@ -70,6 +163,36 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.
 
 Antes de abrir o cambiar un archivo, confirma que es de la tarea. Si dudas, pregunta.
 
+```
+INCORRECTO: el archivo se llama igual que el que abrí hace media hora, así que
+            edito sin mirar la ruta completa
+CORRECTO:   confirmo la ruta antes de escribir; dos módulos pueden tener un
+            archivo con el mismo nombre
+```
+
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**La fila 12 reprobaba y se corrigió en esta pasada:** no tenía ejemplo. **No cambia qué exige la regla.**
+
+**Es la más corta del cuerpo entero: 85 caracteres.** Y el análisis del 2026-08-07 planteó una duda que sigue abierta — si no conviene absorberla en [`C16`](#c16--re-lee-justo-antes-de-editar), que cubre el mismo momento. **No se decide acá:** absorber una regla es derogarla, y eso va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C7 · Ante dos lecturas, pregunta
 
 Si una petición se puede entender de dos formas y cada una da un resultado distinto, pregunta con opciones **antes** de hacer. No adivines.
@@ -79,9 +202,60 @@ INCORRECTO: "dejá solo Factura y Total" → borro 6 columnas asumiendo
 CORRECTO:   pregunto: (a) solo 2 columnas; (b) reemplazo dos por Total; (c) un set intermedio
 ```
 
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07. Se volvió a contar: 139 de 320.
+
+**Es el autorizador natural que les falta a las cuatro excepciones incompletas** —`C1`, `08·T1`, `03·D4` y `03·D5`—: ante dos lecturas, se pregunta. El análisis ya lo anotaba, y al aplicar el checklist hoy esas cuatro aparecieron una tras otra. **La respuesta a «quién autoriza» probablemente esté acá.**
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C8 · Habla el idioma del proyecto
 
 Todo lo que ve el usuario va en el idioma del proyecto (lo declara la capa 3). Los nombres del código siguen el estilo que ya existe.
+
+```
+INCORRECTO: el proyecto está en español y el commit dice "fix validation bug"
+CORRECTO:   el commit dice "corrige la validación del saldo", como el resto
+```
+
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**La fila 12 reprobaba y se corrigió en esta pasada:** no tenía ejemplo. **No cambia qué exige la regla.**
+
+Cabe de sobra: 133 de 320.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C9 · Reporta los tropiezos
 
@@ -92,6 +266,27 @@ Si algo falla, dilo claro y propón el arreglo. No lo escondas ni lo tapes.
 INCORRECTO: una prueba falla y sigo como si nada
 CORRECTO:   "La prueba X falla por Z. Propongo esto. ¿Procedo?"
 ```
+
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+Cumplía en el análisis del 2026-08-07. Se volvió a contar: 141 de 320.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C10 · Cada mensaje del usuario se evalúa como posible mejora del setup
 
@@ -115,6 +310,33 @@ CORRECTO:   aplica + evalúa alcance (transversal/local) + propone "¿lo absorbo
 
 Ver: `13` DOC10 (catálogo de reglas del proyecto y su sync con la memoria).
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+
+**1724 caracteres y tres exigencias.** Era ❌ en el análisis del 2026-08-07 y no ha cambiado.
+
+- **Fila 5 · nombra tecnología.** Sus ejemplos dicen `SQLite`, `MariaDB`, `React`, `Django` y «este ERP». [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre ninguno.
+- **Fila 9 · son tres:** aplicar lo que el mensaje pide, evaluar si tiene alcance más allá, y proponer absorberlo al estándar.
+- **Fila 10 · no cabe**, por las otras dos.
+
+**Los ejemplos de stack no se borran: se mudan.** Son útiles, y su sitio es `plantillas/` o un anexo — no el cuerpo de una regla que hereda cualquier proyecto. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C11 · Confía en las afirmaciones del usuario sobre estado del sistema
 
 Cuando el usuario afirma "no existe", "ya lo hice", "está en Y", "el typo es evidente" o cualquier hecho verificable — **avanza sin re-verificar**. La verificación de `C2` protege contra invención del agente, no contra afirmaciones del usuario. Sobre-verificar formalismos evidentes rompe el flujo, gasta contexto y trata al usuario como si mintiera.
@@ -126,6 +348,31 @@ INCORRECTO: usuario dice "esa función no existe, ya la borré" → el agente bu
 CORRECTO:   el agente ejecuta como si no existiera; si aparece en el runtime, ahí sí verifica y reporta
 ```
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 461 caracteres.** Es lo único que reprueba.
+
+**Y lo que la hace larga es lo mejor que tiene.** Su tensión con [`C2`](#c2--no-inventes-verifica) —no inventar y verificar, contra creerle al usuario sobre el estado del sistema— está **declarada y resuelta dentro del texto**, y el análisis del 2026-08-07 la señaló como el buen ejemplo de [`20·M6`](20-meta-reglas/reglas/M6-ante-un-conflicto-el-desempate-es-este-y-en-este-orden.md) bien aplicado.
+
+**Al comprimirla, eso es lo último que se toca.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C12 · No agregues calificativos al nombre del artefacto
 
 Cuando el usuario nombra algo ("con enfoque práctico", "sistema de ayuda contextual", "reporte financiero completo"), el nombre real del artefacto es SOLO el sustantivo literal — los adjetivos describen el estilo o alcance de la ejecución, no son parte del identificador.
@@ -136,6 +383,27 @@ El nombre en archivos, prompts, documentos y commits usa el nombre EXACTO del us
 INCORRECTO: usuario dice "hazme el módulo de aportes de manera completa" → archivo "aportes-completo.md"
 CORRECTO:   archivo "aportes.md" · el "completo" es la calidad de ejecución, no parte del nombre
 ```
+
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 462 caracteres.** El análisis del 2026-08-07 la daba por cumplida; es el sexto caso en que esa fila estaba medida a ojo, y el último que aparece.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C13 · Preguntas de análisis van en chat abierto, no en formulario cerrado
 
@@ -153,6 +421,29 @@ En duda entre chat abierto y formulario → **chat abierto**.
 INCORRECTO: "¿Prefieres A) enfoque X, B) enfoque Y, C) enfoque Z?" cuando el usuario necesita razonar el trade-off
 CORRECTO:   pregunta abierta con contexto, ejemplos, y "¿cómo lo tratas?" — el usuario responde con matiz
 ```
+
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 802 caracteres.** Es lo único que reprueba, y el análisis del 2026-08-07 lo dijo con precisión: *«quince líneas para una sola exigencia bien delimitada»*.
+
+**No hay nada que partir ni nada prestado: sobra texto.** Es el caso más simple de arreglar de todo el capítulo. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C14 · Aplicar el estándar profesional del dominio como default — no ofrecer opciones minimalistas
 
@@ -177,12 +468,42 @@ Cada dominio (SaaS, ERP, banca, salud, e-commerce, reservas, logística) tiene u
 - Justificar la opción minimalista con "MVP" o "ahorra tiempo" cuando el proyecto es un sistema productivo, no un prototipo desechable.
 - Dividir en opciones lo que debería ser un solo default: "¿implementar 4 features del módulo o solo 1?" cuando el estándar profesional del dominio son las 4.
 
-Refuerza `00 N3` (no atajos no profesionales) y `01 C1` (no ofrecer opciones claramente subóptimas). El estándar del dominio es información del contexto — usarlo como default es tratar al usuario como profesional del sector, no como aprendiz que debe elegir cada micro-detalle.
+Refuerza [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada): ante un obstáculo la salida es el arreglo real, no el atajo. **No ofrecer opciones claramente subóptimas es exigencia de esta regla**, no de otra. El estándar del dominio es información del contexto — usarlo como default es tratar al usuario como profesional del sector, no como aprendiz que debe elegir cada micro-detalle.
 
 ```
 INCORRECTO: "¿las alertas van solo al dashboard o también por email?" — cuando el estándar del sector espera ambos
 CORRECTO:   el plan aplica "dashboard + email + push" como default · pregunta solo si hay tradeoff real que no puedas resolver profesionalmente
 ```
+
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Tenía una cita falsa, y se corrigió en esta pasada.** Decía *«refuerza `01·C1` (no ofrecer opciones claramente subóptimas)»*, y `C1` no dice eso: dice «avisa antes de tocar». **Un documento del estándar atribuyendo a una regla algo que no dice.** El análisis del 2026-08-07 lo marcó como cita rota y pidió corregirlo *ya*; llevaba once días.
+
+Ahora refuerza a [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada) —que sí es lo que glosa— y **declara como suya** la exigencia de no ofrecer opciones subóptimas, que era de ella desde el principio.
+
+**Quedan dos filas:**
+
+- **Fila 9 · son dos exigencias:** aplicar el estándar del dominio como opción por defecto, y no ofrecer alternativas claramente peores. Se cumplen por separado.
+- **Fila 10 · no cabe:** 2231 caracteres, siete veces el molde. Lo que sobra es la casuística por sector, que es material de anexo.
+
+Van al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C15 · Al replicar un patrón, replicar la paridad completa
 
@@ -208,6 +529,33 @@ CORRECTO:   listar lo que Aportes tiene (UI, interacciones, tests) y replicarlo 
 
 **Encadenamiento:** `C14` (estándar profesional del dominio como default) — la paridad completa es la aplicación puntual de C14 cuando existe un referente concreto en el mismo proyecto.
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+
+**Fila 5 · nombra un módulo de un proyecto real** —«módulo Aportes»—, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Es el tercer caso hoy, tras [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos) y [`04·S11`](04-seguridad.md#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación). **El arreglo es de una línea:** sustituirlo por «el módulo referente».
+
+**Fila 10 · no cabe:** 1436 caracteres.
+
+Y su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas de este capítulo —`C15`, `C16`, `C18` y `03·D8`— y conviene normalizarlo de una vez, no regla por regla.
+
+Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C16 · Re-lee justo antes de editar — nunca sobre contexto viejo
 
 Antes de aplicar un `Edit` sobre un archivo que el usuario abrió, mostró en el IDE, o pudo modificar entre lecturas, verifica el estado actual. Un `Edit` sobre contexto viejo sobrescribe silenciosamente los cambios que no viste — el usuario los pierde sin aviso.
@@ -232,6 +580,34 @@ CORRECTO:   git status → git diff (si M) → Read del bloque exacto → Edit c
 ```
 
 **Encadenamiento:** `C2` (no inventar, verificar) — C16 es la aplicación puntual de C2 al ciclo de edición.
+
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+
+**Cuatro filas. Es la que más acumula del capítulo.**
+
+- **Fila 5 · nombra herramientas concretas** —órdenes del control de versiones, y las herramientas de lectura y edición del agente por su nombre—. Contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md), y peor que en `C15`: acá el procedimiento entero está escrito en términos de una herramienta.
+- **Fila 11 · texto prestado**, y lo admite ella misma: su `Encadenamiento` dice que duplica [`C2`](#c2--no-inventes-verifica).
+- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de `M7`. Lo que corresponde es declarar `(extiende 01·C2)`.
+- **Fila 10 · no cabe:** 1130 caracteres.
+
+**Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo.** El aviso estaba dentro de la propia regla, y nadie lo leyó como lo que era. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C17 · Confirma tu entendimiento antes de ejecutar — solo palabra afirmativa del USUARIO cuenta como aprobación
 
@@ -259,6 +635,36 @@ Ante un pedido que admita más de una lectura razonable, **antes** de mover cód
 
 **Encadenamiento:** balancea `C1` (avisa antes de tocar) con la ejecución fluida — la aprobación previa evita el ciclo *"tocar → corregir → deshacer"*. Encadena con [`F18`](02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) (plan_trabajo derivado de los CA aprobados): la confirmación previa asegura que los CA reflejen el pedido REAL antes de derivar el plan.
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+
+**Cuatro filas.**
+
+- **Fila 9 · son tres exigencias:** confirmar el entendimiento, qué cuenta como aprobación, y en qué formato. Se cumplen por separado.
+- **Fila 16 · la lista «NO aplica a» no dice quién autoriza.** Quinta excepción incompleta de la pasada.
+- **Fila 12 · sin ejemplo.**
+- **Fila 10 · no cabe:** 1796 caracteres.
+
+**La mitad que hay que sacar ya se usa como si fuera regla propia:** *qué cuenta como aprobación* la citan [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F9`](02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md) y [`02·F4.4`](02-flujo-de-trabajo/reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md). **Es el mismo caso de [`05·E2`](05-errores-y-logging.md#e2--falla-controlado-no-rodees-el-problema)**, y el mismo cuidado: al partirla hay que llevar esas citas a la mitad nueva.
+
+Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C18 · Auto-sincronización del `CLAUDE.md` con la plantilla central
 
 El `CLAUDE.md` de cada proyecto es una **copia local** de `plantillas/CLAUDE.md.plantilla`. Cuando el estándar mejora la plantilla (un paso nuevo en §3, una sección nueva), el `CLAUDE.md` del proyecto queda **viejo**. Esta regla vive en `base/` **a propósito**: `base/` se carga siempre, así que corre **aunque el `CLAUDE.md` local esté desactualizado** (no puede vivir dentro del propio `CLAUDE.md` — un `CLAUDE.md` viejo no la tendría).
@@ -282,6 +688,33 @@ CORRECTO:   se mejora la plantilla una vez · cada proyecto lo aplica al arranca
 
 **Encadenamiento:** complementa el paso de arranque de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
 
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 533 caracteres**, y su `Encadenamiento` queda fuera de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), como en `C15` y `C16`.
+
+Está clasificada y con validador escrito —`sesion.py`—, así que la fila **18** pasa con programa detrás.
+
+El análisis del 2026-08-07 anotaba algo que sigue valiendo: **el porqué de que esta regla viva en `base/` es razonamiento y va a `notas/`**, no dentro de la regla. Es parte de lo que la hace no caber.
+
+Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
 
 Todo lo que el agente deba recordar entre sesiones —preferencias del usuario, acuerdos sobre cómo trabajar— se escribe en `historico-chat/memory/` del proyecto, un archivo por recuerdo. El almacén de memoria de la herramienta queda **vacío**: lo que aparezca ahí se mueve, sin dejar copia ni puntero. Lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar.
@@ -294,6 +727,31 @@ INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar all
 CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionado,
             y el almacén de la herramienta vacío
 ```
+
+
+---
+
+### Checklist  ·  **NO CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+
+**Fila 10 · no cabe: 533 caracteres.** Es lo único que reprueba.
+
+**No estaba en el análisis del 2026-08-07 porque nació después**, como [`09·G9`](09-git.md#g9--la-historia-de-usuario-es-la-unidad-del-commit), y como aquella **llegó igual de larga que las viejas**. Dos reglas escritas con el checklist ya a la vista y las dos se pasan del molde: el problema no es que nadie conozca la fila 10, es que cuatro líneas alcanzan para menos de lo que uno cree.
+
+Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C20 · La palabra de otro idioma se traduce, y si no se puede, se explica
 

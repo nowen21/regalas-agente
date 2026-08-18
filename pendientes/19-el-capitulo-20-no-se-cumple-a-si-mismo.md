@@ -1,6 +1,6 @@
 # Pendiente · El capítulo de meta-reglas no se cumple a sí mismo
 
-**Estado:** abierto, con una de sus tres deudas cerrada · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+**Estado:** abierto, con **dos** de sus tres deudas cerradas · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
 | | |
 |---|---|
@@ -22,13 +22,13 @@ Las 33 sin clasificar incluyen los capítulos `18` y `19` completos, que ese arc
 
 ## Qué falta
 
-**1. Decidir qué se hace con las siete.** Tres caminos: corregirlas, derogarlas, o aceptar que el checklist no aplica hacia atrás y dejarlo escrito.
+**1. Decidir qué se hace con las que reprueban** —eran siete, hoy son **72**, y el número subió porque ahora todas dicen la verdad. Tres caminos: corregirlas, derogarlas, o aceptar que el checklist no aplica hacia atrás y dejarlo escrito.
 
 **2. Clasificar las 33.** ✅ **Hecho el 2026-08-16** (v23.1.1), en la fase [`A-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan/). Bajaron a cero.
 
 **Y cambió el diagnóstico:** quince de las 33 **ya estaban clasificadas**. El registro decía `C1–C17`, un rango, y el programa busca cada identificador literal. Las que faltaban de verdad eran 18 — los capítulos `18` y `19` completos, más `G9`, `M15`, `F4` y `F12`.
 
-**3. Las 121 sin bloque** (eran 129 cuando se anotó). Aplicarles el checklist es trabajo largo y con criterio. Conviene por capítulo, no de a una.
+**3. Las 121 sin bloque** (eran 129 cuando se anotó). ✅ **Hecho el 2026-08-18.** Bajaron a **cero**: las 200 reglas del cuerpo tienen su bloque. Se hizo por capítulo, como decía. Lo que queda ahora es otra cosa —**arreglar las 72 que reprueban**— y está desglosado abajo.
 
 ## El límite
 
@@ -76,6 +76,8 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `09` Git | 9 | `G1` a `G5` | `G6`, `G7`, `G8`, `G9` |
 | **`00` Núcleo blindado** | 6 | `N2`, `N3`, `N5` | **`N1`, `N4`, `N6`** |
 | `18` Despliegue · opt-in | 8 | — | los ocho |
+| `01` Conducta | 22 | `C2`, `C3`, `C4`, `C5`, `C6`, `C7`, `C8`, `C9`, `C20`, `C21`, `C22` | `C1`, `C10` a `C19` |
+| `20` Meta-reglas · `M15` | 1 | `M15` | — |
 | `19` Observabilidad · opt-in | 6 | — | los seis |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
@@ -128,6 +130,33 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 **No relaja la fila.** La regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
+
+## El capítulo `01` cierra la pasada, y con la peor cita del cuerpo
+
+**`01·C14` atribuía a `01·C1` un texto que `C1` no dice.** La regla decía *«refuerza `01·C1` (no ofrecer opciones claramente subóptimas)»*, y `C1` dice «avisa antes de tocar». El análisis del 2026-08-07 la marcó como cita rota y pidió corregirla *ya*; llevaba once días. **Corregida el 2026-08-18.**
+
+Es el único hallazgo de la pasada que era **falso de contenido** y no de forma: lo demás son reglas largas, tituladas de más o repetidas. Esta afirmaba algo que no era cierto.
+
+## Lo que queda: 72 reglas que reprueban
+
+**El sello ya no es el problema. Lo es lo que el sello dice.** Agrupado por qué hay que hacer:
+
+| Qué hay que hacer | Cuántas, aproximadamente | Ejemplos |
+|---|---|---|
+| **Acortar** — sobra explicación, no exigencia | la mayoría de las 78 fuera del molde | `C13`, `03·D3`, `04·S1` |
+| **Partir** — son dos o tres reglas en una | ~15 | `08·T7`, `03·D6`, `04·S5`, `01·C17` |
+| **Sacar a un anexo** — es un procedimiento, no una regla | 4 | `03·D7`, `03·D8`, `05·E4`, `17·I3` |
+| **Dejar de repetir al vecino** | ~8 | `12·PR3`, `12·PR4`, `07·Q7`, `01·C16` |
+| **Derogar** — sobra entera | 1 | `04·S7` |
+| **Completar la excepción** — falta quién autoriza | 5 | `00·N1`, `08·T1`, `03·D4`, `03·D5`, `01·C17` |
+| **Quitar el nombre propio** — stack o dominio real | 3 | `04·S11`, `01·C10`, `01·C15` |
+| **Escribir los ejemplos que faltan** | 14 | los capítulos `18` y `19` enteros |
+
+**Por dónde conviene seguir**, y no es por el capítulo más grande:
+
+1. **Las cinco excepciones sin autorizador.** Son la única categoría donde el defecto *deja pasar algo*: `00·N1` es una blindada con excepción y `08·T1` deja al agente autorizándose a no probar. [`04·S9`](../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es el modelo de cómo se escribe una completa, y [`01·C7`](../base/01-conducta.md#c7--ante-dos-lecturas-pregunta) probablemente sea el autorizador que les falta.
+2. **Las tres con nombre propio.** Son de una línea cada una y hoy cualquier proyecto que herede el estándar lee el stack de otro.
+3. **El `03` y el `04`.** Diecisiete de las 72 entre los dos, y son los que más cuesta tocar.
 
 ### Catorce reglas sin un solo ejemplo, y son dos capítulos enteros
 
@@ -260,10 +289,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **19** |
-| Publicadas en NO CUMPLE | 7 | 7 | **61** |
+| Sin bloque de checklist | 129 | 121 | **0** |
+| Publicadas en NO CUMPLE | 7 | 7 | **72** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Ciento dos reglas ganaron su sello hoy, en dieciséis capítulos —todos menos el `01` y el `20`— más `F13`. Cincuenta y cuatro de esas ciento dos dicen NO CUMPLE.
+**Las 200 reglas del cuerpo tienen su bloque de checklist.** Ciento veintiuna lo ganaron el 2026-08-18, en los diecisiete capítulos que faltaban. Setenta y dos del total dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
