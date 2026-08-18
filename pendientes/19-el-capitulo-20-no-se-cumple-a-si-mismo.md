@@ -33,3 +33,16 @@ Las 33 sin clasificar incluyen los capítulos `18` y `19` completos, que ese arc
 ## El límite
 
 El validador dice cuáles faltan, no si la regla está bien escrita. Eso lo decide quien la lee.
+
+## La medición vuelve a ser posible — 2026-08-17
+
+Este pendiente citaba una medición hecha con `metareglas.py` el 2026-08-14, y desde entonces **no se podía repetir**: el programa no tenía subcomando en `validar.py`. Al cerrar el [53](hecho/ningun-validador-termina-en-silencio.md) lo ganó.
+
+```
+$ python validadores/validar.py metareglas
+7 falla(s), 229 aviso(s).
+```
+
+**Ese es el tamaño real de este pendiente, medido hoy y repetible.**
+
+Y llegó con un defecto que hay que resolver acá, el `D-02`: **una regla nueva sin clasificar sale como `AVISO`, y un aviso no detiene la publicación**. El `CA-03` de esa historia pide que la detenga. La prueba que lo denunciaba estaba marcada como fallo esperado por dos motivos —el subcomando y el aviso—; el subcomando se arregló, así que ahora **pasa con la mitad hecha**. Se le escribió encima qué no comprueba, para que nadie la lea como que el `CA-03` está cubierto.

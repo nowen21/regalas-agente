@@ -42,10 +42,10 @@
 ### 3.3 Técnicas de diseño de casos
 
 - **Cada CA con su par** — defecto sembrado y versión correcta. Con solo el defecto no se distingue "lo detecta" de "reporta siempre".
-- **Ningún programa termina en silencio** — el caso del punto de entrada comprueba que, si algo no se puede correr, el programa **muere diciendo por dónde se corre**. Es la exigencia del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md): salir con 0 sin haber mirado es peor que fallar.
+- **Ningún programa termina en silencio** — el caso del punto de entrada comprueba que, si algo no se puede correr, el programa **muere diciendo por dónde se corre**. Es la exigencia del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md): salir con 0 sin haber mirado es peor que fallar.
 - **La cuenta se mide, no se hereda** — el pendiente 19 dice 121 reglas sin checklist. Esa cuenta se hizo a mano; la corrida da la real, y la del pendiente se corrige con ella.
 - **La avalancha esperada, declarada** — el riesgo `R-01`: abrir la puerta va a destapar cientos de hallazgos. Se anotan como línea base del primer día, y la entrada del registro lo dice, para que no se lea como regresión.
-- **Un caso resuelto no cierra el pendiente** — el riesgo `R-03`: el [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) queda abierto por sus otros puntos.
+- **Un caso resuelto no cierra el pendiente** — el riesgo `R-03`: el [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) queda abierto por sus otros puntos.
 
 ### 3.5 Alcance de la corrida
 

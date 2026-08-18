@@ -27,7 +27,7 @@
 | Trazabilidad | Que desde el registro se llegue al programa que comprueba cada regla | Este repositorio | No |
 | Conducta | Qué avisa hoy una regla nueva sin clasificar | Copia del repositorio | No |
 
-**Por qué la prueba va en `pruebas.py`.** El programa que vigilaría la fila 18 no tiene punto de entrada (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Arreglarlo es otro archivo y otro problema; una comprobación que no corre no comprueba nada.
+**Por qué la prueba va en `pruebas.py`.** El programa que vigilaría la fila 18 no tiene punto de entrada (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)). Arreglarlo es otro archivo y otro problema; una comprobación que no corre no comprueba nada.
 
 ### 3.2 Tipos de prueba
 
@@ -158,7 +158,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Escribir la regla en la copia, sin clasificarla | Queda escrita |
 | 2 | Correr las comprobaciones disponibles | Se anota cuál avisa y cuál no |
 | 3 | Intentar correr el programa de la fila 18 | No tiene punto de entrada; queda la evidencia |
-| 4 | Dejar escrito que la vigilancia depende de ese programa | Atado al pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) |
+| 4 | Dejar escrito que la vigilancia depende de ese programa | Atado al pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
 | 5 | Borrar la copia | No queda rastro |
 
 **Resultado esperado final:** el CA-03 queda en «No» con la evidencia de por qué, que es lo que la fase que lo arregle necesita.

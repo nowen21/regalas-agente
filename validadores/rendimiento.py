@@ -18,6 +18,7 @@ construida en partes, o un caso legítimo; lo confirma un humano.
 import re
 
 import codigo
+import comun
 from comun import AVISO, Hallazgo
 
 _SELECT_ESTRELLA = re.compile(r"(?i)\bSELECT\s+\*")
@@ -112,3 +113,9 @@ def validar(raiz):
     for donde, texto in codigo.archivos(raiz):
         revisar_texto(texto, donde, hallazgos)
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("rendimiento")

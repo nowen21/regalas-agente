@@ -35,8 +35,8 @@
 **Fuera de alcance:**
 
 - **Frenar el cambio sin entrada con un enganche.** Eso es [EP-005 · HU-005](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md), no esta fase.
-- **Darle punto de entrada a `metareglas.py`,** donde vive la fila 19. Pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), punto 2.
-- **El registro por proyecto** (`documentacion/versiones/`), que es [HU-003](../../HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) y arrastra los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md).
+- **Darle punto de entrada a `metareglas.py`,** donde vive la fila 19. Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
+- **El registro por proyecto** (`documentacion/versiones/`), que es [HU-003](../../HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) y arrastra los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md).
 - **Reescribir entradas viejas.** La RN-04 lo prohíbe: el registro es rastro.
 
 ---

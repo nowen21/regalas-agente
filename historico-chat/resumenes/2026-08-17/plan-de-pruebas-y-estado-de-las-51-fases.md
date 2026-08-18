@@ -34,7 +34,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-plan-de-pruebas
 
 **Por qué importa.** En un proyecto heredero el marcador se rellena al instalar; en **este** repositorio no hay nada que lo rellene, así que queda como marca en un documento entregado — lo que [`13·DOC20`](../../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) prohíbe. En los documentos escritos hoy se usó la ruta relativa real, por eso no tienen ninguno.
 
-**Dónde queda.** Ya está anotado: es el pendiente [41](../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md), con [40](../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md) y [42](../../../pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) a su lado. Lo que esta sesión agrega es **el número**: 28 enlaces, 47 archivos, medidos el 2026-08-17.
+**Dónde queda.** Ya está anotado: es el pendiente [41](../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md), con [40](../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md) y [42](../../../pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md) a su lado. Lo que esta sesión agrega es **el número**: 28 enlaces, 47 archivos, medidos el 2026-08-17.
 
 ---
 
@@ -48,9 +48,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ — el 4 ya estaba en el pendiente [41](../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md); esta sesión le agregó la medición |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ — el 4 ya estaba en el pendiente [41](../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md); esta sesión le agregó la medición |
 | Toda historia disparada está escrita en su épica | ☑ — no se disparó ninguna: las 51 fases ya tenían su HU |
-| Lo que se hizo está aprobado y guardado | ☐ — falta que el usuario lea los documentos y autorice el commit |
+| Lo que se hizo está aprobado y guardado | ☑ — commit `54e8c9e`, subido a `main`. Se llevó además tres archivos sueltos de una sesión anterior: el pendiente 58, el borrado del 57 y el índice de pendientes |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

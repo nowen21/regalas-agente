@@ -21,6 +21,7 @@ inventar la regla desde el código — el error que este validador vino a evitar
 import os
 import re
 
+import comun
 from comun import AVISO, FALLA, Hallazgo
 
 CARPETA = "documentacion/epicas"
@@ -278,7 +279,7 @@ def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
         # F12.2 · toda HU tiene al menos una fase. AVISO y no FALLA: una HU
         # recién abierta todavía no tiene ninguna, y eso no es incumplimiento.
         return [Hallazgo(AVISO, donde_hu, 0,
-                         "sin fases — F12.2 pide al menos una")]
+                         "sin fases (F12.2: pide al menos una por historia)")]
 
     vistos = {}
     for nombre in fases:
@@ -337,3 +338,9 @@ def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
                 + ", ".join(sorted(vistos))))
 
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("fases")

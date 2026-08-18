@@ -15,6 +15,7 @@ Tres comprobaciones:
 import os
 import re
 
+import comun
 from comun import (AVISO, FALLA, Hallazgo, RAIZ, encabezados, leer,
                    lineas_utiles, marcadores)
 
@@ -199,3 +200,9 @@ def validar(ruta_documento, ruta_plantilla):
                 f"que corresponda y baja desde allá"))
 
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("plantilla")

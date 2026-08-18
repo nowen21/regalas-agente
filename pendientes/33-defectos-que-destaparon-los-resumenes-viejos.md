@@ -55,4 +55,4 @@ Este archivo los junta. Cada uno dice de qué resumen sale.
 
 Solo entra acá lo que quedó **abierto** en una sesión vieja y sigue abierto hoy. Lo que se resolvió después, aunque fuera en otra sesión, queda anotado en su resumen y no llega a este archivo.
 
-**El [31](31-los-resumenes-de-las-sesiones-viejas.md) ya está cerrado**, así que esta lista no crece más por ese lado: son los 33 resúmenes completos. Lo que entre de aquí en adelante sale de sesiones nuevas, no de las viejas.
+**El [31](hecho/los-resumenes-de-las-sesiones-viejas.md) ya está cerrado**, así que esta lista no crece más por ese lado: son los 33 resúmenes completos. Lo que entre de aquí en adelante sale de sesiones nuevas, no de las viejas.

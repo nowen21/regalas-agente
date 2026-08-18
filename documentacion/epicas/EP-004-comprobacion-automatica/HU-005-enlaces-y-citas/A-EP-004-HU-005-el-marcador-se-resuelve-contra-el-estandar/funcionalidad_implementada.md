@@ -101,7 +101,7 @@ El módulo de comprobación **no tiene especificación**, así que se traza cont
 | Descripción | Origen | Destino |
 |---|---|---|
 | El módulo de comprobación no tiene especificación | Diferido por el plan | Pendiente por abrir |
-| `enlaces.py` no tiene bloque `__main__`: correrlo directo no imprime nada y sale con código 0, que se lee como «sin hallazgos» | No previsto — apareció en esta sesión y **ya causó daño**: se dio por buena una comprobación que nadie había calculado | Anotado en el [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md); es de la [HU-008](../../HU-008-corrida-completa/), no de esta |
+| `enlaces.py` no tiene bloque `__main__`: correrlo directo no imprime nada y sale con código 0, que se lee como «sin hallazgos» | No previsto — apareció en esta sesión y **ya causó daño**: se dio por buena una comprobación que nadie había calculado | Anotado en el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md); es de la [HU-008](../../HU-008-corrida-completa/), no de esta |
 | El [punto 1 del pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) —enlaces con espacios dados por rotos— no se reprodujo en el CP-004 | Cambio del entorno | Sigue abierto en el 33; acá solo consta que no apareció |
 
 ---

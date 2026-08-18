@@ -67,9 +67,33 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **No se tocó `base/` ni `plantillas/`**, así que no hubo entrada de `CHANGELOG` ni subida de `VERSION`: lo que cambió es `documentacion/` y `pendientes/`, y [`20·M10`](../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) pide versión cuando cambia lo que se le exige a un proyecto. Acá no cambió.
 
-**La regla no está escrita todavía.** «Todo pendiente nombra su historia» vive hoy en las `RN` de una HU, no en `base/`. Escribirla allá es una fase con su plan y sus pruebas, y esa fase necesita aprobación: es el eslabón que [`02·F23`](../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) exige y que esta sesión no puede saltarse justamente por lo que vino a arreglar.
+**La regla no está escrita todavía.** «Todo pendiente nombra su historia» vive hoy en las `RN` de una HU, no en `base/`. La fase que construye la comprobación quedó abierta —hallazgo 7— y espera aprobación; la que escribiría el texto **no se puede abrir**, porque no hay historia que la reciba —hallazgo 8—.
 
 **Lo que quedó comprobado:** `validar.py estandar` da **0 fallas** con los mismos 5 avisos conocidos —los falsos positivos del [55](../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md)—, y las 36 pruebas del repositorio pasan.
+
+### 7 · La HU ya existía, así que la fase es la `B` — y no está detenida, al revés que la `A`
+
+**Qué pasó.** Al ir a construir la comprobación, `EP-004 · HU-016` ya tenía fase `A` —una de los 51 planes, abierta y sin aprobar—. El usuario lo zanjó en una línea: *«si ya existe la HU se crea otra fase»*. Quedó abierta [`B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md), con sus dos planes y su estado, en la estación 4.
+
+**Lo que se supo al escribirla.** La `A` está detenida por dos dudas, y **el enrutamiento de hoy contestó una**: «¿dónde se declara, una línea fija o una sección?» ya no es una opinión — es la fila `Historia de usuario` de la ficha, medida en 33 archivos. Eso **destraba la duda 27** del [pendiente 59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Cerrarla formalmente es de la fase `A`; se reporta y no se aprovecha desde la `B`.
+
+**Y un plan que quedó viejo.** La fase `A` declara en su §2.1 que **crea** `validadores/pendientes.py`. El archivo ya existe —156 líneas, escrito para HU-018 y commiteado ayer—. Se reporta, no se corrige desde acá.
+
+### 8 · Se fue a cambiar `02·F23` y no hubo dónde bajarlo
+
+**Qué se buscó.** La fase `B` construye el programa que comprueba, pero el texto de [`02·F23`](../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) no dice «desde que se abre». Hacer fallar por algo que la regla no exige es peor que no comprobarlo, así que había que escribir la frase. **No hubo dónde:** ninguna historia declara el capítulo `02` como su módulo. El `00` y el `01` tienen la suya; el `02`, no.
+
+**Por qué importa.** El `02` es el capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— y el más citado del repositorio. Si ningún sitio lo recibe, **todo cambio del `02` se ha venido haciendo sin cadena, incluida la regla que exige la cadena**. `F22` y `F23` nacieron en agosto y ninguna tuvo historia propia.
+
+**Dónde queda.** El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md): los tres son el mismo hueco a distinta altura.
+
+### 9 · Dos sesiones sobre el mismo árbol, y una falla que no es de nadie de acá
+
+**Qué pasó.** Al commitear se vio que otra sesión está trabajando en el mismo directorio: sus archivos se tocaron a las 20:14 y 20:21, los de esta a las 20:22, y ya había commiteado a `main`. Se separó archivo por archivo mirando las horas de modificación, y el commit `1c36481` llevó **solo** lo de esta sesión: 58 archivos, dejando fuera seis fases nuevas y cuatro transcripciones suyas.
+
+**Y hay una falla que no es de esta sesión.** `validar.py estandar` reporta un enlace roto en `B-EP-004-HU-002-el-analizador-ve-todas-las-reglas`, que es una de las carpetas sin rastrear de la otra sesión. No se tocó.
+
+**Por qué importa.** Esto es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) pasando en vivo, y hoy se resolvió a mano leyendo horas de modificación. **Nada lo impide ni lo avisa.** El día que las dos sesiones toquen el mismo archivo, una pisa a la otra en silencio.
 
 ---
 
@@ -85,7 +109,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ los 30 siguen abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
-| Lo que se hizo está aprobado y guardado | ☐ **falta:** el usuario no ha revisado ni autorizado el commit |
+| Lo que se hizo está aprobado y guardado | ☑ commit `1c36481` · **falta** el de la fase B y el pendiente 60 |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
@@ -93,4 +117,4 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 ---
 
-**Lo que sigue, cuando se retome:** construir la fase que escribe la regla en `base/` y el programa que la comprueba (los `CA-05` a `CA-07` de la HU-016). Sin eso, el enrutamiento de hoy es un estado que nada sostiene, y el pendiente 60 nace suelto.
+**Lo que sigue, cuando se retome:** aprobar y ejecutar la fase `B-EP-004-HU-016`. Sin ella el enrutamiento de hoy es un estado que nada sostiene. Y decidir el [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), que es lo único que permite escribir el texto de la regla.

@@ -35,11 +35,11 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-retrodocumentar
 ### H-3 · `metareglas.py` tampoco tiene punto de entrada — y es el que más pesa
 
 - **Qué pasó:** al verificar la línea base de HU-003 se escribió que `metareglas.py` comprueba que ninguna regla normal mande sobre una `[BLINDADA]`. Se fue a correrlo: `python validadores/metareglas.py` no imprime nada y sale con código 0, y `validar.py` no tiene subcomando para él. La afirmación era falsa y se corrigió en el plan antes de seguir.
-- **Por qué importa:** es el segundo caso del pendiente [53](../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) y pesa más que el primero. Es el único programa que decide once de las veinte filas del checklist del estándar —incluida la 5, que sostiene `M3`, y la 15, que protege el núcleo— y además `M16`, el respaldo de toda regla de proyecto. El pendiente [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) cita una medición hecha con él el 2026-08-14: hoy no se puede repetir desde la línea de comandos.
+- **Por qué importa:** es el segundo caso del pendiente [53](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) y pesa más que el primero. Es el único programa que decide once de las veinte filas del checklist del estándar —incluida la 5, que sostiene `M3`, y la 15, que protege el núcleo— y además `M16`, el respaldo de toda regla de proyecto. El pendiente [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) cita una medición hecha con él el 2026-08-14: hoy no se puede repetir desde la línea de comandos.
 - **Qué lo soluciona:** ya está escrito en el punto 2 del 53. No hace falta pendiente nuevo: sería el tercero sobre lo mismo.
 - **Qué se decidió:** anotarlo como segundo caso en el 53, y que los planes de HU-006, HU-007 y HU-008 digan qué mitad de su comprobación no se puede correr, en vez de darla por hecha.
 - **Estado:** anotado
-- **Dónde queda:** pendiente [53 · punto 2](../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)
+- **Dónde queda:** pendiente [53 · punto 2](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)
 - **Nace en:** 2026-08-17
 - **Con qué se retoma:** ¿se revisan los treinta programas de una, o se le pone punto de entrada solo a los que alguien cita como comprobación?
 
@@ -144,7 +144,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ · H-1, H-2 y H-5 dicen qué se hizo y dónde quedó |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-10 queda con su decisión pasada al usuario, el H-3 en el [53](../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), el H-4 en el [20](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) con su fase abierta, el H-6 acá |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-10 queda con su decisión pasada al usuario, el H-3 en el [53](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), el H-4 en el [20](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) con su fase abierta, el H-6 acá |
 | Toda historia disparada está escrita en su épica | ☑ · ninguna historia nueva: las siete ya estaban escritas y lo que faltaba era su fase |
 | Lo que se hizo está aprobado y guardado | ☑ · un commit con los 163 archivos propios, después de rehacerlo por el H-11. La **aprobación no es de esta sesión**: el usuario decidió el 2026-08-17 que cada plan se aprueba cuando se vaya a ejecutar su fase. Queda solo guardar |
 

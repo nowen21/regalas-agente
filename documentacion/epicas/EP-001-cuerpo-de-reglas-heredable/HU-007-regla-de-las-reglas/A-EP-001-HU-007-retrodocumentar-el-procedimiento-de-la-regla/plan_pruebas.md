@@ -28,7 +28,7 @@
 | Contraste con reglas reales | Que el criterio que se aplica sea el mismo que ya se aplicó a las reglas vigentes | Este repositorio | No |
 | Programa | Lo que `validar.py estandar` sí alcanza a mirar de la forma | Este repositorio | Sí |
 
-**Por qué casi nada se automatiza.** La fila 5 la mira [`validadores/metareglas.py`](../../../../../validadores/metareglas.py), que **no se puede correr** (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)), y la fila 9 es de las que piden leer: dos exigencias en un mismo texto no se detectan contando palabras.
+**Por qué casi nada se automatiza.** La fila 5 la mira [`validadores/metareglas.py`](../../../../../validadores/metareglas.py), que **no se puede correr** (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)), y la fila 9 es de las que piden leer: dos exigencias en un mismo texto no se detectan contando palabras.
 
 ### 3.2 Tipos de prueba
 

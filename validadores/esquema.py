@@ -29,6 +29,7 @@ import codigo
 import instalar
 import migraciones
 import versionado
+import comun
 from comun import AVISO, Hallazgo, leer
 
 # D1
@@ -220,3 +221,9 @@ def validar(raiz):
             for linea, motivo in revisar_esquema(a, texto):
                 hallazgos.append(Hallazgo(AVISO, f"{prefijo}{a}", linea, motivo))
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("esquema")

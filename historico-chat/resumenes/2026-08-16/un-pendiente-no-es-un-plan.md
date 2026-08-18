@@ -40,11 +40,11 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-un-pendiente-no
   - **Contexto:** hay que llevar los tres puntos de copia a `_rellenar(leer(origen), _rellenos(ruta))` y agregar la prueba que instala en una carpeta desechable y comprueba que no queda ningún `«…»`. El sello no se ve afectado: la huella se calcula del stack central, no del texto del archivo.
 - **Qué se decidió:** se arregla en los tres puntos de copia, y la prueba comprueba **solo los marcadores que el instalador sabe llenar** — no todos los huecos. Los 4 archivos de `.agente/` llegan con huecos a propósito: son las preguntas que contesta el proyecto. El criterio original del plan los daba por defecto y salió rojo en 65 líneas correctas; se corrigió con aprobación del usuario, sin ajustarlo en silencio.
 - **Estado:** **resuelto acá** — v21.1.0, veredicto Cumple. Los 19 enlaces de un proyecto **recién instalado** abren, incluido el que reportó el proyecto.
-  **Su límite, destapado por otra sesión el mismo día:** un proyecto ya instalado no se arregla reinstalando, porque la huella sale del stack central y el instalador lo da por al día. Quedó como [pendiente 42](../../../pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md), que no es de esta sesión.
+  **Su límite, destapado por otra sesión el mismo día:** un proyecto ya instalado no se arregla reinstalando, porque la huella sale del stack central y el instalador lo da por al día. Quedó como [pendiente 42](../../../pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md), que no es de esta sesión.
 - **Responde a:** EP-007 · HU-001
 - **Dispara:** 1. [EP-007 · HU-001 · fase A](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/) — arregló los tres puntos de copia y dejó la primera prueba del repositorio. **Cerrada el mismo día**, veredicto Cumple.
 - **Orden de resolución:** 1 de 2 · va antes que el H-3, porque si el marcador nunca sale del estándar el H-3 deja de tener efecto en un proyecto.
-- **Dónde queda:** [pendiente 40](../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md), cerrado · fase [`A-EP-007-HU-001`](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/)
+- **Dónde queda:** [pendiente 40](../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md), cerrado · fase [`A-EP-007-HU-001`](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/)
 - **Nace en:** 2026-08-16 · un-pendiente-no-es-un-plan
 - **Cerrado en:** 2026-08-16 · un-pendiente-no-es-un-plan
 - **Con qué se retoma:** —
@@ -64,7 +64,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-un-pendiente-no
 - **Responde a:** EP-004 · HU-005
 - **Dispara:** 1. [EP-004 · HU-005 · fase A](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/) — la red de seguridad del H-2. **Cerrada el mismo día**, veredicto Cumple.
 - **Orden de resolución:** 2 de 2 · después del H-2, que quita la causa; este cubre lo que se vuelva a escapar.
-- **Dónde queda:** [pendiente 41](../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md), cerrado · fase [`A-EP-004-HU-005`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/)
+- **Dónde queda:** [pendiente 41](../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md), cerrado · fase [`A-EP-004-HU-005`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/)
 - **Nace en:** 2026-08-16 · un-pendiente-no-es-un-plan
 - **Cerrado en:** 2026-08-16 · un-pendiente-no-es-un-plan
 - **Con qué se retoma:** —
@@ -81,7 +81,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ los tres |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ ninguno quedó abierto: el [40](../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) cerraron el mismo día |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ ninguno quedó abierto: el [40](../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md) y el [41](../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) cerraron el mismo día |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/) nueva, y las dos fases colgando de HU existentes |
 | Lo que se hizo está aprobado y guardado | ☑ cinco commits, del `77db52b` al `b1044ba` |
 

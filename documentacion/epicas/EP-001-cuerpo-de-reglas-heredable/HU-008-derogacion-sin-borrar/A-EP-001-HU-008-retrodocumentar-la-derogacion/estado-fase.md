@@ -81,7 +81,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó ninguna duda abierta.
-- **[`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr** (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)): la mitad del CA-03 que vive ahí queda sin comprobación automática, y el resultado tiene que decirlo.
+- **[`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr** (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)): la mitad del CA-03 que vive ahí queda sin comprobación automática, y el resultado tiene que decirlo.
 - **Si otra sesión está tocando `validadores/pruebas.py`** (riesgo `R-03`): se guarda solo lo propio.
 - **Si aparece una regla que debería estar derogada y no lo está** (riesgo `R-04`): se propone. Derogar lo decide el usuario.
 

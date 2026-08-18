@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🔀 **Híbrido.** 📄 Retro-documenta lo que está escrito: [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) comprueba once de las veinte filas del checklist —la 5, 6, 7, 10, 12, 13, 14, 15, 18, 19 y 20— más `M14` y, aparte, `M16`. ✨ Y construye lo que falta: **no se puede correr**. `python validadores/metareglas.py` no imprime nada y sale con 0, y `validar.py` no tiene subcomando para él. Es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md). Sale de la fila de HU-011 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🔀 **Híbrido.** 📄 Retro-documenta lo que está escrito: [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) comprueba once de las veinte filas del checklist —la 5, 6, 7, 10, 12, 13, 14, 15, 18, 19 y 20— más `M14` y, aparte, `M16`. ✨ Y construye lo que falta: **no se puede correr**. `python validadores/metareglas.py` no imprime nada y sale con 0, y `validar.py` no tiene subcomando para él. Es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md). Sale de la fila de HU-011 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -37,7 +37,7 @@
 **Fuera de alcance:**
 
 - **Arreglar las 121 reglas sin checklist ni las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md); acá se mide.
-- **Revisar los otros treinta programas** del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md): esta fase arregla el que su HU cubre.
+- **Revisar los otros treinta programas** del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md): esta fase arregla el que su HU cubre.
 - **Cambiar el checklist ni el molde,** que son de EP-001.
 - **Las nueve filas que piden leer y entender.** El programa no las simula, y así se queda.
 
@@ -95,7 +95,7 @@ Ninguno.
 | Decisión | Alternativa descartada | Justificación |
 |---|---|---|
 | Se le abre la puerta al programa que ya está, sin cambiar sus comprobaciones | Reescribirlo con lo aprendido | Reescribir y correr a la vez impide saber si un hallazgo es del programa viejo o del nuevo |
-| Si algo no se puede correr, se muere diciendo por dónde se corre | Dejarlo callar | Es la exigencia del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md): ninguno termina en silencio con código 0 sin haber mirado |
+| Si algo no se puede correr, se muere diciendo por dónde se corre | Dejarlo callar | Es la exigencia del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md): ninguno termina en silencio con código 0 sin haber mirado |
 | La cuenta del pendiente 19 se corrige con lo que dé la corrida | Dejar el número viejo | Un pendiente con la cuenta vieja hace decidir sobre un dato falso |
 
 ### 2.7 Dudas por resolver antes de escribir
@@ -204,7 +204,7 @@ El estándar está en producción. El subcomando es **aditivo**: subida **MENOR*
 | B-01 | La duda 1 sin resolver | Bloquea la puerta, y sin puerta no hay fase | Se presenta al usuario |
 | R-01 | Que al abrir la puerta aparezcan cientos de hallazgos | Parece una regresión y no lo es | La entrada del registro lo dice, y el resultado anota la cuenta del primer día como línea base |
 | R-02 | Que alguna comprobación esté mal y reporte de más | El programa se ignora | Se para y se propone: corregir la comprobación es otra fase |
-| R-03 | Que el arreglo se lea como que el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) quedó cerrado | Los otros treinta siguen sin revisar | Se marca este caso como resuelto y el pendiente queda abierto por su punto 2 |
+| R-03 | Que el arreglo se lea como que el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) quedó cerrado | Los otros treinta siguen sin revisar | Se marca este caso como resuelto y el pendiente queda abierto por su punto 2 |
 
 ---
 

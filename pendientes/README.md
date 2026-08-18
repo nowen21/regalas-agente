@@ -101,7 +101,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 22 | **P3** | [Dos sesiones versionando a la vez](22-dos-sesiones-versionando-a-la-vez.md) | Dos sesiones abiertas dejaron dos numeraciones vivas en el mismo archivo. No lo resuelve un validador: hace falta el acuerdo, y son tres opciones sobre la mesa. |
 | 23 | **P2** | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. Ya está decidido qué se hace: solo falta ejecutarlo. |
 | 24 | **P3** | [Buscar en el repositorio antes de preguntar](24-buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. La HU ya está redactada dentro del pendiente, y es conducta que rinde en cada sesión. |
-| ~~25~~ | — | [Las reglas de cómo se escribe llegan en el índice, no puestas](25-las-reglas-de-como-se-escribe-van-en-el-indice.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
+| ~~25~~ | — | [Las reglas de cómo se escribe llegan en el índice, no puestas](hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
 | 26 | **P4** | [«Corrida» es jerga y no está definida](26-corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. **Conviene hacerlo con el 21:** es el mismo cambio de vocabulario en los mismos archivos. |
 | ~~27~~ | — | **hecho** → [El veredicto de la fase A de HU-010](hecho/el-veredicto-de-la-fase-a-de-hu-010.md) | Los ciclos 2 y 3 lo resolvieron en el fondo: el `CP-006` corrió cuando el usuario leyó el glosario y no entendió una entrada. Lo que quedaba era la cabecera del resultado diciendo «ciclo 1» con el cuerpo en el 3. Cerrado 2026-08-16. |
 | ~~28~~ | — | **hecho** → [Un solo veredicto por fase](hecho/un-solo-veredicto-por-fase.md) | Un programa compara el concepto, las exigencias en «No» y el conteo de los dos documentos. **La decisión que faltaba quedó tomada y escrita:** compara un programa, el molde del `estado-fase` no se toca. Cerrado 2026-08-16 (v23.1.0). |
@@ -118,11 +118,11 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 30 | **P1** | [El checklist no ve la cadena](hecho/la-revision-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. Es lo que el agente lee en **cada** mensaje para saber si el entorno está completo. |
-| ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md). |
+| ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md). |
 | ~~35~~ | — | **hecho** → [Renombrar deja coherente su resumen](hecho/renombrar-deja-el-resumen-coherente.md) | shopnest-mesa | `--renombrar` corrige el enlace de adentro del resumen que arrastra, y nace la primera suite de pruebas de `historico.py`. Cerrado 2026-08-16 (v21.3.0) en la fase [`B-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/). **Falta avisarle a `shopnest-mesa`.** |
 | 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
 
-**Lo que el 34 dejó a medias vive en el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) y el [41](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
+**Lo que el 34 dejó a medias vive en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
 
 ### Lo que dejó revisar el histórico (31–33)
 
@@ -130,7 +130,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](31-los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
+| ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](hecho/los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
 | 32 | **P2** | [La carpeta del día nace sin su línea en el índice](32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
 | 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
 
@@ -172,9 +172,9 @@ Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fas
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| ~~40~~ | — | **hecho** → [El instalador copia tres archivos sin rellenar los marcadores](40-el-instalador-copia-sin-rellenar-los-marcadores.md) | Los tres puntos de copia rellenan, y nace la primera prueba del repositorio. Cerrado 2026-08-16 (v21.1.0) en la fase [`A-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). **Falta avisarle a `shopnest-mesa`.** |
-| ~~41~~ | — | **hecho** → [El marcador no se resuelve dentro de un proyecto](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) | El marcador se resuelve contra la carpeta del estándar, así que el veredicto ya no depende de desde dónde se corra el revisor. Cerrado 2026-08-16 (v21.1.1) en la fase [`A-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/). |
-| ~~42~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) | Toda copia que ya existe pasa por el relleno: lo que quedó crudo se repara en el sitio, sin bandera y sin pisar lo que llenó el proyecto. Cerrado 2026-08-16 (v21.2.0) junto con el [44](hecho/poner-al-dia-lo-ya-instalado.md), en la fase [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). **Avisado a `shopnest-mesa`, que ya comprobó.** |
+| ~~40~~ | — | **hecho** → [El instalador copia tres archivos sin rellenar los marcadores](hecho/el-instalador-rellena-los-marcadores.md) | Los tres puntos de copia rellenan, y nace la primera prueba del repositorio. Cerrado 2026-08-16 (v21.1.0) en la fase [`A-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). **Falta avisarle a `shopnest-mesa`.** |
+| ~~41~~ | — | **hecho** → [El marcador no se resuelve dentro de un proyecto](hecho/el-marcador-se-resuelve-contra-el-estandar.md) | El marcador se resuelve contra la carpeta del estándar, así que el veredicto ya no depende de desde dónde se corra el revisor. Cerrado 2026-08-16 (v21.1.1) en la fase [`A-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/). |
+| ~~42~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [42](hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md) | Toda copia que ya existe pasa por el relleno: lo que quedó crudo se repara en el sitio, sin bandera y sin pisar lo que llenó el proyecto. Cerrado 2026-08-16 (v21.2.0) junto con el [44](hecho/poner-al-dia-lo-ya-instalado.md), en la fase [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
 **El 40 fue primero** —quitó la causa— y el 41 después, poniendo la red que atrapa el marcador que se escape mañana. Pero eso valía **en una instalación nueva**: el 42 era que en las viejas seguían todos donde estaban. Los tres cerraron el 2026-08-16, el 42 con el 44 y en la misma fase.
 
@@ -187,7 +187,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 43 | **P1** | [La plantilla de spec no pide de dónde sale la regla](hecho/el-origen-de-la-regla-de-negocio.md) | shopnest-mesa | El §4 pide `«Regla — por qué existe.»`: el porqué, nunca el de dónde. Una regla de negocio nació en la especificación de un módulo, sin pedirla nadie, y bajó sola a decisión, trazabilidad, dos pruebas y un criterio de aceptación. Tardó un día en verse. **Es el hueco del [30](hecho/la-revision-ve-la-cadena.md) y el [38](hecho/el-validador-de-la-f22-tiene-su-fase.md) por el otro lado**: allá el código se saltó la cadena hacia arriba, acá una regla hacia abajo. |
-| ~~44~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [44](44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) | shopnest-mesa | Subir de versión es por sí solo motivo de registro, así que el proyecto llega a 13 de 13 corriendo el instalador. Cerrado 2026-08-16 (v21.2.0) junto con el [42](hecho/poner-al-dia-lo-ya-instalado.md). **Avisado a `shopnest-mesa`, que ya comprobó.** |
+| ~~44~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [44](hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) | shopnest-mesa | Subir de versión es por sí solo motivo de registro, así que el proyecto llega a 13 de 13 corriendo el instalador. Cerrado 2026-08-16 (v21.2.0) junto con el [42](hecho/poner-al-dia-lo-ya-instalado.md). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
 **El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
@@ -208,7 +208,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 53 | **P1** | [`enlaces.py` no tiene punto de entrada](53-enlaces-py-no-tiene-punto-de-entrada.md) | Termina en silencio y con código 0 **sin comprobar nada**, y ese silencio se lee como «cero rotos». Una fase se lo creyó y escribió mal su métrica. Falta revisar cuántos de los treinta validadores tienen el mismo hueco. |
+| 53 | **P1** | [`enlaces.py` no tiene punto de entrada](hecho/ningun-validador-termina-en-silencio.md) | Termina en silencio y con código 0 **sin comprobar nada**, y ese silencio se lee como «cero rotos». Una fase se lo creyó y escribió mal su métrica. Falta revisar cuántos de los treinta validadores tienen el mismo hueco. |
 | 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](54-cerrar-un-pendiente-rompe-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). |
 | 55 | **P2** | [El validador lee enlaces dentro de las comillas de código](55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) | Reportó como rotas dos muestras que nunca fueron enlaces. **Conviene con el punto 1 del 33:** mismo archivo, misma clase de falso positivo. |
 | 56 | **P3** | [El estándar no tiene planteamiento](56-el-estandar-no-tiene-planteamiento.md) | Esta casa reprueba el punto de la cadena que ella misma acaba de escribir. No es tarea de código: es decidir qué es este proyecto, y sale de una conversación. |
@@ -253,6 +253,14 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 **Es `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro** en la transcripción, que se versiona. Nada enmascara, y lo que falta para construirlo son dos decisiones del grupo G.
 
+### Lo que dejó enrutar el backlog (60)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 60 | **P3** | [Ninguna historia es dueña del texto del capítulo `02`](60-nadie-es-dueno-del-texto-del-capitulo-02.md) | Se fue a agregarle una frase a `02·F23` y no hubo dónde bajarla: ninguna HU declara el capítulo `02` como su módulo. El capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— se ha venido cambiando sin cadena. |
+
+**Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](56-el-estandar-no-tiene-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
+
 ## Ningún pendiente vive suelto: en qué historia está cada uno
 
 Un pendiente dice **qué falta**; la historia dice **qué se pide y cuándo se da por aceptado**. Un pendiente sin historia no se puede construir sin saltarse la cadena, que es lo que [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) prohíbe — y lo que costó el defecto de la [20.0.1](../CHANGELOG.md).
@@ -262,7 +270,7 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | Épica · HU | Pendientes que viven ahí |
 |---|---|
 | [EP-001 · HU-001](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) — Formato único de regla | 37 |
-| [EP-001 · HU-007](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — La regla de las reglas | 14, 16, y el punto 2 del 33 |
+| [EP-001 · HU-007](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — La regla de las reglas | 14, 16, 60, y el punto 2 del 33 |
 | [EP-001 · HU-009](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — Reglas sin checklist al día | 19, 52 |
 | [EP-001 · HU-010](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) — Cuándo no aplica la especificación | 20 |
 | **[EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md)** — Buscar antes de preguntar | 24 |
@@ -285,6 +293,8 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | [EP-006 · HU-002](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — Guardar en el repositorio | 17 |
 | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — Poner al día | 46 |
 | **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
+
+El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra sesión: la fila va en su archivo igual que en los demás.
 
 **Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
 

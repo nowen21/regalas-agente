@@ -22,7 +22,7 @@
 - ✨ **Funcionalidad nueva:** el caso de prueba que fija que el veredicto no depende de desde dónde se corra.
 - 🔀 **Híbrido:** sí.
 
-**De dónde sale:** [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md), destapado al revisar lo que reportó `shopnest-mesa`.
+**De dónde sale:** [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md), destapado al revisar lo que reportó `shopnest-mesa`.
 
 **CA de la HU que cubre esta fase:**
 
@@ -46,8 +46,8 @@
 
 **Fuera de alcance:**
 
-- **Que el marcador salga sin rellenar del instalador.** Es el [pendiente 40](../../../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md), con su propia fase en [EP-007 · HU-001](../../../EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). Aquella quita la causa; esta pone la red.
-- **Que `enlaces.py` no tenga bloque `__main__`** y corriéndolo directo no imprima nada. Se vio de paso, está anotado en el [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) y **no entra**: es otro defecto, de otra HU (la corrida completa, [HU-008](../../HU-008-corrida-completa/)).
+- **Que el marcador salga sin rellenar del instalador.** Es el [pendiente 40](../../../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md), con su propia fase en [EP-007 · HU-001](../../../EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). Aquella quita la causa; esta pone la red.
+- **Que `enlaces.py` no tenga bloque `__main__`** y corriéndolo directo no imprima nada. Se vio de paso, está anotado en el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) y **no entra**: es otro defecto, de otra HU (la corrida completa, [HU-008](../../HU-008-corrida-completa/)).
 - **Comprobar el ancla del enlace.** Ya está fuera de alcance en la propia HU-005.
 
 ---

@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Darle punto de entrada a `metareglas.py`,** que es donde vive la comprobación de `M16`. Es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md).
+- **Darle punto de entrada a `metareglas.py`,** que es donde vive la comprobación de `M16`. Es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md).
 - **El instalador y la puesta al día del proyecto.** Es EP-007, con sus fases ya escritas.
 - **El aviso de versión atrasada.** Es [EP-002 · HU-004](../../../EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md).
 - **Cambiar los modelos de la capa 3.** Si la prueba muestra que a alguno le falta algo, se propone: son `plantillas/`, y tocarlas sube versión.
@@ -95,7 +95,7 @@ Ninguno.
 
 | Decisión | Alternativa descartada | Justificación |
 |---|---|---|
-| El CA-02 se cierra con la prueba hecha a mano y la constancia de que el programa no corre | Escribir el punto de entrada de `metareglas.py` de paso | Es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md); tocarlo acá sería salirse del criterio ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)) |
+| El CA-02 se cierra con la prueba hecha a mano y la constancia de que el programa no corre | Escribir el punto de entrada de `metareglas.py` de paso | Es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md); tocarlo acá sería salirse del criterio ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)) |
 | Se prueba sobre un proyecto que ya tiene el estándar instalado | Armar un proyecto de prueba desde cero | Lo que se prueba es el desempate ante ajustes que alguien escribió de verdad, no ante ajustes inventados para que la prueba pase |
 | El caso del CA-03 se escribe con un ajuste que contradice el núcleo a propósito, y se comprueba que no aplica | Confiar en que la prohibición escrita alcanza | Es justo lo que este trabajo corrige: una exigencia escrita y nunca probada |
 

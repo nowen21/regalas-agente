@@ -31,6 +31,7 @@ No confundir con la memoria por señales (`13·DOC5`, la base de `memoria/`):
 aquella guarda lo que el **proyecto** aprendió; esta, cómo quiere el usuario que
 el **agente** trabaje.
 """
+import comun
 import os
 import re
 import shutil
@@ -228,3 +229,9 @@ def revisar(proyecto, casa=None):
     return False, (f"quedaron {len(quedaron)} archivo(s) en la memoria local de "
                    f"la herramienta ({nombres}) — `{local}`; la memoria va en "
                    f"`{CARPETA.replace(os.sep, '/')}/` (`01·C19`)")
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

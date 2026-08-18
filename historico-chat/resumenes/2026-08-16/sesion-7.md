@@ -50,7 +50,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** `python validadores/enlaces.py --raiz .` no tiene punto de entrada: sale con código 0 y sin imprimir. Esta sesión lo corrió y leyó ese silencio como «cero enlaces rotos». El entrypoint real es `validar.py estandar`, y corriéndolo aparecieron 20.
 - **Por qué importa:** un validador que calla sin haber mirado es peor que ninguno — el silencio es exactamente la señal de que todo está bien. La métrica de una fase quedó escrita mal por eso, y se corrigió.
 - **Qué lo soluciona:** que el programa tenga punto de entrada, o que se muera diciendo por dónde se corre. Conviene revisar si los demás validadores tienen el mismo hueco.
-- **Estado:** **anotado** → [pendiente 53](../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)
+- **Estado:** **anotado** → [pendiente 53](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)
 - **Responde a:** —
 - **Dispara:** —
 - **Dónde queda:** §4 del [resultado de pruebas](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/resultado_pruebas.md) de la fase.

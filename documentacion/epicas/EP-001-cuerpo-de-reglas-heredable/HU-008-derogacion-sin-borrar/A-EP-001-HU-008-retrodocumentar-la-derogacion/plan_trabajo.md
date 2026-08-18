@@ -36,7 +36,7 @@
 
 - **La derogación sin adoptar,** que es [`02·F22`](../../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md) y ya tiene su fase cerrada en [EP-004 · HU-015](../../../EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/A-EP-004-HU-015-retrodocumentar-la-comprobacion-de-la-f22/plan_trabajo.md). Acá se cita como línea base, no se rehace.
 - **Derogar alguna regla.** Si al revisar aparece una candidata, se propone: derogar es decisión del usuario.
-- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), punto 2.
+- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
 - **Las siete reglas publicadas con el checklist en «no cumple»**, que son del pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 ---

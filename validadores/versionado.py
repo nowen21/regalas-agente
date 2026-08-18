@@ -18,6 +18,7 @@ import os
 import re
 import subprocess
 
+import comun
 from comun import AVISO, FALLA, Hallazgo
 
 # Nombres de plantilla de ejemplo que G3 sí quiere versionados.
@@ -172,3 +173,9 @@ def validar(repo, ruta_mostrada=None, solo_preparados=False):
             "(G3: se versiona el molde sin valores)"))
 
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("versionado")

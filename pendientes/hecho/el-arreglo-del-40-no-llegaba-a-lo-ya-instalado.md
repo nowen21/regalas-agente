@@ -4,7 +4,7 @@
 |---|---|
 | **Quién lo reportó** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **Su pendiente de seguimiento** | `pendientes/01-los-enlaces-a-las-reglas-nacen-rotos.md`, que **sigue abierto** allá |
-| **De dónde sale** | De comprobar el [40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) apenas se cerró, en la v21.1.0 |
+| **De dónde sale** | De comprobar el [40](el-instalador-rellena-los-marcadores.md) apenas se cerró, en la v21.1.0 |
 | **Qué le falta al 40** | Su punto 3 — «decir qué tiene que hacer un proyecto ya instalado para quedar al día, probablemente reinstalar». Reinstalar **no** basta |
 
 ## Qué se encontró

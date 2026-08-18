@@ -26,4 +26,4 @@ Un resumen que no está en el índice es un resumen que nadie va a abrir. Es exa
 
 El enganche **no escribe hallazgos** y esto no lo cambia: escribir una línea de índice con el nombre del archivo no es interpretar nada. Reconocer un hallazgo sigue siendo criterio (`13·DOC22`).
 
-**Va con el [31](31-los-resumenes-de-las-sesiones-viejas.md), antes de escribirlo:** si no, cada uno de los 33 resúmenes nace fuera del índice y hay que volver a pasar por todos.
+**Va con el [31](hecho/los-resumenes-de-las-sesiones-viejas.md), antes de escribirlo:** si no, cada uno de los 33 resúmenes nace fuera del índice y hay que volver a pasar por todos.

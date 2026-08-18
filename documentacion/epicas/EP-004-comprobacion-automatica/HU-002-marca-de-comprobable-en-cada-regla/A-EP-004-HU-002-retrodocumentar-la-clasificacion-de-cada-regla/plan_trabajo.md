@@ -36,7 +36,7 @@
 
 - **Escribir los validadores que faltan.** Son las 22 marcadas como pendientes, y son del pendiente [01](../../../../../pendientes/01-validadores-de-codigo-de-proyecto.md).
 - **El criterio con que se clasifica,** que es [HU-001](../../HU-001-criterio-de-lo-comprobable/HU-001-criterio-de-lo-comprobable.md).
-- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), punto 2.
+- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
 - **Reclasificar reglas.** Lo que aparezca mal clasificado se anota.
 
 ---
@@ -86,7 +86,7 @@ Ninguno.
 
 | Decisión | Alternativa descartada | Justificación |
 |---|---|---|
-| La prueba se escribe en `pruebas.py` y no en `metareglas.py` | Arreglar el programa que no corre | Es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) |
+| La prueba se escribe en `pruebas.py` y no en `metareglas.py` | Arreglar el programa que no corre | Es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
 | El caso del rango se escribe como prueba | Confiar en que ya se corrigió | Fue un diagnóstico falso que costó una sesión: la prueba es para que no vuelva |
 | La columna del programa va en el registro | Un documento nuevo con el mapa | Dos documentos sobre lo mismo se separan solos |
 
@@ -117,7 +117,7 @@ Ninguna: todo lo que la fase afirma se verificó contra el repositorio.
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
 | T-05 | Caso de prueba: escribir una regla en copia sin clasificarla y comprobar qué avisa hoy | `plan_pruebas.md` | 1,5 |
-| T-06 | Dejar escrito que la vigilancia depende de un programa sin punto de entrada, atado al pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) | `resultado_pruebas.md` | 1,0 |
+| T-06 | Dejar escrito que la vigilancia depende de un programa sin punto de entrada, atado al pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) | `resultado_pruebas.md` | 1,0 |
 
 ### RNF — Que la clasificación se pueda revisar de una corrida
 

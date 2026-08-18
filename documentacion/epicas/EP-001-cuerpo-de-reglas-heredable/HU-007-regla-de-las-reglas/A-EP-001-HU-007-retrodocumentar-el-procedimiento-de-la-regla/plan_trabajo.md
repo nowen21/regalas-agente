@@ -35,7 +35,7 @@
 **Fuera de alcance:**
 
 - **Las 121 reglas sin bloque de checklist y las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y su parte hecha se cerró en la fase A de [HU-009](../../HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md). Acá no se abre.
-- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), punto 2.
+- **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
 - **Que el sello del checklist caduque con el texto.** Pendiente [52](../../../../../pendientes/52-el-sello-del-checklist-caduca-con-el-texto.md).
 - **Escribir reglas nuevas.** Las candidatas de la prueba son reglas que ya existen o que ya se rechazaron, no inventos que después haya que borrar.
 

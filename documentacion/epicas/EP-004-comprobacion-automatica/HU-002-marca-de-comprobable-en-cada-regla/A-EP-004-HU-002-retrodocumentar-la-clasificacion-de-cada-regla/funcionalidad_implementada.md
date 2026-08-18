@@ -86,7 +86,7 @@ Son justamente las reglas de **para quién se construye, seguridad por defecto y
 | Qué | Dónde |
 |---|---|
 | Que el analizador vea las reglas escritas con `###` y en viñeta (`D-01`) | Fase `B-EP-004-HU-002`, propuesta |
-| Que `metareglas.py` tenga subcomando y que la regla sin clasificar sea falla (`D-02`) | La misma fase, que cierra el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) |
+| Que `metareglas.py` tenga subcomando y que la regla sin clasificar sea falla (`D-02`) | La misma fase, que cierra el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
 | El criterio de qué es comprobable | [HU-001](../../HU-001-criterio-de-lo-comprobable/HU-001-criterio-de-lo-comprobable.md) |
 
 **La advertencia que deja esta fase:** el validador de las reglas lleva versiones diciendo «cero sin clasificar» y es cierto — de las que ve. Nadie había preguntado cuántas ve.

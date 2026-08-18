@@ -24,6 +24,7 @@ exactamente eso.
 import os
 
 import declaracion
+import comun
 from comun import AVISO, Hallazgo, filas_de, leer, valor_limpio
 
 # La fila que dice "acá no hay nada", que no es lo mismo que una tabla vacía.
@@ -101,3 +102,9 @@ def validar(proyecto):
                     f"`{modulo.nombre}` lo registra como consumidor y esta especificación "
                     f"no declara qué consume de él — DOC7 pide los dos lados"))
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

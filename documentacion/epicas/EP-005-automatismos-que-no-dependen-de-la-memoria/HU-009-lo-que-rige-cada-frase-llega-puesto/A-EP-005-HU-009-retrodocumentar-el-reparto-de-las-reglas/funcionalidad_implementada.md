@@ -59,7 +59,7 @@ Detalle en el [resultado_pruebas.md](resultado_pruebas.md).
 |---|---|
 | El reparto ya mandaba completos `00` y `01` desde la 5.0.0: la fase retro-documenta, no construye | [`automatismos/spec.md`](../../../../automatismos/spec.md), §4.1 |
 | Una prueba en verde no dice si vigila algo: se rompe lo que vigila y se comprueba que lo detecta | §3 del [resultado](resultado_pruebas.md) |
-| El [pendiente 25](../../../../../pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md) se cierra por falso: su causa se dedujo en vez de verificarse | Ese mismo pendiente, con el motivo escrito |
+| El [pendiente 25](../../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) se cierra por falso: su causa se dedujo en vez de verificarse | Ese mismo pendiente, con el motivo escrito |
 | 0,21 s al abrir la sesión no se nota | Decisión del usuario, 2026-08-15 |
 
 ---

@@ -1,14 +1,14 @@
 # Pendiente · El registro de versión no se escribe si no cambió ninguna huella
 
-**Estado:** **cerrado** el 2026-08-16 (v21.2.0), junto con el [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md), porque son el mismo defecto. Qué se hizo: [`hecho/poner-al-dia-lo-ya-instalado.md`](hecho/poner-al-dia-lo-ya-instalado.md). La fase que lo cerró: [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). Anotado el 2026-08-16.
+**Estado:** **cerrado** el 2026-08-16 (v21.2.0), junto con el [42](el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md), porque son el mismo defecto. Qué se hizo: [`hecho/poner-al-dia-lo-ya-instalado.md`](poner-al-dia-lo-ya-instalado.md). La fase que lo cerró: [`A-EP-007-HU-006`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado). Anotado el 2026-08-16.
 
-> El archivo se queda acá y no se mueve a `hecho/`: moverlo rompería los enlaces que lo citan, que es exactamente el [pendiente 54](54-cerrar-un-pendiente-rompe-sus-citas.md). Decía «abierto» hasta el 2026-08-17, cuando `validar.py estandar` destapó que el índice y el archivo se contradecían.
+> El archivo se queda acá y no se mueve a `hecho/`: moverlo rompería los enlaces que lo citan, que es exactamente el [pendiente 54](../54-cerrar-un-pendiente-rompe-sus-citas.md). Decía «abierto» hasta el 2026-08-17, cuando `validar.py estandar` destapó que el índice y el archivo se contradecían.
 
 | | |
 |---|---|
 | **Proyecto de origen** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
-| **Su pendiente de seguimiento** | [`pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md`](../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md) — **ya cerrado allá**: `shopnest-mesa` lo pasó a `hecho/` cuando comprobó el arreglo |
-| **A quién avisar al cerrar** | a **todos los proyectos instalados** — le pasa a cualquiera que se quede una versión atrás sin que cambien sus plantillas. La lista está en [`plantillas/proyectos.md`](../plantillas/proyectos.md) |
+| **Su pendiente de seguimiento** | [`pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md`](../../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md) — **ya cerrado allá**: `shopnest-mesa` lo pasó a `hecho/` cuando comprobó el arreglo |
+| **A quién avisar al cerrar** | a **todos los proyectos instalados** — le pasa a cualquiera que se quede una versión atrás sin que cambien sus plantillas. La lista está en [`plantillas/proyectos.md`](../../plantillas/proyectos.md) |
 
 ## El problema
 
@@ -33,7 +33,7 @@ Tres cosas, y la tercera es la que hace daño:
 
 1. **El proyecto queda en 12 de 13 para siempre.** Nada de lo que el instalador sabe hacer lo sube.
 2. **La única salida es escribir el archivo a mano**, y esos archivos terminan diciendo *«Lo escribió `validadores/instalar.py`. No se edita a mano.»* La salida disponible es la que el propio estándar prohíbe.
-3. **El aviso de instalación incompleta se vuelve permanente.** El agente lo repite en cada mensaje, y un aviso que siempre suena se deja de leer — con él se pierden las incompletitudes de verdad. Es el mismo daño del [pendiente 34](hecho/enlaces-de-las-plantillas-al-estandar.md), por otra puerta.
+3. **El aviso de instalación incompleta se vuelve permanente.** El agente lo repite en cada mensaje, y un aviso que siempre suena se deja de leer — con él se pierden las incompletitudes de verdad. Es el mismo daño del [pendiente 34](enlaces-de-las-plantillas-al-estandar.md), por otra puerta.
 
 Además, el mensaje de ayuda es engañoso: *«Escribe un registro cada vez que algo cambia de huella»* describe lo que el instalador **ya hizo** y no arregla nada. Quien lo lea vuelve a correr el instalador y vuelve al mismo sitio.
 

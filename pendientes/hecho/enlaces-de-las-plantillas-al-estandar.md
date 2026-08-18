@@ -20,7 +20,7 @@ Cerrado el 2026-08-16, versión **20.0.1**.
 
 Las plantillas quedaron bien —eso sí se hizo—, pero el instalador no reemplaza el marcador al copiar ese archivo dentro del proyecto. Y `enlaces.py`, que en el paso 3 aprendió a resolver el marcador sin llenar contra la raíz, ahora **calla** el enlace en vez de reportarlo. Un aviso ruidoso se cambió por un fallo mudo, que para el proyecto que reportó es peor que como estaba.
 
-Lo que falta está en el [pendiente 40](../40-el-instalador-copia-sin-rellenar-los-marcadores.md) —que además encontró que son **tres** los puntos de copia sin rellenar, no uno— y en el [41](../41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md), que es la pregunta de qué debe hacer `enlaces.py` con un marcador sin llenar dentro de un proyecto. Este archivo se queda acá porque lo suyo —las 22 plantillas— sí se hizo; lo que no se hizo se sigue allá.
+Lo que falta está en el [pendiente 40](el-instalador-rellena-los-marcadores.md) —que además encontró que son **tres** los puntos de copia sin rellenar, no uno— y en el [41](el-marcador-se-resuelve-contra-el-estandar.md), que es la pregunta de qué debe hacer `enlaces.py` con un marcador sin llenar dentro de un proyecto. Este archivo se queda acá porque lo suyo —las 22 plantillas— sí se hizo; lo que no se hizo se sigue allá.
 
 ---
 

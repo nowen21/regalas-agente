@@ -85,7 +85,7 @@ Se corrió el validador de meta-reglas y se buscó si alguna de las ocho aparece
 | Que no se le reclame nada | `metareglas.py` | **No**: no tiene subcomando en `validar.py` |
 | Que una derogación sin adoptar detenga la fase (`02·F22`) | `versiones.py` | Sí |
 
-**La tercera fila es el hueco.** `metareglas.py` funciona y **no se ejecuta** salvo que alguien lo invoque desde Python — es el punto 2 del [pendiente 53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), y el mismo que dejó en «No» el CA-03 de [`A-EP-004-HU-002`](../../../EP-004-comprobacion-automatica/HU-002-marca-de-comprobable-en-cada-regla/A-EP-004-HU-002-retrodocumentar-la-clasificacion-de-cada-regla/resultado_pruebas.md).
+**La tercera fila es el hueco.** `metareglas.py` funciona y **no se ejecuta** salvo que alguien lo invoque desde Python — es el punto 2 del [pendiente 53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), y el mismo que dejó en «No» el CA-03 de [`A-EP-004-HU-002`](../../../EP-004-comprobacion-automatica/HU-002-marca-de-comprobable-en-cada-regla/A-EP-004-HU-002-retrodocumentar-la-clasificacion-de-cada-regla/resultado_pruebas.md).
 
 **Acá no deja el CA en «No»**, porque lo que el CA-03 pide —que no se cuente como incumplimiento— **se cumple**: la prueba de esta fase lo comprueba en cada corrida de la suite, que sí se ejecuta.
 
@@ -107,7 +107,7 @@ Se corrió el validador de meta-reglas y se buscó si alguna de las ocho aparece
 
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
-| D-01 | Baja | La vigilancia de que no se le reclame nada a una derogada vive en `metareglas.py`, que **no tiene punto de entrada** | Ya anotado: punto 2 del [pendiente 53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md). No deja el CA-03 en «No» porque la prueba de esta fase sí corre con la suite |
+| D-01 | Baja | La vigilancia de que no se le reclame nada a una derogada vive en `metareglas.py`, que **no tiene punto de entrada** | Ya anotado: punto 2 del [pendiente 53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md). No deja el CA-03 en «No» porque la prueba de esta fase sí corre con la suite |
 | D-02 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales**. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 ---

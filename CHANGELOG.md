@@ -192,7 +192,7 @@ Es la deuda que dejó cerrar la [20.0.1](#2001--2026-08-16) sin fase ni plan de 
 **Qué hacer para quedar al día:** los proyectos **nuevos** nacen bien desde ya. Los que ya estaban instalados **no se arreglan reinstalando**, y son dos motivos distintos:
 
 - Los cuatro archivos de `.agente/` no se pisan una vez creados, porque los llena el proyecto.
-- El `stack-instalacion.md` sí se pisaría, pero la huella se calcula del stack central y no del archivo copiado: como la plantilla no cambió, el instalador dice «ya estaba al día» y no reescribe. Lo comprobó `shopnest-mesa` el mismo día, y quedó como [pendiente 42](pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md).
+- El `stack-instalacion.md` sí se pisaría, pero la huella se calcula del stack central y no del archivo copiado: como la plantilla no cambió, el instalador dice «ya estaba al día» y no reescribe. Lo comprobó `shopnest-mesa` el mismo día, y quedó como [pendiente 42](pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md).
 
 Mientras el 42 no cierre, un proyecto viejo se repara a mano: reemplazar `«RUTA-ESTANDAR»` por la ruta del estándar, o borrar el archivo y reinstalar si todavía nadie lo había llenado.
 
@@ -322,7 +322,7 @@ La definición de **brief** es literal del usuario y no se toca.
 - **[`documentacion/automatismos/spec.md`](documentacion/automatismos/spec.md)** gana la sección 4.1 con siete reglas de negocio: qué llega completo, qué llega en índice, por qué se decide por la ruta y no por el nombre del archivo, qué pasa cuando el arranque está detenido y por qué no se puede cargar todo.
 - **Diez pruebas nuevas** en la clase `RepartoDeLasReglas`, y se comprobó que cazan el defecto: con el reparto roto a propósito, el capítulo de conducta deja de llegar y la prueba lo detecta.
 - **Medido y escrito:** 73 KB de 369 KB, y 0,21 s el enganche que los entrega.
-- **El [pendiente 25](pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md) se cierra por falso.** Decía que `ID8` se incumplió porque llegaba como línea de índice; llegaba completa. La causa se había deducido en vez de verificarse, y esa es la parte que no se puede repetir.
+- **El [pendiente 25](pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) se cierra por falso.** Decía que `ID8` se incumplió porque llegaba como línea de índice; llegaba completa. La causa se había deducido en vez de verificarse, y esa es la parte que no se puede repetir.
 
 ## 15.4.2 — 2026-08-15
 

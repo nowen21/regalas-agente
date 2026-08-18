@@ -31,6 +31,7 @@ import os
 import re
 from datetime import datetime
 
+import comun
 from comun import RAIZ, leer
 
 # Va en `documentacion/` y no en `.agente/`: `.agente/` está en el `.gitignore`
@@ -389,3 +390,9 @@ def revisar_registro(proyecto, estandar=None):
         return False, (f"lo instalado dice `{sellada}` y el último registro dice "
                        f"`{ultima}`: falta registrar la actualización")
     return True, ""
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("versiones")

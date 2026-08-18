@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Responde a:** EP-006, memoria de lo aprendido.
 - **Dispara:** —, no abre capacidad nueva: es escribir el contenido que falta.
 - **Orden de resolución:** —.
-- **Dónde queda:** [resumenes/](../README.md), y el [pendiente 31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md), cerrado. Lo que esas sesiones dejaron abierto quedó junto en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [resumenes/](../README.md), y el [pendiente 31](../../../pendientes/hecho/los-resumenes-de-las-sesiones-viejas.md), cerrado. Lo que esas sesiones dejaron abierto quedó junto en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
 - **Con qué se retoma:** —.
@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Responde a:** EP-003, documentos modelo y procedimientos.
 - **Dispara:** —, si se decide que la plantilla lo diga, es un cambio de plantilla, no una historia.
 - **Orden de resolución:** —.
-- **Dónde queda:** el [pendiente 31](../../../pendientes/31-los-resumenes-de-las-sesiones-viejas.md), donde quedaron escritos los cuatro supuestos.
+- **Dónde queda:** el [pendiente 31](../../../pendientes/hecho/los-resumenes-de-las-sesiones-viejas.md), donde quedaron escritos los cuatro supuestos.
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
 - **Con qué se retoma:** —.

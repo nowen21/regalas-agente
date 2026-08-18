@@ -71,7 +71,7 @@
 
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
-| La prueba se escribe en `pruebas.py` y no arreglando el programa que no corre: es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
+| La prueba se escribe en `pruebas.py` y no arreglando el programa que no corre: es otro archivo y otro problema, ya anotado en el [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | Un rango escrito como «C1–C17» no clasifica diecisiete reglas. Ese error produjo un diagnóstico falso que costó una sesión, y por eso se escribe como prueba y no como confianza | §2.6 del plan y CP-002 del [`plan_pruebas.md`](plan_pruebas.md) |
 | La columna del programa va en el registro y no en un documento nuevo: dos documentos sobre lo mismo se separan solos | §2.6 del plan |
 | La tabla distingue «no la comprueba nadie porque es humana» de «debería y no está»: sin esa distinción, la clasificación correcta se lee como hueco | Riesgo `R-02` del plan |
@@ -81,7 +81,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **`D-01`, que la fase no preveía:** el analizador solo reconoce las reglas escritas con `## `, así que **las cuatro `CQ` del capítulo 16 nunca han pasado por ninguna de las 20 filas del checklist**. Pide la fase `B-EP-004-HU-002`.
-- **El CA-03 no lo cierra esta fase**, como ya se sabía: depende de un programa sin punto de entrada (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Acá quedó la evidencia y la prueba en rojo esperado.
+- **El CA-03 no lo cierra esta fase**, como ya se sabía: depende de un programa sin punto de entrada (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)). Acá quedó la evidencia y la prueba en rojo esperado.
 - **El riesgo `R-01` no se materializó:** cero reglas sin clasificar entre las que el analizador ve.
 - **Si otra sesión está tocando `validadores/pruebas.py`** (riesgo `R-03`): se guarda solo lo propio.
 

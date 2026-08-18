@@ -218,3 +218,28 @@ def reportar(hallazgos, titulo=None):
 
     print(f"\n{len(fallas)} falla(s), {len(avisos)} aviso(s).")
     return 1 if fallas else 0
+
+
+def no_es_punto_de_entrada(subcomando=None):
+    """Muere diciendo por dónde se corre. Nunca devuelve.
+
+    Un módulo de comprobación **importado** por `validar.py` no hace nada al
+    ejecutarse solo: cae hasta el final del archivo y sale con código 0. Y un
+    código 0 sin salida se lee igual que «no encontré nada» — que es la peor
+    mentira que puede decir un validador, porque afirma sin haber mirado.
+
+    Ya costó una métrica falsa: la fase `B-EP-005-HU-008` escribió «cero
+    enlaces rotos» el 2026-08-16 porque corrió `enlaces.py` a mano y no
+    imprimió nada. El entrypoint real reportaba veinte.
+
+    Sale con código 2 —ni 0 ni 1— para que un guion que lo llame por error
+    pueda distinguir «no comprobé nada» de «comprobé y hay fallas».
+    """
+    modulo = os.path.basename(sys.argv[0]) or "este módulo"
+    linea = (f"python validadores/validar.py {subcomando}" if subcomando
+             else "python validadores/validar.py --help")
+    preparar_salida()
+    print(f"{modulo} no se corre solo: es una pieza de `validar.py`, "
+          f"y correrlo así **no comprueba nada**.", file=sys.stderr)
+    print(f"\nSe corre con:\n  {linea}", file=sys.stderr)
+    sys.exit(2)

@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr` |
 | **Módulo** | Comprobación automática — [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) y [`validar.py`](../../../../../validadores/validar.py) |
-| **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-011](../HU-011-molde-de-las-reglas.md) · 🔀 híbrido: el programa existe y **no se puede correr**. Punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md); fila de HU-011 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
+| **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-011](../HU-011-molde-de-las-reglas.md) · 🔀 híbrido: el programa existe y **no se puede correr**. Punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md); fila de HU-011 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 
 ---
@@ -76,7 +76,7 @@
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
 | Se le abre la puerta al programa que ya está, sin tocar sus comprobaciones: reescribir y correr a la vez impide saber si un hallazgo es del programa viejo o del nuevo | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
-| Si algo no se puede correr, el programa **muere diciendo por dónde se corre**. Salir con 0 sin haber mirado es peor que fallar | §2.6 del plan y pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) |
+| Si algo no se puede correr, el programa **muere diciendo por dónde se corre**. Salir con 0 sin haber mirado es peor que fallar | §2.6 del plan y pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
 | La cuenta de 121 reglas sin checklist se hizo a mano; la corrida da la real, y el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) se corrige con ella | §2.6 del plan |
 | Abrir la puerta va a destapar cientos de hallazgos. Se anotan como línea base del primer día para que no se lean como regresión | Riesgo `R-01` del plan |
 
@@ -87,7 +87,7 @@
 - **Duda 1 de §2.7:** si el subcomando es uno con dos modos —el estándar en seco y el catálogo del proyecto— o dos subcomandos distintos. **Bloquea la fase entera**: sin punto de entrada no hay nada que probar.
 - **La aprobación del plan.** Sin ella no se toca `validar.py`.
 - **Esta fase desbloquea a otras.** Varias fases de esta sesión cierran un CA "por lectura" porque este programa no corre; cuando corra, esos CA se pueden medir.
-- **Resolver este caso no cierra el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)** (riesgo `R-03`): queda abierto por sus otros puntos.
+- **Resolver este caso no cierra el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)** (riesgo `R-03`): queda abierto por sus otros puntos.
 - **Si alguna comprobación reporta de más** (riesgo `R-02`): se para y se propone. Corregirla es otra fase.
 
 ---

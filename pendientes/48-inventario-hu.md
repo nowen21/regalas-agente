@@ -3,16 +3,26 @@
 
 | Items|Lo que se debe hacer |
 |---|---|
+| **Historia de usuario** | [EP-004 · HU-017 — Inventario de HU sin fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — el inventario es esa historia, y las 42 dudas que lo detienen son el [59](59-las-42-dudas-que-detienen-26-fases.md) |
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
-| **Total de HU** | 68 |
-| **Completas** | 39 |
-| **Incompletas** | 29 |
+| **Total de HU** | 74 |
+| **Completas** | 31 |
+| **Incompletas** | 43 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
 
 *Anotado el 2026-08-16 sobre 66 HU —14 completas y 52 incompletas—, y ese mismo día nacieron [HU-017](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md), que lo dejaron en 68 y 54. La HU-017 es la que hace esta cuenta sola.*
+
+> **Los tres números cambiaron el 2026-08-17 y conviene leer por qué, o se leen como un retroceso.**
+>
+> **68 → 74 total.** Seis historias nuevas, escritas al enrutar el backlog: ningún pendiente podía quedar suelto y seis no tenían dónde caer. No son trabajo nuevo pendiente — son trabajo que ya existía y no tenía a quién rendirle cuentas.
+>
+> **39 → 31 completas.** Ocho historias que estaban completas ganaron una fase **sin terminar**, y una fase a medias vuelve incompleta a su historia. Seis vienen de la sesión que ejecutaba los 51 planes y quedó detenida; la séptima es la fase `B` de [EP-004 · HU-016](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/), que espera aprobación.
+>
+> **No se deshizo nada.** Las 39 que estaban cerradas siguen cerradas; lo que pasó es que se abrió trabajo encima. El número baja porque mide *historias sin nada pendiente*, no *trabajo hecho*.
+
 
 ## Qué le falta a cada HU
 

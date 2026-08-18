@@ -24,6 +24,7 @@ que se termina apagando.
 import fnmatch
 import os
 
+import comun
 from comun import AVISO, Hallazgo, filas_de, leer, relativo, valor_limpio
 
 CONVENCIONES = ".agente/mapeo-nombres.md"
@@ -220,3 +221,9 @@ def resumen(proyecto):
                   f"({len(d.inmutables())} inmutables)")
     lineas.append(f"  {'módulos':<22} {len(d.modulos)}")
     return "\n".join(lineas)
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

@@ -22,7 +22,7 @@
 |---|---|---|
 | [CA-01](../HU-003-version-adoptada-por-el-proyecto.md#ca-01--el-proyecto-declara-su-versión-y-su-fecha) | El proyecto declara su versión y su fecha | Corriendo: `validar.py version` la lee y avisa si falta. Sin prueba propia de esta HU |
 | [CA-02](../HU-003-version-adoptada-por-el-proyecto.md#ca-02--una-versión-que-no-existe-se-detecta) | Una versión que no existe se detecta | **A medias.** `version.py` compara con la vigente; que la declarada exista en el registro no lo comprueba nadie |
-| [CA-03](../HU-003-version-adoptada-por-el-proyecto.md#ca-03--queda-el-historial-de-adopciones) | Queda el historial de adopciones | Cumplido en forma, roto en contenido: los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) están abiertos sobre ese registro |
+| [CA-03](../HU-003-version-adoptada-por-el-proyecto.md#ca-03--queda-el-historial-de-adopciones) | Queda el historial de adopciones | Cumplido en forma, roto en contenido: los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) están abiertos sobre ese registro |
 
 **Por qué una sola fase.** Los tres CA se comprueban sobre la misma declaración y el mismo registro de adopciones (`02·F12.10`).
 
@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Arreglar el contenido del registro de adopciones.** Los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) ya lo tienen planteado; esta fase mide y no corrige.
+- **Arreglar el contenido del registro de adopciones.** Los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) ya lo tienen planteado; esta fase mide y no corrige.
 - **El aviso al abrir sesión,** que es [HU-004](../../HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md).
 - **El sello del trabajo cerrado,** que es [HU-005](../../HU-005-sellar-el-trabajo-cerrado/HU-005-sellar-el-trabajo-cerrado.md).
 - **Adoptar una versión en algún proyecto.** La RN-04 dice que adoptar es decisión de la persona.

@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 
 **Por qué esta fase no construye nada.** La capa propia existe y se usa: el instalador la crea, [`plantillas/reglas-proyecto.md`](../../../../../plantillas/reglas-proyecto.md) es su molde, [`20·M16`](../../../../../base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) le exige respaldo y `validar.py version` lee qué versión declara adoptada. Lo que nadie ha hecho es probar el desempate: que el ajuste propio gane a la convención general y pierda contra el núcleo.
 
-**Lo que la fase destapa.** La comprobación de `M16` está escrita en [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) y no se puede correr: sin punto de entrada ni subcomando, termina en silencio con código 0. Es el mismo defecto del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), y la fase lo deja anotado ahí en vez de abrir un pendiente nuevo.
+**Lo que la fase destapa.** La comprobación de `M16` está escrita en [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) y no se puede correr: sin punto de entrada ni subcomando, termina en silencio con código 0. Es el mismo defecto del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), y la fase lo deja anotado ahí en vez de abrir un pendiente nuevo.
 
 **Lo que falta de la fase:** `resultado_pruebas.md` y `funcionalidad_implementada.md` — los dos salen de ejecutar, y la fase todavía no se aprobó. La fila de HU-006 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md) lleva la cuenta.
 

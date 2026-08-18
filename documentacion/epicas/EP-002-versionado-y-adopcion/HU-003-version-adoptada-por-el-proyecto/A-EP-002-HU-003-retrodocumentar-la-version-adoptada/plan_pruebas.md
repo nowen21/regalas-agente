@@ -43,7 +43,7 @@
 
 - **Reconstrucción hacia atrás** — el CA-03 no se prueba mirando si el archivo existe: se prueba **usándolo**, para responder bajo qué versión cerró una fase concreta. Un historial que existe y no permite responder eso no cumple el CA.
 - **La versión que no existe, a propósito** — el CA-02 se prueba declarando una versión inventada. Sin ese caso, la comprobación pasaría igual sin comprobar nada.
-- **El hallazgo se mide, no se arregla** — el registro de adopciones tiene dos pendientes abiertos, el [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y el [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md). Esta fase produce la evidencia que esos pendientes necesitan; no los cierra.
+- **El hallazgo se mide, no se arregla** — el registro de adopciones tiene dos pendientes abiertos, el [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y el [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md). Esta fase produce la evidencia que esos pendientes necesitan; no los cierra.
 - **El aviso no se silencia** — el propio estándar no declara versión adoptada y recibe el aviso igual. Queda como hallazgo escrito: silenciar un aviso es cambiar un validador, y eso se decide con el plan ampliado.
 
 ### 3.5 Alcance de la corrida
@@ -158,7 +158,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Tomar la fecha de cierre de la fase | Queda a la vista |
 | 2 | Buscar en el historial qué versión estaba adoptada ese día | Sale una, y solo una |
 | 3 | Responder bajo qué versión cerró, **usando solo el historial** | Se puede responder sin preguntarle a nadie |
-| 4 | Anotar contra los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) lo que se encuentre mal | Queda la evidencia que esos pendientes necesitan |
+| 4 | Anotar contra los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) lo que se encuentre mal | Queda la evidencia que esos pendientes necesitan |
 
 **Resultado esperado final:** el historial existe y **sirve**, o queda dicho en qué falla.
 

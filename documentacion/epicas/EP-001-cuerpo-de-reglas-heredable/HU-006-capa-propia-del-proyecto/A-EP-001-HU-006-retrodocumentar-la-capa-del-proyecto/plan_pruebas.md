@@ -43,7 +43,7 @@
 
 - **El par que separa los dos CA** — el mismo ajuste se prueba dos veces: contra una regla `[BLINDADA]`, donde **no** debe aplicar, y contra una convención de capa 2, donde **sí**. Probar solo el primero no distinguiría "el ajuste no manda nunca" de "el ajuste no manda sobre el núcleo".
 - **Ajuste real primero, ajuste armado después** — se listan los ajustes que el proyecto ya tiene escritos y se prueba con ellos; solo lo que no aparezca se arma.
-- **Prueba a mano declarada como tal** — el CA-02 se revisa leyendo, porque [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no tiene punto de entrada (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Se deja escrito que fue a mano y con qué evidencia; marcar comprobado lo que nadie corrió es el defecto que esta fase viene a cerrar.
+- **Prueba a mano declarada como tal** — el CA-02 se revisa leyendo, porque [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no tiene punto de entrada (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)). Se deja escrito que fue a mano y con qué evidencia; marcar comprobado lo que nadie corrió es el defecto que esta fase viene a cerrar.
 - **Copia, no carpeta viva** — condición de arranque, arriba.
 
 ### 3.5 Alcance de la corrida
@@ -109,7 +109,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 2 | Revisarla a mano contra [`20·M16`](../../../../../base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) | Se rechaza, y el motivo cita la regla |
 | 3 | Agregarle el respaldo y volver a revisar | Ahora pasa |
 | 4 | Intentar correr la comprobación automática | No hay punto de entrada; queda la evidencia de la corrida en silencio |
-| 5 | Sumar esa evidencia al pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) | El pendiente queda con el caso anotado |
+| 5 | Sumar esa evidencia al pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) | El pendiente queda con el caso anotado |
 
 **Resultado esperado final:** el CA queda cumplido por lectura, dicho que fue por lectura, y con el hueco anotado donde se arregla.
 

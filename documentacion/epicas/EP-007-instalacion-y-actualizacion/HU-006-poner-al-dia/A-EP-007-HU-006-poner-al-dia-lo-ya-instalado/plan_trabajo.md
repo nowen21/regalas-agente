@@ -22,7 +22,7 @@
 - ✨ **Funcionalidad nueva:** el registro de versión cuando sube el estándar sin que cambie ninguna plantilla del proyecto.
 - 🔀 **Híbrido:** sí, es de los dos tipos.
 
-**De dónde sale:** los pendientes [42](../../../../../pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) y [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md), los dos reportados por el proyecto `shopnest-mesa`.
+**De dónde sale:** los pendientes [42](../../../../../pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md) y [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md), los dos reportados por el proyecto `shopnest-mesa`.
 
 **Por qué los dos en una sola fase.** Son el mismo defecto: el instalador decide si hay trabajo mirando una huella, y cuando la huella no cambia se queda quieto aunque el proyecto sí esté mal. Separarlos deja dos parches en la misma decisión de `instalar.py`. Y calzan uno por criterio: el 42 es el CA-01 de la HU y el 44 es su CA-02.
 

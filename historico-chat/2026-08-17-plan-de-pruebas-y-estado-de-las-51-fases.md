@@ -91,3 +91,34 @@ Decime si autorizás el commit y si el nombre te sirve.
 ### 4 · Usuario — 2026-08-17 15:15:36
 > 1. suba
 > 2. /rename plan-de-pruebas-y-estado-de-las-51-fases
+
+**Agente** — 2026-08-17 15:18:09
+<!-- agente: a20e8dcd-4d9d-4d6a-8421-81308712d372 -->
+
+El commit entró, pero se llevó más de lo mío. Lo verifico antes de subir.
+
+Antes de subir, aclaro lo que encontré: el commit se llevó tres archivos que **no son míos** y estaban sin guardar desde una sesión anterior — el pendiente [58](pendientes/58-nada-hace-cumplir-id9.md) (nuevo), el borrado del [57](pendientes/57-la-fase-recien-abierta-no-queda-en-el-repositorio.md), y el [índice de pendientes](pendientes/README.md). Son contenido legítimo del repo, pero el mensaje del commit no los nombra. Lo digo por si preferís separarlos; el resto es exactamente lo de esta sesión.
+
+Subo los dos commits pendientes:
+
+Subido. Árbol limpio, nada pendiente.
+
+```
+02ac968..54e8c9e  main -> main
+```
+
+Marco la última casilla del resumen, que solo se podía marcar después de guardar:
+
+Ya está todo arriba. Podés cerrar.
+
+**Qué quedó guardado** — commit `54e8c9e` sobre `main`, 163 archivos, 15 397 líneas:
+
+- Los `plan_pruebas.md` y `estado-fase.md` de las 51 fases.
+- Los 51 README de fase y las casillas del [inventario 48](pendientes/48-inventario-hu.md).
+- La transcripción y el resumen de la sesión, ya con su nombre: [`2026-08-17-plan-de-pruebas-y-estado-de-las-51-fases.md`](historico-chat/2026-08-17-plan-de-pruebas-y-estado-de-las-51-fases.md).
+
+Junto con él subió `4109363`, el de la sesión anterior, que también estaba sin publicar.
+
+**Queda una línea sin guardar**: la casilla de cierre del resumen, que solo se podía marcar una vez hecho el commit. Si querés que suba también, decime — pero no es necesario para cerrar: el resumen ya está en el repo con sus cuatro hallazgos.
+
+**Para cuando retomes**, lo que esta sesión dejó a la vista y no se resolvió: la mayoría de las 51 fases está **bloqueada por dudas sin responder**, no por falta de trabajo. La §3 de cada `estado-fase.md` las lista. Si querés avanzar la épica, el camino más corto es responder esas dudas antes de aprobar ningún plan — y empezar por [A-EP-004-HU-011](documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/estado-fase.md), que al darle punto de entrada a `metareglas.py` desbloquea media docena de fases que hoy cierran un criterio "por lectura".

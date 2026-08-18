@@ -15,6 +15,7 @@ de Python. Los métodos de lenguajes sin `function` (Java/C#) quedan fuera por a
 import re
 
 import codigo
+import comun
 from comun import AVISO, Hallazgo
 
 TOPE = 60       # líneas de cuerpo; por encima, se señala para revisar
@@ -78,3 +79,9 @@ def validar(raiz):
     for donde, texto in codigo.archivos(raiz):
         revisar_texto(texto, donde, hallazgos)
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("calidad")

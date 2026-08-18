@@ -163,7 +163,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Leer el registro después de la puesta al día | Existe, con su entrada |
 | 2 | Comprobar si dice **archivo por archivo** qué reemplazó | Se anota si lo dice o no |
 | 3 | Comparar lo que dice contra la lista real del CP-003 | Coinciden, o se anota la diferencia |
-| 4 | Anotar los defectos conocidos de este registro | Atados a los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) |
+| 4 | Anotar los defectos conocidos de este registro | Atados a los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md) |
 | 5 | Escribir el veredicto del CA-02 con lo medido | Cumplido, a medias o no |
 
 **Resultado esperado final:** el CA-02 queda establecido con la lista real al lado del registro, no con una lectura del registro sola.

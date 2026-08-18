@@ -34,7 +34,7 @@
 **Fuera de alcance:**
 
 - **La estructura de carpetas,** que es [HU-003](../../HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md).
-- **El contenido del registro de la versión,** que arrastra los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md): acá se mide, no se corrige.
+- **El contenido del registro de la versión,** que arrastra los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md): acá se mide, no se corrige.
 - **Cambiar el instalador.** Si al probar aparece que algo se pisa, se para y se reporta: es un defecto grave y merece su propia fase.
 
 ---

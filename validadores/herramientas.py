@@ -25,6 +25,7 @@ import subprocess
 
 import instalar
 import versionado
+import comun
 from comun import AVISO, FALLA, Hallazgo
 
 # Manifiesto versionado -> ecosistema. Un proyecto puede tener varios.
@@ -196,3 +197,9 @@ def suite(raiz):
 
 def auditoria(raiz):
     return _validar(raiz, _cmd_audit, "DEP3", falla_si_rc=False, timeout=180)
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("linter")

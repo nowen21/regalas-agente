@@ -20,6 +20,7 @@ import os
 import re
 
 import fases
+import comun
 from comun import AVISO, FALLA, Hallazgo, leer, lineas_utiles
 
 CARPETA = "documentacion/epicas"
@@ -112,3 +113,9 @@ def validar(proyecto):
                         "hay ítems ❌ en la trazabilidad — confirmar que estén justificados (DOC11)"))
 
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("trazabilidad")

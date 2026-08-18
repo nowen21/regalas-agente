@@ -72,7 +72,7 @@
 | La prueba modifica un archivo a mano **antes** de actualizar: existir y conservar el contenido no es lo mismo, y lo que se pierde es el contenido | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | Se prueba con el archivo que **más duele**: el `CLAUDE.md` del proyecto, que mezcla lo heredado con lo propio | §2.6 del plan |
 | Lo que se encuentre mal **se para y se reporta**: que el instalador pise algo es un defecto grave y merece su plan, no un arreglo al vuelo | §2.6 del plan y riesgo `R-01` |
-| El registro puede mentir por los pendientes [44](../../../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md): se prueba igual, y lo que salga es la evidencia que esos pendientes necesitan | Riesgo `R-03` del plan |
+| El registro puede mentir por los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md): se prueba igual, y lo que salga es la evidencia que esos pendientes necesitan | Riesgo `R-03` del plan |
 
 ---
 

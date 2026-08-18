@@ -21,6 +21,7 @@ se mueven juntos cuando la sesión se renombra; de eso se encarga `historico.py`
 
 Lo exige `13·DOC22`; el modelo es `plantillas/sesion.md`.
 """
+import comun
 import os
 import re
 
@@ -253,3 +254,9 @@ def _retoma(ruta, hid):
                           bloque[i + 1], re.MULTILINE)
             return r.group(1) if r else ""
     return ""
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

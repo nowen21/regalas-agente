@@ -34,6 +34,7 @@ import esquema
 import instalar
 import migraciones
 import versionado
+import comun
 from comun import AVISO, Hallazgo, leer
 
 _UNIQUE_PHP = re.compile(r"->\s*unique\s*\(([^)]*)\)")
@@ -257,3 +258,9 @@ def validar(raiz):
                     f"permiso `{patron.replace('<recurso>', entidad.nombre.lower())}` "
                     f"en el código (IM5: anular lleva permiso propio)"))
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

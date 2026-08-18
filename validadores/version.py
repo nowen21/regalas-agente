@@ -16,6 +16,7 @@ el que recorre las fases.
 import os
 import re
 
+import comun
 from comun import AVISO, FALLA, Hallazgo, RAIZ, leer
 
 # Acepta 'X.Y.Z' en la línea "Versión del estándar adoptada: X.Y.Z".
@@ -132,3 +133,9 @@ def validar_fase(raiz):
         f"hay derogaciones sin adoptar y ninguna fase se abre ni se cierra hasta "
         f"adoptarlas (F22): {detalle}. Se abre una fase por cada HU que implementaba "
         f"la regla derogada, y al cerrarla se sube la versión declarada")]
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("version")

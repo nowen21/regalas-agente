@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `A-EP-007-HU-001-rellenar-los-marcadores-al-copiar` |
 | **Módulo** | Instalación (`validadores/instalar.py`) |
-| **Planteamiento / Épica / HU** | [EP-007](../../epica.md) · [HU-001](../HU-001-instalar-con-una-linea.md) · [pendiente 40](../../../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md) |
+| **Planteamiento / Épica / HU** | [EP-007](../../epica.md) · [HU-001](../HU-001-instalar-con-una-linea.md) · [pendiente 40](../../../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md) |
 | **Última actualización** | 2026-08-16 |
 
 ---

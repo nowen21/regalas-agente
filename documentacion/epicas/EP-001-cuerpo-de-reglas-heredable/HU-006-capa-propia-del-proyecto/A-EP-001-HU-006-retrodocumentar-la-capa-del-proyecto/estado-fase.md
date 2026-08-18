@@ -76,7 +76,7 @@
 |---|---|
 | Se prueba sobre un proyecto ya instalado, no sobre uno armado: un proyecto de prueba trae ajustes inventados para que la prueba pase | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | El CA-03 necesita su par: el mismo ajuste contra el núcleo y contra una convención de capa 2. Con uno solo no se distingue "no manda nunca" de "no manda sobre el núcleo" | §3.3 y CP-004 del [`plan_pruebas.md`](plan_pruebas.md) |
-| El CA-02 se cierra por lectura y se dice que fue por lectura: [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no tiene punto de entrada | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) y pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) |
+| El CA-02 se cierra por lectura y se dice que fue por lectura: [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no tiene punto de entrada | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) y pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
 
 ---
 

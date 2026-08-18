@@ -10,7 +10,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendiente-s
 
 ### H-1 · Los dos `P0` del backlog son el mismo defecto
 
-**Qué se encontró.** El [42](../../../pendientes/42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) y el [44](../../../pendientes/44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) son el instalador decidiendo si hay trabajo por una huella, y quedándose quieto cuando la huella no cambia. En el 42 no reescribe una copia mal escrita; en el 44 no registra una versión que subió.
+**Qué se encontró.** El [42](../../../pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md) y el [44](../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) son el instalador decidiendo si hay trabajo por una huella, y quedándose quieto cuando la huella no cambia. En el 42 no reescribe una copia mal escrita; en el 44 no registra una versión que subió.
 
 **Qué se decidió.** Se ejecutan **juntos, en una sola fase**, y no en dos. Separarlos deja dos parches sobre la misma decisión de `instalar.py`.
 

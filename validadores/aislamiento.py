@@ -19,6 +19,7 @@ import re
 import codigo
 import instalar
 import versionado
+import comun
 from comun import AVISO, Hallazgo, leer
 
 _ENV = re.compile(r'<env\s+name="([^"]+)"\s+value="([^"]*)"')
@@ -98,3 +99,9 @@ def validar(raiz):
                 f"fuente de azar/tiempo (`{fuente}`) en una prueba — T3: fijar "
                 f"semilla/reloj o usar dobles (evita tests flaky)"))
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("aislamiento")

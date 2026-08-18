@@ -19,6 +19,7 @@ Esto comprueba tres cosas:
 import os
 import re
 
+import comun
 from comun import AVISO, FALLA, Hallazgo
 
 CARPETA = "pendientes"
@@ -154,3 +155,9 @@ def linea_proximo(proyecto):
     abiertos = len(numerados(proyecto))
     return (f"Pendientes: {abiertos} con archivo · {len(ocupados)} números "
             f"tomados · el próximo libre es el {proximo_libre(proyecto):02d} (HU-018)")
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("pendientes")

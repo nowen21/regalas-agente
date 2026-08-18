@@ -36,7 +36,7 @@
 
 - **Reescribir convenciones.** Si la prueba muestra que alguna nombra tecnología, se anota como hallazgo y se propone; corregirla es otra fase ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
 - **Poner al día los checklists vencidos de cada regla.** Eso es [HU-009](../../HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md), que ya tiene su fase abierta.
-- **Darle punto de entrada a `metareglas.py`.** El programa que comprobaría la fila 5 no se puede correr, y eso es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), no trabajo de esta fase.
+- **Darle punto de entrada a `metareglas.py`.** El programa que comprobaría la fila 5 no se puede correr, y eso es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), no trabajo de esta fase.
 - **La capa del proyecto.** Que el ajuste propio mande sobre la convención general es [HU-006](../../HU-006-capa-propia-del-proyecto/HU-006-capa-propia-del-proyecto.md).
 
 ---

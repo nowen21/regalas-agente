@@ -37,7 +37,7 @@
 - **Escribir comprobaciones nuevas.** La corrida completa llama a las que ya hay.
 - **Los enganches,** que son de EP-005: acá se trata de correr a mano.
 - **El conteo por regla,** que es [HU-009](../../HU-009-conteo-por-regla/HU-009-conteo-por-regla.md).
-- **Darle punto de entrada a los programas que no lo tienen.** Es el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), y la corrida completa no puede llamar a lo que no se puede llamar: los declara como saltados con su motivo.
+- **Darle punto de entrada a los programas que no lo tienen.** Es el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), y la corrida completa no puede llamar a lo que no se puede llamar: los declara como saltados con su motivo.
 
 ---
 
@@ -90,7 +90,7 @@ Ninguno.
 | Decisión | Alternativa descartada | Justificación |
 |---|---|---|
 | La corrida completa llama a los subcomandos que ya hay | Reescribir las comprobaciones dentro de un programa nuevo | Duplicar lógica deja dos verdades sobre lo mismo |
-| Lo que no aplica se saltea diciendo por qué | Fallar, o callar | Callar es lo que hace un validador sin punto de entrada, y por eso el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) existe |
+| Lo que no aplica se saltea diciendo por qué | Fallar, o callar | Callar es lo que hace un validador sin punto de entrada, y por eso el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) existe |
 | El resumen único no reemplaza los 24 | Imprimir solo el total | Quien corre para arreglar necesita el detalle; el total es para saber si se puede cerrar |
 
 ### 2.7 Dudas por resolver antes de escribir

@@ -8,7 +8,7 @@
 
 **Mitad retro-documentación, mitad construcción.** El programa está escrito y comprueba once de las veinte filas del [checklist del estándar](../../../../../base/20-meta-reglas/checklist.md) — incluida la 15, que impide que una regla normal mande sobre una blindada. Lo que falta es poder correrlo: hoy `python validadores/metareglas.py` no imprime nada y sale con código 0.
 
-**Es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md),** y el que más pesa de los que se han encontrado.
+**Es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md),** y el que más pesa de los que se han encontrado.
 
 **Lo que falta de la fase:** `resultado_pruebas.md` y `funcionalidad_implementada.md` — los dos salen de ejecutar, y la fase todavía no se aprobó. la fila de HU-011 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md) lleva la cuenta.
 

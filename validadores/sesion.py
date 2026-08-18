@@ -21,6 +21,7 @@ import os
 import re
 
 import instalar
+import comun
 from comun import AVISO, FALLA, Hallazgo, encabezados, leer
 
 PLANTILLA_CLAUDE = "plantillas/CLAUDE.md.plantilla"
@@ -154,3 +155,9 @@ def resumen(proyecto, hallazgos):
     if len(hallazgos) > 3:
         detalle += f"; y {len(hallazgos) - 3} más"
     return f"Estándar cargado · {nombre} · {' y '.join(partes)}: {detalle}"
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

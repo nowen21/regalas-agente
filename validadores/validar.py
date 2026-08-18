@@ -32,6 +32,7 @@ import pendientes       # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import instalar         # noqa: E402
+import metareglas       # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
@@ -116,6 +117,18 @@ def cmd_versionado(a):
 
     alcance = "lo que entra en el commit" if a.preparados else "todo el repositorio"
     return reportar(hallazgos, f"Qué está versionado ({alcance}) · {relativo(raiz)}")
+
+
+def cmd_metareglas(a):
+    """`53` · El único programa que comprueba once de las veinte filas del
+    checklist del estándar no tenía por dónde correrse. Entre ellas la 5, que
+    `M3` necesita, y la 15, que impide que una regla normal mande sobre una
+    `[BLINDADA]`."""
+    raiz = os.path.abspath(a.raiz)
+    hallazgos = metareglas.validar(raiz)
+    if a.catalogo:
+        hallazgos += metareglas.validar_catalogo(a.catalogo, raiz)
+    return reportar(hallazgos, f"El estándar contra sus meta-reglas · {relativo(raiz)}")
 
 
 def cmd_secretos(a):
@@ -294,6 +307,13 @@ def main():
     v.add_argument("--preparados", action="store_true",
                    help="solo lo que entra en el commit actual (para el enganche)")
     v.set_defaults(func=cmd_versionado)
+
+    mr = sub.add_parser("metareglas",
+                        help="el cuerpo de reglas contra el checklist del capítulo 20")
+    mr.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    mr.add_argument("--catalogo",
+                    help="carpeta de un proyecto, para comprobar además su catálogo · M16")
+    mr.set_defaults(func=cmd_metareglas)
 
     se = sub.add_parser("secretos",
                         help="secretos incrustados en el código · 04·S4")

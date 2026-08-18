@@ -86,7 +86,7 @@
 - **La duda 1 de §2.7 del plan:** si el criterio de entrada al núcleo entra en esta fase o se difiere a HU-007, que es la regla de las reglas. Bloquea T-01; los CA-01 y CA-03 no dependen de ella.
 - **La aprobación del plan.** Sin ella no se toca `base/`.
 - **La otra mitad del CA-02** — enmascarar antes de escribir — vive en [EP-005 · HU-002](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) y no se construye acá.
-- **[`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr** (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)): por eso el CP-005 revisa las marcas a mano.
+- **[`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr** (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)): por eso el CP-005 revisa las marcas a mano.
 
 ---
 

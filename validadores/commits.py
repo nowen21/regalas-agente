@@ -19,6 +19,7 @@ eso queda a criterio de quien escribe.
 import re
 import subprocess
 
+import comun
 from comun import AVISO, FALLA, Hallazgo
 
 LARGO_MAXIMO = 72
@@ -92,3 +93,9 @@ def validar(mensaje, origen="(mensaje)"):
                 f"el mensaje incluye {nombre} — G8 no firma con la herramienta"))
 
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("commit")

@@ -73,7 +73,7 @@
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
 | La corrida completa llama a los subcomandos que ya hay: reescribir las comprobaciones adentro dejaría dos verdades sobre lo mismo | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
-| Lo que no aplica se saltea **diciendo por qué**. Callar es lo que hace hoy un validador sin punto de entrada, y por eso existe el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) | §2.6 del plan |
+| Lo que no aplica se saltea **diciendo por qué**. Callar es lo que hace hoy un validador sin punto de entrada, y por eso existe el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) | §2.6 del plan |
 | El resumen único no reemplaza las salidas de cada comprobación: quien corre para arreglar necesita el detalle, y el total es para saber si se puede cerrar | §2.6 del plan |
 | La lista de qué correr se arma de los subcomandos registrados, no a mano: escrita a mano, la corrida completa deja de ser completa con el primer validador nuevo | Riesgo `R-03` y CP-002 del [`plan_pruebas.md`](plan_pruebas.md) |
 

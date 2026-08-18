@@ -33,6 +33,7 @@ import re
 import declaracion
 import fases
 import version
+import comun
 from comun import AVISO, FALLA, Hallazgo, filas_de, leer, valor_limpio
 
 CARPETA = "documentacion/epicas"
@@ -255,3 +256,9 @@ def validar(proyecto):
     if hay_fases:
         hallazgos += version.validar_fase(proyecto)
     return hallazgos + _modulos_sin_especificacion(proyecto)
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("flujo")

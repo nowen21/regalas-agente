@@ -222,8 +222,11 @@ Entonces no se reporta
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase](A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase/README.md) | CA-01, CA-02, CA-03 y CA-04 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia](B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md) | CA-05, CA-06 y CA-07 | Abierta 2026-08-17, con sus dos planes escritos y sin aprobar. **Sin dudas abiertas** |
 
-**La fase construye.** `02·F23` existe y nadie comprueba que el pendiente cerrado diga en qué fase se hizo: hay 17 cerrados y 12 lo nombran, cada uno a su manera. El trabajo fino son las tres excepciones.
+**Las dos mitades de la misma pieza.** La `A` mira el pendiente **cerrado** y la `B` el **abierto**; escriben funciones distintas de `validadores/pendientes.py` y ninguna espera a la otra. La `A` está detenida por dos dudas y la `B` no tiene ninguna — **una de esas dos dudas la contestó el enrutamiento del 2026-08-17**: dónde se declara es la fila `Historia de usuario` de la ficha, medida en 33 archivos.
+
+**Qué construye la `A`.** `02·F23` existe y nadie comprueba que el pendiente cerrado diga en qué fase se hizo: hay 17 cerrados y 12 lo nombran, cada uno a su manera. El trabajo fino son las tres excepciones.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

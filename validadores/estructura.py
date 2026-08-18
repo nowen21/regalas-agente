@@ -31,6 +31,7 @@ import esquema
 import instalar
 import migraciones
 import versionado
+import comun
 from comun import AVISO, Hallazgo, leer
 
 CASOS = {
@@ -232,3 +233,9 @@ def validar(raiz):
             f"ni su dominio en `{declaracion.DOMINIO}`: EST1 y EST2 se quedan "
             f"en criterio del agente")]
     return _est1(raiz, d) + _est2_migraciones(raiz, d) + _est2_clases(raiz, d)
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

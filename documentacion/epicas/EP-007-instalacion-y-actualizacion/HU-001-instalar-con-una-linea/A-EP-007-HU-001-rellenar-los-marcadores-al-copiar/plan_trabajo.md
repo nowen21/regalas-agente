@@ -22,7 +22,7 @@
 - ✨ **Funcionalidad nueva:** la prueba de instalación que nunca existió.
 - 🔀 **Híbrido:** sí, es de los dos tipos.
 
-**De dónde sale:** [pendiente 40](../../../../../pendientes/40-el-instalador-copia-sin-rellenar-los-marcadores.md), reportado por el proyecto `shopnest-mesa`.
+**De dónde sale:** [pendiente 40](../../../../../pendientes/hecho/el-instalador-rellena-los-marcadores.md), reportado por el proyecto `shopnest-mesa`.
 
 **CA de la HU que cubre esta fase:**
 
@@ -48,7 +48,7 @@
 
 **Fuera de alcance:**
 
-- **Cómo se resuelve el marcador dentro de un proyecto.** Es el [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) y tiene su propia fase en [EP-004 · HU-005](../../../EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/). Esta fase quita la causa; aquella pone la red.
+- **Cómo se resuelve el marcador dentro de un proyecto.** Es el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) y tiene su propia fase en [EP-004 · HU-005](../../../EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/). Esta fase quita la causa; aquella pone la red.
 - **Escribir la especificación del módulo de instalación.** No existe, y escribirla es una unidad aparte (§10).
 - **Avisarle a `shopnest-mesa`** que su reporte cerró. Depende del [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), que todavía no fija el procedimiento.
 - **Que la ruta escrita sea la de la máquina donde se instaló.** Ya está declarado como límite conocido en la [20.0.1](../../../../../CHANGELOG.md) y no empeora con este cambio.

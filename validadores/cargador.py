@@ -22,6 +22,7 @@ archivo completo antes de tocar su tema.
 """
 import os
 
+import comun
 from comun import EXCLUIDAS, leer, lineas_utiles
 
 # Prefijos que van literales: gobiernan todos los turnos, no un tema concreto.
@@ -141,3 +142,9 @@ def contexto(estandar, gate_ok=True):
         ]
 
     return "\n".join(partes)
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada()

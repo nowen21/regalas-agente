@@ -21,6 +21,7 @@ import os
 
 import instalar
 import versionado
+import comun
 from comun import AVISO, Hallazgo
 
 # manifiesto -> lockfiles que lo satisfacen (basta uno) · nombre del ecosistema.
@@ -79,3 +80,9 @@ def validar(raiz):
         prefijo = "" if etiqueta == "." else f"{etiqueta}/"
         hallazgos += revisar(versionado.archivos_versionados(repo), prefijo)
     return hallazgos
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("dependencias")

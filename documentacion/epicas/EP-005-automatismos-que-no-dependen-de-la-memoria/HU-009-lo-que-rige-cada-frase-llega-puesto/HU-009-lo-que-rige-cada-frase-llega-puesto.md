@@ -121,7 +121,7 @@ Entonces la demora sigue sin notarse
 
 ## 6. Diseño y referencias
 
-- **Documento funcional:** el [pendiente 25](../../../../pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md) y el hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen`.
+- **Documento funcional:** el [pendiente 25](../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) y el hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen`.
 - **Modelo de datos afectado:** ninguno.
 
 ---

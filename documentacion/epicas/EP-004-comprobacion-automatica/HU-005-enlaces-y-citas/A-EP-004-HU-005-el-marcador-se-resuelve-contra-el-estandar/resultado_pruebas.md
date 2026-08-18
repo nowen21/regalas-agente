@@ -179,7 +179,7 @@ Ninguno.
 
 **Qué falta para que cumpla:** nada. Queda el commit, que es estación posterior.
 
-**Lo que esta fase no arregla, y está declarado:** `enlaces.py` sigue sin bloque `__main__`, así que correrlo directo no imprime nada y sale con código 0 — se lee como «sin hallazgos». Está fuera de alcance desde el plan y anotado en el [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md).
+**Lo que esta fase no arregla, y está declarado:** `enlaces.py` sigue sin bloque `__main__`, así que correrlo directo no imprime nada y sale con código 0 — se lee como «sin hallazgos». Está fuera de alcance desde el plan y anotado en el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md).
 
 ---
 

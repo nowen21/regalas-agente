@@ -177,7 +177,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 |---|---|---|
 | 1 | Medir el largo del capítulo | Sigue leyéndose de una sentada; queda el número anotado, antes y después |
 | 2 | Contar las reglas con marca `[BLINDADA]` | Seis, una por regla |
-| 3 | Comprobar a mano que ninguna regla normal manda sobre una blindada | Ninguna lo hace; se anota que se revisó a mano porque [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)) |
+| 3 | Comprobar a mano que ninguna regla normal manda sobre una blindada | Ninguna lo hace; se anota que se revisó a mano porque [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)) |
 | 4 | Correr `validar.py estandar`, `fases`, `trazabilidad` y `flujo` | Sin fallas nuevas respecto de la línea base |
 
 **Resultado esperado final:** lo que entró al capítulo no le costó al capítulo lo que lo hace servible.

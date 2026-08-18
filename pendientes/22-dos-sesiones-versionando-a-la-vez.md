@@ -38,7 +38,7 @@ Eso cambia el alcance de lo que hay que decidir. `VERSION` y `CHANGELOG.md` son 
 
 **Ampliado el 2026-08-16**, esa misma tarde, desde el proyecto `rni-dp`.
 
-Una sesión de otro proyecto repasó esta cola para decidir con qué seguir, propuso arrancar por el [pendiente 40](40-el-instalador-copia-sin-rellenar-los-marcadores.md) —el único `P0`— y el usuario aprobó. Al ir a tocar `instalar.py` resultó que **otra sesión ya lo había ejecutado entero**: las tres funciones rellenando, la prueba escrita y corrida, y la fase `A-EP-007-HU-001` en la estación 9. Nada estaba commiteado; vivía solo en el árbol de trabajo.
+Una sesión de otro proyecto repasó esta cola para decidir con qué seguir, propuso arrancar por el [pendiente 40](hecho/el-instalador-rellena-los-marcadores.md) —el único `P0`— y el usuario aprobó. Al ir a tocar `instalar.py` resultó que **otra sesión ya lo había ejecutado entero**: las tres funciones rellenando, la prueba escrita y corrida, y la fase `A-EP-007-HU-001` en la estación 9. Nada estaba commiteado; vivía solo en el árbol de trabajo.
 
 En el rato que duró esa conversación también cambió lo que se había leído al empezar: había dos archivos numerados 40 y se reportaron como defecto; media hora después la otra sesión los había fundido y el sobrante ya no existía.
 

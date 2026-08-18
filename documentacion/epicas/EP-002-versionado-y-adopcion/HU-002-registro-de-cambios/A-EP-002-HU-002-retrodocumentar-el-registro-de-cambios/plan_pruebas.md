@@ -29,7 +29,7 @@
 | Conducta | Qué avisa hoy un cambio de regla sin entrada | Copia del repositorio | No |
 | Lectura ajena | Que la entrada se entienda sin haber seguido el cambio | Este repositorio | No |
 
-**Por qué la prueba va en `pruebas.py` y no en `metareglas.py`.** La fila 19 del [checklist](../../../../../base/20-meta-reglas/checklist.md) vive en un programa que **no se puede correr** (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Una comprobación que no corre no comprueba nada.
+**Por qué la prueba va en `pruebas.py` y no en `metareglas.py`.** La fila 19 del [checklist](../../../../../base/20-meta-reglas/checklist.md) vive en un programa que **no se puede correr** (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)). Una comprobación que no corre no comprueba nada.
 
 ### 3.2 Tipos de prueba
 

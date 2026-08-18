@@ -95,7 +95,7 @@ Las tres se resuelven **leyendo solo el registro**: la fila trae la regla, el pr
 | 3 | Mirar con qué severidad | **AVISO**, no falla: no detiene nada |
 | 4 | Comprobar si esa corrida ocurre en el trabajo normal | **No ocurre** |
 
-**El paso 4 es el que hunde el CA-03.** `metareglas.py` **no tiene subcomando en `validar.py`**: de los 24 que hay, ninguno lo llama. Así que la vigilancia de que toda regla se clasifique existe, funciona… y **nunca se ejecuta** salvo que alguien la invoque a mano desde Python. Es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), y acá se ve el daño concreto: el CA-03 dice «una regla nueva no se publica sin clasificar», y hoy se publica sin que nada chiste.
+**El paso 4 es el que hunde el CA-03.** `metareglas.py` **no tiene subcomando en `validar.py`**: de los 24 que hay, ninguno lo llama. Así que la vigilancia de que toda regla se clasifique existe, funciona… y **nunca se ejecuta** salvo que alguien la invoque a mano desde Python. Es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), y acá se ve el daño concreto: el CA-03 dice «una regla nueva no se publica sin clasificar», y hoy se publica sin que nada chiste.
 
 > **Se escribió en una copia, no en `base/`.** Meter una regla de mentira en el cuerpo real dejaría el repositorio con una regla que nadie aprobó, aunque fuera un minuto.
 
@@ -118,7 +118,7 @@ Las tres se resuelven **leyendo solo el registro**: la fila trae la regla, el pr
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
 | D-01 | **Alta** | `metareglas.reglas()` solo reconoce lo que empieza por `## `. **Las cuatro reglas del capítulo 16 no existen para el programa**, así que nunca se les aplica ninguna de las 20 filas del checklist — y todo sale en verde | Probado con fallo esperado en [`validadores/pruebas.py`](../../../../../validadores/pruebas.py). El arreglo toca `metareglas.py`, que §2.1 del [plan aprobado](plan_trabajo.md) no declara ([`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). Se propone |
-| D-02 | **Alta** | La clasificación **no detiene**: sale como AVISO, y además `metareglas.py` **no tiene subcomando**, así que no corre en el trabajo normal. El CA-03 no se cumple de ninguna de las dos formas | Probado con fallo esperado. Es el punto 2 del pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), que ya está abierto |
+| D-02 | **Alta** | La clasificación **no detiene**: sale como AVISO, y además `metareglas.py` **no tiene subcomando**, así que no corre en el trabajo normal. El CA-03 no se cumple de ninguna de las dos formas | Probado con fallo esperado. Es el punto 2 del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), que ya está abierto |
 | D-03 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales** de la HU. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 ---

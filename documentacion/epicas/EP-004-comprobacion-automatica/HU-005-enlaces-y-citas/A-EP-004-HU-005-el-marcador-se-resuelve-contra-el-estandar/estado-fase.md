@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar` |
 | **Módulo** | Comprobación (`validadores/enlaces.py`) |
-| **Planteamiento / Épica / HU** | [EP-004](../../epica.md) · [HU-005](../HU-005-enlaces-y-citas.md) · [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) |
+| **Planteamiento / Épica / HU** | [EP-004](../../epica.md) · [HU-005](../HU-005-enlaces-y-citas.md) · [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) |
 | **Última actualización** | 2026-08-16 |
 
 ---
@@ -72,7 +72,7 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
 | La rama del marcador se conserva aunque el pendiente 40 haga que dejen de llegar marcadores: es la red para el que se escape | Queda en el plan §2.6 |
-| `enlaces.py` no tiene bloque `__main__`, así que correrlo directo no imprime nada y sale con código 0 | Fuera de alcance; anotado en el [pendiente 41](../../../../../pendientes/41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) |
+| `enlaces.py` no tiene bloque `__main__`, así que correrlo directo no imprime nada y sale con código 0 | Fuera de alcance; anotado en el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) |
 
 ---
 

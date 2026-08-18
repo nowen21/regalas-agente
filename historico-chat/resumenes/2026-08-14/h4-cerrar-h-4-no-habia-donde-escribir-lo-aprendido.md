@@ -101,7 +101,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —. La regla ya existe; lo que faltaba era cargarla.
 - **Orden de resolución:** 1 de 3 · mientras no se corrija, cada archivo nuevo repite el incumplimiento.
-- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0 · [pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md](../../../pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md).
+- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0 · [pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md](../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** hacer que `cargador.py` mande literales los capítulos `00` y `01`, y medir cuánto crece el arranque.

@@ -28,6 +28,7 @@ import recuerdos
 import sesion
 import version
 import versiones
+import comun
 from comun import FALLA, RAIZ, leer
 
 PLANTILLA = "plantillas/stack-instalacion.md"
@@ -397,3 +398,9 @@ def escribir_marca(proyecto, puntos):
     with open(archivo, "w", encoding="utf-8", newline="\n") as f:
         f.write(cuerpo)
     return archivo
+
+
+if __name__ == "__main__":
+    # `53` · Un modulo que se ejecuta solo y no imprime nada dice, con su
+    # silencio, lo mismo que diria si hubiera comprobado y estuviera todo bien.
+    comun.no_es_punto_de_entrada("checklist")

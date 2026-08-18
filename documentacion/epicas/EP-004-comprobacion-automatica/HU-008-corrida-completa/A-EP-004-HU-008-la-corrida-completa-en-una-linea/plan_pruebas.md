@@ -42,7 +42,7 @@
 ### 3.3 Técnicas de diseño de casos
 
 - **Uno por uno, no una muestra** — el CA-02 se prueba corriendo **cada** subcomando por separado después del cambio. Una muestra dejaría pasar justo el que se rompió.
-- **Saltar diciendo por qué** — lo que no aplica no falla ni calla. Callar es lo que hace hoy un validador sin punto de entrada, y por eso existe el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md).
+- **Saltar diciendo por qué** — lo que no aplica no falla ni calla. Callar es lo que hace hoy un validador sin punto de entrada, y por eso existe el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md).
 - **La lista se arma de los subcomandos registrados** — el riesgo `R-03`: si se armara a mano, la corrida completa dejaría de ser completa el día que se agregue un validador. El caso comprueba que un subcomando nuevo entra solo.
 - **El detalle sobrevive al total** — el resumen único **no reemplaza** las salidas de cada comprobación: quien corre para arreglar necesita el detalle, y el total es para saber si se puede cerrar.
 - **Distinguir lo propio de lo heredado** — el riesgo `R-02`: el resumen separa las fallas del cambio de las que ya estaban, o la corrida completa queda siempre en rojo y nadie la mira.
@@ -198,7 +198,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | Severidad | Qué sería en esta fase | Atención |
 |---|---|---|
 | **Crítica** | Que un subcomando deje de correr por separado | Inmediato. El CA-02 queda en «No» |
-| **Crítica** | Que una comprobación se saltee en silencio | Inmediato — es el defecto que el pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md) ya documenta |
+| **Crítica** | Que una comprobación se saltee en silencio | Inmediato — es el defecto que el pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) ya documenta |
 | **Alta** | Que la corrida completa tarde tanto que nadie la use (riesgo `R-01`) | Es la duda 1: lo lento se separa o se declara aparte |
 | **Alta** | Que la corrida quede siempre en rojo por fallas heredadas (riesgo `R-02`) | El resumen las distingue de las propias, con su cuenta |
 | **Media** | Que la lista de qué aplica se arme a mano (riesgo `R-03`) | Se arma de los subcomandos registrados; el CP-002 paso 4 lo comprueba |

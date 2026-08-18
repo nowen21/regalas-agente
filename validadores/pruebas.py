@@ -2094,7 +2094,7 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
 
         salida = subprocess.run(
             [sys.executable, os.path.join(self.VALIDADORES, "instalar.py"),
-             raiz, "--aplicar"], capture_output=True, text=True, timeout=180)
+             raiz, "--aplicar"], capture_output=True, text=True, encoding="utf-8", timeout=180)
         self.assertEqual(salida.returncode, 0, salida.stdout + salida.stderr)
         return raiz
 
@@ -2109,7 +2109,7 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
         return subprocess.run(
             [sys.executable, os.path.join(self.VALIDADORES, guion),
              "--modo", modo, "--raiz", raiz],
-            input=entrada, capture_output=True, text=True, timeout=60)
+            input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
 
     def _transcripcion(self, raiz, sesion):
         carpeta = os.path.join(raiz, "historico-chat")
@@ -2417,7 +2417,7 @@ class DisparoAlEscribirUnArchivo(unittest.TestCase):
         return subprocess.run(
             [sys.executable, os.path.join(self.VALIDADORES, "hook_md.py"),
              "--raiz", raiz],
-            input=entrada, capture_output=True, text=True, timeout=60)
+            input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
 
     def test_lo_que_no_le_toca_se_ignora_en_silencio(self):
         """CA-02: con un archivo que no es `.md`, el enganche **corre igual** y
@@ -2595,7 +2595,7 @@ class _ProyectoDePrueba(unittest.TestCase):
         orden = [sys.executable, os.path.join(self.VALIDADORES, "instalar.py"), raiz]
         if aplicar:
             orden.append("--aplicar")
-        return subprocess.run(orden, capture_output=True, text=True, timeout=180)
+        return subprocess.run(orden, capture_output=True, text=True, encoding="utf-8", timeout=180)
 
     def _archivos(self, raiz):
         encontrados = {}
@@ -2744,7 +2744,7 @@ class GenerarLosAutomatismos(_ProyectoDePrueba):
             salida = subprocess.run(
                 [sys.executable, os.path.join(self.VALIDADORES, guion),
                  *args, "--raiz", vacio],
-                input=entrada, capture_output=True, text=True, timeout=60)
+                input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
             self.assertEqual(salida.returncode, 0,
                              f"`{guion}` terminó en {salida.returncode}: {salida.stderr[:200]}")
 
@@ -2882,7 +2882,7 @@ class NumeracionDePendientes(unittest.TestCase):
     def test_la_linea_sale_en_la_corrida_de_verdad(self):
         salida = subprocess.run(
             [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
-             "pendientes"], capture_output=True, text=True, timeout=120, cwd=self.RAIZ)
+             "pendientes"], capture_output=True, text=True, encoding="utf-8", timeout=120, cwd=self.RAIZ)
         self.assertIn("el próximo libre es el", salida.stdout)
         self.assertEqual(salida.returncode, 0)
 
@@ -2954,7 +2954,7 @@ class NumeracionDePendientes(unittest.TestCase):
     def test_no_regresion_estandar_sigue_dando_lo_mismo(self):
         salida = subprocess.run(
             [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
-             "estandar"], capture_output=True, text=True, timeout=180, cwd=self.RAIZ)
+             "estandar"], capture_output=True, text=True, encoding="utf-8", timeout=180, cwd=self.RAIZ)
         self.assertEqual(salida.returncode, 0)
 
 
@@ -3001,7 +3001,7 @@ class InventarioDeHU(unittest.TestCase):
     def test_la_linea_sale_en_la_corrida_de_verdad(self):
         salida = subprocess.run(
             [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
-             "fases"], capture_output=True, text=True, timeout=180, cwd=self.RAIZ)
+             "fases"], capture_output=True, text=True, encoding="utf-8", timeout=180, cwd=self.RAIZ)
         self.assertIn("HU:", salida.stdout)
         self.assertIn("en total", salida.stdout)
 
@@ -3348,7 +3348,7 @@ class FormatoDelHallazgo(unittest.TestCase):
         def correr(sub):
             return subprocess.run(
                 [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"), sub],
-                capture_output=True, text=True, timeout=180, cwd=self.RAIZ).returncode
+                capture_output=True, text=True, encoding="utf-8", timeout=180, cwd=self.RAIZ).returncode
         self.assertEqual(correr("flujo"), 0, "una corrida de solo avisos no dio 0")
         self.assertEqual(correr("estandar"), 0, "`estandar` está en rojo por otra causa")
 
@@ -3463,13 +3463,19 @@ class ClasificacionDeCadaRegla(unittest.TestCase):
                   if "ZZ1" in h.mensaje and "no aparece en" in h.mensaje]
         self.assertEqual(len(avisos), 1, "la regla sin clasificar no se avisó")
 
-    @unittest.expectedFailure
     def test_la_regla_sin_clasificar_detiene_la_publicacion(self):
         """CA-03 pide que una regla nueva **no se publique** sin clasificar.
-        **Falla hoy** (defecto `D-02`): lo que sale es un **AVISO**, que no
-        detiene nada — y además `metareglas.py` **no tiene subcomando** en
-        `validar.py`, así que en una corrida normal ni siquiera se ejecuta.
-        Es el punto 2 del pendiente 53."""
+
+        **Pasa desde el 2026-08-17**, al cerrarse el punto 2 del pendiente 53:
+        `metareglas.py` ya tiene su subcomando y en una corrida normal se
+        ejecuta. Antes estaba marcada como fallo esperado.
+
+        **Ojo con lo que esta prueba NO comprueba.** La otra mitad del defecto
+        `D-02` sigue abierta: lo que sale es un **AVISO**, y un aviso no detiene
+        nada. Que el programa se pueda correr no es que la regla sin clasificar
+        detenga la publicación — solo que ahora hay quien la mire. Lo que falta
+        vive en el pendiente [19].
+        """
         import re
         entradas = re.findall(r'sub\.add_parser\("([a-z]+)"',
                               comun.leer(os.path.join(self.RAIZ, "validadores",

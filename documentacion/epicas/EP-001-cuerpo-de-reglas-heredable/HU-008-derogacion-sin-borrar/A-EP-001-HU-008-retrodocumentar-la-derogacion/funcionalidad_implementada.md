@@ -73,7 +73,7 @@ Ninguno volvió, y ahora hay una prueba que lo comprueba en cada corrida.
 | Que el identificador no vuelva | **Sí** |
 | Que no se le reclame nada | **No**: vive en `metareglas.py`, sin punto de entrada |
 
-La tercera es el punto 2 del [pendiente 53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md). **No deja el CA-03 en «No»**, porque lo que el criterio pide lo comprueba la prueba de esta fase, que sí corre.
+La tercera es el punto 2 del [pendiente 53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md). **No deja el CA-03 en «No»**, porque lo que el criterio pide lo comprueba la prueba de esta fase, que sí corre.
 
 **Y el caso «derogación sin reemplazo» no ha ocurrido nunca.** Se dice, en vez de darlo por resuelto: el transversal de límites pide que esté definido, y lo honesto es escribir que todavía no se presentó.
 
@@ -83,7 +83,7 @@ La tercera es el punto 2 del [pendiente 53](../../../../../pendientes/53-enlaces
 
 | Qué | Dónde |
 |---|---|
-| Que `metareglas.py` tenga subcomando | [Pendiente 53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md), punto 2 · fase `B-EP-004-HU-002` propuesta |
+| Que `metareglas.py` tenga subcomando | [Pendiente 53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2 · fase `B-EP-004-HU-002` propuesta |
 | Qué hacer con una derogación **sin** reemplazo | Sin destino: no ha ocurrido |
 | Que la derogación sin adoptar detenga la fase | [EP-004 · HU-015](../../../EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md), ya cerrada |
 
