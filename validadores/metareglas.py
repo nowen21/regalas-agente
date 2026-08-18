@@ -429,6 +429,157 @@ def _sello_vencido(regla):
         f"texto cambia, así que hay que volver a aplicarle el checklist")]
 
 
+_BLOQUES_DEL_SELLO = {"A": 1, "B": 5, "C": 7, "D": 14, "E": 18}
+
+_FILA_DEL_SELLO = re.compile(
+    r"(?m)^\|\s*([A-E])\s*·[^|]*\|[^|]*\|([^|]*)\|")
+
+_FILA_EN_PROSA = re.compile(r"\*\*Filas? ([\d,\s]*\d)")
+
+_REPRUEBA = "❌"
+
+
+def _filas_marcadas(sello):
+    """Qué filas trae la tabla del sello en ❌, por número de fila."""
+    marcadas = set()
+    for m in _FILA_DEL_SELLO.finditer(sello):
+        inicio = _BLOQUES_DEL_SELLO[m.group(1)]
+        for i, celda in enumerate(m.group(2).split()):
+            if celda == _REPRUEBA:
+                marcadas.add(inicio + i)
+    return marcadas
+
+
+def _filas_en_prosa(sello):
+    """Qué filas nombra el texto del sello: «**Fila 9 ·**», «**Filas 8, 9 y 10**»."""
+    filas = set()
+    for grupo in _FILA_EN_PROSA.findall(sello):
+        filas |= set(int(n) for n in re.findall(r"\d+", grupo))
+    return filas
+
+
+def _sello_se_contradice(regla):
+    """El sello dice en su texto que una fila falla, y su tabla la da por buena.
+
+    **Es la tabla la que se lee.** Nadie recorre veinte filas de prosa: se mira
+    el renglón de emoticones y se sigue. Un sello donde el texto reprueba la
+    fila 5 y la tabla la muestra en ✅ afirma dos cosas contrarias, y la que
+    gana es la falsa.
+
+    Se reporta **una sola dirección**: fila que el texto reprueba y la tabla no.
+    Al revés no es defecto — el texto agrupa («son tres reglas en una») y no
+    tiene por qué desglosar cada fila que ya marcó la tabla.
+
+    Sale de aplicarle el checklist a los veinte capítulos: seis sellos escritos
+    en la misma pasada tenían la tabla y su propio texto en desacuerdo.
+    """
+    if regla.derogada:
+        return []
+    m = _CHECKLIST.search(regla.texto)
+    if not m:
+        return []
+    sello = regla.texto[m.start():]
+    marcadas = _filas_marcadas(sello)
+
+    if m.group(1) == "CUMPLE":
+        # Un sello en CUMPLE no puede traer ❌ en su tabla. Y sus filas
+        # nombradas en prosa **no se comparan**: un CUMPLE suele contar qué
+        # reprobaba antes de corregirlo, y eso es historia, no veredicto.
+        if not marcadas:
+            return []
+        return [Hallazgo(
+            FALLA, regla.archivo, regla.linea,
+            f"el sello de `{regla.id}` dice CUMPLE y su tabla trae ❌ en la "
+            f"fila {sorted(marcadas)[0]}")]
+
+    faltan = sorted(_filas_en_prosa(sello) - marcadas)
+    if not faltan:
+        return []
+    if len(faltan) == 1:
+        cuales = f"la fila {faltan[0]}"
+    else:
+        cuales = ("las filas " + ", ".join(str(f) for f in faltan[:-1])
+                  + f" y {faltan[-1]}")
+    return [Hallazgo(
+        FALLA, regla.archivo, regla.linea,
+        f"el sello de `{regla.id}` reprueba en su texto {cuales} y su tabla "
+        f"la da por buena — la tabla es la que se lee, así que el sello "
+        f"afirma lo contrario de lo que dice")]
+
+
+_TOTALES_DEL_SELLO = re.compile(
+    r"\*\*20 filas:\s*(\d+)\s*✅\s*·\s*(\d+)\s*❌\s*·\s*(\d+)\s*N/A")
+
+
+def _cuenta_de_la_tabla(sello):
+    """`(✅, ❌, N/A)` contados en la tabla del sello."""
+    cuenta = [0, 0, 0]
+    for m in _FILA_DEL_SELLO.finditer(sello):
+        for celda in m.group(2).split():
+            if celda == _REPRUEBA:
+                cuenta[1] += 1
+            elif celda.upper() == "N/A":
+                cuenta[2] += 1
+            elif celda == "✅":
+                cuenta[0] += 1
+    return tuple(cuenta)
+
+
+def _totales_del_sello(regla):
+    """La línea de totales dice una cosa y la tabla de arriba dice otra.
+
+    Es el mismo defecto que `_sello_se_contradice` por el otro lado: el sello
+    afirma dos cosas y solo una es cierta. Se cuenta la tabla, que es lo que
+    alguien puede verificar renglón por renglón, y se reporta si la línea que
+    la resume no coincide.
+
+    **La tabla tiene que sumar 20.** Si no suma, el problema es otro y se dice
+    así en vez de corregir un total contra una tabla incompleta.
+    """
+    if regla.derogada:
+        return []
+    m = _CHECKLIST.search(regla.texto)
+    if not m:
+        return []
+    sello = regla.texto[m.start():]
+    d = _TOTALES_DEL_SELLO.search(sello)
+    if not d:
+        return []
+    cuenta = _cuenta_de_la_tabla(sello)
+    if sum(cuenta) != 20:
+        return [Hallazgo(
+            FALLA, regla.archivo, regla.linea,
+            f"la tabla del sello de `{regla.id}` tiene {sum(cuenta)} casillas "
+            f"y el checklist son 20 filas")]
+    dice = tuple(int(x) for x in d.groups())
+    if dice == cuenta:
+        return []
+    return [Hallazgo(
+        FALLA, regla.archivo, regla.linea,
+        f"el sello de `{regla.id}` se resume como {dice[0]} ✅ · {dice[1]} ❌ · "
+        f"{dice[2]} N/A y su tabla tiene {cuenta[0]} ✅ · {cuenta[1]} ❌ · "
+        f"{cuenta[2]} N/A")]
+
+
+def _un_solo_sello(regla):
+    """Dos bloques de checklist en la misma regla: uno de los dos miente.
+
+    Pasó en `M14`, con un sello de la `v2.1.0` encima del de la `v2.2.0`.
+    Quien lea de arriba abajo se queda con el viejo, que además tenía mal la
+    cuenta. Un sello se **reemplaza**, no se apila.
+    """
+    if regla.derogada:
+        return []
+    cuantos = len(_CHECKLIST.findall(regla.texto))
+    if cuantos < 2:
+        return []
+    return [Hallazgo(
+        FALLA, regla.archivo, regla.linea,
+        f"`{regla.id}` trae {cuantos} bloques de checklist — el sello se "
+        f"reemplaza, no se apila: quien lee de arriba abajo se queda con el "
+        f"viejo")]
+
+
 def _m14_checklist(regla):
     if regla.derogada:
         return []
@@ -487,6 +638,9 @@ def validar(raiz=None):
         hallazgos += _fila18_clasificada(r, clasificadas)
         hallazgos += _m14_checklist(r)
         hallazgos += _sello_vencido(r)
+        hallazgos += _sello_se_contradice(r)
+        hallazgos += _totales_del_sello(r)
+        hallazgos += _un_solo_sello(r)
     return hallazgos + _fila19_version(raiz)
 
 

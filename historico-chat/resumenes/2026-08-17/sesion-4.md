@@ -150,6 +150,20 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** El [61](../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con las tres decisiones que hacen falta y cuál de ellas importa.
 
+### 15 · Cinco sellos del estándar decían dos cosas contrarias
+
+**Qué se midió.** Cada bloque de checklist tiene dos mitades: una tabla de veinte casillas y un texto que explica qué falla. **En cinco reglas no coincidían** — el texto reprobaba una fila que la tabla mostraba en ✅. Más diez resúmenes que no cuadraban con su propia tabla, y una regla con **dos sellos apilados**.
+
+**Por qué importa.** La tabla es lo que se lee: nadie recorre veinte filas de prosa, se mira el renglón de emoticones y se sigue. Cuando las dos mitades se contradicen, **gana la que se ve**, que era la falsa.
+
+**Y el defecto no era de juicio.** En cuatro de los cinco se corrió **una casilla del bloque `C`** — siete seguidas, sin encabezado por columna. Nadie evaluó mal la regla: se equivocaron al transcribirlo, que es exactamente lo que un programa hace sin fallar.
+
+**El detalle que más dice:** en los tres sellos del capítulo `01` la fila perdida fue siempre la **5**, la que dice que la base no nombra tecnología. Escrita en el texto las tres veces, y las tres veces sin llegar a la tabla. Es la fila que más incomoda del checklist, y es la que se cayó.
+
+**Lo difícil fue no inventar.** La primera corrida reportó seis; el sexto estaba bien —un CUMPLE que cuenta qué reprobaba **antes** de corregirlo—. La mitad de los quince casos son de silencio: una comprobación que reporta de más se apaga a la semana, y apagada no encuentra nada.
+
+**Dónde queda.** La fase [`B-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/) y la v23.7.2. **No baja el 19 —las 72 siguen siendo 72—: lo vuelve confiable**, porque cualquier lista sacada de esos sellos habría estado mal contada.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

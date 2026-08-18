@@ -137,6 +137,30 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 Es el único hallazgo de la pasada que era **falso de contenido** y no de forma: lo demás son reglas largas, tituladas de más o repetidas. Esta afirmaba algo que no era cierto.
 
+## Cinco sellos decían dos cosas contrarias — 2026-08-18
+
+**Al ir a arreglar las que reprueban se encontró que algunos sellos no dicen lo que su propia tabla dice.** Cerrado en la fase [`B-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/), v23.7.2.
+
+| Regla | El texto reprobaba | La tabla marcaba |
+|---|---|---|
+| `01·C10` | 5, 9, 10 | 8, 9 |
+| `01·C15` | 5, 10, 14 | 10, 14 |
+| `01·C16` | 5, 10, 11, 14 | 10, 11, 14 |
+| `03·D1` | 9, 10, 11 | 8, 9, 10 |
+| `03·D4` | 9, 10, 16 | 8, 9, 16 |
+
+**El defecto no era de juicio, era de transcripción.** Cuatro de los cinco son **una casilla corrida en el bloque `C`** — siete casillas seguidas sin encabezado por columna. Nadie evaluó mal la regla: se equivocaron al pasarlo a la tabla.
+
+**Y en los tres del capítulo `01` la fila que se perdió fue siempre la 5**, la que dice que la base no nombra tecnología. Escrita en el texto las tres veces, sin llegar a la tabla ninguna.
+
+**Más diez resúmenes que no cuadraban con su tabla** —nueve por el mismo lado, una N/A de más y un ✅ de menos— y **`M14` con dos sellos apilados** desde el 2026-08-07.
+
+**Esto no baja el número de este pendiente: lo vuelve confiable.** Las 72 siguen siendo 72; lo que cambió es que cinco ya dicen bien cuántas filas les fallan. Antes, cualquier lista sacada de esos sellos habría estado mal contada.
+
+**Y hay tres comprobaciones nuevas** en `validar.py metareglas` para que no vuelva a pasar, escritas **antes** de corregir — al revés se habrían estrenado sobre un cuerpo limpio, sin un solo caso que encontrar.
+
+---
+
 ## Lo que queda: 72 reglas que reprueban
 
 **El sello ya no es el problema. Lo es lo que el sello dice.** Agrupado por qué hay que hacer:

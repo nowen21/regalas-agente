@@ -11,6 +11,42 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.2 — 2026-08-18
+
+**PARCHE** — dieciséis sellos de checklist decían dos cosas contrarias. Se corrige la descripción del veredicto; **ninguna regla cambia de texto**.
+
+### La tabla decía una cosa y su propio párrafo, otra
+
+Cada bloque de checklist tiene dos mitades: una tabla de veinte casillas y un texto que explica qué falla. **En cinco reglas no coincidían** — el texto reprobaba una fila que la tabla mostraba en ✅.
+
+**Pesa porque la tabla es lo que se lee.** Nadie recorre veinte filas de prosa: se mira el renglón de emoticones y se sigue. Cuando las dos mitades se contradicen, gana la que se ve, que era la falsa.
+
+**El defecto no era de juicio, era de transcripción.** En cuatro de los cinco se corrió **una casilla del bloque `C`** — siete seguidas, sin encabezado por columna, y contar de memoria hasta la séptima falla. Es exactamente lo que un programa hace sin equivocarse y una persona no.
+
+**Y en los tres del capítulo `01` la fila que se perdió fue siempre la 5:** la que dice que la base no nombra tecnología. Escrita en el texto las tres veces, y las tres veces sin llegar a la tabla.
+
+### Diez resúmenes que no cuadraban con su tabla, y un sello apilado
+
+La línea de totales de diez sellos decía una cuenta y su tabla tenía otra — **nueve por el mismo lado**, una N/A de más y un ✅ de menos. Se recalcularon desde la tabla, que es lo que alguien puede verificar casilla por casilla.
+
+Y [`20·M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md) llevaba **dos bloques de checklist superpuestos** desde el 2026-08-07, el de la `v2.1.0` encima del de la `v2.2.0`: quien leía de arriba abajo se quedaba con el viejo, que además tenía mal la cuenta. Un sello se reemplaza, no se apila. Es la regla que dice que ninguna regla nace fuera del procedimiento.
+
+### Tres comprobaciones para que no vuelva
+
+`validar.py metareglas` reporta ahora el sello cuyo texto reprueba una fila que su tabla da por buena, el resumen que no cuadra con su tabla, y la regla con dos sellos.
+
+**Se escribieron antes de corregir nada, a propósito.** Al revés se habrían estrenado sobre un cuerpo ya limpio: cero hallazgos y ninguna forma de saber si sirven. Así, los cinco los encontró la comprobación — y el falso positivo también.
+
+**Lo difícil no era encontrar: era no inventar.** La primera corrida reportó seis, y el sexto estaba bien: un sello en CUMPLE que cuenta qué reprobaba **antes** de corregirlo. Un CUMPLE ya no se compara contra su prosa; lo que sí se le exige es que su tabla no traiga ni un ❌. La mitad de los quince casos son de silencio, porque una comprobación que reporta de más se apaga a la semana.
+
+### Lo que esto **no** hace
+
+**No arregla ninguna regla.** Las 72 en NO CUMPLE siguen siendo 72, y [`01·C10`](base/01-conducta.md#c10--cada-mensaje-del-usuario-se-evalúa-como-posible-mejora-del-setup) sigue nombrando tecnologías concretas. Lo que cambió es que ahora su tabla lo dice. Eso es el [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+Fase: [`B-EP-001-HU-009`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/).
+
+---
+
 ## 23.7.1 — 2026-08-18
 
 **PARCHE** — el aviso de vuelta de la 23.7.0 estaba escrito y probado, y **el comando no lo llamaba**.

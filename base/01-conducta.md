@@ -29,7 +29,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
 
 **Dos filas, y las dos son la misma excepción.**
 
@@ -320,8 +320,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
@@ -539,12 +539,12 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ❌ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
 
 **Fila 5 · nombra un módulo de un proyecto real** —«módulo Aportes»—, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Es el tercer caso hoy, tras [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos) y [`04·S11`](04-seguridad.md#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación). **El arreglo es de una línea:** sustituirlo por «el módulo referente».
 
@@ -591,12 +591,12 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ❌ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+**20 filas: 14 ✅ · 4 ❌ · 2 N/A.**
 
 **Cuatro filas. Es la que más acumula del capítulo.**
 
@@ -650,7 +650,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+**20 filas: 14 ✅ · 4 ❌ · 2 N/A.**
 
 **Cuatro filas.**
 
@@ -703,7 +703,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | ❌ N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
 
 **Fila 10 · no cabe: 533 caracteres**, y su `Encadenamiento` queda fuera de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), como en `C15` y `C16`.
 

@@ -22,7 +22,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
 
 **Fila 16 · la excepción está incompleta.** «Si no amerita (visual/trivial), decláralo explícito» es una excepción, y [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) pide **condición, límite y quién autoriza**. Tiene condición —visual o trivial— y no tiene ni límite ni autorizador.
 

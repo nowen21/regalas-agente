@@ -144,8 +144,11 @@ Entonces todas sus reglas traen el bloque con su resultado
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-001-HU-009-clasificar-las-que-faltan](A-EP-001-HU-009-clasificar-las-que-faltan/README.md) | CA-02 | Cerrada 2026-08-16 (v23.1.1) |
+| [B-EP-001-HU-009-el-sello-no-se-contradice](B-EP-001-HU-009-el-sello-no-se-contradice/README.md) | CA-01, su parte comprobable | Cerrada 2026-08-18 (v23.7.2) |
 
-**Faltan los otros dos CA.** El `CA-01` —las siete publicadas en «no cumple»— espera una decisión de quien define el estándar; el `CA-03` —las 121 sin bloque— es trabajo por capítulo.
+**El `CA-03` cerró: las 121 sin bloque bajaron a cero** el 2026-08-18 — las 200 reglas del cuerpo tienen su sello. **El `CA-01` sigue abierto**, y lo que queda ya no son siete sino **72**: el número subió porque ahora todas dicen la verdad.
+
+**La fase `B` no lo cierra, lo vuelve medible.** Corrige el **sello**, no la regla: cinco reglas tenían mal escrito cuántas filas les fallan, y diez tenían la cuenta mal. Arreglar las 72 sigue esperando decisión de quien define el estándar, y está desglosado en el [pendiente 19](../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

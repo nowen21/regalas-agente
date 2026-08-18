@@ -30,7 +30,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ❌ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
@@ -155,11 +155,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ✅ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
 
 **1546 caracteres: casi cinco veces el molde.**
 
@@ -202,7 +202,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
 
 **Dos filas, y las dos ya estaban señaladas.**
 

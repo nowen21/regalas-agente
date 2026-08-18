@@ -29,7 +29,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
 
 **Es el hallazgo más serio de toda la pasada, y ya estaba señalado en rojo y con prioridad alta desde el 2026-08-07.**
 
