@@ -35,6 +35,7 @@ Corre **en seco**, sobre este mismo repositorio: no necesita ningún proyecto.
 """
 import os
 import re
+import subprocess
 
 import comun
 from comun import (AVISO, FALLA, Hallazgo, RAIZ, leer, lineas_utiles,
@@ -49,6 +50,9 @@ _REGLA = re.compile(r"^(#{1,2})\s+([A-Z]{1,4}\d+(?:\.\d+)?)\s*·\s*(.+?)\s*$")
 _CERCA = re.compile(r"^\s*(```|~~~)")
 _CHECKLIST = re.compile(r"(?m)^###\s+Checklist\s*·\s*\*\*(CUMPLE|NO CUMPLE)\*\*")
 _CONTRA = re.compile(r"(?i)contra\s+\*\*v?([\d.]+)\*\*")
+
+# La fecha del sello: «… contra **v20.0.1**, el **2026-08-16**.»
+_SELLADO_EL = re.compile(r"(?i)contra\s+\*\*v?[\d.]+\*\*,?\s*el\s+\*\*(\d{4}-\d{2}-\d{2})\*\*")
 _DEPENDENCIA = re.compile(r"\((extiende|depende de|deroga)\s+(?:`)?(?:(\d{2})·)?"
                           r"([A-Z]{1,4}\d+(?:\.\d+)?)(?:`)?\)")
 _DEPENDENCIA_ENLAZADA = re.compile(
@@ -315,6 +319,99 @@ def _fila18_clasificada(regla, clasificadas):
         f"declare si es validable (fila 18)")]
 
 
+_TOCADOS = {}
+
+
+def _fechas_de_cambio(carpeta):
+    """{ruta absoluta: fecha del último cambio}, en **una sola** pasada.
+
+    Se pregunta al control de versiones y no al disco: la fecha de
+    modificación del sistema de archivos cambia con un `clone`, con un
+    `checkout` y hasta con un antivirus, así que compararla contra el sello
+    daría vencidos falsos en cada máquina nueva.
+
+    Y se pregunta de una vez, no por archivo. Preguntar regla por regla son
+    doscientas invocaciones y la corrida pasó de segundos a minutos — una
+    comprobación que tarda tanto que estorba se termina desactivando, y
+    entonces no comprueba nada.
+    """
+    carpeta = os.path.abspath(carpeta)
+    if carpeta in _TOCADOS:
+        return _TOCADOS[carpeta]
+
+    fechas = {}
+    try:
+        r = subprocess.run(
+            ["git", "log", "--format=%cs", "--name-only", "--", "."],
+            cwd=carpeta, capture_output=True, text=True, encoding="utf-8",
+            errors="replace", timeout=120)
+        if r.returncode == 0:
+            raiz = subprocess.run(
+                ["git", "rev-parse", "--show-toplevel"], cwd=carpeta,
+                capture_output=True, text=True, encoding="utf-8",
+                errors="replace", timeout=30).stdout.strip()
+            fecha = ""
+            for linea in r.stdout.splitlines():
+                linea = linea.strip()
+                if not linea:
+                    continue
+                if re.fullmatch(r"\d{4}-\d{2}-\d{2}", linea):
+                    fecha = linea
+                    continue
+                # `git log` va del más nuevo al más viejo: la primera vez que
+                # se ve un archivo es su último cambio.
+                ruta = os.path.normpath(os.path.join(raiz, linea))
+                fechas.setdefault(ruta, fecha)
+    except (OSError, subprocess.SubprocessError):
+        fechas = {}
+
+    _TOCADOS[carpeta] = fechas
+    return fechas
+
+
+def _tocado_el(archivo):
+    """La fecha del último cambio, o "" si no hay dato.
+
+    Sin dato **no se inventa un vencimiento**: un hallazgo falso acá enseña a
+    ignorar todos los demás.
+    """
+    archivo = os.path.abspath(archivo)
+    return _fechas_de_cambio(os.path.dirname(archivo)).get(archivo, "")
+
+
+def _sello_vencido(regla):
+    """`52` · El sello dice «vale mientras el texto no cambie», y nada lo mira.
+
+    Cada bloque de checklist cierra con esa frase. Una regla puede editarse y
+    seguir mostrando un CUMPLE que se aplicó contra otro texto, otra versión y
+    otro día — y quien la lee ve un sello y confía. Es peor que no tener
+    sello: el que no lo tiene al menos no engaña.
+
+    **Se compara por fecha, no por huella del texto.** La huella detectaría el
+    cambio exacto, pero obliga a recalcular el sello de las ~70 reglas que hoy
+    están bien: mucho riesgo para hacer visible algo que la fecha ya hace
+    visible. Si esto produce demasiado ruido, la huella queda como el paso
+    siguiente, ya con datos.
+
+    El precio de la fecha está asumido y se dice: un cambio de una coma
+    también vence el sello, y un cambio sin confirmar no se ve.
+    """
+    if regla.derogada:
+        return []
+    m = _SELLADO_EL.search(regla.texto)
+    if not m:
+        return []                       # sin fecha no hay nada que comparar
+    sellado = m.group(1)
+    tocado = _tocado_el(regla.archivo)
+    if not tocado or tocado <= sellado:
+        return []
+    return [Hallazgo(
+        AVISO, regla.archivo, regla.linea,
+        f"el sello de `{regla.id}` se aplicó el {sellado} y el archivo se "
+        f"tocó el {tocado}: el propio bloque dice que queda **anulado** si el "
+        f"texto cambia, así que hay que volver a aplicarle el checklist")]
+
+
 def _m14_checklist(regla):
     if regla.derogada:
         return []
@@ -372,6 +469,7 @@ def validar(raiz=None):
         hallazgos += _fila14_15_dependencias(r, indice)
         hallazgos += _fila18_clasificada(r, clasificadas)
         hallazgos += _m14_checklist(r)
+        hallazgos += _sello_vencido(r)
     return hallazgos + _fila19_version(raiz)
 
 

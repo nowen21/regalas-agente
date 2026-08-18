@@ -46,3 +46,11 @@ $ python validadores/validar.py metareglas
 **Ese es el tamaño real de este pendiente, medido hoy y repetible.**
 
 Y llegó con un defecto que hay que resolver acá, el `D-02`: **una regla nueva sin clasificar sale como `AVISO`, y un aviso no detiene la publicación**. El `CA-03` de esa historia pide que la detenga. La prueba que lo denunciaba estaba marcada como fallo esperado por dos motivos —el subcomando y el aviso—; el subcomando se arregló, así que ahora **pasa con la mitad hecha**. Se le escribió encima qué no comprueba, para que nadie la lea como que el `CA-03` está cubierto.
+
+## Lo que le agrega el cierre del 52 — 2026-08-18
+
+**Una cuarta deuda, medida hoy: 36 sellos vencidos de 73.** Un sello vencido dice que la regla, tal como está escrita hoy, pasó las veinte filas — y no es cierto. Es peor que no tener sello. Se cuentan con `validar.py metareglas`.
+
+**Y una regla más en NO CUMPLE: `F13`, ahora son ocho.** No es que haya empeorado: decía «pendiente de aplicar», una forma que el validador no reconocía, así que figuraba como «no trae su bloque» —un aviso— cuando era una regla publicada sin sello válido. Se le aplicó el checklist y reprueba por **una sola fila, la 10**: el cuerpo mide 631 caracteres y el molde da 320. Su bloque deja escrito qué falla, para no volver a medirlo.
+
+**Recortar `F13` es trabajo de este pendiente**, no del 52: es un cambio de regla y va con el repaso del capítulo `02`.

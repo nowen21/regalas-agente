@@ -19,7 +19,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 > **Puesto al día el 2026-08-16**, en la fase `A-EP-001-HU-009`. Las 33 que el validador reportaba como sin clasificar bajaron a **cero**. Quince de ellas **ya estaban clasificadas** —el registro decía «C1–C17» y el programa no lee rangos—; las otras dieciocho no aparecían de verdad.
 
-> Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Detente si el proyecto no tiene su estructura base"*. Los ID son los de siempre.
+> Actualización 2026-08-07: el capítulo `02` pasó por el molde de `M5` y por el checklist. Ninguna regla `F` nació ni se derogó, así que este registro no cambia — pero los títulos sí: `F0` es ahora *"Recorre la cadena completa"*, `F3` *"Ejecuta seguido el plan aprobado"*, `F5` *"Corre solo las suites que la fase toca"*, `F13` *"Deja la estructura base puesta antes de trabajar"* (el título de esa nota quedó viejo: en la v5.0.0 la regla dejó de detener el arranque y pasó a dejar la estructura puesta; corregido el 2026-08-18). Los ID son los de siempre.
 >
 > Actualización 2026-08-05: se sumaron `F12.5` (consecutivo sin huecos) y, en `trazabilidad.py`, `DOC16` (enlace bidireccional épica↔HU), `DOC12` (ORIGEN en el plan) y `DOC3/DOC11` (tabla de cierre) — sobre el árbol `documentacion/epicas/`. Después, ya contra código real (agro-system), `04·S4` (`secretos.py`: secretos incrustados) y `10·DEP2` (`dependencias.py`: lockfile versionado).
 
