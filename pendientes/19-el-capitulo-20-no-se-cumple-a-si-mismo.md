@@ -67,6 +67,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `12` Privacidad y datos personales | 5 | `PR1`, `PR2`, `PR5` | `PR3`, `PR4` |
 | `10` Dependencias de terceros | 5 | `DEP1`, `DEP2`, `DEP4`, `DEP5` | `DEP3` |
 | `05` Errores y logging | 5 | `E1`, `E3`, `E5` | `E2`, `E4` |
+| **`06` Rendimiento y eficiencia** | 6 | **los seis** | — |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -89,6 +90,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `12·PR4` | Fila 11 | **Reformula `05·E5`, que a su vez reformula `00·N6`** — tres capas del mismo criterio. Tiene parte propia (pantallas y reportes) y esa es la que se queda |
 | `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
 | `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
+| `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
 | `10·DEP3` | Fila 11 | Repite `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7` |
 
 ### Lo que se supo aplicando el checklist
@@ -111,6 +113,12 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
+### El primer capítulo entero en CUMPLE
+
+El `06` es el primero que queda sin una sola regla reprobada: **las seis pasan las veinte filas**. Sirve de referencia de qué aspecto tiene un capítulo al día.
+
+Y deja ver algo que no se veía capítulo por capítulo: **quién reprueba por duplicación depende de quién copió, no de quién duplica.** [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y [`10·DEP3`](../base/10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día) están en la misma situación —cada una es la dueña de su tema y otra regla lo repite— pero `R3` no cita a nadie y `DEP3` sí. La que toma prestado es la que reprueba.
+
 ### Un análisis anterior no exime de volver a medir
 
 `05·E4` figuraba como **cumple** en el análisis del 2026-08-07 y no cabe en el molde: 419 caracteres para 320. El análisis midió a ojo esa fila.
@@ -123,10 +131,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **93** |
+| Sin bloque de checklist | 129 | 121 | **87** |
 | Publicadas en NO CUMPLE | 7 | 7 | **17** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Veintiocho reglas ganaron su sello hoy, en seis capítulos —el `05`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Diez de esas veintiocho dicen NO CUMPLE.
+Treinta y cuatro reglas ganaron su sello hoy, en siete capítulos —el `05`, el `06`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Diez de esas treinta y cuatro dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
