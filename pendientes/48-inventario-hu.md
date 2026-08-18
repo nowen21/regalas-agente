@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 34 |
-| **Incompletas** | 40 |
+| **Completas** | 35 |
+| **Incompletas** | 39 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -24,6 +24,8 @@
 > **2026-08-18 · sube a 33.** La [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) —buscar en el repositorio antes de preguntar— cerró su fase `A` con los cinco documentos. Nació ayer al enrutar el backlog y se construyó hoy. Y la [EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) —el proyecto reporta lo que es del estándar y el estándar le avisa de vuelta— cerró la suya, también del día a la mañana siguiente.
 >
 > **2026-08-18, más tarde · sube a 34.** La [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) —comprobar las marcas de generación automática— cerró su fase `A`, **que llevaba un día detenida por una duda que su propio pendiente ya contestaba**.
+>
+> **2026-08-18, al final del día · sube a 35.** La [EP-005 · HU-002](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) —enmascarar la clave antes de escribirla— cerró la suya. Era la fase con daño vivo: hasta hoy, una clave pegada en el chat quedaba escrita en claro en un archivo que se versiona.
 >
 > **Y las seis histórias nuevas entran a la tabla.** Contaban en el total desde ayer, pero no tenían fila: el total decía 74 y la tabla listaba 68. Un inventario al que hay que creerle el encabezado porque su propia tabla no lo respalda no sirve de inventario.
 >
@@ -84,7 +86,7 @@
 | EP-004 | [HU-017 — Decir cuántas HU quedan sin su fase completa](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-004 | [HU-018 — Avisar cuando dos pendientes se disputan el mismo número](../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-001 — Escribir la sesión a medida que pasa, con hora del reloj](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
-| EP-005 | [HU-002 — Enmascarar una clave antes de que quede escrita](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-005 | [HU-002 — Enmascarar una clave antes de que quede escrita](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-003 — Disparar las comprobaciones al escribir un archivo](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-004 — Controlar el mensaje con que se guarda un cambio](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-004-control-del-mensaje-de-cambio/HU-004-control-del-mensaje-de-cambio.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-005 | [HU-005 — Impedir guardar un cambio de reglas sin versión ni registro](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |

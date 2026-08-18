@@ -33,6 +33,8 @@ import re
 import unicodedata
 from datetime import datetime
 
+import enmascarar
+
 CARPETA = "historico-chat"
 INDICE = "README.md"
 
@@ -75,6 +77,9 @@ def anotar_usuario(raiz, sesion, mensaje):
 
     texto = _leer(ruta)
     numero = _siguiente_numero(texto)
+    # `EP-005·HU-002`: la clave se tapa **antes** de escribirse. Una vez en el
+    # archivo ya no se borra — la transcripción se versiona.
+    mensaje, _tapadas = enmascarar.enmascarar(mensaje)
     cita = "\n".join(f"> {l}" if l.strip() else ">"
                      for l in mensaje.rstrip().splitlines())
     _anotar(ruta, f"\n### {numero} · Usuario — {_ahora()}\n{cita}\n")
@@ -102,6 +107,7 @@ def anotar_agente(raiz, sesion, transcript):
     if marca and f"<!-- agente: {marca} -->" in texto:
         return ""                       # ya estaba: el enganche puede repetirse
     sello = f"\n<!-- agente: {marca} -->" if marca else ""
+    respuesta, _tapadas = enmascarar.enmascarar(respuesta)
     _anotar(ruta, f"\n**Agente** — {_ahora()}{sello}\n\n{respuesta}\n")
     return ruta
 

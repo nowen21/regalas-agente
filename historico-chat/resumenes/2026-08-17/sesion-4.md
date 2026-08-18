@@ -361,6 +361,18 @@ La decisión de cada duda quedó escrita **en la §2.7 del plan de su fase**, no
 
 **Las 83 viejas se quedan** (`20·M10`), y queda una pregunta más grande: si el registro estaba escrito para adentro, es probable que otros documentos también.
 
+### H-32 · La clave ya no llega al histórico
+
+Ejecutada la primera de las 26 fases desbloqueadas, y **la que tenía daño vivo**: hasta hoy una clave pegada en el chat quedaba escrita en claro en la transcripción, **que se versiona**. De ahí no se borra.
+
+Nace [`validadores/enmascarar.py`](../../../validadores/enmascarar.py), y el enganche del histórico lo llama **antes** de escribir — no después. Un enmascarado que corre sobre el archivo ya escrito llega tarde: el valor estuvo en disco, y si hubo un guardado en medio quedó en el historial para siempre.
+
+**La mitad del trabajo fue no tapar de más.** El molde —`tu-clave`, `changeme`— se queda, porque taparlo vuelve ilegible un ejemplo; y `password: os.environ["X"]` también, con un motivo más fuerte: **es la forma correcta**, y taparla enseñaría lo contrario de lo que el estándar pide.
+
+**Y se reconoce con lo que `secretos.py` ya sabía.** Una lista nueva serían dos listas que se separan.
+
+**Lo que queda:** las 47 transcripciones ya escritas no se revisaron, y el enmascarado solo cubre el histórico. Un resumen o un plan escritos a mano pueden llevar una clave y nadie los mira.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

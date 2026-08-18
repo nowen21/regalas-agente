@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Done |
 
 ---
 
@@ -125,7 +125,7 @@ Entonces entiende que ahí iba una clave y qué se estaba haciendo
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla](A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla](A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla/README.md) | CA-01 y CA-02 | **Cerrada 2026-08-18** · Cumple |
 
 **La fase construye, y es la mitad que le falta a una regla blindada.** `00·N6` prohíbe que una clave quede escrita, y ningún programa enmascara: `secretos.py` detecta las que ya están en el código, y la transcripción copia tal cual lo que se pega en el chat.
 

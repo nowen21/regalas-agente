@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,9 +26,9 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 7 tareas · **detenida por las 2 dudas de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | 6 tareas | ☑ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -43,11 +43,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Los **dos están en «No» de entrada**: buscado en todo el repositorio, ningún programa enmascara |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 2 de 2 |
+| **CA en «No»** | Ninguno |
+| **Defectos abiertos aceptados** | dos: las transcripciones viejas sin revisar, y lo que se escribe fuera del histórico |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) §6 |
 
 ---
 
@@ -101,3 +101,11 @@
 **Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
 
 **La fase no arrancó todavía:** decidir no es ejecutar.
+
+---
+
+## Lo que quedó, en una línea
+
+**Una clave pegada en el chat ya no llega a la transcripción.** Se tapa **antes** de escribir, porque una vez en el archivo la transcripción se versiona y de ahí no se borra.
+
+La mitad del trabajo fue **no tapar de más**: el molde y la línea que lee del entorno se quedan como están.
