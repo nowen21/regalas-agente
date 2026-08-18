@@ -140,7 +140,16 @@ Buscadas antes de volver a preguntarlas ([`01·C23`](../base/01-conducta.md#c23-
 
 **Las cuatro se contestan mirando el programa, no decidiendo.** Lo que falta es escribir la respuesta en el plan de cada fase.
 
-**Quedan 35 que sí necesitan una respuesta.**
+### Y dos que el cuerpo de reglas ya resuelve
+
+| # | Duda | Qué dice el cuerpo |
+|---|---|---|
+| **25** | El registro de conteos: ¿versionado, no versionado, o solo en la salida? | [`09·G3`](../base/09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado) deja fuera del control de versiones **lo generado**, y un conteo lo es. Va a lo no versionado, con el precedente de [`plantillas/proyectos.md`](../plantillas/proyectos.md) |
+| **40** | ¿Qué cuenta como «publicar»? | [`09·G7`](../base/09-git.md#g7--todo-commit-se-muestra-al-usuario-y-se-aprueba-antes-de-ejecutarlo) los nombra como dos actos —confirmar y publicar— y publicar es subir al repositorio compartido. **El despliegue es del capítulo `18`, que es opt-in y ningún proyecto lo tiene encendido** |
+
+**Quedan 33 que sí necesitan una respuesta.**
+
+**Nueve contestadas sin preguntar**: tres estaban escritas en el repositorio, cuatro las resuelve el programa que ya corre, y dos las resuelve el cuerpo de reglas.
 
 > **Y dos que parecían contestadas y no lo están:** la **26** y la **27** —desde cuándo se exige que el pendiente cerrado nombre su fase, y dónde se declara—. Solo **uno de los 35** archivos de `hecho/` lleva la fila fija, y `pendientes.py` no la comprueba. La convención no está asentada.
 

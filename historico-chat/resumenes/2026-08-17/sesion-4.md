@@ -312,6 +312,19 @@ Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-2
 
 **Y dos que parecían contestadas y no lo están:** la 26 y la 27, sobre el pendiente cerrado que nombra su fase. **Solo uno de los 35 archivos de `hecho/` lleva la fila fija**, y ningún programa la comprueba. Ahí la convención no existe todavía — que es distinto de que falte decidirla.
 
+### H-28 · De 42 dudas a 33, sin que el usuario contestara ninguna
+
+Última pasada sobre el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). **Dos más las resuelve el propio cuerpo de reglas:**
+
+- **25** — dónde vive el registro de conteos: [`09·G3`](../../../base/09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado) deja fuera lo generado, y un conteo lo es.
+- **40** — qué cuenta como publicar: `09·G7` nombra confirmar y publicar como dos actos, y el despliegue es del capítulo `18`, que es opt-in y está apagado.
+
+**De 42 a 33.** Nueve contestadas: tres estaban escritas en el repositorio, cuatro las resuelve el programa que ya corre, y dos, el cuerpo de reglas.
+
+> **Ninguna de las nueve era una decisión pendiente.** Estaban escritas como preguntas porque quien redactó el plan de cada fase no fue a buscar la respuesta — y eso detuvo veintiséis fases durante un día.
+
+**Y hay que decir el límite:** las 33 que quedan sí son decisiones. Buscar más no las va a contestar.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
