@@ -192,34 +192,30 @@ Está clasificada y con validador escrito —`herramientas.py`—, así que la f
 
 ## Q7 · Deja el código mejor, pero en tu alcance
 
-Corregir algo pequeño y cercano está bien. Refactorizar de más o "mejorar de paso" fuera de la tarea, no ([`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea)): infla el diff y mezcla intenciones. Si algo cercano merece mejora, dilo y déjalo para su tarea.
+Corregir algo pequeño y cercano está bien; mejorar de paso lo que no es de la tarea sale del alcance ([`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea)) e infla el diff. Si algo cercano merece mejora, **dilo y déjalo para su tarea**.
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.3**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ❌ N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
 
-**Fila 11 · sin texto prestado.** «Refactorizar de más o mejorar de paso fuera de la tarea, no» es [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea) dicha otra vez. La enlaza **y** la repite, y la fila pide enlazar **en vez de** copiar.
+**La fila 11 reprobaba y se corrigió en esta pasada.** Decía *«refactorizar de más o mejorar de paso fuera de la tarea, no»*, que es [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea) dicha otra vez: la enlazaba **y** la repetía, y la fila pide enlazar **en vez de** copiar.
 
-**Es el mismo caso de [`14·EST3`](14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo), y el análisis del 2026-08-07 los nombró juntos.** Los dos toman de `C3` el mismo criterio de alcance y lo aplican a su dominio — aquel al legacy, este al refactor.
+**El modelo estaba al lado, en el mismo cuerpo.** [`14·EST3`](14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo) toma de `C3` el mismo criterio de alcance y cumple: **la nombra entre paréntesis como el motivo** y todo lo demás que dice es suyo. `Q7` reformulaba el criterio entero antes de enlazarlo, y lo propio era una frase al final.
 
-**Pero `EST3` quedó en CUMPLE y esta no, y la diferencia importa:** `EST3` nombra a `C3` entre paréntesis como el **motivo** —«sale del alcance (`01·C3`)»— y todo lo demás que dice es suyo. Esta reformula el criterio entero antes de enlazarlo, y lo propio —«si algo cercano merece mejora, dilo y déjalo para su tarea»— es una sola frase al final.
+Ahora dice lo mismo en 191 caracteres — eran 211. **No cambia qué exige:** lo que se fue era la parte que ya regía por `C3`.
 
-**El arreglo es comprimir la mitad prestada a su enlace y quedarse con esa frase**, que es lo que el análisis recomendaba. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Fila 12 · N/A.** Lo que hay que hacer y lo que no está dicho en la propia frase, y un ejemplo repetiría el texto.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
-
----
-
-Ver: `01` C3/C8 (alcance, idioma), `06` R6 (legibilidad), `13` (documentar decisiones), `14` (estructura y nombres).

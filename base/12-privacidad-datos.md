@@ -101,34 +101,40 @@ La fila **12** es N/A: sin exigencia propia no hay ejemplo que dar.
 
 ## PR4 · No los expongas en logs, errores ni mensajes
 
-Logs y errores sin datos personales más allá de lo imprescindible: usa identificadores, no el dato en claro ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles)). Los mensajes a otros usuarios no filtran datos de terceros. Reportes y pantallas muestran datos solo a quien tiene derecho.
+Lo que se muestra en pantalla también expone: un mensaje a otro usuario no filtra datos de terceros, y un reporte o una pantalla solo los enseña a quien tiene derecho. En logs y errores rige [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) (depende de `05·E5`).
 
 ```
-INCORRECTO: loguear nombre, correo y teléfono en cada operación
-CORRECTO:   loguear un identificador; el dato queda en la BD con acceso controlado
+INCORRECTO: el reporte de incidencias muestra el teléfono del denunciante a
+            cualquiera que abra la pantalla, porque «ya está en la base»
+CORRECTO:   el reporte muestra el dato solo a quien tiene derecho a verlo; al
+            resto le llega el caso sin el dato de contacto
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.3**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ❌ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Fila 11 · sin texto prestado.** «Logs y errores sin datos personales… usa identificadores, no el dato en claro» es [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) dicha otra vez con otras palabras — y `E5`, a su vez, reformula [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). **Tres capas del mismo criterio**, como decía el análisis del 2026-08-07.
+**La fila 11 reprobaba y se corrigió en esta pasada.** Su primera mitad —*«logs y errores sin datos personales… usa identificadores, no el dato en claro»*— era [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) dicha con otras palabras, y `E5` a su vez reformula [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada): **tres capas del mismo criterio**, como decía el análisis del 2026-08-07. Estaba enlazada **y** copiada.
 
-Enlazarla no basta: la fila pide que lo que ya dice otra regla esté **enlazado en vez de copiado**, y acá está enlazado **y** copiado.
+**Lo propio es lo que la salvó de derogarse:** que un mensaje a otro usuario no filtre datos de terceros, y que un reporte o una pantalla solo los enseñe a quien tiene derecho. **`E5` habla de logs, no de pantallas**, y esa mitad no la dice ninguna otra regla.
 
-**Tiene parte propia, y es la que la salva de derogarse:** los mensajes a otros usuarios no filtran datos de terceros, y reportes y pantallas muestran datos solo a quien tiene derecho. Eso no lo dice `E5` — `E5` habla de logs, no de pantallas. **El arreglo es quedarse con esa mitad y enlazar la otra.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Ahora se queda con esa mitad y **enlaza** la otra. **Lo que importa no es que acorte** —de 242 a 220, poco— sino que lo que queda es suyo: antes la mitad de la regla regía por `E5` y esta la repetía.
+
+**Fila 14 · declara `depende de 05·E5`**, en una de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Antes la relación existía y no estaba declarada.
+
+**Y el ejemplo cambió con ella:** el de antes mostraba un caso de logs, que ya no es de esta regla. El nuevo es el de pantalla — el reporte que enseña el teléfono del denunciante a cualquiera «porque ya está en la base».
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

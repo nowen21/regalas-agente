@@ -182,7 +182,32 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 
 ---
 
-## Lo que queda: 72 reglas que reprueban
+## Dos que repetían al vecino: cerradas — 2026-08-18
+
+Fase [`D-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/D-EP-001-HU-009-enlazar-en-vez-de-repetir/), v23.7.4. **Las 72 pasan a 70.**
+
+| Regla | Se fue | Quedó |
+|---|---|---|
+| `07·Q7` | el criterio de alcance, que es `01·C3` | `C3` como motivo enlazado, y decirlo para su tarea |
+| `12·PR4` | lo de logs, que es `05·E5` | pantallas, reportes y mensajes a terceros |
+
+**Por qué duraban: las dos enlazaban.** El enlace estaba puesto, y aun así reprobaban — la fila 11 no pide enlazar sino **enlazar en vez de copiar**. Un enlace delante de un texto repetido se lee como diligencia: cumplían la mitad que se ve.
+
+**Y la forma correcta ya estaba en otra regla del mismo cuerpo.** `14·EST3` toma de `C3` el mismo criterio que `Q7` y estaba en CUMPLE. Faltaba leerlas juntas — el análisis del 2026-08-07 ya las nombraba en la misma línea.
+
+**De las cinco de esta categoría quedan tres, y ninguna es redacción:**
+
+| Regla | Qué necesita |
+|---|---|
+| `12·PR3` | Decidir: quedarse con lo que el `04` no dice, **o derogarla** |
+| `01·C16` | Normalizar el bloque `Encadenamiento` en **cuatro reglas a la vez** |
+| `04·S7` | **Derogarla** en favor de `10·DEP3`, como prescriben sus dos sellos |
+
+**Las dos derogaciones son decisión del usuario**, porque derogar obliga a adoptarlo ([`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)) en todos los proyectos instalados.
+
+---
+
+## Lo que queda: 70 reglas que reprueban
 
 **El sello ya no es el problema. Lo es lo que el sello dice.** Agrupado por qué hay que hacer:
 

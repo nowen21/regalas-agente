@@ -11,6 +11,43 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.4 — 2026-08-18
+
+**PARCHE** — dos reglas enlazaban a su vecina **y además la copiaban**. Se quedan con lo suyo; **ninguna exigencia desaparece del cuerpo**.
+
+### El defecto se leía como diligencia
+
+[`20·M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) pide que lo que ya dice otra regla esté **enlazado en vez de copiado**. [`07·Q7`](base/07-calidad-de-codigo.md#q7--deja-el-código-mejor-pero-en-tu-alcance) y [`12·PR4`](base/12-privacidad-datos.md#pr4--no-los-expongas-en-logs-errores-ni-mensajes) hacían las dos cosas: **el enlace estaba puesto** y el texto repetido debajo.
+
+Por eso duraron. Un enlace delante de un texto repetido se lee como cuidado, no como duplicación: **cumplían la mitad que se ve.**
+
+| Regla | Se fue | Quedó |
+|---|---|---|
+| `07·Q7` | el criterio de alcance, que es [`01·C3`](base/01-conducta.md#c3--quédate-en-tu-tarea) | `C3` como motivo enlazado, y decirlo para su tarea |
+| `12·PR4` | lo de logs, que es [`05·E5`](base/05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) | pantallas, reportes y mensajes a terceros |
+
+### La forma correcta ya estaba escrita en otra regla del mismo cuerpo
+
+[`14·EST3`](base/14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo) toma de `01·C3` **el mismo criterio de alcance** que `Q7`, y estaba en CUMPLE: la nombra entre paréntesis como el **motivo** y todo lo demás es suyo. `Q7` reformulaba el criterio entero antes de enlazarlo.
+
+**Faltaba leerlas juntas.** El análisis del 2026-08-07 ya las había nombrado en la misma línea.
+
+### Tres capas del mismo criterio, y solo una aportaba
+
+[`00·N6`](base/00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada) (blindada) → `05·E5` → `12·PR4`, cada una reformulando a la anterior. La única parte que no dice ninguna otra regla es **la mitad de pantallas y reportes de `PR4`** — `E5` habla de logs. Es lo que la salvó de derogarse.
+
+**Y su ejemplo se quedaba ilustrando lo que la regla dejó de decir:** era de logs. Un ejemplo así es peor que ninguno, porque manda a buscar la exigencia donde ya no está. Se cambió con ella. `PR4` además **declara ahora `depende de 05·E5`**, en una de las tres formas de [`20·M7`](base/20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md): la relación existía y no estaba dicha.
+
+### Lo que **no** hace
+
+**La categoría queda a medias, y se dice.** Siguen repitiendo `12·PR3` —que no exige nada propio—, `01·C16` —cuyo arreglo pasa por normalizar el bloque `Encadenamiento` en cuatro reglas a la vez— y [`04·S7`](base/04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas), cuyos dos sellos prescriben **derogarla** en favor de [`10·DEP3`](base/10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día).
+
+**Las tres necesitan una decisión, no una redacción.** Derogar obliga a adoptarlo ([`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)) en todos los proyectos.
+
+Reglas en NO CUMPLE: **72 → 70**. Fase: [`D-EP-001-HU-009`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/D-EP-001-HU-009-enlazar-en-vez-de-repetir/).
+
+---
+
 ## 23.7.3 — 2026-08-18
 
 **PARCHE** — cuatro reglas nombraban un stack, un dominio o una herramienta. Se dicen en concepto; **ninguna cambia lo que exige**.

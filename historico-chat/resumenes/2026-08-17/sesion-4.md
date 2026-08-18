@@ -204,6 +204,18 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Y los tres se renumeraron después de escribir la comprobación**, para que se estrenara sobre los archivos que estaban mal — igual que en la fase `B` del sello. Es la tercera vez hoy que ese orden es lo que hace que la comprobación sirva.
 
+### H-19 · Enlazar no es lo mismo que enlazar en vez de copiar
+
+**Qué se cerró.** Dos reglas —[`07·Q7`](../../../base/07-calidad-de-codigo.md#q7--deja-el-código-mejor-pero-en-tu-alcance) y [`12·PR4`](../../../base/12-privacidad-datos.md#pr4--no-los-expongas-en-logs-errores-ni-mensajes)— que enlazaban a su vecina **y además la copiaban**. Fase [`D-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/D-EP-001-HU-009-enlazar-en-vez-de-repetir/), v23.7.4. **Las 72 en NO CUMPLE pasan a 70.**
+
+**Por qué duraban, y es lo que hay que recordar.** Las dos tenían el enlace puesto, visible y correcto. La fila 11 no pide enlazar: pide **enlazar en vez de copiar**. Un enlace delante de un texto repetido **se lee como diligencia**, así que cumplían la mitad que se ve y sobrevivieron a varias lecturas.
+
+**La forma correcta ya estaba escrita, en otra regla del mismo cuerpo.** `14·EST3` toma de `01·C3` el mismo criterio de alcance que `Q7` y estaba en CUMPLE: la nombra entre paréntesis como el motivo y todo lo demás es suyo. Faltaba leerlas juntas — es la tercera vez hoy que **la respuesta estaba en el repositorio y el trabajo era encontrarla**, no inventarla.
+
+**Y un detalle que se repite:** el ejemplo de `PR4` era de logs, y al irse esa mitad quedó ilustrando lo que la regla ya no dice. **Peor que no tener ninguno**, porque manda a buscar la exigencia donde no está.
+
+**Lo que no se hizo, y por qué.** Quedan tres de la categoría: `12·PR3`, `01·C16` y `04·S7`. **Ninguna es redacción** — dos piden decidir si una regla deja de existir, y derogar obliga a adoptarlo en todos los proyectos instalados.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
