@@ -41,7 +41,7 @@ Verificado el 2026-08-14, contando archivo por archivo en `plantillas/`:
 |---|---|---|
 | Usan `«…»` | 25 de 30 | `ADR.md`, `planteamiento.md`, `HU.md`, `fase.md`, `senales.md`, `sesion.md`, `planes/trabajo.md`, `CLAUDE.md.plantilla` y 17 más |
 | Usan otra marca | 2 | [`plantillas/epica.md`](../../plantillas/epica.md) con `[Resultado observable…]` y `<slug>`; [`plantillas/marco-normativo.md`](../../plantillas/marco-normativo.md) con `` `<nombre>` `` |
-| Por decidir | 3 | [`memoria.md`](../../plantillas/memoria.md), [`historico-chat.md`](../../plantillas/historico-chat.md) y [`retrodocumentacion.md`](../../plantillas/retrodocumentacion.md) |
+| Por decidir | 3 | [`memoria.md`](../../plantillas/memoria.md), [`historico-chat.md`](../../plantillas/historico-chat.md) y [`retrodocumentacion.md`](../../base/13-documentacion/retrodocumentacion.md) |
 
 Lo más cercano a una norma escrita es la frase que repiten las cajas de instrucciones de las plantillas: *"Reemplaza los `«…»` y borra esta caja"*. Dice qué hacer con la marca, no cuál es la marca ni por qué. Nunca se escribió como regla, así que hoy se cumple porque alguien se acuerda.
 

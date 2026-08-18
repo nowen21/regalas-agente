@@ -49,7 +49,7 @@ Esta es **la lista declarada**: los archivos de `plantillas/` que no llevan ning
 
 | Archivo | Qué es en realidad |
 |---|---|
-| [`plantillas/retrodocumentacion.md`](../plantillas/retrodocumentacion.md) | El procedimiento de seis pasos para retro-documentar un módulo. Se lee y se sigue; no se llena |
+| [`plantillas/retrodocumentacion.md`](../base/13-documentacion/retrodocumentacion.md) | El procedimiento de seis pasos para retro-documentar un módulo. Se lee y se sigue; no se llena |
 | [`plantillas/historico-chat.md`](../plantillas/historico-chat.md) | La explicación de cómo se escribe el histórico. Los `<archivo>` que trae están dentro de comandos que el usuario copia, y por la regla no son huecos |
 | [`plantillas/memoria.md`](../plantillas/memoria.md) | La explicación de dónde vive la memoria del agente. Su único `<nombre>` está dentro de una frase que describe qué hace un programa |
 | [`plantillas/prompts/prompt-base-usuario.md`](../plantillas/prompts/prompt-base-usuario.md) | El molde con que el usuario le pide trabajo al agente. Se llena escribiendo el pedido, no reemplazando huecos |

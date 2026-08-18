@@ -96,7 +96,7 @@ Ninguno.
 |---|---|---|
 | El CA-01 se prueba con dos proyectos que ya existen y usan el estándar, no con dos de juguete | Armar dos proyectos de prueba para la ocasión | Un proyecto de juguete cumple cualquier convención: no hay código real donde la convención estorbe |
 | El solape se revisa por tema, con una tabla de tema → capítulo dueño | Buscar palabras repetidas entre capítulos | Un tema se repite aunque las palabras cambien; la fila 4 pide leer, y por eso no la decide un programa |
-| Lo que se encuentre mal queda como hallazgo numerado, no corregido | Corregir al pasar | El paso 5 del procedimiento de [retro-documentación](../../../../../plantillas/retrodocumentacion.md) pide listar los huecos numerados para poder citarlos desde otra fase |
+| Lo que se encuentre mal queda como hallazgo numerado, no corregido | Corregir al pasar | El paso 5 del procedimiento de [retro-documentación](../../../../../base/13-documentacion/retrodocumentacion.md) pide listar los huecos numerados para poder citarlos desde otra fase |
 
 ### 2.7 Dudas por resolver antes de escribir
 

@@ -35,7 +35,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-plan-de-trabajo
 - **Qué se decidió:** nada. Quedó como pregunta abierta al usuario.
 - **Estado:** abierto.
 - **Responde a:** EP-001.
-- **Dispara:** —, hay [plantilla de retrodocumentación](../../../plantillas/retrodocumentacion.md) escrita; falta decidir si aplica.
+- **Dispara:** —, hay [plantilla de retrodocumentación](../../../base/13-documentacion/retrodocumentacion.md) escrita; falta decidir si aplica.
 - **Orden de resolución:** 1 de 3. Va primero: bloquea escribir las seis historias que faltan.
 - **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-14 · plan de trabajo de la EP-001.

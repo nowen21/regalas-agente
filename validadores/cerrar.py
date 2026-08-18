@@ -139,14 +139,22 @@ def reescribir_salientes(texto, origen, destino):
 
 
 def cerrar(raiz, numero, como, escribir=False):
-    """Mueve el pendiente a `hecho/<como>.md` y reescribe lo que lo citaba.
-
-    Devuelve `(origen, destino, [(archivo, cuántos enlaces)])`.
-    """
+    """Mueve el pendiente a `hecho/<como>.md` y reescribe lo que lo citaba."""
     origen = archivo_del_pendiente(raiz, numero)
     nombre = como if como.lower().endswith(".md") else como + ".md"
-    destino = os.path.join(raiz, PENDIENTES, HECHO, nombre)
+    return mover(raiz, origen, os.path.join(raiz, PENDIENTES, HECHO, nombre),
+                 escribir)
 
+
+def mover(raiz, origen, destino, escribir=False):
+    """Mueve un `.md` y arrastra todo lo que lo citaba, en los dos sentidos.
+
+    Devuelve `(origen, destino, [(archivo, cuántos enlaces)])`.
+
+    Sirve para cualquier documento, no solo para un pendiente: mover un
+    procedimiento de `plantillas/` a su capítulo rompe lo mismo y se arregla
+    igual. Lo que cambia entre un caso y otro es solo de dónde a dónde.
+    """
     if os.path.exists(destino):
         sys.exit(f"ya existe {relativo(destino)} — elegí otro nombre")
 

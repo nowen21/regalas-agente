@@ -14,7 +14,7 @@
 
 > Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
 
-**Ningún procedimiento se corrige acá.** Lo que les falte se numera como hueco, que es el paso 5 del procedimiento de [retro-documentación](../../../../../plantillas/retrodocumentacion.md).
+**Ningún procedimiento se corrige acá.** Lo que les falte se numera como hueco, que es el paso 5 del procedimiento de [retro-documentación](../../../../../base/13-documentacion/retrodocumentacion.md).
 
 ---
 

@@ -87,7 +87,7 @@ Ninguno. Los «roles» de esta HU son roles de trabajo, no permisos de un sistem
 |---|---|---|
 | La tabla rol → entrada → salida se levanta leyendo los diez, no se diseña | Escribir la tabla ideal y comparar | Retro-documentar es fotografiar lo que hay; lo ideal se propone después, con los huecos numerados |
 | El CA-03 se prueba por **tipo** de resultado, no por texto | Comparar dos salidas palabra por palabra | Dos corridas nunca dan el mismo texto; lo que tiene que repetirse es qué documento sale y qué secciones trae |
-| Lo que falte se numera como hueco | Corregirlo de paso | Es el paso 5 del procedimiento de [retro-documentación](../../../../../plantillas/retrodocumentacion.md) |
+| Lo que falte se numera como hueco | Corregirlo de paso | Es el paso 5 del procedimiento de [retro-documentación](../../../../../base/13-documentacion/retrodocumentacion.md) |
 
 ### 2.7 Dudas por resolver antes de escribir
 

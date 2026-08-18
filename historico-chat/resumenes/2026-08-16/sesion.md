@@ -47,7 +47,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 
 - **Qué pasó:** el usuario aprobó programar la comprobación y el agente la escribió derecho en [`validadores/version.py`](../../../validadores/version.py) y [`validadores/flujo.py`](../../../validadores/flujo.py). Eso es desarrollo, y [`02·F0`](../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) pide `épica → HU → especificación → plan → código`, sin atajos por tamaño. No hubo HU ni fase: el código existe y su cadena no.
 - **Por qué importa:** es el mismo repo que escribe la regla, incumpliéndola mientras la escribe. Y sin fase no hay plan aprobado ni cierre, así que el código quedó sin el registro que lo justifica.
-- **Qué lo soluciona:** retrodocumentar el trabajo como fase de EP-004, con su HU y su cierre, usando [`plantillas/retrodocumentacion.md`](../../../plantillas/retrodocumentacion.md).
+- **Qué lo soluciona:** retrodocumentar el trabajo como fase de EP-004, con su HU y su cierre, usando [`plantillas/retrodocumentacion.md`](../../../base/13-documentacion/retrodocumentacion.md).
   **EP-004 · HU nueva — la comprobación del desfase con derogación**
   - **Como** dueño de un proyecto que hereda el estándar
   - **Quiero** que la comprobación falle sola cuando hay una regla derogada sin adoptar

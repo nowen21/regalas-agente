@@ -2,7 +2,7 @@
 
 ## DOC6 · Retro-documenta el módulo sin especificación antes de tocarlo
 
-Un módulo productivo sin especificación —o con una especificación más vieja que el código— se retro-documenta como **unidad de trabajo formal** antes de intervenirlo, siguiendo [`plantillas/retrodocumentacion.md`](../../../plantillas/retrodocumentacion.md). Queda en estado provisional: cierra en el primer audit profundo.
+Un módulo productivo sin especificación —o con una especificación más vieja que el código— se retro-documenta como **unidad de trabajo formal** antes de intervenirlo, siguiendo [`plantillas/retrodocumentacion.md`](../retrodocumentacion.md). Queda en estado provisional: cierra en el primer audit profundo.
 
 ```
 INCORRECTO: encontrar un módulo sin especificación y decir "asumo que hace X" en la próxima fase

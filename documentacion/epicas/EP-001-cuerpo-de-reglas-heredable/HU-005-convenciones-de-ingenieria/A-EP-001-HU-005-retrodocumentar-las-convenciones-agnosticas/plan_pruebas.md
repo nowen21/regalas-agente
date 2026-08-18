@@ -42,7 +42,7 @@
 - **Dos proyectos reales, no de juguete** — un proyecto de juguete cumple cualquier convención porque no tiene código donde la convención estorbe. Los dos proyectos los elige la duda 1 del plan.
 - **Criterio escrito antes de llenar la tabla** — el riesgo `R-02`: la tabla tema → capítulo dueño se llena con un criterio fijado de antemano, y cada fila cita el párrafo que la sostiene. Si no, dos personas la llenarían distinto y el CA-02 quedaría a gusto de quien lo revisa.
 - **Recorrido exhaustivo, no muestreo** — los diecisiete capítulos se recorren enteros buscando nombre de lenguaje, framework, motor, nube o herramienta. Cada aparición se anota con su archivo y su línea.
-- **Hallazgo numerado, no corregido** — lo que aparezca mal se lista con número para poder citarlo desde otra fase ([procedimiento de retro-documentación](../../../../../plantillas/retrodocumentacion.md), paso 5). Corregir al pasar sería salirse del CA ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
+- **Hallazgo numerado, no corregido** — lo que aparezca mal se lista con número para poder citarlo desde otra fase ([procedimiento de retro-documentación](../../../../../base/13-documentacion/retrodocumentacion.md), paso 5). Corregir al pasar sería salirse del CA ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
 
 ### 3.5 Alcance de la corrida
 
