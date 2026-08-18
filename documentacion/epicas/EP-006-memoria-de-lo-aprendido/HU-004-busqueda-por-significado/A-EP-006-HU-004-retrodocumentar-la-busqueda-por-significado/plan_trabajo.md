@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)). Existe y es opcional: [`memoria/semantica.py`](../../../../../memoria/semantica.py) calcula los vectores **en la máquina** —el contenido de las señales no sale, por `00·N6`— y si sus dependencias no están, la memoria sigue funcionando con la búsqueda por palabra. Salió del pendiente [05](../../../../../pendientes/hecho/memoria-semantica.md), ya cerrado. Sale de la fila de HU-004 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)). Existe y es opcional: [`memoria/semantica.py`](../../../../../memoria/semantica.py) calcula los vectores **en la máquina** —el contenido de las señales no sale, por `00·N6`— y si sus dependencias no están, la memoria sigue funcionando con la búsqueda por palabra. Salió del pendiente [05](../../../../../pendientes/hecho/memoria-semantica.md), ya cerrado. Sale de la fila de HU-004 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -155,7 +155,7 @@ No aplica: no se toca nada de lo que corre. Sin subida de versión.
 
 ## 9. Reglas del estándar aplicadas  ·  `F14` Q13
 
-[`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`08·T1`](../../../../../base/08-pruebas.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`00·N6`](../../../../../base/00-nucleo-blindado.md), [`06`](../../../../../base/06-rendimiento.md), [`10`](../../../../../base/10-dependencias.md), [`12`](../../../../../base/12-privacidad-datos.md).
+[`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`08·T1`](../../../../../base/08-pruebas.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`00·N6`](../../../../../base/00-nucleo-blindado.md), [`06`](../../../../../base/06-rendimiento.md), [`10`](../../../../../base/10-dependencias.md), [`12`](../../../../../base/12-privacidad-datos.md).
 
 ---
 

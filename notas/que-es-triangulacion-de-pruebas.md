@@ -19,7 +19,7 @@ Esa prueba **siempre pasa**, pero no prueba nada: compara el código consigo mis
 
 El resultado esperado sale de **fuentes que no son el código**, y tienen que coincidir. Ejemplo con la factura (subtotal 100, IVA 19%):
 
-1. **La spec dice:** total = 119.
+1. **La especificación dice:** total = 119.
 2. **Cálculo a mano:** 100 + (100 × 0.19) = 119.
 3. **Una propiedad que siempre debe cumplirse:** total = subtotal + iva.
 

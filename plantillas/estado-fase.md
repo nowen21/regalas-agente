@@ -21,15 +21,15 @@
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorer · análisis | contexto entendido | ☐ |
-| 2 | Proposer · alcance | 👤 alcance aprobado | ☐ |
-| 3 | Épica Writer | 👤 épica aprobada | ☐ |
-| 4 | HU Writer | 👤 HUs aprobadas | ☐ |
-| 5 | Spec Writer | 👤 especificación aprobada | ☐ |
-| 6 | Designer | diseño coherente | ☐ |
-| 7 | Task Planner | 👤 plan + pruebas aprobados | ☐ |
-| 8 | Implementer | implementado + pruebas verdes | ☐ |
-| 9 | Verifier | trazabilidad sin faltantes | ☐ |
+| 1 | Explorador · análisis | contexto entendido | ☐ |
+| 2 | Proponente · alcance | 👤 alcance aprobado | ☐ |
+| 3 | Escritor de épica | 👤 épica aprobada | ☐ |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ☐ |
+| 5 | Escritor de especificación | 👤 especificación aprobada | ☐ |
+| 6 | Diseñador | diseño coherente | ☐ |
+| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☐ |
+| 8 | Implementador | implementado + pruebas verdes | ☐ |
+| 9 | Verificador | trazabilidad sin faltantes | ☐ |
 | 10 | Crítico | sin hallazgos graves | ☐ |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ |
 | 12 | Commit | 👤 autorizado | ☐ |

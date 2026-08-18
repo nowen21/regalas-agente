@@ -17,7 +17,7 @@
 | [`plantillas/historico-chat.md`](../../plantillas/historico-chat.md) | La fuente con la que [`validadores/instalar.py`](../../validadores/instalar.py) **genera** el `historico-chat/README.md` de cada proyecto | Se queda. No lo llena una persona, lo llena un programa |
 | [`plantillas/memoria.md`](../../plantillas/memoria.md) | Lo mismo, para `historico-chat/memory/memory.md` | Se queda |
 | [`plantillas/prompts/prompt-base-usuario.md`](../../plantillas/prompts/prompt-base-usuario.md) | El molde con que el usuario pide trabajo. Se llena escribiendo el pedido | Se queda: ya está separado en su subcarpeta |
-| [`plantillas/retrodocumentacion.md`](../../base/13-documentacion/retrodocumentacion.md) | El procedimiento de seis pasos de [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md). Se lee y se sigue | **Está mal ubicado** |
+| [`plantillas/retrodocumentacion.md`](../../base/13-documentacion/retrodocumentacion.md) | El procedimiento de seis pasos de [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md). Se lee y se sigue | **Está mal ubicado** |
 
 ## Qué falta
 

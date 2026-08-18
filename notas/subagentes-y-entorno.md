@@ -19,7 +19,7 @@
 
 ## Lo que todavía falta (construir, no capacidad)
 
-- **Cablear los 7 roles** a sub-agentes: cada rol (explorer, proposer, spec writer, designer, task planner, implementer, verifier) definido con su foco = su subconjunto de reglas base.
+- **Cablear los 7 roles** a sub-agentes: cada rol (explorer, proposer, especificación writer, designer, task planner, implementer, verifier) definido con su foco = su subconjunto de reglas base.
 - **El orquestador** que los llama en orden, controla cada **puerta/checkpoint** y persiste el estado (checkpointing).
 - El **grafo de dependencias** que el orquestador usa para ordenar/paralelizar tareas.
 

@@ -258,6 +258,16 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Y una decisión que se dejó a la vista en vez de esconderla:** el `·` de `09 · Control de versiones` y de los títulos de fase **se cuenta como marca**, porque el anexo llama marca a adornar títulos con él. Si el estándar quiere conservar esa forma, se escribe la excepción; no se hace un descuento callado en el programa.
 
+### H-23 · Los trece roles en inglés, en español
+
+Cerrado el [pendiente 21](../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md), v23.8.0. **211 apariciones en 39 archivos**, y cuatro archivos renombrados —`02·F2`, `13·DOC3`, `13·DOC6` y la plantilla de especificación— con sus citas arrastradas.
+
+**Lo que costó no fue traducir: fue el orden.** Primero el texto, después los nombres de archivo, y al final las referencias que `mover` no resuelve porque llevan el marcador `«RUTA-ESTANDAR»` — esas quedaron rotas hasta que se arreglaron a mano.
+
+**`00·ID6` se reselló**: editar el texto de una regla anula su checklist, aunque el cambio sea de idioma.
+
+**Queda la carpeta `skills/generar-spec-modulo/` a propósito.** El nombre de una skill es cómo se la invoca: renombrarla cambia comportamiento, no solo texto.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

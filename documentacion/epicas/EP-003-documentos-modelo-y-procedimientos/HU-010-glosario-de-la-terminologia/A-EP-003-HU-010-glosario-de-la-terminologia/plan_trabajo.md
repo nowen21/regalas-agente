@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-14 |
 | **Rama** | `main`, la que está abierta. Si el usuario prefiere rama aparte, se abre `feature/A-EP-003-HU-010-glosario-de-la-terminologia` antes de T-01 |
 
-**Origen:** funcionalidad nueva. Nace del hallazgo H-8 del 2026-08-14, [historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md](../../../../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md), y su pendiente es el [pendientes/21-el-glosario-y-los-terminos-en-ingles.md](../../../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md).
+**Origen:** funcionalidad nueva. Nace del hallazgo H-8 del 2026-08-14, [historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md](../../../../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md), y su pendiente es el [pendientes/hecho/los-nombres-de-rol-en-espanol.md](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md).
 
 **Por qué una sola fase para los tres criterios.** Los tres se validan sobre el mismo documento, el glosario, y ninguno se puede probar sin él. Partirlos daría fases que existen solo para cumplir la nomenclatura, que es lo que prohíbe `02·F12.10`.
 

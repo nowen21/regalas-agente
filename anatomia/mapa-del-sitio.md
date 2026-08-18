@@ -74,7 +74,7 @@ agente/
 │   ├── planes/
 │   │   ├── trabajo.md ................ plan de trabajo (las 13 preguntas)
 │   │   └── pruebas.md
-│   ├── plantilla-spec-modulo.md · catalogo-modulos.md · mapa-dependencias.md
+│   ├── plantilla-especificacion-modulo.md · catalogo-modulos.md · mapa-dependencias.md
 │   ├── ADR.md ........................ decisión de arquitectura
 │   ├── stack.md · dominio.md · mapeo-nombres.md · marco-normativo.md
 │   ├── reglas-proyecto.md ............ reglas propias del proyecto

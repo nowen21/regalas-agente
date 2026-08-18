@@ -346,7 +346,7 @@ Para aprobar hay tres documentos: la especificación, el [plan de trabajo](docum
 **Agente** — 2026-08-14 17:57:22
 <!-- agente: c4b4ce39-da3f-4a31-82f4-54abf4e7f092 -->
 
-No. La plantilla es [plantillas/plantilla-spec-modulo.md](plantillas/plantilla-spec-modulo.md).
+No. La plantilla es [plantillas/plantilla-especificacion-modulo.md](plantillas/plantilla-especificacion-modulo.md).
 
 [documentacion/documentos-modelo/spec.md](documentacion/documentos-modelo/spec.md) es el documento ya llenado con ella, para este módulo.
 
@@ -582,7 +582,7 @@ Lo que falta de verdad:
 | `planes/pruebas.md` | 37 |
 | `planes/trabajo.md` | 33 |
 | `funcionalidad-implementada.md` | 22 |
-| `plantilla-spec-modulo.md` | 13 |
+| `plantilla-especificacion-modulo.md` | 13 |
 | `cierre-analisis.md` | 4 |
 | `planes/resultados.md` | 3 |
 | `senales.md`, `proyectos.md`, `estado-fase.md`, `catalogo-modulos.md` | 1 cada uno |
@@ -1969,7 +1969,7 @@ De los cuatro archivos, **tres no están fuera de sitio**:
 - `historico-chat.md` y `memoria.md` los lee [validadores/instalar.py:307](validadores/instalar.py#L307) para **generar** el archivo que va en cada proyecto. No los llena una persona, los llena un programa: que no tengan `«…»` es correcto.
 - `prompts/prompt-base-usuario.md` ya está separado en su subcarpeta.
 
-El único que sí está mal ubicado es **`retrodocumentacion.md`**: es el procedimiento de seis pasos de [`13·DOC6`](base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md), y su sitio es al lado de esa regla, como ya está [`render-local-de-md.md`](base/13-documentacion/render-local-de-md.md).
+El único que sí está mal ubicado es **`retrodocumentacion.md`**: es el procedimiento de seis pasos de [`13·DOC6`](base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md), y su sitio es al lado de esa regla, como ya está [`render-local-de-md.md`](base/13-documentacion/render-local-de-md.md).
 
 Entonces lo recomendable: mover ese uno, y escribir en el índice de `plantillas/` que ahí viven dos cosas, los modelos que se llenan a mano y las fuentes que usa el instalador.
 

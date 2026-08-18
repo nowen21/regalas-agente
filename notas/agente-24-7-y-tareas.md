@@ -15,12 +15,12 @@
 
 El estándar está hecho para **humano-en-el-medio**: el núcleo (`00`) exige OK para commits, push, tocar datos reales. Eso choca con "24/7 totalmente solo". Dos caminos:
 
-- **Semi-autónomo (recomendado):** trabaja solo hasta una **puerta de aprobación** (spec, plan, commit) y ahí **pausa y espera**. Siempre disponible, avanza en lo seguro, no cruza lo riesgoso sin el usuario. Mantiene la seguridad. El **orquestador** ya sabe pausar en las puertas.
+- **Semi-autónomo (recomendado):** trabaja solo hasta una **puerta de aprobación** (especificación, plan, commit) y ahí **pausa y espera**. Siempre disponible, avanza en lo seguro, no cruza lo riesgoso sin el usuario. Mantiene la seguridad. El **orquestador** ya sabe pausar en las puertas.
 - **Autónomo total:** se relajan esas puertas para que no pare. Gana autonomía, **pierde la red de seguridad** (commits/cambios sin revisión). Riesgoso y contra el diseño.
 
 ## Qué dejar solo vs qué no
 
-- ✅ **Seguro sin supervisión (solo lectura):** correr pruebas y reportar, análisis/diagnóstico, generar borradores de spec, buscar en la memoria.
+- ✅ **Seguro sin supervisión (solo lectura):** correr pruebas y reportar, análisis/diagnóstico, generar borradores de especificación, buscar en la memoria.
 - ⚠️ **Necesita OK:** escribir código, migraciones, commits, push, tocar datos.
 
 ## Costo

@@ -2,7 +2,7 @@
 
 ## DOC3 · Verifica la trazabilidad especificación → implementación antes de cerrar
 
-Antes de cerrar, revisa ítem por ítem que cada afirmación técnica de la especificación ([`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)) esté en el código, el esquema, las pruebas y los docs (depende de [`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)). Lo faltante se corrige o se justifica; no se cierra con huecos sin explicar. El formato de la tabla lo fija [`DOC11`](DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md).
+Antes de cerrar, revisa ítem por ítem que cada afirmación técnica de la especificación ([`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)) esté en el código, el esquema, las pruebas y los docs (depende de [`02·F2`](../../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)). Lo faltante se corrige o se justifica; no se cierra con huecos sin explicar. El formato de la tabla lo fija [`DOC11`](DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md).
 
 ```
 INCORRECTO: "pruebas verdes → cierro"

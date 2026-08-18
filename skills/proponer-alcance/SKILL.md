@@ -1,11 +1,11 @@
 ---
 name: proponer-alcance
-description: Traduce una solicitud del usuario en un alcance concreto (qué se va a hacer y qué NO) antes de especificar o diseñar. Úsala cuando llega un pedido amplio o ambiguo y hay que acordar el alcance, o cuando el usuario dice "quiero X" y no está claro el borde. Es el rol Proposer. Propone, no decide ni escribe código.
+description: Traduce una solicitud del usuario en un alcance concreto (qué se va a hacer y qué NO) antes de especificar o diseñar. Úsala cuando llega un pedido amplio o ambiguo y hay que acordar el alcance, o cuando el usuario dice "quiero X" y no está claro el borde. Es el rol Proponente. Propone, no decide ni escribe código.
 ---
 
-# Proponer alcance (rol Proposer)
+# Proponer alcance (rol Proponente)
 
-Convierte una solicitud en un **alcance acordado**: qué se construye y qué queda fuera. **Propone, no decide** (`01`·C4): las opciones las elige el usuario. No escribe spec ni código; es el paso previo a la spec.
+Convierte una solicitud en un **alcance acordado**: qué se construye y qué queda fuera. **Propone, no decide** (`01`·C4): las opciones las elige el usuario. No escribe especificación ni código; es el paso previo a la especificación.
 
 ## Procedimiento (en orden)
 
@@ -19,6 +19,6 @@ Convierte una solicitud en un **alcance acordado**: qué se construye y qué que
 
 ## Salida
 
-Una propuesta de alcance corta: dentro / fuera / opciones a decidir / dependencias. Aprobado el alcance, pasa al Spec Writer (`generar-spec-modulo`). No redactar la spec ni tocar código desde aquí.
+Una propuesta de alcance corta: dentro / fuera / opciones a decidir / dependencias. Aprobado el alcance, pasa al Escritor de especificación (`generar-spec-modulo`). No redactar la especificación ni tocar código desde aquí.
 
-Ver: `01`·C4 (proponer, no decidir), `01`·C7 (ambigüedad → opciones), `02`·F1 (contexto). Alimenta al Spec Writer.
+Ver: `01`·C4 (proponer, no decidir), `01`·C7 (ambigüedad → opciones), `02`·F1 (contexto). Alimenta al Escritor de especificación.

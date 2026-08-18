@@ -14,17 +14,17 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 |---|---|
 | [`DOC1`](reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md) | Al cerrar, el plan, las pruebas y el resultado quedan en documentación versionada. |
 | [`DOC2`](reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) | Lo que el código no dice —por qué X y no Y— se escribe. |
-| [`DOC3`](reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) | Cada afirmación de la especificación se verifica contra lo construido antes de cerrar. |
+| [`DOC3`](reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) | Cada afirmación de la especificación se verifica contra lo construido antes de cerrar. |
 | [`DOC4`](reglas/DOC4-documenta-lo-que-produccion-necesita.md) | Los pasos de despliegue se documentan ejecutables, sin volver al código. |
 | [`DOC5`](reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) | *opt-in* · lo que no se puede recuperar del código se registra como señal. |
-| [`DOC11`](reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md) | La trazabilidad de [`DOC3`](reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) se escribe en una tabla de cinco columnas. |
+| [`DOC11`](reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md) | La trazabilidad de [`DOC3`](reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) se escribe en una tabla de cinco columnas. |
 | [`DOC14`](reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) | Todo enlace entre `.md` lleva ruta legible como texto y destino relativo. |
 
 **(b) Artefactos del proceso y sus índices vivos**
 
 | Regla | Qué exige |
 |---|---|
-| [`DOC6`](reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) | Un módulo productivo sin especificación se retro-documenta antes de intervenirlo. |
+| [`DOC6`](reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) | Un módulo productivo sin especificación se retro-documenta antes de intervenirlo. |
 | [`DOC7`](reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md) | Si A consume a B, los dos lo registran. |
 | [`DOC8`](reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) | Todo análisis termina en un archivo de cierre con qué se decidió. |
 | [`DOC9`](reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) | Antes de planificar se consulta el mapa, no se explora de cero. |
@@ -48,4 +48,4 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 
 ---
 
-Ver: [`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) y [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) (contexto y especificación, de donde sale lo que aquí se persiste), [`08`](../08-pruebas.md) (plan de pruebas y verificaciones manuales), [`07·Q5`](../07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué) (documentar, no solo comentar), [`11·CFG3`](../11-configuracion-entornos.md#cfg3--paridad-entre-entornos).
+Ver: [`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) y [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) (contexto y especificación, de donde sale lo que aquí se persiste), [`08`](../08-pruebas.md) (plan de pruebas y verificaciones manuales), [`07·Q5`](../07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué) (documentar, no solo comentar), [`11·CFG3`](../11-configuracion-entornos.md#cfg3--paridad-entre-entornos).

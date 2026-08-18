@@ -2,7 +2,7 @@
 
 ## F4 · Todo plan lleva su plan de pruebas y su aprobación explícita
 
-Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** al usuario y **no se toca código hasta un OK explícito** suyo ([`01·C17`](../../01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación)). Autorizar el inicio de una fase ("arranque con X") **no** aprueba el plan detallado: son dos autorizaciones distintas. Si no existe la HU con sus CA que respalde el plan, **PAUSAR y retroceder** al eslabón que falta (depende de [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](F2-sin-spec-acordada-no-hay-codigo.md)).
+Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** al usuario y **no se toca código hasta un OK explícito** suyo ([`01·C17`](../../01-conducta.md#c17--confirma-tu-entendimiento-antes-de-ejecutar--solo-palabra-afirmativa-del-usuario-cuenta-como-aprobación)). Autorizar el inicio de una fase ("arranque con X") **no** aprueba el plan detallado: son dos autorizaciones distintas. Si no existe la HU con sus CA que respalde el plan, **PAUSAR y retroceder** al eslabón que falta (depende de [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](F2-sin-especificacion-acordada-no-hay-codigo.md)).
 
 **Excepción** — un cambio que no amerita prueba (visual o trivial) se entrega sin plan de pruebas si el plan lo **declara** ("Sin pruebas — cambio visual") (condición). No exime de la aprobación explícita ni cubre cambios con lógica, que siempre llevan prueba ([`08·T1`](../../08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba)) (límite). Lo acepta el usuario al aprobar el plan (autoriza).
 

@@ -38,7 +38,7 @@ base/02-flujo-de-trabajo/
 └── reglas/
     ├── F0-la-secuencia-completa-de-la-necesidad-al-cierre.md
     ├── F1-carga-el-contexto-antes-de-actuar.md
-    ├── F2-sin-spec-acordada-no-hay-codigo.md
+    ├── F2-sin-especificacion-acordada-no-hay-codigo.md
     ├── F3-plan-aprobado-ejecucion-continua.md
     ├── F4/
     │   ├── base.md                  F4 + tabla de sus cinco partes
@@ -93,7 +93,7 @@ base/02-flujo-de-trabajo/
 └── reglas/
     ├── F0-la-secuencia-completa-de-la-necesidad-al-cierre.md
     ├── F1-carga-el-contexto-antes-de-actuar.md
-    ├── F2-sin-spec-acordada-no-hay-codigo.md
+    ├── F2-sin-especificacion-acordada-no-hay-codigo.md
     ├── F3-plan-aprobado-ejecucion-continua.md
     ├── F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md
     ├── F4.1-preguntas-que-todo-plan-de-trabajo-debe-responder.md

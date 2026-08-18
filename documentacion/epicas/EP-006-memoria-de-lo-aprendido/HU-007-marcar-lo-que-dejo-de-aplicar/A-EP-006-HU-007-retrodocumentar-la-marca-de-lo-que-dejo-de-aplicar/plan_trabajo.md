@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)). Está construido y salió del pendiente [02](../../../../../pendientes/hecho/vigencia-y-poda-de-memoria.md), ya cerrado: el esquema tiene cinco estados —activa, reemplazada, revertida, archivada y cerrada—, con la regla escrita de que **ninguna se borra**, y los subcomandos para reemplazar, revisar, archivar y cerrar. Sale de la fila de HU-007 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📄 **Retro-documentación** ([`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)). Está construido y salió del pendiente [02](../../../../../pendientes/hecho/vigencia-y-poda-de-memoria.md), ya cerrado: el esquema tiene cinco estados —activa, reemplazada, revertida, archivada y cerrada—, con la regla escrita de que **ninguna se borra**, y los subcomandos para reemplazar, revisar, archivar y cerrar. Sale de la fila de HU-007 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -155,7 +155,7 @@ No aplica: no se toca nada de lo que corre. Sin subida de versión.
 
 ## 9. Reglas del estándar aplicadas  ·  `F14` Q13
 
-[`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`08·T1`](../../../../../base/08-pruebas.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`15`](../../../../../base/15-registros-inmutables.md), [`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md).
+[`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`08·T1`](../../../../../base/08-pruebas.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`15`](../../../../../base/15-registros-inmutables.md), [`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md).
 
 ---
 

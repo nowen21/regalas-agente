@@ -28,7 +28,7 @@ El orden de la cadena lo fija [`02·F0`](02-flujo-de-trabajo/reglas/F0-recorre-l
 | **Commit** | Lo guardado queda en firme en el historial | La acción de guardar en el historial un paquete de cambios, con un solo propósito y su explicación | Agente, y el usuario lo autoriza | El historial del repositorio | [`09·G1`](09-git.md#g1--commits-atómicos-un-solo-propósito), [`09·G7`](09-git.md#g7--todo-commit-se-muestra-al-usuario-y-se-aprueba-antes-de-ejecutarlo) |
 | **Criterio de aceptación (CA)** | — | La frase que dice cuándo algo se puede dar por hecho, escrita para poder comprobarla | Agente, en la historia de usuario | Dentro de la HU | [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) |
 | **Épica** | Del relato largo: junta muchas historias | El grupo de historias de usuario parecidas que se trabajan como un solo bloque | Agente | `documentacion/epicas/EP-NNN-<slug>/epica.md` | [`13·DOC16`](13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) |
-| **Especificación** | — | El documento que dice qué debe hacer un módulo, acordado antes de programarlo | Agente, y el usuario lo aprueba | Donde lo diga la capa de proyecto | [`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) |
+| **Especificación** | — | El documento que dice qué debe hacer un módulo, acordado antes de programarlo | Agente, y el usuario lo aprueba | Donde lo diga la capa de proyecto | [`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
 | **Estación** | Como las de una línea de ensamble: el trabajo va pasando por cada una | Cada uno de los trece puestos por los que pasa una fase, del análisis a la publicación | Nadie: es el recorrido | Se anota en el estado de fase | [`02·F15`](02-flujo-de-trabajo/reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
 | **Estado de fase** | — | El documento que dice en qué estación va la fase hoy y qué la tiene detenida | Agente, y la actualiza mientras trabaja | `estado-fase.md` de la fase | [`02·F12.13`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) |
 | **Fase** | — | El pedazo de trabajo que se hace de principio a fin, con su plan, sus pruebas y su cierre | Agente | `documentacion/epicas/EP-NNN-<slug>/HU-NNN-<slug>/<letra>-EP-NNN-HU-NNN-<slug>/` | [`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) |
@@ -91,11 +91,11 @@ Los programas que revisan que las reglas se cumplan, y las pruebas del trabajo.
 | **Checklist de despliegue** | La lista de chequeo que se va marcando antes de sacar el sistema a andar | La lista de lo que hay que revisar antes y después de sacar el sistema a andar | Agente | Junto al despliegue del proyecto | [`18·DP6`](18-despliegue-e-infraestructura.md#dp6--checklist-de-despliegue) |
 | **Caso de prueba** | — | El escenario concreto que se prueba, con sus pasos y lo que se espera de cada uno | Agente, en el plan de pruebas | §6 del plan de pruebas | [`08·T7`](08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos) |
 | **Enganche** | Traduce el inglés hook: el programa queda enganchado a un momento y se dispara solo | El programa que se dispara solo en un momento dado, sin que nadie se acuerde de llamarlo | Agente | `validadores/hook_*.py` | [`20·M9`](20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md) |
-| **Evidencia** | — | La prueba de que algo quedó hecho. Sin ella no se puede decir que está hecho | Agente | §5 del plan de trabajo, y el resultado de pruebas | [`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) |
+| **Evidencia** | — | La prueba de que algo quedó hecho. Sin ella no se puede decir que está hecho | Agente | §5 del plan de trabajo, y el resultado de pruebas | [`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) |
 | **Instalador** | — | El programa que deja el estándar puesto en un proyecto y su estructura creada | Agente | `validadores/instalar.py` | [`02·F13`](02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) |
 | **Matriz de dependencias del refactor** | Refactor es reacomodar el código sin cambiarle lo que hace | La tabla de qué se rompe cuando un archivo cambia lo que promete, y dónde se rompe | Agente, antes de escribir el plan | §2.2 del plan de trabajo | [`02·F17`](02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) |
 | **Suite** | Las pruebas que van juntas | El conjunto de pruebas que se corren juntas, normalmente las de un módulo | Agente | Donde el proyecto guarde sus pruebas | [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) |
-| **Trazabilidad** | De trazar: se le puede seguir el rastro a cada cosa pedida | La posibilidad de seguirle el rastro a cada cosa pedida hasta la cosa hecha, sin que se pierda ninguna | Agente, al cerrar | Tabla de cinco columnas del cierre | [`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md), [`13·DOC11`](13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md) |
+| **Trazabilidad** | De trazar: se le puede seguir el rastro a cada cosa pedida | La posibilidad de seguirle el rastro a cada cosa pedida hasta la cosa hecha, sin que se pierda ninguna | Agente, al cerrar | Tabla de cinco columnas del cierre | [`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md), [`13·DOC11`](13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md) |
 | **Triangulación** | De la topografía: un punto se ubica mirándolo desde dos lados | La técnica de sacar el resultado esperado de una prueba por dos caminos distintos, en vez de adivinarlo | Agente, al armar las pruebas | El plan de pruebas | [`08·T7`](08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos) |
 | **Validador** | — | Un programa corto que revisa una regla y dice si se cumple o no | Agente | `validadores/` | [`20·M9`](20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md) |
 
@@ -121,7 +121,7 @@ La memoria escrita: lo que no se recupera leyendo el código.
 | **Pendiente** | — | El documento donde queda escrita una mejora ya acordada que todavía no se hizo | Agente | `pendientes/` | [`20·M13`](20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) |
 | **Postmortem** | En latín quiere decir después de la muerte: se escribe cuando la cosa ya falló | El documento que se escribe después de que algo falló: qué pasó y qué se cambia | Agente | Donde el proyecto guarde sus incidentes | [`19·OB5`](19-observabilidad-y-operacion.md#ob5--postmortem-sin-culpa) |
 | **Resumen de sesión** | — | El documento donde queda lo que dejó una sesión: cada hallazgo con qué pasó y con qué se retoma | Agente, mientras aparece cada hallazgo | `historico-chat/resumenes/AAAA-MM-DD/` | [`13·DOC22`](13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) |
-| **Retrodocumentación** | Retro es hacia atrás: se documenta después de construido | La acción de escribirle la especificación a un módulo que ya está funcionando y nunca la tuvo | Agente | Donde vivan las especificaciones del proyecto | [`13·DOC6`](13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) |
+| **Retrodocumentación** | Retro es hacia atrás: se documenta después de construido | La acción de escribirle la especificación a un módulo que ya está funcionando y nunca la tuvo | Agente | Donde vivan las especificaciones del proyecto | [`13·DOC6`](13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) |
 | **Stack** | Las tecnologías apiladas una sobre otra | El conjunto de tecnologías con que está hecho el proyecto, y dónde vive su código | Usuario del proyecto | `.agente/stack.md` | [`02·F13`](02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) |
 | **Señal** | Como una señal de tránsito: avisa algo que de otro modo no se ve | El apunte de algo que se aprendió y que el código no cuenta: por qué se decidió así, o dónde está la trampa | Agente, al cerrar la unidad | `documentacion/senales.md` y la memoria buscable | [`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) |
 
@@ -148,23 +148,16 @@ La memoria escrita: lo que no se recupera leyendo el código.
 | **postmortem** | Lo que se escribe después de un incidente | Viene del latín y se usa igual en medicina y en ingeniería |
 | **JSON**, **SQLite**, **FTS5**, **Gherkin**, **INVEST** | Nombres de formatos, programas y métodos | Son nombres propios. No se traducen |
 
-### Falta traducirlos
+### Traducidos el 2026-08-18
 
-Tienen traducción usada en español y siguen en inglés. **Cambiarlos es trabajo aparte**, con su propia historia de usuario: tocan los archivos de abajo y rompen las citas que los nombran. Esta tabla es el inventario, no la orden.
+Los trece nombres de rol y la palabra «spec» pasaron al español en `base/`, `plantillas/`, `skills/` y `notas/`: 211 apariciones en 39 archivos. Cuatro archivos se renombraron, con sus citas arrastradas.
 
-| Término | Cómo se diría | Dónde está hoy |
-|---|---|---|
-| **Explorer** | Explorador | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `notas/roles-especializados.md` |
-| **Proposer** | Proponente | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `skills/proponer-alcance/SKILL.md` |
-| **Épica Writer** y **HU Writer** | Quien escribe la épica, quien escribe la historia | `plantillas/estado-fase.md` |
-| **Spec Writer** | Quien escribe la especificación | `plantillas/estado-fase.md`, `skills/generar-spec-modulo/SKILL.md` |
-| **Designer** | Diseñador | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `skills/disenar-arquitectura/SKILL.md` |
-| **Task Planner** | Planificador de tareas | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `skills/planificar-tareas/SKILL.md` |
-| **Implementer** | Quien implementa | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `skills/implementar/SKILL.md` |
-| **Verifier** | Verificador | [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md), `plantillas/estado-fase.md`, `skills/cerrar-fase/SKILL.md` |
-| **Reviewer** | Revisor. El estándar ya lo llama Crítico en la mayoría de los sitios | `skills/revisar-critico/SKILL.md`, `notas/roles-especializados.md` |
-| **Orchestrator** | Orquestador. [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md) ya lo dice en español; las skills no | `skills/sdd-orchestrator/SKILL.md`, `notas/roles-especializados.md` |
-| **Researcher** | Investigador | `notas/roles-especializados.md` |
-| **spec** | Especificación. Se tradujo en el texto de las reglas el 2026-08-14, pero quedó en las descripciones de las skills y en nombres de archivo | `skills/*/SKILL.md`, `plantillas/plantilla-spec-modulo.md`, `documentacion/*/spec.md` |
+| Antes | Ahora |
+|---|---|
+| Explorer · Proposer · Designer | Explorador · Proponente · Diseñador |
+| Épica Writer · HU Writer · Spec Writer | Escritor de épica · de historia · de especificación |
+| Task Planner · Implementer · Verifier | Planificador de tareas · Implementador · Verificador |
+| Reviewer · Orchestrator · Researcher | Crítico · Orquestador · Investigador |
+| spec | especificación |
 
-**Cuántos archivos toca:** trece nombres en diez archivos entre [`base/README.md`](README.md), `plantillas/`, `skills/` y `notas/`, más los nombres de archivo que llevan `spec`. Renombrar un archivo rompe todo enlace que apunte a él, así que el cambio se hace de una vez y con su plan, no de a poco.
+**Queda uno, y es a propósito:** la carpeta `skills/generar-spec-modulo/`. El nombre de una skill es cómo se la invoca, así que renombrarla cambia comportamiento y no solo texto. Va aparte.

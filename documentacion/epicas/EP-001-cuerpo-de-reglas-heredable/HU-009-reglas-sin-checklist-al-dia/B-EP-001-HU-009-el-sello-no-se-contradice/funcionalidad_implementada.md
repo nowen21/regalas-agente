@@ -67,4 +67,4 @@
 
 Corregir primero los cinco y escribirla después la habría estrenado sobre un cuerpo ya limpio: **cero hallazgos, y ninguna forma de saber si sirve.** Escribiéndola antes, los cinco los encontró ella — y el falso positivo también.
 
-Es lo mismo que [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) pide un nivel más arriba: primero se dice qué se exige, después se arregla.
+Es lo mismo que [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) pide un nivel más arriba: primero se dice qué se exige, después se arregla.

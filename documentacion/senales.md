@@ -35,7 +35,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 ## S-003 · `F2` está escrita para construir software, no para escribir reglas  ·  pregunta-abierta · activa
 - **What:** dos fases seguidas se abrieron declarando que no tienen especificación aparte, porque su entregable es texto normativo o programas cortos.
 - **Why:** `F2` da por hecho que lo que se construye es código de un módulo. Cuando el entregable es el propio texto, una especificación aparte diría lo mismo dos veces.
-- **Where:** [base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md).
+- **Where:** [base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md](../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md).
 - **Learned:** una regla que se incumple dos veces seguidas con buenos motivos necesita decir cuándo no aplica, o se vuelve costumbre incumplirla.
 - **When/Who:** 2026-08-14 · agente.
 - **Scope:** estándar.

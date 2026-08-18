@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion` |
-| **Módulo** | Cuerpo de reglas — [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) |
+| **Módulo** | Cuerpo de reglas — [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
 | **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-010](../HU-010-cuando-no-aplica-la-especificacion.md) · ✨ funcionalidad nueva, bajada del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) por [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Fila de HU-010 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 

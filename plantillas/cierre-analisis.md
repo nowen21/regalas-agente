@@ -1,6 +1,6 @@
 # Cierre de análisis — «módulo» «tema»   ·   `[CAPA 3]`
 
-> Consolida un análisis persistido ([`13·DOC8`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)): qué se preguntó, qué se decidió, qué quedó. Se crea al terminar un análisis (`analisis/<...>.md` de [`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) · exploraciones · auditorías). Ruta canónica: `analisis/<modulo>-YYYY-MM-DD-cierre.md`. Reemplaza los `«…»` y borra esta caja.
+> Consolida un análisis persistido ([`13·DOC8`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)): qué se preguntó, qué se decidió, qué quedó. Se crea al terminar un análisis (`analisis/<...>.md` de [`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) · exploraciones · auditorías). Ruta canónica: `analisis/<modulo>-YYYY-MM-DD-cierre.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---
 

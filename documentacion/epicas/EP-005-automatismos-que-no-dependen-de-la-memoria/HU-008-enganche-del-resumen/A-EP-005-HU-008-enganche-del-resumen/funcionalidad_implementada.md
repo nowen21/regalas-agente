@@ -125,7 +125,7 @@ Es la primera fase de la sesión que no necesitó ampliar el plan. La diferencia
 | Descripción | Origen | Destino |
 |---|---|---|
 | El aviso mira si la sección de cierre está llena, no si el tema cerró de verdad | Diferido por el plan | La pregunta viva de H-4: con qué señal se sabe que un tema cerró |
-| Los siete enganches viejos siguen sin especificación de módulo | Diferido por el plan | [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) pide retro-documentarlos |
+| Los siete enganches viejos siguen sin especificación de módulo | Diferido por el plan | [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) pide retro-documentarlos |
 | La suite queda con una falla que no es de esta fase | Cambio del entorno | La regla `G9` que otra sesión está escribiendo en `base/09-git.md` |
 
 ---

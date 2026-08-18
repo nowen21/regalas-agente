@@ -12,7 +12,7 @@
 | **Épica** | [EP-007 Instalación y actualización](../../epica.md) |
 | **HU** | [HU-001 — Instalar con una línea](../HU-001-instalar-con-una-linea.md) — **una sola** (`F12.1`) |
 | **Módulo** | Instalación (`validadores/instalar.py`) |
-| **Especificación del módulo** | No existe todavía. Esta fase **no la escribe**: se declara como deuda en §10 y se agenda aparte, porque escribirla es trabajo de otra unidad ([`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)) |
+| **Especificación del módulo** | No existe todavía. Esta fase **no la escribe**: se declara como deuda en §10 y se agenda aparte, porque escribirla es trabajo de otra unidad ([`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)) |
 | **Fecha apertura** | 2026-08-16 |
 | **Rama** | `main` — el repositorio del estándar trabaja sobre la principal |
 

@@ -1,9 +1,9 @@
 ---
 name: cerrar-fase
-description: Valida una unidad de trabajo (fase/módulo/tarea) antes de darla por terminada. Corre las pruebas, verifica la triangulación de los cálculos, revisa la calidad y comprueba la trazabilidad spec → implementación ítem por ítem. Úsala cuando se vaya a declarar algo "listo/terminado/cerrado", cuando el usuario pregunte "¿ya está?" o "¿lo cerramos?", o antes del commit final de una fase. Es el rol Verifier.
+description: Valida una unidad de trabajo (fase/módulo/tarea) antes de darla por terminada. Corre las pruebas, verifica la triangulación de los cálculos, revisa la calidad y comprueba la trazabilidad especificación → implementación ítem por ítem. Úsala cuando se vaya a declarar algo "listo/terminado/cerrado", cuando el usuario pregunte "¿ya está?" o "¿lo cerramos?", o antes del commit final de una fase. Es el rol Verificador.
 ---
 
-# Cerrar fase (rol Verifier)
+# Cerrar fase (rol Verificador)
 
 Valida antes de cerrar. No cierra nada con pruebas en rojo ni con trazabilidad incompleta. No arregla en silencio: si encuentra un hueco, lo reporta para corregirlo. Respeta el núcleo (`00`): no silencia pruebas (`N3`), no hace commit/push por su cuenta (`N2`).
 
@@ -15,7 +15,7 @@ Valida antes de cerrar. No cierra nada con pruebas en rojo ni con trazabilidad i
 - Verificar que ninguna prueba esté silenciada, saltada o borrada para pasar (`00`·N3).
 
 ### 2. Triangulación — que los cálculos sean correctos
-- Para la lógica de negocio y los cálculos, confirmar que el **resultado esperado** de las pruebas salió de **fuentes independientes** (spec, cálculo manual, propiedad invariante), **no del propio código** (`08`·T7).
+- Para la lógica de negocio y los cálculos, confirmar que el **resultado esperado** de las pruebas salió de **fuentes independientes** (especificación, cálculo manual, propiedad invariante), **no del propio código** (`08`·T7).
 - Confirmar que se cubrieron los **corner cases** de la matriz (skill `generar-casos-prueba`): frontera, clases de equivalencia, casos inválidos.
 
 ### 3. Calidad
@@ -23,13 +23,13 @@ Valida antes de cerrar. No cierra nada con pruebas en rojo ni con trazabilidad i
 - Sin cambios fuera del alcance de la unidad (`01`·C3).
 - Reglas base que aplican al ámbito con evidencia (seguridad `04`, datos `03`, etc.).
 
-### 4. Trazabilidad spec → implementación (el corazón)
-- Re-leer la **spec** y extraer **cada afirmación técnica concreta** ("hay un método X", "el selector filtra por Y", "existe el permiso Z").
+### 4. Trazabilidad especificación → implementación (el corazón)
+- Re-leer la **especificación** y extraer **cada afirmación técnica concreta** ("hay un método X", "el selector filtra por Y", "existe el permiso Z").
 - Por cada afirmación, verificar en el código/esquema/pruebas/docs que **realmente existe**, y armar la tabla (`13`·DOC3):
 
-| Ítem de la spec | Categoría | Ubicación | Estado | Evidencia |
+| Ítem de la especificación | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase de la spec) | (modelo/servicio/vista/prueba/permiso/ruta/doc) | (archivo real) | ✅ / ❌ / N/A / ⚠️ | (enlace `archivo:línea` o prueba) |
+| (frase de la especificación) | (modelo/servicio/vista/prueba/permiso/ruta/doc) | (archivo real) | ✅ / ❌ / N/A / ⚠️ | (enlace `archivo:línea` o prueba) |
 
 - **No cerrar** si hay ítems `❌` sin justificar. Los `N/A` y `⚠️` llevan justificación.
 - Si aparece un `❌`, es un **hueco**: se corrige **en su lugar** (no se abre unidad nueva) y se vuelve a verificar.

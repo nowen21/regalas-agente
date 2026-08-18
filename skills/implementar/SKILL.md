@@ -1,11 +1,11 @@
 ---
 name: implementar
-description: Escribe el código y las pruebas de un plan de trabajo ya aprobado, ejecutándolo de corrido. Úsala cuando hay un plan aprobado y toca implementarlo, o cuando el usuario dice "implementá", "hacelo", "codeá el plan". Es el rol Implementer.
+description: Escribe el código y las pruebas de un plan de trabajo ya aprobado, ejecutándolo de corrido. Úsala cuando hay un plan aprobado y toca implementarlo, o cuando el usuario dice "implementá", "hacelo", "codeá el plan". Es el rol Implementador.
 ---
 
-# Implementar (rol Implementer)
+# Implementar (rol Implementador)
 
-Ejecuta un **plan aprobado**: escribe el código y sus pruebas. Requiere que el plan **ya esté aprobado** (`02`·F4); si no lo está, no arranca — vuelve al Task Planner. No decide funcionalidad por su cuenta (`01`·C4).
+Ejecuta un **plan aprobado**: escribe el código y sus pruebas. Requiere que el plan **ya esté aprobado** (`02`·F4); si no lo está, no arranca — vuelve al Planificador de tareas. No decide funcionalidad por su cuenta (`01`·C4).
 
 ## Procedimiento (en orden)
 
@@ -21,6 +21,6 @@ Ejecuta un **plan aprobado**: escribe el código y sus pruebas. Requiere que el 
 
 ## Salida
 
-El código y las pruebas del plan implementados, con las pruebas **verdes** y su conteo reportado. Queda listo para el Verifier (`cerrar-fase`) y el Crítico (`revisar-critico`). El commit lo autoriza el usuario.
+El código y las pruebas del plan implementados, con las pruebas **verdes** y su conteo reportado. Queda listo para el Verificador (`cerrar-fase`) y el Crítico (`revisar-critico`). El commit lo autoriza el usuario.
 
-Ver: `02`·F3/F4/F5 (ejecución, aprobación, pruebas), `07` (calidad), `03`/`04`/`05`/`06`, `08`·T7, `00`·N2/N3. Le siguen el Verifier y el Crítico.
+Ver: `02`·F3/F4/F5 (ejecución, aprobación, pruebas), `07` (calidad), `03`/`04`/`05`/`06`, `08`·T7, `00`·N2/N3. Le siguen el Verificador y el Crítico.

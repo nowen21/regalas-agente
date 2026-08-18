@@ -151,7 +151,7 @@ El detalle vive en el [documentacion/epicas/EP-003-documentos-modelo-y-procedimi
 - [x] Un documento con marcas sin reemplazar no se da por terminado, y se puede señalar cuáles.
 - [x] Una sección que no aplica se escribe `N/A`.
 - [x] Pruebas verdes, incluida la triangulación del recuento.
-- [x] Trazabilidad especificación → implementación sin faltantes ([`13·DOC3`](../../base/13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)).
+- [x] Trazabilidad especificación → implementación sin faltantes ([`13·DOC3`](../../base/13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md)).
 - [x] Entrada en `CHANGELOG.md` y subida de `VERSION` ([`20·M10`](../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 
 ## 12. Decisiones tomadas
@@ -159,7 +159,7 @@ El detalle vive en el [documentacion/epicas/EP-003-documentos-modelo-y-procedimi
 - **`2026-08-14` — la marca es `«…»`.** Ya se usa en 25 de 30 plantillas: elegir otra costaría cambiar 25 archivos en vez de 5. Las alternativas chocan con sintaxis que el propio documento usa: `[]` con los enlaces de markdown y las casillas, `<>` con las etiquetas y con los comandos, `{{}}` con los motores de plantillas.
 - **`2026-08-14` — la sintaxis de un comando no es un hueco.** La llena quien corre el comando, no quien usa el modelo. Contarla daría falsos positivos, y el riesgo de la épica es perder la confianza por eso.
 - **`2026-08-14` — una sección que no aplica se escribe `N/A`.** Decisión del usuario. Deja rastro de que la sección se leyó y no aplicaba, que es distinto de haberla saltado.
-- **`2026-08-14` — este módulo sí lleva especificación aparte.** Decisión del usuario. Cierra la duda que arrastraban las dos fases anteriores, que se habían abierto declarando que no la necesitaban: [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) se cumple, no lleva excepción.
+- **`2026-08-14` — este módulo sí lleva especificación aparte.** Decisión del usuario. Cierra la duda que arrastraban las dos fases anteriores, que se habían abierto declarando que no la necesitaban: [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) se cumple, no lleva excepción.
 - **`2026-08-14` — la regla va en el capítulo 13.** [`20·M13`](../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) manda enrutar a lo que ya existe, y la marca es cómo se escribe la documentación.
 
 ## 13. Trazabilidad (se completa al implementar)

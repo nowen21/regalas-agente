@@ -17,7 +17,7 @@
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Análisis del contexto | contexto entendido | Hecho. El contexto es el hallazgo H-8 y el [pendientes/21-el-glosario-y-los-terminos-en-ingles.md](../../../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md) |
+| 1 | Análisis del contexto | contexto entendido | Hecho. El contexto es el hallazgo H-8 y el [pendientes/hecho/los-nombres-de-rol-en-espanol.md](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) |
 | 2 | Alcance | alcance aprobado por el usuario | Escrito en la HU §3.3 y en el plan §1 |
 | 3 | Épica | épica aprobada por el usuario | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/epica.md](../../epica.md) ya existe |
 | 4 | Historias de usuario | historias aprobadas por el usuario | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md](../HU-010-glosario-de-la-terminologia.md) escrita el 2026-08-14 |

@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.8.0 — 2026-08-18
+
+**MENOR** — los nombres de rol y la palabra «spec» pasan al español. Un proyecto al día no tiene que hacer nada; lo que cambia es cómo se llaman las cosas en lo que hereda.
+
+[`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) pide que todo término con traducción usada se escriba en español. Quedaban trece nombres de rol y la palabra «spec»: **211 apariciones en 39 archivos**.
+
+| Antes | Ahora |
+|---|---|
+| Explorer · Proposer · Designer | Explorador · Proponente · Diseñador |
+| Épica Writer · HU Writer · Spec Writer | Escritor de épica · de historia · de especificación |
+| Task Planner · Implementer · Verifier | Planificador de tareas · Implementador · Verificador |
+| Reviewer · Orchestrator · Researcher | Crítico · Orquestador · Investigador |
+| spec | especificación |
+
+**Cuatro archivos cambiaron de nombre**, con sus citas arrastradas por `cerrar.mover`: `02·F2`, `13·DOC3`, `13·DOC6` y la plantilla de especificación de módulo. [`00·ID6`](base/00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md) se reselló, porque editar el texto de una regla anula su checklist.
+
+**Queda uno a propósito:** la carpeta `skills/generar-spec-modulo/`. El nombre de una skill es cómo se la invoca, así que renombrarla cambia comportamiento y no solo texto.
+
+---
+
 ## 23.7.5 — 2026-08-18
 
 **PARCHE** — diez reglas que solo sobraban de largo caben ahora en el molde. **Ninguna cambia lo que exige.**
@@ -472,7 +492,7 @@ La 22.0.0 fijó el molde; esta escribe el programa que lo mira. Se construyó en
 
 El §4 del modelo de especificación pedía `«Regla — por qué existe.»`: **el porqué, nunca el de dónde**. Una regla de negocio no se inventa en la especificación de un módulo —baja de un requisito, de una historia o de una decisión—, pero como nadie lo preguntaba, una regla con buena justificación y ninguna procedencia entraba sin resistencia. En `shopnest-mesa` una así bajó sola a una decisión, una fila de trazabilidad, dos escenarios de prueba y un criterio de aceptación; tardó un día en verse, y solo porque alguien preguntó de dónde salía. Se construyó en la fase [`A-EP-003-HU-004-el-origen-de-la-regla-de-negocio`](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/A-EP-003-HU-004-el-origen-de-la-regla-de-negocio/).
 
-- **El molde pasa a ser** `«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»`, en [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md).
+- **El molde pasa a ser** `«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»`, en [`plantillas/plantilla-especificacion-modulo.md`](plantillas/plantilla-especificacion-modulo.md).
 - **Se pide un identificador, no una frase.** «Lo pidió el cliente» no se puede seguir hasta ninguna parte.
 - **La regla sin procedencia no se escribe ahí:** se sube a la historia que corresponda y baja desde allá.
 
@@ -738,7 +758,7 @@ La definición de **brief** es literal del usuario y no se toca.
 - **Se alcanza desde las tres puertas de entrada**: [`README.md`](README.md), [`base/README.md`](base/README.md) y [`anatomia/mapa-del-sitio.md`](anatomia/mapa-del-sitio.md).
 - **Queda el inventario de lo que sigue en otro idioma**: 10 términos que se quedan con su motivo escrito y 12 que faltan traducir, con el archivo donde vive cada uno. Renombrarlos es trabajo aparte, porque rompe las citas.
 
-Cierra la parte del glosario del [pendiente 21](pendientes/21-el-glosario-y-los-terminos-en-ingles.md), que nace del hallazgo H-8 del 2026-08-14. La parte de los roles queda abierta.
+Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-rol-en-espanol.md), que nace del hallazgo H-8 del 2026-08-14. La parte de los roles queda abierta.
 
 ## 15.2.0 — 2026-08-14
 
@@ -894,7 +914,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/21-el-glosario-y-los-
 **El estándar escribía en inglés y exigía escribir en español.** [`01·C8`](base/01-conducta.md#c8--habla-el-idioma-del-proyecto) manda que todo lo que ve el usuario vaya en el idioma del proyecto, y el propio estándar usaba "spec" en 53 archivos. Quien lee "falta la spec" no sabe qué documento le piden ni dónde ponerlo, que es justo lo que [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) vino a evitar.
 
 - **Nace [`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica)**: el término de otro idioma se traduce, y el que no tenga traducción usada se explica la primera vez que aparece. Extiende `C8`, que fijaba el idioma pero no decía qué hacer con las palabras que no lo tienen.
-- **"spec" pasa a "especificación"** en el texto de `base/`, `plantillas/`, `validadores/` y `documentacion/`: 162 cambios. **Los nombres de archivo y las rutas no se tocan** — `spec.md`, `plantilla-spec-modulo.md` y el archivo de `F2` siguen igual, así que ningún proyecto tiene que renombrar nada. Fue decisión del usuario, para que el cambio no obligara a mover archivos.
+- **"spec" pasa a "especificación"** en el texto de `base/`, `plantillas/`, `validadores/` y `documentacion/`: 162 cambios. **Los nombres de archivo y las rutas no se tocan** — `spec.md`, `plantilla-especificacion-modulo.md` y el archivo de `F2` siguen igual, así que ningún proyecto tiene que renombrar nada. Fue decisión del usuario, para que el cambio no obligara a mover archivos.
 - **Los identificadores no cambian.** `F2` sigue siendo `F2`; lo que cambió es su título, que ahora dice *"Sin especificación acordada no hay código"*.
 - **Se anula el checklist de las reglas cuyo texto se tocó** ([`20·M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md)): `F2`, `F7`, `DOC3`, `DOC6`, `DOC11`, `DOC12`, `DOC13` y las cuatro `F4.x` derogadas. Cambió una palabra y no lo que exigen, pero las filas 8 a 11 se juzgan sobre el texto. Se vuelven a aplicar en la fase que las toque.
 - **Retroactividad.** Un documento ya escrito y aceptado no se reabre para traducirle las palabras. Aplica a lo que se escriba desde ahora.

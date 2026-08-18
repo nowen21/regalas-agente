@@ -10,7 +10,7 @@ El chat y el contexto son finitos. Al llenarse, el sistema **compacta** (resume)
 
 Es una de sus razones de existir. `13` arranca con: *"El chat se pierde y el contexto se comprime; los archivos quedan."*
 
-- **La spec como memoria de largo plazo** — las decisiones viven en un archivo, no en el chat. `02`·F2
+- **La especificación como memoria de largo plazo** — las decisiones viven en un archivo, no en el chat. `02`·F2
 - **Documentar decisiones con su porqué** (registro de decisiones). `13`·DOC2
 - **Cargar el contexto documentado antes de actuar** + **trazabilidad**. `02`·F1, `13`·DOC3
 
@@ -24,7 +24,7 @@ Es una de sus razones de existir. `13` arranca con: *"El chat se pierde y el con
 2. **Memoria jerárquica / paginación de contexto:** working memory corta + memoria larga externa; la compactación resume **preservando** lo crítico (estilo MemGPT/Letta).
 3. **Registros de decisiones (ADR):** anotar cada decisión y su razón en un artefacto durable. ← `13`·DOC2.
 4. **Scratchpad / state file + journaling:** el agente escribe su **estado** en un archivo que sobrevive la compactación y lo re-lee al reanudar.
-5. **Ejecución durable / checkpoints en orquestadores:** el motor persiste el estado en **cada paso** (LangGraph checkpointers, estilo Temporal). ← conecta con el **SDD Orchestrator**.
+5. **Ejecución durable / checkpoints en orquestadores:** el motor persiste el estado en **cada paso** (LangGraph checkpointers, estilo Temporal). ← conecta con el **SDD Orquestador**.
 6. **Aislamiento por sub-agentes:** contexto acotado por rol; el hilo principal queda liviano y las decisiones viven en artefactos. ← **aislamiento de contexto**.
 7. **Re-inyección tras compactar:** el harness vuelve a meter reglas/memoria en cada ventana (Claude Code re-inyecta `CLAUDE.md` y las memorias). Defensa pasiva.
 8. **Grafos de conocimiento / herramientas de memoria** (Mem0, Zep, "engram"…): extraen decisiones a un grafo con relevancia/recencia.

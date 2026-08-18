@@ -9,7 +9,7 @@
 > |---|---|---|
 > | El enganche que sostiene el resumen de sesión | [`A-EP-005-HU-008-enganche-del-resumen`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) | Cerrada el 2026-08-14 |
 >
-> Los siete enganches que ya existen (transcripción, memoria, enlaces, instalación) se construyeron antes de que hubiera especificación de módulo. Retro-documentarlos es trabajo aparte, y lo pide [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md).
+> Los siete enganches que ya existen (transcripción, memoria, enlaces, instalación) se construyeron antes de que hubiera especificación de módulo. Retro-documentarlos es trabajo aparte, y lo pide [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md).
 
 ---
 
@@ -176,7 +176,7 @@ El detalle vive en el [documentacion/epicas/EP-005-automatismos-que-no-dependen-
 - [x] Lo que sigue abierto del propósito se muestra al abrir la sesión.
 - [x] No escribe hallazgos, no modifica los escritos y no detiene la sesión.
 - [x] Pruebas verdes, incluida la triangulación de "produjo algo".
-- [ ] Trazabilidad especificación → implementación sin faltantes ([`13·DOC3`](../../base/13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)).
+- [ ] Trazabilidad especificación → implementación sin faltantes ([`13·DOC3`](../../base/13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md)).
 - [ ] Entrada en `CHANGELOG.md` y subida de `VERSION` ([`20·M10`](../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 
 ## 12. Decisiones tomadas

@@ -8,7 +8,7 @@
 
 - ✅ **Seguridad crítica** (núcleo blindado): validación previa, git bajo pedido, no romper cosas para pasar, proteger datos reales, operaciones masivas con preview, secretos nunca expuestos. — `00`
 - ✅ **Conducta**: avisar antes de tocar, no inventar, quedarse en el alcance, no decidir solo, responder corto. — `01`
-- ✅ **Spec-driven development (SDD)**: sin spec acordada no hay código; la spec es el contrato. — `02` · F2
+- ✅ **Spec-driven development (SDD)**: sin especificación acordada no hay código; la especificación es el contrato. — `02` · F2
 - ✅ **Diseño de datos**: normalización, auditoría, migraciones reversibles y retrocompatibles, catálogos, cero-hardcode. — `03`
 - ✅ **Seguridad de aplicación**: authz, validación de entrada, inyección, secretos, CSRF, archivos sensibles. — `04`
 - ✅ **Errores y logging**: no tragar errores, fallar controlado, mensajes en dos niveles, no loguear secretos. — `05`
@@ -16,10 +16,10 @@
 - ✅ **Calidad de código**: legibilidad, nombres, funciones pequeñas, DRY, lint. — `07`
 - ✅ **Pruebas**: qué probar, aislamiento, no-flaky, cobertura con criterio. — `08`
 - ✅ **Triangulación de pruebas + corner cases**: derivar los casos con método (frontera, equivalencia, tablas de decisión, negativos) y triangular el resultado esperado desde fuentes independientes. — `08` · T7
-- ✅ **Trazabilidad spec → implementación**: checklist ítem por ítem antes de cerrar. — `13` · DOC3
+- ✅ **Trazabilidad especificación → implementación**: checklist ítem por ítem antes de cerrar. — `13` · DOC3
 - ✅ **Git, dependencias, configuración/entornos, privacidad, documentación, estructura/nomenclatura**. — `09`–`14`
 - ✅ **Concurrencia/idempotencia** (`03`·D6), **CI/CD gate** (`09`·G6), **UI/UX** (`17`, opt-in) y **backup antes de operación irreversible** (`00`·N4) — agregados tras la auditoría del estándar (3 sub-agentes en paralelo).
-- ✅ **Memoria institucional (dentro del proyecto)**: la spec como memoria de largo plazo, decisiones con porqué, carga de contexto, trazabilidad. — `02`·F1/F2/F6, `13`
+- ✅ **Memoria institucional (dentro del proyecto)**: la especificación como memoria de largo plazo, decisiones con porqué, carga de contexto, trazabilidad. — `02`·F1/F2/F6, `13`
 - ✅ **Memoria por señales (archivos)**: log de señales tipadas (`13`·DOC5 + `plantillas/senales.md`) con what/why/where/learned.
 - ✅ **Memoria buscable central (SQLite+FTS5) — OPERATIVA**: helper `memoria/memoria.py` (init/add/search/supersede) + skill `usar-memoria` + base central con `scope` (una sola para todos los proyectos; las lecciones `organizacion` viajan entre proyectos). Ver [`memoria-buscable-fts5.md`](memoria-buscable-fts5.md). ⏳ Solo queda la búsqueda **semántica** (embeddings/MCP); la léxica ya está.
 - ✅ **Registros inmutables** (patrón opt-in). — `15`
@@ -32,18 +32,18 @@
 
 ## ⏳ Lo que NO cumple todavía (pendiente)
 
-- ✅ **SDD Orchestrator** (línea de montaje con puertas): `skills/sdd-orchestrator/` — dirige las estaciones, controla las puertas, usa el grafo y persiste el estado. Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
-- ⚠️ **Orquestación con sub-agentes en paralelo**: el Orchestrator la dispone; la ejecución paralela real usa los sub-agentes/workflows del entorno (ya disponibles).
-- ✅ **Skill `cerrar-fase`** (rol Verifier): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
-- ✅ **Skill `generar-spec-modulo`** (rol Spec Writer): `skills/generar-spec-modulo/` — redacta la spec guiando la plantilla.
-- ✅ **Skill `revisar-critico`** (rol Reviewer/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
-- ✅ **Skill `planificar-tareas`** (rol Task Planner): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
-- ✅ **Skills `proponer-alcance` (Proposer), `disenar-arquitectura` (Designer), `implementar` (Implementer)**: completan los **7 roles obreros** de la línea de montaje.
+- ✅ **SDD Orquestador** (línea de montaje con puertas): `skills/sdd-orchestrator/` — dirige las estaciones, controla las puertas, usa el grafo y persiste el estado. Ver [`orquestador-y-triangulacion.md`](orquestador-y-triangulacion.md).
+- ⚠️ **Orquestación con sub-agentes en paralelo**: el Orquestador la dispone; la ejecución paralela real usa los sub-agentes/workflows del entorno (ya disponibles).
+- ✅ **Skill `cerrar-fase`** (rol Verificador): `skills/cerrar-fase/` — pruebas + triangulación + trazabilidad antes de cerrar.
+- ✅ **Skill `generar-spec-modulo`** (rol Escritor de especificación): `skills/generar-spec-modulo/` — redacta la especificación guiando la plantilla.
+- ✅ **Skill `revisar-critico`** (rol Crítico/Crítico): `skills/revisar-critico/` — revisión adversarial (bugs, seguridad, casos no anticipados).
+- ✅ **Skill `planificar-tareas`** (rol Planificador de tareas): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
+- ✅ **Skills `proponer-alcance` (Proponente), `disenar-arquitectura` (Diseñador), `implementar` (Implementador)**: completan los **7 roles obreros** de la línea de montaje.
 - ✅ **Skill `generar-casos-prueba`**: `skills/generar-casos-prueba/` — deriva la matriz de casos y triangula el esperado (operacionaliza `08`·T7).
-- ✅ **Plantilla genérica de spec de módulo** (agnóstica): `plantillas/plantilla-spec-modulo.md`.
-- ✅ **Roles especializados**: los 7 obreros + Reviewer/Crítico + Orchestrator existen como skills en `skills/`. Ver [`roles-especializados.md`](roles-especializados.md).
-- ✅ **Grafo de dependencias entre tareas**: el Task Planner lo produce y el Orchestrator lo ejecuta (orden topológico + paralelizables).
-- ✅ **Checkpoints de calidad impuestos** (las puertas): el Orchestrator los controla. ⚠️ **Aislamiento de contexto** (cada rol como sub-agente): dispuesto por el Orchestrator, ejecutado por los sub-agentes del entorno. ⏳ **Memoria institucional entre proyectos** (semántica / MCP). Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
+- ✅ **Plantilla genérica de especificación de módulo** (agnóstica): `plantillas/plantilla-especificacion-modulo.md`.
+- ✅ **Roles especializados**: los 7 obreros + Crítico/Crítico + Orquestador existen como skills en `skills/`. Ver [`roles-especializados.md`](roles-especializados.md).
+- ✅ **Grafo de dependencias entre tareas**: el Planificador de tareas lo produce y el Orquestador lo ejecuta (orden topológico + paralelizables).
+- ✅ **Checkpoints de calidad impuestos** (las puertas): el Orquestador los controla. ⚠️ **Aislamiento de contexto** (cada rol como sub-agente): dispuesto por el Orquestador, ejecutado por los sub-agentes del entorno. ⏳ **Memoria institucional entre proyectos** (semántica / MCP). Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).
 
 > **Nota sobre sub-agentes:** el aislamiento de contexto, los roles como actores separados y la orquestación en paralelo **ya son posibles** — Claude Code provee sub-agentes con contexto aislado y workflows. No es falta de capacidad, sino de **construcción**. Ver [`subagentes-y-entorno.md`](subagentes-y-entorno.md).
 

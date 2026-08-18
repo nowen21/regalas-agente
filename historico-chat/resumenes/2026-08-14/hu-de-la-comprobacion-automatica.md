@@ -154,7 +154,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** EP-001 · HU-004, de donde salió `C20`.
 - **Dispara:** EP-003 · HU-010, el glosario de la terminología. Ya está escrita.
 - **Orden de resolución:** 2 de 7 · el glosario desbloquea traducir el resto de una sola vez.
-- **Dónde queda:** [pendientes/21-el-glosario-y-los-terminos-en-ingles.md](../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md).
+- **Dónde queda:** [pendientes/hecho/los-nombres-de-rol-en-espanol.md](../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md).
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** primero el glosario: con los treinta términos escritos se ve cuáles más están en inglés sin necesidad y se cambian todos de una vez.

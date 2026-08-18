@@ -60,7 +60,7 @@
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
 | La marca es `«…»` porque ya se usa en 25 de 30 plantillas: cambiarla costaría 25 archivos en vez de 5 | [`notas/marca-del-espacio-por-llenar.md`](../../../../../notas/marca-del-espacio-por-llenar.md) |
-| La especificación del módulo sí va aparte: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) se cumple y no lleva excepción | Cierra el H-7 del [resumen del 2026-08-14](../../../../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md) · señal S-003 |
+| La especificación del módulo sí va aparte: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) se cumple y no lleva excepción | Cierra el H-7 del [resumen del 2026-08-14](../../../../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md) · señal S-003 |
 | La sintaxis de un comando no es un hueco por llenar | Escrita dentro de [`13·DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) |
 | Una sección que no aplica se escribe `N/A` | [`13·DOC21`](../../../../../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) |
 

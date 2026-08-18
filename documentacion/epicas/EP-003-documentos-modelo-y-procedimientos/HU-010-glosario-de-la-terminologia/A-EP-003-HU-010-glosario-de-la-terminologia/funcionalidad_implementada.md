@@ -69,7 +69,7 @@ Cinco defectos aparecieron y tres se corrigieron dentro de la fase: enlaces que 
 
 | Qué | De dónde sale | Dónde queda anotada |
 |---|---|---|
-| Los 12 términos que faltan traducir, empezando por los roles | CA-03 de esta fase | El cierre de [base/glosario.md](../../../../../base/glosario.md) y el [pendiente 21](../../../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md) |
+| Los 12 términos que faltan traducir, empezando por los roles | CA-03 de esta fase | El cierre de [base/glosario.md](../../../../../base/glosario.md) y el [pendiente 21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) |
 | Probar las otras cuatro entradas con lector de fuera. Solo se probó una | Salvedad 1 del veredicto | §6 del [resultado_pruebas.md](resultado_pruebas.md) |
 | El validador de enlaces marca como aviso los enlaces a la misma carpeta, que `13·DOC14` exime | Se vio al correr CP-005 | Hallazgo de la sesión del 2026-08-14 |
 | El encabezado de [anatomia/mapa-del-sitio.md](../../../../../anatomia/mapa-del-sitio.md) dice v1.4.0 del 2026-08-07, con el estándar en 18.0.0 | Se vio al tocar el árbol en T-06 | Hallazgo de la sesión del 2026-08-14 |

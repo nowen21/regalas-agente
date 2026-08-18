@@ -1,6 +1,6 @@
 # Retro-documentar un módulo sin especificación — el procedimiento
 
-> **Cuándo.** Un módulo ya en producción que nunca tuvo especificación, o cuya especificación quedó más vieja que el código. Lo exige la regla [`13·DOC6`](reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) del capítulo 13 · Documentación.
+> **Cuándo.** Un módulo ya en producción que nunca tuvo especificación, o cuya especificación quedó más vieja que el código. Lo exige la regla [`13·DOC6`](reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) del capítulo 13 · Documentación.
 >
 > **Qué es.** Una unidad de trabajo formal, con sus entregables, no un comentario apurado antes de tocar el código.
 

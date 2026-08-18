@@ -21,7 +21,7 @@ Subido: `59007cb` en `main`, 40 archivos.
 
 - `prompts/` (README, el archivo renombrado, la carpeta `analisis/`)
 - `validadores/comun.py`, `enlaces.py`, `esquema.py`, `flujo.py` y cuatro archivos nuevos (`cruces.py`, `declaracion.py`, `entidades.py`, `estructura.py`)
-- `plantillas/dominio.md`, `mapeo-nombres.md`, `plantilla-spec-modulo.md`
+- `plantillas/dominio.md`, `mapeo-nombres.md`, `plantilla-especificacion-modulo.md`
 - `base/09-git.md`
 - `historico-chat/2026-08-12-*`, `2026-08-13-pendientes-del-diplomado-de-ia.md` y `2026-08-13-sesion-3.md`
 
@@ -120,7 +120,7 @@ Commiteado: `597355c`, 8 archivos.
 
 Entró solo lo de esta sesión: las tres plantillas, los dos documentos de la fase A, `VERSION` en `9.1.0`, el CHANGELOG y la transcripción.
 
-Quedó fuera lo de otras sesiones que sigue en el árbol: `base/09-git.md`, las HU nuevas de EP-004, `plantillas/dominio.md`, `mapeo-nombres.md`, `plantilla-spec-modulo.md`, `prompts/`, cuatro validadores y dos históricos.
+Quedó fuera lo de otras sesiones que sigue en el árbol: `base/09-git.md`, las HU nuevas de EP-004, `plantillas/dominio.md`, `mapeo-nombres.md`, `plantilla-especificacion-modulo.md`, `prompts/`, cuatro validadores y dos históricos.
 
 No hice `push`: usted dijo commitear, y publicar es la otra puerta. ¿Lo subo?
 

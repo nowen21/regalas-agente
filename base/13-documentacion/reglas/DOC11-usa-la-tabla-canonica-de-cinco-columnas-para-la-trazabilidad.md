@@ -2,7 +2,7 @@
 
 ## DOC11 · Usa la tabla canónica de cinco columnas para la trazabilidad
 
-La verificación que exige [`DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) se escribe siempre con la misma tabla (extiende [`13·DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md)), en el documento de cierre de la unidad:
+La verificación que exige [`DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) se escribe siempre con la misma tabla (extiende [`13·DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md)), en el documento de cierre de la unidad:
 
 | Ítem de la especificación | Categoría | Ubicación esperada | Estado | Evidencia |
 |---|---|---|---|---|
@@ -29,6 +29,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Fila 11: la tabla estaba escrita entera en [`DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) y otra vez aquí; ahora vive **solo** aquí y [`DOC3`](DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md) enlaza. Fila 10: la tabla es el formato que la regla exige, no cuerpo — el cuerpo son tres líneas.
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Fila 11: la tabla estaba escrita entera en [`DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) y otra vez aquí; ahora vive **solo** aquí y [`DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) enlaza. Fila 10: la tabla es el formato que la regla exige, no cuerpo — el cuerpo son tres líneas.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

@@ -10,7 +10,7 @@
 | **Épica** | [EP-003](../../epica.md) |
 | **HU** | [HU-001 Definir cómo se marca un espacio por llenar en un modelo](../HU-001-marca-de-espacio-por-llenar.md) |
 | **Módulo** | Documentos modelo |
-| **Especificación del módulo** | [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md). Sí la lleva aparte, por decisión del usuario del 2026-08-14: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) se cumple y no lleva excepción. Eso cierra la duda que arrastraban las fases `A-EP-001-HU-001-molde-de-regla` y `A-EP-004-HU-010-declaracion-y-comprobacion`, que se habían abierto declarando que no la necesitaban |
+| **Especificación del módulo** | [documentacion/documentos-modelo/spec.md](../../../../documentos-modelo/spec.md). Sí la lleva aparte, por decisión del usuario del 2026-08-14: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) se cumple y no lleva excepción. Eso cierra la duda que arrastraban las fases `A-EP-001-HU-001-molde-de-regla` y `A-EP-004-HU-010-declaracion-y-comprobacion`, que se habían abierto declarando que no la necesitaban |
 | **Fecha apertura** | 2026-08-14 |
 | **Rama** | `feature/A-EP-003-HU-001-marca-de-espacio-por-llenar` |
 
@@ -92,7 +92,7 @@
 | `plantillas/planes/pruebas.md` | Modificar | Plantilla | 37 huecos en corchetes |
 | `plantillas/planes/trabajo.md` | Modificar | Plantilla | 33 huecos en corchetes |
 | `plantillas/funcionalidad-implementada.md` | Modificar | Plantilla | 22 huecos en corchetes |
-| `plantillas/plantilla-spec-modulo.md` | Modificar | Plantilla | 13 huecos en corchetes |
+| `plantillas/plantilla-especificacion-modulo.md` | Modificar | Plantilla | 13 huecos en corchetes |
 | `plantillas/cierre-analisis.md` | Modificar | Plantilla | 4 huecos en corchetes |
 | `plantillas/planes/resultados.md` | Modificar | Plantilla | 3 huecos en corchetes |
 | `plantillas/senales.md` · `plantillas/proyectos.md` · `plantillas/estado-fase.md` · `plantillas/catalogo-modulos.md` | Modificar | Plantilla | 1 hueco cada una |
@@ -244,7 +244,7 @@ Todo lo de esta fase es texto y no toca datos: se revierte con la reversión del
 
 ## 9. Reglas del estándar y del proyecto aplicadas  ·  `F14` Q13
 
-- Base: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F12.10`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`20·M5`](../../../../../base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md), [`20·M9`](../../../../../base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), [`20·M13`](../../../../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md).
+- Base: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F12.1`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F12.10`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md), [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`20·M5`](../../../../../base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md), [`20·M9`](../../../../../base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M11`](../../../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), [`20·M13`](../../../../../base/20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md).
 - Proyecto: no aplica. Este repositorio es el estándar y no tiene catálogo de reglas propias.
 
 ---

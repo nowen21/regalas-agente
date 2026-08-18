@@ -63,7 +63,7 @@ python .../memoria.py archivar S-003                     # poda: sale de search,
 
 ## Deuda diferida y preguntas abiertas (que no se pierdan)
 
-Lo que el agente **difiere** —lo de `§Fuera-de-scope` del spec, un `gap-N`, una duda sin resolver— se registra como señal `deuda-tecnica` o `pregunta-abierta`, y se **cierra** cuando alguna fase lo resuelve. Así "¿qué queda abierto del módulo X?" es una consulta, no releer 40 specs.
+Lo que el agente **difiere** —lo de `§Fuera-de-scope` del especificación, un `gap-N`, una duda sin resolver— se registra como señal `deuda-tecnica` o `pregunta-abierta`, y se **cierra** cuando alguna fase lo resuelve. Así "¿qué queda abierto del módulo X?" es una consulta, no releer 40 especificaciones.
 
 ```
 python .../memoria.py pendientes --scope modulo:facturacion    # lo abierto de un scope
@@ -71,7 +71,7 @@ python .../memoria.py cerrar S-014 --ref "F3 / commit abc1234" # resuelto: fuera
 ```
 
 Enganches en el flujo (`02`):
-- **Al declarar algo en `§Fuera-de-scope`** (o un `gap`): registrar la señal (`add --tipo deuda-tecnica|pregunta-abierta`). No basta con escribirlo en el spec.
+- **Al declarar algo en `§Fuera-de-scope`** (o un `gap`): registrar la señal (`add --tipo deuda-tecnica|pregunta-abierta`). No basta con escribirlo en el especificación.
 - **Al abrir una fase:** `pendientes --scope <módulo>` antes de planificar, para no re-diferir lo mismo.
 - **Al cerrar una fase:** `cerrar <id> --ref "<fase / commit>"` lo que esa fase resolvió.
 

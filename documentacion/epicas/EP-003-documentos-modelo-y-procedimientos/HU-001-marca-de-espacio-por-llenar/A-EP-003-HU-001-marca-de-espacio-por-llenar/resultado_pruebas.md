@@ -51,7 +51,7 @@ Medido el 2026-08-14, antes de tocar nada:
 
 | ID | Título | Caso | Severidad | Estado |
 |---|---|---|---|---|
-| DEF-01 | El primer barrido convirtió también los bloques de guía `[[…]]` de `plantilla-spec-modulo.md` y de `senales.md`, que no son huecos sino instrucciones que se borran al llenar | [CP-002](plan_pruebas.md#cp-002--todo-modelo-usa-la-misma-marca) | Media | Corregido en la misma fase: 14 bloques restaurados |
+| DEF-01 | El primer barrido convirtió también los bloques de guía `[[…]]` de `plantilla-especificacion-modulo.md` y de `senales.md`, que no son huecos sino instrucciones que se borran al llenar | [CP-002](plan_pruebas.md#cp-002--todo-modelo-usa-la-misma-marca) | Media | Corregido en la misma fase: 14 bloques restaurados |
 | DEF-02 | El mismo barrido dejó una marca anidada, `«HU-«NNN»»`, en `planes/resultados.md` | [CP-002](plan_pruebas.md#cp-002--todo-modelo-usa-la-misma-marca) | Baja | Corregido |
 | DEF-03 | `ADR.md` usa `«ADR-XXX»`. El `XXX` es una de las marcas descartadas, pero acá va **dentro** de la marca, como texto que describe el hueco | [CP-003](plan_pruebas.md#cp-003--no-sobrevive-ninguna-marca-de-las-descartadas) | Baja | Aceptado sin cambio: cumple [`DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md). Queda anotado por si se prefiere `«ADR-NNN»` |
 

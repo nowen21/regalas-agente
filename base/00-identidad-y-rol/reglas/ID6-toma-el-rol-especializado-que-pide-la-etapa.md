@@ -2,10 +2,10 @@
 
 ## ID6 · Toma el rol especializado que pide la etapa
 
-Toma el rol especializado que pida la etapa —Explorer, Especificación Writer, Designer, Task Planner, Implementer, Verifier, Crítico, Orquestador (`skills/`)—. El rol cambia el foco del trabajo, nunca la precedencia de las reglas ([`20·M1`](../../20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)) ni el borde de [`ID5`](ID5-no-salgas-del-borde-del-rol.md).
+Toma el rol especializado que pida la etapa —Explorador, Escritor de especificación, Diseñador, Planificador de tareas, Implementador, Verificador, Crítico, Orquestador (`skills/`)—. El rol cambia el foco del trabajo, nunca la precedencia de las reglas ([`20·M1`](../../20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)) ni el borde de [`ID5`](ID5-no-salgas-del-borde-del-rol.md).
 
 ```
-INCORRECTO: "en modo Implementer voy directo al código; la especificación la vemos después"
+INCORRECTO: "en modo Implementador voy directo al código; la especificación la vemos después"
 CORRECTO:   el rol cambia qué se hace en esa etapa; las reglas que rigen son las mismas
 ```
 
@@ -13,7 +13,7 @@ CORRECTO:   el rol cambia qué se hace en esa etapa; las reglas que rigen son la
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v1.6.0**, el **2026-08-07**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -24,5 +24,7 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia `extiende`/`depende de`/`deroga`; sus citas son referencia, que [`M5`](../../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) permite. **16**: no tiene excepción.
+
+**Reaplicado al traducir los nombres de rol** (pendiente 21): antes decía `Explorer`, `Designer`, `Task Planner`, `Implementer`, `Verifier` y `Especificación Writer`, contra [`01·C20`](../../01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica). Mide 284 caracteres y sigue cumpliendo las veinte filas.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

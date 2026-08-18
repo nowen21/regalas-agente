@@ -20,7 +20,7 @@ Explora el repo (solo lectura) y registra:
 - **Datos:** esquema/migraciones, motor de BD, dónde vive la configuración.
 - **Pruebas:** qué hay, con qué framework, cobertura aproximada, si corren.
 - **Seguridad/config:** manejo de secretos, autenticación/permisos, `.gitignore`.
-- **Documentación:** qué existe (README, docs, specs) y qué tan actual está.
+- **Documentación:** qué existe (README, docs, especificaciones) y qué tan actual está.
 - **Capa 3:** ¿hay `CLAUDE.md`, marco normativo, mapeo de nombres? Si no, anótalo como brecha.
 
 ### 2. Evaluación contra el estándar
@@ -55,7 +55,7 @@ Lista lo que falta en el stack para cerrar las brechas (una librería, un servic
 
 Ordena el trabajo por **riesgo y valor**: primero lo que es peligroso o bloqueante (seguridad, cumplimiento, datos), luego lo importante, luego lo cosmético. Cada ítem: qué es, por qué, y su tamaño aproximado.
 
-Recuerda `02` · F2: lo que sea desarrollo nuevo necesita **spec acordada** antes de código. El plan puede incluir "redactar la spec de X" como primer paso.
+Recuerda `02` · F2: lo que sea desarrollo nuevo necesita **especificación acordada** antes de código. El plan puede incluir "redactar la especificación de X" como primer paso.
 
 ## Salida
 

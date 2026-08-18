@@ -1,11 +1,11 @@
 ---
 name: planificar-tareas
-description: Divide el trabajo de una spec/diseño aprobado en tareas ejecutables con su grafo de dependencias y su plan de pruebas, para aprobación antes de programar. Úsala cuando haya una spec aprobada y toque armar el plan de trabajo, cuando el usuario pida "armá el plan", "dividí el trabajo", "por dónde empezamos". Es el rol Task Planner. No escribe código.
+description: Divide el trabajo de una especificación/diseño aprobado en tareas ejecutables con su grafo de dependencias y su plan de pruebas, para aprobación antes de programar. Úsala cuando haya una especificación aprobada y toque armar el plan de trabajo, cuando el usuario pida "armá el plan", "dividí el trabajo", "por dónde empezamos". Es el rol Planificador de tareas. No escribe código.
 ---
 
-# Planificar tareas (rol Task Planner)
+# Planificar tareas (rol Planificador de tareas)
 
-Convierte una spec/diseño aprobado en un **plan de trabajo ejecutable**: tareas concretas, en orden, con su grafo de dependencias y su plan de pruebas. Solo planifica; **no implementa**. El plan se construye sobre una **línea base verificada**, nunca sobre supuestos (`02`·F4.3).
+Convierte una especificación/diseño aprobado en un **plan de trabajo ejecutable**: tareas concretas, en orden, con su grafo de dependencias y su plan de pruebas. Solo planifica; **no implementa**. El plan se construye sobre una **línea base verificada**, nunca sobre supuestos (`02`·F4.3).
 
 ## Procedimiento (en orden)
 
@@ -37,4 +37,4 @@ Cada tarea deja sin ambigüedad (`02`·F4.3): **QUÉ** (acción concreta), **CÓ
 
 `plan_trabajo` + `plan_pruebas` con el grafo de dependencias (orden + paralelizables), listo para que el usuario apruebe o corrija. No arrancar a implementar desde aquí.
 
-Ver: `02`·F4/F4.1/F4.3 (plan, 13 preguntas, línea base), `08`·T7 (corner cases), `01`·C7 (ambigüedad → preguntar). Alimenta al Implementer y, cuando exista, al Orchestrator (que usa el grafo para ordenar/paralelizar).
+Ver: `02`·F4/F4.1/F4.3 (plan, 13 preguntas, línea base), `08`·T7 (corner cases), `01`·C7 (ambigüedad → preguntar). Alimenta al Implementador y, cuando exista, al Orquestador (que usa el grafo para ordenar/paralelizar).

@@ -6,7 +6,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 
 - [cobertura-del-agente.md](cobertura-del-agente.md) — qué cumple el estándar hoy y qué no (✅ / ⏳).
 - [roles-especializados.md](roles-especializados.md) — los 7 roles (explorer → verifier) como estaciones de la línea de montaje.
-- [orquestador-y-triangulacion.md](orquestador-y-triangulacion.md) — diseño del SDD Orchestrator, la línea de montaje, la triangulación y el grafo de dependencias.
+- [orquestador-y-triangulacion.md](orquestador-y-triangulacion.md) — diseño del SDD Orquestador, la línea de montaje, la triangulación y el grafo de dependencias.
 - [que-es-triangulacion-de-pruebas.md](que-es-triangulacion-de-pruebas.md) — explicación llana de qué es triangular una prueba.
 - [aislamiento-checkpoints-memoria.md](aislamiento-checkpoints-memoria.md) — aislamiento de contexto, checkpoints de calidad y memoria institucional.
 - [compactacion-mata-decisiones.md](compactacion-mata-decisiones.md) — la amenaza de perder decisiones al compactar el contexto y cómo se ataca.
@@ -21,20 +21,20 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 
 | # | Pendiente | Tamaño | Depende de | Nota |
 |---|---|---|---|---|
-| ~~1~~ | ~~**Plantilla genérica de spec de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/plantilla-spec-modulo.md` |
-| ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Spec Writer) |
-| ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verifier) |
+| ~~1~~ | ~~**Plantilla genérica de especificación de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/plantilla-especificacion-modulo.md` |
+| ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Escritor de especificación) |
+| ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verificador) |
 | ~~4~~ | ~~**Skill `generar-casos-prueba`**~~ | — | — | ✅ **Hecha** — `skills/generar-casos-prueba/` |
-| ~~5~~ | ~~**Roles especializados como skills**~~ | — | — | ✅ **Hechos** — los 7 obreros + Reviewer/Crítico (`skills/`) |
-| ~~6~~ | ~~**Grafo de dependencias entre tareas**~~ | — | — | ✅ Task Planner lo produce · Orchestrator lo ejecuta |
-| ~~7~~ | ~~**SDD Orchestrator**~~ | — | — | ✅ **Hecho** — `skills/sdd-orchestrator/` |
-| 8 | **Ejecución paralela real** (sub-agentes) | — | entorno (workflows) | dispuesta por el Orchestrator; la corre el entorno |
-| 9 | **Aislamiento de contexto** (cada rol como sub-agente) | — | entorno (sub-agentes) | dispuesto por el Orchestrator |
-| ~~10~~ | ~~**Checkpoints de calidad**~~ | — | — | ✅ el Orchestrator impone las puertas |
+| ~~5~~ | ~~**Roles especializados como skills**~~ | — | — | ✅ **Hechos** — los 7 obreros + Crítico/Crítico (`skills/`) |
+| ~~6~~ | ~~**Grafo de dependencias entre tareas**~~ | — | — | ✅ Planificador de tareas lo produce · Orquestador lo ejecuta |
+| ~~7~~ | ~~**SDD Orquestador**~~ | — | — | ✅ **Hecho** — `skills/sdd-orchestrator/` |
+| 8 | **Ejecución paralela real** (sub-agentes) | — | entorno (workflows) | dispuesta por el Orquestador; la corre el entorno |
+| 9 | **Aislamiento de contexto** (cada rol como sub-agente) | — | entorno (sub-agentes) | dispuesto por el Orquestador |
+| ~~10~~ | ~~**Checkpoints de calidad**~~ | — | — | ✅ el Orquestador impone las puertas |
 | ~~11a~~ | ~~**Memoria buscable central con scope**~~ | — | — | ✅ **Hecha** — `memoria/` + skill `usar-memoria` (léxica, entre proyectos) |
 | 11b | **Búsqueda semántica** (por significado) | Medio | MCP / vector | la léxica ya está; falta embeddings |
 
 ## Ya resuelto
 
 - ✅ **Triangulación de pruebas** — `base/08-pruebas.md` · `T7`.
-- ✅ **Explorer** — cubierto por la skill `analizar-proyecto`.
+- ✅ **Explorador** — cubierto por la skill `analizar-proyecto`.

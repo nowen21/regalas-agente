@@ -142,6 +142,7 @@ Entonces se puede listar qué términos siguen en otro idioma y por qué
 | Fase | Qué cubre | CA | Estado |
 |---|---|---|---|
 | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/README.md/](A-EP-003-HU-010-glosario-de-la-terminologia/README.md) | El glosario entero y el inventario de lo que sigue en otro idioma | CA-01, CA-02, CA-03 | Cerrada el 2026-08-14 |
+| [B-EP-003-HU-010-los-nombres-de-rol-en-espanol](B-EP-003-HU-010-los-nombres-de-rol-en-espanol/README.md) | Los trece nombres de rol y «spec» | Cerrada 2026-08-18 (v23.8.0) |
 
 Una sola fase para los tres criterios: los tres se validan sobre el mismo documento y ninguno se puede probar sin él (`02·F12.10`).
 

@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** A diferencia de las demás fases de esta épica, acá **no hay nada construido que retro-documentar**: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) sigue escrita como si todo entregable fuera código de un módulo, y el caso del entregable que no es código nunca se escribió. Baja del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) por la vía que pide [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila en el inventario es la de HU-010 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** A diferencia de las demás fases de esta épica, acá **no hay nada construido que retro-documentar**: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) sigue escrita como si todo entregable fuera código de un módulo, y el caso del entregable que no es código nunca se escribió. Baja del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) por la vía que pide [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila en el inventario es la de HU-010 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -34,7 +34,7 @@
 **Fuera de alcance:**
 
 - **Escribir las especificaciones que faltan.** Las ocho fases que declararon la deuda la siguen debiendo; lo que esta fase decide es si esa deuda es legítima o no, no la paga.
-- **La retro-documentación de módulos sin especificación,** que es [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) y tiene su propio procedimiento.
+- **La retro-documentación de módulos sin especificación,** que es [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) y tiene su propio procedimiento.
 - **Reabrir fases cerradas.** La RN-05 de la HU ya lo dice: lo que se decida vale hacia adelante.
 - **Cambiar el programa que comprueba la especificación** ([`validadores/flujo.py`](../../../../../validadores/flujo.py)), salvo que la decisión del CA-01 lo exija; si lo exige, se declara acá antes de tocarlo.
 
@@ -44,7 +44,7 @@
 
 > Verificado contra el repositorio el 2026-08-17, leyendo la casilla de especificación de las veinticinco fases que hay y corriendo `validar.py flujo`.
 
-**Lo que dice la regla hoy:** [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) exige una especificación acordada antes de tocar código, y no nombra ningún caso en que no aplique.
+**Lo que dice la regla hoy:** [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) exige una especificación acordada antes de tocar código, y no nombra ningún caso en que no aplique.
 
 **Lo que hacen las fases:**
 
@@ -66,7 +66,7 @@
 
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|
-| `base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md` | Modificar | Cuerpo de reglas | Le entra lo que decida la duda 1, con su bloque de checklist rehecho ([`20·M14`](../../../../../base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md)) |
+| `base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md` | Modificar | Cuerpo de reglas | Le entra lo que decida la duda 1, con su bloque de checklist rehecho ([`20·M14`](../../../../../base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md)) |
 | `pendientes/20-f2-no-dice-cuando-no-aplica.md` | Modificar | Documentación | Se cierra cuando la regla lo diga, y se corrige la cuenta: no son dos fases |
 | `documentacion/epicas/EP-001-…/HU-010-…/A-EP-001-HU-010-…/plan_pruebas.md` | Nuevo | Documentación | Los casos de los dos CA |
 | `documentacion/epicas/EP-001-…/HU-010-…/A-EP-001-HU-010-…/resultado_pruebas.md` | Nuevo | Documentación | Lo que dieron, con la tabla de las diecisiete fases |
@@ -78,7 +78,7 @@
 
 | Archivo que cambia | Qué cambia | Quién depende y podría romper | Dónde |
 |---|---|---|---|
-| `F2-sin-spec-acordada-no-hay-codigo.md` | Le entra un caso en que la exigencia no aplica | [`validadores/flujo.py`](../../../../../validadores/flujo.py), que hoy da por cumplida la exigencia con que el archivo exista | Si la decisión exige distinguir «enlaza su historia» de «enlaza una especificación», el programa hay que ajustarlo, y eso se declara antes de tocarlo |
+| `F2-sin-especificacion-acordada-no-hay-codigo.md` | Le entra un caso en que la exigencia no aplica | [`validadores/flujo.py`](../../../../../validadores/flujo.py), que hoy da por cumplida la exigencia con que el archivo exista | Si la decisión exige distinguir «enlaza su historia» de «enlaza una especificación», el programa hay que ajustarlo, y eso se declara antes de tocarlo |
 | El mismo | La casilla de las fases pasa a tener una forma esperada | Las diecisiete fases que hoy la llenan a su manera | Ninguna se reabre si ya cerró (RN-05); las abiertas se ajustan en el CA-02 |
 
 ### 2.3 Rutas / endpoints y control de acceso  ·  `F14` Q6
@@ -189,7 +189,7 @@ Cuál de las dos se declara al cerrar, no antes: depende del texto que entre. Un
 
 ## 9. Reglas del estándar aplicadas  ·  `F14` Q13
 
-[`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md), [`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`13·DOC17`](../../../../../base/13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md), [`20·M8`](../../../../../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M14`](../../../../../base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md).
+[`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), [`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md), [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), [`13·DOC6`](../../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md), [`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md), [`13·DOC17`](../../../../../base/13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md), [`20·M8`](../../../../../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md), [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), [`20·M14`](../../../../../base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md).
 
 ---
 

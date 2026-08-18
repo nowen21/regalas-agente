@@ -41,7 +41,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** [`01·C20`](../../../base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica), la palabra de otro idioma se traduce.
 - **Dispara:** una HU de EP-003 que todavía no está escrita.
 - **Orden de resolución:** 1 de 3 · es lo único que queda del hallazgo original.
-- **Dónde queda:** [pendientes/21-el-glosario-y-los-terminos-en-ingles.md](../../../pendientes/21-el-glosario-y-los-terminos-en-ingles.md), en su punto 2.
+- **Dónde queda:** [pendientes/hecho/los-nombres-de-rol-en-espanol.md](../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md), en su punto 2.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica, como H-8.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se renombran también los archivos que llevan `spec` en el nombre, o solo el texto? Renombrar el archivo rompe las citas; dejarlo deja la palabra a la vista.

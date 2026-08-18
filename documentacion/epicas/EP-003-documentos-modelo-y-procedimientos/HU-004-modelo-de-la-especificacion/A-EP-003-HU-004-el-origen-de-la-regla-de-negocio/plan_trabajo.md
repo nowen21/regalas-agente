@@ -11,7 +11,7 @@
 | **Fase** (identificador · `02·F12.6`) | `A-EP-003-HU-004-el-origen-de-la-regla-de-negocio` |
 | **Épica** | [EP-003 Documentos modelo y procedimientos](../../epica.md) |
 | **HU** | [HU-004 — Modelo de la especificación](../HU-004-modelo-de-la-especificacion.md) — **una sola** (`F12.1`) |
-| **Módulo** | Documentos modelo (`plantillas/plantilla-spec-modulo.md`) |
+| **Módulo** | Documentos modelo (`plantillas/plantilla-especificacion-modulo.md`) |
 | **Especificación del módulo** | No existe. Se declara como deuda en §10 (`B-02`) |
 | **Fecha apertura** | 2026-08-16 |
 | **Rama** | `main` |
@@ -62,11 +62,11 @@ Y la que no tenga procedencia no se escribe ahí: se sube a la historia que corr
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|
 | `documentacion/.../HU-004-modelo-de-la-especificacion.md` | Modificar | HU | El `CA-04`, la fase en §8 y la bitácora |
-| `plantillas/plantilla-spec-modulo.md` | Modificar | Modelo | El §4 pide las dos cosas |
+| `plantillas/plantilla-especificacion-modulo.md` | Modificar | Modelo | El §4 pide las dos cosas |
 | `pendientes/README.md` · `pendientes/hecho/` | Modificar / Nuevo | Backlog | Cerrar el 43 |
 | `CHANGELOG.md` · `VERSION` | Modificar | Versionado | **MAYOR** |
 
-**Verificado el 2026-08-16:** el §4 de [`plantillas/plantilla-spec-modulo.md`](../../../../../plantillas/plantilla-spec-modulo.md) está en la línea 30 y hoy pide `1. «Regla — por qué existe.»`.
+**Verificado el 2026-08-16:** el §4 de [`plantillas/plantilla-especificacion-modulo.md`](../../../../../plantillas/plantilla-especificacion-modulo.md) está en la línea 30 y hoy pide `1. «Regla — por qué existe.»`.
 
 ### 2.2 Matriz de dependencias del cambio
 

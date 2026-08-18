@@ -1194,7 +1194,7 @@ Lo que propongo: corregir el pendiente 25 y el hallazgo de ayer con lo verificad
 **Agente** — 2026-08-15 09:52:46
 <!-- agente: 39c9424e-a345-4fff-ad60-65a49260412e -->
 
-Tiene razón: existe el programa y no existe su documentación. Eso es retro-documentación ([`13·DOC6`](base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)). Primero corrijo la HU con lo verificado, y después abro la fase.
+Tiene razón: existe el programa y no existe su documentación. Eso es retro-documentación ([`13·DOC6`](base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)). Primero corrijo la HU con lo verificado, y después abro la fase.
 
 Fase abierta: [A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas/README.md), detenida en la estación 7 esperando su aprobación.
 

@@ -56,7 +56,7 @@ Si una sola regla crece más de una página, se le abre subcarpeta (`base/02-flu
 
 ### M4 — cómo se cita, y por qué el ID no se toca
 
-Se cita entre capítulos como `NN·ID` — [`00·N4`](../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada), [`09·G6`](../09-git.md#g6--integración-continua-el-verde-es-automático-no-manual), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-spec-implementacion-antes-de-cerrar.md).
+Se cita entre capítulos como `NN·ID` — [`00·N4`](../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada), [`09·G6`](../09-git.md#g6--integración-continua-el-verde-es-automático-no-manual), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md).
 
 El ID es la referencia que usan las especificaciones, los planes, los commits, los validadores y las fases ya cerradas. Renumerar rompe el rastro de todo lo anterior. Si una regla se parte en dos, la original conserva su ID y la nueva toma el siguiente consecutivo libre.
 

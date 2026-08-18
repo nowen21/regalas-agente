@@ -77,7 +77,7 @@ El estándar está organizado para que lo universal se **herede** y lo específi
 - [`plantillas/dominio.md`](plantillas/dominio.md) — qué hace el sistema, entidades y reglas de negocio
 - [`plantillas/mapeo-nombres.md`](plantillas/mapeo-nombres.md) — cómo se llaman aquí los conceptos abstractos de la base
 - [`plantillas/marco-normativo.md`](plantillas/marco-normativo.md) — sector, jurisdicción, leyes y frameworks del cliente
-- [`plantillas/plantilla-spec-modulo.md`](plantillas/plantilla-spec-modulo.md) — esqueleto para redactar la especificación de un módulo (se copia por módulo a `documentacion/`)
+- [`plantillas/plantilla-especificacion-modulo.md`](plantillas/plantilla-especificacion-modulo.md) — esqueleto para redactar la especificación de un módulo (se copia por módulo a `documentacion/`)
 - [`plantillas/senales.md`](plantillas/senales.md) — log de señales (memoria: decisiones, errores resueltos, patrones, aprendizajes)
 - [`plantillas/checklist-despliegue.md`](plantillas/checklist-despliegue.md) — checklist de un despliegue (opt-in `18`)
 - [`plantillas/postmortem.md`](plantillas/postmortem.md) — postmortem de incidente, sin culpa (opt-in `19`)

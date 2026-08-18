@@ -195,7 +195,7 @@ Y un hallazgo de paso: mi propio validador de F2 marcó este plan porque en la c
 **Agente** — 2026-08-14 09:13:35
 <!-- agente: 45fc393b-e1e8-452a-a284-b426b4515de0 -->
 
-**Spec** es el documento que dice **qué debe hacer un módulo, antes de escribir su código**: alcance, reglas de negocio, modelo de datos, permisos, comportamiento y cómo se prueba. La regla que la exige es [F2 · Sin spec acordada no hay código](base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md), y su molde es [plantillas/plantilla-spec-modulo.md](plantillas/plantilla-spec-modulo.md). Vive en `documentacion/<módulo>/spec.md`.
+**Spec** es el documento que dice **qué debe hacer un módulo, antes de escribir su código**: alcance, reglas de negocio, modelo de datos, permisos, comportamiento y cómo se prueba. La regla que la exige es [F2 · Sin spec acordada no hay código](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), y su molde es [plantillas/plantilla-especificacion-modulo.md](plantillas/plantilla-especificacion-modulo.md). Vive en `documentacion/<módulo>/spec.md`.
 
 La diferencia con la HU, que es donde se confunde:
 
@@ -241,7 +241,7 @@ HOY:    el plan no declara la spec del módulo (F2: sin spec acordada no hay có
 
 MEJOR:  el plan no dice dónde está escrito qué debe hacer este módulo.
         Ese documento va en documentacion/<módulo>/spec.md y se hace desde
-        plantillas/plantilla-spec-modulo.md. Sin él, qué hace el código lo
+        plantillas/plantilla-especificacion-modulo.md. Sin él, qué hace el código lo
         decide quien lo escribe (02·F2)
 ```
 
@@ -285,7 +285,7 @@ Y el mensaje del validador debería decir: *"falta el documento que dice qué de
 
 **Por qué no está en la épica 1.** Porque ahí no se construye código: se escriben reglas. El texto de la regla *es* el entregable, así que un plano aparte diría lo mismo dos veces. Se resolvió poniendo que la HU hace de spec, y quedó anotado como duda sin confirmar.
 
-**Lo que eso destapa.** Dos fases seguidas sin spec no es casualidad: [`02·F2`](base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) está escrita pensando en construir software, y este repo escribe reglas y programas cortos. O la regla necesita decir cuándo no aplica, o estas fases están mal.
+**Lo que eso destapa.** Dos fases seguidas sin spec no es casualidad: [`02·F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) está escrita pensando en construir software, y este repo escribe reglas y programas cortos. O la regla necesita decir cuándo no aplica, o estas fases están mal.
 
 ¿Reviso la regla, o dejo la duda anotada y seguimos?
 

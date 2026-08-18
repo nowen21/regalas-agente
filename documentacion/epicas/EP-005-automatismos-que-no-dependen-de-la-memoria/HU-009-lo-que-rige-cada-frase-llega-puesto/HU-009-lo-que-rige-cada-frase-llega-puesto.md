@@ -29,7 +29,7 @@
 
 **Esto ya funciona: la historia se escribe después del programa.** [`validadores/cargador.py`](../../../../validadores/cargador.py) existe desde la versión 5.0.0 y ya reparte `base/` en dos: manda **completo** todo lo que cuelga de `00-` y `01-`, y del resto manda una línea con la ruta, el peso y el título. Verificado el 2026-08-15: llegan puestos `00-nucleo-blindado.md`, `00-identidad-y-rol/` y `01-conducta.md`, 73 KB en total.
 
-Lo que falta no es construirlo: es que exista escrito **qué se exige** de ese reparto, para que nadie lo cambie sin saber qué rompía. Hoy la única explicación vive en un comentario dentro del programa, y una decisión que solo vive en el código se deshace en el primer cambio ([`13·DOC6`](../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)).
+Lo que falta no es construirlo: es que exista escrito **qué se exige** de ese reparto, para que nadie lo cambie sin saber qué rompía. Hoy la única explicación vive en un comentario dentro del programa, y una decisión que solo vive en el código se deshace en el primer cambio ([`13·DOC6`](../../../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md)).
 
 **Lo que el reparto no cubre, y no es de esta historia.** El capítulo [`02 · flujo de trabajo`](../../../../base/02-flujo-de-trabajo/base.md) llega como índice, y ahí está lo que gobierna cada movimiento de una fase. Eso es [HU-010](../HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md).
 

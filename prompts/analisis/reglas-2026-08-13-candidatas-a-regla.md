@@ -109,7 +109,7 @@
 
 **Qué exige la ficha:** un `.md` por archivo, sacado del código y no de suposiciones, en lenguaje claro.
 
-**Por qué no está cubierta.** [`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md) registra el **módulo** en el catálogo y [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md) retro-documenta el que no tiene spec. Ninguna baja al archivo.
+**Por qué no está cubierta.** [`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md) registra el **módulo** en el catálogo y [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) retro-documenta el que no tiene spec. Ninguna baja al archivo.
 
 | | |
 |---|---|

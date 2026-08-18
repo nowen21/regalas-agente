@@ -48,11 +48,11 @@ POR_NOMBRE = {
     "reglas-proyecto": "plantillas/reglas-proyecto.md",
     "mapa-dependencias": "plantillas/mapa-dependencias.md",
     "adr": "plantillas/ADR.md",
-    "spec": "plantillas/plantilla-spec-modulo.md",
+    "spec": "plantillas/plantilla-especificacion-modulo.md",
 }
 
 # La especificación de módulo, para saber cuándo mirar sus reglas de negocio.
-SPEC_MODULO = "plantillas/plantilla-spec-modulo.md"
+SPEC_MODULO = "plantillas/plantilla-especificacion-modulo.md"
 
 # `## 4. Reglas de negocio` y el siguiente encabezado del mismo nivel.
 _SECCION_REGLAS = re.compile(

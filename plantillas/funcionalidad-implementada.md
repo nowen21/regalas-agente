@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
 | **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)» |
+| **Especificación del módulo** | «enlace · [`02·F2`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
 | **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
 | **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
 | **Fecha de cierre** | AAAA-MM-DD |

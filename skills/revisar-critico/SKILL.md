@@ -1,11 +1,11 @@
 ---
 name: revisar-critico
-description: Revisión adversarial e independiente de un cambio antes de cerrarlo. Intenta refutar que esté bien: busca bugs, agujeros de seguridad y casos que la spec no anticipó. Úsala cuando se quiera una segunda mirada crítica sobre un cambio/diff, cuando el usuario pida "revisá esto", "qué puede salir mal", "buscá bugs/problemas", o antes de cerrar algo importante. Es el rol Reviewer/Crítico — complementa al Verifier, no lo reemplaza.
+description: Revisión adversarial e independiente de un cambio antes de cerrarlo. Intenta refutar que esté bien: busca bugs, agujeros de seguridad y casos que la especificación no anticipó. Úsala cuando se quiera una segunda mirada crítica sobre un cambio/diff, cuando el usuario pida "revisá esto", "qué puede salir mal", "buscá bugs/problemas", o antes de cerrar algo importante. Es el rol Crítico/Crítico — complementa al Verificador, no lo reemplaza.
 ---
 
-# Revisar crítico (rol Reviewer/Crítico)
+# Revisar crítico (rol Crítico/Crítico)
 
-Segunda mirada **independiente y adversarial**. Mientras el Verifier comprueba que el cambio **cumple la spec**, el Crítico pregunta **"¿qué puede salir mal?"** — busca lo que la spec **no anticipó**. Solo lee y reporta; **no arregla** (propone). No inventa hallazgos (`01`·C2): cada uno se apoya en el código real.
+Segunda mirada **independiente y adversarial**. Mientras el Verificador comprueba que el cambio **cumple la especificación**, el Crítico pregunta **"¿qué puede salir mal?"** — busca lo que la especificación **no anticipó**. Solo lee y reporta; **no arregla** (propone). No inventa hallazgos (`01`·C2): cada uno se apoya en el código real.
 
 ## Mentalidad
 
@@ -46,4 +46,4 @@ Si no sobrevive ningún hallazgo tras verificar: decirlo explícito ("sin hallaz
 
 No arreglar desde aquí: el Crítico reporta, el usuario decide qué se corrige.
 
-Ver: `08`·T7 (triangulación), `04` (seguridad), `05` (errores), `03` (datos), `06` (rendimiento); complementa `cerrar-fase` (Verifier).
+Ver: `08`·T7 (triangulación), `04` (seguridad), `05` (errores), `03` (datos), `06` (rendimiento); complementa `cerrar-fase` (Verificador).

@@ -16,7 +16,7 @@
 | **Épica** | `EP«01»` |
 | **HU** | `HU«03»` — **una sola** (`F12.1`) |
 | **Módulo** | «M» ([`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)) |
-| **Especificación del módulo** | «enlace a la especificación · [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md)» |
+| **Especificación del módulo** | «enlace a la especificación · [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
 | **Fecha apertura** | AAAA-MM-DD |
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |

@@ -8,7 +8,7 @@
 
 ## El problema
 
-[`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) exige una especificación acordada antes de tocar código. Está escrita dando por hecho que lo que se construye es el código de un módulo.
+[`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) exige una especificación acordada antes de tocar código. Está escrita dando por hecho que lo que se construye es el código de un módulo.
 
 Dos fases seguidas de este repositorio se abrieron declarando que no tienen especificación aparte:
 
