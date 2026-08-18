@@ -620,6 +620,67 @@ def _fila19_version(raiz):
         f"(fila 19)")]
 
 
+_ENTRADA = re.compile(r"(?m)^## (\d+\.\d+\.\d+) — ")
+_SOLO_FECHA = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+_JERGA_DE_LA_CASA = re.compile(
+    r"(?i)\b(fase|épica|checklist|validador|enganche|meta-?regla|opt-in|"
+    r"trazabilidad|derogad\w+|retrodocument\w+)\b")
+
+
+def _fila_m17_entrada_llana(raiz):
+    """`M17` · la entrada del registro abre sin jerga ni rutas.
+
+    Se mira **solo el primer párrafo** después del encabezado de versión, que
+    es lo que alguien lee antes de decidir si sigue. Que la entrada **se
+    entienda** lo decide quien lee; lo que se cuenta es lo que la volvía
+    ilegible en las 83 anteriores: identificadores de regla, rutas de archivo
+    y las palabras que solo significan algo adentro.
+
+    **Solo la entrada de la versión vigente.** [`20·M10`](...) dice que un
+    cambio de norma no reabre lo cerrado, y reportar las 83 viejas sepultaría
+    la única que todavía se puede arreglar.
+    """
+    try:
+        version = leer(os.path.join(raiz, "VERSION")).strip()
+        cambios = leer(os.path.join(raiz, "CHANGELOG.md"))
+    except OSError:
+        return []
+
+    m = _ENTRADA.search(cambios)
+    if not m or m.group(1) != version:
+        return []                       # sin entrada, ya se queja la fila 19
+
+    sig = _ENTRADA.search(cambios, m.end())
+    cuerpo = cambios[m.end():sig.start() if sig else len(cambios)]
+    parrafos = [p.strip() for p in cuerpo.split("\n\n") if p.strip()]
+    # La fecha queda pegada al encabezado y no dice nada: no se cuenta.
+    parrafos = [p for p in parrafos if not _SOLO_FECHA.match(p)]
+    if not parrafos:
+        return []
+    # El primero suele ser la línea del tipo (MAYOR · MENOR · PARCHE).
+    abre = "\n\n".join(parrafos[:2])
+
+    motivos = []
+    if _CITA_CON_CAPITULO.search(abre):
+        motivos.append("un identificador de regla")
+    if _RUTA_DE_ARCHIVO.search(abre):
+        motivos.append("una ruta de archivo")
+    jerga = sorted({j.lower() for j in _JERGA_DE_LA_CASA.findall(abre)})
+    if jerga:
+        motivos.append("palabras de la casa (%s)" % ", ".join(jerga))
+    if not motivos:
+        return []
+    return [Hallazgo(
+        AVISO, os.path.join(raiz, "CHANGELOG.md"), 0,
+        f"la entrada de la {version} abre con {' y '.join(motivos)} — `M17` pide "
+        f"qué cambió y por qué, en dos frases que se entiendan sin conocer el proyecto")]
+
+
+_CITA_CON_CAPITULO = re.compile(r"\d{2}·[A-Z]{1,4}\d+")
+_RUTA_DE_ARCHIVO = re.compile(r"[\w.-]+/[\w./-]*\.(?:md|py|plantilla)|[\w-]+\.(?:md|py|plantilla)")
+
+
 def validar(raiz=None):
     raiz = raiz or RAIZ
     catalogo = reglas(raiz)
@@ -643,7 +704,7 @@ def validar(raiz=None):
         hallazgos += _sello_se_contradice(r)
         hallazgos += _totales_del_sello(r)
         hallazgos += _un_solo_sello(r)
-    return hallazgos + _fila19_version(raiz)
+    return hallazgos + _fila19_version(raiz) + _fila_m17_entrada_llana(raiz)
 
 
 def validar_catalogo(proyecto, raiz=None):

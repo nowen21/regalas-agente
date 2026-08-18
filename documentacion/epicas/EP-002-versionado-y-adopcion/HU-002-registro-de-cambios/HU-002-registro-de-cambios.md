@@ -142,6 +142,7 @@ Entonces entiende qué le van a exigir de más y por qué
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-002-HU-002-retrodocumentar-el-registro-de-cambios](A-EP-002-HU-002-retrodocumentar-el-registro-de-cambios/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [B-EP-002-HU-002-la-entrada-se-entiende-sin-conocer-el-proyecto](B-EP-002-HU-002-la-entrada-se-entiende-sin-conocer-el-proyecto/README.md) | CA-03 | Cerrada 2026-08-18 (v23.9.0) |
 
 **La fase retro-documenta y no toca el registro.** Y trae un hallazgo: el CA-02 —«un cambio sin entrada no pasa»— hoy no lo impide nada. La fila 19 del checklist lo decidiría, y su programa no se puede correr.
 

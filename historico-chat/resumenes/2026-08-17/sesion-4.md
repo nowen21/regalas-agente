@@ -349,6 +349,18 @@ La decisión de cada duda quedó escrita **en la §2.7 del plan de su fase**, no
 
 **Ninguna arrancó.** Decidir no es ejecutar, y los estados lo dicen: pasan de «detenida por la duda» a «lista para arrancar».
 
+### H-31 · El registro de cambios estaba escrito para adentro, las 83 entradas
+
+**Qué pasó.** Se le mostró al usuario la entrada de la `15.2.0` para ejecutar el `CA-03` de [EP-002 · HU-002](../../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-002-registro-de-cambios/HU-002-registro-de-cambios.md), que exige que se entienda sin haber seguido el trabajo. Respondió **«no entendí nada»**.
+
+**No era una entrada mala: eran todas.** De las 83, **74 citan una ruta de archivo, 43 un identificador de regla, y ninguna tiene menos de tres marcas de jerga.**
+
+**Por qué duró meses.** El criterio estaba escrito desde el principio, pero **solo se puede comprobar con una persona** — y quien escribe la entrada ya sabe de qué habla, así que releerla uno mismo no comprueba nada. **Un criterio que necesita un lector sobrevive sin cumplirse hasta que alguien trae el lector.**
+
+**Dónde queda.** Nace [`20·M17`](../../../base/20-meta-reglas/reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) —la entrada abre con qué cambió y por qué, y el detalle va debajo— con su comprobación y diez casos. **Su primer hallazgo fue la entrada escrita unas horas antes**, por quien acababa de medir el problema.
+
+**Las 83 viejas se quedan** (`20·M10`), y queda una pregunta más grande: si el registro estaba escrito para adentro, es probable que otros documentos también.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

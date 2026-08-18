@@ -28,6 +28,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 | [`M14 · Ninguna regla nace fuera del procedimiento`](reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md) | El acto completo: los nueve pasos, con el checklist en CUMPLE como cierre. |
 | [`M15 · Toda cita a otra regla lleva su enlace`](reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) | Citar por ID no basta: la cita se escribe como enlace al sitio exacto. |
 | [`M16 · Toda regla de proyecto nombra la regla de base que concreta`](reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) | La capa 3 concreta un criterio de la base; si no existe, se crea en la base primero. |
+| [`M17 · La entrada del registro abre en castellano llano`](reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) | Qué cambió y por qué, en dos frases sin jerga; el detalle va debajo. |
 
 Además del catálogo, este capítulo tiene el molde de una regla parte por parte ([`estructura-regla.md`](estructura-regla.md)) y el instrumento con que se comprueba ([`checklist.md`](checklist.md)).
 

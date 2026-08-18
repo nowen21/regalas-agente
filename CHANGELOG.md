@@ -11,11 +11,25 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.9.0 — 2026-08-18
+
+**MENOR** — las entradas de este archivo empiezan ahora explicando, en dos frases y sin palabras raras, qué cambió y por qué. Los nombres de archivo y las referencias internas siguen estando, pero más abajo.
+
+Se cambió porque se le mostró una entrada vieja a quien no había seguido el trabajo y no entendió nada. No era una entrada mala: se revisaron las 83 y **ninguna** se entendía sin conocer el proyecto por dentro. Setenta y cuatro empezaban nombrando un archivo.
+
+Las 83 anteriores se quedan como están. Reescribirlas es otro trabajo y no corre prisa; lo que corría prisa era que la próxima naciera legible.
+
+**El detalle.** Nace [`20·M17`](base/20-meta-reglas/reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md), con su checklist en CUMPLE, y `validar.py metareglas` avisa cuando la entrada de la versión vigente abre con un identificador de regla, una ruta o jerga de la casa. Sale del `CA-03` de [EP-002 · HU-002](documentacion/epicas/EP-002-versionado-y-adopcion/HU-002-registro-de-cambios/HU-002-registro-de-cambios.md), que exige justamente eso y nunca se había comprobado con un lector de verdad.
+
+---
+
 ## 23.8.0 — 2026-08-18
 
-**MENOR** — los nombres de rol y la palabra «spec» pasan al español. Un proyecto al día no tiene que hacer nada; lo que cambia es cómo se llaman las cosas en lo que hereda.
+**MENOR** — los nombres de los roles estaban en inglés y ahora están en español: Explorer pasa a Explorador, Designer a Diseñador, y así con trece. La palabra «spec» pasa a «especificación».
 
-[`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) pide que todo término con traducción usada se escriba en español. Quedaban trece nombres de rol y la palabra «spec»: **211 apariciones en 39 archivos**.
+Se cambió porque el estándar exige escribir en español todo lo que tenga traducción usada, y estos nombres se habían quedado sin traducir. Un proyecto al día no tiene que hacer nada: lo que cambia es cómo se llaman las cosas.
+
+**El detalle.** Lo pide [`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica), y eran **211 apariciones en 39 archivos**.
 
 | Antes | Ahora |
 |---|---|

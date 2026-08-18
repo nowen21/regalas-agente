@@ -104,8 +104,11 @@ No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy n
 | `M9` | toda regla de `base/` aparece clasificada en este archivo |
 | `M10` | `CHANGELOG.md` y `VERSION` suben juntos — ya lo hace `version.py`, falta atarlo a la regla |
 | `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
+| `M17` | la entrada del registro abre sin identificador de regla ni ruta de archivo en su primer párrafo |
 
 `M14` es **parcial**: que la regla haya recorrido de verdad los nueve pasos no lo decide un script, pero la **presencia y el resultado** del bloque sí.
+
+`M17` es **parcial**, y por el mismo motivo que `M14`: que la entrada **se entienda** lo decide quien lee. Lo que sí se cuenta es que su primer párrafo no traiga identificadores ni rutas, que es lo que la volvía ilegible en las 83 anteriores.
 
 `M16` es del mismo capítulo pero **no se valida en seco** (🔶): el catálogo vive en el proyecto. El script abre `reglas-proyecto.md`, comprueba que cada `P` trae su **Respaldo** y que el ID citado existe en `base/`. Que el criterio citado sea de verdad el que la `P` concreta lo decide quien lee.
 
