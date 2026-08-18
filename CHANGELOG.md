@@ -81,7 +81,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `11` entero**: `CFG1`, `CFG2` y `CFG4` en CUMPLE; `CFG3` en NO CUMPLE — son tres exigencias en una. A `CFG4` se le agregó el ejemplo INCORRECTO/CORRECTO que le faltaba: la bandera que se enciende al liberar y nadie quita.
 - **El capítulo `12` entero**: `PR1`, `PR2` y `PR5` en CUMPLE; `PR3` y `PR4` en NO CUMPLE. `PR5` pasa a llamarse *Define cuánto se conservan y qué pasa después* y `PR2` gana su ejemplo. **`PR3` es la grave: no exige nada propio** — sus cuatro frases remiten al capítulo `04`, así que quien la cumple no hace nada distinto de cumplir aquel. Es un índice con forma de regla.
 - **El capítulo `10` entero**: `DEP1`, `DEP2`, `DEP4` y `DEP5` en CUMPLE; `DEP3` en NO CUMPLE por repetir `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7`. `DEP3` y `DEP5` ganan el ejemplo que les faltaba.
-- **Las reglas sin sello bajan de 121 a 98**; las publicadas en NO CUMPLE suben de 7 a 15. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
+- **El capítulo `05` entero**: `E1`, `E3` y `E5` en CUMPLE; `E2` y `E4` en NO CUMPLE. `E2` son dos exigencias y **la mitad que sobra ya se cita desde fuera** —`15·IM3` y el `13` apuntan acá para la transacción—, así que al partirla hay que llevar esas citas. `E4` no cabe: su escala de cuatro niveles es una tabla de referencia dentro de una regla.
+- **Las reglas sin sello bajan de 121 a 93**; las publicadas en NO CUMPLE suben de 7 a 17. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
 
 ### La fila 10 medía mal, y castigaba a las reglas que citan bien
 

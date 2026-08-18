@@ -66,6 +66,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `11` Configuración y entornos | 4 | `CFG1`, `CFG2`, `CFG4` | `CFG3` |
 | `12` Privacidad y datos personales | 5 | `PR1`, `PR2`, `PR5` | `PR3`, `PR4` |
 | `10` Dependencias de terceros | 5 | `DEP1`, `DEP2`, `DEP4`, `DEP5` | `DEP3` |
+| `05` Errores y logging | 5 | `E1`, `E3`, `E5` | `E2`, `E4` |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -86,6 +87,8 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `11·CFG3` | Filas 9 y 12 | **Son tres**: que los entornos se parezcan, que lo que las pruebas no reproducen se cubra con verificación manual documentada, y que los cambios de producción se documenten en vez de aplicarse de memoria |
 | `12·PR3` | Filas 9 y 11 | **No exige nada propio**: sus cuatro frases remiten al capítulo `04`. Un índice con forma de regla. O se queda con lo que `04` no dice, o se deroga |
 | `12·PR4` | Fila 11 | **Reformula `05·E5`, que a su vez reformula `00·N6`** — tres capas del mismo criterio. Tiene parte propia (pantallas y reportes) y esa es la que se queda |
+| `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
+| `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
 | `10·DEP3` | Fila 11 | Repite `04·S7`. **El arreglo está en el otro capítulo:** `DEP3` es el dueño correcto —una vulnerabilidad de una dependencia es asunto de dependencias— y lo que toca es derogar `S7` |
 
 ### Lo que se supo aplicando el checklist
@@ -108,14 +111,22 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
+### Un análisis anterior no exime de volver a medir
+
+`05·E4` figuraba como **cumple** en el análisis del 2026-08-07 y no cabe en el molde: 419 caracteres para 320. El análisis midió a ojo esa fila.
+
+**El criterio queda así:** el análisis vale para las nueve filas que piden leer y entender —y ahí es la mejor fuente que hay—, pero las que un programa puede contar se vuelven a contar. Son la 5, 6, 7, 10, 12, 13, 14, 15, 18, 19 y 20, y `validar.py metareglas` las mide en dos segundos.
+
+Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis casi hace sellar en CUMPLE una regla ya reprobada. **Ni ignorarlo ni creerle: leerlo para lo que juzga y medir lo que se mide.**
+
 ### Cómo va la cuenta
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **98** |
-| Publicadas en NO CUMPLE | 7 | 7 | **15** |
+| Sin bloque de checklist | 129 | 121 | **93** |
+| Publicadas en NO CUMPLE | 7 | 7 | **17** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Veintitrés reglas ganaron su sello hoy, en cinco capítulos: el `10`, el `11`, el `12`, el `14`, el `15` y `F13`. Ocho de esas veintitrés dicen NO CUMPLE.
+Veintiocho reglas ganaron su sello hoy, en seis capítulos —el `05`, el `10`, el `11`, el `12`, el `14`, el `15`— más `F13`. Diez de esas veintiocho dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
