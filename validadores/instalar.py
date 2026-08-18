@@ -961,7 +961,9 @@ def registrar_version(ruta, antes, pasos, aplicar, anterior=""):
 
     archivo = versiones.registrar(
         ruta, actual, antes, despues, pasos,
-        pendientes=_pendientes(ruta), estandar=RAIZ, anterior=anterior)
+        # `46` · Se pasa la función, no su resultado: el apartado tiene que
+        # calcularse cuando el registro ya exista, o se lista a sí mismo.
+        pendientes=lambda: _pendientes(ruta), estandar=RAIZ, anterior=anterior)
     return [f"registrar {os.path.relpath(archivo, ruta)}"]
 
 

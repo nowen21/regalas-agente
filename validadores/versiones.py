@@ -356,19 +356,37 @@ def registrar(proyecto, version_nueva, antes, despues, pasos,
     lineas += ["", "## Qué se aplicó", ""]
     lineas += [f"- {p}" for p in pasos] or ["- (nada: ya estaba todo al día)"]
 
-    if pendientes:
-        lineas += ["", "## Qué quedó pendiente", "",
-                   "Esto no lo aplica el instalador — es decisión del usuario:", ""]
-        lineas += [f"- {p}" for p in pendientes]
-
-    lineas += ["", "---", "",
-               "> Lo escribió `validadores/instalar.py`. No se edita a mano.", ""]
-
     nombre = _nombre_libre(carpeta, fecha, version_nueva)
     archivo = os.path.join(carpeta, nombre)
-    with open(archivo, "w", encoding="utf-8", newline="\n") as f:
-        f.write("\n".join(lineas))
+    cierre = ["", "---", "",
+              "> Lo escribió `validadores/instalar.py`. No se edita a mano.", ""]
+
+    def escribir(cuerpo):
+        with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(cuerpo))
+
+    # `46` · El apartado de abajo se calcula **después** de que este archivo
+    # exista, no antes.
+    #
+    # Calculándolo antes, el registro recién nacido se listaba a sí mismo como
+    # faltante: «lo instalado dice 21.2.1 y el último registro dice 20.0.1».
+    # Era cierto un instante antes de escribirse y falso desde entonces, y
+    # nadie lo volvía a tocar. `dp` lo recibió así dos veces el mismo día.
+    #
+    # Por eso el archivo se escribe primero, aunque cueste escribirlo dos
+    # veces: la foto tiene que tomarse con el trabajo terminado. Y por eso
+    # `pendientes` acepta una función — si fuera una lista ya calculada, daría
+    # igual cuándo se usara, porque la foto ya estaría tomada.
+    escribir(lineas + cierre)
     escribir_indice(proyecto)
+
+    faltan = pendientes() if callable(pendientes) else pendientes
+    if faltan:
+        lineas += ["", "## Qué quedó pendiente", "",
+                   "Esto no lo aplica el instalador — es decisión del usuario:", ""]
+        lineas += [f"- {p}" for p in faltan]
+        escribir(lineas + cierre)
+
     return archivo
 
 

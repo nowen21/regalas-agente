@@ -1577,21 +1577,28 @@ class Citas(unittest.TestCase):
         _, n = citas.enlazar("como dice `G2`", origen, idx)
         self.assertEqual(n, 0)
 
-    @unittest.expectedFailure
     def test_no_queda_ninguna_cita_suelta_en_base(self):
         """Es la regla que el usuario pidió: toda cita lleva su enlace.
 
-        **Falla desde el 2026-08-17, y las cinco que reporta son falsos
-        positivos.** Se revisaron una por una: cuatro son identificadores
-        usados como **ejemplo** dentro de la prosa —«el código corto de una
-        regla, como `C20` o `F12`», «ponerle `G9` a una regla del capítulo de
-        pruebas»— y la quinta es una cita que **sí** lleva enlace, a un ancla
-        del mismo archivo. `G9` ni siquiera existe.
+        **Pasa desde el 2026-08-17**, al cerrarse el pendiente 55. Estuvo
+        marcada como fallo esperado porque las cinco que reportaba eran falsos
+        positivos, y `base/` estaba bien escrito: torcer el texto para callar
+        al validador era la salida mala que ese pendiente describe.
 
-        Es la familia del pendiente 55, que ya está abierto: el validador lee
-        como enlace lo que está entre comillas de código. Queda como fallo
-        esperado en vez de editar `base/`, que está bien escrito — y en vez de
-        borrar la prueba, que es la que va a avisar cuando el 55 se cierre."""
+        Las cinco se resolvieron sin tocar una línea de `base/`, y cada una por
+        un motivo distinto:
+
+        - `C20` y `F12` en el glosario, y `G9` en `estructura-regla.md`: caen
+          en columnas de ejemplo —«Lo que sale mal»—, así que muestran un
+          identificador en vez de citarlo.
+        - `ID7` en `ID9`: es la segunda mención del mismo archivo, y la
+          primera sí lleva su enlace.
+        - `G1` en `09-git.md`: es un ancla del mismo archivo, que es la forma
+          correcta de citar a una vecina.
+
+        Y un dato que el pendiente daba mal: **`G9` sí existe** — es *La
+        historia de usuario es la unidad del commit*, en `09-git.md`. Seguía
+        siendo falso positivo, pero por ser ejemplo y no por no existir."""
         self.assertEqual(citas.validar(), [])
 
     def test_enlazar_dos_veces_no_cambia_nada(self):

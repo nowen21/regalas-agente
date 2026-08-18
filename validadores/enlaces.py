@@ -6,6 +6,7 @@ Este validador corre sobre ESTE repositorio (el estándar), no sobre un proyecto
 que lo use. Es el único que puede correr sin nada más.
 """
 import os
+from urllib.parse import unquote
 
 import comun
 from comun import (AVISO, FALLA, Hallazgo, RAIZ, enlaces, leer, recorrer_md,
@@ -94,7 +95,12 @@ def validar_enlaces(raiz=None):
             if not _es_interno(destino) or not _comprobable(texto, destino):
                 continue
             # El ancla (#seccion) no se comprueba, solo el archivo.
-            ruta = destino.split("#", 1)[0]
+            #
+            # `33 · 1` · El `unquote` no es cosmético: un enlace a un archivo
+            # cuyo nombre lleva espacios se escribe con `%20`, y sin
+            # decodificarlo se busca en disco un archivo que nadie llamó así.
+            # Se reportaba roto con el archivo delante.
+            ruta = unquote(destino.split("#", 1)[0])
             if not ruta:
                 continue
             if ruta.startswith(MARCADOR_RAIZ):

@@ -28,6 +28,10 @@ _ENCABEZADO = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
 _CERCA = re.compile(r"^\s*(```|~~~)")
 _ENLACE = re.compile(r"\[([^\]\n]*)\]\(([^)\s]+)")
 
+# Un tramo `entre comillas invertidas`, con una o varias comillas de apertura,
+# como en markdown. Lo de adentro es una muestra, no contenido del documento.
+_CODIGO_EN_LINEA = re.compile(r"(`+)(?:(?!\1).)*?\1")
+
 
 class Hallazgo:
     """Un incumplimiento o aviso, anclado a archivo y línea."""
@@ -108,11 +112,30 @@ def marcadores(texto):
     return salida
 
 
+def sin_codigo_en_linea(linea):
+    """La línea con los tramos `entre comillas invertidas` en blanco.
+
+    `55` · Un plan de pruebas escribió, entre comillas, el texto que el caso
+    tenía que encontrar: `` `[historico-chat/…](../../…)` ``. Eso no es un
+    enlace, es una muestra — y el validador lo reportó roto dos veces. Las dos
+    salidas eran malas: redactar torcido para callarlo, o aprender a ignorarlo.
+
+    Se reemplaza por espacios en vez de borrarse, para no correr las columnas:
+    el número de línea y la posición siguen valiendo.
+    """
+    return _CODIGO_EN_LINEA.sub(lambda m: " " * len(m.group(0)), linea)
+
+
 def enlaces(texto):
-    """Enlaces markdown del documento: (numero_de_linea, texto, destino)."""
+    """Enlaces markdown del documento: (numero_de_linea, texto, destino).
+
+    No mira dentro de los bloques cercados (`lineas_utiles`) ni de las comillas
+    invertidas: ahí lo que hay son ejemplos de cómo se escribe un enlace, no
+    enlaces a ninguna parte.
+    """
     salida = []
     for n, linea in lineas_utiles(texto):
-        for m in _ENLACE.finditer(linea):
+        for m in _ENLACE.finditer(sin_codigo_en_linea(linea)):
             salida.append((n, m.group(1), m.group(2)))
     return salida
 

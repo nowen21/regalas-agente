@@ -1,6 +1,6 @@
 # Pendiente · El registro de versión dice que falta escribirse
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado** el 2026-08-17. Anotado el 2026-08-16.
 
 | | |
 |---|---|
@@ -68,3 +68,25 @@ Se corre el instalador en un proyecto al que le falte algún componente. El regi
 ## Nota aparte, del mismo hallazgo
 
 El archivo [`44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md`](hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) sigue en esta carpeta con **Estado: abierto**, aunque el [README](README.md) lo da por cerrado el 2026-08-16 (v21.2.0) y su cierre está en [`hecho/poner-al-dia-lo-ya-instalado.md`](hecho/poner-al-dia-lo-ya-instalado.md). El README de esta carpeta dice que al cerrar un pendiente su archivo se borra o se marca con la fecha, y acá no pasó ninguna de las dos. Se anota acá y no en un pendiente aparte porque es una línea de arreglo, no un tema.
+
+---
+
+# Cómo cerró — 2026-08-17
+
+**Por la salida A**, que era la que correspondía: el problema no era de `versiones` sino de que la foto se tomaba antes de terminar el trabajo.
+
+`versiones.registrar()` ahora escribe el archivo **primero** y recién entonces calcula «Qué quedó pendiente». Para que eso sea posible, el parámetro `pendientes` acepta una función además de una lista: si fuera siempre una lista ya calculada, daría igual cuándo se usara — la foto ya estaría tomada. `instalar.py` le pasa `lambda: _pendientes(ruta)`.
+
+Cuesta escribir el archivo dos veces. Es el precio de que diga la verdad.
+
+**Y arregla de paso lo que la salida B habría dejado abierto:** cualquier otro componente que el instalador aprenda a arreglar solo en el futuro tampoco va a aparecer listado como faltante. La B tapaba este caso y dejaba el defecto para el siguiente.
+
+## Cómo quedó comprobado
+
+[validadores/tests/test_registro_no_se_lista_a_si_mismo.py](../validadores/tests/test_registro_no_se_lista_a_si_mismo.py), 6 casos. El que importa no mira el texto del archivo: le pasa una función que **espía si el registro ya existe** en el momento en que se le pregunta qué falta. Si se calculara antes, la carpeta estaría vacía.
+
+Los otros cinco son para que el arreglo no se vuelva una excusa para callar: lo que de verdad falta se sigue escribiendo, un apartado vacío no se escribe, la lista ya calculada sigue funcionando, el documento no queda a medias con las dos escrituras, y el índice se escribe igual.
+
+## Falta avisarle a `dp`
+
+Su pendiente de seguimiento —`documentacion/pendientes/24-el-registro-de-version-se-contradice.md`— queda **abierto allá** hasta que corra el instalador con esta corrección y lo compruebe.

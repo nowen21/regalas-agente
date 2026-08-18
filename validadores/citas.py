@@ -60,6 +60,33 @@ _CITA_ENLAZADA = re.compile(
 
 _CERCA = re.compile(r"^\s*(```|~~~)")
 
+# `55` · Una celda bajo una de estas columnas **muestra** un identificador; no
+# cita ninguna regla. Exigirle el enlace obliga a redactar torcido para callar
+# al validador, que es la salida mala que el pendiente 55 describe.
+#
+# El caso que lo destapó: `estructura-regla.md` explica la anatomía de un
+# identificador, y su columna «Lo que sale mal» dice «ponerle `G9` a una regla
+# del capítulo de pruebas». Ahí `G9` es el token equivocado del ejemplo, no la
+# regla `G9` de git — que existe, aunque el pendiente afirmara lo contrario.
+COLUMNAS_DE_EJEMPLO = {
+    "lo que sale mal", "así se ve", "asi se ve", "ejemplo", "ejemplos",
+    "incorrecto", "correcto", "mal", "bien", "qué es de verdad",
+}
+
+
+def _celdas_de(linea):
+    return [c.strip() for c in linea.strip().strip("|").split("|")]
+
+
+def _es_muestra(linea, columna_de, id):
+    """¿El identificador cae en una celda de columna de ejemplos?"""
+    if not columna_de or not linea.strip().startswith("|"):
+        return False
+    for i, celda in enumerate(_celdas_de(linea)):
+        if id in celda and i < len(columna_de):
+            return columna_de[i] in COLUMNAS_DE_EJEMPLO
+    return False
+
 
 def ancla(titulo_completo):
     """El ancla que GitHub genera para un encabezado.
@@ -135,6 +162,7 @@ def enlazar(texto, origen, idx):
     cambios = [0]
     salida = []
     dentro = False
+    estado = {"encabezados": [], "linea": "", "previo": ""}
 
     def enlace(capitulo, id, literal):
         """El enlace, o el texto original si la regla no existe."""
@@ -143,10 +171,21 @@ def enlazar(texto, origen, idx):
         # validador la reporta. Un enlace roto es peor que ninguno.
         if not ruta or idx[id][0] == origen:
             return literal
+        # `55` · El reparador obedece las mismas exclusiones que el validador.
+        # Si no, escribe en `base/` justo lo que el validador ya aceptó que no
+        # era una cita — y eso es peor que reportar de más.
+        if _es_muestra(estado["linea"], estado["encabezados"], id):
+            return literal
+        if (f"[`{id}`](" in estado["previo"]
+                or f"·{id}`](" in estado["previo"]):
+            return literal
         cambios[0] += 1
         return f"[`{f'{capitulo}·{id}' if capitulo else id}`]({ruta})"
 
     for linea in texto.splitlines(keepends=True):
+        anterior = estado["previo"]
+        estado["previo"] = anterior + linea
+        estado["linea"] = linea
         if _CERCA.match(linea):
             dentro = not dentro
             salida.append(linea)
@@ -154,6 +193,14 @@ def enlazar(texto, origen, idx):
         if dentro or linea.lstrip().startswith("#"):
             salida.append(linea)
             continue
+
+        if re.fullmatch(r"\|[-:|\s]+\|", linea.strip()):
+            previas = anterior.splitlines()
+            estado["encabezados"] = ([c.lower() for c in _celdas_de(previas[-1])]
+                                     if previas else [])
+        elif not linea.strip().startswith("|"):
+            estado["encabezados"] = []
+        estado["previo"] = anterior      # lo previo no incluye esta línea
 
         # El orden importa: la partida primero, porque su `NN` entre comillas
         # también encajaría a medias en las otras.
@@ -165,6 +212,7 @@ def enlazar(texto, origen, idx):
         linea = _CITA.sub(
             lambda m: enlace(m.group(1), m.group(2), m.group(0)), linea)
         salida.append(linea)
+        estado["previo"] = anterior + linea
 
     return "".join(salida), cambios[0]
 
@@ -184,6 +232,10 @@ def reparar(texto, origen, idx):
         capitulo, id, ruta = m.group(1), m.group(2), m.group(3)
         esperado = destino(origen, id, idx)
         if not esperado or ruta == esperado:
+            return m.group(0)
+        # `55` · El ancla suelta a una regla de este mismo archivo es correcta
+        # —`[`G1`](#g1--…)`— y reescribirla a la ruta completa la empeora.
+        if not ruta.split("#")[0] and idx[id][0] == origen:
             return m.group(0)
         cambios[0] += 1
         return f"[`{f'{capitulo}·{id}' if capitulo else id}`]({esperado})"
@@ -206,12 +258,26 @@ def validar(raiz=None):
 
     for archivo in recorrer_md(os.path.join(raiz, BASE)):
         dentro = False
+        encabezados = []          # las columnas de la tabla que se está leyendo
+        # Lo ya leído del archivo, para saber si una cita se enlazó antes.
+        # `55` · Exigir el enlace en la segunda mención del mismo documento es
+        # ruido: quien lee ya lo tiene tres líneas más arriba.
+        texto_previo = ""
         for n, linea in enumerate(leer(archivo).splitlines(), start=1):
+            anterior, texto_previo = texto_previo, texto_previo + linea + "\n"
             if _CERCA.match(linea):
                 dentro = not dentro
                 continue
             if dentro or linea.lstrip().startswith("#"):
                 continue
+            texto_previo_sin_esta = anterior
+
+            # El encabezado de la tabla en curso: la fila anterior al renglón
+            # de guiones. Se olvida al salir de la tabla.
+            if re.fullmatch(r"\|[-:|\s]+\|", linea.strip()):
+                encabezados = [c.lower() for c in _celdas_de(anterior.splitlines()[-1])]                     if anterior.strip() else []
+            elif not linea.strip().startswith("|"):
+                encabezados = []
 
             for m in _CITA_ENLAZADA.finditer(linea):
                 id, ruta = m.group(2), m.group(3)
@@ -221,6 +287,12 @@ def validar(raiz=None):
                         f"la cita `{id}` enlaza a una regla que no existe"))
                     continue
                 esperado = destino(archivo, id, idx)
+                # `55` · El ancla suelta vale cuando la regla vive en este
+                # mismo archivo: `[`G1`](#g1--…)` es la forma correcta de
+                # citar a una vecina, y compararla contra la ruta completa la
+                # daba por mal apuntada.
+                if not ruta.split("#")[0] and idx[id][0] == archivo:
+                    continue
                 if ruta.split("#")[0] != esperado.split("#")[0]:
                     hallazgos.append(Hallazgo(
                         AVISO, archivo, n,
@@ -233,6 +305,11 @@ def validar(raiz=None):
                     continue          # no es una cita: es texto que se le parece
                 if idx[id][0] == archivo:
                     continue          # se cita a sí misma o a una vecina del archivo
+                if (f"[`{id}`](" in texto_previo_sin_esta
+                        or f"·{id}`](" in texto_previo_sin_esta):
+                    continue          # `55` · ya se enlazó antes en este archivo
+                if _es_muestra(linea, encabezados, id):
+                    continue          # `55` · es una muestra, no una cita
                 hallazgos.append(Hallazgo(
                     AVISO, archivo, n,
                     f"la cita `{id}` no lleva enlace — quien lea tiene que ir "

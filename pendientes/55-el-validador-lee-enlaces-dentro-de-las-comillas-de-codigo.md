@@ -1,6 +1,6 @@
 # Pendiente · El validador lee como enlace lo que está entre comillas de código
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado** el 2026-08-17. Anotado el 2026-08-16.
 
 | | |
 |---|---|
@@ -86,3 +86,31 @@ Y que `citas.py` no cuente como cita un identificador que aparece **como ejemplo
 ## Cómo se sabrá que cerró
 
 Un documento que muestre un enlace de ejemplo entre comillas de código no produce ningún hallazgo.
+
+---
+
+# Cómo cerró — 2026-08-17
+
+**Sin tocar una línea de `base/`.** Eso era la mitad del punto: torcer el texto para callar al validador era la salida mala que este pendiente describe.
+
+Los cinco falsos positivos se resolvieron por cinco motivos distintos, y ninguno necesitó una convención nueva:
+
+| Caso | Por qué ya no se reporta |
+|---|---|
+| `C20` y `F12` en el glosario · `G9` en `estructura-regla.md` | Caen en **columnas de ejemplo** —«Lo que sale mal», «Así se ve»—. Una celda ahí **muestra** un identificador, no lo cita |
+| `ID7` en `ID9` | Es la **segunda mención** del mismo archivo y la primera sí lleva su enlace. Pedirlo dos veces en tres líneas es ruido |
+| `G1` en `09-git.md` | Es un **ancla del mismo archivo**, que es la forma correcta de citar a una vecina |
+| El enlace entre comillas invertidas | `comun.enlaces()` ya no mira dentro de un tramo `` `así` ``, igual que hace cualquier lector de Markdown |
+
+**Y la mitad que este pendiente no había visto: el reparador.** Aquí se decía que el validador *reporta* de más. Medido al cerrarlo, `citas.py --aplicar` **habría escrito** ese error en `base/` — cuatro ejemplos enlazados como si fueran citas y un ancla correcta reescrita, en una sola corrida. Ahora `enlazar()` y `reparar()` obedecen las mismas exclusiones que `validar()`: **si el validador no lo reporta, el reparador no lo toca.**
+
+## El dato que este pendiente daba mal
+
+Decía que **`G9` no existe**. Sí existe: es [base/09-git.md](../base/09-git.md), *La historia de usuario es la unidad del commit*. Seguía siendo falso positivo, pero por ser un ejemplo — no por apuntar al vacío. La diferencia importaba: con el motivo equivocado, el arreglo habría sido otro y no habría funcionado.
+
+## Cómo quedó comprobado
+
+- `validar.py estandar`: **sin incumplimientos**. Antes eran 5 avisos.
+- `citas.py` en simulación: **0 enlazadas · 0 reparadas · 0 archivos**.
+- [validadores/tests/test_citas_y_enlaces_de_ejemplo.py](../validadores/tests/test_citas_y_enlaces_de_ejemplo.py), 12 casos: uno por cada motivo, uno para que el reparador no proponga nada, y dos que comprueban que el arreglo **no se volvió una excusa para callar** — el enlace de verdad en la misma línea se sigue leyendo, y el archivo que de verdad no existe se sigue reportando.
+- Se le quitó el `expectedFailure` a `Citas.test_no_queda_ninguna_cita_suelta_en_base`, como este pendiente pedía.
