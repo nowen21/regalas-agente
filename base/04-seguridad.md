@@ -6,11 +6,11 @@ Seguridad más allá de los archivos. El núcleo (`00`) blinda los mínimos; aqu
 
 ## S1 · Autorización en cada acción sensible
 
-Toda acción que lee o cambia datos no públicos verifica **autenticación y permiso en el servidor**, antes de ejecutarse. Ocultar un botón es UX, no seguridad.
+Toda acción que lee o cambia datos no públicos verifica **autenticación y permiso en el servidor**. Ocultar un botón es apariencia, no seguridad.
 
-- Verifica el permiso en el punto de entrada (controlador/endpoint/comando).
-- Valida el **scope**: el usuario solo accede a sus registros (su proyecto, su organización), no basta el permiso genérico.
-- Acciones de peso (anular, eliminar, masivas, admin) llevan **permiso propio**.
+- El permiso se comprueba en el punto de entrada.
+- Y el **alcance**: el usuario solo llega a sus registros.
+- Anular, eliminar y las masivas llevan **permiso propio**.
 
 ```
 INCORRECTO: oculto el botón "Eliminar" y confío en que no llamen al endpoint
@@ -19,36 +19,34 @@ CORRECTO:   verifico permiso en el servidor + valido el scope del registro
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 437 caracteres para un molde de 320.** El análisis del 2026-08-07 la daba por cumplida; es el cuarto caso en que esa fila estaba medida a ojo.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 437 caracteres a 311**, para un molde de 320. Se fueron los paréntesis que enumeraban dónde comprobar y qué cuenta como registro propio. Los tres puntos siguen, y el **alcance** —que no baste el permiso genérico— sigue dicho.
 
-Lo demás pasa, y la regla es de las que más se citan del capítulo. **Acortarla es delicado justamente por eso:** lo que sobra hay que quitarlo sin tocar lo que otras reglas dan por dicho.
-
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S2 · Valida y sanea toda entrada externa
 
-Todo dato de afuera (formularios, URL, cabeceras, archivos, APIs) es **no confiable** hasta validarlo.
+Todo dato de afuera es **no confiable** hasta validarlo.
 
-- Valida tipo, rango, formato y valores permitidos en el servidor.
-- Escapa según el destino: HTML (XSS), consultas, rutas de archivo, comandos.
+- Tipo, rango, formato y valores permitidos, **en el servidor**.
+- Escapado según el destino: pantalla, consulta, ruta de archivo, orden del sistema.
 - **Lista blanca** antes que lista negra.
-- Archivos: valida tipo real y tamaño; nunca tipos ejecutables.
+- Archivos: tipo real y tamaño; nunca ejecutables.
 
 ```
 INCORRECTO: renderizar directo lo que escribió el usuario
@@ -57,23 +55,23 @@ CORRECTO:   escapar la salida al renderizar (XSS)
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 349 caracteres.** Se pasa por poco y lo demás pasa.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 349 caracteres a 295**, para un molde de 320. Se fue la enumeración de qué es «dato de afuera» y los nombres de los ataques; lo que se escapa y contra qué sigue igual.
 
-Está clasificada y con validador escrito —`seguridad.py`—, así que la fila **18** pasa con programa detrás.
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

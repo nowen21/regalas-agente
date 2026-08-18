@@ -208,9 +208,9 @@ Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19
 
 ## G7 · Todo commit se muestra al usuario y se aprueba antes de ejecutarlo
 
-Antes de `git commit` (y del `push`), el agente **muestra al usuario el mensaje completo del commit y los archivos afectados**, y **espera aprobación explícita**. El usuario primero lee, luego aprueba; recién ahí se ejecuta.
+Antes de confirmar y de publicar, el agente **muestra el mensaje completo y los archivos afectados** y **espera aprobación explícita**. Primero se lee, después se aprueba, y recién ahí se ejecuta.
 
-Aceptar un cambio en los archivos **no** autoriza a commitearlo: son dos permisos distintos ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada) — autorización de un solo uso). No encadenar el commit en la misma acción que produjo el cambio.
+Aceptar el cambio **no** autoriza a guardarlo: son dos permisos ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)).
 
 ```
 INCORRECTO: hago el cambio y en el mismo paso hago commit/push · "ya que estaba, lo subí"
@@ -221,23 +221,23 @@ CORRECTO:   hago el cambio → muestro el mensaje + los archivos → espero "sub
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 421 caracteres.** Es lo único que reprueba, y el análisis del 2026-08-07 la daba por cumplida: quinto caso en que esa fila estaba medida a ojo.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 421 caracteres a 270**, para un molde de 320. Se fueron los nombres de las órdenes, que además reprobaban la fila 5 en otras reglas del cuerpo. **Los dos permisos separados siguen siendo el corazón de la regla.**
 
-**La fila 9 sí pasa pese al «y» del título**, y el análisis lo dejó dicho: no se puede aprobar lo que no se mostró. Mostrar y aprobar son un solo acto en dos tiempos, como el qué y el porqué de `G2`.
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -294,9 +294,8 @@ Eso hay que saberlo antes de partirla: la mitad que salga se lleva `G10`, no `G9
 
 ## G9 · La historia de usuario es la unidad del commit
 
-Lo que pertenece a una historia de usuario (su documento, sus fases, su código) se guarda en un commit que **no toca otra historia**, y lo que todavía no tiene su historia escrita no se sube: espera a tenerla.
-Concreta a [`G1`](#g1--commits-atómicos-un-solo-propósito), que pide un propósito por commit: acá el propósito es la HU ([`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)).
-Excepción: lo que no es de ninguna HU y una HU necesita para no citar lo que no está (el planteamiento, el documento de su épica) sube con la primera que lo necesite.
+Lo de una historia —documento, fases, código— va en un commit que **no toca otra**, y lo que aún no tiene historia espera a tenerla (concreta a [`G1`](#g1--commits-atómicos-un-solo-propósito)).
+Excepción: lo que no es de ninguna historia sube con la primera que lo necesite.
 
 ```
 INCORRECTO: un commit con HU-002, HU-003 y las épicas que todavía no
@@ -309,30 +308,22 @@ Comprobable: un commit que toca dos carpetas de HU distintas se detecta comparan
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 552 caracteres.** Es lo único que reprueba.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 552 caracteres a 319**, para un molde de 320. Se apretó la redacción y se fue la cita a [`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), que no aportaba exigencia. **La excepción conserva su condición y su límite**, que es lo único que no se podía tocar.
 
-**No estaba en el análisis del 2026-08-07 porque nació después**, y por eso su bloque se aplicó entero desde cero en vez de contrastarlo. Cabe anotar que una regla nueva llega igual de larga que las viejas: el molde de cuatro líneas no se respeta ni con el checklist recién escrito a la vista.
-
-La fila **14** pasa y es de las pocas del cuerpo que declara dependencia en la forma que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite: *«concreta a `G1`»*. Su excepción —lo que no es de ninguna historia sube con la primera que lo necesite— declara condición y límite; le falta el autorizador, pero es del mismo tipo que la de [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas), no de las tres que se autorizan solas.
-
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
-
----
-
-Ver: `00` N2/N3/N6, `07` Q6 (lint), `08` (pruebas), `11` (config fuera del código), `13` (decisiones también en docs).

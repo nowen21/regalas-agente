@@ -11,6 +11,55 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.5 — 2026-08-18
+
+**PARCHE** — diez reglas que solo sobraban de largo caben ahora en el molde. **Ninguna cambia lo que exige.**
+
+### Diez de una sola pasada, y por qué se podían hacer juntas
+
+De las 70 reglas en NO CUMPLE, **quince fallan solo la fila 10** —el cuerpo de cuatro líneas de [`20·M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)— y diez de esas son puro exceso de explicación: no hay que partirlas, ni derogarlas, ni decidir nada.
+
+**Es el único trabajo grande del [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) que no depende de una decisión.**
+
+| Regla | Antes | Después |
+|---|---:|---:|
+| [`01·C13`](base/01-conducta.md#c13--preguntas-de-análisis-van-en-chat-abierto-no-en-formulario-cerrado) | 802 | **306** |
+| [`09·G9`](base/09-git.md#g9--la-historia-de-usuario-es-la-unidad-del-commit) | 552 | **319** |
+| [`01·C19`](base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) | 533 | **317** |
+| `01·C12` · `01·C11` | 462 · 461 | **269** · **278** |
+| [`04·S1`](base/04-seguridad.md#s1--autorización-en-cada-acción-sensible) · `04·S2` | 437 · 349 | **311** · **295** |
+| `09·G7` · `17·I1` · `03·D3` | 421 · 395 · 378 | **270** · **293** · **306** |
+
+Reglas en NO CUMPLE: **70 → 60**.
+
+### Lo que sobra casi siempre es el porqué, y la regla ya lo decía
+
+En **ocho de las diez** lo que se fue era razonamiento — por qué sobre-verificar molesta, por qué el formulario cerrado empobrece la respuesta, por qué lo que no se versiona se pierde. La fila 10 lo dice ella misma: *si no cabe, o son dos reglas o se está contando el porqué, que va a `notas/`*. **El diagnóstico acertó ocho de diez veces.**
+
+### El bloque de ejemplo era espacio gratis y nadie lo usaba
+
+La fila 10 mide **solo el cuerpo**. Un ejemplo largo no cuesta nada; una enumeración en el cuerpo cuesta todo. Y aun así las reglas más largas tenían ejemplos cortos — `01·C12` llevaba tres ejemplos de adjetivo **en el cuerpo** teniendo su bloque justo debajo.
+
+**La forma de acortar sin perder nada estaba disponible desde el principio.**
+
+### Nada se perdió, y se comprobó punto por punto
+
+Los tres puntos de `D3`, los tres de `S1`, los cuatro de `S2`, los tres estados de `I1`, los tres criterios de `C13`. **Y ninguna excepción se tocó** — es lo único de una regla que no se puede resumir sin cambiar qué permite.
+
+**Cada sello dice de cuánto a cuánto y qué texto salió**, para que quien lea dentro de un año sepa si lo que falta se perdió o se movió.
+
+### Lo que **no** se tocó, de las quince
+
+`03·D8`, `04·S9` y `04·S10` tienen dentro **un procedimiento**, no una explicación: es el caso de anexo. `05·E4` ya tenía decidido que su escala se va a un anexo, y `02·F13` se reescribió hace días.
+
+**`04·S9` tiene además un motivo propio:** es **el único modelo de excepción completa del cuerpo** —condición, límite y autorizador—, y acortarla de paso entre otras nueve es la forma de perderlo.
+
+**Y queda una deuda dicha:** el porqué que se sacó **no se escribió en `notas/`**. No se perdió —los sellos dicen qué salió de cada regla— pero no está donde `M5` manda.
+
+Fase: [`E-EP-001-HU-009`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo/).
+
+---
+
 ## 23.7.4 — 2026-08-18
 
 **PARCHE** — dos reglas enlazaban a su vecina **y además la copiaban**. Se quedan con lo suyo; **ninguna exigencia desaparece del cuerpo**.

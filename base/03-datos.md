@@ -87,8 +87,8 @@ Está clasificada y con validador escrito —`migraciones.py`—, así que la fi
 Preservar datos y comportamiento sin intervención manual.
 
 - Columna obligatoria nueva → con **default** equivalente al comportamiento previo.
-- Enum → FK a catálogo: (1) crear el catálogo, (2) poblar la columna nueva mapeando cada valor viejo, (3) recién ahí hacerla obligatoria.
-- **Nunca borres datos históricos** al migrar. Si la reversión no puede recuperar datos, documéntalo.
+- Enum → catálogo: crearlo, poblar mapeando cada valor viejo, y recién ahí exigirla.
+- **Nunca borres datos históricos**; si la reversión no los recupera, documéntalo.
 
 ```
 INCORRECTO: columna obligatoria sin default → falla si ya hay filas
@@ -97,25 +97,23 @@ CORRECTO:   default equivalente al comportamiento previo, luego endurecer
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · el cuerpo no cabe: 378 caracteres para un molde de 320.**
+**La fila 10 reprobaba y se corrigió en esta pasada: de 378 caracteres a 306**, para un molde de 320. Se apretó la redacción de los tres puntos. **Ninguno se fue**: los tres siguen, y el tercero conserva su exigencia de documentar cuando la reversión no recupera.
 
-El análisis del 2026-08-07 la daba por cumplida. Es el **tercer** caso —tras [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito) y [`17·I1`](17-interfaz.md#i1--toda-vista-resuelve-sus-tres-estados)— en que esa fila se midió a ojo. A estas alturas no es un descuido suelto: **la fila 10 de aquel análisis no es fuente fiable y hay que recontarla entera.**
-
-Lo demás pasa, y está clasificada con validador escrito —`esquema.py`—. Se pasa por poco y lo que sobra es explicación, no exigencia.
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

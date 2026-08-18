@@ -6,11 +6,11 @@
 
 ## I1 · Toda vista resuelve sus tres estados
 
-Ninguna pantalla queda en blanco ni muestra un error crudo. Siempre se definen:
+Ninguna pantalla queda en blanco ni muestra un error crudo. Los tres se definen siempre:
 
-- **Vacío:** cuando no hay datos → un mensaje claro y, si aplica, una acción ("Aún no hay X. Crear el primero").
-- **Cargando:** mientras trae datos → un indicador (spinner/skeleton), no una pantalla congelada.
-- **Error:** cuando algo falla → un mensaje entendible y accionable, **nunca** una traza técnica ([`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico)).
+- **Vacío** → un mensaje claro y, si aplica, la acción que lo llena.
+- **Cargando** → un indicador, no una pantalla congelada.
+- **Error** → un mensaje entendible y accionable, **nunca** una traza ([`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico)).
 
 ```
 INCORRECTO: la tabla aparece vacía sin explicar si no hay datos o si falló la carga
@@ -19,27 +19,23 @@ CORRECTO:   estado vacío ("no hay registros"), estado cargando, y estado de err
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · el cuerpo no cabe: 395 caracteres para un molde de 320.**
+**La fila 10 reprobaba y se corrigió en esta pasada: de 395 caracteres a 293**, para un molde de 320. Se fue la explicación de cada estado —cuándo ocurre— y quedó qué hay que mostrar. Los tres estados eran una sola exigencia y siguen siéndolo.
 
-El análisis del 2026-08-07 la daba por cumplida. Es el segundo caso —después de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito)— en que esa fila se midió a ojo, y confirma el criterio: **las once filas que un programa cuenta se vuelven a contar**.
-
-La fila **9** sí pasa: los tres estados no se cumplen por separado. Una vista que resuelve el vacío y no el error deja la pantalla en blanco igual, que es lo que la regla prohíbe. **Son las tres caras de una sola exigencia**, como las tres de [`08·T3`](08-pruebas.md#t3--aisladas-deterministas-repetibles).
-
-Por eso el arreglo no es partirla sino **acortarla**: lo que sobra es la explicación de cada estado, no el estado. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

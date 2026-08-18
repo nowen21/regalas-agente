@@ -342,9 +342,9 @@ Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../
 
 ## C11 · Confía en las afirmaciones del usuario sobre estado del sistema
 
-Cuando el usuario afirma "no existe", "ya lo hice", "está en Y", "el typo es evidente" o cualquier hecho verificable — **avanza sin re-verificar**. La verificación de `C2` protege contra invención del agente, no contra afirmaciones del usuario. Sobre-verificar formalismos evidentes rompe el flujo, gasta contexto y trata al usuario como si mintiera.
+Cuando el usuario afirma un hecho verificable —«no existe», «ya lo hice», «está en Y»— **avanza sin re-verificar**: lo que [`C2`](#c2--no-inventes-verifica) protege es la invención del agente, no lo que el usuario dice.
 
-Verificar sí cuando hay **duda real** (ambigüedad, el usuario mismo lo pide, o el impacto del error es grande).
+Verifica solo ante **duda real**: ambigüedad, que él lo pida, o que el error salga caro.
 
 ```
 INCORRECTO: usuario dice "esa función no existe, ya la borré" → el agente busca 20 minutos para confirmarlo
@@ -354,33 +354,31 @@ CORRECTO:   el agente ejecuta como si no existiera; si aparece en el runtime, ah
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 461 caracteres.** Es lo único que reprueba.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 461 caracteres a 278**, para un molde de 320. Se fue el porqué —que sobre-verificar rompe el flujo y trata al usuario como si mintiera—, que es razonamiento y su sitio es `notas/`. La excepción de la duda real **se conserva entera**.
 
-**Y lo que la hace larga es lo mejor que tiene.** Su tensión con [`C2`](#c2--no-inventes-verifica) —no inventar y verificar, contra creerle al usuario sobre el estado del sistema— está **declarada y resuelta dentro del texto**, y el análisis del 2026-08-07 la señaló como el buen ejemplo de [`20·M6`](20-meta-reglas/reglas/M6-ante-un-conflicto-el-desempate-es-este-y-en-este-orden.md) bien aplicado.
-
-**Al comprimirla, eso es lo último que se toca.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C12 · No agregues calificativos al nombre del artefacto
 
-Cuando el usuario nombra algo ("con enfoque práctico", "sistema de ayuda contextual", "reporte financiero completo"), el nombre real del artefacto es SOLO el sustantivo literal — los adjetivos describen el estilo o alcance de la ejecución, no son parte del identificador.
+El nombre de un artefacto en archivos, documentos y commits es **el que el usuario dijo, sin adornar**. Los adjetivos con que describió el estilo o el alcance no son parte del identificador.
 
-El nombre en archivos, prompts, documentos y commits usa el nombre EXACTO del usuario, sin adornar. Adornar produce identificadores distintos entre versiones y complica la búsqueda posterior.
+Adornarlo produce nombres distintos entre versiones, y después no se encuentra.
 
 ```
 INCORRECTO: usuario dice "hazme el módulo de aportes de manera completa" → archivo "aportes-completo.md"
@@ -390,35 +388,31 @@ CORRECTO:   archivo "aportes.md" · el "completo" es la calidad de ejecución, n
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 462 caracteres.** El análisis del 2026-08-07 la daba por cumplida; es el sexto caso en que esa fila estaba medida a ojo, y el último que aparece.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 462 caracteres a 269**, para un molde de 320. Se fueron los tres ejemplos de adjetivo, que ahora no hacen falta porque el ejemplo INCORRECTO/CORRECTO ya muestra el caso.
+
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C13 · Preguntas de análisis van en chat abierto, no en formulario cerrado
 
-Cuando la pregunta al usuario requiere **análisis o decisión de negocio/diseño/prioridad**, se hace en el chat como **texto abierto** enumerado — con contexto suficiente para que el usuario razone y responda con matiz.
+Una pregunta que pide **análisis o decisión** va en el chat como texto abierto y enumerado, con contexto para razonarla y responder con matiz.
 
-Formato: `**N. Nombre de la pregunta.** Contexto/caso concreto. ¿Cómo lo tratas?`
-
-Los formularios cerrados de opciones a-b-c-d obligan al usuario a elegir entre posturas predefinidas y a tomar cada opción como una "verdad" — quitando el espacio de razonamiento matizado.
-
-**Los formularios cerrados SÍ son apropiados para**: elegir entre 2-4 opciones REALMENTE excluyentes y estables ("¿usás la opción A o la B?" cuando no hay tercera vía), o consulta rápida de setup técnico (opt-ins `sí/no`). Nunca para "cómo enfocamos esto".
-
-En duda entre chat abierto y formulario → **chat abierto**.
+El formulario cerrado sirve para 2–4 opciones realmente excluyentes, o un `sí/no` de configuración. **Nunca para «cómo enfocamos esto»**. En duda, **chat abierto**.
 
 ```
 INCORRECTO: "¿Prefieres A) enfoque X, B) enfoque Y, C) enfoque Z?" cuando el usuario necesita razonar el trade-off
@@ -428,23 +422,23 @@ CORRECTO:   pregunta abierta con contexto, ejemplos, y "¿cómo lo tratas?" — 
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 802 caracteres.** Es lo único que reprueba, y el análisis del 2026-08-07 lo dijo con precisión: *«quince líneas para una sola exigencia bien delimitada»*.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 802 caracteres a 306**, para un molde de 320. **La que más sobraba de las diez: 802 caracteres.** Se fue el porqué del formulario cerrado —que obliga a tomar cada opción como una verdad— y el detalle del formato de la pregunta. Lo que exige es lo mismo: análisis en chat abierto, formulario solo para opciones excluyentes o un `sí/no`, y en duda, chat abierto.
 
-**No hay nada que partir ni nada prestado: sobra texto.** Es el caso más simple de arreglar de todo el capítulo. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -721,9 +715,9 @@ Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19
 
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
 
-Todo lo que el agente deba recordar entre sesiones —preferencias del usuario, acuerdos sobre cómo trabajar— se escribe en `historico-chat/memory/` del proyecto, un archivo por recuerdo. El almacén de memoria de la herramienta queda **vacío**: lo que aparezca ahí se mueve, sin dejar copia ni puntero. Lo que no se versiona no se puede revisar, no viaja a otra máquina y se pierde al clonar.
+Lo que el agente deba recordar entre sesiones —cómo quiere el usuario que se trabaje— va a `historico-chat/memory/` del proyecto, **un archivo por recuerdo**, y el almacén de la herramienta queda **vacío**: lo que aparezca ahí se mueve.
 
-No es la memoria por señales del proyecto ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)): aquella guarda lo que el proyecto aprendió; esta, cómo quiere el usuario que se trabaje.
+No es la memoria por señales ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)), que guarda lo que aprendió el proyecto.
 
 ```
 INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá
@@ -735,25 +729,23 @@ CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionad
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · no cabe: 533 caracteres.** Es lo único que reprueba.
+**La fila 10 reprobaba y se corrigió en esta pasada: de 533 caracteres a 317**, para un molde de 320. Se fue el porqué —que lo no versionado no se revisa, no viaja y se pierde al clonar—, que ya está dicho en el índice de la memoria.
 
-**No estaba en el análisis del 2026-08-07 porque nació después**, como [`09·G9`](09-git.md#g9--la-historia-de-usuario-es-la-unidad-del-commit), y como aquella **llegó igual de larga que las viejas**. Dos reglas escritas con el checklist ya a la vista y las dos se pasan del molde: el problema no es que nadie conozca la fila 10, es que cuatro líneas alcanzan para menos de lo que uno cree.
-
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No cambia qué exige.** Lo que se fue era explicación, no norma.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

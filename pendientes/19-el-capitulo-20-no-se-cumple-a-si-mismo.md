@@ -207,7 +207,23 @@ Fase [`D-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredab
 
 ---
 
-## Lo que queda: 70 reglas que reprueban
+## Las que solo sobraban de largo: diez cerradas — 2026-08-18
+
+Fase [`E-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo/), v23.7.5. **Las 70 pasan a 60.**
+
+**Quince reprueban solo la fila 10, y diez eran puro exceso de explicación:** `01·C11`, `01·C12`, `01·C13`, `01·C19`, `03·D3`, `04·S1`, `04·S2`, `09·G7`, `09·G9`, `17·I1`. La más larga, `C13`, pasó de 802 a 306.
+
+**Lo que sobraba era el porqué en ocho de las diez**, y `M5` lo dice en la propia fila: *si no cabe, o son dos reglas o se está contando el porqué, que va a `notas/`*. Acertó ocho de diez veces.
+
+**Las otras dos eran ejemplos metidos en el cuerpo.** La fila 10 mide **solo el cuerpo**, así que el bloque INCORRECTO/CORRECTO es espacio gratis — y `C12` llevaba tres ejemplos arriba teniendo su bloque debajo. **La forma de acortar sin perder nada estaba disponible desde el principio.**
+
+**Las cinco que no se tocaron, y por qué:** `03·D8`, `04·S9` y `04·S10` tienen dentro un **procedimiento** —el caso de anexo—, `05·E4` ya tenía decidido irse a un anexo, y `02·F13` se reescribió hace días. **`04·S9` además es el único modelo de excepción completa del cuerpo**, y acortarla de paso es la forma de perderlo.
+
+**Deuda que deja esta fase:** el porqué que se sacó **no se escribió en `notas/`**. Son diez notas cortas. No se perdió —cada sello dice qué salió— pero no está donde `M5` manda.
+
+---
+
+## Lo que queda: 60 reglas que reprueban
 
 **El sello ya no es el problema. Lo es lo que el sello dice.** Agrupado por qué hay que hacer:
 

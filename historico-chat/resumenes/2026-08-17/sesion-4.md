@@ -216,6 +216,20 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Lo que no se hizo, y por qué.** Quedan tres de la categoría: `12·PR3`, `01·C16` y `04·S7`. **Ninguna es redacción** — dos piden decidir si una regla deja de existir, y derogar obliga a adoptarlo en todos los proyectos instalados.
 
+### H-20 · El sitio para acortar sin perder nada estaba desde el principio
+
+**Qué se cerró.** Diez reglas cuyo único defecto era el largo. Fase [`E-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo/), v23.7.5. **Las 70 en NO CUMPLE pasan a 60**, y ninguna cambia lo que exige.
+
+**Lo que más enseña.** La fila 10 mide **solo el cuerpo** de la regla: el bloque INCORRECTO/CORRECTO no cuenta. Así que un ejemplo largo sale gratis y una enumeración en el cuerpo cuesta todo — **y aun así las reglas más largas tenían ejemplos cortos**. `01·C12` llevaba tres ejemplos de adjetivo arriba teniendo su bloque justo debajo, vacío de contenido.
+
+**El sitio donde poner lo que sobraba llevaba ahí todo el tiempo, y nadie lo estaba usando.**
+
+**Y el diagnóstico ya estaba escrito.** `20·M5` dice en la propia fila 10: *si no cabe, o son dos reglas o se está contando el porqué, que va a `notas/`*. Acertó **ocho de diez veces**. Es la cuarta vez hoy que la respuesta estaba en el repositorio.
+
+**La medición fue el trabajo, no el trámite.** La primera reescritura dejó **cinco de las diez todavía pasadas**, y `09·G9` necesitó tres pasadas. Escribir corto no sale a la primera, y firmar un sello sobre un largo estimado ya costó cinco correcciones en esta misma historia.
+
+**Deuda dicha:** el porqué que se sacó no se escribió en `notas/`. Está en los sellos —cada uno dice qué salió— pero no donde `M5` manda.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
