@@ -24,6 +24,11 @@ HISTORICO = "historico-chat"
 # renombre.
 CON_INDICE = ["pendientes", "notas", HISTORICO]
 
+# Los resúmenes se indexan en dos niveles: cada día lista sus sesiones, y el
+# índice de arriba lista los días. `validar_indices` solo mira archivos, así
+# que el de los días —que lista **carpetas**— necesita su propia comprobación.
+RESUMENES = HISTORICO + "/resumenes"
+
 EXTERNOS = ("http://", "https://", "mailto:", "ftp://", "//")
 
 # Las plantillas citan las reglas con este marcador delante, y no con `../base/`.
@@ -153,6 +158,47 @@ def validar_formato(raiz=None):
                     AVISO, archivo, n,
                     f"el texto del enlace dice «{limpio}» y el destino es "
                     f"«{esperado}» — DOC14 pide la ruta desde la raíz"))
+    return hallazgos
+
+
+def validar_dias_con_resumen(raiz=None):
+    """`32` · Cada carpeta de día aparece en el índice de días, y al revés.
+
+    El enganche crea la carpeta del día y el resumen dentro. Si además no
+    escribe la línea, el resumen existe y nadie lo va a abrir — que es
+    exactamente el defecto que el resumen existe para arreglar. Pasó con el
+    2026-08-15, que tuvo dos resúmenes sin una sola mención.
+
+    Se comprueba en los dos sentidos, como el índice de archivos: la carpeta
+    que no está nombrada, y el día nombrado cuya carpeta ya no existe.
+    """
+    raiz = raiz or RAIZ
+    carpeta = os.path.join(raiz, *RESUMENES.split("/"))
+    indice = os.path.join(carpeta, "README.md")
+    if not os.path.isfile(indice):
+        return []
+
+    texto = leer(indice)
+    hallazgos = []
+    dias = sorted(d for d in os.listdir(carpeta)
+                  if os.path.isdir(os.path.join(carpeta, d)))
+
+    for dia in dias:
+        if f"({dia}/)" not in texto:
+            hallazgos.append(Hallazgo(
+                FALLA, indice, 0,
+                f"el índice de días no menciona {dia}/ — sus resúmenes existen "
+                f"y nadie los va a encontrar"))
+
+    for _n, _t, destino in enlaces(texto):
+        d = destino.rstrip("/")
+        if "/" in d or not d[:4].isdigit():
+            continue
+        if d not in dias:
+            hallazgos.append(Hallazgo(
+                AVISO, indice, 0,
+                f"el índice de días menciona {d}/, que ya no existe"))
+
     return hallazgos
 
 

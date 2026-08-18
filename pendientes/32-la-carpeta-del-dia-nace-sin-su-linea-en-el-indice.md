@@ -1,6 +1,6 @@
 # Pendiente · La carpeta del día nace sin su línea en el índice
 
-**Estado:** abierto · anotado 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-los-resumenes-que-faltan.md](../historico-chat/2026-08-15-los-resumenes-que-faltan.md).
+**Estado:** **cerrado** el 2026-08-17. Anotado el 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-los-resumenes-que-faltan.md](../historico-chat/2026-08-15-los-resumenes-que-faltan.md).
 
 | | |
 |---|---|
@@ -27,3 +27,23 @@ Un resumen que no está en el índice es un resumen que nadie va a abrir. Es exa
 El enganche **no escribe hallazgos** y esto no lo cambia: escribir una línea de índice con el nombre del archivo no es interpretar nada. Reconocer un hallazgo sigue siendo criterio (`13·DOC22`).
 
 **Va con el [31](hecho/los-resumenes-de-las-sesiones-viejas.md), antes de escribirlo:** si no, cada uno de los 33 resúmenes nace fuera del índice y hay que volver a pasar por todos.
+
+---
+
+# Cómo cerró — 2026-08-17
+
+**Por los dos caminos que el pendiente ofrecía, no por uno.** Eran alternativos —«que el enganche escriba las dos líneas» **o** «que un validador lo compruebe»— y hacen falta los dos: el enganche solo cubre lo que nazca de aquí en adelante, y ya había trece resúmenes fuera del índice.
+
+**1 · El enganche escribe la línea.** `resumen._indexar_dias()` anota el día en `historico-chat/resumenes/README.md` al crear la carpeta. El índice del día ya se escribía; faltaba este.
+
+**2 · El validador rompe si falta.** `enlaces.validar_dias_con_resumen()`, enganchado a `validar.py estandar`. Comprueba los dos sentidos: la carpeta que nadie nombra es **falla**, y el día nombrado cuya carpeta ya no existe es **aviso**.
+
+**3 · Lo que ya faltaba, al día.** Al escribir el validador destapó **dos días sin anotar**, no uno: el 2026-08-16 con nueve sesiones y el 2026-08-17 con cuatro. El pendiente solo conocía el 2026-08-15, que se había anotado a mano desde entonces.
+
+## Sobre el límite que el pendiente ponía
+
+Se respetó: **el enganche sigue sin escribir hallazgos.** Poner el nombre de una carpeta en una lista no interpreta nada. Reconocer un hallazgo sigue siendo criterio y sigue siendo del agente (`13·DOC22`).
+
+## Cómo quedó comprobado
+
+[validadores/tests/test_indice_de_dias.py](../validadores/tests/test_indice_de_dias.py), 10 casos. Cinco al enganche —el día nuevo se anota, no pisa los que ya estaban, no duplica al correr dos veces, no se cae si el proyecto no lleva índice, y el índice del día que ya funcionaba sigue funcionando— y cinco al validador, incluido uno que corre sobre esta casa: los diez días de verdad están todos.

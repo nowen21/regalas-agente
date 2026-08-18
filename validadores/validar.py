@@ -48,6 +48,7 @@ from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 def cmd_estandar(a):
     hallazgos = (enlaces.validar_enlaces(a.raiz)
                  + enlaces.validar_indices(a.raiz)
+                 + enlaces.validar_dias_con_resumen(a.raiz)
                  + citas.validar(a.raiz))
     return reportar(hallazgos, "Coherencia del estándar")
 

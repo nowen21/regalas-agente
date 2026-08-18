@@ -102,6 +102,7 @@ def crear(raiz, transcripcion, estandar=""):
     except OSError:
         return ""                       # sin permiso o sin espacio: no detiene
     _indexar_dia(_dia(ruta), os.path.basename(ruta))
+    _indexar_dias(raiz, os.path.basename(_dia(ruta)))
     return ruta
 
 
@@ -143,6 +144,35 @@ def _indexar_dia(carpeta, nombre):
     if f"({nombre})" in texto:
         return
     _escribir(ruta, texto.rstrip("\n") + "\n" + linea)
+
+
+def _indexar_dias(raiz, dia):
+    """Agrega la línea del día al índice de días.
+
+    `32` · El enganche creaba la carpeta del día y el resumen dentro, y no
+    tocaba ninguno de los dos índices. El del día se arregló antes; este
+    faltaba, y por eso el 2026-08-15 tenía dos resúmenes que nadie nombraba.
+
+    Un resumen que no está en el índice es un resumen que nadie va a abrir —
+    exactamente el defecto que el resumen existe para arreglar.
+
+    **Esto no es escribir un hallazgo.** Poner el nombre de una carpeta en una
+    lista no interpreta nada; reconocer un hallazgo sigue siendo criterio y
+    sigue siendo del agente (`13·DOC22`).
+    """
+    ruta = os.path.join(raiz, CARPETA, RESUMENES, "README.md")
+    if not os.path.isfile(ruta):
+        return
+    texto = _leer(ruta)
+    if f"({dia}/)" in texto:
+        return
+    linea = f"- [{dia}/]({dia}/) — sin escribir todavía."
+    # Va al final: la sección de días es la última del documento, y los días
+    # se listan en orden. Un día nuevo siempre es el más reciente.
+    if "## Días" in texto:
+        _escribir(ruta, texto.rstrip("\n") + "\n" + linea + "\n")
+    else:
+        _escribir(ruta, texto.rstrip("\n") + "\n\n## Días\n\n" + linea + "\n")
 
 
 # ── Qué le falta ──────────────────────────────────────────────────────────

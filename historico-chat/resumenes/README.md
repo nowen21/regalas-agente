@@ -42,3 +42,5 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [2026-08-13/](2026-08-13/) — dos sesiones: el brief y las épicas, y los pendientes que salen del posgrado.
 - [2026-08-14/](2026-08-14/) — ocho sesiones: las HU de la comprobación automática, el cierre de su hallazgo H-4, por qué ese cierre no funcionó, y el glosario de la terminología.
 - [2026-08-15/](2026-08-15/) — dos sesiones: la plantilla del resultado de pruebas, y el inventario de los resúmenes que faltan.
+- [2026-08-16/](2026-08-16/) — nueve sesiones: la prioridad del backlog, por qué un pendiente no es un plan, el inventario de las HU sin fase, y los siete cierres que dejaron ocho pendientes nuevos.
+- [2026-08-17/](2026-08-17/) — cuatro sesiones: los 51 planes de trabajo y su ejecución, y el enrutamiento del backlog para que ningún pendiente quede fuera de una historia de usuario.
