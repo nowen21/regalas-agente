@@ -47,7 +47,7 @@
 |---|---|
 | [pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md](../../../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md) | `shopnest-mesa` |
 | [pendientes/hecho/renombrar-deja-el-resumen-coherente.md](../../../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) | `shopnest-mesa` |
-| [pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md](../../../../../pendientes/hecho/el-registro-se-escribe-antes-de-contarse.md) | `dp` |
+| [pendientes/hecho/el-registro-se-escribe-antes-de-contarse.md](../../../../../pendientes/hecho/el-registro-se-escribe-antes-de-contarse.md) | `dp` |
 
 **Mandarlos ahora sería inventar un aviso con fecha de hoy sobre correcciones de hace dos días.** Se anota cuáles son y quién los espera; el aviso lo manda quien decida decírselo.
 

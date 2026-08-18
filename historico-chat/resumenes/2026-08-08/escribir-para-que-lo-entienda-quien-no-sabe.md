@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-escribir-para-q
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [validadores/docs/](../../../validadores/docs/README.md).
+- **Dónde queda:** [validadores/docs/README.md/](../../../validadores/docs/README.md).
 - **Nace en:** 2026-08-08 · escribir para que lo entienda quien no sabe.
 - **Cerrado en:** 2026-08-08 · escribir para que lo entienda quien no sabe.
 - **Con qué se retoma:** —.

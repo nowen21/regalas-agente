@@ -145,20 +145,116 @@ def validar_formato(raiz=None):
         if _es_transcripcion(archivo):
             continue
         for n, texto, destino in enlaces(leer(archivo)):
-            if not _es_interno(destino) or not _comprobable(texto, destino):
+            # El mismo criterio que `reparar_formato`, y a propósito: si el
+            # que reporta y el que arregla miran distinto, el arreglo deja
+            # hallazgos vivos o toca lo que nadie reportó.
+            esperado = _texto_esperado(raiz, archivo, texto, destino)
+            if esperado is None:
                 continue
-            limpio = texto.strip().strip("`").strip()
-            if "/" not in limpio and not limpio.lower().endswith(".md"):
-                continue
-            esperado = _ruta_desde_raiz(raiz, archivo, destino)
-            # La barra final de una carpeta no cambia a dónde apunta el enlace;
-            # exigirla sería inventar una regla que `DOC14` no pide.
-            if limpio.lstrip("./").rstrip("/") != esperado.rstrip("/"):
-                hallazgos.append(Hallazgo(
-                    AVISO, archivo, n,
-                    f"el texto del enlace dice «{limpio}» y el destino es "
-                    f"«{esperado}» — DOC14 pide la ruta desde la raíz"))
+            hallazgos.append(Hallazgo(
+                AVISO, archivo, n,
+                f"el texto del enlace dice «{texto.strip().strip('`').strip()}» "
+                f"y el destino es «{esperado}» — DOC14 pide la ruta desde la raíz"))
     return hallazgos
+
+
+PROMPTS = "prompts"
+
+
+def _es_del_usuario(raiz, archivo):
+    """Lo que está en `prompts/` son palabras del usuario, copiadas como las dijo.
+
+    Reescribirle un enlace ahí es editarle la frase. Se deja como está, y se
+    dice: es una exclusión declarada, no un archivo que se olvidó.
+
+    Se cuenta contra la raíz **que se recibe**, no contra la del repositorio:
+    si no, sobre un árbol de prueba la exclusión no reconoce nada y se acaba
+    escribiendo justo donde no se debe.
+    """
+    rel = os.path.relpath(archivo, raiz).replace("\\", "/")
+    return rel.split("/")[0] == PROMPTS
+
+
+def _texto_esperado(raiz, archivo, texto, destino):
+    """El texto que `DOC14` pide para ese enlace, o `None` si ya está bien.
+
+    Devuelve `None` en los tres casos que la regla **no** cubre: el enlace
+    externo, el de texto descriptivo —`[la guía]`, que la propia regla
+    permite— y el que ya dice la ruta desde la raíz.
+    """
+    if not _es_interno(destino) or not _comprobable(texto, destino):
+        return None
+    limpio = texto.strip().strip("`").strip()
+    if "/" not in limpio and not limpio.lower().endswith(".md"):
+        return None                     # texto descriptivo: no se toca
+    esperado = _ruta_desde_raiz(raiz, archivo, destino)
+    if limpio.lstrip("./").rstrip("/") == esperado.rstrip("/"):
+        return None
+    if limpio.endswith("/"):
+        esperado = esperado.rstrip("/") + "/"
+    return esperado
+
+
+def _es_vecino(destino):
+    """Si el enlace apunta a un archivo de la **misma carpeta**.
+
+    `DOC14` pide la ruta desde la raíz *«para saber dónde vive sin abrirlo»*.
+    Para el vecino ese propósito ya está cumplido —quien lee está parado ahí—
+    y exigirla igual produce un texto de unos 130 caracteres para nombrar el
+    archivo de al lado.
+
+    **La regla no distingue el caso**, y decidir si lo distingue es del
+    usuario. Mientras tanto se reparan los otros, que son los que la regla
+    resuelve de verdad.
+    """
+    ruta = destino.split("#", 1)[0]
+    return bool(ruta) and "/" not in ruta and not ruta.startswith(".")
+
+
+def reparar_formato(raiz=None, escribir=False, incluir_vecinos=False):
+    """Reescribe el **texto** de los enlaces para que diga la ruta desde la raíz.
+
+    `13·DOC14` pide dos partes: el texto dice dónde vive el archivo y el
+    destino lleva a él. El destino **no se toca** — ya funciona, y tocarlo es
+    la única forma de romper un enlace que hoy anda.
+
+    **Lo mecánico es el arreglo, no la decisión.** El validador ya calcula,
+    enlace por enlace, qué texto corresponde; lo que faltaba era escribirlo.
+    Hacerlo a mano sobre mil enlaces es como se cometen los errores que este
+    arreglo viene a quitar.
+
+    **El vecino de la misma carpeta se deja fuera por defecto** — ver
+    `_es_vecino`. Son 747 de los 1031, y son justo los que la regla no
+    resuelve: exigirles la ruta desde la raíz da un texto de 130 caracteres
+    para nombrar el archivo de al lado.
+
+    Devuelve `[(archivo, cuántos)]`, y sin `escribir` solo simula.
+    """
+    raiz = raiz or RAIZ
+    tocados = []
+
+    for archivo in recorrer_md(raiz):
+        if _es_transcripcion(archivo) or _es_del_usuario(raiz, archivo):
+            continue                    # literales del chat · palabras del usuario
+        original = leer(archivo)
+        cambios = []
+        for n, texto, destino in enlaces(original):
+            if not incluir_vecinos and _es_vecino(destino):
+                continue
+            esperado = _texto_esperado(raiz, archivo, texto, destino)
+            if esperado is None:
+                continue
+            cambios.append((f"[{texto}]({destino})", f"[{esperado}]({destino})"))
+        if not cambios:
+            continue
+        texto_nuevo = original
+        for viejo, nuevo in cambios:
+            texto_nuevo = texto_nuevo.replace(viejo, nuevo)
+        if escribir:
+            with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+                f.write(texto_nuevo)
+        tocados.append((archivo, len(cambios)))
+    return tocados
 
 
 def validar_dias_con_resumen(raiz=None):

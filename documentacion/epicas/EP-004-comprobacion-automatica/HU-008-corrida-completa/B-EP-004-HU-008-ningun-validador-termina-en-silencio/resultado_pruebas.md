@@ -155,7 +155,7 @@ Es peor de lo que el 55 decía. Aquel dice que el validador **reporta de más**;
 
 ### Un dato del 55 que resultó falso
 
-El pendiente 55 afirma, sobre `base/20-meta-reglas/estructura-regla.md`, que **«`G9` no existe»**. Sí existe: [base/09-git.md:104](../../../../../base/09-git.md), *La historia de usuario es la unidad del commit*. Sigue siendo un falso positivo —es un ejemplo, no una cita— pero por otro motivo del que el pendiente da. Corregido allá.
+El pendiente 55 afirma, sobre `base/20-meta-reglas/estructura-regla.md`, que **«`G9` no existe»**. Sí existe: [base/09-git.md](../../../../../base/09-git.md), *La historia de usuario es la unidad del commit*. Sigue siendo un falso positivo —es un ejemplo, no una cita— pero por otro motivo del que el pendiente da. Corregido allá.
 
 ---
 

@@ -160,7 +160,7 @@ No aplica: el módulo no toca datos personales ni ninguna norma externa.
 
 ## 10. Plan de pruebas
 
-El detalle vive en el [plan_pruebas.md](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/plan_pruebas.md) de la fase. En resumen:
+El detalle vive en el [documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/plan_pruebas.md](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/plan_pruebas.md) de la fase. En resumen:
 
 - **Caso feliz:** se abre una sesión y el archivo aparece, con el modelo y sin hallazgos.
 - **Casos límite:** dos sesiones el mismo día, una sesión que no produce nada, un resumen que ya tiene hallazgos.

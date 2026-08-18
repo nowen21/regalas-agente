@@ -17,12 +17,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-historico-chat.
 - **Qué pasó:** el usuario pidió una carpeta donde se guarde lo que se va haciendo en cada sesión. No existía: el chat se cerraba y con él se iba todo.
 - **Por qué importa:** sin registro, cada sesión arranca de cero y lo decidido se vuelve a discutir. Es el problema que da origen a toda la carpeta.
 - **Qué lo soluciona:** una carpeta en el repositorio, con un archivo por sesión y su índice.
-- **Qué se decidió:** nace [historico-chat/](../../README.md) con su `README.md`, la plantilla y el índice; un archivo por sesión, `AAAA-MM-DD-tema.md`.
+- **Qué se decidió:** nace [historico-chat/README.md/](../../README.md) con su `README.md`, la plantilla y el índice; un archivo por sesión, `AAAA-MM-DD-tema.md`.
 - **Estado:** resuelto acá.
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [historico-chat/README.md](../../README.md) y la memoria [historico-chat.md](../../memory/historico-chat.md).
+- **Dónde queda:** [historico-chat/README.md](../../README.md) y la memoria [historico-chat/memory/historico-chat.md](../../memory/historico-chat.md).
 - **Nace en:** 2026-08-06 · historico-chat.
 - **Cerrado en:** 2026-08-06 · historico-chat.
 - **Con qué se retoma:** —.

@@ -54,7 +54,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —, es aplicar al `README` lo que el instalador ya hace con otro archivo.
 - **Orden de resolución:** 1 de 2.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿los documentos heredados que el proyecto puede editar reciben las secciones nuevas, o se quedan como quedaron?
@@ -69,7 +69,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [`ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) y el anexo [marcadores-de-ia.md](../../../base/00-identidad-y-rol/marcadores-de-ia.md).
+- **Dónde queda:** [`ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) y el anexo [base/00-identidad-y-rol/marcadores-de-ia.md](../../../base/00-identidad-y-rol/marcadores-de-ia.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Con qué se retoma:** —.
@@ -84,7 +84,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md).
+- **Dónde queda:** [pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** el validador mecánico primero; sin él, el recuento sobre 200 archivos se hace a mano.
@@ -99,7 +99,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —, sería una regla nueva del capítulo `01`.
 - **Orden de resolución:** —, no bloquea nada.
-- **Dónde queda:** la sección «Lo que este anexo no cubre» de [marcadores-de-ia.md](../../../base/00-identidad-y-rol/marcadores-de-ia.md).
+- **Dónde queda:** la sección «Lo que este anexo no cubre» de [base/00-identidad-y-rol/marcadores-de-ia.md](../../../base/00-identidad-y-rol/marcadores-de-ia.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se escribe la regla del español correcto, o alcanza con lo que el anexo ya dice?

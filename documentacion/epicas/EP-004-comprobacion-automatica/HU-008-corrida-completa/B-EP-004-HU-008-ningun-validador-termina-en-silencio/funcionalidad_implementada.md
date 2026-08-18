@@ -6,7 +6,7 @@
 |---|---|
 | **Fase** | `B-EP-004-HU-008-ningun-validador-termina-en-silencio` |
 | **HU** | [HU-008 Correr todas las comprobaciones de una sola vez](../HU-008-corrida-completa.md) |
-| **Cierra** | El [pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), sus dos puntos |
+| **Cierra** | El [pendientes/hecho/ningun-validador-termina-en-silencio.md](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), sus dos puntos |
 | **Fecha de cierre** | 2026-08-17 |
 | **Veredicto** | **Cumple** — [resultado_pruebas.md](resultado_pruebas.md) §9 |
 

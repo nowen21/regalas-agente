@@ -35,7 +35,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003 · HU-010, el glosario de la terminología.
 - **Dispara:** —, es replicar lo mismo en otros archivos.
 - **Orden de resolución:** 3 de 3. Va último: no bloquea nada, es limpieza de vocabulario.
-- **Dónde queda:** [pendientes/26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md); sigue en [base/02-flujo-de-trabajo](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md).
+- **Dónde queda:** [pendientes/26-corrida-y-ejecucion-en-el-estandar.md](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md); sigue en [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se reemplaza «corrida» en todo el estándar, o se define en el glosario y se deja?
@@ -87,7 +87,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 
 ### H-6 · La fase A de EP-003 · HU-010 no cumple
 
-- **Qué pasó:** al bajar su [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) a la plantilla, el veredicto pasó de «aprobada con una prueba pendiente» a **No cumple**: `RNF-01` no tiene caso ejecutado y **16 de los 35 pasos del plan no dejaron registro de qué salió**, más 3 que se hicieron distinto.
+- **Qué pasó:** al bajar su [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) a la plantilla, el veredicto pasó de «aprobada con una prueba pendiente» a **No cumple**: `RNF-01` no tiene caso ejecutado y **16 de los 35 pasos del plan no dejaron registro de qué salió**, más 3 que se hicieron distinto.
 - **Por qué importa:** la fase se dio por cerrada con criterios en «cumple» que no tienen respaldo. Es el mismo defecto que ya pasó en `A-EP-005-HU-008` y que la sesión del 2026-08-14 documentó.
 - **Qué lo soluciona:** correr lo que falta y volver a dar veredicto.
 - **Qué se decidió:** el documento queda con el veredicto real. No se reejecutó nada en esta sesión.
@@ -95,14 +95,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003 · HU-010 · RNF-01.
 - **Dispara:** —, no abre historia nueva: es reabrir la fase A que ya existe.
 - **Orden de resolución:** 1 de 3. Va primero: mientras no se resuelva, la fase está cerrada con un veredicto que no era.
-- **Dónde queda:** [pendientes/27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), y D-04 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
+- **Dónde queda:** [pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), y D-04 del [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿quién lee las cinco entradas de CP-006, y se reejecutan los 16 pasos sin registro o se deja escrito por qué no?
 
 ### H-7 · El `estado-fase.md` de esa fase contradice su resultado
 
-- **Qué pasó:** [estado-fase.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/estado-fase.md) sigue diciendo «aprobada con una prueba pendiente»; el resultado dice «No cumple».
+- **Qué pasó:** [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/estado-fase.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/estado-fase.md) sigue diciendo «aprobada con una prueba pendiente»; el resultado dice «No cumple».
 - **Por qué importa:** el `estado-fase` es lo que se mira para pasar la puerta de verificación. Si dice que cumple, la fase pasa sin que nadie abra el resultado.
 - **Qué lo soluciona:** copiar el veredicto real, o —mejor— que un validador no deje que los dos digan cosas distintas.
 - **Qué se decidió:** sin decidir. No se tocó el archivo porque el usuario no lo pidió.
@@ -114,7 +114,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
   - **Para** no pasar una puerta de verificación con un veredicto viejo
   - **Contexto:** hoy el veredicto se escribe a mano en los dos archivos. Nada comprueba que coincidan, y esta sesión dejó un caso donde ya no coinciden. Si no se hace, la puerta de verificación se apoya en el archivo que nadie actualizó.
 - **Orden de resolución:** 2 de 3. Va después de H-6: primero hay que saber cuál es el veredicto bueno.
-- **Dónde queda:** [pendientes/28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md).
+- **Dónde queda:** [pendientes/hecho/un-solo-veredicto-por-fase.md](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se corrige el `estado-fase` a mano ahora, o se espera al validador que lo compare?
@@ -131,7 +131,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, es corregir el `CLAUDE.md` y limpiar un archivo.
 - **Orden de resolución:** 4 de 4. Va último: el archivo se lee igual, aunque tenga el doble de encabezados.
-- **Dónde queda:** [pendientes/29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
 - **Nace en:** 2026-08-15 · la-plantilla-del-resultado-de-pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿le pasó a otras sesiones? Hay que revisar si más archivos del histórico traen encabezados repetidos.

@@ -27,7 +27,7 @@ De los apuntes del diplomado, módulo 2, nota de clase sobre la administración 
 - **Monitoreo.** «Un modelo que ayer acertaba puede fallar hoy sin que nada se rompa: cambió la realidad que retrataban los datos, no el código.» Eso allá se llama deriva. Acá es lo mismo con reglas en vez de modelos.
 - **Retiro.** «¿Cuándo se apaga?» El estándar ya sabe cómo derogar una regla ([`20·M11`](../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)), pero nada le hace la pregunta.
 
-El estándar ya reconoció este problema una vez, y lo resolvió solo para la memoria: el pendiente 02 le puso vigencia a las señales precisamente para que no se degradaran solas de dato útil a ruido ([hecho/vigencia-y-poda-de-memoria.md](hecho/vigencia-y-poda-de-memoria.md)). Las reglas, que pesan mucho más, no recibieron el mismo tratamiento.
+El estándar ya reconoció este problema una vez, y lo resolvió solo para la memoria: el pendiente 02 le puso vigencia a las señales precisamente para que no se degradaran solas de dato útil a ruido ([pendientes/hecho/vigencia-y-poda-de-memoria.md](hecho/vigencia-y-poda-de-memoria.md)). Las reglas, que pesan mucho más, no recibieron el mismo tratamiento.
 
 ## Qué habría que construir
 

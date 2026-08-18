@@ -24,7 +24,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-la-prioridad-de
 
 ### H-2 · El pendiente 33 no es un pendiente: son ocho, y uno es el más urgente del repositorio
 
-**Qué pasó.** [33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) junta ocho puntos sin relación entre sí, con costos que van de una línea de código (`unquote` en `enlaces.py`) a revisar proyecto por proyecto. Su punto 6 —a qué proyectos les borró la memoria el enganche del 2026-08-07— es lo único del backlog donde **se pierde información que no está en ninguna otra parte** si el commit del que se recupera se cae.
+**Qué pasó.** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) junta ocho puntos sin relación entre sí, con costos que van de una línea de código (`unquote` en `enlaces.py`) a revisar proyecto por proyecto. Su punto 6 —a qué proyectos les borró la memoria el enganche del 2026-08-07— es lo único del backlog donde **se pierde información que no está en ninguna otra parte** si el commit del que se recupera se cae.
 
 **Por qué importa.** Un número en la fila esconde ocho urgencias distintas. Mientras 33 sea un archivo, su punto 6 hereda la prioridad del promedio de los otros siete.
 

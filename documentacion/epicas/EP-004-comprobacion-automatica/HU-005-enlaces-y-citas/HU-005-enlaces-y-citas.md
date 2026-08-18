@@ -163,7 +163,8 @@ Entonces la comprobación lo reporta y nombra los dos documentos
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| [`A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar`](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/) | CA-01 | [plan_trabajo.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_trabajo.md) | [plan_pruebas.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_pruebas.md) | [resultado_pruebas.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/resultado_pruebas.md) · **Cumple** | Cerrada |
+| [`A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar`](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/) | CA-01 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_trabajo.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_trabajo.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_pruebas.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/plan_pruebas.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/resultado_pruebas.md](A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/resultado_pruebas.md) · **Cumple** | Cerrada |
+| [B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive](B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive/README.md) | RN-03, su parte reparable | Cerrada 2026-08-18 |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

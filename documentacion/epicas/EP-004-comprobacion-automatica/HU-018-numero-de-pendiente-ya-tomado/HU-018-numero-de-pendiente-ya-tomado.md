@@ -128,7 +128,7 @@ Y también reporta la línea del índice cuyo archivo no existe
 ## 6. Diseño y referencias
 
 - **Mockup / Prototipo:** no aplica.
-- **Documento funcional:** [epica.md](../epica.md).
+- **Documento funcional:** [documentacion/epicas/EP-004-comprobacion-automatica/epica.md](../epica.md).
 - **Contrato de API:** no aplica; se corre por línea de comandos.
 - **Modelo de datos afectado:** ninguno.
 

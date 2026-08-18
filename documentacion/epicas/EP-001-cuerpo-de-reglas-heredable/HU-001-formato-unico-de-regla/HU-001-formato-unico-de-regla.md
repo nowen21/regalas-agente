@@ -123,7 +123,7 @@ Entonces se detecta el choque antes de aceptarla
 
 | Fase | Criterios que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| `A-EP-001-HU-001-molde-de-regla` | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-001-molde-de-regla/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-001-molde-de-regla/plan_pruebas.md) | [resultado_pruebas.md](A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) | Sin empezar |
+| `A-EP-001-HU-001-molde-de-regla` | CA-01, CA-02, CA-03 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/plan_trabajo.md](A-EP-001-HU-001-molde-de-regla/plan_trabajo.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/plan_pruebas.md](A-EP-001-HU-001-molde-de-regla/plan_pruebas.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md](A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) | Sin empezar |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

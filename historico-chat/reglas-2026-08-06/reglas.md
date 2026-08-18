@@ -12,14 +12,14 @@
 
 | Archivo | Tema | ¿Entra? |
 |---|---|---|
-| [2026-08-06-historico-chat.md](../2026-08-06-historico-chat.md) | Se crea la carpeta del histórico | Sí |
-| [2026-08-06-meta-reglas-2.md](../2026-08-06-meta-reglas-2.md) | Nace la regla de reglas (`M1`–`M13`) | Sí |
-| [2026-08-06-el-torniquete-del-historico.md](../2026-08-06-el-torniquete-del-historico.md) | El histórico no se escribía · el torniquete · el checklist de instalación | Sí |
-| [2026-08-06-prueba-del-torniquete.md](../2026-08-06-prueba-del-torniquete.md) | Solo un saludo | Sí (sin material) |
-| [2026-08-06-la-anatomia-de-la-regla.md](../2026-08-06-la-anatomia-de-la-regla.md) | Auditoría de las meta-reglas · anatomía de una regla · capítulo 20 | Sí |
-| [2026-08-06-no-se-puede-transcribir-audio.md](../2026-08-06-no-se-puede-transcribir-audio.md) | Audio: el agente no oye | Sí (sin material) |
+| [historico-chat/2026-08-06-historico-chat.md](../2026-08-06-historico-chat.md) | Se crea la carpeta del histórico | Sí |
+| [historico-chat/2026-08-06-meta-reglas-2.md](../2026-08-06-meta-reglas-2.md) | Nace la regla de reglas (`M1`–`M13`) | Sí |
+| [historico-chat/2026-08-06-el-torniquete-del-historico.md](../2026-08-06-el-torniquete-del-historico.md) | El histórico no se escribía · el torniquete · el checklist de instalación | Sí |
+| [historico-chat/2026-08-06-prueba-del-torniquete.md](../2026-08-06-prueba-del-torniquete.md) | Solo un saludo | Sí (sin material) |
+| [historico-chat/2026-08-06-la-anatomia-de-la-regla.md](../2026-08-06-la-anatomia-de-la-regla.md) | Auditoría de las meta-reglas · anatomía de una regla · capítulo 20 | Sí |
+| [historico-chat/2026-08-06-no-se-puede-transcribir-audio.md](../2026-08-06-no-se-puede-transcribir-audio.md) | Audio: el agente no oye | Sí (sin material) |
 | `2026-08-06-sesion-7.md` | Duplicado del anterior, sin marca de sesión | Sí (sin material) |
-| [2026-08-06-la-clase-del-diplomado-en-el-repositorio.md](../2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) | Transcripción de imágenes del diplomado + dos intercambios sobre `F0` | Parcial |
+| [historico-chat/2026-08-06-la-clase-del-diplomado-en-el-repositorio.md](../2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) | Transcripción de imágenes del diplomado + dos intercambios sobre `F0` | Parcial |
 | `2026-08-06-sesion-9.md` | Carpeta `diplomado-ia` | **Excluida** (lo pidió el usuario) |
 
 De la sesión 8 se toma solo lo que es del estándar: los intercambios sobre `F0` y el criterio con que se transcribieron las imágenes. El contenido del diplomado no se analiza.

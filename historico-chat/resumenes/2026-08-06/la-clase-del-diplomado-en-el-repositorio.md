@@ -69,7 +69,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-clase-del-di
 - **Responde a:** —.
 - **Dispara:** —, cae dentro del pendiente 29.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
 - **Nace en:** 2026-08-06 · la clase del diplomado en el repositorio.
 - **Cerrado en:** —.
 - **Con qué se retoma:** de las dos copias, ¿cuál se borra? La del enganche trae las horas reales; la de a mano trae las imágenes descritas.

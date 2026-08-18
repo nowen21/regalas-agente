@@ -34,13 +34,13 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 
 ## Días
 
-- [2026-08-06/](2026-08-06/) — siete sesiones: nace esta carpeta, el enganche que la escribe sola, el checklist y el molde de cómo es una regla.
-- [2026-08-07/](2026-08-07/) — diez sesiones: el estándar aplicado a sí mismo, y el enganche que borró la memoria de un proyecto.
-- [2026-08-08/](2026-08-08/) — cuatro sesiones: la instalación se hace sola, y dos reglas nuevas sobre cómo escribe el agente.
-- [2026-08-09/](2026-08-09/) — una sesión, sin trabajo.
-- [2026-08-12/](2026-08-12/) — una sesión: la regla que respalda las reglas de proyecto, y la carpeta de los pedidos del usuario.
-- [2026-08-13/](2026-08-13/) — dos sesiones: el brief y las épicas, y los pendientes que salen del posgrado.
-- [2026-08-14/](2026-08-14/) — ocho sesiones: las HU de la comprobación automática, el cierre de su hallazgo H-4, por qué ese cierre no funcionó, y el glosario de la terminología.
-- [2026-08-15/](2026-08-15/) — dos sesiones: la plantilla del resultado de pruebas, y el inventario de los resúmenes que faltan.
-- [2026-08-16/](2026-08-16/) — nueve sesiones: la prioridad del backlog, por qué un pendiente no es un plan, el inventario de las HU sin fase, y los siete cierres que dejaron ocho pendientes nuevos.
-- [2026-08-17/](2026-08-17/) — cuatro sesiones: los 51 planes de trabajo y su ejecución, y el enrutamiento del backlog para que ningún pendiente quede fuera de una historia de usuario.
+- [historico-chat/resumenes/2026-08-06/](2026-08-06/) — siete sesiones: nace esta carpeta, el enganche que la escribe sola, el checklist y el molde de cómo es una regla.
+- [historico-chat/resumenes/2026-08-07/](2026-08-07/) — diez sesiones: el estándar aplicado a sí mismo, y el enganche que borró la memoria de un proyecto.
+- [historico-chat/resumenes/2026-08-08/](2026-08-08/) — cuatro sesiones: la instalación se hace sola, y dos reglas nuevas sobre cómo escribe el agente.
+- [historico-chat/resumenes/2026-08-09/](2026-08-09/) — una sesión, sin trabajo.
+- [historico-chat/resumenes/2026-08-12/](2026-08-12/) — una sesión: la regla que respalda las reglas de proyecto, y la carpeta de los pedidos del usuario.
+- [historico-chat/resumenes/2026-08-13/](2026-08-13/) — dos sesiones: el brief y las épicas, y los pendientes que salen del posgrado.
+- [historico-chat/resumenes/2026-08-14/](2026-08-14/) — ocho sesiones: las HU de la comprobación automática, el cierre de su hallazgo H-4, por qué ese cierre no funcionó, y el glosario de la terminología.
+- [historico-chat/resumenes/2026-08-15/](2026-08-15/) — dos sesiones: la plantilla del resultado de pruebas, y el inventario de los resúmenes que faltan.
+- [historico-chat/resumenes/2026-08-16/](2026-08-16/) — nueve sesiones: la prioridad del backlog, por qué un pendiente no es un plan, el inventario de las HU sin fase, y los siete cierres que dejaron ocho pendientes nuevos.
+- [historico-chat/resumenes/2026-08-17/](2026-08-17/) — cuatro sesiones: los 51 planes de trabajo y su ejecución, y el enrutamiento del backlog para que ningún pendiente quede fuera de una historia de usuario.

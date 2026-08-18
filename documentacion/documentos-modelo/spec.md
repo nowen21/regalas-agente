@@ -135,7 +135,7 @@ No aplica: el módulo no toca datos personales ni ninguna norma externa.
 
 ## 10. Plan de pruebas
 
-El detalle vive en el [plan_pruebas.md](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/plan_pruebas.md) de la fase. En resumen:
+El detalle vive en el [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/plan_pruebas.md](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/A-EP-003-HU-001-marca-de-espacio-por-llenar/plan_pruebas.md) de la fase. En resumen:
 
 - **Caso feliz:** los huecos de tres plantillas se señalan de una sola lectura, y el recuento a ojo coincide con el del `grep`.
 - **Casos límite:** un archivo sin huecos (que debe quedar en cero con su motivo escrito) y una sección marcada `N/A`.

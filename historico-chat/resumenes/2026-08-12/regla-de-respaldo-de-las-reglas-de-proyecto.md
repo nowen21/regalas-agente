@@ -62,12 +62,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-12-regla-de-respal
 - **Qué pasó:** el usuario pidió rescatar del histórico lo que pudiera servir como regla, y ponerlo en fichas sueltas. Salieron **26 fichas**, cada una con su cita literal y el enlace a la sesión de donde viene.
 - **Por qué importa:** el pedido original es el dato que no se puede reconstruir. La regla que sale de él se puede reescribir mil veces; lo que el usuario dijo, no.
 - **Qué lo soluciona:** una carpeta versionada, con su índice por grupo, y una norma de trato: **un prompt no se corrige después**. Cuando la regla terminó exigiendo algo distinto de lo pedido, la diferencia se cuenta en el `CHANGELOG` y en el índice, no reescribiendo lo que el usuario pidió.
-- **Qué se decidió:** nace [prompts/](../../../prompts/README.md), con su fila en la tabla de *dónde va cada cosa* del [CLAUDE.md](../../../CLAUDE.md).
+- **Qué se decidió:** nace [prompts/README.md/](../../../prompts/README.md), con su fila en la tabla de *dónde va cada cosa* del [CLAUDE.md](../../../CLAUDE.md).
 - **Estado:** resuelto acá.
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [prompts/](../../../prompts/README.md), commit `0e7d9a9`.
+- **Dónde queda:** [prompts/README.md/](../../../prompts/README.md), commit `0e7d9a9`.
 - **Nace en:** 2026-08-12 · regla de respaldo de las reglas de proyecto.
 - **Cerrado en:** 2026-08-12 · regla de respaldo de las reglas de proyecto.
 - **Con qué se retoma:** —.
@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-12-regla-de-respal
 - **Responde a:** —.
 - **Dispara:** —, es afinar una regla existente.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). La memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md) ya trae el matiz — vale solo mientras se ejecuta algo autorizado —, pero `F20` no lo dice.
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). La memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md) ya trae el matiz — vale solo mientras se ejecuta algo autorizado —, pero `F20` no lo dice.
 - **Nace en:** 2026-08-12 · regla de respaldo de las reglas de proyecto.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿dónde termina «el defecto que yo mismo reporté» y empieza «lo que descubrí fuera del alcance»?

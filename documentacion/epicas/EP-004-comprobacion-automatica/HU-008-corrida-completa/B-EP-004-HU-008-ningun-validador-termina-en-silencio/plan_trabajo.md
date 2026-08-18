@@ -19,7 +19,7 @@
 - 📝 **Complementa** a la [fase A](../A-EP-004-HU-008-la-corrida-completa-en-una-linea/), que construye la puerta de entrada única. Esta se ocupa de lo que pasa cuando alguien **no** la usa.
 - ✨ **Funcionalidad nueva:** el guardián de arranque y el subcomando `metareglas`.
 
-**De dónde sale:** el [pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md).
+**De dónde sale:** el [pendientes/hecho/ningun-validador-termina-en-silencio.md](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md).
 
 **CA de la HU que cubre esta fase**
 

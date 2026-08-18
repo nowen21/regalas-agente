@@ -148,7 +148,7 @@ Y pregunta cuál de las dos manda antes de tocar nada
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| [`A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar`](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/) | CA-01, CA-02, CA-03 | [plan_trabajo.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md) | [plan_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md) | [resultado_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md) · **Cumple** | Cerrada |
+| [`A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar`](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/) | CA-01, CA-02, CA-03 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md) · **Cumple** | Cerrada |
 
 **De dónde sale esta historia:** el [pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md](../../../../pendientes/24-buscar-en-el-repositorio-antes-de-preguntar.md), que la redactó y le puso este mismo identificador.
 

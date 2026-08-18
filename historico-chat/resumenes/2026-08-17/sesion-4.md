@@ -20,7 +20,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-2 · Seis pendientes no tenían ninguna historia que los recibiera
 
-**Qué se midió.** Se enrutaron los 33 archivos de [pendientes/](../../../pendientes/README.md) contra las 68 historias del árbol de épicas. **Veintisiete cabían** en una historia que ya existía. **Seis no cabían en ninguna**, y hubo que escribirlas:
+**Qué se midió.** Se enrutaron los 33 archivos de [pendientes/README.md/](../../../pendientes/README.md) contra las 68 historias del árbol de épicas. **Veintisiete cabían** en una historia que ya existía. **Seis no cabían en ninguna**, y hubo que escribirlas:
 
 | Historia nueva | Recibe |
 |---|---|
@@ -229,6 +229,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 **La medición fue el trabajo, no el trámite.** La primera reescritura dejó **cinco de las diez todavía pasadas**, y `09·G9` necesitó tres pasadas. Escribir corto no sale a la primera, y firmar un sello sobre un largo estimado ya costó cinco correcciones en esta misma historia.
 
 **Deuda dicha:** el porqué que se sacó no se escribió en `notas/`. Está en los sellos —cada uno dice qué salió— pero no donde `M5` manda.
+
+### H-21 · Una regla que tenía razón, aplicada donde no había mirado
+
+**Qué pasó.** El [pendiente 18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md) contaba 354 enlaces que incumplen `13·DOC14`; hoy eran **1031**. Se construyó la reparación por programa, se aplicó a los 1031 — **y se revirtió entera.**
+
+**Por qué.** `DOC14` pide la ruta desde la raíz *«para saber dónde vive sin abrirlo»*. Para el archivo de **la misma carpeta** ese propósito ya está cumplido, y la regla no distingue el caso. Aplicada literal, la tabla de contenidos de una fase quedaba con celdas de **132 caracteres para decir `plan_trabajo.md`**.
+
+**Y son 747 de los 1031.** Tres de cada cuatro.
+
+**Lo que hay que recordar:** una regla puede tener razón en el caso para el que se escribió y volverse contraproducente en el que no se miró — **y eso solo se ve aplicándola**. El validador llevaba días contando 1031 sin que nadie viera que eran dos poblaciones distintas.
+
+**Se arreglaron los 284 de entre carpetas**, que son los que la regla resuelve de verdad, sin romper un solo enlace: el destino no se toca nunca.
+
+**Y los casos encontraron dos defectos antes de tocar el repositorio:** la exclusión de `prompts/` se contaba contra la raíz equivocada —en el repositorio real las dos coinciden, así que habría funcionado hasta el día que no— y el texto entre comillas invertidas no lo ve nadie.
+
+**Dónde queda.** La fase [`B-EP-004-HU-005`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive/), sin cambio de versión. **La decisión sobre el vecino es del usuario**, y hasta que se tome el número no baja de 747.
 
 ---
 

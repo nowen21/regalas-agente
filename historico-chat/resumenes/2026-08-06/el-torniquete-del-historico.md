@@ -112,7 +112,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-el-torniquete-d
 - **Responde a:** —.
 - **Dispara:** —, es una línea en un validador que ya existe.
 - **Orden de resolución:** 1 de 1. Es el único que quedó abierto de esta sesión.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-06 · el torniquete del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** el caso que lo destapó salió del repositorio al día siguiente, así que hoy no se ve. ¿Sigue el falso positivo, o algo lo arregló por el camino?

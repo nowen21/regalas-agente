@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** Primera fase de la historia.
 
-**De dónde sale:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.
+**De dónde sale:** el [pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.
 
 **CA que cubre:** los cuatro de la HU.
 

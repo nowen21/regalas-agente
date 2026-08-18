@@ -1,6 +1,6 @@
 # Señales del estándar del agente  ·  `[CAPA 3 · memoria por señales]`
 
-Conocimiento de alto valor que **no se recupera leyendo el código ni las reglas**: decisiones, errores resueltos, patrones y aprendizajes. Se guardan señales, no la conversación (`13·DOC5`). La conversación entera vive en [historico-chat/](../historico-chat/README.md).
+Conocimiento de alto valor que **no se recupera leyendo el código ni las reglas**: decisiones, errores resueltos, patrones y aprendizajes. Se guardan señales, no la conversación (`13·DOC5`). La conversación entera vive en [historico-chat/README.md/](../historico-chat/README.md).
 
 Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. Antes de confiar en una vieja, comprobar que sigue vigente.
 
@@ -26,7 +26,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 ## S-002 · Escribir código sin haber recorrido la cadena  ·  error-resuelto · activa
 - **What:** se escribieron cinco validadores nuevos desde el pendiente 01, sin épica, sin historia de usuario y sin plan aprobado.
 - **Why:** el pendiente describía el trabajo con tanto detalle que pareció suficiente para arrancar. Un pendiente no es una historia de usuario: dice qué falta, no qué se acepta como cumplido.
-- **Where:** [documentacion/epicas/EP-004-comprobacion-automatica/](epicas/EP-004-comprobacion-automatica/README.md).
+- **Where:** [documentacion/epicas/EP-004-comprobacion-automatica/README.md/](epicas/EP-004-comprobacion-automatica/README.md).
 - **Learned:** el pendiente es el origen, no el permiso. Lo escrito quedó como línea base verificada, no como trabajo hecho.
 - **When/Who:** 2026-08-14 · usuario.
 - **Scope:** estándar.

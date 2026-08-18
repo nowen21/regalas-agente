@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [`01·C19`](../../../base/01-conducta.md) y la carpeta [historico-chat/memory/](../../memory/memory.md).
+- **Dónde queda:** [`01·C19`](../../../base/01-conducta.md) y la carpeta [historico-chat/memory/memory.md/](../../memory/memory.md).
 - **Nace en:** 2026-08-06 · la anatomía de la regla.
 - **Cerrado en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Con qué se retoma:** —.
@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [base/13-documentacion](../../../base/13-documentacion/base.md), y la memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md).
+- **Dónde queda:** [base/13-documentacion/base.md](../../../base/13-documentacion/base.md), y la memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md).
 - **Nace en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Cerrado en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Con qué se retoma:** —.

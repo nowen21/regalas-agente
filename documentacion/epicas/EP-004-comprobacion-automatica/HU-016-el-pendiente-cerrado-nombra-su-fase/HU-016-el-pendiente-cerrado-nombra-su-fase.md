@@ -23,7 +23,7 @@
 - **Quiero** que un programa avise cuando un pendiente no nombra la historia donde vive —al abrirlo— ni la fase donde se construyó —al cerrarlo—
 - **Para** que nada del backlog quede suelto ni se construya saltándose la cadena, sin depender de que alguien se acuerde
 
-> **El identificador de esta historia se quedó corto y no se cambia.** Nació diciendo «el pendiente cerrado», y desde el 2026-08-17 cubre también al abierto. Renombrar la carpeta rompería todo lo que la cita — que es exactamente el defecto del [pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md](../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md). El nombre queda; el alcance lo dicen las `RN` y los `CA`.
+> **El identificador de esta historia se quedó corto y no se cambia.** Nació diciendo «el pendiente cerrado», y desde el 2026-08-17 cubre también al abierto. Renombrar la carpeta rompería todo lo que la cita — que es exactamente el defecto del [pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md](../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md). El nombre queda; el alcance lo dicen las `RN` y los `CA`.
 
 ---
 

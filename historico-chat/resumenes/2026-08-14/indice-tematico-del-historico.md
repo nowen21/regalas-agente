@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 - **Responde a:** —.
 - **Dispara:** —, es un documento de índice.
 - **Orden de resolución:** 1 de 2.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Los [resúmenes](../README.md) resuelven parte del problema —lo que quedó de cada sesión— pero siguen ordenados por fecha, no por tema.
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Los [resúmenes](../README.md) resuelven parte del problema —lo que quedó de cada sesión— pero siguen ordenados por fecha, no por tema.
 - **Nace en:** 2026-08-14 · índice temático del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el índice temático se escribe a mano, o se arma leyendo los resúmenes que ahora sí existen?
@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [historico-chat/memory/](../../memory/memory.md) y la tabla de *dónde va cada cosa* del [CLAUDE.md](../../../CLAUDE.md).
+- **Dónde queda:** [historico-chat/memory/memory.md/](../../memory/memory.md) y la tabla de *dónde va cada cosa* del [CLAUDE.md](../../../CLAUDE.md).
 - **Nace en:** 2026-08-14 · índice temático del histórico.
 - **Cerrado en:** 2026-08-14 · índice temático del histórico.
 - **Con qué se retoma:** —.
@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-14 · índice temático del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** si el brief y el histórico se contradicen, ¿cuál manda, y dónde queda escrito?

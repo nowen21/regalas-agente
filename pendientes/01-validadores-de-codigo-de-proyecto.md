@@ -8,7 +8,7 @@
 
 Extender la capa de **verificación mecánica** del estándar a lo que vive **dentro del código de un proyecto**: los validadores que no se pueden construir "en seco" sobre el estándar porque necesitan inspeccionar código/config o correr una herramienta instalada (linter, pruebas, audit).
 
-> **Casi cerrado** — hooks activos y ~50 reglas con validador (137 pruebas verdes): documentación/estructura, código del proyecto, herramientas del stack y documentación de flujo. Se registra en [hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md). Quedan **~9**: 4 fuzzy o pesadas y 5 que necesitan que el proyecto declare su convención/dominio (ver abajo).
+> **Casi cerrado** — hooks activos y ~50 reglas con validador (137 pruebas verdes): documentación/estructura, código del proyecto, herramientas del stack y documentación de flujo. Se registra en [pendientes/hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md). Quedan **~9**: 4 fuzzy o pesadas y 5 que necesitan que el proyecto declare su convención/dominio (ver abajo).
 
 ## El principio que lo ordena
 

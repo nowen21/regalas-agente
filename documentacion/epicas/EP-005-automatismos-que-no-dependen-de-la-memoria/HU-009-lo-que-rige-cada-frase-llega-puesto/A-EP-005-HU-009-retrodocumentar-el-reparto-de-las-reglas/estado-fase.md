@@ -61,7 +61,7 @@
 |---|---|
 | El reparto de `base/` ya mandaba completos `00` y `01` desde la 5.0.0: la historia retro-documenta, no construye | [`documentacion/automatismos/spec.md`](../../../../automatismos/spec.md), §4.1 |
 | Una prueba en verde no dice si vigila algo: se rompe el reparto a propósito y se comprueba que la prueba lo caza | §3 del [resultado de pruebas](resultado_pruebas.md) |
-| El pendiente 25 se cierra por falso: la causa se había deducido, no verificado | [pendientes/25](../../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) |
+| El pendiente 25 se cierra por falso: la causa se había deducido, no verificado | [pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md](../../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) |
 
 ---
 

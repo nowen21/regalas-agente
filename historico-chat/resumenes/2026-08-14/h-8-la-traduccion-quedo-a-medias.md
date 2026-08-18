@@ -92,7 +92,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** [EP-003 · HU-010](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md), supuesto §3.2.
 - **Dispara:** —
 - **Orden de resolución:** hecho.
-- **Dónde queda:** defecto D-01 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
+- **Dónde queda:** defecto D-01 del [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md) de la fase.
 - **Nace en:** 2026-08-14 · h-8-la-traduccion-quedo-a-medias.
 - **Cerrado en:** 2026-08-14 · h-8-la-traduccion-quedo-a-medias.
 - **Con qué se retoma:** nada.
@@ -107,7 +107,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** [EP-003 · HU-010 · RNF-01](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md).
 - **Dispara:** H-7 y H-8 de esta sesión.
 - **Orden de resolución:** hecho.
-- **Dónde queda:** estándar 17.0.2 · ciclo 3 del [resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md).
+- **Dónde queda:** estándar 17.0.2 · ciclo 3 del [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/resultado_pruebas.md).
 - **Nace en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
 - **Cerrado en:** 2026-08-16 · h-8-la-traduccion-quedo-a-medias.
 - **Con qué se retoma:** falta probar las otras cuatro entradas con lector de fuera. Se probó una de cinco.

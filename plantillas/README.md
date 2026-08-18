@@ -23,7 +23,7 @@ Son casi todos modelos. Las fuentes de generación son estas, y conviene saber c
 
 **Un procedimiento no es un molde.** No se copia ni se llena: se lee y se sigue. Vive junto a la regla que lo exige, no acá.
 
-[base/13-documentacion/retrodocumentacion.md](«RUTA-ESTANDAR»/base/13-documentacion/retrodocumentacion.md) —los seis pasos de [`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)— estuvo acá hasta el 2026-08-17 y se movió por eso. El capítulo 13 ya tenía el precedente: [base/13-documentacion/render-local-de-md.md](«RUTA-ESTANDAR»/base/13-documentacion/render-local-de-md.md) es un anexo que no es regla y vive al lado de la suya.
+[plantillas/«RUTA-ESTANDAR»/base/13-documentacion/retrodocumentacion.md](«RUTA-ESTANDAR»/base/13-documentacion/retrodocumentacion.md) —los seis pasos de [`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-spec-antes-de-tocarlo.md)— estuvo acá hasta el 2026-08-17 y se movió por eso. El capítulo 13 ya tenía el precedente: [plantillas/«RUTA-ESTANDAR»/base/13-documentacion/render-local-de-md.md](«RUTA-ESTANDAR»/base/13-documentacion/render-local-de-md.md) es un anexo que no es regla y vive al lado de la suya.
 
 **[plantillas/prompts/](prompts/) sí se queda**, en su subcarpeta: el molde con que el usuario pide trabajo se llena escribiendo el pedido, así que es un modelo — solo que lo llena el usuario y no el agente.
 

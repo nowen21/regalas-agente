@@ -174,7 +174,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-anatomia-de-
 - **Responde a:** —.
 - **Dispara:** —, es una línea en el `README` de la carpeta.
 - **Orden de resolución:** 3 de 3. Va último: no rompe nada, confunde.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Para los **resúmenes** sí quedó resuelto —van al día en que pasaron las cosas, según [resumenes/README.md](../README.md)—; para la transcripción, no.
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Para los **resúmenes** sí quedó resuelto —van al día en que pasaron las cosas, según [historico-chat/resumenes/README.md](../README.md)—; para la transcripción, no.
 - **Nace en:** 2026-08-06 · la anatomía de la regla.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿la transcripción se parte a la medianoche, o se queda entera con el nombre del día en que empezó?
@@ -189,7 +189,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-anatomia-de-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** hoy es la regla [`01·C19`](../../../base/01-conducta.md) y la carpeta [historico-chat/memory/](../../memory/memory.md), con el almacén local **vacío**; se cerró en la sesión del [2026-08-07](../../2026-08-07-memoria-del-agente-en-el-repo.md), v3.0.0.
+- **Dónde queda:** hoy es la regla [`01·C19`](../../../base/01-conducta.md) y la carpeta [historico-chat/memory/memory.md/](../../memory/memory.md), con el almacén local **vacío**; se cerró en la sesión del [2026-08-07](../../2026-08-07-memoria-del-agente-en-el-repo.md), v3.0.0.
 - **Nace en:** 2026-08-06 · la anatomía de la regla.
 - **Cerrado en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Con qué se retoma:** —.

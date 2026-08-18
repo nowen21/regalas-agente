@@ -19,12 +19,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-la-documentacio
 - **Qué pasó:** el usuario pidió la documentación técnica de cada archivo de `validadores/`, sacada **del código fuente** y no de suposiciones ni de documentación previa.
 - **Por qué importa:** los validadores son la mitad del agente que corre sin IA. Sin saber qué hace cada uno, la única forma de tocarlos es leerlos enteros.
 - **Qué lo soluciona:** un documento por archivo, todos con la misma estructura: qué hace, de qué depende y quién lo usa, qué tiene adentro, y cómo se ejecuta.
-- **Qué se decidió:** 40 documentos en [validadores/docs/](../../../validadores/docs/README.md), más el índice, que agrupa por lo que hacen y trae el mapa de relaciones en dos formas: los cinco niveles —cada nivel solo usa los de arriba— y la tabla completa de «usa a / lo usan».
+- **Qué se decidió:** 40 documentos en [validadores/docs/README.md/](../../../validadores/docs/README.md), más el índice, que agrupa por lo que hacen y trae el mapa de relaciones en dos formas: los cinco niveles —cada nivel solo usa los de arriba— y la tabla completa de «usa a / lo usan».
 - **Estado:** resuelto acá.
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [validadores/docs/](../../../validadores/docs/README.md), commit `bc22f21`.
+- **Dónde queda:** [validadores/docs/README.md/](../../../validadores/docs/README.md), commit `bc22f21`.
 - **Nace en:** 2026-08-08 · la documentación de los validadores.
 - **Cerrado en:** 2026-08-08 · la documentación de los validadores.
 - **Con qué se retoma:** —.
@@ -54,7 +54,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-la-documentacio
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [validadores/docs/](../../../validadores/docs/README.md).
+- **Dónde queda:** [validadores/docs/README.md/](../../../validadores/docs/README.md).
 - **Nace en:** 2026-08-08 · la documentación de los validadores.
 - **Cerrado en:** 2026-08-08 · la documentación de los validadores.
 - **Con qué se retoma:** —.

@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-reglas-con-expr
 - **Responde a:** —.
 - **Dispara:** —, es completar un validador que ya existe.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Se cruza con el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que cuenta cuántas meta-reglas siguen sin comprobar.
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Se cruza con el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que cuenta cuántas meta-reglas siguen sin comprobar.
 - **Nace en:** 2026-08-07 · reglas con expresiones regulares.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se implementan las dos comprobaciones de `M1` que ya se pueden, o se espera a decidir la declaración de capa 3?

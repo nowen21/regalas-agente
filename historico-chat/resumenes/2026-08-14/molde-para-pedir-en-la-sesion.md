@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-molde-para-pedi
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/prompts/prompt-base-usuario.md](../../../plantillas/prompts/).
+- **Dónde queda:** [plantillas/prompts](../../../plantillas/prompts/).
 - **Nace en:** 2026-08-14 · molde para pedir en la sesión.
 - **Cerrado en:** 2026-08-14 · molde para pedir en la sesión.
 - **Con qué se retoma:** —.
@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-molde-para-pedi
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), que es el mismo trabajo.
+- **Dónde queda:** [pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), que es el mismo trabajo.
 - **Nace en:** 2026-08-14 · molde para pedir en la sesión.
 - **Cerrado en:** —.
 - **Con qué se retoma:** mientras no exista el validador, `ID8` depende de que alguien la recuerde en cada texto.

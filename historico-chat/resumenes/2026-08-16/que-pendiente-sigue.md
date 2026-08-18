@@ -47,7 +47,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendiente-s
 
 **Qué se encontró.** Con las decisiones tomadas, la fase se ejecutó entera: 13 tareas y 6 casos de prueba.
 
-**Qué se decidió.** Se publica como **[21.2.0](../../../CHANGELOG.md)** (MENOR: aditivo, y un proyecto al día no tiene que hacer nada nuevo). Los dos pendientes quedan en [hecho/poner-al-dia-lo-ya-instalado.md](../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md), y el backlog baja de 32 a 30 abiertos — sin ningún `P0`.
+**Qué se decidió.** Se publica como **[21.2.0](../../../CHANGELOG.md)** (MENOR: aditivo, y un proyecto al día no tiene que hacer nada nuevo). Los dos pendientes quedan en [pendientes/hecho/poner-al-dia-lo-ya-instalado.md](../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md), y el backlog baja de 32 a 30 abiertos — sin ningún `P0`.
 
 **Dónde queda.** En el [resultado de pruebas](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/resultado_pruebas.md) de la fase: seis casos, todos en verde.
 
@@ -93,7 +93,7 @@ Y sacó una conclusión equivocada: que el 42 cerró «de rebote» porque la pla
 
 **Lo que dejó, y vale más que el arreglo:** el caso de prueba **pasaba en verde con el defecto puesto**. Instalaba en carpeta vacía, y esa corrida nunca imprime una flecha. Lo destapó el paso del plan que obliga a ver fallar la prueba antes de confiar en ella. Sin ese paso, la fase habría cerrado con una prueba que no comprueba nada.
 
-**Dónde queda.** En [hecho/instalar-prepara-su-propia-salida.md](../../../pendientes/hecho/instalar-prepara-su-propia-salida.md) y en el `DEF-01` de su [resultado de pruebas](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/resultado_pruebas.md).
+**Dónde queda.** En [pendientes/hecho/instalar-prepara-su-propia-salida.md](../../../pendientes/hecho/instalar-prepara-su-propia-salida.md) y en el `DEF-01` de su [resultado de pruebas](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/resultado_pruebas.md).
 
 ---
 

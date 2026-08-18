@@ -10,4 +10,4 @@ Todavía no tiene fases. Lo único que hay que decidir antes es **en qué capít
 
 Es la contraparte de la instalación: la épica ya cubre cómo el estándar baja al proyecto, y esto es cómo el proyecto sube al estándar.
 
-De dónde sale: el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.
+De dónde sale: el [pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md](../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.

@@ -39,7 +39,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-granularidad-de
 - **Responde a:** —.
 - **Dispara:** —, es una fila en una plantilla que ya existe.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-07 · granularidad de la fase.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿la dependencia CA→CA entra a la plantilla de la historia, o se mapea aparte al armar las fases?

@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-pendientes-del-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [pendientes/22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que recoge el choque; `G9` está hoy publicada en [base/09-git.md](../../../base/09-git.md).
+- **Dónde queda:** [pendientes/22-dos-sesiones-versionando-a-la-vez.md](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que recoge el choque; `G9` está hoy publicada en [base/09-git.md](../../../base/09-git.md).
 - **Nace en:** 2026-08-13 · pendientes del diplomado de IA.
 - **Cerrado en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Con qué se retoma:** —.

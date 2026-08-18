@@ -2,7 +2,7 @@
 
 Backlog de mejoras del estándar del agente que aún no se implementan. Un archivo por ítem, **numerado en el orden en que conviene ejecutarlos**. Al cerrar un pendiente, se implementa en la base/plantillas/skills y se borra su archivo de aquí (o se marca como hecho con la fecha).
 
-Lo ya cerrado se registra en la carpeta **[hecho/](hecho/)** — un archivo por tema, nombrado por lo que resuelve. Es la contraparte de este backlog: allí se ve lo hecho, aquí lo que falta.
+Lo ya cerrado se registra en la carpeta **[pendientes/hecho/](hecho/)** — un archivo por tema, nombrado por lo que resuelve. Es la contraparte de este backlog: allí se ve lo hecho, aquí lo que falta.
 
 **El número es el orden, no la prioridad.** Los pendientes se ejecutan de menor a mayor porque cada uno se apoya en los anteriores. Al cerrar uno, el número no se reutiliza ni se renumeran los demás: los huecos son historia.
 
@@ -31,7 +31,7 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **28*
 
 | # | P | Pendiente | Qué resuelve | Por qué va aquí |
 |---|---|---|---|---|
-| 01 | **P5** | [Validadores de código de proyecto](01-validadores-de-codigo-de-proyecto.md) | Los validadores que faltan: los que leen el código/config del proyecto o corren una herramienta (linter, pruebas, audit), más las puertas de flujo. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple", y produce los datos que necesita el 06. La **base ya está hecha** ([hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): hooks + validadores de documentación y estructura. Aquí queda la mitad que necesita un proyecto real. Cinco de los nueve que faltan **no arrancan sin el ítem 04 del [09](09-autonomia-sin-ia.md)** —el manifiesto de convenciones—: sin él no hay contra qué comparar. |
+| 01 | **P5** | [Validadores de código de proyecto](01-validadores-de-codigo-de-proyecto.md) | Los validadores que faltan: los que leen el código/config del proyecto o corren una herramienta (linter, pruebas, audit), más las puertas de flujo. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple", y produce los datos que necesita el 06. La **base ya está hecha** ([pendientes/hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): hooks + validadores de documentación y estructura. Aquí queda la mitad que necesita un proyecto real. Cinco de los nueve que faltan **no arrancan sin el ítem 04 del [09](09-autonomia-sin-ia.md)** —el manifiesto de convenciones—: sin él no hay contra qué comparar. |
 | ~~02~~ | — | **hecho** → [Vigencia y poda de la memoria](hecho/vigencia-y-poda-de-memoria.md) | Vigencia (`revisada`), marca de sin-verificar, recencia en `search`, comandos `revisar`/`archivar`. | Evitaba que la memoria se degrade sola de activo a ruido. Cerrado 2026-08-06 (la detección de contradicciones se movió al 05). |
 | ~~03~~ | — | **hecho** → [Ciclo de vida de pendientes y deuda](hecho/ciclo-de-vida-de-pendientes.md) | Estado `cerrada` + `cerrada_en`/`cierra_ref`; comandos `pendientes` / `cerrar`. | Cierra lo que el agente difiere (deuda, preguntas). Cerrado 2026-08-06, sobre el gancho de migración del 02. |
 | ~~04~~ | — | **hecho** → [Versión del estándar](hecho/version-del-estandar.md) | `VERSION` + `CHANGELOG`, fijación por proyecto, retroactividad y validador de desfase. | "El proyecto cumple el estándar" pasa a tener fecha. Cerrado 2026-08-06. |
@@ -132,7 +132,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 |---|---|---|---|
 | ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](hecho/los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
 | 32 | **P2** | [La carpeta del día nace sin su línea en el índice](hecho/la-carpeta-del-dia-nace-indexada.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
-| 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
+| 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([pendientes/hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
 
 **El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
 
@@ -140,7 +140,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 
 | Punto | P | Qué es |
 |---|---|---|
-| ~~6~~ · a qué proyectos les borró la memoria el enganche | — | **Cerrado** el 2026-08-16 → [hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md) |
+| ~~6~~ · a qué proyectos les borró la memoria el enganche | — | **Cerrado** el 2026-08-16 → [pendientes/hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md) |
 | ~~7~~ · un checklist anulado que nadie volvió a aplicar | — | **Promovido** el 2026-08-16 → [52](hecho/el-sello-del-checklist-se-comprueba.md) |
 | 5 · falta la prueba que protege el `GATE` del arranque | **P2** | Una prueba. Esa puerta ya desapareció en silencio una vez |
 | 1 · el validador da por rotos los enlaces con espacios | **P2** | Un `unquote`. Falsos positivos en el validador que más se corre |
@@ -198,7 +198,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 | ~~45~~ | — | **hecho** → [El instalador prepara su propia salida](hecho/instalar-prepara-su-propia-salida.md) | — | `instalar()` se moría al imprimir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Cerrado 2026-08-16 (v21.2.1) en la fase [`B-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/). |
 | 46 | **P1** | [El registro de versión dice que falta escribirse](hecho/el-registro-se-escribe-antes-de-contarse.md) | dp | El apartado «Qué quedó pendiente» del registro se calcula antes de escribirlo, así que el archivo recién nacido se lista a sí mismo como faltante. Queda versionado un documento que afirma algo falso y manda a buscar lo que se tiene delante. |
 
-**Nació en un cerrado y no lo reabrió.** El defecto del 45 venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [42/44](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
+**Nació en un cerrado y no lo reabrió.** El defecto del 45 venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [pendientes/hecho/poner-al-dia-lo-ya-instalado.md](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
 
 **El 46 es la otra mitad de lo mismo.** El [44](hecho/poner-al-dia-lo-ya-instalado.md) hizo que el registro se escriba; el 46 es que se escribe diciendo que no se escribió. Lo reporta `dp` el mismo día en que corrió el instalador que trae la corrección del 44, así que es el primer proyecto que ve el residuo.
 

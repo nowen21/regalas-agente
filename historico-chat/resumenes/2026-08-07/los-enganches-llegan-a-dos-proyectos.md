@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-los-enganches-l
 - **Responde a:** —.
 - **Dispara:** —, es correr el instalador otra vez y mirar.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-07 · los enganches llegan a dos proyectos.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿LocalHub quedó sin sello por algo del proyecto, o el instalador se saltó el paso?

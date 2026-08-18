@@ -19,7 +19,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** —. El trabajo venía del pendiente 01, que no es una historia de usuario.
 - **Dispara:** EP-004 · HU-010, HU-011 y HU-012, las tres que no existían y hacían falta para lo que se estaba escribiendo. Ya están escritas.
 - **Orden de resolución:** 3 de 7 · aprobar los planes desbloquea el código que ya está escrito.
-- **Dónde queda:** señal S-002 · la fase [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/README.md), que es donde continúa. No lleva pendiente: su continuación ya está abierta.
+- **Dónde queda:** señal S-002 · la fase [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/README.md/](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/README.md), que es donde continúa. No lleva pendiente: su continuación ya está abierta.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** aprobar los dos planes de la fase `A-EP-004-HU-010` y rehacer bajo ellos los cinco validadores que hoy están sin commitear.
@@ -49,7 +49,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —
 - **Orden de resolución:** —, ya está cerrado.
-- **Dónde queda:** regla [`01·C5`](../../../base/01-conducta.md#c5--responde-corto) · memoria [respuestas-cortas.md](../../memory/respuestas-cortas.md) · versión 12.1.0.
+- **Dónde queda:** regla [`01·C5`](../../../base/01-conducta.md#c5--responde-corto) · memoria [historico-chat/memory/respuestas-cortas.md](../../memory/respuestas-cortas.md) · versión 12.1.0.
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Con qué se retoma:** —

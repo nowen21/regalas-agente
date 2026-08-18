@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-del-brief-a-los
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [planteamiento.md](../../../planteamiento.md) y [documentacion/epicas/](../../../documentacion/epicas/README.md), versiones 8.0.1 y 8.1.0 del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [planteamiento.md](../../../planteamiento.md) y [documentacion/epicas/README.md/](../../../documentacion/epicas/README.md), versiones 8.0.1 y 8.1.0 del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Cerrado en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Con qué se retoma:** —.

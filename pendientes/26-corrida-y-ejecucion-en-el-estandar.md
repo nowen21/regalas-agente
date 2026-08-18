@@ -23,7 +23,7 @@ En el [glosario](../base/glosario.md) la palabra solo aparece dentro de «alcanc
 
 **Dónde sigue apareciendo:**
 
-- [base/02-flujo-de-trabajo](../base/02-flujo-de-trabajo/base.md), incluida la regla [`F5`](../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) y su nombre «alcance de corrida»
+- [base/02-flujo-de-trabajo/base.md](../base/02-flujo-de-trabajo/base.md), incluida la regla [`F5`](../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) y su nombre «alcance de corrida»
 - [base/08-pruebas.md](../base/08-pruebas.md)
 - [base/glosario.md](../base/glosario.md)
 - [base/20-meta-reglas/estructura-regla.md](../base/20-meta-reglas/estructura-regla.md)

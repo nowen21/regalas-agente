@@ -26,7 +26,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Por qué importa:** es el propio estándar el que pide ponerle nombre a la sesión, y el comando que ofrecía para hacerlo dejaba el repositorio con un enlace roto.
 - **Qué se decidió:** se corrigen **las dos partes** del enlace, el texto visible y el destino, porque [`13·DOC14`](../../../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) pide que el texto diga dónde vive el archivo. Se reemplaza el par exacto, para no tocarle el enlace a otra sesión que el resumen nombre.
 - **Estado:** **resuelto acá** — v21.3.0, veredicto Cumple, 22 pruebas en verde. El arreglo se vio fallar a propósito antes de darlo por bueno.
-- **Responde a:** el pendiente 35, cerrado en [hecho/renombrar-deja-el-resumen-coherente.md](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md).
+- **Responde a:** el pendiente 35, cerrado en [pendientes/hecho/renombrar-deja-el-resumen-coherente.md](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md).
 - **Dispara:** —
 - **Dónde queda:** fase [`B-EP-005-HU-008`](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/), `_reenlazar()` en `historico.py` y la primera suite de pruebas de ese programa.
 - **Nace en:** 2026-08-16 · sesión 7
@@ -98,7 +98,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** el pendiente 38 decía que el validador de la `F22` había quedado «sin el registro que dice por qué es como es». Al retrodocumentarlo se vio que `validadores/docs/version.md` ya lo explicaba con ejemplos. Lo que no existía era una sola prueba.
 - **Por qué importa:** cambia qué se pierde cuando alguien se salta la fase. La explicación se puede escribir después; la evidencia de que funcionaba el día que se escribió, no.
 - **Estado:** resuelto acá — v21.3.1, fase `A-EP-004-HU-015`, cuatro casos contra las derogaciones reales del estándar.
-- **Dónde queda:** [hecho/el-validador-de-la-f22-tiene-su-fase.md](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md)
+- **Dónde queda:** [pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md)
 - **Nace y cierra en:** 2026-08-16 · sesión 7
 
 ### H-9 · Dos reglas que dicen casi lo mismo, y solo una baja de algún lado
@@ -106,7 +106,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** al fijar el molde nuevo del §4 se escribieron las dos reglas del caso de `shopnest-mesa`. «Un problema **registra** causa raíz y solución» baja de `RF-13`; «un problema **no se cierra** sin causa raíz ni solución» no baja de ninguna parte. Con el molde viejo se veían igual de bien escritas.
 - **Por qué importa:** es el argumento entero del pendiente 43 en dos líneas. La segunda llegó hasta un criterio de aceptación.
 - **Estado:** resuelto acá — v22.0.0 el molde, v22.1.0 el validador.
-- **Dónde queda:** [hecho/el-origen-de-la-regla-de-negocio.md](../../../pendientes/hecho/el-origen-de-la-regla-de-negocio.md)
+- **Dónde queda:** [pendientes/hecho/el-origen-de-la-regla-de-negocio.md](../../../pendientes/hecho/el-origen-de-la-regla-de-negocio.md)
 - **Nace y cierra en:** 2026-08-16 · sesión 7
 
 ### H-10 · Un `spec.md` no se comparaba contra ninguna plantilla
@@ -127,7 +127,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** la revisión de instalación decía «13 de 13, instalación completa» a un proyecto con código commiteado, `prompts/` vacía y ninguna épica. Ahora la lista tiene 14 puntos y el nuevo mira si la cadena de `02·F0` arrancó.
 - **Qué se decidió:** entra como punto de la revisión y **no** lo instala el instalador — es el único así, y su fila lo dice. Copiar la plantilla del planteamiento con los marcadores crudos habría sido peor: parecería un planteamiento y la revisión lo daría por cumplido.
 - **Estado:** resuelto acá — v23.0.0, fase `A-EP-007-HU-007`.
-- **Dónde queda:** [hecho/la-revision-ve-la-cadena.md](../../../pendientes/hecho/la-revision-ve-la-cadena.md)
+- **Dónde queda:** [pendientes/hecho/la-revision-ve-la-cadena.md](../../../pendientes/hecho/la-revision-ve-la-cadena.md)
 - **Nace y cierra en:** 2026-08-16 · sesión 7
 
 ### H-13 · Esta casa tampoco tiene planteamiento
@@ -142,7 +142,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** el `CP-006` de la fase del glosario pedía un lector que no lo hubiera escrito, y llevaba dos ciclos sin ejecutarse. Se ejecutó el día que el usuario leyó el glosario para otra cosa, no entendió la entrada **Brief** y preguntó tres veces. Las tres preguntas eran, palabra por palabra, lo que el paso 4 del caso mandaba anotar.
 - **Por qué importa:** un caso que depende de una persona no se marca «no ejecutable». Se deja escrito qué anotar cuando ocurra, porque ocurre.
 - **Estado:** resuelto acá — el pendiente 27 cierra. Lo que faltaba el 2026-08-16 era más chico: la cabecera del resultado decía «ciclo 1» con el cuerpo ya en el ciclo 3.
-- **Dónde queda:** [hecho/el-veredicto-de-la-fase-a-de-hu-010.md](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md)
+- **Dónde queda:** [pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md)
 - **Nace y cierra en:** 2026-08-16 · sesión 7
 
 ### H-15 · La comprobación del veredicto llegó tarde a su propio caso
@@ -151,7 +151,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Por qué importa:** su valor no es lo que encuentra hoy. Es que la próxima no dependa de que alguien reescriba un resultado de pruebas y note la diferencia, que fue exactamente como se encontró esta.
 - **Qué se decidió:** de las dos salidas del pendiente 28 se tomó la que **no cambia ningún molde**. La otra —que el `estado-fase` enlace en vez de copiar— obligaría a reescribir todas las fases cerradas; si algún día se hace, esta comprobación se retira.
 - **Estado:** resuelto acá — v23.1.0.
-- **Dónde queda:** [hecho/un-solo-veredicto-por-fase.md](../../../pendientes/hecho/un-solo-veredicto-por-fase.md)
+- **Dónde queda:** [pendientes/hecho/un-solo-veredicto-por-fase.md](../../../pendientes/hecho/un-solo-veredicto-por-fase.md)
 - **Nace y cierra en:** 2026-08-16 · sesión 7
 
 ### H-16 · Quince reglas figuraban sin clasificar estando clasificadas

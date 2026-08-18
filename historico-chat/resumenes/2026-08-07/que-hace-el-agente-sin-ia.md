@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** la carpeta [anatomia/](../../../anatomia/mapa-del-sitio.md).
+- **Dónde queda:** la carpeta [anatomia/mapa-del-sitio.md/](../../../anatomia/mapa-del-sitio.md).
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** 2026-08-07 · qué hace el agente sin IA.
 - **Con qué se retoma:** —.
@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** la carpeta [anatomia/](../../../anatomia/mapa-del-sitio.md).
+- **Dónde queda:** la carpeta [anatomia/mapa-del-sitio.md/](../../../anatomia/mapa-del-sitio.md).
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** 2026-08-07 · qué hace el agente sin IA.
 - **Con qué se retoma:** —.
@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, es una fila en una tabla y un validador chico.
 - **Orden de resolución:** 1 de 2. Va primero: es más barato que el otro y hoy la tabla del `CLAUDE.md` no nombra la carpeta.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el mapa se comprueba con un validador, o se deja como documento que se actualiza a mano?
@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/01](../../../pendientes/01-validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
+- **Dónde queda:** [pendientes/01-validadores-de-codigo-de-proyecto.md](../../../pendientes/01-validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** la respuesta del propio agente: probarlo de brief a fase cerrada en un proyecto real **antes** de construir nada más.

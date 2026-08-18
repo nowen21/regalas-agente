@@ -30,6 +30,51 @@ No son falsos positivos. Son enlaces cuyo texto dice el nombre del archivo pero 
 
 **3. Decidir si el validador entra en la corrida de todos los días.** Hoy se corre aparte, porque 354 avisos sepultan cualquier otra cosa.
 
+## Lo que se arregló, y lo que la regla no había mirado — 2026-08-18
+
+Fase [`B-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive/), veredicto **Cumple**.
+
+**El punto 2 está hecho: lo arregla el programa.** `enlaces.reparar_formato()` reescribe el texto —nunca el destino— y corrió sobre **284 enlaces en 89 archivos**, sin romper ninguno.
+
+**Pero la cuenta de este archivo estaba mal repartida, y eso es lo nuevo.**
+
+| | Cuántos |
+|---|---:|
+| Total, fuera de transcripciones y de `prompts/` | **1031** — eran 354 el 2026-08-14 |
+| **Vecino de la misma carpeta** | **747** |
+| **Entre carpetas** — arreglados | **284** |
+
+**Los 747 no son deuda: son un caso que la regla no miró.** [`13·DOC14`](../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) pide la ruta desde la raíz *«para saber dónde vive sin abrirlo»*, y para el archivo de al lado ese propósito **ya está cumplido**: quien lee está parado ahí.
+
+Se aplicó a los 1031 para verlo. Esto es lo que quedaba en la tabla de contenidos de una fase:
+
+```
+| [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo/plan_trabajo.md](plan_trabajo.md) | Qué se va a hacer |
+```
+
+**132 caracteres de media para nombrar al vecino.** Se revirtieron los 347 archivos.
+
+### La decisión que falta
+
+**¿`DOC14` exceptúa al enlace de la misma carpeta?**
+
+| Salida | Qué implica |
+|---|---|
+| **Sí** — se le agrega la excepción a la regla | Los 747 quedan bien como están. Es un cambio de `base/`, con su versión |
+| **No** — la regla se aplica literal | Se corren los 747 con `reparar_formato(incluir_vecinos=True)`, y se acepta el texto largo |
+
+**Mientras no se decida, el número no baja de 747** — y no por falta de trabajo.
+
+### Y el punto 1 quedó resuelto en el camino
+
+El alcance ya está en el programa, con su motivo escrito y un caso cada uno: las transcripciones del chat no, `prompts/` no —son palabras del usuario—, y el texto descriptivo tampoco, que la propia regla lo permite.
+
+### Un punto ciego que apareció
+
+``[`ruta`](destino)`` **no lo ve nadie**: `comun.enlaces()` borra los trozos entre comillas invertidas antes de buscar enlaces, y con eso el texto queda vacío. No es de esta fase —tocarlo cambia cómo se leen los enlaces en todo el repositorio— y quedó **declarado en un caso de prueba**, para que no se descubra dentro de un año contando por qué el número no llega a cero.
+
+---
+
 ## El límite
 
 El validador solo mira el enlace cuyo texto ya tiene forma de ruta. El de texto descriptivo no se toca: la propia regla lo permite.

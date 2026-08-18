@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-capitulo-02-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [base/02-flujo-de-trabajo](../../../base/02-flujo-de-trabajo/base.md), versión **2.4.0** del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), versión **2.4.0** del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-07 · el capítulo 02 al molde.
 - **Cerrado en:** 2026-08-07 · el capítulo 02 al molde.
 - **Con qué se retoma:** —.
@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-capitulo-02-
 - **Responde a:** —.
 - **Dispara:** —, es una prueba de tres líneas.
 - **Orden de resolución:** 1 de 1. Va primero por barata: es el arranque lo que protege.
-- **Dónde queda:** [pendientes/33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
 - **Nace en:** 2026-08-07 · el capítulo 02 al molde.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿existe hoy esa prueba? Si no, es la más barata del backlog.

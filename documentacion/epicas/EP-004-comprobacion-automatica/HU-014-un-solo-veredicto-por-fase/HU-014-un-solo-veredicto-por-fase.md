@@ -129,7 +129,7 @@ Entonces sale un hallazgo por cada número que no cuadra
 ## 6. Diseño y referencias
 
 - **Documento funcional:** el hallazgo H-7 del [2026-08-15 · la-plantilla-del-resultado-de-pruebas](../../../../historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md).
-- **Pendiente que la origina:** [pendientes/28](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md).
+- **Pendiente que la origina:** [pendientes/hecho/un-solo-veredicto-por-fase.md](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md).
 - **Modelo de datos afectado:** ninguno.
 
 ---
@@ -157,7 +157,7 @@ Entonces sale un hallazgo por cada número que no cuadra
 | Tipo | Descripción | Impacto |
 |---|---|---|
 | Dependencia | [HU-003](../HU-003-formato-del-hallazgo/HU-003-formato-del-hallazgo.md), la forma del hallazgo | Medio |
-| Dependencia | [pendientes/28](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md), que decide si se compara o se quita la copia. Si se quita, esta historia sobra | Alto |
+| Dependencia | [pendientes/hecho/un-solo-veredicto-por-fase.md](../../../../pendientes/hecho/un-solo-veredicto-por-fase.md), que decide si se compara o se quita la copia. Si se quita, esta historia sobra | Alto |
 | Riesgo | Que el veredicto esté escrito con palabras distintas en cada fase y la normalización falle | La plantilla ya fija «Cumple / No cumple» sin estado intermedio; lo que no encaje se reporta como aviso, no como falla |
 | Riesgo | Que el hallazgo salga y nadie lo atienda | Depende de [EP-005 · HU-003](../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md), que decide qué detiene |
 

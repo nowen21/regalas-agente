@@ -101,7 +101,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-001 · HU-004, las reglas de conducta de la IA.
 - **Dispara:** —. La regla ya existe; lo que faltaba era cargarla.
 - **Orden de resolución:** 1 de 3 · mientras no se corrija, cada archivo nuevo repite el incumplimiento.
-- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0 · [pendientes/25-las-reglas-de-como-se-escribe-van-en-el-indice.md](../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md).
+- **Dónde queda:** [CLAUDE.md](../../../CLAUDE.md), paso 0 · [pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md](../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** hacer que `cargador.py` mande literales los capítulos `00` y `01`, y medir cuánto crece el arranque.
@@ -116,7 +116,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-003 · HU-001, la marca de espacio por llenar.
 - **Dispara:** —. Es mover archivos, y necesita su fase por la migración.
 - **Orden de resolución:** 3 de 3 · no bloquea la cadena de H-4.
-- **Dónde queda:** [pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md).
+- **Dónde queda:** [pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** mover `retrodocumentacion.md` al capítulo 13 y corregir las citas a su ruta vieja en el mismo cambio.

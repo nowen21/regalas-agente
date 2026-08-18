@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-meta-reglas-2.m
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** hoy es el capítulo [base/20-meta-reglas](../../../base/20-meta-reglas/base.md); entró como **1.2.0** en el [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** hoy es el capítulo [base/20-meta-reglas/base.md](../../../base/20-meta-reglas/base.md); entró como **1.2.0** en el [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-06 · meta-reglas-2.
 - **Cerrado en:** 2026-08-06 · meta-reglas-2.
 - **Con qué se retoma:** —.
@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-meta-reglas-2.m
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [historico-chat/README.md](../../README.md), la memoria [historico-chat.md](../../memory/historico-chat.md), y hoy [`13·DOC22`](../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md), que lo repite para el resumen.
+- **Dónde queda:** [historico-chat/README.md](../../README.md), la memoria [historico-chat/memory/historico-chat.md](../../memory/historico-chat.md), y hoy [`13·DOC22`](../../../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md), que lo repite para el resumen.
 - **Nace en:** 2026-08-06 · meta-reglas-2.
 - **Cerrado en:** 2026-08-06 · meta-reglas-2.
 - **Con qué se retoma:** —.
