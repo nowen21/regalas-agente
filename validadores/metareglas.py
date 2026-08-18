@@ -69,6 +69,10 @@ _DEROGADA = re.compile(r"\[DEROGADA en [\d.]+ → ver [^\]]+\]")
 # un renglón largo y a veces cortado, y eso no cambia lo que exige: que quepa.
 LIMITE_CUERPO = 320
 
+# El enlace se mide por lo que se lee, no por lo que se escribe: `[texto](destino)`
+# cuenta como `texto`. Ver `Regla.largo()`.
+_ENLACE_MD = re.compile(r"\[([^\]]*)\]\([^)]*\)")
+
 # Fila 5 · nombres propios de tecnología. Lista corta y defendible: producto,
 # marca o lenguaje concreto. No entran las palabras que el estándar ya adoptó
 # como concepto propio (git, markdown) ni los formatos de datos.
@@ -124,7 +128,20 @@ class Regla:
         return "[BLINDADA]" in self.encabezado
 
     def largo(self):
-        return sum(len(t) for _, t in self.cuerpo)
+        """Lo que ocupa el cuerpo **leído**, no escrito.
+
+        La fila 10 habla de cuatro líneas del molde a ochenta columnas, y quien
+        lee ve el texto del enlace, no su destino. Contar el marcado castiga
+        justo a la regla que cita bien: [`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)
+        exige que **toda** cita lleve su enlace, y cada uno cuesta unos
+        cincuenta caracteres que nadie lee.
+
+        Medido el 2026-08-18: de las 108 reglas que se pasaban del límite,
+        **27 se pasaban solo por eso** — `ID3` contaba 561 y son 265; `CFG1`
+        contaba 359 y son 234. Dos reglas del estándar tirando en direcciones
+        contrarias, y la que perdía era la que se cumplía.
+        """
+        return sum(len(_ENLACE_MD.sub(r"\1", t)) for _, t in self.cuerpo)
 
 
 def reglas(raiz=None):

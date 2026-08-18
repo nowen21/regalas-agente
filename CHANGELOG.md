@@ -78,7 +78,19 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **`14·EST3`** reprobaba la misma fila por **tres caracteres**. Se recortó el porqué y quedó en CUMPLE. No cambia qué exige.
 - **`14·EST1` y `14·EST3`** quedan selladas en CUMPLE; **`14·EST2` en NO CUMPLE**, y su bloque dice por qué: son tres reglas metidas en una, y por eso ni el título puede ser imperativo ni el cuerpo cabe.
 - **El capítulo `15` entero**: `IM1`, `IM4` e `IM5` en CUMPLE; `IM2` e `IM3` en NO CUMPLE. `IM2` pasa a llamarse *Guarda los tres estados y la trazabilidad de quien anula* — el título anterior nombraba un tema sin decir ninguna norma. No cambia qué exige.
-- **Las reglas sin sello bajan de 121 a 112**; las publicadas en NO CUMPLE suben de 7 a 11. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
+- **El capítulo `11` entero**: `CFG1`, `CFG2` y `CFG4` en CUMPLE; `CFG3` en NO CUMPLE — son tres exigencias en una. A `CFG4` se le agregó el ejemplo INCORRECTO/CORRECTO que le faltaba: la bandera que se enciende al liberar y nadie quita.
+- **Las reglas sin sello bajan de 121 a 108**; las publicadas en NO CUMPLE suben de 7 a 12. Ese segundo número **sube porque ahora dicen la verdad**: antes no tenían bloque. El que mide el avance es el primero.
+
+### La fila 10 medía mal, y castigaba a las reglas que citan bien
+
+`M5` da cuatro líneas —320 caracteres— y `M15` exige que **toda** cita lleve su enlace. El conteo cobraba el marcado completo: cada enlace costaba unos cincuenta caracteres que nadie lee.
+
+**Dos reglas del estándar tirando en direcciones contrarias, y perdía la que se cumplía.**
+
+- De las **108** reglas que se pasaban del límite, **27 se pasaban solo por eso**. `ID3` contaba 561 y son 265.
+- Ahora se mide el cuerpo **leído**: `[texto](destino)` cuenta como `texto`. Las que se pasan bajan de 108 a **78**, y ninguna de las 30 rescatadas hubo que tocarla.
+- **No relaja la fila:** la regla que de verdad no cabe sigue sin caber, y hay una prueba que lo fija.
+- Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha.
 
 ## 23.3.0 — 2026-08-17
 

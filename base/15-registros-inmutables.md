@@ -94,7 +94,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
 
-**La fila 10 reprueba: 459 caracteres para un molde de 320.**
+**La fila 10 reprueba: 389 caracteres para un molde de 320.**
 
 No es que sobre porqué —el cuerpo es un procedimiento de cuatro pasos y los cuatro son la exigencia—. Es que **un procedimiento de cuatro pasos no cabe en el molde de una regla**, y ese es justamente el caso que la fila prevé cuando manda abrir subcarpeta: la regla se queda con la exigencia y el procedimiento se va a un anexo al lado, como [base/13-documentacion/retrodocumentacion.md](13-documentacion/retrodocumentacion.md).
 

@@ -27,7 +27,7 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 **20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
 
-**La fila 10 reprueba, y es la única.** El cuerpo mide **631 caracteres** y el molde da para 320 — el doble. La propia fila dice qué hacer cuando no cabe: o son dos reglas, o se está contando el **porqué** y ese va a `notas/`. Acá es lo segundo: el párrafo explica *por qué* crear una carpeta que la norma exige no es una decisión, y *qué* no debe tocar el agente dentro de `proyectos/`. Las dos cosas son el razonamiento, no la exigencia.
+**La fila 10 reprueba, y es la única.** El cuerpo mide **549 caracteres** y el molde da para 320 — casi el doble. (Se medía 631 hasta el 2026-08-18, cuando el conteo dejó de cobrar el marcado de los enlaces; la regla se pasa igual.) La propia fila dice qué hacer cuando no cabe: o son dos reglas, o se está contando el **porqué** y ese va a `notas/`. Acá es lo segundo: el párrafo explica *por qué* crear una carpeta que la norma exige no es una decisión, y *qué* no debe tocar el agente dentro de `proyectos/`. Las dos cosas son el razonamiento, no la exigencia.
 
 **Recortarla es un cambio de regla y no se hace acá.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que es el que junta las reglas que no pasan su propio checklist y las trabaja por capítulo. Este bloque deja escrito **qué** falla, para que quien lo tome no tenga que volver a medirlo.
 

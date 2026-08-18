@@ -32,7 +32,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 La fila **5** pasa aunque el cuerpo nombre «modelo, componente, servicio, prueba, vista»: son tipos de elemento, no tecnología. Ningún lenguaje, motor ni herramienta aparece.
 
-La fila **10** pasa raspando —318 caracteres de 320—. Queda dicho para que quien la edite sepa que no hay margen.
+La fila **10** pasa raspando —317 caracteres de 320—. Queda dicho para que quien la edite sepa que no hay margen.
 
 Las **14 a 16** son N/A: no declara dependencia en ninguna de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), así que la 15 tampoco aplica, y no tiene excepción.
 
@@ -101,7 +101,9 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**La fila 10 reprobaba por tres caracteres** —323 de 320— y se recortó en esta misma pasada, quitando dos motivos del porqué («rompe referencias, infla el diff») y dejando el que delimita: sale del alcance. No cambia qué exige la regla.
+**La fila 10 reprobaba y se recortó en esta misma pasada**, quitando dos motivos del porqué («rompe referencias, infla el diff») y dejando el que delimita: sale del alcance. No cambia qué exige la regla.
+
+Reprobaba **por tres caracteres** —323 de 320— con la medida de entonces, que cobraba el marcado de los enlaces. Desde el 2026-08-18 se mide lo que se lee y el cuerpo cuenta **222**: habría pasado sin tocarla. El recorte se queda igual, porque lo que se quitó era porqué y el porqué no va en la regla.
 
 La fila **14** es N/A y conviene decir por qué: la regla nombra a [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea) como el motivo de que mover legacy salga del alcance. Eso es una razón, no una de las tres dependencias que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite.
 
