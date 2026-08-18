@@ -55,52 +55,52 @@ Lo más cercano a una norma escrita es la frase que repiten las cajas de instruc
 
 ## 4. Reglas de negocio
 
-1. **Hay una sola marca para el espacio por llenar, y es `«…»`.** Si cada modelo usa la suya, ni se ve al leer ni se puede contar.
-2. **La marca se nota sin buscarla.** Un hueco que hay que ir a cazar se aprueba con el hueco adentro.
+1. **Hay una sola marca para el espacio por llenar, y es `«…»`.** Si cada modelo usa la suya, ni se ve al leer ni se puede contar. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+2. **La marca se nota sin buscarla.** Un hueco que hay que ir a cazar se aprueba con el hueco adentro. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
 3. **Un programa la encuentra sin confundirla con el texto normal.** De eso depende que EP-004 pueda comprobarla.
-4. **Un hueco es lo que llena quien usa el modelo.** La sintaxis de un comando que se copia y se pega no es un hueco: la llena quien corre el comando, y marcarla daría falsos positivos.
-5. **Un documento entregado con marcas sin reemplazar no está terminado.** La condición de terminado es objetiva y se puede señalar dónde falla.
-6. **Una sección que no aplica se escribe `N/A`**, no se deja con la marca ni se borra. Borrarla haría creer que el modelo no la pedía.
-7. **La caja de instrucciones del modelo se borra al llenarlo; lo que explica para qué sirve el documento se queda.**
+4. **Un hueco es lo que llena quien usa el modelo.** La sintaxis de un comando que se copia y se pega no es un hueco: la llena quien corre el comando, y marcarla daría falsos positivos. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+5. **Un documento entregado con marcas sin reemplazar no está terminado.** La condición de terminado es objetiva y se puede señalar dónde falla. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+6. **Una sección que no aplica se escribe `N/A`**, no se deja con la marca ni se borra. Borrarla haría creer que el modelo no la pedía. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+7. **La caja de instrucciones del modelo se borra al llenarlo; lo que explica para qué sirve el documento se queda.** Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
 
 Del resumen de sesión (HU-009):
 
-8. **El resumen es un documento aparte de la transcripción**, y vive dentro del histórico. La transcripción prueba lo que se dijo; el resumen guarda lo que quedó.
-9. **Una carpeta por día y un archivo por sesión**, con su línea en el índice del día.
-10. **Cada hallazgo dice si está resuelto o abierto, y dónde queda** — señal, pendiente, regla o memoria.
-11. **Cada hallazgo dice a qué trabajo ya pedido responde y qué trabajo nuevo dispara**, y cuando dispara más de uno los numera en el orden en que se resuelven.
-12. **El hallazgo abierto dice con qué pregunta se retoma.**
-13. **Se anotan todos**, resueltos y abiertos.
-14. **El resumen dice si la sesión se puede cerrar**, y con qué le falta.
-15. **El resumen dice de dónde viene la sesión**: si se abrió para resolver un hallazgo de otra, lo nombra con su fecha, su tema y su número.
-16. **Un hallazgo que se arrastra conserva dónde nació.** El «nace en» no cambia nunca; el «cerrado en» se llena el día que se cierre, aunque sea tres sesiones después.
+8. **El resumen es un documento aparte de la transcripción**, y vive dentro del histórico. La transcripción prueba lo que se dijo; el resumen guarda lo que quedó. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+9. **Una carpeta por día y un archivo por sesión**, con su línea en el índice del día. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+10. **Cada hallazgo dice si está resuelto o abierto, y dónde queda** — señal, pendiente, regla o memoria. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+11. **Cada hallazgo dice a qué trabajo ya pedido responde y qué trabajo nuevo dispara**, y cuando dispara más de uno los numera en el orden en que se resuelven. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+12. **El hallazgo abierto dice con qué pregunta se retoma.** Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+13. **Se anotan todos**, resueltos y abiertos. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+14. **El resumen dice si la sesión se puede cerrar**, y con qué le falta. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+15. **El resumen dice de dónde viene la sesión**: si se abrió para resolver un hallazgo de otra, lo nombra con su fecha, su tema y su número. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
+16. **Un hallazgo que se arrastra conserva dónde nació.** El «nace en» no cambia nunca; el «cerrado en» se llena el día que se cierre, aunque sea tres sesiones después. Baja de [`EP-003 · HU-001`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md).
 
 ### 4.1 Los tres modelos del encargo
 
 > Escrito el 2026-08-17 en la fase [`A-EP-003-HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/resultado_pruebas.md).
 
-10. **Son tres y se encadenan hacia abajo:** el planteamiento dice qué es el proyecto, la épica agrupa un pedazo, y la historia de usuario pide una cosa concreta. Cada nivel nombra al de arriba y lista los de abajo.
-11. **El enlace se escribe en los dos lados.** La HU nombra su épica y la épica lista sus HU; lo mismo entre HU y fase. Con un solo lado, borrar el otro no deja rastro.
-12. **Todo criterio de aceptación dice cómo validarlo y cuándo se da por aprobado.** Un criterio sin eso no se puede comprobar, y la historia entera se vuelve opinión.
-13. **La épica sin historias y la historia sin fases tienen forma:** su sección existe y dice que todavía no hay. No es lo mismo que falte la sección.
+10. **Son tres y se encadenan hacia abajo:** el planteamiento dice qué es el proyecto, la épica agrupa un pedazo, y la historia de usuario pide una cosa concreta. Cada nivel nombra al de arriba y lista los de abajo. Baja de [`EP-003 · HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md).
+11. **El enlace se escribe en los dos lados.** La HU nombra su épica y la épica lista sus HU; lo mismo entre HU y fase. Con un solo lado, borrar el otro no deja rastro. Baja de [`EP-003 · HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md).
+12. **Todo criterio de aceptación dice cómo validarlo y cuándo se da por aprobado.** Un criterio sin eso no se puede comprobar, y la historia entera se vuelve opinión. Baja de [`EP-003 · HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md).
+13. **La épica sin historias y la historia sin fases tienen forma:** su sección existe y dice que todavía no hay. No es lo mismo que falte la sección. Baja de [`EP-003 · HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md).
 
 ### 4.2 Los cinco modelos de la fase
 
 > Escrito el 2026-08-17 en la fase [`A-EP-003-HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase/resultado_pruebas.md).
 
-14. **Cada uno responde una pregunta distinta, y ninguna la responde dos.** Qué se va a hacer (plan de trabajo) · con qué casos se comprueba (plan de pruebas) · qué dio al correr (resultado) · en qué estación va (estado de fase) · qué quedó hecho (funcionalidad implementada).
-15. **El plan no lleva columna de estado.** Se aprueba antes y no se reescribe después: llevarle el avance encima invitaría a tocarlo mientras se ejecuta, y entonces dejaría de servir para comparar lo dicho contra lo hecho.
-16. **El avance vive en el estado de fase**, que copia los identificadores del plan sin tocarlo.
-17. **La fase recién abierta tiene forma:** el estado dice «Todavía no se ejecutó», con las tareas en pendiente y lo que las bloquea. No se deja en blanco.
+14. **Cada uno responde una pregunta distinta, y ninguna la responde dos.** Qué se va a hacer (plan de trabajo) · con qué casos se comprueba (plan de pruebas) · qué dio al correr (resultado) · en qué estación va (estado de fase) · qué quedó hecho (funcionalidad implementada). Baja de [`EP-003 · HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md).
+15. **El plan no lleva columna de estado.** Se aprueba antes y no se reescribe después: llevarle el avance encima invitaría a tocarlo mientras se ejecuta, y entonces dejaría de servir para comparar lo dicho contra lo hecho. Baja de [`EP-003 · HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md).
+16. **El avance vive en el estado de fase**, que copia los identificadores del plan sin tocarlo. Baja de [`EP-003 · HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md).
+17. **La fase recién abierta tiene forma:** el estado dice «Todavía no se ejecutó», con las tareas en pendiente y lo que las bloquea. No se deja en blanco. Baja de [`EP-003 · HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md).
 
 ### 4.3 Los modelos de la capa de proyecto
 
 > Escrito el 2026-08-17 en la fase [`A-EP-003-HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3/resultado_pruebas.md).
 
-18. **Son tres:** el stack, el dominio y el mapeo de nombres. Los llena el proyecto, no el estándar.
-19. **Lo no declarado no se comprueba.** Un proyecto que no declara su convención de nombres no recibe hallazgos de nomenclatura: exigir contra una convención que nadie escribió sería inventarla.
-20. **Ninguno pide credenciales ni datos personales.** Un modelo que los pidiera los convertiría en un archivo versionado en cada proyecto que lo llene.
-21. **Recién instalados quedan con sus marcas `«…»` puestas**, que es lo que [`13·DOC20`](../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) usa para saber que el documento no está terminado.
+18. **Son tres:** el stack, el dominio y el mapeo de nombres. Los llena el proyecto, no el estándar. Baja de [`EP-003 · HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md).
+19. **Lo no declarado no se comprueba.** Un proyecto que no declara su convención de nombres no recibe hallazgos de nomenclatura: exigir contra una convención que nadie escribió sería inventarla. Baja de [`EP-003 · HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md).
+20. **Ninguno pide credenciales ni datos personales.** Un modelo que los pidiera los convertiría en un archivo versionado en cada proyecto que lo llene. Baja de [`EP-003 · HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md).
+21. **Recién instalados quedan con sus marcas `«…»` puestas**, que es lo que [`13·DOC20`](../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) usa para saber que el documento no está terminado. Baja de [`EP-003 · HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md).
 
 ## 5. Modelo de datos
 

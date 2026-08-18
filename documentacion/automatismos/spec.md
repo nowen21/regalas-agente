@@ -60,25 +60,25 @@ Verificado el 2026-08-14.
 
 ## 4. Reglas de negocio
 
-1. **El archivo del resumen se crea solo, en el primer mensaje de la sesión**, con el modelo puesto y sin hallazgos. No al abrir: en ese momento la transcripción todavía no existe, y de su nombre sale el nombre del resumen. Si la sesión se retoma y ya tiene transcripción, el archivo está desde el arranque.
-2. **El resumen se renombra con la transcripción.** Los dos nombres se mueven en la misma operación, o el índice queda apuntando a un archivo que no existe.
-3. **Cuando la sesión ya produjo algo y al resumen le falta algo, se avisa una vez por cada cosa que falte.** Son dos como máximo: que no haya ningún hallazgo escrito, y que no se haya dicho si la sesión se puede cerrar. Un aviso repetido se vuelve ruido y se deja de leer.
-4. **El aviso dice qué falta**, con la lista. Un aviso genérico obliga a preguntar, y preguntar es justo lo que se quiere evitar.
-5. **Para cerrar una sesión cuentan los hallazgos de su propósito.** Cada sesión se abre para resolver algo; lo que aparece y es de otro tema nace acá y se cierra en otra sesión, y basta con que quede anotado.
-6. **Se muestra lo que sigue abierto del propósito de la sesión, y nada más.** El propósito lo declara el usuario al abrir; el programa no lo adivina. Mostrar todos los hallazgos abiertos del repositorio es ruido: una sesión abierta para una cosa no tiene por qué ver las de otro tema.
-7. **El enganche no escribe hallazgos ni los interpreta.** Crea, avisa y arrastra.
-8. **El enganche no detiene el trabajo.** Si no puede escribir, avisa y la sesión sigue.
-9. **El enganche no modifica un hallazgo ya escrito.**
+1. **El archivo del resumen se crea solo, en el primer mensaje de la sesión**, con el modelo puesto y sin hallazgos. No al abrir: en ese momento la transcripción todavía no existe, y de su nombre sale el nombre del resumen. Si la sesión se retoma y ya tiene transcripción, el archivo está desde el arranque. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+2. **El resumen se renombra con la transcripción.** Los dos nombres se mueven en la misma operación, o el índice queda apuntando a un archivo que no existe. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+3. **Cuando la sesión ya produjo algo y al resumen le falta algo, se avisa una vez por cada cosa que falte.** Son dos como máximo: que no haya ningún hallazgo escrito, y que no se haya dicho si la sesión se puede cerrar. Un aviso repetido se vuelve ruido y se deja de leer. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+4. **El aviso dice qué falta**, con la lista. Un aviso genérico obliga a preguntar, y preguntar es justo lo que se quiere evitar. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+5. **Para cerrar una sesión cuentan los hallazgos de su propósito.** Cada sesión se abre para resolver algo; lo que aparece y es de otro tema nace acá y se cierra en otra sesión, y basta con que quede anotado. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+6. **Se muestra lo que sigue abierto del propósito de la sesión, y nada más.** El propósito lo declara el usuario al abrir; el programa no lo adivina. Mostrar todos los hallazgos abiertos del repositorio es ruido: una sesión abierta para una cosa no tiene por qué ver las de otro tema. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+7. **El enganche no escribe hallazgos ni los interpreta.** Crea, avisa y arrastra. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+8. **El enganche no detiene el trabajo.** Si no puede escribir, avisa y la sesión sigue. Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
+9. **El enganche no modifica un hallazgo ya escrito.** Baja de [`EP-005 · HU-008`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md).
 
 ### 4.1 El reparto de las reglas al abrir la sesión
 
-10. **Llegan con su texto completo los capítulos que gobiernan todos los turnos**, sin importar el tema: los que empiezan por `00-` y por `01-`, con sus anexos. Son la identidad, el núcleo blindado y la conducta.
-11. **Del resto llega el índice:** una línea por archivo, con su ruta, su peso y su título sacado del propio archivo. El índice dice de qué trata cada uno, no qué manda.
-12. **El reparto se decide por el primer tramo de la ruta, no por el nombre del archivo.** Un capítulo puede vivir en un archivo suelto o en su carpeta; mirando el nombre, el que vive en carpeta caería al índice y la sesión arrancaría sin identidad.
-13. **Se dice cuál es cuál.** Lo cargado se entrega diciendo que rige la sesión y es obligatorio; el índice se entrega diciendo que hay que abrir el archivo antes de tocar su tema.
-14. **Un capítulo nuevo entra solo.** El reparto mira el prefijo, así que agregar un `01-` al estándar no obliga a tocar el programa.
-15. **Si el arranque no pasa el gate [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md), llega esa regla y nada más.** Cargar las reglas de trabajo ahí invitaría a trabajar sobre una estructura que el propio estándar manda detener.
-16. **Cargarlo todo no es una opción, y el motivo se escribe:** el cuerpo entero pesa mucho más que la ventana de contexto que se le puede dedicar, y llenarla adelanta el resumen automático, que borra justo lo que se inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca.
+10. **Llegan con su texto completo los capítulos que gobiernan todos los turnos**, sin importar el tema: los que empiezan por `00-` y por `01-`, con sus anexos. Son la identidad, el núcleo blindado y la conducta. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+11. **Del resto llega el índice:** una línea por archivo, con su ruta, su peso y su título sacado del propio archivo. El índice dice de qué trata cada uno, no qué manda. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+12. **El reparto se decide por el primer tramo de la ruta, no por el nombre del archivo.** Un capítulo puede vivir en un archivo suelto o en su carpeta; mirando el nombre, el que vive en carpeta caería al índice y la sesión arrancaría sin identidad. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+13. **Se dice cuál es cuál.** Lo cargado se entrega diciendo que rige la sesión y es obligatorio; el índice se entrega diciendo que hay que abrir el archivo antes de tocar su tema. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+14. **Un capítulo nuevo entra solo.** El reparto mira el prefijo, así que agregar un `01-` al estándar no obliga a tocar el programa. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+15. **Si el arranque no pasa el gate [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md), llega esa regla y nada más.** Cargar las reglas de trabajo ahí invitaría a trabajar sobre una estructura que el propio estándar manda detener. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+16. **Cargarlo todo no es una opción, y el motivo se escribe:** el cuerpo entero pesa mucho más que la ventana de contexto que se le puede dedicar, y llenarla adelanta el resumen automático, que borra justo lo que se inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
 
 > **Que la regla llegue es necesario y no es suficiente.** El 2026-08-14 se incumplió [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante una sesión entera, y esa regla llegaba completa. Lo que falta después es comprobar lo entregado, y eso es de EP-004.
 
@@ -86,12 +86,12 @@ Verificado el 2026-08-14.
 
 > Escrito el 2026-08-17 en la fase [`A-EP-005-HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/resultado_pruebas.md).
 
-17. **La escribe el programa, no el agente.** `hook_historico.py` anota cada mensaje del usuario apenas se envía y cada respuesta apenas termina. El agente escribiéndola a mano la duplica y le inventa horas: ya pasó seis veces.
-18. **La hora sale del reloj de la máquina**, nunca del texto del mensaje. Si se copiara lo que dice el texto, bastaría con escribir «03:33» en un mensaje para falsear el histórico.
-19. **El archivo nace con el primer mensaje**, aunque sea un «hola», y crece de a un intercambio. Nada se escribe al cerrar: un chat no tiene final.
-20. **Cada intercambio queda una sola vez.** Si el enganche se dispara dos veces por el mismo mensaje, no se duplica.
-21. **La sesión entra al índice al nacer**, y al renombrarla se corrigen las dos cosas —el archivo y su línea—, o el índice apunta a un archivo que ya no está.
-22. **Un proyecto sin la carpeta del histórico no se ve afectado:** el enganche no la crea ni escribe nada. Instalar el estándar es lo que la pone.
+17. **La escribe el programa, no el agente.** `hook_historico.py` anota cada mensaje del usuario apenas se envía y cada respuesta apenas termina. El agente escribiéndola a mano la duplica y le inventa horas: ya pasó seis veces. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
+18. **La hora sale del reloj de la máquina**, nunca del texto del mensaje. Si se copiara lo que dice el texto, bastaría con escribir «03:33» en un mensaje para falsear el histórico. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
+19. **El archivo nace con el primer mensaje**, aunque sea un «hola», y crece de a un intercambio. Nada se escribe al cerrar: un chat no tiene final. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
+20. **Cada intercambio queda una sola vez.** Si el enganche se dispara dos veces por el mismo mensaje, no se duplica. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
+21. **La sesión entra al índice al nacer**, y al renombrarla se corrigen las dos cosas —el archivo y su línea—, o el índice apunta a un archivo que ya no está. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
+22. **Un proyecto sin la carpeta del histórico no se ve afectado:** el enganche no la crea ni escribe nada. Instalar el estándar es lo que la pone. Baja de [`EP-005 · HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md).
 
 > **Lo que todavía no hace: enmascarar.** La HU pide que lo enmascarado no quede en claro, y **nada enmascara**: el texto del mensaje se guarda tal cual. Una clave pegada en el chat queda escrita en la transcripción, que se versiona. Es [EP-005 · HU-002](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md), sin construir.
 
@@ -99,10 +99,10 @@ Verificado el 2026-08-14.
 
 > Escrito el 2026-08-17 en la fase [`A-EP-005-HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md).
 
-23. **Al escribir un documento corre su comprobación**, en el momento, no al cerrar la sesión. Un enlace roto avisado tres horas después ya se copió a otros documentos.
-24. **Lo que no le toca se ignora en silencio**, y el enganche **corre igual**. Que calle no puede confundirse con que no se ejecutó: son dos estados distintos con la misma apariencia.
-25. **El archivo que ya no está cuando el enganche llega no lo revienta.** Entre escribir y disparar puede pasar cualquier cosa.
-26. **El disparo no se nota:** se mide, no se supone.
+23. **Al escribir un documento corre su comprobación**, en el momento, no al cerrar la sesión. Un enlace roto avisado tres horas después ya se copió a otros documentos. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+24. **Lo que no le toca se ignora en silencio**, y el enganche **corre igual**. Que calle no puede confundirse con que no se ejecutó: son dos estados distintos con la misma apariencia. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+25. **El archivo que ya no está cuando el enganche llega no lo revienta.** Entre escribir y disparar puede pasar cualquier cosa. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+26. **El disparo no se nota:** se mide, no se supone. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
 
 > **Lo que todavía no hace: detener.** El CA-03 de la HU pide que el hallazgo grave detenga y el resto avise. Hoy **todo avisa**: el enganche informa y el trabajo sigue en los dos casos.
 
@@ -110,10 +110,10 @@ Verificado el 2026-08-14.
 
 > Escrito el 2026-08-17 en la fase [`A-EP-005-HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera/resultado_pruebas.md).
 
-27. **Al abrir la sesión y al escribir un archivo, lo que quedó en el almacén de la herramienta se mueve al repositorio.** El almacén tiene que quedar vacío: dos copias del mismo recuerdo terminan diciendo cosas distintas, y manda la que nadie puede leer.
-28. **Nunca se borra: se mueve.** Si el nombre ya está ocupado en el repositorio, entra como `<nombre>-local.md` y decide el usuario cuál manda. Una versión anterior borraba el idéntico «porque no se pierde nada» y destruyó memoria real.
-29. **Los nombres que solo difieren en mayúsculas son el mismo archivo.** En Windows lo son de verdad, y mover uno sobre otro se llevaría el índice sin decir nada.
-30. **Con el almacén enlazado a la carpeta del repositorio, no hay nada que mover:** son el mismo archivo, y compararlos daría idéntico siempre.
+27. **Al abrir la sesión y al escribir un archivo, lo que quedó en el almacén de la herramienta se mueve al repositorio.** El almacén tiene que quedar vacío: dos copias del mismo recuerdo terminan diciendo cosas distintas, y manda la que nadie puede leer. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
+28. **Nunca se borra: se mueve.** Si el nombre ya está ocupado en el repositorio, entra como `<nombre>-local.md` y decide el usuario cuál manda. Una versión anterior borraba el idéntico «porque no se pierde nada» y destruyó memoria real. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
+29. **Los nombres que solo difieren en mayúsculas son el mismo archivo.** En Windows lo son de verdad, y mover uno sobre otro se llevaría el índice sin decir nada. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
+30. **Con el almacén enlazado a la carpeta del repositorio, no hay nada que mover:** son el mismo archivo, y compararlos daría idéntico siempre. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
 
 ## 5. Modelo de datos
 

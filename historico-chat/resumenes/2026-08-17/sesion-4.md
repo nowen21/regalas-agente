@@ -278,6 +278,14 @@ Cerrado el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-d
 
 **Queda sin saber por qué faltan esas 16 marcas.** O el enganche no las escribió ese día, o las escribió sin ellas — y si fue un defecto suyo, puede repetirse.
 
+### H-25 · El origen de las reglas estaba a tres líneas de donde se busca
+
+Del [pendiente 47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md): las reglas de negocio de esta casa no decían de dónde bajan. **Eran 57, no las 31 contadas el 2026-08-16.**
+
+**No hubo que inventar ninguna procedencia.** Cada `### 4.N` de las dos especificaciones ya declaraba en qué fase se escribió, con su enlace. Lo que faltaba era **bajarlo de la sección a la regla**, que es donde el programa lo busca y donde lo lee quien abre por la mitad.
+
+**Ninguna se borró, y esa era la tercera salida del pendiente** — *«alguna seguramente no la pidió nadie»*. Que una regla tenga procedencia no la vuelve necesaria; borrar una vigente quita algo del estándar. Es lo único que queda del 47, y es decisión suya.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

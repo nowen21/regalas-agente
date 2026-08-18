@@ -1,6 +1,12 @@
 # Pendiente · Las reglas de negocio del propio estándar no dicen de dónde bajan
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado en su parte trazable** el 2026-08-18. Anotado el 2026-08-16.
+
+> **Las 57 ya dicen de qué historia bajan** —eran 31 al anotarlo— y el validador da cero. Fase [`B-EP-003-HU-004`](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/B-EP-003-HU-004-el-origen-de-las-57-reglas/).
+>
+> **El origen no hubo que inventarlo:** cada `### 4.N` ya declaraba su fase. Faltaba bajarlo de la sección a la regla.
+>
+> **Ninguna se borró, y esa era la tercera salida.** Que una regla tenga procedencia no la vuelve necesaria — pero borrar una vigente quita algo del estándar, y esa decisión es del usuario. **Es lo único que queda de este pendiente.**
 
 | | |
 |---|---|

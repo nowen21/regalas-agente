@@ -163,6 +163,7 @@ Y la que no tenga procedencia no se escribe ahí: se sube a la historia que corr
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-003-HU-004-el-origen-de-la-regla-de-negocio](A-EP-003-HU-004-el-origen-de-la-regla-de-negocio/README.md) | CA-04 | Cerrada 2026-08-16 (v22.0.0) |
+| [B-EP-003-HU-004-el-origen-de-las-57-reglas](B-EP-003-HU-004-el-origen-de-las-57-reglas/README.md) | Las 57 reglas de esta casa, con su origen | Cerrada 2026-08-18 |
 
 **Los tres primeros criterios no tienen fase**, y es a propósito: el modelo ya existía cuando la épica se descompuso. Se dan por cumplidos por el documento mismo, no por una fase que lo construyera.
 
