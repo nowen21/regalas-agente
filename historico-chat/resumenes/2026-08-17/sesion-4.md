@@ -246,6 +246,18 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** La fase [`B-EP-004-HU-005`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive/), sin cambio de versión. **La decisión sobre el vecino es del usuario**, y hasta que se tome el número no baja de 747.
 
+### H-22 · Dieciséis mil marcas, y una fase que esperaba lo que ya estaba escrito
+
+**Qué se midió.** Nace [`validadores/marcas.py`](../../../validadores/marcas.py), el primer programa que comprueba si el estándar cumple su propia [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Era el paso 1 del [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado desde el 2026-08-10.
+
+**16 477 marcas en 820 archivos** fuera del histórico; **4 491 en `base/` y `plantillas/`**, que es lo que viaja a los proyectos. Las dos que pesan: raya larga 7 286, punto medio 6 237.
+
+**La fase estaba detenida por una duda que su propio origen contestaba.** Llevaba desde ayer en la estación 6 esperando saber si la comprobación aplica a todo el repositorio o solo a lo que se entrega — y el pendiente 11 lo decía en su paso 3 desde hace ocho días: *«No tocar el histórico»*. **Es el primer caso encontrado de [`01·C23`](../../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar)**, la regla que se escribió ayer.
+
+**Lo incómodo del número.** Buena parte de esas 16 477 se escribieron **después** de que la marca quedara registrada, y [`02·F21`](../../../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) dice que desde ahí lo nuevo nace cumpliendo. No pasó — **y este resumen está escrito con las mismas marcas que acaba de contar.** El recuento no separa lo viejo de lo nuevo, y sin eso limpiar hoy es rehacer el trabajo el mes que viene.
+
+**Y una decisión que se dejó a la vista en vez de esconderla:** el `·` de `09 · Control de versiones` y de los títulos de fase **se cuenta como marca**, porque el anexo llama marca a adornar títulos con él. Si el estándar quiere conservar esa forma, se escribe la excepción; no se hace un descuento callado en el programa.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

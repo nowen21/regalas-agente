@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **detenida**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
+
+**La duda que la detenía ya estaba contestada en el pendiente 11**, desde el 2026-08-10 — ver §4 del [resultado_pruebas.md](resultado_pruebas.md).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,14 +28,14 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 7 tareas · **detenida por la duda 1 de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | 7 tareas | ☑ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Ningún programa comprueba hoy las marcas de generación automática: la fase construye el primero.
+**Construido el 2026-08-18.** Era cierto que ningún programa las comprobaba: [`validadores/marcas.py`](../../../../../validadores/marcas.py) es el primero. El recuento dio **16 477 marcas en 820 archivos** fuera del histórico, y **4 491 en lo que se hereda**.
 
 > **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: la duda 1 de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 

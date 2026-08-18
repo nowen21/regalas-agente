@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 33 |
-| **Incompletas** | 41 |
+| **Completas** | 34 |
+| **Incompletas** | 40 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -22,6 +22,8 @@
 > **39 → 31 completas.** Ocho historias que estaban completas ganaron una fase **sin terminar**, y una fase a medias vuelve incompleta a su historia. Seis vienen de la sesión que ejecutaba los 51 planes y quedó detenida; la séptima es la fase `B` de [EP-004 · HU-016](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/), que espera aprobación.
 >
 > **2026-08-18 · sube a 33.** La [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) —buscar en el repositorio antes de preguntar— cerró su fase `A` con los cinco documentos. Nació ayer al enrutar el backlog y se construyó hoy. Y la [EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) —el proyecto reporta lo que es del estándar y el estándar le avisa de vuelta— cerró la suya, también del día a la mañana siguiente.
+>
+> **2026-08-18, más tarde · sube a 34.** La [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) —comprobar las marcas de generación automática— cerró su fase `A`, **que llevaba un día detenida por una duda que su propio pendiente ya contestaba**.
 >
 > **Y las seis histórias nuevas entran a la tabla.** Contaban en el total desde ayer, pero no tenían fila: el total decía 74 y la tabla listaba 68. Un inventario al que hay que creerle el encabezado porque su propia tabla no lo respalda no sirve de inventario.
 >
@@ -74,7 +76,7 @@
 | EP-004 | [HU-009 — Registrar cuántos hallazgos hubo por regla](../documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/HU-009-conteo-por-regla.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-004 | [HU-010 — Comprobar el código contra la convención que el proyecto declara](../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☐ |
 | EP-004 | [HU-011 — Comprobar que cada regla del estándar cumple su propio molde](../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
-| EP-004 | [HU-012 — Comprobar las marcas de generación automática en lo que se entrega](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-004 | [HU-012 — Comprobar las marcas de generación automática en lo que se entrega](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-004 | [HU-013 — Comparar el plan aprobado con lo que se hizo](../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-004 | [HU-014 — Un solo veredicto por fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-004 | [HU-015 — Derogación sin adoptar](../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |

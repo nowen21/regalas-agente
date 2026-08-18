@@ -32,6 +32,7 @@ import pendientes       # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import instalar         # noqa: E402
+import marcas           # noqa: E402
 import metareglas       # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
@@ -130,6 +131,17 @@ def cmd_metareglas(a):
     if a.catalogo:
         hallazgos += metareglas.validar_catalogo(a.catalogo, raiz)
     return reportar(hallazgos, f"El estándar contra sus meta-reglas · {relativo(raiz)}")
+
+
+def cmd_marcas(a):
+    """`11` · Las marcas de `00·ID8` en lo que se hereda.
+
+    Solo `base/` y `plantillas/`: es lo que viaja a los proyectos. El recuento
+    completo del árbol lo da `python validadores/marcas.py`.
+    """
+    raiz = os.path.abspath(a.raiz)
+    return reportar(marcas.validar(raiz),
+                    f"Marcas de generación automática · {relativo(raiz)}")
 
 
 def cmd_secretos(a):
@@ -315,6 +327,11 @@ def main():
     mr.add_argument("--catalogo",
                     help="carpeta de un proyecto, para comprobar además su catálogo · M16")
     mr.set_defaults(func=cmd_metareglas)
+
+    ma = sub.add_parser("marcas",
+                        help="marcas de generación automática en lo que se hereda · 00·ID8")
+    ma.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    ma.set_defaults(func=cmd_marcas)
 
     se = sub.add_parser("secretos",
                         help="secretos incrustados en el código · 04·S4")

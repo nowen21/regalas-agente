@@ -32,8 +32,13 @@ VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # `cerrar.py` está por lo mismo: es la herramienta que mueve un pendiente a
 # `hecho/` arrastrando sus citas. Sin argumentos, `argparse` explica qué le
 # falta y sale con 2 — dice algo, que es lo que esta prueba exige.
+#
+# `marcas.py` también: su trabajo principal es **el recuento** del pendiente
+# 11 —cuántas marcas hay y dónde—, y eso no cabe en un hallazgo por línea.
+# Corriéndolo solo imprime el reparto entero. Su mitad de comprobación, la de
+# lo que se hereda, sí vive dentro de `validar.py marcas`.
 CON_ARRANQUE_PROPIO = {"validar.py", "pruebas.py", "instalar.py", "historico.py",
-                       "comun.py", "citas.py", "cerrar.py"}
+                       "comun.py", "citas.py", "cerrar.py", "marcas.py"}
 
 
 def modulos():

@@ -143,7 +143,7 @@ Entonces no las reporta
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica](A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica](A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/README.md) | CA-01, CA-02 y CA-03 | **Cerrada 2026-08-18** · Cumple · 16 477 marcas contadas, 4 491 en lo que se hereda |
 
 **La fase construye.** La exigencia existe —`00·ID8` y su lista— y ningún programa la comprueba. Lo que decide si sirve es el CA-03: el estándar usa a propósito el punto medio y las comillas angulares, y un programa ingenuo reportaría casi cada línea.
 
