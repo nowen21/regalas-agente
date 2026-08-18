@@ -71,6 +71,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `07` Calidad de código | 7 | `Q1` a `Q6` | `Q7` |
 | `08` Estrategia de pruebas | 7 | `T2`, `T3`, `T5`, `T6` | `T1`, `T4`, `T7` |
 | `17` Interfaz | 6 | `I2`, `I4`, `I5`, `I6` | `I1`, `I3` |
+| **`03` Datos** | 8 | `D2` | **`D1`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8`** |
 
 **Se arreglaron dos en la misma pasada, porque eran redacción y no norma:**
 
@@ -123,6 +124,34 @@ Desde el 2026-08-18 se mide el cuerpo **leído**: `[texto](destino)` cuenta como
 
 **Esto cambia el trabajo que queda:** treinta reglas que parecían necesitar reescritura no la necesitan. Conviene volver a mirar cualquier lista de «reglas largas» hecha antes de esta fecha, incluido el análisis del 2026-08-07.
 
+### El capítulo `03` es el peor, y con diferencia
+
+**Siete de sus ocho reglas reprueban.** Solo `D2` cabe en el molde, y las otras siete se pasan de largo: `D7` mide **3839 caracteres —doce veces el molde y la regla más larga del cuerpo entero—**, `D8` mide 1962 y `D4` 1546.
+
+| Regla | Qué falla |
+|---|---|
+| `D1` | Tres exigencias con «y» en el título, no cabe, y su bloque de índices repite [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) |
+| `D3` | No cabe por poco |
+| `D4` | No cabe, esconde una exigencia aparte, y su excepción no dice quién autoriza |
+| `D5` | No cabe, y su excepción tampoco dice quién autoriza |
+| `D6` | Título nominal y tres exigencias |
+| `D7` | **Un manual de ocho pasos con encabezado de regla** |
+| `D8` | Su ejemplo estaba escrito con el código de un stack y una entidad reales |
+
+**Conviene tomarlo entero y no de a una:** varias comparten arreglo. `D7` y `D8` van a un anexo al lado; `D1` y `D6` se parten; `D4` y `D5` necesitan la misma decisión sobre sus excepciones.
+
+### Tres excepciones sin quién autoriza, y aparecieron el mismo día
+
+[`08·T1`](../base/08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), `03·D4` y `03·D5` declaran condición y no dicen ni límite ni autorizador, que es lo que [`20·M8`](../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) pide.
+
+**La de `T1` es la más grave** —el análisis del 2026-08-07 lo dijo así: *«deja al agente autorizándose a sí mismo»*— pero las tres tienen la misma forma, y por eso conviene resolverlas juntas. La pregunta de fondo es una sola: **quién concede el permiso de no cumplir.**
+
+### El ejemplo con código real sobrevivió cuatro meses
+
+`03·D8` traía en su ejemplo el código de un stack concreto y una entidad de un proyecto real. Es exactamente lo que la fila 5 existe para atrapar, y nadie lo notó desde julio.
+
+**Un ejemplo con código real se lee más fácil que uno abstracto, y por eso convence más.** Esa es la razón de que sobreviva: no molesta a quien lee, molesta a quien hereda el estándar con otro stack.
+
 ### Los títulos que no dicen nada aparecen en racimo
 
 Tres títulos corregidos hoy por la fila 8, y los tres nombran un tema en vez de enunciar una norma: `15·IM2` («Estados y campos de anulación»), `12·PR5` («Retención y bordado») y `17·I6` —**«Adaptable», una sola palabra**—.
@@ -165,10 +194,10 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 | | Al anotarse | Antes de hoy | Hoy |
 |---|---|---|---|
-| Sin bloque de checklist | 129 | 121 | **67** |
-| Publicadas en NO CUMPLE | 7 | 7 | **23** |
+| Sin bloque de checklist | 129 | 121 | **59** |
+| Publicadas en NO CUMPLE | 7 | 7 | **30** |
 | Que se pasan del molde (fila 10) | — | 108 | **78** |
 
-Cincuenta y cuatro reglas ganaron su sello hoy, en diez capítulos —el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Dieciséis de esas cincuenta y cuatro dicen NO CUMPLE.
+Sesenta y dos reglas ganaron su sello hoy, en once capítulos —el `03`, el `05`, el `06`, el `07`, el `08`, el `10`, el `11`, el `12`, el `14`, el `15`, el `17`— más `F13`. Veintitrés de esas sesenta y dos dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.

@@ -86,7 +86,8 @@ Nace [`plantillas/README.md`](plantillas/README.md), que dice que ahí viven **d
 - **El capítulo `07` entero**: `Q1` a `Q6` en CUMPLE; `Q7` en NO CUMPLE por reformular `01·C3` en vez de enlazarla. `Q6` gana el ejemplo que le faltaba.
 - **El capítulo `08` entero**: `T2`, `T3`, `T5` y `T6` en CUMPLE; `T1`, `T4` y `T7` en NO CUMPLE. **`T7` es la regla más larga del cuerpo: 1645 caracteres para un molde de 320**, y ella misma declara que cubre «dos frentes». **`T1` es la más delicada:** su excepción deja al agente autorizándose a sí mismo a no probar.
 - **El capítulo `17` entero**: `I2`, `I4`, `I5` e `I6` en CUMPLE; `I1` e `I3` en NO CUMPLE. **`I6` se llamaba «Adaptable»** —una sola palabra, que ni ordena ni enuncia nada— y pasa a *Funciona en los tamaños de pantalla que el proyecto soporta*. `I5` e `I6` ganan el ejemplo que les faltaba.
-- **Las reglas sin sello bajan de 121 a 67**; las publicadas en NO CUMPLE suben de 7 a 23.
+- **El capítulo `03` entero, y es el peor del cuerpo:** siete de sus ocho reglas reprueban. Solo `D2` cabe en el molde. **`D7` mide 3839 caracteres —doce veces el molde y la regla más larga del estándar—** y es un manual de ocho pasos con encabezado de regla. `D8` traía en su ejemplo el código de un stack y una entidad reales, contra `M3`: reescrito en pseudocódigo agnóstico.
+- **Las reglas sin sello bajan de 121 a 59**; las publicadas en NO CUMPLE suben de 7 a 30.
 
 ### `citas.py` no pedía enlace dos veces… salvo en el mismo renglón
 
