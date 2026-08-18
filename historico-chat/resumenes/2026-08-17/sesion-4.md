@@ -286,6 +286,20 @@ Del [pendiente 47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-
 
 **Ninguna se borró, y esa era la tercera salida del pendiente** — *«alguna seguramente no la pidió nadie»*. Que una regla tenga procedencia no la vuelve necesaria; borrar una vigente quita algo del estándar. Es lo único que queda del 47, y es decisión suya.
 
+### H-26 · Tres de las 42 dudas ya estaban contestadas en el repositorio
+
+De las 42 que detienen 26 fases ([59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md)), **tres tenían su respuesta escrita**:
+
+- **La 16** —qué reglas candidatas no entraron— está en [el análisis del 2026-08-13](../../../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md), con las 22 fichas y su salida. Diecisiete no entraron.
+- **La 21** —si la comprobación de marcas cubre todo el repositorio— la contestaba el pendiente 11 desde el 2026-08-10, y **hoy se construyó justamente así**.
+- **La 18** no está contestada, pero el pendiente 20 ya trae las dos salidas evaluadas: hay que elegir, no pensarla de cero.
+
+**Quedan 39.**
+
+**Es la segunda vez hoy que una fase espera algo que ya estaba escrito**, y la tercera que la respuesta está en el repositorio y el trabajo era encontrarla. [`01·C23`](../../../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar) se escribió ayer y va acumulando casos más rápido de lo que se aplica.
+
+**Y una que vale la pena decir:** ese mismo análisis tiene una ficha llamada **«menos es más»**, evaluada el 2026-08-13 y marcada *«ya está cubierta»* por `01·C5` y `00·ID7`. Hoy volvió a aparecer, con razón — porque estar cubierta no es lo mismo que cumplirse.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

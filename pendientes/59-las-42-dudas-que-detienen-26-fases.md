@@ -120,6 +120,22 @@ Cuatro fases preguntan si esperan a otra. Se contestan mirando el orden, no una 
 | 41 | [`A-EP-005-HU-010`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/plan_trabajo.md) | ¿Qué capítulo rige cada tipo de documento? |
 | 42 | La misma | ¿Llega el capítulo completo o solo la regla que aplica, dado lo que pesa? |
 
+## Tres ya están contestadas en el repositorio — 2026-08-18
+
+Buscadas antes de volver a preguntarlas ([`01·C23`](../base/01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar)).
+
+| # | Estaba en | Qué dice |
+|---|---|---|
+| **16** · qué reglas candidatas no entraron | [prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md](../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md) | Las 22 fichas con su salida: **17 no entraron como regla nueva** —doce «ya está cubierta», tres «no es regla», dos «afinar una existente»— y la tabla dice por cuál quedó cubierta cada una |
+| **21** · si la comprobación de marcas cubre todo el repositorio | El [pendiente 11](hecho/../11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), paso 3, desde el 2026-08-10 | *«No tocar el histórico: es transcripción literal»*. **Ya está construido así** — se cuenta aparte, y `validar.py marcas` mira solo `base/` y `plantillas/` |
+| **18** · cuál de los dos caminos del pendiente 20 | Sigue abierta, pero el [20](20-f2-no-dice-cuando-no-aplica.md) ya trae las dos salidas evaluadas | No hace falta pensarla de cero: hay que elegir |
+
+**Quedan 39 que sí necesitan una respuesta.**
+
+> **La 16 y la 21 llevaban un día y ocho días detenidas, y las dos estaban escritas.** Es el mismo defecto que `C23` vino a cerrar, y es la segunda vez que aparece hoy.
+
+---
+
 ## Por dónde conviene empezar
 
 1. **El grupo G**, porque hay un daño vivo: las claves se escriben en claro y se versionan.
