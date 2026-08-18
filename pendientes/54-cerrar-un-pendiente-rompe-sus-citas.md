@@ -1,6 +1,6 @@
 # Pendiente · Cerrar un pendiente rompe los enlaces que lo citaban
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado** el 2026-08-17. Anotado el 2026-08-16.
 
 | | |
 |---|---|
@@ -34,3 +34,37 @@ No cubre los enlaces desde **fuera del repositorio** —un proyecto heredero que
 ## Cómo se sabrá que cerró
 
 Se cierra un pendiente citado desde varios archivos y el validador de enlaces sigue en cero, sin corregir nada a mano.
+
+---
+
+# Cómo cerró — 2026-08-17
+
+**Por la salida 1**, la que el pendiente daba por más cara: un comando que mueve el pendiente **y** redirige sus citas. La salida 2 —que el validador adivine que un roto a `pendientes/NN-*.md` «probablemente esté en hecho/»— habría dejado el trabajo manual intacto, solo que con una pista.
+
+## Se midió otra vez, y era cuatro veces peor
+
+Cerrar el [53](hecho/ningun-validador-termina-en-silencio.md) a mano dejó **58 enlaces rotos en 39 archivos**: doce fases de cuatro épicas, dos resúmenes de sesión, el índice del backlog y el propio documento de cierre que se acababa de escribir. Antes eran 12.
+
+## Lo que se construyó
+
+[validadores/cerrar.py](../validadores/cerrar.py). **No busca texto:** resuelve cada enlace contra el disco y compara rutas absolutas, así que da igual cuántos `../` lleve delante o desde qué carpeta se escribió. Simula por omisión, como `citas.py`.
+
+Movió los **seis** pendientes que estaban cerrados y seguían en la carpeta —el 25, el 31, el 40, el 41, el 42 y el 44— además del 53: **191 enlaces reescritos, ninguno roto al terminar.**
+
+## Las dos trampas que costaron una corrida cada una
+
+**1 · Los enlaces de salida.** Mover el archivo lo baja un nivel y sus propios `../` quedan cortos. El 53 llegó a `hecho/` con ocho rotos hacia afuera. Arrastrar a quien cita al archivo no basta: hay que recalcular también lo que **el archivo** cita.
+
+**2 · La convención cambia con la carpeta.** Se vio al mover un procedimiento en el [23](23-plantillas-mezcla-modelos-con-procedimientos.md): venía de `plantillas/`, que **sí** se copia dentro de los proyectos, y por eso citaba con `«RUTA-ESTANDAR»`. En `base/` eso no vale. Mover un documento entre carpetas no es solo cambiarlo de sitio.
+
+## Y sirve para más que pendientes
+
+`mover()` acepta cualquier `.md`. El [23](23-plantillas-mezcla-modelos-con-procedimientos.md) lo usó para llevar `retrodocumentacion.md` a su capítulo, con sus 12 citas. **Eso cierra también el punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md)** en lo que se puede cerrar desde acá: renombrar dejaba rotos los enlaces de fuera, y ahora hay con qué arrastrarlos.
+
+## El límite sigue en pie
+
+No cubre los enlaces desde **fuera del repositorio** —un proyecto heredero que cite un pendiente del estándar—, y eso no tiene arreglo desde acá. Queda dicho.
+
+## Cómo quedó comprobado
+
+[validadores/tests/test_cerrar_arrastra_las_citas.py](../validadores/tests/test_cerrar_arrastra_las_citas.py), 12 casos: las dos direcciones, el ancla que se conserva, el `%20` que si no se decodifica deja el enlace roto en silencio, lo externo que no se toca, el pendiente de número parecido que no se confunde, y las cuatro salvaguardas —simular no escribe, no pisa un nombre tomado, avisa si el número no existe y avisa si está repetido en vez de elegir uno—.
