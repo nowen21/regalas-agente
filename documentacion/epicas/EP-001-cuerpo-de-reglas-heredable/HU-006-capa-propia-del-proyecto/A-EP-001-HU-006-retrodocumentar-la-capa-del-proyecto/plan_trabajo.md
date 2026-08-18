@@ -108,6 +108,13 @@ Ninguno.
 
 La duda 1 bloquea los tres CA; la duda 2, solo el CA-03.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 12 | 👤 **Propuesta: `shopnest-mesa`** — el único que ya reporta al estándar y tiene estructura completa. |
+| 35 | **En un proyecto de mentira, en carpeta temporal.** Nunca en uno real ([`00·N4`](../../../../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)). |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

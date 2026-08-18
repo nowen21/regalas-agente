@@ -97,6 +97,12 @@ Ninguno.
 
 La duda 1 bloquea T-01 y T-02. Las pruebas no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 5 | **`M9` lo enlaza; el criterio vive en `validadores/`.** Meterlo en el cuerpo la saca del molde (fila 10). |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

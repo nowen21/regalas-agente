@@ -111,6 +111,14 @@ Ninguno.
 
 Las tres bloquean todas las tareas de construcción. **Ninguna arranca con una duda abierta que la bloquee.**
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 6 | **Capítulo `02`.** Quién sube la versión es un paso del flujo — el mismo criterio con el que `F24` fue al `02`. |
+| 36 | **La salida 1 del [pendiente 22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar. |
+| 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro. Ya pasó con `pendientes/README.md`. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

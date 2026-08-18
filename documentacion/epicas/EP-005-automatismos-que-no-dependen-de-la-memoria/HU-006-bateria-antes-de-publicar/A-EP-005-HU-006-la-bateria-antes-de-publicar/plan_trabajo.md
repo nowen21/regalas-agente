@@ -101,6 +101,13 @@ Ninguno.
 
 Las dos bloquean T-01. **Ninguna tarea de construcción arranca con una duda abierta que la bloquee.**
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 33 | **No espera:** la corrida completa ya está construida. |
+| 40 | **Publicar es subir al repositorio compartido.** El despliegue es del capítulo `18`, opt-in y apagado. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

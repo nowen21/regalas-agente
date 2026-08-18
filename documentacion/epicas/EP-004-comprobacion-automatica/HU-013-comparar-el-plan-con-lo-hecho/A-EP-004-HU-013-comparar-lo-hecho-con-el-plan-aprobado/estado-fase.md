@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **detenida**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -93,3 +93,11 @@
 ## 4. Si se bloqueó
 
 - **Estación:** 6 — ejecución continua, detenida. **Motivo:** el plan **está aprobado** desde el 2026-08-17, y las dos dudas bloquean el CA-01 y la declaración del CA-03. **Qué falta para desbloquear:** que el usuario apruebe el plan, diga contra qué se comparan los archivos tocados y si el CA-03 se intenta comprobar. El CA-02 y la lectura de T-05 pueden arrancar apenas se apruebe.
+
+---
+
+## Lo que la desbloqueó
+
+**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
+
+**La fase no arrancó todavía:** decidir no es ejecutar.

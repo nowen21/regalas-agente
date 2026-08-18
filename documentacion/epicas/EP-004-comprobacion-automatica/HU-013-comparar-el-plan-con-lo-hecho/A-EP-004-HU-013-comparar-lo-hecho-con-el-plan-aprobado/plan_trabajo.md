@@ -104,6 +104,13 @@ Ninguno.
 
 La duda 1 bloquea T-01. La duda 2 bloquea T-06, y el caso a mano de T-05 se puede hacer igual.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 10 | **Criterio humano, y se declara.** Fingir que se comprueba es peor que decir que no. |
+| 22 | **Contra el commit del que salió la fase.** Ni la rama, que arrastra lo ajeno, ni lo sin guardar, que cambia mientras se mira. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

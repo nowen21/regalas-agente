@@ -104,6 +104,12 @@ Ninguno. Quién puede editar lo da el acceso al repositorio.
 
 La duda 1 bloquea T-01. Los CA-01 y CA-03 no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 1 | **Se difiere a HU-007**, que es la regla de las reglas (`M13`, `M2`). |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

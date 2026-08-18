@@ -106,6 +106,11 @@ Ninguno.
 
 La duda 1 bloquea T-01. Los CA-02 y CA-03 no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 11 | 👤 **Propuesta: AgroSystem (Laravel · PHP) y RNI (Angular + Python)** — los dos stacks más distintos del registro. |
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

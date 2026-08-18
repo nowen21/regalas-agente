@@ -113,6 +113,14 @@ Ninguno.
 
 Las tres bloquean T-01. **Ninguna tarea de construcción arranca con una duda abierta que la bloquee.**
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 18 | **El camino 2 del [pendiente 20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md):** la historia hace de especificación cuando el entregable no es código. Abrirle una excepción a `F2` es la puerta que después nadie cierra. |
+| 19 | **Cualquier proyecto cuyo entregable no sea código**, no solo el estándar (`20·M3`). |
+| 20 | **Le basta con que el archivo exista.** Distinguir las dos formas es criterio. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

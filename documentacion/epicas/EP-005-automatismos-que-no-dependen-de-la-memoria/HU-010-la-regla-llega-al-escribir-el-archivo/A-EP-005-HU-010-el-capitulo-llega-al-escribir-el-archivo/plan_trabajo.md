@@ -104,6 +104,13 @@ Ninguno.
 
 Las dos bloquean T-01. La prueba del silencio del CA-03 se puede escribir antes.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 41 | **Por carpeta, no por tipo de documento.** Es lo que ya hace `cargador.py`. |
+| 42 | **Solo la regla que aplica.** El capítulo entero repite el problema que los índices resolvieron. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

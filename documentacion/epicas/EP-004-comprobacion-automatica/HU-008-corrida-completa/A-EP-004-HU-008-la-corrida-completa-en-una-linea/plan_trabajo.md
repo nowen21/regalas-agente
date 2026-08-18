@@ -101,6 +101,12 @@ Ninguno.
 
 La duda 1 bloquea T-01. Las pruebas del CA-02 no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 23 | **No los incluye.** `linter`, `suite` y `audit` ya son subcomandos aparte: se decidió al construirlo. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

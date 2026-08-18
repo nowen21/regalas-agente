@@ -102,6 +102,13 @@ Ninguno.
 
 Las dos bloquean T-02 en adelante. T-01 —la regla como dato— se puede hacer sin ellas.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 25 | **A lo no versionado.** [`09·G3`](../../../../../base/09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado) deja fuera lo generado, y un conteo lo es. |
+| 31 | **No espera: la corrida completa ya está construida** y corre desde la fase `A` de `EP-004·HU-008`. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

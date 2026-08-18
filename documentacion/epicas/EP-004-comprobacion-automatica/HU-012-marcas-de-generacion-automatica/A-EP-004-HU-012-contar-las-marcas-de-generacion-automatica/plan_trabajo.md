@@ -105,6 +105,12 @@ Ninguno.
 
 La duda 1 bloquea T-01: cambia qué archivos recorre el programa.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 21 | **Ya estaba contestada** en el pendiente 11, paso 3: no se toca el histórico. Construido así el 2026-08-18. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

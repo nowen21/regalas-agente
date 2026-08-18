@@ -97,6 +97,11 @@ Ninguno.
 
 La duda 1 bloquea T-05. Los demás CA no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 17 | 👤 **Propuesta: el usuario, leyendo una entrada del registro de una versión que no siguió.** Es el único lector que cumple la condición. |
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

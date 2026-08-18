@@ -100,6 +100,13 @@ Ninguno.
 
 Las dos bloquean T-01 a T-03. El CA-02 no depende de ellas.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 7 | **Detiene.** Que falte el sello se comprueba mirando el archivo, sin criterio de por medio. |
+| 28 | **Solo en el modelo del cierre.** Ponerlo en los dos obliga a llenarlo cuando no hay nada que sellar. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

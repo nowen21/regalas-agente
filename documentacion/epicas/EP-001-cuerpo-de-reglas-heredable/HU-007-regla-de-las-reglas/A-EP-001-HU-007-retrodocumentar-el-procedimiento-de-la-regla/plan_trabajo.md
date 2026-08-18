@@ -109,6 +109,12 @@ Ninguno.
 
 La duda 1 bloquea T-02 y T-05. El resto no depende de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 16 | **Ya estaba contestada:** las 22 fichas con su salida están en [`prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md`](../../../../../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md). Diecisiete no entraron. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

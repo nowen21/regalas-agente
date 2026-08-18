@@ -106,6 +106,12 @@ Ninguno.
 
 La duda 1 bloquea T-01 y T-07, que son la puerta. Nada más se puede probar sin ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 38 | **Uno con dos modos.** `validar.py metareglas --catalogo` ya funciona así. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

@@ -105,6 +105,13 @@ Ninguno.
 
 Las dos bloquean T-01 y T-07. Los casos de prueba se pueden escribir antes.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 26 | **Desde el 2026-08-16**, que es cuando nació la exigencia. Lo cerrado antes no se reabre (`20·M10`). |
+| 27 | **Una fila fija en la ficha de cabecera.** Una sección se olvida; una fila vacía se ve. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

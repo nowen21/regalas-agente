@@ -97,6 +97,11 @@ Ninguno. Los «roles» de esta HU son roles de trabajo, no permisos de un sistem
 
 La duda 1 bloquea T-04. Los otros dos CA no dependen de ella.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 14 | 👤 **Propuesta: `shopnest-mesa`.** **Falta el encargo chico y real**, que no está en ningún archivo. |
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

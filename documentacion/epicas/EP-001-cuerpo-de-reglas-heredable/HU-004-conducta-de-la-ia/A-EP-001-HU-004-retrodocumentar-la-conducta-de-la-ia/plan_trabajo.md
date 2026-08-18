@@ -109,6 +109,13 @@ Ninguno.
 
 La duda 1 bloquea T-01 y T-04. El CA-03 no depende de ninguna de las dos.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 2 | **Sí suben** al capítulo `01`: le exigen algo al agente en cualquier proyecto. |
+| 3 | **El recuerdo se recorta a un puntero.** Si la exigencia vive en `base/`, repetirla es texto prestado (fila 11). |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

@@ -103,6 +103,13 @@ Ninguno.
 
 Las dos bloquean T-01. Los casos de prueba se pueden escribir antes.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 8 | **Detiene.** El molde del mensaje es forma, y la forma se comprueba. |
+| 39 | **Enganche de la herramienta.** El del control de versiones no corre cuando el agente escribe. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

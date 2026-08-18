@@ -96,6 +96,12 @@ Ninguno.
 
 La duda 1 no bloquea las pruebas: bloquea solo el cambio del mensaje.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 24 | **Sí dice qué cambió**, al nivel de entrada del registro: versión, tipo y título. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

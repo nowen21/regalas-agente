@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **detenida**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,7 +26,7 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 6 tareas · **detenida por la duda 1 de §2.7** | ☐ |
+| 6 | Ejecución continua | 6 tareas · **dudas decididas el 2026-08-18** | ☐ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
@@ -90,3 +90,11 @@
 ## 4. Si se bloqueó
 
 - **Estación:** 6 — ejecución continua, detenida. **Motivo:** el plan **está aprobado** desde el 2026-08-17, y falta elegir el encargo del CA-03. **Qué falta para desbloquear:** que el usuario apruebe el plan y elija el encargo. Las otras cinco tareas pueden arrancar apenas se apruebe.
+
+---
+
+## Lo que la desbloqueó
+
+**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
+
+**La fase no arrancó todavía:** decidir no es ejecutar.

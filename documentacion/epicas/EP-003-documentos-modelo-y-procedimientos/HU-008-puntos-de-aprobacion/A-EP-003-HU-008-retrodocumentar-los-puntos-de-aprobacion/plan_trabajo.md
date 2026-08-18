@@ -102,6 +102,13 @@ Ninguno.
 
 Las dos bloquean T-01 y T-02. Los CA-02 y CA-03 no dependen de ellas.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 4 | **Documento, no regla.** La exigencia de aprobar ya está en `02·F4`; la lista es un mapa (`M13`). |
+| 34 | **En otra fase.** Enlazar la lista es trabajo del procedimiento del director (`M2`). |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

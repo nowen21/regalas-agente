@@ -103,6 +103,13 @@ Ninguno.
 
 Las dos bloquean T-01. Los casos de prueba se pueden escribir antes.
 
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+
+| Duda | Decisión |
+|---|---|
+| 9 | **Detiene**, y no depende del tipo de cambio: `20·M10` no admite excepción por tamaño. |
+| 32 | **`HU-004` crea el disparo y esta se suma.** Dos enganches sobre el mismo momento se pisan. |
+
 ---
 
 ## 3. Desglose de tareas por criterio de aceptación

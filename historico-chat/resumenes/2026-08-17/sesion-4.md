@@ -341,6 +341,14 @@ El usuario pidió resolver las 33 que quedaban, y están escritas en el [59](../
 
 **Y el pendiente sigue abierto a propósito.** Decidir no es ejecutar: las 26 fases siguen detenidas hasta que cada una lleve su respuesta a la §2.7 de su plan.
 
+### H-30 · Las 26 fases dejan de estar detenidas
+
+La decisión de cada duda quedó escrita **en la §2.7 del plan de su fase**, no solo en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md): 26 planes y 25 estados al día.
+
+**Estaba en el sitio equivocado y ese era medio problema.** Una decisión que vive en el pendiente obliga a que alguien la vaya a buscar; escrita en el plan de la fase, la lee quien la vaya a ejecutar, que es quien la necesita.
+
+**Ninguna arrancó.** Decidir no es ejecutar, y los estados lo dicen: pasan de «detenida por la duda» a «lista para arrancar».
+
 ---
 
 ## ¿Se puede cerrar la sesión?
