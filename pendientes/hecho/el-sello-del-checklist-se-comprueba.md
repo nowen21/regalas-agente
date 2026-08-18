@@ -4,10 +4,10 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — el sello vencido es la otra cara del 19: aquel cuenta las que no lo tienen, este las que lo tienen viejo |
-| **De dónde sale** | El **punto 7** del [33](33-defectos-que-destaparon-los-resumenes-viejos.md), promovido a pendiente propio el 2026-08-16 |
-| **Historia que lo recibiría** | [EP-001 · HU-009](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md), o una nueva de EP-004 si se construye el programa |
-| **Se cruza con** | El [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que cuenta las reglas sin checklist; este cuenta las que lo tienen **vencido** |
+| **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — el sello vencido es la otra cara del 19: aquel cuenta las que no lo tienen, este las que lo tienen viejo |
+| **De dónde sale** | El **punto 7** del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), promovido a pendiente propio el 2026-08-16 |
+| **Historia que lo recibiría** | [EP-001 · HU-009](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md), o una nueva de EP-004 si se construye el programa |
+| **Se cruza con** | El [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que cuenta las reglas sin checklist; este cuenta las que lo tienen **vencido** |
 
 ## El problema
 
@@ -19,11 +19,11 @@ Cada bloque de checklist cierra con esta frase:
 
 ## El caso concreto
 
-Al reescribir [`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) el **2026-08-08**, su bloque de checklist quedó anulado y se dejó anotado «a re-aplicar en el próximo repaso». **No se hizo**, y hoy la regla figura en el capítulo `02` con el resultado *pendiente*.
+Al reescribir [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) el **2026-08-08**, su bloque de checklist quedó anulado y se dejó anotado «a re-aplicar en el próximo repaso». **No se hizo**, y hoy la regla figura en el capítulo `02` con el resultado *pendiente*.
 
 Ocho días después nadie lo había vuelto a mirar. No es descuido de una persona: es que **nada lo recuerda**.
 
-→ Sale de [la instalación se hace sola · H-3](../historico-chat/resumenes/2026-08-08/la-instalacion-se-hace-sola.md).
+→ Sale de [la instalación se hace sola · H-3](../../historico-chat/resumenes/2026-08-08/la-instalacion-se-hace-sola.md).
 
 ## Por qué es `P1`
 
@@ -47,7 +47,7 @@ Un sello vencido **afirma algo que no es cierto**: dice que esa regla, tal como 
 
 ## El límite
 
-La comprobación dice que el sello **caducó**, no que la regla esté mal escrita. Volver a aplicarle las veinte filas es trabajo con criterio, y es el mismo de las 121 reglas sin bloque del [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md): conviene hacerlo por capítulo.
+La comprobación dice que el sello **caducó**, no que la regla esté mal escrita. Volver a aplicarle las veinte filas es trabajo con criterio, y es el mismo de las 121 reglas sin bloque del [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md): conviene hacerlo por capítulo.
 
 ## Cómo se sabrá que cerró
 
@@ -79,11 +79,11 @@ Y el resultado es **NO CUMPLE**, por una sola fila: la **10**, el cuerpo de 1 a 
 
 Las otras diecinueve pasan —16 ✅ y 3 N/A—. La fila que reprueba dice qué hacer cuando no cabe: o son dos reglas, o se está contando el porqué y ese va a `notas/`. Acá es lo segundo.
 
-**Recortarla es un cambio de regla y no se hizo acá**: va al [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que es el que trabaja por capítulo las reglas que no pasan su checklist. El bloque deja escrito **qué** falla, para que quien lo tome no vuelva a medirlo.
+**Recortarla es un cambio de regla y no se hizo acá**: va al [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que es el que trabaja por capítulo las reglas que no pasan su checklist. El bloque deja escrito **qué** falla, para que quien lo tome no vuelva a medirlo.
 
 **Estaba peor de lo que se creía.** `F13` decía «pendiente de aplicar», y esa forma no la reconocía el validador: figuraba como *«no trae su bloque de checklist»*, un aviso, cuando en realidad era una regla publicada sin sello válido. Ahora dice NO CUMPLE y sale como falla — que es la verdad.
 
-De paso: [validadores/reglas-validables.md](../validadores/reglas-validables.md) registraba `F13` con el **título viejo**, de cuando detenía el arranque. Corregido.
+De paso: [validadores/reglas-validables.md](../../validadores/reglas-validables.md) registraba `F13` con el **título viejo**, de cuando detenía el arranque. Corregido.
 
 ## 4 · El número que nadie sabía
 
@@ -99,8 +99,8 @@ Ese conteo es lo que el pendiente decía que «no se sabe hoy, y esa es media gr
 
 ## Cómo quedó comprobado
 
-[validadores/tests/test_sello_del_checklist_vencido.py](../validadores/tests/test_sello_del_checklist_vencido.py), 9 casos, sobre repositorios de verdad con fechas de confirmación puestas a mano. Entre ellos los tres que evitan el ruido: sellar y editar el mismo día no vence, un sello sin fecha no se inventa nada, y un archivo fuera del control de versiones no se reporta. Y uno que fija el criterio: **tocar el archivo en el disco no vence el sello**.
+[validadores/tests/test_sello_del_checklist_vencido.py](../../validadores/tests/test_sello_del_checklist_vencido.py), 9 casos, sobre repositorios de verdad con fechas de confirmación puestas a mano. Entre ellos los tres que evitan el ruido: sellar y editar el mismo día no vence, un sello sin fecha no se inventa nada, y un archivo fuera del control de versiones no se reporta. Y uno que fija el criterio: **tocar el archivo en el disco no vence el sello**.
 
 ## El límite sigue en pie
 
-La comprobación dice que el sello **caducó**, no que la regla esté mal escrita. Volver a aplicarle las veinte filas a las 36 es trabajo con criterio, y es el mismo del [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md): conviene hacerlo por capítulo.
+La comprobación dice que el sello **caducó**, no que la regla esté mal escrita. Volver a aplicarle las veinte filas a las 36 es trabajo con criterio, y es el mismo del [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md): conviene hacerlo por capítulo.

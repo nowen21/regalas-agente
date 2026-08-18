@@ -11,6 +11,29 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.7.1 — 2026-08-18
+
+**PARCHE** — el aviso de vuelta de la 23.7.0 estaba escrito y probado, y **el comando no lo llamaba**.
+
+### Lo que la 23.7.0 afirmaba y no era
+
+La entrada de abajo dice *«el aviso lo escribe `cerrar.py` al cerrar»*. La función existía, tenía sus doce casos y todos pasaban — pero `main()` nunca la invocaba. **Cerrar un pendiente no avisaba a nadie**, que es exactamente el defecto que [`02·F24`](base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md) vino a cerrar.
+
+**Lo destapó correr el comando de verdad**, no una prueba. Las pruebas llamaban a `avisar()` directamente, así que verificaban la pieza sin verificar que estuviera conectada.
+
+### Y al conectarlo salieron dos más
+
+- **El estándar se mandaba un aviso a sí mismo.** Está en su propio registro, y la comparación de rutas era por texto: el registro escribe `c:\` y el comando `C:\`. Ahora se compara con `normcase`.
+- **El archivo se llamaba `algo.md.md`.** El destino ya traía su extensión.
+
+Los tres tienen su caso ahora, y los dos nuevos comprueban **lo que se vio fallar**, no lo que debería pasar.
+
+### Lo que dejó el primer envío real
+
+Llegó a **un** proyecto de nueve, aunque la ficha decía «a todos»: los otros ocho no tienen carpeta `pendientes/` y a un proyecto que no lleva backlog **no se le inventa**. Queda anotado en el [61](pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), porque lo que falta no es el aviso — es que ocho proyectos no tienen dónde escribir un pendiente.
+
+---
+
 ## 23.7.0 — 2026-08-18
 
 **MENOR** — el defecto del estándar se reporta, y al corregirlo el estándar avisa de vuelta. Aditivo: un proyecto al día no tiene que hacer nada.
@@ -39,7 +62,7 @@ Ahora lo escribe [`validadores/cerrar.py`](validadores/cerrar.py) al cerrar, por
 
 `validar.py pendientes` reporta el pendiente que dice venir de un proyecto sin nombrarlo — casilla vacía o con el molde `«…»` todavía puesto. **Los 34 del backlog pasan sin tocar ninguno**, que es la señal de que la regla describe lo que ya se hacía bien en vez de inventar una exigencia.
 
-Fase: [`A-EP-007-HU-008`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/) · pendiente [36](pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
+Fase: [`A-EP-007-HU-008`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/) · pendiente [36](pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md).
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Estado:** **cerrado** el 2026-08-17. Anotado el 2026-08-16.
 
-> **Moverlo a `hecho/` costó 54 enlaces rotos la primera vez.** Se deshizo, se construyó [validadores/cerrar.py](../../validadores/cerrar.py) —que mueve el archivo y arrastra sus citas— y se movió con él. Esa medición de 54 es lo que cerró la discusión del [54](../54-cerrar-un-pendiente-rompe-sus-citas.md).
+> **Moverlo a `hecho/` costó 54 enlaces rotos la primera vez.** Se deshizo, se construyó [validadores/cerrar.py](../../validadores/cerrar.py) —que mueve el archivo y arrastra sus citas— y se movió con él. Esa medición de 54 es lo que cerró la discusión del [54](cerrar-un-pendiente-arrastra-sus-citas.md).
 
 | | |
 |---|---|
@@ -34,7 +34,7 @@ Un validador que calla sin haber mirado es peor que ninguno: el que no existe se
 
 ## Con qué se cruza
 
-- El [55](../55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) y el punto 1 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), que son del mismo archivo: los tres hacen que sus hallazgos no se puedan creer, unos por callar y otros por hablar de más.
+- El [55](los-enlaces-de-ejemplo-no-son-enlaces.md) y el punto 1 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), que son del mismo archivo: los tres hacen que sus hallazgos no se puedan creer, unos por callar y otros por hablar de más.
 
 ## Cómo se sabrá que cerró
 
@@ -74,7 +74,7 @@ La prueba nueva —[`test_ninguno_termina_en_silencio.py`](../../validadores/tes
 | Qué | Adónde fue |
 |---|---|
 | `D-02` — la regla sin clasificar **avisa**, y un aviso no detiene | El [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
-| `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | El [55](../55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) |
+| `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | El [55](los-enlaces-de-ejemplo-no-son-enlaces.md) |
 | El 55 afirmaba que `G9` no existe, y sí existe | Corregido en el propio 55 |
 
 **Y una medición que vuelve a ser posible.** `validar.py metareglas` reporta hoy **7 fallas y 229 avisos**. No son de esta fase: son el capítulo 20 sin cumplirse a sí mismo, o sea el [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Ese pendiente citaba una medición del 2026-08-14 que desde entonces no se podía repetir por línea de comandos. Ahora sí.

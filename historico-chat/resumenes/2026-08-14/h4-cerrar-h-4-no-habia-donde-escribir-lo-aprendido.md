@@ -116,7 +116,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-003 · HU-001, la marca de espacio por llenar.
 - **Dispara:** —. Es mover archivos, y necesita su fase por la migración.
 - **Orden de resolución:** 3 de 3 · no bloquea la cadena de H-4.
-- **Dónde queda:** [pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md](../../../pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md).
+- **Dónde queda:** [pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md).
 - **Nace en:** 2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.
 - **Cerrado en:** —
 - **Con qué se retoma:** mover `retrodocumentacion.md` al capítulo 13 y corregir las citas a su ruta vieja en el mismo cambio.

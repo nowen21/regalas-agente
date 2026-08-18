@@ -62,7 +62,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** mover el archivo del 35 a `pendientes/hecho/` dejó 12 enlaces huérfanos. Nueve siguen rotos, en cuatro archivos que el plan de la fase no declaraba. **Y ya había pasado:** al cerrar el 45 quedó roto el enlace del `plan_trabajo` de su propia fase, y nadie lo vio.
 - **Por qué importa:** es el mismo defecto que esta sesión acaba de cerrar para las sesiones renombradas, un piso más arriba. El backlog se cita a sí mismo —el 36 nombra al 34 y al 35, el 33 al 19 y al 31— y cada cierre rompe esas citas.
 - **Qué lo soluciona:** lo mismo que el [punto 4 del pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md): el modo de reparación de `citas.py`, aplicado también al mover un pendiente a `hecho/`.
-- **Estado:** **anotado** → [pendiente 54](../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md). Los nueve enlaces de ese primer cierre ya se corrigieron a mano; la causa sigue.
+- **Estado:** **anotado** → [pendiente 54](../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md). Los nueve enlaces de ese primer cierre ya se corrigieron a mano; la causa sigue.
 - **Responde a:** H-2
 - **Dispara:** —
 - **Dónde queda:** §4 del resultado de pruebas de la fase, y el punto 4 del 33 en el índice del backlog.
@@ -74,7 +74,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 - **Qué pasó:** marcó como rotas dos muestras escritas entre comillas invertidas dentro de un plan de pruebas, que nunca fueron enlaces sino el texto de lo que la prueba tiene que encontrar.
 - **Por qué importa:** obliga a redactar torcido para que el validador no se queje, o enseña a ignorar sus hallazgos. Es de la misma familia que el punto 1 del 33, donde da por rotos los enlaces con espacios.
 - **Qué lo soluciona:** que `enlaces.py` no busque enlaces dentro de un bloque ni de un tramo de código.
-- **Estado:** **anotado** → [pendiente 55](../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md). Conviene con el punto 1 del 33: mismo archivo, misma clase de falso positivo.
+- **Estado:** **anotado** → [pendiente 55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md). Conviene con el punto 1 del 33: mismo archivo, misma clase de falso positivo.
 - **Responde a:** —
 - **Dispara:** —
 - **Dónde queda:** este resumen.
@@ -191,7 +191,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 - Qué se hace con las **siete reglas publicadas en «no cumple»** — es el `CA-01` del [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que sigue abierto.
 - La **contradicción del `P0`** en la cabecera del índice del backlog (H-7).
 
-**De los ocho `P1` que dispararon la sesión, siete quedaron resueltos** —35, 38, 43, 30, 27, 28 y el punto 7 del 33, este último promovido al [52](../../../pendientes/52-el-sello-del-checklist-caduca-con-el-texto.md)—. El **19** cerró su parte mecánica y sigue abierto por las otras dos, que no dependen de trabajo sino de una decisión y de tiempo por capítulo.
+**De los ocho `P1` que dispararon la sesión, siete quedaron resueltos** —35, 38, 43, 30, 27, 28 y el punto 7 del 33, este último promovido al [52](../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md)—. El **19** cerró su parte mecánica y sigue abierto por las otras dos, que no dependen de trabajo sino de una decisión y de tiempo por capítulo.
 
 ---
 

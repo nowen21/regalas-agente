@@ -115,6 +115,38 @@ class ElAvisoLlegaAQuienLoReporto(unittest.TestCase):
         proyectos = self._proyectos()
         self.assertEqual([], self._avisar("# Pendiente\n\nSin ficha.\n", proyectos))
 
+    def test_el_estandar_no_se_avisa_a_si_mismo(self):
+        """El repositorio del estándar está en su propio registro.
+
+        Y la comparación tiene que ser por `normcase`: el registro escribe la
+        unidad en minúscula y el comando en mayúscula. Comparando el texto tal
+        cual, el estándar se manda un aviso a sí mismo — que fue exactamente lo
+        que pasó la primera vez que el comando lo corrió de verdad.
+        """
+        proyectos = self._proyectos()
+        raiz = proyectos[0][1]
+        texto = FICHA % ("Proyecto 1", raiz, "a **todos** los proyectos")
+        # La misma carpeta escrita de tres maneras: tal cual, con la caja
+        # cambiada y dando un rodeo. Las tres son el estándar.
+        for escrita in (raiz, raiz.upper(),
+                        os.path.join(raiz, os.pardir, os.path.basename(raiz))):
+            with self.subTest(ruta=escrita):
+                if (os.path.normcase(escrita) != os.path.normcase(raiz)
+                        and os.path.normcase("A") != os.path.normcase("a")):
+                    continue            # sistema que distingue mayúsculas
+                self.assertEqual([], cerrar.avisar(
+                    raiz, texto, "/x/hecho/algo.md", "9.9.9",
+                    [(proyectos[0][0], escrita)], "2026-01-02", True))
+        self.assertEqual([], os.listdir(os.path.join(raiz, "pendientes")))
+
+    def test_el_nombre_del_aviso_no_lleva_dos_veces_la_extension(self):
+        """`destino` ya termina en `.md`; agregarle otra da `algo.md.md`."""
+        proyectos = self._proyectos()
+        texto = FICHA % ("Proyecto 1", proyectos[0][1], "al de origen")
+        _n, archivo = self._avisar(texto, proyectos)[0]
+        self.assertTrue(archivo.endswith(".md"))
+        self.assertFalse(archivo.endswith(".md.md"), archivo)
+
     def test_simular_no_escribe(self):
         proyectos = self._proyectos()
         texto = FICHA % ("Proyecto 1", proyectos[0][1], "al de origen")

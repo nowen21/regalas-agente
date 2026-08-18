@@ -108,7 +108,7 @@ Los cinco archivos del plan §2.1 son exactamente los cinco que se tocaron.
 | Un proyecto instalado antes de este cambio no se arregla reinstalando. Son dos motivos: los 4 archivos de `.agente/` no se pisan, y el `stack-instalacion.md` sí se pisaría pero la huella sale del stack central, así que el instalador lo da por al día y no reescribe | Atajo decidido el primero (riesgo `B-01` del plan, aprobado por el usuario) · **No previsto** el segundo | El segundo lo comprobó `shopnest-mesa` el mismo día y quedó como [pendiente 42](../../../../../pendientes/hecho/el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md) |
 | Los cuatro puntos de copia repiten el mismo paso en vez de pasar por un envoltorio único | Atajo decidido — lo decidió el usuario al aprobar el plan §2.6 | Pendiente por abrir |
 | `enlaces.py` no tiene bloque `__main__`: correrlo directo no imprime nada y sale con código 0 | No previsto — se descubrió en esta sesión, fuera de esta fase | Anotado en el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) |
-| Falta avisarle a `shopnest-mesa` que su reporte cerró | Diferido por el plan | Depende del [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) |
+| Falta avisarle a `shopnest-mesa` que su reporte cerró | Diferido por el plan | Depende del [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) |
 
 ---
 

@@ -55,4 +55,4 @@ La ruta que entra al archivo es la de la máquina donde se instaló, y los docum
 
 Queda **abierto allá** hasta que lo comprueben. Eso es lo correcto: el aviso no cierra el pendiente del proyecto, lo desbloquea.
 
-**Lo mandó una persona acordándose**, que es el paso 6 que el [pendiente 36](../36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) todavía no automatiza.
+**Lo mandó una persona acordándose**, que es el paso 6 que el [pendiente 36](el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) todavía no automatiza.

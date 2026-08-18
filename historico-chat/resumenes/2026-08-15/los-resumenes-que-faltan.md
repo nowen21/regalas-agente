@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Responde a:** EP-005 · HU-008, el enganche del resumen.
 - **Dispara:** —, es completar lo que ya hace [`hook_resumen.py`](../../../validadores/hook_resumen.py).
 - **Orden de resolución:** 1 de 2. Va primero: cada resumen que nazca sin su línea hay que volver a buscarlo.
-- **Dónde queda:** [pendientes/32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md).
+- **Dónde queda:** [pendientes/32](../../../pendientes/hecho/la-carpeta-del-dia-nace-indexada.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿lo escribe el enganche al crear la carpeta, o lo comprueba un validador al cerrar? Los 33 de esta sesión se anotaron a mano, uno por uno.
@@ -99,7 +99,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-5: los 33 resúmenes escritos, 23 sesiones renombradas, las 4 copias borradas y el criterio fijado |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/hecho/la-carpeta-del-dia-nace-indexada.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia nueva |
 | Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario: `c08c4ea` el inventario y `57a0657` los 33 resúmenes |
 

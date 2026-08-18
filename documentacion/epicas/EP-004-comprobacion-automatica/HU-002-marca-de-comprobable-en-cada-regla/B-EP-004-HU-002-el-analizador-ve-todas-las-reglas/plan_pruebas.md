@@ -110,7 +110,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 
 **Resultado esperado final:** ampliar lo que se reconoce no metió ruido.
 
-> **El paso 4 es el que evita repetir un defecto conocido.** `citas.py` cuenta como cita un identificador nombrado como ejemplo — es el [pendiente 55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md). Este analizador no puede caer en lo mismo.
+> **El paso 4 es el que evita repetir un defecto conocido.** `citas.py` cuenta como cita un identificador nombrado como ejemplo — es el [pendiente 55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md). Este analizador no puede caer en lo mismo.
 
 ---
 

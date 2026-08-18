@@ -4,15 +4,15 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-007 · HU-006 — Poner al día](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — el registro mal escrito lo escribe esa historia; es su residuo |
+| **Historia de usuario** | [EP-007 · HU-006 — Poner al día](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — el registro mal escrito lo escribe esa historia; es su residuo |
 | **Proyecto de origen** | **`dp`** (RNI Defensoría) · `C:/DesarrollosClaude/dp` |
-| **Su pendiente de seguimiento** | [`documentacion/pendientes/24-el-registro-de-version-se-contradice.md`](../../../../DesarrollosClaude/dp/documentacion/pendientes/24-el-registro-de-version-se-contradice.md) — queda **abierto allá** hasta que este se corrija |
+| **Su pendiente de seguimiento** | [`documentacion/pendientes/24-el-registro-de-version-se-contradice.md`](../../../../../DesarrollosClaude/dp/documentacion/pendientes/24-el-registro-de-version-se-contradice.md) — queda **abierto allá** hasta que este se corrija |
 | **A quién avisar al cerrar** | a **`dp`**, que lo reportó. No hace falta avisar a los demás: el archivo mal escrito no rompe nada, solo confunde a quien lo lea |
-| **Nace de cerrar** | el [44](hecho/poner-al-dia-lo-ya-instalado.md) (v21.2.0). Es el residuo de esa corrección, no su reapertura |
+| **Nace de cerrar** | el [44](poner-al-dia-lo-ya-instalado.md) (v21.2.0). Es el residuo de esa corrección, no su reapertura |
 
 ## El problema
 
-Desde el [44](hecho/poner-al-dia-lo-ya-instalado.md), subir de versión es por sí solo motivo de registro: el instalador escribe `documentacion/versiones/<fecha>-<version>.md` y el proyecto llega a 13 de 13. Funciona.
+Desde el [44](poner-al-dia-lo-ya-instalado.md), subir de versión es por sí solo motivo de registro: el instalador escribe `documentacion/versiones/<fecha>-<version>.md` y el proyecto llega a 13 de 13. Funciona.
 
 Lo que quedó mal es el contenido de ese archivo. Su apartado **«Qué quedó pendiente»** se calcula **antes** de escribirlo y no se recalcula después, así que el registro recién nacido se lista a sí mismo como faltante:
 
@@ -67,7 +67,7 @@ Se corre el instalador en un proyecto al que le falte algún componente. El regi
 
 ## Nota aparte, del mismo hallazgo
 
-El archivo [`44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md`](hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) sigue en esta carpeta con **Estado: abierto**, aunque el [README](README.md) lo da por cerrado el 2026-08-16 (v21.2.0) y su cierre está en [`hecho/poner-al-dia-lo-ya-instalado.md`](hecho/poner-al-dia-lo-ya-instalado.md). El README de esta carpeta dice que al cerrar un pendiente su archivo se borra o se marca con la fecha, y acá no pasó ninguna de las dos. Se anota acá y no en un pendiente aparte porque es una línea de arreglo, no un tema.
+El archivo [`44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md`](el-registro-no-se-escribe-si-no-cambia-la-huella.md) sigue en esta carpeta con **Estado: abierto**, aunque el [README](../README.md) lo da por cerrado el 2026-08-16 (v21.2.0) y su cierre está en [`hecho/poner-al-dia-lo-ya-instalado.md`](poner-al-dia-lo-ya-instalado.md). El README de esta carpeta dice que al cerrar un pendiente su archivo se borra o se marca con la fecha, y acá no pasó ninguna de las dos. Se anota acá y no en un pendiente aparte porque es una línea de arreglo, no un tema.
 
 ---
 
@@ -83,7 +83,7 @@ Cuesta escribir el archivo dos veces. Es el precio de que diga la verdad.
 
 ## Cómo quedó comprobado
 
-[validadores/tests/test_registro_no_se_lista_a_si_mismo.py](../validadores/tests/test_registro_no_se_lista_a_si_mismo.py), 6 casos. El que importa no mira el texto del archivo: le pasa una función que **espía si el registro ya existe** en el momento en que se le pregunta qué falta. Si se calculara antes, la carpeta estaría vacía.
+[validadores/tests/test_registro_no_se_lista_a_si_mismo.py](../../validadores/tests/test_registro_no_se_lista_a_si_mismo.py), 6 casos. El que importa no mira el texto del archivo: le pasa una función que **espía si el registro ya existe** en el momento en que se le pregunta qué falta. Si se calculara antes, la carpeta estaría vacía.
 
 Los otros cinco son para que el arreglo no se vuelva una excusa para callar: lo que de verdad falta se sigue escribiendo, un apartado vacío no se escribe, la lista ya calculada sigue funcionando, el documento no queda a medias con las dos escrituras, y el índice se escribe igual.
 

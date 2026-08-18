@@ -4,10 +4,10 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-007 · HU-008 — El proyecto reporta lo que es del estándar](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) — el canal del proyecto hacia el estándar es de instalación y actualización, que es esa épica |
+| **Historia de usuario** | [EP-007 · HU-008 — El proyecto reporta lo que es del estándar](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) — el canal del proyecto hacia el estándar es de instalación y actualización, que es esa épica |
 | **Proyecto de origen** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **Su pendiente de seguimiento** | `pendientes/04-falta-la-regla-de-reporte-al-cimiento.md` — queda **abierto allá** hasta que este se corrija |
-| **A quién avisar al cerrar** | a **todos los proyectos instalados**, no solo al de origen: la regla los rige a todos. La lista está en [`plantillas/proyectos.md`](../plantillas/proyectos.md) |
+| **A quién avisar al cerrar** | a **todos los proyectos instalados**, no solo al de origen: la regla los rige a todos. La lista está en [`plantillas/proyectos.md`](../../plantillas/proyectos.md) |
 
 ## El problema
 
@@ -36,15 +36,15 @@ Una regla que fije el procedimiento. El usuario lo dictó completo el 2026-08-16
 
 ## Qué hay que construir
 
-**1 · La regla.** Va en `base/`, y el capítulo lo decide el estándar. Dos candidatos: `01-conducta` —es una conducta del agente ante un defecto ajeno— o `02-flujo-de-trabajo` —es un paso del flujo—. Se cruza con `02·F20` (parar y proponer), que hoy choca con corregir el defecto que uno mismo detecta: eso está anotado en el [pendiente 33 · punto 8](33-defectos-que-destaparon-los-resumenes-viejos.md) y esta regla es la que lo resuelve.
+**1 · La regla.** Va en `base/`, y el capítulo lo decide el estándar. Dos candidatos: `01-conducta` —es una conducta del agente ante un defecto ajeno— o `02-flujo-de-trabajo` —es un paso del flujo—. Se cruza con `02·F20` (parar y proponer), que hoy choca con corregir el defecto que uno mismo detecta: eso está anotado en el [pendiente 33 · punto 8](../33-defectos-que-destaparon-los-resumenes-viejos.md) y esta regla es la que lo resuelve.
 
 **2 · Las dos plantillas del pendiente**, para que los dos lados salgan iguales siempre:
 - La del estándar: cabecera con **proyecto de origen**, pendiente de seguimiento y a quién avisar al cerrar.
 - La del proyecto: cabecera con **dónde está el defecto**, qué se reportó allá, qué se espera y cuándo cierra.
 
-Los pendientes [34](hecho/enlaces-de-las-plantillas-al-estandar.md) y [35](hecho/renombrar-deja-el-resumen-coherente.md) ya están escritos con esa forma; sirven de molde.
+Los pendientes [34](enlaces-de-las-plantillas-al-estandar.md) y [35](renombrar-deja-el-resumen-coherente.md) ya están escritos con esa forma; sirven de molde.
 
-**3 · El aviso de vuelta (paso 6).** Es la mitad que nadie tiene hoy. El estándar sabe qué proyectos lo usan —[`plantillas/proyectos.md`](../plantillas/proyectos.md)— y sabe dónde está cada uno, así que puede escribir el aviso en el proyecto al cerrar el pendiente. Sin esto, el paso 7 deja pendientes abiertos para siempre y la regla se vuelve papel.
+**3 · El aviso de vuelta (paso 6).** Es la mitad que nadie tiene hoy. El estándar sabe qué proyectos lo usan —[`plantillas/proyectos.md`](../../plantillas/proyectos.md)— y sabe dónde está cada uno, así que puede escribir el aviso en el proyecto al cerrar el pendiente. Sin esto, el paso 7 deja pendientes abiertos para siempre y la regla se vuelve papel.
 
 **4 · La comprobación.** Un pendiente del estándar sin proyecto de origen, o un pendiente de proyecto sin su par acá, es un fallo de trazabilidad y se puede detectar. Encaja con lo que ya hace `validadores/cruces.py`.
 
@@ -56,7 +56,7 @@ La regla está escrita en `base/` con su checklist, las dos plantillas existen, 
 
 # Cómo cerró — 2026-08-18
 
-Fase: [`A-EP-007-HU-008`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/), veredicto **Cumple**.
+Fase: [`A-EP-007-HU-008`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta), veredicto **Cumple**.
 
 ## Lo que faltaba de verdad era el paso 6
 
@@ -64,11 +64,11 @@ Los siete pasos los dictó el usuario y los cinco primeros se venían haciendo p
 
 ## Las cuatro piezas
 
-**1 · La regla.** [`02·F24`](../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), con su checklist en CUMPLE. **Va al capítulo `02` y no a la épica de instalación:** lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
+**1 · La regla.** [`02·F24`](../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), con su checklist en CUMPLE. **Va al capítulo `02` y no a la épica de instalación:** lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
 
-**Y resuelve el choque con `02·F20`** que estaba anotado en el punto 8 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md): `F20` manda parar y proponer, y no decía qué hacer cuando lo descubierto es del estándar. Ahora `F20` para y `F24` dice a dónde va.
+**Y resuelve el choque con `02·F20`** que estaba anotado en el punto 8 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md): `F20` manda parar y proponer, y no decía qué hacer cuando lo descubierto es del estándar. Ahora `F20` para y `F24` dice a dónde va.
 
-**2 · Las dos plantillas.** [pendiente-reportado](../plantillas/pendiente-reportado.md) y [pendiente-de-seguimiento](../plantillas/pendiente-de-seguimiento.md), **cada una nombrando a la otra** — porque uno sin el otro es exactamente la mitad que falló los dos días de agosto que originaron esto.
+**2 · Las dos plantillas.** [pendiente-reportado](../../plantillas/pendiente-reportado.md) y [pendiente-de-seguimiento](../../plantillas/pendiente-de-seguimiento.md), **cada una nombrando a la otra** — porque uno sin el otro es exactamente la mitad que falló los dos días de agosto que originaron esto.
 
 **3 · El aviso de vuelta.** `cerrar.py` lo escribe en cada proyecto al que le toca. **Un archivo de pendiente y nada más: nunca toca código**, y hay una prueba que compara la raíz del proyecto antes y después. Idempotente.
 

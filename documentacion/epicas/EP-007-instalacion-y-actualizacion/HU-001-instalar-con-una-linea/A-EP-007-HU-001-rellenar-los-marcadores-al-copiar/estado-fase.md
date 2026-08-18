@@ -80,7 +80,7 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 
 - **El commit.** Lo autoriza el usuario aparte ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)), y es lo único que detiene la fase.
 - **Un proyecto instalado antes de este cambio no se arregla solo** en los 4 archivos de `.agente/`, porque no se pisan. Quedó respondida en el `CHANGELOG` de la 21.1.0. Si hace falta arreglarlos, es fase aparte.
-- **Avisarle a `shopnest-mesa`** que su reporte cerró. Depende del [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
+- **Avisarle a `shopnest-mesa`** que su reporte cerró. Depende del [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md).
 
 ---
 

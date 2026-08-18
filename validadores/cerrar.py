@@ -240,6 +240,12 @@ _PLANTILLA_AVISO = """# Aviso · El estándar corrigió lo que este proyecto rep
 """
 
 
+def _misma_carpeta(a, b):
+    """Si dos rutas son la misma. En Windows la caja de las letras no cuenta."""
+    return (os.path.normcase(os.path.abspath(a))
+            == os.path.normcase(os.path.abspath(b)))
+
+
 def _celda(patron, texto):
     m = patron.search(texto)
     return m.group(1).strip().strip("*` ") if m else ""
@@ -282,11 +288,15 @@ def avisar(raiz, texto, destino, version, proyectos, fecha, escribir=False):
 
     escritos = []
     for nombre, ruta in destinatarios(texto, proyectos):
+        # `normcase` y no `abspath` a secas: el registro escribe `c:\` y el
+        # comando `C:\`, y sin esto el estándar se manda un aviso a sí mismo.
+        if _misma_carpeta(ruta, raiz):
+            continue                    # el estándar no se avisa a sí mismo
         carpeta = os.path.join(ruta, CARPETA_AVISOS)
         if not os.path.isdir(carpeta):
             continue                    # el proyecto no lleva backlog: no se inventa
         archivo = os.path.join(
-            carpeta, "aviso-%s-%s.md" % (fecha, os.path.basename(destino)))
+            carpeta, "aviso-%s-%s" % (fecha, os.path.basename(destino)))
         if os.path.exists(archivo):
             continue                    # idempotente: cerrar dos veces no duplica
         if escribir:
@@ -299,6 +309,27 @@ def avisar(raiz, texto, destino, version, proyectos, fecha, escribir=False):
                 continue                # sin permiso: se dice cuál falló
         escritos.append((nombre, archivo))
     return escritos
+
+
+def _version(raiz):
+    """Qué versión trae la corrección. Sin `VERSION` se dice, no se inventa."""
+    archivo = os.path.join(raiz, "VERSION")
+    if not os.path.isfile(archivo):
+        return "(sin VERSION)"
+    return leer(archivo).strip() or "(sin VERSION)"
+
+
+def _proyectos():
+    """El registro de proyectos. Si no se puede leer, no se avisa a nadie.
+
+    Se importa acá adentro y no arriba: `instalar` es pesado y el resto de
+    este módulo no lo necesita.
+    """
+    try:
+        import instalar
+        return instalar.proyectos_registrados()
+    except Exception:
+        return []
 
 
 def main():
@@ -325,6 +356,18 @@ def main():
         print(f"  {cuenta:>3} enlace(s)  {relativo(archivo)}")
     print(f"\n{total} enlace(s) en {len(tocados)} archivo(s)"
           f"{' — ESCRITO' if a.aplicar else ' (simulado; agrega --aplicar)'}")
+    # El aviso de vuelta va acá y no en un comando aparte: **es parte de
+    # cerrar** (`02·F24`). Separarlo abre la puerta a cerrar sin avisar, que
+    # es justo el defecto que la regla vino a tapar.
+    avisados = avisar(raiz, texto_original, destino, _version(raiz),
+                      _proyectos(), a.fecha, a.aplicar)
+    print()
+    if not avisados:
+        print("Sin aviso de vuelta: el pendiente no declara proyecto de"
+              " origen, o a ninguno le toca hoy.")
+    for nombre, archivo in avisados:
+        print(f"  aviso -> {nombre}: {archivo}"
+              f"{'' if a.aplicar else '  (simulado)'}")
     return 0
 
 

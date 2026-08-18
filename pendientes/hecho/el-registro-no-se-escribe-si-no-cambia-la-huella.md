@@ -2,7 +2,7 @@
 
 **Estado:** **cerrado** el 2026-08-16 (v21.2.0), junto con el [42](el-arreglo-del-40-no-llegaba-a-lo-ya-instalado.md), porque son el mismo defecto. Qué se hizo: [`hecho/poner-al-dia-lo-ya-instalado.md`](poner-al-dia-lo-ya-instalado.md). La fase que lo cerró: [`A-EP-007-HU-006`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado). Anotado el 2026-08-16.
 
-> El archivo se queda acá y no se mueve a `hecho/`: moverlo rompería los enlaces que lo citan, que es exactamente el [pendiente 54](../54-cerrar-un-pendiente-rompe-sus-citas.md). Decía «abierto» hasta el 2026-08-17, cuando `validar.py estandar` destapó que el índice y el archivo se contradecían.
+> El archivo se queda acá y no se mueve a `hecho/`: moverlo rompería los enlaces que lo citan, que es exactamente el [pendiente 54](cerrar-un-pendiente-arrastra-sus-citas.md). Decía «abierto» hasta el 2026-08-17, cuando `validar.py estandar` destapó que el índice y el archivo se contradecían.
 
 | | |
 |---|---|

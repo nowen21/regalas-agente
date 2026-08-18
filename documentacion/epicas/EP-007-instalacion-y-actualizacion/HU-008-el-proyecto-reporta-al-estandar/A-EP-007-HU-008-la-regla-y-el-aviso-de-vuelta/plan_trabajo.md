@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** Primera fase de la historia.
 
-**De dónde sale:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), reportado por `shopnest-mesa`.
+**De dónde sale:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.
 
 **CA que cubre:** los cuatro de la HU.
 
@@ -145,6 +145,7 @@ Se revierte volviendo el commit atrás. Los avisos ya escritos en otros proyecto
 | B-02 | Que el aviso se duplique al cerrar dos veces | Idempotente por nombre de archivo. Con prueba | **Cerrado** |
 | B-03 | Que el procedimiento quede escrito y nadie lo siga, como `ID9` | Dos de los cuatro CA son comprobaciones, no recordatorios | **Cerrado a medias** — el aviso corre solo; que el proyecto lo compruebe, no |
 | B-04 | Los tres cierres anteriores que quedaron sin aviso | No se mandan hacia atrás: se anota cuáles y quién los espera | Abierto |
+| B-05 | Que el aviso quede escrito y el comando no lo llame | **Pasó.** Las pruebas llamaban a `avisar()` directo, así que la pieza estaba bien y desconectada. Corregido en la 23.7.1 | **Cerrado** |
 
 ---
 
@@ -156,7 +157,7 @@ Se revierte volviendo el commit atrás. Los avisos ya escritos en otros proyecto
 - [x] El proyecto de origen comprobado por programa
 - [x] Clasificada y versionada
 - [ ] Aceptada por el usuario
-- [ ] `shopnest-mesa` y los demás avisados
+- [x] `shopnest-mesa` avisado el 2026-08-18, al cerrar el 36. **Los demás no:** ocho de nueve no tienen carpeta `pendientes/` — el [61](../../../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
 
 ---
 

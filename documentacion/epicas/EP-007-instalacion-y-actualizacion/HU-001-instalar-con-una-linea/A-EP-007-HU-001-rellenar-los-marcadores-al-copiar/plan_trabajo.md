@@ -50,7 +50,7 @@
 
 - **Cómo se resuelve el marcador dentro de un proyecto.** Es el [pendiente 41](../../../../../pendientes/hecho/el-marcador-se-resuelve-contra-el-estandar.md) y tiene su propia fase en [EP-004 · HU-005](../../../EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/). Esta fase quita la causa; aquella pone la red.
 - **Escribir la especificación del módulo de instalación.** No existe, y escribirla es una unidad aparte (§10).
-- **Avisarle a `shopnest-mesa`** que su reporte cerró. Depende del [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), que todavía no fija el procedimiento.
+- **Avisarle a `shopnest-mesa`** que su reporte cerró. Depende del [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), que todavía no fija el procedimiento.
 - **Que la ruta escrita sea la de la máquina donde se instaló.** Ya está declarado como límite conocido en la [20.0.1](../../../../../CHANGELOG.md) y no empeora con este cambio.
 
 ---

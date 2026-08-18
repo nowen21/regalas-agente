@@ -82,7 +82,7 @@ El 02 existió: era «vigencia y poda de la memoria», cerrado el 2026-08-06. Al
 | Qué | Dónde |
 |---|---|
 | Que `comun.leer` tolere el archivo ausente o ilegible | `D-01` de la fase [`A-EP-004-HU-003`](../../HU-003-formato-del-hallazgo/A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md) |
-| Que cerrar un pendiente **conserve** su número en el nombre del archivo | Sin destino. Hoy se resuelve leyendo el índice; conservarlo lo haría innecesario. Relacionado con el [pendiente 54](../../../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md) |
+| Que cerrar un pendiente **conserve** su número en el nombre del archivo | Sin destino. Hoy se resuelve leyendo el índice; conservarlo lo haría innecesario. Relacionado con el [pendiente 54](../../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md) |
 | Contar las HU sin fase | [HU-017](../../HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) |
 
 **Lo que deja esta fase:** la carpeta de pendientes parecía la fuente de la numeración y no lo es. Quince de sus cincuenta y cuatro números no están en ningún nombre de archivo — solo en una fila tachada del índice que nadie estaba obligado a mantener.

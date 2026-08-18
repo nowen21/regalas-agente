@@ -76,7 +76,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La ampliación de plan ([`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)).** Cerrar el 35 dejó enlaces rotos en cuatro archivos que el plan no declara: [`pendientes/36`](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) y tres resúmenes del 2026-08-16. Presentada al usuario, esperando el OK.
+- **La ampliación de plan ([`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)).** Cerrar el 35 dejó enlaces rotos en cuatro archivos que el plan no declara: [`pendientes/36`](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) y tres resúmenes del 2026-08-16. Presentada al usuario, esperando el OK.
 - **Los dos hallazgos del §4 del resultado** no tienen pendiente propio todavía.
 - **El commit.** Lo autoriza el usuario aparte ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)).
 - **Avisarle a `shopnest-mesa`**, que tiene su pendiente de seguimiento abierto esperando este cierre.

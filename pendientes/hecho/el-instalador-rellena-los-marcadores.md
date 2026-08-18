@@ -9,7 +9,7 @@
 | **Fase donde se construyó** | [`A-EP-007-HU-001-rellenar-los-marcadores-al-copiar`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar) — veredicto **Cumple** |
 | **Proyecto de origen** | `shopnest-mesa`, que reportó el enlace muerto en su `.agente/stack-instalacion.md` |
 
-> **Es el primer pendiente que se cierra por la cadena que exige [`02·F23`](../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)** — la regla que nació de que este mismo defecto se colara. Falta avisarle a `shopnest-mesa`, que depende del [36](../36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
+> **Es el primer pendiente que se cierra por la cadena que exige [`02·F23`](../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)** — la regla que nació de que este mismo defecto se colara. Falta avisarle a `shopnest-mesa`, que depende del [36](el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md).
 
 ## El problema
 
@@ -37,7 +37,7 @@ Los tres que no rellenan escriben la plantilla cruda, así que el marcador `«RU
 ## Con qué se cruza
 
 - El [41](el-marcador-se-resuelve-contra-el-estandar.md) es su red de seguridad y va **después**: este quita la causa, aquel cubre el marcador que se vuelva a escapar.
-- El [36](../36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md): al cerrar hay que avisarle a `shopnest-mesa`, que tiene su propio pendiente esperando.
+- El [36](el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md): al cerrar hay que avisarle a `shopnest-mesa`, que tiene su propio pendiente esperando.
 
 ## Cómo se sabe que cerró
 

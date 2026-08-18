@@ -5,7 +5,7 @@
 | Campo | Valor |
 |---|---|
 | **Módulo** | Canal proyecto ↔ estándar |
-| **Épica / HU / Pendiente** | [EP-007](../../epica.md) · [HU-008](../HU-008-el-proyecto-reporta-al-estandar.md) · [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) |
+| **Épica / HU / Pendiente** | [EP-007](../../epica.md) · [HU-008](../HU-008-el-proyecto-reporta-al-estandar.md) · [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) |
 | **Última actualización** | 2026-08-18 |
 
 ---

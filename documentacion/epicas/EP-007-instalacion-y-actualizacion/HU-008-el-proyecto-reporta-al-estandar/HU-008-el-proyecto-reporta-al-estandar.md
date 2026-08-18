@@ -186,7 +186,7 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 |---|---|---|---|---|---|
 | [`A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta`](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/) | CA-01 a CA-04 | [plan_trabajo.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/plan_trabajo.md) | [plan_pruebas.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/plan_pruebas.md) | [resultado_pruebas.md](A-EP-007-HU-008-la-regla-y-el-aviso-de-vuelta/resultado_pruebas.md) · **Cumple** | Cerrada |
 
-**De dónde sale esta historia:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), reportado por `shopnest-mesa`.
+**De dónde sale esta historia:** el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), reportado por `shopnest-mesa`.
 
 **Deuda que esta historia cobra.** Tres cierres anteriores quedaron con el aviso sin mandar: el [pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md](../../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md), el [pendientes/hecho/renombrar-deja-el-resumen-coherente.md](../../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) y el [pendientes/hecho/poner-al-dia-lo-ya-instalado.md](../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md) — este último sí avisó. Son la prueba de que el paso 6 hecho a mano se olvida.
 
@@ -230,7 +230,7 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 - [x] El aviso de vuelta funcionando, comprobado sobre proyectos de mentira — **no sobre uno real**: escribe en repositorios ajenos y eso se prueba en carpetas desechables (`00·N4`)
 - [x] Versionada (`20·M10`) — 23.7.0
 - [x] El pendiente 36 cerrado nombrando la fase
-- [ ] **Falta:** avisarle a todos los proyectos instalados, que es lo que la propia regla manda
+- [x] Avisado al cerrar el 36 — llegó a `shopnest-mesa`, el único de los nueve con carpeta `pendientes/`. Que los otros ocho no tengan dónde recibirlo es el [61](../../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
 
 ---
 

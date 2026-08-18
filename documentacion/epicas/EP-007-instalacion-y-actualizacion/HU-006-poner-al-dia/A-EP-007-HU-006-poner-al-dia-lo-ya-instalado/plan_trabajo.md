@@ -61,7 +61,7 @@
 
 - **Reescribir el contenido de los archivos que llena el proyecto.** Se sustituye el marcador y nada más. Los cuatro archivos de `.agente/` traen huecos a propósito —lo dejó dicho el `DEF-01` de la fase anterior— y esos no se tocan.
 - **Escribir la especificación del módulo de instalación.** Sigue siendo deuda de la fase anterior.
-- **Avisarle a `shopnest-mesa`** que sus dos reportes cerraron. Depende del [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md), que todavía no fija el procedimiento.
+- **Avisarle a `shopnest-mesa`** que sus dos reportes cerraron. Depende del [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md), que todavía no fija el procedimiento.
 - **Poner al día los demás proyectos del registro.** Correrles el instalador es una operación aparte, y la autoriza el usuario.
 
 ---

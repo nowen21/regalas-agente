@@ -149,7 +149,7 @@ Corriendo el reparador en simulación:
 4 enlazadas · 1 reparadas · 4 archivos (simulado; agrega --aplicar)
 ```
 
-**Las cinco están mal.** Son los mismos cinco avisos que `validar.py estandar` reporta y que el pendiente [55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) ya identificó como falsos positivos: cuatro son identificadores nombrados **como ejemplo** y el quinto es un enlace a un ancla del mismo archivo, que es lo correcto.
+**Las cinco están mal.** Son los mismos cinco avisos que `validar.py estandar` reporta y que el pendiente [55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) ya identificó como falsos positivos: cuatro son identificadores nombrados **como ejemplo** y el quinto es un enlace a un ancla del mismo archivo, que es lo correcto.
 
 Es peor de lo que el 55 decía. Aquel dice que el validador **reporta de más**; esto es que el reparador **escribiría** ese error en `base/`. Va al pendiente 55.
 

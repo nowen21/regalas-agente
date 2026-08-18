@@ -90,7 +90,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 **Qué se encontró** al correr la suite completa antes de ejecutar:
 
 1. **`hook_resumen.py` era el único de los seis enganches que no preparaba su salida.** Su texto lleva acentos, así que salía en la página de códigos de la consola y con la salida en tubería no se podía ni decodificar. Es el [pendiente 45](../../../pendientes/hecho/instalar-prepara-su-propia-salida.md) otra vez, en otro archivo. **Corregido**, con la prueba que recorre los seis para que no vuelva a pasar. Va en la **23.2.1**.
-2. **Cinco «citas sueltas» en `base/`, y las cinco son falsos positivos**: `citas.py` cuenta como cita un identificador usado **como ejemplo** en prosa —«como `C20` o `F12`», «ponerle `G9` a una regla de pruebas»—, y `G9` ni existe. **No se editó `base/`**, que está bien escrito: se midió y se agregó al [pendiente 55](../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md), que ya cubre esta familia.
+2. **Cinco «citas sueltas» en `base/`, y las cinco son falsos positivos**: `citas.py` cuenta como cita un identificador usado **como ejemplo** en prosa —«como `C20` o `F12`», «ponerle `G9` a una regla de pruebas»—, y `G9` ni existe. **No se editó `base/`**, que está bien escrito: se midió y se agregó al [pendiente 55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md), que ya cubre esta familia.
 3. **`validar.py estandar` tenía 5 fallas**, todas previas: un enlace a una sesión renombrada, un pendiente cerrado en otro proyecto que se movió a `hecho/`, y tres pendientes sin línea en el índice — uno de ellos, el 44, **se declaraba abierto mientras el índice lo daba por cerrado**. **Las cinco corregidas**; `estandar` quedó en cero.
 
 ### 8 · Las 25 fases libres, ejecutadas: **9 cumplen y 16 no**, y ninguna por trabajo sin hacer
@@ -152,7 +152,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ — los tres defectos previos corregidos, con su versión (23.2.1) y su prueba; las 5 fallas de `validar.py estandar` en cero |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ — las 42 dudas en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md); los falsos positivos de `citas.py` sumados al [55](../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md); el planteamiento vacío ya estaba en el [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md); los siete defectos que tocan archivos fuera de plan, probados con `expectedFailure` y con su fase `B` propuesta en la HU |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ — las 42 dudas en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md); los falsos positivos de `citas.py` sumados al [55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md); el planteamiento vacío ya estaba en el [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md); los siete defectos que tocan archivos fuera de plan, probados con `expectedFailure` y con su fase `B` propuesta en la HU |
 | Toda historia disparada está escrita en su épica | ☑ — no nació ninguna HU. Lo que salió son **siete fases `B` propuestas**, escritas en el §8 de su HU, y decisiones que van al usuario |
 | Lo que se hizo está aprobado y guardado | ☑ — commit `925d5b0` en `main`, 152 archivos. Sin `push`, que no se autorizó. Se dejaron fuera los dos archivos de la sesión anterior |
 

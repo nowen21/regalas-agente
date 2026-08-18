@@ -88,7 +88,7 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 
 - **El `push`.** Lo autoriza el usuario aparte, y la autorización del commit no lo cubre ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)). Es lo único que detiene la fase.
 - **Dos archivos de otra sesión quedaron sin commitear** a propósito: la transcripción y el resumen de `un-pendiente-no-es-un-plan`. Son de otra sesión y mezclarlos ensucia el versionado.
-- **Avisado a `shopnest-mesa`** el 2026-08-16, en sus pendientes `01` y `06`. Se le corrigió además una conclusión equivocada: había entendido que el 42 cerró «de rebote» y que un proyecto ya instalado solo se repara si cambia la huella de la plantilla. Que el aviso haya tenido que salir a mano sigue siendo el [pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md).
+- **Avisado a `shopnest-mesa`** el 2026-08-16, en sus pendientes `01` y `06`. Se le corrigió además una conclusión equivocada: había entendido que el 42 cerró «de rebote» y que un proyecto ya instalado solo se repara si cambia la huella de la plantilla. Que el aviso haya tenido que salir a mano sigue siendo el [pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md).
 - **Dos hallazgos fuera del criterio**, en el §4 del [`resultado_pruebas.md`](resultado_pruebas.md). El primero —las 99 filas de prueba en `plantillas/proyectos.md`— lo amplió el usuario al plan y quedó resuelto. El segundo sigue abierto: `instalar()` revienta al imprimir si nadie llamó antes a `preparar_salida()`.
 
 ---

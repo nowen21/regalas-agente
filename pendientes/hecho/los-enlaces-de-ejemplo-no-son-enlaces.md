@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — es un falso positivo de ese mismo validador, contra su RN-01 y su RN-04 |
-| **De dónde sale** | El hallazgo H-6 del [resumen de la sesión 7](../historico-chat/resumenes/2026-08-16/sesion-7.md) |
-| **Misma familia que** | El punto 1 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md), donde da por rotos los enlaces con espacios |
+| **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — es un falso positivo de ese mismo validador, contra su RN-01 y su RN-04 |
+| **De dónde sale** | El hallazgo H-6 del [resumen de la sesión 7](../../historico-chat/resumenes/2026-08-16/sesion-7.md) |
+| **Misma familia que** | El punto 1 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), donde da por rotos los enlaces con espacios |
 
 ## El problema
 
@@ -24,14 +24,14 @@ Deja dos salidas, y las dos son malas: **redactar torcido** para que el validado
 
 ## No es solo `enlaces.py`: `citas.py` tiene el mismo hueco — medido el 2026-08-17
 
-Al correr la suite completa mientras se ejecutaban las fases del [48](48-inventario-hu.md), `Citas.test_no_queda_ninguna_cita_suelta_en_base` reportó **cinco citas sueltas en `base/`**. Se revisaron una por una y **las cinco son falsos positivos**:
+Al correr la suite completa mientras se ejecutaban las fases del [48](../48-inventario-hu.md), `Citas.test_no_queda_ninguna_cita_suelta_en_base` reportó **cinco citas sueltas en `base/`**. Se revisaron una por una y **las cinco son falsos positivos**:
 
 | Dónde | Qué reporta | Qué es de verdad |
 |---|---|---|
-| [`base/glosario.md:68`](../base/glosario.md) | `C20` y `F12` sin enlace | Ejemplos dentro de la prosa: «el código corto de una regla, **como `C20` o `F12`**» |
-| [`base/20-meta-reglas/estructura-regla.md:57`](../base/20-meta-reglas/estructura-regla.md) | `G9` sin enlace | Ejemplo de lo que **no** hay que hacer: «ponerle `G9` a una regla del capítulo de pruebas». ~~**`G9` no existe**~~ — **corregido el 2026-08-17: sí existe**, es [`base/09-git.md`](../base/09-git.md) *La historia de usuario es la unidad del commit*. Sigue siendo falso positivo, pero por ser ejemplo y no por no existir |
-| [`base/00-identidad-y-rol/reglas/ID9-…`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)`:32` | `ID7` sin enlace | Segunda mención en el mismo párrafo; la primera **sí** lleva enlace |
-| [`base/09-git.md:107`](../base/09-git.md) | `G1` mal apuntada | **Sí** lleva enlace, a un ancla del mismo archivo — que es lo correcto |
+| [`base/glosario.md:68`](../../base/glosario.md) | `C20` y `F12` sin enlace | Ejemplos dentro de la prosa: «el código corto de una regla, **como `C20` o `F12`**» |
+| [`base/20-meta-reglas/estructura-regla.md:57`](../../base/20-meta-reglas/estructura-regla.md) | `G9` sin enlace | Ejemplo de lo que **no** hay que hacer: «ponerle `G9` a una regla del capítulo de pruebas». ~~**`G9` no existe**~~ — **corregido el 2026-08-17: sí existe**, es [`base/09-git.md`](../../base/09-git.md) *La historia de usuario es la unidad del commit*. Sigue siendo falso positivo, pero por ser ejemplo y no por no existir |
+| [`base/00-identidad-y-rol/reglas/ID9-…`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)`:32` | `ID7` sin enlace | Segunda mención en el mismo párrafo; la primera **sí** lleva enlace |
+| [`base/09-git.md:107`](../../base/09-git.md) | `G1` mal apuntada | **Sí** lleva enlace, a un ancla del mismo archivo — que es lo correcto |
 
 **Lo que esto agrega al pendiente:** el hueco no está solo en `enlaces.py`. `citas.py` no distingue una **cita** de un **identificador nombrado como ejemplo**, y no hay forma de distinguirlos sin mirar el contexto. Cuatro de los cinco casos son eso.
 
@@ -39,7 +39,7 @@ Al correr la suite completa mientras se ejecutaban las fases del [48](48-inventa
 
 ## Y es peor: el reparador **escribiría** el error — medido el 2026-08-17
 
-Lo de arriba es que el validador **reporta** de más. Al cerrar el [53](hecho/ningun-validador-termina-en-silencio.md) se corrió `citas.py` en simulación, que es su modo por omisión, y esto es lo que haría:
+Lo de arriba es que el validador **reporta** de más. Al cerrar el [53](ningun-validador-termina-en-silencio.md) se corrió `citas.py` en simulación, que es su modo por omisión, y esto es lo que haría:
 
 ```
 $ python validadores/citas.py
@@ -106,11 +106,11 @@ Los cinco falsos positivos se resolvieron por cinco motivos distintos, y ninguno
 
 ## El dato que este pendiente daba mal
 
-Decía que **`G9` no existe**. Sí existe: es [base/09-git.md](../base/09-git.md), *La historia de usuario es la unidad del commit*. Seguía siendo falso positivo, pero por ser un ejemplo — no por apuntar al vacío. La diferencia importaba: con el motivo equivocado, el arreglo habría sido otro y no habría funcionado.
+Decía que **`G9` no existe**. Sí existe: es [base/09-git.md](../../base/09-git.md), *La historia de usuario es la unidad del commit*. Seguía siendo falso positivo, pero por ser un ejemplo — no por apuntar al vacío. La diferencia importaba: con el motivo equivocado, el arreglo habría sido otro y no habría funcionado.
 
 ## Cómo quedó comprobado
 
 - `validar.py estandar`: **sin incumplimientos**. Antes eran 5 avisos.
 - `citas.py` en simulación: **0 enlazadas · 0 reparadas · 0 archivos**.
-- [validadores/tests/test_citas_y_enlaces_de_ejemplo.py](../validadores/tests/test_citas_y_enlaces_de_ejemplo.py), 12 casos: uno por cada motivo, uno para que el reparador no proponga nada, y dos que comprueban que el arreglo **no se volvió una excusa para callar** — el enlace de verdad en la misma línea se sigue leyendo, y el archivo que de verdad no existe se sigue reportando.
+- [validadores/tests/test_citas_y_enlaces_de_ejemplo.py](../../validadores/tests/test_citas_y_enlaces_de_ejemplo.py), 12 casos: uno por cada motivo, uno para que el reparador no proponga nada, y dos que comprueban que el arreglo **no se volvió una excusa para callar** — el enlace de verdad en la misma línea se sigue leyendo, y el archivo que de verdad no existe se sigue reportando.
 - Se le quitó el `expectedFailure` a `Citas.test_no_queda_ninguna_cita_suelta_en_base`, como este pendiente pedía.

@@ -45,7 +45,7 @@ Que cimiento decida si `ID9` se hace cumplir con una pieza o se asume que no se 
 
 ## Con qué se cruza
 
-Con el [36](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md): las dos son reglas que existen en el papel y no tienen quién las ejecute.
+Con el [36](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md): las dos son reglas que existen en el papel y no tienen quién las ejecute.
 
 ## Cómo se sabrá que cerró
 

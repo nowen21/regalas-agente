@@ -55,7 +55,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendiente-s
 
 ### H-7 · El proyecto que reportó comprobó antes de que le avisaran
 
-**Qué se encontró.** `shopnest-mesa` corrió el instalador con la v21.2.0 por su cuenta, comprobó y cerró sus dos pendientes — **antes de que saliera el aviso**. Es la tercera vez que el arreglo baja con la versión y el proyecto lo descubre solo, que es justo lo que el [pendiente 36](../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) dice que falta.
+**Qué se encontró.** `shopnest-mesa` corrió el instalador con la v21.2.0 por su cuenta, comprobó y cerró sus dos pendientes — **antes de que saliera el aviso**. Es la tercera vez que el arreglo baja con la versión y el proyecto lo descubre solo, que es justo lo que el [pendiente 36](../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) dice que falta.
 
 Y sacó una conclusión equivocada: que el 42 cerró «de rebote» porque la plantilla del stack cambió de huella en la misma versión, y que *«un proyecto ya instalado solo se repara si la plantilla cambia de huella»*. No es así — `_reparar_marcadores` repara sin que cambie ninguna huella, y el CP-001 lo comprueba ensuciando una copia sin tocarle el sello.
 

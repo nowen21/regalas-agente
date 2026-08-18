@@ -162,7 +162,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 
 **Resultado esperado final:** el enrutamiento del 2026-08-17 pasa la comprobación que se acaba de escribir. Si no pasa, o el enrutamiento estaba mal o el programa lo está leyendo mal, y hay que averiguar cuál de las dos **antes** de tocar ningún pendiente.
 
-> **Ojo con la trampa:** editar un pendiente para que el programa lo acepte es exactamente la salida mala que describe el [pendiente 55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) — redactar torcido para callar al validador. Si un archivo se reporta, primero se mira si el reporte tiene razón.
+> **Ojo con la trampa:** editar un pendiente para que el programa lo acepte es exactamente la salida mala que describe el [pendiente 55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) — redactar torcido para callar al validador. Si un archivo se reporta, primero se mira si el reporte tiene razón.
 
 ---
 

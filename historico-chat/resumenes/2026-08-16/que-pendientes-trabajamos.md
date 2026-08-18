@@ -93,7 +93,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendientes-
 - **Qué lo soluciona:** ya está — el validador resuelve el marcador contra la raíz del repositorio.
 - **Qué se decidió:** además, la cuenta del pendiente estaba vieja: eran **91** enlaces en **22** plantillas, no 77 en 21.
 - **Estado:** resuelto acá.
-- **Dispara:** el aviso a `shopnest-mesa`, **escrito el mismo día**: su pendiente 01 y la fila de su README dicen que la corrección está hecha, con qué opción se eligió y qué falta de su lado. Queda abierto allá hasta que corran el instalador y comprueben — el aviso no cierra el pendiente del proyecto, lo desbloquea. Lo mandó una persona acordándose, que es el paso 6 que el [36](../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) todavía no automatiza.
+- **Dispara:** el aviso a `shopnest-mesa`, **escrito el mismo día**: su pendiente 01 y la fila de su README dicen que la corrección está hecha, con qué opción se eligió y qué falta de su lado. Queda abierto allá hasta que corran el instalador y comprueben — el aviso no cierra el pendiente del proyecto, lo desbloquea. Lo mandó una persona acordándose, que es el paso 6 que el [36](../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) todavía no automatiza.
 - **Dónde queda:** [pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md](../../../pendientes/hecho/enlaces-de-las-plantillas-al-estandar.md), las 22 plantillas, [`enlaces.py`](../../../validadores/enlaces.py) y el [CHANGELOG](../../../CHANGELOG.md) 20.0.1.
 - **Nace en:** 2026-08-16 · qué pendientes trabajamos.
 - **Cerrado en:** 2026-08-16 · qué pendientes trabajamos.

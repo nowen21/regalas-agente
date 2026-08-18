@@ -58,7 +58,7 @@ El sexto lo ejecutó **`shopnest-mesa`**, que es quien reportó los dos defectos
 |---|---|
 | La especificación del módulo de instalación | Deuda heredada de la fase [`A-EP-007-HU-001`](../../HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/plan_trabajo.md) (§10, `B-02`) |
 | Que `instalar()` prepare su propia salida en vez de depender de `main()` | Reportado al usuario; sin pendiente todavía |
-| Que el aviso al proyecto de origen salga solo | [Pendiente 36](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md). Esta fase volvió a avisar a mano: es su tercera prueba |
+| Que el aviso al proyecto de origen salga solo | [Pendiente 36](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md). Esta fase volvió a avisar a mano: es su tercera prueba |
 
 ---
 

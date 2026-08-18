@@ -49,7 +49,7 @@
 
 **«Lo no declarado no se comprueba»** suena a laxitud y es lo contrario.
 
-Exigir contra una convención que nadie escribió sería **inventarla**: el validador impondría un criterio que el proyecto nunca aceptó, y el proyecto aprendería a ignorar sus hallazgos. Eso no se queda en los hallazgos falsos — se contagia a los ciertos, que es el daño que el [pendiente 55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) ya describe para otro caso.
+Exigir contra una convención que nadie escribió sería **inventarla**: el validador impondría un criterio que el proyecto nunca aceptó, y el proyecto aprendería a ignorar sus hallazgos. Eso no se queda en los hallazgos falsos — se contagia a los ciertos, que es el daño que el [pendiente 55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) ya describe para otro caso.
 
 **Y no queda impune:** no declarar la convención sale como **instalación incompleta** en el checklist. No se castiga con hallazgos falsos; se cuenta como algo que falta.
 

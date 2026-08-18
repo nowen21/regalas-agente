@@ -38,4 +38,4 @@ Seis casos de prueba en [`validadores/tests/test_instalar_reparar.py`](../../val
 
 **Se le avisó el 2026-08-16**, y de paso se le corrigió una conclusión: había entendido que el 42 cerró «de rebote», porque en la misma versión cambió la huella de la plantilla del stack, y que *«un proyecto ya instalado solo se repara si la plantilla cambia de huella»*. No es así: `_reparar_marcadores` repara sin que cambie ninguna huella, y hay un caso que lo comprueba ensuciando una copia **sin tocarle el sello**.
 
-**Que el aviso haya salido a mano sigue siendo el [pendiente 36](../36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md)**, y este caso es su tercera prueba: el arreglo bajó con la versión antes que el aviso, y el proyecto lo descubrió solo.
+**Que el aviso haya salido a mano sigue siendo el [pendiente 36](el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md)**, y este caso es su tercera prueba: el arreglo bajó con la versión antes que el aviso, y el proyecto lo descubrió solo.

@@ -68,7 +68,7 @@ Se creó un repositorio temporal, se escribió un `.env` con una contraseña y s
 
 **El segundo grupo importa más que el primero.** Marcar una línea que lee del entorno enseñaría exactamente lo contrario de lo que la regla pide: leer del entorno **es** la forma correcta, y un validador que la reporta empuja a esconderla.
 
-**Y los `.md` quedan fuera a propósito:** la documentación muestra secretos de ejemplo porque para eso es documentación. Reportarlos obligaría a escribirla torcida, que es la salida mala que ya está descrita en el [pendiente 55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) para otro validador.
+**Y los `.md` quedan fuera a propósito:** la documentación muestra secretos de ejemplo porque para eso es documentación. Reportarlos obligaría a escribirla torcida, que es la salida mala que ya está descrita en el [pendiente 55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) para otro validador.
 
 ---
 

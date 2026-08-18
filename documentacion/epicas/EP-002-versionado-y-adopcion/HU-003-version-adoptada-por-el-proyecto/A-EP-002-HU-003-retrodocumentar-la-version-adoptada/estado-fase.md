@@ -85,7 +85,7 @@
 - **Duda 1 de §2.7:** sobre qué proyecto instalado se prueban el CA-01 y el CA-03. Bloquea tres tareas.
 - **La aprobación del plan.** Sin ella no arranca la ejecución.
 - **El CA-02 puede no cerrarse sin tocar `version.py`** (riesgo `R-01`). Si es así, **se para y se propone** con el plan ampliado: cambiar un validador no es de esta fase.
-- **Los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/46-el-registro-de-version-dice-que-falta-escribirse.md)** siguen abiertos sobre el registro de adopciones. Esta fase les produce evidencia; no los cierra.
+- **Los pendientes [44](../../../../../pendientes/hecho/el-registro-no-se-escribe-si-no-cambia-la-huella.md) y [46](../../../../../pendientes/hecho/el-registro-se-escribe-antes-de-contarse.md)** siguen abiertos sobre el registro de adopciones. Esta fase les produce evidencia; no los cierra.
 - **El propio estándar no declara versión adoptada** y recibe el aviso. Queda como hallazgo escrito, no silenciado.
 
 ---

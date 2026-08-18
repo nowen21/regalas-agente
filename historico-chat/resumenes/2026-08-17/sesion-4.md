@@ -39,7 +39,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### 3 · El campo que la HU-016 pedía ya existía a medias, y en el sitio equivocado
 
-**Qué se encontró.** [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) decía desde el 2026-08-16 que faltaba «una pieza antes del programa: un sitio fijo donde el pendiente declare su fase». Al enrutar se vio que el [52](../../../pendientes/52-el-sello-del-checklist-caduca-con-el-texto.md) ya traía una fila `Historia que lo recibiría` y ningún otro la tenía. Un solo archivo de 33 con el campo, y con otro nombre.
+**Qué se encontró.** [EP-004 · HU-016](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) decía desde el 2026-08-16 que faltaba «una pieza antes del programa: un sitio fijo donde el pendiente declare su fase». Al enrutar se vio que el [52](../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md) ya traía una fila `Historia que lo recibiría` y ningún otro la tenía. Un solo archivo de 33 con el campo, y con otro nombre.
 
 **Por qué importa.** Es el patrón que este repositorio ya conoce: **una buena costumbre de un solo archivo no es una convención**. Mientras viva en uno solo, el programa que la lea no encuentra nada que leer, y quien escriba el siguiente pendiente no la va a copiar porque no la va a ver.
 
@@ -47,7 +47,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### 4 · El script de enrutamiento metió la fila dentro de la tabla equivocada, en tres archivos
 
-**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/23-plantillas-mezcla-modelos-con-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
+**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
 
 **Por qué importa.** Ningún validador lo habría visto: el enlace resuelve, la tabla sigue siendo tabla y el conteo daba 33 de 33. **Lo destapó una comprobación escrita a propósito** —que la fila estuviera precedida por el encabezado vacío `| | |`—, no la corrida de siempre. Una comprobación que se escribe para dudar del propio trabajo encuentra lo que las otras no buscan.
 
@@ -57,7 +57,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Qué se decidió.** La historia se llama «el pendiente **cerrado** nombra su fase» y desde hoy cubre también al abierto. Renombrar la carpeta habría dejado rotos todos los enlaces que la citan.
 
-**Por qué importa.** Eso es exactamente el [pendiente 54](../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md) —cerrar un pendiente dejó 12 enlaces huérfanos en un solo día—, y no tenía ningún sentido reproducirlo dentro del trabajo que lo enruta. **El nombre queda; el alcance lo dicen las `RN` y los `CA`**, que es el mismo criterio con que [`20·M11`](../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) prohíbe renumerar una regla.
+**Por qué importa.** Eso es exactamente el [pendiente 54](../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md) —cerrar un pendiente dejó 12 enlaces huérfanos en un solo día—, y no tenía ningún sentido reproducirlo dentro del trabajo que lo enruta. **El nombre queda; el alcance lo dicen las `RN` y los `CA`**, que es el mismo criterio con que [`20·M11`](../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) prohíbe renumerar una regla.
 
 **Dónde queda.** Escrito dentro de la propia historia y en su `README`, para que nadie lo «arregle» después.
 
@@ -69,7 +69,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **La regla no está escrita todavía.** «Todo pendiente nombra su historia» vive hoy en las `RN` de una HU, no en `base/`. La fase que construye la comprobación quedó abierta —hallazgo 7— y espera aprobación; la que escribiría el texto **no se puede abrir**, porque no hay historia que la reciba —hallazgo 8—.
 
-**Lo que quedó comprobado:** `validar.py estandar` da **0 fallas** con los mismos 5 avisos conocidos —los falsos positivos del [55](../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md)—, y las 36 pruebas del repositorio pasan.
+**Lo que quedó comprobado:** `validar.py estandar` da **0 fallas** con los mismos 5 avisos conocidos —los falsos positivos del [55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md)—, y las 36 pruebas del repositorio pasan.
 
 ### 7 · La HU ya existía, así que la fase es la `B` — y no está detenida, al revés que la `A`
 
@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### 10 · El paso que nadie hacía era el sexto, y hay tres cierres que lo prueban
 
-**Qué se midió.** El [pendiente 36](../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) traía siete pasos dictados por el usuario para reportar un defecto del estándar sin tocarlo. Los cinco primeros se venían haciendo por criterio de cada sesión. **El sexto —avisarle al proyecto cuando la corrección esté— no lo hacía nadie.**
+**Qué se midió.** El [pendiente 36](../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) traía siete pasos dictados por el usuario para reportar un defecto del estándar sin tocarlo. Los cinco primeros se venían haciendo por criterio de cada sesión. **El sexto —avisarle al proyecto cuando la corrección esté— no lo hacía nadie.**
 
 **Por qué importa.** Sin el aviso, el séptimo paso —el pendiente del proyecto queda abierto hasta confirmar— deja pendientes abiertos **para siempre**: nadie vuelve a mirar el repositorio ajeno. Y no es una hipótesis. Al construirlo aparecieron **tres cierres anteriores que se fueron sin aviso**: dos los espera `shopnest-mesa` y uno `dp`, y ninguno de los dos proyectos lo sabe.
 
@@ -116,6 +116,39 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 **Lo que lo destapó fue la prueba que compara las dos cuentas**, no una lectura. Es la razón por la que esa prueba existe.
 
 **Dónde queda.** Las seis filas puestas, con lo que cada una tiene hoy en disco. 74 filas y 74 en el encabezado.
+
+### 12 · Siete pendientes decían «cerrado» y seguían en la carpeta de abiertos
+
+**Qué se midió.** Al buscar qué construir después del 36 se revisó el estado escrito dentro de cada archivo, y **siete de los abiertos ya decían «cerrado»**: el 23, el 32, el 36, el 46, el 52, el 54 y el 55. Su trabajo estaba hecho y commiteado; lo que faltaba era mover el archivo.
+
+**Por qué importa.** Marcar el estado y no mover el archivo es **la mitad del cierre**, y la mitad que falta es la que se ve: el conteo del [README](../../../pendientes/README.md) decía 30 abiertos cuando eran 28, y quien abriera la carpeta iba a leer siete temas como trabajo por hacer. Envejece solo, sin que nadie se equivoque en nada.
+
+**Y no se podía hacer a mano.** Mover los siete arrastró **142 enlaces en 51 archivos**. Antes de que existiera [`cerrar.py`](../../../validadores/cerrar.py) —del [54](../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md), cerrado hace un día— esto era exactamente lo que hacía que nadie los moviera.
+
+**Dónde queda.** Los siete en [`pendientes/hecho/`](../../../pendientes/hecho/), con el nombre de cómo cerraron y no del problema. Ninguno roto: `validar.py estandar` sin incumplimientos.
+
+### 13 · El aviso de vuelta estaba escrito, probado, y desconectado
+
+**Qué pasó.** La versión 23.7.0 se publicó diciendo que `cerrar.py` manda el aviso al cerrar. La función estaba, con doce casos, todos pasando. **`main()` no la llamaba.** Cerrar un pendiente no avisaba a nadie — el defecto exacto que [`02·F24`](../../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md) acababa de venir a cerrar.
+
+**Por qué ninguna prueba lo vio.** Las doce llamaban a `avisar()` **directamente**. Verificaban que la pieza funciona, no que esté conectada. Es un punto ciego con forma: cuanto mejor está probada una función aislada, más convincente se ve el módulo que no la usa.
+
+**Lo destapó correr el comando de verdad.** Y al conectarlo salieron dos defectos más, los dos solo visibles fuera del laboratorio:
+
+- **El estándar se mandaba un aviso a sí mismo.** Está en su propio registro y las rutas se comparaban por texto: el registro escribe `c:\` y el comando `C:\`. En las pruebas los proyectos de mentira nacían con la misma caja, así que nunca se vio.
+- **El archivo salía `algo.md.md`.** El destino ya traía extensión.
+
+**Dónde queda.** La 23.7.1, con un caso por cada uno — escritos sobre **lo que se vio fallar**, no sobre lo que debería pasar.
+
+### 14 · «Avisar a todos» llegó a uno de nueve
+
+**Qué se midió.** La ficha del 36 decía avisar a **todos** los proyectos instalados. El aviso llegó a **shopnest-mesa** y a nadie más: los otros ocho **no tienen carpeta `pendientes/`**, y a un proyecto que no lleva backlog no se le inventa.
+
+**La decisión de no inventarla sigue siendo la correcta** — escribir en el repositorio de otro tiene que tener el alcance de una línea. Lo que falla está más arriba: el instalador no la deja puesta, así que **ocho proyectos no tienen dónde escribir un pendiente**, ni suyo ni de nadie. El aviso no lo causó; lo hizo visible.
+
+**Y es el 36 un nivel más abajo:** allá el estándar no avisaba; acá avisa y el aviso **se cae sin ruido**. Nadie se entera de que se perdió.
+
+**Dónde queda.** El [61](../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con las tres decisiones que hacen falta y cuál de ellas importa.
 
 ---
 

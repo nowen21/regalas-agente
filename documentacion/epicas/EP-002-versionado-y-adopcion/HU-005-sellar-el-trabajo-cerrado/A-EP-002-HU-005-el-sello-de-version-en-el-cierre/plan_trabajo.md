@@ -34,7 +34,7 @@
 **Fuera de alcance:**
 
 - **Sellar hacia atrás las fases ya cerradas.** Si el sello falta en alguna, se anota: reabrir lo cerrado es justo lo que la HU prohíbe.
-- **El sello del checklist de cada regla,** que caduca con el texto y es el pendiente [52](../../../../../pendientes/52-el-sello-del-checklist-caduca-con-el-texto.md).
+- **El sello del checklist de cada regla,** que caduca con el texto y es el pendiente [52](../../../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md).
 - **El registro de adopciones del proyecto,** que es [HU-003](../../HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md).
 - **La derogación sin adoptar,** que es la excepción de `F22` y ya está retro-documentada en EP-004.
 

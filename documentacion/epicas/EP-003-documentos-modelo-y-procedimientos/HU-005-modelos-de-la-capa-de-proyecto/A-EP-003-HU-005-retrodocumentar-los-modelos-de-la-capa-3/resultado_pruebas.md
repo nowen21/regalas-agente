@@ -60,7 +60,7 @@ La parte de estos documentos que un programa lee está marcada, y el resto es pr
 
 **Un proyecto que no declara su convención de nombres no recibe hallazgos de nomenclatura.**
 
-Y es la decisión correcta, aunque suene a laxitud: exigir contra una convención que nadie escribió sería **inventarla**. El validador estaría imponiendo un criterio que el proyecto nunca aceptó, y el proyecto aprendería a ignorar sus hallazgos — que es el daño que ya está descrito en el [pendiente 55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) para otro caso.
+Y es la decisión correcta, aunque suene a laxitud: exigir contra una convención que nadie escribió sería **inventarla**. El validador estaría imponiendo un criterio que el proyecto nunca aceptó, y el proyecto aprendería a ignorar sus hallazgos — que es el daño que ya está descrito en el [pendiente 55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) para otro caso.
 
 **La contrapartida está en el checklist:** no declarar la convención sale como instalación incompleta, no como cumplimiento. No se castiga con hallazgos falsos; se cuenta como algo que falta.
 

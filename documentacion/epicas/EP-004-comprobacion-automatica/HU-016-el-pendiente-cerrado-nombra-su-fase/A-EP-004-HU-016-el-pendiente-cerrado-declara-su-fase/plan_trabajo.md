@@ -196,7 +196,7 @@ El estándar está en producción. Exigir la declaración **obliga** a quien cie
 |---|---|---|---|---|
 | B-01 | Las dos dudas sin resolver | Bloquean el programa | Se presentan al usuario |
 | R-01 | Que sin fecha de corte el primer día reporte 17 incumplimientos | Nadie lo mira | El CA-04 existe para eso, y es parte del alcance |
-| R-02 | Que un pendiente cerrado nombre una fase que se renombró después | Falso positivo por un cambio legítimo | Se reporta como aviso y se arregla la cita, que es lo que el pendiente [54](../../../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md) ya tiene planteado |
+| R-02 | Que un pendiente cerrado nombre una fase que se renombró después | Falso positivo por un cambio legítimo | Se reporta como aviso y se arregla la cita, que es lo que el pendiente [54](../../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md) ya tiene planteado |
 | R-03 | Que la declaración se vuelva un trámite que se llena de cualquier manera | La trazabilidad queda de adorno | La fase declarada se resuelve contra el árbol: un nombre inventado se reporta |
 
 ---

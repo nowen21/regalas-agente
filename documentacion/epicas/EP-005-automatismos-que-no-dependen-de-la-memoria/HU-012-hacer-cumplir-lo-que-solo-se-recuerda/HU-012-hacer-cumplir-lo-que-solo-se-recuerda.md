@@ -39,7 +39,7 @@ El histórico tiene su enganche. `ID9` no.
 
 **El límite técnico, para que no se diseñe la pieza equivocada.** Un enganche de cierre no puede acortar una respuesta ya emitida: cuando corre, el texto ya salió. Lo único que puede hacer es medirlo y devolverlo para que se reescriba, y eso le cuesta al usuario ver la respuesta larga primero y la corta después.
 
-**El caso general.** `ID9` es el caso que dolió, pero la historia no es sobre `ID9`: es sobre que una regla de núcleo pueda existir sin decir cómo se hace cumplir. Esa es la parte que sí es un defecto, y la que se arregla acá. Se cruza con el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md): las dos son reglas que existen en el papel y no tienen quién las ejecute.
+**El caso general.** `ID9` es el caso que dolió, pero la historia no es sobre `ID9`: es sobre que una regla de núcleo pueda existir sin decir cómo se hace cumplir. Esa es la parte que sí es un defecto, y la que se arregla acá. Se cruza con el [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md): las dos son reglas que existen en el papel y no tienen quién las ejecute.
 
 ### 3.1 Reglas de negocio
 

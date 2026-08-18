@@ -46,7 +46,7 @@
 - **La excepción se declara, no se adivina** — el pendiente que no fue desarrollo lo dice él mismo. Adivinar por prosa produce falsos positivos, y un falso positivo apaga el programa.
 - **Fecha de corte escrita, no deducida** — deducirla del historial la vuelve frágil: un archivo movido cambiaría la fecha. Va escrita en la documentación del programa.
 - **Los dos lados del corte** — el caso prueba un pendiente cerrado justo antes y otro justo después: es donde la separación se rompe si está mal hecha.
-- **La cita rota es aviso, no falla** — el riesgo `R-02`: si una fase se renombró después, el pendiente que la nombra queda mal por un cambio legítimo. Eso ya está planteado en el pendiente [54](../../../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md).
+- **La cita rota es aviso, no falla** — el riesgo `R-02`: si una fase se renombró después, el pendiente que la nombra queda mal por un cambio legítimo. Eso ya está planteado en el pendiente [54](../../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md).
 
 ### 3.5 Alcance de la corrida
 
@@ -114,7 +114,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 
 **Resultado esperado final:** declarar la fase deja de ser un trámite que se llena de cualquier manera.
 
-> **El paso 3 separa el error del cambio legítimo.** Renombrar una fase es válido; lo que hay que arreglar es la cita, y eso ya está planteado en el pendiente [54](../../../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md).
+> **El paso 3 separa el error del cambio legítimo.** Renombrar una fase es válido; lo que hay que arreglar es la cita, y eso ya está planteado en el pendiente [54](../../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md).
 
 ---
 

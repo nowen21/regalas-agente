@@ -87,7 +87,7 @@
 - **Duda 1 de §2.7:** cuál es la fecha de corte — desde cuándo se exige que el pendiente cerrado nombre su fase.
 - **Duda 2 de §2.7:** dónde se declara — una línea fija al principio del pendiente, o una sección.
 - **La aprobación del plan.** Sin ella no se escribe el validador.
-- **Una fase renombrada produce un falso positivo legítimo** (riesgo `R-02`): sale como aviso, y arreglar la cita es del pendiente [54](../../../../../pendientes/54-cerrar-un-pendiente-rompe-sus-citas.md).
+- **Una fase renombrada produce un falso positivo legítimo** (riesgo `R-02`): sale como aviso, y arreglar la cita es del pendiente [54](../../../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md).
 - **Cruce con la fase de [HU-018](../../HU-018-numero-de-pendiente-ya-tomado/A-EP-004-HU-018-el-numero-de-pendiente-libre/plan_trabajo.md)**, que puede crear el mismo archivo de validador. La que llegue segunda se suma en vez de reescribir.
 
 ---

@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Cierra** | El [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../../pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) |
+| **Cierra** | El [pendientes/36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md](../../../../../pendientes/hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) |
 | **Fecha de cierre** | 2026-08-18 |
 | **Veredicto** | **Cumple** — [resultado_pruebas.md](resultado_pruebas.md) §4 |
 | **Versión** | 23.7.0 (**MENOR**) |

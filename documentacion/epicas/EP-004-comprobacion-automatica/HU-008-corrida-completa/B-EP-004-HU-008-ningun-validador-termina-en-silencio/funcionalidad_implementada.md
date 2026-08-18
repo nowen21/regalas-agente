@@ -66,7 +66,7 @@ Uno de los seis casos comprueba que **la lista no esté vacía**. Sin él, un ba
 | Qué | Dónde va |
 |---|---|
 | `D-02` — la regla sin clasificar **avisa** y un aviso no detiene | Pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
-| `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | Pendiente [55](../../../../../pendientes/55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) |
+| `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | Pendiente [55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) |
 | El pendiente 55 afirma que `G9` no existe, y sí existe | Corregido en el propio 55 |
 
 Ninguno pertenece a esta fase: el plan los dejó fuera de alcance en su §1 **antes** de ejecutar.

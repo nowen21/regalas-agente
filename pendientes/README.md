@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **30**. Ese mismo día se cerraron el 39, el 40, el 41, el 42, el 44 y el 45 —el 40, el 41, el 42, el 44 y el 45 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43, el 44, el 45 y el **46**, este último reportado por `dp`. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **28**. Ese mismo día se cerraron el 39, el 40, el 41, el 42, el 44 y el 45 —el 40, el 41, el 42, el 44 y el 45 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43, el 44, el 45 y el **46**, este último reportado por `dp`. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. El **2026-08-18** pasaron a `hecho/` los siete que ya estaban cerrados y seguían en la carpeta —el 23, el 32, el 36, el 46, el 52, el 54 y el 55—, cada uno con sus citas arrastradas por [`cerrar.py`](../validadores/cerrar.py). **Estar marcado «cerrado» y seguir en la carpeta es la mitad del cierre**, y era lo que hacía que el conteo de esta línea envejeciera solo. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -99,7 +99,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 20 | **P3** | [`F2` no dice cuándo no aplica](20-f2-no-dice-cuando-no-aplica.md) | Dos fases seguidas se abrieron sin especificación con buenos motivos, y la regla no las contempla. **Va junto con el 30:** las dos son reglas de cadena que la práctica salta. |
 | 21 | **P4** | [El glosario, y lo que quedó en inglés](21-el-glosario-y-los-terminos-en-ingles.md) | Los trece roles siguen en inglés y no hay glosario de la terminología del estándar. El glosario —su mitad cara— ya está hecho y dejó el inventario de los 12 que faltan. |
 | 22 | **P3** | [Dos sesiones versionando a la vez](22-dos-sesiones-versionando-a-la-vez.md) | Dos sesiones abiertas dejaron dos numeraciones vivas en el mismo archivo. No lo resuelve un validador: hace falta el acuerdo, y son tres opciones sobre la mesa. |
-| 23 | **P2** | [La carpeta de plantillas mezcla modelos con procedimientos](23-plantillas-mezcla-modelos-con-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. Ya está decidido qué se hace: solo falta ejecutarlo. |
+| 23 | **P2** | [La carpeta de plantillas mezcla modelos con procedimientos](hecho/plantillas-separa-modelos-de-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. Ya está decidido qué se hace: solo falta ejecutarlo. |
 | 24 | **P3** | [Buscar en el repositorio antes de preguntar](24-buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. La HU ya está redactada dentro del pendiente, y es conducta que rinde en cada sesión. |
 | ~~25~~ | — | [Las reglas de cómo se escribe llegan en el índice, no puestas](hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
 | 26 | **P4** | [«Corrida» es jerga y no está definida](26-corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. **Conviene hacerlo con el 21:** es el mismo cambio de vocabulario en los mismos archivos. |
@@ -120,7 +120,7 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 | 30 | **P1** | [El checklist no ve la cadena](hecho/la-revision-ve-la-cadena.md) | shopnest-mesa | Un proyecto llegó a código commiteado con `prompts/` vacía, sin épica y sin HU, y el arranque decía «13 de 13». `F0` exige la cadena y ningún componente la mira. Es lo que el agente lee en **cada** mensaje para saber si el entorno está completo. |
 | ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md). |
 | ~~35~~ | — | **hecho** → [Renombrar deja coherente su resumen](hecho/renombrar-deja-el-resumen-coherente.md) | shopnest-mesa | `--renombrar` corrige el enlace de adentro del resumen que arrastra, y nace la primera suite de pruebas de `historico.py`. Cerrado 2026-08-16 (v21.3.0) en la fase [`B-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/). **Falta avisarle a `shopnest-mesa`.** |
-| 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](36-falta-la-regla-que-obliga-a-reportar-lo-que-es-del-estandar.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
+| 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
 
 **Lo que el 34 dejó a medias vive en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
 
@@ -131,7 +131,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](hecho/los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
-| 32 | **P2** | [La carpeta del día nace sin su línea en el índice](32-la-carpeta-del-dia-nace-sin-su-linea-en-el-indice.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
+| 32 | **P2** | [La carpeta del día nace sin su línea en el índice](hecho/la-carpeta-del-dia-nace-indexada.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
 | 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
 
 **El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
@@ -141,7 +141,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 | Punto | P | Qué es |
 |---|---|---|
 | ~~6~~ · a qué proyectos les borró la memoria el enganche | — | **Cerrado** el 2026-08-16 → [hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md) |
-| ~~7~~ · un checklist anulado que nadie volvió a aplicar | — | **Promovido** el 2026-08-16 → [52](52-el-sello-del-checklist-caduca-con-el-texto.md) |
+| ~~7~~ · un checklist anulado que nadie volvió a aplicar | — | **Promovido** el 2026-08-16 → [52](hecho/el-sello-del-checklist-se-comprueba.md) |
 | 5 · falta la prueba que protege el `GATE` del arranque | **P2** | Una prueba. Esa puerta ya desapareció en silencio una vez |
 | 1 · el validador da por rotos los enlaces con espacios | **P2** | Un `unquote`. Falsos positivos en el validador que más se corre |
 | 4 · renombrar deja rotos los enlaces de fuera | **P2** | Ya costó 41 enlaces arreglados a mano. `citas.py` ya tiene el modo que repara. Hermano del [35](hecho/renombrar-deja-el-resumen-coherente.md), que cerró el de adentro y dejó ver que **cerrar un pendiente rompe lo mismo**: mover su archivo a `hecho/` dejó 12 enlaces huérfanos |
@@ -196,7 +196,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | ~~45~~ | — | **hecho** → [El instalador prepara su propia salida](hecho/instalar-prepara-su-propia-salida.md) | — | `instalar()` se moría al imprimir una flecha si nadie había preparado la consola, y solo la preparaba `main()`. Cerrado 2026-08-16 (v21.2.1) en la fase [`B-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/B-EP-007-HU-001-prepara-su-propia-salida/). |
-| 46 | **P1** | [El registro de versión dice que falta escribirse](46-el-registro-de-version-dice-que-falta-escribirse.md) | dp | El apartado «Qué quedó pendiente» del registro se calcula antes de escribirlo, así que el archivo recién nacido se lista a sí mismo como faltante. Queda versionado un documento que afirma algo falso y manda a buscar lo que se tiene delante. |
+| 46 | **P1** | [El registro de versión dice que falta escribirse](hecho/el-registro-se-escribe-antes-de-contarse.md) | dp | El apartado «Qué quedó pendiente» del registro se calcula antes de escribirlo, así que el archivo recién nacido se lista a sí mismo como faltante. Queda versionado un documento que afirma algo falso y manda a buscar lo que se tiene delante. |
 
 **Nació en un cerrado y no lo reabrió.** El defecto del 45 venía de [validadores-y-hooks](hecho/validadores-y-hooks.md) y se destapó como el `DEF-02` del [42/44](hecho/poner-al-dia-lo-ya-instalado.md). Un pendiente cerrado queda sellado con su versión, así que lo que aparece después va en uno nuevo que cita a los dos — es el mismo criterio que `20·M11` aplica a las reglas.
 
@@ -209,15 +209,15 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | 53 | **P1** | [`enlaces.py` no tiene punto de entrada](hecho/ningun-validador-termina-en-silencio.md) | Termina en silencio y con código 0 **sin comprobar nada**, y ese silencio se lee como «cero rotos». Una fase se lo creyó y escribió mal su métrica. Falta revisar cuántos de los treinta validadores tienen el mismo hueco. |
-| 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](54-cerrar-un-pendiente-rompe-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). |
-| 55 | **P2** | [El validador lee enlaces dentro de las comillas de código](55-el-validador-lee-enlaces-dentro-de-las-comillas-de-codigo.md) | Reportó como rotas dos muestras que nunca fueron enlaces. **Conviene con el punto 1 del 33:** mismo archivo, misma clase de falso positivo. |
+| 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](hecho/cerrar-un-pendiente-arrastra-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). |
+| 55 | **P2** | [El validador lee enlaces dentro de las comillas de código](hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) | Reportó como rotas dos muestras que nunca fueron enlaces. **Conviene con el punto 1 del 33:** mismo archivo, misma clase de falso positivo. |
 | 56 | **P3** | [El estándar no tiene planteamiento](56-el-estandar-no-tiene-planteamiento.md) | Esta casa reprueba el punto de la cadena que ella misma acaba de escribir. No es tarea de código: es decidir qué es este proyecto, y sale de una conversación. |
 
 ### Lo que promovió el 33 (52)
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 52 | **P1** | [El sello del checklist caduca con el texto](52-el-sello-del-checklist-caduca-con-el-texto.md) | Cada bloque dice «vale mientras el texto no cambie» y nada lo comprueba: un sello puede seguir diciendo CUMPLE sobre una regla que ya no es la que se evaluó. Salió del punto 7 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). Trae las dos salidas evaluadas y cuál conviene. |
+| 52 | **P1** | [El sello del checklist caduca con el texto](hecho/el-sello-del-checklist-se-comprueba.md) | Cada bloque dice «vale mientras el texto no cambie» y nada lo comprueba: un sello puede seguir diciendo CUMPLE sobre una regla que ya no es la que se evaluó. Salió del punto 7 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). Trae las dos salidas evaluadas y cuál conviene. |
 
 **Es el segundo punto del 33 que se promueve y se vuelve resoluble**, después del 6 → 39. Dentro de la lista heredaba una prioridad promedio y no se veía qué era; solo, se ve que el caso de `F13` era el síntoma y el sello vencido es la enfermedad.
 
@@ -261,6 +261,14 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 **Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](56-el-estandar-no-tiene-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
 
+### Lo que dejó mandar el primer aviso de vuelta (61)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 61 | **P2** | [El aviso de vuelta llega a uno de nueve proyectos](61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md) | La ficha del 36 decía «abisar a **todos**» y llegó a **uno**: ocho proyectos no tienen carpeta `pendientes/`, así que no tienen dónde recibir nada — ni un aviso ni un pendiente propio. El aviso no falla, lo hace visible. |
+
+**Es el defecto del [36](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) un nivel más abajo:** allá el estándar no avisaba; acá avisa y el aviso se cae **sin ruido**. Lo destapó correr el comando de verdad por primera vez, no una revisión — en simulacro sobre proyectos de mentira los ocho tenían carpeta.
+
 ## Ningún pendiente vive suelto: en qué historia está cada uno
 
 Un pendiente dice **qué falta**; la historia dice **qué se pide y cuándo se da por aceptado**. Un pendiente sin historia no se puede construir sin saltarse la cadena, que es lo que [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) prohíbe — y lo que costó el defecto de la [20.0.1](../CHANGELOG.md).
@@ -291,6 +299,7 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | **[EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md)** — Dónde termina el estándar | 15 |
 | **[EP-005 · HU-012](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md)** — Hacer cumplir lo que solo se recuerda | 58 |
 | [EP-006 · HU-002](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — Guardar en el repositorio | 17 |
+| [EP-007 · HU-003](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md) — Estructura de carpetas | 61 |
 | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — Poner al día | 46 |
 | **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
 
