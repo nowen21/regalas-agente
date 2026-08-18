@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-01 y los transversales cumplidos; el CA-02, no |
 
 ---
 
@@ -124,7 +124,7 @@ Entonces hace exactamente eso
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 sí; el CA-02 no. Pendiente el commit |
 
 **La fase retro-documenta, y empieza midiendo.** Si el instalador **muestra antes** lo que va a hacer o lo cuenta mientras lo hace es lo que nadie anotó. Se mide antes de proponer: ya pasó que una HU naciera pidiendo algo que ya existía.
 
@@ -183,3 +183,4 @@ Entonces hace exactamente eso
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-01 verificado: simular no escribe ni un archivo. CA-02 en «No»: de 13 archivos que aparecen al aplicar, el registro de versión no se anuncia, y la simulación afirma lo contrario |

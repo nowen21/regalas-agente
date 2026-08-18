@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los cuatro CA y los dos transversales verificados el 2026-08-17 (v23.3.0) |
 
 ---
 
@@ -163,7 +163,7 @@ Y esa carpeta no entra en el total
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase](A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/README.md) | CA-01, CA-02, CA-03 y CA-04 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase](A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/README.md) | CA-01, CA-02, CA-03 y CA-04 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/resultado_pruebas.md#6-veredicto-de-la-fase) — los cuatro CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase construye, y es la más chica de la épica.** `fases.py` ya sabe qué HU no tiene fase; lo único que no hace es sumar. La cuenta del 2026-08-16 se hizo con un script que no quedó en el repositorio.
 
@@ -226,3 +226,4 @@ Y esa carpeta no entra en el total
 |---|---|---|
 | 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, desde el hallazgo H-1 de la sesión «las HU sin su fase» |
 | 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Recortada a lo que falta de verdad: `fases.py` ya lista las HU sin fase y los documentos que faltan; lo que no da es la cuenta |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A y se construye la línea del inventario (v23.3.0). Los cuatro CA verificados; los tres números del programa coinciden con los del pendiente 48, y una prueba los compara en cada corrida |

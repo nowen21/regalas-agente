@@ -71,6 +71,31 @@ Son cuatro búsquedas preparadas de antemano, que usan las funciones de más aba
 | `_CERCA` | La línea que abre o cierra un bloque de código. |
 | `_ENLACE` | Un enlace, y separa el texto que se ve de la dirección a la que lleva. |
 
+### El contrato de la salida
+
+> Escrito el 2026-08-17 en la fase [`A-EP-004-HU-003`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-003-formato-del-hallazgo/A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md), que lo probó contra una corrida real de 207 hallazgos. Estaba en el código y no estaba escrito.
+
+**Qué trae todo hallazgo, sin excepción:**
+
+| Parte | Para qué sirve | Cuando falta |
+|---|---|---|
+| **Archivo** | Dónde está el problema | Nunca falta |
+| **Línea** | Dónde exactamente | Vale **0** cuando el problema es del archivo entero. No se inventa un 1 |
+| **Regla** | **Por qué** eso está mal | Nunca falta. Va dentro del mensaje, entre paréntesis: `(F18)`, `(F4/F14)` o `(F2: sin especificación acordada no hay código)` |
+
+**Por qué las tres juntas.** Con el archivo y la línea se sabe dónde mirar; sin la regla no se sabe qué se exigía, y hay que abrir el programa que lo reportó. Ese es el criterio con el que se da por bueno un hallazgo: **alcanza para arreglar sin abrir el validador**.
+
+**Qué hace cada severidad:**
+
+| Severidad | Qué significa | Código de salida |
+|---|---|---|
+| `AVISO` | Algo que una persona debe mirar. Puede ser un falso positivo o algo aceptable | **0** — no detiene |
+| `FALLA` | Incumplimiento claro | **1** — detiene |
+
+**La regla del código de salida:** basta **una** falla para que la corrida termine en 1. Cien avisos terminan en 0. Sin hallazgos, 0.
+
+**Lo dudoso sale como aviso, no como falla.** Un validador que reprueba por algo discutible se vuelve ruido, y lo que se termina ignorando no son solo sus avisos: son también sus fallas.
+
 ### La ficha `Hallazgo`
 
 Es donde queda anotado un problema encontrado. Todos los validadores retornan una lista de estas fichas.

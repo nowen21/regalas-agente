@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los dos CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -128,7 +128,7 @@ Entonces entra con otro nombre y se avisa
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera](A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera](A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta.** El enganche recoge del almacén local lo que debe vivir en el repositorio. La mitad delicada es el CA-02: recoger sin pisar, que es lo que separa recoger de destruir, y hoy nadie lo comprueba.
 
@@ -188,3 +188,4 @@ Entonces entra con otro nombre y se avisa
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los dos CA verificados: se recoge, el almacén queda sin texto ni puntero, y nunca se borra. Queda escrito en la especificación por qué nunca borra, con la historia de la memoria que se perdió |

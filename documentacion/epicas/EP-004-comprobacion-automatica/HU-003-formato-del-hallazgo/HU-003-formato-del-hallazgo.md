@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — los tres CA cumplidos; el transversal de errores, no |
 
 ---
 
@@ -146,7 +146,7 @@ Y la corrida termina con error
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo](A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo](A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA numerados sí; el transversal de errores no. Pendiente el commit |
 
 **La fase retro-documenta.** El formato existe y lo usan los 24 subcomandos, con sus dos severidades. Falta el contrato escrito y la prueba de que el código de salida es el que corresponde.
 
@@ -207,3 +207,4 @@ Y la corrida termina con error
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los tres CA verificados sobre una corrida real de 207 hallazgos, y el contrato de la salida queda escrito. El transversal de errores en «No»: un `.md` que no se puede decodificar tumba la corrida entera |

@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los tres CA y los tres transversales verificados el 2026-08-17 (v23.3.0) |
 
 ---
 
@@ -147,7 +147,7 @@ Y también reporta la línea del índice cuyo archivo no existe
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-004-HU-018-el-numero-de-pendiente-libre](A-EP-004-HU-018-el-numero-de-pendiente-libre/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-004-HU-018-el-numero-de-pendiente-libre](A-EP-004-HU-018-el-numero-de-pendiente-libre/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-004-HU-018-el-numero-de-pendiente-libre/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA y los tres transversales verificados. Pendiente el commit |
 
 **La fase construye.** El número se elige a ojo leyendo un índice que puede estar más viejo que la carpeta: el 2026-08-16 dos sesiones tomaron el 52. La fase avisa; repartir turnos es la decisión del pendiente 22.
 
@@ -208,3 +208,4 @@ Y también reporta la línea del índice cuyo archivo no existe
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, desde el hallazgo H-2 de la sesión «las HU sin su fase» |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A y nace `validadores/pendientes.py` con su subcomando (v23.3.0). Al construirlo apareció que un pendiente cerrado pierde su número: 15 de los 54 tomados existen solo en el índice, y una comprobación que no lo leyera habría entregado el 02 |

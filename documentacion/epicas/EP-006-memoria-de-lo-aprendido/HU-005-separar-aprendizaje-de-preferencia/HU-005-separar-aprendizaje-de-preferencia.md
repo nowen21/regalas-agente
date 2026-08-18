@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-02 y transversales cumplidos; el CA-01 no: hay algo guardado en los dos sitios |
 
 ---
 
@@ -122,7 +122,7 @@ Entonces dice qué pidió, por qué lo pidió y cómo se aplica
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia](A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia](A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia/resultado_pruebas.md#6-veredicto-de-la-fase) — el criterio quedó escrito; el CA-01 no se cumple. Pendiente el commit |
 
 **La fase retro-documenta.** La separación se usa: señales para lo que el proyecto aprendió, recuerdos para cómo el usuario quiere trabajar. Lo que falta es el criterio escrito de cuál va dónde, y en particular el caso de borde: una preferencia que en realidad es regla para cualquier proyecto.
 
@@ -181,3 +181,4 @@ Entonces dice qué pidió, por qué lo pidió y cómo se aplica
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Se escribe el criterio de cuál va dónde, con su caso de borde. CA-01 en «No»: la terminología está guardada como señal y como recuerdo, y las dos versiones divergen |

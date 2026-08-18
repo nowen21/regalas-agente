@@ -196,3 +196,61 @@ validar('C:/proyectos/pos')          # con problemas
 - **Por qué existe.** El veredicto se escribe **dos veces a mano**, y el `estado-fase` es el que se mira para pasar la puerta de verificación: si dice «cumple», la fase pasa sin que nadie abra el resultado, que es donde está la verdad. Ya pasó una vez.
 - **Qué no hace:** decir si el veredicto es **cierto**. Eso no lo puede saber un programa.
 - **Los dos límites.** Si falta uno de los dos documentos, calla: una fase a medio escribir no es una contradicción. Y una salvedad al lado del concepto —«Cumple, con una salvedad»— tampoco lo es: se comparan conceptos normalizados.
+
+---
+
+## Qué parte de `F12` se comprueba y qué parte no — desde la 23.2.1
+
+> Escrito el 2026-08-17 en la fase [`A-EP-004-HU-006`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-006-nomenclatura-y-estructura/A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura/resultado_pruebas.md). Estaba repartido entre el código y las pruebas, y en ningún documento.
+
+**Lo que sí se comprueba:**
+
+| Parte de `F12` | Qué se mira | Severidad |
+|---|---|---|
+| `F12.6` · el nombre de la fase | Que sea `<LETRA>-EP-<n>-HU-<n>-<descripción>` | Falla |
+| `F12.1` · una fase, una HU | Que la fase esté guardada bajo la HU que su nombre nombra | Falla |
+| `F12.5` · consecutivo sin huecos | Que no haya una fase `C` sin que existan `A` y `B` | Aviso |
+| `F12.5` · consecutivo sin repetir | Que dos fases de la misma HU no lleven la misma letra | Falla |
+| `F12.13` · los cinco documentos | Que la carpeta de fase los tenga, **diciendo cuáles faltan** | Aviso |
+| `F12.2` · al menos una fase por HU | Que la HU no se quede sin ninguna | Aviso |
+| Estructura | Que dentro de una épica solo haya carpetas `HU-` | Falla |
+| `HU-014` · el veredicto | Que el `resultado_pruebas` y el `estado-fase` digan lo mismo | Falla |
+
+**Lo que no se comprueba, y por qué:**
+
+| Parte de `F12` | Por qué no |
+|---|---|
+| `F12.10` · que la fase sea trabajo real y no relleno de nomenclatura | Es criterio. Dos personas pueden discutir si una fase «representa un trabajo real», y un programa que opine sobre eso se vuelve ruido |
+| Que el **contenido** de los cinco documentos sea correcto | Cada documento tiene su propio validador: `flujo` para el plan, `trazabilidad` para el cierre, `plantilla` para el molde |
+| Que el orden de las letras siga el orden en que se ejecutaron | La letra dice el consecutivo, no la cronología |
+
+**Por qué `F12.13` es aviso y no falla.** Una fase en curso **tiene** que poder existir sin sus cinco documentos: los dos últimos salen de ejecutarla. Reprobar por eso convertiría todo trabajo en marcha en un incumplimiento, y lo que se ignoraría después no serían solo esos avisos.
+
+**El borde del árbol vacío.** Sin la carpeta `documentacion/epicas/` la comprobación **falla**, no calla: un proyecto que no la tiene no es un proyecto conforme con cero fases, es un proyecto sin estructura de trabajo (`02·F13`). Una épica sin HU y una HU sin fases, en cambio, solo avisan: son estados normales al empezar.
+
+---
+
+## El inventario de HU — desde la 23.3.0
+
+> Construido el 2026-08-17 en la fase [`A-EP-004-HU-017`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/resultado_pruebas.md).
+
+**`inventario(proyecto)`**
+
+- **Retorna:** `(total, completas, incompletas)` de las HU del árbol.
+- **Qué cuenta como completa:** una HU con **al menos una** carpeta de fase y **todas** sus fases con los cinco documentos.
+- **Por qué «todas» y no «alguna»:** con dos fases y una a medias, la historia no está terminada. Contarla completa escondería justo el trabajo que falta, que es lo único que este inventario viene a hacer visible.
+
+**`linea_inventario(proyecto)`**
+
+- **Retorna:** `HU: 68 en total · 25 completas · 43 incompletas (F12.2)`, o cadena vacía si no hay árbol.
+- **Dónde sale:** al final de `validar.py fases`, **después** de los hallazgos y **aunque no haya ninguno** — es el resumen de cuánto falta, no un incumplimiento más, y cuando no hay hallazgos es cuando más se quiere leer.
+
+**Los tres bordes:**
+
+| Borde | Qué hace | Por qué |
+|---|---|---|
+| Sin `documentacion/epicas/` | `(0, 0, 0)` y no imprime línea | Quien reporta la falta de la carpeta es `validar()`. Dos hallazgos por lo mismo es ruido |
+| Épica sin HU | No aporta ninguna | No hay nada que contar |
+| Carpeta `HU-` **sin** su archivo `.md` | Cuenta, como **incompleta** | Existe como trabajo aunque le falte el documento. No contarla la volvería invisible |
+
+**Lo que no es:** una segunda fuente de verdad. El [pendiente 48](../../pendientes/48-inventario-hu.md) lleva la misma cuenta a mano, casilla por casilla, y hay una prueba que **compara las dos**: si se separan, una de las dos está mal.

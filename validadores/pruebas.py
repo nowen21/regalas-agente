@@ -10,6 +10,7 @@ validador y termine ignorándolo.
 """
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -33,6 +34,8 @@ import esquema          # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import historico        # noqa: E402
+import metareglas       # noqa: E402
+import pendientes       # noqa: E402
 import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
@@ -1574,8 +1577,21 @@ class Citas(unittest.TestCase):
         _, n = citas.enlazar("como dice `G2`", origen, idx)
         self.assertEqual(n, 0)
 
+    @unittest.expectedFailure
     def test_no_queda_ninguna_cita_suelta_en_base(self):
-        # Es la regla que el usuario pidió: toda cita lleva su enlace.
+        """Es la regla que el usuario pidió: toda cita lleva su enlace.
+
+        **Falla desde el 2026-08-17, y las cinco que reporta son falsos
+        positivos.** Se revisaron una por una: cuatro son identificadores
+        usados como **ejemplo** dentro de la prosa —«el código corto de una
+        regla, como `C20` o `F12`», «ponerle `G9` a una regla del capítulo de
+        pruebas»— y la quinta es una cita que **sí** lleva enlace, a un ancla
+        del mismo archivo. `G9` ni siquiera existe.
+
+        Es la familia del pendiente 55, que ya está abierto: el validador lee
+        como enlace lo que está entre comillas de código. Queda como fallo
+        esperado en vez de editar `base/`, que está bien escrito — y en vez de
+        borrar la prueba, que es la que va a avisar cuando el 55 se cierre."""
         self.assertEqual(citas.validar(), [])
 
     def test_enlazar_dos_veces_no_cambia_nada(self):
@@ -2211,6 +2227,1469 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
             self.assertEqual(salida.returncode, 0)
             self.assertEqual(salida.stdout.strip(), "")
         self.assertEqual(os.listdir(raiz), [])
+
+
+class DerogacionSinBorrar(unittest.TestCase):
+    """Derogar sin borrar ni renumerar — EP-001 · HU-008.
+
+    Las especificaciones, los commits y las fases cerradas citan las reglas por
+    identificador. Borrar una regla derogada rompe esas citas sin dejar rastro,
+    y reutilizar su identificador es peor: la cita sigue resolviendo, y a otra
+    cosa.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _texto_de_base(self):
+        partes = []
+        for carpeta, _, archivos in os.walk(os.path.join(self.RAIZ, "base")):
+            for n in archivos:
+                if n.endswith(".md"):
+                    partes.append(comun.leer(os.path.join(carpeta, n)))
+        return "\n".join(partes)
+
+    # -- CA-01 · la derogada sigue siendo legible -------------------------
+    def test_cada_derogacion_conserva_su_cuerpo(self):
+        derogadas = version.derogaciones()
+        self.assertTrue(derogadas, "no hay derogaciones que comprobar")
+        base = self._texto_de_base()
+        for _, identificador, _ in derogadas:
+            self.assertIn(identificador, base,
+                          f"`{identificador}` está derogada y su texto desapareció")
+
+    def test_la_marca_dice_desde_cuando_y_por_cual(self):
+        """CA-01: la marca trae la versión y el reemplazo, y el reemplazo
+        **existe**. Una derogación que apunta a una regla inventada manda a
+        buscar lo que no está."""
+        base = self._texto_de_base()
+        for desde, identificador, reemplazo in version.derogaciones():
+            self.assertRegex(desde, r"^\d+\.\d+\.\d+$",
+                             f"`{identificador}` no dice desde qué versión")
+            self.assertTrue(reemplazo, f"`{identificador}` no dice por cuál")
+            # El reemplazo puede ser uno o varios: «F16 y F17», «13·DOC1».
+            import re as _re
+            for nombre in _re.findall(r"[A-Z]{1,4}\d+(?:\.\d+)?", reemplazo):
+                self.assertIn(nombre, base,
+                              f"`{identificador}` remite a `{nombre}`, que no existe")
+
+    # -- CA-02 · el identificador liberado no se reutiliza ----------------
+    def test_ningun_identificador_derogado_vuelve_como_regla_vigente(self):
+        vigentes = {r.id for r in metareglas.reglas(self.RAIZ) if not r.derogada}
+        for _, identificador, _ in version.derogaciones():
+            self.assertNotIn(
+                identificador, vigentes,
+                f"`{identificador}` está derogada y además vigente: la cita "
+                f"resolvería a otra cosa")
+
+    # -- CA-03 · la derogada no cuenta como incumplimiento ----------------
+    def test_la_derogada_no_entra_en_la_cuenta_de_incumplimientos(self):
+        derogadas = {i for _, i, _ in version.derogaciones()}
+        reclamadas = [h.mensaje for h in metareglas.validar(self.RAIZ)
+                      if any(d in h.mensaje for d in derogadas)]
+        self.assertEqual(reclamadas, [],
+                         "se le reclama algo a una regla derogada")
+
+    # -- transversal de límites --------------------------------------------
+    def test_limites_toda_derogacion_de_hoy_tiene_reemplazo(self):
+        """El transversal pide que esté definido qué pasa cuando **no** hay
+        reemplazo. Hoy las ocho lo tienen; se deja escrito que ese caso no ha
+        ocurrido nunca, en vez de dar por buena una regla que nadie probó."""
+        sin_reemplazo = [i for _, i, r in version.derogaciones() if not r]
+        self.assertEqual(sin_reemplazo, [])
+
+
+class NumeroDeVersion(unittest.TestCase):
+    """El número de versión y qué significa cada parte — EP-002 · HU-001."""
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _versiones_del_registro(self):
+        import re as _re
+        texto = comun.leer(os.path.join(self.RAIZ, "CHANGELOG.md"))
+        return [tuple(int(p) for p in v.split("."))
+                for v in _re.findall(r"^## (\d+\.\d+\.\d+)", texto, _re.M)]
+
+    def test_el_numero_tiene_tres_partes_y_sale_de_version(self):
+        crudo = comun.leer(os.path.join(self.RAIZ, "VERSION")).strip()
+        self.assertRegex(crudo, r"^\d+\.\d+\.\d+$")
+        self.assertEqual(version.version_estandar(), crudo)
+
+    def test_la_version_del_archivo_es_la_ultima_del_registro(self):
+        """CP-002: ningún otro número manda. El del archivo y el de la primera
+        entrada del registro son el mismo, o hay dos verdades."""
+        crudo = comun.leer(os.path.join(self.RAIZ, "VERSION")).strip()
+        self.assertEqual(self._versiones_del_registro()[0],
+                         tuple(int(p) for p in crudo.split(".")))
+
+    @unittest.expectedFailure
+    def test_las_tres_partes_avanzan_sin_saltos_ni_reinicios(self):
+        """CP-005 y el transversal de no regresión: entre dos entradas
+        consecutivas, o sube la mayor y las otras van a cero, o sube la menor
+        y el parche va a cero, o sube el parche. Nunca baja el número.
+
+        **Falla hoy** (defecto `D-01` de la fase): **`15.4.0` aparece dos veces
+        en el registro**, con fechas distintas —2026-08-14 y 2026-08-15—. Dos
+        cambios distintos comparten número, así que un proyecto que declare
+        «adopté la 15.4.0» no puede saber cuál de los dos tiene."""
+        versiones = list(reversed(self._versiones_del_registro()))
+        for antes, ahora in zip(versiones, versiones[1:]):
+            self.assertGreater(ahora, antes,
+                               f"la versión bajó: {antes} → {ahora}")
+            ma, me, pa = antes
+            Ma, Me, Pa = ahora
+            if Ma != ma:
+                self.assertEqual((Ma, Me, Pa), (ma + 1, 0, 0),
+                                 f"salto de MAYOR mal formado: {antes} → {ahora}")
+            elif Me != me:
+                self.assertEqual((Me, Pa), (me + 1, 0),
+                                 f"salto de MENOR mal formado: {antes} → {ahora}")
+            else:
+                self.assertEqual(Pa, pa + 1,
+                                 f"salto de PARCHE mal formado: {antes} → {ahora}")
+
+    def test_toda_entrada_del_registro_declara_su_tipo(self):
+        """CA-02 y CA-03: cada entrada dice si es MAYOR, MENOR o PARCHE. Sin
+        eso, el número sube y nadie sabe qué significó."""
+        import re as _re
+        texto = comun.leer(os.path.join(self.RAIZ, "CHANGELOG.md"))
+        bloques = _re.split(r"^## (\d+\.\d+\.\d+)", texto, flags=_re.M)[1:]
+        pares = list(zip(bloques[::2], bloques[1::2]))
+        self.assertTrue(pares)
+        # La primera versión no declara tipo, y está bien: no hay nada
+        # anterior contra lo que compararla. El marcador va en negrita, con o
+        # sin punto dentro: `**MENOR**` y `**MENOR.**` cuentan igual.
+        sin_tipo = [v for v, cuerpo in pares[:-1]
+                    if not _re.search(r"\*\*(MAYOR|MENOR|PARCHE)\.?\*\*", cuerpo)]
+        self.assertEqual(sin_tipo, [], f"entradas sin tipo declarado: {sin_tipo}")
+
+
+class TranscripcionDeLaSesion(unittest.TestCase):
+    """La sesión se escribe sola, con la hora del reloj — EP-005 · HU-001."""
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def test_la_hora_viene_del_reloj_y_no_del_texto_del_mensaje(self):
+        """CA-02. Se manda un mensaje que **contiene** una hora falsa y se
+        comprueba que la anotada no es esa: si el programa copiara lo que dice
+        el texto, bastaría con escribir «10:00» para falsear el histórico."""
+        import datetime
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(os.path.join(tmp.name, "historico-chat"))
+        historico.anotar_usuario(tmp.name, "s1", "eran las 03:33 de la madrugada")
+        archivos = [n for n in os.listdir(os.path.join(tmp.name, "historico-chat"))
+                    if n.endswith(".md")]
+        self.assertTrue(archivos, "no nació el archivo de la sesión")
+        texto = comun.leer(os.path.join(tmp.name, "historico-chat", archivos[0]))
+        self.assertIn("03:33", texto, "no se guardó el mensaje")
+        hoy = datetime.date.today().isoformat()
+        self.assertIn(hoy, texto, "la fecha no es la del reloj")
+
+    def test_limites_un_proyecto_sin_carpeta_de_sesiones_no_se_ve_afectado(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        historico.anotar_usuario(tmp.name, "s1", "hola")
+        self.assertEqual(os.listdir(tmp.name), [],
+                         "escribió en un proyecto que no tiene la carpeta")
+
+    def test_privacidad_lo_enmascarado_no_queda_en_claro(self):
+        """**El transversal que no se puede comprobar todavía**: la HU pide que
+        lo enmascarado no quede en claro, y **nada enmascara**. Se deja escrito
+        que el texto se guarda tal cual, que es la verdad de hoy."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(os.path.join(tmp.name, "historico-chat"))
+        historico.anotar_usuario(tmp.name, "s1", "mi clave es " + "abc" + "123def")
+        archivos = [n for n in os.listdir(os.path.join(tmp.name, "historico-chat"))
+                    if n.endswith(".md")]
+        texto = comun.leer(os.path.join(tmp.name, "historico-chat", archivos[0]))
+        self.assertIn("abc123def", texto,
+                      "algo cambió: si ya se enmascara, esta prueba hay que reescribirla")
+
+
+class DisparoAlEscribirUnArchivo(unittest.TestCase):
+    """El disparo al escribir — EP-005 · HU-003."""
+
+    VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+
+    def _correr(self, raiz, archivo):
+        entrada = json.dumps({"cwd": raiz, "tool_input": {"file_path": archivo}})
+        return subprocess.run(
+            [sys.executable, os.path.join(self.VALIDADORES, "hook_md.py"),
+             "--raiz", raiz],
+            input=entrada, capture_output=True, text=True, timeout=60)
+
+    def test_lo_que_no_le_toca_se_ignora_en_silencio(self):
+        """CA-02: con un archivo que no es `.md`, el enganche **corre igual** y
+        no dice nada. Que calle no puede confundirse con que no se ejecutó."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        codigo = os.path.join(tmp.name, "programa.py")
+        with open(codigo, "w", encoding="utf-8") as f:
+            f.write("x = 1\n")
+        salida = self._correr(tmp.name, codigo)
+        self.assertEqual(salida.returncode, 0)
+        self.assertEqual(salida.stdout.strip(), "")
+
+    def test_el_documento_con_enlace_roto_produce_el_aviso_en_el_momento(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        doc = os.path.join(tmp.name, "documento.md")
+        with open(doc, "w", encoding="utf-8") as f:
+            f.write("# Título\n\nVer [lo que no está](no-existe-en-ningun-lado.md).\n")
+        salida = self._correr(tmp.name, doc)
+        self.assertIn("no-existe-en-ningun-lado.md", salida.stdout + salida.stderr)
+
+    def test_errores_si_la_comprobacion_no_puede_correr_el_trabajo_continua(self):
+        """Transversal de errores: con un archivo que ya no está cuando el
+        enganche llega —se borró entre la escritura y el disparo—, no revienta."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        salida = self._correr(tmp.name, os.path.join(tmp.name, "fantasma.md"))
+        self.assertIn(salida.returncode, (0, 2),
+                      f"el enganche murió con código {salida.returncode}")
+
+    def test_rendimiento_el_disparo_no_se_nota(self):
+        """Transversal de rendimiento. Se mide, no se supone."""
+        import time
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        doc = os.path.join(tmp.name, "documento.md")
+        with open(doc, "w", encoding="utf-8") as f:
+            f.write("# Título\n\nTexto normal, sin enlaces.\n")
+        inicio = time.perf_counter()
+        self._correr(tmp.name, doc)
+        tardo = time.perf_counter() - inicio
+        self.assertLess(tardo, 5.0, f"el disparo tardó {tardo:.2f} s")
+
+
+class ModelosDelEncargo(unittest.TestCase):
+    """Los tres modelos del encargo se encadenan — EP-003 · HU-002."""
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def test_toda_hu_nombra_su_epica_y_toda_epica_lista_sus_hu(self):
+        """CA-01, sobre el árbol real: el encadenamiento se comprueba en los
+        dos sentidos, que es lo que hace `trazabilidad.py` con `DOC16`."""
+        sueltos = [h for h in trazabilidad.validar(self.RAIZ)
+                   if "épica" in h.mensaje.lower() and h.severidad == comun.FALLA]
+        self.assertEqual([h.mensaje for h in sueltos], [])
+
+    def test_los_tres_modelos_del_encargo_existen(self):
+        for modelo in ("planteamiento.md", "epica.md", "HU.md"):
+            self.assertTrue(
+                os.path.isfile(os.path.join(self.RAIZ, "plantillas", modelo)),
+                f"falta el modelo `{modelo}`")
+
+    def test_el_modelo_de_hu_pide_como_validar_cada_criterio(self):
+        """CA-02: un criterio sin «cómo validarlo» no se puede comprobar, y la
+        HU entera se vuelve opinión."""
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "HU.md"))
+        self.assertIn("Cómo validarlo", molde)
+        self.assertIn("Aprobado cuando", molde)
+
+    def test_limites_la_epica_sin_hu_y_la_hu_sin_fases_tienen_forma(self):
+        molde_epica = comun.leer(os.path.join(self.RAIZ, "plantillas", "epica.md"))
+        molde_hu = comun.leer(os.path.join(self.RAIZ, "plantillas", "HU.md"))
+        self.assertIn("Historias de usuario", molde_epica)
+        self.assertIn("Fases que la implementan", molde_hu)
+
+
+class ModelosDeLaFase(unittest.TestCase):
+    """Los cinco modelos de la fase — EP-003 · HU-003."""
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CINCO = {
+        "planes/trabajo.md": "qué se va a hacer",
+        "planes/pruebas.md": "con qué casos se comprueba",
+        "planes/resultados.md": "qué dio al correr",
+        "estado-fase.md": "en qué estación va",
+        "funcionalidad-implementada.md": "qué quedó hecho",
+    }
+
+    def test_los_cinco_modelos_de_la_fase_existen(self):
+        for modelo in self.CINCO:
+            self.assertTrue(
+                os.path.isfile(os.path.join(self.RAIZ, "plantillas", *modelo.split("/"))),
+                f"falta el modelo `{modelo}`")
+
+    def test_el_plan_no_lleva_columna_de_estado(self):
+        """CP-004: el plan se aprueba antes y **no se reescribe después**. Una
+        columna de estado invitaría a tocarlo mientras se ejecuta, y entonces
+        dejaría de servir para comparar lo dicho contra lo hecho."""
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "planes", "trabajo.md"))
+        cabeceras = [l for l in molde.splitlines()
+                     if l.startswith("|") and "Tarea" in l]
+        for c in cabeceras:
+            self.assertNotIn("Estado", c,
+                             f"el molde del plan trae columna de estado: {c}")
+
+    def test_el_avance_de_las_tareas_vive_en_el_estado_de_fase(self):
+        """La contraparte: si el plan no lleva estado, alguien tiene que
+        llevarlo. Es el `estado-fase`, y por eso copia los identificadores."""
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "estado-fase.md"))
+        self.assertIn("Avance de las tareas", molde)
+
+    def test_limites_la_fase_recien_abierta_tiene_forma_en_el_resultado(self):
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "estado-fase.md"))
+        self.assertIn("Todavía no se ejecutó", molde,
+                      "el molde no dice cómo se ve una fase sin ejecutar")
+
+
+class ModelosDeLaCapaDeProyecto(unittest.TestCase):
+    """Los modelos de la capa 3 — EP-003 · HU-005."""
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    TRES = ("stack.md", "dominio.md", "mapeo-nombres.md")
+
+    def test_los_tres_modelos_de_la_capa_de_proyecto_existen(self):
+        for modelo in self.TRES:
+            self.assertTrue(
+                os.path.isfile(os.path.join(self.RAIZ, "plantillas", modelo)),
+                f"falta el modelo `{modelo}`")
+
+    def test_privacidad_ningun_modelo_pide_credenciales(self):
+        """Transversal de privacidad: un modelo que pidiera una clave la
+        convertiría en un archivo versionado en cada proyecto que lo llene."""
+        prohibidas = ("contraseña", "password", "api key", "api_key", "token de",
+                      "clave de acceso", "credencial")
+        for modelo in self.TRES:
+            texto = comun.leer(os.path.join(self.RAIZ, "plantillas", modelo)).lower()
+            for palabra in prohibidas:
+                self.assertNotIn(
+                    palabra + ":", texto,
+                    f"`{modelo}` pide `{palabra}` como dato por llenar")
+
+    def test_limites_el_proyecto_recien_instalado_tiene_los_tres_vacios(self):
+        """Con los tres documentos recién copiados y sin llenar, el marcador
+        `«…»` sigue puesto: eso es lo que `13·DOC20` usa para saber que el
+        documento no está terminado."""
+        for modelo in self.TRES:
+            texto = comun.leer(os.path.join(self.RAIZ, "plantillas", modelo))
+            self.assertIn("«", texto,
+                          f"`{modelo}` no marca sus espacios por llenar")
+
+
+class _ProyectoDePrueba(unittest.TestCase):
+    """Base de las clases de EP-007: un proyecto temporal con git."""
+
+    VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+
+    def _proyecto(self, nombre="proyecto"):
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raiz = os.path.join(tmp.name, nombre)
+        os.makedirs(raiz)
+        subprocess.run(["git", "init"], cwd=raiz, capture_output=True, timeout=30)
+        # El instalador anota el proyecto en el registro del estándar: es su
+        # conducta normal, así que se deja y se devuelve el archivo como estaba.
+        registro = instalar.REGISTRO
+        antes = comun.leer(registro) if os.path.isfile(registro) else None
+        if antes is not None:
+            self.addCleanup(lambda: open(registro, "w", encoding="utf-8").write(antes))
+        return raiz
+
+    def _instalar(self, raiz, aplicar):
+        orden = [sys.executable, os.path.join(self.VALIDADORES, "instalar.py"), raiz]
+        if aplicar:
+            orden.append("--aplicar")
+        return subprocess.run(orden, capture_output=True, text=True, timeout=180)
+
+    def _archivos(self, raiz):
+        encontrados = {}
+        for carpeta, dirs, archivos in os.walk(raiz):
+            dirs[:] = [d for d in dirs if d != ".git"]
+            for a in archivos:
+                completa = os.path.join(carpeta, a)
+                encontrados[os.path.relpath(completa, raiz)] = comun.leer(completa)
+        return encontrados
+
+
+class MostrarAntesDeHacer(_ProyectoDePrueba):
+    """El modo que muestra no toca nada — EP-007 · HU-002."""
+
+    def test_el_modo_que_muestra_no_escribe_ni_un_archivo(self):
+        raiz = self._proyecto()
+        antes = self._archivos(raiz)
+        salida = self._instalar(raiz, aplicar=False)
+        self.assertEqual(salida.returncode, 0, salida.stderr)
+        self.assertEqual(self._archivos(raiz), antes,
+                         "el modo simulación escribió algo")
+        self.assertIn("SIMULACIÓN", salida.stdout)
+
+    @unittest.expectedFailure
+    def test_lo_que_muestra_es_lo_que_hace(self):
+        """CA-02: cada archivo que la simulación anuncia aparece de verdad al
+        aplicar, y no aparece ninguno que no hubiera anunciado.
+
+        **Falla hoy** (defecto `D-01` de la fase): la simulación dice
+        «versiones: ni las plantillas ni la versión cambiaron, no hay
+        actualización que registrar» y al aplicar **sí** aparece
+        `documentacion/versiones/<fecha>-<version>.md`. La causa es que en
+        simulación no se ha copiado nada todavía, así que la comparación de
+        huellas no ve cambios; al aplicar, los archivos ya están y el registro
+        se escribe. Lo que muestra no es lo que hace, justo en el archivo que
+        deja constancia de qué se instaló."""
+        import re
+        raiz = self._proyecto()
+        simulado = self._instalar(raiz, aplicar=False).stdout
+        antes = set(self._archivos(raiz))
+        self._instalar(raiz, aplicar=True)
+        nuevos = set(self._archivos(raiz)) - antes
+        self.assertTrue(nuevos, "aplicar no creó nada")
+        for archivo in nuevos:
+            hoja = os.path.basename(archivo)
+            self.assertIn(hoja, simulado,
+                          f"apareció `{archivo}` y la simulación no lo anunció")
+
+    def test_limites_un_proyecto_al_dia_muestra_una_lista_vacia_y_lo_dice(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        segunda = self._instalar(raiz, aplicar=False).stdout
+        self.assertNotIn("(simulado) crear", segunda,
+                         "un proyecto al día sigue anunciando trabajo")
+        self.assertIn("SIMULACIÓN", segunda)
+
+    def test_claridad_cada_linea_dice_el_verbo_y_el_archivo(self):
+        """Transversal de claridad: la lista se entiende sin conocer el
+        instalador por dentro. Cada línea empieza por qué se va a hacer."""
+        raiz = self._proyecto()
+        lineas = [l.strip() for l in self._instalar(raiz, aplicar=False).stdout.splitlines()
+                  if "(simulado)" in l]
+        self.assertTrue(lineas)
+        # Cada línea tiene que decir **qué se va a hacer** en palabras, no
+        # solo nombrar un archivo. Se acepta la orden literal de una
+        # herramienta —`git config …`— porque nombra lo que ejecuta; lo que no
+        # se acepta es una línea que solo diga una ruta.
+        for l in lineas:
+            resto = l.split("(simulado)", 1)[1].strip()
+            self.assertTrue(resto, f"línea vacía: {l}")
+            primera = resto.split()[0].rstrip(":")
+            self.assertGreaterEqual(
+                len(resto.split()), 2,
+                f"la línea no dice qué se hace, solo nombra algo: {l}")
+            self.assertFalse(primera.startswith((".", "/", "\\")),
+                             f"la línea empieza por una ruta, no por la acción: {l}")
+
+
+class EstructuraDeCarpetas(_ProyectoDePrueba):
+    """Las carpetas quedan creadas y lo que existía no se toca — EP-007 · HU-003."""
+
+    def test_instalar_dos_veces_deja_el_mismo_resultado(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        primera = self._archivos(raiz)
+        self._instalar(raiz, aplicar=True)
+        segunda = self._archivos(raiz)
+        self.assertEqual(set(primera), set(segunda), "la segunda pasada creó o borró")
+        distintos = [a for a in primera if primera[a] != segunda[a]]
+        # El registro de versión lleva la fecha; el resto no puede cambiar.
+        self.assertEqual([a for a in distintos if "versiones" not in a], [])
+
+    def test_compatibilidad_ruta_con_espacios_y_tildes(self):
+        raiz = self._proyecto("proyecto de prueba con tildes áéíóú")
+        salida = self._instalar(raiz, aplicar=True)
+        self.assertEqual(salida.returncode, 0, salida.stderr)
+        self.assertTrue(os.path.isfile(os.path.join(raiz, "CLAUDE.md")),
+                        "no instaló en una ruta con espacios y tildes")
+
+    def test_limites_el_proyecto_completo_no_cambia_en_nada(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        antes = self._archivos(raiz)
+        salida = self._instalar(raiz, aplicar=False)
+        self.assertEqual(self._archivos(raiz), antes)
+        self.assertNotIn("(simulado) crear", salida.stdout)
+
+
+class GenerarLosAutomatismos(_ProyectoDePrueba):
+    """Los automatismos quedan puestos — EP-007 · HU-004."""
+
+    def _ajustes(self, raiz):
+        with open(os.path.join(raiz, ".claude", "settings.json"),
+                  encoding="utf-8") as f:
+            return json.load(f)
+
+    def test_los_enganches_quedan_registrados_con_su_momento(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        ganchos = self._ajustes(raiz).get("hooks", {})
+        self.assertTrue(ganchos, "no quedó ningún enganche registrado")
+        puestos = json.dumps(ganchos)
+        for guion in ("hook_sesion.py", "hook_historico.py", "hook_recuerdos.py",
+                      "hook_md.py", "hook_checklist.py", "hook_resumen.py"):
+            self.assertIn(guion, puestos, f"falta `{guion}`")
+
+    def test_no_se_duplican_al_instalar_dos_veces(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        una = json.dumps(self._ajustes(raiz).get("hooks", {}))
+        self._instalar(raiz, aplicar=True)
+        dos = json.dumps(self._ajustes(raiz).get("hooks", {}))
+        self.assertEqual(una, dos, "los enganches se duplicaron")
+
+    def test_un_enganche_que_se_cae_no_detiene_el_trabajo(self):
+        """CA-01: todos los enganches terminan en 0 aunque su proyecto no
+        tenga nada instalado. Si uno reventara, la sesión se caería con él."""
+        vacio = tempfile.mkdtemp()
+        self.addCleanup(lambda: shutil.rmtree(vacio, ignore_errors=True))
+        entrada = json.dumps({"session_id": "s1", "cwd": vacio,
+                              "prompt": "hola", "transcript_path": ""})
+        for guion, args in (("hook_sesion.py", []),
+                            ("hook_historico.py", ["--modo", "prompt"]),
+                            ("hook_recuerdos.py", []),
+                            ("hook_resumen.py", ["--modo", "inicio"])):
+            salida = subprocess.run(
+                [sys.executable, os.path.join(self.VALIDADORES, guion),
+                 *args, "--raiz", vacio],
+                input=entrada, capture_output=True, text=True, timeout=60)
+            self.assertEqual(salida.returncode, 0,
+                             f"`{guion}` terminó en {salida.returncode}: {salida.stderr[:200]}")
+
+    def test_compatibilidad_la_ruta_generada_soporta_espacios(self):
+        raiz = self._proyecto("carpeta con espacios")
+        self._instalar(raiz, aplicar=True)
+        puestos = json.dumps(self._ajustes(raiz).get("hooks", {}))
+        self.assertIn("hook_sesion.py", puestos)
+
+
+class NoPisarLoEscrito(_ProyectoDePrueba):
+    """Lo que la persona llenó no se pierde — EP-007 · HU-005."""
+
+    def test_el_archivo_modificado_a_mano_conserva_su_contenido(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        propio = os.path.join(raiz, ".agente", "stack.md")
+        with open(propio, "a", encoding="utf-8") as f:
+            f.write("\n## Lo que escribió la persona\n\nEsto no se puede perder.\n")
+        self._instalar(raiz, aplicar=True)
+        self.assertIn("Esto no se puede perder", comun.leer(propio))
+
+    def test_el_claude_md_con_texto_propio_sobrevive(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        claude = os.path.join(raiz, "CLAUDE.md")
+        with open(claude, "a", encoding="utf-8") as f:
+            f.write("\n## Regla propia del proyecto\n\nNo tocar los viernes.\n")
+        self._instalar(raiz, aplicar=True)
+        self.assertIn("No tocar los viernes", comun.leer(claude))
+
+    def test_los_dos_enganches_de_git_si_se_reemplazan(self):
+        """Comportamiento definido, la mitad del transversal de límites: de los
+        15 archivos que deja la instalación, **13 conservan** lo que la persona
+        les escriba y **2 no** — los guiones de `.githooks/`, que son programa
+        generado y no documento por llenar."""
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        gancho = os.path.join(raiz, ".githooks", "commit-msg")
+        with open(gancho, "a", encoding="utf-8") as f:
+            f.write("\n# lo escribió la persona\n")
+        self._instalar(raiz, aplicar=True)
+        self.assertNotIn("lo escribió la persona", comun.leer(gancho))
+
+    def test_limites_pisar_un_archivo_modificado_se_avisa(self):
+        """La otra mitad del transversal: «tiene comportamiento definido **y se
+        avisa**».
+
+        Se avisa: con el archivo intacto el plan dice «commit-msg ya estaba al
+        día»; con el archivo modificado dice «escribir .githooks/commit-msg».
+        Quien lea el plan ve que ese archivo va a cambiar.
+
+        Lo que el aviso **no** distingue es escribirlo por primera vez de
+        pisar lo que alguien escribió: la palabra es la misma. Queda anotado
+        como observación en el resultado de la fase, no como incumplimiento —
+        el criterio pide avisar, y avisa."""
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        limpio = self._instalar(raiz, aplicar=False).stdout
+        gancho = os.path.join(raiz, ".githooks", "commit-msg")
+        with open(gancho, "a", encoding="utf-8") as f:
+            f.write("\n# lo escribió la persona\n")
+        modificado = self._instalar(raiz, aplicar=False).stdout
+        self.assertNotEqual(
+            limpio, modificado,
+            "el plan dice lo mismo con el archivo intacto que modificado")
+
+    def test_el_registro_de_version_dice_que_se_actualizo(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        carpeta = os.path.join(raiz, "documentacion", "versiones")
+        registros = [n for n in os.listdir(carpeta) if n != "README.md"]
+        self.assertTrue(registros, "no quedó registro de versión")
+        texto = comun.leer(os.path.join(carpeta, registros[0]))
+        self.assertIn(comun.leer(os.path.join(
+            os.path.dirname(self.VALIDADORES), "VERSION")).strip(), texto)
+
+
+class NumeracionDePendientes(unittest.TestCase):
+    """El número de pendiente ya tomado — EP-004 · HU-018.
+
+    Lo que esto evita es concreto: los pendientes se citan entre sí por número
+    —«hermano del 33», «el punto 2 del 53»—, así que dar un número ya usado
+    rompe esas citas **sin que nadie se entere**, porque los dos archivos
+    existen y ninguno pisa al otro.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _carpeta(self, abiertos=(), cerrados=(), indice=None):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raiz = os.path.join(tmp.name, "pendientes")
+        os.makedirs(os.path.join(raiz, "hecho"), exist_ok=True)
+        for nombre in abiertos:
+            with open(os.path.join(raiz, nombre), "w", encoding="utf-8") as f:
+                f.write("# pendiente de mentira\n")
+        for nombre in cerrados:
+            with open(os.path.join(raiz, "hecho", nombre), "w", encoding="utf-8") as f:
+                f.write("# cerrado de mentira\n")
+        if indice is not None:
+            with open(os.path.join(raiz, "README.md"), "w", encoding="utf-8") as f:
+                f.write(indice)
+        return tmp.name
+
+    # -- CA-01 · cuál es el próximo número libre --------------------------
+    def test_dice_cual_es_el_proximo_numero_libre(self):
+        raiz = self._carpeta(abiertos=("01-uno.md", "02-dos.md", "03-tres.md"))
+        self.assertEqual(pendientes.proximo_libre(raiz), 4)
+        self.assertIn("el próximo libre es el 04", pendientes.linea_proximo(raiz))
+
+    def test_el_hueco_no_se_reutiliza(self):
+        """El índice dice que «el número no se reutiliza ni se renumeran los
+        demás: los huecos son historia». Entregar un hueco haría que «el 02»
+        apuntara a dos cosas distintas según cuándo se leyera."""
+        raiz = self._carpeta(abiertos=("01-uno.md", "05-cinco.md"))
+        self.assertEqual(pendientes.proximo_libre(raiz), 6)
+
+    def test_el_numero_de_un_cerrado_sigue_tomado_aunque_pierda_el_nombre(self):
+        """**El caso que destapó el defecto de fondo.** Al cerrar un pendiente
+        su archivo se mueve a `hecho/` y **pierde el número**: `02-vigencia…md`
+        pasa a `vigencia-y-poda-de-memoria.md`. Mirando solo la carpeta, el 02
+        parece libre. Lo que conserva la numeración es la fila tachada del
+        índice, `~~02~~`, y por eso hay que leerlo."""
+        indice = ("# Pendientes\n\n"
+                  "| # | P | Pendiente |\n|---|---|---|\n"
+                  "| 01 | P1 | [uno](01-uno.md) |\n"
+                  "| ~~02~~ | — | **hecho** → [dos](hecho/sin-numero.md) |\n")
+        raiz = self._carpeta(abiertos=("01-uno.md",),
+                             cerrados=("sin-numero.md",), indice=indice)
+        self.assertIn(2, pendientes.tomados(raiz),
+                      "el número de un cerrado se dio por libre")
+        self.assertEqual(pendientes.proximo_libre(raiz), 3)
+
+    def test_la_linea_sale_en_la_corrida_de_verdad(self):
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
+             "pendientes"], capture_output=True, text=True, timeout=120, cwd=self.RAIZ)
+        self.assertIn("el próximo libre es el", salida.stdout)
+        self.assertEqual(salida.returncode, 0)
+
+    # -- CA-02 · el número repetido ---------------------------------------
+    def test_avisa_del_numero_repetido(self):
+        raiz = self._carpeta(abiertos=("07-uno.md", "07-otro.md"))
+        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
+        self.assertEqual(len(fallas), 1)
+        self.assertIn("07-uno.md", fallas[0].mensaje)
+        self.assertIn("07-otro.md", fallas[0].mensaje)
+
+    def test_el_repetido_entre_abierto_y_cerrado_tambien_se_ve(self):
+        raiz = self._carpeta(abiertos=("07-uno.md",), cerrados=("07-otro.md",))
+        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
+        self.assertEqual(len(fallas), 1)
+
+    def test_los_ceros_a_la_izquierda_no_hacen_dos_numeros(self):
+        """Transversal de límites: `07` y `7` son el mismo número. Tratarlos
+        como distintos dejaría pasar justo el choque que esto busca."""
+        raiz = self._carpeta(abiertos=("07-uno.md", "7-otro.md"))
+        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
+        self.assertEqual(len(fallas), 1, "`07` y `7` no se vieron como el mismo")
+
+    # -- CA-03 · la carpeta contra el índice, en los dos sentidos ---------
+    def test_el_pendiente_sin_linea_en_el_indice_se_avisa(self):
+        indice = "# Pendientes\n\n| # | Pendiente |\n|---|---|\n| 01 | [uno](01-uno.md) |\n"
+        raiz = self._carpeta(abiertos=("01-uno.md", "02-dos.md"), indice=indice)
+        avisos = [h for h in pendientes.validar(raiz) if "02-dos.md" in h.archivo]
+        self.assertEqual(len(avisos), 1)
+
+    def test_la_linea_del_indice_sin_archivo_se_avisa(self):
+        indice = ("# Pendientes\n\n| # | Pendiente |\n|---|---|\n"
+                  "| 01 | [uno](01-uno.md) |\n| 02 | [dos](02-dos.md) |\n")
+        raiz = self._carpeta(abiertos=("01-uno.md",), indice=indice)
+        avisos = [h for h in pendientes.validar(raiz)
+                  if "02-dos.md" in h.mensaje and "no está en la carpeta" in h.mensaje]
+        self.assertEqual(len(avisos), 1)
+
+    def test_este_repositorio_no_tiene_numeros_repetidos(self):
+        fallas = [h for h in pendientes.validar(self.RAIZ)
+                  if h.severidad == comun.FALLA]
+        self.assertEqual([h.mensaje for h in fallas], [])
+
+    # -- transversales de límites y errores -------------------------------
+    def test_limites_la_carpeta_vacia_no_revienta(self):
+        raiz = self._carpeta()
+        self.assertEqual(pendientes.numerados(raiz), {})
+        self.assertEqual(pendientes.proximo_libre(raiz), 1)
+        self.assertEqual([h for h in pendientes.validar(raiz)
+                          if h.severidad == comun.FALLA], [])
+
+    def test_limites_sin_la_carpeta_es_falla(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        hallazgos = pendientes.validar(tmp.name)
+        self.assertTrue(any(h.severidad == comun.FALLA for h in hallazgos))
+
+    def test_errores_el_archivo_sin_numero_se_reporta_y_no_detiene(self):
+        """El nombre que no se puede interpretar sale como **aviso**: un
+        archivo suelto no puede invalidar la comprobación de los otros."""
+        raiz = self._carpeta(abiertos=("01-uno.md", "notas-sueltas.md"))
+        hallazgos = pendientes.validar(raiz)
+        avisos = [h for h in hallazgos if "no empieza por un número" in h.mensaje]
+        self.assertEqual(len(avisos), 1)
+        self.assertEqual([h for h in hallazgos if h.severidad == comun.FALLA], [])
+        self.assertEqual(pendientes.proximo_libre(raiz), 2)   # sigue contando
+
+    # -- transversal de no regresión --------------------------------------
+    def test_no_regresion_estandar_sigue_dando_lo_mismo(self):
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
+             "estandar"], capture_output=True, text=True, timeout=180, cwd=self.RAIZ)
+        self.assertEqual(salida.returncode, 0)
+
+
+class InventarioDeHU(unittest.TestCase):
+    """La corrida cuenta las HU sin fase — EP-004 · HU-017.
+
+    Lo que se vigila es que el número **salga del árbol**, no de una tabla que
+    alguien mantiene a mano: una cuenta manual se desactualiza en la primera
+    fase que cierre, y el inventario del pendiente 48 existe justamente porque
+    eso ya pasó.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CINCO = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
+             "funcionalidad_implementada.md", "estado-fase.md"]
+
+    def _arbol(self, estructura):
+        """`{'EP-001-e/HU-001-h': {'A-EP-001-HU-001-f': [documentos]}}`."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        for ruta_hu, fases_ in estructura.items():
+            completa_hu = os.path.join(tmp.name, "documentacion", "epicas", ruta_hu)
+            os.makedirs(completa_hu, exist_ok=True)
+            for nombre_fase, documentos in fases_.items():
+                completa = os.path.join(completa_hu, nombre_fase)
+                os.makedirs(completa, exist_ok=True)
+                for doc in documentos:
+                    with open(os.path.join(completa, doc), "w", encoding="utf-8") as f:
+                        f.write("# de mentira\n")
+        return tmp.name
+
+    # -- CA-01 · la corrida dice el total, las completas y las incompletas -
+    def test_con_dos_hu_una_completa_y_otra_no_la_linea_dice_2_1_y_1(self):
+        raiz = self._arbol({
+            "EP-001-e/HU-001-completa": {"A-EP-001-HU-001-f": self.CINCO},
+            "EP-001-e/HU-002-incompleta": {"A-EP-001-HU-002-f": ["plan_trabajo.md"]},
+        })
+        self.assertEqual(fases.inventario(raiz), (2, 1, 1))
+        linea = fases.linea_inventario(raiz)
+        self.assertIn("2 en total", linea)
+        self.assertIn("1 completas", linea)
+        self.assertIn("1 incompletas", linea)
+
+    def test_la_linea_sale_en_la_corrida_de_verdad(self):
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
+             "fases"], capture_output=True, text=True, timeout=180, cwd=self.RAIZ)
+        self.assertIn("HU:", salida.stdout)
+        self.assertIn("en total", salida.stdout)
+
+    # -- CA-02 · el total coincide con las carpetas que hay ---------------
+    def test_el_total_es_el_numero_de_carpetas_hu_del_arbol(self):
+        raiz = os.path.join(self.RAIZ, "documentacion", "epicas")
+        a_mano = 0
+        for epica in sorted(os.listdir(raiz)):
+            ruta = os.path.join(raiz, epica)
+            if not os.path.isdir(ruta) or not epica.startswith("EP-"):
+                continue
+            a_mano += len([h for h in os.listdir(ruta)
+                           if h.startswith("HU-")
+                           and os.path.isdir(os.path.join(ruta, h))])
+        self.assertEqual(fases.inventario(self.RAIZ)[0], a_mano)
+
+    # -- CA-03 · con dos fases, completa solo si las dos lo están ---------
+    def test_la_hu_con_dos_fases_solo_cuenta_completa_si_las_dos_lo_estan(self):
+        con_las_dos = self._arbol({"EP-001-e/HU-001-h": {
+            "A-EP-001-HU-001-una": self.CINCO,
+            "B-EP-001-HU-001-otra": self.CINCO}})
+        self.assertEqual(fases.inventario(con_las_dos), (1, 1, 0))
+
+        una_a_medias = self._arbol({"EP-001-e/HU-001-h": {
+            "A-EP-001-HU-001-una": self.CINCO,
+            "B-EP-001-HU-001-otra": self.CINCO[:-1]}})
+        self.assertEqual(fases.inventario(una_a_medias), (1, 0, 1),
+                         "una HU con una fase a medias contó como completa")
+
+    def test_la_hu_sin_ninguna_fase_no_cuenta_completa(self):
+        raiz = self._arbol({"EP-001-e/HU-001-h": {}})
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1))
+
+    # -- CA-04 y transversal de límites · los tres bordes -----------------
+    def test_limites_la_epica_sin_hu_no_rompe_la_cuenta(self):
+        raiz = self._arbol({"EP-002-con-hu/HU-001-h": {
+            "A-EP-002-HU-001-f": self.CINCO}})
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas", "EP-001-sin-hu"))
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+
+    def test_limites_la_carpeta_hu_sin_su_archivo_cuenta_incompleta(self):
+        """Existe como trabajo aunque le falte el documento. No contarla la
+        volvería invisible, que es lo contrario de lo que el inventario hace."""
+        raiz = self._arbol({"EP-001-e/HU-001-sin-su-md": {}})
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1))
+
+    def test_limites_el_arbol_vacio_no_revienta_y_no_imprime_linea(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.assertEqual(fases.inventario(tmp.name), (0, 0, 0))
+        self.assertEqual(fases.linea_inventario(tmp.name), "",
+                         "sin árbol no debería imprimirse ninguna línea")
+
+    def test_lo_que_no_es_epica_ni_hu_no_se_cuenta(self):
+        raiz = self._arbol({"EP-001-e/HU-001-h": {"A-EP-001-HU-001-f": self.CINCO}})
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas", "notas"))
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas",
+                                 "EP-001-e", "borradores"))
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+
+    # -- transversal de no regresión --------------------------------------
+    def test_no_regresion_los_avisos_de_antes_siguen_saliendo_uno_por_uno(self):
+        """Contar no puede cambiar lo que se reporta: `validar()` y el
+        inventario son dos caminos separados sobre el mismo árbol."""
+        raiz = self._arbol({
+            "EP-001-e/HU-001-h": {"A-EP-001-HU-001-f": ["plan_trabajo.md"]}})
+        faltan = [h for h in fases.validar(raiz) if "faltan documentos" in h.mensaje]
+        self.assertEqual(len(faltan), 1)
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1))
+
+    def test_la_cuenta_del_programa_coincide_con_la_del_inventario_escrito(self):
+        """El pendiente 48 lleva los mismos tres números a mano. Si se separan,
+        uno de los dos está mal — y esta prueba es la que lo dice."""
+        import re
+        texto = comun.leer(os.path.join(self.RAIZ, "pendientes", "48-inventario-hu.md"))
+        def dato(etiqueta):
+            m = re.search(r"\| \*\*" + etiqueta + r"\*\* \| (\d+) \|", texto)
+            return int(m.group(1)) if m else None
+        self.assertEqual(fases.inventario(self.RAIZ),
+                         (dato("Total de HU"), dato("Completas"), dato("Incompletas")))
+
+
+class ClavesYDatosSensibles(unittest.TestCase):
+    """Claves en el código y archivos que no se guardan — EP-004 · HU-007.
+
+    Lo que la clase `Secretos` ya probaba es que se detecte. Lo que faltaba es
+    lo de alrededor: que el hallazgo **no reproduzca el secreto**, y que un
+    archivo binario, uno enorme y uno ilegible no rompan la corrida.
+
+    Ningún secreto de esta clase se escribe entero como literal: se arma en
+    tiempo de ejecución, porque el escaneo de GitHub bloquea el envío si ve uno
+    con forma real, aunque sea de mentira.
+    """
+
+    def _clave_aws(self):
+        return "AKIA" + "IOSFODNN7" + "EXAMPLE1"
+
+    # -- transversal de privacidad · el hallazgo no reproduce el secreto ---
+    def test_privacidad_el_hallazgo_no_reproduce_la_clave_encontrada(self):
+        clave = self._clave_aws()
+        hallazgos = secretos.revisar_texto(f"clave = '{clave}'\n", "x.py")
+        self.assertTrue(hallazgos, "no detectó la clave")
+        for h in hallazgos:
+            self.assertNotIn(clave, h.mensaje,
+                             "el hallazgo reproduce el secreto que encontró")
+
+    def test_privacidad_el_aviso_nombra_la_clave_pero_no_su_valor(self):
+        valor = "sup3rs3cr3to-de-verdad"
+        hallazgos = secretos.revisar_texto(f'password = "{valor}"\n', "x.py")
+        self.assertTrue(hallazgos)
+        self.assertIn("password", hallazgos[0].mensaje)
+        self.assertNotIn(valor, hallazgos[0].mensaje)
+
+    # -- CA-01 · la clave se reporta con archivo y línea -------------------
+    def test_la_clave_se_reporta_con_su_archivo_y_su_linea(self):
+        texto = "linea uno\nlinea dos\nclave = '" + self._clave_aws() + "'\n"
+        hallazgos = secretos.revisar_texto(texto, "config/ajustes.py")
+        self.assertEqual(len(hallazgos), 1)
+        self.assertEqual(hallazgos[0].archivo, "config/ajustes.py")
+        self.assertEqual(hallazgos[0].linea, 3)
+        self.assertEqual(hallazgos[0].severidad, comun.FALLA)
+
+    # -- CA-03 · el ejemplo no se confunde con una clave ------------------
+    def test_los_moldes_no_se_reportan(self):
+        for valor in ("changeme", "your-api-key", "tu_clave_aqui", "<TU_CLAVE>",
+                      "placeholder", "xxxxxxxx", "ejemplo-de-token"):
+            self.assertEqual(
+                secretos.revisar_texto(f'api_key = "{valor}"\n', "x.py"), [],
+                f"`{valor}` se reportó como secreto y es un molde")
+
+    def test_leer_del_entorno_no_se_reporta(self):
+        for linea in ('api_key = os.environ["API_KEY"]',
+                      'secret = process.env.SECRET',
+                      'password = config("DB_PASS")'):
+            self.assertEqual(secretos.revisar_texto(linea + "\n", "x.py"), [],
+                             f"se reportó una línea que lee del entorno: {linea}")
+
+    # -- transversal de límites · binario, enorme y sin permisos ----------
+    def test_limites_binario_enorme_e_ilegible_no_rompen_la_corrida(self):
+        """Los tres bordes del transversal, sobre el camino real de
+        `secretos.validar`, que es el que abre archivos."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        subprocess.run(["git", "init"], cwd=tmp.name, capture_output=True, timeout=30)
+
+        with open(os.path.join(tmp.name, "binario.py"), "wb") as f:
+            f.write(b"\x00\x01\xff\xfe" * 100 + b"\nclave = 'x'\n")
+        with open(os.path.join(tmp.name, "enorme.py"), "w", encoding="utf-8") as f:
+            f.write("# relleno\n" * 200_000)          # ~2 MB, más del tope de 1 MB
+        with open(os.path.join(tmp.name, "normal.py"), "w", encoding="utf-8") as f:
+            f.write("clave = '" + self._clave_aws() + "'\n")
+        subprocess.run(["git", "add", "-A"], cwd=tmp.name, capture_output=True, timeout=30)
+
+        hallazgos = secretos.validar(tmp.name)          # no revienta
+        self.assertTrue(any("normal.py" in h.archivo for h in hallazgos),
+                        "el archivo normal dejó de revisarse por culpa de los bordes")
+
+    def test_limites_el_texto_vacio_no_produce_nada(self):
+        self.assertEqual(secretos.revisar_texto("", "x.py"), [])
+        self.assertEqual(secretos.revisar_texto("\n\n\n", "x.py"), [])
+
+    # -- CA-02 · el archivo que no debe guardarse se reporta --------------
+    def test_el_env_versionado_se_reporta(self):
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        subprocess.run(["git", "init"], cwd=tmp.name, capture_output=True, timeout=30)
+        with open(os.path.join(tmp.name, ".env"), "w", encoding="utf-8") as f:
+            f.write("DB_PASS=algo\n")
+        subprocess.run(["git", "add", "-f", ".env"], cwd=tmp.name,
+                       capture_output=True, timeout=30)
+        hallazgos = versionado.validar(tmp.name)
+        self.assertTrue(any(".env" in h.mensaje or ".env" in h.archivo
+                            for h in hallazgos),
+                        "un `.env` versionado no se reportó")
+
+
+class EstructuraYNomenclatura(unittest.TestCase):
+    """Lo que `fases.py` comprueba de `F12` — EP-004 · HU-006.
+
+    Los tres criterios de la HU ya tenían casos sueltos en la clase `Fases`;
+    lo que faltaba era el del CA-03 —que la fase incompleta **diga cuáles**
+    documentos le faltan— y los dos bordes del transversal de límites.
+    """
+
+    def _arbol(self, fases_con_documentos):
+        """Un árbol `documentacion/epicas/` de mentira.
+
+        `fases_con_documentos` es `{ruta_de_fase: [documentos]}`.
+        """
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        for ruta, documentos in fases_con_documentos.items():
+            completa = os.path.join(tmp.name, "documentacion", "epicas", ruta)
+            os.makedirs(completa, exist_ok=True)
+            for doc in documentos:
+                with open(os.path.join(completa, doc), "w", encoding="utf-8") as f:
+                    f.write("# de mentira\n")
+        return tmp.name
+
+    # -- CA-03 · la fase incompleta dice qué le falta ---------------------
+    def test_la_fase_con_solo_su_plan_dice_cuales_cuatro_le_faltan(self):
+        raiz = self._arbol({
+            "EP-001-epica/HU-001-hu/A-EP-001-HU-001-fase": ["plan_trabajo.md"],
+        })
+        faltan = [h for h in fases.validar(raiz) if "faltan documentos" in h.mensaje]
+        self.assertEqual(len(faltan), 1, "no se reportó la fase incompleta")
+        mensaje = faltan[0].mensaje
+        for doc in ("plan_pruebas.md", "resultado_pruebas.md",
+                    "estado-fase.md", "funcionalidad_implementada.md"):
+            self.assertIn(doc, mensaje, f"el hallazgo no nombra `{doc}`")
+        self.assertNotIn("plan_trabajo.md", mensaje,
+                         "nombra como faltante uno que sí está")
+
+    def test_la_fase_completa_no_se_reporta(self):
+        raiz = self._arbol({
+            "EP-001-epica/HU-001-hu/A-EP-001-HU-001-fase": [
+                "plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
+                "estado-fase.md", "funcionalidad_implementada.md"],
+        })
+        faltan = [h for h in fases.validar(raiz) if "faltan documentos" in h.mensaje]
+        self.assertEqual(faltan, [], "se reportó una fase que está completa")
+
+    # -- transversal de límites · los tres bordes -------------------------
+    def test_limites_epica_sin_hu_hu_sin_fases_y_carpeta_vacia(self):
+        raiz = self._arbol({})
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas",
+                                 "EP-001-epica-sin-hu"), exist_ok=True)
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas",
+                                 "EP-002-epica/HU-001-hu-sin-fases"), exist_ok=True)
+        hallazgos = fases.validar(raiz)
+        # Ninguno de los tres bordes puede reventar la corrida ni dar falla.
+        self.assertEqual([h for h in hallazgos if h.severidad == comun.FALLA], [],
+                         "un borde vacío produjo una falla")
+        self.assertTrue(any("HU-001-hu-sin-fases" in h.archivo or
+                            "HU-001-hu-sin-fases" in h.mensaje for h in hallazgos),
+                        "la HU sin fases no se avisó")
+
+    def test_limites_el_arbol_vacio_es_falla_y_no_una_excepcion(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        hallazgos = fases.validar(tmp.name)
+        self.assertTrue(any(h.severidad == comun.FALLA for h in hallazgos),
+                        "un árbol sin `documentacion/epicas/` debería ser falla")
+
+    # -- transversal de no regresión --------------------------------------
+    def test_no_regresion_lo_ya_cerrado_sigue_pasando(self):
+        """Las fases ya cerradas de este repositorio no pueden empezar a
+        reportarse por haber sumado comprobaciones."""
+        raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        cerradas = ("A-EP-003-HU-001-marca-de-espacio-por-llenar",
+                    "A-EP-007-HU-001-rellenar-los-marcadores-al-copiar",
+                    "A-EP-004-HU-014-comparar-los-dos-veredictos")
+        malas = [h for h in fases.validar(raiz)
+                 if any(c in h.archivo for c in cerradas)]
+        self.assertEqual([h.mensaje for h in malas], [])
+
+
+class FormatoDelHallazgo(unittest.TestCase):
+    """Qué trae un hallazgo y qué hace cada severidad — EP-004 · HU-003.
+
+    Lo que se vigila es que el hallazgo **alcance para arreglar sin abrir el
+    programa que lo reportó**: archivo, línea cuando la hay, y la regla que se
+    incumplió. Y que la severidad signifique algo: el aviso no detiene, la
+    falla sí.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _corrida_real(self):
+        hallazgos = []
+        for modulo in (flujo, fases, trazabilidad):
+            hallazgos += modulo.validar(self.RAIZ)
+        return hallazgos
+
+    # -- CA-01 · el hallazgo alcanza para arreglar -------------------------
+    def test_todo_hallazgo_dice_en_que_archivo(self):
+        sin = [h for h in self._corrida_real() if not h.archivo]
+        self.assertEqual(sin, [], f"{len(sin)} hallazgos sin archivo")
+
+    def test_todo_hallazgo_nombra_la_regla_que_se_incumple(self):
+        """Sin la regla, el hallazgo dice qué está mal y no **por qué**, y hay
+        que abrir el programa para saber qué se exigía."""
+        import re
+        # La regla va entre paréntesis, sola —`(F18)`— o seguida de dos puntos
+        # y su porqué —`(F2: sin especificación acordada no hay código)`—, y a
+        # veces con varias —`(F4/F14)`—. Las tres formas cuentan.
+        patron = re.compile(r"\([A-Z]{1,4}\d+(\.\d+)?([/·][A-Z]{1,4}\d+)*[):]|\bHU-\d+\b")
+        sin = [h for h in self._corrida_real() if not patron.search(h.mensaje)]
+        self.assertEqual([h.mensaje for h in sin], [],
+                         "hay hallazgos que no dicen qué regla se incumple")
+
+    def test_el_hallazgo_de_archivo_entero_no_inventa_una_linea(self):
+        """Transversal de límites: un hallazgo sobre el archivo completo —«al
+        plan le faltan secciones»— **no tiene** línea concreta, y la forma
+        definida es dejarla en cero, no apuntar a la línea 1, que mandaría a
+        mirar donde no está el problema."""
+        sin_linea = [h for h in self._corrida_real() if not h.linea]
+        self.assertTrue(sin_linea, "no hay ningún hallazgo de archivo entero que probar")
+        for h in sin_linea:
+            self.assertEqual(h.linea, 0)
+            self.assertTrue(h.archivo)
+
+    # -- CA-02 y CA-03 · qué hace cada severidad --------------------------
+    def test_solo_avisos_termina_en_cero(self):
+        codigo = comun.reportar([comun.Hallazgo(comun.AVISO, "a.md", 3, "algo (X1)"),
+                                 comun.Hallazgo(comun.AVISO, "b.md", 0, "otra (X2)")],
+                                titulo=None)
+        self.assertEqual(codigo, 0)
+
+    def test_una_falla_termina_en_uno(self):
+        codigo = comun.reportar([comun.Hallazgo(comun.AVISO, "a.md", 3, "algo (X1)"),
+                                 comun.Hallazgo(comun.FALLA, "b.md", 7, "grave (X2)")],
+                                titulo=None)
+        self.assertEqual(codigo, 1)
+
+    def test_sin_hallazgos_termina_en_cero(self):
+        self.assertEqual(comun.reportar([], titulo=None), 0)
+
+    @unittest.expectedFailure
+    def test_errores_el_archivo_que_no_se_puede_leer_no_vuelca_la_excepcion(self):
+        """Transversal de errores de la HU: «el archivo que no se puede leer
+        produce un mensaje entendible, no un volcado técnico».
+
+        **Falla hoy** (defecto `D-01` de la fase): `comun.leer` abre sin
+        red, así que un `.md` que no sea UTF-8 **tumba la corrida entera** con
+        un `UnicodeDecodeError` de Python — y se lleva por delante todos los
+        hallazgos ya encontrados. Comprobado corriendo `validar.py estandar`
+        sobre un árbol con un archivo mal codificado: termina en 1, sin una
+        sola línea de salida útil."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raro = os.path.join(tmp.name, "raro.md")
+        with open(raro, "wb") as f:
+            f.write(b"# T\xed\xf3tulo mal codificado\n\ntexto\n")
+        comun.leer(raro)                 # no debería reventar
+
+    def test_la_corrida_completa_respeta_los_dos_codigos(self):
+        """Por el camino real, no llamando a `reportar`: se corre `validar.py`
+        como orden del sistema."""
+        def correr(sub):
+            return subprocess.run(
+                [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"), sub],
+                capture_output=True, text=True, timeout=180, cwd=self.RAIZ).returncode
+        self.assertEqual(correr("flujo"), 0, "una corrida de solo avisos no dio 0")
+        self.assertEqual(correr("estandar"), 0, "`estandar` está en rojo por otra causa")
+
+
+class ClasificacionDeCadaRegla(unittest.TestCase):
+    """Toda regla dice si es comprobable — EP-004 · HU-002.
+
+    El registro es [`validadores/reglas-validables.md`](../validadores/reglas-validables.md).
+    Se comprueba **en los dos sentidos**: que ninguna regla se quede sin
+    clasificar, y que el registro no nombre reglas que no existan. Hoy el
+    programa solo mira el primer sentido.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _base(self):
+        textos = []
+        for carpeta, _, archivos in os.walk(os.path.join(self.RAIZ, "base")):
+            for n in archivos:
+                if n.endswith(".md"):
+                    textos.append(comun.leer(os.path.join(carpeta, n)))
+        return "\n".join(textos)
+
+    # -- CA-01, ida: ninguna regla sin clasificar -------------------------
+    def test_ninguna_regla_de_base_se_queda_sin_clasificar(self):
+        sin = [h for h in metareglas.validar(self.RAIZ)
+               if "no aparece en" in h.mensaje]
+        self.assertEqual(sin, [], f"reglas sin clasificar: {[h.mensaje for h in sin]}")
+
+    # -- CA-01, vuelta: el registro no inventa reglas ---------------------
+    def test_el_registro_no_nombra_reglas_que_no_existan(self):
+        """La vuelta que el programa **no** comprueba. Se hace acá contra el
+        texto de `base/`, no contra lo que el analizador reconoce: si no,
+        cualquier regla que el analizador no vea saldría como inventada."""
+        import re
+        base = self._base()
+        inventadas = [rid for rid in sorted(metareglas._clasificadas(self.RAIZ))
+                      if not re.search(r"\b" + re.escape(rid) + r"\b", base)]
+        self.assertEqual(inventadas, [], f"el registro nombra lo que no existe: {inventadas}")
+
+    @unittest.expectedFailure
+    def test_el_analizador_ve_todas_las_reglas_escritas_en_base(self):
+        """**Falla hoy** (defecto `D-01` de la fase): `metareglas.reglas()`
+        solo reconoce las reglas escritas como `## `. Las cuatro del capítulo
+        16 están escritas como `### CQ1 · …`, así que el analizador **no las
+        ve** — y ninguna de las 20 filas del checklist se les aplica nunca.
+
+        No es que estén mal clasificadas: es que no existen para el programa.
+        Sale en verde por el mismo motivo por el que pasaría un validador que
+        no valida nada."""
+        vistas = {r.id for r in metareglas.reglas(self.RAIZ)}
+        for rid in ("CQ1", "CQ2", "CQ3", "CQ4"):
+            self.assertIn(rid, vistas, f"el analizador no ve `{rid}`")
+
+    # -- CA-01: el registro no se lee por rangos --------------------------
+    def test_el_registro_no_clasifica_por_rangos(self):
+        """Un rango como «C1–C17» no puede valer por diecisiete reglas: nadie
+        sabría cuál de las diecisiete falta. Ya pasó, y se arregló en
+        `A-EP-001-HU-009`."""
+        clasificadas = metareglas._clasificadas(self.RAIZ)
+        self.assertIn("C1", clasificadas)
+        self.assertIn("C17", clasificadas)
+        self.assertNotIn("C1–C17", clasificadas)
+        self.assertNotIn("C1-C17", clasificadas)
+
+    # -- CA-02: la regla comprobada dice quién la comprueba ---------------
+    def test_por_el_registro_se_llega_al_programa_que_comprueba(self):
+        registro = comun.leer(os.path.join(self.RAIZ, "validadores",
+                                           "reglas-validables.md"))
+        for regla, programa in (("04·S4", "secretos.py"),
+                                ("10·DEP2", "dependencias.py"),
+                                ("09·G4", "rama.py")):
+            fila = [l for l in registro.splitlines()
+                    if l.startswith("|") and regla in l]
+            self.assertTrue(fila, f"`{regla}` no tiene fila en el registro")
+            self.assertIn(programa, fila[0],
+                          f"la fila de `{regla}` no nombra su programa")
+            self.assertTrue(os.path.isfile(
+                os.path.join(self.RAIZ, "validadores", programa)),
+                f"`{programa}` no existe")
+
+    # -- transversales de la HU, que el plan de pruebas no cubrió ---------
+    def test_limites_la_regla_derogada_se_conserva_marcada_y_no_se_exige(self):
+        """Transversal de límites: una regla derogada **no desaparece** del
+        registro ni se le exige clasificación nueva. Las cuatro `F4.x` están
+        derogadas, siguen en `base/` con su marca, y el validador no las
+        reclama."""
+        derogadas = [r for r in metareglas.reglas(self.RAIZ) if r.derogada]
+        self.assertTrue(derogadas, "no hay ninguna regla derogada que probar")
+        reclamadas = {h.mensaje for h in metareglas.validar(self.RAIZ)
+                      if "no aparece en" in h.mensaje}
+        for r in derogadas:
+            self.assertFalse(any(r.id in m for m in reclamadas),
+                             f"se le exige clasificación a `{r.id}`, que está derogada")
+
+    # -- CA-03: una regla nueva sin clasificar se avisa -------------------
+    def test_una_regla_nueva_sin_clasificar_se_avisa(self):
+        """En copia, no sobre `base/`: escribir una regla de mentira en el
+        cuerpo real dejaría el repositorio con una regla que nadie aprobó."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        base = os.path.join(tmp.name, "base")
+        os.makedirs(os.path.join(base, "20-meta-reglas"))
+        with open(os.path.join(base, "99-inventado.md"), "w", encoding="utf-8") as f:
+            f.write("# Capítulo inventado\n\n## ZZ1 · Una regla que nadie clasificó\n\n"
+                    "Texto de la regla.\n\n```\nINCORRECTO: a\nCORRECTO: b\n```\n")
+        os.makedirs(os.path.join(tmp.name, "validadores"))
+        with open(os.path.join(tmp.name, "validadores", "reglas-validables.md"),
+                  "w", encoding="utf-8") as f:
+            f.write("# Qué reglas del estándar son validables\n\n(ninguna)\n")
+        avisos = [h for h in metareglas.validar(tmp.name)
+                  if "ZZ1" in h.mensaje and "no aparece en" in h.mensaje]
+        self.assertEqual(len(avisos), 1, "la regla sin clasificar no se avisó")
+
+    @unittest.expectedFailure
+    def test_la_regla_sin_clasificar_detiene_la_publicacion(self):
+        """CA-03 pide que una regla nueva **no se publique** sin clasificar.
+        **Falla hoy** (defecto `D-02`): lo que sale es un **AVISO**, que no
+        detiene nada — y además `metareglas.py` **no tiene subcomando** en
+        `validar.py`, así que en una corrida normal ni siquiera se ejecuta.
+        Es el punto 2 del pendiente 53."""
+        import re
+        entradas = re.findall(r'sub\.add_parser\("([a-z]+)"',
+                              comun.leer(os.path.join(self.RAIZ, "validadores",
+                                                      "validar.py")))
+        self.assertIn("metareglas", entradas,
+                      "`metareglas.py` no se puede correr desde `validar.py`")
+
+
+class TodoEnganchePreparaSuSalida(unittest.TestCase):
+    """Ningún enganche escribe en la página de códigos de la consola.
+
+    Es el pendiente [45] otra vez, en otro archivo: allá `instalar()` se moría
+    al imprimir una flecha porque solo `main()` preparaba la consola; acá
+    `hook_resumen.py` era el único de los seis que no llamaba a
+    `preparar_salida()`, y su texto —lleno de acentos y comillas angulares—
+    salía en cp1252. Con la salida en una tubería ni siquiera se podía
+    decodificar. Se arregló el 2026-08-17; esta prueba es para que la lista no
+    vuelva a quedar coja cuando nazca el séptimo.
+    """
+
+    VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+
+    def test_los_seis_enganches_llaman_a_preparar_salida(self):
+        enganches = sorted(f for f in os.listdir(self.VALIDADORES)
+                           if f.startswith("hook_") and f.endswith(".py"))
+        self.assertGreaterEqual(len(enganches), 6, "faltan enganches por revisar")
+        sin_preparar = [f for f in enganches
+                        if "preparar_salida()" not in
+                        comun.leer(os.path.join(self.VALIDADORES, f))]
+        self.assertEqual(sin_preparar, [],
+                         f"enganches que no preparan su salida: {sin_preparar}")
+
+
+class IndiceDeLosRecuerdos(unittest.TestCase):
+    """El índice dice de qué trata cada recuerdo — EP-006 · HU-002 · CA-02.
+
+    Se comprueba **en los dos sentidos**. Con uno solo, la mitad de los errores
+    pasa: si solo se mira que cada archivo tenga su línea, una línea que apunta
+    a un archivo borrado sobrevive; si solo se mira al revés, un recuerdo nuevo
+    sin indexar tampoco se ve.
+    """
+
+    CARPETA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                           "historico-chat", "memory")
+
+    def _archivos(self, carpeta):
+        return {f for f in os.listdir(carpeta)
+                if f.endswith(".md") and f != "memory.md"}
+
+    def _enlazados(self, carpeta):
+        import re
+        idx = comun.leer(os.path.join(carpeta, "memory.md"))
+        return {e for e in re.findall(r"\]\(([^)]+\.md)\)", idx)
+                if "/" not in e and e != "memory.md"}
+
+    def test_todo_recuerdo_de_esta_casa_tiene_su_linea_en_el_indice(self):
+        faltan = self._archivos(self.CARPETA) - self._enlazados(self.CARPETA)
+        self.assertEqual(faltan, set(), f"sin línea en el índice: {sorted(faltan)}")
+
+    def test_toda_linea_del_indice_de_esta_casa_tiene_su_archivo(self):
+        sobran = self._enlazados(self.CARPETA) - self._archivos(self.CARPETA)
+        self.assertEqual(sobran, set(), f"línea sin archivo: {sorted(sobran)}")
+
+    def test_privacidad_ningun_recuerdo_lleva_claves_ni_datos_personales(self):
+        """Transversal de privacidad de la HU. Se corre el mismo detector que
+        vigila el código (`04·S4`), no una revisión a ojo: a ojo, un recuerdo
+        nuevo con una clave pegada pasaría el día que nadie mire."""
+        hallazgos = [h for h in secretos.validar(instalar.RAIZ)
+                     if os.path.join("historico-chat", "memory") in h.archivo]
+        self.assertEqual(hallazgos, [], f"secretos en los recuerdos: {hallazgos}")
+
+    def test_el_indice_vacio_es_valido(self):
+        """Transversal de límites: un proyecto sin nada guardado tiene un
+        índice válido, vacío. No es un error que no haya recuerdos todavía."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(tmp.name, exist_ok=True)
+        with open(os.path.join(tmp.name, "memory.md"), "w", encoding="utf-8") as f:
+            f.write("# Memoria del agente\n\n## Índice\n\n(todavía no hay ninguno)\n")
+        self.assertEqual(self._archivos(tmp.name), set())
+        self.assertEqual(self._enlazados(tmp.name), set())
+
+    def test_por_el_indice_se_llega_al_recuerdo_sin_abrir_los_otros(self):
+        """CA-02: cada línea dice **de qué trata**, no solo cómo se llama. Se
+        comprueba que ninguna línea del índice sea solo el enlace: si el texto
+        de la fila no agrega nada, hay que abrir los 18 para encontrar uno."""
+        import re
+        idx = comun.leer(os.path.join(self.CARPETA, "memory.md"))
+        filas = [l for l in idx.splitlines()
+                 if l.startswith("|") and re.search(r"\]\([^/)]+\.md\)", l)]
+        self.assertGreaterEqual(len(filas), 1, "el índice no tiene filas de recuerdo")
+        for fila in filas:
+            celdas = [c.strip() for c in fila.strip().strip("|").split("|")]
+            descripcion = celdas[-1]
+            self.assertNotEqual(descripcion, "", f"fila sin descripción: {fila}")
+            self.assertGreater(len(descripcion), 20,
+                               f"la descripción no dice de qué trata: {fila}")
+
+
+class ElRecuerdoTraeSusTresPartes(unittest.TestCase):
+    """Qué se pide, por qué y cómo se aplica — EP-006 · HU-005 · CA-02.
+
+    El **por qué** es el que se pierde primero y el que más cuesta reponer: sin
+    él, un recuerdo se lee como un capricho y la siguiente sesión lo discute
+    otra vez. El **cómo se aplica** es lo que lo vuelve accionable.
+    """
+
+    CARPETA = IndiceDeLosRecuerdos.CARPETA
+
+    def _partes(self, texto):
+        return ("**Por qué" in texto, "Cómo se aplica" in texto)
+
+    def test_todo_recuerdo_de_esta_casa_dice_por_que_y_como_se_aplica(self):
+        sin_partes = []
+        for f in sorted(os.listdir(self.CARPETA)):
+            if not f.endswith(".md") or f == "memory.md":
+                continue
+            porque, como = self._partes(comun.leer(os.path.join(self.CARPETA, f)))
+            if not (porque and como):
+                sin_partes.append((f, porque, como))
+        self.assertEqual(sin_partes, [], f"recuerdos incompletos: {sin_partes}")
+
+    def test_un_recuerdo_sin_el_porque_se_detecta(self):
+        """El caso negativo. Sin él, la prueba de arriba pasaría también con
+        un comprobador que no comprueba nada."""
+        porque, como = self._partes("# Algo\n\nSe hace así.\n\n**Cómo se aplica:** así.\n")
+        self.assertFalse(porque)
+        self.assertTrue(como)
+
+
+class ElAlmacenLocalQuedaVacio(unittest.TestCase):
+    """El almacén de la herramienta queda vacío — EP-006 · HU-006.
+
+    Lo que se vigila no es que el recuerdo llegue al repositorio, sino que **no
+    quede una segunda copia** donde nadie la revisa: dos versiones del mismo
+    recuerdo terminan diciendo cosas distintas, y manda la que no se ve.
+    """
+
+    CASA_REAL = os.path.expanduser("~")
+
+    def _monta(self, locales=None, repo=None):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        proyecto = os.path.join(tmp.name, "proyecto")
+        casa = os.path.join(tmp.name, "casa")
+        for carpeta, archivos in ((recuerdos.carpeta_local(proyecto, casa), locales or {}),
+                                  (recuerdos.carpeta_repo(proyecto), repo or {})):
+            if archivos:
+                os.makedirs(carpeta, exist_ok=True)
+                for nombre, texto in archivos.items():
+                    with open(os.path.join(carpeta, nombre), "w", encoding="utf-8") as f:
+                        f.write(texto)
+        return proyecto, casa
+
+    def test_despues_de_recoger_el_almacen_local_no_tiene_archivos(self):
+        proyecto, casa = self._monta(locales={"algo.md": "# Algo\n"})
+        recuerdos.migrar(proyecto, aplicar=True, casa=casa)
+        local = recuerdos.carpeta_local(proyecto, casa)
+        self.assertEqual([f for f in os.listdir(local) if f.endswith(".md")], [])
+
+    def test_no_queda_un_puntero_en_lugar_del_texto(self):
+        """CA-02: puesto a mano un archivo que solo dice dónde quedó el
+        recuerdo, el recogido **también** lo saca. Un puntero es una segunda
+        copia que envejece igual que el texto."""
+        puntero = "# Ver el repositorio\n\nEste recuerdo vive en `historico-chat/memory/algo.md`.\n"
+        proyecto, casa = self._monta(locales={"puntero.md": puntero})
+        recuerdos.migrar(proyecto, aplicar=True, casa=casa)
+        local = recuerdos.carpeta_local(proyecto, casa)
+        quedan = [f for f in os.listdir(local) if f.endswith(".md")]
+        self.assertEqual(quedan, [], f"quedó un puntero en el almacén local: {quedan}")
+
+    def test_con_el_almacen_ya_vacio_no_falla_ni_hace_nada(self):
+        proyecto, casa = self._monta(repo={"algo.md": "# Algo\n"})
+        movidos = recuerdos.migrar(proyecto, aplicar=True, casa=casa)
+        self.assertEqual(movidos, [])
+
+    @unittest.expectedFailure
+    def test_no_se_lleva_lo_que_no_es_recuerdo(self):
+        """CP-001, paso 5: en el almacén local puede haber archivos de la
+        herramienta que no son recuerdos. Llevárselos al repositorio sería
+        peor que dejarlos.
+
+        **Falla hoy, y el programa no está claramente equivocado.** `sueltos()`
+        devuelve *todo* archivo del almacén, no solo los `.md`, así que un
+        `config.json` termina en `historico-chat/memory/`. Pero dejarlo sería
+        incumplir [`01·C19`], que exige el almacén **vacío** — y entonces
+        `revisar()` reprobaría para siempre por un archivo que no es un
+        recuerdo.
+
+        Las dos salidas son malas y elegir entre ellas no es del que ejecuta:
+        o el recogido distingue qué es recuerdo y `C19` acepta que quede lo que
+        no lo es, o se acepta que se lleve todo. Queda como fallo esperado y
+        como pregunta al usuario, no como parche."""
+        proyecto, casa = self._monta(locales={"algo.md": "# Algo\n",
+                                              "config.json": "{}\n"})
+        recuerdos.migrar(proyecto, aplicar=True, casa=casa)
+        local = recuerdos.carpeta_local(proyecto, casa)
+        self.assertIn("config.json", os.listdir(local))
+        self.assertNotIn("config.json", os.listdir(recuerdos.carpeta_repo(proyecto)))
+
+    def test_no_quedan_dos_versiones_del_mismo_recuerdo(self):
+        """CP-002, paso 5: lo que este vaciado evita no es perder el recuerdo,
+        sino tener dos copias donde manda la que nadie revisa."""
+        proyecto, casa = self._monta(locales={"algo.md": "# Algo local\n"})
+        recuerdos.migrar(proyecto, aplicar=True, casa=casa)
+        local = recuerdos.carpeta_local(proyecto, casa)
+        repo = recuerdos.carpeta_repo(proyecto)
+        en_local = [f for f in os.listdir(local) if f.endswith(".md")]
+        en_repo = [f for f in os.listdir(repo) if f.endswith(".md")]
+        self.assertEqual(en_local, [])
+        self.assertEqual(len(en_repo), 1)
+
+    def test_el_almacen_de_esta_maquina_esta_vacio(self):
+        """El estado real, no el simulado. Es el caso que el plan pedía dejar
+        escrito: qué había de verdad en el almacén de esta máquina."""
+        raiz = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        local = recuerdos.carpeta_local(raiz, self.CASA_REAL)
+        quedan = ([f for f in os.listdir(local) if f.endswith(".md")]
+                  if os.path.isdir(local) else [])
+        self.assertEqual(quedan, [], f"el almacén local de esta máquina tiene: {quedan}")
 
 
 if __name__ == "__main__":

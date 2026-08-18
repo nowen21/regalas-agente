@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-02, CA-03 y transversales cumplidos; el CA-01, no |
 
 ---
 
@@ -142,7 +142,7 @@ Entonces sube solo la parte de corrección
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-002-HU-001-retrodocumentar-el-numero-de-version](A-EP-002-HU-001-retrodocumentar-el-numero-de-version/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-002-HU-001-retrodocumentar-el-numero-de-version](A-EP-002-HU-001-retrodocumentar-el-numero-de-version/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-002-HU-001-retrodocumentar-el-numero-de-version/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no. Pendiente el commit |
 
 **La fase retro-documenta y no toca `VERSION` ni el registro.** El número existe y se usó 23 veces; lo que falta es la prueba de que es la única fuente y de que ninguna parte se saltó.
 
@@ -202,3 +202,4 @@ Entonces sube solo la parte de corrección
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Las 73 entradas del registro recorridas una por una: ninguna baja el número y todas declaran su tipo salvo la primera. CA-01 en «No»: `15.4.0` aparece dos veces, con contenidos distintos |

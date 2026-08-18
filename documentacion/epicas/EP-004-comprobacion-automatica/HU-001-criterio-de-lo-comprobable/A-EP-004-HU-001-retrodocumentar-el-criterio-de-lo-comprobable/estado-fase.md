@@ -17,16 +17,16 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 6 — ejecución continua, **detenida**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo y resolver la duda 1 | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 6 tareas, ninguna empezada | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 6 tareas · **detenida por la duda 1 de §2.7** | ☐ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
@@ -34,6 +34,8 @@
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
 **Nada se ejecutó todavía.** Tocar `M9` sube versión, así que no se toca sin aprobación.
+
+> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: la duda 1 de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
 
@@ -87,4 +89,4 @@
 
 ## 4. Si se bloqueó
 
-- **Estación:** 4 — pausa y presentación. **Motivo:** el plan está escrito y sin aprobar, y la duda 1 bloquea el CA-01. **Qué falta para desbloquear:** que el usuario apruebe el plan y decida dónde vive el criterio. Los CA-02 y CA-03 pueden arrancar apenas se apruebe.
+- **Estación:** 6 — ejecución continua, detenida. **Motivo:** el plan **está aprobado** desde el 2026-08-17, y la duda 1 bloquea el CA-01. **Qué falta para desbloquear:** que el usuario decida dónde vive el criterio. Los CA-02 y CA-03 pueden arrancar apenas se apruebe.

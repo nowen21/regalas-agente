@@ -1,11 +1,13 @@
 # Pendiente · El registro de versión no se escribe si no cambió ninguna huella
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** **cerrado** el 2026-08-16 (v21.2.0), junto con el [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md), porque son el mismo defecto. Qué se hizo: [`hecho/poner-al-dia-lo-ya-instalado.md`](hecho/poner-al-dia-lo-ya-instalado.md). La fase que lo cerró: [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). Anotado el 2026-08-16.
+
+> El archivo se queda acá y no se mueve a `hecho/`: moverlo rompería los enlaces que lo citan, que es exactamente el [pendiente 54](54-cerrar-un-pendiente-rompe-sus-citas.md). Decía «abierto» hasta el 2026-08-17, cuando `validar.py estandar` destapó que el índice y el archivo se contradecían.
 
 | | |
 |---|---|
 | **Proyecto de origen** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
-| **Su pendiente de seguimiento** | [`pendientes/06-el-checklist-se-queda-en-12-de-13.md`](../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/06-el-checklist-se-queda-en-12-de-13.md) — queda **abierto allá** hasta que este se corrija |
+| **Su pendiente de seguimiento** | [`pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md`](../../../../DesarrollosClaude/personales/shopnest-mesa/pendientes/hecho/06-el-checklist-se-queda-en-12-de-13.md) — **ya cerrado allá**: `shopnest-mesa` lo pasó a `hecho/` cuando comprobó el arreglo |
 | **A quién avisar al cerrar** | a **todos los proyectos instalados** — le pasa a cualquiera que se quede una versión atrás sin que cambien sus plantillas. La lista está en [`plantillas/proyectos.md`](../plantillas/proyectos.md) |
 
 ## El problema

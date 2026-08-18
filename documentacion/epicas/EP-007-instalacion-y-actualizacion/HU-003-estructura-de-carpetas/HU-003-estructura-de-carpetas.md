@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los dos CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -123,7 +123,7 @@ Entonces esa carpeta queda como estaba
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas](A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas](A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-007-HU-003-retrodocumentar-la-estructura-de-carpetas/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta.** La estructura está exigida, declarada, creada por el instalador y comprobada por la revisión. La prueba que falta es la que más importa: que instalar sobre un proyecto que ya trabajó no le borre nada — y eso se rompe en la segunda corrida.
 
@@ -182,3 +182,4 @@ Entonces esa carpeta queda como estaba
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los dos CA verificados: la estructura queda completa y reinstalar no cambia nada. Los transversales también: un proyecto al día no cambia, y funciona con rutas con espacios y tildes |

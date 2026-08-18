@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 5 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 5 tareas, las 5 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Ninguno todavía. Los dos **se cumplen hoy**, pero al CA-01 le falta lo principal: **el criterio escrito de cuál va dónde** |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 1 de 2. Los dos transversales, en «Sí» |
+| **CA en "No"** | El **CA-01**. El criterio que le faltaba **ya está escrito**, y aun así no se cumple: la terminología del proyecto está guardada **en los dos sitios a la vez**, y las dos versiones ya dicen cosas distintas |
+| **Defectos abiertos aceptados** | 3 — `D-01` la terminología duplicada y divergida; `D-02` un aprendizaje guardado como preferencia, que además debería subir a `base/`; `D-03` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,13 +55,13 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Escribir el criterio, con el caso de borde |
-| T-02 | Pendiente | Caso de las cinco cosas clasificadas — CP-001. Va detrás de T-01 |
-| T-03 | Pendiente | Prueba de las tres partes de cada recuerdo — CP-003 |
-| T-04 | Pendiente | Caso del recuerdo sin el porqué — CP-004 |
-| T-05 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | El criterio «Cuál va dónde» está escrito en [`memory.md`](../../../../../historico-chat/memory/memory.md), con el caso de borde y la regla de un solo sitio |
+| T-02 | **Hecha** | CP-001. **Tres de cinco no coinciden** con dónde están; una de ellas está en los dos sitios |
+| T-03 | **Hecha** | CP-003. Clase `ElRecuerdoTraeSusTresPartes`: 18 de 18 completos |
+| T-04 | **Hecha** | CP-004. El caso negativo caza al que le falta una parte |
+| T-05 | **Hecha** | Corrida completa (260 pruebas, verde con 2 fallos esperados), resultado escrito y trazabilidad cerrada |
 
-**Hechas:** 0 de 5. **Bloqueadas:** ninguna.
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 
@@ -78,12 +78,13 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
-- **Si al escribir el criterio aparece que varios recuerdos deberían ser reglas** (riesgo `R-01`): se anotan y se proponen. Subir un recuerdo a regla lo decide el usuario, como ya pasó con dos en [EP-001 · HU-004](../../../EP-001-cuerpo-de-reglas-heredable/HU-004-conducta-de-la-ia/HU-004-conducta-de-la-ia.md).
+- **Cuál de las dos versiones de la terminología manda** (`D-01`). La señal `S-002` dice «el agente = Claude Code»; el recuerdo dice **Cimiento** desde el 2026-08-14. **Es del usuario**: cambiar un recuerdo cambia lo que rige la sesión, y ninguna de las dos se tocó.
+- **Si «fixtures sin secretos literales» sube a `base/`** (`D-02`, riesgo `R-01`): queda anotado y propuesto. Subir un recuerdo a regla lo decide el usuario, como ya pasó con dos en [EP-001 · HU-004](../../../EP-001-cuerpo-de-reglas-heredable/HU-004-conducta-de-la-ia/HU-004-conducta-de-la-ia.md).
+- **Nadie detecta lo guardado en dos sitios.** Esto se encontró leyendo, no corriendo nada. Queda sin destino.
 - **El módulo de la memoria no tiene especificación aparte.** Es uno de los casos que [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) viene a resolver.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

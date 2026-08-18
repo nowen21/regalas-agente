@@ -11,6 +11,37 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.3.0 — 2026-08-17
+
+**MENOR** — dos comprobaciones nuevas que cuentan lo que antes se contaba a mano. Aditivo: ningún proyecto al día tiene que hacer nada.
+
+### La numeración de pendientes se comprueba sola
+
+Nace [`validadores/pendientes.py`](validadores/pendientes.py) con su subcomando `pendientes`, de la fase [`A-EP-004-HU-018`](documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/A-EP-004-HU-018-el-numero-de-pendiente-libre/). Dice el próximo número libre, avisa del repetido y cruza la carpeta con su índice.
+
+- **Al construirlo apareció que la carpeta no es la fuente de la numeración.** Al cerrarse, un pendiente se mueve a `hecho/` y **pierde su número**: `02-vigencia…md` pasa a `vigencia-y-poda-de-memoria.md`. Mirando los archivos, el 02 parece libre — y no lo está. **Quince de los cincuenta y cinco números tomados existen solo en el índice**, en su fila tachada.
+- Sin ese hallazgo, el validador habría entregado el 02 al siguiente pendiente y roto en silencio toda cita al 02 anterior. Un validador equivocado es peor que ninguno, porque se le cree.
+- El número que entrega es **el siguiente al mayor, no el primer hueco**: los huecos son historia, y reutilizarlos haría que «el 02» apuntara a dos cosas según cuándo se leyera.
+
+### La corrida de fases dice cuántas HU hay y cuántas están completas
+
+`validar.py fases` cierra con una línea nueva: `HU: 68 en total · 25 completas · 43 incompletas (F12.2)`. Sale de la fase [`A-EP-004-HU-017`](documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/A-EP-004-HU-017-la-corrida-cuenta-las-hu-sin-fase/).
+
+- **Una HU cuenta completa cuando todas sus fases tienen los cinco documentos**, no cuando alguna los tiene. Con dos fases y una a medias la historia no está terminada, y contarla completa escondería justo el trabajo que falta.
+- **La línea va después de los hallazgos y aparece aunque no haya ninguno:** es el resumen de cuánto falta, no un incumplimiento más.
+- **Cruza con el [pendiente 48](pendientes/48-inventario-hu.md)**, que lleva la misma cuenta a mano. Hay una prueba que compara los tres números: si se separan, una de las dos está mal y la suite lo dice.
+- Los tres bordes quedan definidos y escritos en [`validadores/docs/fases.md`](validadores/docs/fases.md): árbol sin `epicas/` calla, épica sin HU no aporta, y carpeta `HU-` sin su `.md` **cuenta como incompleta** — existe como trabajo aunque le falte el papel.
+
+## 23.2.1 — 2026-08-17
+
+**PARCHE** — el enganche del resumen prepara su salida, como los otros cinco. No cambia qué se exige.
+
+`hook_resumen.py` era **el único** de los seis enganches que no llamaba a `preparar_salida()`. Su texto lleva acentos y comillas angulares, así que salía en la página de códigos de la consola: quien lo leyera recibía mojibake, y con la salida en una tubería no se podía ni decodificar — dos pruebas del camino real llevaban tiempo en rojo por eso.
+
+- **Es el pendiente [45](pendientes/hecho/instalar-prepara-su-propia-salida.md) otra vez, en otro archivo.** Allá `instalar()` se moría al imprimir una flecha porque solo `main()` preparaba la consola. Mismo descuido, misma clase de síntoma.
+- **Nace la prueba que impide que se repita:** `TodoEnganchePreparaSuSalida` recorre los seis y falla si alguno no lo hace, para que la lista no quede coja cuando nazca el séptimo.
+- Salió al ejecutar las fases del pendiente [48](pendientes/48-inventario-hu.md).
+
 ## 23.2.0 — 2026-08-16
 
 **MENOR** — plantilla nueva. No cambia qué se exige: `02·F12.2` ya pedía la fase, y esto es el molde del tablero que muestra cuáles la tienen.

@@ -174,7 +174,7 @@ Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fas
 |---|---|---|---|
 | ~~40~~ | — | **hecho** → [El instalador copia tres archivos sin rellenar los marcadores](40-el-instalador-copia-sin-rellenar-los-marcadores.md) | Los tres puntos de copia rellenan, y nace la primera prueba del repositorio. Cerrado 2026-08-16 (v21.1.0) en la fase [`A-EP-007-HU-001`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/A-EP-007-HU-001-rellenar-los-marcadores-al-copiar/). **Falta avisarle a `shopnest-mesa`.** |
 | ~~41~~ | — | **hecho** → [El marcador no se resuelve dentro de un proyecto](41-el-marcador-no-se-resuelve-dentro-de-un-proyecto.md) | El marcador se resuelve contra la carpeta del estándar, así que el veredicto ya no depende de desde dónde se corra el revisor. Cerrado 2026-08-16 (v21.1.1) en la fase [`A-EP-004-HU-005`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/A-EP-004-HU-005-el-marcador-se-resuelve-contra-el-estandar/). |
-| ~~42~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) | Toda copia que ya existe pasa por el relleno: lo que quedó crudo se repara en el sitio, sin bandera y sin pisar lo que llenó el proyecto. Cerrado 2026-08-16 (v21.2.0) junto con el [44](hecho/poner-al-dia-lo-ya-instalado.md), en la fase [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). **Avisado a `shopnest-mesa`, que ya comprobó.** |
+| ~~42~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [42](42-el-arreglo-del-40-no-llega-a-los-proyectos-ya-instalados.md) | Toda copia que ya existe pasa por el relleno: lo que quedó crudo se repara en el sitio, sin bandera y sin pisar lo que llenó el proyecto. Cerrado 2026-08-16 (v21.2.0) junto con el [44](hecho/poner-al-dia-lo-ya-instalado.md), en la fase [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
 **El 40 fue primero** —quitó la causa— y el 41 después, poniendo la red que atrapa el marcador que se escape mañana. Pero eso valía **en una instalación nueva**: el 42 era que en las viejas seguían todos donde estaban. Los tres cerraron el 2026-08-16, el 42 con el 44 y en la misma fase.
 
@@ -187,7 +187,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
 | 43 | **P1** | [La plantilla de spec no pide de dónde sale la regla](hecho/el-origen-de-la-regla-de-negocio.md) | shopnest-mesa | El §4 pide `«Regla — por qué existe.»`: el porqué, nunca el de dónde. Una regla de negocio nació en la especificación de un módulo, sin pedirla nadie, y bajó sola a decisión, trazabilidad, dos pruebas y un criterio de aceptación. Tardó un día en verse. **Es el hueco del [30](hecho/la-revision-ve-la-cadena.md) y el [38](hecho/el-validador-de-la-f22-tiene-su-fase.md) por el otro lado**: allá el código se saltó la cadena hacia arriba, acá una regla hacia abajo. |
-| ~~44~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) | shopnest-mesa | Subir de versión es por sí solo motivo de registro, así que el proyecto llega a 13 de 13 corriendo el instalador. Cerrado 2026-08-16 (v21.2.0) junto con el [42](hecho/poner-al-dia-lo-ya-instalado.md). **Avisado a `shopnest-mesa`, que ya comprobó.** |
+| ~~44~~ | — | **hecho** → [Poner al día lo ya instalado](hecho/poner-al-dia-lo-ya-instalado.md) · su archivo sigue acá: [44](44-el-registro-de-version-no-se-escribe-si-no-cambia-una-huella.md) | shopnest-mesa | Subir de versión es por sí solo motivo de registro, así que el proyecto llega a 13 de 13 corriendo el instalador. Cerrado 2026-08-16 (v21.2.0) junto con el [42](hecho/poner-al-dia-lo-ya-instalado.md). **Avisado a `shopnest-mesa`, que ya comprobó.** |
 
 **El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
@@ -236,6 +236,22 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | 48 | **P1** | [Inventario de HU — 54 de las 68 no tienen su fase completa](48-inventario-hu.md) | 51 HU sin ninguna fase y 3 con la fase a medias. `02·F12.2` pide al menos una, y casi todas están **construidas y cerradas**: sus §8 dicen «todavía no se descompuso en fases» sobre código que ya corre. Es una tabla con casilla por documento, y se llena una fila a la vez. |
 
 **No es construcción, es retrodocumentación.** El trabajo está hecho; lo que falta es el documento que diga con qué plan se hizo, con qué casos se probó y qué salió — el mismo hallazgo del [38](hecho/el-validador-de-la-f22-tiene-su-fase.md).
+
+### Lo que dejó ejecutar las fases del 48 (58)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 58 | **P1** | [Nada hace cumplir `ID9`, y el proyecto no puede ponerle el enganche](58-nada-hace-cumplir-id9.md) | Una regla del capítulo de identidad que ningún programa comprueba y que el proyecto tampoco puede enganchar por su cuenta. |
+
+**Faltaba en este índice hasta el 2026-08-17**, cuando `validar.py estandar` lo destapó al ejecutarse las fases del 48.
+
+### Lo que dejó ejecutar los 51 planes (59)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 59 | **P0** | [Las 42 dudas que detienen 26 fases](59-las-42-dudas-que-detienen-26-fases.md) | De los 51 planes aprobados, 25 fases corrieron enteras y **26 no arrancaron**: su §2.7 tiene preguntas que solo el usuario puede contestar. Las 42 quedan agrupadas por decisión, para poder responderlas de corrido. |
+
+**Es `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro** en la transcripción, que se versiona. Nada enmascara, y lo que falta para construirlo son dos decisiones del grupo G.
 
 ## Dependencias duras
 

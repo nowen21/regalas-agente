@@ -133,6 +133,53 @@ def validar(proyecto):
     return hallazgos
 
 
+def inventario(proyecto):
+    """`(total, completas, incompletas)` de las HU del árbol — `HU-017`.
+
+    **Qué cuenta como completa.** Una HU está completa cuando tiene **al menos
+    una** carpeta de fase y **todas** sus fases tienen los cinco documentos. Con
+    dos fases y una a medias, la HU está incompleta: cerrar la primera no cierra
+    la historia, y contarla completa escondería justo el trabajo que falta.
+
+    **Los tres bordes.** Sin `documentacion/epicas/` devuelve `(0, 0, 0)` en vez
+    de fallar: quien reporta la falta de la carpeta es `validar()`, y dos
+    hallazgos por lo mismo es ruido. Una épica sin HU no aporta ninguna. Una
+    carpeta `HU-` sin su archivo `.md` **sí cuenta**, como incompleta: existe
+    como trabajo aunque le falte el documento, y no contarla la volvería
+    invisible — que es lo contrario de lo que este inventario viene a hacer.
+    """
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    if not os.path.isdir(raiz):
+        return (0, 0, 0)
+
+    total = completas = 0
+    for nombre_epica in _subcarpetas(raiz):
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        if not _EPICA.match(nombre_epica):
+            continue
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            total += 1
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
+            if fases and all(
+                    all(os.path.isfile(os.path.join(ruta_hu, f, d))
+                        for d in DOCUMENTOS)
+                    for f in fases):
+                completas += 1
+    return (total, completas, total - completas)
+
+
+def linea_inventario(proyecto):
+    """La línea que se imprime al final de la corrida, o "" si no hay árbol."""
+    total, completas, incompletas = inventario(proyecto)
+    if not total:
+        return ""
+    return (f"HU: {total} en total · {completas} completas · "
+            f"{incompletas} incompletas (F12.2)")
+
+
 def _leer(ruta):
     try:
         with open(ruta, encoding="utf-8", errors="replace") as f:

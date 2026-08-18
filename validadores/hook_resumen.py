@@ -31,6 +31,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import historico                        # noqa: E402
 import resumen as R                     # noqa: E402
+from comun import preparar_salida       # noqa: E402
 
 
 def _sesion_y_transcripcion(raiz, sesion):
@@ -156,6 +157,11 @@ def _produjo_algo(raiz):
 
 
 def main():
+    # Su texto lleva acentos y comillas angulares. Sin esto sale en la página de
+    # códigos de la consola y quien lo lea recibe mojibake — o, si la salida va a
+    # una tubería, no se puede ni decodificar. Era el único enganche que no lo
+    # hacía; es el mismo descuido que cerró el pendiente 45 en el instalador.
+    preparar_salida()
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--modo", choices=("inicio", "aviso"), required=True)
     p.add_argument("--raiz", default="")

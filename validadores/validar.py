@@ -28,6 +28,7 @@ import enlaces          # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
 import fases            # noqa: E402
+import pendientes       # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import instalar         # noqa: E402
@@ -72,7 +73,26 @@ def cmd_plantilla(a):
 
 def cmd_fases(a):
     raiz = os.path.abspath(a.raiz)
-    return reportar(fases.validar(raiz), f"Épica → HU → Fase · {relativo(raiz)}")
+    codigo = reportar(fases.validar(raiz), f"Épica → HU → Fase · {relativo(raiz)}")
+    # HU-017 · el inventario va al final, después de los hallazgos: es el
+    # resumen de cuánto falta, no un incumplimiento más. Va aunque no haya
+    # ninguno, que es cuando más se quiere leer.
+    linea = fases.linea_inventario(raiz)
+    if linea:
+        print(linea)
+    return codigo
+
+
+def cmd_pendientes(a):
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(pendientes.validar(raiz),
+                      f"Numeración de pendientes · {relativo(raiz)}")
+    # HU-018 · el próximo número libre va siempre, haya hallazgos o no: es la
+    # pregunta que se hace quien va a abrir un pendiente, no un incumplimiento.
+    linea = pendientes.linea_proximo(raiz)
+    if linea:
+        print(linea)
+    return codigo
 
 
 def cmd_trazabilidad(a):
@@ -257,6 +277,11 @@ def main():
                         help="jerarquía y nombres de épica/HU/fase · 02·F12")
     fs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
     fs.set_defaults(func=cmd_fases)
+
+    pd = sub.add_parser("pendientes",
+                        help="numeración de `pendientes/` y cruce con su índice · HU-018")
+    pd.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    pd.set_defaults(func=cmd_pendientes)
 
     tz = sub.add_parser("trazabilidad",
                         help="enlace épica↔HU, ORIGEN y tabla de cierre · F4/DOC")

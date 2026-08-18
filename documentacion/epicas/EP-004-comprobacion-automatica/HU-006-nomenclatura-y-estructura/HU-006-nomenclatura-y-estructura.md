@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los tres CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -145,7 +145,7 @@ Y nombra el documento que falta
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura](A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura](A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-004-HU-006-retrodocumentar-la-comprobacion-de-la-estructura/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta y deja la línea base.** El programa comprueba nueve partes de `02·F12` y hoy reporta 0 fallas y 54 avisos. Sin ese número escrito, mañana no se puede decir si bajaron.
 
@@ -206,3 +206,4 @@ Y nombra el documento que falta
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los tres CA verificados, incluido el caso que faltaba: la fase incompleta nombra cuáles cuatro documentos le faltan. Queda escrito qué parte de `F12` se comprueba y qué parte no |

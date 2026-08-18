@@ -12,6 +12,26 @@ Lo que obliga a guardarlo acá es norma del estándar (`01·C19`); lo que dice c
 
 ---
 
+## Cuál va dónde
+
+Hay **tres** sitios y se parecen lo suficiente como para equivocarse. La pregunta que los separa es **qué haría que eso cambiara**:
+
+| Si cambiaría porque… | Es | Va en |
+|---|---|---|
+| …el **usuario** cambia de opinión sobre cómo quiere trabajar | **Preferencia** | Un recuerdo, acá |
+| …el **código o el proyecto** cambian | **Aprendizaje** | Una señal, en `memoria/senales.db` |
+| …cambia lo que se le exige a **cualquier** proyecto | **Regla** | `base/`, con su versión (`20·M10`) |
+
+Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más tiene por qué compartirla. *«`git add -A` arrastró un archivo local y se publicó»* es aprendizaje — pasó, y seguirá siendo cierto aunque el usuario opine distinto. *«Toda cita lleva su enlace»* es regla — se le exige a cualquiera.
+
+**El caso de borde: la preferencia que resulta valer para todos.** Cuando una preferencia deja de ser gusto y pasa a ser algo exigible a cualquier proyecto, **sube a `base/` como regla** y el recuerdo **no se borra**: se queda con el registro de que el usuario lo pidió, cuándo, y cuántas veces tuvo que repetirlo. Eso no cabe en una regla y es lo que evita volver a discutirlo. Así está hecho [Respuestas cortas](respuestas-cortas.md), que es hoy la regla `00·ID9`.
+
+**Nada se guarda en dos sitios.** Si algo ya está en uno, el otro lo **enlaza**; nunca lo copia. Dos copias envejecen distinto y la que manda termina siendo la que nadie mira — que es la misma razón por la que el almacén de la herramienta queda vacío.
+
+> **Ya pasó.** La terminología del proyecto está en el recuerdo [Terminología](terminologia-agente-vs-estandar.md) **y** en la señal `S-002`, y hoy dicen cosas distintas: el recuerdo dice que se llama **Cimiento** desde el 2026-08-14, y la señal sigue diciendo *«'el agente' = Claude Code»*. Detectado el 2026-08-17 en la fase [`A-EP-006-HU-005`](../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-005-separar-aprendizaje-de-preferencia/A-EP-006-HU-005-retrodocumentar-la-separacion-aprendizaje-preferencia/resultado_pruebas.md).
+
+---
+
 ## Índice
 
 | Recuerdo | De qué se trata |

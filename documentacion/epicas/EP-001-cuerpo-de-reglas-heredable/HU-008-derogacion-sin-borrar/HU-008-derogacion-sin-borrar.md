@@ -11,7 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | S |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los tres CA y los dos transversales verificados el 2026-08-17 |
 
 ## 2. Narrativa
 
@@ -118,7 +118,7 @@ Entonces la derogada no aparece como algo por cumplir
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-001-HU-008-retrodocumentar-la-derogacion](A-EP-001-HU-008-retrodocumentar-la-derogacion/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-001-HU-008-retrodocumentar-la-derogacion](A-EP-001-HU-008-retrodocumentar-la-derogacion/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-001-HU-008-retrodocumentar-la-derogacion/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta y agrega dos pruebas.** La derogación ya se usó ocho veces —`F4.1` a `F4.5`, `F6`, `F7` e `ID2`—, y nada comprueba que sigan ahí: si mañana alguien borra una, nadie se entera.
 
@@ -172,3 +172,4 @@ Entonces la derogada no aparece como algo por cumplir
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-13 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Las ocho derogaciones conservan su texto, dicen desde cuándo y por cuál, su reemplazo existe, y ninguna volvió como regla vigente. Nadie lo comprobaba desde la 3.1.0 |

@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 5 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 5 tareas, las 5 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Ninguno todavía. Los dos **corren hoy**; lo que falta es la prueba, en particular la del puntero |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 1 de 2. El RNF y los dos transversales, en «Sí» |
+| **CA en "No"** | El **CA-01**, en un solo punto: el recogido **se lleva también lo que no es un recuerdo**. El almacén queda vacío, que era la otra mitad |
+| **Defectos abiertos aceptados** | 2 — `D-01` el recogido no distingue qué es recuerdo, y resolverlo toca `01·C19`; `D-02` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,13 +55,13 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Prueba de que el almacén queda sin archivos — CP-001 |
-| T-02 | Pendiente | Observar y anotar qué hay en el almacén de esta máquina — CP-003 |
-| T-03 | Pendiente | Prueba de que no queda ni texto ni puntero — CP-002 |
-| T-04 | Pendiente | Caso del puntero puesto a mano — CP-002 |
-| T-05 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | CP-001. El almacén queda sin archivos. Destapó `D-01` en su paso 5 |
+| T-02 | **Hecha** | CP-003. El almacén de esta máquina está **vacío**, el 2026-08-17 |
+| T-03 | **Hecha** | CP-002. No queda ni el texto ni el puntero, y no hay dos versiones |
+| T-04 | **Hecha** | CP-002 con el puntero escrito a mano: el escenario que el CA-02 nombra y que no tenía prueba |
+| T-05 | **Hecha** | Corrida completa (260 pruebas, verde con 2 fallos esperados), resultado escrito y trazabilidad cerrada |
 
-**Hechas:** 0 de 5. **Bloqueadas:** ninguna.
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 
@@ -77,12 +77,12 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
-- **Si el almacén de esta máquina tiene algo sin recoger** (riesgo `R-01`): se anota qué había y se propone. El programa lo recoge, no la mano.
+- **Qué debe hacer el recogido con lo que no es un recuerdo** (`D-01`). **A** que distinga y `01·C19` acepte lo que queda · **B** que se lleve todo, y quede dicho. Toca `base/`: **es del usuario**.
+- **El riesgo `R-01` no se materializó:** el almacén de esta máquina estaba vacío, así que no hubo nada que recoger ni que anotar.
 - **El módulo de la memoria no tiene especificación aparte.** Es uno de los casos que [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) viene a resolver.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

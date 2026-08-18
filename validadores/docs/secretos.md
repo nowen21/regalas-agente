@@ -159,3 +159,34 @@ validar('C:/proyectos/pos')
 validar('C:/carpeta-sin-git')
 [Hallazgo(FALLA, 'C:/carpeta-sin-git', 0, 'no hay repositorios git que revisar')]
 ```
+
+---
+
+## Qué se considera clave y qué se considera ejemplo — desde la 23.2.1
+
+> Escrito el 2026-08-17 en la fase [`A-EP-004-HU-007`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-007-claves-y-datos-sensibles/A-EP-004-HU-007-retrodocumentar-la-comprobacion-de-secretos/resultado_pruebas.md). Estaba en dos expresiones del código y en ningún documento, así que nadie podía saber qué escribir para no disparar un falso positivo.
+
+**Lo que se reporta como falla:** un secreto con **forma reconocible** —clave de AWS, bloque de clave privada, token de proveedor—. No hace falta que sea válido: si tiene la forma, se reporta. Un secreto de mentira con forma real bloquea el envío a GitHub igual que uno de verdad.
+
+**Lo que se reporta como aviso:** una asignación del tipo `clave = "algo"` donde la clave se llama `password`, `secret`, `api_key`, `access_key`, `client_secret`, `auth_token` o `private_key`, y el valor tiene seis caracteres o más.
+
+**Lo que NO se reporta, y por qué:**
+
+| Caso | Ejemplo | Por qué no |
+|---|---|---|
+| **El valor entero es un molde** | `changeme` · `placeholder` · `dummy` · `sample` · `example` · `ejemplo` · `null` · `none` · `password` · `secret` · `test` · `123456` · `abc123` · `xxxx…` · `….` · `****` · `<lo que sea>` | Nadie pone eso en producción |
+| **El valor empieza como molde** | `your-api-key` · `tu_clave` · `my-secret` · `mi_token` · `example-…` · `placeholder_…` · `sample …` · `dummy-…` · `test_…` | Es la forma normal de escribir un ejemplo |
+| **La línea lee del entorno** | `os.environ[…]` · `getenv(…)` · `process.env…` · `config(…)` · `${…}` · una línea con `import` | Leer del entorno **es lo correcto**: marcarlo enseñaría lo contrario |
+| **Los archivos `.md`** | Toda la documentación | La documentación muestra secretos de ejemplo a propósito. Reportarlos obligaría a escribir la documentación torcida |
+
+**Cómo escribir un ejemplo que no dispare nada:** que el valor empiece por `your`, `tu`, `mi`, `example`, `ejemplo`, `placeholder`, `sample`, `dummy` o `test`, o que vaya entre `<` y `>`. Y en las pruebas, **armar el literal en tiempo de ejecución** —`"AKIA" + "…"`— en vez de escribirlo entero.
+
+**Los tres bordes, y qué hace con cada uno:**
+
+| Borde | Qué hace |
+|---|---|
+| Archivo **binario** | Lo lee con `errors="replace"`: no revienta, y lo que salga no coincide con ningún patrón |
+| Archivo **enorme** | Lee **1 MB** y para. Más que eso es dato, no código |
+| Archivo **sin permisos** o ilegible | Lo salta y sigue con el siguiente. La corrida no se pierde por uno |
+
+**El hallazgo nunca reproduce el secreto.** Dice el archivo, la línea, el motivo y —en el aviso— el **nombre** de la clave, nunca su valor. Un informe que copiara el secreto sería una segunda filtración, y encima en un archivo que se versiona.

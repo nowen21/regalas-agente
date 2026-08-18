@@ -82,6 +82,39 @@ Verificado el 2026-08-14.
 
 > **Que la regla llegue es necesario y no es suficiente.** El 2026-08-14 se incumplió [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante una sesión entera, y esa regla llegaba completa. Lo que falta después es comprobar lo entregado, y eso es de EP-004.
 
+### 4.2 La transcripción de la sesión
+
+> Escrito el 2026-08-17 en la fase [`A-EP-005-HU-001`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/resultado_pruebas.md).
+
+17. **La escribe el programa, no el agente.** `hook_historico.py` anota cada mensaje del usuario apenas se envía y cada respuesta apenas termina. El agente escribiéndola a mano la duplica y le inventa horas: ya pasó seis veces.
+18. **La hora sale del reloj de la máquina**, nunca del texto del mensaje. Si se copiara lo que dice el texto, bastaría con escribir «03:33» en un mensaje para falsear el histórico.
+19. **El archivo nace con el primer mensaje**, aunque sea un «hola», y crece de a un intercambio. Nada se escribe al cerrar: un chat no tiene final.
+20. **Cada intercambio queda una sola vez.** Si el enganche se dispara dos veces por el mismo mensaje, no se duplica.
+21. **La sesión entra al índice al nacer**, y al renombrarla se corrigen las dos cosas —el archivo y su línea—, o el índice apunta a un archivo que ya no está.
+22. **Un proyecto sin la carpeta del histórico no se ve afectado:** el enganche no la crea ni escribe nada. Instalar el estándar es lo que la pone.
+
+> **Lo que todavía no hace: enmascarar.** La HU pide que lo enmascarado no quede en claro, y **nada enmascara**: el texto del mensaje se guarda tal cual. Una clave pegada en el chat queda escrita en la transcripción, que se versiona. Es [EP-005 · HU-002](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md), sin construir.
+
+### 4.3 El disparo al escribir un archivo
+
+> Escrito el 2026-08-17 en la fase [`A-EP-005-HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md).
+
+23. **Al escribir un documento corre su comprobación**, en el momento, no al cerrar la sesión. Un enlace roto avisado tres horas después ya se copió a otros documentos.
+24. **Lo que no le toca se ignora en silencio**, y el enganche **corre igual**. Que calle no puede confundirse con que no se ejecutó: son dos estados distintos con la misma apariencia.
+25. **El archivo que ya no está cuando el enganche llega no lo revienta.** Entre escribir y disparar puede pasar cualquier cosa.
+26. **El disparo no se nota:** se mide, no se supone.
+
+> **Lo que todavía no hace: detener.** El CA-03 de la HU pide que el hallazgo grave detenga y el resto avise. Hoy **todo avisa**: el enganche informa y el trabajo sigue en los dos casos.
+
+### 4.4 El recogido de lo guardado por fuera
+
+> Escrito el 2026-08-17 en la fase [`A-EP-005-HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/A-EP-005-HU-007-retrodocumentar-el-recogido-de-lo-guardado-por-fuera/resultado_pruebas.md).
+
+27. **Al abrir la sesión y al escribir un archivo, lo que quedó en el almacén de la herramienta se mueve al repositorio.** El almacén tiene que quedar vacío: dos copias del mismo recuerdo terminan diciendo cosas distintas, y manda la que nadie puede leer.
+28. **Nunca se borra: se mueve.** Si el nombre ya está ocupado en el repositorio, entra como `<nombre>-local.md` y decide el usuario cuál manda. Una versión anterior borraba el idéntico «porque no se pierde nada» y destruyó memoria real.
+29. **Los nombres que solo difieren en mayúsculas son el mismo archivo.** En Windows lo son de verdad, y mover uno sobre otro se llevaría el índice sin decir nada.
+30. **Con el almacén enlazado a la carpeta del repositorio, no hay nada que mover:** son el mismo archivo, y compararlos daría idéntico siempre.
+
 ## 5. Modelo de datos
 
 No aplica porque el entregable son programas de línea de comandos sobre archivos de texto: no hay entidades, tablas ni catálogos.

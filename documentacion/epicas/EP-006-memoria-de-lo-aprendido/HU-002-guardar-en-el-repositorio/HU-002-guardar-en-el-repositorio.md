@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-02 y transversales cumplidos; el CA-01 solo para los recuerdos, no para las señales |
 
 ---
 
@@ -127,7 +127,7 @@ Entonces cada una aparece con una línea que dice de qué trata
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-002-retrodocumentar-el-guardado-en-el-repositorio](A-EP-006-HU-002-retrodocumentar-el-guardado-en-el-repositorio/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-002-retrodocumentar-el-guardado-en-el-repositorio](A-EP-006-HU-002-retrodocumentar-el-guardado-en-el-repositorio/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-002-retrodocumentar-el-guardado-en-el-repositorio/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 sí; el CA-01 solo para los 18 recuerdos. Pendiente el commit |
 
 **Mitad retro-documentación, mitad hallazgo.** Los recuerdos son texto con su índice y se ven en el historial. Las señales viven en una base binaria: está en el repositorio, y en el historial se ve que cambió, no qué cambió. La fase mide ese límite y propone la salida sin decidirla.
 
@@ -188,3 +188,4 @@ Entonces cada una aparece con una línea que dice de qué trata
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-02 y transversales verificados; CA-01 en «No»: las 237 señales no están versionadas y no tienen historial. Tres salidas propuestas, ninguna decidida |

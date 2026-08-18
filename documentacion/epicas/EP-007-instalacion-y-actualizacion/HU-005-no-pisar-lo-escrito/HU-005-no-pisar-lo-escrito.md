@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los dos CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -125,7 +125,7 @@ Y lo que ya estaba escrito queda igual
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito](A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito](A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta la exigencia central de la épica:** que actualizar no borre lo que la persona escribió. Falta la prueba, con el archivo que más duele: el `CLAUDE.md` del proyecto, que mezcla lo heredado con lo propio.
 
@@ -185,3 +185,4 @@ Y lo que ya estaba escrito queda igual
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Marcados los 15 archivos y reinstalado: 13 conservan lo propio y 2 se reemplazan —los guiones de git, que son programa—. Queda escrita la lista completa de qué se conserva y qué no |

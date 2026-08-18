@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 5 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 5 tareas, las 5 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía: no se ha corrido nada |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 3 de 3 numerados, y el transversal de límites. El de errores, en «No» |
+| **CA en "No"** | El **transversal de errores**: un `.md` que no se puede decodificar revienta la corrida con un volcado de Python y se lleva los hallazgos ya encontrados |
+| **Defectos abiertos aceptados** | 3 — `D-01` el archivo ilegible tumba la corrida; `D-02` el contrato no estaba escrito (corregido acá); `D-03` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,13 +55,13 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Caso de los tres datos en cada hallazgo — CP-001 |
-| T-02 | Pendiente | Caso de arreglar sin abrir el programa — CP-002 |
-| T-03 | Pendiente | Prueba del código de salida con solo avisos — CP-003 |
-| T-04 | Pendiente | Prueba del código de salida con una falla — CP-004 |
-| T-05 | Pendiente | Escribir el contrato en la documentación del módulo común, correr y cerrar |
+| T-01 | **Hecha** | Caso de los tres datos en cada hallazgo — CP-001 |
+| T-02 | **Hecha** | Caso de arreglar sin abrir el programa — CP-002 |
+| T-03 | **Hecha** | Prueba del código de salida con solo avisos — CP-003 |
+| T-04 | **Hecha** | Prueba del código de salida con una falla — CP-004 |
+| T-05 | **Hecha** | Escribir el contrato en la documentación del módulo común, correr y cerrar |
 
-**Hechas:** 0 de 5. **Bloqueadas:** ninguna.
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 
@@ -78,12 +78,12 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar.
-- **Si algún validador reporta sin línea** (riesgo `R-01`): se anota con el validador y la corrida. Corregirlo es de su propia fase.
+- **`D-01`, que la fase no preveía:** un `.md` que no se puede decodificar tumba la corrida entera. `comun.leer` abre sin red. Pide la fase `B-EP-004-HU-003`.
+- **El riesgo `R-01` no se materializó:** los 85 hallazgos sin línea son todos de archivo entero, que es su forma definida, no un hueco.
 - **Si otra sesión está tocando `validadores/pruebas.py`**: se guarda solo lo propio, y el estado de la suite se anota antes de tocarla.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

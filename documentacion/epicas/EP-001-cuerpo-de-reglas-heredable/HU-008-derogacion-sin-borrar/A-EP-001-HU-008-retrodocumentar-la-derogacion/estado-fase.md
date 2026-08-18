@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 8 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 8 tareas, las 8 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **Cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía: no se ha corrido nada |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 3 de 3, y los dos transversales |
+| **CA en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | 2 — `D-01`, que la vigilancia vive en `metareglas.py`, sin punto de entrada (pendiente 53); `D-02`, que el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,16 +55,16 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Prueba de que cada derogación conserva archivo y cuerpo — CP-001 |
-| T-02 | Pendiente | Caso de la marca completa — CP-002 |
-| T-03 | Pendiente | Prueba de que ningún identificador derogado vuelve — CP-003 |
-| T-04 | Pendiente | Caso del consecutivo que no reutiliza — CP-004 |
-| T-05 | Pendiente | Caso de la derogada que no cuenta como incumplimiento — CP-005 |
-| T-06 | Pendiente | Constancia de qué mitad la comprueba un programa que corre |
-| T-07 | Pendiente | Corrida completa con su número — CP-006 |
-| T-08 | Pendiente | Escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | Prueba de que cada derogación conserva archivo y cuerpo — CP-001 |
+| T-02 | **Hecha** | Caso de la marca completa — CP-002 |
+| T-03 | **Hecha** | Prueba de que ningún identificador derogado vuelve — CP-003 |
+| T-04 | **Hecha** | Caso del consecutivo que no reutiliza — CP-004 |
+| T-05 | **Hecha** | Caso de la derogada que no cuenta como incumplimiento — CP-005 |
+| T-06 | **Hecha** | Constancia de qué mitad la comprueba un programa que corre |
+| T-07 | **Hecha** | Corrida completa con su número — CP-006 |
+| T-08 | **Hecha** | Escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 8. **Bloqueadas:** ninguna.
+**Hechas:** 8 de 8. **Bloqueadas:** ninguna.
 
 ---
 
@@ -89,4 +89,4 @@
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

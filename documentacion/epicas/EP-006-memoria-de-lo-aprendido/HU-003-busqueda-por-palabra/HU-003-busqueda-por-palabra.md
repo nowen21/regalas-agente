@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-02, RNF y transversales cumplidos; el CA-01 a medias |
 
 ---
 
@@ -124,9 +124,17 @@ Entonces solo salen las que corresponden
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra](A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra](A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 sí, el CA-01 a medias. Pendiente el commit |
+| `B-EP-006-HU-003` — **propuesta, sin abrir** | Lo que le falta al CA-01 | Dos arreglos de una línea en `cmd_search`: imprimir `where_`, y cerrar la conexión del camino sin resultados |
 
-**La fase retro-documenta.** La búsqueda corre sin instalar nada y a propósito ignora los acentos. Lo que agrega es la prueba dura: que el índice esté sincronizado — un índice desincronizado responde igual, responde mal.
+**La fase retro-documentó, y encontró dos defectos.** La búsqueda corre sin instalar nada, ignora los acentos en los dos sentidos, filtra por tipo y alcance, y su índice **sí** está sincronizado —se comprobó con alta, modificación y borrado—. Lo que no hace es **decir dónde está** lo que encontró: `where_` se guarda y `cmd_search` no lo saca. Eso deja el CA-01 sin cumplir.
+
+| Medición, 2026-08-17 | Valor |
+|---|---|
+| Tiempo por búsqueda léxica sobre las 237 señales reales | **0,0046 s** |
+| Herramientas que hubo que instalar | **0** |
+| Señales perdidas al archivar | **0** |
+| Diferencias de resultado por acentos | **0** |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -184,3 +192,4 @@ Entonces solo salen las que corresponden
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-02, RNF y transversales verificados; CA-01 en «No» porque la búsqueda no dice dónde está lo encontrado. Se propone la fase B con los dos arreglos |

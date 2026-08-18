@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-01 y CA-02 cumplidos y probados; el transversal de privacidad, no |
 
 ---
 
@@ -123,9 +123,19 @@ Entonces dice de qué tipo es y a quién le sirve
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA que cubre quedaron verificados, y los dos transversales de la HU no. Pendiente el commit |
+| `B-EP-006-HU-001` — **propuesta, sin abrir** | Los dos transversales: privacidad y límites | Sale del veredicto de la fase A. Abrirla la decide el usuario: el de privacidad toca `13·DOC5`, que es `base/` |
 
-**La fase retro-documenta.** Los diez tipos y los tres alcances están en producción, con el criterio de qué merece guardarse en `13·DOC5`. Lo que la fase mide es cuáles de los diez tipos se usan de verdad: si tres no se usan nunca, el criterio no está funcionando.
+**La fase retro-documentó, y midió.** Los diez tipos y los tres alcances están en producción, con el criterio de qué merece guardarse en `13·DOC5`. La cuenta del 2026-08-17, sobre 237 señales: **siete tipos vivos y tres nunca usados** —`alternativa-descartada`, `supuesto`, `pregunta-abierta`—, y de los tres alcances, `modulo:` tampoco se ha usado nunca. Ninguno se quitó del esquema.
+
+**Lo que la fase dejó abierto**, y que esta HU todavía no cumple:
+
+| Qué | Estado |
+|---|---|
+| CA-01 y CA-02 | Cumplidos y probados |
+| Transversal · **Privacidad** | **No cumple.** `13·DOC5` no dice que no se guarden datos personales ni claves |
+| Transversal · Límites | Sin probar: el plan de pruebas no le escribió caso |
+| El criterio, aplicado | De 237 señales, **una sola** es de este repositorio. Cuatro decisiones de fases cerradas eran señal y ninguna se guardó |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -183,3 +193,4 @@ Entonces dice de qué tipo es y a quién le sirve
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-01 y CA-02 verificados; el transversal de privacidad queda en «No» y el de límites sin probar. Medición: 7 tipos vivos de 10, y 1 señal de este repositorio en 237 |

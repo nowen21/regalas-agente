@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 7 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 7 tareas, las 7 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **Cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Los **tres están en «No» de entrada**: el número se elige a ojo leyendo el índice |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 3 de 3, y los tres transversales |
+| **CA en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | 2 — `D-02`, que `comun.leer` revienta con el archivo ausente (esquivado acá, se arregla en la fase B de HU-003); `D-03`, que el plan declaró cobertura completa sin contar los transversales. `D-01` se corrigió antes de cerrar |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,15 +55,15 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Comprobación que dice el próximo número libre |
-| T-02 | Pendiente | Caso de la numeración con huecos — CP-001 |
-| T-03 | Pendiente | Que dos archivos con el mismo número se reporten |
-| T-04 | Pendiente | Caso del número repetido — CP-002 |
-| T-05 | Pendiente | Cruce carpeta ↔ índice en los dos sentidos |
-| T-06 | Pendiente | Caso del cruce — CP-003 |
-| T-07 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | Comprobación que dice el próximo número libre |
+| T-02 | **Hecha** | Caso de la numeración con huecos — CP-001 |
+| T-03 | **Hecha** | Que dos archivos con el mismo número se reporten |
+| T-04 | **Hecha** | Caso del número repetido — CP-002 |
+| T-05 | **Hecha** | Cruce carpeta ↔ índice en los dos sentidos |
+| T-06 | **Hecha** | Caso del cruce — CP-003 |
+| T-07 | **Hecha** | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 7. **Bloqueadas:** ninguna.
+**Hechas:** 7 de 7. **Bloqueadas:** ninguna.
 
 ---
 
@@ -88,4 +88,4 @@
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

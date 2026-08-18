@@ -59,6 +59,7 @@ Antes de escribir código, el trabajo se planea por escrito. Lo grande es una **
 | Archivo | Documentación | Qué revisa |
 |---|---|---|
 | `fases.py` | [fases.md](fases.md) | Que las carpetas de épica, historia y fase estén bien nombradas y en orden. |
+| `pendientes.py` | [pendientes.md](pendientes.md) | Que ningún número de pendiente esté repetido, cuál es el próximo libre, y que la carpeta cuadre con su índice. |
 | `flujo.py` | [flujo.md](flujo.md) | Que el plan de trabajo esté completo y sin dudas sin resolver. |
 | `trazabilidad.py` | [trazabilidad.md](trazabilidad.md) | Que la épica y la historia se nombren entre sí, y que al cerrar quede la tabla de qué se hizo. |
 

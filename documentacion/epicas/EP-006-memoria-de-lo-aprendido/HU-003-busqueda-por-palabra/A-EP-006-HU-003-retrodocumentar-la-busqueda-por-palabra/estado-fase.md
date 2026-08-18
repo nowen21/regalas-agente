@@ -17,23 +17,23 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 5 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 5 tareas, las 5 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Las pruebas corren sobre bases temporales; la base real tiene el aprendizaje del proyecto.
+**`memoria.py` y el esquema no se tocaron**, como decía §2.1 del plan — aun cuando la corrida encontró dos defectos en `cmd_search` que se arreglan con una línea cada uno. Están probados, no parcheados.
 
 ---
 
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Ninguno todavía. Los dos **corren hoy**; lo que falta es la prueba escrita, y en particular la de sincronía del índice |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 1 de 2. Y los tres RNF y los dos transversales, todos en «Sí» |
+| **CA en "No"** | **CA-01**, en su segunda mitad: la búsqueda encuentra pero **no dice dónde está** lo encontrado, así que el resultado no alcanza para abrir |
+| **Defectos abiertos aceptados** | 3 — `D-01` la búsqueda no imprime `where_`; `D-02` el camino sin resultados no cierra la conexión; `D-03` el plan declaró 100% de cobertura sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,13 +55,13 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Caso de la búsqueda con su ubicación — CP-001 |
-| T-02 | Pendiente | Prueba de los acentos — CP-002 |
-| T-03 | Pendiente | Prueba de los filtros de tipo y alcance — CP-003 |
-| T-04 | Pendiente | Caso de la señal archivada — CP-004 |
-| T-05 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | CP-001. Destapó `D-01`: el paso 2 falla |
+| T-02 | **Hecha** | CP-002, en los dos sentidos. Pasa |
+| T-03 | **Hecha** | CP-003, con los filtros combinados. Pasa |
+| T-04 | **Hecha** | CP-004, incluido el paso que separa archivar de borrar. Pasa |
+| T-05 | **Hecha** | Corrida completa (39 pruebas, verde con 2 fallos esperados), resultado escrito y trazabilidad cerrada |
 
-**Hechas:** 0 de 5. **Bloqueadas:** ninguna.
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 
@@ -78,12 +78,11 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
-- **Si la prueba de sincronía destapa un disparador roto** (riesgo `R-01`): es exactamente para lo que sirve. Se anota y se propone el arreglo.
-- **Si otra sesión está tocando `memoria/pruebas.py`** (riesgo `R-03`): se guarda solo lo propio.
+- **Los dos arreglos de `cmd_search`**, que son una línea cada uno y no cabían en el plan aprobado: imprimir `where_` (`D-01`) y cerrar la conexión del camino vacío (`D-02`). Piden una fase `B-EP-006-HU-003` — proponerla es del agente, abrirla es del usuario.
+- **El riesgo `R-01` no se materializó:** los tres triggers están sincronizados. Se comprobó con alta, modificación y borrado.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-01 y CA-02 cumplidos; el CA-03, no |
 
 ---
 
@@ -144,7 +144,7 @@ Y cuando no lo es, se avisa y el trabajo sigue
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 y el CA-02 sí; el CA-03 no. Pendiente el commit |
 
 **La fase retro-documenta.** El enganche corre con cada escritura y comprueba los enlaces. Lo que tiene que responder es el CA-03: hoy devuelve el detalle y no distingue entre detener y avisar, como sí hace la línea de comandos.
 
@@ -206,3 +206,4 @@ Y cuando no lo es, se avisa y el trabajo sigue
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Nacen `RN-06`, `RN-07` y `CA-03`: la historia decía que la comprobación corre y que el resultado vuelve, pero no qué pasa cuando el hallazgo es grave. Con eso, un hallazgo crítico y una errata valían igual, y los dos se podían ignorar. Sale del hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen` |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. El disparo corre en el momento y calla con lo que no le toca, y se comprueba que callar no es no haber corrido. CA-03 en «No»: nada detiene, todo avisa |

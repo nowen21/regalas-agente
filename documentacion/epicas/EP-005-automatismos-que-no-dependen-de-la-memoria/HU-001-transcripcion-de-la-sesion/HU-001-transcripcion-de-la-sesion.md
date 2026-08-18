@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — los tres CA cumplidos; el transversal de privacidad, no |
 
 ---
 
@@ -146,7 +146,7 @@ Entonces la sesión está listada
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA numerados sí; el transversal de privacidad no. Pendiente el commit |
 
 **La fase retro-documenta**, y se puede ver funcionando en cualquier sesión: el enganche escribe cada mensaje con la hora del reloj. El caso que la fase fija es el defecto que ya pasó seis veces — el agente escribiendo la transcripción a mano, con horas inventadas.
 
@@ -207,3 +207,4 @@ Entonces la sesión está listada
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los tres CA verificados, incluida la hora del reloj probada con un mensaje que contiene una hora falsa. El transversal de privacidad en «No»: nada enmascara, y la transcripción se versiona |

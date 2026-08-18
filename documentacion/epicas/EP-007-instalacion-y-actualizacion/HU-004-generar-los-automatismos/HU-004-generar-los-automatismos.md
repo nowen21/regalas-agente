@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los dos CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -127,7 +127,7 @@ Y los propios del proyecto quedan intactos
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-007-HU-004-retrodocumentar-la-puesta-de-los-automatismos](A-EP-007-HU-004-retrodocumentar-la-puesta-de-los-automatismos/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-007-HU-004-retrodocumentar-la-puesta-de-los-automatismos](A-EP-007-HU-004-retrodocumentar-la-puesta-de-los-automatismos/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-007-HU-004-retrodocumentar-la-puesta-de-los-automatismos/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta.** El instalador deja puestos los seis enganches. La prueba que falta es la más importante: que ninguno detenga el trabajo si falla — hoy eso está por diseño y sin comprobar.
 
@@ -187,3 +187,4 @@ Y los propios del proyecto quedan intactos
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Seis enganches en nueve momentos, sin duplicarse, y ninguno detiene la sesión sobre una carpeta vacía. Queda escrita la tabla de los seis con qué pasa si cada uno falla |

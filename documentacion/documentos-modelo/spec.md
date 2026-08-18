@@ -75,6 +75,33 @@ Del resumen de sesión (HU-009):
 15. **El resumen dice de dónde viene la sesión**: si se abrió para resolver un hallazgo de otra, lo nombra con su fecha, su tema y su número.
 16. **Un hallazgo que se arrastra conserva dónde nació.** El «nace en» no cambia nunca; el «cerrado en» se llena el día que se cierre, aunque sea tres sesiones después.
 
+### 4.1 Los tres modelos del encargo
+
+> Escrito el 2026-08-17 en la fase [`A-EP-003-HU-002`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/resultado_pruebas.md).
+
+10. **Son tres y se encadenan hacia abajo:** el planteamiento dice qué es el proyecto, la épica agrupa un pedazo, y la historia de usuario pide una cosa concreta. Cada nivel nombra al de arriba y lista los de abajo.
+11. **El enlace se escribe en los dos lados.** La HU nombra su épica y la épica lista sus HU; lo mismo entre HU y fase. Con un solo lado, borrar el otro no deja rastro.
+12. **Todo criterio de aceptación dice cómo validarlo y cuándo se da por aprobado.** Un criterio sin eso no se puede comprobar, y la historia entera se vuelve opinión.
+13. **La épica sin historias y la historia sin fases tienen forma:** su sección existe y dice que todavía no hay. No es lo mismo que falte la sección.
+
+### 4.2 Los cinco modelos de la fase
+
+> Escrito el 2026-08-17 en la fase [`A-EP-003-HU-003`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase/resultado_pruebas.md).
+
+14. **Cada uno responde una pregunta distinta, y ninguna la responde dos.** Qué se va a hacer (plan de trabajo) · con qué casos se comprueba (plan de pruebas) · qué dio al correr (resultado) · en qué estación va (estado de fase) · qué quedó hecho (funcionalidad implementada).
+15. **El plan no lleva columna de estado.** Se aprueba antes y no se reescribe después: llevarle el avance encima invitaría a tocarlo mientras se ejecuta, y entonces dejaría de servir para comparar lo dicho contra lo hecho.
+16. **El avance vive en el estado de fase**, que copia los identificadores del plan sin tocarlo.
+17. **La fase recién abierta tiene forma:** el estado dice «Todavía no se ejecutó», con las tareas en pendiente y lo que las bloquea. No se deja en blanco.
+
+### 4.3 Los modelos de la capa de proyecto
+
+> Escrito el 2026-08-17 en la fase [`A-EP-003-HU-005`](../epicas/EP-003-documentos-modelo-y-procedimientos/HU-005-modelos-de-la-capa-de-proyecto/A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3/resultado_pruebas.md).
+
+18. **Son tres:** el stack, el dominio y el mapeo de nombres. Los llena el proyecto, no el estándar.
+19. **Lo no declarado no se comprueba.** Un proyecto que no declara su convención de nombres no recibe hallazgos de nomenclatura: exigir contra una convención que nadie escribió sería inventarla.
+20. **Ninguno pide credenciales ni datos personales.** Un modelo que los pidiera los convertiría en un archivo versionado en cada proyecto que lo llene.
+21. **Recién instalados quedan con sus marcas `«…»` puestas**, que es lo que [`13·DOC20`](../../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) usa para saber que el documento no está terminado.
+
 ## 5. Modelo de datos
 
 No aplica porque el entregable es texto normativo y plantillas: no hay entidades, tablas ni catálogos.

@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Cumplida — los tres CA y los dos transversales verificados el 2026-08-17 |
 
 ---
 
@@ -145,7 +145,7 @@ Y queda dicho qué no se está comprobando
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3](A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3](A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-003-HU-005-retrodocumentar-los-modelos-de-la-capa-3/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA y los dos transversales verificados. Pendiente el commit |
 
 **La fase retro-documenta.** Los tres modelos existen, el instalador los pone en cada proyecto y un programa los lee. Falta su incremento en la especificación y la prueba de que no se pisan entre ellos.
 
@@ -207,3 +207,4 @@ Y queda dicho qué no se está comprobando
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los tres modelos existen, no se pisan y ninguno pide credenciales. Queda escrito por qué lo no declarado no se comprueba: exigir contra una convención que nadie escribió sería inventarla |

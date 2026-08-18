@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 6 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 6 tareas, las 6 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Ninguno todavía. El **CA-01 está a medias de entrada**: los recuerdos son texto y se ven en el historial; las señales viven en una base binaria y su cambio no se puede leer |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 1 de 2. Los dos transversales, en «Sí» |
+| **CA en "No"** | El **CA-01**, en la mitad de las señales. Y no por lo que el plan suponía —«la base es binaria y su cambio no se puede leer»—: `memoria/senales.db` está en `.gitignore` y **no tiene ningún historial**, cero commits |
+| **Defectos abiertos aceptados** | 2 — `D-01` las 237 señales sin historial, con las tres salidas propuestas y ninguna decidida; `D-02` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,14 +55,14 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Caso del recuerdo visible en el historial — CP-001 |
-| T-02 | Pendiente | Medir qué se puede leer del historial de la base — CP-002 |
-| T-03 | Pendiente | Proponer la salida, **sin decidirla** |
-| T-04 | Pendiente | Prueba del índice en los dos sentidos — CP-003 |
-| T-05 | Pendiente | Caso de llegar al recuerdo por el índice — CP-004 |
-| T-06 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | CP-001. El historial de un recuerdo se lee línea por línea con `git log -p` |
+| T-02 | **Hecha** | CP-002. Medido: **cero commits** de `memoria/senales.db`, porque está en `.gitignore` |
+| T-03 | **Hecha** | Las tres salidas escritas —exportar a texto, declarar el límite, versionar el `.db`— **y ninguna decidida** |
+| T-04 | **Hecha** | CP-003. Clase `IndiceDeLosRecuerdos`: 18 de 18 en los dos sentidos |
+| T-05 | **Hecha** | CP-004. Un solo archivo abierto para ubicar cada uno de los cuatro temas |
+| T-06 | **Hecha** | Corrida completa (260 pruebas, verde con 2 fallos esperados), resultado escrito y trazabilidad cerrada |
 
-**Hechas:** 0 de 6. **Bloqueadas:** ninguna.
+**Hechas:** 6 de 6. **Bloqueadas:** ninguna.
 
 ---
 
@@ -79,13 +79,12 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
-- **Qué hacer con las señales en base binaria** queda como **propuesta al usuario**, no como decisión de esta fase (riesgo `R-02`).
+- **La decisión que esta fase deja sobre la mesa, y que le falta al CA-01:** qué hacer con las 237 señales sin historial. **A** exportarlas a texto junto a la base · **B** declarar el límite en la HU · **C** versionar el `.db` tal cual. Lo que cuesta cada una está en [§2 del resultado](resultado_pruebas.md#detalle-de-cp-002--qué-se-puede-leer-del-historial-de-la-base-de-señales). **Es del usuario**, y el plan pedía proponerlas sin decidirlas (riesgo `R-02`).
+- **El riesgo `R-01` no se materializó:** el índice está completo. 18 archivos, 18 líneas, sin sobrantes ni faltantes.
 - **El módulo de la memoria no tiene especificación aparte.** Es uno de los casos que [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) viene a resolver.
-- **Si el índice de recuerdos resulta incompleto** (riesgo `R-01`): se corrige. Es un archivo del repositorio y no rompe nada.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 6 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 6 tareas, las 6 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía. El **CA-03 está a medias de entrada**: el enganche no distingue entre detener y avisar como sí lo hace la línea de comandos |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 2 de 3, y los transversales de rendimiento y errores |
+| **CA en "No"** | El **CA-03**: pide que el hallazgo grave detenga y hoy todo avisa |
+| **Defectos abiertos aceptados** | 2 — `D-01` nada detiene; `D-02` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,14 +55,14 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Caso del documento con enlace roto — CP-001 |
-| T-02 | Pendiente | Prueba del silencio ante lo que no es documento — CP-002 |
-| T-03 | Pendiente | Caso del documento de otra carpeta — CP-002 |
-| T-04 | Pendiente | Levantar qué hace hoy con una falla y con un aviso — CP-003 |
-| T-05 | Pendiente | Caso del enlace roto contra el índice desactualizado — CP-003 |
-| T-06 | Pendiente | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
+| T-01 | **Hecha** | Caso del documento con enlace roto — CP-001 |
+| T-02 | **Hecha** | Prueba del silencio ante lo que no es documento — CP-002 |
+| T-03 | **Hecha** | Caso del documento de otra carpeta — CP-002 |
+| T-04 | **Hecha** | Levantar qué hace hoy con una falla y con un aviso — CP-003 |
+| T-05 | **Hecha** | Caso del enlace roto contra el índice desactualizado — CP-003 |
+| T-06 | **Hecha** | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
 
-**Hechas:** 0 de 6. **Bloqueadas:** ninguna.
+**Hechas:** 6 de 6. **Bloqueadas:** ninguna.
 
 ---
 
@@ -87,4 +87,4 @@
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-01 cumplido y medido; el CA-02, su RNF y el transversal de privacidad, no |
 
 ---
 
@@ -128,9 +128,25 @@ Y se dice que la búsqueda por significado no está disponible
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 sí y medido; el CA-02 no. Pendiente el commit |
+| `B-EP-006-HU-004` — **propuesta, sin abrir** | CA-02 y el transversal de privacidad | Que la búsqueda degrade cuando falta el modelo, y que el modelo se cargue sin salir a la red |
 
-**La fase retro-documenta.** Está construido y es opcional: los vectores se calculan en la máquina y, sin el modelo, la memoria sigue funcionando. Las dos mitades que la fase prueba son justo esas, y hoy solo están escritas en un comentario del programa.
+**La fase retro-documentó, y midió lo que nadie había medido.** Escritas como las escribe una persona —preguntas, no palabras clave—, tres consultas reales sobre las 237 señales pasaron de **0 resultados a 5**, sin perder nada de lo que la búsqueda por palabra ya encontraba. De esos cinco, **dos sirven y tres son ruido**: pasar de nada a algo mayormente ruido es una mejora real, y no es precisión.
+
+**La mitad que no se cumple.** «Sin el modelo, la búsqueda sigue funcionando» resultó ser dos escenarios y solo uno anda:
+
+| Escenario | Qué pasa |
+|---|---|
+| Sin las **librerías** (`numpy`, `model2vec`) | Responde por palabra, y **avisa** que la semántica no está instalada |
+| Con las librerías y **sin el modelo** | **Se cae entera**, y arrastra a la búsqueda por palabra, que no necesita nada |
+
+El segundo es el de una máquina nueva, una caché borrada o un despliegue sin red. `disponible()` solo comprueba que las librerías importen.
+
+| Medición, 2026-08-17 | Valor |
+|---|---|
+| Primera búsqueda, en frío | **5,02 s** |
+| Búsquedas siguientes | **0,009 s** |
+| Conexiones al indexar y buscar | **1**, al cargar el modelo — el contenido de las señales **no** viaja |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -189,3 +205,4 @@ Y se dice que la búsqueda por significado no está disponible
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-01 verificado y medido (3 de 3 consultas de 0 a 5 resultados); CA-02 en «No»: sin el modelo la búsqueda se cae entera. Se propone la fase B |

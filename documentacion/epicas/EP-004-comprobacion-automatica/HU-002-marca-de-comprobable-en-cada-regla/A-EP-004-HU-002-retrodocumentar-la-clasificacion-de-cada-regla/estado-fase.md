@@ -17,18 +17,18 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 9 — commit único. **Última puerta pasada:** 8, con la trazabilidad cerrada.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
 | 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
 | 2 | Disparo / autorización de inicio | 👤 orden de bajar a fase las HU del inventario 48 | ☑ |
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 7 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
+| 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
+| 6 | Ejecución continua | 7 tareas, las 7 hechas | ☑ |
+| 7 | Pruebas | [`resultado_pruebas.md`](resultado_pruebas.md) con veredicto **No cumple** | ☑ |
+| 8 | Cierre documental | [`funcionalidad_implementada.md`](funcionalidad_implementada.md), §8 de la HU y fila del inventario 48 | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía. Se sabe que el **CA-03 va a quedar en «No»**: nada impide hoy publicar una regla sin clasificar, porque el programa que lo vería no corre |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 1 de 3. Los dos transversales, en «Sí» |
+| **CA en "No"** | El **CA-01**: cuatro reglas escritas en `base/` con `###` **no existen para el analizador**, así que su clasificación es una fila que nadie comprueba. Y el **CA-03**, como se preveía: avisa, no detiene, y no corre |
+| **Defectos abiertos aceptados** | 3 — `D-01` el analizador solo reconoce `## `; `D-02` la clasificación no detiene y `metareglas.py` no tiene subcomando; `D-03` el plan declaró cobertura completa sin contar los transversales |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) de esta fase |
 
 ---
 
@@ -55,15 +55,15 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Prueba del cruce en los dos sentidos — CP-001 |
-| T-02 | Pendiente | Caso del rango que no clasifica — CP-002 |
-| T-03 | Pendiente | Tabla regla → programa contra los subcomandos que existen |
-| T-04 | Pendiente | Caso de llegar al programa leyendo solo el registro — CP-003 |
-| T-05 | Pendiente | Caso de la regla nueva sin clasificar — CP-004 |
-| T-06 | Pendiente | Constancia de que la vigilancia depende de un programa sin punto de entrada |
-| T-07 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | **Hecha** | CP-001, en los dos sentidos. La vuelta destapó `D-01`: 9 entradas que el analizador no reconoce |
+| T-02 | **Hecha** | CP-002. **Cero rangos**: el arreglo de `A-EP-001-HU-009` sigue puesto, y ahora tiene prueba |
+| T-03 | **Hecha** | 24 subcomandos, 35 módulos, **10 que el registro no nombra** — y ninguno es hueco real |
+| T-04 | **Hecha** | CP-003. Tres reglas validables llegan a su programa leyendo solo el registro |
+| T-05 | **Hecha** | CP-004, con la regla de mentira escrita **en una copia**. Avisa, y no detiene |
+| T-06 | **Hecha** | Escrita la constancia: ninguno de los 24 subcomandos llama a `metareglas.py` |
+| T-07 | **Hecha** | Corrida completa (268 pruebas, verde con 4 fallos esperados), resultado escrito y trazabilidad cerrada |
 
-**Hechas:** 0 de 7. **Bloqueadas:** ninguna.
+**Hechas:** 7 de 7. **Bloqueadas:** ninguna.
 
 ---
 
@@ -80,13 +80,13 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar.
-- **El CA-03 no lo cierra esta fase.** Lo que falta —que la regla sin clasificar no se publique— depende de un programa sin punto de entrada (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Acá solo queda la evidencia.
-- **Si la prueba encuentra reglas sin clasificar otra vez** (riesgo `R-01`): se listan. Clasificarlas es de la fase de [EP-001 · HU-009](../../../EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan/README.md).
+- **`D-01`, que la fase no preveía:** el analizador solo reconoce las reglas escritas con `## `, así que **las cuatro `CQ` del capítulo 16 nunca han pasado por ninguna de las 20 filas del checklist**. Pide la fase `B-EP-004-HU-002`.
+- **El CA-03 no lo cierra esta fase**, como ya se sabía: depende de un programa sin punto de entrada (pendiente [53](../../../../../pendientes/53-enlaces-py-no-tiene-punto-de-entrada.md)). Acá quedó la evidencia y la prueba en rojo esperado.
+- **El riesgo `R-01` no se materializó:** cero reglas sin clasificar entre las que el analizador ve.
 - **Si otra sesión está tocando `validadores/pruebas.py`** (riesgo `R-03`): se guarda solo lo propio.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Está detenida en la etapa 9 esperando la autorización del commit, que es la puerta normal.

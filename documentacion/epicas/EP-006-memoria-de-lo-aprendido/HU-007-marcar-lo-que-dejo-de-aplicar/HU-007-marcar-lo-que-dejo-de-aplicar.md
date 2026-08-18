@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación — CA-02, RNF y no regresión cumplidos; el CA-01 y la trazabilidad, no |
 
 ---
 
@@ -123,9 +123,12 @@ Y las marcadas se ven como tales
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 sí, el CA-01 a medias. Pendiente el commit |
+| `B-EP-006-HU-007` — **propuesta, sin abrir** | Lo que le falta al CA-01 y al transversal de trazabilidad | Que `cmd_supersede` guarde el `--by` y la fecha, y que archivar deje fecha |
 
-**La fase retro-documenta.** Cinco estados, la señal que reemplaza apuntando a la reemplazada, y la regla de que ninguna se borra. Lo que falta es la prueba de esa regla: desde la búsqueda, «no aparece» y «no existe» se ven igual.
+**La fase retro-documentó, y encontró lo que faltaba.** La regla «ninguna se borra» **se cumple**: se comprobó contando el total antes y después de pasar señales por los cuatro estados no vigentes, y nunca bajó. Los cinco estados hacen lo que dicen y la vigencia distingue lo viejo sin revisar de lo fresco.
+
+**Lo que no se cumple** es la otra mitad del CA-01: la señal marcada no dice **cuándo** se marcó ni **qué la reemplazó**. `cmd_supersede` imprime «S-001 marcada reemplazada por S-002» y no guarda nada; archivar tampoco deja fecha. El enlace del reemplazo funciona en un solo sentido — desde la nueva se llega a la vieja, al revés no.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -183,3 +186,4 @@ Y las marcadas se ven como tales
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. CA-02, RNF y no regresión verificados; CA-01 y trazabilidad en «No» porque marcar no deja fecha ni dice qué reemplazó. Se propone la fase B |
