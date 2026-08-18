@@ -143,6 +143,8 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-008](HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) | El enganche que sostiene el resumen de la sesión | Must | M |
 | [HU-009](HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) | Lo que gobierna cada frase llega puesto al abrir la sesión | Must | M |
 | [HU-010](HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | El capítulo que rige lo que se escribe llega al escribirlo | Must | M |
+| [HU-011](HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md) | Dónde termina el estándar y dónde empieza el adaptador | Should | M |
+| [HU-012](HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) | Hacer cumplir lo que hoy solo se recuerda | Must | M |
 
 ## 10. Consideraciones técnicas
 

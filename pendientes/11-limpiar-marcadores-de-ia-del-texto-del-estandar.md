@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-10, al publicar [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) en la v7.0.0.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-004 · HU-012 — Marcas de generación automática](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) — es la deuda que destapa el conteo de esa historia: limpiar lo que el programa cuenta |
+
 `ID8` exige que ningún documento se entregue con las marcas de [`marcadores-de-ia.md`](../base/00-identidad-y-rol/marcadores-de-ia.md). El texto que ya estaba escrito no cumple: `base/`, `plantillas/` y los README del repositorio usan la raya larga como inciso en casi todos los párrafos, y hay bastante viñeta que abre con negrita y dos puntos.
 
 Por [`20·M10`](../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) una norma nueva no reabre lo cerrado, así que la regla rige para lo que se escriba desde ahora y el texto viejo no queda "incumpliendo". Pero mientras no se limpie, el estándar enseña con el ejemplo lo contrario de lo que pide.

@@ -12,3 +12,4 @@ Contenido inmediato de esta carpeta.
 | [HU-005-no-pisar-lo-escrito/](HU-005-no-pisar-lo-escrito/) | Historia de usuario: no pisar lo escrito |
 | [HU-006-poner-al-dia/](HU-006-poner-al-dia/) | Historia de usuario: poner al día lo ya instalado |
 | [HU-007-revisar-que-falta/](HU-007-revisar-que-falta/) | Historia de usuario: revisar qué falta |
+| [HU-008-el-proyecto-reporta-al-estandar/](HU-008-el-proyecto-reporta-al-estandar/) | Historia de usuario: el proyecto reporta lo que es del estándar |

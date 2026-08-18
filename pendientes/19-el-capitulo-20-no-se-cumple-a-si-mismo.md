@@ -2,6 +2,10 @@
 
 **Estado:** abierto, con una de sus tres deudas cerrada · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — es exactamente lo que esa historia pide, ya medido |
+
 ## El problema
 
 El validador de meta-reglas midió por primera vez el propio cuerpo de reglas. De **188 reglas**:

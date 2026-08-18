@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-003 · HU-004 — Modelo de la especificación](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/HU-004-modelo-de-la-especificacion.md) — las 31 reglas sin origen están en las dos especificaciones de esta casa |
 | **Nace de cerrar** | el [43](hecho/el-origen-de-la-regla-de-negocio.md) (v22.0.0 y v22.1.0). Es lo que su validador destapó, no su reapertura |
 | **Proyecto de origen** | El estándar mismo |
 

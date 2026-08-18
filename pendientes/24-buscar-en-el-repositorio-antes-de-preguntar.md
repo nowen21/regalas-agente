@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-1 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-011 — Buscar en el repositorio antes de preguntar](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) — el propio pendiente la redactó; acá queda creada con ese texto |
+
 ## El problema
 
 El agente le preguntó al usuario en qué orden trabajar dos historias, ofreciéndole tres opciones. La respuesta ya estaba escrita: [HU-008](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) declara en su sección 9 que depende de HU-009, con impacto alto.

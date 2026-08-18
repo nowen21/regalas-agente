@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-los-resumenes-que-faltan.md](../historico-chat/2026-08-15-los-resumenes-que-faltan.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-005 · HU-008 — Enganche del resumen](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) — la línea del índice la tiene que escribir ese enganche, que es el que crea la carpeta |
+
 ## El problema
 
 [`historico-chat/resumenes/README.md`](../historico-chat/resumenes/README.md) cierra con la lista de días que hay. Hoy nombra solo el 2026-08-14. El 2026-08-15 tiene su carpeta y dos resúmenes dentro, y no aparece.

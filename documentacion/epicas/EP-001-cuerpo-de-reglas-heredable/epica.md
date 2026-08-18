@@ -142,6 +142,9 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-008](HU-008-derogacion-sin-borrar/HU-008-derogacion-sin-borrar.md) | Derogar una regla sin borrarla ni renumerarla | Must | S |
 | [HU-009](HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) | Poner al día las reglas que no pasan su propio checklist | Must | L |
 | [HU-010](HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) | Cuándo no aplica la exigencia de especificación | Must | S |
+| [HU-011](HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) | Buscar en el repositorio antes de preguntar | Must | S |
+| [HU-012](HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) | Inventario de las acciones del agente y su riesgo | Must | M |
+| [HU-013](HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) | Capítulos opt-in de dominio | Could | L |
 
 Sin estimar en puntos todavía.
 

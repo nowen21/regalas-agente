@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-005 · HU-012 — Hacer cumplir lo que hoy solo se recuerda](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) — «una instrucción informa, un enganche ejecuta» es la frase de esa épica |
 | **Proyecto de origen** | `shopnest-mesa` — `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **De dónde sale** | El hallazgo H-4 del resumen del 2026-08-17 de ese proyecto — `historico-chat/resumenes/2026-08-17/sesion.md` |
 | **Seguimiento allá** | `pendientes/22-nada-hace-cumplir-id9.md` |

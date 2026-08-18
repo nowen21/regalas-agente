@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-003 · HU-002 — Modelos del encargo](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) — el planteamiento es uno de los modelos del encargo; lo que falta es llenarlo para esta casa |
 | **De dónde sale** | El hallazgo H-13 del [resumen de la sesión 7](../historico-chat/resumenes/2026-08-16/sesion-7.md) |
 | **Lo destapó** | El punto de la cadena que nació al cerrar el [30](hecho/la-revision-ve-la-cadena.md) (v23.0.0) |
 

@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-07.
 
+| | |
+|---|---|
+| **Historia de usuario** | No es un ítem, es un tema. Cada una de sus 16 automatizaciones nombra su historia en su fila; se promueve a pendiente propio al construirse. |
+
 Inventario de todo lo que hoy **depende de que el agente se acuerde** y podría resolverse con un programa. Cada ítem se puede ejecutar sin ninguna IA en el momento de correr: reglas, comparaciones, generadores y enganches.
 
 > **Este archivo es un backlog temático, no un ítem.** Cuando uno de estos se vaya a construir, se promueve a su propio pendiente numerado y aquí se marca como promovido. El número `09` reserva el lugar del tema en la fila, no de las 16 tareas.
@@ -21,24 +25,26 @@ Y el corolario que justifica el backlog completo:
 
 ## Resumen
 
-| # | Funcionalidad | Prioridad | Complejidad | Grupo |
-|---|---|---|---|---|
-| 01 | Guardián de versión y CHANGELOG | **Alta** | Baja | Blindaje |
-| 02 | Barrido de secretos en el histórico | **Alta** | Baja | Seguridad |
-| 03 | Sello de puerta por CLI (`estado.py`) | **Alta** | Baja | Estado |
-| 04 | Manifiesto de convenciones del proyecto | **Alta** | Media | Puertas |
-| 05 | Validador de forma de regla (`M4`/`M5`/`M11`) | **Alta** | Media | Blindaje |
-| 06 | Gate `F2` mecánico: código sin spec | **Alta** | Alta | Puertas |
-| 07 | Validador del mapa del sitio | Media | Baja | Blindaje |
-| 08 | Enganche `pre-push` con la batería completa | Media | Baja | Seguridad |
-| 09 | Registro de búsquedas de memoria | Media | Baja | Métricas |
-| 10 | Marca de fase reabierta | Media | Baja | Métricas |
-| 11 | Hallazgos por regla → «puertas que fallan» | Media | Baja | Métricas |
-| 12 | Andamiaje de fase y HU (`nueva-fase.py`) | Media | Media | Ciclo de vida |
-| 13 | Actualizador de componentes en proyectos | Media | Media | Ciclo de vida |
-| 14 | Generador de índices (modo aparte) | Media | Media | Blindaje |
-| 15 | Respaldo antes de operación irreversible | Media | Media | Seguridad |
-| 16 | Detección de contradicciones en la memoria | Baja | Alta | Métricas |
+**Cada uno nombra su historia.** Ninguno se construye desde este archivo: al promoverse a pendiente propio se baja a la historia de su fila y se construye como fase suya ([`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)). Ninguna de las 16 estrena historia: las 16 caben en las que ya existen, que es la señal de que el tema estaba bien repartido desde el principio.
+
+| # | Funcionalidad | Prioridad | Complejidad | Grupo | Historia donde vive |
+|---|---|---|---|---|---|
+| 01 | Guardián de versión y CHANGELOG | **Alta** | Baja | Blindaje | [EP-005 · HU-005](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) |
+| 02 | Barrido de secretos en el histórico | **Alta** | Baja | Seguridad | [EP-005 · HU-002](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) |
+| 03 | Sello de puerta por CLI (`estado.py`) | **Alta** | Baja | Estado | [EP-004 · HU-014](../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
+| 04 | Manifiesto de convenciones del proyecto | **Alta** | Media | Puertas | [EP-004 · HU-010](../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) |
+| 05 | Validador de forma de regla (`M4`/`M5`/`M11`) | **Alta** | Media | Blindaje | [EP-004 · HU-011](../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) |
+| 06 | Gate `F2` mecánico: código sin spec | **Alta** | Alta | Puertas | [EP-004 · HU-013](../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) |
+| 07 | Validador del mapa del sitio | Media | Baja | Blindaje | [EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md), su `CA-03` |
+| 08 | Enganche `pre-push` con la batería completa | Media | Baja | Seguridad | [EP-005 · HU-006](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) |
+| 09 | Registro de búsquedas de memoria | Media | Baja | Métricas | [EP-006 · HU-003](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-003-busqueda-por-palabra/HU-003-busqueda-por-palabra.md) |
+| 10 | Marca de fase reabierta | Media | Baja | Métricas | [EP-004 · HU-014](../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
+| 11 | Hallazgos por regla → «puertas que fallan» | Media | Baja | Métricas | [EP-004 · HU-009](../documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/HU-009-conteo-por-regla.md) |
+| 12 | Andamiaje de fase y HU (`nueva-fase.py`) | Media | Media | Ciclo de vida | [EP-003 · HU-003](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) |
+| 13 | Actualizador de componentes en proyectos | Media | Media | Ciclo de vida | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) |
+| 14 | Generador de índices (modo aparte) | Media | Media | Blindaje | [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md), su `RN-02` |
+| 15 | Respaldo antes de operación irreversible | Media | Media | Seguridad | [EP-001 · HU-012](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) |
+| 16 | Detección de contradicciones en la memoria | Baja | Alta | Métricas | [EP-006 · HU-007](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-007-marcar-lo-que-dejo-de-aplicar/HU-007-marcar-lo-que-dejo-de-aplicar.md) |
 
 **Orden sugerido:** 01 → 02 → 03 → 07 → 08 (todo Baja complejidad y alto retorno) → 04 → 05 → 12 → 09/10/11 → 13 → 14 → 15 → 06 → 16.
 

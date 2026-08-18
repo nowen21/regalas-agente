@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-004 · HU-008 — Correr todas las comprobaciones de una sola vez](../documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/HU-008-corrida-completa.md) — su RN-01 pide una sola puerta de entrada; un módulo que corre solo y calla es la puerta que falta |
 | **De dónde sale** | El hallazgo H-4 del [resumen de la sesión 7](../historico-chat/resumenes/2026-08-16/sesion-7.md) |
 | **Proyecto de origen** | El estándar mismo |
 

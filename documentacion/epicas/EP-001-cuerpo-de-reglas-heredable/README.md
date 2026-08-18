@@ -15,3 +15,6 @@ Contenido inmediato de esta carpeta.
 | [HU-008-derogacion-sin-borrar/](HU-008-derogacion-sin-borrar/) | Historia de usuario: derogacion sin borrar |
 | [HU-009-reglas-sin-checklist-al-dia/](HU-009-reglas-sin-checklist-al-dia/) | Historia de usuario: reglas sin checklist al día |
 | [HU-010-cuando-no-aplica-la-especificacion/](HU-010-cuando-no-aplica-la-especificacion/) | Historia de usuario: cuándo no aplica la especificación |
+| [HU-011-buscar-antes-de-preguntar/](HU-011-buscar-antes-de-preguntar/) | Historia de usuario: buscar en el repositorio antes de preguntar |
+| [HU-012-inventario-de-acciones-y-riesgo/](HU-012-inventario-de-acciones-y-riesgo/) | Historia de usuario: inventario de las acciones del agente y su riesgo |
+| [HU-013-capitulos-opt-in-de-dominio/](HU-013-capitulos-opt-in-de-dominio/) | Historia de usuario: capítulos opt-in de dominio |

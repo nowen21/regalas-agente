@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-7 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-010 — Cuándo no aplica la exigencia de especificación](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) — es la historia escrita para este pendiente; su fase A ya está abierta |
+
 ## El problema
 
 [`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-spec-acordada-no-hay-codigo.md) exige una especificación acordada antes de tocar código. Está escrita dando por hecho que lo que se construye es el código de un módulo.

@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-007 · HU-006 — Poner al día](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — el registro mal escrito lo escribe esa historia; es su residuo |
 | **Proyecto de origen** | **`dp`** (RNI Defensoría) · `C:/DesarrollosClaude/dp` |
 | **Su pendiente de seguimiento** | [`documentacion/pendientes/24-el-registro-de-version-se-contradice.md`](../../../../DesarrollosClaude/dp/documentacion/pendientes/24-el-registro-de-version-se-contradice.md) — queda **abierto allá** hasta que este se corrija |
 | **A quién avisar al cerrar** | a **`dp`**, que lo reportó. No hace falta avisar a los demás: el archivo mal escrito no rompe nada, solo confunde a quien lo lea |

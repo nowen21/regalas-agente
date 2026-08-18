@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-007 · HU-008 — El proyecto reporta lo que es del estándar](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) — el canal del proyecto hacia el estándar es de instalación y actualización, que es esa épica |
 | **Proyecto de origen** | **`shopnest-mesa`** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **Su pendiente de seguimiento** | `pendientes/04-falta-la-regla-de-reporte-al-cimiento.md` — queda **abierto allá** hasta que este se corrija |
 | **A quién avisar al cerrar** | a **todos los proyectos instalados**, no solo al de origen: la regla los rige a todos. La lista está en [`plantillas/proyectos.md`](../plantillas/proyectos.md) |

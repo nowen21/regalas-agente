@@ -15,3 +15,5 @@ Contenido inmediato de esta carpeta.
 | [HU-008-enganche-del-resumen/](HU-008-enganche-del-resumen/) | Historia de usuario: el enganche del resumen |
 | [HU-009-lo-que-rige-cada-frase-llega-puesto/](HU-009-lo-que-rige-cada-frase-llega-puesto/) | Historia de usuario: lo que gobierna cada frase llega puesto al abrir la sesión |
 | [HU-010-la-regla-llega-al-escribir-el-archivo/](HU-010-la-regla-llega-al-escribir-el-archivo/) | Historia de usuario: el capítulo que rige lo que se escribe llega al escribirlo |
+| [HU-011-donde-termina-el-estandar/](HU-011-donde-termina-el-estandar/) | Historia de usuario: dónde termina el estándar y dónde empieza el adaptador |
+| [HU-012-hacer-cumplir-lo-que-solo-se-recuerda/](HU-012-hacer-cumplir-lo-que-solo-se-recuerda/) | Historia de usuario: hacer cumplir lo que hoy solo se recuerda |

@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-13.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-005 · HU-011 — Dónde termina el estándar y dónde empieza el adaptador](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md) — lo que está amarrado a la herramienta son los automatismos, que es de lo que trata la épica |
+
 Marcar dónde termina el estándar y dónde empieza el adaptador de Claude Code, y dejar el adaptador en un solo lugar, para que el día que la herramienta cambie no se caiga todo lo demás.
 
 ## El problema

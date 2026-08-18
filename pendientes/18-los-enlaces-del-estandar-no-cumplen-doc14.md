@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-14.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — es la deuda de su RN-03, que es DOC14 palabra por palabra |
+
 ## El problema
 
 [`13·DOC14`](../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) pide que el texto de un enlace sea la ruta completa desde la raíz y el destino la ruta relativa. Al escribir el validador de ese formato aparecieron **354 enlaces** del propio estándar que no lo cumplen.

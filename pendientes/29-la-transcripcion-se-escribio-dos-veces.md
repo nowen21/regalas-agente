@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md](../historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-005 · HU-001 — Transcripción de la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — lo que queda por limpiar es una transcripción, que es lo que esa historia gobierna |
+
 ## El problema
 
 Dos defectos en el mismo archivo, los dos del agente.

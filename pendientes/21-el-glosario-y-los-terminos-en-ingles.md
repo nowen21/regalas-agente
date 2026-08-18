@@ -2,6 +2,10 @@
 
 **Estado:** abierto en su segunda mitad · anotado 2026-08-14 · nace del hallazgo H-8 de [historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-003 · HU-010 — Glosario de la terminología](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) — el glosario es esa historia, y los trece roles en inglés son su otra mitad |
+
 ## El problema
 
 El 2026-08-14 se tradujo "spec" a "especificación" en 53 archivos y nació [`01·C20`](../base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica). Quedaron dos cosas sin hacer:

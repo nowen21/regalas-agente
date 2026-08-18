@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-001 · HU-001 — Formato único para escribir una regla](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) — si la fuente es el texto o una base de datos decide qué es «el formato» de una regla |
 | **De dónde sale** | El hallazgo H-1 del [resumen del 2026-08-16](../historico-chat/resumenes/2026-08-16/sesion.md) |
 | **Proyecto de origen** | El estándar mismo. Nace de una pregunta del usuario, no de un defecto de un proyecto |
 

@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-13.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-012 — Inventario de las acciones del agente y su riesgo](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) — el inventario es un anexo del núcleo, y el núcleo es cuerpo de reglas |
+
 Escribir la lista de **todo lo que el agente puede hacer** y clasificar cada cosa por qué tan difícil es deshacerla. A partir de esa lista, decir qué necesita aprobación de una persona y qué no.
 
 ## El problema

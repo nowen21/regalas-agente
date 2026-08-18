@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-13.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-007 — La regla que gobierna cómo se escriben las reglas](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — la vigencia de una regla es una exigencia sobre cómo se escribe y se mantiene una regla |
+
 Ponerle a cada regla de `base/` una fecha de última revisión, y un reporte que liste las que llevan mucho sin que nadie las vuelva a mirar.
 
 ## El problema

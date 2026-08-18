@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-13.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-013 — Capítulos opt-in de dominio](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) — mismo caso que el 08: un capítulo opt-in, acá el 21 |
+
 Un capítulo opt-in, el `21`, que es el siguiente número libre, para los proyectos que **construyen con inteligencia artificial**: los que entrenan un modelo, los que llaman al de un tercero, o los que dejan que un modelo decida algo dentro del producto.
 
 Hoy el estándar sirve para desarrollar uno de esos proyectos como cualquier otro. Lo que no trae es conocimiento propio del tema. El capítulo [`12`](../base/12-privacidad-datos.md) cubre datos personales, el [`16`](../base/16-cumplimiento-y-calidad.md) cumplimiento y el [`19`](../base/19-observabilidad-y-operacion.md) cómo se vigila un sistema en marcha, y ninguno pregunta qué modelo hay corriendo, con qué datos se entrenó, ni quién responde cuando se equivoca.

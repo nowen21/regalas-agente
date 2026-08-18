@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-9 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-002 · HU-006 — Quién manda sobre la versión](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) — dos sesiones numerando a la vez es el caso que esa historia tiene que resolver |
+
 ## El problema
 
 El 2026-08-14 hubo dos sesiones abiertas sobre el mismo repositorio. Una escribió la versión 10.0.0 mientras la otra subía la 9.0.0, la 9.1.0 y la 9.2.0. Al final del día la versión iba en 12.2.0 con dos numeraciones vivas y entradas del registro escritas por las dos.

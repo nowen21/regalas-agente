@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-15 · nace del hallazgo H-2 del [2026-08-15 · la-plantilla-del-resultado-de-pruebas](../historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-003 · HU-010 — Glosario de la terminología](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) — «corrida» es una entrada que le falta al glosario; va con el 21 |
+
 ## El problema
 
 El estándar llama «corrida» a ejecutar las pruebas, y en ninguna parte dice qué es. Quien no es del oficio no sabe si una corrida es un caso, una suite o un día entero de pruebas — y de eso depende cómo se llena la columna **Ciclo** del resultado de pruebas.

@@ -253,6 +253,43 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 **Es `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro** en la transcripción, que se versiona. Nada enmascara, y lo que falta para construirlo son dos decisiones del grupo G.
 
+## Ningún pendiente vive suelto: en qué historia está cada uno
+
+Un pendiente dice **qué falta**; la historia dice **qué se pide y cuándo se da por aceptado**. Un pendiente sin historia no se puede construir sin saltarse la cadena, que es lo que [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) prohíbe — y lo que costó el defecto de la [20.0.1](../CHANGELOG.md).
+
+Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabecera**, en la fila `Historia de usuario`. Este es el mapa completo, para verlo de un vistazo; la fuente es la ficha de cada archivo.
+
+| Épica · HU | Pendientes que viven ahí |
+|---|---|
+| [EP-001 · HU-001](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) — Formato único de regla | 37 |
+| [EP-001 · HU-007](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — La regla de las reglas | 14, 16, y el punto 2 del 33 |
+| [EP-001 · HU-009](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — Reglas sin checklist al día | 19, 52 |
+| [EP-001 · HU-010](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) — Cuándo no aplica la especificación | 20 |
+| **[EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md)** — Buscar antes de preguntar | 24 |
+| **[EP-001 · HU-012](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md)** — Inventario de acciones y riesgo | 13 |
+| **[EP-001 · HU-013](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md)** — Capítulos opt-in de dominio | 08, 12 |
+| [EP-002 · HU-006](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) — Quién manda sobre la versión | 22 |
+| [EP-003 · HU-002](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) — Modelos del encargo | 56 |
+| [EP-003 · HU-004](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/HU-004-modelo-de-la-especificacion.md) — Modelo de la especificación | 47 |
+| [EP-003 · HU-006](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) — Procedimientos por rol | 23 |
+| [EP-003 · HU-010](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) — Glosario de la terminología | 21, 26 |
+| [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — Enlaces y citas | 18, 54, 55, y el punto 1 del 33 |
+| [EP-004 · HU-008](../documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/HU-008-corrida-completa.md) — Corrida completa | 53 |
+| [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) — Marcas de generación automática | 11 |
+| [EP-004 · HU-017](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — Inventario de HU sin fase | 48, 59 |
+| [EP-005 · HU-001](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — Transcripción de la sesión | 29, y el punto 3 del 33 |
+| [EP-005 · HU-008](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) — Enganche del resumen | 32, y el punto 4 del 33 |
+| [EP-005 · HU-009](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) — Lo que rige cada frase llega puesto | el punto 5 del 33 |
+| **[EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md)** — Dónde termina el estándar | 15 |
+| **[EP-005 · HU-012](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md)** — Hacer cumplir lo que solo se recuerda | 58 |
+| [EP-006 · HU-002](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — Guardar en el repositorio | 17 |
+| [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — Poner al día | 46 |
+| **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
+
+**Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
+
+**Los cuatro que no son un ítem** —el [01](01-validadores-de-codigo-de-proyecto.md), el [09](09-autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](33-defectos-que-destaparon-los-resumenes-viejos.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
+
 ## Dependencias duras
 
 Todo lo demás es preferencia y se puede reordenar:

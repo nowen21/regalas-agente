@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-04.
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-001 · HU-013 — Capítulos opt-in de dominio](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) — es un capítulo opt-in del cuerpo de reglas, como el 18 y el 19 que ya entraron |
+
 Agregar soporte específico de **RPA** (Robotic Process Automation) como **patrón opt-in** (estilo `15`/`16`/`17`, con toggle en `CLAUDE.md.plantilla §5.1`). Hoy el estándar sirve para **desarrollar** un proyecto RPA como cualquier otro (flujo brief→épica→HU→spec→plan), pero **no trae conocimiento ni patrones propios de RPA**.
 
 ## Qué cubriría el patrón

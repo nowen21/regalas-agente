@@ -2,6 +2,10 @@
 
 **Estado:** abierto · anotado 2026-08-14 · nace del hallazgo H-7 del [2026-08-14 · h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
 
+| | |
+|---|---|
+| **Historia de usuario** | [EP-003 · HU-006 — Procedimientos por rol](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) — lo que está mal ubicado es un procedimiento, no un modelo |
+
 ## El problema
 
 `plantillas/` dice, por su nombre, que todo lo de adentro es un modelo que alguien llena. Al aplicar [`13·DOC19`](../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md), cuatro de sus treinta archivos quedaron sin una sola marca, y hubo que declararlos como excepción en una lista escrita a mano.

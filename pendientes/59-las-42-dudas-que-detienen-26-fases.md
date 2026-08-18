@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-004 · HU-017 — Inventario de HU sin fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — las 42 dudas detienen justamente las fases que ese inventario cuenta |
 | **De dónde sale** | Ejecutar los 51 planes de trabajo del [48](48-inventario-hu.md). 25 fases corrieron enteras; **26 se detuvieron** en la estación 6 |
 | **Qué lo desbloquea** | Que el usuario conteste. Ninguna de las 42 la puede decidir el agente |
 | **Qué pasa mientras tanto** | Las 26 fases están **aprobadas y detenidas**. No es que falte trabajo: falta la respuesta |

@@ -4,6 +4,7 @@
 
 | | |
 |---|---|
+| **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — los enlaces que rompe el cierre son enlaces, y su RN-01 es que resuelvan |
 | **De dónde sale** | El hallazgo H-5 del [resumen de la sesión 7](../historico-chat/resumenes/2026-08-16/sesion-7.md) |
 | **Hermano de** | El punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md) —renombrar una sesión rompe lo de fuera— y del [35](hecho/renombrar-deja-el-resumen-coherente.md), que cerró el de adentro |
 
