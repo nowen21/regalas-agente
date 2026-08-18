@@ -48,3 +48,58 @@ Las cuatro se borraron por instrucción del usuario y siguen en el historial de 
 No se toca lo que el enganche escribió: es el registro con hora real. Lo que se quita es la copia a mano.
 
 **Va después de los pendientes [27](hecho/el-veredicto-de-la-fase-a-de-hu-010.md) y [28](hecho/un-solo-veredicto-por-fase.md):** el archivo se puede leer igual, aunque tenga el doble de encabezados.
+
+---
+
+# Cómo cerró el punto 1 — 2026-08-17
+
+**La transcripción del 2026-08-15 quedó limpia**, y con un resultado distinto del que este pendiente esperaba.
+
+## Cómo se distinguían
+
+El molde del enganche se leyó de la **otra** sesión del mismo día, que estaba limpia:
+
+```
+### N · Usuario — hora
+> lo que dijo el usuario
+
+**Agente** — hora
+<!-- agente: uuid -->
+```
+
+El enganche **nunca** escribe un encabezado `### N · Agente`. Los 38 que había los escribió el agente, con su copia del texto y con horas estimadas. Eso da una regla que se comprueba, no que se adivina.
+
+## Lo que se hizo, y lo que **no**
+
+| | Cuántos |
+|---|---|
+| Copias a mano quitadas, porque el enganche traía la suya | 22 |
+| Mensajes de usuario repetidos, con hora inventada | 5 |
+| **Respuestas conservadas que solo existían en la copia a mano** | **16** |
+
+**Las 16 no se borraron, y ahí está el hallazgo.** Este pendiente daba por hecho que la copia a mano era pura duplicación —«61 encabezados de usuario para unos 30 mensajes»—. No lo era: de 63 mensajes de usuario, el enganche solo alcanzó a registrar 32 respuestas. Las otras 16 existen **únicamente** en lo que escribió el agente.
+
+Borrarlas habría dejado una transcripción con 63 preguntas y 32 respuestas, y habría repetido el error que este mismo pendiente documenta unas líneas más arriba: al borrar la copia del diplomado se perdió con ella la descripción de las diapositivas, y solo se supo después.
+
+Se quedan, pero **dejan de mentir sobre su hora**:
+
+```
+**Agente** — reconstruido a mano, sin hora del reloj
+<!-- sin marca del enganche: la hora original era una estimación (2026-08-15 09:28:20) -->
+```
+
+## Cómo quedó
+
+| | Antes | Ahora |
+|---|---|---|
+| Líneas | 1101 | 857 |
+| Encabezados `### N · Agente` | 38 | **0** |
+| Mensajes de usuario | 68, con números repetidos | **63**, correlativos |
+| Respuestas con marca del enganche | 32 | 32 |
+| Respuestas marcadas como reconstruidas | 0 | 16 |
+
+**Con los tres puntos hechos, el pendiente cierra.**
+
+## Lo que se supo
+
+**Una transcripción escrita dos veces no se limpia borrando una de las dos.** Las dos copias eran incompletas por lados distintos: el enganche tenía las horas buenas y le faltaban 16 respuestas; la copia a mano las tenía todas y con las horas inventadas. Lo que sirve es quedarse con lo verificable de cada una y **marcar cuál es cuál** — no elegir una y tirar la otra.
