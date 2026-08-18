@@ -137,7 +137,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 2 | Contar los registros del archivo | Tres, ni uno más |
 | 3 | Comprobar que ninguno está duplicado | Ninguno |
 | 4 | Comprobar que ninguna hora es imposible o fuera de orden | Todas del reloj, en orden |
-| 5 | Dejar escrito el defecto conocido: la transcripción escrita a mano por el agente | Atado al pendiente [29](../../../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| 5 | Dejar escrito el defecto conocido: la transcripción escrita a mano por el agente | Atado al pendiente [29](../../../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 
 **Resultado esperado final:** el duplicado que ya pasó seis veces se puede detectar contando, no releyendo.
 
@@ -175,7 +175,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 |---|---|---|
 | **Crítica** | Que un intercambio no quede registrado | Inmediato. Se pierde el único rastro de la sesión |
 | **Crítica** | Que la hora salga del texto del mensaje | Inmediato — es el defecto de las horas inventadas |
-| **Alta** | Que un intercambio quede duplicado | Antes de cerrar; se anota contra el pendiente [29](../../../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| **Alta** | Que un intercambio quede duplicado | Antes de cerrar; se anota contra el pendiente [29](../../../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 | **Media** | Que la sesión de prueba escriba en `historico-chat/` (riesgo `R-01`) | Se detiene y se limpia: es un rastro falso entre sesiones reales |
 | **Baja** | Que otra sesión esté escribiendo en el índice (riesgo `R-03`) | Se relee antes de escribir |
 

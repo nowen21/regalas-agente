@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-meta-reglas-2.m
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [historico-chat/README.md](../../README.md). Nueve días después, el mismo defecto —horas estimadas en vez de leídas— vuelve a pasar y queda en el [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Dónde queda:** [historico-chat/README.md](../../README.md). Nueve días después, el mismo defecto —horas estimadas en vez de leídas— vuelve a pasar y queda en el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md).
 - **Nace en:** 2026-08-06 · meta-reglas-2.
 - **Cerrado en:** 2026-08-06 · meta-reglas-2.
 - **Con qué se retoma:** —.

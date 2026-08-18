@@ -268,6 +268,16 @@ Cerrado el [pendiente 21](../../../pendientes/hecho/los-nombres-de-rol-en-espano
 
 **Queda la carpeta `skills/generar-spec-modulo/` a propósito.** El nombre de una skill es cómo se la invoca: renombrarla cambia comportamiento, no solo texto.
 
+### H-24 · La instrucción escrita habría borrado dieciséis mensajes
+
+Cerrado el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md). La transcripción del 2026-08-15 pasó de 57 bloques a 48.
+
+**El pendiente decía quitar los 25 bloques que no llevan la marca del enganche.** Al medir, solo **9 estaban repetidos palabra por palabra**; los otros **16 son mensajes que el usuario escribió de verdad**, sin gemelo en ninguna parte.
+
+> **La instrucción se apoyaba en un supuesto que nadie comprobó:** que la marca del enganche estuviera siempre. Faltaba en la mitad del archivo. Y era un archivo que no se puede reconstruir.
+
+**Queda sin saber por qué faltan esas 16 marcas.** O el enganche no las escribió ese día, o las escribió sin ellas — y si fue un defecto suyo, puede repetirse.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

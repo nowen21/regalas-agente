@@ -17,4 +17,4 @@ Fue el día en que el estándar se aplicó a sí mismo: se midió cuánto cumpl�
 | [por-que-pide-tanto-permiso.md](por-que-pide-tanto-permiso.md) | Las pantallas de permiso son por Bash, no por leer. Nace «corregir el defecto que uno mismo detecta», y un commit se lleva el trabajo de tres sesiones. |
 | [instalacion-en-aspectos-legales.md](instalacion-en-aspectos-legales.md) | El agente se instala en un proyecto del posgrado: 12 de 13, y lo que falta lo dice. |
 
-Dos de estas conversaciones estaban **duplicadas** en la carpeta de transcripciones —una copiaba los primeros doce intercambios de *el checklist de la regla* y la otra a *granularidad de la fase*—. Se borraron el 2026-08-16 y siguen en el historial de git ([pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md)).
+Dos de estas conversaciones estaban **duplicadas** en la carpeta de transcripciones —una copiaba los primeros doce intercambios de *el checklist de la regla* y la otra a *granularidad de la fase*—. Se borraron el 2026-08-16 y siguen en el historial de git ([pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md)).

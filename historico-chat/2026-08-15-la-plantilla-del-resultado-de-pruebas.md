@@ -5,6 +5,11 @@
 
 ## Conversación
 
+> **Este archivo se limpió el 2026-08-18** ([pendiente 29](../pendientes/hecho/la-transcripcion-duplicada-del-15.md)).
+> La sesión quedó transcrita dos veces: el enganche la escribía con la hora del reloj y el agente la copió además a mano, con horas estimadas.
+> Se quitaron los **9 bloques repetidos palabra por palabra**. **No se borró ningún mensaje del usuario:** dieciséis bloques sin la marca del enganche no tenían pareja, así que son reales y se quedan.
+> Los que llevan `<!-- agente: … -->` traen la hora del reloj; los demás, una estimación. **Las horas de este archivo no se pueden leer en orden.**
+
 ### 1 · Usuario — 2026-08-15 09:24:43
 > ubiquese en: plantillas/planes/resultado.md
 
@@ -309,10 +314,7 @@ Agregado:
 >
 > Y cada pareja `CP`–`CA`: **¿esta exigencia quedó comprobada, y con qué?** Un CA sin caso no está probado; un caso sin CA probó algo que nadie pidió.
 
-### 26 · Usuario — 2026-08-15 11:14:23
-> la idea es explicar que es lo que se hace ahí para responder la pregunta
-
-### 27 · Usuario — 2026-08-15 10:02:30
+### 26 · Usuario — 2026-08-15 10:02:30
 > la idea es explicar que es lo que se hace ahí para responder la pregunta
 
 **Agente** — 2026-08-15 11:16:30
@@ -326,7 +328,7 @@ Ahora cada línea lleva **la pregunta y qué se hace ahí para responderla**:
 
 Quité de la nota siguiente de §2 la frase «Se copia la lista de casos del plan, con su CA y su prioridad, y se le agrega qué pasó»: ya quedó dicha arriba.
 
-### 28 · Usuario — 2026-08-15 11:30:12
+### 27 · Usuario — 2026-08-15 11:30:12
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\planes\resultados.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > de un ejemplo de esto:
 > Explicar paso a paso que problema resuelve cad pareja CA y CP
@@ -356,10 +358,7 @@ El paso 4 es el que evita el error que ya pasó: un caso que sale bien pero prob
 
 ¿Lo escribo en la plantilla, en el hueco de «respuesta a la pregunta»?
 
-### 29 · Usuario — 2026-08-15 11:30:53
-> si
-
-### 30 · Usuario — 2026-08-15 10:08:15
+### 28 · Usuario — 2026-08-15 10:08:15
 > de un ejemplo de esto:
 > Explicar paso a paso que problema resuelve cad pareja CA y CP
 
@@ -368,7 +367,7 @@ El paso 4 es el que evita el error que ya pasó: un caso que sale bien pero prob
 
 (Se propuso en el chat el ejemplo de la factura, con los cuatro pasos de la pareja.)
 
-### 31 · Usuario — 2026-08-15 10:10:00
+### 29 · Usuario — 2026-08-15 10:10:00
 > si
 
 **Agente** — 2026-08-15 11:32:15
@@ -378,14 +377,14 @@ Escrito en la §2: la pregunta, la tabla de los cuatro pasos y el ejemplo de `CA
 
 Una nota sobre lo que quedó en el archivo: al guardar desde el editor se fueron las dos notas que tenía la §2 —la de enlazar cada `CP` y cada `CA`, y la de que el documento se arma desde el `plan_pruebas`—. No las repuse. Dígame si las quiere de vuelta.
 
-### 32 · Usuario — 2026-08-15 11:43:10
+### 30 · Usuario — 2026-08-15 11:43:10
 > <ide_selection>The user selected the lines 41 to 41 from c:\Ing. Jose\ia\agente\plantillas\planes\resultados.md:
 > ## 2. Ejecución caso por caso
 >
 > This may or may not be related to the current task.</ide_selection>
 > mejore el el ejemplo de: ## 2. Ejecución caso por caso según las indicaciones que ya hay en el archivo
 
-### 33 · Usuario — 2026-08-15 10:15:40
+### 31 · Usuario — 2026-08-15 10:15:40
 > mejore el el ejemplo de: ## 2. Ejecución caso por caso según las indicaciones que ya hay en el archivo
 
 **Agente** — 2026-08-15 11:44:31
@@ -419,10 +418,7 @@ el caso no cumpliría—. La salida de los dos pasos quedó en EV-02.
 
 Quité la línea «El paso 4 es el que evita el error que ya pasó»: los pasos numerados ya no existen, y esa idea está dicha dos veces más abajo.
 
-### 34 · Usuario — 2026-08-15 11:47:00
-> ahí no explica paso a paso cómo hizo la prueba de esa pareja
-
-### 35 · Usuario — 2026-08-15 10:19:30
+### 32 · Usuario — 2026-08-15 10:19:30
 > ahí no explica paso a paso cómo hizo la prueba de esa pareja
 
 **Agente** — 2026-08-15 11:48:07
@@ -440,11 +436,11 @@ Cierto: los dos pasos arrancaban con todo ya montado, así que nadie podía repe
 
 El cierre explica cuál paso decide: el 4 solo prueba la respuesta, el 5 prueba que la factura no se anuló, y el 2 es el que impide suponer que el usuario no tenía el permiso.
 
-### 36 · Usuario — 2026-08-15 11:51:29
+### 33 · Usuario — 2026-08-15 11:51:29
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\planes\resultados.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > que el ejemplo sea crear una regla
 
-### 37 · Usuario — 2026-08-15 10:24:10
+### 34 · Usuario — 2026-08-15 10:24:10
 > que el ejemplo sea crear una regla
 
 **Agente** — 2026-08-15 11:54:50
@@ -468,11 +464,11 @@ El ejemplo ahora es crear una regla del estándar:
 
 Los pasos 1 y 5 no son relleno: sin ellos, un validador que fallara siempre daría el mismo resultado en el paso 3.
 
-### 38 · Usuario — 2026-08-15 11:57:28
+### 35 · Usuario — 2026-08-15 11:57:28
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\documentacion\epicas\EP-003-documentos-modelo-y-procedimientos\HU-010-glosario-de-la-terminologia\A-EP-003-HU-010-glosario-de-la-terminologia\resultado_pruebas copy.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > actualice: A-EP-003-HU-010-glosario-de-la-terminologia\resultado_pruebas.md a la plantilla
 
-### 39 · Usuario — 2026-08-15 10:31:00
+### 36 · Usuario — 2026-08-15 10:31:00
 > actualice: A-EP-003-HU-010-glosario-de-la-terminologia\resultado_pruebas.md a la plantilla
 
 **Agente** — 2026-08-15 12:06:01
@@ -499,7 +495,7 @@ Y el paso 3 de CP-005 se cambió por otro: en vez de romper un enlace a propósi
 
 No toqué [estado-fase.md](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/estado-fase.md), que sigue diciendo lo anterior y ahora se contradice con este documento. `validadores/enlaces.py` sobre la carpeta: sin hallazgos.
 
-### 40 · Usuario — 2026-08-15 12:06:30
+### 37 · Usuario — 2026-08-15 12:06:30
 > de acá salen dos pasos:
 >
 > 1 Tomar la lista de T-01 
@@ -521,15 +517,7 @@ Tres consecuencias, en orden:
 
 Lo tercero es lo que evita que vuelva a pasar en otras fases. Dígame por dónde arranco.
 
-### 41 · Usuario — 2026-08-15 12:07:46
-> haga la corrección
-
-**Agente** — reconstruido a mano, sin hora del reloj
-<!-- sin marca del enganche: la hora original era una estimación (2026-08-15 10:40:40) -->
-
-(Se explicó en el chat: el paso del plan traía dos acciones y un solo renglón de resultado, así que al ejecutar se registró el conteo y se perdió de dónde salió la lista. Se nombraron los tres sitios donde cae la corrección.)
-
-### 42 · Usuario — 2026-08-15 10:43:00
+### 38 · Usuario — 2026-08-15 10:43:00
 > haga la corrección
 
 **Agente** — 2026-08-15 12:13:59
@@ -556,7 +544,7 @@ Ningún caso cambia lo que comprueba.
 
 Versionado **16.0.0 · MAYOR ⚠ obliga a migrar**: un plan en curso con pasos dobles hay que partirlo. `enlaces.py` sobre la fase y sobre `plantillas/`, y `version.py`: sin hallazgos.
 
-### 43 · Usuario — 2026-08-15 12:14:26
+### 39 · Usuario — 2026-08-15 12:14:26
 > que le hace falta a la plantilla para que se entienda que es detallado?. No se debe asumir los pasos
 
 **Agente** — 2026-08-15 12:14:51
@@ -575,15 +563,7 @@ Lo que sobra: **§2 pide dos veces lo mismo**. Arriba, el bloque nuevo por parej
 
 Mi recomendación: quedarse con el bloque por pareja, mudarle las cuatro cosas de arriba, y borrar el de «Detalle de CP-00N».
 
-### 44 · Usuario — 2026-08-15 12:17:02
-> haga la corrección de la recomendación y con base a esa recomendación mejore el ejemplo
-
-**Agente** — reconstruido a mano, sin hora del reloj
-<!-- sin marca del enganche: la hora original era una estimación (2026-08-15 10:53:10) -->
-
-(Se listaron en el chat las cuatro cosas que faltaban y la que sobraba: §2 pedía lo mismo dos veces.)
-
-### 45 · Usuario — 2026-08-15 10:55:20
+### 40 · Usuario — 2026-08-15 10:55:20
 > haga la corrección de la recomendación y con base a esa recomendación mejore el ejemplo
 
 **Agente** — 2026-08-15 12:21:30
@@ -611,10 +591,7 @@ Sin ellos nadie puede repetir la prueba — y el paso 2 es el que después permi
 
 Sumado a la entrada 16.0.0 del [CHANGELOG.md](CHANGELOG.md). `enlaces.py` sobre `plantillas/`: sin hallazgos.
 
-### 46 · Usuario — 2026-08-15 12:41:50
-> actualice: A-EP-003-HU-010-glosario-de-la-terminologia\resultado_pruebas.md a la plantilla
-
-### 47 · Usuario — 2026-08-15 11:02:30
+### 41 · Usuario — 2026-08-15 11:02:30
 > actualice: A-EP-003-HU-010-glosario-de-la-terminologia\resultado_pruebas.md a la plantilla
 
 **Agente** — 2026-08-15 13:36:24
@@ -635,10 +612,7 @@ Sumado a 16.0.0 en el [CHANGELOG.md](CHANGELOG.md). `enlaces.py` sobre la carpet
 
 Sigue pendiente lo que le dije antes: [estado-fase.md](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/estado-fase.md) todavía dice «aprobada con una prueba pendiente» y contradice el veredicto «No cumple» de este documento.
 
-### 48 · Usuario — 2026-08-15 13:46:11
-> deme el proposito y un resumen de esta sesión
-
-### 49 · Usuario — 2026-08-15 11:12:00
+### 42 · Usuario — 2026-08-15 11:12:00
 > deme el proposito y un resumen de esta sesión
 
 **Agente** — 2026-08-15 13:54:03
@@ -666,7 +640,7 @@ Está escrito en [historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado
 
 Y una cosa que quedó sin hacer desde el arranque: la sesión se está guardando como `2026-08-15-sesion.md`, que no dice de qué trata. Propongo `2026-08-15-la-plantilla-del-resultado-de-pruebas.md` — *cada sección dice qué pregunta responde, y aplicarla destapa que una fase cerrada no cumplía*. ¿Va?
 
-### 50 · Usuario — 2026-08-15 21:12:36
+### 43 · Usuario — 2026-08-15 21:12:36
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\CLAUDE.md.plantilla in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > ya se puede cerrar la sesión?
 
@@ -690,10 +664,7 @@ Lo que falta, concreto:
 
 Dígame si los escribo.
 
-### 51 · Usuario — 2026-08-15 21:13:54
-> escríbalos
-
-### 52 · Usuario — 2026-08-15 11:20:10
+### 44 · Usuario — 2026-08-15 11:20:10
 > ya se puede cerrar la sesión?
 
 **Agente** — reconstruido a mano, sin hora del reloj
@@ -701,7 +672,7 @@ Dígame si los escribo.
 
 No: tres de las cuatro casillas sin marcar. Faltaban los tres pendientes, la historia disparada y la aprobación.
 
-### 53 · Usuario — 2026-08-15 11:22:00
+### 45 · Usuario — 2026-08-15 11:22:00
 > escríbalos
 
 **Agente** — 2026-08-15 21:21:05
@@ -734,10 +705,7 @@ De paso: la hoja de ruta de la épica no tenía HU-013 desde que se creó. Le ag
 
 Falta solo lo último: que usted lea el cambio y lo apruebe. El commit se lo pregunto aparte.
 
-### 54 · Usuario — 2026-08-15 21:21:52
-> siga
-
-### 55 · Usuario — 2026-08-15 11:30:00
+### 46 · Usuario — 2026-08-15 11:30:00
 > siga
 
 **Agente** — 2026-08-15 21:24:47
@@ -769,7 +737,7 @@ Ojo con una cosa al commitear: [VERSION](VERSION) y [CHANGELOG.md](CHANGELOG.md)
 
 Dígame cuando lo haya leído y le pregunto por el commit.
 
-### 56 · Usuario — 2026-08-15 21:25:34
+### 47 · Usuario — 2026-08-15 21:25:34
 > haga commit y suba
 
 **Agente** — reconstruido a mano, sin hora del reloj
@@ -846,7 +814,7 @@ No lo limpié en caliente — separar lo del enganche de lo mío y renumerar es 
 
 Lo que sigue, en orden: [27](pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md) → [28](pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) → [26](pendientes/26-corrida-y-ejecucion-en-el-estandar.md) → [29](pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
 
-### 63 · Usuario — 2026-08-15 21:45:01
+### 48 · Usuario — 2026-08-15 21:45:01
 > ya puedo cerrar?
 
 **Agente** — 2026-08-15 21:45:07

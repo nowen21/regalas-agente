@@ -32,7 +32,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Qué pasó:** 23 de las 39 transcripciones se llaman `AAAA-MM-DD-sesion-N.md` —una es esta—, y su línea del índice dice «sesión del 2026-08-07». El resumen vive en `resumenes/AAAA-MM-DD/«tema».md`: con `sesion-5` no hay tema que poner.
 - **Por qué importa:** un índice de resúmenes donde la mitad se llama «sesión-5» no sirve para encontrar nada, que es lo único para lo que existe.
 - **Qué lo soluciona:** renombrar las 22 viejas antes de escribir su resumen, con `python validadores/historico.py --renombrar «archivo» --tema «tema» --resumen «de qué se trató»`, que mueve el archivo, el título y la línea del índice a la vez — y el resumen con él.
-- **Qué se decidió:** se renombraron **23**, cada una con el tema que salió de leerla. Quedan tres sin tema, y las tres son copias a mano de otra sesión: ponerle nombre a un archivo que el [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) puede borrar rompe enlaces por nada.
+- **Qué se decidió:** se renombraron **23**, cada una con el tema que salió de leerla. Quedan tres sin tema, y las tres son copias a mano de otra sesión: ponerle nombre a un archivo que el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) puede borrar rompe enlaces por nada.
 - **Estado:** resuelto acá.
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, la herramienta de renombrar ya existe.
@@ -40,7 +40,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Dónde queda:** el índice de [historico-chat/README.md/](../../README.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
-- **Con qué se retoma:** —, salvo el nombre de las tres copias, que espera al [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Con qué se retoma:** —, salvo el nombre de las tres copias, que espera al [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md).
 
 ### H-3 · Faltan las carpetas por día y el índice no las lista
 
@@ -60,14 +60,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 ### H-4 · Cinco pares de transcripciones son la misma conversación
 
 - **Qué pasó:** [historico-chat/2026-08-06-no-se-puede-transcribir-audio.md](../../2026-08-06-no-se-puede-transcribir-audio.md) —que entonces se llamaba `sesion-6`— y `2026-08-06-sesion-7.md` tienen el mismo diálogo — las mismas dos preguntas sobre transcribir audio — con horas distintas por medio minuto. La `-7` no trae la marca `<!-- sesion: uuid -->`: la escribió el agente a mano encima de la que ya había puesto el enganche.
-- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), y responde lo que ese pendiente dejó preguntado: sí le pasó a otras sesiones. Al escribir los 33 resúmenes aparecieron **cuatro copias en total** —dos el 2026-08-06 y dos el 2026-08-07—, más una quinta que el propio agente borró en caliente el 07. En dos de ellas las horas están inventadas: la del usuario y la del agente, idénticas al segundo.
+- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md), y responde lo que ese pendiente dejó preguntado: sí le pasó a otras sesiones. Al escribir los 33 resúmenes aparecieron **cuatro copias en total** —dos el 2026-08-06 y dos el 2026-08-07—, más una quinta que el propio agente borró en caliente el 07. En dos de ellas las horas están inventadas: la del usuario y la del agente, idénticas al segundo.
 - **Qué lo soluciona:** revisar el histórico completo buscando transcripciones sin la marca de sesión, y decidir cuál queda.
 - **Qué se decidió:** el usuario mandó borrarlas: *«si es copia bórrelo»*. Las cuatro salieron del repositorio el 2026-08-16 y siguen en el historial de git. Quedan 35 transcripciones y 35 resúmenes, uno por sesión.
 - **Estado:** resuelto acá.
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, cae dentro del pendiente 29, que ya está escrito.
 - **Orden de resolución:** —.
-- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), que sigue abierto por su otra mitad: la transcripción del 2026-08-15 con 61 encabezados para 30 mensajes.
+- **Dónde queda:** [pendientes/hecho/la-transcripcion-duplicada-del-15.md](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md), que sigue abierto por su otra mitad: la transcripción del 2026-08-15 con 61 encabezados para 30 mensajes.
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
 - **Con qué se retoma:** —.

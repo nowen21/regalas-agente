@@ -131,7 +131,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-005 · HU-001, la transcripción de la sesión.
 - **Dispara:** —, es corregir el `CLAUDE.md` y limpiar un archivo.
 - **Orden de resolución:** 4 de 4. Va último: el archivo se lee igual, aunque tenga el doble de encabezados.
-- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Dónde queda:** [pendientes/hecho/la-transcripcion-duplicada-del-15.md](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md).
 - **Nace en:** 2026-08-15 · la-plantilla-del-resultado-de-pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿le pasó a otras sesiones? Hay que revisar si más archivos del histórico traen encabezados repetidos.
@@ -148,7 +148,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), [28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), [28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
 | Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario y subido en `8ed276c` y `439c47e` |
 

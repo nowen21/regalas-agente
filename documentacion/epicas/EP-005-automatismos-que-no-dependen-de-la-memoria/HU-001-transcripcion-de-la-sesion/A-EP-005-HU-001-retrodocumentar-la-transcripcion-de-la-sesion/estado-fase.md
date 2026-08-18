@@ -71,7 +71,7 @@
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
 | La hora se prueba sobre el programa y no sobre una sesión real: una sesión real da una sola hora, y esa hora coincidiría con cualquier implementación | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
-| El defecto de la transcripción escrita a mano pasó **seis veces con la orden escrita**. Lo que falta no es otra orden: es que se note cuando vuelve a pasar | §2.6 del plan y pendiente [29](../../../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| El defecto de la transcripción escrita a mano pasó **seis veces con la orden escrita**. Lo que falta no es otra orden: es que se note cuando vuelve a pasar | §2.6 del plan y pendiente [29](../../../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 | El enganche no se toca: es lo que sostiene el registro de todas las sesiones, y cambiarlo sin plan aprobado es tocar el único rastro que queda | §2.6 del plan |
 | Las sesiones de prueba corren contra carpeta temporal: un rastro falso entre las sesiones reales es peor que no probar | Riesgo `R-01` del plan |
 

@@ -62,14 +62,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-clase-del-di
 ### H-4 · La transcripción se escribió dos veces, y con horas iguales
 
 - **Qué pasó:** además del archivo que escribió el enganche, quedó `2026-08-06-sesion-9.md` con la misma conversación resumida a mano. Ahí la hora del usuario y la del agente son **idénticas al segundo** en los 21 intercambios: no se leyeron del reloj.
-- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), nueve días antes. Y responde lo que ese pendiente dejó preguntado: sí, le pasó a más sesiones — dos veces solo el 2026-08-06.
+- **Por qué importa:** es el mismo defecto del [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md), nueve días antes. Y responde lo que ese pendiente dejó preguntado: sí, le pasó a más sesiones — dos veces solo el 2026-08-06.
 - **Qué lo soluciona:** revisar el histórico completo y quedarse con lo que escribió el enganche.
 - **Qué se decidió:** nada en su momento; nadie lo notó hasta el 2026-08-15.
 - **Estado:** abierto.
 - **Responde a:** —.
 - **Dispara:** —, cae dentro del pendiente 29.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+- **Dónde queda:** [pendientes/hecho/la-transcripcion-duplicada-del-15.md](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md).
 - **Nace en:** 2026-08-06 · la clase del diplomado en el repositorio.
 - **Cerrado en:** —.
 - **Con qué se retoma:** de las dos copias, ¿cuál se borra? La del enganche trae las horas reales; la de a mano trae las imágenes descritas.
@@ -96,6 +96,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-clase-del-di
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3 y H-5; H-1 se cerró al día siguiente |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-4 va al [29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-4 va al [29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ está en el repositorio desde entonces |

@@ -1,18 +1,18 @@
 # Pendiente · La transcripción se escribió dos veces, y con horas inventadas
 
-**Estado:** abierto · anotado 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md](../historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md).
+**Estado:** **cerrado** el 2026-08-18. Anotado el 2026-08-15 · nace de la sesión [historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md](../../historico-chat/2026-08-15-la-plantilla-del-resultado-de-pruebas.md).
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-005 · HU-001 — Transcripción de la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — lo que queda por limpiar es una transcripción, que es lo que esa historia gobierna |
+| **Historia de usuario** | [EP-005 · HU-001 — Transcripción de la sesión](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — lo que queda por limpiar es una transcripción, que es lo que esa historia gobierna |
 
 ## El problema
 
 Dos defectos en el mismo archivo, los dos del agente.
 
-**1. La transcripción quedó duplicada.** [`validadores/hook_historico.py`](../validadores/hook_historico.py) ya escribe cada mensaje del usuario y cada respuesta del agente, con la hora leída del reloj y su marca `<!-- agente: … -->`. El agente la escribió otra vez a mano encima, con `cat >>`. Resultado en ese archivo: **61 encabezados de usuario para unos 30 mensajes**, numeración pisada —hay dos «5», dos «6», dos «9»— y respuestas del agente en dos versiones, la que dio y la que resumió después.
+**1. La transcripción quedó duplicada.** [`validadores/hook_historico.py`](../../validadores/hook_historico.py) ya escribe cada mensaje del usuario y cada respuesta del agente, con la hora leída del reloj y su marca `<!-- agente: … -->`. El agente la escribió otra vez a mano encima, con `cat >>`. Resultado en ese archivo: **61 encabezados de usuario para unos 30 mensajes**, numeración pisada —hay dos «5», dos «6», dos «9»— y respuestas del agente en dos versiones, la que dio y la que resumió después.
 
-**2. Las horas se estimaron.** El [`CLAUDE.md`](../CLAUDE.md) exige `AAAA-MM-DD HH:MM:SS` leído del reloj del sistema y dice que una hora no registrada se escribe `hora no registrada`, sin estimarla. El agente leyó el reloj dos veces al arrancar y de ahí en adelante fue inventando horas que avanzaban solas: la última escrita a mano decía 11:58 cuando el reloj marcaba 21:41.
+**2. Las horas se estimaron.** El [`CLAUDE.md`](../../CLAUDE.md) exige `AAAA-MM-DD HH:MM:SS` leído del reloj del sistema y dice que una hora no registrada se escribe `hora no registrada`, sin estimarla. El agente leyó el reloj dos veces al arrancar y de ahí en adelante fue inventando horas que avanzaban solas: la última escrita a mano decía 11:58 cuando el reloj marcaba 21:41.
 
 **3. Al intentar arreglarlo se perdieron datos.** Un `git checkout --` sobre el archivo descartó lo que el enganche había escrito después del último commit: las horas reales de los seis últimos mensajes. El texto se recuperó literal; las horas no, y quedaron en `hora no registrada`.
 
@@ -22,22 +22,28 @@ El `CLAUDE.md` de este repositorio manda escribir la transcripción a mano —«
 
 ## Qué falta
 
-**1. Limpiar el archivo del 2026-08-15.** Quitar los bloques que escribió el agente a mano y dejar los del enganche, que son los que traen la hora real. Se distinguen: los del enganche llevan `<!-- agente: … -->`. Después renumerar.
+**1. Limpiar el archivo del 2026-08-15.** ✅ **Hecho el 2026-08-18**, pero **no como decía este punto**.
+
+Decía quitar todo lo que no llevara la marca del enganche. Al medirlo, **eso borraba dieciséis mensajes reales del usuario**: de los 25 bloques sin marca, solo 9 estaban repetidos palabra por palabra en otro que sí la lleva. Los otros 16 son únicos — el enganche no los escribió, o los escribió sin marca.
+
+Se quitaron los **9 duplicados literales** y el archivo pasó de 57 bloques a 48, renumerados. Arriba quedó una nota que dice qué se hizo y que **las horas de ese archivo no se pueden leer en orden**: las del enganche son del reloj, las otras son estimaciones.
+
+> **La instrucción escrita destruía contenido, y solo se vio al medir.** Un criterio que suena limpio —«borrar lo que no lleva la marca»— puede estar apoyado en que la marca esté siempre, y acá faltaba en la mitad.
 
 **2. Que el `CLAUDE.md` deje de pedir lo que el programa ya hace.** ✅ **Hecho el 2026-08-16.** Su sección 1 describía el trabajo a mano como si nadie lo automatizara. Ahora dice que lo escribe el enganche y que el agente no lo toca.
 
-Eran **dos** archivos, no uno: el [`CLAUDE.md`](../CLAUDE.md) y el [`historico-chat/README.md`](../historico-chat/README.md), que repetía la misma orden y es a donde el primero manda para el formato. Arreglar uno solo dejaba la orden viva.
+Eran **dos** archivos, no uno: el [`CLAUDE.md`](../../CLAUDE.md) y el [`historico-chat/README.md`](../../historico-chat/README.md), que repetía la misma orden y es a donde el primero manda para el formato. Arreglar uno solo dejaba la orden viva.
 
-La redacción no hubo que inventarla: [`plantillas/CLAUDE.md.plantilla`](../plantillas/CLAUDE.md.plantilla) ya decía *«La escribe el programa, no el agente»* desde que se automatizó el histórico. Se actualizó la plantilla que viaja a los proyectos y no la del repo que la escribe, así que **el defecto era solo de acá**: un proyecto instalado leía la versión buena.
+La redacción no hubo que inventarla: [`plantillas/CLAUDE.md.plantilla`](../../plantillas/CLAUDE.md.plantilla) ya decía *«La escribe el programa, no el agente»* desde que se automatizó el histórico. Se actualizó la plantilla que viaja a los proyectos y no la del repo que la escribe, así que **el defecto era solo de acá**: un proyecto instalado leía la versión buena.
 
 **3. Comprobar si le pasa a otras sesiones.** ✅ **Hecho el 2026-08-16.** Al escribir los resúmenes de las sesiones viejas aparecieron **cuatro copias a mano** más, todas sin la marca `<!-- sesion: … -->`:
 
 | Copia borrada | Repetía a |
 |---|---|
-| `2026-08-06-sesion-7.md` | [no se puede transcribir audio](../historico-chat/2026-08-06-no-se-puede-transcribir-audio.md) |
-| `2026-08-06-sesion-9.md` | [la clase del diplomado](../historico-chat/2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) — con la hora del usuario y la del agente idénticas al segundo en los 21 intercambios |
-| `2026-08-07-sesion-9.md` | [granularidad de la fase](../historico-chat/2026-08-07-granularidad-de-la-fase.md) |
-| `2026-08-07-analisis-cumplimiento-reglas.md` | [el checklist de la regla](../historico-chat/2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md), sus primeros doce intercambios |
+| `2026-08-06-sesion-7.md` | [no se puede transcribir audio](../../historico-chat/2026-08-06-no-se-puede-transcribir-audio.md) |
+| `2026-08-06-sesion-9.md` | [la clase del diplomado](../../historico-chat/2026-08-06-la-clase-del-diplomado-en-el-repositorio.md) — con la hora del usuario y la del agente idénticas al segundo en los 21 intercambios |
+| `2026-08-07-sesion-9.md` | [granularidad de la fase](../../historico-chat/2026-08-07-granularidad-de-la-fase.md) |
+| `2026-08-07-analisis-cumplimiento-reglas.md` | [el checklist de la regla](../../historico-chat/2026-08-07-el-checklist-de-la-regla-y-la-carpeta-de-identidad.md), sus primeros doce intercambios |
 
 Las cuatro se borraron por instrucción del usuario y siguen en el historial de git. Una quinta la había borrado el propio agente el 2026-08-07, en caliente. **Se perdió una cosa al hacerlo**: la copia del diplomado describía cada diapositiva (`[imagen: …]`) y la que quedó no, porque las imágenes llegaron pegadas al chat. Está en el historial.
 
@@ -47,7 +53,7 @@ Las cuatro se borraron por instrucción del usuario y siguen en el historial de 
 
 No se toca lo que el enganche escribió: es el registro con hora real. Lo que se quita es la copia a mano.
 
-**Va después de los pendientes [27](hecho/el-veredicto-de-la-fase-a-de-hu-010.md) y [28](hecho/un-solo-veredicto-por-fase.md):** el archivo se puede leer igual, aunque tenga el doble de encabezados.
+**Va después de los pendientes [27](el-veredicto-de-la-fase-a-de-hu-010.md) y [28](un-solo-veredicto-por-fase.md):** el archivo se puede leer igual, aunque tenga el doble de encabezados.
 
 ---
 

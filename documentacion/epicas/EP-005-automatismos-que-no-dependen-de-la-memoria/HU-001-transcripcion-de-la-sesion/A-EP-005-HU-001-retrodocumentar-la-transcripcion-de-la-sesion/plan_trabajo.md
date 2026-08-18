@@ -50,7 +50,7 @@
 
 1. **El incremento en la especificación.** La del módulo cubre otros enganches; el de la transcripción no está.
 2. **La prueba de que la hora la pone el reloj** y no el texto.
-3. **El caso escrito del defecto conocido:** la transcripción escrita a mano, que pasó seis veces y está anotada en el pendiente [29](../../../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md).
+3. **El caso escrito del defecto conocido:** la transcripción escrita a mano, que pasó seis veces y está anotada en el pendiente [29](../../../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md).
 
 ### 2.1 Archivos que se crean o modifican  ·  `F14` Q9
 
@@ -108,7 +108,7 @@ Ninguna: el enganche corre y su comportamiento se puede observar en esta misma s
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
 | T-03 | Prueba: la hora la pone el programa y no viene del texto del mensaje | `validadores/pruebas.py` | 2,0 |
-| T-04 | Anotar en el resultado el defecto de la transcripción escrita a mano, con el pendiente [29](../../../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md) | `resultado_pruebas.md` | 1,0 |
+| T-04 | Anotar en el resultado el defecto de la transcripción escrita a mano, con el pendiente [29](../../../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) | `resultado_pruebas.md` | 1,0 |
 
 ### CA-03 — La sesión aparece en el índice
 

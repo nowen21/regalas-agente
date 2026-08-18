@@ -53,4 +53,4 @@ Los supuestos con que se escribieron, para que los que sigan salgan iguales:
 
 **La transcripción no se toca.** Guarda lo que se dijo, literal; el resumen guarda lo que quedó. Lo único que cambia de la transcripción es su nombre, y lo hace la herramienta.
 
-**Va después del [29](../29-la-transcripcion-se-escribio-dos-veces.md):** ese revisa si hay transcripciones duplicadas, y no tiene sentido resumir dos veces una sesión que pasó una.
+**Va después del [29](la-transcripcion-duplicada-del-15.md):** ese revisa si hay transcripciones duplicadas, y no tiene sentido resumir dos veces una sesión que pasó una.

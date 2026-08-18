@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-por-que-pide-ta
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** la conversación. Es el mismo patrón que ocho días después deja el [pendiente 29](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md): el agente rehaciendo a mano lo que el programa ya hizo.
+- **Dónde queda:** la conversación. Es el mismo patrón que ocho días después deja el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md): el agente rehaciendo a mano lo que el programa ya hizo.
 - **Nace en:** 2026-08-07 · por qué pide tanto permiso.
 - **Cerrado en:** 2026-08-07 · por qué pide tanto permiso.
 - **Con qué se retoma:** —.
@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-por-que-pide-ta
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [pendientes/29-la-transcripcion-se-escribio-dos-veces.md](../../../pendientes/29-la-transcripcion-se-escribio-dos-veces.md), como el caso que muestra cómo se limpia.
+- **Dónde queda:** [pendientes/hecho/la-transcripcion-duplicada-del-15.md](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md), como el caso que muestra cómo se limpia.
 - **Nace en:** 2026-08-07 · por qué pide tanto permiso.
 - **Cerrado en:** 2026-08-07 · por qué pide tanto permiso.
 - **Con qué se retoma:** —.
