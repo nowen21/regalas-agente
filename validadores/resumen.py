@@ -39,9 +39,13 @@ _ESTADO = re.compile(r"^- \*\*Estado:\*\*\s*(.+?)\s*$", re.MULTILINE)
 _CIERRE = "## ¿Se puede cerrar la sesión?"
 _SIN_MARCAR = re.compile(r"^\|.*\u2610", re.MULTILINE)
 
+# `### 3 · título` — un hallazgo escrito sin la `H-` que el molde pide.
+_CASI_HALLAZGO = re.compile(r"^### \d+ · (.+)$", re.MULTILINE)
+
 # Queda dentro del resumen cuando ya se avisó, para no repetir el aviso.
 MARCA_VACIO = "<!-- aviso: resumen sin hallazgos -->"
 MARCA_CIERRE = "<!-- aviso: falta decir si la sesión se puede cerrar -->"
+MARCA_MOLDE = "<!-- aviso: hallazgos sin la H del molde -->"
 
 
 def _leer(ruta):
@@ -204,7 +208,14 @@ def falta(ruta):
     texto = _leer(ruta)
     pendientes = []
     if not _HALLAZGO.search(texto):
-        if MARCA_VACIO not in texto:
+        # **Vacío e ilegible no son lo mismo**, y confundirlos cuesta el
+        # resumen entero: uno pide escribir, el otro pide renumerar lo que ya
+        # está escrito. Decir «vacío» sobre un archivo con quince hallazgos
+        # hace que quien lo lee dé el aviso por equivocado y siga.
+        if _CASI_HALLAZGO.search(texto):
+            if MARCA_MOLDE not in texto:
+                pendientes.append("molde")
+        elif MARCA_VACIO not in texto:
             pendientes.append("vacio")
         return pendientes
     cuerpo = texto.split(_CIERRE, 1)
@@ -214,13 +225,30 @@ def falta(ruta):
     return pendientes
 
 
+def hallazgos_fuera_del_molde(ruta):
+    """Los títulos escritos como `### 3 ·` en vez de `### H-3 ·`.
+
+    **Un resumen así queda mudo.** El programa no ve ni un hallazgo, así que
+    lo cuenta como vacío; y como la comprobación del cierre necesita encontrar
+    uno antes de mirar, esa tampoco corre nunca. Pasó con tres resúmenes del
+    2026-08-17 y 29 hallazgos entre los tres.
+    """
+    if not os.path.isfile(ruta):
+        return []
+    texto = _leer(ruta)
+    if _HALLAZGO.search(texto):
+        return []                       # ya tiene los suyos: no hay nada que decir
+    return _CASI_HALLAZGO.findall(texto)
+
+
 def marcar_avisado(ruta, clave):
     """Deja la marca del aviso dentro del propio resumen, para no repetirlo.
 
     En el archivo y no en un registro aparte: un archivo aparte se desincroniza
     y hay que limpiarlo; la marca vive donde vive el dato.
     """
-    marca = MARCA_VACIO if clave == "vacio" else MARCA_CIERRE
+    marca = {"vacio": MARCA_VACIO,
+             "molde": MARCA_MOLDE}.get(clave, MARCA_CIERRE)
     if not os.path.isfile(ruta):
         return
     texto = _leer(ruta)

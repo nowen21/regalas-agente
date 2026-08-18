@@ -124,6 +124,14 @@ def aviso(raiz, sesion, estandar=""):
     rel = os.path.relpath(ruta, raiz).replace("\\", "/")
     for clave in pendientes:
         R.marcar_avisado(ruta, clave)
+    if "molde" in pendientes:
+        fuera = R.hallazgos_fuera_del_molde(ruta)
+        return ("[LOS HALLAZGOS DE ESTE RESUMEN NO SE LEEN]\n"
+                f"`{rel}` tiene {len(fuera)} hallazgo(s) escritos como `### N ·` "
+                "y el molde pide `### H-N ·` (`plantillas/sesion.md`). Escritos "
+                "así **el programa no ve ninguno**: se cuentan como resumen "
+                "vacío, y la comprobación del cierre no llega a correr. "
+                "Renumerarlos, que ya están escritos.")
     if "vacio" in pendientes:
         return ("[EL RESUMEN DE ESTA SESIÓN SIGUE VACÍO]\n"
                 f"La sesión ya produjo algo y `{rel}` no tiene ni un hallazgo. "

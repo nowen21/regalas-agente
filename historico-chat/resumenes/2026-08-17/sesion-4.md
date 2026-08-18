@@ -192,6 +192,18 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Dónde queda.** La fase [`C-EP-001-HU-009`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/) y la v23.7.3. **Las 72 siguen siendo 72** —las cuatro reprobaban otras filas también—, pero el daño a quien hereda baja a cero.
 
+### H-18 · El aviso equivocado se deja de leer, y el silencio no deja rastro
+
+**Qué se construyó.** El enganche ya distingue un resumen **vacío** de uno que **no puede leer**: dos avisos, dos marcas propias, y el segundo dice **cuántos** hallazgos hay que renumerar. Fase [`C-EP-005-HU-008`](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/C-EP-005-HU-008-vacio-no-es-lo-mismo-que-ilegible/), sin cambio de versión — no toca `base/` ni `plantillas/`.
+
+**Por qué el número importa.** Un aviso que se puede desmentir de un vistazo se deja de leer: quien ve «este resumen sigue vacío» con quince hallazgos en pantalla concluye que el programa se equivocó, y sigue. Y es la reacción correcta ante algo que afirma lo falso. **El programa no se equivocaba al mirar — se equivocaba al nombrar lo que vio.**
+
+**El defecto se tapaba a sí mismo por tres caminos, y ninguno deja rastro:** el resumen se contaba como vacío; la comprobación del cierre **nunca corría**, porque necesita encontrar un hallazgo antes de mirar; y el aviso se marca como ya dado, así que se ve una vez y calla para siempre.
+
+**Dos marcas y no una**, con caso propio: con una sola, avisar de un caso apagaría el otro **para siempre**, y el aviso no se recupera.
+
+**Y los tres se renumeraron después de escribir la comprobación**, para que se estrenara sobre los archivos que estaban mal — igual que en la fase `B` del sello. Es la tercera vez hoy que ese orden es lo que hace que la comprobación sirva.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

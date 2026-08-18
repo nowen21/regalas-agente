@@ -171,6 +171,7 @@ Y el enlace que lleva de vuelta a la transcripción abre
 |---|---|---|
 | [A-EP-005-HU-008-enganche-del-resumen](A-EP-005-HU-008-enganche-del-resumen/README.md) | CA-01, CA-02 y CA-03 | Estación 11: las siete exigencias en verde, esperando el commit |
 | [B-EP-005-HU-008-renombrar-deja-el-resumen-coherente](B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/README.md) | CA-04 | En ejecución |
+| [C-EP-005-HU-008-vacio-no-es-lo-mismo-que-ilegible](C-EP-005-HU-008-vacio-no-es-lo-mismo-que-ilegible/README.md) | CA-02, el caso que no distinguía | Cerrada 2026-08-18 |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
