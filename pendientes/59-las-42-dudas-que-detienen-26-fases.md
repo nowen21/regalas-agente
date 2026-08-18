@@ -243,7 +243,7 @@ Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dic
 | 35 | **Se escribe en un proyecto de mentira, en carpeta temporal.** Nunca en uno real | [`00·N4`](../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) |
 | 36 | **La salida 1 del [pendiente 22](22-dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar | La 3 —una sola sesión— ya se incumplió dos veces esta semana. Una regla que la práctica salta no es una regla |
 | 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro | Ya pasó con `pendientes/README.md`, y está escrito en el propio 22 |
-| 39 | **Enganche de la herramienta.** El del control de versiones no corre cuando el agente escribe | Y el precio está anotado: es el [pendiente 15](15-el-estandar-depende-de-una-sola-herramienta.md) |
+| 39 | ~~Enganche de la herramienta~~ → **CORREGIDA el 2026-08-18: enganche del control de versiones**, que es lo que ya está construido y funciona | **La decisión original era falsa.** Decía que el del control de versiones no corre cuando el agente escribe, y cada commit de esa sesión imprimió su comprobación: sí corre. Y corta el commit **venga de donde venga**, no solo del agente |
 | 41 | **Por carpeta, no por tipo de documento.** `base/` → capítulo `20`; `documentacion/epicas/` → `02` y `13`; `pendientes/` → `02·F23` | El tipo hay que adivinarlo; la carpeta se lee de la ruta, que es lo mismo que hace `cargador.py` |
 | 42 | **Solo la regla que aplica.** El capítulo entero repite el problema que `cargador.py` ya resolvió cargando índices | Está medido en la especificación de automatismos, regla 16 |
 

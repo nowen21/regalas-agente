@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 35 |
-| **Incompletas** | 39 |
+| **Completas** | 36 |
+| **Incompletas** | 38 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -88,7 +88,7 @@
 | EP-005 | [HU-001 — Escribir la sesión a medida que pasa, con hora del reloj](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-002 — Enmascarar una clave antes de que quede escrita](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-003 — Disparar las comprobaciones al escribir un archivo](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
-| EP-005 | [HU-004 — Controlar el mensaje con que se guarda un cambio](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-004-control-del-mensaje-de-cambio/HU-004-control-del-mensaje-de-cambio.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-005 | [HU-004 — Controlar el mensaje con que se guarda un cambio](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-004-control-del-mensaje-de-cambio/HU-004-control-del-mensaje-de-cambio.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-005 — Impedir guardar un cambio de reglas sin versión ni registro](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-005 | [HU-006 — Correr la batería completa antes de publicar](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-005 | [HU-007 — Recoger al abrir sesión lo que quedó guardado por fuera del repositorio](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |

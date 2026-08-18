@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,9 +26,9 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 5 tareas · **detenida por las 2 dudas de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | ya estaba construido: se comprobó | ☑ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -43,8 +43,8 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 2 de 2 |
 | **CA en "No"** | Ninguno todavía. Los **dos están a medias de entrada**: la comprobación existe y **nadie la llama al guardar** |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
