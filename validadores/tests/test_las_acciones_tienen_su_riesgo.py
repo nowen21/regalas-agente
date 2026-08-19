@@ -189,8 +189,15 @@ class Limites(unittest.TestCase):
                      encoding="utf-8") as f:
             nucleo = f.read()
         n1 = nucleo[nucleo.index("## N1"):nucleo.index("### Checklist")]
-        self.assertIn("No cubre lo irreversible", n1,
-                      "`N1` tiene que decir el límite, o contradice al anexo")
+        # **Se comprueba el límite, no la frase.** La primera versión buscaba
+        # «No cubre lo irreversible» literal, y falló el día que `N1` dejó de
+        # tener excepción y lo dijo con otras palabras — con la misma exigencia
+        # intacta. Una prueba atada a la redacción reporta el estilo, no el
+        # fondo.
+        self.assertIn("irreversible", n1,
+                      "`N1` tiene que nombrar el límite, o contradice al anexo")
+        self.assertIn("cada vez", n1,
+                      "`N1` tiene que decir que lo irreversible se pide cada vez")
         self.assertIn("acciones-y-riesgo.md", n1,
                       "`N1` tiene que remitir al anexo que define los niveles")
         self.assertIn("nunca cubre 🔴", self._texto(),

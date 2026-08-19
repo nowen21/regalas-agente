@@ -2060,7 +2060,32 @@ class RepartoDeLasReglas(unittest.TestCase):
             self.skipTest("sin base/ en la raíz de la corrida")
         kb = len(texto.encode("utf-8")) / 1024
         self.assertGreater(kb, 1)
-        self.assertLess(kb, 120, "el arranque creció más de lo medido en la fase")
+        self.assertLess(kb, 90, "el arranque creció más de lo medido en la fase")
+
+    # CP-005 · el sello no viaja al arranque
+    def test_el_arranque_no_lleva_los_bloques_de_checklist(self):
+        """**El sello no le sirve al agente para obedecer.**
+
+        Es el registro de que alguien revisó la regla contra el molde, y le
+        sirve a quien mantiene el estándar. Medido el 2026-08-19: de los
+        **122,6 KB** que se inyectaban, **70 eran sellos** — el 57 %.
+
+        **Lo destapó esta prueba, no la lectura.** El techo saltó al partir las
+        reglas del núcleo, y en vez de subirlo se miró qué había adentro.
+        """
+        texto = cargador.contexto(comun.RAIZ)
+        if not texto:
+            self.skipTest("sin base/ en la raíz de la corrida")
+        self.assertNotIn("### Checklist", texto)
+
+    def test_pero_las_reglas_llegan_enteras(self):
+        """**Quitar el sello no puede quitar la regla.** Sin este caso, un
+        recorte de más pasaría por ahorro."""
+        texto = cargador.contexto(comun.RAIZ)
+        if not texto:
+            self.skipTest("sin base/ en la raíz de la corrida")
+        for marca in ("## N1", "## N9", "INCORRECTO:", "CORRECTO:"):
+            self.assertIn(marca, texto)
 
 
 class EngancheDelResumenPorElCaminoReal(unittest.TestCase):

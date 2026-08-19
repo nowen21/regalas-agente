@@ -21,6 +21,7 @@ Así que va **literal** lo que manda en todos los turnos sin importar el tema
 archivo completo antes de tocar su tema.
 """
 import os
+import re
 
 import comun
 from comun import EXCLUIDAS, leer, lineas_utiles
@@ -101,6 +102,29 @@ def _solo_gate(base, reglas_encontradas):
     return ""
 
 
+# El `---` no siempre precede al sello: en cinco reglas del núcleo no está.
+# Anclar a él dejaba 21 KB adentro, y el recorte parecía hecho.
+_SELLO = re.compile("(?ms)^(?:---\s*\n+)?### Checklist.*?(?=^## |\Z)")
+
+
+def _sin_sellos(texto):
+    """El texto de las reglas sin sus bloques de checklist.
+
+    **El sello no le sirve al agente para obedecer**: es el registro de que
+    alguien revisó la regla contra el molde, y le sirve a quien mantiene el
+    estándar. Inyectarlo cuesta y no aporta.
+
+    Medido el 2026-08-19, cuando el arranque pasó del techo que su propia
+    prueba vigila: de los **122,6 KB** que se inyectaban, **70 eran sellos** —
+    el 57 %. El texto de las reglas, que es lo único que hay que obedecer,
+    cabía en 52.
+
+    **Lo destapó la prueba, no la lectura.** El techo estaba puesto desde la
+    fase que midió el arranque, y saltó al partir las reglas del núcleo.
+    """
+    return _SELLO.sub("", texto).rstrip() + chr(10)
+
+
 def contexto(estandar, gate_ok=True):
     """El texto que se le inyecta al agente. Cadena vacía si no hay nada que dar."""
     base = os.path.join(estandar, "base")
@@ -116,7 +140,7 @@ def contexto(estandar, gate_ok=True):
 
     literal, indice = [], []
     for rel, ruta in encontradas:
-        texto = leer(ruta)
+        texto = _sin_sellos(leer(ruta))
         if rel.split("/")[0].startswith(NUCLEO):
             literal.append(f"<<< base/{rel} >>>\n{texto}")
         else:

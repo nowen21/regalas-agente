@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.2.0 — 2026-08-18
+
+**MENOR** (arrancar cuesta la mitad; las reglas llegan igual de completas).
+
+**Más de la mitad de lo que se le entregaba al agente al abrir la sesión no le servía para nada.** Eran los bloques de revisión de cada regla — el registro de que alguien la miró contra el molde y la dio por buena. Eso le sirve a quien mantiene el estándar, no a quien tiene que obedecerlo.
+
+Arrancar pasó de **122,6 KB a 68,7**. Las reglas llegan enteras, con sus ejemplos.
+
+**El detalle.** Lo destapó una prueba, no la lectura: el arranque tenía un techo puesto desde la fase que lo midió, y **saltó al partir las reglas del núcleo**. En vez de subir el techo se miró qué había adentro — **70 de los 122 KB eran sellos**, el 57 por ciento.
+
+El techo baja de 120 a 90 KB, y hay dos casos nuevos: que el sello no viaje, y que **las reglas sí lleguen enteras** — sin el segundo, un recorte de más pasaría por ahorro.
+
 ## 24.1.0 — 2026-08-18
 
 **MENOR** (una regla del núcleo dice lo mismo con menos y deja de contradecirse; no cambia lo que exige).
