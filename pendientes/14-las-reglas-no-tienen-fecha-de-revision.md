@@ -41,7 +41,7 @@ El estándar ya reconoció este problema una vez, y lo resolvió solo para la me
 - ¿Lo que la regla manda hacer sigue siendo la mejor forma de evitarlo?
 - ¿Alguien la incumplió en este período, y por qué?
 
-**4. El cruce con los hallazgos.** El ítem 11 del [pendiente 09](09-autonomia-sin-ia.md) propone contar hallazgos por regla. Cruzado con la fecha de revisión, sirve para ordenar: una regla vieja que falla todo el tiempo se revisa primero, y una regla vieja que no ha fallado nunca hay que mirarla por el motivo contrario, porque puede que ya nadie la esté aplicando.
+**4. El cruce con los hallazgos.** El ítem 11 del [pendiente 09](hecho/autonomia-sin-ia.md) propone contar hallazgos por regla. Cruzado con la fecha de revisión, sirve para ordenar: una regla vieja que falla todo el tiempo se revisa primero, y una regla vieja que no ha fallado nunca hay que mirarla por el motivo contrario, porque puede que ya nadie la esté aplicando.
 
 ## El límite
 

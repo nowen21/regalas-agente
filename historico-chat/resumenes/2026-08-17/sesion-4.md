@@ -33,7 +33,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Por qué importa.** Seis es la medida del hueco. No es que faltaran seis documentos: es que **seis pendientes se iban a construir sin que nadie hubiera escrito cuándo se dan por aceptados**. El 36 y el 58 son los peores del grupo, porque los dos son defectos reportados por un proyecto real y llevaban días esperando.
 
-**Y hay una lectura al revés que también sirve:** las 16 automatizaciones del [09](../../../pendientes/09-autonomia-sin-ia.md) cupieron **todas** en historias que ya existían. Ese tema estaba bien repartido desde el principio, y ahora se puede demostrar.
+**Y hay una lectura al revés que también sirve:** las 16 automatizaciones del [09](../../../pendientes/hecho/autonomia-sin-ia.md) cupieron **todas** en historias que ya existían. Ese tema estaba bien repartido desde el principio, y ahora se puede demostrar.
 
 **Dónde queda.** Las seis escritas con el molde completo, en su épica y en los dos índices.
 

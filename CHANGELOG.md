@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.10.0 — 2026-08-18
+
+**MENOR** (una herramienta más para revisar la memoria; nada que cumplir).
+
+**Dos acuerdos opuestos guardados a la vez son peores que no tener ninguno:** dan respuestas seguras y contrarias según cuál se encuentre primero.
+
+Ahora se pueden buscar los pares sospechosamente parecidos, para mirarlos. **No dice que se contradigan** — eso lo decide quien lee.
+
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 16, **el último de los dieciséis**. Nace [`memoria/parecidas.py`](memoria/parecidas.py).
+
+**El umbral se eligió midiendo, y el resultado fue no devolver nada.** Sobre 114 acuerdos vigentes: con el corte bajo salían seis pares, todos relacionados pero ninguno contrario; con el corte alto, ninguno. **Se eligió el que hoy no devuelve nada** — seis pares que hay que descartar a mano enseñan a no mirar la lista, y el día que aparezca uno de verdad tampoco se mira.
+
+**Y medirlo destapó algo:** la primera versión comparaba el título y daba once pares, todos falsos. Los títulos siguen un molde, así que **dos cosas de temas distintos salen parecidísimas por la forma de la frase**. Comparando el porqué, que es donde está la sustancia, bajaron a seis.
+
 ## 24.9.0 — 2026-08-18
 
 **MENOR** (la plantilla del stack pide dos datos más; nada deja de valer).
@@ -19,7 +33,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Ahora hay una forma de correrlo que **hace la copia primero y solo entonces sigue**. Si no hay copia declarada, o si la copia falla, **no corre nada**.
 
-**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 15, y hace cumplir [`00·N7`](base/00-nucleo-blindado.md). Nace [`validadores/respaldo.py`](validadores/respaldo.py). La [plantilla del stack](plantillas/stack.md) gana dos filas: cómo se respalda y **cómo se restaura** — la segunda no la usa ningún programa, se declara para que esté escrita antes del susto y no durante.
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 15, y hace cumplir [`00·N7`](base/00-nucleo-blindado.md). Nace [`validadores/respaldo.py`](validadores/respaldo.py). La [plantilla del stack](plantillas/stack.md) gana dos filas: cómo se respalda y **cómo se restaura** — la segunda no la usa ningún programa, se declara para que esté escrita antes del susto y no durante.
 
 **El límite va escrito en cada corrida, y es la mitad del trabajo.** Esto cubre lo que se le pasa por la mano; un borrado escrito a mano o desde otra herramienta **no lo ve nadie**. El propio pendiente lo advertía: *«un respaldo automático parcial que se anuncia como total es peor que no tenerlo»*.
 
@@ -33,7 +47,7 @@ Ahora hay una forma de correrlo que **hace la copia primero y solo entonces sigu
 
 **Y no escribe una sola palabra de contenido**, que es lo que hace que sirva: los espacios por llenar quedan tal cual, para que la revisión siga exigiendo que alguien los llene.
 
-**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 12. Nace [`validadores/andamio.py`](validadores/andamio.py); sin `--aplicar` solo dice qué crearía. La advertencia venía en el propio pendiente y era lo más importante que traía — *«un generador que además rellena texto produce documentos que pasan el validador sin decir nada, que es la peor combinación posible»*—, y hay un caso que **falla si algún documento sale sin marcadores**.
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 12. Nace [`validadores/andamio.py`](validadores/andamio.py); sin `--aplicar` solo dice qué crearía. La advertencia venía en el propio pendiente y era lo más importante que traía — *«un generador que además rellena texto produce documentos que pasan el validador sin decir nada, que es la peor combinación posible»*—, y hay un caso que **falla si algún documento sale sin marcadores**.
 
 **La letra se lee, no se cuenta.** Si existen la `A` y la `C` porque la `B` se renombró, contar cuántas hay daría `C` y **pisaría un trabajo vivo**. Hay un caso con ese hueco exacto.
 
@@ -45,7 +59,7 @@ Ahora hay una forma de correrlo que **hace la copia primero y solo entonces sigu
 
 Sobre este repositorio encuentra dos, y son las dos de verdad.
 
-**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 10. Nace [`validadores/reaperturas.py`](validadores/reaperturas.py) y el subcomando `validar.py reaperturas`.
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 10. Nace [`validadores/reaperturas.py`](validadores/reaperturas.py) y el subcomando `validar.py reaperturas`.
 
 **Se deriva de la historia del archivo, no de sus palabras**, y ahí está lo que lo hace fiable: volver a empezar se escribe en prosa y cada quien con las suyas, así que buscar el texto encuentra unas, se pierde otras y cuenta las que solo *hablan* del tema — **cinco archivos lo mencionan y solo dos trabajos se rehicieron**. Lo que no se puede escribir de dos formas es una casilla que estaba marcada y dejó de estarlo.
 
@@ -59,7 +73,7 @@ Sobre este repositorio encuentra dos, y son las dos de verdad.
 
 Ahora la línea se escribe sola, con el título del archivo, y queda marcada como pendiente de describir bien.
 
-**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 14. Nace [`validadores/indices.py`](validadores/indices.py) y el subcomando `validar.py indices`, que sin `--aplicar` solo dice qué escribiría.
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 14. Nace [`validadores/indices.py`](validadores/indices.py) y el subcomando `validar.py indices`, que sin `--aplicar` solo dice qué escribiría.
 
 **No regenera el índice entero, y ahí está la decisión.** El pendiente proponía reescribir el bloque completo, y eso destruía trabajo: las líneas que ya están llevan una descripción escrita por alguien que el título del archivo no tiene. Se agrega lo que falta, se avisa de lo que quedó sin describir, y **lo que sobra se reporta y no se borra** — quitar una línea puede ser el error, no el archivo que ya no está.
 
@@ -73,7 +87,7 @@ Ahora la línea se escribe sola, con el título del archivo, y queda marcada com
 
 Corre al publicar y no en cada guardado, a propósito: en cada guardado costaría minutos y a la semana alguien la apagaría. **Y publicar es lo que no se deshace** — lo guardado se revierte, lo publicado ya lo tiene otro.
 
-**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 08. Nace el enganche `pre-push` en [`instalar.py`](validadores/instalar.py), y hoy se notó la falta: se publicaron dieciséis commits seguidos sin que corriera nada solo.
+**El detalle.** Del [pendiente 09](pendientes/hecho/autonomia-sin-ia.md), su ítem 08. Nace el enganche `pre-push` en [`instalar.py`](validadores/instalar.py), y hoy se notó la falta: se publicaron dieciséis commits seguidos sin que corriera nada solo.
 
 **Lo que detiene y lo que solo informa está separado, y es la distinción que decide si el enganche sobrevive.** La primera versión metía en el bucle que detiene la revisión del cuerpo de reglas contra su propio molde, y **rechazó el envío con cero fallas**: hay reglas con deuda conocida. Un estándar endeudado consigo mismo no puede impedir publicar cualquier otra cosa — así se termina saltando el enganche para todo, que es apagarlo sin decirlo.
 

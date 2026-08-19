@@ -6,7 +6,7 @@
 |---|---|
 | **Historia de usuario** | [EP-001 · HU-007 — La regla que gobierna cómo se escriben las reglas](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — «no se automatiza hasta que se sepa que sirve» es meta-regla: gobierna a las demás |
 
-Agregarle al [pendiente 09](09-autonomia-sin-ia.md) un criterio que hoy le falta, y dejarlo escrito como meta-regla: **una regla no se automatiza hasta que se sepa que sirve.**
+Agregarle al [pendiente 09](hecho/autonomia-sin-ia.md) un criterio que hoy le falta, y dejarlo escrito como meta-regla: **una regla no se automatiza hasta que se sepa que sirve.**
 
 ## El problema
 

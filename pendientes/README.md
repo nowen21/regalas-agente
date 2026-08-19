@@ -31,7 +31,7 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24*
 
 | # | P | Pendiente | Qué resuelve | Por qué va aquí |
 |---|---|---|---|---|
-| 01 | **P5** | [Validadores de código de proyecto](hecho/validadores-de-codigo-de-proyecto.md) | Los validadores que faltan: los que leen el código/config del proyecto o corren una herramienta (linter, pruebas, audit), más las puertas de flujo. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple", y produce los datos que necesita el 06. La **base ya está hecha** ([pendientes/hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): hooks + validadores de documentación y estructura. Aquí queda la mitad que necesita un proyecto real. Cinco de los nueve que faltan **no arrancan sin el ítem 04 del [09](09-autonomia-sin-ia.md)** —el manifiesto de convenciones—: sin él no hay contra qué comparar. |
+| 01 | **P5** | [Validadores de código de proyecto](hecho/validadores-de-codigo-de-proyecto.md) | Los validadores que faltan: los que leen el código/config del proyecto o corren una herramienta (linter, pruebas, audit), más las puertas de flujo. | Primero: cierra la brecha entre "el estándar dice" y "el estándar se cumple", y produce los datos que necesita el 06. La **base ya está hecha** ([pendientes/hecho/validadores-y-hooks.md](hecho/validadores-y-hooks.md)): hooks + validadores de documentación y estructura. Aquí queda la mitad que necesita un proyecto real. Cinco de los nueve que faltan **no arrancan sin el ítem 04 del [09](hecho/autonomia-sin-ia.md)** —el manifiesto de convenciones—: sin él no hay contra qué comparar. |
 | ~~02~~ | — | **hecho** → [Vigencia y poda de la memoria](hecho/vigencia-y-poda-de-memoria.md) | Vigencia (`revisada`), marca de sin-verificar, recencia en `search`, comandos `revisar`/`archivar`. | Evitaba que la memoria se degrade sola de activo a ruido. Cerrado 2026-08-06 (la detección de contradicciones se movió al 05). |
 | ~~03~~ | — | **hecho** → [Ciclo de vida de pendientes y deuda](hecho/ciclo-de-vida-de-pendientes.md) | Estado `cerrada` + `cerrada_en`/`cierra_ref`; comandos `pendientes` / `cerrar`. | Cierra lo que el agente difiere (deuda, preguntas). Cerrado 2026-08-06, sobre el gancho de migración del 02. |
 | ~~04~~ | — | **hecho** → [Versión del estándar](hecho/version-del-estandar.md) | `VERSION` + `CHANGELOG`, fijación por proyecto, retroactividad y validador de desfase. | "El proyecto cumple el estándar" pasa a tener fecha. Cerrado 2026-08-06. |
@@ -52,7 +52,7 @@ Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porqu
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 09 | **P5** | [Autonomía sin IA](09-autonomia-sin-ia.md) | Inventario de 16 automatizaciones para lo que hoy depende de que el agente se acuerde: versionado, secretos en el histórico, sello de puertas, manifiesto de convenciones, gate `F2`, instrumentación de métricas y andamiaje de fases. |
+| 09 | **P5** | [Autonomía sin IA](hecho/autonomia-sin-ia.md) | Inventario de 16 automatizaciones para lo que hoy depende de que el agente se acuerde: versionado, secretos en el histórico, sello de puertas, manifiesto de convenciones, gate `F2`, instrumentación de métricas y andamiaje de fases. |
 
 **No es un ítem, es un tema.** Cada una de sus 16 propuestas se promueve a su propio pendiente numerado cuando se vaya a construir; el `09` reserva el lugar del tema en la fila, no de las tareas. Comparte frontera con el 01: aquel cubre los validadores que faltan, este cubre todo lo demás que podría dejar de depender de la IA.
 
@@ -319,7 +319,7 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 
 **Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
 
-**Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](09-autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](33-defectos-que-destaparon-los-resumenes-viejos.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
+**Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](33-defectos-que-destaparon-los-resumenes-viejos.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 
 ## Dependencias duras
 

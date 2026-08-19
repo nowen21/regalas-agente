@@ -1,6 +1,6 @@
 # Pendiente · Autonomía sin IA — backlog de automatizaciones
 
-**Estado:** abierto · anotado 2026-08-07.
+**Estado:** cerrado 2026-08-18 · anotado 2026-08-07.
 
 | | |
 |---|---|
@@ -25,26 +25,26 @@ Y el corolario que justifica el backlog completo:
 
 ## Resumen
 
-**Cada uno nombra su historia.** Ninguno se construye desde este archivo: al promoverse a pendiente propio se baja a la historia de su fila y se construye como fase suya ([`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)). Ninguna de las 16 estrena historia: las 16 caben en las que ya existen, que es la señal de que el tema estaba bien repartido desde el principio.
+**Cada uno nombra su historia.** Ninguno se construye desde este archivo: al promoverse a pendiente propio se baja a la historia de su fila y se construye como fase suya ([`02·F23`](../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)). Ninguna de las 16 estrena historia: las 16 caben en las que ya existen, que es la señal de que el tema estaba bien repartido desde el principio.
 
 | # | Funcionalidad | Prioridad | Complejidad | Grupo | Historia donde vive |
 |---|---|---|---|---|---|
-| 01 | Guardián de versión y CHANGELOG | **Alta** | Baja | Blindaje | [EP-005 · HU-005](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) |
-| 02 | Barrido de secretos en el histórico | **Alta** | Baja | Seguridad | [EP-005 · HU-002](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) |
-| 03 | Sello de puerta por CLI (`estado.py`) | **Alta** | Baja | Estado | [EP-004 · HU-014](../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
-| 04 | Manifiesto de convenciones del proyecto | **Alta** | Media | Puertas | [EP-004 · HU-010](../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) |
-| 05 | Validador de forma de regla (`M4`/`M5`/`M11`) | **Alta** | Media | Blindaje | [EP-004 · HU-011](../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) |
-| 06 | Gate `F2` mecánico: código sin spec | **Alta** | Alta | Puertas | [EP-004 · HU-013](../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) |
-| 07 | Validador del mapa del sitio | Media | Baja | Blindaje | [EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md), su `CA-03` |
-| 08 | Enganche `pre-push` con la batería completa | Media | Baja | Seguridad | [EP-005 · HU-006](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) |
-| 09 | Registro de búsquedas de memoria | Media | Baja | Métricas | [EP-006 · HU-003](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-003-busqueda-por-palabra/HU-003-busqueda-por-palabra.md) |
-| 10 | Marca de fase reabierta | Media | Baja | Métricas | [EP-004 · HU-014](../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
-| 11 | Hallazgos por regla → «puertas que fallan» | Media | Baja | Métricas | [EP-004 · HU-009](../documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/HU-009-conteo-por-regla.md) |
-| 12 | Andamiaje de fase y HU (`nueva-fase.py`) | Media | Media | Ciclo de vida | [EP-003 · HU-003](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) |
-| 13 | Actualizador de componentes en proyectos | Media | Media | Ciclo de vida | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) |
-| 14 | Generador de índices (modo aparte) | Media | Media | Blindaje | [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md), su `RN-02` |
-| 15 | Respaldo antes de operación irreversible | Media | Media | Seguridad | [EP-001 · HU-012](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) |
-| 16 | Detección de contradicciones en la memoria | Baja | Alta | Métricas | [EP-006 · HU-007](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-007-marcar-lo-que-dejo-de-aplicar/HU-007-marcar-lo-que-dejo-de-aplicar.md) |
+| 01 | Guardián de versión y CHANGELOG | **Alta** | Baja | Blindaje | [EP-005 · HU-005](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md) |
+| 02 | Barrido de secretos en el histórico | **Alta** | Baja | Seguridad | [EP-005 · HU-002](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) |
+| 03 | Sello de puerta por CLI (`estado.py`) | **Alta** | Baja | Estado | [EP-004 · HU-014](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
+| 04 | Manifiesto de convenciones del proyecto | **Alta** | Media | Puertas | [EP-004 · HU-010](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/HU-010-convencion-declarada-por-el-proyecto.md) |
+| 05 | Validador de forma de regla (`M4`/`M5`/`M11`) | **Alta** | Media | Blindaje | [EP-004 · HU-011](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md) |
+| 06 | Gate `F2` mecánico: código sin spec | **Alta** | Alta | Puertas | [EP-004 · HU-013](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md) |
+| 07 | Validador del mapa del sitio | Media | Baja | Blindaje | [EP-005 · HU-011](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md), su `CA-03` |
+| 08 | Enganche `pre-push` con la batería completa | Media | Baja | Seguridad | [EP-005 · HU-006](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-006-bateria-antes-de-publicar/HU-006-bateria-antes-de-publicar.md) |
+| 09 | Registro de búsquedas de memoria | Media | Baja | Métricas | [EP-006 · HU-003](../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-003-busqueda-por-palabra/HU-003-busqueda-por-palabra.md) |
+| 10 | Marca de fase reabierta | Media | Baja | Métricas | [EP-004 · HU-014](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
+| 11 | Hallazgos por regla → «puertas que fallan» | Media | Baja | Métricas | [EP-004 · HU-009](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/HU-009-conteo-por-regla.md) |
+| 12 | Andamiaje de fase y HU (`nueva-fase.py`) | Media | Media | Ciclo de vida | [EP-003 · HU-003](../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) |
+| 13 | Actualizador de componentes en proyectos | Media | Media | Ciclo de vida | [EP-007 · HU-006](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) |
+| 14 | Generador de índices (modo aparte) | Media | Media | Blindaje | [EP-004 · HU-005](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md), su `RN-02` |
+| 15 | Respaldo antes de operación irreversible | Media | Media | Seguridad | [EP-001 · HU-012](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) |
+| 16 | Detección de contradicciones en la memoria | Baja | Alta | Métricas | [EP-006 · HU-007](../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-007-marcar-lo-que-dejo-de-aplicar/HU-007-marcar-lo-que-dejo-de-aplicar.md) |
 
 **Orden sugerido:** 01 → 02 → 03 → 07 → 08 (todo Baja complejidad y alto retorno) → 04 → 05 → 12 → 09/10/11 → 13 → 14 → 15 → 06 → 16.
 
@@ -60,7 +60,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 |---|---|---|
 | **Alta** | Baja | Ninguna |
 
-**Descripción.** Enganche `pre-commit` que mira el diff: si toca [`base/`](../base/) o [`plantillas/`](../plantillas/) y el mismo commit no sube [`VERSION`](../VERSION) ni agrega una entrada en [`CHANGELOG.md`](../CHANGELOG.md), el commit no se crea.
+**Descripción.** Enganche `pre-commit` que mira el diff: si toca [`base/`](../../base) o [`plantillas/`](../../plantillas) y el mismo commit no sube [`VERSION`](../../VERSION) ni agrega una entrada en [`CHANGELOG.md`](../../CHANGELOG.md), el commit no se crea.
 
 **Problema que resuelve.** `CLAUDE.md §2` y la meta-regla `M10` dicen que versionar no es opcional, pero hoy nada lo impide. Basta un despiste para que un proyecto herede una regla nueva sin que su número de versión cambie — y entonces `version.py`, que compara versiones, deja de detectar el desfase. Es una falla silenciosa que rompe la única garantía de «este proyecto cumple el estándar **de tal fecha**».
 
@@ -76,7 +76,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| **Alta** | Media | [`base/20-meta-reglas/estructura-regla.md`](../base/20-meta-reglas/estructura-regla.md) |
+| **Alta** | Media | [`base/20-meta-reglas/estructura-regla.md`](../../base/20-meta-reglas/estructura-regla.md) |
 
 **Descripción.** Comprobar que cada regla de `base/` respete su propio molde: ID libre del prefijo del capítulo (`M4`), **una sola exigencia** por regla, ejemplo INCORRECTO/CORRECTO presente (`M5`), y ninguna regla borrada o renumerada entre versiones (`M11`).
 
@@ -94,7 +94,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| Media | Baja | [`anatomia/mapa-del-sitio.md`](../anatomia/mapa-del-sitio.md) |
+| Media | Baja | [`anatomia/mapa-del-sitio.md`](../../anatomia/mapa-del-sitio.md) |
 
 **Descripción.** Comparar el árbol declarado en el mapa del sitio contra lo que hay en disco y reportar lo que sobra y lo que falta.
 
@@ -114,7 +114,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 |---|---|---|
 | Media | Media | `enlaces.py` |
 
-**Descripción.** Programa que **escribe** los índices que hoy `enlaces.py` solo comprueba: el índice de [`historico-chat/README.md`](../historico-chat/README.md), el de [`notas/`](../notas/), el de [`pendientes/`](../pendientes/).
+**Descripción.** Programa que **escribe** los índices que hoy `enlaces.py` solo comprueba: el índice de [`historico-chat/README.md`](../../historico-chat/README.md), el de [`notas/`](../../notas), el de [`pendientes/`](..).
 
 **Problema que resuelve.** Cada archivo nuevo obliga a agregar su línea al índice a mano. Es trabajo mecánico que la IA hace con el mismo esfuerzo que cualquier otra edición, y que olvida con la misma facilidad. El validador lo detecta después; nadie lo evita antes.
 
@@ -206,7 +206,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| **Alta** | Alta | 04 · 12 · [pendiente 01](hecho/validadores-de-codigo-de-proyecto.md) |
+| **Alta** | Alta | 04 · 12 · [pendiente 01](validadores-de-codigo-de-proyecto.md) |
 
 **Descripción.** Detectar que se escribió código de una fase sin que existan su spec y su plan aprobados.
 
@@ -240,7 +240,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 ## Grupo D · Instrumentar lo que hoy no se puede medir
 
-El [README de métricas](../metricas/README.md) ya identifica cuatro números que no se pueden derivar porque falta un marcador. Los tres primeros son ese marcador.
+El [README de métricas](../../metricas/README.md) ya identifica cuatro números que no se pueden derivar porque falta un marcador. Los tres primeros son ese marcador.
 
 ### 09 · Registro de búsquedas de memoria
 
@@ -300,7 +300,7 @@ El [README de métricas](../metricas/README.md) ya identifica cuatro números qu
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| Baja | Alta | [`hecho/memoria-semantica.md`](hecho/memoria-semantica.md) |
+| Baja | Alta | [`hecho/memoria-semantica.md`](memoria-semantica.md) |
 
 **Descripción.** Avisar cuando una señal nueva contradice una activa — la decisión contraria a la que ya se tomó, el patrón que niega al anterior.
 
@@ -367,17 +367,17 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 
 # Medido el 2026-08-18: diez de las dieciséis ya estaban
 
-**Se buscó cada una en el repositorio antes de construir nada**, como con el [01](hecho/validadores-de-codigo-de-proyecto.md). El resultado es el mismo: el backlog contaba como trabajo por hacer lo que ya estaba hecho.
+**Se buscó cada una en el repositorio antes de construir nada**, como con el [01](validadores-de-codigo-de-proyecto.md). El resultado es el mismo: el backlog contaba como trabajo por hacer lo que ya estaba hecho.
 
 | # | Qué es | Qué hay |
 |---|---|---|
 | 01 | Guardián de versión y CHANGELOG | ✅ `versionado.py` · `numeracion.py` · el enganche de `pre-commit` |
-| 02 | Barrido de secretos en el histórico | ✅ [`enmascarar.py`](../validadores/enmascarar.py) |
+| 02 | Barrido de secretos en el histórico | ✅ [`enmascarar.py`](../../validadores/enmascarar.py) |
 | 03 | Sello de puerta por CLI | ✅ `validar.py fases` |
-| 04 | Manifiesto de convenciones | ✅ [`declaracion.py`](../validadores/declaracion.py) |
-| 05 | Validador de forma de regla | ✅ [`metareglas.py`](../validadores/metareglas.py) |
-| 06 | Gate `F2` mecánico | ✅ [`flujo.py`](../validadores/flujo.py) |
-| 07 | Validador del mapa del sitio | ✅ [`amarre.py`](../validadores/amarre.py) |
+| 04 | Manifiesto de convenciones | ✅ [`declaracion.py`](../../validadores/declaracion.py) |
+| 05 | Validador de forma de regla | ✅ [`metareglas.py`](../../validadores/metareglas.py) |
+| 06 | Gate `F2` mecánico | ✅ [`flujo.py`](../../validadores/flujo.py) |
+| 07 | Validador del mapa del sitio | ✅ [`amarre.py`](../../validadores/amarre.py) |
 | **08** | **Enganche `pre-push` con la batería** | ✅ **construido hoy** — ver abajo |
 | 09 | Registro de búsquedas de memoria | ✅ `memoria/senales.db` · `recuerdos.py` |
 | 11 | Hallazgos por regla | ✅ `metricas/` |
@@ -385,14 +385,14 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | **10** | **Marca de fase reabierta** | ✅ **construido hoy** — `validar.py reaperturas` |
 | **12** | **Andamiaje de fase y HU** | ✅ **construido hoy** — `validadores/andamio.py` |
 | **14** | **Generador de índices** | ✅ **construido hoy** — `validar.py indices` |
-| **15** | **Respaldo antes de lo irreversible** | ✅ **construido hoy** — `validadores/respaldo.py`, y su regla es [`00·N7`](../base/00-nucleo-blindado.md) |
-| 16 | Contradicciones en la memoria | ☐ |
+| **15** | **Respaldo antes de lo irreversible** | ✅ **construido hoy** — `validadores/respaldo.py`, y su regla es [`00·N7`](../../base/00-nucleo-blindado.md) |
+| **16** | **Contradicciones en la memoria** | ✅ **construido hoy** — `memoria/parecidas.py` |
 
-**Queda uno**: el 16.
+**Ninguno. Las dieciséis están.**
 
 ## 08 · el enganche de publicar, construido
 
-**Publicar es lo que no se deshace.** Un commit se revierte; lo publicado ya lo tiene otro ([`00·N2`](../base/00-nucleo-blindado.md)). Por eso la batería va acá y no en cada commit: ahí sería insoportable —minutos por vez— y a la semana alguien la apaga.
+**Publicar es lo que no se deshace.** Un commit se revierte; lo publicado ya lo tiene otro ([`00·N2`](../../base/00-nucleo-blindado.md)). Por eso la batería va acá y no en cada commit: ahí sería insoportable —minutos por vez— y a la semana alguien la apaga.
 
 **Y hoy se notó la falta:** se publicaron dieciséis commits seguidos sin que corriera nada solo. Corría porque el agente se acordaba, que es exactamente lo que este pendiente dice que no cuenta como cumplir.
 
@@ -403,7 +403,7 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | **Detiene** | `estandar` y `versionado` — enlaces rotos, índices viejos, algo sin versionar. Salen del trabajo de hoy |
 | **Informa** | `metareglas` — el cuerpo de reglas contra su molde |
 
-**Es la distinción que decide si el enganche sobrevive.** Al construirlo, la primera versión metía `metareglas` en el bucle que detiene, y **rechazó el push con cero fallas**: hay reglas publicadas que no pasan su checklist, deuda conocida del [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Es la distinción que decide si el enganche sobrevive.** Al construirlo, la primera versión metía `metareglas` en el bucle que detiene, y **rechazó el push con cero fallas**: hay reglas publicadas que no pasan su checklist, deuda conocida del [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > **Un estándar endeudado consigo mismo no puede impedir publicar cualquier otra cosa.** Eso convierte el enganche en un obstáculo permanente, y así se termina en `--no-verify` para todo — que es apagarlo sin decirlo.
 
@@ -411,7 +411,7 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 
 **Y dice cómo saltarlo a propósito.** Un enganche sin salida se salta a escondidas; decir cómo hacerlo es lo que convierte saltarlo en una decisión.
 
-**7 casos** en [`validadores/tests/test_el_enganche_de_publicar.py`](../validadores/tests/test_el_enganche_de_publicar.py).
+**7 casos** en [`validadores/tests/test_el_enganche_de_publicar.py`](../../validadores/tests/test_el_enganche_de_publicar.py).
 
 
 ## 14 · el generador de índices, construido
@@ -428,16 +428,16 @@ El pendiente proponía reescribir el bloque entre dos marcas. **Al mirarlo de ce
 
 **Y lo que sobra lo reporta y no lo borra:** quitar una línea del índice puede ser el error, no el archivo que ya no está. Hay un caso que lo fija.
 
-**11 casos** en [`validadores/tests/test_el_indice_se_completa_solo.py`](../validadores/tests/test_el_indice_se_completa_solo.py), incluidos los dos que importan: que la descripción cuidada sobreviva, y que correrlo dos veces no duplique.
+**11 casos** en [`validadores/tests/test_el_indice_se_completa_solo.py`](../../validadores/tests/test_el_indice_se_completa_solo.py), incluidos los dos que importan: que la descripción cuidada sobreviva, y que correrlo dos veces no duplique.
 
 ### Lo comprobó otro validador de hoy
 
-Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](15-el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
+Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](../15-el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
 
 
 ## 10 · la marca de fase reabierta, construida
 
-**`validar.py reaperturas`.** Sobre este repositorio encuentra **dos**, y son las dos de verdad: [`A-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/estado-fase.md) —el enganche del resumen que no creaba el resumen— y [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/estado-fase.md), reabierta hoy.
+**`validar.py reaperturas`.** Sobre este repositorio encuentra **dos**, y son las dos de verdad: [`A-EP-005-HU-008`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/estado-fase.md) —el enganche del resumen que no creaba el resumen— y [`A-EP-007-HU-006`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/estado-fase.md), reabierta hoy.
 
 ### Se deriva de la historia, no de las palabras
 
@@ -451,14 +451,14 @@ Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasif
 
 **Reabrir una fase es lo correcto** cuando lo que falla es ese trabajo y su documentación decía que estaba hecho — así se hizo con las dos que encuentra. Lo que se mide **no es un incumplimiento**: es de dónde sale el retrabajo, que es información para cambiar reglas, no para calificar a nadie.
 
-**11 casos** en [`validadores/tests/test_la_fase_reabierta_se_distingue.py`](../validadores/tests/test_la_fase_reabierta_se_distingue.py).
+**11 casos** en [`validadores/tests/test_la_fase_reabierta_se_distingue.py`](../../validadores/tests/test_la_fase_reabierta_se_distingue.py).
 
 
 ## 12 · el andamio de fase, construido
 
 **`python validadores/andamio.py EP-001-… HU-003-… descripcion`**, y sin `--aplicar` solo dice qué crearía.
 
-Calcula el consecutivo, arma el nombre según [`02·F12.6`](../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) y copia los cinco documentos desde sus plantillas.
+Calcula el consecutivo, arma el nombre según [`02·F12.6`](../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) y copia los cinco documentos desde sus plantillas.
 
 ### La advertencia del pendiente era lo más importante que traía
 
@@ -476,7 +476,7 @@ Si existen la `A` y la `C` porque la `B` se renombró, **contar cuántas hay dar
 
 La separación de siempre: `validar.py` es la puerta de lo que **comprueba**; esto **escribe**, como `cerrar.py` o `historico.py`. **La prueba que exige que todo módulo diga por dónde se corre lo reportó** al escribirlo, y se resolvió declarándolo donde van los que tienen arranque propio.
 
-**9 casos** en [`validadores/tests/test_el_andamio_no_escribe_contenido.py`](../validadores/tests/test_el_andamio_no_escribe_contenido.py).
+**9 casos** en [`validadores/tests/test_el_andamio_no_escribe_contenido.py`](../../validadores/tests/test_el_andamio_no_escribe_contenido.py).
 
 
 ## 15 · el respaldo antes de lo irreversible, construido
@@ -489,7 +489,7 @@ El pendiente lo pedía así, y tenía razón:
 
 > *Un respaldo automático parcial que se anuncia como total es peor que no tenerlo, porque genera confianza donde no la hay.*
 
-**Cada corrida empieza diciendo qué no cubre:** un borrado escrito a mano, un guion de limpieza propio o un borrado por interfaz **no los ve nadie**. Eso sigue siendo criterio del agente, y [`00·N7`](../base/00-nucleo-blindado.md) lo sigue exigiendo.
+**Cada corrida empieza diciendo qué no cubre:** un borrado escrito a mano, un guion de limpieza propio o un borrado por interfaz **no los ve nadie**. Eso sigue siendo criterio del agente, y [`00·N7`](../../base/00-nucleo-blindado.md) lo sigue exigiendo.
 
 ### Dos negativas que son el programa entero
 
@@ -508,6 +508,93 @@ Sin `Respaldo de datos` en el `.agente/stack.md`, no inventa nada. **Adivinar c�
 
 ### Invocarlo es la autorización
 
-[`00·N4`](../base/00-nucleo-blindado.md) pide autorización para esa operación concreta, y **escribir el comando destructivo dentro del envoltorio es esa autorización**: nadie lo teclea sin querer. Lo que el envoltorio agrega no es permiso — es la red.
+[`00·N4`](../../base/00-nucleo-blindado.md) pide autorización para esa operación concreta, y **escribir el comando destructivo dentro del envoltorio es esa autorización**: nadie lo teclea sin querer. Lo que el envoltorio agrega no es permiso — es la red.
 
-**13 casos** en [`validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py`](../validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py).
+**13 casos** en [`validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py`](../../validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py).
+
+
+## 16 · el detector de señales parecidas, construido
+
+**`python memoria/parecidas.py`.** Sobre la memoria de hoy dice: *ningún par de señales activas se parece lo suficiente*.
+
+### Se llama «parecidas» y no «contradicciones», que era la advertencia del pendiente
+
+> *Decidir si dos señales se contradicen o se complementan es criterio, no cálculo. Llamarlo «detección de contradicciones» a secas prometería más de lo que puede dar.*
+
+**Un aviso que promete de más se termina apagando** — el defecto más caro de este repositorio, encontrado siete veces hoy. Lo que el programa hace es **poner el par delante**; quién decide si chocan es quien lee.
+
+### El umbral se eligió midiendo, y el resultado fue no devolver nada
+
+Sobre **114 señales que deciden**, el corte es abrupto:
+
+| Umbral | Pares |
+|---:|---:|
+| 0.86 | 6 |
+| **0.90** | **0** |
+| 0.93 | 0 |
+
+Los seis de 0.86 eran señales **relacionadas** —dos módulos rotos por la misma fase anterior— y ninguna contradecía a la otra.
+
+**Se eligió el umbral que hoy no devuelve nada.** Seis pares que hay que descartar a mano enseñan a no mirar la lista, y entonces el día que aparezca uno de verdad tampoco se mira.
+
+### Lo que destapó medirlo: el título engaña
+
+La primera versión comparaba **título y porqué juntos**, y daba **once** pares — todos falsos. Los títulos de esta casa siguen un molde —*«Módulo X cerrado con Fase Y»*— y **dos señales de temas distintos salen parecidísimas por la forma de la frase**, no por lo que dicen.
+
+**Comparando solo el porqué bajaron a seis.** El porqué es donde está la sustancia.
+
+### Dos cosas que no hace, y las dice
+
+- **Sin el módulo semántico no compara nada** y lo anuncia. No cae en comparar por palabras sueltas: daría pares por casualidad.
+- **No mira entre alcances distintos.** Que la organización y un proyecto digan cosas distintas **es como está diseñado** — el proyecto ajusta, no contradice.
+
+**10 casos** en [`memoria/test_parecidas.py`](../../memoria/test_parecidas.py).
+
+
+---
+
+# Cómo cerró — 2026-08-18
+
+**Las dieciséis están.** Diez ya existían y se descubrieron buscándolas en vez de creerle a la lista; seis se construyeron hoy.
+
+| Construido hoy | Qué quedó |
+|---|---|
+| **08** · batería antes de publicar | el enganche de `pre-push` |
+| **10** · marca de fase reabierta | `validar.py reaperturas` |
+| **12** · andamiaje de fase | `validadores/andamio.py` |
+| **14** · generador de índices | `validar.py indices` |
+| **15** · respaldo antes de lo irreversible | `validadores/respaldo.py` |
+| **16** · señales parecidas | `memoria/parecidas.py` |
+
+## Lo que este pendiente enseñó, y vale más que las seis piezas
+
+**Diez de las dieciséis ya estaban construidas.** Igual que en el [01](validadores-de-codigo-de-proyecto.md): el backlog contaba como trabajo por hacer lo que ya estaba hecho, y nadie lo había vuelto a mirar.
+
+**Su propio corolario terminó aplicándose al propio archivo:**
+
+> *Una regla que se cumple cuando alguien se acuerda, no se cumple.*
+
+Un inventario que solo está al día cuando alguien se acuerda de revisarlo, tampoco.
+
+## Las cuatro decisiones que se tomaron construyendo, y por qué
+
+Las cuatro son la misma: **no prometer más de lo que se puede**.
+
+| Pieza | Lo que se decidió |
+|---|---|
+| `pre-push` | **Lo que informa y lo que detiene, separados.** Meter el cuerpo de reglas en lo que detiene rechazaba el push con cero fallas: hay deuda conocida, y un estándar endeudado consigo mismo no puede impedir publicar |
+| `andamio.py` | **Ni una palabra de contenido.** Los marcadores quedan intactos, y hay un caso que falla si algún documento sale sin ellos |
+| `respaldo.py` | **Sin respaldo declarado no corre nada.** Y si el respaldo falla, tampoco — creer que hay red y no tenerla es peor |
+| `parecidas.py` | **Se llama «parecidas», no «contradicciones».** Y el umbral se puso donde hoy no devuelve nada, porque seis pares falsos enseñan a no mirar la lista |
+
+## El patrón del día, confirmado por octava vez
+
+**Una comprobación que pasa sin comprobar.** Apareció ocho veces:
+
+`avisar()` nunca llamada · `metareglas.py` sin subcomando · `estructura`, `entidades` y `cruces` sin puerta · el `CP-005` del instalador con un solo registro · `secretos` revisando el estándar · el recuento de huérfanas de `acciones.py` · `entidades` con 31 avisos falsos · y los once pares falsos de `parecidas.py`, cazados antes de publicarlo.
+
+**Todos tenían su prueba en verde al lado.** Lo que faltaba siempre era el caso que comprueba **lo contrario**: que cuando no hay defecto, el programa se calle.
+
+## Lo que no se hizo, y se dice
+
+**Nada quedó a medias.** Las seis nuevas tienen sus casos y su límite escrito en la propia salida del programa. Lo que **no** cubren está dicho en cada una — sobre todo en `respaldo.py`, que solo ve lo que se le pasa por la mano.

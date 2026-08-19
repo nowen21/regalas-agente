@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, es el pendiente 09 completo.
 - **Orden de resolución:** —, cada ítem se promueve a su propio pendiente cuando se vaya a construir.
-- **Dónde queda:** [pendientes/09-autonomia-sin-ia.md](../../../pendientes/09-autonomia-sin-ia.md).
+- **Dónde queda:** [pendientes/hecho/autonomia-sin-ia.md](../../../pendientes/hecho/autonomia-sin-ia.md).
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** de los 16, ¿cuál se construye primero? La recomendación escrita es `estado.py`, porque otras tres dependen de ella.
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2 y H-6 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-4 en el [01](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/09-autonomia-sin-ia.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-4 en el [01](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/hecho/autonomia-sin-ia.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ está en el repositorio desde entonces |
