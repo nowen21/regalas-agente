@@ -291,15 +291,7 @@ Se comprobó al sellar el capítulo `05` hoy, desde el otro lado, y coincide. **
 
 ## S9 · No toques rutas del sistema fuera del proyecto · solo autorizadas exactas
 
-El agente **solo escribe, mueve, elimina o modifica archivos dentro de la carpeta del proyecto** o dentro de rutas **explícitamente autorizadas** por el usuario (ubicaciones estándar declaradas en la capa 3, como la carpeta central de la base común del agente).
-
-- **Rutas del sistema operativo prohibidas por defecto:** carpetas de usuario ajenas al proyecto, ubicaciones globales del OS (Program Files, `/usr/`, `/etc/`, `%SystemRoot%`, `%APPDATA%` de otros programas), carpetas de terceros (otros proyectos del usuario, IDEs, entornos virtuales de otros repos).
-- **Ruta autorizada = ruta exacta**, no "una ruta parecida" ni "un padre común". Si el usuario autoriza `C:\proyectos\repo-A\config.json`, no se autoriza `C:\proyectos\repo-B\config.json` ni `C:\proyectos\`.
-- **Lectura permitida** sin autorización cuando el archivo es de referencia declarada (docs abiertas del usuario, path que el usuario mencionó). Escritura NO.
-- **Ampliación de rutas autorizadas** requiere autorización explícita del usuario en el chat. No se infiere de "es evidente que también necesito Y".
-
-Este comportamiento aplica incluso cuando el cambio "obviamente ayuda" ("agrego una entrada a tu `hosts` para que funcione la prueba"). La disponibilidad técnica no autoriza — la aprobación explícita sí.
-
+El agente escribe **solo dentro de la carpeta del proyecto** o en rutas que el usuario autorizó **una por una y exactas**: autorizar un archivo no autoriza a su hermano ni a su carpeta padre. Leer fuera sí; escribir, no. Que el cambio «obviamente ayude» no es permiso ([qué rutas y por qué](../notas/rutas-fuera-del-proyecto.md)).
 ```
 INCORRECTO: durante una fase, escribir en la carpeta home del usuario o en Program Files
             "porque es más práctico" → efecto lateral fuera del alcance del proyecto,
@@ -310,19 +302,19 @@ CORRECTO:   quedarse dentro del proyecto; si algo fuera realmente es necesario,
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
 **Fila 10 · no cabe: 1278 caracteres, cuatro veces el molde.**
 
@@ -332,20 +324,14 @@ Eso importa hoy más que cuando se escribió: al aplicar el checklist apareciero
 
 **Al acortarla, la excepción no se toca.** Lo que sobra es lo de alrededor.
 
+**Fila 10 · arreglada el 2026-08-18.** Medía 1 278 caracteres para un molde de 320; ahora mide 290. Lo que sobraba era el **inventario de rutas prohibidas** y el desarrollo del principio — detalle, no exigencia. Se fue a [`notas/rutas-fuera-del-proyecto.md`](../notas/rutas-fuera-del-proyecto.md), con el caso que hace falta nombrar: *«te agrego una entrada al `hosts` para que funcione la prueba»*. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## S10 · No mates procesos globales · solo PID exacto y estrictamente necesario
 
-El agente **no mata procesos** del sistema operativo con criterios amplios (por nombre de binario, por patrón, "todos los procesos de tal intérprete"). Matar procesos globales puede tumbar servicios que el usuario está usando en paralelo (otras terminales, IDEs, servidores de desarrollo de otros proyectos, tareas de fondo del OS).
-
-**Reglas:**
-
-- Matar procesos por **PID exacto**, no por nombre ni patrón.
-- Solo cuando el proceso a matar sea **claramente del proyecto** y su terminación sea **estrictamente necesaria** para la tarea (por ejemplo, un servidor de desarrollo que arrancó el agente en la fase actual y quedó colgado).
-- **Prohibido** por defecto: `killall`, `pkill -f <patrón>`, `taskkill /IM <binario> /F`, "matar todos los procesos de X".
-- Si es realmente necesario terminar por patrón (caso extremo), **pausar y pedir autorización explícita** al usuario indicando qué PID/nombre y por qué.
-- Al arrancar un proceso persistente (servidor, watcher), guarda el PID para poder terminarlo puntualmente al cerrar la tarea.
-
+El agente termina un proceso **por su identificador exacto**, y solo si es del proyecto y hace falta para la tarea — nunca por nombre ni por patrón, que tumba servicios que el usuario tiene abiertos en paralelo. Al arrancar algo persistente guarda su identificador, para poder cerrarlo después sin buscarlo.
+**Excepción** — terminar por patrón se pide con el identificador y el motivo a la vista (condición); no vale nunca por defecto (límite) y lo autoriza el usuario, caso por caso (autorizador).
 ```
 INCORRECTO: "hay procesos node colgados" → `killall node` → matas el IDE del usuario
             y los watchers de otros repos
@@ -355,19 +341,19 @@ CORRECTO:   identificar el PID exacto del proceso que arrancó la fase actual y 
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
 **Fila 10 · no cabe: 1029 caracteres.** Es lo único que reprueba.
 
@@ -378,6 +364,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 **Los tres nombres del oficio se quedan**, y el motivo sigue valiendo: `killall`, `pkill` y `taskkill` no son producto ni framework sino cómo se llama la misma acción en cada sistema, y quitarlos dejaría la regla sin decir qué prohíbe. Es el mismo criterio con el que [`04·S11`](#s11--escritura-contra-el-almacén-productivo-requiere-autorización-por-operación) conserva el suyo.
 
 Su excepción está completa, como la de `S9`.
+
+**Fila 10 · arreglada el 2026-08-18.** Medía 1 029 caracteres para un molde de 320; ahora mide 307. **No hizo falta anexo:** las cinco viñetas eran una sola exigencia dicha cinco veces —por identificador exacto, solo si es del proyecto, solo si hace falta— más la lista de comandos prohibidos, que nombraba herramientas concretas y por [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no debía estar ahí. La excepción quedó escrita en la forma de [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

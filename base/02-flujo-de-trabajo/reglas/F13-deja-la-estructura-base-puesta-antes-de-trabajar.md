@@ -2,8 +2,7 @@
 
 ## F13 · Deja la estructura base puesta antes de trabajar
 
-Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](F1-carga-el-contexto-antes-de-actuar.md))— el agente deja la estructura base puesta: crea la carpeta `proyectos/`, donde vive el código del usuario, y su propio espacio al lado (`.agente/`, `prompts/`, `documentacion/`, `pendientes/`). Crear una carpeta que la norma exige no es una decisión: es la norma. Lo que **sí** es del usuario es **qué va dentro de `proyectos/`** — el agente no mueve, no reorganiza ni acomoda ahí código que ya exista. El árbol completo está en [`estructura-base.md`](../estructura-base.md); el reparto de mundos, en [`base.md`](../base.md).
-
+Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](F1-carga-el-contexto-antes-de-actuar.md))— el agente crea las carpetas que la norma exige: `proyectos/` para el código del usuario y, al lado, `.agente/`, `prompts/`, `documentacion/` y `pendientes/`. Crearlas no es decisión suya; **qué va dentro sí**, y ahí no mueve nada.
 ```
 INCORRECTO: existe código suelto en la raíz → el agente crea `proyectos/` y mueve
             el código del usuario adentro
@@ -13,19 +12,19 @@ CORRECTO:   existe código suelto en la raíz → el agente crea `proyectos/` va
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.12.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
 **La fila 10 reprueba, y es la única.** El cuerpo mide **549 caracteres** y el molde da para 320 — casi el doble. (Se medía 631 hasta el 2026-08-18, cuando el conteo dejó de cobrar el marcado de los enlaces; la regla se pasa igual.) La propia fila dice qué hacer cuando no cabe: o son dos reglas, o se está contando el **porqué** y ese va a `notas/`. Acá es lo segundo: el párrafo explica *por qué* crear una carpeta que la norma exige no es una decisión, y *qué* no debe tocar el agente dentro de `proyectos/`. Las dos cosas son el razonamiento, no la exigencia.
 

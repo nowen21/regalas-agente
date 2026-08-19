@@ -116,13 +116,7 @@ La fila **9** pasa: los dos niveles son una sola exigencia. Un mensaje al usuari
 
 ## E4 · Loguea con niveles y con propósito
 
-- **error/crítico:** fallos que requieren atención.
-- **warning:** anómalo pero manejado (reintento, fallback, no encontrado).
-- **info:** hitos operativos (masiva ejecutada, batch completado).
-- **debug:** detalle fino, apagado en producción.
-
-Incluye **contexto** para rastrear (ids de entidad/usuario/correlación). No loguees de más (el ruido entierra la señal). Registra las operaciones masivas para auditoría ([`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada)).
-
+Cada registro lleva su nivel —**error** lo que pide atención, **warning** lo anómalo ya manejado, **info** el hito, **debug** el detalle, apagado en producción— y el contexto que lo hace rastreable: identificadores de entidad, usuario, correlación. Loguear de más entierra la señal.
 ```
 INCORRECTO: log.error("error")
 CORRECTO:   log.error("Falló causar factura", { factura_id, usuario_id, causa })
@@ -130,25 +124,25 @@ CORRECTO:   log.error("Falló causar factura", { factura_id, usuario_id, causa }
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.2**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 10 · el cuerpo no cabe: 419 caracteres para un molde de 320.**
+**Fila 10 · arreglada el 2026-08-18.** Medía 419 caracteres para un molde de 320; ahora mide 282.
 
-El análisis del 2026-08-07 la daba por cumplida, y en esa fila se equivocaba —o midió a ojo—. Se midió con el programa: no cabe. **Que un análisis anterior diga «cumple» no exime de volver a medir lo que un programa puede medir**; sirve para las nueve filas que piden leer y entender, no para las que se cuentan.
+Lo que sobraba era la **escala de niveles** en cuatro viñetas. No se movió a ningún anexo: **se dijo en una línea.** Las viñetas explicaban cuándo usar cada nivel con un ejemplo cada una, y el nombre del nivel ya lo dice — *error* es lo que pide atención, *debug* es el detalle. El ejemplo sobraba, no la escala.
 
-Lo que sobra es la **escala de niveles**: cuatro viñetas que explican cuándo usar cada uno. Es el mismo caso de [`15·IM3`](15-registros-inmutables.md#im3--anular-revierte-el-efecto-en-transacción) —una tabla de referencia no cabe en el molde de una regla— y se resuelve igual: la regla se queda con la exigencia y la escala se va a un anexo al lado. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**El análisis del 2026-08-07 la daba por cumplida en esta fila y se equivocaba**, o midió a ojo. Que un análisis anterior diga «cumple» no exime de volver a medir lo que un programa puede medir: sirve para las nueve filas que piden leer y entender, no para las que se cuentan.
 
 La fila **9** pasa aunque el cuerpo enumere cuatro niveles y además pida contexto: los niveles son **la escala** con que se cumple la exigencia, y el contexto es lo que hace que un registro sirva para rastrear. Un log con nivel y sin contexto no cumple a medias — no cumple.
 

@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.12.2 — 2026-08-18
+
+**PARCHE** (cuatro reglas dicen lo mismo en menos palabras; nada de lo que exigen cambia).
+
+**Cuatro reglas venían con su explicación pegada y no se leían.** Una usaba mil doscientos caracteres para decir algo que cabe en cuatro líneas. Ahora la regla dice qué hay que hacer, y el detalle —qué carpetas quedan fuera, por qué autorizar un archivo no autoriza a su carpeta— vive aparte, enlazado.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), las cuatro que fallaban **solo** la fila 10: [`04·S9`](base/04-seguridad.md) 1 278 → 290 —su inventario de rutas se fue a [`notas/rutas-fuera-del-proyecto.md`](notas/rutas-fuera-del-proyecto.md)—, [`04·S10`](base/04-seguridad.md) 1 029 → 307, [`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) 564 → 309 y [`05·E4`](base/05-errores-y-logging.md) 419 → 282. Las cuatro pasaron a **CUMPLE**: las reglas reprobadas bajan de 58 a **54**.
+
+**Dos cosas que salieron de hacerlo.** `S10` no necesitó anexo: sus cinco viñetas eran la misma exigencia dicha cinco veces, más una lista de comandos concretos que por [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no debía estar en la base. Y `E4` tampoco: sus cuatro viñetas explicaban cuándo usar cada nivel de registro con un ejemplo, y el nombre del nivel ya lo dice.
+
 ## 23.12.1 — 2026-08-18
 
 **PARCHE** (dos reglas dicen lo mismo en menos palabras; no cambia nada de lo que exigen).
