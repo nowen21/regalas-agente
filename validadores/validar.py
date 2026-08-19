@@ -40,6 +40,7 @@ import herramientas     # noqa: E402
 import indices          # noqa: E402
 import instalar         # noqa: E402
 import marcas           # noqa: E402
+import vigencia         # noqa: E402
 import metareglas       # noqa: E402
 import migraciones      # noqa: E402
 import numeracion       # noqa: E402
@@ -252,6 +253,17 @@ def cmd_marcas(a):
                         f"{relativo(raiz)}")
     return reportar(marcas.validar(raiz),
                     f"Marcas de generación automática · {relativo(raiz)}")
+
+
+def cmd_vigencia(a):
+    """`14` · Qué reglas llevan más tiempo sin que nadie se pregunte si sirven.
+
+    **Nunca falla.** No hay umbral: la lista se mira y después se decide cada
+    cuánto revisar. La lista completa la da `python validadores/vigencia.py`.
+    """
+    raiz = os.path.abspath(a.raiz)
+    return reportar(vigencia.validar(raiz),
+                    f"Vigencia de las reglas · {relativo(raiz)}")
 
 
 def cmd_secretos(a):
@@ -482,6 +494,11 @@ def main():
                     help="solo lo que entra en el commit, y con trinquete: "
                          "falla si la cuenta sube")
     ma.set_defaults(func=cmd_marcas)
+
+    vg = sub.add_parser("vigencia",
+                        help="reglas que nadie ha revisado de fondo · EP-001·HU-007·CA-04")
+    vg.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    vg.set_defaults(func=cmd_vigencia)
 
     ac = sub.add_parser("acciones",
                         help="el inventario de acciones del agente y su riesgo · 00·N1")

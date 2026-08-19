@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 25.2.0 — 2026-08-19
+
+**MENOR** (una lista más para mirar; nada nuevo que cumplir).
+
+**Una regla equivocada se comporta exactamente igual que una correcta.** No se rompe nada: sigue ahí, sigue pasando su revisión de forma, y se sigue obedeciendo. Lo que cambió no fue la regla: fue el mundo que describía.
+
+Ahora se puede preguntar **qué reglas llevan más tiempo sin que nadie se pregunte si todavía sirven**.
+
+**El detalle.** Del [pendiente 14](pendientes/hecho/las-reglas-no-tienen-fecha-de-revision.md). Nace [`validadores/vigencia.py`](validadores/vigencia.py) y las tres preguntas de la revisión quedan escritas en [`base/20-meta-reglas/revision-de-vigencia.md`](base/20-meta-reglas/revision-de-vigencia.md).
+
+**Son dos fechas distintas, y confundirlas era el problema.** El sello que cada regla ya traía dice *«vale mientras el texto de arriba no cambie»*: responde por la forma. La fecha nueva responde por otra cosa — que alguien volvió a preguntarse si el problema que la regla evita todavía existe.
+
+**No hay umbral, y es una decisión.** Un umbral inventado produce una alarma que se aprende a ignorar. La lista se ordena y se muestra; cada cuánto conviene revisar se decide después de mirarla, no antes de tenerla. Por eso nunca detiene nada.
+
+**Al lado de cada regla va cuántos incumplimientos produce hoy, y se lee en las dos direcciones.** Una regla vieja que falla todo el tiempo se revisa primero. Una que **no ha fallado nunca** se mira por el motivo contrario: puede que ya nadie la esté aplicando.
+
+**La fecha arranca ausente en las 245, a propósito.** Ponérsela de una vez a todas habría sido escribir 245 fechas que no responden por ninguna revisión, que es justo el sello vacío que esto viene a evitar.
+
+**Y pedir la lista destapó siete reglas sin sello:** `F4.1` a `F4.5`, `F6` y `F7` nunca recibieron su revisión de forma. Nacieron de partir reglas más grandes y el paso se saltó.
+
 ## 25.1.0 — 2026-08-19
 
 **MENOR** (un capítulo opcional más; quien no construya con modelos no cambia nada).

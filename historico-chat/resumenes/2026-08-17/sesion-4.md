@@ -808,6 +808,42 @@ Las otras tres sí eran mías, y se reescribieron a mano en dos minutos. **Eso e
 
 **Lo que enseña.** Las dos pruebas comparan **un documento contra lo que la máquina calcula del mismo hecho**. Ninguna revisa redacción; las dos revisan que dos fuentes no se hayan separado. Es la clase de prueba que no encuentra nada durante semanas y después encuentra lo único que nadie iba a ver leyendo.
 
+### H-64 · La vigencia de una regla: el pendiente 14 no tenía criterio de aceptación, y hubo que escribirlo
+
+**Qué pasó.** El [pendiente 14](../../../pendientes/hecho/las-reglas-no-tienen-fecha-de-revision.md) está enrutado a [EP-001 · HU-007](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md), y **ninguno de sus tres criterios lo cubría**. `CA-01`, `CA-02` y `CA-03` revisan una regla **al entrar**: dónde va, si es agnóstica, si exige una sola cosa. Ninguno vuelve a mirarla después.
+
+**Se escribió el `CA-04` primero**, y de ahí salió todo lo demás. Construir sin él habría sido saltarse [`02·F18`](../../../base/02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) — y era el bloqueo que el resumen tenía anotado para los pendientes 14, 15 y 16.
+
+**Dónde queda.** [`vigencia.py`](../../../validadores/vigencia.py), `validar.py vigencia`, y las tres preguntas en [`revision-de-vigencia.md`](../../../base/20-meta-reglas/revision-de-vigencia.md). v25.2.0.
+
+**Lo que enseña.** Un pendiente puede estar bien enrutado a su historia y aun así **no tener de dónde colgarse**. La fila «Historia de usuario» dice de quién es el tema; no dice que exista el criterio. Son dos comprobaciones distintas y hasta hoy solo se hacía la primera.
+
+### H-65 · Ordené por la fecha de `git` y la limpieza de la mañana la había borrado
+
+**Qué pasó.** La primera versión del reporte ordenaba las reglas por el último commit que tocó su archivo. Salió inservible: **la limpieza tipográfica de esta misma mañana había tocado las 245**, así que todas parecían recién escritas.
+
+**Se cambió por la fecha del sello, que ya estaba escrita en todas.** Es el día que alguien se sentó a leer la regla entera. No es lo mismo que revisarla contra la realidad —por eso el módulo existe—, pero para ordenar la fila es exactamente el dato.
+
+**Lo que enseña.** Dos cosas, y la segunda es la que importa:
+
+- **Una fecha de `git` mide cuándo cambió el archivo, no cuándo alguien pensó.** Cualquier pasada masiva la borra, y hoy hubo una.
+- **La respuesta ya estaba escrita** (`01·C23`), por quinta vez esta semana. El sello lleva su fecha desde que existe.
+
+### H-66 · Tres defectos más, y otra vez los cazaron las pruebas viejas
+
+Al cerrar el 14, la batería encontró tres cosas que la lectura no:
+
+- **El mapa del amarre decía «18 de 58» con 59 piezas.** Agregué la fila y no el encabezado. Es justo lo que `CA-01` de esa historia existe para cazar.
+- **`vigencia.py` salía con código 0 en silencio**, dos veces reportado. Es el mismo caso que `marcas.py`: su trabajo es la lista, y su mitad de comprobación vive en `validar.py`. Quedó declarado **con el motivo escrito**, no sólo agregado a la lista.
+
+**Lo que enseña.** Van tres cierres seguidos donde lo último que falla no es el trabajo nuevo: son **los registros que el trabajo nuevo obliga a tocar** — el mapa, la lista de excepciones, el inventario. El código se escribe mirando; los registros se actualizan de memoria, y por eso se olvidan.
+
+### H-67 · Siete reglas sin sello, encontradas de rebote
+
+`F4.1` a `F4.5`, `F6` y `F7` **nunca recibieron su checklist**. Nacieron de partir reglas más grandes y el paso se saltó. Encabezan la lista de vigencia, que es donde tienen que estar.
+
+**Quedó anotado en el pendiente 14 y no como pendiente nuevo**: son siete reglas del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que ya lleva la cuenta de las que no cumplen el capítulo 20.
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -818,7 +854,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **10** abiertos, cada uno con su historia declarada |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **9** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
 | Lo que se hizo está aprobado y guardado | ☑ hasta `d0c900c` (publicado) · ☐ **falta el commit de la 23.11.1** |
 

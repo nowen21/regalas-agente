@@ -96,6 +96,28 @@ Entonces indica partirla antes de aceptarla
 3. Partirla en dos y volver a aplicar el procedimiento a cada una. Resultado esperado: las dos pasan y cada una tiene su propio identificador.
 - **Aprobado cuando:** la candidata doble no entra, y las dos partidas sí.
 
+### CA-04 — Se sabe qué reglas llevan más tiempo sin que nadie las revise
+
+```gherkin
+Dado que una regla equivocada se comporta igual que una correcta
+Cuando se pregunta qué reglas llevan más tiempo sin revisarse de fondo
+Entonces se obtiene la lista ordenada de la más vieja a la más nueva
+Y cada una dice cuándo se revisó y cuántos incumplimientos produce hoy
+```
+
+**Por qué no lo cubría ninguno de los tres anteriores.** `CA-01`, `CA-02` y
+`CA-03` revisan una regla **al entrar**: dónde va, si es agnóstica, si exige una
+sola cosa. Ninguno vuelve a mirarla después. El sello que dejan dice *«vale
+mientras el texto no cambie»*, y lo que cambia sin avisar no es el texto: es el
+mundo que la regla describía.
+
+**Cómo validarlo:**
+
+1. Pedir la lista sobre el estándar. Resultado esperado: sale ordenada, encabezada por las que **nunca** se revisaron de fondo.
+2. Escribirle a una regla la línea de revisión con la fecha de hoy y volver a pedirla. Resultado esperado: esa regla deja de encabezar y aparece con su fecha.
+3. Comprobar que no hay umbral: ninguna corrida falla por antigüedad. Resultado esperado: informa, no detiene.
+- **Aprobado cuando:** la lista existe, ordena de la más vieja a la más nueva, y **no bloquea nada**.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Validación** — el procedimiento dice qué hacer cuando falta un dato, por ejemplo cuando no hay ejemplo posible.

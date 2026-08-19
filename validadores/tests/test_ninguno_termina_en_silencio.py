@@ -37,11 +37,17 @@ VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 11 —cuántas marcas hay y dónde—, y eso no cabe en un hallazgo por línea.
 # Corriéndolo solo imprime el reparto entero. Su mitad de comprobación, la de
 # lo que se hereda, sí vive dentro de `validar.py marcas`.
+# `vigencia.py` es el mismo caso que `marcas.py`: su trabajo es **la lista** de
+# qué reglas llevan más tiempo sin revisarse, ordenada, y eso no cabe en un
+# hallazgo por línea. Corriéndolo solo imprime las 245. Su mitad de
+# comprobación —el aviso de cuántas no se han revisado nunca— vive dentro de
+# `validar.py vigencia`.
+#
 # Los que **se corren solos a propósito**: no comprueban, hacen algo que se
 # pide. `validar.py` es la puerta de lo que comprueba; estos escriben.
 CON_ARRANQUE_PROPIO = {"validar.py", "pruebas.py", "instalar.py", "historico.py",
                        "comun.py", "citas.py", "cerrar.py", "marcas.py",
-                       "andamio.py", "respaldo.py"}
+                       "andamio.py", "respaldo.py", "vigencia.py"}
 
 
 def modulos():
