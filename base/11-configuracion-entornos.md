@@ -6,7 +6,7 @@ Lo que cambia entre entornos (local, pruebas, producción) y lo que se configura
 
 ## CFG1 · La configuración vive fuera del código
 
-Lo que cambia entre entornos (credenciales, URLs, claves, flags de entorno) se lee de la **configuración de entorno**. El mismo código corre en todos lados; cambia la config que recibe. Secretos, nunca en el código ([`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada), [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)).
+Lo que cambia entre entornos (credenciales, URLs, claves, flags de entorno) se lee de la **configuración de entorno**. El mismo código corre en todos lados; cambia la config que recibe. Secretos, nunca en el código ([`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada), [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso)).
 
 > Esto es config de **infraestructura**. Los valores **del negocio** que un admin cambiaría (umbrales, listas, textos) van a **catálogo en la BD** ([`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo)).
 

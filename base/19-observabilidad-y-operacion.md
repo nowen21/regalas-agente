@@ -6,7 +6,7 @@
 
 ## OB1 · Logs estructurados y correlacionables
 
-Los logs se emiten como **datos** (clave-valor / JSON), no como texto libre para leer con el ojo: nivel, marca de tiempo, y un **identificador de correlación** que permita seguir una operación de punta a punta. Nunca llevan secretos ni datos sensibles ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles), [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)). Sin estructura, un log a escala no se puede buscar ni agregar.
+Los logs se emiten como **datos** (clave-valor / JSON), no como texto libre para leer con el ojo: nivel, marca de tiempo, y un **identificador de correlación** que permita seguir una operación de punta a punta. Nunca llevan secretos ni datos sensibles ([`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles), [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)). Sin estructura, un log a escala no se puede buscar ni agregar.
 
 ---
 

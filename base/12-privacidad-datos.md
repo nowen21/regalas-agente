@@ -37,7 +37,7 @@ El título lleva «(minimización)» entre paréntesis: es el nombre que el ofic
 
 ## PR2 · Úsalos solo para lo que se recolectaron
 
-Los datos se usan para el propósito con que se obtuvieron. No los reutilices para otro fin (analítica, marketing, terceros) sin base legítima y consentimiento. No los envíes a servicios externos sin autorización ([`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)).
+Los datos se usan para el propósito con que se obtuvieron. No los reutilices para otro fin (analítica, marketing, terceros) sin base legítima y consentimiento. No los envíes a servicios externos sin autorización ([`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)).
 
 ```
 INCORRECTO: los correos se pidieron para avisar del pedido y se usan para una
@@ -132,7 +132,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**La fila 11 reprobaba y se corrigió en esta pasada.** Su primera mitad —*«logs y errores sin datos personales… usa identificadores, no el dato en claro»*— era [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) dicha con otras palabras, y `E5` a su vez reformula [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada): **tres capas del mismo criterio**, como decía el análisis del 2026-08-07. Estaba enlazada **y** copiada.
+**La fila 11 reprobaba y se corrigió en esta pasada.** Su primera mitad —*«logs y errores sin datos personales… usa identificadores, no el dato en claro»*— era [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles) dicha con otras palabras, y `E5` a su vez reformula [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada): **tres capas del mismo criterio**, como decía el análisis del 2026-08-07. Estaba enlazada **y** copiada.
 
 **Lo propio es lo que la salvó de derogarse:** que un mensaje a otro usuario no filtre datos de terceros, y que un reporte o una pantalla solo los enseñe a quien tiene derecho. **`E5` habla de logs, no de pantallas**, y esa mitad no la dice ninguna otra regla.
 

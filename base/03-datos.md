@@ -99,7 +99,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## D2 · Cada cambio de esquema es una migración reversible
 
-Migración independiente, con aplicación y reversión funcionales. **Nunca modifiques una migración ya ejecutada** — crea una nueva. Documenta qué y por qué. Correrla contra datos reales requiere autorización ([`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
+Migración independiente, con aplicación y reversión funcionales. **Nunca modifiques una migración ya ejecutada** — crea una nueva. Documenta qué y por qué. Correrla contra datos reales requiere autorización ([`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)).
 
 ```
 INCORRECTO: falta una columna, así que se edita la migración que ya corrió en

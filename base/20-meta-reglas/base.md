@@ -58,7 +58,7 @@ Si una sola regla crece más de una página, se le abre subcarpeta (`base/02-flu
 
 ### M4 — cómo se cita, y por qué el ID no se toca
 
-Se cita entre capítulos como `NN·ID` — [`00·N4`](../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada), [`09·G6`](../09-git.md#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md).
+Se cita entre capítulos como `NN·ID` — [`00·N4`](../00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada), [`09·G6`](../09-git.md#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto), [`13·DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md).
 
 El ID es la referencia que usan las especificaciones, los planes, los commits, los validadores y las fases ya cerradas. Renumerar rompe el rastro de todo lo anterior. Si una regla se parte en dos, la original conserva su ID y la nueva toma el siguiente consecutivo libre.
 
@@ -98,7 +98,7 @@ Un capítulo que se apoya entero en otro lo dice en su encabezado, no regla por 
 
 - Las `[BLINDADA]` **no admiten excepciones**. Eso es lo que significa blindada.
 - Un capítulo `*opt-in*` **no es una excepción**: es una regla que el proyecto activa o no.
-- Si aparece un caso que pide una excepción **no escrita**: **PAUSAR y preguntar** ([`01·C7`](../01-conducta.md#c7--ante-dos-lecturas-pregunta), [`00·N1`](../00-nucleo-blindado.md#n1--no-ejecutar-sin-validación-blindada)). Si el usuario la aprueba, se **agrega a la regla** y se versiona ([`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)). No existe la excepción tácita, ni "por esta vez", ni por urgencia.
+- Si aparece un caso que pide una excepción **no escrita**: **PAUSAR y preguntar** ([`01·C7`](../01-conducta.md#c7--ante-dos-lecturas-pregunta), [`00·N1`](../00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada)). Si el usuario la aprueba, se **agrega a la regla** y se versiona ([`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)). No existe la excepción tácita, ni "por esta vez", ni por urgencia.
 
 ### M9 — qué se sigue de cada respuesta
 

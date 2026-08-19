@@ -137,7 +137,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## S4 · Guarda los secretos fuera del código y rota el que se expuso
 
-El mínimo está en [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Además:
+El mínimo está en [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada). Además:
 
 - Secretos (claves, credenciales, tokens) en **configuración de entorno**, fuera del código (ver `11`).
 - El archivo de entorno real está **ignorado** por el control de versiones; se versiona solo una plantilla sin valores.
@@ -506,7 +506,7 @@ Su excepción está completa, como la de `S9`.
 
 ## S11 · Cada escritura contra datos reales se autoriza por separado
 
-Cada `create`, `update` o `delete` contra el almacén productivo se autoriza **para esa operación puntual**: autorizar una no autoriza la siguiente, aunque sea del mismo tipo. Antes de pedirlo se describe qué operación, qué tabla, qué filas y qué campos (concreta [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
+Cada `create`, `update` o `delete` contra el almacén productivo se autoriza **para esa operación puntual**: autorizar una no autoriza la siguiente, aunque sea del mismo tipo. Antes de pedirlo se describe qué operación, qué tabla, qué filas y qué campos (concreta [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)).
 
 ```
 INCORRECTO: «ya me autorizaste el UPDATE anterior, aprovecho y corro este otro»

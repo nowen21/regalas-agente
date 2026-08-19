@@ -34,7 +34,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 **Dos filas, y las dos son la misma excepción.**
 
 - **Fila 16 · incompleta.** «(No aplica dentro de un plan ya aprobado)» declara condición y no dice ni límite ni quién autoriza. Es la **cuarta** que aparece así, con [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app).
-- **Fila 11 · texto prestado.** Esa excepción es [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) dicha otra vez — **y es la tercera vez que se dice**, porque [`00·N1`](00-nucleo-blindado.md#n1--no-ejecutar-sin-validación-blindada) también la repite.
+- **Fila 11 · texto prestado.** Esa excepción es [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) dicha otra vez — **y es la tercera vez que se dice**, porque [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada) también la repite.
 
 **Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: `F3` es la dueña y las otras dos la enlazan. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 

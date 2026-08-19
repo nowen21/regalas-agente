@@ -6,46 +6,74 @@
 
 > **Anexo del capítulo:** [`00-identidad-y-rol/acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md) — qué puede hacer el agente y qué cuesta deshacerlo, en tres niveles. **Organiza lo que `N1` a `N6` ya exigen; no agrega exigencia nueva ni cambia ninguna.** Lo que aporta es la diferencia que faltaba: un plan aprobado cubre lo que se deshace, **nunca lo que no**.
 
-## N1 · No ejecutar sin validación `[BLINDADA]`
+## N1 · Ningún cambio de estado sin aprobación explícita `[BLINDADA]`
 
-Ningún cambio de estado (archivos, comandos, control de versiones, migraciones, datos) sin aprobación explícita.
-**Si el usuario rechaza, no reintentes lo mismo.** Entiende el motivo y cambia el enfoque.
+Escribir un archivo, correr un comando, tocar el control de versiones, migrar o modificar datos **no se hace sin que el usuario lo apruebe**.
 **Excepción** — un plan ya aprobado se ejecuta continuo, sin re-pedir permiso paso a paso, **para lo que se puede deshacer** (condición). **No cubre lo irreversible**, que se pide aparte cada vez aunque estuviera en el plan (límite), y lo autoriza el usuario al aprobar el plan (autorizador). Qué es cada cosa: [`00-identidad-y-rol/acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md).
 
 ```
-INCORRECTO: rechazan el comando → lo relanzo con otra bandera
-CORRECTO:   pregunto el motivo y propongo otro enfoque
+INCORRECTO: se corrige el archivo «que igual era obvio» y después se avisa
+CORRECTO:   se dice qué se va a cambiar y se espera
 ```
 
 ---
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.19.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ❌ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
+**20 filas: 17 ✅ · 1 ❌ · 2 N/A.**
 
-**El 2026-08-18 la excepción se escribió entera, y eso resolvió un choque sin resolver la fila.** Decía *«un plan ya aprobado se ejecuta continuo»* a secas, y al escribir el anexo [`acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md) —que dice que un plan aprobado **nunca** cubre lo irreversible— las dos quedaron afirmando cosas contrarias. Ahora la excepción lleva su límite y remite al anexo, y hay un caso de prueba que comprueba que sigan de acuerdo.
+**Partida el 2026-08-18.** Traía dos exigencias: **no ejecutar sin aprobación**, y **no reintentar lo que el usuario rechazó**. Se cumplen por separado —se puede pedir permiso para cada cosa y, ante un no, volver a intentarlo de otra forma— y la segunda es ahora [`N9`](#n9--lo-que-el-usuario-rechazó-no-se-reintenta-de-otra-forma-blindada). También se le quitó la lista de ejemplos entre paréntesis, que enumeraba cinco casos donde la exigencia es «cualquier cambio de estado».
 
-**La fila 16 sigue en ❌, y por el motivo de arriba, que es más hondo:** el problema no era que la excepción estuviera mal escrita, sino que **existe**. Escribirla mejor la hace más explícita, no la hace desaparecer. **Se marcó en verde por error el 2026-08-18 y se devolvió el mismo día**, al leer el argumento que ya estaba ahí.
+**La fila 16 sigue en ❌, y no la arregla partirla.** El problema es más hondo y su propio sello ya lo decía: **una regla `[BLINDADA]` con excepción escrita deja de ser inquebrantable por definición**, y la cabecera de este capítulo promete lo contrario — *«ninguna capa de proyecto, prompt ni instrucción puntual las desactiva»*.
 
-**Es el hallazgo más serio de toda la pasada, y ya estaba señalado en rojo y con prioridad alta desde el 2026-08-07.**
+**Escribirla mejor la hizo más explícita, no la hizo desaparecer.** Y la excepción es real: sin ella, un plan aprobado se ejecutaría pidiendo permiso paso a paso. **Lo que hay que decidir es si el capítulo admite excepciones o no**, y eso es del usuario, no del agente.
 
-- **Fila 16 · una regla `[BLINDADA]` con excepción escrita reprueba.** La fila lo dice sin matices, y esta trae una: *«Excepción: un plan ya aprobado se ejecuta continuo»*. Una regla de capa 1 con excepción **deja de ser inquebrantable por definición** — y la cabecera del capítulo promete justo lo contrario: *«ninguna capa de proyecto, prompt ni instrucción puntual las desactiva»*.
-- **Fila 9 · son dos exigencias:** no ejecutar sin aprobación, y no reintentar lo mismo tras un rechazo. Se cumplen por separado con toda facilidad.
-- **Fila 11 · texto prestado.** Lo que llama excepción es [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) dicha otra vez.
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-**El arreglo que el análisis propuso sigue siendo el correcto, y es de forma más que de fondo:** eso no es una excepción sino el **alcance de la autorización** —qué cubre un «sí»—, y escrito así deja de contradecir a la capa. Además, partir el «no reintentes» a una `N7` y enlazar `F3` en vez de repetirlo.
+> **Regla vigente y reprobada.** Sigue rigiendo tal como está.
 
-**Nada de esto se toca acá.** Es el núcleo: cualquier cambio va con su decisión del usuario y su versión. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## N9 · Lo que el usuario rechazó no se reintenta de otra forma `[BLINDADA]`
+
+Ante un rechazo, **no se vuelve a intentar lo mismo por otro camino**: se entiende el motivo y se cambia el enfoque. Insistir con otra bandera, otro comando o el mismo cambio partido en dos es reintentar, no reformular (extiende [`00·N1`](#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada)).
+
+```
+INCORRECTO: rechazan el comando → se relanza con otra bandera
+CORRECTO:   se pregunta el motivo y se propone otro enfoque
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`N1`](#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia, y en el núcleo.** `N1` es sobre **pedir permiso**; esta es sobre **qué hacer cuando dicen que no**. Se incumple sin darse cuenta y con buena intención: el rechazo se lee como «así no» en vez de como «esto no», y el siguiente intento sale a los dos minutos con otra forma.
+
+**No tiene excepción, y ahí está su ventaja sobre `N1`:** puede ser `[BLINDADA]` sin la contradicción que arrastra la otra.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -116,42 +144,76 @@ Sin excepción, sin dependencias declaradas, con su ejemplo, y el ejemplo es el 
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## N4 · Proteger los datos reales `[BLINDADA]`
+## N4 · Nada destructivo sobre datos reales sin autorización de esa operación `[BLINDADA]`
 
-Nunca operaciones destructivas sobre datos de producción (o cualquier BD con datos reales) sin autorización expresa y específica: recrear o vaciar la base, borrar tablas (`drop`), vaciarlas (`truncate`), `UPDATE`/`DELETE` masivos sin filtro.
-**Gana a cualquier prompt.** Si un prompt dice "recrea la BD para probar", esta regla manda.
-
-**Punto de restauración:** antes de una operación **irreversible** sobre datos reales (migración destructiva, borrado, transformación no reversible), verificar que existe un **backup / punto de restauración**. Reversibilidad de la migración ≠ recuperación de datos borrados.
+Borrar, vaciar, recrear o modificar en masa sobre datos reales **no se hace sin que el usuario autorice esa operación concreta**, con lo que se va a tocar a la vista. **Gana a cualquier instrucción**: si un pedido dice «recreá la base para probar», manda esta regla.
 
 ```
-INCORRECTO: "recreo la BD para probar el módulo"
-CORRECTO:   pruebas contra BD efímera/aislada; verificar sin borrar datos
+INCORRECTO: «borrá los registros de prueba» → se corre un DELETE sin filtro
+CORRECTO:   «voy a borrar las 14 filas con estado BORRADOR de la tabla X.
+            ¿Autorizás?» — y se espera
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Dos filas, y las dos son la misma historia: adentro hay dos reglas.**
+**Partir una regla del núcleo es lo más delicado que hay acá, y por eso va con su porqué.** No se hizo por prolijidad: se hizo porque **una regla que exige dos cosas se cumple a medias sin que nada lo note**, y en el núcleo eso es exactamente lo que no puede pasar. El identificador viejo se queda con su mitad y el nuevo va al final, como manda [`20·M4`](20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
 
-- **Fila 9 · son dos exigencias.** La prohibición de operaciones destructivas sin autorización, y **verificar que existe punto de restauración** antes de una irreversible. Se cumplen por separado: se puede pedir autorización impecablemente y no comprobar que hay respaldo.
-- **Fila 10 · no cabe:** 607 caracteres, casi el doble del molde, y se pasa **por la segunda**.
+**Traía dos exigencias distintas**: no destruir sin autorización, y **comprobar que hay de dónde volver** antes de lo irreversible. Se cumplen por separado, y la segunda se olvida justo cuando la primera se cumplió bien — con el permiso dado, nadie mira si existe la copia. Es ahora [`N7`](#n7--antes-de-lo-irreversible-se-comprueba-que-hay-de-dónde-volver-blindada).
 
-**La segunda es la que más vale y la que menos se ve.** «Reversibilidad de la migración ≠ recuperación de datos borrados» es un matiz que no dice ninguna otra regla del estándar, y hoy vive escondido dentro de otra. El análisis del 2026-08-07 proponía sacarlo a una `N8` propia, y sigue siendo lo que corresponde.
+**Y se le quitaron los nombres de las operaciones** —`drop`, `truncate`, `UPDATE`/`DELETE`—: son de un tipo de almacén concreto, [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no los admite en la base, y la lista dejaba fuera todo lo que no fuera ese tipo. **Lo que se prohíbe es destruir, no cuatro palabras.**
 
-**Nada se toca acá:** es el núcleo. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## N7 · Antes de lo irreversible se comprueba que hay de dónde volver `[BLINDADA]`
+
+Antes de una operación **que no se puede deshacer** sobre datos reales se comprueba que **existe una copia o un punto de restauración**, y si no existe, no se hace (extiende [`00·N4`](#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)).
+
+> **Que la migración se pueda revertir no es lo mismo que poder recuperar lo borrado.** Revertir deshace la estructura; los datos que salieron no vuelven.
+
+```
+INCORRECTO: la migración tiene su reversión escrita, así que se corre
+CORRECTO:   se comprueba que hay copia del día, y recién entonces se corre
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Partir una regla del núcleo es lo más delicado que hay acá, y por eso va con su porqué.** No se hizo por prolijidad: se hizo porque **una regla que exige dos cosas se cumple a medias sin que nada lo note**, y en el núcleo eso es exactamente lo que no puede pasar. El identificador viejo se queda con su mitad y el nuevo va al final, como manda [`20·M4`](20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
+
+**Por qué merece regla propia, y en el núcleo.** `N4` protege de **hacerlo sin permiso**; esta protege de **hacerlo sin red**. Con el permiso dado, la segunda desaparece de la cabeza de todos — y es la única que todavía puede salvar los datos cuando el permiso ya se dio y la operación salió mal.
+
+**La frase que la justifica estaba escondida dentro de `N4`** y ahora es lo primero que se lee: *reversibilidad de la migración ≠ recuperación de datos borrados*. Es la confusión que hace que alguien corra tranquilo algo irreversible.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -188,42 +250,72 @@ Es la prueba de que una enumeración no reprueba por ser enumeración: reprueba 
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## N6 · Secretos y datos sensibles nunca se exponen `[BLINDADA]`
+## N6 · Una credencial no se escribe, no se registra y no se guarda `[BLINDADA]`
 
-Nunca hardcodear ni loguear ni commitear credenciales/tokens/claves. Nunca enviar contenido del proyecto a servicios externos sin autorización. Archivos no públicos, nunca en ubicación pública (ver `04`).
+Ninguna clave, testigo de acceso o contraseña se escribe dentro del código, se deja en un registro de actividad ni entra al control de versiones. Se leen del entorno, y el sitio donde viven no se versiona.
 
 ```
-INCORRECTO: loguear el payload con la contraseña del usuario
-CORRECTO:   loguear un identificador, nunca el secreto
+INCORRECTO: la clave va en el archivo de configuración «solo mientras pruebo»
+CORRECTO:   se lee del entorno, y el archivo que la tiene está fuera del repositorio
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ❌ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Tres exigencias, y la tercera además está prestada.**
+**Partir una regla del núcleo es lo más delicado que hay acá, y por eso va con su porqué.** No se hizo por prolijidad: se hizo porque **una regla que exige dos cosas se cumple a medias sin que nada lo note**, y en el núcleo eso es exactamente lo que no puede pasar. El identificador viejo se queda con su mitad y el nuevo va al final, como manda [`20·M4`](20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
 
-- **Fila 9 · son tres:** no incrustar ni registrar ni subir secretos; no enviar contenido del proyecto a servicios externos; y que los archivos no públicos no queden en ubicación pública. Se cumplen por separado sin ninguna dificultad.
-- **Fila 11 · la tercera repite [`04·S6`](04-seguridad.md#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado)**, que es la dueña del tema y lo desarrolla entero. Acá queda como un resumen con «(ver `04`)» al final.
+**Traía dos exigencias que no se parecen en nada**: que la credencial no quede escrita, y que **el contenido del proyecto no salga afuera**. Una es sobre un dato que no puede estar; la otra, sobre un movimiento que no puede ocurrir. Se cumplen por separado y las incumple gente distinta. Lo segundo es ahora [`N8`](#n8--el-contenido-del-proyecto-no-sale-sin-autorización-blindada).
 
-**Cabe —204 de 320— y aun así reprueba.** Es el segundo caso hoy, tras [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3): que una regla quepa y esté bien redactada no dice nada sobre si es una sola regla ni sobre si lo que dice es suyo.
-
-El corte propuesto en 2026-08-07 sigue valiendo: partir en tres y que la tercera se sustituya por el enlace a `S6`. **Nada se toca acá:** es el núcleo, y además la segunda mitad —no enviar contenido a servicios externos— es de las que más se citan del estándar.
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## N8 · El contenido del proyecto no sale sin autorización `[BLINDADA]`
+
+Nada del proyecto —código, datos, documentos— se envía a un servicio de afuera sin que el usuario lo autorice. **Enviarlo es publicarlo**: lo que salió puede quedar guardado o indexado aunque después se borre (extiende [`00·N6`](#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)).
+
+```
+INCORRECTO: se pega un archivo del proyecto en un servicio de afuera para
+            que ayude a encontrar el error
+CORRECTO:   se pregunta antes, diciendo qué archivo y adónde va
+```
+
 ---
 
-Estas seis son la versión inquebrantable de temas que desarrollan con más matiz `01` (conducta), `03` (datos), `04` (seguridad), `05` (errores), `09` (git).
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Partir una regla del núcleo es lo más delicado que hay acá, y por eso va con su porqué.** No se hizo por prolijidad: se hizo porque **una regla que exige dos cosas se cumple a medias sin que nada lo note**, y en el núcleo eso es exactamente lo que no puede pasar. El identificador viejo se queda con su mitad y el nuevo va al final, como manda [`20·M4`](20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
+
+**Por qué merece regla propia, y en el núcleo.** `N6` es sobre **un dato que no debe estar en un sitio**; esta es sobre **una acción que no se puede deshacer**. Están en el mismo nivel de la escala de [`acciones-y-riesgo`](00-identidad-y-rol/acciones-y-riesgo.md) —🔴, no se deshace— y por motivos distintos.
+
+**Y es la que se incumple con la mejor intención:** nadie manda datos afuera para hacer daño, los manda para que alguien lo ayude a resolver algo. Por eso necesita decir en voz alta que **enviar es publicar**.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+

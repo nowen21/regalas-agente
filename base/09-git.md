@@ -70,7 +70,7 @@ Está clasificada y con validador escrito —`commits.py`—, así que la fila *
 
 ## G3 · Deja fuera del control de versiones los secretos y lo generado
 
-Al archivo de exclusión (`.gitignore`): **secretos** (claves, tokens, entorno real — [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada)), **datos sensibles/reales**, **artefactos generados** (dependencias, compilados, cachés, logs), **config local** de máquina/editor. Se versiona una **plantilla de ejemplo** sin valores.
+Al archivo de exclusión (`.gitignore`): **secretos** (claves, tokens, entorno real — [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)), **datos sensibles/reales**, **artefactos generados** (dependencias, compilados, cachés, logs), **config local** de máquina/editor. Se versiona una **plantilla de ejemplo** sin valores.
 
 ```
 INCORRECTO: commitear el archivo de entorno con la clave de producción

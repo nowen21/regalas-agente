@@ -1,6 +1,6 @@
 # Qué puede hacer el agente, y qué cuesta deshacerlo
 
-> Anexo del capítulo [`00 · Núcleo blindado`](../00-nucleo-blindado.md). **No es una regla**: no lleva molde de regla ni identificador propio. Organiza lo que [`N1`](../00-nucleo-blindado.md#n1--no-ejecutar-sin-validación-blindada) a [`N6`](../00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada) ya exigen, y no agrega exigencia nueva sobre lo que ellas cubren.
+> Anexo del capítulo [`00 · Núcleo blindado`](../00-nucleo-blindado.md). **No es una regla**: no lleva molde de regla ni identificador propio. Organiza lo que [`N1`](../00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada) a [`N6`](../00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada) ya exigen, y no agrega exigencia nueva sobre lo que ellas cubren.
 
 ## Por qué existe
 
@@ -30,7 +30,7 @@
 | **Correr algo que sale a la red** | Instalar, publicar, llamar a un servicio | 🔴 | **Salió de la máquina.** Un paquete publicado o un dato enviado no vuelve | `N6` |
 | **Guardar en el control de versiones** | `commit`, cambiar de rama, preparar archivos | 🟡 | Se deshace, pero hay que saber qué commit revertir | [`N2`](../00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada) |
 | **Publicar o reescribir la historia** | `push`, `rebase`, `push --force` | 🔴 | **Lo publicado ya lo tiene otro**, y la historia reescrita rompe lo que otros tienen bajado | `N2` |
-| **Tocar datos reales** | Migrar, borrar, transformar sobre una base con datos de verdad | 🔴 | **Los datos no vuelven.** Que la migración sea reversible no recupera lo borrado | [`N4`](../00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) |
+| **Tocar datos reales** | Migrar, borrar, transformar sobre una base con datos de verdad | 🔴 | **Los datos no vuelven.** Que la migración sea reversible no recupera lo borrado | [`N4`](../00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada) |
 | **Tocar la máquina fuera del repositorio** | Configuración del sistema, carpetas de otros proyectos, variables del entorno | 🔴 | Se rompe algo que el usuario usa en paralelo, y el repositorio no lo registra | `N1` · [`04·S9`](../04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas) |
 | **Escribir en el histórico** | La transcripción de la sesión | 🟡 | Es registro: reescribirlo borra lo que de verdad se dijo | [`15·IM1`](../15-registros-inmutables.md#im1--un-registro-materializado-es-inmutable) |
 | **Escribir en la memoria** | Los recuerdos del repositorio | 🟢 | Se corrige escribiendo encima; queda en el historial | — |

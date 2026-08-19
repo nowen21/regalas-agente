@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.0.0 — 2026-08-18
+
+**MAYOR** (cambia el núcleo: nacen tres reglas blindadas con nombre nuevo. **Si tu proyecto cita `N1`, `N4` o `N6`, hay que mirarlo.**)
+
+**Las tres reglas más importantes del estándar pedían dos cosas cada una, y una regla que pide dos cosas se cumple a medias sin que nada lo note.** En el núcleo eso es exactamente lo que no puede pasar.
+
+Una decía que nada se ejecuta sin permiso *y además* que lo rechazado no se reintenta. Otra, que no se destruye sin autorización *y además* que antes de lo irreversible hay que comprobar que existe una copia. Otra, que una clave no se escribe en el código *y además* que el contenido del proyecto no sale afuera.
+
+**En los tres casos, la segunda mitad es la que se olvida justo cuando la primera se cumplió bien:** con el permiso dado, nadie mira si hay copia.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`00·N7`](base/00-nucleo-blindado.md) —antes de lo irreversible se comprueba que hay de dónde volver—, [`00·N8`](base/00-nucleo-blindado.md) —el contenido del proyecto no sale sin autorización— y [`00·N9`](base/00-nucleo-blindado.md) —lo que el usuario rechazó no se reintenta de otra forma—.
+
+**`N7` rescata una frase que estaba escondida** dentro de `N4` y ahora es lo primero que se lee: *que la migración se pueda revertir no es lo mismo que poder recuperar lo borrado*. Es la confusión que hace que alguien corra tranquilo algo irreversible.
+
+**`N4` deja de nombrar operaciones concretas.** Enumeraba cuatro comandos de un tipo de almacén, lo que [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no admite en la base y además dejaba fuera todo lo demás. **Lo que se prohíbe es destruir, no cuatro palabras.**
+
+**Lo que sigue sin resolverse, y es del usuario:** `N1` continúa reprobando su checklist, y partirla no lo arregla. Una regla blindada **con excepción escrita** deja de ser inquebrantable por definición, y la cabecera del capítulo promete lo contrario. La excepción es real y necesaria —sin ella un plan aprobado se ejecutaría pidiendo permiso paso a paso—, así que **lo que hay que decidir es si el capítulo admite excepciones**.
+
+Las reglas publicadas en «no cumple» bajan de 30 a **28**.
+
 ## 23.26.0 — 2026-08-18
 
 **MAYOR** (nace una regla con nombre nuevo, y otra deja de nombrar la técnica que exigía).

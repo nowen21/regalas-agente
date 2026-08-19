@@ -177,7 +177,7 @@ La remisión a [`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsua
 
 ## E5 · Nunca registres secretos ni datos sensibles
 
-Blindado en [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Los logs no llevan contraseñas, tokens, ni más datos personales de los necesarios. Enmascara o excluye. Trata el log como potencialmente público.
+Blindado en [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada). Los logs no llevan contraseñas, tokens, ni más datos personales de los necesarios. Enmascara o excluye. Trata el log como potencialmente público.
 
 ```
 INCORRECTO: log.info("Login", { email, password })
@@ -200,7 +200,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**El análisis del 2026-08-07 la marcaba por reformular [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada) en vez de enlazarla, y pedía «dejar el enlace y la aplicación al dominio de logs». Es exactamente lo que hace hoy**, desde el cambio de ese mismo día.
+**El análisis del 2026-08-07 la marcaba por reformular [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada) en vez de enlazarla, y pedía «dejar el enlace y la aplicación al dominio de logs». Es exactamente lo que hace hoy**, desde el cambio de ese mismo día.
 
 Abre remitiendo —«Blindado en `00·N6`»— y lo que sigue es lo que `N6` no dice: qué significa eso **en un log**. Enmascarar o excluir, y tratar el log como potencialmente público.
 

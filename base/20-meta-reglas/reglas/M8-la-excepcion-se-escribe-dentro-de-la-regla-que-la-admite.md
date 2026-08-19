@@ -26,7 +26,7 @@ Aplicado el [checklist del estándar](../checklist.md) contra **v2.2.0**, el **2
 
 **20 filas: 16 ✅ · 1 ❌ · 3 N/A.** **N/A** — **14**: no declara dependencia `extiende`/`depende de`/`deroga`; sus citas son referencia, que [`M5`](M5-toda-regla-se-escribe-en-el-mismo-formato.md) permite · **15**: va con la 14 · **16**: no tiene excepción.
 
-**❌** — **17**: dice que las `[BLINDADA]` no admiten excepción, y [`00·N1`](../../00-nucleo-blindado.md#n1--no-ejecutar-sin-validación-blindada) es blindada y tiene una escrita.
+**❌** — **17**: dice que las `[BLINDADA]` no admiten excepción, y [`00·N1`](../../00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada) es blindada y tiene una escrita.
 
 > **Regla vigente y reprobada.** Sigue rigiendo —[`M10`](M10-todo-cambio-de-regla-se-versiona-y-se-registra.md): un cambio de norma no reabre lo cerrado— pero no es conforme hasta resolver el choque, y eso es decisión del usuario.
 
