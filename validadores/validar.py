@@ -37,6 +37,7 @@ import fases            # noqa: E402
 import pendientes       # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
+import indices          # noqa: E402
 import instalar         # noqa: E402
 import marcas           # noqa: E402
 import metareglas       # noqa: E402
@@ -202,6 +203,25 @@ def cmd_brevedad(a):
     if linea:
         print(linea)
     return codigo
+
+
+def cmd_indices(a):
+    """`09·14` · Escribe la línea del índice que falta, en vez de solo reportarla.
+
+    **Sin `--aplicar` solo dice qué escribiría.** Es el mismo trato que el resto
+    de los reparadores: ver antes de tocar.
+    """
+    raiz = os.path.abspath(a.raiz)
+    tocados = indices.completar(raiz, escribir=a.aplicar)
+    if not tocados:
+        print(f"== Índices · {relativo(raiz)} ==")
+        print("OK: ningún índice tiene líneas que agregar.")
+    else:
+        marca = "escrito" if a.aplicar else "simulado; agrega --aplicar"
+        print(f"== Índices · {relativo(raiz)} ==")
+        for archivo, cuantas in tocados:
+            print(f"  {relativo(archivo)}: {cuantas} línea(s) ({marca})")
+    return reportar(indices.validar(raiz), None)
 
 
 def cmd_marcas(a):
@@ -423,6 +443,13 @@ def main():
     mr.add_argument("--catalogo",
                     help="carpeta de un proyecto, para comprobar además su catálogo · M16")
     mr.set_defaults(func=cmd_metareglas)
+
+    ix = sub.add_parser("indices",
+                        help="escribe la línea del índice que falta · 13·DOC13")
+    ix.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    ix.add_argument("--aplicar", action="store_true",
+                    help="escribe de verdad; sin esto solo simula")
+    ix.set_defaults(func=cmd_indices)
 
     ma = sub.add_parser("marcas",
                         help="marcas de generación automática en lo que se hereda · 00·ID8")

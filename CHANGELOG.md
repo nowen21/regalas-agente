@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.6.0 — 2026-08-18
+
+**MENOR** (una herramienta más que escribe lo que antes había que acordarse de escribir).
+
+**Cada archivo nuevo obligaba a agregar su línea al índice a mano.** Olvidarlo se descubría después, corriendo la revisión, a veces varios guardados más tarde. Hoy pasó dos veces.
+
+Ahora la línea se escribe sola, con el título del archivo, y queda marcada como pendiente de describir bien.
+
+**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 14. Nace [`validadores/indices.py`](validadores/indices.py) y el subcomando `validar.py indices`, que sin `--aplicar` solo dice qué escribiría.
+
+**No regenera el índice entero, y ahí está la decisión.** El pendiente proponía reescribir el bloque completo, y eso destruía trabajo: las líneas que ya están llevan una descripción escrita por alguien que el título del archivo no tiene. Se agrega lo que falta, se avisa de lo que quedó sin describir, y **lo que sobra se reporta y no se borra** — quitar una línea puede ser el error, no el archivo que ya no está.
+
+**Y lo comprobó otro control construido hoy:** al aparecer el archivo nuevo, el mapa de qué está atado a la herramienta lo reportó como pieza sin clasificar. Funcionó a la primera y contra un caso real.
+
 ## 24.5.0 — 2026-08-18
 
 **MENOR** (la instalación deja una revisión automática más; nada que hacer en tu proyecto).

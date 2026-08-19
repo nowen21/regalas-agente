@@ -384,11 +384,11 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | 13 | Actualizador de componentes | ✅ `instalar.py` · `versiones.py` |
 | 10 | Marca de fase reabierta | ☐ |
 | 12 | Andamiaje de fase y HU | ☐ |
-| 14 | Generador de índices | ☐ |
+| **14** | **Generador de índices** | ✅ **construido hoy** — `validar.py indices` |
 | 15 | Respaldo antes de lo irreversible | ☐ — la **regla** sí: [`00·N7`](../base/00-nucleo-blindado.md), escrita hoy |
 | 16 | Contradicciones en la memoria | ☐ |
 
-**Quedan cinco**, y son las cinco de complejidad media o alta que el orden sugerido dejaba para el final.
+**Quedan cuatro**: 10, 12, 15 y 16.
 
 ## 08 · el enganche de publicar, construido
 
@@ -412,3 +412,24 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 **Y dice cómo saltarlo a propósito.** Un enganche sin salida se salta a escondidas; decir cómo hacerlo es lo que convierte saltarlo en una decisión.
 
 **7 casos** en [`validadores/tests/test_el_enganche_de_publicar.py`](../validadores/tests/test_el_enganche_de_publicar.py).
+
+
+## 14 · el generador de índices, construido
+
+**Escribe la línea que falta en vez de solo reportarla.** Es `validar.py indices`, y sin `--aplicar` solo dice qué escribiría.
+
+**Hoy se notó la falta dos veces**, las dos en `notas/`: se creó la nota y se olvidó su línea, y las dos las cazó `validar.py estandar` **commits más tarde**, no la mano.
+
+### No regenera el índice, y ahí está la decisión
+
+El pendiente proponía reescribir el bloque entre dos marcas. **Al mirarlo de cerca eso destruía trabajo:** las líneas que ya están llevan una descripción escrita por alguien —*«por qué se confunde de quién es el dato con quién lo tocó»*— que el encabezado del archivo no tiene. Regenerar la cambiaría por el título.
+
+**Lo que hace es agregar lo que falta**, con el título del archivo y la marca `— (por describir)`, y **avisar de las que quedaron sin afinar**. Sin ese aviso, la descripción provisional se queda para siempre y el índice deja de decir nada.
+
+**Y lo que sobra lo reporta y no lo borra:** quitar una línea del índice puede ser el error, no el archivo que ya no está. Hay un caso que lo fija.
+
+**11 casos** en [`validadores/tests/test_el_indice_se_completa_solo.py`](../validadores/tests/test_el_indice_se_completa_solo.py), incluidos los dos que importan: que la descripción cuidada sobreviva, y que correrlo dos veces no duplique.
+
+### Lo comprobó otro validador de hoy
+
+Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](15-el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
