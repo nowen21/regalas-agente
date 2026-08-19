@@ -383,12 +383,12 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | 11 | Hallazgos por regla | ✅ `metricas/` |
 | 13 | Actualizador de componentes | ✅ `instalar.py` · `versiones.py` |
 | **10** | **Marca de fase reabierta** | ✅ **construido hoy** — `validar.py reaperturas` |
-| 12 | Andamiaje de fase y HU | ☐ |
+| **12** | **Andamiaje de fase y HU** | ✅ **construido hoy** — `validadores/andamio.py` |
 | **14** | **Generador de índices** | ✅ **construido hoy** — `validar.py indices` |
 | 15 | Respaldo antes de lo irreversible | ☐ — la **regla** sí: [`00·N7`](../base/00-nucleo-blindado.md), escrita hoy |
 | 16 | Contradicciones en la memoria | ☐ |
 
-**Quedan tres**: 12, 15 y 16.
+**Quedan dos**: 15 y 16.
 
 ## 08 · el enganche de publicar, construido
 
@@ -452,3 +452,28 @@ Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasif
 **Reabrir una fase es lo correcto** cuando lo que falla es ese trabajo y su documentación decía que estaba hecho — así se hizo con las dos que encuentra. Lo que se mide **no es un incumplimiento**: es de dónde sale el retrabajo, que es información para cambiar reglas, no para calificar a nadie.
 
 **11 casos** en [`validadores/tests/test_la_fase_reabierta_se_distingue.py`](../validadores/tests/test_la_fase_reabierta_se_distingue.py).
+
+
+## 12 · el andamio de fase, construido
+
+**`python validadores/andamio.py EP-001-… HU-003-… descripcion`**, y sin `--aplicar` solo dice qué crearía.
+
+Calcula el consecutivo, arma el nombre según [`02·F12.6`](../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) y copia los cinco documentos desde sus plantillas.
+
+### La advertencia del pendiente era lo más importante que traía
+
+> *Que genere el esqueleto y **nada de contenido**. Un generador que además rellena texto produce documentos que pasan el validador sin decir nada, que es la peor combinación posible.*
+
+**Se respetó al pie de la letra:** los marcadores `«…»` quedan intactos, y hay un caso que **falla si algún documento sale sin ninguno**. Lo único que se sustituye es lo estructural — identificadores, rutas, nombre de la fase—, que es justo lo que un programa sabe y una persona escribe mal.
+
+**Es el patrón del día visto del otro lado.** Todo el día apareció «una comprobación que pasa sin comprobar»; esto habría sido **un documento que cumple sin decir nada**.
+
+### El consecutivo se lee, no se cuenta
+
+Si existen la `A` y la `C` porque la `B` se renombró, **contar cuántas hay daría `C` y pisaría una fase viva**. Se leen las letras usadas y se toma la primera libre. Hay un caso con ese hueco exacto.
+
+### Se corre solo, no por `validar.py`
+
+La separación de siempre: `validar.py` es la puerta de lo que **comprueba**; esto **escribe**, como `cerrar.py` o `historico.py`. **La prueba que exige que todo módulo diga por dónde se corre lo reportó** al escribirlo, y se resolvió declarándolo donde van los que tienen arranque propio.
+
+**9 casos** en [`validadores/tests/test_el_andamio_no_escribe_contenido.py`](../validadores/tests/test_el_andamio_no_escribe_contenido.py).

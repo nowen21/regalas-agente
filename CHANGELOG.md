@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.8.0 — 2026-08-18
+
+**MENOR** (una herramienta más que arma el esqueleto de un trabajo nuevo).
+
+**Abrir un trabajo nuevo obligaba a copiar cinco documentos a mano, calcular su letra y escribir los enlaces sin equivocarse.** Ahí es donde se cometían los errores que las revisiones detectaban después. Ahora la estructura nace bien en vez de corregirse.
+
+**Y no escribe una sola palabra de contenido**, que es lo que hace que sirva: los espacios por llenar quedan tal cual, para que la revisión siga exigiendo que alguien los llene.
+
+**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 12. Nace [`validadores/andamio.py`](validadores/andamio.py); sin `--aplicar` solo dice qué crearía. La advertencia venía en el propio pendiente y era lo más importante que traía — *«un generador que además rellena texto produce documentos que pasan el validador sin decir nada, que es la peor combinación posible»*—, y hay un caso que **falla si algún documento sale sin marcadores**.
+
+**La letra se lee, no se cuenta.** Si existen la `A` y la `C` porque la `B` se renombró, contar cuántas hay daría `C` y **pisaría un trabajo vivo**. Hay un caso con ese hueco exacto.
+
 ## 24.7.0 — 2026-08-18
 
 **MENOR** (se puede medir algo que antes no se medía; nada que cumplir).

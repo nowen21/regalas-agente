@@ -12,9 +12,9 @@ Hasta hoy nadie lo sabía. Las reglas son texto y sirven en cualquier parte; **l
 | 🟡 **Adaptador** | Lo que habla con *esta* herramienta: sus enganches, su archivo de entrada, su formato | **Hay que rehacerlo** |
 | ⚪ **De la máquina** | Rutas locales, configuración que no se versiona | No viaja, y no debe |
 
-## Los programas: 18 amarrados de 56
+## Los programas: 18 amarrados de 57
 
-**Un tercio.** El resto —38— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
+**Un tercio.** El resto —39— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
 
 | Pieza | Cuánto la nombra | Qué es |
 |---|---:|---|
@@ -25,11 +25,11 @@ Hasta hoy nadie lo sabía. Las reglas son texto y sirven en cualquier parte; **l
 | `hook_resumen` · `hook_historico` · `hook_recuerdos` · `hook_senales` · `hook_sesion` · `hook_md` · `hook_checklist` · `hook_relacionadas` | 3 a 8 | 🟡 **son la definición de adaptador**: existen porque la herramienta los llama |
 | `version.py` · `versiones.py` · `historico.py` · `recuerdos.py` · `cargador.py` · `brevedad.py` | 1 a 8 | 🟡 **a medias** — el trabajo es agnóstico y solo el borde nombra la herramienta |
 
-### Las 38 libres, por su nombre
+### Las 39 libres, por su nombre
 
 **Se nombran una por una a propósito.** Antes iban solo por su total, y así una pieza nueva entraba en el recuento sin que nadie la hubiera mirado — que es como envejece un mapa escrito a mano.
 
-`acciones.py` · `aislamiento.py` · `calidad.py` · `cerrar.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `trazabilidad.py` · `validar.py` · `versionado.py`
+`acciones.py` · `aislamiento.py` · `andamio.py` · `calidad.py` · `cerrar.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `trazabilidad.py` · `validar.py` · `versionado.py`
 
 Ninguna nombra la herramienta. **Funcionan con cualquier agente, o sin ninguno.**
 
