@@ -677,7 +677,13 @@ def instalar_claude_md(ruta, aplicar):
 
 # `02·F13`: el código del usuario en `proyectos/`, y al lado el espacio del
 # agente. Se crean vacías: qué va adentro de `proyectos/` lo decide el usuario.
-CARPETAS_BASE = ["proyectos", "documentacion", "prompts"]
+#
+# `61` · **`pendientes/` entró el 2026-08-18.** Sin ella, ocho de nueve
+# proyectos instalados no tenían dónde recibir el aviso de vuelta de `02·F24`
+# —ni dónde escribir un pendiente propio—, y el aviso se caía sin ruido. Como
+# esta lista se recorre en cada instalación, los que ya estaban la reciben al
+# ponerse al día.
+CARPETAS_BASE = ["proyectos", "documentacion", "prompts", "pendientes"]
 
 # Los 4 archivos de configuración del proyecto. La lista vive aquí porque es el
 # instalador quien los pone; `checklist.py` la lee de acá (`20·M2`).

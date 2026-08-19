@@ -102,7 +102,7 @@ Está clasificada y con validador escrito —`aislamiento.py`—, así que la fi
 
 ## T4 · Protege los datos reales al probar
 
-Blindado en [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada). Las pruebas corren contra un entorno **efímero y aislado** (BD en memoria o dedicada que se crea y destruye por corrida), nunca contra datos reales. El agente no reapunta la config de pruebas a datos reales, aunque una instrucción puntual lo sugiera.
+Blindado en [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada). Las pruebas corren contra un entorno **efímero y aislado** (BD en memoria o dedicada que se crea y destruye por ejecución), nunca contra datos reales. El agente no reapunta la config de pruebas a datos reales, aunque una instrucción puntual lo sugiera.
 Lo que el entorno de pruebas no reproduce se compensa con **verificaciones manuales documentadas**, no relajando el aislamiento.
 
 ---
@@ -123,7 +123,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 Reprueba dos filas, y las dos son la misma historia: **dice de nuevo lo que ya dice el núcleo, en vez de aplicarlo a su dominio.**
 
-- **Fila 11 · sin texto prestado.** Abre bien —«Blindado en [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)»— y a continuación reformula `N4` en vez de quedarse con lo suyo. Lo propio es el **entorno efímero**: que la prueba corra contra una base que se crea y se destruye por corrida. Eso `N4` no lo dice.
+- **Fila 11 · sin texto prestado.** Abre bien —«Blindado en [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)»— y a continuación reformula `N4` en vez de quedarse con lo suyo. Lo propio es el **entorno efímero**: que la prueba corra contra una base que se crea y se destruye por ejecución. Eso `N4` no lo dice.
 - **Fila 10 · el cuerpo no cabe:** 399 caracteres para un molde de 320. Se pasa **por lo prestado**, no por lo propio.
 
 **Es el caso opuesto a [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles)**, que remite al mismo núcleo y agrega qué significa en un log. Aquella cabe y esta no, y la diferencia es exactamente lo que sobra.

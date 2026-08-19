@@ -8,7 +8,7 @@
 | [estado-fase.md](estado-fase.md) | En qué estación va |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho |
 
-Del [pendiente 47](../../../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md): las reglas de negocio de esta casa no decían de dónde bajan. Eran **57**, no las 31 que se contaron el 2026-08-16.
+Del [pendiente 47](../../../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md): las reglas de negocio de esta casa no decían de dónde bajan. Eran **57**, no las 31 que se contaron el 2026-08-16.
 
 **El origen estaba a tres líneas:** cada `### 4.N` ya declaraba su fase. Faltaba bajarlo de la sección a la regla.
 

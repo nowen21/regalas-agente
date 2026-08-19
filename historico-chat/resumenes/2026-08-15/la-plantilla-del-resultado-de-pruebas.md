@@ -35,7 +35,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003 · HU-010, el glosario de la terminología.
 - **Dispara:** —, es replicar lo mismo en otros archivos.
 - **Orden de resolución:** 3 de 3. Va último: no bloquea nada, es limpieza de vocabulario.
-- **Dónde queda:** [pendientes/26-corrida-y-ejecucion-en-el-estandar.md](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md); sigue en [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md).
+- **Dónde queda:** [pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md); sigue en [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se reemplaza «corrida» en todo el estándar, o se define en el glosario y se deja?
@@ -148,7 +148,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), [28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [26](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md), [27](../../../pendientes/hecho/el-veredicto-de-la-fase-a-de-hu-010.md), [28](../../../pendientes/hecho/un-solo-veredicto-por-fase.md) y [29](../../../pendientes/hecho/la-transcripcion-duplicada-del-15.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-014](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md) |
 | Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario y subido en `8ed276c` y `439c47e` |
 

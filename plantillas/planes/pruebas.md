@@ -95,9 +95,9 @@
 | Media | Funcionalidad secundaria | ≥ 80% |
 | Baja | Casos poco frecuentes | Según tiempo |
 
-### 3.5 Alcance de la corrida automatizada  ·  [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+### 3.5 Alcance de la ejecución automatizada  ·  [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
-La corrida de una fase es **quirúrgica**, no la suite completa "por si acaso":
+La ejecución de una fase es **quirúrgica**, no la suite completa "por si acaso":
 
 1. La **suite del módulo** nuevo/refactorizado (obligatoria).
 2. Las suites que la fase **refactorizó explícitamente** (declaradas en el `plan_trabajo`).
@@ -333,7 +333,7 @@ Nuevo → Asignado → En corrección → Listo para pruebas → Verificado → 
 
 ### 12.2 Dónde se miden
 
-El resumen de la corrida, el veredicto por criterio y el concepto final **no van acá**: son resultado de ejecutar, y viven en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`). Este plan define **qué se va a medir**; aquel documento dice **cuánto dio**.
+El resumen de la ejecución, el veredicto por criterio y el concepto final **no van acá**: son resultado de ejecutar, y viven en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`). Este plan define **qué se va a medir**; aquel documento dice **cuánto dio**.
 
 ---
 

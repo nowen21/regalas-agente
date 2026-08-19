@@ -157,7 +157,7 @@ Se revierte volviendo el commit atrás. Los avisos ya escritos en otros proyecto
 - [x] El proyecto de origen comprobado por programa
 - [x] Clasificada y versionada
 - [ ] Aceptada por el usuario
-- [x] `shopnest-mesa` avisado el 2026-08-18, al cerrar el 36. **Los demás no:** ocho de nueve no tienen carpeta `pendientes/` — el [61](../../../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
+- [x] `shopnest-mesa` avisado el 2026-08-18, al cerrar el 36. **Los demás no:** ocho de nueve no tienen carpeta `pendientes/` — el [61](../../../../../pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
 
 ---
 

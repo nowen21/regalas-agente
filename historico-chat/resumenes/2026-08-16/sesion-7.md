@@ -119,7 +119,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 
 - **Qué pasó:** el validador nuevo, corrido por primera vez sobre esta casa, encontró **31 reglas de negocio sin origen** — 16 en `automatismos/spec.md` y 15 en `documentos-modelo/spec.md`.
 - **Por qué importa:** no se apagó la comprobación para que el número diera cero, pero mientras no se limpien, el estándar les exige a los proyectos algo que él no cumple.
-- **Estado:** **anotado** → [pendiente 47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md)
+- **Estado:** **anotado** → [pendiente 47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md)
 - **Nace en:** 2026-08-16 · sesión 7
 
 ### H-12 · Lo que faltaba no era dejar el planteamiento puesto: era decir que falta

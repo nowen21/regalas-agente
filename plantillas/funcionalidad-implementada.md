@@ -69,7 +69,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 > **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
 
 - **Fuente:** «`resultado_pruebas.md`» · **Veredicto:** «Cumple / Cumple con observaciones».
-- **Suites corridas + resultado:** «X/X verdes» (alcance quirúrgico — solo las suites que la fase toca).
+- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico — solo las suites que la fase toca).
 - **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
   - «Lista de comprobaciones hechas a mano y su resultado.»
 - **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».

@@ -91,7 +91,7 @@ igual ahí. Por eso el 3 lo deja en verde antes y el 7 lo deja en verde después
 con la regla ya corregida; y el conteo de reglas revisadas sube de 8 a 9, así
 que `Q9` sí entró en la revisión y no la saltó. Los pasos 1 y 2 dejan el punto
 de partida por escrito: sin ellos nadie puede repetir esto. La salida de las
-tres corridas quedó en EV-02.
+tres ejecuciones quedó en EV-02.
 ```
 
 | Caso | CA | Prioridad (del plan) | Fecha | Con qué se probó | Resultado | Evidencia | Defecto |

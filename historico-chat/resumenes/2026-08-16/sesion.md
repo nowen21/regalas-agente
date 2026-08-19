@@ -18,7 +18,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion.md](../.
 - **Responde a:** —
 - **Dispara:** —, mientras no haya decisión.
 - **Orden de resolución:** 2 de 2 · va después del H-3, que es deuda de esta misma sesión.
-- **Dónde queda:** [pendientes/37-donde-vive-la-fuente-de-las-reglas.md](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md).
+- **Dónde queda:** [pendientes/hecho/donde-vive-la-fuente-de-las-reglas.md](../../../pendientes/hecho/donde-vive-la-fuente-de-las-reglas.md).
 - **Nace en:** 2026-08-16 · sesión sin nombrar.
 - **Cerrado en:** —
 - **Con qué se retoma:** si la base de datos guarda las reglas, ¿con qué se reemplaza lo que hoy da git — ver qué cambió en una regla y aprobarlo antes de que rija?
@@ -90,7 +90,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2 y H-4, con su regla y su versión |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [37](../../../pendientes/37-donde-vive-la-fuente-de-las-reglas.md) y [38](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [37](../../../pendientes/hecho/donde-vive-la-fuente-de-las-reglas.md) y [38](../../../pendientes/hecho/el-validador-de-la-f22-tiene-su-fase.md) |
 | Toda historia disparada está escrita en su épica | ☑ [EP-004 · HU-015](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md) |
 | Lo que se hizo está aprobado y guardado | ☑ commit `2030a4c` · falta commitear lo de este cierre |
 

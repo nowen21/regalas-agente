@@ -51,7 +51,7 @@ No es urgente **hoy** porque nada está roto: las reglas del `02` funcionan. Lo 
 ## Con qué se cruza
 
 - La fase [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md), cuyo `B-01` espera esta decisión para poder escribirse.
-- El [47](47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md), que es el mismo hueco un piso más abajo: allá son 31 reglas de negocio que no dicen de dónde bajan, acá es un capítulo entero.
+- El [47](hecho/el-origen-de-las-reglas-de-negocio.md), que es el mismo hueco un piso más abajo: allá son 31 reglas de negocio que no dicen de dónde bajan, acá es un capítulo entero.
 - El [56](56-el-estandar-no-tiene-planteamiento.md), que es el mismo hueco en la cabeza de la cadena.
 
 **Los tres dicen lo mismo con distinto tamaño:** este repositorio exige trazabilidad hacia arriba y no la tiene sobre sí mismo.

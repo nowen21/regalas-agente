@@ -230,7 +230,7 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 - [x] El aviso de vuelta funcionando, comprobado sobre proyectos de mentira — **no sobre uno real**: escribe en repositorios ajenos y eso se prueba en carpetas desechables (`00·N4`)
 - [x] Versionada (`20·M10`) — 23.7.0
 - [x] El pendiente 36 cerrado nombrando la fase
-- [x] Avisado al cerrar el 36 — llegó a `shopnest-mesa`, el único de los nueve con carpeta `pendientes/`. Que los otros ocho no tengan dónde recibirlo es el [61](../../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
+- [x] Avisado al cerrar el 36 — llegó a `shopnest-mesa`, el único de los nueve con carpeta `pendientes/`. Que los otros ocho no tengan dónde recibirlo es el [61](../../../../pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md)
 
 ---
 

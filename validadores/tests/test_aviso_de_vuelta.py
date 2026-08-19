@@ -53,6 +53,11 @@ class ElAvisoLlegaAQuienLoReporto(unittest.TestCase):
         return salida
 
     def _avisar(self, texto, proyectos, escribir=True):
+        """Solo lo escrito. Lo que no se pudo entregar se mira aparte."""
+        return self._avisar_todo(texto, proyectos, escribir)[0]
+
+    def _avisar_todo(self, texto, proyectos, escribir=True):
+        """`(escritos, sin_entregar)` — `61`."""
         return cerrar.avisar("/raiz", texto, "/raiz/pendientes/hecho/algo.md",
                              "9.9.9", proyectos, "2026-01-02", escribir)
 
@@ -136,7 +141,7 @@ class ElAvisoLlegaAQuienLoReporto(unittest.TestCase):
                     continue            # sistema que distingue mayúsculas
                 self.assertEqual([], cerrar.avisar(
                     raiz, texto, "/x/hecho/algo.md", "9.9.9",
-                    [(proyectos[0][0], escrita)], "2026-01-02", True))
+                    [(proyectos[0][0], escrita)], "2026-01-02", True)[0])
         self.assertEqual([], os.listdir(os.path.join(raiz, "pendientes")))
 
     def test_el_nombre_del_aviso_no_lleva_dos_veces_la_extension(self):
@@ -197,3 +202,96 @@ class ElProyectoDeOrigenSeComprueba(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ElAvisoQueNoLlegaSeDice(unittest.TestCase):
+    """`61` · Un aviso que se cae sin ruido es el defecto de `02·F24` un nivel
+    más abajo: allá el estándar no avisaba; acá avisa y el aviso se pierde.
+
+    **Salió de correrlo por primera vez de verdad:** llegó a **1 de 9**
+    proyectos. Los otros ocho no tenían `pendientes/` donde recibirlo, y el
+    programa se quedó callado. No fallaba el aviso — faltaba decir que no llegó.
+    """
+
+    def _base(self, con_backlog):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        ruta = os.path.join(tmp.name, "proy")
+        os.makedirs(ruta)
+        if con_backlog:
+            os.makedirs(os.path.join(ruta, "pendientes"))
+        return [("Proyecto 1", ruta)]
+
+    def _texto(self):
+        return FICHA % ("Proyecto 1", "C:/x", "todos")
+
+    def _avisar(self, proyectos):
+        return cerrar.avisar("/raiz", self._texto(),
+                             "/raiz/pendientes/hecho/algo.md", "9.9.9",
+                             proyectos, "2026-01-02", True)
+
+    def test_sin_carpeta_no_se_escribe_nada(self):
+        """**No se le inventa la carpeta.** Sigue siendo la decisión."""
+        escritos, _ = self._avisar(self._base(con_backlog=False))
+        self.assertEqual([], escritos)
+
+    def test_sin_carpeta_se_dice_a_quien_no_llego(self):
+        _escritos, sin_entregar = self._avisar(self._base(con_backlog=False))
+        self.assertEqual(1, len(sin_entregar))
+        self.assertEqual("Proyecto 1", sin_entregar[0][0])
+
+    def test_el_motivo_nombra_la_carpeta_que_falta(self):
+        _e, sin_entregar = self._avisar(self._base(con_backlog=False))
+        self.assertIn("pendientes", sin_entregar[0][1])
+
+    def test_con_carpeta_no_hay_nada_que_reportar(self):
+        escritos, sin_entregar = self._avisar(self._base(con_backlog=True))
+        self.assertEqual(1, len(escritos))
+        self.assertEqual([], sin_entregar)
+
+    def test_el_proyecto_que_ya_no_existe_tambien_se_dice(self):
+        """El registro es un archivo local: una ruta puede haber desaparecido."""
+        _e, sin_entregar = self._avisar([("Fantasma", "/no/existe/por/aca")])
+        self.assertEqual(1, len(sin_entregar))
+        self.assertIn("no existe", sin_entregar[1 - 1][1])
+
+    def test_los_dos_lados_salen_en_la_misma_vuelta(self):
+        """Con y sin carpeta a la vez: se escribe a uno y se reporta el otro."""
+        con = self._base(con_backlog=True)
+        sin = self._base(con_backlog=False)
+        escritos, sin_entregar = self._avisar(con + [("Proyecto 2", sin[0][1])])
+        self.assertEqual(1, len(escritos))
+        self.assertEqual(1, len(sin_entregar))
+
+
+class LaCarpetaDePendientesSeInstala(unittest.TestCase):
+    """`61` · Ocho de nueve proyectos no tenían dónde recibir un aviso porque
+    el instalador no dejaba la carpeta puesta. El aviso solo lo hizo visible:
+    lo de fondo es que **ninguno de esos ocho tenía dónde escribir un pendiente**.
+    """
+
+    def test_pendientes_esta_en_la_estructura_base(self):
+        import instalar
+        self.assertIn("pendientes", instalar.CARPETAS_BASE)
+
+    def test_el_que_ya_esta_instalado_la_recibe(self):
+        """La lista se recorre en **cada** instalación, no solo en la primera:
+        por eso los ocho la reciben al ponerse al día, sin hacer nada."""
+        import instalar
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        for n in ("proyectos", "documentacion", "prompts"):
+            os.makedirs(os.path.join(tmp.name, n))          # instalado, sin pendientes/
+        instalar.instalar_estructura(tmp.name, aplicar=True)
+        self.assertTrue(os.path.isdir(os.path.join(tmp.name, "pendientes")))
+
+    def test_no_pisa_lo_que_ya_estaba(self):
+        import instalar
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, "pendientes")
+        os.makedirs(carpeta)
+        with io.open(os.path.join(carpeta, "07-algo.md"), "w", encoding="utf-8") as f:
+            f.write(u"# Pendiente\n")
+        instalar.instalar_estructura(tmp.name, aplicar=True)
+        self.assertEqual(["07-algo.md"], os.listdir(carpeta))

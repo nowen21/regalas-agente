@@ -26,6 +26,8 @@
 │
 ├── prompts/                          # planteamientos de entrada · <slug>-planteamiento.md — la crea el instalador
 │
+├── pendientes/                       # VERSIONADO — el backlog del proyecto · y donde llega el aviso de 02·F24 — la crea el instalador
+│
 └── documentacion/                    # VERSIONADO — lo que produce el flujo — la crea el instalador
     ├── modulos.md                    #   catálogo de módulos (DOC13)
     ├── adr/                          #   ADR-NNN-<slug>.md (transversal)

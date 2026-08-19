@@ -102,7 +102,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 | 23 | **P2** | [La carpeta de plantillas mezcla modelos con procedimientos](hecho/plantillas-separa-modelos-de-procedimientos.md) | Un procedimiento vive entre los modelos; los otros tres archivos sin marca resultaron estar bien. Ya está decidido qué se hace: solo falta ejecutarlo. |
 | 24 | **P3** | [Buscar en el repositorio antes de preguntar](hecho/buscar-en-el-repositorio-antes-de-preguntar.md) | Se preguntó un orden de trabajo que ya estaba escrito en la sección de dependencias de la historia. La HU ya está redactada dentro del pendiente, y es conducta que rinde en cada sesión. |
 | ~~25~~ | — | [Las reglas de cómo se escribe llegan en el índice, no puestas](hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) | **Cerrado por falso el 2026-08-15:** `ID8` sí llegaba completa y se incumplió igual. Lo que falta quedó en EP-005 · HU-010 y EP-004 · HU-013. |
-| 26 | **P4** | [«Corrida» es jerga y no está definida](26-corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. **Conviene hacerlo con el 21:** es el mismo cambio de vocabulario en los mismos archivos. |
+| 26 | **P4** | [«Corrida» es jerga y no está definida](hecho/corrida-y-ejecucion-en-el-estandar.md) | El estándar llama «corrida» a ejecutar las pruebas y no dice qué es; en el glosario no existe como término propio. **Conviene hacerlo con el 21:** es el mismo cambio de vocabulario en los mismos archivos. |
 | ~~27~~ | — | **hecho** → [El veredicto de la fase A de HU-010](hecho/el-veredicto-de-la-fase-a-de-hu-010.md) | Los ciclos 2 y 3 lo resolvieron en el fondo: el `CP-006` corrió cuando el usuario leyó el glosario y no entendió una entrada. Lo que quedaba era la cabecera del resultado diciendo «ciclo 1» con el cuerpo en el 3. Cerrado 2026-08-16. |
 | ~~28~~ | — | **hecho** → [Un solo veredicto por fase](hecho/un-solo-veredicto-por-fase.md) | Un programa compara el concepto, las exigencias en «No» y el conteo de los dos documentos. **La decisión que faltaba quedó tomada y escrita:** compara un programa, el molde del `estado-fase` no se toca. Cerrado 2026-08-16 (v23.1.0). |
 | 29 | **P2** | [La transcripción se escribió dos veces, y con horas inventadas](hecho/la-transcripcion-duplicada-del-15.md) | El enganche ya escribe el histórico y el agente lo escribió otra vez a mano: 61 encabezados de usuario para 30 mensajes, y horas estimadas en vez de leídas del reloj. **Su punto 2 —el `P0`— se cerró el 2026-08-16:** el `CLAUDE.md` y el `historico-chat/README.md` ya no mandan escribir la transcripción a mano. Queda el punto 1, limpiar el archivo del 2026-08-15. |
@@ -163,7 +163,7 @@ Salieron de escribir [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avanc
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 37 | **P3** | [Dónde vive la fuente de las reglas](37-donde-vive-la-fuente-de-las-reglas.md) | Si las reglas pueden guardarse en una base de datos, o el texto sigue mandando y la base se genera de él. Falta la decisión del usuario, y sin ella la discusión vuelve a empezar de cero. |
+| 37 | **P3** | [Dónde vive la fuente de las reglas](hecho/donde-vive-la-fuente-de-las-reglas.md) | Si las reglas pueden guardarse en una base de datos, o el texto sigue mandando y la base se genera de él. Falta la decisión del usuario, y sin ella la discusión vuelve a empezar de cero. |
 | ~~38~~ | — | **hecho** → [El validador de la F22 tiene su fase](hecho/el-validador-de-la-f22-tiene-su-fase.md) | Retrodocumentado como fase `A` de [EP-004 · HU-015](../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md), sin tocar una línea de producción, y con cuatro casos que corren contra las derogaciones reales. Cerrado 2026-08-16 (v21.3.1). **Se supo algo:** al trabajo sin cadena no le faltaba documentación —la tenía— sino prueba. |
 
 ### Lo que dejó cerrar un pendiente sin fase (40–42)
@@ -225,7 +225,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 47 | **P4** | [Las reglas de negocio del estándar no dicen de dónde bajan](47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) | El validador que nació con el 43 destapó **31 reglas sin origen** en las dos especificaciones de esta casa: 16 en `automatismos` y 15 en `documentos-modelo`. El estándar no cumple la regla que acaba de escribir. No es mecánico: de cada una hay que decidir si baja de algo, si hay que subirla a una historia, o si se borra. |
+| 47 | **P4** | [Las reglas de negocio del estándar no dicen de dónde bajan](hecho/el-origen-de-las-reglas-de-negocio.md) | El validador que nació con el 43 destapó **31 reglas sin origen** en las dos especificaciones de esta casa: 16 en `automatismos` y 15 en `documentos-modelo`. El estándar no cumple la regla que acaba de escribir. No es mecánico: de cada una hay que decidir si baja de algo, si hay que subirla a una historia, o si se borra. |
 
 **Nació en un cerrado y no lo reabrió**, como el 45: el 43 quedó sellado con su versión y lo que su validador destapó va en uno nuevo que lo cita.
 
@@ -259,13 +259,13 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 |---|---|---|---|
 | 60 | **P3** | [Ninguna historia es dueña del texto del capítulo `02`](60-nadie-es-dueno-del-texto-del-capitulo-02.md) | Se fue a agregarle una frase a `02·F23` y no hubo dónde bajarla: ninguna HU declara el capítulo `02` como su módulo. El capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— se ha venido cambiando sin cadena. |
 
-**Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](56-el-estandar-no-tiene-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
+**Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](56-el-estandar-no-tiene-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
 
 ### Lo que dejó mandar el primer aviso de vuelta (61)
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 61 | **P2** | [El aviso de vuelta llega a uno de nueve proyectos](61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md) | La ficha del 36 decía «abisar a **todos**» y llegó a **uno**: ocho proyectos no tienen carpeta `pendientes/`, así que no tienen dónde recibir nada — ni un aviso ni un pendiente propio. El aviso no falla, lo hace visible. |
+| 61 | **P2** | [El aviso de vuelta llega a uno de nueve proyectos](hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md) | La ficha del 36 decía «abisar a **todos**» y llegó a **uno**: ocho proyectos no tienen carpeta `pendientes/`, así que no tienen dónde recibir nada — ni un aviso ni un pendiente propio. El aviso no falla, lo hace visible. |
 
 **Es el defecto del [36](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) un nivel más abajo:** allá el estándar no avisaba; acá avisa y el aviso se cae **sin ruido**. Lo destapó correr el comando de verdad por primera vez, no una revisión — en simulacro sobre proyectos de mentira los ocho tenían carpeta.
 

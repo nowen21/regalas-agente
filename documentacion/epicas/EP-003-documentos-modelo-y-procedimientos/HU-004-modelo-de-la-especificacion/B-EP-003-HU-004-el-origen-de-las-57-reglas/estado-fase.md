@@ -3,7 +3,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** (`02·F12.6`) | `B-EP-003-HU-004-el-origen-de-las-57-reglas` |
-| **Épica / HU / origen** | [EP-003](../../epica.md) · [HU-004](../HU-004-modelo-de-la-especificacion.md) · [pendiente 47](../../../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) |
+| **Épica / HU / origen** | [EP-003](../../epica.md) · [HU-004](../HU-004-modelo-de-la-especificacion.md) · [pendiente 47](../../../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) |
 | **Última actualización** | 2026-08-18 |
 
 ---

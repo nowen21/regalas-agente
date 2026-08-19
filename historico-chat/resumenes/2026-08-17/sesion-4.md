@@ -85,7 +85,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Por qué importa.** El `02` es el capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— y el más citado del repositorio. Si ningún sitio lo recibe, **todo cambio del `02` se ha venido haciendo sin cadena, incluida la regla que exige la cadena**. `F22` y `F23` nacieron en agosto y ninguna tuvo historia propia.
 
-**Dónde queda.** El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) y del [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md): los tres son el mismo hueco a distinta altura.
+**Dónde queda.** El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md): los tres son el mismo hueco a distinta altura.
 
 ### H-9 · Dos sesiones sobre el mismo árbol, y una falla que no es de nadie de acá
 
@@ -148,7 +148,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Y es el 36 un nivel más abajo:** allá el estándar no avisaba; acá avisa y el aviso **se cae sin ruido**. Nadie se entera de que se perdió.
 
-**Dónde queda.** El [61](../../../pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con las tres decisiones que hacen falta y cuál de ellas importa.
+**Dónde queda.** El [61](../../../pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con las tres decisiones que hacen falta y cuál de ellas importa.
 
 ### H-15 · Cinco sellos del estándar decían dos cosas contrarias
 
@@ -280,7 +280,7 @@ Cerrado el [pendiente 29](../../../pendientes/hecho/la-transcripcion-duplicada-d
 
 ### H-25 · El origen de las reglas estaba a tres líneas de donde se busca
 
-Del [pendiente 47](../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md): las reglas de negocio de esta casa no decían de dónde bajan. **Eran 57, no las 31 contadas el 2026-08-16.**
+Del [pendiente 47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md): las reglas de negocio de esta casa no decían de dónde bajan. **Eran 57, no las 31 contadas el 2026-08-16.**
 
 **No hubo que inventar ninguna procedencia.** Cada `### 4.N` de las dos especificaciones ya declaraba en qué fase se escribió, con su enlace. Lo que faltaba era **bajarlo de la sección a la regla**, que es donde el programa lo busca y donde lo lee quien abre por la mitad.
 
@@ -486,6 +486,35 @@ El [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-
 
 ---
 
+### H-41 · Cinco pendientes cerrados con decisiones del usuario
+
+Contestó seis preguntas de corrido y se cerraron el **37**, el **47**, el **26** y el **61**.
+
+| Pendiente | Qué decidió |
+|---|---|
+| [37](../../../pendientes/hecho/donde-vive-la-fuente-de-las-reglas.md) | La fuente de las reglas es el **texto**; una base de datos, si existe, se genera desde él. En [`notas/`](../../../notas/la-fuente-de-las-reglas-es-el-texto.md) |
+| [47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) | **No borrar ninguna** de las 57 reglas de negocio |
+| [26](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md) | «Corrida» sale del estándar: queda **«ejecución»** |
+| [61](../../../pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md) | `pendientes/` entra a la estructura, y el aviso que no llega **se dice** |
+
+**Lo que salió de ejecutarlas, que no estaba en la decisión:**
+
+**El 26 no era un `replace`.** El verbo se queda —*«las pruebas se corren»* se entiende sin saber del oficio—; lo que era jerga es el sustantivo. Y una quedó a propósito: *«la numeración **corrida** entre sesiones»*, donde la palabra significa otra cosa. Cambiar el texto de `F5` **anuló su sello**, aunque fuera una palabra, y hubo que volver a aplicarle el checklist.
+
+**El 61 costó menos de lo que decía.** Su decisión 2 —«que el que ya está instalado la reciba»— **salió gratis**: `CARPETAS_BASE` se recorre en cada instalación, no solo en la primera. No hizo falta migración; los ocho la reciben al ponerse al día.
+
+**Y apareció un caso que el pendiente no nombraba:** el proyecto cuya carpeta ya no existe. El registro es un archivo local y una ruta puede haber desaparecido — eso también se dice ahora, en vez de callarse.
+
+### H-42 · Le compacté de más una respuesta y dejó de entenderse
+
+Se pidió aplicar `00·ID9` a la lista de sugerencias. Salió una tabla de doce filas donde cada una decía **la respuesta sin la pregunta** — *«61 · sí, y también al actualizar»*—, ilegible sin volver atrás. La respuesta: **«no entiendo»**.
+
+> **`ID9` dice recortar lo que sobra, «nunca el dato exacto».** Recortar la pregunta no es abreviar: es quitar lo único que hacía la respuesta interpretable. Menos es más deja de valer cuando lo que se quita es el sujeto.
+
+Lo que funcionó fue lo tercero: una decisión por párrafo, en castellano, y al final **«un sí o un no a cada número»**.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -506,7 +535,7 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 ---
 
-**Lo que sigue, cuando se retome:** los **22 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
+**Lo que sigue, cuando se retome:** los **18 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
 
 **Y siete decisiones que solo puede tomar el usuario**, que hoy bloquean lo suyo: derogar `04·S7` en favor de `10·DEP3`; qué hacer con `12·PR3`; la excepción de `00·N1`; el `08·T1`, que es MAYOR; si `DOC14` exime al enlace de la misma carpeta (son 747); si el `·` se queda en los títulos; y si `pendientes/` entra en la estructura de la base.
 

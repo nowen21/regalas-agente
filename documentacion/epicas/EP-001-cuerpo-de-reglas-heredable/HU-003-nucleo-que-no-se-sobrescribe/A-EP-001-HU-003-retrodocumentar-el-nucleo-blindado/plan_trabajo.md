@@ -37,7 +37,7 @@
 - **Reescribir las seis reglas.** Si al probarlas aparece que alguna está mal redactada, se para y se propone ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
 - **Enmascarar la clave antes de escribirla.** Es [EP-005 · HU-002](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md), y todavía no está construida. Acá solo se deja escrito que la mitad automática del CA-02 no existe.
 - **Comprobar el núcleo con un programa.** Es EP-004; lo que ya corre —[`validadores/secretos.py`](../../../../../validadores/secretos.py)— se nombra como línea base, no se toca.
-- **Los términos en inglés del capítulo** (`preview`, `dry-run`, `backup`, `drop`, `truncate`). Está anotado en los pendientes [21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) y [26](../../../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md), y no se abre acá.
+- **Los términos en inglés del capítulo** (`preview`, `dry-run`, `backup`, `drop`, `truncate`). Está anotado en los pendientes [21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) y [26](../../../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md), y no se abre acá.
 
 ---
 

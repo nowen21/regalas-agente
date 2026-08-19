@@ -13,7 +13,7 @@
 
 **Las 57 reglas de negocio de las dos especificaciones de esta casa dicen de qué historia bajan**, con su identificador y su enlace. El validador del [43](../../../../../pendientes/hecho/el-origen-de-la-regla-de-negocio.md) da cero sobre las dos.
 
-Eran 30 en `automatismos` y 27 en `documentos-modelo` — no las 31 que contaba el [pendiente 47](../../../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md) el 2026-08-16.
+Eran 30 en `automatismos` y 27 en `documentos-modelo` — no las 31 que contaba el [pendiente 47](../../../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) el 2026-08-16.
 
 ---
 

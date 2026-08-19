@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.12.0 — 2026-08-18
+
+**MENOR** (la instalación deja una carpeta más; ningún proyecto tiene que hacer nada).
+
+**Cuando el estándar corregía algo que un proyecto había reportado, el aviso de vuelta llegaba a uno de nueve.** Los otros ocho no tenían dónde recibirlo, y nadie se enteraba de que se había perdido.
+
+Ahora la instalación deja puesta la carpeta del backlog, y los proyectos que ya estaban la reciben la próxima vez que se pongan al día. Y si aun así un aviso no puede llegar, se dice a quién no llegó en vez de callarlo.
+
+**El detalle.** Es el [pendiente 61](pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md), con sus tres decisiones tomadas por el usuario. `pendientes/` entró a `CARPETAS_BASE` de [`instalar.py`](validadores/instalar.py) y a [`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md), a la que se le volvió a aplicar el checklist. `cerrar.avisar()` devuelve ahora dos listas —lo entregado y lo que no— y `cerrar.py` imprime la segunda con el motivo. **No se le inventa la carpeta a ningún repositorio ajeno**, que era la decisión de fondo: lo que cambió es que el silencio se acabó. 9 casos nuevos en [`test_aviso_de_vuelta.py`](validadores/tests/test_aviso_de_vuelta.py).
+
+## 23.11.2 — 2026-08-18
+
+**PARCHE** (cambia una palabra; nada de lo que se exige cambia).
+
+**El estándar usaba una palabra del oficio que nunca definió.** Llamaba «corrida» a ejecutar las pruebas, y quien no es del gremio no sabía si eso es una prueba, un grupo de pruebas o un día entero de trabajo. De eso dependía cómo se llena una columna del informe de pruebas.
+
+Ahora dice «ejecución». El verbo se queda: *«las pruebas se corren»* se entiende bien y no se tocó.
+
+**El detalle.** Es el [pendiente 26](pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md), decidido por el usuario. Cambian ocho archivos de `base/` y `plantillas/`, incluida la entrada «Alcance de corrida» del [glosario](base/glosario.md) y el texto de [`02·F5`](base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md), a la que se le volvió a aplicar el checklist porque editar una regla anula su sello — la fila 4 sigue en ❌ por el mismo motivo de antes, ajeno a la redacción. Queda a propósito *«la numeración corrida entre sesiones»* de [`plantillas/sesion.md`](plantillas/sesion.md): ahí la palabra significa otra cosa.
+
 ## 23.11.1 — 2026-08-18
 
 **PARCHE** (se arregla un defecto de la instalación; no cambia nada de lo que se exige).
@@ -267,7 +287,7 @@ Los tres tienen su caso ahora, y los dos nuevos comprueban **lo que se vio falla
 
 ### Lo que dejó el primer envío real
 
-Llegó a **un** proyecto de nueve, aunque la ficha decía «a todos»: los otros ocho no tienen carpeta `pendientes/` y a un proyecto que no lleva backlog **no se le inventa**. Queda anotado en el [61](pendientes/61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md), porque lo que falta no es el aviso — es que ocho proyectos no tienen dónde escribir un pendiente.
+Llegó a **un** proyecto de nueve, aunque la ficha decía «a todos»: los otros ocho no tienen carpeta `pendientes/` y a un proyecto que no lleva backlog **no se le inventa**. Queda anotado en el [61](pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md), porque lo que falta no es el aviso — es que ocho proyectos no tienen dónde escribir un pendiente.
 
 ---
 
@@ -534,7 +554,7 @@ La 22.0.0 fijó el molde; esta escribe el programa que lo mira. Se construyó en
 - **Un `spec.md` ahora se reconoce.** Antes no se comparaba contra ninguna plantilla —el programa no sabía cuál le tocaba—, así que el documento más importante de un módulo era invisible para el validador de forma. Sin esto, la comprobación nueva no se habría disparado nunca.
 - **Tres casos de prueba nuevos**, con las dos reglas reales del caso que lo destapó. El repositorio pasa de 26 a 29 pruebas.
 
-**Lo primero que encontró fue deuda propia:** las dos especificaciones de este repositorio traen **31 reglas de negocio sin origen**. No se apagó la comprobación para que el número diera cero; quedaron en el [pendiente 47](pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md).
+**Lo primero que encontró fue deuda propia:** las dos especificaciones de este repositorio traen **31 reglas de negocio sin origen**. No se apagó la comprobación para que el número diera cero; quedaron en el [pendiente 47](pendientes/hecho/el-origen-de-las-reglas-de-negocio.md).
 
 ## 22.0.0 — 2026-08-16
 

@@ -1,11 +1,11 @@
 # Pendiente · Dónde vive la fuente de las reglas
 
-**Estado:** abierto · anotado 2026-08-16.
+**Estado:** cerrado 2026-08-18 · anotado 2026-08-16.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-001 — Formato único para escribir una regla](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) — si la fuente es el texto o una base de datos decide qué es «el formato» de una regla |
-| **De dónde sale** | El hallazgo H-1 del [resumen del 2026-08-16](../historico-chat/resumenes/2026-08-16/sesion.md) |
+| **Historia de usuario** | [EP-001 · HU-001 — Formato único para escribir una regla](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) — si la fuente es el texto o una base de datos decide qué es «el formato» de una regla |
+| **De dónde sale** | El hallazgo H-1 del [resumen del 2026-08-16](../../historico-chat/resumenes/2026-08-16/sesion.md) |
 | **Proyecto de origen** | El estándar mismo. Nace de una pregunta del usuario, no de un defecto de un proyecto |
 
 ## El problema
@@ -33,3 +33,16 @@ La segunda es la que el agente recomendó. Falta la decisión del usuario.
 ## Cómo se sabe que cerró
 
 Está escrito qué es la fuente. Si se decide generar la base, existe además la historia de usuario que la construye y dice qué preguntas responde.
+
+
+---
+
+# Cómo cerró — 2026-08-18
+
+**El usuario decidió: la fuente es el texto.** Si algún día hay una base de datos de reglas, se **genera** a partir de los `.md` de `base/`; se puede borrar y volver a generar, y ninguna regla vive ahí.
+
+El razonamiento completo quedó en [`notas/la-fuente-de-las-reglas-es-el-texto.md`](../../notas/la-fuente-de-las-reglas-es-el-texto.md), que es donde va el porqué de un diseño.
+
+**En una línea:** lo que se perdería —ver qué cambió en una regla y aprobarlo antes de que rija— es lo único que no se puede reponer; lo que se ganaría —consultar— ya lo dan `citas.py`, `metareglas.py` y `relacionadas.py` leyendo el texto.
+
+**Lo que queda abierto y no bloquea:** si alguna vez se construye la base generada, primero hace falta la historia de usuario que diga **qué preguntas responde** que hoy no se puedan responder.

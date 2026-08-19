@@ -86,7 +86,7 @@ Los programas que revisan que las reglas se cumplan, y las pruebas del trabajo.
 
 | Término | Qué quiere decir el nombre | Qué es | Quién lo escribe | Dónde vive | Regla |
 |---|---|---|---|---|---|
-| **Alcance de corrida** | Hasta dónde llega la corrida: qué pruebas entran y cuáles no | El conjunto de pruebas que se corren en una fase: las del módulo tocado y las que la matriz señale | Agente, en el plan de pruebas | §3.5 del plan de pruebas | [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) |
+| **Alcance de ejecución** | Hasta dónde llega la ejecución: qué pruebas entran y cuáles no | El conjunto de pruebas que se corren en una fase: las del módulo tocado y las que la matriz señale | Agente, en el plan de pruebas | §3.5 del plan de pruebas | [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md) |
 | **Cargador** | Carga las reglas, como quien carga el camión antes de arrancar | El programa que mete las reglas de `base/` en el contexto del agente al abrir la sesión | Agente | `validadores/cargador.py` | [`02·F1`](02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) |
 | **Checklist de despliegue** | La lista de chequeo que se va marcando antes de sacar el sistema a andar | La lista de lo que hay que revisar antes y después de sacar el sistema a andar | Agente | Junto al despliegue del proyecto | [`18·DP6`](18-despliegue-e-infraestructura.md#dp6--checklist-de-despliegue) |
 | **Caso de prueba** | — | El escenario concreto que se prueba, con sus pasos y lo que se espera de cada uno | Agente, en el plan de pruebas | §6 del plan de pruebas | [`08·T7`](08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos) |

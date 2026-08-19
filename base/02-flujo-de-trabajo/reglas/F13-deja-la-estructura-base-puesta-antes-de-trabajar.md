@@ -2,7 +2,7 @@
 
 ## F13 · Deja la estructura base puesta antes de trabajar
 
-Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](F1-carga-el-contexto-antes-de-actuar.md))— el agente deja la estructura base puesta: crea la carpeta `proyectos/`, donde vive el código del usuario, y su propio espacio al lado (`.agente/`, `prompts/`, `documentacion/`). Crear una carpeta que la norma exige no es una decisión: es la norma. Lo que **sí** es del usuario es **qué va dentro de `proyectos/`** — el agente no mueve, no reorganiza ni acomoda ahí código que ya exista. El árbol completo está en [`estructura-base.md`](../estructura-base.md); el reparto de mundos, en [`base.md`](../base.md).
+Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](F1-carga-el-contexto-antes-de-actuar.md))— el agente deja la estructura base puesta: crea la carpeta `proyectos/`, donde vive el código del usuario, y su propio espacio al lado (`.agente/`, `prompts/`, `documentacion/`, `pendientes/`). Crear una carpeta que la norma exige no es una decisión: es la norma. Lo que **sí** es del usuario es **qué va dentro de `proyectos/`** — el agente no mueve, no reorganiza ni acomoda ahí código que ya exista. El árbol completo está en [`estructura-base.md`](../estructura-base.md); el reparto de mundos, en [`base.md`](../base.md).
 
 ```
 INCORRECTO: existe código suelto en la raíz → el agente crea `proyectos/` y mueve
@@ -15,7 +15,7 @@ CORRECTO:   existe código suelto en la raíz → el agente crea `proyectos/` va
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.3.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -36,5 +36,7 @@ Las filas **14 a 16** son N/A: la regla nombra a [`02·F1`](F1-carga-el-contexto
 La fila **18** pasa —está registrada en [validadores/reglas-validables.md](../../../validadores/reglas-validables.md)— pero allá figuraba con el **título viejo**, de cuando la regla detenía el arranque en vez de dejar la estructura puesta. Se corrigió en la misma pasada.
 
 **Por qué el resultado anterior estaba anulado.** El sello de **v2.5.0**, del **2026-08-07**, dejó de valer al reescribirse la regla en **v5.0.0**: el gate que detenía el arranque pasó a ser una estructura que el instalador deja puesta. Se anotó «a re-aplicar en el próximo repaso» y **nadie volvió a mirarlo durante diez días**, porque nada lo recordaba. Ese olvido es lo que destapó el [pendientes/hecho/el-sello-del-checklist-se-comprueba.md](../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md), y desde hoy `validar.py metareglas` avisa cuando un sello queda vencido.
+
+**Vuelto a aplicar el 2026-08-18**, porque el texto cambió: entró `pendientes/` a la estructura. Es el [pendiente 61](../../../pendientes/hecho/el-aviso-de-vuelta-llega-a-uno-de-nueve.md) — ocho de nueve proyectos instalados no tenían dónde recibir el aviso de [`02·F24`](F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), ni dónde escribir un pendiente propio. **Solo se sumó una carpeta a la lista: lo que la regla exige —dejarla puesta antes de trabajar— no cambió.**
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

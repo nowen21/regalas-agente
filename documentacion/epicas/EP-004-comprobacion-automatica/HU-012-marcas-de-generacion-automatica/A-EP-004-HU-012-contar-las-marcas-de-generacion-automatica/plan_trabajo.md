@@ -36,7 +36,7 @@
 
 - **Limpiar las marcas que el estándar ya tiene.** Es el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md): esta fase da la herramienta y mide, no limpia.
 - **Juzgar el estilo.** Que un texto se lea bien es criterio humano; acá se cuentan marcas concretas de una lista cerrada.
-- **Los términos en inglés,** que son los pendientes [21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) y [26](../../../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md).
+- **Los términos en inglés,** que son los pendientes [21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) y [26](../../../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md).
 
 ---
 

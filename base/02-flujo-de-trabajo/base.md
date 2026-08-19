@@ -79,7 +79,7 @@ La capa 3 puede ajustar cuán estricta es la regla, pero viene **activada por de
 
 ### F4 — las plantillas y los cinco pasos de la aprobación
 
-El `plan_trabajo` sigue `plantillas/planes/trabajo.md`; el `plan_pruebas` sigue `plantillas/planes/pruebas.md`, con trazabilidad CA→caso y el alcance de corrida de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
+El `plan_trabajo` sigue `plantillas/planes/trabajo.md`; el `plan_pruebas` sigue `plantillas/planes/pruebas.md`, con trazabilidad CA→caso y el alcance de ejecución de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
 
 Lo que **se aprueba** son esos dos. Lo que pasa al ejecutarlos va en el `resultado_pruebas` (`plantillas/planes/resultados.md`), que se crea al correr la primera prueba y de donde sale el veredicto de la fase: **el plan aprobado no se modifica para anotarle resultados**, porque entonces se pierde contra qué comparar.
 
@@ -166,7 +166,7 @@ Anti-patrones concretos: agregar un guard en el servidor cuando el CA solo pide 
 
 ### F5 — qué no se corre por defecto
 
-Fuera de la corrida quedan la suite completa del proyecto "por si acaso", las suites de módulos que no aparecen en la matriz de dependencias, y las que solo comparten infraestructura —base de datos, autenticación— sin tocar el código refactorizado. El anti-patrón es correr todo al terminar: cientos de pruebas, varios minutos, más memoria y ruido de rojos que ya existían antes de la fase.
+Fuera de la ejecución quedan la suite completa del proyecto "por si acaso", las suites de módulos que no aparecen en la matriz de dependencias, y las que solo comparten infraestructura —base de datos, autenticación— sin tocar el código refactorizado. El anti-patrón es correr todo al terminar: cientos de pruebas, varios minutos, más memoria y ruido de rojos que ya existían antes de la fase.
 
 ### F8 — el protocolo al descubrir un archivo fuera del plan
 

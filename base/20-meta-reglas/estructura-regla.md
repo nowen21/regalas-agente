@@ -227,8 +227,8 @@ Un proceso que recorre un conjunto de registros trata **N por tanda** y nunca
 depende del tamaño total del conjunto (extiende `06·R2`). El valor de N lo
 declara el proyecto (`.agente/stack.md`), no va escrito en el código.
 
-**Excepción** — una migración de una sola corrida puede ir sin tanda si el
-conjunto está **contado y medido antes** (condición), **solo para esa corrida**
+**Excepción** — una migración de una sola ejecución puede ir sin tanda si el
+conjunto está **contado y medido antes** (condición), **solo para esa ejecución**
 y sin habilitar el patrón para procesos recurrentes (límite), y **lo autoriza
 el usuario por operación** (`04·S11`) (autoriza).
 

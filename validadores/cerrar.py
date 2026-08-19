@@ -296,15 +296,24 @@ def avisar(raiz, texto, destino, version, proyectos, fecha, escribir=False):
             titulo = linea[2:].strip()
             break
 
-    escritos = []
+    escritos, sin_entregar = [], []
     for nombre, ruta in destinatarios(texto, proyectos):
         # `normcase` y no `abspath` a secas: el registro escribe `c:\` y el
         # comando `C:\`, y sin esto el estándar se manda un aviso a sí mismo.
         if _misma_carpeta(ruta, raiz):
             continue                    # el estándar no se avisa a sí mismo
+        if not os.path.isdir(ruta):
+            sin_entregar.append((nombre, "la carpeta del proyecto no existe"))
+            continue
         carpeta = os.path.join(ruta, CARPETA_AVISOS)
         if not os.path.isdir(carpeta):
-            continue                    # el proyecto no lleva backlog: no se inventa
+            # `61` · **No se le inventa la carpeta**: escribir en el repositorio
+            # de otro tiene que tener el alcance de una línea. Pero antes esto
+            # era un `continue` mudo, y un aviso que no llega y no se dice es el
+            # mismo defecto que `02·F24` vino a cerrar, un nivel más abajo.
+            sin_entregar.append((nombre, "no tiene `%s/` — la crea el instalador "
+                                 "al ponerse al día" % CARPETA_AVISOS))
+            continue
         archivo = os.path.join(
             carpeta, "aviso-%s-%s" % (fecha, os.path.basename(destino)))
         if os.path.exists(archivo):
@@ -315,10 +324,11 @@ def avisar(raiz, texto, destino, version, proyectos, fecha, escribir=False):
                     f.write(_PLANTILLA_AVISO.format(
                         fecha=fecha, titulo=titulo or "(sin título)",
                         destino=relativo(destino), version=version))
-            except OSError:
-                continue                # sin permiso: se dice cuál falló
+            except OSError as e:
+                sin_entregar.append((nombre, "no se pudo escribir: %s" % e.strerror))
+                continue
         escritos.append((nombre, archivo))
-    return escritos
+    return escritos, sin_entregar
 
 
 def _version(raiz):
@@ -369,15 +379,24 @@ def main():
     # El aviso de vuelta va acá y no en un comando aparte: **es parte de
     # cerrar** (`02·F24`). Separarlo abre la puerta a cerrar sin avisar, que
     # es justo el defecto que la regla vino a tapar.
-    avisados = avisar(raiz, texto_original, destino, _version(raiz),
-                      _proyectos(), a.fecha, a.aplicar)
+    avisados, sin_entregar = avisar(raiz, texto_original, destino, _version(raiz),
+                                    _proyectos(), a.fecha, a.aplicar)
     print()
-    if not avisados:
+    if not avisados and not sin_entregar:
         print("Sin aviso de vuelta: el pendiente no declara proyecto de"
               " origen, o a ninguno le toca hoy.")
     for nombre, archivo in avisados:
         print(f"  aviso -> {nombre}: {archivo}"
               f"{'' if a.aplicar else '  (simulado)'}")
+
+    # `61` · Lo que **no** se pudo entregar se dice. Antes era un `continue`
+    # mudo: el aviso se caía y nadie se enteraba, que es el mismo defecto que
+    # `02·F24` vino a cerrar, un nivel más abajo.
+    if sin_entregar:
+        print()
+        print(f"  El aviso NO llegó a {len(sin_entregar)} proyecto(s):")
+        for nombre, motivo in sin_entregar:
+            print(f"    · {nombre} — {motivo}")
     return 0
 
 

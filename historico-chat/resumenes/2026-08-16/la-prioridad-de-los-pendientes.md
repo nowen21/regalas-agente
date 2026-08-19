@@ -16,7 +16,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-la-prioridad-de
 
 **Dónde queda.** ✅ **Resuelto.** Se escribió en [pendientes/README.md](../../../pendientes/README.md): una columna `P` con siete niveles (P0 a P6), en las nueve tablas, y una sección arriba que explica qué significa cada uno. El usuario eligió marcar los 30 abiertos —opción A— sobre la alternativa de un bloque corto de «lo próximo». El validador de enlaces queda en cero.
 
-**La jerga que se coló, y qué se decidió.** El usuario preguntó qué era «P0»: la abreviatura no se entiende sin saberla de antemano, que es lo que `00·ID7` prohíbe y lo mismo que el [pendiente 26](../../../pendientes/26-corrida-y-ejecucion-en-el-estandar.md) le reclama a la palabra «corrida». El agente propuso cambiar el código por el nombre —«se pierde algo» en vez de `P0`—. **El usuario decidió dejar el código y escribir la equivalencia**, y así quedó: una columna «Se lee» al lado de cada nivel.
+**La jerga que se coló, y qué se decidió.** El usuario preguntó qué era «P0»: la abreviatura no se entiende sin saberla de antemano, que es lo que `00·ID7` prohíbe y lo mismo que el [pendiente 26](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md) le reclama a la palabra «corrida». El agente propuso cambiar el código por el nombre —«se pierde algo» en vez de `P0`—. **El usuario decidió dejar el código y escribir la equivalencia**, y así quedó: una columna «Se lee» al lado de cada nivel.
 
 **El riesgo asumido.** Treinta y una marcas envejecen y hay que mantenerlas. Queda escrito en el propio README que la `P` se revisa **al cerrar un pendiente**, no cada vez que se mira la lista.
 

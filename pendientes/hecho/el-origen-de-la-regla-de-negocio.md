@@ -30,7 +30,7 @@ Impecable como justificación, y no la pedía nadie: ni el enunciado del taller,
 
 **Un hallazgo que no buscaba nadie:** un archivo `spec.md` **no se comparaba contra ninguna plantilla**. El programa no sabía cuál le tocaba, así que el documento más importante de un módulo era invisible para el validador de forma. Se arregló acá, porque sin eso la comprobación nueva no se habría disparado nunca.
 
-**3 · Cuántas hay ya escritas:** era la tercera exigencia del pendiente, y la respuesta duele. Las dos especificaciones de este repositorio traen **31 reglas sin origen** — 16 en `automatismos/spec.md` y 15 en `documentos-modelo/spec.md`. **No se calló la comprobación para que el número diera cero**; quedaron en el [pendiente 47](../47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md).
+**3 · Cuántas hay ya escritas:** era la tercera exigencia del pendiente, y la respuesta duele. Las dos especificaciones de este repositorio traen **31 reglas sin origen** — 16 en `automatismos/spec.md` y 15 en `documentos-modelo/spec.md`. **No se calló la comprobación para que el número diera cero**; quedaron en el [pendiente 47](el-origen-de-las-reglas-de-negocio.md).
 
 ## Cómo se supo que cerró
 

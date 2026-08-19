@@ -7,7 +7,7 @@
 | **Módulo** | Las dos especificaciones de esta casa |
 | **Fecha apertura** | 2026-08-18 |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** El [pendiente 47](../../../../../pendientes/47-las-reglas-de-negocio-del-estandar-no-dicen-de-donde-bajan.md), que salió de correr por primera vez el validador del 43 sobre esta casa.
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** El [pendiente 47](../../../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md), que salió de correr por primera vez el validador del 43 sobre esta casa.
 
 ---
 
