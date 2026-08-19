@@ -148,3 +148,41 @@ class SoloSeReportaLoQueSeHereda(ElConteo):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ElSeparadorDeEncabezadoEsNotacion(unittest.TestCase):
+    """`00·ID8` · El `·` que separa el número del capítulo de su nombre.
+
+    **Decidido el 2026-08-18.** Hasta entonces se contaban los 1 599 separadores
+    de título como marca de generación automática — con lo que el propio índice
+    del anexo, `## 2 · Puntuación y tipografía`, era una marca.
+
+    **El código ya lo tenía decidido y no lo había implementado.** Su comentario
+    decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la
+    expresión solo cubría la cita `NN·ID`.
+    """
+
+    def _puntos(self, linea):
+        return [q for _c, q in marcas.marcas_de_linea(linea) if "punto medio" in q]
+
+    def test_el_separador_del_titulo_no_cuenta(self):
+        self.assertEqual([], self._puntos(u"## 09 · Control de versiones"))
+
+    def test_tampoco_en_el_titulo_de_una_fase(self):
+        self.assertEqual([], self._puntos(u"# Fase A · lo que hace"))
+
+    def test_ni_con_varios_separadores(self):
+        self.assertEqual([], self._puntos(u"### 2 · Puntuación · y tipografía"))
+
+    def test_en_prosa_sigue_contando(self):
+        """**El límite.** Fuera de un encabezado, el punto medio entre frases
+        sigue siendo lo que el anexo llama adorno."""
+        self.assertEqual(1, len(self._puntos(u"Se hace esto · y después lo otro.")))
+
+    def test_la_cita_sigue_sin_contar_en_prosa(self):
+        self.assertEqual([], self._puntos(u"Lo dice `20·M4` y no se discute."))
+
+    def test_un_punto_medio_de_adorno_en_un_encabezado_no_se_salva(self):
+        """Se exime **el separador**, no el carácter: pegado, sin espacios, no
+        es la notación de la casa."""
+        self.assertEqual(1, len(self._puntos(u"## Algo·pegado")))

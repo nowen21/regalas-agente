@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.17.1 — 2026-08-18
+
+**PARCHE** (deja de contarse como defecto algo que no lo era; ninguna exigencia cambia).
+
+**La forma en que esta casa nombra sus capítulos estaba contada como si fuera un descuido.** El punto que separa el número del nombre —«09 · Control de versiones»— aparecía como una de las marcas que delatan un texto escrito por una máquina. Eran mil seiscientas, y una de ellas estaba en el índice del propio documento que las prohíbe.
+
+Se conserva, y no como excepción sino como lo que es: la manera en que este proyecto nombra las cosas. En medio de una frase sigue contando.
+
+**El detalle.** Del [pendiente 11](pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md). El [anexo de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación definida, y el separador de encabezado es la misma clase. **El código ya lo tenía decidido y no lo había implementado:** el comentario de [`marcas.py`](validadores/marcas.py) decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la expresión regular solo cubría la primera mitad. El recuento baja de 16 477 a **15 485**; el punto medio, de 6 237 a **4 638**. Se exime solo en la línea de un encabezado. 6 casos nuevos.
+
 ## 23.17.0 — 2026-08-18
 
 **MENOR** (una regla deja de regir porque otra ya decía lo mismo; no hay nada nuevo que cumplir).

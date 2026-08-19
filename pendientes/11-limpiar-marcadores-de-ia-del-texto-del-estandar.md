@@ -39,7 +39,15 @@ Por [`20·M10`](../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versio
 
 ### Lo que el recuento deja decidido, y lo que no
 
-**El punto medio de los títulos de este repositorio sí se cuenta.** `09 · Control de versiones`, `Fase A · …`: el anexo llama marca a *«adornar títulos»* con él, y son buena parte de los 6 237. **No se le hizo excepción a propósito** — si el estándar quiere conservar esa forma, es una decisión que se escribe, no un descuento que el programa hace callando.
+### El punto medio de los títulos — decidido el 2026-08-18
+
+**Se conserva, y no como excepción: como notación definida.** El [anexo](../base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación de la casa, y el separador de un encabezado —`09 · Control de versiones`— es la misma clase de cosa.
+
+**El propio código ya lo tenía decidido y no lo había implementado:** el comentario de `marcas.py` decía *«ni de un `A · B` de encabezado»* y la expresión solo cubría la cita.
+
+**El recuento baja de 16 477 a 15 485**, y el punto medio de 6 237 a **4 638**. Se exime solo en la línea de un encabezado: en prosa sigue contando.
+
+~~**El punto medio de los títulos de este repositorio sí se cuenta.**~~ `09 · Control de versiones`, `Fase A · …`: el anexo llama marca a *«adornar títulos»* con él, y son buena parte de los 6 237. **No se le hizo excepción a propósito** — si el estándar quiere conservar esa forma, es una decisión que se escribe, no un descuento que el programa hace callando.
 
 **La mitad del anexo no se cuenta, y está declarado.** Si la raya aparece «muy seguido», si el paralelismo es «perfecto», si el español «no es de acá». Un programa que opinara de eso llenaría de ruido lo que hoy nadie mira.
 

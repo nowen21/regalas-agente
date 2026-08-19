@@ -30,7 +30,7 @@
 |---|---|
 | La raya larga (`—`) como inciso, y muy seguido. En español es la más delatora: casi nadie la escribe a mano | coma, paréntesis, dos puntos o punto y seguido |
 | Comillas curvas (`“ ”`) mezcladas con las rectas (`" "`), o angulares (`« »`) mezcladas con las dos | unas solas, las mismas en todo el documento |
-| El punto medio (`·`) separando frases o adornando títulos | coma o punto. No cuenta el que forma parte de una notación definida, como la cita `NN·ID` de [`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) |
+| El punto medio (`·`) separando frases **en prosa** | coma o punto. **No cuenta la notación definida**: la cita `NN·ID` de [`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md), ni el separador de un **encabezado** —`09 · Control de versiones`, `Fase A · lo que hace`—, que es como esta casa nombra sus capítulos y sus fases |
 | Viñetas que abren todas con negrita y dos puntos | negrita solo donde de verdad resalta algo; el resto en texto normal |
 | Negrita sobre frases enteras o sobre renglones completos | negrita sobre la palabra que importa, o ninguna |
 | La flecha (`→`) y el visto (`✓`) usados como viñeta en prosa | guion de lista, o la palabra que dice la relación |
@@ -132,3 +132,18 @@ Cuando el documento continúa a otro que ya existe, se escribe en el registro de
 ## Lo que este anexo no cubre
 
 La **norma del español**: ortografía, gramática, sintaxis y variedad del país. Escribir bien no es lo mismo que no sonar a máquina, y hoy el estándar solo fija el idioma ([`01·C8`](../01-conducta.md#c8--habla-el-idioma-del-proyecto)), no cómo se escribe en él. La sección 5 toca el tema por un solo lado: el español de ninguna parte delata al que lo escribió. Exigir norma correcta y variedad colombiana necesita su propia regla, y todavía no existe.
+
+
+---
+
+## El separador de encabezado, decidido el 2026-08-18
+
+**Se conserva, y no como excepción: como notación definida.**
+
+Hasta hoy la fila del punto medio decía *«separando frases o adornando títulos»*, y contaba los **1 599** que separan el número del capítulo de su nombre. Con eso, el propio índice de este anexo —`## 2 · Puntuación y tipografía`— era una marca de generación automática.
+
+**El código ya lo tenía decidido y no lo había implementado.** El comentario de [`validadores/marcas.py`](../../validadores/marcas.py) decía, desde que se escribió: *«el punto medio que no forma parte de una cita `NN·ID` **ni de un `A · B` de encabezado**: los dos son notación definida del estándar»* — y la expresión regular solo implementaba la primera mitad.
+
+**Dónde queda el límite.** Se exime **solo en la línea de un encabezado**. En prosa, un punto medio entre frases sigue siendo lo que este anexo llama adorno, y se cuenta.
+
+**Lo que cambió el recuento:** de 16 477 marcas a **15 485**.

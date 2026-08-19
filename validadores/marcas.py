@@ -59,6 +59,13 @@ INVISIBLES = {
 # de encabezado: los dos son notación definida del estándar.
 _CITA = re.compile(r"\d{2}·[A-Z]")
 
+# El separador de encabezado —`09 · Control de versiones`, `Fase A · lo que hace`—
+# es la otra mitad de esa notación, y **hasta hoy el comentario la nombraba y la
+# expresión no la implementaba**. Se exime solo en la línea de un encabezado: en
+# prosa, un punto medio entre frases sigue siendo lo que el anexo llama adorno.
+_ENCABEZADO = re.compile(r"^#{1,6} ")
+_SEPARADOR = " · "
+
 _RAYA = "—"
 
 # `- **Algo:** ...` — la viñeta que abre con negrita y dos puntos.
@@ -95,8 +102,11 @@ def marcas_de_linea(linea):
     for _ in range(linea.count(_RAYA)):
         salida.append(("raya", "raya larga (—) como inciso"))
 
-    # El punto medio, descontando el de la cita `NN·ID`.
+    # El punto medio, descontando la cita `NN·ID` y —si es un encabezado— el
+    # separador del título, que es notación de la casa y no adorno.
     puntos = linea.count("·") - len(_CITA.findall(linea))
+    if _ENCABEZADO.match(linea):
+        puntos -= linea.count(_SEPARADOR)
     for _ in range(max(puntos, 0)):
         salida.append(("punto-medio", "punto medio (·) fuera de una cita `NN·ID`"))
 
