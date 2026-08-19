@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Done |
 
 ---
 
@@ -57,20 +57,25 @@ El 2026-08-14 el agente ofreció dos opciones donde [`02·F9`](../../../../base/
 
 ## 4. Criterios de aceptación
 
-### CA-01 — Al escribir el documento llega su capítulo
+### CA-01 — Al escribir llegan las reglas relacionadas
 
 ```gherkin
-Dado que se escribe un plan de trabajo, un plan de pruebas o un resultado de pruebas
+Dado que se escribe o se cambia un documento que un capítulo gobierna
 Cuando termina de escribirse
-Entonces llega completo el capítulo del flujo de trabajo
+Entonces llegan las reglas relacionadas: el capítulo dueño, las que citan al documento
+  y las que él cita
 ```
 
 **Cómo validarlo:**
 
-1. Escribir un `plan_trabajo.md` en un proyecto de prueba.
-2. Mirar lo que llegó. Resultado esperado: el texto del capítulo `02`, no su índice.
-3. Escribir una regla en `base/`. Resultado esperado: llega el capítulo de las meta-reglas.
-- **Aprobado cuando:** la regla que gobierna lo que se está haciendo está escrita, y no hay que ir a buscarla.
+1. Escribir un `plan_trabajo.md` en un proyecto de prueba. Resultado esperado: llegan las reglas del capítulo `02` que gobiernan el plan.
+2. Cambiar una regla de `base/` que cite a otra. Resultado esperado: **llega la citada**, aunque viva en otro capítulo.
+3. Comprobar que también llegan **las que la citan a ella**, que es por donde se rompe algo sin notarlo.
+- **Aprobado cuando:** lo que se relaciona con lo que se está tocando está delante, sin ir a buscarlo.
+
+> **Cambiado el 2026-08-18.** Antes decía *«llega completo el capítulo»*, que era la forma que se veía cuando se escribió la historia. Con el índice de [`citas.py`](../../../../validadores/citas.py) y las dependencias de [`metareglas.py`](../../../../validadores/metareglas.py) ya construidos, **mandar el capítulo entero es la forma cara de resolver algo que una consulta resuelve mejor**: el capítulo `02` pesa 98 KB y obliga a encontrar la regla uno mismo.
+>
+> **Y hay una diferencia que decide:** el capítulo completo solo trae a los vecinos del mismo capítulo. La consulta **cruza capítulos** — que es donde estaba el choque de `02·F2` con `02·F0`, y donde está la relación de `20·M17` con `00·ID7`.
 
 ### CA-02 — No se repite lo que ya llegó
 

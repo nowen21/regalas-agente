@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,9 +26,9 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 6 tareas · **detenida por las 2 dudas de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | la consulta, el enganche y sus casos | ☑ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -43,8 +43,8 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 3 de 3 |
 | **CA en "No"** | Los **CA-01 y CA-02 están en «No» de entrada**: hoy llega el índice al abrir la sesión, y hay que acordarse de abrir el capítulo. El CA-03 está resuelto para los enlaces, y falta que valga para la entrega |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -99,3 +99,11 @@
 **Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
 
 **La fase no arrancó todavía:** decidir no es ejecutar.
+
+---
+
+## El criterio cambió antes de construir
+
+El `CA-01` decía *«llega completo el capítulo»*. **Se devolvió al usuario y se cambió** a «llegan las reglas relacionadas», porque el volcado obliga a encontrar la relación uno mismo —que es lo que falla— y **solo trae a los vecinos del mismo capítulo**: tres de las cinco que dependen de `02·F2` viven en otros.
+
+Por [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA es la especificación, así que **no se podía cambiar de costado**.

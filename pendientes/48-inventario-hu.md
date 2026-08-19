@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 37 |
-| **Incompletas** | 37 |
+| **Completas** | 38 |
+| **Incompletas** | 36 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -94,7 +94,7 @@
 | EP-005 | [HU-007 — Recoger al abrir sesión lo que quedó guardado por fuera del repositorio](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-008 — El enganche que sostiene el resumen de la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-009 — Lo que gobierna cada frase llega puesto al abrir la sesión](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
-| EP-005 | [HU-010 — El capítulo que rige lo que se escribe llega al escribirlo](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-005 | [HU-010 — El capítulo que rige lo que se escribe llega al escribirlo](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-005 | [HU-011 — Dónde termina el estándar y dónde empieza el adaptador](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | EP-005 | [HU-012 — Hacer cumplir lo que hoy solo se recuerda](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | EP-006 | [HU-001 — Definir qué se guarda, con qué tipos y qué alcances](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-001-que-se-guarda-tipos-y-alcances/HU-001-que-se-guarda-tipos-y-alcances.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |

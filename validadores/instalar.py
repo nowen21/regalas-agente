@@ -203,6 +203,8 @@ HOOKS_CLAUDE = [
      "Revisando el resumen de la sesión...", "--modo aviso"),
     ("UserPromptSubmit", None, "hook_senales.py",
      "Revisando las señales del proyecto...", ""),
+    ("PostToolUse", "Write|Edit", "hook_relacionadas.py",
+     "Buscando las reglas relacionadas...", ""),
 ]
 
 

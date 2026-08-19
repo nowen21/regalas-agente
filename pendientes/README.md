@@ -23,7 +23,7 @@ La `P` es de prioridad, y el número es el puesto en la fila: **`P0` es lo más 
 | **P6** | Sin demanda | Cobertura opt-in que hoy nadie está pidiendo |
 | — | — | Cerrado |
 
-Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **23**. Ese mismo día se cerraron el 39, el 40, el 41, el 42, el 44 y el 45 —el 40, el 41, el 42, el 44 y el 45 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43, el 44, el 45 y el **46**, este último reportado por `dp`. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. El **2026-08-18** pasaron a `hecho/` los siete que ya estaban cerrados y seguían en la carpeta —el 23, el 32, el 36, el 46, el 52, el 54 y el 55—, cada uno con sus citas arrastradas por [`cerrar.py`](../validadores/cerrar.py). **Estar marcado «cerrado» y seguir en la carpeta es la mitad del cierre**, y era lo que hacía que el conteo de esta línea envejeciera solo. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
+Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24**. Ese mismo día se cerraron el 39, el 40, el 41, el 42, el 44 y el 45 —el 40, el 41, el 42, el 44 y el 45 nacieron y cerraron en la misma jornada— y se abrieron el 40, el 41, el 42, el 43, el 44, el 45 y el **46**, este último reportado por `dp`. **Ya no queda ningún `P0`:** lo más urgente hoy son los `P1`. El **2026-08-18** pasaron a `hecho/` los siete que ya estaban cerrados y seguían en la carpeta —el 23, el 32, el 36, el 46, el 52, el 54 y el 55—, cada uno con sus citas arrastradas por [`cerrar.py`](../validadores/cerrar.py). **Estar marcado «cerrado» y seguir en la carpeta es la mitad del cierre**, y era lo que hacía que el conteo de esta línea envejeciera solo. **La `P` envejece:** se revisa al cerrar un pendiente, que es cuando cambia lo que sigue. Dos ítems llevan la `P` de su punto más urgente y no la del archivo entero — el `29` y el `33`, que no son un pendiente sino varios.
 
 ## Abiertos
 
@@ -268,6 +268,14 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | 61 | **P2** | [El aviso de vuelta llega a uno de nueve proyectos](61-el-aviso-de-vuelta-llega-a-uno-de-nueve.md) | La ficha del 36 decía «abisar a **todos**» y llegó a **uno**: ocho proyectos no tienen carpeta `pendientes/`, así que no tienen dónde recibir nada — ni un aviso ni un pendiente propio. El aviso no falla, lo hace visible. |
 
 **Es el defecto del [36](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) un nivel más abajo:** allá el estándar no avisaba; acá avisa y el aviso se cae **sin ruido**. Lo destapó correr el comando de verdad por primera vez, no una revisión — en simulacro sobre proyectos de mentira los ocho tenían carpeta.
+
+### Lo que dejó instalar en un proyecto real (62)
+
+| # | P | Pendiente | Reportó |
+|---|---|---|---|
+| 62 | **P2** | [El instalador pide una segunda pasada y deja un registro vacío](62-el-instalador-pide-una-segunda-pasada-y-deja-un-registro-vacio.md) | `shopnest-mesa` |
+
+---
 
 ## Ningún pendiente vive suelto: en qué historia está cada uno
 

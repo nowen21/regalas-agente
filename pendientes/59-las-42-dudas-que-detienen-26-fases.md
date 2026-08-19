@@ -245,7 +245,17 @@ Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dic
 | 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro | Ya pasó con `pendientes/README.md`, y está escrito en el propio 22 |
 | 39 | ~~Enganche de la herramienta~~ → **CORREGIDA el 2026-08-18: enganche del control de versiones**, que es lo que ya está construido y funciona | **La decisión original era falsa.** Decía que el del control de versiones no corre cuando el agente escribe, y cada commit de esa sesión imprimió su comprobación: sí corre. Y corta el commit **venga de donde venga**, no solo del agente |
 | 41 | **Por carpeta, no por tipo de documento.** `base/` → capítulo `20`; `documentacion/epicas/` → `02` y `13`; `pendientes/` → `02·F23` | El tipo hay que adivinarlo; la carpeta se lee de la ruta, que es lo mismo que hace `cargador.py` |
-| 42 | **Solo la regla que aplica.** El capítulo entero repite el problema que `cargador.py` ya resolvió cargando índices | Está medido en la especificación de automatismos, regla 16 |
+| 42 | ~~Solo la regla que aplica~~ → **DEVUELTA el 2026-08-18: no era mía para decidir** | **Contradecía el `CA-01` de la historia**, que pide el capítulo **completo**. Por [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) manda el criterio de aceptación, no una decisión tomada aparte. **La decidí sin leer los criterios de la historia** — el mismo defecto de `M12`, tercera vez en el día |
+
+### Y una decisión devuelta
+
+**La 42 se anuló el mismo día que se tomó.** Decía «solo la regla que aplica»; el `CA-01` de [EP-005 · HU-010](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) pide el capítulo **completo**.
+
+**Por [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md), la redacción del CA es la especificación**, así que una decisión tomada en un pendiente no puede cambiarla. Si el criterio tiene que cambiar, se cambia **en la historia y con su aprobación** — no de costado.
+
+**Lo que la duda planteaba sigue siendo real:** el capítulo `02` entero pesa **98 KB** y mandarlo en cada escritura llena la ventana de contexto, que es el problema que `cargador.py` ya resolvió con índices. Pero eso no lo decide el pendiente: **lo decide quien apruebe la historia.**
+
+> **Es la tercera vez en el día que decido sin leer lo que ya estaba escrito.** Las dos anteriores fueron `F2` contra `F0`, y la 39 contra la evidencia de esta misma sesión.
 
 ---
 

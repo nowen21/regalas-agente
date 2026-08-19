@@ -387,6 +387,23 @@ Con el camino elegido `F2` sigue exigiendo lo mismo en todos los casos; lo únic
 
 **Lo que ordena:** dos fases de este repositorio se habían abierto declarando que no tienen especificación aparte, y hasta hoy era un incumplimiento silencioso.
 
+### H-34 · Al escribir una regla llegan las que se relacionan con ella
+
+**Sale de un defecto de esta misma sesión.** Se escribió una frase en `02·F2` que chocaba con `02·F0` —la regla que `F2` cita en su propio texto— y la fila 17 del checklist, *«no choca con ninguna regla vigente»*, se selló en verde sin mirar.
+
+**El usuario lo reformuló y ahí cambió todo:** no es un problema de cargar contexto, es de **buscar lo que se relaciona**. Con eso, el criterio de aceptación de la historia —*«llega completo el capítulo»*— resultó ser la forma cara de resolverlo.
+
+**Dos razones medidas para cambiarlo:**
+
+- El capítulo `02` pesa **98 KB**, y mandarlo entero **obliga a encontrar la relación uno mismo**, que es exactamente lo que falla.
+- **Solo trae a los vecinos del mismo capítulo.** De las cinco reglas que dependen de `02·F2`, **tres viven en otros** — `00·ID3`, `00·ID5` y `13·DOC3`.
+
+**El criterio se devolvió antes de tocar nada.** Por `02·F19` la redacción del CA es la especificación, así que una decisión tomada en un pendiente no podía cambiarla de costado — y eso fue lo que el usuario exigió.
+
+**Y no hizo falta base de datos.** La respuesta estaba en el repositorio: `citas.py` sabe dónde vive cada regla, `metareglas.py` lee las dependencias, y `M15` obliga a que toda cita lleve enlace. **Quién cita a quién ya estaba escrito; faltaba preguntarlo.**
+
+**El límite quedó en un caso de prueba:** una relación que nadie declaró no se encuentra. Eso hace que `M7` y `M15` dejen de ser trámite — son lo que hace la consulta posible.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
