@@ -14,7 +14,7 @@
 
 > Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
 
-**Qué texto se prueba.** El que decidan las dudas 1 a 3. Los casos están escritos contra **lo que la regla tiene que lograr** —que no queden dos numeraciones, y que nadie se lleve trabajo ajeno—, así que sirven para cualquiera de las tres salidas del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+**Qué texto se prueba.** El que decidan las dudas 1 a 3. Los casos están escritos contra **lo que la regla tiene que lograr** —que no queden dos numeraciones, y que nadie se lleve trabajo ajeno—, así que sirven para cualquiera de las tres salidas del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 
 **Condición de arranque.** La simulación corre sobre **dos copias** de este repositorio. Durante la simulación no se escribe en el repositorio vivo.
 

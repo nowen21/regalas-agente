@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Terminada |
 
 ---
 
@@ -122,9 +122,11 @@ Entonces la primera puede guardar lo suyo sin llevarse lo ajeno
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-002-HU-006-quien-manda-sobre-la-version](A-EP-002-HU-006-quien-manda-sobre-la-version/README.md) | CA-01 y CA-02 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [A-EP-002-HU-006-quien-manda-sobre-la-version](A-EP-002-HU-006-quien-manda-sobre-la-version/README.md) | CA-01 y CA-02 | **Cerrada 2026-08-18** · v23.11.0 · los dos CA en cumple |
 
-**La fase construye: acá no hay nada que retro-documentar.** Ninguna regla dice quién manda sobre `VERSION` con dos sesiones abiertas. Hay cinco casos ocurridos, el último del 2026-08-17. Las tres salidas del pendiente 22 siguen sobre la mesa y son la duda 1 de la fase.
+**Cerrada.** Nació [`20·M18`](../../../../base/20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) —lo compartido se relee al escribirlo, extendiendo a `M10`— y su comprobación dentro de `validar.py versionado`. De las tres salidas del pendiente 22 se eligió la primera.
+
+**Y quedó algo que la HU no preveía:** el cruce se rompe de dos maneras. El número repetido deja rastro —el registro tiene dos `15.4.0`— y la entrada perdida no. La `RN-04` solo se puede sostener con la regla, no con la comprobación.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -181,3 +183,4 @@ Entonces la primera puede guardar lo suyo sin llevarse lo ajeno
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-9 del 2026-08-14 |
+| 2026-08-18 | El agente | Cerrada con la fase `A-EP-002-HU-006`: nace `20·M18` y su validador. v23.11.0 |

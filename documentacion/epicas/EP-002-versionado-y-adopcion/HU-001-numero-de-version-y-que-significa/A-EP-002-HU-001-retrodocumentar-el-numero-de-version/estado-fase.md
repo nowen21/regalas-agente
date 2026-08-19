@@ -72,14 +72,14 @@
 |---|---|
 | La prueba lee el número de `VERSION` en vez de traerlo escrito: una versión escrita a mano envejece en la subida siguiente | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | Una subida mal clasificada se anota, no se corrige: el registro es rastro, y reescribirlo borra lo que pasó | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) y RN-04 de [HU-002](../../HU-002-registro-de-cambios/HU-002-registro-de-cambios.md) |
-| El tramo de las dos numeraciones vivas se declara como excepción **en el caso**, no se silencia en la prueba | §3.3 del [`plan_pruebas.md`](plan_pruebas.md) y pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| El tramo de las dos numeraciones vivas se declara como excepción **en el caso**, no se silencia en la prueba | §3.3 del [`plan_pruebas.md`](plan_pruebas.md) y pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 
 ---
 
 ## 3. Pendiente / preguntas abiertas
 
 - **La aprobación del plan.** Es lo único que falta para arrancar.
-- **El tramo de las dos numeraciones vivas del 2026-08-14** (pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md)) va a hacer ruido en la prueba de continuidad. Se documenta, no se tapa.
+- **El tramo de las dos numeraciones vivas del 2026-08-14** (pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md)) va a hacer ruido en la prueba de continuidad. Se documenta, no se tapa.
 - **Si otra sesión está tocando `validadores/pruebas.py`** (riesgo `R-03`): se guarda solo lo propio.
 
 ---

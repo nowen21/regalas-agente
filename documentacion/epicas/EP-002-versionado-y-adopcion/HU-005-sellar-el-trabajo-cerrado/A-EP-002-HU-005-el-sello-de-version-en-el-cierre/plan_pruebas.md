@@ -189,7 +189,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | **Crítica** | Que el cambio vuelva incumplidoras a las fases cerradas (riesgo `R-01`) | Inmediato. Se pone la fecha de corte antes de seguir |
 | **Alta** | Que un cierre sin sello pase sin hallazgo | Inmediato — el CA-01 queda en «No» |
 | **Media** | Que el sello se pueda escribir sin decir de dónde salió (riesgo `R-02`) | Antes de cerrar: el modelo tiene que pedirlo |
-| **Media** | Que otra sesión esté tocando `plantillas/` o `VERSION` (riesgo `R-03`) | Se comprueba `VERSION` justo antes de subirla, por el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| **Media** | Que otra sesión esté tocando `plantillas/` o `VERSION` (riesgo `R-03`) | Se comprueba `VERSION` justo antes de subirla, por el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | **Baja** | Fases cerradas sin sello | Se listan, no se rellenan: completarlas sería inventar el dato |
 
 Se diagnostica y se deja escrito. Un ciclo nuevo **se agrega** al `resultado_pruebas.md` sin pisar el anterior.

@@ -50,7 +50,7 @@
 **Lo que no existe:**
 
 1. **La prueba del orden.** Ninguna corrida registrada muestra las estaciones recorridas una por una.
-2. **La prueba de que se retoma sin perder el hilo.** Y hay evidencia en contra: varias veces una sesión no supo lo que otra estaba haciendo — los cinco casos del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), incluida una en que casi se hace el mismo trabajo dos veces.
+2. **La prueba de que se retoma sin perder el hilo.** Y hay evidencia en contra: varias veces una sesión no supo lo que otra estaba haciendo — los cinco casos del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), incluida una en que casi se hace el mismo trabajo dos veces.
 3. **El incremento en la especificación.**
 
 ### 2.1 Archivos que se crean o modifican  ·  `F14` Q9

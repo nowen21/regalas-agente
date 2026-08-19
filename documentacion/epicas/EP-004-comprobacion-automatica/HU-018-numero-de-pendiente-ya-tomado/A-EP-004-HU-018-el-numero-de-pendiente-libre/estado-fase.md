@@ -74,7 +74,7 @@
 | El próximo libre es el **siguiente al mayor**, no el primer hueco: un hueco puede ser un pendiente cerrado y movido, y reusar su número rompe las citas que lo nombran | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | El programa **avisa y no asigna**: asignar el número pisaría lo que otra sesión esté haciendo | §2.6 del plan |
 | El cruce se reporta en los dos sentidos. La línea sin archivo es el síntoma de un pendiente movido a `hecho/` sin actualizar el índice, y es el caso que hoy se da | §2.6 del plan |
-| Avisar no evita el choque: lo muestra. Repartir turnos es la decisión del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), y ese límite queda escrito | Riesgo `R-01` y CP-004 del [`plan_pruebas.md`](plan_pruebas.md) |
+| Avisar no evita el choque: lo muestra. Repartir turnos es la decisión del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), y ese límite queda escrito | Riesgo `R-01` y CP-004 del [`plan_pruebas.md`](plan_pruebas.md) |
 
 ---
 

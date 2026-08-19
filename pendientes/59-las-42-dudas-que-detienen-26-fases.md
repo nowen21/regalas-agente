@@ -112,7 +112,7 @@ Cuatro fases preguntan si esperan a otra. Se contestan mirando el orden, no una 
 | # | Fase | Duda |
 |---|---|---|
 | 35 | [`A-EP-001-HU-006`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-006-capa-propia-del-proyecto/A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/plan_trabajo.md) | ¿El ajuste que contradice el núcleo se escribe en el proyecto de prueba, o basta simularlo? |
-| 36 | [`A-EP-002-HU-006`](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/A-EP-002-HU-006-quien-manda-sobre-la-version/plan_trabajo.md) | ¿Cuál de las tres salidas del [pendiente 22](22-dos-sesiones-versionando-a-la-vez.md)? |
+| 36 | [`A-EP-002-HU-006`](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/A-EP-002-HU-006-quien-manda-sobre-la-version/plan_trabajo.md) | ¿Cuál de las tres salidas del [pendiente 22](hecho/dos-sesiones-versionando-a-la-vez.md)? |
 | 37 | La misma | ¿Cubre cualquier archivo único compartido, o solo `VERSION` y el registro? |
 | 38 | [`A-EP-004-HU-011`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/plan_trabajo.md) | ¿Un subcomando con dos modos, o dos subcomandos? |
 | 39 | [`A-EP-005-HU-004`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-004-control-del-mensaje-de-cambio/A-EP-005-HU-004-retrodocumentar-el-control-del-mensaje-de-cambio/plan_trabajo.md) | ¿El disparo es enganche de la herramienta o del control de versiones? |
@@ -241,7 +241,7 @@ Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dic
 | # | Decisión | Por qué |
 |---|---|---|
 | 35 | **Se escribe en un proyecto de mentira, en carpeta temporal.** Nunca en uno real | [`00·N4`](../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) |
-| 36 | **La salida 1 del [pendiente 22](22-dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar | La 3 —una sola sesión— ya se incumplió dos veces esta semana. Una regla que la práctica salta no es una regla |
+| 36 | **La salida 1 del [pendiente 22](hecho/dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar | La 3 —una sola sesión— ya se incumplió dos veces esta semana. Una regla que la práctica salta no es una regla |
 | 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro | Ya pasó con `pendientes/README.md`, y está escrito en el propio 22 |
 | 39 | ~~Enganche de la herramienta~~ → **CORREGIDA el 2026-08-18: enganche del control de versiones**, que es lo que ya está construido y funciona | **La decisión original era falsa.** Decía que el del control de versiones no corre cuando el agente escribe, y cada commit de esa sesión imprimió su comprobación: sí corre. Y corta el commit **venga de donde venga**, no solo del agente |
 | 41 | **Por carpeta, no por tipo de documento.** `base/` → capítulo `20`; `documentacion/epicas/` → `02` y `13`; `pendientes/` → `02·F23` | El tipo hay que adivinarlo; la carpeta se lee de la ruta, que es lo mismo que hace `cargador.py` |

@@ -186,7 +186,7 @@ No aplica: no cambia nada de lo instalado. Sin subida de versión, porque no se 
 |---|---|---|---|---|
 | B-01 | La duda 1 sin resolver | Bloquea el CA-03 | Elegir el lector con el usuario | Abierto |
 | R-01 | Que aparezcan entradas sin todo lo que pide la RN-02 | Se destapa trabajo de fondo | Se listan como hallazgo; el registro no se reescribe | Abierto |
-| R-02 | Que la prueba del CA-01 falle por el tramo de las dos numeraciones vivas | Suite roja por un hecho conocido | Se documenta la excepción, atada al pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) | Abierto |
+| R-02 | Que la prueba del CA-01 falle por el tramo de las dos numeraciones vivas | Suite roja por un hecho conocido | Se documenta la excepción, atada al pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) | Abierto |
 | R-03 | Que otra sesión esté tocando `validadores/pruebas.py` | Pisar trabajo ajeno | Se guarda solo lo propio | Abierto |
 
 ---

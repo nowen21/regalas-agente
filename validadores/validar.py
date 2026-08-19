@@ -35,6 +35,7 @@ import instalar         # noqa: E402
 import marcas           # noqa: E402
 import metareglas       # noqa: E402
 import migraciones      # noqa: E402
+import numeracion       # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
 import rendimiento      # noqa: E402
@@ -116,6 +117,11 @@ def cmd_versionado(a):
         hallazgos += versionado.validar(
             repo, repo if etiqueta == "." else f"{etiqueta}/",
             solo_preparados=a.preparados)
+
+    # `22` · Y la numeración en sí: que no se haya quedado atrás de lo guardado,
+    # que tenga su entrada y que no repita un número. Va acá y no aparte porque
+    # es la misma pregunta —¿este cambio está versionado?— vista por el número.
+    hallazgos += numeracion.validar(raiz)
 
     alcance = "lo que entra en el commit" if a.preparados else "todo el repositorio"
     return reportar(hallazgos, f"Qué está versionado ({alcance}) · {relativo(raiz)}")

@@ -31,7 +31,7 @@ El backlog de [`pendientes/`](«RUTA-ESTANDAR»/pendientes/) se numera a mano, l
 
 El 2026-08-16 pasó: dos sesiones trabajaban el mismo repositorio, una tomó el `52` y la otra iba a tomarlo también. Se vio de casualidad, al listar la carpeta antes de escribir y encontrar el archivo ya ahí. Si el orden hubiera sido el otro, el segundo archivo habría pisado al primero sin que nadie se enterara.
 
-No es un caso nuevo: el pendiente [22](«RUTA-ESTANDAR»/pendientes/22-dos-sesiones-versionando-a-la-vez.md) plantea lo mismo un piso más arriba, con dos sesiones subiendo `VERSION` a la vez, y tiene tres opciones sin decidir. Esta historia **no decide eso**: comprueba lo que ya se puede comprobar sin acuerdo previo — que el número esté libre y que el índice y la carpeta digan lo mismo.
+No es un caso nuevo: el pendiente [22](«RUTA-ESTANDAR»/pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) plantea lo mismo un piso más arriba, con dos sesiones subiendo `VERSION` a la vez, y tiene tres opciones sin decidir. Esta historia **no decide eso**: comprueba lo que ya se puede comprobar sin acuerdo previo — que el número esté libre y que el índice y la carpeta digan lo mismo.
 
 El número importa porque los pendientes se citan entre sí por número, y [su README](«RUTA-ESTANDAR»/pendientes/README.md) dice que no se renumera nunca: renumerar rompe los enlaces. Un número duplicado no se arregla después.
 
@@ -51,7 +51,7 @@ El número importa porque los pendientes se citan entre sí por número, y [su R
 
 ### 3.3 Fuera de alcance
 
-- Decidir cómo se coordinan dos sesiones abiertas. Esa decisión es del pendiente [22](«RUTA-ESTANDAR»/pendientes/22-dos-sesiones-versionando-a-la-vez.md) y no la toma un programa.
+- Decidir cómo se coordinan dos sesiones abiertas. Esa decisión es del pendiente [22](«RUTA-ESTANDAR»/pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) y no la toma un programa.
 - Bloquear la escritura. El programa avisa; quien escribe decide.
 - Los huecos de numeración: son historia y no se rellenan.
 
@@ -168,7 +168,7 @@ Y también reporta la línea del índice cuyo archivo no existe
 
 | Tipo | Descripción | Impacto |
 |---|---|---|
-| Dependencia | Pendiente [22](«RUTA-ESTANDAR»/pendientes/22-dos-sesiones-versionando-a-la-vez.md), que decide cómo se coordinan dos sesiones. Esta HU no lo espera: comprueba lo que ya es cierto sin esa decisión | Bajo |
+| Dependencia | Pendiente [22](«RUTA-ESTANDAR»/pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), que decide cómo se coordinan dos sesiones. Esta HU no lo espera: comprueba lo que ya es cierto sin esa decisión | Bajo |
 | Dependencia | HU-003, porque la salida usa el formato de hallazgo ya definido | Medio |
 | Riesgo | Que avise cuando el número ya se escribió y sea tarde | Mitiga a medias: avisa, no bloquea. Bloquear es la decisión del 22 |
 

@@ -105,10 +105,13 @@ No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy n
 | `M10` | `CHANGELOG.md` y `VERSION` suben juntos — ya lo hace `version.py`, falta atarlo a la regla |
 | `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
 | `M17` | la entrada del registro abre sin identificador de regla ni ruta de archivo en su primer párrafo |
+| `M18` | sobre la numeración: `VERSION` no se quedó atrás de lo guardado, tiene su entrada, y el registro no repite un número |
 
 `M14` es **parcial**: que la regla haya recorrido de verdad los nueve pasos no lo decide un script, pero la **presencia y el resultado** del bloque sí.
 
 `M17` es **parcial**, y por el mismo motivo que `M14`: que la entrada **se entienda** lo decide quien lee. Lo que sí se cuenta es que su primer párrafo no traiga identificadores ni rutas, que es lo que la volvía ilegible en las 83 anteriores.
+
+`M18` es **parcial** por dos motivos. **Releer al escribir no se ve en el archivo**, se ve en el hábito: lo que sí se cuenta es el resultado de no hacerlo —un número repetido, un hueco, un `VERSION` por debajo de lo guardado—, y eso lo reporta `validar.py versionado`. Y **solo se cuenta sobre la numeración**: en un índice o en un pendiente el mismo defecto deja rastros distintos, y no hay una forma única de contarlos.
 
 `M16` es del mismo capítulo pero **no se valida en seco** (🔶): el catálogo vive en el proyecto. El script abre `reglas-proyecto.md`, comprueba que cada `P` trae su **Respaldo** y que el ID citado existe en `base/`. Que el criterio citado sea de verdad el que la `P` concreta lo decide quien lee.
 

@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.11.0 — 2026-08-18
+
+**MENOR** (una regla nueva sobre cómo trabajar; ningún proyecto tiene que cambiar nada).
+
+**Trabajar con dos ventanas abiertas sobre lo mismo hacía perder trabajo.** Cada una anotaba el número de la versión cuando empezaba, no cuando terminaba, y como las dos empezaban con el mismo número las dos escribían el mismo. Pasó cuatro veces en tres archivos distintos, y una de esas veces se perdió una anotación entera.
+
+Ahora la norma es mirar el dato justo antes de escribirlo, no al empezar. Eso quita de encima la pregunta de si hay alguien más trabajando: si se mira en el momento, no hace falta saberlo.
+
+**El detalle.** Nace [`20·M18`](base/20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) —*lo compartido se lee un instante antes de escribirlo*—, que extiende a [`M10`](base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md): `M10` ya pedía que el cambio, su entrada y la subida fueran en el mismo movimiento, pero no decía **cuándo** se lee lo que se va a escribir. Es el [pendiente 22](pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), cerrado como la fase [`A-EP-002-HU-006`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/A-EP-002-HU-006-quien-manda-sobre-la-version/README.md) con sus dos criterios en cumple. La comprobación es [`validadores/numeracion.py`](validadores/numeracion.py), dentro de `validar.py versionado`, con 19 casos.
+
+**Lo que destapó la simulación:** el cruce se rompe de dos maneras y solo una deja rastro. Si al resolver el choque se conservan las dos entradas queda un número repetido, que se ve; si se conserva una, **falta una entrada y no se ve**. Por eso el registro tiene dos `15.4.0` —marcadas, no renumeradas: un proyecto pudo haberla adoptado— y por eso la regla vale más que su validador, que solo llega después.
+
 ## 23.10.0 — 2026-08-18
 
 **PARCHE** — se anotó que una regla ya existente cubría un caso que parecía sin resolver. **Ninguna regla cambió de texto.**
@@ -761,7 +773,13 @@ La definición de **brief** es literal del usuario y no se toca.
 - **La corrida 2 de las pruebas dispara el enganche como orden del sistema**, con el JSON que le manda Claude Code, sobre un proyecto que arma el instalador. Ninguna precondición se monta a mano: eso fue lo que dejó pasar el defecto. La fase no se declara cumplida hasta que el archivo aparezca solo en una sesión real.
 - **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: el detalle de un caso pasa a tener cinco partes fijas — el problema que resuelve, la precondición, qué hacer para que cumpla, con qué reprueba y los pasos que se siguieron de verdad. Con el detalle a medias un caso puede pasar habiendo probado otra cosa, y eso fue lo que pasó. Queda escrito que si lo ejecutado no son los pasos de "para que cumpla", el caso no cumple, aunque haya salido bien.
 
-## 15.4.0 — 2026-08-15
+## 15.4.0 — 2026-08-15  ·  ⚠ **número repetido**
+
+> **Este número está usado dos veces**, y la de arriba es del día anterior. Lo dejaron dos sesiones abiertas a la vez sobre el mismo repositorio, que es lo que describe el [pendiente 22](pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
+>
+> **No se renumera a propósito.** Un proyecto pudo haber adoptado «15.4.0», y cambiarle el número ahora le movería el piso sin que se entere. Queda marcado, que es lo honesto: quien adoptó esa versión tiene **las dos cosas**, la de arriba y esta.
+>
+> Desde la v23.11.0 esto no puede volver a pasar sin que se diga: `validar.py versionado` lo reporta.
 
 **MENOR** (una sección más en una plantilla; ningún brief ya escrito deja de valer).
 

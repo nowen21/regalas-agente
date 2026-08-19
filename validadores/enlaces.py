@@ -211,6 +211,36 @@ def _es_vecino(destino):
     return bool(ruta) and "/" not in ruta and not ruta.startswith(".")
 
 
+def reparar_texto(contenido, archivo, raiz=None, incluir_vecinos=False):
+    """El arreglo de `DOC14` sobre **un texto en memoria**. `(texto, cuántos)`.
+
+    Existe porque quien **mueve** un archivo cambia el destino de cada enlace
+    que lo citaba, y el texto que lo nombraba queda diciendo dónde vivía antes.
+    `cerrar.py` la llama en el mismo paso, para no dejar atrás lo que acaba de
+    desordenar: sin esto el desajuste aparecía dos cierres después, en la suite,
+    lejos de lo que lo causó.
+
+    **Respeta las mismas exclusiones** que `reparar_formato` —transcripción del
+    chat, palabras del usuario, vecino de la misma carpeta— porque son la misma
+    decisión y separarlas es como se desincronizan.
+    """
+    raiz = raiz or RAIZ
+    if _es_transcripcion(archivo) or _es_del_usuario(raiz, archivo):
+        return contenido, 0
+
+    cambios = []
+    for _n, texto, destino in enlaces(contenido):
+        if not incluir_vecinos and _es_vecino(destino):
+            continue
+        esperado = _texto_esperado(raiz, archivo, texto, destino)
+        if esperado is not None:
+            cambios.append((f"[{texto}]({destino})", f"[{esperado}]({destino})"))
+
+    for viejo, nuevo in cambios:
+        contenido = contenido.replace(viejo, nuevo)
+    return contenido, len(cambios)
+
+
 def reparar_formato(raiz=None, escribir=False, incluir_vecinos=False):
     """Reescribe el **texto** de los enlaces para que diga la ruta desde la raíz.
 

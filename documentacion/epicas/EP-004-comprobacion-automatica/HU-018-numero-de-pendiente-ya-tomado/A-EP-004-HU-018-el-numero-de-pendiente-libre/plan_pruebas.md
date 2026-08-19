@@ -45,7 +45,7 @@
 - **El cruce en los dos sentidos** — archivo sin línea y línea sin archivo. El segundo es el síntoma de un pendiente movido a `hecho/` sin actualizar el índice, y es el que hoy se da.
 - **El caso ocurrido como dato** — el 2026-08-16 dos sesiones tomaron el número 52 y dos archivos numerados 40 convivieron media hora. El caso del CA-02 reproduce esa situación.
 - **Línea base antes de medir** — el riesgo `R-02`: hoy `validar.py estandar` ya reporta dos pendientes que la carpeta tiene y el índice no. Se anota **antes**, para no confundirlo con lo nuevo.
-- **El límite del aviso, dicho** — el riesgo `R-01`: avisar no evita el choque, lo muestra. Repartir turnos es la decisión del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), y eso queda escrito.
+- **El límite del aviso, dicho** — el riesgo `R-01`: avisar no evita el choque, lo muestra. Repartir turnos es la decisión del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), y eso queda escrito.
 
 ### 3.5 Alcance de la corrida
 
@@ -160,7 +160,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Pedir el próximo libre **antes** de escribir el archivo | Se puede: la comprobación corre sola |
 | 2 | Comprobar que el programa no crea ni renombra archivos | No los crea |
 | 3 | Simular dos sesiones que piden el número a la vez | Las dos reciben el mismo: el aviso no reparte turnos |
-| 4 | Dejar escrito ese límite, atado al pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) | Queda escrito |
+| 4 | Dejar escrito ese límite, atado al pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) | Queda escrito |
 
 **Resultado esperado final:** el aviso sirve para lo que sirve, y lo que no resuelve queda dicho.
 

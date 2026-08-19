@@ -166,8 +166,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 ### H-17 · Dos sesiones se pisaron el número de pendiente
 
 - **Qué pasó:** esta sesión creó el pendiente `48` y otra sesión abierta al mismo tiempo creó otros dos con ese mismo número. Se le cedió el número y este se corrió al `52`.
-- **Por qué importa:** es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) —dos sesiones versionando a la vez— pasando en vivo, y ahora sobre el backlog en vez de sobre el `CHANGELOG`. Se resolvió a mano porque nada lo impide.
-- **Estado:** **anotado** → suma su tercer caso al [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que queda ampliado: lo que dos sesiones se pisan no es solo la versión, es cualquier numeración que se calcule mirando lo que ya existe.
+- **Por qué importa:** es el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) —dos sesiones versionando a la vez— pasando en vivo, y ahora sobre el backlog en vez de sobre el `CHANGELOG`. Se resolvió a mano porque nada lo impide.
+- **Estado:** **anotado** → suma su tercer caso al [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), que queda ampliado: lo que dos sesiones se pisan no es solo la versión, es cualquier numeración que se calcule mirando lo que ya existe.
 - **Nace en:** 2026-08-16 · sesión 7
 
 ---

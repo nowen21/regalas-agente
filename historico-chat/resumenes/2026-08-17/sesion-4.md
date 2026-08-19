@@ -93,7 +93,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Y hay una falla que no es de esta sesión.** `validar.py estandar` reporta un enlace roto en `B-EP-004-HU-002-el-analizador-ve-todas-las-reglas`, que es una de las carpetas sin rastrear de la otra sesión. No se tocó.
 
-**Por qué importa.** Esto es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) pasando en vivo, y hoy se resolvió a mano leyendo horas de modificación. **Nada lo impide ni lo avisa.** El día que las dos sesiones toquen el mismo archivo, una pisa a la otra en silencio.
+**Por qué importa.** Esto es el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) pasando en vivo, y hoy se resolvió a mano leyendo horas de modificación. **Nada lo impide ni lo avisa.** El día que las dos sesiones toquen el mismo archivo, una pisa a la otra en silencio.
 
 ### H-10 · El paso que nadie hacía era el sexto, y hay tres cierres que lo prueban
 
@@ -416,6 +416,39 @@ Con el camino elegido `F2` sigue exigiendo lo mismo en todos los casos; lo únic
 
 ---
 
+### H-36 · El cruce de dos sesiones se rompe de dos maneras, y solo una deja rastro
+
+**El [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) quedó cerrado** con [`20·M18`](../../../base/20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) — *lo compartido se lee un instante antes de escribirlo*. Se simuló con dos copias del repositorio, y el resultado sin la regla no fue el que se esperaba.
+
+| Cómo se resuelve el choque | Qué queda | ¿Se ve? |
+|---|---|---|
+| Se conservan las dos entradas con el mismo número | número repetido | ✅ sí |
+| Se conserva una de las dos | **falta una entrada** | ❌ no |
+
+**El registro tiene la segunda:** dos entradas para la `15.4.0`, del 14 y del 15 de agosto. **La primera no se puede contar**, porque perderse es justamente no dejar rastro — y `validar.py versionado` daba por limpia la corrida en que se perdió una.
+
+**Eso es lo que hace que la regla valga más que su validador:** es lo único que actúa antes del choque. La comprobación llega después y ve la mitad de los casos.
+
+**La `15.4.0` no se renumera.** Un proyecto pudo haberla adoptado, y cambiarle el número ahora le movería el piso sin que se entere. Queda marcada en su propio título, y el validador la reporta como aviso en vez de falla.
+
+### H-37 · Se estaba abriendo un pendiente en medio de cerrarlos, y la decisión ya estaba tomada
+
+**Lo cazó el usuario:** *«porque en la solución de pendientes está creando pendientes?»*.
+
+Al cerrar el 22 aparté sus ampliaciones —el número de un pendiente, los índices compartidos, enterarse de que hay otra sesión viva— a un pendiente 63 nuevo, alegando que construir más de lo que el criterio pide es lo que `02·F20` manda proponer.
+
+**Y estaba mal por dos razones.** La primera: abrir un pendiente mientras se cierran deja la cola donde estaba. La segunda, peor: **el alcance ya lo había decidido el usuario hoy** —*«cualquier archivo único compartido»*, la duda 2 de esa misma fase—. Invocar `F20` era desandar una decisión tomada.
+
+`M18` se escribió en su forma general. Los cuatro casos del pendiente son el mismo defecto en archivos distintos, y acotarla a `VERSION` habría dejado fuera tres roturas que ya ocurrieron. **De paso contesta la pregunta que el pendiente daba por sin decidir:** releyendo al escribir no hace falta enterarse de que hay otra sesión viva.
+
+### H-38 · `cerrar.py` desordenaba el texto de los enlaces que arreglaba
+
+Al mover un pendiente a `hecho/` reescribía el **destino** de cada enlace que lo citaba y dejaba el **texto** diciendo dónde vivía antes — que es lo que `13·DOC14` prohíbe.
+
+**No se veía al cerrar, sino dos cierres después**, cuando la suite lo reportaba lejos de lo que lo causó. Ahora repara las dos partes en el mismo paso, compartiendo el arreglo con el reparador para que no puedan divergir.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -426,9 +459,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ los 30 siguen abiertos, cada uno con su historia declarada |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **23** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
-| Lo que se hizo está aprobado y guardado | ☑ commit `1c36481` · **falta** el de la fase B y el pendiente 60 |
+| Lo que se hizo está aprobado y guardado | ☐ **falta el commit del 22 y de la 23.11.0**, que se pide aparte |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
@@ -438,4 +471,4 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 **Lo que sigue, cuando se retome:** aprobar y ejecutar la fase `B-EP-004-HU-016`. Sin ella el enrutamiento de hoy es un estado que nada sostiene. Y decidir el [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), que es lo único que permite escribir el texto de la regla.
 
-<!-- aviso: resumen sin hallazgos -->
+<!-- aviso: falta decir si la sesión se puede cerrar -->

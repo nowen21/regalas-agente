@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-pendientes-del-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [pendientes/22-dos-sesiones-versionando-a-la-vez.md](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que recoge el choque; `G9` está hoy publicada en [base/09-git.md](../../../base/09-git.md).
+- **Dónde queda:** [pendientes/hecho/dos-sesiones-versionando-a-la-vez.md](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), que recoge el choque; `G9` está hoy publicada en [base/09-git.md](../../../base/09-git.md).
 - **Nace en:** 2026-08-13 · pendientes del diplomado de IA.
 - **Cerrado en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Con qué se retoma:** —.
@@ -94,6 +94,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-pendientes-del-
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3 y H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ los cinco del H-1 **son** los pendientes; H-4 quedó en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ los cinco del H-1 **son** los pendientes; H-4 quedó en el [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ los pendientes y las ocho historias de EP-001; `G9` esperó a que se liberara `VERSION` |

@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Decidir quién manda cuando dos sesiones escriben a la vez.** Es la decisión de fondo del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) y de [EP-002 · HU-006](../../../EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md). Esta HU avisa; no reparte turnos.
+- **Decidir quién manda cuando dos sesiones escriben a la vez.** Es la decisión de fondo del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) y de [EP-002 · HU-006](../../../EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md). Esta HU avisa; no reparte turnos.
 - **Asignar el número automáticamente.** Avisar y asignar son cosas distintas: asignar entra si el usuario lo pide.
 - **Arreglar el índice del backlog.** Los dos que faltan hoy vienen de otra sesión sin guardar: se cuentan, no se tocan.
 
@@ -178,7 +178,7 @@ El estándar está en producción. Es **aditivo**: una comprobación más que av
 
 | ID | Riesgo o bloqueo | Impacto | Acción | Estado |
 |---|---|---|---|---|
-| R-01 | Que el aviso llegue tarde, cuando el archivo ya está escrito | No evita el choque, solo lo muestra | Es el límite de avisar: repartir turnos es la decisión del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| R-01 | Que el aviso llegue tarde, cuando el archivo ya está escrito | No evita el choque, solo lo muestra | Es el límite de avisar: repartir turnos es la decisión del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | R-02 | Que el desfase de hoy —dos pendientes sin línea— haga fallar la corrida propia | Se confunde con lo nuevo | Se anota el estado antes de empezar |
 | R-03 | Cruce con la fase de HU-016, que puede crear el mismo archivo | Dos sesiones sobre el mismo programa | La segunda relee y se suma en vez de reescribir |
 

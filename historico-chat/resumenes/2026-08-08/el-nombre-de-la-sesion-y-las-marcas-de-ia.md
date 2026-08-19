@@ -114,7 +114,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** commit `ab314a1`, y el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que recoge el mismo choque.
+- **Dónde queda:** commit `ab314a1`, y el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), que recoge el mismo choque.
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Con qué se retoma:** —.

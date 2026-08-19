@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-plan-de-trabajo
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** la memoria [no tocar el trabajo de otras sesiones](../../memory/no-tocar-trabajo-de-otras-sesiones.md) y el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+- **Dónde queda:** la memoria [no tocar el trabajo de otras sesiones](../../memory/no-tocar-trabajo-de-otras-sesiones.md) y el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 - **Nace en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Cerrado en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Con qué se retoma:** —.

@@ -41,6 +41,7 @@ from urllib.parse import unquote
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from enlaces import reparar_texto
 from comun import (EXCLUIDAS, RAIZ, enlaces, leer, preparar_salida,  # noqa: E402
                    relativo)
 
@@ -191,6 +192,15 @@ def mover(raiz, origen, destino, escribir=False):
             texto, salientes = reescribir_salientes(texto, origen, destino)
             cambios += salientes
             texto_movido = texto
+
+        # `DOC14` pide que el texto del enlace diga dónde vive el destino. Al
+        # cambiar el destino, el texto que lo nombraba queda mintiendo — y eso
+        # no se veía hasta que la suite lo reportó dos cierres después.
+        if cambios:
+            texto, arreglados = reparar_texto(texto, archivo, raiz)
+            cambios += arreglados
+            if archivo == origen:
+                texto_movido = texto
 
         if cambios:
             tocados.append((archivo, cambios))

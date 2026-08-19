@@ -175,7 +175,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** EP-002 · HU-001, el número de versión y qué significa cada parte.
 - **Dispara:** EP-002 · HU-006, quién sube la versión cuando hay dos sesiones abiertas. Ya está escrita.
 - **Orden de resolución:** 6 de 7 · estorba, pero no rompe nada.
-- **Dónde queda:** señal S-005 · [pendientes/22-dos-sesiones-versionando-a-la-vez.md](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+- **Dónde queda:** señal S-005 · [pendientes/hecho/dos-sesiones-versionando-a-la-vez.md](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** una opción es que la versión se suba al commitear y no al editar.

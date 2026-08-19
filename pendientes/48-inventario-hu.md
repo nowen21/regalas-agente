@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 38 |
-| **Incompletas** | 36 |
+| **Completas** | 39 |
+| **Incompletas** | 35 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -56,7 +56,7 @@
 | EP-002 | [HU-003 — Declarar en el proyecto la versión adoptada y la fecha](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-002 | [HU-004 — Avisar al abrir sesión cuando el proyecto quedó atrás](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-002 | [HU-005 — Sellar el trabajo cerrado con su versión](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-005-sellar-el-trabajo-cerrado/HU-005-sellar-el-trabajo-cerrado.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
-| EP-002 | [HU-006 — Quién sube la versión cuando hay dos sesiones abiertas](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-002 | [HU-006 — Quién sube la versión cuando hay dos sesiones abiertas](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-003 | [HU-001 — Definir cómo se marca un espacio por llenar en un modelo](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-003 | [HU-002 — Crear los modelos del encargo: brief, épica, historia de usuario](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-003 | [HU-003 — Crear los modelos de la fase: plan de trabajo, plan de pruebas, cierre](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |

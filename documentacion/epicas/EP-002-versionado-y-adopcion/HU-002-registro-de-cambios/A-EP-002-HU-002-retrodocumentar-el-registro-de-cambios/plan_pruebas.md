@@ -195,7 +195,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | **Crítica** | Que una versión citada en una fase sellada no exista en el registro | Se anota. Corregirlo es otra fase: el registro no se reescribe |
 | **Alta** | Que aparezcan entradas sin lo que pide la RN-02 (riesgo `R-01`) | Se listan como hallazgo |
 | **Alta** | Que el lector del CP-004 no pueda decir a quién le afecta un cambio | Antes de cerrar — la entrada no sirve para quien llega después |
-| **Media** | Que la prueba del CA-01 falle por el tramo de las dos numeraciones vivas | Se documenta la excepción, atada al pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| **Media** | Que la prueba del CA-01 falle por el tramo de las dos numeraciones vivas | Se documenta la excepción, atada al pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | **Baja** | Entradas que nombran la regla por descripción y no por identificador | Se listan |
 
 Se diagnostica y se deja escrito. Un ciclo nuevo **se agrega** al `resultado_pruebas.md` sin pisar el anterior.

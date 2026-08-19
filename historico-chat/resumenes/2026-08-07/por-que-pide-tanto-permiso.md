@@ -90,7 +90,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-por-que-pide-ta
 ### H-6 · La renumeración de `F4` se cruzó con otra sesión trabajando
 
 - **Qué pasó:** mientras esta sesión iba a commitear, otra estaba renumerando `F4.1`–`F4.5` a `F14`–`F20`. El validador falló con tres enlaces rotos, y después quedó una cita viva apuntando a `F4.3` como si todavía rigiera.
-- **Por qué importa:** dos sesiones tocando el mismo capítulo dejan el árbol a medio camino, y quien commitea no sabe si lo que ve está terminado. El mismo choque vuelve a aparecer días después como [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+- **Por qué importa:** dos sesiones tocando el mismo capítulo dejan el árbol a medio camino, y quien commitea no sabe si lo que ve está terminado. El mismo choque vuelve a aparecer días después como [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 - **Qué lo soluciona:** arreglar lo roto antes de subir, y revisar las citas al final.
 - **Qué se decidió:** se arreglaron los tres enlaces y la cita a `F4.3`. Las cinco reglas viejas **no se borran**: quedan derogadas apuntando a su reemplazo, porque specs y fases cerradas las citan. Quedó abierto que `M4` sigue reprobando su propia fila por los sub-ID `F12.1`–`F12.13`.
 - **Estado:** resuelto acá.

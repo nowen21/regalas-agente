@@ -42,7 +42,7 @@
 - **Número leído, no escrito** — arriba.
 - **Muestra por clase, no al azar** — los CA-02 y CA-03 se prueban con **tres** entradas de cada tipo, elegidas por ser las más discutibles, no las más cómodas. Una sola entrada bien clasificada no dice nada del criterio.
 - **El contraste que define el tipo** — para una MAYOR se pregunta qué tiene que hacer un proyecto **al día** que antes no hacía; para una PARCHE, qué exigencia cambió. Si la respuesta a la segunda es "ninguna", la clasificación era correcta.
-- **La excepción documentada** — el tramo de las dos numeraciones vivas del 2026-08-14 (pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md)) se declara como excepción **en el caso**, no se silencia en la prueba. Un hecho conocido que rompe una prueba se documenta; no se tapa.
+- **La excepción documentada** — el tramo de las dos numeraciones vivas del 2026-08-14 (pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md)) se declara como excepción **en el caso**, no se silencia en la prueba. Un hecho conocido que rompe una prueba se documenta; no se tapa.
 - **Hallazgo anotado, entrada intacta** — una subida mal clasificada se anota. El registro es rastro y no se reescribe (RN-04 de [HU-002](../../HU-002-registro-de-cambios/HU-002-registro-de-cambios.md)).
 
 ### 3.5 Alcance de la corrida
@@ -178,7 +178,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Leer las versiones en orden | Queda la secuencia |
 | 2 | Comprobar entrada contra entrada que ninguna parte salta | Cada subida es de una sola parte, y de a uno |
 | 3 | Comprobar que al subir una parte, las de abajo vuelven a cero | Sin excepción |
-| 4 | Declarar el tramo de las dos numeraciones vivas del 2026-08-14 como excepción documentada | Queda atado al pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), no silenciado en la prueba |
+| 4 | Declarar el tramo de las dos numeraciones vivas del 2026-08-14 como excepción documentada | Queda atado al pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), no silenciado en la prueba |
 | 5 | Correr la suite completa y comparar contra la línea base | Ninguna prueba que pasaba, falla |
 
 **Resultado esperado final:** la numeración es una secuencia, y el único hueco conocido está declarado.

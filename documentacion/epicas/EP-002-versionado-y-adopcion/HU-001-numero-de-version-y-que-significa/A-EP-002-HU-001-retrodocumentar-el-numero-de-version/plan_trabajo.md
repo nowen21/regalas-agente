@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Quién sube la versión cuando hay dos sesiones abiertas.** Es [HU-006](../../HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) y el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+- **Quién sube la versión cuando hay dos sesiones abiertas.** Es [HU-006](../../HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) y el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 - **El registro de cambios,** que es [HU-002](../../HU-002-registro-de-cambios/HU-002-registro-de-cambios.md).
 - **Reclasificar subidas viejas.** Si alguna quedó con el tipo mal puesto, se anota como hallazgo: el registro es rastro y no se reescribe.
 
@@ -173,7 +173,7 @@ No aplica: no cambia nada de lo que corre en los proyectos instalados. Sin subid
 | ID | Riesgo | Impacto | Acción | Estado |
 |---|---|---|---|---|
 | R-01 | Que aparezcan subidas con el tipo mal elegido | Se destapa trabajo de fondo | Se anotan como hallazgo; el registro no se reescribe | Abierto |
-| R-02 | Que la prueba de continuidad falle por las dos numeraciones vivas del 2026-08-14 | Suite roja por un hecho ya conocido | Se declara ese tramo como excepción documentada, atada al pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) | Abierto |
+| R-02 | Que la prueba de continuidad falle por las dos numeraciones vivas del 2026-08-14 | Suite roja por un hecho ya conocido | Se declara ese tramo como excepción documentada, atada al pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) | Abierto |
 | R-03 | Que otra sesión esté tocando `validadores/pruebas.py` | Pisar trabajo ajeno | Se guarda solo lo propio | Abierto |
 
 ---

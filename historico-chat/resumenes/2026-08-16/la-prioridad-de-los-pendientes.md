@@ -44,9 +44,9 @@ Los otros siete puntos siguen dentro del 33, con su prioridad escrita punto por 
 
 **Qué pasó.** Al guardar el `README.md` de pendientes, la escritura falló: otra sesión abierta le había agregado los pendientes **37 y 38** en el intervalo. Se releyó, se incorporaron los dos con su prioridad y se volvió a escribir.
 
-**Por qué importa.** Es el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) —dos sesiones a la vez sobre el mismo archivo— fuera de `VERSION` y `CHANGELOG`. El 22 está escrito solo para esos dos archivos, y el problema es de cualquier archivo único que dos sesiones editen. Acá no se perdió nada porque la herramienta avisó; el 2026-08-14, con `VERSION`, sí se perdió.
+**Por qué importa.** Es el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) —dos sesiones a la vez sobre el mismo archivo— fuera de `VERSION` y `CHANGELOG`. El 22 está escrito solo para esos dos archivos, y el problema es de cualquier archivo único que dos sesiones editen. Acá no se perdió nada porque la herramienta avisó; el 2026-08-14, con `VERSION`, sí se perdió.
 
-**Dónde queda.** ✅ **Anotado** en el [pendiente 22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), en una sección nueva que amplía su alcance: el problema no es de `VERSION` y `CHANGELOG.md`, es de cualquier archivo único que dos sesiones toquen a la vez, y las tres opciones que el 22 ya tenía se evalúan contra eso. **Queda para el usuario** la decisión de fondo, que ya era la del 22: cuál de las tres.
+**Dónde queda.** ✅ **Anotado** en el [pendiente 22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), en una sección nueva que amplía su alcance: el problema no es de `VERSION` y `CHANGELOG.md`, es de cualquier archivo único que dos sesiones toquen a la vez, y las tres opciones que el 22 ya tenía se evalúan contra eso. **Queda para el usuario** la decisión de fondo, que ya era la del 22: cuál de las tres.
 
 ---
 
@@ -59,8 +59,8 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), el [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) y el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 en el [README de pendientes](../../../pendientes/README.md), H-2 en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), H-3 corregido acá, H-4 en el [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ lo que sigue abierto vive en el [39](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md), el [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) y el [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia: los cuatro son de backlog y de conducta |
 | Lo que se hizo está aprobado y guardado | ☑ commit `a9b9890`, aprobado por el usuario. Incluye los pendientes 35 y 36 que había dejado sin commitear otra sesión, por pedido suyo |
 

@@ -34,7 +34,7 @@
 **Fuera de alcance:**
 
 - **Elegir el tipo de subida.** Si es mayor, menor o parche lo decide quien hace el cambio: el enganche comprueba que haya subida y entrada, no que el tipo sea el correcto.
-- **Quién sube la versión con dos sesiones abiertas,** que es [EP-002 · HU-006](../../../EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) y el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md). Este enganche puede empeorar ese cruce, y por eso se coordinan.
+- **Quién sube la versión con dos sesiones abiertas,** que es [EP-002 · HU-006](../../../EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) y el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md). Este enganche puede empeorar ese cruce, y por eso se coordinan.
 - **El control del mensaje,** que es [HU-004](../../HU-004-control-del-mensaje-de-cambio/HU-004-control-del-mensaje-de-cambio.md) y comparte el disparo.
 
 ---

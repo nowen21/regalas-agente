@@ -59,7 +59,7 @@
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
-| Un hallazgo se identifica con `AAAA-MM-DD · tema · H-N`, no con un número corrido: un contador central lo rompen dos sesiones abiertas a la vez | Escrita en [`plantillas/sesion.md`](../../../../../plantillas/sesion.md). Va con el [pendiente 22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) |
+| Un hallazgo se identifica con `AAAA-MM-DD · tema · H-N`, no con un número corrido: un contador central lo rompen dos sesiones abiertas a la vez | Escrita en [`plantillas/sesion.md`](../../../../../plantillas/sesion.md). Va con el [pendiente 22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) |
 | La sesión que hereda un hallazgo no lo copia: lo nombra y trabaja sobre el original | Escrita en [`plantillas/sesion.md`](../../../../../plantillas/sesion.md) |
 
 ---

@@ -86,7 +86,7 @@
 - **Duda 2 de §2.7:** si el validador lo exige o solo lo avisa cuando falta.
 - **La aprobación del plan.** Cambiar modelos sube versión ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 - **La fecha de corte** (riesgo `R-01`): sin ella, las fases ya cerradas quedarían en falta en cada corrida.
-- **Si otra sesión está tocando `plantillas/` o `VERSION`** (riesgo `R-03`): se comprueba `VERSION` justo antes de subirla, por lo que pasó en el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+- **Si otra sesión está tocando `plantillas/` o `VERSION`** (riesgo `R-03`): se comprueba `VERSION` justo antes de subirla, por lo que pasó en el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 
 ---
 

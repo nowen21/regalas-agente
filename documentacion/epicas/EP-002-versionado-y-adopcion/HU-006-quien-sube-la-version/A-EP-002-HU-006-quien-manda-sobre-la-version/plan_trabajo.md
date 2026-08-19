@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-002-HU-006-quien-manda-sobre-la-version` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** Acá **no hay nada construido**: ninguna regla dice quién manda sobre `VERSION` cuando hay dos sesiones abiertas. Baja del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) por la vía de [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila es la de HU-006 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** Acá **no hay nada construido**: ninguna regla dice quién manda sobre `VERSION` cuando hay dos sesiones abiertas. Baja del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) por la vía de [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila es la de HU-006 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -41,7 +41,7 @@
 
 ## 2. Análisis previo — línea base verificada  ·  `F17`
 
-> Verificado el 2026-08-17 leyendo el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) con sus tres ampliaciones y el estado del árbol de trabajo.
+> Verificado el 2026-08-17 leyendo el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) con sus tres ampliaciones y el estado del árbol de trabajo.
 
 **Lo que ya existe:** nada normativo. Lo que hay son cuatro casos ocurridos:
 
@@ -116,7 +116,7 @@ Las tres bloquean todas las tareas de construcción. **Ninguna arranca con una d
 | Duda | Decisión |
 |---|---|
 | 6 | **Capítulo `02`.** Quién sube la versión es un paso del flujo — el mismo criterio con el que `F24` fue al `02`. |
-| 36 | **La salida 1 del [pendiente 22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar. |
+| 36 | **La salida 1 del [pendiente 22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md):** la versión se sube al guardar, no al editar. |
 | 37 | **Cualquier archivo único compartido**, no solo `VERSION` y el registro. Ya pasó con `pendientes/README.md`. |
 
 ---

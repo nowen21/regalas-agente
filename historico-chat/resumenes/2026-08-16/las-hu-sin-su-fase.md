@@ -31,19 +31,19 @@
 ### H-2 · Dos sesiones tocaron el mismo backlog al mismo tiempo
 
 - **Qué pasó:** mientras se levantaba la tabla, otra sesión creó dos carpetas de fase (`A-EP-001-HU-009`, `A-EP-004-HU-014`), completó documentos de una de ellas y tomó el número **52** de `pendientes/`. La cuenta cambió dos veces en la misma sesión: primero 51 HU sin fase, después 49.
-- **Por qué importa:** es el mismo defecto del pendiente [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) —dos sesiones versionando a la vez— pero sobre la numeración de `pendientes/`, no sobre `VERSION`. Dos sesiones pueden escribir el mismo número y ninguna se entera; acá se vio solo porque el archivo ya estaba ahí al ir a crearlo.
+- **Por qué importa:** es el mismo defecto del pendiente [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) —dos sesiones versionando a la vez— pero sobre la numeración de `pendientes/`, no sobre `VERSION`. Dos sesiones pueden escribir el mismo número y ninguna se entera; acá se vio solo porque el archivo ya estaba ahí al ir a crearlo.
 - **Qué lo soluciona:**
   **EP-004 · HU nueva — Nadie toma un número de pendiente que ya exista**
   - **Como** quien abre un pendiente
   - **Quiero** que el número se asigne mirando la carpeta, y que avise si otro lo tomó
   - **Para** que dos sesiones abiertas no escriban dos pendientes distintos con el mismo número
-  - **Contexto:** hoy el número se elige a ojo leyendo el README, que puede estar desactualizado respecto de la carpeta. El [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) ya tiene el problema planteado para `VERSION` y tres opciones sobre la mesa; esto es la misma pregunta un piso más abajo.
+  - **Contexto:** hoy el número se elige a ojo leyendo el README, que puede estar desactualizado respecto de la carpeta. El [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) ya tiene el problema planteado para `VERSION` y tres opciones sobre la mesa; esto es la misma pregunta un piso más abajo.
 - **Qué se decidió:** sin decidir. Acá se resolvió a mano: se listó la carpeta antes de escribir y se tomó el 48, que estaba libre.
 - **Estado:** abierto
 - **Responde a:** —
-- **Dispara:** 1. EP-004 · HU nueva — nadie toma un número de pendiente que ya exista. Va después de decidir el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md), que es la misma decisión sobre `VERSION`.
+- **Dispara:** 1. EP-004 · HU nueva — nadie toma un número de pendiente que ya exista. Va después de decidir el [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md), que es la misma decisión sobre `VERSION`.
 - **Orden de resolución:** 2 de 2 · no bloquea nada hoy, y su decisión de fondo está en el 22.
-- **Dónde queda:** anotado acá; se suma al pendiente [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) cuando se retome.
+- **Dónde queda:** anotado acá; se suma al pendiente [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) cuando se retome.
 - **Nace en:** 2026-08-16 · las HU sin su fase
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿el número de pendiente lo asigna una herramienta, o basta con listar la carpeta antes de escribir?
@@ -78,6 +78,6 @@
 
 **Lo que había antes:** Las dos historias quedaron escritas en EP-004 —[HU-017](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) y [HU-018](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md)—, con su línea en la épica, su lugar en la hoja de ruta como fase 9 y su fila en el inventario. Lo único que queda es la aprobación y el commit, que son del usuario.
 
-Los dos hallazgos siguen **abiertos**, y eso está bien: lo que cierra la sesión es que quedaran anotados con su archivo, no que se resolvieran. Se retoman por el pendiente [48](../../../pendientes/48-inventario-hu.md) y por el [22](../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md).
+Los dos hallazgos siguen **abiertos**, y eso está bien: lo que cierra la sesión es que quedaran anotados con su archivo, no que se resolvieran. Se retoman por el pendiente [48](../../../pendientes/48-inventario-hu.md) y por el [22](../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 
 <!-- aviso: falta decir si la sesión se puede cerrar -->

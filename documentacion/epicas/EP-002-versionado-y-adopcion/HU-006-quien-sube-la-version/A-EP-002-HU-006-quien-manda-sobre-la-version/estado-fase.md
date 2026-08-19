@@ -10,14 +10,14 @@
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-002-HU-006-quien-manda-sobre-la-version` |
 | **Módulo** | Versionado y adopción — el acuerdo sobre quién toca [`VERSION`](../../../../../VERSION) y el [`CHANGELOG`](../../../../../CHANGELOG.md) |
-| **Épica / HU / origen** | [EP-002](../../epica.md) · [HU-006](../HU-006-quien-sube-la-version.md) · ✨ funcionalidad nueva, bajada del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) por [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Fila de HU-006 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
-| **Última actualización** | 2026-08-17 |
+| **Épica / HU / origen** | [EP-002](../../epica.md) · [HU-006](../HU-006-quien-sube-la-version.md) · ✨ funcionalidad nueva, bajada del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) por [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Fila de HU-006 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
+| **Última actualización** | 2026-08-18 |
 
 ---
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 9 — commit único, **pendiente de autorización**. **Última puerta pasada:** 8, el cierre documental del 2026-08-18. Los dos criterios quedaron en **cumple**.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,16 +26,16 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 7 tareas · **detenida por las 3 dudas de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | 7 tareas · hechas el 2026-08-18 | ☑ |
+| 7 | Pruebas | [`resultado_pruebas`](resultado_pruebas.md) · **Cumple** | ☑ |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Acá no hay nada construido que retrodocumentar: ninguna regla dice hoy quién manda sobre `VERSION`.
+**Ejecutada y cerrada el 2026-08-18.** Nació [`20·M18`](../../../../../base/20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) —lo compartido se relee al escribirlo— y su comprobación, [`validadores/numeracion.py`](../../../../../validadores/numeracion.py).
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 3 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
+> **Lo único que falta es la autorización del commit**, que se pide aparte de la aprobación del cambio.
 
 ---
 
@@ -43,11 +43,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
-| **CA en "No"** | Los dos están en «No» **de entrada**, y por eso existe la fase: el 2026-08-14 quedaron dos numeraciones vivas, y desde entonces volvió a pasar tres veces |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 2 de 2 |
+| **CA en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | Tres: la ventana de segundos que queda abierta, la entrada perdida que no se detecta, y que elegir el número al guardar es un hábito y no se puede comprobar con un programa |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) · 19 casos automatizados y una simulación con dos copias |
 
 ---
 
@@ -57,15 +57,15 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Escribir la regla. Las tres dudas la bloquean |
-| T-02 | Bloqueada | Revisar si `M10` queda tocada por el momento nuevo |
-| T-03 | Bloqueada | Caso de las dos sesiones simuladas — CP-001 |
-| T-04 | Bloqueada | Caso del guardado con trabajo ajeno en el árbol — CP-003 |
-| T-05 | Pendiente | Escribir los cuatro casos ocurridos. **Son hechos: no dependen de la decisión** |
-| T-06 | Bloqueada | Recuento de entradas del registro — CP-005 |
-| T-07 | Bloqueada | Clasificar, versionar, cerrar el pendiente 22 y la trazabilidad |
+| T-01 | Hecha | `20·M18`, en su forma general —duda 2— y con su checklist en **CUMPLE** |
+| T-02 | Hecha | `M10` **no se toca**: `M18` la extiende, no la deroga. Nada de lo que `M10` exige deja de exigirse |
+| T-03 | Hecha | Simulación con dos copias y origen desnudo — y con el contraste de no aplicar la regla |
+| T-04 | Hecha | Cada copia subió lo suyo, en las dos corridas |
+| T-05 | Hecha | Los casos ocurridos, y uno más: el rastro de la `15.4.0` repetida |
+| T-06 | Hecha | El recuento destapó el hallazgo: sin la regla **se pierde una entrada**, y eso no se ve |
+| T-07 | Hecha | Clasificada, versionada en la 23.11.0, pendiente 22 cerrado |
 
-**Hechas:** 0 de 7. **Bloqueadas:** todas menos T-05.
+**Hechas:** 7 de 7.
 
 ---
 
@@ -82,22 +82,18 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **Duda 1 de §2.7:** cuál de las tres salidas del pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) — subir la versión al guardar; entradas separadas que se juntan al guardar; o una sola sesión a la vez sobre el estándar.
-- **Duda 2 de §2.7:** si el acuerdo cubre cualquier archivo único compartido o queda acotado a `VERSION` y al registro.
-- **Duda 3 de §2.7:** en qué capítulo cae la regla, según lo que resuelvan las dos anteriores.
-- **La aprobación del plan.** Sin ella no se escribe la regla.
-- **Si la salida elegida obliga a tocar `M10`** (riesgo `R-01`): se declara antes de tocarla, y si es más que una nota, se propone como fase aparte.
+- **La autorización del commit.** Es lo único.
 
 ---
 
 ## 4. Si se bloqueó
 
-- **Estación:** 4 — pausa y presentación. **Motivo:** las tres dudas bloquean toda la construcción; solo la escritura de los cuatro casos ocurridos puede avanzar. **Qué falta para desbloquear:** que el usuario apruebe el plan y elija la salida de la duda 1, de la que dependen las otras dos.
+**No quedó bloqueada.** Estuvo detenida desde el 2026-08-17 por las tres dudas de §2.7 del plan; se decidieron el 2026-08-18 en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) y la fase corrió entera el mismo día.
 
 ---
 
 ## Lo que la desbloqueó
 
-**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
+**Las dudas de la §2.7 quedaron decididas el 2026-08-18** — salida 1 del pendiente 22: el número se sube al guardar. La decisión está escrita en el propio plan, con su motivo.
 
-**La fase no arrancó todavía:** decidir no es ejecutar.
+**Y lo que salió de ejecutarla vale más que la decisión:** la simulación mostró que el cruce se rompe de **dos** maneras, no de una. El número repetido deja rastro; la entrada perdida, no. Eso está en la §3 del [`resultado_pruebas.md`](resultado_pruebas.md).

@@ -84,7 +84,7 @@
 - **Duda 1 de §2.7:** quién hace de lector del CA-03. Tiene que ser alguien que no siguió los cambios. Bloquea T-05.
 - **La aprobación del plan.** Sin ella no arranca la ejecución.
 - **El CA-02 no lo cierra esta fase.** Lo que falta —que un cambio sin entrada no pase— es [EP-005 · HU-005](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md). Acá solo queda la evidencia.
-- **El tramo de las dos numeraciones vivas** (pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md)) puede hacer fallar el CP-001. Se documenta como excepción.
+- **El tramo de las dos numeraciones vivas** (pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md)) puede hacer fallar el CP-001. Se documenta como excepción.
 
 ---
 

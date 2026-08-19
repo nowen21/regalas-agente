@@ -187,7 +187,7 @@ Se asume que el estándar está en producción. Un campo obligatorio nuevo en un
 | B-01 | Las dos dudas sin resolver | Bloquean el CA-01 | Se presentan al usuario: cambiar modelos sube versión | Abierto |
 | R-01 | Que el campo nuevo deje en falta a las veinticinco fases existentes | Ruido en cada corrida | El validador lo exige hacia adelante, con la fecha de corte escrita | Abierto |
 | R-02 | Que el sello se escriba a mano y quede mal | Un sello falso es peor que ninguno | El modelo pide de dónde se copió el número, que es `VERSION` | Abierto |
-| R-03 | Que otra sesión esté tocando `plantillas/` o `VERSION` | Dos numeraciones vivas, como el pendiente [22](../../../../../pendientes/22-dos-sesiones-versionando-a-la-vez.md) | Se comprueba `VERSION` justo antes de subirla | Abierto |
+| R-03 | Que otra sesión esté tocando `plantillas/` o `VERSION` | Dos numeraciones vivas, como el pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md) | Se comprueba `VERSION` justo antes de subirla | Abierto |
 
 ---
 
