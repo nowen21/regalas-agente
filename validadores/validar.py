@@ -48,6 +48,26 @@ import versionado       # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
+def raiz_del_proyecto():
+    """Dónde está parado quien corre el comando, no dónde vive el estándar.
+
+    `61` · **`RAIZ` es la carpeta del propio estándar**, y usarla por defecto en
+    los subcomandos que revisan *un proyecto* hacía que revisaran el estándar
+    creyendo que revisaban el proyecto. Lo reportó `rni-dp`: `validar.py
+    secretos` le devolvió **10 fallas y 8 avisos** sobre archivos de
+    `validadores/`, una carpeta que ese proyecto no tiene — eran las claves
+    falsas que el propio detector usa para comprobar que detecta.
+
+    **Lo grave no es el ruido: es que la comprobación decía que sí había
+    corrido.** Un validador de secretos que siempre falla deja de servir para
+    ver lo nuevo, y lo nuevo aquí son credenciales.
+
+    Los subcomandos que revisan **el estándar** siguen apuntando a `RAIZ`: ahí
+    sí es lo correcto.
+    """
+    return os.getcwd()
+
+
 def cmd_estandar(a):
     hallazgos = (enlaces.validar_enlaces(a.raiz)
                  + enlaces.validar_indices(a.raiz)
@@ -325,22 +345,22 @@ def main():
 
     fs = sub.add_parser("fases",
                         help="jerarquía y nombres de épica/HU/fase · 02·F12")
-    fs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    fs.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     fs.set_defaults(func=cmd_fases)
 
     pd = sub.add_parser("pendientes",
                         help="numeración de `pendientes/` y cruce con su índice · HU-018")
-    pd.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    pd.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     pd.set_defaults(func=cmd_pendientes)
 
     tz = sub.add_parser("trazabilidad",
                         help="enlace épica↔HU, ORIGEN y tabla de cierre · F4/DOC")
-    tz.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    tz.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     tz.set_defaults(func=cmd_trazabilidad)
 
     v = sub.add_parser("versionado",
                        help="secretos y artefactos versionados · 09-git.md · G3")
-    v.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    v.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     v.add_argument("--preparados", action="store_true",
                    help="solo lo que entra en el commit actual (para el enganche)")
     v.set_defaults(func=cmd_versionado)
@@ -364,87 +384,87 @@ def main():
 
     se = sub.add_parser("secretos",
                         help="secretos incrustados en el código · 04·S4")
-    se.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    se.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     se.set_defaults(func=cmd_secretos)
 
     dp = sub.add_parser("dependencias",
                         help="lockfile presente y versionado · 10·DEP2")
-    dp.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    dp.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     dp.set_defaults(func=cmd_dependencias)
 
     rm = sub.add_parser("rama",
                         help="trabajo en rama dedicada y al día · 09·G4")
-    rm.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    rm.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     rm.set_defaults(func=cmd_rama)
 
     mg = sub.add_parser("migraciones",
                         help="cada migración declara su reversión · 03·D2")
-    mg.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    mg.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     mg.set_defaults(func=cmd_migraciones)
 
     er = sub.add_parser("errores", help="capturas de error vacías · 05·E1")
-    er.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    er.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     er.set_defaults(func=cmd_errores)
 
     rd = sub.add_parser("rendimiento", help="`SELECT *` y cargas sin límite · 06·R2")
-    rd.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    rd.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     rd.set_defaults(func=cmd_rendimiento)
 
     es = sub.add_parser("esquema", help="FK con política de borrado · 03·D1")
-    es.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    es.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     es.set_defaults(func=cmd_esquema)
 
     fl = sub.add_parser("flujo",
                         help="el plan de trabajo: 13 preguntas e incertidumbre · 02·F14/F17")
-    fl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    fl.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     fl.set_defaults(func=cmd_flujo)
 
     sg = sub.add_parser("seguridad",
                         help="concatenación SQL/shell y asignación masiva · 04·S3")
-    sg.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    sg.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     sg.set_defaults(func=cmd_seguridad)
 
     cl = sub.add_parser("calidad", help="funciones demasiado largas · 07·Q3")
-    cl.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    cl.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     cl.set_defaults(func=cmd_calidad)
 
     ci_ = sub.add_parser("ci", help="pipeline de CI con pruebas y linter · 09·G6")
-    ci_.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ci_.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     ci_.set_defaults(func=cmd_ci)
 
     ai = sub.add_parser("aislamiento",
                         help="pruebas contra BD efímera, no real · 08·T4")
-    ai.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ai.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     ai.set_defaults(func=cmd_aislamiento)
 
     ln = sub.add_parser("linter",
                         help="corre el linter/formateador del stack · 07·Q6")
-    ln.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ln.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     ln.set_defaults(func=cmd_linter)
 
     su = sub.add_parser("suite",
                         help="corre la suite de pruebas del stack · 08·T5")
-    su.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    su.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     su.set_defaults(func=cmd_suite)
 
     au = sub.add_parser("audit",
                         help="audit de vulnerabilidades del stack · 10·DEP3")
-    au.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    au.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     au.set_defaults(func=cmd_auditoria)
 
     vr = sub.add_parser("version",
                         help="desfase de versión del estándar vs la que declara el proyecto")
-    vr.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    vr.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     vr.set_defaults(func=cmd_version)
 
     ck = sub.add_parser("checklist",
                         help="stack de instalación del agente: qué le falta al proyecto")
-    ck.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ck.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     ck.set_defaults(func=cmd_checklist)
 
     vs = sub.add_parser("versiones",
                         help="documentos heredados del estándar: cuáles quedaron viejos")
-    vs.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    vs.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     vs.set_defaults(func=cmd_versiones)
 
     c = sub.add_parser("commit", help="mensaje de commit contra 09-git.md · G2")
@@ -453,6 +473,11 @@ def main():
     c.set_defaults(func=cmd_commit)
 
     a = p.parse_args()
+    # `61` · El que revisa **un proyecto** arranca donde está parado el usuario.
+    # Antes caía en la carpeta del estándar y revisaba el estándar creyendo que
+    # revisaba el proyecto — silencioso, y el resultado decía que sí había corrido.
+    if getattr(a, "raiz", "") is None:
+        a.raiz = raiz_del_proyecto()
     sys.exit(a.func(a))
 
 

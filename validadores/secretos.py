@@ -43,6 +43,21 @@ SALTAR = re.compile(
     r"(^|/)(composer\.lock|package-lock\.json|yarn\.lock|pnpm-lock\.yaml)$|"
     r"\.min\.(js|css)$")
 
+# `61` · Lo que existe **para probar este detector** lo dispara siempre.
+#
+# Son claves falsas puestas a propósito: sin ellas no habría cómo comprobar que
+# el detector detecta. Reportarlas es correcto en abstracto y **inservible en la
+# práctica** — quien corre esto ve nueve fallas que nunca cambian, y la décima,
+# que sí sería un secreto de verdad, se pierde entre ellas.
+#
+# **Se nombran una por una, no por carpeta.** Exceptuar `tests/` entero dejaría
+# ciego al detector sobre todo lo que se escriba ahí mañana, que es exactamente
+# el agujero por el que se cuela una clave real.
+EXENTOS = (
+    "validadores/tests/test_la_clave_no_llega_al_historico.py",
+    "validadores/pruebas.py",
+)
+
 # FALLA — la forma sola ya delata un secreto real de un proveedor concreto.
 SEGUROS = [
     (re.compile(r"AKIA[0-9A-Z]{16}"), "clave de acceso AWS"),
@@ -116,6 +131,8 @@ def validar(raiz):
         for archivo in versionado.archivos_versionados(repo):
             if SALTAR.search(archivo):
                 continue
+            if archivo.replace("\\", "/") in EXENTOS:
+                continue        # `61` · datos de prueba del propio detector
             if os.path.splitext(archivo)[1].lower() not in EXTENSIONES:
                 continue
             try:

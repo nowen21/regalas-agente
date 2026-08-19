@@ -274,6 +274,10 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | # | P | Pendiente | Reportó |
 |---|---|---|---|
 | 62 | **P2** | [El instalador pide una segunda pasada y deja un registro vacío](hecho/el-instalador-pide-una-segunda-pasada.md) | `shopnest-mesa` |
+| 63 | **P1** | [El validador de secretos se revisa a sí mismo](hecho/el-validador-de-secretos-se-revisa-a-si-mismo.md) | `rni-dp` |
+
+
+**El 63 es P1 y no P2 porque lo que tapa son credenciales.** `validar.py secretos` alcanza sus propios archivos y les antepone la raíz del proyecto, así que reporta 18 hallazgos —secretos falsos de sus datos de prueba— en una carpeta que no existe allá. Un validador que siempre falla deja de servir para detectar lo nuevo, y en `rni-dp` **bloquea el cierre de un pendiente de seguridad**.
 
 ---
 

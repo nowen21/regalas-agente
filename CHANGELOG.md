@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.14.0 — 2026-08-18
+
+**MENOR** (las comprobaciones arrancan donde estás parado; si las corrías desde tu proyecto, ahora sí lo revisan a él).
+
+**Las comprobaciones que dicen revisar tu proyecto estaban revisando otra carpeta.** Si las corrías sin decirles dónde mirar, iban a parar a la carpeta donde vive el estándar — y devolvían un informe que parecía tuyo y no lo era.
+
+Un proyecto lo descubrió al buscar claves sueltas en su código: le salieron dieciocho, todas de archivos que ese proyecto no tiene. Ahora arrancan donde está parado quien las corre.
+
+**El detalle.** Es el [pendiente 63](pendientes/hecho/el-validador-de-secretos-se-revisa-a-si-mismo.md), reportado por `rni-dp`. El defecto no era el recorrido sino el valor por defecto de `--raiz`, que caía en `RAIZ` —la carpeta del propio estándar, calculada desde `__file__`—. **Cambian los 22 subcomandos que dicen «carpeta del proyecto»**; los que revisan el estándar siguen apuntando a `RAIZ`. No era solo `secretos`: los otros veintiuno tenían lo mismo y nadie lo había notado, porque casi siempre se corren desde el estándar y ahí las dos raíces coinciden.
+
+**Y una exención, con cuidado:** las claves falsas de `test_la_clave_no_llega_al_historico.py` existen para comprobar que el detector detecta, así que se saltan. **Se nombran una por una y no por carpeta** — exceptuar `tests/` entero dejaría ciego al detector sobre lo que se escriba ahí mañana. Un caso de prueba fija que una clave de verdad sigue saliendo. 8 casos nuevos.
+
 ## 23.13.2 — 2026-08-18
 
 **PARCHE** (se escribe una decisión que ya estaba tomada; nada cambia de comportamiento).

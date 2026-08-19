@@ -608,6 +608,26 @@ El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [p
 
 ---
 
+### H-49 · Las comprobaciones «del proyecto» revisaban el estándar, y las 22 tenían lo mismo
+
+`rni-dp` reportó el [63](../../../pendientes/hecho/el-validador-de-secretos-se-revisa-a-si-mismo.md): corrió `validar.py secretos` sobre su repositorio y le salieron **10 fallas y 8 avisos** de archivos bajo `validadores/`, una carpeta que ese proyecto no tiene.
+
+**La causa no era el recorrido, que nunca salió de su raíz: era en qué raíz arrancaba.** `--raiz` caía por defecto en `RAIZ`, que se calcula desde `__file__` y es **la carpeta del propio estándar**.
+
+> **Y no era solo `secretos`: los 22 subcomandos que dicen «carpeta del proyecto» tenían el mismo defecto.** Nadie lo había notado porque casi siempre se corren desde el estándar, y ahí las dos raíces coinciden. El defecto solo aparece cuando alguien lo usa **para lo que existe**.
+
+**Lo que devolvía era peor que un error:** un informe que decía haber revisado. En ese proyecto bloqueaba el cierre de un pendiente de seguridad.
+
+**La exención de los datos de prueba se nombra archivo por archivo**, no por carpeta: exceptuar `tests/` entero dejaría ciego al detector sobre lo que se escriba ahí mañana. Hay un caso que fija que una clave real sigue saliendo.
+
+### H-50 · El cruce de dos sesiones pasó hoy, mientras se cerraba el pendiente que lo describe
+
+Al ir a cerrar ese reporte, **el archivo ya no estaba**: otra sesión lo había renumerado del `61` al `63` mientras yo trabajaba sobre él. Es exactamente el caso de [`20·M18`](../../../base/20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md), escrita esta misma mañana.
+
+**Y la regla funcionó:** releer al escribir mostró el número nuevo en el acto, en vez de dejar un archivo escrito sobre una ruta muerta. El `61` que yo había liberado al cerrar el mío quedó libre, y la otra sesión tomó el `63` — sin colisión.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
