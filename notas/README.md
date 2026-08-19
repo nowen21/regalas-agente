@@ -10,6 +10,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 - [que-es-triangulacion-de-pruebas.md](que-es-triangulacion-de-pruebas.md) — explicación llana de qué es triangular una prueba.
 - [aislamiento-checkpoints-memoria.md](aislamiento-checkpoints-memoria.md) — aislamiento de contexto, checkpoints de calidad y memoria institucional.
 - [compactacion-mata-decisiones.md](compactacion-mata-decisiones.md) — la amenaza de perder decisiones al compactar el contexto y cómo se ataca.
+- [notas/pertenencia-y-autoria.md](pertenencia-y-autoria.md) — por qué se confunde «de quién es el dato» con «quién lo tocó», y qué se rompe: el segundo usuario del mismo contenedor no ve nada. Es el porqué de `03·D8`.
 - [notas/la-fuente-de-las-reglas-es-el-texto.md](la-fuente-de-las-reglas-es-el-texto.md) — por qué las reglas viven en archivos y no en una base de datos: lo que se perdería es poder ver qué cambió y aprobarlo antes de que rija.
 - [memoria-por-senales.md](memoria-por-senales.md) — diseño concreto de la memoria: señales tipadas con what/why/where/learned, metadatos y ciclo de vida.
 - [memoria-buscable-fts5.md](memoria-buscable-fts5.md) — backend opcional SQLite+FTS5 para hacer buscables las señales (esquema y consultas listos).

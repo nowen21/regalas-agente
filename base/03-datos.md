@@ -171,14 +171,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## D5 · Con la BD desplegada, la validación nueva va en la app
 
-Si la BD ya está en producción, su estructura es un contrato vigente. Una validación nueva que no encaje limpio (limita el motor, choca con datos legacy, migrar es caro) **no se fuerza en la BD**: va al servicio/observer/regla.
-
-- Si una restricción falla al aplicarse o exigiría borrar/modificar filas históricas, se **descarta en BD** (salvo autorización para limpiar datos) y queda en el servicio.
-- El servicio que sostiene la validación lleva **prueba dedicada** (sin ella, se degrada en silencio).
-- Documenta en la migración por qué no vive en la BD.
-
-**No aplica** en diseño desde cero (sin datos aún): ahí el invariante sí va al esquema.
-
+Si la base ya está en producción su estructura es un contrato: la validación nueva que no encaje limpio —limita el motor, choca con datos viejos, migrar sale caro— **no se fuerza ahí**, va al servicio, y ese servicio lleva **prueba dedicada**: sin ella se degrada en silencio. La migración anota por qué.
+**Excepción** — en diseño desde cero el invariante sí va al esquema (condición); no vale con la base desplegada (límite) y lo decide quien modela (autorizador).
 ```
 INCORRECTO: la migración falla contra los datos → editar la BD a la fuerza
 CORRECTO:   validación en el servicio + prueba + nota en la migración
@@ -188,19 +182,19 @@ CORRECTO:   validación en el servicio + prueba + nota en la migración
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A ✅ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
+**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
 
 **Dos filas, y las dos ya estaban señaladas.**
 
@@ -316,23 +310,10 @@ La salida ya está probada esta misma sesión: **abrir su anexo al lado y dejar 
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## D8 · Distinguir pertenencia de autoría en el modelo de datos
+## D8 · Distingue pertenencia de autoría en el modelo de datos
 
-En proyectos con múltiples usuarios trabajando sobre entidades compartidas (multi-tenant, multi-proyecto, multi-organización), el modelo debe distinguir explícitamente **dos conceptos**:
-
-- **Pertenencia** — a quién pertenece el dato como entidad de negocio: `tenant_id`, `organizacion_id`, `proyecto_id`, `cuenta_id`, `equipo_id`, etc. Ancla la entidad al contenedor de negocio que lo posee.
-- **Autoría** — quién manipuló el dato: `usercreate_id` / `userupdate_id` (o los equivalentes del stack). Es auditoría, no pertenencia.
-
-**No confundir los dos.** La confusión típica es anclar la entidad al `usuario que la creó` (`Auth::id()` / `usercreate_id`) y filtrar los listados por autoría. Esto rompe el sistema en cuanto un segundo usuario del mismo tenant/proyecto edita, o el usuario original se va y otro debe operar sobre las mismas entidades.
-
-**Consecuencias operativas del modelo correcto:**
-
-- **Consultas de listado** filtran por **pertenencia** (según el acceso del usuario actual a tenants/proyectos), no por autoría.
-- **Permisos + scope** validan el acceso: "el usuario X tiene permiso Y sobre el tenant Z", no "el usuario X es el creador del registro".
-- **Ediciones** no requieren ser "el creador" — cualquier usuario con acceso al contenedor y permiso puede operar.
-- **Reportes de auditoría** usan la columna de autoría (quién hizo qué), no la de pertenencia.
-
-**Excepción legítima:** entidades genuinamente personales del usuario (favoritos, borradores privados, preferencias de UI). Ahí la pertenencia sí es `user_id`. Cuando lo dudes, preguntá: "¿esto es del usuario, o del tenant/proyecto donde el usuario está trabajando?"
+El dato compartido lleva **dos columnas distintas**: **pertenencia** —a qué contenedor de negocio pertenece: `tenant_id`, `proyecto_id`— y **autoría** —quién lo tocó: `usercreate_id`—. Listados, permisos y ediciones se resuelven por pertenencia; la autoría solo audita ([por qué se confunden](../notas/pertenencia-y-autoria.md)).
+**Excepción** — la entidad personal, como un borrador privado, lleva al usuario como pertenencia (condición); no vale para nada compartido (límite) y lo decide quien modela (autorizador).
 
 ```
 INCORRECTO: listar las entidades del contenedor activo filtrando por «creada
@@ -346,19 +327,19 @@ CORRECTO:   filtrar por la columna de pertenencia (el contenedor activo); la
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
 **La fila 5 reprobaba y se corrigió en esta pasada.** El ejemplo estaba escrito con el código de un stack concreto y una entidad de un proyecto real, y [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre lenguaje, framework ni dominio. Reescrito en términos del propio estándar: contenedor, pertenencia, autoría. **No cambia qué exige la regla.**
 

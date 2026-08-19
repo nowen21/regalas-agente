@@ -547,7 +547,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Fila 10 · no cabe:** 1441 caracteres.
 
-**Fila 14 ·** su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas —`C15`, `C16`, `C18` y [`03·D8`](03-datos.md#d8--distinguir-pertenencia-de-autoría-en-el-modelo-de-datos)— y conviene normalizarlo de una vez, no regla por regla.
+**Fila 14 ·** su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas —`C15`, `C16`, `C18` y [`03·D8`](03-datos.md#d8--distingue-pertenencia-de-autoría-en-el-modelo-de-datos)— y conviene normalizarlo de una vez, no regla por regla.
 
 Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
