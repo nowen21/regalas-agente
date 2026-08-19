@@ -18,6 +18,8 @@
 | Compilar / build | `«…»` |
 | Correr las pruebas | `«…»` |
 | Lint / formateo | `«…»` |
+| **Respaldo de datos** | `«…»` |
+| **Restaurar un respaldo** | `«…»` |
 
 ## Entorno de pruebas (concreta `08` · T4 y `00` · N4)
 
@@ -53,3 +55,13 @@
 - **Si falla:** «qué hacer — reintentar, fallback, o pausar y reportar al usuario (`00`·N3: no rodear el obstáculo)».
 
 _(Repetir el bloque por cada herramienta. Si el proyecto no tiene herramientas propias, dejar "Ninguna — solo las genéricas del agente".)_
+
+---
+
+## Respaldo · para qué se declara
+
+**Lo usa [`validadores/respaldo.py`](../validadores/respaldo.py)** antes de correr una operación que no se puede deshacer, que es lo que exige [`00·N7`](../base/00-nucleo-blindado.md).
+
+**Si no está declarado, el envoltorio no corre nada** y lo dice. No adivina el comando: adivinar cómo se respalda una base ajena es la clase de error que este repositorio no puede permitirse.
+
+**El comando de restaurar no se usa solo nunca.** Se declara para que esté a mano el día que haga falta, escrito antes del susto y no durante.

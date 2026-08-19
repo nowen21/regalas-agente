@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.9.0 — 2026-08-18
+
+**MENOR** (la plantilla del stack pide dos datos más; nada deja de valer).
+
+**La regla más cara de incumplir del estándar dependía de que alguien se acordara.** Dice que antes de algo que no se puede deshacer hay que comprobar que existe una copia — y comprobarlo era una decisión, no un paso.
+
+Ahora hay una forma de correrlo que **hace la copia primero y solo entonces sigue**. Si no hay copia declarada, o si la copia falla, **no corre nada**.
+
+**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 15, y hace cumplir [`00·N7`](base/00-nucleo-blindado.md). Nace [`validadores/respaldo.py`](validadores/respaldo.py). La [plantilla del stack](plantillas/stack.md) gana dos filas: cómo se respalda y **cómo se restaura** — la segunda no la usa ningún programa, se declara para que esté escrita antes del susto y no durante.
+
+**El límite va escrito en cada corrida, y es la mitad del trabajo.** Esto cubre lo que se le pasa por la mano; un borrado escrito a mano o desde otra herramienta **no lo ve nadie**. El propio pendiente lo advertía: *«un respaldo automático parcial que se anuncia como total es peor que no tenerlo»*.
+
+**Y no adivina el comando.** Sin declaración no inventa: adivinar cómo se respalda una base ajena sería equivocarse justo antes de lo irreversible.
+
 ## 24.8.0 — 2026-08-18
 
 **MENOR** (una herramienta más que arma el esqueleto de un trabajo nuevo).

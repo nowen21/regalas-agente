@@ -385,10 +385,10 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | **10** | **Marca de fase reabierta** | ✅ **construido hoy** — `validar.py reaperturas` |
 | **12** | **Andamiaje de fase y HU** | ✅ **construido hoy** — `validadores/andamio.py` |
 | **14** | **Generador de índices** | ✅ **construido hoy** — `validar.py indices` |
-| 15 | Respaldo antes de lo irreversible | ☐ — la **regla** sí: [`00·N7`](../base/00-nucleo-blindado.md), escrita hoy |
+| **15** | **Respaldo antes de lo irreversible** | ✅ **construido hoy** — `validadores/respaldo.py`, y su regla es [`00·N7`](../base/00-nucleo-blindado.md) |
 | 16 | Contradicciones en la memoria | ☐ |
 
-**Quedan dos**: 15 y 16.
+**Queda uno**: el 16.
 
 ## 08 · el enganche de publicar, construido
 
@@ -477,3 +477,37 @@ Si existen la `A` y la `C` porque la `B` se renombró, **contar cuántas hay dar
 La separación de siempre: `validar.py` es la puerta de lo que **comprueba**; esto **escribe**, como `cerrar.py` o `historico.py`. **La prueba que exige que todo módulo diga por dónde se corre lo reportó** al escribirlo, y se resolvió declarándolo donde van los que tienen arranque propio.
 
 **9 casos** en [`validadores/tests/test_el_andamio_no_escribe_contenido.py`](../validadores/tests/test_el_andamio_no_escribe_contenido.py).
+
+
+## 15 · el respaldo antes de lo irreversible, construido
+
+**`python validadores/respaldo.py --aplicar -- <comando>`.** Respalda con lo que el proyecto declaró y **después** corre la operación. Sin `--aplicar`, dice qué haría.
+
+### El límite es la mitad del trabajo, y va escrito en la salida
+
+El pendiente lo pedía así, y tenía razón:
+
+> *Un respaldo automático parcial que se anuncia como total es peor que no tenerlo, porque genera confianza donde no la hay.*
+
+**Cada corrida empieza diciendo qué no cubre:** un borrado escrito a mano, un guion de limpieza propio o un borrado por interfaz **no los ve nadie**. Eso sigue siendo criterio del agente, y [`00·N7`](../base/00-nucleo-blindado.md) lo sigue exigiendo.
+
+### Dos negativas que son el programa entero
+
+| Si… | Entonces |
+|---|---|
+| No hay respaldo declarado | **no se corre la operación** |
+| El respaldo falla | **no se corre la operación** |
+
+**La segunda es la que se olvida al escribir esto.** Un respaldo que falló y una operación que corre igual es la peor combinación posible: creer que hay red y no tenerla. Hay un caso para cada una.
+
+### No adivina el comando, y es a propósito
+
+Sin `Respaldo de datos` en el `.agente/stack.md`, no inventa nada. **Adivinar cómo se respalda una base ajena sería equivocarse justo antes de lo irreversible.** Declararlo es de quien conoce el almacén.
+
+**La plantilla del stack ganó dos filas:** el comando de respaldo y el de **restaurar**. El segundo no lo usa ningún programa — se declara para que esté escrito **antes del susto y no durante**.
+
+### Invocarlo es la autorización
+
+[`00·N4`](../base/00-nucleo-blindado.md) pide autorización para esa operación concreta, y **escribir el comando destructivo dentro del envoltorio es esa autorización**: nadie lo teclea sin querer. Lo que el envoltorio agrega no es permiso — es la red.
+
+**13 casos** en [`validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py`](../validadores/tests/test_el_respaldo_antes_de_lo_irreversible.py).

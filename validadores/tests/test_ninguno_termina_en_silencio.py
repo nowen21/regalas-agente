@@ -41,7 +41,7 @@ VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # pide. `validar.py` es la puerta de lo que comprueba; estos escriben.
 CON_ARRANQUE_PROPIO = {"validar.py", "pruebas.py", "instalar.py", "historico.py",
                        "comun.py", "citas.py", "cerrar.py", "marcas.py",
-                       "andamio.py"}
+                       "andamio.py", "respaldo.py"}
 
 
 def modulos():
