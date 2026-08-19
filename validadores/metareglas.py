@@ -449,7 +449,11 @@ def _cambio_de_verdad(regla):
     marca = "## %s " % regla.id
     if marca not in r.stdout:
         return True                     # la regla no existía: es nueva
-    antes = r.stdout[r.stdout.index(marca):].split("### Checklist")[0]
+    # `regla.texto` **no trae el encabezado**: empieza después. Al comparar hay
+    # que quitarlo también del lado guardado, o difieren siempre — que fue el
+    # primer intento, y dejaba la comprobación exactamente igual de ruidosa.
+    antes = r.stdout[r.stdout.index(marca):].split(chr(10), 1)[1]
+    antes = antes.split("### Checklist")[0]
     ahora = regla.texto.split("### Checklist")[0]
     return antes.strip() != ahora.strip()
 

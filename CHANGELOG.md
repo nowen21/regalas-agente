@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.24.1 — 2026-08-18
+
+**PARCHE** (una comprobación deja de reportar de más; nada cambia de lo que se exige).
+
+**El aviso de «este sello venció» pasó de 119 a cero.** No porque se apagara, sino porque el arreglo anterior estaba a medias: comparaba el texto guardado **con su encabezado** contra el actual **sin él**, así que daban distinto siempre. Quedaba igual de ruidoso, pero con más código.
+
+Ahora vence solo el sello de la regla que de verdad cambió.
+
+**El detalle.** La comparación quitaba el encabezado de un lado y no del otro. Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y con tres casos que lo fijan — incluido el que comprueba que sobre el propio estándar no quede ninguno vencido.
+
 ## 23.24.0 — 2026-08-18
 
 **MAYOR** (nacen cuatro reglas con nombre nuevo) · **y una comprobación deja de reportar de más.**

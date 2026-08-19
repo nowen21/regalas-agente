@@ -253,3 +253,33 @@ class LaMarcaBlindadaEsDelNucleo(unittest.TestCase):
                     u"Esto no puede tocar una regla `[BLINDADA]` del núcleo.\n\n"
                     u"```\nINCORRECTO: no\nCORRECTO:   sí\n```\n")
         self.assertEqual([], self._blindadas(tmp.name))
+
+
+class ElSelloVenceSoloPorSuPropiaRegla(unittest.TestCase):
+    """`52` · Editar una regla no puede vencer el sello de sus vecinas.
+
+    **Medido el 2026-08-19: 119 avisos en una corrida.** La comprobación miraba
+    la fecha del **archivo**, y un capítulo es un archivo con veinte reglas
+    dentro: tocar una las vencía todas.
+
+    **Un validador que reporta ciento diecinueve cosas no lo lee nadie**, y su
+    propio texto ya lo había anticipado — *«si esto produce demasiado ruido, la
+    huella queda como el paso siguiente, ya con datos»*.
+    """
+
+    def test_sobre_el_estandar_no_queda_ninguno_vencido(self):
+        vencidos = [h for h in metareglas.validar() if "se aplicó el" in h.mensaje]
+        self.assertEqual([], [h.mensaje[:60] for h in vencidos])
+
+    def test_la_regla_sin_cambios_no_vence(self):
+        """Lo guardado y lo de ahora coinciden: no hay nada que revisar."""
+        r = [x for x in metareglas.reglas() if x.id == "D2"][0]
+        self.assertFalse(metareglas._cambio_de_verdad(r))
+
+    def test_el_encabezado_no_cuenta_al_comparar(self):
+        """**Fue el primer intento y falló entero.** `regla.texto` no trae el
+        encabezado, así que compararlo contra el lado guardado *con* encabezado
+        daba distinto siempre — y la comprobación quedaba igual de ruidosa,
+        pero con más código."""
+        r = [x for x in metareglas.reglas() if x.id == "D2"][0]
+        self.assertFalse(r.texto.lstrip().startswith("## "))
