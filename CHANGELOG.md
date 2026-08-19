@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.3.1 — 2026-08-18
+
+**PARCHE** (una comprobación deja de acusar de lo que no puede ver).
+
+**Correr las comprobaciones contra un proyecto de verdad destapó que una acusaba en falso.** Decía que a treinta y una tablas les faltaba su migración, y las migraciones estaban ahí. Solo sabe leer dos formatos, y las de ese proyecto eran de un tercero: las saltaba todas y concluía que no existía ninguna.
+
+Ahora, cuando no puede leer las migraciones de un proyecto, **lo dice una vez** y no comprueba lo que no ve.
+
+**El detalle.** Cierra el [pendiente 01](pendientes/hecho/validadores-de-codigo-de-proyecto.md), que pedía justamente esto desde el 2026-08-04: correrlos contra código real. **No se arregló enseñándole el formato nuevo** —eso ataría la base a una tecnología, lo que [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) prohíbe— sino **sabiendo lo que no sabe**. «Faltan» es acusar; «no las veo» es informar, y lo segundo es lo cierto.
+
+**Y el arreglo no apagó nada:** con migraciones legibles, la tabla que de verdad falta se sigue reportando, y en un proyecto sin migraciones de ningún tipo tampoco hay excusa. Los dos casos están escritos.
+
 ## 24.3.0 — 2026-08-18
 
 **MENOR** (tres comprobaciones que ya existían pasan a poder correrse).
@@ -19,7 +31,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Ahora se corren con `validar.py estructura`, `validar.py entidades` y `validar.py cruces`.
 
-**El detalle.** Del [pendiente 01](pendientes/01-validadores-de-codigo-de-proyecto.md), que listaba nueve comprobaciones faltantes. **Cinco ya estaban construidas** — [`estructura.py`](validadores/estructura.py) para dónde vive el código y cómo se llama, [`entidades.py`](validadores/entidades.py) para lo que se le exige a una tabla de dominio, [`cruces.py`](validadores/cruces.py) para el cruce entre módulos, [`flujo.py`](validadores/flujo.py) para las puertas del flujo, y [`declaracion.py`](validadores/declaracion.py), que era la precondición de todas—. Tres de ellas no tenían subcomando.
+**El detalle.** Del [pendiente 01](pendientes/hecho/validadores-de-codigo-de-proyecto.md), que listaba nueve comprobaciones faltantes. **Cinco ya estaban construidas** — [`estructura.py`](validadores/estructura.py) para dónde vive el código y cómo se llama, [`entidades.py`](validadores/entidades.py) para lo que se le exige a una tabla de dominio, [`cruces.py`](validadores/cruces.py) para el cruce entre módulos, [`flujo.py`](validadores/flujo.py) para las puertas del flujo, y [`declaracion.py`](validadores/declaracion.py), que era la precondición de todas—. Tres de ellas no tenían subcomando.
 
 **Es la tercera vez que este repositorio tropieza con lo mismo, y las tres el mismo día:** `cerrar.avisar()` escrita con doce casos y nunca llamada, `metareglas.py` sin subcomando, y estos tres. **Una pieza que no se puede correr figura como cobertura y no cubre nada.**
 

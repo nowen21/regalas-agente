@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Escribir los validadores que faltan.** Son las 22 marcadas como pendientes, y son del pendiente [01](../../../../../pendientes/01-validadores-de-codigo-de-proyecto.md).
+- **Escribir los validadores que faltan.** Son las 22 marcadas como pendientes, y son del pendiente [01](../../../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md).
 - **El criterio con que se clasifica,** que es [HU-001](../../HU-001-criterio-de-lo-comprobable/HU-001-criterio-de-lo-comprobable.md).
 - **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
 - **Reclasificar reglas.** Lo que aparezca mal clasificado se anota.

@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/01-validadores-de-codigo-de-proyecto.md](../../../pendientes/01-validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
+- **Dónde queda:** [pendientes/hecho/validadores-de-codigo-de-proyecto.md](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md). El gate `F2` sigue sin validador; el [pendiente 30](../../../pendientes/hecho/la-revision-ve-la-cadena.md), del 2026-08-15, es el mismo hueco visto desde un proyecto real.
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** la respuesta del propio agente: probarlo de brief a fase cerrada en un proyecto real **antes** de construir nada más.
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2 y H-6 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-4 en el [01](../../../pendientes/01-validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/09-autonomia-sin-ia.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-4 en el [01](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/09-autonomia-sin-ia.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ está en el repositorio desde entonces |

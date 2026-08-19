@@ -79,6 +79,32 @@ def _columnas_sueltas_con(cuerpo, ruta, marca):
     return salida
 
 
+# Los formatos de migración que este validador **sabe leer**. No es la lista de
+# los que existen: es la de los que puede parsear sin inventar.
+LEGIBLES = (".php", ".sql")
+
+
+def hay_migraciones_ilegibles(raiz, d):
+    """¿El proyecto tiene migraciones que este validador no sabe leer?
+
+    `01` · **Sin esto, un proyecto cuyas migraciones no son `.php` ni `.sql`
+    recibe un aviso por cada tabla declarada**, diciendo que ninguna migración
+    la crea. Medido contra un proyecto real el 2026-08-18: **31 avisos, todos
+    falsos** — las migraciones estaban ahí y creaban las tablas.
+
+    **Un validador que reporta de más se termina apagando**, y apagado figura
+    como cubierto. Vale más decir «no sé leer esto» una vez que acusar treinta
+    y una veces.
+    """
+    for repo in instalar.repositorios_git(raiz):
+        for archivo in versionado.archivos_versionados(repo):
+            if not migraciones.es_candidata(archivo):
+                continue
+            if os.path.splitext(archivo.lower())[1] not in LEGIBLES:
+                return True
+    return False
+
+
 def creaciones(raiz, d):
     """`{tabla: (ruta_mostrada, cuerpo, línea, ruta_original)}` de cada `CREATE`."""
     salida = {}
@@ -88,7 +114,7 @@ def creaciones(raiz, d):
         for archivo in versionado.archivos_versionados(repo):
             if not migraciones.es_candidata(archivo):
                 continue
-            if os.path.splitext(archivo.lower())[1] not in (".php", ".sql"):
+            if os.path.splitext(archivo.lower())[1] not in LEGIBLES:
                 continue
             mostrada = f"{prefijo}{archivo}"
             if d.ignorado(mostrada):
@@ -231,13 +257,26 @@ def validar(raiz):
     creadas = creaciones(raiz, d)
     hallazgos = []
 
+    # `01` · Si no se pudo leer **ninguna** migración y el proyecto tiene
+    # migraciones en un formato que este validador no parsea, no hay ground
+    # contra el que comparar: se dice una vez y no se acusa tabla por tabla.
+    a_ciegas = not creadas and hay_migraciones_ilegibles(raiz, d)
+    if a_ciegas:
+        hallazgos.append(Hallazgo(
+            AVISO, raiz, 0,
+            f"las migraciones de este proyecto no están en un formato que se "
+            f"pueda leer ({', '.join(LEGIBLES)}): no se comprueba si las tablas "
+            f"declaradas existen, ni su auditoría, unicidad ni índices. **No es "
+            f"que falten**: es que no se pueden mirar desde acá"))
+
     for entidad in d.tablas_de_dominio():
         creada = creadas.get(entidad.tabla.lower())
         if not creada:
-            hallazgos.append(Hallazgo(
-                AVISO, os.path.join(raiz, declaracion.DOMINIO), 0,
-                f"`{entidad.nombre}` declara la tabla `{entidad.tabla}` y ninguna "
-                f"migración la crea"))
+            if not a_ciegas:
+                hallazgos.append(Hallazgo(
+                    AVISO, os.path.join(raiz, declaracion.DOMINIO), 0,
+                    f"`{entidad.nombre}` declara la tabla `{entidad.tabla}` y "
+                    f"ninguna migración la crea"))
             continue
         mostrada, cuerpo, linea, ruta = creada
         hallazgos += _auditoria(entidad, cuerpo, ruta, mostrada, linea, d)

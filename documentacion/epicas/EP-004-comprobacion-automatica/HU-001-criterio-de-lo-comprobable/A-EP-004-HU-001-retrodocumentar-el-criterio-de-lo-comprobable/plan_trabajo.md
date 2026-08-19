@@ -36,7 +36,7 @@
 
 - **Reclasificar reglas.** El registro está al día desde el 2026-08-16; si aparece una mal clasificada, se anota.
 - **La marca en cada regla,** que es [HU-002](../../HU-002-marca-de-comprobable-en-cada-regla/HU-002-marca-de-comprobable-en-cada-regla.md).
-- **Escribir los validadores que faltan,** que son las 22 marcadas como pendientes en el registro y el pendiente [01](../../../../../pendientes/01-validadores-de-codigo-de-proyecto.md).
+- **Escribir los validadores que faltan,** que son las 22 marcadas como pendientes en el registro y el pendiente [01](../../../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md).
 
 ---
 

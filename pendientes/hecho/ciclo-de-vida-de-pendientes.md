@@ -22,4 +22,4 @@ Cerrado el 2026-08-06.
 
 ## Lo que no se mecanizó
 
-Comprobar que **todo `§Fuera-de-scope` tenga su señal** registrada sería un validador del [01](../01-validadores-de-codigo-de-proyecto.md), pero cae en el grupo fuzzy (cruzar el spec con las señales, como `F2`): queda anotado ahí, no forzado. El enganche vive como guía de flujo en el skill.
+Comprobar que **todo `§Fuera-de-scope` tenga su señal** registrada sería un validador del [01](validadores-de-codigo-de-proyecto.md), pero cae en el grupo fuzzy (cruzar el spec con las señales, como `F2`): queda anotado ahí, no forzado. El enganche vive como guía de flujo en el skill.

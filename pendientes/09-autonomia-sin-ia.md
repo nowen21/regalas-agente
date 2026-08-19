@@ -206,7 +206,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| **Alta** | Alta | 04 · 12 · [pendiente 01](01-validadores-de-codigo-de-proyecto.md) |
+| **Alta** | Alta | 04 · 12 · [pendiente 01](hecho/validadores-de-codigo-de-proyecto.md) |
 
 **Descripción.** Detectar que se escribió código de una fase sin que existan su spec y su plan aprobados.
 

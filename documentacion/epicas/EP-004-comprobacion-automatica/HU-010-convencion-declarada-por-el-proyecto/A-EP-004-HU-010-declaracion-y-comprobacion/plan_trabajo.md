@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-14 |
 | **Rama** | `feature/A-EP-004-HU-010-declaracion-y-comprobacion` |
 
-**ORIGEN** (`DOC12`): ✨ **Funcionalidad nueva.** Levanta el diferido §5.3 de la épica, que dejaba en espera las comprobaciones que necesitan que el proyecto declare sus convenciones. Nace del pendiente [pendientes/01-validadores-de-codigo-de-proyecto.md](../../../../../pendientes/01-validadores-de-codigo-de-proyecto.md), que registra estas cinco reglas como lo que falta.
+**ORIGEN** (`DOC12`): ✨ **Funcionalidad nueva.** Levanta el diferido §5.3 de la épica, que dejaba en espera las comprobaciones que necesitan que el proyecto declare sus convenciones. Nace del pendiente [pendientes/hecho/validadores-de-codigo-de-proyecto.md](../../../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), que registra estas cinco reglas como lo que falta.
 
 **Por qué una sola fase para los cinco CA.** Los cinco se apoyan en la misma declaración, y ninguno se puede probar sin ella. Partirlos daría cuatro fases que esperan a la primera sin poder ejecutarse, que es lo que `02·F12.10` manda evitar.
 

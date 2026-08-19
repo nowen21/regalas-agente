@@ -1,6 +1,6 @@
 # Qué reglas del estándar son validables
 
-Auditoría regla por regla de `base/` para decidir cuáles se pueden convertir en **validadores automáticos**. Fecha: **2026-08-05**. Alimenta el pendiente [01 · validadores de código de proyecto](../pendientes/01-validadores-de-codigo-de-proyecto.md) y su contraparte [hecho](../pendientes/hecho/validadores-y-hooks.md). Es una foto: al agregar o cambiar reglas, se revisa.
+Auditoría regla por regla de `base/` para decidir cuáles se pueden convertir en **validadores automáticos**. Fecha: **2026-08-05**. Alimenta el pendiente [01 · validadores de código de proyecto](../pendientes/hecho/validadores-de-codigo-de-proyecto.md) y su contraparte [hecho](../pendientes/hecho/validadores-y-hooks.md). Es una foto: al agregar o cambiar reglas, se revisa.
 
 ## Criterio
 

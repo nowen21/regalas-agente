@@ -1,6 +1,6 @@
 # Validadores del estándar
 
-Comprueban **lo que se puede comprobar sin criterio**. Cierran la brecha entre "el estándar dice" y "el estándar se cumple" — pendiente [01](../pendientes/01-validadores-de-codigo-de-proyecto.md).
+Comprueban **lo que se puede comprobar sin criterio**. Cierran la brecha entre "el estándar dice" y "el estándar se cumple" — pendiente [01](../pendientes/hecho/validadores-de-codigo-de-proyecto.md).
 
 Solo biblioteca estándar de Python 3.11+. Sin dependencias, sin instalación.
 

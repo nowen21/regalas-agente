@@ -1,6 +1,6 @@
 # Hecho · Validadores + hooks
 
-Capa de **verificación mecánica** del estándar: scripts que comprueban lo comprobable y hooks que los disparan solos. Cubre los hooks, los validadores de documentación/estructura y buena parte de los que leen el **código del proyecto**. Lo que queda —más validadores de código— sigue abierto en [01 · Validadores de código de proyecto](../01-validadores-de-codigo-de-proyecto.md).
+Capa de **verificación mecánica** del estándar: scripts que comprueban lo comprobable y hooks que los disparan solos. Cubre los hooks, los validadores de documentación/estructura y buena parte de los que leen el **código del proyecto**. Lo que queda —más validadores de código— sigue abierto en [01 · Validadores de código de proyecto](validadores-de-codigo-de-proyecto.md).
 
 Cada entrada dice qué se cerró, cuándo y dónde quedó.
 
