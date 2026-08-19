@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 36 |
-| **Incompletas** | 38 |
+| **Completas** | 37 |
+| **Incompletas** | 37 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -47,7 +47,7 @@
 | EP-001 | [HU-007 — La regla que gobierna cómo se escriben las reglas](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
 | EP-001 | [HU-008 — Derogar una regla sin borrarla ni renumerarla](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-008-derogacion-sin-borrar/HU-008-derogacion-sin-borrar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-001 | [HU-009 — Poner al día las reglas que no pasan su propio checklist](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
-| EP-001 | [HU-010 — Cuándo no aplica la exigencia de especificación](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) | ☑ | ☑ | ☑ | ☐ | ☑ | ☐ |
+| EP-001 | [HU-010 — Cuándo no aplica la exigencia de especificación](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-001 | [HU-011 — Buscar en el repositorio antes de preguntar](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) | ☑ | ☑ | ☑ | ☑ | ☑ | ☑ |
 | EP-001 | [HU-012 — Inventario de las acciones del agente y su riesgo](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | EP-001 | [HU-013 — Capítulos opt-in de dominio](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |

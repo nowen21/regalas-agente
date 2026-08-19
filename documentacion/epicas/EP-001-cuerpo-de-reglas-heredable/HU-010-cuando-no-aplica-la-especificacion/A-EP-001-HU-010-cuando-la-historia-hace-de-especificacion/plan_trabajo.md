@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-17 |
 | **Rama** | `feature/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion` |
 
-**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** A diferencia de las demás fases de esta épica, acá **no hay nada construido que retro-documentar**: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) sigue escrita como si todo entregable fuera código de un módulo, y el caso del entregable que no es código nunca se escribió. Baja del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) por la vía que pide [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila en el inventario es la de HU-010 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva.** A diferencia de las demás fases de esta épica, acá **no hay nada construido que retro-documentar**: [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) sigue escrita como si todo entregable fuera código de un módulo, y el caso del entregable que no es código nunca se escribió. Baja del pendiente [20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) por la vía que pide [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y su fila en el inventario es la de HU-010 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md).
 
 **CA de la HU que cubre esta fase**
 
@@ -117,7 +117,7 @@ Las tres bloquean T-01. **Ninguna tarea de construcción arranca con una duda ab
 
 | Duda | Decisión |
 |---|---|
-| 18 | **El camino 2 del [pendiente 20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md):** la historia hace de especificación cuando el entregable no es código. Abrirle una excepción a `F2` es la puerta que después nadie cierra. |
+| 18 | **El camino 2 del [pendiente 20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md):** la historia hace de especificación cuando el entregable no es código. Abrirle una excepción a `F2` es la puerta que después nadie cierra. |
 | 19 | **Cualquier proyecto cuyo entregable no sea código**, no solo el estándar (`20·M3`). |
 | 20 | **Le basta con que el archivo exista.** Distinguir las dos formas es criterio. |
 

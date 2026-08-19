@@ -133,7 +133,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** —
 - **Dispara:** EP-001 · HU-010, cuándo no aplica la exigencia de especificación. Ya está escrita.
 - **Orden de resolución:** 4 de 7 · hoy se incumple sin saber si está bien.
-- **Dónde queda:** señal S-003 · [pendientes/20-f2-no-dice-cuando-no-aplica.md](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md).
+- **Dónde queda:** señal S-003 · [pendientes/hecho/cuando-la-historia-hace-de-especificacion.md](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md).
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se le escribe a `F2` esa excepción, o se acepta que la historia de usuario hace de especificación cuando el módulo es el propio estándar?

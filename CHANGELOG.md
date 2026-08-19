@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.10.0 — 2026-08-18
+
+**MENOR** — cuando lo que se está construyendo no es código sino un texto —una norma, un manual, un documento—, ya no hay que escribir aparte un papel que explique qué se va a hacer: sirve la historia de usuario que ya se escribió.
+
+Se cambió porque dos trabajos de este repositorio se habían empezado saltándose ese papel, con razón: lo que iban a entregar era texto, y el papel aparte habría dicho exactamente lo mismo que la historia. Hasta hoy eso era un incumplimiento callado; ahora es lo que la regla dice.
+
+**Lo que no cambió:** sigue haciendo falta tener escrito y aprobado qué se va a hacer antes de empezar. Lo único distinto es de qué está hecho ese escrito.
+
+**El detalle.** Es el [pendiente 20](pendientes/hecho/cuando-la-historia-hace-de-especificacion.md), resuelto por su camino 2 en [`02·F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md). **No se le abrió una excepción**, y la diferencia importa: una excepción dice cuándo la regla no rige, y esto dice dónde vive lo que la regla exige. `F2` ya traía una, y abrirle la segunda es la puerta que después nadie cierra. Su checklist se reaplicó: 294 caracteres, entra en el molde. Fase [`A-EP-001-HU-010`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/).
+
+---
+
 ## 23.9.0 — 2026-08-18
 
 **MENOR** — las entradas de este archivo empiezan ahora explicando, en dos frases y sin palabras raras, qué cambió y por qué. Los nombres de archivo y las referencias internas siguen estando, pero más abajo.

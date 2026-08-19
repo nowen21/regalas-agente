@@ -45,13 +45,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-retrodocumentar
 
 ### H-4 · El CA-02 de HU-010 hablaba de dos fases; son diecisiete
 
-- **Qué pasó:** [HU-010](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) y el pendiente [20](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) dicen que hay **dos** fases abiertas sin especificación aparte. Contada la casilla de las veinticinco fases que hay hoy: **nueve** se apoyan en su historia de usuario y **ocho** declararon que no existe y la anotaron como deuda.
+- **Qué pasó:** [HU-010](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) y el pendiente [20](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) dicen que hay **dos** fases abiertas sin especificación aparte. Contada la casilla de las veinticinco fases que hay hoy: **nueve** se apoyan en su historia de usuario y **ocho** declararon que no existe y la anotaron como deuda.
 - **Por qué importa:** seis de esas nueve nacieron en esta misma sesión. Retro-documentar EP-001 multiplicó por cuatro el caso que `02·F2` no cubre, y con un criterio que ninguna regla respalda todavía. Un criterio que se repite nueve veces ya no es una excepción: es costumbre.
 - **Qué lo soluciona:** la fase que se abrió para HU-010, [`A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion`](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/plan_trabajo.md), con la cuenta al día y las tres dudas que la bloquean.
 - **Qué se decidió:** corregir la cuenta en la §8 de la HU y dejarla medida en el plan de la fase. **El pendiente 20 no se tocó:** su decisión de fondo —excepción a `F2` o aceptar que la historia hace de especificación— es del usuario, y es la duda 1 de esa fase.
 - **Estado:** abierto, con su fase escrita
 - **Dónde queda:** §8 de [HU-010](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) y §2 del plan de su fase
-- **Nace en:** 2026-08-14 · pendiente [20](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md)
+- **Nace en:** 2026-08-14 · pendiente [20](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md)
 - **Con qué se retoma:** ¿`F2` lleva excepción con sus tres partes, o acepta en su texto que la historia hace de especificación cuando el entregable no es código?
 
 ### H-5 · Dos de las siete HU no eran retro-documentación
@@ -144,7 +144,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ · H-1, H-2 y H-5 dicen qué se hizo y dónde quedó |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-10 queda con su decisión pasada al usuario, el H-3 en el [53](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), el H-4 en el [20](../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) con su fase abierta, el H-6 acá |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el H-10 queda con su decisión pasada al usuario, el H-3 en el [53](../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), el H-4 en el [20](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) con su fase abierta, el H-6 acá |
 | Toda historia disparada está escrita en su épica | ☑ · ninguna historia nueva: las siete ya estaban escritas y lo que faltaba era su fase |
 | Lo que se hizo está aprobado y guardado | ☑ · un commit con los 163 archivos propios, después de rehacerlo por el H-11. La **aprobación no es de esta sesión**: el usuario decidió el 2026-08-17 que cada plan se aprueba cuando se vaya a ejecutar su fase. Queda solo guardar |
 

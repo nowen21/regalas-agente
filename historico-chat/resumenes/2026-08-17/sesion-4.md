@@ -373,6 +373,20 @@ Nace [`validadores/enmascarar.py`](../../../validadores/enmascarar.py), y el eng
 
 **Lo que queda:** las 47 transcripciones ya escritas no se revisaron, y el enmascarado solo cubre el histórico. Un resumen o un plan escritos a mano pueden llevar una clave y nadie los mira.
 
+### H-33 · Decir dónde vive lo que la regla exige, en vez de abrirle otra excepción
+
+Cerrado el [pendiente 20](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md), v23.10.0. `02·F2` dice ahora que **cuando el entregable no es código, la especificación es la historia con sus criterios de aceptación.**
+
+**Los dos caminos del pendiente parecían equivalentes y no lo son:**
+
+> **Una excepción dice cuándo la regla no rige. Esto dice dónde vive lo que la regla exige.**
+
+Con el camino elegido `F2` sigue exigiendo lo mismo en todos los casos; lo único que cambia es de qué está hecha la especificación.
+
+**Y pesa que `F2` ya tenía una excepción.** Abrirle la segunda a una regla que ya trae una es la puerta que después nadie cierra — `08·T1` es el ejemplo vivo, con su excepción que deja al agente autorizándose a sí mismo a no probar.
+
+**Lo que ordena:** dos fases de este repositorio se habían abierto declarando que no tienen especificación aparte, y hasta hoy era un incumplimiento silencioso.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

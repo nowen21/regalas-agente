@@ -14,7 +14,7 @@
 
 > Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
 
-**Qué texto se prueba.** El que decida la duda 1 del plan. Los casos están escritos contra **lo que la regla tiene que lograr**, no contra una redacción concreta: sirven para cualquiera de los dos caminos del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md).
+**Qué texto se prueba.** El que decida la duda 1 del plan. Los casos están escritos contra **lo que la regla tiene que lograr**, no contra una redacción concreta: sirven para cualquiera de los dos caminos del pendiente [20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md).
 
 ---
 

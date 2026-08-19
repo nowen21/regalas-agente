@@ -68,7 +68,7 @@ Todas necesitan que el usuario nombre algo concreto que solo él conoce.
 
 | # | Fase | Duda |
 |---|---|---|
-| 18 | [`A-EP-001-HU-010`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/plan_trabajo.md) | ¿Cuál de los dos caminos del [pendiente 20](20-f2-no-dice-cuando-no-aplica.md)? |
+| 18 | [`A-EP-001-HU-010`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/plan_trabajo.md) | ¿Cuál de los dos caminos del [pendiente 20](hecho/cuando-la-historia-hace-de-especificacion.md)? |
 | 19 | La misma | ¿Cubre solo al estándar, o a cualquier proyecto cuyo entregable no sea código? |
 | 20 | La misma | ¿`flujo.py` distingue las dos formas de llenar la casilla, o le basta con que el archivo exista? |
 | 21 | [`A-EP-004-HU-012`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/plan_trabajo.md) | ¿Aplica a todo el repositorio o solo a lo que se entrega? El histórico es transcripción, no entregable |
@@ -128,7 +128,7 @@ Buscadas antes de volver a preguntarlas ([`01·C23`](../base/01-conducta.md#c23-
 |---|---|---|
 | **16** · qué reglas candidatas no entraron | [prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md](../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md) | Las 22 fichas con su salida: **17 no entraron como regla nueva** —doce «ya está cubierta», tres «no es regla», dos «afinar una existente»— y la tabla dice por cuál quedó cubierta cada una |
 | **21** · si la comprobación de marcas cubre todo el repositorio | El [pendiente 11](hecho/../11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), paso 3, desde el 2026-08-10 | *«No tocar el histórico: es transcripción literal»*. **Ya está construido así** — se cuenta aparte, y `validar.py marcas` mira solo `base/` y `plantillas/` |
-| **18** · cuál de los dos caminos del pendiente 20 | Sigue abierta, pero el [20](20-f2-no-dice-cuando-no-aplica.md) ya trae las dos salidas evaluadas | No hace falta pensarla de cero: hay que elegir |
+| **18** · cuál de los dos caminos del pendiente 20 | Sigue abierta, pero el [20](hecho/cuando-la-historia-hace-de-especificacion.md) ya trae las dos salidas evaluadas | No hace falta pensarla de cero: hay que elegir |
 
 ### Y cuatro más las contesta lo que ya está construido
 
@@ -208,7 +208,7 @@ Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dic
 
 | # | Decisión | Por qué |
 |---|---|---|
-| 18 | **El camino 2 del [pendiente 20](20-f2-no-dice-cuando-no-aplica.md):** la historia hace de especificación cuando el entregable no es código | El camino 1 abre una excepción en `F2`, y una excepción es la puerta que después nadie cierra. `08·T1` es el ejemplo vivo |
+| 18 | **El camino 2 del [pendiente 20](hecho/cuando-la-historia-hace-de-especificacion.md):** la historia hace de especificación cuando el entregable no es código | El camino 1 abre una excepción en `F2`, y una excepción es la puerta que después nadie cierra. `08·T1` es el ejemplo vivo |
 | 19 | **Cualquier proyecto cuyo entregable no sea código**, no solo el estándar | `20·M3`: la base no se escribe para un caso |
 | 20 | **Le basta con que el archivo exista.** Distinguir las dos formas de llenar la casilla es criterio | Igual que la 10 |
 | 22 | **Contra el commit del que salió la fase.** Ni la rama —que arrastra lo ajeno— ni lo sin guardar, que cambia mientras se mira | Es lo que hizo falta hoy, dos sesiones sobre el mismo árbol |

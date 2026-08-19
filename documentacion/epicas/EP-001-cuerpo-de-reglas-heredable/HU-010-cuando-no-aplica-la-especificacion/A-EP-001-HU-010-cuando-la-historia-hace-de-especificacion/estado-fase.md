@@ -10,14 +10,14 @@
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion` |
 | **Módulo** | Cuerpo de reglas — [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
-| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-010](../HU-010-cuando-no-aplica-la-especificacion.md) · ✨ funcionalidad nueva, bajada del pendiente [20](../../../../../pendientes/20-f2-no-dice-cuando-no-aplica.md) por [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Fila de HU-010 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
+| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-010](../HU-010-cuando-no-aplica-la-especificacion.md) · ✨ funcionalidad nueva, bajada del pendiente [20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) por [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md). Fila de HU-010 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 
 ---
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,9 +26,9 @@
 | 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
 | 4 | Pausa y presentación | 👤 presentado el 2026-08-17 | ☑ |
 | 5 | Aprobación del plan detallado | 👤 «autorizados los planes de trabajo», 2026-08-17 | ☑ |
-| 6 | Ejecución continua | 10 tareas · **detenida por las 3 dudas de §2.7** | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
+| 6 | Ejecución continua | la frase nueva en `F2` y su checklist | ☑ |
+| 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
+| 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
 | 9 | Commit único | 👤 pendiente de autorización | ☐ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
@@ -43,7 +43,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
+| **Concepto** | **Cumple** |
 | **CA cumplidos** | 0 de 2 |
 | **CA en "No"** | Ninguno todavía: no se ha corrido nada |
 | **Defectos abiertos aceptados** | Ninguno |
