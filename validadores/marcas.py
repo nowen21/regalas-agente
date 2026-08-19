@@ -92,9 +92,17 @@ def _es_historico(raiz, archivo):
     return rel.split("/")[0] == HISTORICO
 
 
+# El marcador de relleno de las plantillas. **Es notación de la casa, no
+# adorno**, igual que la cita `NN·ID`: `flujo.py`, `comun.py` y `andamio.py`
+# reconocen por él una celda sin llenar. Contarlo sería contar la notación, y
+# limpiarlo rompería tres validadores.
+_MARCADOR = u"«…»"
+
+
 def marcas_de_linea(linea):
     """Las marcas mecánicas de una línea ya limpia de código. `[(clave, qué)]`."""
     salida = []
+    linea = linea.replace(_MARCADOR, "")
     for caracter, nombre in INVISIBLES.items():
         for _ in range(linea.count(caracter)):
             salida.append((caracter, nombre))
@@ -173,6 +181,174 @@ def validar(raiz=None):
                 hallazgos.append(Hallazgo(
                     AVISO, archivo, n,
                     f"{nombre} — `00·ID8` pide entregar sin las marcas del anexo"))
+    return hallazgos
+
+
+# ── La limpieza · solo lo que se reemplaza sin criterio ───────────────────
+#
+# **Se limpia la mitad que no es prosa.** Un espacio duro, un ancho cero, una
+# semiraya donde va un guion, unos puntos suspensivos en un carácter: cada uno
+# tiene **un** reemplazo y no hay nada que decidir. Se arreglan sin leer.
+#
+# La raya larga, el punto medio en prosa y la viñeta con negrita **no están
+# acá**, y es a propósito: quitarlas es reescribir la frase, y un programa que
+# reescribe frases del estándar cambia lo que el estándar dice. Esas quedan
+# para quien escriba, con el trinquete impidiendo que sumen más.
+REEMPLAZOS = {
+    "\u00a0": " ",       # espacio duro
+    "\u2009": " ",       # espacio fino
+    "\u202f": " ",       # espacio fino sin salto
+    "\u200b": "",        # ancho cero
+    "\ufeff": "",        # marca de orden de bytes
+    "\u00ad": "",        # guion suave
+    "\u2026": "...",     # puntos suspensivos en un carácter
+    "\u2013": "-",       # semiraya donde va un guion
+    "\u201c": '"',       # comilla curva de apertura
+    "\u201d": '"',       # comilla curva de cierre
+}
+
+
+def limpiar_texto(texto):
+    """El texto con los reemplazos hechos, **fuera de código**. `(nuevo, n)`.
+
+    Dentro de un bloque cercado o de comillas invertidas la marca es el
+    ejemplo de lo que no hay que hacer: cambiarla borraría el ejemplo.
+    """
+    salida, cambios, cercado = [], 0, False
+    for linea in texto.split("\n"):
+        if linea.lstrip().startswith("```") or linea.lstrip().startswith("~~~"):
+            cercado = not cercado
+            salida.append(linea)
+            continue
+        if cercado:
+            salida.append(linea)
+            continue
+        trozos = linea.split("`")
+        for i in range(0, len(trozos), 2):      # los pares están fuera del código
+            if _MARCADOR in trozos[i]:
+                continue                        # notación de la casa: no se toca
+            for viejo, nuevo in REEMPLAZOS.items():
+                if viejo in trozos[i]:
+                    cambios += trozos[i].count(viejo)
+                    trozos[i] = trozos[i].replace(viejo, nuevo)
+        salida.append("`".join(trozos))
+    return "\n".join(salida), cambios
+
+
+def limpiar(raiz=None, carpetas=None, escribir=False):
+    """Limpia lo mecánico de esas carpetas. `[(archivo, cuántas)]`.
+
+    Sin `escribir` solo simula, como el resto de los reparadores de esta casa.
+    """
+    raiz = raiz or RAIZ
+    carpetas = HEREDADO if carpetas is None else carpetas
+    tocados = []
+    for archivo in recorrer_md(raiz):
+        if _excluido(raiz, archivo) or _es_historico(raiz, archivo):
+            continue
+        rel = os.path.relpath(archivo, raiz).replace("\\", "/")
+        if carpetas and rel.split("/")[0] not in carpetas:
+            continue
+        nuevo, cambios = limpiar_texto(leer(archivo))
+        if not cambios:
+            continue
+        tocados.append((relativo(archivo), cambios))
+        if escribir:
+            with open(archivo, "w", encoding="utf-8", newline="\n") as f:
+                f.write(nuevo)
+    return tocados
+
+
+# ── El trinquete · qué se bloquea al guardar ──────────────────────────────
+#
+# **Bloquear todas las marcas apagaría el enganche el primer día.** Medido sobre
+# los seis commits anteriores a escribir esto: 425 marcas de estilo agregadas y
+# 23 invisibles. Un enganche que rechaza cada commit se desactiva en una tarde,
+# y ese es el defecto más caro de este repositorio.
+#
+# Lo que sí se puede sostener es un **trinquete**: que la deuda no crezca.
+#
+# - **Las invisibles, en cualquier archivo.** Nunca se escriben a propósito:
+#   nadie teclea un espacio duro ni un ancho cero. Se arreglan en segundos.
+# - **Todas las marcas, en `base/` y `plantillas/`.** Es lo que se hereda, y es
+#   donde `00·ID8` importa. De los ocho commits medidos, seis pasaban ya.
+#
+# Fuera de eso se cuenta y se dice, sin bloquear: el número delante en el
+# momento de escribir enseña más que una limpieza de una sola vez.
+HEREDADO = ("base", "plantillas")
+
+
+def _git(raiz, *args):
+    import subprocess
+    r = subprocess.run(("git", "-C", raiz) + args, capture_output=True,
+                       text=True, encoding="utf-8", errors="replace", timeout=60)
+    return r.stdout if r.returncode == 0 else None
+
+
+def archivos_preparados(raiz):
+    """Los `.md` que entran en el commit que se está por hacer."""
+    salida = _git(raiz, "diff", "--cached", "--name-only", "--diff-filter=ACMR")
+    if not salida:
+        return []
+    return [l.strip() for l in salida.splitlines()
+            if l.strip().lower().endswith(".md")]
+
+
+def _cuenta(texto):
+    """`{clave: cuántas}` de un texto, saltando código y bloques cercados."""
+    salida = {}
+    for _n, linea in lineas_utiles(texto):
+        for clave, _nombre in marcas_de_linea(sin_codigo_en_linea(linea)):
+            salida[clave] = salida.get(clave, 0) + 1
+    return salida
+
+
+def _crecimiento(raiz, rel):
+    """Cuántas marcas de cada clase **suma** este archivo respecto de `HEAD`.
+
+    Se compara el archivo entero contra su versión anterior, no el diff en
+    crudo: así lo que está dentro de un bloque cercado sigue sin contarse, que
+    es donde viven los ejemplos del anexo.
+    """
+    ahora = _git(raiz, "show", ":%s" % rel)
+    if ahora is None:
+        return {}
+    antes = _git(raiz, "show", "HEAD:%s" % rel) or ""
+    a, b = _cuenta(ahora), _cuenta(antes)
+    return {k: a.get(k, 0) - b.get(k, 0)
+            for k in set(a) | set(b) if a.get(k, 0) > b.get(k, 0)}
+
+
+def validar_preparados(raiz=None):
+    """El trinquete sobre lo que entra en el commit. `[Hallazgo]`."""
+    raiz = raiz or RAIZ
+    hallazgos = []
+    for rel in archivos_preparados(raiz):
+        if rel in CATALOGO or rel.split("/")[0] == HISTORICO:
+            continue
+        crece = _crecimiento(raiz, rel)
+        if not crece:
+            continue
+        ruta = os.path.join(raiz, *rel.split("/"))
+        heredado = rel.split("/")[0] in HEREDADO
+        for clave, cuantas in sorted(crece.items(), key=lambda x: -x[1]):
+            invisible = clave in INVISIBLES
+            if invisible:
+                nombre = INVISIBLES[clave]
+                razon = ("no se escribe a propósito y se quita en segundos")
+            else:
+                nombre = clave
+                razon = ("esto se hereda: `base/` y `plantillas/` son lo que "
+                         "viaja a los proyectos")
+            if invisible or heredado:
+                hallazgos.append(Hallazgo(
+                    comun.FALLA, ruta, 0,
+                    f"agrega {cuantas} · {nombre} — {razon} (`00·ID8`)"))
+            else:
+                hallazgos.append(Hallazgo(
+                    AVISO, ruta, 0,
+                    f"agrega {cuantas} · {nombre} — no bloquea acá, pero es "
+                    f"deuda que alguien limpia después (`00·ID8`)"))
     return hallazgos
 
 

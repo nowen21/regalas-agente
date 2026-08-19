@@ -1,6 +1,6 @@
 # Especificación del módulo «NOMBRE DEL MÓDULO»  ·  `[CAPA 3 · plantilla de especificación]`
 
-> **Cómo se usa.** Es el esqueleto para redactar la especificación de **un** módulo. Se copia a `documentacion/«slug-modulo»/spec.md`, se reemplaza cada `«…»`, se responde cada `[[guía]]` y se borran las guías. **Antes de escribir código, esta especificación debe estar completa y aprobada** (regla base `02`·F2). Ninguna sección se borra: si no aplica, se deja el título con "No aplica porque …".
+> **Cómo se usa.** Es el esqueleto para redactar la especificación de **un** módulo. Se copia a `documentacion/«slug-modulo»/spec.md`, se reemplaza cada `«…»`, se responde cada `[[guía]]` y se borran las guías. **Antes de escribir código, esta especificación debe estar completa y aprobada** (regla base `02`·F2). Ninguna sección se borra: si no aplica, se deja el título con "No aplica porque ...".
 
 - **Slug del módulo:** `«slug-en-kebab»`
 - **Estado:** `«borrador / aprobada / en implementación / cerrada»`

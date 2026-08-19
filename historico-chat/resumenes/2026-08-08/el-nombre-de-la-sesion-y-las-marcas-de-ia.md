@@ -84,7 +84,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md).
+- **Dónde queda:** [pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** el validador mecánico primero; sin él, el recuento sobre 200 archivos se hace a mano.
@@ -126,6 +126,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-7 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-5 en el [11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md); H-6 queda escrito en el anexo |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-5 en el [11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md); H-6 queda escrito en el anexo |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commit `ab314a1` |

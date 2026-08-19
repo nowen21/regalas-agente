@@ -18,11 +18,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Fila 10: pasó de 18 líneas a cuatro; la nomenclatura y la ruta ya las fija [`02·F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) y el índice por nivel es [`DOC17`](DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md), así que se enlazan en vez de repetirse (fila 11).
 

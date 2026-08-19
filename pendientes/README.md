@@ -70,7 +70,7 @@ Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porqu
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 11 | **P4** | [Limpiar los marcadores de IA del texto del estándar](11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `00·ID8` (v7.0.0) prohíbe las marcas de generación automática, y el texto ya escrito de `base/` y `plantillas/` las trae. La norma no reabre lo cerrado, pero mientras no se limpie el estándar enseña lo contrario de lo que pide. |
+| 11 | **P4** | [Limpiar los marcadores de IA del texto del estándar](hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `00·ID8` (v7.0.0) prohíbe las marcas de generación automática, y el texto ya escrito de `base/` y `plantillas/` las trae. La norma no reabre lo cerrado, pero mientras no se limpie el estándar enseña lo contrario de lo que pide. |
 
 Depende del validador de la parte mecánica de `ID8`: sin él, el recuento sobre 200 archivos se hace a mano. **Bloqueado de hecho** — no se mueve hasta que el script exista.
 

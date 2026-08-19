@@ -57,7 +57,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo**. Pero un desarrollo e
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · [`01·C3`](../01-conducta.md#c3--quédate-en-tu-tarea) |
 | 4 | **Épica / Feature** | el bloque grande de funcionalidad | [`13·DOC16`](../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) |
 | 5 | **HU** | la épica descompuesta en historias con criterios de aceptación | [`13·DOC15`](../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md) |
-| 6 | **Fase (ejecución)** — especificación → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)–[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F15`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
+| 6 | **Fase (ejecución)** — especificación → plan → implementar → probar → cerrar → commit | cómo y cuándo se construye | [`F2`](reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)-[`F11`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) · las once etapas de [`F15`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) |
 
 **El backlog entra por el paso 0, no por el 6.** Un pendiente ya escrito es una necesidad acordada, no un plan: para construirlo se baja a épica, a HU y a fase como cualquier otra ([`F23`](reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
@@ -147,7 +147,7 @@ La tabla de archivos del plan ([`F14`](reglas/F14-responde-las-trece-preguntas-e
 
 **No se encadenan dependencias transitivas.** Si A depende de B, ajustar B es necesario o se difiere explícitamente; pero no se sigue la cadena B→C→D, que expande la fase infinitamente. Cuando un archivo se difiere, **todo lo que depende de él se difiere con él** — incluidas sus pruebas. De ahí la regla derivada: una prueba refactorizada solo puede depender de código refactorizado en la misma fase o del código base ya estable. Jamás se refactoriza una prueba esperando que quede verde contra algo que se difirió.
 
-**Proporcionalidad.** El análisis se escala con el número de archivos que rompen: **≤ 5** análisis mínimo (mapa + verificación puntual) · **6–15** análisis medio (verificación dirigida de cada archivo que rompe) · **> 15** análisis exhaustivo justificado.
+**Proporcionalidad.** El análisis se escala con el número de archivos que rompen: **≤ 5** análisis mínimo (mapa + verificación puntual) · **6-15** análisis medio (verificación dirigida de cada archivo que rompe) · **> 15** análisis exhaustivo justificado.
 
 **Qué se escala al usuario y qué no.** Se cierran con criterio profesional las decisiones puramente técnicas —nomenclatura de rutas, orden de migración, cascadas en claves foráneas, cardinalidad, código idiomático del framework— y se declaran en el plan. Se escalan las que impactan la interfaz visible, el contrato de una API, los cambios destructivos de datos, el alcance de la fase o la deuda estructural. Listar diez decisiones cuando siete son triviales sobrecarga al usuario y retrasa la fase.
 

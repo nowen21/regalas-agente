@@ -19,7 +19,7 @@
 
 **El primer programa que mira si el estándar cumple `00·ID8`.** [`validadores/marcas.py`](../../../../../validadores/marcas.py) cuenta las marcas mecánicas del anexo [`marcadores-de-ia.md`](../../../../../base/00-identidad-y-rol/marcadores-de-ia.md); `validar.py marcas` reporta las de `base/` y `plantillas/`, que es lo que viaja a los proyectos.
 
-**Era el punto 1 del [pendiente 11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado.** El propio pendiente decía que hacer el recuento a mano sobre 200 archivos es lo que lo volvía inabordable.
+**Era el punto 1 del [pendiente 11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado.** El propio pendiente decía que hacer el recuento a mano sobre 200 archivos es lo que lo volvía inabordable.
 
 | Fuera del histórico | **16 477** marcas en **820** archivos |
 |---|---|
@@ -56,7 +56,7 @@ Las dos que pesan: **raya larga, 7 286** y **punto medio, 6 237**.
 | [`validadores/validar.py`](../../../../../validadores/validar.py) | El subcomando `marcas` |
 | [`validadores/tests/test_las_marcas_de_ia_se_cuentan.py`](../../../../../validadores/tests/test_las_marcas_de_ia_se_cuentan.py) | 19 casos |
 | [`validadores/tests/test_ninguno_termina_en_silencio.py`](../../../../../validadores/tests/test_ninguno_termina_en_silencio.py) | `marcas.py` entra a los de arranque propio, con el motivo escrito |
-| [`pendientes/11-…`](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) | El recuento. **Sigue abierto**: contar no es limpiar |
+| [`pendientes/11-…`](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) | El recuento. **Sigue abierto**: contar no es limpiar |
 
 ---
 

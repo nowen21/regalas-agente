@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-molde-para-pedi
 - **Responde a:** —.
 - **Dispara:** —, ya está anotado.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md), que es el mismo trabajo.
+- **Dónde queda:** [pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md), que es el mismo trabajo.
 - **Nace en:** 2026-08-14 · molde para pedir en la sesión.
 - **Cerrado en:** —.
 - **Con qué se retoma:** mientras no exista el validador, `ID8` depende de que alguien la recuerde en cada texto.
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-molde-para-pedi
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 a H-5 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-6 en el [11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-6 en el [11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commiteado y subido a pedido del usuario |

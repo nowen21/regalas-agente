@@ -19,11 +19,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia; [`DOC20`](DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) y [`DOC21`](DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) se apoyan en esta, pero la dependencia se declara en ellas, no acá · **16**: no tiene excepción. Fila 6: `DOC19` es el siguiente consecutivo libre. Fila 9: la exigencia es una sola, cuál es la marca; que un documento con marcas no esté terminado y que lo que no aplica se escriba `N/A` se cumplen por separado, y por eso son [`DOC20`](DOC20-no-entregues-como-terminado-un-documento-con-marcas.md) y [`DOC21`](DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md). Fila 10: el porqué de la marca no cabía en el cuerpo y se fue a `notas/`, como manda la propia fila.
 

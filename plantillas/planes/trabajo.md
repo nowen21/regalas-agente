@@ -8,7 +8,7 @@
 
 ---
 
-## 0. Identificación y origen  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q1–Q2 · [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
+## 0. Identificación y origen  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q1-Q2 · [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
 
 | Campo | Valor |
 |---|---|
@@ -88,7 +88,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ### 2.4 Punto de entrada en la UI  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q7
 
-- **Dónde queda accesible al usuario final:** «menú / navegación / dashboard / link desde otra vista, con el archivo de navegación real». Si la fase no introduce UI navegable, declararlo: "No aplica porque …".
+- **Dónde queda accesible al usuario final:** «menú / navegación / dashboard / link desde otra vista, con el archivo de navegación real». Si la fase no introduce UI navegable, declararlo: "No aplica porque ...".
 
 ### 2.5 Permisos / roles a sembrar  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q8
 
@@ -204,7 +204,7 @@ Asumir **"probablemente está en producción"**. Estrategia según el tipo de ca
 - **Aditivo** (columna/tabla nueva): migración nueva, backfill si aplica.
 - **Rename:** migración nueva reversible (no editar la original de una fase cerrada).
 - **Drop / cambio de tipo con datos:** avisar el riesgo específico antes de aplicar + `down()` que reconstruye.
-- «Declarar la que aplica, o "No aplica porque …".»
+- «Declarar la que aplica, o "No aplica porque ...".»
 
 ---
 

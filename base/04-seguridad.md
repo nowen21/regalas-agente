@@ -25,11 +25,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -61,11 +61,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -92,11 +92,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -121,11 +121,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
@@ -156,11 +156,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
 
@@ -192,11 +192,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -224,11 +224,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -253,11 +253,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -282,11 +282,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -312,11 +312,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -341,11 +341,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
@@ -373,11 +373,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ❌ N/A ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ❌ N/A ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
 
@@ -408,11 +408,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -443,11 +443,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -482,11 +482,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -522,11 +522,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
@@ -555,11 +555,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 

@@ -131,7 +131,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 |---|---|---|
 | 1 | Tomar la lista de marcadores | Queda a la vista, con su archivo y cuántos son |
 | 2 | Buscar cada marcador en el documento entregado | Ninguno aparece; se anota cuántos se buscaron |
-| 3 | Dejar escrito que ningún programa hace hoy esta búsqueda | Queda atado al pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
+| 3 | Dejar escrito que ningún programa hace hoy esta búsqueda | Queda atado al pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
 
 **Resultado esperado final:** el CA queda con evidencia leída, y dicho que no está medida por un programa.
 

@@ -17,11 +17,11 @@ Aplicado el [checklist del estándar](../checklist.md) contra **v23.4.0**, el **
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 

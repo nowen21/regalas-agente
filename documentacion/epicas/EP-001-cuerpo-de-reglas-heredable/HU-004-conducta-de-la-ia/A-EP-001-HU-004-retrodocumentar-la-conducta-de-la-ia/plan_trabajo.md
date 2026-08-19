@@ -35,7 +35,7 @@
 **Fuera de alcance:**
 
 - **Reescribir las veintidós reglas del capítulo `01`.** Se leen para no duplicar, no para corregirlas.
-- **Limpiar los marcadores de IA que ya tiene escrito el estándar.** Está anotado en el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) y es trabajo aparte.
+- **Limpiar los marcadores de IA que ya tiene escrito el estándar.** Está anotado en el pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) y es trabajo aparte.
 - **Comprobar con un programa que un texto tiene marcadores de IA.** Sería de EP-004 y hoy no existe ningún validador que lo mire; esta fase lo deja dicho, no lo construye.
 - **Vaciar los dos recuerdos.** Suban o no a regla, el recuerdo se queda: dice cómo lo quiere el usuario en este repositorio, y eso no es lo mismo que la regla que heredan los proyectos.
 
@@ -141,7 +141,7 @@ La duda 1 bloquea T-01 y T-04. El CA-03 no depende de ninguna de las dos.
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
 | T-07 | Caso de prueba: revisar un documento entregado contra la lista de [`marcadores-de-ia.md`](../../../../../base/00-identidad-y-rol/marcadores-de-ia.md) y comprobar que no aparece ninguno | `plan_pruebas.md` | 1,5 |
-| T-08 | Dejar escrito que hoy nadie lo comprueba con un programa, y atarlo al pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `resultado_pruebas.md` | 1,0 |
+| T-08 | Dejar escrito que hoy nadie lo comprueba con un programa, y atarlo al pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) | `resultado_pruebas.md` | 1,0 |
 
 ### RNF — Que la conducta se pueda revisar y no se contradiga
 

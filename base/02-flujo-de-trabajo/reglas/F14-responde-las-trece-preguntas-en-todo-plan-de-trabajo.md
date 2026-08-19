@@ -2,7 +2,7 @@
 
 ## F14 · Responde las trece preguntas en todo plan de trabajo
 
-Un plan de trabajo responde las **trece preguntas** del capítulo antes de que se escriba una línea de código (extiende [`02·F4`](F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) · deroga [`02·F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)). La pregunta que no aplique al alcance de la fase se deja con su encabezado y un "No aplica porque …" — no se omite. Las trece, y qué ajusta la capa 3 de cada una: [`base.md`](../base.md).
+Un plan de trabajo responde las **trece preguntas** del capítulo antes de que se escriba una línea de código (extiende [`02·F4`](F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) · deroga [`02·F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)). La pregunta que no aplique al alcance de la fase se deja con su encabezado y un "No aplica porque ..." — no se omite. Las trece, y qué ajusta la capa 3 de cada una: [`base.md`](../base.md).
 
 ```
 INCORRECTO: plan que dice "creo el CRUD X" y omite dónde queda accesible al usuario
@@ -19,11 +19,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Toma el contenido de [`F4.1`](F4.1-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), cuyo ID decimal no admitía [`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md); la enumeración de las trece pasó a [`base.md`](../base.md), que es lo que le cerraba la fila 10.
 

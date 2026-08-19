@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Identificador** | `«A-EP01-HU03-Configuración de la estructura inicial»` |
-| **Consecutivo** (orden dentro de la HU) | `«A»` (A, B, C, …, Z, AA, AB, …) |
+| **Consecutivo** (orden dentro de la HU) | `«A»` (A, B, C, ..., Z, AA, AB, ...) |
 | **Épica** | `EP«01»` |
 | **HU** | `HU«03»` — **una sola** (`02·F12.1`) |
 | **Descripción** | «qué se realiza en esta fase» |

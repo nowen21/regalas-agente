@@ -4,7 +4,7 @@
 
 ---
 
-| Módulo | Prefijo de rutas / namespace | Descripción (1–2 líneas) | Estado | Especificación | Entidades principales |
+| Módulo | Prefijo de rutas / namespace | Descripción (1-2 líneas) | Estado | Especificación | Entidades principales |
 |---|---|---|---|---|---|
 | `«módulo»` | `«/prefijo»` | «qué hace y a quién sirve» | activo / en desarrollo / scaffold / deprecado | «enlace al especificación» | `«Entidad1, Entidad2»` |
 

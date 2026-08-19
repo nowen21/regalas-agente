@@ -20,7 +20,7 @@
 
 ## 1. Qué se implementó — resumen
 
-«2–4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
+«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
 
 ---
 

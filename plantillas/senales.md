@@ -2,16 +2,16 @@
 
 > **Qué es.** El registro de **señales**: conocimiento de alto valor que **no se puede recuperar del código**. Se guardan señales, **no la conversación**. Vive en `documentacion/senales.md` y **se versiona** (es conocimiento del proyecto).
 >
-> **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje…), se agrega una entrada abajo con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, verificar que sigue vigente (regla `01`·C2).
+> **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje...), se agrega una entrada abajo con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, verificar que sigue vigente (regla `01`·C2).
 
 ## Lo que se aprendió va acá; lo que falta hacer, a `pendientes/`
 
 Los dos salen del mismo momento y por eso se confunden. La pregunta que los separa:
 
-| Si la frase dice… | Es | Va a |
+| Si la frase dice... | Es | Va a |
 |---|---|---|
-| …**qué pasó y qué se decidió** | Señal | Este archivo |
-| …**qué falta hacer** | Pendiente | `pendientes/`, con su historia de usuario |
+| ...**qué pasó y qué se decidió** | Señal | Este archivo |
+| ...**qué falta hacer** | Pendiente | `pendientes/`, con su historia de usuario |
 
 Una misma conversación suele dejar las dos. Escribir solo una de ellas es lo que hace que el aprendizaje se pierda o que el trabajo pendiente se olvide.
 
@@ -34,7 +34,7 @@ Una misma conversación suele dejar las dos. Escribir solo una de ellas es lo qu
 Si una señal necesita decir a cuál reemplaza, se escribe en **Qué se decidió** — es parte de la decisión, no un campo aparte.
 
 - **estado:** `activa` · `reemplazada` · `revertida`.
-- **id:** `S-001`, `S-002`… correlativo, para poder referenciar y enlazar.
+- **id:** `S-001`, `S-002`... correlativo, para poder referenciar y enlazar.
 
 ---
 

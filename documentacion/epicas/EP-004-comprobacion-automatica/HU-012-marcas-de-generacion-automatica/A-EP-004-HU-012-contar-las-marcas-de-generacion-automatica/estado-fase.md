@@ -86,7 +86,7 @@
 
 - **Duda 1 de §2.7:** si la comprobación aplica a todo el repositorio o solo a lo que se entrega. El histórico, por ejemplo, es transcripción y no entregable. Cambia qué archivos recorre el programa.
 - **La aprobación del plan.** Sin ella no se escribe el validador.
-- **El propio estándar tiene marcas** (pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md)). La corrida va a dar una cuenta alta; se presenta **aparte** de la de un entregable nuevo, o el programa parece inservible (riesgo `R-01`).
+- **El propio estándar tiene marcas** (pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md)). La corrida va a dar una cuenta alta; se presenta **aparte** de la de un entregable nuevo, o el programa parece inservible (riesgo `R-01`).
 - **Si un símbolo no se puede clasificar por contexto** (riesgo `R-02`): se declara no comprobable y se escribe por qué.
 
 ---

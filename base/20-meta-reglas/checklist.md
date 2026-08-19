@@ -2,7 +2,7 @@
 
 > **Qué es.** El estándar contra el que se comprueba **una** regla. Veinte filas: cada una nombra la meta-regla que la respalda y el criterio con el que aprueba. Al final, un resultado que dice **CUMPLE** o **NO CUMPLE**.
 >
-> **De dónde sale.** [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) fija el molde y [`M1`](reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)–[`M13`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) el resto de las exigencias. En [`base.md`](base.md) queda el resumen; el instrumento está solo aquí, para no tenerlo escrito en dos sitios ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)).
+> **De dónde sale.** [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) fija el molde y [`M1`](reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md)-[`M13`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) el resto de las exigencias. En [`base.md`](base.md) queda el resumen; el instrumento está solo aquí, para no tenerlo escrito en dos sitios ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)).
 >
 > **Cuándo se aplica.** Al escribir la regla, en el **paso 9** del procedimiento de `base.md` — antes de versionar, no después. Y en cualquier auditoría posterior sobre reglas que no lo traigan aplicado o lo traigan anulado.
 >
@@ -14,7 +14,7 @@
 
 ### A · Dónde va
 
-| # | Qué se comprueba | Meta-regla | Aprueba si… |
+| # | Qué se comprueba | Meta-regla | Aprueba si... |
 |---|---|---|---|
 | 1 | Es regla del estándar, no otra cosa | [`M13`](reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) | su destino es `base/` y no `.agente/` del proyecto, `notas/`, `pendientes/`, el `CLAUDE.md` del repo ni la memoria |
 | 2 | No existe ya | [`M12`](reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md) | se buscó **por concepto** en `base/` y se leyó entero el capítulo dueño; no basta con afinar una existente |
@@ -23,14 +23,14 @@
 
 ### B · Cómo se identifica
 
-| # | Qué se comprueba | Meta-regla | Aprueba si… |
+| # | Qué se comprueba | Meta-regla | Aprueba si... |
 |---|---|---|---|
 | 5 | No nombra tecnología ni nombre propio | [`M3`](reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) | no aparece lenguaje, framework, motor, nube, sector, cliente, herramienta ni ruta de un proyecto real |
 | 6 | El ID es `<PREFIJO><n>` | [`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) | el prefijo es el del capítulo y está registrado en la tabla de letras ocupadas; `n` es el siguiente consecutivo libre y nunca uno reutilizado |
 
 ### C · Cómo está escrita
 
-| # | Qué se comprueba | Meta-regla | Aprueba si… |
+| # | Qué se comprueba | Meta-regla | Aprueba si... |
 |---|---|---|---|
 | 7 | Encabezado `##` | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) | son dos gatitos. Con `###` la regla se esconde: no sale en el índice y el validador no la ve |
 | 8 | El título manda y se sostiene solo | [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md) | es imperativo y se entiende leyéndolo en un índice, sin abrir el cuerpo |
@@ -42,7 +42,7 @@
 
 ### D · Cómo se relaciona
 
-| # | Qué se comprueba | Meta-regla | Aprueba si… |
+| # | Qué se comprueba | Meta-regla | Aprueba si... |
 |---|---|---|---|
 | 14 | Dependencias en una de las tres formas | [`M7`](reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) | van en el cuerpo, entre paréntesis: `extiende ID` · `depende de ID` · `deroga ID`. **N/A** si no depende de ninguna |
 | 15 | Sin ciclos y sin apuntar hacia arriba | [`M7`](reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) | ninguna dependencia vuelve sobre sí misma, y ninguna regla de capa 2 extiende ni deroga una `[BLINDADA]`. **N/A** con la 14 |
@@ -51,7 +51,7 @@
 
 ### E · Qué obliga fuera de su propio texto
 
-| # | Qué se comprueba | Meta-regla | Aprueba si… |
+| # | Qué se comprueba | Meta-regla | Aprueba si... |
 |---|---|---|---|
 | 18 | Declarada validable o no | [`M9`](reglas/M9-toda-regla-declara-si-es-validable.md) | quedó registrada en `validadores/reglas-validables.md`, en la lista que le toque |
 | 19 | Versionada | [`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) | hay entrada en `CHANGELOG.md` con su tipo (MAYOR · MENOR · PARCHE) y `VERSION` subió |

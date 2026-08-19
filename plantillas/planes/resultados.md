@@ -40,7 +40,7 @@
 
 ## 2. Ejecución caso por caso
 
-> **¿Qué problema resuelve cada pareja CA–CP?** 
+> **¿Qué problema resuelve cada pareja CA-CP?** 
 >
 >Por cada pareja va un bloque con **tres partes, siempre las mismas y en este orden**. Después de los bloques va la tabla que resume los casos.
 

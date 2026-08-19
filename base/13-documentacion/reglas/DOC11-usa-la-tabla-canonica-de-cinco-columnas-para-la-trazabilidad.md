@@ -23,11 +23,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Fila 11: la tabla estaba escrita entera en [`DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) y otra vez aquí; ahora vive **solo** aquí y [`DOC3`](DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) enlaza. Fila 10: la tabla es el formato que la regla exige, no cuerpo — el cuerpo son tres líneas.
 

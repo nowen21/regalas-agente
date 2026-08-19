@@ -7,7 +7,7 @@ Se escribe tras un incidente relevante ([`19·OB5`](«RUTA-ESTANDAR»/base/19-ob
 
 ## Qué pasó
 
-«Resumen en 2–3 líneas, entendible por alguien que no estuvo.»
+«Resumen en 2-3 líneas, entendible por alguien que no estuvo.»
 
 ## Impacto
 

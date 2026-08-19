@@ -455,6 +455,13 @@ def _cambio_de_verdad(regla):
     antes = r.stdout[r.stdout.index(marca):].split(chr(10), 1)[1]
     antes = antes.split("### Checklist")[0]
     ahora = regla.texto.split("### Checklist")[0]
+    # **La tipografía no vence un sello.** El sello responde por lo que la regla
+    # *exige*, y cambiar una semiraya por un guion no cambia ninguna respuesta
+    # del checklist. Sin esto, limpiar las marcas de `00·ID8` vencería de golpe
+    # el sello de setenta y cuatro reglas — y entonces no se limpia nunca.
+    import marcas
+    antes = marcas.limpiar_texto(antes)[0]
+    ahora = marcas.limpiar_texto(ahora)[0]
     return antes.strip() != ahora.strip()
 
 

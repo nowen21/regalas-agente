@@ -24,7 +24,7 @@ La v22.0.0 empezó a exigir que toda regla de negocio diga de dónde baja, y la 
 | `documentacion/documentos-modelo/spec.md` | 15 |
 | **Total** | **31** |
 
-**El estándar no cumple la regla que acaba de escribir.** Es el mismo tipo de hueco que el [pendiente 11](../11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) —una norma nueva y el texto viejo diciendo lo contrario— y el [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**El estándar no cumple la regla que acaba de escribir.** Es el mismo tipo de hueco que el [pendiente 11](limpiar-marcadores-de-ia-del-texto-del-estandar.md) —una norma nueva y el texto viejo diciendo lo contrario— y el [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 ## Qué falta
 

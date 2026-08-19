@@ -45,7 +45,7 @@ Lo que desarrolla, ilustra o justifica cada meta-regla. La **exigencia** vive en
 |---|---|---|---|
 | **Preámbulo** | Quién es el agente y cómo funcionan las reglas | `base/00-identidad-y-rol/`, este capítulo | No: un proyecto no redefine quién es el agente ni el molde de las reglas. |
 | **Capa 1 · Núcleo** | Seguridad innegociable. Cada regla marca `[BLINDADA]` | `base/00-nucleo-blindado.md` | **Nunca.** |
-| **Capa 2 · Convenciones** | Buenas prácticas por dominio, agnósticas | `base/01`–`base/NN` | Solo la capa 3. |
+| **Capa 2 · Convenciones** | Buenas prácticas por dominio, agnósticas | `base/01`-`base/NN` | Solo la capa 3. |
 | **Capa 3 · Proyecto** | Stack, dominio, sector, nombres propios, reglas del equipo | `CLAUDE.md` + `.agente/` de cada proyecto | Es la capa que ajusta. |
 
 ### M2 — cuándo nace un capítulo, y por qué los números no se reciclan
@@ -139,7 +139,7 @@ Dos reglas que dicen lo mismo con palabras distintas terminan contradiciéndose 
 
 ### M13 — dónde va cada cosa
 
-| Si es… | Va en… |
+| Si es... | Va en... |
 |---|---|
 | Regla que aplica a **cualquier** proyecto | `base/` (capa 1 o 2) |
 | Regla de **este** proyecto (convención del equipo, regla de negocio) | `.agente/reglas-proyecto.md` del proyecto (capa 3) |

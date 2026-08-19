@@ -248,7 +248,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-22 · Dieciséis mil marcas, y una fase que esperaba lo que ya estaba escrito
 
-**Qué se midió.** Nace [`validadores/marcas.py`](../../../validadores/marcas.py), el primer programa que comprueba si el estándar cumple su propia [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Era el paso 1 del [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado desde el 2026-08-10.
+**Qué se midió.** Nace [`validadores/marcas.py`](../../../validadores/marcas.py), el primer programa que comprueba si el estándar cumple su propia [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Era el paso 1 del [pendiente 11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) —*contar antes de tocar*— y lo que lo tenía trabado desde el 2026-08-10.
 
 **16 477 marcas en 820 archivos** fuera del histórico; **4 491 en `base/` y `plantillas/`**, que es lo que viaja a los proyectos. Las dos que pesan: raya larga 7 286, punto medio 6 237.
 
@@ -471,7 +471,7 @@ Al mover un pendiente a `hecho/` reescribía el **destino** de cada enlace que l
 
 ### H-40 · La deuda de `ID8` no es vieja: el 58 % la escribió el agente después de la regla
 
-El [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) decía que antes de limpiar hacía falta saber si la deuda es histórica o sigue creciendo, *«si sigue creciendo, limpiarla sin más es rehacer el trabajo el mes que viene»*. Se midió preguntándole al control de versiones cuándo entró la línea de cada marca.
+El [pendiente 11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) decía que antes de limpiar hacía falta saber si la deuda es histórica o sigue creciendo, *«si sigue creciendo, limpiarla sin más es rehacer el trabajo el mes que viene»*. Se midió preguntándole al control de versiones cuándo entró la línea de cada marca.
 
 | Cuándo se escribió | Marcas en `base/` y `plantillas/` |
 |---|---:|
@@ -734,6 +734,31 @@ Al escribirle a `00·N1` su excepción en la forma de `M8`, marqué la fila 16 d
 
 ---
 
+### H-58 · Antes de tomar un carácter por adorno hay que preguntar quién lo lee
+
+**Qué pasó.** Limpiando las marcas de `00·ID8` en `base/` y `plantillas/`, el reemplazo automático iba a tocar dos cosas que no son adorno:
+
+- **`«…»`**, el marcador de relleno de las plantillas. [`flujo.py`](../../../validadores/flujo.py), [`comun.py`](../../../validadores/comun.py) y [`andamio.py`](../../../validadores/andamio.py) reconocen por él una celda **sin llenar**. Cambiarlo por `...` habría roto los tres, y en silencio: seguirían corriendo, dando por llena toda casilla vacía.
+- **El sello de las reglas.** Cambiar una semiraya por un guion cuenta como «el cuerpo cambió» para `metareglas._cambio_de_verdad`, y eso habría vencido de golpe el sello de **74 reglas**.
+
+**Es la segunda vez esta semana.** La primera fue el punto medio de los títulos: `09 · Control de versiones` parecía adorno y era notación de la casa. El programa lo contaba como marca hasta que alguien lo miró.
+
+**Dónde queda.** Las dos, arregladas: `_MARCADOR` exento en [`marcas.py`](../../../validadores/marcas.py), y `_cambio_de_verdad` normaliza la tipografía antes de comparar — **un sello responde por lo que la regla exige, no por cómo está compuesta**.
+
+**Lo que enseña.** Un carácter raro en este repositorio puede ser tres cosas: marca de generación automática, notación de la casa, o **entrada de otro programa**. Las tres se ven igual leyendo. La pregunta que las separa no es *«esto adorna?»* sino **«quién lee esto además de una persona?»** — y esa pregunta hay que hacérsela antes de un reemplazo en masa, no después.
+
+### H-59 · Limpiar con la llave abierta: el pendiente 11 se resolvió al revés de como estaba escrito
+
+**Qué pasó.** El pendiente decía «contar, y empezar a limpiar por `base/`». Contar destapó que el **58 %** de las marcas se escribió *después* de publicarse la regla: limpiar primero era hacer el trabajo dos veces.
+
+**Se hizo al revés: primero la llave.** `validar.py marcas --preparados` revisa **solo lo que entra en el commit** y falla si la cuenta **sube**, enganchado al `pre-commit` que se instala en cualquier proyecto.
+
+**Y la medida decidió el reparto.** Seis commits seguidos traían **425 marcas de estilo** y **23 invisibles**. Bloquear todas habría rechazado cada commit, y *un enganche que rechaza siempre se apaga en una tarde*. Así que se bloquea lo que nunca es intencional —las invisibles, en cualquier carpeta— y todo lo demás **solo en lo que se hereda**. Contra los doce commits anteriores: **ocho pasaban sin tocar nada**.
+
+**Dónde queda.** [Pendiente 11 cerrado](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md), v25.0.0. Se limpiaron **1 212 marcas en 110 archivos** — solo las que tienen un reemplazo y ninguna decisión. Las ~14 000 de prosa **siguen ahí a propósito**: quitarlas es reescribir la frase, y eso no lo hace un programa.
+
+**Lo que enseña.** Cuando la deuda **sigue creciendo**, el orden correcto no es el que está escrito en el pendiente: es cerrar la llave y después limpiar. Y el trinquete —*no exijo que limpies, exijo que no agregues*— es lo que permite poner una regla dura sobre un repositorio que no la cumple.
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -744,7 +769,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **23** abiertos, cada uno con su historia declarada |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **11** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
 | Lo que se hizo está aprobado y guardado | ☑ hasta `d0c900c` (publicado) · ☐ **falta el commit de la 23.11.1** |
 

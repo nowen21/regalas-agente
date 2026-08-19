@@ -6,9 +6,9 @@
 
 ## Precedencia (dónde mandan estas reglas)
 
-`00` núcleo blindado  →  `01`–`17` convenciones  →  **estas reglas `P`**  →  (nada por encima del núcleo).
+`00` núcleo blindado  →  `01`-`17` convenciones  →  **estas reglas `P`**  →  (nada por encima del núcleo).
 
-Una regla `P` puede **endurecer o complementar** una convención (`01`–`17`), pero **nunca** contradecir el núcleo (`00`). Ante choque, gana el núcleo.
+Una regla `P` puede **endurecer o complementar** una convención (`01`-`17`), pero **nunca** contradecir el núcleo (`00`). Ante choque, gana el núcleo.
 
 ## Ninguna `P` se sostiene sola  ·  [`20·M16`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md)
 

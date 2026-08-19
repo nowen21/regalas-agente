@@ -11,6 +11,30 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 25.0.0 — 2026-08-19
+
+**MAYOR** ⚠ obliga a migrar (al guardar, el revisor rechaza el texto con caracteres invisibles nuevos).
+
+**Se estaba limpiando una gotera con la llave abierta.** Se midió cuándo se escribió cada carácter raro del texto del estándar, y el 58 % es posterior al día en que se prohibió escribirlos. Limpiar primero era hacer el trabajo dos veces.
+
+Ahora, al guardar un cambio, se revisa **solo lo que entra en ese guardado** y se rechaza si la cuenta sube. No se exige limpiar lo que ya está: se exige no agregar.
+
+**El detalle.** Del [pendiente 11](pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md). Se agregó `validar.py marcas --preparados` y se enganchó al revisor de guardado que instala [`validadores/instalar.py`](validadores/instalar.py).
+
+**Rechazar todo habría apagado el revisor el primer día.** Seis guardados seguidos traían 425 caracteres de estilo entre todos: un revisor que rechaza siempre se desactiva en una tarde. Así que se reparte:
+
+- **Los invisibles, en cualquier carpeta** — un espacio que no se ve, una raya corta donde va un guion. Nadie los teclea a propósito y se quitan en segundos.
+- **Todos, en `base/` y `plantillas/`** — es lo que reciben los proyectos.
+- **El resto se cuenta y se dice**, sin rechazar nada.
+
+Probado contra los doce guardados anteriores: ocho habrían pasado sin tocar nada.
+
+**Y se limpiaron 1 212 caracteres**, en 110 archivos de `base/` y `plantillas/`: solo los que tienen un reemplazo y ninguna decisión. La raya larga y el punto medio en prosa **no se tocaron a propósito** — quitarlos es reescribir la frase, y un programa que reescribe frases cambia lo que el estándar dice.
+
+**El sello de una regla ya no vence por tipografía.** El sello responde por lo que la regla exige, y cambiar una raya corta por un guion no cambia ninguna respuesta. Sin esto, esta limpieza habría vencido de golpe el sello de setenta y cuatro reglas — y entonces no se limpia nunca.
+
+**El marcador de relleno `«…»` se dejó fuera de la cuenta**, y encontrarlo evitó un daño: tres revisores reconocen por él una casilla sin llenar. Limpiarlo los habría roto.
+
 ## 24.10.0 — 2026-08-18
 
 **MENOR** (una herramienta más para revisar la memoria; nada que cumplir).
@@ -335,7 +359,7 @@ Ahora el archivo de la misma carpeta se enlaza por su nombre. El de cualquier ot
 
 Se conserva, y no como excepción sino como lo que es: la manera en que este proyecto nombra las cosas. En medio de una frase sigue contando.
 
-**El detalle.** Del [pendiente 11](pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md). El [anexo de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación definida, y el separador de encabezado es la misma clase. **El código ya lo tenía decidido y no lo había implementado:** el comentario de [`marcas.py`](validadores/marcas.py) decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la expresión regular solo cubría la primera mitad. El recuento baja de 16 477 a **15 485**; el punto medio, de 6 237 a **4 638**. Se exime solo en la línea de un encabezado. 6 casos nuevos.
+**El detalle.** Del [pendiente 11](pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md). El [anexo de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) ya eximía la cita `NN·ID` por ser notación definida, y el separador de encabezado es la misma clase. **El código ya lo tenía decidido y no lo había implementado:** el comentario de [`marcas.py`](validadores/marcas.py) decía *«ni de un `A · B` de encabezado: los dos son notación definida»*, y la expresión regular solo cubría la primera mitad. El recuento baja de 16 477 a **15 485**; el punto medio, de 6 237 a **4 638**. Se exime solo en la línea de un encabezado. 6 casos nuevos.
 
 ## 23.17.0 — 2026-08-18
 

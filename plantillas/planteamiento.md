@@ -1,6 +1,6 @@
 # Planteamiento — «Nombre del módulo / épica»   ·   `[CAPA 3]`
 
-> **Qué es este archivo.** El **planteamiento de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0–3 del flujo [`02·F0`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)). Es el **insumo** del agente, no la especificación ni una orden de entregar código.
+> **Qué es este archivo.** El **planteamiento de entrada** de un desarrollo: la necesidad y sus restricciones (pasos 0-3 del flujo [`02·F0`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)). Es el **insumo** del agente, no la especificación ni una orden de entregar código.
 >
 > **Cómo usarlo.**
 > 1. Copiar esta plantilla al proyecto como `prompts/<slug>-planteamiento.md` (un planteamiento por módulo/épica).
@@ -51,20 +51,20 @@
 
 Numerados. Uno por capacidad. Marcar el central si hay uno.
 
-1. «Requerimiento…»
-2. «Requerimiento…  ← REQUISITO CENTRAL» (si aplica)
+1. «Requerimiento...»
+2. «Requerimiento...  ← REQUISITO CENTRAL» (si aplica)
 
 ## 7. Restricciones no negociables
 
 Reglas duras que el diseño debe cumplir sí o sí (seguridad, privacidad, decisiones de arquitectura ya tomadas).
 
-- «Restricción…»
+- «Restricción...»
 
 ## 8. Casos borde a considerar
 
 Lo que el agente debe contemplar aunque no sea el camino feliz.
 
-- «Encoding raro, archivos enormes, permisos, concurrencia, entradas inválidas…»
+- «Encoding raro, archivos enormes, permisos, concurrencia, entradas inválidas...»
 
 ## 9. Referencias
 
@@ -80,4 +80,4 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 ---
 
-> **No incluir en un planteamiento** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior…" (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el planteamiento se convirtió en orden y va a chocar con el flujo.
+> **No incluir en un planteamiento** (lo pone el estándar, no tú): sección "Formato de respuesta" que pida código completo · "Actúa como desarrollador senior..." (la identidad ya está en `00`) · el orden de implementación · la entrega esperada. Si aparece algo de eso, es señal de que el planteamiento se convirtió en orden y va a chocar con el flujo.

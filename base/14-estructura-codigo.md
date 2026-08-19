@@ -22,11 +22,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -58,11 +58,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
@@ -76,7 +76,7 @@ Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 - **Fila 9 · una sola exigencia.** Hay tres, y se pueden cumplir por separado, que es la prueba que la fila propone: *(a)* una sola convención por tipo de elemento, *(b)* nombres cortos con significado por contexto, *(c)* respetar los límites de longitud del motor. Un proyecto puede tener la primera impecable y la tercera no.
 - **Fila 10 · cuerpo de 1 a 4 líneas.** Mide **398 caracteres** y el molde da 320. No cabe porque son tres.
-- **Fila 8 · el título manda.** «Nomenclatura consistente» no es imperativo, y no puede serlo mientras cubra tres exigencias distintas. Las otras dos del capítulo sí lo son: *Organiza…*, *Respeta…*.
+- **Fila 8 · el título manda.** «Nomenclatura consistente» no es imperativo, y no puede serlo mientras cubra tres exigencias distintas. Las otras dos del capítulo sí lo son: *Organiza...*, *Respeta...*.
 
 **Partirla es un cambio de regla y no se hace acá.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y no es solo redacción: dos IDs nuevos, y [validadores/reglas-validables.md](../validadores/reglas-validables.md) ya la cita partida en dos —`14·EST2` (longitud) y `14·EST2` (resto)—, señal de que el corte llevaba tiempo pidiéndose.
 
@@ -99,11 +99,11 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 

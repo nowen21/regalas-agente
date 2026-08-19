@@ -19,11 +19,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
-| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia; el modelo que usa es una plantilla, no otra regla · **16**: no tiene excepción. Fila 6: `DOC22` es el siguiente consecutivo libre. Fila 9: la exigencia es una sola, que el resumen exista y se escriba mientras pasa; qué campos lleva lo dice el modelo, no esta regla. Fila 17: se releyó el capítulo entero; [`DOC1`](DOC1-persiste-el-trabajo-de-cada-unidad-completada.md) persiste el trabajo de una **unidad cerrada** y esto persiste lo que dejó una **sesión**, que puede no cerrar ninguna. [`DOC5`](DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md) registra la señal, que es uno de los sitios a donde va a parar un hallazgo; esta dice que el hallazgo se escriba, aquella qué hacer con el que no se recupera del código.
 

@@ -37,7 +37,7 @@
 | Funcional | ☑ | Los tres CA |
 | Negativa | ☑ | El CA-03, que es el que decide si el reporte se puede creer |
 | Límites | ☑ | Un símbolo que es notación propia en un contexto y marca en otro |
-| Medición | ☑ | La cuenta del propio estándar, para el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
+| Medición | ☑ | La cuenta del propio estándar, para el pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) |
 
 ### 3.3 Técnicas de diseño de casos
 
@@ -88,7 +88,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 4 | Separar esa cuenta de la de un entregable nuevo | Dos cuentas, presentadas aparte |
 | 5 | Comprobar que lo que sí sale son marcas de la lista, no notación | Se revisa hallazgo por hallazgo |
 
-**Resultado esperado final:** el reporte se puede creer, y la cuenta del propio estándar queda para el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md).
+**Resultado esperado final:** el reporte se puede creer, y la cuenta del propio estándar queda para el pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md).
 
 > **Este caso va primero.** Si el programa reporta la notación propia, no hace falta probar nada más: nadie lo va a correr dos veces.
 

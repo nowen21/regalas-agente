@@ -55,7 +55,7 @@ Es el renglón de arriba: el nombre de la regla. Tiene cinco piezas.
 |---|---|---|---|---|
 | `##` | Dos gatitos, siempre dos. Son los que convierten el renglón en un título. | `## R7 · Mide antes de optimizar` | Sí | `### R7 · Mide antes…` — con tres, la regla se esconde: no sale en la lista y el programa que las revisa no la ve. |
 | PREFIJO | Las letras. Dicen de qué capítulo es la regla. Cada capítulo tiene las suyas y nadie más las usa ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)). | git → [`G2`](../09-git.md#g2--mensajes-que-explican-qué-y-por-qué) · documentación → [`DOC3`](../13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md) · rendimiento → `R7` | Sí | Ponerle `G9` a una regla del capítulo de pruebas, cuando `G` es de git. |
-| `n` | El número. Se pone el siguiente que esté libre. | Si ya están el [`R1`](../06-rendimiento.md#r1--evita-consultas-en-bucle-n1), [`R2`](../06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite)… hasta el [`R6`](../06-rendimiento.md#r6--mide-antes-de-optimizar), la nueva es la `R7` | Sí | Renumerar para "dejarlo ordenado": borrar la [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y correr la [`R4`](../06-rendimiento.md#r4--cachea-lo-caro-y-estable-con-invalidación-clara) a [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena). **El número no se cambia nunca** ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)). Es como el número de la camiseta: aunque el jugador se corte el pelo, sigue siendo el 7. Muchos papeles ya la llaman por ese número; si se lo cambias, todos apuntan a nadie. |
+| `n` | El número. Se pone el siguiente que esté libre. | Si ya están el [`R1`](../06-rendimiento.md#r1--evita-consultas-en-bucle-n1), [`R2`](../06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite)... hasta el [`R6`](../06-rendimiento.md#r6--mide-antes-de-optimizar), la nueva es la `R7` | Sí | Renumerar para "dejarlo ordenado": borrar la [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y correr la [`R4`](../06-rendimiento.md#r4--cachea-lo-caro-y-estable-con-invalidación-clara) a [`R3`](../06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena). **El número no se cambia nunca** ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)). Es como el número de la camiseta: aunque el jugador se corte el pelo, sigue siendo el 7. Muchos papeles ya la llaman por ese número; si se lo cambias, todos apuntan a nadie. |
 | Título | Lo que hay que hacer, dicho como una orden. Tiene que entenderse leyéndolo solo, sin abrir nada más. | `Recorre la cadena completa, sin saltar eslabones` | Sí | `La secuencia completa, de la necesidad al cierre` — eso cuenta algo, no manda nada. |
 | marca | Una etiqueta al final. Solo hay tres. | `[BLINDADA]` = nadie la puede saltar → `## N4 · Proteger los datos reales · [BLINDADA]`<br>`*opt-in*` = cada proyecto decide si la usa → `## DOC5 · Registrar señales — *opt-in*`<br>`[DEROGADA…]` = ya no manda, y dice cuál la reemplazó → `## G4 · Trabaja en ramas · [DEROGADA en 2.0.0 → ver G9]` | No | Inventarse una etiqueta: `## F13 · … · [GATE DE ARRANQUE]`. Si de verdad hace falta una nueva, primero se agrega a la lista de [`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md). |
 
@@ -113,11 +113,11 @@ Por eso hay "y" que no cuentan. `G2 · Mensajes que explican qué y por qué` es
 
 | # | Trozo | Qué dice | ¿Manda algo? |
 |---|---|---|---|
-| 1 | Una tabla de 7 pasos | Paso 0 la necesidad, paso 1 el análisis… hasta el paso 6, construir. Y dónde está la regla de cada paso. | **No.** Es un mapa: sirve para ubicarse. |
+| 1 | Una tabla de 7 pasos | Paso 0 la necesidad, paso 1 el análisis... hasta el paso 6, construir. Y dónde está la regla de cada paso. | **No.** Es un mapa: sirve para ubicarse. |
 | 2 | La cadena obligatoria | Sin planteamiento no hay épica, sin épica no hay historia, sin historia no hay plan, sin plan no hay código. No se salta ninguno, ni aunque el trabajo sea chico. | **Sí.** Esta es la orden. |
 | 3 | Qué es un planteamiento | "La necesidad escrita y sus restricciones." | No. Es una explicación. |
 | 4 | Qué es una épica, un módulo y una fase | Tres explicaciones y un ejemplo de facturación. | No. Explicaciones, y de otros capítulos. |
-| 5 | "Sin atajos por tamaño" | Un trabajo chico tampoco se salta la cadena. | Sí… pero es **la misma orden del trozo 2**, otra vez. |
+| 5 | "Sin atajos por tamaño" | Un trabajo chico tampoco se salta la cadena. | Sí... pero es **la misma orden del trozo 2**, otra vez. |
 | 6 | El ejemplo INCORRECTO/CORRECTO | Mal: idea → plan directo. Bien: idea → análisis → épica → historia → plan. | Es el ejemplo de la orden del trozo 2. |
 | 7 | "Encadenamiento" | Qué otra regla cubre cada paso. | No. Es otro mapa. |
 
@@ -164,7 +164,7 @@ CORRECTO:   idea → análisis → objetivo y alcance → épica → HU → espe
 
 Tres cosas que cambiaron, y ninguna es lo que la regla exige:
 
-- **El título ahora manda.** Antes contaba ("La secuencia completa…"), ahora ordena ("Recorre la cadena completa…").
+- **El título ahora manda.** Antes contaba ("La secuencia completa..."), ahora ordena ("Recorre la cadena completa...").
 - **Pasó de casi una página a doce líneas.** Lo que se fue no se perdió: está en el encabezado del capítulo y en los capítulos dueños de cada tema.
 - **La excepción quedó completa.** Antes decía cuándo no aplica, pero no hasta dónde llega ni quién da el permiso. Ahora tiene las tres partes.
 

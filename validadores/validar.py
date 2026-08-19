@@ -241,8 +241,15 @@ def cmd_marcas(a):
 
     Solo `base/` y `plantillas/`: es lo que viaja a los proyectos. El recuento
     completo del árbol lo da `python validadores/marcas.py`.
+
+    Con `--preparados` mira **lo que entra en el commit** y aplica el trinquete:
+    que la cuenta no suba. Es lo que corre el enganche.
     """
     raiz = os.path.abspath(a.raiz)
+    if a.preparados:
+        return reportar(marcas.validar_preparados(raiz),
+                        f"Marcas nuevas en lo que se va a guardar · "
+                        f"{relativo(raiz)}")
     return reportar(marcas.validar(raiz),
                     f"Marcas de generación automática · {relativo(raiz)}")
 
@@ -471,6 +478,9 @@ def main():
     ma = sub.add_parser("marcas",
                         help="marcas de generación automática en lo que se hereda · 00·ID8")
     ma.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    ma.add_argument("--preparados", action="store_true",
+                    help="solo lo que entra en el commit, y con trinquete: "
+                         "falla si la cuenta sube")
     ma.set_defaults(func=cmd_marcas)
 
     ac = sub.add_parser("acciones",

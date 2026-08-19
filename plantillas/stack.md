@@ -23,7 +23,7 @@
 
 ## Entorno de pruebas (concreta `08` · T4 y `00` · N4)
 
-- **Dónde corren las pruebas:** «BD en memoria / dedicada efímera / …» — **nunca datos reales**.
+- **Dónde corren las pruebas:** «BD en memoria / dedicada efímera / ...» — **nunca datos reales**.
 - **Qué NO reproduce el entorno de pruebas** (requiere verificación manual): «…»
 
 ## Estructura del proyecto
@@ -43,7 +43,7 @@
 
 ## Herramientas del proyecto
 
-> Por cada herramienta o comando **propio del proyecto** (motor de pruebas, CLI de memoria, scripts, importadores, pasarelas, generadores…). NO las genéricas del agente (Read, Edit, Bash, Grep…) — esas son del entorno. Aquí se gana o se pierde la confiabilidad: sin esto, el agente adivina cómo usar cada tool.
+> Por cada herramienta o comando **propio del proyecto** (motor de pruebas, CLI de memoria, scripts, importadores, pasarelas, generadores...). NO las genéricas del agente (Read, Edit, Bash, Grep...) — esas son del entorno. Aquí se gana o se pierde la confiabilidad: sin esto, el agente adivina cómo usar cada tool.
 
 ### «nombre-de-la-herramienta»
 

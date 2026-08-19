@@ -20,7 +20,7 @@
 
 | CA de HU-012 | Qué exige | Estado hoy |
 |---|---|---|
-| [CA-01](../HU-012-marcas-de-generacion-automatica.md#ca-01--las-marcas-de-tipografía-se-cuentan) | Las marcas de tipografía se cuentan | **No está.** Nadie las cuenta, y el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) está abierto justamente porque el propio estándar las tiene |
+| [CA-01](../HU-012-marcas-de-generacion-automatica.md#ca-01--las-marcas-de-tipografía-se-cuentan) | Las marcas de tipografía se cuentan | **No está.** Nadie las cuenta, y el pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) está abierto justamente porque el propio estándar las tiene |
 | [CA-02](../HU-012-marcas-de-generacion-automatica.md#ca-02--las-marcas-invisibles-se-encuentran) | Las marcas invisibles se encuentran | **No está.** Son las que nadie ve al leer, y por eso son las que sobreviven a una revisión a ojo |
 | [CA-03](../HU-012-marcas-de-generacion-automatica.md#ca-03--la-notación-del-estándar-no-se-cuenta-como-marca) | La notación del estándar no se cuenta como marca | **Es el criterio que decide si el programa sirve.** El estándar usa a propósito el punto medio, las comillas angulares y las casillas: contarlas sería reportar el estándar entero |
 
@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Limpiar las marcas que el estándar ya tiene.** Es el pendiente [11](../../../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md): esta fase da la herramienta y mide, no limpia.
+- **Limpiar las marcas que el estándar ya tiene.** Es el pendiente [11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md): esta fase da la herramienta y mide, no limpia.
 - **Juzgar el estilo.** Que un texto se lea bien es criterio humano; acá se cuentan marcas concretas de una lista cerrada.
 - **Los términos en inglés,** que son los pendientes [21](../../../../../pendientes/hecho/los-nombres-de-rol-en-espanol.md) y [26](../../../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md).
 

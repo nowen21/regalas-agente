@@ -55,7 +55,7 @@
 
 ## Dónde termina cada cosa
 
-| Si es… | Va a… |
+| Si es... | Va a... |
 |---|---|
 | Algo que se **aprendió** y no se recupera del código | `documentacion/senales.md` ([`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)) |
 | Algo que **falta hacer** | `pendientes/` |

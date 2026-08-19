@@ -29,3 +29,12 @@ fi
     echo "Commit rechazado: saca del commit lo que no debe versionarse." >&2
     exit 1
 }
+
+# `00·ID8` · **Trinquete**: no bloquea las marcas que ya están, bloquea que
+# suban. Bloquear todas rechazaría casi todos los commits, y un enganche que
+# rechaza siempre se apaga en una tarde.
+"$PY" "$ESTANDAR/validadores/validar.py" marcas --raiz "$(pwd)" --preparados || {
+    echo "" >&2
+    echo "Commit rechazado: quita las marcas nuevas y vuelve a intentar." >&2
+    exit 1
+}
