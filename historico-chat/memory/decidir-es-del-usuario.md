@@ -15,3 +15,5 @@ Recomendar sí, y con el motivo en una línea. Elegir no.
 Es distinto de [[corregir-el-defecto-que-uno-mismo-detecta]]: aquello vale mientras el agente ejecuta algo **ya autorizado**, y ahí sí arregla sin preguntar. Acá no hay autorización todavía, porque justamente falta la decisión. Se apoya en [[pregunta-no-es-instruccion]] y en [[reglas-son-decision-del-usuario]].
 
 Sesión del 2026-08-16: el agente ofreció dos decisiones en el formulario, el usuario lo paró; el agente entonces las tomó él mismo, y el usuario lo paró otra vez — «no señor, no decida usted, no está autorizado a decidir usted».
+
+Sesión del 2026-08-18: volvió a pasar. El agente puso las dos decisiones del pendiente 61 en el formulario — *«no me obligue a responder las preguntas póngalas en la pantalla»*. **Es la segunda vez, y el recuerdo ya lo decía:** no faltó escribirlo, faltó leerlo antes de preguntar.

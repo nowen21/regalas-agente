@@ -47,7 +47,39 @@ Por [`20·M10`](../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versio
 
 **Buena parte de esas 16 477 se escribieron después del 2026-08-10**, cuando la marca ya estaba registrada. [`02·F21`](../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) dice que desde ahí lo nuevo nace cumpliendo, y **no pasó**.
 
-**El recuento no separa lo viejo de lo nuevo, y saberlo cambia el tamaño del problema:** si la deuda es histórica se limpia una vez; si sigue creciendo, limpiarla sin más es rehacer el trabajo el mes que viene.
+**El recuento no separaba lo viejo de lo nuevo, y saberlo cambia el tamaño del problema:** si la deuda es histórica se limpia una vez; si sigue creciendo, limpiarla sin más es rehacer el trabajo el mes que viene.
+
+### Medido el 2026-08-18: sigue creciendo
+
+Se le preguntó al control de versiones **cuándo entró la línea** de cada marca de `base/` y `plantillas/`, tomando como corte el 2026-08-10, el día que se publicó `ID8`:
+
+| Cuándo se escribió | Marcas |
+|---|---:|
+| Antes del 2026-08-10 — `ID8` todavía no existía | 2 110 |
+| **Desde el 2026-08-10** — `02·F21` ya aplicaba | **2 872** |
+| Sin atribuir | 8 |
+| **Total** | **4 990** |
+
+**El 58 % de la deuda es posterior a la regla.** No es un texto viejo que quedó atrás: es texto escrito por el agente **después** de que la marca estuviera registrada, con [`02·F21`](../base/02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) vigente y diciendo que lo nuevo nace cumpliendo.
+
+**Y hay dos marcas que empeoran, no solo se repiten:**
+
+| Marca | Nueva | Vieja |
+|---|---:|---:|
+| Punto medio (`·`) fuera de una cita `NN·ID` | **1 531** | 1 136 |
+| Semiraya (`–`) donde va un guion | **713** | 294 |
+| Raya larga (`—`) como inciso | 453 | 471 |
+| Viñeta que abre con negrita y dos puntos | 91 | 97 |
+
+La raya larga y la viñeta están estables — se dejaron de escribir al ritmo que se escribían. **El punto medio y la semiraya se aceleraron.**
+
+### Lo que esto decide
+
+**Limpiar primero es hacer el trabajo dos veces.** Con el 58 % naciendo después de la regla, lo que hay que cerrar antes es la llave: que la marca no entre. Después se limpia, una sola vez.
+
+**Y cambia el orden del paso 2.** No es «empezar por `base/` porque es lo que se hereda»: es **empezar por lo que impide que vuelva a entrar**. La parte mecánica ya se cuenta con `validar.py marcas`; lo que falta es que ese recuento **detenga** algo, en vez de informar.
+
+> Los doce archivos que más marcas nuevas trajeron son capítulos enteros de `base/` —`01-conducta.md` solo aporta 377—, no reglas sueltas. Es prosa de capítulo, que es justo la que nadie relee.
 
 ---
 

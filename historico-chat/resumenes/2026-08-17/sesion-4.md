@@ -469,6 +469,23 @@ Al mover un pendiente a `hecho/` reescribía el **destino** de cada enlace que l
 
 ---
 
+### H-40 · La deuda de `ID8` no es vieja: el 58 % la escribió el agente después de la regla
+
+El [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-estandar.md) decía que antes de limpiar hacía falta saber si la deuda es histórica o sigue creciendo, *«si sigue creciendo, limpiarla sin más es rehacer el trabajo el mes que viene»*. Se midió preguntándole al control de versiones cuándo entró la línea de cada marca.
+
+| Cuándo se escribió | Marcas en `base/` y `plantillas/` |
+|---|---:|
+| Antes del 2026-08-10 — `ID8` no existía | 2 110 |
+| **Desde el 2026-08-10** — `02·F21` ya aplicaba | **2 872** |
+
+**Y dos marcas se aceleraron**: el punto medio (1 531 nuevas contra 1 136 viejas) y la semiraya (713 contra 294). La raya larga y la viñeta están estables.
+
+**Lo que decide:** limpiar primero es hacer el trabajo dos veces. Lo que hay que cerrar antes es que la marca **no entre** — `validar.py marcas` ya la cuenta, pero informa en vez de detener.
+
+**Y hay algo incómodo en el dato.** `02·F21` dice que un incumplimiento ya identificado no se repite en lo nuevo. Se identificó el 2026-08-10, y desde entonces entraron 2 872. La regla estaba escrita, publicada y vigente; nada la hacía cumplir. Es exactamente lo que dice el [pendiente 58](../../../pendientes/58-nada-hace-cumplir-id9.md) sobre `ID9`, medido sobre otra regla.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
