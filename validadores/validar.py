@@ -26,10 +26,13 @@ import citas            # noqa: E402
 import versiones        # noqa: E402
 import ci               # noqa: E402
 import commits          # noqa: E402
+import cruces           # noqa: E402
 import dependencias     # noqa: E402
 import enlaces          # noqa: E402
+import entidades        # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
+import estructura       # noqa: E402
 import fases            # noqa: E402
 import pendientes       # noqa: E402
 import flujo            # noqa: E402
@@ -250,6 +253,31 @@ def cmd_esquema(a):
     return reportar(esquema.validar(raiz), f"Integridad de esquema · {relativo(raiz)}")
 
 
+def cmd_estructura(a):
+    """`01` · Dónde vive el código y cómo se llama — `14·EST1` y `14·EST2`.
+
+    **Contra la convención que el proyecto declara**, no contra una inventada:
+    lo que no está declarado no se comprueba, y se dice cuál se saltó.
+    """
+    raiz = os.path.abspath(a.raiz)
+    return reportar(estructura.validar(raiz),
+                    f"Ubicación y nombres del código · {relativo(raiz)}")
+
+
+def cmd_entidades(a):
+    """`01` · Lo que se le exige a una tabla de dominio — `03·D1`, `15·IM2`, `15·IM5`."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(entidades.validar(raiz),
+                    f"Tablas de dominio y entidades inmutables · {relativo(raiz)}")
+
+
+def cmd_cruces(a):
+    """`01` · El cruce entre dos módulos se registra en los dos — `13·DOC7`."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(cruces.validar(raiz),
+                    f"Cruces entre módulos · {relativo(raiz)}")
+
+
 def cmd_flujo(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(flujo.validar(raiz), f"Plan de trabajo · {relativo(raiz)}")
@@ -415,6 +443,24 @@ def main():
                         help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")
     br.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     br.set_defaults(func=cmd_brevedad)
+
+    es = sub.add_parser("estructura",
+                        help="dónde vive el código y cómo se llama · 14·EST1 · 14·EST2")
+    es.add_argument("--raiz", default=None,
+                    help="carpeta del proyecto (por defecto, donde estás parado)")
+    es.set_defaults(func=cmd_estructura)
+
+    en = sub.add_parser("entidades",
+                        help="tablas de dominio y entidades inmutables · 03·D1 · 15·IM2 · 15·IM5")
+    en.add_argument("--raiz", default=None,
+                    help="carpeta del proyecto (por defecto, donde estás parado)")
+    en.set_defaults(func=cmd_entidades)
+
+    cr = sub.add_parser("cruces",
+                        help="el cruce entre dos módulos se registra en los dos · 13·DOC7")
+    cr.add_argument("--raiz", default=None,
+                    help="carpeta del proyecto (por defecto, donde estás parado)")
+    cr.set_defaults(func=cmd_cruces)
 
     se = sub.add_parser("secretos",
                         help="secretos incrustados en el código · 04·S4")

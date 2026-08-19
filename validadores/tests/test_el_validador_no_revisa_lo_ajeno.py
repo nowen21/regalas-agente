@@ -101,5 +101,43 @@ class LosDatosDePruebaDelDetectorNoSeReportan(unittest.TestCase):
         self.assertTrue([h for h in hallazgos if h.severidad == FALLA])
 
 
+class LosTresValidadoresDelProyectoTienenPuerta(unittest.TestCase):
+    """`01` · Un validador escrito y sin subcomando no lo corre nadie.
+
+    **`estructura.py`, `entidades.py` y `cruces.py` existían y no eran
+    alcanzables**: el pendiente 01 los daba por «lo que falta construir» y ya
+    estaban construidos — lo que faltaba era la puerta.
+
+    Es la tercera vez que este repositorio tropieza con lo mismo: `avisar()`
+    escrita y nunca llamada, `metareglas.py` sin subcomando, y estos tres.
+    **Una pieza que no se puede correr figura como cobertura y no cubre nada.**
+    """
+
+    def _correr(self, subcomando):
+        return subprocess.run([sys.executable, VALIDAR, subcomando, "--raiz", RAIZ],
+                              capture_output=True, text=True,
+                              encoding="utf-8", errors="replace")
+
+    def test_estructura_tiene_su_subcomando(self):
+        self.assertEqual(0, self._correr("estructura").returncode)
+
+    def test_entidades_tiene_su_subcomando(self):
+        self.assertEqual(0, self._correr("entidades").returncode)
+
+    def test_cruces_tiene_su_subcomando(self):
+        self.assertEqual(0, self._correr("cruces").returncode)
+
+    def test_sin_declaracion_no_inventan_nada(self):
+        """**Lo que no se declara no se comprueba, y se dice cuál se saltó.**
+
+        Un validador que exige lo que nadie acordó se termina apagando — y
+        apagado figura como cubierto, que es peor que no tenerlo.
+        """
+        for sub in ("estructura", "entidades", "cruces"):
+            salida = self._correr(sub).stdout
+            self.assertIn("no declara", salida, sub)
+            self.assertIn("0 falla(s)", salida, sub)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

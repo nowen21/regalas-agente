@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.3.0 — 2026-08-18
+
+**MENOR** (tres comprobaciones que ya existían pasan a poder correrse).
+
+**Tres comprobaciones estaban escritas, probadas, y no las podía correr nadie.** El backlog las daba por «lo que falta construir» desde hace dos semanas, y lo que faltaba era la puerta: el programa que las lanza ni siquiera las conocía.
+
+Ahora se corren con `validar.py estructura`, `validar.py entidades` y `validar.py cruces`.
+
+**El detalle.** Del [pendiente 01](pendientes/01-validadores-de-codigo-de-proyecto.md), que listaba nueve comprobaciones faltantes. **Cinco ya estaban construidas** — [`estructura.py`](validadores/estructura.py) para dónde vive el código y cómo se llama, [`entidades.py`](validadores/entidades.py) para lo que se le exige a una tabla de dominio, [`cruces.py`](validadores/cruces.py) para el cruce entre módulos, [`flujo.py`](validadores/flujo.py) para las puertas del flujo, y [`declaracion.py`](validadores/declaracion.py), que era la precondición de todas—. Tres de ellas no tenían subcomando.
+
+**Es la tercera vez que este repositorio tropieza con lo mismo, y las tres el mismo día:** `cerrar.avisar()` escrita con doce casos y nunca llamada, `metareglas.py` sin subcomando, y estos tres. **Una pieza que no se puede correr figura como cobertura y no cubre nada.**
+
+**Se comportan como deben:** sobre un proyecto que no declaró su convención no inventan nada — dicen qué comprobación se quedó sin correr y por qué. Un validador que exige lo que nadie acordó se termina apagando, y apagado figura como cubierto.
+
 ## 24.2.0 — 2026-08-18
 
 **MENOR** (arrancar cuesta la mitad; las reglas llegan igual de completas).

@@ -1,6 +1,6 @@
 # Pendiente · Validadores de código de proyecto
 
-**Estado:** abierto · anotado 2026-08-04 · núcleo cerrado 2026-08-05.
+**Estado:** abierto · anotado 2026-08-04 · núcleo cerrado 2026-08-05 · **medido de nuevo el 2026-08-18: de los nueve que faltaban, cinco ya estaban construidos y no eran alcanzables.**
 
 | | |
 |---|---|
@@ -63,3 +63,49 @@ Es la brecha entre **"el estándar dice"** y **"el estándar se cumple"**. Todo 
 
 - Los validadores son el consumidor natural del [03 · ciclo de vida de pendientes](hecho/ciclo-de-vida-de-pendientes.md) (ya hecho): comprobar que todo `§Fuera-de-scope` tenga su señal registrada es uno de los validadores fuzzy que quedan (cruzar spec↔señales, como `F2`).
 - Alimentan las [06 · métricas del proceso](hecho/metricas-del-proceso.md) (ya hecho): contar los hallazgos de validador por regla es "las puertas que fallan" — es la extensión anotada en `metricas/README.md`.
+
+
+---
+
+# Medido el 2026-08-18: no faltaban nueve
+
+**Se buscó cada uno de los nueve en el repositorio, en vez de creerle a esta lista.** Cinco existían.
+
+| Lo que este archivo daba por faltante | Qué hay de verdad |
+|---|---|
+| **La precondición** — cómo el proyecto declara su convención | ✅ [`validadores/declaracion.py`](../validadores/declaracion.py), con sus dos archivos: `.agente/mapeo-nombres.md` y `.agente/dominio.md` |
+| `EST1` y el resto de `EST2` | ✅ [`validadores/estructura.py`](../validadores/estructura.py) |
+| El resto de `D1`, e `IM2`/`IM5` | ✅ [`validadores/entidades.py`](../validadores/entidades.py) |
+| `DOC7` — el cruce bidireccional | ✅ [`validadores/cruces.py`](../validadores/cruces.py) |
+| `F2` y `F4.4` — las puertas del flujo | ✅ [`validadores/flujo.py`](../validadores/flujo.py) |
+| `DOC14`-formato | ✅ `enlaces.validar_formato`, y su regla ganó la excepción del vecino al cerrar el [18](hecho/los-enlaces-del-estandar-no-cumplen-doc14.md) |
+
+## Lo que faltaba de verdad era la puerta
+
+**Tres de los cinco no tenían subcomando.** `estructura`, `entidades` y `cruces` estaban escritos, probados y **no los podía correr nadie**: `validar.py` ni siquiera los importaba.
+
+> **Una pieza que no se puede correr figura como cobertura y no cubre nada.** Este archivo los contaba como «lo que falta construir» — y lo que faltaba era enchufarlos.
+
+**Es la tercera vez que este repositorio tropieza con lo mismo**, y las tres el mismo día: `cerrar.avisar()` escrita con doce casos y nunca llamada desde `main()`, `metareglas.py` sin subcomando —pendiente 53—, y estos tres.
+
+Ya están: `validar.py estructura`, `validar.py entidades`, `validar.py cruces`.
+
+## Cómo se comportan hoy sobre esta casa
+
+Los tres dicen lo mismo, y es lo correcto:
+
+```
+[AVISO] el proyecto no declara su convención en `.agente/mapeo-nombres.md`
+        ni su dominio en `.agente/dominio.md`: EST1 y EST2 se quedan en
+        criterio del agente
+
+0 falla(s), 1 aviso(s)
+```
+
+**Lo que no se declara no se comprueba, y se dice cuál se saltó.** No inventan una convención para tener algo que reportar — un validador que exige lo que nadie acordó se termina apagando, y apagado figura como cubierto.
+
+## Lo que queda, y ahora sí es lo que queda
+
+**Nada que construir en el estándar.** Lo que falta es **usarlos**: que un proyecto real declare su convención y su dominio en `.agente/`, y correrlos contra su código. Eso no se hace desde acá — se hace en el proyecto, y de ahí sale lo que haya que ajustar por [`02·F24`](../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md).
+
+**Y una deuda de documentación**, que es la que dejó pasar todo esto: la fase [`A-EP-004-HU-010`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/estado-fase.md) figura en la estación 7 —«plan sin aprobar»— **con su código escrito y funcionando**. El estado dice una cosa y el repositorio otra.
