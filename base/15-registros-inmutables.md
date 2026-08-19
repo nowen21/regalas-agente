@@ -66,38 +66,64 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## IM3 · Anular revierte el efecto en transacción
+## IM3 · La anulación revierte todo o no revierte nada
 
-1. Verifica que el estado permita anular (rechaza borrador → usar edición; o ya anulado).
-2. Exige **motivo** no vacío.
-3. En **transacción**: revierte todos los efectos (movimientos, saldos, derivados) y marca anulado con su trazabilidad.
-4. Avisa a los demás módulos (evento) para invalidar cachés/agregados.
+Anular comprueba primero que el estado lo permita, y después revierte **en una sola transacción** todos los efectos que el registro produjo — movimientos, saldos, derivados — junto con la marca de anulado. Si algo de la reversión falla, no queda nada a medias ([`05·E6`](05-errores-y-logging.md#e6--lo-que-toca-varios-registros-va-en-transacción)).
 
-Si algo de la reversión falla, se revierte entera: sin estados a medias ([`05·E2`](05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)).
+```
+INCORRECTO: se marca anulado, se revierte el movimiento y falla el saldo
+            → el registro dice anulado y el saldo dice que no
+CORRECTO:   o se revierten los tres y la marca, o no se revierte ninguno
+```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ N/A ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**La fila 10 reprueba: 389 caracteres para un molde de 320.**
+**Partida el 2026-08-18.** Sus cuatro pasos eran **dos exigencias**: revertir de forma atómica, y avisar a los demás módulos para que suelten lo que tenían calculado. **Se cumplen por separado**, y de hecho la segunda se olvida con la reversión perfecta: los saldos quedan bien en el almacén y mal en lo que alguien ya había calculado. Es ahora [`IM7`](#im7--al-anular-se-avisa-a-quien-tenía-el-dato-calculado). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-No es que sobre porqué —el cuerpo es un procedimiento de cuatro pasos y los cuatro son la exigencia—. Es que **un procedimiento de cuatro pasos no cabe en el molde de una regla**, y ese es justamente el caso que la fila prevé cuando manda abrir subcarpeta: la regla se queda con la exigencia y el procedimiento se va a un anexo al lado, como [base/13-documentacion/retrodocumentacion.md](13-documentacion/retrodocumentacion.md).
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-**Hacerlo es un cambio de regla y no se hace acá.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), con el repaso del capítulo.
+## IM7 · Al anular se avisa a quien tenía el dato calculado
 
-La fila **12** es N/A: los cuatro pasos **son** el ejemplo: dicen literalmente qué hacer y en qué orden.
+La anulación **avisa** a los demás módulos para que descarten lo que tenían derivado de ese registro: totales, resúmenes, lo que se hubiera guardado calculado (extiende [`15·IM3`](#im3--la-anulación-revierte-todo-o-no-revierte-nada)).
+
+```
+INCORRECTO: la factura se anula y el total del mes la sigue contando
+CORRECTO:   al anularla, lo que la había sumado se entera y se rehace
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`IM3`](#im3--la-anulación-revierte-todo-o-no-revierte-nada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `IM3` deja el almacén correcto; esta deja correcto **lo que ya se había leído de él**. Se incumple sola y es la más difícil de notar: nada falla, solo que un número viejo sigue a la vista.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

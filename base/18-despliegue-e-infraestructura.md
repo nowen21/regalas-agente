@@ -1,6 +1,6 @@
 # 18 · Despliegue e infraestructura  ·  `[CAPA 2 · opt-in]`
 
-**Opt-in.** Reglas agnósticas para que lo que el agente entrega quede **listo para desplegarse de forma reproducible**. Aplican a proyectos que se despliegan (servicio, web, app); una librería o un script suelto las omiten. El agente **produce los artefactos** (pipeline, manifiestos, scripts, checklist); **no ejecuta** el despliegue en producción — eso lo autoriza y lo corre el humano ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)). La herramienta concreta (CI, orquestador, nube, IaC) la declara la capa 3 (`.agente/stack.md`). Extiende [`09·G6`](09-git.md#g6--integración-continua-el-verde-es-automático-no-manual).
+**Opt-in.** Reglas agnósticas para que lo que el agente entrega quede **listo para desplegarse de forma reproducible**. Aplican a proyectos que se despliegan (servicio, web, app); una librería o un script suelto las omiten. El agente **produce los artefactos** (pipeline, manifiestos, scripts, checklist); **no ejecuta** el despliegue en producción — eso lo autoriza y lo corre el humano ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)). La herramienta concreta (CI, orquestador, nube, IaC) la declara la capa 3 (`.agente/stack.md`). Extiende [`09·G6`](09-git.md#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto).
 
 ---
 

@@ -164,45 +164,63 @@ Cumplía en el análisis del 2026-08-07. Se volvió a contar: 257 de 320.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## G6 · Integración continua: el verde es automático, no manual
+## G6 · Las pruebas y el linter corren solos en cada cambio propuesto
 
-Las **pruebas y el linter** corren en un **pipeline reproducible** (CI), no dependen de que alguien se acuerde. La rama principal se protege: **no se integra algo que no está en verde**.
-
-- El pipeline corre la suite y el linter en cada cambio propuesto (pull request / pre-merge); si algo falla, no se mergea.
-- Los hooks locales (pre-commit) **complementan**, no reemplazan al CI. No se saltan ([`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)).
-- Lo que el entorno de pruebas no cubre queda como verificación manual documentada ([`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)).
+La suite y el linter corren en un **entorno reproducible que no depende de que alguien se acuerde**, sobre cada cambio propuesto, y la rama principal no admite lo que no está en verde.
 
 ```
-INCORRECTO: "corré las pruebas antes de mergear" dependiendo de que el dev lo haga
-CORRECTO:   el CI corre pruebas + lint automáticamente; el merge exige verde
+INCORRECTO: «las corrí en mi máquina y pasaban» → se integra
+CORRECTO:   corren solas sobre el cambio propuesto, y si algo falla no entra
 ```
 
 ---
 
----
+### Checklist  ·  **CUMPLE**
 
-### Checklist  ·  **NO CUMPLE**
-
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Dos filas.**
+**Partida el 2026-08-18.** Decía dos cosas: que la comprobación corra sola, y que lo local complemente sin reemplazarla. **Se cumplen por separado** — se puede tener todo automatizado y aun así saltarse el enganche local, o al revés, confiar en el enganche y no tener nada corriendo solo. Lo segundo es ahora [`G11`](#g11--lo-que-corre-en-tu-máquina-complementa-no-reemplaza). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 9 · son tres sub-exigencias:** que el pipeline exista y esté verde, que los enganches locales lo complementen sin reemplazarlo, y la verificación manual de lo que el pipeline no cubre. Se cumplen por separado — un proyecto puede tener el pipeline impecable y ninguna verificación manual escrita.
-- **Fila 10 · no cabe:** 496 caracteres.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-El análisis del 2026-08-07 dejaba las dos salidas abiertas: partirla, o declarar que son caras de un mismo invariante. **Acá no lo son**, a diferencia de [`08·T3`](08-pruebas.md#t3--aisladas-deterministas-repetibles) o [`06·R2`](06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite): el pipeline y la verificación manual cubren cosas distintas y ninguna implica a la otra.
+## G11 · Lo que corre en tu máquina complementa, no reemplaza
 
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+El enganche local es una ayuda para no mandar lo evidente, **no la comprobación**: no la sustituye y no se salta ([`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)). Lo que el entorno automático no puede cubrir queda como comprobación manual escrita ([`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)).
+
+```
+INCORRECTO: se salta el enganche local «porque el pipeline igual lo va a revisar»
+CORRECTO:   se arregla lo que el enganche señaló, y el pipeline vuelve a mirarlo
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`G6`](#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `G6` es sobre **que exista** la comprobación automática; esta es sobre **no confundirla con la de tu máquina**. Es la que se incumple con una excusa razonable — *«el pipeline igual lo revisa»*—, y esa excusa es exactamente lo que `00·N3` prohíbe.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

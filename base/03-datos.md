@@ -205,42 +205,65 @@ Es la tercera excepción sin autorizador que aparece hoy —con [`08·T1`](08-pr
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## D6 · Concurrencia e idempotencia
+## D6 · La operación repetida no duplica su efecto
 
-Cuando dos operaciones pueden tocar el mismo dato a la vez, protegé la integridad — no confíes en que "no va a pasar".
-
-- **Idempotencia:** una operación repetida (doble clic, doble submit, reintento) no debe duplicar efectos. Usá una clave de idempotencia o verificá el estado antes de aplicar.
-- **Actualización concurrente (lost update):** al modificar un valor compartido (un saldo, un contador), usá **bloqueo optimista** (una versión / `updated_at` que se revalida al guardar) o una operación **atómica** en la BD; nunca leer-modificar-escribir sin control.
-- **Duplicados por carrera:** una restricción `UNIQUE` en la BD es la **única** garantía real contra dos inserciones simultáneas del mismo registro; la validación en la app no alcanza (dos procesos la pasan a la vez).
+Una operación que llega **dos veces** —doble clic, reintento, mensaje repetido— produce el mismo resultado que si hubiera llegado una: se identifica con una clave propia, o se comprueba el estado antes de aplicarla.
 
 ```
-INCORRECTO: leer saldo → sumar en memoria → guardar   (dos procesos se pisan, se pierde una suma)
-CORRECTO:   incrementar el saldo de forma atómica en la BD, o bloqueo optimista con revalidación
+INCORRECTO: el usuario hace doble clic y quedan dos pagos idénticos
+CORRECTO:   el segundo intento reconoce que ese pago ya se aplicó y no hace nada
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Título nominal y tres exigencias adentro.**
+**Partida el 2026-08-18.** Su título decía dos cosas —*«concurrencia **e** idempotencia»*— y eran dos: que repetir no duplique, y que dos operaciones simultáneas no se pisen. **Se cumplen por separado**, y son problemas distintos: una es el mismo actor dos veces, la otra son dos actores a la vez. Lo segundo es ahora [`D9`](#d9--dos-operaciones-simultáneas-no-se-pisan). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 8 · «Concurrencia e idempotencia»** nombra dos temas y no enuncia ninguna norma. Es el cuarto título así que aparece hoy, tras [`15·IM2`](15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable), [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después) e [`17·I6`](17-interfaz.md#i6--funciona-en-los-tamaños-de-pantalla-que-el-proyecto-soporta).
-- **Fila 9 · son tres:** idempotencia, la actualización perdida y los duplicados por carrera. Se cumplen por separado — reintentar sin duplicar efectos no protege de dos escrituras simultáneas.
-- **Fila 10 · no cabe:** 777 caracteres.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-El análisis proponía partirla en tres con títulos imperativos, y sigue siendo lo que corresponde.
+## D9 · Dos operaciones simultáneas no se pisan
+
+Cuando dos procesos pueden tocar el mismo dato a la vez, la integridad se **protege en el almacén**, no confiando en que no pase: el valor compartido se actualiza de forma atómica o revalidando la versión al guardar, y la unicidad la garantiza una restricción del propio almacén — comprobarla antes de insertar no alcanza, porque dos procesos la pasan a la vez.
+
+```
+INCORRECTO: se lee el saldo, se resta en memoria y se guarda → dos ventas
+            simultáneas dejan el saldo como si hubiera habido una
+CORRECTO:   el descuento se hace en una sola operación atómica, o se revalida
+            la versión al guardar y el segundo reintenta
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`D6`](#d6--la-operación-repetida-no-duplica-su-efecto).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `D6` es sobre **el mismo actor dos veces**; esta es sobre **dos actores a la vez**. La segunda es la que no se ve al probar: en una máquina sola nunca ocurre, y aparece el día que hay dos usuarios.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

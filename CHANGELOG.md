@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.23.0 — 2026-08-18
+
+**MAYOR** (nacen cuatro reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
+
+**Cuatro reglas más separadas, y en las cuatro la mitad que se va es la que se olvida.**
+
+Una pedía que repetir una operación no duplicara su efecto *y además* que dos operaciones simultáneas no se pisaran — que son problemas distintos: el mismo actor dos veces, o dos actores a la vez. Otra pedía que anular revirtiera todo de una vez *y además* que se avisara a quien tenía el dato ya calculado. Otra, que las pruebas corrieran solas *y además* que lo que corre en tu máquina no las reemplace. Y la del plan pedía el visto bueno *y además* dejaba claro que autorizar el arranque de una fase no es aprobar su plan.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`03·D9`](base/03-datos.md), [`15·IM7`](base/15-registros-inmutables.md), [`09·G11`](base/09-git.md) y [`02·F25`](base/02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md).
+
+**`02·F25` es la que más se incumple sin querer**, y por eso merecía nombre propio: nadie se salta la aprobación de un plan a propósito — lo que pasa es que **se toma el «arrancá con X» por el permiso de ejecutar**, y el trabajo avanza con la conciencia tranquila. `F4` dice que hace falta un visto bueno; `F25` dice cuál no cuenta.
+
+Las reglas publicadas en «no cumple» bajan de 41 a **37**.
+
 ## 23.22.0 — 2026-08-18
 
 **MAYOR** (nacen tres reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).

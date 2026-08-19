@@ -100,7 +100,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Nace el 2026-08-18 de partir [`E2`](#e2--valida-al-entrar-y-aborta-temprano).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-**Por qué merece regla propia.** `E2` evita **empezar** algo que no se puede terminar; esta evita **dejarlo a medias** cuando ya empezó. La citan por separado: [`15·IM3`](15-registros-inmutables.md#im3--anular-revierte-el-efecto-en-transacción) remite aquí para exigir que la reversión sea atómica.
+**Por qué merece regla propia.** `E2` evita **empezar** algo que no se puede terminar; esta evita **dejarlo a medias** cuando ya empezó. La citan por separado: [`15·IM3`](15-registros-inmutables.md#im3--la-anulación-revierte-todo-o-no-revierte-nada) remite aquí para exigir que la reversión sea atómica.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
