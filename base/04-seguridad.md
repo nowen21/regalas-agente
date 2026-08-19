@@ -455,7 +455,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Pero conviene leerla antes de acortarla, porque es el modelo de referencia del cuerpo entero.** El análisis del 2026-08-07 la señaló así: *«la excepción declara condición, límite y autorizador»* y recomendaba **usarla como plantilla**. Es la única del estándar que cumple [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) entera.
 
-Eso importa hoy más que cuando se escribió: al aplicar el checklist aparecieron **tres excepciones sin autorizador** —[`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--valores-configurables-van-a-catálogo--cero-hardcode) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app)— y esta es de dónde copiar la forma.
+Eso importa hoy más que cuando se escribió: al aplicar el checklist aparecieron **tres excepciones sin autorizador** —[`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app)— y esta es de dónde copiar la forma.
 
 **Al acortarla, la excepción no se toca.** Lo que sobra es lo de alrededor.
 

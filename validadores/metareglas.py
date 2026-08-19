@@ -430,6 +430,30 @@ def _tocado_el(archivo):
     return _fechas_de_cambio(os.path.dirname(archivo)).get(archivo, "")
 
 
+def _cambio_de_verdad(regla):
+    """¿El cuerpo de **esta** regla difiere del guardado?
+
+    Sin control de versiones no hay con qué comparar, y entonces se cree lo que
+    dice la fecha: se devuelve `True` y el aviso sale igual.
+    """
+    import subprocess
+    rel = os.path.relpath(regla.archivo, RAIZ).replace("\\", "/")
+    try:
+        r = subprocess.run(["git", "-C", RAIZ, "show", "HEAD:%s" % rel],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return True
+    if r.returncode:
+        return True                     # archivo nuevo: su sello es nuevo también
+    marca = "## %s " % regla.id
+    if marca not in r.stdout:
+        return True                     # la regla no existía: es nueva
+    antes = r.stdout[r.stdout.index(marca):].split("### Checklist")[0]
+    ahora = regla.texto.split("### Checklist")[0]
+    return antes.strip() != ahora.strip()
+
+
 def _sello_vencido(regla):
     """`52` · El sello dice «vale mientras el texto no cambie», y nada lo mira.
 
@@ -438,14 +462,22 @@ def _sello_vencido(regla):
     otro día — y quien la lee ve un sello y confía. Es peor que no tener
     sello: el que no lo tiene al menos no engaña.
 
-    **Se compara por fecha, no por huella del texto.** La huella detectaría el
-    cambio exacto, pero obliga a recalcular el sello de las ~70 reglas que hoy
-    están bien: mucho riesgo para hacer visible algo que la fecha ya hace
-    visible. Si esto produce demasiado ruido, la huella queda como el paso
-    siguiente, ya con datos.
+    **Se comparaba solo por fecha del archivo, y eso reportaba de más.** El
+    2026-08-19 dio **119 avisos**: editar una regla vencía el sello de **todas
+    las de su capítulo**, porque la fecha es del archivo y el sello es de la
+    regla. Un validador que reporta ciento diecinueve cosas no lo lee nadie.
 
-    El precio de la fecha está asumido y se dice: un cambio de una coma
-    también vence el sello, y un cambio sin confirmar no se ve.
+    Ahora hacen falta las dos: que el archivo se haya tocado después del sello
+    **y** que el cuerpo de esa regla difiera del que está guardado. Así una
+    edición en la regla vecina deja de vencer este sello, y el que de verdad
+    cambió se sigue viendo.
+
+    Su propio texto ya anticipaba este paso: *«si esto produce demasiado ruido,
+    la huella queda como el paso siguiente, ya con datos»*. Los datos fueron 119.
+
+    **Lo que sigue sin verse:** una regla cambiada y confirmada en el mismo
+    movimiento que su sello viejo. Para eso hace falta guardar la huella dentro
+    del sello, y eso es trabajo aparte.
     """
     if regla.derogada:
         return []
@@ -455,6 +487,8 @@ def _sello_vencido(regla):
     sellado = m.group(1)
     tocado = _tocado_el(regla.archivo)
     if not tocado or tocado <= sellado:
+        return []
+    if not _cambio_de_verdad(regla):
         return []
     return [Hallazgo(
         AVISO, regla.archivo, regla.linea,

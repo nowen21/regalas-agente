@@ -4,47 +4,96 @@ Diseño y cambio del almacenamiento: esquema, migraciones, catálogos. La capa 3
 
 ---
 
-## D1 · Toda tabla nueva se normaliza y lleva auditoría
+## D1 · La tabla nueva nace normalizada
 
-**Normalización (1FN/2FN/3FN).** No se acepta: columnas multivaluadas (listas/JSON/arrays serializados — el 1:N va en tabla hija con FK, el N:M en pivot), atributos duplicados del padre, dependencias transitivas, ni enums nativos (van a catálogo, D4).
-
-**Auditoría** en toda tabla nueva (salvo pivots puras): quién creó, quién editó, timestamps de creación/actualización. Las tablas transaccionales/contables/legales llevan **soft delete**.
-
-**Integridad en la BD** (no solo en la app): FK con política de borrado explícita; `UNIQUE` en columnas con unicidad conceptual; índices en lo que se filtra (FKs, fechas, estados).
+Un dato no se repite ni se guarda en montón: **nada de columnas que contienen varios valores** —listas, estructuras serializadas—, nada de copiar atributos del padre, y nada de valores fijos incrustados en el tipo de la columna, que van a catálogo ([`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo)). Lo que es uno a muchos va en tabla hija; lo que es muchos a muchos, en una tabla que las une.
 
 ```
-INCORRECTO: guardar "Guantes,Mascarilla,Botas" como texto
-CORRECTO:   tabla hija + FK
-
-INCORRECTO: tabla sin auditoría "porque es un catálogo simple"
-CORRECTO:   todas la llevan, salvo pivots puras
+INCORRECTO: una columna «etiquetas» con los valores separados por comas
+CORRECTO:   una tabla de etiquetas y otra que la une con su dueño
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ❌ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Era uno de los dos ❌ de prioridad alta del análisis del 2026-08-07, y lo sigue siendo.**
+**Partida el 2026-08-18, y eran tres.** Su cuerpo tenía tres párrafos en negrita —normalización, auditoría, integridad en el almacén— y **son tres exigencias que se cumplen por separado**: una tabla puede estar perfectamente normalizada y no llevar ninguna columna de auditoría, o llevarlas y no tener una sola restricción. Nacen [`D10`](#d10--toda-tabla-guarda-quién-la-tocó-y-cuándo) y [`D11`](#d11--la-integridad-vive-en-el-almacén-no-solo-en-la-aplicación). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 9 · son tres exigencias**, y el título las junta con una «y»: normalizar, llevar auditoría e indexar. Se cumplen por separado sin ninguna dificultad.
-- **Fila 10 · no cabe:** 618 caracteres para un molde de 320.
-- **Fila 11 · texto prestado.** Su bloque de índices repite [`06·R3`](06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena), que es la dueña del tema y está limpia.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-El análisis proponía el corte —`D1` normalización · `D9` auditoría · `D10` índices— y que los índices **enlacen** a `R3` en vez de repetirla.
+## D10 · Toda tabla guarda quién la tocó y cuándo
 
-**Antes de partirla conviene probar lo que funcionó con [`08·T5`](08-pruebas.md#t5--ejecuta-y-reporta):** quizá no haga falta una `D10`, sino que el bloque de índices se comprima a un enlace. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Cada tabla lleva **quién creó, quién editó por última vez, y cuándo** cada cosa. Las tablas de las que dependen cuentas, obligaciones o registros legales guardan además la baja como marca, no como borrado.
+
+```
+INCORRECTO: el registro cambió y nadie puede decir quién ni cuándo
+CORRECTO:   la fila dice quién la creó, quién la tocó por última vez y en qué momento
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** La normalización es sobre **cómo se guarda el dato**; esta es sobre **qué se guarda además del dato**. Se olvida sola: nadie deja una tabla mal normalizada sin notarlo, y casi todos dejan una sin auditoría.
+
+**La tabla que solo une dos tablas queda fuera**: no tiene contenido propio del que responder.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## D11 · La integridad vive en el almacén, no solo en la aplicación
+
+Las relaciones, la unicidad conceptual y los índices de lo que se filtra se declaran **en el propio almacén**. La aplicación puede comprobarlo también, pero no en su lugar: lo que solo vive en el código no protege a los datos que entran por otro camino.
+
+```
+INCORRECTO: la unicidad del documento se valida en el formulario y nada más
+CORRECTO:   además, el almacén la declara y la rechaza aunque entre por otro lado
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** Es la que sostiene a [`03·D9`](#d9--dos-operaciones-simultáneas-no-se-pisan): sin la restricción en el almacén, dos procesos simultáneos insertan el mismo registro por más que la aplicación lo compruebe. Y se incumple con la mejor intención — *«ya lo valido yo»*.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -117,55 +166,63 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## D4 · Valores configurables van a catálogo — cero hardcode
+## D4 · Lo que puede cambiar por decisión de alguien va a catálogo
 
-Nada que pueda cambiar por decisión del negocio, la ley o la operación se quema en el código (constantes, arrays, `switch`/`match`, literales en condiciones): umbrales, listas válidas, mapas por tipo, textos editables, flags de comportamiento. Va a un **catálogo** consultable.
-
-Si necesitas escribir un mapa/array/switch con valores del dominio, **detente y crea el catálogo primero**.
-
-- **Bifurca por código semántico**, no por id (los ids cambian entre entornos).
-- Los flags de un tipo/estado viven **junto al catálogo** (metadata), no en el código.
-- Los códigos que el código referencia se marcan **protegidos** (no borrables desde la UI).
-- Cachea los catálogos que se consultan seguido.
-
-Excepciones (cero hardcode ≠ cero literales): constantes técnicas (columnas, rutas, eventos), fórmulas matemáticas fijas, códigos externos estables por ley. Ante la duda, **inclínate al catálogo**.
-
-**Cuando el catálogo genérico no cabe** — a veces el valor configurable tiene estructura propia (mapas por tipo, rangos numéricos con intervalos, relaciones internas entre valores) que no encaja en la tabla genérica de parámetros (típicamente `codigo` + `valor` + `flags`). En ese caso, **crear una tabla propia de dominio** para ese conjunto (`<dominio>_<subdominio>`) con auditoría estándar (D1), FKs a otros catálogos si aplica, y **seed inline en la migración**. Sigue siendo cero hardcode — el catálogo es específico, no genérico. Al detectar hardcode existente durante una unidad de trabajo, agregar tarea explícita al plan para migrarlo antes del cierre.
+Nada que pueda cambiar por decisión del negocio, de la ley o de la operación se escribe dentro del código: umbrales, listas de valores válidos, textos editables, interruptores de comportamiento. Va a un **catálogo consultable**, y si hace falta escribir uno, **primero se crea el catálogo**.
 
 ```
-INCORRECTO: if (saldo < 100000)                          // umbral quemado
-CORRECTO:   leer el umbral del catálogo
-
-INCORRECTO: validar: modalidad ∈ {'efectivo','especie'}   // lista fija quemada en el código
-CORRECTO:   validar contra los códigos leídos del catálogo
-
-INCORRECTO: if (tipo_id === 3)                            // id opaco
-CORRECTO:   if (tipo_codigo === 'especie')               // código semántico
+INCORRECTO: el descuento máximo es un número escrito en la condición
+CORRECTO:   el descuento máximo se consulta del catálogo, y negocio lo cambia sin tocar código
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**1546 caracteres: casi cinco veces el molde.**
+**Partida el 2026-08-18.** Decía dos cosas: **qué va al catálogo**, y **cómo se usa** el que ya existe — bifurcar por código y no por identificador. **Se cumplen por separado**, y la segunda es más traicionera: se puede tener todo en catálogos y aun así romper el sistema al pasarlo a otro entorno, porque el código decidía comparando identificadores. Es ahora [`D12`](#d12--el-código-decide-por-el-código-del-catálogo-no-por-su-identificador). Lo que quedó fuera —guardar los interruptores junto al catálogo, marcar como protegido lo que el código referencia, guardar en memoria lo que se consulta seguido— era **cómo hacerlo bien, no una exigencia**. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 10 · no cabe.**
-- **Fila 9 · hay una exigencia escondida.** El bloque «cuando el catálogo genérico no cabe» —tabla propia con sus columnas— es otra regla, no una aclaración de esta.
-- **Fila 16 · la excepción está incompleta.** Declara condición y no dice ni límite ni quién autoriza, igual que [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba).
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-**La fila 16 es la que más pesa:** una excepción sin autorizador es un permiso que se concede quien la usa. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+## D12 · El código decide por el código del catálogo, no por su identificador
+
+Cuando el programa se bifurca según un valor del catálogo, compara **el código que significa algo** —`PENDIENTE`, `ANULADO`—, nunca el número que le tocó en la tabla: ese número cambia entre entornos y la comparación deja de valer sin avisar (extiende [`03·D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo)).
+
+```
+INCORRECTO: si el estado es 3, no dejar editar
+CORRECTO:   si el estado es «ANULADO», no dejar editar
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `D4` es sobre **dónde vive** el valor; esta es sobre **cómo se lo mira**. Y es la que falla en producción: en el entorno donde se programó, el identificador 3 era el correcto.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

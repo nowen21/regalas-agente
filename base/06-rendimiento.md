@@ -95,9 +95,9 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**El análisis del 2026-08-07 la marcaba en amarillo, y no por ella: [`03·D1`](03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría) duplica su contenido.** El veredicto de entonces fue explícito — *«un solo dueño: `R3`; [`03·D1`](03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría) enlaza»*.
+**El análisis del 2026-08-07 la marcaba en amarillo, y no por ella: [`03·D1`](03-datos.md#d1--la-tabla-nueva-nace-normalizada) duplica su contenido.** El veredicto de entonces fue explícito — *«un solo dueño: `R3`; [`03·D1`](03-datos.md#d1--la-tabla-nueva-nace-normalizada) enlaza»*.
 
-Se comprobó contra el texto de hoy: **`R3` no cita a [`03·D1`](03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría) ni le toma nada prestado.** Dice lo suyo entero y por su cuenta, así que la fila **11** pasa. Lo que hay que corregir vive en el capítulo `03`, y va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Se comprobó contra el texto de hoy: **`R3` no cita a [`03·D1`](03-datos.md#d1--la-tabla-nueva-nace-normalizada) ni le toma nada prestado.** Dice lo suyo entero y por su cuenta, así que la fila **11** pasa. Lo que hay que corregir vive en el capítulo `03`, y va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Es el mismo caso que [`10·DEP3`](10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día) por el lado bueno.** Allá la regla del capítulo dueño repite a la de otro y por eso reprueba; acá la dueña está limpia y quien repite es la de al lado. Cuál de las dos reprueba depende de quién copió, no de quién duplica.
 

@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.24.0 — 2026-08-18
+
+**MAYOR** (nacen cuatro reglas con nombre nuevo) · **y una comprobación deja de reportar de más.**
+
+**La regla sobre tablas nuevas pedía tres cosas a la vez** —que el dato no se repita, que quede escrito quién tocó cada fila, y que las relaciones se declaren en el propio almacén— y las tres se cumplen por separado. La de valores configurables pedía dónde guardarlos *y además* cómo compararlos.
+
+**Y una comprobación estaba gritando.** El aviso de «este sello venció» miraba la fecha del **archivo**, así que tocar una regla vencía el sello de todas las de su capítulo: **119 avisos en una sola corrida**. Un validador que reporta ciento diecinueve cosas no lo lee nadie.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`03·D1`](base/03-datos.md) se parte en tres —nacen `D10`, quién tocó la fila, y `D11`, la integridad vive en el almacén— y [`03·D4`](base/03-datos.md) en dos, con `D12`: el código decide por el código del catálogo, **no por su identificador**, que es el que cambia entre entornos y hace fallar en producción lo que funcionaba al programar.
+
+**`D11` sostiene a [`03·D9`](base/03-datos.md)**: sin la restricción declarada en el almacén, dos procesos simultáneos insertan el mismo registro por más que la aplicación lo compruebe. Se incumple con la mejor intención — *«ya lo valido yo»*.
+
+**La comprobación del sello ahora pide las dos cosas:** que el archivo se haya tocado después del sello **y** que el cuerpo de esa regla difiera del guardado. Su propio texto ya había anticipado este paso — *«si esto produce demasiado ruido, la huella queda como el paso siguiente, ya con datos»*—, y los datos fueron 119.
+
+Las reglas publicadas en «no cumple» bajan de 37 a **35**.
+
 ## 23.23.0 — 2026-08-18
 
 **MAYOR** (nacen cuatro reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
