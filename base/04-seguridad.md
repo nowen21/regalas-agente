@@ -75,42 +75,63 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## S3 · Nunca construyas consultas ni comandos por concatenación
+## S3 · La entrada del usuario nunca se pega dentro de una instrucción
 
-- **BD:** consultas parametrizadas / ORM. Nunca concatenar entrada en la consulta (inyección SQL).
-- **Shell:** evita comandos con entrada del usuario; si es inevitable, separa comando y argumentos y escapa (inyección de comandos).
-- **Asignación masiva:** declara qué campos son asignables; no vuelques todo el payload al modelo (evita que seteen `es_admin`).
+Lo que escribe el usuario **no se concatena** dentro de una consulta ni de un comando: va como **parámetro**, separado de la instrucción. Pegarlo deja que quien escribe elija qué se ejecuta.
 
 ```
-INCORRECTO: "SELECT * FROM users WHERE email = '" + input + "'"
-CORRECTO:   consulta parametrizada con el input como parámetro
-
-INCORRECTO: crear el registro volcando todo el payload de la petición
-CORRECTO:   asignar solo los campos permitidos explícitamente
+INCORRECTO: la consulta se arma sumando el texto que llegó del formulario
+CORRECTO:   la instrucción va fija y el texto viaja aparte, como dato
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Dos filas.**
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: no pegar la entrada dentro de una instrucción, y declarar qué campos se pueden asignar. **Se puede parametrizar cada consulta y aun así dejar que un formulario escriba el campo que vuelve administrador a quien lo manda.** La segunda es ahora [`S16`](#s16--solo-se-asigna-lo-que-está-declarado). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 9 · son tres frentes**, y el análisis del 2026-08-07 nombró el que sobra: la **asignación masiva** no es concatenación. Los otros dos —consultas y comandos de shell— sí son la misma exigencia vista en dos sitios.
-- **Fila 10 · no cabe:** 358 caracteres, y se pasa por el tercer frente.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-El corte propuesto entonces sigue valiendo: la asignación masiva a una `S12` propia.
+## S16 · Solo se asigna lo que está declarado
+
+Al construir o actualizar un registro con lo que llegó de afuera, se **declara qué campos se pueden tocar**. Lo que no está declarado se ignora, aunque venga en el mensaje (extiende [`04·S3`](#s3--la-entrada-del-usuario-nunca-se-pega-dentro-de-una-instrucción)).
+
+```
+INCORRECTO: se vuelca todo lo que llegó sobre el registro, «que ya viene validado»
+CORRECTO:   se toman los tres campos del formulario y el resto se descarta
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`S3`](#s3--la-entrada-del-usuario-nunca-se-pega-dentro-de-una-instrucción).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `S3` protege **la instrucción**; esta protege **el destino**. No hay concatenación de por medio: el dato llega limpio y el problema es que se escribe donde no debía. Se incumple sola y en silencio — nada falla, solo que alguien terminó con un permiso que nadie le dio.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -274,42 +295,63 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 **Es la que menos se parecía a las otras tres.** `S5` la traía como cuarta viñeta —«hashing fuerte con salt»— entre cosas de transporte y sesión, y por eso [`12·PR3`](12-privacidad-datos.md#pr3--protégelos-en-reposo-y-en-tránsito) la citaba junto con el cifrado en tránsito, mezclando dos cosas distintas: **lo que se cifra se descifra; una contraseña no debe poder leerse nunca**.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
-## S6 · Archivos sensibles: privado + acceso controlado
+## S6 · El archivo no público se guarda privado y se sirve por un punto controlado
 
-Todo archivo no público (financiero, jurídico, personal):
-
-- **Almacenamiento privado**, nunca en ubicación pública ni con URL adivinable.
-- Acceso por un **punto controlado** (auth + permiso + scope); forzar descarga.
-- Guarda metadatos (ubicación, tipo, tamaño) para poder migrar de almacenamiento sin tocar código.
-- **Preservación:** al borrar (lógico) la entidad padre, el archivo **no se elimina físico**. La purga física es operación admin con preview ([`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada)).
-- **Backup** junto con la BD. Carga con lista blanca de tipos y tamaño máximo.
+El archivo que no es público —financiero, jurídico, personal— se guarda **fuera de cualquier ubicación alcanzable por su dirección**, y se entrega solo a través de un punto que comprueba quién pide y si le corresponde.
 
 ```
-INCORRECTO: documento sensible en carpeta pública con URL directa
-CORRECTO:   almacenamiento privado + endpoint con auth/permiso/scope
+INCORRECTO: el contrato queda en la carpeta pública con un nombre difícil de adivinar
+CORRECTO:   queda en almacenamiento privado y se entrega tras comprobar el permiso
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 9 · cinco sub-exigencias**, y la fila **10** en consecuencia: 542 caracteres.
+**Partida el 2026-08-18.** Su cuerpo eran cinco viñetas y **dos exigencias distintas**: cómo se guarda y se entrega, y qué le pasa cuando su dueño se da de baja. **Se cumplen por separado** — se puede tener el archivo bien guardado y borrarlo físicamente al dar de baja la entidad padre, que es justo el caso que la segunda evita. Lo demás de esas viñetas —metadatos, copia de respaldo, lista blanca de tipos— era detalle de cómo, no exigencia, y se fue. La segunda es ahora [`S17`](#s17--el-archivo-sobrevive-a-la-baja-de-su-dueño). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-El análisis del 2026-08-07 proponía sacar de ahí la **preservación** y el **respaldo**, que son otro tema —qué pasa con el archivo después—, y dejar la regla con lo suyo: que el archivo sensible nace privado y se sirve con control de acceso.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-También solapa con [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensibles-nunca-se-exponen-blindada). Ahí la salida es la de siempre: que el núcleo **enlace** hacia acá, no que esta repita al núcleo.
+## S17 · El archivo sobrevive a la baja de su dueño
+
+Dar de baja la entidad que referencia un archivo **no lo borra**. Quitarlo de verdad es una operación aparte, que se previsualiza antes de aplicarse ([`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada)).
+
+```
+INCORRECTO: se da de baja al proveedor y desaparecen sus facturas escaneadas
+CORRECTO:   el proveedor queda de baja y sus archivos siguen ahí
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`S6`](#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `S6` es sobre **el acceso**; esta es sobre **la permanencia**. Y es la que se incumple sin querer: la baja lógica del padre suele arrastrar sus archivos porque nadie pensó en ellos, y para cuando alguien los busca ya no están.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

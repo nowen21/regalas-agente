@@ -216,7 +216,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 **Tres exigencias, y la tercera además está prestada.**
 
 - **Fila 9 · son tres:** no incrustar ni registrar ni subir secretos; no enviar contenido del proyecto a servicios externos; y que los archivos no públicos no queden en ubicación pública. Se cumplen por separado sin ninguna dificultad.
-- **Fila 11 · la tercera repite [`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado)**, que es la dueña del tema y lo desarrolla entero. Acá queda como un resumen con «(ver `04`)» al final.
+- **Fila 11 · la tercera repite [`04·S6`](04-seguridad.md#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado)**, que es la dueña del tema y lo desarrolla entero. Acá queda como un resumen con «(ver `04`)» al final.
 
 **Cabe —204 de 320— y aun así reprueba.** Es el segundo caso hoy, tras [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3): que una regla quepa y esté bien redactada no dice nada sobre si es una sola regla ni sobre si lo que dice es suyo.
 

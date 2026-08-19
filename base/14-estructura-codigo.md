@@ -40,7 +40,7 @@ Las **14 a 16** son N/A: no declara dependencia en ninguna de las tres formas de
 
 ## EST2 · Nomenclatura consistente
 
-Una sola convención por tipo de elemento (tablas, columnas, clases, archivos, permisos), aplicada uniforme: eso hace el nombre **adivinable** sin buscarlo. Nombres cortos, directos, con significado por contexto (no repitas lo que la ubicación ya dice). Cuida los **límites de longitud** del motor/lenguaje (p. ej. índices autogenerados que exceden el máximo): nómbralos explícito cuando haga falta.
+**Una sola convención por tipo de elemento** —tablas, columnas, clases, archivos, permisos—, aplicada igual en todos: eso hace que el nombre se **adivine** sin buscarlo. Cortos, con significado por contexto, sin repetir lo que la ubicación ya dice.
 
 ```
 INCORRECTO: booleano "es_socio_principal_del_grupo_familiar"
@@ -52,19 +52,25 @@ CORRECTO:   pasar un nombre corto y explícito
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.3.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Mirada el 2026-08-18 para partirla, y no hizo falta: sobraba, no faltaba.** Lo que la hacía parecer dos reglas era el consejo sobre los **límites de longitud del motor** —que además nombraba tecnología, lo que [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no admite en la base—. **No era una exigencia: era una advertencia práctica**, y se fue.
+
+**Lo que queda es una sola cosa:** una convención por tipo, aplicada igual. Los nombres cortos y sin repetir la ubicación no son otra exigencia — son **cómo se ve** que la convención está bien elegida.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Reprueba tres filas seguidas, y las tres dicen lo mismo: son tres reglas metidas en una.**
 

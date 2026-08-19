@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.22.0 — 2026-08-18
+
+**MAYOR** (nacen tres reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
+
+**Tres reglas más que pedían dos cosas cada una.** Una decía cómo evitar que la entrada del usuario se cuele dentro de una instrucción *y además* qué campos puede tocar un formulario; otra, cómo guardar un archivo privado *y además* qué pasa con él cuando se da de baja a su dueño; otra, que los entornos se parezcan *y además* que lo que hace falta en producción quede escrito.
+
+En los tres casos la segunda mitad es la que se cae sola, sin ruido: se puede tener todo bien parametrizado y aun así dejar que un formulario escriba el campo que vuelve administrador a quien lo manda.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`04·S16`](base/04-seguridad.md) —solo se asigna lo que está declarado—, [`04·S17`](base/04-seguridad.md) —el archivo sobrevive a la baja de su dueño— y [`11·CFG5`](base/11-configuracion-entornos.md) —lo que producción necesita se escribe antes de aplicarlo—.
+
+**[`14·EST2`](base/14-estructura-codigo.md) no se partió: le sobraba, no le faltaba.** Lo que la hacía parecer dos reglas era un consejo sobre los límites de longitud del motor, que además nombraba tecnología. **No era una exigencia, era una advertencia práctica**, y se fue. Lo que queda es una sola cosa: una convención por tipo de elemento, aplicada igual.
+
+Las reglas publicadas en «no cumple» bajan de 45 a **41**.
+
 ## 23.21.0 — 2026-08-18
 
 **MAYOR** (nacen cinco reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).

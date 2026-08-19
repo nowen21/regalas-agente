@@ -48,4 +48,4 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 
 ---
 
-Ver: [`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) y [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) (contexto y especificación, de donde sale lo que aquí se persiste), [`08`](../08-pruebas.md) (plan de pruebas y verificaciones manuales), [`07·Q5`](../07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué) (documentar, no solo comentar), [`11·CFG3`](../11-configuracion-entornos.md#cfg3--paridad-entre-entornos).
+Ver: [`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md) y [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) (contexto y especificación, de donde sale lo que aquí se persiste), [`08`](../08-pruebas.md) (plan de pruebas y verificaciones manuales), [`07·Q5`](../07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué) (documentar, no solo comentar), [`11·CFG3`](../11-configuracion-entornos.md#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo).

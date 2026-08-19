@@ -66,32 +66,63 @@ Mismo caso que `CFG1`: el análisis la marcaba por solapar con [`09·G3`](09-git
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## CFG3 · Paridad entre entornos
+## CFG3 · Los entornos se parecen lo suficiente para que probar signifique algo
 
-Los entornos se parecen lo más posible (mismas versiones, misma config estructural) para que "funciona en mi máquina" signifique algo. Lo que pruebas no puede reproducir se cubre con **verificaciones manuales documentadas** ([`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)). Los cambios que producción necesita se **documentan** (`13`), no se aplican de memoria.
+El entorno donde se prueba corre **las mismas versiones y la misma configuración estructural** que el de producción. Sin eso, «funciona en mi máquina» no dice nada, y lo que no se puede reproducir se cubre con comprobaciones manuales escritas ([`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)).
+
+```
+INCORRECTO: se prueba contra una versión distinta del motor «porque es lo que hay»
+CORRECTO:   se iguala la versión, o se anota qué queda sin probar y cómo se comprueba
+```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Reprueba las dos filas que el análisis del 2026-08-07 ya le había marcado**, y esta vez se leyó antes de razonar.
+**Partida el 2026-08-18.** Decía dos cosas: que los entornos se parezcan, y que lo que producción necesita se documente. **Se cumplen por separado** — se pueden tener entornos idénticos y seguir aplicando cambios de producción de memoria. La segunda es ahora [`CFG5`](#cfg5--lo-que-producción-necesita-se-escribe-antes-de-aplicarlo). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 9 · una sola exigencia.** Hay tres, y se cumplen por separado: *(a)* que los entornos se parezcan, *(b)* que lo que las pruebas no reproducen se cubra con verificaciones manuales documentadas, *(c)* que los cambios que producción necesita se documenten en vez de aplicarse de memoria. Un proyecto puede tener entornos idénticos y aplicar parches de memoria igual.
-- **Fila 12 · ejemplo INCORRECTO/CORRECTO.** No tiene, y no es de las evidentes: aplicar en producción un ajuste «de memoria» que nunca se documentó es un error frecuente — el propio análisis lo nombra así.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-**Partirla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).** El ejemplo llega solo cuando se sepa cuál de las tres se queda con el ID.
+## CFG5 · Lo que producción necesita se escribe antes de aplicarlo
+
+Todo cambio que haya que hacer en producción —una variable, un permiso, un paso de instalación— queda **escrito antes de aplicarse**, no se hace de memoria (extiende [`11·CFG3`](#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo)).
+
+```
+INCORRECTO: «también hay que subirle la variable nueva, me acuerdo cuando toque»
+CORRECTO:   el paso queda escrito con su valor y quién lo aplica
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.22.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`CFG3`](#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `CFG3` es sobre **el parecido** entre entornos; esta es sobre **lo que no se puede parecer** y hay que arrastrar a mano. Es la que se incumple: el parecido se nota al probar, y el paso olvidado se nota al desplegar.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
