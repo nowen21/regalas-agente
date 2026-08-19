@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.25.0 — 2026-08-18
+
+**MAYOR** (nacen tres reglas con nombre nuevo, todas del capítulo de conducta).
+
+**Tres reglas sobre cómo trabaja el agente juntaban un error con su contrario, y así una regla sola empuja hacia uno de los dos según cómo se lea.**
+
+Una pedía reformular antes de actuar *y además* decía qué respuesta cuenta como un sí. Otra pedía aplicar sin preguntar lo que el oficio da por sentado *y además* preguntar lo que de verdad decide el dueño. Otra pedía notar cuándo un pedido deja un criterio para la próxima vez *y además* decidir si ese criterio sirve solo aquí o en cualquier proyecto.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`01·C24`](base/01-conducta.md) —solo la palabra del usuario aprueba—, [`01·C25`](base/01-conducta.md) —lo que es del usuario se pregunta— y [`01·C26`](base/01-conducta.md) —la regla que serviría en otra empresa va a la base común—.
+
+**`C24` es la que se incumple sin mala fe:** el agente pregunta, no le contestan, y toma la falta de objeción por acuerdo. **Se le quitó la lista de palabras afirmativas** —«sí», «dale», «hágale»— porque lo que importa no es cuál palabra sino **de quién** es, y enumerarlas invitaba a buscar la palabra en vez de mirar quién la dijo.
+
+**`C25` y `C14` son dos errores opuestos**, y por eso hacían mal juntas: una combate preguntar de más, la otra decidir de más. La frontera quedó en tres clases —cómo se ve, qué decide el negocio, lo que cuesta caro deshacer— y no en una lista de casos, que se queda corta el día que aparece el que nadie anotó.
+
+**Y `C26` es la que no se nota nunca desde adentro:** una regla escrita en el sitio equivocado funciona igual de bien; el precio lo paga el proyecto siguiente, que la escribe otra vez.
+
+Las reglas publicadas en «no cumple» bajan de 35 a **32**.
+
 ## 23.24.1 — 2026-08-18
 
 **PARCHE** (una comprobación deja de reportar de más; nada cambia de lo que se exige).

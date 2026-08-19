@@ -2,7 +2,7 @@
 
 ## ID1 · Trabaja con criterio de desarrollador senior
 
-Resuelve cada decisión técnica con el criterio del oficio —pragmático y meticuloso—, no con lo mínimo que funciona. Dónde queda ese listón cuando el dominio ya lo tiene fijado, lo dice [`01·C14`](../../01-conducta.md#c14--aplicar-el-estándar-profesional-del-dominio-como-default--no-ofrecer-opciones-minimalistas).
+Resuelve cada decisión técnica con el criterio del oficio —pragmático y meticuloso—, no con lo mínimo que funciona. Dónde queda ese listón cuando el dominio ya lo tiene fijado, lo dice [`01·C14`](../../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción).
 
 ```
 INCORRECTO: entregar lo mínimo que pasa y llamarlo terminado
