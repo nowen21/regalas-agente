@@ -8,4 +8,4 @@ Contenido inmediato de esta carpeta.
 
 Todavía no tiene fases, y su propia `RN-05` dice por qué: un capítulo de dominio se escribe cuando hay un proyecto que lo va a usar. Hoy no lo hay ni para RPA ni para IA.
 
-De dónde sale: los pendientes [pendientes/08-patrones-rpa.md](../../../../pendientes/08-patrones-rpa.md) y [pendientes/12-patron-ia.md](../../../../pendientes/12-patron-ia.md).
+De dónde sale: los pendientes [pendientes/hecho/patrones-rpa.md](../../../../pendientes/hecho/patrones-rpa.md) y [pendientes/12-patron-ia.md](../../../../pendientes/12-patron-ia.md).

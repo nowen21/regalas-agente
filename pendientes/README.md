@@ -43,7 +43,7 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24*
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | ~~07~~ | — | **hecho** → [Patrones DevOps 18 y 19](hecho/patrones-devops.md) | Capítulos opt-in `18` (despliegue/infra) y `19` (observabilidad/operación) + plantillas. Cerrado 2026-08-06 (v1.1.0). |
-| 08 | **P6** | [Patrón RPA](08-patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
+| 08 | **P6** | [Patrón RPA](hecho/patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
 | 12 | **P6** | [Patrón IA](12-patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. Está casi listo para redactarse, y reusa la tabla de riesgo del [13](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md). |
 
 Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps, RPA o IA, se adelantan sin esperar la fila.

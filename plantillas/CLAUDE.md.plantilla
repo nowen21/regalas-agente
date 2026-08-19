@@ -122,7 +122,7 @@ El estándar de la carpeta central **no se modifica**. Lo que este proyecto nece
 
 ### 5.1 Ajustar una regla que ya existe en la base (override)
 
-Cambia el comportamiento por defecto de una regla `01`–`19`. Los valores de abajo son los que trae la instalación; se editan a mano cuando el proyecto necesite otra cosa.
+Cambia el comportamiento por defecto de una regla `01`–`21`. Los valores de abajo son los que trae la instalación; se editan a mano cuando el proyecto necesite otra cosa.
 
 - **Idioma de respuestas y textos:** español
 - **Patrón opt-in `15` (registros inmutables):** no
@@ -130,6 +130,7 @@ Cambia el comportamiento por defecto de una regla `01`–`19`. Los valores de ab
 - **Patrón opt-in `17` (interfaz / UI):** no
 - **Patrón opt-in `18` (despliegue e infraestructura):** no
 - **Patrón opt-in `19` (observabilidad y operación):** no
+- **Patrón opt-in `21` (automatización de procesos):** no
 - **Otros ajustes:** ninguno
 
 > Un patrón opt-in arranca en `no` porque es opt-in: se enciende cuando el proyecto lo necesita, no antes. Cambiar uno a `sí` es decisión del usuario y basta con editar la línea.

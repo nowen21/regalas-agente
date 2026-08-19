@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.4.0 — 2026-08-18
+
+**MENOR** (un capítulo nuevo que arranca apagado; ningún proyecto tiene que hacer nada).
+
+**El estándar servía para construir un proceso que corre solo, pero no traía nada propio sobre cómo se construyen.** Ahora sí: ocho reglas para lo que automatiza trabajo repetitivo operando sistemas que no se pueden cambiar ni avisar.
+
+Viene apagado. Se enciende editando una línea del `CLAUDE.md`, como los otros cinco patrones opcionales.
+
+**El detalle.** Cierra el [pendiente 08](pendientes/hecho/patrones-rpa.md) con el capítulo [`21 · Automatización de procesos`](base/21-automatizacion-de-procesos.md): `AU1` a `AU8`, todas con su checklist en cumple.
+
+**No dice «RPA» en ninguna parte, y es a propósito.** [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no admite en la base el nombre de una tecnología, y el pendiente nombraba cuatro motores concretos; la sigla es de la industria y las siglas envejecen. **Lo que no envejece es el problema**, y el problema queda dicho sin sigla.
+
+**Lo que no entró: las plantillas.** `AU7` exige que cada proceso traiga su ficha y se mantenga; **qué campos lleva es del proyecto**, porque depende de qué sistemas toca. Un molde en la base sería adivinar.
+
 ## 24.3.1 — 2026-08-18
 
 **PARCHE** (una comprobación deja de acusar de lo que no puede ver).
