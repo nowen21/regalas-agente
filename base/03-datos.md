@@ -236,7 +236,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Título nominal y tres exigencias adentro.**
 
-- **Fila 8 · «Concurrencia e idempotencia»** nombra dos temas y no enuncia ninguna norma. Es el cuarto título así que aparece hoy, tras [`15·IM2`](15-registros-inmutables.md#im2--guarda-los-tres-estados-y-la-trazabilidad-de-quien-anula), [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después) e [`17·I6`](17-interfaz.md#i6--funciona-en-los-tamaños-de-pantalla-que-el-proyecto-soporta).
+- **Fila 8 · «Concurrencia e idempotencia»** nombra dos temas y no enuncia ninguna norma. Es el cuarto título así que aparece hoy, tras [`15·IM2`](15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable), [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después) e [`17·I6`](17-interfaz.md#i6--funciona-en-los-tamaños-de-pantalla-que-el-proyecto-soporta).
 - **Fila 9 · son tres:** idempotencia, la actualización perdida y los duplicados por carrera. Se cumplen por separado — reintentar sin duplicar efectos no protege de dos escrituras simultáneas.
 - **Fila 10 · no cabe:** 777 caracteres.
 

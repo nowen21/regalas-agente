@@ -96,7 +96,7 @@ Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Esta es la grave del capítulo, y el análisis del 2026-08-07 ya la tenía en rojo:** *«no exige nada propio: cuatro remisiones a `04`»*.
 
-- **Fila 9 · una sola exigencia.** No tiene ninguna **propia**. Sus cuatro frases son cifrado en tránsito, cifrado en reposo, acceso por permiso y hashing de credenciales, y las cuatro remiten a [`04·S5`](04-seguridad.md#s5--csrf-sesiones-y-transporte), [`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado) y [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible). Una regla que solo apunta a otras no exige: **es un índice con forma de regla**, y quien la cumple no hace nada distinto de cumplir el capítulo `04`.
+- **Fila 9 · una sola exigencia.** No tiene ninguna **propia**. Sus cuatro frases son cifrado en tránsito, cifrado en reposo, acceso por permiso y hashing de credenciales, y las cuatro remiten a [`04·S5`](04-seguridad.md#s5--la-acción-que-cambia-estado-desde-el-navegador-lleva-su-token), [`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado) y [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible). Una regla que solo apunta a otras no exige: **es un índice con forma de regla**, y quien la cumple no hace nada distinto de cumplir el capítulo `04`.
 - **Fila 11 · sin texto prestado.** Es la otra cara de lo mismo: enlaza bien, pero lo que queda entre los enlaces es la reformulación de lo enlazado.
 
 **Qué habría que hacer, y no se hace acá.** O la regla se queda con lo que el capítulo `04` **no** dice —qué agrega la privacidad sobre la seguridad técnica: qué dato personal es «sensible», quién decide el nivel de protección, qué exige el marco normativo del proyecto— o **se deroga** y el capítulo remite al `04` en su cabecera, que ya lo hace. Las dos son cambio de regla y van al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
@@ -169,7 +169,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Retención y borrado»: nombra un tema y no dice ninguna norma. Pasa a *Define cuánto se conservan y qué pasa después*. El cuerpo no se tocó, así que **no cambia qué exige la regla**. Es el mismo arreglo que se le hizo a [`15·IM2`](15-registros-inmutables.md#im2--guarda-los-tres-estados-y-la-trazabilidad-de-quien-anula) hoy.
+**La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Retención y borrado»: nombra un tema y no dice ninguna norma. Pasa a *Define cuánto se conservan y qué pasa después*. El cuerpo no se tocó, así que **no cambia qué exige la regla**. Es el mismo arreglo que se le hizo a [`15·IM2`](15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable) hoy.
 
 La fila **9** pasa aunque el cuerpo diga tres cosas —plazo, borrado o anonimización, y documentar la decisión—: no se cumplen por separado. Un plazo sin qué hacer al cumplirse no es una política de retención, es una fecha.
 

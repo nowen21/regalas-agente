@@ -37,35 +37,32 @@ Las **14 a 16** son N/A: no declara dependencia en ninguna de las tres formas de
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## IM2 · Guarda los tres estados y la trazabilidad de quien anula
+## IM2 · El registro tiene tres estados y solo uno es editable
 
-Al menos tres estados: **borrador** (editable), **materializado** (inmutable), **anulado** (revertido, fila preservada). Para anular guarda: cuándo, quién y **el motivo** (obligatorio, con sustancia).
+El registro pasa por **borrador**, que se edita; **materializado**, que ya no; y **anulado**, que revierte el efecto **conservando la fila**. Nada se borra para corregirlo: se anula y se rehace.
+
+```
+INCORRECTO: la factura salió mal, se edita el registro ya emitido
+CORRECTO:   se anula la emitida —queda su fila— y se emite otra
+```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Estados y campos de anulación»: nombra un tema y no dice ninguna norma, que es lo único que la fila no admite. Pasa a *Guarda los tres estados y la trazabilidad de quien anula*. **No cambia qué exige la regla** — el cuerpo es el mismo.
-
-**La fila 9 reprueba: son dos exigencias.** Los tres estados y los campos de la anulación **se pueden cumplir por separado** —un sistema puede tener `borrador`/`materializado`/`anulado` y no guardar quién anuló ni por qué—, y esa es exactamente la prueba que la fila propone.
-
-**Esto ya estaba dictaminado y casi se sella en contra.** El análisis del 2026-08-07 en [analisis/base-2026-08-07-cumplimiento-meta-reglas.md](../analisis/base-2026-08-07-cumplimiento-meta-reglas.md) ya decía de `IM2`: *«dos exigencias (tres estados · campos de anulación)»*, y recomendaba partirla. Al aplicar el checklist se razonó lo contrario, y el razonamiento era malo. **Aplicar un checklist sin buscar si alguien ya lo aplicó es rehacer el juicio con menos datos**, y aquí habría sellado en CUMPLE una regla que un análisis anterior ya había reprobado.
-
-Partirla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), con el repaso del capítulo.
-
-La fila **12** es N/A: la regla enumera qué guardar, y una lista de campos no se puede malinterpretar.
+**Partida el 2026-08-18.** Su propio título decía dos cosas —*«los tres estados **y** la trazabilidad de quien anula»*— y se cumplen por separado: **se pueden tener los tres estados y anular sin guardar quién ni por qué**. Lo segundo es ahora [`IM6`](#im6--anular-deja-escrito-quién-cuándo-y-por-qué). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -76,7 +73,7 @@ La fila **12** es N/A: la regla enumera qué guardar, y una lista de campos no s
 3. En **transacción**: revierte todos los efectos (movimientos, saldos, derivados) y marca anulado con su trazabilidad.
 4. Avisa a los demás módulos (evento) para invalidar cachés/agregados.
 
-Si algo de la reversión falla, se revierte entera: sin estados a medias ([`05·E2`](05-errores-y-logging.md#e2--falla-controlado-no-rodees-el-problema)).
+Si algo de la reversión falla, se revierte entera: sin estados a medias ([`05·E2`](05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)).
 
 ---
 
@@ -166,3 +163,34 @@ La cita a [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)
 ---
 
 Ver: `03` D1 (auditoría, soft delete), `05` E2 (transacción), `04` S1 (permiso/scope), `12` PR5 (anonimizar en vez de borrar).
+
+## IM6 · Anular deja escrito quién, cuándo y por qué
+
+La anulación guarda **quién la hizo, cuándo, y el motivo** — un motivo con sustancia, no una palabra. Sin eso la fila conservada dice que algo se revirtió y no dice nada más (extiende [`15·IM2`](#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable)).
+
+```
+INCORRECTO: motivo: «error»
+CORRECTO:   motivo: «se emitió al cliente equivocado; se rehace con el 4021»
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`IM2`](#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `IM2` dice **qué estados hay**; esta dice **qué queda escrito al pasar al último**. Se incumple sola, y es la que más se incumple: conservar la fila es fácil, escribir un motivo con sustancia no.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

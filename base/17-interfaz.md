@@ -79,19 +79,25 @@ Cumplía en el análisis del 2026-08-07 y se volvió a contar: 186 de 320.
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 1 ❌ · 4 N/A.**
+**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
+
+**Mirada el 2026-08-18 para partirla, y se decidió que no.** Sus cuatro puntos —etiqueta, contraste, teclado, color— parecen cuatro exigencias, pero **son la definición de una sola**: qué es el mínimo. Partirlas daría cuatro reglas que nadie citaría por separado, y dejaría sin dueño la pregunta que importa —*«¿cuál es el mínimo?»*—, que es justo lo que esta contesta.
+
+**La prueba de la fila 9 es si se cumplen por separado.** Acá no: una interfaz con etiquetas y sin contraste no cumple «la accesibilidad mínima» a medias — **no la cumple**. Es una lista cerrada, como la escala de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito), no una acumulación de exigencias.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Fila 9 · son cuatro exigencias, y se cumplen por separado.** Etiquetas asociadas, contraste, navegación por teclado y no transmitir información solo por color: una interfaz puede tener las etiquetas impecables y el contraste ilegible. El análisis del 2026-08-07 ya lo decía.
 
@@ -198,7 +204,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 - **Fila 8 · el título manda.** Se llamaba «Adaptable»: **una sola palabra**, que ni ordena ni enuncia nada. Pasa a *Funciona en los tamaños de pantalla que el proyecto soporta*, que es lo que la regla pide y se entiende leyéndolo en un índice.
 - **Fila 12 · ejemplo.** No tenía. El que se agregó es el caso concreto que la regla ya nombraba sin mostrar: la tabla ancha que saca una barra de desplazamiento a la página entera.
 
-Es el tercer título de una palabra o de tema que se corrige hoy, después de [`15·IM2`](15-registros-inmutables.md#im2--guarda-los-tres-estados-y-la-trazabilidad-de-quien-anula) y [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después). **Los tres estaban en capítulos que nadie había vuelto a mirar desde julio.**
+Es el tercer título de una palabra o de tema que se corrige hoy, después de [`15·IM2`](15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable) y [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después). **Los tres estaban en capítulos que nadie había vuelto a mirar desde julio.**
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

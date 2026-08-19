@@ -154,39 +154,126 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## S5 · CSRF, sesiones y transporte
+## S5 · La acción que cambia estado desde el navegador lleva su token
 
-- **CSRF:** token anti-falsificación en acciones que cambian estado por navegador; no lo desactives por comodidad.
-- **Sesiones:** cookies `HttpOnly` y `Secure`; invalidar al cerrar sesión; expiración razonable.
-- **Transporte:** datos sensibles siempre por HTTPS.
-- **Contraseñas:** hashing fuerte con salt, nunca en texto plano.
+Toda petición que cambia algo y llega desde un navegador va con un **token contra la falsificación de peticiones**, y ese token no se desactiva por comodidad ni «solo en desarrollo».
+
+```
+INCORRECTO: se apaga la comprobación del token porque estorba al probar el formulario
+CORRECTO:   la prueba obtiene el token como lo haría el navegador
+```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ❌ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Tres filas, y el análisis del 2026-08-07 ya la tenía en rojo.**
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 8 · el título junta cuatro temas con comas y una «y»:** CSRF, sesiones, transporte. Y adentro hay una cuarta que el título ni nombra — el hashing de contraseñas.
-- **Fila 9 · son cuatro exigencias** y se cumplen por separado con toda facilidad: un sistema puede tener el token anti-falsificación puesto y las contraseñas en texto plano.
-- **Fila 12 · sin ejemplo.**
-
-**No se le agregó el ejemplo, y es a propósito:** con cuatro exigencias adentro, cualquier ejemplo cubre una y deja tres sin ilustrar. El ejemplo llega cuando se sepa con qué se queda cada regla. Partirla en cuatro va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se quedó con el identificador viejo** porque es la mitad más citada: quien cita `04·S5` hoy casi siempre habla del token.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## S13 · La sesión se cierra de verdad y no viaja al alcance de nadie
+
+La sesión se **invalida al cerrarla** —no basta con borrarla del lado del navegador—, tiene vencimiento, y su identificador viaja de forma que ni un guion de la página ni la red puedan leerlo.
+
+```
+INCORRECTO: cerrar sesión borra la cookie en el navegador y el identificador
+            sigue valiendo en el servidor
+CORRECTO:   cerrar sesión la invalida en el servidor; la cookie ya no sirve
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## S14 · El dato sensible no viaja en claro
+
+Todo dato sensible se transmite **cifrado de extremo a extremo del trayecto**, sin excepción por entorno: la red interna no cuenta como segura.
+
+```
+INCORRECTO: «esto va por la red interna, no hace falta cifrarlo»
+CORRECTO:   se cifra igual, porque la red interna también se escucha
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## S15 · La contraseña se guarda irreversible y con sal
+
+La contraseña se guarda con una función **pensada para ser lenta**, con sal por usuario, y nunca de forma que pueda deshacerse. Cifrarla no alcanza: lo que se cifra se descifra.
+
+```
+INCORRECTO: la contraseña se guarda cifrada, «que total está protegida»
+CORRECTO:   se guarda su huella irreversible, con sal, y nadie la puede leer
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Es la que menos se parecía a las otras tres.** `S5` la traía como cuarta viñeta —«hashing fuerte con salt»— entre cosas de transporte y sesión, y por eso [`12·PR3`](12-privacidad-datos.md#pr3--protégelos-en-reposo-y-en-tránsito) la citaba junto con el cifrado en tránsito, mezclando dos cosas distintas: **lo que se cifra se descifra; una contraseña no debe poder leerse nunca**.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 ## S6 · Archivos sensibles: privado + acceso controlado
 
 Todo archivo no público (financiero, jurídico, personal):

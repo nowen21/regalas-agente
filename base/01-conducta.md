@@ -601,7 +601,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 - **Fila 10 · no cabe:** 1070 caracteres.
 - **Fila 11 · texto prestado**, y lo admite ella misma: su `Encadenamiento` dice que duplica [`C2`](#c2--no-inventes-verifica).
-- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Lo que corresponde es declarar `(extiende 01·C2)`.
+- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Lo que corresponde es declarar `(extiende C2)`.
 
 **Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo**, y sigue igual: el aviso estaba dentro de la propia regla. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
@@ -657,7 +657,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 - **Fila 12 · sin ejemplo.**
 - **Fila 10 · no cabe:** 1796 caracteres.
 
-**La mitad que hay que sacar ya se usa como si fuera regla propia:** *qué cuenta como aprobación* la citan [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F9`](02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md) y [`02·F4.4`](02-flujo-de-trabajo/reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md). **Es el mismo caso de [`05·E2`](05-errores-y-logging.md#e2--falla-controlado-no-rodees-el-problema)**, y el mismo cuidado: al partirla hay que llevar esas citas a la mitad nueva.
+**La mitad que hay que sacar ya se usa como si fuera regla propia:** *qué cuenta como aprobación* la citan [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md), [`02·F9`](02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md) y [`02·F4.4`](02-flujo-de-trabajo/reglas/F4.4-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md). **Es el mismo caso de [`05·E2`](05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano)**, y el mismo cuidado: al partirla hay que llevar esas citas a la mitad nueva.
 
 Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 

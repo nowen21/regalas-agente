@@ -41,41 +41,66 @@ Está clasificada y con validador escrito —`errores.py`—, así que la fila *
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## E2 · Falla controlado, no rodees el problema
+## E2 · Valida al entrar y aborta temprano
 
-- Valida precondiciones al inicio y **aborta temprano** con mensaje claro, en vez de fallar a mitad con estado inconsistente.
-- Operaciones que dejan varios registros consistentes van en **transacción**: todo o nada.
+Las precondiciones se comprueban **al principio**, y si algo falta se aborta ahí con un mensaje que diga qué falta. Fallar a mitad deja el estado a medias, y arreglarlo cuesta más que no haber empezado.
 
-> La variante destructiva ("no `--no-verify`, no borrar el test") está en [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada).
+> La variante destructiva —no saltarse el enganche, no borrar la prueba— está en [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada).
 
 ```
-INCORRECTO: creo el padre, falla el hijo, y dejo el padre huérfano
-CORRECTO:   ambos en transacción → si falla el hijo, se revierte el padre
+INCORRECTO: se recorre la lista, se procesan cuatro y al quinto falta un dato
+CORRECTO:   se comprueba que los cinco tengan el dato y, si no, no se procesa ninguno
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 9 · una sola exigencia.** Son dos, y se cumplen por separado: *(a)* validar precondiciones al inicio y abortar temprano, *(b)* que lo que deja varios registros consistentes vaya en transacción. Un código puede validar impecable al entrar y dejar un padre huérfano igual.
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: validar al entrar, y envolver en transacción lo que toca varios registros. **Se puede validar todo al principio y aun así dejar tres registros escritos y el cuarto no.** La segunda es ahora [`E6`](#e6--lo-que-toca-varios-registros-va-en-transacción). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-**El análisis del 2026-08-07 ya lo decía, y decía además a dónde va la mitad que sobra:** *«partir la transacción a `E6`»*, porque **la citan desde fuera** — [`15·IM3`](15-registros-inmutables.md#im3--anular-revierte-el-efecto-en-transacción) apunta acá para la reversión en transacción, y el capítulo `13` también. Esa mitad ya se usa como si fuera regla propia; lo único que le falta es serlo.
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-Partirla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). **Ojo al hacerlo:** las citas de fuera apuntan a `E2` y hay que llevarlas a `E6`, o quedan señalando la mitad equivocada.
+## E6 · Lo que toca varios registros va en transacción
 
-El ejemplo que tiene es el de la transacción, no el de abortar temprano — otra señal de que son dos.
+La operación que deja **varios registros consistentes entre sí** se hace en una transacción: todo o nada. Si falla a la mitad, no queda la mitad (extiende [`05·E2`](#e2--valida-al-entrar-y-aborta-temprano)).
+
+```
+INCORRECTO: se descuenta del inventario y falla al escribir el movimiento
+            → el inventario quedó mal y nadie lo sabe
+CORRECTO:   las dos escrituras van juntas; si una falla, ninguna queda
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`E2`](#e2--valida-al-entrar-y-aborta-temprano).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `E2` evita **empezar** algo que no se puede terminar; esta evita **dejarlo a medias** cuando ya empezó. La citan por separado: [`15·IM3`](15-registros-inmutables.md#im3--anular-revierte-el-efecto-en-transacción) remite aquí para exigir que la reversión sea atómica.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

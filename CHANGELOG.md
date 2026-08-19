@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.21.0 — 2026-08-18
+
+**MAYOR** (nacen cinco reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
+
+**Seguimos separando reglas que decían varias cosas a la vez.** Una pedía cuatro cosas distintas sobre la seguridad de las sesiones; otra pedía validar antes de empezar *y además* no dejar el trabajo a la mitad; otra pedía llevar tres estados *y además* anotar quién anuló y por qué.
+
+Cuando una regla pide dos cosas, se cumple la primera y la segunda se cae sin que nada lo note. Ahora cada una se puede señalar por separado.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`04·S5`](base/04-seguridad.md) —cuyo título *«CSRF, sesiones y transporte»* **ya las enumeraba**— se parte en cuatro: se queda con el token, y nacen `S13` (la sesión se cierra de verdad), `S14` (el dato sensible no viaja en claro) y `S15` (la contraseña se guarda irreversible y con sal). [`05·E2`](base/05-errores-y-logging.md) se parte y nace `E6` —lo que toca varios registros va en transacción—, y [`15·IM2`](base/15-registros-inmutables.md) se parte y nace `IM6` —anular deja escrito quién, cuándo y por qué—.
+
+**`17·I3` se miró para partirla y se decidió que no**, y conviene saber por qué: sus cuatro puntos —etiqueta, contraste, teclado, color— **no son cuatro exigencias, son la definición de una**. Una interfaz con etiquetas y sin contraste no cumple «la accesibilidad mínima» a medias: no la cumple. **La prueba es si se cumplen por separado**, y acá no.
+
+**Y [`02·F12`](base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) no se toca:** es texto literal del usuario y su propio sello ya decía que se queda reprobada hasta que él decida la vía.
+
+Las reglas publicadas en «no cumple» bajan de 49 a **45**.
+
 ## 23.20.0 — 2026-08-18
 
 **MAYOR** (nacen dos reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
