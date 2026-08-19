@@ -382,13 +382,13 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | 09 | Registro de búsquedas de memoria | ✅ `memoria/senales.db` · `recuerdos.py` |
 | 11 | Hallazgos por regla | ✅ `metricas/` |
 | 13 | Actualizador de componentes | ✅ `instalar.py` · `versiones.py` |
-| 10 | Marca de fase reabierta | ☐ |
+| **10** | **Marca de fase reabierta** | ✅ **construido hoy** — `validar.py reaperturas` |
 | 12 | Andamiaje de fase y HU | ☐ |
 | **14** | **Generador de índices** | ✅ **construido hoy** — `validar.py indices` |
 | 15 | Respaldo antes de lo irreversible | ☐ — la **regla** sí: [`00·N7`](../base/00-nucleo-blindado.md), escrita hoy |
 | 16 | Contradicciones en la memoria | ☐ |
 
-**Quedan cuatro**: 10, 12, 15 y 16.
+**Quedan tres**: 12, 15 y 16.
 
 ## 08 · el enganche de publicar, construido
 
@@ -433,3 +433,22 @@ El pendiente proponía reescribir el bloque entre dos marcas. **Al mirarlo de ce
 ### Lo comprobó otro validador de hoy
 
 Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](15-el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
+
+
+## 10 · la marca de fase reabierta, construida
+
+**`validar.py reaperturas`.** Sobre este repositorio encuentra **dos**, y son las dos de verdad: [`A-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/estado-fase.md) —el enganche del resumen que no creaba el resumen— y [`A-EP-007-HU-006`](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/estado-fase.md), reabierta hoy.
+
+### Se deriva de la historia, no de las palabras
+
+**Las reaperturas se escriben en prosa y cada una con las suyas** — «reabierta», «se reabrió», «vuelta a cerrar». Buscar la palabra encuentra unas, se pierde otras, y cuenta las que solo **hablan** de reabrir: **cinco archivos la mencionan y solo dos fases se reabrieron**. El texto habría dado más del doble.
+
+**Lo que no se puede escribir de dos formas es una casilla que estaba marcada y dejó de estarlo.** Una reapertura es que una estación de cierre —7 pruebas, 8 cierre documental, 9 commit— pase de ☑ a ☐ en un guardado posterior.
+
+**Y la distinción que evita el falso positivo:** volver atrás **antes** de haber cerrado no es reabrir, es corregir. Hay un caso que lo fija.
+
+### Nunca es una falla, y eso importa
+
+**Reabrir una fase es lo correcto** cuando lo que falla es ese trabajo y su documentación decía que estaba hecho — así se hizo con las dos que encuentra. Lo que se mide **no es un incumplimiento**: es de dónde sale el retrabajo, que es información para cambiar reglas, no para calificar a nadie.
+
+**11 casos** en [`validadores/tests/test_la_fase_reabierta_se_distingue.py`](../validadores/tests/test_la_fase_reabierta_se_distingue.py).

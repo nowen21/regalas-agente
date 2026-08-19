@@ -45,6 +45,7 @@ import migraciones      # noqa: E402
 import numeracion       # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
+import reaperturas      # noqa: E402
 import rendimiento      # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
@@ -222,6 +223,17 @@ def cmd_indices(a):
         for archivo, cuantas in tocados:
             print(f"  {relativo(archivo)}: {cuantas} línea(s) ({marca})")
     return reportar(indices.validar(raiz), None)
+
+
+def cmd_reaperturas(a):
+    """`09·10` · Qué fases se reabrieron. **Mide retrabajo, no culpa.**"""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(reaperturas.validar(raiz),
+                      f"Fases reabiertas · {relativo(raiz)}")
+    linea = reaperturas.linea_resumen(raiz)
+    if linea:
+        print(linea)
+    return codigo
 
 
 def cmd_marcas(a):
@@ -443,6 +455,11 @@ def main():
     mr.add_argument("--catalogo",
                     help="carpeta de un proyecto, para comprobar además su catálogo · M16")
     mr.set_defaults(func=cmd_metareglas)
+
+    re_ = sub.add_parser("reaperturas",
+                         help="qué fases volvieron atrás desde su cierre · retrabajo")
+    re_.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    re_.set_defaults(func=cmd_reaperturas)
 
     ix = sub.add_parser("indices",
                         help="escribe la línea del índice que falta · 13·DOC13")

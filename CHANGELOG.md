@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.7.0 — 2026-08-18
+
+**MENOR** (se puede medir algo que antes no se medía; nada que cumplir).
+
+**Un trabajo que hubo que rehacer y uno que salió bien a la primera se veían igual.** Ahora se distinguen, y con eso se puede saber qué parte del proceso obliga a volver atrás — que es información para cambiar reglas, no para calificar a nadie.
+
+Sobre este repositorio encuentra dos, y son las dos de verdad.
+
+**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 10. Nace [`validadores/reaperturas.py`](validadores/reaperturas.py) y el subcomando `validar.py reaperturas`.
+
+**Se deriva de la historia del archivo, no de sus palabras**, y ahí está lo que lo hace fiable: volver a empezar se escribe en prosa y cada quien con las suyas, así que buscar el texto encuentra unas, se pierde otras y cuenta las que solo *hablan* del tema — **cinco archivos lo mencionan y solo dos trabajos se rehicieron**. Lo que no se puede escribir de dos formas es una casilla que estaba marcada y dejó de estarlo.
+
+**Y nunca es una falla.** Volver atrás **es lo correcto** cuando lo que falla es ese trabajo y su documentación decía que estaba hecho: así pasó con los dos que encuentra.
+
 ## 24.6.0 — 2026-08-18
 
 **MENOR** (una herramienta más que escribe lo que antes había que acordarse de escribir).
