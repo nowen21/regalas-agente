@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.5.0 — 2026-08-18
+
+**MENOR** (la instalación deja una revisión automática más; nada que hacer en tu proyecto).
+
+**Antes de publicar, ahora corre sola la revisión que hasta hoy dependía de que alguien se acordara.** Enlaces rotos, índices viejos, cosas sin versionar: si algo de eso está mal, el envío se detiene.
+
+Corre al publicar y no en cada guardado, a propósito: en cada guardado costaría minutos y a la semana alguien la apagaría. **Y publicar es lo que no se deshace** — lo guardado se revierte, lo publicado ya lo tiene otro.
+
+**El detalle.** Del [pendiente 09](pendientes/09-autonomia-sin-ia.md), su ítem 08. Nace el enganche `pre-push` en [`instalar.py`](validadores/instalar.py), y hoy se notó la falta: se publicaron dieciséis commits seguidos sin que corriera nada solo.
+
+**Lo que detiene y lo que solo informa está separado, y es la distinción que decide si el enganche sobrevive.** La primera versión metía en el bucle que detiene la revisión del cuerpo de reglas contra su propio molde, y **rechazó el envío con cero fallas**: hay reglas con deuda conocida. Un estándar endeudado consigo mismo no puede impedir publicar cualquier otra cosa — así se termina saltando el enganche para todo, que es apagarlo sin decirlo.
+
+**Y de paso se midió el resto del pendiente: diez de sus dieciséis automatizaciones ya estaban construidas.** Quedan cinco, las de complejidad media o alta.
+
 ## 24.4.0 — 2026-08-18
 
 **MENOR** (un capítulo nuevo que arranca apagado; ningún proyecto tiene que hacer nada).

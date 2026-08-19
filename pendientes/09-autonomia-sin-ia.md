@@ -361,3 +361,54 @@ Tres cosas que parecen automatizables y no lo son. Vale dejarlas escritas para n
 - **Evaluar si una spec está bien escrita.** Se puede comprobar que esté **completa** contra su plantilla; que esté **bien** es criterio, y ninguna cantidad de reglas lo reemplaza.
 
 La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
+
+
+---
+
+# Medido el 2026-08-18: diez de las dieciséis ya estaban
+
+**Se buscó cada una en el repositorio antes de construir nada**, como con el [01](hecho/validadores-de-codigo-de-proyecto.md). El resultado es el mismo: el backlog contaba como trabajo por hacer lo que ya estaba hecho.
+
+| # | Qué es | Qué hay |
+|---|---|---|
+| 01 | Guardián de versión y CHANGELOG | ✅ `versionado.py` · `numeracion.py` · el enganche de `pre-commit` |
+| 02 | Barrido de secretos en el histórico | ✅ [`enmascarar.py`](../validadores/enmascarar.py) |
+| 03 | Sello de puerta por CLI | ✅ `validar.py fases` |
+| 04 | Manifiesto de convenciones | ✅ [`declaracion.py`](../validadores/declaracion.py) |
+| 05 | Validador de forma de regla | ✅ [`metareglas.py`](../validadores/metareglas.py) |
+| 06 | Gate `F2` mecánico | ✅ [`flujo.py`](../validadores/flujo.py) |
+| 07 | Validador del mapa del sitio | ✅ [`amarre.py`](../validadores/amarre.py) |
+| **08** | **Enganche `pre-push` con la batería** | ✅ **construido hoy** — ver abajo |
+| 09 | Registro de búsquedas de memoria | ✅ `memoria/senales.db` · `recuerdos.py` |
+| 11 | Hallazgos por regla | ✅ `metricas/` |
+| 13 | Actualizador de componentes | ✅ `instalar.py` · `versiones.py` |
+| 10 | Marca de fase reabierta | ☐ |
+| 12 | Andamiaje de fase y HU | ☐ |
+| 14 | Generador de índices | ☐ |
+| 15 | Respaldo antes de lo irreversible | ☐ — la **regla** sí: [`00·N7`](../base/00-nucleo-blindado.md), escrita hoy |
+| 16 | Contradicciones en la memoria | ☐ |
+
+**Quedan cinco**, y son las cinco de complejidad media o alta que el orden sugerido dejaba para el final.
+
+## 08 · el enganche de publicar, construido
+
+**Publicar es lo que no se deshace.** Un commit se revierte; lo publicado ya lo tiene otro ([`00·N2`](../base/00-nucleo-blindado.md)). Por eso la batería va acá y no en cada commit: ahí sería insoportable —minutos por vez— y a la semana alguien la apaga.
+
+**Y hoy se notó la falta:** se publicaron dieciséis commits seguidos sin que corriera nada solo. Corría porque el agente se acordaba, que es exactamente lo que este pendiente dice que no cuenta como cumplir.
+
+### Lo que detiene y lo que no
+
+| | |
+|---|---|
+| **Detiene** | `estandar` y `versionado` — enlaces rotos, índices viejos, algo sin versionar. Salen del trabajo de hoy |
+| **Informa** | `metareglas` — el cuerpo de reglas contra su molde |
+
+**Es la distinción que decide si el enganche sobrevive.** Al construirlo, la primera versión metía `metareglas` en el bucle que detiene, y **rechazó el push con cero fallas**: hay reglas publicadas que no pasan su checklist, deuda conocida del [19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+> **Un estándar endeudado consigo mismo no puede impedir publicar cualquier otra cosa.** Eso convierte el enganche en un obstáculo permanente, y así se termina en `--no-verify` para todo — que es apagarlo sin decirlo.
+
+**Tampoco corre lo que necesita un proyecto real** —linter, suite, audit—: fallaría en cualquier repositorio que no los tenga instalados, y un enganche que falla siempre se salta.
+
+**Y dice cómo saltarlo a propósito.** Un enganche sin salida se salta a escondidas; decir cómo hacerlo es lo que convierte saltarlo en una decisión.
+
+**7 casos** en [`validadores/tests/test_el_enganche_de_publicar.py`](../validadores/tests/test_el_enganche_de_publicar.py).

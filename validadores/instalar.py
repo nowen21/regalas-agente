@@ -98,11 +98,46 @@ PLANTILLA_PRE_COMMIT = _PREAMBULO + """
 }}
 """
 
+# `09·08` · **Publicar es lo que no se deshace.** Un commit se revierte; lo
+# publicado ya lo tiene otro ([`00·N2`](../base/00-nucleo-blindado.md)). Por eso
+# la batería completa corre aquí y no en cada commit: en cada commit sería
+# insoportable —minutos por vez— y a la semana alguien apaga el enganche.
+#
+# **Solo la parte que se comprueba en seco.** Lo que necesita un proyecto real
+# —linter, suite, audit— no corre acá: fallaría en cualquier repositorio que no
+# lo tenga instalado, y un enganche que falla siempre se termina saltando.
+PLANTILLA_PRE_PUSH = _PREAMBULO + """
+echo "pre-push: corriendo la batería antes de publicar…"
+
+# Lo que **detiene**: enlaces rotos, índices desactualizados, y que lo que se
+# publica esté versionado. Son defectos nuevos, y salen del trabajo de hoy.
+FALLO=0
+for SUB in estandar versionado; do
+    "$PY" "$ESTANDAR/validadores/validar.py" "$SUB" --raiz "$(pwd)" || FALLO=1
+done
+
+# Lo que **informa y no detiene**: el cuerpo de reglas contra su propio molde.
+# Un estándar con deuda conocida —reglas publicadas que no pasan su checklist—
+# no puede impedir publicar cualquier otra cosa: eso convierte el enganche en
+# un obstáculo permanente, y a la semana alguien lo apaga con --no-verify.
+# **Se ve, y no bloquea**, hasta que la deuda se cierre.
+"$PY" "$ESTANDAR/validadores/validar.py" metareglas --raiz "$(pwd)" ||     echo "pre-push: hay reglas que no pasan su propio checklist (no detiene)."
+
+if [ "$FALLO" -ne 0 ]; then
+    echo "" >&2
+    echo "Push rechazado: la batería encontró fallas." >&2
+    echo "Corrígelas, o salta el enganche a propósito con --no-verify." >&2
+    exit 1
+fi
+"""
+
 HOOKS = [
     ("commit-msg", PLANTILLA_COMMIT_MSG,
      "Revisa el mensaje del commit antes de aceptarlo (09-git.md · G2, G8)."),
     ("pre-commit", PLANTILLA_PRE_COMMIT,
      "Revisa que no entren secretos ni artefactos (09-git.md · G3)."),
+    ("pre-push", PLANTILLA_PRE_PUSH,
+     "Corre la batería antes de publicar (09-git.md · G6 · 00-nucleo-blindado.md · N2)."),
 ]
 
 
