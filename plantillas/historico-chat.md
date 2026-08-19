@@ -20,6 +20,7 @@ La hora sale del reloj de la máquina en ese instante — no de la memoria del a
 ## Cómo está armado cada archivo
 
 - La primera línea lleva `<!-- sesion: <id> -->`. La sesión se busca por esa marca, **no por el nombre**: el archivo se puede renombrar para ponerle el tema real sin que la sesión se parta en dos.
+- **La sesión que cruza la medianoche se queda entera, con la fecha del día en que empezó.** No se parte: el archivo es de una conversación, no de un día, y la marca de sesión es una sola. Cada turno lleva su hora real, así que lo que pasó después de las doce se sabe leyendo, no por el nombre del archivo. **El resumen sí va al día en que pasaron las cosas** — son dos documentos con dos criterios, y es a propósito.
 - Los mensajes entran antes de `## Abierto`, que cierra el archivo.
 - Cada respuesta lleva `<!-- agente: <uuid> -->`, que evita que se duplique si el enganche vuelve a correr.
 - No se guarda el razonamiento interno del agente ni la salida cruda de las herramientas: esto es la conversación, no la máquina por dentro.

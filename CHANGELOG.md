@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.13.2 — 2026-08-18
+
+**PARCHE** (se escribe una decisión que ya estaba tomada; nada cambia de comportamiento).
+
+**Una conversación que sigue pasada la medianoche queda guardada con la fecha del día en que empezó, y nadie había escrito si eso está bien.** Está bien, y ahora se dice: el archivo es de una conversación, no de un día.
+
+Partirla en dos rompería la forma de encontrarla, así que no se parte. Cada mensaje lleva su hora real, de modo que lo que pasó después de las doce se sabe leyendo. El resumen sí se guarda en el día en que pasaron las cosas, y esa diferencia es a propósito.
+
+**El detalle.** Es el punto 3 del [pendiente 33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), preguntado el 2026-08-06 y sin contestar desde entonces. **La decisión ya la tomaba la máquina:** `hook_historico.py` busca la sesión por su marca `<!-- sesion: id -->`, nunca por fecha, así que partirla dejaría media conversación sin marca y la siguiente sesión no la encontraría. Faltaba escribirlo, y quedó en [`plantillas/historico-chat.md`](plantillas/historico-chat.md) y en el README de la carpeta. El caso real está a la vista: una sesión con 91 turnos de un día y 27 del siguiente.
+
 ## 23.13.1 — 2026-08-18
 
 **PARCHE** (una comprobación más y dos correcciones de forma; nada nuevo que cumplir).

@@ -584,6 +584,26 @@ Cerró el [pendiente 58](../../../pendientes/hecho/nada-hace-cumplir-id9.md), qu
 
 ---
 
+### H-47 · Dos preguntas del 33 llevaban once días abiertas y la máquina ya las tenía contestadas
+
+**El punto 3 · la sesión que cruza la medianoche.** Preguntaba si se parte o se queda entera, y decía que ni el README ni la plantilla lo dicen. **La decisión ya la tomaba `hook_historico.py`:** busca la sesión por su marca `<!-- sesion: id -->`, **nunca por fecha**. Partirla dejaría media conversación sin marca, y la siguiente sesión no la encontraría.
+
+**No había que decidir: había que escribirlo.** Quedó en la plantilla y en el README, con el caso a la vista — [`2026-08-06-la-anatomia-de-la-regla.md`](../../2026-08-06-la-anatomia-de-la-regla.md) tiene **91 turnos del 06 y 27 del 07**.
+
+**Y el punto 8 · la comprobación de `M1`.** El detalle que la hacía usable —anclar al encabezado, porque `BLINDADA` aparece en prosa en seis archivos— estaba escrito en el resumen del 2026-08-07 y no hubo que redescubrirlo.
+
+> **Es la tercera vez hoy.** Con `02·F19`, con `reglas-validables.md` sobre `ID9`, y ahora con estos dos. `01·C23` —buscar antes de preguntar— sigue siendo la regla que más rinde de todo el repositorio.
+
+### H-48 · Dos pendientes distintos están atascados en el mismo sitio
+
+El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [pendiente 16](../../../pendientes/16-primero-que-el-proceso-sirva-despues-se-automatiza.md) —que una regla no se automatiza hasta saber que sirve— **piden los dos una meta-regla nueva**, y los dos se atascan en lo mismo: la fase `A` de `EP-001·HU-007` es retrodocumentación y excluye escribir reglas nuevas.
+
+**Hace falta una fase `B`, y conviene que las dos vayan en la misma.**
+
+**Y escribir solo la plantilla no sirve**, que era la salida fácil: el propio punto 2 dice que sin disparador el barrido *«es un favor, no una norma»*. Una plantilla sin regla que la exija reproduce el defecto que describe.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:

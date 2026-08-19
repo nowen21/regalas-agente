@@ -7,6 +7,7 @@ No es parte del estándar (`base/`, `plantillas/`, `skills/`); es bitácora, igu
 ## Cómo se escribe
 
 - Un archivo por sesión: `AAAA-MM-DD-tema.md` (si hay dos sesiones el mismo día, `AAAA-MM-DD-tema-2.md`).
+- **La que cruza la medianoche se queda entera**, con la fecha del día en que empezó. El archivo es de una conversación, no de un día, y el enganche la busca por su marca de sesión — partirla dejaría media conversación sin marca y la siguiente sesión no la encontraría. Ya pasó: [2026-08-06-la-anatomia-de-la-regla.md](2026-08-06-la-anatomia-de-la-regla.md) tiene 91 turnos del 06 y **27 del 07**, y cada uno lleva su hora real. El resumen sí va al día en que pasaron las cosas.
 - **El nombre se pone en la sesión, no al final.** El enganche crea `AAAA-MM-DD-sesion.md` porque al abrir el chat todavía no se sabe el tema; apenas hay una respuesta, le recuerda al agente que proponga nombre y resumen —una sola vez— y el usuario aprueba. El cambio lo hace el comando, que mueve el archivo, cambia el título y corrige la línea del índice a la vez:
 
   ```sh
