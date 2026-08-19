@@ -46,3 +46,28 @@ Soportar hoy un segundo agente. Eso es trabajo grande y sin nadie que lo pida, y
 ## Prioridad
 
 Baja mientras la herramienta no cambie, y ese es el punto: cuando cambie, ya será tarde para averiguarlo. El mapa del punto 1 es de una tarde y deja el resto decidible.
+
+
+---
+
+# Estado — 2026-08-18: el punto 1 hecho, con su comprobación
+
+**Sigue abierto**, y lo que falta son los puntos 2 y 3.
+
+| Punto | Estado |
+|---|---|
+| **1 · El mapa** | ✅ **Hecho** — [`anatomia/que-esta-amarrado-a-la-herramienta.md`](../anatomia/que-esta-amarrado-a-la-herramienta.md), y **no envejece en silencio**: `validar.py amarre` lo comprueba |
+| **2 · El adaptador en un solo sitio** | ☐ abierto |
+| **3 · El contrato** | ☐ abierto |
+
+**54 piezas: 18 amarradas, 36 libres.** El adaptador de verdad son los ocho `hook_*` más `instalar.py`, que los enchufa.
+
+## Por qué los puntos 2 y 3 no se hicieron
+
+**No los cubre ningún criterio de [EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md)**, que son: toda pieza tiene su columna, cada amarrada dice qué se pierde, y el mapa se queda viejo y se nota. Los tres hablan **del mapa**, no de mover código ni de escribir un contrato.
+
+Por [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) el criterio **es** la especificación, así que hacen falta criterios nuevos o una historia propia — **la misma situación del [16](16-primero-que-el-proceso-sirva-despues-se-automatiza.md) y del punto 2 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md)**, y es decisión del usuario.
+
+## Lo que el mapa destapó y no estaba en el pendiente
+
+**`base/` nombra la herramienta 26 veces**, catorce solo en `01-conducta.md`, y `base/` es lo que se hereda y lo que `20·M3` declara agnóstico. Casi todas son `CLAUDE.md` —un nombre de archivo—, así que el amarre es superficial; pero **`M3` se incumple diez veces y nadie lo reporta**, porque el validador de tecnología busca lenguajes y frameworks, no herramientas de agente.

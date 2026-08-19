@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import acciones         # noqa: E402
 import aislamiento      # noqa: E402
+import amarre           # noqa: E402
 import brevedad         # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
@@ -167,6 +168,17 @@ def cmd_acciones(a):
     codigo = reportar(acciones.validar(raiz),
                       f"Acciones del agente y su riesgo · {relativo(raiz)}")
     linea = acciones.linea_resumen(raiz)
+    if linea:
+        print(linea)
+    return codigo
+
+
+def cmd_amarre(a):
+    """`15` · Qué se queda y qué hay que rehacer si mañana el agente es otro."""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(amarre.validar(raiz),
+                      f"El mapa del amarre a la herramienta · {relativo(raiz)}")
+    linea = amarre.linea_resumen(raiz)
     if linea:
         print(linea)
     return codigo
@@ -393,6 +405,11 @@ def main():
                         help="el inventario de acciones del agente y su riesgo · 00·N1")
     ac.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     ac.set_defaults(func=cmd_acciones)
+
+    am = sub.add_parser("amarre",
+                        help="qué piezas están atadas a la herramienta · el mapa no envejece")
+    am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    am.set_defaults(func=cmd_amarre)
 
     br = sub.add_parser("brevedad",
                         help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")

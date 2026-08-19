@@ -678,6 +678,34 @@ Y el que más enseña es el tercero.
 
 ---
 
+### H-54 · «Un total no es una clasificación»: el mapa del amarre ya tenía el hueco
+
+Cerró la fase `A-EP-005-HU-011`, del punto 1 del [pendiente 15](../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md), y ahora `validar.py amarre` comprueba que el mapa no envejezca.
+
+**Lo que destapó no era lo que el criterio decía.** `CA-03` pide que una pieza **nueva** sin clasificar se reporte. Al construirlo apareció que el hueco ya existía **sin pieza nueva**: el mapa nombraba las 18 amarradas una por una y las libres **solo por su total**.
+
+> **Veintiocho piezas no estaban nombradas en ningún lado.** Entraban en un número y nadie las había mirado. **Un total no es una clasificación: es la promesa de que alguien clasificó.**
+
+Ahora las 36 van por su nombre.
+
+**Y se agregó un lado que la historia no pedía:** la pieza que el mapa **nombra y ya no existe**. Un mapa que promete clasificar algo borrado miente igual que uno incompleto.
+
+### H-55 · «Una comprobación que pasa sin comprobar» apareció cinco veces hoy
+
+Es la forma de defecto más cara del repositorio, **porque figura como cubierta**:
+
+| Dónde | Qué pasaba |
+|---|---|
+| `avisar()` | escrita, probada con 12 casos, y **nunca llamada** por `main()` |
+| `CP-005` del instalador | *«reinstalar sin novedad no agrega registro»* — **con un solo registro**, donde no hay orden que equivocar |
+| `validar.py secretos` | revisaba **el estándar** creyendo que revisaba el proyecto, y devolvía un informe |
+| El recuento de huérfanas de `acciones.py` | buscaba en el archivo entero, así que una clase borrada seguía «encontrada» |
+| `CP-004` del mapa del amarre | habría pasado con un programa **que reporta siempre** |
+
+**Los cinco tenían prueba.** Lo que faltaba en todos era el caso que comprueba **lo contrario**: que cuando no hay defecto, el programa se calle. Por eso `CP-005` de esta fase es el que decide.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:

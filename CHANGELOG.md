@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.16.0 — 2026-08-18
+
+**MENOR** (una comprobación más; nada nuevo que cumplir).
+
+**Si mañana dejaras esta herramienta por otra, nadie sabía qué se cae y qué se queda.** Ahora sí: de los 54 programas del estándar, **18 hablan con la herramienta y 36 no** — esos funcionarían igual con cualquier agente, o sin ninguno.
+
+Lo que se caería son los ocho enganches y el instalador que los enchufa. Las reglas, que son texto, se quedan enteras.
+
+**Y el mapa no envejece en silencio**, que es lo que le pasa a todo mapa escrito a mano: si aparece un programa nuevo que no está clasificado, se dice.
+
+**El detalle.** Es el punto 1 del [pendiente 15](pendientes/15-el-estandar-depende-de-una-sola-herramienta.md), construido como la fase [`A-EP-005-HU-011`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/A-EP-005-HU-011-donde-termina-el-estandar/README.md) con su plan aprobado. Nace [`validadores/amarre.py`](validadores/amarre.py) y el subcomando `validar.py amarre`, que reporta **por los dos lados**: la pieza que existe y el mapa no nombra, y la que el mapa nombra y ya no existe. El segundo lado no lo pedía la historia — se agregó porque un mapa que promete clasificar algo borrado miente igual que uno incompleto.
+
+**Lo que destapó al construirlo:** el mapa ya tenía el hueco sin necesidad de pieza nueva. Nombraba las 18 amarradas una por una y las libres **solo por su total**, así que **28 piezas no estaban nombradas en ningún lado**. Ahora van las 36 por su nombre: un total no es una clasificación, es la promesa de que alguien clasificó. 12 casos en [`test_el_mapa_del_amarre_no_envejece.py`](validadores/tests/test_el_mapa_del_amarre_no_envejece.py).
+
 ## 23.15.0 — 2026-08-18
 
 **MENOR** (una lista nueva que organiza lo que ya se exigía; ninguna regla cambia).

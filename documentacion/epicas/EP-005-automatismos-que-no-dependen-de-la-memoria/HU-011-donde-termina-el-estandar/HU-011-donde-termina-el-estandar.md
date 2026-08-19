@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Terminada |
 
 ---
 
@@ -150,6 +150,7 @@ Entonces la comprobación lo reporta
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
+| [A-EP-005-HU-011-donde-termina-el-estandar](A-EP-005-HU-011-donde-termina-el-estandar/README.md) | CA-01 a CA-03 | **Cerrada 2026-08-18 · Cumple** |
 | — | — | — | — | — | Sin empezar |
 
 **De dónde sale esta historia:** el [pendientes/15-el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md). Su punto 1 —el mapa— es esta historia; sus puntos 2 y 3 esperan al segundo caso.
