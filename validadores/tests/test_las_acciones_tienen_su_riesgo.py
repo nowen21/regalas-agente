@@ -169,8 +169,23 @@ class Limites(unittest.TestCase):
         self.assertNotIn("| **Operar en masa** |", self._texto())
 
     def _reglas_del_nucleo(self, texto):
-        """El texto de `N1` a `N6`, sin lo que haya antes del primer `## N1`."""
-        return texto[texto.index("## N1"):]
+        """**El cuerpo de `N1` a `N6`, sin sus bloques de checklist.**
+
+        La primera versión comparaba desde `## N1` hasta el final, y eso
+        arrastraba la prosa de los sellos — que cita otras reglas y cambia cuando
+        una de ellas se deroga. **Falló con la derogación de `04·S7`**, que no
+        tocó ninguna exigencia del núcleo: solo movió un ancla dentro de la
+        explicación de un sello.
+
+        Lo que el criterio protege es *«`N1` a `N6` siguen vigentes tal como
+        están»* — **sus exigencias**, no el archivo. Un sello es el registro de
+        haberlas revisado, no lo que exigen.
+        """
+        import re
+        cuerpos = []
+        for bloque in re.split(r"(?m)^## (?=N\d)", texto)[1:]:
+            cuerpos.append(bloque.split("### Checklist")[0].strip())
+        return cuerpos
 
     def test_el_nucleo_no_cambio(self):
         """`CP-009` · **la lista organiza, no reemplaza.**

@@ -214,7 +214,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 - **Fila 9 · son tres:** no incrustar ni registrar ni subir secretos; no enviar contenido del proyecto a servicios externos; y que los archivos no públicos no queden en ubicación pública. Se cumplen por separado sin ninguna dificultad.
 - **Fila 11 · la tercera repite [`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado)**, que es la dueña del tema y lo desarrolla entero. Acá queda como un resumen con «(ver `04`)» al final.
 
-**Cabe —204 de 320— y aun así reprueba.** Es el segundo caso hoy, tras [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas): que una regla quepa y esté bien redactada no dice nada sobre si es una sola regla ni sobre si lo que dice es suyo.
+**Cabe —204 de 320— y aun así reprueba.** Es el segundo caso hoy, tras [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3): que una regla quepa y esté bien redactada no dice nada sobre si es una sola regla ni sobre si lo que dice es suyo.
 
 El corte propuesto en 2026-08-07 sigue valiendo: partir en tres y que la tercera se sustituya por el enlace a `S6`. **Nada se toca acá:** es el núcleo, y además la segunda mitad —no enviar contenido a servicios externos— es de las que más se citan del estándar.
 

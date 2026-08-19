@@ -226,7 +226,13 @@ También solapa con [`00·N6`](00-nucleo-blindado.md#n6--secretos-y-datos-sensib
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## S7 · Dependencias sin vulnerabilidades conocidas
+## S7 · Dependencias sin vulnerabilidades conocidas  ·  `[DEROGADA en 23.17.0 → ver 10·DEP3]`
+
+> **Dejó de regir: decía lo mismo que [`10·DEP3`](10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día)**, y las dos se citaban en círculo — `S7` remitía al capítulo `10` «para el detalle» y `DEP3` remitía de vuelta a `S7`. El dueño del tema *dependencias* es el capítulo `10` ([`20·M2`](20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md)), así que se queda la de allá.
+>
+> **No se pierde nada:** `DEP3` ya exigía las dos cosas —auditar vulnerabilidades y no dejar una sin resolver— y agrega lo que `S7` no decía: que quedarse muy atrás vuelve caro e inseguro actualizar después.
+>
+> El texto original se conserva porque hay commits y fases que lo citan ([`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
 
 Mantén las dependencias al día y **audita vulnerabilidades** con la herramienta del ecosistema. No introduzcas una con vulnerabilidades sin resolver (detalle en `10`).
 

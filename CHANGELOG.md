@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.17.0 — 2026-08-18
+
+**MENOR** (una regla deja de regir porque otra ya decía lo mismo; no hay nada nuevo que cumplir).
+
+**Dos reglas pedían lo mismo y se remitían la una a la otra en círculo.** Una decía «audita las vulnerabilidades de tus dependencias, el detalle está en el otro capítulo», y el otro capítulo decía «audítalas, ver la primera». Quien las leía daba la vuelta y volvía al principio.
+
+Se queda la del capítulo de dependencias, que es de quien es el tema. La otra deja de regir y su texto se conserva, porque hay trabajo cerrado que la cita.
+
+**El detalle.** [`04·S7`](base/04-seguridad.md) queda `[DEROGADA en 23.17.0 → ver 10·DEP3]` por [`20·M11`](base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), que manda derogar y no borrar. El dueño del tema es el capítulo `10` según [`20·M2`](base/20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md). **No se pierde ninguna exigencia:** [`10·DEP3`](base/10-dependencias.md) ya pedía las dos cosas y agrega una que `S7` no decía — que quedarse muy atrás vuelve caro e inseguro actualizar después. `DEP3` deja de remitir a `S7`, que era la otra mitad del círculo.
+
 ## 23.16.0 — 2026-08-18
 
 **MENOR** (una comprobación más; nada nuevo que cumplir).

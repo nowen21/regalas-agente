@@ -68,7 +68,7 @@ Cumplía ya en el análisis del 2026-08-07 y sigue cumpliendo. Está clasificada
 
 ## DEP3 · Audita vulnerabilidades y mantén al día
 
-Revisa **vulnerabilidades conocidas** con la herramienta del ecosistema ([`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas)). No dejes una dependencia con vulnerabilidades sin resolver. Quedarse muy atrás vuelve caro e inseguro actualizar después.
+Revisa **vulnerabilidades conocidas** con la herramienta del ecosistema. No dejes una dependencia con vulnerabilidades sin resolver. Quedarse muy atrás vuelve caro e inseguro actualizar después.
 
 ```
 INCORRECTO: la auditoría reporta una vulnerabilidad alta y se anota «para la
@@ -93,7 +93,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
 
-**Fila 11 · sin texto prestado.** «Revisa vulnerabilidades conocidas con la herramienta del ecosistema» es [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas) dicha otra vez. La enlaza **y** la repite, y la fila pide enlazar **en vez de** copiar.
+**Fila 11 · sin texto prestado.** «Revisa vulnerabilidades conocidas con la herramienta del ecosistema» es [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3) dicha otra vez. La enlaza **y** la repite, y la fila pide enlazar **en vez de** copiar.
 
 **Y el arreglo no está acá.** El análisis del 2026-08-07 fue explícito: *«duplica `04·S7`; **`DEP3` es el dueño correcto**»*. Una vulnerabilidad de una dependencia es un asunto de dependencias, y el capítulo `04` la trata de prestado. Lo que corresponde es **derogar `04·S7`** y que este capítulo reciba el tema — no recortar `DEP3` para que deje de parecerse.
 
