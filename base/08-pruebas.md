@@ -6,23 +6,26 @@ Las pruebas permiten cambiar el código sin miedo y prueban que la especificaci�
 
 ## T1 · Todo cambio con lógica lleva prueba
 
-Toda funcionalidad o corrección con lógica se acompaña de pruebas ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)). El plan de pruebas se aprueba junto con el plan de trabajo. Si no amerita (visual/trivial), decláralo explícito.
+Toda funcionalidad o corrección con lógica se acompaña de pruebas, y su plan se aprueba junto con el plan de trabajo ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
+**Excepción** — el cambio sin lógica, como mover un texto o ajustar un color, va sin prueba **si se declara en el plan cuál es y por qué** (condición). No vale para nada que decida, calcule o valide (límite), y lo aprueba el usuario al aprobar el plan (autorizador).
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.19.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A ✅ ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Fila 16 · arreglada el 2026-08-18.** La excepción existía —*«si no amerita (visual/trivial), decláralo explícito»*— pero sin las tres partes que pide [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). **«No amerita» lo decidía quien escribía el plan, y nadie más**: sin autorizador, una excepción es un permiso que se da uno mismo.
 
 **Fila 16 · la excepción está incompleta.** «Si no amerita (visual/trivial), decláralo explícito» es una excepción, y [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) pide **condición, límite y quién autoriza**. Tiene condición —visual o trivial— y no tiene ni límite ni autorizador.
 

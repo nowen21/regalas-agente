@@ -10,7 +10,7 @@
 
 Ningún cambio de estado (archivos, comandos, control de versiones, migraciones, datos) sin aprobación explícita.
 **Si el usuario rechaza, no reintentes lo mismo.** Entiende el motivo y cambia el enfoque.
-Excepción: un plan ya aprobado se ejecuta continuo (no re-pedir permiso por cada paso).
+**Excepción** — un plan ya aprobado se ejecuta continuo, sin re-pedir permiso paso a paso, **para lo que se puede deshacer** (condición). **No cubre lo irreversible**, que se pide aparte cada vez aunque estuviera en el plan (límite), y lo autoriza el usuario al aprobar el plan (autorizador). Qué es cada cosa: [`00-identidad-y-rol/acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md).
 
 ```
 INCORRECTO: rechazan el comando → lo relanzo con otra bandera
@@ -21,7 +21,7 @@ CORRECTO:   pregunto el motivo y propongo otro enfoque
 
 ### Checklist  ·  **NO CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.19.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -32,6 +32,10 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
 **20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
+
+**El 2026-08-18 la excepción se escribió entera, y eso resolvió un choque sin resolver la fila.** Decía *«un plan ya aprobado se ejecuta continuo»* a secas, y al escribir el anexo [`acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md) —que dice que un plan aprobado **nunca** cubre lo irreversible— las dos quedaron afirmando cosas contrarias. Ahora la excepción lleva su límite y remite al anexo, y hay un caso de prueba que comprueba que sigan de acuerdo.
+
+**La fila 16 sigue en ❌, y por el motivo de arriba, que es más hondo:** el problema no era que la excepción estuviera mal escrita, sino que **existe**. Escribirla mejor la hace más explícita, no la hace desaparecer. **Se marcó en verde por error el 2026-08-18 y se devolvió el mismo día**, al leer el argumento que ya estaba ahí.
 
 **Es el hallazgo más serio de toda la pasada, y ya estaba señalado en rojo y con prioridad alta desde el 2026-08-07.**
 

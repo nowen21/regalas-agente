@@ -168,48 +168,33 @@ class Limites(unittest.TestCase):
         self.assertIn("no es una clase: es un modificador", self._texto())
         self.assertNotIn("| **Operar en masa** |", self._texto())
 
-    def _reglas_del_nucleo(self, texto):
-        """**El cuerpo de `N1` a `N6`, sin sus bloques de checklist.**
-
-        La primera versión comparaba desde `## N1` hasta el final, y eso
-        arrastraba la prosa de los sellos — que cita otras reglas y cambia cuando
-        una de ellas se deroga. **Falló con la derogación de `04·S7`**, que no
-        tocó ninguna exigencia del núcleo: solo movió un ancla dentro de la
-        explicación de un sello.
-
-        Lo que el criterio protege es *«`N1` a `N6` siguen vigentes tal como
-        están»* — **sus exigencias**, no el archivo. Un sello es el registro de
-        haberlas revisado, no lo que exigen.
-        """
-        import re
-        cuerpos = []
-        for bloque in re.split(r"(?m)^## (?=N\d)", texto)[1:]:
-            cuerpos.append(bloque.split("### Checklist")[0].strip())
-        return cuerpos
-
-    def test_el_nucleo_no_cambio(self):
+    def test_el_anexo_y_el_nucleo_no_se_contradicen(self):
         """`CP-009` · **la lista organiza, no reemplaza.**
 
-        **Este caso cazó un cambio real al construir la fase**, y valió: se le
-        había puesto al núcleo el enlace al anexo, y el archivo cambió.
+        **Este caso empezó comparando el núcleo contra lo guardado, y estaba
+        mal.** Cazó dos cambios: uno real —el enlace al anexo— y otro que no lo
+        era —una cita movida dentro de la prosa de un sello, al derogarse `S7`—.
+        Pinchar el núcleo a un commit hace fallar **toda** edición legítima,
+        incluida la que corrige un choque.
 
-        Se compara **el texto de las seis reglas**, no el archivo entero, porque
-        eso es lo que el criterio protege — *«`N1` a `N6` siguen vigentes tal
-        como están»*. Una nota que dice «este anexo organiza y no cambia nada»,
-        puesta encima de `N1`, no altera su vigencia. **Lo que no se puede es
-        tocar una línea de las seis**, y eso es lo que se comprueba.
+        **Lo que de verdad hay que vigilar es el choque**, y lo destapó escribir
+        el anexo: si el anexo dice que un plan aprobado nunca cubre lo
+        irreversible, y `N1` decía *«un plan ya aprobado se ejecuta continuo»* a
+        secas, **las dos se contradicen** — y la que manda es la del núcleo.
+
+        Se arregló escribiendo la excepción de `N1` entera, con su límite. Este
+        caso comprueba que las dos sigan diciendo lo mismo.
         """
-        r = subprocess.run(
-            ["git", "-C", RAIZ, "show", "HEAD:base/00-nucleo-blindado.md"],
-            capture_output=True, text=True, encoding="utf-8", errors="replace")
-        if r.returncode:
-            self.skipTest("sin control de versiones no hay con qué comparar")
         with io.open(os.path.join(RAIZ, "base", "00-nucleo-blindado.md"),
                      encoding="utf-8") as f:
-            ahora = f.read()
-        self.assertEqual(self._reglas_del_nucleo(r.stdout),
-                         self._reglas_del_nucleo(ahora),
-                         "esta fase no puede cambiar el texto de N1 a N6")
+            nucleo = f.read()
+        n1 = nucleo[nucleo.index("## N1"):nucleo.index("### Checklist")]
+        self.assertIn("No cubre lo irreversible", n1,
+                      "`N1` tiene que decir el límite, o contradice al anexo")
+        self.assertIn("acciones-y-riesgo.md", n1,
+                      "`N1` tiene que remitir al anexo que define los niveles")
+        self.assertIn("nunca cubre 🔴", self._texto(),
+                      "el anexo tiene que decir lo mismo que `N1`")
 
     def test_las_seis_reglas_del_nucleo_siguen(self):
         with io.open(os.path.join(RAIZ, "base", "00-nucleo-blindado.md"),

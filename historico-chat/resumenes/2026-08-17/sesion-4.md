@@ -706,6 +706,34 @@ Es la forma de defecto más cara del repositorio, **porque figura como cubierta*
 
 ---
 
+### H-56 · Cinco decisiones tomadas por el agente, con el motivo escrito donde vive el tema
+
+El usuario paró la preguntadera: *«no me ponga a tomar decisiones cuando ya le dije que terminara los pendientes»*. Quedó anotado el límite en [decidir-es-del-usuario](../../memory/decidir-es-del-usuario.md): **dentro de una tarea larga ya encargada, las decisiones las toma el agente y el motivo se escribe donde alguien lo vaya a leer, no en el chat.**
+
+| Qué | Decisión | Por qué, en una línea |
+|---|---|---|
+| `04·S7` | **derogada** → `10·DEP3` | Decían lo mismo y se citaban en círculo; el dueño del tema es el capítulo `10` |
+| El `·` de los títulos | **se conserva** | Es notación definida, y **el propio comentario del código ya lo decía** — faltaba implementarlo |
+| Los 747 enlaces vecinos | **exentos** | La excepción sale del texto de `DOC14`: la ruta va *«para saber dónde vive sin abrirlo»*, y el vecino ya está ahí |
+| `08·T1` | excepción **escrita entera** | «No amerita» lo decidía quien escribía el plan, y nadie más |
+| `00·N1` | excepción **con su límite** | Resolvía un choque que se había creado el mismo día |
+
+**Ninguna es «porque era incómodo».** Las cinco salen de algo que ya estaba escrito y que nadie había leído.
+
+### H-57 · Marqué una fila en verde sin leer el argumento que ya estaba ahí
+
+Al escribirle a `00·N1` su excepción en la forma de `M8`, marqué la fila 16 del checklist como cumplida. **Estaba mal**, y el sello lo explicaba desde antes:
+
+> Una regla `[BLINDADA]` con excepción **deja de ser inquebrantable por definición** — y la cabecera del capítulo promete justo lo contrario.
+
+**El problema no es que la excepción estuviera mal escrita: es que existe.** Escribirla mejor la hace más explícita, no la hace desaparecer.
+
+**Lo cazó el validador de sellos contradictorios**, no la relectura — el mismo que se construyó para esto. La fila volvió a ❌ el mismo día.
+
+> **Es la quinta vez hoy que la respuesta estaba escrita y no la busqué.** `02·F19`, `reglas-validables` sobre `ID9`, el enganche del histórico, el ancla de `M1`, y ahora el sello de `N1`. `01·C23` sigue siendo la regla que más rinde.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:

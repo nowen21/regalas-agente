@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.19.0 — 2026-08-18
+
+**MAYOR** (una regla del núcleo dice ahora algo que antes no decía; conviene releerla).
+
+**Aprobar un plan aprobaba también lo que no se puede deshacer, y eso ya no vale.** La regla decía que un plan aprobado se ejecuta seguido, sin volver a pedir permiso paso a paso. Ahora dice hasta dónde: **lo irreversible se pide aparte cada vez, aunque estuviera escrito en el plan que aprobaste.**
+
+También se escribió entera la excepción de las pruebas: el cambio sin lógica puede ir sin prueba, pero hay que decir en el plan cuál es y por qué, y eso lo aprueba el usuario — no lo decide solo quien escribe.
+
+**El detalle.** [`00·N1`](base/00-nucleo-blindado.md) y [`08·T1`](base/08-pruebas.md) escriben su excepción en la forma que pide [`20·M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md), con condición, límite y autorizador. `T1` pasa a **CUMPLE**.
+
+**El cambio de `N1` resolvió un choque que se había creado el mismo día.** El anexo [`acciones-y-riesgo.md`](base/00-identidad-y-rol/acciones-y-riesgo.md) dice que un plan aprobado nunca cubre lo irreversible, y `N1` decía *«se ejecuta continuo»* a secas: las dos afirmaban cosas contrarias, y manda la del núcleo. Hay un caso de prueba que comprueba que sigan de acuerdo.
+
+**Y una corrección del mismo día, que conviene leer.** Al arreglar la excepción se marcó en verde la fila 16 del checklist de `N1`, y **estaba mal**: su sello ya explicaba, desde antes, que el problema no es que la excepción esté mal escrita sino que **existe** — una regla `[BLINDADA]` con excepción deja de ser inquebrantable, que es lo contrario de lo que promete la cabecera del capítulo. Escribirla mejor la hace más explícita, no la hace desaparecer. La fila volvió a ❌ el mismo día.
+
 ## 23.18.0 — 2026-08-18
 
 **MENOR** (una regla admite un caso que antes no admitía; nada de lo que ya cumplías deja de valer).
