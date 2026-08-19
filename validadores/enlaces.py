@@ -203,9 +203,11 @@ def _es_vecino(destino):
     y exigirla igual produce un texto de unos 130 caracteres para nombrar el
     archivo de al lado.
 
-    **La regla no distingue el caso**, y decidir si lo distingue es del
-    usuario. Mientras tanto se reparan los otros, que son los que la regla
-    resuelve de verdad.
+    **La regla lo distingue desde la v23.18.0**: su excepción dice que el
+    enlace a un archivo de la misma carpeta lleva solo su nombre. Sale del
+    propio texto de `DOC14` —la ruta va *«para saber dónde vive sin
+    abrirlo»*, y para el vecino ese propósito ya está cumplido—, no de que
+    fueran muchos. Eran 747.
     """
     ruta = destino.split("#", 1)[0]
     return bool(ruta) and "/" not in ruta and not ruta.startswith(".")

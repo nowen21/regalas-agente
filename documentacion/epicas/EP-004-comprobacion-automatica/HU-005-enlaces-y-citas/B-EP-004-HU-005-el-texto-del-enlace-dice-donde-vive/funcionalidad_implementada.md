@@ -51,7 +51,7 @@ Se revirtieron los 347 archivos y quedaron solo los **284 de entre carpetas**, q
 | [`validadores/enlaces.py`](../../../../../validadores/enlaces.py) | `reparar_formato`, `_texto_esperado`, `_es_vecino`, `_es_del_usuario` |
 | [`validadores/tests/test_el_texto_del_enlace_dice_donde_vive.py`](../../../../../validadores/tests/test_el_texto_del_enlace_dice_donde_vive.py) | 14 casos, la mitad de silencio |
 | 89 `.md` del repositorio | Solo el **texto** de 284 enlaces |
-| [`pendientes/18-…`](../../../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md) | Lo medido y la decisión que falta. **Sigue abierto** |
+| [`pendientes/18-…`](../../../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md) | Lo medido y la decisión que falta. **Sigue abierto** |
 
 **Tres exclusiones, las tres declaradas y con caso propio:** las transcripciones del chat, `prompts/` —palabras del usuario— y el vecino de la misma carpeta.
 

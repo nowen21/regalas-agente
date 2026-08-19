@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** Es la deuda del `RN-03` de la historia.
 
-**De dónde sale:** el [pendiente 18](../../../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md). Su punto 2 dice *«corregirlos: es mecánico — el validador ya dice, enlace por enlace, qué texto debería tener»*. Faltaba escribirlo.
+**De dónde sale:** el [pendiente 18](../../../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md). Su punto 2 dice *«corregirlos: es mecánico — el validador ya dice, enlace por enlace, qué texto debería tener»*. Faltaba escribirlo.
 
 **CA que cubre:** el `RN-03` —`13·DOC14` palabra por palabra— en su parte reparable.
 

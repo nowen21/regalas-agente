@@ -47,7 +47,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-4 · El script de enrutamiento metió la fila dentro de la tabla equivocada, en tres archivos
 
-**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
+**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
 
 **Por qué importa.** Ningún validador lo habría visto: el enlace resuelve, la tabla sigue siendo tabla y el conteo daba 33 de 33. **Lo destapó una comprobación escrita a propósito** —que la fila estuviera precedida por el encabezado vacío `| | |`—, no la corrida de siempre. Una comprobación que se escribe para dudar del propio trabajo encuentra lo que las otras no buscan.
 
@@ -232,7 +232,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-21 · Una regla que tenía razón, aplicada donde no había mirado
 
-**Qué pasó.** El [pendiente 18](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md) contaba 354 enlaces que incumplen `13·DOC14`; hoy eran **1031**. Se construyó la reparación por programa, se aplicó a los 1031 — **y se revirtió entera.**
+**Qué pasó.** El [pendiente 18](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md) contaba 354 enlaces que incumplen `13·DOC14`; hoy eran **1031**. Se construyó la reparación por programa, se aplicó a los 1031 — **y se revirtió entera.**
 
 **Por qué.** `DOC14` pide la ruta desde la raíz *«para saber dónde vive sin abrirlo»*. Para el archivo de **la misma carpeta** ese propósito ya está cumplido, y la regla no distingue el caso. Aplicada literal, la tabla de contenidos de una fase quedaba con celdas de **132 caracteres para decir `plan_trabajo.md`**.
 

@@ -62,7 +62,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** [`13·DOC14`](../../../base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) y [`20·M9`](../../../base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md).
 - **Dispara:** una HU de EP-004 que todavía no está escrita.
 - **Orden de resolución:** 2 de 3 · mientras siga así, cada fase nueva suma avisos que nadie va a poder distinguir de los de verdad.
-- **Dónde queda:** cerca de [pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), que cuenta los 354 viejos.
+- **Dónde queda:** cerca de [pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), que cuenta los 354 viejos.
 - **Nace en:** 2026-08-14 · h-8-la-traduccion-quedo-a-medias.
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se le enseña la excepción al validador, o se le escribe a `DOC14` un límite que un programa pueda comprobar sin interpretar?

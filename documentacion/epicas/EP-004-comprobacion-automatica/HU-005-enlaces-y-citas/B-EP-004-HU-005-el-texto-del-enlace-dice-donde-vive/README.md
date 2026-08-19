@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el [pendiente 18](../../../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), que **sigue abierto**. El validador llevaba días diciendo, enlace por enlace, qué texto correspondía; faltaba escribirlo de vuelta.
+De dónde sale: el [pendiente 18](../../../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), que **sigue abierto**. El validador llevaba días diciendo, enlace por enlace, qué texto correspondía; faltaba escribirlo de vuelta.
 
 **284 enlaces en 89 archivos, y ningún enlace roto** — el destino no se toca nunca.
 

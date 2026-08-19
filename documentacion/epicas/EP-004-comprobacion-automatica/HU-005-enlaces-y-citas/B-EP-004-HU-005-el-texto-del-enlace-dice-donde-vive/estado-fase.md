@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (`02·F12.6`) | `B-EP-004-HU-005-el-texto-del-enlace-dice-donde-vive` |
 | **Módulo** | Enlaces y citas (`validadores/enlaces.py`) |
-| **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-005](../HU-005-enlaces-y-citas.md) · [pendiente 18](../../../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md), que **sigue abierto** |
+| **Épica / HU / origen** | [EP-004](../../epica.md) · [HU-005](../HU-005-enlaces-y-citas.md) · [pendiente 18](../../../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), que **sigue abierto** |
 | **Última actualización** | 2026-08-18 |
 
 ---

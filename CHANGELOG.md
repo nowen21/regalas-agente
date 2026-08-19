@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.18.0 — 2026-08-18
+
+**MENOR** (una regla admite un caso que antes no admitía; nada de lo que ya cumplías deja de valer).
+
+**Enlazar al archivo de al lado obligaba a escribir su dirección completa.** Para nombrar un documento que está en la misma carpeta había que poner una línea de unos 130 caracteres, y eso pasaba en setecientos enlaces — casi todos, documentos de un mismo trabajo citándose entre sí.
+
+Ahora el archivo de la misma carpeta se enlaza por su nombre. El de cualquier otra sigue llevando su dirección entera.
+
+**El detalle.** Es el [pendiente 18](pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md). [`13·DOC14`](base/13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md) gana su excepción escrita en la forma de [`20·M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md), y se le vuelve a aplicar el checklist: pasa de 17 a 18 filas en verde, porque la fila 16 dejó de ser N/A.
+
+**La excepción sale del propio texto de la regla, no de que fueran muchos.** `DOC14` pide la ruta *«para saber dónde vive sin abrirlo»*, y para el vecino ese propósito ya está cumplido. El límite es estrecho a propósito: la misma carpeta y nada más.
+
+**Antes se había intentado al pie de la letra**, y quedó ilegible; se revirtieron 347 archivos. Esa reversión fue la que destapó que el problema no eran los enlaces sino la regla, que no había previsto el caso más común.
+
 ## 23.17.1 — 2026-08-18
 
 **PARCHE** (deja de contarse como defecto algo que no lo era; ninguna exigencia cambia).

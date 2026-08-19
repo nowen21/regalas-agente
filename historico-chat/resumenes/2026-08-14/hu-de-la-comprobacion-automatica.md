@@ -91,7 +91,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** EP-004 · HU-005, comprobar los enlaces y las citas.
 - **Dispara:** —. Limpiar 354 enlaces es trabajo, no historia nueva.
 - **Orden de resolución:** 7 de 7 · mecánico y sin urgencia.
-- **Dónde queda:** [pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md](../../../pendientes/18-los-enlaces-del-estandar-no-cumplen-doc14.md).
+- **Dónde queda:** [pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md).
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** de los 354, ¿cuáles cuentan? Las transcripciones se copian literales y `prompts/` son palabras del usuario. Quedan unos 200 reales.
