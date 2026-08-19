@@ -126,7 +126,7 @@ Entonces dice qué componentes cambiaron y desde cuándo
 
 | Fase | Qué cubre | Estado |
 |---|---|---|
-| [`A-EP-007-HU-006-poner-al-dia-lo-ya-instalado`](A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/) | CA-01 y CA-02 | Cerrada 2026-08-16 |
+| [`A-EP-007-HU-006-poner-al-dia-lo-ya-instalado`](A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/) | CA-01 y CA-02 | Cerrada 2026-08-16 · **reabierta y vuelta a cerrar el 2026-08-18**, ciclo 3 |
 
 Sale de dos pendientes que reportó `shopnest-mesa` y que resultaron ser el mismo defecto: el instalador decide si hay trabajo mirando una huella, y se queda quieto cuando la huella no cambia. El [42](../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md) es el CA-01 —una copia mal escrita que no se repara— y el [44](../../../../pendientes/hecho/poner-al-dia-lo-ya-instalado.md) es el CA-02 —una versión que sube y no se registra—.
 
@@ -187,3 +187,4 @@ Sale de dos pendientes que reportó `shopnest-mesa` y que resultaron ser el mism
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-18 | El agente | Reabierta la fase A: el `CA-02` no se cumplía. `shopnest-mesa` reportó que el registro se duplicaba. v23.11.1 |

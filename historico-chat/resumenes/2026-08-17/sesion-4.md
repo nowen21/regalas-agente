@@ -449,6 +449,26 @@ Al mover un pendiente a `hecho/` reescribía el **destino** de cada enlace que l
 
 ---
 
+### H-39 · Una prueba que monta un caso no ve un defecto que vive en el orden
+
+**El [pendiente 62](../../../pendientes/hecho/el-instalador-pide-una-segunda-pasada.md) cerró**, y lo que dejó vale más que el arreglo.
+
+`shopnest-mesa` reportó que el instalador escribía el registro de versión y, en la misma corrida, decía que faltaba escribirlo; y que al correrlo otra vez —como el propio mensaje pedía— escribía un segundo registro vacío.
+
+**Era un solo defecto, no dos.** `versiones.registros()` ordenaba por `(fecha, sufijo)` y dejaba la versión fuera del criterio. Los dos registros eran del mismo día, empataban, y el desempate caía en el orden alfabético del nombre — donde `23.10.0` va **antes** que `23.5.0`, porque el `1` va antes que el `5`. Leyendo la vieja como «última», el checklist pedía el registro y el instalador creía que la versión había subido.
+
+**Ninguna de las dos salidas que el pendiente proponía era la correcta.** Las dos decían mover el registro respecto de la comprobación, y ese orden ya estaba bien.
+
+**Por qué pasó las pruebas la primera vez.** El `CP-005` de la fase decía *«reinstalar sin novedad no agrega registro»* y **montaba un solo registro**. Con uno no hay orden que equivocar.
+
+> **El caso estaba bien escrito; el montaje no alcanzaba.** Una prueba que monta un caso no comprueba lo que dice comprobar cuando el defecto vive en el **orden entre varios**. Los 15 casos nuevos usan la misma fecha a propósito.
+
+**Se reabrió la fase `A-EP-007-HU-006`** en vez de abrir una nueva, como con `A-EP-005-HU-008`: lo que fallaba era ese trabajo, y su documentación decía que estaba hecho.
+
+**Y apareció un desfase de un número:** el aviso de vuelta a `shopnest-mesa` se escribe al cerrar el pendiente, y estampa la versión **de ese momento** — que todavía no incluye el arreglo. Se regeneró con el programa, ya en la `23.11.1`, sin editarlo a mano.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -461,7 +481,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **23** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
-| Lo que se hizo está aprobado y guardado | ☐ **falta el commit del 22 y de la 23.11.0**, que se pide aparte |
+| Lo que se hizo está aprobado y guardado | ☑ hasta `d0c900c` (publicado) · ☐ **falta el commit de la 23.11.1** |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
@@ -469,6 +489,10 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 ---
 
-**Lo que sigue, cuando se retome:** aprobar y ejecutar la fase `B-EP-004-HU-016`. Sin ella el enrutamiento de hoy es un estado que nada sostiene. Y decidir el [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), que es lo único que permite escribir el texto de la regla.
+**Lo que sigue, cuando se retome:** los **22 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
+
+**Y siete decisiones que solo puede tomar el usuario**, que hoy bloquean lo suyo: derogar `04·S7` en favor de `10·DEP3`; qué hacer con `12·PR3`; la excepción de `00·N1`; el `08·T1`, que es MAYOR; si `DOC14` exime al enlace de la misma carpeta (son 747); si el `·` se queda en los títulos; y si `pendientes/` entra en la estructura de la base.
+
+**Publicado hasta `d0c900c`:** los 53 commits salieron a `origin/main` el 2026-08-18. La `23.11.1` todavía no.
 
 <!-- aviso: falta decir si la sesión se puede cerrar -->

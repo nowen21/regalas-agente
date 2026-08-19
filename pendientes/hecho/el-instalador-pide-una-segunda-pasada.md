@@ -1,6 +1,6 @@
 # Pendiente · El instalador pide una segunda pasada y deja un registro vacío
 
-**Estado:** abierto · anotado 2026-08-18 · sale de correr la instalación en `shopnest-mesa` para subir del `23.5.0` al `23.10.0`.
+**Estado:** cerrado 2026-08-18 · anotado 2026-08-18 · sale de correr la instalación en `shopnest-mesa` para subir del `23.5.0` al `23.10.0`.
 
 | | |
 |---|---|
@@ -73,3 +73,44 @@ En un proyecto con la versión atrasada, **una sola corrida** de `instalar.py --
 ## Lo que este proyecto hizo mientras tanto
 
 Los dos registros **se dejaron como están**. Los escribe el instalador y el estándar dice que no se editan a mano; borrar el segundo sería tapar el síntoma en el único sitio donde queda constancia de que pasó.
+
+
+---
+
+# Cómo cerró — 2026-08-18
+
+**Era un solo defecto, no dos**, y estaba en el orden.
+
+`versiones.registros()` ordenaba por `(fecha, sufijo)` y **dejaba la versión fuera del criterio**. Los dos registros de `shopnest-mesa` eran del mismo día, así que empataban, y el desempate caía en el orden alfabético del nombre — donde `23.10.0` va **antes** que `23.5.0`, porque el `1` va antes que el `5`.
+
+Leyendo la vieja como «última» salían los dos síntomas a la vez:
+
+| Quién leía | Qué concluía |
+|---|---|
+| El checklist final | lo instalado dice `23.10.0` y el último registro `23.5.0` → **falta registrar** |
+| El instalador | la versión subió → **escribe otro registro** |
+
+**Ninguna de las dos salidas que el pendiente proponía era la correcta.** El registro ya se escribía antes de la comprobación; el orden de las dos era el bueno desde el principio. Mover código no habría arreglado nada.
+
+## Cómo se comprueba
+
+Lo que el pendiente pedía, sobre un proyecto de mentira:
+
+| Qué | Resultado |
+|---|---|
+| Una sola corrida termina sin pedir otra | ✅ falta solo `cadena`, que es la excepción declarada |
+| Queda **un** archivo en `documentacion/versiones/`, no dos | ✅ |
+| Una segunda corrida seguida no escribe registro | ✅ «ni las plantillas ni la versión cambiaron» |
+| Con un registro viejo **del mismo día** al lado, tampoco | ✅ — es el caso que lo destapaba |
+
+**15 casos automatizados** en [`validadores/tests/test_el_registro_de_version_no_se_duplica.py`](../../validadores/tests/test_el_registro_de_version_no_se_duplica.py), todos con la misma fecha a propósito.
+
+## Por qué pasó las pruebas la primera vez
+
+El `CP-005` de la fase decía *«reinstalar sin novedad no agrega registro»* y **montaba un solo registro**. Con uno, no hay orden que equivocar.
+
+**El caso estaba bien escrito; el montaje no alcanzaba.** Una prueba que monta un caso no comprueba lo que dice comprobar cuando el defecto vive en el orden entre varios. Eso quedó escrito en el ciclo 3 del [`resultado_pruebas`](../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/resultado_pruebas.md), que es donde lo va a leer quien vuelva a tocar esto.
+
+## Los dos registros de `shopnest-mesa` se quedan
+
+Como decidió ese proyecto: los escribe el instalador y el estándar dice que no se editan a mano. Borrar el segundo taparía el único sitio donde queda constancia de que pasó.

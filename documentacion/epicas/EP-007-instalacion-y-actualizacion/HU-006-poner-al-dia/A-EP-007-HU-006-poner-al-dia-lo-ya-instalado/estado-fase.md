@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 10 — reporte al usuario. **Última puerta pasada:** 9, commit `9846650`.
+**Estación actual:** 9 — commit único, **pendiente de autorización**. **Última puerta pasada:** 8, el cierre documental del ciclo 3.
+
+> **Reabierta el 2026-08-18.** `shopnest-mesa` reportó que el instalador escribía el registro y en la misma corrida decía que faltaba. Se reabre esta fase en vez de abrir una nueva: **lo que fallaba era este trabajo**, y su documentación decía que estaba hecho. Es el [pendiente 62](../../../../../pendientes/hecho/el-instalador-pide-una-segunda-pasada.md).
 
 Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md)**, que es la fuente única del ciclo de una fase en este repositorio.
 
@@ -29,10 +31,10 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 | 4 | Pausa y presentación | presentados al usuario | ☑ |
 | 5 | Aprobación del plan detallado | 👤 aprobados el 2026-08-16 | ☑ |
 | 6 | Ejecución continua | plan implementado, 13 tareas | ☑ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto por CA | ☑ Cumple, ciclo 2 · 6 de 6 |
+| 7 | Pruebas | `resultado_pruebas` con veredicto por CA | ☑ Cumple, **ciclo 3** · 7 de 7 |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
-| 9 | Commit único | 👤 autorizado · `9846650`, 22 archivos | ☑ |
-| 10 | Reporte al usuario | hash, resumen y estado | ☑ |
+| 9 | Commit único | 👤 el del ciclo 3 **sin autorizar** · el del ciclo 2 fue `9846650` | ☐ |
+| 10 | Reporte al usuario | hash, resumen y estado | ☐ |
 | 11 | Publicación / despliegue | 👤 **acá está detenida** — falta el `push` | ☐ |
 
 **El CP-006 no lo corrió esta casa:** lo corrió `shopnest-mesa`, que es quien reportó los dos defectos, y desde acá se verificó leyendo sus archivos sin escribir nada. Vale más así — el que reporta es el que dice si desapareció.

@@ -231,11 +231,30 @@ def carpeta_registros(proyecto):
     return os.path.join(os.path.abspath(proyecto), *CARPETA.split(os.sep))
 
 
+def _orden_de_version(v):
+    """La versión como números, para poder compararla.
+
+    `62` · **Comparar el texto pone la `23.10.0` antes que la `23.5.0`**, porque
+    el `1` va antes que el `5`. Lo que no es número se deja como texto al final,
+    que ordena los sufijos raros sin reventar.
+    """
+    partes = []
+    for trozo in str(v).split("."):
+        partes.append((0, int(trozo), "") if trozo.isdigit() else (1, 0, trozo))
+    return partes
+
+
 def registros(proyecto):
     """Los registros del proyecto, del más viejo al más nuevo.
 
-    Devuelve [(nombre_archivo, fecha, version)]. El orden sale del nombre, que
-    empieza por la fecha; a igual fecha manda el sufijo.
+    Devuelve [(nombre_archivo, fecha, version)]. El orden sale de la fecha,
+    después de la **versión** y por último del sufijo.
+
+    `62` · **La versión estaba fuera del criterio**, y dos registros del mismo
+    día empataban: el desempate caía en el orden alfabético del nombre, donde
+    la `23.10.0` va antes que la `23.5.0`. El instalador leía la vieja como
+    "última", creía que la versión había subido y escribía un registro más
+    —vacío— por cada corrida, mientras el checklist seguía diciendo que faltaba.
     """
     carpeta = carpeta_registros(proyecto)
     if not os.path.isdir(carpeta):
@@ -245,7 +264,7 @@ def registros(proyecto):
         m = _REGISTRO.match(nombre)
         if m:
             salida.append((nombre, m.group(1), m.group(2), int(m.group(3) or 1)))
-    salida.sort(key=lambda r: (r[1], r[3]))
+    salida.sort(key=lambda r: (r[1], _orden_de_version(r[2]), r[3]))
     return [(n, f, v) for n, f, v, _ in salida]
 
 

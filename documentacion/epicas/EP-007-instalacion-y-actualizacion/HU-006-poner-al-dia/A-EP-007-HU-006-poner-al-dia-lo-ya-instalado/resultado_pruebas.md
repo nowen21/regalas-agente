@@ -11,8 +11,8 @@
 | **Fase** (`02·F12.6`) | `A-EP-007-HU-006-poner-al-dia-lo-ya-instalado` |
 | **HU** | [HU-006 — Poner al día lo ya instalado](../HU-006-poner-al-dia.md) |
 | **Plan de pruebas de origen** | [`plan_pruebas.md`](plan_pruebas.md) |
-| **Ciclo** | 2 |
-| **Fecha de ejecución** | 2026-08-16 |
+| **Ciclo** | 3 |
+| **Fecha de ejecución** | 2026-08-16 · **reabierta el 2026-08-18** |
 | **Ejecutado por** | El agente |
 | **Ambiente y versión** | Windows 11 · Python 3.11 · estándar 21.1.1 → 21.2.0 · carpetas temporales desechables |
 
@@ -30,6 +30,7 @@ python -m unittest discover -s validadores/tests
 |---|---:|---:|---:|---:|---:|---:|
 | 1 | 6 | 5 | 3 | 2 | 0 | 1 |
 | 2 | 6 | 6 | 6 | 0 | 0 | 0 |
+| 3 | 7 | 7 | 7 | 0 | 0 | 0 |
 
 `unittest` reporta **6 pruebas** para 5 casos automáticos: el CP-004 se parte en dos, porque su paso 7 —que el propio estándar no se escriba registros— se comprueba llamando directo a `registrar_version` y no vale la pena instalar un proyecto entero para eso.
 
@@ -145,6 +146,28 @@ python -m unittest discover -s validadores/tests
 
 ---
 
+### CA-02 · CP-007 — dos registros del mismo día  ·  **ciclo 3, 2026-08-18**
+
+**Por qué existe este caso.** El `CP-005` de arriba comprobaba lo correcto —*sin cambios no se agrega una entrada vacía*— y **pasó con un solo registro en la carpeta**. El defecto necesita **dos, del mismo día**. El caso estaba bien; el montaje no lo alcanzaba.
+
+**Lo que pasó de verdad.** El 2026-08-18 se puso al día `shopnest-mesa` del `23.5.0` al `23.11.0`. La instalación escribió su registro y, en la misma corrida, dijo que faltaba registrarla. Al correrla otra vez —como el propio mensaje pedía— escribió un segundo registro, siete segundos después, que dice *«ninguno cambió de huella»*.
+
+**La causa, y es una sola para los dos síntomas.** `versiones.registros()` ordenaba por `(fecha, sufijo)` y dejaba la versión fuera del criterio. Los dos registros eran del mismo día, así que empataban, y el desempate caía en el orden alfabético del nombre — donde `23.10.0` va **antes** que `23.5.0`, porque el `1` va antes que el `5`.
+
+De ahí salían las dos cosas a la vez: el checklist leía la versión vieja como «última» y decía que faltaba; y el instalador, leyendo lo mismo, creía que la versión había subido y escribía un registro más en cada corrida.
+
+| # | Qué hacer | Qué tiene que pasar | Qué salió |
+|---|---|---|---|
+| 1 | Instalar en un proyecto de mentira | Un registro, y `versiones` **no** aparece entre lo que falta | ✅ un registro · falta solo `cadena`, que es la excepción declarada |
+| 2 | Volver a instalar seguido | No se agrega registro | ✅ «ni las plantillas ni la versión cambiaron» · sigue habiendo uno |
+| 3 | Poner un registro viejo **del mismo día** (`23.5.0` junto al `23.11.0`) e instalar | No se agrega registro, y no pide una segunda pasada | ✅ los dos síntomas desaparecen |
+
+**Veredicto:** ✅ Cumple. **15 casos automatizados** en [validadores/tests/test_el_registro_de_version_no_se_duplica.py](../../../../../validadores/tests/test_el_registro_de_version_no_se_duplica.py), todos con la misma fecha a propósito: con fechas distintas el defecto no aparece, y así fue como pasó las pruebas la primera vez.
+
+**Lo que deja escrito, más allá del arreglo.** Una prueba que monta **un** caso no comprueba lo que dice comprobar cuando el defecto vive en el **orden entre varios**. `CP-005` decía «reinstalar sin novedad no agrega registro» y lo que medía era «con un registro, no agrega otro».
+
+---
+
 ## 3. Defectos encontrados
 
 | ID | Caso | Qué pasó | De quién era | Estado |
@@ -182,6 +205,7 @@ Dos cosas que no son de esta fase y no se tocaron ([`02·F20`](«RUTA-ESTANDAR»
 | CA-01 · no regresión — el hueco del proyecto sobrevive | CP-003 | ✅ |
 | CA-02 — queda registro de qué se actualizó | CP-004 | ✅ |
 | CA-02 · idempotencia — sin novedad no se registra | CP-005 | ✅ |
+| CA-02 · idempotencia con **varios** registros del mismo día | CP-007 | ✅ ciclo 3 |
 
 **Cobertura:** 4 de 4 exigencias con caso ejecutado = 100%.
 
@@ -192,7 +216,7 @@ Dos cosas que no son de esta fase y no se tocaron ([`02·F20`](«RUTA-ESTANDAR»
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Cumple** |
-| **CA cumplidos** | 2 de 2 (CA-01 y CA-02) |
+| **CA cumplidos** | 2 de 2 (CA-01 y CA-02) · el `CA-02` **volvió a cumplirse en el ciclo 3**, después de que un proyecto reportara que no se cumplía |
 | **CA en "No"** | ninguno |
 | **Defectos abiertos aceptados** | ninguno. El `DEF-01` y el `DEF-02` eran de la prueba y quedaron corregidos |
 | **Qué falta** | nada de pruebas. Queda el commit, que autoriza el usuario |

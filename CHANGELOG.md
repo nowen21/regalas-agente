@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.11.1 — 2026-08-18
+
+**PARCHE** (se arregla un defecto de la instalación; no cambia nada de lo que se exige).
+
+**Poner al día un proyecto pedía hacerlo dos veces, y dejaba una anotación de más.** La instalación escribía su constancia y, en la misma corrida, decía que faltaba escribirla. Al correrla otra vez —como el propio mensaje pedía— escribía una segunda constancia, vacía, siete segundos después de la primera.
+
+La causa era cómo se ordenaban esas anotaciones: se comparaban como texto, y así la versión «23.10.0» quedaba antes que la «23.5.0», porque el uno va antes que el cinco. Leyendo la vieja como la última salían las dos cosas a la vez. Ahora se comparan como números.
+
+**El detalle.** Es el [pendiente 62](pendientes/hecho/el-instalador-pide-una-segunda-pasada.md), reportado por `shopnest-mesa` al subir del `23.5.0` al `23.11.0` el mismo día. `versiones.registros()` ordenaba por `(fecha, sufijo)` y dejaba la versión fuera del criterio; con los dos registros del mismo día empataban y el desempate caía en el orden alfabético del nombre. De ahí salían los dos síntomas: el checklist leía la versión vieja como «última» y pedía el registro, y `registrar_version` creía que la versión había subido y escribía otro.
+
+Se reabrió la fase [`A-EP-007-HU-006`](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/A-EP-007-HU-006-poner-al-dia-lo-ya-instalado/README.md) en vez de abrir una nueva, con su ciclo 3 y 15 casos en [`test_el_registro_de_version_no_se_duplica.py`](validadores/tests/test_el_registro_de_version_no_se_duplica.py).
+
+**Por qué pasó las pruebas la primera vez:** el caso que lo cubría montaba **un** solo registro, y con uno no hay orden que equivocar. El caso estaba bien escrito; el montaje no alcanzaba.
+
 ## 23.11.0 — 2026-08-18
 
 **MENOR** (una regla nueva sobre cómo trabajar; ningún proyecto tiene que cambiar nada).

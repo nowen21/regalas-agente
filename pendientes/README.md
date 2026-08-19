@@ -273,7 +273,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Reportó |
 |---|---|---|---|
-| 62 | **P2** | [El instalador pide una segunda pasada y deja un registro vacío](62-el-instalador-pide-una-segunda-pasada-y-deja-un-registro-vacio.md) | `shopnest-mesa` |
+| 62 | **P2** | [El instalador pide una segunda pasada y deja un registro vacío](hecho/el-instalador-pide-una-segunda-pasada.md) | `shopnest-mesa` |
 
 ---
 
