@@ -66,6 +66,13 @@ _CITA = re.compile(r"\d{2}·[A-Z]")
 _ENCABEZADO = re.compile(r"^#{1,6} ")
 _SEPARADOR = " · "
 
+# `21 · Automatización de procesos` — **así se nombra un capítulo**, y no solo
+# en su encabezado: aparece igual en la tabla de letras, en el índice y en
+# cualquier cita. Eximirlo solo dentro de un `#` era la mitad de la decisión,
+# y la otra mitad se descubrió cuando el trinquete rechazó una fila de tabla
+# que decía exactamente lo mismo que un título ya eximido.
+_CAPITULO = re.compile(r"(?<!\d)\d{1,2} · ")
+
 _RAYA = "—"
 
 # `- **Algo:** ...` — la viñeta que abre con negrita y dos puntos.
@@ -112,9 +119,10 @@ def marcas_de_linea(linea):
 
     # El punto medio, descontando la cita `NN·ID` y —si es un encabezado— el
     # separador del título, que es notación de la casa y no adorno.
-    puntos = linea.count("·") - len(_CITA.findall(linea))
+    puntos = (linea.count("·") - len(_CITA.findall(linea))
+              - len(_CAPITULO.findall(linea)))
     if _ENCABEZADO.match(linea):
-        puntos -= linea.count(_SEPARADOR)
+        puntos -= linea.count(_SEPARADOR) - len(_CAPITULO.findall(linea))
     for _ in range(max(puntos, 0)):
         salida.append(("punto-medio", "punto medio (·) fuera de una cita `NN·ID`"))
 
@@ -277,6 +285,16 @@ def limpiar(raiz=None, carpetas=None, escribir=False):
 # momento de escribir enseña más que una limpieza de una sola vez.
 HEREDADO = ("base", "plantillas")
 
+# El bloque de checklist de una regla. Se reconoce igual que en `cargador.py`,
+# que ya lo trata aparte — y por el mismo motivo: **no es texto de nadie**.
+_SELLO = re.compile(r"(?ms)^(?:---\s*\n+)?### Checklist.*?(?=^## |\Z)")
+
+
+def _sin_sellos(texto):
+    """El texto sin los bloques de checklist."""
+    return _SELLO.sub("", texto)
+
+
 
 def _git(raiz, *args):
     import subprocess
@@ -295,9 +313,16 @@ def archivos_preparados(raiz):
 
 
 def _cuenta(texto):
-    """`{clave: cuántas}` de un texto, saltando código y bloques cercados."""
+    """`{clave: cuántas}` de un texto, saltando código, cercados y **sellos**.
+
+    **El sello no es prosa**: es el registro de haberle aplicado el checklist
+    a la regla, y su forma —`A · Dónde va`, `B · Cómo se identifica`— la fija
+    [`checklist.md`](../base/20-meta-reglas/checklist.md), no quien escribe.
+    Contarlo sería contar el molde, y ninguna limpieza podría arreglarlo sin
+    romper el sello. `cargador.py` ya trata el sello aparte por lo mismo.
+    """
     salida = {}
-    for _n, linea in lineas_utiles(texto):
+    for _n, linea in lineas_utiles(_sin_sellos(texto)):
         for clave, _nombre in marcas_de_linea(sin_codigo_en_linea(linea)):
             salida[clave] = salida.get(clave, 0) + 1
     return salida

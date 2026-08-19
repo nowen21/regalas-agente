@@ -54,7 +54,7 @@ Lo que se quitó no se perdió: **la fecha y quién la escribió ya los guarda e
 
 La plantilla abre ahora con la pregunta que separa señal de pendiente:
 
-| Si la frase dice… | Es | Va a |
+| Si la frase dice... | Es | Va a |
 |---|---|---|
 | qué pasó y qué se decidió | Señal | `documentacion/senales.md` |
 | qué falta hacer | Pendiente | `pendientes/`, con su historia |

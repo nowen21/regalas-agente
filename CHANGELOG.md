@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 25.1.0 — 2026-08-19
+
+**MENOR** (un capítulo opcional más; quien no construya con modelos no cambia nada).
+
+**Un programa corriente se rompe y avisa. Uno que decide con un modelo puede dejar de acertar sin que nada se rompa:** el código igual, las pruebas en verde, ningún error en los registros — y las respuestas ya no sirven, porque cambió la realidad de la que se aprendieron.
+
+Nace el capítulo opcional `22`, para los proyectos que entrenan un modelo, llaman al de un tercero, o dejan que una respuesta automática entre al flujo del negocio.
+
+**El detalle.** Del [pendiente 12](pendientes/hecho/patron-ia.md), con material del diplomado del usuario. Nueve reglas en [`base/22-sistemas-que-aprenden-de-datos.md`](base/22-sistemas-que-aprenden-de-datos.md) y la [ficha del modelo](plantillas/ficha-modelo.md). Se enciende como los demás opcionales: una línea en el `CLAUDE.md` del proyecto.
+
+**Lo que exige, en corto.** Que exista un inventario de qué modelos hay corriendo, antes que cualquier otra cosa. Que cada uno tenga a cargo **una persona con nombre** — un área no lee un aviso ni decide apagar nada. Que el control se gradúe por lo que la decisión puede dañar. Que **sugerir y ejecutar se autoricen por separado**, aunque sea el mismo modelo. Que uno que sigue aprendiendo se vuelva a revisar en un plazo escrito. Que se vigile si **sigue acertando**, no solo si responde. Que se diga de dónde salieron los datos y qué permiten. Que se escriba qué medida se le pidió perseguir y por qué esa. Y que apagarlo deje escrito qué queda decidiendo en su lugar.
+
+**Pidió el número `21` y le tocó el `22`:** el `21` se lo llevó la automatización de procesos hace un día.
+
+**No se le hizo plantilla propia al registro de decisiones.** Aprobar un modelo es una decisión de arquitectura y para eso ya está el `ADR`; un documento más habría sido el mismo contenido con otro nombre.
+
+**Y registrar las letras del capítulo nuevo destapó que faltaban las del anterior.** Las ocho reglas del `21` venían incumpliendo el molde desde que nacieron. Con las dos filas puestas, los incumplimientos del capítulo de meta-reglas bajaron de 35 a 27.
+
 ## 25.0.0 — 2026-08-19
 
 **MAYOR** ⚠ obliga a migrar (al guardar, el revisor rechaza el texto con caracteres invisibles nuevos).

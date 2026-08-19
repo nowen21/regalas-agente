@@ -7,8 +7,8 @@
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 74 |
-| **Completas** | 41 |
-| **Incompletas** | 33 |
+| **Completas** | 43 |
+| **Incompletas** | 31 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
 **Los dos números se corrigen en la misma edición en que se marca la casilla.** Cuando una fila queda con sus seis ☑, **Completas** sube uno e **Incompletas** baja uno — nunca se toca una sola de las dos. Si hace falta recontar desde cero, se cuenta la tabla: fila con seis ☑ es completa, cualquier otra es incompleta.
@@ -26,6 +26,10 @@
 > **2026-08-18, más tarde · sube a 34.** La [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) —comprobar las marcas de generación automática— cerró su fase `A`, **que llevaba un día detenida por una duda que su propio pendiente ya contestaba**.
 >
 > **2026-08-18, al final del día · sube a 35.** La [EP-005 · HU-002](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) —enmascarar la clave antes de escribirla— cerró la suya. Era la fase con daño vivo: hasta hoy, una clave pegada en el chat quedaba escrita en claro en un archivo que se versiona.
+>
+> **2026-08-19 · sube a 43.** [EP-001 · HU-008](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-008-derogacion-sin-borrar/) —la derogación sin borrar— y [EP-002 · HU-001](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-001-numero-de-version-y-que-significa/) —qué significa el número de versión— recibieron los dos documentos que les faltaban, y sus fases quedaron con los cinco.
+>
+> **Y la cifra escrita acá llevaba dos de retraso.** Lo dijo la prueba que compara este encabezado con lo que cuenta el programa, no una lectura: un inventario a mano se desactualiza el día que alguien cierra algo y no vuelve acá, que es siempre.
 >
 > **Y las seis histórias nuevas entran a la tabla.** Contaban en el total desde ayer, pero no tenían fila: el total decía 74 y la tabla listaba 68. Un inventario al que hay que creerle el encabezado porque su propia tabla no lo respalda no sirve de inventario.
 >

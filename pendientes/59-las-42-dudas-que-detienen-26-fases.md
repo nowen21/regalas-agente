@@ -194,7 +194,7 @@ Estas necesitan un dato que solo el usuario tiene. **Se proponen, con lo que dic
 | # | Propuesta | Por qué |
 |---|---|---|
 | 11 | **AgroSystem** (Laravel · PHP) y **RNI** (Angular + Python) | Son los dos stacks más distintos del registro, que es lo que la prueba necesita |
-| 12–15 | **shopnest-mesa** para las cuatro | Es el único que ya reporta al estándar, tiene estructura completa y carpeta de pendientes. Una respuesta para cuatro fases |
+| 12-15 | **shopnest-mesa** para las cuatro | Es el único que ya reporta al estándar, tiene estructura completa y carpeta de pendientes. Una respuesta para cuatro fases |
 
 **Falta el encargo chico y real de las dudas 14 y 15**, y ese no está en ningún archivo.
 

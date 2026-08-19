@@ -468,9 +468,9 @@ El 2026-08-18 se acortaron seis reglas y las reprobadas bajaron de **60 a 54**. 
 | `EST2` · Nomenclatura consistente | **(a)** una convención por tipo de elemento · **(b)** respetar los límites de longitud del motor | `EST4` |
 | `IM2` · Los tres estados | **(a)** los tres estados · **(b)** anular guarda cuándo, quién y el motivo | `IM6` |
 | `IM3` · Anular revierte en transacción | **(a)** la reversión es atómica · **(b)** avisar a los demás módulos para invalidar cachés | `IM7` |
-| `I3` · Accesibilidad mínima | **son cuatro puntos sueltos** — etiquetas, contraste, teclado, color. O es una sola regla («la interfaz cumple el mínimo de accesibilidad, que es esta lista») o son cuatro | `I7`… |
+| `I3` · Accesibilidad mínima | **son cuatro puntos sueltos** — etiquetas, contraste, teclado, color. O es una sola regla («la interfaz cumple el mínimo de accesibilidad, que es esta lista») o son cuatro | `I7`... |
 | `F4` · Todo plan lleva su plan de pruebas | **(a)** el plan se presenta y no se toca código sin OK · **(b)** autorizar el arranque de la fase no aprueba el plan detallado | `F25` |
-| `F12` · Relación y nomenclatura de fases | **son cuatro cosas distintas:** el consecutivo alfabético · el formato del nombre · la jerarquía épica → HU → fase · la ruta física | `F25`… |
+| `F12` · Relación y nomenclatura de fases | **son cuatro cosas distintas:** el consecutivo alfabético · el formato del nombre · la jerarquía épica → HU → fase · la ruta física | `F25`... |
 
 > **`F12` mide 1 898 caracteres y es la fuente única de cuatro asuntos.** Partirla toca **muchas citas**: hoy se la cita como `F12.2`, `F12.6`, `F12.11`, `F12.13` — o sea que ya se la está citando por partes. **Los subíndices existen porque la regla debería estar partida.**
 

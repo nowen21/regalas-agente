@@ -34,7 +34,7 @@ Lo que falta son los capítulos de dos dominios que el usuario ya trabaja y que 
 | Dominio | Capítulo | De dónde sale |
 |---|---|---|
 | RPA — soluciones con bots | por asignar | [pendientes/hecho/patrones-rpa.md](../../../../pendientes/hecho/patrones-rpa.md) |
-| IA — proyectos que construyen con modelos | `21` | [pendientes/12-patron-ia.md](../../../../pendientes/12-patron-ia.md) |
+| IA — proyectos que construyen con modelos | `21` | [pendientes/hecho/patron-ia.md](../../../../pendientes/hecho/patron-ia.md) |
 
 **No son dos historias.** Es la misma: lo que un capítulo opt-in de dominio tiene que traer, y cómo se enciende, no cambia según el dominio. Lo que cambia es el contenido, y ese es el trabajo de cada fase.
 
@@ -153,7 +153,7 @@ Y la corrida termina con error
 |---|---|---|---|---|---|
 | — | — | — | — | — | Sin empezar |
 
-**De dónde sale esta historia:** los pendientes [pendientes/hecho/patrones-rpa.md](../../../../pendientes/hecho/patrones-rpa.md) y [pendientes/12-patron-ia.md](../../../../pendientes/12-patron-ia.md), que son un capítulo cada uno.
+**De dónde sale esta historia:** los pendientes [pendientes/hecho/patrones-rpa.md](../../../../pendientes/hecho/patrones-rpa.md) y [pendientes/hecho/patron-ia.md](../../../../pendientes/hecho/patron-ia.md), que son un capítulo cada uno.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

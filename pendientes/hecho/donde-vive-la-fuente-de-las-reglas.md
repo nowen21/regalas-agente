@@ -23,7 +23,7 @@ Lo que quedó en claro:
 
 Una sola cosa: **qué es la fuente.**
 
-| Si la fuente es… | Qué pasa |
+| Si la fuente es... | Qué pasa |
 |---|---|
 | La base de datos | Se pierde ver qué cambió en una regla y aprobarlo antes de que rija. Habría que construir a mano el historial que git da gratis |
 | El texto, con la base **generada** a partir de él | Se gana consultar sin perder nada. La base se puede borrar y volver a generar; ninguna regla vive ahí |

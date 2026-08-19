@@ -185,6 +185,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`18` despliegue (opt-in):** `DP3` (que el artefacto promovido sea el mismo se decide mirando el proceso, no un archivo), `DP5` (que el plan de vuelta sirva lo dice quien lo lee) y `DP8` (correr contra producción lo autoriza una persona, y eso pasa fuera del repositorio).
 - **`19` observabilidad (opt-in):** `OB2` (qué le duele al usuario es criterio de producto), `OB5` (que un postmortem sea sin culpa lo juzga quien lo lee) y `OB6` (operar en vivo lo hace una persona).
 - **`21` automatización de procesos:** AU1, AU2, AU3, AU4, AU5, AU6, AU7, AU8 — **ninguna se valida en seco**: todas se comprueban contra el proceso y los sistemas que toca, que viven fuera del repositorio del estándar.
+- **`22` sistemas que aprenden de datos:** IA1, IA2, IA3, IA4, IA5, IA6, IA7, IA8, IA9 — **ninguna se valida en seco**: todas hablan de lo que decide un modelo en marcha y de quién responde por él, y eso no está en el repositorio. Lo único comprobable desde acá sería que exista la ficha, y una ficha vacía pasaría igual.
 
 > **Los capítulos `18` y `19` entraron a este registro el 2026-08-16**, en la fase `A-EP-001-HU-009`. Nacieron después de la foto del 2026-08-05 y no aparecían ni una vez, ni siquiera para decir que no se validan. Ser **opt-in no exime**: `20·M9` no exceptúa a las reglas opcionales, y no clasificarlas es lo que las volvió invisibles.
 

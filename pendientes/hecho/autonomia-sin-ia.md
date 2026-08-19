@@ -493,7 +493,7 @@ El pendiente lo pedía así, y tenía razón:
 
 ### Dos negativas que son el programa entero
 
-| Si… | Entonces |
+| Si... | Entonces |
 |---|---|
 | No hay respaldo declarado | **no se corre la operación** |
 | El respaldo falla | **no se corre la operación** |

@@ -44,7 +44,7 @@ Y de la diapositiva de sistemas autónomos: mientras la máquina sugiere, el err
 
 ## Por qué conviene hacerlo antes que otros
 
-Es barato (es una lista y una tabla, no un programa) y desbloquea cosas: el ítem 15 del [pendiente 09](autonomia-sin-ia.md) (respaldo antes de operación irreversible) hoy no sabe contra qué lista comparar, y esta es esa lista. El [pendiente 12](../12-patron-ia.md) necesita la misma tabla de riesgo para los modelos de un proyecto, así que se escribe una vez y se usa dos veces.
+Es barato (es una lista y una tabla, no un programa) y desbloquea cosas: el ítem 15 del [pendiente 09](autonomia-sin-ia.md) (respaldo antes de operación irreversible) hoy no sabe contra qué lista comparar, y esta es esa lista. El [pendiente 12](patron-ia.md) necesita la misma tabla de riesgo para los modelos de un proyecto, así que se escribe una vez y se usa dos veces.
 
 ## El límite
 

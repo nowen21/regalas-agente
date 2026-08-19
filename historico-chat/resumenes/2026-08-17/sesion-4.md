@@ -759,6 +759,55 @@ Al escribirle a `00·N1` su excepción en la forma de `M8`, marqué la fila 16 d
 
 **Lo que enseña.** Cuando la deuda **sigue creciendo**, el orden correcto no es el que está escrito en el pendiente: es cerrar la llave y después limpiar. Y el trinquete —*no exijo que limpies, exijo que no agregues*— es lo que permite poner una regla dura sobre un repositorio que no la cumple.
 
+### H-60 · Un capítulo nuevo se escribe entero y se olvida su fila en los registros
+
+**Qué pasó.** Al registrar el prefijo `IA` del capítulo `22` en [`estructura-regla.md`](../../../base/20-meta-reglas/estructura-regla.md), apareció que el `AU` del capítulo `21` **nunca se había registrado**. Sus ocho reglas venían incumpliendo `20·M4` desde que nacieron, un día antes. Con las dos filas puestas, los incumplimientos de `metareglas` bajaron de **35 a 27**.
+
+**Es la tercera vez.** Antes pasó con `18` y `19`, que no aparecían en [`reglas-validables.md`](../../../validadores/reglas-validables.md) ni para decir que no se validan — y quedó escrito ahí mismo que *«ser opt-in no exime»*.
+
+**Lo que enseña.** El capítulo se escribe completo, se lee bien y **no delata nada**: lo que falta no está en él, está en otro archivo. Un capítulo nuevo tiene al menos tres inscripciones fuera de sí mismo —la letra en `estructura-regla.md`, la clasificación en `reglas-validables.md`, el interruptor en la plantilla del `CLAUDE.md`— y las tres se olvidan por separado.
+
+**Dónde queda.** Las tres puestas para el `21` y el `22`. **Lo que no queda hecho es que se detecte solo**: hoy `metareglas` sí caza la letra sin registrar y `M9` sí caza la regla sin clasificar — el interruptor de la plantilla no lo mira nadie.
+
+### H-61 · El capítulo de los sistemas que aprenden, y el punto donde el estándar ya tenía la respuesta
+
+**Qué pasó.** Se escribió el capítulo opt-in [`22`](../../../base/22-sistemas-que-aprenden-de-datos.md) del [pendiente 12](../../../pendientes/hecho/patron-ia.md), con material del diplomado. Nueve reglas.
+
+**Dos partes salieron de lo que ya estaba escrito, no del material:**
+
+- **`IA3`** —graduar el control por lo que la decisión puede dañar— es la tabla de [`acciones-y-riesgo.md`](../../../base/00-identidad-y-rol/acciones-y-riesgo.md), escrita ayer para el agente, aplicada a las decisiones de un modelo. El propio pendiente lo había previsto: *«conviene escribir primero el 13 y reusar su tabla acá»*.
+- **`IA4`** —sugerir y ejecutar se autorizan por separado— es el mismo corte de [`02·F25`](../../../base/02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md), partida hoy mismo: **que algo esté autorizado no autoriza el paso siguiente, por parecido que sea.**
+
+**Y una plantilla no se hizo a propósito.** El pendiente pedía dos; el registro de decisiones ya lo cubre el `ADR`. Un documento nuevo habría sido el mismo contenido con otro nombre.
+
+**Lo que enseña.** Cuando un capítulo de dominio se escribe **después** de que el estándar tiene su núcleo, la mitad de sus reglas no son nuevas: son una regla general cayendo sobre un caso concreto. Escribirlas como si fueran nuevas es lo que duplica.
+
+### H-62 · El trinquete rechazó su primer commit, y era el mío
+
+**Qué pasó.** El commit del capítulo `22` —escrito una hora después de enganchar el trinquete— salió rechazado con **siete fallas**. No es un falso positivo: **es lo que se construyó para que pasara**, funcionando el mismo día.
+
+**Pero de las siete, cuatro no eran marcas:**
+
+- **63 puntos medios del bloque de sello** —`A · Dónde va`, `B · Cómo se identifica`—. Esa forma la fija [`checklist.md`](../../../base/20-meta-reglas/checklist.md), no quien escribe. [`cargador.py`](../../../validadores/cargador.py) ya trataba el sello aparte, por el mismo motivo: **no es texto de nadie**.
+- **`21 · Automatización de procesos` en una fila de tabla.** Así se nombra un capítulo, y estaba eximido **solo dentro de un encabezado** — la mitad de la decisión.
+
+Las otras tres sí eran mías, y se reescribieron a mano en dos minutos. **Eso es exactamente el costo que el trinquete tiene que tener.**
+
+**Dónde queda.** El sello y el nombre de capítulo, eximidos en [`marcas.py`](../../../validadores/marcas.py). El recuento total baja de 15 936 a **14 101**.
+
+**Lo que enseña.** Un enganche que bloquea **se estrena contra su autor**, y ahí es donde se ve si el reparto está bien puesto. Si el primer rechazo hubiera sido todo ruido, el enganche se apagaba esa tarde. Cuatro de siete lo eran, y por eso hubo que arreglarlo antes de seguir — no después.
+
+**Y es la cuarta vez que aparece el mismo error de fondo.** Punto medio de título, marcador `«…»`, bloque de sello, nombre de capítulo: **cuatro cosas que se ven como adorno y son notación**. La pregunta que las separa no es *«esto adorna?»* sino **«quién lee esto además de una persona?»**.
+
+### H-63 · Dos pruebas que ya existían cazaron lo que la lectura no
+
+**El capítulo nuevo pasó el validador del estándar y las meta-reglas, y aun así tenía dos defectos:**
+
+- Una cita a `12·PR`, que **no es el identificador de ninguna regla**, y un enlace a `00·N1` sin su ancla. Lo encontró `test_citas_y_enlaces_de_ejemplo`, que exige que el reparador de citas **no quiera tocar nada** de `base/`.
+- El inventario de historias escrito a mano en el [pendiente 48](../../../pendientes/48-inventario-hu.md) llevaba **dos de retraso**. Lo dijo la prueba que compara ese encabezado con lo que cuenta el programa.
+
+**Lo que enseña.** Las dos pruebas comparan **un documento contra lo que la máquina calcula del mismo hecho**. Ninguna revisa redacción; las dos revisan que dos fuentes no se hayan separado. Es la clase de prueba que no encuentra nada durante semanas y después encuentra lo único que nadie iba a ver leyendo.
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -769,7 +818,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **11** abiertos, cada uno con su historia declarada |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **10** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
 | Lo que se hizo está aprobado y guardado | ☑ hasta `d0c900c` (publicado) · ☐ **falta el commit de la 23.11.1** |
 

@@ -27,7 +27,7 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24*
 
 ## Abiertos
 
-### Garantía y sostenimiento del estándar (01–06, en orden)
+### Garantía y sostenimiento del estándar (01-06, en orden)
 
 | # | P | Pendiente | Qué resuelve | Por qué va aquí |
 |---|---|---|---|---|
@@ -38,15 +38,15 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24*
 | ~~05~~ | — | **hecho** → [Memoria semántica](hecho/memoria-semantica.md) | Búsqueda híbrida (FTS5 ∪ semántica) local y opcional; `model2vec` + coseno en numpy. | Encuentra por significado lo que la palabra no alcanza. Cerrado 2026-08-06 (la detección de contradicciones queda como mejora sobre esta base). |
 | ~~06~~ | — | **hecho** → [Métricas del proceso](hecho/metricas-del-proceso.md) | Lee `senales.db` y reporta deuda abierta/cerrada, vigencia y pulso de señales. | Para decidir qué reglas cambiar, no para calificar. Cerrado 2026-08-06 (falta lo que necesita instrumentación nueva). |
 
-### Patrones opt-in de dominio (07–08 y 12, fuera de la fila)
+### Patrones opt-in de dominio (07-08 y 12, fuera de la fila)
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | ~~07~~ | — | **hecho** → [Patrones DevOps 18 y 19](hecho/patrones-devops.md) | Capítulos opt-in `18` (despliegue/infra) y `19` (observabilidad/operación) + plantillas. Cerrado 2026-08-06 (v1.1.0). |
 | 08 | **P6** | [Patrón RPA](hecho/patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
-| 12 | **P6** | [Patrón IA](12-patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. Está casi listo para redactarse, y reusa la tabla de riesgo del [13](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md). |
+| 12 | **P6** | [Patrón IA](hecho/patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. Está casi listo para redactarse, y reusa la tabla de riesgo del [13](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md). |
 
-Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps, RPA o IA, se adelantan sin esperar la fila.
+Estos tres **no dependen de 01-06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01-06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps, RPA o IA, se adelantan sin esperar la fila.
 
 ### Backlog temático (09)
 
@@ -74,7 +74,7 @@ Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porqu
 
 Depende del validador de la parte mecánica de `ID8`: sin él, el recuento sobre 200 archivos se hace a mano. **Bloqueado de hecho** — no se mueve hasta que el script exista.
 
-### El estándar aplicado a sí mismo (13–16)
+### El estándar aplicado a sí mismo (13-16)
 
 Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../proyecto-grado/diplomado-ia/`) contra este repo. Son la primera aplicación de la idea 1 de [10-ideas](10-ideas.md): que lo que el usuario aprende en el posgrado entre al estándar. Los cuatro parten de lo mismo, y es que el estándar le exige a los proyectos cosas que no se exige a sí mismo.
 
@@ -87,7 +87,7 @@ Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../p
 
 **El 13 conviene primero:** es una lista y una tabla, y el 12 reusa esa misma tabla de riesgo para los modelos de un proyecto. El 16 se resuelve al escribirlo, no construyendo nada.
 
-### Lo que dejaron las sesiones del 2026-08-14 (17–25)
+### Lo que dejaron las sesiones del 2026-08-14 (17-25)
 
 Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md). Del 23 al 25 salieron de cerrar el hallazgo H-4 de esa sesión, y quedaron en el [suyo](../historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md).
 
@@ -109,7 +109,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
-### Lo que dejó un proyecto real (30, 34–36)
+### Lo que dejó un proyecto real (30, 34-36)
 
 Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código. Es la primera vez que un pendiente nace de un proyecto ajeno al estándar y no de trabajar el estándar mismo — que es justamente lo que el [pendiente 01](hecho/validadores-de-codigo-de-proyecto.md) decía que hacía falta.
 
@@ -124,7 +124,7 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 
 **Lo que el 34 dejó a medias vive en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
 
-### Lo que dejó revisar el histórico (31–33)
+### Lo que dejó revisar el histórico (31-33)
 
 Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-15/los-resumenes-que-faltan.md).
 
@@ -157,7 +157,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 |---|---|---|---|
 | ~~39~~ | — | **hecho** → [La memoria que borró el enganche](hecho/memoria-borrada-por-el-enganche.md) | El 2026-08-07 `recuerdos.py` borró memoria. Lo reportó **`agro-system`**, que era el único proyecto con el almacén enlazado por *junction* —la condición que dispara el defecto— y que ya se recuperó. El código está corregido desde la 3.1.1. Cerrado 2026-08-16, al comprobar que ninguna otra carpeta de memoria, ni del registro ni de la herramienta, estuvo enlazada. |
 
-### Lo que dejó la sesión de la derogación (37–38)
+### Lo que dejó la sesión de la derogación (37-38)
 
 Salieron de escribir [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md), y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-16/sesion.md).
 
@@ -166,7 +166,7 @@ Salieron de escribir [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avanc
 | 37 | **P3** | [Dónde vive la fuente de las reglas](hecho/donde-vive-la-fuente-de-las-reglas.md) | Si las reglas pueden guardarse en una base de datos, o el texto sigue mandando y la base se genera de él. Falta la decisión del usuario, y sin ella la discusión vuelve a empezar de cero. |
 | ~~38~~ | — | **hecho** → [El validador de la F22 tiene su fase](hecho/el-validador-de-la-f22-tiene-su-fase.md) | Retrodocumentado como fase `A` de [EP-004 · HU-015](../documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/HU-015-derogacion-sin-adoptar.md), sin tocar una línea de producción, y con cuatro casos que corren contra las derogaciones reales. Cerrado 2026-08-16 (v21.3.1). **Se supo algo:** al trabajo sin cadena no le faltaba documentación —la tenía— sino prueba. |
 
-### Lo que dejó cerrar un pendiente sin fase (40–42)
+### Lo que dejó cerrar un pendiente sin fase (40-42)
 
 Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fase, así que nadie escribió el plan de pruebas y el arreglo se publicó sin probarse. De ahí nació [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md), y estos dos son el defecto que se coló. Quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-16/un-pendiente-no-es-un-plan.md).
 
@@ -180,7 +180,7 @@ Salieron de que la [20.0.1](../CHANGELOG.md) se ejecutó sin bajar a HU ni a fas
 
 **Es el primer pendiente que se cierra por la cadena de [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)**, la regla que nació el mismo día porque este defecto se coló. Y la prueba de que sirve está en el propio cierre: el criterio del plan salió mal escrito, la prueba lo destapó y se corrigió antes de publicar — que es exactamente lo que no pasó la vez anterior.
 
-### Lo que dejó un proyecto real, segunda tanda (43–44)
+### Lo que dejó un proyecto real, segunda tanda (43-44)
 
 Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pendiente de seguimiento abierto: **al cerrarlos hay que avisarle**, o quedan esperando para siempre.
 
@@ -191,7 +191,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 
 **El 44 era hermano del [42](hecho/poner-al-dia-lo-ya-instalado.md)**, y por eso se cerraron en una sola fase: los dos eran el instalador decidiendo por huella y quedándose corto cuando la huella no cambia. Separarlos habría dejado dos parches sobre la misma decisión.
 
-### Lo que dejó cerrar los dos anteriores (45–46)
+### Lo que dejó cerrar los dos anteriores (45-46)
 
 | # | P | Pendiente | Origen | Qué resuelve |
 |---|---|---|---|---|
@@ -202,7 +202,7 @@ Los reporta `shopnest-mesa` y los corrige esta casa. Cada uno tiene allá un pen
 
 **El 46 es la otra mitad de lo mismo.** El [44](hecho/poner-al-dia-lo-ya-instalado.md) hizo que el registro se escriba; el 46 es que se escribe diciendo que no se escribió. Lo reporta `dp` el mismo día en que corrió el instalador que trae la corrección del 44, así que es el primer proyecto que ve el residuo.
 
-### Lo que dejó resolver los ocho `P1` (53–56)
+### Lo que dejó resolver los ocho `P1` (53-56)
 
 Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen de esa sesión](../historico-chat/resumenes/2026-08-16/sesion-7.md). Los tres primeros son del mismo tipo: **hallazgos que no se pueden creer**, unos por callar y otros por hablar de más.
 

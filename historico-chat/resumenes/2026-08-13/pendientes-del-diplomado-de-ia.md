@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-pendientes-del-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —, el orden está en el índice de pendientes.
-- **Dónde queda:** [pendientes 13 a 16](../../../pendientes/README.md) y el [12](../../../pendientes/12-patron-ia.md).
+- **Dónde queda:** [pendientes 13 a 16](../../../pendientes/README.md) y el [12](../../../pendientes/hecho/patron-ia.md).
 - **Nace en:** 2026-08-13 · pendientes del diplomado de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** el 13 primero: es una lista y una tabla, y desbloquea a los otros dos.

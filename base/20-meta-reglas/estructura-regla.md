@@ -85,6 +85,8 @@ Es el renglón de arriba: el nombre de la regla. Tiene cinco piezas.
 | `DP` | 18 · Despliegue | Cómo se pone el programa a funcionar de verdad, sin hacerlo a mano. |
 | `OB` | 19 · Observación y operación | Poder ver desde fuera si el sistema está bien o está fallando. |
 | `M` | 20 · Meta-reglas | Cómo son las reglas: esta lista, este molde, cómo se agrega una nueva. |
+| `AU` | 21 · Automatización de procesos | Un proceso que corre solo contra sistemas que no se pueden cambiar. |
+| `IA` | 22 · Sistemas que aprenden de datos | Un modelo decide o sugiere, y puede dejar de acertar sin que nada se rompa. |
 
 Si nace un capítulo nuevo, elige unas letras que no estén en esta lista y **se agrega aquí**. Las letras de un capítulo no se reciclan aunque el capítulo se quede sin reglas.
 
