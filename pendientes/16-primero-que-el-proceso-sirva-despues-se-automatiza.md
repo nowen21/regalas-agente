@@ -45,3 +45,26 @@ Si la segunda respuesta es «porque estaba mal escrita», lo que toca es arregla
 ## El riesgo de este criterio
 
 Que se use como excusa para no automatizar nunca, porque siempre se puede decir que el proceso todavía no está maduro. El corte es concreto: si la regla se viene cumpliendo bien a mano y lo que falla es acordarse, se automatiza ya. Una regla que se cumple cuando alguien se acuerda, no se cumple, y esa frase también es del 09.
+
+---
+
+# Dónde encalla de verdad — medido el 2026-08-18
+
+**No es que falte una fase: es que falta el criterio.**
+
+Este pendiente está enrutado a [EP-001 · HU-007](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) porque es «la regla de las reglas». Pero sus tres criterios de aceptación son:
+
+| | Qué exige |
+|---|---|
+| `CA-01` | una regla nueva se enruta al capítulo correcto |
+| `CA-02` | una regla atada a un stack no entra |
+| `CA-03` | una regla que exige dos cosas se parte antes de entrar |
+
+**Ninguno cubre lo que este pendiente pide.** Y por [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA **es** la especificación: construir fuera de ella es lo que [`02·F20`](../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda proponer, no hacer.
+
+**Así que hace falta una de dos, y las dos son del usuario:**
+
+1. **Un criterio nuevo en `HU-007`.** Cambia la historia, que ya tiene una fase cerrada contra los tres actuales.
+2. **Una historia propia.** Más limpio, y deja `HU-007` como está.
+
+> **Es el mismo hueco del [pendiente 60](60-nadie-es-dueno-del-texto-del-capitulo-02.md), un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Enrutar un pendiente a una historia no lo deja construible: hay que mirar si algún criterio lo cubre.

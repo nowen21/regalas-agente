@@ -598,9 +598,13 @@ Cerró el [pendiente 58](../../../pendientes/hecho/nada-hace-cumplir-id9.md), qu
 
 El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [pendiente 16](../../../pendientes/16-primero-que-el-proceso-sirva-despues-se-automatiza.md) —que una regla no se automatiza hasta saber que sirve— **piden los dos una meta-regla nueva**, y los dos se atascan en lo mismo: la fase `A` de `EP-001·HU-007` es retrodocumentación y excluye escribir reglas nuevas.
 
-**Hace falta una fase `B`, y conviene que las dos vayan en la misma.**
-
 **Y escribir solo la plantilla no sirve**, que era la salida fácil: el propio punto 2 dice que sin disparador el barrido *«es un favor, no una norma»*. Una plantilla sin regla que la exija reproduce el defecto que describe.
+
+**Al ir a escribir esa fase `B` apareció que tampoco cabe ahí.** Los tres criterios de `HU-007` son: enrutar al capítulo correcto, rechazar lo atado a un stack, y partir la que exige dos cosas. **Ninguno cubre el barrido ni «validable no es ya validar».**
+
+> **No falta una fase: falta un criterio.** Por [`02·F19`](../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA **es** la especificación, así que construir fuera de ella es lo que `F20` manda proponer, no hacer.
+
+**Es el hueco del [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md) un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Y deja una lección para el enrutamiento que se hizo ayer: **enrutar un pendiente a una historia no lo deja construible** — hay que mirar si algún criterio lo cubre, y eso no se hizo.
 
 ---
 
