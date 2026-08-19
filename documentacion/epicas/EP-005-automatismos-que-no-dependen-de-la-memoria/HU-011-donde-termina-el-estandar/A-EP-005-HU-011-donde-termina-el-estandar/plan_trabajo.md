@@ -11,7 +11,7 @@
 | **CA que cubre** | `CA-01`, `CA-02`, `CA-03` |
 | **Fecha** | 2026-08-18 |
 
-**ORIGEN**: 🔀 **híbrido**. `CA-01` y `CA-02` se **retro-documentan** — el mapa se escribió el 2026-08-18 al bajar el punto 1 del [pendiente 15](../../../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md). `CA-03` es ✨ **funcionalidad nueva**: no existe.
+**ORIGEN**: 🔀 **híbrido**. `CA-01` y `CA-02` se **retro-documentan** — el mapa se escribió el 2026-08-18 al bajar el punto 1 del [pendiente 15](../../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md). `CA-03` es ✨ **funcionalidad nueva**: no existe.
 
 ## 1. Objetivo
 

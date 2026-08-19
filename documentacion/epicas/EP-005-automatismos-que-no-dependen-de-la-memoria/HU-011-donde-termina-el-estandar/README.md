@@ -8,4 +8,4 @@ Contenido inmediato de esta carpeta.
 
 Todavía no tiene fases, pero **no la detiene nada**: el mapa se escribe leyendo lo que ya existe. Es lo más barato de su pendiente y lo único que se puede hacer antes de que aparezca una segunda herramienta.
 
-De dónde sale: el punto 1 del [pendientes/15-el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md).
+De dónde sale: el punto 1 del [pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md).

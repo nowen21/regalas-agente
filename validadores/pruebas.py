@@ -2099,6 +2099,11 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
     """
 
     VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+    # Los enganches se mudaron al adaptador el 2026-08-19: `validadores/`
+    # es lo que sirve con cualquier agente, y esto existe porque **esta**
+    # herramienta lo llama.
+    ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                             "adaptadores", "claude-code")
 
     def _hay_git(self):
         try:
@@ -2139,7 +2144,7 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
         entrada = json.dumps({"session_id": sesion, "cwd": raiz,
                               "prompt": prompt, "transcript_path": ""})
         return subprocess.run(
-            [sys.executable, os.path.join(self.VALIDADORES, guion),
+            [sys.executable, os.path.join(self.ADAPTADOR, guion),
              "--modo", modo, "--raiz", raiz],
             input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
 
@@ -2443,11 +2448,16 @@ class DisparoAlEscribirUnArchivo(unittest.TestCase):
     """El disparo al escribir — EP-005 · HU-003."""
 
     VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+    # Los enganches se mudaron al adaptador el 2026-08-19: `validadores/`
+    # es lo que sirve con cualquier agente, y esto existe porque **esta**
+    # herramienta lo llama.
+    ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                             "adaptadores", "claude-code")
 
     def _correr(self, raiz, archivo):
         entrada = json.dumps({"cwd": raiz, "tool_input": {"file_path": archivo}})
         return subprocess.run(
-            [sys.executable, os.path.join(self.VALIDADORES, "hook_md.py"),
+            [sys.executable, os.path.join(self.ADAPTADOR, "hook_md.py"),
              "--raiz", raiz],
             input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
 
@@ -2606,6 +2616,11 @@ class _ProyectoDePrueba(unittest.TestCase):
     """Base de las clases de EP-007: un proyecto temporal con git."""
 
     VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+    # Los enganches se mudaron al adaptador el 2026-08-19: `validadores/`
+    # es lo que sirve con cualquier agente, y esto existe porque **esta**
+    # herramienta lo llama.
+    ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                             "adaptadores", "claude-code")
 
     def _proyecto(self, nombre="proyecto"):
         if not shutil.which("git"):
@@ -2774,7 +2789,7 @@ class GenerarLosAutomatismos(_ProyectoDePrueba):
                             ("hook_recuerdos.py", []),
                             ("hook_resumen.py", ["--modo", "inicio"])):
             salida = subprocess.run(
-                [sys.executable, os.path.join(self.VALIDADORES, guion),
+                [sys.executable, os.path.join(self.ADAPTADOR, guion),
                  *args, "--raiz", vacio],
                 input=entrada, capture_output=True, text=True, encoding="utf-8", timeout=60)
             self.assertEqual(salida.returncode, 0,
@@ -3529,14 +3544,19 @@ class TodoEnganchePreparaSuSalida(unittest.TestCase):
     """
 
     VALIDADORES = os.path.dirname(os.path.abspath(__file__))
+    # Los enganches se mudaron al adaptador el 2026-08-19: `validadores/`
+    # es lo que sirve con cualquier agente, y esto existe porque **esta**
+    # herramienta lo llama.
+    ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                             "adaptadores", "claude-code")
 
     def test_los_seis_enganches_llaman_a_preparar_salida(self):
-        enganches = sorted(f for f in os.listdir(self.VALIDADORES)
+        enganches = sorted(f for f in os.listdir(self.ADAPTADOR)
                            if f.startswith("hook_") and f.endswith(".py"))
         self.assertGreaterEqual(len(enganches), 6, "faltan enganches por revisar")
         sin_preparar = [f for f in enganches
                         if "preparar_salida()" not in
-                        comun.leer(os.path.join(self.VALIDADORES, f))]
+                        comun.leer(os.path.join(self.ADAPTADOR, f))]
         self.assertEqual(sin_preparar, [],
                          f"enganches que no preparan su salida: {sin_preparar}")
 

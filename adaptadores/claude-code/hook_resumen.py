@@ -28,7 +28,12 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
+# acá sólo está lo que habla con esta herramienta.
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "validadores"))
 import historico                        # noqa: E402
 import resumen as R                     # noqa: E402
 from comun import preparar_salida       # noqa: E402
@@ -182,7 +187,12 @@ def main():
         entrada = {}
     raiz = args.raiz or entrada.get("cwd") or os.getcwd()
     sesion = entrada.get("session_id", "")
-    estandar = args.estandar or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # **Tres niveles, no dos**: este archivo vive en
+    # `adaptadores/claude-code/`, no en `validadores/`. Contar mal los
+    # niveles no revienta — apunta a una carpeta que existe y el
+    # enganche deja de escribir en silencio, que es peor.
+    estandar = args.estandar or os.path.dirname(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))))
 
     try:
         texto = (inicio(raiz, sesion, estandar) if args.modo == "inicio"

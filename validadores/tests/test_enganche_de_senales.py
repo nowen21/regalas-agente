@@ -23,6 +23,13 @@ import unittest
 VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, VALIDADORES)
 
+# Los enganches viven en el adaptador desde el 2026-08-19, no en
+# `validadores/`: `validadores/` es lo que sirve con cualquier agente.
+ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                         "adaptadores", "claude-code")
+sys.path.insert(0, ADAPTADOR)
+
+
 import hook_senales   # noqa: E402
 
 
@@ -97,7 +104,7 @@ class NoDetieneElTrabajo(unittest.TestCase):
 
     def _correr(self, raiz):
         return subprocess.run(
-            [sys.executable, os.path.join(VALIDADORES, "hook_senales.py"),
+            [sys.executable, os.path.join(ADAPTADOR, "hook_senales.py"),
              "--raiz", raiz],
             capture_output=True, text=True, encoding="utf-8",
             errors="replace", timeout=30)

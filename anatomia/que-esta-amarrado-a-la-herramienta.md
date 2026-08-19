@@ -1,6 +1,6 @@
 # Qué sobrevive si mañana el agente es otro
 
-**Medido el 2026-08-18**, del punto 1 del [pendiente 15](../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md). Contesta una sola pregunta: **si el usuario deja de trabajar con esta herramienta, ¿qué se queda y qué se cae?**
+**Medido el 2026-08-18**, del punto 1 del [pendiente 15](../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md). Contesta una sola pregunta: **si el usuario deja de trabajar con esta herramienta, ¿qué se queda y qué se cae?**
 
 Hasta hoy nadie lo sabía. Las reglas son texto y sirven en cualquier parte; **lo que las hace cumplir, no** — y no había ningún archivo que dijera cuáles piezas están amarradas.
 
@@ -11,6 +11,28 @@ Hasta hoy nadie lo sabía. Las reglas son texto y sirven en cualquier parte; **l
 | 🟢 **Sirve con cualquiera** | Texto y programas que solo leen y escriben archivos | **Se queda entero** |
 | 🟡 **Adaptador** | Lo que habla con *esta* herramienta: sus enganches, su archivo de entrada, su formato | **Hay que rehacerlo** |
 | ⚪ **De la máquina** | Rutas locales, configuración que no se versiona | No viaja, y no debe |
+
+## 2026-08-19 · el adaptador se mudó a su propia carpeta
+
+**Los ocho `hook_*` ya no viven en `validadores/`.** Están en
+[`adaptadores/claude-code/`](../adaptadores/claude-code/), y el contrato de qué
+necesita el estándar de cualquier agente está en
+[`adaptadores/contrato.md`](../adaptadores/contrato.md).
+
+**La frontera, en una línea:** `validadores/` es lo que sirve con cualquier
+agente; `adaptadores/` es lo que existe **porque una herramienta concreta lo
+llama**.
+
+**El recuento no cambia, y eso es lo importante.** Siguen siendo 18 amarradas
+de 59: `validar.py amarre` mira **las dos carpetas**. Mirar solo `validadores/`
+habría dicho «10 de 51» y habría sonado a mejora, cuando lo que hubo fue una
+mudanza — y un adaptador que nadie mira vuelve a ser el problema que este mapa
+vino a resolver.
+
+**Los proyectos instalados se enteran solos.** La ruta vieja quedó vencida en
+su `.claude/settings.json`, y `checklist.py` compara el comando exacto: lo
+reporta en el primer mensaje de la siguiente sesión, y el instalador lo
+reemplaza.
 
 ## Los programas: 18 amarrados de 59
 

@@ -41,20 +41,35 @@ MARCA = re.compile(
 EXENTOS = ("amarre.py",)
 
 
+# **Las dos carpetas donde puede haber código, y por eso son dos.**
+#
+# El 2026-08-19 los ocho enganches se mudaron a `adaptadores/claude-code/`.
+# Mirar solo `validadores/` habría dejado el amarre **fuera del recuento** justo
+# después de reúnirlo: el mapa habría dicho «diez amarrados de 51» y sonaría a
+# mejora, cuando lo que pasó fue una mudanza.
+#
+# Y hacia adelante importa más: un adaptador nuevo que nadie mire vuelve a ser
+# el problema que este mapa vino a resolver.
+CARPETAS = (os.path.join("validadores"),
+            os.path.join("adaptadores", "claude-code"))
+
+
 def piezas(raiz=None):
-    """`{nombre: cuántas marcas}` de cada programa de `validadores/`."""
+    """`{nombre: cuántas marcas}` de cada programa, en las dos carpetas."""
     raiz = raiz or comun.RAIZ
-    carpeta = os.path.join(raiz, "validadores")
-    if not os.path.isdir(carpeta):
-        return {}
     salida = {}
-    for nombre in sorted(os.listdir(carpeta)):
-        if not nombre.endswith(".py") or nombre in EXENTOS:
+    for rel in CARPETAS:
+        carpeta = os.path.join(raiz, rel)
+        if not os.path.isdir(carpeta):
             continue
-        try:
-            salida[nombre] = len(MARCA.findall(leer(os.path.join(carpeta, nombre))))
-        except OSError:
-            continue
+        for nombre in sorted(os.listdir(carpeta)):
+            if not nombre.endswith(".py") or nombre in EXENTOS:
+                continue
+            try:
+                salida[nombre] = len(MARCA.findall(
+                    leer(os.path.join(carpeta, nombre))))
+            except OSError:
+                continue
     return salida
 
 

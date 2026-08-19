@@ -432,7 +432,7 @@ El pendiente proponía reescribir el bloque entre dos marcas. **Al mirarlo de ce
 
 ### Lo comprobó otro validador de hoy
 
-Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](../15-el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
+Al escribir `indices.py`, **el mapa del amarre lo reportó como pieza sin clasificar** — el que se construyó esta misma tarde para el [15](el-estandar-depende-de-una-sola-herramienta.md). Funcionó a la primera y contra un caso real, no contra uno inventado.
 
 
 ## 10 · la marca de fase reabierta, construida

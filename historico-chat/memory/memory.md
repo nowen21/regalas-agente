@@ -55,4 +55,4 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | [Pregunta, afirmación o indicación](pregunta-no-es-instruccion.md) | Pregunta: solo se responde. Observación: se explica y se espera. Indicación: se ejecuta. En la duda, no se toca. |
 | [Convención de commits](sin-coauthored-by.md) | El cuerpo arranca con la idea del usuario y sigue con lo que hizo el agente; nunca `Co-Authored-By`. |
 
-<!-- huella: 83db0387a355 · estandar 24.4.0 -->
+<!-- huella: 83db0387a355 · estandar 25.2.0 -->

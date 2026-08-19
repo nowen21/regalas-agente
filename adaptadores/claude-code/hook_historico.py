@@ -29,7 +29,12 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
+# acá sólo está lo que habla con esta herramienta.
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "validadores"))
 
 import historico                        # noqa: E402
 from comun import preparar_salida       # noqa: E402

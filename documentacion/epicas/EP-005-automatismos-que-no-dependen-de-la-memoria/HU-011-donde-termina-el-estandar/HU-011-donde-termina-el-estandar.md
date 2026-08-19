@@ -109,6 +109,47 @@ Entonces la comprobación lo reporta
 3. Clasificarla y volver a correr. Resultado esperado: no reporta nada.
 - **Aprobado cuando:** la pieza sin clasificar se reporta. Sin esto el mapa envejece en silencio, que es lo que le pasa a todo mapa escrito a mano.
 
+### CA-04 — El adaptador vive en un solo sitio, separado de lo agnóstico
+
+```gherkin
+Dado que las reglas sirven con cualquier agente y lo que las hace cumplir no
+Cuando se busca qué habría que reescribir si la herramienta cambia
+Entonces todo eso está en una sola carpeta con nombre propio
+Y ninguna pieza de esa clase queda fuera de ella
+```
+
+**Por qué no lo cubrían `CA-01` a `CA-03`.** Los tres hablan **del mapa**:
+que toda pieza tenga columna, que cada amarrada diga qué se pierde, y que el
+mapa no envejezca callado. Ninguno pide **mover código**. Un mapa dice dónde
+están las cosas; no impide que mañana aparezca una más en el sitio equivocado.
+
+**Cómo validarlo:**
+
+1. Buscar enganches en la carpeta de lo agnóstico. Resultado esperado: ninguno.
+2. Pedirle a la instalación el comando de un enganche. Resultado esperado: apunta a la carpeta del adaptador.
+3. Comprobar que el recuento del amarre **no bajó** por la mudanza. Resultado esperado: sigue contando las dos carpetas; mover código no mejora el número.
+- **Aprobado cuando:** no queda ninguna pieza de adaptador fuera de su carpeta, y el recuento no cambió.
+
+### CA-05 — Está escrito qué necesita el estándar de cualquier agente
+
+```gherkin
+Dado que hoy soportar otro agente sería empezar de cero
+Cuando alguien evalúa una herramienta distinta
+Entonces existe la lista de lo que tiene que poder hacer
+Y también la de lo que el estándar NO le pide
+```
+
+**La segunda lista es la que se olvida, y la que decide.** Sin ella, quien
+evalúe una herramienta nueva no sabe qué puede descartar y termina exigiendo de
+más — que es como se descarta una opción que servía.
+
+**Cómo validarlo:**
+
+1. Leer el contrato sin saber nada del repositorio. Resultado esperado: se entiende qué capacidades hacen falta, sin nombrar ninguna herramienta.
+2. Buscar cuánto costaría el cambio. Resultado esperado: está el número de programas a reescribir y el de los que se quedan.
+3. Comprobar que **no** propone soportar un segundo agente hoy. Resultado esperado: lo dice y dice por qué.
+- **Aprobado cuando:** el contrato existe, no nombra herramienta, y dice también lo que no se necesita.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — una pieza que es mitad y mitad, y una carpeta vacía, tienen comportamiento definido.
@@ -153,7 +194,7 @@ Entonces la comprobación lo reporta
 | [A-EP-005-HU-011-donde-termina-el-estandar](A-EP-005-HU-011-donde-termina-el-estandar/README.md) | CA-01 a CA-03 | **Cerrada 2026-08-18 · Cumple** |
 | — | — | — | — | — | Sin empezar |
 
-**De dónde sale esta historia:** el [pendientes/15-el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md). Su punto 1 —el mapa— es esta historia; sus puntos 2 y 3 esperan al segundo caso.
+**De dónde sale esta historia:** el [pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md). Su punto 1 —el mapa— es esta historia; sus puntos 2 y 3 esperan al segundo caso.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

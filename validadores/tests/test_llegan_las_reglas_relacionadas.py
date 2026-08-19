@@ -26,6 +26,13 @@ import unittest
 VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, VALIDADORES)
 
+# Los enganches viven en el adaptador desde el 2026-08-19, no en
+# `validadores/`: `validadores/` es lo que sirve con cualquier agente.
+ADAPTADOR = os.path.join(os.path.dirname(VALIDADORES),
+                         "adaptadores", "claude-code")
+sys.path.insert(0, ADAPTADOR)
+
+
 import relacionadas   # noqa: E402
 
 RAIZ = os.path.dirname(VALIDADORES)
@@ -91,7 +98,7 @@ class ElEnganche(unittest.TestCase):
     def correr(self, sesion, ruta):
         datos = json.dumps({"session_id": sesion, "tool_input": {"file_path": ruta}})
         r = subprocess.run(
-            [sys.executable, os.path.join(VALIDADORES, "hook_relacionadas.py"),
+            [sys.executable, os.path.join(ADAPTADOR, "hook_relacionadas.py"),
              "--raiz", RAIZ],
             input=datos, capture_output=True, text=True,
             encoding="utf-8", errors="replace", timeout=120)
@@ -131,7 +138,7 @@ class ElEnganche(unittest.TestCase):
 
     def test_sin_json_no_hace_nada(self):
         r = subprocess.run(
-            [sys.executable, os.path.join(VALIDADORES, "hook_relacionadas.py"),
+            [sys.executable, os.path.join(ADAPTADOR, "hook_relacionadas.py"),
              "--raiz", RAIZ],
             input="no es json", capture_output=True, text=True,
             encoding="utf-8", errors="replace", timeout=60)

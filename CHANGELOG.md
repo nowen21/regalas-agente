@@ -11,6 +11,28 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 26.0.0 — 2026-08-19
+
+**MAYOR** ⚠ obliga a migrar (todo proyecto instalado tiene que volver a correr el instalador).
+
+**Las reglas son texto y sirven con cualquier herramienta. Lo que las hace cumplir solas, no.** Eran ocho programas que existen porque **esta** herramienta los llama, mezclados con los cincuenta y un programas que funcionarían con cualquiera. Por eso nadie sabía de qué tamaño era la atadura.
+
+Ahora están separados: `adaptadores/claude-code/` es lo que habría que reescribir el día que la herramienta cambie, y `validadores/` es lo que se queda entero.
+
+**Qué hay que hacer.** Volver a correr el instalador en cada proyecto. El aviso de instalación lo reclama solo en el primer mensaje de la siguiente sesión: los avisos automáticos quedaron apuntando a la ubicación vieja, y eso **no falla en silencio** — se reporta.
+
+**El detalle.** Del [pendiente 15](pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md), sus puntos 2 y 3. Nace también [`adaptadores/contrato.md`](adaptadores/contrato.md).
+
+**El contrato dice qué necesita el estándar de cualquier agente**, sin nombrar ninguno: poder poner texto al arrancar, poder correr un programa cuando se escribe un archivo, cuando el usuario manda un mensaje y cuando el agente termina, y poder cortar un guardado. Cinco cosas.
+
+**Y dice también lo que NO necesita, que es la mitad que se olvida:** no necesita cambiar la respuesta del agente, ni leer cómo razona, ni acceso a la red, ni que la herramienta guarde nada. Todo lo que se guarda son archivos del repositorio. Sin esa lista, quien evalúe una herramienta nueva termina exigiendo de más y descarta opciones que servían.
+
+**Ya se sabe cuánto costaría el cambio, que era el punto:** ocho programas a reescribir, cincuenta y uno que se quedan igual, y ninguna regla que tocar.
+
+**La mudanza pudo dejar la atadura fuera del recuento, y eso habría sido peor que no moverla.** Mirando una sola carpeta, el mapa habría dicho «diez de cincuenta y uno» y habría sonado a mejora, cuando lo único que hubo fue un cambio de sitio. Ahora mira las dos.
+
+**No se hicieron atajos.** Ninguno de los tres criterios de la historia cubría mover código ni escribir el contrato: los tres hablaban del mapa. Se escribieron los dos que faltaban antes de tocar nada.
+
 ## 25.2.0 — 2026-08-19
 
 **MENOR** (una lista más para mirar; nada nuevo que cumplir).
@@ -419,7 +441,7 @@ Lo que se caería son los ocho enganches y el instalador que los enchufa. Las re
 
 **Y el mapa no envejece en silencio**, que es lo que le pasa a todo mapa escrito a mano: si aparece un programa nuevo que no está clasificado, se dice.
 
-**El detalle.** Es el punto 1 del [pendiente 15](pendientes/15-el-estandar-depende-de-una-sola-herramienta.md), construido como la fase [`A-EP-005-HU-011`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/A-EP-005-HU-011-donde-termina-el-estandar/README.md) con su plan aprobado. Nace [`validadores/amarre.py`](validadores/amarre.py) y el subcomando `validar.py amarre`, que reporta **por los dos lados**: la pieza que existe y el mapa no nombra, y la que el mapa nombra y ya no existe. El segundo lado no lo pedía la historia — se agregó porque un mapa que promete clasificar algo borrado miente igual que uno incompleto.
+**El detalle.** Es el punto 1 del [pendiente 15](pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md), construido como la fase [`A-EP-005-HU-011`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/A-EP-005-HU-011-donde-termina-el-estandar/README.md) con su plan aprobado. Nace [`validadores/amarre.py`](validadores/amarre.py) y el subcomando `validar.py amarre`, que reporta **por los dos lados**: la pieza que existe y el mapa no nombra, y la que el mapa nombra y ya no existe. El segundo lado no lo pedía la historia — se agregó porque un mapa que promete clasificar algo borrado miente igual que uno incompleto.
 
 **Lo que destapó al construirlo:** el mapa ya tenía el hueco sin necesidad de pieza nueva. Nombraba las 18 amarradas una por una y las libres **solo por su total**, así que **28 piezas no estaban nombradas en ningún lado**. Ahora van las 36 por su nombre: un total no es una clasificación, es la promesa de que alguien clasificó. 12 casos en [`test_el_mapa_del_amarre_no_envejece.py`](validadores/tests/test_el_mapa_del_amarre_no_envejece.py).
 

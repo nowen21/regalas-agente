@@ -35,7 +35,7 @@
 
 ## 4. Lo que no hace
 
-- **No mueve el adaptador a una carpeta propia** — punto 2 del [pendiente 15](../../../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md).
+- **No mueve el adaptador a una carpeta propia** — punto 2 del [pendiente 15](../../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md).
 - **No escribe el contrato** de qué necesita el estándar de cualquier agente — punto 3.
 - **No dice si la clasificación es acertada.** Eso se lee.
 

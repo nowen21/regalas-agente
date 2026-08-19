@@ -630,7 +630,7 @@ Al ir a cerrar ese reporte, **el archivo ya no estaba**: otra sesión lo había 
 
 ### H-51 · Un tercio de los validadores está amarrado a la herramienta, y `base/` la nombra 26 veces
 
-Se construyó el punto 1 del [pendiente 15](../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md): el mapa de qué sobrevive si mañana el agente es otro, en [`anatomia/que-esta-amarrado-a-la-herramienta.md`](../../../anatomia/que-esta-amarrado-a-la-herramienta.md).
+Se construyó el punto 1 del [pendiente 15](../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md): el mapa de qué sobrevive si mañana el agente es otro, en [`anatomia/que-esta-amarrado-a-la-herramienta.md`](../../../anatomia/que-esta-amarrado-a-la-herramienta.md).
 
 | | |
 |---|---|
@@ -680,7 +680,7 @@ Y el que más enseña es el tercero.
 
 ### H-54 · «Un total no es una clasificación»: el mapa del amarre ya tenía el hueco
 
-Cerró la fase `A-EP-005-HU-011`, del punto 1 del [pendiente 15](../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md), y ahora `validar.py amarre` comprueba que el mapa no envejezca.
+Cerró la fase `A-EP-005-HU-011`, del punto 1 del [pendiente 15](../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md), y ahora `validar.py amarre` comprueba que el mapa no envejezca.
 
 **Lo que destapó no era lo que el criterio decía.** `CA-03` pide que una pieza **nueva** sin clasificar se reporte. Al construirlo apareció que el hueco ya existía **sin pieza nueva**: el mapa nombraba las 18 amarradas una por una y las libres **solo por su total**.
 
@@ -844,6 +844,45 @@ Al cerrar el 14, la batería encontró tres cosas que la lectura no:
 
 **Quedó anotado en el pendiente 14 y no como pendiente nuevo**: son siete reglas del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que ya lleva la cuenta de las que no cumplen el capítulo 20.
 
+### H-68 · El adaptador se mudó, y el riesgo era que el mapa mejorara solo
+
+**Qué pasó.** Los ocho `hook_*` salieron de `validadores/` y entraron a [`adaptadores/claude-code/`](../../../adaptadores/claude-code/) — puntos 2 y 3 del [pendiente 15](../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md).
+
+**El riesgo no era romper la mudanza: era que el número se viera mejor.** Si `amarre.py` hubiera seguido mirando solo `validadores/`, el mapa habría dicho **«10 amarrados de 51»** en vez de 18 de 59, y sonaría a que el estándar se soltó de la herramienta. Lo único que hubo fue un cambio de sitio.
+
+**Dónde queda.** `amarre.py` mira las dos carpetas, y hay una prueba que lo fija. **Un mapa que mejora solo porque el código se movió es un mapa que miente.**
+
+**Lo que enseña.** Toda métrica que se calcula sobre una carpeta se rompe el día que alguien reorganiza carpetas — y se rompe **hacia el lado bonito**, que es el que nadie revisa.
+
+### H-69 · Tres cosas importában por vecindad, y ninguna lo decía
+
+Al mover los enganches aparecieron tres ataduras que no estaban en el mapa porque **no se ven leyendo**:
+
+- **Siete enganches resolvían sus módulos con «la carpeta donde estoy»**, y `hook_relacionadas.py` ni siquiera eso: importaba `comun` y `relacionadas` a secas, y funcionaba **porque estaba al lado**.
+- **`hook_resumen.py` contaba dos niveles para llegar a la raíz del estándar, y ahora son tres.** Contar mal no revienta: apunta a una carpeta que existe y el enganche **deja de escribir sin avisar**. Lo cazó la prueba que lo corre por el camino real, no la lectura.
+- **Once referencias en las dos baterías** apuntaban a la ubicación vieja.
+
+**Lo que enseña.** El mapa del amarre medía quién **nombra** la herramienta. Esto es otra clase de atadura: **la que se apoya en dónde está el archivo**, y no aparece en ningún `grep`. Solo se destapa moviendo, y por eso mover fue lo que hacía falta — no bastaba con dibujar la frontera.
+
+### H-70 · El contrato: lo que el estándar NO necesita es la mitad que decide
+
+**Qué pasó.** Se escribió [`adaptadores/contrato.md`](../../../adaptadores/contrato.md): cinco capacidades, sin nombrar ninguna herramienta. Y una sección de **lo que no hace falta** — no modificar la respuesta del agente, no leer su razonamiento, no red, no que la herramienta guarde nada.
+
+**Esa segunda lista es la que decide.** Sin ella, quien evalúe una herramienta nueva no sabe qué puede descartar y **termina exigiendo de más**, que es como se descarta una opción que servía.
+
+**Y ya se sabe cuánto costaría el cambio**, que era el punto entero del pendiente: ocho programas a reescribir, cincuenta y uno que se quedan, ninguna regla que tocar.
+
+### H-71 · Tres pendientes seguidos bloqueados por lo mismo, y el patrón quedó claro
+
+El 14 y el 15 estaban detenidos por la **misma** causa: bien enrutados a su historia de usuario, y **ningún criterio de aceptación que los cubriera**.
+
+| Pendiente | Historia | Lo que los criterios sí cubrían |
+|---|---|---|
+| 14 | EP-001 · HU-007 | Enrutar, agnosticismo, partir — todos **al entrar** una regla |
+| 15 | EP-005 · HU-011 | El mapa: columnas, qué se pierde, que no envejezca — ninguno **mover código** |
+
+En los dos se escribió el criterio que faltaba y de ahí salió el trabajo. **El 16 sigue igual**, y la tabla de arriba dice por qué no es un descuido sino un hueco de forma: la fila «Historia de usuario» de un pendiente dice **de quién es el tema**; no dice que exista el criterio. Son dos comprobaciones distintas y solo se hacía la primera.
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -854,7 +893,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **9** abiertos, cada uno con su historia declarada |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ quedan **8** abiertos, cada uno con su historia declarada |
 | Toda historia disparada está escrita en su épica | ☑ las seis nuevas, con su fila en la épica y en los dos índices |
 | Lo que se hizo está aprobado y guardado | ☑ hasta `d0c900c` (publicado) · ☐ **falta el commit de la 23.11.1** |
 

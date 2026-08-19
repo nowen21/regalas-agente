@@ -251,11 +251,22 @@ HOOKS_CLAUDE = [
 ]
 
 
+# **Dónde vive el adaptador de esta herramienta.** Los ocho enganches se
+# sacaron de `validadores/` el 2026-08-19: `validadores/` es lo que sirve con
+# cualquier agente, y esto existe **porque esta herramienta lo llama**. Tenerlos
+# mezclados era lo que impedía saber de qué tamaño es el amarre.
+#
+# **Cambiar esta ruta vence el enganche de todos los proyectos instalados**, y
+# eso no pasa en silencio: `checklist.py` compara el comando exacto y lo reporta
+# en el primer mensaje de la siguiente sesión.
+ADAPTADOR = "adaptadores/claude-code"
+
+
 def _hook_claude(estandar, proyecto, guion, mensaje, argumentos=""):
     extra = f"{argumentos} " if argumentos else ""
     return {
         "type": "command",
-        "command": (f'python "{estandar}/validadores/{guion}" '
+        "command": (f'python "{estandar}/{ADAPTADOR}/{guion}" '
                     f'{extra}--raiz "{proyecto}"'),
         "statusMessage": mensaje,
     }
