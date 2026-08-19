@@ -404,6 +404,16 @@ Con el camino elegido `F2` sigue exigiendo lo mismo en todos los casos; lo únic
 
 **El límite quedó en un caso de prueba:** una relación que nadie declaró no se encuentra. Eso hace que `M7` y `M15` dejen de ser trámite — son lo que hace la consulta posible.
 
+### H-35 · El 20 se cierra sin escribir nada: `F19` ya lo decía
+
+`02·F2` volvió a su texto original. La frase que le agregué chocaba con `02·F0`, y además **no hacía falta**: [`02·F19`](../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) dice desde la v3.1.0 que *«la redacción del CA es la especificación funcional»*.
+
+**El [pendiente 20](../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) preguntaba algo contestado en su propio capítulo, dos reglas más abajo.**
+
+**Lo que ordena hacia atrás:** las dos fases que se abrieron declarando que no tienen especificación aparte **no estaban incumpliendo nada**. `F19` ya las cubría; faltaba que alguien lo mirara.
+
+**Y lo que dejó equivocarse:** la fase `A-EP-005-HU-010`. Al tocar `F2` ahora `F0` sale tercera en la lista de relacionadas — el choque que hoy costó cuatro vueltas se ve en la primera.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

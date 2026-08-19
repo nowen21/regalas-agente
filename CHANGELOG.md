@@ -13,15 +13,13 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ## 23.10.0 — 2026-08-18
 
-**MENOR** — cuando lo que se está construyendo no es código sino un texto —una norma, un manual, un documento—, ya no hay que escribir aparte un papel que explique qué se va a hacer: sirve la historia de usuario que ya se escribió.
+**PARCHE** — se anotó que una regla ya existente cubría un caso que parecía sin resolver. **Ninguna regla cambió de texto.**
 
-Se cambió porque dos trabajos de este repositorio se habían empezado saltándose ese papel, con razón: lo que iban a entregar era texto, y el papel aparte habría dicho exactamente lo mismo que la historia. Hasta hoy eso era un incumplimiento callado; ahora es lo que la regla dice.
+La duda era: cuando lo que se construye no es un programa sino un documento, ¿hay que escribir además un papel aparte que explique qué se va a hacer? Resulta que el estándar ya lo contestaba, y hacía meses: **lo que la historia dice que hay que lograr es ese papel.** Nadie lo había buscado.
 
-**Lo que no cambió:** sigue haciendo falta tener escrito y aprobado qué se va a hacer antes de empezar. Lo único distinto es de qué está hecho ese escrito.
+Se intentó agregarlo como regla nueva y salió mal: lo escrito chocaba con otra regla del mismo capítulo. Se devolvió todo a como estaba.
 
-**El detalle.** Es el [pendiente 20](pendientes/hecho/cuando-la-historia-hace-de-especificacion.md), resuelto por su camino 2 en [`02·F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md). **No se le abrió una excepción**, y la diferencia importa: una excepción dice cuándo la regla no rige, y esto dice dónde vive lo que la regla exige. `F2` ya traía una, y abrirle la segunda es la puerta que después nadie cierra. Su checklist se reaplicó: 294 caracteres, entra en el molde. Fase [`A-EP-001-HU-010`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion/).
-
----
+**El detalle.** Es el [pendiente 20](pendientes/hecho/cuando-la-historia-hace-de-especificacion.md), cerrado citando [`02·F19`](base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) —*«la redacción del CA es la especificación funcional»*, desde la v3.1.0— en vez de escribir nada. La frase que se había agregado a [`02·F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) chocaba con [`02·F0`](base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), que prohíbe fusionar eslabones de la cadena; `F2` volvió a su texto y a su sello originales. Lo destapó una pregunta del usuario, no una comprobación — y de ahí salió la fase [`A-EP-005-HU-010`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/), que hace llegar las reglas relacionadas al escribir.
 
 ## 23.9.0 — 2026-08-18
 

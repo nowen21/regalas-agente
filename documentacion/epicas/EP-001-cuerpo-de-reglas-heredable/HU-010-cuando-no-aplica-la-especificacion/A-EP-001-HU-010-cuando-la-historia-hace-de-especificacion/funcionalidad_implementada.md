@@ -11,38 +11,26 @@
 
 ## 1. Qué quedó
 
-[`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) dice ahora de qué está hecha la especificación cuando lo que se construye no es código:
+**Nada nuevo, y ese es el resultado.** [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) ya decía desde la v3.1.0:
 
-> **Si el entregable no es código, la especificación es la historia con sus criterios de aceptación.**
+> **La redacción del CA es la especificación funcional**
 
-Cierra el [pendiente 20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md).
-
----
-
-## 2. No es una excepción, y esa es la decisión
-
-El pendiente dejaba dos caminos, y la diferencia no es de forma:
-
-> **Una excepción dice cuándo la regla no rige. Esto dice dónde vive lo que la regla exige.**
-
-Con el camino elegido, `F2` sigue exigiendo especificación acordada **en todos los casos**. Lo único que cambia es de qué está hecha cuando el entregable es texto normativo, documentación o un programa corto.
-
-**Y `F2` ya tenía una excepción.** Abrirle la segunda a una regla que ya trae una es la puerta que después nadie cierra: `08·T1` es el ejemplo vivo — su excepción deja al agente autorizándose a sí mismo a no probar.
+El [pendiente 20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) preguntaba algo que su propio capítulo contestaba dos reglas más abajo. Se cierra citándolo.
 
 ---
 
-## 3. Lo que ordena
+## 2. Primero se hizo mal, y eso es lo que dejó algo
 
-Dos fases de este repositorio se habían abierto declarando que no tienen especificación aparte porque su entregable es texto normativo. **Hasta hoy eso era un incumplimiento silencioso de `F2`; ahora es lo que la regla dice.**
+Se le agregó a `02·F2` una frase que decía lo mismo con otras palabras. **Chocaba con [`02·F0`](../../../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)**, que prohíbe que un eslabón de la cadena *«se salte, se fusione ni se omita»* — y esa frase fusionaba la historia con la especificación.
+
+**Lo vio el usuario preguntando**, no el agente comprobando. La fila 2 del checklist —`20·M12`, *«se leyó entero el capítulo dueño»*— se había sellado en verde sin leerlo.
+
+`F2` volvió a su texto y a su sello originales.
 
 ---
 
-## 4. Qué se tocó
+## 3. Lo que salió de haberse equivocado
 
-| Archivo | Qué |
-|---|---|
-| `base/02-flujo-de-trabajo/reglas/F2-…md` | La frase nueva, y el checklist reaplicado — 294 caracteres, entra en el molde |
-| `pendientes/20-…md` | Cerrado |
-| `CHANGELOG.md` · `VERSION` | 23.10.0 |
+La fase [`A-EP-005-HU-010`](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/): al tocar una regla llegan las que se relacionan con ella. **Al tocar `F2`, `F0` sale tercera en la lista.**
 
-**Se acortó la primera frase para que quepa**, y se fue *«sin especificación, el código es opinión del agente»*: es el porqué, y su sitio es `notas/`.
+Y algo que ordena el pasado: las dos fases abiertas sin especificación aparte **no estaban incumpliendo nada**.

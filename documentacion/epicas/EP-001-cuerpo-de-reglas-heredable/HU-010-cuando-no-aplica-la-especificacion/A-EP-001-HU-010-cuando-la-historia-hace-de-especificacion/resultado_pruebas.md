@@ -10,43 +10,34 @@
 
 | Qué se comprobó | Veredicto |
 |---|---|
-| `02·F2` dice de qué está hecha la especificación cuando el entregable no es código | ✅ **Pasa** |
-| La regla sigue exigiendo lo mismo en todos los casos | ✅ **Pasa** — no se abrió otra excepción |
-| Entra en el molde de cuatro líneas | ✅ **Pasa** — 294 caracteres |
-| Su checklist se reaplicó | ✅ **Pasa** — 18 ✅ · 0 ❌ · 2 N/A |
-| No regresión | ✅ **Pasa** — `tests/` 208 · `pruebas.py` 357 · `estandar` limpio |
+| ¿Hace falta una regla nueva? | ❌ **No** — [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) ya lo dice desde la v3.1.0 |
+| Lo que se escribió primero, ¿chocaba? | **Sí** — con [`02·F0`](../../../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), que prohíbe fusionar eslabones |
+| `02·F2` vuelta a su texto y su sello | ✅ **Pasa** |
+| No regresión | ✅ **Pasa** — `tests/` 222 · `pruebas.py` 357 · `estandar` limpio |
 
 ---
 
-## 2. Qué se decidió, y por qué no fue una excepción
+## 2. La respuesta estaba dos reglas más abajo
 
-El [pendiente 20](../../../../../pendientes/hecho/cuando-la-historia-hace-de-especificacion.md) dejaba dos caminos:
+> **`02·F19` · La redacción del CA es la especificación funcional**
 
-1. Escribirle **otra excepción** a `F2`.
-2. Aceptar que **la historia hace de especificación** cuando el entregable no es código.
-
-**Se eligió el 2**, y la diferencia entre los dos no es de forma:
-
-> **Una excepción dice cuándo la regla no rige. Esto dice dónde vive lo que la regla exige.** Con el camino 2, `F2` sigue exigiendo una especificación acordada en todos los casos — lo único que cambia es de qué está hecha.
-
-**Y `F2` ya tenía una excepción.** Abrirle la segunda a una regla que ya trae una es la puerta que después nadie cierra: [`08·T1`](../../../../../base/08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba) es el ejemplo vivo de ese camino — su excepción deja al agente autorizándose a sí mismo a no probar.
+El pendiente 20 preguntaba si hay que escribir una especificación aparte cuando el entregable no es código. **El capítulo `02` ya lo contestaba**, y desde la v3.1.0.
 
 ---
 
-## 3. Lo que decía y lo que dice
+## 3. Cómo se descubrió, que es lo que vale
 
-| | |
-|---|---|
-| **Antes** | *«Ningún desarrollo… sin una especificación acordada… Sin especificación, el código es opinión del agente.»* |
-| **Ahora** | Lo mismo, más: *«Si el entregable no es código, la especificación es la historia con sus criterios de aceptación.»* |
+**Primero se hizo mal.** Se le agregó a `F2` una frase que decía lo mismo con otras palabras, y esa frase **fusionaba la historia con la especificación** — justo lo que `F0` prohíbe con esa palabra.
 
-**Se acortó la primera frase para que quepa**, y se fue *«sin especificación, el código es opinión del agente»* — que es el porqué, y su sitio es `notas/`.
+**Lo vio el usuario preguntando**, no el agente comprobando. La fila 2 del checklist —`20·M12`, *«se leyó entero el capítulo dueño»*— se selló en verde sin leerlo. Al leerlo, `F19` apareció en la misma pasada.
+
+**De ahí salió [`A-EP-005-HU-010`](../../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/)**: al tocar una regla ahora llegan las que se relacionan con ella, y `F0` sale tercera al tocar `F2`.
 
 ---
 
-## 4. Lo que esto ordena
+## 4. Lo que ordena
 
-Dos fases de este repositorio se habían abierto declarando que no tienen especificación aparte —`A-EP-001-HU-001` y `A-EP-004-HU-010`—, y hasta hoy eso era un incumplimiento silencioso de `F2`. **Ahora es lo que la regla dice.**
+Las dos fases que se abrieron declarando que no tienen especificación aparte **no estaban incumpliendo nada**. `F19` ya las cubría; lo que faltaba era que alguien lo mirara.
 
 ---
 
@@ -54,6 +45,6 @@ Dos fases de este repositorio se habían abierto declarando que no tienen especi
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Cumple** |
+| **Concepto** | **Cumple** — sin escribir ninguna regla |
 | **Defectos abiertos aceptados** | ninguno |
-| **Ciclos** | 1 |
+| **Ciclos** | 2 — el primero se revirtió entero |

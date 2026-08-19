@@ -35,16 +35,25 @@ Una regla que se incumple dos veces seguidas con buenos motivos se vuelve costum
 
 # Cómo cerró — 2026-08-18
 
-**Se eligió el camino 2**, y la diferencia con el 1 no es de forma:
+**No hizo falta escribir nada: ya estaba escrito.**
 
-> **Una excepción dice cuándo la regla no rige. Lo que se escribió dice dónde vive lo que la regla exige.**
+[`02·F19`](../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) lo dice desde la v3.1.0:
 
-[`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) sigue exigiendo especificación acordada **en todos los casos**. Lo que agrega es de qué está hecha cuando el entregable no es código:
+> **La redacción del CA es la especificación funcional**
 
-> *Si el entregable no es código, la especificación es la historia con sus criterios de aceptación.*
+Osea que el estándar ya decía que los criterios de aceptación de la historia **son** la especificación. El pendiente preguntaba algo contestado en su propio capítulo, dos reglas más abajo.
 
-**Y pesa que `F2` ya tenía una excepción.** Abrirle la segunda a una regla que ya trae una es la puerta que después nadie cierra — [`08·T1`](../../base/08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba) es el ejemplo vivo: su excepción deja al agente autorizándose a sí mismo a no probar.
+## Cómo se descubrió, que es lo que vale
 
-**Lo que ordena:** las dos fases que se habían abierto declarando que no tienen especificación aparte dejan de ser un incumplimiento silencioso.
+**Primero se hizo mal.** Se le agregó a `02·F2` una frase que decía lo mismo con otras palabras, y **chocaba con [`02·F0`](../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)**: la cadena prohíbe que un eslabón *«se salte, **se fusione** ni se omita»*, y esa frase fusionaba la historia con la especificación.
 
-Fase: [`A-EP-001-HU-010`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/A-EP-001-HU-010-cuando-la-historia-hace-de-especificacion).
+**Lo vio el usuario preguntando**, no el agente comprobando. La fila 2 del checklist —[`20·M12`](../../base/20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md), *«se leyó entero el capítulo dueño»*— se selló en verde sin leerlo. Al leerlo apareció `F19` en la misma pasada.
+
+**El texto de `F2` se devolvió a como estaba**, con su sello original.
+
+## Lo que dejó
+
+Dos cosas que valen más que el pendiente:
+
+1. **La fase [`A-EP-005-HU-010`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-010-la-regla-llega-al-escribir-el-archivo/A-EP-005-HU-010-el-capitulo-llega-al-escribir-el-archivo/)**, que hace que al tocar una regla lleguen las que se relacionan con ella. Hoy, al tocar `F2`, `F0` sale tercera en la lista.
+2. **Que las dos fases que se abrieron sin especificación aparte no estaban incumpliendo nada.** `F19` ya las cubría, y nadie lo había mirado.
