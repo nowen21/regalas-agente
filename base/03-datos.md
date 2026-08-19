@@ -184,7 +184,7 @@ CORRECTO:   validación en el servicio + prueba + nota en la migración
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.1**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -329,7 +329,7 @@ CORRECTO:   filtrar por la columna de pertenencia (el contenedor activo); la
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.1**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

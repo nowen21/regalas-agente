@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.12.1 — 2026-08-18
+
+**PARCHE** (dos reglas dicen lo mismo en menos palabras; no cambia nada de lo que exigen).
+
+**Dos reglas sobre datos venían con su explicación pegada y no se leían.** Una medía casi dos mil caracteres para decir algo que cabe en cinco líneas. Ahora la regla dice qué hay que hacer, y el porqué —por qué la gente se equivoca y qué se rompe cuando lo hace— vive aparte, enlazado.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`03·D8`](base/03-datos.md) pasó de 1 962 a 292 caracteres —su porqué quedó en [`notas/pertenencia-y-autoria.md`](notas/pertenencia-y-autoria.md)— y [`03·D5`](base/03-datos.md) de 640 a 304, ganando además su excepción escrita en la forma que pide [`20·M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Las dos pasaron a **CUMPLE**: las reglas reprobadas bajan de 60 a 58.
+
+**Y un efecto que conviene saber antes de tocar otra:** cambiarle el título a una regla le mueve el ancla, y las citas a esa ancla quedan rotas **sin que `validar.py estandar` diga nada**. Lo destapó `citas.py` al querer reescribir dos capítulos que citaban a `D8` por su título viejo.
+
 ## 23.12.0 — 2026-08-18
 
 **MENOR** (la instalación deja una carpeta más; ningún proyecto tiene que hacer nada).
