@@ -85,19 +85,22 @@ class LoQueSeQuedaAProposito(unittest.TestCase):
 
 
 class ElCuerpoDeReglasNoNombraStack(unittest.TestCase):
-    """Sobre `base/` de verdad.
+    """Sobre `base/` de verdad. **Exige cero, desde el 2026-08-18.**
 
-    **No exige cero.** Queda uno vivo a propósito: [`04·S11`] nombra
-    `SoftDeletes`, y su propio sello dice por qué no se corrigió — ahí el
-    nombre del método **es el argumento** (suena a borrar y escribe), así que
-    reescribirlo en concepto es parte de partir la regla, no un arreglo
-    aparte.
+    **Durante once días permitió uno**, `04·S11`, que nombraba `SoftDeletes` y
+    `destroy()`. Su sello decidió no corregirlo, y tenía razón: ahí **el nombre
+    del método era el argumento** —suena a borrar y escribe—, así que quitarlo
+    habría dejado la regla sin su punto. Reescribirlo en concepto solo se podía
+    hacer **al partirla**, y eso pasó: la mitad que nombraba el framework es
+    ahora `04·S12`, escrita como «el método que suena a borrar y en realidad
+    marca un campo».
 
-    Escribir aquí `assertEqual(0, ...)` obligaría a arreglar `S11` a medias
-    para que la prueba pase, que es justo lo que su sello decidió no hacer.
+    **La deuda declarada se pagó, así que la lista vuelve a cero.** Dejarla en
+    `{"S11"}` sería seguir permitiendo un hueco que ya no existe — y un permiso
+    que sobrevive a su motivo es como una lista negra se vuelve decorativa.
     """
 
-    PERMITIDOS = {"S11"}
+    PERMITIDOS = set()
 
     def test_solo_queda_el_que_esta_declarado(self):
         con_nombre = set()

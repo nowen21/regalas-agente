@@ -241,54 +241,70 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## G8 · El mensaje es del proyecto, no de la herramienta
+## G8 · El cuerpo del commit abre con la idea del usuario
 
-El historial cuenta **qué se decidió y por qué**, no con qué se escribió. Dos consecuencias:
-
-**El cuerpo arranca con la idea del usuario, y después lo que hizo el agente.** El origen del cambio es la necesidad, no la ejecución. Quien lea el historial mañana busca el porqué, no el cómo.
-
-**Nunca se firman los commits con la herramienta.** Sin `Co-Authored-By`, sin líneas de "generado con", sin marcas de agente. El autor del commit ya lo dice el propio git.
+El cuerpo arranca con **lo que el usuario quiso**, y después con lo que hizo el agente. El origen del cambio es la necesidad, no la ejecución: quien lea el historial mañana busca el porqué.
 
 ```
-INCORRECTO: "Agrega validación de saldo
-
-            Se implementó el chequeo en el servicio.
-
-            Co-Authored-By: <herramienta>"
-
-CORRECTO:   "Agrega validación de saldo
-
-            El usuario reportó que se podían registrar pagos mayores al
-            saldo pendiente. Se agrega el chequeo en el servicio y su prueba."
+INCORRECTO: «Se agregó validación en el servicio y se actualizaron 3 pruebas.»
+CORRECTO:   «Pediste que no se pudiera cerrar una venta sin cliente. Va la
+            validación en el servicio, con sus tres casos.»
 ```
-
-Comprobable: `validadores/validar.py commit` (regla [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto) para el idioma).
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.20.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Se autodeclara doble: dice literalmente «Dos consecuencias».**
+**Partida el 2026-08-18, y su propio texto ya lo pedía:** decía *«Dos consecuencias»* y las enumeraba. Eran dos exigencias que se cumplen por separado —se puede abrir el cuerpo con la idea del usuario y aun así firmar el commit con la herramienta—, y las filas 8, 9 y 10 lo reprobaban. La segunda es ahora [`G10`](#g10--el-commit-no-se-firma-con-la-herramienta).
 
-- **Fila 9 · son dos**, y se cumplen por separado sin dificultad: un mensaje puede arrancar con la idea del usuario y traer la firma de la herramienta al final.
-- **Fila 8 · el título nombra un principio**, no la exigencia. «El mensaje es del proyecto, no de la herramienta» es el porqué de las dos consecuencias.
-- **Fila 10 · no cabe:** 532 caracteres.
+**El título también cambió.** *«El mensaje es del proyecto, no de la herramienta»* describía **las dos mitades a la vez** y no se sostenía solo en un índice, que es lo que pide la fila 8. Ahora cada una dice lo suyo.
 
-**El análisis del 2026-08-07 propuso el corte y ya se hizo a medias:** decía *«`G8` orden del cuerpo · `G9` sin firma de herramienta»*, y hoy existe una `G9` — pero es otra cosa, la historia de usuario como unidad del commit. **El número que el análisis reservaba para la mitad de `G8` está ocupado.**
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-Eso hay que saberlo antes de partirla: la mitad que salga se lleva `G10`, no `G9`. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## G10 · El commit no se firma con la herramienta
+
+El mensaje no lleva **ninguna marca de con qué se escribió**: ni coautoría de la herramienta, ni línea de «generado con», ni firma de agente. Quién hizo el commit ya lo dice el propio control de versiones (extiende [`09·G8`](#g8--el-cuerpo-del-commit-abre-con-la-idea-del-usuario)).
+
+```
+INCORRECTO: al final del mensaje, una línea que declara la herramienta como coautora
+CORRECTO:   el mensaje termina en lo último que había que contar del cambio
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.20.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`G8`](#g8--el-cuerpo-del-commit-abre-con-la-idea-del-usuario)**, cuyo texto ya la llamaba la segunda de *«dos consecuencias»*. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia.** `G8` dice **por dónde abre** el mensaje; esta dice **qué no puede llevar**. Se incumplen por separado, y de hecho la segunda es la que se incumple sola: un mensaje puede abrir perfectamente con la idea del usuario y traer la firma pegada al final.
+
+**Escrita sin nombrar la herramienta**, que era la otra mitad del defecto: el texto anterior decía el nombre literal de la línea de coautoría, y [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no lo admite en la base. Lo que se exige es que **no haya marca de herramienta**, cualquiera que sea — la lista de nombres concretos envejece con cada versión.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

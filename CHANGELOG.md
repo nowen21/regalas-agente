@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.20.0 — 2026-08-18
+
+**MAYOR** (nacen dos reglas con nombre nuevo; si tu proyecto cita alguna de las que se partieron, conviene mirarlo).
+
+**Tres reglas decían dos cosas cada una, y por eso nadie las cumplía enteras.** Una pedía autorizar cada escritura contra datos reales *y además* contar el borrado lógico como escritura; otra pedía que el mensaje del commit abriera con la idea del usuario *y además* que no llevara firma de herramienta. Cumplir la primera mitad y olvidar la segunda pasaba sin que nada lo notara.
+
+Ahora cada una dice una sola cosa, y se puede señalar cuál se incumplió.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`04·S12`](base/04-seguridad.md) —el borrado lógico es una escritura— y [`09·G10`](base/09-git.md) —el commit no se firma con la herramienta—. **Las dos ya venían numeradas dentro del texto que las contenía:** `S11` decía «Regla 1» y «Regla 2», y `G8` abría con «Dos consecuencias». Los identificadores viejos siguen existiendo con la mitad que se quedaron, como manda [`20·M4`](base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
+
+**Y partir sirvió para pagar una deuda vieja.** `04·S11` nombraba `SoftDeletes` y `destroy()`, lo que [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) prohíbe en la base, y su sello había decidido no corregirlo porque **el nombre del método era el argumento**: suena a borrar y escribe. Reescribirlo en concepto solo se podía al partir, y así fue. **La lista de reglas que nombran un framework vuelve a cero**, después de once días con una permitida.
+
+**[`12·PR3`](base/12-privacidad-datos.md) no se partió: se reescribió.** No tenía dos exigencias — tenía cuatro remisiones al capítulo de seguridad y nada propio. Lo suyo estaba implícito y ahora está dicho: **el dato personal se trata como sensible aunque nadie lo haya clasificado así**, sin esperar a que el proyecto lo declare.
+
+Las reglas publicadas en «no cumple» bajan de 52 a **49**.
+
 ## 23.19.0 — 2026-08-18
 
 **MAYOR** (una regla del núcleo dice ahora algo que antes no decía; conviene releerla).

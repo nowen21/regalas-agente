@@ -375,64 +375,69 @@ Su excepción está completa, como la de `S9`.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## S11 · Escritura contra el almacén productivo requiere autorización por operación
+## S11 · Cada escritura contra datos reales se autoriza por separado
 
-`00 N4` cubre el principio general de proteger los datos reales. S11 lo refina con dos matices operativos que evitan escapes silenciosos.
-
-**Regla 1 — Autorización por operación, no por sesión.** Cada `create/update/delete` contra el almacén productivo requiere **autorización explícita del usuario para esa operación puntual**. Autorizar una operación previa **no** autoriza las siguientes, aunque sean del mismo tipo. La autorización viaja con la acción, no con la sesión.
-
-**Motivo:** una autorización de sesión abre la puerta a que el agente encadene operaciones no previstas ("ya que estamos, aprovecho y también"), rompiendo el control. Por operación fuerza a que cada acción tenga su OK, con el archivo/tabla/filas concretas nombrados.
-
-**Regla 2 — El borrado lógico cuenta como escritura.** `destroy()`, `SoftDeletes`, `archivar`, `desactivar` y equivalentes que en realidad marcan un campo (`deleted_at`, `activo=false`, `archivado_at`, etc.) son **escrituras** contra el almacén productivo. Requieren autorización explícita como cualquier `update`, aunque el nombre del método sugiera "eliminar".
-
-**Motivo:** el nombre del método puede ocultar la naturaleza de escritura. `destroy()` en un modelo con trait de soft-delete no borra físicamente pero sí modifica una fila productiva — cuenta.
-
-**Antes de escribir contra el almacén productivo:**
-
-- Describir en el chat: qué operación, qué tabla, qué filas concretas (`WHERE ...` o el subconjunto), qué campos.
-- Esperar OK explícito del usuario para esa descripción concreta.
-- No encadenar operaciones "aprovechando que ya me autorizó lo anterior".
+Cada `create`, `update` o `delete` contra el almacén productivo se autoriza **para esa operación puntual**: autorizar una no autoriza la siguiente, aunque sea del mismo tipo. Antes de pedirlo se describe qué operación, qué tabla, qué filas y qué campos (concreta [`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
 
 ```
-INCORRECTO: usuario autoriza "corregí el estado del registro X" → agente aprovecha y
-            también corrige los registros Y y Z que "estaban con el mismo bug"
-CORRECTO:   agente ejecuta solo X · reporta el hallazgo de Y y Z como recomendación ·
-            espera OK explícito antes de tocar cada uno
-
-INCORRECTO: "vamos a limpiar los registros huérfanos con destroy()" — se ejecuta sin
-            aviso porque "no es delete físico, es solo soft-delete"
-CORRECTO:   `destroy()` con soft-delete = escritura productiva · describir cuántas
-            filas afecta + esperar OK
+INCORRECTO: «ya me autorizaste el UPDATE anterior, aprovecho y corro este otro»
+CORRECTO:   «voy a correr UPDATE pedidos SET estado='X' WHERE id IN (12,13).
+            ¿Autorizas?» — y se espera el sí para esa frase
 ```
-
-**Encadenamiento:** `00 N4` (protege los datos reales) es el principio blindado · `S11` es la especificación operativa · `01 C1` (avisa antes de tocar) — en el contexto de BD productiva, "avisar" significa autorización explícita por operación, no permiso de sesión.
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.20.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
-| B · Cómo se identifica | 5–6 | ❌ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 13 ✅ · 4 ❌ · 3 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Era el otro ❌ de prioridad alta del análisis del 2026-08-07, junto con [`03·D1`](03-datos.md#d1--toda-tabla-nueva-se-normaliza-y-lleva-auditoría).**
+**Partida el 2026-08-18, y su propio texto ya lo pedía.** Decía literalmente **«Regla 1»** y **«Regla 2»**: eran dos exigencias que se cumplen por separado —autorizar por operación, y contar el borrado lógico como escritura—, y la fila 9 las reprobaba. La segunda es ahora [`S12`](#s12--el-borrado-lógico-es-una-escritura).
 
-- **Fila 9 · se autodeclara doble.** Dice literalmente *«Regla 1»* y *«Regla 2»* dentro de su propio cuerpo. Cuando una regla necesita numerar sus partes, ya son dos: la autorización por operación y que el borrado lógico cuenta como escritura.
-- **Fila 5 · nombra un stack.** `destroy()`, `SoftDeletes` y `deleted_at` son de un framework concreto. Es el segundo caso hoy, tras [`03·D8`](03-datos.md#d8--distingue-pertenencia-de-autoría-en-el-modelo-de-datos), y aquí **no se corrigió**: a diferencia de aquel, el ejemplo no es un añadido sino que el nombre del método **es el argumento** —el punto de la regla es que `destroy()` suena a borrar y escribe—. Reescribirlo en concepto es parte de partirla, no un arreglo aparte.
-- **Fila 10 · no cabe:** 1859 caracteres.
+**La fila 5 también estaba en ❌ y se arregló al partir.** El texto nombraba `destroy()` y `SoftDeletes`, que son de un framework concreto, y [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no lo admite en la base. **Toda esa parte se fue a `S12`**, escrita en concepto: «el método que suena a borrar y en realidad marca un campo». El nombre del método era el argumento, así que había que reescribirlo, no quitarlo — y eso solo se podía hacer partiendo.
 
-Va entera al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). **Su segunda mitad es la que más vale:** que el borrado lógico cuente como escritura es el matiz que evita el escape silencioso, y ninguna otra regla lo dice.
+**El detalle operativo dejó de estar aquí.** Qué se describe antes de pedir la autorización vive ahora en el cuerpo, en una línea, y lo largo se fue: era el desarrollo del motivo, no la exigencia.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## S12 · El borrado lógico es una escritura
+
+El método que **suena a borrar y en realidad marca un campo** —una fecha de baja, un indicador de inactivo— escribe en el almacén productivo, y se autoriza igual que cualquier otra escritura (extiende [`04·S11`](#s11--cada-escritura-contra-datos-reales-se-autoriza-por-separado)). El nombre no cambia lo que hace.
+
+```
+INCORRECTO: «esto no borra nada, solo lo marca como inactivo» → se corre sin pedirlo
+CORRECTO:   marcar la baja se describe y se autoriza como cualquier escritura
+```
+
 ---
 
-Ver: `00` N6 (secretos), `03` (integridad de datos), `05` (errores), `10` (dependencias), `12` (privacidad).
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.20.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`S11`](#s11--cada-escritura-contra-datos-reales-se-autoriza-por-separado)**, cuyo texto ya la llamaba «Regla 2». Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia y no una línea dentro de la otra.** `S11` dice **cuándo** se pide la autorización; esta dice **qué cuenta como escritura**. Se incumplen por separado: se puede pedir autorización por cada operación y aun así correr una baja lógica sin pedirla, creyendo que no escribe.
+
+**Escrita en concepto, sin nombrar herramienta.** El original decía `destroy()`, `SoftDeletes`, `deleted_at`; [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no lo admite en la base, y **el nombre del método era el argumento** —que suene a borrar es justamente el peligro—, así que se reescribió en concepto en vez de quitarse.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

@@ -46,7 +46,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `07·Q6` | `herramientas.py` (`linter`) | corre el linter/formateador del stack |
 | `08·T5` | `herramientas.py` (`suite`) | corre la suite de pruebas del stack |
 | `10·DEP3` · `04·S7` | `herramientas.py` (`audit`) | corre el audit de vulnerabilidades del stack (misma herramienta) |
-| `G8` | `commits.py` | sin atribución de herramienta |
+| `G10` | `commits.py` | sin marca de herramienta en el mensaje — era `G8` hasta que se partió el 2026-08-18 |
 | `F13` | `sesion.py` | existe la carpeta `proyectos/` |
 | `C18` | `sesion.py` | sync `CLAUDE.md` ↔ plantilla central |
 | `C19` | `recuerdos.py` · `checklist.py` | la memoria vive en `historico-chat/memory/`; el almacén de la herramienta, vacío |
@@ -168,7 +168,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`01`:** `C1`, `C2`, `C3`, `C4`, `C5`, `C6`, `C7`, `C8`, `C9`, `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17` (todas menos `C18`), `C20`, `C21`, `C22` y `C23`. **Se escriben una por una y no como rango:** hasta el 2026-08-16 decían «C1–C17» y el programa que comprueba `M9` no lee rangos, así que quince reglas figuraban como sin clasificar estando clasificadas. `C22` (el comando rechazado se corrige, la orden sigue en pie) se cumple sobre lo que el agente hace **después** de un rechazo, que no queda en ningún archivo: ningún script puede ver si retomó el encargo o lo abandonó. `C21` (pedir el dato que falte antes de arrancar) se cumple sobre el mensaje del usuario en el chat, y ningún script lee el chat. `C23` (buscar antes de preguntar) es **validable a medias y por eso está acá**: que el agente haya buscado no lo puede ver ningún programa, pero que la respuesta traiga su cita, sí — y esa mitad queda pendiente de escribirse. `C20` (traducir el término de otro idioma) tiene una parte mecánica que ya cubre la lista de marcadores de `00·ID8` —el léxico de España y los calcos del inglés, que son lista cerrada—, pero decidir si una palabra tiene traducción usada, o si la explicación de la primera vez alcanza, es criterio.
 - **`02`:** `F1`, `F3`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F15`, `F16`, `F19`, `F20` · `F12.8`, `F12.9`, `F12.10`.
 - **`03`:** D4, D5, D6, D7, D8.
-- **`04`:** S1, S2, S6, S8, S9, S10, S11.
+- **`04`:** S1, S2, S6, S8, S9, S10, S11, S12.
 - **`05`:** E2, E3, E4.
 - **`06`:** R3, R4, R5, R6.
 - **`07`:** Q1, Q2, Q4, Q5, Q7.

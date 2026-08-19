@@ -70,23 +70,29 @@ La fila **9** pasa: no reutilizar para otro fin y no enviar a terceros son la mi
 
 ## PR3 · Protégelos en reposo y en tránsito
 
-Datos personales cifrados en tránsito ([`04·S5`](04-seguridad.md#s5--csrf-sesiones-y-transporte)) y, si son sensibles, en reposo o con acceso restringido ([`04·S6`](04-seguridad.md#s6--archivos-sensibles-privado--acceso-controlado)). Acceso limitado por **permiso y scope** ([`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)). Credenciales con hashing fuerte, nunca en claro ([`04·S5`](04-seguridad.md#s5--csrf-sesiones-y-transporte)).
+**El dato personal se trata como sensible aunque nadie lo haya clasificado así**: le aplican las mismas protecciones que el capítulo [`04`](04-seguridad.md) exige para lo sensible —cifrado en tránsito, almacenamiento restringido, acceso por permiso—, sin esperar a que el proyecto lo declare.
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.20.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ✅ ❌ ✅ ❌ N/A ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 2 ❌ · 4 N/A.**
+**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
+
+**Reescrita el 2026-08-18, y no se partió: no había dos exigencias, había ninguna.** El texto anterior eran cuatro remisiones al capítulo `04` —cifrado en tránsito, en reposo, permiso y scope, hashing— **y nada propio**. Por eso reprobaba la fila 11: lo que ya dice otra regla se enlaza, no se repite; y la 9, porque cuatro cosas prestadas parecen cuatro exigencias.
+
+**Lo suyo era el ángulo del capítulo, y estaba implícito:** el `04` protege *lo sensible*, y quien decide qué es sensible es el proyecto. `PR3` dice que **el dato personal lo es por defecto**, sin esperar esa decisión. Eso no lo dice ninguna regla del `04`, y es lo único que hacía falta escribir.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 **Esta es la grave del capítulo, y el análisis del 2026-08-07 ya la tenía en rojo:** *«no exige nada propio: cuatro remisiones a `04`»*.
 
