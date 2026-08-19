@@ -31,7 +31,9 @@ De los apuntes del diplomado, módulo 2:
 
 ## Qué habría que construir
 
-**1. El mapa.** Una tabla en [`anatomia/`](../anatomia/) con las piezas del repo en tres columnas: la que sirve con cualquier agente, la que es adaptador de Claude Code, y la que es de la máquina. Se hace leyendo, una vez.
+**1. ~~El mapa.~~ · HECHO el 2026-08-18** → [`anatomia/que-esta-amarrado-a-la-herramienta.md`](../anatomia/que-esta-amarrado-a-la-herramienta.md). **18 de 53 validadores amarrados, 35 libres**, y el amarre de verdad son los ocho `hook_*` más `instalar.py`, que los enchufa. Lo que no se buscaba: **`base/` nombra la herramienta 26 veces**, catorce solo en `01-conducta.md`. Casi todas son `CLAUDE.md` —un nombre de archivo, no la máquina de atrás—, así que el amarre de lo que se hereda es superficial; pero `20·M3` se incumple diez veces y nadie lo reporta, porque el validador de tecnología busca lenguajes y frameworks, no herramientas de agente.
+
+~~**1. El mapa.**~~ Una tabla en [`anatomia/`](../anatomia/) con las piezas del repo en tres columnas: la que sirve con cualquier agente, la que es adaptador de Claude Code, y la que es de la máquina. Se hace leyendo, una vez.
 
 **2. El adaptador en un solo sitio.** Hoy la dependencia está repartida entre los cinco `hook_*.py` y `instalar.py`. Recogerla en una capa con un nombre propio (`adaptadores/claude-code/`, por decir algo) hace visible el tamaño real del amarre, que hoy nadie sabe cuál es.
 

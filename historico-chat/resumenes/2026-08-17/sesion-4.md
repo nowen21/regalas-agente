@@ -628,6 +628,26 @@ Al ir a cerrar ese reporte, **el archivo ya no estaba**: otra sesión lo había 
 
 ---
 
+### H-51 · Un tercio de los validadores está amarrado a la herramienta, y `base/` la nombra 26 veces
+
+Se construyó el punto 1 del [pendiente 15](../../../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md): el mapa de qué sobrevive si mañana el agente es otro, en [`anatomia/que-esta-amarrado-a-la-herramienta.md`](../../../anatomia/que-esta-amarrado-a-la-herramienta.md).
+
+| | |
+|---|---|
+| Validadores amarrados | **18 de 53** |
+| Libres | 35 — solo leen y escriben archivos |
+| El amarre de verdad | los **ocho `hook_*`** más `instalar.py`, que los enchufa |
+
+**Lo que no se buscaba: `base/` nombra la herramienta 26 veces**, catorce solo en `01-conducta.md`. Y `base/` es lo que se hereda y lo que [`20·M3`](../../../base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) declara agnóstico.
+
+**Casi todas son `CLAUDE.md`** — un nombre de archivo, no la máquina de atrás. Osea que el amarre de lo heredado es **superficial**: cambiar de agente obligaría a renombrar un archivo en diez sitios, no a reescribir reglas.
+
+> **Pero `M3` se incumple diez veces y nadie lo reporta**, porque el validador de tecnología busca lenguajes y frameworks — no herramientas de agente. La lista negra tiene un hueco con la forma exacta de lo que este repositorio usa.
+
+**Y tres carpetas dan cero:** `interfaz/`, `memoria/` y `metricas/`.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:

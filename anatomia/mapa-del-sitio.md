@@ -178,6 +178,7 @@ agente/
 │
 ├── 🟨 anatomia/ ...................... CÓMO ESTÁ HECHO EL AGENTE
 │   ├── componentes-del-agente.md ..... qué hace cada pieza y cuál necesita IA
+│   ├── que-esta-amarrado-a-la-herramienta.md  qué sobrevive si el agente cambia
 │   └── mapa-del-sitio.md ............. este archivo
 │
 ├── 🟨 notas/ ......................... POR QUÉ se decidió algo así (12 notas)
