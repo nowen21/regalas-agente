@@ -382,3 +382,107 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 **Las 200 reglas del cuerpo tienen su bloque de checklist.** Ciento veintiuna lo ganaron el 2026-08-18, en los diecisiete capítulos que faltaban. Setenta y dos del total dicen NO CUMPLE.
 
 **Las publicadas en NO CUMPLE suben, y es lo esperado.** No es que hayan empeorado: es que antes no tenían bloque y ahora dicen la verdad. El número que baja —las que no tienen sello— es el que mide el avance.
+
+
+---
+
+# Las 26 que hay que partir — propuesta del 2026-08-18
+
+**Esto no se ejecuta sin que el usuario apruebe la lista.** Partir una regla **crea un identificador nuevo**, y por [`20·M4`](../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) los identificadores no se reutilizan: lo que nazca acá lo van a citar los proyectos para siempre.
+
+## Antes: qué se arregló solo, y por qué el resto no
+
+El 2026-08-18 se acortaron seis reglas y las reprobadas bajaron de **60 a 54**. Las seis fallaban **solo la fila 10** —el cuerpo no cabe en el molde— y se arreglaron sin tocar ningún identificador:
+
+| | Medía | Mide |
+|---|---:|---:|
+| [`03·D8`](../base/03-datos.md) | 1 962 | 292 |
+| [`04·S9`](../base/04-seguridad.md) | 1 278 | 290 |
+| [`04·S10`](../base/04-seguridad.md) | 1 029 | 307 |
+| [`03·D5`](../base/03-datos.md) | 640 | 304 |
+| [`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) | 564 | 309 |
+| [`05·E4`](../base/05-errores-y-logging.md) | 419 | 282 |
+
+**Ya no queda ninguna así.** Las 54 restantes necesitan partirse, cambiar de título o rehacer su declaración de dependencia.
+
+> **Una corrección que conviene dejar escrita.** Se había estimado el trabajo como «83 fáciles y 26 difíciles». Medido de verdad: **16 fallan la fila 9 y la 10 a la vez**. Una regla larga suele serlo **porque** tiene dos exigencias — no son dos problemas, es el mismo, y partirla es lo que la acorta.
+
+## La lista
+
+**El identificador nuevo va al final del capítulo**, nunca en el hueco: `M4` lo exige. Se propone el siguiente libre de cada uno.
+
+### Núcleo blindado — las tres más delicadas
+
+| Regla | Se parte en | Identificador nuevo |
+|---|---|---|
+| `N1` · No ejecutar sin validación | **(a)** ningún cambio de estado sin aprobación · **(b)** si el usuario rechaza, no reintentes lo mismo | `N7` |
+| `N4` · Proteger los datos reales | **(a)** nada destructivo sobre datos reales sin autorización · **(b)** antes de lo irreversible, comprobar que hay punto de restauración | `N8` |
+| `N6` · Secretos nunca se exponen | **(a)** no hardcodear, loguear ni guardar credenciales · **(b)** no enviar contenido del proyecto afuera sin autorización | `N9` |
+
+> **`N4` es el caso más claro de los tres:** *«reversibilidad de la migración ≠ recuperación de datos borrados»* es una exigencia distinta, se cumple por separado, y hoy vive escondida dentro de otra.
+
+### Conducta
+
+| Regla | Se parte en | Nuevo |
+|---|---|---|
+| `C10` · Cada mensaje es posible regla | **(a)** detectar que el pedido genera patrón · **(b)** decidir si es transversal o del proyecto | `C24` |
+| `C14` · Estándar profesional del dominio | **(a)** aplicar el estándar sin preguntar · **(b)** cuándo sí hay que preguntar | `C25` |
+| `C17` · Confirma el entendimiento | **(a)** reformular antes de ejecutar · **(b)** qué cuenta como aprobación y qué no | `C26` |
+
+> `C17` es la más citada de las tres, y su segunda mitad —*«tu propia pregunta no cuenta; el silencio no cuenta»*— es la que se incumple. Separada, se puede citar sola.
+
+### Datos
+
+| Regla | Se parte en | Nuevo |
+|---|---|---|
+| `D1` · Normaliza y lleva auditoría | **son tres:** **(a)** normalización · **(b)** auditoría en toda tabla · **(c)** integridad en la base, no solo en la app | `D9`, `D10` |
+| `D4` · Configurables a catálogo | **(a)** cero valores fijos en el código · **(b)** bifurcar por código semántico, no por identificador | `D11` |
+| `D6` · Concurrencia e idempotencia | **(a)** idempotencia · **(b)** actualización concurrente y duplicados por carrera | `D12` |
+| `D7` · Persistencia histórica SCD-2 | **(a)** la consulta histórica lee historial, no calcula al vuelo · **(b)** el patrón de tramos con `desde`/`hasta` | `D13` |
+
+> **`D7` mide 3 839 caracteres: es un patrón entero metido dentro de una regla.** Su mitad (b) probablemente no sea una regla sino un anexo del capítulo — eso también hay que decidirlo.
+
+### Seguridad
+
+| Regla | Se parte en | Nuevo |
+|---|---|---|
+| `S3` · Nunca concatenes | **(a)** consultas y comandos parametrizados · **(b)** asignación masiva: declarar qué campos son asignables | `S12` |
+| `S5` · CSRF, sesiones y transporte | **son tres o cuatro:** protección contra falsificación · sesión · transporte · contraseñas | `S13`, `S14` |
+| `S6` · Archivos sensibles | **(a)** almacenamiento privado con acceso controlado · **(b)** el archivo sobrevive al borrado lógico del padre | `S15` |
+| `S11` · Escritura contra producción | **ya viene numerada como dos:** «Regla 1» y «Regla 2» están escritas así en el propio texto | `S16` |
+
+> **`S5` es el ejemplo de manual:** un título que enumera tres temas —*«CSRF, sesiones y transporte»*— es la señal de que son tres reglas. La fila 8 del checklist también la reprueba por eso.
+>
+> **`S11` se parte sola:** su cuerpo dice «Regla 1» y «Regla 2». Nadie tiene que interpretar nada.
+
+### El resto
+
+| Regla | Se parte en | Nuevo |
+|---|---|---|
+| `E2` · Falla controlado | **(a)** validar precondiciones y abortar temprano · **(b)** lo que deja varios registros consistentes va en transacción | `E6` |
+| `T7` · Triangulación | **(a)** derivar los casos, no adivinarlos · **(b)** confirmar el resultado esperado desde fuentes independientes | `T8` |
+| `G6` · Integración continua | **(a)** la comprobación corre sola en cada cambio · **(b)** los enganches locales complementan, no reemplazan | `G10` |
+| `G8` · El mensaje es del proyecto | **el propio texto dice «dos consecuencias»:** **(a)** el cuerpo abre con la idea del usuario · **(b)** nunca se firma con la herramienta | `G11` |
+| `CFG3` · Paridad entre entornos | **(a)** los entornos se parecen · **(b)** lo que producción necesita se documenta, no se aplica de memoria | `CFG5` |
+| `PR3` · Protégelos en reposo y en tránsito | **el título ya dice dos:** en tránsito · en reposo | `PR6` |
+| `EST2` · Nomenclatura consistente | **(a)** una convención por tipo de elemento · **(b)** respetar los límites de longitud del motor | `EST4` |
+| `IM2` · Los tres estados | **(a)** los tres estados · **(b)** anular guarda cuándo, quién y el motivo | `IM6` |
+| `IM3` · Anular revierte en transacción | **(a)** la reversión es atómica · **(b)** avisar a los demás módulos para invalidar cachés | `IM7` |
+| `I3` · Accesibilidad mínima | **son cuatro puntos sueltos** — etiquetas, contraste, teclado, color. O es una sola regla («la interfaz cumple el mínimo de accesibilidad, que es esta lista») o son cuatro | `I7`… |
+| `F4` · Todo plan lleva su plan de pruebas | **(a)** el plan se presenta y no se toca código sin OK · **(b)** autorizar el arranque de la fase no aprueba el plan detallado | `F25` |
+| `F12` · Relación y nomenclatura de fases | **son cuatro cosas distintas:** el consecutivo alfabético · el formato del nombre · la jerarquía épica → HU → fase · la ruta física | `F25`… |
+
+> **`F12` mide 1 898 caracteres y es la fuente única de cuatro asuntos.** Partirla toca **muchas citas**: hoy se la cita como `F12.2`, `F12.6`, `F12.11`, `F12.13` — o sea que ya se la está citando por partes. **Los subíndices existen porque la regla debería estar partida.**
+
+## Lo que hay que decidir, y no es regla por regla
+
+1. **¿Se parten?** Un sí general alcanza para las que el propio texto ya numera —`S11`, `G8`, `F12`— y para las que el título enumera —`S5`, `PR3`—.
+2. **¿`D7` y `F12` se parten en reglas, o su detalle pasa a anexo del capítulo?** Son las dos que no son «dos exigencias» sino «una regla con un manual pegado».
+3. **¿Las tres del núcleo se tocan?** Son `[BLINDADA]`. Partirlas es correcto por el checklist y es lo más delicado que hay en el repositorio.
+4. **¿Qué pasa con las citas?** Cada partición deja citas apuntando a la mitad que se quedó. `citas.py` las encuentra; hay que decidir si se reescriben o si la regla vieja conserva una remisión.
+
+## Lo que cuesta
+
+Cada partición es: escribir dos reglas, aplicarles el checklist a las dos, actualizar el índice del capítulo, `reglas-validables.md`, las citas, y versionar. **Es MAYOR**: un proyecto al día tiene que citar identificadores que antes no existían.
+
+**No se hace de una sentada, y no debería.** Por capítulo, como dice este pendiente desde el principio.

@@ -515,6 +515,37 @@ Lo que funcionó fue lo tercero: una decisión por párrafo, en castellano, y al
 
 ---
 
+### H-43 · Las reglas largas lo son porque tienen dos exigencias, no al revés
+
+Se acortaron seis reglas del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) —`D8`, `S9`, `S10`, `D5`, `F13`, `E4`— y las reprobadas bajaron de **60 a 54**. Las seis fallaban **solo la fila 10**, así que se arreglaron sin tocar ningún identificador.
+
+**Ya no queda ninguna así.** Y midiendo bien apareció lo que había estimado mal: **16 de las 54 fallan la fila 9 y la 10 a la vez.** Una regla larga suele serlo **porque** tiene dos exigencias — no son dos problemas, es el mismo.
+
+**Lo que se aprendió acortando, que no era lo esperado.** En dos de las seis **no hizo falta anexo ninguno**:
+
+- `S10` decía la misma exigencia cinco veces en cinco viñetas, más una lista de comandos concretos —`killall`, `pkill`, `taskkill`— que por `20·M3` **no debía estar en la base**. Se fue sin reemplazo.
+- `E4` explicaba cuándo usar cada nivel de registro con un ejemplo por viñeta, y el nombre del nivel ya lo dice.
+
+**Sobraba el ejemplo, no el contenido.** Solo `D8` y `S9` necesitaron nota aparte.
+
+**Y un efecto que hay que saber antes de tocar otra regla:** cambiarle el título le mueve el ancla, y las citas a esa ancla quedan rotas **sin que `validar.py estandar` diga nada**. Lo cazó `citas.py` al querer reescribir dos capítulos que citaban a `D8` por su título viejo.
+
+### H-44 · Tres reglas ya vienen partidas por dentro y nadie lo había mirado
+
+Quedó escrita la propuesta de partición de las [26](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y al armarla apareció que **algunas se parten solas**:
+
+| Regla | Lo que ya dice su propio texto |
+|---|---|
+| `04·S11` | su cuerpo dice literalmente **«Regla 1»** y **«Regla 2»** |
+| `09·G8` | abre con **«Dos consecuencias»** |
+| `02·F12` | se la cita como `F12.2`, `F12.6`, `F12.11` y `F12.13` — **ya se la cita por partes** |
+
+**Los subíndices de `F12` existen porque la regla debería estar partida.** Se inventó una forma de citar media regla en vez de partirla.
+
+Y dos que lo dicen en el título: `04·S5` —*«CSRF, sesiones y transporte»*— y `12·PR3` —*«en reposo y en tránsito»*—. Un título que enumera es la señal.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
