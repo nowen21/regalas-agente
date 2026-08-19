@@ -546,6 +546,30 @@ Y dos que lo dicen en el título: `04·S5` —*«CSRF, sesiones y transporte»*�
 
 ---
 
+### H-45 · Diecinueve de los veintiún capítulos de `base/` no tienen historia que los escriba
+
+El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md) decía que ninguna historia declara el capítulo `02` como su módulo, y que la salida correcta *«empieza por medir»* si les pasa lo mismo a los demás. Se midió el campo **Módulo** de las 74 historias:
+
+| Capítulo | Historia que lo escribe |
+|---|---|
+| `00` | EP-001 · HU-012 |
+| `01` | EP-001 · HU-011 |
+| `02` a `20` | **ninguna** |
+
+**El `02` no era el caso raro: era el único que alguien miró.**
+
+**Y las dos que sí tienen dueño lo tienen desde el 2026-08-17**, cuando nacieron al enrutar el backlog. Antes el número era **cero de veintiuno**.
+
+> **Todo el cuerpo de reglas se escribió sin recorrer la cadena que él mismo exige.** [`02·F0`](../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) dice que ningún eslabón «se salta, se fusiona ni se omite», y `F0` vive en el capítulo `02`, que no tiene historia. **La regla que exige la cadena se escribió sin cadena.**
+
+**Lo que decide:** las salidas A y B del pendiente —una historia para el `02`, o ampliar el módulo de `HU-007`— habrían tapado el caso y dejado dieciocho capítulos igual de huérfanos, sin que nadie lo notara.
+
+**Lo que no decide:** cómo se reparten. Una historia por capítulo son diecinueve historias nuevas; una por tema exige agrupar, y esa agrupación no existe todavía.
+
+**Y «Cuerpo de reglas» no es un módulo:** son diez historias apuntando a doscientas reglas. Es el nombre de todo, y por eso no contesta *«¿dónde bajo este cambio?»*.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
