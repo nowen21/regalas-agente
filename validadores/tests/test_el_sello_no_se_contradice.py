@@ -19,8 +19,10 @@ Tres comprobaciones, y cada una nace de algo que pasó de verdad:
   `v2.1.0` encima del de la `v2.2.0`, y quien leía de arriba abajo se quedaba
   con el viejo.
 """
+import io
 import os
 import sys
+import tempfile
 import unittest
 
 VALIDADORES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -190,3 +192,64 @@ class ElCuerpoDeReglasNoSeContradice(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LaMarcaBlindadaEsDelNucleo(unittest.TestCase):
+    """`20·M1` · Una regla no se declara intocable viviendo fuera del núcleo.
+
+    **Es la única mitad de `M1` que un programa puede juzgar.** Que un nivel «no
+    contradiga al de arriba» exige leer las dos reglas; que una regla lleve la
+    marca del capítulo `00` estando en otro capítulo, no.
+
+    **Y es la vía por la que la jerarquía se rompería sin ruido:** una regla de
+    capa 2 con la marca queda por encima de las demás sin haber pasado por el
+    núcleo — se saltó el nivel en vez de contradecirlo.
+
+    Quedó pendiente desde el 2026-08-07, en el punto 8 del pendiente 33.
+    """
+
+    def repo(self, archivo, encabezado):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        base = os.path.join(tmp.name, "base")
+        os.makedirs(base)
+        ruta = os.path.join(base, archivo)
+        with io.open(ruta, "w", encoding="utf-8") as f:
+            f.write(u"# Capítulo\n\n## %s\n\nUna exigencia corta.\n\n"
+                    u"```\nINCORRECTO: no\nCORRECTO:   sí\n```\n" % encabezado)
+        return tmp.name
+
+    def _blindadas(self, raiz):
+        reglas = metareglas.reglas(raiz)
+        return metareglas._blindada_solo_en_el_nucleo(reglas)
+
+    def test_en_el_nucleo_no_se_reporta(self):
+        raiz = self.repo("00-nucleo-blindado.md", u"N9 · Algo `[BLINDADA]`")
+        self.assertEqual([], self._blindadas(raiz))
+
+    def test_fuera_del_nucleo_es_falla(self):
+        raiz = self.repo("07-calidad-de-codigo.md", u"Q9 · Algo `[BLINDADA]`")
+        self.assertEqual(1, len(self._blindadas(raiz)))
+
+    def test_el_mensaje_nombra_la_regla(self):
+        raiz = self.repo("07-calidad-de-codigo.md", u"Q9 · Algo `[BLINDADA]`")
+        self.assertIn(u"Q9", self._blindadas(raiz)[0].mensaje)
+
+    def test_una_regla_sin_la_marca_no_se_reporta(self):
+        raiz = self.repo("07-calidad-de-codigo.md", u"Q9 · Algo corriente")
+        self.assertEqual([], self._blindadas(raiz))
+
+    def test_la_palabra_en_la_prosa_no_cuenta(self):
+        """**El ancla es lo que hace usable este control.** `BLINDADA` aparece
+        en prosa en seis archivos; sin anclar al encabezado, el validador
+        reportaría de más — y uno que reporta de más se termina apagando."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        base = os.path.join(tmp.name, "base")
+        os.makedirs(base)
+        with io.open(os.path.join(base, "07-calidad-de-codigo.md"),
+                     "w", encoding="utf-8") as f:
+            f.write(u"# Capítulo\n\n## Q9 · Algo corriente\n\n"
+                    u"Esto no puede tocar una regla `[BLINDADA]` del núcleo.\n\n"
+                    u"```\nINCORRECTO: no\nCORRECTO:   sí\n```\n")
+        self.assertEqual([], self._blindadas(tmp.name))

@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-13 |
 | **Rama** | `feature/A-EP-001-HU-001-molde-de-regla` |
 
-**Origen:** funcionalidad nueva. No existe nada del cuerpo de reglas. Esta es la primera fase del proyecto y define la forma sobre la que se escribe todo lo demás.
+**ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **funcionalidad nueva**. No existe nada del cuerpo de reglas. Esta es la primera fase del proyecto y define la forma sobre la que se escribe todo lo demás.
 
 **Por qué una sola fase para los tres CA.** Los tres validan el mismo documento, el molde, y ninguno se puede probar sin él. Partirlos daría fases que existen solo para cumplir la nomenclatura, que es justo lo que prohíbe `02·F12.10`.
 

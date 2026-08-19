@@ -102,6 +102,7 @@ No necesitan proyecto: leen `base/`. Son las más rentables del conjunto y hoy n
 | `M5` | encabezado `##`, marca de la lista cerrada, presencia del ejemplo, tamaño del cuerpo |
 | `M7` | toda dependencia declarada apunta a un ID que existe · sin ciclos · ninguna de capa 2 sobre una `[BLINDADA]` |
 | `M9` | toda regla de `base/` aparece clasificada en este archivo |
+| `M1` | **parcial:** ninguna regla lleva la marca `[BLINDADA]` fuera del capítulo `00` — que un nivel no contradiga al de arriba exige leer, y eso no se valida |
 | `M10` | `CHANGELOG.md` y `VERSION` suben juntos — ya lo hace `version.py`, falta atarlo a la regla |
 | `M14` | toda regla trae su bloque de checklist, con resultado y versión contra la que se aplicó |
 | `M17` | la entrada del registro abre sin identificador de regla ni ruta de archivo en su primer párrafo |

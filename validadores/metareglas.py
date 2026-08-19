@@ -300,6 +300,38 @@ def _fila7_10_12_13_formato(regla):
     return hallazgos
 
 
+def _blindada_solo_en_el_nucleo(reglas_):
+    """`M1` · La marca `[BLINDADA]` solo la lleva una regla del núcleo.
+
+    **Es la única mitad de `M1` que un programa puede juzgar.** Que un nivel
+    «no contradiga al de arriba» exige leer las dos reglas y entenderlas; que
+    una regla se declare intocable **viviendo fuera del capítulo intocable**, no:
+    eso se ve.
+
+    **Y es la vía por la que se rompería la jerarquía sin que nadie lo note.**
+    Una regla de capa 2 con la marca queda por encima de las demás sin haber
+    pasado por el núcleo — se saltó el nivel en vez de contradecirlo.
+
+    `33` · Anclado al **encabezado**, que es lo que hace usable a este control:
+    la palabra `BLINDADA` aparece en prosa en seis archivos, y sin el ancla el
+    validador reportaría de más. **Uno que reporta de más se termina apagando**,
+    y un control apagado es peor que ninguno porque figura como cubierto.
+    """
+    hallazgos = []
+    for regla in reglas_:
+        if not regla.blindada:
+            continue
+        rel = relativo(regla.archivo).replace("\\", "/")
+        if rel.endswith("00-nucleo-blindado.md"):
+            continue
+        hallazgos.append(Hallazgo(
+            FALLA, regla.archivo, regla.linea,
+            f"`{regla.id}` se declara `[BLINDADA]` fuera del núcleo — M1: la "
+            f"marca es del capítulo `00 · Núcleo blindado`, y ponerla en otro "
+            f"sitio salta un nivel de la jerarquía en vez de respetarlo"))
+    return hallazgos
+
+
 def _fila14_15_dependencias(regla, indice):
     hallazgos = []
     for forma, id in _dependencias(regla):
@@ -704,7 +736,8 @@ def validar(raiz=None):
         hallazgos += _sello_se_contradice(r)
         hallazgos += _totales_del_sello(r)
         hallazgos += _un_solo_sello(r)
-    return hallazgos + _fila19_version(raiz) + _fila_m17_entrada_llana(raiz)
+    return (hallazgos + _fila19_version(raiz) + _fila_m17_entrada_llana(raiz)
+            + _blindada_solo_en_el_nucleo(catalogo))
 
 
 def validar_catalogo(proyecto, raiz=None):

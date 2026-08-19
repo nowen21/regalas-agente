@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.13.1 — 2026-08-18
+
+**PARCHE** (una comprobación más y dos correcciones de forma; nada nuevo que cumplir).
+
+**Una regla podía declararse intocable sin estar en el capítulo de lo intocable, y nadie lo miraba.** No es que contradijera a las de arriba: es que se las saltaba, quedando por encima sin haber pasado por donde se pasa. Ahora se comprueba.
+
+**El detalle.** Del punto 8 del [pendiente 33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), preguntado el 2026-08-07 y sin contestar desde entonces. `validar.py metareglas` reporta cualquier regla con la marca `[BLINDADA]` fuera de [`base/00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — es la única mitad de [`20·M1`](base/20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md) que un programa puede juzgar; que un nivel no contradiga al de arriba exige leer las dos reglas. Hoy da cero.
+
+**Y el detalle que decide si el control sirve**, que ya estaba escrito en el resumen de aquel día: la palabra aparece en prosa en seis archivos, así que se ancla al **encabezado**. *«Un validador que reporta de más se termina apagando, y un control apagado es peor que ninguno porque figura como cubierto.»* Hay un caso de prueba dedicado a eso.
+
+También del mismo punto: el plan de la fase `A-EP-001-HU-001` declara su origen en la forma que pide `13·DOC12`, y la tabla del [`CLAUDE.md`](CLAUDE.md) §3 ganó la fila de `anatomia/`.
+
 ## 23.13.0 — 2026-08-18
 
 **MENOR** (una comprobación más que se puede correr; no cambia nada de lo que se exige).

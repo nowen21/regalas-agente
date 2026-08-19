@@ -49,6 +49,7 @@ Nada se renumera ni se borra: las reglas se derogan (`M11`), porque especificaci
 | Lo que pidió el usuario, con sus palabras | `prompts/` |
 | Qué pasó en una sesión | `historico-chat/` |
 | Preferencia del usuario sobre cómo trabajar | [`historico-chat/memory/`](historico-chat/memory/memory.md) |
+| **Cómo está armado** el estándar por dentro: qué archivo hace qué | [`anatomia/`](anatomia/mapa-del-sitio.md) |
 
 Regla que solo sirve a un stack o a un cliente: no va en `base/` (`M3`, `M13`).
 
