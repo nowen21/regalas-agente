@@ -77,5 +77,5 @@ Y es opt-in porque un proyecto que no toca IA no gana nada teniéndolo encendido
 ## Relación con lo que ya existe
 
 - Hermano de [07 · patrones DevOps](hecho/patrones-devops.md) (hecho) y [08 · patrón RPA](08-patrones-rpa.md): los tres son cobertura opt-in de dominio y ninguno depende de la fila 01 a 06.
-- El instrumento «clasificación por riesgo» es el mismo que el [pendiente 13](13-inventario-y-riesgo-de-las-acciones-del-agente.md) propone aplicarle al propio agente. Conviene escribir primero el 13, que es más pequeño, y reusar su tabla acá.
+- El instrumento «clasificación por riesgo» es el mismo que el [pendiente 13](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md) propone aplicarle al propio agente. Conviene escribir primero el 13, que es más pequeño, y reusar su tabla acá.
 - El monitoreo del ciclo de vida se apoya en el capítulo `19`, que ya existe. Acá se agrega qué se vigila de un modelo, que es distinto de lo que se vigila de un servicio.

@@ -4,6 +4,8 @@
 
 ---
 
+> **Anexo del capítulo:** [`00-identidad-y-rol/acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md) — qué puede hacer el agente y qué cuesta deshacerlo, en tres niveles. **Organiza lo que `N1` a `N6` ya exigen; no agrega exigencia nueva ni cambia ninguna.** Lo que aporta es la diferencia que faltaba: un plan aprobado cubre lo que se deshace, **nunca lo que no**.
+
 ## N1 · No ejecutar sin validación `[BLINDADA]`
 
 Ningún cambio de estado (archivos, comandos, control de versiones, migraciones, datos) sin aprobación explícita.

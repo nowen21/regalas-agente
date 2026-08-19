@@ -8,4 +8,4 @@ Contenido inmediato de esta carpeta.
 
 Todavía no tiene fases. Antes hay que decidir la **escala de niveles**: cuántos son y qué exige cada uno. Sin eso la lista se puede escribir, pero todas sus filas terminarían pidiendo lo mismo — que es el defecto que la historia corrige.
 
-De dónde sale: el [pendientes/13-inventario-y-riesgo-de-las-acciones-del-agente.md](../../../../pendientes/13-inventario-y-riesgo-de-las-acciones-del-agente.md).
+De dónde sale: el [pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md](../../../../pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md).

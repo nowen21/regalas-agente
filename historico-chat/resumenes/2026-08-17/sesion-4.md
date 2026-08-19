@@ -648,6 +648,36 @@ Se construyó el punto 1 del [pendiente 15](../../../pendientes/15-el-estandar-d
 
 ---
 
+### H-52 · El inventario de acciones: aprobar un plan ya no aprueba lo irreversible
+
+Cerró el [pendiente 13](../../../pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md) como la fase `A-EP-001-HU-012`, con su plan aprobado antes de tocar nada.
+
+**12 clases de acción**, en tres niveles: 3 🟢 se deshacen solas · 4 🟡 con trabajo · **5 🔴 no se deshacen**.
+
+> **Lo que cambia:** un plan aprobado cubre 🟢 y 🟡 de corrido, y **nunca 🔴**. Eso se pide aparte, cada vez, aunque estuviera escrito en el plan.
+
+**Tres acciones resultaron irreversibles y nadie las tenía nombradas:** borrar un archivo **no versionado**, correr algo que **sale a la red**, y escribir **fuera del repositorio**. Las tres caían en `N1` junto con cambiarle una coma a un README.
+
+`N1` a `N6` no cambiaron una letra, y hay una prueba que lo vigila.
+
+### H-53 · Los tres defectos de la fase los cazó la máquina, no la lectura
+
+Y el que más enseña es el tercero.
+
+| # | Qué pasó |
+|---|---|
+| 1 | **«En masa» no era una clase.** Estaba en la tabla con el nivel *«el de su clase, subido un nivel»*, que no es un nivel. Es un modificador, y salió a su propia sección |
+| 2 | **Una fila con dos niveles pasó la comprobación.** Decía *«🔴 para `push`, 🟡 el resto»* — y el validador miraba si había **algún** nivel, no si había **uno**. Son dos clases sin partir |
+| 3 | **El recuento de huérfanas buscaba en el archivo entero** |
+
+**El tercero es el que vale.** `CP-002` borra una clase a propósito para comprobar que se reporta, y **no se reportaba**: el nombre seguía apareciendo en otra sección del anexo.
+
+> **Sin ese caso, «cero huérfanas» habría significado que el programa no busca nada.** Es la misma forma del defecto que apareció hoy con `avisar()`, con `CP-005` del instalador y con el detector de secretos: **una comprobación que pasa sin comprobar**.
+
+**Y `CP-009` cazó un cambio real:** decía que la fase no puede tocar el núcleo, y le habíamos puesto el enlace al anexo — que el propio plan pedía. **El plan y la prueba se contradecían**, y se resolvió leyendo el criterio: lo que protege es el texto de las seis reglas, no el archivo.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -668,7 +698,7 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 ---
 
-**Lo que sigue, cuando se retome:** los **17 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
+**Lo que sigue, cuando se retome:** los **16 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
 
 **Y siete decisiones que solo puede tomar el usuario**, que hoy bloquean lo suyo: derogar `04·S7` en favor de `10·DEP3`; qué hacer con `12·PR3`; la excepción de `00·N1`; el `08·T1`, que es MAYOR; si `DOC14` exime al enlace de la misma carpeta (son 747); si el `·` se queda en los títulos; y si `pendientes/` entra en la estructura de la base.
 

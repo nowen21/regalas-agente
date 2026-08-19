@@ -1,16 +1,16 @@
 # Pendiente · Inventario y riesgo de las acciones del agente
 
-**Estado:** abierto · anotado 2026-08-13.
+**Estado:** cerrado 2026-08-18 · anotado 2026-08-13.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-012 — Inventario de las acciones del agente y su riesgo](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) — el inventario es un anexo del núcleo, y el núcleo es cuerpo de reglas |
+| **Historia de usuario** | [EP-001 · HU-012 — Inventario de las acciones del agente y su riesgo](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) — el inventario es un anexo del núcleo, y el núcleo es cuerpo de reglas |
 
 Escribir la lista de **todo lo que el agente puede hacer** y clasificar cada cosa por qué tan difícil es deshacerla. A partir de esa lista, decir qué necesita aprobación de una persona y qué no.
 
 ## El problema
 
-Nadie ha hecho esa lista. Las reglas cubren los casos que alguien recordó: el [núcleo blindado](../base/00-nucleo-blindado.md) protege datos reales (`N4`), commit y push (`N2`), secretos (`N6`) y las operaciones masivas (`N5`). Son los casos que dolieron. Lo que nunca se hizo fue sentarse a enumerar qué más puede hacer el agente y preguntarse por cada cosa qué pasa si sale mal.
+Nadie ha hecho esa lista. Las reglas cubren los casos que alguien recordó: el [núcleo blindado](../../base/00-nucleo-blindado.md) protege datos reales (`N4`), commit y push (`N2`), secretos (`N6`) y las operaciones masivas (`N5`). Son los casos que dolieron. Lo que nunca se hizo fue sentarse a enumerar qué más puede hacer el agente y preguntarse por cada cosa qué pasa si sale mal.
 
 De ahí salen dos consecuencias.
 
@@ -44,8 +44,45 @@ Y de la diapositiva de sistemas autónomos: mientras la máquina sugiere, el err
 
 ## Por qué conviene hacerlo antes que otros
 
-Es barato (es una lista y una tabla, no un programa) y desbloquea cosas: el ítem 15 del [pendiente 09](09-autonomia-sin-ia.md) (respaldo antes de operación irreversible) hoy no sabe contra qué lista comparar, y esta es esa lista. El [pendiente 12](12-patron-ia.md) necesita la misma tabla de riesgo para los modelos de un proyecto, así que se escribe una vez y se usa dos veces.
+Es barato (es una lista y una tabla, no un programa) y desbloquea cosas: el ítem 15 del [pendiente 09](../09-autonomia-sin-ia.md) (respaldo antes de operación irreversible) hoy no sabe contra qué lista comparar, y esta es esa lista. El [pendiente 12](../12-patron-ia.md) necesita la misma tabla de riesgo para los modelos de un proyecto, así que se escribe una vez y se usa dos veces.
 
 ## El límite
 
 La clasificación la escribe una persona, y decidir en qué clase cae una acción nueva es criterio. Lo que un programa puede hacer después es comparar: esta acción está en la lista, esta no. Una acción que no está en el inventario se trata como de la tercera clase hasta que alguien la clasifique, que es la única forma segura de que la lista incompleta no se vuelva un permiso.
+
+
+---
+
+# Cómo cerró — 2026-08-18
+
+**Las tres piezas que pedía, construidas.** Fase [`A-EP-001-HU-012`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/A-EP-001-HU-012-inventario-de-acciones-y-riesgo/README.md), plan aprobado por el usuario antes de tocar nada.
+
+| Lo que pedía | Cómo quedó |
+|---|---|
+| **1 · El inventario** | [`base/00-identidad-y-rol/acciones-y-riesgo.md`](../../base/00-identidad-y-rol/acciones-y-riesgo.md) — **12 clases** |
+| **2 · La clasificación por lo que cuesta deshacer** | Tres niveles, como proponía: 3 se deshacen solas · 4 con trabajo · **5 no se deshacen** |
+| **3 · La consecuencia sobre `N1`** | Escrita: un plan aprobado cubre los dos primeros niveles y **nunca el tercero** |
+
+## La frase del pendiente que resultó ser el criterio de diseño
+
+> *La rigidez pareja no protege más, protege menos.*
+
+Quedó escrita en el anexo, y es lo que decide `CP-006`: si el nivel más bajo y el más alto exigen lo mismo, **la fase falla aunque todo lo demás pase**. Sin diferencia de exigencia, el inventario es decoración.
+
+## Lo que el pendiente no había previsto
+
+**Tres acciones que nombraba como «sin clasificar» resultaron ser del nivel más alto**, no del medio:
+
+- **Borrar un archivo no versionado** — no hay de dónde recuperarlo.
+- **Correr algo que sale a la red** — ya salió de la máquina.
+- **Escribir fuera del repositorio** — se rompe algo que el usuario usa en paralelo.
+
+Las tres caían hasta hoy en `N1`, junto con cambiarle una coma a un README.
+
+## El núcleo no se tocó
+
+`N1` a `N6` siguen letra por letra. **La lista los organiza, no los reemplaza**, y hay una prueba que compara su texto contra lo guardado — que **cazó un cambio real** mientras se construía.
+
+## Lo que queda, y es otra fase
+
+**Aplicar la clasificación a los enganches**: que el que corre antes de una acción sepa de qué nivel es. No lo cubre ningún criterio de esta historia, así que no se hizo acá.

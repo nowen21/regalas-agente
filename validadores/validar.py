@@ -16,6 +16,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import acciones         # noqa: E402
 import aislamiento      # noqa: E402
 import brevedad         # noqa: E402
 import calidad          # noqa: E402
@@ -158,6 +159,17 @@ def cmd_metareglas(a):
     if a.catalogo:
         hallazgos += metareglas.validar_catalogo(a.catalogo, raiz)
     return reportar(hallazgos, f"El estándar contra sus meta-reglas · {relativo(raiz)}")
+
+
+def cmd_acciones(a):
+    """`13` · El inventario de lo que el agente puede hacer, y qué cuesta deshacerlo."""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(acciones.validar(raiz),
+                      f"Acciones del agente y su riesgo · {relativo(raiz)}")
+    linea = acciones.linea_resumen(raiz)
+    if linea:
+        print(linea)
+    return codigo
 
 
 def cmd_brevedad(a):
@@ -376,6 +388,11 @@ def main():
                         help="marcas de generación automática en lo que se hereda · 00·ID8")
     ma.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     ma.set_defaults(func=cmd_marcas)
+
+    ac = sub.add_parser("acciones",
+                        help="el inventario de acciones del agente y su riesgo · 00·N1")
+    ac.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    ac.set_defaults(func=cmd_acciones)
 
     br = sub.add_parser("brevedad",
                         help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")

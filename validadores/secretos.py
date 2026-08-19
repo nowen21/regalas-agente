@@ -55,6 +55,7 @@ SALTAR = re.compile(
 # el agujero por el que se cuela una clave real.
 EXENTOS = (
     "validadores/tests/test_la_clave_no_llega_al_historico.py",
+    "validadores/tests/test_el_validador_no_revisa_lo_ajeno.py",
     "validadores/pruebas.py",
 )
 

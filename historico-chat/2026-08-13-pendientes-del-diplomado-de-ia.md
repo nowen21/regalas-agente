@@ -20,7 +20,7 @@ Leí los apuntes del diplomado (los dos módulos, 130 archivos) y los comparé c
 | # | Pendiente | De dónde salió |
 |---|---|---|
 | 12 | [Patrón IA (opt-in)](../pendientes/12-patron-ia.md) | M2: administración de la IA, los 4 componentes, sistemas autónomos |
-| 13 | [Inventario y riesgo de las acciones del agente](../pendientes/13-inventario-y-riesgo-de-las-acciones-del-agente.md) | M2: «sin inventario no hay nada más»; el catálogo y el crédito no llevan el mismo control |
+| 13 | [Inventario y riesgo de las acciones del agente](../pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md) | M2: «sin inventario no hay nada más»; el catálogo y el crédito no llevan el mismo control |
 | 14 | [Las reglas no tienen fecha de revisión](../pendientes/14-las-reglas-no-tienen-fecha-de-revision.md) | M2: el tramo de monitoreo del ciclo de vida (la deriva) |
 | 15 | [El estándar depende de una sola herramienta](../pendientes/15-el-estandar-depende-de-una-sola-herramienta.md) | M2: dependencia del proveedor; el ecosistema de cientos de proveedores jóvenes |
 | 16 | [Primero que el proceso sirva, después se automatiza](../pendientes/16-primero-que-el-proceso-sirva-despues-se-automatiza.md) | M1: «Eficiencia → Agilidad → Automatización», en ese orden |

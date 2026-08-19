@@ -24,7 +24,7 @@ Este capítulo **no ajusta ni relaja nada**: donde nombra una obligación de otr
 | [`ID8 · Escribe sin las marcas que delatan generación automática`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Ningún documento se entrega con las marcas de la lista del capítulo. |
 | [`ID9 · Di lo mismo en menos palabras`](reglas/ID9-di-lo-mismo-en-menos-palabras.md) | La menor extensión con la que se entienda; el detalle va al archivo, no al mensaje. |
 
-**Anexo del capítulo:** [`marcadores-de-ia.md`](marcadores-de-ia.md), la lista cerrada que exige [`ID8`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Es instrumento, no regla: por eso vive junto al capítulo y no en [`reglas/`](reglas/).
+**Anexos del capítulo:** [`acciones-y-riesgo.md`](acciones-y-riesgo.md), el inventario de lo que el agente puede hacer y qué cuesta deshacerlo, que organiza el [núcleo](../00-nucleo-blindado.md) sin cambiarlo · [`marcadores-de-ia.md`](marcadores-de-ia.md), la lista cerrada que exige [`ID8`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Es instrumento, no regla: por eso vive junto al capítulo y no en [`reglas/`](reglas/).
 
 ---
 

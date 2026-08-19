@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.15.0 — 2026-08-18
+
+**MENOR** (una lista nueva que organiza lo que ya se exigía; ninguna regla cambia).
+
+**Aprobar un plan aprobaba por igual cambiar una coma y borrar algo que no se puede recuperar.** Ahora no: hay una lista de lo que el agente puede hacer, ordenada por lo que cuesta deshacer cada cosa.
+
+Lo que se deshace solo se hace y se cuenta después. Lo que cuesta deshacer se anuncia antes, de una en una. **Y lo que no se deshace se pide aparte, cada vez** — aunque estuviera escrito en un plan ya aprobado.
+
+**El detalle.** Es el [pendiente 13](pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md), construido como la fase [`A-EP-001-HU-012`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/A-EP-001-HU-012-inventario-de-acciones-y-riesgo/README.md) con su plan aprobado. Nace el anexo [`base/00-identidad-y-rol/acciones-y-riesgo.md`](base/00-identidad-y-rol/acciones-y-riesgo.md) —12 clases, 3 🟢 · 4 🟡 · 5 🔴— y su comprobación en `validar.py acciones`. **`N1` a `N6` no cambian letra**, y hay un caso que lo vigila comparando su texto contra lo guardado.
+
+**Tres cosas quedaron nombradas como irreversibles y antes no lo estaban:** borrar un archivo que no está en el control de versiones, correr algo que sale a la red, y escribir fuera del repositorio. Las tres caían en `N1` junto con cambiar una coma.
+
+**Y tres defectos salieron de construirlo, los tres cazados por la máquina.** El que más enseña: el caso que borra una clase a propósito para ver si se reporta **no la reportaba**, porque la búsqueda miraba el archivo entero y el nombre seguía en otra sección. Sin ese caso, «cero huérfanas» habría significado que el programa no busca nada. 23 casos en [`test_las_acciones_tienen_su_riesgo.py`](validadores/tests/test_las_acciones_tienen_su_riesgo.py).
+
 ## 23.14.0 — 2026-08-18
 
 **MENOR** (las comprobaciones arrancan donde estás parado; si las corrías desde tu proyecto, ahora sí lo revisan a él).

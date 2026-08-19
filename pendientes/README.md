@@ -44,7 +44,7 @@ Priorizado el **2026-08-16** sobre los 31 abiertos de entonces; hoy quedan **24*
 |---|---|---|---|
 | ~~07~~ | — | **hecho** → [Patrones DevOps 18 y 19](hecho/patrones-devops.md) | Capítulos opt-in `18` (despliegue/infra) y `19` (observabilidad/operación) + plantillas. Cerrado 2026-08-06 (v1.1.0). |
 | 08 | **P6** | [Patrón RPA](08-patrones-rpa.md) | Patrón opt-in para desarrollar soluciones RPA (bots): diseño, orquestación, resiliencia, credenciales, pruebas y gobernanza. |
-| 12 | **P6** | [Patrón IA](12-patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. Está casi listo para redactarse, y reusa la tabla de riesgo del [13](13-inventario-y-riesgo-de-las-acciones-del-agente.md). |
+| 12 | **P6** | [Patrón IA](12-patron-ia.md) | Capítulo opt-in `21` para proyectos que construyen con IA: ciclo de vida del modelo, inventario, clasificación por riesgo, dueño, explicabilidad, sesgo y monitoreo de deriva. Está casi listo para redactarse, y reusa la tabla de riesgo del [13](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md). |
 
 Estos tres **no dependen de 01–06 ni entre sí**. Van numerados al final porque agregan *cobertura*, mientras que 01–06 agregan *garantía* sobre la cobertura existente. Si un proyecto real necesita DevOps, RPA o IA, se adelantan sin esperar la fila.
 
@@ -80,7 +80,7 @@ Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../p
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 13 | **P3** | [Inventario y riesgo de las acciones del agente](13-inventario-y-riesgo-de-las-acciones-del-agente.md) | Nadie ha listado todo lo que el agente puede hacer. `N1` a `N6` cubren los casos que dolieron, y todo lo demás cae en una sola exigencia pareja que en la práctica se aprueba en bloque. **El más rentable de su nivel:** es una lista y una tabla, y desbloquea el ítem 15 del 09 y toda la clasificación de riesgo del 12. |
+| 13 | **P3** | [Inventario y riesgo de las acciones del agente](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md) | Nadie ha listado todo lo que el agente puede hacer. `N1` a `N6` cubren los casos que dolieron, y todo lo demás cae en una sola exigencia pareja que en la práctica se aprueba en bloque. **El más rentable de su nivel:** es una lista y una tabla, y desbloquea el ítem 15 del 09 y toda la clasificación de riesgo del 12. |
 | 14 | **P3** | [Las reglas no tienen fecha de revisión](14-las-reglas-no-tienen-fecha-de-revision.md) | Una regla que dejó de valer se comporta igual que una correcta: nada se rompe. La memoria ya recibió vigencia en el pendiente 02; las reglas no. Real, pero con reglas escritas hace días todavía no hay nada vencido: gana valor con el tiempo. |
 | 15 | **P5** | [El estándar depende de una sola herramienta](15-el-estandar-depende-de-una-sola-herramienta.md) | Las reglas son portables, lo que las hace cumplir no. Hoy no hay ni un mapa de cuáles piezas están amarradas a Claude Code. **Su punto 1 —el mapa en `anatomia/`— es de una tarde y sube a P3**; los puntos 2 y 3 son abstracción antes de tener el segundo caso. |
 | 16 | **P3** | [Primero que el proceso sirva, después se automatiza](16-primero-que-el-proceso-sirva-despues-se-automatiza.md) | Al 09 le falta el criterio de *si conviene* automatizar, no solo *si se puede*. Automatizar una regla mal escrita la congela y la pone a fallar sola. **Se resuelve escribiéndolo**, no construyendo nada, y es puerta de todo el 09. |

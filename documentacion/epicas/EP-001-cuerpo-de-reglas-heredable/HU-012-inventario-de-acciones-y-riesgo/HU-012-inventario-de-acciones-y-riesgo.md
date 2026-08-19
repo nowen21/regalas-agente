@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | Terminada |
 
 ---
 
@@ -165,9 +165,10 @@ Y lo dice
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
+| [A-EP-001-HU-012-inventario-de-acciones-y-riesgo](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/README.md) | CA-01 a CA-04 | [plan_trabajo](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/plan_pruebas.md) | [resultado](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/resultado_pruebas.md) | **Cerrada 2026-08-18 · Cumple** |
 | — | — | — | — | — | Sin empezar |
 
-**De dónde sale esta historia:** el [pendientes/13-inventario-y-riesgo-de-las-acciones-del-agente.md](../../../../pendientes/13-inventario-y-riesgo-de-las-acciones-del-agente.md).
+**De dónde sale esta historia:** el [pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md](../../../../pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
