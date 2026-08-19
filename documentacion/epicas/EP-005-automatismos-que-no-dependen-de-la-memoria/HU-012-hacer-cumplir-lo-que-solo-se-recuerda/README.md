@@ -8,4 +8,4 @@ Contenido inmediato de esta carpeta.
 
 Todavía no tiene fases. Tres de sus cuatro criterios **no esperan nada**; el cuarto sí: cuál de las tres salidas se toma para `ID9` es decisión del usuario, y está planteada en su pendiente.
 
-De dónde sale: el [pendientes/58-nada-hace-cumplir-id9.md](../../../../pendientes/58-nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`.
+De dónde sale: el [pendientes/hecho/nada-hace-cumplir-id9.md](../../../../pendientes/hecho/nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`.

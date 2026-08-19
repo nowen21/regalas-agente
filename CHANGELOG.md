@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.13.0 — 2026-08-18
+
+**MENOR** (una comprobación más que se puede correr; no cambia nada de lo que se exige).
+
+**Pedir «menos es más» siete veces en tres días no hizo que las respuestas se acortaran.** Cada vez se anotaba el caso, y anotarlo no cambiaba nada: al final el registro era el sustituto de cumplir.
+
+Lo que faltaba no era otro recordatorio, era un número. Ahora se puede medir cuánto ocupa lo que el agente contesta, y mirarlo al cerrar la sesión. **No detiene nada y no dice qué respuesta estuvo mal** — decir cuál palabra sobra sigue siendo cosa de quien lee.
+
+**El detalle.** Es el [pendiente 58](pendientes/hecho/nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`, con su salida 3: medir y no bloquear. Nace [`validadores/brevedad.py`](validadores/brevedad.py) y el subcomando `validar.py brevedad`, que lee la transcripción que ya escribe el enganche del histórico y reporta **la mediana por sesión** — no el máximo, porque una respuesta larga suele estar justificada y lo que señala un problema es que la mitad lo sean. Las otras dos salidas se descartaron con motivo: rebotar la respuesta obliga a leer la versión larga primero, e inyectar la regla en cada mensaje es lo que ya falló siete veces.
+
+**Y hay un motivo que no estaba en el pendiente:** [`reglas-validables.md`](validadores/reglas-validables.md) ya declaraba que `ID9` no se puede comprobar con un programa. Un enganche que rebotara estaría afirmando lo contrario; uno que cuenta hace justo lo que esa declaración permite. Por eso la declaración quedó ahí y no en el cuerpo de la regla: meterla dentro la habría hecho más larga, **incumpliendo `ID9` al escribir cómo se comprueba `ID9`**. 21 casos en [`test_la_brevedad_se_mide.py`](validadores/tests/test_la_brevedad_se_mide.py).
+
 ## 23.12.2 — 2026-08-18
 
 **PARCHE** (cuatro reglas dicen lo mismo en menos palabras; nada de lo que exigen cambia).

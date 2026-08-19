@@ -241,7 +241,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 58 | **P1** | [Nada hace cumplir `ID9`, y el proyecto no puede ponerle el enganche](58-nada-hace-cumplir-id9.md) | Una regla del capítulo de identidad que ningún programa comprueba y que el proyecto tampoco puede enganchar por su cuenta. |
+| 58 | **P1** | [Nada hace cumplir `ID9`, y el proyecto no puede ponerle el enganche](hecho/nada-hace-cumplir-id9.md) | Una regla del capítulo de identidad que ningún programa comprueba y que el proyecto tampoco puede enganchar por su cuenta. |
 
 **Faltaba en este índice hasta el 2026-08-17**, cuando `validar.py estandar` lo destapó al ejecutarse las fases del 48.
 

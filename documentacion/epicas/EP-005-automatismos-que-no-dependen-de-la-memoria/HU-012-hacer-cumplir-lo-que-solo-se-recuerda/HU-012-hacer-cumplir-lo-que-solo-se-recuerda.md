@@ -170,7 +170,7 @@ Entonces dice cuál de las tres salidas se tomó, o que no se puede hacer cumpli
 |---|---|---|---|---|---|
 | — | — | — | — | — | Sin empezar |
 
-**De dónde sale esta historia:** el [pendientes/58-nada-hace-cumplir-id9.md](../../../../pendientes/58-nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`.
+**De dónde sale esta historia:** el [pendientes/hecho/nada-hace-cumplir-id9.md](../../../../pendientes/hecho/nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`.
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

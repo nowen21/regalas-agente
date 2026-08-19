@@ -482,7 +482,7 @@ El [pendiente 11](../../../pendientes/11-limpiar-marcadores-de-ia-del-texto-del-
 
 **Lo que decide:** limpiar primero es hacer el trabajo dos veces. Lo que hay que cerrar antes es que la marca **no entre** — `validar.py marcas` ya la cuenta, pero informa en vez de detener.
 
-**Y hay algo incómodo en el dato.** `02·F21` dice que un incumplimiento ya identificado no se repite en lo nuevo. Se identificó el 2026-08-10, y desde entonces entraron 2 872. La regla estaba escrita, publicada y vigente; nada la hacía cumplir. Es exactamente lo que dice el [pendiente 58](../../../pendientes/58-nada-hace-cumplir-id9.md) sobre `ID9`, medido sobre otra regla.
+**Y hay algo incómodo en el dato.** `02·F21` dice que un incumplimiento ya identificado no se repite en lo nuevo. Se identificó el 2026-08-10, y desde entonces entraron 2 872. La regla estaba escrita, publicada y vigente; nada la hacía cumplir. Es exactamente lo que dice el [pendiente 58](../../../pendientes/hecho/nada-hace-cumplir-id9.md) sobre `ID9`, medido sobre otra regla.
 
 ---
 
@@ -570,6 +570,20 @@ El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-0
 
 ---
 
+### H-46 · `ID9` se mide, y medir era lo único que la declaración permitía
+
+Cerró el [pendiente 58](../../../pendientes/hecho/nada-hace-cumplir-id9.md), que venía de `shopnest-mesa`: el usuario pidió «menos es más» **siete veces en tres días** y cada vez se anotó el caso sin que cambiara nada — *«¿de qué le sirve anotarlo tanto si no lo está cumpliendo?»*.
+
+**Se eligió la salida 3, medir sin bloquear.** Es `validar.py brevedad`, y lee la transcripción que el enganche del histórico ya escribe.
+
+> **Lo que decidió cuál salida era la correcta ya estaba escrito.** `reglas-validables.md` decía que `ID9` no se puede comprobar con un programa: *«contar renglones es fácil, pero decidir cuál sobra exige entender qué cambia la decisión del que lee»*. Un enganche que **rebotara** la respuesta estaría afirmando lo contrario. Uno que **cuenta** hace exactamente lo que esa frase permite.
+
+**Primera medición, 46 sesiones:** la mediana más alta es 1 996 caracteres y la respuesta más larga del repositorio, **11 121**. Dos sesiones pasan el umbral.
+
+**Y hay un detalle que da vueltas sobre sí mismo:** la declaración quedó en `reglas-validables.md` y no en el cuerpo de `ID9`, porque meterla dentro la habría hecho más larga — **incumpliendo `ID9` al escribir cómo se comprueba `ID9`**.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -590,7 +604,7 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 
 ---
 
-**Lo que sigue, cuando se retome:** los **18 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
+**Lo que sigue, cuando se retome:** los **17 pendientes** que quedan abiertos, empezando por los **14 que todavía no se han mirado uno por uno** — el `01`, `08`, `09`, `10`, `12`, `13`, `15`, `16`, `26`, `33`, `37`, `56`, `60` y `61`.
 
 **Y siete decisiones que solo puede tomar el usuario**, que hoy bloquean lo suyo: derogar `04·S7` en favor de `10·DEP3`; qué hacer con `12·PR3`; la excepción de `00·N1`; el `08·T1`, que es MAYOR; si `DOC14` exime al enlace de la misma carpeta (son 747); si el `·` se queda en los títulos; y si `pendientes/` entra en la estructura de la base.
 

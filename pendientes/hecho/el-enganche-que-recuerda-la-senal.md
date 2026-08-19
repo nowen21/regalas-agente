@@ -34,7 +34,7 @@ Decidir qué merece ser señal es criterio. Lo que se automatiza es el recordato
 
 [validadores/hook_senales.py](../../validadores/hook_senales.py), conectado a `UserPromptSubmit`. Recuerda escribir la señal **en el turno**, no al cerrar — porque al cerrar no sirve: un chat no tiene final y nadie sabe cuál fue el último mensaje hasta mucho después.
 
-**Lo difícil no era que avisara: era que no se volviera ruido.** Un aviso que sale en cada turno se deja de leer, y entonces vale lo mismo que no tenerlo — es exactamente lo que el [58](../58-nada-hace-cumplir-id9.md) describe con `ID9`, donde anotar el incumplimiento se volvió el sustituto de corregirlo.
+**Lo difícil no era que avisara: era que no se volviera ruido.** Un aviso que sale en cada turno se deja de leer, y entonces vale lo mismo que no tenerlo — es exactamente lo que el [58](nada-hace-cumplir-id9.md) describe con `ID9`, donde anotar el incumplimiento se volvió el sustituto de corregirlo.
 
 Tres condiciones lo evitan, y las tres tienen su prueba:
 

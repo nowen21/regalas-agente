@@ -52,7 +52,7 @@ No estaba cubierto. La primera redacción decía *«si está, se sigue citando d
 
 **La mitad comprobable de `C23` no tiene programa.** Que la respuesta traiga su cita **sí** se puede comprobar, y hoy nada lo hace. Queda declarado en `reglas-validables.md` y es su propia fase.
 
-Es el riesgo `B-03` del plan, y el mismo que el [pendientes/58-nada-hace-cumplir-id9.md](../../../../../pendientes/58-nada-hace-cumplir-id9.md) describe para `ID9`: **una regla de conducta que solo se recuerda no se cumple siempre.**
+Es el riesgo `B-03` del plan, y el mismo que el [pendientes/hecho/nada-hace-cumplir-id9.md](../../../../../pendientes/hecho/nada-hace-cumplir-id9.md) describe para `ID9`: **una regla de conducta que solo se recuerda no se cumple siempre.**
 
 ---
 

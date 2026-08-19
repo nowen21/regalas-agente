@@ -17,6 +17,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import aislamiento      # noqa: E402
+import brevedad         # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
 import citas            # noqa: E402
@@ -137,6 +138,23 @@ def cmd_metareglas(a):
     if a.catalogo:
         hallazgos += metareglas.validar_catalogo(a.catalogo, raiz)
     return reportar(hallazgos, f"El estándar contra sus meta-reglas · {relativo(raiz)}")
+
+
+def cmd_brevedad(a):
+    """`58` · Cuánto ocupa lo que el agente contesta. **Mide, no detiene.**
+
+    `ID9` no se puede comprobar con un programa —decidir qué palabra sobra
+    exige entender qué cambia la decisión del que lee— y esto no lo intenta.
+    Cuenta lo que sí se cuenta, para que «me parece que contesta largo» deje de
+    ser una impresión.
+    """
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(brevedad.validar(raiz),
+                      f"Brevedad de las respuestas · {relativo(raiz)}")
+    linea = brevedad.como_texto(raiz)
+    if linea:
+        print(linea)
+    return codigo
 
 
 def cmd_marcas(a):
@@ -338,6 +356,11 @@ def main():
                         help="marcas de generación automática en lo que se hereda · 00·ID8")
     ma.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     ma.set_defaults(func=cmd_marcas)
+
+    br = sub.add_parser("brevedad",
+                        help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")
+    br.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    br.set_defaults(func=cmd_brevedad)
 
     se = sub.add_parser("secretos",
                         help="secretos incrustados en el código · 04·S4")

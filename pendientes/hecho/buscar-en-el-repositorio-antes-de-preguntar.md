@@ -56,4 +56,4 @@ Decía: *«no es "no preguntes"; preguntar lo que no está decidido es lo que ev
 
 **La mitad comprobable no tiene programa.** Que el agente haya buscado no se puede ver; que la respuesta traiga su cita, sí — y nada lo comprueba. Está declarado en [validadores/reglas-validables.md](../../validadores/reglas-validables.md).
 
-Sin eso, `C23` depende de que el agente se acuerde, que es exactamente lo que el [58](../58-nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí falló siete veces en tres días.
+Sin eso, `C23` depende de que el agente se acuerde, que es exactamente lo que el [58](nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí falló siete veces en tres días.

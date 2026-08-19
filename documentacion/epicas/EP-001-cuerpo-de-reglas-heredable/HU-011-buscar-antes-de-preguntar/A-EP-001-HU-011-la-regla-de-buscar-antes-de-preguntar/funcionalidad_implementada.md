@@ -38,4 +38,4 @@ Y una segunda: **la regla no cabía en su primera redacción** —368 caracteres
 
 **La mitad comprobable no tiene programa.** Que el agente haya buscado no se puede ver; que la respuesta traiga su cita, sí — y nada lo comprueba. Declarado en [validadores/reglas-validables.md](../../../../../validadores/reglas-validables.md), y es su propia fase.
 
-Sin eso, `C23` depende de que el agente se acuerde, que es lo que el [pendientes/58-nada-hace-cumplir-id9.md](../../../../../pendientes/58-nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí ya falló siete veces en tres días.
+Sin eso, `C23` depende de que el agente se acuerde, que es lo que el [pendientes/hecho/nada-hace-cumplir-id9.md](../../../../../pendientes/hecho/nada-hace-cumplir-id9.md) describe para `ID9` y lo que allí ya falló siete veces en tres días.
