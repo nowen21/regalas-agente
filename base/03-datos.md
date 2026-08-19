@@ -324,69 +324,38 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## D7 · Persistencia histórica SCD-2 — patrón canónico para valores que evolucionan
+## D7 · La consulta histórica lee la historia, no la recalcula
 
-Complementa `D5` (validación en la app cuando la BD ya está desplegada). Aplica cuando un valor de negocio **cambia con el tiempo** y las consultas históricas necesitan saber **"cómo estaba X en fecha Y"**, no solo "cómo está X hoy".
-
-Los cálculos al vuelo dan siempre el estado actual — pierden la historia. Auditorías, informes legales, disputas, reportes retrospectivos necesitan el estado histórico real. La estrategia "reconstruir sumando datos vivos hasta fecha X" **solo funciona si el pasado es inmutable**; en cuanto haya anulaciones diferidas, ediciones bajo ventana, reversiones o cambios de relación, la reconstrucción al vuelo devuelve el estado teórico, no el histórico real.
-
-**Cuándo aplica:**
-
-- Cálculos derivados de datos operativos que cambian (participación, saldos por período, totales acumulados).
-- Relaciones que evolucionan y afectan cálculos históricos (jerarquía padre/hijo, asignación a responsable, categoría del cliente).
-- Estados de entidades que se referencian en reportes históricos.
-- Cualquier valor que pueda aparecer en una demanda, auditoría o disputa con la pregunta "¿cuánto era esto en fecha X?".
-
-**Cuándo NO aplica:**
-
-- Datos de configuración estáticos (catálogos que no cambian con el uso).
-- Cálculos sin relevancia histórica (estadísticas del día actual, dashboards operativos en tiempo real).
-- Datos ya inmutables por diseño (snapshots firmados · registros congelados por regla del dominio · ver `15` registros inmutables).
-- Reportes de "estado actual" donde una consulta con soft-delete + timestamps es suficiente y auditable.
-
-**Patrón canónico (SCD-2 · tramos con `desde_at` / `hasta_at`):**
-
-1. **Tabla `<entidad>_historial`** con: PK · FK a la entidad fuente · las columnas del estado que se congelan · `desde_at NOT NULL` · `hasta_at NULL` (null = tramo vigente) · `motivo` corto que identifica el evento que abrió el tramo · auditoría estándar (D1) · índice `(fuente_id, desde_at)`.
-2. **Backfill en la migración**: por cada registro fuente existente, insertar tramo inicial con `desde_at = fuente.created_at`, `hasta_at = NULL`, motivo `"backfill migración inicial"`.
-3. **Evento de dominio por cada cambio significativo** en la entidad fuente (creado/actualizado/eliminado/cualquier acción del negocio que cambie los valores del tramo).
-4. **Listener dedicado** que, dentro de transacción, (a) cierra el tramo vigente afectado (`hasta_at = ahora`) y (b) inserta el tramo nuevo con los valores del nuevo estado.
-5. **Consulta canónica** en el modelo / servicio: `estadoEn(fecha) → valores del tramo vigente en esa fecha`.
-6. **UI — línea de tiempo visible** en la ficha de la entidad, para que el usuario final audite la evolución sin salir del sistema.
-7. **Tests obligatorios**: backfill correcto · evento dispara actualización · estado en fecha pasada devuelve valor histórico (no el actual) · un solo tramo vigente por entidad a la vez.
-8. **Cascada de eliminación cuidadosa**: la entidad fuente NO se hard-delete si tiene historial; solo soft-delete. El historial sobrevive.
-
-**Consideración de volumen** — SCD-2 puro puede generar N filas por evento si el evento afecta a N entidades relacionadas. Cuando el volumen sea prohibitivo, alternativa: **snapshot vector** (una fila por evento con el mapa completo del estado en un campo estructurado). Se decide al abrir la unidad con datos reales, no anticipadamente.
-
-**Anti-patrón rechazado:** "calcular al vuelo y ya, es más simple". Simple hoy, incorrecto mañana. Consulta histórica → lee historial persistido. Consulta actual → puede leer estado directo. No mezclar.
-
+Cuando un valor **cambia con el tiempo** y alguien va a preguntar cómo estaba en una fecha, ese estado se **guarda cuando ocurre**, no se reconstruye después sumando lo que hay vivo hoy: reconstruir solo vale si el pasado no se toca.
+Cómo se guarda y qué se prueba: [`notas/como-se-guarda-la-historia-de-un-valor.md`](../notas/como-se-guarda-la-historia-de-un-valor.md).
 ```
-INCORRECTO: "totalHoy" y "totalEnFecha(X)" leen del mismo estado vivo · el segundo devuelve valor teórico si el pasado se editó
-CORRECTO:   tabla historial con tramos + consulta canónica estadoEn(fecha) → valor congelado que refleja lo que era realmente ese día
+INCORRECTO: «el total de marzo» se calcula sumando lo que hoy está vivo
+CORRECTO:   se lee el tramo que estaba vigente en marzo, con lo que valía entonces
 ```
-
-**Encadenamiento:** `D1` (auditoría toda tabla nueva) — la tabla historial también lleva audit · `D5` (validación en la app cuando la BD está desplegada) — SCD-2 vive fuera del modelo original, no invade su esquema · `15` (registros inmutables) — el tramo cerrado es inmutable por diseño.
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.26.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ✅ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**3839 caracteres: doce veces el molde. Es la regla más larga del cuerpo entero**, por delante de [`08·T7`](08-pruebas.md#t7--triangulación-derivar-los-casos-no-adivinarlos).
+**Reescrita el 2026-08-18, y no se partió: no eran dos exigencias.** Medía **3 839 caracteres** contra los 320 del molde —doce veces— porque **era un patrón entero metido dentro de una regla**: la tabla de tramos, la migración inicial, el aviso, quién lo escucha, la consulta, la interfaz, las pruebas obligatorias y la alternativa por volumen.
 
-Adentro hay un patrón de ocho pasos y una alternativa por volumen. **Eso no es una regla: es un manual con encabezado de regla.**
+**La exigencia real cabía en tres líneas**, y es una sola: el estado se guarda cuando ocurre, no se recalcula después. Todo lo demás es **cómo**, y se fue a [`notas/`](../notas/como-se-guarda-la-historia-de-un-valor.md) — que es lo que la fila 10 manda hacer con lo que no cabe.
 
-La salida ya está probada esta misma sesión: **abrir su anexo al lado y dejar en la regla tres líneas y el enlace**, como [base/13-documentacion/retrodocumentacion.md](13-documentacion/retrodocumentacion.md), que se mudó a su capítulo hoy.
+**También se fue el nombre del patrón del título.** Nombrar la técnica ata la regla a una forma de resolverlo; lo que se exige es el resultado, y la nota ya ofrece la alternativa para cuando el volumen no dé.
+
+Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

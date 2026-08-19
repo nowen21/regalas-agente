@@ -182,7 +182,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 Cumplía en el análisis del 2026-08-07 y se volvió a contar: 187 de 320.
 
-**Sus cuatro pasos no la hacen reprobar la fila 9**, a diferencia de los cuatro niveles de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito) o los ocho de [`03·D7`](03-datos.md#d7--persistencia-histórica-scd-2--patrón-canónico-para-valores-que-evolucionan): acá son **una sola exigencia secuencial** —previsualizar, registrar, controlar el acceso, confirmar— y saltarse cualquiera deja la operación masiva sin red. No son cuatro cosas que se puedan cumplir sueltas, son un procedimiento de cuatro tiempos que cabe en una línea.
+**Sus cuatro pasos no la hacen reprobar la fila 9**, a diferencia de los cuatro niveles de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito) o los ocho de [`03·D7`](03-datos.md#d7--la-consulta-histórica-lee-la-historia-no-la-recalcula): acá son **una sola exigencia secuencial** —previsualizar, registrar, controlar el acceso, confirmar— y saltarse cualquiera deja la operación masiva sin red. No son cuatro cosas que se puedan cumplir sueltas, son un procedimiento de cuatro tiempos que cabe en una línea.
 
 Es la prueba de que una enumeración no reprueba por ser enumeración: reprueba cuando sus partes se pueden cumplir por separado.
 

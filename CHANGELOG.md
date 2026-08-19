@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 23.26.0 — 2026-08-18
+
+**MAYOR** (nace una regla con nombre nuevo, y otra deja de nombrar la técnica que exigía).
+
+**La regla sobre cómo se prueban los cálculos decía dos cosas, y la segunda es la que evita el engaño.** Una es de dónde salen los casos; la otra, de dónde sale el resultado que se espera. **Se pueden derivar los casos con todo el método y copiar el resultado esperado de lo que el código produce hoy** — y entonces la prueba solo comprueba que el código hace lo que hace: pasa siempre, no falla nunca, y figura como cubierta.
+
+**Y la regla sobre valores que cambian con el tiempo no era larga: era un manual entero metido dentro.** Doce veces el tamaño del molde, con la tabla, la migración, los avisos, la interfaz y las pruebas. Lo que exige cabe en tres líneas.
+
+**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nace [`08·T8`](base/08-pruebas.md) —el resultado esperado no sale del código que se está probando—, y su propio texto ya decía *«se aplica en dos frentes»*.
+
+[`03·D7`](base/03-datos.md) se reescribió en una exigencia y su manual se fue a [`notas/como-se-guarda-la-historia-de-un-valor.md`](notas/como-se-guarda-la-historia-de-un-valor.md). **También salió del título el nombre de la técnica**: nombrarla ata la regla a una forma de resolverlo, y lo que se exige es el resultado — la nota ya ofrece la alternativa para cuando el volumen no dé.
+
+Las reglas publicadas en «no cumple» bajan de 32 a **30**.
+
 ## 23.25.0 — 2026-08-18
 
 **MAYOR** (nacen tres reglas con nombre nuevo, todas del capítulo de conducta).

@@ -172,7 +172,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 - **`05`:** E2, E3, E4, E6.
 - **`06`:** R3, R4, R5, R6.
 - **`07`:** Q1, Q2, Q4, Q5, Q7.
-- **`08`:** T1, T2, T6, T7.
+- **`08`:** T1, T2, T6, T7, T8.
 - **`09`:** `G1`, `G5`, `G7`, G11.
 - **`10`:** DEP1, DEP5.
 - **`11`:** CFG1, CFG3, CFG4, CFG5.

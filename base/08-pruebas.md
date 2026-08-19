@@ -197,63 +197,67 @@ Cumplía en el análisis del 2026-08-07. Se volvió a contar: 247 de 320.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## T7 · Triangulación: derivar los casos, no adivinarlos
+## T7 · Los casos se derivan con método, no se eligen a ojo
 
-**Qué es.** Triangular es confirmar que algo es correcto mirándolo desde **varias fuentes independientes que deben coincidir**, en vez de confiar en una sola. El nombre viene de la topografía: un punto se ubica con precisión midiendo desde varios puntos de referencia conocidos. En pruebas se aplica en dos frentes: **de dónde salen los casos** y **de dónde sale el resultado esperado**.
-
-Para la **lógica de negocio y los cálculos**, los casos de prueba no se eligen a ojo: se **derivan** con método y se **triangulan**.
-
-**Derivar los casos** (matriz obligatoria en lógica crítica; en el resto, al menos límites y errores):
-
-- **Valores de frontera:** 0, el máximo, vacío, uno más y uno menos del límite.
-- **Clases de equivalencia:** agrupar entradas que se comportan igual y probar una de cada grupo.
-- **Tablas de decisión:** combinaciones de condiciones cuando varias banderas se cruzan.
-- **Casos negativos / adversariales:** entradas inválidas, maliciosas o fuera de rango.
-
-**Triangular el resultado esperado** — el valor correcto se confirma desde **fuentes independientes** que deben **coincidir**, no desde el propio código:
-
-- **Mínimo 2** fuentes para lógica normal; **3** para lógica crítica (dinero, seguridad, legal).
-- Fuentes válidas: la **especificación**, un **cálculo manual**, una **propiedad invariante** (p. ej. "débito = crédito"), un **oráculo** conocido.
-- Si las fuentes no coinciden, la especificación o la implementación tienen un error: se resuelve antes de dar la prueba por buena.
-
-**Nunca** derivar el resultado esperado leyendo lo que el código produce hoy: eso solo prueba que el código hace lo que hace, no que sea correcto.
-
+Los casos de la lógica que calcula o decide salen de un método, no de la intuición: los **valores de frontera**, uno de **cada grupo que se comporta igual**, las **combinaciones** cuando varias condiciones se cruzan, y lo **inválido**. En lo crítico va la matriz; en el resto, al menos límites y errores.
 ```
-INCORRECTO: comparar(resultado, entidad.total)          // el "esperado" sale del propio código
-CORRECTO:   esperado = cálculo manual (especificación) Y propiedad (subtotal+iva); ambos coinciden → se prueba contra ese valor
-
-INCORRECTO: probar solo "el caso que se me ocurrió"
-CORRECTO:   frontera (0, máx, vacío) + clases de equivalencia + casos inválidos, derivados con método
+INCORRECTO: tres casos que se le ocurrieron a quien escribió el código
+CORRECTO:   los límites, un caso por grupo, las combinaciones que se cruzan,
+            y lo que no debería aceptarse
 ```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.26.0**, el **2026-08-18**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
-| C · Cómo está escrita | 7–13 | ✅ ❌ ❌ ❌ ✅ ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 3 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Es la regla más larga del cuerpo entero: 1645 caracteres para un molde de 320.** Cinco veces.
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado — **de dónde salen los casos** y **de dónde sale el resultado esperado**—, y su propio texto lo decía: *«se aplica en dos frentes»*. **Se pueden derivar los casos con todo el método y sacar el resultado esperado del propio código**, que es el error más caro de los dos. Es ahora [`T8`](#t8--el-resultado-esperado-no-sale-del-código-que-se-está-probando). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
-- **Fila 9 · una sola exigencia.** Lo declara ella misma: *«se aplica en **dos frentes**: de dónde salen los casos y de dónde sale el resultado esperado»*. Se cumplen por separado —se pueden derivar los casos con método y sacar el esperado del propio código, que es justo lo que la segunda mitad prohíbe—.
-- **Fila 8 · el título manda.** «Derivar los casos, no adivinarlos» nombra **solo el primer frente**. Quien la busque por el segundo no la encuentra.
-- **Fila 10 · no cabe**, y no por sobrar porqué: son dos reglas, cada una con su método y su lista.
-
-**El análisis del 2026-08-07 ya proponía el corte exacto:** `T7` derivar los casos · `T8` triangular el resultado esperado. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
-
-**Ojo al partirla:** el párrafo que explica qué es triangular —el de la topografía— es la definición del término y sirve a las dos mitades. No es de ninguna: es de glosario.
+**Se fue la explicación de qué es triangular** —el origen topográfico del nombre—: es el porqué, no la exigencia, y por eso el cuerpo no cabía en el molde.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## T8 · El resultado esperado no sale del código que se está probando
+
+El valor que la prueba espera se confirma desde **fuentes independientes que coinciden** —la especificación, un cálculo hecho aparte—, **nunca leyendo lo que el código produce hoy**. Dos fuentes; tres si hay dinero, seguridad o consecuencias legales (extiende [`08·T7`](#t7--los-casos-se-derivan-con-método-no-se-eligen-a-ojo)).
+```
+INCORRECTO: se corre la función, sale 1 240, y se escribe que el esperado es 1 240
+CORRECTO:   se calcula aparte a partir de la especificación, da 1 260, y se
+            descubre que el código estaba mal
+```
+
 ---
 
-Ver: `02` F4/F5, `00` N3/N4, `03` D5 (validación en app), `13` (persistir el plan de pruebas).
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.26.0**, el **2026-08-18**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5–6 | ✅ ✅ |
+| C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14–17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`T7`](#t7--los-casos-se-derivan-con-método-no-se-eligen-a-ojo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Por qué merece regla propia, y es la más importante de las dos.** `T7` da **cobertura**; esta da **verdad**. Una prueba con casos perfectamente derivados y el esperado copiado de la salida actual **solo comprueba que el código hace lo que hace** — pasa siempre, no falla nunca, y figura como cubierta.
+
+**Es la misma forma de defecto que apareció cinco veces en este repositorio**: una comprobación que pasa sin comprobar.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
