@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 24.1.0 — 2026-08-18
+
+**MENOR** (una regla del núcleo dice lo mismo con menos y deja de contradecirse; no cambia lo que exige).
+
+**«¿Y para qué necesita excepciones?»** Lo preguntó el usuario, y la respuesta resultó ser que no las necesita.
+
+La regla que exige aprobación antes de cambiar nada traía una excepción: que un plan ya aprobado se ejecuta seguido, sin volver a preguntar por cada paso. **Eso nunca fue una excepción** — un plan aprobado **ya tiene** esa aprobación. El usuario la dio una vez, para todo lo que el plan dice. Volver a pedirla paso a paso no es más riguroso: es pedir otra vez algo ya concedido.
+
+**El detalle.** [`00·N1`](base/00-nucleo-blindado.md) pasa a **CUMPLE** después de reprobar su fila 16 desde que se midió. El problema no era que la excepción estuviera mal escrita —eso se arregló hoy mismo y no alcanzó—: era que **una regla `[BLINDADA]` con excepción deja de ser inquebrantable por definición**, y la cabecera del capítulo promete lo contrario. El choque era del texto, no de la exigencia.
+
+**El límite sobrevive entero**, que era lo único que había que cuidar: lo irreversible se pide cada vez, aunque el plan lo incluyera. Ahora forma parte de la exigencia en vez de colgar de una excepción.
+
+**Y queda escrito para el capítulo:** una regla `[BLINDADA]` que necesita una excepción probablemente está mal redactada. La de `N1` desapareció sola al decir bien qué cubre la aprobación.
+
+Las reglas publicadas en «no cumple» bajan de 28 a **27**.
+
 ## 24.0.0 — 2026-08-18
 
 **MAYOR** (cambia el núcleo: nacen tres reglas blindadas con nombre nuevo. **Si tu proyecto cita `N1`, `N4` o `N6`, hay que mirarlo.**)

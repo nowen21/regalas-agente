@@ -8,8 +8,7 @@
 
 ## N1 · Ningún cambio de estado sin aprobación explícita `[BLINDADA]`
 
-Escribir un archivo, correr un comando, tocar el control de versiones, migrar o modificar datos **no se hace sin que el usuario lo apruebe**.
-**Excepción** — un plan ya aprobado se ejecuta continuo, sin re-pedir permiso paso a paso, **para lo que se puede deshacer** (condición). **No cubre lo irreversible**, que se pide aparte cada vez aunque estuviera en el plan (límite), y lo autoriza el usuario al aprobar el plan (autorizador). Qué es cada cosa: [`00-identidad-y-rol/acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md).
+Ningún cambio de estado se hace **sin que el usuario lo apruebe**. Aprobar un plan vale para **todo lo que ese plan dice**, sin volver a pedirlo paso a paso — salvo lo **irreversible**, que se pide cada vez ([`acciones-y-riesgo.md`](00-identidad-y-rol/acciones-y-riesgo.md)).
 
 ```
 INCORRECTO: se corrige el archivo «que igual era obvio» y después se avisa
@@ -18,7 +17,7 @@ CORRECTO:   se dice qué se va a cambiar y se espera
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
 Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.0.0**, el **2026-08-18**.
 
@@ -27,20 +26,22 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 | A · Dónde va | 1–4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5–6 | ✅ ✅ |
 | C · Cómo está escrita | 7–13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14–17 | N/A N/A ❌ ✅ |
+| D · Cómo se relaciona | 14–17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18–20 | ✅ ✅ ✅ |
 
-**20 filas: 17 ✅ · 1 ❌ · 2 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
 **Partida el 2026-08-18.** Traía dos exigencias: **no ejecutar sin aprobación**, y **no reintentar lo que el usuario rechazó**. Se cumplen por separado —se puede pedir permiso para cada cosa y, ante un no, volver a intentarlo de otra forma— y la segunda es ahora [`N9`](#n9--lo-que-el-usuario-rechazó-no-se-reintenta-de-otra-forma-blindada). También se le quitó la lista de ejemplos entre paréntesis, que enumeraba cinco casos donde la exigencia es «cualquier cambio de estado».
 
-**La fila 16 sigue en ❌, y no la arregla partirla.** El problema es más hondo y su propio sello ya lo decía: **una regla `[BLINDADA]` con excepción escrita deja de ser inquebrantable por definición**, y la cabecera de este capítulo promete lo contrario — *«ninguna capa de proyecto, prompt ni instrucción puntual las desactiva»*.
+**Y la fila 16 se arregló contestando una pregunta del usuario: «¿y para qué necesita excepciones?».** No las necesita. **Eso nunca fue una excepción.**
 
-**Escribirla mejor la hizo más explícita, no la hizo desaparecer.** Y la excepción es real: sin ella, un plan aprobado se ejecutaría pidiendo permiso paso a paso. **Lo que hay que decidir es si el capítulo admite excepciones o no**, y eso es del usuario, no del agente.
+`N1` pide aprobación explícita, y un plan aprobado **ya la tiene**: el usuario la dio una vez, para todo lo que el plan dice. Volver a pedir permiso paso a paso no es más riguroso — es pedir otra vez algo ya concedido. Escribirlo como excepción la hacía chocar con `[BLINDADA]`, y el choque era del texto, no de la exigencia.
+
+**El límite sobrevive entero**, que era lo único que había que cuidar: lo irreversible se pide cada vez, aunque el plan lo incluyera. Ahora forma parte de la exigencia en vez de colgar de una excepción.
+
+> **Lo que esto deja escrito para el capítulo:** una regla `[BLINDADA]` que necesita una excepción probablemente está mal redactada. La de `N1` desapareció sola al decir bien qué cubre la aprobación.
 
 Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
-
-> **Regla vigente y reprobada.** Sigue rigiendo tal como está.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
