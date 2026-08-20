@@ -142,6 +142,7 @@ Entonces la demora sigue sin notarse
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas](A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas/README.md) | CA-01, CA-02 y CA-03 | Cerrada el 2026-08-15 |
+| [B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar](B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar/README.md) | CA-01, en la carpeta del propio estándar, donde no se cumplía | Cerrada el 2026-08-20: Cumple, 7 de 7 casos |
 
 ---
 
@@ -191,3 +192,5 @@ Entonces la demora sigue sin notarse
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen` |
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Fase A cerrada: el reparto queda escrito en la especificación del módulo, con diez pruebas y la medición del arranque. `CA-03` lo decidió el usuario: 0,21 s no se nota |
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Corregido el contexto contra el programa real: el reparto ya manda literales `00` y `01` desde la 5.0.0, así que la historia no construye, **retro-documenta**. Se cae la premisa de que `ID8` llegaba como índice: llegaba completa y se incumplió igual, y eso queda escrito como advertencia |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase B: el `CA-01` no se cumplía en la carpeta del propio estándar (pendiente 66). La `RN-05` decía «cualquier proyecto que herede» y la carpeta del estándar no hereda: por eso nadie lo midió |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase B ejecutada y cerrada: `hook_sesion.py` entrega `base/` también en la carpeta del estándar, con caso en `evals/`. 27.1.0 |

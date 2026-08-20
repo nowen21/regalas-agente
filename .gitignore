@@ -18,3 +18,6 @@ __pycache__/
 
 # Registro local de proyectos que usan el agente (data de la maquina, no del estandar)
 plantillas/proyectos.md
+
+# Guiones de apoyo del agente durante una sesión (se borran al terminar; 04·S9: nada se escribe fuera del proyecto)
+.tmp-agente/

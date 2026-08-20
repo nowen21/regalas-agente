@@ -38,6 +38,7 @@ import pendientes       # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import indices          # noqa: E402
+import inmutable        # noqa: E402
 import instalar         # noqa: E402
 import marcas           # noqa: E402
 import vigencia         # noqa: E402
@@ -205,6 +206,14 @@ def cmd_brevedad(a):
     if linea:
         print(linea)
     return codigo
+
+
+
+def cmd_inmutable(a):
+    """La transcripción del histórico solo crece: se agrega, no se reescribe."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(inmutable.validar(raiz),
+                    f"Histórico que solo crece · {relativo(raiz)}")
 
 
 def cmd_indices(a):
@@ -509,6 +518,11 @@ def main():
                         help="qué piezas están atadas a la herramienta · el mapa no envejece")
     am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     am.set_defaults(func=cmd_amarre)
+
+    im = sub.add_parser("inmutable",
+                        help="la transcripción del histórico solo crece · detecta, no impide")
+    im.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    im.set_defaults(func=cmd_inmutable)
 
     br = sub.add_parser("brevedad",
                         help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")

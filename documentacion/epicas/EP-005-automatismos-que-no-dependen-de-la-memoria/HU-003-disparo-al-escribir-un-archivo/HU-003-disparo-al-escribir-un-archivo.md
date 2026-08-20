@@ -102,6 +102,23 @@ Y cuando no lo es, se avisa y el trabajo sigue
 3. Arreglarlo y volver a guardar. Resultado esperado: sigue.
 - **Aprobado cuando:** lo grave no se puede ignorar por descuido, y lo leve no estorba.
 
+### CA-04 — Lo que se deriva del veredicto lo copia el programa
+
+```gherkin
+Dado que el resultado de pruebas de una fase dice su veredicto en el §6
+Cuando se escribe ese archivo
+Entonces la fila de la fase en el §8 de su historia y los README de la fase y de la historia dicen ese mismo veredicto
+Y el estado-fase.md no se toca
+Y al cerrar un pendiente, su fila del índice del backlog queda en la forma de hecho
+```
+
+**Cómo validarlo:**
+
+1. En una fase de prueba, escribir un `resultado_pruebas.md` con `**Concepto** | **Cumple**` y `**CA cumplidos** | 2 de 2`.
+2. Correr el enganche con esa ruta. Resultado esperado: la fila del §8 de la historia dice «Cerrada el AAAA-MM-DD: Cumple, 2 de 2 CA», y los dos README lo mismo; `estado-fase.md` intacto.
+3. Cerrar un pendiente con `cerrar.py`. Resultado esperado: su fila en `pendientes/README.md` empieza por `| ~~NN~~ | — | **hecho** →`.
+- **Aprobado cuando:** el veredicto aparece en los tres sitios sin que el agente los toque, y el checkpoint sigue siendo del agente. Salió del pendiente 70: doce copias a mano en un día.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Rendimiento** — el disparo no se nota en el ritmo de trabajo.
@@ -207,3 +224,6 @@ Y cuando no lo es, se avisa y el trabajo sigue
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Nacen `RN-06`, `RN-07` y `CA-03`: la historia decía que la comprobación corre y que el resultado vuelve, pero no qué pasa cuando el hallazgo es grave. Con eso, un hallazgo crítico y una errata valían igual, y los dos se podían ignorar. Sale del hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen` |
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. El disparo corre en el momento y calla con lo que no le toca, y se comprueba que callar no es no haber corrido. CA-03 en «No»: nada detiene, todo avisa |
+| [C-EP-005-HU-003-el-veredicto-se-copia-solo](C-EP-005-HU-003-el-veredicto-se-copia-solo/README.md) | CA-04 | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04` desde el pendiente 70: el veredicto se copia a mano en cuatro sitios y `fases.py` solo comprueba después que no se contradigan. Se abre la fase C |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase C ejecutada y cerrada: nace `veredicto.py` y su enganche; `cerrar.py` deja la fila en hecho. 27.2.0 |

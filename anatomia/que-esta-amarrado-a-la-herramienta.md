@@ -34,9 +34,9 @@ su `.claude/settings.json`, y `checklist.py` compara el comando exacto: lo
 reporta en el primer mensaje de la siguiente sesión, y el instalador lo
 reemplaza.
 
-## Los programas: 18 amarrados de 59
+## Los programas: 23 amarrados de 66
 
-**Un tercio.** El resto —41— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
+**Un tercio.** El resto —43— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
 
 | Pieza | Cuánto la nombra | Qué es |
 |---|---:|---|
@@ -44,14 +44,14 @@ reemplaza.
 | `instalar.py` | 54 | 🟡 **el amarre grande** — escribe `.claude/settings.json` |
 | `checklist.py` | 18 | 🟡 revisa que los enganches estén puestos |
 | `sesion.py` | 14 | 🟡 |
-| `hook_resumen` · `hook_historico` · `hook_recuerdos` · `hook_senales` · `hook_sesion` · `hook_md` · `hook_checklist` · `hook_relacionadas` | 3 a 8 | 🟡 **son la definición de adaptador**: existen porque la herramienta los llama |
+| `hook_resumen` · `hook_historico` · `hook_recuerdos` · `hook_senales` · `hook_sesion` · `hook_md` · `hook_checklist` · `hook_relacionadas` · `hook_presupuesto` · `hook_checkpoint` · `hook_veredicto` | 3 a 8 | 🟡 **son la definición de adaptador**: existen porque la herramienta los llama |
 | `version.py` · `versiones.py` · `historico.py` · `recuerdos.py` · `cargador.py` · `brevedad.py` | 1 a 8 | 🟡 **a medias** — el trabajo es agnóstico y solo el borde nombra la herramienta |
 
-### Las 41 libres, por su nombre
+### Las 43 libres, por su nombre
 
 **Se nombran una por una a propósito.** Antes iban solo por su total, y así una pieza nueva entraba en el recuento sin que nadie la hubiera mirado — que es como envejece un mapa escrito a mano.
 
-`acciones.py` · `aislamiento.py` · `andamio.py` · `calidad.py` · `cerrar.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `respaldo.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `trazabilidad.py` · `validar.py` · `versionado.py` · `vigencia.py`
+`acciones.py` · `aislamiento.py` · `andamio.py` · `calidad.py` · `cerrar.py` · `checkpoint.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `inmutable.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `presupuesto.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `respaldo.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `trazabilidad.py` · `validar.py` · `veredicto.py` · `versionado.py` · `vigencia.py`
 
 Ninguna nombra la herramienta. **Funcionan con cualquier agente, o sin ninguno.**
 
@@ -94,3 +94,9 @@ Ninguna nombra la herramienta. **Funcionan con cualquier agente, o sin ninguno.*
 ## Cómo se rehace
 
 Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, `PostToolUse`, `UserPromptSubmit`, `SessionStart` y `Stop` en cada archivo. **Se cuenta el nombre de la herramienta, no la palabra «agente»**: el estándar habla de un agente todo el tiempo y eso no es amarre.
+
+## 2026-08-20 · cuatro piezas más, y el recuento sigue diciendo lo mismo
+
+**`checkpoint.py` y `veredicto.py` son libres; `hook_checkpoint.py` y `hook_veredicto.py` son adaptador**, por el mismo corte de siempre: comparar dos fechas o copiar una celda sirve con cualquier agente; enterarse de que se escribió un archivo es de la herramienta. El recuento pasa de 21 de 62 a **23 de 66**, y la proporción no se mueve: un tercio.
+
+**Lo que sí se movió es la prueba de la frontera.** Decía «ocho enganches» con el número escrito, la 27.0.0 agregó el noveno sin tocarla y quedó en rojo sin que nadie la corriera. Ahora cuenta contra la lista del instalador: un enganche que nadie enchufa, o un enchufe a un enganche que no existe, es lo que rompe la frontera, no el número.

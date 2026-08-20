@@ -145,6 +145,8 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-010](HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md) | El capítulo que rige lo que se escribe llega al escribirlo | Must | M |
 | [HU-011](HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md) | Dónde termina el estándar y dónde empieza el adaptador | Should | M |
 | [HU-012](HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) | Hacer cumplir lo que hoy solo se recuerda | Must | M |
+| [HU-013](HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md) | El checkpoint de la fase se reclama solo | Should | S |
+| [HU-014](HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md) | El consumo de la sesión se ve mientras se puede actuar | Should | S |
 
 ## 10. Consideraciones técnicas
 
@@ -220,3 +222,4 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-13 | Ing. José Dúmar Jiménez Ruíz | Creación de la épica desde el brief |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nacen HU-013 y HU-014 desde los pendientes 64 y 65; el 66 baja como fase B de HU-009 |

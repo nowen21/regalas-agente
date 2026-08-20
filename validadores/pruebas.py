@@ -3750,5 +3750,67 @@ class ElAlmacenLocalQuedaVacio(unittest.TestCase):
         self.assertEqual(quedan, [], f"el almacén local de esta máquina tiene: {quedan}")
 
 
+class TestPresupuesto(unittest.TestCase):
+    """El consumo de la sesión: sumar y avisar, sin detener nada."""
+
+    def test_suma_y_total(self):
+        import presupuesto
+        r = presupuesto.resumen([
+            {"entrada": 100, "salida": 20, "cache": 5},
+            {"entrada": 50, "salida": 30},                 # sin cache: cuenta 0
+        ])
+        self.assertEqual(r["turnos"], 2)
+        self.assertEqual(r["entrada"], 150)
+        self.assertEqual(r["salida"], 50)
+        self.assertEqual(r["cache"], 5)
+        self.assertEqual(r["total"], 200)                  # la caché no suma al total
+
+    def test_umbral(self):
+        import presupuesto
+        r = presupuesto.resumen([{"entrada": 900, "salida": 200}])
+        self.assertTrue(presupuesto.excedido(r, 1000))
+        self.assertFalse(presupuesto.excedido(r, 2000))
+        self.assertFalse(presupuesto.excedido(r, 0))       # sin umbral no avisa
+        self.assertIn("AVISO", presupuesto.como_texto(r, 1000))
+        self.assertNotIn("AVISO", presupuesto.como_texto(r))
+
+    def test_el_adaptador_lee_la_transcripcion_de_la_herramienta(self):
+        """La línea ilegible se salta; la del usuario (sin consumo) no cuenta."""
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "adaptadores", "claude-code"))
+        import hook_presupuesto
+        with tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False,
+                                         encoding="utf-8") as f:
+            f.write(json.dumps({"type": "user", "message": {"role": "user"}}) + "\n")
+            f.write("esto no es JSON\n")
+            f.write(json.dumps({"message": {"usage": {
+                "input_tokens": 10, "cache_creation_input_tokens": 5,
+                "cache_read_input_tokens": 100, "output_tokens": 7}}}) + "\n")
+            ruta = f.name
+        try:
+            consumos = hook_presupuesto.consumos_de_transcripcion(ruta)
+        finally:
+            os.unlink(ruta)
+        self.assertEqual(consumos, [{"entrada": 15, "salida": 7, "cache": 100}])
+
+
+class TestInmutable(unittest.TestCase):
+    """El histórico solo crece: se agrega, no se reescribe."""
+
+    def test_agregar_al_final_es_crecer(self):
+        import inmutable
+        self.assertTrue(inmutable.solo_crecio("a\nb\n", "a\nb\nc\n"))
+        self.assertTrue(inmutable.solo_crecio("a\nb\n", "a\nb\n"))
+
+    def test_editar_el_pasado_no_es_crecer(self):
+        import inmutable
+        self.assertFalse(inmutable.solo_crecio("a\nb\n", "a\nX\nc\n"))
+
+    def test_los_finales_de_linea_de_windows_no_confunden(self):
+        """`git show` entrega LF y el disco puede tener CRLF: no es una edición."""
+        import inmutable
+        self.assertTrue(inmutable.solo_crecio("a\nb\n", "a\r\nb\r\nc\r\n"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

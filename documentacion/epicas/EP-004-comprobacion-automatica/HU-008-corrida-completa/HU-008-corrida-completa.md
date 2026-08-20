@@ -104,6 +104,21 @@ Y si solo hubo avisos, termina sin error
 3. Dejarlo todo limpio y correr otra vez. Resultado esperado: termina sin error y lo dice.
 - **Aprobado cuando:** el código de salida distingue los tres casos.
 
+### CA-04 — Lo que los programas del estándar escriben no pone la corrida en rojo
+
+```gherkin
+Dado que los enganches escriben índices y el agente escribe resúmenes
+Cuando se corre la suite entera
+Entonces termina en verde
+Y un índice recién escrito por un enganche cumple la regla del enlace legible
+```
+
+**Cómo validarlo:**
+
+1. Correr `python -m unittest discover -s validadores/tests -p "test_*.py"`. Resultado esperado: `OK`.
+2. Abrir una sesión nueva en un proyecto de prueba y mirar la línea que el enganche agregó a `historico-chat/resumenes/README.md`. Resultado esperado: el texto del enlace dice la ruta desde la raíz.
+- **Aprobado cuando:** la suite está en verde y la línea nueva cumple `13·DOC14`. Salió del pendiente 68: el 2026-08-20 dos fallas viejas escondían las nuevas.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Errores** — si una comprobación se cae, la corrida sigue con las demás y lo reporta.
@@ -206,3 +221,6 @@ Y si solo hubo avisos, termina sin error
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| [C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde](C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde/README.md) | CA-04 | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04` desde el pendiente 68: la corrida entera estaba en rojo por un resumen sin la `H-` y por cuatro enlaces `DOC14`, dos escritos por los enganches. Se abre la fase C |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase C ejecutada y cerrada: la suite entera en `OK`; los enganches escriben índices legibles. 27.2.0 |

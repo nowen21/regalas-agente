@@ -25,6 +25,13 @@ import instalar    # noqa: E402
 from comun import leer   # noqa: E402
 
 
+def _es_puente(ruta):
+    """Los `validadores/hook_*.py` de la 26.0.1 reenvían al adaptador: no son
+    enganches, son lo que evita que una instalación rezagada se bloquee. La
+    prueba los dejó en rojo desde el 2026-08-19 sin que nadie la corriera."""
+    return "Puente a la ruta nueva" in leer(ruta)[:200]
+
+
 class LaFronteraSeSostiene(unittest.TestCase):
 
     def test_no_queda_ningun_enganche_en_validadores(self):
@@ -35,14 +42,20 @@ class LaFronteraSeSostiene(unittest.TestCase):
         vino a evitar.
         """
         sueltos = [f for f in os.listdir(VALIDADORES)
-                   if f.startswith("hook_") and f.endswith(".py")]
+                   if f.startswith("hook_") and f.endswith(".py")
+                   and not _es_puente(os.path.join(VALIDADORES, f))]
         self.assertEqual([], sueltos,
                          "estos van en adaptadores/claude-code/: %s" % sueltos)
 
-    def test_los_ocho_estan_en_el_adaptador(self):
+    def test_los_enganches_del_adaptador_son_los_que_la_instalacion_enchufa(self):
+        """Eran ocho el 2026-08-19 y el número se escribió acá; la 27.0.0 agregó
+        uno sin tocarlo y la prueba quedó en rojo sin que nadie la corriera.
+        Se cuenta contra la lista del instalador: la frontera es que no haya
+        un enganche que nadie enchufa, ni un enchufe a un enganche que no está."""
         hay = sorted(f for f in os.listdir(ADAPTADOR)
                      if f.startswith("hook_") and f.endswith(".py"))
-        self.assertEqual(8, len(hay), hay)
+        enchufados = sorted({g for _e, _m, g, _msg, _a in instalar.HOOKS_CLAUDE})
+        self.assertEqual(enchufados, hay)
 
     def test_la_instalacion_apunta_al_adaptador(self):
         """Si esto se separa, el enganche instalado apunta a un archivo que no

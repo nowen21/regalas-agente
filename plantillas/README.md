@@ -15,6 +15,7 @@ Son casi todos modelos. Las fuentes de generación son estas, y conviene saber c
 
 | Archivo | Con qué se genera |
 |---|---|
+| [plantillas/pendiente.md](pendiente.md) | El pendiente propio del estándar; lo levanta el andamio |
 | [plantillas/historico-chat.md](historico-chat.md) | El `historico-chat/README.md` de cada proyecto |
 | [plantillas/memoria.md](memoria.md) | El `historico-chat/memory/memory.md` de cada proyecto |
 | [plantillas/CLAUDE.md.plantilla](CLAUDE.md.plantilla) | El `CLAUDE.md` del proyecto |

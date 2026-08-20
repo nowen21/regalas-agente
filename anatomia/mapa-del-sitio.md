@@ -68,7 +68,7 @@ agente/
 │       ├── base.md ................... M1…M13: dónde vive cada regla, cuál gana, cómo se agrega
 │       └── estructura-regla.md ....... el molde exacto de una regla (M5)
 │
-├── 🟦 plantillas/ .................... 24 MOLDES DE DOCUMENTO
+├── 🟦 plantillas/ .................... 25 MOLDES DE DOCUMENTO
 │   ├── CLAUDE.md.plantilla ........... el CLAUDE.md que recibe cada proyecto
 │   ├── planteamiento.md · epica.md · HU.md · fase.md · estado-fase.md
 │   ├── planes/
@@ -139,6 +139,9 @@ agente/
 │   ├── cargador.py ................... carga las reglas base al contexto del agente
 │   ├── historico.py .................. ESCRIBE la transcripción de la sesión
 │   ├── recuerdos.py .................. MUEVE la memoria del agente al repositorio
+│   ├── presupuesto.py ................ suma el consumo de la sesión y decide si cruzó un tramo
+│   ├── checkpoint.py ................. compara el estado-fase.md con el documento de puerta recién escrito
+│   ├── veredicto.py .................. lee el §6 del resultado y lo copia donde el estándar manda repetirlo
 │   │
 │   ├── ── enganches (los llama Claude Code) ──
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
@@ -146,6 +149,9 @@ agente/
 │   ├── hook_historico.py ............. cada mensaje y cada respuesta → al histórico
 │   ├── hook_checklist.py ............. cada mensaje → revisa la instalación
 │   ├── hook_recuerdos.py ............. al abrir sesión y al escribir → recoge la memoria
+│   ├── hook_presupuesto.py ........... al terminar → el consumo de la sesión; cada mensaje → aviso por tramo
+│   ├── hook_checkpoint.py ............ tras escribir un documento de puerta → reclama el estado-fase.md
+│   ├── hook_veredicto.py ............. tras escribir el resultado de pruebas → copia el veredicto a la historia y los README
 │   │
 │   ├── pruebas.py .................... suite de los validadores
 │   └── reglas-validables.md .......... qué regla se puede comprobar y cuál no

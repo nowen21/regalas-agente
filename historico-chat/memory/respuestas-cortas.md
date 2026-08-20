@@ -12,6 +12,8 @@ El 2026-08-17 lo cortó otra vez con las mismas tres palabras, y en el mismo sit
 
 El 2026-08-14 lo dijo de la forma más corta: *"explicar algo no es extenderse en prosa y que no se entienda nada, explicar es poder decir algo en pocas palabras pero que se entienda"*. Fue tras dos respuestas seguidas donde una pregunta de una línea se contestó con tablas y tres bloques.
 
+El 2026-08-20 lo pidió citando la regla por su ID —*"aplique la regla 00 id9 para las respuestas"*— tras dos respuestas a preguntas de una línea que salieron con tabla, lista numerada y tres bloques. Esta vez no era reporte de trabajo: era opinión. La tentación es la misma.
+
 **Cómo se aplica:** decir qué pasó y qué falta decidir, en pocas líneas. Los detalles van en los archivos del repo, no en el chat. Sin tecnicismos salvo que el usuario los use primero. Una explicación cabe en una o dos frases; si hace falta una tabla y tres párrafos, es que todavía no se entendió el asunto y hay que pensarlo más, no escribir más.
 
 Relacionado: [manuales claros](manuales-claros.md) · [estilo de redacción simple](estilo-redaccion-simple.md).

@@ -120,6 +120,22 @@ Entonces la comprobación lo reporta y nombra los dos documentos
 3. Registrar el cruce en el segundo documento y volver a correr. Resultado esperado: no reporta nada.
 - **Aprobado cuando:** el cruce a medias se reporta y el completo no.
 
+### CA-05 — Lo que un programa del estándar escribe no nace con enlaces rotos
+
+```gherkin
+Dado que el andamio levanta una fase copiando las plantillas
+Cuando el esqueleto queda escrito
+Entonces ningún enlace de los cinco documentos apunta a un archivo que no existe
+Y el marcador de la ruta del estándar quedó resuelto
+```
+
+**Cómo validarlo:**
+
+1. Levantar una fase de prueba con `python validadores/andamio.py <épica> <HU> <descripción> --aplicar`.
+2. Correr `python validadores/validar.py estandar`. Resultado esperado: ningún enlace roto en la carpeta nueva.
+3. Abrir el `resultado_pruebas.md` creado y buscar `../../base/` y `«RUTA-ESTANDAR»`. Resultado esperado: no están; los enlaces a `base/` suben los niveles que la carpeta de la fase tiene.
+- **Aprobado cuando:** el esqueleto recién levantado pasa el validador de enlaces sin tocarlo a mano. Salió del pendiente 67: las tres fases del 2026-08-20 nacieron con el mismo enlace roto.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un enlace a una carpeta, uno con ancla y uno que es un ejemplo de formato tienen comportamiento definido.
@@ -224,3 +240,6 @@ Entonces la comprobación lo reporta y nombra los dos documentos
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| [C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos](C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos/README.md) | CA-05 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos/plan_trabajo.md](C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos/plan_trabajo.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos/plan_pruebas.md](C-EP-004-HU-005-el-andamio-no-deja-enlaces-rotos/plan_pruebas.md) | cuando se ejecute | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-05` desde el pendiente 67: el andamio copia la plantilla del resultado con un enlace relativo a `plantillas/`, roto a la profundidad de la fase. Se abre la fase C |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase C ejecutada y cerrada: el andamio traslada los enlaces al copiar. 27.2.0 |

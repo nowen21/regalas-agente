@@ -84,6 +84,22 @@ Entonces esa carpeta queda como estaba
 2. Instalar. Resultado esperado: el archivo sigue ahí y la carpeta no se recreó.
 - **Aprobado cuando:** instalar nunca vacía nada.
 
+### CA-04 — La historia y el pendiente nacen con su esqueleto y sus índices puestos
+
+```gherkin
+Dado que hay que bajar un defecto por la cadena
+Cuando se pide al andamio una historia nueva en una épica, o un pendiente nuevo enrutado a una historia
+Entonces el archivo nace desde su plantilla, con los marcadores de contenido intactos
+Y las filas de los índices quedan puestas en los dos sentidos: la épica, su README, el índice del backlog y el mapa de historias
+```
+
+**Cómo validarlo:**
+
+1. Correr `python validadores/andamio.py hu <épica> <slug> --aplicar`. Resultado esperado: carpeta `HU-NNN-<slug>/` con su documento y su `README.md`; una fila nueva en el §9 de `epica.md` y otra en el `README.md` de la épica.
+2. Correr `python validadores/andamio.py pendiente <slug> --hu <épica>/<HU> --aplicar`. Resultado esperado: `pendientes/NN-<slug>.md` con su ficha, una fila en el índice del backlog y la historia nombrada en el mapa.
+3. Correr `validar.py estandar`, `fases` y `pendientes`. Resultado esperado: sin fallas sobre lo recién creado.
+- **Aprobado cuando:** bajar un defecto por la cadena no exige escribir ningún índice a mano. Salió del pendiente 69: el 2026-08-20 fueron quince escrituras de índice por defecto.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un proyecto que ya tiene toda la estructura no cambia en nada.
@@ -183,3 +199,6 @@ Entonces esa carpeta queda como estaba
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Se ejecuta la fase A. Los dos CA verificados: la estructura queda completa y reinstalar no cambia nada. Los transversales también: un proyecto al día no cambia, y funciona con rutas con espacios y tildes |
+| [B-EP-007-HU-003-el-andamio-levanta-la-historia-y-el-pendiente](B-EP-007-HU-003-el-andamio-levanta-la-historia-y-el-pendiente/README.md) | CA-04 | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04` desde el pendiente 69: el andamio levanta solo la fase; la historia, el pendiente y sus índices se escriben a mano. Se abre la fase B |
+| 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase B ejecutada y cerrada: el andamio levanta la historia y el pendiente con sus índices. 27.2.0 |

@@ -170,7 +170,8 @@ def _indexar_dias(raiz, dia):
     texto = _leer(ruta)
     if f"({dia}/)" in texto:
         return
-    linea = f"- [{dia}/]({dia}/) — sin escribir todavía."
+    # El texto con la ruta desde la raíz (`13·DOC14`); el destino, relativo.
+    linea = f"- [{CARPETA}/{RESUMENES}/{dia}/]({dia}/) — sin escribir todavía."
     # Va al final: la sección de días es la última del documento, y los días
     # se listan en orden. Un día nuevo siempre es el más reciente.
     if "## Días" in texto:

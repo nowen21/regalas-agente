@@ -8,6 +8,10 @@
 > | Incremento | Fase | Estado |
 > |---|---|---|
 > | El enganche que sostiene el resumen de sesión | [`A-EP-005-HU-008-enganche-del-resumen`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/README.md) | Cerrada el 2026-08-14 |
+> | El enganche del checkpoint de la fase | [`A-EP-005-HU-013-el-enganche-del-checkpoint`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/A-EP-005-HU-013-el-enganche-del-checkpoint/README.md) | Cerrada el 2026-08-20 |
+> | El aviso de consumo por tramo | [`A-EP-005-HU-014-el-aviso-por-tramo`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/A-EP-005-HU-014-el-aviso-por-tramo/README.md) | Cerrada el 2026-08-20 |
+> | El veredicto se copia solo | [`C-EP-005-HU-003-el-veredicto-se-copia-solo`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/C-EP-005-HU-003-el-veredicto-se-copia-solo/README.md) | Cerrada el 2026-08-20 |
+> | Las reglas llegan también al propio estándar | [`B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar/README.md) | Cerrada el 2026-08-20 |
 >
 > Los siete enganches que ya existen (transcripción, memoria, enlaces, instalación) se construyeron antes de que hubiera especificación de módulo. Retro-documentarlos es trabajo aparte, y lo pide [`13·DOC6`](../../base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md).
 
@@ -80,6 +84,10 @@ Verificado el 2026-08-14.
 15. **Si el arranque no pasa el gate [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md), llega esa regla y nada más.** Cargar las reglas de trabajo ahí invitaría a trabajar sobre una estructura que el propio estándar manda detener. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
 16. **Cargarlo todo no es una opción, y el motivo se escribe:** el cuerpo entero pesa mucho más que la ventana de contexto que se le puede dedicar, y llenarla adelanta el resumen automático, que borra justo lo que se inyectó al arrancar. Se pagaría el precio completo por una garantía que caduca. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
 
+> **Agregado el 2026-08-20 en la fase B de HU-009.** Las reglas de arriba se midieron en proyectos herederos. En la carpeta del propio estándar el enganche salía antes de cargarlas, desde su primera versión: 30 de 30 aperturas sin el bloque de reglas.
+
+31. **Al propio estándar le llegan las reglas igual que a cualquier proyecto**, junto con su memoria y su histórico, y sin la revisión de instalación, que ahí no tiene qué revisar. El gate `F13` no se le aplica: no es un proyecto, es donde viven las reglas. Baja de [`EP-005 · HU-009`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md).
+
 > **Que la regla llegue es necesario y no es suficiente.** El 2026-08-14 se incumplió [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante una sesión entera, y esa regla llegaba completa. Lo que falta después es comprobar lo entregado, y eso es de EP-004.
 
 ### 4.2 La transcripción de la sesión
@@ -114,6 +122,33 @@ Verificado el 2026-08-14.
 28. **Nunca se borra: se mueve.** Si el nombre ya está ocupado en el repositorio, entra como `<nombre>-local.md` y decide el usuario cuál manda. Una versión anterior borraba el idéntico «porque no se pierde nada» y destruyó memoria real. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
 29. **Los nombres que solo difieren en mayúsculas son el mismo archivo.** En Windows lo son de verdad, y mover uno sobre otro se llevaría el índice sin decir nada. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
 30. **Con el almacén enlazado a la carpeta del repositorio, no hay nada que mover:** son el mismo archivo, y compararlos daría idéntico siempre. Baja de [`EP-005 · HU-007`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-007-recoger-lo-guardado-por-fuera/HU-007-recoger-lo-guardado-por-fuera.md).
+
+### 4.5 El checkpoint de la fase se reclama solo
+
+> Escrito el 2026-08-20 en la fase [`A-EP-005-HU-013`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/A-EP-005-HU-013-el-enganche-del-checkpoint/README.md).
+
+32. **Tres documentos marcan una puerta:** `plan_trabajo.md`, `resultado_pruebas.md` y `funcionalidad_implementada.md`. Escribir cualquier otro archivo no dispara nada. Baja de [`EP-005 · HU-013`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md).
+33. **Al escribir uno de esos tres dentro de una fase se mira su `estado-fase.md`:** si falta, o si su última escritura es anterior a la del documento, se avisa nombrando la fase y el documento. Baja de [`EP-005 · HU-013`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md).
+34. **Se comparan fechas, no contenido.** Decir en qué estación va la fase es criterio; el programa no escribe ni lee el checkpoint. Baja de [`EP-005 · HU-013`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md).
+35. **No detiene el trabajo:** sale siempre con código 0. Baja de [`EP-005 · HU-013`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md).
+
+### 4.6 El consumo de la sesión se ve mientras se puede actuar
+
+> Escrito el 2026-08-20 en la fase [`A-EP-005-HU-014`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/A-EP-005-HU-014-el-aviso-por-tramo/README.md), que además le da historia al reporte de cierre que la 27.0.0 construyó sin cadena.
+
+36. **Al terminar cada respuesta se reporta el total de la sesión:** turnos, fichas de entrada, de salida y leídas de caché. Baja de [`EP-005 · HU-014`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md).
+37. **En cada mensaje se mira si el último turno cruzó un tramo**, y si lo cruzó se avisa una vez, diciendo cuánto va y qué tramo se pasó. El cruce se decide comparando el total con y sin el último turno: sin estado compartido. Baja de [`EP-005 · HU-014`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md).
+38. **El tramo por defecto es un millón de fichas de entrada más salida, sin caché.** Salió de medir ocho sesiones reales (de 144 mil a 12,7 millones): avisa de cero a doce veces según el tamaño, y ninguna sesión corta lo cruza. Se cambia con un argumento. Baja de [`EP-005 · HU-014`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md).
+39. **Mide, no detiene.** Sin transcripción, o con una ilegible, calla y sale con 0. Baja de [`EP-005 · HU-014`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md).
+
+### 4.7 El veredicto se copia solo
+
+> Escrito el 2026-08-20 en la fase [`C-EP-005-HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/C-EP-005-HU-003-el-veredicto-se-copia-solo/README.md).
+
+40. **Al escribir el `resultado_pruebas.md` de una fase con concepto en su §6, el veredicto se copia a la fila de la fase en el §8 de su historia y a los README de la fase y de la historia.** Se copia lo que el §6 dice, con las mismas expresiones con que `fases.py` lo lee para pasar la puerta. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+41. **Un resultado sin concepto no se propaga.** Un borrador no es un veredicto; copiarlo pondría «no ejecutado» en la historia a cada guardado. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+42. **El `estado-fase.md` no se toca:** es el checkpoint y lo escribe el agente. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
+43. **Si no hay dónde copiarlo, se dice.** Callar se leería como hecho. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
 
 ## 5. Modelo de datos
 
@@ -204,6 +239,15 @@ El detalle vive en el [documentacion/epicas/EP-005-automatismos-que-no-dependen-
 | RN-14 · un capítulo nuevo entra solo | programa | `validadores/cargador.py` | ✅ | CP-001, paso 4 |
 | RN-15 · con el gate sin pasar llega solo esa regla | programa | `validadores/cargador.py` | ✅ | CP-005 de esa fase |
 | RN-16 · el motivo de no cargarlo todo queda escrito | documentación | Esta especificación, §4.1 | ✅ | — |
+| RN-31 · al propio estándar le llegan las reglas | programa | `adaptadores/claude-code/hook_sesion.py` | ✅ | CP-001 a CP-003 de la fase B de HU-009, y el caso `arranque-reglas-en-el-estandar` de `evals/` |
+| RN-32 y RN-33 · qué dispara y qué se mira | programa | `validadores/checkpoint.py` | ✅ | CP-001 a CP-004 de la fase A de HU-013 |
+| RN-34 · fechas, no contenido; no escribe | programa | `validadores/checkpoint.py` | ✅ | CP-005 y CP-007 de esa fase |
+| RN-35 · no detiene | programa | `adaptadores/claude-code/hook_checkpoint.py` | ✅ | CP-006 de esa fase |
+| RN-36 · el reporte de cierre | programa | `adaptadores/claude-code/hook_presupuesto.py` | ✅ | CP-001 de la fase A de HU-014 |
+| RN-37 y RN-38 · el aviso por tramo y el tramo por defecto | programa | `validadores/presupuesto.py` | ✅ | CP-002 a CP-004 y CP-006 de esa fase |
+| RN-39 · mide, no detiene | programa | `adaptadores/claude-code/hook_presupuesto.py` | ✅ | CP-005 de esa fase |
+| RN-40 a RN-42 · el veredicto se copia, el borrador no, el checkpoint no se toca | programa | `validadores/veredicto.py` | ✅ | CP-001 a CP-004 de la fase C de HU-003 |
+| RN-43 · si no hay dónde, se dice | programa | `adaptadores/claude-code/hook_veredicto.py` | ✅ | CP-006 de esa fase |
 
 ## 14. Cruces con otros módulos
 

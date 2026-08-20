@@ -248,6 +248,14 @@ HOOKS_CLAUDE = [
      "Revisando las señales del proyecto...", ""),
     ("PostToolUse", "Write|Edit", "hook_relacionadas.py",
      "Buscando las reglas relacionadas...", ""),
+    ("Stop", None, "hook_presupuesto.py",
+     "Sumando el consumo de la sesión...", ""),
+    ("UserPromptSubmit", None, "hook_presupuesto.py",
+     "Midiendo el consumo de la sesión...", "--modo aviso"),
+    ("PostToolUse", "Write|Edit", "hook_checkpoint.py",
+     "Revisando el checkpoint de la fase...", ""),
+    ("PostToolUse", "Write|Edit", "hook_veredicto.py",
+     "Copiando el veredicto de la fase...", ""),
 ]
 
 

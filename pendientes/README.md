@@ -279,6 +279,29 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 **El 63 es P1 y no P2 porque lo que tapa son credenciales.** `validar.py secretos` alcanza sus propios archivos y les antepone la raíz del proyecto, así que reporta 18 hallazgos —secretos falsos de sus datos de prueba— en una carpeta que no existe allá. Un validador que siempre falla deja de servir para detectar lo nuevo, y en `rni-dp` **bloquea el cierre de un pendiente de seguridad**.
 
+### Lo que dejó comparar el núcleo del agente con la nota de arquitectura (64-66)
+
+Salieron de la sesión del 2026-08-20, al preguntar si el `core/` de [notas/estructura.md](../notas/estructura.md) existe en Cimiento. Quedaron en su [resumen](../historico-chat/resumenes/2026-08-20/core-del-agente-en-la-herramienta.md). Los dos primeros son lo que de ese `core/` está frágil; el tercero es lo que explicó por qué la sesión trabajó sin las reglas.
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~64~~ | — | **hecho** → [El checkpoint de la fase se reclama solo](hecho/el-checkpoint-se-reclama-solo.md) | `estado-fase.md` existe para sobrevivir a la compactación y lo escribe el agente cuando se acuerda. Falta el enganche que lo reclame cuando una puerta pasa sin él. Cerrado 2026-08-20 (27.1.0). |
+| ~~65~~ | — | **hecho** → [El consumo se ve a tiempo](hecho/el-consumo-se-ve-a-tiempo.md) | El aviso de consumo de la 27.0.0 corre al terminar la respuesta. Falta que avise por tramos mientras la sesión sigue, y que tenga historia: nació sin ella. Cerrado 2026-08-20 (27.1.0). |
+| ~~66~~ | — | **hecho** → [Las reglas llegan también al propio estándar](hecho/las-reglas-llegan-tambien-al-propio-estandar.md) | El enganche de apertura sale antes de cargar las reglas cuando la carpeta es la del estándar. 30 de 30 aperturas sin el bloque de reglas. Es `P0` porque el daño se repite en cada sesión de este repositorio. Cerrado 2026-08-20 (27.1.0). |
+| ~~68~~ | — | **hecho** → [La suite tiene dos fallas que no son de ninguna fase abierta](hecho/la-corrida-entera-vuelve-a-verde.md) | Un resumen del 19 sin la `H-`, y cuatro enlaces `DOC14` mal escritos, dos de ellos por los enganches. Una suite en rojo por causas viejas esconde la falla nueva. |
+| ~~67~~ | — | **hecho** → [El andamio copia la plantilla del resultado con un enlace roto](hecho/el-andamio-no-deja-enlaces-rotos.md) | Las tres fases del día nacieron con el enlace `../../base/` roto. El andamio debe reescribirlo al copiar, como el instalador hace con el marcador. |
+
+### Lo que dejó preguntar cómo gastar menos (69-70)
+
+El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste menos. La respuesta salió de la propia sesión: lo que más costó no fue el código sino escribir a mano la mitad mecánica de la cadena. Dos pendientes, los dos de programa, no de criterio.
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~69~~ | — | **hecho** → [El andamio levanta solo la fase](hecho/el-andamio-levanta-la-historia-y-el-pendiente.md) | Que el andamio cree también el pendiente y la historia desde sus plantillas, con las filas de los índices puestas en los dos sentidos. Quince escrituras a mano por cada defecto que baja por la cadena. |
+| ~~70~~ | — | **hecho** → [Las filas de estado las escribe el agente a mano en cada cierre](hecho/el-veredicto-se-copia-solo.md) | Que el veredicto del resultado se copie solo al §8 de la historia y a los README, y que `cerrar.py` deje la fila del backlog en «hecho». Doce copias a mano en un día; el programa ya sabe el veredicto y solo lo comprueba después. |
+
+**El 66 es el que explica a los otros dos.** Se trabajó una mañana entera sin el capítulo `02` cargado, y por eso las dos mejoras se intentaron copiando una fase en vez de seguir la cadena. **Los tres cerraron el mismo día**, cada uno por su fase: `A-EP-005-HU-013`, `A-EP-005-HU-014` y `B-EP-005-HU-009`.
+
 ---
 
 ## Ningún pendiente vive suelto: en qué historia está cada uno
@@ -301,17 +324,20 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | [EP-003 · HU-004](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/HU-004-modelo-de-la-especificacion.md) — Modelo de la especificación | 47 |
 | [EP-003 · HU-006](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) — Procedimientos por rol | 23 |
 | [EP-003 · HU-010](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) — Glosario de la terminología | 21, 26 |
-| [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — Enlaces y citas | 18, 54, 55, y el punto 1 del 33 |
-| [EP-004 · HU-008](../documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/HU-008-corrida-completa.md) — Corrida completa | 53 |
+| [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — Enlaces y citas | 18, 54, 55, 67, y el punto 1 del 33 |
+| [EP-004 · HU-008](../documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/HU-008-corrida-completa.md) — Corrida completa | 53, 68 |
 | [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) — Marcas de generación automática | 11 |
 | [EP-004 · HU-017](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — Inventario de HU sin fase | 48, 59 |
 | [EP-005 · HU-001](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — Transcripción de la sesión | 29, y el punto 3 del 33 |
+| [EP-005 · HU-003](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md) — Disparo al escribir un archivo | 70 |
 | [EP-005 · HU-008](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md) — Enganche del resumen | 32, y el punto 4 del 33 |
-| [EP-005 · HU-009](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) — Lo que rige cada frase llega puesto | el punto 5 del 33 |
+| [EP-005 · HU-009](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) — Lo que rige cada frase llega puesto | 66, y el punto 5 del 33 |
+| [EP-005 · HU-013](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md) — El checkpoint se reclama solo | 64 |
+| [EP-005 · HU-014](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md) — El consumo se ve a tiempo | 65 |
 | **[EP-005 · HU-011](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md)** — Dónde termina el estándar | 15 |
 | **[EP-005 · HU-012](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md)** — Hacer cumplir lo que solo se recuerda | 58 |
 | [EP-006 · HU-002](../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-002-guardar-en-el-repositorio/HU-002-guardar-en-el-repositorio.md) — Guardar en el repositorio | 17 |
-| [EP-007 · HU-003](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md) — Estructura de carpetas | 61 |
+| [EP-007 · HU-003](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md) — Estructura de carpetas | 61, 69 |
 | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — Poner al día | 46 |
 | **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
 

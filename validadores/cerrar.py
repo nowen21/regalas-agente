@@ -141,11 +141,41 @@ def reescribir_salientes(texto, origen, destino):
 
 
 def cerrar(raiz, numero, como, escribir=False):
-    """Mueve el pendiente a `hecho/<como>.md` y reescribe lo que lo citaba."""
+    """Mueve el pendiente a `hecho/<como>.md`, reescribe lo que lo citaba y deja
+    su fila del índice en la forma de hecho."""
     origen = archivo_del_pendiente(raiz, numero)
     nombre = como if como.lower().endswith(".md") else como + ".md"
-    return mover(raiz, origen, os.path.join(raiz, PENDIENTES, HECHO, nombre),
-                 escribir)
+    resultado = mover(raiz, origen, os.path.join(raiz, PENDIENTES, HECHO, nombre),
+                      escribir)
+    _fila_hecha(raiz, numero, nombre, escribir)
+    return resultado
+
+
+# La fila del índice, antes y después de cerrar (`EP-005 · HU-003`, fase C).
+# `mover()` ya deja el enlace apuntando a `hecho/`; lo que quedaba a mano era
+# la forma: el número tachado, la prioridad vacía y la marca de hecho.
+_FILA_ABIERTA = re.compile(
+    r"(?m)^\|\s*(?P<num>\d+)\s*\|\s*(?P<p>[^|]*)\|\s*\[(?P<titulo>[^\]]+)\]\((?P<destino>hecho/[^)]+)\)\s*\|(?P<resto>.*)$")
+
+
+def _fila_hecha(raiz, numero, nombre_en_hecho, escribir):
+    """`| 64 | **P2** | [t](hecho/x.md) | …` → `| ~~64~~ | — | **hecho** → [t](hecho/x.md) | …`."""
+    indice = os.path.join(raiz, PENDIENTES, "README.md")
+    if not os.path.isfile(indice):
+        return False
+    texto = leer(indice)
+    for m in _FILA_ABIERTA.finditer(texto):
+        if int(m.group("num")) != int(numero):
+            continue
+        if not m.group("destino").endswith(nombre_en_hecho):
+            continue
+        nueva = "| ~~%s~~ | — | **hecho** → [%s](%s) |%s" % (
+            m.group("num"), m.group("titulo"), m.group("destino"), m.group("resto"))
+        if escribir:
+            with open(indice, "w", encoding="utf-8", newline="\n") as f:
+                f.write(texto[:m.start()] + nueva + texto[m.end():])
+        return True
+    return False
 
 
 def mover(raiz, origen, destino, escribir=False):

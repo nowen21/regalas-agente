@@ -17,9 +17,11 @@ Hace dos cosas, y conviene no confundirlas:
         anterior. Un chat nuevo arranca sin memoria de los anteriores, y sin el
         índice no sabe siquiera que existen.
 
-Lo del proyecto —memoria e histórico— se carga **también en el propio
-estándar**: ahí no hay instalación que revisar, pero la memoria y el histórico
-son los del usuario.
+En el propio estándar se carga lo mismo que en un proyecto —las reglas, la
+memoria y el histórico— y no se revisa la instalación, porque ahí no hay
+ninguna. Hasta la 27.1.0 la carpeta del estándar recibía memoria e histórico
+y **ninguna regla**: 30 de 30 aperturas medidas. El gate `F13` tampoco se le
+aplica: no es un proyecto, es donde viven las reglas (`EP-005 · HU-009`).
 
 Siempre sale con código 0: esto **informa**, no bloquea — una sesión que no
 arranca porque falta una sección del `CLAUDE.md` sería peor que el problema
@@ -70,11 +72,15 @@ def main():
     proyecto = raiz_pedida(sys.argv[1:])
     del_proyecto = _del_proyecto(proyecto)
 
-    # El propio estándar no se revisa a sí mismo como si fuera un proyecto —
-    # pero su memoria y su histórico sí son los del usuario, y se cargan igual.
+    # El propio estándar no se revisa a sí mismo como si fuera un proyecto,
+    # pero recibe las reglas igual que cualquiera —sin el gate `F13`, que es
+    # para proyectos— más su memoria y su histórico, que son los del usuario.
     if os.path.normcase(proyecto) == os.path.normcase(RAIZ):
-        if del_proyecto:
-            _responder("", [], del_proyecto)
+        try:
+            reglas = cargador.contexto(RAIZ, True)
+        except Exception as e:  # noqa: BLE001 — nunca romper el arranque
+            reglas = f"[No se pudieron cargar las reglas base: {e}]"
+        _responder("", [], f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas)
         return 0
 
     try:

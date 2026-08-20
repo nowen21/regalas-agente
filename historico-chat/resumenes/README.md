@@ -44,3 +44,5 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [historico-chat/resumenes/2026-08-15/](2026-08-15/) — dos sesiones: la plantilla del resultado de pruebas, y el inventario de los resúmenes que faltan.
 - [historico-chat/resumenes/2026-08-16/](2026-08-16/) — nueve sesiones: la prioridad del backlog, por qué un pendiente no es un plan, el inventario de las HU sin fase, y los siete cierres que dejaron ocho pendientes nuevos.
 - [historico-chat/resumenes/2026-08-17/](2026-08-17/) — cuatro sesiones: los 51 planes de trabajo y su ejecución, y el enrutamiento del backlog para que ningún pendiente quede fuera de una historia de usuario.
+- [historico-chat/resumenes/2026-08-19/](2026-08-19/) — sin escribir todavía.
+- [historico-chat/resumenes/2026-08-20/](2026-08-20/) — sin escribir todavía.

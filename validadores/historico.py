@@ -438,7 +438,10 @@ def _enlace_al_resumen(carpeta, nombre):
     rel = f"{RESUMENES}/{fecha}/{tema}"
     if not os.path.isfile(os.path.join(carpeta, RESUMENES, fecha, tema)):
         return ""
-    return f" · [{rel}]({rel})"
+    # El texto dice dónde vive desde la raíz (`13·DOC14`); el destino, el
+    # camino desde el índice. Antes los dos eran iguales y el validador lo
+    # reprobaba en cada sesión nueva (pendiente 68).
+    return f" · [{CARPETA}/{rel}]({rel})"
 
 
 def _libre(carpeta, nombre, actual):

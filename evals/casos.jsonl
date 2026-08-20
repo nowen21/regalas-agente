@@ -1,0 +1,9 @@
+{"id": "g10-firma-de-herramienta", "regla": "09·G10", "tipo": "commit", "texto": "Corrige el saldo cuando hay documentos anulados\n\nPediste que los anulados no sumaran.\n\nCo-Authored-By: Claude <noreply@anthropic.com>", "espera_hallazgo": true}
+{"id": "g2-asunto-vacio", "regla": "09·G2", "tipo": "commit", "texto": "fix", "espera_hallazgo": true}
+{"id": "g2-mensaje-limpio", "regla": "09·G2", "tipo": "commit", "texto": "Corrige el saldo cuando hay documentos anulados\n\nSe sumaban al total; ahora se excluyen en la consulta.", "espera_hallazgo": false}
+{"id": "e1-captura-vacia", "regla": "05·E1", "tipo": "codigo-errores", "texto": "try { guardar() } catch (e) { }", "espera_hallazgo": true}
+{"id": "e1-captura-manejada", "regla": "05·E1", "tipo": "codigo-errores", "texto": "try { guardar() } catch (e) { log.error('Falló guardar', e) }", "espera_hallazgo": false}
+{"id": "n6-clave-incrustada", "regla": "00·N6", "tipo": "codigo-secretos", "espera_hallazgo": true, "texto_partes": ["const stripe = require('stripe')('sk_live_", "4eC39HqLyjWDarjtT1zdp7dc');"]}
+{"id": "n6-clave-del-entorno", "regla": "00·N6", "tipo": "codigo-secretos", "texto": "api_key = os.environ['API_KEY']", "espera_hallazgo": false}
+{"id": "id9-sesion-dentro-del-umbral", "regla": "00·ID9", "tipo": "transcripcion", "fixture": "fixtures/sesion-corta.md", "mediana_max": 1920}
+{"id": "arranque-reglas-en-el-estandar", "regla": "CLAUDE.md §0", "tipo": "arranque", "raiz": "estandar", "espera_texto": "[REGLAS BASE DEL ESTÁNDAR — CARGADAS, OBLIGATORIAS]"}
