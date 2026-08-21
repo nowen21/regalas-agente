@@ -34,10 +34,10 @@ El orden es el mismo para cualquier software, del más chico al más grande. Cam
 
 | Paso | Dónde quedó en este repositorio |
 |---|---|
-| 1. Necesidad | [prompts/matematica-planteamiento.md](../prompts/matematica-planteamiento.md) |
-| 2. Análisis y stack | [analisis/analisis-del-proyecto.md](../analisis/analisis-del-proyecto.md) |
-| 3. Alcance | [epicas/EP-001.../epica.md](epicas/EP-001-metodos-numericos-en-python/epica.md) secciones 5.1 a 5.4 |
-| 4. Unidades con criterios | [HU-001](epicas/EP-001-metodos-numericos-en-python/HU-001-esqueleto-del-proyecto-python/HU-001-esqueleto-del-proyecto-python.md) con sus 5 CA |
+| 1. Necesidad | `prompts/matematica-planteamiento.md` (del proyecto de origen) |
+| 2. Análisis y stack | `analisis/analisis-del-proyecto.md` (del proyecto de origen) |
+| 3. Alcance | `epicas/EP-001-metodos-numericos-en-python/epica.md` (del proyecto de origen) secciones 5.1 a 5.4 |
+| 4. Unidades con criterios | `HU-001-esqueleto-del-proyecto-python.md` (del proyecto de origen) con sus 5 CA |
 | 5. Planes aprobados | `plan_trabajo.md` y `plan_pruebas.md` de la fase A |
 | 6. Implementación | `proyectos/matematica-python/` |
 | 7. Pruebas contra criterios | `resultado_pruebas.md` de la fase (6 de 6 casos) |
