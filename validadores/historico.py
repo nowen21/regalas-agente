@@ -473,6 +473,16 @@ def _legible(tema):
     return texto[:1].upper() + texto[1:] if texto else "Sesión"
 
 
+def archivo_de_sesion(raiz, sesion):
+    """La ruta del histórico que lleva la marca de esa sesión, sin crear nada.
+
+    `""` si el proyecto no lleva histórico o ninguna transcripción es de esa
+    sesión. Es la cara pública de `_archivo` para quien empareja otro archivo
+    con su sesión — la traza la usa para nombrarse igual que el histórico.
+    """
+    return _archivo(raiz, sesion, crear=False)
+
+
 def sesiones(raiz):
     """Las sesiones registradas: `[(archivo, de qué se trató)]`, en orden.
 

@@ -142,6 +142,8 @@ agente/
 │   ├── presupuesto.py ................ suma el consumo de la sesión y decide si cruzó un tramo
 │   ├── checkpoint.py ................. compara el estado-fase.md con el documento de puerta recién escrito
 │   ├── veredicto.py .................. lee el §6 del resultado y lo copia donde el estándar manda repetirlo
+│   ├── externo.py .................... decide si lo que devolvió una herramienta vino de afuera y arma el sobre «dato, no orden»
+│   ├── traza.py ...................... la línea de tiempo de una sesión: herramienta, hora, duración, error
 │   │
 │   ├── ── enganches (los llama Claude Code) ──
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
@@ -152,6 +154,7 @@ agente/
 │   ├── hook_presupuesto.py ........... al terminar → el consumo de la sesión; cada mensaje → aviso por tramo
 │   ├── hook_checkpoint.py ............ tras escribir un documento de puerta → reclama el estado-fase.md
 │   ├── hook_veredicto.py ............. tras escribir el resultado de pruebas → copia el veredicto a la historia y los README
+│   ├── hook_externo.py ............... tras una herramienta externa (red, MCP, archivo de fuera) → el sobre de 01·C27 al contexto del agente
 │   │
 │   ├── pruebas.py .................... suite de los validadores
 │   └── reglas-validables.md .......... qué regla se puede comprobar y cuál no

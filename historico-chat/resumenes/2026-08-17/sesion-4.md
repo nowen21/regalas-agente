@@ -596,7 +596,7 @@ Cerró el [pendiente 58](../../../pendientes/hecho/nada-hace-cumplir-id9.md), qu
 
 ### H-48 · Dos pendientes distintos están atascados en el mismo sitio
 
-El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [pendiente 16](../../../pendientes/16-primero-que-el-proceso-sirva-despues-se-automatiza.md) —que una regla no se automatiza hasta saber que sirve— **piden los dos una meta-regla nueva**, y los dos se atascan en lo mismo: la fase `A` de `EP-001·HU-007` es retrodocumentación y excluye escribir reglas nuevas.
+El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [pendiente 16](../../../pendientes/hecho/primero-que-el-proceso-sirva.md) —que una regla no se automatiza hasta saber que sirve— **piden los dos una meta-regla nueva**, y los dos se atascan en lo mismo: la fase `A` de `EP-001·HU-007` es retrodocumentación y excluye escribir reglas nuevas.
 
 **Y escribir solo la plantilla no sirve**, que era la salida fácil: el propio punto 2 dice que sin disparador el barrido *«es un favor, no una norma»*. Una plantilla sin regla que la exija reproduce el defecto que describe.
 

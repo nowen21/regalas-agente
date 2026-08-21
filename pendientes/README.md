@@ -56,7 +56,7 @@ Estos tres **no dependen de 01-06 ni entre sí**. Van numerados al final porque 
 
 **No es un ítem, es un tema.** Cada una de sus 16 propuestas se promueve a su propio pendiente numerado cuando se vaya a construir; el `09` reserva el lugar del tema en la fila, no de las tareas. Comparte frontera con el 01: aquel cubre los validadores que faltan, este cubre todo lo demás que podría dejar de depender de la IA.
 
-**Tres de sus 16 valen más que el P5 del conjunto**, porque son de prioridad alta y costo bajo: el `01` (guardián de versión y CHANGELOG), el `02` (barrido de secretos en el histórico) y el `03` (sello de puerta por CLI). Suben cuando se promuevan a pendiente propio, y pasan antes por el filtro del [16](16-primero-que-el-proceso-sirva-despues-se-automatiza.md).
+**Tres de sus 16 valen más que el P5 del conjunto**, porque son de prioridad alta y costo bajo: el `01` (guardián de versión y CHANGELOG), el `02` (barrido de secretos en el histórico) y el `03` (sello de puerta por CLI). Suben cuando se promuevan a pendiente propio, y pasan antes por el filtro del [16](hecho/primero-que-el-proceso-sirva.md).
 
 ### Ideas por desarrollar (10)
 
@@ -83,7 +83,7 @@ Cuatro huecos que salieron de leer los apuntes del diplomado de IA (`Escom/.../p
 | 13 | **P3** | [Inventario y riesgo de las acciones del agente](hecho/inventario-y-riesgo-de-las-acciones-del-agente.md) | Nadie ha listado todo lo que el agente puede hacer. `N1` a `N6` cubren los casos que dolieron, y todo lo demás cae en una sola exigencia pareja que en la práctica se aprueba en bloque. **El más rentable de su nivel:** es una lista y una tabla, y desbloquea el ítem 15 del 09 y toda la clasificación de riesgo del 12. |
 | 14 | **P3** | [Las reglas no tienen fecha de revisión](hecho/las-reglas-no-tienen-fecha-de-revision.md) | Una regla que dejó de valer se comporta igual que una correcta: nada se rompe. La memoria ya recibió vigencia en el pendiente 02; las reglas no. Real, pero con reglas escritas hace días todavía no hay nada vencido: gana valor con el tiempo. |
 | 15 | **P5** | [El estándar depende de una sola herramienta](hecho/el-estandar-depende-de-una-sola-herramienta.md) | Las reglas son portables, lo que las hace cumplir no. Hoy no hay ni un mapa de cuáles piezas están amarradas a Claude Code. **Su punto 1 —el mapa en `anatomia/`— es de una tarde y sube a P3**; los puntos 2 y 3 son abstracción antes de tener el segundo caso. |
-| 16 | **P3** | [Primero que el proceso sirva, después se automatiza](16-primero-que-el-proceso-sirva-despues-se-automatiza.md) | Al 09 le falta el criterio de *si conviene* automatizar, no solo *si se puede*. Automatizar una regla mal escrita la congela y la pone a fallar sola. **Se resuelve escribiéndolo**, no construyendo nada, y es puerta de todo el 09. |
+| ~~16~~ | — | **hecho** → [Primero que el proceso sirva, después se automatiza](hecho/primero-que-el-proceso-sirva.md) | Al 09 le falta el criterio de *si conviene* automatizar, no solo *si se puede*. Automatizar una regla mal escrita la congela y la pone a fallar sola. **Se resuelve escribiéndolo**, no construyendo nada, y es puerta de todo el 09. |
 
 **El 13 conviene primero:** es una lista y una tabla, y el 12 reusa esa misma tabla de riesgo para los modelos de un proyecto. El 16 se resuelve al escribirlo, no construyendo nada.
 
@@ -109,7 +109,7 @@ Del 17 al 22 salieron de trabajar el pendiente 01, y quedaron en su [resumen](..
 
 **El 21 conviene primero:** con el glosario escrito se ve qué más está en inglés sin necesidad y se cambia todo de una vez.
 
-### Lo que dejó un proyecto real (30, 34-36)
+### Lo que dejó un proyecto real (30, 34-36, 71)
 
 Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código. Es la primera vez que un pendiente nace de un proyecto ajeno al estándar y no de trabajar el estándar mismo — que es justamente lo que el [pendiente 01](hecho/validadores-de-codigo-de-proyecto.md) decía que hacía falta.
 
@@ -121,6 +121,7 @@ Salieron de instalar el estándar en `shopnest-mesa` y llevarlo hasta el código
 | ~~34~~ | — | **hecho a medias** → [Los enlaces de las plantillas apuntan al estándar](hecho/enlaces-de-las-plantillas-al-estandar.md) | shopnest-mesa | Los 91 enlaces `../base/…` de las 22 plantillas pasaron a `«RUTA-ESTANDAR»/base/…`, y `enlaces.py` aprendió el marcador. Cerrado 2026-08-16 (v20.0.1). **`shopnest-mesa` comprobó y el enlace sigue roto:** el instalador no rellena el marcador al copiar. Lo que falta quedó en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md). |
 | ~~35~~ | — | **hecho** → [Renombrar deja coherente su resumen](hecho/renombrar-deja-el-resumen-coherente.md) | shopnest-mesa | `--renombrar` corrige el enlace de adentro del resumen que arrastra, y nace la primera suite de pruebas de `historico.py`. Cerrado 2026-08-16 (v21.3.0) en la fase [`B-EP-005-HU-008`](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/). **Falta avisarle a `shopnest-mesa`.** |
 | 36 | **P0** | [Falta la regla que obliga a reportar lo que es del estándar](hecho/el-defecto-del-estandar-se-reporta-y-se-avisa-de-vuelta.md) | shopnest-mesa | **Este es el de fondo:** los tres de arriba llegaron acá por criterio de una sesión, no por norma. Falta la regla que fija el procedimiento —los dos pendientes, el proyecto de origen y el aviso de vuelta— y la pieza que manda ese aviso. Sin el aviso, cada reporte deja un pendiente abierto para siempre en el proyecto. |
+| 71 | **P3** | [`cerrar.py` reescribe el enlace de salida con el espacio sin codificar](71-cerrar-reescribe-el-enlace-con-el-espacio-sin-codificar.md) | shopnest-mesa | Al mover un pendiente a `hecho/`, `reescribir_salientes()` recalcula sus enlaces con `relpath` y no vuelve a codificar: `Ing.%20Jose` sale `Ing. Jose`. Y `comun._ENLACE` corta en el espacio, así que el validador **deja de ver** el enlace que acaba de romper. Es el 33·1 del lado de la escritura. |
 
 **Lo que el 34 dejó a medias vive en el [40](hecho/el-instalador-rellena-los-marcadores.md) y el [41](hecho/el-marcador-se-resuelve-contra-el-estandar.md)**, dos secciones más abajo. `shopnest-mesa` lo comprobó y lo reportó el 2026-08-16, el mismo día en que esta casa lo encontró por su cuenta: los dos hallazgos son el mismo y quedó el de acá, que además contó los otros dos puntos de copia. Al cerrarlos hay que avisarle igual.
 
@@ -302,6 +303,15 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 **El 66 es el que explica a los otros dos.** Se trabajó una mañana entera sin el capítulo `02` cargado, y por eso las dos mejoras se intentaron copiando una fase en vez de seguir la cadena. **Los tres cerraron el mismo día**, cada uno por su fase: `A-EP-005-HU-013`, `A-EP-005-HU-014` y `B-EP-005-HU-009`.
 
+### Sin agrupar todavía
+
+Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es criterio.
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~72~~ | — | **hecho** → [Lo que llega de afuera no llega marcado](hecho/lo-que-llega-de-afuera-llega-marcado.md) | `01·C27` dice que lo externo es dato y nada lo hace cumplir: lo que devuelve `WebFetch`, un conector MCP o un archivo de fuera del proyecto entra al contexto con la misma forma que una orden del usuario. Falta el portero que lo marque con su origen. Es seguridad: va antes que el 73. |
+| ~~73~~ | — | **hecho** → [La sesión no tiene traza paso a paso](hecho/la-sesion-tiene-su-traza.md) | Se guarda qué se dijo y cuánto costó, no qué hizo el agente paso a paso. La transcripción interna lo tiene y nadie lo lee. Falta el lector que saque la línea de tiempo: herramienta, hora, duración, error. |
+
 ---
 
 ## Ningún pendiente vive suelto: en qué historia está cada uno
@@ -340,6 +350,8 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | [EP-007 · HU-003](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-003-estructura-de-carpetas/HU-003-estructura-de-carpetas.md) — Estructura de carpetas | 61, 69 |
 | [EP-007 · HU-006](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-006-poner-al-dia/HU-006-poner-al-dia.md) — Poner al día | 46 |
 | **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
+| [EP-005 · HU-015](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md) — Lo que llega de afuera llega marcado | 72 |
+| [EP-005 · HU-016](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md) — La traza de la sesión, paso a paso | 73 |
 
 El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra sesión: la fila va en su archivo igual que en los demás.
 

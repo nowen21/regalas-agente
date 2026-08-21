@@ -6,8 +6,8 @@
 | **Historia de usuario** | [EP-004 · HU-017 — Inventario de HU sin fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — el inventario es esa historia, y las 42 dudas que lo detienen son el [59](59-las-42-dudas-que-detienen-26-fases.md) |
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
-| **Total de HU** | 76 |
-| **Completas** | 45 |
+| **Total de HU** | 78 |
+| **Completas** | 47 |
 | **Incompletas** | 31 |
 | **Cierra cuando** | Incompletas = 0 ☐ |
 
@@ -20,6 +20,8 @@
 > **68 → 74 total.** Seis historias nuevas, escritas al enrutar el backlog: ningún pendiente podía quedar suelto y seis no tenían dónde caer. No son trabajo nuevo pendiente — son trabajo que ya existía y no tenía a quién rendirle cuentas.
 >
 > **39 → 31 completas.** Ocho historias que estaban completas ganaron una fase **sin terminar**, y una fase a medias vuelve incompleta a su historia. Seis vienen de la sesión que ejecutaba los 51 planes y quedó detenida; la séptima es la fase `B` de [EP-004 · HU-016](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/), que espera aprobación.
+>
+> **2026-08-20 · 78 total, 47 completas.** Nacieron [EP-005 · HU-015](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md) y [EP-005 · HU-016](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md), cada una con su fase A levantada por el andamio con los cinco documentos; cuentan como completas aunque la fase esté en curso, porque el conteo mira que los documentos existan, no que estén terminados.
 >
 > **2026-08-18 · sube a 33.** La [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) —buscar en el repositorio antes de preguntar— cerró su fase `A` con los cinco documentos. Nació ayer al enrutar el backlog y se construyó hoy. Y la [EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) —el proyecto reporta lo que es del estándar y el estándar le avisa de vuelta— cerró la suya, también del día a la mañana siguiente.
 >

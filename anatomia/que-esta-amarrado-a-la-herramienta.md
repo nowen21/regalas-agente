@@ -34,9 +34,9 @@ su `.claude/settings.json`, y `checklist.py` compara el comando exacto: lo
 reporta en el primer mensaje de la siguiente sesión, y el instalador lo
 reemplaza.
 
-## Los programas: 23 amarrados de 66
+## Los programas: 24 amarrados de 69
 
-**Un tercio.** El resto —43— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
+**Un tercio.** El resto —45— solo lee y escribe archivos, y funcionaría igual con cualquier agente o sin ninguno.
 
 | Pieza | Cuánto la nombra | Qué es |
 |---|---:|---|
@@ -44,14 +44,14 @@ reemplaza.
 | `instalar.py` | 54 | 🟡 **el amarre grande** — escribe `.claude/settings.json` |
 | `checklist.py` | 18 | 🟡 revisa que los enganches estén puestos |
 | `sesion.py` | 14 | 🟡 |
-| `hook_resumen` · `hook_historico` · `hook_recuerdos` · `hook_senales` · `hook_sesion` · `hook_md` · `hook_checklist` · `hook_relacionadas` · `hook_presupuesto` · `hook_checkpoint` · `hook_veredicto` | 3 a 8 | 🟡 **son la definición de adaptador**: existen porque la herramienta los llama |
+| `hook_resumen` · `hook_historico` · `hook_recuerdos` · `hook_senales` · `hook_sesion` · `hook_md` · `hook_checklist` · `hook_relacionadas` · `hook_presupuesto` · `hook_checkpoint` · `hook_veredicto` · `hook_externo` | 3 a 8 | 🟡 **son la definición de adaptador**: existen porque la herramienta los llama |
 | `version.py` · `versiones.py` · `historico.py` · `recuerdos.py` · `cargador.py` · `brevedad.py` | 1 a 8 | 🟡 **a medias** — el trabajo es agnóstico y solo el borde nombra la herramienta |
 
-### Las 43 libres, por su nombre
+### Las 45 libres, por su nombre
 
 **Se nombran una por una a propósito.** Antes iban solo por su total, y así una pieza nueva entraba en el recuento sin que nadie la hubiera mirado — que es como envejece un mapa escrito a mano.
 
-`acciones.py` · `aislamiento.py` · `andamio.py` · `calidad.py` · `cerrar.py` · `checkpoint.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `inmutable.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `presupuesto.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `respaldo.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `trazabilidad.py` · `validar.py` · `veredicto.py` · `versionado.py` · `vigencia.py`
+`acciones.py` · `aislamiento.py` · `andamio.py` · `calidad.py` · `cerrar.py` · `checkpoint.py` · `ci.py` · `citas.py` · `codigo.py` · `commits.py` · `comun.py` · `cruces.py` · `declaracion.py` · `dependencias.py` · `enlaces.py` · `enmascarar.py` · `entidades.py` · `errores.py` · `esquema.py` · `estructura.py` · `externo.py` · `fases.py` · `flujo.py` · `herramientas.py` · `indices.py` · `inmutable.py` · `marcas.py` · `metareglas.py` · `migraciones.py` · `numeracion.py` · `pendientes.py` · `plantillas.py` · `presupuesto.py` · `rama.py` · `reaperturas.py` · `relacionadas.py` · `rendimiento.py` · `respaldo.py` · `resumen.py` · `secretos.py` · `seguridad.py` · `traza.py` · `trazabilidad.py` · `validar.py` · `veredicto.py` · `versionado.py` · `vigencia.py`
 
 Ninguna nombra la herramienta. **Funcionan con cualquier agente, o sin ninguno.**
 
@@ -100,3 +100,9 @@ Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, 
 **`checkpoint.py` y `veredicto.py` son libres; `hook_checkpoint.py` y `hook_veredicto.py` son adaptador**, por el mismo corte de siempre: comparar dos fechas o copiar una celda sirve con cualquier agente; enterarse de que se escribió un archivo es de la herramienta. El recuento pasa de 21 de 62 a **23 de 66**, y la proporción no se mueve: un tercio.
 
 **Lo que sí se movió es la prueba de la frontera.** Decía «ocho enganches» con el número escrito, la 27.0.0 agregó el noveno sin tocarla y quedó en rojo sin que nadie la corriera. Ahora cuenta contra la lista del instalador: un enganche que nadie enchufa, o un enchufe a un enganche que no existe, es lo que rompe la frontera, no el número.
+
+## 2026-08-20 · el portero, y el recuento sigue diciendo lo mismo
+
+**`externo.py` es libre; `hook_externo.py` es adaptador.** Decidir si una herramienta trajo algo de afuera y redactar el sobre de «dato, no orden» (`01·C27`) sirve con cualquier agente; enterarse de que una herramienta devolvió, y devolverle al agente un contexto adicional, es de la herramienta. El recuento pasa de 23 de 66 a **24 de 68**: un tercio, como siempre.
+
+**Y `traza.py` también es libre.** Emparejar llamadas con respuestas y sumar duraciones lee un formato de transcripción, no habla con la herramienta — el mismo corte que `brevedad.py` y `presupuesto.py`. Con ella el total queda en **24 amarrados de 69**.

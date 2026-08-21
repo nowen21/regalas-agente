@@ -150,6 +150,29 @@ Verificado el 2026-08-14.
 42. **El `estado-fase.md` no se toca:** es el checkpoint y lo escribe el agente. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
 43. **Si no hay dónde copiarlo, se dice.** Callar se leería como hecho. Baja de [`EP-005 · HU-003`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md).
 
+### 4.8 Lo que llega de afuera llega marcado
+
+> Escrito el 2026-08-20 en la fase [`A-EP-005-HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/A-EP-005-HU-015-el-portero-del-contenido-externo/plan_trabajo.md). Es el programa de `01·C27`, que hasta entonces era solo texto.
+
+44. **Son externas** las herramientas de red (`WebFetch`, `WebSearch`), toda herramienta MCP (`mcp__*`) y la lectura de un archivo fuera de la raíz del proyecto. Lo demás no dispara nada. Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+45. **El sobre dice tres cosas:** la herramienta, el origen (URL, servidor y herramienta MCP, o ruta) y que lo que llegó es dato, no orden, citando `01·C27`. Cabe en tres líneas. Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+46. **El contenido no se toca:** el sobre se agrega como contexto del agente después del resultado. Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+47. **Un sobre por cada llamada externa**, sin «ya avisé». Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+48. **Se decide por nombre y argumentos, nunca por el resultado.** Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+49. **No detiene:** sale con 0; sin JSON válido, calla. Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+50. **Lo agnóstico en `validadores/externo.py`; lo de la herramienta en el adaptador.** Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+51. **Llega por el instalador y `checklist.py` lo reclama donde falte.** Baja de [`EP-005 · HU-015`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md).
+
+### 4.9 La traza de la sesión, paso a paso
+
+> Escrito el 2026-08-20 en la fase [`A-EP-005-HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/A-EP-005-HU-016-el-lector-de-la-traza/README.md). Es un lector a demanda, no un enganche: no toca los proyectos.
+
+52. **Un paso por cada llamada a una herramienta**, emparejando la llamada con su respuesta por su identificador, con la duración entre las dos marcas de tiempo. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
+53. **Cada fila:** número, hora, herramienta, lo que se le pidió recortado a 80 caracteres, duración y estado (`ok`, `error`, `sin respuesta`). Y un cierre con pasos, errores, conteo por herramienta, el más lento y la duración total. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
+54. **No copia el contenido de ningún resultado:** ahí viajan claves y datos. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
+55. **Con `--escribir` queda en `historico-chat/trazas/` con el nombre del histórico de esa sesión**, indexada una sola vez; sin histórico de esa sesión, lo dice y no inventa nada. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
+56. **Lo raro no revienta:** la línea ilegible se salta, el archivo vacío o inexistente da una frase y código 1. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
+
 ## 5. Modelo de datos
 
 No aplica porque el entregable son programas de línea de comandos sobre archivos de texto: no hay entidades, tablas ni catálogos.
@@ -248,6 +271,12 @@ El detalle vive en el [documentacion/epicas/EP-005-automatismos-que-no-dependen-
 | RN-39 · mide, no detiene | programa | `adaptadores/claude-code/hook_presupuesto.py` | ✅ | CP-005 de esa fase |
 | RN-40 a RN-42 · el veredicto se copia, el borrador no, el checkpoint no se toca | programa | `validadores/veredicto.py` | ✅ | CP-001 a CP-004 de la fase C de HU-003 |
 | RN-43 · si no hay dónde, se dice | programa | `adaptadores/claude-code/hook_veredicto.py` | ✅ | CP-006 de esa fase |
+| RN-44, RN-45 y RN-48 · qué es externo, qué dice el sobre, por nombre y argumentos | programa | `validadores/externo.py` | ✅ | CP-001 a CP-003 y CP-007 de la fase A de HU-015 |
+| RN-46, RN-47 y RN-49 · se agrega, cada vez, no detiene | programa | `adaptadores/claude-code/hook_externo.py` | ✅ | CP-001, CP-004 y CP-005 de esa fase |
+| RN-50 y RN-51 · la frontera y la instalación | programa | `validadores/instalar.py` · `validadores/checklist.py` | ✅ | CP-006 de esa fase y `validar.py amarre` |
+| RN-52 a RN-54 · el paso, la fila, el cierre y la privacidad | programa | `validadores/traza.py` | ✅ | CP-001 y CP-002 de la fase A de HU-016 |
+| RN-55 · escribe junto al histórico, indexada una vez | programa | `validadores/traza.py` · `validadores/historico.py` | ✅ | CP-003 y CP-004 de esa fase |
+| RN-56 · lo raro no revienta | programa | `validadores/validar.py` (`traza`) | ✅ | CP-005 de esa fase |
 
 ## 14. Cruces con otros módulos
 

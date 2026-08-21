@@ -2,7 +2,7 @@
 
 **Este documento existe para que soportar otro agente sea llenar un formulario, no empezar de cero.**
 
-Las reglas de [`base/`](../base/) son texto y sirven en cualquier parte. Lo que las hace cumplir solas, no: son ocho programas que existen **porque esta herramienta los llama**, y viven en [`claude-code/`](claude-code/).
+Las reglas de [`base/`](../base/) son texto y sirven en cualquier parte. Lo que las hace cumplir solas, no: son doce programas que existen **porque esta herramienta los llama**, y viven en [`claude-code/`](claude-code/).
 
 Acá está lo que hay que poder hacer, sin nombrar ninguna herramienta. Quien vaya a soportar otra, responde las cinco filas y sabe si se puede.
 
@@ -13,7 +13,7 @@ Acá está lo que hay que poder hacer, sin nombrar ninguna herramienta. Quien va
 | # | Capacidad | Sin ella se pierde |
 |---|---|---|
 | **1** | **Inyectar texto al arrancar la sesión** | El agente trabaja sin haber leído las reglas |
-| **2** | **Correr un programa después de que el agente escribe un archivo** | Los enlaces rotos y los índices desactualizados se descubren días después |
+| **2** | **Correr un programa después de que una herramienta devuelve** (el agente escribe un archivo, o trae algo de afuera) | Los enlaces rotos y los índices desactualizados se descubren días después; y lo que llega de afuera entra sin la marca de que es dato, no orden (`01·C27`) |
 | **3** | **Correr un programa cuando el usuario manda un mensaje** | No hay transcripción, ni aviso de instalación, ni recuerdos recogidos |
 | **4** | **Correr un programa cuando el agente termina de responder** | La transcripción queda a medias: se anota lo que se pidió y no lo que se hizo |
 | **5** | **Cortar un `commit` desde fuera del agente** | Las claves, los artefactos y las marcas entran al repositorio |
@@ -39,12 +39,12 @@ Acá está lo que hay que poder hacer, sin nombrar ninguna herramienta. Quien va
 
 | Qué | Cuánto |
 |---|---|
-| Programas que habría que reescribir | **8**, los de [`claude-code/`](claude-code/) |
+| Programas que habría que reescribir | **12**, los de [`claude-code/`](claude-code/) |
 | Programas que se quedan como están | **51**, todo [`validadores/`](../validadores/) |
 | Lo que enchufa el adaptador | Una función de [`instalar.py`](../validadores/instalar.py) y su lista de eventos |
 | Reglas de `base/` que habría que tocar | Ninguna — salvo diez menciones a un **nombre de archivo** |
 
-**El amarre es de forma, no de fondo.** Los ocho programas hacen trabajo agnóstico: lo que es de la herramienta es cómo se enteran de que pasó algo. Reescribirlos es traducir la entrada, no rehacer la lógica.
+**El amarre es de forma, no de fondo.** Los doce programas hacen trabajo agnóstico: lo que es de la herramienta es cómo se enteran de que pasó algo. Reescribirlos es traducir la entrada, no rehacer la lógica.
 
 ## Lo que este documento no hace
 

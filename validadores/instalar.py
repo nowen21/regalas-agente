@@ -256,6 +256,10 @@ HOOKS_CLAUDE = [
      "Revisando el checkpoint de la fase...", ""),
     ("PostToolUse", "Write|Edit", "hook_veredicto.py",
      "Copiando el veredicto de la fase...", ""),
+    # El portero (`EP-005 · HU-015`): lo que llega de afuera llega marcado.
+    # El filtro es regex; el programa vuelve a decidir por si deja pasar de más.
+    ("PostToolUse", "WebFetch|WebSearch|Read|mcp__.*", "hook_externo.py",
+     "Marcando lo que llegó de afuera...", ""),
 ]
 
 

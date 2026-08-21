@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-007 — La regla que gobierna cómo se escriben las reglas](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — «no se automatiza hasta que se sepa que sirve» es meta-regla: gobierna a las demás |
+| **Historia de usuario** | [EP-001 · HU-007 — La regla que gobierna cómo se escriben las reglas](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) — «no se automatiza hasta que se sepa que sirve» es meta-regla: gobierna a las demás |
 
-Agregarle al [pendiente 09](hecho/autonomia-sin-ia.md) un criterio que hoy le falta, y dejarlo escrito como meta-regla: **una regla no se automatiza hasta que se sepa que sirve.**
+Agregarle al [pendiente 09](autonomia-sin-ia.md) un criterio que hoy le falta, y dejarlo escrito como meta-regla: **una regla no se automatiza hasta que se sepa que sirve.**
 
 ## El problema
 
@@ -38,7 +38,7 @@ Es el mismo hallazgo del módulo 2, dicho para el mundo de las empresas: los tre
 
 Si la segunda respuesta es «porque estaba mal escrita», lo que toca es arreglar la regla, no construir el validador. Automatizarla es congelar el error y ponerlo a repetirse.
 
-**2. La meta-regla.** El capítulo `20` ya tiene `M9`, que decide si una regla es validable. Le falta el paso siguiente: que sea validable no significa que ya se deba validar. Puede ser una regla nueva o un renglón dentro de `M9`, y eso se resuelve al escribirla ([`20·M12`](../base/20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md) manda buscar antes de crear).
+**2. La meta-regla.** El capítulo `20` ya tiene `M9`, que decide si una regla es validable. Le falta el paso siguiente: que sea validable no significa que ya se deba validar. Puede ser una regla nueva o un renglón dentro de `M9`, y eso se resuelve al escribirla ([`20·M12`](../../base/20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md) manda buscar antes de crear).
 
 **3. El dato que hace falta.** La segunda pregunta no se puede contestar hoy: nadie cuenta cuántas veces falla cada regla. Ese conteo es el ítem 11 del 09, y con este criterio deja de ser una métrica bonita y pasa a ser entrada obligatoria de la decisión. Vale adelantarlo por eso.
 
@@ -52,7 +52,7 @@ Que se use como excusa para no automatizar nunca, porque siempre se puede decir 
 
 **No es que falte una fase: es que falta el criterio.**
 
-Este pendiente está enrutado a [EP-001 · HU-007](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) porque es «la regla de las reglas». Pero sus tres criterios de aceptación son:
+Este pendiente está enrutado a [EP-001 · HU-007](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/HU-007-regla-de-las-reglas.md) porque es «la regla de las reglas». Pero sus tres criterios de aceptación son:
 
 | | Qué exige |
 |---|---|
@@ -60,11 +60,11 @@ Este pendiente está enrutado a [EP-001 · HU-007](../documentacion/epicas/EP-00
 | `CA-02` | una regla atada a un stack no entra |
 | `CA-03` | una regla que exige dos cosas se parte antes de entrar |
 
-**Ninguno cubre lo que este pendiente pide.** Y por [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA **es** la especificación: construir fuera de ella es lo que [`02·F20`](../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda proponer, no hacer.
+**Ninguno cubre lo que este pendiente pide.** Y por [`02·F19`](../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA **es** la especificación: construir fuera de ella es lo que [`02·F20`](../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda proponer, no hacer.
 
 **Así que hace falta una de dos, y las dos son del usuario:**
 
 1. **Un criterio nuevo en `HU-007`.** Cambia la historia, que ya tiene una fase cerrada contra los tres actuales.
 2. **Una historia propia.** Más limpio, y deja `HU-007` como está.
 
-> **Es el mismo hueco del [pendiente 60](60-nadie-es-dueno-del-texto-del-capitulo-02.md), un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Enrutar un pendiente a una historia no lo deja construible: hay que mirar si algún criterio lo cubre.
+> **Es el mismo hueco del [pendiente 60](../60-nadie-es-dueno-del-texto-del-capitulo-02.md), un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Enrutar un pendiente a una historia no lo deja construible: hay que mirar si algún criterio lo cubre.

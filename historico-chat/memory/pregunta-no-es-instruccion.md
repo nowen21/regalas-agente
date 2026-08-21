@@ -18,6 +18,8 @@ Antes de tocar un archivo, el agente clasifica el mensaje del usuario en uno de 
 
 **Cómo se aplica:** releer el mensaje y ubicar el verbo antes de abrir un archivo. Una condicional también manda: *"si en la plantilla no está hay que corregirlo"* es indicación, no observación. Si ya se editó por error, se avisa y se pregunta cuál versión se deja; y si el usuario pide devolverlo, se devuelve y se comprueba que el archivo quedó igual que en el commit.
 
+**Volvió a pasar el 2026-08-20, de otra forma.** Durante una serie de preguntas («¿qué tiene Cimiento de esto?»), el agente corrió un comando de verificación que **creaba un archivo** sin querer (`sqlite3.connect` sobre una ruta inexistente) y, al notarlo, intentó borrarlo de inmediato sin preguntar. El usuario lo frenó: *"solo estoy haciendo preguntas no estoy diciendo que haga"*. Dos lecciones: mientras se responde una pregunta, todo comando es de **solo lectura** (abrir bases con `mode=ro`, comprobar rutas antes); y un residuo propio se **reporta y se pregunta**, no se limpia reaccionando — un borrado es acción aunque el archivo lo haya creado uno mismo.
+
 **El límite con la regla de corregir el defecto detectado.** Esa regla ([corregir el defecto detectado](corregir-el-defecto-que-uno-mismo-detecta.md)) vale **mientras el agente ejecuta algo ya autorizado**: si está escribiendo lo que le pidieron y encuentra un enlace roto, lo arregla sin preguntar. No vale para convertir una pregunta o una observación en permiso de edición.
 
 Relacionado: [corregir el defecto detectado](corregir-el-defecto-que-uno-mismo-detecta.md) · [trabajo confinado a la carpeta](trabajo-confinado-a-la-carpeta.md) · [aprobar antes de commit](aprobar-antes-de-commit.md).

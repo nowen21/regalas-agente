@@ -54,6 +54,7 @@ import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import version          # noqa: E402
 import versionado       # noqa: E402
+import traza            # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
@@ -214,6 +215,28 @@ def cmd_inmutable(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(inmutable.validar(raiz),
                     f"Histórico que solo crece · {relativo(raiz)}")
+
+
+def cmd_traza(a):
+    """`EP-005 · HU-016` · Qué ejecutó la sesión, paso a paso. **Lee, no valida.**"""
+    ruta = os.path.abspath(a.transcripcion)
+    lista = traza.pasos(ruta)
+    if not lista:
+        print("sin pasos que trazar: el archivo no existe, está vacío o no "
+              f"tiene llamadas a herramientas — {ruta}")
+        return 1
+    texto = traza.como_texto(lista, traza.cierre(lista))
+    if not a.escribir:
+        print(texto)
+        return 0
+    raiz = os.path.abspath(a.raiz)
+    destino = traza.escribir(raiz, traza.sesion_de(ruta), texto)
+    if not destino:
+        print("no hay dónde dejarla: falta historico-chat/, o ningún histórico "
+              f"lleva la marca de la sesión {traza.sesion_de(ruta)}")
+        return 1
+    print(f"traza escrita: {os.path.relpath(destino, raiz)}")
+    return 0
 
 
 def cmd_indices(a):
@@ -528,6 +551,14 @@ def main():
                         help="cuánto ocupa lo que el agente contesta · 00·ID9 · mide, no detiene")
     br.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     br.set_defaults(func=cmd_brevedad)
+
+    tr = sub.add_parser("traza",
+                        help="qué ejecutó la sesión, paso a paso · EP-005 · HU-016 · lee, no valida")
+    tr.add_argument("transcripcion", help="el archivo de líneas JSON de la sesión")
+    tr.add_argument("--escribir", action="store_true",
+                    help="deja la traza en historico-chat/trazas/ junto al histórico de la sesión")
+    tr.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    tr.set_defaults(func=cmd_traza)
 
     es = sub.add_parser("estructura",
                         help="dónde vive el código y cómo se llama · 14·EST1 · 14·EST2")

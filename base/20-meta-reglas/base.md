@@ -30,6 +30,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 | [`M16 · Toda regla de proyecto nombra la regla de base que concreta`](reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) | La capa 3 concreta un criterio de la base; si no existe, se crea en la base primero. |
 | [`M17 · La entrada del registro abre en castellano llano`](reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) | Qué cambió y por qué, en dos frases sin jerga; el detalle va debajo. |
 | [`M18 · Lo compartido se lee un instante antes de escribirlo`](reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) | `VERSION`, el registro, un índice, una numeración: se releen al escribir, no al abrir la sesión. |
+| [`M19 · La regla se automatiza cuando ya se cumple a mano`](reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) | Antes del validador, tres preguntas por escrito: ¿se cumple a mano?, ¿cuántas veces falló y por qué?, ¿cuántas falsas alarmas daría? |
 
 Además del catálogo, este capítulo tiene el molde de una regla parte por parte ([`estructura-regla.md`](estructura-regla.md)) y el instrumento con que se comprueba ([`checklist.md`](checklist.md)).
 
@@ -107,6 +108,24 @@ Un capítulo que se apoya entero en otro lo dice en su encabezado, no regla por 
 
 De ahí se sigue **preferir la redacción verificable**: "el plan lo aprueba el usuario antes de escribir código" se puede comprobar; "trabajar de forma ordenada" no.
 
+### M19 · las tres preguntas, dónde se responden, y el corte
+
+`M9` contesta **si se puede** automatizar. `M19` contesta **si conviene ya**, y son preguntas distintas: una regla mal escrita se automatiza perfectamente, y el resultado es que ahora falla sola, en cada commit, sin que nadie la haya vuelto a leer. El orden es **eficiencia → agilidad → automatización**, porque automatizar un proceso que venía mal multiplica el error a velocidad de máquina.
+
+Las tres preguntas, por escrito, **en el pendiente que promueve el validador** (o en el plan de la fase que lo construye, si no hubo pendiente):
+
+1. **¿La regla se cumple hoy a mano, y produce el resultado que se buscaba?**
+2. **¿Cuántas veces se incumplió, y fue por descuido o porque está mal escrita?** El número lo da `validar.py vigencia`, que lista cuántos incumplimientos produce hoy cada regla.
+3. **Si se automatiza tal como está, ¿cuántas falsas alarmas va a dar la primera semana?**
+
+| Si la respuesta dice esto | Entonces |
+|---|---|
+| Se cumple a mano y lo que falla es acordarse | **Se automatiza ya.** Una regla que se cumple cuando alguien se acuerda, no se cumple |
+| Se incumple porque está mal escrita, o exige dos cosas | Se corrige o se parte la regla primero; el validador se construye sobre la corregida |
+| Daría falsas alarmas porque le falta una pieza | Primero la pieza; una alarma que se aprende a ignorar es el defecto más caro del repositorio |
+
+**El riesgo es el contrario:** que sirva de excusa para no automatizar nunca, porque siempre se puede decir que el proceso no está maduro. Por eso el corte está escrito en la primera fila: lo que ya se cumple bien a mano no espera.
+
 ### M10 — los tipos, qué más se revisa, y la retroactividad
 
 - **MAYOR** — obliga a hacer algo para cumplir.
@@ -174,7 +193,7 @@ Esto también le pone freno a la capa 3. Un catálogo que crece con reglas suelt
 4. **Asignar ID** libre del prefijo del capítulo ([`M4`](reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)).
 5. **Escribir** en el formato canónico, una sola exigencia ([`M5`](reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)).
 6. **Declarar** dependencias ([`M7`](reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md)) y excepciones, si las hay ([`M8`](reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md)).
-7. **Decidir si es validable** y registrarlo ([`M9`](reglas/M9-toda-regla-declara-si-es-validable.md)).
+7. **Decidir si es validable** y registrarlo ([`M9`](reglas/M9-toda-regla-declara-si-es-validable.md)). Si lo es, el validador no se construye hasta que la regla demuestre que sirve a mano ([`M19`](reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md)).
 8. **Versionar:** `CHANGELOG.md` + `VERSION` ([`M10`](reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 9. **Revisar el conjunto:** que no choque con nada; si choca, resolver el choque en el texto, no dejarlo para el desempate ([`M6`](reglas/M6-ante-un-conflicto-el-desempate-es-este-y-en-este-orden.md)).
 

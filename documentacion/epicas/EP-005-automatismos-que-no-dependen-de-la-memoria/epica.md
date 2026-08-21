@@ -147,6 +147,8 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-012](HU-012-hacer-cumplir-lo-que-solo-se-recuerda/HU-012-hacer-cumplir-lo-que-solo-se-recuerda.md) | Hacer cumplir lo que hoy solo se recuerda | Must | M |
 | [HU-013](HU-013-el-checkpoint-se-reclama-solo/HU-013-el-checkpoint-se-reclama-solo.md) | El checkpoint de la fase se reclama solo | Should | S |
 | [HU-014](HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md) | El consumo de la sesión se ve mientras se puede actuar | Should | S |
+| [HU-015](HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md) | Lo que llega de afuera llega marcado | Must | S |
+| [HU-016](HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md) | La traza de la sesión, paso a paso | Should | S |
 
 ## 10. Consideraciones técnicas
 

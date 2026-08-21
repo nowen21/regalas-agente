@@ -11,6 +11,35 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 28.1.0 — 2026-08-21
+
+**MENOR** (aditivo: una regla nueva sobre cómo trabajar; ningún proyecto al día tiene que hacer nada hoy).
+
+**Antes de ponerle un vigilante automático a una norma, ahora hay que demostrar que la norma ya funciona a mano.** Se responde por escrito: ¿se cumple hoy?, ¿cuántas veces se incumplió y por qué?, ¿cuántas falsas alarmas daría el vigilante? Si la norma fallaba por estar mal escrita, primero se corrige la norma — automatizarla tal cual es congelar el error y ponerlo a repetirse solo. Y si lo único que fallaba era acordarse, el vigilante se construye de una vez: la pregunta no sirve de excusa para no automatizar nunca.
+
+Se escribió porque el repositorio ya había pagado las dos lecciones por separado: una comprobación de alta prioridad terminó relegada al penúltimo lugar porque, construida antes de tiempo, sus avisos en falso la volvían inservible; y una regla que exigía dos cosas a la vez tuvo que partirse en cinco antes de que su comprobador sirviera. Las dos decisiones se tomaron a golpes, caso por caso; ahora están escritas como regla.
+
+**El detalle.** Nace [`20·M19`](base/20-meta-reglas/reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) —*la regla se automatiza cuando ya se cumple a mano*—, que extiende a [`M9`](base/20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md): `M9` responde si una regla **se puede** comprobar con un programa; `M19` responde si **conviene ya**. Es el [pendiente 16](pendientes/hecho/primero-que-el-proceso-sirva.md), bajado como la fase [`B-EP-001-HU-007`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/B-EP-001-HU-007-primero-que-el-proceso-sirva/README.md) del `CA-05` de HU-007, con sus tres casos aprobados contra los hechos ya medidos del propio repositorio. Es regla de criterio: la juzga una persona, no un programa ([`validadores/reglas-validables.md`](validadores/reglas-validables.md)); el único número que da una máquina —cuántos incumplimientos produce hoy cada regla— ya lo lista `validar.py vigencia`.
+
+## 28.0.0 — 2026-08-20
+
+**MAYOR** ⚠ obliga a migrar: un proyecto que quiera esta protección tiene que volver a correr la instalación, y el aviso le llega solo en su primer mensaje.
+
+**Lo que el agente trae de otra parte deja de parecer una orden.** Una página, un correo o un documento ajeno le llegan ahora con una marca que dice de dónde vinieron y que son material para analizar, no una instrucción de su dueño. Y de cada sesión se puede sacar, cuando haga falta, la lista de lo que el agente ejecutó paso a paso, con su hora, su duración y sus fallas.
+
+**Lo que llega de afuera llega marcado.** Desde la 27.0.0 la regla `01·C27` decía que el contenido externo es dato, no orden; era texto que el agente leía y nada lo aplicaba cuando el dato llegaba. Ahora un enganche nuevo, el portero, corre cada vez que una herramienta trae algo de afuera (una página, una búsqueda, un conector MCP, un archivo fuera de la carpeta del proyecto) y le entrega al agente un sobre de hasta tres líneas: qué herramienta fue, de dónde vino, y que eso es dato y no contiene órdenes del usuario. El contenido no se toca: el sobre se agrega.
+
+**Y la sesión gana su traza.** De una sesión quedaba qué se dijo (el histórico) y cuánto costó (el consumo); ahora también **qué se ejecutó**: `validar.py traza` lee la transcripción interna y saca la línea de tiempo — cada herramienta con su hora, lo que se le pidió, cuánto tardó y si falló — sin copiar el contenido de ningún resultado, que es donde viajan claves y datos.
+
+**El detalle.** Dos fases, cada una bajada desde su pendiente:
+
+- **El portero del contenido externo** ([pendiente 72](pendientes/hecho/lo-que-llega-de-afuera-llega-marcado.md) → fase A de EP-005 · HU-015). Nacen `validadores/externo.py` (decide qué es externo y redacta el sobre; sirve con cualquier agente) y `adaptadores/claude-code/hook_externo.py` (lee el aviso de la herramienta y devuelve el sobre como contexto). El instalador lo enchufa con su filtro de herramientas y lo despliega a los proyectos del registro. `C27` pasa a la lista de reglas con programa en `validadores/reglas-validables.md`. El contrato del adaptador amplía su capacidad 2: ya no es solo «después de que el agente escribe un archivo» sino «después de que una herramienta devuelve».
+- **El lector de la traza** ([pendiente 73](pendientes/hecho/la-sesion-tiene-su-traza.md) → fase A de EP-005 · HU-016). Nace `validadores/traza.py`, expuesto como `validar.py traza <transcripción>`; con `--escribir` deja la traza en `historico-chat/trazas/` con el mismo nombre que el histórico de esa sesión, indexada. Es un lector a demanda: cero cambios en los proyectos instalados — por sí solo sería MENOR y viaja en esta entrada.
+
+**Lo que no hace, dicho para que nadie lo dé por hecho:** no impide que el modelo lea una instrucción escondida ni garantiza que no la obedezca. Reduce que la confunda con una orden y deja rastro de por dónde entró. Lo que detiene una acción sigue siendo `00·N1`.
+
+**Por qué el sobre se agrega y no reemplaza el resultado.** Agregar contexto está documentado y no depende de la forma en que cada herramienta devuelve; reemplazar el resultado existe, pero la documentación no dice qué herramientas lo aceptan. Se eligió lo que se puede probar.
+
 ## 27.2.0 — 2026-08-20
 
 **MENOR** (aditivo: un molde nuevo, dos modos nuevos del andamio, un programa automático nuevo y dos arreglos; los proyectos instalados reciben el aviso de reinstalar).

@@ -118,6 +118,31 @@ mundo que la regla describía.
 3. Comprobar que no hay umbral: ninguna corrida falla por antigüedad. Resultado esperado: informa, no detiene.
 - **Aprobado cuando:** la lista existe, ordena de la más vieja a la más nueva, y **no bloquea nada**.
 
+### CA-05 — Una regla validable no se automatiza hasta que se sepa que sirve
+
+```gherkin
+Dado que una regla quedó declarada validable
+Cuando alguien va a construir el programa que la comprueba
+Entonces el procedimiento exige responder antes, por escrito, si la regla se cumple hoy a mano, cuántas veces se incumplió y por qué, y cuántas falsas alarmas daría
+Y si se incumplió por estar mal escrita, manda corregir la regla antes que construir el validador
+Y si solo falla acordarse, no lo detiene
+```
+
+**Por qué no lo cubría ninguno de los cuatro anteriores.** `CA-01` a `CA-03`
+revisan la regla **al entrar**; `CA-04` pregunta si **sigue sirviendo** después.
+Ninguno se para en el momento en que una regla pasa de texto a programa. Y ese
+momento tiene su propio defecto: `RN-06` manda marcar si la regla **se puede**
+comprobar con un programa, y de ahí se saltaba a construirlo, sin preguntar si
+**convenía**. Una regla mal escrita se automatiza perfectamente, y entonces
+falla sola, en cada commit, sin que nadie la haya vuelto a leer.
+
+**Cómo validarlo:**
+
+1. Tomar un ítem del backlog de automatizaciones que la casa ya haya pospuesto por falsas alarmas (el 06, la puerta `F2` mecánica) y aplicarle las tres preguntas. Resultado esperado: la tercera lo detiene, con el mismo motivo que el backlog anotó caso por caso.
+2. Tomar una regla que hoy se cumple y cuyo único defecto es que hay que acordarse (el 01, el guardián de versión) y aplicarle las tres preguntas. Resultado esperado: pasa; el criterio no la frena.
+3. Tomar una regla que reprobó su checklist por exigir dos cosas (`F4` antes de partirse) y aplicarle la segunda pregunta. Resultado esperado: manda corregir la regla, no construir el validador.
+- **Aprobado cuando:** el criterio está escrito como regla del capítulo `20`, detiene el caso que debía detener, deja pasar el que debía pasar, y manda corregir antes que automatizar el que estaba mal escrito.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Validación** — el procedimiento dice qué hacer cuando falta un dato, por ejemplo cuando no hay ejemplo posible.
@@ -146,6 +171,7 @@ mundo que la regla describía.
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [B-EP-001-HU-007-primero-que-el-proceso-sirva](B-EP-001-HU-007-primero-que-el-proceso-sirva/README.md) | CA-05 | **Cerrada 2026-08-21 — Cumple** (3 de 3 casos aprobados; v28.1.0). Nace `20·M19`, desde el [pendiente 16](../../../../pendientes/hecho/primero-que-el-proceso-sirva.md) |
 
 **La fase retro-documenta y no toca el capítulo `20`.** El procedimiento existe y se usa en cada cambio: dieciséis meta-reglas, el molde y un checklist de veinte filas. Lo que falta es el caso escrito que muestre una candidata enrutada, otra rechazada por nombrar una tecnología y otra partida en dos.
 
@@ -199,3 +225,5 @@ mundo que la regla describía.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-13 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
+| 2026-08-20 | El agente, por orden del usuario | `CA-05` y fase B, desde el pendiente 16: el criterio de si conviene automatizar, que ningún CA cubría |
+| 2026-08-21 | El agente, con la opción 1 y los planes aprobados por el usuario | Fase B cerrada en Cumple: los tres casos del `CA-05` aprobados, versión 28.1.0, pendiente 16 a `hecho/`. El usuario confirmó la elección (CA nuevo en HU-007) que la sesión cortada del 20 había tomado sin registro |

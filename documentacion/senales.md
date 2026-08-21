@@ -130,3 +130,48 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-20 · agente, aprobado por el usuario.
 - **Scope:** estándar y proyectos instalados.
 - **Rel:** S-008.
+
+## S-014 · El agente describió lo que Cimiento no tiene sin buscar en el repositorio  ·  error-resuelto · activa
+- **What:** al comparar `notas/estructura.md` con Cimiento, el agente respondió que no había memoria semántica vectorial ni política de carga del contexto. Las dos existen: [memoria/semantica.py](../memoria/semantica.py) (FTS5 ∪ `model2vec`, EP-006 · HU-004, cerrada el 2026-08-06) y [validadores/cargador.py](../validadores/cargador.py) (núcleo `00`+`01` literal y sin sellos, el resto como índice, techo de 90 KB vigilado por `pruebas.py`). Se corrigió al tropezar con el 05 en `pendientes/hecho/`, ya con la orden de abrir un pendiente.
+- **Why:** se iba a abrir un pendiente por algo construido hace dos semanas. La comparación se hizo sobre lo que el agente había leído en la sesión, no sobre el repositorio; `20·M12` manda buscar antes de crear, y eso vale también para afirmar que algo falta.
+- **Where:** [historico-chat/resumenes/2026-08-20/sesion-5.md](../historico-chat/resumenes/2026-08-20/sesion-5.md) H-3 y H-4.
+- **Learned:** antes de decir «Cimiento no tiene X», `grep` sobre el repositorio y una pasada por `pendientes/hecho/`. Medido hoy el arranque: 53,9 KB de reglas literales + 14,1 de índice = 68 KB de los 90 del techo; con memoria e histórico, 84 KB. El núcleo pasó de 52 KB el 19-08 a 54 el 20-08.
+- **When/Who:** 2026-08-20 · agente, destapado al ejecutar lo que el usuario autorizó.
+- **Scope:** estándar.
+- **Rel:** S-001.
+
+## S-015 · `sqlite3.connect` crea el archivo si no existe  ·  gotcha · activa
+- **What:** para ver qué tablas tenía `senales.db` se abrió con `sqlite3.connect('documentacion/senales.db')`; el archivo no estaba ahí (vive en `memoria/`) y la llamada dejó uno vacío de 0 bytes. Git no lo vio porque `*.db` está ignorado.
+- **Why:** una lectura que escribe pasa por inocente. En una carpeta con seguimiento habría aparecido como archivo nuevo; en una ignorada, nadie lo nota.
+- **Where:** `documentacion/senales.db` (residuo, pendiente de borrar a mano) · la base real es [memoria](../memoria/) (975 KB).
+- **Learned:** abrir en solo lectura, `sqlite3.connect('file:ruta?mode=ro', uri=True)`, que falla si el archivo no existe en vez de crearlo. Y comprobar la ruta antes: el `ls` del mismo comando ya decía que no estaba.
+- **When/Who:** 2026-08-20 · agente.
+- **Scope:** estándar.
+- **Rel:** S-014.
+
+## S-016 · El portero agrega contexto; no reemplaza el resultado de la herramienta  ·  decisión · activa
+- **What:** `hook_externo.py` marca lo que una herramienta trae de afuera devolviendo un sobre como contexto adicional del agente (`additionalContext`), y decide por el nombre de la herramienta y sus argumentos, nunca por el resultado. La alternativa de envolver el resultado (`updatedToolResponse`) se descartó.
+- **Why:** agregar contexto está en la documentación oficial y no depende de la forma del resultado, que cambia por herramienta y no está documentada; de reemplazarlo la documentación no dice qué herramientas lo aceptan. Y `Read` cuenta como externo solo fuera de la raíz del proyecto: adentro el archivo es del usuario (`04·S9` dibuja la misma frontera).
+- **Where:** [validadores/externo.py](../validadores/externo.py) · [adaptadores/claude-code/hook_externo.py](../adaptadores/claude-code/hook_externo.py) · fase `A-EP-005-HU-015`.
+- **Learned:** una guarda se diseña sobre lo que se puede probar, no sobre lo más fuerte. Y el mapa del amarre cuenta `hook_` dentro de los docstrings: un módulo agnóstico no nombra a su enganche ni en el comentario, o pasa a amarrado.
+- **When/Who:** 2026-08-20 · agente, plan aprobado por el usuario.
+- **Scope:** estándar y proyectos instalados.
+- **Rel:** S-014.
+
+## S-017 · La traza es un lector a demanda y no copia resultados  ·  decisión · activa
+- **What:** `validar.py traza` saca la línea de tiempo de una sesión leyendo la transcripción cuando alguien lo pide; no es un enganche, no copia el contenido de ningún resultado, se nombra igual que el histórico de su sesión y empareja llamada con respuesta por identificador, no por orden.
+- **Why:** un enganche habría tocado nueve proyectos para algo que se necesita cuando algo salió mal, no en cada respuesta; en los resultados viajan claves y datos; y con llamadas en paralelo las respuestas llegan desordenadas — la primera traza real lo confirmó.
+- **Where:** [validadores/traza.py](../validadores/traza.py) · fase `A-EP-005-HU-016` · la primera traza: [historico-chat/trazas/2026-08-20-sesion-5.md](../historico-chat/trazas/2026-08-20-sesion-5.md).
+- **Learned:** la sesión que construyó la traza quedó trazada por ella: 191 pasos, 9 errores — y los errores son los tropiezos reales del día (borrados bloqueados, comandos demasiado largos). La medida nació con su primer dato.
+- **When/Who:** 2026-08-20 · agente, plan aprobado por el usuario.
+- **Scope:** estándar; sirve a cualquier proyecto con histórico.
+- **Rel:** S-016.
+
+## S-018 · Una sesión cortada deja artefactos sin cadena: se retoman como línea base, no se rehacen ni se dan por buenos  ·  decisión · activa
+- **What:** la sesión que recibió «resuelva el pendiente 16» murió a medias: dejó la regla `M19` y el `CA-05` escritos y sellados, pero la fase con sus cinco documentos en plantilla vacía, sin versión, sin prueba y con una decisión reservada al usuario tomada sin registro. La sesión siguiente no rehizo lo escrito ni lo dio por cerrado: lo declaró línea base en el plan de la fase, sometió a aprobación lo que faltaba, preguntó la decisión pendiente y recién entonces ejecutó pruebas, versión y cierre.
+- **Why:** las otras dos salidas pierden algo. Rehacer repite trabajo sin cambiar el resultado; dar por bueno deja una regla que no se puede citar como cumplida (sin prueba ni versión) y normaliza que el orden de `02·F4` se invierta en silencio.
+- **Where:** [plan de la fase B](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/B-EP-001-HU-007-primero-que-el-proceso-sirva/plan_trabajo.md), §0 «Cómo llega este plan» y riesgo B-01.
+- **Learned:** el detector fue la cadena misma: la transcripción cortada a las 9:08, las plantillas con sus `«…»` y el `VERSION` sin subir dijeron exactamente dónde quedó todo. Y la decisión sin registro se encontró porque el pendiente la dejó escrita como del usuario — lo que se anota como «es de él» se puede reclamar después.
+- **When/Who:** 2026-08-21 · agente; opción y planes confirmados por el usuario en el chat.
+- **Scope:** estándar; aplica a cualquier proyecto donde una sesión muera a mitad de una fase.
+- **Rel:** S-002.

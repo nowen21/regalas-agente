@@ -21,6 +21,8 @@ No es parte del estándar (`base/`, `plantillas/`, `skills/`); es bitácora, igu
 - Los pendientes reales siguen viviendo en `pendientes/`; aquí solo se apunta a ellos.
 - **El resumen de la sesión va aparte, en [historico-chat/resumenes/README.md/](resumenes/README.md).** Es parte del histórico y por eso vive dentro, pero no se mezcla con la transcripción: aquella guarda lo que se dijo, el resumen guarda lo que quedó — los hallazgos, su estado y la pregunta que sigue viva.
 
+**La traza de la sesión va aparte, en `trazas/`.** El histórico guarda lo que se **dijo**; la traza, lo que el agente **ejecutó**, paso a paso: cada herramienta con su hora, lo que se le pidió (recortado), cuánto tardó y si falló. Se produce cuando hace falta —reconstruir cómo pasó algo, medir una fase— con `python validadores/validar.py traza <transcripción> --escribir`, y queda con el mismo nombre de archivo que el histórico de esa sesión. No copia el contenido de ningún resultado: ahí es donde viajan claves y datos.
+
 ## Plantilla
 
 ```markdown
@@ -81,7 +83,7 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-14-indice-tematico-del-historico.md](2026-08-14-indice-tematico-del-historico.md) — cargar el histórico al iniciar ya lo hace un hook; nace la idea de un índice por temáticas y qué manda entre el brief y el histórico. · [historico-chat/resumenes/2026-08-14/indice-tematico-del-historico.md](resumenes/2026-08-14/indice-tematico-del-historico.md)
 - [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche. · [historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md)
 
-<!-- huella: 8a05613563b8 · estandar 27.2.0 -->
+<!-- huella: 8a05613563b8 · estandar 28.0.0 -->
 - [2026-08-14-h-8-la-traduccion-quedo-a-medias.md](2026-08-14-h-8-la-traduccion-quedo-a-medias.md) — solución del hallazgo H-8: se abre la fase A de EP-003 · HU-010, el glosario de la terminología, con sus dos planes escritos y a la espera de aprobación. · [historico-chat/resumenes/2026-08-14/h-8-la-traduccion-quedo-a-medias.md](resumenes/2026-08-14/h-8-la-traduccion-quedo-a-medias.md)
 - [2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md](2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md) — por qué lo de H-4 no funciona: el enganche nunca crea el resumen y la prueba lo dio por bueno. · [historico-chat/resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md](resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md)
 - [2026-08-15-la-plantilla-del-resultado-de-pruebas.md](2026-08-15-la-plantilla-del-resultado-de-pruebas.md) — cada sección de la plantilla dice qué pregunta responde; aplicarla destapa que una fase cerrada no cumplía. · [historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md](resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md)
@@ -105,3 +107,7 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-19-sesion-4.md](2026-08-19-sesion-4.md) — sesión del 2026-08-19.
 - [2026-08-20-core-del-agente-en-la-herramienta.md](2026-08-20-core-del-agente-en-la-herramienta.md) — si el core/ de estructura.md debe existir como código en Cimiento; no, y dónde está frágil. · [historico-chat/resumenes/2026-08-20/core-del-agente-en-la-herramienta.md](resumenes/2026-08-20/core-del-agente-en-la-herramienta.md)
 - [2026-08-20-sesion-2.md](2026-08-20-sesion-2.md) — sesión del 2026-08-20.
+- [2026-08-20-sesion-3.md](2026-08-20-sesion-3.md) — sesión del 2026-08-20.
+- [2026-08-20-sesion-4.md](2026-08-20-sesion-4.md) — sesión del 2026-08-20.
+- [2026-08-20-sesion-5.md](2026-08-20-sesion-5.md) — sesión del 2026-08-20.
+- [2026-08-21-que-es-memory-y-trazas.md](2026-08-21-que-es-memory-y-trazas.md) — Preguntas sobre qué guardan historico-chat/memory/ y historico-chat/trazas/. · [historico-chat/resumenes/2026-08-21/que-es-memory-y-trazas.md](resumenes/2026-08-21/que-es-memory-y-trazas.md)

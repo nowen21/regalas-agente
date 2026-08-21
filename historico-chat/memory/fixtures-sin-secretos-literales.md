@@ -4,6 +4,8 @@ En tests y ejemplos, un token de secreto de mentira (AWS `AKIA…`, Slack `xoxb-
 
 **Por qué:** el *push protection* de GitHub escanea el contenido y **bloquea el push** si ve un token con forma real, aunque sea de prueba. Pasó con el fixture de `validadores/secretos.py` (en `pruebas.py`): un `xoxb-…` de ejemplo frenó el push y hubo que reescribir el commit para sacarlo de la historia — no basta con editarlo después.
 
+**Volvió a pasar el 2026-08-20** con el caso `n6-clave-incrustada` de `evals/casos.jsonl`: una clave de Stripe de mentira, entera, en un archivo de datos. Hubo que enmendar el commit. En datos que no son código el truco es el mismo: el secreto va partido en `texto_partes` y el corredor lo une al correr.
+
 **Cómo se aplica:** al escribir fixtures o ejemplos de secretos, partir el literal en prefijo + cuerpo y concatenar en runtime. Mantiene la cobertura del test y no dispara el escaneo. Es coherente con lo que valida el propio `secretos.py` (`04·S4`, `00·N6`): ni los secretos falsos se versionan enteros.
 
 Relacionado: [todo multiproyecto](todo-multiproyecto.md).
