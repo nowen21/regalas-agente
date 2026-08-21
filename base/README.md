@@ -8,6 +8,8 @@ Cada proyecto que use el estándar recibe esta carpeta entera. Al empezar a trab
 
 **¿Se atravesó una palabra?** Está en el [glosario](glosario.md): cada término del estándar explicado en una línea, con qué regla lo manda y dónde vive.
 
+**¿Primera vez acá?** La [guía de entrada](guia-de-entrada.md) explica en lenguaje llano por qué se trabaja así: los 10 pasos del ciclo de desarrollo y las 9 cualidades del producto para producción, cada uno enlazado a la regla o al capítulo que lo exige.
+
 ## Cómo está organizado
 
 Las reglas están repartidas por tema en **capítulos numerados**. Cada capítulo está guardado de una de dos formas, según cuánto tenga adentro:

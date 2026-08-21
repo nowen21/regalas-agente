@@ -23,6 +23,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
 - **Con qué se retoma:** — (solo falta el commit, que autoriza el usuario)
 
+### H-2 · El usuario fijó la dirección: los proyectos se administran desde Cimiento, no desde un `.md` hardcodeado
+
+- **Qué pasó:** Al analizar los pendientes 73 y 74, el usuario dio la línea de fondo: Cimiento es el mecanismo que obliga a cumplir el estándar, y su interfaz debe permitir registrar, configurar, consultar y administrar todos los proyectos — la lista no puede seguir siendo `plantillas/proyectos.md` escrito a mano. Y ordenó bajar el 73.
+- **Por qué importa:** Todo lo que opera sobre «todos los instalados» (instalar, avisar cierres, validar cumplimiento) cuelga hoy de ese archivo, que envejece en silencio.
+- **Qué lo soluciona:** La dirección quedó anotada con sus palabras literales en [prompts/la-administracion-de-proyectos-desde-cimiento.md](../../../prompts/la-administracion-de-proyectos-desde-cimiento.md) y como [pendiente 75](../../../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) (P3: falta la decisión de diseño de qué es la «interfaz»). El 73 bajó por la cadena: nace [HU-014 — La guía de entrada del estándar](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) con su fase A, plan y pruebas escritos, esperando la aprobación del usuario (puertas 4 y 7).
+- **Qué se decidió:** El usuario aprobó HU-014 y sus planes («si») y la fase se ejecutó y cerró en Cumple: nace `base/guia-de-entrada.md` (heredable; al arranque solo le suma su línea de índice de 102 bytes, desvío declarado en el resultado), versión 28.2.0, pendiente 73 en `hecho/` con aviso a los 9 instalados y el adjunto borrado como ordenaba. Además el usuario decidió la interfaz del 75: es `interfaz/` (el visor Django) y debe adoptar la estructura de `plantillas/estructura-proyecto-django.md`; la brecha quedó medida en el pendiente, que sube a P2.
+- **Estado:** resuelto acá (el 74 y el 75 siguen en el backlog, con su orden acordado: 74, luego 75a y 75b)
+- **Responde a:** pendientes 73 y 75
+- **Dispara:** EP-001 · HU-014 (ya escrita con sus dos CA)
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/hecho/la-guia-de-entrada-es-del-estandar.md](../../../pendientes/hecho/la-guia-de-entrada-es-del-estandar.md), la entrada 28.2.0 del CHANGELOG, la fase A de HU-014 cerrada, y el [pendiente 75](../../../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) con la decisión de diseño escrita
+- **Nace en:** 2026-08-21 · que-es-memory-y-trazas
+- **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
+- **Con qué se retoma:** — (siguen el 74 y el 75, por su orden; y el commit de esta ronda, que autoriza el usuario)
+
 ---
 
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [memory.md](../../memory/memory.md) y en [trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
@@ -41,7 +56,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedan abiertos |
 | Toda historia disparada está escrita en su épica | ☑ no se disparó ninguna |
-| Lo que se hizo está aprobado y guardado | ☐ aprobado y escrito; falta el commit, que autoriza el usuario |
+| Lo que se hizo está aprobado y guardado | ☐ aprobado y escrito; falta el commit de la ronda de la guía, que autoriza el usuario |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

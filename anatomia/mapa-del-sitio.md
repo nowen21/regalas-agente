@@ -36,6 +36,7 @@ agente/
 ├── _base_modulo.md ................... plantilla canónica de spec de módulo (no se versiona)
 │
 ├── 🟦 base/ .......................... LA NORMA · 21 capítulos (00–20) + el glosario
+│   ├── guia-de-entrada.md ............ la puerta de entrada: los 10 pasos y las 9 cualidades, en llano
 │   ├── glosario.md ................... anexo: cada término del estándar en una línea
 │   ├── 00-nucleo-blindado.md ......... reglas que nunca se pueden relajar
 │   ├── 00-identidad-y-rol/

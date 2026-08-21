@@ -7,7 +7,7 @@
 | **Historia de usuario** | EP-001 (cuerpo de reglas heredable): es contenido que debe heredarse a todos los proyectos; la HU concreta la asigna el estándar |
 | **Proyecto de origen** | **matematica** · `C:\wamp64\www\proyectos\personales\matematica` |
 | **Su pendiente de seguimiento** | `pendientes/02-esperando-que-el-estandar-adopte-la-guia-del-desarrollo.md` del proyecto: queda **abierto allá** hasta que este se resuelva |
-| **A quién avisar al cerrar** | a **todos los instalados**: la lista está en [plantillas/proyectos.md](../plantillas/proyectos.md) |
+| **A quién avisar al cerrar** | a **todos los instalados**: la lista está en [../plantillas/proyectos.md](../../plantillas/proyectos.md) |
 
 ## El problema
 
@@ -36,7 +36,7 @@ Que el estándar adopte la guía como contenido propio y heredable. Dos salidas:
 1. **Documento doctrinal en el estándar** (por ejemplo en `anatomia/` o como documento de entrada de `base/`), escrito desde el estándar: los 10 pasos enlazando cada uno a su regla (`02·F0` y compañía) y las cualidades enlazando a sus capítulos y patrones opt-in. Los proyectos lo referencian; la copia local de matematica se reemplaza por un puntero. Es la salida que conviene: un solo texto, con dueño.
 2. Convertirla en plantilla (`plantillas/`) que el instalador copie a cada proyecto. Se descarta la recomendación: multiplica copias que envejecen, que es justo el defecto que este pendiente reporta.
 
-La redacción de partida está **adjunta a este pendiente**: [73-adjunto-guia-desarrollo-profesional.md](73-adjunto-guia-desarrollo-profesional.md), copia literal de la guía del proyecto de origen para no depender de aquel repositorio. El estándar decide qué toma, qué corrige y por dónde la mete a su propio flujo (esto no nace como regla: `20·M14` manda su procedimiento si algo de aquí debe volverse norma). El adjunto se borra al cerrar.
+La redacción de partida está **adjunta a este pendiente**: `73-adjunto-guia-desarrollo-profesional.md` (borrado al cerrar, como acá se ordenó), copia literal de la guía del proyecto de origen para no depender de aquel repositorio. El estándar decide qué toma, qué corrige y por dónde la mete a su propio flujo (esto no nace como regla: `20·M14` manda su procedimiento si algo de aquí debe volverse norma). El adjunto se borra al cerrar.
 
 ## El límite
 

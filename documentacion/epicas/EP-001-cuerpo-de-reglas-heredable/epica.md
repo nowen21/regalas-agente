@@ -145,6 +145,7 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-011](HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) | Buscar en el repositorio antes de preguntar | Must | S |
 | [HU-012](HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) | Inventario de las acciones del agente y su riesgo | Must | M |
 | [HU-013](HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) | Capítulos opt-in de dominio | Could | L |
+| [HU-014](HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) | «Título» | «Prioridad» | «Estimación» |
 
 Sin estimar en puntos todavía.
 

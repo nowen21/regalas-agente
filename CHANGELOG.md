@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 28.2.0 — 2026-08-21
+
+**MENOR** (aditivo: un documento nuevo que viaja con las reglas; nadie tiene que cambiar nada).
+
+**Las reglas ganan su puerta de entrada.** Quien llega a un proyecto sin conocer el estándar tiene ahora un documento que le explica, en lenguaje llano, por qué se trabaja así: los diez pasos que sigue cualquier desarrollo profesional (de entender la necesidad a mantener lo entregado) y las nueve cualidades que un producto necesita para ponerse en producción (seguridad, respaldos probados, pruebas, despliegue reversible y las demás). Cada punto lleva el enlace a la regla o al capítulo que lo exige: la guía explica, la exigencia sigue viviendo en la norma.
+
+La escribió el usuario con el agente en un proyecto real, y guardada allá tenía el defecto de siempre: doctrina transversal en un solo proyecto, invisible para los demás y condenada a divergir si cada uno escribe la suya.
+
+**El detalle.** Nace [`base/guia-de-entrada.md`](base/guia-de-entrada.md), nombrada desde el [README de `base/`](base/README.md) y el mapa del sitio; viaja a los herederos con la carpeta, y al arranque solo le suma su línea de índice (102 bytes medidos; el contenido queda fuera y el consumo va en 69,9 de 90 KB). Es el [pendiente 73](pendientes/hecho/la-guia-de-entrada-es-del-estandar.md), reportado por `matematica`, bajado como la fase A de [EP-001 · HU-014](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) con sus dos criterios en Cumple; el adjunto que traía el material se borró al cerrar, como su pendiente lo ordenaba.
+
 ## 28.1.0 — 2026-08-21
 
 **MENOR** (aditivo: una regla nueva sobre cómo trabajar; ningún proyecto al día tiene que hacer nada hoy).

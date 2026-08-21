@@ -18,3 +18,4 @@ Contenido inmediato de esta carpeta.
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/](HU-011-buscar-antes-de-preguntar/) | Historia de usuario: buscar en el repositorio antes de preguntar |
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/](HU-012-inventario-de-acciones-y-riesgo/) | Historia de usuario: inventario de las acciones del agente y su riesgo |
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/](HU-013-capitulos-opt-in-de-dominio/) | Historia de usuario: capítulos opt-in de dominio |
+| [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-014-la-guia-de-entrada-del-estandar/](HU-014-la-guia-de-entrada-del-estandar/) | Historia de usuario: «…» |
