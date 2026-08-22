@@ -85,7 +85,7 @@ Ninguno.
 
 ### 2.7 Dudas por resolver antes de escribir
 
-Ninguna **de implementación**. Queda una decisión del usuario que **no bloquea esta fase**: la pregunta 8 y 9 del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) —si otros enganches detienen o avisan— es la misma pregunta en otro sitio, y lo que se decida acá le sirve de precedente.
+Ninguna **de implementación**. Queda una decisión del usuario que **no bloquea esta fase**: la pregunta 8 y 9 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) —si otros enganches detienen o avisan— es la misma pregunta en otro sitio, y lo que se decida acá le sirve de precedente.
 
 ---
 

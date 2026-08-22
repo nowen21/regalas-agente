@@ -100,11 +100,11 @@ Ninguno. Quién puede editar lo da el acceso al repositorio.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si el criterio de entrada al núcleo entra en esta fase o se difiere a HU-007, que es la regla de las reglas | Usuario | Pendiente |
+| 1 | Si el criterio de entrada al núcleo entra en esta fase o se difiere a HU-007, que es la regla de las reglas | Usuario | **Resuelta al ejecutar la fase el 2026-08-22:** se probó sobre seis formas de clave, tres se enmascaran y tres no. Ver `resultado_pruebas.md` §1, CA-02 |
 
 La duda 1 bloquea T-01. Los CA-01 y CA-03 no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

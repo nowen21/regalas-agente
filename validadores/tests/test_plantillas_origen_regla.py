@@ -82,7 +82,7 @@ class ReglaDeNegocioSinOrigen(unittest.TestCase):
 
     def test_cp_002_lo_que_no_hay_que_reportar(self):
         """CP-002 · los cuatro casos donde tiene que callar."""
-        molde = "«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»"
+        molde = "«Regla: de dónde baja (el identificador del requisito, la historia o la decisión), y por qué existe.»"
         self.assertEqual(self._fallas(_spec([molde, "«…»"])), [],
                          "reportó el molde sin llenar, que ya reporta otra comprobación")
 

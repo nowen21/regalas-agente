@@ -62,7 +62,7 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 
 - **Ruta:** `./documentacion/`
 - Aquí el agente guarda **todo lo que produce el proceso**: especificaciones de módulo, planes de trabajo, planes de pruebas, funcionalidad implementada, decisiones y trazabilidad (regla base `13`).
-- **`versiones/`** — la escribe el instalador: un registro por actualización, con desde cuándo este proyecto usa cada versión del estándar, qué componentes se actualizaron y qué quedó pendiente. Su `README.md` es el índice. Va acá y no en `./.agente/` porque tiene que **viajar con el repositorio**: un cambio de norma no reabre fases ya cerradas, y para saber bajo qué versión cerró cada una hay que poder mirarlo desde cualquier copia.
+- **`documentacion/versiones/`** — la escribe el instalador: un registro por actualización, con desde cuándo este proyecto usa cada versión del estándar, qué componentes se actualizaron y qué quedó pendiente. Su `README.md` es el índice. Va acá y no en `./.agente/` porque tiene que **viajar con el repositorio**: un cambio de norma no reabre fases ya cerradas, y para saber bajo qué versión cerró cada una hay que poder mirarlo desde cualquier copia.
 - **NO va en el `.gitignore`:** es conocimiento del proyecto y se versiona junto con el código.
 
 ### 2.3 Histórico de sesiones — DEL PROYECTO, se versiona

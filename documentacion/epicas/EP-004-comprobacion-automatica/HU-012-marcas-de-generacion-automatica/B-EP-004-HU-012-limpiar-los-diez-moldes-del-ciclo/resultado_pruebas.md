@@ -1,176 +1,100 @@
-# Resultado de Pruebas — Fase «A-EP01-HU03-Descripción»   ·   `[CAPA 3]`
+# Resultado de Pruebas — Fase B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo   ·   `[CAPA 3]`
 
-**Para qué sirve este documento.** Registra **qué se ejecutó de verdad y con qué resultado**, y de ahí sale el **veredicto de la fase**: si cada criterio de aceptación quedó cumplido o no. Es lo que alimenta el `estado-fase.md` para pasar la puerta de verificación, y la fuente de la sección "qué se probó" del `funcionalidad_implementada.md`. El diseño de los casos vive en el `plan_pruebas.md` de esta misma fase, que **no se modifica** al ejecutar: se aprobó antes y así se queda.
-
-> Plantilla del `resultado_pruebas` de una **fase**. Se guarda en la carpeta de la fase (ruta `02·F12.13`), como `resultado_pruebas.md`. **Se crea junto con los dos planes**, aunque todavía no se haya ejecutado nada: el formato puesto desde el principio se ve, se revisa y no se olvida. Lo que no se ha corrido se escribe **"no ejecutado"**, nunca en blanco ni como aprobado, y el veredicto arranca en *"todavía no se ejecutó"*. Reemplaza los `«…»`, borra las secciones que no apliquen y borra esta caja. **La línea de arriba, la de para qué sirve, se queda.**
->
-> **Por qué es un documento aparte y no una sección del plan.** El plan se aprueba **antes** de ejecutar. Si los resultados se escriben encima, se pierde la línea base aprobada y ya no se puede comparar lo que se acordó probar contra lo que se probó. Es también la separación que hace la norma en que se apoya el plan de pruebas (ISO/IEC/IEEE 29119-3), entre el plan y el registro de ejecución.
+**Para qué sirve este documento.** Dice **qué se ejecutó de verdad y qué salió**, caso por caso, para que el veredicto de la fase no dependa de la memoria de nadie.
 
 ---
 
 ## 0. Identificación
 
-> **Responde: ¿qué se está probando?** Se anota de qué fase y de qué historia salen los casos, contra qué plan, y en qué ejecución, cuándo, quién y sobre qué versión corrieron.
-
 | Campo | Valor |
 |---|---|
-| **Fase** (`02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **HU** | «HU-NNN» |
-| **Plan de pruebas de origen** | «`plan_pruebas.md`» |
-| **Ciclo** | «1» (se agrega un bloque por cada reprueba, no se pisa el anterior) |
-| **Fecha de ejecución** | AAAA-MM-DD |
-| **Ejecutado por** | «quién» |
-| **Ambiente y versión** | «dónde corrió y sobre qué build» |
+| **Fase** | `B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo` |
+| **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
+| **Fecha de ejecución** | 2026-08-22 |
+| **Ejecutado por** | El agente |
 
 ---
 
 ## 1. Resumen de la ejecución
 
-> **Responde: ¿cuántas pruebas se planearon, cuántas se hicieron y cómo les fue?** Se cuentan los casos del plan y los que se ejecutaron, repartidos por resultado, y se nombran los que quedaron sin ejecutar con su motivo.
->
-> Una **ejecución** es correr las pruebas de principio a fin. Si se corrige algo y se vuelve a correr, es otra ejecución: el **ciclo** las numera.
+| Métrica | Antes | Después |
+|---|---|---|
+| Marcas en `plantillas/ciclo-vida-proyectos/` | 197 en 10 archivos | **126 en 10 archivos** |
+| Raya larga como inciso | 92 | 59 |
+| Punto medio fuera de una cita | 62 | 24 |
+| Viñeta que abre con negrita y dos puntos | 43 | 43 |
 
-| Ciclo | Diseñados | Ejecutados | Aprobados | Fallidos | Bloqueados | No ejecutados |
-|---|---:|---:|---:|---:|---:|---:|
-| 1 | | | | | | |
-
-**Casos no ejecutados y por qué:** «cuáles y el motivo. Un caso sin ejecutar no se cuenta como aprobado».
+**Se quitaron 71.** Ninguna de las 126 que quedan es adorno de prosa.
 
 ---
 
 ## 2. Ejecución caso por caso
 
-> **¿Qué problema resuelve cada pareja CA-CP?** 
->
->Por cada pareja va un bloque con **tres partes, siempre las mismas y en este orden**. Después de los bloques va la tabla que resume los casos.
-
-| Parte | Qué se escribe |
-|---|---|
-| **El problema que resuelve** | Una frase: qué se rompe si esto no funciona. Es lo que el criterio y el caso vienen a asegurar, no lo que hace la HU entera |
-| **Cómo se hizo la prueba, paso a paso** | Una fila por paso, con tres columnas: **qué hacer** (en infinitivo y en palabras sencillas), **qué tiene que pasar** y **qué salió** |
-| **Cómo se verificó que la pareja cumple** | Cuál paso decide y por qué, y cuál no alcanzaba solo. Si algo quedó sin hacer o se hizo distinto, se dice acá |
-
-**Las cuatro reglas del paso a paso. Ningún paso se da por supuesto:**
-
-| Regla | Qué exige |
-|---|---|
-| **Un paso por cada fila del plan** | Se copian del `plan_pruebas`, en su mismo orden. No se agrupan, no se saltan, no se inventan |
-| **Se arranca desde cero** | El primer paso deja el ambiente y los datos listos. Si para llegar al punto de partida hay que **hacer** algo, ese algo es un paso, no una precondición |
-| **Ningún paso queda vacío** | «Qué salió» se llena siempre: con lo que salió, con `no se hizo` o con `no quedó registrado`. En blanco se lee como aprobado |
-| **Detallado es repetible** | Está suficientemente detallado cuando alguien que no estuvo puede repetir la prueba leyendo solo esto, sin preguntar nada. Comandos, rutas y datos van literales |
-
-**Lo que hace que un caso cumpla** es que lo que salió sea lo que la columna del medio decía. Si se hizo otra cosa —aunque haya salido bien—, el caso **no cumple**: se probó otra cosa. El veredicto no se repite acá: vive en la tabla de casos ejecutados.
-
-Si un paso sale distinto de lo esperado, la fila lo dice. Un paso que no coincide y nadie explica convierte el "cumple" en una afirmación sin respaldo.
-
-> **Por qué tanto detalle.** Con el paso a paso a medias —"se creó el archivo y apareció"— un caso puede pasar habiendo probado otra cosa. Pasó: un caso decía *"correr el enganche"* y lo que se corrió fue la función que ese enganche usa, con el dato que el enganche no tiene. Los tres criterios de esa fase quedaron en "cumple" sin estar probados, y el defecto salió a la sesión siguiente. Con las tres columnas al lado, el desvío se ve en la fila.
-
-**Ejemplo:**
-
-```
-**CA-02 · CP-002 — que una regla nueva no entre sin su ejemplo INCORRECTO/CORRECTO**
-
-**El problema que resuelve:** una regla sin ejemplo se lee de dos maneras y cada
-proyecto la cumple a su modo. El ejemplo es lo que fija cuál es la correcta.
-
-**Cómo se hizo la prueba, paso a paso:**
-
-| # | Qué hacer | Qué tiene que pasar | Qué salió |
-|---|---|---|---|
-| 1 | Situarse en el repositorio del estándar, en la rama `fase-a-q9` | `git status` no muestra cambios pendientes | Sin cambios pendientes, sobre el commit `6391e79` |
-| 2 | Contar los archivos de `base/07-calidad-de-codigo/reglas/` | Queda el número de partida | 8 archivos |
-| 3 | Correr `python validadores/metareglas.py base/07-calidad-de-codigo/` antes de tocar nada | Pasa sin hallazgos, así lo que falle después lo causó la regla nueva | `0 hallazgos · 8 reglas revisadas` |
-| 4 | Crear `base/07-calidad-de-codigo/reglas/Q9-una-prueba-por-comportamiento.md` con su exigencia y **sin** el bloque de ejemplo | El archivo queda escrito | Quedó, 14 líneas |
-| 5 | Correr el mismo comando del paso 3 | Falla, nombra el archivo y cita `20·M5` | `Q9 · falta el ejemplo INCORRECTO/CORRECTO (20·M5)` |
-| 6 | Agregar a `Q9` un caso INCORRECTO y uno CORRECTO | El archivo queda con los dos casos | Quedó, 22 líneas |
-| 7 | Correr el mismo comando por tercera vez | Pasa y ya no nombra a `Q9` | `0 hallazgos · 9 reglas revisadas` |
-
-**Cómo se verificó que la pareja cumple:** el paso 5 es el que prueba el
-criterio, pero solo no alcanza: un validador que fallara siempre habría fallado
-igual ahí. Por eso el 3 lo deja en verde antes y el 7 lo deja en verde después,
-con la regla ya corregida; y el conteo de reglas revisadas sube de 8 a 9, así
-que `Q9` sí entró en la revisión y no la saltó. Los pasos 1 y 2 dejan el punto
-de partida por escrito: sin ellos nadie puede repetir esto. La salida de las
-tres ejecuciones quedó en EV-02.
-```
-
-| Caso | CA | Prioridad (del plan) | Fecha | Con qué se probó | Resultado | Evidencia | Defecto |
-|---|---|---|---|---|---|---|---|
-| CP-001 | CA-01 | Crítica | AAAA-MM-DD | «el dato, el archivo o el comando concretos» | Aprobado / Fallido / Bloqueado / No ejecutado | EV-01 | — |
-
-**«Con qué se probó» lleva lo que se hizo y lo que salió, no un puntero.** El plan dice qué **tipo** de dato usar; este documento dice **qué se ejecutó exactamente y qué se obtuvo**. Sin eso, "aprobado" es una afirmación sin respaldo: nadie puede repetir la prueba ni ver por qué el caso quedó en cumple.
-
-```
-INCORRECTO: | CP-002 | CA-02 | Crítica | 2026-01-05 | un usuario sin permiso | Aprobado | EV-02 | — |
-            — no dice qué usuario, sobre qué, ni qué pasó
-INCORRECTO: | CP-002 | CA-02 | Crítica | 2026-01-05 | ver la suite | Aprobado | EV-02 | — |
-            — manda a buscarlo a otra parte
-CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POST /facturas/42/anular`
-            y recibió 403; la factura siguió en estado `emitida` | Aprobado | EV-02 | — |
-```
-
-**Correspondencia con el plan:** «N casos en el plan, N acá. Ninguno de más, ninguno de menos». Si no cuadra, decir cuáles bailan y por qué.
-
-**Qué salió distinto de lo esperado:** «para los fallidos, qué se esperaba y qué pasó. Sin esto, "fallido" no sirve para corregir».
+| # | Qué se hizo | Qué salió |
+|---|---|---|
+| 1 | Volcar cada marca con archivo, línea y clase | 213 apariciones en 10 archivos, clasificadas en 7 clases |
+| 2 | Escribir en formato canónico las citas de regla del molde de la especificación (`` `01`·C3 `` → `` `01·C3` ``) | 13 marcas menos, y 13 citas que ahora sí son citas |
+| 3 | Raya de inciso a coma, paréntesis o dos puntos | 25 líneas cambiadas en 9 moldes |
+| 4 | Revisión línea por línea de esas 25 | 6 quedaron mal y se corrigieron a mano |
+| 5 | Punto medio de prosa a coma | 41 líneas en 21 moldes |
+| 6 | Reponer el marcador `«…»` que el paso anterior rompió | 24 marcadores repuestos en 20 moldes |
+| 7 | Recontar y volver a clasificar | 126, todas notación |
+| 8 | Las suites que dependen de los moldes: marcas, trinquete, andamio, instalador y origen de las reglas | 47 pruebas, todas en verde |
+| 9 | `validar.py estandar`, `fases`, `pendientes` | Sin incumplimientos; 0 fallas y avisos previos |
 
 ---
 
-## 3. Verificaciones manuales  ·  [`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
+## 3. Verificaciones manuales
 
-> Lo que el entorno automático **no** reproduce y hubo que comprobar a mano. Se listan aunque hayan salido bien: lo que no está acá se lee como no probado.
+**Las 126 que quedan, clasificadas una por una:**
 
-| # | Qué se verificó | Cómo | Resultado |
-|---|---|---|---|
-| 1 | | | |
+| Clase | Cuántas | Por qué no se toca |
+|---|---|---|
+| Etiqueta de campo del formulario (`- **Objetivo:** «…»`) | 43 | Es el rótulo del campo que hay que llenar, no una viñeta de prosa |
+| Celda de tabla | 40 | Separa dato de dato dentro de una celda |
+| Título y nombre de sección (`# EP-000 — «Título»`, `## 1. Necesidad — en una frase`) | 23 | Renombrarlas hace que los 650 documentos ya escritos reporten «sección de la plantilla ausente» |
+| Identificador con su enunciado (`**CAE-01** — «texto»`) | 21 | Es la forma en que esta casa nombra un criterio y lo enuncia |
+
+
+**Comparación sección por sección contra la versión anterior:** ninguna sección desapareció, ninguna cambió de nombre y ninguna perdió una exigencia. Los cambios son de puntuación dentro de la frase, salvo seis donde la frase se reescribió y quedan a la vista en el control de versiones.
 
 ---
 
 ## 4. Defectos encontrados
 
-| ID | Título | Caso que lo destapó | Severidad | Estado | Dónde quedó registrado |
-|---|---|---|---|---|---|
-| DEF-01 | | CP-001 | Crítica / Alta / Media / Baja | Abierto / Corregido / Verificado / Aceptado | |
-
-**Defectos abiertos que se aceptan y por qué:** «los que se dejan pasar, con quién lo autorizó. Un defecto abierto sin decisión escrita bloquea el cierre».
-
----
-
-## 5. Veredicto por criterio de aceptación y requisito no funcional
-
-> Esta es la tabla que decide. Un `CA-0N` o un `RNF-0N` sin caso ejecutado **no** se marca cumplido, aunque "se haya visto funcionar". Los requisitos no funcionales llevan su fila igual que los criterios: si van sueltos en un renglón de prosa, nadie los verifica.
-
-| Exigencia de la HU (`CA-0N` · `RNF-0N`) | Casos que la cubren | Resultado | Cumple |
+| ID | Severidad | Qué pasó | Estado |
 |---|---|---|---|
-| CA-01 | CP-001, CP-002 | | Sí / No |
-
-**Los que no cumplen:** «qué falta exactamente y a qué tarea o fase se traslada».
+| D-01 | **Crítica** | El reemplazo del punto medio rompió el marcador `«…»` en 24 sitios. Lo leen `flujo.py`, `comun.py` y `andamio.py` para saber si una celda quedó sin llenar | **Corregido** el mismo día. El [pendiente 11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) lo advertía por escrito y no se leyó antes de ejecutar |
+| D-02 | Alta | La coma quedó donde iban dos puntos en 6 de las 25 líneas | **Corregido** a mano tras revisar una por una |
+| D-03 | Alta | `test_plantillas_origen_regla` empezó a fallar: su fixture copia literal una línea del molde de la especificación | **Corregido.** El fixture se puso al día |
+| D-04 | — | **Se reportó un defecto que no existe.** El agente afirmó que el recuento contaba 14 marcas dentro de bloques de código. Es falso: `lineas_utiles()` ya los salta, y `contar()` la usa. Las 14 las contó un clasificador improvisado del propio agente, no `marcas.py` | **Cerrado por falso** el mismo día, al comprobarlo |
 
 ---
+
+## 5. Veredicto por criterio de aceptación
+
+| Exigencia | Cómo se comprobó | Concepto |
+|---|---|---|
+| [CA-04](../HU-012-marcas-de-generacion-automatica.md#ca-04--los-moldes-del-ciclo-no-llevan-adorno-de-prosa), paso 1: hay recuento con su reparto | §1 | Cumple |
+| CA-04, paso 2: lo que queda es notación | §3 | Cumple |
+| CA-04, paso 3: ningún molde pide menos | §3, comparación sección por sección | Cumple |
+| CA-04, paso 4: sin incumplimientos nuevos | §2, casos 8 y 9 | Cumple |
 
 ## 5.1 Lo que el plan exigía
 
-> Una fila por cada cosa que el `plan_pruebas` fijó como meta. **Se copia del plan, no se inventa acá**: si el plan pedía cubrir el 100% de los casos críticos, esta tabla dice cuánto se cubrió de verdad.
+El plan pedía llegar a que **ninguna marca sea adorno de prosa**, y eso se cumplió. El [pendiente 78](../../../../../pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md) pedía además que el recuento diera **0**, y eso no se cumple: las 126 que quedan son todas notación, y qué hacer con ellas lo decide el usuario.
 
-| Lo que el plan exige | Dónde lo dice | Meta | Resultado | Cumple |
-|---|---|---|---|---|
-| Cobertura de criterios y requisitos no funcionales | Plan §5 | 100% | | Sí / No |
-| Casos críticos y altos ejecutados | Plan §3.4 | 100% | | Sí / No |
-| «Métrica propia del plan» | Plan §12.1 | «meta» | | Sí / No |
-| Criterios de salida | Plan §4.2 | Todos | | Sí / No |
-
-**Lo que no se cumplió:** «qué meta del plan quedó corta y qué se decidió al respecto. Una meta incumplida sin decisión escrita bloquea el cierre».
+**El pendiente 78 queda abierto**, con su meta corregida por lo que se midió.
 
 ---
 
 ## 6. Veredicto de la fase
 
-**Concepto:** «Cumple / No cumple». No hay estado intermedio: si algo de lo pedido falta, es **No cumple**. Los defectos van en §4 con su severidad, y ahí se ve qué se aceptó y quién lo aceptó.
+**Concepto:** Cumple.
 
-**Justificación:** «en dos o tres líneas, apoyada en §5».
+**Justificación:** el CA-04 quedó verde en sus cuatro pasos. El adorno de prosa se fue, la notación se conservó, ningún molde perdió una exigencia y las suites que dependen de los moldes quedaron en verde.
 
-**Qué falta para que cumpla** (si no cumple): «lista concreta».
-
-> Este concepto es el que se copia al `estado-fase.md` para pasar la puerta de verificación. La fase **no cierra** con un CA en "No".
+**Lo que no cierra con esta fase** es el pendiente 78 completo, y está dicho arriba con el motivo.
 
 ---
 
@@ -178,14 +102,13 @@ CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POS
 
 | ID | Tipo | Dónde está |
 |---|---|---|
-| EV-01 | Salida de la ejecución / captura / archivo resultante | `«ruta o enlace»` |
+| EV-01 | Volcado clasificado | Este documento, §2 y §3 |
+| EV-02 | Los moldes | `plantillas/ciclo-vida-proyectos/`, 21 archivos tocados |
+| EV-03 | Recuento final | `python validadores/marcas.py --raiz plantillas/ciclo-vida-proyectos` |
+| EV-04 | Las suites que dependen de los moldes | 47 pruebas en verde |
 
 ---
 
 ## 8. Ciclos anteriores
 
-> Cuando hay reprueba, el ciclo nuevo se agrega **encima** y el anterior queda tal cual. Saber que algo falló y después pasó vale más que ver solo el resultado final.
-
-| Ciclo | Fecha | Aprobados | Fallidos | Qué cambió entre ciclos |
-|---|---|---:|---:|---|
-| 1 | | | | Primera ejecución |
+Ninguno para esta fase. La fase A de esta misma HU contó las marcas el 2026-08-18 y puso el trinquete; esta es la primera que limpia.

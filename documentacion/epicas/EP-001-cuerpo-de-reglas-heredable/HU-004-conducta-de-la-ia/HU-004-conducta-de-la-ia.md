@@ -121,7 +121,7 @@ Entonces el documento no trae esas marcas
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia](A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia/resultado_pruebas.md) — los tres criterios con conducta real de la jornada, incluidos dos incumplimientos que quedaron reportados |
 
 **La fase es mitad retro-documentación y mitad construcción.** Cinco de las siete reglas de negocio ya son regla del estándar. Las de la pregunta que no es orden y del defecto que se corrige sin preguntar **no lo son**: viven como preferencia del usuario en la memoria del repositorio, y subirlas a `base/` es decisión suya.
 

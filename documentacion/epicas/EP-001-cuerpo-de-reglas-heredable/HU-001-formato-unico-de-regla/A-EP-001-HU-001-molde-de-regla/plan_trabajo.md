@@ -93,9 +93,9 @@ Estas decisiones se registran como señal cuando exista la memoria (EP-006). Mie
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si un entregable de texto normativo necesita especificación aparte o si la HU con sus CA hace las veces de especificación | Usuario | Pendiente |
-| 2 | Si el capítulo de reglas sobre reglas se numera 20, al final, o 00, al principio | Usuario | Pendiente |
-| 3 | Cuántas partes del molde son obligatorias y cuáles opcionales cuando la regla no admite ejemplo | Usuario | Pendiente |
+| 1 | Si un entregable de texto normativo necesita especificación aparte o si la HU con sus CA hace las veces de especificación | Usuario | **Resuelta** el 2026-08-18, decisión 18 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): la historia hace de especificación cuando el entregable no es código. Es el camino 2 del pendiente 20; el camino 1 abría una excepción en `F2`, y una excepción es la puerta que después nadie cierra |
+| 2 | Si el capítulo de reglas sobre reglas se numera 20, al final, o 00, al principio | Usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: se numera **20**, y así está desde que existe `base/20-meta-reglas/`. Al final, porque las reglas sobre reglas se leen después de las reglas |
+| 3 | Cuántas partes del molde son obligatorias y cuáles opcionales cuando la regla no admite ejemplo | Usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: lo obligatorio es lo que pide `20·M5` y comprueba la fila 10 del checklist: una sola exigencia y su cuerpo de una a cuatro líneas. El bloque `INCORRECTO / CORRECTO` se omite cuando la regla no admite ejemplo, y hay reglas vigentes sin él |
 
 Ninguna tarea de construcción arranca con una duda abierta que la bloquee. Las dudas 2 y 3 bloquean T-02 en adelante.
 

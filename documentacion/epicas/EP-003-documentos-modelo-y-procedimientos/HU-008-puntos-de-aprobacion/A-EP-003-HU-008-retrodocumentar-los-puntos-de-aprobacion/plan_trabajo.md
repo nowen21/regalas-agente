@@ -97,12 +97,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si la lista entra a `base/` como regla nueva del capítulo de flujo, o como documento del capítulo sin ser regla | Usuario | Pendiente |
-| 2 | Si en esta fase el procedimiento del director pasa a enlazar la lista, o eso queda para otra | Usuario | Pendiente |
+| 1 | Si la lista entra a `base/` como regla nueva del capítulo de flujo, o como documento del capítulo sin ser regla | Usuario | **Resuelta el 2026-08-18**, decisión 4 del pendiente 59: la lista es documento y no regla. Y al ejecutar se vio que ya viaja a los proyectos dentro del molde del estado de fase |
+| 2 | Si en esta fase el procedimiento del director pasa a enlazar la lista, o eso queda para otra | Usuario | **Resuelta el 2026-08-18**, decisión 4 del pendiente 59: la lista es documento y no regla. Y al ejecutar se vio que ya viaja a los proyectos dentro del molde del estado de fase |
 
 Las dos bloquean T-01 y T-02. Los CA-02 y CA-03 no dependen de ellas.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

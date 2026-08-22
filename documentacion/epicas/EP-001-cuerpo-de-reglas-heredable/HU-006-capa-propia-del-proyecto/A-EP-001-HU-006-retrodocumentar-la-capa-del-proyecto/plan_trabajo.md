@@ -103,12 +103,12 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Sobre qué proyecto instalado se hacen las pruebas | Usuario | Pendiente |
-| 2 | Si el ajuste que contradice el núcleo se escribe en el proyecto de prueba, o basta simularlo en una copia | Usuario | Pendiente |
+| 1 | Sobre qué proyecto instalado se hacen las pruebas | Usuario | **Resuelta** el 2026-08-22, propuesta 12 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **shopnest-mesa** (`C:\DesarrollosClaude\personales\shopnest-mesa`, Django 5.2.11). Es el único que ya reporta al estándar, tiene estructura completa y carpeta de pendientes |
+| 2 | Si el ajuste que contradice el núcleo se escribe en el proyecto de prueba, o basta simularlo en una copia | Usuario | **Resuelta al ejecutar la fase el 2026-08-22:** se probó sobre AgroSystem y no sobre el proyecto propuesto, porque el propuesto no tiene reglas propias. Ver `resultado_pruebas.md` §1 |
 
 La duda 1 bloquea los tres CA; la duda 2, solo el CA-03.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

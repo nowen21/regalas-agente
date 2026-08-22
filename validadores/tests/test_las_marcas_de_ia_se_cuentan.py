@@ -186,3 +186,66 @@ class ElSeparadorDeEncabezadoEsNotacion(unittest.TestCase):
         """Se exime **el separador**, no el carácter: pegado, sin espacios, no
         es la notación de la casa."""
         self.assertEqual(1, len(self._puntos(u"## Algo·pegado")))
+
+
+class LaNotacionNoEsAdorno(unittest.TestCase):
+    """`CA-03` · Lo que el anexo nunca llamó marca, y el programa contaba igual.
+
+    **Cada caso va con su pareja.** La misma forma en su versión de notación y
+    en su versión de prosa. Sin la pareja, una expresión que se pasa de ancha
+    deja de contar adorno de verdad y nadie se entera: la regla queda escrita y
+    sin quien la haga cumplir.
+    """
+
+    def _cuantas(self, linea, clase):
+        return len([c for c, _ in marcas.marcas_de_linea(linea) if c == clase])
+
+    # ── el título y el nombre de una sección no son un inciso ────────────
+
+    def test_cp001_el_titulo_con_raya_no_cuenta(self):
+        self.assertEqual(0, self._cuantas(u"# EP-000 — «Título de la épica»", "raya"))
+        self.assertEqual(0, self._cuantas(u"## 1. Necesidad — en una frase", "raya"))
+
+    def test_cp005_el_inciso_en_prosa_sigue_contando(self):
+        self.assertEqual(2, self._cuantas(
+            u"El plan —que ya estaba— se aprobó ayer.", "raya"))
+
+    # ── el identificador y lo que enuncia ────────────────────────────────
+
+    def test_cp002_el_identificador_con_su_enunciado_no_cuenta(self):
+        self.assertEqual(0, self._cuantas(
+            u"- [ ] **CAE-01** — «Resultado observable a nivel de negocio»", "raya"))
+
+    def test_cp006_una_negrita_seguida_de_un_inciso_sigue_contando(self):
+        """Se descuenta **una** raya, la del enunciado. Las demás son incisos.
+
+        La línea trae tres: la que separa el identificador de lo que enuncia, y
+        las dos del inciso. Quedan dos.
+        """
+        self.assertEqual(2, self._cuantas(
+            u"**CAE-01** — el resultado —que ya se midió— queda acá", "raya"))
+
+    # ── una celda de tabla es un dato, no un párrafo ─────────────────────
+
+    def test_cp003_la_celda_de_tabla_no_cuenta(self):
+        self.assertEqual(0, self._cuantas(u"| Fase 1 — MVP | HU-001 |", "raya"))
+        self.assertEqual(0, self._cuantas(u"| enlace · cuando se ejecute | x |",
+                                          "punto-medio"))
+
+    def test_cp007_el_punto_medio_entre_frases_sigue_contando(self):
+        self.assertEqual(1, self._cuantas(u"Se hace esto · y después lo otro.",
+                                          "punto-medio"))
+
+    # ── el rótulo de un campo no es una viñeta de prosa ──────────────────
+
+    def test_cp004_el_campo_con_su_hueco_no_cuenta(self):
+        self.assertEqual(0, self._cuantas(
+            u"- **Objetivo:** «qué se logra cuando esto esté hecho»", "vineta"))
+
+    def test_cp004b_el_campo_cuyo_valor_iba_en_codigo_tampoco(self):
+        """`- **Slug:** `«x»`` llega acá sin el código, con el valor vacío."""
+        self.assertEqual(0, self._cuantas(u"- **Slug del módulo:** ", "vineta"))
+
+    def test_cp008_la_misma_vineta_con_prosa_sigue_contando(self):
+        self.assertEqual(1, self._cuantas(
+            u"- **Objetivo:** dejar el módulo andando antes del viernes", "vineta"))

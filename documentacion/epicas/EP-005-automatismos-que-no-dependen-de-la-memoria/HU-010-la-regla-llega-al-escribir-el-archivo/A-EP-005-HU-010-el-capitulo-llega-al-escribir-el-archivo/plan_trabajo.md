@@ -99,12 +99,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Qué capítulo rige cada tipo de documento — la tabla la decide quien mantiene el estándar | Usuario | Pendiente |
-| 2 | Si llega el capítulo completo o solo la regla que aplica, dado lo que pesa | Usuario | Pendiente |
+| 1 | Qué capítulo rige cada tipo de documento — la tabla la decide quien mantiene el estándar | Usuario | **Resuelta** el 2026-08-18, decisión 41 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **por carpeta, no por tipo de documento**: `base/` al capítulo `20`; `documentacion/epicas/` al `02` y al `13`; `pendientes/` a `02·F23`. El tipo hay que adivinarlo; la carpeta se lee de la ruta |
+| 2 | Si llega el capítulo completo o solo la regla que aplica, dado lo que pesa | Usuario | **Devuelta al usuario** el 2026-08-18, y sigue siendo suya. El pendiente 59 la había decidido («solo la regla que aplica») y se anuló el mismo día: **contradice el `CA-01` de esta historia**, que pide el capítulo completo, y por [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) manda el criterio de aceptación. Lo que la duda plantea sigue vivo —el capítulo `02` pesa 98 KB— pero se cambia en la historia y con su aprobación, no de costado |
 
 Las dos bloquean T-01. La prueba del silencio del CA-03 se puede escribir antes.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

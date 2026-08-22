@@ -98,12 +98,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si detiene el commit o solo avisa — y si eso puede depender del tipo de cambio | Usuario | Pendiente |
-| 2 | Si esta fase va después de HU-004, que crea el disparo, o si esta lo crea y aquella se suma | Usuario | Pendiente |
+| 1 | Si detiene el commit o solo avisa — y si eso puede depender del tipo de cambio | Usuario | **Resuelta** el 2026-08-18, decisión 9 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **detiene**, y no depende del tipo de cambio: si `base/` cambió y `VERSION` no, falta la versión. `20·M10` no admite excepción por tamaño |
+| 2 | Si esta fase va después de HU-004, que crea el disparo, o si esta lo crea y aquella se suma | Usuario | **Resuelta** el 2026-08-18, decisión 32 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **HU-004 crea el disparo y esta se suma**. Dos enganches sobre el mismo momento se pisan: un solo dueño por punto de disparo |
 
 Las dos bloquean T-01. Los casos de prueba se pueden escribir antes.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

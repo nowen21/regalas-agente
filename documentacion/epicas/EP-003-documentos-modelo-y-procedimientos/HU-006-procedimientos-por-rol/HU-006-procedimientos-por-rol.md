@@ -145,7 +145,7 @@ Entonces tienen las mismas secciones y el mismo nivel de detalle
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-003-HU-006-retrodocumentar-los-procedimientos-por-rol](A-EP-003-HU-006-retrodocumentar-los-procedimientos-por-rol/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-006-retrodocumentar-los-procedimientos-por-rol/resultado_pruebas.md) — probada sobre once corridas del mismo encargo, que es el que la fase esperaba y ocurrió solo |
 
 **La fase retro-documenta.** Los diez procedimientos de rol existen y se invocan. Falta la tabla que diga, con su cita, qué recibe y qué entrega cada uno — y la prueba de que el mismo encargo da el mismo tipo de resultado, que nunca se midió.
 

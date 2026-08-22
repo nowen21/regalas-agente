@@ -15,7 +15,7 @@
 
 > Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en la carpeta de la fase (ruta `02·F12.13`), como `plan_pruebas.md`. Al llenar la plantilla se borra esta caja, pero **la línea de arriba, la de para qué sirve, se queda**.
 >
-> **Proporcionalidad:** este formato completo es para un release/épica. Para una **sola fase o HU**, usar únicamente las secciones **3, 5, 6, 9 y 12** — el resto es opcional. No inflar una fase chica con un plan de release.
+> **Proporcionalidad:** este formato completo es para un release/épica. Para una **sola fase o HU**, usar únicamente las secciones **3, 5, 6, 9 y 12**; el resto es opcional. No inflar una fase chica con un plan de release.
 
 ---
 
@@ -101,7 +101,7 @@ La ejecución de una fase es **quirúrgica**, no la suite completa "por si acaso
 
 1. La **suite del módulo** nuevo/refactorizado (obligatoria).
 2. Las suites que la fase **refactorizó explícitamente** (declaradas en el `plan_trabajo`).
-3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
+3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor, [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
 
 **NO** correr por defecto la suite entera del proyecto ni módulos ajenos a la matriz. Una **regresión total** se declara aparte y explícita (ej. pre-release), no como parte del flujo normal de fase.
 
@@ -223,7 +223,7 @@ CORRECTO:   | 1 | Tomar la lista de origen                | Queda a la vista, co
 | DS-01 | «Usuarios y roles de prueba» | Script `seed.sql` | N/A |
 | DS-02 | «Registros de negocio» | Copia de producción | Requerida |
 
-> **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción ([`00·N4`](../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) · `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
+> **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción ([`00·N4`](../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada), `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
 
 ### 7.3 Usuarios de prueba
 

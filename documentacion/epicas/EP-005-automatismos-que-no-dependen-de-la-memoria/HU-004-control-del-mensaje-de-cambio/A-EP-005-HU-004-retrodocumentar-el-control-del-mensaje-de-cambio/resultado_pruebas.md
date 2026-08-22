@@ -20,7 +20,7 @@ Se corrieron por el camino real: `validar.py commit --archivo`, que es lo que el
 |---|---|
 | **CA-01** · un mensaje sin contenido no pasa | ✅ **Pasa** |
 | **CA-02** · el rastro de la herramienta se detecta | ✅ **Pasa** |
-| **Detiene, no solo avisa** (decisión 8 del [59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md)) | ✅ **Pasa** — código 1, y el enganche corta con `|| exit 1` |
+| **Detiene, no solo avisa** (decisión 8 del [59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md)) | ✅ **Pasa** — código 1, y el enganche corta con `|| exit 1` |
 
 ---
 

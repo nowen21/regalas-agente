@@ -102,6 +102,23 @@ Entonces no las reporta
 3. Comprobar que sí reporta una raya larga en el mismo archivo, si la hay. Resultado esperado: la reporta.
 - **Aprobado cuando:** distingue la notación acordada del adorno.
 
+### CA-04 — Los moldes del ciclo no llevan adorno de prosa
+
+```gherkin
+Dado un molde del ciclo de vida que se copia a cada proyecto
+Cuando se cuentan sus marcas de generación automática
+Entonces las que queden son notación declarada, y ninguna es adorno de prosa
+Y el molde sigue pidiendo exactamente lo mismo que pedía
+```
+
+**Cómo validarlo:**
+
+1. Correr el recuento sobre `plantillas/ciclo-vida-proyectos/`. Resultado esperado: da un número, con su reparto por clase de marca.
+2. Clasificar lo que queda. Resultado esperado: cada marca cae en una forma de notación (etiqueta de campo, celda de tabla, título, identificador con su enunciado o bloque de código), y ninguna es un inciso en prosa.
+3. Comparar cada molde con su versión anterior, sección por sección. Resultado esperado: ninguna sección perdió una exigencia.
+4. Correr `validar.py estandar` y la batería de los validadores. Resultado esperado: sin incumplimientos nuevos.
+- **Aprobado cuando:** el adorno se fue, la notación quedó, y ningún molde pide menos que antes.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un documento sin texto, uno que es solo código y uno con una tabla larga tienen comportamiento definido.
@@ -144,6 +161,8 @@ Entonces no las reporta
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica](A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/README.md) | CA-01, CA-02 y CA-03 | **Cerrada 2026-08-18** · Cumple · 16 477 marcas contadas, 4 491 en lo que se hereda |
+| [B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo](B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/funcionalidad_implementada.md) | CA-04 | Cerrada 2026-08-22 — Cumple. Del [pendiente 78](../../../../pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md): el adorno de prosa, de 197 a 126 |
+| [C-EP-004-HU-012-el-recuento-no-cuenta-la-notacion](C-EP-004-HU-012-el-recuento-no-cuenta-la-notacion/funcionalidad_implementada.md) | CA-03 | Cerrada 2026-08-22 — Cumple. Lo que quedaba de las 126 no era adorno sino notación, y el contador era más ancho que el anexo. Los moldes del ciclo quedan en **0**; el árbol entero baja de 15 485 a 6 440 |
 
 **La fase construye.** La exigencia existe —`00·ID8` y su lista— y ningún programa la comprueba. Lo que decide si sirve es el CA-03: el estándar usa a propósito el punto medio y las comillas angulares, y un programa ingenuo reportaría casi cada línea.
 

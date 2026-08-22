@@ -147,3 +147,31 @@ Hasta hoy la fila del punto medio decía *«separando frases o adornando título
 **Dónde queda el límite.** Se exime **solo en la línea de un encabezado**. En prosa, un punto medio entre frases sigue siendo lo que este anexo llama adorno, y se cuenta.
 
 **Lo que cambió el recuento:** de 16 477 marcas a **15 485**.
+
+---
+
+## Lo que se contaba y no era marca, decidido el 2026-08-22
+
+**Mismo caso que el separador de encabezado, y por eso va aquí abajo con él.** El anexo ya decía qué se cuenta; el programa contaba de más. No se agregó ninguna excepción: se implementó lo que estas dos filas dicen desde que se escribieron.
+
+**«La raya larga (`—`) como inciso».** Un inciso es prosa. No lo son:
+
+| Forma | Ejemplo | Qué es |
+|---|---|---|
+| El título de un documento y el nombre de una sección | `# EP-000 — «Título»`, `## 1. Necesidad — en una frase` | Es como esta casa nombra sus documentos y sus secciones, igual que el `·` de los encabezados |
+| Un identificador con lo que enuncia | `- [ ] **CAE-01** — «resultado observable»` | La raya separa el nombre de la cosa de la cosa, no interrumpe una frase |
+| Una celda de tabla | `\| Fase 1 — MVP \|` | Una celda es un dato, no un párrafo |
+
+**«El punto medio (`·`) separando frases en prosa».** Una celda de tabla tampoco es prosa: ahí separa dato de dato.
+
+**«Viñetas que abren todas con negrita y dos puntos».** La marca es una uniformidad de la prosa. El rótulo de un campo de formulario no lo es, y se reconoce porque **lo que sigue a los dos puntos es el espacio por llenar**:
+
+```
+NO es marca: - **Objetivo:** «qué se logra cuando esto esté hecho»
+SÍ es marca: - **Objetivo:** dejar el módulo andando antes del viernes
+```
+
+**Lo que cambió el recuento:** de **15 485** marcas a **6 440**. Los moldes del ciclo de vida pasaron de 197 a **0**, sin que ninguno pida nada distinto de lo que pedía.
+
+**Dónde queda el límite, otra vez.** En prosa, las tres siguen contando exactamente igual. Lo que se dejó de contar es lo que nunca fue prosa.
+

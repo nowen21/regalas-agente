@@ -12,4 +12,4 @@ Contenido inmediato de esta carpeta.
 
 **Lo que falta de la fase:** `resultado_pruebas.md` y `funcionalidad_implementada.md` — los dos salen de ejecutar, y la fase todavía no se aprobó. La fila de HU-005 en el pendiente [48](../../../../../pendientes/48-inventario-hu.md) lleva la cuenta.
 
-**Estado:** abierta con su plan escrito, sin aprobar. Falta decidir con qué dos proyectos se prueba.
+**Estado:** Cerrada el 2026-08-22: Cumple. Falta el commit, que el usuario autoriza aparte.

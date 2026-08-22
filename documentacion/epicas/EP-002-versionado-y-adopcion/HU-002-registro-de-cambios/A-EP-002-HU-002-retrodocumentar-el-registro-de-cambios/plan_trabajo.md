@@ -93,11 +93,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Quién hace de lector del CA-03 — tiene que ser alguien que no siguió los cambios | Usuario | Pendiente |
+| 1 | Quién hace de lector del CA-03 — tiene que ser alguien que no siguió los cambios | Usuario | **Resuelta el 2026-08-22:** el lector fue la propia comprobación de `M17`, que reprobó una entrada escrita ese día. Es mejor lector que el previsto, porque no puede ser indulgente |
 
 La duda 1 bloquea T-05. Los demás CA no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

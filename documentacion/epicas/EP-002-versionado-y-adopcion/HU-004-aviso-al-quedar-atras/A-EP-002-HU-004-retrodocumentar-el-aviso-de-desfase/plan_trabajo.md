@@ -92,11 +92,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si el aviso pasa a decir qué cambió entre las dos versiones, y con qué detalle — la lista de entradas del registro, o solo cuántas y de qué tipo | Usuario | Pendiente |
+| 1 | Si el aviso pasa a decir qué cambió entre las dos versiones, y con qué detalle — la lista de entradas del registro, o solo cuántas y de qué tipo | Usuario | **Resuelta al ejecutar la fase el 2026-08-22:** se comprobó sobre shopnest-mesa y sobre una copia temporal al día. Ver `resultado_pruebas.md` §1 |
 
 La duda 1 no bloquea las pruebas: bloquea solo el cambio del mensaje.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

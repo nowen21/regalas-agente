@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 9 — verificación, con un criterio en rojo. **Ejecutada el 2026-08-22.** **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -43,11 +43,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía: no se ha corrido nada |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 2 de 3 |
+| **CA en "No"** | **CA-03.** No se pudo provocar sin escribir un ajuste contra el núcleo en un proyecto real, y la decisión 35 del pendiente 59 lo prohíbe |
+| **Defectos abiertos aceptados** | D-01, `metareglas --raiz` sobre un proyecto da cinco veredictos falsos · D-02, las 56 reglas `P` de AgroSystem sin respaldo, que es del proyecto · D-03, el CA-03 sin provocar |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) §6 |
 
 ---
 
@@ -57,16 +57,16 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Elegir el proyecto y listar sus ajustes propios. Es la duda 1, que bloquea los tres CA |
-| T-02 | Bloqueada | Caso del ajuste que gana a la convención general — CP-001 |
-| T-03 | Bloqueada | Caso de la regla propia sin respaldo — CP-002 |
-| T-04 | Pendiente | Constancia de que la comprobación automática no corre, y sumarla al pendiente 53 |
-| T-05 | Bloqueada | Caso del ajuste contra una `[BLINDADA]` — CP-003. Depende también de la duda 2 |
-| T-06 | Bloqueada | El mismo ajuste sobre una convención de capa 2 — CP-004 |
-| T-07 | Bloqueada | Corridas de `validar.py plantilla` y `version` sobre la copia — CP-005 |
-| T-08 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | El proyecto se eligió, y **no fue el propuesto**: shopnest-mesa no tiene reglas propias. Se usó AgroSystem, con 56 |
+| T-02 | Hecha | La propia capa de AgroSystem declara la precedencia, y el cuerpo central no cambió |
+| T-03 | Hecha | La comprobación de `M16` corre: 56 fallas de 56 reglas |
+| T-04 | Hecha, y al revés de lo que decía | La comprobación **sí** corre. La construyó el pendiente 53 cinco días antes. Lo que no sirve es invocarla con `--raiz`, y eso queda como defecto D-01 |
+| T-05 | **No hecha** | Provocar el ajuste contra una `[BLINDADA]` exige escribirlo en un proyecto real, y la decisión 35 lo prohíbe. Falta hacerlo sobre un proyecto de mentira en carpeta temporal |
+| T-06 | **No hecha** | Depende de T-05 |
+| T-07 | Hecha | `validar.py version` avisa del desfase, y avisa sin detener, que es lo previsto |
+| T-08 | Hecha | El resultado escrito y la trazabilidad cerrada |
 
-**Hechas:** 0 de 8. **Bloqueadas:** T-01, T-02, T-03, T-05, T-06 y T-07 — todas por la duda 1.
+**Hechas:** 6 de 8. **Sin hacer:** T-05 y T-06, que son las del CA-03.
 
 ---
 
@@ -82,21 +82,20 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **Duda 1 de §2.7:** sobre qué proyecto instalado se hacen las pruebas. Bloquea los tres CA.
-- **Duda 2 de §2.7:** si el ajuste que contradice el núcleo se escribe en el proyecto de prueba o basta simularlo en una copia. Bloquea el CA-03.
-- **La aprobación del plan.** Sin ella no arranca la ejecución.
-- **Si el proyecto elegido tiene reglas propias sin respaldo** (riesgo `R-01`): se anotan y se reportan a su dueño. Limpiar trabajo ajeno no es de esta fase.
+- **El CA-03**, que es lo único que impide cerrar. Falta provocarlo sobre un proyecto de mentira en carpeta temporal.
+- **El defecto D-01**, que es del estándar: `metareglas --raiz` sobre un proyecto da cinco veredictos falsos. Necesita su pendiente.
+- **El defecto D-02**, que es de AgroSystem: 56 reglas propias sin respaldo. Va por el canal de defectos hacia el proyecto, no se corrige desde acá.
 
 ---
 
 ## 4. Si se bloqueó
 
-- **Estación:** 6 — ejecución continua, detenida. **Motivo:** el plan **está aprobado** desde el 2026-08-17, y sin el proyecto de la duda 1 no arranca ninguno de los tres CA. **Qué falta para desbloquear:** que el usuario apruebe el plan, elija el proyecto y decida la forma del caso del CA-03.
+- No está bloqueada. Está en verificación con un CA en rojo, y lo que falta para cerrarla es una tarea, no una decisión. **Motivo original, ya superado:** el plan estaba aprobado desde el 2026-08-17 y sin el proyecto de la duda 1 no arranca ninguno de los tres CA. **Qué falta para desbloquear:** que el usuario apruebe el plan, elija el proyecto y decida la forma del caso del CA-03.
 
 ---
 
 ## Lo que la desbloqueó
 
-**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
+**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
 
 **La fase no arrancó todavía:** decidir no es ejecutar.

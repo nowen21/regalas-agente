@@ -104,12 +104,12 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si las dos exigencias suben a regla del capítulo `01` — es cambio de `base/` y lo decide el usuario | Usuario | Pendiente |
-| 2 | Si al subirlas, el recuerdo se queda con su texto o se recorta a un puntero a la regla | Usuario | Pendiente |
+| 1 | Si las dos exigencias suben a regla del capítulo `01` — es cambio de `base/` y lo decide el usuario | Usuario | **Resuelta el 2026-08-18**, decisiones 2 y 3 del pendiente 59: las dos exigencias suben al capítulo `01`, y el recuerdo se recorta a un puntero |
+| 2 | Si al subirlas, el recuerdo se queda con su texto o se recorta a un puntero a la regla | Usuario | **Resuelta el 2026-08-18**, decisiones 2 y 3 del pendiente 59: las dos exigencias suben al capítulo `01`, y el recuerdo se recorta a un puntero |
 
 La duda 1 bloquea T-01 y T-04. El CA-03 no depende de ninguna de las dos.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

@@ -75,7 +75,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Qué pasó.** Al ir a construir la comprobación, `EP-004 · HU-016` ya tenía fase `A` —una de los 51 planes, abierta y sin aprobar—. El usuario lo zanjó en una línea: *«si ya existe la HU se crea otra fase»*. Quedó abierta [`B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md), con sus dos planes y su estado, en la estación 4.
 
-**Lo que se supo al escribirla.** La `A` está detenida por dos dudas, y **el enrutamiento de hoy contestó una**: «¿dónde se declara, una línea fija o una sección?» ya no es una opinión — es la fila `Historia de usuario` de la ficha, medida en 33 archivos. Eso **destraba la duda 27** del [pendiente 59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Cerrarla formalmente es de la fase `A`; se reporta y no se aprovecha desde la `B`.
+**Lo que se supo al escribirla.** La `A` está detenida por dos dudas, y **el enrutamiento de hoy contestó una**: «¿dónde se declara, una línea fija o una sección?» ya no es una opinión — es la fila `Historia de usuario` de la ficha, medida en 33 archivos. Eso **destraba la duda 27** del [pendiente 59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). Cerrarla formalmente es de la fase `A`; se reporta y no se aprovecha desde la `B`.
 
 **Y un plan que quedó viejo.** La fase `A` declara en su §2.1 que **crea** `validadores/pendientes.py`. El archivo ya existe —156 líneas, escrito para HU-018 y commiteado ayer—. Se reporta, no se corrige desde acá.
 
@@ -288,7 +288,7 @@ Del [pendiente 47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.
 
 ### H-26 · Tres de las 42 dudas ya estaban contestadas en el repositorio
 
-De las 42 que detienen 26 fases ([59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md)), **tres tenían su respuesta escrita**:
+De las 42 que detienen 26 fases ([59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md)), **tres tenían su respuesta escrita**:
 
 - **La 16** —qué reglas candidatas no entraron— está en [el análisis del 2026-08-13](../../../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md), con las 22 fichas y su salida. Diecisiete no entraron.
 - **La 21** —si la comprobación de marcas cubre todo el repositorio— la contestaba el pendiente 11 desde el 2026-08-10, y **hoy se construyó justamente así**.
@@ -302,7 +302,7 @@ De las 42 que detienen 26 fases ([59](../../../pendientes/59-las-42-dudas-que-de
 
 ### H-27 · Cuatro dudas más las contesta el programa que ya corre
 
-Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md): **cuatro no hay que decidirlas, hay que mirarlas.**
+Siguiendo con las 42 del [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **cuatro no hay que decidirlas, hay que mirarlas.**
 
 - **23** — la corrida completa **no** incluye linter, pruebas ni audit: son subcomandos aparte. Se decidió al construirlo.
 - **31 y 33** — dos fases preguntan si esperan a la corrida completa de `EP-004·HU-008`. **No esperan: está construida** y corre desde su fase `A`.
@@ -314,7 +314,7 @@ Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-2
 
 ### H-28 · De 42 dudas a 33, sin que el usuario contestara ninguna
 
-Última pasada sobre el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). **Dos más las resuelve el propio cuerpo de reglas:**
+Última pasada sobre el [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). **Dos más las resuelve el propio cuerpo de reglas:**
 
 - **25** — dónde vive el registro de conteos: [`09·G3`](../../../base/09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado) deja fuera lo generado, y un conteo lo es.
 - **40** — qué cuenta como publicar: `09·G7` nombra confirmar y publicar como dos actos, y el despliegue es del capítulo `18`, que es opt-in y está apagado.
@@ -327,7 +327,7 @@ Siguiendo con las 42 del [59](../../../pendientes/59-las-42-dudas-que-detienen-2
 
 ### H-29 · Las 42 dudas, decididas
 
-El usuario pidió resolver las 33 que quedaban, y están escritas en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) con su motivo cada una.
+El usuario pidió resolver las 33 que quedaban, y están escritas en el [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) con su motivo cada una.
 
 **Casi ninguna hizo falta inventarla.** El grupo A lo resuelve la fila 1 del checklist; el B, una sola regla —**detiene lo que se comprueba sin criterio, avisa lo que necesita juicio**— con toda la evidencia de esta sesión del mismo lado; el resto sale de reglas que ya existen.
 
@@ -343,7 +343,7 @@ El usuario pidió resolver las 33 que quedaban, y están escritas en el [59](../
 
 ### H-30 · Las 26 fases dejan de estar detenidas
 
-La decisión de cada duda quedó escrita **en la §2.7 del plan de su fase**, no solo en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md): 26 planes y 25 estados al día.
+La decisión de cada duda quedó escrita **en la §2.7 del plan de su fase**, no solo en el [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): 26 planes y 25 estados al día.
 
 **Estaba en el sitio equivocado y ese era medio problema.** Una decisión que vive en el pendiente obliga a que alguien la vaya a buscar; escrita en el plan de la fase, la lee quien la vaya a ejecutar, que es quien la necesita.
 

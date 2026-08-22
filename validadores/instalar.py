@@ -104,6 +104,10 @@ PLANTILLA_PRE_COMMIT = _PREAMBULO + """
     echo "Commit rechazado: quita las marcas nuevas y vuelve a intentar." >&2
     exit 1
 }}
+# `80` - Que el commit no se lleve el trabajo de otra sesion. **Avisa y deja
+# pasar**: retomar lo que otra dejo a medias a veces es lo correcto; hacerlo
+# sin darse cuenta, no. Por eso no lleva `|| exit`.
+"$PY" "$ESTANDAR/validadores/validar.py" sesiones --raiz "$(pwd)" || true
 """
 
 # `09·08` · **Publicar es lo que no se deshace.** Un commit se revierte; lo

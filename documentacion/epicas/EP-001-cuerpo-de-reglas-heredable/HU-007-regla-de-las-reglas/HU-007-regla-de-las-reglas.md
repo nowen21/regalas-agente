@@ -188,7 +188,7 @@ Y ninguna candidata se convierte en regla desde ese documento: eso lo decide el 
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/resultado_pruebas.md) — cinco de seis; el CA-04 no: las 249 reglas tienen la misma antigüedad de revisión, ninguna |
 | [B-EP-001-HU-007-primero-que-el-proceso-sirva](B-EP-001-HU-007-primero-que-el-proceso-sirva/README.md) | CA-05 | **Cerrada 2026-08-21 — Cumple** (3 de 3 casos aprobados; v28.1.0). Nace `20·M19`, desde el [pendiente 16](../../../../pendientes/hecho/primero-que-el-proceso-sirva.md) |
 | [C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador](C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md) | CA-06 | **Cerrada 2026-08-22 — Cumple** (5 de 5; v31.0.0). Nace `20·M20` y el molde del barrido, desde el punto 2 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 

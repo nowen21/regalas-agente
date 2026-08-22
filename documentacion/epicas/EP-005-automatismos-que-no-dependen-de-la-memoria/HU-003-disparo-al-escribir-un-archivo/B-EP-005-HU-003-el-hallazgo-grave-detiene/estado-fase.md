@@ -36,7 +36,7 @@
 
 ---
 
-> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). El enganche ya estaba construido; faltaba correrlo por el camino real y escribir lo que dio.
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). El enganche ya estaba construido; faltaba correrlo por el camino real y escribir lo que dio.
 
 ## 1.1 Veredicto de las pruebas
 
@@ -84,7 +84,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas de implementación.
-- **Le sirve de precedente a dos preguntas del usuario.** Las 8 y 9 del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) —si el control del mensaje de commit y el de versión detienen o avisan— son la misma pregunta en otro sitio. **No bloquean esta fase**, pero lo que se decida acá debería valer allá.
+- **Le sirve de precedente a dos preguntas del usuario.** Las 8 y 9 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) —si el control del mensaje de commit y el de versión detienen o avisan— son la misma pregunta en otro sitio. **No bloquean esta fase**, pero lo que se decida acá debería valer allá.
 - **Si un falso positivo llega como falla** (riesgo `R-02`): es defecto del validador que lo emite, y se reporta a su fase, no se tapa acá.
 
 ---

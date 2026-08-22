@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12 — Commit, esperando la autorización del usuario. **Última puerta pasada:** 11.
+**Estación actual:** 11 — cierre documental. **Ejecutada el 2026-08-22.**
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -41,11 +41,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Cumple |
+| **Concepto** | **Cumple** |
 | **CA cumplidos** | 1 de 1 |
 | **CA en "No"** | Ninguno |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) §6 |
+| **Defectos abiertos aceptados** | D-01, `M19` existe y nada la hace cumplir: se incumplió dos veces hoy |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) |
 
 ---
 

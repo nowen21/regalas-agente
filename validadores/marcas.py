@@ -75,6 +75,30 @@ _CAPITULO = re.compile(r"(?<!\d)\d{1,2} · ")
 
 _RAYA = "—"
 
+# **La raya se cuenta como inciso, y un inciso es prosa.** El anexo lo dice en
+# su propia fila: «la raya larga (`—`) **como inciso**». Tres formas del
+# estandar no son incisos, y contarlas era el contador siendo mas ancho que la
+# regla. Es el mismo hallazgo del 2026-08-18 con el punto medio de los
+# encabezados: la decision ya estaba escrita y faltaba implementarla.
+#
+#   `# EP-000 — Titulo`      el titulo de un documento, y el nombre de una seccion
+#   `**CAE-01** — enunciado`  un identificador con lo que enuncia
+#   `| Fase 1 — MVP |`        una celda de tabla, que es un dato y no un parrafo
+_ETIQUETA_Y_ENUNCIADO = re.compile(r"\s*(?:[-*+] )?(?:\w+\. )?(?:\[[ x]\] )?\*\*[^*]+\*\*\s+\u2014")
+_FILA_DE_TABLA = re.compile(r"^\s*\|")
+
+# **El rotulo de un campo del formulario no es una vineta de prosa.** El anexo
+# marca «vinetas que abren **todas** con negrita y dos puntos», que es una
+# uniformidad de la prosa. Un molde no tiene prosa ahi: tiene campos, y lo que
+# sigue a los dos puntos es el espacio por llenar.
+#
+#   `- **Objetivo:** «que se logra»`   campo del formulario, con su hueco
+#   `- **Objetivo:** se logra esto`   ya es prosa, y ahi si cuenta
+#
+#   `- **Slug:** `«x»``  el valor va en comillas invertidas, y para cuando esta
+#                       linea llega aca ya se le quito el codigo: queda vacio
+_CAMPO_POR_LLENAR = re.compile(r"^\s*[-*+]\s+\*\*[^*]+:\*\*\s*(?:`?\u00ab|$)")
+
 # `- **Algo:** ...` — la viñeta que abre con negrita y dos puntos.
 _VINETA_NEGRITA = re.compile(r"^\s*[-*+]\s+\*\*[^*]+:\*\*")
 
@@ -114,21 +138,34 @@ def marcas_de_linea(linea):
         for _ in range(linea.count(caracter)):
             salida.append((caracter, nombre))
 
-    for _ in range(linea.count(_RAYA)):
+    # La raya **como inciso**, que es lo que dice el anexo. No lo son el título
+    # de un documento ni el nombre de una sección, ni el identificador que
+    # antecede a lo que enuncia, ni una celda de tabla, que es un dato suelto.
+    rayas = linea.count(_RAYA)
+    if _ENCABEZADO.match(linea) or _FILA_DE_TABLA.match(linea):
+        rayas = 0
+    elif _ETIQUETA_Y_ENUNCIADO.match(linea):
+        rayas -= 1
+    for _ in range(max(rayas, 0)):
         salida.append(("raya", "raya larga (—) como inciso"))
 
-    # El punto medio, descontando la cita `NN·ID` y —si es un encabezado— el
-    # separador del título, que es notación de la casa y no adorno.
+    # El punto medio **separando frases en prosa**, descontando la cita `NN·ID`
+    # y —si es un encabezado— el separador del título. Una celda de tabla
+    # tampoco es prosa: ahí separa dato de dato.
     puntos = (linea.count("·") - len(_CITA.findall(linea))
               - len(_CAPITULO.findall(linea)))
     if _ENCABEZADO.match(linea):
         puntos -= linea.count(_SEPARADOR) - len(_CAPITULO.findall(linea))
+    if _FILA_DE_TABLA.match(linea):
+        puntos = 0
     for _ in range(max(puntos, 0)):
         salida.append(("punto-medio", "punto medio (·) fuera de una cita `NN·ID`"))
 
     for _ in _COMILLA_CURVA.findall(linea):
         salida.append(("comilla", "comilla curva (“ ”)"))
-    if _VINETA_NEGRITA.match(linea):
+    # La viñeta con negrita **cuando es prosa**. El rótulo de un campo cuyo
+    # valor es el espacio por llenar no lo es: eso es un formulario.
+    if _VINETA_NEGRITA.match(linea) and not _CAMPO_POR_LLENAR.match(linea):
         salida.append(("vineta", "viñeta que abre con negrita y dos puntos"))
     if _FLECHA_VINETA.match(linea):
         salida.append(("flecha", "flecha o visto usado como viñeta"))

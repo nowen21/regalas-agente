@@ -126,7 +126,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Qué se hizo.** Las 26 pasaron de la estación 4 —esperando aprobación— a la **6, detenidas**: el plan **está aprobado** desde hoy, y lo que falta ya no es la aprobación sino **la respuesta**. Su `estado-fase.md` lo dice, para que la sesión que siga no vuelva a buscar.
 
-**Las 42 dudas quedaron agrupadas por decisión** en el pendiente [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md), no fase por fase: varias son la misma pregunta repetida, y así se contestan de corrido. Nombrar un proyecto desbloquea cuatro fases; decidir «¿detiene o avisa?» desbloquea otras cuatro.
+**Las 42 dudas quedaron agrupadas por decisión** en el pendiente [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), no fase por fase: varias son la misma pregunta repetida, y así se contestan de corrido. Nombrar un proyecto desbloquea cuatro fases; decidir «¿detiene o avisa?» desbloquea otras cuatro.
 
 **Va como `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro en la transcripción, que se versiona**. Se comprobó. Nada enmascara, y lo que falta para construirlo son dos decisiones.
 
@@ -152,7 +152,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ — los tres defectos previos corregidos, con su versión (23.2.1) y su prueba; las 5 fallas de `validar.py estandar` en cero |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ — las 42 dudas en el [59](../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md); los falsos positivos de `citas.py` sumados al [55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md); el planteamiento vacío ya estaba en el [56](../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md); los siete defectos que tocan archivos fuera de plan, probados con `expectedFailure` y con su fase `B` propuesta en la HU |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ — las 42 dudas en el [59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md); los falsos positivos de `citas.py` sumados al [55](../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md); el planteamiento vacío ya estaba en el [56](../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md); los siete defectos que tocan archivos fuera de plan, probados con `expectedFailure` y con su fase `B` propuesta en la HU |
 | Toda historia disparada está escrita en su épica | ☑ — no nació ninguna HU. Lo que salió son **siete fases `B` propuestas**, escritas en el §8 de su HU, y decisiones que van al usuario |
 | Lo que se hizo está aprobado y guardado | ☑ — commit `925d5b0` en `main`, 152 archivos. Sin `push`, que no se autorizó. Se dejaron fuera los dos archivos de la sesión anterior |
 

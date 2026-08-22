@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Dice **qué se va a hacer en esta fase, en qué orden, sobre qué archivos y cómo se comprueba** cada criterio de aceptación antes de darlo por cumplido. Se escribe **antes** de tocar nada y se aprueba antes de empezar: quien lo aprueba está aceptando el alcance y el costo. El requisito vive en la HU; el detalle de las pruebas, en el `plan_pruebas` de esta misma fase; lo que quedó hecho, en el `funcionalidad_implementada.md` del cierre.
 
-> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)** sobre una **línea base verificada** ([`02·F16`](../../base/02-flujo-de-trabajo/reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md) · [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja. **La línea de arriba, la de para qué sirve, se queda** — es lo que le dice a quien abre el documento dentro de un año qué está leyendo.
+> Plantilla del `plan_trabajo` de una **fase** (unidad de ejecución). Responde las **13 preguntas de [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md)** sobre una **línea base verificada** ([`02·F16`](../../base/02-flujo-de-trabajo/reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md), [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `plan_trabajo.md`. Va junto con su `plan_pruebas` (plantilla `planes/pruebas.md`) y **no se toca código hasta que ambos estén aprobados** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)). Reemplaza los `«…»`, borra las secciones marcadas *(opcional)* si no aplican, y borra esta caja. **La línea de arriba, la de para qué sirve, se queda**: es lo que le dice a quien abre el documento dentro de un año qué está leyendo.
 >
 > **Unidad = fase.** Una fase pertenece a **una sola HU** (`02·F12.1`); declara qué CA de esa HU satisface (§0). La HU es el requisito; la fase es cómo se ejecuta y se cierra.
 
@@ -21,12 +21,12 @@
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
 
-**ORIGEN** (1 de 3, o híbrido · [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)):
-- 📝 **Modifica fase(s):** «cuáles y qué gap/promesa retoma» · ref. cierre de análisis ([`13·DOC8`](../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)) si aplica.
+**ORIGEN** (1 de 3, o híbrido, [`13·DOC12`](../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)):
+- 📝 **Modifica fase(s):** «cuáles y qué gap/promesa retoma», ref. cierre de análisis ([`13·DOC8`](../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)) si aplica.
 - ✨ **Funcionalidad nueva:** «qué introduce que no estaba en el roadmap».
 - 🔀 **Híbrido:** ambos.
 
-**CA de la HU que cubre esta fase** (una sola HU · `02·F12.1` · trazabilidad [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)):
+**CA de la HU que cubre esta fase** (una sola HU, `02·F12.1`, trazabilidad [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)):
 
 | CA de `HU«03»` que cierra esta fase | Estado |
 |---|---|
@@ -48,7 +48,7 @@
 | CA-03 | «Caso borde» | Funcional | Alta |
 | RNF-01 | «Rendimiento / seguridad» | No funcional | Media |
 
-**Fuera de alcance** (qué explícitamente NO entra en esta fase · cierra expectativas):
+**Fuera de alcance** (qué explícitamente NO entra en esta fase, cierra expectativas):
 - «Lo que no se aborda aquí y a qué fase futura se difiere, si aplica.»
 
 ---
@@ -194,7 +194,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ## 7. Reversión / rollback  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q11
 
-Plan B concreto si algo sale mal: «reversión de commit · rollback de esquema (`down()`) · backfill inverso · feature flag · script de emergencia». Cada cambio destructivo declara cómo se revierte.
+Plan B concreto si algo sale mal: «reversión de commit, rollback de esquema (`down()`), backfill inverso, feature flag, script de emergencia». Cada cambio destructivo declara cómo se revierte.
 
 ---
 
@@ -202,16 +202,16 @@ Plan B concreto si algo sale mal: «reversión de commit · rollback de esquema 
 
 Asumir **"probablemente está en producción"**. Estrategia según el tipo de cambio:
 - **Aditivo** (columna/tabla nueva): migración nueva, backfill si aplica.
-- **Rename:** migración nueva reversible (no editar la original de una fase cerrada).
-- **Drop / cambio de tipo con datos:** avisar el riesgo específico antes de aplicar + `down()` que reconstruye.
+- Un **rename** lleva migración nueva reversible, y no se edita la original de una fase cerrada.
+- Un **drop**, o un cambio de tipo con datos adentro, avisa el riesgo concreto antes de aplicarse y lleva su `down()` que reconstruye.
 - «Declarar la que aplica, o "No aplica porque ...".»
 
 ---
 
 ## 9. Reglas del estándar y del proyecto aplicadas  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q13
 
-Trazabilidad de decisiones — reglas por su identificador:
-- Base: «ej. [`02·F8`](../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), `04·S…`, [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar), [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)».
+Trazabilidad de decisiones, reglas por su identificador:
+- Base: «ej. [`02·F8`](../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md), `04·S...`, [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar), [`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)».
 - Proyecto: «ej. `P<N>` de `.agente/reglas-proyecto.md`».
 
 ---
@@ -228,7 +228,7 @@ Trazabilidad de decisiones — reglas por su identificador:
 
 - [ ] Todos los CA de §0 verificados con evidencia (§5)
 - [ ] Requisitos no funcionales validados
-- [ ] Pruebas de la fase en verde (alcance quirúrgico · [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md))
+- [ ] Pruebas de la fase en verde (alcance quirúrgico, [`02·F5`](../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md))
 - [ ] Trazabilidad especificación → implementación sin faltantes ([`13·DOC11`](../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md))
 - [ ] Sin errores de linter / análisis estático (`07`)
 - [ ] Documentación e índices/mapas del proyecto actualizados (`13`)

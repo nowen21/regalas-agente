@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación — CA-02, CA-03 y transversales cumplidos; el CA-01, no |
+| **Estado** | En implementación. CA-01 cerrado en la fase B; CA-02, CA-03 y transversales cumplidos; el CA-04, abierto en la fase C |
 
 ---
 
@@ -42,6 +42,8 @@ Los tres van juntos en una sola historia porque se encadenan: la necesidad da or
 | RN-03 | La historia de usuario trae sus criterios de aceptación, y cada uno dice cómo se comprueba |
 | RN-04 | Los espacios por llenar usan la marca acordada |
 | RN-05 | Un proyecto puede agregar secciones propias, pero no quitar las que trae el modelo |
+| RN-06 | El modelo de la necesidad es uno solo: no hay una variante para proyecto nuevo y otra para proyecto existente |
+| RN-07 | El encuadre del modelo es texto fijo: se conserva en el documento llenado y no se sustituye por otro contenido |
 
 ### 3.2 Supuestos
 
@@ -51,6 +53,7 @@ Los tres van juntos en una sola historia porque se encadenan: la necesidad da or
 
 - Los modelos de la fase. Eso es HU-003.
 - El procedimiento para llenarlos. Eso es HU-006.
+- El validador que comprueba que un planteamiento conserva su encuadre. Eso es comprobación automática, va en EP-004, y queda anotado en el [pendiente 77](../../../../pendientes/hecho/el-planteamiento-conserva-su-encuadre.md).
 
 ---
 
@@ -103,6 +106,23 @@ Entonces se ve cuáles quedaron sin llenar
 3. Completar todo. Resultado esperado: no queda ninguna marca.
 - **Aprobado cuando:** lo incompleto se distingue de lo terminado.
 
+### CA-04 — El modelo de la necesidad sirve igual para un proyecto que empieza y para uno que ya existe
+
+```gherkin
+Dado un proyecto que ya está construido y no tiene su planteamiento escrito
+Cuando alguien lo reconstruye con el modelo de la necesidad
+Entonces el documento queda escrito como si el proyecto fuera a empezar
+Y la procedencia de la reconstruccion se declara en un solo lugar del documento
+```
+
+**Cómo validarlo:**
+
+1. Abrir el modelo de la necesidad y buscar qué dice para un proyecto ya construido. Resultado esperado: hay instrucciones, con ejemplos de qué se escribe en lugar de qué.
+2. Buscar dónde se declara si hubo entrevista o reconstrucción. Resultado esperado: hay un campo para eso en la identificación, y el dato no se repite en ninguna otra parte del documento.
+3. Reconstruir con el modelo el planteamiento de un proyecto ya construido y dárselo a leer a alguien que no sepa cuál de los dos casos fue. Resultado esperado: no lo puede distinguir por la redacción.
+4. Buscar el encuadre del modelo dentro del documento llenado. Resultado esperado: sigue ahí, con su texto, sin sustituir.
+- **Aprobado cuando:** el documento reconstruido no se distingue de uno escrito antes de construir, salvo por el campo que declara cómo se levantó.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — una épica sin historias todavía, y una historia sin fases todavía, tienen forma definida.
@@ -146,6 +166,7 @@ Entonces se ve cuáles quedaron sin llenar
 |---|---|---|
 | [A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo](A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no. Pendiente el commit |
 | [B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual](B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md) | CA-01 | **Cerrada 2026-08-22 — Cumple** (4 de 4; v31.1.0). El molde de la historia gana la columna «Depende de», del punto 8 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
+| [C-EP-003-HU-002-el-planteamiento-se-reconstruye-igual](C-EP-003-HU-002-el-planteamiento-se-reconstruye-igual/plan_trabajo.md) | CA-04 | **Abierta 2026-08-22.** Plan escrito, esperando aprobación. Sale de reconstruir el planteamiento de este mismo repositorio y descubrir que el molde no dice nada sobre el caso |
 
 **La fase retro-documenta y no toca `plantillas/`.** Los tres modelos del encargo existen y se usan a diario; falta su incremento en la especificación del módulo y la prueba del encadenamiento. **Lo que sí falta de verdad** es el planteamiento de este repositorio, que es el pendiente 56 y no se puede reconstruir leyendo el repositorio.
 

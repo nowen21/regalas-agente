@@ -5,7 +5,9 @@
 Se conecta como hook `PostToolUse` sobre `Write|Edit` en `.claude/settings.json`.
 Lee por la entrada estándar el JSON que envía Claude Code y:
 
-  - si el archivo editado NO es un `.md` del proyecto -> no hace nada;
+  - anota que esta sesión tocó ese archivo, sea cual sea su extensión, para
+    que un commit de otra sesión no se lo lleve sin darse cuenta (`80`);
+  - si el archivo editado NO es un `.md` del proyecto -> no hace nada más;
   - si lo es -> comprueba enlaces e índices de ese proyecto.
 
     python hook_md.py [--raiz <carpeta del proyecto>]
@@ -31,7 +33,8 @@ sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
 
-import enlaces                                          # noqa: E402
+import enlaces
+import sesiones                                          # noqa: E402
 from comun import FALLA, RAIZ, preparar_salida          # noqa: E402
 
 
@@ -72,7 +75,18 @@ def main():
     except (json.JSONDecodeError, ValueError):
         return 0            # sin JSON válido no hay nada que revisar
 
-    if not es_md_de(archivo_editado(datos), raiz):
+    editado = archivo_editado(datos)
+
+    # **Se anota todo lo que se edita, no solo los `.md`.** Lo que una sesión
+    # se llevó por delante la vez que pasó fue un `.py` a medio corregir. La
+    # anotación no puede tumbar el enganche: si falla, el trabajo del agente
+    # sigue igual y lo único que se pierde es el aviso del commit.
+    try:
+        sesiones.anotar(raiz, datos.get("session_id") or "", editado)
+    except OSError:
+        pass
+
+    if not es_md_de(editado, raiz):
         return 0
 
     hallazgos = enlaces.validar_enlaces(raiz) + enlaces.validar_indices(raiz)

@@ -100,12 +100,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Cuál es la fecha de corte: desde cuándo se exige que el pendiente cerrado nombre su fase | Usuario | Pendiente |
-| 2 | Dónde se declara — una línea fija al principio del pendiente, o una sección | Usuario | Pendiente |
+| 1 | Cuál es la fecha de corte: desde cuándo se exige que el pendiente cerrado nombre su fase | Usuario | **Resuelta** el 2026-08-18, decisión 26 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **desde el 2026-08-16**, que es cuando nació la exigencia. Lo cerrado antes no se reabre, por `20·M10` |
+| 2 | Dónde se declara — una línea fija al principio del pendiente, o una sección | Usuario | **Resuelta** el 2026-08-18, decisión 27 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **una fila fija en la ficha de cabecera**, como la de «Historia de usuario». Una sección se olvida; una fila de la ficha se ve vacía |
 
 Las dos bloquean T-01 y T-07. Los casos de prueba se pueden escribir antes.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

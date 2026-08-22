@@ -93,11 +93,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Con qué encargo chico se recorren las estaciones | Usuario | Pendiente |
+| 1 | Con qué encargo chico se recorren las estaciones | Usuario | **Resuelta** el 2026-08-22, propuesta 15 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **shopnest-mesa** como proyecto. **Falta el encargo chico y real**, igual que en la fase de HU-006 |
 
 La duda 1 bloquea T-01 y T-02. El CA-03 y la comparación no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

@@ -10,7 +10,7 @@
 | **HU** | [HU-003 Disparo al escribir un archivo](../HU-003-disparo-al-escribir-un-archivo.md) |
 | **Ciclo** | 1 |
 | **Fecha de ejecución** | 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 | **Ambiente** | Un proyecto de mentira en carpeta temporal, con el enganche real |
 
 ### 0.1 Por qué esta corrida se hizo por el camino real

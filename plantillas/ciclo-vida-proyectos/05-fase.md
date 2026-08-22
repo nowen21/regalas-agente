@@ -21,7 +21,7 @@
 
 ## 2. Origen  ·  [`13·DOC12`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)
 
-Declarar 1 de 3 (o híbrido) — regla de origen (complementar/ampliar/continuar) en `02·F12.8`:
+Declarar 1 de 3 (o híbrido), regla de origen (complementar/ampliar/continuar) en `02·F12.8`:
 
 - 📝 **Continúa / modifica fase(s) anterior(es):** «cuál(es) de esta HU y qué retoma, complementa o amplía». Si **complementa**, el identificador usa el formato con complemento (`02·F12.12`).
 - ✨ **Funcionalidad nueva:** «qué introduce que no cubrían las fases previas de la HU».

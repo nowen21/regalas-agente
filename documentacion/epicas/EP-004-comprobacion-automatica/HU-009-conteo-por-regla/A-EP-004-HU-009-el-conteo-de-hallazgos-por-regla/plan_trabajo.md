@@ -97,12 +97,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Dónde vive el registro de conteos: en la carpeta versionada del proyecto, en la que no se versiona, o solo en la salida de la corrida | Usuario | Pendiente |
-| 2 | Si esta fase espera a que exista la corrida completa de HU-008, que es la que le da un único punto donde contar | Usuario | Pendiente |
+| 1 | Dónde vive el registro de conteos: en la carpeta versionada del proyecto, en la que no se versiona, o solo en la salida de la corrida | Usuario | **Resuelta** el 2026-08-18, decisión 25 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **en la carpeta que no se versiona**. `09·G3` deja fuera del control de versiones lo generado, y un conteo lo es |
+| 2 | Si esta fase espera a que exista la corrida completa de HU-008, que es la que le da un único punto donde contar | Usuario | **Resuelta** el 2026-08-18, decisión 31 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **no espera: ya está construida**. `validar.py estandar` corre desde la fase A de HU-008 |
 
 Las dos bloquean T-02 en adelante. T-01 —la regla como dato— se puede hacer sin ellas.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

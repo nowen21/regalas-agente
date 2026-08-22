@@ -126,7 +126,7 @@ Ninguno.
 | La fecha de corte | No hay legado: los 33 ya están enrutados, así que la exigencia rige desde hoy y no reporta a nadie hacia atrás |
 | Dónde se declara — línea fija o sección | **Contestada:** es la fila `Historia de usuario` de la ficha de cabecera, escrita en los 33 archivos. Deja de ser una duda y pasa a ser un hecho medido |
 
-> Esto también **destraba la duda 27 del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md)**, que es la misma pregunta. Se reporta y no se aprovecha desde acá: cerrarla es de la fase A.
+> Esto también **destraba la duda 27 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md)**, que es la misma pregunta. Se reporta y no se aprovecha desde acá: cerrarla es de la fase A.
 
 ---
 

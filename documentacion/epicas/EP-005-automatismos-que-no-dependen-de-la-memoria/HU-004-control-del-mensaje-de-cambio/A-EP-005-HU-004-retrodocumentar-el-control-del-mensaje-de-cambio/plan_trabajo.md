@@ -98,12 +98,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si el disparo es un enganche de la herramienta o del control de versiones — uno viaja con el proyecto, el otro se queda en la máquina | Usuario | Pendiente |
-| 2 | Si un mensaje que no pasa detiene el commit o solo avisa | Usuario | Pendiente |
+| 1 | Si el disparo es un enganche de la herramienta o del control de versiones — uno viaja con el proyecto, el otro se queda en la máquina | Usuario | **Resuelta** el 2026-08-18, decisión 39 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **enganche del control de versiones**, que es lo que ya está construido y funciona. La decisión original decía lo contrario y era falsa: se corrigió el mismo día al ver que cada commit imprimía su comprobación |
+| 2 | Si un mensaje que no pasa detiene el commit o solo avisa | Usuario | **Resuelta** el 2026-08-18, decisión 8 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **detiene**. El molde del mensaje es forma, y la forma se comprueba sin criterio |
 
 Las dos bloquean T-01. Los casos de prueba se pueden escribir antes.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

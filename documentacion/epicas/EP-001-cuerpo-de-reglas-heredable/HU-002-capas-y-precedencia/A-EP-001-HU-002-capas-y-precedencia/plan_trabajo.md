@@ -100,9 +100,9 @@ Estas decisiones se registran como señal cuando exista la memoria (EP-006). Mie
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Si el preámbulo es una capa más o queda fuera del orden de capas, porque no exige nada: dice quién es el agente y cómo funcionan las reglas | Usuario | Pendiente |
-| 2 | Cuántas capas hay en total, contando la del proyecto que todavía no existe, y cómo se nombran | Usuario | Pendiente |
-| 3 | Si una convención puede marcarse como opcional dentro de su capa, o si eso es una capa aparte | Usuario | Pendiente |
+| 1 | Si el preámbulo es una capa más o queda fuera del orden de capas, porque no exige nada: dice quién es el agente y cómo funcionan las reglas | Usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: queda **fuera del orden de capas**. El README lo lista como preámbulo y no como capa, y la razón es la que la duda misma da: no exige nada, dice quién es el agente |
+| 2 | Cuántas capas hay en total, contando la del proyecto que todavía no existe, y cómo se nombran | Usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: **tres**, y así las nombra el README: núcleo blindado, convenciones base y capa de proyecto. La del proyecto ya existe: son las plantillas que se copian |
+| 3 | Si una convención puede marcarse como opcional dentro de su capa, o si eso es una capa aparte | Usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: **sí, dentro de su capa**. Los capítulos `15`, `18`, `19`, `21` y `22` están marcados *opt-in* y siguen siendo capa 2 |
 
 Ninguna tarea de construcción arranca con una duda abierta que la bloquee. Las tres bloquean T-02 en adelante.
 

@@ -35,7 +35,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 > Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
 >
-> **Estados:** ✅ implementado · ❌ pendiente (con destino explícito) · N/A (con motivo) · parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ — no se difiere como N/A.
+> **Estados:** ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ, no se difiere como N/A.
 
 | Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
@@ -55,7 +55,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 **Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
 
-**Archivos tocados que el plan no declaraba**  ·  [`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
+**Archivos tocados que el plan no declaraba**, [`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
 
 | Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
 |---|---|---|
@@ -71,8 +71,8 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 > **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
 
-- **Fuente:** «`resultado_pruebas.md`» · **Veredicto:** «Cumple / Cumple con observaciones».
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico — solo las suites que la fase toca).
+- **Fuente:** «`resultado_pruebas.md`», **Veredicto:** «Cumple / Cumple con observaciones».
+- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
 - **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
   - «Lista de comprobaciones hechas a mano y su resultado.»
 - **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
@@ -129,4 +129,4 @@ Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo ha
 - Cambios de esquema / migraciones a correr: «orden».
 - Datos base / permisos a sembrar: «comandos».
 - Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto · ver §7 del `plan_trabajo`».
+- Reversión: «rollback previsto, ver §7 del `plan_trabajo`».

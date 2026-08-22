@@ -9,7 +9,7 @@
 | **Fase** | `A-EP-002-HU-005-el-sello-de-version-en-el-cierre` |
 | **HU** | [HU-005 Sellar el trabajo cerrado](../HU-005-sellar-el-trabajo-cerrado.md) |
 | **Ciclo** | 1 · **Fecha** 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 
 ### 0.1 Las dos dudas que la detenían
 

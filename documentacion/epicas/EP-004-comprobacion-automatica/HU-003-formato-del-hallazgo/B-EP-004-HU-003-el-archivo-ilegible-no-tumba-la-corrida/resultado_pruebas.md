@@ -10,7 +10,7 @@
 | **HU** | [HU-003 Formato del hallazgo](../HU-003-formato-del-hallazgo.md) |
 | **Ciclo** | 1 |
 | **Fecha de ejecución** | 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 | **Ambiente y versión** | El repositorio del estándar en `main`, versión 31.4.0, Windows, Python 3.11 |
 
 ### 0.1 Esta fase sí había que construirla

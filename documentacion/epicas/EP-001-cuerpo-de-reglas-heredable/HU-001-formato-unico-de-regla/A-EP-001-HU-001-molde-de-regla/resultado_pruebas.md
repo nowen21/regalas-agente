@@ -11,7 +11,7 @@
 | **Plan de pruebas de origen** | [plan_pruebas.md](plan_pruebas.md), PP-001 versión 1.0 |
 | **Ciclo** | 1 |
 | **Fecha de ejecución** | 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 | **Ambiente y versión** | El repositorio del estándar en `main`, versión 31.4.0 |
 
 ### 0.1 Cómo llega esta corrida

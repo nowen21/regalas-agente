@@ -93,11 +93,11 @@ Ninguno. Los «roles» de esta HU son roles de trabajo, no permisos de un sistem
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Con qué encargo se prueba el CA-03 — tiene que ser uno real y chico, corrido dos veces | Usuario | Pendiente |
+| 1 | Con qué encargo se prueba el CA-03 — tiene que ser uno real y chico, corrido dos veces | Usuario | **Resuelta** el 2026-08-22, propuesta 14 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **shopnest-mesa** como proyecto. **Falta el encargo chico y real**, que no está en ningún archivo y sigue siendo dato del usuario |
 
 La duda 1 bloquea T-04. Los otros dos CA no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

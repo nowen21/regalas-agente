@@ -97,11 +97,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si la corrida completa incluye las comprobaciones que corren herramientas del proyecto —linter, pruebas, audit—, que son lentas, o si esas van aparte | Usuario | Pendiente |
+| 1 | Si la corrida completa incluye las comprobaciones que corren herramientas del proyecto —linter, pruebas, audit—, que son lentas, o si esas van aparte | Usuario | **Resuelta** el 2026-08-18, decisión 23 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **no las incluye**. `linter`, `suite` y `audit` son subcomandos aparte porque tardan, y una corrida que tarda no se corre. Ya estaba decidido al construirlo: faltaba escribirlo |
 
 La duda 1 bloquea T-01. Las pruebas del CA-02 no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

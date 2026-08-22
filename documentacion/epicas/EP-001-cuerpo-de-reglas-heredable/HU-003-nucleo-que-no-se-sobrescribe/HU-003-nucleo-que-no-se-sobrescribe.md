@@ -121,7 +121,7 @@ Y no presenta el trabajo como terminado
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado](A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/resultado_pruebas.md) — el CA-01 y el CA-03 sí; el CA-02 no: una clave pegada sin comillas queda en claro |
 
 **La fase retro-documenta.** Las seis reglas del núcleo existen y mandan desde la primera versión; lo que faltaba era la cadena. Lo único nuevo que le entra a `base/` es el criterio de entrada al núcleo, que la RN-06 pide y no está escrito.
 

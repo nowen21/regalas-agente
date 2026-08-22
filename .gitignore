@@ -32,3 +32,8 @@ interfaz/terceros/
 interfaz/.venv/
 interfaz/staticfiles/
 interfaz/.env
+
+# Qué archivo tocó cada sesión, para que un commit no se lleve lo ajeno (`80`).
+# Es estado de trabajo, no memoria: versionarlo lo volvería el próximo archivo
+# que dos sesiones se pisan.
+historico-chat/.tocado/

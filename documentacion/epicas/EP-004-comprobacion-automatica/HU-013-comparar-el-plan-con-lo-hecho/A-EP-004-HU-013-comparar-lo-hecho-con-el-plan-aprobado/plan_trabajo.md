@@ -99,12 +99,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Contra qué se comparan los archivos tocados: la rama de la fase, el commit único, o lo que esté sin guardar | Usuario | Pendiente |
-| 2 | Si el CA-03 se intenta comprobar o se declara criterio humano | Usuario | Pendiente |
+| 1 | Contra qué se comparan los archivos tocados: la rama de la fase, el commit único, o lo que esté sin guardar | Usuario | **Resuelta** el 2026-08-18, decisión 22 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **contra el commit del que salió la fase**. Ni la rama, que arrastra lo ajeno, ni lo que está sin guardar, que cambia mientras se mira |
+| 2 | Si el CA-03 se intenta comprobar o se declara criterio humano | Usuario | **Resuelta** el 2026-08-18, decisión 10 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **criterio humano, y se declara**. Comparar lo hecho con lo planeado necesita leer los dos textos, y fingir que se comprueba es peor que decir que no |
 
 La duda 1 bloquea T-01. La duda 2 bloquea T-06, y el caso a mano de T-05 se puede hacer igual.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

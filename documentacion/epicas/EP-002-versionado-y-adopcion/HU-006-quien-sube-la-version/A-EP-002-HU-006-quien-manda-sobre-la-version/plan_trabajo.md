@@ -105,13 +105,13 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Cuál de las tres salidas del pendiente 22: la versión se sube al guardar el cambio; cada sesión escribe su entrada del registro aparte y se juntan al guardar; o una sola sesión a la vez toca el estándar | Usuario | Pendiente |
-| 2 | Si el acuerdo cubre cualquier archivo único compartido o queda acotado a `VERSION` y al registro | Usuario | Pendiente |
-| 3 | En qué capítulo cae la regla, según lo que resuelvan las dos anteriores | Usuario | Pendiente |
+| 1 | Cuál de las tres salidas del pendiente 22: la versión se sube al guardar el cambio; cada sesión escribe su entrada del registro aparte y se juntan al guardar; o una sola sesión a la vez toca el estándar | Usuario | **Resuelta** el 2026-08-18, decisión 36 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): la salida 1 del pendiente 22: **la versión se sube al guardar el cambio**, no al editar. La salida 3, una sola sesión a la vez, ya se incumplió dos veces esa semana |
+| 2 | Si el acuerdo cubre cualquier archivo único compartido o queda acotado a `VERSION` y al registro | Usuario | **Resuelta** el 2026-08-18, decisión 37 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **cualquier archivo único compartido**, no solo `VERSION` y el registro. Ya pasó con `pendientes/README.md` |
+| 3 | En qué capítulo cae la regla, según lo que resuelvan las dos anteriores | Usuario | **Resuelta** el 2026-08-18, decisión 6 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **capítulo `02`**. Quién sube la versión es un paso del flujo, no del control de versiones |
 
 Las tres bloquean todas las tareas de construcción. **Ninguna arranca con una duda abierta que la bloquee.**
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

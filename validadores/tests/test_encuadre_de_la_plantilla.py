@@ -79,7 +79,7 @@ class EncuadreDeLaPlantilla(unittest.TestCase):
         return [h for h in plantillas.validar(doc, pla)
                 if h.severidad == FALLA
                 and ("texto que la plantilla fija" in h.mensaje
-                     or "no cita ninguna regla" in h.mensaje)]
+                     or "trae una fecha" in h.mensaje)]
 
     # ── CP-001 · el encuadre borrado se reprueba ─────────────────────────
 
@@ -116,7 +116,7 @@ class EncuadreDeLaPlantilla(unittest.TestCase):
                      u"## 0. Identificación\n\nLleno.\n")
         h = self.fallas_de_encuadre(documento, PLANTILLA_CON_ENCUADRE)
         self.assertEqual(1, len(h), "es el caso que ya ocurrió y no se detectó")
-        self.assertIn(u"no cita ninguna regla", h[0].mensaje)
+        self.assertIn(u"trae una fecha", h[0].mensaje)
 
     # ── CP-004 · plantilla sin bloque fijo no exige ninguno ──────────────
 
@@ -140,6 +140,42 @@ class EncuadreDeLaPlantilla(unittest.TestCase):
                                                      PLANTILLA_SIN_CITAS),
                          "la exigencia de citar sale de la plantilla, no del programa")
 
+    # ── CP-005b · el caso que hizo cambiar el criterio a mitad de fase ───
+
+    def test_cp005b_el_encuadre_que_dice_la_cadena_con_palabras_pasa(self):
+        """`planteamiento.md` de este repositorio no cita un solo identificador.
+
+        Deletrea la cadena en palabras: «análisis, alcance, épica, historias,
+        spec, plan aprobado». Dice exactamente lo que tiene que decir. El primer
+        criterio que se probó —exigir una cita de regla— lo reprobaba, y un
+        validador que reprueba lo que está bien enseña a ignorar los veredictos.
+        """
+        documento = (u"# Brief del agente\n\n"
+                     u"**Encuadre.** Este documento dice qué se necesita y qué "
+                     u"no se negocia. El cómo y el cuándo los pone el estándar: "
+                     u"análisis, alcance, épica, historias de usuario, spec, "
+                     u"plan aprobado y solo ahí la implementación.\n\n"
+                     u"---\n\n"
+                     u"## 0. Identificación\n\nLleno.\n")
+        self.assertEqual([], self.fallas_de_encuadre(documento,
+                                                     PLANTILLA_CON_ENCUADRE),
+                         "decir la cadena con palabras es tan válido como citarla")
+
+    def test_cp005c_la_tabla_de_ficha_no_es_el_bloque_fijo(self):
+        """La otra mitad del mismo defecto: 110 documentos reprobados de más.
+
+        El plan de pruebas trae su tabla de ficha antes del primer separador, y
+        esa tabla tiene una fila `Fecha`. Contarla como texto fijo reprobaba
+        todos los planes de pruebas del repositorio.
+        """
+        texto = (u"# Plan de Pruebas — «alcance»\n\n"
+                 u"**Para qué sirve este documento.** Dice cómo se comprueba.\n\n"
+                 u"| Campo | Valor |\n|---|---|\n| **Fecha** | 2026-08-22 |\n\n"
+                 u"---\n\n## 1. Introducción\n")
+        fijo = plantillas.bloque_fijo(texto)
+        self.assertEqual(1, len(fijo), "la ficha es dato llenado, no texto fijo")
+        self.assertIn(u"Para qué sirve", fijo[0][1])
+
     # ── lo que sostiene el diseño: se identifica por posición ────────────
 
     def test_el_recuadro_de_instrucciones_no_es_el_bloque_fijo(self):
@@ -155,6 +191,43 @@ class EncuadreDeLaPlantilla(unittest.TestCase):
         fijo = plantillas.bloque_fijo(texto)
         self.assertEqual(1, len(fijo),
                          "sin separador, la cabecera termina en el primer `##`")
+
+
+class ElPlanteamientoConPrefijoSeResuelve(unittest.TestCase):
+    """El molde manda nombrarlo `prompts/<slug>-planteamiento.md`.
+
+    Buscando solo el nombre pelado, la comprobación no alcanzaba a ninguno de
+    los documentos que el molde produce: en este repositorio, a uno solo.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.prompts = os.path.join(self.tmp, "prompts")
+        os.makedirs(self.prompts)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _deducir(self, carpeta, nombre):
+        ruta = os.path.join(carpeta, nombre)
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(u"# Planteamiento — Algo\n\n---\n\n## 0. Identificación\n")
+        return plantillas.deducir_plantilla(ruta, u"# Planteamiento — Algo\n")
+
+    def test_el_planteamiento_con_prefijo_en_prompts_se_resuelve(self):
+        self.assertIsNotNone(self._deducir(self.prompts, "cimiento-planteamiento.md"),
+                             "el molde manda este nombre y no se estaba resolviendo")
+
+    def test_fuera_de_prompts_no_se_resuelve(self):
+        """Un pendiente que se llama `...-tiene-su-planteamiento.md` no es uno.
+
+        Aceptar el sufijo en cualquier carpeta lo comparaba contra el molde del
+        planteamiento y lo reprobaba por secciones que no tiene por qué tener.
+        """
+        otra = os.path.join(self.tmp, "pendientes")
+        os.makedirs(otra)
+        self.assertIsNone(self._deducir(otra, "el-estandar-tiene-su-planteamiento.md"),
+                          "resolvió un pendiente contra el molde del planteamiento")
 
 
 if __name__ == "__main__":

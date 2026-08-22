@@ -86,7 +86,7 @@ Y dice dónde buscó antes de preguntar
 
 **Cómo validarlo:**
 
-1. Elegir algo que efectivamente no esté decidido en el repositorio. Sirve cualquiera de las 42 dudas de [pendientes/59-las-42-dudas-que-detienen-26-fases.md](../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+1. Elegir algo que efectivamente no esté decidido en el repositorio. Sirve cualquiera de las 42 dudas de [pendientes/hecho/las-42-dudas-que-detenian-26-fases.md](../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md).
 2. Pedirle al agente el trabajo que la necesita.
 3. Leer la respuesta. Resultado esperado: pregunta, y antes de la pregunta dice dónde buscó y no encontró.
 - **Aprobado cuando:** la pregunta llega acompañada de dónde se buscó. Una pregunta sin eso incumple la regla aunque la pregunta sea correcta.

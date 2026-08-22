@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import acciones         # noqa: E402
 import aislamiento      # noqa: E402
 import amarre           # noqa: E402
+import sesiones         # noqa: E402
 import sitio            # noqa: E402
 import temas            # noqa: E402
 import brevedad         # noqa: E402
@@ -99,6 +100,7 @@ FUERA_DE_LA_CORRIDA = {
     "traza": "necesita la transcripción de una sesión",
     "temas": "escribe un archivo cuando se le pide `--aplicar`",
     "plan": "necesita el commit del que salió la fase para comparar archivos",
+    "sesiones": "mira lo que está preparado para un commit; fuera de esa hora no hay nada que mirar",
 }
 
 
@@ -433,6 +435,18 @@ def cmd_marcas(a):
                     f"Marcas de generación automática · {relativo(raiz)}")
 
 
+def cmd_sesiones(a):
+    """`80` · Que un commit no se lleve el trabajo de otra sesión.
+
+    No mira de quién es el commit —`git` no lo sabe— sino si lo que entra lo
+    tocaron dos sesiones distintas. **Avisa y no detiene:** retomar lo que otra
+    dejó a medias es normal; hacerlo sin darse cuenta, no.
+    """
+    raiz = os.path.abspath(a.raiz)
+    return reportar(sesiones.validar_preparados(raiz),
+                    f"Sesiones mezcladas en el commit · {relativo(raiz)}")
+
+
 def cmd_expediente(a):
     """El mapa de completitud del expediente de un proyecto.
 
@@ -688,6 +702,11 @@ def main():
     ix.add_argument("--aplicar", action="store_true",
                     help="escribe de verdad; sin esto solo simula")
     ix.set_defaults(func=cmd_indices)
+
+    se = sub.add_parser("sesiones",
+                        help="que el commit no mezcle el trabajo de dos sesiones · avisa")
+    se.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    se.set_defaults(func=cmd_sesiones)
 
     ma = sub.add_parser("marcas",
                         help="marcas de generación automática en lo que se hereda · 00·ID8")

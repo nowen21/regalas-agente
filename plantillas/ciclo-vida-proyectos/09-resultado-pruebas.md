@@ -59,11 +59,11 @@
 | **Ningún paso queda vacío** | «Qué salió» se llena siempre: con lo que salió, con `no se hizo` o con `no quedó registrado`. En blanco se lee como aprobado |
 | **Detallado es repetible** | Está suficientemente detallado cuando alguien que no estuvo puede repetir la prueba leyendo solo esto, sin preguntar nada. Comandos, rutas y datos van literales |
 
-**Lo que hace que un caso cumpla** es que lo que salió sea lo que la columna del medio decía. Si se hizo otra cosa —aunque haya salido bien—, el caso **no cumple**: se probó otra cosa. El veredicto no se repite acá: vive en la tabla de casos ejecutados.
+**Lo que hace que un caso cumpla** es que lo que salió sea lo que la columna del medio decía. Si se hizo otra cosa (aunque haya salido bien), el caso **no cumple**: se probó otra cosa. El veredicto no se repite acá: vive en la tabla de casos ejecutados.
 
 Si un paso sale distinto de lo esperado, la fila lo dice. Un paso que no coincide y nadie explica convierte el "cumple" en una afirmación sin respaldo.
 
-> **Por qué tanto detalle.** Con el paso a paso a medias —"se creó el archivo y apareció"— un caso puede pasar habiendo probado otra cosa. Pasó: un caso decía *"correr el enganche"* y lo que se corrió fue la función que ese enganche usa, con el dato que el enganche no tiene. Los tres criterios de esa fase quedaron en "cumple" sin estar probados, y el defecto salió a la sesión siguiente. Con las tres columnas al lado, el desvío se ve en la fila.
+> **Por qué tanto detalle.** Con el paso a paso a medias ("se creó el archivo y apareció") un caso puede pasar habiendo probado otra cosa. Pasó: un caso decía *"correr el enganche"* y lo que se corrió fue la función que ese enganche usa, con el dato que el enganche no tiene. Los tres criterios de esa fase quedaron en "cumple" sin estar probados, y el defecto salió a la sesión siguiente. Con las tres columnas al lado, el desvío se ve en la fila.
 
 **Ejemplo:**
 

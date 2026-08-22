@@ -7,7 +7,7 @@
 
 ## Contra qué se compara lo tocado
 
-**Contra el commit del que salió la fase**, que se pasa con `--desde`. Es la decisión 22 del [pendiente 59](../../pendientes/59-las-42-dudas-que-detienen-26-fases.md): la rama arrastra trabajo ajeno y lo que está sin guardar cambia mientras se mira; el commit de origen es el único punto fijo.
+**Contra el commit del que salió la fase**, que se pasa con `--desde`. Es la decisión 22 del [pendiente 59](../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): la rama arrastra trabajo ajeno y lo que está sin guardar cambia mientras se mira; el commit de origen es el único punto fijo.
 
 Sin `--desde` no se inventa nada: se dice que falta el dato.
 

@@ -40,7 +40,7 @@ Se usan las **once etapas de [`02·F15`](../../../../../base/02-flujo-de-trabajo
 
 ---
 
-> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Construida: la comprobación hacia arriba, que **detiene**.
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). Construida: la comprobación hacia arriba, que **detiene**.
 
 ## 1.1 Veredicto de las pruebas
 
@@ -76,7 +76,7 @@ Sin veredicto: la fase no se ha ejecutado. El `resultado_pruebas.md` y el `funci
 - **B-01 · El texto de [`02·F23`](../../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) no dice «desde que se abre».** Esta fase construye el programa que comprueba; la regla que exige sigue sin decirlo. Un programa que hace fallar por algo que la regla no pide es peor que no tenerlo.
 - **B-02 · Ninguna historia es dueña del texto del capítulo `02`.** Se buscó el 2026-08-17 en las siete épicas: EP-001 declara como módulo los capítulos `00` y `01` y el cuerpo de reglas en general, y nadie declara el `02`. Sin dueño, el B-01 no tiene dónde caer. **Es un hueco del árbol de épicas** y sale como pendiente nuevo.
 
-**Y una que sí es buena noticia:** esta fase **destraba la duda 27** del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) —«¿dónde se declara: una línea fija al principio, o una sección?»—, que es la segunda de las dos que detienen a la fase A. La respuesta ya no es una opinión: es la fila `Historia de usuario` de la ficha, medida en 33 archivos. Cerrarla formalmente es de la fase A, no de esta.
+**Y una que sí es buena noticia:** esta fase **destraba la duda 27** del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) —«¿dónde se declara: una línea fija al principio, o una sección?»—, que es la segunda de las dos que detienen a la fase A. La respuesta ya no es una opinión: es la fila `Historia de usuario` de la ficha, medida en 33 archivos. Cerrarla formalmente es de la fase A, no de esta.
 
 ---
 

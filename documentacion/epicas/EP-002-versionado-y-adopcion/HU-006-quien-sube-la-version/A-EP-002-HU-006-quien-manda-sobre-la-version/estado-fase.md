@@ -88,7 +88,7 @@
 
 ## 4. Si se bloqueó
 
-**No quedó bloqueada.** Estuvo detenida desde el 2026-08-17 por las tres dudas de §2.7 del plan; se decidieron el 2026-08-18 en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) y la fase corrió entera el mismo día.
+**No quedó bloqueada.** Estuvo detenida desde el 2026-08-17 por las tres dudas de §2.7 del plan; se decidieron el 2026-08-18 en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) y la fase corrió entera el mismo día.
 
 ---
 

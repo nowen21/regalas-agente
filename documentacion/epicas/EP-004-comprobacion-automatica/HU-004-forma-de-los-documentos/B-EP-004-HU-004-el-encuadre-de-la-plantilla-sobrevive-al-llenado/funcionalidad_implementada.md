@@ -1,6 +1,6 @@
-# Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
+# Funcionalidad implementada — Fase B-EP-004-HU-004-el-encuadre-de-la-plantilla-sobrevive-al-llenado   ·   `[CAPA 3]`
 
-> Documento de **cierre de una fase** ([`02·F6`](../../../../../base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](../../../../../base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la **trazabilidad especificación → código** ([`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
+**Para qué sirve este documento.** Es el cierre de la fase: **qué quedó hecho, qué se probó, qué se decidió y qué deuda quedó**. El plan dice lo que se iba a hacer; esto dice lo que pasó, para poder comparar los dos.
 
 ---
 
@@ -8,125 +8,89 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
-| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
-| **Fecha de cierre** | AAAA-MM-DD |
-| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
-| **Commit** | «hash — se completa al commitear» |
-
-> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
+| **Fase** | `B-EP-004-HU-004-el-encuadre-de-la-plantilla-sobrevive-al-llenado` |
+| **Épica / HU** | [EP-004](../../epica.md) · [HU-004](../HU-004-forma-de-los-documentos.md) |
+| **CA que cierra** | [CA-05](../HU-004-forma-de-los-documentos.md#ca-05--el-texto-fijo-de-la-plantilla-sobrevive-al-llenado) |
+| **Fecha de cierre** | 2026-08-22 |
+| **Veredicto** | [Cumple](resultado_pruebas.md#6-veredicto-de-la-fase) |
 
 ---
 
 ## 1. Qué se implementó — resumen
 
-«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
+`validar.py plantilla` gana una quinta comprobación: **el texto que la plantilla fija antes de su primer separador tiene que sobrevivir al llenado**. Falla si el documento lo borró, y falla si lo reemplazó por una nota de procedencia, que es lo que se reconoce por traer una fecha que la plantilla no tiene ahí.
 
 ---
 
 ## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
 
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
-
 ### 2.1 Especificación → implementación
 
-> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
->
-> **Estados:** ✅ implementado · ❌ pendiente (con destino explícito) · N/A (con motivo) · parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ — no se difiere como N/A.
-
-| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
-|---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
-
-**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
+| Exigencia | Dónde quedó | Prueba que lo cubre | Evidencia |
+|---|---|---|---|
+| [CA-05](../HU-004-forma-de-los-documentos.md#ca-05--el-texto-fijo-de-la-plantilla-sobrevive-al-llenado) | `plantillas.py`, comprobación 5 de `validar()` | CP-001, CP-002, CP-003, CP-005b | [resultado_pruebas.md](resultado_pruebas.md) §2 |
+| RN-07 | `plantillas.bloque_fijo()` | CP-001, CP-004, CP-005c | Ídem |
+| RN-08 | `_FECHA` y la segunda rama de la comprobación 5 | CP-003, CP-005 | Ídem |
 
 ### 2.2 Plan de trabajo → ejecución
 
-> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
-
-| Tarea | Qué era | Estado | Dónde quedó | Evidencia |
-|---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
-
-**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
-
-**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
-
-**Archivos tocados que el plan no declaraba**  ·  [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
-
-| Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
+| Tarea | Qué decía el plan | Qué se hizo |
 |---|---|---|
-| `«ruta»` | | |
+| T-01 | Escribir `bloque_fijo(texto)` | Hecho. Con un ajuste que el plan no preveía: salta también las filas de tabla, o reprobaba 110 documentos |
+| T-02 | Comprobar que el documento tenga bloque fijo si su plantilla lo tiene | Hecho |
+| T-03 | Si la plantilla cita reglas ahí, exigir que el documento cite alguna | **Cambiado.** El criterio reprobaba un documento correcto, así que se sustituyó por la fecha en el bloque fijo. Medido antes de decidir: el solapamiento de vocabulario daba 31%, 17% y 11%, o sea que no separaba nada |
+| T-04 | Escribir las pruebas | Hecho, y dos más que el plan no pedía: los dos defectos que la ejecución destapó |
+| T-05 | Correr contra los documentos reales | Hecho. 650 revisados, 5 reprobados, ninguno por error del validador |
+| T-06 | `CHANGELOG` y `VERSION` | Hecho, sobre `31.12.0`. El plan decía `31.10.0` y quedó viejo: otra sesión subió la versión a `31.11.0` mientras esta fase corría |
 
-> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
-
-**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
+**Archivos tocados fuera de los que el plan declaraba:** ninguno, salvo `validadores/tests/test_plantillas_origen_regla.py`, que hubo que poner al día porque su fixture copiaba literal una línea del molde que la otra fase de la jornada cambió. Se anota acá porque [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide que descubrir un archivo nuevo se reporte y no se edite en silencio.
 
 ---
 
-## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+## 3. Qué se probó  ·  [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
-> **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
-
-- **Fuente:** «`resultado_pruebas.md`» · **Veredicto:** «Cumple / Cumple con observaciones».
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico — solo las suites que la fase toca).
-- **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
-  - «Lista de comprobaciones hechas a mano y su resultado.»
-- **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
+Las dos suites que dependen de [`validadores/plantillas.py`](../../../../../validadores/plantillas.py), 14 pruebas, en verde. Más el barrido sobre los documentos reales del repositorio, que es lo que de verdad mide el riesgo de esta fase.
 
 ---
 
 ## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
 
-- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
-- **Permisos o datos base sembrados:** «si aplica».
+```
+python validadores/validar.py plantilla <documento.md>
+python validadores/validar.py plantilla <documento.md> --contra plantillas/<molde>.md
+```
+
+La comprobación entra sola: no hay bandera que la active. Si el documento resuelve su plantilla y esa plantilla tiene texto fijo, se comprueba.
 
 ---
 
-## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md)
 
-| Decisión | Por qué (y qué se descartó) | Señal registrada |
-|---|---|---|
-| | | «id / enlace en la memoria» |
+**El texto fijo se identifica por posición, no por su etiqueta.** La etiqueta cambió dos veces en un solo día: era «Encuadre para el agente» en el molde y quedó como «Para el agente» en el planteamiento de Cimiento. Un validador atado a una redacción reprueba lo que está bien apenas alguien corrige el molde.
+
+**El criterio no es semántico, y se llegó a eso midiendo.** La primera idea era distinguir «instrucción de uso» de «nota de procedencia» por el vocabulario. Los tres casos reales dieron 31%, 17% y 11% de solapamiento con el molde: un umbral entre 11 y 17 es una moneda al aire. La fecha, en cambio, es mecánica, y en 650 documentos no dio un solo falso positivo.
+
+**Lo que se comprueba es que esté y que no cuente procedencia, no que diga lo correcto.** Es el límite que el [pendiente 77](../../../../../pendientes/hecho/el-planteamiento-conserva-su-encuadre.md) se puso, y se respetó.
 
 ---
 
 ## 6. Deuda técnica y pendientes generados
 
-| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|---|
-| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
-
-**Los cuatro orígenes**, y qué dice cada uno:
-
-| Origen | Qué pasó | Qué significa |
-|---|---|---|
-| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../../../../../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
-| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
-| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
-| **Diferido por el plan** | El propio [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
-
-> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
+| Qué queda | Dónde |
+|---|---|
+| Cinco planes de pruebas perdieron la línea fija de su molde | D-04 de [resultado_pruebas.md](resultado_pruebas.md) §4. Falta su pendiente |
+| El molde del planteamiento todavía no declara su encuadre como texto fijo | [Fase C de EP-003 · HU-002](../../../EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/C-EP-003-HU-002-el-planteamiento-se-reconstruye-igual/plan_trabajo.md), sin aprobar |
+| La comprobación no se corre sola en ninguna batería: hay que invocarla por documento | Sin anotar. Es candidata a una fase de EP-004 · HU-008 |
 
 ---
 
-## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
+## 7. Índices y mapas actualizados
 
-- [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
-- [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
-- [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](../../../../../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizado con lo realmente implementado.
+- [HU-004](../HU-004-forma-de-los-documentos.md): CA-05, RN-07, RN-08 y la fila de esta fase en §8.
+- El mapa del amarre de `validadores/` no se tocó, y su prueba ya fallaba antes de esta fase.
 
 ---
 
-## 8. Despliegue — si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
+## 8. Despliegue — si aplica
 
-Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
-
-- Cambios de esquema / migraciones a correr: «orden».
-- Datos base / permisos a sembrar: «comandos».
-- Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto · ver §7 del `plan_trabajo`».
+No aplica. Es un validador que corre en la máquina de quien lo invoca.

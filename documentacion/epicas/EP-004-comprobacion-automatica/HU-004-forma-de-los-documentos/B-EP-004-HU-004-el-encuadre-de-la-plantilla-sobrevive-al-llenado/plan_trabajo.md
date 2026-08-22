@@ -18,7 +18,7 @@
 
 **ORIGEN:**
 
-- ✨ **Funcionalidad nueva:** la comprobación que pide el [pendiente 77](../../../../../pendientes/77-el-planteamiento-conserva-su-encuadre.md). Sale del hallazgo H-2 de [2026-08-22 · sesión 2](../../../../../historico-chat/resumenes/2026-08-22/sesion-2.md): el planteamiento de este repositorio se escribió con una nota de procedencia en el lugar del encuadre, y nada lo detuvo.
+- ✨ **Funcionalidad nueva:** la comprobación que pide el [pendiente 77](../../../../../pendientes/hecho/el-planteamiento-conserva-su-encuadre.md). Sale del hallazgo H-2 de [2026-08-22 · sesión 2](../../../../../historico-chat/resumenes/2026-08-22/sesion-2.md): el planteamiento de este repositorio se escribió con una nota de procedencia en el lugar del encuadre, y nada lo detuvo.
 
 **CA de la HU que cubre esta fase:**
 

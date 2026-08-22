@@ -105,11 +105,11 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Cuáles candidatas rechazadas se usan como caso — el usuario es quien recuerda las que se propusieron y no entraron | Usuario | Pendiente |
+| 1 | Cuáles candidatas rechazadas se usan como caso — el usuario es quien recuerda las que se propusieron y no entraron | Usuario | **Resuelta el 2026-08-18**, decisión 1 del pendiente 59: el criterio de entrada al núcleo se difiere a esta misma HU, que es la regla de las reglas |
 
 La duda 1 bloquea T-02 y T-05. El resto no depende de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

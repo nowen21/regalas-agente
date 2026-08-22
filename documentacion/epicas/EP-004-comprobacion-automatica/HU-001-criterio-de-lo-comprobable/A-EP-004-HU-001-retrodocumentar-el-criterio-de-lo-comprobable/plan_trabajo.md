@@ -93,11 +93,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si el criterio entra al cuerpo de `M9` o si `M9` lo enlaza y el criterio se queda en `validadores/` | Usuario | Pendiente |
+| 1 | Si el criterio entra al cuerpo de `M9` o si `M9` lo enlaza y el criterio se queda en `validadores/` | Usuario | **Resuelta el 2026-08-18**, decisión 5 del pendiente 59: `M9` enlaza y el criterio vive en `validadores/`, para no sacar a `M9` del molde de cuatro líneas |
 
 La duda 1 bloquea T-01 y T-02. Las pruebas no dependen de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

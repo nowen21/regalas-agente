@@ -102,11 +102,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si el subcomando es uno con dos modos —el estándar en seco y el catálogo del proyecto— o dos subcomandos distintos | Usuario | Pendiente |
+| 1 | Si el subcomando es uno con dos modos —el estándar en seco y el catálogo del proyecto— o dos subcomandos distintos | Usuario | **Resuelta** el 2026-08-18, decisión 38 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **uno con dos modos**. `validar.py metareglas --catalogo` ya funciona así |
 
 La duda 1 bloquea T-01 y T-07, que son la puerta. Nada más se puede probar sin ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

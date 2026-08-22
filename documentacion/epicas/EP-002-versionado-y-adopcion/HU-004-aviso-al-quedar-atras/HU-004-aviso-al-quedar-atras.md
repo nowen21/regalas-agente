@@ -142,7 +142,7 @@ Y ningún archivo del proyecto cambió por el aviso
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase](A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no: el aviso existe y hay que pedirlo a mano |
 
 **La fase retro-documenta.** El aviso sale solo al abrir la sesión. Lo que le falta es la tercera parte de la RN-02: **no dice qué cambió entre las dos versiones**. Y el CA-03 tiene una excepción que hay que dejar escrita — la derogación sin adoptar sí detiene la fase (`02·F22`).
 

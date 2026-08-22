@@ -11,6 +11,108 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 32.0.1 — 2026-08-22
+
+**PARCHE** (una carpeta que el documento del proyecto nombraba de dos formas; nadie tiene que hacer nada).
+
+**Una misma carpeta se llamaba de dos maneras en el mismo archivo.** El documento que se instala en cada proyecto para decirle al agente cómo trabajar ahí nombraba de dos formas distintas el sitio donde queda el historial de actualizaciones. Solo una de las dos es la real, y es donde el instalador escribe.
+
+**Cómo se encontró:** buscando. Se fue a mirar el historial de un proyecto real, se buscó en el sitio que decía el segundo nombre, no estaba, y por un momento pareció que el historial no existía. Existía, con dieciocho registros. Un nombre a medias hace perder el tiempo en la dirección más cara: la de creer que falta algo que está.
+
+**El detalle.** Sale del defecto D-03 de la fase [`A-EP-002-HU-003`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md). Los otros dos defectos de esa fase, que sí son de fondo, quedaron en el [pendiente 82](pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md).
+
+---
+
+## 32.0.0 — 2026-08-22
+
+**MAYOR** ⚠ obliga a migrar: un proyecto que ya tenga su inventario de funcionalidades escrito lo reescribe con la estructura nueva. Lo que cambia es la columna de estado y lo que se puede dejar por fuera.
+
+**El inventario no era la lista de lo que falta, y se estaba usando así.** El molde definía cuatro estados por ítem —Existe, Parcial, Por construir, Por confirmar— y el agente los llenaba leyendo el código. De ahí salían dos vicios. El primero: si algo ya estaba construido, la fila tendía a no escribirse, porque «eso ya existe». El segundo: «Existe» era una afirmación del agente sobre lo que le pareció al leer, no una prueba.
+
+**Y toda la historia que el molde arrastraba.** Abría con «Lo que el usuario ya definió», pedía la fecha del estado, guardaba las preguntas contestadas con su respuesta y cerraba con quién lo escribió y cuándo. Nada de eso es el producto: son decisiones que ya viven en el planteamiento y en el histórico, duplicadas acá con la duda de cuál manda. **El inventario se lee ahora como si nada estuviera construido**, aunque se llene con lo que ya se sabe. También se fue el encabezado que anunciaba el estado del documento y repetía la regla que lo rige: no le decía nada a quien lo lee para saber qué hace el producto. En su lugar hay una frase: «esta es la lista completa de lo que el producto debe hacer; cada fila dice qué es, para qué sirve y si ya se probó», y tres puntos de «cómo se lee» en el idioma de quien lo va a usar. Una pregunta contestada deja de ser pregunta: sube a fila del producto, o se va del documento.
+
+**Las tres leyes que ahora encabezan el molde.** *Se lista todo lo que el producto debe tener, esté construido o no*: ninguna fila se omite porque ya exista, porque ya se haya decidido o porque aparezca en otro documento. *Este documento no lleva historia*: ni fechas, ni quién decidió qué, ni qué se preguntó y se contestó. Y *que algo esté hecho lo dice la prueba, no el agente*: la columna «Verificado» solo se llena con la prueba corrida y su fecha, y sin prueba dice **Sin verificar**, que no es lo mismo que «no existe».
+
+**Por qué importa más de lo que parece:** el inventario no se archiva al arrancar, madura hasta ser el manual del producto. Un inventario podado entrega un manual sin lo que sí está construido, y un inventario con estados afirmados entrega un manual que dice que algo funciona sin que nadie lo haya probado.
+
+**La columna nueva.** Cada fila gana «De qué se trata»: qué hace y para qué sirve, escrito para quien va a usar el producto y en la menor extensión con la que se entienda ([`00·ID9`](base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)). Es la semilla del manual, y antes no existía: la descripción de uso se pedía en prosa y no tenía dónde vivir.
+
+**Lo que no cambia.** [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) sigue igual: el inventario aprobado sigue siendo la puerta de las épicas, y lo no decidido se sigue marcando «por confirmar». Lo que se corrigió es el molde, no la puerta.
+
+**Y el molde entero pasó la prueba del niño.** No solo la columna: el encabezado, los avisos de cada sección, los nombres de las secciones y el cierre. Salieron «alcance», «derivar épicas», «ítem», «trazabilidad» y «proyección», que obligan a saber del proyecto para entender qué hace el producto. «Proyección: por confirmar con el usuario» pasó a llamarse «Lo que todavía no se sabe si entra». Las secciones fijas perdieron el número, para que un proyecto con seis grupos de funcionalidades siga coincidiendo con su molde. La exigencia queda escrita en la caja del molde, con [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) al lado de `00·ID9`: **un niño lo lee y entiende qué hace el producto; si hay que saber del proyecto, está escrito para adentro y se rehace.**
+
+**El detalle.** El molde [`02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y la señal [S-022](documentacion/senales.md), con las palabras del usuario que lo originaron. El primer inventario reescrito con el molde nuevo es el de Cimiento ([prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md)): 34 filas, las 34 sin verificar.
+
+---
+
+## 31.15.0 — 2026-08-22
+
+**MENOR** (el recuento de marcas deja de contar lo que nunca fue marca; ningún commit que hoy pasa empieza a fallar).
+
+**Nueve mil marcas que no eran marcas.** El anexo de marcadores dice, en sus propias filas, «la raya larga (`—`) **como inciso**» y «el punto medio (`·`) separando frases **en prosa**». Un título no es un inciso. Una celda de tabla no es un párrafo. El rótulo de un campo cuyo valor es el espacio por llenar no es una viñeta de prosa: es un formulario. El programa las contaba todas igual, y por eso perseguir un recuento limpio empujaba a estropear los documentos.
+
+**No se declaró ninguna excepción: se implementó lo que ya estaba escrito.** Es la segunda vez que pasa lo mismo. El 2026-08-18 el punto medio de los encabezados estaba nombrado en el comentario del código y no implementado en la expresión, y el recuento bajó de 16 477 a 15 485. Ahora baja de **15 485 a 6 440**.
+
+**Los moldes del ciclo de vida quedaron en cero**, sin renombrar una sola sección y sin que ninguno pida algo distinto de lo que pedía. Eso importa porque renombrar la sección de un molde hace que todos los documentos ya escritos con él reporten que les falta: son 651 en este repositorio.
+
+**Y en prosa todo sigue igual.** La misma viñeta llenada con una frase vuelve a contar, el inciso entre rayas cuenta como siempre, y el punto medio entre dos frases también. Cada caso se probó con su pareja, para que una expresión demasiado ancha no dejara a `00·ID8` sin quien la haga cumplir.
+
+**Lo que esto le cambia a un proyecto instalado:** la deuda de notación que arrastraba desaparece sin que toque un archivo, porque nunca fue deuda. El trinquete del commit no se mueve: falla cuando la cuenta sube, y esta solo baja.
+
+**El detalle.** Fase [`C-EP-004-HU-012`](documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/C-EP-004-HU-012-el-recuento-no-cuenta-la-notacion/funcionalidad_implementada.md), que cierra el [pendiente 78](pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md) junto con la fase B del mismo día. La decisión queda escrita en [`marcadores-de-ia.md`](base/00-identidad-y-rol/marcadores-de-ia.md), al lado de la del 2026-08-18.
+
+---
+
+## 31.14.0 — 2026-08-22
+
+**MENOR** (un aviso nuevo en el `pre-commit`; nadie tiene que hacer nada, y ningún commit se rechaza por esto).
+
+**Un commit ya no se lleva en silencio el trabajo de otra sesión.** Con dos conversaciones abiertas sobre el mismo repositorio, un `git add` general no distingue de quién es cada archivo: la que commitea primero publica lo que la otra tiene a medio construir. Pasó acá el 2026-08-22, y lo que quedó publicado durante ocho minutos fue un validador con el criterio que reprobaba documentos correctos. El caso ya estaba escrito como riesgo en el planteamiento del estándar; esta es la primera vez que se documenta con daño medido.
+
+**No se pregunta de quién es el commit, sino si mezcla.** Averiguar qué sesión lanza el enganche es imposible: lo lanza `git`, que no sabe nada de sesiones. Dada vuelta, la pregunta se contesta sola, porque la señal que importa no necesita identidad: **si lo que entra al commit lo tocaron dos sesiones distintas, alguien está publicando trabajo que no es suyo.** Un commit legítimo sale de una sola conversación.
+
+**Avisa y deja pasar.** Retomar lo que otra sesión dejó a medias es legítimo, y a veces es lo que se quiere; lo que no es normal es hacerlo sin darse cuenta. Rechazar el commit tampoco era opción, y está medido en el registro de la 26.x: un enganche que rechaza siempre se apaga en una tarde, y ese es el defecto más caro de esta casa. Por lo mismo, el registro de cada sesión caduca a las doce horas: sin eso, el de la semana pasada haría saltar el aviso en cada commit.
+
+**El registro no se versiona.** Es estado de trabajo, no memoria. Guardarlo con el resto lo convertiría en el próximo archivo que dos sesiones se pisan, que es justo lo que se está resolviendo.
+
+**El detalle.** Historia [`HU-017`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-017-el-commit-no-se-lleva-lo-ajeno/HU-017-el-commit-no-se-lleva-lo-ajeno.md) y su fase [`A-EP-005-HU-017`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-017-el-commit-no-se-lleva-lo-ajeno/A-EP-005-HU-017-el-commit-avisa-cuando-mezcla-dos-sesiones/funcionalidad_implementada.md), del [pendiente 80](pendientes/hecho/dos-sesiones-a-la-vez-no-se-pisan.md). Nace `validadores/sesiones.py` y el subcomando `validar.py sesiones`, con diez casos, y **cinco de los diez comprueban que el aviso NO salte**: es lo que decide si esto sigue vivo dentro de un mes.
+
+---
+
+## 31.13.0 — 2026-08-22
+
+**MENOR** (el molde del planteamiento gana instrucciones y un campo; los planteamientos ya escritos siguen valiendo).
+
+**El mismo molde sirve ahora para un proyecto que empieza y para uno que ya está construido.** Antes no decía nada del segundo caso, y el que lo llenaba improvisaba: se ponía a **describir lo que hay** en vez de **plantear lo que se necesita**. Pasó acá mismo, con el planteamiento de este repositorio, y hubo que rehacerlo dos veces. Ahora el molde dice de dónde se levanta la información cuando no hay a quién entrevistar, y trae la tabla de las cuatro traducciones que es donde se falla: «el sistema **es**» pasa a «**hace falta**», la métrica de hoy pasa a la exigencia, el incidente ya ocurrido pasa a riesgo, y lo ya construido **sí** entra en el alcance, porque se plantea lo que el proyecto necesita y no lo que le falta.
+
+**Y reconstruir es también auditar.** Si al escribirlo aparece algo ya construido que no cabe en el alcance o choca con un no negociable, no se acomoda el documento para que quepa: se anota como hallazgo y lo decide el usuario. Sin esa frase el molde se vuelve una máquina de justificar hacia atrás lo que ya esté en el disco.
+
+**La procedencia tiene ahora un solo dueño:** un campo en la identificación. Antes se colaba donde alcanzara, y en el único planteamiento reconstruido que existía se coló justo encima del encuadre, que desapareció sin que nadie lo notara. Por eso el molde declara además que **el encuadre no se borra**: lo que se borra al llenar es el recuadro de instrucciones, y solo ese.
+
+**El encuadre dejó de copiar la cadena y ahora la enlaza.** La copia se había desactualizado: decía «análisis → alcance → épica/HU» donde la regla dice «planteamiento → épica → HU». Dos versiones de la misma cadena en el mismo repositorio, y la que se leía primero era la equivocada.
+
+**Un arreglo que salió de probarlo:** el molde manda nombrar el archivo `prompts/<slug>-planteamiento.md`, y el validador solo reconocía el nombre pelado, así que la comprobación de la versión anterior **no alcanzaba a ninguno** de los documentos que este molde produce. Ya los reconoce. El primer intento aceptaba cualquier sufijo y resolvía mal 29 documentos, tomando cada resultado de pruebas por un plan de pruebas; se midió y se acotó antes de dejarlo.
+
+**El detalle.** Fase [`C-EP-003-HU-002`](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/C-EP-003-HU-002-el-planteamiento-se-reconstruye-igual/funcionalidad_implementada.md). Queda un caso sin correr y está dicho: la prueba de darle los dos documentos a un lector que no participó, para ver si distingue cuál se escribió sobre algo ya construido.
+
+---
+
+## 31.12.0 — 2026-08-22
+
+**MENOR** (una comprobación nueva y una limpieza de los moldes; ningún documento ya escrito deja de valer).
+
+**Un documento ya no puede perder la instrucción que dice cómo se usa.** Toda plantilla del ciclo pone, antes de su primer separador, un texto que no es para borrar: dice qué es ese documento y qué no autoriza. En el molde del planteamiento es el que le recuerda al agente que eso es insumo y no una orden de entregar código. Nada impedía reemplazarlo al llenar, y ya había pasado: el planteamiento de este mismo repositorio se escribió con una nota de procedencia en ese lugar, con la fecha y las fuentes, y el encuadre desapareció sin que nadie lo notara. Ahora `validar.py plantilla` lo reprueba, y reprueba también que ahí se cuente de dónde salió el documento en vez de cómo se usa.
+
+**Se comprueba que esté y que no cuente procedencia, no que diga lo correcto.** Juzgar la redacción es de una persona. Y el texto se reconoce **por su posición**, no por su rótulo: el rótulo cambió dos veces en un solo día, y un validador atado a una redacción reprueba lo que está bien apenas alguien corrige el molde.
+
+**Los moldes del ciclo dejaron de llevar adorno.** De 197 marcas de generación automática a 126, y las que quedan no son adorno: son el rótulo de un campo del formulario, una celda de tabla, el nombre de una sección o un identificador con su enunciado. Se clasificaron una por una antes de tocar nada, y eso fue lo que salvó los moldes: un reemplazo a ciegas habría quitado los rótulos de los campos y renombrado 23 secciones, y renombrar una sección hace que los 650 documentos ya escritos con ese molde reporten que les falta.
+
+**Lo que queda pendiente, y es del usuario:** decidir si esas cuatro formas se declaran notación en la lista de marcadores, como ya se hizo el 2026-08-18 con el punto medio de los encabezados, o si se reescriben los moldes asumiendo el daño.
+
+**El detalle.** Fase [`B-EP-004-HU-004`](documentacion/epicas/EP-004-comprobacion-automatica/HU-004-forma-de-los-documentos/B-EP-004-HU-004-el-encuadre-de-la-plantilla-sobrevive-al-llenado/funcionalidad_implementada.md), del [pendiente 77](pendientes/hecho/el-planteamiento-conserva-su-encuadre.md), con nueve casos y un barrido sobre 650 documentos reales que obligó a corregir el criterio dos veces. Y fase [`B-EP-004-HU-012`](documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/funcionalidad_implementada.md), del [pendiente 78](pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md), que queda abierto porque su meta original, llegar a cero, depende de una decisión que es del usuario: qué hacer con las 126 marcas que quedan, que son todas notación.
+
+---
+
 ## 31.11.0 — 2026-08-22
 
 **MENOR** (una comprobación nueva para el cierre de una fase; nadie tiene que hacer nada).
@@ -21,7 +123,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Y su primera corrida encontró un incumplimiento del trabajo de esta misma jornada:** la mejora anterior tocó tres archivos que su plan no declaraba. La decisión de separarlos fue buena; lo que faltó fue anotarla antes de ejecutar. Queda escrito en las dos fases.
 
-**El detalle.** Fase [`A-EP-004-HU-013`](documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con sus decisiones 10 y 22. Nace [`validadores/plan_vs_hecho.py`](validadores/plan_vs_hecho.py) y el subcomando `validar.py plan`, con once casos. Lo que **no** se automatiza queda declarado: comparar los pasos ejecutados con los escritos exige leer los dos textos, y eso sigue siendo de una persona.
+**El detalle.** Fase [`A-EP-004-HU-013`](documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), con sus decisiones 10 y 22. Nace [`validadores/plan_vs_hecho.py`](validadores/plan_vs_hecho.py) y el subcomando `validar.py plan`, con once casos. Lo que **no** se automatiza queda declarado: comparar los pasos ejecutados con los escritos exige leer los dos textos, y eso sigue siendo de una persona.
 
 ## 31.10.0 — 2026-08-22
 
@@ -33,7 +135,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **El primer dato ya dice algo:** la regla de no dejar marcas de generación automática produce **dos de cada tres hallazgos** del repositorio, porque se mide sobre todo el árbol mientras la regla exige limpieza en lo que se **entrega**. Queda anotado para quien decida si se acota la medición o se amplía la regla.
 
-**El detalle.** Fase [`A-EP-004-HU-009`](documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/A-EP-004-HU-009-el-conteo-de-hallazgos-por-regla/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con su decisión 25. La regla de cada hallazgo sale del mensaje que los veinticuatro validadores ya escriben, así que no hubo que tocarlos: se acumulan donde todos pasan. Once casos de prueba nuevos.
+**El detalle.** Fase [`A-EP-004-HU-009`](documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/A-EP-004-HU-009-el-conteo-de-hallazgos-por-regla/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), con su decisión 25. La regla de cada hallazgo sale del mensaje que los veinticuatro validadores ya escriben, así que no hubo que tocarlos: se acumulan donde todos pasan. Once casos de prueba nuevos.
 
 ## 31.9.0 — 2026-08-22
 
@@ -43,7 +145,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Avisa, no detiene:** un cierre sin ese dato no rompe nada hoy, solo deja una pregunta sin respuesta. Y no se exige hacia atrás: lo cerrado antes de hoy queda de su lado.
 
-**El detalle.** Fase [`A-EP-002-HU-005`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-005-sellar-el-trabajo-cerrado/A-EP-002-HU-005-el-sello-de-version-en-el-cierre/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con sus decisiones 7 y 28. El campo entra al molde del cierre y no al de apertura, porque al abrir todavía no hay nada que sellar. La comprobación reconoce la fila del molde y también la frase escrita a mano, para no reportar la forma en vez del contenido. Los quince cierres escritos hoy quedaron sellados con la versión bajo la que de verdad cerraron.
+**El detalle.** Fase [`A-EP-002-HU-005`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-005-sellar-el-trabajo-cerrado/A-EP-002-HU-005-el-sello-de-version-en-el-cierre/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), con sus decisiones 7 y 28. El campo entra al molde del cierre y no al de apertura, porque al abrir todavía no hay nada que sellar. La comprobación reconoce la fila del molde y también la frase escrita a mano, para no reportar la forma en vez del contenido. Los quince cierres escritos hoy quedaron sellados con la versión bajo la que de verdad cerraron.
 
 ## 31.8.0 — 2026-08-22
 
@@ -55,7 +157,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Nada se exige hacia atrás.** Lo cerrado antes de esa fecha, y lo que ni siquiera declara fecha, queda de su lado: treinta avisos que nunca se van apagan la comprobación entera.
 
-**El detalle.** Fases [`A`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase/README.md) y [`B`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md) de EP-004 · HU-016, del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con las decisiones 26 y 27 que ese pendiente ya traía. Ocho casos de prueba nuevos.
+**El detalle.** Fases [`A`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase/README.md) y [`B`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md) de EP-004 · HU-016, del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), con las decisiones 26 y 27 que ese pendiente ya traía. Ocho casos de prueba nuevos.
 
 ## 31.7.0 — 2026-08-22
 
@@ -67,7 +169,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Lo segundo: dos reglas ya no pueden compartir identificador sin que se sepa.** Se comprobaba que cada capítulo tuviera su prefijo, pero no que el número no se repitiera dentro de él; con dos reglas iguales, toda cita a ese número es ambigua. Se contaron a mano las 249 y ninguna se repetía, lo que decía que el orden estaba bien por costumbre y no por comprobación.
 
-**El detalle.** Fases [`A-EP-004-HU-008`](documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/A-EP-004-HU-008-la-corrida-completa-en-una-linea/README.md) y [`A-EP-004-HU-011`](documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). Doce casos de prueba nuevos; el que decide en la corrida completa es que un subcomando nuevo entre solo, sin listas a mano.
+**El detalle.** Fases [`A-EP-004-HU-008`](documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/A-EP-004-HU-008-la-corrida-completa-en-una-linea/README.md) y [`A-EP-004-HU-011`](documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). Doce casos de prueba nuevos; el que decide en la corrida completa es que un subcomando nuevo entre solo, sin listas a mano.
 
 ## 31.6.0 — 2026-08-22
 
@@ -75,7 +177,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Cambiar una regla y olvidar la versión ya no se puede.** El estándar exige que todo cambio de lo que viaja a los proyectos suba el número de versión y escriba su entrada en el registro, y hasta hoy eso dependía de que alguien se acordara. Ahora, al guardar, si el cambio toca las reglas o los moldes y falta alguno de los dos, el guardado **se detiene** y el mensaje dice cuál falta. Un cambio que no toca las reglas no nota nada: pedir versión donde no toca es el ruido que apaga cualquier control.
 
-**El detalle.** Fase [`A-EP-005-HU-005`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/A-EP-005-HU-005-el-cambio-de-reglas-no-se-guarda-sin-version/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). Nace [`validadores/guardian_version.py`](validadores/guardian_version.py), que corre dentro de `validar.py versionado --preparados`, o sea dentro del enganche que ya existía: dos enganches sobre el mismo momento se pisan. Siete casos de prueba, con el que decide, que un commit ajeno a las reglas no note nada. No juzga si la entrada del registro dice la verdad ni si el tipo de versión es el correcto: eso exige leer, y queda escrito en su contrato.
+**El detalle.** Fase [`A-EP-005-HU-005`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/A-EP-005-HU-005-el-cambio-de-reglas-no-se-guarda-sin-version/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). Nace [`validadores/guardian_version.py`](validadores/guardian_version.py), que corre dentro de `validar.py versionado --preparados`, o sea dentro del enganche que ya existía: dos enganches sobre el mismo momento se pisan. Siete casos de prueba, con el que decide, que un commit ajeno a las reglas no note nada. No juzga si la entrada del registro dice la verdad ni si el tipo de versión es el correcto: eso exige leer, y queda escrito en su contrato.
 
 **Y se cerró la fase [`B-EP-005-HU-003`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/B-EP-005-HU-003-el-hallazgo-grave-detiene/README.md)**, que no cambia nada del programa: comprueba, corriendo el enganche como lo corre la herramienta, que un documento con un enlace roto se devuelve para corregir, que uno sano no molesta, y que el archivo nunca se toca.
 
@@ -87,7 +189,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Por qué no basta con leer y callar:** eso convertiría un archivo roto en uno que parece sano. Se hacen las dos cosas, seguir y decirlo.
 
-**El detalle.** Fase [`B-EP-004-HU-003`](documentacion/epicas/EP-004-comprobacion-automatica/HU-003-formato-del-hallazgo/B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). `comun.leer` gana sus tres salidas y el registro de lo ilegible, que `reportar` agrega solo; `pendientes.py` recupera la lectura común que había tenido que escribirse aparte; el contrato de `docs/comun.md` lo dice. La prueba que lo denunciaba llevaba días marcada como fallo esperado y hoy pasa destapada. De paso quedaron a la vista ocho pruebas que estaban en rojo desde el 2026-08-21 citando moldes que se habían movido, y se corrigieron.
+**El detalle.** Fase [`B-EP-004-HU-003`](documentacion/epicas/EP-004-comprobacion-automatica/HU-003-formato-del-hallazgo/B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida/README.md), del [pendiente 59](pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). `comun.leer` gana sus tres salidas y el registro de lo ilegible, que `reportar` agrega solo; `pendientes.py` recupera la lectura común que había tenido que escribirse aparte; el contrato de `docs/comun.md` lo dice. La prueba que lo denunciaba llevaba días marcada como fallo esperado y hoy pasa destapada. De paso quedaron a la vista ocho pruebas que estaban en rojo desde el 2026-08-21 citando moldes que se habían movido, y se corrigieron.
 
 ## 31.4.0 — 2026-08-22
 

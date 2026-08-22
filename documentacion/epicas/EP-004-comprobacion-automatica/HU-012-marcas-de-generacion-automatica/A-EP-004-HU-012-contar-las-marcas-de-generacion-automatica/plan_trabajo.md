@@ -101,11 +101,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si la comprobación aplica a todo el repositorio o solo a lo que se entrega — el histórico, por ejemplo, es transcripción y no entregable | Usuario | Pendiente |
+| 1 | Si la comprobación aplica a todo el repositorio o solo a lo que se entrega — el histórico, por ejemplo, es transcripción y no entregable | Usuario | **Resuelta el 2026-08-18** —el recuento no toca el histórico, y ya estaba construido así— y revisada el 2026-08-22: ver el segundo ciclo en `resultado_pruebas_2.md` |
 
 La duda 1 bloquea T-01: cambia qué archivos recorre el programa.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

@@ -107,13 +107,13 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Cuál de los dos caminos del pendiente 20: escribirle la excepción a `F2` con sus tres partes, o aceptar en la regla que la historia hace de especificación cuando el entregable no es código | Usuario | Pendiente |
-| 2 | Si el caso cubre solo el estándar mismo o cualquier proyecto cuyo entregable no sea código | Usuario | Pendiente |
-| 3 | Si `flujo.py` tiene que distinguir las dos formas de llenar la casilla, o le basta con que el archivo exista | Usuario | Pendiente |
+| 1 | Cuál de los dos caminos del pendiente 20: escribirle la excepción a `F2` con sus tres partes, o aceptar en la regla que la historia hace de especificación cuando el entregable no es código | Usuario | **Resuelta** el 2026-08-18, decisión 18 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): el camino 2: la historia hace de especificación cuando el entregable no es código |
+| 2 | Si el caso cubre solo el estándar mismo o cualquier proyecto cuyo entregable no sea código | Usuario | **Resuelta** el 2026-08-18, decisión 19 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **cualquier proyecto** cuyo entregable no sea código, no solo el estándar. `20·M3`: la base no se escribe para un caso |
+| 3 | Si `flujo.py` tiene que distinguir las dos formas de llenar la casilla, o le basta con que el archivo exista | Usuario | **Resuelta** el 2026-08-18, decisión 20 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): le basta con que el archivo exista. Distinguir las dos formas de llenar la casilla es criterio, y un programa no opina |
 
 Las tres bloquean T-01. **Ninguna tarea de construcción arranca con una duda abierta que la bloquee.**
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

@@ -59,11 +59,16 @@ def validar(raiz=None):
     archivo = os.path.join(raiz, "VERSION")
     registro = os.path.join(raiz, "CHANGELOG.md")
 
-    try:
-        ahora = leer(archivo).strip()
-        cambios = leer(registro)
-    except OSError:
-        return []                       # sin los dos archivos no hay nada que decir
+    # Sin los dos archivos no hay nada que decir. Se pregunta antes de leer
+    # porque `leer` ya no revienta cuando el archivo no está: devuelve `""` y lo
+    # anota. El `except OSError` que había aquí nunca entraba, y un proyecto que
+    # no lleva numeración quedaba con una falla que no le corresponde — bastaba
+    # para que el enganche de guardado le rechazara todos los commits.
+    if not (os.path.isfile(archivo) and os.path.isfile(registro)):
+        return []
+
+    ahora = leer(archivo).strip()
+    cambios = leer(registro)
 
     t_ahora = _tupla(ahora)
     if not t_ahora:

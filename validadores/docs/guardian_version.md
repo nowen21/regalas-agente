@@ -15,7 +15,7 @@
 
 ## Por qué detiene en vez de avisar
 
-Es la decisión 9 del [pendiente 59](../../pendientes/59-las-42-dudas-que-detienen-26-fases.md), con la regla que salió de ahí: **detiene lo que se puede comprobar sin criterio, avisa lo que necesita juicio**. Que un archivo esté o no en el commit se comprueba mirando; no hay nada que interpretar.
+Es la decisión 9 del [pendiente 59](../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), con la regla que salió de ahí: **detiene lo que se puede comprobar sin criterio, avisa lo que necesita juicio**. Que un archivo esté o no en el commit se comprueba mirando; no hay nada que interpretar.
 
 Y la evidencia del propio repositorio: *«un aviso que nada respalda se ignora»*. Ya pasó con la brevedad, con las marcas de generación automática y con el desfase de versión.
 

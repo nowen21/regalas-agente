@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 6 — ejecución continua, **lista para arrancar**. **Última puerta pasada:** 5, el plan aprobado por el usuario el 2026-08-17 («autorizados los planes de trabajo»).
+**Estación actual:** 9 — verificación, con un criterio en rojo. **Ejecutada el 2026-08-22.**
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -43,11 +43,11 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
-| **CA en "No"** | Ninguno todavía: no se ha corrido nada |
-| **Defectos abiertos aceptados** | Ninguno |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **No cumple** |
+| **CA cumplidos** | 2 de 3 |
+| **CA en "No"** | **CA-02.** Una clave pegada sin comillas queda en claro en la transcripción |
+| **Defectos abiertos aceptados** | D-01 y D-02, en el [pendiente 84](../../../../../pendientes/84-una-clave-pegada-sin-comillas-queda-en-claro.md) |
+| **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) |
 
 ---
 
@@ -98,6 +98,6 @@
 
 ## Lo que la desbloqueó
 
-**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
+**Las dudas de la §2.7 quedaron decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). La decisión está escrita en el propio plan, con su motivo.
 
 **La fase no arrancó todavía:** decidir no es ejecutar.

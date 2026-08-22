@@ -9,7 +9,7 @@
 | **Fase** | `B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia` |
 | **HU** | [HU-016](../HU-016-el-pendiente-cerrado-nombra-su-fase.md) |
 | **Ciclo** | 1 · **Fecha** 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 
 ## 1. Resumen
 

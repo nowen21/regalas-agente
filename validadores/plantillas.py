@@ -93,6 +93,21 @@ def deducir_plantilla(ruta_documento, texto):
     base = os.path.splitext(os.path.basename(ruta_documento))[0].lower()
     if base in POR_NOMBRE:
         return _ruta(POR_NOMBRE[base])
+
+    # El planteamiento con su prefijo: `cimiento-planteamiento.md`. El molde
+    # manda nombrarlo así —«copiar como `prompts/<slug>-planteamiento.md`»— y
+    # buscando solo el nombre pelado no se resolvía ninguno de los que produce.
+    #
+    # **Se exige además la carpeta**, y no es celo: el sufijo suelto resuelve
+    # mal. Medido sobre el repositorio, aceptar cualquier `*-planteamiento.md`
+    # se lleva por delante un pendiente que se llama
+    # `el-estandar-tiene-su-planteamiento.md`, y la misma idea aplicada a las
+    # demás claves toma cada `resultado_pruebas.md` por un plan de pruebas y
+    # cada regla terminada en `-trabajo` por un plan de trabajo: 29 documentos
+    # comparados contra el molde que no es.
+    carpeta = os.path.basename(os.path.dirname(os.path.abspath(ruta_documento)))
+    if carpeta.lower() == "prompts" and base.endswith("-planteamiento"):
+        return _ruta(POR_NOMBRE["planteamiento"])
     return None
 
 
@@ -141,9 +156,9 @@ def reglas_sin_origen(texto, plantilla_texto=""):
     return sin_origen
 
 
-# Una cita de regla con su capítulo: `02·F4`, `13·DOC15`, `00·ID8`. Es lo que
-# distingue un encuadre que instruye de un párrafo que habla del documento.
-_CITA_DE_REGLA = re.compile(r"\d{2}·[A-ZÁÉÍÓÚÑ]{1,4}\d+")
+# Una fecha completa. En el bloque fijo delata que ahí se contó de dónde salió
+# el documento, que es lo que desplazó al encuadre la vez que pasó.
+_FECHA = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 
 # Donde termina la cabecera de un documento: el primer separador, o el primer
 # encabezado de sección si no hay separador.
@@ -171,7 +186,7 @@ def bloque_fijo(texto):
             continue
         if _FIN_DE_CABECERA.match(recortada):
             break
-        if recortada.startswith(("#", ">")):
+        if recortada.startswith(("#", ">", "|")):
             continue
         salida.append((n, recortada))
     return salida
@@ -262,13 +277,14 @@ def validar(ruta_documento, ruta_plantilla):
                 f"falta el texto que la plantilla fija antes de su primer "
                 f"separador: «{muestra}» — no es relleno, es la instrucción "
                 f"de uso del documento, y se conserva al llenarlo"))
-        elif (any(_CITA_DE_REGLA.search(t) for _, t in fijo_plantilla)
-              and not any(_CITA_DE_REGLA.search(t) for _, t in fijo_documento)):
+        elif (any(_FECHA.search(t) for _, t in fijo_documento)
+              and not any(_FECHA.search(t) for _, t in fijo_plantilla)):
             hallazgos.append(Hallazgo(
                 FALLA, ruta_documento, fijo_documento[0][0],
-                f"el texto fijo del documento no cita ninguna regla, y el de "
-                f"la plantilla sí: «{muestra}» — ese lugar dice cómo se usa el "
-                f"documento; contar de dónde salió va en la identificación"))
+                f"el texto fijo trae una fecha, y el de la plantilla no: ahí "
+                f"se está contando de dónde salió el documento en vez de cómo "
+                f"se usa — la procedencia va en la identificación, y ese lugar "
+                f"lo ocupa lo que la plantilla pone: «{muestra}»"))
 
     return hallazgos
 

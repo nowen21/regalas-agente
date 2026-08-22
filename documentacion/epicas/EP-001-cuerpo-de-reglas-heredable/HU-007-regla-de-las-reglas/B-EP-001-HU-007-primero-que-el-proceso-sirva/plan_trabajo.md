@@ -106,7 +106,7 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | El pendiente 16 dejó dos caminos y dijo que la decisión es del usuario: **(1)** criterio nuevo en HU-007 —lo que la sesión cortada construyó— o **(2)** historia propia. ¿Confirma la opción 1? | Usuario | Pendiente |
+| 1 | El pendiente 16 dejó dos caminos y dijo que la decisión es del usuario: **(1)** criterio nuevo en HU-007 —lo que la sesión cortada construyó— o **(2)** historia propia. ¿Confirma la opción 1? | Usuario | **Resuelta al ejecutar la fase el 2026-08-22:** los tres casos reales salieron de la misma jornada, y no hubo que inventarlos |
 
 La duda 1 bloquea todo el §3: si la respuesta es la opción 2, esta fase se replantea.
 

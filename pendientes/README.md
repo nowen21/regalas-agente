@@ -253,7 +253,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 59 | **P0** | [Las 42 dudas que detienen 26 fases](59-las-42-dudas-que-detienen-26-fases.md) | De los 51 planes aprobados, 25 fases corrieron enteras y **26 no arrancaron**: su §2.7 tiene preguntas que solo el usuario puede contestar. Las 42 quedan agrupadas por decisión, para poder responderlas de corrido. |
+| 59 | **P0** | [Las 42 dudas que detienen 26 fases](hecho/las-42-dudas-que-detenian-26-fases.md) | De los 51 planes aprobados, 25 fases corrieron enteras y **26 no arrancaron**: su §2.7 tiene preguntas que solo el usuario puede contestar. Las 42 quedan agrupadas por decisión, para poder responderlas de corrido. |
 
 **Es `P0` por una sola de las 42:** hoy **una clave pegada en el chat queda escrita en claro** en la transcripción, que se versiona. Nada enmascara, y lo que falta para construirlo son dos decisiones del grupo G.
 
@@ -306,6 +306,27 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 **El 66 es el que explica a los otros dos.** Se trabajó una mañana entera sin el capítulo `02` cargado, y por eso las dos mejoras se intentaron copiando una fase en vez de seguir la cadena. **Los tres cerraron el mismo día**, cada uno por su fase: `A-EP-005-HU-013`, `A-EP-005-HU-014` y `B-EP-005-HU-009`.
 
+### Lo que dejó reconstruir el planteamiento de Cimiento (77-78)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| ~~77~~ | — | **hecho** → [El planteamiento conserva su encuadre](hecho/el-planteamiento-conserva-su-encuadre.md) | El renglón que le dice al agente que un planteamiento es insumo y no orden se puede reemplazar al llenar el molde, y ningún validador lo mira. Ya pasó una vez, en el planteamiento de este mismo repositorio. |
+| ~~78~~ | — | **hecho** → [Los moldes del ciclo se entregan limpios de marcas](hecho/los-moldes-se-entregan-limpios-de-marcas.md) | Los moldes del ciclo llevan 197 marcas de prosa de `00·ID8` y cada copia se las pasa al proyecto que la usa. Es el pedazo chico de la decisión que el [11](hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) dejó al usuario al cerrar. **El adorno ya se limpió** (de 197 a 126); queda la decisión sobre la notación. |
+| ~~80~~ | — | **hecho** → [Dos sesiones a la vez no se pisan](hecho/dos-sesiones-a-la-vez-no-se-pisan.md) | El 2026-08-22 una sesión commiteó con `git add` general el trabajo a medio hacer de otra, y publicó ocho minutos un validador que reprobaba lo que estaba bien. El caso borde estaba previsto; esta es la primera vez con daño medido. |
+
+---
+
+### Lo que dejó ejecutar las fases detenidas del 59 (81-84)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 84 | **P0** | [Una clave pegada sin comillas queda en claro](84-una-clave-pegada-sin-comillas-queda-en-claro.md) | El enmascarador tapa `AKIA…` y `API_KEY="x"`, y **no** tapa `API_KEY=x`, `password: x` ni una clave dicha en prosa: las tres formas que una persona teclea. El patrón se tomó prestado de la búsqueda de secretos en código, donde el valor va entre comillas. |
+| 83 | **P0** | [El aviso de desfase no llega al abrir sesión](83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md) | El aviso está construido y hay que pedirlo a mano: el enganche de apertura no lo mira. La funcionalidad central de su historia lleva sin conectarse desde que se escribió, y no se notó porque en el repositorio del estándar el agente lo corre a mano todos los días. |
+| 82 | **P0** | [La versión adoptada no se comprueba contra nada](82-la-version-adoptada-no-se-comprueba-contra-nada.md) | Un proyecto puede declarar una versión que no existe: pasa sin reporte y, si es mayor que la vigente, **apaga el aviso de desfase**. Y la versión declarada puede contradecir al historial de adopciones sin que nada lo note: ya pasa en shopnest-mesa. |
+| 81 | **P1** | [`metareglas --raiz` sobre un proyecto da veredictos falsos](81-metareglas-sobre-un-proyecto-da-veredictos-falsos.md) | Apuntar el subcomando a un proyecto devuelve una falla y cuatro avisos falsos, porque corre las comprobaciones del estándar contra una carpeta que no las tiene. Y la falla afirma con el dato vacío: no pudo leer `VERSION` y reportó igual. |
+
+---
+
 ### Sin agrupar todavía
 
 Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es criterio.
@@ -336,12 +357,13 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | **[EP-001 · HU-013](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md)** — Capítulos opt-in de dominio | 08, 12 |
 | [EP-002 · HU-006](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-006-quien-sube-la-version/HU-006-quien-sube-la-version.md) — Quién manda sobre la versión | 22 |
 | [EP-003 · HU-002](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) — Modelos del encargo | 56 |
+| [EP-004 · HU-004](../documentacion/epicas/EP-004-comprobacion-automatica/HU-004-forma-de-los-documentos/HU-004-forma-de-los-documentos.md) — Forma de los documentos | 77 |
 | [EP-003 · HU-004](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/HU-004-modelo-de-la-especificacion.md) — Modelo de la especificación | 47 |
 | [EP-003 · HU-006](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-006-procedimientos-por-rol/HU-006-procedimientos-por-rol.md) — Procedimientos por rol | 23 |
 | [EP-003 · HU-010](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) — Glosario de la terminología | 21, 26 |
 | [EP-004 · HU-005](../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — Enlaces y citas | 18, 54, 55, 67, y el punto 1 del 33 |
 | [EP-004 · HU-008](../documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/HU-008-corrida-completa.md) — Corrida completa | 53, 68 |
-| [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) — Marcas de generación automática | 11 |
+| [EP-004 · HU-012](../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) — Marcas de generación automática | 11, 78 |
 | [EP-004 · HU-017](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — Inventario de HU sin fase | 48, 59 |
 | [EP-005 · HU-001](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/HU-001-transcripcion-de-la-sesion.md) — Transcripción de la sesión | 29, y el punto 3 del 33 |
 | [EP-005 · HU-003](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/HU-003-disparo-al-escribir-un-archivo.md) — Disparo al escribir un archivo | 70 |

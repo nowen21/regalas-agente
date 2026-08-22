@@ -33,7 +33,7 @@
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte, por el mismo motivo que en la fase A de HU-001. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.
 
-> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md).
 
 ## 1.1 Veredicto de las pruebas
 

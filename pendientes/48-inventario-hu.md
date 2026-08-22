@@ -3,7 +3,7 @@
 
 | Items|Lo que se debe hacer |
 |---|---|
-| **Historia de usuario** | [EP-004 · HU-017 — Inventario de HU sin fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — el inventario es esa historia, y las 42 dudas que lo detienen son el [59](59-las-42-dudas-que-detienen-26-fases.md) |
+| **Historia de usuario** | [EP-004 · HU-017 — Inventario de HU sin fase](../documentacion/epicas/EP-004-comprobacion-automatica/HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) — el inventario es esa historia, y las 42 dudas que lo detienen son el [59](hecho/las-42-dudas-que-detenian-26-fases.md) |
 | **Qué pasa** | `02·F12.2` pide al menos una fase por HU, y cada fase deja cinco documentos. |
 | **Qué se debe completar** | lo que esté en ☐ en la tabla |
 | **Total de HU** | 78 |

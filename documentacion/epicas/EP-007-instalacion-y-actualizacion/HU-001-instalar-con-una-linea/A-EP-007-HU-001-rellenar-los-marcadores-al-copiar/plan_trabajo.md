@@ -105,7 +105,7 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Un proyecto ya instalado, ¿se pone al día reinstalando o hay que decirle algo más? | usuario | Pendiente — la respuesta va en el `CHANGELOG` (T-07) |
+| 1 | Un proyecto ya instalado, ¿se pone al día reinstalando o hay que decirle algo más? | usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: **se pone al día reinstalando**, y no hay que decirle nada más. `instalar.py` repara lo ya instalado y lo comprueba `test_instalar_reparar` |
 
 ---
 

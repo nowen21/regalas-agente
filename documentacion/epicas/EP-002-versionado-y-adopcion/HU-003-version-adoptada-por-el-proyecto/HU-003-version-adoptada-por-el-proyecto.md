@@ -139,7 +139,7 @@ Entonces se ve desde cuándo usó cada versión
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| [A-EP-002-HU-003-retrodocumentar-la-version-adoptada](A-EP-002-HU-003-retrodocumentar-la-version-adoptada/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-01 y el CA-03 sí; el CA-02 no: una versión inventada pasa y apaga el aviso. Probada sobre **shopnest-mesa** |
 
 **La fase retro-documenta y mide sin corregir.** La declaración se lee y el historial de adopciones existe. Lo que falta: que la versión declarada **exista de verdad** no lo comprueba nadie, y el registro arrastra los pendientes 44 y 46.
 

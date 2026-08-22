@@ -77,11 +77,11 @@
 
 ### 5.4 Alcance funcional completo — el detalle que la épica resuelve ANTES de crear las HU
 
-La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que el alcance se descubra al crear las HU. Debe dar la **visión completa del proceso, de inicio a fin**. Las **HU son la descomposición** de este alcance en unidades implementables y verificables — por eso el alcance se define **primero**, aquí. Con este detalle se identifican las funcionalidades, se dividen en HU, se derivan sus CA y se fijan dependencias y orden de implementación.
+La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que el alcance se descubra al crear las HU. Debe dar la **visión completa del proceso, de inicio a fin**. Las **HU son la descomposición** de este alcance en unidades implementables y verificables, por eso el alcance se define **primero**, aquí. Con este detalle se identifican las funcionalidades, se dividen en HU, se derivan sus CA y se fijan dependencias y orden de implementación.
 
-> **Agnóstico:** las preguntas aplican a **cualquier** épica de **cualquier** proyecto. Reemplaza el ejemplo por tu caso. Marca **"No aplica porque ..."** en las que no correspondan — no se omiten en silencio.
+> **Agnóstico:** las preguntas aplican a **cualquier** épica de **cualquier** proyecto. Reemplaza el ejemplo por tu caso. Marca **"No aplica porque ..."** en las que no correspondan, no se omiten en silencio.
 >
-> **Nivel de detalle — de alcance, no de especificación.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno) — pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / especificación de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
+> **Nivel de detalle (de alcance, no de especificación.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno)) pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / especificación de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
 
 **La épica debe responder, como mínimo:**
 
@@ -119,7 +119,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | 25 | **Migración / convivencia** | si reemplaza o convive con algo existente y cómo migran los datos |
 | 26 | **Idioma / formato / zona** | idioma de textos, formato de fechas/números/moneda, zona horaria (si aplica) |
 
-**Cierre:** la épica da la **visión completa** de lo que se quiere lograr; las **HU** son la **descomposición** de ese alcance en unidades implementables y verificables (§9). Sin este detalle, el alcance se "descubre" a mitad de camino — lo que rompe la trazabilidad y la estimación.
+**Cierre:** la épica da la **visión completa** de lo que se quiere lograr; las **HU** son la **descomposición** de ese alcance en unidades implementables y verificables (§9). Sin este detalle, el alcance se "descubre" a mitad de camino, lo que rompe la trazabilidad y la estimación.
 
 ---
 
@@ -159,7 +159,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | HU-002 | «Título» | Must | 8 | S1 | Backlog |
 | HU-003 | «Título» | Should | 3 | S2 | Backlog |
 
-**Total estimado:** «suma de puntos»  ·  **Sprints previstos:** «n»
+**Total estimado:** «suma de puntos», **Sprints previstos:** «n»
 
 ---
 
@@ -173,7 +173,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 ### 10.2 Decisiones de arquitectura (ADR)
 
-- **ADR-00:** «Decisión y justificación breve» → «enlace al ADR completo · plantilla `plantillas/ADR.md`»
+- **ADR-00:** «Decisión y justificación breve» → «enlace al ADR completo, plantilla `plantillas/ADR.md`»
 
 ### 10.3 Integraciones
 

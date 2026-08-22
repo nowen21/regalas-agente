@@ -95,12 +95,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si el campo del sello entra en los dos modelos o solo en el del cierre | Usuario | Pendiente |
-| 2 | Si el validador lo exige o solo lo avisa cuando falta | Usuario | Pendiente |
+| 1 | Si el campo del sello entra en los dos modelos o solo en el del cierre | Usuario | **Resuelta** el 2026-08-18, decisión 28 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **solo en el modelo del cierre**. El sello dice bajo qué versión cerró algo, y ponerlo también en el otro obliga a llenarlo cuando todavía no hay nada que sellar |
+| 2 | Si el validador lo exige o solo lo avisa cuando falta | Usuario | **Resuelta** el 2026-08-18, decisión 7 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **detiene**. Que falte el sello se comprueba mirando el archivo, sin criterio de por medio |
 
 Las dos bloquean T-01 a T-03. El CA-02 no depende de ellas.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

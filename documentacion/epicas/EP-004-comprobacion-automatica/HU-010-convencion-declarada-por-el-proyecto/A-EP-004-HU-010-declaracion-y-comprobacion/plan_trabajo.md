@@ -113,8 +113,8 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Que la HU haga de especificación, como en la fase `A-EP-001-HU-001` | usuario | Pendiente |
-| 2 | Si estas comprobaciones entran en la corrida automática o se corren a demanda | usuario | Pendiente |
+| 1 | Que la HU haga de especificación, como en la fase `A-EP-001-HU-001` | usuario | **Resuelta** el 2026-08-18, decisión 18 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): sí, la HU hace de especificación cuando el entregable no es código |
+| 2 | Si estas comprobaciones entran en la corrida automática o se corren a demanda | usuario | **Resuelta** el 2026-08-22 mirando lo que ya está construido, no decidiendo de nuevo: **entran en la corrida**. `cmd_todo` corre todos los subcomandos salvo los de `FUERA_DE_LA_CORRIDA`, y cada exclusión lleva su motivo escrito: lo que tarda, lo que pide argumentos y lo que solo aplica en la hora del commit |
 
 > Ninguna tarea de construcción inicia con una duda abierta que la bloquee.
 

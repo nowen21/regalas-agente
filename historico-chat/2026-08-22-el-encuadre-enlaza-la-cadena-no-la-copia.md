@@ -54,3 +54,22 @@ Dos cosas:
 
 ### 3 · Usuario — 2026-08-22 14:46:44
 > si
+
+**Agente** — 2026-08-22 14:48:51
+<!-- agente: ebf8c296-4cab-42fe-b431-7eff88063b9d -->
+
+Listo.
+
+**Sesión renombrada** a [2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md](historico-chat/2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md), con su resumen y los dos índices al día.
+
+**Commiteado** en dos commits — `98e710c` (el encuadre + histórico) y `d356fca` (cierre del resumen). Sin `push`.
+
+**Solo commiteé lo de esta sesión.** El árbol tiene bastante trabajo en curso de otras sesiones que dejé intacto: las once plantillas del ciclo, `validadores/plantillas.py` y sus pruebas, la HU-002 y la HU-012, y los pendientes 77 y 78 sin versionar. No es mío tocarlo.
+
+Un detalle: el pendiente [77-el-planteamiento-conserva-su-encuadre.md](pendientes/hecho/el-planteamiento-conserva-su-encuadre.md) —de otra sesión— toca exactamente este archivo. Vale la pena mirar si lo que acabo de escribir choca con lo que ese pendiente quiere, antes de que la otra sesión avance.
+
+Falta la línea que solo puedes correr tú, para que la pestaña y `/resume` muestren el mismo nombre:
+
+```
+/rename el-encuadre-enlaza-la-cadena-no-la-copia
+```

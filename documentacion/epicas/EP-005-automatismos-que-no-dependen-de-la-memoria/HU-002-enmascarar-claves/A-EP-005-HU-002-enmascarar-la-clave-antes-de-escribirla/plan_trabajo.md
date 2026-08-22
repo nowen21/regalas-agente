@@ -99,12 +99,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Con qué marca se tapa, para que se vea que hubo algo y no se confunda con texto del usuario | Usuario | Pendiente |
-| 2 | Qué se hace si aparece una clave en una transcripción vieja: se reporta y se espera, o hay un procedimiento | Usuario | Pendiente |
+| 1 | Con qué marca se tapa, para que se vea que hubo algo y no se confunda con texto del usuario | Usuario | **Resuelta** el 2026-08-18, decisión 29 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): con `«enmascarado»`, la misma marca que el estándar ya usa para el espacio por llenar. No se inventa una marca nueva, y se ve que hubo algo |
+| 2 | Qué se hace si aparece una clave en una transcripción vieja: se reporta y se espera, o hay un procedimiento | Usuario | **Resuelta** el 2026-08-18, decisión 30 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md): **se enmascara igual, y queda dicho en el archivo que se hizo**. El bloque no se borra: borrarlo pierde lo dicho |
 
 La duda 1 bloquea T-04. La duda 2 no bloquea nada de esta fase: define qué hacer si el hallazgo aparece.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

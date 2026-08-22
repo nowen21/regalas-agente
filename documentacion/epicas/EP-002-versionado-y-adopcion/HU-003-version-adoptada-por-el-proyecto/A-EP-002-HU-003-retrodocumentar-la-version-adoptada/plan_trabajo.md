@@ -95,11 +95,11 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Sobre qué proyecto instalado se prueban el CA-01 y el CA-03 | Usuario | Pendiente |
+| 1 | Sobre qué proyecto instalado se prueban el CA-01 y el CA-03 | Usuario | **Resuelta** el 2026-08-22, propuesta 13 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **shopnest-mesa**, el mismo de las otras tres. Una respuesta para cuatro fases |
 
 La duda 1 bloquea T-01 y T-05. El CA-02 no depende de ella.
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

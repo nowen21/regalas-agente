@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** «N — nombre». **Última puerta pasada:** «N».
+**Estación actual:** «número y nombre». **Última puerta pasada:** «N».
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|

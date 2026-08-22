@@ -40,7 +40,7 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 
 ### 3.5 Alcance de la ejecución automatizada  ·  [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
-`python -m pytest validadores/tests/test_encuadre_de_la_plantilla.py` para lo nuevo, y `python -m pytest validadores/tests` entera para la no regresión. Fuera de eso, `validar.py estandar`.
+Las dos suites que tocan [`validadores/plantillas.py`](../../../../../validadores/plantillas.py), que son las únicas que dependen de lo que la fase cambia: `test_encuadre_de_la_plantilla.py` y `test_plantillas_origen_regla.py`. **La batería entera no**, que es lo que `02·F5` pone como INCORRECTO: cientos de pruebas, minutos de espera y rojos que ya existían.
 
 ---
 
@@ -51,6 +51,8 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 | HU-004 | [CA-05](../HU-004-forma-de-los-documentos.md#ca-05--el-texto-fijo-de-la-plantilla-sobrevive-al-llenado) | CP-001, CP-002, CP-003 | Funcional | Crítica | Sí | ☐ |
 | HU-004 | RN-07 | CP-001, CP-004 | Funcional | Crítica | Sí | ☐ |
 | HU-004 | RN-08 | CP-003, CP-005 | Funcional | Alta | Sí | ☐ |
+
+> **El criterio del CA-05 cambió durante la ejecución**, de exigir una cita de regla a reprobar la fecha. El plan se deja como se aprobó y el cambio queda contado en el `resultado_pruebas` §5.1; estas dos filas se ajustaron solo en su redacción, para que el caso que nombran sea el que se corrió.
 | HU-004 | Transversal, no regresión | CP-006, CP-007 | No funcional | Alta | Sí | ☐ |
 
 **Cobertura:** 4 de 4 exigencias cubiertas = 100%.
@@ -111,7 +113,7 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 | **Tipo** | Funcional, caso negativo |
 | **Prioridad** | Crítica |
 | **Precondiciones** | La misma plantilla |
-| **Datos de entrada** | El caso real: una nota de procedencia con fecha, fuentes y el número de un pendiente, sin una sola cita de regla |
+| **Datos de entrada** | El caso real: una nota de procedencia con la fecha en que se escribió el documento, sus fuentes y el número de un pendiente |
 
 **Pasos**
 
@@ -119,7 +121,7 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 |---|---|---|
 | 1 | Escribir el documento con la nota de procedencia en el lugar del encuadre | Queda el archivo |
 | 2 | Correr `validar()` | Devuelve una falla |
-| 3 | Leer el mensaje | Dice que ese lugar es instrucción de uso y que la plantilla cita reglas ahí |
+| 3 | Leer el mensaje | Dice que ahí se contó de dónde salió el documento en vez de cómo se usa |
 
 **Resultado esperado final:** el caso que ya ocurrió en `prompts/cimiento-planteamiento.md` queda cubierto.
 
@@ -143,21 +145,21 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 
 ---
 
-### CP-005 — Una plantilla que no cita reglas no le exige citas al documento
+### CP-005 — Un texto fijo sin fecha no se reprueba
 
 | Campo | Valor |
 |---|---|
 | **HU / CA** | HU-004 / RN-08 |
 | **Tipo** | Funcional, no reprobar de más |
 | **Prioridad** | Alta |
-| **Precondiciones** | Una plantilla con texto fijo que no cita ninguna regla, como el plan de trabajo |
-| **Datos de entrada** | Un documento con su texto fijo, tampoco con citas |
+| **Precondiciones** | Una plantilla con texto fijo sin fecha, como el plan de trabajo |
+| **Datos de entrada** | Un documento con su texto fijo, tampoco con fecha |
 
 **Pasos**
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | Correr `validar()` | Ninguna falla: la exigencia de citar sale de la plantilla, y esa plantilla no la impone |
+| 1 | Correr `validar()` | Ninguna falla: no hay fecha donde la plantilla no la tiene |
 
 ---
 
@@ -169,13 +171,13 @@ CP-001 a CP-003 son críticos. CP-004 a CP-006 son los que impiden el falso posi
 | **Tipo** | No funcional |
 | **Prioridad** | Alta |
 | **Precondiciones** | La fase construida |
-| **Datos de entrada** | La batería completa de `validadores/tests` |
+| **Datos de entrada** | Las dos suites que importan `plantillas` |
 
 **Pasos**
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | Correr `python -m pytest validadores/tests` | Todo en verde, sin una prueba que antes pasara y ahora falle |
+| 1 | Correr las dos suites que importan `plantillas` | Todo en verde, sin una prueba que antes pasara y ahora falle |
 | 2 | Correr `python validadores/validar.py estandar` | Sin incumplimientos |
 
 ---
@@ -236,7 +238,7 @@ En el `resultado_pruebas.md` de la fase.
 | Exigencias con al menos un caso | 4 de 4 |
 | Casos en verde | 7 de 7 |
 | Documentos reales reprobados estando bien | 0 |
-| Pruebas que antes pasaban y ahora fallan | 0 |
+| Pruebas que antes pasaban y ahora fallan | 0 en las suites que la fase toca |
 
 ### 12.2 Dónde se miden
 

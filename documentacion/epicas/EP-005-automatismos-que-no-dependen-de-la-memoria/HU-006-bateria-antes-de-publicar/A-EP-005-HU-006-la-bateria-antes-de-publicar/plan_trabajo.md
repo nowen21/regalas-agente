@@ -96,12 +96,12 @@ Ninguno.
 
 | # | Duda | A quién | Estado |
 |---|---|---|---|
-| 1 | Si esta fase espera a que exista la corrida completa de EP-004 · HU-008, o si arranca con una lista propia y después se apoya en ella | Usuario | Pendiente |
-| 2 | Qué cuenta como «publicar» en un proyecto: el commit a la rama principal, el despliegue, o los dos | Usuario | Pendiente |
+| 1 | Si esta fase espera a que exista la corrida completa de EP-004 · HU-008, o si arranca con una lista propia y después se apoya en ella | Usuario | **Resuelta el 2026-08-18**, decisión 40 del pendiente 59: publicar es subir al repositorio compartido; el despliegue es del capítulo `18`, que es opt-in y nadie tiene encendido |
+| 2 | Qué cuenta como «publicar» en un proyecto: el commit a la rama principal, el despliegue, o los dos | Usuario | **Resuelta el 2026-08-18**, decisión 40 del pendiente 59: publicar es subir al repositorio compartido; el despliegue es del capítulo `18`, que es opt-in y nadie tiene encendido |
 
 Las dos bloquean T-01. **Ninguna tarea de construcción arranca con una duda abierta que la bloquee.**
 
-**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
+**Decididas el 2026-08-18**, en el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md). 👤 marca lo que sigue esperando un dato del usuario.
 
 | Duda | Decisión |
 |---|---|

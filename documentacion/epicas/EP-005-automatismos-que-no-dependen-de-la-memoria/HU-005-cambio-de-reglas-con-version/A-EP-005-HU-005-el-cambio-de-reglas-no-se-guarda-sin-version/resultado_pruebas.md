@@ -10,7 +10,7 @@
 | **HU** | [HU-005 Cambio de reglas con versión](../HU-005-cambio-de-reglas-con-version.md) |
 | **Ciclo** | 1 |
 | **Fecha de ejecución** | 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 | **Ambiente** | El repositorio del estándar en `main`, versión 31.5.0, Windows, Python 3.11 |
 
 ### 0.1 Las dos dudas que la detenían, y qué se hizo con ellas

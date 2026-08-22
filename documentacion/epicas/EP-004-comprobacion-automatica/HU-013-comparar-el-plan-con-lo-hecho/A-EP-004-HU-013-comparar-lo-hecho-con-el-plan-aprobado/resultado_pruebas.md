@@ -9,7 +9,7 @@
 | **Fase** | `A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado` |
 | **HU** | [HU-013 Comparar el plan con lo hecho](../HU-013-comparar-el-plan-con-lo-hecho.md) |
 | **Ciclo** | 1 · **Fecha** 2026-08-22 |
-| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md) |
 
 ### 0.1 Las dos dudas que la detenían
 

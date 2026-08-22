@@ -14,4 +14,4 @@
 
 **Lo que falta de la fase:** `resultado_pruebas.md` y `funcionalidad_implementada.md`, que salen de ejecutar.
 
-**Estado:** abierta con su plan escrito, sin aprobar. Sin dudas de implementación; lo que decida le sirve de precedente a dos preguntas del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+**Estado:** abierta con su plan escrito, sin aprobar. Sin dudas de implementación; lo que decida le sirve de precedente a dos preguntas del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md).
