@@ -33,9 +33,10 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** **Es la más invasiva de las ocho fases `B`:** el enganche está instalado en todos los proyectos que heredan el estándar, y a partir de aquí un documento con una falla **detiene el trabajo** en todos. **Sube MAYOR.**
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). El enganche ya estaba construido; faltaba correrlo por el camino real y escribir lo que dio.
 
 ## 1.1 Veredicto de las pruebas
 
@@ -55,16 +56,16 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Que la falla pida detener el trabajo |
-| T-02 | Pendiente | Que el mensaje diga **qué arreglar y dónde** |
-| T-03 | Pendiente | Casos de detener y de **no** detener — CP-001 y CP-002 |
-| T-04 | Pendiente | Caso de reversibilidad: el archivo queda entero — CP-003 |
-| T-05 | Pendiente | Escribir qué pasa con el archivo ya escrito |
-| T-06 | Pendiente | Los transversales que ya pasaban, otra vez — CP-004 |
-| T-07 | Pendiente | §4.3 de la especificación pasa de «lo que no hace» a la regla |
-| T-08 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Que la falla pida detener el trabajo |
+| T-02 | Hecha | Que el mensaje diga **qué arreglar y dónde** |
+| T-03 | Hecha | Casos de detener y de **no** detener — CP-001 y CP-002 |
+| T-04 | Hecha | Caso de reversibilidad: el archivo queda entero — CP-003 |
+| T-05 | Hecha | Escribir qué pasa con el archivo ya escrito |
+| T-06 | Hecha | Los transversales que ya pasaban, otra vez — CP-004 |
+| T-07 | Hecha | §4.3 de la especificación pasa de «lo que no hace» a la regla |
+| T-08 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 8. **Bloqueadas:** ninguna.
+**Hechas:** 8 de 8. **Bloqueadas:** ninguna.
 
 ---
 

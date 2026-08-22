@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.6.0 — 2026-08-22
+
+**MENOR** (una comprobación nueva al guardar, sobre el repositorio del estándar; ningún proyecto tiene que hacer nada).
+
+**Cambiar una regla y olvidar la versión ya no se puede.** El estándar exige que todo cambio de lo que viaja a los proyectos suba el número de versión y escriba su entrada en el registro, y hasta hoy eso dependía de que alguien se acordara. Ahora, al guardar, si el cambio toca las reglas o los moldes y falta alguno de los dos, el guardado **se detiene** y el mensaje dice cuál falta. Un cambio que no toca las reglas no nota nada: pedir versión donde no toca es el ruido que apaga cualquier control.
+
+**El detalle.** Fase [`A-EP-005-HU-005`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/A-EP-005-HU-005-el-cambio-de-reglas-no-se-guarda-sin-version/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). Nace [`validadores/guardian_version.py`](validadores/guardian_version.py), que corre dentro de `validar.py versionado --preparados`, o sea dentro del enganche que ya existía: dos enganches sobre el mismo momento se pisan. Siete casos de prueba, con el que decide, que un commit ajeno a las reglas no note nada. No juzga si la entrada del registro dice la verdad ni si el tipo de versión es el correcto: eso exige leer, y queda escrito en su contrato.
+
+**Y se cerró la fase [`B-EP-005-HU-003`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-003-disparo-al-escribir-un-archivo/B-EP-005-HU-003-el-hallazgo-grave-detiene/README.md)**, que no cambia nada del programa: comprueba, corriendo el enganche como lo corre la herramienta, que un documento con un enlace roto se devuelve para corregir, que uno sano no molesta, y que el archivo nunca se toca.
+
 ## 31.5.0 — 2026-08-22
 
 **MENOR** (las comprobaciones dejan de caerse ante un archivo que no pueden leer; nadie tiene que hacer nada).

@@ -1450,3 +1450,69 @@ Dígame si arranco con el 33 (las cuatro son decisiones, se resuelven en un inte
 
 ### 73 · Usuario — 2026-08-22 08:29:27
 > siga
+
+**Agente** — 2026-08-22 10:19:19
+<!-- agente: ace14cfa-90fd-426c-a9aa-b7edc83fd3ad -->
+
+Verde. Cierro la fase C con su resultado y su documentación:
+
+Publicado `6436837` (31.0.0). Sigo con la columna CA→CA de la plantilla de historia:
+
+Sigo con el mapa del sitio, que el 33 decidió comprobar con un validador:
+
+El validador encuentra cuatro carpetas ausentes y una que ya no existe. Actualizo el mapa:
+
+Ahora la prueba que protege ese validador:
+
+Sigo con el instalador: que agregue al `README` heredado lo nuevo, como ya hace con el `CLAUDE.md`.
+
+Ahora el cambio en el instalador, con su prueba:
+
+Ahora el brief contra el histórico (8d) y la fase que cierra los dos:
+
+Falta el índice temático del histórico. Lo construyo generado, no a mano:
+
+345 hallazgos de 59 resúmenes en un archivo. Le pongo su prueba y cierro la fase:
+
+El 33 queda cerrado y publicado. Ahora el 59: mido las 34 fases detenidas para saber cuáles ya están construidas.
+
+Las fases ya tienen su plan aprobado; lo que falta es ejecutarlas y llenar sus tres documentos de cierre. Empiezo por la de las claves:
+
+Cinco fases están hechas y probadas, y solo su `estado-fase` quedó diciendo lo contrario. Las pongo al día:
+
+Publicado. Sigo con la fase de capas, que ya tenía su resultado escrito:
+
+El plan está claro; construyo la lectura tolerante:
+
+Construyo `leer` tolerante, con el registro de lo ilegible para que se reporte:
+
+Ahora que `validar.py` lo reporte y que `pendientes.py` vuelva a usar la lectura común:
+
+Estos ocho fallos son anteriores: las pruebas citan rutas de moldes que se movieron el 21. Los arreglo:
+
+Cierro la fase del archivo ilegible con su resultado y su documentación:
+
+He publicado seis versiones más. Estado real, corto:
+
+**Pendiente 33: cerrado** (`5f62837`). De sus once puntos, siete ya los contestaba el repositorio y cinco se construyeron:
+
+| Versión | Qué se construyó |
+|---|---|
+| 31.0.0 | `20·M20` + [molde del barrido](plantillas/candidatas-a-regla.md): lo que se pide dos veces se barre antes de publicar |
+| 31.1.0 | La tabla de fases de la historia gana la columna «Depende de» |
+| 31.2.0 | `validar.py sitio`: el mapa decía doce carpetas y son dieciséis |
+| 31.3.0 | El `README` heredado recibe lo que el estándar suma, sin pisar; y qué manda entre histórico y lo acordado |
+| 31.4.0 | `validar.py temas`: 345 hallazgos de 59 resúmenes, buscables por tema |
+
+**Pendiente 59: en marcha, y no era lo que decía.** No son «4 datos del usuario»: son **34 fases** con el estado en cero. Medidas una por una:
+
+- **5 estaban hechas y probadas**, y solo su `estado-fase` decía que no. Puestas al día.
+- **3 ejecutadas hoy**: el molde de regla (probado contra las 249 reglas reales), capas y precedencia, y el archivo ilegible — esta última **sí había que construirla**: `comun.leer` reventaba y tumbaba la corrida entera perdiendo los hallazgos ya encontrados (v31.5.0). De paso destapó ocho pruebas en rojo desde el 21 que citaban moldes movidos.
+- **Quedan 26.** La mayoría son verificar y escribir; unas pocas piden construir de verdad (la memoria de EP‑006, el conteo por regla, comparar plan contra lo hecho).
+
+Todo verde: `estandar`, `metareglas`, `sitio`, `temas` sin incumplimientos; la batería, 366 pruebas con **una** falla, y es del pendiente 48, que usted excluyó: el inventario dice 78 HU y el programa cuenta 101.
+
+Sigo con las 26 salvo que prefiera que le muestre antes algo puntual.
+
+### 74 · Usuario — 2026-08-22 10:24:43
+> siga

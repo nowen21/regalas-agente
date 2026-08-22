@@ -173,6 +173,14 @@ Verificado el 2026-08-14.
 55. **Con `--escribir` queda en `historico-chat/trazas/` con el nombre del histórico de esa sesión**, indexada una sola vez; sin histórico de esa sesión, lo dice y no inventa nada. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
 56. **Lo raro no revienta:** la línea ilegible se salta, el archivo vacío o inexistente da una frase y código 1. Baja de [`EP-005 · HU-016`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md).
 
+### 4.9 Guardar un cambio de reglas
+
+57. **Un commit que toca `base/` o `plantillas/` no se guarda sin subir `VERSION` y sin su entrada en `CHANGELOG.md`.** Es `20·M10` comprobado en el momento de guardar, que es cuando todavía se puede arreglar. Baja de [`EP-005 · HU-005`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md).
+58. **Detiene, no avisa.** Que los dos archivos estén en el commit se mira sin interpretar nada, y un aviso que nada respalda se ignora: ya pasó con la brevedad, con las marcas y con el desfase de versión. Baja de [`EP-005 · HU-005`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md).
+59. **Un cambio que no toca la norma no nota nada.** Tocar un validador, la documentación o un pendiente no cambia lo que se le exige a un proyecto; pedir versión ahí es el ruido que apaga el control. Baja de [`EP-005 · HU-005`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md).
+60. **Mezclar no esconde:** una regla entre diez archivos que no lo son se detecta igual, y el rechazo dice cuál de los dos falta. Baja de [`EP-005 · HU-005`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md).
+61. **No juzga la entrada ni el tipo de versión.** Que el registro diga la verdad y que el cambio sea mayor, menor o parche se decide leyendo; el programa comprueba que estén. Baja de [`EP-005 · HU-005`](../epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-005-cambio-de-reglas-con-version/HU-005-cambio-de-reglas-con-version.md).
+
 ## 5. Modelo de datos
 
 No aplica porque el entregable son programas de línea de comandos sobre archivos de texto: no hay entidades, tablas ni catálogos.
@@ -277,6 +285,7 @@ El detalle vive en el [documentacion/epicas/EP-005-automatismos-que-no-dependen-
 | RN-52 a RN-54 · el paso, la fila, el cierre y la privacidad | programa | `validadores/traza.py` | ✅ | CP-001 y CP-002 de la fase A de HU-016 |
 | RN-55 · escribe junto al histórico, indexada una vez | programa | `validadores/traza.py` · `validadores/historico.py` | ✅ | CP-003 y CP-004 de esa fase |
 | RN-56 · lo raro no revienta | programa | `validadores/validar.py` (`traza`) | ✅ | CP-005 de esa fase |
+| RN-57 a RN-61 · el cambio de reglas lleva su versión | programa | `validadores/guardian_version.py`, dentro de `validar.py versionado --preparados` | ✅ | los siete casos de `test_el_cambio_de_reglas_lleva_su_version.py` |
 
 ## 14. Cruces con otros módulos
 

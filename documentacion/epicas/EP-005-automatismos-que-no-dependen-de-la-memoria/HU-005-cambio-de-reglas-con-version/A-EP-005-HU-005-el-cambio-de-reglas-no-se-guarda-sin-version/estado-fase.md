@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Un enganche que puede trabar el guardado no se instala sin aprobación.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 2 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Acá **sí había que construir**: nace `guardian_version.py`.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
+| **CA cumplidos** | 2 de 2 |
 | **CA en "No"** | Los **dos están en «No» de entrada**: hoy nada impide guardar un cambio de reglas sin versión |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,13 +57,13 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Que al guardar se exija entrada y subida si el cambio toca reglas. Dudas 1 y 2 |
-| T-02 | Pendiente | Caso del cambio de regla sin versión — CP-001 |
-| T-03 | Bloqueada | Que el enganche se calle con lo que no toca reglas |
-| T-04 | Pendiente | Caso del cambio que no toca reglas — CP-003 |
-| T-05 | Pendiente | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
+| T-01 | Hecha | Que al guardar se exija entrada y subida si el cambio toca reglas. Dudas 1 y 2 |
+| T-02 | Hecha | Caso del cambio de regla sin versión — CP-001 |
+| T-03 | Hecha | Que el enganche se calle con lo que no toca reglas |
+| T-04 | Hecha | Caso del cambio que no toca reglas — CP-003 |
+| T-05 | Hecha | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
 
-**Hechas:** 0 de 5. **Bloqueadas:** T-01 y T-03.
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 

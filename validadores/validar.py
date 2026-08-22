@@ -48,6 +48,7 @@ import expediente       # noqa: E402
 import metareglas       # noqa: E402
 import migraciones      # noqa: E402
 import numeracion       # noqa: E402
+import guardian_version  # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
 import reaperturas      # noqa: E402
@@ -151,6 +152,15 @@ def cmd_versionado(a):
         hallazgos += versionado.validar(
             repo, repo if etiqueta == "." else f"{etiqueta}/",
             solo_preparados=a.preparados)
+
+    # `EP-005·HU-005` · Y lo que **no** se puede guardar: un cambio de la norma
+    # sin su versión y su entrada. Solo cuando se mira el commit, porque sobre
+    # el repositorio entero la pregunta no tiene sentido: ahí ya está todo.
+    if a.preparados:
+        for repo in repos:
+            etiqueta = os.path.relpath(repo, raiz).replace("\\", "/")
+            hallazgos += guardian_version.validar(
+                repo, repo if etiqueta == "." else f"{etiqueta}/")
 
     # `22` · Y la numeración en sí: que no se haya quedado atrás de lo guardado,
     # que tenga su entrada y que no repita un número. Va acá y no aparte porque

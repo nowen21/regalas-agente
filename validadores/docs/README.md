@@ -20,6 +20,7 @@ Las usan casi todos los demás.
 | Archivo | Documentación | Qué hace |
 |---|---|---|
 | `comun.py` | [comun.md](comun.md) | Guarda lo que todos comparten: cómo se anota un hallazgo, qué tan grave es y cómo se leen los archivos de texto. |
+| `guardian_version.py` | [guardian_version.md](guardian_version.md) | Un cambio de `base/` o `plantillas/` no se guarda sin subir la versión y escribir su entrada en el registro. |
 | `codigo.py` | [codigo.md](codigo.md) | Abre los archivos de código del proyecto y los va pasando de a uno, con su nombre y su contenido. |
 | `versionado.py` | [versionado.md](versionado.md) | Le pregunta a git qué archivos está guardando y marca los que no deberían estar ahí. |
 
