@@ -19,7 +19,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Responde a:** — (salió de revisar el entregable del pendiente 56, no de un criterio planeado)
 - **Dispara:** —
 - **Orden de resolución:** 1 de 2 · es el archivo concreto; H-2 generaliza lo que acá se ve.
-- **Dónde queda:** [`prompts/cimiento-planteamiento.md`](../../../prompts/cimiento-planteamiento.md), reescrito completo en voz de entrada.
+- **Dónde queda:** [`prompts/cimiento-planteamiento.md`](../../../prompts/cimiento-planteamiento.md). No se parchó: el usuario pidió borrarlo y escribirlo de nuevo desde las fuentes (README, `prompts/`, notas, inventario), para que la reconstrucción no arrastrara la voz descriptiva del texto anterior.
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** 2026-08-22 · encuadre del planteamiento
 - **Con qué se retoma:** —
@@ -43,6 +43,26 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿el encuadre se vuelve texto fijo verificable, o basta con una regla del capítulo 13 que lo exija?
+
+### H-3 · Los moldes del ciclo llevan las marcas que el estándar prohíbe, y se las pasan a todo documento que nace de ellos
+
+- **Qué pasó:** el planteamiento reescrito salió con 33 marcas mecánicas de [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md); el usuario lo notó antes que el agente, que no había corrido [`validadores/marcas.py`](../../../validadores/marcas.py). Al limpiarlo quedaron 2, y las 2 vienen copiadas del molde: el título y el nombre de la sección 1. Contados aparte, los moldes de `plantillas/` suman **461 marcas en 31 archivos**, y los del ciclo de vida **197 en 10**.
+- **Por qué importa:** el estándar exige `00·ID8` a todo documento que el agente entrega, y sus propios moldes son la fuente. Todo planteamiento, especificación o plan que un proyecto escriba nace incumpliendo, y el que lo llena no tiene forma de saber si la marca es suya o heredada. El trinquete del commit solo impide que la deuda crezca; no limpia la que ya viaja en el molde.
+- **Qué lo soluciona:**
+  **EP-003 · HU nueva — «los moldes se entregan limpios de marcas»**
+  - **Como** quien llena un molde en cualquier proyecto
+  - **Quiero** que el molde no traiga marcas de generación automática
+  - **Para** que el documento que escribo no nazca incumpliendo una regla que yo no escribí
+  - **Contexto:** hoy `plantillas/` acumula 461 marcas mecánicas y cada copia las propaga al proyecto que la usa. Limpiar la prosa de un molde es reescribirla, así que no lo puede hacer el reemplazo automático: va molde por molde. Si no se hace, la regla queda escrita y sistemáticamente incumplida desde su propia fuente, que es la peor forma de tener una regla.
+- **Qué se decidió:** sin decidir. El planteamiento de Cimiento quedó limpio salvo las 2 heredadas, que se corrigen cuando se corrija el molde.
+- **Estado:** abierto
+- **Responde a:** —
+- **Dispara:** 1. EP-003 · HU nueva — «los moldes se entregan limpios de marcas».
+- **Orden de resolución:** 3 de 3 · es el trabajo más largo de los tres y no bloquea a los otros dos.
+- **Dónde queda:** falta crear el pendiente en [`pendientes/`](../../../pendientes/).
+- **Nace en:** 2026-08-22 · encuadre del planteamiento
+- **Cerrado en:** —
+- **Con qué se retoma:** ¿se limpian los 31 moldes de una, o solo los del ciclo de vida y el resto queda para después?
 
 ---
 

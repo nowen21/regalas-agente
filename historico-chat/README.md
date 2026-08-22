@@ -113,3 +113,4 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-21-que-es-memory-y-trazas.md](2026-08-21-que-es-memory-y-trazas.md) — Preguntas sobre qué guardan historico-chat/memory/ y historico-chat/trazas/. · [historico-chat/resumenes/2026-08-21/que-es-memory-y-trazas.md](resumenes/2026-08-21/que-es-memory-y-trazas.md)
 - [2026-08-22-sesion.md](2026-08-22-sesion.md) — sesión del 2026-08-22.
 - [2026-08-22-sesion-2.md](2026-08-22-sesion-2.md) — sesión del 2026-08-22.
+- [2026-08-22-sesion-3.md](2026-08-22-sesion-3.md) — sesión del 2026-08-22.

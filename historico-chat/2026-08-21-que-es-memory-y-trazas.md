@@ -1516,3 +1516,63 @@ Sigo con las 26 salvo que prefiera que le muestre antes algo puntual.
 
 ### 74 · Usuario — 2026-08-22 10:24:43
 > siga
+
+**Agente** — 2026-08-22 11:18:27
+<!-- agente: 18345925-f862-4974-bb85-8574cbb5f72b -->
+
+Sigo. Verifico dos comportamientos antes de cerrar la siguiente tanda:
+
+Construyo el guardián de versión, dentro de `versionado`, que es lo que corre el pre‑commit:
+
+Los cuatro casos se comportan bien. Les escribo la prueba y el contrato:
+
+Ahora el cierre de esa fase y la del hallazgo grave, que ya estaba construida:
+
+Los tres casos pasan contra el enganche real. Cierro las dos fases:
+
+La corrida completa en una línea no existe (`validar.py` tiene 41 subcomandos sueltos). La construyo:
+
+La corrida encuentra tres fallas reales, y una es mía: los módulos nuevos no están en el mapa del amarre.
+
+**31 comprobaciones en una línea, sin fallas.** Le escribo su prueba y cierro las dos fases de EP‑004:
+
+Cierro las dos fases de EP‑004 (la corrida completa y el molde que se puede correr):
+
+`CP-002` pide reportar el identificador repetido, que era justo el hueco detectado antes. Lo construyo:
+
+Funciona. Le pongo su prueba permanente y cierro las dos fases:
+
+Ninguna de las dos está construida. Las hago juntas, que son de la misma historia:
+
+24 cerrados sin declarar su fase: deuda medida, no bloqueante. Le pongo pruebas y cierro las dos fases:
+
+Mis dos comprobaciones nuevas hacen que cinco pruebas viejas cuenten de más. Las ajusto para que filtren lo suyo:
+
+Solo queda el fallo del pendiente 48, que usted excluyó. Publico:
+
+El molde de cierre no tiene el sello de versión. Lo agrego con su comprobación:
+
+La comprobación solo ve el molde literal; la hago reconocer también la forma en prosa y sello mis cierres de hoy:
+
+Los quince cierres de hoy quedaron sellados. Cierro la fase del sello y publico:
+
+Publicado. Estado tras esta tanda:
+
+**Pendiente 33: cerrado.** **Pendiente 59: 15 fases de 34.** Cuatro versiones más desde el último reporte:
+
+| Versión | Qué quedó |
+|---|---|
+| 31.5.0 | Un archivo ilegible ya no tumba la revisión: se lee lo que se pueda, se sigue, y se dice cuál no se pudo |
+| 31.6.0 | Un commit que cambia reglas sin subir versión ni escribir su entrada **no se guarda**; y el enlace roto devuelve el documento para corregir |
+| 31.7.0 | `validar.py todo`: 31 comprobaciones en una línea. Su primera corrida encontró tres mapas viejos. Y dos reglas ya no pueden compartir identificador |
+| 31.8.0 | Un pendiente abierto sin historia detiene; uno cerrado sin fase avisa. Midió la deuda: 24 cerrados sin decir en qué fase se hicieron |
+| 31.9.0 | Todo cierre dice bajo qué versión cerró; los quince de hoy quedaron sellados |
+
+**Lo que se repitió solo en cinco fases distintas**, y quedó escrito como criterio: *detiene lo que se comprueba sin criterio, avisa lo que solo informa mal*, y nada se exige hacia atrás — treinta avisos que nunca se van apagan la comprobación entera.
+
+**Quedan 19 fases.** Casi todas son verificar y escribir (EP‑001 retrodocumentaciones, EP‑002, EP‑003); las tres de la memoria (EP‑006: búsqueda por significado, degradar sin el modelo, marcar con fecha) son las únicas que exigen construir algo que hoy no existe en ninguna forma.
+
+Todo verde salvo una falla conocida: el inventario del pendiente 48 dice 78 historias y el programa cuenta 101 — y el 48 es de los que usted excluyó.
+
+### 75 · Usuario — 2026-08-22 11:40:21
+> qué sigue?

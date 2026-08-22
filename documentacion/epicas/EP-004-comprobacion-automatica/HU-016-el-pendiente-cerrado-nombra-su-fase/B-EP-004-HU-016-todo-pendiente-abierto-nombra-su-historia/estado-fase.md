@@ -52,9 +52,9 @@ Sin veredicto: la fase no se ha ejecutado. El `resultado_pruebas.md` y el `funci
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 a T-12 | Sin empezar | Esperan la aprobación de la estación 5 |
+| T-01 a T-12 | Hechas | Ejecutadas el 2026-08-22 con la orden del usuario de resolver el pendiente 59 |
 
-**Hechas:** 0 de 12. **Bloqueadas por aprobación:** 12.
+**Hechas:** 12 de 12. **Bloqueadas:** ninguna.
 
 ---
 
