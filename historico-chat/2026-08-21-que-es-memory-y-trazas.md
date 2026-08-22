@@ -1308,3 +1308,35 @@ Verificado: `estandar` 0 fallas, versionado en verde, trinquete limpio (atajó 2
 
 ### 66 · Usuario — 2026-08-22 05:31:19
 > s
+
+**Agente** — 2026-08-22 05:32:22
+<!-- agente: 60bacf52-c411-4d6a-bf40-4473e92c35ad -->
+
+Publicado: commit `be87959` en `main`, push en verde (**30.7.0**).
+
+Antes de tocar el 19 necesito que me confirmes una cosa, porque tu «s» respondía a una pregunta y el 19 tiene cuatro: ¿ese «s» es también **sí a las cuatro** (partir las 26, tocar las tres blindadas, anexo para `D7` y `F12`, derogar `S7` y `PR3`)? Es trabajo MAYOR y crea identificadores que los proyectos citarán para siempre, así que prefiero tu confirmación explícita antes de arrancar.
+
+### 67 · Usuario — 2026-08-22 05:33:58
+> si
+
+**Agente** — 2026-08-22 05:50:39
+<!-- agente: d9dbd66c-4535-412a-8d59-099895af778b -->
+
+Primera ronda del 19 hecha: **las 27 reglas publicadas en «no cumple» ya cumplen** — `validar.py metareglas` pasó de 27 fallas a **0** (36 avisos, deuda vieja de la fila 10 en `F11`, `DOC15`‑`DOC17`, `ID8`). `estandar`, `versionado` y `pendientes` en verde. Versión **30.8.0** (MENOR), CHANGELOG, [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y resumen (H‑8) escritos.
+
+Qué cambió, por capítulo:
+- `18` y `19`: las catorce ganan ejemplo; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [notas/porques-recortados-de-18-y-19.md](notas/porques-recortados-de-18-y-19.md).
+- `01`: `C1`, `C15`, `C16`, `C18` en cuatro líneas, dependencia entre paréntesis; el bloque «Encadenamiento» desaparece (también en `03·D8`).
+- `04·S4`, `08·T4`: texto propio, «depende de» la blindada (`M7` prohíbe «extiende» hacia blindadas). `10·DEP3` declara que deroga a `S7`.
+- `02·F12`: su texto literal suyo va **entero y sin tocar** al anexo [nomenclatura-de-fases.md](base/02-flujo-de-trabajo/nomenclatura-de-fases.md); la regla queda con una exigencia. Los `F12.N` pasan a ser puntos del anexo: 13 citas en 7 archivos ahora dicen `02·F12, punto N`; `F11`, `DOC15`‑`17` reselladas por eso.
+- `20`: `M2` aclara que el preámbulo del `00` es anexo; `M4`, `M7`, `M8` vuelven a cumplir.
+
+**Dos cosas son suyas:**
+
+1. **El trinquete bloquea el commit**: el anexo nuevo trae 12 rayas (—) que vienen de su texto literal al moverlo. Opciones: (a) sustituirlas por dos puntos/coma, que es puntuación y no palabras (recomendada, y se lo anoto en el anexo); (b) dejar el texto intacto y pasar el trinquete con la rama de archivo movido.
+2. Con eso resuelto, **¿autoriza commit y push** de la 30.8.0?
+
+Después sigue la segunda ronda: partir las 26 reglas con más de una exigencia (MAYOR), por capítulo.
+
+### 68 · Usuario — 2026-08-22 06:46:10
+> si

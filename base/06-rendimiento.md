@@ -1,6 +1,6 @@
 # 06 · Rendimiento y eficiencia  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-019](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-019-el-capitulo-06-rendimiento-y-eficiencia/HU-019-el-capitulo-06-rendimiento-y-eficiencia.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-019](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-019-el-capitulo-06-rendimiento-y-eficiencia/HU-019-el-capitulo-06-rendimiento-y-eficiencia.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Código que no se degrada con el volumen. Regla general: **mide antes de optimizar**, pero no metas ineficiencias evidentes. La capa 3 declara herramientas (caché, profiler, límites).
 

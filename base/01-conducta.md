@@ -1,6 +1,6 @@
 # 01 · Conducta del agente  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Cómo se porta el agente en toda tarea. Reglas base; la capa de proyecto ajusta detalles, nunca el núcleo (`00`).
 
@@ -8,37 +8,36 @@ Cómo se porta el agente en toda tarea. Reglas base; la capa de proyecto ajusta 
 
 ## C1 · Avisa antes de tocar
 
-Antes de cambiar un archivo, di **qué** cambias y **por qué**. Espera el sí.
-(No aplica dentro de un plan ya aprobado: ahí avanzas sin pedir permiso por cada archivo.)
+Antes de cambiar un archivo, di **qué** cambias y **por qué**, y espera el sí (depende de [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada)).
+
+**Excepción**: dentro de un plan aprobado se avanza sin pedir permiso por cada archivo (condición); no cubre lo irreversible, que se pide cada vez (límite); lo autoriza el usuario al aprobar el plan (autoriza).
 
 ```
 INCORRECTO: editar sin avisar
 CORRECTO:   "Agrego la verificación de permiso en X porque Z. ¿Procedo?"
 ```
 
-
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ❌ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | N/A N/A ❌ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A ✅ ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
+**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
+
+**Corregida el 2026-08-22 (pendiente 19):** la fila 11 reprobaba por repetir a `00·N1` sin declararlo, y la 16 porque su excepción (el plan aprobado) no decía límite ni quién autoriza. Ahora extiende a `N1` y la excepción trae sus tres partes.
 
 **Dos filas, y las dos son la misma excepción.**
 
-- **Fila 16 · incompleta.** «(No aplica dentro de un plan ya aprobado)» declara condición y no dice ni límite ni quién autoriza. Es la **cuarta** que aparece así, con [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app).
-- **Fila 11 · texto prestado.** Esa excepción es [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) dicha otra vez — **y es la tercera vez que se dice**, porque [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada) también la repite.
-
-**Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: `F3` es la dueña y las otras dos la enlazan. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: [`F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) es la dueña y las otras dos la enlazan. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -223,7 +222,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 Cumplía en el análisis del 2026-08-07. Se volvió a contar: 139 de 320.
 
-**Es el autorizador natural que les falta a las cuatro excepciones incompletas** —`C1`, `08·T1`, `03·D4` y `03·D5`—: ante dos lecturas, se pregunta. El análisis ya lo anotaba, y al aplicar el checklist hoy esas cuatro aparecieron una tras otra. **La respuesta a «quién autoriza» probablemente esté acá.**
+**Es el autorizador natural que les falta a las cuatro excepciones incompletas** —`C1`, [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), [`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo) y [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app)—: ante dos lecturas, se pregunta. El análisis ya lo anotaba, y al aplicar el checklist hoy esas cuatro aparecieron una tras otra. **La respuesta a «quién autoriza» probablemente esté acá.**
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -525,50 +524,34 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## C15 · Al replicar un patrón, replicar la paridad completa
 
-Cuando el usuario dice "hazlo como en X" o "replica el patrón de Y", implica **paridad completa** con el referente, no solo la lógica de datos.
-
-**Qué incluye la paridad completa** (según lo que tenga el referente):
-
-- **UI/UX** — tooltips y textos explicativos, popovers, botón `+` para crear inline, feedback visual, mensajes de éxito y error, atajos de teclado, animaciones y transiciones, layout responsive equivalente.
-- **Interacciones** — mismo comportamiento en errores, misma validación cliente/servidor, mismo flujo de creación/edición/eliminación, mismos permisos mínimos.
-- **Datos** — no solo el modelo, también sus relaciones consumidas por la UI referente, sus scopes de consulta, sus caches, sus eventos.
-- **Tests** — el patrón replicado también replica su cobertura mínima.
-
-**Cuándo pedir aclaración**: si el referente tiene algo que **no aplica** al nuevo caso (por ejemplo, una ayuda contextual con un dato que no existe en el nuevo dominio), preguntar antes de omitirlo — no dar por asumido que "no hace falta".
-
-**Anti-patrón rechazado:** "implementé la lógica igual que X, la UX la vemos después" — divide el patrón en dos entregas parciales que rompen la referencia. La paridad se replica en la misma unidad de trabajo, no en fases sucesivas.
+Cuando el usuario dice «hazlo como X», replica la **paridad completa** con el referente: interfaz y ayudas, interacciones y validaciones, datos y relaciones, y pruebas; en la misma unidad de trabajo. Si algo del referente no aplica, pregunta antes de omitirlo (extiende [`01·C14`](#c14--estándar-profesional-del-dominio)).
 
 ```
 INCORRECTO: "hazlo como el módulo de referencia" → solo se implementa el modelo y el
             alta/baja básicos, sin las ayudas ni el alta rápida que el referente sí tiene
-CORRECTO:   listar lo que el referente tiene (pantalla, interacciones, pruebas) y
+CORRECTO:   listar lo que el referente tiene (pantalla, interacciones, datos, pruebas) y
             replicarlo entero · si algo no aplica, preguntar antes de omitir
 ```
 
-**Encadenamiento:** `C14` (estándar profesional del dominio como default) — la paridad completa es la aplicación puntual de C14 cuando existe un referente concreto en el mismo proyecto.
-
-
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | ❌ N/A N/A ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
+**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
+
+**Corregida el 2026-08-22 (pendiente 19):** medía 1441 caracteres y declaraba su dependencia en un bloque `Encadenamiento` que [`M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) no admite. La lista de qué incluye la paridad quedó en una frase (interfaz, interacciones, datos, pruebas) y la dependencia, entre paréntesis: extiende `C14`.
 
 **La fila 5 reprobaba y se corrigió en esta pasada.** Nombraba «el módulo Aportes», de un proyecto real, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Pasa a «el módulo de referencia», que es lo que la regla quería decir. **No cambia qué exige.**
-
-**Fila 10 · no cabe:** 1441 caracteres.
-
-**Fila 14 ·** su bloque `Encadenamiento` declara relaciones **fuera de las tres formas** que [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) admite. Es un formato propio que aparece en cuatro reglas —`C15`, `C16`, `C18` y [`03·D8`](03-datos.md#d8--distingue-pertenencia-de-autoría-en-el-modelo-de-datos)— y conviene normalizarlo de una vez, no regla por regla.
 
 Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
@@ -576,19 +559,7 @@ Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../
 
 ## C16 · Re-lee justo antes de editar — nunca sobre contexto viejo
 
-Antes de editar un archivo que el usuario abrió, mostró en el editor, o pudo modificar entre lecturas, verifica el estado actual. Editar sobre contexto viejo sobrescribe en silencio los cambios que no viste — el usuario los pierde sin aviso.
-
-**Siempre aplica cuando:**
-- El control de versiones lo da por modificado o sin rastrear (cambios sin confirmar).
-- El usuario lo tiene abierto en el editor, o mostró un extracto reciente.
-- La sesión se reanudó tras compactación (el estado leído en el turno viejo pudo haber cambiado).
-- Han pasado varios turnos u otras ediciones entre la última lectura y la próxima escritura del mismo archivo.
-
-**Cómo:**
-1. Pregúntale al control de versiones si ese archivo tiene cambios sin confirmar.
-2. Si los tiene, mira **qué** cambió y decide si tu edición sigue valiendo o hay que rehacerla.
-3. Relee la sección que vas a tocar — confirma que el texto que vas a reemplazar sigue siendo literalmente el que existe.
-4. Solo entonces edita.
+Antes de editar un archivo que el usuario pudo haber cambiado desde tu última lectura (lo tiene abierto, el control de versiones lo da por modificado, la sesión se compactó o pasaron varios turnos), relee la sección exacta que vas a reemplazar y edita contra ese texto, nunca sobre contexto viejo (extiende [`01·C2`](#c2--no-inventes-verifica)).
 
 ```
 INCORRECTO: editar sobre una lectura de hace veinte turnos, sin verificar los
@@ -597,32 +568,27 @@ CORRECTO:   estado → diferencias (si las hay) → releer el bloque exacto → 
             contra el texto verificado
 ```
 
-**Encadenamiento:** `C2` (no inventar, verificar) — C16 es la aplicación puntual de C2 al ciclo de edición.
-
-
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.2**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | ❌ N/A N/A ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 3 ❌ · 2 N/A.**
+**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
+
+**Corregida el 2026-08-22 (pendiente 19):** medía 975 caracteres, repetía a `C2` y declaraba la dependencia en un bloque `Encadenamiento`. El procedimiento de cuatro pasos quedó en el ejemplo (que no cuenta para el molde) y la dependencia entre paréntesis: extiende `C2`.
 
 **La fila 5 reprobaba y se corrigió en esta pasada**, y era la peor del capítulo: el procedimiento entero estaba escrito en nombres de herramienta —las órdenes de lectura y edición del agente, y dos órdenes del control de versiones—. Ahora dice el paso, no la orden.
 
 **Lo del control de versiones se comprobó antes de tocarlo.** El capítulo `09` se titula **Control de versiones**, no por el nombre de la herramienta, y **ninguna otra regla del cuerpo nombraba una orden concreta**: `C16` era la única. Nombrarlas no era la costumbre de la casa, era su excepción.
-
-- **Fila 10 · no cabe:** 1070 caracteres.
-- **Fila 11 · texto prestado**, y lo admite ella misma: su `Encadenamiento` dice que duplica [`C2`](#c2--no-inventes-verifica).
-- **Fila 14 · el `Encadenamiento` no es una de las tres formas** de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md). Lo que corresponde es declarar `(extiende C2)`.
 
 **Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo**, y sigue igual: el aviso estaba dentro de la propia regla. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
@@ -694,17 +660,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## C18 · Auto-sincronización del `CLAUDE.md` con la plantilla central
 
-El `CLAUDE.md` de cada proyecto es una **copia local** de `plantillas/CLAUDE.md.plantilla`. Cuando el estándar mejora la plantilla (un paso nuevo en §3, una sección nueva), el `CLAUDE.md` del proyecto queda **viejo**. Esta regla vive en `base/` **a propósito**: `base/` se carga siempre, así que corre **aunque el `CLAUDE.md` local esté desactualizado** (no puede vivir dentro del propio `CLAUDE.md` — un `CLAUDE.md` viejo no la tendría).
-
-**Al iniciar cada sesión** corre el instalador del estándar, que:
-
-1. **Compara** el `CLAUDE.md` local contra `plantillas/CLAUDE.md.plantilla` (central).
-2. Si el local **no existe**, lo genera desde la plantilla con las rutas de la máquina, el nombre y el slug del proyecto y la versión del estándar. Nada de eso es una decisión: no se pregunta.
-3. Si la plantilla tiene **secciones o pasos nuevos** que el local no tiene, los **agrega**, y llena los marcadores que hayan quedado sin valor.
-4. **Preserva** siempre lo específico del proyecto: rutas, ajustes de §5.1, slug, secciones propias y todo valor ya llenado. Es **aditivo**: nunca sobrescribe, reordena ni borra lo escrito.
-5. **Dice qué agregó.** Aplicar sin avisar no es lo mismo que aplicar en silencio: el paso queda listado en la salida del instalador y en el registro de `documentacion/versiones/`.
-
-Así, un cambio a `CLAUDE.md.plantilla` **se propaga solo** a cada proyecto en su próxima sesión — sin edición manual proyecto por proyecto y sin una pregunta cuya única respuesta útil es "sí".
+El `CLAUDE.md` de cada proyecto es copia de la plantilla central; al iniciar cada sesión el instalador lo compara con ella, agrega lo nuevo preservando todo lo propio del proyecto y dice qué agregó, sin preguntar. Vive en `base/` porque un `CLAUDE.md` viejo no traería esta regla (depende de [`02·F13`](02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md)).
 
 ```
 INCORRECTO: se mejora CLAUDE.md.plantilla · el agente pregunta en cada proyecto si aplica
@@ -713,30 +669,25 @@ CORRECTO:   se mejora la plantilla una vez · cada proyecto lo aplica al arranca
             (aditivo, preservando lo propio) y reporta qué agregó
 ```
 
-**Encadenamiento:** complementa el paso de arranque de `CLAUDE.md §3` (que cubre los 4 archivos de `.agente/`); `C18` cubre el **propio `CLAUDE.md`** y vive en `base/` porque el `CLAUDE.md` local puede estar viejo.
-
-
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | ❌ N/A N/A ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 2 ❌ · 2 N/A.**
+**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
 
-**Fila 10 · no cabe: 533 caracteres**, y su `Encadenamiento` queda fuera de las tres formas de [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), como en `C15` y `C16`.
+**Corregida el 2026-08-22 (pendiente 19):** medía 1496 caracteres (los cinco pasos del instalador, que viven en `validadores/instalar.py`) y declaraba su relación en un bloque `Encadenamiento`. Queda la exigencia y la dependencia entre paréntesis: depende de `02·F13`, el paso de arranque.
 
 Está clasificada y con validador escrito —`sesion.py`—, así que la fila **18** pasa con programa detrás.
-
-El análisis del 2026-08-07 anotaba algo que sigue valiendo: **el porqué de que esta regla viva en `base/` es razonamiento y va a `notas/`**, no dentro de la regla. Es parte de lo que la hace no caber.
 
 Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 

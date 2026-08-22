@@ -1,6 +1,6 @@
 # 11 · Configuración y entornos  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-024](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-024-el-capitulo-11-configuracion-y-entornos/HU-024-el-capitulo-11-configuracion-y-entornos.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-024](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-024-el-capitulo-11-configuracion-y-entornos/HU-024-el-capitulo-11-configuracion-y-entornos.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Lo que cambia entre entornos (local, pruebas, producción) y lo que se configura sin tocar código. La capa 3 declara los entornos y el mecanismo concretos.
 

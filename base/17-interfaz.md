@@ -1,6 +1,6 @@
 # 17 · Interfaz y experiencia de usuario  ·  `[CAPA 2 · opt-in]`
 
-> **Historia dueña del texto:** [EP-001 HU-030](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario/HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-030](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario/HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 **Opt-in.** Reglas agnósticas para lo que ve y usa el **usuario final**. Aplican a proyectos con interfaz (web, escritorio, móvil); un proyecto sin UI (librería, servicio backend, CLI) las omite. El framework, el sistema de diseño y el estándar de accesibilidad concretos los declara la capa 3.
 

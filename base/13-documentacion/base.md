@@ -1,6 +1,6 @@
 # 13 · Documentación  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-026](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-026-el-capitulo-13-documentacion/HU-026-el-capitulo-13-documentacion.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-026](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-026-el-capitulo-13-documentacion/HU-026-el-capitulo-13-documentacion.md). Todo cambio de este capítulo baja por ella ([`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 El chat se pierde y el contexto se comprime; los archivos quedan. Documentar es parte del entregable. La capa 3 declara ubicación, nombres y estructura.
 

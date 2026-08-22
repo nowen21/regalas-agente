@@ -15,24 +15,20 @@ CORRECTO:   correr la suite del módulo + las declaradas en el plan + las que la
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.11.2**, el **2026-08-18**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
-| A · Dónde va | 1-4 | ✅ ✅ ✅ ❌ |
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
 | C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14-17 | ✅ ✅ ✅ ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅ · 1 ❌ · 0 N/A.**
+**20 filas: 20 ✅ · 0 ❌ · 0 N/A.**
 
-**❌** — **4**: el dueño del tema *pruebas* es el capítulo [`08`](../../08-pruebas.md) ([`M2`](../../20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md)). El texto duplicado —"se corren, no solo se escriben", con su ejemplo palabra por palabra— ya se reemplazó por el enlace a [`08·T5`](../../08-pruebas.md#t5--ejecuta-y-reporta), pero mover el alcance quirúrgico de la ejecución al capítulo 08 y derogar `F5` lo decide el usuario ([`M11`](../../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
-
-> **Regla vigente y reprobada.** Sigue rigiendo hasta que el usuario decida la vía.
-
-**Vuelto a aplicar el 2026-08-18**, porque el texto cambió: «corrida» salió del estándar y aquí decía *«la corrida que cierra una fase»* y *«la corrida global»*. Es el [pendiente 26](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md). **Solo cambió la palabra: la exigencia es la misma**, y la fila 4 sigue en ❌ por el mismo motivo de antes, que no tiene que ver con la redacción.
+**Vuelta a aplicar el 2026-08-22 (pendiente 19):** la fila 4 reprobaba por dueño del tema. Releída: `08·T5` es la dueña de *que las pruebas se corran y se reporten*, y `F5` declara que la extiende y dice solo lo suyo, **cuáles** suites toca una fase, que es alcance del flujo y no del capítulo de pruebas. El texto duplicado ya se había reemplazado por el enlace; lo que faltaba era volver a juzgar la fila con el texto nuevo.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

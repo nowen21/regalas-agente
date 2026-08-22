@@ -1,6 +1,6 @@
 # 04 · Seguridad de la aplicación  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-017](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-017-el-capitulo-04-seguridad-de-la-aplicacion/HU-017-el-capitulo-04-seguridad-de-la-aplicacion.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-017](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-017-el-capitulo-04-seguridad-de-la-aplicacion/HU-017-el-capitulo-04-seguridad-de-la-aplicacion.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Seguridad más allá de los archivos. El núcleo (`00`) blinda los mínimos; aquí el detalle. La capa 3 declara los mecanismos concretos (permisos, plantillas, almacenamiento).
 
@@ -139,11 +139,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## S4 · Guarda los secretos fuera del código y rota el que se expuso
 
-El mínimo está en [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada). Además:
-
-- Secretos (claves, credenciales, tokens) en **configuración de entorno**, fuera del código (ver `11`).
-- El archivo de entorno real está **ignorado** por el control de versiones; se versiona solo una plantilla sin valores.
-- Un secreto expuesto por accidente se **rota** (no basta borrarlo).
+Las claves, credenciales y tokens viven en la **configuración de entorno**, fuera del código; el archivo de entorno real no se versiona, solo su plantilla sin valores; y un secreto expuesto por accidente se **rota**: no basta borrarlo (depende de [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)).
 
 ```
 INCORRECTO: const API_KEY = "sk-live-abc123"
@@ -152,26 +148,25 @@ CORRECTO:   leerla de la configuración de entorno; el valor real no se versiona
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ❌ ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 15 ✅ · 2 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Corregida el 2026-08-22 (pendiente 19):** medía 425 caracteres y abría con «el mínimo está en `N6`», texto prestado. Ahora dice solo lo suyo en una frase y declara que extiende a `N6`.
 
 **La fila 8 reprobaba y se corrigió en esta pasada.** El título era «Gestión de secretos»: nombra un tema y no enuncia ninguna norma. Pasa a *Guarda los secretos fuera del código y rota el que se expuso*. **No cambia qué exige la regla.** Es el quinto título así corregido hoy.
 
 **Quedan dos filas, y las dos ya estaban señaladas.**
-
-- **Fila 11 · texto prestado.** Sus dos primeros puntos son [`11·CFG1`](11-configuracion-entornos.md#cfg1--la-configuración-vive-fuera-del-código) y [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla) dichas otra vez. Lo propio es **la rotación**: que un secreto expuesto se rota y no basta con borrarlo. Eso no lo dice nadie más.
-- **Fila 10 · no cabe:** 324 caracteres, y se pasa **por lo prestado**.
 
 **Es el mismo caso que [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)**: quitar lo repetido la deja cabiendo sola. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 

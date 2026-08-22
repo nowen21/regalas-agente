@@ -1,6 +1,6 @@
 # 10 · Dependencias de terceros  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-023](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-023-el-capitulo-10-dependencias-de-terceros/HU-023-el-capitulo-10-dependencias-de-terceros.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-023](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-023-el-capitulo-10-dependencias-de-terceros/HU-023-el-capitulo-10-dependencias-de-terceros.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Cada dependencia es código ajeno que heredas: sus bugs, vulnerabilidades, mantenimiento y licencia. La capa 3 declara el gestor de paquetes y las herramientas de auditoría.
 
@@ -70,7 +70,7 @@ Cumplía ya en el análisis del 2026-08-07 y sigue cumpliendo. Está clasificada
 
 ## DEP3 · Audita vulnerabilidades y mantén al día
 
-Revisa **vulnerabilidades conocidas** con la herramienta del ecosistema. No dejes una dependencia con vulnerabilidades sin resolver. Quedarse muy atrás vuelve caro e inseguro actualizar después.
+Revisa las **vulnerabilidades conocidas** de las dependencias con la herramienta del ecosistema y no dejes ninguna sin resolver; quedarse muy atrás vuelve caro e inseguro actualizar después (deroga [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3): desde la 23.17.0 esta regla es la dueña del tema).
 
 ```
 INCORRECTO: la auditoría reporta una vulnerabilidad alta y se anota «para la
@@ -81,21 +81,21 @@ CORRECTO:   se arreglan las dos pruebas y se actualiza; si de verdad no se
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ❌ ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 1 ❌ · 3 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Fila 11 · sin texto prestado.** «Revisa vulnerabilidades conocidas con la herramienta del ecosistema» es [`04·S7`](04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas----derogada-en-23170--ver-10dep3) dicha otra vez. La enlaza **y** la repite, y la fila pide enlazar **en vez de** copiar.
+**Corregida el 2026-08-22 (pendiente 19):** la fila 11 reprobaba por repetir a `04·S7`. `S7` está derogada hacia esta regla desde la 23.17.0, así que el texto ya no es prestado: es propio, y la regla lo declara con `deroga`, la forma que `M7` admite.
 
 **Y el arreglo no está acá.** El análisis del 2026-08-07 fue explícito: *«duplica `04·S7`; **`DEP3` es el dueño correcto**»*. Una vulnerabilidad de una dependencia es un asunto de dependencias, y el capítulo `04` la trata de prestado. Lo que corresponde es **derogar `04·S7`** y que este capítulo reciba el tema — no recortar `DEP3` para que deje de parecerse.
 

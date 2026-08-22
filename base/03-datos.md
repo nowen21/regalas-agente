@@ -1,6 +1,6 @@
 # 03 · Datos y persistencia  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-016](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-016-el-capitulo-03-datos-y-persistencia/HU-016-el-capitulo-03-datos-y-persistencia.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-016](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-016-el-capitulo-03-datos-y-persistencia/HU-016-el-capitulo-03-datos-y-persistencia.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Diseño y cambio del almacenamiento: esquema, migraciones, catálogos. La capa 3 declara los nombres concretos (motor, prefijos, tabla de catálogo, trait de auditoría).
 
@@ -374,13 +374,13 @@ CORRECTO:   filtrar por la columna de pertenencia (el contenedor activo); la
             de autoría queda solo para auditoría
 ```
 
-**Encadenamiento:** `D1` (auditoría toda tabla nueva) — la columna de autoría es parte de la auditoría estándar · `D6` (concurrencia) — múltiples usuarios operando el mismo tenant refuerza la necesidad de este modelo · `04 S1` (autorización con scope) — la validación de scope opera sobre la columna de pertenencia, no de autoría.
+(extiende [`03·D1`](#d1--la-tabla-nueva-nace-normalizada); depende de [`03·D6`](#d6--concurrencia-e-idempotencia) y de [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible))
 
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.12.1**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -392,9 +392,9 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**La fila 5 reprobaba y se corrigió en esta pasada.** El ejemplo estaba escrito con el código de un stack concreto y una entidad de un proyecto real, y [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre lenguaje, framework ni dominio. Reescrito en términos del propio estándar: contenedor, pertenencia, autoría. **No cambia qué exige la regla.**
+**Vuelta a aplicar el 2026-08-22 (pendiente 19):** su bloque `Encadenamiento` pasó a la forma de [`M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md), entre paréntesis. La exigencia no cambió.
 
-**Fila 10 · sigue sin caber: 1962 caracteres, seis veces el molde.** Lo que sobra son las cuatro consecuencias operativas y el encadenamiento con otras reglas — material de anexo, como `D7`.
+**La fila 5 reprobaba y se corrigió en esta pasada.** El ejemplo estaba escrito con el código de un stack concreto y una entidad de un proyecto real, y [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) manda que la base no nombre lenguaje, framework ni dominio. Reescrito en términos del propio estándar: contenedor, pertenencia, autoría. **No cambia qué exige la regla.**
 
 **Vale anotar que ese ejemplo sobrevivió cuatro meses.** Es justo lo que la fila 5 existe para atrapar y lo que ningún lector nota, porque un ejemplo con código real se lee más fácil que uno abstracto — y por eso convence más.
 

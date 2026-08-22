@@ -1,6 +1,6 @@
 # 22 · Sistemas que aprenden de datos  ·  `[CAPA 2 · opt-in]`
 
-> **Historia dueña del texto:** [EP-001 HU-035](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-035](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 **Opt-in.** Reglas agnósticas para construir un producto donde **un modelo estadístico decide o sugiere algo**: el que se entrena con datos propios, el que llama al modelo de un tercero, o el que deja que una respuesta automática entre al flujo del negocio. Aplican a esos proyectos; el resto las omite.
 

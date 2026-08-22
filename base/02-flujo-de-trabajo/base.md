@@ -1,6 +1,6 @@
 # 02 · Flujo de trabajo  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-015](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-015-el-capitulo-02-flujo-de-trabajo/HU-015-el-capitulo-02-flujo-de-trabajo.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-015](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-015-el-capitulo-02-flujo-de-trabajo/HU-015-el-capitulo-02-flujo-de-trabajo.md). Todo cambio de este capítulo baja por ella ([`02·F23`](reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define dónde viven los documentos y cómo se corren las pruebas.
 
@@ -28,7 +28,7 @@ Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define 
 | [`F9 · No subdividas ni renegocies un plan ya aprobado`](reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md) | Si el volumen amerita subfases, se proponen antes de aprobar, no después. | CUMPLE |
 | [`F10 · Planifica la migración en vez de postergar por producción`](reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md) | Asumir "probablemente está en prod" y declarar la estrategia. | CUMPLE |
 | [`F11 · Una fase solo modifica código de su propio módulo`](reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md) | Lo que toca a otro módulo se agenda como fase propia. | CUMPLE |
-| [`F12 · Relación y nomenclatura de fases`](reglas/F12-relacion-y-nomenclatura-de-fases.md) | Épica → HU → Fases, con el identificador y la ruta física de la fase. | NO CUMPLE |
+| [`F12 · Nombra y ubica cada fase según la nomenclatura del anexo`](reglas/F12-relacion-y-nomenclatura-de-fases.md) | Épica → HU → Fases; el detalle literal del usuario vive en el [anexo](nomenclatura-de-fases.md). | CUMPLE |
 | [`F13 · Deja la estructura base puesta antes de trabajar`](reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) | La estructura se crea sola; qué va dentro de `proyectos/` lo decide el usuario. | pendiente |
 | [`F14 · Responde las trece preguntas en todo plan de trabajo`](reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) | Las trece cierran la ambigüedad antes de escribir código. | CUMPLE |
 | [`F15 · No saltes ni reordenes las once etapas de la fase`](reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md) | El ciclo va en orden, de la declaración macro a la publicación. | CUMPLE |
@@ -83,7 +83,7 @@ La capa 3 puede ajustar cuán estricta es la regla, pero viene **activada por de
 
 ### F4 — las plantillas y los cinco pasos de la aprobación
 
-El `plan_trabajo` sigue `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`; el `plan_pruebas` sigue `plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`, con trazabilidad CA→caso y el alcance de ejecución de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
+El `plan_trabajo` sigue `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`; el `plan_pruebas` sigue `plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`, con trazabilidad CA→caso y el alcance de ejecución de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md) (punto 13 del [anexo](nomenclatura-de-fases.md))). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
 
 Lo que **se aprueba** son esos dos. Lo que pasa al ejecutarlos va en el `resultado_pruebas` (`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`), que se crea al correr la primera prueba y de donde sale el veredicto de la fase: **el plan aprobado no se modifica para anotarle resultados**, porque entonces se pierde contra qué comparar.
 
@@ -113,7 +113,7 @@ Las trece son **genéricas**: aplican a cualquier proyecto. La capa 3 (`.agente/
 
 | # | Etapa | Quién actúa | Hito de cierre |
 |---|---|---|---|
-| 1 | **Declaración macro de la fase** en el especificación del módulo (§Fases) | Agente redacta · usuario aprueba la especificación en su momento | Bloque de fase con su identificador ([`F12.6`](reglas/F12-relacion-y-nomenclatura-de-fases.md)), origen, alcance macro y fuera-de-scope |
+| 1 | **Declaración macro de la fase** en el especificación del módulo (§Fases) | Agente redacta · usuario aprueba la especificación en su momento | Bloque de fase con su identificador ([`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md) (punto 6 del [anexo](nomenclatura-de-fases.md))), origen, alcance macro y fuera-de-scope |
 | 2 | **Disparo / autorización de inicio** | Usuario ("arranque con X") | El agente puede empezar a diseñar el plan detallado |
 | 3 | **Diseño del plan detallado** — `plan_trabajo` + `plan_pruebas` | Agente | Documentos redactados. NO toca código todavía |
 | 4 | **Pausa y presentación** al usuario | Agente | Mensaje con resumen y punteros a los documentos |

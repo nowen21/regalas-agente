@@ -1,6 +1,6 @@
 # 16 · Cumplimiento y calidad  ·  `[CAPA 2 · opt-in]`
 
-> **Historia dueña del texto:** [EP-001 HU-029](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-029-el-capitulo-16-cumplimiento-y-calidad/HU-029-el-capitulo-16-cumplimiento-y-calidad.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-029](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-029-el-capitulo-16-cumplimiento-y-calidad/HU-029-el-capitulo-16-cumplimiento-y-calidad.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 El agente construye de modo que **el desarrollo cumpla** el marco que aplica al cliente: leyes, normas y frameworks. Cumplimiento **por construcción**, no auditoría aparte. Opt-in: la capa 3 activa esta sección y declara el marco concreto.
 

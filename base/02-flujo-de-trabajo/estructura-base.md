@@ -35,4 +35,4 @@
     └── epicas/                       #   Épica → HU → Fase · jerarquía y ruta: fuente única 02·F12 (F12.11 · F12.13)
 ```
 
-> La organización interna de `epicas/` (jerarquía **Épica → HU → Fase** en [`F12.11`](reglas/F12-relacion-y-nomenclatura-de-fases.md), anidamiento y ruta física en [`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md), nomenclatura en [`F12.6`](reglas/F12-relacion-y-nomenclatura-de-fases.md)) es la **fuente única [`02·F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md)** — aquí **no se duplica**.
+> La organización interna de `epicas/` (jerarquía **Épica → HU → Fase** en [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md) (punto 11 del [anexo](nomenclatura-de-fases.md)), anidamiento y ruta física en [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md) (punto 13 del [anexo](nomenclatura-de-fases.md)), nomenclatura en [`F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md) (punto 6 del [anexo](nomenclatura-de-fases.md))) es la **fuente única [`02·F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md)** — aquí **no se duplica**.

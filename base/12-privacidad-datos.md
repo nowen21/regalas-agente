@@ -1,6 +1,6 @@
 # 12 · Privacidad y datos personales  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-025](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-025-el-capitulo-12-privacidad-y-datos-personales/HU-025-el-capitulo-12-privacidad-y-datos-personales.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-025](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-025-el-capitulo-12-privacidad-y-datos-personales/HU-025-el-capitulo-12-privacidad-y-datos-personales.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Cómo tratar los datos de las personas. Más allá de la seguridad técnica (`04`), es un compromiso y a menudo una obligación legal. La capa 3 declara el marco normativo y la retención concretos.
 

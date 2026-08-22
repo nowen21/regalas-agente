@@ -123,6 +123,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [historico-chat/memory/memory.md](../../memory/memory.md) y en [historico-chat/trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
 
+### H-8 · Las 27 reglas publicadas en «no cumple» pasan a cumplir (primera ronda del 19)
+
+**Qué se encontró.** Con el sí del usuario a las cuatro preguntas del pendiente 19, se arreglaron primero las veintisiete reglas que tenían sello en NO CUMPLE. Tres de ellas (`C1`, `S4`, `T4`) dependen de reglas blindadas, y `M7` prohíbe «extiende» hacia una blindada: quedaron como «depende de». Y partir `F12` en anexo desarmó los sub-identificadores `F12.N` que trece citas usaban como si fueran reglas: ahora citan `02·F12` y el punto del anexo.
+
+**Qué se decidió.** No reescribir una palabra del texto literal del usuario de `F12`: va entero al anexo. Los porqués recortados de `18` y `19` van a `notas/`, no se pierden.
+
+**Dónde queda.** v30.8.0, [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) con la ronda escrita; `validar.py metareglas` da cero fallas. **Abierto para el usuario:** el anexo nuevo trae doce rayas (son del texto literal que se movió) y el trinquete de marcas las cuenta como nuevas y bloquea el commit; decidir si se sustituyen (es puntuación, no palabras) o se deja el texto intacto y se pasa el trinquete de otra forma.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

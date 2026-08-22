@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.8.0 — 2026-08-22
+
+**MENOR** (las veintisiete reglas que estaban publicadas reprobando su propio checklist pasan a cumplirlo; ninguna cambia lo que exige, y el capítulo `02` gana un anexo).
+
+**El cuerpo de reglas ya no tiene ninguna regla publicada en «no cumple».** Hasta hoy había veintisiete: los capítulos `18` y `19` enteros sin ejemplo, `C1`, `C15`, `C16`, `C18`, `S4` y `T4` pasadas de largo o con texto prestado, `DEP3` repitiendo a una regla derogada, `F12` con 1 898 caracteres de texto literal, y cuatro meta-reglas (`M2`, `M4`, `M7`, `M8`) reprobando por lo que otras reglas les contradecían. `20·M14` dice que sin CUMPLE una regla no se publica, y estaban publicadas. Ahora `validar.py metareglas` da cero fallas.
+
+**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), primera ronda. Los catorce de `18` y `19` ganan su ejemplo INCORRECTO/CORRECTO y cinco (`DP8`, `OB1`, `OB3`, `OB5`, `OB6`) se recortan al molde; sus porqués quedan en [notas/porques-recortados-de-18-y-19.md](notas/porques-recortados-de-18-y-19.md). `C1`, `C15`, `C16`, `C18`, `S4` y `T4` se reescriben en cuatro líneas y declaran su dependencia en la forma de `M7`; el bloque «Encadenamiento» que usaban `C15`, `C16`, `C18` y `D8` desaparece. `DEP3` declara que deroga a `04·S7`. El texto literal del usuario que era el cuerpo de `F12` se conserva entero como anexo [nomenclatura-de-fases.md](base/02-flujo-de-trabajo/nomenclatura-de-fases.md); la regla queda con una exigencia y los `F12.N` son puntos del anexo, no identificadores de regla, así que `M4` vuelve a cumplirse. Quedan para la segunda ronda las veintiséis reglas que llevan más de una exigencia y se parten (MAYOR), decididas por el usuario.
+
 ## 30.7.0 — 2026-08-22
 
 **MENOR** (cada capítulo de `base/` gana una línea que dice quién es dueño de su texto; ninguna regla cambia de exigencia).

@@ -1,6 +1,6 @@
 # Pendiente · El capítulo de meta-reglas no se cumple a sí mismo
 
-**Estado:** abierto, con **dos** de sus tres deudas cerradas · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+**Estado:** abierto, con la primera ronda del arreglo hecha (v30.8.0) y la partición de las 26 por delante · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
 | | |
 |---|---|
@@ -486,3 +486,24 @@ El 2026-08-18 se acortaron seis reglas y las reprobadas bajaron de **60 a 54**. 
 Cada partición es: escribir dos reglas, aplicarles el checklist a las dos, actualizar el índice del capítulo, `reglas-validables.md`, las citas, y versionar. **Es MAYOR**: un proyecto al día tiene que citar identificadores que antes no existían.
 
 **No se hace de una sentada, y no debería.** Por capítulo, como dice este pendiente desde el principio.
+
+## Primera ronda hecha: las 27 que reprobaban · 2026-08-22 (v30.8.0)
+
+El usuario contestó **sí a las cuatro** preguntas de arriba. Antes de partir nada, se arreglaron las veintisiete reglas publicadas con sello en NO CUMPLE, capítulo por capítulo:
+
+| Capítulo | Reglas | Qué se hizo |
+|---|---|---|
+| `18`, `19` | las catorce | ejemplo INCORRECTO/CORRECTO; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [notas/porques-recortados-de-18-y-19.md](../notas/porques-recortados-de-18-y-19.md) |
+| `20` | `M2`, `M4`, `M7`, `M8` | `M2` dice que el preámbulo del `00` es anexo; las otras tres vuelven a cumplirse porque desapareció lo que las contradecía |
+| `02` | `F5`, `F12` | `F5` re-juzgada; `F12` queda con una exigencia y su texto literal pasa entero al [anexo](../base/02-flujo-de-trabajo/nomenclatura-de-fases.md) |
+| `01` | `C1`, `C15`, `C16`, `C18` | cuatro líneas, dependencia entre paréntesis (`M7`), fuera el bloque «Encadenamiento» (también en `03·D8`) |
+| `04`, `08`, `10` | `S4`, `T4`, `DEP3` | texto propio en vez de prestado; `DEP3` declara que deroga a `S7` |
+
+```
+$ python validadores/validar.py metareglas
+0 falla(s), 36 aviso(s).
+```
+
+**Lo que los avisos todavía dicen:** `F11`, `DOC15`, `DOC16`, `DOC17`, `ID8` y otras pasan de 320 caracteres con sello en CUMPLE; es deuda de la fila 10 que no era de esta ronda y entra en la segunda.
+
+**La segunda ronda es la partición de las 26** (tabla de arriba), MAYOR, por capítulo.

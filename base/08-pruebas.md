@@ -1,6 +1,6 @@
 # 08 · Estrategia de pruebas  ·  `[CAPA 2]`
 
-> **Historia dueña del texto:** [EP-001 HU-021](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-021-el-capitulo-08-estrategia-de-pruebas/HU-021-el-capitulo-08-estrategia-de-pruebas.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-021](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-021-el-capitulo-08-estrategia-de-pruebas/HU-021-el-capitulo-08-estrategia-de-pruebas.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 Las pruebas permiten cambiar el código sin miedo y prueban que la especificación se cumplió. La capa 3 declara framework, entorno y comandos.
 
@@ -107,29 +107,32 @@ Está clasificada y con validador escrito —`aislamiento.py`—, así que la fi
 
 ## T4 · Protege los datos reales al probar
 
-Blindado en [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada). Las pruebas corren contra un entorno **efímero y aislado** (BD en memoria o dedicada que se crea y destruye por ejecución), nunca contra datos reales. El agente no reapunta la config de pruebas a datos reales, aunque una instrucción puntual lo sugiera.
-Lo que el entorno de pruebas no reproduce se compensa con **verificaciones manuales documentadas**, no relajando el aislamiento.
+Las pruebas corren contra un entorno **efímero y aislado**, creado y destruido por ejecución, nunca contra datos reales, y el agente no reapunta la configuración a datos reales aunque se lo sugieran. Lo que ese entorno no reproduce se verifica a mano y queda escrito, sin relajar el aislamiento (depende de [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)).
+
+```
+INCORRECTO: «para que la prueba tenga datos de verdad» se apunta la suite a la base de producción
+CORRECTO:   la suite levanta su base efímera; lo que no se pueda reproducir se verifica a mano y queda escrito
+```
 
 ---
 
-### Checklist  ·  **NO CUMPLE**
+### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.4.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ❌ ❌ N/A ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
 | D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 14 ✅ · 2 ❌ · 4 N/A.**
+**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
+
+**Corregida el 2026-08-22 (pendiente 19):** medía 515 caracteres, abría con «blindado en `N4`» (texto prestado) y no tenía ejemplo. Ahora dice lo suyo, declara que extiende a `N4` y trae su ejemplo.
 
 Reprueba dos filas, y las dos son la misma historia: **dice de nuevo lo que ya dice el núcleo, en vez de aplicarlo a su dominio.**
-
-- **Fila 11 · sin texto prestado.** Abre bien —«Blindado en [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)»— y a continuación reformula `N4` en vez de quedarse con lo suyo. Lo propio es el **entorno efímero**: que la prueba corra contra una base que se crea y se destruye por ejecución. Eso `N4` no lo dice.
-- **Fila 10 · el cuerpo no cabe:** 399 caracteres para un molde de 320. Se pasa **por lo prestado**, no por lo propio.
 
 **Es el caso opuesto a [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles)**, que remite al mismo núcleo y agrega qué significa en un log. Aquella cabe y esta no, y la diferencia es exactamente lo que sobra.
 

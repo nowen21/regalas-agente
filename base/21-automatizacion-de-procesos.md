@@ -1,6 +1,6 @@
 # 21 · Automatización de procesos  ·  `[CAPA 2 · opt-in]`
 
-> **Historia dueña del texto:** [EP-001 HU-034](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-034-el-capitulo-21-automatizacion-de-procesos/HU-034-el-capitulo-21-automatizacion-de-procesos.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-034](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-034-el-capitulo-21-automatizacion-de-procesos/HU-034-el-capitulo-21-automatizacion-de-procesos.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 **Opt-in.** Reglas agnósticas para construir un **proceso que corre solo contra sistemas que no se pueden cambiar** — el que opera aplicaciones por su interfaz porque no ofrecen otra puerta. Aplican a proyectos que automatizan trabajo humano repetitivo; el resto las omite.
 

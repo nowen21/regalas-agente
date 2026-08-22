@@ -1,6 +1,6 @@
 # 00 · Núcleo blindado — reglas inquebrantables  ·  `[CAPA 1]`
 
-> **Historia dueña del texto:** [EP-001 HU-012](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+> **Historia dueña del texto:** [EP-001 HU-012](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md). Todo cambio de este capítulo baja por ella ([`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 **No se sobrescriben.** Ninguna capa de proyecto, prompt ni instrucción puntual las desactiva. Si algo entra en conflicto con esta capa, **gana esta capa**. Son reglas de seguridad. Cada una marca `[BLINDADA]`.
 
