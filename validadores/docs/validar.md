@@ -45,6 +45,7 @@ validar.py
    ├── version.py ······· subcomando version
    ├── checklist.py ····· subcomando checklist
    ├── versiones.py ····· subcomando versiones
+   ├── expediente.py ···· subcomando expediente
    └── instalar.py ······ repositorios_git(), para el subcomando versionado
 ```
 

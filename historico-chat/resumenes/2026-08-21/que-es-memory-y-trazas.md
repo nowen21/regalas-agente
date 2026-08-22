@@ -59,14 +59,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Por qué importa:** Abrir una carpeta y ver el ciclo del 01 al 11 es la cara tangible de la disciplina; y la lista canónica de entregables (IEEE/ISO) fija cuánto falta para el expediente completo que al final «solo genera los .docx».
 - **Qué lo soluciona:** Ejecutado el frente 1: los 11 moldes movidos y numerados (la carpeta `planes/` desaparece: son las estaciones 07 a 09), ~20 referencias de código y 137 documentos al día, README del ciclo, mapa del sitio, versión 30.0.0 (MAYOR). De paso el trinquete de marcas aprendió a seguir renombres (`git mv` ponía línea base cero y contaba como nuevas las marcas viejas) con sus 2 pruebas. La lista de entregables quedó en [notas/entregables-del-ciclo-de-vida.md](../../../notas/entregables-del-ciclo-de-vida.md) con el cruce contra Cimiento y la decisión de sin-excepciones.
 - **Qué se decidió:** Lo de arriba, todo del usuario. Quedan los frentes 2 (13 moldes faltantes) y 3 (generador `.docx` y mapa de completitud, conectado al pendiente 75).
-- **Estado:** resuelto acá (el frente 1; los frentes 2 y 3 son trabajo futuro ya dimensionado en la nota)
+- **Estado:** resuelto acá (frentes 1 y 2; el 3, el generador de vistas y `.docx`, queda dimensionado en la nota y conecta con el pendiente 75)
 - **Responde a:** la orden del usuario del 2026-08-21
 - **Dispara:** — (los frentes 2 y 3 se bajarán cuando el usuario los ordene; la nota los dimensiona)
 - **Orden de resolución:** —
 - **Dónde queda:** [plantillas/ciclo-vida-proyectos/](../../../plantillas/ciclo-vida-proyectos/README.md), la entrada 30.0.0 del CHANGELOG, la nota de entregables y el recuerdo de las correcciones
 - **Nace en:** 2026-08-21 · que-es-memory-y-trazas
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
-- **Con qué se retoma:** ¿frente 2 o frente 3? (y el commit de esta ronda, que autoriza el usuario)
+- **Con qué se retoma:** el frente 3 (generador y mapa de completitud), cuando el usuario lo ordene. El frente 2 cerró el mismo día: nacen los moldes 12 a 22 (v30.1.0), con el manual de usuario declarado como el inventario madurado y las vistas (SRS, matriz, defectos, arquitectura) reservadas al generador
 
 ---
 

@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.2.0 — 2026-08-21
+
+**MENOR** (aditivo: un lector nuevo; nadie tiene que cambiar nada).
+
+**Ahora se puede preguntar, con una orden, si un proyecto tiene su expediente completo.** `validar.py expediente` recorre un proyecto y responde lo que antes exigía abrir carpeta por carpeta: qué entregables del ciclo existen (y dónde), cuáles faltan, cuántos espacios por llenar le quedan a cada uno y cuál declaró que no aplica con su porqué. Informa y no detiene: la lista se mira y las decisiones las toma una persona.
+
+Estrenó midiendo un proyecto real: de los trece entregables del expediente tenía tres (el planteamiento, el inventario de funcionalidades y el modelo de datos), y la cadena de ejecución completa: tres épicas, veintiuna historias, veinticinco fases con plan. Ese número — «3 de 13» — es la primera vez que el cumplimiento del expediente se ve de un vistazo.
+
+**El detalle.** Nace [`validadores/expediente.py`](validadores/expediente.py) con seis casos de prueba: encuentra cada entregable por su nombre viva donde viva (con o sin prefijo), distingue completo, en llenado (contando los `«…»` de `13·DOC19`) y no-aplica, y cuenta las estaciones 03 a 11 por su estructura canónica. Lo que falta del frente: el generador de las vistas consolidadas (SRS, matriz, defectos, arquitectura) y el `.docx`, cuya casa natural es la interfaz del [pendiente 75](pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) — quedó dimensionado en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md).
+
 ## 30.1.0 — 2026-08-21
 
 **MENOR** (aditivo: once moldes nuevos; nadie al día tiene que hacer nada hoy — los usan los trabajos que vienen).

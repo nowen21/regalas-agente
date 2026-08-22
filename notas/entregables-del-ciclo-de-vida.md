@@ -77,7 +77,8 @@
 | ⚠ **Existe repartido, sin consolidado** | SRS (vive en épicas y HU, sin documento único), matriz de trazabilidad (vive por fase en `13·DOC11`, sin vista de proyecto), documento de arquitectura (hay ADR y mapa de dependencias, no el SDD consolidado) |
 | ✅ **Molde escrito el 2026-08-21** (frente 2, moldes 12 a 22 del ciclo) | Estudio de factibilidad, acta de constitución/plan de proyecto, modelo de datos y diccionario, diseño de interfaz, documentación de API, manual de instalación, manual técnico/operación, notas de versión, acta de entrega, bitácora de operación, plan de mantenimiento |
 | 🔁 **Sin molde a propósito** | Manual de usuario (es el inventario madurado) y las vistas que el generador armará: SRS consolidado, matriz de trazabilidad, registro de defectos consolidado, documento de arquitectura |
-| 🔧 **No existe la pieza** | El generador `.docx` de cualquiera de estos, y el mapa entregable → archivos fuente con su estado de completitud |
+| ✅ **El mapa de completitud existe** (2026-08-21) | `validar.py expediente --raiz <proyecto>`: qué entregables hay, cuáles faltan, cuántos espacios «...» le quedan a cada uno y cuál declara no aplicar. Informa, no detiene |
+| 🔧 **No existe la pieza** | El generador de las vistas consolidadas y el `.docx`; su casa natural es la interfaz del pendiente 75, y exige una decisión: la dependencia para escribir `.docx` (python-docx) vive en la interfaz, no en `validadores/` |
 
 ## La decisión del usuario — 2026-08-21: sin excepciones
 

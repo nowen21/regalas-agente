@@ -42,6 +42,7 @@ import inmutable        # noqa: E402
 import instalar         # noqa: E402
 import marcas           # noqa: E402
 import vigencia         # noqa: E402
+import expediente       # noqa: E402
 import metareglas       # noqa: E402
 import migraciones      # noqa: E402
 import numeracion       # noqa: E402
@@ -287,6 +288,25 @@ def cmd_marcas(a):
                     f"Marcas de generación automática · {relativo(raiz)}")
 
 
+def cmd_expediente(a):
+    """El mapa de completitud del expediente de un proyecto.
+
+    **Nunca falla.** Informa qué entregables del ciclo existen, cuáles faltan
+    y cuántos espacios por llenar le quedan a cada uno; las decisiones las
+    toma una persona.
+    """
+    raiz = os.path.abspath(a.raiz)
+    lineas, hallazgos = expediente.reporte(raiz)
+    print(f"== Expediente del ciclo · {relativo(raiz)} ==")
+    for linea in lineas:
+        print(linea)
+    if hallazgos:
+        print()
+        for h in hallazgos:
+            print(str(h))
+    return 0
+
+
 def cmd_vigencia(a):
     """`14` · Qué reglas llevan más tiempo sin que nadie se pregunte si sirven.
 
@@ -526,6 +546,11 @@ def main():
                     help="solo lo que entra en el commit, y con trinquete: "
                          "falla si la cuenta sube")
     ma.set_defaults(func=cmd_marcas)
+
+    ex = sub.add_parser("expediente",
+                        help="qué entregables del ciclo tiene el proyecto · informa, no detiene")
+    ex.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    ex.set_defaults(func=cmd_expediente)
 
     vg = sub.add_parser("vigencia",
                         help="reglas que nadie ha revisado de fondo · EP-001·HU-007·CA-04")

@@ -24,7 +24,8 @@ Decidir y construir la interfaz de administración. Piezas visibles desde hoy, e
 
 1. **El registro como dato estructurado, no como prosa**: qué es un proyecto para Cimiento (ruta, stack, versión adoptada, estado, pendientes de seguimiento) y dónde vive ese dato de forma consultable por programa.
 2. **Las operaciones sobre el registro**: registrar, configurar, consultar, dar de baja — desde la interfaz de Cimiento (hoy, sus comandos; lo que sea «aplicación» lo decide el diseño), no editando un archivo.
-3. **Lo que consume el registro se reconecta**: el instalador, los avisos de cierre de pendientes reportados y la validación centralizada de cumplimiento leen del registro, y `plantillas/proyectos.md` deja de ser la fuente (o pasa a generarse desde ella).
+3. **La medición ya existe y la interfaz la mostraría**: `validar.py expediente --raiz <proyecto>` (2026-08-21) dice qué entregables del ciclo tiene un proyecto, cuáles faltan y qué tan llenos están; hoy se corre a mano, proyecto por proyecto. Con el registro del punto 1, la interfaz puede correrlo sobre todos y mostrar el veredicto.
+4. **Lo que consume el registro se reconecta**: el instalador, los avisos de cierre de pendientes reportados y la validación centralizada de cumplimiento leen del registro, y `plantillas/proyectos.md` deja de ser la fuente (o pasa a generarse desde ella).
 
 ## La decisión del usuario — 2026-08-21
 

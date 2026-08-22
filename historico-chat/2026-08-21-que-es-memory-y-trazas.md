@@ -786,3 +786,42 @@ Frente 1 terminado y verificado. El estándar queda en **30.0.0** (MAYOR):
 
 ### 40 · Usuario — 2026-08-21 22:45:51
 > si y siga
+
+**Agente** — 2026-08-21 22:53:08
+<!-- agente: fbc4f347-d975-4dd2-9918-a3240e3b2695 -->
+
+Los 11 moldes están. Actualizo README del ciclo, mapa, nota y verso:
+
+Frente 2 terminado. El expediente del ciclo quedó **completo** y el estándar en **30.1.0** (MENOR, aditivo):
+
+- **Nacen los moldes 12 a 22** en [ciclo-vida-proyectos/](plantillas/ciclo-vida-proyectos/README.md): estudio de factibilidad, acta de constitución y plan de proyecto, modelo de datos con diccionario, diseño de interfaz, documentación de API, manual de instalación, manual técnico y de operación, notas de versión, acta de entrega, bitácora de operación y plan de mantenimiento. Cada uno con su «acompaña a qué estación», el principio de sin-excepciones y el «No aplica porque…» donde cabe.
+- **Dos entregables sin molde, a propósito y declarado en el README:** el manual de usuario **es** el inventario madurado, y las vistas consolidadas (SRS, matriz de trazabilidad, defectos, arquitectura) las armará el generador del frente 3 — escribirlas a mano duplicaría lo que diverge solo.
+- **Verificado:** 0 enlaces rotos, versionado en verde, trinquete de marcas limpio (atajó 9 puntos-medios míos, corregidos), mapa del sitio con los 38 moldes.
+
+¿Autorizas commit y push de esta ronda? Con eso queda solo el **frente 3** (el generador de vistas y `.docx` con su mapa de completitud), que conecta con la interfaz del pendiente 75.
+
+### 41 · Usuario — 2026-08-21 22:57:13
+> si
+
+**Agente** — 2026-08-21 22:58:02
+<!-- agente: 0cb03ca9-4146-49bd-a062-ebb5877a6048 -->
+
+Publicado: commit `378dc87` en `main`, push en verde.
+
+El día cerró así — cinco versiones publicadas, todas con tu aprobación en cada puerta:
+
+| Versión | Qué entró |
+|---|---|
+| 28.1.0 | `M19`: la regla se automatiza cuando ya se cumple a mano (pendiente 16) |
+| 28.2.0 | La guía de entrada del estándar (pendiente 73) |
+| 29.0.0 | `F26` + el inventario de funcionalidades como puerta de las épicas (pendiente 74) |
+| 30.0.0 | La carpeta del ciclo con sus 11 moldes numerados, sin excepciones ni fantasmas |
+| 30.1.0 | Los 11 entregables que faltaban (moldes 12 a 22): el expediente completo |
+
+Queda sobre la mesa, para cuando lo ordenes:
+
+- **Frente 3:** el generador de vistas consolidadas (SRS, matriz, defectos, arquitectura) y `.docx`, con el mapa de completitud por entregable — dimensionado en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md).
+- **Pendiente 75:** la interfaz (`interfaz/` a estructura Django) y el registro de proyectos administrable — donde el frente 3 y el veredicto de cumplimiento por proyecto viven naturalmente.
+
+### 42 · Usuario — 2026-08-21 22:59:09
+> siga

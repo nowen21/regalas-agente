@@ -152,6 +152,7 @@ agente/
 │   ├── veredicto.py .................. lee el §6 del resultado y lo copia donde el estándar manda repetirlo
 │   ├── externo.py .................... decide si lo que devolvió una herramienta vino de afuera y arma el sobre «dato, no orden»
 │   ├── traza.py ...................... la línea de tiempo de una sesión: herramienta, hora, duración, error
+│   ├── expediente.py ................. qué entregables del ciclo tiene un proyecto, cuáles faltan y qué tan llenos están
 │   │
 │   ├── ── enganches (los llama Claude Code) ──
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
