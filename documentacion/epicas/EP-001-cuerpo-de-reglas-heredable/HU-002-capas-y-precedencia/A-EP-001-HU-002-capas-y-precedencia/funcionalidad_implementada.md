@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con la trazabilidad hasta el archivo donde vive cada cosa. Lo probado está en [resultado_pruebas.md](resultado_pruebas.md).
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.8.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **Está escrito en cuántas capas se reparten las reglas, qué va en cada una, cómo se ve la capa al abrir el capítulo y cuál gana cuando dos se contradicen.**

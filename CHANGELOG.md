@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.9.0 — 2026-08-22
+
+**MENOR** (el documento de cierre de una fase gana un campo; lo ya cerrado no se toca).
+
+**Un trabajo cerrado ya dice bajo qué reglas se cerró.** Sin eso, cada regla nueva hace parecer incumplido lo viejo, y hay que reabrirlo para averiguar si lo estaba, que es exactamente lo que el estándar dice que **no** pasa: una norma nueva no reabre lo cerrado. Ahora el documento de cierre trae el número de versión del estándar en el momento de cerrar, y la comprobación de fases avisa cuando falta.
+
+**Avisa, no detiene:** un cierre sin ese dato no rompe nada hoy, solo deja una pregunta sin respuesta. Y no se exige hacia atrás: lo cerrado antes de hoy queda de su lado.
+
+**El detalle.** Fase [`A-EP-002-HU-005`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-005-sellar-el-trabajo-cerrado/A-EP-002-HU-005-el-sello-de-version-en-el-cierre/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con sus decisiones 7 y 28. El campo entra al molde del cierre y no al de apertura, porque al abrir todavía no hay nada que sellar. La comprobación reconoce la fila del molde y también la frase escrita a mano, para no reportar la forma en vez del contenido. Los quince cierres escritos hoy quedaron sellados con la versión bajo la que de verdad cerraron.
+
 ## 31.8.0 — 2026-08-22
 
 **MENOR** (dos comprobaciones nuevas sobre la carpeta de pendientes; ningún proyecto tiene que hacer nada hacia atrás).

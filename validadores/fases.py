@@ -76,6 +76,51 @@ def _subcarpetas(ruta):
                   if os.path.isdir(os.path.join(ruta, n)))
 
 
+# `EP-002·HU-005` · El sello de versión del cierre.
+#
+# **Qué dice.** Bajo qué reglas cerró ese trabajo. Sin él, una regla nueva de
+# mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si
+# lo estaba — que es exactamente lo que `20·M10` dice que **no** pasa.
+#
+# **Desde cuándo se exige:** desde el 2026-08-22, que es cuando el campo entró
+# al molde del cierre. Lo cerrado antes no se reabre; exigirlo hacia atrás daría
+# cincuenta avisos que nunca se van, y eso apaga la comprobación.
+SELLO_DESDE = "2026-08-22"
+#
+# **Se reconocen las dos formas**, la fila del molde y la frase suelta: el molde
+# es lo que se pide, pero un cierre escrito a mano que diga «cerrada el … con el
+# estándar en la 31.8.0» dice exactamente lo mismo, y reportarlo sería reportar
+# la forma en vez del contenido.
+_SELLO_VERSION = re.compile(
+    r"(?i)(?:\|\s*\*\*versión del estándar[^|]*\|\s*[«`]?"
+    r"|(?:versión|estándar en la|bajo la versión|v)\s*)(\d+\.\d+\.\d+)")
+_FECHA_CIERRE = re.compile(
+    r"(?i)(?:\|\s*\*\*fecha de cierre\*\*\s*\|\s*"
+    r"|cerrad[ao]\s+(?:el\s+)?)(\d{4}-\d{2}-\d{2})")
+
+
+def cierre_sin_sello(proyecto):
+    """`CA-01` · un cierre nuevo dice bajo qué versión del estándar cerró."""
+    proyecto = os.path.abspath(proyecto)
+    raiz = os.path.join(proyecto, *CARPETA.split("/"))
+    hallazgos = []
+    for actual, _, archivos in os.walk(raiz):
+        if "funcionalidad_implementada.md" not in archivos:
+            continue
+        ruta = os.path.join(actual, "funcionalidad_implementada.md")
+        texto = comun.leer(ruta)
+        fecha = _FECHA_CIERRE.search(texto)
+        if not fecha or fecha.group(1) < SELLO_DESDE:
+            continue                    # lo cerrado antes no se reabre
+        if not _SELLO_VERSION.search(texto):
+            hallazgos.append(Hallazgo(
+                AVISO, ruta, 0,
+                "el cierre no dice bajo qué versión del estándar cerró — sin el "
+                "sello, una regla nueva de mañana parece incumplida hoy "
+                "(EP-002·HU-005)"))
+    return hallazgos
+
+
 def validar(proyecto):
     proyecto = os.path.abspath(proyecto)
     raiz = os.path.join(proyecto, *CARPETA.split("/"))
@@ -131,7 +176,7 @@ def validar(proyecto):
 
             hallazgos += _validar_fases(ruta_hu, donde_hu, num_epica, num_hu)
 
-    return hallazgos
+    return hallazgos + cierre_sin_sello(proyecto)
 
 
 def inventario(proyecto):

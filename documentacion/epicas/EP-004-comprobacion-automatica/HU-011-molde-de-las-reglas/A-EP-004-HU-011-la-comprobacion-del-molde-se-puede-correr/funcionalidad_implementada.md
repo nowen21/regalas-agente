@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con la trazabilidad hasta donde vive cada cosa.
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.7.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **El molde de las reglas se comprueba corriendo una orden, y desde hoy también avisa si dos reglas comparten identificador.**

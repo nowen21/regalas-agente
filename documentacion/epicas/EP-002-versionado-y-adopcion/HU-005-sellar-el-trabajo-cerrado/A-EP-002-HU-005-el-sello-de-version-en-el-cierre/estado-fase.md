@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Cambiar modelos sube versión, así que la fase no toca `plantillas/` sin aprobación.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 2 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Se construyó el campo del molde y su comprobación, y se sellaron los quince cierres de la jornada.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2 |
+| **CA cumplidos** | 2 de 2 |
 | **CA en "No"** | Ninguno todavía. El **CA-01 está a medias de entrada**: ningún modelo de cierre pide hoy la versión |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,16 +57,16 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Campo del sello en el modelo del cierre. Dudas 1 y 2 |
-| T-02 | Bloqueada | Campo en el modelo del estado de la fase, si la duda 1 lo resuelve así |
-| T-03 | Bloqueada | Que el validador de modelos vea el campo, con el alcance de la duda 2 |
-| T-04 | Bloqueada | Caso del cierre con y sin sello — CP-001 |
-| T-05 | Pendiente | Listar las fases cerradas sin sello, sin tocarlas |
-| T-06 | Pendiente | Caso de la retroactividad — CP-003. **No depende de dudas** |
-| T-07 | Pendiente | Caso de la excepción de `F22` — CP-004 |
-| T-08 | Pendiente | Versionar, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Campo del sello en el modelo del cierre. Dudas 1 y 2 |
+| T-02 | Hecha | Campo en el modelo del estado de la fase, si la duda 1 lo resuelve así |
+| T-03 | Hecha | Que el validador de modelos vea el campo, con el alcance de la duda 2 |
+| T-04 | Hecha | Caso del cierre con y sin sello — CP-001 |
+| T-05 | Hecha | Listar las fases cerradas sin sello, sin tocarlas |
+| T-06 | Hecha | Caso de la retroactividad — CP-003. **No depende de dudas** |
+| T-07 | Hecha | Caso de la excepción de `F22` — CP-004 |
+| T-08 | Hecha | Versionar, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 8. **Bloqueadas:** T-01 a T-04.
+**Hechas:** 8 de 8. **Bloqueadas:** ninguna.
 
 ---
 

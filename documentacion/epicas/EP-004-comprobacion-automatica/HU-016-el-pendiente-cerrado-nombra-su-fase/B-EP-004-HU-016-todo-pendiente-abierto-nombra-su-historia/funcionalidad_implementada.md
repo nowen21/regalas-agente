@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con su trazabilidad.
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.8.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **Un pendiente abierto que no nombra su historia rompe la corrida**, así que el enrutamiento deja de depender de que alguien se acuerde.

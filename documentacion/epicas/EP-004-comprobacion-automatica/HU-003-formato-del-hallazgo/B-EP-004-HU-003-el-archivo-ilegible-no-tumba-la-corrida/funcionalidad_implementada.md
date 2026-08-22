@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con la trazabilidad hasta el archivo donde vive cada cosa.
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.5.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **Un archivo que no se puede leer ya no tumba la corrida: se anota, se dice con su ruta, y todo lo demás se sigue revisando.**

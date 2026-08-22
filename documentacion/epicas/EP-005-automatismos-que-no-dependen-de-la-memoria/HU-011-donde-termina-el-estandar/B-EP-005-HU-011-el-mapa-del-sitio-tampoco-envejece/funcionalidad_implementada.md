@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con la trazabilidad de cada ítem hasta el archivo donde vive.
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.2.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **El mapa del sitio ya no puede envejecer en silencio:** `validar.py sitio` reporta la carpeta que existe y no está, y avisa de la que está y ya no existe.

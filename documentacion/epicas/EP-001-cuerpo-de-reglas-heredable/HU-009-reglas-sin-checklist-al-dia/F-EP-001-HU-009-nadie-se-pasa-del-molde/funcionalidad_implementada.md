@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice **qué quedó hecho** al cerrar la fase, con la trazabilidad de cada ítem hasta el archivo donde vive. El plan está en [plan_trabajo.md](plan_trabajo.md); lo que se probó, en [resultado_pruebas.md](resultado_pruebas.md).
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 30.9.1.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **Ninguna regla del estándar está publicada reprobando su propio checklist.** Ni por lo que exige ni por su largo. Era la deuda que la HU-009 nombra desde que nació.

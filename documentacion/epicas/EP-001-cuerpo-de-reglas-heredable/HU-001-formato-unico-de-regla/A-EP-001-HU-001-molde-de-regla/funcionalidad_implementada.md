@@ -2,6 +2,8 @@
 
 **Para qué sirve este documento.** Dice qué quedó hecho al cerrar la fase, con la trazabilidad de cada ítem hasta el archivo donde vive. El plan está en [plan_trabajo.md](plan_trabajo.md); lo probado, en [resultado_pruebas.md](resultado_pruebas.md).
 
+> **Cerrada el 2026-08-22, con el estándar en la versión 31.8.0.** Es el sello que dice **bajo qué reglas** cerró este trabajo: una regla escrita después no lo reabre ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
+
 ## 0. Qué quedó, en una frase
 
 **Toda regla del estándar se escribe con el mismo molde, y eso ya no es una costumbre: es un documento con su comprobación.**

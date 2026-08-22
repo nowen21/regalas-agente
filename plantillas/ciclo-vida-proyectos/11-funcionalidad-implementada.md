@@ -14,7 +14,10 @@
 | **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
 | **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
 | **Fecha de cierre** | AAAA-MM-DD |
+| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
 | **Commit** | «hash — se completa al commitear» |
+
+> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
 
 ---
 
