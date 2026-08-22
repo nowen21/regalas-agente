@@ -2,7 +2,7 @@
 
 ## DOC17 · Mantén un `README.md` en cada nivel del árbol de trabajo
 
-Ninguna carpeta del árbol de épicas, HU y fases ([`02·F12`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), punto 13) queda muda: cada una tiene un `README.md` que lista **su contenido inmediato** —lo que cuelga directo de ella, no el árbol entero— con una frase de qué es cada cosa. Se actualiza en el mismo cambio que crea, mueve o cierra algo; no es la foto de una fecha.
+Ninguna carpeta del árbol de épicas, HU y fases ([`02·F12`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), punto 13) queda muda: cada una tiene un `README.md` que lista **su contenido inmediato**, no el árbol entero, con una frase de qué es cada cosa. Se actualiza en el mismo cambio que crea, mueve o cierra algo.
 
 ```
 INCORRECTO: la carpeta de la épica tiene ocho HU dentro y ningún índice ·
@@ -25,6 +25,8 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia · **16**: no tiene excepción. Fila 6: `DOC17` es el siguiente consecutivo libre. La exigencia no es nueva —vivía dentro de [`DOC15`](DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), y [`DOC16`](DOC16-crea-la-epica-desde-la-plantilla-central.md) ya la citaba como si fuera regla propia—; lo nuevo es que ahora se puede citar por su ID.
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `13`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md).
 
 **Vuelta a sellar el 2026-08-22 (pendiente 19):** cambió solo la cita a `02·F12`, que ya no tiene sub-identificadores de regla: los `F12.N` son puntos del anexo de nomenclatura. La exigencia no cambió.
 

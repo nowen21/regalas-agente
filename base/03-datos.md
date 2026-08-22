@@ -8,7 +8,7 @@ Diseño y cambio del almacenamiento: esquema, migraciones, catálogos. La capa 3
 
 ## D1 · La tabla nueva nace normalizada
 
-Un dato no se repite ni se guarda en montón: **nada de columnas que contienen varios valores** —listas, estructuras serializadas—, nada de copiar atributos del padre, y nada de valores fijos incrustados en el tipo de la columna, que van a catálogo ([`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo)). Lo que es uno a muchos va en tabla hija; lo que es muchos a muchos, en una tabla que las une.
+Un dato no se repite ni se guarda en montón: nada de columnas que contienen varios valores, nada de copiar atributos del padre, y nada de valores fijos incrustados en el tipo de la columna, que van a catálogo ([`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo)). Lo uno a muchos va en tabla hija; lo muchos a muchos, en una que las une.
 
 ```
 INCORRECTO: una columna «etiquetas» con los valores separados por comas
@@ -19,7 +19,7 @@ CORRECTO:   una tabla de etiquetas y otra que la une con su dueño
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.24.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -30,6 +30,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `03`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
 **Partida el 2026-08-18, y eran tres.** Su cuerpo tenía tres párrafos en negrita —normalización, auditoría, integridad en el almacén— y **son tres exigencias que se cumplen por separado**: una tabla puede estar perfectamente normalizada y no llevar ninguna columna de auditoría, o llevarlas y no tener una sola restricción. Nacen [`D10`](#d10--toda-tabla-guarda-quién-la-tocó-y-cuándo) y [`D11`](#d11--la-integridad-vive-en-el-almacén-no-solo-en-la-aplicación). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 
@@ -295,7 +297,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 ## D9 · Dos operaciones simultáneas no se pisan
 
-Cuando dos procesos pueden tocar el mismo dato a la vez, la integridad se **protege en el almacén**, no confiando en que no pase: el valor compartido se actualiza de forma atómica o revalidando la versión al guardar, y la unicidad la garantiza una restricción del propio almacén — comprobarla antes de insertar no alcanza, porque dos procesos la pasan a la vez.
+Cuando dos procesos pueden tocar el mismo dato a la vez, la integridad se **protege en el almacén**: el valor compartido se actualiza de forma atómica o revalidando la versión al guardar, y la unicidad la garantiza una restricción del propio almacén, porque comprobarla antes de insertar no alcanza.
 
 ```
 INCORRECTO: se lee el saldo, se resta en memoria y se guarda → dos ventas
@@ -308,7 +310,7 @@ CORRECTO:   el descuento se hace en una sola operación atómica, o se revalida
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.23.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -319,6 +321,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `03`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
 **Nace el 2026-08-18 de partir [`D6`](#d6--la-operación-repetida-no-duplica-su-efecto).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 

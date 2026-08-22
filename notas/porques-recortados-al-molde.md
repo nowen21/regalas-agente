@@ -38,6 +38,30 @@ Doce reglas del flujo de trabajo pasaban del molde con el sello en ✅. Lo que s
 | `02·F23` | «con todo lo que una fase lleva» y la remisión a `F12`: qué lleva una fase lo fija el capítulo. |
 | `02·F26` | «de la propuesta» y «cada épica cita los ítems que cubre», que es la otra cara de que la que no baje de ninguno no arranca. |
 
+## Capítulos 03, 13 y 20
+
+Diecisiete reglas más pasaban del molde con el sello en ✅. Dos no se recortaron sino que ganaron **anexo**, como `02·F12`: su detalle es una tabla y una lista que no se pueden resumir sin perderlas.
+
+| Regla | Lo que se recortó |
+|---|---|
+| `03·D1` | Los ejemplos de columna en montón («listas, estructuras serializadas»), que el ejemplo de la regla ya muestra. |
+| `03·D9` | «no confiando en que no pase», que era el porqué de proteger en el almacén. |
+| `13·DOC5` | Que la capa 3 declara el sitio único donde viven las señales y que sin esa declaración la regla no está activada: eso es la marca *opt-in* del título y el capítulo lo explica. |
+| `13·DOC7` | «si solo se escribe en uno, el conocimiento queda atrapado ahí», el porqué de exigir los dos lados. |
+| `13·DOC9` | «explorar de cero lo que ya está mapeado es releer quince archivos para saber lo mismo». |
+| `13·DOC10` | «cuerpo duplicado en dos sitios es un día alguien arregla uno y la contradicción queda». |
+| `13·DOC11` | **La tabla de cinco columnas pasa a [anexo](../base/13-documentacion/tabla-de-trazabilidad.md)**, entera y con qué se espera de cada estado. |
+| `13·DOC12` | «Sin esto aparecen fases sueltas y nadie sabe si continúan el plan o reaccionan a un hallazgo». |
+| `13·DOC13` | «Sin el catálogo, la próxima sesión planifica creyendo que el sistema es solo lo que alcanzó a leer». |
+| `13·DOC15` | «no de memoria ni de una copia local, que envejece», que es el porqué de leerla cada vez. |
+| `13·DOC16` | «el comportamiento vive en las HU» y «toda HU pertenece a una épica, aunque agrupe una sola». |
+| `13·DOC17` | «no es la foto de una fecha», el porqué de actualizarlo en el mismo cambio. |
+| `13·DOC19` | La remisión a la nota de por qué esa marca y no otra, que sigue en [notas/marca-del-espacio-por-llenar.md](marca-del-espacio-por-llenar.md). |
+| `13·DOC20` | «incluida la caja de instrucciones del modelo, que se borra al llenarlo». |
+| `13·DOC22` | «un chat no tiene final, y lo que se deja para el final no se escribe». |
+| `20·M6` | **Los seis pasos del desempate pasan a [anexo](../base/20-meta-reglas/desempate.md)**, enteros y sin reescribir. |
+| `20·M16` | La remisión al procedimiento completo y a que la regla de base nace agnóstica, que ya exigen `M14` y `M3`. |
+
 ## Capítulos 18 y 19
 
 | Regla | Lo que se recortó |

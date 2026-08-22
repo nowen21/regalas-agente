@@ -11,13 +11,21 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.9.0 — 2026-08-22
+
+**MENOR** (diecisiete reglas de tres capítulos caben ya en su molde, y nacen dos anexos; nada cambia en lo que se exige).
+
+**Ninguna regla del estándar se pasa ya del largo que ella misma fija.** Era la última deuda de la fila 10 del checklist: quince reglas de los capítulos de datos, documentación y meta-reglas decían en el sello que cabían en cuatro líneas y medían hasta el doble. Dos de ellas no se podían recortar sin perder algo, porque su contenido era una tabla y una lista de pasos: esas dos ganaron **anexo**, la misma salida que el usuario aprobó para la nomenclatura de fases.
+
+**El detalle.** Es la ronda de los capítulos `03`, `13` y `20` del pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [la tabla canónica de trazabilidad](base/13-documentacion/tabla-de-trazabilidad.md), que sale del cuerpo de `DOC11`, y [el orden del desempate](base/20-meta-reglas/desempate.md), que sale del de `M6` con sus seis pasos intactos. Las otras quince se recortaron dejando lo que exigen; los porqués están en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). Con esto `validar.py metareglas` no reporta ni una falla ni un aviso de largo.
+
 ## 30.8.3 — 2026-08-22
 
 **PARCHE** (doce reglas del capítulo `02` dicen lo mismo en menos palabras; nada cambia en lo que se exige).
 
 **Las reglas del flujo de trabajo ya caben en el molde que el estándar les da.** `F0`, `F8`, `F9`, `F10`, `F11`, `F14`, `F16`, `F17`, `F20`, `F22`, `F23` y `F26` pasaban de las cuatro líneas, algunas al doble, con un sello que decía que cabían. Lo que salió eran explicaciones y remisiones a detalles que ya viven en el capítulo o en otra regla; queda anotado en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md).
 
-**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), capítulo `02`. Las excepciones y los ejemplos no se tocaron, y las dependencias declaradas siguen igual. Con este capítulo los avisos de largo bajan de 30 a 18.
+**El detalle.** Es la ronda del capítulo `02` del pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Las excepciones y los ejemplos no se tocaron, y las dependencias declaradas siguen igual. Con este capítulo los avisos de largo bajan de 30 a 18.
 
 ## 30.8.2 — 2026-08-22
 
