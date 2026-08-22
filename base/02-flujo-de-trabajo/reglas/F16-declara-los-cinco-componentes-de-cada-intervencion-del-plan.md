@@ -2,7 +2,7 @@
 
 ## F16 · Declara los cinco componentes de cada intervención del plan
 
-Cada intervención que el plan declara dice **qué** se hace, **cómo** se hace, **dónde** exactamente, **por qué** —qué gap cierra— y con qué **impacto** sobre el resto del sistema (extiende [`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) · deroga [`02·F4.3`](F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)). Quedan fuera los verbos vagos —"ajustar", "revisar", "mejorar"— y los alcances abiertos: "y lo demás que aplique". Qué se espera de cada componente: [`base.md`](../base.md).
+Cada intervención del plan dice **qué** se hace, **cómo**, **dónde** exactamente, **por qué** —qué hueco cierra— y con qué **impacto** en el resto. Fuera los verbos vagos y los alcances abiertos; qué se espera de cada componente, en [`base.md`](../base.md) (extiende [`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) · deroga [`02·F4.3`](F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
 
 ```
 INCORRECTO: "revisar el servicio de facturación y mejorar lo que haga falta"
@@ -14,7 +14,7 @@ CORRECTO:   "modificar `<ruta>`: agregar el parámetro `bar` a `foo()` para cerr
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v3.1.0**, el **2026-08-07**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -25,5 +25,7 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Es la primera de las dos exigencias que [`F4.3`](F4.3-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) tenía juntas —declararlo y verificarlo se cumplen por separado—; la segunda es [`F17`](F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md).
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `02`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

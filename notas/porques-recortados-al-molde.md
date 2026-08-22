@@ -19,6 +19,25 @@
 | `01·C21` | «Nunca la supongas»: suponer el dato que falta es justo lo que la regla prohíbe al pedir que se pregunte. |
 | `01·C22` | El desglose de qué cuenta como reintentar; la regla conserva las dos salidas, corregir la llamada o preguntar qué cambiarle. |
 
+## Capítulo 02
+
+Doce reglas del flujo de trabajo pasaban del molde con el sello en ✅. Lo que salió de cada una:
+
+| Regla | Lo que se recortó |
+|---|---|
+| `02·F0` | «se omite por tamaño» y «si te piden un paso»: la exigencia ya dice que ningún eslabón se salta, grande o chico. |
+| `02·F8` | El nombre del archivo descubierto («el archivo Y») y «se espera OK explícito»: esperar el OK ya lo dice la frase. |
+| `02·F9` | «dentro del plan»: que la subdivisión se proponga antes de aprobar la ubica sola. |
+| `02·F10` | Que preguntar «¿está en prod?» solo sirva para elegir entre editar la migración original o crear una nueva; es el porqué de asumir que sí lo está. |
+| `02·F11` | «el diferimiento se documenta en la especificación» y la remisión a `F12` por cuántas HU cubre una fase: eso lo fija `F12`, no esta. |
+| `02·F14` | «y qué ajusta la capa 3 de cada una»: está en el capítulo, que es donde se leen las trece. |
+| `02·F16` | La lista de verbos vagos («ajustar», «revisar», «mejorar») y el ejemplo de alcance abierto; el ejemplo de la regla los muestra. |
+| `02·F17` | Las marcas `TBD` y `?`, y la remisión a la línea base y la matriz de dependencias del refactor, que viven en el capítulo. |
+| `02·F20` | La lista de lo que «convendría» agregar se acortó, y la remisión a `01·C3`: que una pregunta no autoriza a editar ya lo dice la frase. |
+| `02·F22` | «una por cada HU» quedó «una por HU», y la remisión a `F12` y a la mecánica del `CLAUDE.md`, que ya están en sus reglas. |
+| `02·F23` | «con todo lo que una fase lleva» y la remisión a `F12`: qué lleva una fase lo fija el capítulo. |
+| `02·F26` | «de la propuesta» y «cada épica cita los ítems que cubre», que es la otra cara de que la que no baje de ninguno no arranca. |
+
 ## Capítulos 18 y 19
 
 | Regla | Lo que se recortó |

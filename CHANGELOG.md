@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.8.3 — 2026-08-22
+
+**PARCHE** (doce reglas del capítulo `02` dicen lo mismo en menos palabras; nada cambia en lo que se exige).
+
+**Las reglas del flujo de trabajo ya caben en el molde que el estándar les da.** `F0`, `F8`, `F9`, `F10`, `F11`, `F14`, `F16`, `F17`, `F20`, `F22`, `F23` y `F26` pasaban de las cuatro líneas, algunas al doble, con un sello que decía que cabían. Lo que salió eran explicaciones y remisiones a detalles que ya viven en el capítulo o en otra regla; queda anotado en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md).
+
+**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), capítulo `02`. Las excepciones y los ejemplos no se tocaron, y las dependencias declaradas siguen igual. Con este capítulo los avisos de largo bajan de 30 a 18.
+
 ## 30.8.2 — 2026-08-22
 
 **PARCHE** (tres reglas del capítulo `01` dicen lo mismo en menos palabras; nada cambia en lo que se exige).

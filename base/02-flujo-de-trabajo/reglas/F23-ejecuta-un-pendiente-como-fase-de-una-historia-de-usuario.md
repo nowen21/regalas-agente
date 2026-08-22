@@ -2,8 +2,7 @@
 
 ## F23 · Ejecuta un pendiente como fase de una historia de usuario
 
-Un pendiente del backlog no se implementa desde su archivo: se baja a historia de usuario de la épica que le corresponda y se construye como fase de esa historia ([`02·F12`](F12-relacion-y-nomenclatura-de-fases.md)), con todo lo que una fase lleva (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
-Que la mejora ya esté acordada y escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba.
+Un pendiente no se implementa desde su archivo: baja a historia de usuario de la épica que le corresponda y se construye como fase de esa historia. Que la mejora ya esté acordada y escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: el pendiente dice qué hay que arreglar → se edita el código, se sube
@@ -17,7 +16,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v20.0.1**, el **2026-08-16**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -28,6 +27,8 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción propia. La de [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) rige acá porque esta la extiende: el pendiente que solo pide decidir algo, o leer, no es desarrollo y no abre fase.
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `02`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md).
 
 La fila **2** se buscó por concepto y se leyó el capítulo entero. [`02·F21`](F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) también habla de pendientes, pero de otra cosa: aquella dice que lo ya anotado no se vuelve a producir; esta dice por dónde entra al trabajo lo que el pendiente pide. Y [`20·M13`](../../20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) dice dónde **vive** un pendiente, no cómo se ejecuta.
 
