@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 32.1.1 — 2026-08-22
+
+**PARCHE** (aclara dónde llega una exigencia que ya estaba, y le pone ejemplo; nadie tiene que hacer nada nuevo).
+
+**El nombre de una funcionalidad cuenta tanto como su descripción.** La lista de lo que un producto debe hacer ya se escribía para que la entienda cualquiera, pero el nombre de cada fila seguía siendo una etiqueta de casa. Un nombre así deja la fila a medias: quien la lee de afuera pasa de largo antes de llegar a la explicación. Ahora se dice explícitamente que la prueba cubre las tres cosas, el nombre del grupo, el nombre de la funcionalidad y su descripción, y el molde trae el ejemplo de una fila que la pasa al lado de una que no.
+
+**Se midió sobre un caso real.** De las 36 filas del inventario del propio Cimiento, 21 no pasaban la prueba, y la columna del nombre estaba peor que la de la descripción. Palabras como «núcleo blindado», «expediente», «desfase», «traza» o «veredicto» no le dicen nada a quien va a usar el producto, aunque adentro se entiendan solas. Las 36 quedaron reescritas.
+
+**El detalle.** El molde [`02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md), con el ejemplo en la sección del grupo, y el inventario reescrito en [prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md).
+
+---
+
 ## 32.1.0 — 2026-08-22
 
 **MENOR** (una exigencia nueva sobre cómo se escribe el molde del inventario; nada de lo ya escrito deja de valer).

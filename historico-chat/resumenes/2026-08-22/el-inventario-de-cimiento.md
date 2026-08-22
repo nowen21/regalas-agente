@@ -95,6 +95,24 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Cerrado en** | — |
 | **Con qué se retoma** | Abrir la épica de la interfaz: son 14 filas (grupos 5 y 6) que ninguna de las siete existentes cubre. |
 
+
+### H-6 · La prueba del niño estaba escrita pero el documento no la pasaba
+
+| Campo | |
+|---|---|
+| **Qué pasó** | El usuario preguntó si un niño que lee las funcionalidades sabe de qué se tratan. Se midió fila por fila: **21 de las 36 no pasaban**, y la columna del nombre estaba peor que la de la descripción. |
+| **Por qué importa** | La exigencia se había escrito en el molde una hora antes, y el documento que la estrenaba la incumplía. Una regla que su propio primer caso no cumple no es una regla: es un deseo. Y este documento madura hasta ser el manual del producto, así que el que no lo entienda de afuera se queda sin manual. |
+| **Qué lo soluciona** | Dos piezas, las dos hechas acá. Una: el molde dice ahora que la prueba cubre las tres cosas, nombre del grupo, nombre de la funcionalidad y descripción, y trae el ejemplo de una fila que la pasa al lado de una que no. Otra: las 36 filas del inventario de Cimiento reescritas. |
+| **Qué se decidió** | Las palabras que se fueron: «núcleo blindado», «expediente», «desfase», «traza», «veredicto», «altas», «enganches», «prompt», «git», «épica», «fase», «eslabones». Ninguna fila cambió de significado: cambiaron de idioma. Versión **32.1.1**. |
+| **Estado** | `resuelto acá` |
+| **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
+| **Dispara** | — |
+| **Orden de resolución** | — |
+| **Dónde queda** | [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) y el molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) |
+| **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Con qué se retoma** | — |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -106,7 +124,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3 y H-4 |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-6 |
 | Todo hallazgo abierto tiene su pendiente creado | ☐ H-2 y H-5 siguen sin archivo en `pendientes/` |
 | Toda historia disparada está escrita en su épica | ☐ las tres historias y la épica de la interfaz están descritas acá, no creadas |
 | Lo que se hizo está aprobado y guardado | ☑ comiteado y publicado |

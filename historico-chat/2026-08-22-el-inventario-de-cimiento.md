@@ -493,3 +493,100 @@ Tres caminos, y la diferencia importa:
 
 ### 21 · Usuario — 2026-08-22 18:16:28
 > suba todo
+
+**Agente** — 2026-08-22 18:21:33
+<!-- agente: c61afe8a-5727-4a8b-9264-b89abbabfe66 -->
+
+Subido. Tres commits en `main`, todos publicados en `origin`.
+
+| Commit | Qué lleva |
+|---|---|
+| `5383047` | El molde del inventario y el inventario de Cimiento. Versión **32.1.0** |
+| `6b20e85` | El enlace roto que detenía la publicación, y la apertura de la entrada del registro |
+| `b906f6b` | El cierre del resumen de la sesión |
+
+**El problema de la mezcla se resolvió solo.** Mientras te preguntaba cuál de los tres caminos, la otra sesión commiteó lo suyo — los 188 archivos y la versión 32.0.1. Así que cuando fui a commitear ya solo quedaba lo mío, y quedó en un commit limpio. La opción 3 que te recomendaba pasó sin que nadie esperara.
+
+**Dos frenos me pararon en el camino**, y los dos eran reales:
+
+- El guardián de versión rechazó el commit: mi 32.0.0 ya se había ido con el commit de la otra sesión, así que lo que quedaba sin publicar necesitaba entrada propia. De ahí salió la **32.1.0**, que registra la prueba del niño y las secciones sin número.
+- La batería previa al `push` encontró el enlace roto del índice temático. Lo arreglé, aunque venga de otra sesión: detenía la publicación del repositorio entero y tú habías pedido subir.
+
+**Lo que queda sin hacer, y lo dejé escrito sin marcar en el resumen:**
+
+- Los hallazgos H-2 y H-5 no tienen archivo en [pendientes/](pendientes/).
+- Las tres historias que disparan, y la épica de la interfaz, están descritas en el resumen pero no creadas. Ahí caen las 14 filas de los grupos 5 y 6 del inventario, que hoy no tienen dónde bajar.
+
+Eso es lo siguiente, cuando quieras.
+
+### 22 · Usuario — 2026-08-22 18:25:34
+> de qué se trata esta sesión?
+
+**Agente** — 2026-08-22 18:25:50
+<!-- agente: e0dc1d3b-2312-4fbd-8d21-b0dff1284ed2 -->
+
+Se guardó como [2026-08-22-el-inventario-de-cimiento.md](historico-chat/2026-08-22-el-inventario-de-cimiento.md).
+
+**Empezó como una pregunta de procedimiento** — qué sigue después del planteamiento — y la respuesta era el inventario de funcionalidades, la puerta que hay que cruzar antes de derivar épicas. Fuimos a llenar el de Cimiento.
+
+**Terminó cambiando el molde para todos los proyectos**, porque el que había estaba mal en cuatro cosas, y las cuatro las corregiste tú:
+
+1. **Yo dejaba filas por fuera** porque «eso ya existe». El inventario es todo lo que el producto debe tener, esté construido o no.
+2. **Yo marcaba 22 filas como «Existe»** por haber leído el código. Eso lo dice la prueba, no el agente. Ahora la columna se llama «Verificado» y solo la llena una prueba corrida.
+3. **El documento arrastraba historia** — fechas, estado de trámite, quién decidió qué, las preguntas ya contestadas. Se lee como si nada estuviera construido, aunque se llene con lo que ya se sabe.
+4. **Estaba escrito para adentro.** Ahora la prueba es que un niño lo lea y entienda qué hace el producto, y vale para el documento entero.
+
+**Tres decisiones tuyas de alcance:** no entra un segundo agente; la interfaz sí será tablero de todos los proyectos; y todo el ciclo de vida se administra desde la interfaz, con los documentos viviendo **en la base**.
+
+**Lo que quedó:** el inventario de Cimiento con 36 filas en seis grupos, todas sin verificar y sin preguntas abiertas. El molde reescrito, versión 32.1.0. La señal S-022. Todo comiteado y publicado.
+
+**Lo que no:** las 14 filas de interfaz no tienen épica donde bajar, y dos hallazgos siguen sin su archivo en `pendientes/`.
+
+Está en [el resumen](historico-chat/resumenes/2026-08-22/el-inventario-de-cimiento.md), hallazgo por hallazgo.
+
+### 23 · Usuario — 2026-08-22 18:27:10
+> si un niño lee las funcionalidades sabe de qué se trata?
+
+**Agente** — 2026-08-22 18:27:58
+<!-- agente: 1c28ce82-538e-43a3-b0b5-1519d560cd35 -->
+
+No. Lo probé fila por fila y **21 de las 36 no pasan.**
+
+Las palabras que un niño no tiene cómo entender, y que obligan a saber del proyecto:
+
+| Fila | La palabra que la hunde |
+|---|---|
+| 1.1 | «prompt», «relajar» |
+| 1.3 | «registros inmutables», «despliegue», «observabilidad» |
+| 1.4 | «se versiona», «se deroga» |
+| 1.6 | «cola de trabajo», «credenciales», «bot» |
+| 2.1 | «planteamiento, épica, historia, fase, especificación» — la cadena entera |
+| 2.2 | «moldes del ciclo» |
+| 2.5 | «repositorio», «.docx» |
+| 3.2 | «git», «confirmar y subir» |
+| 3.3 | «enganches», «el histórico» |
+| 3.4, 6.5 | «expediente» |
+| 3.5, 5.6 | «veredicto», «cumplimiento» |
+| 4.5 | «traza» |
+| 5.2 | «desfase» |
+| 5.5 | «altas» |
+| 6.4 | «épica», «fase», «eslabones» |
+
+Y la columna del nombre está peor que la de la descripción: «Núcleo blindado», «El canal de defectos», «Las señales», «El veredicto único» no le dicen nada a nadie de fuera.
+
+Así se vería el grupo 1 arreglado:
+
+| # | Funcionalidad | De qué se trata |
+|---|---|---|
+| 1.1 | Las reglas que no se pueden desobedecer | Un puñado de reglas que nadie puede saltarse, ni el dueño del proyecto ni quien le dé órdenes al programa. Si otra regla las contradice, mandan estas. |
+| 1.2 | Las reglas de cómo se trabaja | Cómo se escribe el programa, cómo se guardan los datos, cómo se prueba lo hecho y cómo se anota lo que se hizo. Sirven sin importar con qué esté construido, y cada proyecto puede exigir más o menos. |
+| 1.3 | Reglas extra que se encienden si se necesitan | Un proyecto puede activar reglas que otros no necesitan: guardar cosas que nunca se borran, publicar el programa para que la gente lo use, o vigilarlo mientras funciona. |
+| 1.4 | Las reglas para escribir reglas | Cómo se crea una regla nueva, dónde se guarda, cómo se le pone número y cómo se retira cuando deja de servir. |
+| 1.5 | La explicación para el que llega nuevo | Todo el camino de un proyecto contado en palabras normales, para alguien que no sabe nada del tema. |
+| 1.6 | Reglas para los programas que hacen tareas solos | Lo que hay que cuidar cuando un programa hace solo lo que haría una persona: que no se rompa si la pantalla cambia, que las tareas esperen en fila, que se distinga «esto no se puede hacer» de «esto se dañó», y que las contraseñas no queden escritas adentro. |
+| 1.7 | Reglas para los programas que aprenden | Lo que hay que cuidar cuando un programa aprende de los datos y decide cosas: tener la lista de los que están funcionando, que cada uno tenga un responsable con nombre y apellido, vigilar más los que pueden hacer más daño, y revisarlos cada cierto tiempo. |
+
+¿Ese es el tono? Si sí, rehago los otros cinco grupos igual. Si te parece que se fue demasiado largo, lo aprieto: la prueba del niño pide que entienda, y `00·ID9` pide que sea corto — cuando chocan, mandas tú.
+
+### 24 · Usuario — 2026-08-22 18:29:51
+> si y eso debe quedar en la plantilla para que aplique a los demás proyectos

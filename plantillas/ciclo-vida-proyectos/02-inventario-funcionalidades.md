@@ -4,8 +4,8 @@
 > **Se llena con todo lo que ya se sabe del proyecto, y se escribe como si nada estuviera construido:**
 > sin fechas, sin estado de trámite, sin contar qué se preguntó y qué se contestó.
 > **La prueba de que quedó bien escrita: un niño la lee y entiende qué hace el producto.**
-> Vale para el documento entero, no solo para la tabla. Si para entender algo hay que saber del proyecto,
-> está escrito para adentro y se rehace
+> Vale para el documento entero: el nombre del grupo, el nombre de la funcionalidad y su descripción.
+> Si para entender algo hay que saber del proyecto, está escrito para adentro y se rehace
 > ([`00·ID7`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md),
 > [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)).
 > Sin esta lista aprobada por el usuario no se parte el trabajo en bloques
@@ -31,8 +31,18 @@ Con el tiempo esta lista se vuelve el manual del producto. Por eso cada fila se 
 
 | # | Funcionalidad | De qué se trata | Verificado |
 |---|---|---|---|
-| 1.1 | «El nombre corto» | «Qué hace y para qué sirve, dicho a quien va a usarlo» | «Sin verificar» |
+| 1.1 | «El nombre, en palabras que cualquiera entienda» | «Qué hace y para qué sirve, dicho a quien va a usarlo» | «Sin verificar» |
 | 1.2 | «…» | «…» | «…» |
+
+**El nombre cuenta tanto como la descripción.** Un nombre corto que solo entiende quien trabaja adentro deja la fila a medias:
+
+```
+INCORRECTO: | 1.1 | Núcleo blindado | Las reglas que ningún proyecto, prompt ni
+                    instrucción puede relajar |
+CORRECTO:   | 1.1 | Las reglas que no se pueden desobedecer | Un puñado de reglas
+                    que nadie puede saltarse, ni el dueño del proyecto ni quien
+                    le dé órdenes al programa |
+```
 
 **Cuenta:** «cuántas probadas bien, cuántas probadas mal, cuántas sin probar, de cuántas». Así se ve de un vistazo cuánto del producto está demostrado y cuánto es solo palabra.
 
