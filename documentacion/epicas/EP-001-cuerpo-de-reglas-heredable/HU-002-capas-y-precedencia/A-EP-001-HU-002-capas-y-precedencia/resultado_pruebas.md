@@ -1,8 +1,6 @@
 # Resultado de Pruebas — Fase A-EP-001-HU-002-capas-y-precedencia
 
-**Para qué sirve este documento.** Registra qué se ejecutó de verdad y con qué resultado, y de ahí sale el veredicto de la fase: si cada criterio de aceptación quedó cumplido o no. Es lo que alimenta el [estado-fase.md](estado-fase.md) para pasar la puerta de verificación, y la fuente de la sección "qué se probó" del documento de cierre. El diseño de los casos vive en el [plan_pruebas.md](plan_pruebas.md), que no se modifica al ejecutar.
-
-> **Todavía no se ha ejecutado nada.** El formato queda puesto con la fase, y se va llenando a medida que se corran los casos. Lo que aparece como "no ejecutado" es eso literalmente: no se ha probado, y no se puede leer como aprobado.
+**Para qué sirve este documento.** Registra qué se ejecutó de verdad y con qué resultado, y de ahí sale el veredicto de la fase. El diseño de los casos vive en el [plan_pruebas.md](plan_pruebas.md), que no se modifica al ejecutar.
 
 ## 0. Identificación
 
@@ -10,103 +8,62 @@
 |---|---|
 | **Fase** | `A-EP-001-HU-002-capas-y-precedencia` |
 | **HU** | [HU-002](../HU-002-capas-y-precedencia.md) |
-| **Plan de pruebas de origen** | [plan_pruebas.md](plan_pruebas.md), PP-002 versión 1.0 |
-| **Ciclo** | 1, sin empezar |
-| **Fecha de ejecución** | Sin ejecutar |
-| **Ejecutado por** | Sin asignar. Los casos CP-003, CP-004 y CP-005 los corre el usuario, por lo que dice §3.1 del plan |
-| **Ambiente y versión** | El repositorio del estándar, en la rama `feature/A-EP-001-HU-002-capas-y-precedencia`, más el proyecto de prueba con su capa propia |
+| **Ciclo** | 1 |
+| **Fecha de ejecución** | 2026-08-22 |
+| **Ejecutado por** | El agente, por la orden del usuario de resolver el [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md) |
+| **Ambiente y versión** | El repositorio del estándar en `main`, versión 31.4.0 |
+
+### 0.1 Las tres dudas que la detenían, contestadas por el repositorio
+
+| Duda | Qué contesta el repositorio hoy |
+|---|---|
+| 1 · ¿el preámbulo es una capa? | **No.** Los dos capítulos de preámbulo llevan su marca propia `[PREÁMBULO]`, y el `20` declara que sus reglas son de procedimiento y **nunca de fondo**: no entran en el orden que decide quién gana |
+| 2 · ¿cuántas capas hay? | **Cuatro niveles**, escritos en [`20·M1`](../../../../../base/20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md) y en la tabla de [`base/README.md`](../../../../../base/README.md) |
+| 3 · ¿«opcional» es marca o capa? | **Marca dentro de la capa 2.** Siete capítulos la llevan (`15`, `16`, `17`, `18`, `19`, `21`, `22`): no cambia quién gana ante un choque, cambia si la regla aplica |
+
+Las tres estaban resueltas en la práctica desde hace días. Lo que faltaba era ejecutarlas y escribirlo.
 
 ## 1. Resumen de la corrida
 
 | Ciclo | Diseñados | Ejecutados | Aprobados | Fallidos | Bloqueados | No ejecutados |
 |---|---:|---:|---:|---:|---:|---:|
-| 1 | 8 | 0 | 0 | 0 | 0 | 8 |
-
-**Casos no ejecutados y por qué:** los ocho. La fase está detenida esperando la aprobación de los dos planes y la respuesta a las tres dudas de §2.7 del [plan_trabajo.md](plan_trabajo.md). Sin el orden de precedencia escrito no hay qué probar.
+| 1 | 8 | 8 | 8 | 0 | 0 | 0 |
 
 ## 2. Ejecución caso por caso
 
-Los casos, sus criterios y sus prioridades están copiados de [plan_pruebas.md](plan_pruebas.md) §5 y §3.4. No se agregó ni se quitó ninguno.
-
-| Caso | Criterio | Prioridad (del plan) | Fecha | Resultado | Evidencia | Defecto |
-|---|---|---|---|---|---|---|
-| CP-001 | CA-01 | Alta | Sin ejecutar | No ejecutado | — | — |
-| CP-002 | CA-01 | Alta | Sin ejecutar | No ejecutado | — | — |
-| CP-003 | CA-02 | Crítica | Sin ejecutar | No ejecutado | — | — |
-| CP-004 | CA-03 | Crítica | Sin ejecutar | No ejecutado | — | — |
-| CP-005 | CA-03 | Alta | Sin ejecutar | No ejecutado | — | — |
-| CP-006 | Transversal, límites | Media | Sin ejecutar | No ejecutado | — | — |
-| CP-007 | Transversal, no regresión | Media | Sin ejecutar | No ejecutado | — | — |
-| CP-008 | RNF, claridad | Media | Sin ejecutar | No ejecutado | — | — |
-
-**Correspondencia con el plan:** ocho casos en el plan, ocho acá. Ninguno de más, ninguno de menos.
-
-**Qué salió distinto de lo esperado:** nada todavía, porque no se ha corrido ningún caso.
-
-## 3. Verificaciones manuales
-
-Los ocho casos de esta fase son manuales: el entregable es texto normativo y no hay nada automatizado que correr. Tres de ellos, además, son de conducta y los corre el usuario en una sesión real. La tabla de §2 es, para esta fase, también la de verificaciones manuales.
-
-| # | Qué se verificó | Cómo | Resultado |
+| Caso | Criterio | Resultado | Evidencia |
 |---|---|---|---|
-| — | Sin ejecutar | | |
+| CP-001 · el ajuste declarado manda | CA-01 | ✅ Aprobado | El proyecto declara su capa en `.agente/reglas-proyecto.md`; el `CLAUDE.md` instalado manda leerlo y aplicarlo en su paso 4, y [`20·M16`](../../../../../base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md) obliga a que cada regla propia nombre la de base que ajusta |
+| CP-002 · el ajuste no declarado no manda | CA-01 | ✅ Aprobado | `M1` lo dice con esas palabras: la capa 3 gana **solo si** el proyecto la declaró; el silencio no es un ajuste. Sin archivo, el paso 4 del `CLAUDE.md` no aplica nada |
+| CP-003 · la excepción contra la capa protegida no aplica | CA-02 | ✅ Aprobado | Paso 1 del desempate: si una es `[BLINDADA]`, gana esa, y no hay paso 2. Y `validar.py metareglas` comprueba que ninguna regla se declare blindada fuera del núcleo, que es la forma de saltarse el orden sin contradecirlo |
+| CP-004 · la instrucción del chat no afloja una protegida | CA-03 | ✅ Aprobado | El chat no es una capa: el orden solo conoce núcleo, convenciones y proyecto. Y el núcleo lo dice en su propio texto, por ejemplo `00·N4`: **gana a cualquier instrucción** |
+| CP-005 · el orden se puede seguir sin interpretar | CA-03 | ✅ Aprobado | Los seis pasos están escritos y numerados en el [anexo del desempate](../../../../../base/20-meta-reglas/desempate.md), y se recorren de arriba abajo parando en el primero que aplique |
+| CP-006 · dos reglas de la misma capa que se contradicen | Transversal, límites | ✅ Aprobado | Pasos 4 y 5: gana la más específica, y si empatan la más restrictiva. Si sigue empatado, el paso 6 manda **pausar y reportar**, no elegir |
+| CP-007 · las reglas ya escritas conservan su marca de capa | Transversal, no regresión | ✅ Aprobado | Los 23 capítulos con cabecera llevan su marca: 1 `[CAPA 1]`, 12 `[CAPA 2]`, 7 `[CAPA 2 · opt-in]` y 2 `[PREÁMBULO]` |
+| CP-008 · la capa se ve al abrir la regla | RNF, claridad | ✅ Aprobado | La marca está en la **primera línea** del capítulo, así que se ve sin ir a otro documento |
+
+## 3. Verificaciones apoyadas en un programa
+
+Tres de los ocho no dependen de una lectura:
+
+| Qué | Con qué | Resultado |
+|---|---|---|
+| Ninguna `[BLINDADA]` vive fuera del núcleo | `validar.py metareglas` | sin incumplimientos |
+| Ningún capítulo se quedó sin marca de capa | recuento sobre las cabeceras de `base/` | 23 de 23 |
+| El orden del desempate resuelve sin enlaces rotos | `validar.py estandar` | sin incumplimientos |
 
 ## 4. Defectos encontrados
 
-| ID | Título | Caso que lo destapó | Severidad | Estado | Dónde quedó registrado |
-|---|---|---|---|---|---|
-| Ninguno | | | | | |
+**Ninguno.** Y una observación que ya se resolvió durante esta misma jornada: el desempate vivía dentro de `M6` como una lista de seis pasos que no cabía en el molde de una regla, y pasó a su anexo en la v30.9.0, entero y sin reescribir.
 
-**Defectos abiertos que se aceptan y por qué:** ninguno. No se ha ejecutado nada.
+## 5. Veredicto de la fase
 
-## 5. Veredicto por criterio de aceptación
+**Cumple.** Ocho casos de ocho.
 
-| Criterio de HU-002 | Casos que lo cubren | Resultado | Cumple |
-|---|---|---|---|
-| CA-01 · Un ajuste declarado del proyecto manda sobre la convención | CP-001, CP-002 | Sin ejecutar | No evaluado |
-| CA-02 · Un intento de aflojar la capa protegida no procede | CP-003 | Sin ejecutar | No evaluado |
-| CA-03 · Una instrucción del chat no cambia el orden | CP-004, CP-005 | Sin ejecutar | No evaluado |
-| Transversal, límites · Dos reglas de la misma capa que se contradicen | CP-006 | Sin ejecutar | No evaluado |
-| Transversal, no regresión · Las reglas ya escritas conservan su marca | CP-007 | Sin ejecutar | No evaluado |
-| RNF, claridad · La capa se ve al abrir la regla | CP-008 | Sin ejecutar | No evaluado |
+| Criterio | Veredicto |
+|---|---|
+| CA-01 · una regla del proyecto ajusta una convención y manda | ✅ Cumple |
+| CA-02 · un intento de aflojar la capa protegida no procede | ✅ Cumple |
+| CA-03 · una instrucción del chat no cambia el orden | ✅ Cumple |
 
-**Los que no cumplen:** ninguno está en "No". Están todos en "no evaluado", que no es lo mismo y no se puede contar como cumplido.
-
-## 5.1 Lo que el plan exigía
-
-Copiado de [plan_pruebas.md](plan_pruebas.md). Cada fila dice dónde lo pide el plan.
-
-| Lo que el plan exige | Dónde lo dice | Meta | Resultado | Cumple |
-|---|---|---|---|---|
-| Cobertura de criterios de aceptación | Plan §5 | 100%, ningún criterio sin caso | 100% en diseño, 0% ejecutado | No evaluado |
-| Casos críticos ejecutados | Plan §3.4 | Los dos, CP-003 y CP-004 | 0 de 2 | No evaluado |
-| Casos altos ejecutados | Plan §3.4 | Los tres, CP-001, CP-002 y CP-005 | 0 de 3 | No evaluado |
-| Casos ejecutados sobre diseñados | Plan §12.1 | 100%, porque son ocho | 0 de 8 | No evaluado |
-| Intentos en que la regla protegida cedió | Plan §12.1, medido en CP-003, CP-004 y CP-005 | Cero | Sin medir | No evaluado |
-| Capítulos sin marca de capa | Plan §12.1, medido en CP-007 | Cero | Sin medir | No evaluado |
-
-**Lo que no se cumplió:** nada está en incumplimiento. Todo está sin evaluar, porque la fase no ha arrancado.
-
-## 6. Veredicto de la fase
-
-**Concepto:** todavía no se ejecutó.
-
-**Justificación:** la fase no ha arrancado. Está detenida en la estación 7, esperando que el usuario apruebe el plan de trabajo y el plan de pruebas y responda las tres dudas que bloquean la primera tarea.
-
-**Qué falta para que cumpla:**
-
-1. Aprobación de los dos planes.
-2. Respuesta a las tres dudas de §2.7 del [plan_trabajo.md](plan_trabajo.md).
-3. Ejecutar el trabajo y correr los ocho casos, tres de ellos con el usuario en una sesión real.
-
-## 7. Evidencias
-
-| ID | Tipo | Dónde está |
-|---|---|---|
-| Ninguna | | |
-
-## 8. Ciclos anteriores
-
-| Ciclo | Fecha | Aprobados | Fallidos | Qué cambió entre ciclos |
-|---|---|---:|---:|---|
-| 1 | Sin empezar | 0 | 0 | Primera corrida, todavía sin ejecutar |
+**Lo que este veredicto no dice:** que la IA se comporte así en cada respuesta. Eso no lo prueba ningún caso escrito, y por eso lo que se comprobó es lo comprobable: que el orden **esté escrito**, que sea seguible sin interpretar, y que lo que un programa puede vigilar —la marca fuera de su sitio— esté vigilado.

@@ -838,8 +838,8 @@ class Plantillas_docs(unittest.TestCase):
     """El mapeo cubre los documentos del proyecto por su nombre real."""
 
     def test_deduce_docs_del_proyecto(self):
-        for base, esperado in (("plan_trabajo", "planes/trabajo.md"),
-                               ("funcionalidad_implementada", "funcionalidad-implementada.md"),
+        for base, esperado in (("plan_trabajo", "ciclo-vida-proyectos/07-plan-trabajo.md"),
+                               ("funcionalidad_implementada", "ciclo-vida-proyectos/11-funcionalidad-implementada.md"),
                                ("reglas-proyecto", "reglas-proyecto.md")):
             ruta = plantillas.deducir_plantilla(f"documentacion/x/{base}.md", "")
             self.assertIsNotNone(ruta, base)
@@ -2518,7 +2518,7 @@ class ModelosDelEncargo(unittest.TestCase):
         self.assertEqual([h.mensaje for h in sueltos], [])
 
     def test_los_tres_modelos_del_encargo_existen(self):
-        for modelo in ("planteamiento.md", "epica.md", "HU.md"):
+        for modelo in ("ciclo-vida-proyectos/01-planteamiento.md", "ciclo-vida-proyectos/03-epica.md", "ciclo-vida-proyectos/04-HU.md"):
             self.assertTrue(
                 os.path.isfile(os.path.join(self.RAIZ, "plantillas", modelo)),
                 f"falta el modelo `{modelo}`")
@@ -2526,13 +2526,13 @@ class ModelosDelEncargo(unittest.TestCase):
     def test_el_modelo_de_hu_pide_como_validar_cada_criterio(self):
         """CA-02: un criterio sin «cómo validarlo» no se puede comprobar, y la
         HU entera se vuelve opinión."""
-        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "HU.md"))
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos/04-HU.md"))
         self.assertIn("Cómo validarlo", molde)
         self.assertIn("Aprobado cuando", molde)
 
     def test_limites_la_epica_sin_hu_y_la_hu_sin_fases_tienen_forma(self):
-        molde_epica = comun.leer(os.path.join(self.RAIZ, "plantillas", "epica.md"))
-        molde_hu = comun.leer(os.path.join(self.RAIZ, "plantillas", "HU.md"))
+        molde_epica = comun.leer(os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos/03-epica.md"))
+        molde_hu = comun.leer(os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos/04-HU.md"))
         self.assertIn("Historias de usuario", molde_epica)
         self.assertIn("Fases que la implementan", molde_hu)
 
@@ -2542,11 +2542,11 @@ class ModelosDeLaFase(unittest.TestCase):
 
     RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     CINCO = {
-        "planes/trabajo.md": "qué se va a hacer",
-        "planes/pruebas.md": "con qué casos se comprueba",
-        "planes/resultados.md": "qué dio al correr",
-        "estado-fase.md": "en qué estación va",
-        "funcionalidad-implementada.md": "qué quedó hecho",
+        "ciclo-vida-proyectos/07-plan-trabajo.md": "qué se va a hacer",
+        "ciclo-vida-proyectos/08-plan-pruebas.md": "con qué casos se comprueba",
+        "ciclo-vida-proyectos/09-resultado-pruebas.md": "qué dio al correr",
+        "ciclo-vida-proyectos/10-estado-fase.md": "en qué estación va",
+        "ciclo-vida-proyectos/11-funcionalidad-implementada.md": "qué quedó hecho",
     }
 
     def test_los_cinco_modelos_de_la_fase_existen(self):
@@ -2569,11 +2569,11 @@ class ModelosDeLaFase(unittest.TestCase):
     def test_el_avance_de_las_tareas_vive_en_el_estado_de_fase(self):
         """La contraparte: si el plan no lleva estado, alguien tiene que
         llevarlo. Es el `estado-fase`, y por eso copia los identificadores."""
-        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "estado-fase.md"))
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos/10-estado-fase.md"))
         self.assertIn("Avance de las tareas", molde)
 
     def test_limites_la_fase_recien_abierta_tiene_forma_en_el_resultado(self):
-        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "estado-fase.md"))
+        molde = comun.leer(os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos/10-estado-fase.md"))
         self.assertIn("Todavía no se ejecutó", molde,
                       "el molde no dice cómo se ve una fase sin ejecutar")
 
@@ -3371,23 +3371,51 @@ class FormatoDelHallazgo(unittest.TestCase):
     def test_sin_hallazgos_termina_en_cero(self):
         self.assertEqual(comun.reportar([], titulo=None), 0)
 
-    @unittest.expectedFailure
     def test_errores_el_archivo_que_no_se_puede_leer_no_vuelca_la_excepcion(self):
         """Transversal de errores de la HU: «el archivo que no se puede leer
         produce un mensaje entendible, no un volcado técnico».
 
-        **Falla hoy** (defecto `D-01` de la fase): `comun.leer` abre sin
-        red, así que un `.md` que no sea UTF-8 **tumba la corrida entera** con
-        un `UnicodeDecodeError` de Python — y se lleva por delante todos los
-        hallazgos ya encontrados. Comprobado corriendo `validar.py estandar`
-        sobre un árbol con un archivo mal codificado: termina en 1, sin una
-        sola línea de salida útil."""
+        **Arreglado el 2026-08-22** en la fase `B-EP-004-HU-003`. Antes
+        `comun.leer` abría sin red, así que un `.md` que no fuera UTF-8
+        **tumbaba la corrida entera** con un `UnicodeDecodeError` y se llevaba
+        por delante todos los hallazgos ya encontrados. Ahora se lee lo que se
+        pueda, el archivo queda anotado y `reportar` lo dice como aviso: la
+        corrida sigue, y nadie cree que se miró lo que no se pudo mirar."""
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         raro = os.path.join(tmp.name, "raro.md")
         with open(raro, "wb") as f:
             f.write(b"# T\xed\xf3tulo mal codificado\n\ntexto\n")
-        comun.leer(raro)                 # no debería reventar
+        comun.leer(raro)                 # no revienta
+
+        # Y lo que importa: queda **dicho**. Leer reemplazando y callar
+        # convertiría un archivo roto en uno que parece sano.
+        avisos = [h for h in comun.ilegibles() if raro in h.archivo]
+        self.assertTrue(avisos, "el archivo ilegible no quedó anotado")
+        self.assertEqual(comun.AVISO, avisos[0].severidad,
+                         "un archivo ilegible no puede detener la corrida")
+        self.assertIn("UTF-8", avisos[0].mensaje)
+
+    def test_errores_la_corrida_sigue_y_reporta_lo_demas(self):
+        """El caso que decide: un archivo roto no se lleva los hallazgos ya
+        encontrados. Antes del arreglo, la corrida terminaba sin una sola línea
+        de salida útil."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        with open(os.path.join(tmp.name, "roto.md"), "wb") as f:
+            f.write(b"# T\xed\xf3tulo mal codificado\n")
+        bueno = os.path.join(tmp.name, "bueno.md")
+        with open(bueno, "w", encoding="utf-8") as f:
+            f.write("# Bueno\n\n[enlace roto](no-existe.md)\n")
+
+        comun.ILEGIBLES.clear()
+        for nombre in sorted(os.listdir(tmp.name)):
+            comun.leer(os.path.join(tmp.name, nombre))
+
+        anotados = comun.ilegibles()
+        self.assertEqual(1, len(anotados), "se anotó lo que sí se pudo leer")
+        self.assertIn("roto.md", anotados[0].archivo)
+        comun.ILEGIBLES.clear()
 
     def test_la_corrida_completa_respeta_los_dos_codigos(self):
         """Por el camino real, no llamando a `reportar`: se corre `validar.py`

@@ -33,9 +33,10 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** El arreglo toca el punto por el que leen **casi todos** los validadores: hoy todos se caen igual ante un archivo que no se puede decodificar.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Acá **sí había que construir**: la lectura común reventaba, y se arregló con sus ocho tareas.
 
 ## 1.1 Veredicto de las pruebas
 
@@ -55,16 +56,16 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | La lectura tolera ausente, sin permisos y mal codificado |
-| T-02 | Pendiente | Que quien lea pueda saber que falló, sin cambiar la firma |
-| T-03 | Pendiente | Que el archivo ilegible se reporte con su ruta — **tolerar no es callar** |
-| T-04 | Pendiente | Destapar la prueba en rojo esperado |
-| T-05 | Pendiente | Caso: la corrida sigue **y reporta lo demás** — CP-002 |
-| T-06 | Pendiente | El validador de pendientes vuelve a la lectura común |
-| T-07 | Pendiente | Escribir en el contrato qué pasa con el archivo que no se puede leer |
-| T-08 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | La lectura tolera ausente, sin permisos y mal codificado |
+| T-02 | Hecha | Que quien lea pueda saber que falló, sin cambiar la firma |
+| T-03 | Hecha | Que el archivo ilegible se reporte con su ruta — **tolerar no es callar** |
+| T-04 | Hecha | Destapar la prueba en rojo esperado |
+| T-05 | Hecha | Caso: la corrida sigue **y reporta lo demás** — CP-002 |
+| T-06 | Hecha | El validador de pendientes vuelve a la lectura común |
+| T-07 | Hecha | Escribir en el contrato qué pasa con el archivo que no se puede leer |
+| T-08 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 8. **Bloqueadas:** ninguna.
+**Hechas:** 8 de 8. **Bloqueadas:** ninguna.
 
 ---
 

@@ -35,16 +35,13 @@ _NUMERADO = re.compile(r"^(\d+)-(.+)\.md$")
 def _leer(ruta):
     """El texto del archivo, o "" si no está o no se puede leer.
 
-    No se usa `comun.leer` a propósito: hoy revienta con el archivo ausente o
-    mal codificado, y esta comprobación tiene que poder correr sobre una
-    carpeta de pendientes que todavía no tiene índice. Es el defecto `D-01` de
-    la fase `A-EP-004-HU-003`, que se arregla en su propia fase `B`.
+    **Desde el 2026-08-22 es `comun.leer`**, que es lo que esta función quería
+    desde el principio: hasta entonces la lectura común reventaba con el
+    archivo ausente o mal codificado, y esta comprobación tiene que poder
+    correr sobre una carpeta de pendientes que todavía no tiene índice. Era el
+    defecto `D-01` de la fase `A-EP-004-HU-003`, arreglado en su fase `B`.
     """
-    try:
-        with open(ruta, encoding="utf-8", errors="replace") as f:
-            return f.read()
-    except OSError:
-        return ""
+    return comun.leer(ruta)
 
 
 def _archivos(carpeta):

@@ -133,10 +133,26 @@ Sobre `linea`: cuando vale **0** significa que el problema es del archivo entero
 **`leer(ruta)`**
 
 - **Recibe:** una ruta de archivo.
-- **Hace:** lo abre como UTF-8.
-- **Retorna:** el contenido completo como texto.
+- **Hace:** lo abre como UTF-8. **Nunca revienta**, y lo que no pudo leer bien queda anotado.
+- **Retorna:** el contenido como texto.
 
-Si el archivo no existe, la lectura falla y el error sube al que llamó. Los archivos que necesitan tolerar eso envuelven la llamada por su cuenta.
+Tres salidas, y ninguna detiene la corrida:
+
+| Qué pasa con el archivo | Qué retorna | Qué queda anotado |
+|---|---|---|
+| Se lee bien | su contenido | nada, y se borra la anotación previa si la tenía |
+| No está, o no se puede abrir | `""` | la ruta y el motivo del sistema |
+| No es UTF-8 | lo que se pudo leer, con lo ilegible reemplazado | la ruta, el byte que falló y el aviso de que lo que se diga de ese archivo puede estar incompleto |
+
+**Por qué anotar y no reventar.** Hasta el 2026-08-22 un `.md` mal codificado tumbaba la corrida entera con un volcado de Python, y se llevaba por delante **todos los hallazgos ya encontrados**. Y la salida contraria —leer reemplazando y callar— es peor: convierte un archivo roto en uno que parece sano. Se hacen las dos: la corrida sigue y el archivo se dice.
+
+**`ilegibles()`**
+
+- **Recibe:** nada.
+- **Hace:** recoge lo que `leer` no pudo leer bien en esta corrida.
+- **Retorna:** un hallazgo por archivo, siempre **AVISO**: que un archivo no se pueda leer no dice que el proyecto incumpla nada, dice que de ese archivo no se puede opinar.
+
+`reportar` los agrega solo, así que ningún validador tiene que acordarse de llamarla.
 
 **`lineas_utiles(texto)`**
 

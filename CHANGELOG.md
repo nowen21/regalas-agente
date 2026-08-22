@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.5.0 — 2026-08-22
+
+**MENOR** (las comprobaciones dejan de caerse ante un archivo que no pueden leer; nadie tiene que hacer nada).
+
+**Un archivo con la codificación rota ya no tumba la revisión entera.** Hasta hoy, un documento guardado por un editor viejo o venido de otro programa hacía que la comprobación terminara con un volcado técnico, **perdiendo todos los problemas que ya había encontrado**. Ahora se lee lo que se pueda, la revisión sigue con los demás archivos, y el que no se pudo leer bien aparece en el reporte con su ruta y con el aviso de que lo que se diga de él puede estar incompleto.
+
+**Por qué no basta con leer y callar:** eso convertiría un archivo roto en uno que parece sano. Se hacen las dos cosas, seguir y decirlo.
+
+**El detalle.** Fase [`B-EP-004-HU-003`](documentacion/epicas/EP-004-comprobacion-automatica/HU-003-formato-del-hallazgo/B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). `comun.leer` gana sus tres salidas y el registro de lo ilegible, que `reportar` agrega solo; `pendientes.py` recupera la lectura común que había tenido que escribirse aparte; el contrato de `docs/comun.md` lo dice. La prueba que lo denunciaba llevaba días marcada como fallo esperado y hoy pasa destapada. De paso quedaron a la vista ocho pruebas que estaban en rojo desde el 2026-08-21 citando moldes que se habían movido, y se corrigieron.
+
 ## 31.4.0 — 2026-08-22
 
 **MENOR** (una forma nueva de buscar en el histórico; nadie tiene que hacer nada).

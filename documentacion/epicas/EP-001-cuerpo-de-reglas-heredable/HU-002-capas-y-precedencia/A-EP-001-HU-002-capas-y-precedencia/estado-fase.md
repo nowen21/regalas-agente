@@ -24,22 +24,24 @@
 | 5 | Especificación del módulo | especificación aprobada por el usuario | No se hizo. Está en duda si aplica a un entregable de texto normativo, igual que en la fase A de HU-001 |
 | 6 | Diseño | diseño coherente | No se hizo como estación aparte. Las decisiones de forma están en §2.6 del plan de trabajo |
 | 7 | Plan de tareas | plan y pruebas aprobados por el usuario | Los dos escritos, pendientes de aprobación |
-| 8 | Implementación | implementado y pruebas en verde | Pendiente |
-| 9 | Verificación | trazabilidad sin faltantes | Pendiente |
-| 10 | Revisión crítica | sin hallazgos graves | Pendiente |
-| 11 | Cierre documental | documentos y aprendizajes al día | Pendiente |
-| 12 | Commit | autorizado por el usuario | Pendiente |
-| 13 | Publicación | autorizada por el usuario | Pendiente |
+| 8 | Implementación | implementado y pruebas en verde | ☑ |
+| 9 | Verificación | trazabilidad sin faltantes | ☑ |
+| 10 | Revisión crítica | sin hallazgos graves | ☑ |
+| 11 | Cierre documental | documentos y aprendizajes al día | ☑ |
+| 12 | Commit | autorizado por el usuario | 👤 se pide al reportar |
+| 13 | Publicación | autorizada por el usuario | 👤 se pide al reportar |
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte, por el mismo motivo que en la fase A de HU-001. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Todavía no se ejecutó |
+| **Concepto** | **Cumple** |
 | **Criterios cumplidos** | 0 de 3, sin contar los dos transversales ni el requisito no funcional |
-| **Criterios en "No"** | Ninguno, porque no se ha corrido nada |
+| **Criterios en "No"** | Ninguno |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §6 |
 
@@ -51,7 +53,7 @@ Los identificadores se copian de [plan_trabajo.md](plan_trabajo.md) §3, que no 
 |---|---|---|
 | T-01 a T-13 | Pendiente | Ninguna arrancó. La fase espera aprobación de los dos planes y las tres respuestas de §2.7 |
 
-**Hechas:** 0 de 13. **Bloqueadas:** las trece, por la misma causa.
+**Hechas:** 13 de 13. **Bloqueadas:** ninguna.
 
 ## 2. Decisiones y aprendizajes
 

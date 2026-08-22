@@ -68,9 +68,61 @@ def relativo(ruta):
     return rel
 
 
+# `EP-004·HU-003` · Los archivos que no se pudieron leer bien en esta corrida.
+#
+# **Por qué un registro y no una excepción.** Hasta el 2026-08-22 `leer` abría
+# sin red: un `.md` mal codificado tumbaba la corrida entera con un volcado de
+# Python, y se llevaba por delante **todos los hallazgos ya encontrados**. Y la
+# salida contraria —leer reemplazando lo que no entiende y callar— es peor:
+# convierte un archivo roto en uno que parece sano.
+#
+# Así que se hacen las dos cosas: la corrida **sigue**, y el archivo queda
+# anotado acá para que el que reporta lo diga con su ruta.
+ILEGIBLES = {}
+
+
 def leer(ruta):
-    with open(ruta, encoding="utf-8") as f:
-        return f.read()
+    """El texto del archivo. Nunca revienta: lo que falla queda anotado.
+
+    - **No está o no se puede abrir** → devuelve `""` y lo anota.
+    - **No es UTF-8** → devuelve lo que se pudo leer, con los caracteres malos
+      reemplazados, y lo anota. Devolver vacío escondería el resto del archivo,
+      que sí sirve.
+    - **Se lee bien** → devuelve el texto, y si estaba anotado de antes se
+      borra la anotación: el archivo se arregló.
+
+    Quién lo cuenta: `ilegibles()`, que es lo que `validar.py` reporta.
+    """
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            texto = f.read()
+    except UnicodeDecodeError as e:
+        ILEGIBLES[os.path.abspath(ruta)] = (
+            "no es UTF-8 (byte %s en la posición %d) — se leyó reemplazando lo "
+            "que no se entiende, así que lo que se diga de este archivo puede "
+            "estar incompleto" % (
+                getattr(e, "object", b"")[getattr(e, "start", 0):
+                                          getattr(e, "start", 0) + 1] or b"?",
+                getattr(e, "start", 0)))
+        with open(ruta, encoding="utf-8", errors="replace") as f:
+            return f.read()
+    except OSError as e:
+        ILEGIBLES[os.path.abspath(ruta)] = "no se pudo abrir: %s" % (
+            getattr(e, "strerror", None) or e)
+        return ""
+    ILEGIBLES.pop(os.path.abspath(ruta), None)
+    return texto
+
+
+def ilegibles():
+    """`[Hallazgo]` por cada archivo que esta corrida no pudo leer bien.
+
+    **Aviso, no falla.** Un archivo ilegible no dice que el proyecto incumpla
+    nada: dice que de ese archivo no se puede opinar. Detener la corrida por él
+    es justamente lo que esta función vino a evitar.
+    """
+    return [Hallazgo(AVISO, ruta, 0, motivo)
+            for ruta, motivo in sorted(ILEGIBLES.items())]
 
 
 def lineas_utiles(texto):
@@ -223,7 +275,14 @@ def recorrer_md(raiz):
 
 
 def reportar(hallazgos, titulo=None):
-    """Imprime los hallazgos y devuelve el código de salida (1 si hay FALLA)."""
+    """Imprime los hallazgos y devuelve el código de salida (1 si hay FALLA).
+
+    **Agrega lo que la corrida no pudo leer** (`EP-004·HU-003`). Un archivo
+    ilegible ya no tumba nada, pero callarlo sería peor que reventar: quien
+    lee el reporte creería que se miró todo. Se dice, y como aviso.
+    """
+    hallazgos = list(hallazgos) + [h for h in ilegibles()
+                                   if h not in hallazgos]
     fallas = [h for h in hallazgos if h.severidad == FALLA]
     avisos = [h for h in hallazgos if h.severidad == AVISO]
 
