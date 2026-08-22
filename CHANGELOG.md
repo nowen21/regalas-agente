@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.10.0 — 2026-08-22
+
+**MENOR** (la revisión completa termina diciendo por cuál regla se incumple más; nadie tiene que hacer nada).
+
+**Ahora se sabe qué regla da más problemas, con un número.** Una regla que produce cien hallazgos por semana casi nunca significa un equipo descuidado: significa una regla mal escrita, o una que hace falta automatizar. Sin ese dato la conversación era opinión contra opinión. La revisión completa termina agrupando lo encontrado por regla, y guarda una línea por corrida para poder comparar dos.
+
+**Del registro se guarda el número, nunca lo revisado.** En un mensaje de incumplimiento viaja el contenido del archivo, y ahí puede ir una clave: un archivo de métricas que copie lo revisado es una fuga con nombre de estadística. Se guarda el identificador de la regla, cuántas veces, la fecha y la versión. Nada más, y fuera del control de versiones porque es generado.
+
+**El primer dato ya dice algo:** la regla de no dejar marcas de generación automática produce **dos de cada tres hallazgos** del repositorio, porque se mide sobre todo el árbol mientras la regla exige limpieza en lo que se **entrega**. Queda anotado para quien decida si se acota la medición o se amplía la regla.
+
+**El detalle.** Fase [`A-EP-004-HU-009`](documentacion/epicas/EP-004-comprobacion-automatica/HU-009-conteo-por-regla/A-EP-004-HU-009-el-conteo-de-hallazgos-por-regla/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con su decisión 25. La regla de cada hallazgo sale del mensaje que los veinticuatro validadores ya escriben, así que no hubo que tocarlos: se acumulan donde todos pasan. Once casos de prueba nuevos.
+
 ## 31.9.0 — 2026-08-22
 
 **MENOR** (el documento de cierre de una fase gana un campo; lo ya cerrado no se toca).

@@ -11,6 +11,7 @@ Código de salida: 0 si no hay FALLA, 1 si hay al menos una.
 Los AVISO no rompen la ejecución: señalan lo que un humano debe mirar.
 """
 import argparse
+import datetime
 import os
 import sys
 
@@ -59,6 +60,8 @@ import trazabilidad     # noqa: E402
 import version          # noqa: E402
 import versionado       # noqa: E402
 import traza            # noqa: E402
+import comun                                                      # noqa: E402
+import conteo                                                     # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
@@ -162,6 +165,17 @@ def cmd_todo(a, parser=None, nombres=()):
         print("  %s %s" % (nombre, motivo))
     if not con_falla:
         print("Sin fallas. Los avisos de cada comprobación salen arriba.")
+
+    # `EP-004·HU-009` · El conteo por regla, que es lo que dice **qué regla
+    # cambiar**. Se anota una línea por corrida, fuera del control de
+    # versiones, con el identificador y el número: nunca el texto del hallazgo.
+    todos = list(comun.CORRIDA)
+    if todos:
+        conteo.anotar(todos, a.raiz,
+                      cuando=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        print()
+        for linea in conteo.lineas_del_conteo(todos, a.raiz):
+            print(linea)
     return 1 if peor else 0
 
 

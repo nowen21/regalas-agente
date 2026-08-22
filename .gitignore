@@ -19,6 +19,11 @@ __pycache__/
 # Registro local de proyectos que usan el agente (data de la maquina, no del estandar)
 plantillas/proyectos.md
 
+# `EP-004·HU-009` · El recuento de hallazgos por regla: generado, una línea
+# por corrida. `09·G3` deja fuera lo generado, y su contenido cambia en cada
+# ejecución: versionarlo llenaría el historial de ruido.
+metricas/conteo-por-regla.jsonl
+
 # Guiones de apoyo del agente durante una sesión (se borran al terminar; 04·S9: nada se escribe fuera del proyecto)
 .tmp-agente/
 

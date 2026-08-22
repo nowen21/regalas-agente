@@ -33,19 +33,63 @@ _ENLACE = re.compile(r"\[([^\]\n]*)\]\(([^)\s]+)")
 _CODIGO_EN_LINEA = re.compile(r"(`+)(?:(?!\1).)*?\1")
 
 
+# `EP-004·HU-009` · La regla a la que pertenece un hallazgo.
+#
+# **Sale del mensaje, no de una lista.** Los 24 validadores ya citan su regla al
+# explicar el incumplimiento —«(20·M5 · fila 10)», «S4/N6», «02·F24»—, así que
+# agruparlos no exige tocarlos uno por uno: exige leer lo que ya escriben. Una
+# lista aparte de qué validador comprueba qué regla sería una segunda verdad,
+# y el día que difieran nadie sabría cuál manda.
+_REGLA_EN_MENSAJE = re.compile(r"\b(?:(\d{2})·)?([A-Z]{1,4}\d+(?:\.\d+)?)\b")
+
+
 class Hallazgo:
     """Un incumplimiento o aviso, anclado a archivo y línea."""
 
-    def __init__(self, severidad, archivo, linea, mensaje):
+    def __init__(self, severidad, archivo, linea, mensaje, regla=None):
         self.severidad = severidad
         self.archivo = archivo
         self.linea = linea          # 0 = el archivo completo, sin línea concreta
         self.mensaje = mensaje
+        self._regla = regla
+
+    @property
+    def regla(self):
+        """`«NN·XN»` si se puede saber, o `""`. Nunca inventa.
+
+        Si quien creó el hallazgo la declaró, esa manda. Si no, se busca en el
+        mensaje: la primera cita con capítulo (`20·M5`) gana sobre la suelta
+        (`M5`), porque el capítulo hace único al identificador.
+        """
+        if self._regla:
+            return self._regla
+        con_capitulo, suelta = "", ""
+        for capitulo, id_ in _REGLA_EN_MENSAJE.findall(self.mensaje or ""):
+            if capitulo and not con_capitulo:
+                con_capitulo = f"{capitulo}·{id_}"
+            elif not suelta:
+                suelta = id_
+        return con_capitulo or suelta
 
     def __str__(self):
         rel = relativo(self.archivo)
         donde = f"{rel}:{self.linea}" if self.linea else rel
         return f"[{self.severidad}] {donde} — {self.mensaje}"
+
+
+def conteo_por_regla(hallazgos):
+    """`{regla: cuántos}`, para saber por cuál se incumple más.
+
+    **Lo que no se sabe se dice, no se reparte.** Los hallazgos cuyo mensaje no
+    nombra ninguna regla se cuentan aparte, bajo `"(sin regla)"`: sumarlos a
+    cualquier otra falsearía el número que se usa para decidir qué regla
+    cambiar, y ese número es todo el punto de contarlos.
+    """
+    cuenta = {}
+    for h in hallazgos:
+        clave = h.regla or "(sin regla)"
+        cuenta[clave] = cuenta.get(clave, 0) + 1
+    return cuenta
 
 
 def preparar_salida():
@@ -274,6 +318,14 @@ def recorrer_md(raiz):
                 yield os.path.join(carpeta, nombre)
 
 
+# `EP-004·HU-009` · Todo lo reportado en esta corrida, para poder contarlo por
+# regla al terminar. Se acumula acá y no en cada validador porque **todos pasan
+# por `reportar`**: pedirle a los veinticuatro que además devuelvan sus
+# hallazgos sería tocar veinticuatro archivos para saber algo que ya pasa por
+# un solo punto.
+CORRIDA = []
+
+
 def reportar(hallazgos, titulo=None):
     """Imprime los hallazgos y devuelve el código de salida (1 si hay FALLA).
 
@@ -283,6 +335,7 @@ def reportar(hallazgos, titulo=None):
     """
     hallazgos = list(hallazgos) + [h for h in ilegibles()
                                    if h not in hallazgos]
+    CORRIDA.extend(hallazgos)
     fallas = [h for h in hallazgos if h.severidad == FALLA]
     avisos = [h for h in hallazgos if h.severidad == AVISO]
 
