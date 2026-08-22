@@ -11,6 +11,14 @@
 | `00·ID8` | La enumeración «documentación, manual, informe»: lo que cuenta es que una persona lo lea como trabajo terminado. |
 | `00·ID9` | «Extenderse no es explicar mejor: lo largo no se lee, y lo que no se lee no comunicó nada.» Es el porqué de toda la regla. |
 
+## Capítulo 01
+
+| Regla | Lo que se recortó |
+|---|---|
+| `01·C5` | Que una explicación larga «todavía no se entendió» quedó dicho más corto; el porqué de fondo, que lo largo no se lee, ya lo dice [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md). |
+| `01·C21` | «Nunca la supongas»: suponer el dato que falta es justo lo que la regla prohíbe al pedir que se pregunte. |
+| `01·C22` | El desglose de qué cuenta como reintentar; la regla conserva las dos salidas, corregir la llamada o preguntar qué cambiarle. |
+
 ## Capítulos 18 y 19
 
 | Regla | Lo que se recortó |

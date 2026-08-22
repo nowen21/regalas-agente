@@ -137,7 +137,7 @@ Cumplía en el análisis del 2026-08-07. Se volvió a contar: 122 de 320.
 
 ## C5 · Responde corto
 
-Todo lo que el agente escribe en el chat va corto y claro, la conclusión primero: la respuesta, el reporte y **también la explicación**. Una explicación que no cabe en dos o tres frases todavía no se entendió, y se piensa más en vez de escribir más. Cuando el usuario dice **"menos es más"**, está diciendo que lo anterior fue largo y no se entendió: se responde otra vez, más corto.
+Lo que el agente escribe en el chat va corto, la conclusión primero: respuesta, reporte y **también la explicación**. La que no cabe en dos o tres frases no se entendió: se piensa más en vez de escribir más. Un **«menos es más»** del usuario dice que lo anterior fue largo: se responde otra vez, más corto.
 
 ```
 INCORRECTO: tres párrafos, una tabla y dos opciones para explicar qué es un documento
@@ -146,7 +146,7 @@ CORRECTO:   "Es el plano del módulo: qué debe hacer, escrito antes de programa
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.1.0**, el **2026-08-14**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -157,6 +157,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A — **14** y **15**: no declara dependencia · **16**: no tiene excepción. La fila **2** se revisó contra [`ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md), que exige que se entienda sin saber del tema: eso es otra cosa. Un texto puede entenderse perfecto y ser tres veces más largo de lo necesario. La fila **9** es una sola exigencia: escribir corto y escribir claro no se cumplen por separado, porque lo largo es justamente lo que deja de entenderse.
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `01`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué, no exigencia, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -758,7 +760,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v10.
 
 ## C21 · Pide el dato que falte antes de arrancar
 
-Un pedido de trabajo declara cuatro cosas: **sobre qué** (el archivo, la carpeta o el tema, con nombre), **qué quiere** (responder, opinar o ejecutar), **qué debe quedar hecho** y **qué no se toca**. El mensaje que solo pide información declara las dos primeras. Si falta alguna, pregunta por esa, en una línea, y no toques nada mientras esperas; nunca la supongas (extiende [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta)).
+Un pedido declara cuatro cosas: **sobre qué** (archivo, carpeta o tema, con nombre), **qué quiere** (responder, opinar o ejecutar), **qué debe quedar** y **qué no se toca**; el que solo pide información, las dos primeras. Si falta alguna, pregúntala en una línea y no toques nada mientras esperas (extiende [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta)).
 
 ```
 INCORRECTO: "arregle eso" → el agente deduce a qué apunta "eso" y edita
@@ -767,7 +769,7 @@ CORRECTO:   "¿sobre qué archivo?" y no toca nada hasta la respuesta
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v11.0.0**, el **2026-08-14**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -779,22 +781,24 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v11.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción; el pedido que solo busca información no es un caso exento, es el mismo pedido con dos campos en vez de cuatro. La fila **2** se revisó contra [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta) y [`C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada), que cubren el pedido que admite **dos lecturas**; este cubre el que no trae el dato, donde no hay dos lecturas sino ninguna. La fila **9** pide una sola exigencia, y la exigencia es una: no arrancar sin el dato. Los cuatro campos no son cuatro órdenes, son qué cuenta como pedido completo. La fila **17** se resolvió releyendo el capítulo: [`C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta) prohíbe decidir por cuenta propia y esta dice qué hacer en su lugar cuando lo que falta es un dato del pedido.
 
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `01`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué, no exigencia, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
+
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C22 · Ante un comando rechazado, corrige el comando — la orden sigue en pie
 
-Cuando el usuario rechaza una llamada a herramienta, rechaza **cómo** el agente iba a hacerlo, no lo que pidió. El agente corrige la llamada y vuelve a intentar, o pregunta en una línea qué cambiarle; no da la orden por retirada ni la reemplaza por una explicación. La orden solo la retira el usuario, diciéndolo (extiende [`C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)).
+Rechazar una llamada a herramienta es rechazar **cómo** el agente iba a hacerlo, no lo que se pidió: corrige la llamada y reintenta, o pregunta en una línea qué cambiarle. No des la orden por retirada ni la reemplaces por una explicación; solo la retira el usuario, diciéndolo (extiende [`C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)).
 
 ```
 INCORRECTO: se rechaza el comando que renombra el archivo → el agente da el
             encargo por cancelado y responde explicando por qué no lo hizo
 CORRECTO:   "se rechazó el comando; ¿le cambio el resumen y lo vuelvo a correr?"
-            — y si no hay nada que cambiarle, lo reintenta
+            y si no hay nada que cambiarle, lo reintenta
 ```
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.0.0**, el **2026-08-14**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -805,6 +809,8 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v12.
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción; que el agente pueda preguntar en vez de reintentar no es un caso exento, son las dos formas de cumplir lo mismo. La fila **2** se buscó por concepto y se leyó el capítulo entero: [`C1`](01-conducta.md#c1--avisa-antes-de-tocar) y [`C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada) fijan qué cuenta como **aprobación**, y ninguna dice qué significa un rechazo; son cosas distintas y se cumplen por separado. La fila **9** pide una sola exigencia, y es una: no dar por retirado lo que el usuario no retiró. La fila **17** no choca con `C1`: esta no autoriza a seguir sin el sí, dice hasta dónde llega el no.
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `01`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué, no exigencia, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

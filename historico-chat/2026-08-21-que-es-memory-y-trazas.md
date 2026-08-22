@@ -1350,3 +1350,19 @@ Batería del pre‑push en verde (0 fallas). Lo que los avisos dejan a la vista 
 
 ### 69 · Usuario — 2026-08-22 06:48:11
 > si
+
+**Agente** — 2026-08-22 06:51:57
+<!-- agente: dc9dacd5-1901-4112-b3cf-2b99e18a020b -->
+
+El núcleo ya está partido (`N7`, `N8`, `N9` existen desde el 18); lo que queda del `00` son los cuatro `ID` que pasan de 320 y el glosario, que todavía dice «seis reglas». Recorto y resello:
+
+Capítulo `00` listo, verde en todo (metareglas 0 fallas, 37 → 33 avisos; estandar OK; marcas OK):
+
+- `ID5`, `ID7`, `ID8`, `ID9` caben en el molde y reselladas con fecha de hoy; sus porqués en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md) (la nota de 18/19 renombrada, ahora recoge todos los recortes, enlaces corregidos).
+- Glosario: el núcleo tiene nueve reglas, no seis. Las tres blindadas ya estaban partidas desde el 18 (`N7`, `N8`, `N9`); no había nada que partir.
+- Versión **30.8.1** (PARCHE) con su entrada.
+
+¿Autoriza commit y push? Después sigo con el `01` (`C5`, `C21`, `C22` pasados del molde y las particiones de conducta que lista el 19).
+
+### 70 · Usuario — 2026-08-22 06:53:50
+> si

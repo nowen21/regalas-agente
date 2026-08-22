@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.8.2 — 2026-08-22
+
+**PARCHE** (tres reglas del capítulo `01` dicen lo mismo en menos palabras; nada cambia en lo que se exige).
+
+**Las reglas de cómo responde el agente ahora caben en su propio molde.** `C5` («responde corto»), `C21` y `C22` pasaban de las cuatro líneas que el estándar le da a una regla, con un sello que decía que cabían. Se recortaron sin perder nada de lo que exigen; lo que salió eran explicaciones, y queda en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md).
+
+**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), capítulo `01`. Las particiones que ese pendiente pedía acá (`C10`, `C14`, `C17`) ya se habían hecho el 2026-08-18, cuando nacieron `C24`, `C25` y `C26`: del `01` solo quedaba esta deuda de la fila 10.
+
 ## 30.8.1 — 2026-08-22
 
 **PARCHE** (cuatro reglas del capítulo `00` dicen lo mismo en menos palabras; nada cambia en lo que se exige).
