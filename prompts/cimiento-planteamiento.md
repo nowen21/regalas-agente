@@ -1,6 +1,6 @@
 # Planteamiento — Cimiento, el estándar del agente   ·   `[CAPA 3]`
 
-**Encuadre para el agente:** este documento es el planteamiento de entrada. Dice **qué se necesita y qué no se negocia**; el cómo y el cuándo los pone el estándar. El agente sigue el flujo: análisis ([`02·F1`](../base/02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md)) → alcance (`proponer-alcance`) → épica/HU ([`13·DOC15`](../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)) → especificación ([`02·F2`](../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)) → plan aprobado ([`02·F4`](../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) → implementación. **No generar código hasta que el plan esté aprobado.**
+**Para el agente:** este documento dice **qué** se necesita y **qué no se negocia**. El **cómo** y el **cuándo** los pone el estándar: se recorre la cadena de [`02·F0`](../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) sin saltar eslabones. Lo que se responda sobre este documento se escribe bajo [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md): la menor extensión con la que se entienda.
 
 ---
 

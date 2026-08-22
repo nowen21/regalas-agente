@@ -113,4 +113,4 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-21-que-es-memory-y-trazas.md](2026-08-21-que-es-memory-y-trazas.md) — Preguntas sobre qué guardan historico-chat/memory/ y historico-chat/trazas/. · [historico-chat/resumenes/2026-08-21/que-es-memory-y-trazas.md](resumenes/2026-08-21/que-es-memory-y-trazas.md)
 - [2026-08-22-sesion.md](2026-08-22-sesion.md) — sesión del 2026-08-22.
 - [2026-08-22-sesion-2.md](2026-08-22-sesion-2.md) — sesión del 2026-08-22.
-- [2026-08-22-sesion-3.md](2026-08-22-sesion-3.md) — sesión del 2026-08-22.
+- [2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md](2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md) — el encuadre del planteamiento duplicaba la cadena de 02·F0 con una versión desactualizada; se reemplazó por el enlace y se le sumó 00·ID9. · [historico-chat/resumenes/2026-08-22/el-encuadre-enlaza-la-cadena-no-la-copia.md](resumenes/2026-08-22/el-encuadre-enlaza-la-cadena-no-la-copia.md)

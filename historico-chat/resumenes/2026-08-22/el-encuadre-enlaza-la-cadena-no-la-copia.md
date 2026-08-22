@@ -1,6 +1,6 @@
 # 2026-08-22 · lo que quedó
 
-Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-3.md](../../2026-08-22-sesion-3.md). Cómo se llena está en [historico-chat/README.md](../../README.md). La conversación está allá; acá queda lo que la sesión dejó.
+Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md](../../2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md). Cómo se llena está en [historico-chat/README.md](../../README.md). La conversación está allá; acá queda lo que la sesión dejó.
 
 **Viene de:** el H-1 de [sesion-2](sesion-2.md), que reescribió el encuadre de [`prompts/cimiento-planteamiento.md`](../../../prompts/cimiento-planteamiento.md) con el texto del molde.
 
@@ -29,9 +29,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☐ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ (no queda ninguno abierto) |
+| Toda historia disparada está escrita en su épica | ☑ (no disparó ninguna) |
 | Lo que se hizo está aprobado y guardado | ☐ |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
@@ -41,3 +41,5 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 ---
 
 _(Si la sesión no dejó nada, se escribe "nada": es un dato, no un olvido.)_
+
+<!-- aviso: falta decir si la sesión se puede cerrar -->

@@ -1,7 +1,7 @@
 <!-- sesion: bef7f802-f5de-415a-98d5-53d98363648e -->
 <!-- nombre: preguntado -->
 
-# 2026-08-22 — Sesión
+# 2026-08-22 — El encuadre enlaza la cadena no la copia
 
 ## Conversación
 
@@ -51,3 +51,6 @@ Dos cosas:
 **Nombre de la sesión** — esta se está guardando como `2026-08-22-sesion-3.md`, que no dice de qué trata. Propongo `2026-08-22-el-encuadre-enlaza-la-cadena-no-la-copia.md` — el encuadre del planteamiento duplicaba la cadena de `02·F0` con una versión desactualizada; se reemplazó por el enlace. ¿Va? Si sí, lo corro y te paso la línea `/rename`.
 
 **Commit** — no toqué git. ¿Commiteo estos cambios o los dejas para revisar?
+
+### 3 · Usuario — 2026-08-22 14:46:44
+> si
