@@ -203,7 +203,7 @@ class Plantillas(unittest.TestCase):
     def test_deduce_la_plantilla_por_el_id(self):
         doc = self._escribir("cualquiera.md", "# HU-014 — Registrar cliente\n")
         ruta = plantillas.deducir_plantilla(doc, "# HU-014 — Registrar cliente\n")
-        self.assertTrue(ruta.endswith(os.path.join("plantillas", "HU.md")))
+        self.assertTrue(ruta.endswith(os.path.join("plantillas", "ciclo-vida-proyectos", "04-HU.md")))
 
     def test_sin_id_reconocible_no_adivina(self):
         doc = self._escribir("cualquiera.md", "# Documento suelto\n")

@@ -30,7 +30,7 @@ Escribir el planteamiento de este repositorio es **decidir qué es este proyecto
 
 ## Qué falta
 
-Escribirlo en `prompts/<slug>-planteamiento.md`, desde [`plantillas/planteamiento.md`](../plantillas/planteamiento.md). Sale de una conversación, no de leer el repositorio.
+Escribirlo en `prompts/<slug>-planteamiento.md`, desde [`plantillas/ciclo-vida-proyectos/01-planteamiento.md`](../plantillas/ciclo-vida-proyectos/01-planteamiento.md). Sale de una conversación, no de leer el repositorio.
 
 **Ojo con el atajo:** reconstruirlo leyendo lo que el estándar ya hace produciría un planteamiento que describe la solución en vez del problema, y eso es peor que no tenerlo — apagaría el aviso sin arreglar nada.
 

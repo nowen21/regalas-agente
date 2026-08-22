@@ -6,7 +6,7 @@ La entrada de `CHANGELOG.md` abre con **qué cambió y por qué**, en dos frases
 El detalle va debajo, con sus enlaces, para quien los necesite.
 
 ```
-INCORRECTO: **MENOR** — la fila 12 del checklist pide ejemplo en `plantillas/planes/resultados.md`
+INCORRECTO: **MENOR** — la fila 12 del checklist pide ejemplo en `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`
 CORRECTO:   Al anotar que una prueba pasó ahora hay que decir con qué se probó.
             Antes se anotaba solo «aprobado», y así nadie podía repetirla.
 ```

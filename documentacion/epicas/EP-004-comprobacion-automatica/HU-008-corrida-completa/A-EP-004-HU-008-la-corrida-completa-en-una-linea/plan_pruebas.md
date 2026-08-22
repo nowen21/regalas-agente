@@ -12,7 +12,7 @@
 | **Aprobado por** | Sin aprobar — se presenta junto con el [`plan_trabajo.md`](plan_trabajo.md) ([`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) |
 | **Estado** | Borrador |
 
-> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
+> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md)).
 
 **Esta fase construye.** Los CA-01 y CA-03 no existen hoy: no hay subcomando que corra todo ni resumen de la corrida entera. El CA-02 es lo único que ya está, y su caso existe para comprobar que **no se rompa**.
 

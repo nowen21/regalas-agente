@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-del-brief-a-los
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** las plantillas de [épica](../../../plantillas/epica.md) e [historia](../../../plantillas/HU.md).
+- **Dónde queda:** las plantillas de [épica](../../../plantillas/ciclo-vida-proyectos/03-epica.md) e [historia](../../../plantillas/ciclo-vida-proyectos/04-HU.md).
 - **Nace en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Cerrado en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Con qué se retoma:** —.
@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-del-brief-a-los
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/HU.md](../../../plantillas/HU.md) y [plantillas/fase.md](../../../plantillas/fase.md), versión 9.0.0.
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/04-HU.md](../../../plantillas/ciclo-vida-proyectos/04-HU.md) y [plantillas/ciclo-vida-proyectos/05-fase.md](../../../plantillas/ciclo-vida-proyectos/05-fase.md), versión 9.0.0.
 - **Nace en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Cerrado en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Con qué se retoma:** —.
@@ -112,7 +112,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-13-del-brief-a-los
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md), y el resumen de [la plantilla del resultado de pruebas](../2026-08-15/la-plantilla-del-resultado-de-pruebas.md).
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md), y el resumen de [la plantilla del resultado de pruebas](../2026-08-15/la-plantilla-del-resultado-de-pruebas.md).
 - **Nace en:** 2026-08-13 · del brief a los planes de la fase A.
 - **Cerrado en:** 2026-08-15 · la plantilla del resultado de pruebas.
 - **Con qué se retoma:** —.

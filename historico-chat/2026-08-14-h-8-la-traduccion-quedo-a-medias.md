@@ -150,7 +150,7 @@ Es un defecto mío, y de CA-03. La entrada dice **qué es el documento**, pero n
 
 Lo que verifiqué:
 
-- `brief` se usa en 9 archivos de [base/](base/README.md), [plantillas/](plantillas/planteamiento.md) y `skills/`.
+- `brief` se usa en 9 archivos de [base/](base/README.md), [plantillas/](plantillas/ciclo-vida-proyectos/01-planteamiento.md) y `skills/`.
 - El estándar ya usa **"encargo"**, pero no como sinónimo: en [HU-002](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/HU-002-modelos-del-encargo.md) el encargo son los tres juntos (brief, épica, historia), y el brief es solo el primero. Así que traducción usada, todavía no tiene.
 
 Lo que haría, y es una decisión tuya porque cambia qué se escribe en `base/`:
@@ -223,7 +223,7 @@ El planteamiento del problema **está adentro** del brief: son sus secciones 1 (
 - Restricciones técnicas y **no negociables** (§5, §7)
 - Requerimientos funcionales y casos borde (§6, §8)
 
-Su regla de oro lo dice así en [plantillas/planteamiento.md:10](plantillas/planteamiento.md#L10): *"El brief responde **qué** se necesita y **qué no se negocia**. El **cómo** y el **cuándo** los pone el estándar."*
+Su regla de oro lo dice así en [plantillas/ciclo-vida-proyectos/01-planteamiento.md:10](plantillas/ciclo-vida-proyectos/01-planteamiento.md#L10): *"El brief responde **qué** se necesita y **qué no se negocia**. El **cómo** y el **cuándo** los pone el estándar."*
 
 Un planteamiento del problema responde solo la primera mitad. El brief responde las dos: el problema **y** las condiciones bajo las que se acepta la solución.
 
@@ -237,9 +237,9 @@ Por eso "encargo" le queda mejor que "planteamiento": quien encarga dice qué ne
 
 Depende de qué sea ese "dentro", y hay dos lecturas.
 
-**Si es el encabezado del propio documento:** es el título, no una sección. La plantilla lo escribe así: `# Brief — «Nombre del módulo / épica»` ([plantillas/planteamiento.md:1](plantillas/planteamiento.md#L1)). Traducido: **Encargo — Cimiento**. No va repetido adentro.
+**Si es el encabezado del propio documento:** es el título, no una sección. La plantilla lo escribe así: `# Brief — «Nombre del módulo / épica»` ([plantillas/ciclo-vida-proyectos/01-planteamiento.md:1](plantillas/ciclo-vida-proyectos/01-planteamiento.md#L1)). Traducido: **Encargo — Cimiento**. No va repetido adentro.
 
-**Si es un bloque anidado que nombra una parte del trabajo:** en el estándar un brief no contiene otro brief. Hay uno por módulo o por épica ([plantillas/planteamiento.md:6](plantillas/planteamiento.md#L6)). Lo que sí vive dentro es §10 *Épicas derivadas*, que es donde el brief se parte hacia abajo. Si "Cimiento" es una de esas partes, no es un brief: es una **épica**, y se escribe con [plantillas/epica.md](plantillas/epica.md), apuntando de vuelta al brief padre.
+**Si es un bloque anidado que nombra una parte del trabajo:** en el estándar un brief no contiene otro brief. Hay uno por módulo o por épica ([plantillas/ciclo-vida-proyectos/01-planteamiento.md:6](plantillas/ciclo-vida-proyectos/01-planteamiento.md#L6)). Lo que sí vive dentro es §10 *Épicas derivadas*, que es donde el brief se parte hacia abajo. Si "Cimiento" es una de esas partes, no es un brief: es una **épica**, y se escribe con [plantillas/ciclo-vida-proyectos/03-epica.md](plantillas/ciclo-vida-proyectos/03-epica.md), apuntando de vuelta al brief padre.
 
 ¿Cuál de las dos es? Si me dice el archivo, lo miro y le digo qué es en concreto.
 
@@ -251,7 +251,7 @@ Depende de qué sea ese "dentro", y hay dos lecturas.
 
 Sí, el título.
 
-**Encargo — Cimiento**, siguiendo el formato de la plantilla: `# Brief — «Nombre del módulo / épica»` ([plantillas/planteamiento.md:1](plantillas/planteamiento.md#L1)).
+**Encargo — Cimiento**, siguiendo el formato de la plantilla: `# Brief — «Nombre del módulo / épica»` ([plantillas/ciclo-vida-proyectos/01-planteamiento.md:1](plantillas/ciclo-vida-proyectos/01-planteamiento.md#L1)).
 
 Va una sola vez, arriba del documento. Dentro no se repite.
 
@@ -308,7 +308,7 @@ No la hay: la plantilla solo tiene el título, y ese título nombra el **módulo
 
 Hecho. El proyecto ya tiene dónde llamarse, y se llama **Cimiento**.
 
-- **[plantillas/planteamiento.md](plantillas/planteamiento.md)** gana una sección 0 · Identificación: nombre del proyecto, qué cubre el encargo y fecha. Antes el nombre solo estaba en el título, y ese título nombra el módulo o la épica.
+- **[plantillas/ciclo-vida-proyectos/01-planteamiento.md](plantillas/ciclo-vida-proyectos/01-planteamiento.md)** gana una sección 0 · Identificación: nombre del proyecto, qué cubre el encargo y fecha. Antes el nombre solo estaba en el título, y ese título nombra el módulo o la épica.
 - **[planteamiento.md](planteamiento.md)** la estrena con `Cimiento`.
 - **Versión 15.4.0** (MENOR, aditivo) con su entrada en el [CHANGELOG.md](CHANGELOG.md).
 
@@ -509,7 +509,7 @@ Sí, y no es poco. Otra sesión commiteó (`439c47e`) una foto **anterior** a mi
 
 Es H-9 pasando otra vez. `VERSION` va en 16.0.0, así que lo mío debería renumerarse a **16.1.0**.
 
-**3. Mi entrada del registro de cambios está commiteada, pero el cambio que anuncia no.** En `HEAD`, `plantillas/planteamiento.md` no tiene la sección "Nombre del proyecto" y `planteamiento.md` no dice "Cimiento". El registro promete algo que el repositorio todavía no tiene.
+**3. Mi entrada del registro de cambios está commiteada, pero el cambio que anuncia no.** En `HEAD`, `plantillas/ciclo-vida-proyectos/01-planteamiento.md` no tiene la sección "Nombre del proyecto" y `planteamiento.md` no dice "Cimiento". El registro promete algo que el repositorio todavía no tiene.
 
 Y de antes sigue en pie: **CP-006** y **el commit**.
 
@@ -529,7 +529,7 @@ Lo 2 y lo 3 los arreglo en un movimiento —renumerar mi entrada a 16.1.0, subir
 | El `15.4.0` duplicado en el registro de cambios | **Sigue.** Dos entradas con el mismo número, ya en la historia |
 | Lo demás | Resuelto: el ciclo 2, los 72 términos y la sección del brief entraron al commit |
 
-Lo bueno: el desajuste 3 que le reporté se arregló solo con ese commit — `plantillas/planteamiento.md` y `planteamiento.md` ya están en el repositorio, así que el registro de cambios ya no promete algo que no existe.
+Lo bueno: el desajuste 3 que le reporté se arregló solo con ese commit — `plantillas/ciclo-vida-proyectos/01-planteamiento.md` y `planteamiento.md` ya están en el repositorio, así que el registro de cambios ya no promete algo que no existe.
 
 Lo que queda es lo mismo de hace tres respuestas:
 
@@ -804,7 +804,7 @@ De [`02·F0`](base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-
 
 > Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre `brief → épica → HU → especificación → plan → código`.
 
-De [plantillas/planteamiento.md](plantillas/planteamiento.md):
+De [plantillas/ciclo-vida-proyectos/01-planteamiento.md](plantillas/ciclo-vida-proyectos/01-planteamiento.md):
 
 > **Regla de oro.** El brief responde **qué se necesita y qué no se negocia**. El cómo y el cuándo los pone el estándar.
 
@@ -1019,7 +1019,7 @@ Sí. **Planteamiento** sí dice qué es: lo que se plantea antes de que haya sol
 
 Con eso la columna del nombre queda con algo que decir, y de paso el término deja de estar en inglés.
 
-Pero cambiarlo no es solo el glosario: `brief` aparece en 9 archivos entre [base/](base/README.md), `plantillas/` y `skills/`, más los nombres `plantillas/planteamiento.md` y `prompts/<slug>-planteamiento.md`. Renombrar el archivo rompe los enlaces que lo apuntan.
+Pero cambiarlo no es solo el glosario: `brief` aparece en 9 archivos entre [base/](base/README.md), `plantillas/` y `skills/`, más los nombres `plantillas/ciclo-vida-proyectos/01-planteamiento.md` y `prompts/<slug>-planteamiento.md`. Renombrar el archivo rompe los enlaces que lo apuntan.
 
 ¿Lo cambio, o por ahora lo dejo anotado en el inventario de lo que falta traducir?
 
@@ -1035,7 +1035,7 @@ Enlaces en cero. Ahora la palabra, en la zona normativa.
 
 Cambiado. Versión **18.0.0** (MAYOR: cambia el nombre de una plantilla y de una ruta).
 
-- `plantillas/brief.md` → [plantillas/planteamiento.md](plantillas/planteamiento.md)
+- `plantillas/brief.md` → [plantillas/ciclo-vida-proyectos/01-planteamiento.md](plantillas/ciclo-vida-proyectos/01-planteamiento.md)
 - `brief.md` de la raíz → [planteamiento.md](planteamiento.md)
 - `prompts/<slug>-brief.md` → `prompts/<slug>-planteamiento.md`
 - **30 ocurrencias** de la palabra en `base/`, `plantillas/`, `skills/`, `anatomia/` y el validador de plantillas. Cero quedan.

@@ -2,7 +2,7 @@
 
 ## DOC16 · Crea la Épica desde la plantilla central
 
-Toda épica se parte de [`plantillas/epica.md`](../../../plantillas/epica.md), leída del estándar cada vez, y se guarda versionada donde fija [`02·F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Sus criterios son de resultado, no de pantalla —el comportamiento vive en las HU—, y el enlace con cada HU se escribe en los dos lados. Toda HU pertenece a una épica, aunque la épica agrupe una sola (depende de [`02·F0`](../../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Toda épica se parte de [`plantillas/ciclo-vida-proyectos/03-epica.md`](../../../plantillas/ciclo-vida-proyectos/03-epica.md), leída del estándar cada vez, y se guarda versionada donde fija [`02·F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Sus criterios son de resultado, no de pantalla —el comportamiento vive en las HU—, y el enlace con cada HU se escribe en los dos lados. Toda HU pertenece a una épica, aunque la épica agrupe una sola (depende de [`02·F0`](../../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: la épica lista sus HU, pero ninguna HU declara a qué épica pertenece

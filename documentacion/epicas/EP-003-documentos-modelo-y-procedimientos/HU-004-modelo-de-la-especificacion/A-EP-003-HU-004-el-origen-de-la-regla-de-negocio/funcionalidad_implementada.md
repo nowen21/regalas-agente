@@ -27,7 +27,7 @@
 
 | Archivo | Qué |
 |---|---|
-| [`plantillas/plantilla-especificacion-modulo.md`](../../../../../plantillas/plantilla-especificacion-modulo.md) | El §4: el molde de la regla y la nota de la regla sin procedencia |
+| [`plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md`](../../../../../plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md) | El §4: el molde de la regla y la nota de la regla sin procedencia |
 | [`HU-004-modelo-de-la-especificacion.md`](../HU-004-modelo-de-la-especificacion.md) | El `CA-04`, la fase en §8 y la bitácora |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 22.0.0 |
 

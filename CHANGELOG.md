@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.0.0 — 2026-08-21
+
+**MAYOR** ⚠ obliga a migrar: los moldes del ciclo cambiaron de ruta; un proyecto al día vuelve a correr la instalación y el aviso de desfase se lo dice en su primer mensaje. No quedan redirecciones: las rutas viejas ya no existen.
+
+**Los documentos que todo desarrollo recorre tienen ahora su propia carpeta, y se lee en orden.** Los once moldes del camino obligatorio (el planteamiento, el inventario de funcionalidades, la épica, la historia, la fase, la especificación, los dos planes, el resultado de pruebas, el estado de la fase y el cierre) salieron de la raíz de plantillas, donde estaban revueltos con moldes de configuración y de operación, y viven en una carpeta que los numera por estación: abrirla es ver el ciclo completo, del 01 al 11.
+
+Lo pidió el usuario con una decisión de fondo que quedó registrada: **el ciclo de vida no hace excepciones** — todos sus entregables existen en todo proyecto sin importar la envergadura; lo que la envergadura ajusta es la profundidad, y el que no tenga materia se llena con «No aplica porque...» en vez de omitirse en silencio.
+
+**El detalle.** Nace [`plantillas/ciclo-vida-proyectos/`](plantillas/ciclo-vida-proyectos/README.md) con su README que recorre las once estaciones, cada una con su puerta y su regla. Se movieron y renumeraron los once moldes (la carpeta `planes/` desaparece dentro del ciclo: son las estaciones 07 a 09); el andamio, el instalador y los validadores apuntan a las rutas nuevas, y los 137 documentos que las citaban quedaron al día. La lista canónica de entregables del ciclo (IEEE/ISO), con lo que aún no tiene molde, quedó en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md) como material del trabajo que sigue: los 13 moldes faltantes y el generador de documentos finales.
+
 ## 29.0.0 — 2026-08-21
 
 **MAYOR** ⚠ obliga a migrar: en el próximo encargo de cualquier proyecto al día, las épicas no se derivan hasta que el usuario apruebe el inventario de funcionalidades. Lo ya derivado no se reabre.
@@ -19,7 +29,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Se escribió porque el daño ya ocurrió: en un proyecto real el agente escribió el planteamiento asumiendo el techo del alcance, de ahí salieron tres épicas y 21 historias, y la corrección del usuario llegó seis días después, con todo eso escrito encima. Ninguna regla lo habría preguntado antes. El usuario lo pidió explícito: «la propuesta debe venir acompañada del inventario (...) porque eso es lo que da el punto de partida a las épicas».
 
-**El detalle.** Nace [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) —*el inventario de funcionalidades aprobado es la puerta de las épicas*, que extiende a [`F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md): la misma puerta, una estación antes— y el molde [`plantillas/inventario-funcionalidades.md`](plantillas/inventario-funcionalidades.md), generalizado del inventario real de `shopnest-mesa`. Es el [pendiente 74](pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), bajado como la fase A de [EP-003 · HU-011](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) con sus tres criterios en Cumple — incluido el veredicto de por qué la conducta del capítulo `01` no cubría este caso. `F26` queda registrada sin validador todavía, con las tres preguntas de [`M19`](base/20-meta-reglas/reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) respondidas: primero que la puerta demuestre servir a mano.
+**El detalle.** Nace [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) —*el inventario de funcionalidades aprobado es la puerta de las épicas*, que extiende a [`F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md): la misma puerta, una estación antes— y el molde [`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md), generalizado del inventario real de `shopnest-mesa`. Es el [pendiente 74](pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), bajado como la fase A de [EP-003 · HU-011](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) con sus tres criterios en Cumple — incluido el veredicto de por qué la conducta del capítulo `01` no cubría este caso. `F26` queda registrada sin validador todavía, con las tres preguntas de [`M19`](base/20-meta-reglas/reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) respondidas: primero que la puerta demuestre servir a mano.
 
 ## 28.2.0 — 2026-08-21
 
@@ -1183,7 +1193,7 @@ La 22.0.0 fijó el molde; esta escribe el programa que lo mira. Se construyó en
 
 El §4 del modelo de especificación pedía `«Regla — por qué existe.»`: **el porqué, nunca el de dónde**. Una regla de negocio no se inventa en la especificación de un módulo —baja de un requisito, de una historia o de una decisión—, pero como nadie lo preguntaba, una regla con buena justificación y ninguna procedencia entraba sin resistencia. En `shopnest-mesa` una así bajó sola a una decisión, una fila de trazabilidad, dos escenarios de prueba y un criterio de aceptación; tardó un día en verse, y solo porque alguien preguntó de dónde salía. Se construyó en la fase [`A-EP-003-HU-004-el-origen-de-la-regla-de-negocio`](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/A-EP-003-HU-004-el-origen-de-la-regla-de-negocio/).
 
-- **El molde pasa a ser** `«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»`, en [`plantillas/plantilla-especificacion-modulo.md`](plantillas/plantilla-especificacion-modulo.md).
+- **El molde pasa a ser** `«Regla — de dónde baja (el identificador del requisito, la historia o la decisión) — por qué existe.»`, en [`plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md`](plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md).
 - **Se pide un identificador, no una frase.** «Lo pidió el cliente» no se puede seguir hasta ninguna parte.
 - **La regla sin procedencia no se escribe ahí:** se sube a la historia que corresponda y baja desde allá.
 
@@ -1328,7 +1338,7 @@ Mientras el 42 no cierre, un proyecto viejo se repara a mano: reemplazar `«RUTA
 
 **"Brief" se dice planteamiento.** La palabra estaba en inglés y nombraba el largo del documento, no su contenido: traducida literal queda "breve", que no dice nada de lo que hay que entender. El usuario lo destapó con un caso: alguien lee *"el brief responde qué se necesita y qué no se negocia"*, no sabe qué es, va al glosario y lo que encuentra no lo saca del apuro.
 
-- **`plantillas/brief.md` pasa a [`plantillas/planteamiento.md`](plantillas/planteamiento.md)**, y el `brief.md` de la raíz a [`planteamiento.md`](planteamiento.md).
+- **`plantillas/brief.md` pasa a [`plantillas/ciclo-vida-proyectos/01-planteamiento.md`](plantillas/ciclo-vida-proyectos/01-planteamiento.md)**, y el `brief.md` de la raíz a [`planteamiento.md`](planteamiento.md).
 - **La ruta del proyecto pasa de `prompts/<slug>-brief.md` a `prompts/<slug>-planteamiento.md`.**
 - **La palabra cambia en la zona normativa**: `base/`, `plantillas/`, `skills/`, `anatomia/` y el validador de plantillas. 30 ocurrencias.
 - **Los enlaces que apuntaban al archivo viejo se corrigieron en todo el repositorio**, incluidos los de fases ya cerradas: un enlace roto no le sirve a nadie. El texto de esos registros no se tocó.
@@ -1379,13 +1389,13 @@ La definición de **brief** es literal del usuario y no se toca.
 
 **MAYOR** ⚠ obliga a migrar (un plan de pruebas en curso con pasos de dos acciones hay que partirlo).
 
-**Un paso de dos acciones pierde la mitad de lo que salió.** El plan de una fase decía *«tomar la lista de origen **y** contar cuántos términos tiene»* en una sola fila, con un solo renglón de resultado esperado. Al ejecutar quedó anotado el conteo y se perdió de dónde había salido la lista, que era lo que había que comprobar. El caso quedó en "aprobado" con la mitad sin registro, y eso no se vio hasta bajar el resultado a la forma nueva de [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md).
+**Un paso de dos acciones pierde la mitad de lo que salió.** El plan de una fase decía *«tomar la lista de origen **y** contar cuántos términos tiene»* en una sola fila, con un solo renglón de resultado esperado. Al ejecutar quedó anotado el conteo y se perdió de dónde había salido la lista, que era lo que había que comprobar. El caso quedó en "aprobado" con la mitad sin registro, y eso no se vio hasta bajar el resultado a la forma nueva de [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md).
 
-- **[`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md)** §6: **un paso, una acción**. Cada fila lleva un solo verbo y un solo resultado esperado, con su ejemplo INCORRECTO/CORRECTO.
+- **[`plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md)** §6: **un paso, una acción**. Cada fila lleva un solo verbo y un solo resultado esperado, con su ejemplo INCORRECTO/CORRECTO.
 - **Se aplicó al plan que lo destapó**, [la fase A de EP-003 · HU-010](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/plan_pruebas.md), versión 1.1: seis pasos partidos o reescritos en CP-001, CP-002, CP-004, CP-005, CP-007 y CP-008. Ningún caso cambia lo que comprueba.
 - **El resultado de esa fase pasa de «aprobada con una prueba pendiente» a «No cumple».** No es un cambio de criterio: la plantilla no admite estado intermedio y `RNF-01` no tiene caso ejecutado. Con los pasos partidos se ve además que 15 de los 33 no dejaron registro de qué salió.
 - **La regla «se arranca desde cero» destapó dos pasos dados por supuestos** en el mismo plan (versión 1.2): CP-004 no decía cómo se eligen las tres entradas de muestra, y CP-006 no decía que hay que conseguir a alguien que no haya escrito el glosario — que era justo lo que tenía el caso bloqueado, sin que apareciera en ninguna fila.
-- **La sección 2 de [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) pedía lo mismo dos veces** —un bloque por pareja `CA`–`CP` arriba y un «Detalle de `CP-00N`» abajo—, y quien leyera no sabía cuál mandaba. Queda un solo bloque, con sus tres partes y **cuatro reglas que dicen qué es "detallado"**: un paso por cada fila del plan, se arranca desde cero, ningún paso queda vacío, y está detallado cuando alguien que no estuvo puede repetir la prueba sin preguntar nada.
+- **La sección 2 de [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) pedía lo mismo dos veces** —un bloque por pareja `CA`–`CP` arriba y un «Detalle de `CP-00N`» abajo—, y quien leyera no sabía cuál mandaba. Queda un solo bloque, con sus tres partes y **cuatro reglas que dicen qué es "detallado"**: un paso por cada fila del plan, se arranca desde cero, ningún paso queda vacío, y está detallado cuando alguien que no estuvo puede repetir la prueba sin preguntar nada.
 
 ## 15.4.3 — 2026-08-15
 
@@ -1404,7 +1414,7 @@ La definición de **brief** es literal del usuario y no se toca.
 
 **La sección de identificación no decía qué se responde ahí.** Arrancaba directo en la tabla, así que se llenaba como un trámite. Ahora abre con su pregunta: **¿qué se está probando?**
 
-- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: una línea al abrir la sección 0.
+- **[`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md)**: una línea al abrir la sección 0.
 - **«Corrida» pasa a «ejecución»** en esa plantilla, y la sección 1 dice qué es: correr las pruebas de principio a fin. «Corrida» era jerga y no estaba en el [glosario](base/glosario.md) como término propio.
 - **Las secciones 1 y 2 también abren con su pregunta**, y la 2 pide explicar qué problema resuelve cada pareja `CA`–`CP`, con su ejemplo: el problema, las condiciones, los pasos con lo que salió, y cómo se verificó que la pareja cumple.
 
@@ -1414,7 +1424,7 @@ La definición de **brief** es literal del usuario y no se toca.
 
 **El detalle de un caso quedó en tres partes, no en cinco.** Al aplicarlo a los diecisiete casos de una fase se vio que dos sobraban: los pasos esperados y los que se siguieron son los mismos pasos, así que van en una sola tabla de tres columnas —qué hacer, qué tiene que pasar y qué salió—, y el desvío se lee en la fila. El veredicto tampoco se repite en el detalle: ya vive en la tabla de casos ejecutados.
 
-- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: las tres partes, con el ejemplo en esa forma.
+- **[`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md)**: las tres partes, con el ejemplo en esa forma.
 
 ## 15.4.0 — 2026-08-14
 
@@ -1426,7 +1436,7 @@ La definición de **brief** es literal del usuario y no se toca.
 - **`instalar.py` deja puesta `historico-chat/resumenes/` con su índice.** Sin ella el enganche quedaba mudo en todo proyecto que hereda el estándar, y crearla era un paso a mano que nadie había documentado.
 - **El encabezado del resumen ya no enlaza `plantillas/sesion.md`.** Esa carpeta es del estándar y no viaja al proyecto: ahí el enlace nacía roto. Enlaza el índice del histórico, que el instalador sí deja en todos.
 - **La corrida 2 de las pruebas dispara el enganche como orden del sistema**, con el JSON que le manda Claude Code, sobre un proyecto que arma el instalador. Ninguna precondición se monta a mano: eso fue lo que dejó pasar el defecto. La fase no se declara cumplida hasta que el archivo aparezca solo en una sesión real.
-- **[`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**: el detalle de un caso pasa a tener cinco partes fijas — el problema que resuelve, la precondición, qué hacer para que cumpla, con qué reprueba y los pasos que se siguieron de verdad. Con el detalle a medias un caso puede pasar habiendo probado otra cosa, y eso fue lo que pasó. Queda escrito que si lo ejecutado no son los pasos de "para que cumpla", el caso no cumple, aunque haya salido bien.
+- **[`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md)**: el detalle de un caso pasa a tener cinco partes fijas — el problema que resuelve, la precondición, qué hacer para que cumpla, con qué reprueba y los pasos que se siguieron de verdad. Con el detalle a medias un caso puede pasar habiendo probado otra cosa, y eso fue lo que pasó. Queda escrito que si lo ejecutado no son los pasos de "para que cumpla", el caso no cumple, aunque haya salido bien.
 
 ## 15.4.0 — 2026-08-15  ·  ⚠ **número repetido**
 
@@ -1440,7 +1450,7 @@ La definición de **brief** es literal del usuario y no se toca.
 
 **El brief no decía cómo se llama el proyecto.** La plantilla tenía el nombre solo en el título, y ese título nombra el módulo o la épica. Un proyecto entero no tenía dónde decir cómo se llama, y el nombre es lo primero que heredan todos los documentos que salen de ahí.
 
-- **Sección 0, Identificación**, en [`plantillas/planteamiento.md`](plantillas/planteamiento.md): nombre del proyecto, qué cubre el encargo y fecha.
+- **Sección 0, Identificación**, en [`plantillas/ciclo-vida-proyectos/01-planteamiento.md`](plantillas/ciclo-vida-proyectos/01-planteamiento.md): nombre del proyecto, qué cubre el encargo y fecha.
 - El [`planteamiento.md`](planteamiento.md) de este repositorio la estrena: el proyecto se llama **Cimiento**.
 
 ## 15.3.0 — 2026-08-14
@@ -1463,7 +1473,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **Un caso de prueba aprobado no decía con qué se probó.** El plan dice qué **tipo** de dato usar; el resultado decía solo "aprobado". Con eso nadie puede repetir la prueba, y un caso que no se puede repetir no es una prueba: es un recuerdo.
 
-- **Columna nueva `Con qué se probó`** en [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md), con el ejemplo real: el archivo, el valor o el comando que se corrió.
+- **Columna nueva `Con qué se probó`** en [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md), con el ejemplo real: el archivo, el valor o el comando que se corrió.
 - Su ejemplo lo deja claro: no vale *"un usuario sin permiso"*, vale *"`qa.consulta` sobre `/facturas/42/anular`"*.
 
 ## 15.1.0 — 2026-08-14
@@ -1521,9 +1531,9 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **Un veredicto de pruebas que decía "cumple con observaciones" no dice nada.** Si el carro vuelve del taller sin frenos, no está arreglado: "cumple con observaciones" era la forma amable de decir que no cumple, y quien lo lee después no sabe si podía cerrar la fase o no.
 
-- **Los requisitos no funcionales de una HU van numerados `RNF-0N`** en [`plantillas/HU.md`](plantillas/HU.md), igual que los criterios de aceptación. Sin número no se pueden citar desde el plan ni desde las pruebas, y terminaban verificándose de vista.
-- **Y cuentan como exigencia propia.** En [`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md) y [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) cada `RNF-0N` lleva su fila en la matriz y en el veredicto, y la cobertura suma criterios y requisitos por separado. En la fase donde salió esto, tres requisitos venían contados como uno solo: la cobertura decía 4 de 4 cuando era 6 de 6.
-- **El veredicto pasa a ser binario** en [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md) y en [`plantillas/estado-fase.md`](plantillas/estado-fase.md): cumple o no cumple. Lo que falte hace que sea no cumple. Los defectos ya tienen su tabla, con severidad y con quién los aceptó.
+- **Los requisitos no funcionales de una HU van numerados `RNF-0N`** en [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), igual que los criterios de aceptación. Sin número no se pueden citar desde el plan ni desde las pruebas, y terminaban verificándose de vista.
+- **Y cuentan como exigencia propia.** En [`plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) y [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) cada `RNF-0N` lleva su fila en la matriz y en el veredicto, y la cobertura suma criterios y requisitos por separado. En la fase donde salió esto, tres requisitos venían contados como uno solo: la cobertura decía 4 de 4 cuando era 6 de 6.
+- **El veredicto pasa a ser binario** en [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) y en [`plantillas/ciclo-vida-proyectos/10-estado-fase.md`](plantillas/ciclo-vida-proyectos/10-estado-fase.md): cumple o no cumple. Lo que falte hace que sea no cumple. Los defectos ya tienen su tabla, con severidad y con quién los aceptó.
 - **Cada `CP-00N` se escribe como enlace a su caso, y cada `CA-0N` o `RNF-0N` como enlace a su exigencia en la HU**, en el plan de trabajo, el plan de pruebas, el resultado y el documento de cierre. Un identificador suelto obliga a buscarlo a mano, y así es como se termina juzgando un caso sin haber leído lo que exigía. Salió de una fase real: el caso decía "los que se declaró" sin decir dónde, y quien ejecutaba acababa decidiendo la lista.
 
 ## 13.0.0 — 2026-08-14
@@ -1622,7 +1632,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **La deuda se anotaba sin decir de dónde salía.** Se registraba qué quedó pendiente y a dónde se traslada, pero no por qué apareció. Y no todas las deudas dicen lo mismo: una que sale de no haber visto lo que se iba a romper señala que la línea base de [`02·F17`](base/02-flujo-de-trabajo/base.md) se hizo floja; una que se decidió por tiempo, o que la produjo el propio plan al diferir algo, no señala nada malo. Sin separarlas, no se puede saber si el análisis previo se está haciendo bien.
 
-- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §6 gana la columna `Origen`**, con cuatro valores: *no previsto*, *atajo decidido*, *cambio del entorno* y *diferido por el plan*. Cada uno con qué pasó y qué significa.
+- **[`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §6 gana la columna `Origen`**, con cuatro valores: *no previsto*, *atajo decidido*, *cambio del entorno* y *diferido por el plan*. Cada uno con qué pasó y qué significa.
 - **Para qué sirve.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase se repite *"no previsto"*, el problema no es la deuda: es que la línea base se está haciendo por encima. Antes eso no se veía en ningún lado.
 - **Retroactividad.** Las fases cerradas no se reabren para clasificar su deuda.
 
@@ -1632,9 +1642,9 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **Nada verificaba que el plan de trabajo se hubiera cumplido.** El `resultado_pruebas` que trajo [`9.0.0`](#900--2026-08-13) comprueba que **el resultado sirve**. Pero que **se haya hecho lo que se dijo que se iba a hacer** no lo revisaba nadie: el avance se marcaba con una casilla dentro del propio plan, que es autorreporte y encima pisa el documento aprobado, y el `funcionalidad_implementada` trazaba solo contra la spec. Una fase podía pasar todas las pruebas y haber dejado tres tareas sin tocar, o haber tocado archivos que el plan no declaraba, sin que quedara rastro.
 
-- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §2 pasa a tener dos trazabilidades**, porque responden preguntas distintas: **§2.1 spec → implementación** (qué había que lograr) y **§2.2 plan de trabajo → ejecución** (qué se iba a hacer para lograrlo). La §2.2 va tarea por tarea, con su identificador copiado del plan, y suma dos cosas que antes no se preguntaban: las **tareas que no se hicieron** y los **archivos tocados que el plan no declaraba** ([`02·F8`](base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). "Ninguno" es la respuesta esperada; que quede escrito cuando no lo es permite ver si el plan se amplía sobre la marcha y por qué.
-- **[`plantillas/planes/trabajo.md`](plantillas/planes/trabajo.md) pierde la columna `Estado` de §3 y el §13 de cierre.** Marcar avance ahí pisaba el plan aprobado y dejaba sin contra qué comparar, el mismo defecto que `9.0.0` corrigió en el plan de pruebas. El cierre ya vivía completo en el `funcionalidad_implementada`, duplicado.
-- **[`plantillas/estado-fase.md`](plantillas/estado-fase.md) gana §1.2 · Avance de las tareas del plan**, que es donde va el seguimiento **en vivo** mientras la fase corre. Queda la cadena completa: el plan dice qué se va a hacer, el estado dice por dónde va, el cierre dice qué se hizo.
+- **[`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §2 pasa a tener dos trazabilidades**, porque responden preguntas distintas: **§2.1 spec → implementación** (qué había que lograr) y **§2.2 plan de trabajo → ejecución** (qué se iba a hacer para lograrlo). La §2.2 va tarea por tarea, con su identificador copiado del plan, y suma dos cosas que antes no se preguntaban: las **tareas que no se hicieron** y los **archivos tocados que el plan no declaraba** ([`02·F8`](base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). "Ninguno" es la respuesta esperada; que quede escrito cuando no lo es permite ver si el plan se amplía sobre la marcha y por qué.
+- **[`plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`](plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) pierde la columna `Estado` de §3 y el §13 de cierre.** Marcar avance ahí pisaba el plan aprobado y dejaba sin contra qué comparar, el mismo defecto que `9.0.0` corrigió en el plan de pruebas. El cierre ya vivía completo en el `funcionalidad_implementada`, duplicado.
+- **[`plantillas/ciclo-vida-proyectos/10-estado-fase.md`](plantillas/ciclo-vida-proyectos/10-estado-fase.md) gana §1.2 · Avance de las tareas del plan**, que es donde va el seguimiento **en vivo** mientras la fase corre. Queda la cadena completa: el plan dice qué se va a hacer, el estado dice por dónde va, el cierre dice qué se hizo.
 - **Retroactividad.** Las fases cerradas no se reabren. Los planes ya aprobados conservan su columna de estado; el cambio aplica a los que se escriban desde acá.
 
 ## 9.0.0 — 2026-08-13
@@ -1643,13 +1653,13 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **El plan de pruebas se aprobaba antes y se sobreescribía después.** La plantilla traía la tabla de ejecución dentro de cada caso y el resumen de la corrida en §12: el mismo archivo que el usuario aprueba **antes** de probar terminaba pisado con lo que pasó **después**. Tres consecuencias: se pierde la línea base aprobada, así que no hay contra qué comparar lo que se acordó probar; no queda un veredicto formal de si la fase cumple; y el documento de cierre tenía que redactar de memoria la sección "qué se probó". Además la plantilla decía apoyarse en ISO/IEC/IEEE 29119-3, que separa el plan del registro de ejecución, y la nuestra los juntaba.
 
-- **Nueva plantilla [`plantillas/planes/resultados.md`](plantillas/planes/resultados.md)**, el `resultado_pruebas.md` de la fase. Registra qué se ejecutó, con qué resultado, qué defectos salieron, y sobre todo el **veredicto por criterio de aceptación** y el **veredicto de la fase**. Se crea **junto con los dos planes**, no cuando se corre la primera prueba: el formato puesto desde el principio se ve, se revisa y no se olvida. Lo que no se ha corrido se escribe **"no ejecutado"**, nunca en blanco ni como aprobado, y el veredicto arranca en *"todavía no se ejecutó"*, que no es lo mismo que "no cumple". Los ciclos de reprueba se apilan sin pisar el anterior, porque saber que algo falló y después pasó vale más que ver solo el resultado final.
+- **Nueva plantilla [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md)**, el `resultado_pruebas.md` de la fase. Registra qué se ejecutó, con qué resultado, qué defectos salieron, y sobre todo el **veredicto por criterio de aceptación** y el **veredicto de la fase**. Se crea **junto con los dos planes**, no cuando se corre la primera prueba: el formato puesto desde el principio se ve, se revisa y no se olvida. Lo que no se ha corrido se escribe **"no ejecutado"**, nunca en blanco ni como aprobado, y el veredicto arranca en *"todavía no se ejecutó"*, que no es lo mismo que "no cumple". Los ciclos de reprueba se apilan sin pisar el anterior, porque saber que algo falló y después pasó vale más que ver solo el resultado final.
 - **[`02·F12.13`](base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md) suma el quinto documento al árbol de la fase.** El cambio a `F12` lo **decidió el usuario el 2026-08-13**; esa regla está congelada como texto suyo y el agente no la ajusta por cuenta propia.
 - **El resultado se arma desde el plan, no desde lo que se hizo.** La lista de casos, su criterio y su prioridad **se copian** del `plan_pruebas`; un caso que esté en uno y no en el otro es defecto de trazabilidad y se arregla antes de dar veredicto. Y §5.1 pone frente a frente **cada meta que el plan fijó** (cobertura, casos críticos ejecutados, métricas propias, criterios de salida) contra lo que dio de verdad: sin eso, el plan podía exigir el 100% de los críticos y el resultado no decirlo nunca.
-- **[`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md) deja de recibir resultados.** Se le quitan la tabla de ejecución por caso y el resumen de corrida; en su lugar apunta al documento nuevo. El plan define **qué se va a medir**; el resultado dice **cuánto dio**.
-- **[`plantillas/estado-fase.md`](plantillas/estado-fase.md) gana §1.1 · Veredicto de las pruebas**, que se **copia** del resultado y no se escribe de memoria. Es de donde sale el estado de la estación de verificación, y con un criterio en "No" la fase no cierra.
-- **[`plantillas/funcionalidad-implementada.md`](plantillas/funcionalidad-implementada.md) §3 pasa a resumir del resultado**, no a redactarlo: si dice algo que el resultado no respalda, manda el resultado.
-- **[`plantillas/HU.md`](plantillas/HU.md)** suma la columna de resultado a la tabla de fases y la fila correspondiente a la tabla de qué documento responde qué.
+- **[`plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) deja de recibir resultados.** Se le quitan la tabla de ejecución por caso y el resumen de corrida; en su lugar apunta al documento nuevo. El plan define **qué se va a medir**; el resultado dice **cuánto dio**.
+- **[`plantillas/ciclo-vida-proyectos/10-estado-fase.md`](plantillas/ciclo-vida-proyectos/10-estado-fase.md) gana §1.1 · Veredicto de las pruebas**, que se **copia** del resultado y no se escribe de memoria. Es de donde sale el estado de la estación de verificación, y con un criterio en "No" la fase no cierra.
+- **[`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §3 pasa a resumir del resultado**, no a redactarlo: si dice algo que el resultado no respalda, manda el resultado.
+- **[`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md)** suma la columna de resultado a la tabla de fases y la fila correspondiente a la tabla de qué documento responde qué.
 - **[`base/02`](base/02-flujo-de-trabajo/base.md)**: `F4` aclara que lo que se aprueba son los dos planes y que el plan aprobado no se modifica para anotarle resultados; la etapa 7 de `F15` cierra ahora con el `resultado_pruebas` escrito, no con un conteo verde reportado de palabra.
 - **[`validadores/fases.py`](validadores/fases.py)** incluye `resultado_pruebas.md` entre los documentos que espera de una fase. Sigue siendo **aviso**, no falla: una fase recién abierta todavía no lo tiene, y eso no es incumplimiento.
 - **Retroactividad.** Las fases ya cerradas no se reabren para producirlo. Aplica a las que se abran desde esta versión.
@@ -1660,7 +1670,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **La cadena de trazabilidad se cortaba en la HU.** El brief lista sus épicas, la épica lista sus HU y cada HU nombra su épica ([`13·DOC16`](base/13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md)). De ahí para abajo el hilo se perdía: la HU no nombraba las fases que la implementan ni sus planes, así que desde el requisito no había cómo llegar a la ejecución. Se llegaba al revés —la fase sí declara qué CA cubre— y un enlace de una sola vía no se mantiene: cuando la fase se mueve o se divide, nadie actualiza el otro lado porque el otro lado no existe.
 
-- **[`plantillas/HU.md`](plantillas/HU.md) gana la sección `8 · Fases que la implementan`**: una fila por fase con los CA que cubre, sus dos planes y su estado. Las secciones siguientes corren de número.
+- **[`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md) gana la sección `8 · Fases que la implementan`**: una fila por fase con los CA que cubre, sus dos planes y su estado. Las secciones siguientes corren de número.
 - **Se completa a medida**, igual que la lista de épicas del brief y la de HU de la épica. Una HU recién escrita la tiene vacía, y eso es correcto: las fases se definen después.
 - **Además, una tabla de qué documento responde qué** (el requisito, el plan, las pruebas, el estado, el cierre), para no ir a buscar al documento equivocado. Es el mismo problema que resolvió [`8.1.0`](#810--2026-08-13) en los dos planes, visto desde arriba.
 - **Retroactividad.** Una HU ya escrita y aceptada no se reabre por esto; la sección se agrega cuando se le definan fases.
@@ -1671,7 +1681,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **Un documento terminado no decía qué era.** El propósito de cada plantilla vivía dentro de la caja de instrucciones, y esa caja la plantilla manda borrar al llenarla. Resultado: el `plan_trabajo` y el `plan_pruebas` de una fase quedaban sin una sola línea que explicara para qué existe cada uno. Quien los abre meses después tiene que deducirlo del contenido, y quien tiene que aprobarlos no sabe qué está aprobando.
 
-- **[`plantillas/planes/trabajo.md`](plantillas/planes/trabajo.md) y [`plantillas/planes/pruebas.md`](plantillas/planes/pruebas.md)** ganan una línea fija bajo el título: **para qué sirve** el documento, y dónde vive lo que no le toca a él. Va fuera de la caja de instrucciones y **sobrevive al llenado**.
+- **[`plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`](plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) y [`plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md)** ganan una línea fija bajo el título: **para qué sirve** el documento, y dónde vive lo que no le toca a él. Va fuera de la caja de instrucciones y **sobrevive al llenado**.
 - **Una línea, no dos.** La primera versión traía además un apartado *"qué no es"*. Se descartó: si el "para qué sirve" está bien escrito, ya excluye lo demás, y la negación repetía en forma de contraposición lo que la [lista de marcadores](base/00-identidad-y-rol/marcadores-de-ia.md) señala como adorno. Lo que sí valía era decir **dónde vive lo otro**, y eso se dice en positivo, dentro de la misma línea.
 - **La caja de instrucciones lo dice explícito**: se borra ella, no la línea de arriba.
 - **Retroactividad.** Un plan ya escrito y aprobado no se reabre por esto. Las dos líneas se agregan al escribir el siguiente.
@@ -1681,7 +1691,7 @@ Cierra la parte del glosario del [pendiente 21](pendientes/hecho/los-nombres-de-
 
 **PARCHE** (no cambia qué se exige: la narrativa ya tenía que estar; ahora se ve).
 
-- **[`plantillas/HU.md`](plantillas/HU.md) §2 · Narrativa.** Las tres líneas (`Como`, `Quiero`, `Para`) pasan a lista. Sin el guion, Markdown junta los tres renglones en un solo párrafo corrido y la narrativa, que es lo primero que alguien lee de una HU, queda ilegible. Se agrega la nota que dice por qué van como lista, para que nadie las vuelva a dejar sueltas.
+- **[`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md) §2 · Narrativa.** Las tres líneas (`Como`, `Quiero`, `Para`) pasan a lista. Sin el guion, Markdown junta los tres renglones en un solo párrafo corrido y la narrativa, que es lo primero que alguien lee de una HU, queda ilegible. Se agrega la nota que dice por qué van como lista, para que nadie las vuelva a dejar sueltas.
 - Como la plantilla cambió de huella, la copia local del catálogo de cada proyecto queda marcada vieja hasta la próxima corrida del instalador; el texto local no se pisa.
 
 ## 8.0.0 — 2026-08-12

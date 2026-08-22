@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase` |
-| **Módulo** | Documentos modelo — los cinco modelos de la fase de [`plantillas/`](../../../../../plantillas/planes/trabajo.md) |
+| **Módulo** | Documentos modelo — los cinco modelos de la fase de [`plantillas/`](../../../../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) |
 | **Épica / HU / origen** | [EP-003](../../epica.md) · [HU-003](../HU-003-modelos-de-la-fase.md) · retro-documentación, fila de HU-003 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 

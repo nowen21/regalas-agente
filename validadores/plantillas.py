@@ -20,39 +20,39 @@ from comun import (AVISO, FALLA, Hallazgo, RAIZ, encabezados, leer,
                    lineas_utiles, marcadores)
 
 # Cómo se deduce la plantilla a partir del H1 del documento.
-# El prefijo del ID basta: "HU-014 — Registrar cliente" -> plantillas/HU.md
+# El prefijo del ID basta: "HU-014 — Registrar cliente" -> plantillas/ciclo-vida-proyectos/04-HU.md
 POR_PREFIJO = {
-    "HU-": "plantillas/HU.md",
-    "EP-": "plantillas/epica.md",
+    "HU-": "plantillas/ciclo-vida-proyectos/04-HU.md",
+    "EP-": "plantillas/ciclo-vida-proyectos/03-epica.md",
     "ADR-": "plantillas/ADR.md",
 }
 
 # Cuando el ID no dice nada, se deduce por el nombre del archivo.
 POR_NOMBRE = {
-    "planteamiento": "plantillas/planteamiento.md",
+    "planteamiento": "plantillas/ciclo-vida-proyectos/01-planteamiento.md",
     "dominio": "plantillas/dominio.md",
     "stack": "plantillas/stack.md",
-    "fase": "plantillas/fase.md",
-    "trabajo": "plantillas/planes/trabajo.md",
-    "pruebas": "plantillas/planes/pruebas.md",
+    "fase": "plantillas/ciclo-vida-proyectos/05-fase.md",
+    "trabajo": "plantillas/ciclo-vida-proyectos/07-plan-trabajo.md",
+    "pruebas": "plantillas/ciclo-vida-proyectos/08-plan-pruebas.md",
     "marco-normativo": "plantillas/marco-normativo.md",
     "mapeo-nombres": "plantillas/mapeo-nombres.md",
     "cierre-analisis": "plantillas/cierre-analisis.md",
-    "estado-fase": "plantillas/estado-fase.md",
+    "estado-fase": "plantillas/ciclo-vida-proyectos/10-estado-fase.md",
     # Documentos del proyecto con su nombre real en `documentacion/…`.
-    "plan_trabajo": "plantillas/planes/trabajo.md",
-    "plan_pruebas": "plantillas/planes/pruebas.md",
-    "funcionalidad_implementada": "plantillas/funcionalidad-implementada.md",
+    "plan_trabajo": "plantillas/ciclo-vida-proyectos/07-plan-trabajo.md",
+    "plan_pruebas": "plantillas/ciclo-vida-proyectos/08-plan-pruebas.md",
+    "funcionalidad_implementada": "plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md",
     "catalogo-modulos": "plantillas/catalogo-modulos.md",
     "modulos": "plantillas/catalogo-modulos.md",
     "reglas-proyecto": "plantillas/reglas-proyecto.md",
     "mapa-dependencias": "plantillas/mapa-dependencias.md",
     "adr": "plantillas/ADR.md",
-    "spec": "plantillas/plantilla-especificacion-modulo.md",
+    "spec": "plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md",
 }
 
 # La especificación de módulo, para saber cuándo mirar sus reglas de negocio.
-SPEC_MODULO = "plantillas/plantilla-especificacion-modulo.md"
+SPEC_MODULO = "plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md"
 
 # `## 4. Reglas de negocio` y el siguiente encabezado del mismo nivel.
 _SECCION_REGLAS = re.compile(

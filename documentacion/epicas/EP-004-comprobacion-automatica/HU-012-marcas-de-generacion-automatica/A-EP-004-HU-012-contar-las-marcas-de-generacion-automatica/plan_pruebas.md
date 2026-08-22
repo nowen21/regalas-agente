@@ -12,7 +12,7 @@
 | **Aprobado por** | Sin aprobar — se presenta junto con el [`plan_trabajo.md`](plan_trabajo.md) ([`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) |
 | **Estado** | Borrador |
 
-> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
+> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md)).
 
 **El CA-03 se prueba primero.** Es el que decide si el programa sirve: el estándar usa a propósito el punto medio, las comillas angulares y las casillas. Un programa que las cuente reporta el estándar entero y nadie lo vuelve a correr.
 

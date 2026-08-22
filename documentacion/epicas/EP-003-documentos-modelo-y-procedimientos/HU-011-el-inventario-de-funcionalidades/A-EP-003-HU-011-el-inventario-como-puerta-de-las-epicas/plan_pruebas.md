@@ -43,7 +43,7 @@ Aceptación sobre documentos, con dos oráculos que ya existen: el **caso semill
 | **HU / CA** | HU-011 / CA-01 |
 | **Tipo** | Aceptación — contenido |
 | **Prioridad** | Crítica |
-| **Precondiciones** | `plantillas/inventario-funcionalidades.md` escrito (T-01) |
+| **Precondiciones** | `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md` escrito (T-01) |
 | **Datos de entrada** | El inventario de `shopnest-mesa` (`propuesta-desarrollo/inventario-funcionalidades.md`, solo lectura) |
 
 **Pasos**

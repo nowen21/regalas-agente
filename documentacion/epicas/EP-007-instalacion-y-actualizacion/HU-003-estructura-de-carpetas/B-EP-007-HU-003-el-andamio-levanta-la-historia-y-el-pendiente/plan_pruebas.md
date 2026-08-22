@@ -74,7 +74,7 @@ Una sola fase: van las secciones 3, 5, 6, 9 y 12, como la plantilla indica para 
 
 | # | Acción | Resultado esperado |
 |---|---|---|
-| 1 | Contar `«` en la HU creada y en `plantillas/HU.md` | Iguales, menos los dos que son estructura (`HU-000` y `«Épica padre»`) |
+| 1 | Contar `«` en la HU creada y en `plantillas/ciclo-vida-proyectos/04-HU.md` | Iguales, menos los dos que son estructura (`HU-000` y `«Épica padre»`) |
 
 ### CP-005 — Los validadores no reclaman nada
 

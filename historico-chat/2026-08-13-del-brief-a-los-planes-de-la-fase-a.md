@@ -14,7 +14,7 @@
 
 No. El estándar de este repo no tiene nada de machine learning.
 
-Busqué en todo `base/` (los 21 capítulos) y no hay regla que hable de modelos, entrenamiento, datasets ni librerías de ML. Las únicas coincidencias son ruido: "dataset" como dato de prueba en [plantillas/planes/trabajo.md:183](plantillas/planes/trabajo.md#L183) y un ejemplo de recuerdo en [notas/memoria-por-senales.md:99](notas/memoria-por-senales.md#L99).
+Busqué en todo `base/` (los 21 capítulos) y no hay regla que hable de modelos, entrenamiento, datasets ni librerías de ML. Las únicas coincidencias son ruido: "dataset" como dato de prueba en [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md:183](plantillas/ciclo-vida-proyectos/07-plan-trabajo.md#L183) y un ejemplo de recuerdo en [notas/memoria-por-senales.md:99](notas/memoria-por-senales.md#L99).
 
 Dos aclaraciones, por si la pregunta iba por otro lado:
 
@@ -260,7 +260,7 @@ Lo agregué a [terminologia-agente-vs-estandar.md](historico-chat/memory/termino
 
 Creado [planteamiento.md](planteamiento.md), en la raíz del repo como lo pidió.
 
-Sigue las 10 secciones de [plantillas/planteamiento.md](plantillas/planteamiento.md), llenadas con el contexto real del proyecto: qué problema resuelve, criterio de éxito medible, qué queda fuera, las restricciones duras del núcleo y los casos borde que ya aparecieron (Windows, proyecto con reglas propias, versión atrasada, clave pegada en el chat).
+Sigue las 10 secciones de [plantillas/ciclo-vida-proyectos/01-planteamiento.md](plantillas/ciclo-vida-proyectos/01-planteamiento.md), llenadas con el contexto real del proyecto: qué problema resuelve, criterio de éxito medible, qué queda fuera, las restricciones duras del núcleo y los casos borde que ya aparecieron (Windows, proyecto con reglas propias, versión atrasada, clave pegada en el chat).
 
 Dos cosas para su revisión:
 
@@ -393,7 +393,7 @@ Por eso la fila dice que no aplica, y dice por qué. La plantilla exige justamen
 
 Antes de las HU, verifiqué el nombre contra la norma:
 
-Ocho HU creadas para EP-001, cada una desde [plantillas/HU.md](plantillas/HU.md) con narrativa, reglas de negocio, tres criterios en Gherkin y su apartado de cómo validarlo paso a paso:
+Ocho HU creadas para EP-001, cada una desde [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) con narrativa, reglas de negocio, tres criterios en Gherkin y su apartado de cómo validarlo paso a paso:
 
 | HU | De qué se trata |
 |---|---|
@@ -427,7 +427,7 @@ Dígame cuál es el problema que ve, porque puede ser algo que la norma no atrap
 
 Corregido en los dos lados.
 
-**La plantilla, que era la causa.** [plantillas/HU.md](plantillas/HU.md) traía las tres líneas sueltas, y Markdown las junta en un párrafo corrido. Ahora van como lista, con una nota que dice por qué:
+**La plantilla, que era la causa.** [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) traía las tres líneas sueltas, y Markdown las junta en un párrafo corrido. Ahora van como lista, con una nota que dice por qué:
 
 ```
 - **Como** [rol específico]
@@ -504,7 +504,7 @@ La caja de instrucciones ahora dice explícito que se borra ella, no esas dos l�
 
 **Versionado.** [VERSION](VERSION) a `8.1.0` y su entrada en [CHANGELOG.md](CHANGELOG.md). Es MENOR: agrega secciones a dos plantillas y no invalida ningún plan ya escrito.
 
-**El mismo defecto está en las otras plantillas.** [epica.md](plantillas/epica.md), [HU.md](plantillas/HU.md), [estado-fase.md](plantillas/estado-fase.md) y [funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) también guardan el propósito en la caja que se borra. No las toqué porque usted nombró las dos de planes. ¿Las extiendo?
+**El mismo defecto está en las otras plantillas.** [epica.md](plantillas/ciclo-vida-proyectos/03-epica.md), [HU.md](plantillas/ciclo-vida-proyectos/04-HU.md), [estado-fase.md](plantillas/ciclo-vida-proyectos/10-estado-fase.md) y [funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) también guardan el propósito en la caja que se borra. No las toqué porque usted nombró las dos de planes. ¿Las extiendo?
 
 ### 31 · Usuario — 2026-08-13 22:43:57
 > si estamos colocando el qué es para qué colocar el qué no es?
@@ -532,7 +532,7 @@ La cadena baja del brief a las épicas y de la épica a las HU, pero se corta ah
 
 Corregido en la plantilla y en las ocho HU.
 
-[plantillas/HU.md](plantillas/HU.md) gana la sección **8 · Fases que la implementan**, con dos tablas:
+[plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) gana la sección **8 · Fases que la implementan**, con dos tablas:
 
 - **Las fases**, una fila por cada una: qué criterios cubre, su plan de trabajo, su plan de pruebas y su estado. Se completa a medida, igual que la lista de épicas del brief.
 - **Qué documento responde qué**: el requisito está en la HU, el orden del trabajo en el plan de trabajo, los casos en el plan de pruebas, el avance en el estado de fase y lo hecho en el cierre.
@@ -577,7 +577,7 @@ Una aclaración por si le choca el número: en la plantilla es la **sección 8**
 
 No está equivocado. Falta ese documento, y el argumento está en la propia plantilla.
 
-**Lo que hay hoy.** Los resultados se anotan **dentro** del [plan_pruebas.md](plantillas/planes/pruebas.md): cada caso tiene una tabla "Ejecución" y la sección 12.2 un resumen por ciclo. O sea, el mismo archivo que se aprueba **antes** se sobreescribe **después** con lo que pasó.
+**Lo que hay hoy.** Los resultados se anotan **dentro** del [plan_pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md): cada caso tiene una tabla "Ejecución" y la sección 12.2 un resumen por ciclo. O sea, el mismo archivo que se aprueba **antes** se sobreescribe **después** con lo que pasó.
 
 **Por qué eso está mal.** Tres razones:
 
@@ -604,7 +604,7 @@ Ahora la fase real y la HU:
 
 Hecho. El `resultado_pruebas.md` existe como quinto documento de la fase.
 
-**Lo nuevo.** [plantillas/planes/resultados.md](plantillas/planes/resultados.md): registra qué se ejecutó, con qué resultado, qué defectos salieron, el **veredicto por criterio** y el **veredicto de la fase**. Los ciclos de reprueba se apilan sin pisar el anterior.
+**Lo nuevo.** [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md): registra qué se ejecutó, con qué resultado, qué defectos salieron, el **veredicto por criterio** y el **veredicto de la fase**. Los ciclos de reprueba se apilan sin pisar el anterior.
 
 **La cadena que usted describió, ya conectada:**
 
@@ -650,7 +650,7 @@ Ya está dentro de la fase: [resultado_pruebas.md](documentacion/epicas/EP-001-c
 
 Los siete casos aparecen con resultado **"no ejecutado"**, y el veredicto de la fase dice **"todavía no se ejecutó"**. Esa distinción es la que evita el problema que me preocupaba: un caso en blanco se puede leer como aprobado, uno que dice "no ejecutado" no. Y "no evaluado" tampoco es "no cumple".
 
-Corregí la plantilla, que decía lo contrario: ahora [plantillas/planes/resultados.md](plantillas/planes/resultados.md) manda crearlo **junto con los dos planes**, y llenarlo a medida que se corran los casos.
+Corregí la plantilla, que decía lo contrario: ahora [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) manda crearlo **junto con los dos planes**, y llenarlo a medida que se corran los casos.
 
 También quedó conectado: la tabla de fases de [HU-001](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/HU-001-formato-unico-de-regla.md) enlaza al documento, y el `estado-fase` §1.1 apunta a su §6 como fuente del veredicto.
 
@@ -681,4 +681,4 @@ Ahora el resultado sí se ata al plan, en tres puntos:
 
 Sin la 5.1 el plan podía exigir el 100% de los casos críticos y el resultado no mencionarlo nunca.
 
-Cambios en [plantillas/planes/resultados.md](plantillas/planes/resultados.md) y en el [resultado_pruebas.md](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) de la fase. La entrada `9.0.0` del CHANGELOG lo recoge; sigue sin commitear, así que no abrí versión nueva.
+Cambios en [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) y en el [resultado_pruebas.md](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-001-formato-unico-de-regla/A-EP-001-HU-001-molde-de-regla/resultado_pruebas.md) de la fase. La entrada `9.0.0` del CHANGELOG lo recoge; sigue sin commitear, así que no abrí versión nueva.

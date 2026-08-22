@@ -27,7 +27,7 @@
 
 ## 3. Contexto y descripción
 
-El `estado-fase.md` es el checkpoint de la fase: la plantilla [plantillas/estado-fase.md](../../../../plantillas/estado-fase.md) lo define como lo que "se escribe en cada puerta para sobrevivir a la compactación". Hoy lo escribe el agente cuando se acuerda. [validadores/fases.py](../../../../validadores/fases.py) lo compara con el resultado de pruebas después, cuando alguien corre `validar.py fases`.
+El `estado-fase.md` es el checkpoint de la fase: la plantilla [plantillas/ciclo-vida-proyectos/10-estado-fase.md](../../../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) lo define como lo que "se escribe en cada puerta para sobrevivir a la compactación". Hoy lo escribe el agente cuando se acuerda. [validadores/fases.py](../../../../validadores/fases.py) lo compara con el resultado de pruebas después, cuando alguien corre `validar.py fases`.
 
 Es la situación que esta épica ya resolvió dos veces, con la transcripción y con el resumen: lo que depende de que alguien se acuerde, no pasa. Lo que un programa no puede hacer es decir en qué estación va la fase, porque eso es criterio. Lo que sí puede es que el hueco se vea en el momento.
 

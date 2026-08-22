@@ -20,7 +20,7 @@
 
 ## 1. Qué se implementó — resumen
 
-El alcance de un desarrollo lo confirma ahora el usuario, no el agente: toda propuesta viene con su **inventario de funcionalidades** (molde nuevo [`plantillas/inventario-funcionalidades.md`](../../../../../plantillas/inventario-funcionalidades.md)) y ninguna épica se deriva hasta que el usuario lo apruebe (regla nueva [`02·F26`](../../../../../base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md)). El inventario madura con el sistema hasta ser el manual del producto. Con esto cerró el [pendiente 74](../../../../../pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), con aviso a los nueve instalados.
+El alcance de un desarrollo lo confirma ahora el usuario, no el agente: toda propuesta viene con su **inventario de funcionalidades** (molde nuevo [`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](../../../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md)) y ninguna épica se deriva hasta que el usuario lo apruebe (regla nueva [`02·F26`](../../../../../base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md)). El inventario madura con el sistema hasta ser el manual del producto. Con esto cerró el [pendiente 74](../../../../../pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), con aviso a los nueve instalados.
 
 ---
 
@@ -30,7 +30,7 @@ El alcance de un desarrollo lo confirma ahora el usuario, no el agente: toda pro
 
 | Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| El molde con los cuatro estados, lo del usuario definido, preguntas abiertas y destino de manual | plantilla | [`plantillas/inventario-funcionalidades.md`](../../../../../plantillas/inventario-funcionalidades.md) | ✅ | CP-001 |
+| El molde con los cuatro estados, lo del usuario definido, preguntas abiertas y destino de manual | plantilla | [`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](../../../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) | ✅ | CP-001 |
 | La regla de la puerta, por el procedimiento del `20` | regla | [`02·F26`](../../../../../base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md), checklist CUMPLE 20/20 | ✅ | CP-002 |
 | Su fila en el índice del capítulo | doc | [`base/02-flujo-de-trabajo/base.md`](../../../../../base/02-flujo-de-trabajo/base.md) | ✅ | CP-002 paso 2 |
 | Registro `M9`/`M19` sin validador todavía | registro | [`validadores/reglas-validables.md`](../../../../../validadores/reglas-validables.md) | ✅ | CP-002 paso 5 |
@@ -43,7 +43,7 @@ El alcance de un desarrollo lo confirma ahora el usuario, no el agente: toda pro
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| T-01 | Escribir el molde generalizado | ✅ hecha | `plantillas/inventario-funcionalidades.md` | CP-001 |
+| T-01 | Escribir el molde generalizado | ✅ hecha | `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md` | CP-001 |
 | T-02 | Indexarlo | ✅ hecha, con desvío declarado | `anatomia/mapa-del-sitio.md` | El plan decía `plantillas/README.md`, pero ese README no indexa moldes uno a uno (solo separa modelos de fuentes de generación); el índice real de archivos es el mapa del sitio, y ahí quedó |
 | T-03 | Escribir `F26` con checklist | ✅ hecha | `base/02-flujo-de-trabajo/` | CP-002 |
 | T-04 | Registro con las tres preguntas de `M19` | ✅ hecha | `validadores/reglas-validables.md` | CP-002 paso 5 |

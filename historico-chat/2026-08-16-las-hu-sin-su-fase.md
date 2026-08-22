@@ -20,7 +20,7 @@ Tiene razón. Va el ejemplo.
 
 ## Cómo lo voy a hacer
 
-**1 · La rejilla de comprobación** — sale de [plantillas/HU.md](plantillas/HU.md) y de las reglas del estándar, no de mi criterio:
+**1 · La rejilla de comprobación** — sale de [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) y de las reglas del estándar, no de mi criterio:
 
 | # | Qué se mira | De dónde sale la exigencia |
 |---|---|---|

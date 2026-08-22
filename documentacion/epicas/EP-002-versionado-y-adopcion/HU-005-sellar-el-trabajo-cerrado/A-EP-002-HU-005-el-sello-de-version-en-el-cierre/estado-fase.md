@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-002-HU-005-el-sello-de-version-en-el-cierre` |
-| **Módulo** | Versionado y adopción — [`plantillas/funcionalidad-implementada.md`](../../../../../plantillas/funcionalidad-implementada.md), [`plantillas/estado-fase.md`](../../../../../plantillas/estado-fase.md) y [`validadores/plantillas.py`](../../../../../validadores/plantillas.py) |
+| **Módulo** | Versionado y adopción — [`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](../../../../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md), [`plantillas/ciclo-vida-proyectos/10-estado-fase.md`](../../../../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) y [`validadores/plantillas.py`](../../../../../validadores/plantillas.py) |
 | **Épica / HU / origen** | [EP-002](../../epica.md) · [HU-005](../HU-005-sellar-el-trabajo-cerrado.md) · 🔀 híbrido: la regla existe, el campo en los modelos no. Fila de HU-005 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 

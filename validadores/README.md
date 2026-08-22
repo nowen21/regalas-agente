@@ -26,9 +26,9 @@ La distinción no es cosmética. Las plantillas dicen *"elimine las secciones qu
 # Coherencia de este repositorio: enlaces rotos e índices desactualizados
 python validadores/validar.py estandar
 
-# Un documento contra su plantilla (la deduce del ID: HU-014 -> plantillas/HU.md)
+# Un documento contra su plantilla (la deduce del ID: HU-014 -> plantillas/ciclo-vida-proyectos/04-HU.md)
 python validadores/validar.py plantilla proyectos/pos/HU-014.md
-python validadores/validar.py plantilla doc.md --contra plantillas/epica.md
+python validadores/validar.py plantilla doc.md --contra plantillas/ciclo-vida-proyectos/03-epica.md
 
 # Mensaje de commit
 python validadores/validar.py commit                          # HEAD

@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-resultado-de-pr
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/funcionalidad-implementada.md](../../../plantillas/funcionalidad-implementada.md) §2, versión 9.1.0 del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md](../../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §2, versión 9.1.0 del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-14 · resultado de pruebas y cierre de fase.
 - **Cerrado en:** 2026-08-14 · resultado de pruebas y cierre de fase.
 - **Con qué se retoma:** —.
@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-resultado-de-pr
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/funcionalidad-implementada.md](../../../plantillas/funcionalidad-implementada.md) §6, versión 9.2.0 del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md](../../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §6, versión 9.2.0 del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-14 · resultado de pruebas y cierre de fase.
 - **Cerrado en:** 2026-08-14 · resultado de pruebas y cierre de fase.
 - **Con qué se retoma:** —.

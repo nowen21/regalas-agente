@@ -18,7 +18,7 @@ En el [glosario](../../base/glosario.md) la palabra solo aparece dentro de «alc
 
 | Salida | Qué implica |
 |---|---|
-| Reemplazar «corrida» por «ejecución» en todo el estándar | Es lo que ya se hizo en [../plantillas/planes/resultados.md](../../plantillas/planes/resultados.md); falta el resto |
+| Reemplazar «corrida» por «ejecución» en todo el estándar | Es lo que ya se hizo en [../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md); falta el resto |
 | Dejar la palabra y definirla en el glosario | Menos trabajo, pero sigue siendo jerga, y [`00·ID7`](../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) pide que se entienda sin saber del tema |
 
 **Dónde sigue apareciendo:**
@@ -27,8 +27,8 @@ En el [glosario](../../base/glosario.md) la palabra solo aparece dentro de «alc
 - [../base/08-pruebas.md](../../base/08-pruebas.md)
 - [../base/glosario.md](../../base/glosario.md)
 - [../base/20-meta-reglas/estructura-regla.md](../../base/20-meta-reglas/estructura-regla.md)
-- [../plantillas/planes/pruebas.md](../../plantillas/planes/pruebas.md), §3.5 y §12.2
-- [../plantillas/funcionalidad-implementada.md](../../plantillas/funcionalidad-implementada.md)
+- [../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md), §3.5 y §12.2
+- [../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md](../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md)
 
 ## El límite
 
@@ -56,9 +56,9 @@ Y quedó una a propósito: *«la numeración **corrida** entre sesiones»*, en [
 | [`base/02-flujo-de-trabajo/base.md`](../../base/02-flujo-de-trabajo/base.md) | fuera de la corrida | fuera de la **ejecución** |
 | [`base/08-pruebas.md`](../../base/08-pruebas.md) | se crea y destruye por corrida | se crea y destruye por **ejecución** |
 | [`base/20-meta-reglas/estructura-regla.md`](../../base/20-meta-reglas/estructura-regla.md) | una migración de una sola corrida | una sola **ejecución** |
-| [`plantillas/planes/pruebas.md`](../../plantillas/planes/pruebas.md) | Alcance de la corrida automatizada | Alcance de la **ejecución** automatizada |
-| [`plantillas/funcionalidad-implementada.md`](../../plantillas/funcionalidad-implementada.md) | Suites corridas | Suites **ejecutadas** |
-| [`plantillas/planes/resultados.md`](../../plantillas/planes/resultados.md) | tres corridas | tres **ejecuciones** |
+| [`plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`](../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) | Alcance de la corrida automatizada | Alcance de la **ejecución** automatizada |
+| [`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) | Suites corridas | Suites **ejecutadas** |
+| [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) | tres corridas | tres **ejecuciones** |
 
 ## El sello de `F5` se volvió a aplicar
 

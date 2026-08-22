@@ -328,6 +328,23 @@ def _cuenta(texto):
     return salida
 
 
+def _origen_rename(raiz, rel):
+    """La ruta que `rel` tenía en `HEAD`, si el commit lo renombra. `None` si no.
+
+    Un `git mv` no agrega marcas: es el mismo contenido con otra ruta. Sin
+    esto, el trinquete le pone línea base cero al nombre nuevo y cuenta como
+    nuevas todas las marcas que el archivo ya traía de antes.
+    """
+    salida = _git(raiz, "diff", "--cached", "--name-status", "--find-renames")
+    if not salida:
+        return None
+    for linea in salida.splitlines():
+        partes = linea.split("\t")
+        if len(partes) == 3 and partes[0].startswith("R") and partes[2] == rel:
+            return partes[1]
+    return None
+
+
 def _crecimiento(raiz, rel):
     """Cuántas marcas de cada clase **suma** este archivo respecto de `HEAD`.
 
@@ -338,7 +355,12 @@ def _crecimiento(raiz, rel):
     ahora = _git(raiz, "show", ":%s" % rel)
     if ahora is None:
         return {}
-    antes = _git(raiz, "show", "HEAD:%s" % rel) or ""
+    antes = _git(raiz, "show", "HEAD:%s" % rel)
+    if antes is None:
+        origen = _origen_rename(raiz, rel)
+        if origen:
+            antes = _git(raiz, "show", "HEAD:%s" % origen)
+    antes = antes or ""
     a, b = _cuenta(ahora), _cuenta(antes)
     return {k: a.get(k, 0) - b.get(k, 0)
             for k in set(a) | set(b) if a.get(k, 0) > b.get(k, 0)}

@@ -48,7 +48,7 @@ Sirve a quien recibe un documento para aprobarlo: los huecos se ven de una lectu
 | T-02 | Escribir [`DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) con su checklist | ✅ hecha | `base/13-documentacion/reglas/DOC19-…` | La regla, checklist en CUMPLE |
 | T-03 | Qué es un hueco y qué no | ✅ hecha | Dentro de [`DOC19`](../../../../../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) | Segunda frase del cuerpo |
 | T-03b | Las tres filas en el índice del capítulo | ✅ hecha | `base/13-documentacion/base.md`, grupo (c) | El índice |
-| T-04 | `plantillas/epica.md` a la marca | ✅ hecha | `plantillas/epica.md` | 45 marcas |
+| T-04 | `plantillas/ciclo-vida-proyectos/03-epica.md` a la marca | ✅ hecha | `plantillas/ciclo-vida-proyectos/03-epica.md` | 45 marcas |
 | T-05 | `plantillas/marco-normativo.md` a la marca | ✅ hecha | `plantillas/marco-normativo.md` | Todos sus campos |
 | T-06 | Los tres dudosos, con su motivo escrito | ✅ hecha | `notas/marca-del-espacio-por-llenar.md` | La tabla de la nota |
 | T-06b | Los 11 archivos con corchetes | ✅ hecha | 11 archivos de `plantillas/` | 179 huecos |

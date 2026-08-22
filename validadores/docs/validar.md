@@ -158,7 +158,7 @@ cmd_estandar(argumentos)          # con problemas
 cmd_plantilla(argumentos)
 0
 # y en pantalla:
-== proyectos/pos/HU-014.md contra plantillas/HU.md ==
+== proyectos/pos/HU-014.md contra plantillas/ciclo-vida-proyectos/04-HU.md ==
 [AVISO] proyectos/pos/HU-014.md — sección de la plantilla ausente: «Riesgos»
 
 0 falla(s), 1 aviso(s).

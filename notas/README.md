@@ -14,6 +14,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 - [notas/rutas-fuera-del-proyecto.md](rutas-fuera-del-proyecto.md) — qué rutas quedan fuera del alcance del agente y por qué autorizar un archivo no autoriza a su carpeta padre. Es el detalle de `04·S9`.
 - [notas/pertenencia-y-autoria.md](pertenencia-y-autoria.md) — por qué se confunde «de quién es el dato» con «quién lo tocó», y qué se rompe: el segundo usuario del mismo contenedor no ve nada. Es el porqué de `03·D8`.
 - [notas/la-fuente-de-las-reglas-es-el-texto.md](la-fuente-de-las-reglas-es-el-texto.md) — por qué las reglas viven en archivos y no en una base de datos: lo que se perdería es poder ver qué cambió y aprobarlo antes de que rija.
+- [notas/entregables-del-ciclo-de-vida.md](entregables-del-ciclo-de-vida.md) — la lista canónica de documentos que el ciclo de vida del software exige entregar (IEEE/ISO), con el cruce contra los moldes de Cimiento; material del análisis de `plantillas/ciclo-vida-proyectos/` (2026-08-21).
 - [notas/estructura.md](estructura.md) — referencia de arquitectura de un agente LLM en producción (capas, presupuesto, evals, contenido no confiable). Cimiento la cumple por concepto, no por carpeta: el análisis del 2026-08-19 dejó sus brechas en el resumen de esa sesión.
 - [memoria-por-senales.md](memoria-por-senales.md) — diseño concreto de la memoria: señales tipadas con what/why/where/learned, metadatos y ciclo de vida.
 - [memoria-buscable-fts5.md](memoria-buscable-fts5.md) — backend opcional SQLite+FTS5 para hacer buscables las señales (esquema y consultas listos).
@@ -26,7 +27,7 @@ Notas sobre el diseño y los pendientes del estándar. No son parte del estánda
 
 | # | Pendiente | Tamaño | Depende de | Nota |
 |---|---|---|---|---|
-| ~~1~~ | ~~**Plantilla genérica de especificación de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/plantilla-especificacion-modulo.md` |
+| ~~1~~ | ~~**Plantilla genérica de especificación de módulo**~~ | — | — | ✅ **Hecha** — `plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md` |
 | ~~2~~ | ~~**Skill `generar-spec-modulo`**~~ | — | — | ✅ **Hecha** — `skills/generar-spec-modulo/` (rol Escritor de especificación) |
 | ~~3~~ | ~~**Skill `cerrar-fase`**~~ | — | — | ✅ **Hecha** — `skills/cerrar-fase/` (rol Verificador) |
 | ~~4~~ | ~~**Skill `generar-casos-prueba`**~~ | — | — | ✅ **Hecha** — `skills/generar-casos-prueba/` |

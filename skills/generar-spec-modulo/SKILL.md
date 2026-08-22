@@ -14,7 +14,7 @@ Produce la **especificación** que la regla `02`·F2 exige antes de tocar códig
 - Confirmar el **slug** del módulo y dónde vive la documentación (lo declara la capa 3).
 
 ### 2. Partir de la plantilla
-- Copiar `plantillas/plantilla-especificacion-modulo.md` a `documentacion/«slug-modulo»/spec.md`.
+- Copiar `plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md` a `documentacion/«slug-modulo»/spec.md`.
 - Recorrer sus 13 secciones una por una.
 
 ### 3. Llenar cada sección
@@ -35,4 +35,4 @@ Produce la **especificación** que la regla `02`·F2 exige antes de tocar códig
 
 Un archivo `spec.md` en la carpeta del módulo, completo salvo las preguntas abiertas pendientes, listo para que el usuario lo apruebe o corrija. No arrancar a implementar desde aquí: la especificación informa, el usuario aprueba.
 
-Ver: plantilla `plantillas/plantilla-especificacion-modulo.md`, reglas `02`·F1/F2, `01`·C2/C4/C7, `13`·DOC2.
+Ver: plantilla `plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md`, reglas `02`·F1/F2, `01`·C2/C4/C7, `13`·DOC2.

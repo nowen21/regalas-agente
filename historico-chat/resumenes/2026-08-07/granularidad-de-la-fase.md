@@ -31,7 +31,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-granularidad-de
 
 ### H-2 · La dependencia entre criterios de aceptación no tiene dónde escribirse
 
-- **Qué pasó:** la segunda pregunta llegó al hueco real: la dependencia entre CA es justo el insumo que decide si van en una fase o en varias, y el orden. Hoy la [plantilla de la historia](../../../plantillas/HU.md) declara dependencias **a nivel de historia**, no CA a CA.
+- **Qué pasó:** la segunda pregunta llegó al hueco real: la dependencia entre CA es justo el insumo que decide si van en una fase o en varias, y el orden. Hoy la [plantilla de la historia](../../../plantillas/ciclo-vida-proyectos/04-HU.md) declara dependencias **a nivel de historia**, no CA a CA.
 - **Por qué importa:** sin ese mapa, la dependencia se descubre a mitad de ejecución y toca pausar. Y la distinción importa: la de **validación** —CA-03 no se puede probar si CA-01 no existe— manda sobre las fases; la **técnica** —dos CA comparten una migración— no es dependencia del CA, es soporte dentro del plan.
 - **Qué lo soluciona:** una fila en la sección 8 de la plantilla: `CA-0X depende de CA-0Y (motivo)`.
 - **Qué se decidió:** nada. El agente lo propuso y esperó; no hubo respuesta.

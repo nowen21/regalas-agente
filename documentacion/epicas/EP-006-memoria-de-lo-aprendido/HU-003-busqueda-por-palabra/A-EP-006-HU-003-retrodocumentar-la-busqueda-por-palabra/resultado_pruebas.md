@@ -172,7 +172,7 @@
 
 **Concepto:** **No cumple.**
 
-**Justificación:** cuatro de las cinco exigencias funcionales quedaron verificadas, los tres RNF también y los dos transversales que el plan no cubrió se probaron y pasan. Pero el CA-01 pide que el resultado diga **dónde está** lo que se encontró, y la búsqueda no lo dice: `cmd_search` guarda el dato y no lo saca. La [plantilla del resultado](../../../../../plantillas/planes/resultados.md) §6 no admite estado intermedio.
+**Justificación:** cuatro de las cinco exigencias funcionales quedaron verificadas, los tres RNF también y los dos transversales que el plan no cubrió se probaron y pasan. Pero el CA-01 pide que el resultado diga **dónde está** lo que se encontró, y la búsqueda no lo dice: `cmd_search` guarda el dato y no lo saca. La [plantilla del resultado](../../../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) §6 no admite estado intermedio.
 
 **Qué falta para que cumpla:**
 

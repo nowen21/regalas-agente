@@ -293,7 +293,7 @@ Ahí es donde `F23` empieza a cobrar: el 40 y el 41 no se pueden construir hasta
 
 Tres cosas, ninguna es código:
 
-**1 · Una HU nueva en EP-004** — sería la `HU-016`, para el validador de `F23`: que un programa avise cuando un pendiente se marca hecho sin nombrar la HU y la fase donde se construyó. Hoy la regla lo exige y nada lo comprueba. Va desde [plantillas/HU.md](plantillas/HU.md), con sus criterios de aceptación.
+**1 · Una HU nueva en EP-004** — sería la `HU-016`, para el validador de `F23`: que un programa avise cuando un pendiente se marca hecho sin nombrar la HU y la fase donde se construyó. Hoy la regla lo exige y nada lo comprueba. Va desde [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md), con sus criterios de aceptación.
 
 **2 · La fase que arregla el pendiente 40**, colgando de la [HU-001 de EP-007](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-001-instalar-con-una-linea/HU-001-instalar-con-una-linea.md), que ya existe. Son dos documentos: el `plan_trabajo` con las trece preguntas de `F14`, y el `plan_pruebas` con el caso que faltó — instalar en carpeta desechable y comprobar que no queda ningún `«…»`.
 

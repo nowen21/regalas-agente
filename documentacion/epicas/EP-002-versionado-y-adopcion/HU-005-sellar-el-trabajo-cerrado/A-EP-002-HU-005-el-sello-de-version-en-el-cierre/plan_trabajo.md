@@ -20,7 +20,7 @@
 
 | CA de HU-005 | Qué exige | Estado hoy |
 |---|---|---|
-| [CA-01](../HU-005-sellar-el-trabajo-cerrado.md#ca-01--lo-cerrado-queda-sellado) | Lo cerrado queda sellado | **A medias.** Ni [`plantillas/estado-fase.md`](../../../../../plantillas/estado-fase.md) ni [`plantillas/funcionalidad-implementada.md`](../../../../../plantillas/funcionalidad-implementada.md) piden la versión |
+| [CA-01](../HU-005-sellar-el-trabajo-cerrado.md#ca-01--lo-cerrado-queda-sellado) | Lo cerrado queda sellado | **A medias.** Ni [`plantillas/ciclo-vida-proyectos/10-estado-fase.md`](../../../../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) ni [`plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md`](../../../../../plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) piden la versión |
 | [CA-02](../HU-005-sellar-el-trabajo-cerrado.md#ca-02--un-cambio-de-reglas-no-reabre-lo-cerrado) | Un cambio de reglas no reabre lo cerrado | Escrito en el `CHANGELOG` y en el aviso de desfase. Sin prueba |
 
 **Por qué una sola fase.** El CA-02 es la regla y el CA-01 es dónde se escribe: separarlos daría dos fases sobre el mismo párrafo (`02·F12.10`).
@@ -56,8 +56,8 @@
 
 | Archivo | Tipo | Nota |
 |---|---|---|
-| `plantillas/funcionalidad-implementada.md` | Modificar | Le entra el campo del sello: bajo qué versión del estándar cerró la fase |
-| `plantillas/estado-fase.md` | Modificar | Igual, para que el sello esté puesto desde antes del cierre |
+| `plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md` | Modificar | Le entra el campo del sello: bajo qué versión del estándar cerró la fase |
+| `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | Modificar | Igual, para que el sello esté puesto desde antes del cierre |
 | `validadores/plantillas.py` | Modificar | Que el campo nuevo se revise cuando se compara un documento contra su modelo |
 | `…/A-EP-002-HU-005-…/plan_pruebas.md` | Nuevo | Los casos de los dos CA |
 | `…/A-EP-002-HU-005-…/resultado_pruebas.md` | Nuevo | Lo que dieron, con la lista de fases cerradas sin sello |
@@ -69,7 +69,7 @@
 
 | Archivo que cambia | Qué cambia | Quién depende | Dónde |
 |---|---|---|---|
-| `plantillas/funcionalidad-implementada.md` y `plantillas/estado-fase.md` | Un campo obligatorio nuevo | [`validadores/plantillas.py`](../../../../../validadores/plantillas.py), que compara documento contra modelo | Los documentos de las fases ya cerradas quedarían sin ese campo: el campo se exige **hacia adelante**, y eso se declara en la regla y en el validador |
+| `plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md` y `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | Un campo obligatorio nuevo | [`validadores/plantillas.py`](../../../../../validadores/plantillas.py), que compara documento contra modelo | Los documentos de las fases ya cerradas quedarían sin ese campo: el campo se exige **hacia adelante**, y eso se declara en la regla y en el validador |
 
 ### 2.3 Rutas / endpoints y control de acceso  ·  `F14` Q6
 
@@ -115,8 +115,8 @@ Las dos bloquean T-01 a T-03. El CA-02 no depende de ellas.
 
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
-| T-01 | Escribir el campo del sello en el modelo del cierre | `plantillas/funcionalidad-implementada.md` | 1,5 |
-| T-02 | Escribir el campo en el modelo del estado de la fase, si la duda 1 lo resuelve así | `plantillas/estado-fase.md` | 1,0 |
+| T-01 | Escribir el campo del sello en el modelo del cierre | `plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md` | 1,5 |
+| T-02 | Escribir el campo en el modelo del estado de la fase, si la duda 1 lo resuelve así | `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | 1,0 |
 | T-03 | Que el validador de modelos vea el campo nuevo, con el alcance que decida la duda 2 | `validadores/plantillas.py` | 2,0 |
 | T-04 | Caso de prueba: un cierre sin sello se detecta; uno con sello pasa | `plan_pruebas.md` | 1,5 |
 | T-05 | Listar las fases cerradas que quedaron sin sello, sin tocarlas | `resultado_pruebas.md` | 1,0 |

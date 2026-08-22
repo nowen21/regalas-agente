@@ -2,7 +2,7 @@
 
 ## F26 · El inventario de funcionalidades aprobado es la puerta de las épicas
 
-Ninguna épica se deriva sin el **inventario de funcionalidades** de la propuesta, aprobado por el usuario, con estado por ítem y lo no decidido marcado «por confirmar» ([`plantillas/inventario-funcionalidades.md`](../../../plantillas/inventario-funcionalidades.md)). Cada épica cita los ítems que cubre; la que no baje de ninguno no arranca (extiende [`02·F2`](F2-sin-especificacion-acordada-no-hay-codigo.md)).
+Ninguna épica se deriva sin el **inventario de funcionalidades** de la propuesta, aprobado por el usuario, con estado por ítem y lo no decidido marcado «por confirmar» ([`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md)). Cada épica cita los ítems que cubre; la que no baje de ninguno no arranca (extiende [`02·F2`](F2-sin-especificacion-acordada-no-hay-codigo.md)).
 
 **Excepción**: los encargos cuyas épicas ya estaban derivadas cuando el proyecto adoptó esta regla no se reabren (condición). No cubre épicas nuevas de ese mismo encargo, que entran por la puerta (límite). Lo acepta el usuario al adoptar la versión que la trae (autoriza).
 

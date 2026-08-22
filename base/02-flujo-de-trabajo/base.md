@@ -52,7 +52,7 @@ Este capítulo detalla sobre todo **del plan hacia abajo**. Pero un desarrollo e
 
 | # | Paso | Qué responde | Dónde está la regla |
 |---|---|---|---|
-| 0 | **Necesidad / idea** | qué quiere resolver el negocio | se escribe **siempre** como **planteamiento** (`plantillas/planteamiento.md` → `prompts/<slug>-planteamiento.md`) |
+| 0 | **Necesidad / idea** | qué quiere resolver el negocio | se escribe **siempre** como **planteamiento** (`plantillas/ciclo-vida-proyectos/01-planteamiento.md` → `prompts/<slug>-planteamiento.md`) |
 | 1 | **Análisis / contexto** | qué existe hoy, restricciones, normativa | [`F1`](reglas/F1-carga-el-contexto-antes-de-actuar.md) · [`F17`](reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) · skill `analizar-proyecto` |
 | 2 | **Objetivo + criterio de éxito** | qué se logra y cómo se sabe que se logró | [`00 · Identidad y rol`](../00-identidad-y-rol/base.md) · skill `proponer-alcance` |
 | 3 | **Alcance (qué SÍ / qué NO)** | el borde del trabajo | skill `proponer-alcance` · [`01·C3`](../01-conducta.md#c3--quédate-en-tu-tarea) |
@@ -81,9 +81,9 @@ La capa 3 puede ajustar cuán estricta es la regla, pero viene **activada por de
 
 ### F4 — las plantillas y los cinco pasos de la aprobación
 
-El `plan_trabajo` sigue `plantillas/planes/trabajo.md`; el `plan_pruebas` sigue `plantillas/planes/pruebas.md`, con trazabilidad CA→caso y el alcance de ejecución de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
+El `plan_trabajo` sigue `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`; el `plan_pruebas` sigue `plantillas/ciclo-vida-proyectos/08-plan-pruebas.md`, con trazabilidad CA→caso y el alcance de ejecución de [`F5`](reglas/F5-corre-solo-las-suites-que-la-fase-toca.md). Ambos se guardan en la ruta de la fase ([`F12.13`](reglas/F12-relacion-y-nomenclatura-de-fases.md)). La capa 3 puede ajustar las secciones opcionales por proporcionalidad.
 
-Lo que **se aprueba** son esos dos. Lo que pasa al ejecutarlos va en el `resultado_pruebas` (`plantillas/planes/resultados.md`), que se crea al correr la primera prueba y de donde sale el veredicto de la fase: **el plan aprobado no se modifica para anotarle resultados**, porque entonces se pierde contra qué comparar.
+Lo que **se aprueba** son esos dos. Lo que pasa al ejecutarlos va en el `resultado_pruebas` (`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`), que se crea al correr la primera prueba y de donde sale el veredicto de la fase: **el plan aprobado no se modifica para anotarle resultados**, porque entonces se pierde contra qué comparar.
 
 La aprobación no es un hito abstracto, es una secuencia operativa: **1)** redactar los dos documentos · **2)** PAUSAR, sin tocar código · **3)** presentarlos con un resumen corto de qué hará · **4)** esperar el OK explícito o la iteración de cambios · **5)** solo con el OK, implementar ([`F3`](reglas/F3-ejecuta-seguido-el-plan-aprobado.md)).
 
@@ -210,4 +210,4 @@ Trabajo adelantado que "se metió" en una fase por error: si el usuario lo aprue
 
 ---
 
-Molde para crear una fase: `plantillas/fase.md`.
+Molde para crear una fase: `plantillas/ciclo-vida-proyectos/05-fase.md`.

@@ -46,7 +46,7 @@ Los tres sitios donde algo se marca:
 | `plan_trabajo` §11, Definition of Done | Casillas de cierre | Autorreporte. Nadie contrasta tarea por tarea |
 | `plan_trabajo` §13, Cierre | Criterios cumplidos y esfuerzo real contra estimado | Dos números al final, sin decir qué tarea quedó sin hacer |
 
-Y el documento de cierre, [funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) §2, traza contra **la spec**, no contra el plan. Si la spec no existe, como en esta fase, no traza contra nada.
+Y el documento de cierre, [funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §2, traza contra **la spec**, no contra el plan. Si la spec no existe, como en esta fase, no traza contra nada.
 
 Así que queda un hueco: el `resultado_pruebas` comprueba que **el resultado sirve**; nada comprueba que **se hizo lo que se dijo que se iba a hacer**. Son cosas distintas: una fase puede pasar todas las pruebas y haber dejado tres tareas sin tocar, o haber tocado archivos que el plan no declaraba, que es justo lo que `F8` prohíbe.
 
@@ -65,7 +65,7 @@ Me inclino por la segunda: el cierre ya existe para eso, y un sexto archivo por 
 
 Es el **documento de cierre de una fase**: se escribe cuando la fase termina, antes del commit, y deja constancia de qué quedó hecho.
 
-Sirve para que alguien que llegue después entienda qué se construyó sin tener que leer el código. Sus ocho secciones ([plantillas/funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md)):
+Sirve para que alguien que llegue después entienda qué se construyó sin tener que leer el código. Sus ocho secciones ([plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md)):
 
 | Sección | Qué responde |
 |---|---|
@@ -94,7 +94,7 @@ Ahora los documentos reales de la fase A:
 
 Listo. La verificación de que el plan se cumplió quedó en el cierre.
 
-**[funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) §2 ahora tiene dos trazabilidades**, porque responden preguntas distintas:
+**[funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §2 ahora tiene dos trazabilidades**, porque responden preguntas distintas:
 
 - **2.1 · Spec → implementación.** Qué había que lograr.
 - **2.2 · Plan de trabajo → ejecución.** Qué se iba a hacer para lograrlo, tarea por tarea, con dos preguntas que antes nadie hacía: **qué tareas no se hicieron** y **qué archivos se tocaron que el plan no declaraba** (`02·F8`). "Ninguno" es la respuesta esperada; cuando no lo es, queda escrito quién autorizó ampliar el plan.
@@ -230,7 +230,7 @@ Si quiere que se pueda distinguir, es agregarle a esa sección una columna de or
 **Agente** — 2026-08-14 09:10:06
 <!-- agente: 60f6080d-28af-4c7e-8049-221e4f16b294 -->
 
-Hecho. [funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md) §6 ahora pide el **origen** de cada deuda:
+Hecho. [funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md) §6 ahora pide el **origen** de cada deuda:
 
 | Origen | Qué significa |
 |---|---|

@@ -2,7 +2,7 @@
 
 ## DOC12 · Declara el ORIGEN de cada fase al abrirla
 
-Toda fase nueva abre declarando de dónde sale, en una de tres formas: **modifica** fases anteriores —nombrándolas—, **agrega** funcionalidad que no existía, o **ambas**. El formato del bloque está en [`plantillas/fase.md`](../../../plantillas/fase.md), y la carpeta de la fase repite el mismo ORIGEN que su especificación. Sin esto aparecen fases sueltas y nadie sabe si continúan el plan o reaccionan a un hallazgo.
+Toda fase nueva abre declarando de dónde sale, en una de tres formas: **modifica** fases anteriores —nombrándolas—, **agrega** funcionalidad que no existía, o **ambas**. El formato del bloque está en [`plantillas/ciclo-vida-proyectos/05-fase.md`](../../../plantillas/ciclo-vida-proyectos/05-fase.md), y la carpeta de la fase repite el mismo ORIGEN que su especificación. Sin esto aparecen fases sueltas y nadie sabe si continúan el plan o reaccionan a un hallazgo.
 
 **Excepción** — una fase **ya cerrada** no se reabre para ponerle ORIGEN (condición): queda inmutable y su origen se infiere del historial; no habilita a abrir fases nuevas sin declararlo (límite). Si hay duda de si una fase está cerrada, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza).
 

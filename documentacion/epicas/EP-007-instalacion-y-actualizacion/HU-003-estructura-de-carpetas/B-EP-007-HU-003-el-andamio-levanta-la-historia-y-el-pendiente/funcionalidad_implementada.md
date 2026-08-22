@@ -16,7 +16,7 @@
 
 ## 1. Qué se implementó — resumen
 
-El andamio acepta dos modos más: `hu`, que crea la historia desde `plantillas/HU.md` con su README y sus filas en el §9 de la épica y en el README de la épica; y `pendiente`, que crea el pendiente desde el molde nuevo `plantillas/pendiente.md` con su fila en el índice del backlog y su historia en el mapa. El número se lee del disco, el siguiente al mayor. No escribe contenido: los `«…»` quedan.
+El andamio acepta dos modos más: `hu`, que crea la historia desde `plantillas/ciclo-vida-proyectos/04-HU.md` con su README y sus filas en el §9 de la épica y en el README de la épica; y `pendiente`, que crea el pendiente desde el molde nuevo `plantillas/pendiente.md` con su fila en el índice del backlog y su historia en el mapa. El número se lee del disco, el siguiente al mayor. No escribe contenido: los `«…»` quedan.
 
 ## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
 

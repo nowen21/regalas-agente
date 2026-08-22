@@ -126,6 +126,29 @@ class Trinquete(unittest.TestCase):
         niveles, _h = self.veredicto()
         self.assertEqual([], niveles)
 
+    def test_renombrar_no_cuenta_las_marcas_viejas(self):
+        """Un `git mv` no agrega marcas: la línea base sigue al archivo.
+
+        Pasó el 2026-08-21: mover 11 moldes a su carpeta hizo que el trinquete
+        les pusiera línea base cero y contara como nuevas todas sus rayas.
+        """
+        self.commitear("plantillas/algo.md",
+                       u"Un texto %s con inciso %s viejo.\n" % (RAYA, RAYA))
+        _git(self.tmp, "mv", "plantillas/algo.md", "plantillas/ciclo/algo.md")
+        niveles, hallazgos = self.veredicto()
+        self.assertEqual([], niveles,
+                         "\n".join(x.mensaje for x in hallazgos))
+
+    def test_renombrar_y_agregar_marca_si_cuenta(self):
+        """Lo que el trinquete mira es el crecimiento, también tras un `mv`."""
+        self.commitear("plantillas/algo.md", u"Un texto %s viejo.\n" % RAYA)
+        _git(self.tmp, "mv", "plantillas/algo.md", "plantillas/ciclo/algo.md")
+        self.preparar("plantillas/ciclo/algo.md",
+                      u"Un texto %s viejo %s y una raya nueva.\n"
+                      % (RAYA, RAYA))
+        niveles, _h = self.veredicto()
+        self.assertEqual([FALLA], niveles)
+
 
 if __name__ == "__main__":
     unittest.main()

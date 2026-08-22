@@ -20,7 +20,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-3.md](..
 
 **Qué pasó.** La primera fase ejecutada —[`A-EP-006-HU-001`](../../../documentacion/epicas/EP-006-memoria-de-lo-aprendido/HU-001-que-se-guarda-tipos-y-alcances/A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/resultado_pruebas.md)— corrió sus tres casos, cumplió sus dos CA numerados… y quedó en **No cumple**. La HU tiene además dos criterios **transversales**, y el plan de pruebas no les escribió caso mientras declaraba «cobertura 100%».
 
-**Quién lo detectó.** No el agente: `validar.py fases`, con la comprobación que dejó [`A-EP-004-HU-014`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/A-EP-004-HU-014-comparar-los-dos-veredictos/funcionalidad_implementada.md). El agente había escrito «Cumple con defectos abiertos», que la [plantilla del resultado](../../../plantillas/planes/resultados.md) §6 no admite: «no hay estado intermedio».
+**Quién lo detectó.** No el agente: `validar.py fases`, con la comprobación que dejó [`A-EP-004-HU-014`](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/A-EP-004-HU-014-comparar-los-dos-veredictos/funcionalidad_implementada.md). El agente había escrito «Cumple con defectos abiertos», que la [plantilla del resultado](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) §6 no admite: «no hay estado intermedio».
 
 **Por qué importa.** Los 51 planes se escribieron con el mismo molde y varios cuentan la cobertura igual. **Es un defecto de método, no de una fase**, y va a reaparecer.
 
@@ -40,7 +40,7 @@ Y los transversales **no son plantilla sin llenar**: cada HU eligió los suyos y
 
 **Cómo se ejecuta el resto, entonces.** No se reescribe ningún `plan_pruebas.md`: está aprobado y [`02·F4`](../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) dice que no se toca al ejecutar. Lo que se hace en cada fase es **comprobar también los transversales y decirlo en el resultado**, marcados como lo que son: exigencias de la HU que el plan no cubrió. Así una fase cierra en «Cumple» cuando de verdad cumple, y en «No cumple» solo cuando algo falla — no las 51 por el mismo defecto de molde. No toca ningún archivo que el plan no declare, así que [`02·F8`](../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) queda a salvo.
 
-**Lo que hay que decidir, y no lo decide el agente:** si el molde de `plantillas/planes/pruebas.md` pasa a exigir una fila por transversal. Es cambio de plantilla, y va al usuario.
+**Lo que hay que decidir, y no lo decide el agente:** si el molde de `plantillas/ciclo-vida-proyectos/08-plan-pruebas.md` pasa a exigir una fila por transversal. Es cambio de plantilla, y va al usuario.
 
 ### H-4 · La búsqueda de la memoria encuentra, pero no dice dónde está lo que encontró
 

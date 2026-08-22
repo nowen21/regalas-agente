@@ -136,7 +136,7 @@ Las 9 quedaron. Ahora, dónde cae lo que estaba escribiendo: dos cosas ya caben 
 
 Falta cerrar el enlace del otro lado y levantar el diferido de la épica.
 
-Listo. **12 HU** bajo [EP-004](documentacion/epicas/EP-004-comprobacion-automatica/epica.md): las 9 que la épica ya declaraba y 3 nuevas para lo que no cabía en ninguna. Todas pasan la comprobación contra [plantillas/HU.md](plantillas/HU.md), y el enlace épica↔HU quedó en los dos lados.
+Listo. **12 HU** bajo [EP-004](documentacion/epicas/EP-004-comprobacion-automatica/epica.md): las 9 que la épica ya declaraba y 3 nuevas para lo que no cabía en ninguna. Todas pasan la comprobación contra [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md), y el enlace épica↔HU quedó en los dos lados.
 
 **Dónde cayó lo que estaba escribiendo:**
 
@@ -195,7 +195,7 @@ Y un hallazgo de paso: mi propio validador de F2 marcó este plan porque en la c
 **Agente** — 2026-08-14 09:13:35
 <!-- agente: 45fc393b-e1e8-452a-a284-b426b4515de0 -->
 
-**Spec** es el documento que dice **qué debe hacer un módulo, antes de escribir su código**: alcance, reglas de negocio, modelo de datos, permisos, comportamiento y cómo se prueba. La regla que la exige es [F2 · Sin spec acordada no hay código](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), y su molde es [plantillas/plantilla-especificacion-modulo.md](plantillas/plantilla-especificacion-modulo.md). Vive en `documentacion/<módulo>/spec.md`.
+**Spec** es el documento que dice **qué debe hacer un módulo, antes de escribir su código**: alcance, reglas de negocio, modelo de datos, permisos, comportamiento y cómo se prueba. La regla que la exige es [F2 · Sin spec acordada no hay código](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), y su molde es [plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md](plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md). Vive en `documentacion/<módulo>/spec.md`.
 
 La diferencia con la HU, que es donde se confunde:
 
@@ -241,7 +241,7 @@ HOY:    el plan no declara la spec del módulo (F2: sin spec acordada no hay có
 
 MEJOR:  el plan no dice dónde está escrito qué debe hacer este módulo.
         Ese documento va en documentacion/<módulo>/spec.md y se hace desde
-        plantillas/plantilla-especificacion-modulo.md. Sin él, qué hace el código lo
+        plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md. Sin él, qué hace el código lo
         decide quien lo escribe (02·F2)
 ```
 

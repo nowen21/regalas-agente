@@ -38,7 +38,7 @@
 
 | # | Qué hacer | Qué tiene que pasar | Qué salió |
 |---|---|---|---|
-| 1 | Abrir [`plantillas/inventario-funcionalidades.md`](../../../../../plantillas/inventario-funcionalidades.md) y buscar los cuatro estados | Existe / Parcial / Por construir / Por confirmar, con «por confirmar» como pregunta | Los cuatro están, en la nota del §1; la cabecera dice «lo que diga "por confirmar" es una pregunta, no una decisión» |
+| 1 | Abrir [`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](../../../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y buscar los cuatro estados | Existe / Parcial / Por construir / Por confirmar, con «por confirmar» como pregunta | Los cuatro están, en la nota del §1; la cabecera dice «lo que diga "por confirmar" es una pregunta, no una decisión» |
 | 2 | Buscar la sección de lo que el usuario ya definió y la marca de preguntas abiertas | Las dos están, con su instrucción | §0 con su nota («nada que no esté acá se da por decidido») y §3 con las `P-n` numeradas |
 | 3 | Leer la caja | Acompaña a la propuesta; madura hasta manual | Lo dice, y agrega el rasgo del proyecto chico: la puerta es la aprobación, no el tamaño |
 | 4 | Dirección semilla→molde | Nada del semilla sin sitio | Las seis secciones del semilla caben: sus §0-§3 en los §0-§1 del molde (grupos), su §4 en el §2 (proyección), su §5 en el §3 (preguntas), su §6 en el §4 (qué pasa al aprobar), su firma en la nota final |
@@ -151,7 +151,7 @@ Ninguno.
 
 | ID | Tipo | Dónde está |
 |---|---|---|
-| EV-01 | El molde y sus comprobaciones | [`plantillas/inventario-funcionalidades.md`](../../../../../plantillas/inventario-funcionalidades.md); salida del `grep` (0) y de `validar.py estandar` en la sesión del 2026-08-21 |
+| EV-01 | El molde y sus comprobaciones | [`plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`](../../../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md); salida del `grep` (0) y de `validar.py estandar` en la sesión del 2026-08-21 |
 | EV-02 | La regla, su checklist y su registro | [`F26`](../../../../../base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) · [`base.md` del 02](../../../../../base/02-flujo-de-trabajo/base.md) · [`reglas-validables.md`](../../../../../validadores/reglas-validables.md) |
 | EV-03 | El veredicto de conducta | El bloque CP-003 de este documento, §2 |
 

@@ -23,7 +23,7 @@ El capítulo 02 es el más grande (46 KB, F0–F13, con sub-reglas F4.1–F4.5 y
 
 | Opción | Qué implica |
 |---|---|
-| **Sí, a `reglas/`** *(recomendada)* | Toda regla del capítulo bajo `reglas/`, sin excepciones. Hay que actualizar el GATE de `validadores/cargador.py` y las citas de `plantillas/fase.md`, `13-documentacion.md` y otros. |
+| **Sí, a `reglas/`** *(recomendada)* | Toda regla del capítulo bajo `reglas/`, sin excepciones. Hay que actualizar el GATE de `validadores/cargador.py` y las citas de `plantillas/ciclo-vida-proyectos/05-fase.md`, `13-documentacion.md` y otros. |
 | No, se quedan donde están | Cero rutas rotas, pero el capítulo queda con reglas en dos sitios distintos. |
 
 **Respuesta del usuario:** `F4/` con subcarpeta · Sí, a `reglas/`.
@@ -68,7 +68,7 @@ base/02-flujo-de-trabajo/
 |---|---|
 | `validadores/cargador.py` | el `GATE` apuntaba a `02-flujo-de-trabajo/F13/base.md`; sin ese arreglo el gate de arranque dejaba de cargarse |
 | `validadores/fases.py` | ruta de `F12` en la cabecera |
-| `plantillas/fase.md`, `README.md`, `anatomia/mapa-del-sitio.md` | punteros al capítulo |
+| `plantillas/ciclo-vida-proyectos/05-fase.md`, `README.md`, `anatomia/mapa-del-sitio.md` | punteros al capítulo |
 | `base/01-conducta.md`, `08-pruebas.md`, `13-documentacion.md`, `00-identidad-y-rol/reglas/ID3`, `ID5`, `20-meta-reglas/{base.md, estructura-regla.md, reglas/M4}` | citas al capítulo, ahora al archivo de la regla y no a un ancla del índice |
 | `analisis/base-2026-08-07-cumplimiento-meta-reglas.md` | solo los punteros de ruta del informe; los hallazgos no se tocaron |
 | `CHANGELOG.md` + `VERSION` | **2.3.0 → 2.4.0**, MENOR |
@@ -114,7 +114,7 @@ base/02-flujo-de-trabajo/
 
 Ninguna carpeta dentro de `reglas/`. `estructura-base.md` es anexo, no regla, así que va a la raíz del capítulo — donde `20-meta-reglas/` ya tiene `checklist.md` y `estructura-regla.md`.
 
-Se reenlazó todo lo que apuntaba a las rutas viejas: el `GATE` de `cargador.py`, `fases.py`, `plantillas/fase.md`, `anatomia/mapa-del-sitio.md`, el informe de `analisis/` y las citas de `01-conducta`, `08-pruebas`, `13-documentacion`, `M4`.
+Se reenlazó todo lo que apuntaba a las rutas viejas: el `GATE` de `cargador.py`, `fases.py`, `plantillas/ciclo-vida-proyectos/05-fase.md`, `anatomia/mapa-del-sitio.md`, el informe de `analisis/` y las citas de `01-conducta`, `08-pruebas`, `13-documentacion`, `M4`.
 
 **Verificación:** `validar.py estandar` sin incumplimientos · `pruebas.py` 191/191 verdes · el gate `F13` carga desde su ruta nueva.
 
@@ -205,7 +205,7 @@ Pendiente suyo: las diez reglas reprobadas, y la prueba que falta para el `GATE`
 Que son distintas se ve en tres cosas:
 
 - **Cada una tiene su propia exigencia, y se cumplen por separado.** Puede responder las trece preguntas (`F4.1`) y aun así saltarse una etapa del ciclo (`F4.2`). Puede derivar todo del CA (`F4.4`) y escribir el plan sobre supuestos (`F4.3`). Esa es la prueba que usa [estructura-regla.md](base/20-meta-reglas/estructura-regla.md#L106): *¿se pueden cumplir por separado? Sí → son dos*.
-- **Se citan sueltas, y desde fuera del capítulo.** `01·C17` cita `F4.2` y `F4.4`; `13·DOC` cita `F4.3`; [plantillas/planes/trabajo.md](plantillas/planes/trabajo.md) cita `F4.1` doce veces. Nadie cita "F4 completa".
+- **Se citan sueltas, y desde fuera del capítulo.** `01·C17` cita `F4.2` y `F4.4`; `13·DOC` cita `F4.3`; [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md](plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) cita `F4.1` doce veces. Nadie cita "F4 completa".
 - **Declaran dependencia entre ellas, no pertenencia.** `F4.3` y `F4.4` extienden a `F4.1` — no a `F4`. Y `F4.5` extiende a `F4.4`. Eso es una cadena de reglas, no las partes de una.
 
 Lo que no son es lo que su número dice. `M4` solo admite `<PREFIJO><n>`: `F4.1` se lee como "la parte 1 de F4", igual que `F12.1` es de verdad una parte del texto congelado. Por eso las cinco reprueban la fila 6, y por eso `M4` reprueba su propia fila 17 — el catálogo usa una forma de ID que la regla del ID no contempla.

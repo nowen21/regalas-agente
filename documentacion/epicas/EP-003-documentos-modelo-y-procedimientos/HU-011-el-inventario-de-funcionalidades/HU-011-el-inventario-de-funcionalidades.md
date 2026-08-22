@@ -59,7 +59,7 @@ Y cada fila se escribe para quien va a usar el producto, porque el documento mad
 
 **Cómo validarlo:**
 
-1. Abrir `plantillas/inventario-funcionalidades.md`. Resultado esperado: existe, con los cuatro estados, la sección de lo que el usuario ya definió, y las preguntas abiertas con su marca.
+1. Abrir `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`. Resultado esperado: existe, con los cuatro estados, la sección de lo que el usuario ya definió, y las preguntas abiertas con su marca.
 2. Compararlo contra el inventario semilla de `shopnest-mesa`. Resultado esperado: todo lo que aquel tiene, el molde lo pide; si el molde pide algo que aquel no tiene, queda anotado para reportárselo (es el cierre que el pendiente fija).
 3. Leer la caja del molde. Resultado esperado: dice que el documento madura hasta manual y que acompaña a la propuesta.
 - **Aprobado cuando:** las tres cosas dan lo esperado y el molde pasa `validar.py plantilla`.

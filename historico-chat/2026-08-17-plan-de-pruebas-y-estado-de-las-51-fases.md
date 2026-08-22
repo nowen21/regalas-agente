@@ -46,7 +46,7 @@ Listo. Escribí el `plan_pruebas.md` y el `estado-fase.md` de las **51 fases** q
 
 **Qué contiene cada uno**
 
-El `plan_pruebas.md` sigue la [plantilla](plantillas/planes/pruebas.md) en su forma de fase chica (§3, 5, 6, 9 y 12), derivado del `plan_trabajo.md` de su fase: cada CA con al menos un caso, cobertura 100 %, y los riesgos del plan convertidos en criterios de defecto. Queda en **Borrador** — se aprueba junto con el plan de trabajo ([`02·F4`](base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
+El `plan_pruebas.md` sigue la [plantilla](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) en su forma de fase chica (§3, 5, 6, 9 y 12), derivado del `plan_trabajo.md` de su fase: cada CA con al menos un caso, cobertura 100 %, y los riesgos del plan convertidos en criterios de defecto. Queda en **Borrador** — se aprueba junto con el plan de trabajo ([`02·F4`](base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
 
 El `estado-fase.md` las sitúa en la **estación 4** (pausa y presentación), con veredicto «Todavía no se ejecutó», las tareas en Pendiente o **Bloqueada** con la duda que las bloquea, y qué falta para desbloquear.
 

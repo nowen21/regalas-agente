@@ -27,7 +27,7 @@ No bloquea nada, y por eso es traicionero: el trabajo avanza en verde sobre un a
 
 Tres piezas, y la tercera es de conducta:
 
-1. **Un molde nuevo**, `plantillas/inventario-funcionalidades.md`: la lista completa de funcionalidades de lo que se va a desarrollar, con estado por ítem (existe / parcial / por construir / por confirmar) y las preguntas abiertas marcadas. Acompaña a la propuesta. Y con un rasgo que el usuario agregó después (2026-08-21): *«ese inventario es lo que se convierte en la documentación final del producto, manuales y todo eso»* — el molde debe nacer pensado para madurar hasta manual, no para botarse al derivar las épicas.
+1. **Un molde nuevo**, `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md`: la lista completa de funcionalidades de lo que se va a desarrollar, con estado por ítem (existe / parcial / por construir / por confirmar) y las preguntas abiertas marcadas. Acompaña a la propuesta. Y con un rasgo que el usuario agregó después (2026-08-21): *«ese inventario es lo que se convierte en la documentación final del producto, manuales y todo eso»* — el molde debe nacer pensado para madurar hasta manual, no para botarse al derivar las épicas.
 2. **Una regla del capítulo `02`** que lo exija **aprobado por el usuario antes de derivar épicas** — como `F2` exige la especificación antes del código: el inventario es el punto de partida de las épicas, y una épica que no baje de un ítem del inventario no arranca.
 3. **La conducta**: el alcance que el usuario no ha dicho **se pregunta, no se asume** — evaluar si `01·C21` ya lo cubre o necesita la extensión explícita («ante alcance no declarado, la pregunta va antes del planteamiento»).
 

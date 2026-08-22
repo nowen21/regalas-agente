@@ -34,7 +34,7 @@ Se anotan todos, resueltos y abiertos.
 - **Responde a:** EP-005 · HU-008, sus tres CA.
 - **Dispara:** —. Por decisión del usuario, la regla del capítulo de pruebas queda sin escribir.
 - **Orden de resolución:** 2 de 3 · se cerró con la corrida 2, que reemplaza al veredicto viejo.
-- **Dónde queda:** [`plantillas/planes/resultados.md`](../../../plantillas/planes/resultados.md) · la corrida 2 y la anulación de la corrida 1, en el [resultado de pruebas de la fase](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) · versión 15.4.0.
+- **Dónde queda:** [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) · la corrida 2 y la anulación de la corrida 1, en el [resultado de pruebas de la fase](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) · versión 15.4.0.
 - **Nace en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
 - **Cerrado en:** 2026-08-14 · el-enganche-del-resumen-no-crea-el-resumen.
 - **Con qué se retoma:** —

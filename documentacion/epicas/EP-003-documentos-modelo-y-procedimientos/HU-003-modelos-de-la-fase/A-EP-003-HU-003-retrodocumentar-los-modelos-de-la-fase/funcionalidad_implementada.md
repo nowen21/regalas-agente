@@ -7,7 +7,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-003-retrodocumentar-los-modelos-de-la-fase` |
-| **Módulo** | Documentos modelo — [`plantillas/planes/`](../../../../../plantillas/planes/trabajo.md) |
+| **Módulo** | Documentos modelo — [`plantillas/planes/`](../../../../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) |
 | **Especificación del módulo** | [`documentacion/documentos-modelo/spec.md`](../../../../documentos-modelo/spec.md), §4.2 escrita en esta fase |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-003: CA-01, CA-02, CA-03 y sus dos transversales |
@@ -25,9 +25,9 @@
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| RN-14 · cinco modelos, cinco preguntas | documentación | `plantillas/planes/` y `plantillas/estado-fase.md` | ✅ Ya existían | CP-001 |
-| RN-15 · el plan no lleva estado | documentación | `plantillas/planes/trabajo.md` | ✅ Ya existía | CP-004 |
-| RN-16 · el avance vive en el estado de fase | documentación | `plantillas/estado-fase.md` | ✅ Ya existía | CP-004 |
+| RN-14 · cinco modelos, cinco preguntas | documentación | `plantillas/planes/` y `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | ✅ Ya existían | CP-001 |
+| RN-15 · el plan no lleva estado | documentación | `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md` | ✅ Ya existía | CP-004 |
+| RN-16 · el avance vive en el estado de fase | documentación | `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | ✅ Ya existía | CP-004 |
 | RN-17 · la fase recién abierta tiene forma | documentación | El mismo | ✅ Ya existía | Transversal |
 | Que la fase incompleta se reporte | programa | [`fases.py`](../../../../../validadores/fases.py) | ✅ Ya existía | CP-002 |
 | Que la tarea sin criterio se reporte | programa | [`flujo.py`](../../../../../validadores/flujo.py) · `F18` | ✅ Ya existía | CP-005 |

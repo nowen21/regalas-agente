@@ -2,7 +2,7 @@
 
 ## DOC15 · Crea la Historia de Usuario desde la plantilla central
 
-Toda HU se parte de [`plantillas/HU.md`](../../../plantillas/HU.md), leída del estándar **cada vez** —no de memoria ni de una copia local, que envejece—, y se guarda versionada en la ubicación que fija [`02·F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Se rellena con contenido real: rol concreto, criterios que cubran camino feliz, error y caso borde, y sin secciones a medio llenar.
+Toda HU se parte de [`plantillas/ciclo-vida-proyectos/04-HU.md`](../../../plantillas/ciclo-vida-proyectos/04-HU.md), leída del estándar **cada vez** —no de memoria ni de una copia local, que envejece—, y se guarda versionada en la ubicación que fija [`02·F12.13`](../../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md). Se rellena con contenido real: rol concreto, criterios que cubran camino feliz, error y caso borde, y sin secciones a medio llenar.
 
 ```
 INCORRECTO: escribir la HU de memoria, o copiar la plantilla dentro del proyecto

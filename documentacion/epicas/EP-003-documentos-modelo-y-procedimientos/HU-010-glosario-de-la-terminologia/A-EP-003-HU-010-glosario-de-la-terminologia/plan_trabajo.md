@@ -132,7 +132,7 @@ Sin columna de estado, a propósito: este plan se aprueba y no se vuelve a tocar
 | ID | Tarea | Est. | Depende de | Evidencia |
 |---|---|:--:|---|---|
 | T-08 | Marcar dentro de su entrada cada término que sigue en otro idioma, con por qué no tiene traducción usada (`01·C20`) | 1 h | T-05 | EV-02 |
-| T-09 | Cerrar el glosario con la tabla de lo que falta traducir, contrastada contra los nombres de los roles de `skills/`, `base/00-identidad-y-rol/reglas/ID6…` y `plantillas/estado-fase.md` | 1 h | T-08 | EV-05 |
+| T-09 | Cerrar el glosario con la tabla de lo que falta traducir, contrastada contra los nombres de los roles de `skills/`, `base/00-identidad-y-rol/reglas/ID6…` y `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | 1 h | T-08 | EV-05 |
 
 ### Requisitos no funcionales
 

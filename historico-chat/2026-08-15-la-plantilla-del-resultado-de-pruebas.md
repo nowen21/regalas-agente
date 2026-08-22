@@ -16,7 +16,7 @@
 **Agente** — 2026-08-15 09:26:16
 <!-- agente: 5ea5da18-ec20-44bf-be53-c0bd3b636637 -->
 
-Ubicado, con una corrección de ruta: `plantillas/planes/resultado.md` no existe. El archivo se llama [plantillas/planes/resultados.md](plantillas/planes/resultados.md) — en plural. Es el que leí.
+Ubicado, con una corrección de ruta: `plantillas/planes/resultado.md` no existe. El archivo se llama [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) — en plural. Es el que leí.
 
 Es la plantilla del **resultado de pruebas de una fase** (`resultado_pruebas.md`, `[CAPA 3]`): registra qué se ejecutó de verdad y con qué resultado, y de ahí sale el veredicto. Se crea junto con los dos planes, aunque no se haya corrido nada todavía.
 
@@ -96,7 +96,7 @@ Se parten en dos grupos:
 **Agente** — 2026-08-15 09:35:45
 <!-- agente: 6f584702-8a68-4f71-bd2a-679cf01220e9 -->
 
-Agregada en [plantillas/planes/resultados.md:11](plantillas/planes/resultados.md#L11), como nota de apertura — la misma forma que ya tienen las secciones 2, 3, 5, 5.1 y 8:
+Agregada en [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md:11](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md#L11), como nota de apertura — la misma forma que ya tienen las secciones 2, 3, 5, 5.1 y 8:
 
 > **La pregunta que responde esta sección: ¿de qué corrida estamos hablando?** El resto del documento dice **qué salió**; esta tabla dice **de qué prueba salió**. Los tres primeros campos la hacen **trazable** —a qué fase, a qué historia y contra qué plan—; los cuatro últimos la hacen **repetible** —cuál corrida, cuándo, quién y sobre qué—. Un `resultado_pruebas` sin esto no se puede atribuir a nada ni volver a correr, y un "aprobado" que nadie puede repetir no es una prueba: es una afirmación.
 
@@ -162,7 +162,7 @@ La §1 abre diciendo qué es, para no dejarlo al aire:
 
 Sumado a la entrada 15.4.2 del [CHANGELOG.md](CHANGELOG.md).
 
-Solo toqué esta plantilla. «Corrida» sigue en [base/02-flujo-de-trabajo](base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](base/08-pruebas.md), [base/glosario.md](base/glosario.md) y [plantillas/planes/pruebas.md](plantillas/planes/pruebas.md) — replicarlo allá lo indica usted.
+Solo toqué esta plantilla. «Corrida» sigue en [base/02-flujo-de-trabajo](base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](base/08-pruebas.md), [base/glosario.md](base/glosario.md) y [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) — replicarlo allá lo indica usted.
 
 ### 11 · Usuario — 2026-08-15 09:48:53
 > ¿Qué se está probando? eso es lo que debe ir
@@ -241,7 +241,7 @@ Dejé debajo la nota de qué es una ejecución: es la que dice cómo llenar **Ci
 **Agente** — 2026-08-15 10:56:40
 <!-- agente: 02ed7977-90cc-45e9-9edc-4b13dfa8a7d7 -->
 
-Ya está agregada — la puse en el mismo turno. Así quedó [plantillas/planes/resultados.md:29](plantillas/planes/resultados.md#L29):
+Ya está agregada — la puse en el mismo turno. Así quedó [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md:29](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md#L29):
 
 ```
 ## 1. Resumen de la ejecución
@@ -513,7 +513,7 @@ Tres consecuencias, en orden:
 |---|---|
 | [plan_pruebas.md](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/A-EP-003-HU-010-glosario-de-la-terminologia/plan_pruebas.md) | Es ahí donde se parte el paso. El `resultado_pruebas` copia los pasos del plan, no los inventa |
 | El plan está aprobado | Partirlo lo sube a versión 1.1 y obliga a reejecutar CP-001, que ya venía pendiente por D-04 |
-| [plantillas/planes/pruebas.md](plantillas/planes/pruebas.md) | No exige «un paso, una acción» en ninguna parte. Por eso el paso nació doble y nadie lo detectó al aprobar el plan |
+| [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) | No exige «un paso, una acción» en ninguna parte. Por eso el paso nació doble y nadie lo detectó al aprobar el plan |
 
 Lo tercero es lo que evita que vuelva a pasar en otras fases. Dígame por dónde arranco.
 
@@ -525,7 +525,7 @@ Lo tercero es lo que evita que vuelva a pasar en otras fases. Dígame por dónde
 
 Corregido en los tres sitios, y la regla se aplicó al resto del plan, no solo al paso que usted señaló.
 
-**1 · La regla** — [plantillas/planes/pruebas.md](plantillas/planes/pruebas.md) §6: *un paso, una acción*, con ejemplo INCORRECTO/CORRECTO. Es lo que evita que se repita en otras fases.
+**1 · La regla** — [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) §6: *un paso, una acción*, con ejemplo INCORRECTO/CORRECTO. Es lo que evita que se repita en otras fases.
 
 **2 · El plan de la fase, versión 1.1** — seis pasos partidos o reescritos:
 
@@ -727,7 +727,7 @@ Le puse nombre a la sesión, que era lo único que quedaba a mi alcance — la a
 
 | Qué | Archivos |
 |---|---|
-| El estándar (16.0.0) | [plantillas/planes/resultados.md](plantillas/planes/resultados.md), [plantillas/planes/pruebas.md](plantillas/planes/pruebas.md), [CHANGELOG.md](CHANGELOG.md), [VERSION](VERSION) |
+| El estándar (16.0.0) | [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md), [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md), [CHANGELOG.md](CHANGELOG.md), [VERSION](VERSION) |
 | La fase de EP-003 · HU-010 | `plan_pruebas.md` (v1.2) y `resultado_pruebas.md` |
 | Backlog | [pendientes/26](pendientes/26-corrida-y-ejecucion-en-el-estandar.md), [27](pendientes/27-la-fase-a-de-hu-010-cerro-sin-cumplir.md), [28](pendientes/28-el-veredicto-de-la-fase-vive-en-dos-sitios.md) y su README |
 | EP-004 | [HU-014](documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/HU-014-un-solo-veredicto-por-fase.md), `epica.md`, `README.md` |
@@ -743,7 +743,7 @@ Dígame cuando lo haya leído y le pregunto por el commit.
 **Agente** — reconstruido a mano, sin hora del reloj
 <!-- sin marca del enganche: la hora original era una estimación (hora no registrada) -->
 
-Commit `8ed276c`, subido a `origin/main`. Doce archivos. Se avisó que el commit anterior, `cd94e5b`, se había llevado parte del trabajo de esta sesión: `VERSION` en 16.0.0, las dos entradas del `CHANGELOG` y `plantillas/planes/resultados.md`. Se dejó fuera `base/glosario.md` y la carpeta de la fase A de EP-003 · HU-010, por ser trabajo de la sesión del 2026-08-14.
+Commit `8ed276c`, subido a `origin/main`. Doce archivos. Se avisó que el commit anterior, `cd94e5b`, se había llevado parte del trabajo de esta sesión: `VERSION` en 16.0.0, las dos entradas del `CHANGELOG` y `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`. Se dejó fuera `base/glosario.md` y la carpeta de la fase A de EP-003 · HU-010, por ser trabajo de la sesión del 2026-08-14.
 
 ### 57 · Usuario — hora no registrada
 > si suba  a git

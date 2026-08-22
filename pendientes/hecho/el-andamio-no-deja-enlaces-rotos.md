@@ -10,7 +10,7 @@
 
 ## El problema
 
-[validadores/andamio.py](../../validadores/andamio.py) copia [../plantillas/planes/resultados.md](../../plantillas/planes/resultados.md) tal cual a la carpeta de la fase. La plantilla enlaza `../../base/08-pruebas.md`, que resuelve desde `plantillas/planes/` y no desde `documentacion/epicas/EP/HU/fase/`, que está tres niveles más abajo. Las tres fases levantadas el 2026-08-20 nacieron con ese enlace roto y `validar.py estandar` lo reportó.
+[validadores/andamio.py](../../validadores/andamio.py) copia [../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) tal cual a la carpeta de la fase. La plantilla enlaza `../../base/08-pruebas.md`, que resuelve desde `plantillas/planes/` y no desde `documentacion/epicas/EP/HU/fase/`, que está tres niveles más abajo. Las tres fases levantadas el 2026-08-20 nacieron con ese enlace roto y `validar.py estandar` lo reportó.
 
 ## Por qué importa
 

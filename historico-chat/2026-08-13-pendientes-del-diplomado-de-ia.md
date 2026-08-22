@@ -55,7 +55,7 @@ Subido.
 
 Tres cosas que conviene que sepa:
 
-- **Staged a mano.** El árbol tenía trabajo de otra sesión sin commitear (`CHANGELOG`, `VERSION`, `plantillas/HU.md`, `documentacion/`, `planteamiento.md`, `prompts/`). No lo toqué. En `historico-chat/README.md` había dos líneas nuevas, la mía y la de la otra sesión; subí solo la mía, porque su archivo todavía no está en git y el índice habría quedado apuntando a nada.
+- **Staged a mano.** El árbol tenía trabajo de otra sesión sin commitear (`CHANGELOG`, `VERSION`, `plantillas/ciclo-vida-proyectos/04-HU.md`, `documentacion/`, `planteamiento.md`, `prompts/`). No lo toqué. En `historico-chat/README.md` había dos líneas nuevas, la mía y la de la otra sesión; subí solo la mía, porque su archivo todavía no está en git y el índice habría quedado apuntando a nada.
 - **El push arrastró tres commits viejos** (`543869e`, `88bfe60`, `0e7d9a9`) que estaban hechos y sin publicar. Eran suyos, no de esta sesión.
 - Los enganches de commit pasaron: `0 fallas` en versionado y en el mensaje.
 

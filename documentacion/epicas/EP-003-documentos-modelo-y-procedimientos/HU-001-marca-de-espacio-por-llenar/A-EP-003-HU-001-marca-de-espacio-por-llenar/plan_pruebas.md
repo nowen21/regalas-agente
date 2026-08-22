@@ -65,7 +65,7 @@ Lo que se entrega es texto: una regla y unas plantillas. No hay código que ejec
 | **Tipo** | Funcional — camino feliz |
 | **Prioridad** | Crítica |
 | **Precondiciones** | La regla escrita y las plantillas pasadas a la marca acordada |
-| **Datos de entrada** | Tres plantillas de tamaños distintos: `plantillas/HU.md`, `plantillas/epica.md` y `plantillas/senales.md` |
+| **Datos de entrada** | Tres plantillas de tamaños distintos: `plantillas/ciclo-vida-proyectos/04-HU.md`, `plantillas/ciclo-vida-proyectos/03-epica.md` y `plantillas/senales.md` |
 
 **Pasos**
 

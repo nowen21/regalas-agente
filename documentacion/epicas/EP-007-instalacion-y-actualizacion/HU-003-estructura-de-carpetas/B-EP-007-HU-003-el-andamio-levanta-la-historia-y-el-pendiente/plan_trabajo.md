@@ -38,7 +38,7 @@ Leído el 2026-08-20:
 
 - [validadores/andamio.py](../../../../../validadores/andamio.py): `crear(raiz, epica, hu, descripcion)` para la fase; `siguiente_consecutivo()` lee lo que hay en vez de contar; `main()` con tres argumentos posicionales.
 - [validadores/pendientes.py](../../../../../validadores/pendientes.py) `proximo_libre(proyecto)`: el número siguiente del backlog; lo usa `validar.py pendientes`.
-- [plantillas/HU.md](../../../../../plantillas/HU.md): `HU-000`, `«Épica padre»` y el resto con `«…»`. No hay plantilla para el pendiente propio del estándar: `pendiente-reportado.md` es el de un proyecto; la ficha que usan los pendientes 60 a 70 es la misma (Estado · Historia de usuario · De dónde sale · Proyecto de origen · El problema · Por qué importa · Qué falta · El límite · Cómo se sabrá que cerró).
+- [plantillas/ciclo-vida-proyectos/04-HU.md](../../../../../plantillas/ciclo-vida-proyectos/04-HU.md): `HU-000`, `«Épica padre»` y el resto con `«…»`. No hay plantilla para el pendiente propio del estándar: `pendiente-reportado.md` es el de un proyecto; la ficha que usan los pendientes 60 a 70 es la misma (Estado · Historia de usuario · De dónde sale · Proyecto de origen · El problema · Por qué importa · Qué falta · El límite · Cómo se sabrá que cerró).
 - `documentacion/epicas/EP-005/epica.md` §9 tiene cuatro columnas (ID, Título, Prioridad, Estimación); la plantilla trae seis. El andamio lee la cabecera real.
 - `pendientes/README.md`: secciones temáticas `###` con tablas de cuatro columnas, y el mapa «Ningún pendiente vive suelto» con una fila por historia.
 - `documentacion/epicas/EP-005/README.md` y los README de HU: tabla `Qué | De qué se trata` con enlaces `DOC14`.

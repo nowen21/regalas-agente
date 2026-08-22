@@ -152,7 +152,7 @@
 |---|---|---|---|
 | 1 | Anotar, recorriendo el glosario, los términos que no están en español | Queda una lista | 22 términos: 10 que se quedan y 12 que faltan traducir |
 | 2 | Leer la justificación de cada uno | Cada uno dice por qué no tiene traducción usada, o queda marcado como pendiente | Los 10 que se quedan tienen su motivo escrito; los 12 quedaron marcados |
-| 3 | Contrastar la lista contra los nombres de los roles en `skills/`, `00·ID6` y `plantillas/estado-fase.md` | Se ve cuáles hay que cambiar y en qué archivos | Contrastado: cada uno quedó con el archivo donde vive |
+| 3 | Contrastar la lista contra los nombres de los roles en `skills/`, `00·ID6` y `plantillas/ciclo-vida-proyectos/10-estado-fase.md` | Se ve cuáles hay que cambiar y en qué archivos | Contrastado: cada uno quedó con el archivo donde vive |
 | 4 | Comprobar que la tabla dice que renombrar es trabajo aparte | Lo dice, y la fase no lo hace | No quedó registrado |
 
 **Cómo se verificó que la pareja cumple:** los pasos 1 a 3 salieron como decía la columna del medio y son los que el criterio pide: la lista está, con motivo y con ubicación. Falta el 4, que es el que evita que alguien lea la lista como una tarea de esta fase.
@@ -222,7 +222,7 @@ El ciclo 1 dejó 16 pasos sin registro y 3 hechos distinto (§2). Acá se corrie
 | Paso | Qué pedía | Qué pasó |
 |---|---|---|
 | 1 | Conseguir a alguien que no haya escrito el glosario | El usuario. No participó en escribirlo |
-| 2 | Entregarle las entradas sin explicación previa | Llegó al glosario por su cuenta, buscando entender una frase de `plantillas/planteamiento.md` |
+| 2 | Entregarle las entradas sin explicación previa | Llegó al glosario por su cuenta, buscando entender una frase de `plantillas/ciclo-vida-proyectos/01-planteamiento.md` |
 | 3 | Pedirle que diga con sus palabras qué es cada una | No pudo con **Brief**. Lo dijo así: *"si una persona que no sabe va y lee el glosario para entender esto: el brief responde qué se necesita y qué no se negocia, y lo que traduce el glosario es: quiere decir breve, entonces qué debería entender"* |
 | 4 | Anotar cada pregunta que tuvo que hacer | Tres, y las tres eran defectos: (a) *"esto aporta: en inglés quiere decir breve?"* · (b) *"si la palabra está en inglés ya sé que es en inglés"* · (c) *"en el glosario no dice esto: el documento donde se escribe qué se necesita"* |
 | 5 | Releer contra la lista de marcadores | Hecho en el ciclo 1 |

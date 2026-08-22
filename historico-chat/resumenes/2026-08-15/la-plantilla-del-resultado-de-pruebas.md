@@ -12,7 +12,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 
 ### H-1 · Las secciones de la plantilla no decían qué se responde en ellas
 
-- **Qué pasó:** las secciones 0, 1 y 2 de [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md) arrancaban directo en la tabla.
+- **Qué pasó:** las secciones 0, 1 y 2 de [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) arrancaban directo en la tabla.
 - **Por qué importa:** una sección que no dice qué responde se llena como trámite. Se pone algo en cada celda y nadie nota que no contesta nada.
 - **Qué lo soluciona:** cada sección abre con su pregunta y con qué se hace ahí para responderla.
 - **Qué se decidió:** §0 «¿qué se está probando?», §1 «¿cuántas pruebas se planearon, cuántas se hicieron y cómo les fue?», §2 «¿qué problema resuelve cada pareja CA–CP?».
@@ -20,7 +20,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003, documentos modelo y procedimientos.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md), versión 15.4.2 del [CHANGELOG](../../../CHANGELOG.md).
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md), versión 15.4.2 del [CHANGELOG](../../../CHANGELOG.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Con qué se retoma:** —.
@@ -35,7 +35,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003 · HU-010, el glosario de la terminología.
 - **Dispara:** —, es replicar lo mismo en otros archivos.
 - **Orden de resolución:** 3 de 3. Va último: no bloquea nada, es limpieza de vocabulario.
-- **Dónde queda:** [pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md); sigue en [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md).
+- **Dónde queda:** [pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md](../../../pendientes/hecho/corrida-y-ejecucion-en-el-estandar.md). Cambiado solo en [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md); sigue en [base/02-flujo-de-trabajo/base.md](../../../base/02-flujo-de-trabajo/base.md), [base/08-pruebas.md](../../../base/08-pruebas.md), [base/glosario.md](../../../base/glosario.md) y [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md).
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se reemplaza «corrida» en todo el estándar, o se define en el glosario y se deja?
@@ -50,7 +50,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md) §2, versión 16.0.0.
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) §2, versión 16.0.0.
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Con qué se retoma:** —.
@@ -60,12 +60,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Qué pasó:** el plan de la fase decía «tomar la lista de origen **y** contar cuántos términos tiene» en una fila, con un solo renglón de resultado. Al ejecutar quedó anotado el conteo y se perdió de dónde salió la lista.
 - **Por qué importa:** el caso quedó en «aprobado» con la mitad sin comprobar, y nadie lo vio hasta bajarlo a la forma nueva.
 - **Qué lo soluciona:** que el plan exija un paso, una acción.
-- **Qué se decidió:** [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md) §6 lo exige, con ejemplo INCORRECTO/CORRECTO. Se aplicó al plan de la fase (versión 1.1): seis pasos partidos o reescritos.
+- **Qué se decidió:** [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) §6 lo exige, con ejemplo INCORRECTO/CORRECTO. Se aplicó al plan de la fase (versión 1.1): seis pasos partidos o reescritos.
 - **Estado:** resuelto acá.
 - **Responde a:** EP-003.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/planes/pruebas.md](../../../plantillas/planes/pruebas.md) §6, versión **16.0.0 · MAYOR ⚠ obliga a migrar**.
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) §6, versión **16.0.0 · MAYOR ⚠ obliga a migrar**.
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Con qué se retoma:** —.
@@ -80,7 +80,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-la-plantilla-de
 - **Responde a:** EP-003.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [plantillas/planes/resultados.md](../../../plantillas/planes/resultados.md) §2, versión 16.0.0.
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) §2, versión 16.0.0.
 - **Nace en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Cerrado en:** 2026-08-15 · plantilla del resultado de pruebas.
 - **Con qué se retoma:** —.

@@ -74,7 +74,7 @@ El modelo de la historia de usuario obliga a escribir, por cada criterio, **«C�
 
 ### Detalle de CP-004 — El planteamiento que le falta a esta casa
 
-**El modelo existe** —[`plantillas/planteamiento.md`](../../../../../plantillas/planteamiento.md)— y **este repositorio no lo tiene lleno**.
+**El modelo existe** —[`plantillas/ciclo-vida-proyectos/01-planteamiento.md`](../../../../../plantillas/ciclo-vida-proyectos/01-planteamiento.md)— y **este repositorio no lo tiene lleno**.
 
 Es el primer eslabón del encargo: el documento que dice **qué es este proyecto** antes de que haya ninguna épica. Sin él, las 7 épicas cuelgan de nada.
 

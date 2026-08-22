@@ -224,7 +224,7 @@ El 06 va casi al final a pesar de ser prioridad Alta: se apoya en el 04 y en el 
 
 | Prioridad | Complejidad | Dependencias |
 |---|---|---|
-| **Alta** | Baja | `plantillas/estado-fase.md` |
+| **Alta** | Baja | `plantillas/ciclo-vida-proyectos/10-estado-fase.md` |
 
 **Descripción.** Un comando que estampa el paso de cada puerta en `estado-fase.md`: qué estación, qué puertas pasaron, con fecha y hora del reloj de la máquina.
 

@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** (`02·F12.6`) | `A-EP-003-HU-004-el-origen-de-la-regla-de-negocio` |
-| **Módulo** | Documentos modelo (`plantillas/plantilla-especificacion-modulo.md`) |
+| **Módulo** | Documentos modelo (`plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md`) |
 | **Épica / HU / origen** | [EP-003](../../epica.md) · [HU-004](../HU-004-modelo-de-la-especificacion.md) · [pendiente 43](../../../../../pendientes/hecho/el-origen-de-la-regla-de-negocio.md) |
 | **Última actualización** | 2026-08-16 |
 

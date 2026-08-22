@@ -7,7 +7,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo` |
-| **Módulo** | Documentos modelo — [`plantillas/`](../../../../../plantillas/planteamiento.md) |
+| **Módulo** | Documentos modelo — [`plantillas/`](../../../../../plantillas/ciclo-vida-proyectos/01-planteamiento.md) |
 | **Especificación del módulo** | [`documentacion/documentos-modelo/spec.md`](../../../../documentos-modelo/spec.md), §4.1 escrita en esta fase |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
 | **HU / exigencias cubiertas** | HU-002: CA-01, CA-02, CA-03 y sus dos transversales |
@@ -27,9 +27,9 @@ Se encadenan en 68 de 68. Y la cadena empieza en un eslabón vacío.
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| RN-10 · los tres modelos y su cadena | documentación | `plantillas/planteamiento.md`, `epica.md`, `HU.md` | ✅ Ya existían | CP-001 |
+| RN-10 · los tres modelos y su cadena | documentación | `plantillas/ciclo-vida-proyectos/01-planteamiento.md`, `epica.md`, `HU.md` | ✅ Ya existían | CP-001 |
 | RN-11 · el enlace en los dos lados | programa | [`trazabilidad.py`](../../../../../validadores/trazabilidad.py) · `DOC16` | ✅ Ya existía | CP-001 |
-| RN-12 · todo criterio dice cómo validarlo | documentación | `plantillas/HU.md` | ✅ Ya existía | CP-002 |
+| RN-12 · todo criterio dice cómo validarlo | documentación | `plantillas/ciclo-vida-proyectos/04-HU.md` | ✅ Ya existía | CP-002 |
 | RN-13 · la épica sin historias tiene forma | documentación | Los dos modelos | ✅ Ya existía | CP-003 |
 | **El planteamiento de esta casa** | documentación | **Vacío** | ❌ **No existe** | CP-004 |
 | Las cuatro reglas, escritas | documentación | [`documentos-modelo/spec.md`](../../../../documentos-modelo/spec.md) §4.1 | ✅ **Escrito acá** | — |

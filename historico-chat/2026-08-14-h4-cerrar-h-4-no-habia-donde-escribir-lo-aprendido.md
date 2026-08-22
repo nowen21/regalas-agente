@@ -346,7 +346,7 @@ Para aprobar hay tres documentos: la especificación, el [plan de trabajo](docum
 **Agente** — 2026-08-14 17:57:22
 <!-- agente: c4b4ce39-da3f-4a31-82f4-54abf4e7f092 -->
 
-No. La plantilla es [plantillas/plantilla-especificacion-modulo.md](plantillas/plantilla-especificacion-modulo.md).
+No. La plantilla es [plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md](plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md).
 
 [documentacion/documentos-modelo/spec.md](documentacion/documentos-modelo/spec.md) es el documento ya llenado con ella, para este módulo.
 
@@ -675,7 +675,7 @@ Como pasó, lo correcto es escribir **Cumple** y dejar el detalle en la tabla de
 
 Cambiado a **Cumple**; el detalle queda solo en la tabla de defectos.
 
-Le señalo de dónde venía: la plantilla [planes/resultados.md](plantillas/planes/resultados.md) y [estado-fase.md](plantillas/estado-fase.md) ofrecen *"Cumple / Cumple con observaciones"* como opciones. Mientras el molde ofrezca el estado intermedio, va a reaparecer.
+Le señalo de dónde venía: la plantilla [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) y [estado-fase.md](plantillas/ciclo-vida-proyectos/10-estado-fase.md) ofrecen *"Cumple / Cumple con observaciones"* como opciones. Mientras el molde ofrezca el estado intermedio, va a reaparecer.
 
 ¿Se lo quito a las dos plantillas?
 
@@ -895,7 +895,7 @@ Falta que apruebe la lista de los cuatro archivos sin marca. Hasta entonces CP-0
 
 No. Lo hice solo en los documentos de esta fase.
 
-Para que pase siempre tiene que ir en las plantillas [planes/pruebas.md](plantillas/planes/pruebas.md) y [planes/resultados.md](plantillas/planes/resultados.md): que cada `CP-00N` enlace a su caso.
+Para que pase siempre tiene que ir en las plantillas [planes/pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) y [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md): que cada `CP-00N` enlace a su caso.
 
 ¿Lo agrego?
 
@@ -907,8 +907,8 @@ Para que pase siempre tiene que ir en las plantillas [planes/pruebas.md](plantil
 
 Sí, quedó en las tres plantillas, versión **13.1.0**:
 
-- [planes/pruebas.md](plantillas/planes/pruebas.md) y [planes/resultados.md](plantillas/planes/resultados.md) — cada `CP-00N` se escribe como enlace a su caso.
-- [planes/resultados.md](plantillas/planes/resultados.md) y [estado-fase.md](plantillas/estado-fase.md) — el veredicto es cumple o no cumple, sin estado intermedio.
+- [planes/pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) y [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) — cada `CP-00N` se escribe como enlace a su caso.
+- [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) y [estado-fase.md](plantillas/ciclo-vida-proyectos/10-estado-fase.md) — el veredicto es cumple o no cumple, sin estado intermedio.
 
 `validar.py estandar` en 0 fallas.
 
@@ -923,7 +923,7 @@ Hecho, en las plantillas y en los documentos de esta fase.
 - **`CP-00N`** enlaza a su caso del plan de pruebas.
 - **`CA-0N`** enlaza a su criterio en la HU.
 
-Queda exigido en [planes/trabajo.md](plantillas/planes/trabajo.md), [planes/pruebas.md](plantillas/planes/pruebas.md), [planes/resultados.md](plantillas/planes/resultados.md) y [funcionalidad-implementada.md](plantillas/funcionalidad-implementada.md), y aplicado en los cuatro documentos de la fase.
+Queda exigido en [planes/trabajo.md](plantillas/ciclo-vida-proyectos/07-plan-trabajo.md), [planes/pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md), [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) y [funcionalidad-implementada.md](plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md), y aplicado en los cuatro documentos de la fase.
 
 Versión **13.1.0**, `validar.py estandar` en 0 fallas.
 
@@ -945,7 +945,7 @@ Le señalo algo que salió al hacerlo: la HU numera sus criterios (`CA-01`, `CA-
 **Agente** — 2026-08-14 19:11:09
 <!-- agente: e94b5002-79e0-4225-997d-68543b92ab64 -->
 
-Numerados en [plantillas/HU.md](plantillas/HU.md) y en [HU-001](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md): la tabla de requisitos no funcionales ahora lleva columna de ID, `RNF-01` en adelante.
+Numerados en [plantillas/ciclo-vida-proyectos/04-HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) y en [HU-001](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md): la tabla de requisitos no funcionales ahora lleva columna de ID, `RNF-01` en adelante.
 
 Queda una imprecisión que le señalo en vez de arreglarla por mi cuenta: los documentos de la fase citan un solo `RNF-01` para "no estorba y no rompe", y ahora la HU tiene tres (legibilidad, detectabilidad, uniformidad). El enlace lleva a la sección, no a la fila exacta.
 
@@ -987,9 +987,9 @@ La cobertura pasó de 4 a **6 de 6**, porque antes los tres contaban como uno. A
 
 Quedó en las plantillas:
 
-- [planes/pruebas.md](plantillas/planes/pruebas.md) — la matriz exige fila para cada `RNF-0N`, y la cobertura suma criterios y requisitos por separado.
-- [planes/resultados.md](plantillas/planes/resultados.md) — el veredicto es por criterio **y** por requisito no funcional.
-- [HU.md](plantillas/HU.md) — la tabla de requisitos lleva su columna de ID.
+- [planes/pruebas.md](plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) — la matriz exige fila para cada `RNF-0N`, y la cobertura suma criterios y requisitos por separado.
+- [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) — el veredicto es por criterio **y** por requisito no funcional.
+- [HU.md](plantillas/ciclo-vida-proyectos/04-HU.md) — la tabla de requisitos lleva su columna de ID.
 
 Anotado en el [CHANGELOG](CHANGELOG.md) con el caso que lo destapó: tres requisitos contados como uno hacían decir 4 de 4 cuando era 6 de 6.
 
@@ -1757,7 +1757,7 @@ Con dos consecuencias escritas para ese pendiente:
 
 Entendido: no la referencia, sino **qué se hizo y qué salió**.
 
-**En la plantilla** [planes/resultados.md](plantillas/planes/resultados.md) quedó exigido así, con sus dos ejemplos de lo que no vale: ni *"un usuario sin permiso"* ni *"ver la suite"*. Vale *"`qa.consulta` pidió `POST /facturas/42/anular` y recibió 403; la factura siguió en `emitida`"*. Y si no cabe en la celda, va un párrafo `Detalle de CP-00N` debajo.
+**En la plantilla** [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) quedó exigido así, con sus dos ejemplos de lo que no vale: ni *"un usuario sin permiso"* ni *"ver la suite"*. Vale *"`qa.consulta` pidió `POST /facturas/42/anular` y recibió 403; la factura siguió en `emitida`"*. Y si no cabe en la celda, va un párrafo `Detalle de CP-00N` debajo.
 
 **Aplicado a los tres resultados de la sesión:** cada caso tiene ahora su detalle con el paso a paso y lo que se obtuvo. 9 en la fase del enganche, 5 en la de la marca, 6 en la del modelo. Ninguno queda en "cumple" sin decir por qué.
 
@@ -1781,7 +1781,7 @@ Cambiado. Los nueve casos de la fase del enganche tienen ahora su **paso a paso 
 | 2 | Se abrió y se corrió `hallazgos()` | Trae los campos del modelo y ningún hallazgo |
 | 3 | `crear()` otra vez, sobre un resumen con `### H-1 · algo` | Quedó intacto |
 
-Y quedó exigido en la plantilla [planes/resultados.md](plantillas/planes/resultados.md): el detalle es paso a paso numerado, uno a uno con los pasos del caso en el plan de pruebas.
+Y quedó exigido en la plantilla [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md): el detalle es paso a paso numerado, uno a uno con los pasos del caso en el plan de pruebas.
 
 Falta hacer lo mismo en los otros dos resultados, que todavía tienen el detalle en prosa. ¿Se los paso también?
 
@@ -1871,7 +1871,7 @@ Y al escribirlo apareció algo que las dos columnas escondían: **el paso 5 de C
 
 Con dos columnas eso no se habría notado: yo mismo lo había escrito como si coincidiera.
 
-En la plantilla [planes/resultados.md](plantillas/planes/resultados.md) quedó la razón: *"con dos columnas, cumple lo decide quien escribe; con tres, lo decide la comparación"*.
+En la plantilla [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) quedó la razón: *"con dos columnas, cumple lo decide quien escribe; con tres, lo decide la comparación"*.
 
 ### 152 · Usuario — 2026-08-14 22:11:18
 > si pero en cada CP decir que lleva a cumple no es necesario complicar tanto las cosas solo es explicar de manera sencilla cada paso
@@ -1890,7 +1890,7 @@ Simplificado. Cada caso es ahora una lista de pasos en palabras llanas, y cierra
 
 Fuera las tablas de tres columnas. Lo que se conserva es la idea: **cumple porque salió lo que el plan de pruebas decía que iba a salir**, y si un paso sale distinto, se dice cuál y qué pasó. Es lo que pasó con el paso 5 de CP-004, y queda anotado ahí mismo.
 
-La plantilla [planes/resultados.md](plantillas/planes/resultados.md) quedó igual de corta.
+La plantilla [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) quedó igual de corta.
 
 ### 153 · Usuario — 2026-08-14 22:15:00
 > listo entonces esta sesion ya se puede cerrar?

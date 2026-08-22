@@ -181,7 +181,7 @@
 
 **Concepto:** **No cumple.**
 
-**Justificación:** los dos criterios de aceptación numerados quedaron verificados —el criterio decide y el esquema obliga a tipo y alcance—, y el inventario dejó el número que la fase venía a buscar: siete tipos vivos, tres nunca usados, y una sola señal de este repositorio en 237. Pero el criterio transversal de **privacidad** de la HU está en «No»: `13·DOC5` no dice que no se guarden datos personales ni claves. La [plantilla del resultado](../../../../../plantillas/planes/resultados.md) no admite estado intermedio —«si algo de lo pedido falta, es No cumple»— y una fase no cierra con un CA en «No».
+**Justificación:** los dos criterios de aceptación numerados quedaron verificados —el criterio decide y el esquema obliga a tipo y alcance—, y el inventario dejó el número que la fase venía a buscar: siete tipos vivos, tres nunca usados, y una sola señal de este repositorio en 237. Pero el criterio transversal de **privacidad** de la HU está en «No»: `13·DOC5` no dice que no se guarden datos personales ni claves. La [plantilla del resultado](../../../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) no admite estado intermedio —«si algo de lo pedido falta, es No cumple»— y una fase no cierra con un CA en «No».
 
 **Que el plan aprobado no lo hubiera puesto en su alcance no lo convierte en cumplido.** Esta es la **única** fase de HU-001 (§8 de la HU): si cerrara en «Cumple», los dos transversales quedarían sin verificar y sin que nadie los vuelva a mirar. Es el mismo error que `13·DOC20` y `00·ID3` vienen a impedir.
 

@@ -54,7 +54,7 @@ class LoQueSeReporta(Registro):
         self.assertIn("identificador de regla", h[0].mensaje)
 
     def test_abrir_con_una_ruta_de_archivo(self):
-        h = self.hallazgos(u"1.0.0", u"**MENOR** — columna nueva en `plantillas/planes/resultados.md`.")
+        h = self.hallazgos(u"1.0.0", u"**MENOR** — columna nueva en `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`.")
         self.assertEqual(1, len(h))
         self.assertIn("ruta de archivo", h[0].mensaje)
 
@@ -84,7 +84,7 @@ class LoQueNoSeReporta(Registro):
             u"1.0.0",
             u"**MENOR** — al anotar que una prueba pasó hay que decir con qué se probó.\n\n"
             u"Antes se anotaba solo «aprobado».\n\n"
-            u"**El detalle.** Lo pide `20·M5`, en `plantillas/planes/resultados.md`.")
+            u"**El detalle.** Lo pide `20·M5`, en `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`.")
         self.assertEqual([], h)
 
     def test_la_fecha_no_cuenta_como_parrafo(self):

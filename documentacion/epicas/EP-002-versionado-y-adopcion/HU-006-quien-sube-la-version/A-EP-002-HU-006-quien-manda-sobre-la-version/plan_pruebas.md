@@ -12,7 +12,7 @@
 | **Aprobado por** | Sin aprobar — se presenta junto con el [`plan_trabajo.md`](plan_trabajo.md) ([`02·F4`](../../../../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) |
 | **Estado** | Borrador |
 
-> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/planes/pruebas.md)).
+> Fase chica: se llenan las secciones **3, 5, 6, 9 y 12** ([proporcionalidad de la plantilla](../../../../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md)).
 
 **Qué texto se prueba.** El que decidan las dudas 1 a 3. Los casos están escritos contra **lo que la regla tiene que lograr** —que no queden dos numeraciones, y que nadie se lleve trabajo ajeno—, así que sirven para cualquiera de las tres salidas del pendiente [22](../../../../../pendientes/hecho/dos-sesiones-versionando-a-la-vez.md).
 

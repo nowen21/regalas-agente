@@ -51,7 +51,7 @@
 
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|
-| `plantillas/inventario-funcionalidades.md` | Nuevo | Plantillas | El molde, generalizado del caso semilla; sin rayas ni marcas (el trinquete bloquea en `plantillas/`) |
+| `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md` | Nuevo | Plantillas | El molde, generalizado del caso semilla; sin rayas ni marcas (el trinquete bloquea en `plantillas/`) |
 | [`plantillas/README.md`](../../../../../plantillas/README.md) | Modificar | Plantillas | Su fila |
 | `base/02-flujo-de-trabajo/reglas/F26-….md` | Nuevo | Cuerpo de reglas | La regla, por el procedimiento del `20`, con checklist |
 | [`base/02-flujo-de-trabajo/base.md`](../../../../../base/02-flujo-de-trabajo/base.md) | Modificar | Cuerpo de reglas | Fila del índice y sección de `F26` |
@@ -93,7 +93,7 @@ Ninguna bloqueante: el ID `F26`, el nombre del molde y el corte MAYOR quedan fij
 
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
-| T-01 | Escribir `plantillas/inventario-funcionalidades.md` generalizando el semilla: estados, «lo que el usuario ya definió», preguntas abiertas, destino de manual | `plantillas/` | 2,0 |
+| T-01 | Escribir `plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md` generalizando el semilla: estados, «lo que el usuario ya definió», preguntas abiertas, destino de manual | `plantillas/` | 2,0 |
 | T-02 | Indexarlo en el README de `plantillas/` | `plantillas/README.md` | 0,3 |
 
 ### CA-02 — La regla

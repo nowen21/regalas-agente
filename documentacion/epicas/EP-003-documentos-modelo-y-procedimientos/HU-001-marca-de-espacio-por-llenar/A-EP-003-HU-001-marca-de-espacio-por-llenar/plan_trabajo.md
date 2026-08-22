@@ -69,7 +69,7 @@
 
 | Archivo | Marca que usa hoy | Qué hay que hacer |
 |---|---|---|
-| `plantillas/epica.md` | `[Resultado observable a nivel de negocio]`, `<slug>` | Pasar a la marca acordada |
+| `plantillas/ciclo-vida-proyectos/03-epica.md` | `[Resultado observable a nivel de negocio]`, `<slug>` | Pasar a la marca acordada |
 | `plantillas/marco-normativo.md` | `` `<nombre>` ``, `` `<lo que exige>` `` | Pasar a la marca acordada |
 | `plantillas/memoria.md` | `<nombre>` dentro de una frase explicativa | Revisar: puede no ser un hueco |
 | `plantillas/historico-chat.md` | `<estándar>`, `<archivo>` dentro de comandos | Revisar: es sintaxis de comando, no hueco |
@@ -86,16 +86,16 @@
 | `base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md` | Nuevo | Regla | Lo que no aplica se escribe `N/A`, no se deja con la marca ni se borra |
 | `base/13-documentacion/base.md` | Modificar | Regla | Las tres filas nuevas en el índice del capítulo |
 | `notas/` (archivo nuevo) | Nuevo | Documentación | Por qué esa marca y no otra: las alternativas que se descartaron |
-| `plantillas/epica.md` | Modificar | Plantilla | Pasa sus huecos a la marca acordada |
+| `plantillas/ciclo-vida-proyectos/03-epica.md` | Modificar | Plantilla | Pasa sus huecos a la marca acordada |
 | `plantillas/marco-normativo.md` | Modificar | Plantilla | Pasa sus huecos a la marca acordada |
-| `plantillas/HU.md` | Modificar | Plantilla | 63 huecos en corchetes |
-| `plantillas/planes/pruebas.md` | Modificar | Plantilla | 37 huecos en corchetes |
-| `plantillas/planes/trabajo.md` | Modificar | Plantilla | 33 huecos en corchetes |
-| `plantillas/funcionalidad-implementada.md` | Modificar | Plantilla | 22 huecos en corchetes |
-| `plantillas/plantilla-especificacion-modulo.md` | Modificar | Plantilla | 13 huecos en corchetes |
+| `plantillas/ciclo-vida-proyectos/04-HU.md` | Modificar | Plantilla | 63 huecos en corchetes |
+| `plantillas/ciclo-vida-proyectos/08-plan-pruebas.md` | Modificar | Plantilla | 37 huecos en corchetes |
+| `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md` | Modificar | Plantilla | 33 huecos en corchetes |
+| `plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md` | Modificar | Plantilla | 22 huecos en corchetes |
+| `plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md` | Modificar | Plantilla | 13 huecos en corchetes |
 | `plantillas/cierre-analisis.md` | Modificar | Plantilla | 4 huecos en corchetes |
-| `plantillas/planes/resultados.md` | Modificar | Plantilla | 3 huecos en corchetes |
-| `plantillas/senales.md` · `plantillas/proyectos.md` · `plantillas/estado-fase.md` · `plantillas/catalogo-modulos.md` | Modificar | Plantilla | 1 hueco cada una |
+| `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md` | Modificar | Plantilla | 3 huecos en corchetes |
+| `plantillas/senales.md` · `plantillas/proyectos.md` · `plantillas/ciclo-vida-proyectos/10-estado-fase.md` · `plantillas/catalogo-modulos.md` | Modificar | Plantilla | 1 hueco cada una |
 | `plantillas/memoria.md` · `plantillas/historico-chat.md` · `plantillas/retrodocumentacion.md` | Sin tocar | Plantilla | No son modelos que alguien llene: son procedimientos y explicaciones. Queda escrito en la nota |
 | `validadores/reglas-validables.md` | Modificar | Documentación | La regla nueva entra como validable, pendiente de EP-004 |
 | `CHANGELOG.md` · `VERSION` | Modificar | Versionado | Entrada y subida de versión ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)) |
@@ -159,7 +159,7 @@ Ninguno.
 
 | ID | Tarea | Capa | Est. | Depende de | Estado | Ev. |
 |---|---|---|:--:|---|---|---|
-| T-04 | Pasar `plantillas/epica.md` a la marca acordada | Plantilla | 1 h | T-03 | ☑ | EV-02 |
+| T-04 | Pasar `plantillas/ciclo-vida-proyectos/03-epica.md` a la marca acordada | Plantilla | 1 h | T-03 | ☑ | EV-02 |
 | T-05 | Pasar `plantillas/marco-normativo.md` a la marca acordada | Plantilla | 1 h | T-03 | ☑ | EV-02 |
 | T-06 | Revisar los tres archivos dudosos y dejar escrito por qué cada uno cambia o no | Plantilla | 1 h | T-03 | ☑ | EV-02 |
 | T-06b | Pasar los 11 archivos que conviven con corchetes, unos 179 huecos, sin tocar enlaces ni casillas | Plantilla | 3 h | T-03 | ☑ | EV-02 |

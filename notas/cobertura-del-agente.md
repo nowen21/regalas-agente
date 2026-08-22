@@ -40,7 +40,7 @@
 - ✅ **Skill `planificar-tareas`** (rol Planificador de tareas): `skills/planificar-tareas/` — divide el trabajo con grafo de dependencias (orden topológico + paralelizables) y plan de pruebas.
 - ✅ **Skills `proponer-alcance` (Proponente), `disenar-arquitectura` (Diseñador), `implementar` (Implementador)**: completan los **7 roles obreros** de la línea de montaje.
 - ✅ **Skill `generar-casos-prueba`**: `skills/generar-casos-prueba/` — deriva la matriz de casos y triangula el esperado (operacionaliza `08`·T7).
-- ✅ **Plantilla genérica de especificación de módulo** (agnóstica): `plantillas/plantilla-especificacion-modulo.md`.
+- ✅ **Plantilla genérica de especificación de módulo** (agnóstica): `plantillas/ciclo-vida-proyectos/06-especificacion-modulo.md`.
 - ✅ **Roles especializados**: los 7 obreros + Crítico/Crítico + Orquestador existen como skills en `skills/`. Ver [`roles-especializados.md`](roles-especializados.md).
 - ✅ **Grafo de dependencias entre tareas**: el Planificador de tareas lo produce y el Orquestador lo ejecuta (orden topológico + paralelizables).
 - ✅ **Checkpoints de calidad impuestos** (las puertas): el Orquestador los controla. ⚠️ **Aislamiento de contexto** (cada rol como sub-agente): dispuesto por el Orquestador, ejecutado por los sub-agentes del entorno. ⏳ **Memoria institucional entre proyectos** (semántica / MCP). Ver [`aislamiento-checkpoints-memoria.md`](aislamiento-checkpoints-memoria.md).

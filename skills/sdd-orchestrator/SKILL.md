@@ -13,8 +13,8 @@ Coordina las 8 skills-rol (más las estaciones **Épica** y **HU**, dirigidas po
 |---|---|---|---|
 | 1 | Explorador · `analizar-proyecto` | Contexto entendido, sin supuestos sin verificar | interna |
 | 2 | Proponente · `proponer-alcance` | **Alcance aprobado** | **usuario** |
-| 3 | Escritor de épica · `13·DOC16` (desde `plantillas/epica.md`) | **Épica aprobada** (problema, valor, criterios de resultado, HUs identificadas) | **usuario** |
-| 4 | Escritor de historia · `13·DOC15` (desde `plantillas/HU.md`) | **HUs aprobadas** (criterios de aceptación) | **usuario** |
+| 3 | Escritor de épica · `13·DOC16` (desde `plantillas/ciclo-vida-proyectos/03-epica.md`) | **Épica aprobada** (problema, valor, criterios de resultado, HUs identificadas) | **usuario** |
+| 4 | Escritor de historia · `13·DOC15` (desde `plantillas/ciclo-vida-proyectos/04-HU.md`) | **HUs aprobadas** (criterios de aceptación) | **usuario** |
 | 5 | Escritor de especificación · `generar-spec-modulo` | **Especificación aprobada** | **usuario** |
 | 6 | Diseñador · `disenar-arquitectura` | Diseño coherente con la especificación | interna |
 | 7 | Planificador de tareas · `planificar-tareas` | **Plan + pruebas aprobados** | **usuario** |
@@ -28,10 +28,10 @@ Coordina las 8 skills-rol (más las estaciones **Épica** y **HU**, dirigidas po
 ## Reglas del director
 
 - **No saltar ni reordenar** estaciones. **No avanzar** si la puerta no pasa.
-- **Precondición (paso 0):** antes de la estación 1 debe existir el **planteamiento** (`plantillas/planteamiento.md` → `prompts/<slug>-planteamiento.md`). Es **obligatorio** (`02·F0` cadena). Si no existe, el director lo pide o ayuda a redactarlo y el usuario lo aprueba antes de arrancar. Sin planteamiento no se orquesta.
+- **Precondición (paso 0):** antes de la estación 1 debe existir el **planteamiento** (`plantillas/ciclo-vida-proyectos/01-planteamiento.md` → `prompts/<slug>-planteamiento.md`). Es **obligatorio** (`02·F0` cadena). Si no existe, el director lo pide o ayuda a redactarlo y el usuario lo aprueba antes de arrancar. Sin planteamiento no se orquesta.
 - Las puertas de **usuario** (2, 3, 4, 5, 7, 12, 13) exigen OK explícito. Las **internas** son checkpoints de calidad que el director verifica.
-- En la estación 3 (**Escritor de épica**), generar la épica según `13·DOC16` desde `plantillas/epica.md`, guardarla en `documentacion/epicas/EP-<NNN>-<slug>.md`. Define problema, valor, criterios de **resultado** y las HUs que la componen. **Obligatoria siempre** — no se funde con las HU ni se omite por tamaño (`02·F0` cadena obligatoria); requiere el planteamiento (precondición) que le da origen.
-- En la estación 4 (**Escritor de historia**), generar las HUs según `13·DOC15` desde `plantillas/HU.md`, guardarlas en `documentacion/hus/<modulo>/` con su índice `README.md`. Cada HU declara su **épica** (estación 3) y sus **criterios de aceptación**, que la especificación (estación 5) recoge.
+- En la estación 3 (**Escritor de épica**), generar la épica según `13·DOC16` desde `plantillas/ciclo-vida-proyectos/03-epica.md`, guardarla en `documentacion/epicas/EP-<NNN>-<slug>.md`. Define problema, valor, criterios de **resultado** y las HUs que la componen. **Obligatoria siempre** — no se funde con las HU ni se omite por tamaño (`02·F0` cadena obligatoria); requiere el planteamiento (precondición) que le da origen.
+- En la estación 4 (**Escritor de historia**), generar las HUs según `13·DOC15` desde `plantillas/ciclo-vida-proyectos/04-HU.md`, guardarlas en `documentacion/hus/<modulo>/` con su índice `README.md`. Cada HU declara su **épica** (estación 3) y sus **criterios de aceptación**, que la especificación (estación 5) recoge.
 - En la estación 7, el Planificador de tareas deriva la **matriz de casos de prueba** con la skill `generar-casos-prueba` (corner cases + triangulación) como parte del plan de pruebas.
 - En la estación 8, usar el **grafo de dependencias** del Planificador de tareas: ejecutar en **orden topológico** y, si el entorno lo permite, correr en **paralelo** las tareas independientes.
 - **Aislamiento:** cada rol puede correr como **sub-agente** con su propio contexto (entrada acotada: la especificación al Diseñador, el plan al Implementador). Si no hay sub-agentes disponibles, el mismo agente cambia de rol por estación.
@@ -39,7 +39,7 @@ Coordina las 8 skills-rol (más las estaciones **Épica** y **HU**, dirigidas po
 
 ## Estado persistido (checkpointing)
 
-En **cada puerta**, escribir el estado en un archivo (ubicación de la capa 3, p. ej. `documentacion/«modulo»/estado-fase.md` · plantilla `plantillas/estado-fase.md`):
+En **cada puerta**, escribir el estado en un archivo (ubicación de la capa 3, p. ej. `documentacion/«modulo»/estado-fase.md` · plantilla `plantillas/ciclo-vida-proyectos/10-estado-fase.md`):
 
 - En qué **estación** va y qué puertas ya pasó.
 - Las **decisiones y señales** generadas (`13`·DOC5) — para no perderlas al compactar.

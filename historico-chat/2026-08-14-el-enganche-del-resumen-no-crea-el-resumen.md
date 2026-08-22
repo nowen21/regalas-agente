@@ -452,7 +452,7 @@ Sí. Y lo que lo destapó fue escribirlo: mientras el detalle decía "se creó e
 Dos cosas quedan para que esto no dependa de que yo me acuerde:
 
 1. Los otros ocho casos de esta fase siguen con el detalle a medias: dicen qué salió, no qué había que ver ni con qué habrían reprobado.
-2. La plantilla [planes/resultados.md](plantillas/planes/resultados.md) hoy pide el paso a paso, pero no pide las otras tres: el criterio y el caso textuales, la tabla de cuándo reprueba, y que esté en palabras.
+2. La plantilla [planes/resultados.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) hoy pide el paso a paso, pero no pide las otras tres: el criterio y el caso textuales, la tabla de cuándo reprueba, y que esté en palabras.
 
 ¿Voy por las dos, o primero por la plantilla?
 
@@ -612,7 +612,7 @@ Al día. Lo que quedó en esta pasada:
 |---|---|
 | Los ocho casos de la corrida 2, con las cinco partes | [resultado_pruebas.md](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-008-enganche-del-resumen/A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) |
 | Los cinco casos anulados de la corrida 1, cada uno diciendo cuál lo reemplaza | mismo archivo |
-| Las cinco partes exigidas en el molde, para que se replique | [plantillas/planes/resultados.md](plantillas/planes/resultados.md) |
+| Las cinco partes exigidas en el molde, para que se replique | [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md) |
 | Los tres hallazgos de la sesión, con su decisión y dónde quedó | [el resumen](historico-chat/resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md) |
 | Versión **15.4.0** con su entrada | [CHANGELOG.md](CHANGELOG.md) |
 
@@ -793,7 +793,7 @@ En los seis anulados, la columna de la derecha dice en la primera fila lo que se
 **Agente** — 2026-08-15 06:58:34
 <!-- agente: ff2a59cc-5b0b-42e6-9271-a63320710def -->
 
-De [plantillas/planes/resultados.md](plantillas/planes/resultados.md).
+De [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md).
 
 Quién la manda: [`02·F12.13`](base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md), la parte que usted agregó el 2026-08-13, que lista los cinco archivos de una fase y nombra esa plantilla como su molde.
 
@@ -824,7 +824,7 @@ Y va con su versión: la plantilla es de `plantillas/`, así que el cambio suma 
 **Agente** — 2026-08-15 07:02:55
 <!-- agente: 6673d221-6bb6-47c0-a3a5-8d2645ad769e -->
 
-La original quedó igual a lo que hicimos: [plantillas/planes/resultados.md](plantillas/planes/resultados.md), versión **15.4.1**.
+La original quedó igual a lo que hicimos: [plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md](plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md), versión **15.4.1**.
 
 Ahora exige tres partes, no cinco:
 

@@ -50,14 +50,14 @@ PENDIENTES = "pendientes"
 
 # Los cinco documentos de una fase (`02·F12.13`) y la plantilla de cada uno.
 DOCUMENTOS = [
-    ("plan_trabajo.md", os.path.join("plantillas", "planes", "trabajo.md")),
-    ("plan_pruebas.md", os.path.join("plantillas", "planes", "pruebas.md")),
-    ("resultado_pruebas.md", os.path.join("plantillas", "planes", "resultados.md")),
-    ("estado-fase.md", os.path.join("plantillas", "estado-fase.md")),
+    ("plan_trabajo.md", os.path.join("plantillas", "ciclo-vida-proyectos", "07-plan-trabajo.md")),
+    ("plan_pruebas.md", os.path.join("plantillas", "ciclo-vida-proyectos", "08-plan-pruebas.md")),
+    ("resultado_pruebas.md", os.path.join("plantillas", "ciclo-vida-proyectos", "09-resultado-pruebas.md")),
+    ("estado-fase.md", os.path.join("plantillas", "ciclo-vida-proyectos", "10-estado-fase.md")),
     ("funcionalidad_implementada.md",
-     os.path.join("plantillas", "funcionalidad-implementada.md")),
+     os.path.join("plantillas", "ciclo-vida-proyectos", "11-funcionalidad-implementada.md")),
 ]
-PLANTILLA_HU = os.path.join("plantillas", "HU.md")
+PLANTILLA_HU = os.path.join("plantillas", "ciclo-vida-proyectos", "04-HU.md")
 PLANTILLA_PENDIENTE = os.path.join("plantillas", "pendiente.md")
 
 _CONSECUTIVO = re.compile(r"^([A-Z]{1,3})(?:-[A-Z]{1,3})?-EP-")

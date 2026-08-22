@@ -79,7 +79,7 @@ def como_texto(hallazgo, raiz=""):
         return ("[LA FASE PASÓ UNA PUERTA SIN CHECKPOINT]\n"
                 f"Se escribió `{documento}` en `{donde}` y la fase no tiene "
                 f"`{CHECKPOINT}`. Escribirlo con la estación en que va "
-                "(`plantillas/estado-fase.md`): es lo que la próxima sesión lee "
+                "(`plantillas/ciclo-vida-proyectos/10-estado-fase.md`): es lo que la próxima sesión lee "
                 "para seguir sin releer la conversación.")
     return ("[EL CHECKPOINT DE LA FASE QUEDÓ ATRÁS]\n"
             f"Se escribió `{documento}` en `{donde}` y su `{CHECKPOINT}` es "

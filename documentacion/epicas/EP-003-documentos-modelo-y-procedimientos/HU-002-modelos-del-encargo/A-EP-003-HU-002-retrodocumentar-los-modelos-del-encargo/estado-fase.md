@@ -9,7 +9,7 @@
 | Campo | Valor |
 |---|---|
 | **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo` |
-| **Módulo** | Documentos modelo — [`plantillas/planteamiento.md`](../../../../../plantillas/planteamiento.md), [`plantillas/epica.md`](../../../../../plantillas/epica.md) y [`plantillas/HU.md`](../../../../../plantillas/HU.md) |
+| **Módulo** | Documentos modelo — [`plantillas/ciclo-vida-proyectos/01-planteamiento.md`](../../../../../plantillas/ciclo-vida-proyectos/01-planteamiento.md), [`plantillas/ciclo-vida-proyectos/03-epica.md`](../../../../../plantillas/ciclo-vida-proyectos/03-epica.md) y [`plantillas/ciclo-vida-proyectos/04-HU.md`](../../../../../plantillas/ciclo-vida-proyectos/04-HU.md) |
 | **Épica / HU / origen** | [EP-003](../../epica.md) · [HU-002](../HU-002-modelos-del-encargo.md) · retro-documentación, fila de HU-002 del pendiente [48](../../../../../pendientes/48-inventario-hu.md) |
 | **Última actualización** | 2026-08-17 |
 

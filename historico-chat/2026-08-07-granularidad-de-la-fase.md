@@ -54,6 +54,6 @@ Dos advertencias:
 - **INVEST "Independiente" es de la HU, no de los CA.** Que un CA dependa de otro es normal y no es defecto.
 - **Si casi todos los CA dependen en cadena**, la señal es que no son criterios de aceptación sino tareas descompuestas — ahí el arreglo es reescribir los CA, no ordenarlos.
 
-Hoy la plantilla ([plantillas/HU.md §8](plantillas/HU.md#L159)) declara dependencias **a nivel HU** ("HU o servicio previo requerido"), no CA→CA. Si quieres que quede explícito, se puede agregar en §8 una fila `CA-0X depende de CA-0Y (motivo)`. **¿Lo agrego a la plantilla, o lo dejo como pendiente?** No toco nada hasta que digas.
+Hoy la plantilla ([plantillas/ciclo-vida-proyectos/04-HU.md §8](plantillas/ciclo-vida-proyectos/04-HU.md#L159)) declara dependencias **a nivel HU** ("HU o servicio previo requerido"), no CA→CA. Si quieres que quede explícito, se puede agregar en §8 una fila `CA-0X depende de CA-0Y (motivo)`. **¿Lo agrego a la plantilla, o lo dejo como pendiente?** No toco nada hasta que digas.
 
 Histórico actualizado con este intercambio en [2026-08-07-sesion-9.md](historico-chat/2026-08-07-sesion-9.md). Queda abierta la decisión sobre §8 de la plantilla HU.

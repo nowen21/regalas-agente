@@ -67,7 +67,7 @@ documentacion/
                 └── estado-fase.md
 ```
 
-> **`resultado_pruebas.md` lo agregó el usuario el 2026-08-13.** El plan de pruebas se aprueba **antes** de ejecutar; si los resultados se escriben encima, se pierde la línea base aprobada y no queda de dónde sacar el veredicto de la fase. Plantilla: [`plantillas/planes/resultados.md`](../../../plantillas/planes/resultados.md).
+> **`resultado_pruebas.md` lo agregó el usuario el 2026-08-13.** El plan de pruebas se aprueba **antes** de ejecutar; si los resultados se escriben encima, se pierde la línea base aprobada y no queda de dónde sacar el veredicto de la fase. Plantilla: [`plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md`](../../../plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md).
 
 [`estructura-base.md`](../estructura-base.md), [`13·DOC15`](../../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), [`13·DOC16`](../../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) y las plantillas **referencian** esta ruta — no la duplican.
 

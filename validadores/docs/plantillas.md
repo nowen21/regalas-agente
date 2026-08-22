@@ -42,7 +42,7 @@ plantillas.py
 
 | Nombre | Qué guarda |
 |---|---|
-| `POR_PREFIJO` | Cómo averiguar el molde por cómo empieza el título: `HU-` es una historia de usuario y sale de `plantillas/HU.md`; `EP-` es una épica, que agrupa varias historias; `ADR-` es una decisión de arquitectura escrita para que después se sepa por qué se eligió eso. |
+| `POR_PREFIJO` | Cómo averiguar el molde por cómo empieza el título: `HU-` es una historia de usuario y sale de `plantillas/ciclo-vida-proyectos/04-HU.md`; `EP-` es una épica, que agrupa varias historias; `ADR-` es una decisión de arquitectura escrita para que después se sepa por qué se eligió eso. |
 | `POR_NOMBRE` | Cómo averiguarlo por el nombre del archivo, cuando el título no lo dice. Cubre `planteamiento`, `dominio`, `stack`, `fase`, `plan_trabajo`, `plan_pruebas`, `funcionalidad_implementada`, `estado-fase` y once más. |
 | `_H1` | Reconoce el título principal del documento. |
 | `_MARCADOR_EN_TITULO` | Reconoce un hueco metido dentro de un título. |
@@ -85,7 +85,7 @@ plantillas.py
 
 ```
 python validadores/validar.py plantilla proyectos/pos/HU-014.md
-python validadores/validar.py plantilla doc.md --contra plantillas/epica.md
+python validadores/validar.py plantilla doc.md --contra plantillas/ciclo-vida-proyectos/03-epica.md
 ```
 
 Por dentro:
@@ -98,7 +98,7 @@ validar.py cmd_plantilla
    ↓
    ¿dijeron con --contra cuál es el molde?
         no → deducir_plantilla(ruta, texto)
-                mira el título principal → HU-014 → plantillas/HU.md
+                mira el título principal → HU-014 → plantillas/ciclo-vida-proyectos/04-HU.md
                 si no, busca por el nombre del archivo
    ↓
 plantillas.validar(documento, molde)
@@ -113,7 +113,7 @@ comun.reportar(hallazgos)
 ## Ejemplos de lo que retorna
 
 ```python
-_ruta('plantillas/HU.md')
+_ruta('plantillas/ciclo-vida-proyectos/04-HU.md')
 'c:\Ing. Jose\ia\agente\plantillas\HU.md'
 
 deducir_plantilla('proyectos/pos/HU-014.md', '# HU-014 — Registrar cliente\n')
@@ -128,7 +128,7 @@ None             # no se sabe de qué molde salió
 _notas('> Escriba acá el nombre.\ntexto normal\n> Borre esta línea.\n')
 [(1, '> Escriba acá el nombre.'), (3, '> Borre esta línea.')]
 
-validar('proyectos/pos/HU-014.md', 'plantillas/HU.md')
+validar('proyectos/pos/HU-014.md', 'plantillas/ciclo-vida-proyectos/04-HU.md')
 [Hallazgo(FALLA, 'proyectos/pos/HU-014.md', 9,
           'línea sin llenar, igual que en la plantilla: - [ ] [Criterio de
            aceptación]'),
@@ -144,6 +144,6 @@ validar('proyectos/pos/HU-014.md', 'plantillas/HU.md')
 [AVISO] proyectos/pos/HU-014.md:4 — nota de la plantilla sin borrar: …
 [AVISO] proyectos/pos/HU-014.md — sección de la plantilla ausente: «Criterios…»
 
-validar('proyectos/pos/HU-015.md', 'plantillas/HU.md')
+validar('proyectos/pos/HU-015.md', 'plantillas/ciclo-vida-proyectos/04-HU.md')
 []               # el documento está bien llenado
 ```

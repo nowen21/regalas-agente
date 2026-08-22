@@ -70,12 +70,13 @@ agente/
 │       └── estructura-regla.md ....... el molde exacto de una regla (M5)
 │
 ├── 🟦 plantillas/ .................... 27 MOLDES DE DOCUMENTO
+│   ├── ciclo-vida-proyectos/ ......... EL CICLO, EN ORDEN: los 11 moldes que todo desarrollo recorre
+│   │   ├── 01-planteamiento.md · 02-inventario-funcionalidades.md (02·F26)
+│   │   ├── 03-epica.md · 04-HU.md · 05-fase.md · 06-especificacion-modulo.md
+│   │   ├── 07-plan-trabajo.md · 08-plan-pruebas.md · 09-resultado-pruebas.md
+│   │   └── 10-estado-fase.md · 11-funcionalidad-implementada.md
 │   ├── CLAUDE.md.plantilla ........... el CLAUDE.md que recibe cada proyecto
-│   ├── planteamiento.md · epica.md · HU.md · fase.md · estado-fase.md
-│   ├── planes/
-│   │   ├── trabajo.md ................ plan de trabajo (las 13 preguntas)
-│   │   └── pruebas.md
-│   ├── plantilla-especificacion-modulo.md · catalogo-modulos.md · mapa-dependencias.md
+│   ├── catalogo-modulos.md · mapa-dependencias.md
 │   ├── ADR.md ........................ decisión de arquitectura
 │   ├── stack.md · dominio.md · mapeo-nombres.md · marco-normativo.md
 │   ├── reglas-proyecto.md ............ reglas propias del proyecto
@@ -83,8 +84,7 @@ agente/
 │   ├── stack-instalacion.md .......... qué componentes debe tener instalados un proyecto
 │   ├── senales.md .................... formato de las señales de memoria
 │   ├── inventario-hu.md ............. qué HU están completas y qué documento le falta a cada una
-│   ├── inventario-funcionalidades.md . lo que se quiere desarrollar; el usuario lo aprueba antes de derivar épicas (02·F26)
-│   ├── historico-chat.md · cierre-analisis.md · funcionalidad-implementada.md
+│   ├── historico-chat.md · cierre-analisis.md
 │   ├── checklist-despliegue.md · postmortem.md
 │   └── proyectos.md .................. registro local de proyectos (no se versiona)
 │

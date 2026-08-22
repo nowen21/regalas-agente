@@ -14,7 +14,7 @@
 | **Fecha apertura** | 2026-08-20 |
 | **Rama** | `main` — el repositorio del estándar trabaja sobre su rama principal, con el commit autorizado aparte |
 
-**ORIGEN:** 🐛 **Defecto.** Sale del [pendientes/hecho/el-andamio-no-deja-enlaces-rotos.md](../../../../../pendientes/hecho/el-andamio-no-deja-enlaces-rotos.md): el andamio copia `plantillas/planes/resultados.md` tal cual, y su enlace `../../base/08-pruebas.md` vale desde `plantillas/planes/`, no desde la carpeta de la fase, tres niveles más abajo.
+**ORIGEN:** 🐛 **Defecto.** Sale del [pendientes/hecho/el-andamio-no-deja-enlaces-rotos.md](../../../../../pendientes/hecho/el-andamio-no-deja-enlaces-rotos.md): el andamio copia `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md` tal cual, y su enlace `../../base/08-pruebas.md` vale desde `plantillas/planes/`, no desde la carpeta de la fase, tres niveles más abajo.
 
 **CA de la HU que cubre esta fase:**
 
@@ -36,7 +36,7 @@
 Leído el 2026-08-20:
 
 - [validadores/andamio.py](../../../../../validadores/andamio.py): `crear()` lee cada plantilla de `DOCUMENTOS`, aplica `_sustituciones()` (solo marcadores estructurales) y escribe. No toca enlaces.
-- `plantillas/planes/resultados.md` línea 118 enlaza `../../base/08-pruebas.md#t4…`; `plantillas/estado-fase.md` y `plantillas/funcionalidad-implementada.md` usan `«RUTA-ESTANDAR»/base/…`, que el instalador rellena en los proyectos (pendiente 40) y el andamio deja crudo.
+- `plantillas/ciclo-vida-proyectos/09-resultado-pruebas.md` línea 118 enlaza `../../base/08-pruebas.md#t4…`; `plantillas/ciclo-vida-proyectos/10-estado-fase.md` y `plantillas/ciclo-vida-proyectos/11-funcionalidad-implementada.md` usan `«RUTA-ESTANDAR»/base/…`, que el instalador rellena en los proyectos (pendiente 40) y el andamio deja crudo.
 - Las cuatro fases levantadas hoy y las tres de la mañana nacieron con el enlace de la línea 118 roto; se corrigió a mano con `sed` las siete veces.
 
 ### 2.1 Archivos que se crean o modifican  ·  [`02·F14`](../../../../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q9
