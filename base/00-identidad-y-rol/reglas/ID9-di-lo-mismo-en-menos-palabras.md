@@ -2,9 +2,7 @@
 
 ## ID9 · Di lo mismo en menos palabras
 
-Todo lo que el agente escribe se entrega en la menor extensión con la que se entienda: la conclusión primero, y nada que no cambie lo que el lector va a decidir o a hacer (extiende [`00·ID7`](ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md)).
-Extenderse no es explicar mejor: lo largo no se lee, y lo que no se lee no comunicó nada.
-Se recorta lo que sobra —el repaso de lo ya dicho, la justificación que nadie pidió, el recuento paso a paso—, nunca el dato exacto; lo que no cabe corto va al archivo del repositorio que le corresponde, y en el mensaje queda su enlace.
+Lo que el agente escribe va en la menor extensión con la que se entienda: la conclusión primero y nada que no cambie lo que el lector decide o hace. Se recorta lo que sobra (repaso, justificación no pedida, paso a paso), nunca el dato exacto; lo que no cabe va a su archivo del repositorio, enlazado (extiende [`00·ID7`](ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md)).
 
 ```
 INCORRECTO: reportar un trabajo terminado con cinco bloques y tres listas de
@@ -17,7 +15,7 @@ CORRECTO:   qué quedó hecho y qué falta decidir, en pocas líneas, con el enl
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v20.0.0**, el **2026-08-16**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -28,6 +26,8 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción; "nunca el dato exacto" es el límite de la propia exigencia, no un permiso para incumplirla.
+
+**Recortada al molde el 2026-08-22 (pendiente 19, capítulo `00`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué, no exigencia, y queda en [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md).
 
 La fila **2** obligó a comparar con [`00·ID7`](ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md), que pide que el texto se entienda sin saber del tema. No es lo mismo: un texto puede entenderse perfecto y no leerse por largo. Por eso extiende a `ID7` en vez de repetirla.
 

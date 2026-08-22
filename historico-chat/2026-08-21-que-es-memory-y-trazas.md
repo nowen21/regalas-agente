@@ -1340,3 +1340,13 @@ Después sigue la segunda ronda: partir las 26 reglas con más de una exigencia 
 
 ### 68 · Usuario — 2026-08-22 06:46:10
 > si
+
+**Agente** — 2026-08-22 06:47:51
+<!-- agente: e9c43f3f-feec-44d2-b5bc-de70059c3f21 -->
+
+Publicado: **30.8.0**, commit `c9a5bce` en `origin/main`. Las 12 rayas del anexo pasaron a dos puntos/coma y el anexo deja escrito que usted autorizó solo ese cambio.
+
+Batería del pre‑push en verde (0 fallas). Lo que los avisos dejan a la vista para la segunda ronda del 19: **37 reglas con sello en CUMPLE miden más de 320** (`ID7` 703, `M6` 725, `DOC11` 626, `ID9` 516…), o sea sellos que dicen ✅ en la fila 10 sin serlo. Eso y la partición de las 26 (MAYOR) es lo que sigue; ¿arranco por el capítulo `00` (`ID5`, `ID7`, `ID8`, `ID9` y las tres blindadas)?
+
+### 69 · Usuario — 2026-08-22 06:48:11
+> si

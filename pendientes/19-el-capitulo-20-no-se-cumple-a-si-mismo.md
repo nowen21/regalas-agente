@@ -493,7 +493,7 @@ El usuario contestó **sí a las cuatro** preguntas de arriba. Antes de partir n
 
 | Capítulo | Reglas | Qué se hizo |
 |---|---|---|
-| `18`, `19` | las catorce | ejemplo INCORRECTO/CORRECTO; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [notas/porques-recortados-de-18-y-19.md](../notas/porques-recortados-de-18-y-19.md) |
+| `18`, `19` | las catorce | ejemplo INCORRECTO/CORRECTO; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md) |
 | `20` | `M2`, `M4`, `M7`, `M8` | `M2` dice que el preámbulo del `00` es anexo; las otras tres vuelven a cumplirse porque desapareció lo que las contradecía |
 | `02` | `F5`, `F12` | `F5` re-juzgada; `F12` queda con una exigencia y su texto literal pasa entero al [anexo](../base/02-flujo-de-trabajo/nomenclatura-de-fases.md) |
 | `01` | `C1`, `C15`, `C16`, `C18` | cuatro líneas, dependencia entre paréntesis (`M7`), fuera el bloque «Encadenamiento» (también en `03·D8`) |

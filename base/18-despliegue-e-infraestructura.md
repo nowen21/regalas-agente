@@ -270,7 +270,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad. Y el cuerpo se recortó al molde: el porqué que sobraba quedó en [notas/porques-recortados-de-18-y-19.md](../notas/porques-recortados-de-18-y-19.md).
+**Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad. Y el cuerpo se recortó al molde: el porqué que sobraba quedó en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
 **Dos filas.**
 
