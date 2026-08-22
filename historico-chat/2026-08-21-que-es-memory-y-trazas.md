@@ -1051,3 +1051,60 @@ Si quieres verlo por fuera de la pantalla: `interfaz/.venv/Scripts/python interf
 
 ### 51 · Usuario — 2026-08-22 00:30:21
 > la DB (cimiento) debe ser en MariaDB puerto 3307
+
+**Agente** — 2026-08-22 00:32:47
+<!-- agente: 81864ae8-ddc3-4e9e-a94f-4db2097210f6 -->
+
+Entendido: la base de Cimiento pasa a MariaDB en el puerto 3307. Verifico que esté escuchando y con qué credenciales entro:
+
+MariaDB 11.4.9 responde en 3307 con `root` sin clave (local). Creo la base `cimiento` y reconfiguro — credenciales al `.env` (ignorado), nunca al código:
+
+Hecho: la base de Cimiento es **MariaDB 11.4.9 en el puerto 3307**, y el estándar queda en **30.4.0**:
+
+- **Base `cimiento`** creada (utf8mb4); `config/settings/base.py` lee la conexión de las variables `DB_*` del `.env` — que **no está en git** (verificado) — y `.env.example` las lista sin valores. Driver `mysqlclient` en `requirements/` con su versión exacta en el lock.
+- **Los 10 proyectos ya viven en MariaDB** (migrado e importado); las 7 pruebas de la interfaz corren contra MariaDB y pasan. El `_visor.sqlite3` dejó de existir.
+- **Verificado en vivo:** el visor corre con su `.venv` en http://127.0.0.1:8765 y la pantalla Proyectos muestra los 10 desde MariaDB.
+- Documentado en README del visor, mapa del sitio, CHANGELOG y el resumen de la sesión. Enlaces, versionado y trinquete limpios.
+
+Un matiz que te dejo dicho: entré con `root` sin clave porque así está tu MariaDB local; si prefieres un usuario propio para `cimiento`, solo cambia el `.env`.
+
+¿Autorizas commit y push?
+
+### 52 · Usuario — 2026-08-22 00:33:04
+> si
+
+**Agente** — 2026-08-22 00:34:02
+<!-- agente: eafa5aa4-3359-47ca-b27d-5594f8b1c3a4 -->
+
+Publicado: commit `6276e2e` en `main`, push en verde. El estándar queda en **30.4.0** y Cimiento con su registro de proyectos en MariaDB (puerto 3307).
+
+Nada queda a medias de esta ronda. Lo que sigue en el backlog, cuando lo ordenes:
+
+- **59** (P0): las 42 dudas que detienen 26 fases — esperan tus respuestas, por tandas.
+- **Arreglos chicos de falsos positivos:** 33·1/71 (enlaces con espacios), 33·5 (la prueba del `GATE`), 72 (mayúscula de la letra de unidad).
+- **19 y 48** por tandas (checklists de reglas y fases incompletas).
+- **El generador de vistas consolidadas y `.docx`**, ya con casa en la interfaz y con `python-docx` como su dependencia.
+- La deuda declarada del 75: que el instalador escriba las altas directo en MariaDB en vez del `.md` generado.
+
+### 53 · Usuario — 2026-08-22 00:50:38
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\pendientes\60-nadie-es-dueno-del-texto-del-capitulo-02.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> revise el 76
+
+**Agente** — 2026-08-22 00:56:19
+<!-- agente: fb258817-58aa-46f5-92f4-d39b0b968fbd -->
+
+El 76 quedó resuelto el mismo día, y el culpable éramos nosotros:
+
+**La causa:** las pruebas de las vistas de la interfaz llamaban `exportar()` sin redirigir el `.md`, y volcaban la **base de pruebas** (vacía tras una baja) sobre `plantillas/proyectos.md`. Las tres veces que el otro proyecto vio el archivo vacío coinciden con mis tres corridas de `manage.py test`. Y al corregirlo, las pruebas del instalador hicieron lo mismo por otro camino: dieron de alta dos «proyecto de prueba» en MariaDB real — ya borrados y con guardia.
+
+**Las tres correcciones (v30.5.0):**
+1. Ninguna prueba toca el registro real: todas corren con el `.md` en carpeta temporal.
+2. `exportar()` **se niega a vaciar**: cero activos sobre un archivo con filas lanza `RegistroVacio`, y las pantallas lo dicen en vez de borrar.
+3. El instalador da de alta **directo en Cimiento** (`manage.py registrar`, solo contra el registro real) — con esto cierra también la deuda que quedó del 75.
+
+**Verificado:** 10 de 10 pruebas de la interfaz y 13 de 13 del instalador en verde, y después de correr ambas suites la base real sigue con sus 10 proyectos. El checklist del proyecto que reportó ya da **14 de 14**. Aviso de cierre enviado a los 9 instalados; señal S-019 con la lección; enlaces, versionado y trinquete limpios; `.env` fuera de git.
+
+¿Autorizas commit y push?
+
+### 54 · Usuario — 2026-08-22 01:24:32
+> si

@@ -833,6 +833,32 @@ def instalar_agente_config(ruta, aplicar):
     return pasos or ["los 4 archivos de .agente/ ya estaban"]
 
 
+def _registrar_en_cimiento(nombre, ruta, scope):
+    """El alta va al registro de Cimiento (la interfaz) si está instalado.
+
+    Desde el pendiente 75 la fuente de verdad de los proyectos es ese registro
+    y `plantillas/proyectos.md` se genera desde él; el instalador anotaba su
+    fila en el `.md` y la interfaz la tenía que importar (pendiente 76). Si la
+    interfaz no está lista (sin `.venv` o sin base), se vuelve al `.md` y el
+    registro la importa después: nada se pierde, solo se tarda un clic.
+    """
+    # Solo contra el registro real: si una prueba redirigió REGISTRO a una
+    # carpeta temporal, el alta va al .md temporal y nunca a la base de verdad.
+    real = os.path.join(RAIZ, "plantillas", "proyectos.md")
+    if os.path.normcase(os.path.abspath(REGISTRO)) != os.path.normcase(real):
+        return False
+    manage = os.path.join(RAIZ, "interfaz", "manage.py")
+    python = os.path.join(RAIZ, "interfaz", ".venv", "Scripts", "python.exe")
+    if not (os.path.isfile(manage) and os.path.isfile(python)):
+        return False
+    r = subprocess.run(
+        [python, manage, "registrar", "--nombre", nombre, "--ruta", ruta,
+         "--scope", scope],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        timeout=120)
+    return r.returncode == 0
+
+
 def instalar_registro(ruta, aplicar):
     """Anota el proyecto en `plantillas/proyectos.md`, la lista única.
 
@@ -851,6 +877,10 @@ def instalar_registro(ruta, aplicar):
     nombre = os.path.basename(os.path.abspath(ruta).rstrip("\\/"))
     fila = (f"| {nombre} | `{os.path.abspath(ruta)}` | "
             f"`proyecto:{_slug(nombre)}` | por detectar |\n")
+    if aplicar and _registrar_en_cimiento(nombre, os.path.abspath(ruta),
+                                          f"proyecto:{_slug(nombre)}"):
+        return [f"anotar «{nombre}» en el registro de Cimiento (y regenerado "
+                f"plantillas/proyectos.md)"]
     if aplicar:
         texto = leer(REGISTRO)
         if not texto.endswith("\n"):

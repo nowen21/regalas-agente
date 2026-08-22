@@ -175,3 +175,12 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-21 · agente; opción y planes confirmados por el usuario en el chat.
 - **Scope:** estándar; aplica a cualquier proyecto donde una sesión muera a mitad de una fase.
 - **Rel:** S-002.
+
+## S-019 · Las pruebas de las vistas escribían el registro real de proyectos  ·  error-resuelto · activa
+- **What:** `plantillas/proyectos.md` quedó vacío tres veces en una noche y nadie veía quién lo vaciaba. Eran las pruebas de la interfaz: las vistas llaman `exportar()`, las pruebas llamaban a las vistas con la base de pruebas (vacía tras una baja), y `exportar()` volcaba esa base sobre el archivo real. Un proyecto bien registrado reprobaba «registro» en cada mensaje (pendiente 76, reportado por otra sesión).
+- **Why:** una prueba que toca un archivo real del sistema no es una prueba: es un proceso con efectos que corre cuando nadie mira. Y un exportador que escribe cero filas sin preguntarse si antes había algo convierte cualquier base equivocada o vacía en una pérdida de datos.
+- **Where:** [interfaz/cimiento/proyectos/core.py](../interfaz/cimiento/proyectos/core.py) (`exportar` con `RegistroVacio`; `registrar`) · [tests.py](../interfaz/cimiento/proyectos/tests.py) (todas con el .md apuntando a una carpeta temporal) · `manage.py registrar` y `validadores/instalar.py` (el alta entra al registro).
+- **Learned:** el que lo detectó fue un proyecto instalado, por el checklist que corre en cada mensaje: el estándar se vigiló a sí mismo desde afuera. La regla de oro que queda: toda prueba que escriba, escribe en temporal, y todo exportador se niega a vaciar lo que tenía contenido.
+- **When/Who:** 2026-08-22 · agente; el usuario pidió revisar el 76.
+- **Scope:** estándar (la interfaz y el instalador).
+- **Rel:** S-018.

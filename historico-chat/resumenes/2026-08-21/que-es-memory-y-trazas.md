@@ -87,6 +87,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 
 ---
 
+### H-6 · El registro de proyectos se vaciaba solo, y eran nuestras propias pruebas
+
+- **Qué pasó:** Otra sesión (proyecto `gestion de servicios tecnologicos`) reportó el pendiente 76: `plantillas/proyectos.md` quedaba vacío de la nada y su checklist reprobaba «registro» en cada mensaje. El usuario pidió revisarlo. La causa estaba en casa: las pruebas de las vistas de la interfaz llamaban `exportar()` sin redirigir el `.md`, y volcaban la base de pruebas (vacía tras una baja) sobre el archivo real — tres veces, coincidiendo con tres corridas de `manage.py test`. Al corregir, las pruebas del instalador hicieron lo mismo por otro camino (el alta nueva vía `manage.py registrar` metió dos «proyecto de prueba» en MariaDB); se borraron y se puso el guardia.
+- **Por qué importa:** Una prueba con efectos sobre un archivo real es un proceso que corre cuando nadie mira; y un exportador que escribe cero filas sin mirar qué había convierte cualquier base equivocada en pérdida de datos. Lo detectó un proyecto instalado: el estándar se vigiló desde afuera.
+- **Qué lo soluciona:** Hecho (v30.5.0, 10 pruebas de la interfaz en verde, la base real con sus 10 proyectos después de correr ambas suites): ninguna prueba toca el registro real; `exportar()` se niega a vaciar (`RegistroVacio`) y las pantallas lo dicen; el instalador da de alta con `manage.py registrar` solo contra el registro real (cierra la deuda del 75). Señal S-019.
+- **Qué se decidió:** El checklist sigue leyendo el `.md`, que ahora es confiable: lo genera el registro, nada lo vacía y el instalador no lo escribe a mano.
+- **Estado:** resuelto acá
+- **Responde a:** pendiente 76 (secuela del 75)
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/hecho/el-registro-no-se-vacia-y-el-alta-entra-a-cimiento.md](../../../pendientes/hecho/el-registro-no-se-vacia-y-el-alta-entra-a-cimiento.md), la entrada 30.5.0 del CHANGELOG y la señal S-019
+- **Nace en:** 2026-08-22 · que-es-memory-y-trazas
+- **Cerrado en:** 2026-08-22 · que-es-memory-y-trazas
+- **Con qué se retoma:** — (el commit de esta ronda, que autoriza el usuario)
+
+---
+
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [historico-chat/memory/memory.md](../../memory/memory.md) y en [historico-chat/trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
 
 ---

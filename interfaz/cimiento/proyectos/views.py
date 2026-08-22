@@ -11,6 +11,15 @@ from .forms import ProyectoForm
 from .models import Proyecto
 
 
+def _exportar_o_avisar(mensaje_ok):
+    """Exporta el .md; si el registro quedó vacío y el archivo tenía filas, avisa en vez de borrar."""
+    try:
+        core.exportar()
+        return mensaje_ok
+    except core.RegistroVacio as e:
+        return f"Guardado. El .md no se regeneró: {e}"
+
+
 def lista(request):
     proyectos = list(Proyecto.objects.all())
     for p in proyectos:
@@ -27,8 +36,7 @@ def editar(request, pk=None):
     form = ProyectoForm(request.POST or None, instance=proyecto)
     if request.method == "POST" and form.is_valid():
         form.save()
-        core.exportar()
-        return redirect("/proyectos/?m=Guardado y exportado al registro .md")
+        return redirect("/proyectos/?m=" + _exportar_o_avisar("Guardado y exportado al registro .md"))
     return render(request, "proyectos/editar.html", {
         "form": form, "proyecto": proyecto,
         "titulo": "Editar proyecto" if proyecto else "Registrar proyecto",
@@ -40,7 +48,7 @@ def baja(request, pk):
     if request.method == "POST":
         proyecto.activo = not proyecto.activo
         proyecto.save()
-        core.exportar()
+        return redirect("/proyectos/?m=" + _exportar_o_avisar("Estado cambiado y registro .md regenerado"))
     return redirect("/proyectos/")
 
 
@@ -53,7 +61,10 @@ def importar(request):
 
 def exportar(request):
     if request.method == "POST":
-        filas = core.exportar()
+        try:
+            filas = core.exportar()
+        except core.RegistroVacio as e:
+            return redirect(f"/proyectos/?m=No se exportó: {e}")
         return redirect(f"/proyectos/?m=Registro .md regenerado con {filas} activo(s)")
     return redirect("/proyectos/")
 

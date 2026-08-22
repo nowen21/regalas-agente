@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.5.0 — 2026-08-22
+
+**MENOR** (el instalador cambia cómo da de alta un proyecto; un arreglo de pérdida de datos en la interfaz; `base/` y `plantillas/` no cambian de exigencia).
+
+**El registro de proyectos ya no se vacía solo, y el instalador da de alta directo en Cimiento.** Un proyecto instalado reportó que la lista de proyectos quedaba vacía de la nada y su revisión de instalación lo reprobaba en cada mensaje. La causa estaba en casa: las pruebas de la interfaz exportaban su base de pruebas, vacía, sobre el archivo real. Tres correcciones: ninguna prueba toca ya el registro real; el exportador se niega a escribir cero filas sobre un archivo que tenía filas (y la pantalla lo dice en vez de borrar); y el alta que hace el instalador entra al registro de Cimiento con `manage.py registrar`, regenerando el archivo, en vez de anotar una fila a mano — con eso cierra también la deuda que quedó al cerrar el 75.
+
+**El detalle.** Es el [pendiente 76](pendientes/hecho/el-registro-no-se-vacia-y-el-alta-entra-a-cimiento.md), reportado por `gestion de servicios tecnologicos` y cerrado el mismo día: `core.exportar()` con `RegistroVacio`, `core.registrar()`, el comando `registrar`, `_registrar_en_cimiento` en [`instalar.py`](validadores/instalar.py) (solo contra el registro real: una prueba que redirija el `.md` nunca llega a la base), 10 pruebas de la interfaz en verde y el registro real con sus 10 proyectos después de correrlas. La lección quedó en la señal S-019: toda prueba que escriba, escribe en temporal; todo exportador se niega a vaciar lo que tenía contenido.
+
 ## 30.4.0 — 2026-08-22
 
 **MENOR** (cambia la base de datos de la interfaz local; `base/` y `plantillas/` no cambian de exigencia).

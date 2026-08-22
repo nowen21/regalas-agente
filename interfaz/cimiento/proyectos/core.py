@@ -54,14 +54,48 @@ def importar():
     return nuevas
 
 
+class RegistroVacio(RuntimeError):
+    """El registro devolvió cero activos y el .md tenía filas: no se sobrescribe."""
+
+
+def _filas_en_md():
+    if not os.path.isfile(REGISTRO_MD):
+        return 0
+    return sum(1 for l in io.open(REGISTRO_MD, encoding="utf-8")
+               if _FILA.match(l.strip()) and not l.startswith("| Proyecto |"))
+
+
 def exportar():
-    """Regenera `plantillas/proyectos.md` desde el registro (solo activos)."""
+    """Regenera `plantillas/proyectos.md` desde el registro (solo activos).
+
+    **Nunca escribe cero filas encima de un archivo que tenía filas.** Pasó
+    (pendiente 76): las pruebas de las vistas exportaban su base de pruebas,
+    vacía, sobre el registro real, y el checklist de los proyectos reprobaba
+    «registro» en cada mensaje. Un registro vacío de verdad se exporta solo si
+    el archivo ya estaba vacío; si no, se lanza `RegistroVacio` y el archivo
+    queda como estaba.
+    """
     filas = []
     for p in Proyecto.objects.filter(activo=True):
         filas.append(f"| {p.nombre} | `{p.ruta}` | `{p.scope}` | {p.stack} |")
+    if not filas and _filas_en_md() > 0:
+        raise RegistroVacio(
+            "el registro no tiene proyectos activos pero plantillas/proyectos.md "
+            "tiene filas: no se sobrescribe (¿base equivocada o vacía?)")
     texto = CABECERA + "\n".join(filas) + ("\n" if filas else "")
     io.open(REGISTRO_MD, "w", encoding="utf-8", newline="").write(texto)
     return len(filas)
+
+
+def registrar(nombre, ruta, scope="", stack="por detectar"):
+    """Alta o actualización de ruta desde afuera (el instalador). Exporta."""
+    proyecto, creado = Proyecto.objects.get_or_create(
+        nombre=nombre, defaults={"ruta": ruta, "scope": scope, "stack": stack})
+    if not creado and proyecto.ruta != ruta:
+        proyecto.ruta = ruta
+        proyecto.save()
+    exportar()
+    return creado
 
 
 def medir(proyecto):
