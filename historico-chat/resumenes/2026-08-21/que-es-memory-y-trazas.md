@@ -149,6 +149,16 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Dónde queda.** [F-EP-001-HU-009-nadie-se-pasa-del-molde](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/F-EP-001-HU-009-nadie-se-pasa-del-molde/README.md) · el pendiente pasa a [hecho](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) · la HU-009 queda con su `CA-01` cubierto y el README de la historia, que decía «todavía no tiene fases», lista las seis.
 
+### H-11 · El 33 cierra entero y el 59 arranca: quince fases de treinta y cuatro
+
+**Qué se encontró.** El pendiente 33 tenía once puntos: siete los contestaba el repositorio y cuatro pedían construir, así que se construyeron y cerró (v31.0.0 a v31.4.0). El 59 no eran «42 dudas del usuario»: son **34 fases detenidas**, y al medirlas apareció que cinco ya estaban hechas y probadas con el estado-fase diciendo lo contrario, justo el documento que una sesión nueva lee para orientarse.
+
+**Qué se decidió.** Ejecutarlas por tandas, midiendo antes cada una: unas solo necesitaban correrse y escribirse, otras había que construirlas de verdad. Y una regla que se repitió sola en cinco fases distintas: **detiene lo que se comprueba sin criterio, avisa lo que solo informa mal**, y nada se exige hacia atrás, porque treinta avisos que nunca se van apagan la comprobación entera.
+
+**Dónde queda.** Quince fases cerradas, de la v30.9.1 a la v31.9.0. Nacen `validar.py todo` (31 comprobaciones en una línea), `validar.py sitio`, `validar.py temas`, `guardian_version.py`, la lectura que no revienta con un archivo ilegible, la detección de identificadores repetidos y las dos direcciones de la trazabilidad de un pendiente. **Quedan 19 fases**, entre ellas las tres de la memoria (EP-006), que son las únicas que exigen construir algo que hoy no existe en ninguna forma.
+
+**Lo que la jornada dejó como aprendizaje:** casi todo lo que un pendiente viejo declara «detenido esperando al usuario» hay que volver a medirlo antes de ejecutarlo. Es la señal [S-020](../../../documentacion/senales.md), y hoy se cumplió cuatro veces más.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

@@ -10,7 +10,7 @@ temas --aplicar`. Si se edita a mano, el próximo generado lo pisa.
 **Qué no es.** No es una clasificación: no agrupa temas parecidos ni dice de qué
 habla cada hallazgo. Es lo que ya estaba escrito, junto.
 
-**345 hallazgos** en **59 resúmenes**, del 2026-08-06 al 2026-08-22.
+**348 hallazgos** en **60 resúmenes**, del 2026-08-06 al 2026-08-22.
 
 ## 2026-08-06
 
@@ -539,3 +539,11 @@ habla cada hallazgo. Es lo que ya estaba escrito, junto.
 - `H-8` Las 27 reglas publicadas en «no cumple» pasan a cumplir (primera ronda del 19)
 - `H-9` Ninguna regla se pasa ya del molde, y las particiones que faltaban casi todas estaban hechas
 - `H-10` El pendiente 19 cierra, y la fase que lo respalda se escribió después de ejecutarlo
+- `H-11` El 33 cierra entero y el 59 arranca: quince fases de treinta y cuatro
+
+## 2026-08-22
+
+**[2026-08-22 · lo que quedó](2026-08-22/sesion-2.md)**
+
+- `H-1` El encuadre del planteamiento de Cimiento se llenó con procedencia en vez de con instrucción de uso
+- `H-2` Nada impide que un planteamiento llenado pise el encuadre del molde
