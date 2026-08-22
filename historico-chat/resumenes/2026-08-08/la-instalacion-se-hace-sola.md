@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-la-instalacion-
 - **Responde a:** —.
 - **Dispara:** —, es aplicar un checklist que ya existe.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), y se cruza con el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), y se cruza con el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-08 · la instalación se hace sola.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el sello de una regla caduca cuando su texto cambia? Si nada lo comprueba, el checklist envejece en silencio.
@@ -79,6 +79,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-la-instalacion-
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2 y H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commit `d2f5800`, 21 archivos, dejando fuera lo de otras sesiones |

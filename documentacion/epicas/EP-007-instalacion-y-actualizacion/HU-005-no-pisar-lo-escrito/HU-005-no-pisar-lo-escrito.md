@@ -126,7 +126,7 @@ Y lo que ya estaba escrito queda igual
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito](A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**Cumple**](A-EP-007-HU-005-retrodocumentar-que-no-se-pisa-lo-escrito/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA y los dos transversales verificados. Pendiente el commit |
-| [B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma](B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma/README.md) | CA-01 | **Cerrada 2026-08-22 — Cumple** (7 de 7; v31.3.0). El README heredado se completa sin pisar, del punto 8 del [pendiente 33](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| [B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma](B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma/README.md) | CA-01 | **Cerrada 2026-08-22 — Cumple** (7 de 7; v31.3.0). El README heredado se completa sin pisar, del punto 8 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 
 **La fase retro-documenta la exigencia central de la épica:** que actualizar no borre lo que la persona escribió. Falta la prueba, con el archivo que más duele: el `CLAUDE.md` del proyecto, que mezcla lo heredado con lo propio.
 

@@ -112,7 +112,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-el-torniquete-d
 - **Responde a:** —.
 - **Dispara:** —, es una línea en un validador que ya existe.
 - **Orden de resolución:** 1 de 1. Es el único que quedó abierto de esta sesión.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-06 · el torniquete del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** el caso que lo destapó salió del repositorio al día siguiente, así que hoy no se ve. ¿Sigue el falso positivo, o algo lo arregló por el camino?
@@ -124,6 +124,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-el-torniquete-d
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ los seis |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), creado el 2026-08-15 al escribir este resumen |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), creado el 2026-08-15 al escribir este resumen |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ está en el repositorio desde entonces |

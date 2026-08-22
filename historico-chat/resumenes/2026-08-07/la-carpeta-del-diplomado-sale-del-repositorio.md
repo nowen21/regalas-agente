@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-la-carpeta-del-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** la conversación, y el hallazgo H-1 de [la clase del diplomado](../2026-08-06/la-clase-del-diplomado-en-el-repositorio.md), que esta sesión cierra. El defecto del validador está en el [pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** la conversación, y el hallazgo H-1 de [la clase del diplomado](../2026-08-06/la-clase-del-diplomado-en-el-repositorio.md), que esta sesión cierra. El defecto del validador está en el [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-07 · la carpeta del diplomado sale del repositorio.
 - **Cerrado en:** 2026-08-07 · la carpeta del diplomado sale del repositorio.
 - **Con qué se retoma:** —.

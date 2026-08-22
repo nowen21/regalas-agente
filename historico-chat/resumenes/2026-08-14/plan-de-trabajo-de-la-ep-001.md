@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-plan-de-trabajo
 - **Responde a:** EP-001.
 - **Dispara:** —, hay [plantilla de retrodocumentación](../../../base/13-documentacion/retrodocumentacion.md) escrita; falta decidir si aplica.
 - **Orden de resolución:** 1 de 3. Va primero: bloquea escribir las seis historias que faltan.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿las fases de EP-001 son plan o son retrodocumentación de lo que ya está en `base/`?
@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-plan-de-trabajo
 - **Responde a:** —.
 - **Dispara:** —, es una palabra.
 - **Orden de resolución:** 3 de 3.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-14 · plan de trabajo de la EP-001.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿sigue el aviso `DOC12` en la fase A de HU-001?
@@ -94,6 +94,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-plan-de-trabajo
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 y H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2, H-3 y H-5 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md); H-3 vive además dentro del plan de la fase |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2, H-3 y H-5 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md); H-3 vive además dentro del plan de la fase |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commit `70fca40`, sin publicar por decisión del usuario |

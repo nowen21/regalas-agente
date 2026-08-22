@@ -160,7 +160,7 @@ Quirúrgica ([`02·F5`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F5-cor
 
 **Resultado esperado final:** el nombre de la carpeta no cambia el veredicto.
 
-> El repositorio del estándar vive en una ruta con espacios y tilde, así que este caso cubre la máquina donde se desarrolla. Ojo: el [punto 1 del pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) ya reportó que el validador da por rotos los enlaces con espacios. Si aparece acá, **se reporta y no se arregla en esta fase**: es otro defecto.
+> El repositorio del estándar vive en una ruta con espacios y tilde, así que este caso cubre la máquina donde se desarrolla. Ojo: el [punto 1 del pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) ya reportó que el validador da por rotos los enlaces con espacios. Si aparece acá, **se reporta y no se arregla en esta fase**: es otro defecto.
 
 ---
 

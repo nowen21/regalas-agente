@@ -16,7 +16,7 @@ Origen: pendiente 35, abierto y cerrado el 2026-08-16, versión **21.3.0**.
 
 **El CA nació con la fase.** La HU-008 pedía el arrastre en su `RN-06` y ninguno de sus tres criterios lo medía: sin criterio no hay de dónde derivar el plan ([`02·F18`](../../base/02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)), así que la exigencia se subió a la historia como `CA-04` y el plan bajó de ella.
 
-**Lo que quedó fuera:** los enlaces que **otros** archivos le hacen a la sesión renombrada. Eso es el [pendiente 33 · punto 4](../33-defectos-que-destaparon-los-resumenes-viejos.md), que necesita el modo de reparación de `citas.py` y es una fase propia.
+**Lo que quedó fuera:** los enlaces que **otros** archivos le hacen a la sesión renombrada. Eso es el [pendiente 33 · punto 4](lo-que-quedo-abierto-en-las-sesiones-viejas.md), que necesita el modo de reparación de `citas.py` y es una fase propia.
 
 ## Qué pasaba
 

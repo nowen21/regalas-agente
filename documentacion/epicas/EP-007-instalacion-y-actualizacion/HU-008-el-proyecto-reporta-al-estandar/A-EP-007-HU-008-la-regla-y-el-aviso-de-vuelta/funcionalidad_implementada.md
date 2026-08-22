@@ -17,7 +17,7 @@ Un proyecto que encuentra un defecto del estándar no lo toca: abre un pendiente
 
 **Va al capítulo `02` y no a la épica de instalación.** Lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
 
-**Y resuelve un choque que estaba abierto:** [`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y no decía qué hacer cuando lo descubierto es del estándar. Era el hueco anotado en el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+**Y resuelve un choque que estaba abierto:** [`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y no decía qué hacer cuando lo descubierto es del estándar. Era el hueco anotado en el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 ### 2 · Las dos plantillas
 

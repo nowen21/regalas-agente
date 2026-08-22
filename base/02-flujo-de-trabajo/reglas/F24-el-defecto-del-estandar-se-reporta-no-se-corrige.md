@@ -33,7 +33,7 @@ La fila **9** es una sola exigencia con tres consecuencias que no se pueden cump
 
 La fila **16** es N/A: no tiene excepción. Que el proyecto pueda seguir trabajando lo suyo no es un caso exento — es la regla diciendo qué **sí** hacer.
 
-La fila **17** resuelve un choque que estaba abierto y conviene dejarlo dicho: [`02·F20`](F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y **no decía qué hacer cuando lo descubierto es del estándar y no del proyecto**. Ahí `F20` para y esta dice a dónde va lo que se propuso. Era el hueco anotado en el punto 8 del [pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+La fila **17** resuelve un choque que estaba abierto y conviene dejarlo dicho: [`02·F20`](F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y **no decía qué hacer cuando lo descubierto es del estándar y no del proyecto**. Ahí `F20` para y esta dice a dónde va lo que se propuso. Era el hueco anotado en el punto 8 del [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 **Validable a medias, y la mitad que se puede ya corre:** `validar.py pendientes` comprueba que un pendiente que declara «Proyecto de origen» lo **nombre** de verdad, en vez de dejar la casilla vacía o con el marcador sin llenar.
 

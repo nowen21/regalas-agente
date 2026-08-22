@@ -35,6 +35,6 @@ Aplicado el [checklist del estándar](../checklist.md) contra **v30.9.1**, el **
 
 **Fila 19 · el disparo es el cierre de versión, y no es casual.** Es el único momento del flujo en que ya hay un tramo cerrado que releer, y coincide con [`M10`](M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), que ya obliga a parar ahí a escribir la entrada del registro. Enganchar el barrido a un momento que no existe en el flujo lo habría dejado, otra vez, en «se hace cuando lo pidan».
 
-**De dónde sale.** El punto 2 del [pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-06: el barrido se había hecho **una vez**, salieron doce candidatas, y quedó sin molde y sin disparador. Lo que ese punto decía con sus palabras es lo que esta regla arregla: *«sin disparador, se hace cuando el usuario lo pida es un favor, no una norma»*.
+**De dónde sale.** El punto 2 del [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-06: el barrido se había hecho **una vez**, salieron doce candidatas, y quedó sin molde y sin disparador. Lo que ese punto decía con sus palabras es lo que esta regla arregla: *«sin disparador, se hace cuando el usuario lo pida es un favor, no una norma»*.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

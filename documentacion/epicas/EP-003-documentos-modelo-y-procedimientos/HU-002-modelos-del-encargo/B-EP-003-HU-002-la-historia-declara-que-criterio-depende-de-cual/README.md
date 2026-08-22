@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-07
+De dónde sale: el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-07
 
 **Una historia ya puede decir qué criterio depende de cuál.** La tabla de fases decía qué CA cubre cada fase, pero no si un CA no se puede comprobar mientras otro no esté cumplido; sin eso, dos fases se ordenan al revés y se descubre al probar. Se resolvió con una columna, no con una sección: la historia sin dependencias la deja vacía y no paga nada.
 

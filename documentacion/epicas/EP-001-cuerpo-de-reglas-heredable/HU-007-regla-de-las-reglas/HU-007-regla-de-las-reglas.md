@@ -190,7 +190,7 @@ Y ninguna candidata se convierte en regla desde ese documento: eso lo decide el 
 |---|---|---|
 | [A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
 | [B-EP-001-HU-007-primero-que-el-proceso-sirva](B-EP-001-HU-007-primero-que-el-proceso-sirva/README.md) | CA-05 | **Cerrada 2026-08-21 — Cumple** (3 de 3 casos aprobados; v28.1.0). Nace `20·M19`, desde el [pendiente 16](../../../../pendientes/hecho/primero-que-el-proceso-sirva.md) |
-| [C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador](C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md) | CA-06 | **Cerrada 2026-08-22 — Cumple** (5 de 5; v31.0.0). Nace `20·M20` y el molde del barrido, desde el punto 2 del [pendiente 33](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| [C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador](C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md) | CA-06 | **Cerrada 2026-08-22 — Cumple** (5 de 5; v31.0.0). Nace `20·M20` y el molde del barrido, desde el punto 2 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 
 **La fase retro-documenta y no toca el capítulo `20`.** El procedimiento existe y se usa en cada cambio: dieciséis meta-reglas, el molde y un checklist de veinte filas. Lo que falta es el caso escrito que muestre una candidata enrutada, otra rechazada por nombrar una tecnología y otra partida en dos.
 

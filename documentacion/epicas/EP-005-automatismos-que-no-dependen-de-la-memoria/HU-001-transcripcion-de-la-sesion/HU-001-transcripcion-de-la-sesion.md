@@ -148,6 +148,7 @@ Entonces la sesión está listada
 |---|---|---|
 | [A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA numerados sí; el transversal de privacidad no. Pendiente el commit |
 | [B-EP-005-HU-001-la-transcripcion-duplicada-del-15](B-EP-005-HU-001-la-transcripcion-duplicada-del-15/README.md) | La del 2026-08-15, escrita dos veces | Cerrada 2026-08-18 |
+| [C-EP-005-HU-001-el-historico-se-busca-por-tema](C-EP-005-HU-001-el-historico-se-busca-por-tema/README.md) | El índice temático: 345 hallazgos de 59 resúmenes en un archivo | **Cerrada 2026-08-22 — Cumple** (8 de 8; v31.4.0), del punto 8 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 
 **La fase retro-documenta**, y se puede ver funcionando en cualquier sesión: el enganche escribe cada mensaje con la hora del reloj. El caso que la fase fija es el defecto que ya pasó seis veces — el agente escribiendo la transcripción a mano, con horas inventadas.
 

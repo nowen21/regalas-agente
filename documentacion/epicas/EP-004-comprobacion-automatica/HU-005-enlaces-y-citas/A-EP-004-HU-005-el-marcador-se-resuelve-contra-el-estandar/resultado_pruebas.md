@@ -134,7 +134,7 @@ Los tres primeros casos corren **dos veces**, una por cada carpeta de prueba: la
 | 1 | Que la salida sobre el propio estándar no cambiara | Guardando `validar.py estandar` antes y comparándola después | **Idénticas**, línea por línea |
 | 2 | Que la prueba se ponga roja con el defecto puesto | Cargando en memoria la versión vieja y corriendo el CP-003 | Se pone roja |
 
-**El CP-004 no destapó lo del [punto 1 del pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md)** —que el validador daría por rotos los enlaces con espacios—: la carpeta con espacio y tilde dio el mismo resultado que la normal. Ese punto sigue abierto, pero no se reprodujo acá.
+**El CP-004 no destapó lo del [punto 1 del pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)** —que el validador daría por rotos los enlaces con espacios—: la carpeta con espacio y tilde dio el mismo resultado que la normal. Ese punto sigue abierto, pero no se reprodujo acá.
 
 ---
 

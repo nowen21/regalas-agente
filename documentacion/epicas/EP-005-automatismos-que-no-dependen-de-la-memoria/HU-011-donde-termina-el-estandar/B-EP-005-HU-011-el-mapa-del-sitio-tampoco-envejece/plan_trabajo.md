@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📝 **Modifica la fase `A`**, que hizo lo mismo con el otro mapa de `anatomia/`: el del amarre a la herramienta. Este cubre el que faltaba.
 
-**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), donde quedó preguntado si el mapa del sitio se comprueba o se actualiza a mano
+**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde quedó preguntado si el mapa del sitio se comprueba o se actualiza a mano
 
 **CA que cubre:** el `CA-03` de la historia, que pide que lo escrito sobre la anatomía del repositorio no envejezca en silencio.
 

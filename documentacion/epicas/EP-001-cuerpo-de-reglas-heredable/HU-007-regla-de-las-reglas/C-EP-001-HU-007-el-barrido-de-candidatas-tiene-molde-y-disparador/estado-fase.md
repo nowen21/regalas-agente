@@ -8,7 +8,7 @@
 |---|---|
 | **Fase** | `C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador` |
 | **Módulo** | Cuerpo de reglas, capítulo `20` y moldes |
-| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-007](../HU-007-regla-de-las-reglas.md) · punto 2 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-007](../HU-007-regla-de-las-reglas.md) · punto 2 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | **Última actualización** | 2026-08-22 |
 
 ## 1. En qué estación va

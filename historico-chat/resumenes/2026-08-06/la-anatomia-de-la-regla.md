@@ -114,7 +114,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-anatomia-de-
 - **Responde a:** —.
 - **Dispara:** —, sería una plantilla y una regla, las dos ya redactadas en el análisis.
 - **Orden de resolución:** 1 de 3. Va primero: mientras no se decida, cada sesión sigue dejando candidatas que nadie repesca.
-- **Dónde queda:** [historico-chat/reglas-2026-08-06/reglas.md](../../reglas-2026-08-06/reglas.md) y el [pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). De las 12, `M15` se construyó ese mismo día y `M16` el 2026-08-12; `plantillas/candidatas-a-regla.md` no existe.
+- **Dónde queda:** [historico-chat/reglas-2026-08-06/reglas.md](../../reglas-2026-08-06/reglas.md) y el [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). De las 12, `M15` se construyó ese mismo día y `M16` el 2026-08-12; `plantillas/candidatas-a-regla.md` no existe.
 - **Nace en:** 2026-08-06 · la anatomía de la regla.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿cuándo corre el barrido? La recomendación fue engancharlo al cierre de versión que `M10` ya define, para no inventar un momento nuevo.
@@ -174,7 +174,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-anatomia-de-
 - **Responde a:** —.
 - **Dispara:** —, es una línea en el `README` de la carpeta.
 - **Orden de resolución:** 3 de 3. Va último: no rompe nada, confunde.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Para los **resúmenes** sí quedó resuelto —van al día en que pasaron las cosas, según [historico-chat/resumenes/README.md](../README.md)—; para la transcripción, no.
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). Para los **resúmenes** sí quedó resuelto —van al día en que pasaron las cosas, según [historico-chat/resumenes/README.md](../README.md)—; para la transcripción, no.
 - **Nace en:** 2026-08-06 · la anatomía de la regla.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿la transcripción se parte a la medianoche, o se queda entera con el nombre del día en que empezó?
@@ -201,6 +201,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-06-la-anatomia-de-
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ nueve resueltos; H-6 y H-12 se cerraron al día siguiente |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-7 y H-11 en el [pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-7 y H-11 en el [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ el usuario aprobó el commit: 40 archivos, 4114 líneas |

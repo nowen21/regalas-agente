@@ -61,7 +61,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 
 - **Qué pasó:** mover el archivo del 35 a `pendientes/hecho/` dejó 12 enlaces huérfanos. Nueve siguen rotos, en cuatro archivos que el plan de la fase no declaraba. **Y ya había pasado:** al cerrar el 45 quedó roto el enlace del `plan_trabajo` de su propia fase, y nadie lo vio.
 - **Por qué importa:** es el mismo defecto que esta sesión acaba de cerrar para las sesiones renombradas, un piso más arriba. El backlog se cita a sí mismo —el 36 nombra al 34 y al 35, el 33 al 19 y al 31— y cada cierre rompe esas citas.
-- **Qué lo soluciona:** lo mismo que el [punto 4 del pendiente 33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md): el modo de reparación de `citas.py`, aplicado también al mover un pendiente a `hecho/`.
+- **Qué lo soluciona:** lo mismo que el [punto 4 del pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md): el modo de reparación de `citas.py`, aplicado también al mover un pendiente a `hecho/`.
 - **Estado:** **anotado** → [pendiente 54](../../../pendientes/hecho/cerrar-un-pendiente-arrastra-sus-citas.md). Los nueve enlaces de ese primer cierre ya se corrigieron a mano; la causa sigue.
 - **Responde a:** H-2
 - **Dispara:** —

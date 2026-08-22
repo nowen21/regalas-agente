@@ -53,7 +53,7 @@ Es el mismo daño que produce no preguntar, por el camino contrario. No pregunta
 
 - Reducir las preguntas. Preguntar lo que de verdad no está decidido es lo que evita adivinar, y esta historia no lo toca.
 - Buscar fuera del repositorio.
-- Decidir qué manda cuando el brief y el histórico se contradicen. Es un hueco aparte, anotado en el punto 8 del [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- Decidir qué manda cuando el brief y el histórico se contradicen. Es un hueco aparte, anotado en el punto 8 del [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 ---
 

@@ -1,4 +1,4 @@
-# Estado de fase — Fase B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece
+# Estado de fase — Fase C-EP-005-HU-001-el-historico-se-busca-por-tema
 
 **Para qué sirve este documento.** Dice en qué estación va la fase y qué la tiene detenida, para que una sesión nueva siga desde ahí sin releer la conversación.
 
@@ -6,9 +6,9 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** | `B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece` |
-| **Módulo** | Comprobaciones del repositorio, los mapas de `anatomia/` |
-| **Épica / HU / origen** | [EP-005 Automatismos que no dependen de la memoria](../../epica.md), [HU-011 Dónde termina el estándar](../HU-011-donde-termina-el-estandar.md), el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde quedó preguntado si el mapa del sitio se comprueba o se actualiza a mano |
+| **Fase** | `C-EP-005-HU-001-el-historico-se-busca-por-tema` |
+| **Módulo** | Histórico de sesiones, sus índices |
+| **Épica / HU / origen** | [EP-005 Automatismos que no dependen de la memoria](../../epica.md), [HU-001 Transcripción de la sesión](../HU-001-transcripcion-de-la-sesion.md), el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), anotado el 2026-08-14: «una sesión trata varios temas y por el título no se encuentran» |
 | **Última actualización** | 2026-08-22 |
 
 ## 1. En qué estación va
@@ -34,4 +34,4 @@
 
 ## 3. Lo que una sesión nueva tiene que saber
 
-**El mapa ya se comprueba, así que no hace falta releerlo entero.** Si `validar.py sitio` está en verde, el mapa nombra todo lo que existe. Lo que sigue sin comprobarse es si la descripción de cada carpeta es la acertada, y eso se lee.
+**El índice se genera, no se escribe.** Si aparece desactualizado, `validar.py temas --aplicar` y listo; editarlo a mano es trabajo perdido, y su propia cabecera lo advierte.

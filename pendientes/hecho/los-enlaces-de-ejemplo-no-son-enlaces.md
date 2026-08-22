@@ -6,7 +6,7 @@
 |---|---|
 | **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — es un falso positivo de ese mismo validador, contra su RN-01 y su RN-04 |
 | **De dónde sale** | El hallazgo H-6 del [resumen de la sesión 7](../../historico-chat/resumenes/2026-08-16/sesion-7.md) |
-| **Misma familia que** | El punto 1 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), donde da por rotos los enlaces con espacios |
+| **Misma familia que** | El punto 1 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde da por rotos los enlaces con espacios |
 
 ## El problema
 

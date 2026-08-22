@@ -169,7 +169,7 @@ Entonces el aviso se escribe en todos los proyectos de la lista
 ## 7. Tareas técnicas derivadas
 
 - [ ] Escribir la regla en `base/`, con su checklist. El capítulo lo decide el estándar: `01 · Conducta` o `02 · Flujo de trabajo`.
-- [ ] Resolver el choque con `02·F20` —parar y proponer— cuando el defecto es del estándar y no del proyecto. Está anotado en el punto 8 del [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- [ ] Resolver el choque con `02·F20` —parar y proponer— cuando el defecto es del estándar y no del proyecto. Está anotado en el punto 8 del [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - [ ] Plantilla del pendiente del lado del estándar: proyecto de origen, pendiente de seguimiento, a quién avisar al cerrar.
 - [ ] Plantilla del pendiente del lado del proyecto: dónde está el defecto, qué se reportó allá, qué se espera, cuándo cierra.
 - [ ] La pieza que escribe el aviso de vuelta al cerrar.

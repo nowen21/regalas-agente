@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-los-enganches-l
 - **Responde a:** —.
 - **Dispara:** —, es correr el instalador otra vez y mirar.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-07 · los enganches llegan a dos proyectos.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿LocalHub quedó sin sello por algo del proyecto, o el instalador se saltó el paso?
@@ -49,6 +49,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-los-enganches-l
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ el cambio fue en los otros dos repositorios; acá no hubo nada que subir |

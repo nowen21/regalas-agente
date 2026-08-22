@@ -48,7 +48,7 @@ Y el enlace que lleva de vuelta a la transcripción abre
 
 **Fuera de alcance:**
 
-- **Los enlaces de fuera del resumen.** Quien cita la sesión desde `prompts/` o desde otro resumen sigue quedando roto: es el [pendiente 33 · punto 4](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), que necesita el modo de reparación de `citas.py` y es una fase propia.
+- **Los enlaces de fuera del resumen.** Quien cita la sesión desde `prompts/` o desde otro resumen sigue quedando roto: es el [pendiente 33 · punto 4](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), que necesita el modo de reparación de `citas.py` y es una fase propia.
 - **Arreglar los resúmenes que ya quedaron rotos.** Hoy no hay ninguno en este repositorio; si aparece uno, se arregla al correr el validador de enlaces, no acá.
 - **La especificación del módulo.** Deuda heredada, declarada en §10.
 

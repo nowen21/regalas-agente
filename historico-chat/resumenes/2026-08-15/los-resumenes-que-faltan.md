@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-15-los-resumenes-q
 - **Responde a:** EP-006, memoria de lo aprendido.
 - **Dispara:** —, no abre capacidad nueva: es escribir el contenido que falta.
 - **Orden de resolución:** —.
-- **Dónde queda:** [historico-chat/resumenes/README.md/](../README.md), y el [pendiente 31](../../../pendientes/hecho/los-resumenes-de-las-sesiones-viejas.md), cerrado. Lo que esas sesiones dejaron abierto quedó junto en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [historico-chat/resumenes/README.md/](../README.md), y el [pendiente 31](../../../pendientes/hecho/los-resumenes-de-las-sesiones-viejas.md), cerrado. Lo que esas sesiones dejaron abierto quedó junto en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-15 · los resúmenes que faltan.
 - **Cerrado en:** 2026-08-15 · los resúmenes que faltan.
 - **Con qué se retoma:** —.
@@ -99,7 +99,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-5: los 33 resúmenes escritos, 23 sesiones renombradas, las 4 copias borradas y el criterio fijado |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/hecho/la-carpeta-del-dia-nace-indexada.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ solo queda H-3, en el [32](../../../pendientes/hecho/la-carpeta-del-dia-nace-indexada.md); lo que destaparon los 33 resúmenes está en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia nueva |
 | Lo que se hizo está aprobado y guardado | ☑ aprobado por el usuario: `c08c4ea` el inventario y `57a0657` los 33 resúmenes |
 

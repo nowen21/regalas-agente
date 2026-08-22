@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 - **Responde a:** —.
 - **Dispara:** —, es un documento de índice.
 - **Orden de resolución:** 1 de 2.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Los [resúmenes](../README.md) resuelven parte del problema —lo que quedó de cada sesión— pero siguen ordenados por fecha, no por tema.
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). Los [resúmenes](../README.md) resuelven parte del problema —lo que quedó de cada sesión— pero siguen ordenados por fecha, no por tema.
 - **Nace en:** 2026-08-14 · índice temático del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el índice temático se escribe a mano, o se arma leyendo los resúmenes que ahora sí existen?
@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-14 · índice temático del histórico.
 - **Cerrado en:** —.
 - **Con qué se retoma:** si el brief y el histórico se contradicen, ¿cuál manda, y dónde queda escrito?
@@ -94,6 +94,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-14-indice-tematico
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-2, H-3 y H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 y H-5 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-1 y H-5 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ no se cambió ningún archivo del estándar |

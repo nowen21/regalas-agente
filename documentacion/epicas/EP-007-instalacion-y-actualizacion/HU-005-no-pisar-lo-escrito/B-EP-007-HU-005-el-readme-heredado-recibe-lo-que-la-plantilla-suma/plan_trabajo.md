@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📝 **Modifica la fase `A`**, que retrodocumentó el «no pisar lo escrito»: esta agrega la otra mitad, que es completar sin pisar.
 
-**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), donde estaba dicho así: «el mecanismo replica y el texto que lo explica no»
+**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde estaba dicho así: «el mecanismo replica y el texto que lo explica no»
 
 **CA que cubre:** el `CA-01` de la historia, que pide que instalar sobre algo escrito no borre nada.
 

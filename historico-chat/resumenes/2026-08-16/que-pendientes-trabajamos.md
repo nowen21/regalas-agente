@@ -22,7 +22,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-que-pendientes-
 - **Responde a:** el hallazgo H-3 del [resumen del 2026-08-07](../2026-08-07/memoria-del-agente-en-el-repo.md), que quedó abierto nueve días.
 - **Dispara:** —
 - **Orden de resolución:** —
-- **Dónde queda:** [pendientes/hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md). Se actualizaron además el [README de pendientes](../../../pendientes/README.md), el [pendiente 33 · punto 6](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) y el [resumen del 2026-08-07](../2026-08-07/memoria-del-agente-en-el-repo.md), donde el hallazgo por fin tiene fecha de cierre.
+- **Dónde queda:** [pendientes/hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md). Se actualizaron además el [README de pendientes](../../../pendientes/README.md), el [pendiente 33 · punto 6](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) y el [resumen del 2026-08-07](../2026-08-07/memoria-del-agente-en-el-repo.md), donde el hallazgo por fin tiene fecha de cierre.
 - **Nace en:** 2026-08-16 · qué pendientes trabajamos.
 - **Cerrado en:** 2026-08-16 · qué pendientes trabajamos.
 - **Con qué se retoma:** —

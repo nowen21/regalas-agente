@@ -181,7 +181,7 @@ más — que es como se descarta una opción que servía.
 - [ ] Clasificar cada carpeta de primer nivel y cada programa de `validadores/`.
 - [ ] Escribir, por cada pieza amarrada, qué se pierde si la herramienta desaparece.
 - [ ] Comprobación que reporta la pieza sin clasificar.
-- [ ] Agregar la fila de `anatomia/` a la tabla del §3 del [CLAUDE.md](../../../../CLAUDE.md) — es un hueco anotado en el punto 8 del [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- [ ] Agregar la fila de `anatomia/` a la tabla del §3 del [CLAUDE.md](../../../../CLAUDE.md) — es un hueco anotado en el punto 8 del [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 ---
 

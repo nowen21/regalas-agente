@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 📝 **Modifica la fase `A`**, que retrodocumentó los moldes del encargo: este agrega al de la historia una columna que no tenía.
 
-**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-07
+**De dónde sale:** el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-07
 
 **CA que cubre:** el `CA-01` de la historia, que pide que los moldes del encargo digan lo que hay que llenar.
 

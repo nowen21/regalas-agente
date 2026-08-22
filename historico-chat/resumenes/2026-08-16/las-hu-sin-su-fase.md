@@ -51,14 +51,14 @@
 ### H-3 · Renombrar la sesión rompió dos enlaces de fuera
 
 - **Qué pasó:** al renombrar la sesión con `historico.py --renombrar`, el resumen pasó de `sesion-8.md` a `las-hu-sin-su-fase.md`. Los dos `README` de las HU nuevas lo citaban por el nombre viejo, y quedaron rotos. El revisor pasó de 3 fallas a 5 en la misma corrida.
-- **Por qué importa:** es el punto 4 del pendiente [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) —renombrar deja rotos los enlaces de fuera— y no es teoría: pasó a los diez minutos de que el mismo comando dejara «índice al día». El [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) cerró el enlace de **adentro** del resumen; los de afuera siguen a cargo de quien se acuerde.
+- **Por qué importa:** es el punto 4 del pendiente [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) —renombrar deja rotos los enlaces de fuera— y no es teoría: pasó a los diez minutos de que el mismo comando dejara «índice al día». El [35](../../../pendientes/hecho/renombrar-deja-el-resumen-coherente.md) cerró el enlace de **adentro** del resumen; los de afuera siguen a cargo de quien se acuerde.
 - **Qué lo soluciona:** ya está escrito en el punto 4 del 33, y `citas.py` tiene el modo que repara. No hace falta historia nueva: hace falta que `--renombrar` lo llame.
 - **Qué se decidió:** arreglar los dos a mano y dejar el caso anotado como evidencia del 33. No se abre pendiente nuevo: sería el tercero sobre lo mismo.
 - **Estado:** resuelto acá
 - **Responde a:** —
 - **Dispara:** —
 - **Orden de resolución:** —
-- **Dónde queda:** pendiente [33 · punto 4](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md)
+- **Dónde queda:** pendiente [33 · punto 4](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)
 - **Nace en:** 2026-08-16 · las HU sin su fase
 - **Cerrado en:** 2026-08-16 · las HU sin su fase
 - **Con qué se retoma:** —

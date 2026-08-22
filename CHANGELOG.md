@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.4.0 — 2026-08-22
+
+**MENOR** (una forma nueva de buscar en el histórico; nadie tiene que hacer nada).
+
+**Ahora se puede buscar por tema lo que se habló, y no solo por fecha.** Una sesión toca varios asuntos y su nombre solo dice uno: con 59 resúmenes acumulados, encontrar dónde se decidió algo era abrirlos uno por uno. Los temas ya estaban escritos, en el título de cada hallazgo, así que se recogen todos en un archivo: **345 temas, cada uno enlazado a la sesión donde se trató**.
+
+**El detalle.** Punto 8 del pendiente [33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), en la fase [`C` de EP-005 · HU-001](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/C-EP-005-HU-001-el-historico-se-busca-por-tema/README.md). Nace [`validadores/temas.py`](validadores/temas.py) con el subcomando `validar.py temas --aplicar` y siete casos de prueba; el índice se genera, y quedar atrás es aviso, nunca falla. No agrupa temas parecidos: junta lo que ya estaba escrito, que es lo que un programa puede hacer sin fingir que entiende.
+
 ## 31.3.0 — 2026-08-22
 
 **MENOR** (lo que el estándar mejore en el README del histórico llega a los proyectos ya instalados; nadie tiene que hacer nada).
@@ -19,7 +27,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Lo primero que va a llegar por ahí:** la respuesta a qué manda cuando el histórico y lo acordado se contradicen. Manda lo acordado, y el histórico dice de dónde salió; el histórico no se edita nunca para que cuadre, porque su valor es decir lo que se dijo.
 
-**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), en la fase [`B` de EP-007 · HU-005](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-005-no-pisar-lo-escrito/B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma/README.md). `instalar_historico` reusa `_completar_secciones`, el mecanismo de `01·C18`, con seis casos de prueba nuevos; el que decide es el que comprueba que lo escrito por el proyecto sobrevive palabra por palabra.
+**El detalle.** Punto 8 del pendiente [33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), en la fase [`B` de EP-007 · HU-005](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-005-no-pisar-lo-escrito/B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma/README.md). `instalar_historico` reusa `_completar_secciones`, el mecanismo de `01·C18`, con seis casos de prueba nuevos; el que decide es el que comprueba que lo escrito por el proyecto sobrevive palabra por palabra.
 
 ## 31.2.0 — 2026-08-22
 
@@ -27,7 +35,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **El mapa que dice dónde está cada cosa ya no puede quedarse viejo sin que nadie lo note.** Ese mapa es por donde entra quien abre el repositorio y no sabe dónde está nada, y estaba escrito a mano: una carpeta nueva simplemente no aparecía, y quien lo leyera creería que no existe. Ahora hay una comprobación que lo dice. En su primera corrida encontró cuatro carpetas que existen y no estaban nombradas, y una que el mapa nombraba y ya no existe: el mapa decía doce carpetas y son dieciséis.
 
-**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), en la fase [`B` de EP-005 · HU-011](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/README.md). Nace [`validadores/sitio.py`](validadores/sitio.py) con el subcomando `validar.py sitio` y siete casos de prueba, copiando la forma de `amarre.py`: la carpeta que falta es falla, la que sobra es aviso, y con el mapa al día se calla. El mapa quedó actualizado y su cabecera dice cómo comprobarlo.
+**El detalle.** Punto 8 del pendiente [33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), en la fase [`B` de EP-005 · HU-011](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/README.md). Nace [`validadores/sitio.py`](validadores/sitio.py) con el subcomando `validar.py sitio` y siete casos de prueba, copiando la forma de `amarre.py`: la carpeta que falta es falla, la que sobra es aviso, y con el mapa al día se calla. El mapa quedó actualizado y su cabecera dice cómo comprobarlo.
 
 ## 31.1.0 — 2026-08-22
 
@@ -35,7 +43,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Una historia ya puede decir qué criterio depende de cuál.** Su tabla de fases decía qué se cubre y con qué documentos, pero no si un criterio no se puede comprobar mientras otro no esté cumplido. Sin eso, dos fases se ordenan al revés y el error aparece al probar, cuando ya se construyó. Se resolvió con una columna, no con una sección nueva: la historia cuyos criterios son independientes la deja vacía y no paga nada por tenerla.
 
-**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-07, en la fase [`B` de EP-003 · HU-002](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md). La columna se llena con criterios, no con fases, y queda escrito en el propio molde. Sin validador a propósito: decidir si un criterio depende de otro exige leer los dos.
+**El detalle.** Punto 8 del pendiente [33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-07, en la fase [`B` de EP-003 · HU-002](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md). La columna se llena con criterios, no con fases, y queda escrito en el propio molde. Sin validador a propósito: decidir si un criterio depende de otro exige leer los dos.
 
 ## 31.0.0 — 2026-08-22
 
@@ -45,7 +53,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Qué hay que hacer para adoptarla.** Al cerrar la próxima versión, escribir el barrido con el molde nuevo, [plantillas/candidatas-a-regla.md](plantillas/candidatas-a-regla.md). No hay que barrer hacia atrás: rige del tramo en curso en adelante.
 
-**El detalle.** Nace [`20·M20`](base/20-meta-reglas/reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md), que extiende a `01·C10` (esa atrapa el patrón en el momento; esta relee lo que en el momento no se notó), y el criterio `CA-06` de EP-001 · HU-007, en la fase [`C`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md). Sale del punto 2 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-06, donde el defecto estaba dicho así: «sin disparador, se hace cuando el usuario lo pida es un favor, no una norma». El barrido se había hecho una sola vez, el 2026-08-13, con 27 fichas; las cuatro salidas del molde las cubren todas.
+**El detalle.** Nace [`20·M20`](base/20-meta-reglas/reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md), que extiende a `01·C10` (esa atrapa el patrón en el momento; esta relee lo que en el momento no se notó), y el criterio `CA-06` de EP-001 · HU-007, en la fase [`C`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md). Sale del punto 2 del pendiente [33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-06, donde el defecto estaba dicho así: «sin disparador, se hace cuando el usuario lo pida es un favor, no una norma». El barrido se había hecho una sola vez, el 2026-08-13, con 27 fichas; las cuatro salidas del molde las cubren todas.
 
 ## 30.9.1 — 2026-08-22
 
@@ -750,7 +758,7 @@ Un proyecto lo descubrió al buscar claves sueltas en su código: le salieron di
 
 Partirla en dos rompería la forma de encontrarla, así que no se parte. Cada mensaje lleva su hora real, de modo que lo que pasó después de las doce se sabe leyendo. El resumen sí se guarda en el día en que pasaron las cosas, y esa diferencia es a propósito.
 
-**El detalle.** Es el punto 3 del [pendiente 33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), preguntado el 2026-08-06 y sin contestar desde entonces. **La decisión ya la tomaba la máquina:** `hook_historico.py` busca la sesión por su marca `<!-- sesion: id -->`, nunca por fecha, así que partirla dejaría media conversación sin marca y la siguiente sesión no la encontraría. Faltaba escribirlo, y quedó en [`plantillas/historico-chat.md`](plantillas/historico-chat.md) y en el README de la carpeta. El caso real está a la vista: una sesión con 91 turnos de un día y 27 del siguiente.
+**El detalle.** Es el punto 3 del [pendiente 33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), preguntado el 2026-08-06 y sin contestar desde entonces. **La decisión ya la tomaba la máquina:** `hook_historico.py` busca la sesión por su marca `<!-- sesion: id -->`, nunca por fecha, así que partirla dejaría media conversación sin marca y la siguiente sesión no la encontraría. Faltaba escribirlo, y quedó en [`plantillas/historico-chat.md`](plantillas/historico-chat.md) y en el README de la carpeta. El caso real está a la vista: una sesión con 91 turnos de un día y 27 del siguiente.
 
 ## 23.13.1 — 2026-08-18
 
@@ -758,7 +766,7 @@ Partirla en dos rompería la forma de encontrarla, así que no se parte. Cada me
 
 **Una regla podía declararse intocable sin estar en el capítulo de lo intocable, y nadie lo miraba.** No es que contradijera a las de arriba: es que se las saltaba, quedando por encima sin haber pasado por donde se pasa. Ahora se comprueba.
 
-**El detalle.** Del punto 8 del [pendiente 33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), preguntado el 2026-08-07 y sin contestar desde entonces. `validar.py metareglas` reporta cualquier regla con la marca `[BLINDADA]` fuera de [`base/00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — es la única mitad de [`20·M1`](base/20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md) que un programa puede juzgar; que un nivel no contradiga al de arriba exige leer las dos reglas. Hoy da cero.
+**El detalle.** Del punto 8 del [pendiente 33](pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), preguntado el 2026-08-07 y sin contestar desde entonces. `validar.py metareglas` reporta cualquier regla con la marca `[BLINDADA]` fuera de [`base/00-nucleo-blindado.md`](base/00-nucleo-blindado.md) — es la única mitad de [`20·M1`](base/20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md) que un programa puede juzgar; que un nivel no contradiga al de arriba exige leer las dos reglas. Hoy da cero.
 
 **Y el detalle que decide si el control sirve**, que ya estaba escrito en el resumen de aquel día: la palabra aparece en prosa en seis archivos, así que se ancla al **encabezado**. *«Un validador que reporta de más se termina apagando, y un control apagado es peor que ninguno porque figura como cubierto.»* Hay un caso de prueba dedicado a eso.
 

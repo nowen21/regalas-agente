@@ -171,7 +171,7 @@ Entonces no se reporta
 
 **Cómo validarlo:**
 
-1. Correr la comprobación sobre el backlog de hoy. Resultado esperado: no reporta el [01](../../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), el [09](../../../../pendientes/hecho/autonomia-sin-ia.md), el [10](../../../../pendientes/10-ideas.md) ni el [33](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), que son los cuatro temas.
+1. Correr la comprobación sobre el backlog de hoy. Resultado esperado: no reporta el [01](../../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), el [09](../../../../pendientes/hecho/autonomia-sin-ia.md), el [10](../../../../pendientes/10-ideas.md) ni el [33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), que son los cuatro temas.
 2. Borrarle la declaración a uno de ellos, dejando la fila vacía. Correr. Resultado esperado: lo reporta, porque una fila vacía no es una declaración.
 - **Aprobado cuando:** los cuatro temas pasan con su declaración y ninguno pasa con la fila vacía.
 

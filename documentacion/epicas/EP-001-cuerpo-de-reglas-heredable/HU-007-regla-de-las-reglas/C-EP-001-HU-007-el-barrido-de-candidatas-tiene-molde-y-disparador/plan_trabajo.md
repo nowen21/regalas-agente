@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): ✨ **Funcionalidad nueva**, y 📝 **modifica** la fase `B`: la `B` trajo `20·M19` para el momento de automatizar una regla; esta trae el momento **anterior**, cuando la regla ni siquiera se ha propuesto.
 
-**De dónde sale:** el punto 2 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-06. El usuario ordenó resolverlo el 2026-08-22.
+**De dónde sale:** el punto 2 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-06. El usuario ordenó resolverlo el 2026-08-22.
 
 **CA que cubre:** el `CA-06`, que nace con esta fase.
 

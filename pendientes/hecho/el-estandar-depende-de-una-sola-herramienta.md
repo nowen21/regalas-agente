@@ -66,7 +66,7 @@ Baja mientras la herramienta no cambie, y ese es el punto: cuando cambie, ya ser
 
 **No los cubre ningún criterio de [EP-005 · HU-011](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/HU-011-donde-termina-el-estandar.md)**, que son: toda pieza tiene su columna, cada amarrada dice qué se pierde, y el mapa se queda viejo y se nota. Los tres hablan **del mapa**, no de mover código ni de escribir un contrato.
 
-Por [`02·F19`](../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) el criterio **es** la especificación, así que hacen falta criterios nuevos o una historia propia — **la misma situación del [16](primero-que-el-proceso-sirva.md) y del punto 2 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md)**, y es decisión del usuario.
+Por [`02·F19`](../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) el criterio **es** la especificación, así que hacen falta criterios nuevos o una historia propia — **la misma situación del [16](primero-que-el-proceso-sirva.md) y del punto 2 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md)**, y es decisión del usuario.
 
 ## Lo que el mapa destapó y no estaba en el pendiente
 

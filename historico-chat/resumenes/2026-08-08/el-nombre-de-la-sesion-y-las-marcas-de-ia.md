@@ -54,7 +54,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 - **Responde a:** —.
 - **Dispara:** —, es aplicar al `README` lo que el instalador ya hace con otro archivo.
 - **Orden de resolución:** 1 de 2.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-08 · el nombre de la sesión y las marcas de IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿los documentos heredados que el proyecto puede editar reciben las secciones nuevas, o se quedan como quedaron?
@@ -126,6 +126,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-el-nombre-de-la
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2, H-4 y H-7 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-5 en el [11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md); H-6 queda escrito en el anexo |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), H-5 en el [11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md); H-6 queda escrito en el anexo |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commit `ab314a1` |

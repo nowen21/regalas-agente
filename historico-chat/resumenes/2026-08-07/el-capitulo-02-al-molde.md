@@ -82,7 +82,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-capitulo-02-
 - **Responde a:** —.
 - **Dispara:** —, es una prueba de tres líneas.
 - **Orden de resolución:** 1 de 1. Va primero por barata: es el arranque lo que protege.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-07 · el capítulo 02 al molde.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿existe hoy esa prueba? Si no, es la más barata del backlog.
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-capitulo-02-
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ cinco de seis |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-5 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-5 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ commits `9f2628c` y `b1d8d2f` |

@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — el sello vencido es la otra cara del 19: aquel cuenta las que no lo tienen, este las que lo tienen viejo |
-| **De dónde sale** | El **punto 7** del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), promovido a pendiente propio el 2026-08-16 |
+| **De dónde sale** | El **punto 7** del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md), promovido a pendiente propio el 2026-08-16 |
 | **Historia que lo recibiría** | [EP-001 · HU-009](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md), o una nueva de EP-004 si se construye el programa |
 | **Se cruza con** | El [19](ninguna-regla-reprueba-su-propio-checklist.md), que cuenta las reglas sin checklist; este cuenta las que lo tienen **vencido** |
 

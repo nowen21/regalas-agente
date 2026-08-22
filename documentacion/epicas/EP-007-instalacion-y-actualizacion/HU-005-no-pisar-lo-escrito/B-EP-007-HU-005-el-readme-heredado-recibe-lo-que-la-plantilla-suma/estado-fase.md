@@ -8,7 +8,7 @@
 |---|---|
 | **Fase** | `B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma` |
 | **Módulo** | Instalador del estándar, los documentos heredados |
-| **Épica / HU / origen** | [EP-007 Instalación y actualización](../../epica.md), [HU-005 No pisar lo escrito](../HU-005-no-pisar-lo-escrito.md), el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), donde estaba dicho así: «el mecanismo replica y el texto que lo explica no» |
+| **Épica / HU / origen** | [EP-007 Instalación y actualización](../../epica.md), [HU-005 No pisar lo escrito](../HU-005-no-pisar-lo-escrito.md), el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde estaba dicho así: «el mecanismo replica y el texto que lo explica no» |
 | **Última actualización** | 2026-08-22 |
 
 ## 1. En qué estación va

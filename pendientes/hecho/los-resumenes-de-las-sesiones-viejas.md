@@ -38,16 +38,16 @@ El [`CHANGELOG.md`](../../CHANGELOG.md) tiene sus entradas fechadas y sirve de c
 
 **Cuatro transcripciones no llegaron a tener resumen propio porque eran copias a mano de otra sesión** —`2026-08-06-sesion-7`, `2026-08-06-sesion-9`, `2026-08-07-sesion-9` y `2026-08-07-analisis-cumplimiento-reglas`—. Se borraron el 2026-08-16 por decisión del usuario; siguen en el historial de git. Quedan **35 transcripciones y 35 resúmenes**, uno por sesión.
 
-Lo que las sesiones viejas dejaron abierto quedó junto en el [pendiente 33](../33-defectos-que-destaparon-los-resumenes-viejos.md).
+Lo que las sesiones viejas dejaron abierto quedó junto en el [pendiente 33](lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
-Renombrar rompe los enlaces que nombran la sesión desde fuera —sobre todo en [`prompts/`](../../prompts/README.md)— así que **después de cada tanda hay que correr `python validadores/validar.py estandar` y reapuntarlos**. Es el punto 4 del [pendiente 33](../33-defectos-que-destaparon-los-resumenes-viejos.md).
+Renombrar rompe los enlaces que nombran la sesión desde fuera —sobre todo en [`prompts/`](../../prompts/README.md)— así que **después de cada tanda hay que correr `python validadores/validar.py estandar` y reapuntarlos**. Es el punto 4 del [pendiente 33](lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 Los supuestos con que se escribieron, para que los que sigan salgan iguales:
 
 - **«Responde a» y «dispara» van en `—`** en todo lo anterior al 2026-08-13. Cada resumen lo dice en una nota al principio.
 - **«Estado» y «cerrado en» sí se buscan hacia adelante.** Un hallazgo que se resolvió tres días después queda «resuelto, pero en otra sesión», con la sesión que lo cerró.
 - **«Dónde queda» apunta a donde vive hoy**, no a donde vivía entonces: si una decisión de agosto 6 hoy es una regla o una memoria, se enlaza esa.
-- **Lo que quedó abierto y sigue abierto** va al [pendiente 33](../33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Lo que quedó abierto y sigue abierto** va al [pendiente 33](lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 ## El límite
 

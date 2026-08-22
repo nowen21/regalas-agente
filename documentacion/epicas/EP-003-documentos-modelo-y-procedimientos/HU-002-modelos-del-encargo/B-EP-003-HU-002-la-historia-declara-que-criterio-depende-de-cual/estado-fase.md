@@ -8,7 +8,7 @@
 |---|---|
 | **Fase** | `B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual` |
 | **Módulo** | Moldes del ciclo de vida, el de la historia de usuario |
-| **Épica / HU / origen** | [EP-003 Documentos modelo y procedimientos](../../epica.md), [HU-002 Modelos del encargo](../HU-002-modelos-del-encargo.md), el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-07 |
+| **Épica / HU / origen** | [EP-003 Documentos modelo y procedimientos](../../epica.md), [HU-002 Modelos del encargo](../HU-002-modelos-del-encargo.md), el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), abierto desde el 2026-08-07 |
 | **Última actualización** | 2026-08-22 |
 
 ## 1. En qué estación va

@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 - **Responde a:** —.
 - **Dispara:** —, era revisar y correr un comando.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md) — estuvo en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) hasta el 2026-08-16, cuando se promovió a pendiente propio y se cerró.
+- **Dónde queda:** [pendientes/hecho/memoria-borrada-por-el-enganche.md](../../../pendientes/hecho/memoria-borrada-por-el-enganche.md) — estuvo en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) hasta el 2026-08-16, cuando se promovió a pendiente propio y se cerró.
 - **Nace en:** 2026-08-07 · la memoria del agente en el repositorio.
 - **Cerrado en:** 2026-08-16 · [qué pendientes trabajamos](../2026-08-16/que-pendientes-trabajamos.md).
 - **Con qué se retoma:** —.
@@ -79,6 +79,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-memoria-del-age
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2 y H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ subido; el usuario pidió no mezclar lo de otras sesiones |

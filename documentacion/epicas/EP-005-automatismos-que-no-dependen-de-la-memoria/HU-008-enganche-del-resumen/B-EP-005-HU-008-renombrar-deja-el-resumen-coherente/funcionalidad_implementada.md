@@ -54,7 +54,7 @@ python -m unittest discover -s validadores/tests
 
 ## 4. Qué quedó fuera
 
-- **Los enlaces que otros archivos le hacen a la sesión renombrada.** Es el [pendiente 33 · punto 4](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), y necesita el modo de reparación de `citas.py`.
+- **Los enlaces que otros archivos le hacen a la sesión renombrada.** Es el [pendiente 33 · punto 4](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), y necesita el modo de reparación de `citas.py`.
 - **Migrar los resúmenes ya rotos.** No hay ninguno en este repositorio, y en `shopnest-mesa` ya se corrigió a mano.
 - **El resto de `validadores/docs/historico.md`.** Siete funciones del renombrado siguen sin documentar; está reportado en el §4 del [`resultado_pruebas.md`](resultado_pruebas.md) y no se tocó porque no viene de ningún criterio de esta fase.
 

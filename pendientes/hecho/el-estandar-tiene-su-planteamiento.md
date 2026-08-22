@@ -36,7 +36,7 @@ Escribirlo en `prompts/<slug>-planteamiento.md`, desde [`plantillas/ciclo-vida-p
 
 ## Con qué se cruza
 
-Con el punto 8 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), donde ya está preguntado si las fases de EP-001 son plan o retrodocumentación. Las dos preguntas son la misma: **este repositorio se documentó hacia atrás, y nunca escribió por qué existe.**
+Con el punto 8 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde ya está preguntado si las fases de EP-001 son plan o retrodocumentación. Las dos preguntas son la misma: **este repositorio se documentó hacia atrás, y nunca escribió por qué existe.**
 
 ## Cómo cerró
 

@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-12-regla-de-respal
 - **Responde a:** —.
 - **Dispara:** —, es afinar una regla existente.
 - **Orden de resolución:** 2 de 2.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). La memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md) ya trae el matiz — vale solo mientras se ejecuta algo autorizado —, pero `F20` no lo dice.
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). La memoria [corregir el defecto que uno mismo detecta](../../memory/corregir-el-defecto-que-uno-mismo-detecta.md) ya trae el matiz — vale solo mientras se ejecuta algo autorizado —, pero `F20` no lo dice.
 - **Nace en:** 2026-08-12 · regla de respaldo de las reglas de proyecto.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿dónde termina «el defecto que yo mismo reporté» y empieza «lo que descubrí fuera del alcance»?
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-12-regla-de-respal
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 a H-4 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-5 vive en [EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/epica.md); H-6 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-5 vive en [EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/epica.md); H-6 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ las siete reglas propuestas se enrutaron a las épicas del brief |
 | Lo que se hizo está aprobado y guardado | ☑ commits `543869e`, `88bfe60` y `0e7d9a9` |

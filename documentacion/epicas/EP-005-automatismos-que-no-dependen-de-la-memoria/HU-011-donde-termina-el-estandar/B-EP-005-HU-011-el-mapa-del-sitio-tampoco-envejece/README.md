@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el punto 8 del [pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), donde quedó preguntado si el mapa del sitio se comprueba o se actualiza a mano
+De dónde sale: el punto 8 del [pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), donde quedó preguntado si el mapa del sitio se comprueba o se actualiza a mano
 
 **El mapa del sitio ya no envejece en silencio.** Se decidió comprobarlo con un programa en vez de actualizarlo a mano, y la primera corrida encontró cuatro carpetas que existían sin estar en el mapa y una que el mapa nombraba y ya no existe: decía doce y son dieciséis. Nace [`validadores/sitio.py`](../../../../../validadores/sitio.py), el subcomando `validar.py sitio` y siete casos de prueba.
 

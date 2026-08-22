@@ -136,7 +136,7 @@ Salieron de contar qué sesiones tienen resumen y cuáles no, y quedaron en el [
 |---|---|---|---|
 | ~~31~~ | — | **hecho** → [33 de las 39 sesiones no tienen resumen](hecho/los-resumenes-de-las-sesiones-viejas.md) | Se escribieron los 33 y se renombraron 23 sesiones. Cerrado 2026-08-16; lo que esas sesiones dejaron abierto quedó en el 33. |
 | 32 | **P2** | [La carpeta del día nace sin su línea en el índice](hecho/la-carpeta-del-dia-nace-indexada.md) | El enganche crea la carpeta y el archivo, pero no los anota. El 2026-08-15 ya tiene dos resúmenes que el índice no nombra. |
-| 33 | **P1** | [Lo que quedó abierto en las sesiones viejas](33-defectos-que-destaparon-los-resumenes-viejos.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([pendientes/hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
+| ~~33~~ | — | **hecho** → [Lo que quedó abierto en las sesiones viejas](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) | Siete puntos que las sesiones viejas dejaron preguntados y nadie volvió a mirar. El octavo —la memoria borrada por el enganche— **salió de acá el 2026-08-16** y se cerró el mismo día ([pendientes/hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md)). |
 
 **El 32 sigue abierto:** los 33 resúmenes se anotaron a mano en su índice, uno por uno. Mientras el enganche no escriba esa línea, el próximo vuelve a nacer fuera.
 
@@ -213,7 +213,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | 53 | **P1** | [`enlaces.py` no tiene punto de entrada](hecho/ningun-validador-termina-en-silencio.md) | Termina en silencio y con código 0 **sin comprobar nada**, y ese silencio se lee como «cero rotos». Una fase se lo creyó y escribió mal su métrica. Falta revisar cuántos de los treinta validadores tienen el mismo hueco. |
-| 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](hecho/cerrar-un-pendiente-arrastra-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). |
+| 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](hecho/cerrar-un-pendiente-arrastra-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). |
 | 55 | **P2** | [El validador lee enlaces dentro de las comillas de código](hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) | Reportó como rotas dos muestras que nunca fueron enlaces. **Conviene con el punto 1 del 33:** mismo archivo, misma clase de falso positivo. |
 | ~~56~~ | — | **hecho** → [El estándar no tiene planteamiento](hecho/el-estandar-tiene-su-planteamiento.md) | Esta casa reprueba el punto de la cadena que ella misma acaba de escribir. No es tarea de código: es decidir qué es este proyecto, y sale de una conversación. |
 
@@ -221,7 +221,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 52 | **P1** | [El sello del checklist caduca con el texto](hecho/el-sello-del-checklist-se-comprueba.md) | Cada bloque dice «vale mientras el texto no cambie» y nada lo comprueba: un sello puede seguir diciendo CUMPLE sobre una regla que ya no es la que se evaluó. Salió del punto 7 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). Trae las dos salidas evaluadas y cuál conviene. |
+| 52 | **P1** | [El sello del checklist caduca con el texto](hecho/el-sello-del-checklist-se-comprueba.md) | Cada bloque dice «vale mientras el texto no cambie» y nada lo comprueba: un sello puede seguir diciendo CUMPLE sobre una regla que ya no es la que se evaluó. Salió del punto 7 del [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). Trae las dos salidas evaluadas y cuál conviene. |
 
 **Es el segundo punto del 33 que se promueve y se vuelve resoluble**, después del 6 → 39. Dentro de la lista heredaba una prioridad promedio y no se veía qué era; solo, se ve que el caso de `F13` era el síntoma y el sello vencido es la enfermedad.
 
@@ -362,7 +362,7 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 
 **Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
 
-**Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](33-defectos-que-destaparon-los-resumenes-viejos.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
+**Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 
 ## Dependencias duras
 

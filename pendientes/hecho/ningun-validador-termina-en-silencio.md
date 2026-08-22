@@ -34,7 +34,7 @@ Un validador que calla sin haber mirado es peor que ninguno: el que no existe se
 
 ## Con qué se cruza
 
-- El [55](los-enlaces-de-ejemplo-no-son-enlaces.md) y el punto 1 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), que son del mismo archivo: los tres hacen que sus hallazgos no se puedan creer, unos por callar y otros por hablar de más.
+- El [55](los-enlaces-de-ejemplo-no-son-enlaces.md) y el punto 1 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md), que son del mismo archivo: los tres hacen que sus hallazgos no se puedan creer, unos por callar y otros por hablar de más.
 
 ## Cómo se sabrá que cerró
 

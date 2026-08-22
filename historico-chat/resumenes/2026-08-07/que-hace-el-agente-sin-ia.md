@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 - **Responde a:** —.
 - **Dispara:** —, es una fila en una tabla y un validador chico.
 - **Orden de resolución:** 1 de 2. Va primero: es más barato que el otro y hoy la tabla del `CLAUDE.md` no nombra la carpeta.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 - **Nace en:** 2026-08-07 · qué hace el agente sin IA.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el mapa se comprueba con un validador, o se deja como documento que se actualiza a mano?
@@ -109,6 +109,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-que-hace-el-age
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-2 y H-6 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), H-4 en el [01](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/hecho/autonomia-sin-ia.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-3 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md), H-4 en el [01](../../../pendientes/hecho/validadores-de-codigo-de-proyecto.md), H-5 en el [09](../../../pendientes/hecho/autonomia-sin-ia.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ está en el repositorio desde entonces |

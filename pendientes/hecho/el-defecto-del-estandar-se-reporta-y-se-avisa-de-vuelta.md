@@ -36,7 +36,7 @@ Una regla que fije el procedimiento. El usuario lo dictó completo el 2026-08-16
 
 ## Qué hay que construir
 
-**1 · La regla.** Va en `base/`, y el capítulo lo decide el estándar. Dos candidatos: `01-conducta` —es una conducta del agente ante un defecto ajeno— o `02-flujo-de-trabajo` —es un paso del flujo—. Se cruza con `02·F20` (parar y proponer), que hoy choca con corregir el defecto que uno mismo detecta: eso está anotado en el [pendiente 33 · punto 8](../33-defectos-que-destaparon-los-resumenes-viejos.md) y esta regla es la que lo resuelve.
+**1 · La regla.** Va en `base/`, y el capítulo lo decide el estándar. Dos candidatos: `01-conducta` —es una conducta del agente ante un defecto ajeno— o `02-flujo-de-trabajo` —es un paso del flujo—. Se cruza con `02·F20` (parar y proponer), que hoy choca con corregir el defecto que uno mismo detecta: eso está anotado en el [pendiente 33 · punto 8](lo-que-quedo-abierto-en-las-sesiones-viejas.md) y esta regla es la que lo resuelve.
 
 **2 · Las dos plantillas del pendiente**, para que los dos lados salgan iguales siempre:
 - La del estándar: cabecera con **proyecto de origen**, pendiente de seguimiento y a quién avisar al cerrar.
@@ -66,7 +66,7 @@ Los siete pasos los dictó el usuario y los cinco primeros se venían haciendo p
 
 **1 · La regla.** [`02·F24`](../../base/02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md), con su checklist en CUMPLE. **Va al capítulo `02` y no a la épica de instalación:** lo que gobierna es un paso del flujo —qué hace el agente cuando lo que hay que arreglar no es suyo—; la instalación es por dónde viaja el aviso, no de qué trata la regla.
 
-**Y resuelve el choque con `02·F20`** que estaba anotado en el punto 8 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md): `F20` manda parar y proponer, y no decía qué hacer cuando lo descubierto es del estándar. Ahora `F20` para y `F24` dice a dónde va.
+**Y resuelve el choque con `02·F20`** que estaba anotado en el punto 8 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md): `F20` manda parar y proponer, y no decía qué hacer cuando lo descubierto es del estándar. Ahora `F20` para y `F24` dice a dónde va.
 
 **2 · Las dos plantillas.** [pendiente-reportado](../../plantillas/pendiente-reportado.md) y [pendiente-de-seguimiento](../../plantillas/pendiente-de-seguimiento.md), **cada una nombrando a la otra** — porque uno sin el otro es exactamente la mitad que falló los dos días de agosto que originaron esto.
 

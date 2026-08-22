@@ -38,7 +38,7 @@
 
 - **Reducir las preguntas.** Preguntar lo que de verdad no está decidido es lo que evita adivinar, y la regla no lo toca. Cambia **cuáles**, no cuántas.
 - **La comprobación automática.** Que el agente haya buscado no lo puede ver ningún programa. Queda declarado en `reglas-validables.md` y la mitad comprobable —que la respuesta traiga su cita— se escribe aparte.
-- **Qué manda cuando el brief y el histórico se contradicen.** Es un hueco propio, anotado en el punto 8 del [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md).
+- **Qué manda cuando el brief y el histórico se contradicen.** Es un hueco propio, anotado en el punto 8 del [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
 ---
 

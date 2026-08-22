@@ -37,7 +37,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-reglas-con-expr
 - **Responde a:** —.
 - **Dispara:** —, es completar un validador que ya existe.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md). Se cruza con el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que cuenta cuántas meta-reglas siguen sin comprobar.
+- **Dónde queda:** [pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md). Se cruza con el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que cuenta cuántas meta-reglas siguen sin comprobar.
 - **Nace en:** 2026-08-07 · reglas con expresiones regulares.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿se implementan las dos comprobaciones de `M1` que ya se pueden, o se espera a decidir la declaración de capa 3?
@@ -64,6 +64,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-reglas-con-expr
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 y H-3 |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2 en el [33](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ H-2 en el [33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 | Toda historia disparada está escrita en su épica | ☑ ninguno dispara historia |
 | Lo que se hizo está aprobado y guardado | ☑ quedó sin tocar nada del repositorio |

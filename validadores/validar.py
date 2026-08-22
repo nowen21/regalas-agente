@@ -20,6 +20,7 @@ import acciones         # noqa: E402
 import aislamiento      # noqa: E402
 import amarre           # noqa: E402
 import sitio            # noqa: E402
+import temas            # noqa: E402
 import brevedad         # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
@@ -200,6 +201,20 @@ def cmd_sitio(a):
     codigo = reportar(sitio.validar(raiz),
                       f"El mapa del sitio · {relativo(raiz)}")
     linea = sitio.linea_resumen(raiz)
+    if linea:
+        print(linea)
+    return codigo
+
+
+def cmd_temas(a):
+    """`33` · Los temas del histórico, en un archivo en vez de en cuarenta."""
+    raiz = os.path.abspath(a.raiz)
+    if a.aplicar:
+        ruta = temas.escribir(raiz)
+        print(f"escrito {relativo(ruta)}")
+    codigo = reportar(temas.validar(raiz),
+                      f"El índice temático del histórico · {relativo(raiz)}")
+    linea = temas.linea_resumen(raiz)
     if linea:
         print(linea)
     return codigo
@@ -578,6 +593,13 @@ def main():
                         help="qué piezas están atadas a la herramienta · el mapa no envejece")
     am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     am.set_defaults(func=cmd_amarre)
+
+    te = sub.add_parser("temas",
+                        help="índice temático del histórico · buscar por tema, no por fecha")
+    te.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    te.add_argument("--aplicar", action="store_true",
+                    help="escribe el índice; sin esto solo dice si quedó atrás")
+    te.set_defaults(func=cmd_temas)
 
     si = sub.add_parser("sitio",
                         help="el mapa del sitio nombra toda carpeta que existe · no envejece")

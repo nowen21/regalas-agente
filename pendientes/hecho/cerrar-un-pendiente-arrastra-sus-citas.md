@@ -6,7 +6,7 @@
 |---|---|
 | **Historia de usuario** | [EP-004 · HU-005 — Comprobar los enlaces y las citas a reglas](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-005-enlaces-y-citas/HU-005-enlaces-y-citas.md) — los enlaces que rompe el cierre son enlaces, y su RN-01 es que resuelvan |
 | **De dónde sale** | El hallazgo H-5 del [resumen de la sesión 7](../../historico-chat/resumenes/2026-08-16/sesion-7.md) |
-| **Hermano de** | El punto 4 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md) —renombrar una sesión rompe lo de fuera— y del [35](renombrar-deja-el-resumen-coherente.md), que cerró el de adentro |
+| **Hermano de** | El punto 4 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md) —renombrar una sesión rompe lo de fuera— y del [35](renombrar-deja-el-resumen-coherente.md), que cerró el de adentro |
 
 ## El problema
 
@@ -59,7 +59,7 @@ Movió los **seis** pendientes que estaban cerrados y seguían en la carpeta —
 
 ## Y sirve para más que pendientes
 
-`mover()` acepta cualquier `.md`. El [23](plantillas-separa-modelos-de-procedimientos.md) lo usó para llevar `retrodocumentacion.md` a su capítulo, con sus 12 citas. **Eso cierra también el punto 4 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md)** en lo que se puede cerrar desde acá: renombrar dejaba rotos los enlaces de fuera, y ahora hay con qué arrastrarlos.
+`mover()` acepta cualquier `.md`. El [23](plantillas-separa-modelos-de-procedimientos.md) lo usó para llevar `retrodocumentacion.md` a su capítulo, con sus 12 citas. **Eso cierra también el punto 4 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md)** en lo que se puede cerrar desde acá: renombrar dejaba rotos los enlaces de fuera, y ahora hay con qué arrastrarlos.
 
 ## El límite sigue en pie
 

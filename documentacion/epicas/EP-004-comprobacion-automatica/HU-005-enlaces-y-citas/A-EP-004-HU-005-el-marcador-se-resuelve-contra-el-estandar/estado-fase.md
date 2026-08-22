@@ -79,7 +79,7 @@ Se usan las **once etapas de [`02·F15`](«RUTA-ESTANDAR»/base/02-flujo-de-trab
 ## 3. Pendiente / preguntas abiertas
 
 - **El commit.** Lo autoriza el usuario aparte, y es lo único que detiene la fase.
-- El CP-004 **no** reprodujo el [punto 1 del pendiente 33](../../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md): la carpeta con espacio y tilde dio el mismo resultado. Ese punto sigue abierto, pero no apareció acá.
+- El CP-004 **no** reprodujo el [punto 1 del pendiente 33](../../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md): la carpeta con espacio y tilde dio el mismo resultado. Ese punto sigue abierto, pero no apareció acá.
 
 ---
 

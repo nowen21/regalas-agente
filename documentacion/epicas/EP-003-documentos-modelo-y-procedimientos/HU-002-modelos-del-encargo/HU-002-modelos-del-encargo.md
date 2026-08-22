@@ -145,7 +145,7 @@ Entonces se ve cuáles quedaron sin llenar
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo](A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no. Pendiente el commit |
-| [B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual](B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md) | CA-01 | **Cerrada 2026-08-22 — Cumple** (4 de 4; v31.1.0). El molde de la historia gana la columna «Depende de», del punto 8 del [pendiente 33](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
+| [B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual](B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md) | CA-01 | **Cerrada 2026-08-22 — Cumple** (4 de 4; v31.1.0). El molde de la historia gana la columna «Depende de», del punto 8 del [pendiente 33](../../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md) |
 
 **La fase retro-documenta y no toca `plantillas/`.** Los tres modelos del encargo existen y se usan a diario; falta su incremento en la especificación del módulo y la prueba del encadenamiento. **Lo que sí falta de verdad** es el planteamiento de este repositorio, que es el pendiente 56 y no se puede reconstruir leyendo el repositorio.
 

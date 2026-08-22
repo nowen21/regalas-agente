@@ -1,6 +1,6 @@
 # Hecho · La memoria que borró el enganche, y a qué proyectos alcanzó
 
-Origen: pendiente 39 — antes punto 6 del [33](../33-defectos-que-destaparon-los-resumenes-viejos.md), promovido a pendiente propio el 2026-08-16 y cerrado el mismo día.
+Origen: pendiente 39 — antes punto 6 del [33](lo-que-quedo-abierto-en-las-sesiones-viejas.md), promovido a pendiente propio el 2026-08-16 y cerrado el mismo día.
 
 | | |
 |---|---|
