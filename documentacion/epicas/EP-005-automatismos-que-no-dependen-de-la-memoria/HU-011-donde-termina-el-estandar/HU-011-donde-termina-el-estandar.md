@@ -192,7 +192,7 @@ más — que es como se descarta una opción que servía.
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
 | [A-EP-005-HU-011-donde-termina-el-estandar](A-EP-005-HU-011-donde-termina-el-estandar/README.md) | CA-01 a CA-03 | **Cerrada 2026-08-18 · Cumple** |
-| — | — | — | — | — | Sin empezar |
+| [B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/README.md) | CA-03 | [plan](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/plan_trabajo.md) | [pruebas](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/plan_pruebas.md) | [resultado](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/resultado_pruebas.md) | **Cerrada 2026-08-22 · Cumple** (v31.2.0) |
 
 **De dónde sale esta historia:** el [pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md). Su punto 1 —el mapa— es esta historia; sus puntos 2 y 3 esperan al segundo caso.
 

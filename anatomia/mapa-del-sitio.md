@@ -2,7 +2,8 @@
 
 Dónde está cada cosa y para qué sirve. Si busca un archivo y no sabe por dónde empezar, empiece aquí.
 
-> Estándar **v1.4.0** · actualizado el **2026-08-07**.
+> Estándar **v31.2.0** · actualizado el **2026-08-22**.
+> **No envejece en silencio:** `python validadores/validar.py sitio` reporta la carpeta que existe y no está acá, y la que está acá y ya no existe.
 > Para entender *cómo funciona* el agente: [componentes-del-agente.md](componentes-del-agente.md).
 
 ---
@@ -14,9 +15,9 @@ El repositorio se divide en **cuatro zonas**. Toda carpeta pertenece a una:
 | Zona | Qué guarda | Carpetas |
 |---|---|---|
 | 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` |
-| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `memoria/` · `metricas/` · `interfaz/` |
-| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` |
-| ⬜ **Apoyo** | Configuración, empaquetado y material que no es del estándar. | `.claude/` · `.claude-plugin/` · `.githooks/` · `diplomado-ia/` |
+| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `interfaz/` · `evals/` |
+| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` · `documentacion/` · `analisis/` |
+| ⬜ **Apoyo** | Configuración y empaquetado. | `.claude/` · `.claude-plugin/` · `.githooks/` |
 
 La distinción importa: **solo la zona Norma viaja a los proyectos** que heredan el estándar. Lo demás se queda aquí.
 
@@ -30,7 +31,7 @@ agente/
 ├── README.md ......................... qué es el estándar y qué problema resuelve
 ├── CLAUDE.md ......................... cómo se trabaja DENTRO de este repo
 ├── CHANGELOG.md ...................... qué cambió en cada versión
-├── VERSION ........................... versión del estándar (hoy 1.4.0)
+├── VERSION ........................... versión del estándar
 ├── LICENSE
 ├── Manual-Estandar-Agente.docx ....... manual en Word
 ├── _base_modulo.md ................... plantilla canónica de spec de módulo (no se versiona)
@@ -168,6 +169,12 @@ agente/
 │   ├── pruebas.py .................... suite de los validadores
 │   └── reglas-validables.md .......... qué regla se puede comprobar y cuál no
 │
+├── 🟩 adaptadores/ ................... LO QUE ATA EL ESTÁNDAR A UNA HERRAMIENTA
+│   ├── contrato.md ................... qué le pide el estándar a cualquier herramienta
+│   └── claude-code/ .................. los enganches de esta herramienta, y solo ellos
+│
+├── 🟩 evals/ ......................... CASOS CON RESPUESTA CONOCIDA PARA MEDIR AL AGENTE
+│
 ├── 🟩 memoria/ ....................... LO QUE NO SE DEBE VOLVER A OLVIDAR
 │   ├── memoria.py .................... CLI: add · search · pendientes · cerrar · revisar…
 │   ├── semantica.py .................. búsqueda por significado, local y opcional
@@ -201,6 +208,13 @@ agente/
 │   ├── que-esta-amarrado-a-la-herramienta.md  qué sobrevive si el agente cambia
 │   └── mapa-del-sitio.md ............. este archivo
 │
+├── 🟨 documentacion/ ................. LA CADENA DEL TRABAJO: épicas, historias y fases
+│   ├── epicas/ ....................... EP-001 a EP-007, cada una con sus HU y sus fases
+│   ├── senales.md .................... lo aprendido que no se recupera leyendo el código
+│   └── automatismos/ ................. qué corre solo y cuándo
+│
+├── 🟨 analisis/ ...................... MEDICIONES CON FECHA, QUE NO SE REESCRIBEN
+│
 ├── 🟨 notas/ ......................... POR QUÉ se decidió algo así (12 notas)
 │   ├── README.md ..................... índice
 │   ├── cobertura-del-agente.md ....... qué cumple hoy y qué no
@@ -227,10 +241,6 @@ agente/
 │   │   ├── memory.md ................. índice de los recuerdos
 │   │   └── <recuerdo>.md ............. uno por recuerdo: qué se pide · por qué · cómo se aplica
 │   └── reglas-2026-08-06/
-│
-├── ⬜ prompts/ ....................... (vacía)
-│
-├── ⬜ diplomado-ia/ .................. apuntes de clase — NO es parte del estándar
 │
 ├── ⬜ .claude/settings.json .......... configuración de los 7 enganches (NO se versiona)
 ├── ⬜ .claude-plugin/plugin.json ..... empaqueta el repo como plugin de Claude Code

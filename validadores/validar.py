@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import acciones         # noqa: E402
 import aislamiento      # noqa: E402
 import amarre           # noqa: E402
+import sitio            # noqa: E402
 import brevedad         # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
@@ -188,6 +189,17 @@ def cmd_amarre(a):
     codigo = reportar(amarre.validar(raiz),
                       f"El mapa del amarre a la herramienta · {relativo(raiz)}")
     linea = amarre.linea_resumen(raiz)
+    if linea:
+        print(linea)
+    return codigo
+
+
+def cmd_sitio(a):
+    """`33` · El mapa del sitio no envejece: una carpeta nueva se ve enseguida."""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(sitio.validar(raiz),
+                      f"El mapa del sitio · {relativo(raiz)}")
+    linea = sitio.linea_resumen(raiz)
     if linea:
         print(linea)
     return codigo
@@ -566,6 +578,11 @@ def main():
                         help="qué piezas están atadas a la herramienta · el mapa no envejece")
     am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     am.set_defaults(func=cmd_amarre)
+
+    si = sub.add_parser("sitio",
+                        help="el mapa del sitio nombra toda carpeta que existe · no envejece")
+    si.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    si.set_defaults(func=cmd_sitio)
 
     im = sub.add_parser("inmutable",
                         help="la transcripción del histórico solo crece · detecta, no impide")

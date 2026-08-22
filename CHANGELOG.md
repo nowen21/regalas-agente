@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.2.0 — 2026-08-22
+
+**MENOR** (una comprobación nueva del repositorio del estándar; ningún proyecto tiene que hacer nada).
+
+**El mapa que dice dónde está cada cosa ya no puede quedarse viejo sin que nadie lo note.** Ese mapa es por donde entra quien abre el repositorio y no sabe dónde está nada, y estaba escrito a mano: una carpeta nueva simplemente no aparecía, y quien lo leyera creería que no existe. Ahora hay una comprobación que lo dice. En su primera corrida encontró cuatro carpetas que existen y no estaban nombradas, y una que el mapa nombraba y ya no existe: el mapa decía doce carpetas y son dieciséis.
+
+**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), en la fase [`B` de EP-005 · HU-011](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/README.md). Nace [`validadores/sitio.py`](validadores/sitio.py) con el subcomando `validar.py sitio` y siete casos de prueba, copiando la forma de `amarre.py`: la carpeta que falta es falla, la que sobra es aviso, y con el mapa al día se calla. El mapa quedó actualizado y su cabecera dice cómo comprobarlo.
+
+## 31.1.0 — 2026-08-22
+
+**MENOR** (el modelo de historia de usuario gana una columna opcional; nada obliga a nadie).
+
+**Una historia ya puede decir qué criterio depende de cuál.** Su tabla de fases decía qué se cubre y con qué documentos, pero no si un criterio no se puede comprobar mientras otro no esté cumplido. Sin eso, dos fases se ordenan al revés y el error aparece al probar, cuando ya se construyó. Se resolvió con una columna, no con una sección nueva: la historia cuyos criterios son independientes la deja vacía y no paga nada por tenerla.
+
+**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-07, en la fase [`B` de EP-003 · HU-002](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/B-EP-003-HU-002-la-historia-declara-que-criterio-depende-de-cual/README.md). La columna se llena con criterios, no con fases, y queda escrito en el propio molde. Sin validador a propósito: decidir si un criterio depende de otro exige leer los dos.
+
 ## 31.0.0 — 2026-08-22
 
 **MAYOR** ⚠ obliga a migrar (antes de publicar una versión hay que releer el tramo y anotar lo que se pidió dos veces).
