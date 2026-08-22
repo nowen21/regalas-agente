@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.1.0 — 2026-08-21
+
+**MENOR** (aditivo: once moldes nuevos; nadie al día tiene que hacer nada hoy — los usan los trabajos que vienen).
+
+**El expediente del proyecto quedó completo.** A la carpeta del ciclo le entraron los entregables que la ingeniería de software exige y que faltaban: el estudio de factibilidad, el acta de constitución con su plan, el modelo de datos con su diccionario, el diseño de interfaz, el contrato de la API, el manual de instalación, el manual técnico y de operación, las notas de versión, el acta de entrega, la bitácora de operación y el plan de mantenimiento. Cada uno se alimenta en su etapa mientras el trabajo avanza; cuando el proyecto está listo, generar los documentos finales es darle forma a lo que ya está escrito.
+
+Rige la decisión del usuario registrada en la 30.0.0: el ciclo no hace excepciones — todos existen en todo proyecto, la envergadura ajusta la profundidad, y el que no tenga materia declara «No aplica porque...» en vez de omitirse.
+
+**El detalle.** Nacen los moldes 12 a 22 en [`plantillas/ciclo-vida-proyectos/`](plantillas/ciclo-vida-proyectos/README.md); su README explica a qué estación acompaña cada uno y por qué dos entregables no llevan molde a propósito: el manual de usuario **es** el inventario de funcionalidades madurado, y el SRS consolidado, la matriz de trazabilidad, el registro de defectos y el documento de arquitectura son vistas que un generador armará desde lo ya escrito (trabajo dimensionado en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md), junto al generador `.docx`).
+
 ## 30.0.0 — 2026-08-21
 
 **MAYOR** ⚠ obliga a migrar: los moldes del ciclo cambiaron de ruta; un proyecto al día vuelve a correr la instalación y el aviso de desfase se lo dice en su primer mensaje. No quedan redirecciones: las rutas viejas ya no existen.

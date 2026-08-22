@@ -69,12 +69,17 @@ agente/
 │       ├── base.md ................... M1…M13: dónde vive cada regla, cuál gana, cómo se agrega
 │       └── estructura-regla.md ....... el molde exacto de una regla (M5)
 │
-├── 🟦 plantillas/ .................... 27 MOLDES DE DOCUMENTO
-│   ├── ciclo-vida-proyectos/ ......... EL CICLO, EN ORDEN: los 11 moldes que todo desarrollo recorre
+├── 🟦 plantillas/ .................... 38 MOLDES DE DOCUMENTO
+│   ├── ciclo-vida-proyectos/ ......... EL CICLO, EN ORDEN: el camino (01-11) y los entregables del expediente (12-22)
 │   │   ├── 01-planteamiento.md · 02-inventario-funcionalidades.md (02·F26)
 │   │   ├── 03-epica.md · 04-HU.md · 05-fase.md · 06-especificacion-modulo.md
 │   │   ├── 07-plan-trabajo.md · 08-plan-pruebas.md · 09-resultado-pruebas.md
-│   │   └── 10-estado-fase.md · 11-funcionalidad-implementada.md
+│   │   ├── 10-estado-fase.md · 11-funcionalidad-implementada.md
+│   │   ├── 12-estudio-factibilidad.md · 13-acta-de-constitucion-y-plan-de-proyecto.md
+│   │   ├── 14-modelo-de-datos.md · 15-diseno-de-interfaz.md · 16-documentacion-de-api.md
+│   │   ├── 17-manual-de-instalacion.md · 18-manual-tecnico-y-de-operacion.md
+│   │   ├── 19-notas-de-version.md · 20-acta-de-entrega.md
+│   │   └── 21-bitacora-de-operacion.md · 22-plan-de-mantenimiento.md
 │   ├── CLAUDE.md.plantilla ........... el CLAUDE.md que recibe cada proyecto
 │   ├── catalogo-modulos.md · mapa-dependencias.md
 │   ├── ADR.md ........................ decisión de arquitectura

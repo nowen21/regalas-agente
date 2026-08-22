@@ -53,6 +53,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
 - **Con qué se retoma:** — (sigue el 75 por su orden: primero la estructura de `interfaz/`, después el registro; y el commit de esta ronda, que autoriza el usuario)
 
+### H-4 · El ciclo de vida gana su carpeta de moldes, su lista de entregables y dos correcciones de cómo trabajar
+
+- **Qué pasó:** El usuario ordenó `plantillas/ciclo-vida-proyectos/`. El agente tropezó dos veces (abrió un pendiente en vez de resolver; luego ejecutó una opción que el usuario no había elegido) y las dos correcciones quedaron en el recuerdo [la-orden-se-resuelve-de-una](../../memory/la-orden-se-resuelve-de-una.md). Con el análisis hecho juntos, el usuario decidió: **el ciclo no hace excepciones** (todos los entregables existen en todo proyecto; la envergadura ajusta profundidad; sin materia se declara «No aplica porque...»), y triple A para la carpeta: solo el ciclo, moldes numerados por estación, MAYOR sin redirecciones ni fantasmas.
+- **Por qué importa:** Abrir una carpeta y ver el ciclo del 01 al 11 es la cara tangible de la disciplina; y la lista canónica de entregables (IEEE/ISO) fija cuánto falta para el expediente completo que al final «solo genera los .docx».
+- **Qué lo soluciona:** Ejecutado el frente 1: los 11 moldes movidos y numerados (la carpeta `planes/` desaparece: son las estaciones 07 a 09), ~20 referencias de código y 137 documentos al día, README del ciclo, mapa del sitio, versión 30.0.0 (MAYOR). De paso el trinquete de marcas aprendió a seguir renombres (`git mv` ponía línea base cero y contaba como nuevas las marcas viejas) con sus 2 pruebas. La lista de entregables quedó en [notas/entregables-del-ciclo-de-vida.md](../../../notas/entregables-del-ciclo-de-vida.md) con el cruce contra Cimiento y la decisión de sin-excepciones.
+- **Qué se decidió:** Lo de arriba, todo del usuario. Quedan los frentes 2 (13 moldes faltantes) y 3 (generador `.docx` y mapa de completitud, conectado al pendiente 75).
+- **Estado:** resuelto acá (el frente 1; los frentes 2 y 3 son trabajo futuro ya dimensionado en la nota)
+- **Responde a:** la orden del usuario del 2026-08-21
+- **Dispara:** — (los frentes 2 y 3 se bajarán cuando el usuario los ordene; la nota los dimensiona)
+- **Orden de resolución:** —
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/](../../../plantillas/ciclo-vida-proyectos/README.md), la entrada 30.0.0 del CHANGELOG, la nota de entregables y el recuerdo de las correcciones
+- **Nace en:** 2026-08-21 · que-es-memory-y-trazas
+- **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
+- **Con qué se retoma:** ¿frente 2 o frente 3? (y el commit de esta ronda, que autoriza el usuario)
+
 ---
 
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [memory.md](../../memory/memory.md) y en [trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.

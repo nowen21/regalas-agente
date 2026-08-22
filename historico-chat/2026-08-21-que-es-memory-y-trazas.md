@@ -763,3 +763,26 @@ Con tus tres respuestas (puede ser «a, a, a») ejecuto el frente completo: carp
 
 ### 39 · Usuario — 2026-08-21 22:35:13
 > triple A pero no deberían quedar archivos fantasma o basura
+
+**Agente** — 2026-08-21 22:42:47
+<!-- agente: 0eaa22ef-0671-48e2-bd79-aecf9a8972e2 -->
+
+Triple A, sin fantasmas: los archivos viejos desaparecen y los instalados migran con la MAYOR. Ejecuto el frente 1 completo. Primero verifico cómo referencia el código las rutas (para no dejar ninguna forma sin cubrir):
+
+Sobrantes solo en prosa e históricos (registro, no enlaces). Corro el validador de enlaces y las pruebas de humo:
+
+En verde: 0 enlaces rotos, andamio y fases funcionando. Escribo el README del ciclo y actualizo el mapa:
+
+Todo en verde. Registro el hallazgo en el resumen y te presento:
+
+Frente 1 terminado y verificado. El estándar queda en **30.0.0** (MAYOR):
+
+- **Nace [`plantillas/ciclo-vida-proyectos/`](plantillas/ciclo-vida-proyectos/README.md):** los 11 moldes del camino obligatorio, numerados por estación (`01-planteamiento` → `11-funcionalidad-implementada`; `planes/` desaparece — son las estaciones 07 a 09). Su README recorre el ciclo con la puerta y la regla de cada estación. Sin fantasmas: las rutas viejas no existen.
+- **Todo reconectado:** andamio, instalador y validadores apuntan a las rutas nuevas (probado: el andamio crea fases correctamente); 137 documentos al día; 0 enlaces rotos; esta vez sin tocar fines de línea.
+- **Un arreglo de paso, con sus pruebas:** el trinquete de marcas trataba un `git mv` como archivo nuevo y contaba como «nuevas» las marcas que el molde ya traía; ahora sigue renombres (2 pruebas nuevas, las 10 del trinquete en verde).
+- **Documentado:** entrada 30.0.0 en el CHANGELOG con tu decisión de fondo («el ciclo no hace excepciones») y la nota de entregables enlazada como material de los frentes 2 y 3.
+
+¿Autorizas commit y push?
+
+### 40 · Usuario — 2026-08-21 22:45:51
+> si y siga

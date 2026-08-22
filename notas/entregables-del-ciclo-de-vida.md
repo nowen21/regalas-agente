@@ -75,7 +75,8 @@
 |---|---|
 | ✅ **Existe como molde vivo** | Propuesta (`planteamiento.md`), inventario (`inventario-funcionalidades.md`), épicas/HU con CA, especificación por módulo, plan de trabajo, plan de pruebas, informe de resultados, ADR, cierre de fase, changelog (`CHANGELOG.md` + `versiones`), postmortem, checklist de despliegue |
 | ⚠ **Existe repartido, sin consolidado** | SRS (vive en épicas y HU, sin documento único), matriz de trazabilidad (vive por fase en `13·DOC11`, sin vista de proyecto), documento de arquitectura (hay ADR y mapa de dependencias, no el SDD consolidado) |
-| ❌ **No hay molde** | Estudio de factibilidad, acta de constitución/plan de proyecto, modelo de datos y diccionario, diseño de interfaz, documentación de API, registro de defectos consolidado, manual de instalación, manual de usuario (será el inventario madurado), manual técnico/operación, notas de versión por proyecto, acta de entrega, bitácoras de operación, plan de mantenimiento |
+| ✅ **Molde escrito el 2026-08-21** (frente 2, moldes 12 a 22 del ciclo) | Estudio de factibilidad, acta de constitución/plan de proyecto, modelo de datos y diccionario, diseño de interfaz, documentación de API, manual de instalación, manual técnico/operación, notas de versión, acta de entrega, bitácora de operación, plan de mantenimiento |
+| 🔁 **Sin molde a propósito** | Manual de usuario (es el inventario madurado) y las vistas que el generador armará: SRS consolidado, matriz de trazabilidad, registro de defectos consolidado, documento de arquitectura |
 | 🔧 **No existe la pieza** | El generador `.docx` de cualquiera de estos, y el mapa entregable → archivos fuente con su estado de completitud |
 
 ## La decisión del usuario — 2026-08-21: sin excepciones
