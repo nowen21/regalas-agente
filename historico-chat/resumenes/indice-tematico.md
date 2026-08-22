@@ -550,6 +550,6 @@ habla cada hallazgo. Es lo que ya estaba escrito, junto.
 - `H-2` Nada impide que un planteamiento llenado pise el encuadre del molde
 - `H-3` Los moldes del ciclo llevan las marcas que el estándar prohíbe, y se las pasan a todo documento que nace de ellos
 
-**[2026-08-22 · lo que quedó](2026-08-22/sesion-3.md)**
+**[2026-08-22 · lo que quedó](2026-08-22/el-encuadre-enlaza-la-cadena-no-la-copia.md)**
 
 - `H-1` El encuadre del molde de planteamiento copia la cadena de `02·F0` y la copia ya no coincide
