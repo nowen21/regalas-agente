@@ -138,6 +138,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | [HU-008](HU-008-puntos-de-aprobacion/HU-008-puntos-de-aprobacion.md) | Declarar los puntos donde aprueba una persona | Must | S |
 | [HU-009](HU-009-modelo-del-resumen-de-sesion/HU-009-modelo-del-resumen-de-sesion.md) | Crear el modelo del resumen de sesión | Must | S |
 | [HU-010](HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) | Crear el glosario de la terminología del estándar | Should | M |
+| [HU-011](HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) | «Título» | «Prioridad» | «Estimación» |
 
 ## 10. Consideraciones técnicas
 

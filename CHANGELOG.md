@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 29.0.0 — 2026-08-21
+
+**MAYOR** ⚠ obliga a migrar: en el próximo encargo de cualquier proyecto al día, las épicas no se derivan hasta que el usuario apruebe el inventario de funcionalidades. Lo ya derivado no se reabre.
+
+**El alcance lo confirma el usuario, no lo asume el agente.** Toda propuesta viene ahora acompañada de un inventario con **todas** las funcionalidades de lo que se va a desarrollar, cada una con su estado (existe, parcial, por construir, por confirmar) y lo no decidido escrito como pregunta. Hasta que el usuario no lo aprueba, no se derivan épicas; y cada épica dice qué ítems del inventario cubre. El inventario no se bota al arrancar: madura con el sistema hasta convertirse en el manual del producto.
+
+Se escribió porque el daño ya ocurrió: en un proyecto real el agente escribió el planteamiento asumiendo el techo del alcance, de ahí salieron tres épicas y 21 historias, y la corrección del usuario llegó seis días después, con todo eso escrito encima. Ninguna regla lo habría preguntado antes. El usuario lo pidió explícito: «la propuesta debe venir acompañada del inventario (...) porque eso es lo que da el punto de partida a las épicas».
+
+**El detalle.** Nace [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) —*el inventario de funcionalidades aprobado es la puerta de las épicas*, que extiende a [`F2`](base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md): la misma puerta, una estación antes— y el molde [`plantillas/inventario-funcionalidades.md`](plantillas/inventario-funcionalidades.md), generalizado del inventario real de `shopnest-mesa`. Es el [pendiente 74](pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), bajado como la fase A de [EP-003 · HU-011](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) con sus tres criterios en Cumple — incluido el veredicto de por qué la conducta del capítulo `01` no cubría este caso. `F26` queda registrada sin validador todavía, con las tres preguntas de [`M19`](base/20-meta-reglas/reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) respondidas: primero que la puerta demuestre servir a mano.
+
 ## 28.2.0 — 2026-08-21
 
 **MENOR** (aditivo: un documento nuevo que viaja con las reglas; nadie tiene que cambiar nada).

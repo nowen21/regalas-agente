@@ -4,10 +4,10 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-003 — Documentos modelo y procedimientos](../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/epica.md) — es la épica dueña de los moldes; la HU exacta la decide cimiento (puede pedir molde nuevo y regla de flujo) |
+| **Historia de usuario** | [EP-003 — Documentos modelo y procedimientos](../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/epica.md) — es la épica dueña de los moldes; la HU exacta la decide cimiento (puede pedir molde nuevo y regla de flujo) |
 | **Proyecto de origen** | **shopnest-mesa** · `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **Su pendiente de seguimiento** | `pendientes/42-esperando-el-inventario-como-puerta-de-las-epicas.md` — queda **abierto allá** hasta que este se corrija |
-| **A quién avisar al cerrar** | a **todos los instalados**: es método del flujo, no un caso de un proyecto — la lista está en [plantillas/proyectos.md](../plantillas/proyectos.md) |
+| **A quién avisar al cerrar** | a **todos los instalados**: es método del flujo, no un caso de un proyecto — la lista está en [../plantillas/proyectos.md](../../plantillas/proyectos.md) |
 
 ## El problema
 

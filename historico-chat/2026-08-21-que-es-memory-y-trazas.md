@@ -294,3 +294,62 @@ El 73 quedó resuelto: la fase A de HU-014 cerró en **Cumple** y el estándar s
 
 ### 16 · Usuario — 2026-08-21 19:05:49
 > autorizado el commit y push y siga
+
+**Agente** — 2026-08-21 19:13:37
+<!-- agente: 919079cf-b6f6-4df8-913a-ac81e4dbd7a7 -->
+
+El reintento reutilizó el mensaje equivocado; lo corrijo con `--amend` (aún sin push):
+
+Publicado (`98468b6`). Sigo con el 74. Miro dónde encajan sus tres piezas: las HU de EP-003, la conducta `C21` y quién podría ser dueño de la regla del `02`:
+
+Sigo con el 74: lo bajo a EP-003 (dueña de moldes, y el propio pendiente la nombra para molde y regla de flujo). Levanto la HU y su fase:
+
+Semilla vista. Escribo la HU-011:
+
+Publicado y siguiendo. Estado:
+
+**Commit y push: hechos** (`98468b6`). El trinquete atajó dos marcas nuevas (elipsis en el 74, rayas en la plantilla Django) y un `--reuse-message` mío tomó el mensaje equivocado; quedó corregido con `--amend` antes del push.
+
+**El 74 ya está a mitad de cadena.** Nace [EP-003 · HU-011 — El inventario de funcionalidades como puerta de las épicas](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md), con su fase A, [plan de trabajo](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/A-EP-003-HU-011-el-inventario-como-puerta-de-las-epicas/plan_trabajo.md) y [pruebas](documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/A-EP-003-HU-011-el-inventario-como-puerta-de-las-epicas/plan_pruebas.md). Tres entregables:
+
+1. El molde `plantillas/inventario-funcionalidades.md`, generalizado del inventario real de `shopnest-mesa` y nacido para madurar hasta manual (tu rasgo).
+2. La regla **`F26`** del capítulo `02`: sin inventario aprobado por ti no se derivan épicas — subida **MAYOR**, porque obliga hacia adelante.
+3. El veredicto escrito de si `C4`/`C7`/`C17`/`C21` ya cubrían preguntar el alcance.
+
+Las pruebas usan como oráculo el caso real: la regla debe detener lo que pasó el 15 de agosto y no obligar a rehacer nada hoy.
+
+Espero tu sí a la **HU-011 y sus planes** (incluye aceptar el corte MAYOR y el ID `F26`); con eso ejecuto y te presento todo para el commit.
+
+### 17 · Usuario — 2026-08-21 19:31:22
+> si
+
+**Agente** — 2026-08-21 19:39:34
+<!-- agente: 991f0209-1133-49a6-b1fc-d1736fa106a1 -->
+
+Aprobado. Ejecuto. Primero miro el esqueleto completo del semilla para generalizarlo:
+
+Escribo el molde (T-01) y su fila en el índice (T-02):
+
+Ahora la regla `F26` (T-03), con su checklist:
+
+Ejecuto las comprobaciones (y reviso marcas en los archivos nuevos):
+
+La regla mide 401 caracteres y el molde da 320; la acorto antes de sellarla:
+
+Todas las piezas están. Escribo el resultado de pruebas con los tres casos ejecutados:
+
+Verso (MAYOR: 28.2.0 → 29.0.0, leyendo `VERSION` un instante antes) y cierro el pendiente 74:
+
+Escribo el cierre y actualizo checkpoint, HU y resumen:
+
+El 74 quedó resuelto: la fase A de HU-011 cerró en **Cumple** y el estándar subió a **29.0.0** (MAYOR).
+
+- **Nace [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md):** ninguna épica se deriva sin el inventario de funcionalidades aprobado por ti; cada épica cita los ítems que cubre. Checklist 20/20, y registrada sin validador todavía con las tres preguntas de `M19` respondidas — la regla nueva pasó por el filtro que tú mismo hiciste nacer esta mañana.
+- **Nace el molde [`plantillas/inventario-funcionalidades.md`](plantillas/inventario-funcionalidades.md):** generalizado del inventario real de `shopnest-mesa`, con los cuatro estados, las preguntas abiertas como preguntas y el destino de madurar hasta manual.
+- **Pruebas: 3 de 3.** El oráculo fue el caso real: la regla detiene lo del 15 de agosto y no obliga a rehacer nada hoy. El veredicto de conducta quedó escrito: `C4`/`C7`/`C17`/`C21` no cubrían el alcance asumido; la brecha la cierra `F26` sin extender el `01`.
+- **Cierre:** pendiente 74 → [hecho/](pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md) con aviso a los 9 instalados, entrada [29.0.0](CHANGELOG.md). Validadores en verde. Dos desvíos menores declarados en el resultado (un programa mal citado en el plan y el índice de moldes que era el mapa, no el README).
+
+¿Autorizas el commit y push de esta ronda?
+
+### 18 · Usuario — 2026-08-21 19:41:00
+> si

@@ -38,6 +38,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
 - **Con qué se retoma:** — (siguen el 74 y el 75, por su orden; y el commit de esta ronda, que autoriza el usuario)
 
+### H-3 · El 74 bajó por la cadena: el inventario de funcionalidades como puerta de las épicas
+
+- **Qué pasó:** Publicado el 73 (commit `98468b6`, tras dos tropiezos del trinquete de marcas resueltos), se bajó el 74 según el orden acordado. Nace [EP-003 · HU-011](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) con tres CA: el molde `plantillas/inventario-funcionalidades.md` (generalizado del caso semilla de `shopnest-mesa`, nacido para madurar hasta manual), la regla `F26` del capítulo `02` (sin inventario aprobado por el usuario no se derivan épicas — MAYOR) y el veredicto escrito sobre si la conducta del `01` ya cubría preguntar el alcance.
+- **Por qué importa:** Es la clase de error que costó 21 HU sobre un alcance asumido; la puerta lo corta en la estación correcta.
+- **Qué lo soluciona:** La fase [A-EP-003-HU-011](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/A-EP-003-HU-011-el-inventario-como-puerta-de-las-epicas/plan_trabajo.md) con plan y pruebas escritos; los oráculos son el caso semilla y el caso histórico del mismo proyecto.
+- **Qué se decidió:** El usuario aprobó HU-011 y sus planes («si») y la fase cerró en Cumple: nacen `02·F26` (con checklist 20/20 y las tres preguntas de `M19` respondidas: sin validador todavía) y el molde `plantillas/inventario-funcionalidades.md`; versión 29.0.0 (MAYOR); pendiente 74 en `hecho/` con aviso a los 9 instalados. El veredicto de conducta quedó escrito: `C4`/`C7`/`C17`/`C21` no cubrían el alcance asumido y la brecha la cierra `F26`, sin extender el `01`.
+- **Estado:** resuelto acá
+- **Responde a:** pendiente 74
+- **Dispara:** EP-003 · HU-011 (ya escrita)
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md](../../../pendientes/hecho/el-inventario-es-la-puerta-de-las-epicas.md), la entrada 29.0.0 del CHANGELOG y la fase A de HU-011 cerrada
+- **Nace en:** 2026-08-21 · que-es-memory-y-trazas
+- **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
+- **Con qué se retoma:** — (sigue el 75 por su orden: primero la estructura de `interfaz/`, después el registro; y el commit de esta ronda, que autoriza el usuario)
+
 ---
 
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [memory.md](../../memory/memory.md) y en [trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.

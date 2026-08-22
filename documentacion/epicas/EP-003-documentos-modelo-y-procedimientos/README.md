@@ -15,3 +15,4 @@ Contenido inmediato de esta carpeta.
 | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-008-puntos-de-aprobacion/](HU-008-puntos-de-aprobacion/) | Historia de usuario: puntos de aprobación |
 | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-009-modelo-del-resumen-de-sesion/](HU-009-modelo-del-resumen-de-sesion/) | Historia de usuario: modelo del resumen de sesión |
 | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/](HU-010-glosario-de-la-terminologia/) | Historia de usuario: glosario de la terminología |
+| [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-011-el-inventario-de-funcionalidades/](HU-011-el-inventario-de-funcionalidades/) | Historia de usuario: «…» |
