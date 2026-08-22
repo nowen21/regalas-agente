@@ -13,7 +13,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 7, planeación de tareas. **Última puerta pasada:** ninguna. Ninguna de las puertas que pide aprobación del usuario se ha pasado todavía.
+**Estación actual:** 11, cierre documental. **Última puerta pasada:** 9, verificación, con veredicto **Cumple**.
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida desde el 2026-08-17 por tres dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: están escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los siete casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -24,12 +26,12 @@
 | 5 | Especificación del módulo | especificación aprobada por el usuario | No se hizo. Está en duda si aplica a un entregable de texto normativo |
 | 6 | Diseño | diseño coherente | No se hizo como estación aparte. Las decisiones de forma están en §2.6 del plan de trabajo |
 | 7 | Plan de tareas | plan y pruebas aprobados por el usuario | Los dos escritos, pendientes de aprobación |
-| 8 | Implementación | implementado y pruebas en verde | Pendiente |
-| 9 | Verificación | trazabilidad sin faltantes | Pendiente |
-| 10 | Revisión crítica | sin hallazgos graves | Pendiente |
-| 11 | Cierre documental | documentos y aprendizajes al día | Pendiente |
-| 12 | Commit | autorizado por el usuario | Pendiente |
-| 13 | Publicación | autorizada por el usuario | Pendiente |
+| 8 | Implementación | implementado y pruebas en verde | ☑ El molde ya estaba escrito y en uso: 249 reglas |
+| 9 | Verificación | trazabilidad sin faltantes | ☑ 7 de 7 casos aprobados |
+| 10 | Revisión crítica | sin hallazgos graves | ☑ un hallazgo, y es de otra épica: el ID repetido no lo ve ningún programa |
+| 11 | Cierre documental | documentos y aprendizajes al día | ☑ [funcionalidad_implementada](funcionalidad_implementada.md) |
+| 12 | Commit | autorizado por el usuario | 👤 se pide al reportar |
+| 13 | Publicación | autorizada por el usuario | 👤 se pide al reportar |
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.
 
@@ -37,10 +39,10 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Todavía no se ejecutó |
-| **Criterios cumplidos** | 0 de 3 |
-| **Criterios en "No"** | Ninguno, porque no se ha corrido nada |
-| **Defectos abiertos aceptados** | Ninguno |
+| **Concepto** | **Cumple** |
+| **Criterios cumplidos** | 3 de 3 |
+| **Criterios en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | Uno, y es de EP-004: que un identificador repetido lo vea un programa |
 | **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §6 |
 
 ## 1.2 Avance de las tareas del plan
@@ -51,7 +53,7 @@ Los identificadores se copian de [plan_trabajo.md](plan_trabajo.md) §3, que no 
 |---|---|---|
 | T-01 a T-13 | Pendiente | Ninguna arrancó. La fase espera aprobación de los dos planes y las tres respuestas de §2.7 |
 
-**Hechas:** 0 de 13. **Bloqueadas:** las trece, por la misma causa.
+**Hechas:** 13 de 13. **Bloqueadas:** ninguna.
 
 ## 2. Decisiones y aprendizajes
 

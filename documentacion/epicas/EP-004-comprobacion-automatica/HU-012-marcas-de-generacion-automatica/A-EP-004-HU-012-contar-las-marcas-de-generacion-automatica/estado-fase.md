@@ -37,7 +37,6 @@
 
 **Construido el 2026-08-18.** Era cierto que ningún programa las comprobaba: [`validadores/marcas.py`](../../../../../validadores/marcas.py) es el primero. El recuento dio **16 477 marcas en 820 archivos** fuera del histórico, y **4 491 en lo que se hereda**.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: la duda 1 de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
 
@@ -53,21 +52,23 @@
 
 ---
 
+> **Puesto al día el 2026-08-22.** Este documento decía que no se había ejecutado ninguna tarea, y la fase estaba **hecha y probada**: su [resultado_pruebas](resultado_pruebas.md) trae el veredicto y su [funcionalidad_implementada](funcionalidad_implementada.md) el cierre. Lo que faltaba era este archivo, que es justo el que una sesión nueva lee para saber por dónde va. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+
 ## 1.2 Avance de las tareas del plan
 
 > Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Comprobación de las marcas de tipografía. Duda 1: cambia qué archivos recorre |
-| T-02 | Bloqueada | Caso del texto con marcas — CP-002 |
-| T-03 | Bloqueada | Comprobación de los caracteres invisibles |
-| T-04 | Bloqueada | Caso de las marcas invisibles — CP-003 |
-| T-05 | Pendiente | Lista de lo que es notación del estándar. **Va primero: sin ella el programa reporta todo** |
-| T-06 | Bloqueada | Caso de la corrida sobre `base/` — CP-001 |
-| T-07 | Bloqueada | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Comprobación de las marcas de tipografía. Duda 1: cambia qué archivos recorre |
+| T-02 | Hecha | Caso del texto con marcas — CP-002 |
+| T-03 | Hecha | Comprobación de los caracteres invisibles |
+| T-04 | Hecha | Caso de las marcas invisibles — CP-003 |
+| T-05 | Hecha | Lista de lo que es notación del estándar. **Va primero: sin ella el programa reporta todo** |
+| T-06 | Hecha | Caso de la corrida sobre `base/` — CP-001 |
+| T-07 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 7. **Bloqueadas:** todas menos T-05.
+**Hechas:** 7 de 7. **Bloqueadas:** ninguna.
 
 ---
 

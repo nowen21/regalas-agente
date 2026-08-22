@@ -33,9 +33,7 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Esta es la única fase de la épica que **no retrodocumenta**: el caso del entregable que no es código nunca se escribió.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 3 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
 
@@ -51,24 +49,26 @@
 
 ---
 
+> **Puesto al día el 2026-08-22.** Este documento decía que no se había ejecutado ninguna tarea, y la fase estaba **hecha y probada**: su [resultado_pruebas](resultado_pruebas.md) trae el veredicto y su [funcionalidad_implementada](funcionalidad_implementada.md) el cierre. Lo que faltaba era este archivo, que es justo el que una sesión nueva lee para saber por dónde va. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+
 ## 1.2 Avance de las tareas del plan
 
 > Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Escribir en `F2` lo que decida la duda 1. Las tres dudas la bloquean |
-| T-02 | Bloqueada | Rehacer el bloque de checklist de `F2`: cambiar el texto anula el sello anterior |
-| T-03 | Bloqueada | Criterio de la fase mezclada — CP-002 |
-| T-04 | Bloqueada | Caso del lector ajeno — CP-001 |
-| T-05 | Pendiente | Levantar la tabla de fases. **Es medición y no depende de ninguna duda** |
-| T-06 | Bloqueada | Caso de `validar.py flujo` — CP-004 |
-| T-07 | Bloqueada | Corregir la cuenta del pendiente 20 y cerrarlo si la regla lo resuelve |
-| T-08 | Bloqueada | Corregir el CA-02 de la HU, que dice dos fases cuando son más |
-| T-09 | Bloqueada | Caso de no regresión sobre código de módulo — CP-005 |
-| T-10 | Bloqueada | Versionar, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Escribir en `F2` lo que decida la duda 1. Las tres dudas la bloquean |
+| T-02 | Hecha | Rehacer el bloque de checklist de `F2`: cambiar el texto anula el sello anterior |
+| T-03 | Hecha | Criterio de la fase mezclada — CP-002 |
+| T-04 | Hecha | Caso del lector ajeno — CP-001 |
+| T-05 | Hecha | Levantar la tabla de fases. **Es medición y no depende de ninguna duda** |
+| T-06 | Hecha | Caso de `validar.py flujo` — CP-004 |
+| T-07 | Hecha | Corregir la cuenta del pendiente 20 y cerrarlo si la regla lo resuelve |
+| T-08 | Hecha | Corregir el CA-02 de la HU, que dice dos fases cuando son más |
+| T-09 | Hecha | Caso de no regresión sobre código de módulo — CP-005 |
+| T-10 | Hecha | Versionar, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 10. **Bloqueadas:** todas menos T-05.
+**Hechas:** 10 de 10. **Bloqueadas:** ninguna.
 
 ---
 

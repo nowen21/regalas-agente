@@ -33,9 +33,7 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Esta fase toca el enganche que corre en **cada** mensaje: no se toca sin aprobación.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 2 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
 
@@ -51,21 +49,23 @@
 
 ---
 
+> **Puesto al día el 2026-08-22.** Este documento decía que no se había ejecutado ninguna tarea, y la fase estaba **hecha y probada**: su [resultado_pruebas](resultado_pruebas.md) trae el veredicto y su [funcionalidad_implementada](funcionalidad_implementada.md) el cierre. Lo que faltaba era este archivo, que es justo el que una sesión nueva lee para saber por dónde va. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md).
+
 ## 1.2 Avance de las tareas del plan
 
 > Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente | Escribir el enmascarado reusando lo que `secretos.py` reconoce |
-| T-02 | Pendiente | Que el enganche lo llame antes de escribir |
-| T-03 | Pendiente | Caso de la clave que no queda en claro — CP-001 |
-| T-04 | Bloqueada | La marca que dice qué se tapó. Duda 1 |
-| T-05 | Bloqueada | Caso del mensaje legible — CP-002. Depende de T-04 |
-| T-06 | Pendiente | Caso del ejemplo que no se tapa — CP-003 |
-| T-07 | Pendiente | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
+| T-01 | Hecha | Escribir el enmascarado reusando lo que `secretos.py` reconoce |
+| T-02 | Hecha | Que el enganche lo llame antes de escribir |
+| T-03 | Hecha | Caso de la clave que no queda en claro — CP-001 |
+| T-04 | Hecha | La marca que dice qué se tapó. Duda 1 |
+| T-05 | Hecha | Caso del mensaje legible — CP-002. Depende de T-04 |
+| T-06 | Hecha | Caso del ejemplo que no se tapa — CP-003 |
+| T-07 | Hecha | Correr, escribir el incremento de la especificación y cerrar la trazabilidad |
 
-**Hechas:** 0 de 7. **Bloqueadas:** T-04 y T-05.
+**Hechas:** 7 de 7. **Bloqueadas:** ninguna.
 
 ---
 
