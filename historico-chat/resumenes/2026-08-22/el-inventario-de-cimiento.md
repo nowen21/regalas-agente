@@ -113,6 +113,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Con qué se retoma** | — |
 
+### H-7 · Escribir claro se pasó de largo y salió infantil
+
+| Campo | |
+|---|---|
+| **Qué pasó** | Con la prueba del niño recién aplicada, las descripciones empezaron a rodear lo que querían decir: «un puñado de reglas que nadie puede saltarse», «las mañas de quien manda», «ni cuando el trabajo es chiquito». El usuario lo paró: «es cierto que un niño lo debe entender pero tampoco tan infantil». |
+| **Por qué importa** | El inventario va camino a ser el manual del producto. Un manual que suena a cuento pierde autoridad, y el lector deja de creerle antes de terminar la fila. La exigencia era que se entendiera, no que sonara sencillo. |
+| **Qué lo soluciona** | Una pieza: el molde dice ahora cuál es el tono, y no solo cuál es la prueba. Palabras comunes y frases cortas, sin rodear lo que se quiere decir ni explicar de más, en el tono con que se le explica algo a un adulto que no es del oficio. |
+| **Qué se decidió** | Las 36 filas pasadas otra vez, y el ejemplo del molde corregido, porque el «CORRECTO» que traía era justo la versión infantil. Versión **32.1.2**. |
+| **Estado** | `resuelto acá` |
+| **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
+| **Dispara** | — |
+| **Orden de resolución** | — |
+| **Dónde queda** | El molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
+| **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Con qué se retoma** | — |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -124,7 +141,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4 y H-6 |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3, H-4, H-6 y H-7 |
 | Todo hallazgo abierto tiene su pendiente creado | ☐ H-2 y H-5 siguen sin archivo en `pendientes/` |
 | Toda historia disparada está escrita en su épica | ☐ las tres historias y la épica de la interfaz están descritas acá, no creadas |
 | Lo que se hizo está aprobado y guardado | ☑ comiteado y publicado |

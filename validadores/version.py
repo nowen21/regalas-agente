@@ -26,6 +26,12 @@ _ADOPTADA = re.compile(
 # El encabezado de una regla derogada: '## F6 · … · `[DEROGADA en 4.0.0 → ver 13·DOC1]`'
 # (`20·M11`). Solo se mira la línea del encabezado: las tablas de los índices y
 # los ejemplos del molde repiten la marca y no son reglas.
+# `## 31.9.0 — 2026-08-22` — la cabecera de una entrada del registro.
+_ENTRADA_DEL_REGISTRO = re.compile(r"^##\s+(\d+\.\d+\.\d+)\b", re.M)
+
+# `2026-08-20-28.0.0.md` — el registro que el instalador deja por adopción.
+_NOMBRE_DE_ADOPCION = re.compile(r"^\d{4}-\d{2}-\d{2}-(\d+\.\d+\.\d+)\.md$")
+
 _ENCABEZADO_DEROGADA = re.compile(
     r"^##\s+(\S+)\s*·[^\n]*?\[DEROGADA\s+en\s+(\d+\.\d+\.\d+)\s*(?:→|->)\s*ver\s+([^\]`]+)\]",
     re.M)
@@ -101,6 +107,38 @@ def sin_adoptar(adoptada, estandar, derogadas):
     return [d for d in derogadas if desde < _tupla(d[0]) <= hasta]
 
 
+def versiones_publicadas(raiz_estandar=None):
+    """Las versiones que el registro de cambios publica: `{"31.9.0", ...}`.
+
+    **Se leen del `CHANGELOG.md` y no de `VERSION`**, porque `VERSION` dice
+    cuál es la última y la pregunta es otra: si el número que un proyecto
+    declara existió alguna vez.
+    """
+    raiz_estandar = raiz_estandar or RAIZ
+    ruta = os.path.join(raiz_estandar, "CHANGELOG.md")
+    if not os.path.isfile(ruta):
+        return set()
+    return set(_ENTRADA_DEL_REGISTRO.findall(leer(ruta)))
+
+
+def ultima_adopcion(raiz):
+    """La versión del último registro de `documentacion/versiones/`, o "".
+
+    El instalador escribe un archivo por actualización, con la versión en el
+    nombre. Que ese número y el que el proyecto declara puedan diferir es lo
+    que nadie miraba.
+    """
+    carpeta = os.path.join(os.path.abspath(raiz), "documentacion", "versiones")
+    if not os.path.isdir(carpeta):
+        return ""
+    encontradas = []
+    for nombre in os.listdir(carpeta):
+        m = _NOMBRE_DE_ADOPCION.match(nombre)
+        if m:
+            encontradas.append(m.group(1))
+    return max(encontradas, key=_tupla) if encontradas else ""
+
+
 def validar(raiz):
     raiz = os.path.abspath(raiz)
     est = version_estandar()
@@ -108,8 +146,36 @@ def validar(raiz):
     if not os.path.isfile(claude):
         return [Hallazgo(AVISO, raiz, 0,
                          "no se encontró CLAUDE.md; no se puede leer la versión adoptada")]
-    motivo = comparar(extraer_adoptada(leer(claude)), est)
-    return [Hallazgo(AVISO, "CLAUDE.md", 0, motivo)] if motivo else []
+    adoptada = extraer_adoptada(leer(claude))
+    hallazgos = []
+
+    # **Que la versión declarada exista.** Sin esto, un número inventado no
+    # solo pasa: si es mayor que la vigente, `comparar` concluye que el
+    # proyecto está al día y **apaga el aviso de desfase**. La comprobación se
+    # apagaba sola, y el que la apagaba no se enteraba. Es el pendiente 82.
+    publicadas = versiones_publicadas()
+    if adoptada and publicadas and adoptada not in publicadas:
+        hallazgos.append(Hallazgo(
+            FALLA, "CLAUDE.md", 0,
+            f"el proyecto declara la v{adoptada}, que no existe en el registro "
+            f"de cambios del estándar — mientras el número sea falso, el aviso "
+            f"de desfase no dice nada"))
+
+    # **Que coincida con el último registro de adopción.** El instalador deja
+    # constancia de cada actualización; si esa constancia y la declaración no
+    # dicen lo mismo, una de las dos está mal y no se sabe cuál sin mirar.
+    ultima = ultima_adopcion(raiz)
+    if adoptada and ultima and adoptada != ultima:
+        hallazgos.append(Hallazgo(
+            FALLA, "CLAUDE.md", 0,
+            f"el proyecto declara la v{adoptada} y su último registro de "
+            f"adopción dice v{ultima} — una de las dos está mal, y el aviso de "
+            f"desfase se calcula sobre la declarada"))
+
+    motivo = comparar(adoptada, est)
+    if motivo:
+        hallazgos.append(Hallazgo(AVISO, "CLAUDE.md", 0, motivo))
+    return hallazgos
 
 
 def validar_fase(raiz):

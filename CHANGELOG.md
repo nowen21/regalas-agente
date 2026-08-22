@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 32.1.2 — 2026-08-22
+
+**PARCHE** (afina el tono que pide el molde del inventario; no cambia qué se exige).
+
+**Claro no es lo mismo que infantil, y la primera pasada se fue al otro lado.** Al escribir para que cualquiera entienda, las descripciones empezaron a rodear lo que querían decir: «un puñado de reglas que nadie puede saltarse», «las mañas de quien manda», «ni cuando el trabajo es chiquito». Se entendían, pero sonaban a cuento infantil, y un documento que va camino a ser el manual de un producto no puede sonar así.
+
+**El tono queda escrito en el molde:** palabras comunes y frases cortas, sin rodear lo que se quiere decir ni explicar de más. Es el tono con que se le explica algo a un adulto que no es del oficio. Ni jerga ni cuento.
+
+**El detalle.** El molde [`02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md), con el ejemplo corregido, y las 36 filas de [prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md) pasadas otra vez.
+
+---
+
 ## 32.1.1 — 2026-08-22
 
 **PARCHE** (aclara dónde llega una exigencia que ya estaba, y le pone ejemplo; nadie tiene que hacer nada nuevo).

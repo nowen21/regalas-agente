@@ -5,7 +5,9 @@
 > sin fechas, sin estado de trámite, sin contar qué se preguntó y qué se contestó.
 > **La prueba de que quedó bien escrita: un niño la lee y entiende qué hace el producto.**
 > Vale para el documento entero: el nombre del grupo, el nombre de la funcionalidad y su descripción.
-> Si para entender algo hay que saber del proyecto, está escrito para adentro y se rehace
+> Si para entender algo hay que saber del proyecto, está escrito para adentro y se rehace.
+> **Claro no es infantil:** se usan palabras comunes y frases cortas, no se rodea lo que se quiere decir
+> ni se explica de más. Se dice qué hace, en el tono con que se le explica algo a un adulto que no es del oficio
 > ([`00·ID7`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md),
 > [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)).
 > Sin esta lista aprobada por el usuario no se parte el trabajo en bloques
@@ -39,9 +41,9 @@ Con el tiempo esta lista se vuelve el manual del producto. Por eso cada fila se 
 ```
 INCORRECTO: | 1.1 | Núcleo blindado | Las reglas que ningún proyecto, prompt ni
                     instrucción puede relajar |
-CORRECTO:   | 1.1 | Las reglas que no se pueden desobedecer | Un puñado de reglas
-                    que nadie puede saltarse, ni el dueño del proyecto ni quien
-                    le dé órdenes al programa |
+CORRECTO:   | 1.1 | Las reglas que no se pueden desobedecer | Las reglas que
+                    ninguna otra puede contradecir. No las levanta el dueño del
+                    proyecto ni una instrucción dada al asistente |
 ```
 
 **Cuenta:** «cuántas probadas bien, cuántas probadas mal, cuántas sin probar, de cuántas». Así se ve de un vistazo cuánto del producto está demostrado y cuánto es solo palabra.

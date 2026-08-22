@@ -31,6 +31,32 @@ MARCA = u"«enmascarado»"
 # la transcripción tiene que poder seguir entendiendo de qué se hablaba.
 _ASIGNA = secretos._ASIGNA
 
+# **La misma clave, tecleada por una persona.** `secretos._ASIGNA` se escribió
+# para buscar secretos en **código fuente**, donde el valor va entre comillas.
+# En un chat nadie las escribe, y por eso `API_KEY=secreto` pasaba en claro a
+# una transcripción que se versiona. Es el pendiente 84.
+#
+# **Qué cambia respecto del de código, y por qué:** el valor va sin comillas y
+# termina donde termina la palabra. Se exige que **no lleve espacios** —una
+# clave no los lleva— y que mida seis o más, el mismo mínimo del otro. Se
+# suman `token`, `clave` y `contraseña`, que son las que se dicen hablando.
+_CLAVE = (r"pass(?:word|wd)?|secret|api[_-]?key|apikey|access[_-]?key|"
+          r"client[_-]?secret|auth[_-]?token|private[_-]?key|token|clave|"
+          r"contraseña")
+_ASIGNA_SIN_COMILLAS = re.compile(
+    r"(?i)\b(?P<clave>" + _CLAVE + r")\b\s*[:=]>?\s*"
+    r"(?P<valor>[^\s'" + chr(34) + r"`,;)]{6,})")
+
+
+# Un valor sin comillas puede ser una clave o puede ser código pegado en el
+# chat: `clave = h.regla` es lo segundo, y taparlo estropea la transcripción.
+# **Lo que separa a los dos es que un secreto casi siempre trae un número, y
+# si no lo trae es largo.** Medido sobre este repositorio, con esto el único
+# falso positivo que quedaba desaparece.
+def _parece_secreto(valor):
+    v = valor.strip()
+    return any(c.isdigit() for c in v) or len(v) >= 12
+
 
 def _tapar_asignacion(m):
     if not secretos._valor_sospechoso(m.group("valor")):
@@ -70,6 +96,19 @@ def enmascarar(texto):
                     cuantas[0] += 1
                 return nueva
             linea = _ASIGNA.sub(asigna, linea)
+
+            # 3 · La misma clave sin comillas, que es como la teclea una
+            #     persona. Va después de la de comillas a propósito: si la
+            #     línea ya se tapó por aquella, aquí no queda nada que tapar.
+            def asigna_sin_comillas(m):
+                if not _parece_secreto(m.group("valor")):
+                    return m.group(0)
+                nueva = _tapar_asignacion(m)
+                if nueva != m.group(0):
+                    cuantas[0] += 1
+                return nueva
+
+            linea = _ASIGNA_SIN_COMILLAS.sub(asigna_sin_comillas, linea)
 
         salida.append(linea)
     return "".join(salida), cuantas[0]

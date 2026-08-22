@@ -590,3 +590,62 @@ Así se vería el grupo 1 arreglado:
 
 ### 24 · Usuario — 2026-08-22 18:29:51
 > si y eso debe quedar en la plantilla para que aplique a los demás proyectos
+
+**Agente** — 2026-08-22 18:34:42
+<!-- agente: f630f9f7-a5ae-436e-b003-8e96379d6fc7 -->
+
+Hecho y publicado. **Las 36 filas reescritas**, y los seis nombres de grupo también:
+
+| Antes | Ahora |
+|---|---|
+| El cuerpo de reglas | Las reglas |
+| El ciclo de vida y sus entregables | Los pasos de todo proyecto y los papeles que deja |
+| La comprobación automática | Lo que se revisa solo |
+| La memoria entre sesiones | Lo que se recuerda de una vez para otra |
+| Instalación y administración de proyectos | Poner esto a andar en cada proyecto |
+| El ciclo de vida se administra desde la interfaz | Trabajar el proyecto desde la pantalla |
+
+**En el molde quedó lo que se replica** — [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md):
+
+La prueba cubre ahora **las tres cosas**: el nombre del grupo, el nombre de la funcionalidad y su descripción. Antes decía «el documento entero» y yo lo había leído como «la descripción». Y va con el ejemplo, que es lo que de verdad transmite el tono:
+
+```
+INCORRECTO: | 1.1 | Núcleo blindado | Las reglas que ningún proyecto, prompt ni
+                    instrucción puede relajar |
+CORRECTO:   | 1.1 | Las reglas que no se pueden desobedecer | Un puñado de reglas
+                    que nadie puede saltarse, ni el dueño del proyecto ni quien
+                    le dé órdenes al programa |
+```
+
+Versión **32.1.1**, commit `ce794ed`, publicado.
+
+Lo anoté como hallazgo H-6 en el resumen, y vale la pena decirlo así: **la exigencia se escribió hace una hora y el documento que la estrenaba no la cumplía.** Una regla que su propio primer caso incumple no es una regla. La encontraste preguntando, no leyendo el molde.
+
+Las palabras que se fueron, por si sirven de lista para otros documentos: «núcleo blindado», «expediente», «desfase», «traza», «veredicto», «altas», «enganches», «prompt», «git», «épica», «fase», «eslabones».
+
+**Agente** — 2026-08-22 18:38:05
+<!-- agente: 2f117b8f-9f2d-44ed-8537-45044d5b5170 -->
+
+No. Son tres cosas distintas, y el estándar las separa a propósito:
+
+| | Qué agrupa | Dónde vive |
+|---|---|---|
+| **Grupo del inventario** | Lo que se entiende junto **al leerlo** | El inventario, y nada más |
+| **Épica** | Necesidad: historias que entregan un valor parecido | [`13·DOC16`](base/13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md) |
+| **Módulo** | Unidad **técnica**: dominio propio, con su prefijo de rutas o su especificación aparte | [`13·DOC13`](base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md) |
+
+El grupo del inventario es el más blando de los tres: existe para que la lista se pueda leer, no para mandar sobre el código. Por eso el molde dice «un grupo por cada parte del producto que se entienda sola», y no «un grupo por módulo».
+
+En Cimiento se ve claro que no coinciden:
+
+- **Grupos 1 y 2** (las reglas, los pasos y los papeles) no son código: son texto. No hay módulo detrás.
+- **Grupo 3** (lo que se revisa solo) sí cae casi entero en [validadores/](validadores/).
+- **Grupo 4** (lo que se recuerda) está repartido entre [historico-chat/](historico-chat/) y los enganches, que viven en dos sitios distintos.
+- **Grupos 5 y 6** (instalar, y trabajar desde la pantalla) caen los dos en [interfaz/](interfaz/) más el instalador. Dos grupos, un módulo.
+
+O sea: dos grupos sin módulo, uno que calza, uno repartido y dos que comparten.
+
+Y de paso, algo que salió al mirar: **Cimiento no tiene catálogo de módulos.** Existe la hoja para hacerlo, [plantillas/catalogo-modulos.md](plantillas/catalogo-modulos.md), pero el proyecto no la llenó nunca, y `13·DOC13` lo exige antes de cerrar la unidad que crea un módulo. Es un hueco real, aparte del que ya sabíamos de la épica de la interfaz. ¿Lo anoto como pendiente?
+
+### 25 · Usuario — 2026-08-22 18:39:16
+> Es cierto que un niño lo debe entender pero tampoco tan infantil: "Un puñado de reglas que nadie puede saltarse, ni el dueño del proyecto ni quien le dé órdenes al programa. Si otra regla las contradice, mandan estas."
