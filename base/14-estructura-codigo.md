@@ -1,5 +1,7 @@
 # 14 · Estructura del código y nomenclatura  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-027](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-027-el-capitulo-14-estructura-del-codigo-y-nomenclatura/HU-027-el-capitulo-14-estructura-del-codigo-y-nomenclatura.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Dónde vive cada archivo y cómo se nombra, para que cualquiera lo encuentre donde espera. La capa 3 declara los nombres concretos (namespaces, prefijos, convenciones del lenguaje).
 
 ---

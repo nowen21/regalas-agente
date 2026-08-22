@@ -1,5 +1,7 @@
 # 13 · Documentación  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-026](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-026-el-capitulo-13-documentacion/HU-026-el-capitulo-13-documentacion.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 El chat se pierde y el contexto se comprime; los archivos quedan. Documentar es parte del entregable. La capa 3 declara ubicación, nombres y estructura.
 
 Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-local-de-md.md`](render-local-de-md.md) no es regla: es el montaje opcional que hace que un enlace `.md` se abra formateado en el navegador local.

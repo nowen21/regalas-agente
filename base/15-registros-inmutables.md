@@ -1,5 +1,7 @@
 # 15 · Registros inmutables (patrón opt-in)  ·  `[CAPA 2 · opt-in]`
 
+> **Historia dueña del texto:** [EP-001 HU-028](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-028-el-capitulo-15-registros-inmutables-patron-opt-in/HU-028-el-capitulo-15-registros-inmutables-patron-opt-in.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 **Opt-in.** Para registros cuyo hecho ya se materializó y tiene valor legal/contable/de auditoría: **no se editan ni se borran, se anulan con trazabilidad**. La capa 3 lo **activa** y dice a qué entidades aplica (documentos contables, transacciones, actas, comprobantes).
 
 ---

@@ -1,5 +1,7 @@
 # 19 · Observabilidad y operación  ·  `[CAPA 2 · opt-in]`
 
+> **Historia dueña del texto:** [EP-001 HU-032](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-032-el-capitulo-19-observabilidad-y-operacion/HU-032-el-capitulo-19-observabilidad-y-operacion.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 **Opt-in.** Reglas agnósticas para que un sistema desplegado se pueda **entender desde afuera** cuando algo va mal, sin adivinar. Aplican a proyectos que corren en producción; complementan `18` (despliegue). El agente **construye** la instrumentación y los documentos de operación (logs, métricas, alertas, runbooks, postmortem); **no opera** el sistema vivo. La herramienta concreta (stack de logs, métricas, tracing) la declara la capa 3. Extiende `05` (errores y logging).
 
 ---

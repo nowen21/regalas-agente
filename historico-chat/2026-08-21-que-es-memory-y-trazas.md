@@ -1276,3 +1276,35 @@ El inventario queda **en revisión tuya**, como manda `F26`: 22 ítems existente
 
 ### 64 · Usuario — 2026-08-22 05:04:35
 > si y siga
+
+**Agente** — 2026-08-22 05:05:26
+<!-- agente: 309e6430-6828-44f2-8192-028badd0c5ad -->
+
+Publicado: commit `94c8077` en `main`, push en verde (**30.6.1**).
+
+Sigo con el **60** y es una sola letra tuya la que me falta — cómo se reparten los 19 capítulos de `base/` que no tienen historia que los escriba:
+
+- **(a)** una historia nueva por capítulo: 19 historias, simétrico, mucho papel;
+- **(b)** una historia por tema agrupando capítulos: menos papel, pero hay que decidir qué capítulos van juntos;
+- **(c)** el módulo declarado en la historia es el *criterio* y el enlace capítulo → historia lo resuelve el catálogo por programa, como hoy regla → historia: sin historias vacías. **Recomendada.**
+
+¿a, b o c?
+
+### 65 · Usuario — 2026-08-22 05:18:06
+> a
+
+**Agente** — 2026-08-22 05:25:34
+<!-- agente: fc504ae8-1e42-4de1-ac18-60d1da54c14a -->
+
+Opción **(a)**: una historia por capítulo. Miro los capítulos sin dueña y cómo dejó el andamio la fila de HU-014 en la épica (para llenar las filas nuevas bien):
+
+El heredoc se atoró en el shell por el tamaño y las comillas. Paso el programa a un archivo del scratchpad y lo ejecuto desde ahí:
+
+El **60** cerró (**v30.7.0**): nacieron las 21 historias HU-015 a HU-035 en EP-001, una por capítulo del `02` al `22`, cada una dueña del texto de su capítulo con dos criterios (el capítulo la nombra; un cambio del capítulo tiene dónde bajarse), y los **23 capítulos de `base/`** declaran ahora en su cabecera «Historia dueña del texto». Con el 47, el 56 y el 60 cerrados, Cimiento ya puede recorrer su propia cadena de arriba abajo. Las 21 fases de retrodocumentación quedan por ejecutar y el inventario de HU las cuenta como incompletas (101 HU: 49 completas, 52 incompletas), que es lo correcto.
+
+Verificado: `estandar` 0 fallas, versionado en verde, trinquete limpio (atajó 23 puntos medios míos en las cabeceras; quitados). Las 27 fallas de `metareglas` son la deuda previa del 19, sin cambios.
+
+¿Autorizas commit y push? Y para seguir, el **19** son cuatro síes o noes: (1) ¿se parten las 26 reglas de la lista? (2) ¿se tocan las tres blindadas `N1`/`N4`/`N6`? (3) ¿`D7` y `F12` van a anexo en vez de partirse? (4) ¿se derogan `04·S7` y `12·PR3`? Mi recomendación: sí, sí, sí, sí.
+
+### 66 · Usuario — 2026-08-22 05:31:19
+> s

@@ -1,5 +1,7 @@
 # 08 · Estrategia de pruebas  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-021](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-021-el-capitulo-08-estrategia-de-pruebas/HU-021-el-capitulo-08-estrategia-de-pruebas.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Las pruebas permiten cambiar el código sin miedo y prueban que la especificación se cumplió. La capa 3 declara framework, entorno y comandos.
 
 ---

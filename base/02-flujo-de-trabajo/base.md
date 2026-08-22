@@ -1,5 +1,7 @@
 # 02 · Flujo de trabajo  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-015](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-015-el-capitulo-02-flujo-de-trabajo/HU-015-el-capitulo-02-flujo-de-trabajo.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Cómo trabaja el agente: de la solicitud a la tarea terminada. La capa 3 define dónde viven los documentos y cómo se corren las pruebas.
 
 **Una regla, un archivo.** Cada regla vive en su propio archivo dentro de [`reglas/`](reglas/), con el nombre `<PREFIJO><n>-<título>`. El prefijo del capítulo es **`F`** y es exclusivo suyo ([`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)); el molde de cada regla es el de [`20·M5`](../20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md). En el archivo de la regla queda **solo la exigencia**; lo que la desarrolla, la ilustra o la justifica está aquí abajo, en [§ Detalle de cada regla](#detalle-de-cada-regla).

@@ -1,5 +1,7 @@
 # 07 · Calidad de código  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-020](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-020-el-capitulo-07-calidad-de-codigo/HU-020-el-capitulo-07-calidad-de-codigo.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 El código se lee más veces de las que se escribe: optimiza para el lector. La capa 3 declara linter, formateador y estilo.
 
 ---

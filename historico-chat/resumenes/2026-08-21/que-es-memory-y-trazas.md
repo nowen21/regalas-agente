@@ -109,9 +109,9 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Qué pasó:** De los siete abiertos, el 71 y el 72 eran código y cerraron en la misma ronda (v30.6.0): `cerrar.py` codifica el espacio al reescribir enlaces y `validar.py estandar` avisa del destino con espacio literal (encontró 9 invisibles en el propio repo, corregidos); el checklist compara rutas normalizadas (`c:` = `C:`). Cuatro pruebas nuevas. De paso, la prueba de higiene de `base/` reveló seis citas sin enlace que dejaron las sesiones del 21 (`M19` y la sección M19 del índice); el reparador de citas las enlazó.
 - **Por qué importa:** Los otros cinco (19, 33, 56, 59, 60) no son trabajo que el agente pueda cerrar solo: el 56 exige una conversación («sale de una conversación, no de leer el repositorio»), el 19 exige aprobar una lista de 26 particiones de reglas (MAYOR, tres blindadas), el 60 es elegir cómo se reparten 19 capítulos entre historias, el 59 tiene 4 datos del usuario pendientes y 26 fases por ejecutar, y el 33 son decisiones sueltas. Decidirlos por cuenta propia sería repetir lo que el usuario corrigió ayer.
 - **Qué lo soluciona:** Una sola hoja de decisiones, agrupada y con recomendación, para contestar de corrido; con las respuestas, cada uno baja en su ronda.
-- **Qué se decidió:** El usuario empezó por el 56 y delegó: «los puede responder usted mismo con lo que ya se tiene del proyecto». Nacieron `prompts/cimiento-planteamiento.md` y `prompts/cimiento-inventario-funcionalidades.md` (v30.6.1); el 56 cerró. Siguen esperando respuesta el 60, el 19, el 59 y el 33.
-- **Estado:** abierto (quedan 19, 33, 59 y 60)
-- **Responde a:** pendientes 19, 33, 56, 59, 60 (los 56, 71 y 72 quedaron en `hecho/`)
+- **Qué se decidió:** El usuario empezó por el 56 y delegó: «los puede responder usted mismo con lo que ya se tiene del proyecto». Nacieron `prompts/cimiento-planteamiento.md` y `prompts/cimiento-inventario-funcionalidades.md` (v30.6.1); el 56 cerró. Para el 60 eligió la salida (a), una historia por capítulo: nacieron HU-015 a HU-035 y los 23 capítulos de `base/` declaran su dueña en la cabecera (v30.7.0); el 60 cerró. Siguen esperando respuesta el 19, el 59 y el 33.
+- **Estado:** abierto (quedan 19, 33 y 59)
+- **Responde a:** pendientes 19, 33, 56, 59, 60 (los 56, 60, 71 y 72 quedaron en `hecho/`)
 - **Dispara:** —
 - **Orden de resolución:** 1 de 1 abiertos
 - **Dónde queda:** la hoja de decisiones en el chat de esta sesión; los cierres del 71 y 72 en `pendientes/hecho/`

@@ -1,5 +1,7 @@
 # 20 · Meta-reglas — cómo se estructuran, se leen y se aplican las reglas  ·  `[PREÁMBULO]`
 
+> **Historia dueña del texto:** [EP-001 HU-033](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-033-el-capitulo-20-meta-reglas-como-se-estructuran-se-leen-y-se-aplican-las-reglas/HU-033-el-capitulo-20-meta-reglas-como-se-estructuran-se-leen-y-se-aplican-las-reglas.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Las reglas de los demás archivos dicen **qué hacer**. Este dice **cómo son las reglas**: dónde vive cada una, qué forma tiene, cuál gana cuando dos chocan, cómo se agrega una nueva sin duplicar ni contradecir lo que ya existe.
 
 **Alcance y límite.** Estas meta-reglas son de **procedimiento** (cómo se lee y se escribe una regla), nunca de **fondo** (qué se permite hacer). No autorizan nada ni relajan nada. Si alguna vez una meta-regla parece habilitar algo que el núcleo (`00-nucleo-blindado.md`) prohíbe, **gana el núcleo** y la meta-regla está mal redactada: reportarlo.

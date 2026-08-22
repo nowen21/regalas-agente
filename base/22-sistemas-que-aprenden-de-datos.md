@@ -1,5 +1,7 @@
 # 22 · Sistemas que aprenden de datos  ·  `[CAPA 2 · opt-in]`
 
+> **Historia dueña del texto:** [EP-001 HU-035](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 **Opt-in.** Reglas agnósticas para construir un producto donde **un modelo estadístico decide o sugiere algo**: el que se entrena con datos propios, el que llama al modelo de un tercero, o el que deja que una respuesta automática entre al flujo del negocio. Aplican a esos proyectos; el resto las omite.
 
 **El agente construye el sistema, no responde por sus decisiones.** Produce el diseño, la ficha del modelo, las mediciones y sus pruebas; **quién autoriza que decida sobre alguien es del humano** ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)). Qué modelo y dónde corre lo declara la capa 3 (`.agente/stack.md`).

@@ -1,5 +1,7 @@
 # 01 · Conducta del agente  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Cómo se porta el agente en toda tarea. Reglas base; la capa de proyecto ajusta detalles, nunca el núcleo (`00`).
 
 ---
@@ -880,7 +882,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**El orden de búsqueda se recortó del cuerpo y no se perdió**, que es lo que la fila 10 pide cuando algo no cabe: la regla nombra los cinco sitios en una línea, y el porqué de ese orden —de lo más específico a lo más general, y parar en cuanto se encuentre— vive en la historia que la origina, [EP-001 · HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). El cuerpo pasó de 368 a 271 caracteres, y volvió a 311 al cubrir el tercer criterio de la historia —mostrar la contradicción— que la primera redacción se había dejado. **Ese hueco lo destapó el plan de pruebas, no la lectura:** su caso `CP-001` decía «este es el que hay que mirar con cuidado» antes de mirarlo.
+**El orden de búsqueda se recortó del cuerpo y no se perdió**, que es lo que la fila 10 pide cuando algo no cabe: la regla nombra los cinco sitios en una línea, y el porqué de ese orden —de lo más específico a lo más general, y parar en cuanto se encuentre— vive en la historia que la origina, [EP-001 HU-011](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md). El cuerpo pasó de 368 a 271 caracteres, y volvió a 311 al cubrir el tercer criterio de la historia —mostrar la contradicción— que la primera redacción se había dejado. **Ese hueco lo destapó el plan de pruebas, no la lectura:** su caso `CP-001` decía «este es el que hay que mirar con cuidado» antes de mirarlo.
 
 La fila **2** se buscó por concepto y se leyó el capítulo entero. [`C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta) dice que se pregunte cuando hay dos lecturas posibles, y [`C21`](01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar) que se pida el dato que falta: **las dos dan por hecho que el dato no está**. Ninguna dice que haya que mirar antes. Por eso esta **extiende** a `C7` en vez de repetirla: agrega el paso previo.
 

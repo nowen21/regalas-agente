@@ -261,7 +261,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 60 | **P3** | [Ninguna historia es dueña del texto del capítulo `02`](60-nadie-es-dueno-del-texto-del-capitulo-02.md) | Se fue a agregarle una frase a `02·F23` y no hubo dónde bajarla: ninguna HU declara el capítulo `02` como su módulo. El capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— se ha venido cambiando sin cadena. |
+| ~~60~~ | — | **hecho** → [Ninguna historia es dueña del texto del capítulo `02`](hecho/cada-capitulo-tiene-su-historia.md) | Se fue a agregarle una frase a `02·F23` y no hubo dónde bajarla: ninguna HU declara el capítulo `02` como su módulo. El capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— se ha venido cambiando sin cadena. |
 
 **Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](hecho/el-estandar-tiene-su-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
 

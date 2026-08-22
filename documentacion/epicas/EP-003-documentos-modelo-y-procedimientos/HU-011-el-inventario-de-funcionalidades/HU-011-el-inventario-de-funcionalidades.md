@@ -126,7 +126,7 @@ Y si ninguna lo exigía, la brecha queda cerrada por la regla del CA-02 o propue
 | Dependencia | El caso semilla de `shopnest-mesa` como material del molde | Medio |
 | Dependencia | HU-002 de esta épica (modelos del encargo): el inventario acompaña a la propuesta que aquella moldea | Medio |
 | Riesgo | Que la regla se lea como burocracia para proyectos chicos | El molde escala: en uno chico el inventario es una tabla de diez filas; la puerta es la aprobación, no el tamaño |
-| Riesgo | Que el capítulo `02` no tenga dueño claro para la regla ([pendiente 60](../../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md)) | Esta HU la respalda como CA-02, que es exactamente el remedio que el 60 pide historia por historia |
+| Riesgo | Que el capítulo `02` no tenga dueño claro para la regla ([pendiente 60](../../../../pendientes/hecho/cada-capitulo-tiene-su-historia.md)) | Esta HU la respalda como CA-02, que es exactamente el remedio que el 60 pide historia por historia |
 
 ## 9. Definition of Ready
 

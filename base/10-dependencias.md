@@ -1,5 +1,7 @@
 # 10 · Dependencias de terceros  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-023](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-023-el-capitulo-10-dependencias-de-terceros/HU-023-el-capitulo-10-dependencias-de-terceros.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Cada dependencia es código ajeno que heredas: sus bugs, vulnerabilidades, mantenimiento y licencia. La capa 3 declara el gestor de paquetes y las herramientas de auditoría.
 
 ---

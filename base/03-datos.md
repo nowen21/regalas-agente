@@ -1,5 +1,7 @@
 # 03 · Datos y persistencia  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-016](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-016-el-capitulo-03-datos-y-persistencia/HU-016-el-capitulo-03-datos-y-persistencia.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Diseño y cambio del almacenamiento: esquema, migraciones, catálogos. La capa 3 declara los nombres concretos (motor, prefijos, tabla de catálogo, trait de auditoría).
 
 ---

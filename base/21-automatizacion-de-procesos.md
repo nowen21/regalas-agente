@@ -1,5 +1,7 @@
 # 21 · Automatización de procesos  ·  `[CAPA 2 · opt-in]`
 
+> **Historia dueña del texto:** [EP-001 HU-034](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-034-el-capitulo-21-automatizacion-de-procesos/HU-034-el-capitulo-21-automatizacion-de-procesos.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 **Opt-in.** Reglas agnósticas para construir un **proceso que corre solo contra sistemas que no se pueden cambiar** — el que opera aplicaciones por su interfaz porque no ofrecen otra puerta. Aplican a proyectos que automatizan trabajo humano repetitivo; el resto las omite.
 
 **El agente construye el proceso, no lo ejecuta.** Produce el diseño, la configuración, la ficha del proceso y sus pruebas; **quien lo corre es el motor de automatización**, y quién lo lanza en producción lo decide el humano ([`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada), [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)). El motor concreto lo declara la capa 3 (`.agente/stack.md`).

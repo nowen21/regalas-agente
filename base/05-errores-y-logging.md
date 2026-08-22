@@ -1,5 +1,7 @@
 # 05 · Manejo de errores y logging  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-018](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-018-el-capitulo-05-manejo-de-errores-y-logging/HU-018-el-capitulo-05-manejo-de-errores-y-logging.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Cómo tratar fallos y qué registrar, sin filtrar información ni ocultar problemas. La capa 3 declara el framework de logging y los destinos.
 
 ---

@@ -145,7 +145,28 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-011](HU-011-buscar-antes-de-preguntar/HU-011-buscar-antes-de-preguntar.md) | Buscar en el repositorio antes de preguntar | Must | S |
 | [HU-012](HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md) | Inventario de las acciones del agente y su riesgo | Must | M |
 | [HU-013](HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) | Capítulos opt-in de dominio | Could | L |
-| [HU-014](HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) | «Título» | «Prioridad» | «Estimación» |
+| [HU-014](HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) | La guía de entrada del estándar | Should | S |
+| [HU-015](HU-015-el-capitulo-02-flujo-de-trabajo/HU-015-el-capitulo-02-flujo-de-trabajo.md) | El capítulo `02` · Flujo de trabajo: su texto tiene dueña | Should | S |
+| [HU-016](HU-016-el-capitulo-03-datos-y-persistencia/HU-016-el-capitulo-03-datos-y-persistencia.md) | El capítulo `03` · Datos y persistencia: su texto tiene dueña | Should | S |
+| [HU-017](HU-017-el-capitulo-04-seguridad-de-la-aplicacion/HU-017-el-capitulo-04-seguridad-de-la-aplicacion.md) | El capítulo `04` · Seguridad de la aplicación: su texto tiene dueña | Should | S |
+| [HU-018](HU-018-el-capitulo-05-manejo-de-errores-y-logging/HU-018-el-capitulo-05-manejo-de-errores-y-logging.md) | El capítulo `05` · Manejo de errores y logging: su texto tiene dueña | Should | S |
+| [HU-019](HU-019-el-capitulo-06-rendimiento-y-eficiencia/HU-019-el-capitulo-06-rendimiento-y-eficiencia.md) | El capítulo `06` · Rendimiento y eficiencia: su texto tiene dueña | Should | S |
+| [HU-020](HU-020-el-capitulo-07-calidad-de-codigo/HU-020-el-capitulo-07-calidad-de-codigo.md) | El capítulo `07` · Calidad de código: su texto tiene dueña | Should | S |
+| [HU-021](HU-021-el-capitulo-08-estrategia-de-pruebas/HU-021-el-capitulo-08-estrategia-de-pruebas.md) | El capítulo `08` · Estrategia de pruebas: su texto tiene dueña | Should | S |
+| [HU-022](HU-022-el-capitulo-09-control-de-versiones/HU-022-el-capitulo-09-control-de-versiones.md) | El capítulo `09` · Control de versiones: su texto tiene dueña | Should | S |
+| [HU-023](HU-023-el-capitulo-10-dependencias-de-terceros/HU-023-el-capitulo-10-dependencias-de-terceros.md) | El capítulo `10` · Dependencias de terceros: su texto tiene dueña | Should | S |
+| [HU-024](HU-024-el-capitulo-11-configuracion-y-entornos/HU-024-el-capitulo-11-configuracion-y-entornos.md) | El capítulo `11` · Configuración y entornos: su texto tiene dueña | Should | S |
+| [HU-025](HU-025-el-capitulo-12-privacidad-y-datos-personales/HU-025-el-capitulo-12-privacidad-y-datos-personales.md) | El capítulo `12` · Privacidad y datos personales: su texto tiene dueña | Should | S |
+| [HU-026](HU-026-el-capitulo-13-documentacion/HU-026-el-capitulo-13-documentacion.md) | El capítulo `13` · Documentación: su texto tiene dueña | Should | S |
+| [HU-027](HU-027-el-capitulo-14-estructura-del-codigo-y-nomenclatura/HU-027-el-capitulo-14-estructura-del-codigo-y-nomenclatura.md) | El capítulo `14` · Estructura del código y nomenclatura: su texto tiene dueña | Should | S |
+| [HU-028](HU-028-el-capitulo-15-registros-inmutables-patron-opt-in/HU-028-el-capitulo-15-registros-inmutables-patron-opt-in.md) | El capítulo `15` · Registros inmutables (patrón opt-in): su texto tiene dueña | Should | S |
+| [HU-029](HU-029-el-capitulo-16-cumplimiento-y-calidad/HU-029-el-capitulo-16-cumplimiento-y-calidad.md) | El capítulo `16` · Cumplimiento y calidad: su texto tiene dueña | Should | S |
+| [HU-030](HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario/HU-030-el-capitulo-17-interfaz-y-experiencia-de-usuario.md) | El capítulo `17` · Interfaz y experiencia de usuario: su texto tiene dueña | Should | S |
+| [HU-031](HU-031-el-capitulo-18-despliegue-e-infraestructura/HU-031-el-capitulo-18-despliegue-e-infraestructura.md) | El capítulo `18` · Despliegue e infraestructura: su texto tiene dueña | Should | S |
+| [HU-032](HU-032-el-capitulo-19-observabilidad-y-operacion/HU-032-el-capitulo-19-observabilidad-y-operacion.md) | El capítulo `19` · Observabilidad y operación: su texto tiene dueña | Should | S |
+| [HU-033](HU-033-el-capitulo-20-meta-reglas-como-se-estructuran-se-leen-y-se-aplican-las-reglas/HU-033-el-capitulo-20-meta-reglas-como-se-estructuran-se-leen-y-se-aplican-las-reglas.md) | El capítulo `20` · Meta-reglas — cómo se estructuran, se leen y se aplican las reglas: su texto tiene dueña | Should | S |
+| [HU-034](HU-034-el-capitulo-21-automatizacion-de-procesos/HU-034-el-capitulo-21-automatizacion-de-procesos.md) | El capítulo `21` · Automatización de procesos: su texto tiene dueña | Should | S |
+| [HU-035](HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos.md) | El capítulo `22` · Sistemas que aprenden de datos: su texto tiene dueña | Should | S |
 
 Sin estimar en puntos todavía.
 

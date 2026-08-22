@@ -1,5 +1,7 @@
 # 09 · Control de versiones  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-022](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-022-el-capitulo-09-control-de-versiones/HU-022-el-capitulo-09-control-de-versiones.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 El mínimo está en [`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada): **commit** y **push** solo bajo pedido explícito, autorización de un solo uso. Aquí, cómo hacerlo bien cuando toca.
 
 ---

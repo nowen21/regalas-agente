@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.7.0 — 2026-08-22
+
+**MENOR** (cada capítulo de `base/` gana una línea que dice quién es dueño de su texto; ninguna regla cambia de exigencia).
+
+**Cada capítulo del estándar tiene ahora una historia de usuario que escribe su texto.** Hasta hoy, diecinueve de los veintiún capítulos medidos no tenían ninguna: el cuerpo de reglas se había escrito sin recorrer la cadena que él mismo exige, y a la pregunta «¿de dónde salió esta regla?» la respuesta era «de que a alguien le pareció». El usuario eligió una historia por capítulo, y nacieron veintiuna (del `02` al `22`); el `00` y el `01` ya tenían la suya. Cada capítulo lo declara en su cabecera, para que se lea desde el capítulo mismo.
+
+**El detalle.** Pendiente [60](pendientes/hecho/cada-capitulo-tiene-su-historia.md). Nacen HU-015 a HU-035 en [EP-001](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/epica.md), cada una dueña del texto de su capítulo con dos criterios: el capítulo la nombra, y un cambio del capítulo tiene dónde bajarse (`02·F23`). Los 23 archivos de cabecera de `base/` llevan la línea «Historia dueña del texto». Las fases de retrodocumentación de cada capítulo quedan por ejecutar y el inventario de HU las cuenta como incompletas, que es lo correcto. Es el mismo hueco que el 47 tenía un piso más abajo y el 56 en la cabeza de la cadena; con los tres cerrados, Cimiento ya puede recorrer su propia cadena de arriba abajo.
+
 ## 30.6.1 — 2026-08-22
 
 **PARCHE** (documentación del propio estándar; nada cambia en lo que se exige).

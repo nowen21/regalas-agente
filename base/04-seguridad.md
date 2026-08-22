@@ -1,5 +1,7 @@
 # 04 · Seguridad de la aplicación  ·  `[CAPA 2]`
 
+> **Historia dueña del texto:** [EP-001 HU-017](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-017-el-capitulo-04-seguridad-de-la-aplicacion/HU-017-el-capitulo-04-seguridad-de-la-aplicacion.md). Todo cambio de este capítulo baja por ella (`02·F23`).
+
 Seguridad más allá de los archivos. El núcleo (`00`) blinda los mínimos; aquí el detalle. La capa 3 declara los mecanismos concretos (permisos, plantillas, almacenamiento).
 
 ---

@@ -67,4 +67,4 @@ Este pendiente está enrutado a [EP-001 · HU-007](../../documentacion/epicas/EP
 1. **Un criterio nuevo en `HU-007`.** Cambia la historia, que ya tiene una fase cerrada contra los tres actuales.
 2. **Una historia propia.** Más limpio, y deja `HU-007` como está.
 
-> **Es el mismo hueco del [pendiente 60](../60-nadie-es-dueno-del-texto-del-capitulo-02.md), un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Enrutar un pendiente a una historia no lo deja construible: hay que mirar si algún criterio lo cubre.
+> **Es el mismo hueco del [pendiente 60](cada-capitulo-tiene-su-historia.md), un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Enrutar un pendiente a una historia no lo deja construible: hay que mirar si algún criterio lo cubre.

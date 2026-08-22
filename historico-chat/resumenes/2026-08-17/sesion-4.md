@@ -85,7 +85,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 **Por qué importa.** El `02` es el capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— y el más citado del repositorio. Si ningún sitio lo recibe, **todo cambio del `02` se ha venido haciendo sin cadena, incluida la regla que exige la cadena**. `F22` y `F23` nacieron en agosto y ninguna tuvo historia propia.
 
-**Dónde queda.** El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md): los tres son el mismo hueco a distinta altura.
+**Dónde queda.** El [pendiente 60](../../../pendientes/hecho/cada-capitulo-tiene-su-historia.md), enrutado a `EP-001 · HU-007`. Es hermano del [47](../../../pendientes/hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md): los tres son el mismo hueco a distinta altura.
 
 ### H-9 · Dos sesiones sobre el mismo árbol, y una falla que no es de nadie de acá
 
@@ -548,7 +548,7 @@ Y dos que lo dicen en el título: `04·S5` —*«CSRF, sesiones y transporte»*�
 
 ### H-45 · Diecinueve de los veintiún capítulos de `base/` no tienen historia que los escriba
 
-El [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md) decía que ninguna historia declara el capítulo `02` como su módulo, y que la salida correcta *«empieza por medir»* si les pasa lo mismo a los demás. Se midió el campo **Módulo** de las 74 historias:
+El [pendiente 60](../../../pendientes/hecho/cada-capitulo-tiene-su-historia.md) decía que ninguna historia declara el capítulo `02` como su módulo, y que la salida correcta *«empieza por medir»* si les pasa lo mismo a los demás. Se midió el campo **Módulo** de las 74 historias:
 
 | Capítulo | Historia que lo escribe |
 |---|---|
@@ -604,7 +604,7 @@ El punto 2 del 33 —el barrido de candidatas a regla, sin disparador— y el [p
 
 > **No falta una fase: falta un criterio.** Por [`02·F19`](../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) la redacción del CA **es** la especificación, así que construir fuera de ella es lo que `F20` manda proponer, no hacer.
 
-**Es el hueco del [pendiente 60](../../../pendientes/60-nadie-es-dueno-del-texto-del-capitulo-02.md) un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Y deja una lección para el enrutamiento que se hizo ayer: **enrutar un pendiente a una historia no lo deja construible** — hay que mirar si algún criterio lo cubre, y eso no se hizo.
+**Es el hueco del [pendiente 60](../../../pendientes/hecho/cada-capitulo-tiene-su-historia.md) un piso más abajo.** Allá ningún capítulo tiene historia que lo escriba; acá la historia existe y **sus criterios no llegan**. Y deja una lección para el enrutamiento que se hizo ayer: **enrutar un pendiente a una historia no lo deja construible** — hay que mirar si algún criterio lo cubre, y eso no se hizo.
 
 ---
 
