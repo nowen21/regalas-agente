@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
+| **Estado** | En implementación. CA-04 cerrado en la fase A; el CA-05, abierto en la fase B |
 
 ---
 
@@ -43,6 +43,8 @@ Aquí entra también lo que el estándar exige del contenido de un plan y que se
 | RN-04 | El plan de una fase declara la especificación que lo respalda, y esa especificación existe |
 | RN-05 | El plan responde las preguntas obligatorias y no deja marcas de duda sin resolver |
 | RN-06 | Toda tarea del plan cuelga de un criterio de aceptación, salvo la que se declara como soporte técnico |
+| RN-07 | El texto fijo que la plantilla pone antes de su primer separador sobrevive al llenado: es instrucción de uso, no relleno |
+| RN-08 | Lo que se le exige a ese texto sale de la plantilla, no del programa: si la plantilla cita reglas ahí, el documento tiene que citar alguna |
 
 ### 3.2 Supuestos
 
@@ -122,6 +124,23 @@ Entonces se reporta como falla, con la línea y el texto de la regla
 
 > **Es falla y no aviso.** Una regla sin procedencia ya se coló hasta un criterio de aceptación en un proyecto real. Lo que avisa, se ignora.
 
+### CA-05 — El texto fijo de la plantilla sobrevive al llenado
+
+```gherkin
+Dado un documento que salió de una plantilla con texto fijo antes del primer separador
+Cuando se comprueba contra su plantilla
+Entonces se reprueba si ese texto se borró o se reemplazó por otro contenido
+Y se reprueba si la plantilla cita reglas ahí y el documento no cita ninguna
+```
+
+**Cómo validarlo:**
+
+1. Tomar un planteamiento llenado y correr la comprobación contra su plantilla. Resultado esperado: pasa.
+2. Borrarle el texto fijo y volver a correrla. Resultado esperado: falla, nombrando el archivo y diciendo qué había ahí.
+3. Reemplazar ese texto por un párrafo que hable del documento en vez de instruir sobre él, sin citar ninguna regla. Resultado esperado: falla.
+4. Correr la comprobación sobre un documento cuya plantilla no cita reglas en ese lugar, como un plan de trabajo. Resultado esperado: no se le exige cita, y pasa.
+- **Aprobado cuando:** el caso que ya ocurrió, sustituir el encuadre por una nota de procedencia, deja de pasar en silencio, y ningún documento de otra plantilla se reprueba por esto.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un documento vacío, uno sin encabezados y uno que no salió de ninguna plantilla tienen comportamiento definido.
@@ -166,6 +185,7 @@ Entonces se reporta como falla, con la línea y el texto de la regla
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen](A-EP-004-HU-004-la-regla-de-negocio-declara-su-origen/README.md) | CA-04 | Cerrada 2026-08-16 (v22.1.0) |
+| [B-EP-004-HU-004-el-encuadre-de-la-plantilla-sobrevive-al-llenado](B-EP-004-HU-004-el-encuadre-de-la-plantilla-sobrevive-al-llenado/plan_trabajo.md) | CA-05 | Abierta 2026-08-22. Sale del [pendiente 77](../../../../pendientes/77-el-planteamiento-conserva-su-encuadre.md) |
 
 **Los tres primeros criterios no tienen fase:** las comprobaciones que los cumplen se escribieron antes de que la épica se descompusiera.
 

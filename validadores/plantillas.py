@@ -6,11 +6,16 @@ La plantilla es la fuente de verdad: NADA se codifica aquí. El validador abre
 `plantillas/X.md`, ve qué secciones y qué marcadores tiene, y compara. Si la
 plantilla cambia, el validador cambia con ella sin tocar este archivo.
 
-Tres comprobaciones:
+Cinco comprobaciones:
   1. Marcadores sin llenar    — FALLA. Quedó texto textual de la plantilla.
   2. Notas de plantilla       — AVISO. Las instrucciones `>` no se borraron.
   3. Secciones ausentes       — AVISO. Las plantillas permiten borrar lo que no
                                 aplica, así que no se puede afirmar que falte.
+  4. Reglas sin origen        — FALLA, solo en la especificación de módulo.
+  5. El bloque fijo perdido   — FALLA. La plantilla pone un texto antes de su
+                                primer separador que no es instrucción para
+                                borrar sino instrucción de uso, y el documento
+                                lo borró o lo reemplazó por otra cosa.
 """
 import os
 import re
@@ -136,6 +141,42 @@ def reglas_sin_origen(texto, plantilla_texto=""):
     return sin_origen
 
 
+# Una cita de regla con su capítulo: `02·F4`, `13·DOC15`, `00·ID8`. Es lo que
+# distingue un encuadre que instruye de un párrafo que habla del documento.
+_CITA_DE_REGLA = re.compile(r"\d{2}·[A-ZÁÉÍÓÚÑ]{1,4}\d+")
+
+# Donde termina la cabecera de un documento: el primer separador, o el primer
+# encabezado de sección si no hay separador.
+_FIN_DE_CABECERA = re.compile(r"^(?:-{3,}\s*|##\s+.*)$")
+
+
+def bloque_fijo(texto):
+    """El texto que la plantilla pone antes de su primer separador: `[(línea, texto)]`.
+
+    **No es el recuadro que se borra.** El recuadro son líneas de cita `>` y
+    dice cómo llenar el documento; esto es lo que queda debajo, en prosa, y
+    dice **cómo se usa** el documento ya llenado. En el molde del planteamiento
+    es el encuadre que le recuerda al agente que eso es insumo y no una orden
+    de entregar código.
+
+    Se identifica **por posición y no por su etiqueta**. La etiqueta cambia:
+    se llamó «Encuadre para el agente» y hoy se llama de otra forma. Un
+    validador atado a una redacción reprueba lo que está bien la primera vez
+    que alguien corrige el molde, y eso enseña a ignorar los veredictos.
+    """
+    salida = []
+    for n, linea in lineas_utiles(texto):
+        recortada = linea.strip()
+        if not recortada:
+            continue
+        if _FIN_DE_CABECERA.match(recortada):
+            break
+        if recortada.startswith(("#", ">")):
+            continue
+        salida.append((n, recortada))
+    return salida
+
+
 def validar(ruta_documento, ruta_plantilla):
     documento = leer(ruta_documento)
     plantilla = leer(ruta_plantilla)
@@ -198,6 +239,36 @@ def validar(ruta_documento, ruta_plantilla):
                 f"— falta el identificador del requisito, la historia o la "
                 f"decisión; si no lo tiene, la regla se sube a la historia "
                 f"que corresponda y baja desde allá"))
+
+    # 5. El bloque fijo de la plantilla, perdido al llenar el documento.
+    #
+    #    Ya pasó: el planteamiento de este repositorio se escribió con una nota
+    #    de procedencia —fecha, fuentes, el pendiente que cerraba— en el lugar
+    #    del encuadre, y el encuadre desapareció. Nadie lo notó hasta que se
+    #    preguntó qué aportaba ese párrafo.
+    #
+    #    **Lo que se exige sale de la plantilla, no de acá.** Si la plantilla no
+    #    tiene bloque fijo, no se pide ninguno; si lo tiene pero no cita reglas
+    #    —el plan de trabajo es así—, tampoco se le piden citas al documento.
+    fijo_plantilla = bloque_fijo(plantilla)
+    if fijo_plantilla:
+        fijo_documento = bloque_fijo(documento)
+        muestra = fijo_plantilla[0][1]
+        if len(muestra) > 60:
+            muestra = muestra[:57] + "..."
+        if not fijo_documento:
+            hallazgos.append(Hallazgo(
+                FALLA, ruta_documento, 0,
+                f"falta el texto que la plantilla fija antes de su primer "
+                f"separador: «{muestra}» — no es relleno, es la instrucción "
+                f"de uso del documento, y se conserva al llenarlo"))
+        elif (any(_CITA_DE_REGLA.search(t) for _, t in fijo_plantilla)
+              and not any(_CITA_DE_REGLA.search(t) for _, t in fijo_documento)):
+            hallazgos.append(Hallazgo(
+                FALLA, ruta_documento, fijo_documento[0][0],
+                f"el texto fijo del documento no cita ninguna regla, y el de "
+                f"la plantilla sí: «{muestra}» — ese lugar dice cómo se usa el "
+                f"documento; contar de dónde salió va en la identificación"))
 
     return hallazgos
 

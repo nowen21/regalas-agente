@@ -52,6 +52,12 @@ Hallazgos por regla (3552 en total):
 
 **Ninguno del conteo.** Y una decisión de diseño que vale escribir: los hallazgos se acumulan en `comun.reportar`, por donde pasan todos, en vez de pedirle a cada validador que además los devuelva. Tocar veinticuatro archivos para saber algo que ya pasa por un solo punto habría sido el camino largo y frágil.
 
+## 4.1 Lo que otro validador encontró sobre esta misma fase
+
+**El comparador de plan contra lo hecho, construido media hora después, dijo que esta fase tocó tres archivos que su plan no declaraba:** `validadores/conteo.py`, su contrato y su archivo de pruebas. Es cierto: el plan, escrito el 2026-08-17, daba por hecho que el conteo viviría dentro de `validar.py`, y al construirlo se vio que convenía un módulo propio.
+
+**La decisión fue buena y el procedimiento no:** ampliar el plan exige escribirlo antes de ejecutar ([`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)). Queda dicho acá, que es donde alguien lo va a buscar.
+
 ## 5. Veredicto
 
 **Cumple.** Once casos de once.

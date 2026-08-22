@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.11.0 — 2026-08-22
+
+**MENOR** (una comprobación nueva para el cierre de una fase; nadie tiene que hacer nada).
+
+**Ya se puede comprobar si una fase tocó los archivos que su plan decía.** El estándar exige desde siempre que una unidad de trabajo edite lo que su plan declaró, y que descubrir otro archivo detenga la ejecución hasta ampliarlo por escrito; comprobarlo era leer el plan y los cambios a la vez, o sea casi nunca. Ahora una orden los compara contra el punto del que salió la fase, y avisa lo que no cuadra. También dice qué criterio de aceptación se quedó sin ningún caso que lo compruebe.
+
+**Avisa y no detiene**, porque un archivo de más puede ser un descubrimiento que se reportó y se aprobó, y eso no se ve desde los archivos. Lo que el programa afirma es que la lista no cuadra; si la explicación cuadra, lo lee una persona.
+
+**Y su primera corrida encontró un incumplimiento del trabajo de esta misma jornada:** la mejora anterior tocó tres archivos que su plan no declaraba. La decisión de separarlos fue buena; lo que faltó fue anotarla antes de ejecutar. Queda escrito en las dos fases.
+
+**El detalle.** Fase [`A-EP-004-HU-013`](documentacion/epicas/EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/A-EP-004-HU-013-comparar-lo-hecho-con-el-plan-aprobado/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con sus decisiones 10 y 22. Nace [`validadores/plan_vs_hecho.py`](validadores/plan_vs_hecho.py) y el subcomando `validar.py plan`, con once casos. Lo que **no** se automatiza queda declarado: comparar los pasos ejecutados con los escritos exige leer los dos textos, y eso sigue siendo de una persona.
+
 ## 31.10.0 — 2026-08-22
 
 **MENOR** (la revisión completa termina diciendo por cuál regla se incumple más; nadie tiene que hacer nada).

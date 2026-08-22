@@ -62,6 +62,7 @@ import versionado       # noqa: E402
 import traza            # noqa: E402
 import comun                                                      # noqa: E402
 import conteo                                                     # noqa: E402
+import plan_vs_hecho                                              # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
@@ -97,6 +98,7 @@ FUERA_DE_LA_CORRIDA = {
     "commit": "necesita el mensaje del commit",
     "traza": "necesita la transcripción de una sesión",
     "temas": "escribe un archivo cuando se le pide `--aplicar`",
+    "plan": "necesita el commit del que salió la fase para comparar archivos",
 }
 
 
@@ -324,6 +326,15 @@ def cmd_temas(a):
     linea = temas.linea_resumen(raiz)
     if linea:
         print(linea)
+    return codigo
+
+
+def cmd_plan(a):
+    """`EP-004·HU-013` · Lo hecho contra el plan aprobado."""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(plan_vs_hecho.validar(raiz, a.fase, a.desde),
+                      f"El plan aprobado contra lo hecho · {relativo(raiz)}")
+    print(plan_vs_hecho.linea_resumen(raiz))
     return codigo
 
 
@@ -705,6 +716,13 @@ def main():
                         help="qué piezas están atadas a la herramienta · el mapa no envejece")
     am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     am.set_defaults(func=cmd_amarre)
+
+    pv = sub.add_parser("plan",
+                        help="lo hecho contra el plan aprobado · 02·F8 y sus casos")
+    pv.add_argument("--raiz", default=RAIZ, help="carpeta del proyecto")
+    pv.add_argument("--fase", help="carpeta de una fase concreta")
+    pv.add_argument("--desde", help="commit del que salió la fase")
+    pv.set_defaults(func=cmd_plan)
 
     te = sub.add_parser("temas",
                         help="índice temático del histórico · buscar por tema, no por fecha")

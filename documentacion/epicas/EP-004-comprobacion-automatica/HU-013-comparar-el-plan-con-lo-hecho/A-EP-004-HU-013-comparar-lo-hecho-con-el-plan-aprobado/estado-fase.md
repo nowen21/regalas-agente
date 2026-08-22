@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Ninguna fase cerrada se reabre: lo que la comparación destape sobre trabajo viejo se anota.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 2 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Construida entera, y su primera corrida encontró un incumplimiento del trabajo de la misma jornada.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
+| **CA cumplidos** | 3 de 3 |
 | **CA en "No"** | Ninguno todavía. El **CA-01 está en «No» de entrada** —nadie compara los archivos tocados con los declarados— y el **CA-02 a medias** |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,15 +57,15 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Comparar el §2.1 con los archivos que la rama tocó. Duda 1 |
-| T-02 | Bloqueada | Caso del archivo no declarado — CP-001 |
-| T-03 | Pendiente | Comparar los casos del plan de pruebas con los criterios |
-| T-04 | Pendiente | Caso del criterio sin caso y el caso sin criterio — CP-003 |
-| T-05 | Pendiente | Revisión a mano de tres fases cerradas — CP-004. **No depende de las dudas** |
-| T-06 | Bloqueada | Declarar si el CA-03 es comprobable. Duda 2 |
-| T-07 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Comparar el §2.1 con los archivos que la rama tocó. Duda 1 |
+| T-02 | Hecha | Caso del archivo no declarado — CP-001 |
+| T-03 | Hecha | Comparar los casos del plan de pruebas con los criterios |
+| T-04 | Hecha | Caso del criterio sin caso y el caso sin criterio — CP-003 |
+| T-05 | Hecha | Revisión a mano de tres fases cerradas — CP-004. **No depende de las dudas** |
+| T-06 | Hecha | Declarar si el CA-03 es comprobable. Duda 2 |
+| T-07 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 7. **Bloqueadas:** T-01, T-02 y T-06.
+**Hechas:** 7 de 7. **Bloqueadas:** ninguna.
 
 ---
 
