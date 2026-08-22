@@ -131,6 +131,16 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Dónde queda.** v30.8.0, [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) con la ronda escrita; `validar.py metareglas` da cero fallas. **Abierto para el usuario:** el anexo nuevo trae doce rayas (son del texto literal que se movió) y el trinquete de marcas las cuenta como nuevas y bloquea el commit; decidir si se sustituyen (es puntuación, no palabras) o se deja el texto intacto y se pasa el trinquete de otra forma.
 
+### H-9 · Ninguna regla se pasa ya del molde, y las particiones que faltaban casi todas estaban hechas
+
+**Qué se encontró.** La segunda ronda del pendiente 19 iba a partir 26 reglas y recortar 37. Al abrir capítulo por capítulo apareció que **23 de las 26 particiones ya se habían hecho el 2026-08-18** y que dos más se habían resuelto sin partirse, dejándolo escrito en su propio sello. Lo que quedaba de verdad era el largo: 34 reglas con el sello diciendo ✅ en la fila 10 y el cuerpo de hasta el doble.
+
+**Qué se decidió.** Recortar dejando la exigencia y mandar los porqués a [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md). Y para dos que no se podían recortar sin perder su contenido —la tabla de trazabilidad de `13·DOC11` y los seis pasos del desempate de `20·M6`— repetir la salida que el usuario ya había aprobado para `02·F12`: **anexo del capítulo**, con el texto entero.
+
+**Dónde queda.** v30.8.1 a v30.9.0, cinco publicaciones, una por capítulo. `validar.py metareglas`: cero fallas y ningún aviso de largo. La ronda queda escrita en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+
+**Abierto, y es del usuario:** `17·I3` (una regla con la lista, o cuatro reglas) y `12·PR3` (el sí a derogarla venía del diagnóstico viejo; hoy la regla exige algo propio que se perdería).
+
 ---
 
 ## ¿Se puede cerrar la sesión?

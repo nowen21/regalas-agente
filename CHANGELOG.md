@@ -15,7 +15,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **MENOR** (diecisiete reglas de tres capítulos caben ya en su molde, y nacen dos anexos; nada cambia en lo que se exige).
 
-**Ninguna regla del estándar se pasa ya del largo que ella misma fija.** Era la última deuda de la fila 10 del checklist: quince reglas de los capítulos de datos, documentación y meta-reglas decían en el sello que cabían en cuatro líneas y medían hasta el doble. Dos de ellas no se podían recortar sin perder algo, porque su contenido era una tabla y una lista de pasos: esas dos ganaron **anexo**, la misma salida que el usuario aprobó para la nomenclatura de fases.
+**Ninguna regla del estándar se pasa ya del largo que ella misma fija.** El estándar le da cuatro líneas a cada regla, y quince reglas de los capítulos de datos, documentación y meta-reglas decían en el sello que cabían en cuatro líneas y medían hasta el doble. Dos de ellas no se podían recortar sin perder algo, porque su contenido era una tabla y una lista de pasos: esas dos ganaron **anexo**, la misma salida que el usuario aprobó para la nomenclatura de fases.
 
 **El detalle.** Es la ronda de los capítulos `03`, `13` y `20` del pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [la tabla canónica de trazabilidad](base/13-documentacion/tabla-de-trazabilidad.md), que sale del cuerpo de `DOC11`, y [el orden del desempate](base/20-meta-reglas/desempate.md), que sale del de `M6` con sus seis pasos intactos. Las otras quince se recortaron dejando lo que exigen; los porqués están en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). Con esto `validar.py metareglas` no reporta ni una falla ni un aviso de largo.
 
