@@ -46,6 +46,19 @@ Por eso cada sesión que se crea queda anotada aquí: la línea la pone el engan
 - **Mantener `## Abierto`**: lo que quedó sin cerrar, o "nada".
 - **No copiar a mano lo que el enganche ya escribió.** Si falta algo, se agrega; no se reescribe encima.
 
+## Qué manda cuando esto y lo acordado se contradicen
+
+**Manda lo acordado**, que vive en el `CLAUDE.md` del proyecto y en sus documentos de encargo; el histórico dice **de dónde salió**. Son dos cosas distintas: acá está lo que se dijo alguna vez, allá lo que rige hoy.
+
+Cuando chocan, lo que hay es una de dos, y las dos se arreglan escribiendo lo acordado:
+
+| Qué pasó | Qué se hace |
+|---|---|
+| Lo acordado quedó viejo | se actualiza, citando la sesión donde se decidió el cambio |
+| Se decidió algo y nadie lo escribió | se escribe ahora, citando la sesión donde se dijo |
+
+**Lo que nunca se hace es editar el histórico para que cuadre.** Es transcripción: solo crece, y su valor es justamente que dice lo que se dijo, no lo que hoy convendría haber dicho.
+
 ## Forma
 
 ```markdown

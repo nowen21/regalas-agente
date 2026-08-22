@@ -420,6 +420,14 @@ def instalar_historico(ruta, aplicar):
     Si el README ya existe **no se pisa** —puede haberlo editado el proyecto—,
     pero sí se le refresca el sello: quedar viejo tiene que poder detectarse
     aunque el texto local difiera del original.
+
+    **Y se le agrega lo que la plantilla haya sumado**, con el mismo mecanismo
+    del `CLAUDE.md` (`01·C18`): aditivo, sin pisar ni reordenar lo del proyecto,
+    y diciendo qué agregó. Hasta el 2026-08-22 no lo hacía, y la consecuencia
+    era esta: el estándar mejoraba el README del histórico y los proyectos ya
+    instalados se quedaban con la versión del día que lo recibieron. Sale del
+    punto 8 del pendiente 33, donde estaba dicho así: *«el mecanismo replica y
+    el texto que lo explica no»*.
     """
     import versiones
 
@@ -435,6 +443,17 @@ def instalar_historico(ruta, aplicar):
             os.makedirs(carpeta, exist_ok=True)
             _escribir_sellado(archivo, leer(PLANTILLA_HISTORICO), comp, ruta)
         return ["crear historico-chat/README.md"] + _instalar_resumenes(ruta, aplicar)
+
+    cuerpo = versiones.quitar_sello(leer(archivo))
+    cuerpo, agregadas = _completar_secciones(
+        cuerpo, versiones.quitar_sello(leer(PLANTILLA_HISTORICO)))
+    if agregadas:
+        if aplicar:
+            _escribir_sellado(archivo, cuerpo, comp, ruta)
+        return (["agregar a historico-chat/README.md lo que la plantilla sumó: "
+                 + ", ".join(agregadas),
+                 "sellar historico-chat/README.md contra la plantilla"]
+                + _instalar_resumenes(ruta, aplicar))
 
     return _refrescar_sello(archivo, comp, ruta, aplicar,
                             "historico-chat/README.md") + _instalar_resumenes(ruta, aplicar)

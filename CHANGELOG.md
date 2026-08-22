@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.3.0 — 2026-08-22
+
+**MENOR** (lo que el estándar mejore en el README del histórico llega a los proyectos ya instalados; nadie tiene que hacer nada).
+
+**Un proyecto instalado hace meses ya no se queda con el texto de hace meses.** Cuando el estándar mejoraba el README del histórico, los proyectos nuevos lo recibían y los que ya estaban instalados no: su archivo seguía diciendo lo de siempre, y nadie lo notaba porque existe, se lee bien y dice cosas ciertas, solo que menos. Ahora el instalador le agrega lo que el estándar sumó, **sin tocar una línea de lo que el proyecto escribió**, y dice qué agregó. Es el mismo mecanismo que el archivo de instrucciones del agente ya usaba.
+
+**Lo primero que va a llegar por ahí:** la respuesta a qué manda cuando el histórico y lo acordado se contradicen. Manda lo acordado, y el histórico dice de dónde salió; el histórico no se edita nunca para que cuadre, porque su valor es decir lo que se dijo.
+
+**El detalle.** Punto 8 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), en la fase [`B` de EP-007 · HU-005](documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-005-no-pisar-lo-escrito/B-EP-007-HU-005-el-readme-heredado-recibe-lo-que-la-plantilla-suma/README.md). `instalar_historico` reusa `_completar_secciones`, el mecanismo de `01·C18`, con seis casos de prueba nuevos; el que decide es el que comprueba que lo escrito por el proyecto sobrevive palabra por palabra.
+
 ## 31.2.0 — 2026-08-22
 
 **MENOR** (una comprobación nueva del repositorio del estándar; ningún proyecto tiene que hacer nada).
