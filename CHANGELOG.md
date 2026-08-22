@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.6.1 — 2026-08-22
+
+**PARCHE** (documentación del propio estándar; nada cambia en lo que se exige).
+
+**Cimiento ya tiene su planteamiento y su inventario.** Exigía a todos un planteamiento y un inventario de funcionalidades, y no tenía los suyos: su revisión de instalación reprobaba la cadena en casa. Ahora dice, en lenguaje de negocio, qué problema resuelve (sesiones con un agente que reinventan, olvidan y arriesgan), para quién, qué queda fuera y cómo se mide el éxito; y lista todo lo que es, lo que le falta y lo que está por confirmar.
+
+**El detalle.** Pendiente [56](pendientes/hecho/el-estandar-tiene-su-planteamiento.md). Nacen [`prompts/cimiento-planteamiento.md`](prompts/cimiento-planteamiento.md) (las siete épicas quedan enlazadas a él) y [`prompts/cimiento-inventario-funcionalidades.md`](prompts/cimiento-inventario-funcionalidades.md), en revisión del usuario como manda `02·F26`: 22 ítems existentes, 4 por construir (vistas consolidadas, `.docx`, veredicto único, medición de todos los proyectos desde la interfaz) y 3 por confirmar. Lo escribió el agente con lo que el proyecto ya decía, por instrucción del usuario.
+
 ## 30.6.0 — 2026-08-22
 
 **MENOR** (dos validadores dejan de dar falsos veredictos; ningún proyecto tiene que cambiar nada).

@@ -1231,3 +1231,48 @@ Contesta lo que quieras en el orden que quieras; cada respuesta baja en su ronda
 
 ### 61 · Usuario — 2026-08-22 04:53:40
 > si
+
+**Agente** — 2026-08-22 04:54:28
+<!-- agente: f0bff1fd-42c4-4459-ae26-ae872fdc965e -->
+
+Publicado: commit `9e2074f` en `main`, push en verde. El estándar queda en **30.6.0** con los pendientes 71 y 72 cerrados.
+
+Quedan abiertos el 19, 33, 56, 59 y 60, todos esperando tus respuestas a la hoja de decisiones de arriba. Cuando contestes cualquiera de ellas (en el orden que prefieras), bajo ese pendiente en su ronda. El 10 y el 48 quedan fuera, como ordenaste.
+
+### 62 · Usuario — 2026-08-22 04:55:10
+> cuál?
+
+**Agente** — 2026-08-22 04:55:22
+<!-- agente: e85a44a8-328d-44c4-bb65-c79044054dca -->
+
+Te recomiendo empezar por el **56**, porque es la cabeza de la cadena (el planteamiento del propio estándar) y son solo tres respuestas cortas. Luego el 60 (una letra), el 19 (cuatro síes o noes), el 59 (cuatro datos) y el 33 al final.
+
+Para el 56, las tres:
+
+1. **¿Qué problema resuelve Cimiento y para quién?** (en lenguaje de negocio, sin hablar de reglas ni de archivos)
+2. **¿Qué queda explícitamente fuera** de lo que Cimiento hace?
+3. **¿Qué es éxito medible** para ti: cómo sabrías que Cimiento está cumpliendo su propósito?
+
+Con eso escribo `prompts/cimiento-planteamiento.md` y el inventario de funcionalidades del estándar, y cierro el 56.
+
+### 63 · Usuario — 2026-08-22 04:57:28
+> 1,2 y 3 los puede responder usted mismo con lo que ya se tiene del proyecto
+
+**Agente** — 2026-08-22 05:01:41
+<!-- agente: 4a7aeb38-f03f-4acf-a533-0e5a80843a3d -->
+
+Entendido: lo escribo con lo que el proyecto ya dice, citando tus palabras donde estén. Leo el molde y las fuentes:
+
+El 56 cerró (**v30.6.1**): Cimiento ya tiene su [planteamiento](prompts/cimiento-planteamiento.md) y su [inventario de funcionalidades](prompts/cimiento-inventario-funcionalidades.md), escritos con lo que el proyecto ya decía y citando tus palabras. La revisión de instalación de esta casa ya ve la cadena (`[ok] cadena`).
+
+Dos cosas que salieron al medir:
+
+- **El expediente del propio estándar da 2 de 13.** Planteamiento e inventario completos; los otros 11 entregables (factibilidad, actas, modelo de datos, manuales, bitácora, plan de mantenimiento…) **no existen para Cimiento mismo**. Es exactamente lo que tu «sin excepciones» implica: el estándar se debe a sí mismo lo que exige. Lo dejé visible en el inventario (ítems por construir) en vez de taparlo.
+- **Un defecto del medidor, corregido:** contaba los propios moldes de `plantillas/` como entregables del estándar (daba 13 de 13). Ahora excluye `plantillas/`, con su prueba (7 de 7).
+
+El inventario queda **en revisión tuya**, como manda `F26`: 22 ítems existentes, 4 por construir y 3 preguntas (P-1 capítulos RPA/IA, P-2 segundo agente, P-3 interfaz como tablero). Validadores y trinquete limpios.
+
+¿Autorizas commit y push? Y cuando quieras seguimos con el **60** (una letra: a, b o c).
+
+### 64 · Usuario — 2026-08-22 05:04:35
+> si y siga

@@ -63,7 +63,7 @@ Se encadenan en 68 de 68. Y la cadena empieza en un eslabón vacío.
 
 **Este repositorio no tiene planteamiento.** Es el documento que dice qué es el proyecto antes de que haya ninguna épica; sin él, las siete cuelgan de nada.
 
-Ya está anotado en el [pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md), con una frase que esta fase confirma: *«esta casa reprueba el punto de la cadena que ella misma acaba de escribir»*.
+Ya está anotado en el [pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md), con una frase que esta fase confirma: *«esta casa reprueba el punto de la cadena que ella misma acaba de escribir»*.
 
 **Lo que la fase agrega es que el molde funciona.** Lo que falta no es la plantilla: es llenarla. Y eso, como dice el propio pendiente, **no es tarea de código — es decidir qué es este proyecto, y sale de una conversación**.
 
@@ -83,7 +83,7 @@ Ya está anotado en el [pendiente 56](../../../../../pendientes/56-el-estandar-n
 
 | Qué | Dónde |
 |---|---|
-| Llenar el planteamiento | [Pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) — **sale de una conversación con el usuario** |
+| Llenar el planteamiento | [Pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) — **sale de una conversación con el usuario** |
 | Los modelos de la fase | [HU-003](../../HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md) |
 | Los modelos de la capa de proyecto | [HU-005](../../HU-005-modelos-de-la-capa-de-proyecto/HU-005-modelos-de-la-capa-de-proyecto.md) |
 

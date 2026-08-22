@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Escribir el planteamiento de este repositorio.** Falta —es el pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md)— y no se puede reconstruir leyendo el repositorio: sale de una conversación.
+- **Escribir el planteamiento de este repositorio.** Falta —es el pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md)— y no se puede reconstruir leyendo el repositorio: sale de una conversación.
 - **Los modelos de la fase,** que son [HU-003](../../HU-003-modelos-de-la-fase/HU-003-modelos-de-la-fase.md).
 - **La marca del hueco,** ya cerrada en la fase A de [HU-001](../../HU-001-marca-de-espacio-por-llenar/HU-001-marca-de-espacio-por-llenar.md). Acá se usa como línea base.
 - **Cambiar los tres modelos.** Si aparece algo que falta, se propone: son `plantillas/` y suben versión.
@@ -116,7 +116,7 @@ Ninguna: los tres CA se prueban contra lo que ya está.
 | # | Tarea | Archivo | Horas |
 |---|---|---|---|
 | T-04 | Caso de prueba: llenar a medias una copia de cada modelo y comprobar que `validar.py plantilla` lo dice | `plan_pruebas.md` | 1,5 |
-| T-05 | Dejar escrito el caso del planteamiento que le falta a esta casa, atado al pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) | `resultado_pruebas.md` | 1,0 |
+| T-05 | Dejar escrito el caso del planteamiento que le falta a esta casa, atado al pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) | `resultado_pruebas.md` | 1,0 |
 
 ### RNF — Que el modelo se entienda sin explicación
 

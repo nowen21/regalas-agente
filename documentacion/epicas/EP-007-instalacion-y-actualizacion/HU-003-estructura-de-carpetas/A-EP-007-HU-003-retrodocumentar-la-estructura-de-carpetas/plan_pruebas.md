@@ -44,7 +44,7 @@
 
 - **Instalar dos veces es un caso propio** — es la forma en que esto se rompe de verdad: la primera corrida crea, la segunda es la que puede borrar. Confiar en la prueba de la primera dejaría el defecto sin ver.
 - **Contenido comparado, no presencia** — arriba.
-- **El caso de esta casa se explica en el resultado** — el riesgo `R-03`: la revisión reprueba acá con razón —falta el planteamiento, pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md)— y varios puntos no le aplican, porque el estándar no se instala a sí mismo. Quien lea el resultado tiene que entenderlo sin reconstruirlo.
+- **El caso de esta casa se explica en el resultado** — el riesgo `R-03`: la revisión reprueba acá con razón —falta el planteamiento, pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md)— y varios puntos no le aplican, porque el estándar no se instala a sí mismo. Quien lea el resultado tiene que entenderlo sin reconstruirlo.
 - **La falla del CA-02 detiene la fase** — el riesgo `R-01`: si el instalador borra trabajo, se para y se reporta de inmediato. Corregirlo es una fase con su propio plan.
 
 ### 3.5 Alcance de la corrida
@@ -184,7 +184,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 |---|---|---|
 | 1 | Correr la revisión sobre este repositorio | Sale su resultado |
 | 2 | Separar los puntos que **no le aplican**, porque el estándar no se instala a sí mismo | Cada uno con su motivo |
-| 3 | Separar los que reprueban **con razón** | Al menos el planteamiento faltante, pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) |
+| 3 | Separar los que reprueban **con razón** | Al menos el planteamiento faltante, pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) |
 | 4 | Escribir la lectura completa en el resultado | Queda para quien lea después |
 | 5 | Comprobar que la corrida no escribió nada | Ningún archivo modificado |
 

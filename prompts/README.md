@@ -12,6 +12,8 @@ Qué hacer con cada ficha —cuál ya es regla, cuál falta escribir y cuál no 
 
 | Prompt | Qué pidió |
 |---|---|
+| [cimiento-planteamiento.md](cimiento-planteamiento.md) | El planteamiento de Cimiento mismo: qué problema resuelve, para quién, qué queda fuera y cómo se mide el éxito (pendiente 56). |
+| [cimiento-inventario-funcionalidades.md](cimiento-inventario-funcionalidades.md) | El inventario de funcionalidades de Cimiento, en revisión del usuario (`02·F26`): lo que es, lo que le falta y lo por confirmar. |
 | [regla-reglas-proyecto.md](regla-reglas-proyecto.md) | Que ninguna regla de `reglas-proyecto` exista sin una regla del agente que la respalde. Quedó en [`20·M16`](../base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md). |
 
 ## Rescatado del histórico

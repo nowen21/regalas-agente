@@ -134,7 +134,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-16-sesion-7.md](..
 
 - **Qué pasó:** el punto nuevo, corrido contra el propio estándar, reprueba: `prompts/` tiene 40 archivos y ninguno es un planteamiento.
 - **Por qué importa:** el trabajo del estándar también es desarrollo, así que `02·F0` le aplica igual. Ojo con leer mal el «6 de 14» que sale acá: el estándar no se instala a sí mismo y ocho de esos puntos no le corresponden. El de la cadena sí.
-- **Estado:** **anotado** → [pendiente 56](../../../pendientes/56-el-estandar-no-tiene-planteamiento.md). Escribirlo es decidir qué es este proyecto, y eso sale de una conversación.
+- **Estado:** **anotado** → [pendiente 56](../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md). Escribirlo es decidir qué es este proyecto, y eso sale de una conversación.
 - **Nace en:** 2026-08-16 · sesión 7
 
 ### H-14 · El caso que «no puede correr el agente» corrió solo

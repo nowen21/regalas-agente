@@ -78,7 +78,7 @@ El modelo de la historia de usuario obliga a escribir, por cada criterio, **«C�
 
 Es el primer eslabón del encargo: el documento que dice **qué es este proyecto** antes de que haya ninguna épica. Sin él, las 7 épicas cuelgan de nada.
 
-**Ya está anotado**, en el [pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md), con una frase que esta fase confirma: *«esta casa reprueba el punto de la cadena que ella misma acaba de escribir»*. Lo que esta fase agrega es que **el modelo funciona**: lo que falta no es el molde, es llenarlo — y eso, dice el pendiente, «no es tarea de código: es decidir qué es este proyecto, y sale de una conversación».
+**Ya está anotado**, en el [pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md), con una frase que esta fase confirma: *«esta casa reprueba el punto de la cadena que ella misma acaba de escribir»*. Lo que esta fase agrega es que **el modelo funciona**: lo que falta no es el molde, es llenarlo — y eso, dice el pendiente, «no es tarea de código: es decidir qué es este proyecto, y sale de una conversación».
 
 ---
 
@@ -97,7 +97,7 @@ Es el primer eslabón del encargo: el documento que dice **qué es este proyecto
 
 | ID | Severidad | Qué es | Dónde queda |
 |---|---|---|---|
-| D-01 | Media | **Este repositorio no tiene planteamiento**, que es el primer eslabón del encargo. Las 7 épicas cuelgan de nada | Ya anotado en el [pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md). **No es tarea de esta fase**: llenar el planteamiento es decidir qué es el proyecto, y sale de una conversación con el usuario |
+| D-01 | Media | **Este repositorio no tiene planteamiento**, que es el primer eslabón del encargo. Las 7 épicas cuelgan de nada | Ya anotado en el [pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md). **No es tarea de esta fase**: llenar el planteamiento es decidir qué es el proyecto, y sale de una conversación con el usuario |
 | D-02 | Baja | El plan de pruebas declara cobertura completa y **no le escribe caso a los dos transversales**. Se probaron igual | El plan aprobado no se modifica. Mismo defecto de molde de las 51 fases |
 
 ---
@@ -135,7 +135,7 @@ Es el primer eslabón del encargo: el documento que dice **qué es este proyecto
 
 Lo que no se cumple es el CA-01 en su primera mitad: **el planteamiento de esta casa está vacío**. Los modelos se encadenan bien entre sí, y la cadena empieza en un eslabón que nadie llenó.
 
-**Qué falta para que cumpla:** llenar el planteamiento. **No es tarea de esta fase ni de ninguna otra de código**: es decidir qué es este proyecto, y eso sale de una conversación con el usuario. Está anotado en el [pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md).
+**Qué falta para que cumpla:** llenar el planteamiento. **No es tarea de esta fase ni de ninguna otra de código**: es decidir qué es este proyecto, y eso sale de una conversación con el usuario. Está anotado en el [pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md).
 
 ---
 
@@ -144,7 +144,7 @@ Lo que no se cumple es el CA-01 en su primera mitad: **el planteamiento de esta 
 | ID | Tipo | Dónde está |
 |---|---|---|
 | EV-01 | Casos automatizados | [`validadores/pruebas.py`](../../../../../validadores/pruebas.py), clase `ModelosDelEncargo`: 4 pruebas, en verde |
-| EV-02 | El planteamiento que falta | [Pendiente 56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) |
+| EV-02 | El planteamiento que falta | [Pendiente 56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) |
 | EV-03 | Lo escrito | [`documentacion/documentos-modelo/spec.md`](../../../../documentos-modelo/spec.md) §4.1 |
 | EV-04 | Corrida completa | `python validadores/pruebas.py` — 348 pruebas, verde, 6 fallos esperados |
 

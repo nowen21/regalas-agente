@@ -44,7 +44,7 @@
 - **Encadenamiento en los dos sentidos** — de la HU hacia la épica y de la épica hacia sus HU. Con un solo sentido, una HU huérfana o una épica que se olvidó de listar una historia pasarían sin verse.
 - **El par a medias / completo** — el CA-03 no se cierra viendo que el validador existe: se cierra comprobando que **reporta cuando falta** y **calla cuando está completo**.
 - **Muestra elegida por dificultad** — las tres HU del CA-02 se eligen por tener criterios difíciles de comprobar, no por ser las más prolijas.
-- **La carencia se documenta, no se tapa** — el estándar no tiene planteamiento propio (pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md)). Escribirlo leyendo el repositorio saldría describiendo la solución en vez del problema, y apagaría el aviso sin arreglar nada. Queda dicho.
+- **La carencia se documenta, no se tapa** — el estándar no tiene planteamiento propio (pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md)). Escribirlo leyendo el repositorio saldría describiendo la solución en vez del problema, y apagaría el aviso sin arreglar nada. Queda dicho.
 
 ### 3.5 Alcance de la corrida
 
@@ -158,7 +158,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 |---|---|---|
 | 1 | Comprobar que el estándar no tiene su planteamiento | No lo tiene, y el aviso sale |
 | 2 | Dejar escrito por qué no se redacta acá | Porque saldría describiendo la solución en vez del problema |
-| 3 | Atarlo al pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) | Queda citable desde la fase que lo resuelva |
+| 3 | Atarlo al pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) | Queda citable desde la fase que lo resuelva |
 | 4 | Comprobar que el aviso **no** se silenció | Sigue saliendo |
 
 **Resultado esperado final:** la falta queda documentada sin apagar el aviso que la señala.

@@ -30,8 +30,11 @@ from comun import AVISO, Hallazgo
 MARCA = "«…»"          # «…» — el espacio por llenar (13·DOC19)
 NO_APLICA = re.compile(r"no aplica", re.IGNORECASE)
 
+# `plantillas/` va excluida a propósito: ahí viven los moldes, y un molde no es
+# el entregable (se notó midiendo el propio estándar, que daba 13 de 13 por
+# encontrar sus propios moldes).
 EXCLUIDAS = {".git", ".venv", "node_modules", "__pycache__", "vendor",
-             "staticfiles", ".claude"}
+             "staticfiles", ".claude", "plantillas", "terceros"}
 
 # Cada entregable con las terminaciones de nombre que lo identifican.
 # El orden es el del ciclo; el número es el del molde en

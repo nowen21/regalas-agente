@@ -71,7 +71,7 @@
 | Decisión / aprendizaje | Señal registrada |
 |---|---|
 | El encadenamiento se prueba sobre las HU reales del árbol: una épica armada para la ocasión no trae los casos raros | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
-| El planteamiento del propio estándar no se escribe acá: redactarlo leyendo el repositorio saldría describiendo la solución en vez del problema, y apagaría el aviso sin arreglar nada | §2.6 del plan y pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) |
+| El planteamiento del propio estándar no se escribe acá: redactarlo leyendo el repositorio saldría describiendo la solución en vez del problema, y apagaría el aviso sin arreglar nada | §2.6 del plan y pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) |
 | El incremento de la especificación **exige y enlaza**, no copia el modelo: una especificación que describe la plantilla es un documento largo que nadie usa | Riesgo `R-02` del plan |
 
 ---
@@ -79,7 +79,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **La aprobación del plan.** Es lo único que falta para arrancar.
-- **El estándar sigue sin planteamiento propio** (pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md)). Esta fase lo deja escrito; no lo escribe.
+- **El estándar sigue sin planteamiento propio** (pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md)). Esta fase lo deja escrito; no lo escribe.
 - **Si la prueba del encadenamiento falla en varias HU viejas** (riesgo `R-01`): se listan y se anotan. Corregirlas es trabajo de la fase de cada HU.
 - **Si otra sesión está tocando la especificación del módulo** (riesgo `R-03`): se relee justo antes de escribir.
 

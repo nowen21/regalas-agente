@@ -215,7 +215,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 | 53 | **P1** | [`enlaces.py` no tiene punto de entrada](hecho/ningun-validador-termina-en-silencio.md) | Termina en silencio y con código 0 **sin comprobar nada**, y ese silencio se lee como «cero rotos». Una fase se lo creyó y escribió mal su métrica. Falta revisar cuántos de los treinta validadores tienen el mismo hueco. |
 | 54 | **P2** | [Cerrar un pendiente rompe los enlaces que lo citaban](hecho/cerrar-un-pendiente-arrastra-sus-citas.md) | Mover el archivo a `hecho/` dejó 12 huérfanos en un solo cierre, y al 45 le había pasado sin que nadie lo viera. `citas.py` ya tiene el modo que repara. Hermano del punto 4 del [33](33-defectos-que-destaparon-los-resumenes-viejos.md). |
 | 55 | **P2** | [El validador lee enlaces dentro de las comillas de código](hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) | Reportó como rotas dos muestras que nunca fueron enlaces. **Conviene con el punto 1 del 33:** mismo archivo, misma clase de falso positivo. |
-| 56 | **P3** | [El estándar no tiene planteamiento](56-el-estandar-no-tiene-planteamiento.md) | Esta casa reprueba el punto de la cadena que ella misma acaba de escribir. No es tarea de código: es decidir qué es este proyecto, y sale de una conversación. |
+| ~~56~~ | — | **hecho** → [El estándar no tiene planteamiento](hecho/el-estandar-tiene-su-planteamiento.md) | Esta casa reprueba el punto de la cadena que ella misma acaba de escribir. No es tarea de código: es decidir qué es este proyecto, y sale de una conversación. |
 
 ### Lo que promovió el 33 (52)
 
@@ -263,7 +263,7 @@ Salieron de construir las siete fases del 2026-08-16 y quedaron en el [resumen d
 |---|---|---|---|
 | 60 | **P3** | [Ninguna historia es dueña del texto del capítulo `02`](60-nadie-es-dueno-del-texto-del-capitulo-02.md) | Se fue a agregarle una frase a `02·F23` y no hubo dónde bajarla: ninguna HU declara el capítulo `02` como su módulo. El capítulo de la cadena —`F0`, `F12`, `F15`, `F23`— se ha venido cambiando sin cadena. |
 
-**Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](56-el-estandar-no-tiene-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
+**Lo destapó una fase, no una revisión.** El `B-02` de [`B-EP-004-HU-016`](../documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/plan_trabajo.md) tuvo que buscar dónde escribir un cambio y se encontró con que no había sitio. **Es hermano del [47](hecho/el-origen-de-las-reglas-de-negocio.md) y del [56](hecho/el-estandar-tiene-su-planteamiento.md)**: los tres son el mismo hueco a distinta altura — esta casa exige trazabilidad hacia arriba y no la tiene sobre sí misma.
 
 ### Lo que dejó mandar el primer aviso de vuelta (61)
 

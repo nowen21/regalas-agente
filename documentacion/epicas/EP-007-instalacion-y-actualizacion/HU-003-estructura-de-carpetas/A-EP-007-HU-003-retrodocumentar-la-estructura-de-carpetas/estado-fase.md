@@ -81,7 +81,7 @@
 
 - **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
 - **El módulo de instalación no tiene especificación aparte.** Se declara como deuda en las fases hermanas de esta épica.
-- **La revisión reprueba en esta casa con razón**: falta el planteamiento del propio estándar (pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md)). No se arregla acá; se explica.
+- **La revisión reprueba en esta casa con razón**: falta el planteamiento del propio estándar (pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md)). No se arregla acá; se explica.
 
 ---
 

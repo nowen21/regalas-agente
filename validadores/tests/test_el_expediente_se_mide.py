@@ -46,6 +46,14 @@ class Expediente(unittest.TestCase):
         self.assertIn("prompts/miproyecto-planteamiento.md", texto)
         self.assertIn("docs/22-plan-de-mantenimiento.md", texto)
 
+    def test_el_molde_en_plantillas_no_es_el_entregable(self):
+        """Midiendo el estándar, sus propios moldes contaban como expediente."""
+        self.escribir("plantillas/ciclo/12-estudio-factibilidad.md",
+                      u"Molde con «…».\n")
+        lineas, _ = expediente.reporte(self.tmp)
+        self.assertIn("| 12 | Estudio de factibilidad | (no hay) | **Falta** |",
+                      "\n".join(lineas))
+
     def test_un_nombre_parecido_no_cuenta(self):
         """`replanteamiento.md` no es el planteamiento."""
         self.escribir("docs/replanteamiento.md", u"Otra cosa.\n")

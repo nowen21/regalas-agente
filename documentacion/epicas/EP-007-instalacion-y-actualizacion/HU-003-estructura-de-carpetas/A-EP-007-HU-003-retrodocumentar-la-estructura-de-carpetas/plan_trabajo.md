@@ -22,7 +22,7 @@
 |---|---|---|
 | [CA-01](../HU-003-estructura-de-carpetas.md#ca-01--la-estructura-se-crea-sola) | La estructura se crea sola | Corriendo: el instalador la deja puesta. Sin prueba propia de esta HU |
 | [CA-02](../HU-003-estructura-de-carpetas.md#ca-02--lo-que-ya-existe-no-se-pisa) | Lo que ya existe no se pisa | Corriendo, y es la mitad que importa: instalar sobre un proyecto que ya trabajó no puede borrarle nada |
-| [CA-03](../HU-003-estructura-de-carpetas.md#ca-03--la-estructura-que-falta-se-reporta) | La estructura que falta se reporta | Corriendo: la revisión de instalación dice qué falta. **Y sobre esta casa reporta un punto con razón** — el planteamiento que no está, pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) |
+| [CA-03](../HU-003-estructura-de-carpetas.md#ca-03--la-estructura-que-falta-se-reporta) | La estructura que falta se reporta | Corriendo: la revisión de instalación dice qué falta. **Y sobre esta casa reporta un punto con razón** — el planteamiento que no está, pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) |
 
 **Por qué una sola fase.** Los tres CA se comprueban con las mismas dos corridas: instalar y revisar (`02·F12.10`).
 
@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Escribir el planteamiento de este repositorio.** Es el pendiente [56](../../../../../pendientes/56-el-estandar-no-tiene-planteamiento.md) y sale de una conversación, no de leer el repositorio.
+- **Escribir el planteamiento de este repositorio.** Es el pendiente [56](../../../../../pendientes/hecho/el-estandar-tiene-su-planteamiento.md) y sale de una conversación, no de leer el repositorio.
 - **No pisar lo escrito,** que es [HU-005](../../HU-005-no-pisar-lo-escrito/HU-005-no-pisar-lo-escrito.md) y lo mira desde el contenido de los archivos; acá se mira desde las carpetas.
 - **Cambiar la estructura declarada.** Si falta algo, se propone.
 
