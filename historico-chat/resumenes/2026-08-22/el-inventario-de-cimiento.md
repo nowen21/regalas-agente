@@ -67,15 +67,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Qué pasó** | `validar.py estandar` falla por un enlace roto: [indice-tematico.md](../indice-tematico.md) línea 553 apunta a `2026-08-22/sesion-3.md`, y ese archivo hoy se llama `el-encuadre-enlaza-la-cadena-no-la-copia.md`. |
 | **Por qué importa** | Es la única falla del comprobador en el repositorio, y detiene el `push` de cualquiera. No es de esta sesión: el renombrado lo hizo otra. |
 | **Qué lo soluciona** | Una pieza: corregir la línea del índice, o que el renombrado del histórico arregle también el índice temático, como ya hace con el índice del día. |
-| **Qué se decidió** | Sin decidir. No se tocó por ser trabajo de otra sesión; queda avisado al usuario. |
-| **Estado** | `abierto` |
+| **Qué se decidió** | Se corrigió: el enlace apunta ahora al resumen renombrado. Se tocó trabajo de otra sesión porque la falla detenía la publicación de todo el repositorio, y el usuario pidió subir. |
+| **Estado** | `resuelto acá` |
 | **Responde a** | EP-006 · Memoria de lo aprendido |
 | **Dispara** | 1. **EP-006 · HU nueva — «renombrar una sesión arregla todos sus índices»**. Como usuario / quiero que al renombrar un resumen se corrijan todos los índices que lo nombran / para que el comprobador no quede en rojo por un renombrado. Contexto: hoy `historico.py --renombrar` corrige el índice del día pero no el temático, y el hueco ya dejó una falla viva. |
 | **Orden de resolución** | Primero de los abiertos: es una falla del comprobador, no una mejora. |
-| **Dónde queda** | Por escribir; avisado en el chat del 2026-08-22. |
+| **Dónde queda** | [historico-chat/resumenes/indice-tematico.md](../indice-tematico.md), línea 553. La historia que dispara sigue sin escribir. |
 | **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
-| **Cerrado en** | — |
-| **Con qué se retoma** | ¿Lo corrige esta sesión, aunque el renombrado sea de otra, o se deja a quien lo hizo? |
+| **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Con qué se retoma** | — |
 
 
 ### H-5 · Todo el ciclo de vida se administra desde la interfaz, y falta decidir dónde vive el documento
@@ -106,10 +106,12 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☐ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1, H-3 y H-4 |
+| Todo hallazgo abierto tiene su pendiente creado | ☐ H-2 y H-5 siguen sin archivo en `pendientes/` |
+| Toda historia disparada está escrita en su épica | ☐ las tres historias y la épica de la interfaz están descritas acá, no creadas |
+| Lo que se hizo está aprobado y guardado | ☑ comiteado y publicado |
+
+**Falta para cerrar:** bajar H-2 y H-5 a `pendientes/`, y abrir la épica de la interfaz, que es donde caen las 14 filas de los grupos 5 y 6 del inventario.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
