@@ -21,3 +21,9 @@ plantillas/proyectos.md
 
 # Guiones de apoyo del agente durante una sesión (se borran al terminar; 04·S9: nada se escribe fuera del proyecto)
 .tmp-agente/
+
+# Interfaz (visor): terceros descargados, junte de estáticos y credenciales locales
+interfaz/terceros/
+interfaz/.venv/
+interfaz/staticfiles/
+interfaz/.env

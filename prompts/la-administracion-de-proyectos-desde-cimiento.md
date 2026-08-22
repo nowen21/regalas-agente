@@ -1,6 +1,6 @@
 # La administración de los proyectos, desde Cimiento
 
-**Fecha:** 2026-08-21 · **Contexto:** al analizar los pendientes 73 y 74, el usuario dio la dirección de fondo. Dio origen al [pendiente 75](../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md).
+**Fecha:** 2026-08-21 · **Contexto:** al analizar los pendientes 73 y 74, el usuario dio la dirección de fondo. Dio origen al [pendiente 75](../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md).
 
 Sus palabras, literales:
 

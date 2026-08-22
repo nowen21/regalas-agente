@@ -1,0 +1,2 @@
+# Lo de desarrollo: hoy no agrega nada sobre la base.
+-r base.txt

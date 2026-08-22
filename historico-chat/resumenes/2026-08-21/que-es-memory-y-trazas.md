@@ -27,13 +27,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 
 - **Qué pasó:** Al analizar los pendientes 73 y 74, el usuario dio la línea de fondo: Cimiento es el mecanismo que obliga a cumplir el estándar, y su interfaz debe permitir registrar, configurar, consultar y administrar todos los proyectos — la lista no puede seguir siendo `plantillas/proyectos.md` escrito a mano. Y ordenó bajar el 73.
 - **Por qué importa:** Todo lo que opera sobre «todos los instalados» (instalar, avisar cierres, validar cumplimiento) cuelga hoy de ese archivo, que envejece en silencio.
-- **Qué lo soluciona:** La dirección quedó anotada con sus palabras literales en [prompts/la-administracion-de-proyectos-desde-cimiento.md](../../../prompts/la-administracion-de-proyectos-desde-cimiento.md) y como [pendiente 75](../../../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) (P3: falta la decisión de diseño de qué es la «interfaz»). El 73 bajó por la cadena: nace [HU-014 — La guía de entrada del estándar](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) con su fase A, plan y pruebas escritos, esperando la aprobación del usuario (puertas 4 y 7).
+- **Qué lo soluciona:** La dirección quedó anotada con sus palabras literales en [prompts/la-administracion-de-proyectos-desde-cimiento.md](../../../prompts/la-administracion-de-proyectos-desde-cimiento.md) y como [pendiente 75](../../../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md) (P3: falta la decisión de diseño de qué es la «interfaz»). El 73 bajó por la cadena: nace [HU-014 — La guía de entrada del estándar](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-014-la-guia-de-entrada-del-estandar/HU-014-la-guia-de-entrada-del-estandar.md) con su fase A, plan y pruebas escritos, esperando la aprobación del usuario (puertas 4 y 7).
 - **Qué se decidió:** El usuario aprobó HU-014 y sus planes («si») y la fase se ejecutó y cerró en Cumple: nace `base/guia-de-entrada.md` (heredable; al arranque solo le suma su línea de índice de 102 bytes, desvío declarado en el resultado), versión 28.2.0, pendiente 73 en `hecho/` con aviso a los 9 instalados y el adjunto borrado como ordenaba. Además el usuario decidió la interfaz del 75: es `interfaz/` (el visor Django) y debe adoptar la estructura de `plantillas/estructura-proyecto-django.md`; la brecha quedó medida en el pendiente, que sube a P2.
 - **Estado:** resuelto acá (el 74 y el 75 siguen en el backlog, con su orden acordado: 74, luego 75a y 75b)
 - **Responde a:** pendientes 73 y 75
 - **Dispara:** EP-001 · HU-014 (ya escrita con sus dos CA)
 - **Orden de resolución:** —
-- **Dónde queda:** [pendientes/hecho/la-guia-de-entrada-es-del-estandar.md](../../../pendientes/hecho/la-guia-de-entrada-es-del-estandar.md), la entrada 28.2.0 del CHANGELOG, la fase A de HU-014 cerrada, y el [pendiente 75](../../../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) con la decisión de diseño escrita
+- **Dónde queda:** [pendientes/hecho/la-guia-de-entrada-es-del-estandar.md](../../../pendientes/hecho/la-guia-de-entrada-es-del-estandar.md), la entrada 28.2.0 del CHANGELOG, la fase A de HU-014 cerrada, y el [pendiente 75](../../../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md) con la decisión de diseño escrita
 - **Nace en:** 2026-08-21 · que-es-memory-y-trazas
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
 - **Con qué se retoma:** — (siguen el 74 y el 75, por su orden; y el commit de esta ronda, que autoriza el usuario)
@@ -63,14 +63,31 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 - **Responde a:** la orden del usuario del 2026-08-21
 - **Dispara:** — (los frentes 2 y 3 se bajarán cuando el usuario los ordene; la nota los dimensiona)
 - **Orden de resolución:** —
-- **Dónde queda:** [plantillas/ciclo-vida-proyectos/](../../../plantillas/ciclo-vida-proyectos/README.md), la entrada 30.0.0 del CHANGELOG, la nota de entregables y el recuerdo de las correcciones
+- **Dónde queda:** [plantillas/ciclo-vida-proyectos/README.md/](../../../plantillas/ciclo-vida-proyectos/README.md), la entrada 30.0.0 del CHANGELOG, la nota de entregables y el recuerdo de las correcciones
 - **Nace en:** 2026-08-21 · que-es-memory-y-trazas
 - **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
-- **Con qué se retoma:** el frente 3 (generador y mapa de completitud), cuando el usuario lo ordene. El frente 2 cerró el mismo día: nacen los moldes 12 a 22 (v30.1.0), con el manual de usuario declarado como el inventario madurado y las vistas (SRS, matriz, defectos, arquitectura) reservadas al generador
+- **Con qué se retoma:** del frente 3 quedó hecha su base el mismo día: `validar.py expediente` (v30.2.0, 6 pruebas), el mapa de completitud por proyecto — estrenó midiendo `shopnest-mesa`: 3 de 13 entregables. Falta el generador de vistas consolidadas y el `.docx`, cuya casa natural es la interfaz del pendiente 75 (la dependencia python-docx vive allá, no en validadores/). El frente 2 cerró también hoy: moldes 12 a 22 (v30.1.0)
 
 ---
 
-También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [memory.md](../../memory/memory.md) y en [trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
+### H-5 · El pendiente 75 cerró el día en que nació: los proyectos se administran desde Cimiento
+
+- **Qué pasó:** Ejecutado el 75 completo. **(a)** `interfaz/` adoptó la estructura estándar Django: `requirements/` con lock, `config/settings/` base+local, `.env.example`, módulo completo, y los terceros fuera del repo (`descargar_estaticos.py` los trae pineados por huella SHA-256, verificados 8 de 8 contra el CDN antes de borrar nada; sigue sin internet tras instalar). **(b)** Nace `interfaz/proyectos/`: el registro como datos con pantallas (registrar, editar, baja sin borrar historia, **medir** el expediente con `validar.py expediente`), 7 pruebas en verde; `plantillas/proyectos.md` pasó a generarse desde el registro, con los 10 proyectos reales e ida y vuelta verificada.
+- **Por qué importa:** Es la dirección que el usuario fijó en H-2, cumplida: Cimiento administra y mide sus proyectos desde la aplicación, no desde un archivo a mano.
+- **Qué lo soluciona:** Hecho; versión 30.3.0. Dos tropiezos del camino, ya corregidos y con prueba: el filtro del encabezado se comía a «Proyecto de grado» al importar, y un `exportar` corrió antes de verificar el `importar` y vació el `.md` real (se reconstruyó completo desde la transcripción de esta sesión, que lo tenía literal — el histórico pagó su costo hoy).
+- **Qué se decidió:** La deuda declarada en el cierre: el instalador aún anota altas en el `.md` generado y la interfaz las importa; escribirlas directo al registro es mejora futura.
+- **Estado:** resuelto acá
+- **Responde a:** pendiente 75 (H-2 de esta sesión)
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md](../../../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md), la entrada 30.3.0 del CHANGELOG, `interfaz/proyectos/` y la pantalla Proyectos del visor
+- **Nace en:** 2026-08-21 · que-es-memory-y-trazas
+- **Cerrado en:** 2026-08-21 · que-es-memory-y-trazas
+- **Con qué se retoma:** — (quedan en el backlog: el 59 que espera tus respuestas, los arreglos chicos 33/71/72, el 19 y el 48 por tandas; y el generador de vistas y `.docx`, ya con casa: la interfaz)
+
+---
+
+También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [historico-chat/memory/memory.md](../../memory/memory.md) y en [historico-chat/trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
 
 ---
 

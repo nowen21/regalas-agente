@@ -1,0 +1,2 @@
+# Las dependencias de producción del visor.
+Django>=5.0,<6

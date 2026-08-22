@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }} — visor{% endblock %}
+{% block encabezado %}Expediente del ciclo · {{ proyecto.nombre }}{% endblock %}
+{% block contenido %}
+<p><code>{{ proyecto.ruta }}</code> · medido en este momento con <code>validar.py expediente</code>.
+  <a href="/proyectos/" class="btn btn-outline-secondary btn-sm ms-2">Volver</a></p>
+{% if not existe %}<div class="alert alert-danger">{{ reporte|safe }}</div>
+{% else %}<div class="card"><div class="card-body">{{ reporte|safe }}</div></div>{% endif %}
+{% endblock %}

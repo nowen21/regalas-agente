@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }} — visor{% endblock %}
+{% block encabezado %}{{ titulo }}{% endblock %}
+{% block contenido %}
+<form method="post" class="col-lg-7">{% csrf_token %}
+  {% for field in form %}
+    <div class="mb-3">
+      <label class="form-label fw-semibold">{{ field.label }}</label>
+      {{ field }}
+      {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+      {% for e in field.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+  {% endfor %}
+  <button class="btn btn-primary">Guardar</button>
+  <a href="/proyectos/" class="btn btn-outline-secondary">Cancelar</a>
+</form>
+{% endblock %}

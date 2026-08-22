@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.3.0 — 2026-08-21
+
+**MENOR** (la interfaz local gana el registro de proyectos y adopta la estructura estándar; `base/` y `plantillas/` no cambian de exigencia, así que nadie migra nada).
+
+**Los proyectos se administran ahora desde Cimiento, no desde un archivo escrito a mano.** La interfaz tiene una pantalla nueva, Proyectos: registrar, editar, dar de baja (sin borrar la historia) y **medir** — el expediente del ciclo de cada proyecto, calculado en el momento. La lista que antes se editaba a mano (`plantillas/proyectos.md`) pasó a ser un archivo **generado** desde el registro; el instalador y los avisos de cierre lo siguen leyendo igual, y lo que el instalador anote se sube al registro con un clic. Era la dirección que el usuario fijó: «los proyectos deben registrarse, configurarse, consultarse y administrarse desde la propia interfaz».
+
+Y la interfaz misma quedó cumpliendo la estructura que el estándar le exige a cualquier proyecto Django: entorno propio, dependencias declaradas y congeladas (`requirements/` con lock), configuración partida en común y local con sus variables en `.env.example`, las plantillas de todo el proyecto en su carpeta, un paquete con un módulo por carpeta y cada módulo completo (modelos, pruebas, migraciones), y **ningún tercero copiado al repositorio**: Bootstrap, AdminLTE, los iconos y Chart.js se descargan una vez, pineados por versión y huella SHA-256, y el visor sigue funcionando sin internet después de instalado.
+
+**El detalle.** Es el [pendiente 75](pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md), cerrado el mismo día en que nació. Nace `interfaz/proyectos/` (modelo, pantallas, importar/exportar, 7 pruebas junto a las de humo del visor) e `interfaz/descargar_estaticos.py`; `interfaz/requirements/` reemplaza al `requirements.txt` plano y `config/settings/` al `settings.py` único. Los 10 proyectos reales quedaron en el registro con la ida y vuelta al `.md` verificada. Deuda declarada en el cierre: el instalador aún anota sus altas en el `.md` generado (la interfaz las importa); escribirlas directo al registro es mejora futura.
+
 ## 30.2.0 — 2026-08-21
 
 **MENOR** (aditivo: un lector nuevo; nadie tiene que cambiar nada).
@@ -19,7 +29,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 Estrenó midiendo un proyecto real: de los trece entregables del expediente tenía tres (el planteamiento, el inventario de funcionalidades y el modelo de datos), y la cadena de ejecución completa: tres épicas, veintiuna historias, veinticinco fases con plan. Ese número — «3 de 13» — es la primera vez que el cumplimiento del expediente se ve de un vistazo.
 
-**El detalle.** Nace [`validadores/expediente.py`](validadores/expediente.py) con seis casos de prueba: encuentra cada entregable por su nombre viva donde viva (con o sin prefijo), distingue completo, en llenado (contando los `«…»` de `13·DOC19`) y no-aplica, y cuenta las estaciones 03 a 11 por su estructura canónica. Lo que falta del frente: el generador de las vistas consolidadas (SRS, matriz, defectos, arquitectura) y el `.docx`, cuya casa natural es la interfaz del [pendiente 75](pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) — quedó dimensionado en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md).
+**El detalle.** Nace [`validadores/expediente.py`](validadores/expediente.py) con seis casos de prueba: encuentra cada entregable por su nombre viva donde viva (con o sin prefijo), distingue completo, en llenado (contando los `«…»` de `13·DOC19`) y no-aplica, y cuenta las estaciones 03 a 11 por su estructura canónica. Lo que falta del frente: el generador de las vistas consolidadas (SRS, matriz, defectos, arquitectura) y el `.docx`, cuya casa natural es la interfaz del [pendiente 75](pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md) — quedó dimensionado en [notas/entregables-del-ciclo-de-vida.md](notas/entregables-del-ciclo-de-vida.md).
 
 ## 30.1.0 — 2026-08-21
 

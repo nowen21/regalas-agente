@@ -1,0 +1,87 @@
+{% load static %}<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Estándar de Agente — visor{% endblock %}</title>
+  <script>/* tema guardado, antes de pintar, para evitar parpadeo */
+    (function(){try{document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('tema')||'light');}catch(e){}})();</script>
+  <link rel="stylesheet" href="{% static 'bootstrap-icons/bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'adminlte/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'cimiento/visor.css' %}">
+</head>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<div class="app-wrapper">
+  <nav class="app-header navbar navbar-expand bg-body">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"><i class="bi bi-list"></i></a></li>
+        <li class="nav-item d-none d-md-block"><a href="/" class="nav-link fw-semibold">Estándar de Agente — visor</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#" id="toggle-tema" role="button" title="Modo claro/oscuro"><i class="bi bi-moon-stars"></i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <div class="sidebar-brand">
+      <a href="/" class="brand-link"><i class="bi bi-robot me-2"></i><span class="brand-text fw-light">Agente</span></a>
+    </div>
+    <div class="sidebar-wrapper">
+      <nav class="mt-2">
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+          <li class="nav-item"><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}"><i class="nav-icon bi bi-house-door"></i><p>Inicio</p></a></li>
+          <li class="nav-item"><a href="/panel/" class="nav-link {% if request.path == '/panel/' %}active{% endif %}"><i class="nav-icon bi bi-speedometer2"></i><p>Panel de memoria</p></a></li>
+          <li class="nav-item"><a href="/memoria/" class="nav-link {% if request.path == '/memoria/' %}active{% endif %}"><i class="nav-icon bi bi-hdd-stack"></i><p>Memoria (señales)</p></a></li>
+          <li class="nav-item"><a href="/proyectos/" class="nav-link {% if request.path == '/proyectos/' %}active{% endif %}"><i class="nav-icon bi bi-diagram-3"></i><p>Proyectos</p></a></li>
+          {% for sec in secciones %}
+            <li class="nav-item {% if sec.abierta %}menu-open{% endif %}">
+              <a href="#" class="nav-link {% if sec.abierta %}active{% endif %}">
+                <i class="nav-icon bi bi-folder2"></i>
+                <p>{{ sec.titulo }} <span class="nav-badge badge text-bg-secondary">{{ sec.items|length }}</span><i class="nav-arrow bi bi-chevron-right"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                {% for d in sec.items %}
+                  <li class="nav-item"><a href="/doc/?p={{ d.rel|urlencode }}" class="nav-link {% if d.activo %}active{% endif %}"><i class="nav-icon bi bi-dot"></i><p>{{ d.nombre }}</p></a></li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="app-main">
+    <div class="app-content-header">
+      <div class="container-fluid"><h1 class="mb-0 fs-4">{% block encabezado %}{% endblock %}</h1></div>
+    </div>
+    <div class="app-content">
+      <div class="container-fluid">{% block contenido %}{% endblock %}</div>
+    </div>
+  </main>
+</div>
+
+<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'adminlte/adminlte.min.js' %}"></script>
+<script>
+  (function () {
+    const btn = document.getElementById('toggle-tema');
+    const icono = () => btn.querySelector('i').className =
+      document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+    icono();
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const html = document.documentElement;
+      const nuevo = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-bs-theme', nuevo);
+      try { localStorage.setItem('tema', nuevo); } catch (e) {}
+      icono();
+    });
+  })();
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

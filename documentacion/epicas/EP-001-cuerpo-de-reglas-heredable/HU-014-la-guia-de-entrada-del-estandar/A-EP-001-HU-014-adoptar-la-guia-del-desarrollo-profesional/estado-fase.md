@@ -63,7 +63,7 @@
 
 | Decisión / aprendizaje | Señal registrada (id/enlace) |
 |---|---|
-| La dirección de fondo del usuario (administrar proyectos desde Cimiento, no desde un `.md`) se capturó aparte: [pendiente 75](../../../../../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md) y sus palabras en [prompts/la-administracion-de-proyectos-desde-cimiento.md/](../../../../../prompts/la-administracion-de-proyectos-desde-cimiento.md) | No es señal: es trabajo por hacer, y va en su pendiente |
+| La dirección de fondo del usuario (administrar proyectos desde Cimiento, no desde un `.md`) se capturó aparte: [pendiente 75](../../../../../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md) y sus palabras en [prompts/la-administracion-de-proyectos-desde-cimiento.md/](../../../../../prompts/la-administracion-de-proyectos-desde-cimiento.md) | No es señal: es trabajo por hacer, y va en su pendiente |
 
 ---
 

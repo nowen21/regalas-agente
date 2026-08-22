@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block titulo %}Proyectos — visor{% endblock %}
+{% block encabezado %}Registro de proyectos{% endblock %}
+{% block contenido %}
+{% if mensaje %}<div class="alert alert-success py-2">{{ mensaje }}</div>{% endif %}
+
+<div class="mb-3 d-flex gap-2">
+  <a href="/proyectos/nuevo/" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> Registrar proyecto</a>
+  <form method="post" action="/proyectos/importar/">{% csrf_token %}
+    <button class="btn btn-outline-secondary btn-sm" title="Sube lo que el instalador haya anotado en plantillas/proyectos.md">
+      <i class="bi bi-box-arrow-in-down"></i> Importar del .md</button>
+  </form>
+  <form method="post" action="/proyectos/exportar/">{% csrf_token %}
+    <button class="btn btn-outline-secondary btn-sm" title="Regenera plantillas/proyectos.md desde este registro">
+      <i class="bi bi-box-arrow-up"></i> Exportar al .md</button>
+  </form>
+</div>
+
+<table class="table table-sm table-hover align-middle">
+  <thead><tr><th>Proyecto</th><th>Ruta</th><th>Scope</th><th>Stack</th><th>Estado</th><th></th></tr></thead>
+  <tbody>
+  {% for p in proyectos %}
+    <tr class="{% if not p.activo %}text-muted{% endif %}">
+      <td>{{ p.nombre }}</td>
+      <td><code>{{ p.ruta }}</code>
+          {% if not p.ruta_existe %}<span class="badge text-bg-danger" title="La carpeta no existe en esta máquina">ruta rota</span>{% endif %}</td>
+      <td><code>{{ p.scope }}</code></td>
+      <td>{{ p.stack }}</td>
+      <td>{% if p.activo %}<span class="badge text-bg-success">activo</span>{% else %}<span class="badge text-bg-secondary">de baja</span>{% endif %}</td>
+      <td class="text-nowrap">
+        <a href="/proyectos/{{ p.pk }}/medir/" class="btn btn-outline-primary btn-sm" title="El expediente del ciclo, medido ahora">Medir</a>
+        <a href="/proyectos/{{ p.pk }}/editar/" class="btn btn-outline-secondary btn-sm">Editar</a>
+        <form method="post" action="/proyectos/{{ p.pk }}/baja/" class="d-inline">{% csrf_token %}
+          <button class="btn btn-outline-danger btn-sm">{% if p.activo %}Dar de baja{% else %}Reactivar{% endif %}</button>
+        </form>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6">Nada registrado todavía. «Importar del .md» trae lo que el instalador ya anotó.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<p class="text-muted small">La fuente de verdad es este registro; <code>plantillas/proyectos.md</code> se regenera desde acá
+(el instalador y los avisos de cierre lo leen). Un proyecto de baja se conserva con su historia: no se borra.</p>
+{% endblock %}

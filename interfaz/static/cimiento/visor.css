@@ -1,0 +1,11 @@
+/* Lo propio del visor. Los terceros (Bootstrap, AdminLTE, iconos, Chart.js)
+   no viven en static/: los trae descargar_estaticos.py a terceros/, que
+   collectstatic junta con esto. */
+.doc-content pre{background:var(--bs-tertiary-bg);padding:12px;border-radius:6px;overflow-x:auto;font-size:.85rem}
+.doc-content code{background:var(--bs-secondary-bg);padding:1px 5px;border-radius:4px;font-size:.9em}
+.doc-content pre code{background:none;padding:0}
+.doc-content h1{font-size:1.55rem}.doc-content h2{font-size:1.25rem;margin-top:1.3rem}
+.doc-content h3{font-size:1.08rem;margin-top:1rem}
+.doc-content table{width:100%}
+.sidebar-menu .nav-link p{font-size:.84rem}
+.sidebar-menu .nav-header{font-size:.72rem;letter-spacing:.4px}

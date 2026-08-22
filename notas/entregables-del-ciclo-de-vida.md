@@ -92,4 +92,4 @@ Sigue siendo de diseño (no de existencia) qué entregables se **alimentan a man
 
 1. Si la carpeta agrupa solo el camino del ciclo o reorganiza `plantillas/` completa; y si los moldes se numeran por estación.
 2. Cómo llega el cambio a los 9 proyectos instalados (MAYOR con reinstalación, o redirecciones).
-3. La forma del generador `.docx` y del mapa de completitud (conecta con el [pendiente 75](../pendientes/75-la-administracion-de-proyectos-vive-en-cimiento-no-en-un-md.md): la interfaz es candidata natural a mostrarlo y generarlo).
+3. La forma del generador `.docx` y del mapa de completitud (conecta con el [pendiente 75](../pendientes/hecho/los-proyectos-se-administran-desde-cimiento.md): la interfaz es candidata natural a mostrarlo y generarlo).

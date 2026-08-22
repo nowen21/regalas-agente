@@ -6,8 +6,28 @@ Es una herramienta compañera, no parte del estándar agnóstico. Corre en tu m�
 
 ## Requisitos
 
-- Python 3.11+ y Django 5 (`pip install -r requirements.txt`).
-- **Funciona sin internet:** Bootstrap 5, AdminLTE 4, los iconos y Chart.js están incluidos en `visor/static/vendor/`.
+- Python 3.11+. Entorno propio del proyecto, como manda la estructura estándar: `python -m venv interfaz/.venv` y `interfaz/.venv/Scripts/pip install -r interfaz/requirements/lock.txt` (las versiones exactas; `local.txt` para trabajar sobre la base).
+- Estáticos de terceros (una sola vez, tras clonar): `python interfaz/descargar_estaticos.py` — los trae pineados por versión y huella SHA-256 a `terceros/`, que no se versiona y que `collectstatic` junta con lo propio de `static/` (`plantillas/estructura-proyecto-django.md`: nada de terceros en el repositorio). **Después de eso funciona sin internet.**
+- Migraciones (una sola vez): `python interfaz/manage.py migrate`.
+
+## Cómo está armado
+
+Sigue [plantillas/estructura-proyecto-django.md](../plantillas/estructura-proyecto-django.md), la misma estructura que el estándar le exige a cualquier proyecto Django:
+
+```
+interfaz/
+├── .venv/ · .env ................ no se versionan
+├── .env.example · manage.py
+├── requirements/ ................ base.txt · local.txt · lock.txt
+├── config/ ...................... settings/ (base.py · local.py) · urls.py · wsgi.py · asgi.py
+├── static/cimiento/ ............. SOLO lo propio (visor.css)
+├── terceros/ .................... Bootstrap, AdminLTE, iconos, Chart.js (los trae descargar_estaticos.py; no se versiona)
+├── staticfiles/ ................. lo que junta collectstatic (no se versiona)
+├── templates/ ................... base.html, la plantilla de todo el proyecto
+└── cimiento/ .................... el paquete con los módulos, uno por carpeta
+    ├── visor/ ................... lee el estándar y la memoria
+    └── proyectos/ ............... el registro de proyectos y su medición
+```
 
 ## Cómo se corre
 
@@ -25,6 +45,7 @@ Luego abrir **http://127.0.0.1:8000** en el navegador.
 - **Menú izquierdo** — las reglas base, los roles/skills, las plantillas y las notas, renderizadas.
 - **Memoria** — tabla paginada de señales, con **filtro dinámico** (búsqueda por palabra FTS5 + scope + tipo, sin botón), **detalle** al hacer clic en una fila, y **registro** de señales nuevas desde la web.
 - **Modo oscuro** — botón en la barra superior (se recuerda).
+- **Proyectos** — el registro de los proyectos que usan el estándar: registrar, editar, dar de baja y **medir** (el expediente del ciclo de cada uno, con `validar.py expediente`). Es la fuente de verdad; `plantillas/proyectos.md` se genera desde acá y el instalador lo sigue leyendo.
 
 ## Notas
 

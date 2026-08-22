@@ -181,16 +181,18 @@ agente/
 │   ├── pruebas.py
 │   └── README.md ..................... qué reporta y qué falta instrumentar
 │
-├── 🟩 interfaz/ ...................... VISOR WEB LOCAL (Django, funciona sin internet)
+├── 🟩 interfaz/ ...................... VISOR WEB LOCAL (Django; sin internet tras instalar)
 │   ├── manage.py ..................... python interfaz/manage.py runserver
-│   ├── requirements.txt
-│   ├── config/ ....................... settings, urls, wsgi
-│   ├── visor/
-│   │   ├── core.py ................... lee los .md del estándar y consulta la memoria
-│   │   ├── views.py
-│   │   ├── templates/visor/ .......... home · panel · doc · memoria · detalle de señal
-│   │   ├── templatetags/
-│   │   └── static/vendor/ ............ Bootstrap 5, AdminLTE 4, Chart.js (incluidos)
+│   ├── descargar_estaticos.py ........ trae Bootstrap/AdminLTE/iconos/Chart.js pineados por huella (vendor/ no se versiona)
+│   ├── requirements/ ................. base.txt · local.txt · lock.txt (10-DEP2)
+│   ├── .env.example .................. las variables, sin valores (.env no se versiona)
+│   ├── config/ ....................... urls, wsgi, asgi y settings/ (base.py + local.py)
+│   ├── static/cimiento/ .............. SOLO lo propio (visor.css)
+│   ├── terceros/ ..................... Bootstrap, AdminLTE, iconos, Chart.js descargados (NO se versiona)
+│   ├── templates/ .................... base.html, la plantilla de todo el proyecto
+│   └── cimiento/ ..................... el paquete: un módulo por carpeta (estructura-proyecto-django.md)
+│       ├── visor/ .................... core.py lee el estándar y la memoria · views · templates/visor/ · templatetags
+│       └── proyectos/ ................ EL REGISTRO DE PROYECTOS: modelo, pantallas, medir (expediente), importar/exportar el .md
 │   ├── README.md
 │   └── _visor.sqlite3 ................ base interna de Django (NO se versiona)
 │
@@ -253,7 +255,7 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 | `validadores/instalar.py` | `plantillas/CLAUDE.md.plantilla` · `plantillas/stack-instalacion.md` · `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/proyectos.md` | Es lo que deja el agente instalado y operativo en otro proyecto, sin pasos manuales. |
 | `validadores/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |
 | `metricas/metricas.py` | `memoria/senales.db` | Solo agrega lo que ya se registró; no instrumenta nada nuevo. |
-| `interfaz/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |
+| `interfaz/cimiento/visor/core.py` | `base/` · `skills/` · `plantillas/` · `notas/` · `senales.db` | Lee los archivos y la base **reales**, no una copia. |
 | `.githooks/commit-msg` | `validadores/validar.py commit` | El hook es una cáscara; la regla está en el validador. |
 | Todos los `hook_*.py` | `validadores/*.py` | Los enganches no tienen lógica propia: llaman al validador que corresponde. |
 
