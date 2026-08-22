@@ -30,7 +30,7 @@ Un validador que calla sin haber mirado es peor que ninguno: el que no existe se
 1. Que `enlaces.py` **tenga punto de entrada**, o que se muera diciendo por dónde se corre.
 2. **Revisar los demás.** Son unos treinta programas en `validadores/`; no se sabe cuántos tienen el mismo hueco, y esa es media gracia de este pendiente.
 
-   **Segundo caso encontrado: `metareglas.py`** (2026-08-17, retro-documentando EP-001). Mismo síntoma —`python validadores/metareglas.py` no imprime nada y sale con 0— y sin subcomando en `validar.py`. Pesa más que el de `enlaces.py`: es el único programa que comprueba once de las veinte filas del [checklist del estándar](../../base/20-meta-reglas/checklist.md) —entre ellas la 5, que `M3` necesita, y la 15, que impide que una regla normal mande sobre una `[BLINDADA]`— y además `M16`, el respaldo de toda regla de proyecto. El pendiente [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md) cita una medición hecha con él el 2026-08-14: hoy esa medición no se puede repetir por la línea de comandos.
+   **Segundo caso encontrado: `metareglas.py`** (2026-08-17, retro-documentando EP-001). Mismo síntoma —`python validadores/metareglas.py` no imprime nada y sale con 0— y sin subcomando en `validar.py`. Pesa más que el de `enlaces.py`: es el único programa que comprueba once de las veinte filas del [checklist del estándar](../../base/20-meta-reglas/checklist.md) —entre ellas la 5, que `M3` necesita, y la 15, que impide que una regla normal mande sobre una `[BLINDADA]`— y además `M16`, el respaldo de toda regla de proyecto. El pendiente [19](ninguna-regla-reprueba-su-propio-checklist.md) cita una medición hecha con él el 2026-08-14: hoy esa medición no se puede repetir por la línea de comandos.
 
 ## Con qué se cruza
 
@@ -73,8 +73,8 @@ La prueba nueva —[`test_ninguno_termina_en_silencio.py`](../../validadores/tes
 
 | Qué | Adónde fue |
 |---|---|
-| `D-02` — la regla sin clasificar **avisa**, y un aviso no detiene | El [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
+| `D-02` — la regla sin clasificar **avisa**, y un aviso no detiene | El [19](ninguna-regla-reprueba-su-propio-checklist.md) |
 | `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | El [55](los-enlaces-de-ejemplo-no-son-enlaces.md) |
 | El 55 afirmaba que `G9` no existe, y sí existe | Corregido en el propio 55 |
 
-**Y una medición que vuelve a ser posible.** `validar.py metareglas` reporta hoy **7 fallas y 229 avisos**. No son de esta fase: son el capítulo 20 sin cumplirse a sí mismo, o sea el [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Ese pendiente citaba una medición del 2026-08-14 que desde entonces no se podía repetir por línea de comandos. Ahora sí.
+**Y una medición que vuelve a ser posible.** `validar.py metareglas` reporta hoy **7 fallas y 229 avisos**. No son de esta fase: son el capítulo 20 sin cumplirse a sí mismo, o sea el [19](ninguna-regla-reprueba-su-propio-checklist.md). Ese pendiente citaba una medición del 2026-08-14 que desde entonces no se podía repetir por línea de comandos. Ahora sí.

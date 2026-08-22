@@ -37,7 +37,7 @@ Cómo quedaron repartidas:
 |---|---|
 | [`validadores/reglas-validables.md`](../../../../../validadores/reglas-validables.md) | Las 33 filas, dos secciones nuevas y el conteo del principio |
 | [`HU-009-reglas-sin-checklist-al-dia.md`](../HU-009-reglas-sin-checklist-al-dia.md) | La fase en §8, la tarea marcada y la bitácora |
-| [`pendientes/19-...`](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Al día con lo que sigue faltando. **Sigue abierto** |
+| [`pendientes/19-...`](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Al día con lo que sigue faltando. **Sigue abierto** |
 | [`CHANGELOG.md`](../../../../../CHANGELOG.md) · `VERSION` | 23.1.1 |
 
 **Ninguna regla cambió de texto.** Esta fase clasifica, no reescribe.

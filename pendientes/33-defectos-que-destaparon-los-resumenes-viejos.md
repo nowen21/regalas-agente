@@ -46,7 +46,7 @@ Este archivo los junta. Cada uno dice de qué resumen sale.
 **6 · Nadie revisó a qué proyectos les borró la memoria el enganche.** → **Cerrado el 2026-08-16** → [pendientes/hecho/memoria-borrada-por-el-enganche.md](hecho/memoria-borrada-por-el-enganche.md). Salió de acá a pendiente propio (el 39) y se cerró el mismo día: la revisión dio que el único proyecto con el almacén enlazado por *junction* —la condición que dispara el defecto— era `agro-system`, el que lo reportó, y ya se había recuperado. Parecía lo más urgente de todo el backlog mientras vivía dentro de este archivo; leído solo, resultó estar contestado. El texto completo está allá.
 
 **7 · Un checklist anulado que nadie volvió a aplicar.** → **Promovido a pendiente propio el 2026-08-16** → [52 · El sello del checklist caduca con el texto](hecho/el-sello-del-checklist-se-comprueba.md). Salió de acá porque leído solo se ve lo que dentro de esta lista no se veía: no es que a `F13` le falte su checklist, es que **el sello caduca con el texto y nada lo comprueba**, y nadie sabe cuántos más están vencidos. Allá quedan las dos salidas evaluadas y cuál conviene.
-→ [la instalación se hace sola · H-3](../historico-chat/resumenes/2026-08-08/la-instalacion-se-hace-sola.md). Se cruza con el [pendiente 19](19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+→ [la instalación se hace sola · H-3](../historico-chat/resumenes/2026-08-08/la-instalacion-se-hace-sola.md). Se cruza con el [pendiente 19](hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **8 · Huecos chicos que quedaron preguntados y sin respuesta.**
 

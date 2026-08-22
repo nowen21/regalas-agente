@@ -22,7 +22,7 @@
 |---|---|---|
 | [CA-01](../HU-011-molde-de-las-reglas.md#ca-01--un-identificador-repetido-o-con-prefijo-ajeno-se-reporta) | Un identificador repetido o con prefijo ajeno se reporta | Escrito (fila 6) y **sin poder correrse** |
 | [CA-02](../HU-011-molde-de-las-reglas.md#ca-02--una-dependencia-que-no-existe-o-que-manda-hacia-arriba-se-reporta) | Una dependencia que no existe o que manda hacia arriba se reporta | Escrito (filas 14 y 15) y sin poder correrse. Es la que protege el núcleo |
-| [CA-03](../HU-011-molde-de-las-reglas.md#ca-03--una-regla-sin-su-checklist-se-reporta) | Una regla sin su checklist se reporta | Escrito (`M14`) y sin poder correrse. **Y hay 121 reglas sin bloque de checklist**, según el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
+| [CA-03](../HU-011-molde-de-las-reglas.md#ca-03--una-regla-sin-su-checklist-se-reporta) | Una regla sin su checklist se reporta | Escrito (`M14`) y sin poder correrse. **Y hay 121 reglas sin bloque de checklist**, según el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) |
 | [CA-04](../HU-011-molde-de-las-reglas.md#ca-04--una-regla-que-nombra-una-tecnología-se-reporta) | Una regla que nombra una tecnología se reporta | Escrito (fila 5, que sostiene `M3`) y sin poder correrse |
 | [CA-05](../HU-011-molde-de-las-reglas.md#ca-05--una-regla-del-proyecto-sin-respaldo-en-la-base-se-reporta) | Una regla del proyecto sin respaldo en la base se reporta | Escrito aparte (`M16`, sobre el catálogo del proyecto) y sin poder correrse |
 
@@ -36,7 +36,7 @@
 
 **Fuera de alcance:**
 
-- **Arreglar las 121 reglas sin checklist ni las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md); acá se mide.
+- **Arreglar las 121 reglas sin checklist ni las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md); acá se mide.
 - **Revisar los otros treinta programas** del pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md): esta fase arregla el que su HU cubre.
 - **Cambiar el checklist ni el molde,** que son de EP-001.
 - **Las nueve filas que piden leer y entender.** El programa no las simula, y así se queda.

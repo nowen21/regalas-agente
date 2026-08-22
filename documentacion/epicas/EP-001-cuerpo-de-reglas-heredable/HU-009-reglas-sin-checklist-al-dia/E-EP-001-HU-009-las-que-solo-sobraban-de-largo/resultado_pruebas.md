@@ -86,7 +86,7 @@ De las quince que reprueban solo la fila 10, **cinco no son de redacción**: `03
 
 **El porqué que se sacó no se escribió en `notas/`.** `M5` dice que ahí va, y esta fase lo quitó del cuerpo sin ponerlo en ningún lado. **No se perdió** —está en el historial y en los sellos, que dicen qué salió de cada una— pero tampoco está donde debería.
 
-Son diez notas cortas, y es trabajo de una sesión. Queda anotado en el [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Son diez notas cortas, y es trabajo de una sesión. Queda anotado en el [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 ---
 

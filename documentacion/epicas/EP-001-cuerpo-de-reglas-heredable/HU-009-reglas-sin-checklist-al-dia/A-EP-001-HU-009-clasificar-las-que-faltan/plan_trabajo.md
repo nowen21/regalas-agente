@@ -20,7 +20,7 @@
 - 📝 **Modifica fase(s):** ninguna. La HU-009 no tenía fases.
 - ✨ **Funcionalidad nueva:** ninguna. Es completar un registro.
 
-**De dónde sale:** el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). El validador de meta-reglas midió por primera vez el propio cuerpo de reglas y encontró tres deudas: **129 reglas sin bloque de checklist**, **7 publicadas en «no cumple»** y **33 sin clasificar** en el registro de lo validable.
+**De dónde sale:** el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). El validador de meta-reglas midió por primera vez el propio cuerpo de reglas y encontró tres deudas: **129 reglas sin bloque de checklist**, **7 publicadas en «no cumple»** y **33 sin clasificar** en el registro de lo validable.
 
 **CA de la HU que cubre esta fase:**
 

@@ -1,10 +1,10 @@
 # Pendiente · El capítulo de meta-reglas no se cumple a sí mismo
 
-**Estado:** abierto solo por **dos decisiones del usuario** (`17·I3` y `12·PR3`); el resto del arreglo está hecho (v30.8.0 a v30.9.0) · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
+**Estado:** ✅ **hecho** el 2026-08-22 (v30.8.0 a v30.9.1), en la fase [`F-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/F-EP-001-HU-009-nadie-se-pasa-del-molde/README.md) · anotado 2026-08-14 · nace del hallazgo H-6 de [2026-08-14](../../historico-chat/resumenes/2026-08-14/hu-de-la-comprobacion-automatica.md).
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — es exactamente lo que esa historia pide, ya medido |
+| **Historia de usuario** | [EP-001 · HU-009 — Poner al día las reglas que no pasan su propio checklist](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md) — es exactamente lo que esa historia pide, ya medido |
 
 ## El problema
 
@@ -24,7 +24,7 @@ Las 33 sin clasificar incluyen los capítulos `18` y `19` completos, que ese arc
 
 **1. Decidir qué se hace con las que reprueban** —eran siete, hoy son **72**, y el número subió porque ahora todas dicen la verdad. Tres caminos: corregirlas, derogarlas, o aceptar que el checklist no aplica hacia atrás y dejarlo escrito.
 
-**2. Clasificar las 33.** ✅ **Hecho el 2026-08-16** (v23.1.1), en la fase [`A-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan/). Bajaron a cero.
+**2. Clasificar las 33.** ✅ **Hecho el 2026-08-16** (v23.1.1), en la fase [`A-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/A-EP-001-HU-009-clasificar-las-que-faltan). Bajaron a cero.
 
 **Y cambió el diagnóstico:** quince de las 33 **ya estaban clasificadas**. El registro decía `C1–C17`, un rango, y el programa busca cada identificador literal. Las que faltaban de verdad eran 18 — los capítulos `18` y `19` completos, más `G9`, `M15`, `F4` y `F12`.
 
@@ -36,7 +36,7 @@ El validador dice cuáles faltan, no si la regla está bien escrita. Eso lo deci
 
 ## La medición vuelve a ser posible — 2026-08-17
 
-Este pendiente citaba una medición hecha con `metareglas.py` el 2026-08-14, y desde entonces **no se podía repetir**: el programa no tenía subcomando en `validar.py`. Al cerrar el [53](hecho/ningun-validador-termina-en-silencio.md) lo ganó.
+Este pendiente citaba una medición hecha con `metareglas.py` el 2026-08-14, y desde entonces **no se podía repetir**: el programa no tenía subcomando en `validar.py`. Al cerrar el [53](ningun-validador-termina-en-silencio.md) lo ganó.
 
 ```
 $ python validadores/validar.py metareglas
@@ -102,7 +102,7 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 | `12·PR4` | Fila 11 | **Reformula `05·E5`, que a su vez reformula `00·N6`** — tres capas del mismo criterio. Tiene parte propia (pantallas y reportes) y esa es la que se queda |
 | `05·E2` | Fila 9 | **Son dos**: abortar temprano y la transacción. **La transacción se cita desde fuera** —`15·IM3` y el `13` apuntan acá— así que ya se usa como regla propia. Al partirla hay que llevar esas citas a la mitad nueva |
 | `05·E4` | Fila 10 | La escala de cuatro niveles no cabe en el molde. Mismo caso que `IM3`: la regla se queda con la exigencia y la escala se va a un anexo |
-| `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
+| `03·D1` | — | **No reprueba ella: duplica a [`06·R3`](../../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena)**, que es la dueña del tema y está limpia. Se arregla en el `03`, enlazando |
 | `17·I1` | Fila 10 | 395 caracteres. **No hay que partirla**: los tres estados son una sola exigencia. Lo que sobra es la explicación de cada uno |
 | `17·I3` | Fila 9 | Cuatro exigencias de accesibilidad que se cumplen sueltas. **La salida buena no es partirla en cuatro** sino un checklist con su regla que obliga a pasarlo |
 | `08·T1` | Fila 16 | **La excepción deja al agente autorizándose a sí mismo.** La regla que obliga a probar trae dentro el permiso de no probar, sin límite ni autorizador. Ponérselo es **MAYOR** |
@@ -113,13 +113,13 @@ El punto 3 pedía hacerlo **por capítulo, no de a una**. Van dos, empezando por
 
 ### Lo que se supo aplicando el checklist
 
-**Hay un análisis del 2026-08-07 que ya había medido esto**, en [analisis/base-2026-08-07-cumplimiento-meta-reglas.md](../analisis/base-2026-08-07-cumplimiento-meta-reglas.md), regla por regla y con recomendación. Al sellar `IM2` se razonó sin mirarlo y casi queda en CUMPLE una regla que ese análisis ya había reprobado — por el mismo motivo, la fila 9.
+**Hay un análisis del 2026-08-07 que ya había medido esto**, en [../analisis/base-2026-08-07-cumplimiento-meta-reglas.md](../../analisis/base-2026-08-07-cumplimiento-meta-reglas.md), regla por regla y con recomendación. Al sellar `IM2` se razonó sin mirarlo y casi queda en CUMPLE una regla que ese análisis ya había reprobado — por el mismo motivo, la fila 9.
 
 **Antes de aplicarle el checklist a un capítulo, hay que leer ese análisis.** Aplicarlo sin mirarlo es rehacer el juicio con menos datos.
 
 ### La fila 10 estaba midiendo mal, y castigaba a las reglas que citan bien
 
-`M5` da cuatro líneas —320 caracteres— y [`20·M15`](../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) exige que **toda** cita lleve su enlace. El conteo cobraba el marcado completo, así que cada enlace costaba unos cincuenta caracteres que nadie lee.
+`M5` da cuatro líneas —320 caracteres— y [`20·M15`](../../base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md) exige que **toda** cita lleve su enlace. El conteo cobraba el marcado completo, así que cada enlace costaba unos cincuenta caracteres que nadie lee.
 
 **Dos reglas del estándar tirando en direcciones contrarias, y perdía la que se cumplía.**
 
@@ -139,7 +139,7 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 
 ## Cinco sellos decían dos cosas contrarias — 2026-08-18
 
-**Al ir a arreglar las que reprueban se encontró que algunos sellos no dicen lo que su propia tabla dice.** Cerrado en la fase [`B-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/), v23.7.2.
+**Al ir a arreglar las que reprueban se encontró que algunos sellos no dicen lo que su propia tabla dice.** Cerrado en la fase [`B-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice), v23.7.2.
 
 | Regla | El texto reprobaba | La tabla marcaba |
 |---|---|---|
@@ -163,7 +163,7 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 
 ## Las reglas con nombre propio: cerradas — 2026-08-18
 
-**Era el punto 2 de «por dónde conviene seguir», y decía tres. Eran cuatro.** Cerrado en la fase [`C-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/), v23.7.3.
+**Era el punto 2 de «por dónde conviene seguir», y decía tres. Eran cuatro.** Cerrado en la fase [`C-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/C-EP-001-HU-009-las-tres-reglas-con-nombre-propio), v23.7.3.
 
 | Regla | Nombraba | Ahora dice |
 |---|---|---|
@@ -184,7 +184,7 @@ Es el único hallazgo de la pasada que era **falso de contenido** y no de forma:
 
 ## Dos que repetían al vecino: cerradas — 2026-08-18
 
-Fase [`D-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/D-EP-001-HU-009-enlazar-en-vez-de-repetir/), v23.7.4. **Las 72 pasan a 70.**
+Fase [`D-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/D-EP-001-HU-009-enlazar-en-vez-de-repetir), v23.7.4. **Las 72 pasan a 70.**
 
 | Regla | Se fue | Quedó |
 |---|---|---|
@@ -203,13 +203,13 @@ Fase [`D-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredab
 | `01·C16` | Normalizar el bloque `Encadenamiento` en **cuatro reglas a la vez** |
 | `04·S7` | **Derogarla** en favor de `10·DEP3`, como prescriben sus dos sellos |
 
-**Las dos derogaciones son decisión del usuario**, porque derogar obliga a adoptarlo ([`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)) en todos los proyectos instalados.
+**Las dos derogaciones son decisión del usuario**, porque derogar obliga a adoptarlo ([`02·F22`](../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md)) en todos los proyectos instalados.
 
 ---
 
 ## Las que solo sobraban de largo: diez cerradas — 2026-08-18
 
-Fase [`E-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo/), v23.7.5. **Las 70 pasan a 60.**
+Fase [`E-EP-001-HU-009`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/E-EP-001-HU-009-las-que-solo-sobraban-de-largo), v23.7.5. **Las 70 pasan a 60.**
 
 **Quince reprueban solo la fila 10, y diez eran puro exceso de explicación:** `01·C11`, `01·C12`, `01·C13`, `01·C19`, `03·D3`, `04·S1`, `04·S2`, `09·G7`, `09·G9`, `17·I1`. La más larga, `C13`, pasó de 802 a 306.
 
@@ -240,7 +240,7 @@ Fase [`E-EP-001-HU-009`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredab
 
 **Por dónde conviene seguir**, y no es por el capítulo más grande:
 
-1. **Las cinco excepciones sin autorizador.** Son la única categoría donde el defecto *deja pasar algo*: `00·N1` es una blindada con excepción y `08·T1` deja al agente autorizándose a no probar. [`04·S9`](../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es el modelo de cómo se escribe una completa, y [`01·C7`](../base/01-conducta.md#c7--ante-dos-lecturas-pregunta) probablemente sea el autorizador que les falta.
+1. **Las cinco excepciones sin autorizador.** Son la única categoría donde el defecto *deja pasar algo*: `00·N1` es una blindada con excepción y `08·T1` deja al agente autorizándose a no probar. [`04·S9`](../../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es el modelo de cómo se escribe una completa, y [`01·C7`](../../base/01-conducta.md#c7--ante-dos-lecturas-pregunta) probablemente sea el autorizador que les falta.
 2. ~~**Las tres con nombre propio.**~~ **Hecho el 2026-08-18** — eran cuatro, y la cuarta la encontró el programa. Ver arriba.
 3. **El `03` y el `04`.** Diecisiete de las 72 entre los dos, y son los que más cuesta tocar.
 
@@ -252,7 +252,7 @@ Los capítulos `18` y `19` —despliegue y observabilidad, los dos `opt-in`— *
 
 **No corre prisa y conviene decir por qué:** son `opt-in` y **ningún proyecto los tiene encendidos hoy**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar — y ese es el momento de escribirlos, con el proyecto delante.
 
-Es la misma razón por la que [`EP-001 · HU-013`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) no escribe todavía los capítulos de RPA y de IA: un capítulo de dominio sin proyecto que lo estrene se llena de lo que uno se imagina.
+Es la misma razón por la que [`EP-001 · HU-013`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-013-capitulos-opt-in-de-dominio/HU-013-capitulos-opt-in-de-dominio.md) no escribe todavía los capítulos de RPA y de IA: un capítulo de dominio sin proyecto que lo estrene se llena de lo que uno se imagina.
 
 ### `00·N1` es lo más serio de toda la pasada
 
@@ -264,15 +264,15 @@ Estaba señalada en rojo y con prioridad alta desde el 2026-08-07, y **el arregl
 
 ### Cabe en el molde y aun así reprueba
 
-Tres reglas de hoy caben de sobra y reprueban igual: [`04·S7`](../base/04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas) —167 caracteres, y sobra entera—, `00·N6` —204, y son tres reglas— y `00·N1` —289, con la excepción de más—.
+Tres reglas de hoy caben de sobra y reprueban igual: [`04·S7`](../../base/04-seguridad.md#s7--dependencias-sin-vulnerabilidades-conocidas) —167 caracteres, y sobra entera—, `00·N6` —204, y son tres reglas— y `00·N1` —289, con la excepción de más—.
 
 **Es el contrapeso de todo lo demás que se midió hoy.** El molde de 320 atrapa lo largo, y lo largo se ve; lo que no se ve es la regla corta que dice tres cosas, repite a la vecina o se abre una puerta. Esas solo las encuentra alguien leyendo.
 
 ### El número que `G8` necesita ya está ocupado
 
-El análisis del 2026-08-07 propuso partir [`09·G8`](../base/09-git.md#g8--el-mensaje-es-del-proyecto-no-de-la-herramienta) en dos: *«`G8` orden del cuerpo · `G9` sin firma de herramienta»*. Desde entonces nació una `G9` —la historia de usuario como unidad del commit— **que es otra cosa**.
+El análisis del 2026-08-07 propuso partir [`09·G8`](../../base/09-git.md#g8--el-mensaje-es-del-proyecto-no-de-la-herramienta) en dos: *«`G8` orden del cuerpo · `G9` sin firma de herramienta»*. Desde entonces nació una `G9` —la historia de usuario como unidad del commit— **que es otra cosa**.
 
-**El corte sigue siendo el correcto; el número no.** La mitad que salga se lleva `G10`. Es la clase de detalle que hace perder una tarde si se descubre a mitad del cambio, y [`20·M4`](../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) no deja reutilizar el ocupado.
+**El corte sigue siendo el correcto; el número no.** La mitad que salga se lleva `G10`. Es la clase de detalle que hace perder una tarde si se descubre a mitad del cambio, y [`20·M4`](../../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) no deja reutilizar el ocupado.
 
 **Lo mismo puede pasarle a las otras propuestas del análisis** —`D9`/`D10`, `S12`, `T8`, `E6`— y conviene comprobar cada número contra el cuerpo de hoy antes de escribir nada.
 
@@ -287,7 +287,7 @@ El análisis del 2026-08-07 propuso partir [`09·G8`](../base/09-git.md#g8--el-m
 
 ### `04·S9` es el modelo de excepción, y hacía falta encontrarlo
 
-Al sellar el `04` apareció lo que resuelve las tres excepciones incompletas: **[`04·S9`](../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es la única regla del estándar cuya excepción declara condición, límite y autorizador**, como pide `M8`. El análisis del 2026-08-07 ya recomendaba usarla de plantilla.
+Al sellar el `04` apareció lo que resuelve las tres excepciones incompletas: **[`04·S9`](../../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto) es la única regla del estándar cuya excepción declara condición, límite y autorizador**, como pide `M8`. El análisis del 2026-08-07 ya recomendaba usarla de plantilla.
 
 **Al acortarla, su excepción no se toca.** Es lo único de esa regla que hay que preservar entero.
 
@@ -311,7 +311,7 @@ Al sellar el `04` apareció lo que resuelve las tres excepciones incompletas: **
 
 | Regla | Qué falla |
 |---|---|
-| `D1` | Tres exigencias con «y» en el título, no cabe, y su bloque de índices repite [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) |
+| `D1` | Tres exigencias con «y» en el título, no cabe, y su bloque de índices repite [`06·R3`](../../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) |
 | `D3` | No cabe por poco |
 | `D4` | No cabe, esconde una exigencia aparte, y su excepción no dice quién autoriza |
 | `D5` | No cabe, y su excepción tampoco dice quién autoriza |
@@ -323,7 +323,7 @@ Al sellar el `04` apareció lo que resuelve las tres excepciones incompletas: **
 
 ### Tres excepciones sin quién autoriza, y aparecieron el mismo día
 
-[`08·T1`](../base/08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), `03·D4` y `03·D5` declaran condición y no dicen ni límite ni autorizador, que es lo que [`20·M8`](../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) pide.
+[`08·T1`](../../base/08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba), `03·D4` y `03·D5` declaran condición y no dicen ni límite ni autorizador, que es lo que [`20·M8`](../../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md) pide.
 
 **La de `T1` es la más grave** —el análisis del 2026-08-07 lo dijo así: *«deja al agente autorizándose a sí mismo»*— pero las tres tienen la misma forma, y por eso conviene resolverlas juntas. La pregunta de fondo es una sola: **quién concede el permiso de no cumplir.**
 
@@ -351,7 +351,7 @@ No hizo falta. `F5` declara hoy en su cuerpo *«extiende `08·T5`, que ya obliga
 
 ### Una recomendación del análisis que no se aplicó, y por qué
 
-Para `07·Q4` —«No repitas, pero no abstraigas de más»— el análisis proponía escribir la segunda mitad como **excepción formal** de [`20·M8`](../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). No se hizo, y la regla queda en CUMPLE igual.
+Para `07·Q4` —«No repitas, pero no abstraigas de más»— el análisis proponía escribir la segunda mitad como **excepción formal** de [`20·M8`](../../base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). No se hizo, y la regla queda en CUMPLE igual.
 
 `M8` pide **condición, límite y quién autoriza**. En `Q4` no hay quién autorice: no abstraer de más no es un permiso que alguien concede, es criterio de diseño que se ejerce al escribir. Forzarla a ese molde la haría decir algo falso.
 
@@ -361,7 +361,7 @@ Para `07·Q4` —«No repitas, pero no abstraigas de más»— el análisis prop
 
 El `06` es el primero que queda sin una sola regla reprobada: **las seis pasan las veinte filas**. Sirve de referencia de qué aspecto tiene un capítulo al día.
 
-Y deja ver algo que no se veía capítulo por capítulo: **quién reprueba por duplicación depende de quién copió, no de quién duplica.** [`06·R3`](../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y [`10·DEP3`](../base/10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día) están en la misma situación —cada una es la dueña de su tema y otra regla lo repite— pero `R3` no cita a nadie y `DEP3` sí. La que toma prestado es la que reprueba.
+Y deja ver algo que no se veía capítulo por capítulo: **quién reprueba por duplicación depende de quién copió, no de quién duplica.** [`06·R3`](../../base/06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena) y [`10·DEP3`](../../base/10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día) están en la misma situación —cada una es la dueña de su tema y otra regla lo repite— pero `R3` no cita a nadie y `DEP3` sí. La que toma prestado es la que reprueba.
 
 ### Un análisis anterior no exime de volver a medir
 
@@ -388,7 +388,7 @@ Es la otra cara de lo que se aprendió con `15·IM2`, donde no leer el análisis
 
 # Las 26 que hay que partir — propuesta del 2026-08-18
 
-**Esto no se ejecuta sin que el usuario apruebe la lista.** Partir una regla **crea un identificador nuevo**, y por [`20·M4`](../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) los identificadores no se reutilizan: lo que nazca acá lo van a citar los proyectos para siempre.
+**Esto no se ejecuta sin que el usuario apruebe la lista.** Partir una regla **crea un identificador nuevo**, y por [`20·M4`](../../base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md) los identificadores no se reutilizan: lo que nazca acá lo van a citar los proyectos para siempre.
 
 ## Antes: qué se arregló solo, y por qué el resto no
 
@@ -396,12 +396,12 @@ El 2026-08-18 se acortaron seis reglas y las reprobadas bajaron de **60 a 54**. 
 
 | | Medía | Mide |
 |---|---:|---:|
-| [`03·D8`](../base/03-datos.md) | 1 962 | 292 |
-| [`04·S9`](../base/04-seguridad.md) | 1 278 | 290 |
-| [`04·S10`](../base/04-seguridad.md) | 1 029 | 307 |
-| [`03·D5`](../base/03-datos.md) | 640 | 304 |
-| [`02·F13`](../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) | 564 | 309 |
-| [`05·E4`](../base/05-errores-y-logging.md) | 419 | 282 |
+| [`03·D8`](../../base/03-datos.md) | 1 962 | 292 |
+| [`04·S9`](../../base/04-seguridad.md) | 1 278 | 290 |
+| [`04·S10`](../../base/04-seguridad.md) | 1 029 | 307 |
+| [`03·D5`](../../base/03-datos.md) | 640 | 304 |
+| [`02·F13`](../../base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) | 564 | 309 |
+| [`05·E4`](../../base/05-errores-y-logging.md) | 419 | 282 |
 
 **Ya no queda ninguna así.** Las 54 restantes necesitan partirse, cambiar de título o rehacer su declaración de dependencia.
 
@@ -493,9 +493,9 @@ El usuario contestó **sí a las cuatro** preguntas de arriba. Antes de partir n
 
 | Capítulo | Reglas | Qué se hizo |
 |---|---|---|
-| `18`, `19` | las catorce | ejemplo INCORRECTO/CORRECTO; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md) |
+| `18`, `19` | las catorce | ejemplo INCORRECTO/CORRECTO; `DP8`, `OB1`, `OB3`, `OB5`, `OB6` recortadas al molde, porqués en [../notas/porques-recortados-al-molde.md](../../notas/porques-recortados-al-molde.md) |
 | `20` | `M2`, `M4`, `M7`, `M8` | `M2` dice que el preámbulo del `00` es anexo; las otras tres vuelven a cumplirse porque desapareció lo que las contradecía |
-| `02` | `F5`, `F12` | `F5` re-juzgada; `F12` queda con una exigencia y su texto literal pasa entero al [anexo](../base/02-flujo-de-trabajo/nomenclatura-de-fases.md) |
+| `02` | `F5`, `F12` | `F5` re-juzgada; `F12` queda con una exigencia y su texto literal pasa entero al [anexo](../../base/02-flujo-de-trabajo/nomenclatura-de-fases.md) |
 | `01` | `C1`, `C15`, `C16`, `C18` | cuatro líneas, dependencia entre paréntesis (`M7`), fuera el bloque «Encadenamiento» (también en `03·D8`) |
 | `04`, `08`, `10` | `S4`, `T4`, `DEP3` | texto propio en vez de prestado; `DEP3` declara que deroga a `S7` |
 
@@ -517,7 +517,7 @@ Se recorrió capítulo por capítulo, con su verificación y su publicación cad
 | 30.8.1 | `00` | `ID5`, `ID7`, `ID8`, `ID9` al molde; el glosario decía seis reglas del núcleo y son nueve |
 | 30.8.2 | `01` | `C5`, `C21`, `C22` al molde |
 | 30.8.3 | `02` | las doce largas al molde, sin tocar excepciones ni ejemplos |
-| 30.9.0 | `03`, `13`, `20` | quince al molde; `13·DOC11` y `20·M6` ganan [anexo](../base/13-documentacion/tabla-de-trazabilidad.md) porque su contenido era una tabla y una lista de pasos |
+| 30.9.0 | `03`, `13`, `20` | quince al molde; `13·DOC11` y `20·M6` ganan [anexo](../../base/13-documentacion/tabla-de-trazabilidad.md) porque su contenido era una tabla y una lista de pasos |
 
 ```
 $ python validadores/validar.py metareglas
@@ -532,7 +532,9 @@ Al ir a partirlas se encontró que la tabla de arriba venía de la medición vie
 
 ### Lo que queda, y es del usuario
 
-| Qué | Por qué no lo decide el agente |
+**Las dos las decidió el usuario el 2026-08-22:** `17·I3` se queda como **una** regla, con su lista de cuatro puntos como contenido y su ejemplo nuevo; `12·PR3` **no se deroga**, porque hoy exige lo que ninguna otra dice. Con eso el pendiente cierra.
+
+| Qué era | Por qué no lo decidía el agente |
 |---|---|
 | **`17·I3` · accesibilidad mínima** | Es la única de las 26 que sigue sin partirse. Su cuerpo son cuatro puntos sueltos (etiqueta, contraste, teclado, color) y el pendiente dejó dos salidas escritas: **una** regla que exige el mínimo, con la lista como su contenido, o **cuatro** reglas. Las dos cumplen el checklist |
 | **`12·PR3` · derogarla** | El usuario dijo que sí el 2026-08-22, pero esa pregunta venía del diagnóstico del 2026-08-14, cuando `PR3` era «un índice con forma de regla». El 2026-08-18 se reescribió y hoy exige algo que **no dice ninguna otra**: que el dato personal es sensible por defecto, sin esperar a que el proyecto lo declare. Derogarla ahora perdería esa exigencia |

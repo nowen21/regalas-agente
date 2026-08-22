@@ -65,7 +65,7 @@ Por eso la medición fue paso de la ruta crítica y no un control final: **un se
 | [`base/04-seguridad.md`](../../../../../base/04-seguridad.md) | `S1`, `S2` |
 | [`base/09-git.md`](../../../../../base/09-git.md) | `G7`, `G9` |
 | [`base/17-interfaz.md`](../../../../../base/17-interfaz.md) | `I1` |
-| [`pendientes/19-…`](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Lo que esta fase cierra. **Sigue abierto** |
+| [`pendientes/19-…`](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Lo que esta fase cierra. **Sigue abierto** |
 | `CHANGELOG.md` · `VERSION` | 23.7.5 |
 
 **Ninguna exigencia se fue con el texto**, y se comprobó punto por punto: los tres de `D3`, los tres de `S1`, los cuatro de `S2`, los tres estados de `I1`, los tres criterios de `C13`.

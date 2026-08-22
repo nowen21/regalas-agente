@@ -1366,3 +1366,51 @@ Capítulo `00` listo, verde en todo (metareglas 0 fallas, 37 → 33 avisos; esta
 
 ### 70 · Usuario — 2026-08-22 06:53:50
 > si
+
+**Agente** — 2026-08-22 07:14:49
+<!-- agente: 4af431f3-971c-40ab-9e12-98f81993760d -->
+
+Publicado `3655309` (30.8.1). Sigo con el capítulo `01`.
+
+El `01` ya tenía sus particiones hechas el 18 (`C24`, `C25`, `C26` nacieron de `C10`, `C14`, `C17`). Queda solo el recorte al molde:
+
+El bloque de `C5` no lleva el separador `---`; ajusto el reemplazo:
+
+Publicado `ba4be2a` (30.8.2). Mido qué queda de la segunda ronda antes de seguir:
+
+`PR3` ya no es la de antes: la reescribieron el 18 y hoy exige algo propio. Lo dejo señalado y sigo con lo que no depende de esa decisión.
+
+`EST2` también se resolvió el 18 sin partirla. Queda solo `I3` como decisión abierta. Sigo con los recortes del `02`:
+
+Ahora los doce recortes del `02`, midiendo con el propio validador:
+
+Publicado `c1e2225` (30.8.3). Quedan 18 avisos: `03` (2), `13` (13) y `20` (2).
+
+El heredoc se rompió; escribo el script con la herramienta de archivos:
+
+El trinquete bloquea por la puntuación heredada en los dos anexos nuevos; la ajusto:
+
+**Pendiente 19 terminado salvo dos decisiones suyas.** Cinco publicaciones, una por capítulo, todas con su verificación y su push:
+
+| Versión | Capítulo | Qué quedó |
+|---|---|---|
+| 30.8.0 | `18`,`19`,`20`,`02`,`01`,`04`,`08`,`10` | las 27 reglas que estaban publicadas reprobando su checklist, cumpliendo |
+| 30.8.1 | `00` | `ID5`, `ID7`, `ID8`, `ID9` al molde; el glosario decía seis reglas del núcleo y son nueve |
+| 30.8.2 | `01` | `C5`, `C21`, `C22` al molde |
+| 30.8.3 | `02` | las doce largas al molde |
+| 30.9.0 | `03`,`13`,`20` | quince al molde; `DOC11` y `M6` con anexo |
+
+`validar.py metareglas` y `estandar`: **sin incumplimientos**. Ninguna regla se pasa ya del largo que ella misma fija.
+
+**Lo que apareció al abrir los capítulos:** de las 26 particiones que el pendiente pedía, **23 ya estaban hechas** desde el 18 (`N7`‑`N9`, `C24`‑`C26`, `S12`‑`S16`, `E6`, `T8`, `G10`, `G11`, `CFG5`, `IM6`, `IM7`, `F25`) y dos se habían resuelto sin partirse (`EST2`, `PR3`).
+
+**Dos son suyas:**
+
+1. **`17·I3` accesibilidad** — la única sin partir. Son cuatro puntos sueltos (etiqueta, contraste, teclado, color). Dos salidas, las dos pasan el checklist: (a) **una regla** que exige el mínimo con esa lista como contenido — la recomiendo, porque los cuatro se cumplen o no como conjunto; (b) **cuatro reglas** `I7`‑`I10`.
+2. **`12·PR3`** — usted dijo sí a derogarla, pero esa pregunta venía del diagnóstico del 14, cuando era «un índice con forma de regla». El 18 la reescribieron y hoy exige algo que **ninguna otra dice**: que el dato personal es sensible por defecto, sin esperar a que el proyecto lo declare. Recomiendo **no derogarla**; si insiste, la derogo y esa exigencia se pierde o hay que reubicarla.
+
+Dígame (a) o (b) para `I3`, y si `PR3` queda o se deroga.
+
+### 71 · Usuario — 2026-08-22 07:23:53
+> 1. a
+> 2. queda

@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que **sigue abierto**. Esta fase cierra su parte mecánica: las 33 reglas que no aparecían en el registro de lo validable bajaron a cero.
+De dónde sale: el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que **sigue abierto**. Esta fase cierra su parte mecánica: las 33 reglas que no aparecían en el registro de lo validable bajaron a cero.
 
 **Lo que se supo:** quince ya estaban clasificadas, escritas como rango — y el programa que lo comprueba no lee rangos.
 

@@ -126,7 +126,7 @@ No abstraer de más no es una segunda exigencia sino **el límite** de la primer
 
 **La recomendación de entonces no se aplicó, y queda dicho por qué.** Era escribir la segunda mitad como excepción formal de [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md), y `M8` pide **condición, límite y quién autoriza**. Acá no hay quién autorice: no es una excepción que alguien concede, es criterio de diseño que se ejerce al escribir. Forzarla al molde de la excepción diría algo falso.
 
-Si más adelante se decide lo contrario, es cambio de regla y va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Si más adelante se decide lo contrario, es cambio de regla y va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

@@ -33,7 +33,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Recortada al molde el 2026-08-22 (pendiente 19, capítulo `03`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
-**Partida el 2026-08-18, y eran tres.** Su cuerpo tenía tres párrafos en negrita —normalización, auditoría, integridad en el almacén— y **son tres exigencias que se cumplen por separado**: una tabla puede estar perfectamente normalizada y no llevar ninguna columna de auditoría, o llevarlas y no tener una sola restricción. Nacen [`D10`](#d10--toda-tabla-guarda-quién-la-tocó-y-cuándo) y [`D11`](#d11--la-integridad-vive-en-el-almacén-no-solo-en-la-aplicación). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18, y eran tres.** Su cuerpo tenía tres párrafos en negrita —normalización, auditoría, integridad en el almacén— y **son tres exigencias que se cumplen por separado**: una tabla puede estar perfectamente normalizada y no llevar ninguna columna de auditoría, o llevarlas y no tener una sola restricción. Nacen [`D10`](#d10--toda-tabla-guarda-quién-la-tocó-y-cuándo) y [`D11`](#d11--la-integridad-vive-en-el-almacén-no-solo-en-la-aplicación). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -62,7 +62,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** La normalización es sobre **cómo se guarda el dato**; esta es sobre **qué se guarda además del dato**. Se olvida sola: nadie deja una tabla mal normalizada sin notarlo, y casi todos dejan una sin auditoría.
 
@@ -95,7 +95,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`D1`](#d1--la-tabla-nueva-nace-normalizada).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** Es la que sostiene a [`03·D9`](#d9--dos-operaciones-simultáneas-no-se-pisan): sin la restricción en el almacén, dos procesos simultáneos insertan el mismo registro por más que la aplicación lo compruebe. Y se incumple con la mejor intención — *«ya lo valido yo»*.
 
@@ -195,7 +195,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Decía dos cosas: **qué va al catálogo**, y **cómo se usa** el que ya existe — bifurcar por código y no por identificador. **Se cumplen por separado**, y la segunda es más traicionera: se puede tener todo en catálogos y aun así romper el sistema al pasarlo a otro entorno, porque el código decidía comparando identificadores. Es ahora [`D12`](#d12--el-código-decide-por-el-código-del-catálogo-no-por-su-identificador). Lo que quedó fuera —guardar los interruptores junto al catálogo, marcar como protegido lo que el código referencia, guardar en memoria lo que se consulta seguido— era **cómo hacerlo bien, no una exigencia**. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Decía dos cosas: **qué va al catálogo**, y **cómo se usa** el que ya existe — bifurcar por código y no por identificador. **Se cumplen por separado**, y la segunda es más traicionera: se puede tener todo en catálogos y aun así romper el sistema al pasarlo a otro entorno, porque el código decidía comparando identificadores. Es ahora [`D12`](#d12--el-código-decide-por-el-código-del-catálogo-no-por-su-identificador). Lo que quedó fuera —guardar los interruptores junto al catálogo, marcar como protegido lo que el código referencia, guardar en memoria lo que se consulta seguido— era **cómo hacerlo bien, no una exigencia**. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -224,7 +224,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`D4`](#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `D4` es sobre **dónde vive** el valor; esta es sobre **cómo se lo mira**. Y es la que falla en producción: en el entorno donde se programó, el identificador 3 era el correcto.
 
@@ -291,7 +291,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Su título decía dos cosas —*«concurrencia **e** idempotencia»*— y eran dos: que repetir no duplique, y que dos operaciones simultáneas no se pisen. **Se cumplen por separado**, y son problemas distintos: una es el mismo actor dos veces, la otra son dos actores a la vez. Lo segundo es ahora [`D9`](#d9--dos-operaciones-simultáneas-no-se-pisan). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Su título decía dos cosas —*«concurrencia **e** idempotencia»*— y eran dos: que repetir no duplique, y que dos operaciones simultáneas no se pisen. **Se cumplen por separado**, y son problemas distintos: una es el mismo actor dos veces, la otra son dos actores a la vez. Lo segundo es ahora [`D9`](#d9--dos-operaciones-simultáneas-no-se-pisan). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -324,7 +324,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Recortada al molde el 2026-08-22 (pendiente 19, capítulo `03`):** el sello decía ✅ en la fila 10 con el cuerpo pasado de 320; ahora cabe. Lo que salió era porqué o detalle que ya vive en otro archivo, y queda en [notas/porques-recortados-al-molde.md](../notas/porques-recortados-al-molde.md).
 
-**Nace el 2026-08-18 de partir [`D6`](#d6--la-operación-repetida-no-duplica-su-efecto).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`D6`](#d6--la-operación-repetida-no-duplica-su-efecto).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `D6` es sobre **el mismo actor dos veces**; esta es sobre **dos actores a la vez**. La segunda es la que no se ve al probar: en una máquina sola nunca ocurre, y aparece el día que hay dos usuarios.
 
@@ -361,7 +361,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **También se fue el nombre del patrón del título.** Nombrar la técnica ata la regla a una forma de resolverlo; lo que se exige es el resultado, y la nota ya ofrece la alternativa para cuando el volumen no dé.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

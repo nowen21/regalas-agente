@@ -93,7 +93,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Decía dos cosas: que los entornos se parezcan, y que lo que producción necesita se documente. **Se cumplen por separado** — se pueden tener entornos idénticos y seguir aplicando cambios de producción de memoria. La segunda es ahora [`CFG5`](#cfg5--lo-que-producción-necesita-se-escribe-antes-de-aplicarlo). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Decía dos cosas: que los entornos se parezcan, y que lo que producción necesita se documente. **Se cumplen por separado** — se pueden tener entornos idénticos y seguir aplicando cambios de producción de memoria. La segunda es ahora [`CFG5`](#cfg5--lo-que-producción-necesita-se-escribe-antes-de-aplicarlo). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -122,7 +122,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`CFG3`](#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`CFG3`](#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `CFG3` es sobre **el parecido** entre entornos; esta es sobre **lo que no se puede parecer** y hay que arrastrar a mano. Es la que se incumple: el parecido se nota al probar, y el paso olvidado se nota al desplegar.
 

@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (`02·F12.6`) | `B-EP-001-HU-009-el-sello-no-se-contradice` |
 | **Módulo** | Cuerpo de reglas — los bloques de checklist de `base/` |
-| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-009](../HU-009-reglas-sin-checklist-al-dia.md) · [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que **sigue abierto** |
+| **Épica / HU / origen** | [EP-001](../../epica.md) · [HU-009](../HU-009-reglas-sin-checklist-al-dia.md) · [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que **sigue abierto** |
 | **Última actualización** | 2026-08-18 |
 
 ---

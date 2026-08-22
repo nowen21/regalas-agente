@@ -32,4 +32,4 @@ Ayuda de verdad, y por eso es el caso peligroso: **la disponibilidad técnica no
 
 ## De dónde salió esta nota
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md): `S9` medía 1 278 caracteres contra los 320 del molde. Lo que sobraba era el **inventario de rutas** y el desarrollo del principio — detalle, no exigencia. La regla se quedó con lo que hay que cumplir.
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md): `S9` medía 1 278 caracteres contra los 320 del molde. Lo que sobraba era el **inventario de rutas** y el desarrollo del principio — detalle, no exigencia. La regla se quedó con lo que hay que cumplir.

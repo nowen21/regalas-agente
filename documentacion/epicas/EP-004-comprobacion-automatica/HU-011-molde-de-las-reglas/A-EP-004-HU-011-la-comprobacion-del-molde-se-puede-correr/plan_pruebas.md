@@ -37,7 +37,7 @@
 | Funcional | ☑ | Los cinco CA |
 | Negativa | ☑ | Cada CA con su defecto sembrado |
 | Seguridad del cuerpo de reglas | ☑ | El CA-02: la dependencia que manda hacia arriba es la que protege el núcleo |
-| Medición | ☑ | La cuenta real contra las 121 del pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
+| Medición | ☑ | La cuenta real contra las 121 del pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) |
 
 ### 3.3 Técnicas de diseño de casos
 
@@ -161,7 +161,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | 1 | Sembrar la regla sin bloque de checklist | Se reporta |
 | 2 | Sembrar la que sí lo tiene | No se reporta |
 | 3 | Correr sobre el cuerpo real y contar cuántas reglas salen | Sale un número |
-| 4 | Comparar contra las 121 que dice el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Se anota la diferencia |
+| 4 | Comparar contra las 121 que dice el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Se anota la diferencia |
 | 5 | Corregir la cuenta del pendiente con lo medido | El pendiente queda con el dato real |
 
 **Resultado esperado final:** la deuda del capítulo `20` deja de estimarse a mano.

@@ -37,7 +37,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Dos filas, y las dos son la misma excepción.**
 
-**Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: [`F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) es la dueña y las otras dos la enlazan. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Tres reglas diciendo lo mismo sobre el alcance de una aprobación**, y ninguna de las tres lo dice igual. Conviene arreglarlas juntas: [`F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md) es la dueña y las otras dos la enlazan. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -192,7 +192,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **La fila 12 reprobaba y se corrigió en esta pasada:** no tenía ejemplo. **No cambia qué exige la regla.**
 
-**Es la más corta del cuerpo entero: 85 caracteres.** Y el análisis del 2026-08-07 planteó una duda que sigue abierta — si no conviene absorberla en [`C16`](#c16--re-lee-justo-antes-de-editar), que cubre el mismo momento. **No se decide acá:** absorber una regla es derogarla, y eso va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Es la más corta del cuerpo entero: 85 caracteres.** Y el análisis del 2026-08-07 planteó una duda que sigue abierta — si no conviene absorberla en [`C16`](#c16--re-lee-justo-antes-de-editar), que cubre el mismo momento. **No se decide acá:** absorber una regla es derogarla, y eso va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -317,7 +317,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias: **detectar** que el pedido deja patrón, y **decidir dónde vive** la regla que salga. Se cumplen por separado, y saltarse la segunda es lo que llena la capa del proyecto de reglas que servían a todos. Es ahora [`C26`](#c26--la-regla-que-serviría-en-otra-empresa-va-a-la-base-común). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias: **detectar** que el pedido deja patrón, y **decidir dónde vive** la regla que salga. Se cumplen por separado, y saltarse la segunda es lo que llena la capa del proyecto de reglas que servían a todos. Es ahora [`C26`](#c26--la-regla-que-serviría-en-otra-empresa-va-a-la-base-común). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -348,7 +348,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`C10`](#c10--lo-que-el-usuario-pide-dos-veces-se-propone-como-regla).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`C10`](#c10--lo-que-el-usuario-pide-dos-veces-se-propone-como-regla).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `C10` hace que la regla **exista**; esta decide **dónde**. Y equivocarse acá no se nota nunca desde adentro: la regla funciona igual de bien en el sitio equivocado — el precio lo paga el proyecto siguiente, que la escribe otra vez.
 
@@ -485,7 +485,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: **aplicar sin preguntar** lo que el oficio da por sentado, y **preguntar** lo que de verdad es del usuario. Se puede aplicar bien lo primero y aun así decidir por cuenta propia una política de negocio. Lo segundo es ahora [`C25`](#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: **aplicar sin preguntar** lo que el oficio da por sentado, y **preguntar** lo que de verdad es del usuario. Se puede aplicar bien lo primero y aun así decidir por cuenta propia una política de negocio. Lo segundo es ahora [`C25`](#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Y se fueron los ejemplos de sectores y de tecnologías** —los nombres de industrias, de arquitecturas, de proveedores—: [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no los admite en la base, y además envejecen. Lo que queda es el criterio, que no envejece: **si cualquiera del oficio lo daría por incluido, va**.
 
@@ -516,7 +516,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `C14` combate el defecto de **preguntar de más** —ofrecer versiones reducidas de lo que ya se sabe cómo se hace—; esta combate el contrario, **decidir de más**. Son dos errores opuestos y una sola regla que los junta empuja hacia uno de los dos según cómo se lea.
 
@@ -555,7 +555,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **La fila 5 reprobaba y se corrigió en esta pasada.** Nombraba «el módulo Aportes», de un proyecto real, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Pasa a «el módulo de referencia», que es lo que la regla quería decir. **No cambia qué exige.**
 
-Lo que queda va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Lo que queda va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -592,7 +592,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Lo del control de versiones se comprobó antes de tocarlo.** El capítulo `09` se titula **Control de versiones**, no por el nombre de la herramienta, y **ninguna otra regla del cuerpo nombraba una orden concreta**: `C16` era la única. Nombrarlas no era la costumbre de la casa, era su excepción.
 
-**Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo**, y sigue igual: el aviso estaba dentro de la propia regla. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Que una regla declare por escrito que duplica a otra y siga publicada es lo llamativo**, y sigue igual: el aviso estaba dentro de la propia regla. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -622,7 +622,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias: **reformular antes**, y **qué cuenta como aprobación**. Se cumplen por separado, y la segunda es la que se incumple: reformular es fácil de recordar, y darse por aprobado con el silencio o con la propia pregunta es lo que pasa de verdad. Es ahora [`C24`](#c24--solo-la-palabra-del-usuario-aprueba). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias: **reformular antes**, y **qué cuenta como aprobación**. Se cumplen por separado, y la segunda es la que se incumple: reformular es fácil de recordar, y darse por aprobado con el silencio o con la propia pregunta es lo que pasa de verdad. Es ahora [`C24`](#c24--solo-la-palabra-del-usuario-aprueba). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -652,7 +652,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`C17`](#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`C17`](#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `C17` dice **cuándo hay que preguntar**; esta dice **qué respuesta sirve**. Y es la que se incumple sin mala fe: el agente pregunta, no le contestan, y toma la falta de objeción por acuerdo.
 
@@ -691,7 +691,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 Está clasificada y con validador escrito —`sesion.py`—, así que la fila **18** pasa con programa detrás.
 
-Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

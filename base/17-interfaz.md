@@ -72,42 +72,50 @@ Cumplía en el análisis del 2026-08-07 y se volvió a contar: 186 de 320.
 
 ## I3 · Accesibilidad mínima
 
+La interfaz cumple el **mínimo de accesibilidad**: esta lista cerrada, entera y no a medias.
+
 - Campos con **etiqueta** asociada; imágenes con texto alternativo.
 - **Contraste** suficiente entre texto y fondo.
 - Navegable por **teclado**, con el **foco visible**.
-- No transmitir información **solo** por color.
+- Ninguna información transmitida **solo** por color.
 
-> El nivel exigido (p. ej. WCAG AA) y si es obligatorio por ley lo declara la capa 3 / `16` (accesibilidad).
+> El grado exigido y si la ley lo obliga lo declara la capa 3, con el capítulo [`16`](16-cumplimiento-y-calidad.md).
+
+```
+INCORRECTO: la pantalla tiene etiquetas impecables y se entrega como accesible,
+            con el texto en gris claro sobre blanco y el estado de cada fila
+            indicado solo con un punto de color
+CORRECTO:   los cuatro puntos de la lista, comprobados juntos antes de entregar
+```
 
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.21.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
-| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ N/A ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
 | D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 16 ✅ · 0 ❌ · 4 N/A.**
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Resuelta el 2026-08-22, con la salida que eligió el usuario (pendiente 19):** de las dos que el pendiente dejó escritas, **una regla que exige el mínimo con la lista como su contenido**, no cuatro reglas. Era la última de las 26 candidatas a partirse.
+
+**Por qué la fila 9 pasa a ✅.** El sello traía dos lecturas opuestas escritas una debajo de la otra: la del 2026-08-07 decía «son cuatro exigencias y se cumplen por separado» y la del 2026-08-18 decía que son la definición de una sola. Con la decisión del usuario queda una: **el mínimo se cumple entero o no se cumple**, y el cuerpo ahora lo dice con esas palabras, en vez de dejarlo a la interpretación de quien lea la lista.
+
+**Y gana el ejemplo que le faltaba** (fila 12, que estaba N/A): una pantalla con las etiquetas perfectas y el contraste ilegible es exactamente el caso que la regla rechaza.
 
 **Mirada el 2026-08-18 para partirla, y se decidió que no.** Sus cuatro puntos —etiqueta, contraste, teclado, color— parecen cuatro exigencias, pero **son la definición de una sola**: qué es el mínimo. Partirlas daría cuatro reglas que nadie citaría por separado, y dejaría sin dueño la pregunta que importa —*«¿cuál es el mínimo?»*—, que es justo lo que esta contesta.
 
 **La prueba de la fila 9 es si se cumplen por separado.** Acá no: una interfaz con etiquetas y sin contraste no cumple «la accesibilidad mínima» a medias — **no la cumple**. Es una lista cerrada, como la escala de [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito), no una acumulación de exigencias.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
-**Fila 9 · son cuatro exigencias, y se cumplen por separado.** Etiquetas asociadas, contraste, navegación por teclado y no transmitir información solo por color: una interfaz puede tener las etiquetas impecables y el contraste ilegible. El análisis del 2026-08-07 ya lo decía.
-
-**Y ofrecía la salida buena, que no es partirla en cuatro:** *«partir o declarar checklist»*. Cuatro reglas de una línea cada una llenan el capítulo de ruido; **un checklist de accesibilidad con su regla que obliga a pasarlo** dice lo mismo y se puede comprobar. Es lo mismo que el estándar hace consigo en [base/20-meta-reglas/checklist.md](20-meta-reglas/checklist.md).
-
-Cuál de las dos, y el ejemplo que también le falta, van al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
-
-La nota sobre el nivel exigido —WCAG y si es obligatorio por ley— remite bien a la capa 3 y al capítulo `16`: eso no es lo que falla.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

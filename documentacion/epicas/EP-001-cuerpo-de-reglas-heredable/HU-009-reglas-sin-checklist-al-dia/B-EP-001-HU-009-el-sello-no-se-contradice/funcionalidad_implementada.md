@@ -47,7 +47,7 @@
 | [`base/03-datos.md`](../../../../../base/03-datos.md) | Tablas de `D1` y `D4`; totales de `D4` y `D5` |
 | [`base/00-nucleo-blindado.md`](../../../../../base/00-nucleo-blindado.md) · [`08-pruebas.md`](../../../../../base/08-pruebas.md) | Totales de `N1` y `T1` |
 | [`base/20-meta-reglas/reglas/M14-…md`](../../../../../base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md) | Fuera el sello apilado de la `v2.1.0` |
-| [`pendientes/19-…`](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Lo que esta fase deja medido. **Sigue abierto** |
+| [`pendientes/19-…`](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Lo que esta fase deja medido. **Sigue abierto** |
 | `CHANGELOG.md` · `VERSION` | 23.7.2 |
 
 **Ninguna regla cambió de texto, y se comprobó línea por línea sobre el `diff`.** Las 72 en NO CUMPLE siguen siendo 72. Esta fase corrige **sellos**, no normas — por eso es PARCHE.
@@ -56,7 +56,7 @@
 
 ## 3. Lo que no hace
 
-- **No arregla ninguna regla.** `C10` sigue nombrando `SQLite`, `MariaDB`, `React` y `Django`. Lo que cambió es que ahora su tabla lo dice, y ese es el [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **No arregla ninguna regla.** `C10` sigue nombrando `SQLite`, `MariaDB`, `React` y `Django`. Lo que cambió es que ahora su tabla lo dice, y ese es el [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **No vuelve a juzgar ninguna fila.** Donde las dos mitades discrepaban mandó el texto, que es la que razona.
 - **No compara un CUMPLE contra su prosa.** Un sello en CUMPLE suele contar qué reprobaba **antes** de corregirlo, y compararlo daría contradictorio justo lo contrario. Es el caso de `17·I6`, y fue el falso positivo de la primera corrida.
 - **No exige que cada ❌ tenga su párrafo.** El texto agrupa, y pedirlo volvería esto ruido sobre sellos correctos — que es como se apaga una comprobación.

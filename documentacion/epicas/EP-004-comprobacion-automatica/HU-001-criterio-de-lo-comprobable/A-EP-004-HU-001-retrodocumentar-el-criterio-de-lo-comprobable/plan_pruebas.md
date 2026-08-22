@@ -173,7 +173,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | Severidad | Qué sería en esta fase | Atención |
 |---|---|---|
 | **Crítica** | Que con el criterio no se pueda partir una regla difusa (riesgo `R-02`) | Inmediato. El criterio quedaría vacío y volvería a decidirse a ojo |
-| **Alta** | Que el criterio aplicado dé otro veredicto que el registro (riesgo `R-01`) | Se anota y se suma al pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Reclasificar lo decide el usuario |
+| **Alta** | Que el criterio aplicado dé otro veredicto que el registro (riesgo `R-01`) | Se anota y se suma al pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Reclasificar lo decide el usuario |
 | **Media** | Que el criterio siga sin viajar a un proyecto heredero | Es la duda 1: se resuelve antes de escribir |
 | **Baja** | Que la suma por categoría no dé el total del cuerpo | Se anota con la diferencia |
 

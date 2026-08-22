@@ -39,7 +39,7 @@
 
 **Fuera de alcance:**
 
-- **Convertir en `FALLA` el `AVISO` de la regla sin clasificar** (defecto `D-02`). Se descubrió al quitar el `expectedFailure` y **no se arregla acá**: es del pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
+- **Convertir en `FALLA` el `AVISO` de la regla sin clasificar** (defecto `D-02`). Se descubrió al quitar el `expectedFailure` y **no se arregla acá**: es del pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) ([`02·F20`](../../../../../base/02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md)).
 - **Los 7 fallos y 229 avisos que destapó `validar.py metareglas`.** Son el pendiente 19. Acá se construye el que mide, no se arregla lo medido.
 - **Los enganches** (`hook_*.py`), que se corren solos a propósito.
 

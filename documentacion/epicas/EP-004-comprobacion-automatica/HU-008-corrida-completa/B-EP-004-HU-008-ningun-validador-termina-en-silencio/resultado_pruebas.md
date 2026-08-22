@@ -95,7 +95,7 @@ $ python validadores/validar.py metareglas
 7 falla(s), 229 aviso(s).
 ```
 
-**Esa medición no se podía repetir por línea de comandos desde el 2026-08-14**, y el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) cita una hecha ese día. Ahora sí.
+**Esa medición no se podía repetir por línea de comandos desde el 2026-08-14**, y el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) cita una hecha ese día. Ahora sí.
 
 **Los 7 fallos y 229 avisos no son de esta fase y no se arreglan acá.** Son el capítulo 20 sin cumplirse a sí mismo, que es exactamente lo que el pendiente 19 describe. Lo que esta fase entrega es **con qué medirlo**.
 
@@ -139,7 +139,7 @@ Al quitarle el `expectedFailure` a la prueba se leyó su texto completo. Denunci
 1. `metareglas.py` no tiene subcomando → **cerrado acá**.
 2. Lo que sale es un `AVISO`, que no detiene nada → **sigue abierto**.
 
-La prueba pasa con la mitad hecha, así que se le escribió encima qué **no** comprueba. Va al pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+La prueba pasa con la mitad hecha, así que se le escribió encima qué **no** comprueba. Va al pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 ### D-03 · `citas.py --aplicar` ensuciaría `base/`
 

@@ -38,4 +38,4 @@ Si la respuesta es «del usuario» de verdad —un borrador privado, un favorito
 
 ## De dónde salió esta nota
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md): `D8` medía 1 962 caracteres contra los 320 que da el molde, y la fila 10 del checklist dice qué hacer con eso — *«o son dos reglas, o se está contando el **porqué** (va a `notas/`)»*. Era lo segundo: la regla es una sola exigencia y venía con su explicación pegada.
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md): `D8` medía 1 962 caracteres contra los 320 que da el molde, y la fila 10 del checklist dice qué hacer con eso — *«o son dos reglas, o se está contando el **porqué** (va a `notas/`)»*. Era lo segundo: la regla es una sola exigencia y venía con su explicación pegada.

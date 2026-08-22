@@ -34,7 +34,7 @@
 
 **Fuera de alcance:**
 
-- **Las 121 reglas sin bloque de checklist y las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y su parte hecha se cerró en la fase A de [HU-009](../../HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md). Acá no se abre.
+- **Las 121 reglas sin bloque de checklist y las siete publicadas en «no cumple».** Es el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y su parte hecha se cerró en la fase A de [HU-009](../../HU-009-reglas-sin-checklist-al-dia/HU-009-reglas-sin-checklist-al-dia.md). Acá no se abre.
 - **Darle punto de entrada a `metareglas.py`.** Pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md), punto 2.
 - **Que el sello del checklist caduque con el texto.** Pendiente [52](../../../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md).
 - **Escribir reglas nuevas.** Las candidatas de la prueba son reglas que ya existen o que ya se rechazaron, no inventos que después haya que borrar.
@@ -199,7 +199,7 @@ No aplica: nada cambia en los proyectos que adoptaron el estándar. No hay subid
 | ID | Riesgo o bloqueo | Impacto | Acción | Estado |
 |---|---|---|---|---|
 | B-01 | La duda 1 sin resolver | Bloquea dos casos de tres CA | Recuperar con el usuario qué candidatas se rechazaron | Abierto |
-| R-01 | Que al recorrer el checklist sobre una regla existente aparezca que reprueba | Se destapa trabajo del pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Se anota como evidencia y se suma al 19; corregir la regla no es de esta fase | Abierto |
+| R-01 | Que al recorrer el checklist sobre una regla existente aparezca que reprueba | Se destapa trabajo del pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Se anota como evidencia y se suma al 19; corregir la regla no es de esta fase | Abierto |
 | R-02 | Que la prueba se lea como que el procedimiento ya está comprobado por un programa | Falsa confianza | El resultado dice, fila por fila, cuál se decidió leyendo y cuál no se pudo correr | Abierto |
 | R-03 | Que las candidatas rechazadas no se recuerden | El CA-02 y el CA-03 quedarían probados solo con casos armados | Se admite y se dice: el caso armado se marca como tal en el `plan_pruebas` | Abierto |
 

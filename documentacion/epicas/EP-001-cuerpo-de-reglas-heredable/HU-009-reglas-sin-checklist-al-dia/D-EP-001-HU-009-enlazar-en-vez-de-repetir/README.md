@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que **sigue abierto** — su categoría *«dejar de repetir al vecino»*.
+De dónde sale: el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que **sigue abierto** — su categoría *«dejar de repetir al vecino»*.
 
 **Por qué el defecto duraba:** las dos reglas **enlazaban** a la vecina. El enlace estaba puesto, visible y correcto — y aun así reprobaban, porque la fila 11 no pide enlazar sino **enlazar en vez de copiar**. Un enlace delante de un texto repetido se lee como diligencia.
 

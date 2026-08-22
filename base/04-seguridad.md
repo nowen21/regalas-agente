@@ -102,7 +102,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: no pegar la entrada dentro de una instrucción, y declarar qué campos se pueden asignar. **Se puede parametrizar cada consulta y aun así dejar que un formulario escriba el campo que vuelve administrador a quien lo manda.** La segunda es ahora [`S16`](#s16--solo-se-asigna-lo-que-está-declarado). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: no pegar la entrada dentro de una instrucción, y declarar qué campos se pueden asignar. **Se puede parametrizar cada consulta y aun así dejar que un formulario escriba el campo que vuelve administrador a quien lo manda.** La segunda es ahora [`S16`](#s16--solo-se-asigna-lo-que-está-declarado). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -131,7 +131,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`S3`](#s3--la-entrada-del-usuario-nunca-se-pega-dentro-de-una-instrucción).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`S3`](#s3--la-entrada-del-usuario-nunca-se-pega-dentro-de-una-instrucción).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `S3` protege **la instrucción**; esta protege **el destino**. No hay concatenación de por medio: el dato llega limpio y el problema es que se escribe donde no debía. Se incumple sola y en silencio — nada falla, solo que alguien terminó con un permiso que nadie le dio.
 
@@ -168,7 +168,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Quedan dos filas, y las dos ya estaban señaladas.**
 
-**Es el mismo caso que [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)**: quitar lo repetido la deja cabiendo sola. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Es el mismo caso que [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar)**: quitar lo repetido la deja cabiendo sola. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -197,7 +197,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Se quedó con el identificador viejo** porque es la mitad más citada: quien cita `04·S5` hoy casi siempre habla del token.
 
@@ -229,7 +229,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -258,7 +258,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -287,7 +287,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir `S5`**, cuyo título —*«CSRF, sesiones y transporte»*— **ya las enumeraba**. Un título que enumera es la señal de que son varias reglas: reprobaba las filas 8, 9, 10 y 12 a la vez, y las cuatro por lo mismo. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Es la que menos se parecía a las otras tres.** `S5` la traía como cuarta viñeta —«hashing fuerte con salt»— entre cosas de transporte y sesión, y por eso [`12·PR3`](12-privacidad-datos.md#pr3--protégelos-en-reposo-y-en-tránsito) la citaba junto con el cifrado en tránsito, mezclando dos cosas distintas: **lo que se cifra se descifra; una contraseña no debe poder leerse nunca**.
 
@@ -317,7 +317,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Su cuerpo eran cinco viñetas y **dos exigencias distintas**: cómo se guarda y se entrega, y qué le pasa cuando su dueño se da de baja. **Se cumplen por separado** — se puede tener el archivo bien guardado y borrarlo físicamente al dar de baja la entidad padre, que es justo el caso que la segunda evita. Lo demás de esas viñetas —metadatos, copia de respaldo, lista blanca de tipos— era detalle de cómo, no exigencia, y se fue. La segunda es ahora [`S17`](#s17--el-archivo-sobrevive-a-la-baja-de-su-dueño). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Su cuerpo eran cinco viñetas y **dos exigencias distintas**: cómo se guarda y se entrega, y qué le pasa cuando su dueño se da de baja. **Se cumplen por separado** — se puede tener el archivo bien guardado y borrarlo físicamente al dar de baja la entidad padre, que es justo el caso que la segunda evita. Lo demás de esas viñetas —metadatos, copia de respaldo, lista blanca de tipos— era detalle de cómo, no exigencia, y se fue. La segunda es ahora [`S17`](#s17--el-archivo-sobrevive-a-la-baja-de-su-dueño). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -346,7 +346,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`S6`](#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`S6`](#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `S6` es sobre **el acceso**; esta es sobre **la permanencia**. Y es la que se incumple sin querer: la baja lógica del padre suele arrastrar sus archivos porque nadie pensó en ellos, y para cuando alguien los busca ya no están.
 
@@ -384,7 +384,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Cabe de sobra —167 de 320— y aun así no se puede quedar.** Que una regla esté bien escrita no la salva de sobrar.
 
-Derogarla va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y no es lo mismo que borrarla: [`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) fija cómo se hace sin romper las citas.
+Derogarla va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y no es lo mismo que borrarla: [`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md) fija cómo se hace sin romper las citas.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -456,7 +456,7 @@ Eso importa hoy más que cuando se escribió: al aplicar el checklist apareciero
 
 **Al acortarla, la excepción no se toca.** Lo que sobra es lo de alrededor.
 
-**Fila 10 · arreglada el 2026-08-18.** Medía 1 278 caracteres para un molde de 320; ahora mide 290. Lo que sobraba era el **inventario de rutas prohibidas** y el desarrollo del principio — detalle, no exigencia. Se fue a [`notas/rutas-fuera-del-proyecto.md`](../notas/rutas-fuera-del-proyecto.md), con el caso que hace falta nombrar: *«te agrego una entrada al `hosts` para que funcione la prueba»*. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Fila 10 · arreglada el 2026-08-18.** Medía 1 278 caracteres para un molde de 320; ahora mide 290. Lo que sobraba era el **inventario de rutas prohibidas** y el desarrollo del principio — detalle, no exigencia. Se fue a [`notas/rutas-fuera-del-proyecto.md`](../notas/rutas-fuera-del-proyecto.md), con el caso que hace falta nombrar: *«te agrego una entrada al `hosts` para que funcione la prueba»*. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -497,7 +497,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 Su excepción está completa, como la de `S9`.
 
-**Fila 10 · arreglada el 2026-08-18.** Medía 1 029 caracteres para un molde de 320; ahora mide 307. **No hizo falta anexo:** las cinco viñetas eran una sola exigencia dicha cinco veces —por identificador exacto, solo si es del proyecto, solo si hace falta— más la lista de comandos prohibidos, que nombraba herramientas concretas y por [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no debía estar ahí. La excepción quedó escrita en la forma de [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Fila 10 · arreglada el 2026-08-18.** Medía 1 029 caracteres para un molde de 320; ahora mide 307. **No hizo falta anexo:** las cinco viñetas eran una sola exigencia dicha cinco veces —por identificador exacto, solo si es del proyecto, solo si hace falta— más la lista de comandos prohibidos, que nombraba herramientas concretas y por [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no debía estar ahí. La excepción quedó escrita en la forma de [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -560,7 +560,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`S11`](#s11--cada-escritura-contra-datos-reales-se-autoriza-por-separado)**, cuyo texto ya la llamaba «Regla 2». Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`S11`](#s11--cada-escritura-contra-datos-reales-se-autoriza-por-separado)**, cuyo texto ya la llamaba «Regla 2». Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia y no una línea dentro de la otra.** `S11` dice **cuándo** se pide la autorización; esta dice **qué cuenta como escritura**. Se incumplen por separado: se puede pedir autorización por cada operación y aun así correr una baja lógica sin pedirla, creyendo que no escribe.
 

@@ -50,4 +50,4 @@ Simple hoy, incorrecto mañana. **La consulta histórica lee el historial; la co
 
 ## De dónde salió esta nota
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md): `03·D7` medía **3 839 caracteres** contra los 320 del molde — doce veces. No era una regla larga: era **un patrón entero metido dentro de una regla**, y la exigencia real cabía en tres líneas.
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md): `03·D7` medía **3 839 caracteres** contra los 320 del molde — doce veces. No era una regla larga: era **un patrón entero metido dentro de una regla**, y la exigencia real cabía en tres líneas.

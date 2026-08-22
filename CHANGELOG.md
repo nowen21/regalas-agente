@@ -11,13 +11,21 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.9.1 — 2026-08-22
+
+**PARCHE** (la regla de accesibilidad dice con palabras lo que su lista ya exigía, y gana ejemplo; nada cambia en lo que se pide).
+
+**La accesibilidad mínima se cumple entera o no se cumple, y ahora la regla lo dice.** La regla de accesibilidad enumeraba cuatro cosas (etiquetas, contraste, teclado, color) sin decir si eran cuatro exigencias o una sola, y su sello traía las dos lecturas escritas una debajo de la otra. El usuario eligió: es una, con la lista como su contenido. También gana el ejemplo que le faltaba, una pantalla con las etiquetas perfectas y el contraste ilegible.
+
+**Y `12·PR3` no se deroga.** Estaba en la lista de derogaciones del pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), pero esa lista venía de cuando la regla no exigía nada propio; reescrita el 2026-08-18, hoy es la única que dice que un dato personal es sensible por defecto, sin esperar a que el proyecto lo declare. Se le mostró al usuario y decidió que queda. Con esto no queda ninguna de las 26 candidatas a partirse sin resolver.
+
 ## 30.9.0 — 2026-08-22
 
 **MENOR** (diecisiete reglas de tres capítulos caben ya en su molde, y nacen dos anexos; nada cambia en lo que se exige).
 
 **Ninguna regla del estándar se pasa ya del largo que ella misma fija.** El estándar le da cuatro líneas a cada regla, y quince reglas de los capítulos de datos, documentación y meta-reglas decían en el sello que cabían en cuatro líneas y medían hasta el doble. Dos de ellas no se podían recortar sin perder algo, porque su contenido era una tabla y una lista de pasos: esas dos ganaron **anexo**, la misma salida que el usuario aprobó para la nomenclatura de fases.
 
-**El detalle.** Es la ronda de los capítulos `03`, `13` y `20` del pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [la tabla canónica de trazabilidad](base/13-documentacion/tabla-de-trazabilidad.md), que sale del cuerpo de `DOC11`, y [el orden del desempate](base/20-meta-reglas/desempate.md), que sale del de `M6` con sus seis pasos intactos. Las otras quince se recortaron dejando lo que exigen; los porqués están en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). Con esto `validar.py metareglas` no reporta ni una falla ni un aviso de largo.
+**El detalle.** Es la ronda de los capítulos `03`, `13` y `20` del pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [la tabla canónica de trazabilidad](base/13-documentacion/tabla-de-trazabilidad.md), que sale del cuerpo de `DOC11`, y [el orden del desempate](base/20-meta-reglas/desempate.md), que sale del de `M6` con sus seis pasos intactos. Las otras quince se recortaron dejando lo que exigen; los porqués están en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). Con esto `validar.py metareglas` no reporta ni una falla ni un aviso de largo.
 
 ## 30.8.3 — 2026-08-22
 
@@ -25,7 +33,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Las reglas del flujo de trabajo ya caben en el molde que el estándar les da.** `F0`, `F8`, `F9`, `F10`, `F11`, `F14`, `F16`, `F17`, `F20`, `F22`, `F23` y `F26` pasaban de las cuatro líneas, algunas al doble, con un sello que decía que cabían. Lo que salió eran explicaciones y remisiones a detalles que ya viven en el capítulo o en otra regla; queda anotado en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md).
 
-**El detalle.** Es la ronda del capítulo `02` del pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Las excepciones y los ejemplos no se tocaron, y las dependencias declaradas siguen igual. Con este capítulo los avisos de largo bajan de 30 a 18.
+**El detalle.** Es la ronda del capítulo `02` del pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Las excepciones y los ejemplos no se tocaron, y las dependencias declaradas siguen igual. Con este capítulo los avisos de largo bajan de 30 a 18.
 
 ## 30.8.2 — 2026-08-22
 
@@ -33,7 +41,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Las reglas de cómo responde el agente ahora caben en su propio molde.** `C5` («responde corto»), `C21` y `C22` pasaban de las cuatro líneas que el estándar le da a una regla, con un sello que decía que cabían. Se recortaron sin perder nada de lo que exigen; lo que salió eran explicaciones, y queda en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md).
 
-**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), capítulo `01`. Las particiones que ese pendiente pedía acá (`C10`, `C14`, `C17`) ya se habían hecho el 2026-08-18, cuando nacieron `C24`, `C25` y `C26`: del `01` solo quedaba esta deuda de la fila 10.
+**El detalle.** Pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), capítulo `01`. Las particiones que ese pendiente pedía acá (`C10`, `C14`, `C17`) ya se habían hecho el 2026-08-18, cuando nacieron `C24`, `C25` y `C26`: del `01` solo quedaba esta deuda de la fila 10.
 
 ## 30.8.1 — 2026-08-22
 
@@ -41,7 +49,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Las reglas de cómo escribe el agente ahora cumplen lo que piden.** `ID5`, `ID7`, `ID8` e `ID9` exigen escribir corto y claro, y las cuatro pasaban del molde de cuatro líneas con un sello que decía que cabían. Se recortaron a lo que exigen; lo que salió eran explicaciones de por qué, y quedan en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md), que pasa a recoger todos los recortes (antes solo los de `18` y `19`). El glosario decía que el núcleo tiene seis reglas; tiene nueve desde la 24.0.0.
 
-**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), capítulo `00`. Los sellos de las cuatro se vuelven a fechar con el cuerpo nuevo. Quedan 33 reglas en otros capítulos con la misma deuda de la fila 10, que siguen por capítulo.
+**El detalle.** Pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), capítulo `00`. Los sellos de las cuatro se vuelven a fechar con el cuerpo nuevo. Quedan 33 reglas en otros capítulos con la misma deuda de la fila 10, que siguen por capítulo.
 
 ## 30.8.0 — 2026-08-22
 
@@ -49,7 +57,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **El cuerpo de reglas ya no tiene ninguna regla publicada en «no cumple».** Hasta hoy había veintisiete: los capítulos `18` y `19` enteros sin ejemplo, `C1`, `C15`, `C16`, `C18`, `S4` y `T4` pasadas de largo o con texto prestado, `DEP3` repitiendo a una regla derogada, `F12` con 1 898 caracteres de texto literal, y cuatro meta-reglas (`M2`, `M4`, `M7`, `M8`) reprobando por lo que otras reglas les contradecían. `20·M14` dice que sin CUMPLE una regla no se publica, y estaban publicadas. Ahora `validar.py metareglas` da cero fallas.
 
-**El detalle.** Pendiente [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), primera ronda. Los catorce de `18` y `19` ganan su ejemplo INCORRECTO/CORRECTO y cinco (`DP8`, `OB1`, `OB3`, `OB5`, `OB6`) se recortan al molde; sus porqués quedan en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). `C1`, `C15`, `C16`, `C18`, `S4` y `T4` se reescriben en cuatro líneas y declaran su dependencia en la forma de `M7`; el bloque «Encadenamiento» que usaban `C15`, `C16`, `C18` y `D8` desaparece. `DEP3` declara que deroga a `04·S7`. El texto literal del usuario que era el cuerpo de `F12` se conserva entero como anexo [nomenclatura-de-fases.md](base/02-flujo-de-trabajo/nomenclatura-de-fases.md); la regla queda con una exigencia y los `F12.N` son puntos del anexo, no identificadores de regla, así que `M4` vuelve a cumplirse. Quedan para la segunda ronda las veintiséis reglas que llevan más de una exigencia y se parten (MAYOR), decididas por el usuario.
+**El detalle.** Pendiente [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), primera ronda. Los catorce de `18` y `19` ganan su ejemplo INCORRECTO/CORRECTO y cinco (`DP8`, `OB1`, `OB3`, `OB5`, `OB6`) se recortan al molde; sus porqués quedan en [notas/porques-recortados-al-molde.md](notas/porques-recortados-al-molde.md). `C1`, `C15`, `C16`, `C18`, `S4` y `T4` se reescriben en cuatro líneas y declaran su dependencia en la forma de `M7`; el bloque «Encadenamiento» que usaban `C15`, `C16`, `C18` y `D8` desaparece. `DEP3` declara que deroga a `04·S7`. El texto literal del usuario que era el cuerpo de `F12` se conserva entero como anexo [base/02-flujo-de-trabajo/nomenclatura-de-fases.md](base/02-flujo-de-trabajo/nomenclatura-de-fases.md); la regla queda con una exigencia y los `F12.N` son puntos del anexo, no identificadores de regla, así que `M4` vuelve a cumplirse. Quedan para la segunda ronda las veintiséis reglas que llevan más de una exigencia y se parten (MAYOR), decididas por el usuario.
 
 ## 30.7.0 — 2026-08-22
 
@@ -482,7 +490,7 @@ Una decía que nada se ejecuta sin permiso *y además* que lo rechazado no se re
 
 **En los tres casos, la segunda mitad es la que se olvida justo cuando la primera se cumplió bien:** con el permiso dado, nadie mira si hay copia.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`00·N7`](base/00-nucleo-blindado.md) —antes de lo irreversible se comprueba que hay de dónde volver—, [`00·N8`](base/00-nucleo-blindado.md) —el contenido del proyecto no sale sin autorización— y [`00·N9`](base/00-nucleo-blindado.md) —lo que el usuario rechazó no se reintenta de otra forma—.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [`00·N7`](base/00-nucleo-blindado.md) —antes de lo irreversible se comprueba que hay de dónde volver—, [`00·N8`](base/00-nucleo-blindado.md) —el contenido del proyecto no sale sin autorización— y [`00·N9`](base/00-nucleo-blindado.md) —lo que el usuario rechazó no se reintenta de otra forma—.
 
 **`N7` rescata una frase que estaba escondida** dentro de `N4` y ahora es lo primero que se lee: *que la migración se pueda revertir no es lo mismo que poder recuperar lo borrado*. Es la confusión que hace que alguien corra tranquilo algo irreversible.
 
@@ -500,7 +508,7 @@ Las reglas publicadas en «no cumple» bajan de 30 a **28**.
 
 **Y la regla sobre valores que cambian con el tiempo no era larga: era un manual entero metido dentro.** Doce veces el tamaño del molde, con la tabla, la migración, los avisos, la interfaz y las pruebas. Lo que exige cabe en tres líneas.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nace [`08·T8`](base/08-pruebas.md) —el resultado esperado no sale del código que se está probando—, y su propio texto ya decía *«se aplica en dos frentes»*.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nace [`08·T8`](base/08-pruebas.md) —el resultado esperado no sale del código que se está probando—, y su propio texto ya decía *«se aplica en dos frentes»*.
 
 [`03·D7`](base/03-datos.md) se reescribió en una exigencia y su manual se fue a [`notas/como-se-guarda-la-historia-de-un-valor.md`](notas/como-se-guarda-la-historia-de-un-valor.md). **También salió del título el nombre de la técnica**: nombrarla ata la regla a una forma de resolverlo, y lo que se exige es el resultado — la nota ya ofrece la alternativa para cuando el volumen no dé.
 
@@ -514,7 +522,7 @@ Las reglas publicadas en «no cumple» bajan de 32 a **30**.
 
 Una pedía reformular antes de actuar *y además* decía qué respuesta cuenta como un sí. Otra pedía aplicar sin preguntar lo que el oficio da por sentado *y además* preguntar lo que de verdad decide el dueño. Otra pedía notar cuándo un pedido deja un criterio para la próxima vez *y además* decidir si ese criterio sirve solo aquí o en cualquier proyecto.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`01·C24`](base/01-conducta.md) —solo la palabra del usuario aprueba—, [`01·C25`](base/01-conducta.md) —lo que es del usuario se pregunta— y [`01·C26`](base/01-conducta.md) —la regla que serviría en otra empresa va a la base común—.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [`01·C24`](base/01-conducta.md) —solo la palabra del usuario aprueba—, [`01·C25`](base/01-conducta.md) —lo que es del usuario se pregunta— y [`01·C26`](base/01-conducta.md) —la regla que serviría en otra empresa va a la base común—.
 
 **`C24` es la que se incumple sin mala fe:** el agente pregunta, no le contestan, y toma la falta de objeción por acuerdo. **Se le quitó la lista de palabras afirmativas** —«sí», «dale», «hágale»— porque lo que importa no es cuál palabra sino **de quién** es, y enumerarlas invitaba a buscar la palabra en vez de mirar quién la dijo.
 
@@ -532,7 +540,7 @@ Las reglas publicadas en «no cumple» bajan de 35 a **32**.
 
 Ahora vence solo el sello de la regla que de verdad cambió.
 
-**El detalle.** La comparación quitaba el encabezado de un lado y no del otro. Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y con tres casos que lo fijan — incluido el que comprueba que sobre el propio estándar no quede ninguno vencido.
+**El detalle.** La comparación quitaba el encabezado de un lado y no del otro. Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y con tres casos que lo fijan — incluido el que comprueba que sobre el propio estándar no quede ninguno vencido.
 
 ## 23.24.0 — 2026-08-18
 
@@ -542,7 +550,7 @@ Ahora vence solo el sello de la regla que de verdad cambió.
 
 **Y una comprobación estaba gritando.** El aviso de «este sello venció» miraba la fecha del **archivo**, así que tocar una regla vencía el sello de todas las de su capítulo: **119 avisos en una sola corrida**. Un validador que reporta ciento diecinueve cosas no lo lee nadie.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`03·D1`](base/03-datos.md) se parte en tres —nacen `D10`, quién tocó la fila, y `D11`, la integridad vive en el almacén— y [`03·D4`](base/03-datos.md) en dos, con `D12`: el código decide por el código del catálogo, **no por su identificador**, que es el que cambia entre entornos y hace fallar en producción lo que funcionaba al programar.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). [`03·D1`](base/03-datos.md) se parte en tres —nacen `D10`, quién tocó la fila, y `D11`, la integridad vive en el almacén— y [`03·D4`](base/03-datos.md) en dos, con `D12`: el código decide por el código del catálogo, **no por su identificador**, que es el que cambia entre entornos y hace fallar en producción lo que funcionaba al programar.
 
 **`D11` sostiene a [`03·D9`](base/03-datos.md)**: sin la restricción declarada en el almacén, dos procesos simultáneos insertan el mismo registro por más que la aplicación lo compruebe. Se incumple con la mejor intención — *«ya lo valido yo»*.
 
@@ -558,7 +566,7 @@ Las reglas publicadas en «no cumple» bajan de 37 a **35**.
 
 Una pedía que repetir una operación no duplicara su efecto *y además* que dos operaciones simultáneas no se pisaran — que son problemas distintos: el mismo actor dos veces, o dos actores a la vez. Otra pedía que anular revirtiera todo de una vez *y además* que se avisara a quien tenía el dato ya calculado. Otra, que las pruebas corrieran solas *y además* que lo que corre en tu máquina no las reemplace. Y la del plan pedía el visto bueno *y además* dejaba claro que autorizar el arranque de una fase no es aprobar su plan.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`03·D9`](base/03-datos.md), [`15·IM7`](base/15-registros-inmutables.md), [`09·G11`](base/09-git.md) y [`02·F25`](base/02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md).
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [`03·D9`](base/03-datos.md), [`15·IM7`](base/15-registros-inmutables.md), [`09·G11`](base/09-git.md) y [`02·F25`](base/02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md).
 
 **`02·F25` es la que más se incumple sin querer**, y por eso merecía nombre propio: nadie se salta la aprobación de un plan a propósito — lo que pasa es que **se toma el «arrancá con X» por el permiso de ejecutar**, y el trabajo avanza con la conciencia tranquila. `F4` dice que hace falta un visto bueno; `F25` dice cuál no cuenta.
 
@@ -572,7 +580,7 @@ Las reglas publicadas en «no cumple» bajan de 41 a **37**.
 
 En los tres casos la segunda mitad es la que se cae sola, sin ruido: se puede tener todo bien parametrizado y aun así dejar que un formulario escriba el campo que vuelve administrador a quien lo manda.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`04·S16`](base/04-seguridad.md) —solo se asigna lo que está declarado—, [`04·S17`](base/04-seguridad.md) —el archivo sobrevive a la baja de su dueño— y [`11·CFG5`](base/11-configuracion-entornos.md) —lo que producción necesita se escribe antes de aplicarlo—.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [`04·S16`](base/04-seguridad.md) —solo se asigna lo que está declarado—, [`04·S17`](base/04-seguridad.md) —el archivo sobrevive a la baja de su dueño— y [`11·CFG5`](base/11-configuracion-entornos.md) —lo que producción necesita se escribe antes de aplicarlo—.
 
 **[`14·EST2`](base/14-estructura-codigo.md) no se partió: le sobraba, no le faltaba.** Lo que la hacía parecer dos reglas era un consejo sobre los límites de longitud del motor, que además nombraba tecnología. **No era una exigencia, era una advertencia práctica**, y se fue. Lo que queda es una sola cosa: una convención por tipo de elemento, aplicada igual.
 
@@ -586,7 +594,7 @@ Las reglas publicadas en «no cumple» bajan de 45 a **41**.
 
 Cuando una regla pide dos cosas, se cumple la primera y la segunda se cae sin que nada lo note. Ahora cada una se puede señalar por separado.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`04·S5`](base/04-seguridad.md) —cuyo título *«CSRF, sesiones y transporte»* **ya las enumeraba**— se parte en cuatro: se queda con el token, y nacen `S13` (la sesión se cierra de verdad), `S14` (el dato sensible no viaja en claro) y `S15` (la contraseña se guarda irreversible y con sal). [`05·E2`](base/05-errores-y-logging.md) se parte y nace `E6` —lo que toca varios registros va en transacción—, y [`15·IM2`](base/15-registros-inmutables.md) se parte y nace `IM6` —anular deja escrito quién, cuándo y por qué—.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). [`04·S5`](base/04-seguridad.md) —cuyo título *«CSRF, sesiones y transporte»* **ya las enumeraba**— se parte en cuatro: se queda con el token, y nacen `S13` (la sesión se cierra de verdad), `S14` (el dato sensible no viaja en claro) y `S15` (la contraseña se guarda irreversible y con sal). [`05·E2`](base/05-errores-y-logging.md) se parte y nace `E6` —lo que toca varios registros va en transacción—, y [`15·IM2`](base/15-registros-inmutables.md) se parte y nace `IM6` —anular deja escrito quién, cuándo y por qué—.
 
 **`17·I3` se miró para partirla y se decidió que no**, y conviene saber por qué: sus cuatro puntos —etiqueta, contraste, teclado, color— **no son cuatro exigencias, son la definición de una**. Una interfaz con etiquetas y sin contraste no cumple «la accesibilidad mínima» a medias: no la cumple. **La prueba es si se cumplen por separado**, y acá no.
 
@@ -602,7 +610,7 @@ Las reglas publicadas en «no cumple» bajan de 49 a **45**.
 
 Ahora cada una dice una sola cosa, y se puede señalar cuál se incumplió.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Nacen [`04·S12`](base/04-seguridad.md) —el borrado lógico es una escritura— y [`09·G10`](base/09-git.md) —el commit no se firma con la herramienta—. **Las dos ya venían numeradas dentro del texto que las contenía:** `S11` decía «Regla 1» y «Regla 2», y `G8` abría con «Dos consecuencias». Los identificadores viejos siguen existiendo con la mitad que se quedaron, como manda [`20·M4`](base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Nacen [`04·S12`](base/04-seguridad.md) —el borrado lógico es una escritura— y [`09·G10`](base/09-git.md) —el commit no se firma con la herramienta—. **Las dos ya venían numeradas dentro del texto que las contenía:** `S11` decía «Regla 1» y «Regla 2», y `G8` abría con «Dos consecuencias». Los identificadores viejos siguen existiendo con la mitad que se quedaron, como manda [`20·M4`](base/20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md).
 
 **Y partir sirvió para pagar una deuda vieja.** `04·S11` nombraba `SoftDeletes` y `destroy()`, lo que [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) prohíbe en la base, y su sello había decidido no corregirlo porque **el nombre del método era el argumento**: suena a borrar y escribe. Reescribirlo en concepto solo se podía al partir, y así fue. **La lista de reglas que nombran un framework vuelve a cero**, después de once días con una permitida.
 
@@ -738,7 +746,7 @@ Lo que faltaba no era otro recordatorio, era un número. Ahora se puede medir cu
 
 **Cuatro reglas venían con su explicación pegada y no se leían.** Una usaba mil doscientos caracteres para decir algo que cabe en cuatro líneas. Ahora la regla dice qué hay que hacer, y el detalle —qué carpetas quedan fuera, por qué autorizar un archivo no autoriza a su carpeta— vive aparte, enlazado.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), las cuatro que fallaban **solo** la fila 10: [`04·S9`](base/04-seguridad.md) 1 278 → 290 —su inventario de rutas se fue a [`notas/rutas-fuera-del-proyecto.md`](notas/rutas-fuera-del-proyecto.md)—, [`04·S10`](base/04-seguridad.md) 1 029 → 307, [`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) 564 → 309 y [`05·E4`](base/05-errores-y-logging.md) 419 → 282. Las cuatro pasaron a **CUMPLE**: las reglas reprobadas bajan de 58 a **54**.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), las cuatro que fallaban **solo** la fila 10: [`04·S9`](base/04-seguridad.md) 1 278 → 290 —su inventario de rutas se fue a [`notas/rutas-fuera-del-proyecto.md`](notas/rutas-fuera-del-proyecto.md)—, [`04·S10`](base/04-seguridad.md) 1 029 → 307, [`02·F13`](base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md) 564 → 309 y [`05·E4`](base/05-errores-y-logging.md) 419 → 282. Las cuatro pasaron a **CUMPLE**: las reglas reprobadas bajan de 58 a **54**.
 
 **Dos cosas que salieron de hacerlo.** `S10` no necesitó anexo: sus cinco viñetas eran la misma exigencia dicha cinco veces, más una lista de comandos concretos que por [`20·M3`](base/20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no debía estar en la base. Y `E4` tampoco: sus cuatro viñetas explicaban cuándo usar cada nivel de registro con un ejemplo, y el nombre del nivel ya lo dice.
 
@@ -748,7 +756,7 @@ Lo que faltaba no era otro recordatorio, era un número. Ahora se puede medir cu
 
 **Dos reglas sobre datos venían con su explicación pegada y no se leían.** Una medía casi dos mil caracteres para decir algo que cabe en cinco líneas. Ahora la regla dice qué hay que hacer, y el porqué —por qué la gente se equivoca y qué se rompe cuando lo hace— vive aparte, enlazado.
 
-**El detalle.** Del [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). [`03·D8`](base/03-datos.md) pasó de 1 962 a 292 caracteres —su porqué quedó en [`notas/pertenencia-y-autoria.md`](notas/pertenencia-y-autoria.md)— y [`03·D5`](base/03-datos.md) de 640 a 304, ganando además su excepción escrita en la forma que pide [`20·M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Las dos pasaron a **CUMPLE**: las reglas reprobadas bajan de 60 a 58.
+**El detalle.** Del [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). [`03·D8`](base/03-datos.md) pasó de 1 962 a 292 caracteres —su porqué quedó en [`notas/pertenencia-y-autoria.md`](notas/pertenencia-y-autoria.md)— y [`03·D5`](base/03-datos.md) de 640 a 304, ganando además su excepción escrita en la forma que pide [`20·M8`](base/20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md). Las dos pasaron a **CUMPLE**: las reglas reprobadas bajan de 60 a 58.
 
 **Y un efecto que conviene saber antes de tocar otra:** cambiarle el título a una regla le mueve el ancla, y las citas a esa ancla quedan rotas **sin que `validar.py estandar` diga nada**. Lo destapó `citas.py` al querer reescribir dos capítulos que citaban a `D8` por su título viejo.
 
@@ -850,7 +858,7 @@ Se cambió porque el estándar exige escribir en español todo lo que tenga trad
 
 De las 70 reglas en NO CUMPLE, **quince fallan solo la fila 10** —el cuerpo de cuatro líneas de [`20·M5`](base/20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md)— y diez de esas son puro exceso de explicación: no hay que partirlas, ni derogarlas, ni decidir nada.
 
-**Es el único trabajo grande del [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) que no depende de una decisión.**
+**Es el único trabajo grande del [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) que no depende de una decisión.**
 
 | Regla | Antes | Después |
 |---|---:|---:|
@@ -1003,7 +1011,7 @@ Y [`20·M14`](base/20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-proced
 
 ### Lo que esto **no** hace
 
-**No arregla ninguna regla.** Las 72 en NO CUMPLE siguen siendo 72, y [`01·C10`](base/01-conducta.md#c10--cada-mensaje-del-usuario-se-evalúa-como-posible-mejora-del-setup) sigue nombrando tecnologías concretas. Lo que cambió es que ahora su tabla lo dice. Eso es el [19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No arregla ninguna regla.** Las 72 en NO CUMPLE siguen siendo 72, y [`01·C10`](base/01-conducta.md#c10--cada-mensaje-del-usuario-se-evalúa-como-posible-mejora-del-setup) sigue nombrando tecnologías concretas. Lo que cambió es que ahora su tabla lo dice. Eso es el [19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 Fase: [`B-EP-001-HU-009`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/B-EP-001-HU-009-el-sello-no-se-contradice/).
 
@@ -1258,7 +1266,7 @@ El validador de meta-reglas reportaba **33 reglas sin clasificar**, incluidos lo
 - **`20·M15` y `02·F12` ya estaban construidas** y no figuraban entre los validadores hechos.
 - La lista de validables **creció** de ~12 a ~22: clasificar de más como «no validable» era el camino cómodo.
 
-**El [pendiente 19](pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) no cierra:** siguen las siete publicadas en «no cumple» —que necesitan una decisión de quien define el estándar— y las 121 sin bloque de checklist.
+**El [pendiente 19](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) no cierra:** siguen las siete publicadas en «no cumple» —que necesitan una decisión de quien define el estándar— y las 121 sin bloque de checklist.
 
 ## 23.1.0 — 2026-08-16
 

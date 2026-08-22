@@ -129,7 +129,7 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Qué se decidió.** No reescribir una palabra del texto literal del usuario de `F12`: va entero al anexo. Los porqués recortados de `18` y `19` van a `notas/`, no se pierden.
 
-**Dónde queda.** v30.8.0, [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) con la ronda escrita; `validar.py metareglas` da cero fallas. **Abierto para el usuario:** el anexo nuevo trae doce rayas (son del texto literal que se movió) y el trinquete de marcas las cuenta como nuevas y bloquea el commit; decidir si se sustituyen (es puntuación, no palabras) o se deja el texto intacto y se pasa el trinquete de otra forma.
+**Dónde queda.** v30.8.0, [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) con la ronda escrita; `validar.py metareglas` da cero fallas. **Abierto para el usuario:** el anexo nuevo trae doce rayas (son del texto literal que se movió) y el trinquete de marcas las cuenta como nuevas y bloquea el commit; decidir si se sustituyen (es puntuación, no palabras) o se deja el texto intacto y se pasa el trinquete de otra forma.
 
 ### H-9 · Ninguna regla se pasa ya del molde, y las particiones que faltaban casi todas estaban hechas
 
@@ -137,9 +137,17 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Qué se decidió.** Recortar dejando la exigencia y mandar los porqués a [notas/porques-recortados-al-molde.md](../../../notas/porques-recortados-al-molde.md). Y para dos que no se podían recortar sin perder su contenido —la tabla de trazabilidad de `13·DOC11` y los seis pasos del desempate de `20·M6`— repetir la salida que el usuario ya había aprobado para `02·F12`: **anexo del capítulo**, con el texto entero.
 
-**Dónde queda.** v30.8.1 a v30.9.0, cinco publicaciones, una por capítulo. `validar.py metareglas`: cero fallas y ningún aviso de largo. La ronda queda escrita en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Dónde queda.** v30.8.1 a v30.9.0, cinco publicaciones, una por capítulo. `validar.py metareglas`: cero fallas y ningún aviso de largo. La ronda queda escrita en el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Abierto, y es del usuario:** `17·I3` (una regla con la lista, o cuatro reglas) y `12·PR3` (el sí a derogarla venía del diagnóstico viejo; hoy la regla exige algo propio que se perdería).
+
+### H-10 · El pendiente 19 cierra, y la fase que lo respalda se escribió después de ejecutarlo
+
+**Qué se encontró.** Con las dos decisiones del usuario tomadas (`17·I3` queda como una regla con su lista; `12·PR3` no se deroga) el pendiente 19 se quedó sin deudas. Pero todo el trabajo se había ejecutado por orden directa, capítulo por capítulo, **sin la fase que `02·F23` exige**: seis versiones publicadas que ninguna historia reclamaba.
+
+**Qué se decidió.** Levantar la fase `F` de HU-009 retrodocumentando, con el mismo patrón de la señal S-018: la línea base es lo ya publicado, las pruebas se corrieron de verdad (7 de 7), y el plan y el cierre dicen en su propio texto que el orden se invirtió, en vez de disimularlo.
+
+**Dónde queda.** [F-EP-001-HU-009-nadie-se-pasa-del-molde](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-009-reglas-sin-checklist-al-dia/F-EP-001-HU-009-nadie-se-pasa-del-molde/README.md) · el pendiente pasa a [hecho](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) · la HU-009 queda con su `CA-01` cubierto y el README de la historia, que decía «todavía no tiene fases», lista las seis.
 
 ---
 

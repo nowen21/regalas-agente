@@ -29,7 +29,7 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 **20 filas: 20 ✅ · 0 ❌ · 0 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias: que el plan se presente y no se toque código sin el OK, y que **autorizar el arranque de una fase no sea aprobar su plan**. **Se cumplen por separado**, y la segunda es la que se incumple: nadie se salta el OK del plan a propósito — lo que pasa es que se toma el «arranque con X» por aprobación. Es ahora [`02·F25`](F25-autorizar-el-arranque-no-aprueba-el-plan.md). Del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias: que el plan se presente y no se toque código sin el OK, y que **autorizar el arranque de una fase no sea aprobar su plan**. **Se cumplen por separado**, y la segunda es la que se incumple: nadie se salta el OK del plan a propósito — lo que pasa es que se toma el «arranque con X» por aprobación. Es ahora [`02·F25`](F25-autorizar-el-arranque-no-aprueba-el-plan.md). Del [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **❌** — **8** y **9**: el título lleva "y" porque el cuerpo lleva **dos exigencias** que se cumplen por separado —acompañar el plan con su plan de pruebas, y no ejecutar sin OK explícito—. Partirla exige un ID nuevo, y eso lo decide el usuario ([`M4`](../../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)).
 

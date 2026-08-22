@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** Fase `D` de la historia; las tres anteriores cerraron el `CA-02`, los sellos y la fila 5.
 
-**De dónde sale:** el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), categoría *«dejar de repetir al vecino»*.
+**De dónde sale:** el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), categoría *«dejar de repetir al vecino»*.
 
 **CA que cubre:** el `CA-01` sobre reglas que reprueban **la fila 11**, y el transversal de no regresión.
 

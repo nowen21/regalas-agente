@@ -188,7 +188,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 **La sesión se puede cerrar**, con dos cosas que quedan esperando al usuario y que **no la bloquean**, porque están anotadas y no se pierden:
 
-- Qué se hace con las **siete reglas publicadas en «no cumple»** — es el `CA-01` del [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que sigue abierto.
+- Qué se hace con las **siete reglas publicadas en «no cumple»** — es el `CA-01` del [19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que sigue abierto.
 - La **contradicción del `P0`** en la cabecera del índice del backlog (H-7).
 
 **De los ocho `P1` que dispararon la sesión, siete quedaron resueltos** —35, 38, 43, 30, 27, 28 y el punto 7 del 33, este último promovido al [52](../../../pendientes/hecho/el-sello-del-checklist-se-comprueba.md)—. El **19** cerró su parte mecánica y sigue abierto por las otras dos, que no dependen de trabajo sino de una decisión y de tiempo por capítulo.

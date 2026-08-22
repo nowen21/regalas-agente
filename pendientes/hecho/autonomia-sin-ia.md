@@ -403,7 +403,7 @@ La frontera es la de siempre: **completitud se comprueba, calidad se juzga.**
 | **Detiene** | `estandar` y `versionado` — enlaces rotos, índices viejos, algo sin versionar. Salen del trabajo de hoy |
 | **Informa** | `metareglas` — el cuerpo de reglas contra su molde |
 
-**Es la distinción que decide si el enganche sobrevive.** Al construirlo, la primera versión metía `metareglas` en el bucle que detiene, y **rechazó el push con cero fallas**: hay reglas publicadas que no pasan su checklist, deuda conocida del [19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Es la distinción que decide si el enganche sobrevive.** Al construirlo, la primera versión metía `metareglas` en el bucle que detiene, y **rechazó el push con cero fallas**: hay reglas publicadas que no pasan su checklist, deuda conocida del [19](ninguna-regla-reprueba-su-propio-checklist.md).
 
 > **Un estándar endeudado consigo mismo no puede impedir publicar cualquier otra cosa.** Eso convierte el enganche en un obstáculo permanente, y así se termina en `--no-verify` para todo — que es apagarlo sin decirlo.
 

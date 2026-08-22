@@ -83,7 +83,7 @@
 - **Duda 1 de §2.7:** si el criterio entra al cuerpo de `M9`, o si `M9` lo enlaza y el criterio se queda en `validadores/`. Bloquea T-01 y T-02; las pruebas no dependen de ella.
 - **La aprobación del plan.** Tocar `M9` sube versión ([`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md)).
 - **Hoy el criterio no viaja a un proyecto heredero**, porque vive en `validadores/`. Es lo que la duda 1 resuelve.
-- **Si aparecen reglas mal clasificadas** (riesgo `R-01`): se anotan y se suman al pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Reclasificar lo decide el usuario.
+- **Si aparecen reglas mal clasificadas** (riesgo `R-01`): se anotan y se suman al pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Reclasificar lo decide el usuario.
 
 ---
 

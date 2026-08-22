@@ -33,7 +33,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **El análisis del 2026-08-07 dijo qué significa eso en la práctica, y es lo grave:** *«deja al agente autorizándose a sí mismo»*. La regla que obliga a probar trae, dentro, el permiso de no probar — y el que lo usa es el mismo que decide si aplica.
 
-**No se arregla acá, y no es redacción.** Ponerle autorizador cambia qué se exige: hoy el agente declara, mañana tendría que pedirlo. Eso es MAYOR y va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**No se arregla acá, y no es redacción.** Ponerle autorizador cambia qué se exige: hoy el agente declara, mañana tendría que pedirlo. Eso es MAYOR y va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 La fila **12** es N/A: la exigencia —acompañar de pruebas— no se puede malinterpretar. Lo que hay que arreglar es la excepción, no el ejemplo.
 
@@ -136,7 +136,7 @@ Reprueba dos filas, y las dos son la misma historia: **dice de nuevo lo que ya d
 
 **Es el caso opuesto a [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles)**, que remite al mismo núcleo y agrega qué significa en un log. Aquella cabe y esta no, y la diferencia es exactamente lo que sobra.
 
-La fila **12** es N/A por poco: el análisis del 2026-08-07 pedía ejemplo *«pese a ser error frecuente»*, y tiene razón — pero el ejemplo llega cuando se sepa con qué se queda la regla. Va junto con lo demás al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+La fila **12** es N/A por poco: el análisis del 2026-08-07 pedía ejemplo *«pese a ser error frecuente»*, y tiene razón — pero el ejemplo llega cuando se sepa con qué se queda la regla. Va junto con lo demás al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -227,7 +227,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado — **de dónde salen los casos** y **de dónde sale el resultado esperado**—, y su propio texto lo decía: *«se aplica en dos frentes»*. **Se pueden derivar los casos con todo el método y sacar el resultado esperado del propio código**, que es el error más caro de los dos. Es ahora [`T8`](#t8--el-resultado-esperado-no-sale-del-código-que-se-está-probando). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado — **de dónde salen los casos** y **de dónde sale el resultado esperado**—, y su propio texto lo decía: *«se aplica en dos frentes»*. **Se pueden derivar los casos con todo el método y sacar el resultado esperado del propio código**, que es el error más caro de los dos. Es ahora [`T8`](#t8--el-resultado-esperado-no-sale-del-código-que-se-está-probando). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Se fue la explicación de qué es triangular** —el origen topográfico del nombre—: es el porqué, no la exigencia, y por eso el cuerpo no cabía en el molde.
 
@@ -258,7 +258,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`T7`](#t7--los-casos-se-derivan-con-método-no-se-eligen-a-ojo).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`T7`](#t7--los-casos-se-derivan-con-método-no-se-eligen-a-ojo).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia, y es la más importante de las dos.** `T7` da **cobertura**; esta da **verdad**. Una prueba con casos perfectamente derivados y el esperado copiado de la salida actual **solo comprueba que el código hace lo que hace** — pasa siempre, no falla nunca, y figura como cubierta.
 

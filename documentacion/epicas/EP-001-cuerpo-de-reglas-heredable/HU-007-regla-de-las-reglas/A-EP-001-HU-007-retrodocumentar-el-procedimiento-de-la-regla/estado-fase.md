@@ -85,7 +85,7 @@
 - **Duda 1 de §2.7:** cuáles candidatas rechazadas se usan como caso. El usuario es quien recuerda las que se propusieron y no entraron. Bloquea T-02 y T-05.
 - **La aprobación del plan.** Sin ella no arranca la ejecución.
 - **[`validadores/metareglas.py`](../../../../../validadores/metareglas.py) no se puede correr** (pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md)): la fila 5 se decide leyendo, y el resultado tiene que decirlo.
-- **Si al recorrer el checklist una regla vigente reprueba** (riesgo `R-01`): se anota y se suma al pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Si al recorrer el checklist una regla vigente reprueba** (riesgo `R-01`): se anota y se suma al pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 ---
 

@@ -97,7 +97,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-por-que-pide-ta
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** commit `87200d0`. Lo de los sub-ID sigue vivo en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Dónde queda:** commit `87200d0`. Lo de los sub-ID sigue vivo en el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-07 · por qué pide tanto permiso.
 - **Cerrado en:** 2026-08-07 · por qué pide tanto permiso.
 - **Con qué se retoma:** —.

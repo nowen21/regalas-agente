@@ -35,7 +35,7 @@ El único programa que comprueba **once de las veinte filas** del [checklist del
 
 Entre esas once filas están la **5**, que `M3` necesita, y la **15**, que impide que una regla normal mande sobre una `[BLINDADA]`.
 
-Lo que reporta hoy: **7 fallas y 229 avisos**. No son de esta fase — son el capítulo 20 sin cumplirse a sí mismo, o sea el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Lo que esta fase entrega es **con qué medirlo**: esa medición no se podía repetir por línea de comandos desde el 2026-08-14.
+Lo que reporta hoy: **7 fallas y 229 avisos**. No son de esta fase — son el capítulo 20 sin cumplirse a sí mismo, o sea el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Lo que esta fase entrega es **con qué medirlo**: esa medición no se podía repetir por línea de comandos desde el 2026-08-14.
 
 ### 3 · Una prueba que lee el disco, no una lista
 
@@ -65,7 +65,7 @@ Uno de los seis casos comprueba que **la lista no esté vacía**. Sin él, un ba
 
 | Qué | Dónde va |
 |---|---|
-| `D-02` — la regla sin clasificar **avisa** y un aviso no detiene | Pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) |
+| `D-02` — la regla sin clasificar **avisa** y un aviso no detiene | Pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) |
 | `D-03` — `citas.py --aplicar` **escribiría** en `base/` cuatro ejemplos enlazados como si fueran citas | Pendiente [55](../../../../../pendientes/hecho/los-enlaces-de-ejemplo-no-son-enlaces.md) |
 | El pendiente 55 afirma que `G9` no existe, y sí existe | Corregido en el propio 55 |
 

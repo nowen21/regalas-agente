@@ -86,7 +86,7 @@ Es la misma lección de esta semana, por quinta vez: **la respuesta ya estaba es
 
 **Siete reglas no tienen sello:** `F4.1` a `F4.5`, `F6` y `F7`. Nacieron de partir reglas más grandes y el paso de aplicarles el checklist se saltó. Encabezan la lista, que es donde tienen que estar.
 
-Va anotado acá y no como pendiente nuevo: son siete reglas del [pendiente 19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que es el que lleva la cuenta de las que no cumplen el capítulo 20.
+Va anotado acá y no como pendiente nuevo: son siete reglas del [pendiente 19](ninguna-regla-reprueba-su-propio-checklist.md), que es el que lleva la cuenta de las que no cumplen el capítulo 20.
 
 ### El límite, dicho claro
 

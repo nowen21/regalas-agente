@@ -47,7 +47,7 @@
 | [`base/04-seguridad.md`](../../../../../base/04-seguridad.md) | Cuerpo y sello de `S10` |
 | [`validadores/metareglas.py`](../../../../../validadores/metareglas.py) | `node`, `deno`, `bun`, `dotnet` y `softdeletes` al detector de la fila 5 |
 | [`validadores/tests/test_la_base_no_nombra_stack.py`](../../../../../validadores/tests/test_la_base_no_nombra_stack.py) | 7 casos |
-| [`pendientes/19-…`](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Lo que esta fase cierra. **Sigue abierto** |
+| [`pendientes/19-…`](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Lo que esta fase cierra. **Sigue abierto** |
 | `CHANGELOG.md` · `VERSION` | 23.7.3 |
 
 **Ninguna de las cuatro cambia lo que exige**, y el conteo de reglas en NO CUMPLE no se movió: **72 antes y 72 después**. Por eso es PARCHE.

@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-capitulo-02-
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** versión **3.1.0**. Lo que quedó vivo es la misma decisión aplicada a `F12.1`–`F12.13` y a la fila 17 de `M4`, hoy en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Dónde queda:** versión **3.1.0**. Lo que quedó vivo es la misma decisión aplicada a `F12.1`–`F12.13` y a la fila 17 de `M4`, hoy en el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-07 · el capítulo 02 al molde.
 - **Cerrado en:** 2026-08-07 · el capítulo 02 al molde.
 - **Con qué se retoma:** —.

@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que **sigue abierto** — su categoría más grande, *«acortar»*.
+De dónde sale: el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que **sigue abierto** — su categoría más grande, *«acortar»*.
 
 **Diez reglas cuyo único defecto era el largo pasan a CUMPLE sin que cambie una exigencia.** Las que reprueban bajan de **70 a 60**. Es el único trabajo grande del 19 que no depende de una decisión del usuario.
 

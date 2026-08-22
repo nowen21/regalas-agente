@@ -52,7 +52,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-la-instalacion-
 - **Responde a:** —.
 - **Dispara:** —, es aplicar un checklist que ya existe.
 - **Orden de resolución:** 1 de 1.
-- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), y se cruza con el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Dónde queda:** [pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md](../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), y se cruza con el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-08 · la instalación se hace sola.
 - **Cerrado en:** —.
 - **Con qué se retoma:** ¿el sello de una regla caduca cuando su texto cambia? Si nada lo comprueba, el checklist envejece en silencio.

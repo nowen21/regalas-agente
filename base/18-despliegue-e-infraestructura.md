@@ -34,7 +34,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -67,7 +67,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -101,7 +101,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -135,7 +135,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -171,7 +171,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -206,7 +206,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -239,7 +239,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Corregida el 2026-08-22 (pendiente 19):** gana su ejemplo INCORRECTO/CORRECTO; los catorce de los capítulos `18` y `19` se escribieron juntos, como una sola unidad.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 
@@ -276,7 +276,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Ninguna de las catorce reglas de los capítulos `18` y `19` tiene ejemplo.** No es un descuido de esta: es de los dos capítulos, que nacieron juntos en la v1.1.0 y se escribieron de corrido. El análisis del 2026-08-07 los listó así, en bloque.
 
-**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Se anota una vez y se arregla una vez.** Escribir catorce ejemplos sueltos, uno por sello, produciría catorce ejemplos que no se hablan entre sí; el capítulo entero es la unidad. Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **No corre prisa, y conviene decir por qué:** son capítulos `opt-in` y hoy **ningún proyecto los tiene encendidos**. El día que uno los encienda, los ejemplos son lo primero que va a necesitar.
 

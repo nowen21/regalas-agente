@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** Fase `C` porque la [`A`](../A-EP-001-HU-009-clasificar-las-que-faltan/) cerró el `CA-02` y la [`B`](../B-EP-001-HU-009-el-sello-no-se-contradice/) dejó los sellos coherentes.
 
-**De dónde sale:** el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) lo pone como **segundo** en su lista de por dónde seguir: *«las tres con nombre propio. Son de una línea cada una y hoy cualquier proyecto que herede el estándar lee el stack de otro»*.
+**De dónde sale:** el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) lo pone como **segundo** en su lista de por dónde seguir: *«las tres con nombre propio. Son de una línea cada una y hoy cualquier proyecto que herede el estándar lee el stack de otro»*.
 
 **CA que cubre:** el `CA-01` sobre las reglas que reprueban **la fila 5**, y el transversal de no regresión.
 

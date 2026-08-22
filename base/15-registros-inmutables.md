@@ -64,7 +64,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Su propio título decía dos cosas —*«los tres estados **y** la trazabilidad de quien anula»*— y se cumplen por separado: **se pueden tener los tres estados y anular sin guardar quién ni por qué**. Lo segundo es ahora [`IM6`](#im6--anular-deja-escrito-quién-cuándo-y-por-qué). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Su propio título decía dos cosas —*«los tres estados **y** la trazabilidad de quien anula»*— y se cumplen por separado: **se pueden tener los tres estados y anular sin guardar quién ni por qué**. Lo segundo es ahora [`IM6`](#im6--anular-deja-escrito-quién-cuándo-y-por-qué). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -94,7 +94,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Partida el 2026-08-18.** Sus cuatro pasos eran **dos exigencias**: revertir de forma atómica, y avisar a los demás módulos para que suelten lo que tenían calculado. **Se cumplen por separado**, y de hecho la segunda se olvida con la reversión perfecta: los saldos quedan bien en el almacén y mal en lo que alguien ya había calculado. Es ahora [`IM7`](#im7--al-anular-se-avisa-a-quien-tenía-el-dato-calculado). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Sus cuatro pasos eran **dos exigencias**: revertir de forma atómica, y avisar a los demás módulos para que suelten lo que tenían calculado. **Se cumplen por separado**, y de hecho la segunda se olvida con la reversión perfecta: los saldos quedan bien en el almacén y mal en lo que alguien ya había calculado. Es ahora [`IM7`](#im7--al-anular-se-avisa-a-quien-tenía-el-dato-calculado). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -123,7 +123,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`IM3`](#im3--la-anulación-revierte-todo-o-no-revierte-nada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`IM3`](#im3--la-anulación-revierte-todo-o-no-revierte-nada).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `IM3` deja el almacén correcto; esta deja correcto **lo que ya se había leído de él**. Se incumple sola y es la más difícil de notar: nada falla, solo que un número viejo sigue a la vista.
 
@@ -217,7 +217,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`IM2`](#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`IM2`](#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `IM2` dice **qué estados hay**; esta dice **qué queda escrito al pasar al último**. Se incumple sola, y es la que más se incumple: conservar la fila es fácil, escribir un motivo con sustancia no.
 

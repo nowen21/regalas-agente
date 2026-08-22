@@ -67,7 +67,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-08-escribir-para-q
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** el bloque de checklist de [`ID7`](../../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md). Que nadie comprueba esos bloques sigue abierto en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Dónde queda:** el bloque de checklist de [`ID7`](../../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md). Que nadie comprueba esos bloques sigue abierto en el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-08 · escribir para que lo entienda quien no sabe.
 - **Cerrado en:** 2026-08-08 · escribir para que lo entienda quien no sabe.
 - **Con qué se retoma:** —.

@@ -185,7 +185,7 @@ Se asume que el estándar está en producción. Escribir el criterio dentro de `
 | ID | Riesgo o bloqueo | Impacto | Acción | Estado |
 |---|---|---|---|---|
 | B-01 | La duda 1 sin resolver | Bloquea el CA-01 | Se presenta al usuario: tocar `M9` sube versión | Abierto |
-| R-01 | Que al probar aparezcan reglas mal clasificadas | Se destapa trabajo del pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Se anotan; reclasificar es decisión del usuario | Abierto |
+| R-01 | Que al probar aparezcan reglas mal clasificadas | Se destapa trabajo del pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Se anotan; reclasificar es decisión del usuario | Abierto |
 | R-02 | Que el criterio, escrito como regla, quede tan corto que no decida nada | Vuelve a decidirse a ojo | El caso del CA-03 es la prueba: si con el criterio no se puede partir una regla difusa, falta texto | Abierto |
 
 ---

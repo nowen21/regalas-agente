@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** Quinta fase de la historia.
 
-**De dónde sale:** el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), categoría *«acortar — sobra explicación, no exigencia»*, que es la mayor de las ocho.
+**De dónde sale:** el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), categoría *«acortar — sobra explicación, no exigencia»*, que es la mayor de las ocho.
 
 **CA que cubre:** el `CA-01` sobre reglas que reprueban **solo la fila 10**, y el transversal de no regresión.
 

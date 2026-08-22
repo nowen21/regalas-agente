@@ -118,4 +118,4 @@ Lo que sí apareció al correr las pruebas:
 
 **`base/` nombra la herramienta 26 veces** y `20·M3` la declara agnóstica. Casi todas son un nombre de archivo, así que el amarre es superficial — pero **`M3` se incumple diez veces y nadie lo reporta**, porque el detector de tecnología busca lenguajes y frameworks, no herramientas de agente.
 
-Va anotado en el [pendiente 19](../19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que es el que lleva la cuenta de lo que el capítulo 20 no se cumple a sí mismo.
+Va anotado en el [pendiente 19](ninguna-regla-reprueba-su-propio-checklist.md), que es el que lleva la cuenta de lo que el capítulo 20 no se cumple a sí mismo.

@@ -24,7 +24,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-checklist-de
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** el informe en `analisis/`, y hoy el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que cuenta lo que sigue sin cerrar.
+- **Dónde queda:** el informe en `analisis/`, y hoy el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que cuenta lo que sigue sin cerrar.
 - **Nace en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Cerrado en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Con qué se retoma:** —.
@@ -84,7 +84,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-07-el-checklist-de
 - **Responde a:** —.
 - **Dispara:** —.
 - **Orden de resolución:** —.
-- **Dónde queda:** [base/20-meta-reglas/base.md/](../../../base/20-meta-reglas/base.md) y [base/00-identidad-y-rol/base.md/](../../../base/00-identidad-y-rol/base.md). Lo que quedó sin cerrar se cuenta hoy en el [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md): 129 reglas sin checklist y 7 publicadas en «no cumple».
+- **Dónde queda:** [base/20-meta-reglas/base.md/](../../../base/20-meta-reglas/base.md) y [base/00-identidad-y-rol/base.md/](../../../base/00-identidad-y-rol/base.md). Lo que quedó sin cerrar se cuenta hoy en el [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md): 129 reglas sin checklist y 7 publicadas en «no cumple».
 - **Nace en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Cerrado en:** 2026-08-07 · el checklist de la regla y la carpeta de identidad.
 - **Con qué se retoma:** —.

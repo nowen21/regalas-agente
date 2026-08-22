@@ -212,7 +212,7 @@ Quirúrgica ([`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-
 | Severidad | Qué sería en esta fase | Atención |
 |---|---|---|
 | **Crítica** | Que una candidata con nombre propio pase la fila 5 | Inmediato. El CA queda en «No» |
-| **Alta** | Que al recorrer el checklist sobre una regla vigente resulte que reprueba (riesgo `R-01`) | Se anota como evidencia y se suma al pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Corregir la regla no es de esta fase |
+| **Alta** | Que al recorrer el checklist sobre una regla vigente resulte que reprueba (riesgo `R-01`) | Se anota como evidencia y se suma al pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Corregir la regla no es de esta fase |
 | **Media** | Que el enrutamiento mande una regla vigente a otro capítulo | Se anota; mover una regla lo decide el usuario |
 | **Baja** | Que no se recuerden candidatas rechazadas y haya que armarlas (riesgo `R-03`) | Se admite: la armada se marca como tal |
 

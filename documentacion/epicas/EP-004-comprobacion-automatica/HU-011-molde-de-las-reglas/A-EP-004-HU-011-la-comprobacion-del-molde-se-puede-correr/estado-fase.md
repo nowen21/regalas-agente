@@ -77,7 +77,7 @@
 |---|---|
 | Se le abre la puerta al programa que ya está, sin tocar sus comprobaciones: reescribir y correr a la vez impide saber si un hallazgo es del programa viejo o del nuevo | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
 | Si algo no se puede correr, el programa **muere diciendo por dónde se corre**. Salir con 0 sin haber mirado es peor que fallar | §2.6 del plan y pendiente [53](../../../../../pendientes/hecho/ningun-validador-termina-en-silencio.md) |
-| La cuenta de 121 reglas sin checklist se hizo a mano; la corrida da la real, y el pendiente [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) se corrige con ella | §2.6 del plan |
+| La cuenta de 121 reglas sin checklist se hizo a mano; la corrida da la real, y el pendiente [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) se corrige con ella | §2.6 del plan |
 | Abrir la puerta va a destapar cientos de hallazgos. Se anotan como línea base del primer día para que no se lean como regresión | Riesgo `R-01` del plan |
 
 ---

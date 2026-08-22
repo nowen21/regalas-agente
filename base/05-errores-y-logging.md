@@ -70,7 +70,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: validar al entrar, y envolver en transacción lo que toca varios registros. **Se puede validar todo al principio y aun así dejar tres registros escritos y el cuarto no.** La segunda es ahora [`E6`](#e6--lo-que-toca-varios-registros-va-en-transacción). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Traía dos exigencias que se cumplen por separado: validar al entrar, y envolver en transacción lo que toca varios registros. **Se puede validar todo al principio y aun así dejar tres registros escritos y el cuarto no.** La segunda es ahora [`E6`](#e6--lo-que-toca-varios-registros-va-en-transacción). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -100,7 +100,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`E2`](#e2--valida-al-entrar-y-aborta-temprano).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`E2`](#e2--valida-al-entrar-y-aborta-temprano).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `E2` evita **empezar** algo que no se puede terminar; esta evita **dejarlo a medias** cuando ya empezó. La citan por separado: [`15·IM3`](15-registros-inmutables.md#im3--la-anulación-revierte-todo-o-no-revierte-nada) remite aquí para exigir que la reversión sea atómica.
 

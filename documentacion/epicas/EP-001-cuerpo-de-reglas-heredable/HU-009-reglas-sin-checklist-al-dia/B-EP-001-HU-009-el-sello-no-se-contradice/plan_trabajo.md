@@ -14,7 +14,7 @@
 
 **ORIGEN** ([`13·DOC12`](../../../../../base/13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md)): 🐛 **Defecto.** Es la fase `B` porque la [`A`](../A-EP-001-HU-009-clasificar-las-que-faltan/) ya cerró con el `CA-02`.
 
-**De dónde sale:** aplicarle el checklist a los veinte capítulos, trabajo del [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md). Al ir a arreglar las reglas que reprueban se encontró que **algunos sellos no dicen lo que su propia tabla dice**.
+**De dónde sale:** aplicarle el checklist a los veinte capítulos, trabajo del [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md). Al ir a arreglar las reglas que reprueban se encontró que **algunos sellos no dicen lo que su propia tabla dice**.
 
 **CA que cubre:** el `CA-01` en su parte comprobable —que el resultado escrito de cada regla sea verificable— y el transversal de **no regresión**: *«una regla que ya traía su checklist no lo pierde ni cambia de resultado sin motivo escrito»*.
 

@@ -60,7 +60,7 @@ Es lo que la salvó de derogarse, y es la clase de cosa que solo aparece leyendo
 |---|---|
 | [`base/07-calidad-de-codigo.md`](../../../../../base/07-calidad-de-codigo.md) | Cuerpo y sello de `Q7` — 211 a 191 caracteres |
 | [`base/12-privacidad-datos.md`](../../../../../base/12-privacidad-datos.md) | Cuerpo, ejemplo y sello de `PR4` — 242 a 220, y `depende de 05·E5` declarado |
-| [`pendientes/19-…`](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) | Lo que esta fase cierra. **Sigue abierto** |
+| [`pendientes/19-…`](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) | Lo que esta fase cierra. **Sigue abierto** |
 | `CHANGELOG.md` · `VERSION` | 23.7.4 |
 
 **En `PR4` lo que importa no es que acorte** —22 caracteres— **sino que lo que queda es suyo**.

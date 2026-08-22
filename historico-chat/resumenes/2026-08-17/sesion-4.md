@@ -47,7 +47,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-17-sesion-4.md](..
 
 ### H-4 · El script de enrutamiento metió la fila dentro de la tabla equivocada, en tres archivos
 
-**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
+**Qué pasó.** El programa que escribió las 33 filas buscaba «la primera tabla de las 15 primeras líneas». En el [18](../../../pendientes/hecho/los-enlaces-del-estandar-no-cumplen-doc14.md), el [19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) y el [23](../../../pendientes/hecho/plantillas-separa-modelos-de-procedimientos.md) esa tabla no era la ficha: era una tabla de contenido. La fila quedó entre los datos.
 
 **Por qué importa.** Ningún validador lo habría visto: el enlace resuelve, la tabla sigue siendo tabla y el conteo daba 33 de 33. **Lo destapó una comprobación escrita a propósito** —que la fila estuviera precedida por el encabezado vacío `| | |`—, no la corrida de siempre. Una comprobación que se escribe para dudar del propio trabajo encuentra lo que las otras no buscan.
 
@@ -517,7 +517,7 @@ Lo que funcionó fue lo tercero: una decisión por párrafo, en castellano, y al
 
 ### H-43 · Las reglas largas lo son porque tienen dos exigencias, no al revés
 
-Se acortaron seis reglas del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md) —`D8`, `S9`, `S10`, `D5`, `F13`, `E4`— y las reprobadas bajaron de **60 a 54**. Las seis fallaban **solo la fila 10**, así que se arreglaron sin tocar ningún identificador.
+Se acortaron seis reglas del [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md) —`D8`, `S9`, `S10`, `D5`, `F13`, `E4`— y las reprobadas bajaron de **60 a 54**. Las seis fallaban **solo la fila 10**, así que se arreglaron sin tocar ningún identificador.
 
 **Ya no queda ninguna así.** Y midiendo bien apareció lo que había estimado mal: **16 de las 54 fallan la fila 9 y la 10 a la vez.** Una regla larga suele serlo **porque** tiene dos exigencias — no son dos problemas, es el mismo.
 
@@ -532,7 +532,7 @@ Se acortaron seis reglas del [pendiente 19](../../../pendientes/19-el-capitulo-2
 
 ### H-44 · Tres reglas ya vienen partidas por dentro y nadie lo había mirado
 
-Quedó escrita la propuesta de partición de las [26](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y al armarla apareció que **algunas se parten solas**:
+Quedó escrita la propuesta de partición de las [26](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y al armarla apareció que **algunas se parten solas**:
 
 | Regla | Lo que ya dice su propio texto |
 |---|---|
@@ -842,7 +842,7 @@ Al cerrar el 14, la batería encontró tres cosas que la lectura no:
 
 `F4.1` a `F4.5`, `F6` y `F7` **nunca recibieron su checklist**. Nacieron de partir reglas más grandes y el paso se saltó. Encabezan la lista de vigencia, que es donde tienen que estar.
 
-**Quedó anotado en el pendiente 14 y no como pendiente nuevo**: son siete reglas del [pendiente 19](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que ya lleva la cuenta de las que no cumplen el capítulo 20.
+**Quedó anotado en el pendiente 14 y no como pendiente nuevo**: son siete reglas del [pendiente 19](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que ya lleva la cuenta de las que no cumplen el capítulo 20.
 
 ### H-68 · El adaptador se mudó, y el riesgo era que el mapa mejorara solo
 

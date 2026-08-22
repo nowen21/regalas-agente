@@ -72,7 +72,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **Lo que queda es una sola cosa:** una convención por tipo, aplicada igual. Los nombres cortos y sin repetir la ubicación no son otra exigencia — son **cómo se ve** que la convención está bien elegida.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Reprueba tres filas seguidas, y las tres dicen lo mismo: son tres reglas metidas en una.**
 
@@ -80,7 +80,7 @@ Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
 - **Fila 10 · cuerpo de 1 a 4 líneas.** Mide **398 caracteres** y el molde da 320. No cabe porque son tres.
 - **Fila 8 · el título manda.** «Nomenclatura consistente» no es imperativo, y no puede serlo mientras cubra tres exigencias distintas. Las otras dos del capítulo sí lo son: *Organiza...*, *Respeta...*.
 
-**Partirla es un cambio de regla y no se hace acá.** Va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y no es solo redacción: dos IDs nuevos, y [validadores/reglas-validables.md](../validadores/reglas-validables.md) ya la cita partida en dos —`14·EST2` (longitud) y `14·EST2` (resto)—, señal de que el corte llevaba tiempo pidiéndose.
+**Partirla es un cambio de regla y no se hace acá.** Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y no es solo redacción: dos IDs nuevos, y [validadores/reglas-validables.md](../validadores/reglas-validables.md) ya la cita partida en dos —`14·EST2` (longitud) y `14·EST2` (resto)—, señal de que el corte llevaba tiempo pidiéndose.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

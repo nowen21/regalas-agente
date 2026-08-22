@@ -191,7 +191,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
 
-**Partida el 2026-08-18.** Decía dos cosas: que la comprobación corra sola, y que lo local complemente sin reemplazarla. **Se cumplen por separado** — se puede tener todo automatizado y aun así saltarse el enganche local, o al revés, confiar en el enganche y no tener nada corriendo solo. Lo segundo es ahora [`G11`](#g11--lo-que-corre-en-tu-máquina-complementa-no-reemplaza). Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Partida el 2026-08-18.** Decía dos cosas: que la comprobación corra sola, y que lo local complemente sin reemplazarla. **Se cumplen por separado** — se puede tener todo automatizado y aun así saltarse el enganche local, o al revés, confiar en el enganche y no tener nada corriendo solo. Lo segundo es ahora [`G11`](#g11--lo-que-corre-en-tu-máquina-complementa-no-reemplaza). Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -220,7 +220,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`G6`](#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`G6`](#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `G6` es sobre **que exista** la comprobación automática; esta es sobre **no confundirla con la de tu máquina**. Es la que se incumple con una excusa razonable — *«el pipeline igual lo revisa»*—, y esa excusa es exactamente lo que `00·N3` prohíbe.
 
@@ -291,7 +291,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **El título también cambió.** *«El mensaje es del proyecto, no de la herramienta»* describía **las dos mitades a la vez** y no se sostenía solo en un índice, que es lo que pide la fila 8. Ahora cada una dice lo suyo.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -320,7 +320,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`G8`](#g8--el-cuerpo-del-commit-abre-con-la-idea-del-usuario)**, cuyo texto ya la llamaba la segunda de *«dos consecuencias»*. Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`G8`](#g8--el-cuerpo-del-commit-abre-con-la-idea-del-usuario)**, cuyo texto ya la llamaba la segunda de *«dos consecuencias»*. Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia.** `G8` dice **por dónde abre** el mensaje; esta dice **qué no puede llevar**. Se incumplen por separado, y de hecho la segunda es la que se incumple sola: un mensaje puede abrir perfectamente con la idea del usuario y traer la firma pegada al final.
 

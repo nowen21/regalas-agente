@@ -88,7 +88,7 @@ La primera corrida reportó **seis**, no cinco. El sexto era [`17·I6`](../../..
 
 **El sello queda bien y la regla sigue mal, y es a propósito.** `C10` sigue nombrando `SQLite`, `MariaDB`, `React` y `Django`; lo que cambió es que ahora su tabla lo dice. Las 72 reglas en NO CUMPLE siguen siendo 72.
 
-Eso es el [19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), y esta fase lo deja **medible**: antes, cinco de esas 72 tenían mal escrito cuántas filas les fallan.
+Eso es el [19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), y esta fase lo deja **medible**: antes, cinco de esas 72 tenían mal escrito cuántas filas les fallan.
 
 ---
 

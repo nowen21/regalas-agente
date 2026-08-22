@@ -10,7 +10,7 @@ Contenido inmediato de esta carpeta.
 | [estado-fase.md](estado-fase.md) | En qué estación va y qué la tiene detenida |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó hecho al final |
 
-De dónde sale: el [pendiente 19](../../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md), que **sigue abierto**. Al ir a arreglar las reglas que reprueban se encontró que **algunos sellos no dicen lo que su propia tabla dice**.
+De dónde sale: el [pendiente 19](../../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md), que **sigue abierto**. Al ir a arreglar las reglas que reprueban se encontró que **algunos sellos no dicen lo que su propia tabla dice**.
 
 **Lo que se supo:** el defecto no era de juicio sino de transcripción. En cuatro de los cinco casos se corrió una casilla del bloque `C` — siete seguidas, sin encabezado por columna. Y en los tres del capítulo `01` la fila que se perdió fue siempre la 5, la que dice que la base no nombra tecnología.
 

@@ -43,7 +43,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 > **Lo que esto deja escrito para el capítulo:** una regla `[BLINDADA]` que necesita una excepción probablemente está mal redactada. La de `N1` desapareció sola al decir bien qué cubre la aprobación.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -72,7 +72,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`N1`](#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada).** Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**Nace el 2026-08-18 de partir [`N1`](#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Por qué merece regla propia, y en el núcleo.** `N1` es sobre **pedir permiso**; esta es sobre **qué hacer cuando dicen que no**. Se incumple sin darse cuenta y con buena intención: el rechazo se lee como «así no» en vez de como «esto no», y el siguiente intento sale a los dos minutos con otra forma.
 
@@ -179,7 +179,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 **Y se le quitaron los nombres de las operaciones** —`drop`, `truncate`, `UPDATE`/`DELETE`—: son de un tipo de almacén concreto, [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no los admite en la base, y la lista dejaba fuera todo lo que no fuera ese tipo. **Lo que se prohíbe es destruir, no cuatro palabras.**
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -216,7 +216,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 **La frase que la justifica estaba escondida dentro de `N4`** y ahora es lo primero que se lee: *reversibilidad de la migración ≠ recuperación de datos borrados*. Es la confusión que hace que alguien corra tranquilo algo irreversible.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -282,7 +282,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 **Traía dos exigencias que no se parecen en nada**: que la credencial no quede escrita, y que **el contenido del proyecto no salga afuera**. Una es sobre un dato que no puede estar; la otra, sobre un movimiento que no puede ocurrir. Se cumplen por separado y las incumple gente distinta. Lo segundo es ahora [`N8`](#n8--el-contenido-del-proyecto-no-sale-sin-autorización-blindada).
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -318,7 +318,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v24.
 
 **Y es la que se incumple con la mejor intención:** nadie manda datos afuera para hacer daño, los manda para que alguien lo ayude a resolver algo. Por eso necesita decir en voz alta que **enviar es publicar**.
 
-Del [pendiente 19](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

@@ -99,7 +99,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.
 
 **Y el arreglo no está acá.** El análisis del 2026-08-07 fue explícito: *«duplica `04·S7`; **`DEP3` es el dueño correcto**»*. Una vulnerabilidad de una dependencia es un asunto de dependencias, y el capítulo `04` la trata de prestado. Lo que corresponde es **derogar `04·S7`** y que este capítulo reciba el tema — no recortar `DEP3` para que deje de parecerse.
 
-Eso es un cambio en **otro capítulo**, y va al [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+Eso es un cambio en **otro capítulo**, y va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **La fila 12 reprobaba también y se corrigió en esta pasada:** no tenía ejemplo. El que se agregó es el error de verdad —anotar «para la próxima» porque actualizar rompe dos pruebas—, y **no cambia qué exige la regla**.
 

@@ -148,10 +148,11 @@ Entonces todas sus reglas traen el bloque con su resultado
 | [C-EP-001-HU-009-las-tres-reglas-con-nombre-propio](C-EP-001-HU-009-las-tres-reglas-con-nombre-propio/README.md) | CA-01, la fila 5 | Cerrada 2026-08-18 (v23.7.3) |
 | [D-EP-001-HU-009-enlazar-en-vez-de-repetir](D-EP-001-HU-009-enlazar-en-vez-de-repetir/README.md) | CA-01, la fila 11 | Cerrada 2026-08-18 (v23.7.4) |
 | [E-EP-001-HU-009-las-que-solo-sobraban-de-largo](E-EP-001-HU-009-las-que-solo-sobraban-de-largo/README.md) | CA-01, la fila 10 | Cerrada 2026-08-18 (v23.7.5) |
+| [F-EP-001-HU-009-nadie-se-pasa-del-molde](F-EP-001-HU-009-nadie-se-pasa-del-molde/README.md) | CA-01, entero: ninguna regla publicada reprueba | Cerrada 2026-08-22 (v30.9.1) |
 
 **El `CA-03` cerró: las 121 sin bloque bajaron a cero** el 2026-08-18 — las 200 reglas del cuerpo tienen su sello. **El `CA-01` sigue abierto**, y lo que queda ya no son siete sino **72**: el número subió porque ahora todas dicen la verdad.
 
-**La fase `B` no lo cierra, lo vuelve medible.** Corrige el **sello**, no la regla: cinco reglas tenían mal escrito cuántas filas les fallan, y diez tenían la cuenta mal. Arreglar las 72 sigue esperando decisión de quien define el estándar, y está desglosado en el [pendiente 19](../../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+**La fase `B` no lo cierra, lo vuelve medible.** Corrige el **sello**, no la regla: cinco reglas tenían mal escrito cuántas filas les fallan, y diez tenían la cuenta mal. Arreglar las 72 sigue esperando decisión de quien define el estándar, y está desglosado en el [pendiente 19](../../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -210,4 +211,5 @@ Entonces todas sus reglas traen el bloque con su resultado
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde el hallazgo H-6 del 2026-08-14 |
+| 2026-08-22 | Ing. José Dúmar Jiménez Ruíz | Fase `F` (v30.8.0 a v30.9.1): las 27 reglas en NO CUMPLE cumplen y ninguna se pasa del molde. De las 26 candidatas a partirse, 23 ya lo estaban; `17·I3` y `12·PR3` las decidió el usuario. El `CA-01` queda cubierto |
 | 2026-08-16 | Ing. José Dúmar Jiménez Ruíz | Fase `A` (v23.1.1): las 33 sin clasificar bajan a cero. Quince ya estaban clasificadas por rango —«C1–C17»— y el programa no lee rangos; los capítulos `18` y `19` no aparecían ni una vez |

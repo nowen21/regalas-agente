@@ -112,7 +112,7 @@ Se anotan todos, resueltos y abiertos. Los resueltos, para que nadie los vuelva 
 - **Responde a:** EP-004 · HU-011, comprobar que cada regla cumple su molde.
 - **Dispara:** EP-001 · HU-009, poner al día las reglas que no pasan su propio checklist. Ya está escrita.
 - **Orden de resolución:** 5 de 7 · es el más grande y no bloquea a nadie.
-- **Dónde queda:** [pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md](../../../pendientes/19-el-capitulo-20-no-se-cumple-a-si-mismo.md).
+- **Dónde queda:** [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../../../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
 - **Nace en:** 2026-08-14 · hu-de-la-comprobacion-automatica.
 - **Cerrado en:** —
 - **Con qué se retoma:** qué se hace con las siete en "no cumple": se corrigen, se derogan o se acepta que el checklist no aplica a las viejas.
