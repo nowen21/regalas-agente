@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.0.0 — 2026-08-22
+
+**MAYOR** ⚠ obliga a migrar (antes de publicar una versión hay que releer el tramo y anotar lo que se pidió dos veces).
+
+**Lo que alguien pide dos veces deja de perderse entre sesiones.** Hasta hoy, un criterio que el usuario repetía en sesiones distintas solo se convertía en regla si alguien lo notaba en el momento; si no, se repetía la corrección tres o cuatro veces más. Desde esta versión, antes de publicar se relee el tramo que se cierra y lo repetido se escribe en un documento con su salida: ya está cubierto, merece regla nueva, hay que afinar una existente, o no es regla del estándar. Decidir cuáles se escriben sigue siendo del usuario.
+
+**Qué hay que hacer para adoptarla.** Al cerrar la próxima versión, escribir el barrido con el molde nuevo, [plantillas/candidatas-a-regla.md](plantillas/candidatas-a-regla.md). No hay que barrer hacia atrás: rige del tramo en curso en adelante.
+
+**El detalle.** Nace [`20·M20`](base/20-meta-reglas/reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md), que extiende a `01·C10` (esa atrapa el patrón en el momento; esta relee lo que en el momento no se notó), y el criterio `CA-06` de EP-001 · HU-007, en la fase [`C`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md). Sale del punto 2 del pendiente [33](pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md), abierto desde el 2026-08-06, donde el defecto estaba dicho así: «sin disparador, se hace cuando el usuario lo pida es un favor, no una norma». El barrido se había hecho una sola vez, el 2026-08-13, con 27 fichas; las cuatro salidas del molde las cubren todas.
+
 ## 30.9.1 — 2026-08-22
 
 **PARCHE** (la regla de accesibilidad dice con palabras lo que su lista ya exigía, y gana ejemplo; nada cambia en lo que se pide).

@@ -33,6 +33,7 @@ Se lee **antes** que las reglas que gobierna. Se carga sola: cada proyecto ya le
 | [`M17 · La entrada del registro abre en castellano llano`](reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) | Qué cambió y por qué, en dos frases sin jerga; el detalle va debajo. |
 | [`M18 · Lo compartido se lee un instante antes de escribirlo`](reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md) | `VERSION`, el registro, un índice, una numeración: se releen al escribir, no al abrir la sesión. |
 | [`M19 · La regla se automatiza cuando ya se cumple a mano`](reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) | Antes del validador, tres preguntas por escrito: ¿se cumple a mano?, ¿cuántas veces falló y por qué?, ¿cuántas falsas alarmas daría? |
+| [`M20 · Antes de publicar una versión se barre lo que se pidió dos veces`](reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md) | Al cerrar la versión se relee el tramo y lo pedido dos veces o más se escribe como candidata a regla, con su salida. |
 
 Además del catálogo, este capítulo tiene el molde de una regla parte por parte ([`estructura-regla.md`](estructura-regla.md)) y el instrumento con que se comprueba ([`checklist.md`](checklist.md)).
 

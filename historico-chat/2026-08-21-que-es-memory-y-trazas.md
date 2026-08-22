@@ -1414,3 +1414,39 @@ Dígame (a) o (b) para `I3`, y si `PR3` queda o se deroga.
 ### 71 · Usuario — 2026-08-22 07:23:53
 > 1. a
 > 2. queda
+
+**Agente** — 2026-08-22 07:36:09
+<!-- agente: 487bcf36-8045-4f30-b8ce-99ec21972256 -->
+
+Decidido. Aplico `I3` como una sola regla con su lista, dejo `PR3` en pie y anoto las dos decisiones:
+
+Falta la cadena: este trabajo debía bajar como fase de HU‑009 (`02·F23`). La levanto y retrodocumento:
+
+Ahora lleno los cinco documentos de la fase, retrodocumentando lo publicado:
+
+Ahora el resultado de pruebas, el estado y el cierre de la fase:
+
+Ahora cierro el pendiente 19:
+
+**Pendiente 19 cerrado.** Publicado `cf325a3`; el archivo pasó a [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
+
+Lo último de esta ronda (v30.9.1):
+- **`17·I3`** queda como **una** regla: dice ahora que su lista de cuatro puntos se cumple entera o no se cumple, y gana el ejemplo que le faltaba (pantalla con etiquetas perfectas y contraste ilegible).
+- **`12·PR3`** sigue en pie, con la confirmación anotada en su sello.
+- **La cadena que faltaba:** el trabajo salió de una orden directa, sin fase, así que levanté la **fase F de HU‑009** con sus cinco documentos y sus siete casos corridos (7/7). El plan dice en su propio texto que el orden se invirtió, en vez de disimularlo. La HU‑009 queda con su `CA‑01` cubierto y su README, que decía «todavía no tiene fases», lista las seis.
+- **Señal S‑020:** un sí dado sobre un diagnóstico viejo se vuelve a verificar contra el estado de hoy — fue lo que salvó a `PR3` y evitó partir 23 reglas ya partidas.
+
+`metareglas`, `estandar`, `pendientes` y `versionado`: sin incumplimientos.
+
+**Quedan cuatro pendientes:** el 10 y el 48, que usted excluyó, y el **33** y el **59**, que están detenidos esperando datos suyos:
+
+- **59** — cuatro datos: qué dos proyectos sirven de convenciones (propongo AgroSystem y RNI), qué proyecto para las cuatro fases (propongo shopnest‑mesa), un encargo chico real, y quién es el lector externo.
+- **33** — cuatro decisiones: si el barrido de candidatas se vuelve norma, la regla del español, si las fases de EP‑001 se planifican o se retrodocumentan, y brief contra histórico.
+
+Dígame si arranco con el 33 (las cuatro son decisiones, se resuelven en un intercambio) o con el 59.
+
+### 72 · Usuario — 2026-08-22 07:45:37
+> haga los dos para que salga de una de eso
+
+### 73 · Usuario — 2026-08-22 08:29:27
+> siga

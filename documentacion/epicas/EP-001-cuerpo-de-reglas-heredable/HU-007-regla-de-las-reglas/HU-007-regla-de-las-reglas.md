@@ -143,6 +143,24 @@ falla sola, en cada commit, sin que nadie la haya vuelto a leer.
 3. Tomar una regla que reprobó su checklist por exigir dos cosas (`F4` antes de partirse) y aplicarle la segunda pregunta. Resultado esperado: manda corregir la regla, no construir el validador.
 - **Aprobado cuando:** el criterio está escrito como regla del capítulo `20`, detiene el caso que debía detener, deja pasar el que debía pasar, y manda corregir antes que automatizar el que estaba mal escrito.
 
+### CA-06 — Lo que se pidió dos veces no se pierde entre sesiones
+
+```gherkin
+Dado que el usuario pidió un mismo criterio en dos sesiones distintas y en el momento nadie lo notó
+Cuando se va a publicar la versión que cierra ese tramo
+Entonces el procedimiento obliga a releer el tramo y a escribir ese criterio como candidata a regla, con las veces que se pidió
+Y la candidata sale con una de cuatro salidas: cubierta, regla nueva, afinar una existente, o no es regla del estándar
+Y ninguna candidata se convierte en regla desde ese documento: eso lo decide el usuario
+```
+
+**Por qué no lo cubría ninguno de los cinco anteriores, ni `01·C10`.** `C10` atrapa el patrón **en el momento** en que el pedido llega, y lo que se pierde es justamente lo que en el momento no se notó: dos pedidos parecidos, con otras palabras, separados por diez sesiones. `CA-01` a `CA-03` revisan la regla cuando ya alguien decidió escribirla; este se para antes, cuando todavía nadie la propuso.
+
+**Cómo validarlo:**
+
+1. Tomar el barrido que se hizo a mano el 2026-08-13 ([prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md](../../../../prompts/analisis/reglas-2026-08-13-candidatas-a-regla.md)) y comprobar que el molde del estándar habría producido lo mismo: 27 fichas, cada una con una de las cuatro salidas. Resultado esperado: ninguna de las 27 se queda sin salida posible.
+2. Comprobar que el disparo existe en el flujo: la regla nombra el momento de publicar la versión, que `20·M10` ya obliga a atravesar. Resultado esperado: el barrido no depende de que alguien se acuerde de pedirlo.
+- **Aprobado cuando:** el molde está en `plantillas/`, la regla del capítulo `20` lo exige antes de publicar, y las cuatro salidas están escritas y son excluyentes.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Validación** — el procedimiento dice qué hacer cuando falta un dato, por ejemplo cuando no hay ejemplo posible.
@@ -172,6 +190,7 @@ falla sola, en cada commit, sin que nadie la haya vuelto a leer.
 |---|---|---|
 | [A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla](A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
 | [B-EP-001-HU-007-primero-que-el-proceso-sirva](B-EP-001-HU-007-primero-que-el-proceso-sirva/README.md) | CA-05 | **Cerrada 2026-08-21 — Cumple** (3 de 3 casos aprobados; v28.1.0). Nace `20·M19`, desde el [pendiente 16](../../../../pendientes/hecho/primero-que-el-proceso-sirva.md) |
+| [C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador](C-EP-001-HU-007-el-barrido-de-candidatas-tiene-molde-y-disparador/README.md) | CA-06 | **Cerrada 2026-08-22 — Cumple** (5 de 5; v31.0.0). Nace `20·M20` y el molde del barrido, desde el punto 2 del [pendiente 33](../../../../pendientes/33-defectos-que-destaparon-los-resumenes-viejos.md) |
 
 **La fase retro-documenta y no toca el capítulo `20`.** El procedimiento existe y se usa en cada cambio: dieciséis meta-reglas, el molde y un checklist de veinte filas. Lo que falta es el caso escrito que muestre una candidata enrutada, otra rechazada por nombrar una tecnología y otra partida en dos.
 
