@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Esta fase toca `validar.py`, que es el punto de entrada de todas las comprobaciones: no se toca sin aprobación.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: la duda 1 de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Nace el subcomando `todo`, y su primera corrida encontró tres mapas desactualizados.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 3 |
+| **CA cumplidos** | 2 de 2 |
 | **CA en "No"** | Los **CA-01 y CA-03 están en «No» de entrada**, y por eso la fase construye: no hay línea que corra todo ni veredicto de la corrida entera |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,14 +57,14 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Escribir el subcomando que corre todo. Duda 1 |
-| T-02 | Bloqueada | Que lo que no aplica se saltee con su motivo — CP-003 |
-| T-03 | Pendiente | Prueba de que los subcomandos siguen corriendo por separado — CP-001. **Se corre antes de tocar nada** |
-| T-04 | Bloqueada | Resumen único de la corrida — CP-004 |
-| T-05 | Bloqueada | Prueba del código de salida de la corrida completa — CP-005 |
-| T-06 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Escribir el subcomando que corre todo. Duda 1 |
+| T-02 | Hecha | Que lo que no aplica se saltee con su motivo — CP-003 |
+| T-03 | Hecha | Prueba de que los subcomandos siguen corriendo por separado — CP-001. **Se corre antes de tocar nada** |
+| T-04 | Hecha | Resumen único de la corrida — CP-004 |
+| T-05 | Hecha | Prueba del código de salida de la corrida completa — CP-005 |
+| T-06 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 6. **Bloqueadas:** T-01, T-02, T-04 y T-05.
+**Hechas:** 6 de 6. **Bloqueadas:** ninguna.
 
 ---
 

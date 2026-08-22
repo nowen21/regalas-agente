@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Esta fase es la que **desbloquea a varias otras**: media docena de fases de esta sesión cierran un CA "por lectura" porque `metareglas.py` no se puede correr.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: la duda 1 de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Uno de los seis casos exigía construir: el identificador repetido no lo miraba nadie.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 5 |
+| **CA cumplidos** | 3 de 3 |
 | **CA en "No"** | Los **cinco están en «No» de entrada**: las comprobaciones están escritas y ninguna se puede correr |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,17 +57,17 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Darle punto de entrada al programa. Duda 1. **Sin esto no hay nada que probar** |
-| T-02 | Bloqueada | Caso del identificador repetido — CP-002 |
-| T-03 | Bloqueada | Caso de la dependencia que manda hacia arriba — CP-003 |
-| T-04 | Bloqueada | Caso de la regla sin checklist — CP-004 |
-| T-05 | Bloqueada | Anotar la cuenta real contra las 121 del pendiente 19 |
-| T-06 | Bloqueada | Caso de la regla que nombra una tecnología — CP-005 |
-| T-07 | Bloqueada | Que el punto de entrada acepte el catálogo de un proyecto. Duda 1 |
-| T-08 | Bloqueada | Caso de la regla propia sin respaldo — CP-006 |
-| T-09 | Bloqueada | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Darle punto de entrada al programa. Duda 1. **Sin esto no hay nada que probar** |
+| T-02 | Hecha | Caso del identificador repetido — CP-002 |
+| T-03 | Hecha | Caso de la dependencia que manda hacia arriba — CP-003 |
+| T-04 | Hecha | Caso de la regla sin checklist — CP-004 |
+| T-05 | Hecha | Anotar la cuenta real contra las 121 del pendiente 19 |
+| T-06 | Hecha | Caso de la regla que nombra una tecnología — CP-005 |
+| T-07 | Hecha | Que el punto de entrada acepte el catálogo de un proyecto. Duda 1 |
+| T-08 | Hecha | Caso de la regla propia sin respaldo — CP-006 |
+| T-09 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 9. **Bloqueadas:** las nueve — T-01 es la puerta y todo cuelga de ella.
+**Hechas:** 9 de 9. **Bloqueadas:** ninguna.
 
 ---
 

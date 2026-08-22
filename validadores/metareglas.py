@@ -758,6 +758,37 @@ _CITA_CON_CAPITULO = re.compile(r"\d{2}·[A-Z]{1,4}\d+")
 _RUTA_DE_ARCHIVO = re.compile(r"[\w.-]+/[\w./-]*\.(?:md|py|plantilla)|[\w-]+\.(?:md|py|plantilla)")
 
 
+def _identificador_repetido(catalogo):
+    """`M4` · un identificador se usa una vez. La segunda es un choque.
+
+    **No lo veía nadie.** Se comprobaba que el prefijo fuera exclusivo del
+    capítulo, pero no que el número no se repitiera dentro de él: dos `F27` en
+    archivos distintos pasaban, y a partir de ahí toda cita a `F27` es
+    ambigua. Lo destapó el `CP-005` de la fase `A-EP-001-HU-001`, que lo contó
+    a mano el 2026-08-22: 249 identificadores, 249 distintos, y nada que lo
+    sostuviera mañana.
+
+    **Las derogadas cuentan igual:** su ID no se reutiliza (`M11`), y ese es
+    justamente el caso en que alguien lo repetiría sin querer.
+    """
+    por_id = {}
+    for r in catalogo:
+        por_id.setdefault(r.id, []).append(r)
+
+    hallazgos = []
+    for id_, reglas_ in sorted(por_id.items()):
+        if len(reglas_) < 2:
+            continue
+        donde = " · ".join("%s:%d" % (relativo(r.archivo), r.linea) for r in reglas_)
+        for r in reglas_:
+            hallazgos.append(Hallazgo(
+                FALLA, r.archivo, r.linea,
+                f"el identificador `{id_}` está usado {len(reglas_)} veces "
+                f"({donde}) — M4 lo exige único, y una cita a `{id_}` no sabría "
+                f"a cuál va (fila 6)"))
+    return hallazgos
+
+
 def validar(raiz=None):
     raiz = raiz or RAIZ
     catalogo = reglas(raiz)
@@ -782,7 +813,8 @@ def validar(raiz=None):
         hallazgos += _totales_del_sello(r)
         hallazgos += _un_solo_sello(r)
     return (hallazgos + _fila19_version(raiz) + _fila_m17_entrada_llana(raiz)
-            + _blindada_solo_en_el_nucleo(catalogo))
+            + _blindada_solo_en_el_nucleo(catalogo)
+            + _identificador_repetido(catalogo))
 
 
 def validar_catalogo(proyecto, raiz=None):

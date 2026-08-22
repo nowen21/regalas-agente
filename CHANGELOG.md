@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.7.0 — 2026-08-22
+
+**MENOR** (una orden nueva que revisa todo de una vez, y una comprobación que faltaba; nadie tiene que hacer nada).
+
+**Una sola orden dice cómo está el proyecto.** Había más de cuarenta comprobaciones sueltas y saber cómo estaba todo exigía acordarse de cuáles aplican y leer cuarenta resúmenes; lo que hay que recordar, no se corre. Ahora `validar.py todo` corre las 31 que aplican y termina en una línea: cuántas se corrieron y cuántas fallaron. Lo lento sigue aparte, con el motivo escrito al pie de la corrida, porque una revisión que tarda es una que nadie hace.
+
+**Y su primera corrida encontró tres cosas que nadie miraba**, todas ciertas: tres programas creados ese mismo día no estaban en el mapa de qué se queda si mañana cambia la herramienta, y dos comprobaciones de instalación estaban midiendo al estándar como si fuera un proyecto que lo hereda.
+
+**Lo segundo: dos reglas ya no pueden compartir identificador sin que se sepa.** Se comprobaba que cada capítulo tuviera su prefijo, pero no que el número no se repitiera dentro de él; con dos reglas iguales, toda cita a ese número es ambigua. Se contaron a mano las 249 y ninguna se repetía, lo que decía que el orden estaba bien por costumbre y no por comprobación.
+
+**El detalle.** Fases [`A-EP-004-HU-008`](documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/A-EP-004-HU-008-la-corrida-completa-en-una-linea/README.md) y [`A-EP-004-HU-011`](documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/A-EP-004-HU-011-la-comprobacion-del-molde-se-puede-correr/README.md), del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md). Doce casos de prueba nuevos; el que decide en la corrida completa es que un subcomando nuevo entre solo, sin listas a mano.
+
 ## 31.6.0 — 2026-08-22
 
 **MENOR** (una comprobación nueva al guardar, sobre el repositorio del estándar; ningún proyecto tiene que hacer nada).
