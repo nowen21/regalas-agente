@@ -40,7 +40,7 @@ Los 10 pasos son la **disciplina del proceso**: garantizan que nada se salte y q
 
 2. **Manejo de errores.** El sistema falla con mensajes útiles para el usuario y registros útiles para quien mantiene, sin exponer detalles internos y sin dejar datos a medias (operaciones todo o nada). Capítulo [`05 · Errores y logging`](05-errores-y-logging.md).
 
-3. **Datos protegidos.** Respaldos automáticos y **probados** (un respaldo que nunca se restauró es una esperanza, no un respaldo), migraciones reversibles, datos personales tratados según la norma que aplique. Capítulos [`03 · Datos`](03-datos.md) y [`12 · Privacidad`](12-privacidad-datos.md); los datos reales los protege el núcleo ([`00·N4`](00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada)).
+3. **Datos protegidos.** Respaldos automáticos y **probados** (un respaldo que nunca se restauró es una esperanza, no un respaldo), migraciones reversibles, datos personales tratados según la norma que aplique. Capítulos [`03 · Datos`](03-datos.md) y [`12 · Privacidad`](12-privacidad-datos.md); los datos reales los protege el núcleo ([`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada)).
 
 4. **Pruebas automatizadas.** Una suite que cualquiera corre en un comando y que detecta regresiones cuando el cambio de hoy rompe lo de hace tres meses. Capítulo [`08 · Pruebas`](08-pruebas.md).
 

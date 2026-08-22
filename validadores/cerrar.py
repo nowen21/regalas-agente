@@ -101,9 +101,17 @@ def citas_a(raiz, objetivo):
 
 
 def _nuevo_destino(desde, nuevo_absoluto, destino_viejo):
-    """La ruta relativa al archivo movido, conservando el ancla si la había."""
+    """La ruta relativa al archivo movido, conservando el ancla si la había.
+
+    **El espacio vuelve codificado** (pendiente 71). `relpath` devuelve la ruta
+    tal como está en disco, con el espacio literal, y un espacio termina el
+    destino en Markdown: el enlace dejaba de ser enlace y el validador dejaba
+    de verlo. Se codifica solo el espacio, no los acentos: el resto del
+    repositorio los escribe literales y así resuelven.
+    """
     rel = os.path.relpath(nuevo_absoluto,
                           os.path.dirname(desde)).replace("\\", "/")
+    rel = rel.replace(" ", "%20")
     ancla = destino_viejo.split("#", 1)
     return rel + ("#" + ancla[1] if len(ancla) > 1 else "")
 

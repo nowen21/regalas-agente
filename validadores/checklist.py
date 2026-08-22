@@ -205,7 +205,11 @@ def _enganches_claude(proyecto, estandar):
     except (json.JSONDecodeError, ValueError):
         return False, ".claude/settings.json tiene JSON inválido"
 
-    puestos = {(evento, h.get("command") or "")
+    # Se compara normalizado (pendiente 72): en Windows `c:/x` y `C:/x` son
+    # la misma ruta, y el comando guardado lleva la ruta tal como la escribió
+    # el instalador. Comparado como texto literal, correr el checklist con la
+    # letra de unidad en minúscula daba los 16 enganches por faltantes.
+    puestos = {(evento, os.path.normcase(h.get("command") or ""))
                for evento, grupos in (datos.get("hooks") or {}).items()
                for g in grupos for h in g.get("hooks", [])}
 
@@ -214,7 +218,7 @@ def _enganches_claude(proyecto, estandar):
         esperado = instalar._hook_claude(
             estandar.replace("\\", "/"), proyecto.replace("\\", "/"),
             guion, mensaje, args)["command"]
-        if (evento, esperado) not in puestos:
+        if (evento, os.path.normcase(esperado)) not in puestos:
             faltan.append(f"{evento}/{guion}")
     return not faltan, f"enganches de Claude Code sin poner o vencidos: {', '.join(faltan)}"
 

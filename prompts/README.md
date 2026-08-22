@@ -24,7 +24,7 @@ Pedidos que quedaron dichos en las sesiones y que sirven como regla. Cada ficha 
 |---|---|
 | [redaccion-clara-para-quien-no-sabe.md](redaccion-clara-para-quien-no-sabe.md) | Que todo lo escrito lo entienda quien no sabe del tema, e idealmente un niño. |
 | [menos-es-mas.md](menos-es-mas.md) | Explicaciones cortas: menos es más. |
-| [sin-marcadores-de-ia.md](1. sin-marcadores-de-ia.md) | Que ningún documento lleve las marcas que delatan generación automática. |
+| [sin-marcadores-de-ia.md](1.%20sin-marcadores-de-ia.md) | Que ningún documento lleve las marcas que delatan generación automática. |
 | [espanol-colombiano-correcto.md](espanol-colombiano-correcto.md) | Español colombiano, con ortografía, gramática y sintaxis correctas. |
 
 ### Cómo se trabaja con el usuario

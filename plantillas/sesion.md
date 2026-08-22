@@ -97,7 +97,7 @@ Si la sesión atiende más de un hallazgo, se nombran todos.
 - **Responde a:** «EP-000 · HU-000 · CA-00» / «—»
 - **Dispara:** «EP-000 · HU-000 nueva» / «numeradas, si son varias» / «—»
 - **Orden de resolución:** «n de N · por qué va ahí» / «—»
-- **Dónde queda:** «señal S-00 / pendiente NN / [`NN·Xn`](ruta a la regla) / memoria»
+- **Dónde queda:** «señal S-00 / pendiente NN / [`NN·Xn`](«ruta a la regla») / memoria»
 - **Nace en:** «AAAA-MM-DD · tema de la sesión»
 - **Cerrado en:** «AAAA-MM-DD · tema de la sesión» / «—»
 - **Con qué se retoma:** «la pregunta que quedó viva» / «—»

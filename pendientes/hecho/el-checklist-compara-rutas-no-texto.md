@@ -1,13 +1,13 @@
 # Pendiente · El checklist da por faltantes enganches que sí están, por la mayúscula de la letra de unidad
 
-**Estado:** abierto · anotado 2026-08-20.
+**Estado:** cerrado el 2026-08-22, versión 30.6.0 · anotado 2026-08-20.
 
 | | |
 |---|---|
 | **Historia de usuario** | EP-007 (instalación) — es el validador de la instalación el que reprueba; la HU concreta la asigna el estándar |
 | **Proyecto de origen** | **matematica** · `C:\wamp64\www\proyectos\personales\matematica` |
 | **Su pendiente de seguimiento** | `pendientes/01-esperando-correccion-checklist-mayusculas.md` — queda **abierto allá** hasta que este se corrija |
-| **A quién avisar al cerrar** | a **todos los instalados** — cualquier proyecto en Windows puede invocar el validador con otra capitalización; la lista está en [plantillas/proyectos.md](../plantillas/proyectos.md) |
+| **A quién avisar al cerrar** | a **todos los instalados** — cualquier proyecto en Windows puede invocar el validador con otra capitalización; la lista está en [../plantillas/proyectos.md](../../plantillas/proyectos.md) |
 
 ## El problema
 
@@ -33,6 +33,10 @@ Normalizar antes de comparar. Dos salidas:
 2. Normalizar solo la letra de unidad al construir `esperado` — más barato pero deja vivo el resto de diferencias de capitalización que Windows tolera.
 
 Revisar de paso si otros componentes del checklist comparan rutas como texto literal (por ejemplo `_registro` ya usa `normcase`; `_enganches_claude` no).
+
+## Cómo cerró
+
+La salida 1: `_enganches_claude` compara los dos lados con `os.path.normcase`, que en Windows iguala mayúsculas y separadores y en otros sistemas no cambia nada. Dos pruebas: con la unidad en minúscula y en mayúscula el veredicto es el mismo, y un enganche que apunte a **otro** estándar sigue reprobando (normalizar no es aflojar). Se revisó el resto del checklist: `_registro` ya normalizaba y `_enganches_git` delega en `sesion.revisar_enganches`, fuera del alcance declarado.
 
 ## El límite
 

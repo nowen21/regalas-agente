@@ -110,7 +110,7 @@ De ahí se sigue **preferir la redacción verificable**: "el plan lo aprueba el 
 
 ### M19 · las tres preguntas, dónde se responden, y el corte
 
-`M9` contesta **si se puede** automatizar. `M19` contesta **si conviene ya**, y son preguntas distintas: una regla mal escrita se automatiza perfectamente, y el resultado es que ahora falla sola, en cada commit, sin que nadie la haya vuelto a leer. El orden es **eficiencia → agilidad → automatización**, porque automatizar un proceso que venía mal multiplica el error a velocidad de máquina.
+[`M9`](reglas/M9-toda-regla-declara-si-es-validable.md) contesta **si se puede** automatizar. [`M19`](reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md) contesta **si conviene ya**, y son preguntas distintas: una regla mal escrita se automatiza perfectamente, y el resultado es que ahora falla sola, en cada commit, sin que nadie la haya vuelto a leer. El orden es **eficiencia → agilidad → automatización**, porque automatizar un proceso que venía mal multiplica el error a velocidad de máquina.
 
 Las tres preguntas, por escrito, **en el pendiente que promueve el validador** (o en el plan de la fase que lo construye, si no hubo pendiente):
 

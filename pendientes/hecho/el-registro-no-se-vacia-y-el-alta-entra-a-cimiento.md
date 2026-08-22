@@ -28,7 +28,7 @@ Efecto colateral: `instalar.py --aplicar`, al no ver la fila, **anota una provis
 
 ## Por qué importa
 
-Falso negativo permanente: el agente, obedeciendo al estándar, anuncia en cada respuesta una instalación incompleta que no lo es, y gasta la sesión intentando repararla (esta vez, tres intentos). Un validador que reprueba lo que está bien enseña a ignorar sus veredictos — mismo daño que el [72](../72-el-checklist-compara-los-enganches-sensible-a-mayusculas-de-la-unidad.md).
+Falso negativo permanente: el agente, obedeciendo al estándar, anuncia en cada respuesta una instalación incompleta que no lo es, y gasta la sesión intentando repararla (esta vez, tres intentos). Un validador que reprueba lo que está bien enseña a ignorar sus veredictos — mismo daño que el [72](el-checklist-compara-rutas-no-texto.md).
 
 ## Qué falta
 

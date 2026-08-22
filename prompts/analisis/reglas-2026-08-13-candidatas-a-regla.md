@@ -16,7 +16,7 @@
 |---|---|---|---|---|
 | 1 | [redaccion-clara-para-quien-no-sabe](../redaccion-clara-para-quien-no-sabe.md) | Ya está cubierta | [`00·ID7`](../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | — |
 | 2 | [menos-es-mas](../menos-es-mas.md) | Ya está cubierta | [`01·C5`](../../base/01-conducta.md#c5--responde-corto) · [`00·ID7`](../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | — |
-| 3 | [sin-marcadores-de-ia](../1. sin-marcadores-de-ia.md) | Ya está cubierta | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | — |
+| 3 | [sin-marcadores-de-ia](../1.%20sin-marcadores-de-ia.md) | Ya está cubierta | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | — |
 | 4 | [espanol-colombiano-correcto](../espanol-colombiano-correcto.md) | **Complementar una regla** → `00·ID9` | extiende [`00·ID7`](../../base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | MAYOR |
 | 5 | [historico-de-cada-sesion](../historico-de-cada-sesion.md) | **Regla nueva sin dependencia** → `13·DOC19` | ninguna | MAYOR |
 | 6 | [la-sesion-se-nombra-al-abrirla](../la-sesion-se-nombra-al-abrirla.md) | **Complementar una regla** → `13·DOC20` | extiende `13·DOC19` | MENOR |

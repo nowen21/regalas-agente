@@ -181,3 +181,27 @@ class CerrarArrastraLasCitas(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ElEspacioVuelveCodificado(CerrarArrastraLasCitas):
+    """Pendiente 71 · el enlace de salida hacia una ruta con espacio conserva `%20`."""
+
+    def test_el_destino_con_espacio_sale_codificado(self):
+        raiz = self._repo({
+            "pendientes/07-algo.md":
+                "# Algo\n\nVer [x](../con%20espacio/x.md).\n",
+            "con espacio/x.md": "# x\n",
+        })
+        cerrar.cerrar(raiz, "07", "algo-resuelto", escribir=True)
+        texto = self._leer(raiz, "pendientes/hecho/algo-resuelto.md")
+        self.assertIn("../../con%20espacio/x.md", texto)
+        self.assertNotIn("con espacio/x.md)", texto)
+        self.assertEqual([], enlaces.validar_enlaces(raiz))
+
+    def test_el_destino_con_espacio_literal_no_pasa_en_silencio(self):
+        raiz = self._repo({
+            "notas/n.md": "Ver [x](../con espacio/nada.md).\n",
+        })
+        hallazgos = enlaces.validar_enlaces(raiz)
+        self.assertEqual(1, len(hallazgos))
+        self.assertIn("espacio sin codificar", hallazgos[0].mensaje)

@@ -6,10 +6,12 @@ Este validador corre sobre ESTE repositorio (el estándar), no sobre un proyecto
 que lo use. Es el único que puede correr sin nada más.
 """
 import os
+import re
 from urllib.parse import unquote
 
 import comun
 from comun import (AVISO, FALLA, Hallazgo, RAIZ, enlaces, leer, recorrer_md,
+                   sin_codigo_en_linea,
                    relativo)
 
 # Carpeta de transcripciones: se escribe sola y copia el diálogo literal.
@@ -87,6 +89,37 @@ def _es_transcripcion(archivo):
             and os.path.basename(archivo).lower() != "readme.md")
 
 
+_CON_ESPACIO = re.compile(r"\]\(([^)\n<]*?\s[^)\n]*?)\)")
+
+
+def destinos_con_espacio(texto):
+    """`[(línea, destino)]` de los enlaces cuyo destino lleva un espacio literal.
+
+    Un espacio termina el destino en Markdown, así que `[x](a b.md)` no es un
+    enlace para ningún visor ni para `comun.enlaces`, que corta en el primer
+    espacio: el destino se vuelve **invisible** para todos los validadores
+    (pendiente 71). Se busca aparte, por la forma, para poder avisarlo. Lo que
+    va entre `<...>` sí admite espacios y no se reporta.
+    """
+    salida = []
+    en_cerca = False
+    for n, linea in enumerate(texto.splitlines(), 1):
+        if linea.lstrip().startswith(("```", "~~~")):
+            en_cerca = not en_cerca
+            continue
+        if en_cerca:
+            continue
+        for m in _CON_ESPACIO.finditer(sin_codigo_en_linea(linea)):
+            destino = m.group(1)
+            # Lo que va entre comillas invertidas es muestra, no enlace; y un
+            # destino que empieza por «…» es el espacio por llenar de un molde
+            # (13·DOC19), no una ruta mal escrita.
+            if destino.startswith(("http://", "https://", "mailto:", "«")):
+                continue
+            salida.append((n, destino))
+    return salida
+
+
 def validar_enlaces(raiz=None):
     """Todo enlace comprobable de un .md apunta a algo que existe."""
     raiz = raiz or RAIZ
@@ -96,6 +129,11 @@ def validar_enlaces(raiz=None):
         if _es_transcripcion(archivo):
             continue
         carpeta = os.path.dirname(archivo)
+        for n, destino in destinos_con_espacio(leer(archivo)):
+            hallazgos.append(Hallazgo(
+                AVISO, archivo, n,
+                f"el destino lleva un espacio sin codificar y deja de ser "
+                f"enlace: {destino} (escribirlo con %20)"))
         for n, texto, destino in enlaces(leer(archivo)):
             if not _es_interno(destino) or not _comprobable(texto, destino):
                 continue

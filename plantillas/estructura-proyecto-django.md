@@ -7,7 +7,7 @@
 ## La estructura
 
 ```
-proyectos/«nombre-del-proyecto»/
+«nombre-del-proyecto»/
 ├── .venv/                    · el entorno del proyecto · NO se versiona
 ├── .env                      · credenciales de este equipo · NO se versiona
 ├── .env.example              · las mismas variables, sin valores · sí se versiona

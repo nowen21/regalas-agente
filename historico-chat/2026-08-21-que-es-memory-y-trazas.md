@@ -1108,3 +1108,126 @@ El 76 quedó resuelto el mismo día, y el culpable éramos nosotros:
 
 ### 54 · Usuario — 2026-08-22 01:24:32
 > si
+
+**Agente** — 2026-08-22 01:25:30
+<!-- agente: 44ba9adf-f554-4589-ba0b-deda1b24f0a4 -->
+
+Publicado: commit `fb8beaa` en `main`, push en verde. El estándar queda en **30.5.0** con el pendiente 76 cerrado y la deuda del 75 saldada.
+
+Nada queda a medias. Lo que sigue en el backlog, para cuando lo ordenes:
+
+- **59** (P0): las 42 dudas que detienen 26 fases — esperan tus respuestas, por tandas.
+- **Arreglos chicos de falsos positivos:** 33·1/71 (enlaces con espacios), 33·5 (la prueba del `GATE`), 72 (mayúscula de la letra de unidad).
+- **19 y 48** por tandas (checklists de reglas y fases incompletas).
+- **El generador de vistas consolidadas y `.docx`**, con casa en la interfaz.
+
+### 55 · Usuario — 2026-08-22 04:29:32
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\estructura-proyecto-django.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> aplique nuevamente la plantilla:estructura-proyecto-django.md
+
+### 56 · Usuario — 2026-08-22 04:31:00
+> osea la carpeta interfaz es la que se debe llamar:cimiento en este caso de la estructura
+
+### 57 · Usuario — 2026-08-22 04:31:35
+> osea la carpeta interfaz es la que se debe llamar:cimiento en este caso de la estructura o no?
+
+**Agente** — 2026-08-22 04:31:58
+<!-- agente: 87c557bf-b6cb-48d1-b332-08d35eefd9f0 -->
+
+Depende de qué cuenta como «el proyecto», y las dos lecturas son coherentes con la plantilla:
+
+**Lectura 1 — el proyecto Django se llama `interfaz`** (lo que está hoy). La raíz `«nombre-del-proyecto»/` es `interfaz/` y el `«paquete»/` del dominio es `cimiento/`:
+
+```
+interfaz/                 ← nombre-del-proyecto
+├── config/ · requirements/ · static/ · templates/ …
+└── cimiento/             ← paquete
+    ├── visor/ · proyectos/
+```
+
+**Lectura 2 — el proyecto Django se llama `cimiento`**, porque es la aplicación de Cimiento. Entonces la raíz sería `cimiento/` y el paquete interno tendría que llamarse de otra forma (en Django el paquete suele repetir el nombre, pero `cimiento/cimiento/` dentro de un repo que ya se llama Cimiento confunde a quien llega):
+
+```
+cimiento/                 ← nombre-del-proyecto
+├── config/ …
+└── cimiento/  o  apps/   ← paquete
+```
+
+**Mi recomendación: la lectura 1, como está.** El repositorio entero ya es Cimiento (el estándar); la carpeta `interfaz/` dice qué pieza de Cimiento es esa (su interfaz), y el paquete `cimiento/` dice de qué dominio son los módulos. Renombrar la raíz a `cimiento/` daría `cimiento/cimiento/` o un paquete genérico, y tocaría todos los enganches, el mapa y las rutas que hoy apuntan a `interfaz/`. La plantilla se cumple igual con cualquiera de las dos; lo que cambia es la claridad del nombre.
+
+¿La dejamos así, o prefieres la lectura 2?
+
+### 58 · Usuario — 2026-08-22 04:33:47
+> osea ya tiene la estructura correcta?
+
+**Agente** — 2026-08-22 04:34:09
+<!-- agente: f66cdd3d-88d2-40d5-8a41-0342da4df5be -->
+
+Sí, ya la tiene. Lo verifiqué pieza por pieza contra la plantilla:
+
+| Plantilla | En `interfaz/` |
+|---|---|
+| `.venv/` · `.env` (no versionados) · `.env.example` | ✅ |
+| `manage.py` | ✅ |
+| `requirements/` base · local · lock | ✅ |
+| `config/` con `settings/` (base, local), `urls.py`, `wsgi.py`, `asgi.py` | ✅ |
+| `static/` solo lo propio | ✅ `static/cimiento/visor.css` |
+| `staticfiles/` (no versionado) | ✅ configurado como `STATIC_ROOT` |
+| `templates/` de todo el proyecto | ✅ `templates/base.html` |
+| `«paquete»/` con un módulo por carpeta | ✅ `cimiento/visor/` y `cimiento/proyectos/` |
+| En cada módulo: models · admin · forms · views · tests · apps · migrations | ✅ los dos completos |
+| Nada de terceros en el repo | ✅ `terceros/` descargado y no versionado |
+
+La única diferencia de lectura es dónde van las **plantillas propias del paquete**: la plantilla dibuja una sola carpeta `cimiento/templates/cimiento/`, y yo las dejé por módulo (`cimiento/visor/templates/visor/`, `cimiento/proyectos/templates/proyectos/`), que es la forma habitual de Django y respeta el «un módulo, una carpeta». Funciona igual; si prefieres el dibujo literal, las muevo en minutos.
+
+### 59 · Usuario — 2026-08-22 04:36:19
+> osea que cada uno de lo que está en la carpeta cimiento son los módulos?
+
+**Agente** — 2026-08-22 04:36:28
+<!-- agente: 9bdcbce6-b75a-41cc-bc92-b821d823f9b6 -->
+
+Exacto. `cimiento/` es el paquete del dominio y cada carpeta adentro es **un módulo** = una aplicación de Django completa, con sus siete piezas:
+
+```
+cimiento/
+├── visor/        · lee el estándar y la memoria (reglas, skills, plantillas, notas, señales)
+│   ├── models.py · admin.py · forms.py · views.py · tests.py · apps.py · migrations/
+│   ├── core.py   · la lógica de leer .md y consultar senales.db
+│   ├── templates/visor/ · templatetags/
+└── proyectos/    · el registro de proyectos y su medición
+    ├── models.py (Proyecto) · admin.py · forms.py · views.py · tests.py · apps.py · migrations/ (0001)
+    ├── core.py   · importar, exportar, medir, registrar
+    ├── management/commands/registrar.py
+    └── templates/proyectos/
+```
+
+Hoy son dos módulos. Cada pieza nueva de Cimiento que tenga dominio propio entra como otra carpeta ahí — por ejemplo, el generador de entregables (`.docx` y vistas consolidadas) sería `cimiento/entregables/`, con las mismas siete piezas — y se registra en `INSTALLED_APPS` en orden de dependencia, como dice la plantilla.
+
+### 60 · Usuario — 2026-08-22 04:39:28
+> resuelva todos los pendientes menos el 10 y el 48
+
+**Agente** — 2026-08-22 04:48:52
+<!-- agente: 7ba3d55d-b199-41a2-9301-fe00f27e02c6 -->
+
+Orden recibida: 19, 33, 56, 59, 60, 71 y 72. Leo los seis que puedo ejecutar para dimensionarlos; el 59 son decisiones tuyas y lo traigo al final para resolverlo juntos:
+
+Dimensiono todo antes de tocar. Pido de una vez lo que no depende de nada: los otros cuatro pendientes y el código que arreglan el 71 y el 72:
+
+Los dos ejecutables cerraron (**v30.6.0**, pendientes 71 y 72 en `hecho/`, avisos enviados): `cerrar.py` codifica el espacio, `validar.py estandar` ya ve los enlaces con espacio (encontró 9 invisibles en el repo, corregidos) y el checklist compara rutas normalizadas. 4 pruebas nuevas; las suites tocadas (46), `estandar`, `versionado` y el trinquete en verde. De paso, la prueba de higiene de `base/` destapó 6 citas sin enlace que dejaron las sesiones de ayer (`M19` y su sección): el reparador las enlazó. Tu edición de la plantilla Django (la raíz ya sin `proyectos/`) viaja en este commit.
+
+**Los otros cinco no los puedo cerrar solo.** Esta es la hoja, agrupada para contestar de corrido:
+
+**56 · El planteamiento del estándar** — el pendiente lo dice: sale de una conversación, no de leer el repo. Necesito de ti tres respuestas cortas: ¿qué problema resuelve Cimiento y para quién?, ¿qué queda explícitamente fuera?, ¿qué es éxito medible? Con eso lo escribo en `prompts/cimiento-planteamiento.md` (y de paso nace el inventario de funcionalidades del propio estándar, que `F26` le exige a todos).
+
+**60 · Quién escribe el texto de cada capítulo** (19 de 21 sin historia dueña). Tres salidas: **(a)** una HU por capítulo (19 historias, simétrico, mucho papel); **(b)** una HU por tema agrupando capítulos; **(c)** el módulo declarado es el *criterio* y el enlace capítulo→historia lo resuelve el catálogo, como hoy regla→historia. **Recomiendo (c)**: trazabilidad sin 19 historias vacías.
+
+**19 · Las 54 reglas que reprueban** — lo ejecutable sin ti es la categoría «acortar» (la mayoría). Lo que exige tu sí: **(1)** la lista de 26 particiones (cada una crea un ID nuevo, es MAYOR); **(2)** si las tres blindadas `N1`/`N4`/`N6` se tocan; **(3)** si `D7` y `F12` se parten en reglas o su detalle va a anexo; **(4)** las dos derogaciones (`04·S7` a favor de `DEP3`, y `12·PR3`). Recomiendo: sí a la lista, sí a las blindadas (es forma, no fondo, y `N2` muestra que se puede), anexo para `D7` y `F12`, derogar `S7` y `PR3`.
+
+**59 · Las 26 fases detenidas** — 33 dudas ya decididas el 18; faltan **4 datos tuyos**: los dos proyectos de stacks distintos para probar convenciones (propuesta: AgroSystem y RNI), el proyecto para cuatro fases (propuesta: shopnest-mesa), **un encargo chico y real** para recorrer las estaciones dos veces, y quién hace de lector externo del registro de cambios (propuesta: tú, con una versión que no seguiste). Con eso se ejecutan las 26 fases por tandas — es la obra grande.
+
+**33 · Lo suelto** — dos decisiones: **(2)** ¿el barrido de candidatas a regla se vuelve norma (regla + plantilla, enganchado al cierre de versión) o sigue siendo un favor? Recomiendo norma. **(8)** los huecos chicos: ¿la regla del español correcto (variedad, ortografía) se escribe? ¿las fases de EP-001 son plan o retrodocumentación? (recomiendo declararlas retrodocumentación: destraba 24 documentos) ¿qué manda si el brief y el histórico se contradicen? (recomiendo el histórico, que es literal y con hora).
+
+Contesta lo que quieras en el orden que quieras; cada respuesta baja en su ronda. ¿Y autorizas el commit y push del 71/72?
+
+### 61 · Usuario — 2026-08-22 04:53:40
+> si

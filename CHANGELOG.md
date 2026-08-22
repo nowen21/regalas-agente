@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.6.0 — 2026-08-22
+
+**MENOR** (dos validadores dejan de dar falsos veredictos; ningún proyecto tiene que cambiar nada).
+
+**Dos mentiras de los validadores, corregidas.** La revisión de instalación decía que faltaban los dieciséis enganches de un proyecto que los tenía bien puestos, solo porque se la corría con la letra de la unidad en minúscula; y el cierre de pendientes reescribía un enlace hacia una ruta con espacio dejándole el espacio literal, con lo que el enlace dejaba de abrir y, peor, ningún validador volvía a verlo. Las dos las reportaron proyectos instalados (`matematica` y `shopnest-mesa`): el estándar se vigila desde afuera.
+
+**El detalle.** Pendientes [72](pendientes/hecho/el-checklist-compara-rutas-no-texto.md) y [71](pendientes/hecho/el-espacio-vuelve-codificado.md). El checklist compara normalizado (`os.path.normcase` en los dos lados; apuntar a otro estándar sigue siendo falta). `cerrar.py` devuelve el espacio como `%20`, y `validar.py estandar` avisa de todo enlace cuyo destino lleve un espacio literal: al estrenarlo encontró nueve en el propio repositorio, invisibles hasta hoy, corregidos en la misma ronda. Cuatro pruebas nuevas.
+
 ## 30.5.0 — 2026-08-22
 
 **MENOR** (el instalador cambia cómo da de alta un proyecto; un arreglo de pérdida de datos en la interfaz; `base/` y `plantillas/` no cambian de exigencia).

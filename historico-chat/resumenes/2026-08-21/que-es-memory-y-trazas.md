@@ -104,6 +104,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-21-que-es-memory-y
 
 ---
 
+### H-7 · La orden «resuelva todos los pendientes menos el 10 y el 48»: dos cerrados de una, cinco que necesitan al usuario
+
+- **Qué pasó:** De los siete abiertos, el 71 y el 72 eran código y cerraron en la misma ronda (v30.6.0): `cerrar.py` codifica el espacio al reescribir enlaces y `validar.py estandar` avisa del destino con espacio literal (encontró 9 invisibles en el propio repo, corregidos); el checklist compara rutas normalizadas (`c:` = `C:`). Cuatro pruebas nuevas. De paso, la prueba de higiene de `base/` reveló seis citas sin enlace que dejaron las sesiones del 21 (`M19` y la sección M19 del índice); el reparador de citas las enlazó.
+- **Por qué importa:** Los otros cinco (19, 33, 56, 59, 60) no son trabajo que el agente pueda cerrar solo: el 56 exige una conversación («sale de una conversación, no de leer el repositorio»), el 19 exige aprobar una lista de 26 particiones de reglas (MAYOR, tres blindadas), el 60 es elegir cómo se reparten 19 capítulos entre historias, el 59 tiene 4 datos del usuario pendientes y 26 fases por ejecutar, y el 33 son decisiones sueltas. Decidirlos por cuenta propia sería repetir lo que el usuario corrigió ayer.
+- **Qué lo soluciona:** Una sola hoja de decisiones, agrupada y con recomendación, para contestar de corrido; con las respuestas, cada uno baja en su ronda.
+- **Qué se decidió:** Sin decidir: esperando las respuestas del usuario.
+- **Estado:** abierto
+- **Responde a:** pendientes 19, 33, 56, 59, 60 (los 71 y 72 quedaron en `hecho/`)
+- **Dispara:** —
+- **Orden de resolución:** 1 de 1 abiertos
+- **Dónde queda:** la hoja de decisiones en el chat de esta sesión; los cierres del 71 y 72 en `pendientes/hecho/`
+- **Nace en:** 2026-08-22 · que-es-memory-y-trazas
+- **Cerrado en:** —
+- **Con qué se retoma:** las respuestas del usuario a la hoja de decisiones
+
+---
+
 También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory/` (las preferencias del usuario como recuerdos versionados en el repo, con el almacén local de la herramienta vacío, `01·C19`) y `historico-chat/trazas/` (la traza técnica por sesión que produce `validar.py traza`: cada herramienta ejecutada con hora, duración y estado). Las dos respuestas salieron de leer lo que ya está escrito en [historico-chat/memory/memory.md](../../memory/memory.md) y en [historico-chat/trazas/README.md](../../trazas/README.md); no se decidió ni se cambió nada.
 
 ---
