@@ -54,9 +54,18 @@ TEMPLATES = [{
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Base propia de Django (no se usa para la memoria; esa es senales.db aparte).
-DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3',
-                         'NAME': BASE_DIR / '_visor.sqlite3'}}
+# La base de Cimiento: MariaDB en el puerto 3307 (decisión del usuario,
+# 2026-08-22). Las credenciales vienen del .env; acá no hay ninguna. La
+# memoria de señales no vive acá: esa es senales.db, aparte.
+DATABASES = {'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.environ.get('DB_NAME', 'cimiento'),
+    'USER': os.environ.get('DB_USER', ''),
+    'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+    'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
+    'PORT': os.environ.get('DB_PORT', '3307'),
+    'OPTIONS': {'charset': 'utf8mb4'},
+}}
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'

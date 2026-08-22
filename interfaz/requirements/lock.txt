@@ -1,6 +1,7 @@
 # Versiones exactas, transitivas incluidas (10-DEP2). Se regenera con:
-#   pip freeze | findstr /i "django asgiref sqlparse tzdata" > requirements/lock.txt
+#   .venv\Scripts\pip freeze > requirements\lock.txt
 asgiref==3.11.1
 Django==5.2.11
+mysqlclient==2.2.8
 sqlparse==0.5.5
 tzdata==2025.3

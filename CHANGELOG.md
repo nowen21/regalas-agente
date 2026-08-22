@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 30.4.0 — 2026-08-22
+
+**MENOR** (cambia la base de datos de la interfaz local; `base/` y `plantillas/` no cambian de exigencia).
+
+**La base de Cimiento es ahora MariaDB, en el puerto 3307.** El registro de proyectos dejó la base de archivo que Django trae por defecto y pasó a un servidor de base de datos de verdad, como cualquier proyecto que el estándar acompaña. Las credenciales viven solo en el `.env` de la interfaz, que no se versiona; el código no conoce ninguna. Lo decidió el usuario: «la DB (Cimiento) debe ser en MariaDB puerto 3307».
+
+**El detalle.** `config/settings/base.py` lee la conexión de las variables `DB_*` del `.env` (listadas sin valor en `.env.example`); nace la base `cimiento` (utf8mb4) y el driver `mysqlclient` entra en `requirements/` con su versión exacta en el lock. Los 10 proyectos se importaron a MariaDB y las 7 pruebas de la interfaz corren contra ella. El archivo `_visor.sqlite3` deja de existir.
+
 ## 30.3.0 — 2026-08-21
 
 **MENOR** (la interfaz local gana el registro de proyectos y adopta la estructura estándar; `base/` y `plantillas/` no cambian de exigencia, así que nadie migra nada).

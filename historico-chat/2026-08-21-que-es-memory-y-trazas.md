@@ -1011,3 +1011,43 @@ Una cosa que debo decirte: para liberar el puerto 8765 corrí un `taskkill` sobr
 
 ### 49 · Usuario — 2026-08-22 00:22:00
 > si
+
+**Agente** — 2026-08-22 00:22:47
+<!-- agente: c06b035b-cbf9-4709-8b95-08998902c002 -->
+
+Publicado: commit `9b32eb7` en `main`, push en verde. El pendiente 75 queda cerrado y el estándar en **30.3.0**.
+
+Lo que dejó el día entero, ya en el remoto:
+
+| Versión | Qué entró |
+|---|---|
+| 28.1.0 | `M19`: la regla se automatiza cuando ya se cumple a mano (pendiente 16) |
+| 28.2.0 | La guía de entrada del estándar (pendiente 73) |
+| 29.0.0 | `F26` + el inventario de funcionalidades como puerta de las épicas (pendiente 74) |
+| 30.0.0 | La carpeta del ciclo con sus 11 moldes numerados |
+| 30.1.0 | Los 11 entregables que faltaban: el expediente completo |
+| 30.2.0 | `validar.py expediente`: Cimiento mide si un proyecto tiene su expediente |
+| 30.3.0 | El registro de proyectos en la interfaz, y la interfaz con la estructura estándar (pendiente 75) |
+
+El visor sigue corriendo en http://127.0.0.1:8765 con la pantalla **Proyectos** y sus 10 proyectos reales.
+
+Queda en el backlog, para cuando lo ordenes: el **59** (las 42 dudas, que esperan tus respuestas), los arreglos chicos de falsos positivos (33·1/71, 33·5, 72), el 19 y el 48 por tandas, y el generador de vistas consolidadas y `.docx`, que ya tiene casa en la interfaz.
+
+### 50 · Usuario — 2026-08-22 00:27:00
+> eso los proyectos quedaron en DB?
+
+**Agente** — 2026-08-22 00:27:09
+<!-- agente: 137f751a-37d1-4507-a547-f6c4758d9939 -->
+
+Sí. Los 10 proyectos están en la base de datos de la interfaz: `interfaz/_visor.sqlite3`, tabla `proyectos_proyecto` (el modelo `Proyecto` de `cimiento/proyectos/`, con su migración `0001_initial`). Esa base es local y no se versiona — igual que la memoria `senales.db` — porque es data de **tu máquina**, no del estándar.
+
+Cómo queda el flujo ahora:
+
+- **La fuente de verdad es la DB.** Registrar, editar, dar de baja y medir se hace en la pantalla Proyectos, y cada cambio regenera `plantillas/proyectos.md`.
+- **El `.md` es una salida**, no una entrada: existe porque el instalador y los avisos de cierre lo leen; ya no se edita a mano.
+- **La única vuelta de ida:** cuando el instalador da de alta un proyecto nuevo, lo anota en ese `.md`; el botón «Importar del .md» lo sube a la DB. Esa es la deuda declarada en el cierre — que el instalador escriba directo en la DB es mejora futura.
+
+Si quieres verlo por fuera de la pantalla: `interfaz/.venv/Scripts/python interfaz/manage.py shell -c "from cimiento.proyectos.models import Proyecto; print(Proyecto.objects.count())"` devuelve 10.
+
+### 51 · Usuario — 2026-08-22 00:30:21
+> la DB (cimiento) debe ser en MariaDB puerto 3307

@@ -194,7 +194,7 @@ agente/
 │       ├── visor/ .................... core.py lee el estándar y la memoria · views · templates/visor/ · templatetags
 │       └── proyectos/ ................ EL REGISTRO DE PROYECTOS: modelo, pantallas, medir (expediente), importar/exportar el .md
 │   ├── README.md
-│   └── _visor.sqlite3 ................ base interna de Django (NO se versiona)
+│   └── (la base de Cimiento es MariaDB, puerto 3307, base `cimiento`; credenciales en .env)
 │
 ├── 🟨 anatomia/ ...................... CÓMO ESTÁ HECHO EL AGENTE
 │   ├── componentes-del-agente.md ..... qué hace cada pieza y cuál necesita IA
@@ -270,7 +270,7 @@ Estos archivos aparecen al trabajar y están en [`.gitignore`](../.gitignore) a 
 | Archivo | Por qué no se versiona |
 |---|---|
 | `memoria/senales.db` | Es la memoria del usuario, no del estándar. |
-| `interfaz/_visor.sqlite3` | Base interna de Django. |
+| MariaDB `cimiento` (puerto 3307) | La base de Cimiento: el registro de proyectos y lo que la interfaz guarde. Vive en el servidor local, no en el repo. |
 | `plantillas/proyectos.md` | Registro de qué proyectos usan el agente en **esta** máquina. |
 | `.claude/` | Configuración local de la herramienta. |
 | `_base_modulo.md` | Material de trabajo local. |

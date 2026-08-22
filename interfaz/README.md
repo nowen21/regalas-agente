@@ -8,7 +8,8 @@ Es una herramienta compañera, no parte del estándar agnóstico. Corre en tu m�
 
 - Python 3.11+. Entorno propio del proyecto, como manda la estructura estándar: `python -m venv interfaz/.venv` y `interfaz/.venv/Scripts/pip install -r interfaz/requirements/lock.txt` (las versiones exactas; `local.txt` para trabajar sobre la base).
 - Estáticos de terceros (una sola vez, tras clonar): `python interfaz/descargar_estaticos.py` — los trae pineados por versión y huella SHA-256 a `terceros/`, que no se versiona y que `collectstatic` junta con lo propio de `static/` (`plantillas/estructura-proyecto-django.md`: nada de terceros en el repositorio). **Después de eso funciona sin internet.**
-- Migraciones (una sola vez): `python interfaz/manage.py migrate`.
+- **La base de Cimiento es MariaDB en el puerto 3307** (decisión del usuario): crear la base `cimiento` (utf8mb4), copiar `.env.example` a `.env` y poner ahí usuario y clave. Las credenciales no van en ningún otro sitio.
+- Migraciones (una sola vez): `interfaz/.venv/Scripts/python interfaz/manage.py migrate`.
 
 ## Cómo está armado
 
@@ -16,7 +17,7 @@ Sigue [plantillas/estructura-proyecto-django.md](../plantillas/estructura-proyec
 
 ```
 interfaz/
-├── .venv/ · .env ................ no se versionan
+├── .venv/ · .env ................ no se versionan (.env trae las credenciales de MariaDB)
 ├── .env.example · manage.py
 ├── requirements/ ................ base.txt · local.txt · lock.txt
 ├── config/ ...................... settings/ (base.py · local.py) · urls.py · wsgi.py · asgi.py

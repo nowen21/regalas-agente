@@ -1,2 +1,3 @@
 # Las dependencias de producción del visor.
 Django>=5.0,<6
+mysqlclient>=2.2      # el driver de MariaDB (la base de Cimiento, puerto 3307)
