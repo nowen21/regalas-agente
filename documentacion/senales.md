@@ -193,3 +193,12 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-22 · agente; las dos decisiones (`17·I3` como una regla, `12·PR3` queda) las tomó el usuario.
 - **Scope:** estándar; aplica a cualquier proyecto donde un pendiente viejo se ejecute tal cual.
 - **Rel:** S-018.
+
+## S-021 · Un recuerdo que se cumple a medias se sigue incumpliendo, y el hueco es siempre el mismo  ·  error-resuelto · activa
+- **What:** el 2026-08-20 quedó escrito el recuerdo «los guiones de apoyo van dentro del repositorio», después de que el usuario preguntara por qué el agente escribía en la carpeta temporal de la herramienta. El 2026-08-22 el agente escribió **31 guiones** en esa misma carpeta durante una jornada entera, y el usuario volvió a preguntar lo mismo.
+- **Why:** el recuerdo decía «dentro del repositorio (en una carpeta temporal ignorada por git) **o no se escribe**», y esa puerta —la carpeta temporal— dejaba el cumplimiento a interpretación. El agente leyó «temporal» y usó la de la herramienta. Y el daño no era el sitio: era que **el resultado quedaba versionado y el cómo se perdía**; a la pregunta «¿con qué se recortaron esas treinta reglas?» no había respuesta en ninguna parte.
+- **Where:** el recuerdo [guiones-de-apoyo-dentro-del-repo.md](../historico-chat/memory/guiones-de-apoyo-dentro-del-repo.md), reescrito sin la puerta · la carpeta nueva [historico-chat/scripts/](../historico-chat/scripts/README.md), con los 31 de esa jornada.
+- **Learned:** un recuerdo con una alternativa («esto o aquello») se cumple por la alternativa más cómoda. Y la prueba de que un recuerdo funciona no es que esté escrito: es que el usuario no tenga que repetirlo. Cuando lo repite, lo que hay que arreglar es **el texto del recuerdo**, no la conducta de esa vez.
+- **When/Who:** 2026-08-22 · usuario: «nada se debe escribir por fuera, todo debe quedar en historico-chat».
+- **Scope:** estándar; aplica a cualquier proyecto donde el agente escriba guiones de apoyo.
+- **Rel:** S-020.

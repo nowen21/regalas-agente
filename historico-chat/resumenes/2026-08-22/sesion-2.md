@@ -34,35 +34,35 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
   - **Quiero** que el molde declare el encuadre como texto fijo y que la comprobación automática avise cuando un `*-planteamiento.md` no lo tenga
   - **Para** que ningún planteamiento llegue al agente sin la instrucción que le impide leerlo como orden de entregar código
   - **Contexto:** hoy el molde deja el encuadre fuera del recuadro que sí manda borrar, sin decir si se conserva o se reemplaza; `validar.py` no lo mira. Si no se hace, el caso de H-1 se repite en cada proyecto que herede el molde y el freno de `02·F2`/`02·F4` desaparece del punto donde más se necesita.
-- **Qué se decidió:** sin decidir.
-- **Estado:** abierto
+- **Qué se decidió:** el usuario aprobó atacarlo. Se parte en dos: que el molde declare el encuadre como texto fijo entra en la fase C de HU-002; que un programa lo compruebe queda como pendiente 77, en EP-004 · HU-004.
+- **Estado:** abierto, anotado
 - **Responde a:** —
-- **Dispara:** 1. EP-004 · HU nueva — «el planteamiento conserva su encuadre».
+- **Dispara:** 1. [Pendiente 77](../../../pendientes/77-el-planteamiento-conserva-su-encuadre.md), EP-004 · HU-004.
 - **Orden de resolución:** 2 de 2 · conviene fijar primero la redacción buena en H-1 y recién después exigirla a todos.
-- **Dónde queda:** falta crear el pendiente en [`pendientes/`](../../../pendientes/).
+- **Dónde queda:** [pendiente 77](../../../pendientes/77-el-planteamiento-conserva-su-encuadre.md), y la mitad del molde en la [fase C de HU-002](../../../documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-002-modelos-del-encargo/C-EP-003-HU-002-el-planteamiento-se-reconstruye-igual/plan_trabajo.md), tarea T-05.
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
-- **Con qué se retoma:** ¿el encuadre se vuelve texto fijo verificable, o basta con una regla del capítulo 13 que lo exija?
+- **Con qué se retoma:** el pendiente 77 propone comprobar las dos frases que importan en vez del texto literal, para que corregir el molde no reviente el validador. Falta que el usuario lo confirme al construirlo.
 
 ### H-3 · Los moldes del ciclo llevan las marcas que el estándar prohíbe, y se las pasan a todo documento que nace de ellos
 
 - **Qué pasó:** el planteamiento reescrito salió con 33 marcas mecánicas de [`00·ID8`](../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md); el usuario lo notó antes que el agente, que no había corrido [`validadores/marcas.py`](../../../validadores/marcas.py). Al limpiarlo quedaron 2, y las 2 vienen copiadas del molde: el título y el nombre de la sección 1. Contados aparte, los moldes de `plantillas/` suman **461 marcas en 31 archivos**, y los del ciclo de vida **197 en 10**.
-- **Por qué importa:** el estándar exige `00·ID8` a todo documento que el agente entrega, y sus propios moldes son la fuente. Todo planteamiento, especificación o plan que un proyecto escriba nace incumpliendo, y el que lo llena no tiene forma de saber si la marca es suya o heredada. El trinquete del commit solo impide que la deuda crezca; no limpia la que ya viaja en el molde.
+- **Por qué importa:** el estándar exige `00·ID8` a todo documento que el agente entrega, y sus propios moldes son la fuente. Todo planteamiento, especificación o plan que un proyecto escriba nace incumpliendo, y el que lo llena no tiene forma de saber si la marca es suya o heredada. El trinquete del commit reparte así: en `base/` y `plantillas/` falla ante cualquier marca, y en el resto solo avisa. El planteamiento vive en `prompts/`, o sea en «el resto», y por eso pasó sin que nada lo detuviera. Y sobre el molde tampoco sirve, porque no exige limpiar lo que ya está: exige no agregar.
 - **Qué lo soluciona:**
   **EP-003 · HU nueva — «los moldes se entregan limpios de marcas»**
   - **Como** quien llena un molde en cualquier proyecto
   - **Quiero** que el molde no traiga marcas de generación automática
   - **Para** que el documento que escribo no nazca incumpliendo una regla que yo no escribí
   - **Contexto:** hoy `plantillas/` acumula 461 marcas mecánicas y cada copia las propaga al proyecto que la usa. Limpiar la prosa de un molde es reescribirla, así que no lo puede hacer el reemplazo automático: va molde por molde. Si no se hace, la regla queda escrita y sistemáticamente incumplida desde su propia fuente, que es la peor forma de tener una regla.
-- **Qué se decidió:** sin decidir. El planteamiento de Cimiento quedó limpio salvo las 2 heredadas, que se corrigen cuando se corrija el molde.
-- **Estado:** abierto
+- **Qué se decidió:** el usuario aprobó anotarlo. No es hallazgo nuevo: es el pedazo chico de la decisión que el [pendiente 11](../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) dejó abierta al cerrar, acotada a los 10 moldes del ciclo. El planteamiento de Cimiento quedó limpio salvo las 2 heredadas del molde.
+- **Estado:** abierto, anotado
 - **Responde a:** —
-- **Dispara:** 1. EP-003 · HU nueva — «los moldes se entregan limpios de marcas».
+- **Dispara:** 1. [Pendiente 78](../../../pendientes/78-los-moldes-se-entregan-limpios-de-marcas.md), EP-004 · HU-012, la misma historia del pendiente 11.
 - **Orden de resolución:** 3 de 3 · es el trabajo más largo de los tres y no bloquea a los otros dos.
-- **Dónde queda:** falta crear el pendiente en [`pendientes/`](../../../pendientes/).
+- **Dónde queda:** [pendiente 78](../../../pendientes/78-los-moldes-se-entregan-limpios-de-marcas.md).
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
-- **Con qué se retoma:** ¿se limpian los 31 moldes de una, o solo los del ciclo de vida y el resto queda para después?
+- **Con qué se retoma:** antes de limpiar hay una decisión del usuario que el pendiente 11 ya había dejado escrita: si la voz de esta casa sí lleva la raya larga, lo que se cambia es el anexo de marcadores, no los moldes.
 
 ---
 
@@ -76,9 +76,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ (H-1) |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ (77 y 78) |
+| Toda historia disparada está escrita en su épica | ☑ (CA-04 en HU-002; 77 y 78 entran en HU existentes) |
+| Lo que se hizo está aprobado y guardado | ☐ sin commitear, y la fase C espera la puerta 7 |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

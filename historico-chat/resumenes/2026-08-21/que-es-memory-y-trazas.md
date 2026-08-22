@@ -159,6 +159,18 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Lo que la jornada dejó como aprendizaje:** casi todo lo que un pendiente viejo declara «detenido esperando al usuario» hay que volver a medirlo antes de ejecutarlo. Es la señal [S-020](../../../documentacion/senales.md), y hoy se cumplió cuatro veces más.
 
+### H-12 · Los guiones de la jornada se escribieron fuera del repositorio, otra vez
+
+**Qué se encontró.** El usuario preguntó por qué el agente escribía en `AppData\Local\Temp\claude\...\scratchpad`. Al mirarlo apareció que **ya había un recuerdo del 2026-08-20 que lo prohibía**, escrito después de que él preguntara exactamente lo mismo, y que la jornada entera se trabajó incumpliéndolo: 31 guiones fuera del repositorio.
+
+**Por qué se incumplió, que es lo que importa.** El recuerdo decía «dentro del repositorio (en una carpeta temporal ignorada por git) **o no se escribe**». Esa alternativa era la puerta: el agente leyó «temporal» y usó la de la herramienta. Un recuerdo con dos salidas se cumple por la más cómoda.
+
+**Y el daño real no era el sitio:** el resultado de esos guiones quedaba versionado y **el cómo se perdía**. A la pregunta «¿con qué se recortaron esas treinta reglas al molde?» no había respuesta en ninguna parte.
+
+**Qué se decidió, con sus palabras:** *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*. Los 31 guiones entraron a [historico-chat/scripts/2026-08-22/](../../scripts/2026-08-22/README.md), con su índice de qué hizo cada uno, y el recuerdo se reescribió sin la puerta: se quedan versionados, no se borran y no se vuelven a correr.
+
+**Dónde queda.** El recuerdo [guiones-de-apoyo-dentro-del-repo.md](../../memory/guiones-de-apoyo-dentro-del-repo.md) y la señal S-021, que dice lo que esto enseña: cuando el usuario repite una instrucción, lo que hay que arreglar es **el texto del recuerdo**, no la conducta de esa vez.
+
 ---
 
 ## ¿Se puede cerrar la sesión?

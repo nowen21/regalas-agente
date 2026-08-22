@@ -56,5 +56,5 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | [Convención de commits](sin-coauthored-by.md) | El cuerpo arranca con la idea del usuario y sigue con lo que hizo el agente; nunca `Co-Authored-By`. |
 
 <!-- huella: 83db0387a355 · estandar 28.0.0 -->
-- [Los guiones de apoyo van dentro del repositorio](guiones-de-apoyo-dentro-del-repo.md) — ni en la carpeta temporal de la herramienta ni en ninguna ruta fuera del proyecto (`04·S9`).
+- [Los guiones de apoyo van dentro del repositorio, y se quedan](guiones-de-apoyo-dentro-del-repo.md) — en `historico-chat/scripts/AAAA-MM-DD/`, versionados: si solo queda el resultado, el cómo se pierde (`04·S9`).
 - [La orden se resuelve de una](la-orden-se-resuelve-de-una.md) — lo ordenado se hace; el impedimento se muestra y se analiza juntos, sin determinaciones unilaterales.

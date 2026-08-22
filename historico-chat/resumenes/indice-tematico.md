@@ -10,7 +10,7 @@ temas --aplicar`. Si se edita a mano, el próximo generado lo pisa.
 **Qué no es.** No es una clasificación: no agrupa temas parecidos ni dice de qué
 habla cada hallazgo. Es lo que ya estaba escrito, junto.
 
-**348 hallazgos** en **60 resúmenes**, del 2026-08-06 al 2026-08-22.
+**351 hallazgos** en **61 resúmenes**, del 2026-08-06 al 2026-08-22.
 
 ## 2026-08-06
 
@@ -540,6 +540,7 @@ habla cada hallazgo. Es lo que ya estaba escrito, junto.
 - `H-9` Ninguna regla se pasa ya del molde, y las particiones que faltaban casi todas estaban hechas
 - `H-10` El pendiente 19 cierra, y la fase que lo respalda se escribió después de ejecutarlo
 - `H-11` El 33 cierra entero y el 59 arranca: quince fases de treinta y cuatro
+- `H-12` Los guiones de la jornada se escribieron fuera del repositorio, otra vez
 
 ## 2026-08-22
 
@@ -547,3 +548,8 @@ habla cada hallazgo. Es lo que ya estaba escrito, junto.
 
 - `H-1` El encuadre del planteamiento de Cimiento se llenó con procedencia en vez de con instrucción de uso
 - `H-2` Nada impide que un planteamiento llenado pise el encuadre del molde
+- `H-3` Los moldes del ciclo llevan las marcas que el estándar prohíbe, y se las pasan a todo documento que nace de ellos
+
+**[2026-08-22 · lo que quedó](2026-08-22/sesion-3.md)**
+
+- `H-1` El encuadre del molde de planteamiento copia la cadena de `02·F0` y la copia ya no coincide
