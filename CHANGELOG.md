@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 32.1.0 — 2026-08-22
+
+**MENOR** (una exigencia nueva sobre cómo se escribe el molde del inventario; nada de lo ya escrito deja de valer).
+
+**La prueba del niño.** El molde del inventario ya se escribía para quien va a usar el producto, pero solo la columna «De qué se trata» lo cumplía. El resto del documento seguía hablando en el idioma de adentro. Ahora la exigencia cubre el documento entero y trae con qué medirla: **un niño lo lee y entiende qué hace el producto**; si para entender algo hay que saber del proyecto, está escrito para adentro y se rehace. Queda en la caja del molde, con [`00·ID7`](base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) al lado de [`00·ID9`](base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md): pocas palabras, y ninguna que haya que ir a buscar.
+
+**Qué salió al aplicarla.** «Proyección: por confirmar con el usuario» se llama ahora «Lo que todavía no se sabe si entra». «No se derivan épicas» es «no se parte el trabajo en bloques». «Los ítems aprobados bajan a requisitos» es «cada fila baja a trabajo con su nombre y su número». Se fueron también «alcance», «trazabilidad» y «bloquea los ítems que la citan». Ninguna sección cambió de propósito: cambió de idioma.
+
+**Y las secciones fijas perdieron el número.** Eran «2. Proyección», «3. Preguntas» y «4. Qué pasa». Un proyecto con seis grupos de funcionalidades las numera 7, 8 y 9, y el comprobador las reportaba como secciones faltantes en todos. Sin número, coinciden siempre.
+
+**El detalle.** El molde [`02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md). El inventario de Cimiento ([prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md)) queda cerrado con el molde nuevo: 36 filas en seis grupos, todas sin verificar, sin preguntas abiertas.
+
+---
+
 ## 32.0.1 — 2026-08-22
 
 **PARCHE** (una carpeta que el documento del proyecto nombraba de dos formas; nadie tiene que hacer nada).

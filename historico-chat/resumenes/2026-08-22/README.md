@@ -7,4 +7,4 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 | [sesion.md](sesion.md) | Sin escribir todavía. |
 | [sesion-2.md](sesion-2.md) | Sin escribir todavía. |
 | [el-encuadre-enlaza-la-cadena-no-la-copia.md](el-encuadre-enlaza-la-cadena-no-la-copia.md) | El encuadre copiaba la cadena de `02·F0` con una versión desactualizada; ahora la enlaza y remite a `00·ID9`. |
-| [el-inventario-de-cimiento.md](el-inventario-de-cimiento.md) | Sin escribir todavía. |
+| [el-inventario-de-cimiento.md](el-inventario-de-cimiento.md) | El inventario lista todo lo que el proyecto debe tener y el estado lo fija la prueba, no el agente. |

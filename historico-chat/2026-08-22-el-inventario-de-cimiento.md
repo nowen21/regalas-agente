@@ -457,3 +457,39 @@ Sin commitear nada todavía. Cuando digas, te muestro qué entra y lo apruebas a
 
 ### 20 · Usuario — 2026-08-22 17:18:26
 > comite
+
+**Agente** — 2026-08-22 17:20:55
+<!-- agente: 7d962406-d993-4e76-9979-4eab5ffdfdf6 -->
+
+Freno antes de commitear, porque lo que hay preparado no es lo nuestro.
+
+**Hay 193 archivos en el área de preparación, y solo 7 son de esta conversación.** El resto lo puso otra sesión que sigue trabajando en este mismo repositorio ahora mismo: publicó la versión **32.0.1** encima de mi 32.0.0 mientras hablábamos.
+
+El propio comprobador lo dice:
+
+```
+[AVISO] este commit mezcla archivos de 2 sesiones (cf3e0d35: 26 · d350bf4a: 2)
+```
+
+Lo mío son estos siete:
+
+- [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md)
+- [prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md)
+- [documentacion/senales.md](documentacion/senales.md) — la señal S-022
+- `CHANGELOG.md` y `VERSION`
+- la transcripción y el resumen de la sesión, más su línea en el índice del día
+
+Tres caminos, y la diferencia importa:
+
+**1 · Solo lo mío.** Se puede commitear por ruta sin tocar lo que la otra sesión tiene preparado. El pero: `CHANGELOG.md` y `VERSION` ya traen la entrada 32.0.1 de ella, y no los puedo dejar por fuera porque el freno del commit exige que todo cambio de `plantillas/` venga con su entrada y su versión. Resultado: mi commit arrastra su entrada, y esa entrada apunta a un pendiente y a una fase que todavía no están en el repositorio. Enlaces rotos hasta que ella cierre.
+
+**2 · Todo.** Un solo commit con las tres sesiones del día. Queda coherente y sin enlaces rotos, pero mete 186 archivos que no has revisado hoy y que no salieron de esta conversación.
+
+**3 · Esperar** a que la otra sesión cierre su commit, y commitear lo mío encima. Es lo más limpio: cada commit dice lo que hizo su sesión y nada queda roto en el camino.
+
+**Recomiendo la 3**, y si no quieres esperar, la 1. La 2 es la que hace que dentro de un mes nadie pueda leer qué cambió y por qué.
+
+¿Cuál?
+
+### 21 · Usuario — 2026-08-22 18:16:28
+> suba todo
