@@ -33,18 +33,18 @@
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
-**Nada se ejecutó todavía.** Los pendientes ya cerrados son anteriores a la regla: exigirles la fase hacia atrás sería reabrir lo cerrado, y por eso el CA-04 es parte del alcance.
 
-> **El plan quedó aprobado el 2026-08-17** y la fase **no arrancó**: las 2 dudas de §2.7 del plan sigue sin resolver, y solo la puede resolver el usuario. Lo que falta ya no es la aprobación — es la respuesta.
 
 ---
+
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Construida: `pendientes.py` gana la comprobación hacia abajo, y midió 24 cerrados sin fase.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
 | **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 4 |
+| **CA cumplidos** | 1 de 1 |
 | **CA en "No"** | Los **cuatro están en «No» de entrada**: la regla existe y ningún programa la comprueba |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
@@ -57,17 +57,17 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Bloqueada | Comprobación de que el pendiente cerrado declara su fase. Dudas 1 y 2 |
-| T-02 | Pendiente | Caso del pendiente sin fase — CP-001. El caso se escribe antes |
-| T-03 | Bloqueada | Resolver la fase declarada contra el árbol |
-| T-04 | Pendiente | Caso de la fase inventada — CP-002 |
-| T-05 | Bloqueada | Que el pendiente declare que no fue desarrollo |
-| T-06 | Pendiente | Caso del pendiente cerrado por decisión — CP-003 |
-| T-07 | Bloqueada | Separar lo cerrado antes del corte. Duda 1 |
-| T-08 | Bloqueada | Anotar cuáles pendientes quedan de cada lado |
-| T-09 | Bloqueada | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 | Hecha | Comprobación de que el pendiente cerrado declara su fase. Dudas 1 y 2 |
+| T-02 | Hecha | Caso del pendiente sin fase — CP-001. El caso se escribe antes |
+| T-03 | Hecha | Resolver la fase declarada contra el árbol |
+| T-04 | Hecha | Caso de la fase inventada — CP-002 |
+| T-05 | Hecha | Que el pendiente declare que no fue desarrollo |
+| T-06 | Hecha | Caso del pendiente cerrado por decisión — CP-003 |
+| T-07 | Hecha | Separar lo cerrado antes del corte. Duda 1 |
+| T-08 | Hecha | Anotar cuáles pendientes quedan de cada lado |
+| T-09 | Hecha | Correr, escribir el resultado y cerrar la trazabilidad |
 
-**Hechas:** 0 de 9. **Bloqueadas:** T-01, T-03, T-05, T-07, T-08 y T-09.
+**Hechas:** 9 de 9. **Bloqueadas:** ninguna.
 
 ---
 

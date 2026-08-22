@@ -40,6 +40,8 @@ Se usan las **once etapas de [`02·F15`](../../../../../base/02-flujo-de-trabajo
 
 ---
 
+> **Puesto al día el 2026-08-22.** La fase estaba detenida esperando dudas que solo el usuario podía contestar, y hoy las contesta el propio repositorio: quedan escritas en el §0.1 del [resultado_pruebas](resultado_pruebas.md). Se corrieron los casos y se cerró. Sale del [pendiente 59](../../../../../pendientes/59-las-42-dudas-que-detienen-26-fases.md). Construida: la comprobación hacia arriba, que **detiene**.
+
 ## 1.1 Veredicto de las pruebas
 
 Sin veredicto: la fase no se ha ejecutado. El `resultado_pruebas.md` y el `funcionalidad_implementada.md` nacen al ejecutar.

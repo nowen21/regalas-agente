@@ -2933,31 +2933,44 @@ class NumeracionDePendientes(unittest.TestCase):
         self.assertIn("el próximo libre es el", salida.stdout)
         self.assertEqual(salida.returncode, 0)
 
+    def _de_numeracion(self, raiz):
+        """Las fallas **de numeración**, que es lo que esta clase mide.
+
+        Desde el 2026-08-22 `pendientes.validar` también comprueba que un
+        pendiente abierto nombre su historia (`EP-004·HU-016`), y los árboles de
+        mentira de estas pruebas no la traen. Filtrar por asunto es lo correcto:
+        contar todo lo que reporta el módulo haría que cada comprobación nueva
+        rompiera pruebas que no hablan de ella.
+        """
+        return [h for h in pendientes.validar(raiz)
+                if h.severidad == comun.FALLA and "número" in h.mensaje]
+
     # -- CA-02 · el número repetido ---------------------------------------
     def test_avisa_del_numero_repetido(self):
         raiz = self._carpeta(abiertos=("07-uno.md", "07-otro.md"))
-        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
+        fallas = self._de_numeracion(raiz)
         self.assertEqual(len(fallas), 1)
         self.assertIn("07-uno.md", fallas[0].mensaje)
         self.assertIn("07-otro.md", fallas[0].mensaje)
 
     def test_el_repetido_entre_abierto_y_cerrado_tambien_se_ve(self):
         raiz = self._carpeta(abiertos=("07-uno.md",), cerrados=("07-otro.md",))
-        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
-        self.assertEqual(len(fallas), 1)
+        self.assertEqual(len(self._de_numeracion(raiz)), 1)
 
     def test_los_ceros_a_la_izquierda_no_hacen_dos_numeros(self):
         """Transversal de límites: `07` y `7` son el mismo número. Tratarlos
         como distintos dejaría pasar justo el choque que esto busca."""
         raiz = self._carpeta(abiertos=("07-uno.md", "7-otro.md"))
-        fallas = [h for h in pendientes.validar(raiz) if h.severidad == comun.FALLA]
-        self.assertEqual(len(fallas), 1, "`07` y `7` no se vieron como el mismo")
+        self.assertEqual(len(self._de_numeracion(raiz)), 1,
+                         "`07` y `7` no se vieron como el mismo")
 
     # -- CA-03 · la carpeta contra el índice, en los dos sentidos ---------
     def test_el_pendiente_sin_linea_en_el_indice_se_avisa(self):
         indice = "# Pendientes\n\n| # | Pendiente |\n|---|---|\n| 01 | [uno](01-uno.md) |\n"
         raiz = self._carpeta(abiertos=("01-uno.md", "02-dos.md"), indice=indice)
-        avisos = [h for h in pendientes.validar(raiz) if "02-dos.md" in h.archivo]
+        avisos = [h for h in pendientes.validar(raiz)
+                  if "02-dos.md" in h.archivo
+                  and "Historia de usuario" not in h.mensaje]
         self.assertEqual(len(avisos), 1)
 
     def test_la_linea_del_indice_sin_archivo_se_avisa(self):
@@ -2969,9 +2982,7 @@ class NumeracionDePendientes(unittest.TestCase):
         self.assertEqual(len(avisos), 1)
 
     def test_este_repositorio_no_tiene_numeros_repetidos(self):
-        fallas = [h for h in pendientes.validar(self.RAIZ)
-                  if h.severidad == comun.FALLA]
-        self.assertEqual([h.mensaje for h in fallas], [])
+        self.assertEqual([h.mensaje for h in self._de_numeracion(self.RAIZ)], [])
 
     # -- transversales de límites y errores -------------------------------
     def test_limites_la_carpeta_vacia_no_revienta(self):
@@ -2994,7 +3005,11 @@ class NumeracionDePendientes(unittest.TestCase):
         hallazgos = pendientes.validar(raiz)
         avisos = [h for h in hallazgos if "no empieza por un número" in h.mensaje]
         self.assertEqual(len(avisos), 1)
-        self.assertEqual([h for h in hallazgos if h.severidad == comun.FALLA], [])
+        # Las fallas que sí puede haber son de otra comprobación: los
+        # pendientes de mentira de estas pruebas no traen su historia.
+        self.assertEqual([h for h in hallazgos
+                          if h.severidad == comun.FALLA
+                          and "Historia de usuario" not in h.mensaje], [])
         self.assertEqual(pendientes.proximo_libre(raiz), 2)   # sigue contando
 
     # -- transversal de no regresión --------------------------------------

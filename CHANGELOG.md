@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 31.8.0 — 2026-08-22
+
+**MENOR** (dos comprobaciones nuevas sobre la carpeta de pendientes; ningún proyecto tiene que hacer nada hacia atrás).
+
+**Un pendiente ya tiene que decir de dónde viene y en qué se convirtió.** Hacia arriba: uno abierto que no nombra la historia a la que baja **detiene la corrida**, porque sin ella no se puede construir. Hacia abajo: uno cerrado que no dice en qué fase se hizo **queda avisado**, no detenido: ya no rompe nada, solo cortó su rastro.
+
+**Y midió la deuda que había.** De los pendientes cerrados desde el 2026-08-16, cuando nació la exigencia, **24 no dicen en qué fase se hicieron**. No se rellenaron a las corridas a propósito: reconstruir de memoria la fase de veinticuatro es el camino directo a escribir una que no fue. Cada uno lo gana cuando alguien lo toque, y mientras tanto la corrida lo recuerda.
+
+**Nada se exige hacia atrás.** Lo cerrado antes de esa fecha, y lo que ni siquiera declara fecha, queda de su lado: treinta avisos que nunca se van apagan la comprobación entera.
+
+**El detalle.** Fases [`A`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/A-EP-004-HU-016-el-pendiente-cerrado-declara-su-fase/README.md) y [`B`](documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/B-EP-004-HU-016-todo-pendiente-abierto-nombra-su-historia/README.md) de EP-004 · HU-016, del [pendiente 59](pendientes/59-las-42-dudas-que-detienen-26-fases.md), con las decisiones 26 y 27 que ese pendiente ya traía. Ocho casos de prueba nuevos.
+
 ## 31.7.0 — 2026-08-22
 
 **MENOR** (una orden nueva que revisa todo de una vez, y una comprobación que faltaba; nadie tiene que hacer nada).
