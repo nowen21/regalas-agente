@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 33.2.0 — 2026-08-22
+
+**MENOR** (un molde nuevo, en evaluación; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
+
+**La primera etapa del ciclo de vida ya tiene con qué escribirse.** El texto que explicaba la planificación —qué se hace, qué documentos salen, a quién se entregan— se leía y se seguía, pero no se llenaba: había que redactar de cero cada vez. Ahora es un molde de quince secciones con sus espacios marcados: problema, alcance con lo que queda fuera, supuestos y restricciones, viabilidad, recursos, presupuesto, esfuerzo, cronograma, riesgos, roles, interesados, calidad, entregables y la decisión, que puede ser «no se hace».
+
+**La sección del problema se escribe desde la necesidad, no desde lo construido.** Es lo que se rompe al aplicarlo a un proyecto que ya está andando: se describe el producto en vez del problema que lo justificaba. El molde manda reconstruirlo al revés —por cada cosa que hoy existe, qué pasaba cuando no existía— y trae la prueba para saber si salió bien: si se borra mentalmente lo construido y el texto sigue entendiéndose, está bien escrito.
+
+**Los objetivos son diez, en infinitivo, y cada uno dice en qué se nota y para quién.** Los tres primeros salen solos; llegar al décimo es lo que obliga a bajar de la generalidad. Si de un objetivo no se puede escribir en qué se nota, no es un objetivo: es una función, y va al inventario.
+
+**Y una sección que no estaba en ningún molde: supuestos, restricciones y dependencias.** Lo que se da por cierto sin comprobar y qué pasa si resulta falso, lo que no se negocia —incluido el formato de los entregables— y lo que se necesita de gente que no está en el equipo. Es lo más barato de escribir y lo más caro de omitir.
+
+**Está en evaluación, y por eso no vive todavía con los demás moldes.** Queda en `plantillas/cvds/planificacion/`, con una copia llenada con este mismo proyecto en `cvds/` para ver qué contesta. Esa prueba dejó a la vista tres huecos reales del estándar: nunca se estimó esfuerzo, no hay presupuesto, y el frente operativo sigue sin evidencia porque nadie ajeno al autor lo ha instalado.
+
+---
+
 ## 33.1.0 — 2026-08-22
 
 **MENOR** (cuatro comprobaciones que antes callaban o mentían; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
