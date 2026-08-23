@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 33.2.1 — 2026-08-22
+
+**PARCHE** (enlaces rotos; no cambia qué se exige).
+
+**Los enlaces del ciclo de vida apuntaban a una carpeta que no existe.** El texto de las siete etapas y el molde de planificación citaban los moldes como `../plantillas/ciclo-vida-proyectos/`, y desde donde viven eso resuelve a `plantillas/cvds/plantillas/`. Eran 44 enlaces: ninguno abría. Ahora los moldes se citan como hermanos y `base/` con el marcador que usan todas las plantillas.
+
+---
+
 ## 33.2.0 — 2026-08-22
 
 **MENOR** (un molde nuevo, en evaluación; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
