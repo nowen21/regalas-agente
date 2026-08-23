@@ -1,11 +1,11 @@
 # Pendiente · El aviso de quedarse atrás existe, y no llega a donde tiene que llegar
 
-**Estado:** abierto, anotado el 2026-08-22.
+**Estado:** cerrado el 2026-08-22, en la fase [`B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio`](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio/funcionalidad_implementada.md) · anotado ese mismo día.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-002 · HU-004 — Aviso al quedar atrás](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md), cuyo CA-01 quedó en rojo por esto |
-| **De dónde sale** | Ejecutar la fase [`A-EP-002-HU-004`](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md), defectos D-01 y D-02 |
+| **Historia de usuario** | [EP-002 · HU-004 — Aviso al quedar atrás](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/HU-004-aviso-al-quedar-atras.md), cuyo CA-01 quedó en rojo por esto |
+| **De dónde sale** | Ejecutar la fase [`A-EP-002-HU-004`](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md), defectos D-01 y D-02 |
 | **Proyecto de origen** | El estándar mismo |
 
 ## El problema
@@ -21,7 +21,7 @@ El aviso está construido y dice lo correcto:
 
 O sea: **el aviso al quedar atrás no avisa**, salvo que alguien escriba el comando.
 
-Y hay un segundo hueco, este ya previsto: el mensaje nombra las dos versiones y **no dice qué cambió entre ellas**. La decisión 24 del [pendiente 59](hecho/las-42-dudas-que-detenian-26-fases.md) ya fijó qué debería decir —la versión, su tipo y su título, al nivel de entrada del registro— y sigue sin implementarse.
+Y hay un segundo hueco, este ya previsto: el mensaje nombra las dos versiones y **no dice qué cambió entre ellas**. La decisión 24 del [pendiente 59](las-42-dudas-que-detenian-26-fases.md) ya fijó qué debería decir —la versión, su tipo y su título, al nivel de entrada del registro— y sigue sin implementarse.
 
 ## Por qué importa
 
@@ -43,10 +43,18 @@ El daño es lento: un proyecto se queda atrás y nadie se entera hasta que algo 
 
 No migra nada ni detiene nada. Eso el CA-03 de la historia ya lo comprueba y quedó cumplido: el aviso es aviso, sale con código 0 y no toca un archivo.
 
-No cubre el caso de la derogación sin adoptar, que **sí** detiene la fase por [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md). Ese es otro camino y ya está escrito.
+No cubre el caso de la derogación sin adoptar, que **sí** detiene la fase por [`02·F22`](../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md). Ese es otro camino y ya está escrito.
 
-No arregla que la versión declarada pueda ser falsa: eso es el [pendiente 82](82-la-version-adoptada-no-se-comprueba-contra-nada.md), y conviene hacerlo antes, porque un aviso que se calcula sobre un número inventado llega igual de mal.
+No arregla que la versión declarada pueda ser falsa: eso es el [pendiente 82](la-version-adoptada-no-se-comprueba-contra-nada.md), y conviene hacerlo antes, porque un aviso que se calcula sobre un número inventado llega igual de mal.
 
 ## Cómo se sabrá que cerró
 
 Se abre una sesión en un proyecto atrasado y el aviso aparece **sin pedirlo**, nombrando las dos versiones y el tramo que las separa. Se abre en uno al día y no aparece nada. Y una prueba nueva comprueba las dos cosas sin depender de que alguien mire la pantalla.
+
+---
+
+## Cómo se cerró — 2026-08-22
+
+**Primero llegar, después decir qué cambió**, que es el orden que este pendiente pedía y por el motivo que daba.
+
+El arranque de sesión ya pregunta por la versión: sobre un proyecto atrasado pasó de **un** hallazgo a **tres**. Y el aviso trae el tramo, con lo que obliga a migrar adelante: sobre shopnest-mesa, **40 versiones, 5 de ellas MAYOR**.

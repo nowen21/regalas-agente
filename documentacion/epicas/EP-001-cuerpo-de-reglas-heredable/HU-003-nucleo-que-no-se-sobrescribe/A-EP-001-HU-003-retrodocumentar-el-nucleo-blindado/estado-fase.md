@@ -46,7 +46,7 @@
 | **Concepto** | **No cumple** |
 | **CA cumplidos** | 2 de 3 |
 | **CA en "No"** | **CA-02.** Una clave pegada sin comillas queda en claro en la transcripción |
-| **Defectos abiertos aceptados** | D-01 y D-02, en el [pendiente 84](../../../../../pendientes/84-una-clave-pegada-sin-comillas-queda-en-claro.md) |
+| **Defectos abiertos aceptados** | D-01 y D-02, en el [pendiente 84](../../../../../pendientes/hecho/una-clave-pegada-sin-comillas-queda-en-claro.md) |
 | **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) |
 
 ---

@@ -649,3 +649,227 @@ Y de paso, algo que salió al mirar: **Cimiento no tiene catálogo de módulos.*
 
 ### 25 · Usuario — 2026-08-22 18:39:16
 > Es cierto que un niño lo debe entender pero tampoco tan infantil: "Un puñado de reglas que nadie puede saltarse, ni el dueño del proyecto ni quien le dé órdenes al programa. Si otra regla las contradice, mandan estas."
+
+**Agente** — 2026-08-22 18:44:51
+<!-- agente: b42d2274-f202-488b-b033-d96a6aff8d92 -->
+
+Tienes razón: me pasé al otro lado. Claro no es infantil.
+
+Corregido. El ejemplo que señalaste ahora dice:
+
+> **Las reglas que no se pueden desobedecer** — Las reglas que ninguna otra puede contradecir. No las levanta el dueño del proyecto ni una instrucción dada al asistente: si algo choca con ellas, ellas mandan.
+
+Se fue el «un puñado de», el rodeo de «quien le dé órdenes al programa» y la explicación de más. Dice lo mismo, directo.
+
+**El tono quedó escrito en el molde**, para que no dependa de quién lo llene:
+
+> **Claro no es infantil:** se usan palabras comunes y frases cortas, no se rodea lo que se quiere decir ni se explica de más. Se dice qué hace, en el tono con que se le explica algo a un adulto que no es del oficio.
+
+Las otras que sonaban a cuento y ya no:
+
+| Antes | Ahora |
+|---|---|
+| «las **mañas** de quien manda» | «sus preferencias de trabajo» |
+| «ni cuando el trabajo es **chiquito**» | «por pequeño que sea el trabajo» |
+| «una sola **nota** por proyecto» | «una sola calificación por proyecto» |
+| «qué **papeles** tiene el proyecto» | «qué documentos tiene el proyecto» |
+| «qué órdenes ejecutó el **ayudante**» | «qué ejecutó el asistente, orden por orden» |
+| «una **hoja** lista para cada papel» | «un formato listo para cada documento» |
+
+Y corregí el ejemplo del molde, que era el peor caso: el «CORRECTO» que yo había puesto era justo la versión infantil que acabas de señalar. Un molde que enseña con un mal ejemplo enseña mal a todos los proyectos.
+
+Versión **32.1.2**, commit `b34efb6`, publicado.
+
+Dos cosas que debo decirte:
+
+**El commit volvió a llevar archivos de otra sesión** — `validadores/enmascarar.py`, `version.py` y dos pruebas nuevas. Sigo usando «subir todo» como me dijiste, pero cada vez que lo hago se mezcla otra vez.
+
+**Sigue sin responder lo de antes:** ¿anoto como pendiente el catálogo de módulos que Cimiento no tiene, y la épica de la interfaz donde caen las 14 filas de los grupos 5 y 6?
+
+### 26 · Usuario — 2026-08-22 18:45:54
+> pero para qué pendiente si estamos trabajando sobre ese documento?
+
+**Agente** — 2026-08-22 18:47:15
+<!-- agente: ab06300c-7e38-4eab-80af-169b59d09448 -->
+
+Tienes razón. Ninguna de las dos era un pendiente, y por razones distintas.
+
+Ninguna era pendiente, y por razones distintas.
+
+**El catálogo de módulos era una fila del inventario.** Es algo que el producto debe tener, o sea que por la ley 1 va en la lista aunque no exista. Ya está escrita, la **2.6**:
+
+> **La lista de las partes del proyecto** — En qué partes está dividido el proyecto por dentro, para qué sirve cada una y dónde está, para que quien llegue después no tenga que adivinarlo.
+
+El grupo 2 queda en 6 filas, y el inventario en **37**.
+
+**La épica no era nada.** Es el paso siguiente del camino, y ya está escrito en el cierre del documento: cuando apruebes, las 37 filas bajan a trabajo. No hay que anotar en ninguna parte que después viene lo que sigue.
+
+Lo que me corregiste vale para más que hoy, así que lo dejé como señal **S-023**: ante un hueco hay tres destinos, y se elige por lo que el hueco **es**.
+
+- Si el producto debe tenerlo → **fila del inventario**, aunque no exista todavía.
+- Si es el paso siguiente de un camino ya escrito → **nada**, se hace cuando toque.
+- Solo lo que hay que hacer y no cabe en el trabajo de hoy → **pendiente**.
+
+Yo tiraba todo al tercero, que es el más caro: convierte un renglón de dos minutos en un trámite de tres pasos, y lo saca del sitio donde alguien lo iba a buscar.
+
+Cambié dos archivos: [prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md) y [documentacion/senales.md](documentacion/senales.md). Nada de `plantillas/` ni `base/`, así que no hay versión que subir.
+
+¿Lo commiteo?
+
+### 27 · Usuario — 2026-08-22 18:53:21
+> Esto es lo que se busca en el inventario crear una plantilla destinada a definir el **inventario de funcionalidades que debe tener un proyecto antes de iniciar su desarrollo**.
+>
+> Diseña esta plantilla para que permita identificar, organizar y documentar de manera estructurada todas las funcionalidades que el sistema debe implementar.
+>
+> La plantilla debe permitir, como mínimo:
+>
+> * Identificar cada funcionalidad de forma única.
+> * Definir el nombre y la descripción de la funcionalidad.
+> * Establecer el objetivo o propósito de la funcionalidad.
+> * Clasificarla por módulo, proceso o componente del sistema.
+> * Definir los actores o roles que interactúan con ella.
+> * Especificar las entradas y salidas esperadas.
+> * Documentar las reglas de negocio asociadas.
+> * Identificar dependencias con otras funcionalidades.
+> * Definir las condiciones o criterios que debe cumplir para considerarse terminada.
+> * Establecer prioridad y estado.
+> * Identificar si requiere componentes de frontend, backend, base de datos, integraciones externas u otros elementos técnicos.
+> * Permitir registrar observaciones, restricciones y consideraciones especiales.
+>
+> La plantilla debe estar diseñada para que el agente pueda utilizarla como **fuente de verdad del alcance funcional del proyecto**, permitiéndole posteriormente verificar qué funcionalidades están definidas, cuáles faltan por desarrollar y cuáles ya fueron implementadas.
+>
+> Además, debe diferenciar claramente entre:
+>
+> 1. **Funcionalidades obligatorias:** necesarias para que el sistema cumpla su propósito.
+> 2. **Funcionalidades complementarias:** aportan valor, pero no son indispensables para la operación inicial.
+> 3. **Funcionalidades futuras:** identificadas, pero fuera del alcance actual.
+>
+> El resultado debe ser una plantilla genérica y reutilizable para diferentes tipos de proyectos de software, evitando asumir un lenguaje, framework, arquitectura o tecnología específica.
+>
+> La plantilla debe estar estructurada de manera que pueda ser interpretada tanto por un desarrollador como por el agente, y debe servir posteriormente para generar planes de trabajo, historias de usuario, tareas de desarrollo, pruebas y documentación.
+
+**Agente** — 2026-08-22 18:56:12
+<!-- agente: 8bee7a78-9a8d-40c0-9422-108362b60d6f -->
+
+Esto reemplaza el molde que teníamos: pasa de una tabla resumen a una ficha por funcionalidad. Lo escribo completo.
+
+Listo el molde nuevo: [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md). Versión **33.0.0**, mayor, porque cambia la estructura de un documento que ya existe en los proyectos.
+
+**Cada funcionalidad pasó de una fila a una ficha de catorce campos:**
+
+| Campo | Cubre lo que pediste |
+|---|---|
+| ID `F-001` | Identificación única, y no se reutiliza aunque se descarte |
+| Nombre y «De qué se trata» | Nombre y descripción |
+| **Para qué sirve** | Objetivo. Si no se puede escribir, la funcionalidad no está justificada |
+| **Parte del sistema** | Módulo, proceso o componente |
+| **Quién la usa** | Actores y roles, con qué hace cada uno |
+| **Qué recibe** / **Qué entrega** | Entradas y salidas |
+| **Reglas que debe respetar** | Reglas de negocio, numeradas `RN-1` |
+| **Depende de** | Dependencias, por ID |
+| **Terminada cuando** | Criterios de terminación, numerados `CA-1`, cada uno respondible con sí o no |
+| **Qué necesita construirse** | Pantalla, lógica de servidor, almacenamiento, conexión externa, tarea automática |
+| **Prioridad** y **Estado** | Alta/Media/Baja · Definida, En desarrollo, Implementada, Descartada |
+| **Lo que hay que tener en cuenta** | Observaciones, restricciones, casos raros |
+
+Arriba queda un **resumen** de una línea por funcionalidad, para verlas todas juntas sin leer 37 fichas.
+
+**Las tres clases** están escritas como tabla: obligatoria, complementaria, futura. Y separé algo que se confundía: «futura» es *decidida y para después*; «no se sabe si entra» es *una pregunta*, y esa sigue en su propia sección.
+
+**Tres decisiones que tomé y conviene que revises:**
+
+**1 · Estado y Verificado quedaron como dos casillas.** Pediste estado, y hace tres horas dijiste que si algo está hecho lo dicen las pruebas. Las dos cosas caben si no se mezclan: «Estado» es lo que alguien dice que va pasando; «Verificado» solo lo llena una prueba corrida. Una funcionalidad puede estar **implementada y sin verificar**, y eso quiere decir que se construyó y nadie lo ha demostrado. Si prefieres una sola casilla, se quita.
+
+**2 · «Terminada cuando» baja tal cual a la historia.** Lo dejé escrito en el cierre: esos criterios se vuelven los criterios de aceptación y de ahí salen las pruebas, sin inventarlos aparte. Es lo que hace que la lista sirva para generar el trabajo y no solo para aprobarlo.
+
+**3 · Sin tecnología, y lo dice explícito:** «necesita pantalla» sí, «necesita React» no. Eso vive en la ficha de tecnología del proyecto.
+
+Ahora, lo que esto deja roto: **el inventario de Cimiento ya no coincide con su molde.** Son 37 funcionalidades a las que hay que escribirles quién las usa, qué reciben, qué entregan, sus reglas y sus criterios de terminación. Puedo llenarlo con lo que sé del repositorio, pero varias fichas van a quedar con preguntas para ti.
+
+¿Lo migro ahora, o lo dejamos y commiteo primero el molde?
+
+### 28 · Usuario — 2026-08-22 18:56:50
+> ahora aplique ese nuevo formato a lo que ya tenemos
+
+### 29 · Usuario — 2026-08-22 18:58:38
+> siga
+
+**Agente** — 2026-08-22 19:05:24
+<!-- agente: 77134d54-7c70-4937-8c46-1a95699467f3 -->
+
+Aplicado. [prompts/cimiento-inventario-funcionalidades.md](prompts/cimiento-inventario-funcionalidades.md): **37 fichas completas, 787 líneas.**
+
+**Arriba, el resumen** — una línea por funcionalidad, con las siete columnas: ID, nombre, clase, parte del sistema, prioridad, estado y verificado. Ahí se ve todo junto sin leer las fichas.
+
+**Abajo, las 37 fichas** con los catorce campos. Ejemplo de cómo quedó una:
+
+> **F-015 · Los frenos al guardar**
+> **Depende de** F-014
+> **Reglas que debe respetar** — `RN-1` Lo que detiene es una falla, no un aviso. `RN-2` El freno de las marcas falla cuando la cuenta sube, no cuando es distinta de cero. `RN-3` Un cambio de lo que viaja a los proyectos no pasa sin su entrada en el registro y su versión.
+> **Terminada cuando** — `CA-1` Guardar algo con una falla se detiene y se dice cuál. `CA-2` Publicar corre la batería completa. `CA-3` Los frenos se instalan solos.
+> **Lo que hay que tener en cuenta** — Un freno que se salta a menudo deja de ser freno. Si estorba, el problema es la revisión, no el freno.
+
+**Las cuentas:** 26 obligatorias, 11 complementarias, 0 futuras. Implementadas: 0. Verificadas: 0. Las 37 en «Definida», porque ninguna ha pasado por una fase con su plan y sus pruebas.
+
+**Siete partes del sistema** salieron al clasificarlas: cuerpo de reglas, documentos del ciclo, comprobador, enganches, memoria, instalador e interfaz. Eso responde tu pregunta de antes: los grupos no eran módulos, y ahora la parte es una columna propia. Ojo con esto: **esas siete las deduje mirando el repositorio, no de un documento** — la lista de partes es la funcionalidad F-013, que aún no existe.
+
+**Las reglas de negocio salieron mejor de lo que esperaba**, porque muchas ya estaban aprendidas a golpes. F-027 lleva «lo que se genera hacia afuera nunca vacía lo que tenía contenido», que viene de las tres veces que se perdió el contenido. F-022 lleva «una preferencia con alternativa se cumple por la alternativa más cómoda».
+
+**Cuatro preguntas quedaron abiertas**, y cada una detiene solo su funcionalidad:
+
+| Pregunta | Detiene |
+|---|---|
+| Cómo siguen viendo los documentos las revisiones cuando estén en la base | F-037 |
+| Qué documentos entran al paquete de entrega | F-012 |
+| Cómo pesa cada parte en la calificación única | F-018 |
+| A partir de cuándo un proyecto «se quedó atrás» | F-030 |
+
+La primera es la de fondo: o la base genera una copia en archivos, como ya se hace con la lista de proyectos, y nada de lo que hoy funciona se toca; o las revisiones aprenden a leer la base, que es más limpio y cuesta más. Mi propuesta es la primera.
+
+Sin commitear. ¿Lo subo?
+
+### 30 · Usuario — 2026-08-22 19:05:54
+> defina funcionalidad
+
+### 31 · Usuario — 2026-08-22 19:06:10
+> defina
+
+**Agente** — 2026-08-22 19:06:43
+<!-- agente: 1a88806f-65c3-46bd-8074-b7e177597136 -->
+
+**Una funcionalidad es algo que el producto hace.** Recibe algo, hace algo con eso y entrega un resultado que alguien puede ver.
+
+Se reconoce por tres señas, y tienen que darse las tres:
+
+1. **Tiene quién la use** — una persona con un rol, otro sistema, o el propio producto actuando solo.
+2. **Tiene entrada y salida** — algo la dispara y algo queda distinto después.
+3. **Se puede comprobar** — hay una forma de responder con sí o no si funcionó.
+
+Lo que **no** es funcionalidad, aunque el producto lo tenga:
+
+| No es | Qué es | Ejemplo |
+|---|---|---|
+| Un texto que el producto entrega | Un entregable | Una guía, un manual, un cuerpo de reglas |
+| Una cualidad del producto | Un requisito de calidad | Que sea rápido, que sea seguro |
+| Una parte de cómo está armado | Un componente | Una tabla, una carpeta, un módulo |
+| Algo que se decidió | Una restricción | Que corra sin internet |
+
+---
+
+Ahora, aplicando eso al inventario que acabo de escribir: **nueve de las 37 no son funcionalidades.**
+
+F-001, F-002, F-003, F-004, F-006 y F-007 son cuerpos de reglas. F-005 es una guía. F-009 son formatos. F-013 es una lista. Todas son **texto que Cimiento entrega**, no algo que Cimiento haga. No tienen quién las use en el sentido de la definición: se leen.
+
+Y ahí hay un choque real que no puedo resolver yo:
+
+**La mitad del valor de Cimiento es contenido, no comportamiento.** Las reglas *son* el producto. Si el inventario solo admite funcionalidades estrictas, esas nueve filas se caen — y eso contradice la primera ley, que dice que la lista tiene todo lo que el producto debe tener.
+
+Dos salidas:
+
+**A · Ampliar el documento a dos tipos.** Cada fila declara si es **funcionalidad** (algo que el producto hace) o **entregable** (algo que el producto entrega para leer). Los campos cambian según el tipo: un entregable no tiene «qué recibe» ni «qué entrega», tiene «quién lo lee» y «qué debe contener». El inventario sigue completo y cada fila se juzga con la vara que le corresponde.
+
+**B · Reescribir las nueve como la acción que las usa.** «Las reglas que no se pueden desobedecer» pasa a ser «cargar y hacer cumplir las reglas en cada sesión», que sí tiene entrada, salida y comprobación. El texto de las reglas queda como insumo, no como fila.
+
+**Recomiendo A.** La B suena más limpia pero esconde el producto detrás del mecanismo que lo carga, y un manual armado desde ahí no diría qué reglas hay. Además la A sirve a cualquier proyecto que entregue documentación, que son todos.
+
+¿Cuál? Y sea cual sea, la definición que acabo de darte debería quedar en el glosario del estándar, que hoy no la tiene: define «funcionalidad implementada» pero nunca «funcionalidad».

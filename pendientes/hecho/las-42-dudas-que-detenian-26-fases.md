@@ -327,4 +327,4 @@ Las 15 se ejecutaron el mismo día. Resultado:
 
 **El encargo chico y real que faltaba nunca hizo falta inventarlo:** la jornada del 2026-08-22 lo fue. El mismo encargo corrido once veces, que es más de las dos que pedía la duda 14.
 
-**Lo que sale de acá y sigue abierto:** los pendientes [81](../81-metareglas-sobre-un-proyecto-da-veredictos-falsos.md), [82](../82-la-version-adoptada-no-se-comprueba-contra-nada.md), [83](../83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md) y [84](../84-una-clave-pegada-sin-comillas-queda-en-claro.md), tres de ellos `P0`.
+**Lo que sale de acá y sigue abierto:** los pendientes [81](metareglas-sobre-un-proyecto-da-veredictos-falsos.md), [82](la-version-adoptada-no-se-comprueba-contra-nada.md), [83](el-aviso-de-desfase-no-llega-al-abrir-sesion.md) y [84](una-clave-pegada-sin-comillas-queda-en-claro.md), tres de ellos `P0`.

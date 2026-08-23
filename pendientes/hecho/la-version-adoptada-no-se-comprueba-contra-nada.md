@@ -1,11 +1,11 @@
 # Pendiente · Una versión adoptada inventada pasa, y encima apaga el aviso de desfase
 
-**Estado:** abierto, anotado el 2026-08-22.
+**Estado:** cerrado el 2026-08-22, en la fase [`B-EP-002-HU-003-la-version-declarada-se-comprueba`](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/B-EP-002-HU-003-la-version-declarada-se-comprueba/funcionalidad_implementada.md) · anotado ese mismo día.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-002 · HU-003 — Versión adoptada por el proyecto](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md), cuyo CA-02 quedó en rojo por esto |
-| **De dónde sale** | Ejecutar la fase [`A-EP-002-HU-003`](../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md), defectos D-01 y D-02 |
+| **Historia de usuario** | [EP-002 · HU-003 — Versión adoptada por el proyecto](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/HU-003-version-adoptada-por-el-proyecto.md), cuyo CA-02 quedó en rojo por esto |
+| **De dónde sale** | Ejecutar la fase [`A-EP-002-HU-003`](../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md), defectos D-01 y D-02 |
 | **Proyecto de origen** | El estándar mismo |
 
 ## El problema
@@ -36,11 +36,11 @@ El aviso de desfase se calcula sobre la versión declarada. Si esa está mal, **
 
 Y la contradicción del segundo caso lleva dos días en un proyecto real sin que nadie la notara, porque no hay quién mire las dos cosas a la vez.
 
-Es, otra vez, el caso borde del [planteamiento](../prompts/cimiento-planteamiento.md) §8: **una comprobación que da por bueno lo que no revisó enseña a no creerle a ninguna.**
+Es, otra vez, el caso borde del [planteamiento](../../prompts/cimiento-planteamiento.md) §8: **una comprobación que da por bueno lo que no revisó enseña a no creerle a ninguna.**
 
 ## Qué falta
 
-Dos comprobaciones en [`validadores/version.py`](../validadores/version.py), y las dos son de contar, no de opinar:
+Dos comprobaciones en [`validadores/version.py`](../../validadores/version.py), y las dos son de contar, no de opinar:
 
 1. **Que la versión declarada exista en el `CHANGELOG.md` del estándar.** Si no está, es una falla: alguien escribió un número que nadie publicó.
 2. **Que la versión declarada coincida con el último registro de `documentacion/versiones/`.** Si difieren, es una falla y se nombran las dos, porque una de las dos está mal y no se sabe cuál sin mirar.
@@ -56,3 +56,11 @@ No toca el instalador. Si resulta que el instalador escribe el registro y no act
 ## Cómo se sabrá que cerró
 
 Una copia temporal con `99.9.9` declarada **falla**, diciendo que esa versión no existe en el registro de cambios. Otra copia que declare una versión real distinta de su último registro de adopción **falla**, nombrando las dos. Y un proyecto bien declarado sigue dando lo mismo que hoy: el aviso de desfase, y nada más.
+
+---
+
+## Cómo se cerró — 2026-08-22
+
+**Las dos comprobaciones, y en el orden que este pendiente fijaba.** Una versión inventada ya falla diciendo que no existe en el registro; una que no coincide con el último registro de adopción también, y el mensaje nombra las dos porque no se sabe cuál está mal sin mirar.
+
+**El caso real sigue ahí y ahora se ve:** shopnest-mesa declara `27.2.0` y su historial dice `28.0.0`.

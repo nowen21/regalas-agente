@@ -21,6 +21,7 @@ import os
 import re
 
 import instalar
+import version
 import comun
 from comun import AVISO, FALLA, Hallazgo, encabezados, leer
 
@@ -133,8 +134,14 @@ def revisar(proyecto, estandar):
                          "no está instalado — correr validadores/instalar.py "
                          "--aplicar")]
 
-    return revisar_claude_md(proyecto, estandar) + \
-        revisar_enganches(proyecto, estandar)
+    # **El aviso de quedarse atrás va acá, y no es un añadido cualquiera.**
+    # Existía como subcomando y había que pedirlo a mano, así que nunca
+    # llegaba al proyecto: la funcionalidad central de su historia se veía
+    # funcionar solo en el repositorio del estándar, donde el agente corre
+    # las comprobaciones de a una. Es el pendiente 83.
+    return (revisar_claude_md(proyecto, estandar)
+            + revisar_enganches(proyecto, estandar)
+            + version.validar(proyecto))
 
 
 def resumen(proyecto, hallazgos):

@@ -689,6 +689,15 @@ def _fila19_version(raiz):
         cambios = leer(os.path.join(raiz, "CHANGELOG.md"))
     except OSError:
         return []
+
+    # **Sin el dato no se afirma.** `leer` no levanta excepción cuando el
+    # archivo no está: devuelve vacío y lo anota aparte. Por eso el `except` de
+    # arriba no bastaba, y la falla salía escrita como «`VERSION` dice  y el
+    # CHANGELOG», con el hueco donde iba el número que no se pudo leer. Una
+    # comprobación que reporta sobre lo que no vio es peor que una que calla.
+    if not version or not cambios:
+        return []
+
     if re.search(rf"(?m)^##\s+{re.escape(version)}\b", cambios):
         return []
     return [Hallazgo(
@@ -789,8 +798,36 @@ def _identificador_repetido(catalogo):
     return hallazgos
 
 
+def es_el_estandar(raiz):
+    """Si esa carpeta **es** el estándar, y no un proyecto que lo usa.
+
+    Se reconoce por lo que solo el estándar tiene: el cuerpo de reglas y su
+    número de versión. Un proyecto instalado recibe `.agente/` y los enganches,
+    nunca `base/`.
+    """
+    raiz = os.path.abspath(raiz or RAIZ)
+    return (os.path.isdir(os.path.join(raiz, "base"))
+            and os.path.isfile(os.path.join(raiz, "VERSION")))
+
+
 def validar(raiz=None):
     raiz = raiz or RAIZ
+
+    # **Apuntar esto a un proyecto no tiene sentido, y antes no se decía.** Las
+    # meta-reglas comprueban el cuerpo de reglas contra su propio molde, y un
+    # proyecto no tiene cuerpo de reglas. El programa buscaba ahí el registro de
+    # cambios, la versión y dos archivos más, no los encontraba, y **reportaba
+    # igual**: una falla y cuatro avisos, los cinco falsos. Uno de ellos decía
+    # «`VERSION` dice  y el CHANGELOG», con el hueco vacío donde iba el dato que
+    # no pudo leer. Una comprobación que no pudo abrir su archivo no debe
+    # afirmar nada. Es el pendiente 81.
+    if not es_el_estandar(raiz):
+        return [Hallazgo(
+            AVISO, raiz, 0,
+            "esta carpeta no es el estándar, así que no tiene meta-reglas que "
+            "comprobar — para revisar las reglas propias de un proyecto es "
+            "`validar.py metareglas --catalogo <proyecto>`")]
+
     catalogo = reglas(raiz)
     indice = {r.id: r for r in catalogo}
     letras = _letras_registradas(raiz)

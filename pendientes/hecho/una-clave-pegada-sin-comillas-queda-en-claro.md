@@ -1,11 +1,11 @@
 # Pendiente · Una clave pegada sin comillas queda escrita en claro en la transcripción
 
-**Estado:** abierto, anotado el 2026-08-22.
+**Estado:** cerrado el 2026-08-22, en la fase [`B-EP-005-HU-002-la-clave-sin-comillas-tambien-se-tapa`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/B-EP-005-HU-002-la-clave-sin-comillas-tambien-se-tapa/funcionalidad_implementada.md) · anotado ese mismo día.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-005 · HU-002 — Enmascarar claves](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) |
-| **De dónde sale** | Ejecutar la fase [`A-EP-001-HU-003`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-003-nucleo-que-no-se-sobrescribe/A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/resultado_pruebas.md), defectos D-01 y D-02. Su CA-02 quedó en rojo por esto |
+| **Historia de usuario** | [EP-005 · HU-002 — Enmascarar claves](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/HU-002-enmascarar-claves.md) |
+| **De dónde sale** | Ejecutar la fase [`A-EP-001-HU-003`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-003-nucleo-que-no-se-sobrescribe/A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/resultado_pruebas.md), defectos D-01 y D-02. Su CA-02 quedó en rojo por esto |
 | **Proyecto de origen** | El estándar mismo |
 
 ## El problema
@@ -31,7 +31,7 @@ En un chat nadie escribe comillas. **Las tres formas que fallan son las tres que
 
 ## Por qué importa
 
-Es núcleo blindado: [`00·N6`](../base/00-nucleo-blindado.md) dice que una credencial no se escribe, no se registra y no se guarda. La transcripción **se versiona**, así que una clave que se cuela ahí queda en el historial del repositorio, y de ahí no se saca reescribiendo el archivo.
+Es núcleo blindado: [`00·N6`](../../base/00-nucleo-blindado.md) dice que una credencial no se escribe, no se registra y no se guarda. La transcripción **se versiona**, así que una clave que se cuela ahí queda en el historial del repositorio, y de ahí no se saca reescribiendo el archivo.
 
 Y el enmascarador da la sensación contraria: existe, corre y tapa lo que reconoce. Quien vio funcionar el caso de `AKIA…` da por hecho que cubre lo demás.
 
@@ -48,10 +48,20 @@ Que el enmascarador reconozca las formas de una conversación, además de las de
 
 ## El límite
 
-No cubre las claves que ya estén escritas en el histórico. Para eso está la decisión 30 del [pendiente 59](hecho/las-42-dudas-que-detenian-26-fases.md): la vieja se enmascara igual y queda dicho en el archivo que se hizo, sin borrar el bloque.
+No cubre las claves que ya estén escritas en el histórico. Para eso está la decisión 30 del [pendiente 59](las-42-dudas-que-detenian-26-fases.md): la vieja se enmascara igual y queda dicho en el archivo que se hizo, sin borrar el bloque.
 
 No toca `secretos.py`, que para su trabajo —código fuente— está bien como está. Lo que hay que separar es el uso, no el módulo.
 
 ## Cómo se sabrá que cerró
 
 Las seis formas de la tabla de arriba se enmascaran, y una prueba nueva las cubre una por una. Y se corre sobre el histórico existente contando cuántas líneas cambiarían: si son muchas, el patrón se está pasando de ancho y hay que acotarlo antes de dejarlo.
+
+---
+
+## Cómo se cerró — 2026-08-22
+
+**Se hizo el punto 1, que era el acotado, y se midió antes de dejarlo** — que es lo que este pendiente pedía expresamente por el riesgo de tapar de más.
+
+Sobre el histórico completo el patrón nuevo toca **cero líneas**. Y la medición sirvió para algo más: sobre el resto del repositorio apareció `clave = h.regla`, que es código pegado y no una credencial. Eso obligó a pedir que el valor traiga un número o mida doce, y sin medir no se hubiera visto.
+
+**El punto 2 no se hizo**, y queda dicho: la clave dicha enteramente en prosa sigue sin taparse.

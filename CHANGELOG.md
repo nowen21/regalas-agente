@@ -11,6 +11,42 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 33.1.0 — 2026-08-22
+
+**MENOR** (cuatro comprobaciones que antes callaban o mentían; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
+
+**Una clave que alguien pega en el chat ya no queda escrita a la vista.** El programa que las tapa reconocía las que escribe otro programa, con el valor entre comillas, y no las que teclea una persona. Quien escribiera su clave sin comillas la dejaba en el registro de la conversación, que se guarda para siempre. Ahora se tapan las tres formas en que de verdad se escriben, y se conserva el nombre de la variable, para que quien lea después siga entendiendo de qué se hablaba.
+
+**Lo que se decidió con una medición y no con una opinión:** taparlo todo estropea el registro, así que antes de dejar el cambio se midió sobre todas las conversaciones guardadas. Ninguna línea cambiaría. Y esa misma medición mostró el único caso que había que dejar quieto: un pedazo de programa pegado en el chat, donde la palabra «clave» es el nombre de una variable y no un secreto.
+
+**Un proyecto ya no puede decir que sigue una versión que no existe.** Podía escribir cualquier número, y si era mayor que el verdadero pasaba algo peor que no detectarlo: el aviso de estar atrasado **se apagaba**, porque el programa concluía que iba adelantado. Ahora se comprueba que el número exista de verdad, y que coincida con lo que el instalador dejó anotado la última vez. Buscándolo apareció el caso en un proyecto real: dice seguir una versión y su propia constancia dice otra, las dos del mismo día.
+
+**Y el aviso de estar atrasado ahora llega solo, al abrir.** Estaba construido desde hacía tiempo y había que pedirlo a mano, así que no llegaba nunca a donde tenía que llegar. Se veía funcionar todos los días en un solo sitio: aquí, donde estas comprobaciones se corren de a una. En un proyecto instalado no aparecía jamás. Además ahora dice **qué cambió** entre las dos versiones, empezando por si alguna obliga a rehacer algo, que es lo único que cambia la decisión de ponerse al día.
+
+**Y una comprobación dejó de acusar sobre lo que no pudo leer.** Apuntada a un proyecto, buscaba allí cuatro archivos que solo existen aquí, no los encontraba y reportaba igual: cinco veredictos falsos, uno de ellos con el hueco vacío donde iba el dato que no consiguió. Ahora dice en una línea que esa carpeta no es la que revisa, y cuál es la forma correcta de pedirlo.
+
+**El detalle.** Cuatro fases, una por historia: [`B-EP-005-HU-002`](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-002-enmascarar-claves/B-EP-005-HU-002-la-clave-sin-comillas-tambien-se-tapa/resultado_pruebas.md), [`B-EP-002-HU-003`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/B-EP-002-HU-003-la-version-declarada-se-comprueba/resultado_pruebas.md), [`B-EP-002-HU-004`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio/resultado_pruebas.md) y [`B-EP-004-HU-011`](documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/B-EP-004-HU-011-no-afirmar-sobre-lo-que-no-se-leyo/resultado_pruebas.md). Cierran los cuatro pendientes que dejó ejecutar las quince fases detenidas, y **buena parte de sus 38 pruebas comprueban lo que NO debe hacerse**: una comprobación que reprueba de más se apaga a la semana, y entonces no queda nada.
+
+---
+
+## 33.0.0 — 2026-08-22
+
+**MAYOR** ⚠ obliga a migrar: un proyecto que ya tenga su lista de funcionalidades escrita la rehace con la estructura nueva. Lo que cambia es que cada funcionalidad pasa de una fila a una ficha.
+
+**Una fila no alcanzaba para construir nada.** La lista decía qué hace el producto y si estaba probado, y eso servía para aprobar el alcance y para armar el manual. Pero cuando llegaba la hora de partir el trabajo, había que volver a preguntarlo todo: quién usa esto, qué recibe, qué entrega, qué reglas del negocio la gobiernan, de qué otra funcionalidad depende y cómo se sabe que está terminada. Esa información se inventaba de nuevo en cada historia, y por eso dos historias del mismo producto salían con criterios distintos.
+
+**Ahora cada funcionalidad tiene su ficha, con catorce campos.** Qué hace, para qué sirve, a qué parte del sistema pertenece, quién la usa, qué recibe, qué entrega, qué reglas debe respetar, de qué depende, cuándo se considera terminada, qué hay que construirle, prioridad, estado, si está verificada, y lo que hay que tener en cuenta. El resumen de arriba sigue existiendo, con una línea por funcionalidad, para verlas todas juntas.
+
+**Tres cosas que la ficha resuelve y antes no.** Cada funcionalidad tiene un número propio que no se reutiliza, aunque se descarte, porque planes y pruebas la nombran por ahí. El «Terminada cuando» se convierte tal cual en el criterio de aceptación de su historia y de ahí salen las pruebas, sin inventarlos aparte. Y las tres clases quedan escritas: obligatoria, complementaria y futura, que no es lo mismo que lo que todavía no se sabe si entra, y por eso eso último sigue en su propia sección.
+
+**Estado y verificación son dos casillas distintas, y se sostiene.** «Estado» es lo que alguien dice que va pasando. «Verificado» solo lo llena una prueba corrida. Una funcionalidad puede estar implementada y sin verificar: quiere decir que se construyó y que nadie lo ha demostrado.
+
+**Sigue sin nombrar tecnología.** La ficha pregunta si necesita pantalla, lógica de servidor, almacenamiento, conexión con un sistema de afuera o una tarea que corre sola. No pregunta con qué se hace: eso vive en la ficha de tecnología del proyecto.
+
+**El detalle.** El molde [`02-inventario-funcionalidades.md`](plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md). La regla que lo exige, [`02·F26`](base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md), no cambia: la lista aprobada sigue siendo la puerta.
+
+---
+
 ## 32.1.2 — 2026-08-22
 
 **PARCHE** (afina el tono que pide el molde del inventario; no cambia qué se exige).
@@ -59,7 +95,7 @@ No es una idea nueva: es lo que ya pedían [`00·ID7`](base/00-identidad-y-rol/r
 
 **Cómo se encontró:** buscando. Se fue a mirar el historial de un proyecto real, se buscó en el sitio que decía el segundo nombre, no estaba, y por un momento pareció que el historial no existía. Existía, con dieciocho registros. Un nombre a medias hace perder el tiempo en la dirección más cara: la de creer que falta algo que está.
 
-**El detalle.** Sale del defecto D-03 de la fase [`A-EP-002-HU-003`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md). Los otros dos defectos de esa fase, que sí son de fondo, quedaron en el [pendiente 82](pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md).
+**El detalle.** Sale del defecto D-03 de la fase [`A-EP-002-HU-003`](documentacion/epicas/EP-002-versionado-y-adopcion/HU-003-version-adoptada-por-el-proyecto/A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md). Los otros dos defectos de esa fase, que sí son de fondo, quedaron en el [pendiente 82](pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md).
 
 ---
 

@@ -212,3 +212,12 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-22 · usuario: «no se debe colocar lo que ya se decidió, el inventario es todo lo que el proyecto debe tener sin importar si ya está hecho» y «cuando se hagan las pruebas es que se sabe si ya se hizo».
 - **Scope:** estándar; aplica a todo proyecto que arme su inventario bajo `02·F26`.
 - **Rel:** S-020 (medir contra el estado real antes de dar algo por cierto).
+
+## S-023 · Lo que falta no siempre es un pendiente: si el producto debe tenerlo, es una fila del inventario  ·  decisión · activa
+- **What:** el agente encontró dos huecos mientras trabajaba el inventario de Cimiento, la lista de partes del proyecto que exige `13·DOC13` y la épica que recoja las funcionalidades de la interfaz, y ofreció anotarlos como pendientes. El usuario paró: «¿pero para qué pendiente si estamos trabajando sobre ese documento?».
+- **Why:** un pendiente es para lo que **no** se está haciendo. Abrir uno mientras se tiene el documento abierto convierte un renglón de dos minutos en un trámite de tres pasos, y encima lo saca del sitio donde alguien lo va a buscar. El backlog crece con cosas que ya estaban al alcance de la mano.
+- **Where:** el inventario [prompts/cimiento-inventario-funcionalidades.md](../prompts/cimiento-inventario-funcionalidades.md), fila 2.6, escrita en el momento en vez de anotada.
+- **Learned:** ante un hueco hay tres destinos y se eligen por lo que el hueco **es**, no por las ganas de dejarlo anotado. Si es algo que el producto debe tener, es una **fila del inventario**, aunque todavía no exista. Si es el paso siguiente de un camino que ya está escrito, no se anota en ninguna parte: se hace cuando toque. Y solo lo que hay que hacer y no cabe en el trabajo de hoy es un **pendiente**. El agente por defecto tiraba todo al tercero, que es el más caro de los tres.
+- **When/Who:** 2026-08-22 · usuario, corrigiendo al agente dos veces en la misma sesión (antes ya había dicho «no hay que abrir pendiente, se debe corregir de una»).
+- **Scope:** estándar; aplica a cualquier proyecto donde el agente proponga anotar en vez de resolver.
+- **Rel:** S-022.

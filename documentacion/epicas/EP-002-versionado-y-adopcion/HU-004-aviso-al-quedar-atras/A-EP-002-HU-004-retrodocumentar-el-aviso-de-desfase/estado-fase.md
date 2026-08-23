@@ -46,7 +46,7 @@
 | **Concepto** | **No cumple** |
 | **CA cumplidos** | 2 de 3 |
 | **CA en "No"** | **CA-01.** El aviso existe pero hay que pedirlo a mano: el enganche de apertura no lo mira |
-| **Defectos abiertos aceptados** | D-01 y D-02, los dos en el [pendiente 83](../../../../../pendientes/83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md) |
+| **Defectos abiertos aceptados** | D-01 y D-02, los dos en el [pendiente 83](../../../../../pendientes/hecho/el-aviso-de-desfase-no-llega-al-abrir-sesion.md) |
 | **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) §5 |
 
 ---

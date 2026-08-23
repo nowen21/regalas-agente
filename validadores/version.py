@@ -30,6 +30,11 @@ _ADOPTADA = re.compile(
 _ENTRADA_DEL_REGISTRO = re.compile(r"^##\s+(\d+\.\d+\.\d+)\b", re.M)
 
 # `2026-08-20-28.0.0.md` — el registro que el instalador deja por adopción.
+# `## 31.9.0 — 2026-08-22` con su tipo y su titulo en las lineas siguientes.
+_ENTRADA_CON_TIPO = re.compile(
+    r"^##\s+(\d+\.\d+\.\d+)\b[^\n]*\n+\*\*(MAYOR|MENOR|PARCHE)\*\*"
+    r"[^\n]*\n+\*\*([^*]{10,90})", re.M)
+
 _NOMBRE_DE_ADOPCION = re.compile(r"^\d{4}-\d{2}-\d{2}-(\d+\.\d+\.\d+)\.md$")
 
 _ENCABEZADO_DEROGADA = re.compile(
@@ -139,6 +144,49 @@ def ultima_adopcion(raiz):
     return max(encontradas, key=_tupla) if encontradas else ""
 
 
+def tramo(adoptada, estandar, raiz_estandar=None):
+    """Qué versiones separan a las dos: `[(version, tipo, titulo)]`.
+
+    **Al nivel de entrada del registro, ni más ni menos.** La versión, su tipo
+    y su título: es lo que fijó la decisión 24 del pendiente de las 42 dudas.
+    Menos que eso —«estás atrasado»— no ayuda a decidir si subir; más obligaría
+    a mantener dos textos que dicen lo mismo, y el segundo envejece.
+    """
+    raiz_estandar = raiz_estandar or RAIZ
+    ruta = os.path.join(raiz_estandar, "CHANGELOG.md")
+    if not (adoptada and estandar and os.path.isfile(ruta)):
+        return []
+    desde, hasta = _tupla(adoptada), _tupla(estandar)
+    salida = []
+    for version, tipo, titulo in _ENTRADA_CON_TIPO.findall(leer(ruta)):
+        if desde < _tupla(version) <= hasta:
+            salida.append((version, tipo, titulo.strip()))
+    return salida
+
+
+def _resumen_del_tramo(entradas):
+    """El tramo en una línea, con lo que decide adelante.
+
+    **Lo primero es si alguna obliga a migrar**, porque es lo único del aviso
+    que cambia qué hacer. Después cuántas van, y al final los títulos de las
+    tres más recientes, que es lo que da una idea sin obligar a abrir el
+    registro.
+    """
+    if not entradas:
+        return ""
+    mayores = [v for v, tipo, _ in entradas if tipo.upper() == "MAYOR"]
+    partes = []
+    if mayores:
+        partes.append("**%d obliga%s a migrar** (v%s)" % (
+            len(mayores), "" if len(mayores) == 1 else "n", ", v".join(mayores[:3])))
+    partes.append("van %d" % len(entradas) if len(entradas) != 1
+                  else "va una versión")
+    titulos = "; ".join(t.rstrip(".") for _, _, t in entradas[:3])
+    if len(entradas) > 3:
+        titulos += "; y %d más" % (len(entradas) - 3)
+    return ". Qué cambió: %s. Lo último: %s" % (", ".join(partes), titulos)
+
+
 def validar(raiz):
     raiz = os.path.abspath(raiz)
     est = version_estandar()
@@ -174,7 +222,10 @@ def validar(raiz):
 
     motivo = comparar(adoptada, est)
     if motivo:
-        hallazgos.append(Hallazgo(AVISO, "CLAUDE.md", 0, motivo))
+        # **Y qué cambió entre las dos.** Sin esto el aviso dice que hay
+        # desfase y no da con qué decidir si vale la pena subir.
+        detalle = _resumen_del_tramo(tramo(adoptada, est))
+        hallazgos.append(Hallazgo(AVISO, "CLAUDE.md", 0, motivo + detalle))
     return hallazgos
 
 

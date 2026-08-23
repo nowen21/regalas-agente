@@ -46,7 +46,7 @@
 | **Concepto** | **No cumple** |
 | **CA cumplidos** | 2 de 3 |
 | **CA en "No"** | **CA-02.** Una versión inventada pasa, y si es mayor que la vigente apaga el aviso de desfase |
-| **Defectos abiertos aceptados** | D-01 y D-02, los dos en el [pendiente 82](../../../../../pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md). El D-03, los dos nombres de la carpeta en la plantilla, se corrigió acá mismo |
+| **Defectos abiertos aceptados** | D-01 y D-02, los dos en el [pendiente 82](../../../../../pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md). El D-03, los dos nombres de la carpeta en la plantilla, se corrigió acá mismo |
 | **Fuente** | [`resultado_pruebas.md`](resultado_pruebas.md) §5 |
 
 ---

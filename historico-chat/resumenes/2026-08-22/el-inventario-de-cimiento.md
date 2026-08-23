@@ -130,6 +130,24 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Con qué se retoma** | — |
 
+
+### H-8 · El inventario pasa de lista a fuente de verdad del alcance
+
+| Campo | |
+|---|---|
+| **Qué pasó** | El usuario especificó qué debe permitir el molde del inventario: identificar cada funcionalidad de forma única, su objetivo, a qué parte del sistema pertenece, quién la usa, qué recibe y qué entrega, sus reglas de negocio, de qué depende, cuándo se considera terminada, prioridad y estado, qué hay que construirle y qué hay que tener en cuenta. Y que sirva después para generar planes, historias, tareas, pruebas y documentación. |
+| **Por qué importa** | Con una fila por funcionalidad, la lista servía para aprobar el alcance y para armar el manual, pero no para construir: al partir el trabajo había que volver a preguntarlo todo, y por eso dos historias del mismo producto salían con criterios distintos. |
+| **Qué lo soluciona** | Dos piezas, las dos hechas acá. Una: el molde pasa de tabla a ficha de catorce campos, con el resumen de una línea por funcionalidad encima. Otra: el inventario de Cimiento migrado, 37 fichas completas. |
+| **Qué se decidió** | Numeración `F-001` que no se reutiliza. Tres clases escritas: obligatoria, complementaria y futura, que no es lo mismo que lo que todavía no se sabe si entra. «Terminada cuando» baja tal cual a criterio de aceptación y de ahí salen las pruebas. Estado y Verificado siguen siendo dos casillas. Nada nombra tecnología. Versión **33.0.0**, mayor. |
+| **Estado** | `abierto` — las 37 fichas están escritas y falta que el usuario las apruebe |
+| **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
+| **Dispara** | 1. **EP-003 · HU nueva — «la ficha de funcionalidad alimenta la historia»**. Como dueño del proyecto / quiero que los criterios escritos en la ficha bajen tal cual a la historia y a sus pruebas / para no escribirlos dos veces ni distinto. Contexto: el molde ya lo declara en su cierre, pero ninguna regla lo exige ni ninguna revisión lo comprueba. |
+| **Orden de resolución** | Segundo de los abiertos, detrás de la aprobación del inventario. |
+| **Dónde queda** | El molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
+| **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
+| **Cerrado en** | — |
+| **Con qué se retoma** | Las cuatro preguntas que quedaron abiertas en el inventario, y la aprobación de las 37 fichas. |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

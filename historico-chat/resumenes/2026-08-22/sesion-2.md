@@ -167,7 +167,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Qué se decidió:** se ejecutó igual, corrigiendo las dos afirmaciones dentro del `resultado_pruebas` en vez de tocar el plan aprobado. La fase cerró en **No cumple** por el CA-03, que no se puede provocar sin escribir contra el núcleo en un proyecto real, y eso lo prohíbe la decisión 35 del propio 59.
 - **Estado:** abierto
 - **Responde a:** el pendiente 59.
-- **Dispara:** 1. [Pendiente 81](../../../pendientes/81-metareglas-sobre-un-proyecto-da-veredictos-falsos.md), que salió de la ejecución: apuntar `metareglas --raiz` a un proyecto devuelve cinco veredictos falsos, y uno de ellos afirma con el dato vacío.
+- **Dispara:** 1. [Pendiente 81](../../../pendientes/hecho/metareglas-sobre-un-proyecto-da-veredictos-falsos.md), que salió de la ejecución: apuntar `metareglas --raiz` a un proyecto devuelve cinco veredictos falsos, y uno de ellos afirma con el dato vacío.
 - **Orden de resolución:** antes de abrir las otras 14, porque el mismo defecto de línea base las afecta a todas.
 - **Dónde queda:** el [resultado de pruebas de la fase](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-006-capa-propia-del-proyecto/A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/resultado_pruebas.md) §1.
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
@@ -203,9 +203,9 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Qué se decidió:** las dos comprobaciones van juntas y en ese orden, primero que la versión exista y después que coincida con el historial, porque mientras un número inventado apague el aviso cualquier proyecto puede quedar en silencio sin que se note.
 - **Estado:** abierto, anotado
 - **Responde a:** el CA-02 de EP-002 · HU-003, que quedó en rojo.
-- **Dispara:** 1. [Pendiente 82](../../../pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md), `P0`.
+- **Dispara:** 1. [Pendiente 82](../../../pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md), `P0`.
 - **Orden de resolución:** primero de los abiertos: es la comprobación que se apaga sola.
-- **Dónde queda:** [pendiente 82](../../../pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md).
+- **Dónde queda:** [pendiente 82](../../../pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md).
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
 - **Con qué se retoma:** el pendiente 82, y de paso averiguar si el instalador escribe el registro sin actualizar la declaración, que es lo que explicaría el caso de shopnest-mesa.
@@ -215,12 +215,12 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Qué pasó:** el aviso de quedarse atrás de versión está construido y dice lo correcto, pero **hay que pedirlo a mano**. El enganche de apertura llama a `sesion.revisar()` y a `cargador.contexto()`, y ninguno de los dos mira la versión. Corrido sobre un proyecto atrasado dos versiones mayores, el arranque devuelve un solo hallazgo y es otro. Lo encontró la fase [`A-EP-002-HU-004`](../../../documentacion/epicas/EP-002-versionado-y-adopcion/HU-004-aviso-al-quedar-atras/A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md).
 - **Por qué importa:** es la funcionalidad central de su historia y lleva sin conectarse desde que se escribió. **Y lo que la hizo invisible es lo que vale la pena guardar:** el aviso se ve funcionar todos los días **en el repositorio del estándar**, donde el agente corre las comprobaciones a mano. En un proyecto instalado, que es donde tiene que llegar, no aparece nunca. Una funcionalidad que se ve andar en el único sitio donde no hace falta es la más fácil de dar por hecha.
 - **Qué lo soluciona:** conectar el aviso al arranque, y después hacer que diga qué cambió entre las dos versiones, que es lo que fijó la decisión 24 y sigue sin implementarse. En ese orden: conectar un aviso incompleto ya sirve; completar un aviso que nadie recibe, no.
-- **Qué se decidió:** queda anotado y no se construye ahora. Antes va el [pendiente 82](../../../pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md), porque un aviso calculado sobre una versión inventada llega igual de mal.
+- **Qué se decidió:** queda anotado y no se construye ahora. Antes va el [pendiente 82](../../../pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md), porque un aviso calculado sobre una versión inventada llega igual de mal.
 - **Estado:** abierto, anotado
 - **Responde a:** el CA-01 de EP-002 · HU-004, que quedó en rojo.
-- **Dispara:** 1. [Pendiente 83](../../../pendientes/83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md), `P0`.
+- **Dispara:** 1. [Pendiente 83](../../../pendientes/hecho/el-aviso-de-desfase-no-llega-al-abrir-sesion.md), `P0`.
 - **Orden de resolución:** después del 82 y antes de seguir con las fases que quedan.
-- **Dónde queda:** [pendiente 83](../../../pendientes/83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md).
+- **Dónde queda:** [pendiente 83](../../../pendientes/hecho/el-aviso-de-desfase-no-llega-al-abrir-sesion.md).
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
 - **Con qué se retoma:** la pregunta que deja abierta para todo lo demás: **¿qué otras funcionalidades se ven andar solo acá?** Las cuatro fases ejecutadas hoy encontraron tres cosas desconectadas, y las tres se veían bien desde el repositorio del estándar.
@@ -230,7 +230,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Qué pasó:** las 15 fases que el pendiente 59 dejaba sin correr se ejecutaron el 2026-08-22. **Diez cumplen, cinco no.** El pendiente quedó cerrado.
 - **Por qué importa:** los cinco «No cumple» son cosas que nadie sabía, y tres tienen daño hoy: una clave pegada sin comillas queda en claro en la transcripción versionada; una versión adoptada inventada pasa y **apaga** el aviso de desfase; y el aviso de quedarse atrás **no llega al abrir sesión**, hay que pedirlo a mano. Los otros dos son huecos de medición: las 249 reglas tienen la misma antigüedad de revisión —ninguna—, y un ajuste contra el núcleo no se puede provocar sin escribir en un proyecto real.
 - **Y hay un hallazgo que vale más que los cinco:** las once fases encontraron que **su propio plan afirmaba cosas falsas**. No por descuido de quien las escribió, sino porque llevaban cinco días quietas mientras el repositorio cambiaba debajo. Retomar el hilo y retomar la verdad no son lo mismo, y el procedimiento que dirige solo garantiza lo primero.
-- **Qué se decidió:** los cinco defectos con daño quedaron en pendientes propios, cuatro nuevos: [81](../../../pendientes/81-metareglas-sobre-un-proyecto-da-veredictos-falsos.md), [82](../../../pendientes/82-la-version-adoptada-no-se-comprueba-contra-nada.md), [83](../../../pendientes/83-el-aviso-de-desfase-no-llega-al-abrir-sesion.md) y [84](../../../pendientes/84-una-clave-pegada-sin-comillas-queda-en-claro.md), tres de ellos `P0`.
+- **Qué se decidió:** los cinco defectos con daño quedaron en pendientes propios, cuatro nuevos: [81](../../../pendientes/hecho/metareglas-sobre-un-proyecto-da-veredictos-falsos.md), [82](../../../pendientes/hecho/la-version-adoptada-no-se-comprueba-contra-nada.md), [83](../../../pendientes/hecho/el-aviso-de-desfase-no-llega-al-abrir-sesion.md) y [84](../../../pendientes/hecho/una-clave-pegada-sin-comillas-queda-en-claro.md), tres de ellos `P0`.
 - **Estado:** resuelto acá
 - **Responde a:** el [pendiente 59](../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), cerrado.
 - **Dispara:** los cuatro pendientes de arriba, ya escritos.

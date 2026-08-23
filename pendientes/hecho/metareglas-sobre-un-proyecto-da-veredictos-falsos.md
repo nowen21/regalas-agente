@@ -1,11 +1,11 @@
 # Pendiente · `metareglas --raiz` sobre un proyecto reporta cinco veredictos falsos
 
-**Estado:** abierto, anotado el 2026-08-22.
+**Estado:** cerrado el 2026-08-22, en la fase [`B-EP-004-HU-011-no-afirmar-sobre-lo-que-no-se-leyo`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/B-EP-004-HU-011-no-afirmar-sobre-lo-que-no-se-leyo/funcionalidad_implementada.md) · anotado ese mismo día.
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-004 · HU-011 — Molde de las reglas](../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md). Es el subcomando que esa historia construyó |
-| **De dónde sale** | Ejecutar la fase [`A-EP-001-HU-006`](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-006-capa-propia-del-proyecto/A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/resultado_pruebas.md), defecto D-01 |
+| **Historia de usuario** | [EP-004 · HU-011 — Molde de las reglas](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/HU-011-molde-de-las-reglas.md). Es el subcomando que esa historia construyó |
+| **De dónde sale** | Ejecutar la fase [`A-EP-001-HU-006`](../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-006-capa-propia-del-proyecto/A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/resultado_pruebas.md), defecto D-01 |
 | **Proyecto de origen** | El estándar mismo |
 
 ## El problema
@@ -28,7 +28,7 @@ Y fíjese en la falla: dice «`VERSION` dice  y el CHANGELOG», con el hueco vac
 
 ## Por qué importa
 
-Es el caso borde que el [planteamiento](../prompts/cimiento-planteamiento.md) nombra en §8: **un validador que reprueba lo que está bien enseña a ignorar todos los veredictos**, y desde ahí ninguno sirve.
+Es el caso borde que el [planteamiento](../../prompts/cimiento-planteamiento.md) nombra en §8: **un validador que reprueba lo que está bien enseña a ignorar todos los veredictos**, y desde ahí ninguno sirve.
 
 Además le pasa a quien hace lo natural. `--raiz` es la bandera que llevan casi todos los subcomandos para decir «mira este proyecto»; que en este signifique otra cosa es una trampa puesta.
 
@@ -52,3 +52,11 @@ No corrige las 56 reglas de AgroSystem: eso es del proyecto y va por el canal de
 ## Cómo se sabrá que cerró
 
 `python validadores/validar.py metareglas --raiz <un proyecto cualquiera>` no devuelve ninguna falla ni aviso sobre archivos del estándar, y dice en una línea que esa carpeta no es el estándar. Y una prueba nueva escribe una carpeta sin `base/` y comprueba que el programa no afirma nada sobre ella.
+
+---
+
+## Cómo se cerró — 2026-08-22
+
+**Se tomó la primera salida**, la de rechazar lo que no es el estándar, por el motivo que este pendiente ya daba: cambiar lo que significa la bandera obliga a revisar quién la llama hoy.
+
+**Y de paso quedó la otra mitad**, la que el pendiente llamaba «lo otro»: una comprobación que no pudo leer su archivo ya no afirma nada. Atrapar el error de disco no bastaba, porque la lectura **devuelve vacío** en vez de fallar, y por eso la falla salía escrita con el hueco donde iba el número.
