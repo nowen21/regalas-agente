@@ -101,3 +101,35 @@
 **Se revisa cada tres meses.** Última revisión: ninguna.
 
 Lo que este documento deja a la vista antes de empezar: **el mantenimiento entero depende de una sola persona**. Mientras siga así, el fin de vida real del estándar no es el de la sección 8, es el día en que el autor deje de mantenerlo.
+
+## 12. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
+
+| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
+|---|---|---|
+| Por dónde entra una solicitud | Todo pedido se escribe como pendiente; 81 cerrados y 3 abiertos | [pendientes/](../../pendientes/README.md) |
+| Un cambio grande vuelve a entrar por el ciclo | El pendiente no se ejecuta desde su archivo: baja a historia y se construye como fase | `02·F23` |
+| Rutinas periódicas | Al cerrar cada versión se barre lo que el usuario pidió dos veces | `M20` y [plantillas/candidatas-a-regla.md](../../plantillas/candidatas-a-regla.md) |
+| Versiones y su numeración | Mayor, menor y parche, con la regla de qué obliga a migrar | [CHANGELOG.md](../../CHANGELOG.md) y [VERSION](../../VERSION) |
+| Quién sostiene | Una sola persona, y está dicho | [CLAUDE.md](../../CLAUDE.md) |
+
+**A medias**
+
+| # | Qué |
+|---|---|
+| 1 | los cuatro tipos de trabajo no se distinguen, así que no se puede decir cuánto se va en corregir |
+| 2 | el impacto de un cambio se evalúa como grado de versión, no como qué se rompe |
+| 3 | la vigilancia existe como [metricas/](../../metricas/README.md) y [validadores/rendimiento.py](../../validadores/rendimiento.py), sin umbrales ni aviso |
+| 4 | qué hacer cuando falla está en [prompts/](../../prompts/) como casos sueltos |
+
+**No existe**
+
+| # | Qué |
+|---|---|
+| 1 | gravedad con tiempos de respuesta |
+| 2 | bitácora de operación |
+| 3 | plan de mantenimiento |
+| 4 | fin de vida |
+
+Y **ningún respaldo se ha restaurado nunca**: [validadores/respaldo.py](../../validadores/respaldo.py) comprueba el respaldo de los proyectos que heredan, no el de este.

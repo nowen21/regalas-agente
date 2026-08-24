@@ -103,3 +103,32 @@
 **No se pasa a diseño todavía**, decidido por el autor el 2026-08-22.
 
 Falta el inventario aprobado, que es la puerta. Las tres dudas de la sección 7 siguen abiertas; la 1 es la única que puede cambiar el proyecto entero, porque si no sirve para nadie más, lo que se está construyendo es una preferencia personal y no un estándar.
+
+## 11. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
+
+| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
+|---|---|---|
+| De dónde salió cada requisito | Lo que el usuario pidió, con sus palabras y sin reescribir | [prompts/](../../prompts/) |
+| Las reglas del negocio | Las seis del núcleo blindado, que ninguna otra puede contradecir | [base/00-nucleo-blindado.md](../../base/00-nucleo-blindado.md) |
+| Los actores y sus permisos | Qué puede hacer el agente, qué no, y qué cuesta deshacer cada acción | [base/00-identidad-y-rol/acciones-y-riesgo.md](../../base/00-identidad-y-rol/acciones-y-riesgo.md) |
+| El glosario del proyecto | Los términos del estándar, con una definición cada uno | [base/glosario.md](../../base/glosario.md) |
+| Las dudas abiertas | Las preguntas se escriben y detienen el trabajo en vez de resolverse inventando | Las 42 dudas que detuvieron 26 fases, en [pendientes/hecho/](../../pendientes/hecho/) |
+| La trazabilidad | Tabla de cinco columnas obligatoria, y comprobación antes de cerrar | `13·DOC11` y `13·DOC3` |
+| Control de cambios sobre lo acordado | Todo cambio versiona, y nada se borra: se deroga | `M10` y `M11`, con [CHANGELOG.md](../../CHANGELOG.md) |
+
+**A medias**
+
+| # | Qué |
+|---|---|
+| 1 | los requisitos funcionales existen como 102 historias con criterios, pero no hay catálogo con identificador propio ni prioridad |
+| 2 | los casos de uso no se escribieron como tales, aunque los criterios de aceptación cumplen parte de esa función |
+
+**No existe**
+
+| # | Qué |
+|---|---|
+| 1 | requisitos no funcionales, ninguno escrito hasta el llenado de prueba de [cvds/analisis-requisitos/](../analisis-requisitos/README.md) |
+| 2 | el inventario de funcionalidades del propio proyecto, que es **la puerta que el estándar le exige a los demás** (`02·F26`) y que él mismo no tiene |
+| 3 | la línea base aprobada |

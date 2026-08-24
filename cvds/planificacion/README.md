@@ -4,7 +4,7 @@
 
 > **Prueba de llenado, retrodocumentada el 2026-08-22 sobre v33.1.0.** El proyecto ya está andando: esto se escribe después, para ver qué contesta el molde y qué deja al descubierto. Lo que nunca se decidió se dice así, no se inventa.
 
-**Estado: BORRADOR** (2026-08-22, sin aprobar).
+**Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 
 ---
 
@@ -73,13 +73,13 @@ Desarrollar un estándar de trabajo instalable en cualquier proyecto, que conser
 
 > **Una restricción es un límite que el proyecto no puede mover:** viene dado por alguien de afuera o por una decisión ya tomada. La que no se escribe se descubre cuando ya se construyó en contra de ella.
 
-| Tipo | Restricción | ¿De dónde viene? |
-|---|---|---|
-| Plazo | Sin fecha de entrega: el estándar se mantiene mientras se use | El propio proyecto |
-| Presupuesto | Sin costo monetario; solo tiempo del autor | Decisión del autor |
-| Tecnología o plataforma | Python de la biblioteca estándar y los enganches de Claude Code, sin infraestructura propia | Debe correr donde ya corre el agente |
-| Formato de los entregables | Se escriben en `.md`, uno por documento del ciclo, con la distribución de las plantillas. El `.docx` no se escribe a mano: lo genera la interfaz desde esos `.md` | Necesidad de entregar al cliente en formato de ofimática sin duplicar la fuente |
-| Normativa o licencias | Sin datos personales ni de terceros; las credenciales no se escriben | `N6` |
+| Tipo | Restricción | ¿De dónde viene? | Cómo se sabe si se rompió |
+|---|---|---|---|
+| Plazo | Sin fecha de entrega: el estándar se mantiene mientras se use | El propio proyecto | No aplica: no hay plazo que vencer |
+| Presupuesto | Sin costo monetario; solo tiempo del autor | Decisión del autor | Aparecería una dependencia paga o un servicio contratado |
+| Tecnología o plataforma | Python de la biblioteca estándar y los enganches de Claude Code, sin infraestructura propia | Debe correr donde ya corre el agente | Una importación de paquete de terceros en `validadores/`. **Hoy nadie lo comprueba: falta esa comprobación** |
+| Formato de los entregables | Se escriben en `.md`, uno por documento del ciclo, con la distribución de las plantillas. El `.docx` no se escribe a mano: lo genera la interfaz desde esos `.md` | Necesidad de entregar al cliente en formato de ofimática sin duplicar la fuente | Un `.docx` con cambios que no están en su `.md`. **Falta esa comprobación, y el generador todavía no existe** |
+| Normativa o licencias | Sin datos personales ni de terceros; las credenciales no se escriben | `N6` | El enmascarado corre al guardar, y una comprobación rechaza el guardado si encuentra una clave |
 
 ## 5. Dependencias de terceros
 
@@ -148,6 +148,8 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 **Desglose (WBS/EDT).** Sale de los doce objetivos, no de lo ya construido: es lo que hay que hacer para resolver el problema, esté hecho o no.
 
+> **Rige desde el 2026-08-24.** No se hizo antes de empezar, y eso no se puede cambiar: lo que sí se hizo fue rehacerlo desde los objetivos, para que el trabajo que queda salga del problema y no de lo que ya estaba construido.
+
 | Código | Paquete de trabajo | Objetivos que atiende | Depende de | Duración | Responsable |
 |---|---|---|---|---|---|
 | 1 | Cuerpo de reglas que se carga y manda al abrir la sesión | 1, 6, 7 | — | Sin estimar | Autor |
@@ -192,6 +194,14 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | 4 | Un proyecto adopta una versión y queda atrás sin saberlo | Media | Medio | Autor | Aviso de desfase al abrir sesión (EP-002) | Se le informa qué cambió desde su versión |
 | 5 | El estándar crece hasta que nadie lo lee entero | Media | Alto | Autor | `ID9` y el presupuesto de extensión por regla | Se recorta al molde y el porqué se va a `notas/` |
 | 6 | Una credencial queda escrita en claro | Baja | Alto | Autor | `N6` y el enmascarado automático | Se rota la credencial y se limpia el histórico |
+| 7 | Todo depende de una sola persona | Alta | Alto | Autor | Queda escrito y legible sin su autor | El estándar se congela en su última versión y sigue sirviendo |
+| 8 | Nadie ajeno lo adopta, y queda como preferencia personal | Alta | Alto | Autor | Instalarlo en un proyecto que no sea del autor | Se acepta como herramienta personal y se deja de llamar estándar |
+| 9 | Las pruebas corren solo cuando alguien se acuerda | Alta | Medio | Autor | Una canalización de integración continua, que hoy no existe | Se construye, y hasta entonces se corre la batería antes de cada publicación |
+| 10 | Un respaldo que nunca se restauró resulta inservible | Baja | Alto | Autor | Restaurar de verdad, cada tres meses | Se rehace desde la copia que sí sirva, y se pierde lo que no esté publicado |
+| 11 | Historias sin fase, que dejan el inventario detenido | Media | Medio | Autor | La comprobación de historias sin fase, y el pendiente [48](../../pendientes/48-inventario-hu.md) | Se abren las fases que faltan antes de seguir |
+| 12 | Ideas del usuario que se pierden por no escribirse | Media | Bajo | Autor | La libreta de ideas, pendiente [10](../../pendientes/10-ideas.md) | Se recogen en la sesión siguiente, que para eso quedan escritas |
+
+> **De dónde salen del 7 al 12.** Los seis primeros se escribieron al planear; estos seis se recogieron de `pendientes/` y del análisis del ciclo el 2026-08-24, que era el hallazgo: los riesgos existían sueltos y sin probabilidad ni impacto.
 
 ## 14. Roles y responsabilidades
 
@@ -214,6 +224,10 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | Proyectos que heredan el estándar | Consumen las reglas | Ninguna | Aviso de desfase y `CHANGELOG` | Al abrir sesión | Aviso automático |
 | El agente de la sesión siguiente | Ejecuta lo escrito | Ninguna | Histórico, resumen, señales y memoria | Al abrir sesión | Archivos del repositorio |
 
+**Acordado el 2026-08-24 por el autor**, que es quien paga, usa y aprueba, así que el acuerdo es con él mismo y por eso se escribe: cada cambio se le muestra antes de guardarlo, con el enlace al archivo; los proyectos que heredan reciben el aviso de desfase sin pedirlo; y la sesión siguiente recibe lo escrito en el repositorio, nunca lo dicho en el chat.
+
+**Lo que nadie recibe, y se dice:** no hay informe periódico de avance. El estado se lee en el repositorio cuando alguien quiera, y no se reporta aparte.
+
 ## 16. Plan de calidad
 
 | Qué se exige | Cómo se mide | Umbral para aceptar |
@@ -229,10 +243,10 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
-| Acta de constitución (*project charter*) | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), sección 1 | Autor — se firma | Pendiente |
-| Estudio de viabilidad | [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md) | Autor — se firma | Pendiente; la conclusión está en la sección 6 |
-| Visión y alcance | [plantillas/ciclo-vida-proyectos/01-planteamiento.md](../../plantillas/ciclo-vida-proyectos/01-planteamiento.md), secciones 1 a 4 | Autor — se firma | Pendiente |
-| Plan de proyecto | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), secciones 2 a 5 | Autor | Pendiente |
+| Acta de constitución (*project charter*) | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), sección 1 | Autor — se firma | Escrita en [acta-de-constitucion.md](acta-de-constitucion.md), sin firmar |
+| Estudio de viabilidad | [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md) | Autor — se firma | Escrito en [estudio-factibilidad.md](estudio-factibilidad.md), con cinco alternativas; sin aprobar |
+| Visión y alcance | [plantillas/ciclo-vida-proyectos/01-planteamiento.md](../../plantillas/ciclo-vida-proyectos/01-planteamiento.md), secciones 1 a 4 | Autor — se firma | Secciones 1 y 2 de este documento, más [planteamiento.md](../../planteamiento.md); sin aprobar |
+| Plan de proyecto | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), secciones 2 a 5 | Autor | Escrito en [acta-de-constitucion.md](acta-de-constitucion.md), secciones 2 a 5 |
 | Cronograma con hitos y fecha | Sección 11 de este documento | Autor | Listo, sin fecha de entrega |
 | Presupuesto | Sección 8 de este documento | Autor | N/A |
 | Desglose del trabajo (WBS/EDT) | Sección 10 de este documento | Autor | Listo, con las épicas como desglose |
@@ -244,4 +258,36 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 ## 18. La decisión de la etapa
 
+**Se hace, por la alternativa 1 del [estudio de factibilidad](estudio-factibilidad.md)**, decidido por el autor el 2026-08-24.
 
+Ningún frente de viabilidad bloquea y el costo es tiempo propio, así que la pregunta no es si conviene hacerlo sino si sirve para alguien más. Se construye por los ocho paquetes de la sección 10, empezando por los dos de mayor incertidumbre: la comprobación automática, que decide si el diseño se sostiene, y la instalación en un proyecto ajeno, que confirma el supuesto del que depende todo.
+
+**Sin fecha de entrega, y a propósito:** el estándar no se entrega, se mantiene mientras se use. Lo que sí tiene fecha es la revisión, al cerrar cada versión.
+
+**Lo que queda pendiente de esta etapa no es escribir, es aprobar.** Todo lo de arriba está en borrador; mientras nadie lo firme, no hay línea base contra la cual medir un cambio de alcance.
+
+## 19. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. Los trece hallazgos quedaron escritos y aprobados ese mismo día. El resumen de las siete etapas, y lo que ese análisis no puede decir, están en [cvds/README.md](../README.md).
+
+**Los trece hallazgos de esta etapa, y qué se escribió para cada uno**
+
+| # | Hallazgo del análisis | Qué se hizo | Dónde quedó |
+|---|---|---|---|
+| 1 | El desglose existía como las 7 épicas, y nunca se hizo antes de empezar | Se rehízo desde los doce objetivos, con la columna que dice a cuál atiende cada paquete | Sección 10 |
+| 2 | Los riesgos vivían sueltos en `pendientes/` sin probabilidad ni impacto | Se recogieron seis riesgos más, con probabilidad, impacto, responsable y qué se hace si ocurre | Sección 13, filas 7 a 12 |
+| 3 | Los interesados no estaban escritos | Se escribieron los tres, con qué recibe cada uno y cada cuánto, y qué nadie recibe | Sección 15 |
+| 4 | Las restricciones se cumplían sin estar declaradas | Se declararon las cinco, y cada una dice cómo se sabría si se rompió. Dos no tienen con qué comprobarse todavía, y se dice | Sección 4 |
+| 5 | Los entregables de la etapa no tenían tabla | Se escribió, con el molde de cada uno, a quién va y en qué estado | Sección 17 |
+| 6 | No había estudio de viabilidad | Escrito, con cinco alternativas y por qué se descartaron cuatro | [estudio-factibilidad.md](estudio-factibilidad.md) |
+| 7 | No había acta de constitución | Escrita, con qué se autoriza y **qué no** | [acta-de-constitucion.md](acta-de-constitucion.md) |
+| 8 | No había supuestos | Cuatro, con qué pasa si cada uno resulta falso y quién lo confirma | Sección 3 |
+| 9 | No había dependencias de terceros | Dos, con qué se hace si no llegan | Sección 5 |
+| 10 | No había estimación de esfuerzo | 88 jornadas por juicio experto, paquete por paquete, con margen declarado | Sección 9 |
+| 11 | No había presupuesto | `N/A` con su porqué: no hay costo monetario que asignar | Sección 8 |
+| 12 | No había cronograma con hitos | Cinco hitos, con qué los da por cumplidos, y sin fechas dicho a propósito | Sección 11 |
+| 13 | No había decisión de cierre | Se hace, por la alternativa 1, con qué se construye primero y por qué | Sección 18 |
+
+**Nada queda abierto en esta etapa.**
+
+**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-24.** Desde esta fecha lo escrito acá es la línea base de la etapa: un cambio de alcance se mide contra esto.

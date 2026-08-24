@@ -89,3 +89,27 @@
 **No se abre la etapa todavía**, decidido por el autor el 2026-08-22.
 
 Falta la especificación de los siete módulos. Las doce fases están definidas y ordenadas: la D y la H son las que hay que hacer temprano, porque una decide si el diseño de comprobación se sostiene y la otra confirma el supuesto del que depende todo el proyecto.
+
+## 10. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
+
+| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
+|---|---|---|
+| Cómo se parte el trabajo | 119 fases, cada una con su plan, sus pruebas y su cierre | [documentacion/epicas/](../../documentacion/epicas/README.md) |
+| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | [interfaz/requirements/](../../interfaz/README.md) |
+| Orden y dependencias | Mapa de dependencias, que se actualiza al cerrar cada unidad | `13·DOC18` |
+| Cómo se escribe el código | Capítulos de calidad y de estructura, comprobados por programa | [validadores/codigo.py](../../validadores/codigo.py) y [validadores/calidad.py](../../validadores/calidad.py) |
+| Documentar mientras se construye | El estado de la fase se escribe en el repositorio, no en el chat | `13·DOC1` y el molde 10 del ciclo |
+| Cómo se sabe cómo va | Lo planeado contra lo hecho, y las historias sin fase, comprobados solos | [validadores/plan_vs_hecho.py](../../validadores/plan_vs_hecho.py) |
+| La deuda que se declara | Cada cierre de funcionalidad declara qué quedó sin hacer | Molde 11 del ciclo, 101 escritos |
+| Cómo se deshace | Todo cambio de estado pide aprobación, y el plan dice cómo se revierte | `00·N1` y `02·F14` |
+
+**A medias**
+
+| # | Qué |
+|---|---|
+| 1 | la revisión del código la hace una destreza del propio agente, [skills/revisar-critico](../../skills/revisar-critico), y no una persona distinta de quien escribió |
+| 2 | el registro de avance no mide tiempo, solo estado |
+
+**No existe:** integración continua. El repositorio no tiene canalización de ninguna clase, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.

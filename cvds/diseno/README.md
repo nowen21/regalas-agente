@@ -103,3 +103,31 @@
 **No se pasa a implementación todavía**, decidido por el autor el 2026-08-22.
 
 Las siete especificaciones de módulo están pendientes, y esa es la puerta. Lo que se acepta sin diseñar es el contrato de integración: hoy no se expone servicio, y si alguien quiere consumir el estándar desde otra herramienta, esta etapa se reabre.
+
+## 12. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
+
+| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
+|---|---|---|
+| Los módulos y sus límites | Qué archivo hace qué, y qué está amarrado a la herramienta | [anatomia/](../../anatomia/mapa-del-sitio.md) |
+| La seguridad | Capítulo propio, con el enmascarado de credenciales corriendo solo | [base/04-seguridad.md](../../base/04-seguridad.md) y [validadores/secretos.py](../../validadores/secretos.py) |
+| Entorno técnico y estándares | Calidad de código, dependencias, entornos y estructura, cada uno con su capítulo | Capítulos 07, 10, 11 y 14 de [base/](../../base/README.md) |
+
+**A medias**
+
+| # | Qué |
+|---|---|
+| 1 | la arquitectura está en las tres capas del [README.md](../../README.md) pero sin dibujo ni contrato entre piezas |
+| 2 | el porqué de las decisiones vive en [notas/](../../notas/README.md), que no es el molde de decisión y no lista alternativas descartadas |
+| 3 | el modelo de datos existe como [memoria/esquema.sql](../../memoria/esquema.sql) sin diccionario de campos |
+| 4 | la interfaz tiene su [README](../../interfaz/README.md) pero no documento de diseño |
+| 5 | la trazabilidad requisito a módulo no está escrita |
+
+**No existe**
+
+| # | Qué |
+|---|---|
+| 1 | ninguna decisión de arquitectura escrita con el molde de [plantillas/ADR.md](../../plantillas/ADR.md) |
+| 2 | documentación de la interfaz de programación de la app local |
+| 3 | la tabla que dice cómo se cumple cada requisito no funcional |

@@ -83,3 +83,31 @@
 **No se entrega todavía**, decidido por el autor el 2026-08-22.
 
 La instalación de la sección 3 está escrita paso a paso, pero **nadie ajeno la ha ejecutado**. Mientras eso no pase, el manual dice lo que el autor cree que hay que hacer, no lo que hay que hacer.
+
+## 10. Qué de esta etapa cumple hoy el proyecto
+
+> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
+
+| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
+|---|---|---|
+| Instalación desde cero | Un programa que la hace, y que no pisa lo que ya existe | [validadores/instalar.py](../../validadores/instalar.py) |
+| Lista previa que se marca | Existe como molde, y como recordatorio de lo que la instalación olvida | [plantillas/checklist-despliegue.md](../../plantillas/checklist-despliegue.md) |
+| Qué trae cada versión, para quien la usa | Registro escrito en castellano llano, exigido por `M17` | [CHANGELOG.md](../../CHANGELOG.md) y [documentacion/versiones/](../../documentacion/versiones/README.md) |
+
+**A medias**
+
+| # | Qué |
+|---|---|
+| 1 | los ambientes no están escritos, aunque de hecho son tres |
+| 2 | la estrategia de entrada existe como adopción por versión, sin documento |
+| 3 | la migración tiene programa ([validadores/migraciones.py](../../validadores/migraciones.py)) pero sin ensayo previo con datos reales |
+| 4 | la vuelta atrás depende del control de versiones y no está escrita como plan |
+| 5 | el manual está repartido entre el [README.md](../../README.md) y `Manual-Estandar-Agente.docx`, que no salen del mismo sitio |
+
+**No existe**
+
+| # | Qué |
+|---|---|
+| 1 | acta de entrega |
+| 2 | lo que recibe quien va a operar el sistema |
+| 3 | **y la instalación desde cero nunca la ejecutó alguien ajeno al autor**, que es lo único que demostraría que el manual dice lo que hay que hacer y no lo que el autor cree |
