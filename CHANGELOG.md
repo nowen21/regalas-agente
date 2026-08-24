@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 33.4.0 — 2026-08-24
+
+**MENOR** (los moldes de etapa crecen; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
+
+**Los documentos de cada etapa ahora preguntan lo que antes nadie preguntaba.** El usuario aportó, para cada una de las siete etapas, la explicación larga de lo que ahí se hace, y de ahí salió lo que a los documentos les faltaba. Al de requisitos se le agregó de dónde salió cada exigencia, con quién se habló y a quién no se consultó, cómo se escribe una exigencia para que se pueda comprobar, y cómo se sigue cada una hasta la prueba que demuestra que se cumplió. Al de diseño, la seguridad, con qué herramientas se va a construir, y la fila que delata la exigencia que no quedó a cargo de ninguna pieza.
+
+**En construcción y pruebas, lo que se olvida hasta que duele.** Cómo se levanta el proyecto en una máquina limpia, qué se exige al revisar el código y quién lo revisa. Y del lado de las pruebas: los cuatro niveles, cómo se derivan los casos de los bordes y de lo inválido, el defecto con su gravedad y su dueño, volver a correr lo que ya servía para que la corrección no lo rompa, y la prueba del usuario con su firma.
+
+**En despliegue y mantenimiento, lo que decide si el sistema sobrevive.** La lista que se marca entera antes de tocar producción, el ensayo de la migración con datos de verdad, la comprobación apenas queda arriba, la capacitación y el acompañamiento de los primeros días, y qué recibe quien lo va a operar. Y en mantenimiento: los cuatro trabajos que se llaman igual y cuestan distinto, la gravedad con su tiempo de respuesta, el análisis de impacto antes de tocar, y qué se mide para poder defender el presupuesto del año siguiente.
+
+**Los catálogos quedan junto a su molde.** Cada etapa tiene ahora dos archivos: el molde que se copia y se llena, y el documento largo que explica la etapa completa con sus técnicas, sus diagramas y sus errores frecuentes. El molde toma de ahí lo que hay que llenar; el catálogo se lee cuando hace falta el porqué.
+
+**Sigue en evaluación.** Vive en `plantillas/cvds/`, y todavía no entra a `plantillas/ciclo-vida-proyectos/` con su número.
+
+---
+
 ## 33.3.0 — 2026-08-23
 
 **MENOR** (seis moldes nuevos, en evaluación; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
