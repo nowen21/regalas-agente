@@ -4,7 +4,7 @@
 
 > **Escrito como si no hubiera nada construido**, que es lo que pide la etapa: sale del problema y de los doce objetivos de [cvds/planificacion/README.md](../planificacion/README.md), no del repositorio.
 
-**Estado: BORRADOR** (2026-08-24, sin aprobar).
+**Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 
 ---
 
@@ -175,7 +175,7 @@
 
 ## 14. La decisión de cierre
 
-**Se pasa a diseño cuando el inventario esté aprobado**, decidido por el autor el 2026-08-24.
+**Se pasa a diseño**, decidido por el autor el 2026-08-24, con el inventario aprobado ese mismo día.
 
 Lo que la etapa tenía que producir está escrito: catorce requisitos funcionales con su origen, nueve no funcionales con su número, nueve casos de uso con sus flujos de error, siete reglas del negocio, la trazabilidad sin huérfanos y el inventario con sus catorce fichas.
 
@@ -205,10 +205,8 @@ Lo que la etapa tenía que producir está escrito: catorce requisitos funcionale
 | 4 | El proyecto no tenía inventario de funcionalidades, que es la puerta que le exige a los demás | Once fichas completas, con lo que las termina, de qué dependen y qué las gobierna | [inventario-funcionalidades.md](inventario-funcionalidades.md) |
 | 5 | No había línea base aprobada | Escrito cómo entra un cambio y contra qué se mide, listo para regir en cuanto se apruebe | Sección 11 |
 
-**Lo único que sigue abierto**
+**Nada queda abierto en esta etapa.**
 
-| Qué | Por qué no lo puede cerrar quien escribe |
-|---|---|
-| Ni este documento ni el inventario están aprobados | La aprobación es del usuario, y el inventario aprobado es lo que abre la puerta de las épicas |
+**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-24.** Desde esta fecha lo escrito acá es la línea base de requisitos, y con el inventario aprobado **queda abierta la puerta de las épicas** (`02·F26`).
 
-**Aprobado por: «quién», el «AAAA-MM-DD».**
+**Lo que sigue sin respuesta, y no detiene la etapa:** las cuatro preguntas del inventario. Cada una detiene solo la funcionalidad que la nombra.

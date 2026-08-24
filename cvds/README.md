@@ -29,13 +29,13 @@ Los moldes viven en [`plantillas/ciclo-vida-proyectos/`](../plantillas/ciclo-vid
 | Etapa | Cumple | A medias | No existe |
 |---|---|---|---|
 | 1 · Planificación | 17 | 0 | 0 |
-| 2 · Análisis de requisitos | 6 | 2 | 3 |
+| 2 · Análisis de requisitos | 11 | 0 | 0 |
 | 3 · Diseño | 3 | 5 | 3 |
 | 4 · Implementación | 7 | 2 | 1 |
 | 5 · Pruebas | 5 | 4 | 0 |
 | 6 · Despliegue | 3 | 5 | 3 |
 | 7 · Mantenimiento | 5 | 4 | 4 |
-| **Total** | **46** | **22** | **14** |
+| **Total** | **51** | **20** | **11** |
 
 **Dónde es fuerte y dónde es débil, dicho de una vez.** El proyecto cumple casi entero la mitad de en medio del ciclo, que es construir y comprobar: ahí está lo que se hizo con método, con evidencia y con documento. Lo que falta se concentra en los dos extremos: **lo que se decide antes de empezar** y **lo que sostiene el sistema después de entregado**.
 
@@ -43,7 +43,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 **Exigencia por exigencia, con lo que la cumple y dónde está:** en la última sección del documento de cada etapa.
 
-> **Actualizado el 2026-08-24: la etapa 1 quedó cerrada y aprobada.** Sus trece hallazgos se resolvieron uno por uno, con el detalle en [la última sección de su documento](planificacion/README.md). Lo escrito ahí es la línea base de la etapa.
+> **Actualizado el 2026-08-24: las etapas 1 y 2 quedaron cerradas y aprobadas.** Sus dieciocho hallazgos se resolvieron uno por uno, con el detalle en la última sección de [planificación](planificacion/README.md) y de [análisis](analisis-requisitos/README.md). Lo escrito ahí es la línea base, y con el inventario aprobado queda abierta la puerta de las épicas.
 
 > **Cómo se hizo.** Se recorrió el árbol del repositorio y se contó: 249 reglas en los 23 capítulos de `base/` (84 con archivo propio y 165 como sección de su capítulo), 7 épicas, 102 historias, 119 fases, 115 resultados de prueba, 101 cierres de funcionalidad, 68 pruebas de los validadores, 10 destrezas y 81 pendientes cerrados. Lo que aparece como cumplido es porque el archivo existe y se abrió; lo que aparece como ausente es porque se buscó y no está.
 
@@ -51,7 +51,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 ## Los cinco huecos que importan
 
-De los 14 ausentes, estos cinco son los que cambian algo si se llenan. El resto son papeles que un proyecto de una persona puede no necesitar, y decirlo así es más honesto que fingir que faltan.
+De los 11 ausentes, estos cinco son los que cambian algo si se llenan. El resto son papeles que un proyecto de una persona puede no necesitar, y decirlo así es más honesto que fingir que faltan.
 
 | # | Hueco | Por qué importa |
 |---|---|---|

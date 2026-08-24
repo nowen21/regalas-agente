@@ -4,7 +4,7 @@
 
 > **Escrito como si no hubiera nada construido**, igual que el resto de [cvds/](../README.md). Sale de los catorce requisitos funcionales de [cvds/analisis-requisitos/README.md](README.md), no del repositorio. Por eso todas las fichas dicen «Definida» y «Sin verificar»: el estado que se escribe es el del alcance acordado, no el del código que ya existe.
 
-**Estado: BORRADOR** (2026-08-24, sin aprobar).
+**Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz). Con esta aprobación se abre la puerta de las épicas.
 
 ## Las tres clases
 
