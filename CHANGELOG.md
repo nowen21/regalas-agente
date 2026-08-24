@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 33.3.0 — 2026-08-23
+
+**MENOR** (seis moldes nuevos, en evaluación; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
+
+**Las siete etapas del ciclo ya tienen con qué escribirse, no solo con qué leerse.** El texto que explicaba cada etapa se leía y se seguía; ahora cada una tiene su molde, con la misma estructura: qué entra a la etapa y si viene aprobado, las secciones propias con su definición, los entregables con su molde y su destinatario, las puertas de qué no se puede hacer hasta qué, y la decisión de cierre.
+
+**Los moldes de etapa no reemplazan a los del expediente: los gobiernan.** Cada entregable enlaza al molde que ya existe en `plantillas/ciclo-vida-proyectos/` en vez de repetirlo, y lo que agrega el molde de etapa es lo que no tenía dónde escribirse: los requisitos no funcionales, las reglas del negocio, el glosario, las dudas abiertas, los límites de cada módulo, la vuelta atrás del despliegue y las rutinas del mantenimiento.
+
+**El molde de planificación se afinó con lo que apareció al llenarlo.** El problema se escribe con diez preguntas y no con un párrafo; los objetivos son diez, en infinitivo, y cada uno dice en qué se nota y para quién; el desglose del trabajo sale de los objetivos y no de lo ya construido, con una columna que lo comprueba; la estimación se hace sobre ese desglose y como si se construyera desde cero. Supuestos, restricciones y dependencias quedaron en tres secciones separadas, y el cronograma se separó del desglose.
+
+**Lo que el ejercicio de llenarlo dejó a la vista.** Escrito para este mismo proyecto, y suponiendo que no hay nada construido, salieron siete requisitos no funcionales que nunca estuvieron escritos, cinco decisiones de arquitectura sin documento, y dos cosas que ninguna comprobación detecta: que nadie ajeno al autor ha instalado el estándar siguiendo solo el manual, y que el mantenimiento entero depende de una sola persona.
+
+**Sigue en evaluación.** Vive en `plantillas/cvds/`, con la copia llenada en `cvds/`, y todavía no entra a `plantillas/ciclo-vida-proyectos/` con su número.
+
+---
+
 ## 33.2.1 — 2026-08-22
 
 **PARCHE** (enlaces rotos; no cambia qué se exige).

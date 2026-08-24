@@ -18,17 +18,18 @@
 >
 > **La prueba:** si se borra mentalmente todo lo construido y el texto sigue siendo cierto y entendible, está bien escrito. Si deja de entenderse, está describiendo el producto.
 
-**¿Cuál es el problema?** 
-
-«El problema en dos o tres frases, con las palabras de quien lo sufre, no con las de quien lo va a programar.»
-
-**¿Qué le cuesta hoy?** 
-
-«En qué se paga: horas, dinero, retrabajo, errores que llegan al cliente. Con número si lo hay; si no lo hay, se dice que no se ha medido.»
-
-**¿Qué necesita que pase?** 
-
-«El resultado esperado, dicho sin herramienta: "que lo acordado una vez siga valiendo", no "que haya un archivo de reglas".»
+| Pregunta | Respuesta |
+|---|---|
+| **¿Cuál es el problema?** | «El problema en dos o tres frases, con las palabras de quien lo sufre, no con las de quien lo va a programar.» |
+| **¿A quién le pasa?** | «Quién lo sufre, con nombre o con papel: quien paga, quien usa, quien opera. Un problema sin alguien concreto que lo padezca no sostiene un proyecto.» |
+| **¿Cada cuánto pasa?** | «Cuántas veces al día, a la semana o al año. Es lo que separa la molestia del costo.» |
+| **¿A qué escala?** | «Sobre cuánto: cuántos casos, cuántas personas, cuánto volumen. Un problema que le pasa a uno y otro que le pasa a mil piden proyectos distintos.» |
+| **¿Cómo se resuelve hoy?** | «El apaño que ya existe: a mano, en una hoja de cálculo, pidiéndoselo a alguien. Ese apaño es el competidor real del proyecto, y si lo nuevo no lo supera, nadie lo adopta.» |
+| **¿Qué se intentó antes?** | «Los intentos anteriores, uno por uno. Si no hubo ninguno, se escribe `N/A porque nunca se intentó`, que también es un dato: nadie lo ha visto lo bastante grave como para intentarlo.» |
+| **¿Por qué no funcionó?** | «En qué falló cada intento. Es lo que evita repetirlo con otro nombre, y suele ser el dato más caro de la etapa.» |
+| **¿Qué le cuesta hoy?** | «En qué se paga: horas, dinero, retrabajo, errores que llegan al cliente. Con número si lo hay; si no lo hay, se dice que no se ha medido.» |
+| **¿Qué pasa si no se hace nada?** | «Qué ocurre si todo sigue igual: el costo se repite, crece, o alguien se va. Es lo que vuelve urgente al proyecto, y la alternativa de no hacer nada del estudio de factibilidad.» |
+| **¿Qué necesita que pase?** | «El resultado esperado, dicho sin herramienta: "que lo acordado una vez siga valiendo", no "que haya un archivo de reglas".» |
 
 **Objetivo principal**
 
@@ -38,13 +39,13 @@
 
 «Desarrollar «qué sistema» que «qué resuelve», para «qué resultado para quien pide»»
 
-**Objetivos**
+**Objetivos específicos**
 
-> **Se escriben diez, y cada uno abre con un verbo en infinitivo.** Salen de *¿qué necesita que pase?*, no del producto: `Conservar…`, `Evitar…`, `Reducir…`, `Garantizar…`, nunca `Un sistema que…`.
+> **Se escriben diez, y cada uno abre con un verbo en infinitivo.** Salen de *¿Qué necesita que pase?*, no del producto: `Conservar…`, `Evitar…`, `Reducir…`, `Garantizar…`, nunca `Un sistema que…`.
 >
 > **Los diez son el piso, no un adorno:** los tres primeros salen solos y son los generales; llegar al décimo es lo que obliga a bajar de la generalidad y sacar lo que de otro modo aparece recién en la etapa 4, cuando ya cuesta. Si el proyecto de verdad no da para diez, las filas que sobren se llenan con `N/A porque «…»`.
 >
-> **En qué se nota** es el resultado observable, no el mecanismo ni el estado de lo construido: eso vive en las secciones 8 y 14. **Para quién** es la persona concreta que lo nota (quien paga, quien usa, quien opera), y separarla evita el objetivo que no le sirve a nadie en particular. **Si no se puede llenar alguna de las dos, no es un objetivo: es una función, y va al inventario.**
+> **En qué se nota** es el resultado observable, no el mecanismo ni el estado de lo construido: eso vive en las secciones 11 y 17. **Para quién** es la persona concreta que lo nota (quien paga, quien usa, quien opera), y separarla evita el objetivo que no le sirve a nadie en particular. **Si no se puede llenar alguna de las dos, no es un objetivo: es una función, y va al inventario.**
 
 | # | Objetivo | En qué se nota | Para quién |
 |---|---|---|---|
@@ -61,43 +62,53 @@
 
 ## 2. El alcance
 
-| Entra | Queda fuera | Por qué queda fuera |
+> **El alcance es la frontera del proyecto: todo lo que el sistema va a hacer, y todo lo que no.** No es la lista de funciones, que va al inventario; es hasta dónde llega el compromiso. Se acuerda antes de construir, porque después cada agregado parece pequeño y ninguno lo es.
+>
+> **Agregar todas las opciones posibles.** Ninguna se omite por obvia: lo que no queda escrito acá se discute después, cuando ya se construyó en contra.
+>
+> **Y cada celda en la menor cantidad de palabras con la que se entienda**, que es lo que exige [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md), "di lo mismo en menos palabras": va el dato primero y no se escribe nada que no cambie lo que el lector decide o hace. Se recorta el repaso, la justificación que nadie pidió y el paso a paso; **nunca el dato exacto**. Lo que no cabe en la celda no se resume mal: se escribe en su documento y se enlaza. Enumerar mucho y escribir corto no se pelean: son las dos mitades de esta tabla.
+
+| ¿Qué se incluye? | ¿Qué queda fuera? | ¿Por qué queda fuera? |
 |---|---|---|
 | «…» | «…» | «…» |
 | «…» | «…» | «…» |
 
 > La columna del medio es la que evita el crecimiento descontrolado de funciones. Un alcance sin exclusiones escritas no delimitó nada.
 
-El alcance ítem por ítem no va acá: va al inventario, [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../ciclo-vida-proyectos/02-inventario-funcionalidades.md), y **aprobado por el usuario** es la puerta de las épicas ([`02·F26`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md)).
 
-## 3. Supuestos, restricciones y dependencias
 
-> **Lo que se está dando por cierto sin haberlo comprobado, y lo que no se puede cambiar.** Es la sección que más barato sale escribir y más caro sale omitir: un supuesto que resultó falso explica la mayoría de los proyectos que se pasan de plazo, y una restricción no escrita se descubre cuando ya se construyó en contra de ella.
+## 3. Supuestos
 
-**Supuestos.** Se dan por ciertos, y si alguno falla el plan cambia.
+> **Un supuesto es un hecho que el plan necesita cierto y nadie comprobó.** Si alguno falla, el plan cambia. Es lo más barato de escribir y lo más caro de omitir: un supuesto falso explica la mayoría de los proyectos que se pasan de plazo.
 
-| # | Se da por cierto que | Qué pasa si resulta falso | Quién lo confirma |
+| # | Se da por cierto que | ¿Qué pasa si resulta falso? | ¿Quién lo confirma? |
 |---|---|---|---|
 | 1 | «…» | «…» | «…» |
 | 2 | «…» | «…» | «…» |
 
-**Restricciones.** No se negocian: vienen dadas.
+## 4. Restricciones
+
+> **Una restricción es un límite que el proyecto no puede mover:** viene dado por alguien de afuera o por una decisión ya tomada. La que no se escribe se descubre cuando ya se construyó en contra de ella.
 
 | Tipo | Restricción | De dónde viene |
 |---|---|---|
 | Plazo | «…» | «…» |
 | Presupuesto | «…» | «…» |
 | Tecnología o plataforma | «…» | «…» |
-| Formato de los entregables | «En qué formato se escriben y en cuál se entregan» | «…» |
+| Formato de los entregables | «¿En qué formato se escriben y en cuál se entregan?» | «…» |
 | Normativa o licencias | «…» | «…» |
 
-**Dependencias de terceros.** Lo que el proyecto necesita de alguien que no está en el equipo.
+## 5. Dependencias de terceros
 
-| De quién o de qué | Qué se necesita | Para cuándo | Qué se hace si no llega |
+> **Una dependencia es algo que el proyecto necesita y no puede producir:** lo entrega alguien que no está en el equipo, y por eso no se le puede exigir la fecha.
+
+| ¿De quién o de qué? | ¿Qué se necesita? | ¿Para cuándo? | ¿Qué se hace si no llega? |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
 
-## 4. Viabilidad, en cuatro frentes
+## 6. Viabilidad, en cuatro frentes
+
+> **Viable es lo que se puede hacer con lo que hay: capacidad, dinero, tiempo y permiso legal.** No pregunta si conviene, que es la decisión de la sección 18; pregunta si es posible. Un frente que bloquea detiene el proyecto aunque los otros tres den bien.
 
 | Frente | Pregunta | Respuesta | ¿Bloquea? |
 |---|---|---|---|
@@ -110,7 +121,7 @@ El alcance ítem por ítem no va acá: va al inventario, [plantillas/ciclo-vida-
 
 El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../ciclo-vida-proyectos/12-estudio-factibilidad.md); acá va solo su conclusión.
 
-## 5. Recursos
+## 7. Recursos
 
 **Personas.**
 
@@ -124,7 +135,7 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 |---|---|---|---|
 | «…» | «…» | «…» | «Sí / No» |
 
-## 6. Presupuesto
+## 8. Presupuesto
 
 | Rubro | Costo estimado | Cómo se estimó |
 |---|---|---|
@@ -134,22 +145,33 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 | Reserva para imprevistos | «…» | ««N» % del total» |
 | **Total** | **«…»** | |
 
-## 7. Estimación de esfuerzo
+## 9. Estimación de esfuerzo
 
 **Técnica usada: «juicio experto / puntos de historia / puntos función / COCOMO».**
 
-| Bloque de trabajo | Esfuerzo | Supuesto del que depende |
-|---|---|---|
-| «…» | ««N» horas-persona / «N» puntos» | «…» |
+> **Se estima el trabajo del desglose, y como si se construyera desde cero.** Lo ya hecho no se descuenta acá: si el proyecto viene andando, se estima igual y el avance se dice en el cronograma. Una estimación que solo cuenta lo que falta no sirve para comparar contra nada, que es para lo único que existe.
 
-## 8. Cronograma y desglose del trabajo
+| Paquete del desglose | Esfuerzo | Supuesto del que depende |
+|---|---|---|
+| «1 · el mismo código de la sección 10» | ««N» jornadas / horas-persona / puntos» | «…» |
+| «…» | «…» | «…» |
+
+**Total: ««N»».** «Y con qué margen: una estimación sin margen declarado se lee como promesa.»
+
+## 10. Desglose del trabajo (WBS/EDT)
 
 **Desglose (WBS/EDT).** Una fila por paquete de trabajo; el nivel de detalle baja hasta donde se pueda estimar sin adivinar.
 
-| Código | Paquete de trabajo | Depende de | Duración | Responsable |
-|---|---|---|---|---|
-| 1 | «…» | — | «…» | «…» |
-| 1.1 | «…» | «1» | «…» | «…» |
+> **El desglose sale de los objetivos, no de lo que ya existe.** Es lo que hay que hacer para resolver el problema, esté construido o no. En un proyecto ya andando la tentación es listar lo hecho y llamarlo plan: entonces el cronograma deja de planear y pasa a narrar. La columna «Objetivos que atiende» es el control: un paquete que no atiende a ninguno sobra, y un objetivo que no aparece en ningún paquete no se va a cumplir solo.
+
+| Código | Paquete de trabajo | Objetivos que atiende | Depende de | Duración | Responsable |
+|---|---|---|---|---|---|
+| 1 | «…» | «1, 4» | — | «…» | «…» |
+| 1.1 | «…» | «…» | «1» | «…» | «…» |
+
+## 11. Cronograma
+
+> **El cronograma pone fechas al desglose de la sección 10:** cuándo se alcanza cada hito y qué cadena de tareas no admite atraso. Sin desglose no hay cronograma: son fechas puestas sobre nada.
 
 **Hitos y fecha de entrega.**
 
@@ -159,18 +181,22 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 
 **Ruta crítica: «…».** «Qué se atrasa si eso se atrasa.»
 
-## 9. Modelo de desarrollo
+> La ruta crítica es la cadena de tareas que no admite atraso: si una se corre un día, la entrega se corre un día. Lo que no está en ella tiene holgura.
+
+## 12. Modelo de desarrollo
 
 **Se usa «cascada / iterativo / espiral / Scrum u otro marco ágil»**, porque «los requisitos son estables o no, el cliente puede revisar cada N semanas o no, la entrega es una o es incremental».
 
-## 10. Riesgos
+## 13. Riesgos
 
 | # | Riesgo | Probabilidad | Impacto | Responsable | Mitigación | Qué se hace si ocurre |
 |---|---|---|---|---|---|---|
 | 1 | «…» | «Alta / Media / Baja» | «Alto / Medio / Bajo» | «…» | «…» | «…» |
 | 2 | «…» | «…» | «…» | «…» | «…» | «…» |
 
-## 11. Roles y responsabilidades
+## 14. Roles y responsabilidades
+
+> **Quién hace, quién responde, a quién se consulta y a quién se informa**, por actividad. Hacer y responder no son lo mismo, y por eso van en columnas distintas: si una fila tiene dos responsables, no tiene ninguno.
 
 | Actividad o entregable | Quién lo hace | Quién responde | A quién se consulta | A quién se informa |
 |---|---|---|---|---|
@@ -178,7 +204,7 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 
 **Quién aprueba las entregas: «…».**
 
-## 12. Interesados y comunicación
+## 15. Interesados y comunicación
 
 | Interesado | Qué papel tiene | Influencia | Qué recibe | Cada cuánto | En qué formato |
 |---|---|---|---|---|---|
@@ -186,7 +212,7 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 | «Quien usa» | «…» | «…» | «…» | «…» | «…» |
 | «Quien aprueba» | «…» | «…» | «…» | «…» | «…» |
 
-## 13. Plan de calidad
+## 16. Plan de calidad
 
 | Qué se exige | Cómo se mide | Umbral para aceptar |
 |---|---|---|
@@ -194,7 +220,7 @@ El análisis largo, con las alternativas descartadas, vive en [plantillas/ciclo-
 
 Los criterios de aceptación por funcionalidad no van acá: viven en [plantillas/ciclo-vida-proyectos/04-HU.md](../../ciclo-vida-proyectos/04-HU.md) y su comprobación en [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../ciclo-vida-proyectos/08-plan-pruebas.md).
 
-## 14. Los entregables de esta etapa, y a quién van
+## 17. Los entregables de esta etapa, y a quién van
 
 Una fila por documento. La columna del molde dice dónde se escribe; la de destino, quién lo firma.
 
@@ -204,16 +230,16 @@ Una fila por documento. La columna del molde dice dónde se escribe; la de desti
 | Estudio de viabilidad | [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../ciclo-vida-proyectos/12-estudio-factibilidad.md) | Cliente — **se firma** | «…» |
 | Visión y alcance | [plantillas/ciclo-vida-proyectos/01-planteamiento.md](../../ciclo-vida-proyectos/01-planteamiento.md), secciones 1 a 4 | Cliente — **se firma** | «…» |
 | Plan de proyecto | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), secciones 2 a 5 | Cliente y equipo | «…» |
-| Cronograma con hitos y fecha | Sección 8 de este documento | Cliente — **se firma** | «…» |
-| Presupuesto | Sección 6 de este documento | Cliente — **se firma** | «…» |
-| Desglose del trabajo (WBS/EDT) | Sección 8 de este documento | Equipo interno | «…» |
-| Registro de riesgos | Sección 10 de este documento | Equipo interno | «…» |
-| Roles y matriz de responsabilidades | Sección 11 de este documento | Equipo interno | «…» |
-| Estimación de esfuerzo | Sección 7 de este documento | Equipo interno | «…» |
-| Plan de calidad | Sección 13 de este documento | Equipo interno | «…» |
-| Plan de comunicaciones | Sección 12 de este documento | Ambos — compromete reportes al cliente | «…» |
+| Cronograma con hitos y fecha | Sección 11 de este documento | Cliente — **se firma** | «…» |
+| Presupuesto | Sección 8 de este documento | Cliente — **se firma** | «…» |
+| Desglose del trabajo (WBS/EDT) | Sección 10 de este documento | Equipo interno | «…» |
+| Registro de riesgos | Sección 13 de este documento | Equipo interno | «…» |
+| Roles y matriz de responsabilidades | Sección 14 de este documento | Equipo interno | «…» |
+| Estimación de esfuerzo | Sección 9 de este documento | Equipo interno | «…» |
+| Plan de calidad | Sección 16 de este documento | Equipo interno | «…» |
+| Plan de comunicaciones | Sección 15 de este documento | Ambos — compromete reportes al cliente | «…» |
 
-## 15. La decisión de la etapa
+## 18. La decisión de la etapa
 
 **«Se hace / Se hace con estas condiciones / No se hace»**, decidido por «quién» el «AAAA-MM-DD».
 
