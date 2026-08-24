@@ -14,7 +14,7 @@
 |---|---|---|
 | Lo construido, con veredicto por criterio | Pruebas | No: nada se ha ejecutado |
 | Los defectos abiertos y cuáles bloquean | Pruebas | No |
-| Los requisitos que solo se comprueban en uso: demora al abrir, portabilidad | Análisis | No |
+| Los requisitos que solo se comprueban en uso: demora al abrir, portabilidad y que lo nuevo no rompa lo anterior | Análisis | No |
 
 ## 2. Dónde corre, y cómo se llega
 
@@ -34,6 +34,7 @@
 | 4 | Anotar qué versión se adoptó | El proyecto declara su versión, y el número existe de verdad |
 | 5 | Abrir una sesión en el proyecto | Las reglas se cargan solas, y el aviso dice qué versión rige |
 | 6 | Correr las comprobaciones sobre el proyecto | Reportan sobre ese proyecto, no sobre el estándar |
+| 7 | Levantar la interfaz local, si se quiere ver en pantalla | Lista los documentos del ciclo y lo guardado en la memoria |
 
 **Probada desde cero por «quién», el «AAAA-MM-DD», en «dónde».** Pendiente: es la comprobación que confirma el supuesto 2 de planificación.
 
@@ -41,7 +42,7 @@
 
 | Qué se define | Cómo queda |
 |---|---|
-| Respaldo antes de tocar nada | El proyecto que hereda debe estar en control de versiones y sin cambios sin guardar |
+| Respaldo antes de tocar nada | El proyecto que hereda debe estar en control de versiones y sin cambios sin guardar. Si ya tiene memoria guardada, se respalda antes de actualizar |
 | Migración | Solo cuando una versión mayor cambia la forma de un documento; el instalador dice qué rehacer |
 | Si la migración falla a mitad | Se descarta lo agregado y el proyecto vuelve a su versión anterior: nada de lo suyo se tocó |
 
@@ -52,6 +53,7 @@
 | La instalación deja el proyecto raro | Se quitan los archivos agregados y el enganche | Minutos | Nada del proyecto |
 | Una versión nueva del estándar molesta | El proyecto se queda en la versión anterior y lo declara | Minutos | Los avisos y comprobaciones nuevas |
 | El enganche demora la apertura de la sesión | Se desactiva el enganche y las reglas se cargan a mano | Minutos | La carga automática |
+| La interfaz local no levanta | Se lee todo en archivos, como antes | Minutos | Solo la comodidad de la pantalla |
 
 ## 6. Qué se le dice a quien usa
 

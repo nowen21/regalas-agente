@@ -12,7 +12,7 @@
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
-| Especificación de los siete módulos | Diseño | No: están pendientes, y son la puerta |
+| Especificación de los nueve módulos | Diseño | No: están pendientes, y son la puerta |
 | Historias con criterios de aceptación | Análisis | No: el inventario no está aprobado |
 | Cinco decisiones de arquitectura | Diseño | No |
 
@@ -32,6 +32,9 @@
 | J. Los moldes del ciclo existen y se exigen | Documentar mientras se construye | Moldes, Comprobaciones | D | Sin abrir |
 | K. El entregable sale del `.md` | Generar el `.docx` | Generador | J | Sin abrir |
 | L. Se mide el tiempo de revisión | Medir antes y después | Comprobaciones | D, F | Sin abrir |
+| M. Lo aprendido sobrevive a la sesión | Guardar y recuperar en otra sesión | Memoria | F | Sin abrir |
+| N. Se ve en pantalla lo que hay y lo guardado | Revisar sin abrir archivo por archivo | Interfaz local | J, M | Sin abrir |
+| O. Lo nuevo no rompe lo anterior | Comprobar lo que ya servía antes de publicar | Comprobaciones | D | Sin abrir |
 
 ## 3. El orden, y por qué ese
 
@@ -41,6 +44,7 @@
 | D, la comprobación | Es el paquete con más incertidumbre: no se sabe cuántas reglas se comprueban solas, y eso puede cambiar el diseño |
 | H, la instalación fuera | Es el supuesto que sostiene el proyecto entero, y sigue sin confirmar |
 | K, el generador, al final | Necesita documentos ya escritos; hacerlo antes es convertir plantillas vacías |
+| O, antes que N | Sin la comprobación de que lo nuevo no rompe lo anterior, cada pieza que se agregue va a costar lo que hoy cuesta: rehacer lo que ya servía |
 
 ## 4. Cómo se deshace lo que salga mal
 
@@ -66,12 +70,13 @@
 |---|---|---|---|---|
 | 1 | Sin medición del tiempo de revisión antes de empezar | No hay línea base y el proyecto ya arrancó | El autor | Antes de afirmar que se redujo |
 | 2 | El generador de `.docx` queda para el final | Necesita documentos escritos que todavía no existen | El autor | Antes de la primera entrega a un tercero |
+| 3 | La interfaz solo lee, y no deja editar | Editar desde la pantalla se salta la aprobación del usuario | El autor | No se paga: es una decisión, no una deuda |
 
 ## 7. Los entregables de esta etapa, y a quién van
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
-| Doce fases, una por historia | [plantillas/ciclo-vida-proyectos/05-fase.md](../../plantillas/ciclo-vida-proyectos/05-fase.md) | Equipo | Pendiente |
+| Quince fases, una por historia | [plantillas/ciclo-vida-proyectos/05-fase.md](../../plantillas/ciclo-vida-proyectos/05-fase.md) | Equipo | Pendiente |
 | Plan de trabajo de cada fase | [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md](../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) | Usuario, con su plan de pruebas | Pendiente |
 | Estado de cada fase | [plantillas/ciclo-vida-proyectos/10-estado-fase.md](../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) | Equipo | Pendiente |
 | El estándar construido | No aplica | Usuario y proyectos que heredan | Pendiente |
@@ -88,7 +93,7 @@
 
 **No se abre la etapa todavía**, decidido por el autor el 2026-08-22.
 
-Falta la especificación de los siete módulos. Las doce fases están definidas y ordenadas: la D y la H son las que hay que hacer temprano, porque una decide si el diseño de comprobación se sostiene y la otra confirma el supuesto del que depende todo el proyecto.
+Falta la especificación de los nueve módulos. Las quince fases están definidas y ordenadas: la D y la H son las que hay que hacer temprano, porque una decide si el diseño de comprobación se sostiene y la otra confirma el supuesto del que depende todo el proyecto. **Lo que cambió el 2026-08-24:** entraron tres fases, la memoria, la interfaz y la comprobación de que lo nuevo no rompe lo anterior, porque el sistema pasó a ser uno que crece.
 
 ## 10. Qué de esta etapa cumple hoy el proyecto
 

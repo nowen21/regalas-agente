@@ -13,7 +13,7 @@
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
 | Lo entregado, con su acta | Despliegue | No: no hay entrega todavía |
-| La deuda declarada: sin línea base de revisión, generador al final | Implementación | No |
+| La deuda declarada: sin línea base de revisión, generador al final, y la pantalla que solo lee | Implementación | No |
 | Las exigencias de disponibilidad y de datos | Análisis | No |
 
 ## 2. Quién lo sostiene
@@ -30,6 +30,7 @@
 |---|---|---|---|---|
 | El estándar entero | En cada cambio guardado | Repositorio remoto | Todo el historial, sin caducidad | Pendiente |
 | Lo que cada sesión dejó escrito | En el momento en que se escribe | Dentro del propio repositorio | Sin caducidad | Pendiente |
+| La memoria de lo aprendido | En cada cambio guardado | Dentro del propio repositorio | Sin caducidad | Pendiente, y es la que más falta hace: es lo único que no se puede rehacer leyendo |
 | Lo que un proyecto adoptó | Al instalar | En el repositorio de ese proyecto | Lo que conserve ese proyecto | Pendiente |
 
 **Nada de esto está probado todavía.** Clonar el repositorio en una máquina limpia y abrir una sesión es la prueba, y no se ha hecho.
@@ -42,6 +43,8 @@
 | Reglas escritas sin comprobación | Cuando una regla validable no tiene la suya | Una comprobación que las cuenta |
 | Proyectos que quedaron atrás | Cuando su versión es anterior a la publicada | El aviso al abrir la sesión de ese proyecto |
 | Comprobaciones que reprueban de más | Cuando alguien empieza a ignorar sus avisos | El usuario, y queda en la bitácora |
+| Que una versión nueva rompa lo que servía | Cuando una prueba de lo ya existente falla al publicar | La publicación se detiene y lo dice |
+| Que la memoria crezca sin que nadie la lea | Cuando lo guardado no se consulta en meses | Se revisa al cerrar cada versión |
 
 ## 5. Qué hacer cuando falla
 

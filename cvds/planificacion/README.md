@@ -12,7 +12,7 @@
 
 | Pregunta | Respuesta |
 |---|---|
-| **¿Cuál es el problema?** | El usuario delega trabajo de desarrollo a un agente de IA y no puede confiar en lo que recibe. En cada sesión vuelve a explicar lo mismo, porque de la anterior no quedó nada. Le entregan como terminado lo que nunca se probó, le cambian cosas que no pidió y se pierde lo que ya estaba acordado. Al abrir otro proyecto, todo empieza de cero. Y del trabajo hecho no queda documentación: sale código, pero nadie escribe qué se construyó, qué necesidad resolvía ni cómo se instala. Meses después el único que puede responder eso es quien lo escribió, y si fue el agente, ya no existe. Y cuando le pasa una clave para que trabaje con ella, esa clave queda escrita en el registro de la conversación, que se guarda y no se borra. |
+| **¿Cuál es el problema?** | El usuario delega trabajo de desarrollo a un agente de IA y no puede confiar en lo que recibe. En cada sesión vuelve a explicar lo mismo, porque de la anterior no quedó nada. Le entregan como terminado lo que nunca se probó, le cambian cosas que no pidió y se pierde lo que ya estaba acordado. Al abrir otro proyecto, todo empieza de cero. Y del trabajo hecho no queda documentación: sale código, pero nadie escribe qué se construyó, qué necesidad resolvía ni cómo se instala. Meses después el único que puede responder eso es quien lo escribió, y si fue el agente, ya no existe. Y cuando le pasa una clave para que trabaje con ella, esa clave queda escrita en el registro de la conversación, que se guarda y no se borra. Además, lo que delega no es una tarea suelta: el agente hace de analista, de quien construye, de quien prueba y de quien documenta, y cada tanto le hace falta una pieza nueva. Cada pieza que se agrega se lleva por delante lo que ya funcionaba. |
 | **¿A quién le pasa?** | Al autor, que delega el trabajo y responde por lo que se entrega. Y a quien reciba el proyecto después: sin documentación no puede retomarlo ni operarlo sin preguntarle a quien lo hizo. |
 | **¿Cada cuánto pasa?** | En cada sesión de trabajo, varias veces al día. No es un incidente aislado: es la forma normal de trabajar con el agente. |
 | **¿A qué escala?** | Sobre todo lo que el agente entrega, y de nuevo entero en cada proyecto nuevo. Hoy son siete épicas y unos setenta validadores en este repositorio, más los proyectos que lo hereden. |
@@ -21,11 +21,11 @@
 | **¿Por qué no funcionó?** | La corrección por chat se va con la conversación. El almacén de la herramienta queda fuera del repositorio: no viaja con el proyecto, no se versiona y nadie más lo ve. |
 | **¿Qué le cuesta hoy?** | El costo no es que el agente se equivoque: es que el usuario tiene que revisarlo todo, y revisar cuesta más que hacer. No está medido en horas; se nota en que la misma corrección se ha dado varias veces y en que hay que releer el trabajo entero para saber si sirve. Sin documentación, leer el código para entender qué hace se repite entero cada vez que se retoma el proyecto, y entregarlo a alguien más no es viable. |
 | **¿Qué pasa si no se hace nada?** | El retrabajo se repite en cada sesión y crece con cada proyecto. Y lo construido queda sin poderse entregar ni retomar: el conocimiento vive en la cabeza del autor y en conversaciones que ya se borraron. |
-| **¿Qué necesita que pase?** | Que lo acordado una vez siga valiendo en la sesión siguiente y en el proyecto siguiente, y poder saber qué se hizo y qué se comprobó sin releerlo todo. Y que la documentación del ciclo de vida se vaya generando **a medida que se construye**, no esperando al final a redactarla de memoria: cada documento en su `.md`, con la distribución de las plantillas, y el entregable en `.docx` generado por la interfaz desde esos mismos `.md`, para no mantener dos versiones del mismo texto. |
+| **¿Qué necesita que pase?** | Que lo acordado una vez siga valiendo en la sesión siguiente y en el proyecto siguiente, y poder saber qué se hizo y qué se comprobó sin releerlo todo. Que sea **un solo sistema y no piezas sueltas**, y que pueda crecer: lo que se agregue tiene que entrar sin romper lo anterior, y poder verse desde algún lado sin abrir archivo por archivo. Y que la documentación del ciclo de vida se vaya generando **a medida que se construye**, no esperando al final a redactarla de memoria: cada documento en su `.md`, con la distribución de las plantillas, y el entregable en `.docx` generado por la interfaz desde esos mismos `.md`, para no mantener dos versiones del mismo texto. |
 
 **Objetivo principal**
 
-Desarrollar un estándar de trabajo instalable en cualquier proyecto, que conserve lo acordado con el agente entre sesiones, no le deje cambiar nada sin autorización, y deje documentado, comprobado y entregable lo que se construye, para que el usuario no tenga que revisarlo todo ni volver a leer el código para entenderlo.
+Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve lo acordado con el agente entre sesiones, no le deje cambiar nada sin autorización, deje documentado, comprobado y entregable lo que se construye, y **pueda crecer con piezas nuevas sin romper las anteriores**, para que el usuario no tenga que revisarlo todo ni volver a leer el código para entenderlo.
 
 **Objetivos**
 
@@ -43,6 +43,8 @@ Desarrollar un estándar de trabajo instalable en cualquier proyecto, que conser
 | 10 | Documentar lo construido mientras se construye, no después | Cada cosa entregada llega con qué hace y para qué | El usuario |
 | 11 | Dejar por escrito cómo se instala y se opera | Otra persona lo levanta sin preguntarle a quien lo hizo | Quien reciba el proyecto |
 | 12 | Generar el entregable de ofimática desde lo ya escrito | Recibe el `.docx` sin que nadie lo redigite | El usuario y quien reciba el proyecto |
+| 13 | Agregar piezas nuevas sin romper las que ya servían | Lo que funcionaba ayer sigue funcionando después de cada versión | El usuario y los proyectos que heredan |
+| 14 | Ver desde una pantalla lo que el agente hace y guarda | Revisa sin abrir archivo por archivo | El usuario |
 
 ## 2. El alcance
 
@@ -52,8 +54,10 @@ Desarrollar un estándar de trabajo instalable en cualquier proyecto, que conser
 |---|---|---|
 | Reglas agnósticas de stack, en `base/` | Reglas de un framework o de un cliente | `M3` y `M13`: lo que sirve a un solo stack no se hereda |
 | Moldes de documento, en `plantillas/` | El contenido de los documentos de cada proyecto | El molde viaja; lo llenado se queda en su proyecto |
-| Validadores y enganches | Un servidor o un panel de administración | El estándar corre donde ya corre el agente, sin infraestructura propia |
-| La interfaz que convierte los `.md` del ciclo en `.docx` | Editar el `.docx` y devolverlo al `.md` | La fuente es el `.md`; el `.docx` es una salida, y una salida no se edita |
+| Validadores y enganches | Un servicio en línea, o alojado por un tercero | El sistema corre en la máquina de quien trabaja, sin depender de nadie más |
+| Una interfaz local para ver los documentos del ciclo y lo que el agente guarda | Editar el `.docx` y devolverlo al `.md` | La fuente es el `.md`; el `.docx` es una salida, y una salida no se edita |
+| La memoria de lo aprendido, guardada y consultable | Que la memoria viva en el almacén de la herramienta | Ahí no viaja con el proyecto, no se versiona y nadie más la ve |
+| Que el sistema pueda crecer: piezas nuevas que entran sin romper las anteriores | Crecer sin comprobar que lo anterior sigue sirviendo | Cada pieza nueva se lleva por delante lo que ya funcionaba, y eso es parte del problema |
 | Instalación y aviso de desfase | Actualización automática sin aprobación | `N1`: ningún cambio de estado sin aprobación explícita |
 
 
@@ -137,10 +141,12 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | 4 · Registro de lo que la sesión deja | 5 jornadas | Que la herramienta permite enganches al abrir y cerrar |
 | 5 · Enmascarado de credenciales | 3 jornadas | Que las formas de escribir una clave son pocas y conocidas |
 | 6 · Moldes del ciclo de vida | 15 jornadas | Que documentar mientras se construye no atrasa (supuesto 4) |
-| 7 · Interfaz que genera el `.docx` | 10 jornadas | Que basta convertir en un sentido, sin edición de vuelta |
+| 7 · Interfaz local: visor y generador | 20 jornadas | Que basta convertir en un sentido, sin edición de vuelta, y que el visor solo lee |
 | 8 · Medición del tiempo de revisión | 2 jornadas | Que hay con qué comparar el antes y el después |
+| 9 · Memoria de lo aprendido | 12 jornadas | Que guardar y consultar basta, sin buscar por parecido |
+| 10 · Que lo nuevo no rompa lo anterior | 6 jornadas | Que lo que ya servía tiene prueba que lo demuestre |
 
-**Total: 88 jornadas, con margen de un tercio hacia arriba.** El paquete 3 es el que más puede correrse: el esfuerzo de comprobar depende de cuántas reglas resulten validables, y eso solo se sabe escribiéndolas.
+**Total: 116 jornadas, con margen de un tercio hacia arriba.** El paquete 3 es el que más puede correrse: el esfuerzo de comprobar depende de cuántas reglas resulten validables, y eso solo se sabe escribiéndolas.
 
 **Esta estimación se hizo al retrodocumentar, no al abrir el proyecto.** Sirve para dimensionar lo que falta y para comparar con quien quiera adoptarlo, no para medir desvío: no hay registro de horas contra el cual contrastarla.
 
@@ -158,8 +164,10 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | 4 | Registro de lo que cada sesión deja, fuera del chat | 8 | 1 | Sin estimar | Autor |
 | 5 | Enmascarado de credenciales en todo lo que se escribe | 9 | 1 | Sin estimar | Autor |
 | 6 | Moldes del ciclo de vida, para documentar mientras se construye | 10, 11 | 1 | Sin estimar | Autor |
-| 7 | Interfaz que genera el `.docx` desde los `.md` del ciclo | 12 | 6 | Sin estimar | Autor |
+| 7 | Interfaz local: ver los documentos del ciclo y la memoria, y generar el `.docx` | 12, 14 | 6, 9 | Sin estimar | Autor |
 | 8 | Medición del tiempo de revisión, antes y después | 3 | 3, 4 | Sin estimar | Autor |
+| 9 | Memoria de lo aprendido: se guarda, se consulta y sobrevive a la sesión | 8, 14 | 4 | Sin estimar | Autor |
+| 10 | Que lo nuevo no rompa lo anterior: comprobación de lo que ya servía | 13 | 3 | Sin estimar | Autor |
 
 ## 11. Cronograma
 
@@ -200,6 +208,7 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | 10 | Un respaldo que nunca se restauró resulta inservible | Baja | Alto | Autor | Restaurar de verdad, cada tres meses | Se rehace desde la copia que sí sirva, y se pierde lo que no esté publicado |
 | 11 | Historias sin fase, que dejan el inventario detenido | Media | Medio | Autor | La comprobación de historias sin fase, y el pendiente [48](../../pendientes/48-inventario-hu.md) | Se abren las fases que faltan antes de seguir |
 | 12 | Ideas del usuario que se pierden por no escribirse | Media | Bajo | Autor | La libreta de ideas, pendiente [10](../../pendientes/10-ideas.md) | Se recogen en la sesión siguiente, que para eso quedan escritas |
+| 13 | Una pieza nueva rompe lo que ya funcionaba | Alta | Alto | Autor | El paquete 10: comprobar lo anterior antes de publicar | Se revierte la pieza y se publica una versión de corrección |
 
 > **De dónde salen del 7 al 12.** Los seis primeros se escribieron al planear; estos seis se recogieron de `pendientes/` y del análisis del ciclo el 2026-08-24, que era el hallazgo: los riesgos existían sueltos y sin probabilidad ni impacto.
 
@@ -266,7 +275,19 @@ Ningún frente de viabilidad bloquea y el costo es tiempo propio, así que la pr
 
 **Lo que queda pendiente de esta etapa no es escribir, es aprobar.** Todo lo de arriba está en borrador; mientras nadie lo firme, no hay línea base contra la cual medir un cambio de alcance.
 
-## 19. Qué de esta etapa cumple hoy el proyecto
+## 19. Cambios después de la aprobación
+
+> La etapa se aprobó el 2026-08-24. Lo que cambie desde entonces se anota acá, no se corrige en silencio: la línea base solo sirve si se sabe cuándo se movió y por qué.
+
+| Fecha | Qué cambió | Por qué | Quién lo pidió |
+|---|---|---|---|
+| 2026-08-24 | El problema ahora dice que el agente es **un sistema que crece**, y que cada pieza nueva se llevaba por delante lo anterior | Faltaba en el problema, y por eso el alcance dejaba fuera la interfaz que ya se estaba construyendo | El usuario |
+| 2026-08-24 | El alcance: entran la interfaz local y la memoria consultable; lo que queda fuera pasa a ser **un servicio en línea o de terceros**, no «un panel» | Como estaba, excluía lo que sí se quiere | El usuario |
+| 2026-08-24 | Dos objetivos más: crecer sin romper lo anterior, y ver desde una pantalla lo que el agente hace y guarda | Salen del problema corregido | El usuario |
+| 2026-08-24 | El desglose pasa de 8 a 10 paquetes, y la estimación de 88 a 116 jornadas | Los objetivos nuevos necesitan trabajo, y decirlo sin estimarlo sería prometer gratis | El agente |
+| 2026-08-24 | Un riesgo más: una pieza nueva rompe lo que ya funcionaba | Es el riesgo que el problema corregido deja a la vista | El agente |
+
+## 20. Qué de esta etapa cumple hoy el proyecto
 
 > Del análisis del 2026-08-24 sobre la versión 33.4.0. Los trece hallazgos quedaron escritos y aprobados ese mismo día. El resumen de las siete etapas, y lo que ese análisis no puede decir, están en [cvds/README.md](../README.md).
 

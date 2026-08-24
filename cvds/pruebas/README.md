@@ -13,7 +13,7 @@
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
 | Criterios de aceptación, uno por historia | Análisis | No: las historias están pendientes |
-| Siete requisitos no funcionales con su forma de comprobarse | Análisis | No |
+| Nueve requisitos no funcionales con su forma de comprobarse | Análisis | No |
 | Lo construido, fase por fase | Implementación | No: la etapa no se ha abierto |
 
 ## 2. Qué se prueba, y con qué se comprueba
@@ -30,6 +30,9 @@
 | Ninguna credencial queda escrita | Clave entre comillas, sin comillas, y una palabra que solo parece clave | De seguridad | Sí |
 | El entregable sale del `.md` | Documento completo, documento con `«…»` sin llenar | De aceptación | No: se abre el `.docx` |
 | Abrir la sesión no demora más de dos segundos | Repositorio de diez, cien y mil archivos | De carga | Sí |
+| Lo aprendido se recupera en otra sesión | Guardar, recuperar, corregir lo que dejó de ser cierto, y preguntar por algo que no está | Integración | Sí |
+| La pantalla muestra lo que hay | Con memoria y sin ella, y con un documento borrado del disco | De aceptación | No: la revisa una persona |
+| Una versión nueva no rompe lo anterior | Versión que rompe algo, que no rompe nada, y que obliga a rehacer | Integración | Sí |
 
 ## 3. Lo que también se prueba: que NO pase
 
@@ -40,6 +43,8 @@
 | Que el aviso de desfase se apague | Se declara una versión mayor que la publicada | Avisa que el número no existe, en vez de concluir que va adelantado |
 | Que una fase se cierre sin veredicto | Se intenta cerrar con el resultado vacío | Se rechaza el cierre |
 | Que la instalación pise algo del proyecto | Se instala sobre un proyecto que ya tiene archivos con esos nombres | No sobrescribe: avisa y se detiene |
+| Que la pantalla cambie algo | Se intenta editar un documento desde el visor | No se puede: la pantalla solo lee |
+| Que se publique una versión que rompe lo anterior | Se publica con una prueba de lo ya existente fallando | Se detiene la publicación, y dice qué se rompió |
 
 ## 4. Con qué datos y en qué ambiente
 
@@ -59,7 +64,7 @@
 
 | Criterio | Resultado | Evidencia | Si falló, qué se hace |
 |---|---|---|---|
-| Los diez de la sección 2 | Sin verificar | Ninguna todavía | Se corrige antes de cerrar la fase que lo introdujo |
+| Los trece de la sección 2 | Sin verificar | Ninguna todavía | Se corrige antes de cerrar la fase que lo introdujo |
 
 ## 7. Los defectos encontrados
 
