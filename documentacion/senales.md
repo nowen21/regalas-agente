@@ -221,3 +221,32 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-22 · usuario, corrigiendo al agente dos veces en la misma sesión (antes ya había dicho «no hay que abrir pendiente, se debe corregir de una»).
 - **Scope:** estándar; aplica a cualquier proyecto donde el agente proponga anotar en vez de resolver.
 - **Rel:** S-022.
+
+## S-024 · Guardar lo que se hizo y guardar lo que se conversó son dos cosas, y mezclarlas rompe una regla ya aprobada  ·  decisión · activa
+- **What:** el usuario pidió que las conversaciones completas entraran a la base «porque eso va a permitir sacar estadísticas y encontrar soluciones: algo que se repita mucho es porque el agente no lo está contemplando». Eso choca de frente con `RN-4` de la especificación de Auditoría, aprobada el mismo día: «se registra la acción, no la conversación», con su razón escrita: la transcripción pesa, se llena de ruido y arrastra credenciales.
+- **Why:** el choque era aparente, y el agente estuvo a punto de resolverlo por el camino caro: cambiar la especificación aprobada y la regla. Lo que había era **otra funcionalidad**. La auditoría responde *qué se hizo* y sirve para demostrar; el índice de conversaciones responde *qué se conversó* y sirve para descubrir lo que nadie escribió. Dos preguntas, dos almacenamientos, y ninguna regla que tocar.
+- **Also:** la razón que motivaba `RN-4` ya no aplicaba, y comprobarlo tomó un `grep`: [validadores/historico.py:82](../validadores/historico.py#L82) enmascara el mensaje y la respuesta antes de escribir, así que el texto del histórico ya está sin claves. El riesgo que la regla evitaba estaba resuelto desde el pendiente 84.
+- **Where:** [pendientes/85](../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) · épica [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) · `F-033` y `F-034` del inventario · sección 14.1 del [análisis](../cvds/analisis-requisitos/README.md).
+- **Learned:** cuando una petición del usuario choca con algo ya aprobado, la primera pregunta no es «¿cambio lo aprobado?» sino «¿es lo mismo que lo aprobado, o es otra cosa?». Casi siempre es otra cosa, y entonces no hay conflicto: hay una funcionalidad que faltaba. Cambiar la línea base es lo último que se intenta, no lo primero.
+- **When/Who:** 2026-08-25 · usuario: «la idea es que todo ese historial también se vaya guardando en la DB».
+- **Scope:** estándar; aplica a cualquier petición que parezca contradecir un documento aprobado.
+- **Rel:** S-023 (elegir el destino por lo que la cosa es).
+
+## S-025 · Una corrección que se repite no es un descuido del usuario: es una regla que falta  ·  aprendizaje · activa
+- **What:** en una sola sesión el usuario tuvo que pedir «español colombiano» tres veces antes de que quedara escrito como recuerdo, y citar `00·ID9` cuatro veces sobre respuestas distintas del agente. Las dos terminaron en algo escrito, pero porque insistió.
+- **Why:** el daño no es la corrección: es que el patrón se pierde. Se atiende el caso, la sesión cierra, y nadie cuenta cuántas veces hizo falta decirlo. La transcripción tiene el dato desde el primer día y nadie lo ha leído nunca con esa pregunta.
+- **Where:** [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md), que existe para hacer visible ese conteo. Su métrica de éxito no es que el reporte exista: es que de él salga al menos una regla nueva.
+- **Learned:** la señal de que falta una regla no es que algo salga mal una vez. Es que el usuario tenga que decir lo mismo dos veces. Y eso se puede contar, porque está escrito.
+- **When/Who:** 2026-08-25 · agente, contando sobre la propia sesión.
+- **Scope:** estándar.
+- **Rel:** S-021 (un recuerdo que se cumple a medias se sigue incumpliendo).
+
+## S-026 · El orden de las fases lo fija la versión, no el número de la épica  ·  gotcha · activa
+- **What:** cerrada la fase A, el paso obvio parecía la fase B, conectar un proyecto. La correcta era la D, la auditoría: lo dice el orden aprobado en la etapa de implementación, «registrar desde el primer día evita tener un tramo sin historia». El agente alcanzó a marcar la B como abierta antes de releerlo.
+- **Why:** las épicas están numeradas por tema y las fases por letra, y ninguna de las dos numeraciones es el orden de ejecución. El orden vive en un tercer documento, y si nadie lo mira, se ejecuta en el orden que parece natural.
+- **Also:** la dependencia parecía circular: la historia de auditoría declara que depende de la de proyectos, y la de proyectos exige que su conexión quede auditada. Se rompe por lo que la especificación ya decía: una acción sin proyecto se registra igual, con el campo vacío.
+- **Where:** [cvds/implementacion/README.md](../cvds/implementacion/README.md) §5 · el [índice de épicas](epicas/README.md), que ahora lo dice en una línea.
+- **Learned:** antes de abrir la fase siguiente se mira el orden de la versión, no la letra que sigue. Y una dependencia que parece circular casi siempre se rompe con un caso vacío que la especificación ya contempló.
+- **When/Who:** 2026-08-25 · agente, al abrir la fase después de cerrar la A.
+- **Scope:** producto Cimiento, y cualquier proyecto con versiones que reordenen sus fases.
+- **Rel:** —

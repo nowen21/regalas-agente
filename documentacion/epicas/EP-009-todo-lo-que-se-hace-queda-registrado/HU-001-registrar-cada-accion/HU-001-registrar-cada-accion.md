@@ -133,7 +133,7 @@ Y el nombre de la variable queda legible
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| D · Todo lo que se hace queda registrado | Esta historia | Sin abrir |
+| [D · La constancia va antes que el efecto](D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/README.md) | Esta historia | Estación 4, esperando aprobación |
 
 ---
 
@@ -175,3 +175,4 @@ Y el nombre de la variable queda legible
 | Fecha | Qué pasó |
 |---|---|
 | 2026-08-25 | Nace de `F-018`. Ese mismo día se decide que se registran las acciones más lo que la sesión dejó escrito |
+| 2026-08-25 | Se abre la fase D. Va antes que conectar proyectos, por el orden aprobado de la versión 1 |

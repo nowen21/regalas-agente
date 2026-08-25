@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9 - commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `26b2222`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | La plataforma levanta y guarda | ☑ |
 | 7 | Pruebas | Los seis casos con veredicto: 6 de 6 aprobados | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con cuatro deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «aprobado», el 2026-08-25. Commit `26b2222` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Todo lo demás está hecho: las cinco tareas del plan, los seis casos de prueba en verde con su evidencia, y el documento de cierre escrito. Falta que el usuario apruebe el commit, que se pide aparte de haber aprobado el trabajo.
+**Nada: la fase cerró.** Las cinco tareas del plan hechas, los seis casos de prueba en verde con su evidencia, el documento de cierre escrito y todo guardado en el commit `26b2222`. Lo que sigue es la fase B, conectar un proyecto.
 
 ---
 

@@ -52,8 +52,12 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | F-030 | Reportar cómo va cada proyecto | Complementaria | Avisos | Media | Definida | Sin verificar |
 | F-031 | Tapar toda credencial antes de escribirla | Obligatoria | Seguridad | Alta | Definida | Sin verificar |
 | F-032 | Medir el tiempo que se gasta revisando | Futura | Medición | Baja | Definida | Sin verificar |
+| F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Definida | Sin verificar |
+| F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Definida | Sin verificar |
 
-**Cuenta:** 22 obligatorias, 9 complementarias y 1 futura, de 32. Y aparte: 0 implementadas, 0 verificadas.
+**Cuenta:** 22 obligatorias, 11 complementarias y 1 futura, de 34. Y aparte: 0 implementadas, 0 verificadas.
+
+> **`F-033` y `F-034` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 34 por eso, y no por un error de conteo.
 
 ## Las funcionalidades, una por una
 
@@ -696,6 +700,46 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | **Estado** | Definida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | La medición inicial debió tomarse antes de empezar y no se tomó: sin ella pierde la mitad del valor |
+
+### Guardar las conversaciones donde se pueda buscar
+
+| Campo | Valor |
+|---|---|
+| **Identificador** | `F-033` |
+| **De qué se trata** | Que las conversaciones que ya se escriben entren a la plataforma y se puedan buscar sin abrir archivo por archivo |
+| **Para qué sirve** | Es la fuente de `F-034`: sin poder buscar en ellas, no hay nada que contar |
+| **Parte del sistema** | Medición |
+| **Quién la usa** | El sistema solo, cada vez que una sesión escribe |
+| **Qué recibe** | El mensaje del usuario y la respuesta del agente, tal como quedaron escritos |
+| **Qué entrega** | La conversación indexada, con su fecha y su sesión |
+| **Reglas que debe respetar** | `RN-9` nada guardado incluye credenciales. Ya se cumple: lo que se escribe viene tapado desde el enganche del histórico |
+| **Depende de** | F-001 |
+| **Terminada cuando** | `CA-1` lo que una sesión conversó se encuentra buscando una palabra suya · `CA-2` el texto sigue siendo la fuente, y el índice se puede borrar y rehacer · `CA-3` ninguna credencial aparece en lo indexado |
+| **Qué necesita construirse** | Lógica y almacenamiento |
+| **Prioridad** | Media |
+| **Estado** | Definida |
+| **Verificado** | Sin verificar |
+| **Lo que hay que tener en cuenta** | **No es la auditoría.** La auditoría guarda qué se hizo; esto guarda qué se conversó, y `RN-4` de ese módulo sigue diciendo que la conversación no entra allá |
+
+### Decir qué correcciones se repiten
+
+| Campo | Valor |
+|---|---|
+| **Identificador** | `F-034` |
+| **De qué se trata** | Contar qué le tocó repetir al usuario, y mostrarlo ordenado de lo más repetido a lo menos |
+| **Para qué sirve** | Una corrección que se repite no es un descuido del usuario: es una regla que falta, y hoy ese patrón se pierde |
+| **Parte del sistema** | Medición |
+| **Quién la usa** | El usuario |
+| **Qué recibe** | El período que se quiere mirar |
+| **Qué entrega** | Las correcciones más repetidas, cada una con cuántas veces y en qué sesiones |
+| **Reglas que debe respetar** | Mostrar el patrón, nunca decidir la regla: eso lo sigue decidiendo el usuario por la cadena |
+| **Depende de** | F-033 |
+| **Terminada cuando** | `CA-1` se pide un período y salen las correcciones más repetidas · `CA-2` cada una dice cuántas veces y en qué sesiones · `CA-3` dos formas distintas de decir lo mismo cuentan como una · `CA-4` si no hay nada repetido, se dice, en vez de rellenar |
+| **Qué necesita construirse** | Pantalla y lógica |
+| **Prioridad** | Media |
+| **Estado** | Definida |
+| **Verificado** | Sin verificar |
+| **Lo que hay que tener en cuenta** | **`CA-3` es lo difícil.** Agrupar frases parecidas no es contar palabras iguales, y hacerlo sin depender de nada instalado aparte es la parte que puede no salir. Le da además a `F-032` la fuente que le faltaba: hoy dice que recibe cuántas correcciones se repiten, y nada las cuenta |
 
 ## Lo que todavía no se sabe si entra
 

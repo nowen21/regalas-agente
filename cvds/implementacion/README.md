@@ -24,7 +24,7 @@
 | Versión | Qué entra | Qué se puede hacer al terminarla |
 |---|---|---|
 | **1 · Ver lo que hay** | F-001, F-002, F-003, F-018, F-027, F-028 | Conectar los proyectos, traer lo que ya tienen escrito, ver cómo va cada uno sin entrar, y que todo lo que se haga quede registrado |
-| **2 · Entregar** | F-014, F-025, F-026 | Escribir los documentos desde la plataforma y **entregar el expediente el mismo día** |
+| **2 · Entregar** | F-014, F-025, F-026, F-033, F-034 | Escribir los documentos desde la plataforma, **entregar el expediente el mismo día**, y ver qué correcciones se repiten |
 | **3 · Gobernar al agente** | F-005 a F-010, F-020, F-021, F-022, F-031 | El agente recibe las reglas de la plataforma, lo exigido se comprueba solo, y nada se publica rompiendo lo anterior |
 | **4 · Dejar constancia** | F-015, F-016, F-017, F-019, F-023, F-024 | Aprobaciones firmadas que caducan al cambiar el texto, auditoría consultable y memoria administrable |
 | **5 · Operar el ciclo** | F-004, F-011, F-012, F-013, F-029, F-030, F-032 | Abrir y cerrar fases desde la plataforma, con sus puertas, avisos, reportes y medición |
@@ -32,6 +32,8 @@
 **Por qué `F-018` está en la primera.** Registrar desde el principio cuesta poco; agregarlo en la cuarta obliga a decidir qué hacer con todo lo que pasó sin registro. Es la única funcionalidad que se adelantó por eso.
 
 **Lo que la versión 1 no da, y conviene saberlo:** el agente sigue trabajando como hoy hasta la versión 3. La plataforma muestra y guarda, pero todavía no gobierna.
+
+**Por qué `F-033` y `F-034` van en la segunda y no en la primera.** Entraron el 2026-08-25, después de aprobado el inventario. Postergarlas no pierde nada: las conversaciones ya están escritas y versionadas, así que se pueden indexar hacia atrás el día que se construya. Es lo contrario de `F-018`, que sí tuvo que adelantarse porque una acción no registrada en el momento no queda escrita en ninguna otra parte.
 
 ## 3. Con qué se trabaja
 
@@ -52,10 +54,10 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 
 | Fase | Funcionalidad que ejecuta | Módulos que toca | Depende de | Estado |
 |---|---|---|---|---|
-| A. La plataforma levanta y guarda | Base de F-001 | Proyectos | — | Sin abrir |
+| A. La plataforma levanta y guarda | Base de F-001 | Proyectos | — | Cerrada el 2026-08-25, commit `26b2222` |
 | B. Se conecta un proyecto | F-001 | Proyectos | A | Sin abrir |
 | C. La ruta perdida se avisa | F-002 | Proyectos | B | Sin abrir |
-| D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Sin abrir |
+| D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Abierta el 2026-08-25 |
 | E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Sin abrir |
 | F. Lo que no se reconoce se reporta | F-028 | Importación | E | Sin abrir |
 | G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Sin abrir |

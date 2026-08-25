@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | Ninguno. Esta fase construye la base sobre la que la fase B cumple los criterios de [HU-001](../HU-001-conectar-un-proyecto.md), y así se declaró en el plan §5 antes de aprobarlo |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `26b2222` |
 
 ---
 

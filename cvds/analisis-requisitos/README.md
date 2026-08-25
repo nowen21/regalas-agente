@@ -24,6 +24,7 @@
 | Lo que ya se intentó | El autor | Revisión de lo que falló: documentar dentro de cada proyecto, corregir por chat | Antes de empezar | Sección 1 de [planificación](../planificacion/README.md) |
 | El giro de producto | El autor | Conversación del 2026-08-24: qué debe llegar a ser Cimiento, no qué es hoy | 2026-08-24 | Sección 19 de [planificación](../planificacion/README.md) |
 | Los proyectos que administra | Ninguno consultado como tal | Sin consultar | — | Nada |
+| Lo que el usuario tuvo que repetir | El autor | Ver qué correcciones volvieron a decirse en la misma sesión | 2026-08-25 | [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
 
 **Quién no se consultó, y por qué:** nadie ajeno al autor. **Todos los requisitos salen de una sola persona**, y eso es un límite del análisis, no un detalle.
 
@@ -65,6 +66,8 @@
 | RF-30 | Reportar cómo va cada proyecto, y compararlos entre sí | El usuario | El giro de producto | 1 | Debería |
 | RF-31 | Tapar toda credencial antes de que quede escrita | El usuario | Observación del propio trabajo | 12 | Debe |
 | RF-32 | Medir el tiempo que el usuario dedica a revisar | El usuario | Observación del propio trabajo | 3 | Podría |
+| RF-33 | Guardar las conversaciones del agente en la plataforma, para poder buscarlas sin abrir archivo por archivo | El usuario | Lo que el usuario tuvo que repetir | 2 | Debería |
+| RF-34 | Decir qué correcciones se repiten, y cuántas veces | El usuario | Lo que el usuario tuvo que repetir | 2, 3 | Debería |
 
 **El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md).** Esta tabla es el resumen que se acuerda; aquel es el detalle que se construye.
 
@@ -153,6 +156,8 @@ El camino de cada requisito hasta la funcionalidad que lo ejecuta. El módulo qu
 | RF-14 | F-014 | RF-30 | F-030 |
 | RF-15 | F-015 | RF-31 | F-031 |
 | RF-16 | F-016 | RF-32 | F-032 |
+| — | — | RF-33 | F-033 |
+| — | — | RF-34 | F-034 |
 
 **Ningún requisito quedó sin funcionalidad, y ninguna funcionalidad sin requisito.**
 
@@ -228,3 +233,13 @@ Qué documentos produce la etapa, con qué molde se escriben y quién los recibe
 **Desde esta fecha lo escrito acá es la línea base de requisitos.**
 
 **Las otras cinco dudas no detienen la etapa.** La 1 y la 2 se responden al partir el trabajo en versiones; la 4 y la 5 tienen propuesta escrita; la 6 solo se responde cuando alguien más lo use.
+
+### 14.1 Cambios después del cierre
+
+Uno por fila, con quién lo aprobó. La línea base no se edita en silencio: si un requisito entra después, acá queda dicho cuándo y por qué.
+
+| Fecha | Qué cambió | Por qué | Aprobado por |
+|---|---|---|---|
+| 2026-08-25 | Entran `RF-33` y `RF-34`, con sus funcionalidades `F-033` y `F-034` | El histórico ya guarda cada mensaje y cada respuesta, y no hay cómo contar qué se repite. Una corrección que se repite es una regla que falta. Sale de [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) | Ing. José Dúmar Jiménez Ruíz |
+
+**Qué NO cambió con esto:** la versión 1 y sus siete fases, y la especificación del módulo Auditoría. Los dos requisitos nuevos entran a la versión 2.

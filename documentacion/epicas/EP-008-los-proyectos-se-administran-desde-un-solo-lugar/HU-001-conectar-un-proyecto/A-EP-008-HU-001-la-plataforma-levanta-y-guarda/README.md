@@ -13,4 +13,4 @@
 
 **Qué quedó.** La plataforma corre en la máquina sin salir a la red, guarda en archivos de texto y los vuelve a leer después de apagarla. El índice se puede borrar entero y rehacer sin perder nada. Todavía no conecta proyectos: eso es la fase B.
 
-**Estado:** estación 9. Los seis casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `26b2222`.

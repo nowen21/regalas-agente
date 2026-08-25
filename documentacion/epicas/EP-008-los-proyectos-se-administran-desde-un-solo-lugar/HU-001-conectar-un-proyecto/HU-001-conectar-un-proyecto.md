@@ -125,8 +125,8 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [A · La plataforma levanta y guarda](A-EP-008-HU-001-la-plataforma-levanta-y-guarda/README.md) | La base sobre la que se registra | Estación 4, esperando aprobación |
-| B · Se conecta un proyecto | Esta historia | Sin abrir |
+| [A · La plataforma levanta y guarda](A-EP-008-HU-001-la-plataforma-levanta-y-guarda/README.md) | La base sobre la que se registra | Cerrada el 2026-08-25, commit `26b2222` |
+| B · Se conecta un proyecto | Esta historia | Sin abrir. Va después de la fase D, para que la conexión quede registrada |
 
 ---
 
@@ -167,3 +167,4 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 | Fecha | Qué pasó |
 |---|---|
 | 2026-08-25 | Nace de `F-001`, al aprobarse el inventario de Cimiento |
+| 2026-08-25 | Cierra la fase A. La base ya levanta, guarda y rehace su índice |

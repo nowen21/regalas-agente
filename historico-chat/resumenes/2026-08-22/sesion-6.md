@@ -116,6 +116,38 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-8 · Guardar lo que se hizo y guardar lo que se conversó son dos cosas distintas
+
+- **Qué pasó:** el usuario pidió que las conversaciones completas entraran a la base, para sacar estadísticas y ver qué se repite. Eso chocaba con `RN-4` de la auditoría, aprobada el mismo día: se registra la acción, no la conversación.
+- **Por qué importa:** el agente estuvo a punto de resolverlo cambiando la especificación aprobada y la regla. No hacía falta: eran dos cosas distintas. La auditoría responde qué se hizo y sirve para demostrar; el índice de conversaciones responde qué se conversó y sirve para descubrir. Y la razón que motivaba `RN-4` ya estaba resuelta: [validadores/historico.py](../../../validadores/historico.py) tapa las claves antes de escribir.
+- **Qué lo soluciona:** se partió en dos historias, con la cadena completa desde el pendiente.
+- **Qué se decidió:** `RN-4` se queda como está y la fase D no cambia. Lo nuevo entra como funcionalidad aparte, en la versión 2.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:**
+  1. [EP-011 · HU-001](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md) buscar en lo conversado. Va primera: sin lo indexado no hay qué contar.
+  2. [EP-011 · HU-002](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md) ver qué corrección se repite. Es la que da el valor.
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/85](../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md), [EP-011](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) y la señal `S-024`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-9 · El orden de las fases lo fija la versión, no la letra que sigue
+
+- **Qué pasó:** cerrada la fase A, el agente marcó la B como abierta. La correcta era la D, la auditoría, por el orden aprobado en la etapa de implementación.
+- **Por qué importa:** las épicas se numeran por tema y las fases por letra, y ninguna de las dos es el orden de ejecución. Ese vive en un tercer documento, y si nadie lo mira se ejecuta el orden que parece natural. Además la dependencia parecía circular, y se rompía con un caso vacío que la especificación ya contemplaba.
+- **Qué lo soluciona:** se resolvió acá, corrigiendo la tabla y dejándolo dicho donde se va a leer.
+- **Qué se decidió:** la fase D va antes que la B. El [índice de épicas](../../../documentacion/epicas/README.md) ahora lo advierte en una línea, y de paso quedó completo: le faltaban las cuatro épicas del producto.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) §5, el índice de épicas, y la señal `S-026`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
