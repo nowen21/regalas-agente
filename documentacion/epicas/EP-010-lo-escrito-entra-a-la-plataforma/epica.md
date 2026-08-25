@@ -73,8 +73,8 @@ Que conectar un proyecto y traerlo alcance para empezar a gobernarlo desde el pr
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-traer-un-proyecto/HU-001-traer-un-proyecto.md) | Traer un proyecto con lo que tenga escrito | `F-027` | Ready |
-| [HU-002](HU-002-reportar-lo-no-reconocido/HU-002-reportar-lo-no-reconocido.md) | Reportar lo que no sigue ningún molde | `F-028` | Ready |
+| [HU-001](HU-001-traer-un-proyecto/HU-001-traer-un-proyecto.md) | Traer un proyecto con lo que tenga escrito | `F-027` | Aprobada |
+| [HU-002](HU-002-reportar-lo-no-reconocido/HU-002-reportar-lo-no-reconocido.md) | Reportar lo que no sigue ningún molde | `F-028` | Aprobada |
 
 ## 10. Consideraciones técnicas
 

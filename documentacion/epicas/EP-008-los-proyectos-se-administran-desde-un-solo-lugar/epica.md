@@ -75,9 +75,9 @@ Que el usuario abra la plataforma y vea todos sus proyectos, con su estado, sin 
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md) | Conectar un proyecto | `F-001` | Ready |
-| [HU-002](HU-002-avisar-la-ruta-perdida/HU-002-avisar-la-ruta-perdida.md) | Avisar cuando la ruta se pierde | `F-002` | Ready |
-| [HU-003](HU-003-ver-el-estado-de-un-proyecto/HU-003-ver-el-estado-de-un-proyecto.md) | Ver el estado de un proyecto | `F-003` | Ready |
+| [HU-001](HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md) | Conectar un proyecto | `F-001` | Aprobada |
+| [HU-002](HU-002-avisar-la-ruta-perdida/HU-002-avisar-la-ruta-perdida.md) | Avisar cuando la ruta se pierde | `F-002` | Aprobada |
+| [HU-003](HU-003-ver-el-estado-de-un-proyecto/HU-003-ver-el-estado-de-un-proyecto.md) | Ver el estado de un proyecto | `F-003` | Aprobada |
 
 ## 10. Consideraciones técnicas
 

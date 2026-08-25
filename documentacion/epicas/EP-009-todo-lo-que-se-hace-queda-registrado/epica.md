@@ -74,7 +74,7 @@ Que cualquier cambio se pueda rastrear hasta quién lo hizo, cuándo, y con qué
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que se hace | `F-018` | Ready |
+| [HU-001](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que se hace | `F-018` | Aprobada |
 
 ## 10. Consideraciones técnicas
 
