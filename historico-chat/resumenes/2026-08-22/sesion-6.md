@@ -267,9 +267,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Lo que se hizo está aprobado y guardado | ☑ |
 
-Falta guardar la fase C. Lo anterior quedó en siete commits, el último la fase H en `5bf4ebb`: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Las cuatro marcadas. Lo construido en esta sesión quedó guardado en nueve commits, y el último es la fase C en `ff2248e`. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

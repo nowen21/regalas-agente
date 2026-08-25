@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `ff2248e`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | El aviso, la corrección y la medición | ☑ |
 | 7 | Pruebas | Los siete casos con veredicto: 7 de 7 aprobados | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con tres deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «si», el 2026-08-25. Commit `ff2248e` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las cinco tareas hechas, los siete casos en verde con su evidencia, y el cierre escrito. Con esto **la HU-002 queda cerrada**.
+**Nada: la fase cerró**, en el commit `ff2248e`. Las cinco tareas hechas, los siete casos en verde con su evidencia, y el cierre escrito. Con esto **la HU-002 queda cerrada**.
 
 **La medición de `RNF-02`:** listar cincuenta proyectos tardó **0.010 s**, contra un límite de un segundo. El número queda escrito para poder compararlo cuando haya doscientos.
 

@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-002](../HU-002-avisar-la-ruta-perdida.md): `CA-01`, `CA-02`, `CA-03`. Los tres, y con esto la historia queda cerrada |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `ff2248e` |
 
 ---
 

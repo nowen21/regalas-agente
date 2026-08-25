@@ -15,4 +15,4 @@
 
 **Qué quedó.** Cuando la carpeta de un proyecto deja de estar donde estaba, la plataforma lo dice **y dice dónde la buscó**. Desde ahí se corrige la ruta, con confirmación y registro de dónde a dónde. Listar cincuenta proyectos tarda 0.010 s.
 
-**Estado:** estación 9. Los siete casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `ff2248e`.

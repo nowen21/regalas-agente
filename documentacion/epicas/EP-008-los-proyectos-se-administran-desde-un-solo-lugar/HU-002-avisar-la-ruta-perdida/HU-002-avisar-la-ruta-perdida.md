@@ -108,7 +108,7 @@ Y el cambio queda registrado en la auditoría
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [C · La ruta perdida se avisa](C-EP-008-HU-002-la-ruta-perdida-se-avisa/README.md) | Esta historia | Cerrada el 2026-08-25. Los tres criterios con veredicto |
+| [C · La ruta perdida se avisa](C-EP-008-HU-002-la-ruta-perdida-se-avisa/README.md) | Esta historia | Cerrada el 2026-08-25, commit `ff2248e`. Los tres criterios con veredicto |
 
 ---
 
