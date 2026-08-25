@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-004](../HU-004-administrar-un-proyecto-conectado.md): `CA-01` a `CA-05`. Los cinco, y con esto la historia queda cerrada |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `5bf4ebb` |
 
 ---
 

@@ -17,4 +17,4 @@
 
 **Qué quedó.** Equivocarse al conectar dejó de ser permanente: desconectar deja la documentación, renombrar deja la carpeta, y corregir la versión la vuelve a comprobar. Los cambios preguntan antes, diciendo **qué va a pasar y qué no**.
 
-**Estado:** estación 9. Los ocho casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `5bf4ebb`.

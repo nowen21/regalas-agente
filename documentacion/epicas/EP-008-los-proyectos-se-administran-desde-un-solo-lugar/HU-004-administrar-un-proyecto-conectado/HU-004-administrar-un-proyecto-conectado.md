@@ -143,7 +143,7 @@ Entonces ningún archivo de su carpeta de código cambia, se mueve ni se borra
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [H · Un proyecto conectado se administra](H-EP-008-HU-004-un-proyecto-conectado-se-administra/README.md) | Esta historia | Cerrada el 2026-08-25. Los cinco criterios con veredicto |
+| [H · Un proyecto conectado se administra](H-EP-008-HU-004-un-proyecto-conectado-se-administra/README.md) | Esta historia | Cerrada el 2026-08-25, commit `5bf4ebb`. Los cinco criterios con veredicto |
 
 ---
 

@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `5bf4ebb`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,7 +26,7 @@
 | 6 | Ejecución continua | Los tres cambios, su confirmación, y reconectar | ☑ |
 | 7 | Pruebas | Los ocho casos con veredicto: 8 de 8 aprobados | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con cuatro deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «apruebo commit», el 2026-08-25. Commit `5bf4ebb` | ☑ |
 
 **La historia y los planes quedaron aprobados el 2026-08-25**, en la misma respuesta. La historia había nacido ese mismo día, de lo que destapó la fase B.
 
@@ -34,7 +34,7 @@
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las siete tareas hechas, los ocho casos de prueba en verde con su evidencia, y el documento de cierre escrito. Con esto **la HU-004 queda cerrada**.
+**Nada: la fase cerró**, en el commit `5bf4ebb`. Las siete tareas hechas, los ocho casos de prueba en verde con su evidencia, y el documento de cierre escrito. Con esto **la HU-004 queda cerrada**.
 
 **Lo que salió al validar las pruebas.** Uno de los seis sabotajes pasó en verde, y la lectura fácil habría sido «falta una prueba». No era eso: **el sabotaje no saboteaba**, porque borraba la ficha y la reescribía enseguida, sin cambiar nada observable. Se cambió por uno que sí toca lo que la fase promete, y ahí fallaron las dos pruebas correctas.
 

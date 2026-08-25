@@ -65,7 +65,7 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 | E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Sin abrir |
 | F. Lo que no se reconoce se reporta | F-028 | Importación | E | Sin abrir |
 | G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Sin abrir |
-| H. Un proyecto conectado se administra | F-035 | Proyectos | B | Cerrada el 2026-08-25 |
+| H. Un proyecto conectado se administra | F-035 | Proyectos | B | Cerrada el 2026-08-25, commit `5bf4ebb` |
 
 ## 5. El orden, y por qué ese
 
