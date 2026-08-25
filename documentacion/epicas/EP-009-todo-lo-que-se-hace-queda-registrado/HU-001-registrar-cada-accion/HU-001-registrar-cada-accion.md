@@ -133,7 +133,7 @@ Y el nombre de la variable queda legible
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [D · La constancia va antes que el efecto](D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/README.md) | Esta historia | Estación 4, esperando aprobación |
+| [D · La constancia va antes que el efecto](D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los cinco criterios con veredicto |
 
 ---
 
@@ -155,9 +155,9 @@ Y el nombre de la variable queda legible
 
 ## 11. Definition of Done
 
-- ☐ Los cinco criterios con veredicto y evidencia.
-- ☐ Comprobado que ninguna acción cambia algo sin quedar registrada.
-- ☐ Comprobado que el registro no se puede editar.
+- ☑ Los cinco criterios con veredicto y evidencia.
+- ☑ Comprobado que ninguna acción cambia algo sin quedar registrada. Lo destapó `CP-007`, que falló primero.
+- ☑ Comprobado que el registro no se puede editar.
 
 ## 12. Validación INVEST
 
@@ -176,3 +176,4 @@ Y el nombre de la variable queda legible
 |---|---|
 | 2026-08-25 | Nace de `F-018`. Ese mismo día se decide que se registran las acciones más lo que la sesión dejó escrito |
 | 2026-08-25 | Se abre la fase D. Va antes que conectar proyectos, por el orden aprobado de la versión 1 |
+| 2026-08-25 | Cierra la fase D, con los cinco criterios probados. Un defecto crítico encontrado y corregido |

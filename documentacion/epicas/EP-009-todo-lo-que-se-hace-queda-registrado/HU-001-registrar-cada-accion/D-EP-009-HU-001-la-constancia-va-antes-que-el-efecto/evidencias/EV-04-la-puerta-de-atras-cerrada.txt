@@ -1,0 +1,19 @@
+== CP-007, despues de cerrar la puerta de atras ==
+  No migrations to apply.
+registros antes: 0
+
+-- por el camino correcto --
+registros: 1
+
+-- por la puerta de atras --
+rechazado: «b.md» se iba a escribir sin constancia. Primero se registra la acción en la auditoría, y después se escribe.
+b.md quedo escrito: False
+registros: 1
+
+-- reutilizando la constancia de otra cosa --
+rechazado: La constancia es de «a.md», no de «c.md». Una constancia no sirve para escribir otra cosa.
+c.md quedo escrito: False
+
+== se limpia ==
+Índice de auditoría rehecho: 0 acción(es).
+Índice rehecho: 0 archivo(s) leídos.

@@ -14,6 +14,11 @@ RAIZ = Path(__file__).resolve().parent.parent.parent
 # Dónde vive lo que la plataforma guarda. Es la fuente: texto, versionable.
 CARPETA_DATOS = RAIZ / "datos"
 
+# Los validadores del estándar. La plataforma **lee** de ahí el enmascarador de
+# claves, y nunca escribe. Copiarlo dejaría dos listas de secretos que se
+# separan; moverlo obligaría a tocar el estándar sin comprar nada.
+CARPETA_VALIDADORES = RAIZ.parent / "validadores"
+
 # La clave solo firma las sesiones del navegador en esta máquina. Si no está
 # puesta, se usa una de desarrollo: la plataforma no expone nada a la red.
 SECRET_KEY = os.environ.get("CLAVE_DE_FIRMA", "clave-de-desarrollo-sin-valor")
@@ -25,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.staticfiles",
     "nucleo.almacen",
+    "nucleo.auditoria",
 ]
 
 MIDDLEWARE = [

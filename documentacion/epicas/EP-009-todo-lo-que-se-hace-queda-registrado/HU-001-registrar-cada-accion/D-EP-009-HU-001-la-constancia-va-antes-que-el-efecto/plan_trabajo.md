@@ -6,7 +6,7 @@
 |---|---|
 | **Fase** | `D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto` |
 | **Épica** | [EP-009 Todo lo que se hace queda registrado](../../epica.md) |
-| **HU** | [HU-001 Registrar cada acción](../HU-001-registrar-cada-accion.md) — una sola |
+| **HU** | [HU-001 Registrar cada acción](../HU-001-registrar-cada-accion.md), una sola |
 | **Módulo** | Auditoría |
 | **Especificación** | [documentacion/auditoria/spec.md](../../../../auditoria/spec.md), aprobada el 2026-08-25 |
 | **Versión del producto** | 1, fase D de siete |
@@ -23,7 +23,7 @@
 
 **Qué no entra.** Pantalla para consultar lo registrado, que es de la versión 4. Guardar la conversación de la sesión, que la especificación deja fuera a propósito.
 
-## 2. Análisis previo — línea base verificada
+## 2. Análisis previo: línea base verificada
 
 **Qué se leyó antes de escribir.** La especificación del módulo Auditoría, la historia y sus cinco criterios, la decisión `DA-08`, y el código de [validadores/enmascarar.py](../../../../../validadores/enmascarar.py) y [validadores/secretos.py](../../../../../validadores/secretos.py).
 
@@ -35,7 +35,13 @@
 
 ### 2.1 Archivos que se crean o modifican
 
-Archivos nuevos dentro de `plataforma/nucleo/auditoria/`. Se modifica `config/settings/base.py` para dar de alta el componente nuevo. **Nada de esta fase toca `interfaz/`, ni la carpeta de un proyecto, ni el cuerpo de reglas.** Si la duda 1 se resuelve por reutilizar, se lee `validadores/enmascarar.py` sin modificarlo.
+Archivos nuevos dentro de `plataforma/nucleo/auditoria/`. Se modifica `config/settings/base.py` para dar de alta el componente nuevo. **Nada de esta fase toca `interfaz/`, ni la carpeta de un proyecto, ni el cuerpo de reglas.** `validadores/enmascarar.py` se lee, nunca se modifica.
+
+**Ampliación del 2026-08-25, autorizada por el usuario.** Se suma `plataforma/nucleo/almacen/` y un módulo nuevo, `plataforma/nucleo/constancia.py`.
+
+**Por qué hubo que ampliar.** Con el plan original construido, `CP-007` encontró un hueco: `almacen.guardar` se podía llamar directo y el archivo cambiaba sin dejar registro. Con eso abierto no se cumplía `CA-01`, que pide que toda acción que cambia algo quede registrada, y la fase habría cerrado en **No cumple**.
+
+**Por qué se cierra ahora y no en la fase B.** Hoy no hay un solo llamador de `almacen.guardar` fuera de las pruebas. Cerrar la puerta con un llamador cuesta poco; con la fase B encima ya son varios, y el que se olvide no se nota. El usuario lo autorizó el 2026-08-25 sobre esas dos opciones, escritas con su costo.
 
 ### 2.6 Decisiones técnicas
 
@@ -44,32 +50,47 @@ Archivos nuevos dentro de `plataforma/nucleo/auditoria/`. Se modifica `config/se
 | El registro se escribe con lo que la fase A ya construyó | Un almacenamiento propio de la auditoría | `DA-01`. El registro es texto como todo lo demás, y su índice se rehace igual |
 | Solo se agrega: no hay operación de editar ni de borrar | Dejarlas y confiar en que nadie las use | `DA-08`. Un registro editable no demuestra nada, y lo que no existe no se usa por error |
 | Primero se escribe la constancia, después se ejecuta | Ejecutar y registrar después | Especificación §6. Si falla en medio, queda un cambio del que nadie sabe |
-| El tapado de credenciales se reutiliza, no se reescribe | Un enmascarador propio de la plataforma | `M12`, y el aviso del propio archivo: dos listas de secretos se separan y una queda vieja |
+| El tapado de credenciales se importa de `validadores/`, no se copia ni se mueve | Un enmascarador propio, o mover el del estándar | `M12`, y el aviso del propio archivo: dos listas de secretos se separan y una queda vieja. Mover obligaba a tocar el estándar sin comprar nada |
+| El registro guarda el identificador de sesión que el histórico ya escribe | Guardar el nombre del archivo | El archivo se renombra cuando se le pone el tema, y el nombre dejaría el enlace roto. Es la razón por la que esa marca existe |
 | Una acción sin proyecto se registra con el campo vacío | Rechazarla hasta que exista el módulo Proyectos | Especificación §6, y es lo que permite construir esta fase antes que la B |
 
 ### 2.7 Dudas por resolver antes de escribir
 
-| # | Duda | Por qué detiene |
-|---|---|---|
-| 1 | ¿Cómo llega el enmascarador del estándar a la plataforma: se importa desde `validadores/`, o se mueve a un sitio que las dos usen? | Copiarlo está descartado. Importarlo amarra la plataforma a la ruta del estándar; moverlo toca `validadores/`, que hoy funciona, y eso es cambio del estándar con su versión y su registro |
-| 2 | ¿Qué identifica una sesión, para poder enlazarla? | `CA-04` pide el enlace a lo que la sesión dejó escrito. Hoy el histórico las nombra por fecha y tema. Si el registro guarda algo distinto, el enlace no resuelve |
+Las dos se cerraron el 2026-08-25, **mirando el código y no decidiendo**. Ninguna terminó necesitando una decisión del usuario, y por eso ninguna detiene ya la fase.
 
-**Ninguna de las dos se decide sin el usuario.** La 1 puede terminar tocando el estándar, que es una acción que pide su propia aprobación; la 2 fija un dato que después no se cambia sin reescribir lo registrado.
+| # | Duda | Cómo se resolvió |
+|---|---|---|
+| 1 | ¿Cómo llega el enmascarador del estándar a la plataforma? | **Se importa desde `validadores/`.** Se probó antes de decidir: la plataforma lo importa, tapa `password: "…"` y `API_KEY=…`, y deja intacto `clave: tu-clave`. Cuesta agregar la ruta; cero cambios en `validadores/` |
+| 2 | ¿Qué identifica una sesión, para poder enlazarla? | **El identificador que el histórico ya escribe.** No había que elegir nada |
+
+**Qué se encontró en la duda 1.** La prueba corrió contra el módulo real, no contra una suposición:
+
+```
+password: "inventada123" y API_KEY=inventada456   ->  las dos tapadas
+clave: tu-clave                                   ->  intacto, 0 tapadas
+```
+
+Mover el archivo a un sitio compartido no compra nada que esto no dé ya, y sí obligaba a tocar el estándar con su versión y su registro. Se descarta por costo, no por preferencia.
+
+**Qué se encontró en la duda 2, y por qué la propuesta inicial era peor.** El agente había propuesto guardar el nombre del archivo del histórico. Leer [validadores/historico.py](../../../../../validadores/historico.py) mostró que eso ya se había resuelto y descartado: la primera línea de cada archivo lleva `<!-- sesion: <id> -->`, y el comentario del módulo dice por qué: **se busca esa marca, no el nombre, así el archivo se puede renombrar sin que la sesión pierda el hilo**. Renombrar es lo normal acá: el archivo nace `AAAA-MM-DD-sesion.md` y recibe su tema después. Guardar el nombre habría roto el enlace en cada renombre.
+
+**Qué guarda entonces el campo `sesión`:** ese identificador. La especificación aprobada dice «un campo para enlazar el registro con lo que esa sesión dejó escrito» sin decir con qué; esto lo precisa, no la contradice, así que no hay cambio que anotar en su línea base.
 
 ## 3. Desglose de tareas
 
 | # | Tarea | Entregable |
 |---|---|---|
-| 1 | Resolver las dos dudas de la sección 2.7 | Las dos, con su porqué escrito |
+| 1 | Resolver las dos dudas de la sección 2.7 | ✅ Resueltas el 2026-08-25, con su porqué escrito y su prueba |
 | 2 | Escribir el registro que solo se agrega | Una acción queda escrita, con sus seis datos |
 | 3 | Cerrar la edición y el borrado, y registrar el intento | Intentar editar no cambia nada, y queda constancia del intento |
 | 4 | Detener la acción cuando el registro no se puede escribir | Con el registro bloqueado, nada cambia |
 | 5 | Tapar las credenciales antes de escribir | Una clave con comillas y otra sin ellas quedan tapadas; el molde no |
 | 6 | Enlazar la acción con la sesión que la produjo | El registro trae el enlace, y vacío cuando no vino de una sesión |
+| 7 | Cerrar el camino que escribía sin constancia | `almacen.guardar` rechaza si no se le entrega la constancia de la acción |
 
 ## 4. Secuencia de ejecución
 
-1 → 2 → 3 → 4 → 5 → 6. La tarea 1 es una puerta: la duda 1 decide de dónde sale el código de la tarea 5, y la duda 2 decide el dato de la tarea 6.
+1 → 2 → 3 → 4 → 5 → 6 → 7. La 7 se agregó el 2026-08-25, después de que `CP-007` encontrara el hueco. La tarea 1 era la puerta, y ya está pasada: la duda 1 decidía de dónde sale el código de la tarea 5, y la duda 2 el dato de la tarea 6.
 
 ## 5. Verificación de criterios de aceptación
 
@@ -99,7 +120,7 @@ No aplica: no hay registros previos.
 |---|---|
 | `02·F2` sin especificación acordada no hay código | La del módulo Auditoría está aprobada |
 | `02·F4` el plan va con su plan de pruebas | Se presentan y se aprueban juntos |
-| `01·C7` ante dos lecturas, preguntar | Las dos dudas de la sección 2.7 detienen la fase |
+| `01·C7` ante dos lecturas, preguntar | Las dos dudas se plantearon antes de escribir. Se cerraron leyendo el código, no suponiendo |
 | `20·M12` buscar antes de crear | El enmascarador ya existe; por eso la duda 1 pregunta cómo llega, no si se escribe |
 | `00·N6` una credencial no se escribe | Se prueba con claves inventadas, y el tapado es tarea propia |
 
@@ -107,7 +128,7 @@ No aplica: no hay registros previos.
 
 | # | Riesgo | Qué se hace |
 |---|---|---|
-| 1 | Que amarrar la plataforma a `validadores/` la vuelva dependiente del estándar en el código, y no solo en las reglas | Es la duda 1. Se decide antes de escribir, no después |
+| 1 | Que amarrar la plataforma a `validadores/` la vuelva dependiente del estándar en el código, y no solo en las reglas | Se aceptó a sabiendas: hoy la plataforma vive en el mismo repositorio que el estándar. El día que se separen, esto es lo primero que hay que mover, y queda dicho acá |
 | 2 | Que registrar antes de ejecutar haga lento el trabajo | Se mide en el uso. Hoy no hay volumen que lo muestre |
 | 3 | Que la fase crezca más allá de una jornada, por ser seis tareas | Si pasa, se parte: registrar e integridad por un lado, credenciales y sesión por otro |
 
@@ -119,6 +140,7 @@ No aplica: no hay registros previos.
 - ☐ Con el registro bloqueado, ninguna acción surte efecto.
 - ☐ Una clave con comillas y otra sin ellas quedan tapadas.
 - ☐ El registro trae el enlace a la sesión, y vacío cuando no la hay.
+- ☐ No queda camino que escriba sin dejar constancia.
 
 ## 12. Seguimiento
 
@@ -130,4 +152,4 @@ La fase cierra cuando los seis puntos de la sección 11 tengan veredicto. Lo que
 
 ---
 
-**Pendiente de aprobación.** Se presenta junto con [plan_pruebas.md](plan_pruebas.md).
+**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-25.** Se aprueba junto con [plan_pruebas.md](plan_pruebas.md), con las dos dudas ya cerradas.

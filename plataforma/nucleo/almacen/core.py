@@ -8,12 +8,19 @@ Todo lo que la plataforma guarda queda como un archivo de texto dentro de
 
 **Qué NO hace este módulo:** escribir fuera de `datos/`. Cualquier ruta que
 apunte afuera se rechaza, y esa es la comprobación `CP-006` del plan de pruebas.
+
+**Y no escribe nada sin constancia.** Desde la fase D, `guardar` exige el
+comprobante de que la acción ya quedó registrada en la auditoría. Antes se
+podía llamar directo y el archivo cambiaba sin dejar rastro: eso era el hueco
+que encontró `CP-007`, y con él abierto `CA-01` no se cumplía.
 """
 import hashlib
 import io
 import os
 
 from django.conf import settings
+
+from nucleo.constancia import Constancia, SinConstancia
 
 
 class RutaFueraDeLaPlataforma(Exception):
@@ -46,11 +53,24 @@ def huella(texto):
     return hashlib.sha256(texto.encode("utf-8")).hexdigest()
 
 
-def guardar(nombre, texto):
+def guardar(nombre, texto, constancia):
     """Escribe un texto en `datos/<nombre>` y lo deja en el índice.
+
+    Pide la `constancia` de que la acción ya quedó registrada, y comprueba que
+    sea la de **este** archivo: una constancia de otra cosa no sirve. La emite
+    `nucleo.auditoria.core.registrar`, y lo normal es no llamar acá directo
+    sino usar `con_constancia`, que hace las dos cosas en orden.
 
     Devuelve la huella de lo guardado.
     """
+    if not isinstance(constancia, Constancia):
+        raise SinConstancia(
+            "«%s» se iba a escribir sin constancia. Primero se registra la "
+            "acción en la auditoría, y después se escribe." % nombre)
+    if not constancia.autoriza(nombre):
+        raise SinConstancia(
+            "La constancia es de «%s», no de «%s». Una constancia no sirve "
+            "para escribir otra cosa." % (constancia.sobre_que, nombre))
     destino = _ruta_real(nombre)
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     with io.open(destino, "w", encoding="utf-8", newline="\n") as archivo:

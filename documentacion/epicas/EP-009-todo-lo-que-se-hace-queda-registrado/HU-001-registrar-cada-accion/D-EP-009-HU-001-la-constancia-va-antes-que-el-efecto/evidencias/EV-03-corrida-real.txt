@@ -1,0 +1,20 @@
+== una corrida de verdad, fuera de las pruebas ==
+  Applying auditoria.0001_initial... OK
+-- se registra una accion con una clave inventada --
+-- se registra una accion sin proyecto ni sesion --
+-- se intenta editar el registro --
+rechazado: Lo registrado no se edita.
+
+== el registro, leido sin la plataforma ==
+| cuÃ¡ndo | quiÃ©n | quÃ© se hizo | sobre quÃ© | quÃ© cambiÃ³ | proyecto | sesiÃ³n |
+|---|---|---|---|---|---|---|
+| 2026-08-25T11:22:07-05:00 | el agente | conectar un proyecto | password: "Â«enmascaradoÂ»" | quedo registrado | uno | 5f06ce4e-64bf-41e5-b58e-87959b32bf62 |
+| 2026-08-25T11:22:07-05:00 | el usuario | publicar una version de reglas | VERSION |  |  |  |
+| 2026-08-25T11:22:07-05:00 | desconocido | intento de editar el registro | el registro de auditorÃ­a | nada: se rechazÃ³ |  |  |
+
+== se borra el indice del registro y se rehace desde el texto ==
+Índice de auditoría rehecho: 3 acción(es).
+
+== se limpian los datos de mentira ==
+Índice de auditoría rehecho: 0 acción(es).
+Índice rehecho: 0 archivo(s) leídos.

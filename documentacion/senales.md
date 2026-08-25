@@ -250,3 +250,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente, al abrir la fase después de cerrar la A.
 - **Scope:** producto Cimiento, y cualquier proyecto con versiones que reordenen sus fases.
 - **Rel:** —
+
+## S-027 · El caso de «que NO pase» fue el único que encontró el defecto, y los otros seis estaban en verde  ·  aprendizaje · activa
+- **What:** en la fase D, seis de los siete casos del plan pasaron a la primera. `CP-007`, el que dice «que NO pase: que algo cambie sin quedar registrado», falló: `almacen.guardar` se podía llamar directo y el archivo cambiaba sin dejar registro. Con ese camino abierto, `CA-01` no se cumplía y la fase habría cerrado en «No cumple».
+- **Why:** los seis casos que pasaron probaban **que la auditoría funciona**. Ninguno podía ver que existía un camino que la esquivaba, porque todos entraban por la puerta correcta. El caso de «que NO pase» es el único que mira el conjunto en vez de la parte, y por eso es el que encuentra lo que nadie pensó.
+- **Also:** corregirlo obligaba a tocar `plataforma/nucleo/almacen/`, que el plan aprobado no declaraba. La fase **se detuvo y se pidieron dos opciones con su costo** en vez de ampliar el plan por iniciativa, que es lo que pide [`02·F8`](../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md). El usuario autorizó cerrar el hueco, y la razón que inclinó la balanza fue medible: hoy no hay un solo llamador de esa función fuera de las pruebas, y con la fase B encima ya serían varios.
+- **Where:** [resultado_pruebas.md de la fase D](epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/resultado_pruebas.md), `DEF-01` y los dos ciclos · la ampliación autorizada, sección 2.1 del plan.
+- **Learned:** un plan de pruebas sin al menos un caso de «que NO pase» puede salir entero en verde sobre una implementación con un hueco. Y cuando ese caso encuentra algo fuera de lo que el plan declaraba, lo correcto es parar y presentar opciones con su costo, no arreglarlo callado: la ampliación queda escrita y con nombre de quien la autorizó.
+- **When/Who:** 2026-08-25 · agente y usuario.
+- **Scope:** estándar; aplica a cualquier fase con plan de pruebas.
+- **Rel:** S-022 (el estado sale de la prueba, no de la lectura).
+
+## S-028 · Treinta y siete pruebas en verde no dicen nada hasta que se saboteó el código  ·  patrón · activa
+- **What:** la fase D terminó con 37 comprobaciones automáticas pasando a la primera. En vez de darlo por bueno, se rompió el código a propósito cuatro veces: ejecutar antes de registrar, escribir sin tapar claves, dejar editar una fila del índice, y quitar la exigencia de constancia. Las cuatro veces fallaron las pruebas correctas, y solo entonces se dio el verde por bueno.
+- **Why:** una prueba que pasa puede estar probando otra cosa, o nada. Es el mismo defecto que ya se documentó en el estándar: un caso que decía «correr el enganche» corrió la función que el enganche usa, y tres criterios quedaron en «cumple» sin estar probados.
+- **Also:** el sabotaje también sirvió para elegir qué prueba escribir. `CP-003` tenía tres pasos que mostraban que ante la falla nada cambia, pero eso pasaría igual con un código que ejecuta primero y revierte después. Hubo que agregar un paso que **espía el orden real**: `["constancia", "efecto"]`.
+- **Where:** [evidencias/EV-02](epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt), con los cuatro sabotajes y qué prueba cazó cada uno.
+- **Learned:** antes de reportar una suite en verde, romper a propósito lo que la suite promete cuidar. Si nada falla, la prueba no estaba probando eso. Cuesta minutos y es la diferencia entre «pasa» y «está probado».
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier fase que reporte pruebas.
+- **Rel:** S-027.

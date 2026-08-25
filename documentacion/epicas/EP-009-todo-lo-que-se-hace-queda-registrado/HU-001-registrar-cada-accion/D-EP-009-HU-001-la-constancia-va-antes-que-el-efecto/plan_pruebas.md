@@ -8,7 +8,7 @@
 | **Versión** | 1.0 |
 | **Fecha** | 2026-08-25 |
 | **Elaborado por** | El agente |
-| **Aprobado por** | Pendiente |
+| **Aprobado por** | Ing. José Dúmar Jiménez Ruíz, el 2026-08-25 |
 
 ---
 
@@ -104,9 +104,9 @@ Un ciclo. Si un caso falla, se corrige y se corre el ciclo completo, no solo el 
 | Campo | Valor |
 |---|---|
 | **Qué comprueba** | Que se pueda llegar desde la acción a lo que la sesión dejó escrito |
-| **Cómo se corre** | Se registra una acción dentro de una sesión y otra fuera de toda sesión |
-| **Resultado esperado** | La primera trae el enlace y se puede seguir; la segunda lo trae vacío, y eso se muestra como dato |
-| **Si falla** | Se revisa qué identifica una sesión, que es la duda 2 del plan de trabajo |
+| **Cómo se corre** | Se registra una acción dentro de una sesión y otra fuera de toda sesión. Después se renombra el archivo del histórico y se comprueba que el enlace sigue sirviendo |
+| **Resultado esperado** | La primera trae el enlace y se puede seguir, también después del renombre; la segunda lo trae vacío, y eso se muestra como dato |
+| **Si falla** | Se revisa si el registro guardó el identificador de sesión, o alguna otra cosa que se rompe al renombrar el archivo |
 
 ### CP-007 · Que NO pase: que algo cambie sin quedar registrado
 
@@ -131,4 +131,4 @@ Un ciclo. Si un caso falla, se corrige y se corre el ciclo completo, no solo el 
 
 ---
 
-**Pendiente de aprobación.** Se presenta junto con [plan_trabajo.md](plan_trabajo.md).
+**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-25.** Se aprueba junto con [plan_trabajo.md](plan_trabajo.md).

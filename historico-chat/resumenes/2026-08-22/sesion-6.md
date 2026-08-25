@@ -148,6 +148,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-10 · El caso de «que NO pase» fue el único que encontró el defecto, y los otros seis estaban en verde
+
+- **Qué pasó:** en la fase D, seis de los siete casos pasaron a la primera. `CP-007` falló: se podía escribir sin dejar constancia, y con eso `CA-01` no se cumplía.
+- **Por qué importa:** los seis que pasaron probaban que la auditoría funciona, y todos entraban por la puerta correcta. Ninguno podía ver que existía un camino que la esquivaba. Corregirlo obligaba a tocar el almacén, que el plan no declaraba, así que la fase se detuvo y se presentaron dos opciones con su costo, en vez de arreglarlo callado (`02·F8`).
+- **Qué lo soluciona:** se resolvió acá. El almacén ahora exige el comprobante que la auditoría emite al registrar, y ese comprobante solo vale para el archivo sobre el que se registró.
+- **Qué se decidió:** cerrar el hueco ahora y no en la fase B, porque hoy no hay un solo llamador de esa función fuera de las pruebas. El usuario lo autorizó el 2026-08-25, y la ampliación quedó escrita con su nombre.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-009](../../../documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/epica.md) · [HU-001](../../../documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) · los cinco criterios.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el `DEF-01` del [resultado de pruebas](../../../documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/resultado_pruebas.md), y las señales `S-027` y `S-028`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -162,7 +177,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
+
+La última falta: la fase D está cerrada y probada, pero todavía sin guardar. El usuario aprobó el trabajo; el visto bueno para el commit se pide aparte.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

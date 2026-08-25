@@ -1,0 +1,33 @@
+== se sabotea el codigo a proposito, para ver si las pruebas lo cazan ==
+== cuatro sabotajes, uno por cada cosa que la fase promete ==
+
+--- 1: ejecutar la accion antes de dejar la constancia ---
+FAIL: test_la_accion_no_se_ejecuta_si_no_hubo_constancia (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_la_accion_no_se_ejecuta_si_no_hubo_constancia)
+FAIL: test_la_constancia_se_escribe_antes_de_ejecutar (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_la_constancia_se_escribe_antes_de_ejecutar)
+Ran 37 tests in 0.557s
+FAILED (failures=2)
+
+--- 2: escribir sin tapar las claves ---
+FAIL: test_la_clave_en_cualquier_campo_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_en_cualquier_campo_queda_tapada)
+FAIL: test_la_clave_entre_comillas_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_entre_comillas_queda_tapada)
+FAIL: test_la_clave_sin_comillas_tambien_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_sin_comillas_tambien_queda_tapada)
+FAIL: test_lo_indexado_tampoco_trae_la_clave (nucleo.auditoria.tests.CredencialesTests.test_lo_indexado_tampoco_trae_la_clave)
+Ran 37 tests in 0.475s
+FAILED (failures=4)
+
+--- 3: dejar que una fila del indice se edite ---
+FAIL: test_editar_una_fila_del_indice_no_se_puede (nucleo.auditoria.tests.IntegridadTests.test_editar_una_fila_del_indice_no_se_puede)
+Ran 37 tests in 0.547s
+FAILED (failures=1)
+
+--- 4: dejar escribir sin constancia (el hueco que encontro CP-007) ---
+FAIL: test_no_se_escribe_sin_constancia (nucleo.almacen.tests.AlmacenTests.test_no_se_escribe_sin_constancia)
+FAIL: test_una_constancia_de_otra_cosa_no_sirve (nucleo.almacen.tests.AlmacenTests.test_una_constancia_de_otra_cosa_no_sirve)
+FAIL: test_la_puerta_de_atras_quedo_cerrada (nucleo.auditoria.tests.NadaCambiaSinRegistroTests.test_la_puerta_de_atras_quedo_cerrada)
+FAIL: test_una_constancia_no_sirve_para_cambiar_otra_cosa (nucleo.auditoria.tests.NadaCambiaSinRegistroTests.test_una_constancia_no_sirve_para_cambiar_otra_cosa)
+Ran 37 tests in 0.556s
+FAILED (failures=4)
+
+--- con el codigo restaurado ---
+Ran 37 tests in 0.548s
+OK

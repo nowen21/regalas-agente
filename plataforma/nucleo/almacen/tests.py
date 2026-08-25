@@ -12,8 +12,20 @@ import tempfile
 
 from django.test import TestCase, override_settings
 
+from nucleo.constancia import Constancia, SinConstancia
 from . import core
 from .models import Anotado
+
+
+def constancia(nombre):
+    """El comprobante que el almacén exige, para las pruebas del almacén.
+
+    Acá se construye a mano a propósito: estas pruebas son del almacén, no de
+    la auditoría, y hacerlas pasar por ella las volvería pruebas de las dos
+    cosas a la vez. Que la auditoría emita el comprobante de verdad se prueba
+    en `nucleo/auditoria/tests.py`.
+    """
+    return Constancia(nombre, {})
 
 
 class AlmacenTests(TestCase):
@@ -30,12 +42,12 @@ class AlmacenTests(TestCase):
 
     # CP-002 · lo guardado sobrevive
     def test_lo_guardado_se_lee_despues(self):
-        core.guardar("proyectos/uno.md", "# Uno\n")
+        core.guardar("proyectos/uno.md", "# Uno\n", constancia("proyectos/uno.md"))
         self.assertEqual(core.leer("proyectos/uno.md"), "# Uno\n")
 
     # CP-004 · la fuente es texto legible sin la plataforma
     def test_lo_guardado_queda_como_texto_en_disco(self):
-        core.guardar("proyectos/dos.md", "# Dos\n")
+        core.guardar("proyectos/dos.md", "# Dos\n", constancia("proyectos/dos.md"))
         completa = os.path.join(self.carpeta, "proyectos", "dos.md")
         with io.open(completa, encoding="utf-8") as archivo:
             self.assertEqual(archivo.read(), "# Dos\n")
@@ -45,8 +57,8 @@ class AlmacenTests(TestCase):
 
     # CP-003 · el índice se reconstruye
     def test_borrar_el_indice_no_pierde_informacion(self):
-        core.guardar("uno.md", "# Uno\n")
-        core.guardar("dos.md", "# Dos\n")
+        core.guardar("uno.md", "# Uno\n", constancia("uno.md"))
+        core.guardar("dos.md", "# Dos\n", constancia("dos.md"))
         Anotado.objects.all().delete()
         self.assertEqual(Anotado.objects.count(), 0)
 
@@ -57,19 +69,30 @@ class AlmacenTests(TestCase):
         self.assertEqual(core.leer("uno.md"), "# Uno\n")
 
     def test_el_indice_guarda_la_huella_del_texto(self):
-        core.guardar("tres.md", "# Tres\n")
+        core.guardar("tres.md", "# Tres\n", constancia("tres.md"))
         anotado = Anotado.objects.get(nombre="tres.md")
         self.assertEqual(anotado.huella, core.huella("# Tres\n"))
 
     def test_la_huella_cambia_cuando_el_texto_cambia(self):
-        primera = core.guardar("cuatro.md", "# Cuatro\n")
-        segunda = core.guardar("cuatro.md", "# Cuatro corregido\n")
+        primera = core.guardar("cuatro.md", "# Cuatro\n", constancia("cuatro.md"))
+        segunda = core.guardar("cuatro.md", "# Cuatro corregido\n", constancia("cuatro.md"))
         self.assertNotEqual(primera, segunda)
+
+    # Fase D · que NO pase: escribir sin haber registrado la acción
+    def test_no_se_escribe_sin_constancia(self):
+        with self.assertRaises(SinConstancia):
+            core.guardar("cinco.md", "# Cinco" + chr(10), None)
+        self.assertIsNone(core.leer("cinco.md"))
+
+    def test_una_constancia_de_otra_cosa_no_sirve(self):
+        with self.assertRaises(SinConstancia):
+            core.guardar("seis.md", "# Seis" + chr(10), constancia("otra.md"))
+        self.assertIsNone(core.leer("seis.md"))
 
     # CP-006 · que NO pase: escribir fuera de la carpeta de datos
     def test_no_se_escribe_fuera_de_la_carpeta(self):
         with self.assertRaises(core.RutaFueraDeLaPlataforma):
-            core.guardar("../afuera.md", "no debería quedar")
+            core.guardar("../afuera.md", "no debería quedar", constancia("../afuera.md"))
         self.assertFalse(
             os.path.exists(os.path.join(os.path.dirname(self.carpeta), "afuera.md")))
 
@@ -116,7 +139,7 @@ class SinRedTests(TestCase):
         try:
             self.assertEqual(self.client.get("/").status_code, 200)
             with override_settings(CARPETA_DATOS=carpeta):
-                core.guardar("uno.md", "# Uno\n")
+                core.guardar("uno.md", "# Uno\n", constancia("uno.md"))
                 self.assertEqual(core.leer("uno.md"), "# Uno\n")
         finally:
             shutil.rmtree(carpeta, ignore_errors=True)
