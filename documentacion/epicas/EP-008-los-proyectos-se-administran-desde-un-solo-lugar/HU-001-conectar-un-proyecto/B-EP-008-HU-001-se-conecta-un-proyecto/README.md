@@ -17,4 +17,4 @@
 
 **Qué destapó.** Que conectar no tiene reversa. Salió al ver la pantalla funcionando, y quedó pedido como fase H.
 
-**Estado:** estación 9. Los nueve casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `c1b9185`.

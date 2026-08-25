@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-001](../HU-001-conectar-un-proyecto.md): `CA-01`, `CA-02`, `CA-03`, `CA-04`. Los cuatro, y con esto la historia queda cerrada |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `c1b9185` |
 
 ---
 

@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `c1b9185`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | El proyecto se conecta y se ve | ☑ |
 | 7 | Pruebas | Los nueve casos con veredicto: 9 de 9 aprobados | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con cinco deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «si», el 2026-08-25. Commit `c1b9185` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las siete tareas hechas, los nueve casos de prueba en verde con su evidencia, y el documento de cierre escrito. Con esto **la HU-001 queda cerrada**: sus cuatro criterios tienen veredicto.
+**Nada: la fase cerró**, en el commit `c1b9185`. Las siete tareas hechas, los nueve casos de prueba en verde con su evidencia, y el documento de cierre escrito. Con esto **la HU-001 queda cerrada**: sus cuatro criterios tienen veredicto.
 
 **Lo que la fase destapó, y no era del alcance.** Al ver la primera pantalla funcionando salió que **conectar no tiene reversa**: no se puede desconectar, renombrar ni corregir la versión declarada. Peor: la especificación del módulo ya decidía cómo se comporta desconectar, y ninguna funcionalidad lo pedía. Se pidió por la cadena completa el mismo día, y es la fase H.
 

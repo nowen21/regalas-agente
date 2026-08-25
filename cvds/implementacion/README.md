@@ -59,7 +59,7 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 | Fase | Funcionalidad que ejecuta | Módulos que toca | Depende de | Estado |
 |---|---|---|---|---|
 | A. La plataforma levanta y guarda | Base de F-001 | Proyectos | — | Cerrada el 2026-08-25, commit `26b2222` |
-| B. Se conecta un proyecto | F-001 | Proyectos | A, D | Cerrada el 2026-08-25 |
+| B. Se conecta un proyecto | F-001 | Proyectos | A, D | Cerrada el 2026-08-25, commit `c1b9185` |
 | C. La ruta perdida se avisa | F-002 | Proyectos | B | Sin abrir |
 | D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Cerrada el 2026-08-25, commit `5231022` |
 | E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Sin abrir |

@@ -126,7 +126,7 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 | Fase | Qué hace | Estado |
 |---|---|---|
 | [A · La plataforma levanta y guarda](A-EP-008-HU-001-la-plataforma-levanta-y-guarda/README.md) | La base sobre la que se registra | Cerrada el 2026-08-25, commit `26b2222` |
-| [B · Se conecta un proyecto](B-EP-008-HU-001-se-conecta-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los cuatro criterios con veredicto |
+| [B · Se conecta un proyecto](B-EP-008-HU-001-se-conecta-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25, commit `c1b9185`. Los cuatro criterios con veredicto |
 
 ---
 
