@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }} · Cimiento{% endblock %}
+{% block cuerpo %}
+<h1>{{ titulo }}</h1>
+<p><strong>{{ proyecto.nombre }}</strong></p>
+
+<p class="aviso"><strong>Qué va a pasar:</strong> {{ que_pasa }}</p>
+
+<p><strong>Qué NO va a pasar:</strong></p>
+<ul>
+  {% for cosa in que_no_pasa %}<li>{{ cosa }}</li>{% endfor %}
+</ul>
+
+<form method="post">{% csrf_token %}
+  <input type="hidden" name="confirmado" value="si">
+  {% for campo, valor in campos.items %}
+  <input type="hidden" name="{{ campo }}" value="{{ valor }}">
+  {% endfor %}
+  {% if pide_nombre %}
+  <label for="nombre">Cómo se va a llamar</label>
+  <input type="text" id="nombre" name="nombre" value="{{ proyecto.nombre }}">
+  {% endif %}
+  <button type="submit">{{ boton }}</button>
+</form>
+
+<p><a href="{% url 'proyectos-uno' proyecto.identificador %}">No, dejarlo como está</a></p>
+{% endblock %}

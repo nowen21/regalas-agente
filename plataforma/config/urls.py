@@ -14,5 +14,7 @@ urlpatterns = [
     path("", proyectos.lista, name="proyectos-lista"),
     path("conectar/", proyectos.conectar, name="proyectos-conectar"),
     path("proyecto/<str:identificador>/", proyectos.uno, name="proyectos-uno"),
+    path("proyecto/<str:identificador>/<str:que>/", proyectos.cambiar,
+         name="proyectos-cambiar"),
     path("esta-viva/", views.esta_viva, name="esta-viva"),
 ]

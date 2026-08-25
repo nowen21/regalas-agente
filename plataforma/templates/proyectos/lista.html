@@ -33,4 +33,19 @@
   <button type="submit">Conectar</button>
 </form>
 <p class="apagado">Conectar no toca nada dentro de la carpeta del proyecto: solo anota dónde está.</p>
+
+{% if desconectados %}
+<h2>Desconectados</h2>
+<p class="apagado">Ya no se administran, y <strong>su documentación sigue guardada acá</strong>. Vuelven si se conecta su carpeta otra vez.</p>
+<table>
+  <tr><th>Proyecto</th><th>Dónde vivía su código</th><th>Desconectado el</th></tr>
+  {% for p in desconectados %}
+  <tr>
+    <td><a href="{% url 'proyectos-uno' p.identificador %}">{{ p.nombre }}</a></td>
+    <td>{{ p.ruta_codigo }}</td>
+    <td>{{ p.desconectado }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
 {% endblock %}

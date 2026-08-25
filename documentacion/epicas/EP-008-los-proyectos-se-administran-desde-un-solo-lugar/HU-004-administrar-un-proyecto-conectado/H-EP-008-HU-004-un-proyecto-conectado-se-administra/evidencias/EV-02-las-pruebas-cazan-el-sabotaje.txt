@@ -1,0 +1,42 @@
+== seis sabotajes, uno por cada cosa que la fase promete ==
+== se restauran con copia, nunca con el control de versiones ==
+
+--- 1: desconectar borra la documentacion del proyecto ---
+FAIL: test_su_documentacion_sigue_con_lo_que_tenia (nucleo.proyectos.tests.DesconectarTests.test_su_documentacion_sigue_con_lo_que_tenia)
+FAIL: test_vuelve_el_mismo_proyecto_con_su_documentacion (nucleo.proyectos.tests.ReconectarTests.test_vuelve_el_mismo_proyecto_con_su_documentacion)
+Ran 86 tests in 3.352s
+FAILED (failures=2)
+
+--- 2: la marca de desconectado no llega a la ficha ---
+FAIL: test_la_marca_esta_en_la_ficha_y_no_solo_en_el_indice (nucleo.proyectos.tests.DesconectarTests.test_la_marca_esta_en_la_ficha_y_no_solo_en_el_indice)
+FAIL: test_rehacer_el_indice_no_lo_resucita (nucleo.proyectos.tests.DesconectarTests.test_rehacer_el_indice_no_lo_resucita)
+Ran 86 tests in 2.989s
+FAILED (failures=2)
+
+--- 3: renombrar recalcula el identificador y mueve la carpeta ---
+FAIL: test_el_nombre_cambia_y_la_carpeta_es_la_misma (nucleo.proyectos.tests.RenombrarTests.test_el_nombre_cambia_y_la_carpeta_es_la_misma)
+Ran 86 tests in 2.641s
+FAILED (failures=1)
+
+--- 4: corregir la version acepta cualquier numero ---
+FAIL: test_una_version_que_no_existe_no_se_guarda (nucleo.proyectos.tests.CorregirVersionTests.test_una_version_que_no_existe_no_se_guarda)
+Ran 86 tests in 2.389s
+FAILED (failures=1)
+
+--- 5: los cambios no preguntan antes ---
+FAIL: test_corregir_version_pregunta_antes (nucleo.proyectos.tests.ConfirmacionTests.test_corregir_version_pregunta_antes)
+FAIL: test_desconectar_pregunta_antes_y_no_cambia_nada (nucleo.proyectos.tests.ConfirmacionTests.test_desconectar_pregunta_antes_y_no_cambia_nada)
+FAIL: test_renombrar_pregunta_antes (nucleo.proyectos.tests.ConfirmacionTests.test_renombrar_pregunta_antes)
+Ran 86 tests in 2.364s
+FAILED (failures=3)
+
+--- 6: reconectar crea un proyecto nuevo en vez de reactivar ---
+FAIL: test_al_confirmar_si_reactiva (nucleo.proyectos.tests.ReconectarTests.test_al_confirmar_si_reactiva)
+FAIL: test_no_quedan_dos_proyectos_apuntando_a_la_misma_ruta (nucleo.proyectos.tests.ReconectarTests.test_no_quedan_dos_proyectos_apuntando_a_la_misma_ruta)
+FAIL: test_vuelve_el_mismo_proyecto_con_su_documentacion (nucleo.proyectos.tests.ReconectarTests.test_vuelve_el_mismo_proyecto_con_su_documentacion)
+Ran 86 tests in 2.200s
+FAILED (failures=3)
+
+--- con el codigo restaurado ---
+Ran 86 tests in 2.329s
+OK

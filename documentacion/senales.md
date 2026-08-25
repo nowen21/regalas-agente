@@ -289,3 +289,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente.
 - **Scope:** estándar; aplica a cualquier fase que valide sus pruebas con sabotaje.
 - **Rel:** S-028 (romper a propósito lo que la suite promete cuidar).
+
+## S-031 · Un sabotaje que pasa en verde no siempre significa que falte una prueba  ·  gotcha · activa
+- **What:** validando las pruebas de la fase H se saboteó el código seis veces. Cinco fallaron las pruebas correctas; el primero pasó en verde. La lectura inmediata fue «falta una prueba que cubra esto». Era falso: ese sabotaje **borraba la ficha del proyecto y la reescribía enseguida**, así que no cambiaba nada observable. No había hueco: el sabotaje no saboteaba.
+- **Why:** el sabotaje existe para medir las pruebas, y también hay que mirarlo a él. Dar por bueno el diagnóstico fácil habría llevado a escribir una prueba que no protege de nada, y a creer que la suite es más fuerte de lo que es.
+- **Also:** el sabotaje corregido —borrar la documentación del proyecto al desconectar, que es justo lo que `CA-01` promete que no pasa— sí falló, y falló en las dos pruebas que tenían que fallar.
+- **Where:** [evidencias/EV-02 de la fase H](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/H-EP-008-HU-004-un-proyecto-conectado-se-administra/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt), que lo dice en el comentario del propio guion.
+- **Learned:** cuando un sabotaje pasa en verde, la primera pregunta es **si de verdad cambia el comportamiento**, no si falta una prueba. Un sabotaje válido tiene que romper algo que alguien pueda observar desde afuera: un archivo distinto, una respuesta distinta, un dato distinto. Si el resultado final es idéntico, no era un sabotaje.
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier fase que valide sus pruebas con sabotaje.
+- **Rel:** S-028, S-030.
+
+## S-032 · Una confirmación que no dice qué NO va a pasar obliga a adivinar  ·  decisión · activa
+- **What:** la fase H tuvo que construir la confirmación de cuatro acciones, entre ellas desconectar un proyecto. La primera forma obvia es preguntar «¿seguro?». Se descartó: lo que el usuario necesita saber antes de desconectar no es que se va a desconectar, sino **si va a perder su documentación**.
+- **Why:** una confirmación que solo dice qué va a pasar deja fuera justo lo que da miedo. El usuario que no sabe si va a perder algo, o no confirma, o confirma cruzando los dedos. Ninguna de las dos es una decisión.
+- **Also:** por lo mismo se decidió **no preguntar por todo**. Conectar una carpeta nueva no pide confirmación; reconectar una que ya tuvo un proyecto sí, porque ahí sí hay algo que se recibe sin haberlo pedido. Preguntar por todo entrena a confirmar sin leer, y entonces la pregunta deja de proteger.
+- **Where:** `CONFIRMACIONES` en [views.py de proyectos](../plataforma/nucleo/proyectos/views.py) y la plantilla `confirmar.html` · `CP-005` del [plan de pruebas](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/H-EP-008-HU-004-un-proyecto-conectado-se-administra/plan_pruebas.md).
+- **Learned:** toda confirmación de una acción que cambia estado lleva dos listas: **qué va a pasar** y **qué NO va a pasar**. La segunda es la que convierte la pregunta en una decisión. Y se pregunta solo donde hay algo que perder o que recibir sin querer, no en cada botón.
+- **When/Who:** 2026-08-25 · agente, construyendo `00·N1` en una pantalla.
+- **Scope:** estándar; aplica a cualquier proyecto con acciones que cambian estado.
+- **Rel:** —

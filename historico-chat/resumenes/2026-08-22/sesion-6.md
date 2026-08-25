@@ -193,6 +193,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-13 · Un sabotaje que pasa en verde no siempre significa que falte una prueba
+
+- **Qué pasó:** validando las pruebas de la fase H con seis sabotajes, uno pasó en verde. La lectura inmediata fue «falta una prueba». Era falso: ese sabotaje borraba la ficha y la reescribía enseguida, así que no cambiaba nada observable.
+- **Por qué importa:** dar por bueno el diagnóstico fácil habría llevado a escribir una prueba que no protege de nada, y a creer que la suite es más fuerte de lo que es. El sabotaje mide las pruebas, y también hay que mirarlo a él.
+- **Qué lo soluciona:** se resolvió acá, cambiando el sabotaje por uno que sí toca lo que la fase promete.
+- **Qué se decidió:** cuando un sabotaje pasa en verde, la primera pregunta es si de verdad cambia el comportamiento, no si falta una prueba. Un sabotaje válido rompe algo observable desde afuera.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el comentario del guion en [EV-02 de la fase H](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/H-EP-008-HU-004-un-proyecto-conectado-se-administra/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt), y la señal `S-031`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-14 · Una confirmación que no dice qué NO va a pasar obliga a adivinar
+
+- **Qué pasó:** al construir la confirmación de desconectar un proyecto, la forma obvia era preguntar «¿seguro?». Lo que el usuario necesita saber antes de desconectar no es que se va a desconectar: es si va a perder su documentación.
+- **Por qué importa:** una confirmación que solo dice qué va a pasar deja fuera justo lo que da miedo. El que no sabe si va a perder algo, o no confirma, o confirma cruzando los dedos. Ninguna de las dos es una decisión, y `00·N1` pide una decisión.
+- **Qué lo soluciona:** se resolvió acá, en la pantalla de confirmación de la fase H.
+- **Qué se decidió:** toda confirmación lleva dos listas: qué va a pasar y **qué NO**. Y se pregunta solo donde hay algo que perder o que recibir sin querer: conectar una carpeta nueva no pregunta, reconectar una que ya tuvo un proyecto sí. Preguntar por todo entrena a confirmar sin leer.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-008](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md) · [HU-004](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) · `CA-04`.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la pantalla de confirmación de la fase H, y la señal `S-032`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -207,9 +237,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en cinco commits: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Falta guardar la fase H. Lo anterior quedó en cinco commits: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

@@ -1,0 +1,52 @@
+== corrida real: conectar mal, desconectar, y volver a conectar bien ==
+  Applying proyectos.0002_proyecto_desconectado... OK
+-- se conecta con el nombre equivocado --
+   quedo: Cimeinto | identificador: cimeinto
+
+-- se le guarda un documento --
+   guardado: '# Su analisis\n'
+
+-- opcion 1: renombrarlo --
+   ahora se llama: Cimiento
+   su identificador NO cambio: cimeinto
+   su documento sigue: '# Su analisis\n'
+
+-- opcion 2: desconectarlo --
+   conectados: 0
+   desconectados: 1
+   su documento sigue: '# Su analisis\n'
+
+-- se avisa antes de reconectar --
+   esa carpeta la tuvo: Cimiento | desconectado el 2026-08-25
+
+-- se vuelve a conectar la misma carpeta --
+   volvio el mismo: True
+   esta conectado: True
+   su documento volvio con el: '# Su analisis\n'
+   proyectos en total: 1
+
+== la ficha, leida sin la plataforma ==
+# Cimiento
+
+| Campo | Valor |
+|---|---|
+| Nombre | Cimiento |
+| Ruta del c贸digo | C:\Ing. Jose\ia\agente |
+| Versi贸n de reglas adoptada | ninguna todav铆a |
+| Fecha de conexi贸n | 2026-08-25 |
+| Fecha de desconexi贸n | sigue conectado |
+
+La ruta viva y el estado no se guardan ac谩: se calculan al mirarlos.
+
+== el registro de auditoria: todo lo que se hizo ==
+| cu谩ndo | qui茅n | qu茅 se hizo | sobre qu茅 | qu茅 cambi贸 | proyecto | sesi贸n |
+|---|---|---|---|---|---|---|
+| 2026-08-25T14:33:19-05:00 | el usuario | conectar un proyecto | proyectos/cimeinto/proyecto.md | qued贸 registrado, apuntando a C:\Ing. Jose\ia\agente | cimeinto |  |
+| 2026-08-25T14:33:19-05:00 | el agente | guardar un documento | proyectos/cimeinto/analisis.md |  |  |  |
+| 2026-08-25T14:33:19-05:00 | el usuario | renombrar un proyecto | proyectos/cimeinto/proyecto.md | de 芦Cimeinto禄 a 芦Cimiento禄 | cimeinto |  |
+| 2026-08-25T14:33:19-05:00 | el usuario | desconectar un proyecto | proyectos/cimeinto/proyecto.md | su documentaci贸n se queda en la plataforma | cimeinto |  |
+| 2026-08-25T14:33:19-05:00 | el usuario | volver a conectar un proyecto | proyectos/cimeinto/proyecto.md | vuelve con la documentaci贸n que ya ten铆a | cimeinto |  |
+
+== se borran los dos indices y se rehacen desde el texto ==
+蚽dice de proyectos rehecho: 1 proyecto(s).
+蚽dice de auditor韆 rehecho: 5 acci髇(es).

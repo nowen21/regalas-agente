@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Escrita, sin aprobar |
+| **Estado** | Cerrada el 2026-08-25, con sus cinco criterios probados |
 
 ---
 
@@ -143,7 +143,7 @@ Entonces ningún archivo de su carpeta de código cambia, se mueve ni se borra
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| H · Un proyecto conectado se administra | Esta historia | Sin abrir. Va en la versión 1, después de la fase B |
+| [H · Un proyecto conectado se administra](H-EP-008-HU-004-un-proyecto-conectado-se-administra/README.md) | Esta historia | Cerrada el 2026-08-25. Los cinco criterios con veredicto |
 
 ---
 
@@ -165,9 +165,9 @@ Entonces ningún archivo de su carpeta de código cambia, se mueve ni se borra
 
 ## 11. Definition of Done
 
-- ☐ Los cinco criterios con veredicto y evidencia.
-- ☐ Comprobado que desconectar no borra la documentación.
-- ☐ Comprobado que la carpeta del proyecto no cambió.
+- ☑ Los cinco criterios con veredicto y evidencia.
+- ☑ Comprobado que desconectar no borra la documentación: se compara su contenido, no que la carpeta exista.
+- ☑ Comprobado que la carpeta del proyecto no cambió, archivo por archivo.
 
 ## 12. Validación INVEST
 
@@ -185,3 +185,5 @@ Entonces ningún archivo de su carpeta de código cambia, se mueve ni se borra
 | Fecha | Qué pasó |
 |---|---|
 | 2026-08-25 | Nace de `F-035`, que entró al inventario ese día. La destapó el usuario al ver la primera pantalla: «pero eso no tiene administración?» |
+| 2026-08-25 | Aprobada, junto con los dos planes de su fase H |
+| 2026-08-25 | Cierra la fase H. Conectar ya tiene reversa |

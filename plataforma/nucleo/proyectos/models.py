@@ -23,6 +23,11 @@ class Proyecto(models.Model):
     ruta_normalizada = models.CharField(max_length=500, db_index=True)
     version_reglas = models.CharField(max_length=40, blank=True)
     conectado = models.CharField(max_length=20)
+    # Vacío mientras el proyecto esté conectado. Con fecha, está desconectado y
+    # su documentación se quedó donde estaba. **La marca vive también en la
+    # ficha**, no solo acá: si viviera solo en la base, rehacer el índice
+    # resucitaría al proyecto (`DA-01`).
+    desconectado = models.CharField(max_length=20, blank=True)
 
     class Meta:
         ordering = ["nombre"]
@@ -48,3 +53,7 @@ class Proyecto(models.Model):
     @property
     def adopto_el_estandar(self):
         return bool(self.version_reglas)
+
+    @property
+    def esta_conectado(self):
+        return not self.desconectado

@@ -4,6 +4,8 @@
 <h1>{{ proyecto.nombre }}</h1>
 
 {% if recien_conectado %}<p class="bien">Quedó conectado.</p>{% endif %}
+{% if hecho %}<p class="bien">{{ hecho }}</p>{% endif %}
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
 {% for aviso in avisos %}<p class="aviso">{{ aviso }}</p>{% endfor %}
 
 <table>
@@ -12,8 +14,25 @@
   <tr><th>Versión de reglas adoptada</th>
       <td>{% if proyecto.adopto_el_estandar %}{{ proyecto.version_reglas }}{% else %}<span class="apagado">ninguna todavía</span>{% endif %}</td></tr>
   <tr><th>Conectado el</th><td>{{ proyecto.conectado }}</td></tr>
+  {% if not proyecto.esta_conectado %}
+  <tr><th>Desconectado el</th><td>{{ proyecto.desconectado }}</td></tr>
+  {% endif %}
   <tr><th>Estado</th><td>{{ proyecto.estado }}</td></tr>
 </table>
+
+{% if proyecto.esta_conectado %}
+<h2>Qué se le puede hacer</h2>
+<p class="apagado">Los tres preguntan antes de hacerse, y ninguno borra ni mueve nada.</p>
+<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'renombrar' %}">{% csrf_token %}
+  <button type="submit">Renombrar</button>
+</form>
+<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-version' %}">{% csrf_token %}
+  <button type="submit">Corregir la versión de reglas</button>
+</form>
+<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'desconectar' %}">{% csrf_token %}
+  <button type="submit">Desconectar</button>
+</form>
+{% endif %}
 
 <h2>Qué todavía no muestra esta pantalla</h2>
 <p class="apagado">Sus etapas del ciclo de vida, sus fases abiertas y qué falta aprobar. Llegan cuando la plataforma pueda traer lo que el proyecto ya tiene escrito.</p>

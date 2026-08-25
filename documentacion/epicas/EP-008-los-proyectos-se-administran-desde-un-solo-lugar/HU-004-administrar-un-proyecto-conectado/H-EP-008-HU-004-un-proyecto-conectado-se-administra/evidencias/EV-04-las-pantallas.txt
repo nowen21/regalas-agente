@@ -1,0 +1,39 @@
+== las pantallas, servidas de verdad ==
+
+--- P-02: qué se le puede hacer a un proyecto ---
+<h2>Qué se le puede hacer</h2>
+<p class="apagado">Los tres preguntan antes de hacerse, y ninguno borra ni mueve nada.</p>
+<form method="post" action="/proyecto/cimeinto/renombrar/"><input type="hidden" name="csrfmiddlewaretoken" value="7biQU2DIyDxcVwMC3pU5ygee6gYx5Sbw51U85GErbC9WLQ7g5BvgwuOyKXzsfYwy">
+  <button type="submit">Renombrar</button>
+</form>
+<form method="post" action="/proyecto/cimeinto/corregir-version/"><input type="hidden" name="csrfmiddlewaretoken" value="7biQU2DIyDxcVwMC3pU5ygee6gYx5Sbw51U85GErbC9WLQ7g5BvgwuOyKXzsfYwy">
+  <button type="submit">Corregir la versión de reglas</button>
+</form>
+<form method="post" action="/proyecto/cimeinto/desconectar/"><input type="hidden" name="csrfmiddlewaretoken" value="7biQU2DIyDxcVwMC3pU5ygee6gYx5Sbw51U85GErbC9WLQ7g5BvgwuOyKXzsfYwy">
+  <button type="submit">Desconectar</button>
+</form>
+
+
+<h2>Qué todavía no muestra esta pantalla</h2>
+
+--- la confirmación de desconectar ---
+  <main>
+<h1>Desconectar el proyecto</h1>
+<p><strong>Cimiento</strong></p>
+
+<p class="aviso"><strong>Qué va a pasar:</strong> Deja de aparecer entre los proyectos conectados.</p>
+
+<p><strong>Qué NO va a pasar:</strong></p>
+<ul>
+  <li>Su documentación se queda guardada en la plataforma.</li><li>Nada de la carpeta de su código se toca.</li><li>Se puede volver a conectar después, y vuelve con lo que tenía.</li>
+</ul>
+
+<form method="post"><input type="hidden" name="csrfmiddlewaretoken" value="7vIF5Txq6e3K0J8v9C3MIz7NXv4znscHlrSDA2WcHBChrwWv0glRmbf8RWX8eAq0">
+  <input type="hidden" name="confirmado" value="si">
+  
+  
+  <button type="submit">Sí, desconectar</button>
+</form>
+
+<p><a href="/proyecto/cimeinto/">No, dejarlo como está</a></p>
+</main>
