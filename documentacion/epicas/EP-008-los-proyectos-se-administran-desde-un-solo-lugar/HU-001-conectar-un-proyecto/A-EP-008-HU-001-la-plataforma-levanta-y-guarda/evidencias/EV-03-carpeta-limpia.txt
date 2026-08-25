@@ -1,0 +1,32 @@
+== se copia la plataforma a una carpeta limpia, sin ambiente ni indice ==
+.
+..
+.env.example
+.gitignore
+config
+datos
+manage.py
+nucleo
+README.md
+requirements
+static
+templates
+== paso 1 del README: crear el ambiente ==
+ambiente creado
+== paso 3 del README: instalar ==
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\5f06ce4e-64bf-41e5-b58e-87959b32bf62\scratchpad\limpio2\plataforma\.venv\Scripts\python.exe -m pip install --upgrade pip
+Django 5.2.17
+== paso 4 del README: crear el indice vacio ==
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+== paso 5 del README: levantarla y pedirle la pagina ==
+La plataforma está viva.
+Carpeta de datos: C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\5f06ce4e-64bf-41e5-b58e-87959b32bf62\scratchpad\limpio2\plataforma\datos
+Archivos en el índice: 0
+== las comprobaciones, en la carpeta limpia ==
+OK
+Destroying test database for alias 'default'...
+Found 10 test(s).
+System check identified no issues (0 silenced).

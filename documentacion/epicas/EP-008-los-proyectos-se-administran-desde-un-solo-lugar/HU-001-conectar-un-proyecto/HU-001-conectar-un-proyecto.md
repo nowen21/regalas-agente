@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Ready |
+| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
 
 ---
 
@@ -125,7 +125,7 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| A · La plataforma levanta y guarda | La base sobre la que se registra | Sin abrir |
+| [A · La plataforma levanta y guarda](A-EP-008-HU-001-la-plataforma-levanta-y-guarda/README.md) | La base sobre la que se registra | Estación 4, esperando aprobación |
 | B · Se conecta un proyecto | Esta historia | Sin abrir |
 
 ---

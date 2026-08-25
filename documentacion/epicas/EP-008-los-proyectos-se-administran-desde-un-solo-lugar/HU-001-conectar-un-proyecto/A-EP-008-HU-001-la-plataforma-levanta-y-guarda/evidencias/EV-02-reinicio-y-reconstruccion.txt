@@ -1,0 +1,18 @@
+== paso 1: proceso que guarda y termina ==
+huella al guardar: 5fda5beb93c8591afb4f3d126dcedd20c576e0a24e2d9c715d5e43bb0b63b400
+== paso 2: proceso nuevo, lee lo guardado ==
+lo leido: '# Proyecto de mentira\nRuta: ninguna.\n'
+archivos en el indice: 1
+== paso 3: el texto, leido sin la plataforma ==
+# Proyecto de mentira
+Ruta: ninguna.
+== paso 4: se borra el indice entero ==
+ls: cannot access 'indice.sqlite3': No such file or directory
+el archivo del indice ya no esta
+== paso 5: se rehace el indice desde el texto ==
+  Applying contenttypes.0002_remove_content_type_name... OK
+Índice rehecho: 1 archivo(s) leídos.
+huella tras rehacer: 5fda5beb93c8591afb4f3d126dcedd20c576e0a24e2d9c715d5e43bb0b63b400
+coincide con el texto: True
+== paso 6: se borra el dato de mentira y se rehace el indice ==
+Índice rehecho: 0 archivo(s) leídos.

@@ -1,0 +1,14 @@
+== lo que cambio en el repositorio, sin contar la plataforma nueva ==
+ M documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md
+ M documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/README.md
+ M documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/HU-002-avisar-la-ruta-perdida.md
+ M documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/HU-003-ver-el-estado-de-un-proyecto.md
+ M documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md
+ M historico-chat/2026-08-22-sesion-6.md
+?? documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/
+
+== la aplicacion vieja de interfaz/: intacta ==
+(sin salida arriba significa que no cambio nada de interfaz/)
+
+== ultimo commit que toco interfaz/ ==
+fb8beaa 2026-08-22 El registro de proyectos ya no se vacía solo, y el instalador da de alta en Cimiento

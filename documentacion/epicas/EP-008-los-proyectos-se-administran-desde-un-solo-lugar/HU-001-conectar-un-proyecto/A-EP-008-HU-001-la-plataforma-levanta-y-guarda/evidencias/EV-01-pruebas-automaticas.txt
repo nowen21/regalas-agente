@@ -1,0 +1,31 @@
+Python 3.11.9
+Django 5.2.11
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Found 10 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: staticfiles
+  Apply all migrations: almacen, contenttypes
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying almacen.0001_initial... OK
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name...test_borrar_el_indice_no_pierde_informacion (nucleo.almacen.tests.AlmacenTests.test_borrar_el_indice_no_pierde_informacion) ... ok
+test_el_indice_guarda_la_huella_del_texto (nucleo.almacen.tests.AlmacenTests.test_el_indice_guarda_la_huella_del_texto) ... ok
+test_la_huella_cambia_cuando_el_texto_cambia (nucleo.almacen.tests.AlmacenTests.test_la_huella_cambia_cuando_el_texto_cambia) ... ok
+test_leer_algo_que_no_esta_no_inventa (nucleo.almacen.tests.AlmacenTests.test_leer_algo_que_no_esta_no_inventa) ... ok
+test_lo_guardado_queda_como_texto_en_disco (nucleo.almacen.tests.AlmacenTests.test_lo_guardado_queda_como_texto_en_disco) ... ok
+test_lo_guardado_se_lee_despues (nucleo.almacen.tests.AlmacenTests.test_lo_guardado_se_lee_despues) ... ok
+test_no_se_escribe_fuera_de_la_carpeta (nucleo.almacen.tests.AlmacenTests.test_no_se_escribe_fuera_de_la_carpeta) ... ok
+test_no_se_lee_fuera_de_la_carpeta (nucleo.almacen.tests.AlmacenTests.test_no_se_lee_fuera_de_la_carpeta) ... ok
+test_responde_que_esta_viva (nucleo.almacen.tests.EstaVivaTests.test_responde_que_esta_viva) ... ok
+test_responde_y_guarda_con_la_red_tapada (nucleo.almacen.tests.SinRedTests.test_responde_y_guarda_con_la_red_tapada) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.100s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+ OK
+System check identified no issues (0 silenced).

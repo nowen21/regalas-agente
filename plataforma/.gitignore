@@ -1,0 +1,9 @@
+# El índice se rehace solo: no se versiona, y por eso no hay volcados en el repo.
+indice.sqlite3
+# Lo que trae el lenguaje al correr, y el ambiente de cada máquina.
+__pycache__/
+*.pyc
+.venv/
+# La clave de firma de esta máquina. Nunca entra al repositorio (`00·N6`).
+.env
+staticfiles/

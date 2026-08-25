@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Ready |
+| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
 
 ---
 
