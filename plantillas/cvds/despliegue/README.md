@@ -6,6 +6,8 @@
 
 > **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
+> **Se escribe desde la propuesta, no desde lo que ya está construido.** Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
+
 **Estado: «BORRADOR / EN CURSO / ENTREGADO»** («AAAA-MM-DD»).
 
 ---

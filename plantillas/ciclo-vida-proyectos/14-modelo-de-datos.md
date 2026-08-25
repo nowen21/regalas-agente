@@ -44,3 +44,17 @@ erDiagram
 | Decisión | Alternativa descartada | Por qué |
 |---|---|---|
 | «…» | «…» | «…» |
+
+## 6. Lo que se calcula, y por eso no se guarda
+
+> **Un dato guardado que también se puede calcular es una segunda verdad, y envejece.** El estado que sale de leer otros datos se calcula al pedirlo; si hay que guardarlo por velocidad, se dice que es un índice y de dónde se rehace.
+
+| Dato | De dónde sale | ¿Se guarda? |
+|---|---|---|
+| «…» | «Qué se lee para calcularlo» | «No, se calcula · Sí, como índice que se rehace desde «…»» |
+
+## 7. Lo que este modelo deja fuera a propósito
+
+> Lo que alguien va a buscar acá y no está. Escribirlo evita que la próxima persona lo agregue creyendo que se olvidó.
+
+- **«Qué queda fuera».** «Por qué, y qué habría que cambiar para que entrara.»

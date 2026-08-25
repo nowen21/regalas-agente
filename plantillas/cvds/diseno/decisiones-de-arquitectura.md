@@ -10,6 +10,8 @@
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
+> **La aprobación vale para el texto que se leyó.** Si una decisión se edita después de firmada, la firma deja de valer y hay que volver a aprobarla. Lo mismo para cualquier documento de este ciclo.
+
 ---
 
 ## Decisiones

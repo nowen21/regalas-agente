@@ -34,3 +34,26 @@ Errores: «400 cuándo · 401 cuándo · 403 cuándo · 404 cuándo · 422 cuán
 ```
 
 «Reglas del punto que el esquema no cuenta: idempotencia, límites, efectos secundarios.»
+
+## 4. Qué se promete, y hasta cuándo
+
+> Un contrato sin promesa escrita no es un contrato: quien integra no sabe con qué puede contar. Y una promesa sin fecha de caducidad amarra para siempre.
+
+| Promesa | Hasta cuándo |
+|---|---|
+| «Los nombres de los puntos de arriba» | «Mientras no haya versión mayor» |
+| «…» | «…» |
+
+## 5. Qué NO se promete
+
+> **Lo que no se promete se escribe, o se promete sin querer.** Quien integra da por seguro todo lo que no esté dicho.
+
+- **«Qué no se garantiza».** «Por ejemplo: que la forma de la respuesta no crezca, que el tiempo se sostenga con cualquier volumen, que dos instalaciones respondan igual.»
+
+## 6. Cuando el otro lado no responde
+
+| Qué pasa | Qué hace quien integra |
+|---|---|
+| «El servicio no está disponible» | «…» |
+| «Responde con error» | «…» |
+| «Demora más de lo esperado» | «…» |

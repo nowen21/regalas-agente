@@ -6,6 +6,8 @@
 
 > **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor extensión con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación no pedida y sin paso a paso. Lo que no cabe no se recorta: se escribe en su archivo y se enlaza. Un hueco de una tabla que necesita un párrafo es señal de que el detalle va en otro documento. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
+> **Se escribe desde la propuesta, no desde lo que ya está construido.** Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
+
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
 ---
@@ -239,7 +241,17 @@ Una fila por documento. La columna del molde dice dónde se escribe; la de desti
 | Plan de calidad | Sección 16 de este documento | Equipo interno | «…» |
 | Plan de comunicaciones | Sección 15 de este documento | Ambos — compromete reportes al cliente | «…» |
 
-## 18. La decisión de la etapa
+## 18. Cambios después de la aprobación
+
+> **La línea base solo sirve si se sabe cuándo se movió y por qué.** Desde que la etapa se aprueba, lo que cambie se anota acá: no se corrige en silencio. Una fila por cambio, aunque parezca menor.
+>
+> **Si el cambio deja sin efecto algo ya firmado, se dice.** Un acta o un estudio que autorizaban otra cosa no siguen valiendo porque nadie los haya tocado.
+
+| Fecha | Qué cambió | Por qué | Quién lo pidió |
+|---|---|---|---|
+| «AAAA-MM-DD» | «…» | «…» | «…» |
+
+## 19. La decisión de la etapa
 
 **«Se hace / Se hace con estas condiciones / No se hace»**, decidido por «quién» el «AAAA-MM-DD».
 

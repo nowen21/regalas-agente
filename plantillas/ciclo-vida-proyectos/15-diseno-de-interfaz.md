@@ -34,3 +34,26 @@ flowchart TD
 ## 4. Convenciones visuales
 
 «Lo que toda pantalla respeta: dónde van las acciones, cómo se avisan los errores, qué se confirma antes de borrar. Si el proyecto declara un sistema de diseño o una librería, se nombra acá y no se re-explica.»
+
+## 5. Qué se ve cuando falta algo
+
+> **Es la mitad del diseño de una pantalla, y la que se olvida.** Una pantalla que muestra vacío sin decir por qué hace creer que el dato no existe. Cada fila es una situación real, no un error de programa.
+
+| Situación | Qué se ve |
+|---|---|
+| «Todavía no hay nada que mostrar» | «Se dice que no hay, no se muestra en blanco» |
+| «El dato existe pero no se pudo leer» | «Se dice qué falló y qué sí se pudo mostrar» |
+| «Lo que se buscó no coincide con nada» | «Se dice que no hay, sin sugerir nada inventado» |
+| «El registro está incompleto» | «Se muestra, señalando qué le falta» |
+
+## 6. Qué pide confirmación, y qué no
+
+> No todo cambio es igual. Lo que se deshace solo se hace y se registra; lo que no se puede deshacer se confirma antes, cada vez.
+
+| Qué se hace desde la pantalla | Qué pide antes |
+|---|---|
+| «…» | «Nada · Confirmación · Aprobación registrada» |
+
+## 7. Lo que la interfaz NO hace
+
+- **«Qué no se puede hacer desde acá».** «Y dónde se hace, si se puede hacer en otro lado.»

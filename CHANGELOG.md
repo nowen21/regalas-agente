@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 34.1.0 — 2026-08-24
+
+**MENOR** (los moldes aprenden de haberse usado; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
+
+**Los documentos modelo se llenaron de verdad, y eso mostró qué les faltaba.** Al escribir con ellos la planificación, el análisis y el diseño de un proyecto entero, aparecieron seis huecos que ninguna lectura había detectado. Ahora están cubiertos.
+
+**Lo aprobado se puede mover, y ahora se sabe cuándo se movió.** El documento de planificación gana una sección donde se anota todo cambio posterior a la aprobación: qué cambió, por qué y quién lo pidió. Y dice algo que en la práctica costó caro: si un cambio deja sin efecto un acta o un estudio ya firmados, se declara, porque no siguen valiendo solo por estar escritos.
+
+**Los siete documentos de etapa avisan de qué no hay que partir.** Se escriben desde lo que el sistema debe llegar a ser, no desde lo que ya está construido, y traen la prueba para saberlo: si se borra mentalmente lo hecho y el documento sigue siendo cierto, está bien escrito.
+
+**El documento de datos pregunta ahora qué se calcula y qué se guarda.** Un dato guardado que también se puede calcular es una segunda verdad que envejece. Y pide escribir qué deja fuera a propósito, para que nadie lo agregue después creyendo que se olvidó.
+
+**El de pantallas pregunta qué se ve cuando falta algo**, que es la mitad del diseño y la que se olvida: una pantalla en blanco hace creer que el dato no existe. Y qué pide confirmación antes de hacerse, separando lo que se deshace solo de lo que no.
+
+**El de integración pregunta qué se promete y qué no**, con hasta cuándo. Lo que no se promete por escrito se promete sin querer: quien integra da por seguro todo lo que no esté dicho.
+
+**Y las decisiones de arquitectura recuerdan que la firma es del texto que se leyó.** Si la decisión se edita después de aprobada, la aprobación deja de valer.
+
+---
+
 ## 34.0.0 — 2026-08-24
 
 **MAYOR** ⚠ obliga a migrar: cambia cómo se le pide algo al agente. Cada pedido tiene que abrir con una palabra que diga qué se espera.
