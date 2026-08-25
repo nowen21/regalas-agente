@@ -133,7 +133,7 @@ Y el nombre de la variable queda legible
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [D · La constancia va antes que el efecto](D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los cinco criterios con veredicto |
+| [D · La constancia va antes que el efecto](D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/README.md) | Esta historia | Cerrada el 2026-08-25, commit `5231022`. Los cinco criterios con veredicto |
 
 ---
 

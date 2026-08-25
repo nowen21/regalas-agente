@@ -17,4 +17,4 @@
 
 **Qué quedó.** La plataforma ya no puede cambiar nada sin dejar constancia: se registra antes de ejecutar, y si el registro no se puede escribir, la acción no ocurre. Lo registrado no se edita ni se borra, el intento también queda, y ninguna clave entra.
 
-**Estado:** estación 9. Los siete casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `5231022`.

@@ -177,10 +177,12 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Lo que se hizo está aprobado y guardado | ☑ |
 
-La última falta: la fase D está cerrada y probada, pero todavía sin guardar. El usuario aprobó el trabajo; el visto bueno para el commit se pide aparte.
+Las cuatro marcadas. Lo construido en esta sesión quedó guardado en tres commits: la fase A en `26b2222`, la cadena de la épica nueva en `7cfcf5d`, y la fase D en `5231022`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
+
+<!-- aviso: falta decir si la sesión se puede cerrar -->

@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `5231022`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | El registro escribe, tapa y enlaza. Siete tareas, con la 7 agregada por autorización | ☑ |
 | 7 | Pruebas | Los siete casos con veredicto. Dos ciclos: el 1 destapó un defecto crítico | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con cuatro deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «aprobado», el 2026-08-25. Commit `5231022` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Todo lo demás está hecho: las siete tareas, los siete casos de prueba en verde y el documento de cierre escrito.
+**Nada: la fase cerró.** Las siete tareas hechas, los siete casos de prueba en verde con su evidencia, el documento de cierre escrito y todo guardado en el commit `5231022`. Lo que sigue es la fase B, conectar un proyecto.
 
 **Lo que pasó en el camino, y conviene no olvidar.** `CP-007` falló en el primer ciclo: se podía escribir sin dejar constancia, y con eso `CA-01` no se cumplía. Corregirlo obligaba a tocar el almacén, que el plan no declaraba, así que **la fase se detuvo y se pidió autorización** en vez de ampliar el plan por iniciativa (`02·F8`). El usuario la dio el 2026-08-25 sobre dos opciones escritas con su costo, y el ciclo se corrió completo otra vez.
 

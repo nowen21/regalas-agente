@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-001](../HU-001-registrar-cada-accion.md): `CA-01`, `CA-02`, `CA-03`, `CA-04`, `CA-05`. Los cinco |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `5231022` |
 
 ---
 
