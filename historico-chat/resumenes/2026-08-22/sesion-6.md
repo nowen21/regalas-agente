@@ -223,6 +223,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-15 · Un sabotaje en verde tiene dos diagnósticos opuestos, y solo se distinguen corriendo el caso
+
+- **Qué pasó:** en la fase C un sabotaje pasó en verde, igual que en la H. En la H el diagnóstico había sido «el sabotaje no saboteaba». Acá la respuesta fue la contraria: sí saboteaba, y lo que había era una prueba floja.
+- **Por qué importa:** los dos casos se ven idénticos desde afuera —suite en verde con el código roto— y llevan a acciones opuestas. Mal diagnosticado, o se escribe una prueba que no protege de nada, o se deja pasar un defecto real.
+- **Qué lo soluciona:** se resolvió acá, reforzando la prueba y dejando escrito cómo se distinguen.
+- **Qué se decidió:** no se decide leyendo el código: **se corre el escenario y se mira el estado final**. Si quedó igual, el sabotaje era malo; si quedó distinto, la prueba era floja. Y la forma más común de prueba floja es mirar lo que devuelve la función en vez de lo que quedó guardado.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la prueba reforzada en la fase C, y la señal `S-033`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-16 · Una fase puede llegar medio construida por otra que no se lo proponía
+
+- **Qué pasó:** al planear la fase C, dos de sus tres criterios ya estaban casi hechos. `ruta_viva` y el aviso salieron de la fase B, porque el modelo pedía la ruta viva como campo calculado. Ninguna de las dos fases estaba pensando en esta historia.
+- **Por qué importa:** el riesgo no es haberlo construido antes, es **darlo por probado**. Ese código nunca se había ejecutado contra los criterios de la historia. Un plan que solo mirara lo nuevo habría cerrado la fase con dos criterios sin una sola prueba.
+- **Qué lo soluciona:** se resolvió acá, declarándolo en el plan antes de empezar y probándolo igual.
+- **Qué se decidió:** al abrir una fase se mira qué de sus criterios ya está construido por otras, se escribe en el plan, y **entra igual al plan de pruebas**: construido no es probado.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-008](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md) · [HU-002](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/HU-002-avisar-la-ruta-perdida.md).
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el plan de la fase C §2, y la señal `S-034`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -237,9 +267,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en siete commits, y el último es la fase H en `5bf4ebb`. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Falta guardar la fase C. Lo anterior quedó en siete commits, el último la fase H en `5bf4ebb`: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

@@ -26,6 +26,9 @@
 <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'renombrar' %}">{% csrf_token %}
   <button type="submit">Renombrar</button>
 </form>
+<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-ruta' %}">{% csrf_token %}
+  <button type="submit">Corregir dónde vive su código</button>
+</form>
 <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-version' %}">{% csrf_token %}
   <button type="submit">Corregir la versión de reglas</button>
 </form>

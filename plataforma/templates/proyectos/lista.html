@@ -13,7 +13,8 @@
     <td><a href="{% url 'proyectos-uno' p.identificador %}">{{ p.nombre }}</a></td>
     <td>
       {{ p.ruta_codigo }}
-      {% if not p.ruta_viva %}<br><span class="apagado">esa ruta ya no existe</span>{% endif %}
+      {% if not p.ruta_viva %}<br><strong>Esa carpeta ya no está.</strong>
+      <a href="{% url 'proyectos-uno' p.identificador %}">Corregir la ruta</a>{% endif %}
     </td>
     <td>{% if p.adopto_el_estandar %}{{ p.version_reglas }}{% else %}<span class="apagado">ninguna todavía</span>{% endif %}</td>
     <td>{{ p.estado }}</td>

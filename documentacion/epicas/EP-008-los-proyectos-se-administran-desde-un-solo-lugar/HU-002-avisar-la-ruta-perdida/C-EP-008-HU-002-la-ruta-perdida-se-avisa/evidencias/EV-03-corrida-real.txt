@@ -1,0 +1,34 @@
+== corrida real: se mueve la carpeta de un proyecto, y se corrige ==
+  No migrations to apply.
+-- se conecta --
+   ruta: C:\Users\user\AppData\Local\Temp\proyecto-que-se-mueve-q73subit
+   su documento: '# Su analisis\n'
+
+-- alguien mueve la carpeta a otro lado --
+   la vieja ya no existe: True
+
+-- que dice la plataforma --
+   ruta viva: False
+   aviso: La carpeta de su código ya no está donde estaba. Se buscó en «C:\Users\user\AppData\Local\Temp\proyecto-que-se-mueve-q73subit». Su documentación sigue guardada acá.
+   su documento SIGUE: '# Su analisis\n'
+
+-- se intenta corregir a una ruta que tampoco existe --
+   rechazado: No existe la carpeta «C:\Users\user\AppData\Local\Temp\ahora-vive-aqui-y00a1x1z\no-existe». Se deja la ruta que tenía.
+   la ruta que tenia se conserva: True
+
+-- se corrige a donde de verdad esta --
+   ruta nueva: C:\Users\user\AppData\Local\Temp\ahora-vive-aqui-y00a1x1z
+   ruta viva: True
+   avisos: ['Este proyecto todavía no declara qué versión del estándar sigue. Se conecta igual, y el aviso de desfase no va a servir hasta que la declare en su CLAUDE.md.', 'La carpeta de este proyecto no está bajo control de versiones: su código no tiene respaldo.']
+   su documento sigue: '# Su analisis\n'
+
+== el registro de auditoria ==
+| cuÃ¡ndo | quiÃ©n | quÃ© se hizo | sobre quÃ© | quÃ© cambiÃ³ | proyecto | sesiÃ³n |
+|---|---|---|---|---|---|---|
+| 2026-08-25T16:49:54-05:00 | el usuario | conectar un proyecto | proyectos/el-que-se-va-a-mover/proyecto.md | quedÃ³ registrado, apuntando a C:\Users\user\AppData\Local\Temp\proyecto-que-se-mueve-q73subit | el-que-se-va-a-mover |  |
+| 2026-08-25T16:49:54-05:00 | el agente | guardar un documento | proyectos/el-que-se-va-a-mover/analisis.md |  |  |  |
+| 2026-08-25T16:49:54-05:00 | el usuario | corregir la ruta de un proyecto | proyectos/el-que-se-va-a-mover/proyecto.md | de Â«C:\Users\user\AppData\Local\Temp\proyecto-que-se-mueve-q73subitÂ» a Â«C:\Users\user\AppData\Local\Temp\ahora-vive-aqui-y00a1x1zÂ» | el-que-se-va-a-mover |  |
+
+== se limpia ==
+Índice de proyectos rehecho: 0 proyecto(s).
+Índice de auditoría rehecho: 0 acción(es).

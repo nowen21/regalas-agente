@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | S |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
+| **Estado** | Cerrada el 2026-08-25, con sus tres criterios probados |
 
 ---
 
@@ -108,7 +108,7 @@ Y el cambio queda registrado en la auditoría
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| C · La ruta perdida se avisa | Esta historia | Sin abrir |
+| [C · La ruta perdida se avisa](C-EP-008-HU-002-la-ruta-perdida-se-avisa/README.md) | Esta historia | Cerrada el 2026-08-25. Los tres criterios con veredicto |
 
 ---
 
@@ -129,8 +129,8 @@ Y el cambio queda registrado en la auditoría
 
 ## 11. Definition of Done
 
-- ☐ Los tres criterios con veredicto y evidencia.
-- ☐ Medido que listar cincuenta proyectos sigue bajo un segundo.
+- ☑ Los tres criterios con veredicto y evidencia.
+- ☑ Medido: listar cincuenta proyectos tarda **0.010 s**, contra un límite de un segundo.
 
 ## 12. Validación INVEST
 
@@ -148,3 +148,5 @@ Y el cambio queda registrado en la auditoría
 | Fecha | Qué pasó |
 |---|---|
 | 2026-08-25 | Nace de `F-002`, al aprobarse el inventario de Cimiento |
+| 2026-08-25 | Se abre la fase C. Al planearla se vio que `CA-01` y `CA-02` ya estaban casi construidos, de rebote, por la fase B |
+| 2026-08-25 | Cierra la fase C. El aviso ya nombra la ruta, y se puede corregir |

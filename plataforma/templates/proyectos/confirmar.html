@@ -20,6 +20,11 @@
   <label for="nombre">Cómo se va a llamar</label>
   <input type="text" id="nombre" name="nombre" value="{{ proyecto.nombre }}">
   {% endif %}
+  {% if pide_ruta %}
+  <label for="ruta">Dónde vive su código ahora</label>
+  <input type="text" id="ruta" name="ruta" value="{{ proyecto.ruta_codigo }}">
+  <p class="apagado">La de antes era: {{ proyecto.ruta_codigo }}</p>
+  {% endif %}
   <button type="submit">{{ boton }}</button>
 </form>
 

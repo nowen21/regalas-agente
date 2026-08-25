@@ -40,6 +40,16 @@ CONFIRMACIONES = {
         ],
         "boton": "Sí, renombrar",
     },
+    "corregir-ruta": {
+        "titulo": "Corregir dónde vive su código",
+        "que_pasa": "El proyecto pasa a apuntar a la carpeta que usted diga.",
+        "que_no_pasa": [
+            "Su documentación no se mueve: sigue en la plataforma.",
+            "Ninguna de las dos carpetas se toca: ni la vieja ni la nueva.",
+            "No se copia ni se mueve código de un lado al otro.",
+        ],
+        "boton": "Sí, corregir la ruta",
+    },
     "corregir-version": {
         "titulo": "Corregir la versión de reglas",
         "que_pasa": "Se vuelve a leer del CLAUDE.md del proyecto y se comprueba.",
@@ -131,6 +141,7 @@ def cambiar(request, identificador, que):
             proyecto=proyecto,
             accion=que,
             pide_nombre=(que == "renombrar"),
+            pide_ruta=(que == "corregir-ruta"),
             campos={}))
 
     quien, sesion = "el usuario", (request.POST.get("sesion") or "").strip()
@@ -142,11 +153,15 @@ def cambiar(request, identificador, que):
             proyecto = core.renombrar(
                 proyecto, request.POST.get("nombre"), quien=quien,
                 sesion=sesion)
+        elif que == "corregir-ruta":
+            proyecto = core.corregir_ruta(
+                proyecto, request.POST.get("ruta"), quien=quien,
+                sesion=sesion)
         else:
             proyecto = core.corregir_version(proyecto, quien=quien,
                                              sesion=sesion)
     except (core.NombreVacio, core.VersionQueNoExiste,
-            core.RutaQueNoExiste) as rechazo:
+            core.RutaQueNoExiste, core.RutaYaRegistrada) as rechazo:
         return render(request, "proyectos/uno.html", {
             "proyecto": proyecto,
             "avisos": _avisos_de(proyecto),
@@ -165,9 +180,6 @@ def _avisos_de(proyecto):
         return ["Este proyecto está desconectado desde el %s. Su documentación "
                 "sigue guardada acá, y vuelve si se conecta otra vez."
                 % proyecto.desconectado]
-    if not proyecto.ruta_viva:
-        return ["La ruta de este proyecto ya no existe. Su documentación "
-                "sigue acá."]
     return core.avisos_de(proyecto.ruta_codigo, proyecto.version_reglas)
 
 

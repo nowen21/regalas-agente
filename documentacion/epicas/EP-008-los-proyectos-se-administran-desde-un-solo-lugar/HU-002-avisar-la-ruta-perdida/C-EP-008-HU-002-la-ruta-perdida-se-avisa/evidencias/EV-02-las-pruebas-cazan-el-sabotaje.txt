@@ -1,0 +1,41 @@
+== seis sabotajes, uno por cada cosa que la fase promete ==
+== se restauran con copia, nunca con el control de versiones ==
+
+--- 1: el aviso no dice que ruta se busco ---
+FAIL: test_el_aviso_dice_que_ruta_se_busco (nucleo.proyectos.tests.RutaPerdidaTests.test_el_aviso_dice_que_ruta_se_busco)
+Ran 103 tests in 4.942s
+FAILED (failures=1)
+
+--- 2: corregir la ruta no comprueba que exista ---
+FAIL: test_el_rechazo_se_ve_en_la_pantalla (nucleo.proyectos.tests.CorregirRutaTests.test_el_rechazo_se_ve_en_la_pantalla)
+FAIL: test_una_ruta_que_no_existe_se_rechaza_y_conserva_la_que_tenia (nucleo.proyectos.tests.CorregirRutaTests.test_una_ruta_que_no_existe_se_rechaza_y_conserva_la_que_tenia)
+Ran 103 tests in 6.219s
+FAILED (failures=2)
+
+--- 3: corregir la ruta no comprueba el duplicado ---
+FAIL: test_una_ruta_de_otro_proyecto_se_rechaza (nucleo.proyectos.tests.CorregirRutaTests.test_una_ruta_de_otro_proyecto_se_rechaza)
+Ran 103 tests in 6.528s
+FAILED (failures=1)
+
+--- 4: corregir la ruta deja la version vieja ---
+FAIL: test_corregir_la_ruta_relee_la_version_de_reglas (nucleo.proyectos.tests.CorregirRutaTests.test_corregir_la_ruta_relee_la_version_de_reglas)
+Ran 103 tests in 4.005s
+FAILED (failures=1)
+
+--- 5: corregir la ruta mueve el codigo de una carpeta a la otra ---
+ERROR: test_corregir_la_ruta_quita_el_aviso (nucleo.proyectos.tests.CorregirRutaTests.test_corregir_la_ruta_quita_el_aviso)
+FAIL: test_ninguna_de_las_dos_carpetas_cambia (nucleo.proyectos.tests.CorregirNoTocaLasCarpetasTests.test_ninguna_de_las_dos_carpetas_cambia)
+Ran 103 tests in 4.318s
+FAILED (failures=1, errors=1)
+
+--- 6: corregir la ruta no pregunta antes ---
+FAIL: test_corregir_version_pregunta_antes (nucleo.proyectos.tests.ConfirmacionTests.test_corregir_version_pregunta_antes)
+FAIL: test_desconectar_pregunta_antes_y_no_cambia_nada (nucleo.proyectos.tests.ConfirmacionTests.test_desconectar_pregunta_antes_y_no_cambia_nada)
+FAIL: test_renombrar_pregunta_antes (nucleo.proyectos.tests.ConfirmacionTests.test_renombrar_pregunta_antes)
+FAIL: test_corregir_la_ruta_pregunta_antes (nucleo.proyectos.tests.CorregirRutaTests.test_corregir_la_ruta_pregunta_antes)
+Ran 103 tests in 4.918s
+FAILED (failures=4)
+
+--- con el codigo restaurado ---
+Ran 103 tests in 4.248s
+OK

@@ -309,3 +309,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente, construyendo `00·N1` en una pantalla.
 - **Scope:** estándar; aplica a cualquier proyecto con acciones que cambian estado.
 - **Rel:** —
+
+## S-033 · Cuando un sabotaje pasa en verde hay dos diagnósticos, y hay que distinguirlos  ·  aprendizaje · activa
+- **What:** en la fase C uno de los seis sabotajes pasó en verde, igual que había pasado en la fase H. En la H el diagnóstico fue «el sabotaje no saboteaba». Acá se aplicó la misma pregunta y la respuesta fue la contraria: **sí saboteaba**. El sabotaje hacía que corregir la ruta guardara la versión nueva en el índice y dejara la vieja en la ficha, así que al rehacer el índice volvía la vieja.
+- **Why:** los dos casos se ven idénticos desde afuera —una suite en verde con el código roto— y llevan a acciones opuestas. Si se diagnostica mal, o se escribe una prueba que no protege de nada, o se deja pasar un defecto real creyendo que el sabotaje era malo.
+- **Also:** lo que distinguió los dos casos fue **correr el escenario a mano y mirar el estado final**, no razonar sobre el código. En la fase H el archivo quedaba idéntico; acá quedaba distinto, y se vio en tres líneas de salida.
+- **Where:** [evidencias/EV-02 de la fase C](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/C-EP-008-HU-002-la-ruta-perdida-se-avisa/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt) · la prueba reforzada, `test_corregir_la_ruta_relee_la_version_de_reglas`, que ahora borra el índice y comprueba contra el texto.
+- **Learned:** ante un sabotaje en verde, **no se decide leyendo el código: se corre el escenario y se mira el estado final**. Si el estado quedó igual, el sabotaje era malo. Si quedó distinto, es una prueba floja. Y la forma más común de prueba floja es mirar **lo que devuelve la función** en vez de lo que quedó guardado: la función puede devolver lo correcto y haber escrito otra cosa.
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier fase que valide sus pruebas con sabotaje.
+- **Rel:** S-028, S-030, S-031.
+
+## S-034 · Una fase puede llegar medio construida por fases anteriores, y hay que decirlo antes de planearla  ·  patrón · activa
+- **What:** al planear la fase C apareció que dos de sus tres criterios ya estaban casi construidos. `ruta_viva` y el aviso de la lista habían salido de la fase B, porque el modelo de datos pedía la ruta viva como campo calculado. Ninguna de las dos fases estaba pensando en la historia de la ruta perdida.
+- **Why:** el riesgo no es haberlo construido antes: es **darlo por probado**. Ese código nunca se había ejecutado contra los criterios de esta historia, así que estaba sin verificar aunque funcionara. Un plan que solo mirara lo nuevo habría cerrado la fase dejando dos criterios sin una sola prueba.
+- **Also:** decirlo antes también evitó lo contrario, que es rehacer lo que ya estaba. La sección 2 del plan lo puso en una tabla de tres columnas: qué pide la historia, qué hay hoy, qué falta.
+- **Where:** [plan_trabajo.md de la fase C](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/C-EP-008-HU-002-la-ruta-perdida-se-avisa/plan_trabajo.md) §2 · su plan de pruebas §3.2, que exige probar también lo que ya estaba.
+- **Learned:** al abrir una fase, mirar qué de sus criterios ya está construido **por otras fases que no se lo proponían**, y escribirlo en el plan antes de empezar. Lo que aparezca así entra igual al plan de pruebas: construido no es probado, y el estado honesto de ese código es «sin verificar».
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier proyecto que ejecute historias por fases.
+- **Rel:** S-022 (el estado sale de la prueba, no de la lectura).
