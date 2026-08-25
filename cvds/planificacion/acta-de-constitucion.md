@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Es la autorización formal del proyecto y su plan de conjunto: quién lo encarga, qué autoriza exactamente, con qué hitos y qué riesgos se asumen. El planteamiento dice **qué problema** se resuelve; esta dice **que se autoriza resolverlo**, con nombre, fecha y límites.
 
-> **Escrito como si no hubiera nada construido**, igual que el resto de [cvds/](../README.md). Acompaña a [cvds/planificacion/README.md](README.md). Quien encarga y quien autoriza son la misma persona, y eso se escribe igual: la firma de uno mismo también fija el compromiso.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reemplaza al acta firmada el 2026-08-24, que autorizaba otro producto. Quien encarga y quien autoriza son la misma persona, y eso se escribe igual: la firma de uno mismo también fija el compromiso.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 
@@ -10,22 +10,23 @@
 
 | Campo | Valor |
 |---|---|
-| **Proyecto** | Estándar de trabajo heredable para un agente de IA |
+| **Proyecto** | Cimiento, plataforma de gestión de proyectos |
 | **Quién lo encarga** | Ing. José Dúmar Jiménez Ruíz, que además lo usa y lo aprueba |
-| **Qué autoriza** | Construir los siete paquetes del desglose de [README.md](README.md#10-desglose-del-trabajo-wbsedt): reglas cargadas al abrir, herencia e instalación, comprobación automática, registro de lo que la sesión deja, enmascarado de credenciales, moldes del ciclo y generador del entregable |
-| **Qué NO autoriza** | Servidor, panel de administración ni servicio en línea. Tampoco actualizar un proyecto que hereda sin su aprobación, ni editar el `.docx` y devolverlo al `.md` |
-| **Presupuesto aceptado** | Sin dinero. Tiempo del autor, estimado en 88 jornadas con un tercio de margen |
+| **Qué autoriza** | Construir los trece paquetes del desglose de [README.md](README.md#10-desglose-del-trabajo-wbsedt): plataforma y proyectos conectados, reglas administradas y servidas, ciclo de vida operado, aprobaciones, auditoría, comprobación automática, memoria, expediente y entregable, traer proyectos existentes, avisos y reportes, compatibilidad hacia atrás, enmascarado de credenciales y medición del tiempo de revisión |
+| **Qué NO autoriza** | Un servicio en línea o alojado por terceros. Que la plataforma escriba el código de los proyectos. Editar el entregable de ofimática y devolverlo a la fuente. Actualizar un proyecto sin aprobación |
+| **Presupuesto aceptado** | Sin dinero. Tiempo del autor, estimado en 173 jornadas con un tercio de margen |
 | **Fecha de autorización** | 2026-08-24 |
 
 ## 2. Hitos del plan
 
 | # | Hito | Qué queda entregado | Fecha objetivo |
 |---|---|---|---|
-| 1 | Las reglas se cargan solas y mandan | El cuerpo de reglas y el cargador de sesión, con el núcleo que nada contradice | Sin fecha |
-| 2 | Lo que se exige se comprueba solo | Una comprobación corriendo por cada regla que la admita | Sin fecha |
-| 3 | El ciclo se documenta mientras se construye | Los moldes del ciclo, en uso desde la primera fase | Sin fecha |
-| 4 | Instalado en un proyecto que no es del autor | Alguien ajeno lo instala siguiendo solo el manual, y lo usa una semana | Sin fecha |
-| 5 | El entregable sale de lo escrito | El `.docx` generado desde los `.md`, sin redigitar nada | Sin fecha |
+| 1 | Un proyecto conectado y visible | Se ve su estado sin entrar a su carpeta | Sin fecha |
+| 2 | El agente recibe las reglas de la plataforma | Trabaja en un proyecto con lo que la plataforma le entregó | Sin fecha |
+| 3 | El ciclo se opera desde la interfaz | Se abre y se cierra una fase sin crear archivos a mano | Sin fecha |
+| 4 | Lo aprobado queda registrado | Se puede mostrar quién aprobó qué, cuándo y sobre qué texto | Sin fecha |
+| 5 | El expediente se genera cuando se pide | Se entrega el `.docx` de un proyecto el mismo día | Sin fecha |
+| 6 | Un proyecto que ya existía queda gobernado | Lo que tenía escrito está adentro y se administra desde la plataforma | Sin fecha |
 
 > **Ninguna fecha, y se dice.** El proyecto no tiene plazo comprometido con nadie: se sostiene mientras se use. Poner fechas de deseo sería inventar un compromiso que no existe.
 
@@ -35,20 +36,20 @@
 |---|---|---|
 | Quien encarga y usa | Ing. José Dúmar Jiménez Ruíz | El alcance, cada aprobación de puerta y la aceptación final |
 | Quien construye | El agente, por sesión | Lo técnico dentro del plan aprobado |
-| Quien hereda | Los proyectos que adopten el estándar | Qué versión adoptan, y cuándo se ponen al día |
+| Quien recibe un proyecto | El cliente de cada proyecto | Nada del plan: recibe los entregables de cada fase |
 
 ## 4. Riesgos del proyecto
 
 | # | Riesgo | Impacto | Qué se hace si ocurre |
 |---|---|---|---|
-| 1 | El agente no obedece lo que se le carga al abrir | El proyecto entero pierde sentido | Se comprueba con programa lo que no se puede confiar a su memoria |
-| 2 | Nadie ajeno lo adopta | Queda como preferencia personal, no como estándar | Se instala en un proyecto ajeno y se mide si lo usan |
-| 3 | El estándar crece hasta que nadie lo lee entero | Deja de cumplirse por volumen | Se recorta al molde, y el porqué se va a su nota |
-| 4 | Dos reglas se contradicen | Se incumple una obedeciendo la otra | Gana el núcleo, y la más nueva se deroga sin borrarla |
-| 5 | Todo depende de una sola persona | Sin ella, el estándar se congela | Queda escrito y legible sin su autor, que es lo único que lo hace sobrevivir |
+| 1 | Sin la plataforma no se puede trabajar en ningún proyecto | El trabajo se detiene | Se lee la fuente en texto hasta levantarla |
+| 2 | Se pierde la máquina y con ella la información de todos los proyectos | Se pierde la memoria de todo | Se clona el repositorio y se reconstruye el índice |
+| 3 | El agente no obedece lo que la plataforma le entrega | La plataforma administra pero no gobierna | Se comprueba con programa lo que no se puede confiar a su memoria |
+| 4 | El alcance crece más rápido de lo que se construye | Nada se termina | Se recorta la versión, nunca el inventario |
+| 5 | Todo depende de una sola persona | Sin ella la plataforma se congela | Queda escrito y legible sin su autor |
 
 ## 5. Cómo se comunica el avance
 
-El estado real se lee en el repositorio, no se reporta aparte: el estado de cada fase, el registro de versiones y lo que cada sesión dejó escrito. Se revisa al cerrar cada versión, y ahí se decide qué entra en la siguiente.
+El estado se consulta en la plataforma, no se reporta aparte: qué proyectos hay, en qué va cada uno, qué se aprobó y qué se desvió. Se revisa al cerrar cada versión, y ahí se decide qué entra en la siguiente.
 
-Los proyectos que heredan se enteran solos: al abrir sesión se les avisa si la versión que adoptaron quedó atrás, y qué cambió desde entonces.
+Los proyectos reciben lo suyo sin pedirlo: las reglas al abrir sesión, y el aviso de lo que se desvía.

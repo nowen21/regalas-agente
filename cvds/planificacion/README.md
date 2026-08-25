@@ -1,8 +1,8 @@
-# Planificación Proyecto: Estándar de trabajo heredable (`agente`)   ·   `[CAPA 3]`
+# Planificación Proyecto: Cimiento, plataforma de gestión de proyectos   ·   `[CAPA 3]`
 
 **Para qué sirve este documento.** Deja escrito, antes de comprometer trabajo, **por qué vale la pena hacer el proyecto, por qué camino y con qué**: el problema, los límites del alcance, los recursos, el cronograma, los riesgos, quién responde por cada cosa y cómo se le informa a quién. Es la única etapa que puede terminar en «no se hace», y ese también es un resultado que se escribe acá.
 
-> **Prueba de llenado, retrodocumentada el 2026-08-22 sobre v33.1.0.** El proyecto ya está andando: esto se escribe después, para ver qué contesta el molde y qué deja al descubierto. Lo que nunca se decidió se dice así, no se inventa.
+> **Escrito desde la propuesta, no desde lo que hoy existe.** Lo construido sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. Reescrito el 2026-08-24: ver la sección 19.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 
@@ -12,39 +12,42 @@
 
 | Pregunta | Respuesta |
 |---|---|
-| **¿Cuál es el problema?** | El usuario delega trabajo de desarrollo a un agente de IA y no puede confiar en lo que recibe. En cada sesión vuelve a explicar lo mismo, porque de la anterior no quedó nada. Le entregan como terminado lo que nunca se probó, le cambian cosas que no pidió y se pierde lo que ya estaba acordado. Al abrir otro proyecto, todo emcomponente de cero. Y del trabajo hecho no queda documentación: sale código, pero nadie escribe qué se construyó, qué necesidad resolvía ni cómo se instala. Meses después el único que puede responder eso es quien lo escribió, y si fue el agente, ya no existe. Y cuando le pasa una clave para que trabaje con ella, esa clave queda escrita en el registro de la conversación, que se guarda y no se borra. Además, lo que delega no es una tarea suelta: el agente hace de analista, de quien construye, de quien prueba y de quien documenta, y cada tanto le hace falta un componente nuevo. Cada componente nuevo se lleva por delante lo que ya funcionaba. |
-| **¿A quién le pasa?** | Al autor, que delega el trabajo y responde por lo que se entrega. Y a quien reciba el proyecto después: sin documentación no puede retomarlo ni operarlo sin preguntarle a quien lo hizo. |
-| **¿Cada cuánto pasa?** | En cada sesión de trabajo, varias veces al día. No es un incidente aislado: es la forma normal de trabajar con el agente. |
-| **¿A qué escala?** | Sobre todo lo que el agente entrega, y de nuevo entero en cada proyecto nuevo. Hoy son siete épicas y unos setenta validadores en este repositorio, más los proyectos que lo hereden. |
-| **¿Cómo se resuelve hoy?** | Repitiendo las instrucciones en el chat al abrir cada sesión, y revisando a mano todo lo que el agente entrega. La documentación, cuando se hace, se escribe al final y de memoria. |
-| **¿Qué se intentó antes?** | Corregir por chat cada vez que el agente se desviaba. Y guardar las preferencias en el almacén de recuerdos de la herramienta. |
-| **¿Por qué no funcionó?** | La corrección por chat se va con la conversación. El almacén de la herramienta queda fuera del repositorio: no viaja con el proyecto, no se versiona y nadie más lo ve. |
-| **¿Qué le cuesta hoy?** | El costo no es que el agente se equivoque: es que el usuario tiene que revisarlo todo, y revisar cuesta más que hacer. No está medido en horas; se nota en que la misma corrección se ha dado varias veces y en que hay que releer el trabajo entero para saber si sirve. Sin documentación, leer el código para entender qué hace se repite entero cada vez que se retoma el proyecto, y entregarlo a alguien más no es viable. |
-| **¿Qué pasa si no se hace nada?** | El retrabajo se repite en cada sesión y crece con cada proyecto. Y lo construido queda sin poderse entregar ni retomar: el conocimiento vive en la cabeza del autor y en conversaciones que ya se borraron. |
-| **¿Qué necesita que pase?** | Que lo acordado una vez siga valiendo en la sesión siguiente y en el proyecto siguiente, y poder saber qué se hizo y qué se comprobó sin releerlo todo. Que sea **un solo sistema y no partes sueltas**, y que pueda crecer: lo que se agregue tiene que entrar sin romper lo anterior, y poder verse desde algún lado sin abrir archivo por archivo. Y que la documentación del ciclo de vida se vaya generando **a medida que se construye**, no esperando al final a redactarla de memoria: cada documento en su `.md`, con la distribución de las plantillas, y el entregable en `.docx` generado por la interfaz desde esos mismos `.md`, para no mantener dos versiones del mismo texto. |
+| **¿Cuál es el problema?** | El usuario trabaja en varios proyectos a la vez y no tiene desde dónde gobernarlos. Cada proyecto guarda su propia documentación adentro, así que para saber cómo va uno hay que entrar a él, y para compararlos no hay forma. El agente que lo ayuda arranca en blanco cada sesión: repite lo ya corregido, entrega sin comprobar y cambia lo que no se pidió. Lo que se aprueba se dice en una conversación que se borra, así que después nadie puede demostrar qué se autorizó. Y cuando hay que entregar la documentación de un proyecto, hay que armarla documento por documento. |
+| **¿A quién le pasa?** | Al usuario, que responde por todos los proyectos. Y a quien reciba cualquiera de ellos: hoy recibiría código sin expediente, o un expediente incompleto |
+| **¿Cada cuánto pasa?** | Todos los días, en cada sesión de trabajo, y en cada proyecto |
+| **¿A qué escala?** | Sobre todos los proyectos en los que trabaja, y crece con cada proyecto nuevo |
+| **¿Cómo se resuelve hoy?** | Entrando proyecto por proyecto, leyendo archivos, y rearmando la documentación a mano cuando alguien la pide |
+| **¿Qué se intentó antes?** | Escribir la documentación dentro de cada proyecto. Corregir al agente por chat. Guardar sus preferencias en la herramienta |
+| **¿Por qué no funcionó?** | La documentación dentro del proyecto no se puede consultar de conjunto ni auditar. La corrección por chat se va con la conversación. El almacén de la herramienta se queda en esa máquina |
+| **¿Qué le cuesta hoy?** | Revisarlo todo, que cuesta más que hacerlo. No está medido en horas; se nota en que la misma corrección se repite, en que entrar a un proyecto es la única forma de saber cómo va, y en que armar un expediente toma un día |
+| **¿Qué pasa si no se hace nada?** | El costo crece con cada proyecto. Lo aprobado sigue sin quedar registrado, y el conocimiento sigue viviendo en la cabeza del usuario y en conversaciones borradas |
+| **¿Qué necesita que pase?** | Un solo lugar desde donde administrar todos los proyectos: que guarde su documentación, registre lo aprobado, deje auditar lo que se hizo, avise lo que se desvía y **genere el expediente cuando se pida**, sin armarlo documento por documento. Que el agente tome de ahí las reglas con que trabaja, en cualquier proyecto. Y que pueda crecer: lo que se agregue entra sin romper lo anterior |
 
 **Objetivo principal**
 
-Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve lo acordado con el agente entre sesiones, no le deje cambiar nada sin autorización, deje documentado, comprobado y entregable lo que se construye, y **pueda crecer con componentes nuevos sin romper las anteriores**, para que el usuario no tenga que revisarlo todo ni volver a leer el código para entenderlo.
+Desarrollar una plataforma que administre la documentación, el seguimiento y la auditoría de todos los proyectos del usuario, y de la que el agente tome las reglas con que trabaja, para gobernar el trabajo desde un solo lugar y poder entregar el expediente de cualquier proyecto cuando haga falta.
 
 **Objetivos**
 
+> Cada uno abre con un verbo en infinitivo y sale de lo que el usuario necesita, no del producto.
+
 | # | Objetivo | En qué se nota | Para quién |
 |---|---|---|---|
-| 1 | Conservar lo acordado entre una sesión y la siguiente | La corrección se da una vez y la siguiente ya la respeta | El usuario |
-| 2 | Heredar en cada proyecto nuevo lo ya aprendido | Al abrirlo, ya rige lo aprendido en los anteriores | El usuario, en cada proyecto nuevo |
+| 1 | Administrar todos los proyectos desde un solo lugar | Sabe cómo va cualquiera sin entrar a él | El usuario |
+| 2 | Conservar lo acordado entre una sesión y la siguiente | La corrección se da una vez y la siguiente ya la respeta | El usuario |
 | 3 | Reducir el tiempo que el usuario gasta revisando | Aprueba leyendo lo entregado, no rehaciéndolo | El usuario |
 | 4 | Comprobar antes de entregar, y declarar lo no comprobado | Lo entregado dice qué se probó, y lo que no, también | El usuario |
 | 5 | Entregar terminado lo que se declara terminado | No aparece a medias lo que se dio por cerrado | El usuario |
 | 6 | Impedir cambios de estado sin autorización del usuario | No aparecen cambios que no pidió | El usuario |
-| 7 | Avisar antes de lo que no se puede deshacer | Nada se pierde sin que él lo haya autorizado | El usuario |
-| 8 | Registrar fuera del chat lo que la sesión dejó | Se sabe qué pasó sin releer el trabajo entero | El usuario y la sesión siguiente |
-| 9 | Proteger las credenciales de quedar escritas en claro | Ninguna clave suya queda registrada en el repositorio | El usuario |
-| 10 | Documentar lo construido mientras se construye, no después | Cada cosa entregada llega con qué hace y para qué | El usuario |
+| 7 | Guardar quién aprobó qué, cuándo y sobre qué texto | Puede demostrar lo autorizado meses después | El usuario |
+| 8 | Registrar lo que se hizo, para poder auditarlo | Puede rastrear cualquier cambio hasta quién lo hizo | El usuario |
+| 9 | Generar el expediente de un proyecto cuando se pida | Lo entrega el mismo día, sin armarlo documento por documento | El usuario y quien reciba el proyecto |
+| 10 | Documentar lo construido mientras se construye | Cada cosa entregada llega con qué hace y para qué | El usuario |
 | 11 | Dejar por escrito cómo se instala y se opera | Otra persona lo levanta sin preguntarle a quien lo hizo | Quien reciba el proyecto |
-| 12 | Generar el entregable de ofimática desde lo ya escrito | Recibe el `.docx` sin que nadie lo redigite | El usuario y quien reciba el proyecto |
-| 13 | Agregar componentes nuevos sin romper las que ya servían | Lo que funcionaba ayer sigue funcionando después de cada versión | El usuario y los proyectos que heredan |
-| 14 | Ver desde una pantalla lo que el agente hace y guarda | Revisa sin abrir archivo por archivo | El usuario |
+| 12 | Proteger las credenciales de quedar escritas en claro | Ninguna clave suya queda registrada | El usuario |
+| 13 | Traer un proyecto que ya existe, con lo que tenga escrito | Empieza a gobernarlo sin rehacer su historia | El usuario |
+| 14 | Avisar lo que se desvía, sin que haya que ir a mirarlo | Se entera de la ruta perdida o la deuda vencida cuando pasa | El usuario |
+| 15 | Agregar componentes nuevos sin romper los que ya servían | Lo que funcionaba ayer sigue funcionando después de cada versión | El usuario |
 
 ## 2. El alcance
 
@@ -52,26 +55,26 @@ Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve
 
 | ¿Qué se incluye? | ¿Qué queda fuera? | ¿Por qué queda fuera? |
 |---|---|---|
-| Reglas agnósticas de stack, en `base/` | Reglas de un framework o de un cliente | `M3` y `M13`: lo que sirve a un solo stack no se hereda |
-| Moldes de documento, en `plantillas/` | El contenido de los documentos de cada proyecto | El molde viaja; lo llenado se queda en su proyecto |
-| Validadores y enganches | Un servicio en línea, o alojado por un tercero | El sistema corre en la máquina de quien trabaja, sin depender de nadie más |
-| Una interfaz local para ver los documentos del ciclo y lo que el agente guarda | Editar el `.docx` y devolverlo al `.md` | La fuente es el `.md`; el `.docx` es una salida, y una salida no se edita |
-| La memoria de lo aprendido, guardada y consultable | Que la memoria viva en el almacén de la herramienta | Ahí no viaja con el proyecto, no se versiona y nadie más la ve |
-| Que el sistema pueda crecer: componentes nuevos que entran sin romper los anteriores | Crecer sin comprobar que lo anterior sigue sirviendo | Cada componente nuevo se lleva por delante lo que ya funcionaba, y eso es parte del problema |
-| Instalación y aviso de desfase | Actualización automática sin aprobación | `N1`: ningún cambio de estado sin aprobación explícita |
-
-
+| La plataforma que administra los proyectos, con su interfaz | Que la plataforma escriba el código del proyecto | Eso lo hace el agente trabajando, no la pantalla |
+| La documentación de todos los proyectos, guardada y administrada por la plataforma | Que cada proyecto mantenga su documentación adentro | Es lo que impide consultarlos de conjunto y auditarlos |
+| Las reglas con que trabaja el agente, servidas desde la plataforma | Reglas propias de un stack o de un cliente dentro de las comunes | Lo que sirve a uno solo no se hereda |
+| El registro de aprobaciones y la auditoría de lo que se hizo | Auditar cada palabra de cada sesión | Pesa más de lo que sirve: se audita la acción, no la conversación |
+| La generación del expediente y su entregable de ofimática | Editar el entregable y devolverlo a la fuente | La fuente es el texto, y una salida no se edita |
+| Traer proyectos que ya existen, con lo que tengan escrito | Migrar solo lo que no siga ningún molde | Lo que no tiene forma conocida se revisa a mano |
+| Que la plataforma crezca con componentes nuevos | Crecer sin comprobar que lo anterior sigue sirviendo | Cada componente nuevo se llevaba por delante lo que ya funcionaba |
+| Correr en la máquina del usuario, y poder correr en un servidor después | Un servicio de terceros que aloje la información | Los proyectos son del usuario y de sus clientes |
 
 ## 3. Supuestos
 
-> **Un supuesto es un hecho que el plan necesita cierto y nadie comprobó.** Si alguno falla, el plan cambia. Es lo más barato de escribir y lo más caro de omitir: un supuesto falso explica la mayoría de los proyectos que se pasan de plazo.
+> **Un supuesto es un hecho que el plan necesita cierto y nadie comprobó.** Si alguno falla, el plan cambia. Es lo más barato de escribir y lo más caro de omitir.
 
-| # | Se da por cierto que | ¿Qué pasa si resulta falso? | ¿Quién lo confirma¿ |
+| # | Se da por cierto que | Qué pasa si resulta falso | Quién lo confirma |
 |---|---|---|---|
-| 1 | El agente obedece lo escrito si se le carga al abrir la sesión | El estándar entero pierde sentido: habría que hacerlo cumplir por fuera | El uso diario |
-| 2 | Lo que sirve para este usuario sirve para otro | Queda como preferencia personal, no como estándar | Instalarlo en un proyecto ajeno |
-| 3 | Las reglas escritas en `.md` bastan; no hace falta código para hacerlas cumplir | Cada regla necesitaría su validador, y el costo se multiplica | Los incumplimientos que aparezcan |
-| 4 | La documentación escrita mientras se construye no atrasa el trabajo | Habría que elegir entre documentar y avanzar | Medir el retrabajo evitado |
+| 1 | El agente obedece lo que la plataforma le entrega al abrir | La plataforma administra pero no gobierna: habría que hacerla cumplir por fuera | El uso diario |
+| 2 | Guardar la documentación fuera del proyecto no estorba al trabajo diario | Habría que devolver parte al proyecto, y se pierde la vista de conjunto | Las primeras semanas de uso |
+| 3 | La fuente cabe en texto, y la base solo hace de índice | El respaldo deja de ser el repositorio y hay que construirle uno propio | Al crecer la memoria |
+| 4 | Un solo usuario alcanza para la primera versión | Aparecen permisos, roles y datos de terceros antes de lo previsto | Cuando alguien más la use |
+| 5 | Documentar mientras se construye no atrasa el trabajo | Habría que elegir entre documentar y avanzar | Medir el retrabajo evitado |
 
 ## 4. Restricciones
 
@@ -79,20 +82,22 @@ Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve
 
 | Tipo | Restricción | ¿De dónde viene? | Cómo se sabe si se rompió |
 |---|---|---|---|
-| Plazo | Sin fecha de entrega: el estándar se mantiene mientras se use | El propio proyecto | No aplica: no hay plazo que vencer |
+| Plazo | Sin fecha de entrega: la plataforma se mantiene mientras se use | El propio proyecto | No aplica: no hay plazo que vencer |
 | Presupuesto | Sin costo monetario; solo tiempo del autor | Decisión del autor | Aparecería una dependencia paga o un servicio contratado |
-| Tecnología o plataforma | Python de la biblioteca estándar y los enganches de Claude Code, sin infraestructura propia | Debe correr donde ya corre el agente | Una importación de paquete de terceros en `validadores/`. **Hoy nadie lo comprueba: falta esa comprobación** |
-| Formato de los entregables | Se escriben en `.md`, uno por documento del ciclo, con la distribución de las plantillas. El `.docx` no se escribe a mano: lo genera la interfaz desde esos `.md` | Necesidad de entregar al cliente en formato de ofimática sin duplicar la fuente | Un `.docx` con cambios que no están en su `.md`. **Falta esa comprobación, y el generador todavía no existe** |
-| Normativa o licencias | Sin datos personales ni de terceros; las credenciales no se escriben | `N6` | El enmascarado corre al guardar, y una comprobación rechaza el guardado si encuentra una clave |
+| Dónde corre | En la máquina del usuario. Nada obliga a un servidor, y nada lo impide después | Decisión del autor | Una función que solo sirva con red |
+| Dónde vive la información | La fuente es texto versionado; la base es índice y se puede reconstruir | Que el respaldo sea el propio repositorio | Un dato que solo exista en la base |
+| Formato de los entregables | Se escriben en `.md`; el `.docx` se genera desde ahí y no se edita | Entregar en ofimática sin duplicar la fuente | Un `.docx` con cambios que no están en su `.md` |
+| Normativa y credenciales | Sin datos de personas; ninguna credencial se escribe ni se guarda | `N6` | El enmascarado corre al guardar, y una comprobación rechaza el guardado |
 
 ## 5. Dependencias de terceros
 
 > **Una dependencia es algo que el proyecto necesita y no puede producir:** lo entrega alguien que no está en el equipo, y por eso no se le puede exigir la fecha.
 
-| ¿De quién o de qué? | ¿Qué se necesita? | ¿Para cuándo? | ¿Qué se hace si no llega? |
+| De quién o de qué | Qué se necesita | Para cuándo | Qué se hace si no llega |
 |---|---|---|---|
-| Claude Code | Que siga permitiendo enganches al abrir y cerrar sesión | Permanente | Las reglas quedan escritas, pero se cargan a mano |
-| Un proyecto ajeno | Alguien que no sea el autor que lo adopte | Sin fecha | Sigue siendo preferencia personal, no estándar |
+| La herramienta donde corre el agente | Que siga permitiendo enganches al abrir y cerrar sesión | Permanente | Las reglas quedan servidas, pero se cargan a mano |
+| El control de versiones | Que siga siendo el respaldo de la fuente | Permanente | Habría que construir un respaldo propio |
+| Un proyecto ajeno | Alguien que no sea el autor que la adopte | Sin fecha | Sigue siendo una herramienta personal, y se dice así |
 
 ## 6. Viabilidad, en cuatro frentes
 
@@ -100,30 +105,29 @@ Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve
 
 | Frente | Pregunta | Respuesta | ¿Bloquea? |
 |---|---|---|---|
-| Técnica | ¿Existe la tecnología y el conocimiento para hacerlo? | Sí: archivos `.md`, Python de la biblioteca estándar y los enganches que ya trae Claude Code | No |
-| Económica | ¿Los beneficios justifican el costo? | Sí: el costo es tiempo del propio autor; lo que ahorra es la corrección repetida en cada proyecto | No |
-| Operativa | ¿La organización y los usuarios lo van a adoptar? | Un solo usuario, que es quien lo escribe. La adopción real se prueba al instalarlo en un proyecto ajeno | No, pero es el frente sin evidencia |
-| Legal | ¿Cumple normativas, licencias y protección de datos? | Sin datos personales ni terceros. Las credenciales quedan cubiertas por `N6` y el enmascarado automático | No |
+| Técnica | ¿Existe la capacidad y las herramientas? | Sí: archivos de texto, una base local, una aplicación que corre en la máquina y los enganches de la herramienta del agente | No |
+| Económica | ¿El costo cabe en lo que se está dispuesto a invertir? | Sí: no hay gasto, solo tiempo del autor. Lo que ahorra es la revisión repetida y el armado del expediente | No |
+| Operativa | ¿Lo van a adoptar? | Es la herramienta de trabajo del propio autor, así que su adopción está asegurada. Fuera de él, sin evidencia | No, pero es el frente sin comprobar |
+| Legal | ¿Cumple normativa, licencias y protección de datos? | Sin datos de personas. La documentación de proyectos de clientes queda en la máquina del usuario, no en un servicio ajeno | No |
 
-
-
+**Recomendación: continuar.** Ningún frente bloquea. El análisis largo, con las alternativas descartadas, vive en [estudio-factibilidad.md](estudio-factibilidad.md).
 
 ## 7. Recursos
 
 **Personas.**
 
-| Perfil | ¿Cuántas? | Dedicación | ¿Quién? |
+| Perfil | Cuántas | Dedicación | Quién |
 |---|---|---|---|
-| Autor del estándar, y quien aprueba | 1 | Sin cuota fija | Ing. José Dúmar Jiménez Ruíz |
-| Agente que redacta y construye | 1 | Por sesión | Claude Code |
+| Autor, y quien aprueba | 1 | Sin cuota fija | Ing. José Dúmar Jiménez Ruíz |
+| Agente que construye | 1 | Por sesión | La herramienta de trabajo |
 
 **Infraestructura, herramientas y licencias.**
 
 | Qué | Para qué | Costo | ¿Ya se tiene? |
 |---|---|---|---|
-| Git y un repositorio remoto | Versionar el estándar y distribuirlo | Sin costo | Sí |
-| Python 3 | Correr validadores y enganches | Sin costo | Sí |
-| Claude Code | Ejecutar el agente que obedece las reglas | Suscripción ya vigente | Sí |
+| Git y un repositorio remoto | Versionar la fuente y respaldarla | Sin costo | Sí |
+| Python y una base local | Correr la plataforma y su índice | Sin costo | Sí |
+| La herramienta donde corre el agente | Trabajar con el agente | Suscripción ya vigente | Sí |
 
 ## 8. Presupuesto
 
@@ -135,62 +139,69 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 | Paquete del desglose | Esfuerzo | Supuesto del que depende |
 |---|---|---|
-| 1 · Cuerpo de reglas que se carga y manda | 20 jornadas | Que la regla se escribe una vez y se corrige con el uso, no de nuevo |
-| 2 · Herencia e instalación en otro proyecto | 8 jornadas | Que el proyecto que hereda corre la misma herramienta |
-| 3 · Comprobación automática de lo exigido | 25 jornadas | Que cada regla validable admite comprobación mecánica (supuesto 3) |
-| 4 · Registro de lo que la sesión deja | 5 jornadas | Que la herramienta permite enganches al abrir y cerrar |
-| 5 · Enmascarado de credenciales | 3 jornadas | Que las formas de escribir una clave son pocas y conocidas |
-| 6 · Moldes del ciclo de vida | 15 jornadas | Que documentar mientras se construye no atrasa (supuesto 4) |
-| 7 · Interfaz local: visor y generador | 20 jornadas | Que basta convertir en un sentido, sin edición de vuelta, y que el visor solo lee |
-| 8 · Medición del tiempo de revisión | 2 jornadas | Que hay con qué comparar el antes y el después |
-| 9 · Memoria de lo aprendido | 12 jornadas | Que guardar y consultar basta, sin buscar por parecido |
-| 10 · Que lo nuevo no rompa lo anterior | 6 jornadas | Que lo que ya servía tiene prueba que lo demuestre |
+| 1 · Plataforma base y proyectos conectados | 15 jornadas | Que baste con guardar la ruta y avisar cuando se pierda |
+| 2 · Las reglas, administradas y servidas | 20 jornadas | Que el agente acepte recibirlas al abrir |
+| 3 · El ciclo de vida operado desde la interfaz | 25 jornadas | Que los moldes ya escritos sirvan tal como están |
+| 4 · Aprobaciones con firma | 8 jornadas | Que baste registrar quién, cuándo y sobre qué texto |
+| 5 · Auditoría de lo que se hizo | 12 jornadas | Que se audite la acción y no la conversación |
+| 6 · Comprobación automática de lo exigido | 25 jornadas | Que cada regla comprobable admita comprobación mecánica |
+| 7 · Memoria administrable | 12 jornadas | Que guardar, consultar y corregir alcancen |
+| 8 · Generación del expediente y del entregable | 20 jornadas | Que baste convertir en un sentido |
+| 9 · Traer proyectos que ya existen | 15 jornadas | Que lo que ya está escrito siga un molde conocido |
+| 10 · Avisos y reportes | 10 jornadas | Que salgan de datos que la plataforma ya tiene |
+| 11 · Que lo nuevo no rompa lo anterior | 6 jornadas | Que lo que ya servía tenga prueba que lo demuestre |
+| 12 · Enmascarado de credenciales | 3 jornadas | Que las formas de escribir una clave sean pocas y conocidas |
+| 13 · Medición del tiempo de revisión | 2 jornadas | Que haya con qué comparar el antes y el después |
 
-**Total: 116 jornadas, con margen de un tercio hacia arriba.** El paquete 3 es el que más puede correrse: el esfuerzo de comprobar depende de cuántas reglas resulten validables, y eso solo se sabe escribiéndolas.
+**Total: 173 jornadas, con margen de un tercio hacia arriba.** Los paquetes 3 y 6 son los que más pueden correrse: operar el ciclo desde una pantalla tiene más casos raros de los que se ven al planear, y el esfuerzo de comprobar depende de cuántas reglas resulten comprobables, que solo se sabe escribiéndolas.
 
-**Esta estimación se hizo al retrodocumentar, no al abrir el proyecto.** Sirve para dimensionar lo que falta y para comparar con quien quiera adoptarlo, no para medir desvío: no hay registro de horas contra el cual contrastarla.
+**Es una estimación de juicio, sin registro de horas contra el cual contrastarla.** Sirve para dimensionar y para partir el trabajo en versiones, no para prometer una fecha.
 
 ## 10. Desglose del trabajo (WBS/EDT)
 
-**Desglose (WBS/EDT).** Sale de los doce objetivos, no de lo ya construido: es lo que hay que hacer para resolver el problema, esté hecho o no.
+**Desglose (WBS/EDT).** Sale de los quince objetivos, no de lo ya construido: es lo que hay que hacer para resolver el problema, esté hecho o no.
 
-> **Rige desde el 2026-08-24.** No se hizo antes de empezar, y eso no se puede cambiar: lo que sí se hizo fue rehacerlo desde los objetivos, para que el trabajo que queda salga del problema y no de lo que ya estaba construido.
+> **El desglose sale de los objetivos.** La columna del medio es el control: un paquete que no atiende a ninguno sobra, y un objetivo que no aparece en ningún paquete no se va a cumplir solo.
 
 | Código | Paquete de trabajo | Objetivos que atiende | Depende de | Duración | Responsable |
 |---|---|---|---|---|---|
-| 1 | Cuerpo de reglas que se carga y manda al abrir la sesión | 1, 6, 7 | — | Sin estimar | Autor |
-| 2 | Herencia: instalar el estándar en un proyecto ajeno y avisarle cuando cambie | 2 | 1 | Sin estimar | Autor |
-| 3 | Comprobación automática de lo que se exige | 4, 5 | 1 | Sin estimar | Autor |
-| 4 | Registro de lo que cada sesión deja, fuera del chat | 8 | 1 | Sin estimar | Autor |
-| 5 | Enmascarado de credenciales en todo lo que se escribe | 9 | 1 | Sin estimar | Autor |
-| 6 | Moldes del ciclo de vida, para documentar mientras se construye | 10, 11 | 1 | Sin estimar | Autor |
-| 7 | Interfaz local: ver los documentos del ciclo y la memoria, y generar el `.docx` | 12, 14 | 6, 9 | Sin estimar | Autor |
-| 8 | Medición del tiempo de revisión, antes y después | 3 | 3, 4 | Sin estimar | Autor |
-| 9 | Memoria de lo aprendido: se guarda, se consulta y sobrevive a la sesión | 8, 14 | 4 | Sin estimar | Autor |
-| 10 | Que lo nuevo no rompa lo anterior: comprobación de lo que ya servía | 13 | 3 | Sin estimar | Autor |
+| 1 | Plataforma base: proyectos conectados, con su ruta y su configuración | 1, 14 | — | Sin estimar | Autor |
+| 2 | Las reglas: administrarlas, versionarlas y servírselas al agente al abrir | 2, 6 | 1 | Sin estimar | Autor |
+| 3 | El ciclo de vida operado: épicas, historias, fases, puertas y estado | 1, 10 | 1 | Sin estimar | Autor |
+| 4 | Aprobaciones: qué se aprobó, quién, cuándo y sobre qué texto | 7 | 3 | Sin estimar | Autor |
+| 5 | Auditoría: qué se hizo, cuándo y a raíz de qué | 8 | 1 | Sin estimar | Autor |
+| 6 | Comprobación automática de lo que las reglas exigen | 4, 5 | 2 | Sin estimar | Autor |
+| 7 | Memoria: guardar lo aprendido, consultarlo y corregirlo | 2 | 1 | Sin estimar | Autor |
+| 8 | Expediente: armarlo cuando se pida y generar el entregable | 9, 11 | 3 | Sin estimar | Autor |
+| 9 | Traer proyectos que ya existen, con lo que tengan escrito | 13 | 1, 3 | Sin estimar | Autor |
+| 10 | Avisos y reportes: lo que se desvía y cómo va cada proyecto | 14 | 1, 5 | Sin estimar | Autor |
+| 11 | Que un componente nuevo no rompa los que ya servían | 15 | 6 | Sin estimar | Autor |
+| 12 | Enmascarado de credenciales en todo lo que se escribe | 12 | 1 | Sin estimar | Autor |
+| 13 | Medición del tiempo de revisión, antes y después | 3 | 5, 6 | Sin estimar | Autor |
+
+**Los quince objetivos quedan cubiertos, y ningún paquete sobra.**
 
 ## 11. Cronograma
 
-> **El cronograma pone fechas al desglose de la sección 10:** cuándo se alcanza cada hito y qué cadena de tareas no admite atraso. Sin desglose no hay cronograma: son fechas puestas sobre nada.
+> El cronograma pone fechas al desglose de la sección 10: cuándo se alcanza cada hito y qué cadena de tareas no admite atraso. Sin desglose no hay cronograma: son fechas puestas sobre nada.
 
 **Hitos y fecha de entrega.**
 
 | Hito | Fecha | Qué tiene que estar listo para darlo por cumplido |
 |---|---|---|
-| Las reglas se cargan solas y ganan ante cualquier choque | Cumplido | El núcleo se carga al abrir y nada lo contradice |
-| Lo que se exige se comprueba sin que nadie se acuerde | Cumplido | Cada regla validable tiene su comprobación corriendo |
-| El ciclo se documenta mientras se construye | En curso | Los moldes del ciclo, con el de planificación en evaluación |
-| Instalado en un proyecto que no es del autor | Sin fecha | Alguien ajeno lo adopta y lo usa una semana |
-| El entregable sale de lo escrito, sin redigitar | Sin fecha | La interfaz genera el `.docx` desde los `.md` |
-| Fecha de entrega del proyecto | Sin fecha | No la hay: el estándar se mantiene mientras se use |
+| Un proyecto conectado y visible desde la plataforma | Sin fecha | Se ve su estado sin entrar a su carpeta |
+| El agente recibe las reglas de la plataforma | Sin fecha | Abre sesión en un proyecto y trabaja con lo que la plataforma le entregó |
+| El ciclo se opera desde la interfaz | Sin fecha | Se abre una fase y se cierra sin crear archivos a mano |
+| Lo aprobado queda registrado | Sin fecha | Se puede mostrar quién aprobó qué, cuándo y sobre qué texto |
+| El expediente se genera cuando se pide | Sin fecha | Se entrega el `.docx` de un proyecto el mismo día |
+| Un proyecto que ya existía queda gobernado | Sin fecha | Lo que tenía escrito está adentro y se administra desde la plataforma |
+| Fecha de entrega del proyecto | Sin fecha | No la hay: la plataforma se mantiene mientras se use |
 
-**Ruta crítica: paquetes 1, 3, 6 y 7.** Sin reglas escritas no hay qué comprobar; sin comprobación la regla se incumple sin que nadie se entere; sin moldes no hay documento escrito mientras se construye; y sin documento escrito no hay de dónde generar el entregable.
-
-> La ruta crítica es la cadena de tareas que no admite atraso: si una se corre un día, la entrega se corre un día.
+**Ruta crítica: paquetes 1, 2, 6 y 8.** Sin plataforma no hay dónde conectar nada; sin reglas servidas el agente no cambia su forma de trabajar; sin comprobación lo exigido se incumple en silencio; y sin expediente generado no se resuelve lo que más cuesta hoy.
 
 ## 12. Modelo de desarrollo
 
-**Se usa iterativo e incremental**, en fases que caben en una jornada y se revierten desde el control de versiones. Los requisitos aparecen al usar el estándar —cada incumplimiento del agente es un pendiente nuevo—, así que fijarlos por adelantado no era posible.
+**Se usa iterativo e incremental**, en fases que caben en una jornada y se revierten desde el control de versiones. El alcance completo está escrito y se entrega por versiones: cada una deja algo utilizable.
 
 ## 13. Riesgos
 
@@ -198,21 +209,14 @@ Lo que puede salir mal, con qué tan probable es, cuánto dolería y qué se hac
 
 | # | Riesgo | Probabilidad | Impacto | Responsable | Mitigación | Qué se hace si ocurre |
 |---|---|---|---|---|---|---|
-| 1 | El agente escribe el estándar sin haber leído el estándar | Alta | Alto | Autor | El paso 0 del `CLAUDE.md` carga `base/` antes de tocar nada | Se corrige el `CLAUDE.md` y queda como señal |
-| 2 | Dos reglas se contradicen entre capítulos | Media | Alto | Autor | El núcleo gana siempre; `M12` obliga a buscar antes de crear | Se deroga la más nueva (`M11`), nunca se borra |
-| 3 | Una regla se escribe pero nadie la comprueba | Alta | Medio | Autor | `M9` decide si es validable al escribirla | Entra a `pendientes/` con su validador por hacer |
-| 4 | Un proyecto adopta una versión y queda atrás sin saberlo | Media | Medio | Autor | Aviso de desfase al abrir sesión (EP-002) | Se le informa qué cambió desde su versión |
-| 5 | El estándar crece hasta que nadie lo lee entero | Media | Alto | Autor | `ID9` y el presupuesto de extensión por regla | Se recorta al molde y el porqué se va a `notas/` |
-| 6 | Una credencial queda escrita en claro | Baja | Alto | Autor | `N6` y el enmascarado automático | Se rota la credencial y se limpia el histórico |
-| 7 | Todo depende de una sola persona | Alta | Alto | Autor | Queda escrito y legible sin su autor | El estándar se congela en su última versión y sigue sirviendo |
-| 8 | Nadie ajeno lo adopta, y queda como preferencia personal | Alta | Alto | Autor | Instalarlo en un proyecto que no sea del autor | Se acepta como herramienta personal y se deja de llamar estándar |
-| 9 | Las pruebas corren solo cuando alguien se acuerda | Alta | Medio | Autor | Un proceso automático que corra las pruebas en cada cambio, que hoy no existe | Se construye, y hasta entonces se corre la batería antes de cada publicación |
-| 10 | Un respaldo que nunca se restauró resulta inservible | Baja | Alto | Autor | Restaurar de verdad, cada tres meses | Se rehace desde la copia que sí sirva, y se pierde lo que no esté publicado |
-| 11 | Historias sin fase, que dejan el inventario detenido | Media | Medio | Autor | La comprobación de historias sin fase, y el pendiente [48](../../pendientes/48-inventario-hu.md) | Se abren las fases que faltan antes de seguir |
-| 12 | Ideas del usuario que se pierden por no escribirse | Media | Bajo | Autor | La libreta de ideas, pendiente [10](../../pendientes/10-ideas.md) | Se recogen en la sesión siguiente, que para eso quedan escritas |
-| 13 | Un componente nuevo rompe lo que ya funcionaba | Alta | Alto | Autor | El paquete 10: comprobar lo anterior antes de publicar | Se revierte el componente y se publica una versión de corrección |
-
-> **De dónde salen del 7 al 12.** Los seis primeros se escribieron al planear; estos seis se recogieron de `pendientes/` y del análisis del ciclo el 2026-08-24, que era el hallazgo: los riesgos existían sueltos y sin probabilidad ni impacto.
+| 1 | Sin la plataforma no se puede trabajar en ningún proyecto | Alta | Alto | Autor | La fuente es texto y vive en el repositorio: se puede leer sin ella | Se trabaja leyendo los archivos hasta levantarla |
+| 2 | Se pierde la máquina, y con ella la información de todos los proyectos | Media | Alto | Autor | El repositorio remoto es el respaldo, y la base se reconstruye | Se clona y se reconstruye el índice |
+| 3 | El agente no obedece lo que la plataforma le entrega | Media | Alto | Autor | Comprobar por programa lo que no se puede confiar a su memoria | Se corrige la carga, y queda como señal |
+| 4 | El alcance crece más rápido de lo que se construye | Alta | Medio | Autor | El inventario completo está escrito, y cada versión declara qué entra | Se recorta la versión, no el inventario |
+| 5 | Auditar todo termina pesando más de lo que sirve | Media | Medio | Autor | Se audita la acción, no la conversación | Se recorta qué se registra, con el criterio escrito |
+| 6 | Todo depende de una sola persona | Alta | Alto | Autor | Queda escrito y legible sin su autor | La plataforma se congela y lo escrito sigue sirviendo |
+| 7 | Un componente nuevo rompe lo que ya funcionaba | Alta | Alto | Autor | El paquete 11: comprobar lo anterior antes de publicar | Se revierte y se publica una corrección |
+| 8 | Una credencial queda escrita en claro | Baja | Alto | Autor | Enmascarado al guardar, y comprobación que lo rechaza | Se rota la credencial y se limpia el rastro |
 
 ## 14. Roles y responsabilidades
 
@@ -220,12 +224,11 @@ Lo que puede salir mal, con qué tan probable es, cuánto dolería y qué se hac
 
 | Actividad o entregable | Quién lo hace | Quién responde | A quién se consulta | A quién se informa |
 |---|---|---|---|---|
-| Escribir y derogar reglas de `base/` | Agente | Autor | Autor | — |
+| Definir el alcance y aprobarlo | Autor | Autor | — | — |
+| Construir la plataforma | Agente | Autor | Autor | — |
+| Escribir y derogar reglas | Agente | Autor | Autor | — |
 | Aprobar el cambio, y aparte el commit | Autor | Autor | — | — |
-| Validadores y enganches | Agente | Autor | Autor | — |
-| Versionar (`CHANGELOG` y `VERSION`) | Agente | Autor | — | Proyectos que heredan |
-
-**Quién aprueba las entregas: el autor.** Que apruebe el cambio no es que apruebe el commit: se pregunta aparte.
+| Operar el día a día | Autor, con el agente | Autor | — | — |
 
 ## 15. Interesados y comunicación
 
@@ -233,13 +236,12 @@ Quién tiene algo que ganar o perder con el proyecto, y qué recibe de él.
 
 | Interesado | Qué papel tiene | Influencia | Qué recibe | Cada cuánto | En qué formato |
 |---|---|---|---|---|---|
-| Ing. José Dúmar Jiménez Ruíz | Paga, usa y aprueba, los tres | Alta | El cambio antes de commitear | Por sesión | En el chat, con el enlace al archivo |
-| Proyectos que heredan el estándar | Consumen las reglas | Ninguna | Aviso de desfase y `CHANGELOG` | Al abrir sesión | Aviso automático |
-| El agente de la sesión siguiente | Ejecuta lo escrito | Ninguna | Histórico, resumen, señales y memoria | Al abrir sesión | Archivos del repositorio |
+| Ing. José Dúmar Jiménez Ruíz | Paga, usa y aprueba, los tres | Alta | El cambio antes de guardarlo | Por sesión | En el chat, con el enlace al archivo |
+| Los proyectos que administra | Consumen las reglas y aportan su documentación | Ninguna | Reglas al abrir, y avisos de lo que se desvía | Al abrir sesión | Aviso automático |
+| Quien reciba un proyecto | Recibe el expediente | Baja | Los entregables de cada fase | Al entregar | `.docx` generado |
+| El agente de la sesión siguiente | Ejecuta lo escrito | Ninguna | Lo que la sesión anterior dejó | Al abrir sesión | Desde la plataforma |
 
-**Acordado el 2026-08-24 por el autor**, que es quien paga, usa y aprueba, así que el acuerdo es con él mismo y por eso se escribe: cada cambio se le muestra antes de guardarlo, con el enlace al archivo; los proyectos que heredan reciben el aviso de desfase sin pedirlo; y la sesión siguiente recibe lo escrito en el repositorio, nunca lo dicho en el chat.
-
-**Lo que nadie recibe, y se dice:** no hay informe periódico de avance. El estado se lee en el repositorio cuando alguien quiera, y no se reporta aparte.
+**Lo que nadie recibe, y se dice:** no hay informe periódico de avance. El estado se consulta cuando alguien quiera.
 
 ## 16. Plan de calidad
 
@@ -247,12 +249,11 @@ Qué se le exige a lo que se entrega, y con qué se mide.
 
 | Qué se exige | Cómo se mide | Umbral para aceptar |
 |---|---|---|
-| Toda regla pasa el checklist del estándar | Se aplica el checklist de 20 filas y se sella el resultado | Sin ❌ |
-| Toda regla validable tiene su validador | `validadores/reglas-validables.md` frente a `validadores/` | Sin regla validable huérfana |
-| Ningún documento se entrega con marcas `«…»` | `13·DOC20`, comprobado por validador | Cero marcas al cerrar |
-| Cada cambio de `base/` o `plantillas/` versiona | Entrada en `CHANGELOG.md` y `VERSION` subido | Sin cambio sin versionar |
-
-
+| Toda regla pasa el checklist del estándar | Se aplica el checklist de veinte filas y se sella el resultado | Sin ❌ |
+| Toda regla comprobable tiene su comprobación | El catálogo frente a lo que existe | Sin regla comprobable huérfana |
+| Ningún documento se entrega con espacios sin llenar | Comprobado por programa | Cero marcas al cerrar |
+| Cada cambio de lo que se hereda versiona | Entrada en el registro y número subido | Sin cambio sin versionar |
+| Una versión nueva no rompe lo que servía | Se corre lo anterior antes de publicar | Sin falla nueva |
 
 ## 17. Los entregables de esta etapa, y a quién van
 
@@ -260,28 +261,28 @@ Qué documentos produce la etapa, con qué molde se escriben y quién los recibe
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
-| Acta de constitución (*project charter*) | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), sección 1 | Autor — se firma | Escrita en [acta-de-constitucion.md](acta-de-constitucion.md), sin firmar |
-| Estudio de viabilidad | [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md) | Autor — se firma | Escrito en [estudio-factibilidad.md](estudio-factibilidad.md), con cinco alternativas; sin aprobar |
-| Visión y alcance | [plantillas/ciclo-vida-proyectos/01-planteamiento.md](../../plantillas/ciclo-vida-proyectos/01-planteamiento.md), secciones 1 a 4 | Autor — se firma | Secciones 1 y 2 de este documento, más [planteamiento.md](../../planteamiento.md); sin aprobar |
-| Plan de proyecto | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), secciones 2 a 5 | Autor | Escrito en [acta-de-constitucion.md](acta-de-constitucion.md), secciones 2 a 5 |
-| Cronograma con hitos y fecha | Sección 11 de este documento | Autor | Listo, sin fecha de entrega |
+| Acta de constitución | [plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md](../../plantillas/ciclo-vida-proyectos/13-acta-de-constitucion-y-plan-de-proyecto.md), sección 1 | Autor, se firma | Rehecha y firmada: [acta-de-constitucion.md](acta-de-constitucion.md) |
+| Estudio de viabilidad | [plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md](../../plantillas/ciclo-vida-proyectos/12-estudio-factibilidad.md) | Autor, se firma | Rehecho y aprobado: [estudio-factibilidad.md](estudio-factibilidad.md) |
+| Visión y alcance | Secciones 1 y 2 de este documento | Autor, se firma | Listo |
+| Plan de proyecto | Secciones 9 a 16 de este documento | Autor | Listo |
+| Cronograma con hitos | Sección 11 de este documento | Autor | Listo, sin fechas |
 | Presupuesto | Sección 8 de este documento | Autor | N/A |
-| Desglose del trabajo (WBS/EDT) | Sección 10 de este documento | Autor | Listo, con las épicas como desglose |
-| Registro de riesgos | Sección 13 de este documento | Autor | Listo |
-| Roles y matriz de responsabilidades | Sección 14 de este documento | Autor | Listo |
-| Estimación de esfuerzo | Sección 9 de este documento | Autor | Listo, por juicio experto al retrodocumentar |
+| Desglose del trabajo | Sección 10 de este documento | Autor | Listo, trece paquetes |
+| Registro de riesgos | Sección 13 de este documento | Autor | Listo, ocho |
+| Roles y responsabilidades | Sección 14 de este documento | Autor | Listo |
+| Estimación de esfuerzo | Sección 9 de este documento | Autor | Listo, 173 jornadas |
 | Plan de calidad | Sección 16 de este documento | Autor | Listo |
-| Plan de comunicaciones | Sección 15 de este documento | Autor y proyectos que heredan | Listo |
+| Plan de comunicaciones | Sección 15 de este documento | Autor y los proyectos | Listo |
 
 ## 18. La decisión de la etapa
 
-**Se hace, por la alternativa 1 del [estudio de factibilidad](estudio-factibilidad.md)**, decidido por el autor el 2026-08-24.
+**Se hace**, decidido por el autor el 2026-08-24.
 
-Ningún frente de viabilidad bloquea y el costo es tiempo propio, así que la pregunta no es si conviene hacerlo sino si sirve para alguien más. Se construye por los ocho paquetes de la sección 10, empezando por los dos de mayor incertidumbre: la comprobación automática, que decide si el diseño se sostiene, y la instalación en un proyecto ajeno, que confirma el supuesto del que depende todo.
+Ningún frente de viabilidad bloquea y el costo es tiempo propio. Se construye por los trece paquetes de la sección 10, empezando por la plataforma y las reglas servidas, de los que cuelga todo lo demás.
 
-**Sin fecha de entrega, y a propósito:** el estándar no se entrega, se mantiene mientras se use. Lo que sí tiene fecha es la revisión, al cerrar cada versión.
+**Sin fecha de entrega, y a propósito:** la plataforma se mantiene mientras se use. Lo que sí tiene fecha es la revisión, al cerrar cada versión.
 
-**Lo que queda pendiente de esta etapa no es escribir, es aprobar.** Todo lo de arriba está en borrador; mientras nadie lo firme, no hay línea base contra la cual medir un cambio de alcance.
+**Aprobada el 2026-08-24.** Desde esta fecha lo escrito acá es la línea base de la etapa: un cambio de alcance se mide contra esto, y se anota en la sección 19.
 
 ## 19. Cambios después de la aprobación
 
@@ -289,34 +290,24 @@ Ningún frente de viabilidad bloquea y el costo es tiempo propio, así que la pr
 
 | Fecha | Qué cambió | Por qué | Quién lo pidió |
 |---|---|---|---|
-| 2026-08-24 | El problema ahora dice que el agente es **un sistema que crece**, y que cada componente nuevo se llevaba por delante lo anterior | Faltaba en el problema, y por eso el alcance dejaba fuera la interfaz que ya se estaba construyendo | El usuario |
-| 2026-08-24 | El alcance: entran la interfaz local y la memoria consultable; lo que queda fuera pasa a ser **un servicio en línea o de terceros**, no «un panel» | Como estaba, excluía lo que sí se quiere | El usuario |
-| 2026-08-24 | Dos objetivos más: crecer sin romper lo anterior, y ver desde una pantalla lo que el agente hace y guarda | Salen del problema corregido | El usuario |
-| 2026-08-24 | El desglose pasa de 8 a 10 paquetes, y la estimación de 88 a 116 jornadas | Los objetivos nuevos necesitan trabajo, y decirlo sin estimarlo sería prometer gratis | El agente |
-| 2026-08-24 | Un riesgo más: un componente nuevo rompe lo que ya funcionaba | Es el riesgo que el problema corregido deja a la vista | El agente |
+| 2026-08-24 | El problema dice que el agente es un sistema que crece | Faltaba, y por eso el alcance dejaba fuera la interfaz que ya se estaba construyendo | El usuario |
+| 2026-08-24 | Entraron la interfaz y la memoria al alcance | Como estaba, excluía lo que sí se quiere | El usuario |
+| 2026-08-24 | **El producto cambia de naturaleza: de un estándar que viaja dentro de cada proyecto a una plataforma central que los administra.** La documentación deja de vivir en cada proyecto, el agente toma las reglas de la plataforma, y el proyecto queda solo con su código | La documentación dentro de cada proyecto no se puede consultar de conjunto ni auditar, y el expediente había que armarlo documento por documento | El usuario |
+| 2026-08-24 | Este documento se reescribió entero desde la propuesta, no desde lo construido | Lo escrito antes partía de lo que hoy existe, que era el error de fondo | El usuario |
+| 2026-08-24 | La estimación pasa de 116 a 173 jornadas, en trece paquetes | Administrar, auditar y generar el expediente no cabían en el desglose anterior | El agente |
+
+**Lo que este cambio deja sin efecto:** el acta de constitución y el estudio de factibilidad firmados autorizan otro producto. Hay que rehacerlos antes de volver a aprobar la etapa.
 
 ## 20. Qué de esta etapa cumple hoy el proyecto
 
-> Del análisis del 2026-08-24 sobre la versión 33.4.0. Los trece hallazgos quedaron escritos y aprobados ese mismo día. El resumen de las siete etapas, y lo que ese análisis no puede decir, están en [cvds/README.md](../README.md).
+> El análisis del 2026-08-24 comparaba el ciclo contra lo construido. **Ese contraste queda sin valor con el cambio de la sección 19**: se hizo sobre otro producto. Se vuelve a hacer cuando la etapa esté aprobada, y hasta entonces lo honesto es no arrastrar sus números.
 
-**Los trece hallazgos de esta etapa, y qué se escribió para cada uno**
+**Lo que sí se conserva de aquel análisis**, porque no depende del producto:
 
-| # | Hallazgo del análisis | Qué se hizo | Dónde quedó |
-|---|---|---|---|
-| 1 | El desglose existía como las 7 épicas, y nunca se hizo antes de empezar | Se rehízo desde los doce objetivos, con la columna que dice a cuál atiende cada paquete | Sección 10 |
-| 2 | Los riesgos vivían sueltos en `pendientes/` sin probabilidad ni impacto | Se recogieron seis riesgos más, con probabilidad, impacto, responsable y qué se hace si ocurre | Sección 13, filas 7 a 12 |
-| 3 | Los interesados no estaban escritos | Se escribieron los tres, con qué recibe cada uno y cada cuánto, y qué nadie recibe | Sección 15 |
-| 4 | Las restricciones se cumplían sin estar declaradas | Se declararon las cinco, y cada una dice cómo se sabría si se rompió. Dos no tienen con qué comprobarse todavía, y se dice | Sección 4 |
-| 5 | Los entregables de la etapa no tenían tabla | Se escribió, con el molde de cada uno, a quién va y en qué estado | Sección 17 |
-| 6 | No había estudio de viabilidad | Escrito, con cinco alternativas y por qué se descartaron cuatro | [estudio-factibilidad.md](estudio-factibilidad.md) |
-| 7 | No había acta de constitución | Escrita, con qué se autoriza y **qué no** | [acta-de-constitucion.md](acta-de-constitucion.md) |
-| 8 | No había supuestos | Cuatro, con qué pasa si cada uno resulta falso y quién lo confirma | Sección 3 |
-| 9 | No había dependencias de terceros | Dos, con qué se hace si no llegan | Sección 5 |
-| 10 | No había estimación de esfuerzo | 88 jornadas por juicio experto, paquete por paquete, con margen declarado | Sección 9 |
-| 11 | No había presupuesto | `N/A` con su porqué: no hay costo monetario que asignar | Sección 8 |
-| 12 | No había cronograma con hitos | Cinco hitos, con qué los da por cumplidos, y sin fechas dicho a propósito | Sección 11 |
-| 13 | No había decisión de cierre | Se hace, por la alternativa 1, con qué se construye primero y por qué | Sección 18 |
+| Qué | Sigue siendo cierto |
+|---|---|
+| Nadie ajeno al autor ha instalado ni usado nada de esto | Sí |
+| Ningún respaldo se ha restaurado nunca | Sí |
+| Ninguna comprobación corre sola en cada cambio | Sí |
 
-**Nada queda abierto en esta etapa.**
-
-**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-24.** Desde esta fecha lo escrito acá es la línea base de la etapa: un cambio de alcance se mide contra esto.
+**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-24.**

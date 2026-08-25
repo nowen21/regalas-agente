@@ -1,8 +1,8 @@
 # Análisis de requisitos: ¿qué debe hacer el sistema?   ·   `[CAPA 3]`
 
-**Para qué sirve este documento.** Deja escrito **qué** tiene que hacer el estándar de trabajo heredable, sin decir todavía cómo.
+**Para qué sirve este documento.** Deja escrito **qué** tiene que hacer Cimiento, sin decir todavía cómo. Confundir las dos cosas acá es el error caro del ciclo: un requisito escrito como solución cierra opciones antes de haberlas mirado.
 
-> **Escrito como si no hubiera nada construido**, que es lo que pide la etapa: sale del problema y de los doce objetivos de [cvds/planificacion/README.md](../planificacion/README.md), no del repositorio.
+> **Escrito desde la propuesta, no desde lo que hoy existe.** Sale del problema y de los quince objetivos de [cvds/planificacion/README.md](../planificacion/README.md). Reescrito el 2026-08-24, cuando el producto pasó de ser un estándar que viaja dentro de cada proyecto a una plataforma que los administra.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 
@@ -12,20 +12,20 @@
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
-| El problema, el alcance y los doce objetivos | Planificación | Sí, el 2026-08-24 |
-| Las restricciones: sin costo, sin plazo, `.md` como fuente y `.docx` como salida | Planificación | Sí, el 2026-08-24 |
-| Los supuestos, con el de que el agente obedece lo que se le carga | Planificación | Sí, aunque el supuesto 2 sigue sin confirmarse |
+| El problema, el alcance y los quince objetivos | Planificación | Sí, el 2026-08-24 |
+| Las restricciones: la fuente en texto, la base como índice, sin servicio ajeno | Planificación | Sí, el 2026-08-24 |
+| Los cinco supuestos, con el de que el agente obedece lo que la plataforma le entrega | Planificación | Sí, aunque ninguno se ha confirmado todavía |
 
 ## 2. De dónde salieron los requisitos
 
 | Fuente | Quién | Técnica | Cuándo | Dónde quedó lo acordado |
 |---|---|---|---|---|
-| Quien usa el sistema a diario | El autor, que delega trabajo al agente | Observación de su propio trabajo: cada vez que el agente se desvió, quedó anotado | Desde el inicio, en cada sesión | [prompts/](../../prompts/), con sus palabras y sin reescribir |
-| Lo que ya se intentó | El autor | Revisión de lo que falló: corregir por chat, y guardar preferencias en la herramienta | Antes de empezar | Sección 1 de [cvds/planificacion/README.md](../planificacion/README.md) |
-| Lo que el usuario pidió dos veces | El autor | Barrido de lo repetido al cerrar cada versión | Periódico | Las candidatas a regla |
-| Los proyectos que heredarían | Ninguno todavía | Sin consultar | — | Nada |
+| Quien usa el sistema a diario | El autor, que administra varios proyectos | Observación de su propio trabajo, y de lo que le falta al hacerlo | Permanente | [prompts/](../../prompts/), con sus palabras |
+| Lo que ya se intentó | El autor | Revisión de lo que falló: documentar dentro de cada proyecto, corregir por chat | Antes de empezar | Sección 1 de [planificación](../planificacion/README.md) |
+| El giro de producto | El autor | Conversación del 2026-08-24: qué debe llegar a ser Cimiento, no qué es hoy | 2026-08-24 | Sección 19 de [planificación](../planificacion/README.md) |
+| Los proyectos que administra | Ninguno consultado como tal | Sin consultar | — | Nada |
 
-**Quién no se consultó, y por qué:** nadie ajeno al autor. No hay todavía un segundo usuario, y esa es la duda 1 de la sección 10. **Todos los requisitos de abajo salen de una sola persona**, y eso es un límite del análisis, no un detalle.
+**Quién no se consultó, y por qué:** nadie ajeno al autor. **Todos los requisitos salen de una sola persona**, y eso es un límite del análisis, no un detalle.
 
 ## 3. Los requisitos funcionales
 
@@ -33,99 +33,128 @@
 
 | ID | Qué debe hacer el sistema | Quién lo necesita | Origen | Objetivo del que sale | Prioridad |
 |---|---|---|---|---|---|
-| RF-01 | Cargar las reglas al abrir la sesión, sin que nadie lo pida | El usuario | Observación del propio trabajo | 1 | Debe |
-| RF-02 | Impedir que se cambie el estado del proyecto sin autorización | El usuario | Observación del propio trabajo | 6, 7 | Debe |
-| RF-03 | Comprobar por sí solo lo que las reglas exigen | El usuario | Lo que ya se intentó y falló | 4 | Debe |
-| RF-04 | Declarar como no verificado lo que no tenga prueba corrida | El usuario | Observación del propio trabajo | 4, 5 | Debe |
-| RF-05 | Instalarse en un proyecto ajeno y decirle qué versión adoptó | El usuario | Lo que el usuario pidió dos veces | 2 | Debe |
-| RF-06 | Avisar cuando la versión adoptada quede atrás, y qué cambió | El usuario | Lo que el usuario pidió dos veces | 2 | Debería |
-| RF-07 | Escribir fuera del chat lo que cada sesión dejó | El usuario | Lo que ya se intentó y falló | 8 | Debe |
-| RF-08 | Tapar toda credencial antes de que quede escrita | El usuario | Observación del propio trabajo | 9 | Debe |
-| RF-09 | Exigir el documento del ciclo en el momento en que se construye | El usuario | Observación del propio trabajo | 10, 11 | Debe |
-| RF-10 | Generar el `.docx` de cada documento desde su `.md` | Quien recibe el proyecto | Lo que el usuario pidió dos veces | 12 | Debería |
-| RF-11 | Medir el tiempo que el usuario dedica a revisar | El usuario | Observación del propio trabajo | 3 | Podría |
-| RF-12 | Mostrar en una pantalla los documentos del ciclo y lo que el agente guarda | El usuario | Lo que el usuario pidió dos veces | 14 | Debería |
-| RF-13 | Guardar lo aprendido y poder consultarlo en la sesión siguiente | El usuario | Lo que ya se intentó y falló | 8, 14 | Debe |
-| RF-14 | Comprobar que un componente nuevo no rompió lo que ya servía | El usuario | Observación del propio trabajo | 13 | Debe |
+| RF-01 | Registrar un proyecto, con su nombre y dónde vive su código | El usuario | Observación del propio trabajo | 1 | Debe |
+| RF-02 | Avisar cuando la ruta de un proyecto deja de existir | El usuario | El giro de producto | 14 | Debe |
+| RF-03 | Mostrar el estado de cualquier proyecto sin entrar a su carpeta | El usuario | El giro de producto | 1 | Debe |
+| RF-04 | Configurar por proyecto qué reglas y qué moldes rigen | El usuario | El giro de producto | 1 | Debería |
+| RF-05 | Crear, editar y derogar reglas desde la plataforma | El usuario | El giro de producto | 1 | Debe |
+| RF-06 | Asignar el identificador de una regla sin reutilizar ninguno | El usuario | Lo que ya se intentó | 1 | Debe |
+| RF-07 | Aplicar el checklist a una regla y guardar su resultado | El usuario | Observación del propio trabajo | 4 | Debería |
+| RF-08 | Publicar una versión del cuerpo de reglas, con su registro de qué cambió | El usuario | Observación del propio trabajo | 1 | Debe |
+| RF-09 | Entregarle al agente las reglas al abrir sesión, en cualquier proyecto | El usuario | El giro de producto | 2, 6 | Debe |
+| RF-10 | Avisar a un proyecto cuando la versión que adoptó quedó atrás, y qué cambió | El usuario | Lo que el usuario pidió dos veces | 14 | Debería |
+| RF-11 | Crear épicas, historias y fases desde la plataforma, con su molde | El usuario | El giro de producto | 1, 10 | Debe |
+| RF-12 | Mostrar en qué estación va cada fase y qué puerta falta | El usuario | El giro de producto | 1 | Debe |
+| RF-13 | Impedir avanzar de estación sin la puerta cumplida | El usuario | Observación del propio trabajo | 5 | Debe |
+| RF-14 | Llenar cada documento del ciclo desde la plataforma, sin crear archivos a mano | El usuario | El giro de producto | 10 | Debe |
+| RF-15 | Registrar una aprobación con quién, cuándo y sobre qué texto exacto | El usuario | El giro de producto | 7 | Debe |
+| RF-16 | Mostrar qué está aprobado y qué sigue en borrador | El usuario | El giro de producto | 7 | Debe |
+| RF-17 | Marcar como no aprobado lo que cambió después de haberse aprobado | El usuario | Observación del propio trabajo | 7 | Debe |
+| RF-18 | Registrar cada acción sobre proyectos, documentos y reglas | El usuario | El giro de producto | 8 | Debe |
+| RF-19 | Consultar lo registrado por proyecto, por fecha y por tipo de acción | El usuario | El giro de producto | 8 | Debería |
+| RF-20 | Comprobar por sí sola lo que las reglas exigen | El usuario | Lo que ya se intentó | 4 | Debe |
+| RF-21 | Declarar como no verificado lo que no tenga prueba corrida | El usuario | Observación del propio trabajo | 4, 5 | Debe |
+| RF-22 | Comprobar que una versión nueva no rompió lo que ya servía | El usuario | Observación del propio trabajo | 15 | Debe |
+| RF-23 | Guardar lo aprendido y devolverlo en la sesión siguiente | El usuario | Lo que ya se intentó | 2 | Debe |
+| RF-24 | Consultar, corregir y dar de baja lo guardado en la memoria | El usuario | El giro de producto | 2 | Debería |
+| RF-25 | Armar el expediente completo de un proyecto cuando se pida | El usuario | El giro de producto | 9 | Debe |
+| RF-26 | Generar el entregable de ofimática desde la fuente en texto | Quien recibe el proyecto | Lo que el usuario pidió dos veces | 9, 11 | Debe |
+| RF-27 | Traer un proyecto que ya existe, con lo que tenga escrito | El usuario | El giro de producto | 13 | Debe |
+| RF-28 | Reportar qué de lo traído no sigue ningún molde conocido | El usuario | El giro de producto | 13 | Debería |
+| RF-29 | Avisar deuda vencida, historia sin fase y respaldo sin probar | El usuario | Observación del propio trabajo | 14 | Debería |
+| RF-30 | Reportar cómo va cada proyecto, y compararlos entre sí | El usuario | El giro de producto | 1 | Debería |
+| RF-31 | Tapar toda credencial antes de que quede escrita | El usuario | Observación del propio trabajo | 12 | Debe |
+| RF-32 | Medir el tiempo que el usuario dedica a revisar | El usuario | Observación del propio trabajo | 3 | Podría |
 
-**El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md)**: catorce funcionalidades, `F-001` a `F-014`, una por cada requisito de esta tabla. Esta tabla es el resumen que se acuerda; aquella es el detalle que se construye.
+**El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md).** Esta tabla es el resumen que se acuerda; aquel es el detalle que se construye.
 
 ## 4. Los requisitos no funcionales
 
+> **Un requisito no funcional es una exigencia sobre cómo se comporta el sistema**, no sobre qué hace. Se escribe con número: «rápido» no es un requisito.
+
 | ID | Frente | Exigencia, con su número | Cómo se comprueba |
 |---|---|---|---|
-| RNF-01 | Rendimiento | Lo que corre al abrir la sesión no puede demorarla más de dos segundos | Se mide el enganche de apertura sobre un repositorio de mil archivos |
-| RNF-02 | Disponibilidad | Funciona sin red y sin servicio externo: todo vive en el repositorio | Se corre con la máquina desconectada |
-| RNF-03 | Seguridad y acceso | Ninguna credencial queda escrita en ningún archivo del repositorio | Comprobación que rechaza el guardado si encuentra una |
-| RNF-04 | Datos personales y normativa | El estándar no recoge ni almacena datos de personas | Revisión de lo que se escribe en cada documento |
-| RNF-05 | Usabilidad | Lo entiende quien no conoce el proyecto: sin siglas sin explicar | Cada documento se lee de principio a fin sin abrir otro |
-| RNF-06 | Compatibilidad | Corre con Python de la biblioteca estándar, sin instalar nada | Se ejecuta en una máquina recién formateada |
-| RNF-07 | Portabilidad | Se instala en cualquier proyecto sin tocar su código | Instalación de prueba en un proyecto ajeno |
-| RNF-08 | Compatibilidad hacia atrás | Una versión nueva no rompe lo que servía en la anterior, y si obliga a rehacer algo lo declara | Se corre lo que ya servía contra cada versión antes de publicarla |
-| RNF-09 | Crecimiento | Un componente nuevo entra sin obligar a reescribir las anteriores | Agregar un componente no cambia archivos de las otras |
+| RNF-01 | Rendimiento | Entregarle las reglas al agente no demora la apertura de la sesión más de dos segundos | Se mide con el cuerpo de reglas completo |
+| RNF-02 | Rendimiento | Listar los proyectos y su estado responde en menos de un segundo con cincuenta proyectos | Se mide con cincuenta proyectos de prueba |
+| RNF-03 | Disponibilidad | Funciona sin red: todo lo que necesita está en la máquina | Se corre con la máquina desconectada |
+| RNF-04 | Recuperación | Perder la base no pierde información: se reconstruye desde la fuente en texto | Se borra la base y se reconstruye |
+| RNF-05 | Seguridad | Ninguna credencial queda escrita en ningún archivo ni en la base | Comprobación que rechaza el guardado si encuentra una |
+| RNF-06 | Datos personales | No se recogen ni se almacenan datos de personas | Revisión del modelo de datos y de lo que se guarda |
+| RNF-07 | Usabilidad | Lo entiende quien no conoce el proyecto: sin siglas sin explicar | Cada pantalla y cada documento se lee sin abrir otro |
+| RNF-08 | Compatibilidad | Corre con lo que ya está instalado en la máquina del usuario | Se levanta en una máquina recién formateada |
+| RNF-09 | Portabilidad | Puede correr en un servidor sin rehacer la aplicación | Se levanta en otra máquina sin cambiar el código |
+| RNF-10 | Compatibilidad hacia atrás | Una versión nueva no rompe lo que servía; si obliga a rehacer algo, lo declara antes | Se corre lo anterior antes de publicar |
+| RNF-11 | Crecimiento | Un componente nuevo entra sin obligar a reescribir los anteriores | Agregar uno no cambia archivos de los otros |
+| RNF-12 | Trazabilidad | Toda acción registrada dice quién, cuándo y sobre qué | Revisión de lo registrado |
 
 ## 5. Las reglas del negocio
 
-Lo que manda sobre el sistema y existiría aunque el sistema no existiera.
+> **Una regla del negocio manda sobre el sistema y sobre todo lo demás:** existe aunque el sistema no exista.
 
 | # | Regla | Quién la dicta | Qué pasa si se rompe |
 |---|---|---|---|
-| RN-1 | Lo que se acuerda se escribe en el repositorio, no en el chat | El usuario | La corrección se pierde y hay que darla de nuevo |
-| RN-2 | Ningún cambio de estado sin aprobación explícita del usuario | El usuario | Se pierde trabajo que nadie autorizó, y con eso la confianza |
+| RN-1 | Lo que se acuerda se escribe donde no se borra, nunca solo en la conversación | El usuario | La corrección se pierde y hay que darla de nuevo |
+| RN-2 | Ningún cambio de estado sin aprobación explícita del usuario | El usuario | Aparecen cambios que nadie autorizó |
 | RN-3 | Lo que no se puede deshacer se aprueba una por una | El usuario | Un plan aprobado termina cubriendo lo irreversible |
 | RN-4 | No se afirma sobre lo que no se leyó | El usuario | Veredictos falsos, que hacen desconfiar de los verdaderos |
 | RN-5 | El estado de una funcionalidad lo fija la prueba corrida, no la lectura | El usuario | Se entrega como terminado lo que nadie comprobó |
-| RN-6 | Nada se renumera ni se borra: se deroga | El usuario | Se rompen las citas de documentos y trabajos ya cerrados |
-| RN-9 | Una credencial no se escribe, no se registra y no se guarda | El usuario | Queda expuesta en un archivo que se versiona y se publica |
-
-> La numeración salta porque es la misma del inventario: cada ficha cita sus reglas por este identificador.
+| RN-6 | Nada se renumera ni se borra: se deroga | El usuario | Se rompen las citas de documentos y trabajos cerrados |
+| RN-7 | La fuente es texto versionado; la base es índice y se puede reconstruir | El usuario | El respaldo deja de ser el repositorio |
+| RN-8 | Lo aprobado se congela: si el texto cambia, la aprobación caduca | El usuario | Se da por aprobado algo que nadie leyó así |
+| RN-9 | Una credencial no se escribe, no se registra y no se guarda | El usuario | Queda expuesta en algo que se versiona y se publica |
 
 ## 6. Los actores y sus permisos
 
-Quién interviene, qué puede hacer y qué no.
-
 | Actor | Qué hace en el sistema | Qué no puede hacer |
 |---|---|---|
-| El usuario | Aprueba, corrige, adopta versiones | Nada le está vedado: es quien manda |
-| El agente | Escribe, construye, comprueba y reporta | Cambiar el estado del proyecto sin aprobación, o declarar terminado lo no probado |
-| El proyecto que hereda | Adopta una versión y recibe avisos | Modificar las reglas heredadas en su copia |
+| El usuario | Administra, aprueba, corrige, publica versiones | Nada le está vedado: es quien manda |
+| El agente | Recibe las reglas, construye, comprueba, escribe documentos y reporta | Cambiar el estado sin aprobación, o declarar terminado lo no probado |
+| Un proyecto administrado | Aporta su código, y recibe reglas y avisos | Modificar las reglas que recibe |
+| Quien recibe un proyecto | Recibe el expediente generado | Entrar a la plataforma |
 
 ## 7. Los casos de uso
 
+> **Un caso de uso cuenta el camino completo, no el feliz.** Los flujos de error son la mitad del trabajo, y la mitad que se omite.
+
 | # | Caso de uso | Actor | Precondición | Qué debe quedar al terminar | Flujos alternos y de error |
 |---|---|---|---|---|---|
-| CU-01 | Abrir una sesión de trabajo | El usuario | El proyecto tiene el estándar instalado | Las reglas cargadas, y el aviso de qué versión rige | Sin reglas en la ruta: lo dice y la sesión sigue sin ellas · Con versión atrasada: avisa qué cambió · Con una regla ilegible: la nombra y carga el resto |
-| CU-02 | Pedirle al agente un cambio | El usuario | Sesión abierta | El cambio hecho, o detenido con el motivo | Acción irreversible: se aprueba aparte, aunque estuviera en el plan · Sin aprobación: queda detenido · Falla a mitad: se revierte y se dice qué quedó a medias |
-| CU-03 | Cerrar una unidad de trabajo | El agente | La unidad tiene plan y pruebas aprobados | El veredicto por criterio y el documento de cierre | Sin prueba corrida: queda «sin verificar» y no cierra · Prueba fallida: queda «no cumple» con lo que falló · Documento con espacios sin llenar: no se da por entregado |
-| CU-04 | Instalar el estándar en otro proyecto | Quien instala | El proyecto está en control de versiones y sin cambios sin guardar | Los archivos agregados y la versión adoptada anotada | El proyecto ya tiene archivos con esos nombres: avisa y se detiene · Sin aprobación: no instala · Falla a mitad: se quita lo agregado y nada suyo se tocó |
-| CU-05 | Pasarle una credencial al agente | El usuario | Sesión abierta | El trabajo hecho, y la clave tapada en todo lo que se guardó | Clave sin comillas: se tapa igual · Palabra que solo parece clave: queda tal cual · Clave ya escrita antes: se rota y se limpia el rastro |
-| CU-06 | Recibir el entregable de ofimática | Quien recibe el proyecto | Los documentos del ciclo están escritos | El `.docx` generado desde el `.md` | Documento con espacios sin llenar: avisa antes de generar · Documento sin su molde: no se genera |
-| CU-07 | Revisar desde la pantalla qué hay y qué guardó el agente | El usuario | La interfaz local está levantada | Lo que buscaba, leído sin abrir archivo por archivo | Sin base de datos: muestra los documentos y avisa que la memoria no está · Documento borrado del disco: lo dice en vez de mostrarlo vacío |
-| CU-08 | Recuperar en una sesión lo aprendido en otra | El agente | Hay algo guardado de antes | Lo aprendido, disponible sin que el usuario lo repita | Nada guardado sobre el tema: lo dice, no inventa · Guardado que ya no es cierto: se corrige y queda la corrección |
-| CU-09 | Publicar una versión nueva | El autor | Lo nuevo está construido y probado | La versión publicada, con lo que cambió | Rompe algo que servía: no se publica hasta corregirlo · Obliga a rehacer algo: se declara antes de publicar |
+| CU-01 | Conectar un proyecto | El usuario | El código existe en la máquina | El proyecto registrado y visible | Ruta que no existe: no se registra y se dice · Ruta ya registrada: se avisa cuál es · Carpeta sin control de versiones: se registra y se advierte |
+| CU-02 | Ver cómo va un proyecto | El usuario | El proyecto está conectado | Su estado en pantalla | Ruta perdida: se muestra lo guardado y se avisa · Proyecto sin trabajo abierto: se dice que no hay, no se muestra vacío |
+| CU-03 | Abrir sesión de trabajo en un proyecto | El agente | El proyecto está conectado | Las reglas cargadas y el aviso de qué versión rige | Plataforma no disponible: se avisa y se trabaja leyendo la fuente · Versión atrasada: se dice qué cambió |
+| CU-04 | Escribir o cambiar una regla | El usuario | Ninguna | La regla guardada, con su identificador y pendiente de publicar | Identificador ya usado: no se reutiliza · Regla que contradice a otra: se muestra el choque antes de guardar |
+| CU-05 | Publicar una versión | El usuario | Hay cambios sin publicar | La versión publicada, con qué cambió y si obliga a rehacer algo | Rompe algo que servía: no se publica · Sin registro de qué cambió: no se publica |
+| CU-06 | Abrir y cerrar una fase | El usuario, con el agente | La historia existe y está aprobada | La fase con sus documentos y su estado | Puerta sin cumplir: no avanza y dice cuál falta · Sin prueba corrida: queda «sin verificar» |
+| CU-07 | Aprobar un documento | El usuario | El documento está en borrador | La aprobación registrada, con fecha y sobre qué texto | El texto cambia después: la aprobación caduca y se avisa |
+| CU-08 | Pedir el expediente de un proyecto | El usuario | El proyecto tiene documentos | El expediente armado y su entregable generado | Documentos con espacios sin llenar: se avisa antes de generar · Documento faltante: se dice cuál |
+| CU-09 | Traer un proyecto que ya existe | El usuario | El proyecto tiene documentación escrita | Lo que tenía, adentro de la plataforma | Lo que no sigue ningún molde: se reporta y no se transforma · Nombres repetidos: se avisa antes de traer |
+| CU-10 | Consultar qué se hizo | El usuario | Hay acciones registradas | Lo registrado, filtrado por proyecto, fecha o tipo | Sin coincidencias: se dice que no hay |
+| CU-11 | Recuperar lo aprendido en otra sesión | El agente | Hay memoria guardada | Lo aprendido, sin que el usuario lo repita | Nada guardado del tema: se dice, no se inventa · Guardado que dejó de ser cierto: se corrige y queda la corrección |
+| CU-12 | Pasarle una credencial al agente | El usuario | Sesión abierta | El trabajo hecho, y la clave tapada en todo lo guardado | Clave sin comillas: se tapa igual · Palabra que solo lo parece: queda intacta |
 
 ## 8. La trazabilidad
 
-El camino de cada requisito hasta la prueba que demuestra que se cumplió.
+El camino de cada requisito hasta la funcionalidad que lo ejecuta. El módulo que la implementa y la prueba que la demuestra se escriben en el diseño y en las pruebas: acá no se adivinan.
 
-| Requisito | Funcionalidad que lo ejecuta | Módulo que lo implementa | Caso de prueba que lo demuestra |
+| Requisito | Funcionalidad | Requisito | Funcionalidad |
 |---|---|---|---|
-| RF-01 | F-001 | Cargador de sesión | Abrir con reglas, sin ellas, y con una rota |
-| RF-02 | F-002 | Enganches | Borrado sin aprobar, con aprobación, y acción fuera del plan |
-| RF-03 | F-003 | Comprobaciones | Documento que cumple, uno que no, y uno a medio llenar |
-| RF-04 | F-004 | Comprobaciones | Con prueba, sin prueba, y con prueba fallida |
-| RF-05 | F-005 | Instalador | Proyecto vacío, y proyecto con archivos propios |
-| RF-06 | F-006 | Instalador | Versión igual, anterior, posterior e inexistente |
-| RF-07 | F-007 | Enganches | Sesión de un mensaje, larga, e interrumpida |
-| RF-08 | F-008 | Enganches | Clave con comillas, sin comillas, y palabra que solo lo parece |
-| RF-09 | F-009 | Moldes del ciclo | Trabajo sin su documento, y documento con espacios sin llenar |
-| RF-10 | F-010 | Generador de entregables | Documento completo, y documento con espacios sin llenar |
-| RF-11 | F-011 | Comprobaciones | Sin línea base inicial, la medición no puede comparar |
-| RF-12 | F-012 | Interfaz local | Con base de datos y sin ella; documento borrado del disco |
-| RF-13 | F-013 | Memoria | Guardar, recuperar en otra sesión, y corregir lo que dejó de ser cierto |
-| RF-14 | F-014 | Comprobaciones | Versión que rompe algo, versión que no, y versión que obliga a rehacer |
+| RF-01 | F-001 | RF-17 | F-017 |
+| RF-02 | F-002 | RF-18 | F-018 |
+| RF-03 | F-003 | RF-19 | F-019 |
+| RF-04 | F-004 | RF-20 | F-020 |
+| RF-05 | F-005 | RF-21 | F-021 |
+| RF-06 | F-006 | RF-22 | F-022 |
+| RF-07 | F-007 | RF-23 | F-023 |
+| RF-08 | F-008 | RF-24 | F-024 |
+| RF-09 | F-009 | RF-25 | F-025 |
+| RF-10 | F-010 | RF-26 | F-026 |
+| RF-11 | F-011 | RF-27 | F-027 |
+| RF-12 | F-012 | RF-28 | F-028 |
+| RF-13 | F-013 | RF-29 | F-029 |
+| RF-14 | F-014 | RF-30 | F-030 |
+| RF-15 | F-015 | RF-31 | F-031 |
+| RF-16 | F-016 | RF-32 | F-032 |
 
-**Ningún requisito quedó sin funcionalidad, y ninguna funcionalidad sin requisito.** Los módulos de la tercera columna son los que propone el [diseño](../diseno/README.md); si esa etapa los cambia, esta tabla se rehace.
+**Ningún requisito quedó sin funcionalidad, y ninguna funcionalidad sin requisito.**
 
 ## 9. El glosario del proyecto
 
@@ -133,30 +162,36 @@ Cada palabra del negocio con una sola definición, para que nadie la use de dos 
 
 | Término | Qué significa acá | Cómo NO se llama |
 |---|---|---|
+| Plataforma | Cimiento: lo que administra los proyectos | Sistema, aplicación, herramienta |
+| Proyecto administrado | El software que el usuario desarrolla, con su código | Cliente, repositorio |
 | Regla | Una exigencia con identificador, que se cita y no se borra | Norma, política, lineamiento |
-| Molde | El documento modelo que alguien copia y llena | Formato, machote |
+| Molde | El documento modelo que se copia y se llena | Formato, machote |
+| Expediente | El conjunto de documentos de un proyecto, armado para entregar | Paquete, informe |
 | Fase | La unidad de trabajo que cabe en una jornada y se revierte | Tarea, sprint |
-| Señal | Lo que no se recupera leyendo el código y por eso se escribe | Nota, apunte |
-| Desfase | La distancia entre la versión adoptada y la publicada | Actualización pendiente |
-| Derogar | Marcar una regla como sin vigencia, dejándola escrita | Borrar, eliminar |
-| Línea base | Lo aprobado en una fecha, contra lo cual se mide todo cambio posterior | Versión congelada |
+| Puerta | La condición que hay que cumplir para avanzar de estación | Hito, control |
+| Aprobación | El registro de que alguien aceptó un texto exacto, con fecha | Visto bueno |
+| Auditoría | Lo registrado sobre qué se hizo, cuándo y sobre qué | Historial, bitácora |
+| Memoria | Lo que el agente aprendió y puede recuperar después | Contexto |
+| Línea base | Lo aprobado en una fecha, contra lo cual se mide todo cambio | Versión congelada |
 
-> **Los números con que se cita cada cosa.** `RF` requisito funcional, lo que el sistema debe hacer · `RNF` requisito no funcional, cómo debe comportarse · `RN` regla del negocio · `CU` caso de uso · `F` funcionalidad del inventario · `CA` criterio de aceptación, dentro de una funcionalidad · `DA` decisión de arquitectura, en el diseño. Ninguno se reutiliza: el número que se dio una vez no se le da a otra cosa.
+> **Los números con que se cita cada cosa.** `RF` requisito funcional · `RNF` requisito no funcional · `RN` regla del negocio · `CU` caso de uso · `F` funcionalidad del inventario · `CA` criterio de aceptación · `DA` decisión de arquitectura. Ninguno se reutiliza.
 
 ## 10. Lo que se preguntó y no tiene respuesta
 
 | # | Duda | Quién responde | Se necesita antes de | Estado |
 |---|---|---|---|---|
-| 1 | ¿Sirve para alguien que no sea el autor, o es una preferencia personal? | Un usuario ajeno | Declarar el estándar como tal | Abierta |
-| 2 | ¿Cuántas reglas admiten comprobación mecánica y cuántas piden criterio? | El autor, escribiéndolas | Estimar el paquete 3 | Abierta |
-| 3 | ¿El `.docx` conserva la numeración del `.md` o la del cliente? | Quien reciba el entregable | Construir el generador | Abierta, es la P-1 del inventario |
+| 1 | ¿Qué entra exactamente en la primera versión? | El autor | Partir el trabajo en versiones | Abierta |
+| 2 | ¿Qué se audita de la sesión del agente? «Todo» incluye cada mensaje, y eso pesa | El autor | Construir la auditoría | Abierta |
+| 3 | ¿La documentación de todos los proyectos vive en un solo repositorio, o en uno por proyecto? | El autor | Diseñar el modelo de datos | **Resuelta el 2026-08-24:** todo en el repositorio de la plataforma, una carpeta por proyecto |
+| 4 | Cuando la plataforma no esté disponible, ¿el agente trabaja leyendo la fuente o se detiene? | El autor | Diseñar la carga de reglas | Abierta, con propuesta: que trabaje y lo diga |
+| 5 | ¿El expediente que recibe un cliente incluye la auditoría y la memoria, o solo los entregables? | El autor | Construir el expediente | Abierta, con propuesta: solo los entregables |
+| 6 | ¿Sirve para alguien que no sea el autor? | Un usuario ajeno | Declararla como algo más que una herramienta personal | Abierta |
 
 ## 11. Cómo se pide un cambio a lo ya acordado
 
 | Quién pide | Por dónde entra | Quién evalúa el impacto | Quién aprueba |
 |---|---|---|---|
-| El usuario | Como pendiente escrito | El agente, diciendo a qué funcionalidades le pega | El usuario |
-| Un proyecto que hereda | Como pendiente, con el caso que lo motivó | El agente, diciendo si sirve a cualquier proyecto o solo a ese | El usuario |
+| El usuario | Como pendiente escrito | El agente, diciendo a qué funcionalidades les pega | El usuario |
 | El agente, al toparse con un vacío | Como pendiente, en el momento | El agente, diciendo si es requisito nuevo o interpretación de uno existente | El usuario |
 
 **Desde que este documento se apruebe, lo escrito acá es la línea base de requisitos.** Un cambio no se discute contra lo que alguien recuerde, sino contra esta versión.
@@ -167,58 +202,29 @@ Qué documentos produce la etapa, con qué molde se escriben y quién los recibe
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
-| Inventario de funcionalidades | [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) | Usuario, se aprueba | Escrito en [inventario-funcionalidades.md](inventario-funcionalidades.md), 14 fichas; sin aprobar |
+| Inventario de funcionalidades | [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) | Usuario, se aprueba | Aprobado: [inventario-funcionalidades.md](inventario-funcionalidades.md), 32 fichas |
 | Épicas | [plantillas/ciclo-vida-proyectos/03-epica.md](../../plantillas/ciclo-vida-proyectos/03-epica.md) | Equipo | Pendiente: la puerta es el inventario aprobado |
-| Historias de usuario con criterios | [plantillas/ciclo-vida-proyectos/04-HU.md](../../plantillas/ciclo-vida-proyectos/04-HU.md) | Usuario, una por una | Pendiente: salen del «Terminada cuando» de cada ficha |
-| Requisitos funcionales | Sección 3 de este documento | Usuario | Listo, catorce con identificador, origen y prioridad |
-| Requisitos no funcionales | Sección 4 de este documento | Usuario | Listo, nueve con su número y su comprobación |
-| Casos de uso | Sección 7 de este documento | Usuario y quien prueba | Listo, nueve con sus flujos de error |
-| Reglas del negocio | Sección 5 de este documento | Equipo | Listo, siete |
-| Trazabilidad | Sección 8 de este documento | Equipo y quien prueba | Listo, sin requisitos huérfanos |
-| Glosario | Sección 9 de este documento | Ambos | Listo, con siete términos |
+| Historias de usuario con criterios | [plantillas/ciclo-vida-proyectos/04-HU.md](../../plantillas/ciclo-vida-proyectos/04-HU.md) | Usuario, una por una | Pendiente |
+| Requisitos funcionales | Sección 3 de este documento | Usuario | Listo, treinta y dos |
+| Requisitos no funcionales | Sección 4 de este documento | Usuario | Listo, doce con su número |
+| Casos de uso | Sección 7 de este documento | Usuario y quien prueba | Listo, doce con sus flujos de error |
+| Reglas del negocio | Sección 5 de este documento | Equipo | Listo, nueve |
+| Trazabilidad | Sección 8 de este documento | Equipo y quien prueba | Listo, sin huérfanos |
+| Glosario | Sección 9 de este documento | Ambos | Listo, once términos |
 
 ## 13. Las puertas de esta etapa
 
 | Qué no se puede hacer | Hasta que | Regla |
 |---|---|---|
 | Derivar épicas | el inventario esté aprobado por el usuario | [`02·F26`](../../base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) |
-| Pasar a diseño | cada funcionalidad tenga su «Terminada cuando» verificable | Cumplido: las once lo tienen |
-| Pasar a diseño | ningún requisito quede con palabras sin medida | Cumplido: los siete no funcionales llevan número |
+| Pasar a diseño | cada funcionalidad tenga su «Terminada cuando» verificable | Se comprueba al cerrar el inventario |
+| Pasar a diseño | ningún requisito quede con palabras sin medida | Cumplido: los doce no funcionales llevan número |
+| Diseñar el modelo de datos | esté respondida la duda 3 | Cumplido el 2026-08-24 |
 
 ## 14. La decisión de cierre
 
-**Se pasa a diseño**, decidido por el autor el 2026-08-24, con el inventario aprobado ese mismo día.
+**Se pasa a diseño**, decidido por el autor el 2026-08-24, con el inventario aprobado ese mismo día y la duda 3 respondida: la documentación vive en el repositorio de la plataforma, una carpeta por proyecto.
 
-Lo que la etapa tenía que producir está escrito: catorce requisitos funcionales con su origen, nueve no funcionales con su número, nueve casos de uso con sus flujos de error, siete reglas del negocio, la trazabilidad sin huérfanos y el inventario con sus catorce fichas.
+**Desde esta fecha lo escrito acá es la línea base de requisitos.**
 
-**Las tres dudas de la sección 10 siguen abiertas y no detienen el paso a diseño**, salvo la 3, que solo detiene a `F-010`. La duda 1 es la que puede cambiar el proyecto entero: si no sirve para nadie más, lo que se construye es una preferencia personal y no un estándar. Se responde instalándolo fuera, no discutiéndolo.
-
-## 15. Qué de esta etapa cumple hoy el proyecto
-
-> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que ese análisis no puede decir, están en [cvds/README.md](../README.md).
-
-| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
-|---|---|---|
-| De dónde salió cada requisito | Lo que el usuario pidió, con sus palabras y sin reescribir | [prompts/](../../prompts/) |
-| Las reglas del negocio | Las seis del núcleo blindado, que ninguna otra puede contradecir | [base/00-nucleo-blindado.md](../../base/00-nucleo-blindado.md) |
-| Los actores y sus permisos | Qué puede hacer el agente, qué no, y qué cuesta deshacer cada acción | [base/00-identidad-y-rol/acciones-y-riesgo.md](../../base/00-identidad-y-rol/acciones-y-riesgo.md) |
-| El glosario del proyecto | Los términos del estándar, con una definición cada uno | [base/glosario.md](../../base/glosario.md) |
-| Las dudas abiertas | Las preguntas se escriben y detienen el trabajo en vez de resolverse inventando | Las 42 dudas que detuvieron 26 fases, en [pendientes/hecho/](../../pendientes/hecho/) |
-| La trazabilidad | Tabla de cinco columnas obligatoria, y comprobación antes de cerrar | `13·DOC11` y `13·DOC3` |
-| Control de cambios sobre lo acordado | Todo cambio versiona, y nada se borra: se deroga | `M10` y `M11`, con [CHANGELOG.md](../../CHANGELOG.md) |
-
-**Los cinco hallazgos de esta etapa, y qué se escribió para cada uno**
-
-| # | Hallazgo del análisis | Qué se escribió | Dónde quedó |
-|---|---|---|---|
-| 1 | Los requisitos existían como historias, sin catálogo con identificador ni prioridad | Once requisitos con `RF-01` a `RF-11`, su origen, el objetivo del que salen y su prioridad en cuatro grados | Sección 3 |
-| 2 | Los casos de uso no se escribieron como tales | Seis casos, cada uno con sus flujos alternos y de error, que es de donde salen las validaciones | Sección 7 |
-| 3 | No había requisitos no funcionales | Siete, cada uno con su número y con cómo se comprueba | Sección 4 |
-| 4 | El proyecto no tenía inventario de funcionalidades, que es la puerta que le exige a los demás | Once fichas completas, con lo que las termina, de qué dependen y qué las gobierna | [inventario-funcionalidades.md](inventario-funcionalidades.md) |
-| 5 | No había línea base aprobada | Escrito cómo entra un cambio y contra qué se mide, listo para regir en cuanto se apruebe | Sección 11 |
-
-**Nada queda abierto en esta etapa.**
-
-**Aprobado por Ing. José Dúmar Jiménez Ruíz, el 2026-08-24.** Desde esta fecha lo escrito acá es la línea base de requisitos, y con el inventario aprobado **queda abierta la puerta de las épicas** (`02·F26`).
-
-**Lo que sigue sin respuesta, y no detiene la etapa:** las cuatro preguntas del inventario. Cada una detiene solo la funcionalidad que la nombra.
+**Las otras cinco dudas no detienen la etapa.** La 1 y la 2 se responden al partir el trabajo en versiones; la 4 y la 5 tienen propuesta escrita; la 6 solo se responde cuando alguien más lo use.
