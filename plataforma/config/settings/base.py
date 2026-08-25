@@ -28,13 +28,20 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
+    "django.contrib.sessions",
     "django.contrib.staticfiles",
     "nucleo.almacen",
     "nucleo.auditoria",
+    "nucleo.proyectos",
 ]
 
+# La plataforma corre en la máquina del usuario y no se expone a la red
+# (`DA-03`), pero el formulario de conectar cambia estado, así que lleva su
+# comprobación de origen igual: el día que corra en un servidor, ya está puesta.
 MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -43,7 +50,9 @@ TEMPLATES = [{
     "BACKEND": "django.template.backends.django.DjangoTemplates",
     "DIRS": [RAIZ / "templates"],
     "APP_DIRS": True,
-    "OPTIONS": {"context_processors": []},
+    "OPTIONS": {"context_processors": [
+        "django.template.context_processors.request",
+    ]},
 }]
 
 WSGI_APPLICATION = "config.wsgi.application"

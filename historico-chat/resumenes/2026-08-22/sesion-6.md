@@ -163,6 +163,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-11 · La especificación decidía cómo se comporta desconectar, y ninguna funcionalidad lo pedía
+
+- **Qué pasó:** el usuario vio la primera pantalla y preguntó «pero eso no tiene administración?». Buscando la respuesta apareció que la especificación de Proyectos ya decidía, en su §7 y su §12, cómo se comporta desconectar, y que ningún requisito ni funcionalidad lo pedía. Su propia sección de alcance no lo nombraba.
+- **Por qué importa:** una decisión escrita en una especificación no construye nada. Lo que baja a fase es el inventario. El documento quedaba prometiendo un comportamiento que ninguna fase iba a hacer, y el hueco no se veía leyendo: se vio usando el producto. El daño concreto era que **conectar no tenía reversa**, así que un proyecto mal conectado quedaba mal para siempre.
+- **Qué lo soluciona:** se pidió por la cadena completa el mismo día, y entró a la versión 1 como fase H.
+- **Qué se decidió:** entra a la versión 1 y no más tarde, porque mientras no exista, cada error al conectar se acumula. Es lo contrario del hallazgo `H-8`, que sí se pudo postergar sin perder nada.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** [EP-008 · HU-004](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) administrar un proyecto conectado, como fase H de la versión 1.
+- **Orden de resolución:** —
+- **Dónde queda:** [pendientes/86](../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md), `F-035`, la §15 de la [especificación de Proyectos](../../../documentacion/proyectos/spec.md), y la señal `S-029`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-12 · El guion de sabotaje restauraba con git, y el archivo saboteado no estaba versionado
+
+- **Qué pasó:** al validar las pruebas de la fase B con cinco sabotajes, uno de los archivos se restauraba con el control de versiones. Era nuevo, no estaba versionado, y quedó saboteado. Se notó al final, cuando la corrida limpia salió en rojo.
+- **Por qué importa:** el sabotaje existe para poder confiar en las pruebas. Un guion que no restaura bien hace lo contrario: deja el código roto y las pruebas fallando por otra razón. Si el paso final no hubiera corrido la suite completa, el sabotaje se iba dentro del commit.
+- **Qué lo soluciona:** se resolvió acá, rehaciendo la evidencia con copias en vez del control de versiones.
+- **Qué se decidió:** el sabotaje se restaura con copia del archivo, nunca con git, porque lo que se prueba suele ser código recién escrito. Y el guion siempre termina corriendo la suite completa.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la cabecera de [EV-02 de la fase B](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/B-EP-008-HU-001-se-conecta-un-proyecto/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt), y la señal `S-030`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -177,9 +207,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en tres commits: la fase A en `26b2222`, la cadena de la épica nueva en `7cfcf5d`, y la fase D en `5231022`.
+Lo construido antes quedó guardado en `26b2222`, `7cfcf5d`, `5231022` y `d261ab1`. Falta guardar la fase B y las dos cadenas que salieron de ella.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

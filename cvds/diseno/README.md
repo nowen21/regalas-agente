@@ -215,3 +215,14 @@ Cada requisito con el módulo que lo implementa y la decisión de la que depende
 **Desde esta fecha lo escrito acá es la línea base del diseño.**
 
 **Lo que se acepta sin diseñar, y con qué riesgo:** la seguridad de la sección 8 vale para un solo usuario en su máquina. El día que la plataforma corra en un servidor o la use alguien más, esa sección se rehace entera, y con ella el modelo de datos, que hoy no tiene entidad de persona.
+
+### 15.1 Cambios después del cierre
+
+Uno por fila, con quién lo aprobó. La línea base no se edita en silencio.
+
+| Fecha | Qué cambió | Por qué | Aprobado por |
+|---|---|---|---|
+| 2026-08-25 | `versión de reglas adoptada` de la entidad `Proyecto` deja de ser obligatoria | Salió al planear la fase B: si el campo es obligatorio, un proyecto que todavía no instaló el estándar no se puede conectar, y el problema declarado era administrar **todos** los proyectos. `RN-3` no cambia: la versión que se declare tiene que existir | Ing. José Dúmar Jiménez Ruíz |
+
+**Qué NO cambió con esto:** ninguna decisión de arquitectura, ninguna pantalla, y ningún otro campo del modelo.
+

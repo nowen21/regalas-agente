@@ -327,11 +327,12 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 ---
 
-### Lo que dejó abrir la fase de auditoría (85)
+### Lo que dejó ver la plataforma funcionando (85-86)
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
 | 85 | **P3** | [Las conversaciones quedan escritas pero nadie puede contar qué se repite](85-las-conversaciones-completas-no-se-pueden-analizar.md) | El histórico guarda cada mensaje y cada respuesta, ya sin claves, y no hay cómo contar qué se repite. Una corrección que el usuario tiene que decir tres veces no es un descuido suyo: es una regla que falta, y hoy el patrón se pierde. Es del producto, no del cuerpo de reglas: entra a la versión 2 y no toca la 1. |
+| 86 | **P0** | [Conectar un proyecto no tiene reversa, y desconectar está decidido pero no pedido](86-conectar-un-proyecto-no-tiene-reversa.md) | La especificación de Proyectos decide cómo se comporta desconectar, y ninguna funcionalidad lo pide: ninguna fase lo va a construir. Mientras tanto, un proyecto conectado con el nombre o la ruta equivocados queda así para siempre, y el arreglo es editar a mano lo que la plataforma administra. También faltan renombrar y corregir la versión declarada. |
 
 ---
 
@@ -392,7 +393,7 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 
 **Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
 
-**El [85](85-las-conversaciones-completas-no-se-pueden-analizar.md) todavía no tiene historia, y es a propósito.** Es del producto, no del cuerpo de reglas, y su historia nace cuando el usuario apruebe el cambio de requisitos que pide. Anotarlo bajo una historia que todavía no existe sería inventarle un destino.
+**El [85](85-las-conversaciones-completas-no-se-pueden-analizar.md) y el [86](86-conectar-un-proyecto-no-tiene-reversa.md) todavía no tienen historia, y es a propósito.** Son del producto, no del cuerpo de reglas, y su historia nace cuando el usuario apruebe el cambio de requisitos que piden. Anotarlos bajo una historia que todavía no existe sería inventarles un destino.
 
 **Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 

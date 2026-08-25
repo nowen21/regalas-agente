@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}Proyectos · Cimiento{% endblock %}
+{% block cuerpo %}
+<h1>Proyectos</h1>
+
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+{% if proyectos %}
+<table>
+  <tr><th>Proyecto</th><th>Dónde vive su código</th><th>Versión de reglas</th><th>Estado</th></tr>
+  {% for p in proyectos %}
+  <tr>
+    <td><a href="{% url 'proyectos-uno' p.identificador %}">{{ p.nombre }}</a></td>
+    <td>
+      {{ p.ruta_codigo }}
+      {% if not p.ruta_viva %}<br><span class="apagado">esa ruta ya no existe</span>{% endif %}
+    </td>
+    <td>{% if p.adopto_el_estandar %}{{ p.version_reglas }}{% else %}<span class="apagado">ninguna todavía</span>{% endif %}</td>
+    <td>{{ p.estado }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="vacio">Todavía no hay ningún proyecto conectado. Se conecta con el formulario de abajo.</p>
+{% endif %}
+
+<h2>Conectar un proyecto</h2>
+<form method="post" action="{% url 'proyectos-conectar' %}">{% csrf_token %}
+  <label for="nombre">Cómo se llama</label>
+  <input type="text" id="nombre" name="nombre" value="{{ nombre|default:'' }}">
+  <label for="ruta">Dónde vive su código</label>
+  <input type="text" id="ruta" name="ruta" value="{{ ruta|default:'' }}">
+  <button type="submit">Conectar</button>
+</form>
+<p class="apagado">Conectar no toca nada dentro de la carpeta del proyecto: solo anota dónde está.</p>
+{% endblock %}

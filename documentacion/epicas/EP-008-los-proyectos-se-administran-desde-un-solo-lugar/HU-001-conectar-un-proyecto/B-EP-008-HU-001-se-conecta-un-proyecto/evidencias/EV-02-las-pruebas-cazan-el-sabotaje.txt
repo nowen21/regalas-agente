@@ -1,0 +1,42 @@
+== cinco sabotajes, uno por cada cosa que la fase promete ==
+== cada uno se restaura copiando el archivo guardado, no con git:
+== estos archivos todavia no estan versionados, y el primer intento
+== dejo uno saboteado sin que se notara hasta el final.
+
+--- 1: no comprobar que la ruta exista ---
+FAIL: test_el_rechazo_se_ve_en_la_pantalla_y_no_se_pierde_lo_escrito (nucleo.proyectos.tests.PantallasTests.test_el_rechazo_se_ve_en_la_pantalla_y_no_se_pierde_lo_escrito)
+FAIL: test_la_ruta_que_no_existe_se_rechaza_y_dice_cual_era (nucleo.proyectos.tests.RechazosTests.test_la_ruta_que_no_existe_se_rechaza_y_dice_cual_era)
+FAIL: test_nada_se_escribe_cuando_se_rechaza (nucleo.proyectos.tests.RechazosTests.test_nada_se_escribe_cuando_se_rechaza)
+Ran 62 tests in 1.861s
+FAILED (failures=3)
+
+--- 2: no comprobar que la ruta ya este registrada ---
+FAIL: test_la_misma_carpeta_escrita_distinto_es_la_misma_carpeta (nucleo.proyectos.tests.RechazosTests.test_la_misma_carpeta_escrita_distinto_es_la_misma_carpeta)
+FAIL: test_la_ruta_ya_registrada_dice_que_proyecto_la_tiene (nucleo.proyectos.tests.RechazosTests.test_la_ruta_ya_registrada_dice_que_proyecto_la_tiene)
+Ran 62 tests in 2.098s
+FAILED (failures=2)
+
+--- 3: aceptar una version de reglas que no existe ---
+FAIL: test_vacio_y_falso_no_se_resuelven_igual (nucleo.proyectos.tests.AvisosTests.test_vacio_y_falso_no_se_resuelven_igual)
+FAIL: test_tampoco_se_toca_cuando_se_rechaza (nucleo.proyectos.tests.NoTocarElProyectoTests.test_tampoco_se_toca_cuando_se_rechaza)
+FAIL: test_una_version_que_no_existe_se_rechaza (nucleo.proyectos.tests.RechazosTests.test_una_version_que_no_existe_se_rechaza)
+Ran 62 tests in 1.523s
+FAILED (failures=3)
+
+--- 4: confundir vacio con falso: rechazar al que no declara version ---
+ERROR: test_el_claude_sin_version_declarada_tambien_se_conecta (nucleo.proyectos.tests.AvisosTests.test_el_claude_sin_version_declarada_tambien_se_conecta)
+ERROR: test_el_proyecto_sin_estandar_instalado_se_conecta_con_aviso (nucleo.proyectos.tests.AvisosTests.test_el_proyecto_sin_estandar_instalado_se_conecta_con_aviso)
+ERROR: test_vacio_y_falso_no_se_resuelven_igual (nucleo.proyectos.tests.AvisosTests.test_vacio_y_falso_no_se_resuelven_igual)
+ERROR: test_el_aviso_de_no_haber_adoptado_el_estandar_se_ve (nucleo.proyectos.tests.PantallasTests.test_el_aviso_de_no_haber_adoptado_el_estandar_se_ve)
+Ran 62 tests in 1.534s
+FAILED (errors=4)
+
+--- 5: escribir la ficha dentro de la carpeta del proyecto ---
+FAIL: test_la_carpeta_del_proyecto_queda_intacta (nucleo.proyectos.tests.NoTocarElProyectoTests.test_la_carpeta_del_proyecto_queda_intacta)
+FAIL: test_lo_que_la_plataforma_escribe_queda_dentro_de_sus_datos (nucleo.proyectos.tests.NoTocarElProyectoTests.test_lo_que_la_plataforma_escribe_queda_dentro_de_sus_datos)
+Ran 62 tests in 2.205s
+FAILED (failures=2)
+
+--- con el codigo restaurado ---
+Ran 62 tests in 1.933s
+OK

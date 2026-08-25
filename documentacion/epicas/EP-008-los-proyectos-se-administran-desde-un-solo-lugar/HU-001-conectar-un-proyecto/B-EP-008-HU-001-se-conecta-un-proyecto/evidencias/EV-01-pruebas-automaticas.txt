@@ -1,0 +1,94 @@
+Python 3.11.9
+Django 5.2.11
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Found 62 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: staticfiles
+  Apply all migrations: almacen, auditoria, contenttypes, proyectos, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying almacen.0001_initial... OK
+  Applying auditoria.0001_initial... OK
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying proyectos.0001_initial... OK
+  Applying sessions.0001_initial...test_borrar_el_indice_no_pierde_informacion (nucleo.almacen.tests.AlmacenTests.test_borrar_el_indice_no_pierde_informacion) ... ok
+test_el_indice_guarda_la_huella_del_texto (nucleo.almacen.tests.AlmacenTests.test_el_indice_guarda_la_huella_del_texto) ... ok
+test_la_huella_cambia_cuando_el_texto_cambia (nucleo.almacen.tests.AlmacenTests.test_la_huella_cambia_cuando_el_texto_cambia) ... ok
+test_leer_algo_que_no_esta_no_inventa (nucleo.almacen.tests.AlmacenTests.test_leer_algo_que_no_esta_no_inventa) ... ok
+test_lo_guardado_queda_como_texto_en_disco (nucleo.almacen.tests.AlmacenTests.test_lo_guardado_queda_como_texto_en_disco) ... ok
+test_lo_guardado_se_lee_despues (nucleo.almacen.tests.AlmacenTests.test_lo_guardado_se_lee_despues) ... ok
+test_no_se_escribe_fuera_de_la_carpeta (nucleo.almacen.tests.AlmacenTests.test_no_se_escribe_fuera_de_la_carpeta) ... ok
+test_no_se_escribe_sin_constancia (nucleo.almacen.tests.AlmacenTests.test_no_se_escribe_sin_constancia) ... ok
+test_no_se_lee_fuera_de_la_carpeta (nucleo.almacen.tests.AlmacenTests.test_no_se_lee_fuera_de_la_carpeta) ... ok
+test_una_constancia_de_otra_cosa_no_sirve (nucleo.almacen.tests.AlmacenTests.test_una_constancia_de_otra_cosa_no_sirve) ... ok
+test_responde_que_esta_viva (nucleo.almacen.tests.EstaVivaTests.test_responde_que_esta_viva) ... ok
+test_responde_y_guarda_con_la_red_tapada (nucleo.almacen.tests.SinRedTests.test_responde_y_guarda_con_la_red_tapada) ... ok
+test_el_molde_no_se_tapa (nucleo.auditoria.tests.CredencialesTests.test_el_molde_no_se_tapa) ... ok
+test_la_clave_en_cualquier_campo_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_en_cualquier_campo_queda_tapada) ... ok
+test_la_clave_entre_comillas_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_entre_comillas_queda_tapada) ... ok
+test_la_clave_sin_comillas_tambien_queda_tapada (nucleo.auditoria.tests.CredencialesTests.test_la_clave_sin_comillas_tambien_queda_tapada) ... ok
+test_lo_indexado_tampoco_trae_la_clave (nucleo.auditoria.tests.CredencialesTests.test_lo_indexado_tampoco_trae_la_clave) ... ok
+test_el_enlace_aguanta_que_el_archivo_se_renombre (nucleo.auditoria.tests.EnlaceConLaSesionTests.test_el_enlace_aguanta_que_el_archivo_se_renombre)
+Lo que decide el caso. ... ok
+test_la_accion_de_una_sesion_trae_su_enlace (nucleo.auditoria.tests.EnlaceConLaSesionTests.test_la_accion_de_una_sesion_trae_su_enlace) ... ok
+test_una_accion_fuera_de_toda_sesion_lo_trae_vacio (nucleo.auditoria.tests.EnlaceConLaSesionTests.test_una_accion_fuera_de_toda_sesion_lo_trae_vacio) ... ok
+test_actualizar_en_bloque_no_se_puede (nucleo.auditoria.tests.IntegridadTests.test_actualizar_en_bloque_no_se_puede) ... ok
+test_borrar_una_fila_del_indice_no_se_puede (nucleo.auditoria.tests.IntegridadTests.test_borrar_una_fila_del_indice_no_se_puede) ... ok
+test_editar_una_fila_del_indice_no_se_puede (nucleo.auditoria.tests.IntegridadTests.test_editar_una_fila_del_indice_no_se_puede) ... ok
+test_el_intento_de_borrar_queda_registrado (nucleo.auditoria.tests.IntegridadTests.test_el_intento_de_borrar_queda_registrado) ... ok
+test_el_intento_de_editar_queda_registrado (nucleo.auditoria.tests.IntegridadTests.test_el_intento_de_editar_queda_registrado) ... ok
+test_lo_ya_escrito_no_se_reescribe_al_agregar (nucleo.auditoria.tests.IntegridadTests.test_lo_ya_escrito_no_se_reescribe_al_agregar) ... ok
+test_cada_accion_deja_exactamente_un_registro (nucleo.auditoria.tests.NadaCambiaSinRegistroTests.test_cada_accion_deja_exactamente_un_registro) ... ok
+test_la_puerta_de_atras_quedo_cerrada (nucleo.auditoria.tests.NadaCambiaSinRegistroTests.test_la_puerta_de_atras_quedo_cerrada)
+Lo que antes era el hueco de `CP-007`, ahora rechazado. ... ok
+test_una_constancia_no_sirve_para_cambiar_otra_cosa (nucleo.auditoria.tests.NadaCambiaSinRegistroTests.test_una_constancia_no_sirve_para_cambiar_otra_cosa)
+El descuido más probable: reutilizar el comprobante que hay a mano. ... ok
+test_el_indice_se_rehace_desde_el_texto (nucleo.auditoria.tests.RegistrarTests.test_el_indice_se_rehace_desde_el_texto) ... ok
+test_la_accion_queda_con_sus_seis_datos (nucleo.auditoria.tests.RegistrarTests.test_la_accion_queda_con_sus_seis_datos) ... ok
+test_lo_registrado_queda_como_texto_legible (nucleo.auditoria.tests.RegistrarTests.test_lo_registrado_queda_como_texto_legible) ... ok
+test_una_accion_sin_proyecto_se_registra_igual (nucleo.auditoria.tests.RegistrarTests.test_una_accion_sin_proyecto_se_registra_igual) ... ok
+test_con_constancia_ejecuta_cuando_si_se_pudo_registrar (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_con_constancia_ejecuta_cuando_si_se_pudo_registrar) ... ok
+test_la_accion_no_se_ejecuta_si_no_hubo_constancia (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_la_accion_no_se_ejecuta_si_no_hubo_constancia) ... ok
+test_la_constancia_se_escribe_antes_de_ejecutar (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_la_constancia_se_escribe_antes_de_ejecutar)
+No basta con que las dos cosas pasen: importa el orden. ... ok
+test_si_no_se_puede_registrar_revienta (nucleo.auditoria.tests.SinConstanciaNoHayEfectoTests.test_si_no_se_puede_registrar_revienta) ... ok
+test_conectar_deja_exactamente_un_registro (nucleo.proyectos.tests.AuditoriaTests.test_conectar_deja_exactamente_un_registro) ... ok
+test_si_no_se_puede_registrar_el_proyecto_no_queda_conectado (nucleo.proyectos.tests.AuditoriaTests.test_si_no_se_puede_registrar_el_proyecto_no_queda_conectado)
+La constancia va antes que el efecto, también acá. ... ok
+test_el_claude_sin_version_declarada_tambien_se_conecta (nucleo.proyectos.tests.AvisosTests.test_el_claude_sin_version_declarada_tambien_se_conecta) ... ok
+test_el_proyecto_sin_estandar_instalado_se_conecta_con_aviso (nucleo.proyectos.tests.AvisosTests.test_el_proyecto_sin_estandar_instalado_se_conecta_con_aviso)
+CP-008. Vacío no es lo mismo que falso: uno entra, el otro no. ... ok
+test_la_carpeta_sin_control_de_versiones_se_conecta_con_aviso (nucleo.proyectos.tests.AvisosTests.test_la_carpeta_sin_control_de_versiones_se_conecta_con_aviso) ... ok
+test_vacio_y_falso_no_se_resuelven_igual (nucleo.proyectos.tests.AvisosTests.test_vacio_y_falso_no_se_resuelven_igual)
+Si los dos caminos se juntan, uno de los dos casos quedó mal. ... ok
+test_dos_proyectos_con_el_mismo_nombre_no_se_pisan (nucleo.proyectos.tests.ConectarTests.test_dos_proyectos_con_el_mismo_nombre_no_se_pisan) ... ok
+test_el_identificador_sirve_como_nombre_de_carpeta (nucleo.proyectos.tests.ConectarTests.test_el_identificador_sirve_como_nombre_de_carpeta) ... ok
+test_el_indice_se_rehace_desde_las_fichas (nucleo.proyectos.tests.ConectarTests.test_el_indice_se_rehace_desde_las_fichas) ... ok
+test_el_proyecto_queda_con_lo_que_lo_identifica (nucleo.proyectos.tests.ConectarTests.test_el_proyecto_queda_con_lo_que_lo_identifica) ... ok
+test_su_ficha_queda_escrita_y_se_lee_sin_la_plataforma (nucleo.proyectos.tests.ConectarTests.test_su_ficha_queda_escrita_y_se_lee_sin_la_plataforma) ... ok
+test_la_carpeta_del_proyecto_queda_intacta (nucleo.proyectos.tests.NoTocarElProyectoTests.test_la_carpeta_del_proyecto_queda_intacta) ... ok
+test_lo_que_la_plataforma_escribe_queda_dentro_de_sus_datos (nucleo.proyectos.tests.NoTocarElProyectoTests.test_lo_que_la_plataforma_escribe_queda_dentro_de_sus_datos) ... ok
+test_tampoco_se_toca_cuando_se_rechaza (nucleo.proyectos.tests.NoTocarElProyectoTests.test_tampoco_se_toca_cuando_se_rechaza) ... ok
+test_el_aviso_de_no_haber_adoptado_el_estandar_se_ve (nucleo.proyectos.tests.PantallasTests.test_el_aviso_de_no_haber_adoptado_el_estandar_se_ve) ... ok
+test_el_rechazo_se_ve_en_la_pantalla_y_no_se_pierde_lo_escrito (nucleo.proyectos.tests.PantallasTests.test_el_rechazo_se_ve_en_la_pantalla_y_no_se_pierde_lo_escrito) ... ok
+test_la_lista_trae_los_proyectos_conectados (nucleo.proyectos.tests.PantallasTests.test_la_lista_trae_los_proyectos_conectados) ... ok
+test_la_lista_vacia_lo_dice (nucleo.proyectos.tests.PantallasTests.test_la_lista_vacia_lo_dice) ... ok
+test_se_conecta_desde_la_pantalla (nucleo.proyectos.tests.PantallasTests.test_se_conecta_desde_la_pantalla) ... ok
+test_se_entra_a_un_proyecto_y_trae_lo_suyo (nucleo.proyectos.tests.PantallasTests.test_se_entra_a_un_proyecto_y_trae_lo_suyo) ... ok
+test_la_misma_carpeta_escrita_distinto_es_la_misma_carpeta (nucleo.proyectos.tests.RechazosTests.test_la_misma_carpeta_escrita_distinto_es_la_misma_carpeta) ... ok
+test_la_ruta_que_no_existe_se_rechaza_y_dice_cual_era (nucleo.proyectos.tests.RechazosTests.test_la_ruta_que_no_existe_se_rechaza_y_dice_cual_era) ... ok
+test_la_ruta_ya_registrada_dice_que_proyecto_la_tiene (nucleo.proyectos.tests.RechazosTests.test_la_ruta_ya_registrada_dice_que_proyecto_la_tiene) ... ok
+test_nada_se_escribe_cuando_se_rechaza (nucleo.proyectos.tests.RechazosTests.test_nada_se_escribe_cuando_se_rechaza)
+Un rechazo que igual dejó archivos es peor que no rechazar. ... ok
+test_una_version_que_no_existe_se_rechaza (nucleo.proyectos.tests.RechazosTests.test_una_version_que_no_existe_se_rechaza) ... ok
+
+----------------------------------------------------------------------
+Ran 62 tests in 2.356s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+ OK
+System check identified no issues (0 silenced).

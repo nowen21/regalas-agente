@@ -10,7 +10,7 @@
 
 Guardar qué proyectos administra la plataforma, dónde vive el código de cada uno, y mostrar en qué va cada uno sin tener que entrar a su carpeta.
 
-- **Dentro de alcance:** registrar un proyecto con su nombre y su ruta (`F-001`), avisar cuando esa ruta deja de existir (`F-002`), y mostrar el estado de un proyecto (`F-003`).
+- **Dentro de alcance:** registrar un proyecto con su nombre y su ruta (`F-001`), avisar cuando esa ruta deja de existir (`F-002`), mostrar el estado de un proyecto (`F-003`), y administrar uno ya conectado: desconectarlo, renombrarlo o corregir la versión que declara (`F-035`).
 - **Fuera de alcance:** tocar el código del proyecto, configurar qué reglas rigen en él (`F-004`, versión 5), y traer su documentación, que es del módulo Importación.
 
 ## 2. Contexto — qué hay hoy
@@ -48,6 +48,14 @@ Módulo nuevo, no hay código previo. Lo que existe en este repositorio es docum
 **Detectar la ruta perdida.** Al listar proyectos se comprueba si cada ruta existe. La que no, se marca y se avisa; su documentación se sigue mostrando igual. Volver a apuntar la ruta quita el aviso.
 
 **Ver el estado.** Se lee lo que la plataforma guardó de ese proyecto y se responde: qué etapas tienen documento, qué fases están abiertas y qué falta aprobar. Un proyecto sin nada escrito responde «sin empezar», que es un dato, no una pantalla vacía.
+
+**Administrar uno ya conectado.** Tres cambios, y ninguno borra nada:
+
+- **Desconectar:** sale de la lista y su documentación se queda en la plataforma.
+- **Renombrar:** cambia el nombre y su carpeta no se mueve.
+- **Corregir la versión declarada:** se vuelve a leer del proyecto y se comprueba contra las publicadas.
+
+Los tres piden confirmación y los tres quedan en la auditoría.
 
 ## 7. Interfaz
 
@@ -96,9 +104,20 @@ No aplica: el módulo no guarda datos de personas ni información regulada.
 | F-001 | RF-01 | B, y su base en A |
 | F-002 | RF-02 | C |
 | F-003 | RF-03 | G |
+| F-035 | RF-35 | H |
 
 ## 14. Cruces con otros módulos
 
 - **Auditoría:** toda acción de este módulo se registra allá.
 - **Importación:** trae la documentación de un proyecto ya conectado.
 - **Reglas:** cada proyecto declara qué versión adoptó; ese campo se usa desde la versión 3.
+
+---
+
+## 15. Cambios después de aprobada
+
+| Fecha | Qué cambió | Por qué | Aprobado por |
+|---|---|---|---|
+| 2026-08-25 | Entra `F-035`, administrar un proyecto ya conectado, al alcance de la §1 y al comportamiento de la §6 | **La especificación ya decidía cómo se comporta desconectar**, en su §7 y en su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. La §1 decía qué estaba dentro del alcance y no lo nombraba. Sale de [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
+
+**Qué NO cambió:** las decisiones de la §12 ya estaban tomadas y siguen igual, incluida la de que desconectar no borra la documentación. Lo que faltaba no era decidir: era pedirlo.

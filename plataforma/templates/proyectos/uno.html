@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}{{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block cuerpo %}
+<h1>{{ proyecto.nombre }}</h1>
+
+{% if recien_conectado %}<p class="bien">Quedó conectado.</p>{% endif %}
+{% for aviso in avisos %}<p class="aviso">{{ aviso }}</p>{% endfor %}
+
+<table>
+  <tr><th>Dónde vive su código</th><td>{{ proyecto.ruta_codigo }}</td></tr>
+  <tr><th>¿Esa ruta existe?</th><td>{% if proyecto.ruta_viva %}Sí{% else %}No{% endif %}</td></tr>
+  <tr><th>Versión de reglas adoptada</th>
+      <td>{% if proyecto.adopto_el_estandar %}{{ proyecto.version_reglas }}{% else %}<span class="apagado">ninguna todavía</span>{% endif %}</td></tr>
+  <tr><th>Conectado el</th><td>{{ proyecto.conectado }}</td></tr>
+  <tr><th>Estado</th><td>{{ proyecto.estado }}</td></tr>
+</table>
+
+<h2>Qué todavía no muestra esta pantalla</h2>
+<p class="apagado">Sus etapas del ciclo de vida, sus fases abiertas y qué falta aprobar. Llegan cuando la plataforma pueda traer lo que el proyecto ya tiene escrito.</p>
+
+<p><a href="{% url 'proyectos-lista' %}">Volver a todos los proyectos</a></p>
+{% endblock %}

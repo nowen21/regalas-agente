@@ -102,10 +102,15 @@ class AlmacenTests(TestCase):
 
 
 class EstaVivaTests(TestCase):
-    """CP-001 · la plataforma responde, sin salir a la red."""
+    """CP-001 de la fase A · la plataforma responde, sin salir a la red.
+
+    La ruta se movió de «/» a «/esta-viva/» en la fase B, cuando la raíz pasó a
+    ser la lista de proyectos. **La comprobación sigue haciendo falta**: dice
+    si la plataforma responde sin depender de que haya proyectos conectados.
+    """
 
     def test_responde_que_esta_viva(self):
-        respuesta = self.client.get("/")
+        respuesta = self.client.get("/esta-viva/")
         self.assertEqual(respuesta.status_code, 200)
         self.assertIn("está viva", respuesta.content.decode("utf-8"))
 
@@ -137,7 +142,7 @@ class SinRedTests(TestCase):
     def test_responde_y_guarda_con_la_red_tapada(self):
         carpeta = tempfile.mkdtemp(prefix="prueba-sin-red-")
         try:
-            self.assertEqual(self.client.get("/").status_code, 200)
+            self.assertEqual(self.client.get("/esta-viva/").status_code, 200)
             with override_settings(CARPETA_DATOS=carpeta):
                 core.guardar("uno.md", "# Uno\n", constancia("uno.md"))
                 self.assertEqual(core.leer("uno.md"), "# Uno\n")

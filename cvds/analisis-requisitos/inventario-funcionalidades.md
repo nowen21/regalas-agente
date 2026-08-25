@@ -54,10 +54,11 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | F-032 | Medir el tiempo que se gasta revisando | Futura | Medición | Baja | Definida | Sin verificar |
 | F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Definida | Sin verificar |
 | F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Definida | Sin verificar |
+| F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Definida | Sin verificar |
 
-**Cuenta:** 22 obligatorias, 11 complementarias y 1 futura, de 34. Y aparte: 0 implementadas, 0 verificadas.
+**Cuenta:** 23 obligatorias, 11 complementarias y 1 futura, de 35. Y aparte: 0 implementadas, 0 verificadas.
 
-> **`F-033` y `F-034` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 34 por eso, y no por un error de conteo.
+> **`F-033`, `F-034` y `F-035` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 35 por eso, y no por un error de conteo.
 
 ## Las funcionalidades, una por una
 
@@ -740,6 +741,26 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | **Estado** | Definida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | **`CA-3` es lo difícil.** Agrupar frases parecidas no es contar palabras iguales, y hacerlo sin depender de nada instalado aparte es la parte que puede no salir. Le da además a `F-032` la fuente que le faltaba: hoy dice que recibe cuántas correcciones se repiten, y nada las cuenta |
+
+### Administrar un proyecto ya conectado
+
+| Campo | Valor |
+|---|---|
+| **Identificador** | `F-035` |
+| **De qué se trata** | Desconectar un proyecto, renombrarlo y corregir la versión de reglas que declara |
+| **Para qué sirve** | Que conectar tenga reversa. Sin esto, un proyecto conectado con el nombre o la ruta equivocados queda así para siempre |
+| **Parte del sistema** | Proyectos |
+| **Quién la usa** | El usuario |
+| **Qué recibe** | Qué proyecto, y qué se le cambia |
+| **Qué entrega** | El proyecto cambiado, o fuera de la lista si se desconectó. Su documentación se queda |
+| **Reglas que debe respetar** | `RN-2` ningún cambio de estado sin aprobación: las tres piden confirmación · `RN-9` la acción queda en la auditoría |
+| **Depende de** | F-001 |
+| **Terminada cuando** | `CA-1` desconectar saca el proyecto de la lista y **no borra su documentación** · `CA-2` renombrar cambia el nombre y **no mueve su carpeta** · `CA-3` corregir la versión declarada la vuelve a comprobar contra las publicadas · `CA-4` las tres piden confirmación y quedan en la auditoría |
+| **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
+| **Prioridad** | Alta |
+| **Estado** | Definida |
+| **Verificado** | Sin verificar |
+| **Lo que hay que tener en cuenta** | **Ya estaba decidida sin estar pedida.** La especificación del módulo dice desde el 2026-08-25 cómo se comporta desconectar, en su §7 y su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. Desconectar **no borra**, y esa decisión ya está tomada |
 
 ## Lo que todavía no se sabe si entra
 

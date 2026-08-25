@@ -25,6 +25,7 @@
 | El giro de producto | El autor | Conversación del 2026-08-24: qué debe llegar a ser Cimiento, no qué es hoy | 2026-08-24 | Sección 19 de [planificación](../planificacion/README.md) |
 | Los proyectos que administra | Ninguno consultado como tal | Sin consultar | — | Nada |
 | Lo que el usuario tuvo que repetir | El autor | Ver qué correcciones volvieron a decirse en la misma sesión | 2026-08-25 | [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
+| Ver la plataforma funcionando | El autor | Mirar la primera pantalla y preguntar qué falta | 2026-08-25 | [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) |
 
 **Quién no se consultó, y por qué:** nadie ajeno al autor. **Todos los requisitos salen de una sola persona**, y eso es un límite del análisis, no un detalle.
 
@@ -68,6 +69,7 @@
 | RF-32 | Medir el tiempo que el usuario dedica a revisar | El usuario | Observación del propio trabajo | 3 | Podría |
 | RF-33 | Guardar las conversaciones del agente en la plataforma, para poder buscarlas sin abrir archivo por archivo | El usuario | Lo que el usuario tuvo que repetir | 2 | Debería |
 | RF-34 | Decir qué correcciones se repiten, y cuántas veces | El usuario | Lo que el usuario tuvo que repetir | 2, 3 | Debería |
+| RF-35 | Desconectar un proyecto, renombrarlo y corregir la versión que declara, sin borrar su documentación | El usuario | Ver la plataforma funcionando | 1, 6 | Debe |
 
 **El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md).** Esta tabla es el resumen que se acuerda; aquel es el detalle que se construye.
 
@@ -158,6 +160,7 @@ El camino de cada requisito hasta la funcionalidad que lo ejecuta. El módulo qu
 | RF-16 | F-016 | RF-32 | F-032 |
 | — | — | RF-33 | F-033 |
 | — | — | RF-34 | F-034 |
+| — | — | RF-35 | F-035 |
 
 **Ningún requisito quedó sin funcionalidad, y ninguna funcionalidad sin requisito.**
 
@@ -241,5 +244,6 @@ Uno por fila, con quién lo aprobó. La línea base no se edita en silencio: si 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
 | 2026-08-25 | Entran `RF-33` y `RF-34`, con sus funcionalidades `F-033` y `F-034` | El histórico ya guarda cada mensaje y cada respuesta, y no hay cómo contar qué se repite. Una corrección que se repite es una regla que falta. Sale de [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) | Ing. José Dúmar Jiménez Ruíz |
+| 2026-08-25 | Entra `RF-35`, con su funcionalidad `F-035` | La especificación de Proyectos ya decidía cómo se comporta desconectar, y ninguna funcionalidad lo pedía: un documento aprobado prometía algo que ninguna fase iba a construir. Mientras tanto, conectar no tiene reversa. Sale de [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
 
-**Qué NO cambió con esto:** la versión 1 y sus siete fases, y la especificación del módulo Auditoría. Los dos requisitos nuevos entran a la versión 2.
+**Qué NO cambió con esto:** la especificación del módulo Auditoría. `RF-33` y `RF-34` entran a la versión 2; `RF-35` entra a la 1, porque mientras no exista, cada proyecto conectado por error queda así para siempre.

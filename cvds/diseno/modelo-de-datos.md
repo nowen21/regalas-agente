@@ -55,11 +55,13 @@ Las cosas de las que la plataforma guarda información, y cómo se relacionan en
 | `nombre` | Cómo se llama, para verlo en la lista | Texto | Sí |
 | `ruta del código` | Dónde vive su código en la máquina | Ruta | Sí |
 | `ruta viva` | Si esa ruta todavía existe | `sí` o `no`, se calcula | No |
-| `versión de reglas adoptada` | Qué versión rige ahí. Debe existir | Número de versión | Sí |
+| `versión de reglas adoptada` | Qué versión rige ahí. Si declara una, debe existir | Número de versión, o vacío | No |
 | `fecha de conexión` | Cuándo se registró | Año, mes y día | Sí |
 | `estado` | En qué va, calculado desde sus documentos | `sin empezar`, `en curso`, `entregado`, `archivado` | No |
 
 > **`ruta viva` y `estado` se calculan, no se escriben.** Guardarlos a mano crea una segunda verdad que envejece.
+
+> **La versión adoptada puede ir vacía, y eso es un dato.** Un proyecto que todavía no instaló el estándar se conecta igual, con el campo vacío y su aviso. Dejarlo obligatorio habría dejado fuera justo a los proyectos que más falta le hacen a la plataforma, y el problema declarado era administrarlos **todos**. Lo que `RN-3` sigue exigiendo es que la versión que **sí** se declare exista de verdad.
 
 ### Documento y su versión
 

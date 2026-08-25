@@ -270,3 +270,22 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente.
 - **Scope:** estándar; aplica a cualquier fase que reporte pruebas.
 - **Rel:** S-027.
+
+## S-029 · Una especificación puede decidir cómo se comporta algo que ningún requisito pidió, y entonces nadie lo construye  ·  error-resuelto · activa
+- **What:** al ver la primera pantalla de la plataforma, el usuario preguntó «pero eso no tiene administración?». Buscando la respuesta apareció esto: la especificación del módulo Proyectos decidía en su §7 que **desconectar** pide confirmación, y en su §12 que **desconectar no borra la documentación**, con su alternativa descartada y su porqué. Y no existía ninguna funcionalidad `F-` ni requisito `RF-` que lo pidiera. Su propia §1, la de alcance, no lo nombraba.
+- **Why:** una decisión escrita en una especificación **no construye nada**. Lo que baja a fase es el inventario, y si la funcionalidad no está ahí, ninguna fase la va a hacer. El documento queda prometiendo un comportamiento que nadie va a implementar, y el hueco no se ve leyendo la especificación: se ve usando el producto, que es tarde.
+- **Also:** el daño concreto era que conectar no tenía reversa. Un proyecto registrado con el nombre o la ruta equivocados quedaba así para siempre, y el arreglo era editar a mano el texto que la plataforma administra. Se comportaba como una acción **que no se deshace** cuando debía ser de las que se deshacen solas.
+- **Where:** [pendientes/86](../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) · `F-035` y `RF-35` · [HU-004](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) · la §15 de la [especificación de Proyectos](proyectos/spec.md), donde quedó anotado el cambio.
+- **Learned:** al cerrar una especificación, contrastar sus secciones de comportamiento y de decisiones contra su propia sección de alcance, y contra el inventario. Todo lo que la especificación **describe cómo se comporta** tiene que tener una fila en el inventario, o no se va a construir. Y al revés: una decisión tomada sobre algo que no está pedido es la señal de que falta pedirlo.
+- **When/Who:** 2026-08-25 · usuario, con una sola pregunta sobre la pantalla.
+- **Scope:** estándar; aplica a cualquier proyecto que escriba especificaciones de módulo.
+- **Rel:** S-023 (si el producto debe tenerlo, es una fila del inventario), S-027.
+
+## S-030 · Un guion de sabotaje que restaura con el control de versiones no restaura lo que todavía no está versionado  ·  gotcha · activa
+- **What:** para comprobar que las pruebas de la fase B servían, se saboteó el código cinco veces. Cuatro de los cinco archivos se restauraban con una copia guardada; uno se restauraba con el control de versiones, y ese archivo era nuevo y todavía no estaba versionado. Quedó saboteado, y solo se notó al final, cuando la corrida limpia salió en rojo con cuatro errores.
+- **Why:** el sabotaje existe para confiar en las pruebas. Un guion que no restaura bien hace lo contrario: deja el código roto y las pruebas fallando por una razón que no es la que se estaba investigando. Si el paso final no hubiera corrido la suite completa, el sabotaje se habría quedado dentro del commit.
+- **Where:** [evidencias/EV-02 de la fase B](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/B-EP-008-HU-001-se-conecta-un-proyecto/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt), que ahora lo dice en su cabecera.
+- **Learned:** el sabotaje se restaura con una copia del archivo, nunca con el control de versiones, porque lo que se está probando suele ser código recién escrito. Y el guion **siempre termina corriendo la suite completa**: si esa última corrida no sale limpia, algo quedó saboteado.
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier fase que valide sus pruebas con sabotaje.
+- **Rel:** S-028 (romper a propósito lo que la suite promete cuidar).

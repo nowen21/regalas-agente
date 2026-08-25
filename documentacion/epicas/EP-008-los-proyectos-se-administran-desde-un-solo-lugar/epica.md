@@ -8,7 +8,7 @@
 | **Producto** | Cimiento, plataforma de gestión de proyectos |
 | **Módulo** | Proyectos |
 | **Versión del producto** | 1, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
-| **Funcionalidades que cubre** | `F-001`, `F-002`, `F-003`, `F-004` |
+| **Funcionalidades que cubre** | `F-001`, `F-002`, `F-003`, `F-004`, `F-035` |
 | **Estado** | Abierta |
 | **Fecha de apertura** | 2026-08-25 |
 
@@ -45,6 +45,7 @@ Que el usuario abra la plataforma y vea todos sus proyectos, con su estado, sin 
 | Funcionalidad | Qué entrega | Versión |
 |---|---|---|
 | `F-001` Conectar un proyecto | El proyecto registrado y visible | 1 |
+| `F-035` Administrar un proyecto conectado | Desconectarlo, renombrarlo o corregir su versión, sin borrar nada | 1 |
 | `F-002` Avisar la ruta perdida | El aviso, sin perder su documentación | 1 |
 | `F-003` Ver el estado sin entrar | El estado en pantalla | 1 |
 | `F-004` Configurar qué rige | Reglas y moldes por proyecto | 5 |
@@ -75,9 +76,10 @@ Que el usuario abra la plataforma y vea todos sus proyectos, con su estado, sin 
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md) | Conectar un proyecto | `F-001` | Aprobada |
+| [HU-001](HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md) | Conectar un proyecto | `F-001` | Cerrada el 2026-08-25 |
 | [HU-002](HU-002-avisar-la-ruta-perdida/HU-002-avisar-la-ruta-perdida.md) | Avisar cuando la ruta se pierde | `F-002` | Aprobada |
 | [HU-003](HU-003-ver-el-estado-de-un-proyecto/HU-003-ver-el-estado-de-un-proyecto.md) | Ver el estado de un proyecto | `F-003` | Aprobada |
+| [HU-004](HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) | Administrar un proyecto conectado | `F-035` | Escrita, sin aprobar |
 
 ## 10. Consideraciones técnicas
 

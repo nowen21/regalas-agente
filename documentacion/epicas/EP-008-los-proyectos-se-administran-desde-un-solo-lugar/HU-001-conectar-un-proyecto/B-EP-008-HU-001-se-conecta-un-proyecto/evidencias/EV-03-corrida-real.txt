@@ -1,0 +1,50 @@
+== corrida real: se conecta el repositorio del estandar como primer proyecto ==
+
+== OJO CON EL CONTEO ==
+Este proyecto contiene a la plataforma, asi que 'plataforma/datos/' cae
+dentro de la carpeta conectada. Contar todo diria que el proyecto cambio,
+cuando lo que cambio fue la carpeta de datos de la plataforma. Por eso el
+conteo excluye 'plataforma/'. Es un caso especial de conectar el propio
+repositorio, y no se repite con ningun otro proyecto.
+
+-- archivos del proyecto ANTES, sin contar plataforma/ --
+archivos: 13518
+
+-- se conecta --
+identificador: cimiento
+ruta: C:\Ing. Jose\ia\agente
+version de reglas: ''
+estado: sin empezar
+aviso: Este proyecto todavÌa no declara quÈ versiÛn del est·ndar sigue. Se conecta igual, y el aviso de desfase no va a servir hasta que la declare en su CLAUDE.md.
+
+-- archivos del proyecto DESPUES, sin contar plataforma/ --
+archivos: 13518
+hay proyecto.md en la raiz del proyecto: False
+
+-- lo que la plataforma SI escribio, todo dentro de sus datos --
+   datos\auditoria\2026-08.md
+   datos\proyectos\cimiento\proyecto.md
+
+-- la ficha, leida sin la plataforma --
+# Cimiento
+
+| Campo | Valor |
+|---|---|
+| Nombre | Cimiento |
+| Ruta del c√≥digo | C:\Ing. Jose\ia\agente |
+| Versi√≥n de reglas adoptada | ninguna todav√≠a |
+| Fecha de conexi√≥n | 2026-08-25 |
+
+La ruta viva y el estado no se guardan ac√°: se calculan al mirarlos.
+
+-- el registro de auditoria --
+| cu√°ndo | qui√©n | qu√© se hizo | sobre qu√© | qu√© cambi√≥ | proyecto | sesi√≥n |
+|---|---|---|---|---|---|---|
+| 2026-08-25T12:29:42-05:00 | el agente | conectar un proyecto | proyectos/cimiento/proyecto.md | qued√≥ registrado, apuntando a C:\Ing. Jose\ia\agente | cimiento | 5f06ce4e-64bf-41e5-b58e-87959b32bf62 |
+
+-- se intenta conectar la misma carpeta otra vez --
+rechazado: Esa carpeta ya est· registrada por el proyecto ´Cimientoª.
+
+-- se borran los dos indices y se rehacen desde el texto --
+Õndice de proyectos rehecho: 1 proyecto(s).
+Õndice de auditorÌa rehecho: 1 acciÛn(es).

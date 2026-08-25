@@ -1,0 +1,57 @@
+== las dos pantallas, servidas de verdad ==
+
+--- P-01, la lista, en http://127.0.0.1:8742/ ---
+  <main>
+<h1>Proyectos</h1>
+
+
+
+
+<table>
+  <tr><th>Proyecto</th><th>Dónde vive su código</th><th>Versión de reglas</th><th>Estado</th></tr>
+  
+  <tr>
+    <td><a href="/proyecto/cimiento/">Cimiento</a></td>
+    <td>
+      C:\Ing. Jose\ia\agente
+      
+    </td>
+    <td><span class="apagado">ninguna todavía</span></td>
+    <td>sin empezar</td>
+  </tr>
+  
+</table>
+
+
+<h2>Conectar un proyecto</h2>
+<form method="post" action="/conectar/"><input type="hidden" name="csrfmiddlewaretoken" value="9Qc9yQQfvjWeouAIW2ISGJuZoVcfkxRG0fOMB9voQNS0bwgeYHRUrInYVZs76zDl">
+  <label for="nombre">Cómo se llama</label>
+  <input type="text" id="nombre" name="nombre" value="">
+  <label for="ruta">Dónde vive su código</label>
+  <input type="text" id="ruta" name="ruta" value="">
+  <button type="submit">Conectar</button>
+</form>
+<p class="apagado">Conectar no toca nada dentro de la carpeta del proyecto: solo anota dónde está.</p>
+</main>
+
+--- P-02, un proyecto, en /proyecto/cimiento/ ---
+  <main>
+<h1>Cimiento</h1>
+
+
+<p class="aviso">Este proyecto todavía no declara qué versión del estándar sigue. Se conecta igual, y el aviso de desfase no va a servir hasta que la declare en su CLAUDE.md.</p>
+
+<table>
+  <tr><th>Dónde vive su código</th><td>C:\Ing. Jose\ia\agente</td></tr>
+  <tr><th>¿Esa ruta existe?</th><td>Sí</td></tr>
+  <tr><th>Versión de reglas adoptada</th>
+      <td><span class="apagado">ninguna todavía</span></td></tr>
+  <tr><th>Conectado el</th><td>2026-08-25</td></tr>
+  <tr><th>Estado</th><td>sin empezar</td></tr>
+</table>
+
+<h2>Qué todavía no muestra esta pantalla</h2>
+<p class="apagado">Sus etapas del ciclo de vida, sus fases abiertas y qué falta aprobar. Llegan cuando la plataforma pueda traer lo que el proyecto ya tiene escrito.</p>
+
+<p><a href="/">Volver a todos los proyectos</a></p>
+</main>

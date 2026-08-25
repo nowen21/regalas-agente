@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
+| **Estado** | Cerrada el 2026-08-25, con sus cuatro criterios probados |
 
 ---
 
@@ -126,7 +126,7 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 | Fase | Qué hace | Estado |
 |---|---|---|
 | [A · La plataforma levanta y guarda](A-EP-008-HU-001-la-plataforma-levanta-y-guarda/README.md) | La base sobre la que se registra | Cerrada el 2026-08-25, commit `26b2222` |
-| B · Se conecta un proyecto | Esta historia | Sin abrir. Va después de la fase D, para que la conexión quede registrada |
+| [B · Se conecta un proyecto](B-EP-008-HU-001-se-conecta-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los cuatro criterios con veredicto |
 
 ---
 
@@ -147,9 +147,9 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 
 ## 11. Definition of Done
 
-- ☐ Los cuatro criterios con veredicto y evidencia.
-- ☐ La acción queda registrada en la auditoría.
-- ☐ Comprobado que la carpeta del proyecto no cambió.
+- ☑ Los cuatro criterios con veredicto y evidencia.
+- ☑ La acción queda registrada en la auditoría.
+- ☑ Comprobado que la carpeta del proyecto no cambió, archivo por archivo.
 
 ## 12. Validación INVEST
 
@@ -168,3 +168,5 @@ Entonces ningún archivo de su carpeta cambia, se mueve ni se crea
 |---|---|
 | 2026-08-25 | Nace de `F-001`, al aprobarse el inventario de Cimiento |
 | 2026-08-25 | Cierra la fase A. La base ya levanta, guarda y rehace su índice |
+| 2026-08-25 | Se abre la fase B, después de la D, para que la conexión quede registrada |
+| 2026-08-25 | Cierra la fase B. La historia queda cumplida, y de ella nace la HU-004: conectar no tenía reversa |
