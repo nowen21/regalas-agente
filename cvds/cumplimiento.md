@@ -103,7 +103,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | # | Qué |
 |---|---|
-| 1 | la arquitectura está en las tres capas del [README.md](../README.md) pero sin dibujo ni contrato entre piezas |
+| 1 | la arquitectura está en las tres capas del [README.md](../README.md) pero sin dibujo ni contrato entre componentes |
 | 2 | el porqué de las decisiones vive en [notas/](../notas/README.md), que no es el molde de decisión y no lista alternativas descartadas |
 | 3 | el modelo de datos existe como [memoria/esquema.sql](../memoria/esquema.sql) sin diccionario de campos |
 | 4 | la interfaz tiene su [README](../interfaz/README.md) pero no documento de diseño |
@@ -139,7 +139,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 | 1 | la revisión del código la hace una destreza del propio agente, [skills/revisar-critico](../skills/revisar-critico), y no una persona distinta de quien escribió |
 | 2 | el registro de avance no mide tiempo, solo estado |
 
-**No existe:** integración continua. El repositorio no tiene canalización de ninguna clase, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.
+**No existe:** integración continua. El repositorio no tiene ningún proceso automático que las corra, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.
 
 ---
 

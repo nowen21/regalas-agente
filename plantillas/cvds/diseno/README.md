@@ -4,7 +4,7 @@
 
 > Plantilla. Se llena durante la etapa y se cierra al pasar a la siguiente. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra. Reemplaza los `«…»` y borra esta caja.
 
-> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza.
+> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
@@ -38,9 +38,12 @@
 
 > **Una decisión de arquitectura es la que cuesta cara de revertir.** Se escribe con las alternativas que se descartaron: sin ellas no se puede defender ni revisar después. Cada una va a su propio documento, y acá queda la lista.
 
+> **`DA` es de decisión de arquitectura.** Es el número con que se cita cada una desde cualquier otro documento, y no se reutiliza.
+
 | # | Qué se decidió | Alternativas descartadas | Por qué | Documento |
 |---|---|---|---|---|
-| 1 | «…» | «…» | «…» | [plantillas/ADR.md](../../ADR.md) |
+| DA-01 | «…» | «…» | «…» | [decisiones-de-arquitectura.md](decisiones-de-arquitectura.md) |
+| DA-02 | «…» | «…» | «…» | «…» |
 
 ## 5. Los datos
 
@@ -120,7 +123,7 @@
 | Modelo de datos | [plantillas/ciclo-vida-proyectos/14-modelo-de-datos.md](../../ciclo-vida-proyectos/14-modelo-de-datos.md) | Equipo | «…» |
 | Diseño de interfaz | [plantillas/ciclo-vida-proyectos/15-diseno-de-interfaz.md](../../ciclo-vida-proyectos/15-diseno-de-interfaz.md) | Cliente | «…» |
 | Documentación de la API | [plantillas/ciclo-vida-proyectos/16-documentacion-de-api.md](../../ciclo-vida-proyectos/16-documentacion-de-api.md) | Quien integra | «…» |
-| Decisiones de arquitectura | [plantillas/ADR.md](../../ADR.md) | Equipo | «…» |
+| Decisiones de arquitectura | [decisiones-de-arquitectura.md](decisiones-de-arquitectura.md), o una por archivo con [plantillas/ADR.md](../../ADR.md) | Equipo | «…» |
 | Diseño de seguridad | Sección 8 de este documento | Cliente y quien opera | «…» |
 | Entorno técnico y estándares | Sección 9 de este documento | Equipo y quien instala | «…» |
 

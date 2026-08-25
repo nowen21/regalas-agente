@@ -11,6 +11,9 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 
 ## Conteo
 
+> **2026-08-24 · `01·C28` nace no validable.** Exige que el pedido abra con una palabra que diga qué se espera. Ningún programa puede leer un pedido del usuario y decidir si el agente hizo de más: lo único comprobable sería que el anexo exista, y eso no dice nada de la conducta. Se declara acá para que no la busque un validador que nunca va a poder escribirse.
+
+
 | Categoría | Cuántas |
 |---|---|
 | ✅ **Ya son validadores** | ~54 (se sumó `01·C27` el 2026-08-20; antes se sumaron `20·M15` y `02·F12`, que ya estaban construidas y no figuraban) |

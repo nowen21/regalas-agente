@@ -54,10 +54,11 @@ Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive
 
 > Una ficha por cada línea del resumen, en el mismo orden. Un campo que no aplique se escribe «no aplica» y se dice por qué en una línea: en blanco no se distingue de olvidado.
 
-### F-001 · «El nombre, en palabras que cualquiera entienda»
+### «El nombre, en palabras que cualquiera entienda»
 
 | Campo | Qué dice |
 |---|---|
+| **Identificador** | «`F-001`. El mismo del resumen, y el siguiente libre para la que venga: un número que se dio una vez no se le da a otra, aunque esta se descarte» |
 | **De qué se trata** | «Qué hace, dicho a quien va a usarlo» |
 | **Para qué sirve** | «Qué problema resuelve o qué permite lograr. Si no se puede escribir, la funcionalidad no está justificada» |
 | **Parte del sistema** | «El módulo, proceso o componente al que pertenece, tomado de la lista de partes del proyecto» |
@@ -73,7 +74,7 @@ Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive
 | **Verificado** | «Sin verificar», o «✅ «qué prueba», «cuándo»», o «❌ «qué prueba», «cuándo», y qué le falta» |
 | **Lo que hay que tener en cuenta** | «Restricciones, riesgos, casos raros y lo que se decidió dejar por fuera. `Ninguna` si no hay» |
 
-### F-002 · «…»
+### «…»
 
 «Se repite la ficha por cada funcionalidad.»
 

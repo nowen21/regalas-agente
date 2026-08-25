@@ -12,7 +12,7 @@
 
 | Pregunta | Respuesta |
 |---|---|
-| **¿Cuál es el problema?** | El usuario delega trabajo de desarrollo a un agente de IA y no puede confiar en lo que recibe. En cada sesión vuelve a explicar lo mismo, porque de la anterior no quedó nada. Le entregan como terminado lo que nunca se probó, le cambian cosas que no pidió y se pierde lo que ya estaba acordado. Al abrir otro proyecto, todo empieza de cero. Y del trabajo hecho no queda documentación: sale código, pero nadie escribe qué se construyó, qué necesidad resolvía ni cómo se instala. Meses después el único que puede responder eso es quien lo escribió, y si fue el agente, ya no existe. Y cuando le pasa una clave para que trabaje con ella, esa clave queda escrita en el registro de la conversación, que se guarda y no se borra. Además, lo que delega no es una tarea suelta: el agente hace de analista, de quien construye, de quien prueba y de quien documenta, y cada tanto le hace falta una pieza nueva. Cada pieza que se agrega se lleva por delante lo que ya funcionaba. |
+| **¿Cuál es el problema?** | El usuario delega trabajo de desarrollo a un agente de IA y no puede confiar en lo que recibe. En cada sesión vuelve a explicar lo mismo, porque de la anterior no quedó nada. Le entregan como terminado lo que nunca se probó, le cambian cosas que no pidió y se pierde lo que ya estaba acordado. Al abrir otro proyecto, todo emcomponente de cero. Y del trabajo hecho no queda documentación: sale código, pero nadie escribe qué se construyó, qué necesidad resolvía ni cómo se instala. Meses después el único que puede responder eso es quien lo escribió, y si fue el agente, ya no existe. Y cuando le pasa una clave para que trabaje con ella, esa clave queda escrita en el registro de la conversación, que se guarda y no se borra. Además, lo que delega no es una tarea suelta: el agente hace de analista, de quien construye, de quien prueba y de quien documenta, y cada tanto le hace falta un componente nuevo. Cada componente nuevo se lleva por delante lo que ya funcionaba. |
 | **¿A quién le pasa?** | Al autor, que delega el trabajo y responde por lo que se entrega. Y a quien reciba el proyecto después: sin documentación no puede retomarlo ni operarlo sin preguntarle a quien lo hizo. |
 | **¿Cada cuánto pasa?** | En cada sesión de trabajo, varias veces al día. No es un incidente aislado: es la forma normal de trabajar con el agente. |
 | **¿A qué escala?** | Sobre todo lo que el agente entrega, y de nuevo entero en cada proyecto nuevo. Hoy son siete épicas y unos setenta validadores en este repositorio, más los proyectos que lo hereden. |
@@ -21,11 +21,11 @@
 | **¿Por qué no funcionó?** | La corrección por chat se va con la conversación. El almacén de la herramienta queda fuera del repositorio: no viaja con el proyecto, no se versiona y nadie más lo ve. |
 | **¿Qué le cuesta hoy?** | El costo no es que el agente se equivoque: es que el usuario tiene que revisarlo todo, y revisar cuesta más que hacer. No está medido en horas; se nota en que la misma corrección se ha dado varias veces y en que hay que releer el trabajo entero para saber si sirve. Sin documentación, leer el código para entender qué hace se repite entero cada vez que se retoma el proyecto, y entregarlo a alguien más no es viable. |
 | **¿Qué pasa si no se hace nada?** | El retrabajo se repite en cada sesión y crece con cada proyecto. Y lo construido queda sin poderse entregar ni retomar: el conocimiento vive en la cabeza del autor y en conversaciones que ya se borraron. |
-| **¿Qué necesita que pase?** | Que lo acordado una vez siga valiendo en la sesión siguiente y en el proyecto siguiente, y poder saber qué se hizo y qué se comprobó sin releerlo todo. Que sea **un solo sistema y no piezas sueltas**, y que pueda crecer: lo que se agregue tiene que entrar sin romper lo anterior, y poder verse desde algún lado sin abrir archivo por archivo. Y que la documentación del ciclo de vida se vaya generando **a medida que se construye**, no esperando al final a redactarla de memoria: cada documento en su `.md`, con la distribución de las plantillas, y el entregable en `.docx` generado por la interfaz desde esos mismos `.md`, para no mantener dos versiones del mismo texto. |
+| **¿Qué necesita que pase?** | Que lo acordado una vez siga valiendo en la sesión siguiente y en el proyecto siguiente, y poder saber qué se hizo y qué se comprobó sin releerlo todo. Que sea **un solo sistema y no partes sueltas**, y que pueda crecer: lo que se agregue tiene que entrar sin romper lo anterior, y poder verse desde algún lado sin abrir archivo por archivo. Y que la documentación del ciclo de vida se vaya generando **a medida que se construye**, no esperando al final a redactarla de memoria: cada documento en su `.md`, con la distribución de las plantillas, y el entregable en `.docx` generado por la interfaz desde esos mismos `.md`, para no mantener dos versiones del mismo texto. |
 
 **Objetivo principal**
 
-Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve lo acordado con el agente entre sesiones, no le deje cambiar nada sin autorización, deje documentado, comprobado y entregable lo que se construye, y **pueda crecer con piezas nuevas sin romper las anteriores**, para que el usuario no tenga que revisarlo todo ni volver a leer el código para entenderlo.
+Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve lo acordado con el agente entre sesiones, no le deje cambiar nada sin autorización, deje documentado, comprobado y entregable lo que se construye, y **pueda crecer con componentes nuevos sin romper las anteriores**, para que el usuario no tenga que revisarlo todo ni volver a leer el código para entenderlo.
 
 **Objetivos**
 
@@ -43,7 +43,7 @@ Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve
 | 10 | Documentar lo construido mientras se construye, no después | Cada cosa entregada llega con qué hace y para qué | El usuario |
 | 11 | Dejar por escrito cómo se instala y se opera | Otra persona lo levanta sin preguntarle a quien lo hizo | Quien reciba el proyecto |
 | 12 | Generar el entregable de ofimática desde lo ya escrito | Recibe el `.docx` sin que nadie lo redigite | El usuario y quien reciba el proyecto |
-| 13 | Agregar piezas nuevas sin romper las que ya servían | Lo que funcionaba ayer sigue funcionando después de cada versión | El usuario y los proyectos que heredan |
+| 13 | Agregar componentes nuevos sin romper las que ya servían | Lo que funcionaba ayer sigue funcionando después de cada versión | El usuario y los proyectos que heredan |
 | 14 | Ver desde una pantalla lo que el agente hace y guarda | Revisa sin abrir archivo por archivo | El usuario |
 
 ## 2. El alcance
@@ -57,7 +57,7 @@ Desarrollar un sistema de trabajo instalable en cualquier proyecto, que conserve
 | Validadores y enganches | Un servicio en línea, o alojado por un tercero | El sistema corre en la máquina de quien trabaja, sin depender de nadie más |
 | Una interfaz local para ver los documentos del ciclo y lo que el agente guarda | Editar el `.docx` y devolverlo al `.md` | La fuente es el `.md`; el `.docx` es una salida, y una salida no se edita |
 | La memoria de lo aprendido, guardada y consultable | Que la memoria viva en el almacén de la herramienta | Ahí no viaja con el proyecto, no se versiona y nadie más la ve |
-| Que el sistema pueda crecer: piezas nuevas que entran sin romper las anteriores | Crecer sin comprobar que lo anterior sigue sirviendo | Cada pieza nueva se lleva por delante lo que ya funcionaba, y eso es parte del problema |
+| Que el sistema pueda crecer: componentes nuevos que entran sin romper los anteriores | Crecer sin comprobar que lo anterior sigue sirviendo | Cada componente nuevo se lleva por delante lo que ya funcionaba, y eso es parte del problema |
 | Instalación y aviso de desfase | Actualización automática sin aprobación | `N1`: ningún cambio de estado sin aprobación explícita |
 
 
@@ -194,6 +194,8 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 ## 13. Riesgos
 
+Lo que puede salir mal, con qué tan probable es, cuánto dolería y qué se hace si pasa.
+
 | # | Riesgo | Probabilidad | Impacto | Responsable | Mitigación | Qué se hace si ocurre |
 |---|---|---|---|---|---|---|
 | 1 | El agente escribe el estándar sin haber leído el estándar | Alta | Alto | Autor | El paso 0 del `CLAUDE.md` carga `base/` antes de tocar nada | Se corrige el `CLAUDE.md` y queda como señal |
@@ -204,11 +206,11 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | 6 | Una credencial queda escrita en claro | Baja | Alto | Autor | `N6` y el enmascarado automático | Se rota la credencial y se limpia el histórico |
 | 7 | Todo depende de una sola persona | Alta | Alto | Autor | Queda escrito y legible sin su autor | El estándar se congela en su última versión y sigue sirviendo |
 | 8 | Nadie ajeno lo adopta, y queda como preferencia personal | Alta | Alto | Autor | Instalarlo en un proyecto que no sea del autor | Se acepta como herramienta personal y se deja de llamar estándar |
-| 9 | Las pruebas corren solo cuando alguien se acuerda | Alta | Medio | Autor | Una canalización de integración continua, que hoy no existe | Se construye, y hasta entonces se corre la batería antes de cada publicación |
+| 9 | Las pruebas corren solo cuando alguien se acuerda | Alta | Medio | Autor | Un proceso automático que corra las pruebas en cada cambio, que hoy no existe | Se construye, y hasta entonces se corre la batería antes de cada publicación |
 | 10 | Un respaldo que nunca se restauró resulta inservible | Baja | Alto | Autor | Restaurar de verdad, cada tres meses | Se rehace desde la copia que sí sirva, y se pierde lo que no esté publicado |
 | 11 | Historias sin fase, que dejan el inventario detenido | Media | Medio | Autor | La comprobación de historias sin fase, y el pendiente [48](../../pendientes/48-inventario-hu.md) | Se abren las fases que faltan antes de seguir |
 | 12 | Ideas del usuario que se pierden por no escribirse | Media | Bajo | Autor | La libreta de ideas, pendiente [10](../../pendientes/10-ideas.md) | Se recogen en la sesión siguiente, que para eso quedan escritas |
-| 13 | Una pieza nueva rompe lo que ya funcionaba | Alta | Alto | Autor | El paquete 10: comprobar lo anterior antes de publicar | Se revierte la pieza y se publica una versión de corrección |
+| 13 | Un componente nuevo rompe lo que ya funcionaba | Alta | Alto | Autor | El paquete 10: comprobar lo anterior antes de publicar | Se revierte el componente y se publica una versión de corrección |
 
 > **De dónde salen del 7 al 12.** Los seis primeros se escribieron al planear; estos seis se recogieron de `pendientes/` y del análisis del ciclo el 2026-08-24, que era el hallazgo: los riesgos existían sueltos y sin probabilidad ni impacto.
 
@@ -227,6 +229,8 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 ## 15. Interesados y comunicación
 
+Quién tiene algo que ganar o perder con el proyecto, y qué recibe de él.
+
 | Interesado | Qué papel tiene | Influencia | Qué recibe | Cada cuánto | En qué formato |
 |---|---|---|---|---|---|
 | Ing. José Dúmar Jiménez Ruíz | Paga, usa y aprueba, los tres | Alta | El cambio antes de commitear | Por sesión | En el chat, con el enlace al archivo |
@@ -239,6 +243,8 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 ## 16. Plan de calidad
 
+Qué se le exige a lo que se entrega, y con qué se mide.
+
 | Qué se exige | Cómo se mide | Umbral para aceptar |
 |---|---|---|
 | Toda regla pasa el checklist del estándar | Se aplica el checklist de 20 filas y se sella el resultado | Sin ❌ |
@@ -249,6 +255,8 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 
 
 ## 17. Los entregables de esta etapa, y a quién van
+
+Qué documentos produce la etapa, con qué molde se escriben y quién los recibe.
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
@@ -281,11 +289,11 @@ Ningún frente de viabilidad bloquea y el costo es tiempo propio, así que la pr
 
 | Fecha | Qué cambió | Por qué | Quién lo pidió |
 |---|---|---|---|
-| 2026-08-24 | El problema ahora dice que el agente es **un sistema que crece**, y que cada pieza nueva se llevaba por delante lo anterior | Faltaba en el problema, y por eso el alcance dejaba fuera la interfaz que ya se estaba construyendo | El usuario |
+| 2026-08-24 | El problema ahora dice que el agente es **un sistema que crece**, y que cada componente nuevo se llevaba por delante lo anterior | Faltaba en el problema, y por eso el alcance dejaba fuera la interfaz que ya se estaba construyendo | El usuario |
 | 2026-08-24 | El alcance: entran la interfaz local y la memoria consultable; lo que queda fuera pasa a ser **un servicio en línea o de terceros**, no «un panel» | Como estaba, excluía lo que sí se quiere | El usuario |
 | 2026-08-24 | Dos objetivos más: crecer sin romper lo anterior, y ver desde una pantalla lo que el agente hace y guarda | Salen del problema corregido | El usuario |
 | 2026-08-24 | El desglose pasa de 8 a 10 paquetes, y la estimación de 88 a 116 jornadas | Los objetivos nuevos necesitan trabajo, y decirlo sin estimarlo sería prometer gratis | El agente |
-| 2026-08-24 | Un riesgo más: una pieza nueva rompe lo que ya funcionaba | Es el riesgo que el problema corregido deja a la vista | El agente |
+| 2026-08-24 | Un riesgo más: un componente nuevo rompe lo que ya funcionaba | Es el riesgo que el problema corregido deja a la vista | El agente |
 
 ## 20. Qué de esta etapa cumple hoy el proyecto
 

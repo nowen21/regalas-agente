@@ -62,6 +62,8 @@
 
 ## 6. El veredicto, criterio por criterio
 
+Qué dio cada criterio de aceptación cuando se corrió su prueba.
+
 | Criterio | Resultado | Evidencia | Si falló, qué se hace |
 |---|---|---|---|
 | Los trece de la sección 2 | Sin verificar | Ninguna todavía | Se corrige antes de cerrar la fase que lo introdujo |

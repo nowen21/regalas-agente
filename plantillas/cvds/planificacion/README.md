@@ -4,7 +4,7 @@
 
 > Plantilla. Se llena al abrir el proyecto y se congela al aprobarse; lo que cambie después se cambia con nota de qué cambió y por qué. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra. Reemplaza los `«…»` y borra esta caja.
 
-> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor extensión con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación no pedida y sin paso a paso. Lo que no cabe no se recorta: se escribe en su archivo y se enlaza. Un hueco de una tabla que necesita un párrafo es señal de que el detalle va en otro documento.
+> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor extensión con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación no pedida y sin paso a paso. Lo que no cabe no se recorta: se escribe en su archivo y se enlaza. Un hueco de una tabla que necesita un párrafo es señal de que el detalle va en otro documento. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
@@ -24,7 +24,7 @@
 | **¿A quién le pasa?** | «Quién lo sufre, con nombre o con papel: quien paga, quien usa, quien opera. Un problema sin alguien concreto que lo padezca no sostiene un proyecto.» |
 | **¿Cada cuánto pasa?** | «Cuántas veces al día, a la semana o al año. Es lo que separa la molestia del costo.» |
 | **¿A qué escala?** | «Sobre cuánto: cuántos casos, cuántas personas, cuánto volumen. Un problema que le pasa a uno y otro que le pasa a mil piden proyectos distintos.» |
-| **¿Cómo se resuelve hoy?** | «El apaño que ya existe: a mano, en una hoja de cálculo, pidiéndoselo a alguien. Ese apaño es el competidor real del proyecto, y si lo nuevo no lo supera, nadie lo adopta.» |
+| **¿Cómo se resuelve hoy?** | «El arreglo con el que se está saliendo del paso: a mano, en una hoja de cálculo, pidiéndoselo a alguien. Ese arreglo es el competidor real del proyecto, y si lo nuevo no lo supera, nadie lo adopta.» |
 | **¿Qué se intentó antes?** | «Los intentos anteriores, uno por uno. Si no hubo ninguno, se escribe `N/A porque nunca se intentó`, que también es un dato: nadie lo ha visto lo bastante grave como para intentarlo.» |
 | **¿Por qué no funcionó?** | «En qué falló cada intento. Es lo que evita repetirlo con otro nombre, y suele ser el dato más caro de la etapa.» |
 | **¿Qué le cuesta hoy?** | «En qué se paga: horas, dinero, retrabajo, errores que llegan al cliente. Con número si lo hay; si no lo hay, se dice que no se ha medido.» |

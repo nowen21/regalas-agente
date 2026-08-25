@@ -18,6 +18,8 @@
 
 ## 2. Cómo se parte el trabajo
 
+Las unidades en que se divide la construcción, cada una con lo que ejecuta y de qué depende.
+
 | Fase | Historia que ejecuta | Módulos que toca | Depende de | Estado |
 |---|---|---|---|---|
 | A. El cuerpo de reglas se escribe y se cita | Guardar las exigencias con identificador | Cuerpo de reglas | — | Sin abrir |
@@ -44,7 +46,7 @@
 | D, la comprobación | Es el paquete con más incertidumbre: no se sabe cuántas reglas se comprueban solas, y eso puede cambiar el diseño |
 | H, la instalación fuera | Es el supuesto que sostiene el proyecto entero, y sigue sin confirmar |
 | K, el generador, al final | Necesita documentos ya escritos; hacerlo antes es convertir plantillas vacías |
-| O, antes que N | Sin la comprobación de que lo nuevo no rompe lo anterior, cada pieza que se agregue va a costar lo que hoy cuesta: rehacer lo que ya servía |
+| O, antes que N | Sin la comprobación de que lo nuevo no rompe lo anterior, cada componente que se agregue va a costar lo que hoy cuesta: rehacer lo que ya servía |
 
 ## 4. Cómo se deshace lo que salga mal
 
@@ -65,6 +67,8 @@
 | La entrada del registro de versiones | Al cerrar cada versión | El registro de cambios |
 
 ## 6. La deuda que se declara
+
+Lo que se decidió no hacer ahora, sabiendo que se deja pendiente.
 
 | # | Qué quedó sin hacer | Por qué se aceptó | Quién la paga | Para cuándo |
 |---|---|---|---|---|
@@ -117,4 +121,4 @@ Falta la especificación de los nueve módulos. Las quince fases están definida
 | 1 | la revisión del código la hace una destreza del propio agente, [skills/revisar-critico](../../skills/revisar-critico), y no una persona distinta de quien escribió |
 | 2 | el registro de avance no mide tiempo, solo estado |
 
-**No existe:** integración continua. El repositorio no tiene canalización de ninguna clase, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.
+**No existe:** integración continua. El repositorio no tiene ningún proceso automático que las corra, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.

@@ -41,6 +41,7 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | [Decidir es del usuario](decidir-es-del-usuario.md) | Las opciones se escriben en el chat, con recomendación, y se espera. Ni las decide el agente ni van en el formulario de la herramienta. |
 | [Una instrucción se cumple entera](una-instruccion-se-cumple-entera.md) | Las unidades de una misma orden se hacen todas y se reporta al final; no se pregunta «¿sigo?» con una orden ya dada. |
 | [Estilo de redacción simple](estilo-redaccion-simple.md) | Todo lo que se escribe lo entiende quien no sabe del tema, e idealmente un niño — también las reglas (`00·ID7`). |
+| [Español colombiano](espanol-colombiano.md) | Se escribe con las palabras que se usan en Colombia, no solo «en español»: la palabra correcta pero ajena no se entiende. |
 | [Fixtures sin secretos literales](fixtures-sin-secretos-literales.md) | En tests y ejemplos, los tokens se arman en runtime: GitHub bloquea el push si ve un secreto con forma real. |
 | [Histórico de sesiones](historico-chat.md) | Cada sesión se transcribe literal en `historico-chat/`, con marca de tiempo del reloj del sistema. |
 | [Las reglas son la decisión del usuario](reglas-son-decision-del-usuario.md) | Una regla escrita se cumple tal cual; no se pondera, no se reinterpreta, no se propone cambiarla al incumplirla. |

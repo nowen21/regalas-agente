@@ -26,6 +26,8 @@ Los moldes viven en [`plantillas/ciclo-vida-proyectos/`](../plantillas/ciclo-vid
 
 ## El estado del proyecto contra este ciclo
 
+Cuántas exigencias de cada etapa cumple hoy el proyecto, cuántas están a medias y cuántas no existen.
+
 | Etapa | Cumple | A medias | No existe |
 |---|---|---|---|
 | 1 · Planificación | 17 | 0 | 0 |

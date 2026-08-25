@@ -16,6 +16,8 @@
 
 ## Resumen
 
+Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una está en su ficha, más abajo.
+
 | ID | Funcionalidad | Clase | Parte del sistema | Prioridad | Estado | Verificado |
 |---|---|---|---|---|---|---|
 | F-001 | Las reglas se cargan al abrir la sesión | Obligatoria | Cargador de sesión | Alta | Definida | Sin verificar |
@@ -31,16 +33,17 @@
 | F-011 | Se mide el tiempo que el usuario gasta revisando | Futura | Comprobaciones | Baja | Definida | Sin verificar |
 | F-012 | Se ve desde una pantalla lo que hay y lo que el agente guardó | Complementaria | Interfaz local | Media | Definida | Sin verificar |
 | F-013 | Lo aprendido se guarda y se recupera en otra sesión | Obligatoria | Memoria | Alta | Definida | Sin verificar |
-| F-014 | Una pieza nueva no rompe lo que ya servía | Obligatoria | Comprobaciones | Alta | Definida | Sin verificar |
+| F-014 | Un componente nuevo no rompe lo que ya servía | Obligatoria | Comprobaciones | Alta | Definida | Sin verificar |
 
 **Cuenta:** 10 obligatorias, 3 complementarias y 1 futura, de 14. Y aparte: 0 implementadas, 0 verificadas.
 
 ## Las funcionalidades, una por una
 
-### F-001 · Las reglas se cargan al abrir la sesión
+### Las reglas se cargan al abrir la sesión
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-001` |
 | **De qué se trata** | Al abrir una sesión de trabajo, el agente recibe las reglas del proyecto sin que nadie se las pida |
 | **Para qué sirve** | Que lo acordado una vez siga valiendo, en vez de volver a explicarlo cada vez |
 | **Parte del sistema** | Cargador de sesión |
@@ -56,10 +59,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Que el agente las reciba no garantiza que las obedezca: eso lo cubre F-003 |
 
-### F-002 · Nada cambia de estado sin que el usuario lo autorice
+### Nada cambia de estado sin que el usuario lo autorice
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-002` |
 | **De qué se trata** | Toda acción que cambia archivos, datos o el repositorio se anuncia y espera aprobación |
 | **Para qué sirve** | Que no aparezcan cambios que el usuario no pidió |
 | **Parte del sistema** | Enganches |
@@ -75,10 +79,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Pedir aprobación por todo, hasta por lo trivial, hace que se apruebe en bloque, y entonces también se aprueba lo grave |
 
-### F-003 · Lo escrito se comprueba solo
+### Lo escrito se comprueba solo
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-003` |
 | **De qué se trata** | Programas que leen lo entregado y dicen si cumple las reglas, sin opinar ni corregir |
 | **Para qué sirve** | Que el cumplimiento no dependa de que el agente se acuerde |
 | **Parte del sistema** | Comprobaciones |
@@ -94,10 +99,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Una comprobación que reprueba de más se apaga a la semana, y entonces no queda nada vigilando |
 
-### F-004 · Lo que no tiene prueba se declara sin verificar
+### Lo que no tiene prueba se declara sin verificar
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-004` |
 | **De qué se trata** | El estado de una funcionalidad lo fija la prueba corrida, no la lectura del código |
 | **Para qué sirve** | Que no se entregue como terminado lo que nadie comprobó |
 | **Parte del sistema** | Comprobaciones |
@@ -113,10 +119,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | «Sin verificar» tiene que ser una respuesta aceptable, o se falsean las pruebas para poder cerrar |
 
-### F-005 · El estándar se instala en otro proyecto
+### El estándar se instala en otro proyecto
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-005` |
 | **De qué se trata** | Un programa lleva las reglas a un proyecto ajeno y anota qué versión adoptó |
 | **Para qué sirve** | Que un proyecto nuevo no empiece de cero |
 | **Parte del sistema** | Instalador |
@@ -132,10 +139,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Lo que demuestra que sirve no es que instale, es que alguien ajeno lo instale siguiendo solo el manual |
 
-### F-006 · El proyecto se entera de que quedó atrás
+### El proyecto se entera de que quedó atrás
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-006` |
 | **De qué se trata** | Al abrir sesión, un proyecto que adoptó una versión vieja recibe el aviso y qué cambió |
 | **Para qué sirve** | Que nadie siga una versión vieja sin saberlo |
 | **Parte del sistema** | Instalador |
@@ -151,10 +159,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Un aviso que aparece siempre se vuelve ruido y se ignora |
 
-### F-007 · Lo que la sesión deja se escribe fuera del chat
+### Lo que la sesión deja se escribe fuera del chat
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-007` |
 | **De qué se trata** | Lo hablado, lo decidido y lo aprendido en una sesión quedan en archivos del repositorio |
 | **Para qué sirve** | Saber qué pasó sin releer el trabajo entero, y que la sesión siguiente lo herede |
 | **Parte del sistema** | Enganches |
@@ -170,10 +179,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | El registro literal y el resumen son cosas distintas: mezclarlos hace que ninguno sirva |
 
-### F-008 · Ninguna credencial queda escrita
+### Ninguna credencial queda escrita
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-008` |
 | **De qué se trata** | Toda clave que aparezca se tapa antes de que quede guardada en cualquier archivo |
 | **Para qué sirve** | Que una clave pegada en el chat no quede para siempre en el repositorio |
 | **Parte del sistema** | Enganches |
@@ -187,12 +197,13 @@
 | **Prioridad** | Alta: es el único daño de esta lista que no se puede deshacer |
 | **Estado** | Definida |
 | **Verificado** | Sin verificar |
-| **Lo que hay que tener en cuenta** | Tapar de más estropea el registro; hay que medirlo sobre lo ya guardado antes de dejarlo corriendo |
+| **Lo que hay que tener en cuenta** | Tapar de más daña el registro; hay que medirlo sobre lo ya guardado antes de dejarlo corriendo |
 
-### F-009 · El documento del ciclo se exige mientras se construye
+### El documento del ciclo se exige mientras se construye
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-009` |
 | **De qué se trata** | Cada etapa tiene su documento modelo, y el trabajo no avanza sin el que le toca |
 | **Para qué sirve** | Que quede documentación sin esperar al final a redactarla de memoria |
 | **Parte del sistema** | Moldes del ciclo |
@@ -208,10 +219,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Exigir demasiado documento por unidad pequeña hace que se llene por cumplir, y entonces no dice nada |
 
-### F-010 · El entregable de ofimática se genera desde el `.md`
+### El entregable de ofimática se genera desde el `.md`
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-010` |
 | **De qué se trata** | Los documentos del ciclo, escritos en texto, se convierten en `.docx` para entregar |
 | **Para qué sirve** | Entregar en el formato que el cliente espera sin mantener dos versiones del mismo texto |
 | **Parte del sistema** | Generador de entregables |
@@ -227,10 +239,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Falta decidir si el `.docx` conserva la numeración del `.md` o la que pida el cliente. Es la pregunta P-1 |
 
-### F-011 · Se mide el tiempo que el usuario gasta revisando
+### Se mide el tiempo que el usuario gasta revisando
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-011` |
 | **De qué se trata** | Registrar cuánto tiempo dedica el usuario a revisar lo entregado, antes y después del estándar |
 | **Para qué sirve** | Saber si el proyecto cumplió su objetivo principal, en vez de suponerlo |
 | **Parte del sistema** | Comprobaciones |
@@ -246,10 +259,11 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | La línea base debió tomarse antes de empezar y no se tomó. Está declarado como deuda en la etapa de implementación |
 
-### F-012 · Se ve desde una pantalla lo que hay y lo que el agente guardó
+### Se ve desde una pantalla lo que hay y lo que el agente guardó
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-012` |
 | **De qué se trata** | Una pantalla local que lista los documentos del ciclo, los muestra, y deja ver lo que el agente guardó en la memoria |
 | **Para qué sirve** | Revisar sin abrir archivo por archivo, que es la forma en que hoy se revisa |
 | **Parte del sistema** | Interfaz local |
@@ -263,12 +277,13 @@
 | **Prioridad** | Media: el sistema funciona sin ella, pero revisar sigue costando lo mismo |
 | **Estado** | Definida |
 | **Verificado** | Sin verificar |
-| **Lo que hay que tener en cuenta** | Es la pieza que más puede crecer, y la que más fácil se lleva por delante a las otras. Por eso solo lee |
+| **Lo que hay que tener en cuenta** | Es el componente que más puede crecer, y el que más fácil se lleva por delante a los otros. Por eso solo lee |
 
-### F-013 · Lo aprendido se guarda y se recupera en otra sesión
+### Lo aprendido se guarda y se recupera en otra sesión
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-013` |
 | **De qué se trata** | Lo que se decide, se corrige o se descubre queda guardado, y la sesión siguiente lo encuentra |
 | **Para qué sirve** | Que el agente no arranque en blanco cada vez, y que la corrección no se repita |
 | **Parte del sistema** | Memoria |
@@ -284,12 +299,13 @@
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Buscar por parecido y no por palabra exacta es la candidata C-2, y hoy choca con la restricción de correr sin dependencias de terceros |
 
-### F-014 · Una pieza nueva no rompe lo que ya servía
+### Un componente nuevo no rompe lo que ya servía
 
 | Campo | Valor |
 |---|---|
+| **Identificador** | `F-014` |
 | **De qué se trata** | Antes de publicar, se vuelve a comprobar lo que ya funcionaba |
-| **Para qué sirve** | Que el sistema pueda crecer sin que cada pieza nueva se lleve por delante lo anterior |
+| **Para qué sirve** | Que el sistema pueda crecer sin que cada componente nuevo se lleve por delante lo anterior |
 | **Parte del sistema** | Comprobaciones |
 | **Quién la usa** | El autor, al publicar; los proyectos que heredan, al actualizar |
 | **Qué recibe** | La versión que se va a publicar |

@@ -37,12 +37,14 @@
 
 ## 4. Qué se vigila
 
+Lo que se mira de cerca en el día a día, y cuándo deja de ser normal.
+
 | Qué se mira | Cuándo se considera problema | Quién se entera, y cómo |
 |---|---|---|
 | Cuánto demora abrir la sesión | Más de dos segundos | El usuario, en el momento de abrir |
 | Reglas escritas sin comprobación | Cuando una regla validable no tiene la suya | Una comprobación que las cuenta |
 | Proyectos que quedaron atrás | Cuando su versión es anterior a la publicada | El aviso al abrir la sesión de ese proyecto |
-| Comprobaciones que reprueban de más | Cuando alguien empieza a ignorar sus avisos | El usuario, y queda en la bitácora |
+| Comprobaciones que reprueban de más | Cuando alguien emcomponente a ignorar sus avisos | El usuario, y queda en la bitácora |
 | Que una versión nueva rompa lo que servía | Cuando una prueba de lo ya existente falla al publicar | La publicación se detiene y lo dice |
 | Que la memoria crezca sin que nadie la lea | Cuando lo guardado no se consulta en meses | Se revisa al cerrar cada versión |
 
@@ -58,6 +60,8 @@
 **Qué se hace siempre, pase lo que pase:** anotar en la bitácora qué pasó, qué se hizo y qué lo causó, aunque se haya resuelto solo.
 
 ## 6. Las rutinas periódicas
+
+El trabajo que se hace cada tanto para que el sistema no se degrade solo.
 
 | Rutina | Cada cuánto | Quién | Para qué |
 |---|---|---|---|

@@ -46,7 +46,7 @@
 | RF-11 | Medir el tiempo que el usuario dedica a revisar | El usuario | Observación del propio trabajo | 3 | Podría |
 | RF-12 | Mostrar en una pantalla los documentos del ciclo y lo que el agente guarda | El usuario | Lo que el usuario pidió dos veces | 14 | Debería |
 | RF-13 | Guardar lo aprendido y poder consultarlo en la sesión siguiente | El usuario | Lo que ya se intentó y falló | 8, 14 | Debe |
-| RF-14 | Comprobar que una pieza nueva no rompió lo que ya servía | El usuario | Observación del propio trabajo | 13 | Debe |
+| RF-14 | Comprobar que un componente nuevo no rompió lo que ya servía | El usuario | Observación del propio trabajo | 13 | Debe |
 
 **El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md)**: catorce funcionalidades, `F-001` a `F-014`, una por cada requisito de esta tabla. Esta tabla es el resumen que se acuerda; aquella es el detalle que se construye.
 
@@ -62,9 +62,11 @@
 | RNF-06 | Compatibilidad | Corre con Python de la biblioteca estándar, sin instalar nada | Se ejecuta en una máquina recién formateada |
 | RNF-07 | Portabilidad | Se instala en cualquier proyecto sin tocar su código | Instalación de prueba en un proyecto ajeno |
 | RNF-08 | Compatibilidad hacia atrás | Una versión nueva no rompe lo que servía en la anterior, y si obliga a rehacer algo lo declara | Se corre lo que ya servía contra cada versión antes de publicarla |
-| RNF-09 | Crecimiento | Una pieza nueva entra sin obligar a reescribir las anteriores | Agregar una pieza no cambia archivos de las otras |
+| RNF-09 | Crecimiento | Un componente nuevo entra sin obligar a reescribir las anteriores | Agregar un componente no cambia archivos de las otras |
 
 ## 5. Las reglas del negocio
+
+Lo que manda sobre el sistema y existiría aunque el sistema no existiera.
 
 | # | Regla | Quién la dicta | Qué pasa si se rompe |
 |---|---|---|---|
@@ -79,6 +81,8 @@
 > La numeración salta porque es la misma del inventario: cada ficha cita sus reglas por este identificador.
 
 ## 6. Los actores y sus permisos
+
+Quién interviene, qué puede hacer y qué no.
 
 | Actor | Qué hace en el sistema | Qué no puede hacer |
 |---|---|---|
@@ -102,6 +106,8 @@
 
 ## 8. La trazabilidad
 
+El camino de cada requisito hasta la prueba que demuestra que se cumplió.
+
 | Requisito | Funcionalidad que lo ejecuta | Módulo que lo implementa | Caso de prueba que lo demuestra |
 |---|---|---|---|
 | RF-01 | F-001 | Cargador de sesión | Abrir con reglas, sin ellas, y con una rota |
@@ -123,6 +129,8 @@
 
 ## 9. El glosario del proyecto
 
+Cada palabra del negocio con una sola definición, para que nadie la use de dos formas.
+
 | Término | Qué significa acá | Cómo NO se llama |
 |---|---|---|
 | Regla | Una exigencia con identificador, que se cita y no se borra | Norma, política, lineamiento |
@@ -132,6 +140,8 @@
 | Desfase | La distancia entre la versión adoptada y la publicada | Actualización pendiente |
 | Derogar | Marcar una regla como sin vigencia, dejándola escrita | Borrar, eliminar |
 | Línea base | Lo aprobado en una fecha, contra lo cual se mide todo cambio posterior | Versión congelada |
+
+> **Los números con que se cita cada cosa.** `RF` requisito funcional, lo que el sistema debe hacer · `RNF` requisito no funcional, cómo debe comportarse · `RN` regla del negocio · `CU` caso de uso · `F` funcionalidad del inventario · `CA` criterio de aceptación, dentro de una funcionalidad · `DA` decisión de arquitectura, en el diseño. Ninguno se reutiliza: el número que se dio una vez no se le da a otra cosa.
 
 ## 10. Lo que se preguntó y no tiene respuesta
 
@@ -152,6 +162,8 @@
 **Desde que este documento se apruebe, lo escrito acá es la línea base de requisitos.** Un cambio no se discute contra lo que alguien recuerde, sino contra esta versión.
 
 ## 12. Los entregables de esta etapa, y a quién van
+
+Qué documentos produce la etapa, con qué molde se escriben y quién los recibe.
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|

@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 34.0.0 — 2026-08-24
+
+**MAYOR** ⚠ obliga a migrar: cambia cómo se le pide algo al agente. Cada pedido tiene que abrir con una palabra que diga qué se espera.
+
+**El agente decidía por su cuenta qué clase de pedido había recibido, y se equivocaba hacia el lado caro.** Alguien preguntaba «¿le cambio el encabezado?» y en esa misma respuesta el agente ya lo había cambiado. La regla que exige aprobación para tocar algo estaba escrita desde el principio y se cumplía: lo que fallaba era antes, cuando el agente leía una pregunta y entendía un permiso.
+
+**Ahora el pedido dice qué se espera, y el agente no interpreta.** Se abre con una palabra: preguntar, explicar, analizar, revisar, proponer, buscar, comparar, verificar, hacer, corregir, escribir, subir, recordar, registrar, revertir, aprobar, continuar o parar. Las primeras ocho no tocan nada; las siete siguientes cambian el proyecto; las tres últimas mandan sobre el trabajo mismo.
+
+**Sin esa palabra el agente no hace nada**, aunque el pedido parezca evidente. Responde con la lista y espera. Y una palabra parecida no cuenta: «arregle» se parece a «corrija», no está en la lista, y aceptarla devolvería el problema que la lista vino a quitar.
+
+**La palabra dice el máximo, no el mínimo.** Con «revise» se reporta lo que se encuentre y no se corrige, aunque el arreglo sea de un renglón.
+
+**Qué hay que hacer para ponerse al día:** empezar cada pedido con su palabra. La lista completa está en el anexo del capítulo de conducta, y el agente la trae cuando falte.
+
+**El detalle:** la historia [`HU-036`](documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/HU-036-el-pedido-dice-que-se-espera.md) y su fase. **La regla nace declarada como no comprobable por programa:** ninguno puede leer un pedido y decir si el agente hizo de más, y fingir esa comprobación habría sido peor que no tenerla.
+
+---
+
 ## 33.4.0 — 2026-08-24
 
 **MENOR** (los moldes de etapa crecen; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).
