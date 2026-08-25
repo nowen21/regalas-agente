@@ -1,10 +1,10 @@
 # Implementación: ¿qué se toca, y en qué orden?   ·   `[CAPA 3]`
 
-**Para qué sirve este documento.** Deja escrito cómo se parte la construcción del estándar de trabajo heredable en unidades que caben en una jornada, en qué orden se hacen y cómo se deshace lo que salga mal.
+**Para qué sirve este documento.** Deja escrito en qué versiones se parte la construcción de Cimiento, qué unidad de trabajo cubre cada funcionalidad, en qué orden se hacen y cómo se deshace lo que salga mal. El detalle de cada unidad vive en su propia fase; acá queda el gobierno de todas.
 
-> **Escrito como si no hubiera nada construido.** Las fases salen de los siete módulos del [diseño](../diseno/README.md) y de los objetivos de [planificación](../planificacion/README.md), no del repositorio.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Sale de los doce módulos del [diseño](../diseno/README.md) y de las 32 fichas del [inventario](../analisis-requisitos/inventario-funcionalidades.md), aprobados el 2026-08-24.
 
-**Estado: BORRADOR** (2026-08-22, sin abrir).
+**Estado: APROBADO** (2026-08-25, por Ing. José Dúmar Jiménez Ruíz).
 
 ---
 
@@ -12,113 +12,152 @@
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
-| Especificación de los nueve módulos | Diseño | No: están pendientes, y son la puerta |
-| Historias con criterios de aceptación | Análisis | No: el inventario no está aprobado |
-| Cinco decisiones de arquitectura | Diseño | No |
+| Doce módulos con sus límites, y doce decisiones de arquitectura | Diseño | Sí, el 2026-08-24 |
+| El inventario con 32 fichas, cada una con lo que la termina | Análisis | Sí, el 2026-08-24 |
+| Los trece paquetes de trabajo y las 173 jornadas estimadas | Planificación | Sí, el 2026-08-24 |
+| Las doce especificaciones de módulo | Diseño | **No: son la puerta para abrir código** (`02·F2`) |
 
-## 2. Cómo se parte el trabajo
+## 2. Las versiones, y qué se puede hacer con cada una
 
-Las unidades en que se divide la construcción, cada una con lo que ejecuta y de qué depende.
+> **Una versión no es un corte del trabajo: es algo que ya sirve.** Si al terminarla no se puede hacer nada nuevo, no era una versión, era una pausa. El orden elegido entrega valor al usuario desde la primera, y deja al agente trabajando como hoy hasta la tercera.
 
-| Fase | Historia que ejecuta | Módulos que toca | Depende de | Estado |
+| Versión | Qué entra | Qué se puede hacer al terminarla |
+|---|---|---|
+| **1 · Ver lo que hay** | F-001, F-002, F-003, F-018, F-027, F-028 | Conectar los proyectos, traer lo que ya tienen escrito, ver cómo va cada uno sin entrar, y que todo lo que se haga quede registrado |
+| **2 · Entregar** | F-014, F-025, F-026 | Escribir los documentos desde la plataforma y **entregar el expediente el mismo día** |
+| **3 · Gobernar al agente** | F-005 a F-010, F-020, F-021, F-022, F-031 | El agente recibe las reglas de la plataforma, lo exigido se comprueba solo, y nada se publica rompiendo lo anterior |
+| **4 · Dejar constancia** | F-015, F-016, F-017, F-019, F-023, F-024 | Aprobaciones firmadas que caducan al cambiar el texto, auditoría consultable y memoria administrable |
+| **5 · Operar el ciclo** | F-004, F-011, F-012, F-013, F-029, F-030, F-032 | Abrir y cerrar fases desde la plataforma, con sus puertas, avisos, reportes y medición |
+
+**Por qué `F-018` está en la primera.** Registrar desde el principio cuesta poco; agregarlo en la cuarta obliga a decidir qué hacer con todo lo que pasó sin registro. Es la única funcionalidad que se adelantó por eso.
+
+**Lo que la versión 1 no da, y conviene saberlo:** el agente sigue trabajando como hoy hasta la versión 3. La plataforma muestra y guarda, pero todavía no gobierna.
+
+## 3. Con qué se trabaja
+
+> **El entorno se deja escrito antes de la primera línea.** Lo que no está escrito acá se reconstruye a mano en cada máquina nueva, y nunca queda igual.
+
+| Qué se define | Cómo queda |
+|---|---|
+| Versiones exactas de lo que se use | Fijadas, y guardadas junto al código |
+| Cómo se levanta desde cero en una máquina limpia | Escrito paso a paso, y probado por alguien que no lo instaló antes |
+| Qué datos de prueba se usan | Proyectos de mentira creados y borrados por la propia prueba |
+| Dónde viven las credenciales | Fuera del repositorio, nunca en el código |
+
+## 4. Cómo se parte el trabajo
+
+> **Una fase es la unidad de ejecución de una historia:** cabe en una jornada, se entrega completa y se revierte sola. Lo que no cabe en una jornada no es una fase, son dos.
+
+Cada funcionalidad del inventario baja a una historia, y cada historia se ejecuta en una o más fases. Acá va el mapa de la versión 1; las demás se abren al llegar a ellas, para no planear con detalle lo que va a cambiar.
+
+| Fase | Funcionalidad que ejecuta | Módulos que toca | Depende de | Estado |
 |---|---|---|---|---|
-| A. El cuerpo de reglas se escribe y se cita | Guardar las exigencias con identificador | Cuerpo de reglas | — | Sin abrir |
-| B. Las reglas se cargan al abrir la sesión | Cargar sin que nadie lo pida | Cargador, Enganches | A | Sin abrir |
-| C. Nada cambia de estado sin aprobación | Impedir el cambio no autorizado | Enganches | B | Sin abrir |
-| D. Lo escrito se comprueba solo | Comprobar lo que la regla exige | Comprobaciones | A | Sin abrir |
-| E. Lo no probado se declara sin verificar | Declarar el estado real | Comprobaciones | D | Sin abrir |
-| F. La sesión deja su rastro fuera del chat | Escribir lo que la sesión dejó | Enganches | B | Sin abrir |
-| G. Ninguna credencial queda escrita | Tapar antes de guardar | Enganches | B | Sin abrir |
-| H. El estándar se instala en otro proyecto | Instalar y anotar la versión | Instalador | A, D | Sin abrir |
-| I. El proyecto sabe cuándo quedó atrás | Avisar el desfase y qué cambió | Instalador | H | Sin abrir |
-| J. Los moldes del ciclo existen y se exigen | Documentar mientras se construye | Moldes, Comprobaciones | D | Sin abrir |
-| K. El entregable sale del `.md` | Generar el `.docx` | Generador | J | Sin abrir |
-| L. Se mide el tiempo de revisión | Medir antes y después | Comprobaciones | D, F | Sin abrir |
-| M. Lo aprendido sobrevive a la sesión | Guardar y recuperar en otra sesión | Memoria | F | Sin abrir |
-| N. Se ve en pantalla lo que hay y lo guardado | Revisar sin abrir archivo por archivo | Interfaz local | J, M | Sin abrir |
-| O. Lo nuevo no rompe lo anterior | Comprobar lo que ya servía antes de publicar | Comprobaciones | D | Sin abrir |
+| A. La plataforma levanta y guarda | Base de F-001 | Proyectos | — | Sin abrir |
+| B. Se conecta un proyecto | F-001 | Proyectos | A | Sin abrir |
+| C. La ruta perdida se avisa | F-002 | Proyectos | B | Sin abrir |
+| D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Sin abrir |
+| E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Sin abrir |
+| F. Lo que no se reconoce se reporta | F-028 | Importación | E | Sin abrir |
+| G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Sin abrir |
 
-## 3. El orden, y por qué ese
+## 5. El orden, y por qué ese
+
+> El orden no es el del documento: es el de las dependencias y el del riesgo. Lo que más incertidumbre tiene va primero, mientras queda tiempo de cambiar de camino.
 
 | Qué va primero | Por qué |
 |---|---|
-| A, el cuerpo de reglas | Sin reglas escritas no hay qué cargar, qué comprobar ni qué heredar |
-| D, la comprobación | Es el paquete con más incertidumbre: no se sabe cuántas reglas se comprueban solas, y eso puede cambiar el diseño |
-| H, la instalación fuera | Es el supuesto que sostiene el proyecto entero, y sigue sin confirmar |
-| K, el generador, al final | Necesita documentos ya escritos; hacerlo antes es convertir plantillas vacías |
-| O, antes que N | Sin la comprobación de que lo nuevo no rompe lo anterior, cada componente que se agregue va a costar lo que hoy cuesta: rehacer lo que ya servía |
+| A, la plataforma que levanta y guarda | Sin ella no hay dónde poner nada |
+| D, el registro de auditoría | Registrar desde el primer día evita tener un tramo sin historia |
+| E, traer un proyecto que ya existe | Es la fase de mayor incertidumbre de la versión 1: no se sabe cuánto de lo escrito se va a reconocer |
+| G, ver el estado, al final de la versión 1 | Necesita que haya algo traído para mostrar; hacerla antes sería mostrar pantallas vacías |
 
-## 4. Cómo se deshace lo que salga mal
+## 6. Cómo se escribe el código
+
+> Lo que se pone acá se exige al revisar. Lo que no está escrito es preferencia personal, y se discute en cada cambio.
+
+| Qué se exige | Cómo se comprueba |
+|---|---|
+| Nombres y estilo, según lo acordado en el diseño | Revisión, y programa que lo revisa cuando se pueda |
+| Prueba junto al código que la necesita | La fase no cierra sin veredicto |
+| Sin credenciales ni rutas de una sola máquina | Comprobación que rechaza el guardado |
+| Errores que dicen qué pasó y qué hacer | Revisión |
+| Cambios pequeños, que se puedan leer de corrido | Revisión |
+| Un componente nuevo no obliga a editar los otros | `DA-11`, y se mira en cada revisión |
+
+## 7. Cómo se integra y quién lo revisa
+
+| Qué se define | Cómo queda |
+|---|---|
+| Cómo se ramifica el trabajo | Una rama por fase, que se integra al cerrarla |
+| Quién revisa antes de integrar | Hoy, el agente con una destreza de revisión. **Es la debilidad conocida: no hay una segunda persona** |
+| Qué corre solo en cada integración | Las pruebas y las comprobaciones del estándar |
+| Qué bloquea la integración | Una prueba en rojo, o una comprobación que reprueba |
+
+## 8. Cómo se deshace lo que salga mal
 
 | Si falla | Cómo se vuelve atrás | Qué se pierde |
 |---|---|---|
-| Una fase a medias | Se descarta la rama de trabajo | Solo lo de esa jornada |
-| Un cambio ya integrado | Se revierte el cambio y se sube una versión de corrección | Nada, si la versión anterior sigue publicada |
-| Una regla que resultó equivocada | Se deroga con su motivo, nunca se borra | Nada: las citas viejas siguen resolviendo |
-| Una instalación en un proyecto ajeno | El proyecto se queda en la versión que tenía | Nada: la instalación no toca su código |
+| Una fase a medias | Se descarta su rama | Solo lo de esa jornada |
+| Un cambio ya integrado | Se revierte y se publica una corrección | Nada, si la versión anterior sigue publicada |
+| Algo que tocó la base | Se reconstruye el índice desde el texto | Nada: la base es índice, no fuente |
+| Traer un proyecto salió mal | Se descarta lo traído | Nada del proyecto de origen: traer no lo modifica |
 
-## 5. Qué se escribe mientras se construye
+## 9. Qué se escribe mientras se construye
+
+> **La documentación de esta etapa no se escribe al final.** El documento de la fase se llena en el momento, porque después nadie recuerda por qué se hizo así.
 
 | Qué se escribe | Cuándo | Molde |
 |---|---|---|
 | Plan de trabajo de la fase | Antes de tocar nada | [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md](../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) |
+| Plan de pruebas | Junto con el plan de trabajo, y se aprueban juntos | [plantillas/ciclo-vida-proyectos/08-plan-pruebas.md](../../plantillas/ciclo-vida-proyectos/08-plan-pruebas.md) |
 | Estado de la fase | Al cambiar de estación | [plantillas/ciclo-vida-proyectos/10-estado-fase.md](../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) |
-| Lo que la sesión dejó | En el momento en que aparece, no al cerrar | El documento de señales del proyecto |
-| La entrada del registro de versiones | Al cerrar cada versión | El registro de cambios |
+| Lo que la sesión dejó | En el momento en que aparece | El documento de señales |
+| Qué trae la versión, para quien la usa | Al cerrar cada versión | [plantillas/ciclo-vida-proyectos/19-notas-de-version.md](../../plantillas/ciclo-vida-proyectos/19-notas-de-version.md) |
 
-## 6. La deuda que se declara
+## 10. Cómo se sabe cómo va
 
-Lo que se decidió no hacer ahora, sabiendo que se deja pendiente.
+| Qué se mide | Cada cuánto | Quién lo mira |
+|---|---|---|
+| Fases cerradas contra fases abiertas de la versión | Al cerrar cada fase | El autor |
+| Funcionalidades verificadas contra las de la versión | Al cerrar cada fase | El autor |
+| Deuda declarada que sigue sin pagar | Al cerrar cada versión | El autor |
+| Qué se atrasó, y qué lo atrasó | Al cerrar cada versión | El autor |
 
-| # | Qué quedó sin hacer | Por qué se aceptó | Quién la paga | Para cuándo |
+## 11. La deuda que se declara
+
+> Deuda es lo que se decidió no hacer ahora, con conocimiento. Lo que se olvidó no es deuda: es un defecto. La deuda sin fecha ni dueño no se paga nunca.
+
+| # | Qué queda sin hacer | Por qué se acepta | Quién la paga | Para cuándo |
 |---|---|---|---|---|
-| 1 | Sin medición del tiempo de revisión antes de empezar | No hay línea base y el proyecto ya arrancó | El autor | Antes de afirmar que se redujo |
-| 2 | El generador de `.docx` queda para el final | Necesita documentos escritos que todavía no existen | El autor | Antes de la primera entrega a un tercero |
-| 3 | La interfaz solo lee, y no deja editar | Editar desde la pantalla se salta la aprobación del usuario | El autor | No se paga: es una decisión, no una deuda |
+| 1 | Nadie distinto del autor revisa el código | Hay una sola persona | El autor | Cuando haya alguien más |
+| 2 | Sin medición del tiempo de revisión antes de empezar | No hay línea base, y el proyecto ya arrancó | El autor | Antes de afirmar que se redujo |
+| 3 | El agente trabaja como hoy hasta la versión 3 | Entregar primero le da más valor al usuario | El autor | Versión 3 |
+| 4 | La seguridad vale para un solo usuario en su máquina | Es lo que hay hoy | El autor | Antes de que la use alguien más |
 
-## 7. Los entregables de esta etapa, y a quién van
+## 12. Los entregables de esta etapa, y a quién van
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
-| Quince fases, una por historia | [plantillas/ciclo-vida-proyectos/05-fase.md](../../plantillas/ciclo-vida-proyectos/05-fase.md) | Equipo | Pendiente |
-| Plan de trabajo de cada fase | [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md](../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) | Usuario, con su plan de pruebas | Pendiente |
+| Fase, una por historia | [plantillas/ciclo-vida-proyectos/05-fase.md](../../plantillas/ciclo-vida-proyectos/05-fase.md) | Equipo | Pendiente |
+| Plan de trabajo y plan de pruebas | Moldes 07 y 08 | Usuario, se aprueban juntos | Pendiente |
 | Estado de cada fase | [plantillas/ciclo-vida-proyectos/10-estado-fase.md](../../plantillas/ciclo-vida-proyectos/10-estado-fase.md) | Equipo | Pendiente |
-| El estándar construido | No aplica | Usuario y proyectos que heredan | Pendiente |
+| Notas de cada versión | [plantillas/ciclo-vida-proyectos/19-notas-de-version.md](../../plantillas/ciclo-vida-proyectos/19-notas-de-version.md) | Usuario | Pendiente |
+| Cómo se levanta el proyecto | Sección 3 de este documento | Quien instale | Pendiente |
+| La plataforma construida | No aplica | Usuario | Pendiente |
 
-## 8. Las puertas de esta etapa
+## 13. Las puertas de esta etapa
 
 | Qué no se puede hacer | Hasta que | Regla |
 |---|---|---|
-| Tocar código | haya especificación acordada | [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
+| Tocar código de un módulo | su especificación esté acordada | [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
 | Ejecutar un plan | esté aprobado junto con su plan de pruebas | [`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md) |
 | Dar una fase por cerrada | su resultado de pruebas tenga veredicto por criterio | El estado lo fija la prueba, no la lectura |
+| Cerrar una versión | cada funcionalidad suya esté verificada o su deuda declarada | Sección 11 de este documento |
 
-## 9. La decisión de cierre
+## 14. La decisión de cierre
 
-**No se abre la etapa todavía**, decidido por el autor el 2026-08-22.
+**Aprobada el 2026-08-25.** La etapa queda abierta y sus cinco versiones fijadas; lo que falta para tocar código es la puerta de la especificación.
 
-Falta la especificación de los nueve módulos. Las quince fases están definidas y ordenadas: la D y la H son las que hay que hacer temprano, porque una decide si el diseño de comprobación se sostiene y la otra confirma el supuesto del que depende todo el proyecto. **Lo que cambió el 2026-08-24:** entraron tres fases, la memoria, la interfaz y la comprobación de que lo nuevo no rompe lo anterior, porque el sistema pasó a ser uno que crece.
+Falta la puerta: la especificación de los módulos que toca la versión 1, que son **Proyectos, Auditoría e Importación**. Las de los otros nueve módulos se escriben al llegar a su versión, para no documentar hoy lo que va a cambiar en meses.
 
-## 10. Qué de esta etapa cumple hoy el proyecto
-
-> Del análisis del 2026-08-24 sobre la versión 33.4.0. El resumen de las siete etapas, y lo que este análisis no puede decir, están en [cvds/README.md](../README.md).
-
-| Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
-|---|---|---|
-| Cómo se parte el trabajo | 119 fases, cada una con su plan, sus pruebas y su cierre | [documentacion/epicas/](../../documentacion/epicas/README.md) |
-| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | [interfaz/requirements/](../../interfaz/README.md) |
-| Orden y dependencias | Mapa de dependencias, que se actualiza al cerrar cada unidad | `13·DOC18` |
-| Cómo se escribe el código | Capítulos de calidad y de estructura, comprobados por programa | [validadores/codigo.py](../../validadores/codigo.py) y [validadores/calidad.py](../../validadores/calidad.py) |
-| Documentar mientras se construye | El estado de la fase se escribe en el repositorio, no en el chat | `13·DOC1` y el molde 10 del ciclo |
-| Cómo se sabe cómo va | Lo planeado contra lo hecho, y las historias sin fase, comprobados solos | [validadores/plan_vs_hecho.py](../../validadores/plan_vs_hecho.py) |
-| La deuda que se declara | Cada cierre de funcionalidad declara qué quedó sin hacer | Molde 11 del ciclo, 101 escritos |
-| Cómo se deshace | Todo cambio de estado pide aprobación, y el plan dice cómo se revierte | `00·N1` y `02·F14` |
-
-**A medias**
-
-| # | Qué |
-|---|---|
-| 1 | la revisión del código la hace una destreza del propio agente, [skills/revisar-critico](../../skills/revisar-critico), y no una persona distinta de quien escribió |
-| 2 | el registro de avance no mide tiempo, solo estado |
-
-**No existe:** integración continua. El repositorio no tiene ningún proceso automático que las corra, y **el propio validador que la exige lo detectaría** ([validadores/ci.py](../../validadores/ci.py), `09·G6`). Lo que hay son enganches locales en `.githooks`, que corren solo en esta máquina.
+**Las cinco versiones y su orden quedan fijados acá.** Un cambio de orden se anota como cambio a la línea base, no se hace en silencio.
