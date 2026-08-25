@@ -50,7 +50,7 @@
 | RF-15 | Registrar una aprobación con quién, cuándo y sobre qué texto exacto | El usuario | El giro de producto | 7 | Debe |
 | RF-16 | Mostrar qué está aprobado y qué sigue en borrador | El usuario | El giro de producto | 7 | Debe |
 | RF-17 | Marcar como no aprobado lo que cambió después de haberse aprobado | El usuario | Observación del propio trabajo | 7 | Debe |
-| RF-18 | Registrar cada acción sobre proyectos, documentos y reglas | El usuario | El giro de producto | 8 | Debe |
+| RF-18 | Registrar cada acción sobre proyectos, documentos y reglas, y lo que cada sesión dejó escrito | El usuario | El giro de producto | 8 | Debe |
 | RF-19 | Consultar lo registrado por proyecto, por fecha y por tipo de acción | El usuario | El giro de producto | 8 | Debería |
 | RF-20 | Comprobar por sí sola lo que las reglas exigen | El usuario | Lo que ya se intentó | 4 | Debe |
 | RF-21 | Declarar como no verificado lo que no tenga prueba corrida | El usuario | Observación del propio trabajo | 4, 5 | Debe |
@@ -181,7 +181,7 @@ Cada palabra del negocio con una sola definición, para que nadie la use de dos 
 | # | Duda | Quién responde | Se necesita antes de | Estado |
 |---|---|---|---|---|
 | 1 | ¿Qué entra exactamente en la primera versión? | El autor | Partir el trabajo en versiones | Abierta |
-| 2 | ¿Qué se audita de la sesión del agente? «Todo» incluye cada mensaje, y eso pesa | El autor | Construir la auditoría | Abierta |
+| 2 | ¿Qué se audita de la sesión del agente? | El autor | Construir la auditoría | **Resuelta el 2026-08-25:** las acciones, más lo que la sesión dejó escrito. La transcripción se guarda aparte y no entra a la auditoría |
 | 3 | ¿La documentación de todos los proyectos vive en un solo repositorio, o en uno por proyecto? | El autor | Diseñar el modelo de datos | **Resuelta el 2026-08-24:** todo en el repositorio de la plataforma, una carpeta por proyecto |
 | 4 | Cuando la plataforma no esté disponible, ¿el agente trabaja leyendo la fuente o se detiene? | El autor | Diseñar la carga de reglas | Abierta, con propuesta: que trabaje y lo diga |
 | 5 | ¿El expediente que recibe un cliente incluye la auditoría y la memoria, o solo los entregables? | El autor | Construir el expediente | Abierta, con propuesta: solo los entregables |

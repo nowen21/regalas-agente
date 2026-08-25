@@ -402,20 +402,20 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | Campo | Valor |
 |---|---|
 | **Identificador** | `F-018` |
-| **De qué se trata** | Guardar qué se hizo sobre proyectos, documentos y reglas: quién, cuándo y sobre qué |
+| **De qué se trata** | Guardar qué se hizo sobre proyectos, documentos y reglas, y lo que cada sesión dejó escrito: quién, cuándo y sobre qué |
 | **Para qué sirve** | Poder rastrear cualquier cambio hasta quién lo hizo |
 | **Parte del sistema** | Auditoría |
 | **Quién la usa** | El sistema solo, cada vez que algo cambia |
-| **Qué recibe** | La acción que se acaba de ejecutar |
+| **Qué recibe** | La acción que se acaba de ejecutar, y el resumen y las decisiones que la sesión escribió |
 | **Qué entrega** | El registro guardado |
 | **Reglas que debe respetar** | `RN-9` nada de lo registrado incluye credenciales |
 | **Depende de** | F-001 |
-| **Terminada cuando** | `CA-1` toda acción que cambia algo queda registrada · `CA-2` el registro dice quién, cuándo y sobre qué · `CA-3` lo registrado no se puede editar |
+| **Terminada cuando** | `CA-1` toda acción que cambia algo queda registrada · `CA-2` el registro dice quién, cuándo y sobre qué · `CA-3` lo registrado no se puede editar · `CA-4` lo que la sesión dejó escrito queda enlazado desde el registro · `CA-5` la conversación completa no entra |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Definida |
 | **Verificado** | Sin verificar |
-| **Lo que hay que tener en cuenta** | Registrar cada mensaje de la sesión pesa mucho y sirve poco. Qué se registra exactamente es la duda 2 del análisis |
+| **Lo que hay que tener en cuenta** | Registrar cada mensaje pesa mucho, se llena de ruido y arrastra credenciales. La transcripción se guarda aparte, como hasta hoy, y la auditoría enlaza el resumen |
 
 ### Consultar lo registrado
 

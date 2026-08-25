@@ -119,8 +119,11 @@ Las cosas de las que la plataforma guarda información, y cómo se relacionan en
 | `cuándo` | Fecha y hora | Fecha y hora | Sí |
 | `qué cambió` | La diferencia, en corto | Texto | Sí |
 | `proyecto` | En cuál ocurrió | Identificador de proyecto, o vacío si fue global | No |
+| `sesión` | En qué sesión se hizo, para leer después lo que dejó escrito | Identificador de sesión, o vacío | No |
 
 > **Este registro solo se agrega.** No hay campo para editarlo ni para borrarlo: `DA-08`.
+
+> **Lo que la sesión dejó escrito se enlaza, y la conversación no se guarda.** Decidido el 2026-08-25: la acción responde qué se hizo, y el resumen de la sesión responde por qué. La transcripción sigue guardándose aparte, fuera de la auditoría.
 
 ### Anotación de memoria
 
