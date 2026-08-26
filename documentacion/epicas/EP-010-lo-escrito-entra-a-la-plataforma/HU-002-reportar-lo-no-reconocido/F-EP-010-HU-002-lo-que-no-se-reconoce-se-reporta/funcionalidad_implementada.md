@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-002](../HU-002-reportar-lo-no-reconocido.md): `CA-01`, `CA-02`, `CA-03` y su transversal. Los cuatro |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `4573a15` |
 
 ---
 

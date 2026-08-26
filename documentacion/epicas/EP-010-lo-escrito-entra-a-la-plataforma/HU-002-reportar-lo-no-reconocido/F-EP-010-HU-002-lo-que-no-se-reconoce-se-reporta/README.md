@@ -17,4 +17,4 @@
 
 **Qué quedó.** Cada traída deja su reporte escrito, con su fecha. Se puede volver a mirar **sin traer otra vez**, y el registro de auditoría lo enlaza en vez de solo contar. De este repositorio: 1000 documentos entraron, uno no, y ocho carpetas no se miraron.
 
-**Estado:** estación 9. Los ocho casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `4573a15`. Con ella terminó la versión 1.

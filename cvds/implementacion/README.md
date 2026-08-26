@@ -63,13 +63,13 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 | C. La ruta perdida se avisa | F-002 | Proyectos | B | Cerrada el 2026-08-25, commit `ff2248e` |
 | D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Cerrada el 2026-08-25, commit `5231022` |
 | E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Cerrada el 2026-08-25, commit `c998695` |
-| F. Lo que no se reconoce se reporta | F-028 | Importación | E | Cerrada el 2026-08-25 |
+| F. Lo que no se reconoce se reporta | F-028 | Importación | E | Cerrada el 2026-08-25, commit `4573a15` |
 | G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Cerrada el 2026-08-25, commit `faed710` |
 | H. Un proyecto conectado se administra | F-035 | Proyectos | B | Cerrada el 2026-08-25, commit `5bf4ebb` |
 
 ## 4.1 La versión 1, cerrada
 
-**Terminada el 2026-08-25.** Sus ocho fases cerradas, cada una con su plan aprobado, sus casos de prueba con veredicto y su evidencia.
+**Terminada el 2026-08-25**, con la fase F en el commit `4573a15`. Sus ocho fases cerradas, cada una con su plan aprobado, sus casos de prueba con veredicto y su evidencia.
 
 ### Qué se puede hacer con ella
 

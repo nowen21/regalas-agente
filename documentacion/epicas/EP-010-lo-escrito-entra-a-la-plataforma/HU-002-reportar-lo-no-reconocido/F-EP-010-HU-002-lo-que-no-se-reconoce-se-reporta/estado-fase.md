@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `4573a15`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | El reporte guardado, enlazado y visible | ☑ |
 | 7 | Pruebas | Los ocho casos con veredicto: 8 de 8 en el ciclo 2 | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), y la versión 1 cerrada | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «si», el 2026-08-25. Commit `4573a15` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las seis tareas hechas, los ocho casos en verde con su evidencia, y el cierre escrito. **Con esto termina la versión 1 del producto.**
+**Nada: la fase cerró**, en el commit `4573a15`. Las seis tareas hechas, los ocho casos en verde con su evidencia, y el cierre escrito. **Con esto terminó la versión 1 del producto.**
 
 **El reporte real de este repositorio:**
 
