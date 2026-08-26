@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12, commit. **Última puerta pasada:** 11.
+**Estación actual:** cerrada. **Última puerta pasada:** 12, el commit `a14f5ed`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 Commit `a14f5ed` | ☑ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **La estación 5 pasó sin documento aparte**, y la regla que lo permite ya existe: [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md), «la redacción del CA es la especificación funcional».
@@ -74,7 +74,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **Esperando autorización para el commit.** Construida, probada y documentada.
+- **Nada esperando.** Construida, probada, documentada y guardada en `a14f5ed`.
 - **El vocabulario acabó traducido**, y no quedó aparte como se había pensado: el plan lo forzaba. Escribir `Backlog` en el glosario —que es el documento que lleva la lista de lo que se queda en otro idioma **y por qué**— habría sido incumplir donde más se nota.
 - **Dos cosas quedan sin dueño, y están en el cierre §6:** que nadie reporte un campo `Estado` faltante, y que solo se comprueben las historias — épicas y planes tienen vocabulario pero no guardia.
 

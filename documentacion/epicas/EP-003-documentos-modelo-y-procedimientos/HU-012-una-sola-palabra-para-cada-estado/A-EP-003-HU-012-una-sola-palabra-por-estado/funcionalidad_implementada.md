@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-012](../HU-012-una-sola-palabra-para-cada-estado.md): `CA-01`, `CA-02`, `CA-03`, `CA-04` y sus dos transversales |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | `35.0.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `a14f5ed` |
 
 ---
 
