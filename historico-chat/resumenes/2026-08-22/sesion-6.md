@@ -328,6 +328,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-22 · Donde una funcionalidad no hace nada es donde más falta hace que deje constancia
+
+- **Qué pasó:** al traer un proyecto donde **nada** se reconocía, el módulo se salía temprano sin escribir el reporte ni dejar registro en la auditoría. Alguien traía, no entraba nada, y no quedaba rastro de que se hubiera intentado.
+- **Por qué importa:** la salida temprana parece razonable y es al revés. Un usuario que trae y no ve nada necesita saber si la plataforma falló, si la carpeta estaba vacía, o si nada seguía un molde. Sin reporte, las tres se ven igual.
+- **Qué lo soluciona:** se resolvió acá: traer sin que entre nada también es una traída, y deja las dos cosas.
+- **Qué se decidió:** una salida temprana por «no hay nada que hacer» se mira dos veces. Si la función deja constancia o reporte, **el caso vacío también tiene que dejarlo**. Y las pruebas necesitan un caso donde el resultado sea cero.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-010](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/epica.md) · [HU-002](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-002-reportar-lo-no-reconocido/HU-002-reportar-lo-no-reconocido.md).
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el comentario en `traer`, y la señal `S-039`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-23 · Un registro que dice cuántos sin decir cuáles no demuestra nada
+
+- **Qué pasó:** después de traer 994 documentos, el registro de auditoría decía «994 reconocidos, 1 sin reconocer». Para saber cuál era había que volver a traer el proyecto entero.
+- **Por qué importa:** un número es un resumen, y un resumen no es una prueba. La auditoría existe para rastrear cualquier cambio hasta su origen, y ahí el rastro se cortaba en el propio registro.
+- **Qué lo soluciona:** se resolvió acá, con el reporte como documento propio y el registro enlazándolo.
+- **Qué se decidió:** cuando un registro resume algo con detalle, el detalle va **en un documento aparte y el registro lo enlaza**. No se copia en los dos sitios. Meter la lista en el registro se descartó: un proyecto que siga el estándar a medias dejaría cientos de rutas y el registro quedaría ilegible justo cuando más falta hace.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-010](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/epica.md) · [HU-002](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-002-reportar-lo-no-reconocido/HU-002-reportar-lo-no-reconocido.md).
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el reporte enlazado desde el registro, y la señal `S-040`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -342,9 +372,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en trece commits, y el último es la fase G en `faed710`. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Falta guardar la fase F y el cierre de la versión 1. Lo anterior quedó en trece commits, el último la fase G en `faed710`: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

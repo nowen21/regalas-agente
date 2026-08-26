@@ -96,7 +96,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **Rel:** S-006.
 
 ## S-010 · El andamio traslada solo el enlace que llega exactamente a la raíz  ·  decisión · activa
-- **What:** al copiar una plantilla, el andamio reescribe el prefijo `../…/` que desde la carpeta de la plantilla llega a la raíz del repositorio, y el marcador `«RUTA-ESTANDAR»`, con la ruta desde la carpeta de la fase. Un `../` que se queda en `plantillas/`, o que pasa de la raíz, no se toca.
+- **What:** al copiar una plantilla, el andamio reescribe el prefijo `../.../` que desde la carpeta de la plantilla llega a la raíz del repositorio, y el marcador `«RUTA-ESTANDAR»`, con la ruta desde la carpeta de la fase. Un `../` que se queda en `plantillas/`, o que pasa de la raíz, no se toca.
 - **Why:** siete fases nacieron hoy con el mismo enlace roto, corregido siete veces con `sed`. Reescribir cualquier `../` habría roto los que no iban a la raíz; las plantillas usan dos formas (`../../` y el marcador) y el andamio atiende las dos para no tocar las plantillas.
 - **Where:** [validadores/andamio.py](../validadores/andamio.py) `_reenlazar` · fase `C-EP-004-HU-005`.
 - **Learned:** lo que un programa copia de una plantilla hereda la perspectiva de la plantilla, no la del destino. El prefijo se calcula con `relpath`, nunca se escribe fijo.
@@ -171,7 +171,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **What:** la sesión que recibió «resuelva el pendiente 16» murió a medias: dejó la regla `M19` y el `CA-05` escritos y sellados, pero la fase con sus cinco documentos en plantilla vacía, sin versión, sin prueba y con una decisión reservada al usuario tomada sin registro. La sesión siguiente no rehizo lo escrito ni lo dio por cerrado: lo declaró línea base en el plan de la fase, sometió a aprobación lo que faltaba, preguntó la decisión pendiente y recién entonces ejecutó pruebas, versión y cierre.
 - **Why:** las otras dos salidas pierden algo. Rehacer repite trabajo sin cambiar el resultado; dar por bueno deja una regla que no se puede citar como cumplida (sin prueba ni versión) y normaliza que el orden de `02·F4` se invierta en silencio.
 - **Where:** [plan de la fase B](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-007-regla-de-las-reglas/B-EP-001-HU-007-primero-que-el-proceso-sirva/plan_trabajo.md), §0 «Cómo llega este plan» y riesgo B-01.
-- **Learned:** el detector fue la cadena misma: la transcripción cortada a las 9:08, las plantillas con sus `«…»` y el `VERSION` sin subir dijeron exactamente dónde quedó todo. Y la decisión sin registro se encontró porque el pendiente la dejó escrita como del usuario — lo que se anota como «es de él» se puede reclamar después.
+- **Learned:** el detector fue la cadena misma: la transcripción cortada a las 9:08, las plantillas con sus `«...»` y el `VERSION` sin subir dijeron exactamente dónde quedó todo. Y la decisión sin registro se encontró porque el pendiente la dejó escrita como del usuario — lo que se anota como «es de él» se puede reclamar después.
 - **When/Who:** 2026-08-21 · agente; opción y planes confirmados por el usuario en el chat.
 - **Scope:** estándar; aplica a cualquier proyecto donde una sesión muera a mitad de una fase.
 - **Rel:** S-002.
@@ -369,3 +369,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente, en la fase G.
 - **Scope:** estándar; aplica a cualquier proyecto que calcule métricas leyendo texto escrito por personas.
 - **Rel:** S-036, S-033.
+
+## S-039 · El caso donde una funcionalidad no hace nada es donde más falta hace que deje constancia  ·  error-resuelto · activa
+- **What:** el módulo que trae la documentación de un proyecto se salía temprano cuando no reconocía **ningún** documento: `if not hallazgo.cuantos: return`. Con eso no escribía el reporte de lo que no entró, y **tampoco dejaba registro en la auditoría**. Alguien traía un proyecto, no entraba nada, y no quedaba constancia de que se hubiera intentado ni de por qué.
+- **Why:** la salida temprana parece razonable —«no hay nada que hacer, me voy»— y es exactamente al revés: **cuando el resultado es cero es cuando más falta hace explicarlo**. Un usuario que trae un proyecto y no ve nada necesita saber si la plataforma falló, si la carpeta estaba vacía, o si nada seguía un molde conocido. Sin reporte, las tres se ven igual.
+- **Also:** lo cazó el caso de «que NO pase», probando con un proyecto donde **nada** se reconoce. Los demás casos usaban proyectos que traían al menos un documento, y con eso el defecto era invisible.
+- **Where:** el comentario en `traer`, en [nucleo/importacion/core.py](../plataforma/nucleo/importacion/core.py) · `CP-008` de la fase F.
+- **Learned:** una salida temprana por «no hay nada que hacer» hay que mirarla dos veces: si la función deja constancia, registro o reporte, **el caso vacío también tiene que dejarlo**. Y las pruebas necesitan al menos un caso donde el resultado sea cero, porque el camino del cero casi nunca se recorre con datos de prueba normales.
+- **When/Who:** 2026-08-25 · agente, en la fase F.
+- **Scope:** estándar; aplica a cualquier operación que produzca registro o reporte.
+- **Rel:** S-038 (la tercera cuenta no es opcional).
+
+## S-040 · Un registro que dice cuántos sin decir cuáles no demuestra nada  ·  decisión · activa
+- **What:** después de traer 994 documentos, el registro de auditoría decía: «994 reconocidos, 1 sin reconocer». Para saber **cuál** era ese uno había que volver a traer el proyecto entero. El registro cumplía su formato y aun así no servía para lo que la auditoría existe: demostrar meses después qué pasó.
+- **Why:** un número es un resumen, y un resumen no es una prueba. El propósito escrito de la auditoría es poder rastrear cualquier cambio hasta su origen; con un conteo, el rastro se corta en el propio registro.
+- **Also:** la salida fácil era meter la lista completa en el registro, y se descartó por dos razones. Un proyecto que siga el estándar a medias puede dejar cientos de rutas, y el registro quedaría ilegible **justo cuando más falta hace**. Y ya estaba decidido que la auditoría guarda **la acción**, no el contenido.
+- **Where:** el reporte como documento propio, con su fecha, en [nucleo/importacion/core.py](../plataforma/nucleo/importacion/core.py) · el registro que lo **enlaza**: «1 sin reconocer. El detalle, en proyectos/.../reportes/2026-08-25-205102-lo-que-no-entro.md».
+- **Learned:** cuando un registro resume algo que tiene detalle, el detalle va **en un documento aparte y el registro lo enlaza**. No se copia en los dos sitios: dos copias de lo mismo se separan con el tiempo. Y la prueba de que el enlace sirve tiene dos mitades: que el registro **no** repita la lista, y que desde su ruta **sí** se llegue al detalle.
+- **When/Who:** 2026-08-25 · agente y usuario, en la fase F.
+- **Scope:** estándar; aplica a cualquier proyecto con registro de auditoría.
+- **Rel:** S-024 (guardar la acción y guardar el contenido son cosas distintas).

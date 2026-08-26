@@ -1,0 +1,75 @@
+== ocho sabotajes, uno por cada cosa que la fase promete ==
+== se restauran con copia, nunca con el control de versiones ==
+
+--- 1: el reporte no nombra lo no reconocido, solo lo cuenta ---
+FAIL: test_el_segundo_reporte_no_pisa_al_primero (nucleo.importacion.tests.DosReportesTests.test_el_segundo_reporte_no_pisa_al_primero)
+FAIL: test_se_abre_un_reporte_y_trae_su_texto (nucleo.importacion.tests.PantallaDeReportesTests.test_se_abre_un_reporte_y_trae_su_texto)
+FAIL: test_del_registro_se_llega_al_reporte (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_del_registro_se_llega_al_reporte)
+FAIL: test_el_reporte_sale_con_la_carpeta_del_proyecto_borrada (nucleo.importacion.tests.ReporteQuedaGuardadoTests.test_el_reporte_sale_con_la_carpeta_del_proyecto_borrada)
+FAIL: test_no_hace_falta_traer_otra_vez_para_mirarlo (nucleo.importacion.tests.ReporteQuedaGuardadoTests.test_no_hace_falta_traer_otra_vez_para_mirarlo)
+FAIL: test_el_reporte_lista_lo_no_reconocido_con_su_ruta (nucleo.importacion.tests.ReporteTests.test_el_reporte_lista_lo_no_reconocido_con_su_ruta)
+Ran 165 tests in 30.438s
+FAILED (failures=6)
+
+--- 2: el reporte no se escribe cuando no quedo nada afuera ---
+ERROR: test_el_reporte_se_lee_sin_la_plataforma (nucleo.importacion.tests.ReporteTests.test_el_reporte_se_lee_sin_la_plataforma)
+FAIL: test_cuando_no_quedo_nada_afuera_el_reporte_lo_dice (nucleo.importacion.tests.ReporteTests.test_cuando_no_quedo_nada_afuera_el_reporte_lo_dice)
+FAIL: test_el_reporte_dice_que_carpetas_no_se_miraron (nucleo.importacion.tests.ReporteTests.test_el_reporte_dice_que_carpetas_no_se_miraron)
+FAIL: test_el_reporte_existe_aunque_no_haya_nada_que_reportar (nucleo.importacion.tests.ReporteTests.test_el_reporte_existe_aunque_no_haya_nada_que_reportar)
+Ran 165 tests in 28.304s
+FAILED (failures=3, errors=1)
+
+--- 3: cada traida pisa el reporte anterior ---
+FAIL: test_el_segundo_reporte_no_pisa_al_primero (nucleo.importacion.tests.DosReportesTests.test_el_segundo_reporte_no_pisa_al_primero)
+FAIL: test_estan_del_mas_nuevo_al_mas_viejo (nucleo.importacion.tests.DosReportesTests.test_estan_del_mas_nuevo_al_mas_viejo)
+Ran 165 tests in 23.368s
+FAILED (failures=2)
+
+--- 4: el registro de auditoria no enlaza el reporte ---
+FAIL: test_del_registro_se_llega_al_reporte (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_del_registro_se_llega_al_reporte)
+FAIL: test_el_registro_trae_la_ruta_del_reporte (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_el_registro_trae_la_ruta_del_reporte)
+Ran 165 tests in 22.948s
+FAILED (failures=2)
+
+--- 5: el registro repite la lista en vez de enlazarla ---
+FAIL: test_del_registro_se_llega_al_reporte (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_del_registro_se_llega_al_reporte)
+FAIL: test_el_registro_no_repite_la_lista (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_el_registro_no_repite_la_lista)
+FAIL: test_el_registro_trae_la_ruta_del_reporte (nucleo.importacion.tests.ReporteEnLaAuditoriaTests.test_el_registro_trae_la_ruta_del_reporte)
+Ran 165 tests in 23.155s
+FAILED (failures=3)
+
+--- 6: el reporte no dice que carpetas no se miraron ---
+FAIL: test_el_reporte_dice_que_carpetas_no_se_miraron (nucleo.importacion.tests.ReporteTests.test_el_reporte_dice_que_carpetas_no_se_miraron)
+Ran 165 tests in 22.562s
+FAILED (failures=1)
+
+--- 7: los reportes no se pueden listar ---
+ERROR: test_se_abre_un_reporte_y_trae_su_texto (nucleo.importacion.tests.PantallaDeReportesTests.test_se_abre_un_reporte_y_trae_su_texto)
+ERROR: test_no_hace_falta_traer_otra_vez_para_mirarlo (nucleo.importacion.tests.ReporteQuedaGuardadoTests.test_no_hace_falta_traer_otra_vez_para_mirarlo)
+ERROR: test_el_reporte_se_lee_sin_la_plataforma (nucleo.importacion.tests.ReporteTests.test_el_reporte_se_lee_sin_la_plataforma)
+FAIL: test_el_segundo_reporte_no_pisa_al_primero (nucleo.importacion.tests.DosReportesTests.test_el_segundo_reporte_no_pisa_al_primero)
+FAIL: test_estan_del_mas_nuevo_al_mas_viejo (nucleo.importacion.tests.DosReportesTests.test_estan_del_mas_nuevo_al_mas_viejo)
+FAIL: test_con_traidas_se_ven_con_su_fecha (nucleo.importacion.tests.PantallaDeReportesTests.test_con_traidas_se_ven_con_su_fecha)
+FAIL: test_el_reporte_sale_con_la_carpeta_del_proyecto_borrada (nucleo.importacion.tests.ReporteQuedaGuardadoTests.test_el_reporte_sale_con_la_carpeta_del_proyecto_borrada)
+FAIL: test_cuando_no_quedo_nada_afuera_el_reporte_lo_dice (nucleo.importacion.tests.ReporteTests.test_cuando_no_quedo_nada_afuera_el_reporte_lo_dice)
+FAIL: test_el_reporte_dice_cuantos_entraron_y_cuantos_no (nucleo.importacion.tests.ReporteTests.test_el_reporte_dice_cuantos_entraron_y_cuantos_no)
+FAIL: test_el_reporte_dice_que_carpetas_no_se_miraron (nucleo.importacion.tests.ReporteTests.test_el_reporte_dice_que_carpetas_no_se_miraron)
+FAIL: test_el_reporte_existe_aunque_no_haya_nada_que_reportar (nucleo.importacion.tests.ReporteTests.test_el_reporte_existe_aunque_no_haya_nada_que_reportar)
+FAIL: test_el_reporte_lista_lo_no_reconocido_con_su_ruta (nucleo.importacion.tests.ReporteTests.test_el_reporte_lista_lo_no_reconocido_con_su_ruta)
+Ran 165 tests in 21.969s
+FAILED (failures=9, errors=3)
+
+--- 8: el reporte se escribe dentro de la carpeta del proyecto ---
+FAIL: test_lo_no_reconocido_no_entra_y_su_carpeta_no_cambia (nucleo.importacion.tests.ElReporteNoTocaNadaTests.test_lo_no_reconocido_no_entra_y_su_carpeta_no_cambia)
+FAIL: test_el_origen_queda_intacto_despues_de_fallar (nucleo.importacion.tests.FallaAMitadTests.test_el_origen_queda_intacto_despues_de_fallar)
+FAIL: test_la_carpeta_del_proyecto_queda_intacta (nucleo.importacion.tests.NoTocarElOrigenTests.test_la_carpeta_del_proyecto_queda_intacta)
+Ran 165 tests in 26.688s
+FAILED (failures=3)
+
+--- se limpian los rastros que los sabotajes pudieron dejar ---
+    borrado: C:\Ing. Jose\ia\agente\reporte-de-la-plataforma.txt
+    no quedo: C:\Ing. Jose\ia\agente\traido-por-la-plataforma.txt
+
+--- con el codigo restaurado ---
+Ran 165 tests in 24.936s
+OK

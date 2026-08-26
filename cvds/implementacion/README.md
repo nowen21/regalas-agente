@@ -63,9 +63,72 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 | C. La ruta perdida se avisa | F-002 | Proyectos | B | Cerrada el 2026-08-25, commit `ff2248e` |
 | D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Cerrada el 2026-08-25, commit `5231022` |
 | E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Cerrada el 2026-08-25, commit `c998695` |
-| F. Lo que no se reconoce se reporta | F-028 | Importación | E | Sin abrir |
+| F. Lo que no se reconoce se reporta | F-028 | Importación | E | Cerrada el 2026-08-25 |
 | G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Cerrada el 2026-08-25, commit `faed710` |
 | H. Un proyecto conectado se administra | F-035 | Proyectos | B | Cerrada el 2026-08-25, commit `5bf4ebb` |
+
+## 4.1 La versión 1, cerrada
+
+**Terminada el 2026-08-25.** Sus ocho fases cerradas, cada una con su plan aprobado, sus casos de prueba con veredicto y su evidencia.
+
+### Qué se puede hacer con ella
+
+La plataforma corre en la máquina, sin red y sin servicios que levantar. Con ella se puede:
+
+- **Conectar proyectos** y **deshacerlo**: desconectar sin borrar, renombrar sin mover, corregir la ruta y la versión declarada.
+- **Traer lo que un proyecto ya tiene escrito**, copiando y sin tocar su carpeta.
+- **Saber en qué va cada proyecto** sin abrirlo: qué etapas tienen documento, qué fases siguen abiertas, qué está aprobado.
+- **Ver qué no entró** en cada traída, sin volver a traer.
+- Y todo lo anterior **queda registrado**: primero la constancia, después el efecto.
+
+### Lo que la versión 1 dijo de este repositorio
+
+El primer proyecto conectado fue el repositorio del propio estándar, que era la prueba que la especificación pedía:
+
+| Qué | Cuánto |
+|---|---|
+| Documentos traídos | 1000 |
+| Sin reconocer | 1, `cvds/cumplimiento.md`, que no tiene molde en el estándar |
+| Etapas del ciclo con documento | 7 de 7 |
+| Fases | 128, de las cuales **41 siguen abiertas** |
+| Fases cuya estación no se deja leer | 5, nombradas con su ruta |
+| Documentos aprobados | 228 |
+
+**Las 41 fases abiertas no existían como dato en ninguna parte** antes de esta versión.
+
+### Cómo se probó
+
+**165 comprobaciones automáticas**, y ninguna suite se dio por buena sin **sabotear el código a propósito** para ver si las pruebas la cazaban. En total, 45 sabotajes a lo largo de las ocho fases.
+
+De ahí salieron cuatro reglas que quedaron escritas como señales, y que valen más que el código:
+
+| Lección | De qué fase |
+|---|---|
+| Un sabotaje que pasa en verde puede ser un sabotaje malo **o** una prueba floja: se distinguen corriendo el escenario y mirando el estado final | H y C |
+| Restaurar el código con copia no deshace lo que el sabotaje escribió **fuera** de él | E |
+| Cuando algo promete copiar «tal cual», la prueba compara **bytes**, no texto | E |
+| Una fase puede probar todo lo que promete y **no cumplir lo que declaró**: hace falta un caso que mida el alcance | G, sobre la E |
+
+### Qué NO da la versión 1, y conviene saberlo
+
+- **El agente sigue trabajando como hoy.** La plataforma muestra, guarda y audita, pero todavía no le entrega las reglas ni le hace cumplir nada. Eso es la versión 3.
+- **No se escriben documentos desde la plataforma.** Lo traído entra y se queda; abrirlo y editarlo es la versión 2.
+- **No hay usuarios ni permisos.** Quien tenga la máquina, entra.
+
+### Las deudas que deja, en una sola lista
+
+| Deuda | De qué fase | Cuándo se paga |
+|---|---|---|
+| El orden de dos registros de auditoría del mismo segundo es indeterminado | D | Cuando llegue la consulta de la auditoría, versión 4 |
+| Nadie exige llenar el campo de sesión: puede quedar vacío por descuido | D | Cuando estorbe |
+| La plataforma depende de la ruta de `validadores/` para tapar claves y leer versiones | D, B | El día que plataforma y estándar vivan en repositorios distintos |
+| Reconocer por nombre deja pasar un archivo con el nombre correcto y otra cosa adentro | E | Si aparece un caso real |
+| Traer 1000 documentos tarda 13 s y los lee uno por uno en memoria | E | Con un proyecto diez veces más grande |
+| Cinco fases de este repositorio escriben su estación de forma ilegible | G | Es trabajo del repositorio, no de la plataforma |
+| `cvds/cumplimiento.md` no tiene molde en el estándar | G, F | Si ese documento se vuelve común |
+| Los reportes se acumulan sin límite, uno por traída | F | Si algún día son cientos |
+
+**Ninguna es un defecto abierto.** Todas están declaradas con su destino, y ninguna impide usar la versión 1.
 
 ## 5. El orden, y por qué ese
 

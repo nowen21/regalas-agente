@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}Reporte del {{ cuando }} · {{ proyecto.nombre }}{% endblock %}
+{% block cuerpo %}
+<h1>Reporte de la traída del {{ cuando }}</h1>
+<p class="apagado">Tal como quedó escrito. El mismo texto está guardado en la plataforma y se puede abrir con cualquier editor.</p>
+
+<pre>{{ texto }}</pre>
+
+<p><a href="{% url 'importacion-reportes' proyecto.identificador %}">Volver a los reportes</a></p>
+{% endblock %}

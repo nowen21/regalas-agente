@@ -1,0 +1,52 @@
+== corrida real: el reporte de traer este mismo repositorio ==
+entraron: 1000 | sin reconocer: 1
+
+-- el registro de auditoria ENLAZA el reporte, no repite la lista --
+   1000 documento(s) reconocido(s), 1 sin reconocer. El detalle, en proyectos/cimiento/reportes/2026-08-25-205220-lo-que-no-entro.md
+
+== el reporte, tal como quedo escrito ==
+# Qué no entró al traer «Cimiento»
+
+**Traído el 2026-08-25 a las 20:52.** De la carpeta `C:\Ing. Jose\ia\agente`.
+
+| Qué | Cuántos |
+|---|---|
+| Documentos que entraron | 1000 |
+| De esos, nuevos | 1000 |
+| De esos, que ya estaban y quedaron al día | 0 |
+| **Que NO entraron** | **1** |
+
+## Lo que no siguió ningún molde conocido
+
+Este archivo **no entró** y **no se transformó**: quedó donde estaba, tal como estaba. Adivinar su forma sería peor que no traerlo, porque ensuciaría lo que sí sirve.
+
+- `cvds/cumplimiento.md`
+
+## Qué carpetas no se miraron, y por qué
+
+Traer recorre solo la documentación del ciclo de vida. Estas carpetas del proyecto existen y **no se abrieron**:
+
+| Carpeta | Por qué no se mira |
+|---|---|
+| `base/` | el cuerpo de reglas que el proyecto adopta, no su documentación |
+| `plantillas/` | los moldes del estándar, no documentos del proyecto |
+| `historico-chat/` | las conversaciones, que se guardan aparte |
+| `pendientes/` | el backlog, que no es documentación del ciclo |
+| `validadores/` | programas, no documentos |
+| `skills/` | procedimientos del agente, no del proyecto |
+| `notas/` | razonamientos de diseño, no documentos del ciclo |
+| `prompts/` | lo que el usuario pidió, con sus palabras |
+
+== CP-002: el reporte se mira sin volver a traer ==
+   (no se borra el repositorio: se apunta a una ruta que no existe,
+    que para la plataforma es lo mismo)
+ruta viva: False
+reportes que se pueden mirar igual: 1
+el reporte nombra cvds/cumplimiento.md: True
+
+Sin volver a traer. Antes de esta fase, esto no se podia.
+
+== se limpia ==
+�ndice de proyectos rehecho: 0 proyecto(s).
+�ndice de auditor�a rehecho: 0 acci�n(es).
+�ndice de lo tra�do rehecho: 0 documento(s).

@@ -12,7 +12,7 @@
 | **Prioridad** | Should |
 | **Estimación** | S |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
+| **Estado** | Cerrada el 2026-08-25, con sus criterios probados |
 
 ---
 
@@ -108,7 +108,7 @@ Y no se muestra una lista vacía
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| F · Lo que no se reconoce se reporta | Esta historia | Sin abrir |
+| [F · Lo que no se reconoce se reporta](F-EP-010-HU-002-lo-que-no-se-reconoce-se-reporta/README.md) | Esta historia | Cerrada el 2026-08-25. Los cuatro criterios con veredicto |
 
 ---
 

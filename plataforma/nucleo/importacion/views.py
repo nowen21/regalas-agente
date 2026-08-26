@@ -7,6 +7,7 @@ entera: un número por tipo se lee, y mil líneas se confirman sin mirar.
 Y dice **qué carpetas no se miraron**, con su porqué. Saltarse carpetas sin
 decirlo es perder en silencio con otro nombre (`RN-4`).
 """
+from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 
 from nucleo.proyectos.models import Proyecto
@@ -41,3 +42,30 @@ def traer(request, identificador):
         "ya_estaban": ya_estaban,
         "hecho": True,
     })
+
+
+def reportes(request, identificador):
+    """Los reportes de lo que no entró, del más nuevo al más viejo.
+
+    **Se pueden mirar sin volver a traer**, que es lo que esta pantalla vino a
+    resolver: antes, para saber qué había quedado afuera había que traer el
+    proyecto entero otra vez.
+    """
+    proyecto = get_object_or_404(Proyecto, identificador=identificador)
+    return render(request, "importacion/reportes.html", {
+        "proyecto": proyecto,
+        "reportes": core.reportes_de(proyecto),
+    })
+
+
+def reporte(request, identificador, cuando):
+    """Un reporte concreto, tal como quedó escrito."""
+    proyecto = get_object_or_404(Proyecto, identificador=identificador)
+    for fecha, ruta in core.reportes_de(proyecto):
+        if fecha == cuando:
+            return render(request, "importacion/reporte.html", {
+                "proyecto": proyecto,
+                "cuando": fecha,
+                "texto": core.leer_reporte(ruta),
+            })
+    raise Http404("No hay un reporte de esa fecha para este proyecto.")

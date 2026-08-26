@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Qué no entró · {{ proyecto.nombre }}{% endblock %}
+{% block cuerpo %}
+<h1>Qué no entró, en cada traída de {{ proyecto.nombre }}</h1>
+
+{% if reportes %}
+<p class="apagado">Uno por traída, del más nuevo al más viejo. <strong>Se pueden mirar sin volver a traer</strong>, y comparar dos para ver qué se corrigió.</p>
+<table>
+  <tr><th>Cuándo se trajo</th><th></th></tr>
+  {% for cuando, ruta in reportes %}
+  <tr>
+    <td>{{ cuando }}</td>
+    <td><a href="{% url 'importacion-reporte' proyecto.identificador cuando %}">Ver el reporte</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="vacio">Este proyecto todavía no se ha traído, así que no hay reportes. Se genera uno cada vez que se trae, también cuando no queda nada afuera.</p>
+{% endif %}
+
+<p><a href="{% url 'proyectos-uno' proyecto.identificador %}">Volver al proyecto</a></p>
+{% endblock %}
