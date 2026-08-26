@@ -336,6 +336,14 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 ---
 
+### Lo que destapó la plataforma al calcular el estado (87)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 87 | **P1** | [La estación del commit casi nunca se marca](87-la-estacion-del-commit-casi-nunca-se-marca.md) | La plataforma dijo que este repositorio tenía 41 fases abiertas; 23 estaban cerradas de hecho, con su cierre guardado en git. La estación 9 es «commit único», y el commit ocurre **después** de que el agente termina de escribir: nadie vuelve a marcar la casilla. Cualquier medición del trabajo pendiente sale con un 58% de error. Las 23 se corrigieron el 2026-08-25 leyendo el historial; esto es para que no vuelva a pasar. |
+
+---
+
 ### Sin agrupar todavía
 
 Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es criterio.
@@ -394,6 +402,8 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 **Las seis en negrita nacieron el 2026-08-17**, al enrutar el backlog: no existía historia que las recibiera. Sin ellas, seis pendientes se habrían quedado sueltos — que es como se construye saltándose la cadena.
 
 **El [85](85-las-conversaciones-completas-no-se-pueden-analizar.md) y el [86](86-conectar-un-proyecto-no-tiene-reversa.md) todavía no tienen historia, y es a propósito.** Son del producto, no del cuerpo de reglas, y su historia nace cuando el usuario apruebe el cambio de requisitos que piden. Anotarlos bajo una historia que todavía no existe sería inventarles un destino.
+
+**El [87](87-la-estacion-del-commit-casi-nunca-se-marca.md) tampoco, y por otra razón:** es del estándar, y su historia depende de cuál de las tres salidas se elija. Escribirla antes de esa decisión sería fijar el cómo antes del qué.
 
 **Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 

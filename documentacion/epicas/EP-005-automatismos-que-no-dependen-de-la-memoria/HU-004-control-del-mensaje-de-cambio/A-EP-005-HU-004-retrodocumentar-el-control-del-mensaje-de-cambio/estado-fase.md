@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `c6a775f`.
+
+> **La estación se corrigió el 2026-08-25**, leyendo el historial: el trabajo de esta fase estaba guardado desde hacía tiempo, y lo que faltaba era la marca. El hash sale de `git log` sobre su documento de cierre, no de una suposición.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -29,7 +31,7 @@
 | 6 | Ejecución continua | ya estaba construido: se comprobó | ☑ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
-| 9 | Commit único | 👤 pendiente de autorización | ☐ |
+| 9 | Commit único | 👤 Commit `c6a775f`, verificado en el historial | ☑ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 

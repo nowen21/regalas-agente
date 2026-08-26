@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 8 — cierre documental. **Última puerta pasada:** 7, veredicto **Cumple**.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `cf21890`.
+
+> **La estación se corrigió el 2026-08-25**, leyendo el historial: el trabajo de esta fase estaba guardado desde hacía tiempo, y lo que faltaba era la marca. El hash sale de `git log` sobre su documento de cierre, no de una suposición.
 
 **La duda que la detenía ya estaba contestada en el pendiente 11**, desde el 2026-08-10 — ver §4 del [resultado_pruebas.md](resultado_pruebas.md).
 
@@ -31,7 +33,7 @@
 | 6 | Ejecución continua | 7 tareas | ☑ |
 | 7 | Pruebas | `resultado_pruebas` con veredicto | ☑ Cumple, ciclo 1 |
 | 8 | Cierre documental | trazabilidad sin faltantes | ☑ |
-| 9 | Commit único | 👤 pendiente de autorización | ☐ |
+| 9 | Commit único | 👤 Commit `cf21890`, verificado en el historial | ☑ |
 | 10 | Reporte al usuario | — | ☐ |
 | 11 | Publicación / despliegue | 👤 pendiente | ☐ |
 
