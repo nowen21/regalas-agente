@@ -42,8 +42,8 @@ from urllib.parse import unquote
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from enlaces import reparar_texto
-from comun import (EXCLUIDAS, RAIZ, enlaces, leer, preparar_salida,  # noqa: E402
-                   relativo)
+from comun import (EXCLUIDAS, RAIZ, enlaces, es_dato_de_la_plataforma,  # noqa: E402
+                   leer, preparar_salida, relativo)
 
 PENDIENTES = "pendientes"
 HECHO = "hecho"
@@ -81,6 +81,9 @@ def _resuelve_a(archivo, destino):
 def _md_del_repositorio(raiz):
     for carpeta, subcarpetas, archivos in os.walk(raiz):
         subcarpetas[:] = [s for s in subcarpetas if s not in EXCLUIDAS]
+        if es_dato_de_la_plataforma(carpeta, raiz):
+            subcarpetas[:] = []
+            continue
         for nombre in sorted(archivos):
             if nombre.lower().endswith(".md"):
                 yield os.path.join(carpeta, nombre)

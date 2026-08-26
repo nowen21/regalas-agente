@@ -25,7 +25,7 @@ import os
 import re
 
 import comun
-from comun import AVISO, Hallazgo
+from comun import AVISO, Hallazgo, es_dato_de_la_plataforma
 
 MARCA = "«…»"          # «…» — el espacio por llenar (13·DOC19)
 NO_APLICA = re.compile(r"no aplica", re.IGNORECASE)
@@ -70,6 +70,9 @@ def _archivos_md(raiz):
     salida = []
     for carpeta, subcarpetas, archivos in os.walk(raiz):
         subcarpetas[:] = [s for s in subcarpetas if s not in EXCLUIDAS]
+        if es_dato_de_la_plataforma(carpeta, raiz):
+            subcarpetas[:] = []
+            continue
         for nombre in archivos:
             if nombre.lower().endswith(".md"):
                 salida.append(os.path.join(carpeta, nombre))

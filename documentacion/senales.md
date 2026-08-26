@@ -389,3 +389,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente y usuario, en la fase F.
 - **Scope:** estándar; aplica a cualquier proyecto con registro de auditoría.
 - **Rel:** S-024 (guardar la acción y guardar el contenido son cosas distintas).
+
+## S-041 · Un validador que lo recorre todo termina juzgando lo que no es suyo  ·  decisión · activa
+- **What:** la plataforma trajo 1005 documentos de un proyecto y los dejó dentro del repositorio. Los validadores del estándar los revisaron como si fueran documentación propia y reportaron **3840 enlaces rotos**. Ninguno lo estaba: son enlaces relativos que resuelven en el proyecto de origen y no en la copia. El validador no encontró un defecto, encontró que estaba mirando el árbol equivocado.
+- **Why:** la pregunta que abrió esto era otra —«¿lo traído se versiona?»— y parecía de arquitectura. No lo era: [`DA-02`](../cvds/diseno/decisiones-de-arquitectura.md) ya dice que **se clona la plataforma y está todo**, y [`DA-10`](../cvds/diseno/decisiones-de-arquitectura.md) ya aceptó la duplicación como costo declarado. Lo traído se versiona porque está decidido desde antes. Lo que faltaba decidir era **hasta dónde llega un validador**.
+- **Also:** el arreglo fácil era sacar lo traído del control de versiones, y contradice las dos decisiones aprobadas. El segundo arreglo fácil era saltar toda carpeta llamada `datos`, y **esconde documentación de verdad**: cualquier proyecto puede darle ese nombre a una carpeta suya. Se salta por **ruta**, no por nombre.
+- **Where:** `EXCLUIDAS_POR_RUTA` y `es_dato_de_la_plataforma` en [validadores/comun.py](../validadores/comun.py), usados por los tres recorridos que llegaban hasta ahí: `recorrer_md`, [cerrar.py](../validadores/cerrar.py) y [expediente.py](../validadores/expediente.py).
+- **Learned:** un validador tiene un **dominio**, y conviene escribirlo antes de que un directorio nuevo se lo amplíe solo. Lo que otro proyecto escribió no se juzga con las reglas de este: ni sus enlaces, porque resuelven en otra parte, ni sus marcas, porque `00·ID8` habla de lo que **el agente entrega**. Y una falla de 3840 no es 3840 problemas: casi siempre es uno.
+- **When/Who:** 2026-08-25 · agente y usuario, al decidir si lo traído se versiona.
+- **Scope:** estándar; aplica a cualquier proyecto cuyos validadores recorran el repositorio entero.
+- **Rel:** S-037 (una fase puede probar todo lo que promete y aun así no cumplir lo que declaró).

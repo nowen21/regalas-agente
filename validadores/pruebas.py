@@ -3542,6 +3542,12 @@ class ClasificacionDeCadaRegla(unittest.TestCase):
         self.addCleanup(tmp.cleanup)
         base = os.path.join(tmp.name, "base")
         os.makedirs(os.path.join(base, "20-meta-reglas"))
+        # `base/` y `VERSION` son lo que `es_el_estandar` mira para no juzgar
+        # con meta-reglas una carpeta que no es el estándar (pendiente 81). El
+        # árbol de mentira tiene que parecerse en eso, o el validador se niega
+        # a mirarlo y la prueba comprueba el rechazo en vez de la regla.
+        with open(os.path.join(tmp.name, "VERSION"), "w", encoding="utf-8") as f:
+            f.write("0.0.0" + chr(10))
         with open(os.path.join(base, "99-inventado.md"), "w", encoding="utf-8") as f:
             f.write("# Capítulo inventado\n\n## ZZ1 · Una regla que nadie clasificó\n\n"
                     "Texto de la regla.\n\n```\nINCORRECTO: a\nCORRECTO: b\n```\n")

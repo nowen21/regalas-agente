@@ -21,6 +21,30 @@ AVISO = "AVISO"
 # Carpetas que nunca se recorren.
 EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor"}
 
+# Y lo que se salta por su **ruta**, no por su nombre.
+#
+# `plataforma/datos/` guarda lo que la plataforma trajo de otros proyectos:
+# copias, no documentacion de este repositorio. Dos cosas se rompen si se
+# valida:
+#
+# - **Los enlaces.** Son relativos y resuelven en el proyecto de origen, asi
+#   que comprobarlos aca es comprobar contra el arbol equivocado. La primera
+#   traida dejo 3840 "enlaces rotos" que no lo estaban.
+# - **Las marcas.** `00-ID8` habla de lo que **el agente entrega**, y estos
+#   documentos los escribio otro proyecto.
+#
+# Va por ruta y no por nombre porque `datos` es una palabra que cualquier
+# proyecto puede darle a una carpeta suya, y saltarla en todas partes
+# escondería documentacion de verdad.
+EXCLUIDAS_POR_RUTA = ("plataforma/datos",)
+
+
+def es_dato_de_la_plataforma(carpeta, raiz):
+    """Esta carpeta guarda dato traido, en vez de documentacion?"""
+    relativa = os.path.relpath(carpeta, raiz).replace(os.sep, "/")
+    return any(relativa == fuera or relativa.startswith(fuera + "/")
+               for fuera in EXCLUIDAS_POR_RUTA)
+
 # Un marcador de plantilla: [texto] que NO es un enlace markdown ](...)
 # ni una casilla de verificación - [ ] / - [x].
 _MARCADOR = re.compile(r"\[([^\[\]\n]+)\](?!\()")
@@ -313,6 +337,9 @@ def recorrer_md(raiz):
     """Todos los .md bajo `raiz`, saltando las carpetas excluidas."""
     for carpeta, subcarpetas, archivos in os.walk(raiz):
         subcarpetas[:] = [s for s in subcarpetas if s not in EXCLUIDAS]
+        if es_dato_de_la_plataforma(carpeta, raiz):
+            subcarpetas[:] = []
+            continue
         for nombre in sorted(archivos):
             if nombre.lower().endswith(".md"):
                 yield os.path.join(carpeta, nombre)

@@ -360,6 +360,74 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-24 · La estación del commit casi nunca se marca, y el estado del proyecto sale falso
+
+- **Qué pasó:** la plataforma calculó el estado de este repositorio y dijo **41 fases abiertas**. Al mirarlas una por una, **23 estaban cerradas de hecho**: su documento de cierre lleva tiempo guardado en git. Lo abierto de verdad son **17**.
+- **Por qué importa:** un 58% de error en el único número que dice cuánto trabajo hay colgando. Y crece: la estación 9 es el commit, que ocurre **después** de que el agente termina de escribir, así que nadie vuelve al `estado-fase.md` a marcarla.
+- **Qué lo soluciona:** se corrigieron las 23, con el hash sacado de `git log` sobre su propio documento de cierre — no de una suposición. Que no vuelva a pasar quedó anotado.
+- **Qué se decidió:** se tocó **solo** `estado-fase.md`. Los documentos de cierre son de un molde anterior sin fila de commit: no mienten, simplemente no registran ese dato, y agregarles una fila sería reescribir un documento cerrado para meterle algo que su molde no pedía.
+- **Estado:** resuelto acá lo de las 23; anotado lo de que se repita.
+- **Responde a:** —
+- **Dispara:** [pendiente 87](../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md), con las tres salidas posibles sin elegir por el usuario.
+- **Orden de resolución:** —
+- **Dónde queda:** los 23 `estado-fase.md`, cada uno diciendo de dónde salió su hash.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-25 · Un validador que lo recorre todo termina juzgando lo que no es suyo
+
+- **Qué pasó:** la plataforma trajo 1005 documentos de un proyecto al repositorio, y los validadores del estándar los revisaron como documentación propia: **3840 enlaces rotos**. Ninguno lo estaba — son enlaces relativos que resuelven en el proyecto de origen.
+- **Por qué importa:** la pregunta que abrió esto parecía de arquitectura — «¿lo traído se versiona?» — y no lo era. Ya estaba decidido: `DA-02` dice que **se clona la plataforma y está todo**, y `DA-10` aceptó la duplicación como costo declarado. Lo que faltaba decidir era **hasta dónde llega un validador**.
+- **Qué lo soluciona:** se resolvió acá. Los tres recorridos que llegaban hasta ahí saltan `plataforma/datos/`.
+- **Qué se decidió:** se salta por **ruta**, no por nombre. Saltar toda carpeta llamada `datos` escondería documentación de verdad: cualquier proyecto puede darle ese nombre a una carpeta suya. Se comprobó apagando el filtro: 3840 con él apagado, 0 con él puesto.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `EXCLUIDAS_POR_RUTA` y `es_dato_de_la_plataforma` en [validadores/comun.py](../../../validadores/comun.py), y la señal `S-041`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-26 · Arreglar un validador dejó una prueba comprobando el rechazo en vez de la regla
+
+- **Qué pasó:** la prueba de que «una regla nueva sin clasificar se avisa» fallaba. No por la regla: al cerrarse el pendiente 81, `metareglas` dejó de juzgar carpetas que no son el estándar, y el árbol de mentira de la prueba **no lo parecía**. El validador respondía «esta carpeta no es el estándar» y la prueba comprobaba esa negativa.
+- **Por qué importa:** la prueba seguía existiendo con su nombre intacto, así que leía como cobertura de algo que había dejado de comprobarse.
+- **Qué lo soluciona:** se resolvió acá: el árbol de la prueba ahora trae `VERSION`, que es lo que `es_el_estandar` mira junto con `base/`.
+- **Qué se decidió:** se corrigió **la prueba**, no el guárdian. El rechazo es correcto y es justo lo que pedía el pendiente 81.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el comentario junto al árbol de mentira, en [validadores/pruebas.py](../../../validadores/pruebas.py).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-27 · El inventario de historias contado a mano lleva 34 de retraso
+
+- **Qué pasó:** el [pendiente 48](../../../pendientes/48-inventario-hu.md) dice **78 historias, 47 completas, 31 incompletas**. El programa cuenta **112, 69 y 43** sobre el árbol real. La prueba que compara los dos números es la que lo dijo.
+- **Por qué importa:** el propio pendiente existe porque una cuenta a mano se desactualiza el día que alguien cierra algo y no vuelve ahí. Volvió a pasar, y esta vez con las cuatro épicas de la plataforma enteras por fuera.
+- **Qué lo soluciona:** nada todavía. Corregir solo el encabezado lo haría pasar la prueba **mintiendo**: la tabla seguiría sin sus 34 filas.
+- **Qué se decidió:** no tocarlo de paso. Rehacer la tabla es trabajo aparte y se decide aparte.
+- **Estado:** abierto.
+- **Responde a:** —
+- **Dispara:** por decidir con el usuario.
+- **Orden de resolución:** después del pendiente 87, que cambia cómo se marca lo cerrado y por lo tanto qué cuenta como completa.
+- **Dónde queda:** sin resolver. La prueba lo sigue diciendo en cada corrida.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** —
+- **Con qué se retoma:** decidir si la tabla del pendiente 48 se rehace desde el árbol o deja de mantenerse a mano.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -370,11 +438,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ |
+| Todo hallazgo abierto tiene su pendiente creado | ☐ · falta el de `H-27` |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+**Tres marcadas, una no.** `H-27` —el inventario a mano con 34 historias de retraso— está abierto y **todavía no tiene pendiente creado**: falta decidir con el usuario si la tabla se rehace desde el árbol o deja de mantenerse a mano, y esa decisión es la que dice qué pendiente escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
