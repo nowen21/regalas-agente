@@ -114,6 +114,18 @@ En la pantalla de un proyecto hay un enlace **Traer lo que ya tiene escrito**. L
 
 ---
 
+## 5.1 Un defecto encontrado después de cerrar
+
+| Fecha | Qué era | Cómo se encontró | Dónde se corrigió |
+|---|---|---|---|
+| 2026-08-25 | **Esta fase declaraba recorrer «la documentación del ciclo de vida» y no recorría las etapas del ciclo**, que en este proyecto viven en `cvds/`. Peor: esa carpeta tampoco estaba en la lista de las que se declaran como no miradas, así que **se saltaba en silencio**, contra `RN-4` | Al planear la fase G, que fue la primera que necesitó leer esas etapas para calcular el estado de un proyecto | Tarea 1 de la [fase G](../../../EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/README.md), con su caso de prueba `CP-001` |
+
+**Por qué los nueve casos y los ocho sabotajes de esta fase no lo cazaron.** Todos comprobaban que se trajera lo que se decía traer, y **ninguno preguntaba si lo que se decía traer era todo**. La comprobación que lo habría encontrado es la que la fase G necesitó: intentar usar lo traído para responder una pregunta concreta.
+
+**Qué no cambia con esto.** El veredicto de la fase sigue siendo Cumple: los seis criterios de la especificación quedaron probados sobre lo que la fase declaraba recorrer. Lo que faltaba era el alcance, no el comportamiento.
+
+---
+
 ## 6. Deuda técnica y pendientes generados
 
 | Descripción | Origen | Destino |

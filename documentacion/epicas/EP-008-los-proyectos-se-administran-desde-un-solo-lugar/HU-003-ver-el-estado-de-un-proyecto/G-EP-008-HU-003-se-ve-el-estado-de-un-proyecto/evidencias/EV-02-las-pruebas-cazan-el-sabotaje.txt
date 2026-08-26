@@ -1,0 +1,55 @@
+== siete sabotajes, uno por cada cosa que la fase promete ==
+== se restauran con copia, nunca con el control de versiones ==
+
+--- 1: cvds/ vuelve a quedarse fuera de lo que se trae ---
+FAIL: test_dice_cuales_tienen_y_cuales_no (nucleo.proyectos.tests.EtapasEnElEstadoTests.test_dice_cuales_tienen_y_cuales_no)
+FAIL: test_lo_que_falta_tambien_se_ve_en_la_pantalla (nucleo.proyectos.tests.EtapasEnElEstadoTests.test_lo_que_falta_tambien_se_ve_en_la_pantalla)
+FAIL: test_las_siete_etapas_entran_reconocidas (nucleo.proyectos.tests.EtapasQueEntranTests.test_las_siete_etapas_entran_reconocidas)
+FAIL: test_los_documentos_de_las_etapas_tambien_entran (nucleo.proyectos.tests.EtapasQueEntranTests.test_los_documentos_de_las_etapas_tambien_entran)
+FAIL: test_con_la_ruta_perdida_el_estado_se_ve_igual_en_la_pantalla (nucleo.proyectos.tests.SinLeerLaCarpetaTests.test_con_la_ruta_perdida_el_estado_se_ve_igual_en_la_pantalla)
+Ran 145 tests in 27.561s
+FAILED (failures=5)
+
+--- 2: el README de una etapa se trata como un indice cualquiera ---
+FAIL: test_dice_cuales_tienen_y_cuales_no (nucleo.proyectos.tests.EtapasEnElEstadoTests.test_dice_cuales_tienen_y_cuales_no)
+FAIL: test_el_readme_de_una_etapa_no_es_un_indice_cualquiera (nucleo.proyectos.tests.EtapasQueEntranTests.test_el_readme_de_una_etapa_no_es_un_indice_cualquiera)
+FAIL: test_las_siete_etapas_entran_reconocidas (nucleo.proyectos.tests.EtapasQueEntranTests.test_las_siete_etapas_entran_reconocidas)
+Ran 145 tests in 23.104s
+FAILED (failures=3)
+
+--- 3: una estacion ilegible se cuenta como cerrada ---
+FAIL: test_la_ilegible_no_se_cuenta_ni_como_abierta_ni_como_cerrada (nucleo.proyectos.tests.FasesEnElEstadoTests.test_la_ilegible_no_se_cuenta_ni_como_abierta_ni_como_cerrada)
+FAIL: test_la_pantalla_dice_cuales_no_se_pudieron_leer (nucleo.proyectos.tests.FasesEnElEstadoTests.test_la_pantalla_dice_cuales_no_se_pudieron_leer)
+FAIL: test_una_estacion_que_no_se_deja_leer_se_dice (nucleo.proyectos.tests.FasesEnElEstadoTests.test_una_estacion_que_no_se_deja_leer_se_dice)
+Ran 145 tests in 19.911s
+FAILED (failures=3)
+
+--- 4: el estado se calcula leyendo la carpeta del proyecto ---
+FAIL: test_el_estado_sale_identico_con_la_carpeta_borrada (nucleo.proyectos.tests.SinLeerLaCarpetaTests.test_el_estado_sale_identico_con_la_carpeta_borrada)
+Ran 145 tests in 23.961s
+FAILED (failures=1)
+
+--- 5: las etapas que faltan no se dicen ---
+FAIL: test_dice_cuales_tienen_y_cuales_no (nucleo.proyectos.tests.EtapasEnElEstadoTests.test_dice_cuales_tienen_y_cuales_no)
+FAIL: test_lo_que_falta_tambien_se_ve_en_la_pantalla (nucleo.proyectos.tests.EtapasEnElEstadoTests.test_lo_que_falta_tambien_se_ve_en_la_pantalla)
+Ran 145 tests in 20.247s
+FAILED (failures=2)
+
+--- 6: un proyecto sin nada no dice que haria falta ---
+FAIL: test_dice_que_haria_falta_para_arrancar (nucleo.proyectos.tests.SinEmpezarTests.test_dice_que_haria_falta_para_arrancar)
+FAIL: test_la_pantalla_no_queda_vacia (nucleo.proyectos.tests.SinEmpezarTests.test_la_pantalla_no_queda_vacia)
+Ran 145 tests in 19.432s
+FAILED (failures=2)
+
+--- 7: las aprobaciones no se cuentan ---
+FAIL: test_cuenta_los_aprobados_y_los_que_no (nucleo.proyectos.tests.AprobadoTests.test_cuenta_los_aprobados_y_los_que_no)
+FAIL: test_dice_desde_cuando (nucleo.proyectos.tests.AprobadoTests.test_dice_desde_cuando)
+Ran 145 tests in 18.391s
+FAILED (failures=2)
+
+--- se limpian los rastros que los sabotajes pudieron dejar ---
+    no quedo: C:\Ing. Jose\ia\agente\traido-por-la-plataforma.txt
+
+--- con el codigo restaurado ---
+Ran 145 tests in 18.576s
+OK

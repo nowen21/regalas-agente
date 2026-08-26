@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-25 por Ing. José Dúmar Jiménez Ruíz |
+| **Estado** | Cerrada el 2026-08-25, con sus tres criterios probados |
 
 ---
 
@@ -111,7 +111,7 @@ Y lo dice con palabras, no solo con color
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| G · Se ve el estado de un proyecto | Esta historia | Sin abrir |
+| [G · Se ve el estado de un proyecto](G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los tres criterios con veredicto |
 
 ---
 

@@ -298,6 +298,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-20 · Una fase puede probar todo lo que promete y no cumplir lo que declaró
+
+- **Qué pasó:** la fase E declaraba que recorría «la documentación del ciclo de vida». Pasó nueve casos y ocho sabotajes, y cerró. Al planear la fase G apareció que no recorría las etapas del ciclo, que viven en otra carpeta, y que esa carpeta tampoco se declaraba como no mirada: se saltaba en silencio.
+- **Por qué importa:** los nueve casos comprobaban que se trajera lo que se decía traer. Ninguno preguntaba **si lo que se decía traer era todo**. El sabotaje tampoco lo cubre, porque rompe el comportamiento y acá el comportamiento estaba bien: faltaba el alcance.
+- **Qué lo soluciona:** se corrigió en la tarea 1 de la fase G, con su caso de prueba.
+- **Qué se decidió:** cuando una fase declara que recorre o cubre algo, hace falta un caso que compruebe **el alcance**, no solo el comportamiento. Y la prueba más dura de una fase que produce datos es la siguiente que los consume.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la §5.1 del cierre de la fase E, que lo anota sin reabrirla, y la señal `S-037`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-21 · Lo que no se puede leer se cuenta aparte, no se reparte
+
+- **Qué pasó:** para decir cuántas fases de un proyecto siguen abiertas hay que leer su estación. En este repositorio esa línea se escribe de **doce formas distintas**, y cinco no se dejan leer.
+- **Por qué importa:** las dos salidas fáciles mienten. Contarlas como cerradas da 41 abiertas; como abiertas, 46. Ninguna es verdad, y las dos se ven igual de creíbles.
+- **Qué lo soluciona:** se resolvió acá, con una tercera cuenta.
+- **Qué se decidió:** la función devuelve **dos** valores —si está abierta, y si se pudo saber—, porque uno solo obliga a inventar una respuesta. Y las ilegibles se nombran con su ruta: un número sin decir cuáles no se puede corregir.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-008](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md) · [HU-003](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/HU-003-ver-el-estado-de-un-proyecto.md).
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `_esta_abierta` en el cálculo del estado, y la señal `S-038`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -312,9 +342,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en once commits, y el último es la fase E en `c998695`. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Falta guardar la fase G. Lo anterior quedó en once commits, el último la fase E en `c998695`: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

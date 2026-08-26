@@ -349,3 +349,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente, en la fase E.
 - **Scope:** estándar; aplica a cualquier proyecto que copie o importe archivos.
 - **Rel:** S-033 (mirar el estado final, no lo que devuelve la función).
+
+## S-037 · Una fase puede probar todo lo que promete y aun así no cumplir lo que declaró  ·  error-resuelto · activa
+- **What:** la fase E declaraba en su plan que recorría «la documentación del ciclo de vida». Pasó sus nueve casos y sus ocho sabotajes, y cerró. Al planear la fase G se descubrió que **no recorría las etapas del ciclo**, que en este proyecto viven en `cvds/`. Peor: esa carpeta tampoco estaba en la lista de las que la fase declara como no miradas, así que **se saltaba en silencio**, contra la regla del propio módulo que dice que nada se pierde sin decirlo.
+- **Why:** los nueve casos comprobaban que se trajera lo que se decía traer. **Ninguno preguntaba si lo que se decía traer era todo.** Es un punto ciego que ninguna cantidad de sabotajes cubre, porque el sabotaje rompe el comportamiento y acá el comportamiento estaba bien: lo que faltaba era el alcance.
+- **Also:** lo encontró la primera fase que necesitó **usar** lo traído para responder una pregunta concreta. Mientras nadie lo usara, el hueco no se veía.
+- **Where:** la sección 5.1 del [cierre de la fase E](epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-001-traer-un-proyecto/E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/funcionalidad_implementada.md), que lo anota sin reabrir la fase · corregido en la tarea 1 de la [fase G](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/README.md), con su caso `CP-001`.
+- **Learned:** cuando una fase declara que recorre, cubre o abarca algo, hace falta **un caso que compruebe el alcance y no solo el comportamiento**: contar lo que se encontró contra lo que debía encontrarse. Y la prueba más dura de una fase que produce datos es la fase siguiente que los consume: hasta que alguien los use, el hueco no aparece.
+- **When/Who:** 2026-08-25 · agente, al planear la fase G.
+- **Scope:** estándar; aplica a cualquier fase que declare un alcance de recorrido o cobertura.
+- **Rel:** S-034 (construido no es probado), S-027.
+
+## S-038 · Lo que no se puede leer se cuenta aparte, nunca se reparte entre las otras dos cuentas  ·  decisión · activa
+- **What:** al calcular en qué va un proyecto, la plataforma tiene que decir cuántas fases siguen abiertas. Contando los 125 estados de fase de este repositorio aparecieron **doce formas distintas** de escribir la línea que dice en qué estación va una fase, y **cinco que no se dejan leer**.
+- **Why:** las dos salidas fáciles mienten. Contar las ilegibles como cerradas da 41 abiertas; contarlas como abiertas da 46. Ninguna de las dos cifras es verdad, y las dos se ven igual de creíbles en la pantalla.
+- **Also:** la forma de resolverlo fue que la función devuelva **dos** valores: si la fase está abierta, y **si se pudo saber**. Un solo valor obliga a inventar una respuesta para el caso que no se pudo leer.
+- **Where:** `_esta_abierta` en [nucleo/proyectos/estado.py](../plataforma/nucleo/proyectos/estado.py) · `CP-004` de la fase G, que prueba el caso de una fase ilegible sola: ni abierta ni cerrada.
+- **Learned:** cuando algo se cuenta en dos categorías y hay casos que no se pueden clasificar, **la tercera cuenta no es opcional**: es la que hace verdaderas a las otras dos. Y se nombra con su ruta, porque un número de ilegibles sin decir cuáles no se puede corregir.
+- **When/Who:** 2026-08-25 · agente, en la fase G.
+- **Scope:** estándar; aplica a cualquier proyecto que calcule métricas leyendo texto escrito por personas.
+- **Rel:** S-036, S-033.

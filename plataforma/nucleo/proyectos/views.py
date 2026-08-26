@@ -125,6 +125,7 @@ def uno(request, identificador):
     return render(request, "proyectos/uno.html", {
         "proyecto": proyecto,
         "avisos": _avisos_de(proyecto),
+        "estado": proyecto.detalle_del_estado,
     })
 
 

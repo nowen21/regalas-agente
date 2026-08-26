@@ -42,13 +42,20 @@ class Proyecto(models.Model):
 
     @property
     def estado(self):
-        """En qué va, según lo que la plataforma tenga escrito de él.
+        """En qué va, según lo que la plataforma tenga **traído** de él.
 
-        En esta fase siempre responde `sin empezar`, y eso es un dato y no una
-        pantalla vacía: todavía no hay documentos que mirar. Calcularlo de
-        verdad es la fase G.
+        Se calcula al pedirlo y no se guarda: un estado guardado a mano
+        envejece y miente. Y se calcula sin abrir la carpeta del proyecto, que
+        es lo que `CA-01` de `HU-003` exige.
         """
-        return self.SIN_EMPEZAR
+        from . import estado as calculo
+        return calculo.de(self).resumen
+
+    @property
+    def detalle_del_estado(self):
+        """El estado completo: etapas, fases, aprobaciones y lo ilegible."""
+        from . import estado as calculo
+        return calculo.de(self)
 
     @property
     def adopto_el_estandar(self):

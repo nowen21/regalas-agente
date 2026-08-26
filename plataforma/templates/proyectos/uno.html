@@ -37,6 +37,31 @@
 </form>
 {% endif %}
 
+<h2>En qué va</h2>
+{% if estado.esta_sin_empezar %}
+<p class="vacio"><strong>Sin empezar.</strong> {{ estado.que_haria_falta }}</p>
+{% else %}
+<table>
+  <tr><th>Documentos traídos</th><td>{{ estado.documentos }}</td></tr>
+  <tr><th>Etapas del ciclo con documento</th>
+      <td>{{ estado.etapas_con_documento|length }} de 7:
+        {% for etapa in estado.etapas_con_documento %}{{ etapa }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+  <tr><th>Etapas todavía sin documento</th>
+      <td>{% if estado.etapas_sin_documento %}{% for etapa in estado.etapas_sin_documento %}{{ etapa }}{% if not forloop.last %}, {% endif %}{% endfor %}{% else %}ninguna: las siete tienen{% endif %}</td></tr>
+  <tr><th>Fases</th>
+      <td>{{ estado.fases }} en total, <strong>{{ estado.fases_abiertas }} todavía abierta{{ estado.fases_abiertas|pluralize:"s" }}</strong></td></tr>
+  <tr><th>Documentos aprobados</th>
+      <td>{{ estado.aprobados }} de {{ estado.documentos }} <strong>están aprobados</strong>{% if estado.ultima_aprobacion %}; la última aprobación es del {{ estado.ultima_aprobacion }}{% endif %}</td></tr>
+</table>
+
+{% if estado.fases_ilegibles %}
+<p class="aviso"><strong>{{ estado.fases_ilegibles|length }} fase{{ estado.fases_ilegibles|length|pluralize:"s" }} no dice{{ estado.fases_ilegibles|length|pluralize:"n" }} en qué estación va{{ estado.fases_ilegibles|length|pluralize:"n" }} de una forma que se pueda leer</strong>, así que no se cuentan como abiertas ni como cerradas. Son estas:</p>
+<ul>
+  {% for ruta in estado.fases_ilegibles %}<li>{{ ruta }}</li>{% endfor %}
+</ul>
+{% endif %}
+{% endif %}
+
 <h2>Su documentación</h2>
 <p><a href="{% url 'importacion-traer' proyecto.identificador %}">Traer lo que ya tiene escrito</a></p>
 

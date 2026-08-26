@@ -1,0 +1,44 @@
+== corrida real: el estado de este mismo repositorio ==
+-- se trae, ahora con las etapas del ciclo --
+   entraron: 994 | sin reconocer: 1
+     sin molde: cvds/cumplimiento.md
+
+-- el estado, calculado --
+   se calculo en 14.35 s
+
+   documentos traidos       : 994
+   resumen                  : en curso
+
+   etapas CON documento (7 de 7):
+     - planificacion
+     - analisis-requisitos
+     - diseno
+     - implementacion
+     - pruebas
+     - despliegue
+     - mantenimiento
+   etapas SIN documento (0):
+
+   fases en total           : 127
+   fases todavia abiertas   : 41
+   fases que no se dejan leer: 5
+     - documentacion/epicas/EP-002-versionado-y-adopcion/HU-002-registro-de-cambios/B-EP-002-HU-002-la-entrada-se-entiende-sin-conocer-el-proyecto/estado-fase.md
+     - documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-004-modelo-de-la-especificacion/B-EP-003-HU-004-el-origen-de-las-57-reglas/estado-fase.md
+     - documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/HU-010-glosario-de-la-terminologia/B-EP-003-HU-010-los-nombres-de-rol-en-espanol/estado-fase.md
+     - documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-001-transcripcion-de-la-sesion/B-EP-005-HU-001-la-transcripcion-duplicada-del-15/estado-fase.md
+     - documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/A-EP-005-HU-011-donde-termina-el-estandar/estado-fase.md
+
+   documentos aprobados     : 228 de 994
+   ultima aprobacion        : 2026-08-25
+
+== CP-009: se borra la carpeta y el estado tiene que salir igual ==
+estado con la carpeta presente: (994, 127, 41, 228, ('planificacion', 'analisis-requisitos', 'diseno', 'implementacion', 'pruebas', 'despliegue', 'mantenimiento'), 5)
+ruta viva ahora: False
+estado con la carpeta ausente: (994, 127, 41, 228, ('planificacion', 'analisis-requisitos', 'diseno', 'implementacion', 'pruebas', 'despliegue', 'mantenimiento'), 5)
+
+IDENTICO: True
+
+== se limpia ==
+Índice de proyectos rehecho: 0 proyecto(s).
+Índice de auditoría rehecho: 0 acción(es).
+Índice de lo traído rehecho: 0 documento(s).

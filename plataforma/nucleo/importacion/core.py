@@ -36,7 +36,7 @@ class Hallazgo(object):
         self.proyecto = proyecto
         self.reconocidos = []      # (ruta relativa, tipo)
         self.sin_reconocer = []    # rutas relativas
-        self.carpeta_del_ciclo = ""
+        self.carpetas_del_ciclo = []
 
     @property
     def por_tipo(self):
@@ -61,7 +61,7 @@ class Hallazgo(object):
 
     @property
     def hay_documentacion(self):
-        return bool(self.carpeta_del_ciclo)
+        return bool(self.carpetas_del_ciclo)
 
     @property
     def carpetas_que_no_se_miraron(self):
@@ -79,22 +79,27 @@ def mirar(proyecto):
     if not proyecto.ruta_viva:
         return hallazgo
 
-    ciclo = os.path.join(proyecto.ruta_codigo, moldes.CARPETA_DEL_CICLO)
-    if not os.path.isdir(ciclo):
-        return hallazgo
-    hallazgo.carpeta_del_ciclo = ciclo
+    # Se recorren **las dos** carpetas del ciclo: la de épicas, historias y
+    # fases, y la de las siete etapas. Que la segunda faltara era el hueco de
+    # la fase E, y se saltaba en silencio.
+    for carpeta in moldes.CARPETAS_DEL_CICLO:
+        ciclo = os.path.join(proyecto.ruta_codigo, carpeta)
+        if not os.path.isdir(ciclo):
+            continue
+        hallazgo.carpetas_del_ciclo.append(ciclo)
 
-    for raiz, _, archivos in os.walk(ciclo):
-        for nombre in sorted(archivos):
-            if not nombre.endswith(".md"):
-                continue
-            relativa = os.path.relpath(os.path.join(raiz, nombre),
-                                       proyecto.ruta_codigo).replace(os.sep, "/")
-            tipo = moldes.tipo_de(nombre)
-            if tipo:
-                hallazgo.reconocidos.append((relativa, tipo))
-            else:
-                hallazgo.sin_reconocer.append(relativa)
+        for raiz, _, archivos in os.walk(ciclo):
+            for nombre in sorted(archivos):
+                if not nombre.endswith(".md"):
+                    continue
+                relativa = os.path.relpath(
+                    os.path.join(raiz, nombre),
+                    proyecto.ruta_codigo).replace(os.sep, "/")
+                tipo = moldes.tipo_de(nombre, relativa)
+                if tipo:
+                    hallazgo.reconocidos.append((relativa, tipo))
+                else:
+                    hallazgo.sin_reconocer.append(relativa)
     return hallazgo
 
 
@@ -215,7 +220,7 @@ def reconstruir_indice():
                 Traido.objects.create(
                     proyecto=proyecto.identificador,
                     origen=relativa,
-                    tipo=moldes.tipo_de(nombre),
+                    tipo=moldes.tipo_de(nombre, relativa),
                     guardado_en=_donde_queda(proyecto, relativa))
                 cuantos += 1
     return cuantos
