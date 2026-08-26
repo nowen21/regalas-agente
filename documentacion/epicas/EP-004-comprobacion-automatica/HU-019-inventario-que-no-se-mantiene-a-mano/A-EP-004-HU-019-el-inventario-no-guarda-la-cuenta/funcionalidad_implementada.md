@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-019](../HU-019-inventario-que-no-se-mantiene-a-mano.md): `CA-01`, `CA-02`, `CA-03` y su transversal. Los tres |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | La que declara [VERSION](../../../../../VERSION) |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `ce2246b` |
 
 ---
 

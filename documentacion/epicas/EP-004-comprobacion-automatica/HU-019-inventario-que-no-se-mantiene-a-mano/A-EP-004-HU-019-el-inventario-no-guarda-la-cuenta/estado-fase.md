@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12, commit. **Última puerta pasada:** 11.
+**Estación actual:** cerrada. **Última puerta pasada:** 12, el commit `ce2246b`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 Commit `ce2246b` | ☑ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **La estación 5 pasó sin documento aparte, y se dice por qué.** La historia trae alcance, reglas de negocio, criterios con sus pasos y requisitos no funcionales; una especificación separada repetiría la historia. Es el caso que la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) está abierta para dejar escrito en el estándar, y **esta es la tercera fase que lo declara**. Queda anotado como evidencia de esa historia, no como excepción silenciosa.
@@ -74,7 +74,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **Esperando autorización para el commit.** Construida, probada y documentada.
+- **Nada esperando.** Construida, probada, documentada y guardada en `ce2246b`.
 - **Una decisión para el usuario, que quedó fuera del alcance a propósito:** la plantilla [`inventario-hu.md`](../../../../../plantillas/inventario-hu.md) sigue describiendo la tabla que acá se quitó, así que un proyecto que herede el estándar arma su inventario a mano con el mismo defecto. No se tocó porque el plan no la declara (`02·F8`) y cambiar `plantillas/` sube `VERSION` (`20·M10`).
 - La duda del plan §2.7 **quedó resuelta**: ninguna de las 74 filas guardaba trabajo que no estuviera en el árbol. Está en el cierre §2.3.
 
@@ -82,4 +82,4 @@
 
 ## 4. Si se bloqueó
 
-No se bloqueó en ningún momento. Está esperando autorización para el commit, que es la estación 12 haciendo lo suyo.
+No se bloqueó en ningún momento.
