@@ -111,7 +111,7 @@ Y lo dice con palabras, no solo con color
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [G · Se ve el estado de un proyecto](G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25. Los tres criterios con veredicto |
+| [G · Se ve el estado de un proyecto](G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/README.md) | Esta historia | Cerrada el 2026-08-25, commit `faed710`. Los tres criterios con veredicto |
 
 ---
 

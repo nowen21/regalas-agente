@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `faed710`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | Traer las etapas, calcular y mostrar el estado | ☑ |
 | 7 | Pruebas | Los nueve casos con veredicto: 9 de 9 aprobados | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), y el defecto anotado en el cierre de la fase E | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «si», el 2026-08-25. Commit `faed710` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las siete tareas hechas, los nueve casos en verde con su evidencia, y el cierre escrito. Con esto **la HU-003 queda cerrada**, y con ella la épica `EP-008` completa.
+**Nada: la fase cerró**, en el commit `faed710`. Las siete tareas hechas, los nueve casos en verde con su evidencia, y el cierre escrito. Con esto **la HU-003 queda cerrada**, y con ella la épica `EP-008` completa.
 
 **Lo que la fase produjo, que es lo que vino a hacer:**
 

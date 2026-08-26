@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-003](../HU-003-ver-el-estado-de-un-proyecto.md): `CA-01`, `CA-02`, `CA-03`. Los tres, y con esto la historia queda cerrada |
 | **Fecha de cierre** | 2026-08-25 |
 | **Versión del estándar al cerrar** | 34.1.0 |
-| **Commit** | Se completa al commitear |
+| **Commit** | `faed710` |
 
 ---
 

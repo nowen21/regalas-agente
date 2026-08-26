@@ -17,4 +17,4 @@
 
 **Qué quedó.** La plataforma dice en qué va cada proyecto sin abrir su carpeta. De este repositorio: **7 de 7 etapas con documento, 41 de 127 fases todavía abiertas, 228 de 994 documentos aprobados**, y cinco fases cuya estación no se deja leer, nombradas.
 
-**Estado:** estación 9. Los nueve casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `faed710`.
