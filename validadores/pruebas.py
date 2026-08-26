@@ -11,6 +11,7 @@ validador y termine ignorándolo.
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -3197,14 +3198,16 @@ class InventarioDeHU(unittest.TestCase):
         """
         raiz, ruta = self._pendiente_de_mentira(
             "# Inventario\n\n| **Total de HU** | 99 |\n")
-        antes = io.open(ruta, "rb").read()
+        with io.open(ruta, "rb") as f:
+            antes = f.read()
         cuantos_antes = len(os.listdir(os.path.dirname(ruta)))
 
         self.assertTrue(fases.cuenta_escrita_a_mano(raiz),
                         "no reportó nada, así que no probaría que no corrige")
 
-        self.assertEqual(io.open(ruta, "rb").read(), antes,
-                         "el programa corrigió el archivo (`EP-004 §10.2`)")
+        with io.open(ruta, "rb") as f:
+            self.assertEqual(f.read(), antes,
+                             "el programa corrigió el archivo (`EP-004 §10.2`)")
         self.assertEqual(len(os.listdir(os.path.dirname(ruta))), cuantos_antes,
                          "el programa creó un archivo")
 
@@ -3225,6 +3228,71 @@ class InventarioDeHU(unittest.TestCase):
                         "el aviso no sale por `validar`, que es lo que corre "
                         "`validar.py fases`")
 
+    # -- `EP-004·HU-020` · el inventario se vigila donde el proyecto lo tenga
+    #
+    # La versión anterior miraba `pendientes/48-inventario-hu.md` escrito fijo,
+    # así que vigilaba el estándar y nada más: en un proyecto el inventario
+    # vive en `documentacion/`, y ahí no veía nada.
+
+    def _proyecto_con_inventario(self, carpeta, nombre, texto):
+        """Un proyecto con su inventario en la carpeta que se le diga."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(os.path.join(tmp.name, "documentacion", "epicas"))
+        destino = os.path.join(tmp.name, carpeta)
+        if not os.path.isdir(destino):
+            os.makedirs(destino)
+        ruta = os.path.join(destino, nombre)
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto)
+        return tmp.name, ruta
+
+    CON_CUENTA = "# Inventario\n\n| **Total de HU** | 99 |\n"
+
+    def test_el_inventario_en_documentacion_tambien_se_vigila(self):
+        raiz, _ = self._proyecto_con_inventario(
+            "documentacion", "inventario-hu.md", self.CON_CUENTA)
+        avisos = fases.cuenta_escrita_a_mano(raiz)
+        self.assertEqual(len(avisos), 1,
+                         "un proyecto que guarda su inventario en "
+                         "`documentacion/` no se estaba vigilando")
+
+    def test_el_aviso_nombra_la_ruta_real_y_no_una_fija(self):
+        raiz, _ = self._proyecto_con_inventario(
+            "documentacion", "cuanto-falta.md", self.CON_CUENTA)
+        donde = fases.cuenta_escrita_a_mano(raiz)[0].archivo
+        self.assertEqual(donde, "documentacion/cuanto-falta.md",
+                         "el aviso no nombra el archivo que encontró")
+
+    def test_el_nombre_del_archivo_no_decide_nada(self):
+        """La plantilla no fija el nombre: lo elige cada proyecto.
+
+        Lo constante es la forma del defecto, no cómo se llame el archivo.
+        """
+        raiz, _ = self._proyecto_con_inventario(
+            "pendientes", "tablero.md", self.CON_CUENTA)
+        self.assertEqual(len(fases.cuenta_escrita_a_mano(raiz)), 1)
+
+    # -- `RNF-01` · la búsqueda tiene el alcance que se declaró -----------
+    def test_fuera_de_las_carpetas_declaradas_no_se_busca(self):
+        """Corta en los dos sentidos.
+
+        Si el alcance se ampliara sin querer, esta prueba lo dice. Y si algún
+        día hay que ampliarlo a propósito, **hay que cambiar esta prueba**, que
+        es lo que obliga a decidirlo en vez de que ocurra solo.
+        """
+        raiz, _ = self._proyecto_con_inventario(
+            "notas", "inventario-hu.md", self.CON_CUENTA)
+        self.assertEqual(fases.cuenta_escrita_a_mano(raiz), [],
+                         "se buscó fuera de las carpetas declaradas")
+
+    def test_no_se_busca_dentro_de_las_subcarpetas(self):
+        raiz, _ = self._proyecto_con_inventario(
+            os.path.join("documentacion", "epicas"), "inventario-hu.md",
+            self.CON_CUENTA)
+        self.assertEqual(fases.cuenta_escrita_a_mano(raiz), [],
+                         "se recorrió el árbol en vez del primer nivel")
+
     # -- CA-01 · el pendiente real ya no guarda la cuenta -----------------
     def test_el_inventario_de_este_repositorio_no_guarda_la_cuenta(self):
         self.assertEqual(fases.cuenta_escrita_a_mano(self.RAIZ), [],
@@ -3235,6 +3303,49 @@ class InventarioDeHU(unittest.TestCase):
                                         "48-inventario-hu.md"))
         self.assertIn("validar.py fases", texto,
                       "el inventario no dice con qué comando se saca la cuenta")
+
+    # -- CA-01 · la plantilla tampoco pide mantener una cuenta ------------
+    #
+    # `cuenta_escrita_a_mano` mira `pendientes/` y `documentacion/`, y la
+    # plantilla vive en `plantillas/`: nada la vigilaba. Y es la que se copia,
+    # así que un defecto ahí se multiplica por cada proyecto que la use.
+
+    def _plantilla_del_inventario(self):
+        return comun.leer(os.path.join(self.RAIZ, "plantillas",
+                                       "inventario-hu.md"))
+
+    def test_la_plantilla_no_trae_campos_de_cuenta(self):
+        """El defecto tiene **dos formas**, y una sola expresión no caza las dos.
+
+        `fases.CUENTA_A_MANO` exige un número, porque en un inventario de
+        verdad el defecto es un número escrito. En una **plantilla** el mismo
+        defecto viene como `«N»`, el hueco por llenar — y con esa expresión
+        pasaba desapercibido. Lo destapó un sabotaje que devolvía
+        `| **Total de HU** | «N» |` a la plantilla y dejaba la suite en verde.
+
+        Acá se busca el **rótulo como campo**, valga lo que valga: pedirle a
+        alguien que llene ese hueco ya es el defecto.
+        """
+        rotulos = re.findall(
+            r"^\|\s*\*\*(Total de HU|Completas|Incompletas)\*\*\s*\|",
+            self._plantilla_del_inventario(), re.MULTILINE)
+        self.assertEqual(rotulos, [],
+                         "la plantilla volvió a pedir una cuenta a mano")
+
+    def test_la_plantilla_no_trae_la_tabla_de_una_fila_por_historia(self):
+        self.assertNotIn("| Épica | HU | Fase |",
+                         self._plantilla_del_inventario(),
+                         "la plantilla volvió a traer la tabla que se desfasa")
+
+    def test_la_plantilla_nombra_el_comando_y_lo_entrecomilla(self):
+        """Las comillas no son estilo: la ruta al estándar puede tener
+        espacios —la del propio estándar los tiene— y sin ellas la terminal
+        parte la orden por la mitad."""
+        texto = self._plantilla_del_inventario()
+        self.assertIn("validar.py", texto,
+                      "la plantilla no dice con qué comando se saca la cuenta")
+        self.assertIn('"«RUTA-ESTANDAR»/validadores/validar.py"', texto,
+                      "el comando de la plantilla no está entrecomillado")
 
 
 class ClavesYDatosSensibles(unittest.TestCase):

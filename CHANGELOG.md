@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 34.2.0 — 2026-08-26
+
+**MENOR** (el inventario deja de pedir una cuenta a mano; ningún proyecto queda obligado a nada, y lo que aparece es un aviso).
+
+**El inventario de historias dejaba de cuadrar solo, y ahora no puede.** La plantilla pedía mantener a mano tres números —total, completas, incompletas— y una tabla con una fila por historia y una casilla por documento. Eso se desfasa: en el estándar pasó tres veces, y la última decía 78 historias donde el árbol tenía 113. **Cuatro de sus filas daban por completa una historia que no lo estaba**, que es la dirección que hace daño: esconde trabajo en vez de inventarlo.
+
+**Ahora la plantilla remite al comando que lo calcula**, con su `--raiz` para correrlo desde un proyecto. No hay nada que instalar: los validadores del estándar no se copian, los enganches los llaman en su sitio.
+
+**Y el estandar avisa si la cuenta vuelve a escribirse a mano**, en el primer nivel de `pendientes/` o de `documentacion/`, que es donde el inventario vive. Avisa y no corrige, como todos los programas de comprobación.
+
+**Qué cambia para un proyecto que ya tenía el estándar.** Verá un aviso nuevo si su inventario guarda la cuenta escrita. **Su inventario no se toca ni se migra**: el aviso informa, y quitarle los números es decisión del proyecto. La plantilla nueva rige los inventarios que se armen de aquí en adelante.
+
+**Lo que la plantilla enseñaba y no sale del árbol se conserva:** en qué orden se escriben los cinco documentos de una fase, la diferencia entre construir y retrodocumentar, y por qué una fase nace con su `plan_trabajo.md` adentro. Y gana una sección para lo único que sigue escribiéndose a mano: **por qué cambió la cuenta**, que es lo que impide leer una subida como un retroceso.
+
+---
+
 ## 34.1.0 — 2026-08-24
 
 **MENOR** (los moldes aprenden de haberse usado; nadie tiene que hacer nada, y ningún proyecto deja de cumplir por esto).

@@ -10,7 +10,9 @@
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md), aprobado el 2026-08-26 |
 | **HU / CA cubiertas** | [HU-019](../HU-019-inventario-que-no-se-mantiene-a-mano.md): `CA-01`, `CA-02`, `CA-03` y su transversal. Los tres |
 | **Fecha de cierre** | 2026-08-26 |
-| **Versión del estándar al cerrar** | La que declara [VERSION](../../../../../VERSION) |
+| **Versión del estándar al cerrar** | `34.1.0` |
+
+> **Acá decía «la que declara `VERSION`», y se corrigió el 2026-08-26.** Parecía lo correcto —no duplicar un dato que vive en otro archivo— y era el error inverso al que esta misma fase vino a arreglar: **la versión al cerrar es una foto, no una cuenta**. Al subir el estándar a `34.2.0`, este documento pasó a afirmar que había cerrado bajo una versión que todavía no existía. Queda en `S-047`.
 | **Commit** | `ce2246b` |
 
 ---

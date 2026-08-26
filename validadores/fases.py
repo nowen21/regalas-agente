@@ -191,29 +191,59 @@ def validar(proyecto):
 # teniendo números dentro de su narrativa —«68 a 74 total: seis historias
 # nuevas»— y marcarlos volvería el aviso ruido, que es como se aprende a
 # ignorarlo.
-INVENTARIO = "pendientes/48-inventario-hu.md"
+# `EP-004·HU-020` · Y se busca donde el proyecto lo tenga, no en una ruta fija.
+#
+# La primera versión miraba `pendientes/48-inventario-hu.md`, escrito fijo. Eso
+# vigilaba **el estándar y nada más**: la plantilla del inventario dice que en
+# un proyecto vive en `documentacion/`, así que en un proyecto la comprobación
+# no veía nada. Lo que el estándar arregló para sí mismo no llegaba a quien lo
+# hereda.
+#
+# **Se mira el primer nivel de esas dos carpetas, no el árbol entero.** Un
+# proyecto con mil documentos pagaría el recorrido en cada corrida para vigilar
+# un archivo; y el inventario es un documento de la carpeta del backlog, no
+# algo enterrado. Si algún día hay que ampliarlo, se amplía **acá**, a
+# propósito, y hay una prueba que obliga a decidirlo en vez de que ocurra solo.
+CARPETAS_DEL_INVENTARIO = ("pendientes", "documentacion")
+
+# **El inventario se reconoce por su forma, no por su nombre.** El nombre lo
+# elige cada proyecto —la plantilla no lo fija— y lo constante es el defecto:
+# el rótulo como campo de tabla con un número al lado.
 CUENTA_A_MANO = re.compile(
     r"^\|\s*\*\*(Total de HU|Completas|Incompletas)\*\*\s*\|\s*\d+\s*\|",
     re.MULTILINE)
 
 
-def cuenta_escrita_a_mano(proyecto):
-    """El inventario volvió a guardar la cuenta que el árbol ya sabe.
+def _donde_puede_estar_el_inventario(proyecto):
+    """Los `.md` del primer nivel de las carpetas donde el inventario vive."""
+    for carpeta in CARPETAS_DEL_INVENTARIO:
+        completa = os.path.join(proyecto, carpeta)
+        if not os.path.isdir(completa):
+            continue
+        for nombre in sorted(os.listdir(completa)):
+            if not nombre.lower().endswith(".md"):
+                continue
+            ruta = os.path.join(completa, nombre)
+            if os.path.isfile(ruta):
+                yield carpeta + "/" + nombre, ruta
 
-    **Avisa, no falla** (`EP-004 §10.2`). Un pendiente con un número de más
+
+def cuenta_escrita_a_mano(proyecto):
+    """Un inventario volvió a guardar la cuenta que el árbol ya sabe.
+
+    **Avisa, no falla** (`EP-004 §10.2`). Un inventario con un número de más
     no rompe nada, y detener el commit por eso es como se terminan
     desactivando los enganches. Y **no corrige**: el programa reporta.
     """
-    ruta = os.path.join(proyecto, *INVENTARIO.split("/"))
-    if not os.path.isfile(ruta):
-        return []
-    campos = CUENTA_A_MANO.findall(_leer(ruta) or "")
-    return [Hallazgo(
-        AVISO, INVENTARIO, 0,
-        "guarda la cuenta a mano en el campo **%s**, y el árbol ya la sabe: "
-        "la da `validar.py fases`. Dos copias del mismo dato se separan "
-        "(EP-004·HU-019)" % campo)
-        for campo in campos]
+    hallazgos = []
+    for relativa, ruta in _donde_puede_estar_el_inventario(proyecto):
+        for campo in CUENTA_A_MANO.findall(_leer(ruta) or ""):
+            hallazgos.append(Hallazgo(
+                AVISO, relativa, 0,
+                "guarda la cuenta a mano en el campo **%s**, y el árbol ya la "
+                "sabe: la da `validar.py fases`. Dos copias del mismo dato se "
+                "separan (EP-004·HU-019)" % campo))
+    return hallazgos
 
 
 def inventario(proyecto):

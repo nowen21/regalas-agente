@@ -431,3 +431,33 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-26 · agente, en la fase A de la HU-019.
 - **Scope:** estándar; aplica a cualquier automatismo que lea el resultado de una suite.
 - **Rel:** S-043 (una comprobación que nadie llama), S-035 (los rastros que un sabotaje deja fuera).
+
+## S-045 · Un estándar puede arreglar algo para sí mismo y seguir repartiendo el defecto  ·  decisión · activa
+- **What:** el estándar le quitó a su inventario de historias la cuenta escrita a mano, después de que se le desfasara tres veces. **La plantilla que reparte a los proyectos seguía enseñando exactamente eso** — los tres campos por llenar, la tabla de una fila por historia, y seis pasos titulados «Cómo se llena la tabla». Y la comprobación que impedía que la copia volviera miraba `pendientes/48-inventario-hu.md`, escrito fijo: en un proyecto el inventario vive en `documentacion/`, así que no veía nada. **La guardia protegía al estándar y a nadie más.**
+- **Why:** arreglar algo puertas adentro se siente terminado, porque la molestia desaparece. Pero un estándar tiene dos superficies —lo que hace y lo que reparte— y **la segunda se multiplica**: cada proyecto que instale la plantilla hereda el defecto entero. El costo del descuido no es uno, es uno por proyecto.
+- **Also:** las dos mitades no se descubrieron igual. La de la plantilla quedó declarada en el cierre de la fase anterior, porque apareció mientras se escribía. **La de la ruta fija no la vio nadie**: salió de preguntarse, al abrir la historia siguiente, si un proyecto podía siquiera correr el comando. La pregunta era sobre otra cosa.
+- **Where:** [plantillas/inventario-hu.md](../plantillas/inventario-hu.md) reescrita, y `CARPETAS_DEL_INVENTARIO` con `_donde_puede_estar_el_inventario` en [validadores/fases.py](../validadores/fases.py) · versión 34.2.0.
+- **Learned:** al cerrar algo que el estándar arregló para sí, la pregunta que falta es **«¿y lo que reparto?»** — plantillas, moldes, instaladores. Y la que la acompaña: **«¿la comprobación que lo vigila mira una ruta fija?»** Una guardia atada a la ruta del propio estándar es una guardia que no viaja.
+- **When/Who:** 2026-08-26 · agente y usuario, en la fase A de la HU-020.
+- **Scope:** estándar; aplica a cualquier proyecto que reparta plantillas o moldes.
+- **Rel:** S-043 (una comprobación que nadie llama).
+
+## S-046 · El mismo defecto tiene dos formas, y una sola expresión no caza las dos  ·  error-resuelto · activa
+- **What:** la comprobación busca el rótulo de la cuenta **con un número al lado** — `| **Total de HU** | 113 |` — porque en un inventario de verdad el defecto es un número escrito. Un sabotaje devolvió el campo a la **plantilla** y la suite quedó en verde: en una plantilla el mismo defecto viene como `| **Total de HU** | «N» |`, con el hueco por llenar. Sin número, no había coincidencia.
+- **Why:** la plantilla es lo que se copia, así que un defecto ahí se multiplica. Y era invisible **justo en el archivo donde más caro sale**. El sabotaje sí saboteaba; la prueba era la que miraba mal.
+- **Also:** conviene no arreglarlo haciendo la expresión más laxa. Que el inventario de verdad exija un número **es correcto**: la narrativa del propio inventario tiene cifras, y marcarlas volvería el aviso ruido. Son dos comprobaciones con dos formas, no una comprobación mal escrita.
+- **Where:** `test_la_plantilla_no_trae_campos_de_cuenta` en [validadores/pruebas.py](../validadores/pruebas.py), que busca **el rótulo como campo, valga lo que valga** · el sabotaje 5 de la fase `A-EP-004-HU-020`.
+- **Learned:** un defecto que puede aparecer en un archivo lleno **y** en la plantilla de la que ese archivo sale tiene **dos formas**: el valor puesto y el hueco por llenar. Reconocer una y creer que se cubrió el caso es lo fácil. Y la plantilla es la que hay que cubrir primero, porque es la que se reparte.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-020.
+- **Scope:** estándar; aplica a cualquier comprobación que valga tanto para un documento como para su plantilla.
+- **Rel:** S-045 (lo que el estándar reparte se multiplica), S-033 (los dos diagnósticos de un sabotaje en verde).
+
+## S-047 · «No dupliques lo derivable» no aplica a un hecho histórico  ·  error-resuelto · activa
+- **What:** al cerrar una fase se escribió, en el campo «Versión del estándar al cerrar», **«la que declara `VERSION`»** en vez del número. Parecía lo correcto —no duplicar un dato que vive en otro archivo—, y venía de haber pasado el día entero quitando copias. Al subir `VERSION` a la 34.2.0, ese cierre pasó a afirmar que había cerrado bajo una versión que **todavía no existía** cuando cerró.
+- **Why:** es el error **inverso** al que se acababa de arreglar, cometido por aplicar bien la regla en el sitio equivocado. La cuenta de historias es derivable: se recalcula del árbol y siempre da lo de hoy. **La versión al cerrar es una foto**: su valor es justamente el de aquel momento, y un puntero al valor de hoy lo destruye.
+- **Also:** lo cazó el validador que exige el sello de versión en cada cierre, no una lectura. Y lo cazó **una hora después**, cuando el número cambió: mientras `VERSION` no se movió, el puntero decía lo correcto por casualidad.
+- **Where:** el campo del cierre de la fase `A-EP-004-HU-019`, con su número literal.
+- **Learned:** antes de reemplazar un dato por un puntero, la pregunta es **si el dato es una foto o una cuenta**. Una cuenta se recalcula y el puntero la mejora; una foto se fecha, y el puntero la falsifica el día que la fuente cambie. Y el síntoma es traicionero: **mientras la fuente no cambie, el puntero parece correcto**.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-020, sobre lo escrito en la fase anterior.
+- **Scope:** estándar; aplica a todo campo que registre el estado de algo en un momento dado.
+- **Rel:** S-040 (un registro que resume enlaza el detalle) — esta señal marca **dónde deja de valer** aquella.
