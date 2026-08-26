@@ -8,6 +8,7 @@ Cubre las reglas y, sobre todo, los **falsos positivos** que se detectaron al
 probar contra el repositorio real: son los que hacen que nadie confíe en un
 validador y termine ignorándolo.
 """
+import io
 import json
 import os
 import shutil
@@ -3134,16 +3135,106 @@ class InventarioDeHU(unittest.TestCase):
         self.assertEqual(len(faltan), 1)
         self.assertEqual(fases.inventario(raiz), (1, 0, 1))
 
-    def test_la_cuenta_del_programa_coincide_con_la_del_inventario_escrito(self):
-        """El pendiente 48 lleva los mismos tres números a mano. Si se separan,
-        uno de los dos está mal — y esta prueba es la que lo dice."""
-        import re
-        texto = comun.leer(os.path.join(self.RAIZ, "pendientes", "48-inventario-hu.md"))
-        def dato(etiqueta):
-            m = re.search(r"\| \*\*" + etiqueta + r"\*\* \| (\d+) \|", texto)
-            return int(m.group(1)) if m else None
-        self.assertEqual(fases.inventario(self.RAIZ),
-                         (dato("Total de HU"), dato("Completas"), dato("Incompletas")))
+    # -- `EP-004·HU-019` · el inventario no guarda la cuenta ---------------
+    #
+    # **Acá vivía la prueba que comparaba los dos números**: el del árbol
+    # contra el escrito a mano en el pendiente. Se quitó porque ya no hay dos
+    # que comparar — y mientras existió pasó lo que estaba puesta a cazar: las
+    # copias se separaron tres veces, y la última llevaba 34 de retraso.
+    # Detectarlo no alcanzaba; la salida fue que no hubiera segunda copia.
+    #
+    # Lo que se comprueba ahora es que no vuelva.
+
+    def _pendiente_de_mentira(self, texto):
+        """Un árbol con su pendiente del inventario. Devuelve `(raíz, ruta)`.
+
+        En carpeta temporal: **el pendiente real no se edita para probar**
+        (`08·T4`).
+        """
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        os.makedirs(os.path.join(tmp.name, "pendientes"))
+        ruta = os.path.join(tmp.name, "pendientes", "48-inventario-hu.md")
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto)
+        return tmp.name, ruta
+
+    # -- CA-02 · reponer un número a mano se reporta ----------------------
+    def test_un_total_escrito_a_mano_en_el_inventario_se_avisa(self):
+        raiz, _ = self._pendiente_de_mentira(
+            "# Inventario\n\n| **Total de HU** | 99 |\n")
+        avisos = fases.cuenta_escrita_a_mano(raiz)
+        self.assertEqual(len(avisos), 1, "la cuenta a mano no se avisó")
+        self.assertIn("Total de HU", avisos[0].mensaje)
+        self.assertIn("validar.py fases", avisos[0].mensaje,
+                      "el aviso no dice de dónde sale la cuenta de verdad")
+
+    def test_los_tres_campos_de_la_cuenta_se_avisan(self):
+        raiz, _ = self._pendiente_de_mentira(
+            "# Inventario\n\n| **Total de HU** | 99 |\n"
+            "| **Completas** | 50 |\n| **Incompletas** | 49 |\n")
+        self.assertEqual(len(fases.cuenta_escrita_a_mano(raiz)), 3)
+
+    def test_sin_la_cuenta_escrita_no_se_avisa_nada(self):
+        raiz, _ = self._pendiente_de_mentira(
+            "# Inventario\n\nLa cuenta la da `validar.py fases`.\n")
+        self.assertEqual(fases.cuenta_escrita_a_mano(raiz), [])
+
+    # -- CA-02 · borde: la narrativa trae cifras que no son la cuenta -----
+    def test_las_cifras_de_la_narrativa_no_disparan_el_aviso(self):
+        """Un aviso que marca cualquier número se aprende a ignorar."""
+        raiz, _ = self._pendiente_de_mentira(
+            "# Inventario\n\n> **68 a 74 total.** Seis historias nuevas al "
+            "enrutar el backlog: 6 que ya existían.\n")
+        self.assertEqual(fases.cuenta_escrita_a_mano(raiz), [])
+
+    # -- `RN-04` · el programa reporta y NO corrige -----------------------
+    def test_avisar_de_la_cuenta_no_toca_el_archivo(self):
+        """Se compara en **bytes**, no como texto.
+
+        Comparar como texto dejaría pasar un cambio de fin de línea, que es
+        justo el defecto que se coló en la fase E de la plataforma.
+        """
+        raiz, ruta = self._pendiente_de_mentira(
+            "# Inventario\n\n| **Total de HU** | 99 |\n")
+        antes = io.open(ruta, "rb").read()
+        cuantos_antes = len(os.listdir(os.path.dirname(ruta)))
+
+        self.assertTrue(fases.cuenta_escrita_a_mano(raiz),
+                        "no reportó nada, así que no probaría que no corrige")
+
+        self.assertEqual(io.open(ruta, "rb").read(), antes,
+                         "el programa corrigió el archivo (`EP-004 §10.2`)")
+        self.assertEqual(len(os.listdir(os.path.dirname(ruta))), cuantos_antes,
+                         "el programa creó un archivo")
+
+    # -- `RNF-02` · la comprobación sale por la corrida de siempre --------
+    def test_el_aviso_sale_en_la_corrida_de_fases(self):
+        """Que la comprobación exista no sirve si nadie la llama.
+
+        **Lo destapó un sabotaje**: descolgar `cuenta_escrita_a_mano` de
+        `validar` dejaba las otras seis pruebas en verde, porque todas la
+        llamaban directo. Una comprobación que no sale por el comando que la
+        gente corre es una comprobación que no existe.
+        """
+        raiz, _ = self._pendiente_de_mentira(
+            "# Inventario\n\n| **Total de HU** | 99 |\n")
+        os.makedirs(os.path.join(raiz, "documentacion", "epicas"))
+        mensajes = [h.mensaje for h in fases.validar(raiz)]
+        self.assertTrue(any("Total de HU" in m for m in mensajes),
+                        "el aviso no sale por `validar`, que es lo que corre "
+                        "`validar.py fases`")
+
+    # -- CA-01 · el pendiente real ya no guarda la cuenta -----------------
+    def test_el_inventario_de_este_repositorio_no_guarda_la_cuenta(self):
+        self.assertEqual(fases.cuenta_escrita_a_mano(self.RAIZ), [],
+                         "el inventario volvió a guardar la cuenta a mano")
+
+    def test_el_inventario_de_este_repositorio_nombra_el_comando(self):
+        texto = comun.leer(os.path.join(self.RAIZ, "pendientes",
+                                        "48-inventario-hu.md"))
+        self.assertIn("validar.py fases", texto,
+                      "el inventario no dice con qué comando se saca la cuenta")
 
 
 class ClavesYDatosSensibles(unittest.TestCase):

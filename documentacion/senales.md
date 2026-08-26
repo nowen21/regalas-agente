@@ -411,3 +411,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente, al guardar lo traído.
 - **Scope:** estándar; aplica a cualquier proyecto que copie árboles de documentación dentro de sí mismo y se trabaje en Windows.
 - **Rel:** S-041 (lo traído se versiona, y por eso llega a git).
+
+## S-043 · Una comprobación puede estar bien escrita y no estar conectada, y sus pruebas no lo notan  ·  error-resuelto · activa
+- **What:** la fase construyó una comprobación con seis pruebas que la cubrían. Un sabotaje la **descolgó de la corrida** —le quitó la llamada desde `validar`— y **las seis siguieron en verde**. La función existía, funcionaba, y por el comando que la gente corre no salía nada.
+- **Why:** las seis pruebas llamaban a la función **directo**, que es lo natural al escribirlas: se prueba lo que se acaba de escribir. Ninguna preguntaba si alguien la llama. Una comprobación que no sale por el comando que la gente corre es una comprobación que no existe, y este es el modo de fallar que las pruebas de la propia función no pueden ver **por construcción**.
+- **Also:** el mismo sabotaje trajo el caso contrario y conviene no confundirlos. Otro sabotaje también pasó en verde y ahí **la prueba tenía razón**: reemplazaba una de las tres veces que el pendiente nombra el comando, así que el archivo seguía diciéndolo. Es `S-033` otra vez, y solo se distinguen corriendo el escenario y mirando el estado final.
+- **Where:** `test_el_aviso_sale_en_la_corrida_de_fases` en [validadores/pruebas.py](../validadores/pruebas.py), que busca el aviso **a través de `validar`** y no llamando a la función · `DEF-01` de la fase `A-EP-004-HU-019`.
+- **Learned:** toda comprobación nueva necesita **una prueba que la busque por el punto de entrada de verdad**, no por su nombre. Las pruebas de la función dicen que hace bien lo suyo; solo esa dice que alguien la llama. Y la forma de descubrir que falta es sabotear la conexión, no el cuerpo.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-019.
+- **Scope:** estándar; aplica a cualquier proyecto donde una comprobación se sume a un recorrido que ya existía.
+- **Rel:** S-033 (un sabotaje en verde tiene dos diagnósticos opuestos).
+
+## S-044 · Un guion de sabotaje dijo «suite completa en verde» sin haber corrido una sola prueba  ·  error-resuelto · activa
+- **What:** el guion terminaba corriendo la suite entera, que es lo que dice si algo quedó saboteado. Usaba `unittest discover` sobre la carpeta, **encontró cero pruebas**, y reportó `OK`. La salida decía `Ran 0 tests in 0.000s` seguida de `OK`, y se lee como éxito.
+- **Why:** el veredicto que cierra una fase salía de una corrida vacía. Dos ciclos antes se habría leído como «todo bien» y la fase habría cerrado sobre nada. **Cero pruebas y `OK` no son lo mismo, y el formato de salida los muestra igual.**
+- **Also:** el guion existe justamente para no confiar en que las pruebas sirven. Que él mismo mintiera sobre su corrida final es el mismo error un nivel más arriba: quien vigila también necesita que lo vigilen.
+- **Where:** el guion lanza `pruebas.py` como programa en vez de `discover`, y **se cae con error si la corrida final no dice `OK` o dice `Ran 0`** · `DEF-02` de la fase `A-EP-004-HU-019`.
+- **Learned:** una corrida de pruebas se valida por **dos** cosas, no una: que no haya fallas **y que haya corrido algo**. Cualquier automatismo que decida sobre una suite tiene que mirar el conteo, porque el caso «no corrió nada» sale con el mismo `OK` que el caso bueno.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-019.
+- **Scope:** estándar; aplica a cualquier automatismo que lea el resultado de una suite.
+- **Rel:** S-043 (una comprobación que nadie llama), S-035 (los rastros que un sabotaje deja fuera).

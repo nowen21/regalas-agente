@@ -176,7 +176,44 @@ def validar(proyecto):
 
             hallazgos += _validar_fases(ruta_hu, donde_hu, num_epica, num_hu)
 
-    return hallazgos + cierre_sin_sello(proyecto)
+    return (hallazgos + cierre_sin_sello(proyecto)
+            + cuenta_escrita_a_mano(proyecto))
+
+
+# `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.
+#
+# Hasta el 2026-08-26 el pendiente del inventario escribía a mano los mismos
+# tres números que `inventario` calcula del árbol. Las dos copias se
+# separaron tres veces; la última decía 78 historias donde el árbol tenía
+# 113, y 4 de sus filas daban por completa una historia que no lo estaba.
+#
+# **Se busca el campo con su rótulo, no cualquier cifra.** El pendiente sigue
+# teniendo números dentro de su narrativa —«68 a 74 total: seis historias
+# nuevas»— y marcarlos volvería el aviso ruido, que es como se aprende a
+# ignorarlo.
+INVENTARIO = "pendientes/48-inventario-hu.md"
+CUENTA_A_MANO = re.compile(
+    r"^\|\s*\*\*(Total de HU|Completas|Incompletas)\*\*\s*\|\s*\d+\s*\|",
+    re.MULTILINE)
+
+
+def cuenta_escrita_a_mano(proyecto):
+    """El inventario volvió a guardar la cuenta que el árbol ya sabe.
+
+    **Avisa, no falla** (`EP-004 §10.2`). Un pendiente con un número de más
+    no rompe nada, y detener el commit por eso es como se terminan
+    desactivando los enganches. Y **no corrige**: el programa reporta.
+    """
+    ruta = os.path.join(proyecto, *INVENTARIO.split("/"))
+    if not os.path.isfile(ruta):
+        return []
+    campos = CUENTA_A_MANO.findall(_leer(ruta) or "")
+    return [Hallazgo(
+        AVISO, INVENTARIO, 0,
+        "guarda la cuenta a mano en el campo **%s**, y el árbol ya la sabe: "
+        "la da `validar.py fases`. Dos copias del mismo dato se separan "
+        "(EP-004·HU-019)" % campo)
+        for campo in campos]
 
 
 def inventario(proyecto):

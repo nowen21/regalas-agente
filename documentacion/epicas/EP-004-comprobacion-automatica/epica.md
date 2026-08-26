@@ -147,6 +147,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-016](HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) | Comprobar que un pendiente marcado hecho nombre la historia y la fase donde se construyó | Should | S |
 | [HU-017](HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) | Decir cuántas HU quedan sin su fase completa | Should | S |
 | [HU-018](HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | Avisar cuando dos pendientes se disputan el mismo número | Should | S |
+| [HU-019](HU-019-inventario-que-no-se-mantiene-a-mano/HU-019-inventario-que-no-se-mantiene-a-mano.md) | Que el inventario de historias deje de mantenerse a mano | Should | S |
 
 ## 10. Consideraciones técnicas
 
@@ -208,6 +209,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 7 | Retrodocumentar la comprobación de la derogación sin adoptar, que se construyó antes de tener su fase | HU-015 |
 | Fase 8 | Que el backlog no se construya saltándose la cadena: el pendiente cerrado nombra su fase | HU-016 |
 | Fase 9 | Contar lo que falta sin recorrerlo a mano: HU sin fase y números de pendiente disputados | HU-017, HU-018 |
+| Fase 10 | Que la cuenta no exista dos veces: el inventario enlaza lo que el árbol sabe en vez de copiarlo | HU-019 |
 
 ## 15. Definition of Ready
 
