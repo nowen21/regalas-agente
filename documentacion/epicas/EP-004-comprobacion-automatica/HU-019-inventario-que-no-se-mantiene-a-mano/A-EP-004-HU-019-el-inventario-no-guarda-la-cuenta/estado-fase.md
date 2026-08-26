@@ -35,7 +35,9 @@
 | 12 | Commit | 👤 Commit `ce2246b` | ☑ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
-**La estación 5 pasó sin documento aparte, y se dice por qué.** La historia trae alcance, reglas de negocio, criterios con sus pasos y requisitos no funcionales; una especificación separada repetiría la historia. Es el caso que la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) está abierta para dejar escrito en el estándar, y **esta es la tercera fase que lo declara**. Queda anotado como evidencia de esa historia, no como excepción silenciosa.
+**La estación 5 pasó sin documento aparte, y la regla que lo permite ya existe.** [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) dice que la redacción del CA es la especificación funcional.
+
+> **Acá se citó la `EP-001 · HU-010` como si estuviera abierta esperando escribir esa regla, y se corrigió el 2026-08-26.** Está cerrada desde el 2026-08-18, y cerró diciendo que no hacía falta regla nueva. Se afirmó sin leer su estado.
 
 ---
 

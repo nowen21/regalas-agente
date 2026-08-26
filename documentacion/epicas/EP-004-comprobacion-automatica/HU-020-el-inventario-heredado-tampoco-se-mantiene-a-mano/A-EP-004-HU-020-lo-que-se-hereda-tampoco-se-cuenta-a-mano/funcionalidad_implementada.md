@@ -6,7 +6,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `A-EP-004-HU-020-lo-que-se-hereda-tampoco-se-cuenta-a-mano` |
 | **Módulo** | Programas de comprobación |
-| **Especificación del módulo** | No hay documento aparte. La historia hace de especificación, declarado en el [plan_trabajo.md](plan_trabajo.md) §0. **Cuarta fase que lo declara** |
+| **Especificación del módulo** | No hay documento aparte, y la regla que lo permite ya existe: `02·F19`, «la redacción del CA es la especificación funcional». Ver §6 |
 | **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md), aprobado el 2026-08-26 |
 | **HU / CA cubiertas** | [HU-020](../HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md): `CA-01`, `CA-02`, `CA-03`, `CA-04` y su transversal. Los cuatro |
 | **Fecha de cierre** | 2026-08-26 |
@@ -118,7 +118,7 @@ python "<ruta-al-estandar>/validadores/validar.py" fases --raiz .
 | ~~El cierre de la fase anterior dice «la versión que declara `VERSION`» en vez de su número~~ **Corregido** | No previsto. Lo destapó subir la versión en esta fase | Se paró, se reportó y **el usuario autorizó ampliar el plan** con ese archivo, que es lo que `02·F8` pide. El cierre dice ahora `34.1.0`, con la nota de por qué cambió. `S-047` |
 | Los inventarios ya escritos en proyectos existentes | Fuera de alcance declarado | Se avisan; arreglarlos es decisión de cada proyecto, y así lo dice el `CHANGELOG` |
 | Otras plantillas podrían enseñar a mantener a mano algo derivable | No previsto | Sale de un barrido aparte, si el usuario lo quiere |
-| **Cuatro fases seguidas declararon no llevar especificación aparte** | Acumulado | Ya no es un caso suelto: es la regla que falta. La [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) lleva abierta esperando escribirla |
+| ~~Cuatro fases seguidas declararon no llevar especificación aparte, y la regla falta~~ **Era falso** | Acumulado, y mal | La regla **existe**: `02·F19`. La `EP-001 · HU-010` cerró el 2026-08-18 diciendo que no hacía falta ninguna nueva. Se afirmó lo contrario en cinco documentos sin leer su estado, y se corrigió el 2026-08-26. `S-048` |
 
 ---
 

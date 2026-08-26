@@ -35,7 +35,9 @@
 | 12 | Commit | 👤 Commit `31d556f` | ☑ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
-**La estación 5 pasó sin documento aparte, y es la cuarta vez.** La historia trae alcance, reglas, criterios con pasos y requisitos no funcionales; una especificación separada la repetiría. Sigue siendo el caso que la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) está abierta para escribir. **Cuatro fases declarándolo ya no es un caso suelto: es la regla que falta.**
+**La estación 5 pasó sin documento aparte, y la regla que lo permite ya existe.** [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) dice que la redacción del CA es la especificación funcional.
+
+> **Acá decía que la `EP-001 · HU-010` estaba abierta y que «cuatro fases declarándolo ya no es un caso suelto: es la regla que falta». Se corrigió el 2026-08-26, y era falso.** Esa historia cerró el 2026-08-18 diciendo justamente que no hacía falta regla nueva. Cuatro documentos repitieron la afirmación, y cada repetición la hizo parecer más establecida.
 
 ---
 

@@ -531,20 +531,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
-### H-34 · Cuatro fases seguidas declararon no llevar especificación, y la regla sigue sin escribirse
+### H-34 · Se citó cuatro veces una historia como «abierta» sin leer su estado, y estaba cerrada
 
-- **Qué pasó:** cada una de las cuatro fases de esta sesión declaró que no lleva especificación aparte, porque su historia ya trae alcance, reglas, criterios con pasos y requisitos no funcionales. Las cuatro lo dijeron por escrito, con su porqué.
-- **Por qué importa:** la [EP-001 · HU-010](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) existe desde antes y dice exactamente esto: **«una regla que se incumple dos veces seguidas con buenos motivos se vuelve costumbre incumplirla, y la próxima vez nadie va a saber si el caso era legítimo o si se saltó el paso»**. Van cuatro.
-- **Qué lo soluciona:** nada todavía. Declararlo cada vez evita el incumplimiento silencioso, pero no escribe la regla.
-- **Qué se decidió:** dejarlo dicho en las cuatro fases como evidencia de esa historia, en vez de callarlo.
-- **Estado:** abierto.
+> **Este hallazgo decía otra cosa hasta el 2026-08-26**, y lo que decía era falso. Se deja reescrito, no borrado: el error importa más que la conclusión que traía.
+
+- **Qué pasó:** cuatro fases seguidas declararon no llevar especificación aparte, y las cuatro lo justificaron diciendo que la [EP-001 · HU-010](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) **estaba abierta esperando escribir esa regla**. Sobre eso se levantó este hallazgo, que concluía «cuatro ya no es un caso suelto: es la regla que falta». **Esa historia dice `Estado: Done`**, cerró el 2026-08-18, y su pendiente está en `hecho/`.
+- **Por qué importa:** cerró **diciendo lo contrario**: «nada nuevo, y ese es el resultado». La regla ya existía dos reglas más abajo en el mismo capítulo, [`02·F19`](../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md): *«la redacción del CA es la especificación funcional»*. Y en su momento se intentó agregar otra que decía lo mismo y **chocaba con `02·F0`**. Se iba a rehacer un trabajo ya hecho **y descartado con razón**.
+- **Qué lo soluciona:** se corrigieron los cinco documentos, cada uno diciendo qué afirmaba y por qué era falso.
+- **Qué se decidió:** citar `02·F19`, que es la regla de verdad. Y no borrar lo que se dijo mal: queda tachado y explicado, porque el error enseña más que la conclusión.
+- **Cómo se cometió, que es lo que vale:** se leyó la **narrativa** de la historia, que describe el problema en presente porque se escribió antes de resolverlo. **Nadie miró el campo `Estado`, que está en su primera tabla.** Y el error se cometió una vez y se **copió tres**: cada fase tomó la redacción de la anterior sin volver a la fuente, y la repetición lo hizo parecer más establecido, no menos.
+- **Estado:** resuelto acá.
 - **Responde a:** —
-- **Dispara:** construir la `EP-001 · HU-010`, que ya está escrita y sin fase.
-- **Orden de resolución:** cuando el usuario lo decida. Ya hay cuatro casos reales de los que sacar la regla, que es más de lo que había cuando se escribió la historia.
-- **Dónde queda:** el §0 del plan de trabajo de las cuatro fases, y su `estado-fase.md`.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** los cinco documentos corregidos y la señal `S-048`.
 - **Nace en:** 2026-08-22 · sesion-6
-- **Cerrado en:** —
-- **Con qué se retoma:** bajar la `HU-010` a fase, con los cuatro casos como insumo.
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
 
 ---
 
@@ -558,11 +561,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ · faltan los de `H-28` y `H-34` |
+| Todo hallazgo abierto tiene su pendiente creado | ☐ · falta el de `H-28` |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ |
 
-**Tres marcadas, una no.** **`H-27` y `H-31` cerraron**, los dos por la cadena completa: el inventario dejó de mantenerse a mano, adentro y en lo que el estándar reparte. **`H-33` también cerró**, con el plan ampliado y autorizado. Quedan dos abiertos y **ninguno tiene pendiente creado**: `H-28` —el tope de ruta en Windows— y `H-34` —cuatro fases declarando la misma excepción que sigue sin ser regla—. En los dos falta lo mismo: una decisión del usuario que es la que dice qué pendiente escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+**Tres marcadas, una no.** **`H-27` y `H-31` cerraron**, los dos por la cadena completa: el inventario dejó de mantenerse a mano, adentro y en lo que el estándar reparte. **`H-33` también cerró**, con el plan ampliado y autorizado. **`H-34` también cerró, y cerró corrigiéndose**: la regla que decía faltar existía desde antes. Queda **uno** abierto y sin pendiente creado: `H-28`, el tope de ruta en Windows. Falta una decisión del usuario, que es la que dice qué pendiente escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

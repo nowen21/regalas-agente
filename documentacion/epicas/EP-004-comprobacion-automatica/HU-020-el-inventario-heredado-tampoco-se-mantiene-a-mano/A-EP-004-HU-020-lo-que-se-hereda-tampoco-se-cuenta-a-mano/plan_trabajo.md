@@ -12,7 +12,7 @@
 | **Épica** | [EP-004](../../epica.md) |
 | **HU** | [HU-020](../HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md) — **una sola** (`F12.1`) |
 | **Módulo** | Programas de comprobación |
-| **Especificación del módulo** | **No hay documento aparte**, por lo mismo que la fase anterior: la historia trae alcance, reglas, criterios con pasos y requisitos no funcionales. **Es la cuarta fase que lo declara**, y sigue siendo evidencia para la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md), que está abierta para escribir esa regla |
+| **Especificación del módulo** | **No hay documento aparte, y la regla que lo permite ya existe.** [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) dice que **la redacción del CA es la especificación funcional**. La historia trae alcance, reglas de negocio, criterios con sus pasos y requisitos no funcionales: un documento aparte la repetiría. **Corregido el 2026-08-26:** acá se citó primero la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) como si estuviera abierta esperando escribir esa regla. Está **cerrada** desde el 2026-08-18, y cerró diciendo «nada nuevo, y ese es el resultado»: el capítulo ya la contestaba dos reglas más abajo, y agregar otra chocaba con `02·F0`. Se afirmó sin leer su estado. |
 | **Fecha apertura** | 2026-08-26 |
 | **Rama** | `main` |
 
