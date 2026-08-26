@@ -428,6 +428,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-28 · Anidar la documentación de un proyecto dentro de otro la empuja fuera del tope de Windows
+
+- **Qué pasó:** al guardar lo traído, `git add` se negó con **`Filename too long`**. El prefijo `plataforma/datos/proyectos/<identificador>/traido/` le suma 54 caracteres a cada ruta, y eso puso **59 archivos** por encima del tope de 260 de Windows — el más largo, **307**. En su sitio de origen las mismas rutas caben.
+- **Por qué importa:** el que se pasa no es un archivo, es **la suma**: carpeta de historia con nombre descriptivo, más carpeta de fase que repite el identificador, más el prefijo. Cada tramo es razonable por separado. Y no salta al escribir —la plataforma copió los 1005 sin quejarse— sino **al guardar**, cuando ya estaba todo lo demás decidido.
+- **Qué lo soluciona:** `core.longpaths` en este repositorio, y con eso entró.
+- **Qué se decidió:** dejarlo escrito en el commit y en la señal en vez de darlo por resuelto. **No lo está del todo:** es configuración local, así que quien clone en Windows tiene que activarla o le faltarán esos 59 archivos — justo lo que `DA-02` promete al decir que se clona la plataforma y está todo.
+- **Estado:** resuelto acá para esta máquina; abierto lo de quien clone.
+- **Responde a:** —
+- **Dispara:** por decidir con el usuario: o el prefijo de lo traído se acorta, o el instalador de la plataforma activa `core.longpaths`, o se documenta como requisito de clonado.
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-042` y el cuerpo del commit que guardó lo traído.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** —
+- **Con qué se retoma:** decidir cuál de las tres salidas, sabiendo que acortar el prefijo es la única que no le pide nada a quien clone.
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -438,11 +455,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ · falta el de `H-27` |
+| Todo hallazgo abierto tiene su pendiente creado | ☐ · faltan los de `H-27` y `H-28` |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ |
 
-**Tres marcadas, una no.** `H-27` —el inventario a mano con 34 historias de retraso— está abierto y **todavía no tiene pendiente creado**: falta decidir con el usuario si la tabla se rehace desde el árbol o deja de mantenerse a mano, y esa decisión es la que dice qué pendiente escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+**Tres marcadas, una no.** `H-27` —el inventario a mano con 34 historias de retraso— y `H-28` —el tope de ruta para quien clone en Windows— están abiertos y **ninguno tiene pendiente creado**. En los dos falta lo mismo: una decisión del usuario que es la que dice qué pendiente escribir — si la tabla del inventario se rehace desde el árbol o deja de mantenerse a mano, y cuál de las tres salidas se toma para el tope de ruta. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

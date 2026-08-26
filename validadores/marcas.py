@@ -30,8 +30,9 @@ import re
 import sys
 
 import comun
-from comun import (AVISO, Hallazgo, RAIZ, leer, lineas_utiles, recorrer_md,
-                   relativo, reportar, preparar_salida, sin_codigo_en_linea)
+from comun import (AVISO, Hallazgo, RAIZ, es_ruta_de_datos, leer,
+                   lineas_utiles, recorrer_md, relativo, reportar,
+                   preparar_salida, sin_codigo_en_linea)
 
 # Los archivos que hablan **de** las marcas: contarlas ahí es contar el catálogo.
 CATALOGO = (
@@ -409,6 +410,12 @@ def validar_preparados(raiz=None):
     hallazgos = []
     for rel in archivos_preparados(raiz):
         if rel in CATALOGO or rel.split("/")[0] == HISTORICO:
+            continue
+        # `00-ID8` habla de lo que **el agente entrega**, y lo que la
+        # plataforma trajo lo escribio otro proyecto. Ademas `_crecimiento`
+        # llama a git una vez por archivo: sin este corte, guardar una traida
+        # de mil documentos son mil llamadas para juzgar lo que no es nuestro.
+        if es_ruta_de_datos(rel):
             continue
         crece = _crecimiento(raiz, rel)
         if not crece:

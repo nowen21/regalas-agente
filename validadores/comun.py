@@ -39,11 +39,20 @@ EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor"}
 EXCLUIDAS_POR_RUTA = ("plataforma/datos",)
 
 
-def es_dato_de_la_plataforma(carpeta, raiz):
-    """Esta carpeta guarda dato traido, en vez de documentacion?"""
-    relativa = os.path.relpath(carpeta, raiz).replace(os.sep, "/")
+def es_ruta_de_datos(relativa):
+    """`relativa` en forma posix, respecto de la raiz del repositorio.
+
+    Aparte de `es_dato_de_la_plataforma` porque no todos llegan aca con una
+    ruta absoluta: quien lee lo **preparado en git** ya tiene la relativa, y
+    volverla absoluta para volverla relativa seria dar la vuelta entera.
+    """
     return any(relativa == fuera or relativa.startswith(fuera + "/")
                for fuera in EXCLUIDAS_POR_RUTA)
+
+
+def es_dato_de_la_plataforma(carpeta, raiz):
+    """Esta carpeta guarda dato traido, en vez de documentacion?"""
+    return es_ruta_de_datos(os.path.relpath(carpeta, raiz).replace(os.sep, "/"))
 
 # Un marcador de plantilla: [texto] que NO es un enlace markdown ](...)
 # ni una casilla de verificación - [ ] / - [x].
