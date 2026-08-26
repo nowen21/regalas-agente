@@ -436,12 +436,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Qué se decidió:** dejarlo escrito en el commit y en la señal en vez de darlo por resuelto. **No lo está del todo:** es configuración local, así que quien clone en Windows tiene que activarla o le faltarán esos 59 archivos — justo lo que `DA-02` promete al decir que se clona la plataforma y está todo.
 - **Estado:** resuelto acá para esta máquina; abierto lo de quien clone.
 - **Responde a:** —
-- **Dispara:** por decidir con el usuario: o el prefijo de lo traído se acorta, o el instalador de la plataforma activa `core.longpaths`, o se documenta como requisito de clonado.
+- **Dispara:** por decidir con el usuario, y **con una opción menos de las que parecía**. Acortar el prefijo se midió y no alcanza: ahorra 15 caracteres y la ruta más larga quedaría en 292, todavía sobre 260. Quedan dos: que el instalador de la plataforma active `core.longpaths`, o acortar la convención de carpetas del estándar — que es mucho más grande y toca todo lo ya escrito.
 - **Orden de resolución:** —
 - **Dónde queda:** la señal `S-042` y el cuerpo del commit que guardó lo traído.
 - **Nace en:** 2026-08-22 · sesion-6
 - **Cerrado en:** —
-- **Con qué se retoma:** decidir cuál de las tres salidas, sabiendo que acortar el prefijo es la única que no le pide nada a quien clone.
+- **Y algo mayor que apareció al medir:** este repositorio ya está al borde **en su propio sitio**, sin plataforma de por medio. Su ruta más larga mide **252 de 260**, y **81 archivos** están a menos de 55 del tope. La carpeta de fase repite el identificador de la épica y de la historia que ya vienen en las dos carpetas de encima. Anidar solo reveló el problema; no lo causó.
+- **Con qué se retoma:** decidir entre que el instalador active `core.longpaths` o acortar la convención de carpetas — sabiendo que lo segundo arregla también los 81 que ya están al borde sin que nadie los haya anidado.
 
 ---
 
