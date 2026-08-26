@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-020](../HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md): `CA-01`, `CA-02`, `CA-03`, `CA-04` y su transversal. Los cuatro |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | `34.2.0` — el número, no un puntero. Por qué importa, en §5 |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `31d556f` |
 
 ---
 

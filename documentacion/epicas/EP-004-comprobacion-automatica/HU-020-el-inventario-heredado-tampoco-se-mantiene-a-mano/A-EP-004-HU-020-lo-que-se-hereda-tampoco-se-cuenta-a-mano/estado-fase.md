@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12, commit. **Última puerta pasada:** 11.
+**Estación actual:** cerrada. **Última puerta pasada:** 12, el commit `31d556f`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 Commit `31d556f` | ☑ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **La estación 5 pasó sin documento aparte, y es la cuarta vez.** La historia trae alcance, reglas, criterios con pasos y requisitos no funcionales; una especificación separada la repetiría. Sigue siendo el caso que la [EP-001 · HU-010](../../../EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) está abierta para escribir. **Cuatro fases declarándolo ya no es un caso suelto: es la regla que falta.**
@@ -74,7 +74,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **Esperando autorización para el commit.** Construida, probada y documentada.
+- **Nada esperando.** Construida, probada, documentada y guardada en `31d556f`.
 - **Nada abierto.** El defecto que quedó fuera de lo declarado —el cierre de la fase anterior apuntando a `VERSION` en vez de decir su número— se paró, se reportó, **el usuario autorizó ampliar el plan**, y se corrigió. Está en el cierre §6 y en `S-047`.
 
 ---
