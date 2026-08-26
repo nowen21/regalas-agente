@@ -329,3 +329,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente.
 - **Scope:** estándar; aplica a cualquier proyecto que ejecute historias por fases.
 - **Rel:** S-022 (el estado sale de la prueba, no de la lectura).
+
+## S-035 · Un sabotaje que escribe fuera del código deja restos que restaurar el archivo no limpia  ·  gotcha · activa
+- **What:** en la fase E, uno de los ocho sabotajes hacía que traer escribiera un archivo **dentro de la carpeta del proyecto de origen**, que es justo lo que la fase promete que nunca pasa. La prueba lo cazó y el guion restauró el código. Pero el archivo que ese sabotaje alcanzó a escribir —973 líneas en la raíz del repositorio— **se quedó ahí**, y el guion terminó diciendo que todo estaba bien.
+- **Why:** restaurar con copia protege el código, no el mundo. Un sabotaje que solo toca el archivo saboteado se deshace con la copia; uno que escribe, borra o mueve algo afuera deja un rastro que ninguna restauración de código va a limpiar. Y como la suite final salía en verde, el guion no tenía cómo notarlo.
+- **Also:** se descubrió por casualidad, en la corrida real: una comprobación que preguntaba «¿hay rastro dentro del repositorio?» salió en verdadero cuando debía salir en falso. Sin esa línea, el archivo se habría ido en el commit.
+- **Where:** el guion de sabotaje de la fase E, que ahora declara sus `RASTROS` y los limpia al terminar, nombrando lo que borró · [evidencias/EV-02](epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-001-traer-un-proyecto/E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/evidencias/EV-02-las-pruebas-cazan-el-sabotaje.txt).
+- **Learned:** antes de escribir un sabotaje, preguntarse **qué deja fuera del archivo que se está saboteando**. Si escribe, borra o mueve algo, el guion tiene que declararlo y limpiarlo al final, y decir qué limpió. La suite en verde no prueba que el sabotaje se deshizo: prueba que el código volvió a su sitio.
+- **When/Who:** 2026-08-25 · agente.
+- **Scope:** estándar; aplica a cualquier fase que valide sus pruebas con sabotaje.
+- **Rel:** S-028, S-030, S-031, S-033.
+
+## S-036 · Traer un documento «tal cual» transformaba los saltos de línea, y el texto se veía idéntico  ·  error-resuelto · activa
+- **What:** el módulo que trae la documentación de un proyecto leía cada archivo con la apertura normal de texto. En Python eso hace traducción automática de saltos de línea: un documento escrito en Windows entraba a la plataforma con saltos de Unix. El texto se ve exactamente igual, y `CA-5` de la especificación dice que **nada se transforma sin que el usuario lo diga**.
+- **Why:** es la clase de defecto que ninguna revisión encuentra, porque el documento se lee igual. Lo que cambia es el archivo, y eso aparece después: en un control de versiones que marca las 973 líneas como modificadas, o en una comparación que no cuadra.
+- **Also:** lo cazó una prueba que compara **byte por byte**, no como texto. La prueba escrita de la forma cómoda —leer los dos y comparar cadenas— habría pasado en verde, porque al leer los dos con la misma traducción los dos salen iguales.
+- **Where:** el `newline=""` de `traer`, en [nucleo/importacion/core.py](../plataforma/nucleo/importacion/core.py), con su porqué escrito al lado para que nadie lo quite por parecer de más.
+- **Learned:** cuando algo promete copiar «tal cual», la prueba compara **los bytes**, no el texto. Leer los dos lados con la misma función esconde exactamente las transformaciones que esa función hace: codificación, saltos de línea, espacios del final.
+- **When/Who:** 2026-08-25 · agente, en la fase E.
+- **Scope:** estándar; aplica a cualquier proyecto que copie o importe archivos.
+- **Rel:** S-033 (mirar el estado final, no lo que devuelve la función).

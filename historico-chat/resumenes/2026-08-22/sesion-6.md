@@ -253,6 +253,51 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-17 · La incertidumbre de una fase se mide antes de planearla, y a veces desaparece
+
+- **Qué pasó:** la fase E era la de mayor incertidumbre declarada de la versión 1: la especificación decía que no se sabía cuánta documentación se iba a reconocer, y que se sabría probando. Antes de escribir el plan se contó sobre el repositorio real: 99,7% dentro de `documentacion/`, casi nada fuera.
+- **Por qué importa:** con el número a la vista, la pregunta cambió. No era «cuánto se reconoce» sino «qué carpetas se recorren», y esa sí la podía decidir el usuario en un minuto. Y los tres archivos que no se reconocían resultaron ser **moldes que faltaban en la lista**, no casos raros: entraron como tarea de la fase en vez de aparecer en producción.
+- **Qué lo soluciona:** se resolvió acá, midiendo antes de planear.
+- **Qué se decidió:** traer recorre solo la documentación del ciclo, y **dice qué carpetas no miró y por qué**. El caso real entró con 973 documentos y ninguno afuera.
+- **Estado:** resuelto acá.
+- **Responde a:** [EP-010](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/epica.md) · [HU-001](../../../documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-001-traer-un-proyecto/HU-001-traer-un-proyecto.md).
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el plan de la fase E §2, con la tabla del conteo.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-18 · Copiar «tal cual» transformaba los saltos de línea, y el texto se veía idéntico
+
+- **Qué pasó:** el módulo que trae documentación leía cada archivo con la apertura normal de texto, y Python traduce los saltos de línea al leer. Un documento escrito en Windows entraba transformado, incumpliendo el criterio que dice que nada se transforma.
+- **Por qué importa:** es la clase de defecto que ninguna revisión encuentra, porque el documento se lee igual. Aparece después: en un control de versiones que marca 973 líneas como modificadas, o en una comparación que no cuadra.
+- **Qué lo soluciona:** se resolvió acá, leyendo sin traducción y dejando el porqué escrito al lado.
+- **Qué se decidió:** cuando algo promete copiar tal cual, la prueba compara **los bytes**, no el texto. Leer los dos lados con la misma función esconde exactamente las transformaciones que esa función hace.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el `newline=""` de `traer`, y la señal `S-036`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-19 · Un sabotaje que escribe fuera del código deja restos que restaurar no limpia
+
+- **Qué pasó:** uno de los ocho sabotajes de la fase E hacía que traer escribiera un archivo **dentro del repositorio**. La prueba lo cazó y el guion restauró el código, pero el archivo que ese sabotaje alcanzó a escribir —973 líneas en la raíz— se quedó ahí, y el guion terminó diciendo que todo estaba bien.
+- **Por qué importa:** restaurar con copia protege el código, no el mundo. La suite en verde no prueba que el sabotaje se deshizo: prueba que el código volvió a su sitio. Sin la línea de la corrida real que preguntaba por rastros, ese archivo se iba en el commit.
+- **Qué lo soluciona:** se resolvió acá: el guion declara sus rastros, los limpia al terminar y dice qué limpió.
+- **Qué se decidió:** antes de escribir un sabotaje, preguntarse **qué deja fuera del archivo que se sabotea**. Si escribe, borra o mueve algo, el guion tiene que declararlo y limpiarlo.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el guion de sabotaje de la fase E, y la señal `S-035`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -267,9 +312,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ |
 
-Las cuatro marcadas. Lo construido en esta sesión quedó guardado en nueve commits, y el último es la fase C en `ff2248e`. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+Falta guardar la fase E. Lo anterior quedó en nueve commits, el último la fase C en `ff2248e`: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

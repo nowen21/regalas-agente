@@ -1,0 +1,56 @@
+== corrida real: se trae la documentacion de este mismo repositorio ==
+archivos .md en documentacion/ ANTES: 973
+archivos del repositorio ANTES (sin datos/ ni .git): 1924
+
+-- primero se mira, sin escribir nada --
+   reconocidos: 973 | sin reconocer: 0
+   documentos traidos hasta ahora: 0
+
+   carpetas que NO se miran, y por que:
+     base/            el cuerpo de reglas que el proyecto adopta, no su documentación
+     plantillas/      los moldes del estándar, no documentos del proyecto
+     historico-chat/  las conversaciones, que se guardan aparte
+     pendientes/      el backlog, que no es documentación del ciclo
+     validadores/     programas, no documentos
+     skills/          procedimientos del agente, no del proyecto
+     notas/           razonamientos de diseño, no documentos del ciclo
+     prompts/         lo que el usuario pidió, con sus palabras
+
+-- ahora se trae --
+   entraron: 973 | ya estaban: 0 | en 13.61 s
+
+     especificación de módulo          5
+     estado de fase                  126
+     funcionalidad implementada      107
+     historia de usuario             112
+     plan de pruebas                 126
+     plan de trabajo                 126
+     registro de versión               1
+     resultado de pruebas            122
+     señales                           1
+     épica                            11
+     índice                          236
+
+-- se trae otra vez, para ver que no duplica --
+   entraron: 0 | ya estaban: 973 | total: 973
+
+-- el repositorio quedo intacto --
+   .md en documentacion/ DESPUES: 973 | igual: True
+   archivos del repositorio DESPUES: 1924 | igual: True
+
+== una muestra de lo traido, leida sin la plataforma ==
+# EspecificaciÃ³n del mÃ³dulo Proyectos  Â·  `[CAPA 3]`
+
+- **Slug del mÃ³dulo:** `proyectos`
+
+== el registro de auditoria ==
+| cuÃ¡ndo | quiÃ©n | quÃ© se hizo | sobre quÃ© | quÃ© cambiÃ³ | proyecto | sesiÃ³n |
+|---|---|---|---|---|---|---|
+| 2026-08-25T19:07:06-05:00 | el usuario | conectar un proyecto | proyectos/cimiento/proyecto.md | quedÃ³ registrado, apuntando a C:\Ing. Jose\ia\agente | cimiento |  |
+| 2026-08-25T19:07:07-05:00 | el usuario | traer la documentaciÃ³n de un proyecto | proyectos/cimiento/traido | 973 documento(s) reconocido(s), 0 sin reconocer | cimiento | 5f06ce4e |
+| 2026-08-25T19:07:20-05:00 | el usuario | traer la documentaciÃ³n de un proyecto | proyectos/cimiento/traido | 973 documento(s) reconocido(s), 0 sin reconocer | cimiento |  |
+
+== se limpia ==
+Índice de proyectos rehecho: 0 proyecto(s).
+Índice de auditoría rehecho: 0 acción(es).
+Índice de lo traído rehecho: 0 documento(s).

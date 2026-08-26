@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block titulo %}Traer lo escrito · {{ proyecto.nombre }}{% endblock %}
+{% block cuerpo %}
+<h1>Traer lo que {{ proyecto.nombre }} ya tiene escrito</h1>
+
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+{% if hecho %}
+<p class="bien">Listo: entraron {{ nuevos }} documento{{ nuevos|pluralize:"s" }} nuevo{{ nuevos|pluralize:"s" }}{% if ya_estaban %}, y {{ ya_estaban }} ya estaban y quedaron al día{% endif %}.</p>
+{% endif %}
+
+{% if not proyecto.ruta_viva %}
+<p class="aviso">La carpeta de este proyecto no está donde estaba, así que no hay de dónde traer. Se buscó en {{ proyecto.ruta_codigo }}.</p>
+{% elif not hallazgo.hay_documentacion %}
+<p class="vacio">Este proyecto no tiene carpeta de documentación del ciclo de vida, así que no hay nada que traer.</p>
+{% else %}
+
+<h2>Qué se encontró</h2>
+{% if hallazgo.cuantos %}
+<table>
+  <tr><th>Tipo de documento</th><th>Cuántos</th></tr>
+  {% for tipo, cuantos in hallazgo.por_tipo %}
+  <tr><td>{{ tipo }}</td><td>{{ cuantos }}</td></tr>
+  {% endfor %}
+  <tr><th>Total</th><th>{{ hallazgo.cuantos }}</th></tr>
+</table>
+{% else %}
+<p class="vacio">No se reconoció ningún documento del ciclo de vida.</p>
+{% endif %}
+
+<h2>Qué no se reconoció</h2>
+{% if hallazgo.todo_reconocido %}
+<p class="bien">Nada quedó afuera: todo lo que hay en su documentación sigue un molde conocido.</p>
+{% else %}
+<p class="aviso">{{ hallazgo.sin_reconocer|length }} archivo{{ hallazgo.sin_reconocer|length|pluralize:"s" }} no sigue{{ hallazgo.sin_reconocer|length|pluralize:"n" }} ningún molde conocido. <strong>No entran</strong>, y quedan acá con su ruta:</p>
+<ul>
+  {% for ruta in hallazgo.sin_reconocer %}<li>{{ ruta }}</li>{% endfor %}
+</ul>
+{% endif %}
+
+<h2>Qué no se miró, y por qué</h2>
+{% if hallazgo.carpetas_que_no_se_miraron %}
+<p class="apagado">Traer recorre solo la documentación del ciclo de vida. Estas carpetas del proyecto existen y <strong>no se miraron</strong>:</p>
+<table>
+  <tr><th>Carpeta</th><th>Por qué no se mira</th></tr>
+  {% for carpeta, porque in hallazgo.carpetas_que_no_se_miraron %}
+  <tr><td>{{ carpeta }}/</td><td>{{ porque }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="apagado">Este proyecto no tiene ninguna de las carpetas que traer se salta.</p>
+{% endif %}
+
+{% if not hecho and hallazgo.cuantos %}
+<h2>¿Traerlo?</h2>
+<p><strong>Qué va a pasar:</strong> entran {{ hallazgo.cuantos }} documentos a la plataforma, con su tipo.</p>
+<p><strong>Qué NO va a pasar:</strong></p>
+<ul>
+  <li>Nada de la carpeta del proyecto se toca: se copia, no se mueve.</li>
+  <li>Lo que no se reconoció no entra ni se transforma.</li>
+  <li>Si algo falla a mitad, no queda nada de esta pasada.</li>
+</ul>
+<form method="post">{% csrf_token %}
+  <input type="hidden" name="confirmado" value="si">
+  <button type="submit">Sí, traerlo</button>
+</form>
+{% endif %}
+{% endif %}
+
+<p><a href="{% url 'proyectos-uno' proyecto.identificador %}">Volver al proyecto</a></p>
+{% endblock %}
