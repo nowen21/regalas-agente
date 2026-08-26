@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación — CA-01 cumplido y medido; el CA-02, su RNF y el transversal de privacidad, no |
-
+| **Estado** | En curso — CA-01 cumplido y medido; el CA-02, su RNF y el transversal de privacidad, no |
 ---
 
 ## 2. Narrativa

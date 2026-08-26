@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | L |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ## 2. Narrativa
 
 - **Como** quien trabaja con la IA en proyectos de lenguajes distintos

@@ -471,3 +471,23 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-26 · agente, al ir a construir lo que creía pendiente.
 - **Scope:** estándar; aplica a toda cita de un documento como pendiente o abierto.
 - **Rel:** S-026 (marcar como siguiente una fase que no lo era) — el mismo error de leer el cuerpo y no el estado.
+
+## S-049 · El desorden que se le echa a la gente suele estar enseñado por el molde  ·  decisión · activa
+- **What:** 111 de 115 historias declaraban su estado con una palabra que su propio molde no decía. La lectura fácil era descuido acumulado. **No lo era:** cuatro moldes del estándar enseñaban tres palabras distintas para «terminado» —`Completada` en la épica, `Done` en la historia, `Hecha` en la tarea— y la lista de la épica estaba escrita **dos veces sin coincidir**, con `Cancelada` en una y no en la otra. Quien escribía una historia justo después de una épica repetía lo que acababa de leer.
+- **Why:** si el diagnóstico hubiera sido «descuido», el arreglo habría sido corregir 111 documentos y pedir más cuidado — y en seis meses estarían otra vez repartidos, porque los moldes seguirían enseñando lo mismo. **El diagnóstico decide el arreglo**, y el barato es siempre culpar a quien escribe.
+- **Also:** el número se movió de 51 a 111 al mirarlo bien. Con el vocabulario que cada molde traía, 63 «cumplían»; contra un vocabulario único y en español, solo 4. **Lo que parecía menos de la mitad era casi todo**, y la diferencia era qué se tomaba por correcto.
+- **Where:** la sección 5 de [base/glosario.md](../base/glosario.md), única definición · los cuatro moldes citándola · `vocabulario_de_estados` en [validadores/fases.py](../validadores/fases.py) · versión 35.0.0.
+- **Learned:** ante muchos documentos que incumplen lo mismo, la primera pregunta no es quién se descuidó sino **qué les enseñó a hacerlo**. Un incumplimiento repartido y constante casi nunca es descuido: es un molde. Y la prueba está en contar cuántas fuentes distintas dicen la misma cosa — si son más de una, ahí está.
+- **When/Who:** 2026-08-26 · agente y usuario, en la fase A de la HU-012.
+- **Scope:** estándar; aplica a cualquier proyecto con documentos modelo.
+- **Rel:** S-040 (dos copias de un dato se separan) — acá eran cuatro copias de un vocabulario.
+
+## S-050 · Una comprobación que reporta lo que no vino a comprobar apaga las demás  ·  error-resuelto · activa
+- **What:** la comprobación del vocabulario reportaba también las historias **sin campo de estado**. El plan lo pedía. Al correr la suite completa, dejó **siete pruebas de estructura en rojo**: sus árboles de mentira no traen ese campo porque no están probando eso.
+- **Why:** el rojo no era de las siete: era de haber ampliado el alcance de la comprobación un paso más allá de su tema. Y en un proyecto habría hecho lo mismo con **cualquier historia mínima** — un aviso permanente sobre documentos que están bien para lo que son. **Un aviso que no se puede atender se aprende a ignorar, y el que aprende a ignorarlo ignora también los buenos.**
+- **Also:** que el campo falte **sí es** un problema, y no desaparece por sacarlo de acá: pasa a quien comprueba que un documento traiga sus campos, que es otra cosa. Sacarlo no es taparlo; es ponerlo donde se puede atender.
+- **Where:** el comentario junto al `continue` en `estado_fuera_del_vocabulario`, en [validadores/fases.py](../validadores/fases.py), diciendo qué decidió y por qué · `test_limites_sin_campo_de_estado_no_lo_reporta_esta_comprobacion`.
+- **Learned:** una comprobación tiene **un tema**, y lo que reporte fuera de él sale caro en ruido. La señal de que se pasó es barata de leer: **si al agregarla se ponen en rojo pruebas que no hablan de su tema, el alcance se fue de más** — no las pruebas.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-012.
+- **Scope:** estándar; aplica a cualquier comprobación que se sume a un recorrido compartido.
+- **Rel:** S-043 (una comprobación que nadie llama), S-046 (el mismo defecto con dos formas).

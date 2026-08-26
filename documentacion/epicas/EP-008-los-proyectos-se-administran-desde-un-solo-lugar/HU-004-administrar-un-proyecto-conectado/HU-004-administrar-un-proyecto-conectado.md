@@ -12,8 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Cerrada el 2026-08-25, con sus cinco criterios probados |
-
+| **Estado** | Terminada el 2026-08-25, con sus cinco criterios probados |
 ---
 
 ## 2. Narrativa

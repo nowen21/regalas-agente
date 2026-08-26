@@ -3348,6 +3348,174 @@ class InventarioDeHU(unittest.TestCase):
                       "el comando de la plantilla no está entrecomillado")
 
 
+class VocabularioDeEstados(unittest.TestCase):
+    """El estado se escribe con una palabra del glosario — EP-003 · HU-012.
+
+    Lo que se vigila no es que la comprobación funcione: es **de dónde saca el
+    vocabulario**. Hasta la 34.2.0 cada molde traía su propia lista, y así se
+    llegó a cuatro listas, tres palabras para «terminado», y 111 de 115
+    historias fuera del vocabulario de su propio molde. Una lista escrita en el
+    código sería la quinta.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _arbol(self, estado, nombre="HU-001-una"):
+        """Un proyecto con una historia que declara `estado`.
+
+        Si `estado` es `None`, la historia no trae el campo.
+        """
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, "documentacion", "epicas",
+                               "EP-001-e", nombre)
+        os.makedirs(carpeta)
+        fila = "" if estado is None else "| **Estado** | %s |\n" % estado
+        with io.open(os.path.join(carpeta, "%s.md" % nombre), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write("# %s\n\n| Campo | Valor |\n|---|---|\n%s" % (nombre, fila))
+        return tmp.name
+
+    def _avisos(self, estado, **kw):
+        return [h.mensaje for h in
+                fases.estado_fuera_del_vocabulario(self._arbol(estado, **kw))]
+
+    # -- CA-01 · el vocabulario sale del glosario -------------------------
+    def test_el_vocabulario_lo_da_el_glosario_y_no_el_codigo(self):
+        vocab = fases.vocabulario_de_estados()
+        self.assertIn("Historia de usuario", vocab)
+        self.assertIn("Épica", vocab)
+        self.assertIn("Tarea", vocab)
+
+    def test_terminada_es_la_misma_palabra_en_los_tres_conjuntos(self):
+        """El corazón de la historia: mismo concepto, misma palabra."""
+        vocab = fases.vocabulario_de_estados()
+        for quien in ("Épica", "Historia de usuario", "Tarea"):
+            self.assertIn("Terminada", vocab[quien],
+                          "«%s» no usa la misma palabra que las otras" % quien)
+
+    def test_cambiar_el_glosario_cambia_que_acepta(self):
+        """Si el vocabulario viviera en el código, esto pasaría igual.
+
+        Es la prueba que impide que vuelvan las dos copias, que es el problema
+        entero de esta fase.
+        """
+        raiz = self._arbol("Terminada")
+        self.assertEqual(fases.estado_fuera_del_vocabulario(raiz), [])
+
+        with io.open(fases.GLOSARIO, "rb") as f:
+            copia = f.read()
+
+        def restaurar():
+            with io.open(fases.GLOSARIO, "wb") as g:
+                g.write(copia)
+
+        self.addCleanup(restaurar)
+        texto = copia.decode("utf-8").replace(
+            "| **Historia de usuario** | Pendiente · Lista · En curso · "
+            "En prueba · Terminada |",
+            "| **Historia de usuario** | Pendiente · En curso |", 1)
+        with io.open(fases.GLOSARIO, "w", encoding="utf-8",
+                     newline="\n") as f:
+            f.write(texto)
+
+        self.assertTrue(fases.estado_fuera_del_vocabulario(raiz),
+                        "quitar «Terminada» del glosario no cambió qué acepta: "
+                        "el vocabulario está escrito en el código")
+
+    # -- CA-03 · el estado inventado se avisa -----------------------------
+    def test_un_estado_del_vocabulario_no_se_avisa(self):
+        self.assertEqual(self._avisos("Pendiente"), [])
+
+    def test_un_estado_inventado_se_avisa_y_dice_cuales_valen(self):
+        avisos = self._avisos("Casi lista")
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("Casi lista", avisos[0])
+        self.assertIn("Terminada", avisos[0],
+                      "el aviso no dice cuáles valen")
+
+    def test_una_palabra_de_otro_conjunto_tampoco_vale(self):
+        """`Cancelada` existe, pero es de una épica, no de una historia."""
+        avisos = self._avisos("Cancelada")
+        self.assertEqual(len(avisos), 1)
+
+    # -- Transversal de límites -------------------------------------------
+    def test_limites_el_estado_con_texto_detras_es_valido(self):
+        """El detalle que sigue es lo que hace útil el campo."""
+        self.assertEqual(self._avisos("Terminada el 2026-08-14"), [])
+        self.assertEqual(
+            self._avisos("Terminada — los tres criterios verificados"), [])
+
+    def test_limites_la_negrita_se_tolera(self):
+        self.assertEqual(self._avisos("**Terminada**"), [])
+
+    def test_limites_la_caja_si_cuenta(self):
+        """Aceptar `terminada` abriría la puerta a que vuelvan las variantes."""
+        self.assertEqual(len(self._avisos("terminada")), 1)
+
+    def test_limites_sin_campo_de_estado_no_lo_reporta_esta_comprobacion(self):
+        """**El plan pedía reportarlo, y al construirlo se vio que no.**
+
+        Reportarlo dejaba en rojo siete pruebas de estructura cuyos árboles de
+        mentira no traen el campo porque no están probando eso; en un proyecto
+        haría lo mismo con cualquier historia mínima. Acá se comprueba **el
+        vocabulario**. Que el documento traiga sus campos es otra cosa, y va
+        aparte — queda anotado en el cierre de la fase.
+        """
+        self.assertEqual(self._avisos(None), [])
+
+    def test_limites_el_campo_vacio_no_se_confunde_con_el_que_falta(self):
+        avisos = self._avisos("")
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("vacío", avisos[0])
+
+    # -- `RN-06` · reporta y NO corrige -----------------------------------
+    def test_avisar_no_toca_el_archivo(self):
+        """Se compara en **bytes**, no como texto."""
+        raiz = self._arbol("Casi lista")
+        ruta = os.path.join(raiz, "documentacion", "epicas", "EP-001-e",
+                            "HU-001-una", "HU-001-una.md")
+        with io.open(ruta, "rb") as f:
+            antes = f.read()
+
+        self.assertTrue(fases.estado_fuera_del_vocabulario(raiz),
+                        "no reportó nada, así que no probaría que no corrige")
+
+        with io.open(ruta, "rb") as f:
+            self.assertEqual(f.read(), antes,
+                             "el programa corrigió el archivo (`EP-004 §10.2`)")
+
+    # -- `RNF` · sale por el punto de entrada de verdad --------------------
+    def test_el_aviso_sale_en_la_corrida_de_fases(self):
+        """Una comprobación que nadie llama es una comprobación que no existe.
+
+        Lo enseñó un sabotaje en la fase anterior (`S-043`): descolgarla de
+        `validar` dejaba todas sus otras pruebas en verde.
+        """
+        raiz = self._arbol("Casi lista")
+        mensajes = [h.mensaje for h in fases.validar(raiz)]
+        self.assertTrue(any("Casi lista" in m for m in mensajes),
+                        "el aviso no sale por `validar`")
+
+    # -- CA-02 · el árbol real, ya normalizado -----------------------------
+    def test_las_historias_de_este_repositorio_usan_el_vocabulario(self):
+        self.assertEqual(fases.estado_fuera_del_vocabulario(self.RAIZ), [],
+                         "alguna historia volvió a salirse del vocabulario")
+
+    def test_ningun_molde_lista_los_estados_por_su_cuenta(self):
+        """CA-01: un solo sitio define, los moldes citan."""
+        viejos = ["Backlog / Ready", "En curso / Completada",
+                  "En curso / Hecha / Bloqueada"]
+        for nombre in ("01-planteamiento", "03-epica", "04-HU",
+                       "10-estado-fase"):
+            texto = comun.leer(os.path.join(
+                self.RAIZ, "plantillas", "ciclo-vida-proyectos",
+                "%s.md" % nombre))
+            for viejo in viejos:
+                self.assertNotIn(viejo, texto,
+                                 "%s volvió a listar los estados" % nombre)
+
+
 class ClavesYDatosSensibles(unittest.TestCase):
     """Claves en el código y archivos que no se guardan — EP-004 · HU-007.
 

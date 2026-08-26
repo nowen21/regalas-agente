@@ -12,8 +12,7 @@
 | **Prioridad** | Should |
 | **Estimación** | L |
 | **Solicitante** | El usuario |
-| **Estado** | Escrita, sin aprobar |
-
+| **Estado** | Pendiente, sin aprobar |
 ---
 
 ## 2. Narrativa

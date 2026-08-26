@@ -139,6 +139,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | [HU-009](HU-009-modelo-del-resumen-de-sesion/HU-009-modelo-del-resumen-de-sesion.md) | Crear el modelo del resumen de sesión | Must | S |
 | [HU-010](HU-010-glosario-de-la-terminologia/HU-010-glosario-de-la-terminologia.md) | Crear el glosario de la terminología del estándar | Should | M |
 | [HU-011](HU-011-el-inventario-de-funcionalidades/HU-011-el-inventario-de-funcionalidades.md) | «Título» | «Prioridad» | «Estimación» |
+| [HU-012](HU-012-una-sola-palabra-para-cada-estado/HU-012-una-sola-palabra-para-cada-estado.md) | Una sola palabra para cada estado | Should | M |
 
 ## 10. Consideraciones técnicas
 
@@ -194,6 +195,7 @@ Las reglas quedan como buenas intenciones. Nadie sabe cómo se ve el cumplimient
 | Fase 2 | Modelos de fase, especificación y capa de proyecto | HU-003, HU-004, HU-005 |
 | Fase 3 | Procedimientos por rol | HU-006 |
 | Fase 4 | Dirección del flujo y cortes de aprobación | HU-007, HU-008 |
+| Fase 5 | Que los moldes no enseñen tres palabras para lo mismo: el vocabulario de los estados | HU-012 |
 
 ## 15. Definition of Ready
 

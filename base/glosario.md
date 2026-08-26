@@ -127,6 +127,40 @@ La memoria escrita: lo que no se recupera leyendo el código.
 
 ---
 
+## 5 · En qué estado está algo
+
+**Acá se define, y en ningún otro sitio.** Hasta la versión 34.2.0 cada molde traía su propia lista: cuatro listas, tres palabras distintas para «terminado», y la de la épica escrita dos veces sin coincidir. De 115 historias, 111 usaban una palabra que su propio molde no decía. **No era descuido: quien escribía una historia después de una épica repetía lo que acababa de leer.**
+
+**La regla es una sola: mismo concepto, misma palabra.** Que una épica, una historia y una tarea tengan **conjuntos** distintos es correcto: una épica se cancela y una tarea se bloquea, y una historia ninguna de las dos. Lo que no vale es que lo mismo se escriba de dos formas.
+
+| Estado | Qué quiere decir | Lo usan |
+|---|---|---|
+| **Pendiente** | Existe y todavía no empezó | Historia · tarea |
+| **Propuesta** | Escrita, sin aprobar | Épica |
+| **Aprobada** | Aprobada, y todavía no empezó | Épica |
+| **Lista** | Escrita y aprobada, lista para construirse | Historia |
+| **En curso** | Se está construyendo | Épica · historia · tarea |
+| **En prueba** | Construida, y todavía probándose | Historia |
+| **Terminada** | Se terminó | Épica · historia · tarea |
+| **Bloqueada** | Detenida por algo de afuera, con su motivo escrito | Tarea |
+| **Cancelada** | Se decidió no hacerla | Épica |
+
+**Los tres conjuntos:**
+
+| Documento | Estados que puede declarar |
+|---|---|
+| **Épica** | Propuesta · Aprobada · En curso · Terminada · Cancelada |
+| **Historia de usuario** | Pendiente · Lista · En curso · En prueba · Terminada |
+| **Tarea** de un plan | Pendiente · En curso · Terminada · Bloqueada |
+
+**Se escribe la palabra sola, y después lo que haga falta.** `Terminada el 2026-08-14` y `Terminada — los tres criterios verificados` son las dos correctas: lo que se comprueba es con qué palabra empieza.
+
+**Por qué «Terminada» y no «Cerrada»**, aunque seis historias usaran `Cerrada`: en el estándar `cerrada` ya significa otra cosa, porque es como se marca una **estación** de fase. Reusarla mezclaría dos vocabularios.
+
+**Y por qué en español.** El vocabulario anterior decía `Backlog / Ready / Done`. [`01·C20`](01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) pide traducir, y este archivo es justamente el que lleva la lista de lo que se queda en otro idioma y por qué: escribirlos acá sin razón habría sido incumplir en el sitio donde más se nota.
+
+---
+
 ## Lo que sigue en otro idioma
 
 [`01·C20`](01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) pide que todo término se escriba traducido, y que el que no tenga traducción usada se deje tal cual y se explique la primera vez. Esta es la lista de los dos casos, verificada el 2026-08-14.

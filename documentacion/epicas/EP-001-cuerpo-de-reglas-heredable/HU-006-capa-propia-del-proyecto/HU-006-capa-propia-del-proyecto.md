@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien administra un proyecto |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ## 2. Narrativa
 
 - **Como** quien administra un proyecto con su lenguaje, su dominio y su cliente

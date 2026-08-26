@@ -11,8 +11,7 @@
 | **Prioridad** | Should |
 | **Estimación** | S |
 | **Solicitante** | Quien define el estándar (pendiente 60, salida «una historia por capítulo», decidida por el usuario el 2026-08-22) |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ## 2. Narrativa
 
 - **Como** quien mantiene el estándar

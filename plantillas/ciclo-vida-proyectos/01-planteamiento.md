@@ -90,7 +90,7 @@ Lo que el agente debe contemplar aunque no sea el camino feliz.
 
 | Épica | Título | Estado |
 |---|---|---|
-| EP-«NNN» | «…» | Propuesta / Aprobada / En curso / Completada |
+| EP-«NNN» | «…» | Uno de [los estados del glosario](«RUTA-ESTANDAR»/base/glosario.md#5--en-qué-estado-está-algo) para una épica |
 
 ---
 

@@ -177,7 +177,8 @@ def validar(proyecto):
             hallazgos += _validar_fases(ruta_hu, donde_hu, num_epica, num_hu)
 
     return (hallazgos + cierre_sin_sello(proyecto)
-            + cuenta_escrita_a_mano(proyecto))
+            + cuenta_escrita_a_mano(proyecto)
+            + estado_fuera_del_vocabulario(proyecto))
 
 
 # `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.
@@ -243,6 +244,102 @@ def cuenta_escrita_a_mano(proyecto):
                 "guarda la cuenta a mano en el campo **%s**, y el árbol ya la "
                 "sabe: la da `validar.py fases`. Dos copias del mismo dato se "
                 "separan (EP-004·HU-019)" % campo))
+    return hallazgos
+
+
+# `EP-003·HU-012` · El estado se escribe con una palabra del vocabulario.
+#
+# **El vocabulario sale del glosario, no de una lista escrita acá.** Es lo
+# único que impide que vuelva el problema que esta comprobación viene a
+# vigilar: hasta la 34.2.0 cada molde traía su propia lista, y así se llegó a
+# cuatro listas, tres palabras para «terminado», y 111 de 115 historias fuera
+# del vocabulario de su propio molde. Poner la lista acá sería la quinta.
+#
+# Se lee del **estándar**, no del proyecto que se valida: un proyecto hereda
+# las reglas, no las redefine.
+ESTANDAR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GLOSARIO = os.path.join(ESTANDAR, "base", "glosario.md")
+
+# `| **Historia de usuario** | Pendiente · Lista · En curso · … |`
+_CONJUNTO = re.compile(
+    r"^\|\s*\*\*(Épica|Historia de usuario|Tarea)\*\*[^|]*\|\s*([^|]+?)\s*\|",
+    re.MULTILINE)
+_ESTADO_DECLARADO = re.compile(
+    r"^\|\s*\*\*Estado\*\*\s*\|\s*(.+?)\s*\|", re.MULTILINE)
+
+
+def vocabulario_de_estados():
+    """`{"Historia de usuario": {"Pendiente", …}}`, leído del glosario.
+
+    Devuelve `{}` si el glosario no está o no trae la tabla: quien reporta que
+    falta es otro validador, y dos hallazgos por lo mismo es ruido.
+    """
+    texto = _leer(GLOSARIO)
+    if not texto:
+        return {}
+    conjuntos = {}
+    for quien, lista in _CONJUNTO.findall(texto):
+        estados = {e.strip().strip("*") for e in lista.split("·")}
+        conjuntos[quien] = {e for e in estados if e}
+    return conjuntos
+
+
+def estado_fuera_del_vocabulario(proyecto):
+    """Una historia declara un estado que el glosario no define — `HU-012`.
+
+    **Avisa, no falla** (`EP-004 §10.2`), y **no corrige**: el programa
+    reporta. Se mira **con qué palabra empieza**, no la frase entera: `Terminada
+    el 2026-08-14` es correcto, y el detalle que sigue es lo que hace útil el
+    campo.
+    """
+    validos = vocabulario_de_estados().get("Historia de usuario")
+    if not validos:
+        return []
+
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    if not os.path.isdir(raiz):
+        return []
+
+    hallazgos = []
+    for nombre_epica in _subcarpetas(raiz):
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            relativa = "%s/%s/%s/%s.md" % (CARPETA, nombre_epica, nombre_hu,
+                                           nombre_hu)
+            texto = _leer(os.path.join(ruta_epica, nombre_hu,
+                                       "%s.md" % nombre_hu))
+            if texto is None:
+                continue          # que falte el documento lo reporta `validar`
+            dice = _ESTADO_DECLARADO.search(texto)
+            if not dice:
+                # **Que el campo falte no lo reporta esta comprobación**, y se
+                # decidió al construirla. Reportarlo ensuciaba siete pruebas de
+                # estructura cuyos árboles de mentira no lo traen porque no
+                # están probando eso — y en un proyecto haría lo mismo con
+                # cualquier historia mínima. Acá se comprueba **el vocabulario**;
+                # que el documento traiga sus campos es otra cosa, y va aparte.
+                continue
+            # La negrita se tolera: `**Terminada**` dice lo mismo, y reportarla
+            # sería reportar el marcado en vez del contenido. La **caja sí
+            # cuenta**: `terminada` no es la palabra del glosario, y aceptarla
+            # abriría la puerta a que el vocabulario vuelva a tener variantes.
+            valor = dice.group(1).strip().lstrip("*")
+            if not valor:
+                hallazgos.append(Hallazgo(
+                    AVISO, relativa, 0,
+                    "declara su estado vacío. Los que valen: %s "
+                    "(EP-003·HU-012)" % " · ".join(sorted(validos))))
+                continue
+            if any(valor.startswith(v) for v in validos):
+                continue
+            hallazgos.append(Hallazgo(
+                AVISO, relativa, 0,
+                "declara el estado «%s», que el glosario no define. Los que "
+                "valen para una historia: %s (EP-003·HU-012)"
+                % (valor.split("—")[0].split(".")[0].strip()[:34],
+                   " · ".join(sorted(validos)))))
     return hallazgos
 
 

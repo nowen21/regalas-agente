@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario, vía el proyecto `shopnest-mesa` (pendiente 74): «esto es importante que cimiento lo sepa» |
-| **Estado** | Done |
-
+| **Estado** | Terminada |
 ## 2. Narrativa
 
 - **Como** quien encarga un desarrollo

@@ -18,7 +18,7 @@
 | **Horizonte** | «Trimestre / release objetivo» |
 | **Product Owner** | «Nombre» |
 | **Tech Lead / Arquitecto** | «Nombre» |
-| **Estado** | Propuesta / Aprobada / En curso / Completada / Cancelada |
+| **Estado** | Uno de [los estados del glosario](«RUTA-ESTANDAR»/base/glosario.md#5--en-qué-estado-está-algo): Propuesta, Aprobada, En curso, Terminada o Cancelada |
 
 ---
 

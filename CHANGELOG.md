@@ -11,6 +11,35 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.0.0 — 2026-08-26
+
+**Cada documento de trabajo dice en qué estado está — sin empezar, en curso, terminado — y hasta ahora el estándar enseñaba tres palabras distintas para «terminado», según qué molde tuviera abierto quien escribía.** Ahora hay una sola palabra para cada estado, escrita en un único sitio, y un programa comprueba que se use.
+
+**MAYOR** ⚠ obliga a migrar: quien ya tenga documentos escritos cambia la palabra de su campo **Estado** por la del vocabulario nuevo. Es una palabra por documento, y el detalle que venga detrás se conserva.
+
+**«Terminado» se escribía de tres formas, y el estándar era el que las enseñaba.** El molde de la épica decía `Completada`, el de la historia `Done`, el de la tarea `Hecha`. Y la lista de la épica estaba escrita **dos veces sin coincidir**: `01-planteamiento` no traía `Cancelada` y `03-epica` sí. De 115 historias de este repositorio, **111 usaban una palabra que su propio molde no decía** — no por descuido, sino porque quien escribía una historia después de una épica repetía lo que acababa de leer.
+
+**Ahora los estados se definen en el glosario y en ningún otro sitio.** Los cuatro moldes lo citan en vez de llevar su propia lista. La regla es una: mismo concepto, misma palabra. Que una épica, una historia y una tarea tengan **conjuntos** distintos sigue siendo correcto — una épica se cancela y una tarea se bloquea —, pero «terminado» es `Terminada` en las tres.
+
+**Y el vocabulario pasó al español.** Decía `Backlog / Ready / Done`, y [`01·C20`](base/01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica) pide traducir. El glosario es justamente el documento que lleva la lista de lo que se queda en otro idioma y por qué: escribirlos ahí sin razón habría sido incumplir en el archivo donde más se nota.
+
+**Qué tiene que hacer un proyecto que ya tenía el estándar.** Cambiar la palabra del campo **Estado** de sus épicas, historias y planes:
+
+| Decía | Pasa a |
+|---|---|
+| `Backlog` · `Escrita` | `Pendiente` |
+| `Ready` · `Aprobada` (en una historia) | `Lista` |
+| `En implementación` · `En QA` | `En curso` · `En prueba` |
+| `Done` · `Completada` · `Cumplida` · `Cerrada` · `Hecha` | `Terminada` |
+
+**No corre prisa y nada se detiene:** la comprobación **avisa**, no falla. Pero un aviso que no se atiende se vuelve ruido, y el ruido es como se terminan apagando las comprobaciones.
+
+**«Terminada» y no «Cerrada»**, aunque `Cerrada` se usara: en el estándar `cerrada` ya significa otra cosa — es como se marca una **estación** de fase. Reusarla mezclaría dos vocabularios.
+
+**De dónde salió.** De preguntarse por qué se pudo afirmar cuatro veces que una historia cerrada estaba abierta, sin que nada lo cazara (`S-048`). La respuesta era que ningún programa podía saberlo: hacía falta una lista de sinónimos que envejece.
+
+---
+
 ## 34.2.0 — 2026-08-26
 
 **MENOR** (el inventario deja de pedir una cuenta a mano; ningún proyecto queda obligado a nada, y lo que aparece es un aviso).

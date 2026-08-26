@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ## 2. Narrativa
 
 - **Como** quien trabaja con la IA en proyectos con datos y con clientes reales

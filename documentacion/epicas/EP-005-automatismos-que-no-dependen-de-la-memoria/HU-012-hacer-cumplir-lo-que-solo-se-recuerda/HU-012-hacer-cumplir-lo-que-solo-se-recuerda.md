@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | `shopnest-mesa`, que lo reportó |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ---
 
 ## 2. Narrativa

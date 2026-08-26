@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Cumplida — los dos CA y los dos transversales verificados el 2026-08-17 |
-
+| **Estado** | Terminada — los dos CA y los dos transversales verificados el 2026-08-17 |
 ---
 
 ## 2. Narrativa

@@ -57,7 +57,7 @@
 
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Pendiente / En curso / Hecha / Bloqueada | «si está bloqueada, por qué» |
+| T-01 | Uno de [los estados del glosario](«RUTA-ESTANDAR»/base/glosario.md#5--en-qué-estado-está-algo) para una tarea: Pendiente, En curso, Terminada o Bloqueada | «si está bloqueada, por qué» |
 
 **Hechas:** «N de N». **Bloqueadas:** «cuáles».
 
