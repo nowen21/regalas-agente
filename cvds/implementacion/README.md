@@ -62,7 +62,7 @@ Cada funcionalidad del inventario baja a una historia, y cada historia se ejecut
 | B. Se conecta un proyecto | F-001 | Proyectos | A, D | Cerrada el 2026-08-25, commit `c1b9185` |
 | C. La ruta perdida se avisa | F-002 | Proyectos | B | Cerrada el 2026-08-25, commit `ff2248e` |
 | D. Todo lo que se hace queda registrado | F-018 | Auditoría | A | Cerrada el 2026-08-25, commit `5231022` |
-| E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Cerrada el 2026-08-25 |
+| E. Se trae un proyecto con lo que tenga escrito | F-027 | Importación | B | Cerrada el 2026-08-25, commit `c998695` |
 | F. Lo que no se reconoce se reporta | F-028 | Importación | E | Sin abrir |
 | G. Se ve el estado de un proyecto | F-003 | Proyectos | E | Sin abrir |
 | H. Un proyecto conectado se administra | F-035 | Proyectos | B | Cerrada el 2026-08-25, commit `5bf4ebb` |

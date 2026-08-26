@@ -134,7 +134,7 @@ Y el proyecto de origen sigue intacto
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| [E · Se trae un proyecto con lo que tenga escrito](E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/README.md) | Esta historia | Cerrada el 2026-08-25. 973 documentos traídos del repositorio real |
+| [E · Se trae un proyecto con lo que tenga escrito](E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/README.md) | Esta historia | Cerrada el 2026-08-25, commit `c998695`. 973 documentos traídos del repositorio real |
 
 ---
 

@@ -14,7 +14,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9, commit. **Última puerta pasada:** 8.
+**Estación actual:** cerrada. **Última puerta pasada:** 9, el commit `c998695`.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
@@ -26,13 +26,13 @@
 | 6 | Ejecución continua | Reconocer, mostrar, traer, no duplicar | ☑ |
 | 7 | Pruebas | Los nueve casos con veredicto: 9 de 9 en el ciclo 2 | ☑ |
 | 8 | Cierre de la fase | [funcionalidad_implementada.md](funcionalidad_implementada.md), con cuatro deudas declaradas | ☑ |
-| 9 | Commit único | 👤 Aprobación aparte para guardar | ☐ |
+| 9 | Commit único | 👤 «si», el 2026-08-25. Commit `c998695` | ☑ |
 
 ---
 
 ## 2. Qué falta para avanzar
 
-**El visto bueno para guardar.** Las siete tareas hechas, los nueve casos en verde con su evidencia, y el cierre escrito.
+**Nada: la fase cerró**, en el commit `c998695`. Las siete tareas hechas, los nueve casos en verde con su evidencia, y el cierre escrito.
 
 **El caso real:** este repositorio entró con **973 documentos, ninguno sin reconocer, en 13,6 segundos**. La segunda pasada no duplicó nada, y el repositorio quedó con sus mismos 1924 archivos.
 

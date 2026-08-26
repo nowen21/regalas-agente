@@ -17,4 +17,4 @@
 
 **Qué quedó.** La documentación que un proyecto ya tiene escrita entra a la plataforma, copiando. **Este repositorio entró con 973 documentos, ninguno sin reconocer, en 13,6 s**, y quedó intacto.
 
-**Estado:** estación 9. Los nueve casos de prueba en verde y el cierre escrito. Falta el visto bueno para guardar.
+**Estado:** cerrada, en el commit `c998695`.
