@@ -1,132 +1,116 @@
-# Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> Documento de **cierre de una fase** ([`02·F6`](../../../../../base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](../../../../../base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la **trazabilidad especificación → código** ([`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
-
----
+# Funcionalidad implementada — Fase `B-EP-005-HU-002-la-clave-sin-comillas-tambien-se-tapa` (módulo Automatismos)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
-| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
-| **Fecha de cierre** | AAAA-MM-DD |
-| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
-| **Commit** | «hash — se completa al commitear» |
+| **Fase** (identificador · `02·F12.6`) | `B-EP-005-HU-002-la-clave-sin-comillas-tambien-se-tapa` |
+| **Módulo** | Automatismos que no dependen de la memoria |
+| **Especificación del módulo** | La propia [HU-002](../HU-002-enmascarar-claves.md) |
+| **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md), abierto el 2026-08-22 |
+| **HU / CA cubiertas** | [HU-002](../HU-002-enmascarar-claves.md): las formas de clave que el enmascarador no tapaba |
+| **Fecha de cierre** | 2026-08-27 |
+| **Versión del estándar al cerrar** | `35.1.0` |
+| **Commit** | Por anotar al guardar |
 
-> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
+> **Se ejecutó el 2026-08-22 y este documento se escribió el 2026-08-27.** Hasta entonces **era el molde sin llenar**. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
 
 ---
 
 ## 1. Qué se implementó — resumen
 
-«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
+**Una clave pegada sin comillas ya no queda escrita en claro.** El enmascarador tapaba las que venían entrecomilladas y dejaba pasar `API_KEY=supersecreto123456`, que es como se pega una clave de verdad en un chat.
+
+**Y sigue sin tapar lo que no es una clave**, que es la mitad del trabajo: código pegado, valores cortos, lecturas del entorno, moldes con `changeme`, y frases normales donde aparece la palabra «clave».
 
 ---
 
-## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
+## 2. Trazabilidad  ·  `13·DOC11`
 
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+### 2.1 Historia → implementación
 
-### 2.1 Especificación → implementación
+| Ítem | Categoría | Estado | Evidencia |
+|---|---|---|---|
+| Asignación sin comillas | servicio | ✅ | `API_KEY=supersecreto123456`: **se tapa el valor, no la variable** |
+| Con dos puntos | servicio | ✅ | `password: MiClave123456`: se tapa |
+| La palabra en español | servicio | ✅ | `la contraseña: Patito2026`: se tapa |
+| Valor largo sin números | servicio | ✅ | `secret=abcdefghijklmnop`: se tapa |
 
-> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
->
-> **Estados:** ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ, no se difiere como N/A.
-
-| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
-|---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
-
-**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
+**Que se tape el valor y no el nombre de la variable importa:** un registro donde no se sabe ni qué variable era no sirve para nada.
 
 ### 2.2 Plan de trabajo → ejecución
 
-> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
+| Qué | Resultado |
+|---|---|
+| Lo que el plan pedía | ✅ hecho, **medido antes de dejarlo** como pide `20·M19` |
+| Defectos propios | **Ninguno** |
 
-| Tarea | Qué era | Estado | Dónde quedó | Evidencia |
-|---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
+**Archivos tocados que el plan no declaraba** (`02·F8`): ninguno.
 
-**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
-
-**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
-
-**Archivos tocados que el plan no declaraba**, [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
-
-| Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
-|---|---|---|
-| `«ruta»` | | |
-
-> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
-
-**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
+**Lo que no se hizo en su momento:** este documento. **La fase quedó cinco días con su cierre en blanco.**
 
 ---
 
-## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+## 3. Qué se probó  ·  `08` / `02·F5`
 
-> **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
+| Qué | Resultado |
+|---|---|
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
+| **Veredicto** | **Cumple** |
+| **Suites** | `test_la_clave_sin_comillas_se_enmascara` (12), `test_la_clave_no_llega_al_historico` (11), `test_el_historico_se_busca_por_tema` (7) |
+| **Defectos abiertos que se aceptaron** | Ninguno |
 
-- **Fuente:** «`resultado_pruebas.md`», **Veredicto:** «Cumple / Cumple con observaciones».
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
-  - «Lista de comprobaciones hechas a mano y su resultado.»
-- **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
+**Nueve casos, y cinco son de lo que NO debe tapar:**
+
+| Caso | Qué sale |
+|---|---|
+| Código pegado en el chat: `clave = h.regla or algo` | **No** se tapa |
+| Valor corto y sin números: `token: xyz` | **No** se tapa |
+| Lee del entorno: `API_KEY=os.environ[...]` | **No** se tapa |
+| Un molde: `password: changeme` | **No** se tapa |
+| Una frase normal: «La clave del asunto es que el proceso sirva» | **No** se toca |
+
+**Los cinco de «no tapar» son los que sostienen el veredicto**, y en un enmascarador más que en cualquier otra comprobación: uno que tapa de más vuelve ilegible el histórico, y un histórico ilegible se deja de leer. **Entonces la clave estaría tapada en un archivo que nadie abre**, que no es lo mismo que estar a salvo.
+
+**Y el caso del molde es el más fino:** `changeme` tiene forma de clave y no lo es. Taparlo escondería justamente lo que hay que ver — que alguien dejó el valor de ejemplo puesto.
 
 ---
 
-## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
+## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
-- **Permisos o datos base sembrados:** «si aplica».
+**No se usa: corre solo.** El enganche del histórico enmascara antes de escribir, así que una clave pegada en el chat no llega al archivo.
 
 ---
 
-## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 5. Decisiones no obvias  ·  `13·DOC2` / `13·DOC5`
 
-| Decisión | Por qué (y qué se descartó) | Señal registrada |
-|---|---|---|
-| | | «id / enlace en la memoria» |
+| Decisión | Por qué |
+|---|---|
+| Se tapa **el valor**, no el nombre de la variable | Un registro donde no se sabe qué variable era no sirve |
+| Un valor **corto y sin números** no se tapa | Se parece más a una palabra que a una clave, y tapar de más cuesta más que dejar pasar un `xyz` |
+| Una lectura del entorno **no se tapa** | `os.environ[...]` no es una clave: es la forma correcta de no tenerla escrita |
+| Un molde con `changeme` **no se tapa** | Taparlo escondería que alguien dejó el ejemplo puesto |
 
 ---
 
 ## 6. Deuda técnica y pendientes generados
 
-| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|---|
-| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
-
-**Los cuatro orígenes**, y qué dice cada uno:
-
-| Origen | Qué pasó | Qué significa |
-|---|---|---|
-| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../../../../../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
-| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
-| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
-| **Diferido por el plan** | El propio [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
-
-> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
+| Descripción | Estado al cerrar |
+|---|---|
+| La fase quedó con su **cierre en blanco cinco días**, contada como completa | **Corregido acá.** Es uno de los cuatro casos que destaparon `S-052` |
 
 ---
 
-## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
+## 7. Índices y mapas actualizados  ·  `13·DOC9` / `13·DOC13`
 
-- [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
-- [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
-- [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](../../../../../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizado con lo realmente implementado.
+- [x] La historia [HU-002](../HU-002-enmascarar-claves.md): su §8 nombra esta fase.
+- [x] El pendiente que la originó, en `pendientes/hecho/`.
+- [x] El inventario de historias, que **ya no se mantiene a mano** desde la `35.0.0`.
 
 ---
 
-## 8. Despliegue — si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
+## 8. Despliegue — si aplica  ·  `13·DOC4`
 
-Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
-
-- Cambios de esquema / migraciones a correr: «orden».
-- Datos base / permisos a sembrar: «comandos».
-- Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto, ver §7 del `plan_trabajo`».
+- **Migraciones a correr:** ninguna.
+- **Qué cambia para quien ya tenía el estándar:** el enmascarador tapa más formas de clave. **Lo ya escrito en el histórico no se toca**: el enmascarado ocurre al escribir, y reescribir el histórico sería borrar el rastro.
+- **Reversión:** se descarta el commit.

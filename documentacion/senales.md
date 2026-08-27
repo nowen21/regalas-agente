@@ -511,3 +511,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-26 · agente y usuario, al cerrar seis fases de golpe.
 - **Scope:** estándar; aplica a cualquier proyecto que registre deuda en documentos de fase.
 - **Rel:** S-048 (el estado se lee en su campo, no en la narrativa).
+
+## S-053 · Contar archivos presentes da por terminado un molde sin llenar  ·  error-resuelto · activa
+- **What:** cuatro fases figuraban completas en el inventario y su `estado-fase` decía **«Ejecutada y cerrada»**. Su documento de cierre era **el molde en blanco**, con 31 marcadores por reemplazar cada uno: todavía decía `«2-4 líneas en lenguaje claro»` y `AAAA-MM-DD`. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
+- **Why:** el inventario cuenta que **el archivo exista**, no que diga algo. Un andamio que crea los cinco documentos vacíos convierte una fase recién abierta en una fase «completa» — y el número que dice cuánto falta se vuelve optimista sin que nadie mienta a propósito. **Es el mismo defecto que el inventario a mano, un nivel más adentro**: antes el número se copiaba, ahora se calcula bien y cuenta lo que no debe.
+- **Also:** costó dos veces el mismo día. Primero se afirmó que esas fases «están completas con sus cinco documentos» leyendo la **lista de archivos**; se volvió a leer la existencia y no el contenido, que es `S-048` otra vez. Y una de las cuatro traía escrita una deuda que se volvió a descubrir por otro camino cuatro días después, porque su cierre en blanco la dejaba invisible.
+- **Where:** los cuatro cierres escritos el 2026-08-27, cada uno diciendo desde cuándo estaba en blanco · la medida que los encontró: contar marcadores `«…»` y `AAAA-MM-DD` por documento, y separar 4 con 31 de 12 con cinco a siete, que son comillas de prosa.
+- **Learned:** cuando algo se cuenta por su presencia, **hay que preguntarse qué pasa si está y está vacío**. Y hay una medida barata que lo destapa: **contar los marcadores del molde que quedaron sin reemplazar**. Un documento con treinta no es un documento: es un formulario. La misma cuenta separa el molde en blanco de la prosa que usa comillas angulares, sin falsos positivos.
+- **When/Who:** 2026-08-27 · agente y usuario, al ir a cerrar las fases con criterios en rojo.
+- **Scope:** estándar; aplica a cualquier conteo que mire si un archivo existe.
+- **Rel:** S-052 (una deuda en una fase sin cerrar no la lee nadie), S-048 (leer la existencia y no el contenido).

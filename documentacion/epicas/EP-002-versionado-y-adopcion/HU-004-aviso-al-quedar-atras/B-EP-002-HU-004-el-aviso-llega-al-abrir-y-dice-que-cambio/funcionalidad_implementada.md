@@ -1,132 +1,118 @@
-# Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> Documento de **cierre de una fase** ([`02·F6`](../../../../../base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](../../../../../base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la **trazabilidad especificación → código** ([`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
-
----
+# Funcionalidad implementada — Fase `B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio` (módulo Programas de comprobación)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
-| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
-| **Fecha de cierre** | AAAA-MM-DD |
-| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
-| **Commit** | «hash — se completa al commitear» |
+| **Fase** (identificador · `02·F12.6`) | `B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio` |
+| **Módulo** | Programas de comprobación |
+| **Especificación del módulo** | La propia [HU-004](../HU-004-aviso-al-quedar-atras.md) |
+| **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md), abierto el 2026-08-22 |
+| **HU / CA cubiertas** | [HU-004](../HU-004-aviso-al-quedar-atras.md): el `CA-01`, que la fase `A` dejó en rojo |
+| **Fecha de cierre** | 2026-08-26 |
+| **Versión del estándar al cerrar** | `35.1.0` |
+| **Commit** | Por anotar al guardar |
 
-> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
+> **Se ejecutó el 2026-08-22 y este documento se escribió el 2026-08-26.** Hasta entonces **era el molde sin llenar**. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
 
 ---
 
 ## 1. Qué se implementó — resumen
 
-«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
+**El aviso de desfase llega al abrir la sesión, y antes no llegaba.** La fase `A` lo había dejado en rojo: la comprobación existía, pero **el arranque no preguntaba por ella**, así que un proyecto atrasado podía trabajar toda la sesión sin enterarse.
+
+**Y el aviso dice qué cambió**, no solo que hay algo nuevo: resume el tramo entre la versión adoptada y la vigente, poniendo primero lo que obliga a migrar.
+
+**Medido sobre un proyecto real:** el arranque de shopnest-mesa pasó de **un** hallazgo a **tres**.
 
 ---
 
-## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
+## 2. Trazabilidad  ·  `13·DOC11`
 
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+### 2.1 Historia → implementación
 
-### 2.1 Especificación → implementación
-
-> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
->
-> **Estados:** ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ, no se difiere como N/A.
-
-| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
+| Ítem de la historia | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
+| `CA-01` el aviso llega al abrir sesión | automatismo | El arranque, que ahora pregunta por la versión | ✅ | Sobre shopnest-mesa: de 1 hallazgo a 3 |
+| Y dice **qué cambió** | servicio | El resumen del tramo | ✅ | De `2.0.0` a `3.0.0` da `2.1.0` y `3.0.0` |
+| Lo que obliga a migrar va primero | servicio | El orden del resumen | ✅ | Un tramo con una MAYOR: antes que los títulos |
 
-**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
+**La evidencia no es un caso fabricado:** es un proyecto de verdad cuyo arranque cambió de comportamiento.
 
 ### 2.2 Plan de trabajo → ejecución
 
-> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
+| Qué | Resultado |
+|---|---|
+| Lo que el plan pedía | ✅ hecho, comprobado sobre un proyecto real |
+| Defectos propios | **Ninguno** |
 
-| Tarea | Qué era | Estado | Dónde quedó | Evidencia |
-|---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
+**Archivos tocados que el plan no declaraba** (`02·F8`): ninguno.
 
-**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
-
-**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
-
-**Archivos tocados que el plan no declaraba**, [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
-
-| Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
-|---|---|---|
-| `«ruta»` | | |
-
-> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
-
-**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
+**Lo que no se hizo en su momento:** este documento. **La fase quedó cuatro días con su cierre en blanco.**
 
 ---
 
-## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+## 3. Qué se probó  ·  `08` / `02·F5`
 
-> **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
+| Qué | Resultado |
+|---|---|
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
+| **Veredicto** | **Cumple** |
+| **Suite** | `test_el_aviso_de_desfase_llega_y_dice_que_cambio`: **9 pruebas, todas en verde** |
+| **Defectos abiertos que se aceptaron** | Ninguno |
 
-- **Fuente:** «`resultado_pruebas.md`», **Veredicto:** «Cumple / Cumple con observaciones».
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
-  - «Lista de comprobaciones hechas a mano y su resultado.»
-- **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
+**Siete casos, y varios son de lo que NO debe hacer:**
+
+| Caso | Qué sale |
+|---|---|
+| El arranque pregunta por la versión | Lo hace, **y antes no** |
+| Lo que devuelve llega sin perderse | Aparece en la salida del arranque |
+| El tramo son las de en medio y la de llegada | De `2.0.0` a `3.0.0`: `2.1.0` y `3.0.0` |
+| La adoptada **no** entra en su propio tramo | No se cuenta |
+| Un proyecto al día tiene tramo vacío | Nada que resumir |
+| Lo que obliga a migrar va primero | Antes que los títulos |
+| Sin registro **no se inventa** un tramo | Vacío |
+
+**El segundo caso es el que más importa y el más fácil de olvidar.** Que la comprobación devuelva algo no sirve si el arranque lo descarta: es el mismo hueco que la fase `A` había encontrado, y probarlo aparte es lo que impide que vuelva.
 
 ---
 
-## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
+## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
-- **Permisos o datos base sembrados:** «si aplica».
+**No se usa: llega solo.** Al abrir sesión en un proyecto instalado, el arranque pregunta por la versión y muestra el aviso si está atrasado, con el resumen del tramo.
 
 ---
 
-## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 5. Decisiones no obvias  ·  `13·DOC2` / `13·DOC5`
 
-| Decisión | Por qué (y qué se descartó) | Señal registrada |
-|---|---|---|
-| | | «id / enlace en la memoria» |
+| Decisión | Por qué |
+|---|---|
+| El tramo son **las de en medio y la de llegada**, no la de partida | La versión que ya se tiene no es novedad |
+| **Lo que obliga a migrar va primero** | Es lo único del resumen que pide trabajo. Enterrarlo entre títulos lo vuelve invisible |
+| Sin registro legible **no se inventa** un tramo | `04·R4`: no afirmar sobre lo que no se leyó |
+| El aviso **informa y no dice cómo subir** | Subir es decisión del proyecto. Un aviso que además instruye se lee como una orden |
 
 ---
 
 ## 6. Deuda técnica y pendientes generados
 
-| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|---|
-| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
-
-**Los cuatro orígenes**, y qué dice cada uno:
-
-| Origen | Qué pasó | Qué significa |
-|---|---|---|
-| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../../../../../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
-| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
-| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
-| **Diferido por el plan** | El propio [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
-
-> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
+| Descripción | Estado al cerrar |
+|---|---|
+| **El aviso no dice qué hacer para subir.** Es información, no procedimiento | **A propósito**, y dicho para que el «Cumple» no se lea de más |
+| La fase quedó con su **cierre en blanco cuatro días**, contada como completa | **Corregido acá.** Es uno de los cuatro casos que destaparon `S-052` |
 
 ---
 
-## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
+## 7. Índices y mapas actualizados  ·  `13·DOC9` / `13·DOC13`
 
-- [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
-- [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
-- [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](../../../../../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizado con lo realmente implementado.
+- [x] La historia [HU-004](../HU-004-aviso-al-quedar-atras.md): su §8 nombra esta fase.
+- [x] El pendiente que la originó, en `pendientes/hecho/`.
+- [x] El inventario de historias, que **ya no se mantiene a mano** desde la `35.0.0`.
 
 ---
 
-## 8. Despliegue — si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
+## 8. Despliegue — si aplica  ·  `13·DOC4`
 
-Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
-
-- Cambios de esquema / migraciones a correr: «orden».
-- Datos base / permisos a sembrar: «comandos».
-- Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto, ver §7 del `plan_trabajo`».
+- **Migraciones a correr:** ninguna.
+- **Qué cambia para quien ya tenía el estándar:** al abrir sesión, un proyecto atrasado **ahora se entera**, con el resumen de qué cambió.
+- **Reversión:** se descarta el commit.
