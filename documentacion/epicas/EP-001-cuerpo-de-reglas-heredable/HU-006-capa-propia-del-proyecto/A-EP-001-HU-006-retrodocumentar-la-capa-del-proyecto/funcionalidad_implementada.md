@@ -13,7 +13,7 @@
 | **HU / CA cubiertas** | [HU-006](../HU-006-capa-propia-del-proyecto.md): `CA-01`, `CA-02` y `CA-03` |
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `f10729c` |
 
 > **Se ejecutó el 2026-08-22 y se cierra el 2026-08-27.** Entre las dos fechas no se tocó nada de esta fase.
 

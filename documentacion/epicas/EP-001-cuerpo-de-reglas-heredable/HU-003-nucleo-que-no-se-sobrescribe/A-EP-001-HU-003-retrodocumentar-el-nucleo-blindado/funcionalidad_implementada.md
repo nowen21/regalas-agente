@@ -13,7 +13,7 @@
 | **HU / CA cubiertas** | [HU-003](../HU-003-nucleo-que-no-se-sobrescribe.md): `CA-01`, `CA-02` y `CA-03` |
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `f10729c` |
 
 > **Se ejecutó el 2026-08-22 y se cierra el 2026-08-27.** Entre las dos fechas se construyó la fase que resolvió su rojo. **Este cierre no lo da por resuelto**: dice qué encontró esta fase y adónde fue a parar.
 

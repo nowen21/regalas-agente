@@ -13,7 +13,7 @@
 | **HU / CA cubiertas** | [HU-007](../HU-007-regla-de-las-reglas.md): `CA-01` a `CA-06`. Los seis |
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `f10729c` |
 
 > **Se ejecutó el 2026-08-22 y se cierra el 2026-08-27.** Entre las dos fechas no se tocó nada de esta fase. **Su rojo se volvió a medir al cerrar**, y no solo sigue: pasó de 249 a 250.
 
