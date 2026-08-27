@@ -11,7 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien trabaja con la IA |
-| **Estado** | Pendiente |
+| **Estado** | Terminada |
 ## 2. Narrativa
 
 - **Como** quien trabaja con la IA todos los días

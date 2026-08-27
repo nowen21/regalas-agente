@@ -501,3 +501,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-26 · agente, en la fase A de la HU-009.
 - **Scope:** estándar; aplica a cualquier prueba que toque estado fuera del proyecto.
 - **Rel:** S-035 (los rastros que un sabotaje deja fuera del archivo saboteado), S-033 (los dos diagnósticos de un sabotaje en verde).
+
+## S-052 · Una deuda bien escrita en una fase sin cerrar es una deuda que nadie lee  ·  decisión · activa
+- **What:** al cerrar seis fases que llevaban cuatro días ejecutadas y sin su documento de cierre, apareció que una de ellas ya había registrado, el 2026-08-22, que **el enganche no viaja con el repositorio: un clon nuevo no lo tiene hasta correr el instalador**. Eso mismo se volvió a descubrir el 2026-08-26 por otro camino —clonando un repositorio de prueba— y se trató como hallazgo nuevo.
+- **Why:** la deuda estaba **escrita, fechada y bien redactada**. Lo que fallaba era dónde vivía: en el resultado de una fase que el inventario contaba entre las incompletas, y a la que nadie volvía. **Cerrar no es papeleo: es lo que pone la deuda donde se lee.**
+- **Also:** la misma fase traía otra deuda que también se cobró sola. Decía que la batería de antes de publicar **no corre las pruebas de los validadores**, así que un cambio que rompa una prueba se publica igual. Ese mismo día, la suite completa destapó tres defectos que ninguna otra comprobación vio, y **ninguno habría detenido una publicación**.
+- **Where:** los seis cierres del 2026-08-26, cada uno con su tabla de deudas y su estado real · el de `A-EP-005-HU-006`, que dice de dónde venía y cuándo se volvió a descubrir.
+- **Learned:** una fase que se queda en la estación de cierre **no deja el trabajo a medias: deja el trabajo invisible**. Lo construido funciona, y lo aprendido se pierde. Y hay una señal barata de que está pasando: **cuando un hallazgo «nuevo» resulta estar escrito en un documento propio con fecha anterior**, lo que falló no fue la memoria — fue que ese documento vivía donde nadie lo cuenta.
+- **When/Who:** 2026-08-26 · agente y usuario, al cerrar seis fases de golpe.
+- **Scope:** estándar; aplica a cualquier proyecto que registre deuda en documentos de fase.
+- **Rel:** S-048 (el estado se lee en su campo, no en la narrativa).

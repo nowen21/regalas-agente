@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 11 — cierre documental. **Ejecutada el 2026-08-22.**
+**Estación actual:** cerrada. **Última puerta pasada:** 11, el cierre documental.
+
+> **La fase se cerró el 2026-08-26.** Estaba ejecutada desde el 2026-08-22 con sus criterios en verde, y lo que faltaba era el documento de cierre. Las dos fechas se dejan escritas porque son distintas: no se verificó hoy lo que se verificó entonces.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|
