@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-004](../HU-004-conducta-de-la-ia.md): `CA-01`, `CA-02` y `CA-03`. Los tres |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `b19ca91` |
 
 > **Se ejecutó el 2026-08-22 y se cierra el 2026-08-26.** Entre las dos fechas no se tocó nada de esta fase: lo que faltaba era este documento. Las dos fechas se dejan escritas porque **son distintas**, y confundirlas haría creer que se verificó hoy lo que se verificó entonces.
 
