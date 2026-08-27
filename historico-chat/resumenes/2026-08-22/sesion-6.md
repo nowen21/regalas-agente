@@ -704,6 +704,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** —
 - **Con qué se retoma:** el pendiente 89, decidiendo cuáles de las tres salidas entran.
 
+### H-45 · Contar las formas que uno ya reconoce no es enumerarlas
+
+- **Qué pasó:** media hora después de publicar la fase `B`, al mirar una de las «39 fases sin encabezado de veredicto» apareció que **sí lo tenía**: decía `## 5. Veredicto`, sin el «de la fase» que el patrón exigía. Al enumerar los encabezados de los 130 resultados salieron **seis títulos distintos** y **dos** fases sin ninguno. No 39: **2**. Diez historias figuraban como mudas diciéndolo, y **tres de ellas dicen «No cumple»**.
+- **Por qué importa:** la medición de la fase `B` contó `**Concepto:**`, la tabla y `Veredicto de la fase` —**las formas que el programa ya sabía buscar**— y llamó «sin encabezado» a todo el resto, sin abrirlo. **Es `04·R4` incumplida en la fase que venía a hacerla cumplir.** Contar lo que uno reconoce siempre devuelve lo que uno esperaba: confirma, no verifica.
+- **Qué lo soluciona:** la fase `C` de la misma historia. `56/13/15` pasó a **`63/16/5`**.
+- **Qué se decidió:** **el patrón se ajusta al hecho medido, no a lo que podría existir.** El primer arreglo aceptaba cualquier título que empezara por «Veredicto» y **hoy no habría fallado** — los 70 encabezados «por criterio de aceptación» van seguidos de tabla. Correcto por casualidad, que es exactamente cómo nació el defecto. Se ajustó a título exacto tras medir cuál de los seis va seguido de la palabra: **uno solo**.
+- **Y el criterio de parada, que es la otra mitad:** no fue «que se recuperen diez», sino **«que se recuperen diez y que las tres que dicen No cumple estén entre ellas»**. Rescatar solo las siete que cumplen habría dejado el número **mejor y más falso**, y se habría leído como un éxito.
+- **Y dos defectos de la herramienta que juzga:** un sabotaje pasó en verde —faltaba el caso de en medio, con prosa entre el encabezado y la palabra— y, peor, **la guardia del guion de sabotaje daba por buena una corrida con fallas**, porque buscaba «OK» en un texto que trae «OK: sin incumplimientos.». Es `S-044` en forma nueva: antes no corría nada y decía OK; ahora corre y no sabe leer el resultado.
+- **Estado:** resuelto acá.
+- **Responde a:** H-43.
+- **Dispara:** los **tres «No cumple»** que aparecieron (`EP-001·HU-007`, `EP-003·HU-002`, `EP-005·HU-001`) y las **cinco** que de verdad no lo dicen. Cada uno es trabajo propio.
+- **Orden de resolución:** —
+- **Dónde queda:** `_VEREDICTO_TITULO_SOLO` en [validadores/fases.py](../../../validadores/fases.py) · la señal `S-058` · los guiones que enumeraron, en [historico-chat/scripts/2026-08-27/](../../scripts/2026-08-27/).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -720,7 +737,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cuarenta y cuatro hallazgos, cuarenta y dos cerrados.**
+**Cuarenta y cinco hallazgos, cuarenta y tres cerrados.**
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 
@@ -730,6 +747,6 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 **La medida que lo destapa ya existe y funciona:** contar los marcadores del molde sin reemplazar. Treinta y uno es un formulario; cinco son comillas de prosa. Quedó anotado en el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario cuál entra.
 
-**El hilo de la sesión, si hay que decirlo en una línea:** el número que responde «cuánto falta» mintió de tres formas distintas en dos días — copiado a mano, contando archivos presentes, y contando fases cerradas sin mirar su veredicto. **Cada arreglo lo dejó más honesto y siguió midiendo la cosa de al lado.** Hoy dice `117 en total · 32 sin terminar · 85 terminadas, de las cuales 57 cumplen, 13 no cumplen y 15 no dicen si cumplen`.
+**El hilo de la sesión, si hay que decirlo en una línea:** el número que responde «cuánto falta» mintió de tres formas distintas en dos días — copiado a mano, contando archivos presentes, y contando fases cerradas sin mirar su veredicto. **Cada arreglo lo dejó más honesto y siguió midiendo la cosa de al lado.** Hoy dice `117 en total · 33 sin terminar · 84 terminadas, de las cuales 63 cumplen, 16 no cumplen y 5 no dicen si cumplen` — y hubo que corregirlo **tres veces**, porque las dos primeras midieron con lo que ya sabían leer.
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.

@@ -1,10 +1,10 @@
 # Programas de un solo uso · 2026-08-27
 
-Los diez programas que el agente escribió el 2026-08-27, en la jornada de la `HU-021`. **No se vuelven a correr**: llevan dentro la ruta de la máquina donde corrieron, y escriben sobre texto que ya cambió.
+Los catorce programas que el agente escribió el 2026-08-27, en la jornada de la `HU-021`. **No se vuelven a correr**: llevan dentro la ruta de la máquina donde corrieron, y escriben sobre texto que ya cambió.
 
 De qué sesión salen: [2026-08-22 · sesion-6](../../2026-08-22-sesion-6.md), que cruzó varios días.
 
-> **Ocho de los diez llegaron tarde al repositorio.** Se escribieron en la carpeta temporal del sistema y se trajeron acá el mismo día, cuando el usuario preguntó por qué se seguía escribiendo afuera. Los dos últimos —los que midieron las formas del veredicto— ya nacieron acá. Está contado en `S-057`.
+> **Ocho de los catorce llegaron tarde al repositorio.** Se escribieron en la carpeta temporal del sistema y se trajeron acá el mismo día, cuando el usuario preguntó por qué se seguía escribiendo afuera. Los seis últimos —los que midieron las formas del veredicto y los de la fase `C`— ya nacieron acá. Está contado en `S-057`.
 
 ## Qué hizo cada uno
 
@@ -39,6 +39,17 @@ De qué sesión salen: [2026-08-22 · sesion-6](../../2026-08-22-sesion-6.md), q
 | `cuantas_se_recuperan.py` | Midió qué pasaría aceptando cualquier encabezado que empiece por «Veredicto». **Diez de las quince historias mudas sí lo dicen**, y tres de ellas dicen «No cumple» |
 
 **Los dos nacieron de haber afirmado sin medir.** La fase `B` contó las formas que ya sabía buscar y llamó «sin encabezado» a todo lo demás, que es `04·R4` — la misma regla que esa fase venía a hacer cumplir.
+
+### La fase `C` · enumerar en vez de contar
+
+| Programa | Qué hizo |
+|---|---|
+| `forma_exacta.py` | El nivel, el número y **qué sigue** a cada encabezado. De ahí salió el dato que decide el diseño: de los seis títulos, **`Veredicto` a secas es el único seguido de la palabra suelta** |
+| `cual_titulo_sirve.py` | Lo separó en dos listas: los seguidos de la palabra (uno, 15 veces) y los seguidos de tabla (70). **Los 70 son la tabla criterio por criterio, no el veredicto de la fase** |
+| `recupera_ajustado.py` | La misma medición de `cuantas_se_recuperan.py`, con el patrón **ajustado a título exacto**. Mismo resultado —diez recuperadas, tres con «No cumple»— y comprobó además que **ninguna historia que ya tenía veredicto lo cambia** |
+| `sabotaje_hu021c.py` | Los cuatro sabotajes. **El cuarto pasó en verde** y obligó a un segundo ciclo. Su guardia final tenía a su vez un defecto: buscaba «OK» en un texto que trae «OK: sin incumplimientos.», así que dio por buena una corrida con tres fallas |
+
+**Se guardan los dos que midieron lo mismo**, el ancho y el ajustado, y no solo el bueno. La diferencia entre ellos **es** el aprendizaje: un patrón que hoy no falla por casualidad es el defecto de mañana.
 
 ## Lo que no está acá
 

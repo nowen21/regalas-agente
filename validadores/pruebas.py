@@ -3643,6 +3643,80 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
         c = self._resultado("")
         self.assertIsNone(fases.veredicto_de(c))
 
+    # -- CA-03 (fase C) · el mismo encabezado, sin «de la fase» -----------
+    #
+    # La fase B dijo «tres formas y 39 fases sin encabezado». Al **enumerar**
+    # los encabezados de los 130 resultados —en vez de contar los que ya se
+    # reconocían— salió que sin encabezado hay **2**, y que un título más es el
+    # veredicto de la fase: `## N. Veredicto`, en quince de ellas.
+    #
+    # **El título tiene que ser exacto.** Setenta encabezados empiezan por
+    # «Veredicto» y son la tabla criterio por criterio. Aceptarlos devolvería
+    # el primer criterio como veredicto de la fase — la mentira optimista.
+
+    def test_titulo_veredicto_a_secas(self):
+        """El que faltaba. Quince fases del repositorio lo usan."""
+        c = self._resultado("## 5. Veredicto\n\n**Cumple.** Once casos de "
+                            "once.\n")
+        self.assertEqual(fases.veredicto_de(c), "Cumple")
+
+    def test_titulo_veredicto_a_secas_tambien_para_no_cumple(self):
+        c = self._resultado("## 6. Veredicto\n\n**No cumple.** El `CA-03` "
+                            "sigue en rojo.\n")
+        self.assertEqual(fases.veredicto_de(c), "No cumple")
+
+    def test_el_numero_del_encabezado_no_importa(self):
+        for cabeza in ("## 2. Veredicto", "## 11. Veredicto", "## 5 Veredicto"):
+            c = self._resultado("%s\n\n**Cumple.**\n" % cabeza)
+            self.assertEqual(fases.veredicto_de(c), "Cumple", cabeza)
+
+    def test_no_lee_veredicto_por_criterio_de_aceptacion(self):
+        """**El caso crítico de esta fase.** Cuarenta fases lo escriben así.
+
+        Se le pone delante justo la tabla que lo tentaría: la primera fila dice
+        `Cumple`. Tomarla sería dar por cumplida la fase leyendo un criterio.
+        """
+        c = self._resultado("## 4. Veredicto por criterio de aceptación\n\n"
+                            "| CA | Concepto |\n|---|---|\n"
+                            "| CA-01 | Cumple |\n| CA-02 | No cumple |\n")
+        self.assertIsNone(fases.veredicto_de(c),
+                          "tomó un criterio por el veredicto de la fase")
+
+    def test_no_lee_veredicto_por_criterio_y_requisito_no_funcional(self):
+        c = self._resultado("## 4. Veredicto por criterio de aceptación y "
+                            "requisito no funcional\n\n**Cumple.**\n")
+        self.assertIsNone(fases.veredicto_de(c))
+
+    def test_no_lee_veredicto_final(self):
+        """Sus cuatro casos no van seguidos de la palabra: no se agrega."""
+        c = self._resultado("## 6. Veredicto final\n\n**Cumple.**\n")
+        self.assertIsNone(fases.veredicto_de(c))
+
+    def test_no_lee_los_otros_dos_titulos_parecidos(self):
+        for titulo in ("Veredicto por exigencia",
+                       "Veredicto por criterio de la historia"):
+            c = self._resultado("## 3. %s\n\n**Cumple.**\n" % titulo)
+            self.assertIsNone(fases.veredicto_de(c), titulo)
+
+    def test_el_titulo_solo_tampoco_lee_un_encabezado_vacio(self):
+        c = self._resultado("## 5. Veredicto\n\nSe escribe al cerrar.\n")
+        self.assertIsNone(fases.veredicto_de(c))
+
+    def test_la_palabra_tiene_que_ir_pegada_al_encabezado(self):
+        """**Lo pidió un sabotaje que pasó en verde.**
+
+        Aflojar el patrón para que la palabra pueda estar en cualquier parte
+        después del encabezado no rompía ninguna prueba: las que había ponían
+        `Cumple` justo debajo, o no lo ponían en ninguna parte. **Faltaba el
+        caso de en medio**, que es el que ocurre de verdad — un encabezado de
+        veredicto seguido de prosa, y la palabra más abajo dentro de una tabla
+        de criterios.
+        """
+        c = self._resultado("## 5. Veredicto\n\nEl detalle va en la tabla.\n\n"
+                            "| CA | Concepto |\n|---|---|\n| CA-01 | Cumple |\n")
+        self.assertIsNone(fases.veredicto_de(c),
+                          "se saltó la prosa y leyó una fila de criterio")
+
     # -- CA-04 · los moldes usan un solo vocabulario ----------------------
     #
     # **Lo pidió un sabotaje.** Devolver al molde del cierre su tercer valor

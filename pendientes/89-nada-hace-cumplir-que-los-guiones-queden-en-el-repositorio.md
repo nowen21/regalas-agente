@@ -47,6 +47,12 @@ Hay tres salidas, y conviene decidir cuál antes de construir:
 
 **La 1 y la 3 no se estorban.** La 1 lo evita; la 3 lo deja escrito donde se carga solo al abrir sesión, en vez de en un archivo que hay que ir a leer.
 
+### Y un caso que se descubrió al construir, y que cualquiera de las tres tiene que resolver
+
+**Los guiones de sabotaje guardan su copia de restauración fuera del repositorio.** Todos: copian a la carpeta temporal del sistema el archivo que van a romper, para devolverlo intacto. **También es escribir por fuera**, y salió el 2026-08-27 saboteando la fase `C` de la `HU-021`.
+
+Es pequeño y es legítimo —la copia tiene que estar en un sitio que el sabotaje no toque— pero **`historico-chat/scripts/` sirve igual**, y además deja constancia. Un enganche que avise al escribir afuera lo marcaría en cada corrida, así que conviene decidirlo junto con la salida que se elija.
+
 ## El límite
 
 Este pendiente **no** cubre:

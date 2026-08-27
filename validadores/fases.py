@@ -418,6 +418,25 @@ _VEREDICTO_BAJO_TITULO = re.compile(
     r"^##\s+\d+\.?\s*Veredicto de la fase[^\n]*\n+\**(No cumple|Cumple)",
     re.MULTILINE | re.IGNORECASE)
 
+# `EP-004·HU-021` fase C · El mismo encabezado, escrito sin «de la fase».
+#
+# La fase B contó las formas **que ya sabía buscar** y llamó «sin encabezado» a
+# todo lo demás, sin mirarlo: dijo 39 y son **2**. Al enumerar los 130
+# resultados aparecieron seis títulos distintos que empiezan por «Veredicto», y
+# solo uno más es el veredicto de la fase — `## N. Veredicto`, en 15 de ellas.
+#
+# **El título tiene que ser exacto, y esa es toda la decisión.** Setenta
+# encabezados empiezan por «Veredicto» y son la tabla criterio por criterio:
+# `Veredicto por criterio de aceptación`, `… y requisito no funcional`,
+# `Veredicto final`. Un patrón que los aceptara devolvería **el primer
+# criterio** como veredicto de la fase — y mentiría en la dirección optimista,
+# que es peor que el defecto que esta fase corrige.
+#
+# `\s*$` es lo que lo garantiza: después del título no puede venir nada.
+_VEREDICTO_TITULO_SOLO = re.compile(
+    r"^##\s+\d+\.?\s*Veredicto\s*$\n+\**(No cumple|Cumple)",
+    re.MULTILINE | re.IGNORECASE)
+
 
 def veredicto_de(ruta_fase):
     """`"Cumple"`, `"No cumple"` o `None` si no se deja leer.
@@ -428,11 +447,13 @@ def veredicto_de(ruta_fase):
     texto = _leer(os.path.join(ruta_fase, "resultado_pruebas.md"))
     if not texto:
         return None
-    dice = _VEREDICTO.search(texto) or _VEREDICTO_BAJO_TITULO.search(texto)
+    dice = (_VEREDICTO.search(texto)
+            or _VEREDICTO_BAJO_TITULO.search(texto)
+            or _VEREDICTO_TITULO_SOLO.search(texto))
     if not dice:
         return None
-    # `_VEREDICTO` trae dos grupos y `_VEREDICTO_BAJO_TITULO` uno: se toma el
-    # primero que haya coincidido, sin suponer cuál de las dos expresiones fue.
+    # `_VEREDICTO` trae dos grupos y las otras dos uno: se toma el primero que
+    # haya coincidido, sin suponer cuál de las tres expresiones fue.
     palabra = next(g for g in dice.groups() if g)
     return palabra.strip().capitalize()
 
