@@ -12,7 +12,7 @@
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.2.0` |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `735d00c` |
 
 ---
 
