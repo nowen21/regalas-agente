@@ -38,6 +38,27 @@
 
 **Probada desde cero por «quién», el «AAAA-MM-DD», en «dónde».** Pendiente: es la comprobación que confirma el supuesto 2 de planificación.
 
+
+### 3.1 Si al guardar aparece «Filename too long»
+
+Pasa en Windows, que no deja escribir rutas de más de 260 caracteres. Se resuelve con un ajuste del control de versiones, en el repositorio donde ocurre:
+
+```
+git config core.longpaths true
+```
+
+**El instalador ya lo deja puesto** en el proyecto donde corre, así que esto solo hace falta si el repositorio se obtuvo clónandolo y no se ha instalado nada en él.
+
+**Y no es que el instalador haya fallado:** la configuración del control de versiones **no viaja al clonar**. Vive dentro de la carpeta oculta del repositorio, que cada clon crea nueva. No hay forma de que un ajuste puesto acá llegue allá.
+
+**Si prefiere que valga para todo lo que clone de aquí en adelante**, existe la forma que aplica a la máquina entera:
+
+```
+git config --global core.longpaths true
+```
+
+**Esa decisión es suya y el instalador no la toma.** Cambia configuración fuera del proyecto, y este estándar no toca nada fuera del proyecto sin que se lo pidan.
+
 ## 4. Los datos
 
 | Qué se define | Cómo queda |

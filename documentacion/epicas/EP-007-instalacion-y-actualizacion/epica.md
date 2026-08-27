@@ -142,6 +142,7 @@ Lo construido en las otras épicas se queda en un solo proyecto. Y los que sí l
 | [HU-006](HU-006-poner-al-dia/HU-006-poner-al-dia.md) | Poner al día lo ya instalado | Should | M |
 | [HU-007](HU-007-revisar-que-falta/HU-007-revisar-que-falta.md) | Revisar qué le falta al proyecto | Should | M |
 | [HU-008](HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md) | El proyecto reporta lo que es del estándar, y el estándar le avisa de vuelta | Must | M |
+| [HU-009](HU-009-las-rutas-largas-no-detienen-el-guardado/HU-009-las-rutas-largas-no-detienen-el-guardado.md) | Que una ruta larga no detenga el guardado | Should | S |
 
 ## 10. Consideraciones técnicas
 

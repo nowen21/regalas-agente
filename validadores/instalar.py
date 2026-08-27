@@ -319,6 +319,47 @@ def instalar_git(ruta, estandar, aplicar):
         if aplicar:
             _mandar_git(ruta, "config", "core.hooksPath", ".githooks")
 
+    pasos += _rutas_largas(ruta, aplicar)
+    return pasos
+
+
+# `EP-007·HU-009` · Que una ruta larga no detenga el guardado.
+#
+# En Windows, guardar una ruta de más de 260 caracteres falla con «Filename too
+# long». Le pasó a este repositorio al traer 1005 documentos: **59 rutas por
+# encima del tope**, la mayor de 307, y el commit se detuvo dos veces.
+#
+# **El tope no lo pone el prefijo que se agregó, y se midió.** La ruta más larga
+# de este repositorio mide 252 **en su propio sitio**, con 8 caracteres de
+# holgura; anidar necesita 55. Acortar la convención de carpetas ahorra 14.
+# Ningún cambio de nombres crea los 55 que faltan, así que esto no es un parche:
+# es la salida.
+#
+# **Se pone en cualquier sistema.** Fuera de Windows el ajuste es inerte, y
+# detectar el sistema al instalar sería peor: la copia puede terminar en otra
+# máquina.
+#
+# **Lo que esto NO alcanza:** la configuración de git **no viaja al clonar** —
+# vive en `.git/config`, que cada clon crea nuevo. Comprobado clonando un
+# repositorio de prueba con el ajuste puesto. Quien clone y no instale se
+# tropieza igual, y por eso el documento de despliegue dice qué hacer.
+def _rutas_largas(ruta, aplicar):
+    """`core.longpaths`, sin pisar lo que alguien haya decidido."""
+    actual = _mandar_git(ruta, "config", "--get",
+                         "core.longpaths").stdout.strip().lower()
+    if actual == "false":
+        # Quien lo puso así tendrá su motivo. Es la misma cortesía que este
+        # instalador ya tiene con `core.hooksPath`.
+        return ["OMITIDO: core.longpaths está en «false» — no se pisa. "
+                "Sin él, en Windows una ruta de más de 260 caracteres detiene "
+                "el guardado"]
+    if actual == "true":
+        return ["core.longpaths ya estaba puesto"]
+
+    pasos = ["git config core.longpaths true"]
+    if aplicar:
+        _mandar_git(ruta, "config", "core.longpaths", "true")
+
     return pasos
 
 

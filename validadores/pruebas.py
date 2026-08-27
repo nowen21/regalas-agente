@@ -2656,6 +2656,117 @@ class _ProyectoDePrueba(unittest.TestCase):
         return encontrados
 
 
+class RutasLargas(_ProyectoDePrueba):
+    """El instalador deja puesto `core.longpaths` — EP-007 · HU-009.
+
+    En Windows, guardar una ruta de más de 260 caracteres falla con «Filename
+    too long». Le pasó a este repositorio y detuvo un commit dos veces.
+
+    **Ninguna prueba fabrica rutas largas, y es a propósito.** Que el ajuste
+    sirva ya está comprobado en la realidad: es lo que dejó pasar el commit de
+    1005 archivos con 59 rutas sobre el tope. Fabricar el caso extremo probaría
+    a git, no al instalador.
+    """
+
+    def _ajuste(self, raiz):
+        return subprocess.run(
+            ["git", "config", "--get", "core.longpaths"], cwd=raiz,
+            capture_output=True, text=True, timeout=30).stdout.strip()
+
+    def _global(self):
+        return subprocess.run(
+            ["git", "config", "--global", "--get", "core.longpaths"],
+            capture_output=True, text=True, timeout=30).stdout.strip()
+
+    # -- CA-01 · instalar deja el ajuste puesto ---------------------------
+    def test_instalar_deja_core_longpaths_en_true(self):
+        raiz = self._proyecto()
+        self.assertEqual(self._ajuste(raiz), "",
+                         "el repositorio de prueba ya venía con el ajuste")
+
+        salida = self._instalar(raiz, aplicar=True)
+        self.assertEqual(salida.returncode, 0, salida.stderr)
+
+        self.assertEqual(self._ajuste(raiz), "true")
+        self.assertIn("core.longpaths", salida.stdout,
+                      "el instalador no dice que lo puso")
+
+    def test_correrlo_dos_veces_no_repite_el_trabajo(self):
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=True)
+        salida = self._instalar(raiz, aplicar=True)
+        self.assertIn("ya estaba puesto", salida.stdout)
+        self.assertEqual(self._ajuste(raiz), "true")
+
+    # -- CA-02 · un «false» puesto a propósito no se pisa -----------------
+    def test_un_false_puesto_a_mano_no_se_pisa(self):
+        """Pisar una decisión ajena sin decirlo es peor que no hacer nada."""
+        raiz = self._proyecto()
+        subprocess.run(["git", "config", "core.longpaths", "false"], cwd=raiz,
+                       capture_output=True, timeout=30)
+
+        salida = self._instalar(raiz, aplicar=True)
+        self.assertEqual(salida.returncode, 0, salida.stderr)
+
+        self.assertEqual(self._ajuste(raiz), "false",
+                         "el instalador pisó un «false» puesto a propósito")
+        self.assertIn("OMITIDO", salida.stdout,
+                      "lo dejó como estaba, pero no lo dijo")
+
+    # -- CA-01 · el modo que muestra no escribe ---------------------------
+    def test_el_modo_que_muestra_no_pone_el_ajuste(self):
+        """`HU-002` ya prometió que mostrar no toca nada. Esto no la rompe."""
+        raiz = self._proyecto()
+        salida = self._instalar(raiz, aplicar=False)
+        self.assertIn("core.longpaths", salida.stdout,
+                      "no dice que lo pondría")
+        self.assertEqual(self._ajuste(raiz), "",
+                         "el modo que muestra escribió el ajuste")
+
+    # -- `RNF-01` · nada fuera del repositorio ----------------------------
+    def test_no_se_toca_la_configuracion_global_de_la_maquina(self):
+        """El único caso que puede ver esto.
+
+        Un `git config --global` escrito por error le cambiaría la máquina a
+        quien corra la suite, y eso no sale en ninguna otra prueba.
+        """
+        antes = self._global()
+        raiz = self._proyecto()
+        self._instalar(raiz, aplicar=False)
+        self.assertEqual(self._global(), antes,
+                         "el modo que muestra tocó la configuración global")
+        self._instalar(raiz, aplicar=True)
+        self.assertEqual(self._global(), antes,
+                         "el instalador tocó la configuración global")
+
+        # **Comparar el global antes y después no basta, y lo destapó un
+        # sabotaje.** Si otra prueba ya lo dejó puesto, antes y después son
+        # iguales y esto pasa aunque el instalador escriba globalmente. Se
+        # pregunta por el valor **local**: si el instalador hubiera escrito
+        # afuera, acá no habría nada y `--get` a secas heredaría el de la
+        # máquina. Esto no depende del orden en que corran las pruebas.
+        local = subprocess.run(
+            ["git", "config", "--local", "--get", "core.longpaths"], cwd=raiz,
+            capture_output=True, text=True, timeout=30).stdout.strip()
+        self.assertEqual(local, "true",
+                         "el ajuste no quedó en el repositorio: el instalador "
+                         "lo escribió fuera")
+
+    # -- CA-03 · quien clone y no instale sabe qué hacer ------------------
+    def test_esta_escrito_que_hacer_al_ver_el_error(self):
+        raiz_estandar = os.path.dirname(self.VALIDADORES)
+        texto = comun.leer(os.path.join(raiz_estandar, "cvds", "despliegue",
+                                        "README.md"))
+        self.assertIn("Filename too long", texto,
+                      "no está escrito qué hacer al ver el error")
+        self.assertIn("core.longpaths", texto,
+                      "no dice el comando que lo resuelve")
+        self.assertIn("--global", texto,
+                      "no dice el comando que alcanza a los clones futuros")
+        self.assertIn("no viaja al clonar", texto,
+                      "no dice por qué el instalador no pudo hacerlo por uno")
+
+
 class MostrarAntesDeHacer(_ProyectoDePrueba):
     """El modo que muestra no toca nada — EP-007 · HU-002."""
 

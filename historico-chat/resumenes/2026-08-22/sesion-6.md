@@ -432,17 +432,17 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 - **Qué pasó:** al guardar lo traído, `git add` se negó con **`Filename too long`**. El prefijo `plataforma/datos/proyectos/<identificador>/traido/` le suma 54 caracteres a cada ruta, y eso puso **59 archivos** por encima del tope de 260 de Windows — el más largo, **307**. En su sitio de origen las mismas rutas caben.
 - **Por qué importa:** el que se pasa no es un archivo, es **la suma**: carpeta de historia con nombre descriptivo, más carpeta de fase que repite el identificador, más el prefijo. Cada tramo es razonable por separado. Y no salta al escribir —la plataforma copió los 1005 sin quejarse— sino **al guardar**, cuando ya estaba todo lo demás decidido.
-- **Qué lo soluciona:** `core.longpaths` en este repositorio, y con eso entró.
+- **Qué lo soluciona:** se resolvió acá, por la cadena: `EP-007` · `HU-009` · fase `A`. **El instalador lo deja puesto**, sin pisar un `false` que alguien haya decidido y sin tocar la configuración de la máquina.
 - **Qué se decidió:** dejarlo escrito en el commit y en la señal en vez de darlo por resuelto. **No lo está del todo:** es configuración local, así que quien clone en Windows tiene que activarla o le faltarán esos 59 archivos — justo lo que `DA-02` promete al decir que se clona la plataforma y está todo.
-- **Estado:** resuelto acá para esta máquina; abierto lo de quien clone.
+- **Estado:** resuelto acá lo que se puede resolver. **Lo de quien clone y no instale no tiene arreglo desde el repositorio**, y por eso quedó escrito qué hacer en el documento de despliegue.
 - **Responde a:** —
-- **Dispara:** por decidir con el usuario, y **con una opción menos de las que parecía**. Acortar el prefijo se midió y no alcanza: ahorra 15 caracteres y la ruta más larga quedaría en 292, todavía sobre 260. Quedan dos: que el instalador de la plataforma active `core.longpaths`, o acortar la convención de carpetas del estándar — que es mucho más grande y toca todo lo ya escrito.
+- **Dispara:** la [HU-009](../../../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-009-las-rutas-largas-no-detienen-el-guardado/HU-009-las-rutas-largas-no-detienen-el-guardado.md), construida y cerrada el 2026-08-26. **Acortar nombres se descartó midiendo**: la holgura del peor caso son 8 caracteres y anidar necesita 55; acortar la convención ahorra 14. Ninguna combinación crea los 55 que faltan.
 - **Orden de resolución:** —
-- **Dónde queda:** la señal `S-042` y el cuerpo del commit que guardó lo traído.
+- **Dónde queda:** `_rutas_largas` en [validadores/instalar.py](../../../validadores/instalar.py), la §3.1 del documento de [despliegue](../../../cvds/despliegue/README.md), y las señales `S-042` y `S-051`.
 - **Nace en:** 2026-08-22 · sesion-6
-- **Cerrado en:** —
+- **Cerrado en:** 2026-08-22 · sesion-6
 - **Y algo mayor que apareció al medir:** este repositorio ya está al borde **en su propio sitio**, sin plataforma de por medio. Su ruta más larga mide **252 de 260**, y **81 archivos** están a menos de 55 del tope. La carpeta de fase repite el identificador de la épica y de la historia que ya vienen en las dos carpetas de encima. Anidar solo reveló el problema; no lo causó.
-- **Con qué se retoma:** decidir entre que el instalador active `core.longpaths` o acortar la convención de carpetas — sabiendo que lo segundo arregla también los 81 que ya están al borde sin que nadie los haya anidado.
+- **Con qué se retoma:** —
 
 ---
 
@@ -561,11 +561,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ · falta el de `H-28` |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · no queda ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ |
 
-**Tres marcadas, una no.** **`H-27` y `H-31` cerraron**, los dos por la cadena completa: el inventario dejó de mantenerse a mano, adentro y en lo que el estándar reparte. **`H-33` también cerró**, con el plan ampliado y autorizado. **`H-34` también cerró, y cerró corrigiéndose**: la regla que decía faltar existía desde antes. Queda **uno** abierto y sin pendiente creado: `H-28`, el tope de ruta en Windows. Falta una decisión del usuario, que es la que dice qué pendiente escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+**Tres marcadas, una no.** **`H-27` y `H-31` cerraron**, los dos por la cadena completa: el inventario dejó de mantenerse a mano, adentro y en lo que el estándar reparte. **`H-33` también cerró**, con el plan ampliado y autorizado. **`H-28` también cerró**, y con él **todos los hallazgos de la sesión**. El tope de ruta se resolvió por la cadena, después de medir que ningún cambio de nombres alcanzaba. **No queda ninguno abierto**, así que no falta ningún pendiente por escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

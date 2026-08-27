@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.1.0 — 2026-08-26
+
+**En Windows, guardar un archivo cuya ruta pasa de 260 caracteres falla, y el mensaje no dice qué hacer.** Ahora el instalador deja puesto el ajuste que lo permite, y queda escrito qué hacer si aparece de todas formas.
+
+**MENOR** (nadie tiene que hacer nada: quien vuelva a instalar lo recibe, y quien no, sigue como estaba).
+
+**Le pasó a este estándar y detuvo un commit dos veces.** Al guardar 1005 documentos traídos, 59 rutas pasaban del tope y la mayor llegaba a 307 caracteres.
+
+**Acortar nombres no era la salida, y se midió.** La ruta más larga de este repositorio mide 252 en su propio sitio, con 8 caracteres de holgura; anidarla necesita 55. Acortar la convención de carpetas ahorra 14. Ninguna combinación de nombres crea los 55 que faltan.
+
+**Lo que esto no alcanza, y conviene saberlo:** la configuración del control de versiones **no viaja al clonar** — vive dentro de la carpeta oculta del repositorio, que cada clon crea nueva. Quien clone y no instale se va a tropezar igual, y por eso el documento de despliegue explica qué hacer, con el comando.
+
+**El instalador no toca la configuración de la máquina.** Existe una forma que valdría para todo lo que se clone de aquí en adelante, y queda escrita para quien la quiera: es un cambio fuera del proyecto, y esa decisión no la toma el instalador.
+
+**Y si alguien puso el ajuste en «false» a propósito, no se pisa:** se dice que se encontró así y se sigue.
+
+---
+
 ## 35.0.0 — 2026-08-26
 
 **Cada documento de trabajo dice en qué estado está — sin empezar, en curso, terminado — y hasta ahora el estándar enseñaba tres palabras distintas para «terminado», según qué molde tuviera abierto quien escribía.** Ahora hay una sola palabra para cada estado, escrita en un único sitio, y un programa comprueba que se use.

@@ -491,3 +491,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-26 · agente, en la fase A de la HU-012.
 - **Scope:** estándar; aplica a cualquier comprobación que se sume a un recorrido compartido.
 - **Rel:** S-043 (una comprobación que nadie llama), S-046 (el mismo defecto con dos formas).
+
+## S-051 · Un rastro fuera del repositorio no lo muestra ningún `git status`  ·  error-resuelto · activa
+- **What:** un sabotaje comprobaba que el instalador no escribiera en la configuración **global** de la máquina. Para eso, el sabotaje la escribía. El guion limpiaba los rastros **al final**, así que los tres sabotajes siguientes corrieron con la global puesta: sus fallas se leyeron como «cazado» y venían del rastro anterior, no del sabotaje.
+- **Why:** es `S-035` un nivel más arriba. Allá el rastro era un archivo suelto en el repositorio, y `git status` lo mostraba. **Acá queda fuera del repositorio**, en la configuración de la máquina de quien corre las pruebas: ningún `git status`, ningún validador y ninguna corrida lo delatan. Se descubrió leyendo por qué un sabotaje de **documentación** hacía fallar pruebas de código.
+- **Also:** y la prueba que existía justo para ese sabotaje **no lo cazó**. Compara el valor global antes y después dentro de sí misma; si otra prueba ya lo dejó puesto, antes y después son iguales y pasa. Se cambió por preguntar el valor **local** del repositorio: si el instalador escribiera afuera, ahí no habría nada. **Eso no depende del orden en que corran las pruebas**, y lo anterior sí.
+- **Where:** el guion limpia el rastro **después de cada sabotaje**, no al final · `test_no_se_toca_la_configuracion_global_de_la_maquina` pregunta por `--local`.
+- **Learned:** cuando lo que se prueba es que algo **no** salga de su sitio, el sabotaje tiene que salirse — y entonces el rastro cae donde nada lo vigila. Dos cosas se siguen de ahí: **limpiar entre sabotajes y no al final**, y **desconfiar de una prueba que compara un estado global contra sí mismo**, porque otra prueba pudo dejarlo ya cambiado.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-009.
+- **Scope:** estándar; aplica a cualquier prueba que toque estado fuera del proyecto.
+- **Rel:** S-035 (los rastros que un sabotaje deja fuera del archivo saboteado), S-033 (los dos diagnósticos de un sabotaje en verde).
