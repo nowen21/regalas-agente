@@ -12,7 +12,7 @@
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.2.0` — **sin cambio**: no se toca `base/` ni `plantillas/` |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
-| **Commit** | Pendiente de aprobación del usuario |
+| **Commit** | `fce6e41` |
 
 ---
 
