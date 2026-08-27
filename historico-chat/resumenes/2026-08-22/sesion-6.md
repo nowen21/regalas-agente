@@ -702,7 +702,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☐ · falta el commit de la fase `B` de la `HU-021` |
+| Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
 **Cuarenta y tres hallazgos, cuarenta y dos cerrados.**
 
