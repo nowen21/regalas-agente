@@ -551,6 +551,145 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-35 · Preguntar por qué tantas equivocaciones dio dos patrones, y ninguno se caza releyendo
+
+- **Qué pasó:** el usuario cortó con *"por qué tantas equivocaciones?"*. Se miraron las seis del día una por una en vez de responder de memoria. **Cuatro fueron leer prosa y tomarla por estado**: un documento resuelto y uno sin resolver se leen igual en el cuerpo, y la diferencia vive en un campo que no se miró. **Dos fueron llevar un principio un paso más allá de donde vale** — escribir «la versión que declara `VERSION`» el mismo día que se pasaron horas quitando datos duplicados.
+- **Por qué importa:** el factor que multiplicó el daño no fue ninguno de los dos, sino **encadenar decisiones rápido sin reverificar las premisas heredadas**. El error de la `HU-010` se copió cuatro veces porque cada fase tomó la redacción de la anterior en vez de volver a la fuente, y **la repetición lo hizo parecer más sólido, no menos**.
+- **Qué lo soluciona:** dos eslabones, en ese orden. El usuario dijo *"vaya con esas dos"*.
+- **Qué se decidió:** lo peligroso es **lo recién aprendido**, precisamente porque está fresco y se aplica sin volver a mirar. Y hay una constatación que vale más que cualquier propósito: **ninguna de las seis se cazó releyendo** — todas salieron de ejecutar algo, un `grep`, una resta, una corrida, un sabotaje. **Releer confirma lo que uno ya cree; medir, no.**
+- **Estado:** resuelto acá.
+- **Responde a:** H-34.
+- **Dispara:**
+  1. Normalizar el vocabulario del estado, que es el eslabón que va primero — sin él, el validador nace apoyado en una lista de sinónimos que envejece.
+  2. [HU-011](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-011-molde-de-las-reglas/), fase `B`: que no se afirme sobre lo que no se leyó.
+- **Orden de resolución:** primero el vocabulario, después la regla encima.
+- **Dónde queda:** las señales `S-048` y `S-047`, y las dos fases que salieron de acá.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-36 · El desorden que se le echa a la gente estaba enseñado por el molde
+
+- **Qué pasó:** al ir a normalizar el vocabulario del estado apareció que **111 de 115 historias estaban fuera de cualquier vocabulario**: convivían `Done`, `Hecha`, `Cumplida — los tres CA`, `Backlog`, `En implementación`. No era descuido de 111 autores: **cuatro moldes del ciclo de vida enseñaban tres palabras distintas**, y cada uno copió el suyo.
+- **Por qué importa:** cuando un desorden aparece en casi todos los casos, **la causa no está en los casos**. Está en lo que todos copiaron. Corregir uno por uno habría dejado el molde intacto, y el desorden habría vuelto con la siguiente historia.
+- **Qué lo soluciona:** se resolvió acá. El usuario pidió **traducir** en vez de agregar excepciones para las palabras en inglés: *"traducir"*.
+- **Qué se decidió:** nueve estados en español, en un solo lugar — el §5 de [`base/glosario.md`](../../../base/glosario.md). **El programa los lee de ahí en tiempo de ejecución**, nunca de una lista en el código, para que agregar un estado no obligue a tocar un validador. Los cuatro moldes citan el glosario en vez de repetir su propia lista.
+- **Estado:** resuelto acá.
+- **Responde a:** H-35.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el §5 del glosario, `vocabulario_de_estados` en [validadores/fases.py](../../../validadores/fases.py), y la señal `S-049`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-37 · Una comprobación que reporta lo que no vino a comprobar apaga las demás
+
+- **Qué pasó:** al agregar el aviso de que falta el campo `Estado`, siete pruebas de estructura que no tenían nada que ver quedaron en rojo. La comprobación estaba bien escrita; lo que estaba mal era **de qué hablaba**.
+- **Por qué importa:** un validador que se sale de su tema no informa de más: **informa de menos**, porque quien lo corre aprende a ignorarlo. Y con él se ignoran los hallazgos que sí eran suyos.
+- **Qué lo soluciona:** se resolvió acá, quitando el reporte fuera de tema y dejando escrito en el código por qué se quitó.
+- **Qué se decidió:** cada comprobación reporta **su** tema. Lo que aparece de paso se anota como deuda, no se cuela en el resultado de otra.
+- **Estado:** resuelto acá.
+- **Responde a:** H-36.
+- **Dispara:** que nadie reporta el campo `Estado` faltante. **Anotado como deuda en el cierre de su fase**, no perdido.
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-050`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-38 · Un rastro fuera del repositorio no lo muestra ningún `git status`
+
+- **Qué pasó:** el guion de sabotaje escribía en la configuración **global** de git y no la limpiaba entre sabotajes, así que **contaminaba los tres siguientes**. Peor: la prueba que debía cazar eso comparaba el antes y el después **dentro de sí misma**, y pasaba en verde si otra prueba ya había ensuciado la configuración.
+- **Por qué importa:** el repositorio no puede mostrar lo que está afuera. Un rastro en la configuración global, en una variable de entorno o en una carpeta temporal **no lo destapa ninguna comprobación del proyecto** — y el sabotaje siguiente arranca desde un estado que nadie declaró.
+- **Qué lo soluciona:** se resolvió acá. La configuración se limpia **después de cada sabotaje**, no al final, y lo que se pide es `--local`, que sí vive en el repositorio.
+- **Qué se decidió:** un guion de sabotaje declara y limpia sus rastros **por sabotaje**, y lo que toque fuera del repositorio se nombra explícitamente en el resultado. Una prueba que se comprueba a sí misma no comprueba nada.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-051`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-39 · Una deuda bien escrita en una fase sin cerrar es una deuda que nadie lee
+
+- **Qué pasó:** al cerrar seis fases que llevaban cuatro días ejecutadas sin su documento de cierre, apareció que **una ya había registrado, cuatro días antes, que el enganche no viaja con el repositorio**. Eso mismo se volvió a descubrir por otro camino y se trató como hallazgo nuevo.
+- **Por qué importa:** la deuda estaba escrita, fechada y bien redactada. **Lo que fallaba era dónde vivía**: en el resultado de una fase que el inventario contaba entre las incompletas, y a la que nadie volvía.
+- **Qué lo soluciona:** se resolvió acá, cerrando las seis.
+- **Qué se decidió:** **cerrar no es papeleo: es lo que pone la deuda donde se lee.** Y hay una señal barata de que está pasando — cuando un hallazgo «nuevo» resulta estar escrito en un documento propio con fecha anterior, lo que falló no fue la memoria: fue que ese documento vivía donde nadie lo cuenta.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** los seis cierres y la señal `S-052`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-40 · Contar archivos presentes da por terminado un molde sin llenar
+
+- **Qué pasó:** cuatro fases figuraban completas y su `estado-fase` decía **«Ejecutada y cerrada»**. Su documento de cierre era **el molde en blanco**, con 31 marcadores sin reemplazar cada uno: todavía decía `«2-4 líneas en lenguaje claro»` y `AAAA-MM-DD`.
+- **Por qué importa:** el inventario cuenta que **el archivo exista**, no que diga algo. El andamio crea los cinco documentos vacíos, así que **una fase recién abierta cuenta como completa**. Es el mismo defecto del inventario a mano, un nivel más adentro: antes el número se copiaba, ahora se calcula bien y cuenta lo que no debe.
+- **Qué lo soluciona:** los cuatro cierres se escribieron. **La causa raíz sigue abierta.**
+- **Qué se decidió:** cuando algo se cuenta por su presencia, hay que preguntarse **qué pasa si está y está vacío**. La medida que lo destapa es barata: **contar los marcadores del molde que quedaron sin reemplazar**. Cuatro con 31 se separan sin falsos positivos de doce con cinco a siete, que son comillas de prosa.
+- **Estado:** parcialmente resuelto. **Los cuatro documentos, escritos; el andamio sigue igual.**
+- **Responde a:** H-39.
+- **Dispara:** el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario. **Volvió a cobrar dos veces más el mismo día** (H-42, H-43).
+- **Orden de resolución:** —
+- **Dónde queda:** los cuatro cierres y la señal `S-053`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** —
+- **Con qué se retoma:** contar los marcadores sin reemplazar, que es la medida que ya funciona.
+
+### H-41 · El inventario cuenta fases terminadas, no criterios cumplidos
+
+- **Qué pasó:** al cerrar cinco fases cuyo veredicto es **«No cumple»**, el inventario bajó de 37 incompletas a 32. Las cinco tienen sus cinco documentos, así que cuentan como completas — **y una dice que su criterio sigue roto hoy**, con un número que además crece con cada regla nueva.
+- **Por qué importa:** «completas» se lee como «cumplen», y son cosas distintas. Una fase que midió, encontró un rojo y lo documentó bien **está terminada y no resolvió nada**.
+- **Qué lo soluciona:** disparó la [HU-021](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/), que se construyó acá.
+- **Qué se decidió:** un conteo de avance necesita decir **qué mide, en su propio nombre**. Y el patrón que lo detecta: **si mejorar el trabajo no mueve el número, o moverlo no mejora el trabajo, el número mide otra cosa.** Las dos mitades pasaron el mismo día — llenar cuatro cierres vacíos no movió nada, y cerrar cinco fases con «No cumple» bajó el número en cinco.
+- **Estado:** resuelto acá.
+- **Responde a:** H-40.
+- **Dispara:** la `HU-021`, construida en sus fases `A` y `B`.
+- **Orden de resolución:** —
+- **Dónde queda:** los cinco cierres y la señal `S-054`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-42 · Un número de avance necesita una prueba que lo contradiga
+
+- **Qué pasó:** la cuenta dejó de dar por hechas las fases que no cumplieron, y el número real apareció al medirlo: de **85 terminadas, 51 cumplían**. Once cerraron declarando que no, y 23 no lo decían. **El anterior, `85 completas`, estaba sobrestimado en un 40%** — y con ese número se decidió todo el trabajo de dos días, incluida la decisión de construir esto.
+- **Por qué importa:** un número de avance que **solo puede subir** no informa: acompaña. Y la mejor prueba de que hacía falta se dio sola — la historia que se creó para arreglarlo, sin una línea de trabajo hecha, **contaba como terminada**.
+- **Qué lo soluciona:** se resolvió acá, en la fase `A` de la `HU-021`, versión `35.2.0`.
+- **Qué se decidió:** todo número que mida avance necesita **una forma de empeorar**, y hay que buscarla a propósito. **La pregunta que lo destapa es qué tendría que pasar para que baje** — si no hay respuesta, no sirve para decidir. Y la causa no era descuido: el molde del cierre ofrecía `Cumple / Cumple con observaciones` y **no tenía forma de decir «No cumple»**, así que diecinueve fases lo escribieron en prosa. Se corrigió la regla, no la práctica: **cerrar no es aprobar**, y dejar la fase abierta esconde su deuda.
+- **Estado:** resuelto acá.
+- **Responde a:** H-41.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `veredicto_de` y `por_veredicto` en [validadores/fases.py](../../../validadores/fases.py), los tres moldes con un solo vocabulario, la versión `35.2.0` y la señal `S-055`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-43 · Un criterio de parada con número exacto caza lo que uno «redondeado» deja pasar
+
+- **Qué pasó:** el lector del veredicto reconocía **dos de las tres formas** en que está escrito, defecto encontrado diez minutos después de cerrar la fase `A`. Al arreglarlo, el plan exigía que las «no dicen» bajaran **en siete exactamente**; bajaron seis, así que se paró. **La base se había movido**: al levantar esa misma fase con el andamio, sus documentos vacíos volvieron a meter su historia entre las «no dicen». La base real era 23, y 23 − 7 = 16.
+- **Por qué importa:** con un criterio que dijera «que bajen unas siete», la diferencia de uno se habría atribuido a un error de cuenta anterior y se habría seguido de largo. **El número exacto convirtió una discrepancia de una unidad en una investigación**, y esa investigación destapó `S-053` por tercera vez en el día, con el agente adentro.
+- **Qué lo soluciona:** se resolvió acá, en la fase `B` de la `HU-021`.
+- **Qué se decidió:** un criterio de suspensión sirve cuando **falla por poco**; el que dice «que mejore» nunca se activa. Y cuando se mide algo mientras se trabaja sobre ello, hay que preguntar **si el propio trabajo mueve la medición** — abrir una fase para arreglar un conteo es, literalmente, agregarle un caso al conteo. **El caso crítico no fue leer la forma que faltaba, sino no leer de más**: «Cumple» aparece en cada fila de criterio, y un lector que no exija el encabezado tomaría el primer criterio por el veredicto de la fase, mintiendo **en la dirección optimista**.
+- **Estado:** resuelto acá.
+- **Responde a:** H-42.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `_VEREDICTO_BAJO_TITULO` en [validadores/fases.py](../../../validadores/fases.py) y la señal `S-056`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -561,14 +700,16 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · no queda ninguno abierto |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) |
 | Toda historia disparada está escrita en su épica | ☑ |
-| Lo que se hizo está aprobado y guardado | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ · falta el commit de la fase `B` de la `HU-021` |
 
-**Tres marcadas, una no.** **`H-27` y `H-31` cerraron**, los dos por la cadena completa: el inventario dejó de mantenerse a mano, adentro y en lo que el estándar reparte. **`H-33` también cerró**, con el plan ampliado y autorizado. **`H-28` también cerró**, y con él **todos los hallazgos de la sesión**. El tope de ruta se resolvió por la cadena, después de medir que ningún cambio de nombres alcanzaba. **No queda ninguno abierto**, así que no falta ningún pendiente por escribir. Mientras eso no ocurra, **la sesión no cierra**. Lo construido en esta sesión quedó guardado en quince commits, y el último es la fase F en `4573a15`, con la que **terminó la versión 1 del producto**. Los anteriores: la fase A en `26b2222`, la cadena de EP-011 en `7cfcf5d`, la fase D en `5231022` con su hash en `d261ab1`, y la fase B con la cadena de la HU-004 en `c1b9185`.
+**Cuarenta y tres hallazgos, cuarenta y dos cerrados.**
 
-Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
+**`H-40` es el que queda abierto**, y es el que más vale de la sesión: **el andamio crea los cinco documentos vacíos, y con eso una fase recién abierta ya cuenta como terminada.** No se resolvió — se escribieron los cuatro cierres que estaban en blanco, que es tapar los casos, no la causa. **Cobró tres veces el mismo día**: en las cuatro fases que figuraban cerradas siendo moldes, en la `HU-021` que contaba como terminada sin una línea escrita, y en la fase `B` que se creó para arreglar el conteo y le agregó un caso al conteo.
+
+**La medida que lo destapa ya existe y funciona:** contar los marcadores del molde sin reemplazar. Treinta y uno es un formulario; cinco son comillas de prosa. Quedó anotado en el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario cuál entra.
+
+**El hilo de la sesión, si hay que decirlo en una línea:** el número que responde «cuánto falta» mintió de tres formas distintas en dos días — copiado a mano, contando archivos presentes, y contando fases cerradas sin mirar su veredicto. **Cada arreglo lo dejó más honesto y siguió midiendo la cosa de al lado.** Hoy dice `117 en total · 32 sin terminar · 85 terminadas, de las cuales 57 cumplen, 13 no cumplen y 15 no dicen si cumplen`.
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
-
-<!-- aviso: falta decir si la sesión se puede cerrar -->

@@ -344,6 +344,14 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 ---
 
+### Lo que dejó hacer honesto el número que dice cuánto falta (88)
+
+| # | P | Pendiente | Qué resuelve |
+|---|---|---|---|
+| 88 | **P1** | [El andamio crea una fase que ya cuenta como terminada](88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) | El inventario cuenta una fase terminada cuando **existen** sus cinco documentos, y el andamio los crea vacíos de entrada: una fase recién abierta ya cuenta como hecha. Cobró tres veces el 2026-08-27, la última moviendo la base de una medición en curso. La medida que lo destapa ya se probó — contar los marcadores del molde sin reemplazar — y separa sin falsos positivos. Falta decidir dónde entra. Sale de `S-053`. |
+
+---
+
 ### Sin agrupar todavía
 
 Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es criterio.
@@ -404,6 +412,8 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 **El [85](85-las-conversaciones-completas-no-se-pueden-analizar.md) y el [86](86-conectar-un-proyecto-no-tiene-reversa.md) todavía no tienen historia, y es a propósito.** Son del producto, no del cuerpo de reglas, y su historia nace cuando el usuario apruebe el cambio de requisitos que piden. Anotarlos bajo una historia que todavía no existe sería inventarles un destino.
 
 **El [87](87-la-estacion-del-commit-casi-nunca-se-marca.md) tampoco, y por otra razón:** es del estándar, y su historia depende de cuál de las tres salidas se elija. Escribirla antes de esa decisión sería fijar el cómo antes del qué.
+
+**El [88](88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), por la misma razón que el 87:** tiene tres salidas y dos de ellas no se estorban, pero la tercera cambia cómo se abre una fase. La historia se escribe cuando el usuario decida cuáles entran.
 
 **Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 

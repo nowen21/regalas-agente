@@ -401,6 +401,23 @@ _VEREDICTO = re.compile(
     r"|\|\s*\*\*(?:Concepto|Veredicto)\*\*\s*\|\s*\**(No cumple|Cumple)",
     re.IGNORECASE)
 
+# `EP-004·HU-021` fase B · La tercera forma, y por qué hace falta el encabezado.
+#
+# El veredicto está escrito de tres maneras en el repositorio, contadas una por
+# una sobre las 129 fases: `**Concepto:** …` en 67, una tabla con
+# `| **Concepto** |` en 16, y **la palabra sola bajo el encabezado** en 7. Esta
+# última no se leía, y esas siete se contaban entre las que «no dicen si
+# cumplen» **cuando sí lo dicen**.
+#
+# **Se exige el encabezado, y eso no es rigidez: es lo que impide leer de
+# más.** En un resultado la palabra «Cumple» aparece en cada fila de criterio.
+# Un lector que la buscara suelta tomaría el primer criterio por el veredicto
+# de la fase — y daría por cumplida una que no lo está, que miente en la
+# dirección peor.
+_VEREDICTO_BAJO_TITULO = re.compile(
+    r"^##\s+\d+\.?\s*Veredicto de la fase[^\n]*\n+\**(No cumple|Cumple)",
+    re.MULTILINE | re.IGNORECASE)
+
 
 def veredicto_de(ruta_fase):
     """`"Cumple"`, `"No cumple"` o `None` si no se deja leer.
@@ -411,10 +428,13 @@ def veredicto_de(ruta_fase):
     texto = _leer(os.path.join(ruta_fase, "resultado_pruebas.md"))
     if not texto:
         return None
-    dice = _VEREDICTO.search(texto)
+    dice = _VEREDICTO.search(texto) or _VEREDICTO_BAJO_TITULO.search(texto)
     if not dice:
         return None
-    return (dice.group(1) or dice.group(2)).strip().capitalize()
+    # `_VEREDICTO` trae dos grupos y `_VEREDICTO_BAJO_TITULO` uno: se toma el
+    # primero que haya coincidido, sin suponer cuál de las dos expresiones fue.
+    palabra = next(g for g in dice.groups() if g)
+    return palabra.strip().capitalize()
 
 
 def por_veredicto(proyecto):

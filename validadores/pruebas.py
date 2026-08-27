@@ -3573,6 +3573,76 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
                          "las tres cuentas no suman las terminadas: alguna "
                          "historia se contó dos veces o ninguna")
 
+    # -- CA-03 (fase B) · las tres formas del veredicto -------------------
+    #
+    # El veredicto está escrito de tres maneras, contadas una por una sobre las
+    # 129 fases. La tercera —la palabra sola bajo el encabezado— no se leía, y
+    # siete historias se contaban entre las que «no dicen si cumplen» **cuando
+    # sí lo dicen**.
+
+    def _resultado(self, cuerpo):
+        """Un árbol con una fase cuyo `resultado_pruebas.md` dice `cuerpo`."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, "documentacion", "epicas", "EP-001-e",
+                               "HU-001-una", "A-EP-001-HU-001-x")
+        os.makedirs(carpeta)
+        for doc in self.CINCO:
+            texto = cuerpo if doc == "resultado_pruebas.md" else "# x\n"
+            with io.open(os.path.join(carpeta, doc), "w", encoding="utf-8",
+                         newline="\n") as f:
+                f.write(texto)
+        return carpeta
+
+    def test_forma_1_concepto_con_dos_puntos(self):
+        c = self._resultado("## 5. Veredicto de la fase\n\n**Concepto:** Cumple.\n")
+        self.assertEqual(fases.veredicto_de(c), "Cumple")
+
+    def test_forma_2_tabla_con_concepto(self):
+        c = self._resultado("## 5. Veredicto de la fase\n\n| Campo | Valor |\n"
+                            "|---|---|\n| **Concepto** | **No cumple** |\n")
+        self.assertEqual(fases.veredicto_de(c), "No cumple")
+
+    def test_forma_3_la_palabra_sola_bajo_el_encabezado(self):
+        """La que faltaba. Siete fases del repositorio la usan."""
+        c = self._resultado("## 5. Veredicto de la fase\n\n"
+                            "**Cumple.** Los tres criterios quedaron "
+                            "comprobados.\n")
+        self.assertEqual(fases.veredicto_de(c), "Cumple")
+
+    def test_forma_3_tambien_para_no_cumple(self):
+        c = self._resultado("## 6. Veredicto de la fase\n\n"
+                            "**No cumple.** Falta el `CA-02`.\n")
+        self.assertEqual(fases.veredicto_de(c), "No cumple")
+
+    # -- CA-03 (fase B) · y no se lee de más ------------------------------
+    #
+    # **Es el caso crítico.** En un resultado la palabra «Cumple» aparece en
+    # cada fila de criterio. Un lector que la buscara suelta tomaría el primer
+    # criterio por el veredicto de la fase, y daría por cumplida una que no lo
+    # está — que miente en la dirección peor.
+
+    def test_no_lee_los_criterios_cuando_no_hay_encabezado_de_veredicto(self):
+        c = self._resultado("## 3. Veredicto por criterio\n\n| CA | Concepto |\n"
+                            "|---|---|\n| CA-01 | Cumple |\n"
+                            "| CA-02 | Cumple |\n")
+        self.assertIsNone(fases.veredicto_de(c),
+                          "leyó una fila de criterio como el veredicto")
+
+    def test_no_lee_un_encabezado_sin_nada_debajo(self):
+        c = self._resultado("## 5. Veredicto de la fase\n\n"
+                            "Pendiente de escribir.\n")
+        self.assertIsNone(fases.veredicto_de(c))
+
+    def test_no_lee_la_palabra_suelta_en_prosa(self):
+        c = self._resultado("# Resultado\n\nLa fase cumple con lo que el plan "
+                            "pedía, y se cumple el plazo.\n")
+        self.assertIsNone(fases.veredicto_de(c))
+
+    def test_no_revienta_con_el_resultado_vacio(self):
+        c = self._resultado("")
+        self.assertIsNone(fases.veredicto_de(c))
+
     # -- CA-04 · los moldes usan un solo vocabulario ----------------------
     #
     # **Lo pidió un sabotaje.** Devolver al molde del cierre su tercer valor
