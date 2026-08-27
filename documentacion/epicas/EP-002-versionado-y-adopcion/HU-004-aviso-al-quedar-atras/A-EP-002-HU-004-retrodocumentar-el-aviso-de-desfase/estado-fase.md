@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 9 — verificación, con el criterio principal en rojo. **Ejecutada el 2026-08-22.**
+**Estación actual:** cerrada con **No cumple**. **Última puerta pasada:** 11, el cierre documental.
+
+> **La fase se cerró el 2026-08-27 con veredicto «No cumple».** Cerrar no es aprobar: es dejar escrito qué salió. El criterio en rojo y adónde fue a parar están en el [funcionalidad_implementada.md](funcionalidad_implementada.md).
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|

@@ -521,3 +521,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-27 · agente y usuario, al ir a cerrar las fases con criterios en rojo.
 - **Scope:** estándar; aplica a cualquier conteo que mire si un archivo existe.
 - **Rel:** S-052 (una deuda en una fase sin cerrar no la lee nadie), S-048 (leer la existencia y no el contenido).
+
+## S-054 · El inventario cuenta fases terminadas, no criterios cumplidos  ·  decisión · activa
+- **What:** al cerrar cinco fases cuyo veredicto es **«No cumple»**, el inventario pasó de 37 incompletas a 32. Las cinco tienen sus cinco documentos, así que cuentan como completas — **y una de ellas dice que su criterio sigue roto hoy**: `250 de 250 reglas no dicen cuándo se revisó si todavía sirven`, un número que además **crece con cada regla nueva**.
+- **Why:** el número que responde «cuánto falta» mide **documentos escritos**, no **exigencias cumplidas**. Y los dos se separan justo donde importa: una fase que midió, encontró un rojo y lo dejó bien documentado está terminada como fase y **no resolvió nada**. Contarla igual que una que cumplió hace que el avance se vea mejor de lo que es.
+- **Also:** es la tercera forma del mismo defecto en dos días. Primero el número se copiaba a mano y se desfasaba (`S-049`). Después contaba archivos presentes, y un molde en blanco pasaba por terminado (`S-053`). Ahora cuenta fases cerradas sin mirar su veredicto. **Cada arreglo dejó el conteo más honesto y siguió midiendo la cosa de al lado.**
+- **Where:** las cinco fases cerradas el 2026-08-27, cada una declarando su rojo arriba del todo y adónde fue a parar · tres de ellas enlazan la fase que lo resolvió; dos siguen sin resolver.
+- **Learned:** un conteo de avance necesita decir **qué mide, en su propio nombre**. «Historias completas» se lee como «historias que cumplen» y son cosas distintas. Y el patrón para detectarlo es este: **si mejorar el trabajo no mueve el número, o moverlo no mejora el trabajo, el número mide otra cosa.** Las dos mitades pasaron hoy: llenar cuatro cierres vacíos no movió nada, y cerrar cinco fases con «No cumple» bajó el número en cinco.
+- **When/Who:** 2026-08-27 · agente y usuario, al cerrar las fases con criterios en rojo.
+- **Scope:** estándar; aplica a cualquier medición de avance.
+- **Rel:** S-053 (contar archivos presentes), S-049 (el molde enseñó el desorden).
