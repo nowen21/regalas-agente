@@ -688,6 +688,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-44 · Una regla que solo vive en un recuerdo se deja de cumplir al día siguiente
+
+- **Qué pasó:** el usuario cortó con esto: *«pero por qué sigue escribiendo acá: “C:/Users/user/AppData/Local/Temp/claude…” si eso es una regla que no se debe hacer allá»*. Los guiones de apoyo deben ir dentro del repositorio; la regla se fijó el 2026-08-20 y el usuario la precisó el 22 — *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*. **Se dejó de cumplir el 24, al día siguiente.** Cuatro días, **38 programas** afuera, más dos clones enteros de la plataforma con su entorno virtual.
+- **Por qué importa:** el daño no es de orden. El **resultado** de cada cambio quedaba versionado y **el cómo se borraba con el temporal**: cuatro días de sabotajes, guiones de cierre y mediciones sin respuesta a «¿con qué se hizo esto?». Es la segunda vez que esa pregunta se queda sin respuesta — la primera es la que originó la regla.
+- **Qué lo soluciona:** los 38 se trajeron con su fecha real y su README por día. **La causa sigue abierta**, en el pendiente 89.
+- **Qué se decidió:** **una regla que depende de que el agente se acuerde ya está incumplida; solo falta saber desde cuándo.** Es el argumento de este estándar aplicado a sí mismo. Y hay una prueba barata para saber si una regla necesita programa: **preguntar si la herramienta empuja hacia el otro lado**. Acá lo hace — ofrece una carpeta temporal en cada sesión y la nombra como el sitio recomendado.
+- **Y algo que no se trajo, a propósito:** los dos clones de la plataforma, 6.831 archivos con su `.venv`. Lo que valía era el resultado del experimento —que la configuración de git **no viaja al clonar**— y ya estaba escrito en su fase. Cada README del día dice qué se dejó afuera y por qué.
+- **Estado:** parcialmente resuelto. **Los 38 guiones, adentro; nada impide que vuelva a pasar mañana.**
+- **Responde a:** —
+- **Dispara:** el [pendiente 89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md), con sus tres salidas y sin elegir por el usuario.
+- **Orden de resolución:** —
+- **Dónde queda:** [historico-chat/scripts/](../../scripts/), con una carpeta por día · la señal `S-057` · el recuerdo, que ahora dice que él solo no alcanza.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** —
+- **Con qué se retoma:** el pendiente 89, decidiendo cuáles de las tres salidas entran.
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -700,13 +716,17 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) y el [89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cuarenta y tres hallazgos, cuarenta y dos cerrados.**
+**Cuarenta y cuatro hallazgos, cuarenta y dos cerrados.**
 
-**`H-40` es el que queda abierto**, y es el que más vale de la sesión: **el andamio crea los cinco documentos vacíos, y con eso una fase recién abierta ya cuenta como terminada.** No se resolvió — se escribieron los cuatro cierres que estaban en blanco, que es tapar los casos, no la causa. **Cobró tres veces el mismo día**: en las cuatro fases que figuraban cerradas siendo moldes, en la `HU-021` que contaba como terminada sin una línea escrita, y en la fase `B` que se creó para arreglar el conteo y le agregó un caso al conteo.
+**Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
+
+**`H-44`** — la regla de dónde van los guiones se fijó, se precisó, y se dejó de cumplir al día siguiente. Cuatro días, 38 programas afuera. Vive en un recuerdo, y **la herramienta empuja al lado contrario**.
+
+**`H-40`**: **el andamio crea los cinco documentos vacíos, y con eso una fase recién abierta ya cuenta como terminada.** No se resolvió — se escribieron los cuatro cierres que estaban en blanco, que es tapar los casos, no la causa. **Cobró tres veces el mismo día**: en las cuatro fases que figuraban cerradas siendo moldes, en la `HU-021` que contaba como terminada sin una línea escrita, y en la fase `B` que se creó para arreglar el conteo y le agregó un caso al conteo.
 
 **La medida que lo destapa ya existe y funciona:** contar los marcadores del molde sin reemplazar. Treinta y uno es un formulario; cinco son comillas de prosa. Quedó anotado en el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario cuál entra.
 

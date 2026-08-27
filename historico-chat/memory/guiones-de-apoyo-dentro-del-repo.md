@@ -6,6 +6,8 @@ Cuando el agente necesita un guion intermedio para generar o editar archivos, es
 
 **Y el 2026-08-22 el usuario lo precisó, porque el recuerdo se estaba cumpliendo a medias:** *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*. No alcanza con que el guion viva en una carpeta temporal del repositorio y se borre: **el resultado quedaba versionado y el cómo se perdía**. A la pregunta «¿con qué se recortaron esas treinta reglas?» no había respuesta en ninguna parte.
 
+**Y el 2026-08-27 el usuario tuvo que volver a preguntarlo, por tercera vez:** *«pero por qué sigue escribiendo acá [...] si eso es una regla que no se debe hacer allá»*. La regla se había dejado de cumplir **el 2026-08-24, al día siguiente de precisarla**, y siguieron cuatro días: 38 programas afuera. **Este recuerdo, por sí solo, no alcanza** — la herramienta ofrece una carpeta temporal en cada sesión y la nombra como el sitio recomendado, así que el camino cómodo apunta al lado contrario. Falta el programa que lo haga cumplir: `S-057` y el [pendiente 89](../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md).
+
 **Cómo se aplica:**
 
 - El guion se escribe en `historico-chat/scripts/AAAA-MM-DD/`, con un nombre que diga qué hace.
