@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-003](../HU-003-version-adoptada-por-el-proyecto.md): el `CA-02`, que la fase `A` dejó en rojo |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `a2d839d` |
 
 > **Se ejecutó el 2026-08-22 y este documento se escribió el 2026-08-26.** Hasta entonces **era el molde sin llenar**, con sus 31 marcadores por reemplazar. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
 

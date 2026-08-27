@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-011](../HU-011-molde-de-las-reglas.md): que la comprobación de meta-reglas no juzgue lo que no es el estándar |
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `a2d839d` |
 
 > **Se ejecutó el 2026-08-22 y este documento se escribió el 2026-08-27.** Hasta entonces **era el molde sin llenar**. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
 
