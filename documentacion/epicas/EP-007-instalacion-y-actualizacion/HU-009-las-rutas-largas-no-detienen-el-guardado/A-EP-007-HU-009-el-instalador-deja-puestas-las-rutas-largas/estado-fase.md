@@ -17,7 +17,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12, commit. **Última puerta pasada:** 11.
+**Estación actual:** cerrada. **Última puerta pasada:** 12, el commit `dab3872`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|

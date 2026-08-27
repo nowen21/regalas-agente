@@ -11,7 +11,7 @@
 | **HU / CA cubiertas** | [HU-009](../HU-009-las-rutas-largas-no-detienen-el-guardado.md): `CA-01`, `CA-02`, `CA-03` y sus dos transversales |
 | **Fecha de cierre** | 2026-08-26 |
 | **Versión del estándar al cerrar** | `35.1.0` |
-| **Commit** | Por anotar al guardar |
+| **Commit** | `dab3872` |
 
 ---
 
