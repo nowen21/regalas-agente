@@ -170,7 +170,9 @@ CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POS
 
 **Qué falta para que cumpla** (si no cumple): «lista concreta».
 
-> Este concepto es el que se copia al `estado-fase.md` para pasar la puerta de verificación. La fase **no cierra** con un CA en "No".
+> Este concepto es el que se copia al `estado-fase.md` y al `funcionalidad_implementada.md`.
+>
+> **Una fase con un CA en «No» no pasa la puerta de verificación, pero sí cierra, declarándolo.** Cerrar no es aprobar: es dejar escrito qué salió, qué falta y adónde fue a parar. Dejarla abierta para siempre esconde su deuda, y **una deuda en una fase sin cerrar no la lee nadie**.
 
 ---
 

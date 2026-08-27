@@ -71,7 +71,12 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 > **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
 
-- **Fuente:** «`resultado_pruebas.md`», **Veredicto:** «Cumple / Cumple con observaciones».
+| **Fuente** | «`resultado_pruebas.md`» |
+| **Veredicto** | «Cumple» o «No cumple», **copiado del §6 del resultado**. No hay tercer valor: si algo de lo pedido falta, es «No cumple» |
+
+> **Va como campo, no en prosa.** Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo arriba del todo, cada una a su manera, y así ningún programa podía leerlo.
+
+- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
 - **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
 - **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
   - «Lista de comprobaciones hechas a mano y su resultado.»

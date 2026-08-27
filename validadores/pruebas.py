@@ -3170,8 +3170,14 @@ class InventarioDeHU(unittest.TestCase):
         self.assertEqual(fases.inventario(raiz), (2, 1, 1))
         linea = fases.linea_inventario(raiz)
         self.assertIn("2 en total", linea)
-        self.assertIn("1 completas", linea)
-        self.assertIn("1 incompletas", linea)
+        # **Las palabras cambiaron en la 35.2.0, la conducta no.** La línea
+        # decía «1 completas · 1 incompletas»; ahora dice «terminadas» y «sin
+        # terminar», porque «completas» se leía como «cumplen» y eran cosas
+        # distintas (`EP-004·HU-021`). Lo que esta prueba vigila —que la línea
+        # reporte las dos cuentas— sigue igual; lo que se ajustó es el texto
+        # contra el que compara.
+        self.assertIn("1 terminadas", linea)
+        self.assertIn("1 sin terminar", linea)
 
     def test_la_linea_sale_en_la_corrida_de_verdad(self):
         salida = subprocess.run(
@@ -3457,6 +3463,156 @@ class InventarioDeHU(unittest.TestCase):
                       "la plantilla no dice con qué comando se saca la cuenta")
         self.assertIn('"«RUTA-ESTANDAR»/validadores/validar.py"', texto,
                       "el comando de la plantilla no está entrecomillado")
+
+
+class LaCuentaMiraElVeredicto(unittest.TestCase):
+    """Terminada no es lo mismo que cumplida — EP-004 · HU-021.
+
+    Hasta la 35.1.0 el conteo miraba que los documentos estuvieran. Eso dice si
+    el trabajo se **terminó**, no si **cumplió**: diecinueve fases cerradas con
+    «No cumple» contaban entre las completas.
+
+    **El caso que más importa es el de la tercera cuenta.** Repartir entre
+    «cumple» y «no cumple» lo que no se deja leer haría que el número mintiera
+    de una forma nueva, que es justo lo que esto viene a terminar.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CINCO = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
+             "estado-fase.md", "funcionalidad_implementada.md"]
+
+    def _arbol(self, fases_y_veredictos, hu="HU-001-una"):
+        """`{"A-EP-001-HU-001-x": "Cumple" | "No cumple" | None}`.
+
+        `None` deja el resultado sin veredicto legible.
+        """
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        base = os.path.join(tmp.name, "documentacion", "epicas", "EP-001-e", hu)
+        for nombre, veredicto in fases_y_veredictos.items():
+            carpeta = os.path.join(base, nombre)
+            os.makedirs(carpeta)
+            for doc in self.CINCO:
+                cuerpo = "# de mentira\n"
+                if doc == "resultado_pruebas.md" and veredicto:
+                    cuerpo += "\n**Concepto:** %s.\n" % veredicto
+                with io.open(os.path.join(carpeta, doc), "w",
+                             encoding="utf-8", newline="\n") as f:
+                    f.write(cuerpo)
+        return tmp.name
+
+    # -- CA-02 · basta una fase que no cumpla -----------------------------
+    def test_una_historia_cuyas_fases_cumplen_cuenta_cumplida(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": "Cumple",
+                            "B-EP-001-HU-001-y": "Cumple"})
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0))
+
+    def test_basta_una_fase_que_no_cumpla(self):
+        """Cerrar la primera fase no cierra la historia."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": "Cumple",
+                            "B-EP-001-HU-001-y": "No cumple"})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_todas_sin_cumplir_tambien_es_una_sola(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple",
+                            "B-EP-001-HU-001-y": "No cumple"})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    # -- CA-03 · lo ilegible se cuenta aparte -----------------------------
+    def test_sin_veredicto_no_se_reparte_entre_las_otras_dos(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": None})
+        cumplen, no_cumplen, sin_veredicto = fases.por_veredicto(raiz)
+        self.assertEqual(sin_veredicto, 1)
+        self.assertEqual(cumplen, 0, "se repartió entre las que cumplen")
+        self.assertEqual(no_cumplen, 0, "se repartió entre las que no cumplen")
+
+    def test_una_fase_ilegible_arrastra_a_la_historia_entera(self):
+        """Si no se puede leer una, no se puede afirmar de la historia."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": "Cumple",
+                            "B-EP-001-HU-001-y": None})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 0, 1))
+
+    # -- Transversal · límites --------------------------------------------
+    def test_limites_una_historia_a_medias_no_entra_en_ninguna_cuenta(self):
+        """No tiene veredicto que dar: contarla la mezclaría con las que sí."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": "Cumple"})
+        falta = os.path.join(raiz, "documentacion", "epicas", "EP-001-e",
+                             "HU-001-una", "A-EP-001-HU-001-x",
+                             "funcionalidad_implementada.md")
+        os.remove(falta)
+        self.assertEqual(fases.por_veredicto(raiz), (0, 0, 0))
+
+    def test_limites_el_veredicto_con_texto_detras_se_lee(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": "Cumple, en el ciclo 2"})
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0))
+
+    def test_limites_la_caja_no_importa_para_el_veredicto(self):
+        """A diferencia del estado, acá la caja no cambia el sentido."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": "no cumple"})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_limites_arbol_vacio_devuelve_ceros(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.assertEqual(fases.por_veredicto(tmp.name), (0, 0, 0))
+
+    # -- CA-01 · la línea dice las tres, y cuadran ------------------------
+    def test_la_linea_dice_las_tres_cuentas(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple"})
+        linea = fases.linea_inventario(raiz)
+        for palabra in ("cumplen", "no cumplen", "no dicen si cumplen",
+                        "sin terminar", "terminadas"):
+            self.assertIn(palabra, linea,
+                          "la línea no dice «%s»" % palabra)
+
+    def test_las_tres_cuentas_suman_las_terminadas(self):
+        """Sobre el árbol real, que es el único con variedad de verdad."""
+        _total, completas, _inc = fases.inventario(self.RAIZ)
+        cumplen, no_cumplen, sin_veredicto = fases.por_veredicto(self.RAIZ)
+        self.assertEqual(cumplen + no_cumplen + sin_veredicto, completas,
+                         "las tres cuentas no suman las terminadas: alguna "
+                         "historia se contó dos veces o ninguna")
+
+    # -- CA-04 · los moldes usan un solo vocabulario ----------------------
+    #
+    # **Lo pidió un sabotaje.** Devolver al molde del cierre su tercer valor
+    # dejaba las doce pruebas en verde: el criterio solo tenía comprobación a
+    # mano, y un molde sin guardia vuelve a lo de antes en la primera edición.
+    # Es el mismo hueco que la `HU-020` encontró con la plantilla del
+    # inventario.
+
+    def _molde(self, nombre):
+        return comun.leer(os.path.join(self.RAIZ, "plantillas",
+                                       "ciclo-vida-proyectos",
+                                       "%s.md" % nombre))
+
+    def test_el_molde_del_cierre_no_ofrece_un_tercer_valor(self):
+        texto = self._molde("11-funcionalidad-implementada")
+        campo = [l for l in texto.split("\n")
+                 if l.startswith("| **Veredicto**")]
+        self.assertEqual(len(campo), 1,
+                         "el molde del cierre no tiene su campo de veredicto")
+        self.assertIn("No cumple", campo[0],
+                      "el molde no puede declarar «No cumple»")
+        self.assertNotIn("con observaciones", campo[0],
+                         "el molde volvió a ofrecer un tercer valor")
+
+    def test_ningun_molde_prohibe_cerrar_con_un_criterio_en_rojo(self):
+        """La regla decía lo contrario de lo que se hace, y se hace bien."""
+        for nombre in ("07-plan-trabajo", "09-resultado-pruebas",
+                       "11-funcionalidad-implementada"):
+            self.assertNotIn("no cierra con", self._molde(nombre),
+                             "%s volvió a prohibir cerrar con un rojo" % nombre)
+
+    # -- Transversal · no regresión ---------------------------------------
+    def test_no_regresion_inventario_sigue_devolviendo_tres_valores(self):
+        """Diez pruebas dependen de su firma. La cuenta nueva va aparte."""
+        self.assertEqual(len(fases.inventario(self.RAIZ)), 3)
+
+    def test_la_cuenta_nueva_no_cambia_el_total_ni_las_sin_terminar(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple"})
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0),
+                         "la cuenta nueva movió lo que no debía")
 
 
 class VocabularioDeEstados(unittest.TestCase):

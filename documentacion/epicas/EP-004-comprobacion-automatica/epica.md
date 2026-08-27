@@ -149,6 +149,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-018](HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | Avisar cuando dos pendientes se disputan el mismo número | Should | S |
 | [HU-019](HU-019-inventario-que-no-se-mantiene-a-mano/HU-019-inventario-que-no-se-mantiene-a-mano.md) | Que el inventario de historias deje de mantenerse a mano | Should | S |
 | [HU-020](HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano/HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md) | Que el inventario que heredan los proyectos tampoco se mantenga a mano | Should | S |
+| [HU-021](HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido.md) | Que la cuenta distinga lo terminado de lo cumplido | Must | M |
 
 ## 10. Consideraciones técnicas
 
@@ -212,6 +213,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 9 | Contar lo que falta sin recorrerlo a mano: HU sin fase y números de pendiente disputados | HU-017, HU-018 |
 | Fase 10 | Que la cuenta no exista dos veces: el inventario enlaza lo que el árbol sabe en vez de copiarlo | HU-019 |
 | Fase 11 | Que lo mismo llegue a quien hereda el estándar: la plantilla y la comprobación | HU-020 |
+| Fase 12 | Que el número que dice cuánto falta no cuente como hecha una fase que no cumplió | HU-021 |
 
 ## 15. Definition of Ready
 

@@ -531,3 +531,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-27 · agente y usuario, al cerrar las fases con criterios en rojo.
 - **Scope:** estándar; aplica a cualquier medición de avance.
 - **Rel:** S-053 (contar archivos presentes), S-049 (el molde enseñó el desorden).
+
+## S-055 · Un número de avance necesita una prueba que lo contradiga  ·  decisión · activa
+- **What:** la cuenta de historias dejó de contar como hechas las fases que no cumplieron. El número real apareció al medirlo: de **85 terminadas, 51 cumplen** — once cerraron declarando que no, y **23 no dicen si cumplen**. El anterior, `85 completas`, estaba sobrestimado en un **40%**.
+- **Why:** «completas» se leía como «cumplen», y no era lo mismo. Con ese número se decidió todo el trabajo de dos días, incluida la decisión de construir esto. **Un número de avance que solo puede subir no informa: acompaña.**
+- **Also:** la mejor prueba de que hacía falta se dio sola. La historia que se creó para arreglarlo, sin una línea de trabajo hecha, **contaba como terminada**: el andamio le había creado los cinco documentos vacíos. Con la cuenta nueva cae donde corresponde — entre las 23 que no dicen si cumplen.
+- **And:** la causa no era descuido. El molde del cierre ofrecía `Cumple / Cumple con observaciones` y **no tenía forma de decir «No cumple»**, así que diecinueve fases lo escribieron en prosa suelta, cada una a su manera, donde ningún programa lo lee. Y los moldes decían que una fase con un criterio en rojo **no cierra**, mientras diecinueve cerradas lo hacían con razón. **Se corrigió la regla, no la práctica**: cerrar no es aprobar, y dejar la fase abierta esconde su deuda.
+- **Where:** `veredicto_de` y `por_veredicto` en [validadores/fases.py](../validadores/fases.py) · los tres moldes con un solo vocabulario · versión 35.2.0, con los dos números en su entrada.
+- **Learned:** todo número que mida avance necesita **una forma de empeorar**, y hay que buscarla a propósito. Si no la tiene, no está midiendo el avance: está contando actividad. **La pregunta que lo destapa es qué tendría que pasar para que este número baje** — si no hay respuesta, el número no sirve para decidir.
+- **When/Who:** 2026-08-27 · agente y usuario, en la fase A de la HU-021.
+- **Scope:** estándar; aplica a cualquier medición de avance.
+- **Rel:** S-054 (el inventario cuenta fases terminadas, no criterios cumplidos), S-053 (contar archivos presentes), S-049 (el molde enseñó el desorden).

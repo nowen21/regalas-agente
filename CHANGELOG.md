@@ -11,6 +11,32 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.2.0 — 2026-08-27
+
+**El número que responde «cuánto falta» contaba como hecho el trabajo que no cumplió.** Ahora distingue lo que se terminó de lo que además cumple, y lo dice en la misma línea.
+
+**MENOR** (nadie tiene que hacer nada; lo que cambia es que el número dice la verdad).
+
+**Lo que se veía antes y lo que se ve ahora**, sobre este mismo repositorio:
+
+| Antes | Ahora |
+|---|---|
+| `117 en total · 85 completas · 32 incompletas` | `117 en total · 32 sin terminar · 85 terminadas, de las cuales 51 cumplen, 11 no cumplen y 23 no dicen si cumplen` |
+
+**No se perdió trabajo: antes se contaba de más.** De 85 documentos de trabajo terminados, **51 cumplen su exigencia**. Once cerraron declarando que no la cumplen, y 23 no dicen si la cumplen o no.
+
+**Por qué pasaba, y no era descuido de nadie.** El conteo miraba que los documentos estuvieran, y eso dice si el trabajo se **terminó**, no si **cumplió**. Y el molde del documento de cierre ofrecía «Cumple» o «Cumple con observaciones»: **no tenía forma de decir «No cumple»**, así que quien no cumplía tenía que escribirlo suelto, cada uno a su manera, donde ningún programa lo lee.
+
+**Los moldes ahora usan una sola palabra para cada cosa:** `Cumple` o `No cumple`, sin tercer valor, y el documento de cierre tiene su campo.
+
+**Y se corrigió una regla que no describía lo que se hace.** Los moldes decían que un trabajo con una exigencia sin cumplir **no se cierra**. En la práctica se cierra — declarando qué faltó y adónde fue a parar — y eso es lo correcto: **cerrar no es aprobar**. Dejarlo abierto para siempre esconde lo que falta, porque nadie vuelve a leer un documento a medias.
+
+**Lo que no se puede leer se cuenta aparte**, ni entre lo que cumple ni entre lo que no. Repartirlo haría que el número mintiera de otra forma.
+
+**Qué verá quien ya tenía el estándar.** Su número de trabajos completos va a bajar, y con él aparece el reparto. **No hay nada que migrar**: los documentos siguen igual, y lo que cambia es qué se cuenta.
+
+---
+
 ## 35.1.0 — 2026-08-26
 
 **En Windows, guardar un archivo cuya ruta pasa de 260 caracteres falla, y el mensaje no dice qué hacer.** Ahora el instalador deja puesto el ajuste que lo permite, y queda escrito qué hacer si aparece de todas formas.

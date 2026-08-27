@@ -163,7 +163,7 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ## 5. Verificación de criterios de aceptación  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q10
 
-> Un CA no se marca cumplido sin evidencia. La fase no cierra con algún CA en rojo. El detalle de casos vive en el `plan_pruebas`.
+> Un CA no se marca cumplido sin evidencia. **Una fase con un CA en rojo no pasa la puerta de verificación, pero sí cierra, declarando el rojo y adónde fue a parar.** Cerrar no es aprobar. El detalle de casos vive en el `plan_pruebas`.
 
 | CA | Método de verificación | Evidencia | Verificado | Estado |
 |---|---|---|---|---|

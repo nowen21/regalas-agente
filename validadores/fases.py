@@ -381,13 +381,94 @@ def inventario(proyecto):
     return (total, completas, total - completas)
 
 
+# `EP-004·HU-021` · Terminada no es lo mismo que cumplida.
+#
+# `inventario` cuenta que los documentos estén. Eso dice si el trabajo se
+# **terminó**, no si **cumplió**: hasta la 35.1.0, diecinueve fases cerradas
+# con veredicto «No cumple» contaban entre las completas, y de las 84 historias
+# que el número daba por hechas, casi una de cada cuatro descansaba en una que
+# no cumplió.
+#
+# **El veredicto se lee del `resultado_pruebas.md`**, que es quien lo produce.
+# Está ahí en 103 de 128 fases; en el cierre, en 55 de 125 — porque hasta esta
+# versión el molde del cierre no tenía dónde ponerlo.
+#
+# **Lo que no se puede leer se cuenta aparte** (`04·R4`). Repartirlo entre las
+# otras dos haría que el número mintiera de una forma nueva, que es justo lo
+# que esto viene a terminar.
+_VEREDICTO = re.compile(
+    r"\*\*Concepto:?\*\*:?\s*\|?\s*\**(No cumple|Cumple)"
+    r"|\|\s*\*\*(?:Concepto|Veredicto)\*\*\s*\|\s*\**(No cumple|Cumple)",
+    re.IGNORECASE)
+
+
+def veredicto_de(ruta_fase):
+    """`"Cumple"`, `"No cumple"` o `None` si no se deja leer.
+
+    Se mira **con qué palabra empieza**: `Cumple, con los tres criterios` es
+    un cumple, y el detalle que sigue es lo que hace útil el campo.
+    """
+    texto = _leer(os.path.join(ruta_fase, "resultado_pruebas.md"))
+    if not texto:
+        return None
+    dice = _VEREDICTO.search(texto)
+    if not dice:
+        return None
+    return (dice.group(1) or dice.group(2)).strip().capitalize()
+
+
+def por_veredicto(proyecto):
+    """`(cumplen, no_cumplen, sin_veredicto)` de las HU **terminadas**.
+
+    Solo se miran las terminadas: una historia a medias no tiene veredicto que
+    dar, y contarla acá la mezclaría con las que sí lo tienen.
+
+    **Basta una fase que no cumpla** para que la historia no cumpla. Es la
+    misma regla que `inventario` usa para «completa», y por el mismo motivo:
+    cerrar la primera fase no cierra la historia.
+    """
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    if not os.path.isdir(raiz):
+        return (0, 0, 0)
+
+    cumplen = no_cumplen = sin_veredicto = 0
+    for nombre_epica in _subcarpetas(raiz):
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        if not _EPICA.match(nombre_epica):
+            continue
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
+            if not (fases and all(
+                    all(os.path.isfile(os.path.join(ruta_hu, f, d))
+                        for d in DOCUMENTOS)
+                    for f in fases)):
+                continue                    # no está terminada: no se cuenta
+
+            dichos = [veredicto_de(os.path.join(ruta_hu, f)) for f in fases]
+            if any(v is None for v in dichos):
+                sin_veredicto += 1
+            elif any(v == "No cumple" for v in dichos):
+                no_cumplen += 1
+            else:
+                cumplen += 1
+    return (cumplen, no_cumplen, sin_veredicto)
+
+
 def linea_inventario(proyecto):
     """La línea que se imprime al final de la corrida, o "" si no hay árbol."""
     total, completas, incompletas = inventario(proyecto)
     if not total:
         return ""
-    return (f"HU: {total} en total · {completas} completas · "
-            f"{incompletas} incompletas (F12.2)")
+    cumplen, no_cumplen, sin_veredicto = por_veredicto(proyecto)
+    # **Se dice qué es cada número, no solo el número.** Quien lee esta línea
+    # decide con ella en qué trabajar, y «completas» se leía como «cumplen».
+    return (f"HU: {total} en total · {incompletas} sin terminar · "
+            f"{completas} terminadas, de las cuales {cumplen} cumplen, "
+            f"{no_cumplen} no cumplen y {sin_veredicto} no dicen si cumplen "
+            f"(F12.2)")
 
 
 def _leer(ruta):
