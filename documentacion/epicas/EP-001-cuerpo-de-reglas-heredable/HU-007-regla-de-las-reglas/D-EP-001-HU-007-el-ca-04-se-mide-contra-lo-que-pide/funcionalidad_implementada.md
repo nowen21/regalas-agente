@@ -13,7 +13,7 @@
 | **Versión del estándar al cerrar** | `35.6.0` — **sin cambio**: no se toca código |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
 | **Reemplaza el veredicto de** | `A-EP-001-HU-007-retrodocumentar-el-procedimiento-de-la-regla` |
-| **Commit** | Pendiente de aprobación del usuario |
+| **Commit** | `6abffdc` |
 
 > **Por qué se declara el reemplazo:** se volvió a medir el `CA-04` contra lo que su criterio pide, y cumple en sus tres exigencias. Aquel rojo se puso citando *«249 de 249 sin dato»* — **una cifra que el criterio no menciona**. **El veredicto de aquella fase no se toca** (`20·M11`): la cuenta lo deja atrás, el documento sigue diciendo lo que decía.
 

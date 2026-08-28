@@ -15,7 +15,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+**Estación actual:** 13 · Publicación. **Última puerta pasada:** 12, en `6abffdc`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ✅ 11 tareas, 11 con resultado |
 | 10 | Crítico | sin hallazgos graves | ✅ Cinco sabotajes, tres ciclos |
 | 11 | Cierre documental + señales | docs y señales al día | ✅ `S-066`, `S-067`, `S-068` |
-| 12 | Commit | 👤 autorizado | ☐ **Esperando aprobación del usuario** |
+| 12 | Commit | 👤 autorizado | ✅ `6abffdc` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
@@ -79,7 +79,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del commit**, que se pide aparte de la aprobación del cambio.
+- **La aprobación del `push`**, que se pide aparte del commit.
 - **Las 22 fases con la marca pendiente y las 106 sin la fila.** Se cuentan y se nombran; ponerlas al día se decide aparte.
 
 ---
