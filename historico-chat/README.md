@@ -83,7 +83,7 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-14-indice-tematico-del-historico.md](2026-08-14-indice-tematico-del-historico.md) — cargar el histórico al iniciar ya lo hace un hook; nace la idea de un índice por temáticas y qué manda entre el brief y el histórico. · [historico-chat/resumenes/2026-08-14/indice-tematico-del-historico.md](resumenes/2026-08-14/indice-tematico-del-historico.md)
 - [2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](2026-08-14-h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md) — cerrar H-4 · No había dónde escribir lo aprendido: el resumen de sesión y su enganche. · [historico-chat/resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md](resumenes/2026-08-14/h4-cerrar-h-4-no-habia-donde-escribir-lo-aprendido.md)
 
-<!-- huella: 8a05613563b8 · estandar 28.0.0 -->
+
 - [2026-08-14-h-8-la-traduccion-quedo-a-medias.md](2026-08-14-h-8-la-traduccion-quedo-a-medias.md) — solución del hallazgo H-8: se abre la fase A de EP-003 · HU-010, el glosario de la terminología, con sus dos planes escritos y a la espera de aprobación. · [historico-chat/resumenes/2026-08-14/h-8-la-traduccion-quedo-a-medias.md](resumenes/2026-08-14/h-8-la-traduccion-quedo-a-medias.md)
 - [2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md](2026-08-14-el-enganche-del-resumen-no-crea-el-resumen.md) — por qué lo de H-4 no funciona: el enganche nunca crea el resumen y la prueba lo dio por bueno. · [historico-chat/resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md](resumenes/2026-08-14/el-enganche-del-resumen-no-crea-el-resumen.md)
 - [2026-08-15-la-plantilla-del-resultado-de-pruebas.md](2026-08-15-la-plantilla-del-resultado-de-pruebas.md) — cada sección de la plantilla dice qué pregunta responde; aplicarla destapa que una fase cerrada no cumplía. · [historico-chat/resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md](resumenes/2026-08-15/la-plantilla-del-resultado-de-pruebas.md)
@@ -117,3 +117,80 @@ Cada línea es una sesión: primero su transcripción, y después del `·` el en
 - [2026-08-22-el-inventario-de-cimiento.md](2026-08-22-el-inventario-de-cimiento.md) — se aprueba el inventario de funcionalidades de Cimiento para abrir la puerta de las épicas. · [historico-chat/resumenes/2026-08-22/el-inventario-de-cimiento.md](resumenes/2026-08-22/el-inventario-de-cimiento.md)
 - [2026-08-22-sesion-5.md](2026-08-22-sesion-5.md) — sesión del 2026-08-22.
 - [2026-08-22-sesion-6.md](2026-08-22-sesion-6.md) — sesión del 2026-08-22.
+
+## Quién lo escribe
+
+Lo escribe el programa, no el agente. Dos enganches de Claude Code, instalados por `validadores/instalar.py` del estándar:
+
+| Enganche | Cuándo | Qué anota |
+|---|---|---|
+| `UserPromptSubmit` | al enviar el mensaje | el mensaje del usuario, literal |
+| `Stop` | al terminar la respuesta | la respuesta del agente, leída del transcript |
+
+La hora sale del reloj de la máquina en ese instante — no de la memoria del agente.
+
+> Está así a propósito. Mientras registrar la sesión dependa de que el agente se acuerde, no se cumple siempre: una instrucción escrita **informa**, un enganche **ejecuta**.
+
+## Cómo está armado cada archivo
+
+- La primera línea lleva `<!-- sesion: <id> -->`. La sesión se busca por esa marca, **no por el nombre**: el archivo se puede renombrar para ponerle el tema real sin que la sesión se parta en dos.
+- **La sesión que cruza la medianoche se queda entera, con la fecha del día en que empezó.** No se parte: el archivo es de una conversación, no de un día, y la marca de sesión es una sola. Cada turno lleva su hora real, así que lo que pasó después de las doce se sabe leyendo, no por el nombre del archivo. **El resumen sí va al día en que pasaron las cosas** — son dos documentos con dos criterios, y es a propósito.
+- Los mensajes entran antes de `## Abierto`, que cierra el archivo.
+- Cada respuesta lleva `<!-- agente: <uuid> -->`, que evita que se duplique si el enganche vuelve a correr.
+- No se guarda el razonamiento interno del agente ni la salida cruda de las herramientas: esto es la conversación, no la máquina por dentro.
+
+## El índice es lo que lee la próxima sesión
+
+Un chat nuevo arranca sin memoria de los anteriores. Al abrir la sesión, el enganche le inyecta al agente **este índice** —no las transcripciones, que son la conversación entera— para que sepa qué se habló antes y pueda abrir con `Read` la sesión que le sirva.
+
+Por eso cada sesión que se crea queda anotada aquí: la línea la pone el enganche al crear el archivo y la vuelve a comprobar en cada mensaje. Una sesión sin su línea es una sesión que la siguiente no va a encontrar, y el validador de índices la reporta como falla.
+
+## Qué hace el agente aquí
+
+- **Ponerle tema al nombre.** El enganche crea `AAAA-MM-DD-sesion.md` porque al abrir el chat todavía no se sabe de qué se va a tratar. Apenas hay una respuesta el tema ya está claro, y el propio enganche se lo recuerda al agente —**una sola vez** en la sesión, no en cada mensaje—: propone nombre y resumen en una línea y espera. El nombre lo aprueba el usuario; nada se renombra solo.
+- **Renombrar con el comando, no a mano.** Cuando el usuario aprueba:
+
+  ```sh
+  python "<estándar>/validadores/historico.py" --renombrar "<archivo>" --tema "<tema>" --resumen "<de qué se trató>"
+  ```
+
+  El recordatorio del enganche trae esa línea con la ruta ya puesta. Cambia el nombre del archivo, su título y la línea del índice — **las tres cosas**. Renombrar a mano deja el índice apuntando a un archivo que ya no está, y esa línea es por donde la próxima sesión llega a esta.
+- **El mismo nombre en la sesión de Claude Code.** Junto con el comando, el agente le pasa al usuario la línea `/rename <tema>`, que le pone ese nombre a la sesión: es lo que se ve en la pestaña, en la barra del prompt y en `/resume`. La pega el usuario — `/rename` es un comando suyo y el agente no lo puede ejecutar. Así el archivo del histórico y la sesión abierta se llaman igual.
+- **Decir de qué se trató.** La línea del índice nace como "sesión del AAAA-MM-DD"; el `--resumen` la reemplaza por el tema real. Es lo único que la próxima sesión ve de esta.
+- **Mantener `## Abierto`**: lo que quedó sin cerrar, o "nada".
+- **No copiar a mano lo que el enganche ya escribió.** Si falta algo, se agrega; no se reescribe encima.
+
+## Qué manda cuando esto y lo acordado se contradicen
+
+**Manda lo acordado**, que vive en el `CLAUDE.md` del proyecto y en sus documentos de encargo; el histórico dice **de dónde salió**. Son dos cosas distintas: acá está lo que se dijo alguna vez, allá lo que rige hoy.
+
+Cuando chocan, lo que hay es una de dos, y las dos se arreglan escribiendo lo acordado:
+
+| Qué pasó | Qué se hace |
+|---|---|
+| Lo acordado quedó viejo | se actualiza, citando la sesión donde se decidió el cambio |
+| Se decidió algo y nadie lo escribió | se escribe ahora, citando la sesión donde se dijo |
+
+**Lo que nunca se hace es editar el histórico para que cuadre.** Es transcripción: solo crece, y su valor es justamente que dice lo que se dijo, no lo que hoy convendría haber dicho.
+
+## Forma
+
+```markdown
+<!-- sesion: 0000-0000 -->
+
+# AAAA-MM-DD — Tema
+
+## Conversación
+
+### 1 · Usuario — AAAA-MM-DD HH:MM:SS
+> La pregunta, literal.
+
+**Agente** — AAAA-MM-DD HH:MM:SS
+
+La respuesta, tal como se dio.
+
+## Abierto
+- Lo que quedó sin cerrar, o "nada".
+```
+
+<!-- huella: 29387570ce96 · estandar 35.7.0 -->
