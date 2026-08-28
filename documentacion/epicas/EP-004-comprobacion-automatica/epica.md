@@ -151,6 +151,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-020](HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano/HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md) | Que el inventario que heredan los proyectos tampoco se mantenga a mano | Should | S |
 | [HU-021](HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido.md) | Que la cuenta distinga lo terminado de lo cumplido | Must | M |
 | [HU-022](HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) | Que un documento que sigue siendo el molde no cuente como escrito | Must | S |
+| [HU-023](HU-023-un-rojo-se-puede-cerrar-declarandolo/HU-023-un-rojo-se-puede-cerrar-declarandolo.md) | Que un veredicto en rojo se pueda cerrar, declarándolo | Must | S |
 
 ## 10. Consideraciones técnicas
 
@@ -216,6 +217,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 11 | Que lo mismo llegue a quien hereda el estándar: la plantilla y la comprobación | HU-020 |
 | Fase 12 | Que el número que dice cuánto falta no cuente como hecha una fase que no cumplió | HU-021 |
 | Fase 13 | Que una fase recién abierta no cuente como terminada: el molde sin llenar no es un documento | HU-022 |
+| Fase 14 | Que un rojo tenga salida: la fase que lo resuelve lo declara, y la cuenta lo lee | HU-023 |
 
 ## 15. Definition of Ready
 

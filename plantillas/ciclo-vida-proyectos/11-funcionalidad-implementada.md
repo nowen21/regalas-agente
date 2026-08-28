@@ -76,6 +76,12 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 > **Va como campo, no en prosa.** Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo arriba del todo, cada una a su manera, y así ningún programa podía leerlo.
 
+| **Reemplaza el veredicto de** | **Opcional.** El nombre de otra fase **de esta misma historia** cuyo «No cumple» esta fase deja atrás, porque volvió a verificar ese criterio y hoy se cumple |
+
+> **Solo se escribe si esta fase verificó ese criterio, y solo vale si esta fase cumple.** Un rojo no se cierra con otro rojo, y **no se cierra por venir después**: hay fases posteriores que trabajaron otro criterio y no arreglaron nada. Se declara para que el conteo no lo adivine.
+>
+> **El veredicto reemplazado no se toca.** Aquella fase sigue diciendo lo que dijo: el rastro de que estuvo en rojo es la información, y borrarlo la perdería. Existe desde la versión 35.5.0, porque hasta entonces **un rojo no tenía forma de cerrarse**: se podía hacer el trabajo, medirlo y declararlo, y el número no lo leía.
+
 - **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
 - **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
 - **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):

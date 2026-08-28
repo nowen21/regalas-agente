@@ -3950,6 +3950,228 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
                          "la cuenta nueva movió lo que no debía")
 
 
+class UnRojoSeCierraDeclarandolo(unittest.TestCase):
+    """Un veredicto en rojo se puede cerrar — EP-004 · HU-023.
+
+    **Comprobado haciéndolo:** dos fases verificaron criterios en rojo,
+    midieron que hoy se cumplen y cerraron con «Cumple», **y el número no se
+    movió**. Un rojo entraba en la cuenta y no salía nunca (`S-065`).
+
+    **Lo que se vigila no es que cierre: es que NO cierre solo.** De las 16
+    historias con un rojo, ocho tienen fase posterior y **solo dos volvieron a
+    verificar**. Deducir el reemplazo del orden daría por cumplidas las otras
+    seis — la mentira optimista que esta cuenta vino a impedir.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CINCO = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
+             "estado-fase.md", "funcionalidad_implementada.md"]
+
+    def _arbol(self, fases_y_datos, hu="HU-001-una"):
+        """`{"A-EP-001-HU-001-x": ("Cumple", "nombre que reemplaza o None")}`."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        base = os.path.join(tmp.name, "documentacion", "epicas", "EP-001-e", hu)
+        for nombre, (veredicto, reemplaza) in fases_y_datos.items():
+            carpeta = os.path.join(base, nombre)
+            os.makedirs(carpeta)
+            for doc in self.CINCO:
+                cuerpo = "# de mentira\n"
+                if doc == "resultado_pruebas.md" and veredicto:
+                    cuerpo += "\n**Concepto:** %s.\n" % veredicto
+                if doc == "funcionalidad_implementada.md" and reemplaza is not None:
+                    cuerpo += ("\n| **Reemplaza el veredicto de** | `%s` |\n"
+                               % reemplaza)
+                with io.open(os.path.join(carpeta, doc), "w",
+                             encoding="utf-8", newline="\n") as f:
+                    f.write(cuerpo)
+        return tmp.name
+
+    # -- CA-01 · declarar cierra el rojo ----------------------------------
+    def test_sin_el_campo_el_rojo_sigue_contando(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", None)})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_con_el_campo_el_rojo_se_cierra(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "A-EP-001-HU-001-x")})
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0),
+                         "declarar el reemplazo no cerró el rojo")
+
+    def test_quitar_el_campo_lo_devuelve_a_rojo(self):
+        """Que el cambio lo produzca el campo, y no otra cosa que se movió."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "A-EP-001-HU-001-x")})
+        self.assertEqual(fases.por_veredicto(raiz)[0], 1)
+        cierre = os.path.join(raiz, "documentacion", "epicas", "EP-001-e",
+                              "HU-001-una", "B-EP-001-HU-001-y",
+                              "funcionalidad_implementada.md")
+        with io.open(cierre, "w", encoding="utf-8", newline="\n") as f:
+            f.write("# de mentira\n")
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    # -- CA-02 · un rojo no cierra otro rojo ------------------------------
+    #
+    # **Estas tres se comprueban sobre el CONJUNTO de reemplazos, no sobre la
+    # cuenta.** Ahí es donde actúan las guardias: quitar cualquiera de las tres
+    # deja la cuenta igual en estos árboles —el rojo de quien declara ya la
+    # ensucia— y una prueba que mirara la cuenta **no podría fallar**. Lo
+    # destaparon tres sabotajes que pasaron en verde.
+
+    def _fases_de(self, raiz, hu="HU-001-una"):
+        base = os.path.join(raiz, "documentacion", "epicas", "EP-001-e", hu)
+        return base, sorted(fases._subcarpetas(base))
+
+    def test_una_fase_en_rojo_no_entra_al_conjunto_de_reemplazos(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("No cumple", "A-EP-001-HU-001-x")})
+        base, fs = self._fases_de(raiz)
+        self.assertEqual(fases.veredictos_reemplazados(base, fs), set(),
+                         "un rojo cerró otro rojo")
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_una_fase_sin_veredicto_no_entra_al_conjunto(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": (None, "A-EP-001-HU-001-x")})
+        base, fs = self._fases_de(raiz)
+        self.assertEqual(fases.veredictos_reemplazados(base, fs), set())
+        self.assertEqual(fases.por_veredicto(raiz), (0, 0, 1))
+
+    def test_el_rojo_que_declara_tambien_se_avisa(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("No cumple", "A-EP-001-HU-001-x")})
+        avisos = fases.reemplazos_que_no_resuelven(raiz)
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("un rojo no cierra", avisos[0].mensaje)
+
+    # -- CA-03 · no se deduce del orden -----------------------------------
+    #
+    # **Es el caso que decide si esta fase sirve.** Medido: de las ocho
+    # historias con fase posterior, seis no resolvieron el rojo.
+
+    def test_tres_fases_sin_el_campo_siguen_sin_cumplir(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", None),
+                            "C-EP-001-HU-001-z": ("Cumple", None)})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0),
+                         "el reemplazo se dedujo del orden de las fases")
+
+    def test_en_el_arbol_real_solo_cierra_lo_declarado(self):
+        """Contra el repositorio: ninguna historia se cierra sin declararlo.
+
+        Se cuentan las historias con un rojo cuya última fase **no** declara
+        nada, y se comprueba que siguen entre las que no cumplen.
+        """
+        raiz = os.path.join(self.RAIZ, "documentacion", "epicas")
+        if not os.path.isdir(raiz):
+            self.skipTest("sin árbol real")
+        de_cada_uno = fases.marcadores_de_los_moldes(self.RAIZ)
+        sin_declarar = 0
+        for ep in fases._subcarpetas(raiz):
+            if not fases._EPICA.match(ep):
+                continue
+            for hu in fases._subcarpetas(os.path.join(raiz, ep)):
+                if not fases._HU.match(hu):
+                    continue
+                rhu = os.path.join(raiz, ep, hu)
+                fs = [n for n in fases._subcarpetas(rhu) if fases._FASE.match(n)]
+                if not fases._historia_terminada(rhu, de_cada_uno):
+                    continue
+                rojas = [f for f in fs
+                         if fases.veredicto_de(os.path.join(rhu, f)) == "No cumple"]
+                if rojas and not fases.veredictos_reemplazados(rhu, fs):
+                    sin_declarar += 1
+        _, no_cumplen, _ = fases.por_veredicto(self.RAIZ)
+        self.assertEqual(sin_declarar, no_cumplen,
+                         "hay historias con un rojo que salieron de la cuenta "
+                         "sin declarar el reemplazo")
+
+    # -- CA-04 · un nombre que no resuelve avisa y no reemplaza -----------
+    def test_una_fase_que_cumple_no_se_cierra_a_si_misma(self):
+        """**En verde**, que es donde la guardia actúa.
+
+        Con la fase en rojo, la condición de que quien declara cumpla ya la
+        bloquea, y la prueba pasaba sin tocar esta guardia.
+        """
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("Cumple",
+                                                  "A-EP-001-HU-001-x")})
+        base, fs = self._fases_de(raiz)
+        self.assertEqual(fases.veredictos_reemplazados(base, fs), set(),
+                         "una fase se cerró a sí misma")
+
+    def test_la_fase_que_se_nombra_a_si_misma_se_avisa(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("Cumple",
+                                                  "A-EP-001-HU-001-x")})
+        avisos = fases.reemplazos_que_no_resuelven(raiz)
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("se nombra a sí misma", avisos[0].mensaje)
+
+    def test_nombrar_una_fase_de_otra_historia_no_entra_al_conjunto(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "A-EP-009-HU-009-ajena")})
+        base, fs = self._fases_de(raiz)
+        self.assertEqual(fases.veredictos_reemplazados(base, fs), set(),
+                         "se aceptó el nombre de una fase de otra historia")
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_nombrar_una_fase_que_no_existe_no_reemplaza(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "Z-EP-001-HU-001-nada")})
+        base, fs = self._fases_de(raiz)
+        self.assertEqual(fases.veredictos_reemplazados(base, fs), set())
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_el_campo_vacio_no_reemplaza_ni_revienta(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "")})
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
+
+    def test_el_aviso_dice_el_nombre_escrito_y_el_motivo(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "Z-EP-001-HU-001-nada")})
+        avisos = fases.reemplazos_que_no_resuelven(raiz)
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("Z-EP-001-HU-001-nada", avisos[0].mensaje,
+                      "el aviso no dice qué nombre se escribió")
+        self.assertIn("no está en esta historia", avisos[0].mensaje)
+
+    def test_el_aviso_llega_por_validar_no_solo_por_la_funcion(self):
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "Z-EP-001-HU-001-nada")})
+        mensajes = [h.mensaje for h in fases.validar(raiz)]
+        self.assertTrue(any("declara reemplazar" in m for m in mensajes),
+                        "el aviso no llega por `validar`")
+
+    # -- CA-05 · el veredicto reemplazado no se borra ---------------------
+    def test_el_veredicto_reemplazado_sigue_diciendo_lo_que_decia(self):
+        """La cuenta lo ignora; el dato no desaparece."""
+        raiz = self._arbol({"A-EP-001-HU-001-x": ("No cumple", None),
+                            "B-EP-001-HU-001-y": ("Cumple", "A-EP-001-HU-001-x")})
+        vieja = os.path.join(raiz, "documentacion", "epicas", "EP-001-e",
+                             "HU-001-una", "A-EP-001-HU-001-x")
+        antes = comun.leer(os.path.join(vieja, "resultado_pruebas.md"))
+        fases.validar(raiz)
+        self.assertEqual(comun.leer(os.path.join(vieja, "resultado_pruebas.md")),
+                         antes)
+        self.assertEqual(fases.veredicto_de(vieja), "No cumple",
+                         "el veredicto reemplazado dejó de leerse")
+
+    # -- Transversal · no regresión ---------------------------------------
+    def test_por_veredicto_sigue_devolviendo_tres_valores(self):
+        self.assertEqual(len(fases.por_veredicto(self.RAIZ)), 3)
+
+    def test_el_molde_del_cierre_trae_el_campo_como_opcional(self):
+        texto = comun.leer(os.path.join(
+            self.RAIZ, "plantillas", "ciclo-vida-proyectos",
+            "11-funcionalidad-implementada.md"))
+        campo = [l for l in texto.split("\n")
+                 if l.startswith("| **Reemplaza el veredicto de**")]
+        self.assertEqual(len(campo), 1, "el molde no trae el campo")
+        self.assertIn("Opcional", campo[0],
+                      "el campo no se declara opcional, y obligaría a 130 fases")
+
+
 class ElMoldeSinLlenarNoCuenta(unittest.TestCase):
     """Un documento que sigue siendo su plantilla — EP-004 · HU-022.
 

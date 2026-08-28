@@ -11,6 +11,34 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.5.0 — 2026-08-27
+
+**Un trabajo marcado como «no cumple» ya se puede dar por resuelto, diciendo cuál se resolvió.** Antes esa marca no tenía forma de quitarse: se podía arreglar el problema, comprobarlo y dejarlo escrito, y el número seguía contando el trabajo como pendiente.
+
+**MENOR** (nadie tiene que cambiar nada de lo que ya tiene; el campo es opcional).
+
+**Cómo se descubrió.** Se hicieron dos trabajos que arreglaban cosas marcadas así, se comprobó ejecutándolas que hoy funcionan, y los dos quedaron en verde. **El número no se movió.** Seguía diciendo 16.
+
+**Por qué pasaba.** La cuenta mira todos los trabajos de una historia, y basta uno marcado en rojo para que la historia entera cuente como no cumplida — lo cual es correcto mientras el problema siga ahí. Lo que faltaba era distinguir **«todavía no se hizo»** de **«se hizo después, y alguien lo verificó»**. Sin esa diferencia, **la cuenta solo sabía subir**.
+
+**Qué se agrega:** un campo opcional en el documento de cierre — **«Reemplaza el veredicto de»** — donde se nombra el trabajo anterior que queda resuelto.
+
+**Se declara, y no se adivina.** Se midió antes de diseñarlo: de las 16 historias con algo en rojo, ocho tenían un trabajo posterior, **y solo dos de esas ocho habían vuelto a verificar el problema**. Las otras seis hicieron algo distinto. Dar por resuelto lo anterior solo porque vino algo después habría dado por buenas seis historias con el problema intacto.
+
+**Tres condiciones, y las tres hacen falta:** quien lo declara tiene que estar en verde —un rojo no cierra otro rojo—, el trabajo nombrado tiene que ser de la misma historia, y no puede nombrarse a sí mismo. **Si el nombre no encaja se avisa, con el nombre escrito, y no se cierra nada.**
+
+**Lo que se declaró ahora, y lo que no:**
+
+| Antes | Ahora |
+|---|---|
+| `66 cumplen, 16 no cumplen` | `68 cumplen, 14 no cumplen` |
+
+**Se movieron exactamente dos**, que son las dos que habían vuelto a verificar. **Las otras catorce siguen contando**, y eso es lo correcto: nadie ha comprobado que se resolvieran.
+
+**El texto anterior no se toca.** El documento que dijo «no cumple» sigue diciéndolo: la cuenta lo deja atrás, pero el rastro de que hubo un problema es justamente lo que hay que conservar.
+
+---
+
 ## 35.4.0 — 2026-08-27
 
 **Escribir un archivo fuera de la carpeta del proyecto ahora avisa en el momento, y dice dónde debía ir.** Antes solo estaba escrito que no se hiciera, y nada lo comprobaba.

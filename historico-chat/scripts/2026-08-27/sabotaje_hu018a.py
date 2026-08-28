@@ -115,7 +115,13 @@ print("--- con todo restaurado: la suite COMPLETA ---")
 final = correr(completa=True)
 print(final)
 lineas = [l.strip() for l in final.splitlines()]
-if ("OK" not in lineas or not any(l.startswith("Ran ") for l in lineas)
+# `"OK" in lineas` era demasiado estricto: cuando la suite trae pruebas
+# marcadas como fallo esperado, unittest no escribe `OK` sino
+# `OK (expected failures=4)`, y la guardia daba falsa alarma con la corrida
+# limpia. Se acepta `OK` o `OK (...)`, y se sigue rechazando la linea de los
+# validadores, que empieza por `OK:`.
+limpia = any(l == "OK" or l.startswith("OK (") for l in lineas)
+if (not limpia or not any(l.startswith("Ran ") for l in lineas)
         or any(l.startswith("Ran 0 ") for l in lineas)):
     print()
     print("ATENCION: la corrida final no salio limpia, o no corrio nada.")

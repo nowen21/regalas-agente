@@ -298,7 +298,8 @@ def validar(proyecto):
     return (hallazgos + cierre_sin_sello(proyecto)
             + cuenta_escrita_a_mano(proyecto)
             + estado_fuera_del_vocabulario(proyecto)
-            + documentos_que_siguen_siendo_el_molde(proyecto))
+            + documentos_que_siguen_siendo_el_molde(proyecto)
+            + reemplazos_que_no_resuelven(proyecto))
 
 
 # `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.
@@ -625,7 +626,9 @@ def por_veredicto(proyecto):
             if not _historia_terminada(ruta_hu, de_cada_uno):
                 continue                    # no está terminada: no se cuenta
 
-            dichos = [veredicto_de(os.path.join(ruta_hu, f)) for f in fases]
+            dejados_atras = veredictos_reemplazados(ruta_hu, fases)
+            dichos = [veredicto_de(os.path.join(ruta_hu, f))
+                      for f in fases if f not in dejados_atras]
             if any(v is None for v in dichos):
                 sin_veredicto += 1
             elif any(v == "No cumple" for v in dichos):
@@ -633,6 +636,98 @@ def por_veredicto(proyecto):
             else:
                 cumplen += 1
     return (cumplen, no_cumplen, sin_veredicto)
+
+
+# `EP-004·HU-023` · Un rojo se puede cerrar, declarándolo.
+#
+# **Comprobado haciéndolo:** dos fases volvieron a verificar criterios en rojo,
+# midieron que hoy se cumplen y cerraron con «Cumple». **El número no se movió**
+# — `por_veredicto` mira todas las fases, y las viejas seguían diciendo que no.
+# Un rojo entraba en la cuenta y no salía nunca (`S-065`).
+#
+# **Se declara, no se deduce del orden.** Está medido: de las 16 historias con
+# un rojo, ocho tienen una fase posterior, y **solo dos de esas ocho volvieron a
+# verificar el criterio que estaba en rojo**. Las otras seis trabajaron otro
+# criterio de la misma historia. Deducir el reemplazo por el orden las daría por
+# cumplidas — la mentira optimista que esta cuenta vino a impedir.
+#
+# **Y el veredicto reemplazado no se toca** (`20·M11`): la cuenta lo ignora, el
+# documento sigue diciendo lo que decía. El rastro de que estuvo en rojo es la
+# información.
+_REEMPLAZA = re.compile(
+    r"\|\s*\*\*Reemplaza el veredicto de\*\*\s*\|\s*([^|\n]*?)\s*\|",
+    re.IGNORECASE)
+
+
+def _declara_reemplazar(ruta_fase):
+    """El nombre de fase que el cierre declara dejar atrás, o `""`."""
+    dice = _REEMPLAZA.search(_leer(os.path.join(
+        ruta_fase, "funcionalidad_implementada.md")))
+    if not dice:
+        return ""
+    return dice.group(1).strip().strip("`*").strip()
+
+
+def veredictos_reemplazados(ruta_hu, fases):
+    """Las fases de esta historia cuyo veredicto queda fuera de la cuenta.
+
+    **Tres condiciones, y las tres hacen falta.** Quien declara tiene que
+    **cumplir** —un rojo no cierra otro rojo—; la fase nombrada tiene que ser
+    **de esta misma historia** —un rojo ajeno no es de nadie—; y **no puede
+    nombrarse a sí misma**, que se cerraría sola.
+
+    Lo que no cumple alguna de las tres **se ignora acá y se avisa** en
+    `validar`: un campo mal escrito que no dice nada es peor que no tenerlo,
+    porque parece que funcionó.
+    """
+    dejados = set()
+    for nombre in fases:
+        nombrada = _declara_reemplazar(os.path.join(ruta_hu, nombre))
+        if (nombrada and nombrada != nombre and nombrada in fases
+                and veredicto_de(os.path.join(ruta_hu, nombre)) == "Cumple"):
+            dejados.add(nombrada)
+    return dejados
+
+
+def reemplazos_que_no_resuelven(proyecto):
+    """Avisa por cada declaración que no se puede aplicar, y por qué.
+
+    Se avisa **con el nombre escrito**: quien lo lea tiene que poder ver el
+    error de dedo sin ir a buscarlo.
+    """
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    hallazgos = []
+    for nombre_epica in _subcarpetas(raiz):
+        if not _EPICA.match(nombre_epica):
+            continue
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
+            for nombre in fases:
+                ruta_fase = os.path.join(ruta_hu, nombre)
+                nombrada = _declara_reemplazar(ruta_fase)
+                if not nombrada:
+                    continue
+                donde = (f"{CARPETA}/{nombre_epica}/{nombre_hu}/{nombre}/"
+                         "funcionalidad_implementada.md")
+                if nombrada == nombre:
+                    motivo = "se nombra a sí misma"
+                elif nombrada not in fases:
+                    motivo = "esa fase no está en esta historia"
+                elif veredicto_de(ruta_fase) != "Cumple":
+                    motivo = ("quien declara no cumple, y un rojo no cierra "
+                              "otro rojo")
+                else:
+                    continue
+                hallazgos.append(Hallazgo(
+                    AVISO, donde, 0,
+                    f"declara reemplazar el veredicto de `{nombrada}` y no se "
+                    f"aplica: {motivo} — el veredicto anterior sigue contando "
+                    f"(EP-004·HU-023)"))
+    return hallazgos
 
 
 def linea_inventario(proyecto):

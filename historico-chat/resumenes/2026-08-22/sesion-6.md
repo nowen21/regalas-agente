@@ -787,6 +787,54 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-50 · Un veredicto puede estar mal el día que se escribe, no solo envejecer
+
+- **Qué pasó:** al ir a cerrar dos rojos que parecían resueltos de hecho, resultó que **solo uno lo estaba**. `EP-005·HU-001` no cumplía porque *«nada enmascara»*, y hoy sí enmascara: **fue cierto y dejó de serlo**. Pero `EP-003·HU-002` no cumplía porque *«el planteamiento de esta casa está vacío»*, **y su `CA-01` no pide eso**: pide que existan los tres modelos y que la cadena se recorra en los dos sentidos. **La propia fase midió eso, le dio verde, y se reprobó por otra cosa.**
+- **Por qué importa:** un criterio es el contrato de la fase, y medirla contra algo de al lado **la deja en rojo sin que nadie pueda cerrarlo** — no hay trabajo que hacer, porque el que pedía el criterio ya estaba hecho. **Un rojo mal puesto cuesta más que un verde mal puesto:** el verde se descubre cuando algo falla, y el rojo no se descubre nunca, **porque nadie duda de una mala noticia**.
+- **Cómo se coló:** el criterio dice «existen los tres modelos», y el del planteamiento existía. Lo que faltaba era **el documento que ese modelo produce**. Son dos cosas — el molde, y lo que se llena con él. La fase encontró un hueco real y **lo cobró en la factura equivocada**.
+- **Qué lo soluciona:** dos fases `D`, una en cada historia, que vuelven a medir. **Sin tocar las fases `A`**: el error enseña más que la conclusión.
+- **Qué se decidió:** antes de aceptar un «No cumple», **leer el criterio y preguntar si lo que falló es lo que el criterio pide**. La señal barata de que está mal puesto: **si la justificación del rojo nombra algo que no aparece en el criterio**, o si «qué falta para que cumpla» resulta ser trabajo de otra historia. **El hallazgo se conserva; lo que se corrige es dónde se cobra.**
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** el `H-51`, al comprobar que declararlo tampoco lo cerraba.
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-063` · las dos fases `D`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-51 · Hacer el trabajo y verificarlo no cerraba un rojo: nada leía la corrección
+
+- **Qué pasó:** las dos fases `D` se construyeron, midieron que los criterios hoy se cumplen —el enmascarado corriendo por sus dos mitades, la cadena en cero sobre 11 épicas y 119 historias— y cerraron con «Cumple». **El número no se movió:** `16 no cumplen` siguió siendo 16.
+- **Por qué importa:** la regla que lo causa es correcta —*«basta una fase que no cumpla»*— y le faltaba distinguir **«todavía no se hizo»** de **«se hizo después, y alguien lo verificó»**. Sin eso, **un rojo entraba en la cuenta y no salía nunca**: se podía hacer el trabajo, medirlo y declararlo, y nada lo leía.
+- **Qué lo soluciona:** la [HU-023](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-023-un-rojo-se-puede-cerrar-declarandolo/), ya construida. Un campo opcional en el cierre donde la fase **declara qué veredicto deja atrás**.
+- **Qué se decidió:** **se declara, no se deduce del orden**, y lo decidió una medición hecha antes de diseñar: de las 16 historias con un rojo, ocho tenían fase posterior **y solo dos habían vuelto a verificar**. Deducirlo habría dado por cumplidas seis con el rojo intacto.
+- **Y la prueba que hace creible el resto:** con el código puesto y **cero declaraciones**, los cinco números de la línea dieron **exactamente lo mismo** que la base. Después de declarar en los dos que verificaron: **exactamente dos se movieron**. El criterio no era «que bajen los rojos» —cierto con cualquier implementación, incluida una que los tape todos— sino **dos, con nombre**.
+- **Estado:** resuelto acá.
+- **Responde a:** H-50.
+- **Dispara:** las **catorce** historias que siguen en rojo. Ocho sin fase posterior, seis con fase posterior que **no resolvió el rojo**.
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-065` · `veredictos_reemplazados` en [validadores/fases.py](../../../validadores/fases.py) · versión `35.5.0`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-52 · Una historia se crea, se le hace su carpeta, y nadie vuelve a la tabla de su épica
+
+- **Qué pasó:** al volver a medir la cadena —en vez de citar la medición de otra fase— apareció que **tres historias no estaban en la tabla de su épica**: `HU-036` en `EP-001`, y `HU-017` y `HU-018` en `EP-005`. Las tres tenían su carpeta, su documento y su trabajo; faltaba la fila.
+- **Por qué importa:** la carpeta se crea al trabajar y **la tabla vive en otro archivo que se edita en otro momento**. Nada obliga a volver, y el hueco no molesta hasta que alguien intenta recorrer la cadena **de arriba abajo**.
+- **Qué lo soluciona:** se arreglaron las tres. La cadena quedó en **cero fallas sobre 11 épicas y 119 historias**.
+- **Qué se decidió:** **el usuario cortó la propuesta de anotarlo como pendiente** — *«¿para qué dejar pendientes si se puede solucionar?»*. Un pendiente no es un lugar donde guardar lo que ya se puede hacer. Y sobre el patrón: cuando algo se registra **en dos sitios que se editan en momentos distintos**, el segundo se queda atrás. **La pregunta que lo destapa: ¿qué archivo hay que tocar después, en otro rato, para que esto quede completo?**
+- **Y lo destapó una regla del plan, no la casualidad:** *«se corre, no se cita»*. Apoyarse en la medición de la fase `A` habría heredado su resultado de hace diez días, cuando la cadena sí estaba limpia. **Una medición vieja no es una medición.**
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-064` · las tres filas, en las tablas de `EP-001` y `EP-005`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -803,7 +851,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cuarenta y nueve hallazgos, cuarenta y ocho cerrados.**
+**Cincuenta y dos hallazgos, cincuenta y uno cerrados.**
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 
