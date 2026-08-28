@@ -15,7 +15,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+**Estación actual:** 13 · Publicación. **Última puerta pasada:** 12, en `011754b`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ✅ 9 tareas, 9 con resultado |
 | 10 | Crítico | sin hallazgos graves | ✅ Seis sabotajes, cuatro defectos encontrados |
 | 11 | Cierre documental + señales | docs y señales al día | ✅ `S-060` |
-| 12 | Commit | 👤 autorizado | ☐ **Esperando aprobación del usuario** |
+| 12 | Commit | 👤 autorizado | ✅ `011754b` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
@@ -77,7 +77,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del commit**, que se pide aparte de la aprobación del cambio.
+- **La aprobación del `push`**, que se pide aparte del commit.
 - **Los siete documentos que quedaron señalados.** No son de esta fase: cinco son planes de pruebas que nunca se escribieron, en fases que sí tienen código.
 
 ---

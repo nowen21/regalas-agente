@@ -12,7 +12,7 @@
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.3.0` |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
-| **Commit** | Pendiente de aprobación del usuario |
+| **Commit** | `011754b` |
 
 ---
 
