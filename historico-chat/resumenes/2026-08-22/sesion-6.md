@@ -636,7 +636,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Qué se decidió:** cuando algo se cuenta por su presencia, hay que preguntarse **qué pasa si está y está vacío**. La medida que lo destapa es barata: **contar los marcadores del molde que quedaron sin reemplazar**. Cuatro con 31 se separan sin falsos positivos de doce con cinco a siete, que son comillas de prosa.
 - **Estado:** parcialmente resuelto. **Los cuatro documentos, escritos; el andamio sigue igual.**
 - **Responde a:** H-39.
-- **Dispara:** el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario. **Volvió a cobrar dos veces más el mismo día** (H-42, H-43).
+- **Dispara:** el [pendiente 88](../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md), con las tres salidas y sin elegir por el usuario. **Volvió a cobrar dos veces más el mismo día** (H-42, H-43).
 - **Orden de resolución:** —
 - **Dónde queda:** los cuatro cierres y la señal `S-053`.
 - **Nace en:** 2026-08-22 · sesion-6
@@ -721,6 +721,40 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-46 · Una medida que separó bien cuatro casos no separa bien seiscientos
+
+- **Qué pasó:** al bajar el pendiente 88 a historia, la medida que `S-053` propuso —**contar** los marcadores del molde con un umbral— se corrió por primera vez sobre los 664 documentos del árbol. Dio **38**, y **tres eran de la fase `C` de la `HU-021`, escrita, cerrada y publicada media hora antes**.
+- **Por qué importa:** se había recomendado al usuario como «ya probada, sin falsos positivos». Lo que la hacía verdadera era **el tamaño de la muestra**: dieciséis casos elegidos por ser los sospechosos del día. Este repositorio usa comillas angulares en prosa todo el tiempo, así que **la cuenta mide el estilo de la casa** — y la señal y el ruido crecen juntos.
+- **Qué lo soluciona:** la `HU-022` y su fase `A`, ya construida. `32 sin terminar` pasó a **`39`**.
+- **Qué se decidió:** **una medida se valida sobre el conjunto entero, no sobre los casos que la motivaron** — esos están elegidos por ser extremos, así que cualquier umbral los separa. Y la forma general de arreglarlo: **comparar contra la fuente en vez de contar síntomas**. No «cuántas comillas hay» sino «cuáles de estas comillas están en la plantilla». Con el cruce: 577 sin ninguna, 80 con una o dos, **7 que siguen siendo el molde — y nada entre 3 y 15**.
+- **Lo que encontró, que es lo que vale:** **cinco `plan_pruebas.md` que nunca se escribieron**, en fases que sí tienen su código y sus pruebas construidas. No es papeleo perdido: **nadie sabe con qué casos se comprobaron.**
+- **Y el corte no se eligió:** lo dio el reparto. Ajustar el umbral hasta que diera siete habría sido repetir el error.
+- **Estado:** resuelto acá.
+- **Responde a:** H-40.
+- **Dispara:** los cinco planes de pruebas sin escribir y los dos `estado-fase` en blanco. Cada uno es trabajo propio.
+- **Orden de resolución:** —
+- **Dónde queda:** `marcadores_de_los_moldes` en [validadores/fases.py](../../../validadores/fases.py) · la señal `S-059` · versión `35.3.0` · **los dos guiones, el malo y el bueno**, en [historico-chat/scripts/2026-08-27/](../../scripts/2026-08-27/).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-47 · Un guion que rompe a propósito tiene que restaurar pase lo que pase
+
+- **Qué pasó:** el guion de sabotaje se cayó **entre romper `fases.py` y restaurarlo**, por un `print` con caracteres que la consola de Windows no sabe escribir. **El repositorio quedó con el sabotaje puesto.** Y **no se notó**: se había lanzado con `\| tail -45`, así que el código de salida leído fue el de `tail` — cero.
+- **Por qué importa:** un guion que rompe a propósito **es el único programa del repositorio cuyo estado intermedio es un defecto real**. Si muere ahí no deja trabajo a medias: deja código roto con apariencia de sano, porque nadie vuelve a mirar un archivo que «ya se restauró».
+- **Qué lo soluciona:** se resolvió acá. Restauración en `try/finally`, salida limpia antes de imprimir, y **el guion no se canaliza**.
+- **Qué se decidió:** la vuelta atrás va en `finally`, no al final del bloque feliz — y la prueba de que hace falta es preguntarse **qué pasa si revienta la línea de en medio**. **Lo que salvó el repositorio fue restaurar con copia y no con git:** el archivo bueno estaba intacto en la carpeta de copias.
+- **Y es la tercera vez en el día que falla la herramienta que juzga**, las tres de la misma familia: un guion que dijo «suite OK» sin correr nada (`S-044`), otro que leyó «OK: sin incumplimientos» como aprobación, y este. **Lo que se construye se prueba; lo que lo comprueba, no.**
+- **Y una cuarta, en las pruebas:** un sabotaje pasó en verde porque la comprobación decía `assertIn("«", mensaje + "«")` — **cierta siempre**, porque compara contra un texto al que se le acaba de pegar lo que busca. Una comprobación que no puede fallar da la misma señal verde que una que funciona.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-060` · el `try/finally` en [sabotaje_hu022a.py](../../scripts/2026-08-27/sabotaje_hu022a.py), con su arreglo escrito en el guion de al lado.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -733,11 +767,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) y el [89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md) y el [89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cuarenta y cinco hallazgos, cuarenta y tres cerrados.**
+**Cuarenta y siete hallazgos, cuarenta y seis cerrados.**
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 
@@ -745,7 +779,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 **`H-40`**: **el andamio crea los cinco documentos vacíos, y con eso una fase recién abierta ya cuenta como terminada.** No se resolvió — se escribieron los cuatro cierres que estaban en blanco, que es tapar los casos, no la causa. **Cobró tres veces el mismo día**: en las cuatro fases que figuraban cerradas siendo moldes, en la `HU-021` que contaba como terminada sin una línea escrita, y en la fase `B` que se creó para arreglar el conteo y le agregó un caso al conteo.
 
-**La medida que lo destapa ya existe y funciona:** contar los marcadores del molde sin reemplazar. Treinta y uno es un formulario; cinco son comillas de prosa. Quedó anotado en el [pendiente 88](../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md), con las tres salidas y sin elegir por el usuario cuál entra.
+**La medida que lo destapa ya existe y funciona:** contar los marcadores del molde sin reemplazar. Treinta y uno es un formulario; cinco son comillas de prosa. Quedó anotado en el [pendiente 88](../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md), con las tres salidas y sin elegir por el usuario cuál entra.
 
 **El hilo de la sesión, si hay que decirlo en una línea:** el número que responde «cuánto falta» mintió de tres formas distintas en dos días — copiado a mano, contando archivos presentes, y contando fases cerradas sin mirar su veredicto. **Cada arreglo lo dejó más honesto y siguió midiendo la cosa de al lado.** Hoy dice `117 en total · 33 sin terminar · 84 terminadas, de las cuales 63 cumplen, 16 no cumplen y 5 no dicen si cumplen` — y hubo que corregirlo **tres veces**, porque las dos primeras midieron con lo que ya sabían leer.
 

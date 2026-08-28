@@ -150,6 +150,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-019](HU-019-inventario-que-no-se-mantiene-a-mano/HU-019-inventario-que-no-se-mantiene-a-mano.md) | Que el inventario de historias deje de mantenerse a mano | Should | S |
 | [HU-020](HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano/HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md) | Que el inventario que heredan los proyectos tampoco se mantenga a mano | Should | S |
 | [HU-021](HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido.md) | Que la cuenta distinga lo terminado de lo cumplido | Must | M |
+| [HU-022](HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) | Que un documento que sigue siendo el molde no cuente como escrito | Must | S |
 
 ## 10. Consideraciones técnicas
 
@@ -214,6 +215,7 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 10 | Que la cuenta no exista dos veces: el inventario enlaza lo que el árbol sabe en vez de copiarlo | HU-019 |
 | Fase 11 | Que lo mismo llegue a quien hereda el estándar: la plantilla y la comprobación | HU-020 |
 | Fase 12 | Que el número que dice cuánto falta no cuente como hecha una fase que no cumplió | HU-021 |
+| Fase 13 | Que una fase recién abierta no cuente como terminada: el molde sin llenar no es un documento | HU-022 |
 
 ## 15. Definition of Ready
 

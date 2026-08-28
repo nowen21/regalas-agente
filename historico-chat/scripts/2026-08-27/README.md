@@ -1,10 +1,10 @@
 # Programas de un solo uso · 2026-08-27
 
-Los catorce programas que el agente escribió el 2026-08-27, en la jornada de la `HU-021`. **No se vuelven a correr**: llevan dentro la ruta de la máquina donde corrieron, y escriben sobre texto que ya cambió.
+Los veinte programas que el agente escribió el 2026-08-27, en la jornada de la `HU-021`. **No se vuelven a correr**: llevan dentro la ruta de la máquina donde corrieron, y escriben sobre texto que ya cambió.
 
 De qué sesión salen: [2026-08-22 · sesion-6](../../2026-08-22-sesion-6.md), que cruzó varios días.
 
-> **Ocho de los catorce llegaron tarde al repositorio.** Se escribieron en la carpeta temporal del sistema y se trajeron acá el mismo día, cuando el usuario preguntó por qué se seguía escribiendo afuera. Los seis últimos —los que midieron las formas del veredicto y los de la fase `C`— ya nacieron acá. Está contado en `S-057`.
+> **Ocho de los veinte llegaron tarde al repositorio.** Se escribieron en la carpeta temporal del sistema y se trajeron acá el mismo día, cuando el usuario preguntó por qué se seguía escribiendo afuera. Los doce últimos —los de la fase `C` de la `HU-021` y los de la `HU-022`— ya nacieron acá. Está contado en `S-057`.
 
 ## Qué hizo cada uno
 
@@ -51,7 +51,20 @@ De qué sesión salen: [2026-08-22 · sesion-6](../../2026-08-22-sesion-6.md), q
 
 **Se guardan los dos que midieron lo mismo**, el ancho y el ajustado, y no solo el bueno. La diferencia entre ellos **es** el aprendizaje: un patrón que hoy no falla por casualidad es el defecto de mañana.
 
+### La `HU-022` · que un documento en blanco no cuente como escrito
+
+| Programa | Qué hizo |
+|---|---|
+| `linea-base-moldes.py` | El **primer intento**, que no sirve: cuenta los marcadores `«…»` con un umbral. Dio 38, y **tres eran de una fase escrita y publicada media hora antes**. Se guarda porque la diferencia con el siguiente es el aprendizaje (`S-059`) |
+| `linea-base-moldes-2.py` | El bueno: cruza cada documento con **su plantilla**. 577 sin ninguno, 80 con uno o dos, **7 que siguen siendo el molde** |
+| `t00-arboles-de-prueba.py` | La `T-00`, corrida **antes de tocar código**: de los 2.299 literales de `pruebas.py`, **ninguno llega al corte**. Si alguno hubiera llegado, el plan cambiaba |
+| `arregla-pruebas-hu022.py` | Dos arreglos en las pruebas: una que buscaba texto en `fases.py` y falló por un comentario, y ocho archivos que se quedaban abiertos |
+| `sabotaje_hu022a.py` | Los seis sabotajes. **El quinto pasó en verde** — la comprobación era cierta siempre |
+| `arregla-sabotaje-hu022a.py` | El guion anterior **se cayó con el código roto puesto**, y no se notó porque se corrió con `\| tail`. Acá están los dos arreglos: `try/finally` y salida limpia (`S-060`) |
+
+**Los dos de la línea base se guardan juntos a propósito.** El malo no es basura: es la prueba de que una medida validada sobre los casos que la motivaron no dice nada sobre los demás.
+
 ## Lo que no está acá
 
-- **`suite.txt`**, 59 KB con la corrida completa de las 425 pruebas. Es salida, no programa; el veredicto quedó escrito en el `resultado_pruebas.md` de la fase.
+- **Las salidas de las corridas completas** de la suite. Son salida, no programa; el veredicto queda escrito en el `resultado_pruebas.md` de cada fase. Es salida, no programa; el veredicto quedó escrito en el `resultado_pruebas.md` de la fase.
 - **Dos clones enteros de la plataforma** (`limpio/` y `limpio2/`, 6.831 archivos con su `.venv`), del experimento del 2026-08-25 que comprobó que la configuración de git **no viaja al clonar**. Traerlos sería meter un entorno virtual al repositorio. Lo que valía era el resultado, y quedó escrito en la fase que lo midió.

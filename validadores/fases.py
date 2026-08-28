@@ -33,6 +33,35 @@ DOCUMENTOS = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
 _EPICA = re.compile(r"^EP-(\d+)-(.+)$")
 _HU = re.compile(r"^HU-(\d+)-(.+)$")
 
+# `EP-004·HU-022` · Un documento que sigue siendo el molde no cuenta escrito.
+#
+# El andamio crea los cinco documentos vacíos al abrir una fase, así que hasta
+# la 35.2.0 **una fase recién abierta ya contaba como terminada**. Cobró cuatro
+# veces el 2026-08-27, dos de ellas moviendo una medición en curso.
+#
+# **Se compara contra la plantilla, no contra un umbral de cuántos marcadores
+# hay.** Contar falla: este repositorio usa comillas angulares en prosa todo el
+# tiempo —`«Cumple»`, `«No cumple»`— así que un documento largo y bien escrito
+# acumula más marcadores que un molde corto. Contando, la primera medición
+# señaló tres documentos escritos, cerrados y publicados el mismo día (`S-059`).
+#
+# **El corte en tres no se eligió: lo dio el reparto.** Sobre los 664
+# documentos del árbol: 577 con ninguno del molde, 80 con uno o dos, 7 con
+# tres o más — y **ninguno entre 3 y 15**.
+MOLDES_DEL_CICLO = "plantillas/ciclo-vida-proyectos"
+
+DE_QUE_MOLDE = {
+    "plan_trabajo.md": "07-plan-trabajo.md",
+    "plan_pruebas.md": "08-plan-pruebas.md",
+    "resultado_pruebas.md": "09-resultado-pruebas.md",
+    "estado-fase.md": "10-estado-fase.md",
+    "funcionalidad_implementada.md": "11-funcionalidad-implementada.md",
+}
+
+MARCADORES_DEL_MOLDE_MINIMO = 3
+
+_MARCADOR = re.compile("«[^»\n]{0,120}»|AAAA-MM-DD")
+
 # F12.6  ·  [consecutivo]-EP-[nnn]-HU-[nnn]-[descripción]
 # F12.12 ·  [consecutivo]-[consecutivo-que-complementa]-EP-[nnn]-HU-[nnn]-[desc]
 _FASE = re.compile(
@@ -74,6 +103,96 @@ def _subcarpetas(ruta):
         return []
     return sorted(n for n in os.listdir(ruta)
                   if os.path.isdir(os.path.join(ruta, n)))
+
+
+def _marcadores(texto):
+    return set(m.strip() for m in _MARCADOR.findall(texto))
+
+
+def marcadores_de_los_moldes(proyecto):
+    """`{documento: marcadores de su plantilla}` — `HU-022 · CA-04`.
+
+    **Se leen del repositorio, no de una lista en el código**: si una plantilla
+    cambia sus marcadores, la comparación se ajusta sola. Es lo mismo que se
+    hizo con el vocabulario de estados.
+
+    **Una plantilla que no está no aporta nada**, y su tipo de documento deja
+    de comprobarse. Es `04·R4`: sin con qué comparar, no se afirma.
+    """
+    raiz = os.path.join(os.path.abspath(proyecto), *MOLDES_DEL_CICLO.split("/"))
+    de_cada_uno = {}
+    for documento, molde in DE_QUE_MOLDE.items():
+        suyos = _marcadores(_leer(os.path.join(raiz, molde)))
+        if suyos:
+            de_cada_uno[documento] = suyos
+    return de_cada_uno
+
+
+def sigue_siendo_el_molde(ruta_documento, propios_del_molde):
+    """Los marcadores del molde que el documento conserva, si son bastantes.
+
+    Devuelve el conjunto —para poder decir **cuál**, que es `CA-03`— o `None`
+    si el documento está escrito.
+
+    **No cuenta cuántos marcadores tiene: cuántos son del molde.** `«Cumple»`
+    es prosa de esta casa; `«2-4 líneas en lenguaje claro»` está en la
+    plantilla y solo ahí.
+    """
+    quedan = _marcadores(_leer(ruta_documento)) & propios_del_molde
+    return quedan if len(quedan) >= MARCADORES_DEL_MOLDE_MINIMO else None
+
+
+def moldes_sin_llenar(ruta_fase, de_cada_uno):
+    """`[(documento, marcadores que quedaron)]` de una fase — `HU-022`."""
+    encontrados = []
+    for documento, propios in sorted(de_cada_uno.items()):
+        ruta = os.path.join(ruta_fase, documento)
+        if not os.path.isfile(ruta):
+            continue
+        quedan = sigue_siendo_el_molde(ruta, propios)
+        if quedan:
+            encontrados.append((documento, quedan))
+    return encontrados
+
+
+def documentos_que_siguen_siendo_el_molde(proyecto):
+    """Un aviso por documento, con su nombre y un marcador de ejemplo.
+
+    **Dice cuáles, no cuántos** (`CA-03`): un registro que da una cifra sin
+    nombres no deja ir a arreglar nada sin volver a medir (`S-040`).
+
+    Las plantillas se leen **una vez** para los cientos de documentos del
+    árbol (`RNF-01`).
+    """
+    de_cada_uno = marcadores_de_los_moldes(proyecto)
+    if not de_cada_uno:
+        return []                  # sin plantillas no hay con qué comparar
+
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    hallazgos = []
+    for nombre_epica in _subcarpetas(raiz):
+        if not _EPICA.match(nombre_epica):
+            continue
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            for nombre_fase in _subcarpetas(ruta_hu):
+                if not _FASE.match(nombre_fase):
+                    continue
+                ruta_fase = os.path.join(ruta_hu, nombre_fase)
+                for documento, quedan in moldes_sin_llenar(ruta_fase,
+                                                           de_cada_uno):
+                    ejemplo = sorted(quedan)[0]
+                    hallazgos.append(Hallazgo(
+                        AVISO,
+                        f"{CARPETA}/{nombre_epica}/{nombre_hu}/"
+                        f"{nombre_fase}/{documento}", 0,
+                        f"sigue siendo la plantilla: conserva {len(quedan)} de "
+                        f"sus marcadores, por ejemplo `{ejemplo}` — la fase no "
+                        f"cuenta terminada mientras esté así (EP-004·HU-022)"))
+    return hallazgos
 
 
 # `EP-002·HU-005` · El sello de versión del cierre.
@@ -178,7 +297,8 @@ def validar(proyecto):
 
     return (hallazgos + cierre_sin_sello(proyecto)
             + cuenta_escrita_a_mano(proyecto)
-            + estado_fuera_del_vocabulario(proyecto))
+            + estado_fuera_del_vocabulario(proyecto)
+            + documentos_que_siguen_siendo_el_molde(proyecto))
 
 
 # `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.
@@ -362,6 +482,7 @@ def inventario(proyecto):
     if not os.path.isdir(raiz):
         return (0, 0, 0)
 
+    de_cada_uno = marcadores_de_los_moldes(proyecto)
     total = completas = 0
     for nombre_epica in _subcarpetas(raiz):
         ruta_epica = os.path.join(raiz, nombre_epica)
@@ -372,13 +493,31 @@ def inventario(proyecto):
                 continue
             total += 1
             ruta_hu = os.path.join(ruta_epica, nombre_hu)
-            fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
-            if fases and all(
-                    all(os.path.isfile(os.path.join(ruta_hu, f, d))
-                        for d in DOCUMENTOS)
-                    for f in fases):
+            if _historia_terminada(ruta_hu, de_cada_uno):
                 completas += 1
     return (total, completas, total - completas)
+
+
+def _fase_terminada(ruta_fase, de_cada_uno):
+    """Sus cinco documentos están **y ninguno sigue siendo el molde**.
+
+    `HU-022`: hasta la 35.2.0 bastaba con que existieran, y el andamio los crea
+    vacíos — así que una fase recién abierta ya contaba como terminada.
+    """
+    if not all(os.path.isfile(os.path.join(ruta_fase, d)) for d in DOCUMENTOS):
+        return False
+    return not moldes_sin_llenar(ruta_fase, de_cada_uno)
+
+
+def _historia_terminada(ruta_hu, de_cada_uno):
+    """Tiene al menos una fase y **todas** están terminadas.
+
+    Cerrar la primera fase no cierra la historia: contarla completa escondería
+    justo el trabajo que falta.
+    """
+    fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
+    return bool(fases) and all(
+        _fase_terminada(os.path.join(ruta_hu, f), de_cada_uno) for f in fases)
 
 
 # `EP-004·HU-021` · Terminada no es lo mismo que cumplida.
@@ -472,6 +611,7 @@ def por_veredicto(proyecto):
     if not os.path.isdir(raiz):
         return (0, 0, 0)
 
+    de_cada_uno = marcadores_de_los_moldes(proyecto)
     cumplen = no_cumplen = sin_veredicto = 0
     for nombre_epica in _subcarpetas(raiz):
         ruta_epica = os.path.join(raiz, nombre_epica)
@@ -482,10 +622,7 @@ def por_veredicto(proyecto):
                 continue
             ruta_hu = os.path.join(ruta_epica, nombre_hu)
             fases = [n for n in _subcarpetas(ruta_hu) if _FASE.match(n)]
-            if not (fases and all(
-                    all(os.path.isfile(os.path.join(ruta_hu, f, d))
-                        for d in DOCUMENTOS)
-                    for f in fases)):
+            if not _historia_terminada(ruta_hu, de_cada_uno):
                 continue                    # no está terminada: no se cuenta
 
             dichos = [veredicto_de(os.path.join(ruta_hu, f)) for f in fases]

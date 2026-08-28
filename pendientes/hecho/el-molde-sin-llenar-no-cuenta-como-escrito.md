@@ -1,6 +1,10 @@
 # Pendiente · El andamio crea los cinco documentos vacíos, y con eso una fase recién abierta ya cuenta como terminada
 
-**Estado:** abierto, anotado el 2026-08-27.
+**Estado:** cerrado el 2026-08-27, versión 35.3.0 · anotado el 2026-08-27.
+
+> **Se construyó por la cadena** (`02·F23`): bajó a la [HU-022](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) y se construyó en su fase [`A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito`](../../documentacion/epicas/EP-004-comprobacion-automatica/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito/funcionalidad_implementada.md), con las salidas **1 y 3**. La **2** —que el andamio no cree los cinco documentos de entrada— **la dejó fuera el usuario**: cambia cómo se abre una fase, y eso es hábito, no defecto.
+
+> **Y la medida que este pendiente proponía estaba mal.** Contar los marcadores con un umbral señalaba tres documentos escritos el mismo día en que se escribieron. La que sirve cruza cada documento con **su plantilla** (`S-059`).
 
 | | |
 |---|---|

@@ -3759,6 +3759,257 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
                          "la cuenta nueva movió lo que no debía")
 
 
+class ElMoldeSinLlenarNoCuenta(unittest.TestCase):
+    """Un documento que sigue siendo su plantilla — EP-004 · HU-022.
+
+    El andamio crea los cinco documentos vacíos al abrir una fase, así que
+    hasta la 35.2.0 **una fase recién abierta ya contaba como terminada**.
+    Cobró cuatro veces el 2026-08-27, dos de ellas moviendo una medición en
+    curso.
+
+    **Lo que se vigila no es que señale el molde: es que NO señale la prosa.**
+    Una primera medida contó los marcadores con un umbral y marcó tres
+    documentos escritos, cerrados y publicados el mismo día — este repositorio
+    usa comillas angulares en su prosa todo el tiempo (`S-059`).
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CINCO = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
+             "estado-fase.md", "funcionalidad_implementada.md"]
+
+    def _texto(self, ruta):
+        with io.open(ruta, encoding="utf-8") as f:
+            return f.read()
+
+    def _escribir(self, ruta, texto):
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto)
+
+    def _molde(self, raiz, nombre):
+        return self._texto(os.path.join(
+            raiz, *fases.MOLDES_DEL_CICLO.split("/"), nombre))
+
+    def _proyecto(self, cuerpos, plantillas=None):
+        """Un árbol con una fase, y **sus propias plantillas**.
+
+        Llevar plantillas propias es lo que permite probar `CA-04` sin tocar
+        las de verdad.
+        """
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+
+        moldes = os.path.join(tmp.name, *fases.MOLDES_DEL_CICLO.split("/"))
+        os.makedirs(moldes)
+        if plantillas is None:
+            plantillas = {d: "# molde\n\n| Campo | Valor |\n|---|---|\n"
+                             "| Fase | «A-EP01-HU03-Descripción» |\n"
+                             "| Módulo | «M» |\n| Fecha | AAAA-MM-DD |\n"
+                          for d in self.CINCO}
+        for documento, texto in plantillas.items():
+            with io.open(os.path.join(moldes, fases.DE_QUE_MOLDE[documento]),
+                         "w", encoding="utf-8", newline="\n") as f:
+                f.write(texto)
+
+        fase = os.path.join(tmp.name, "documentacion", "epicas", "EP-001-e",
+                            "HU-001-una", "A-EP-001-HU-001-x")
+        os.makedirs(fase)
+        for documento in self.CINCO:
+            with io.open(os.path.join(fase, documento), "w",
+                         encoding="utf-8", newline="\n") as f:
+                f.write(cuerpos.get(documento, "# escrito\n\nProsa real.\n"))
+        return tmp.name, fase
+
+    # -- CA-01 · la fase con un documento sin llenar no cuenta terminada ---
+    def test_con_los_cinco_escritos_cuenta_terminada(self):
+        raiz, _ = self._proyecto({})
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+
+    def test_un_documento_que_es_el_molde_la_saca_de_terminadas(self):
+        raiz, fase = self._proyecto({})
+        molde = self._molde(raiz, "08-plan-pruebas.md")
+        with io.open(os.path.join(fase, "plan_pruebas.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1),
+                         "un molde sin llenar siguió contando como escrito")
+
+    def test_volver_a_escribirlo_la_devuelve_a_terminadas(self):
+        raiz, fase = self._proyecto({})
+        ruta = os.path.join(fase, "plan_pruebas.md")
+        molde = self._molde(raiz, "08-plan-pruebas.md")
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        self.assertEqual(fases.inventario(raiz)[1], 0)
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write("# escrito de verdad\n")
+        self.assertEqual(fases.inventario(raiz)[1], 1)
+
+    def test_la_historia_sin_terminar_sale_del_reparto_de_veredictos(self):
+        """`por_veredicto` solo mira las terminadas: si deja de estarlo, sale.
+
+        Lo contrario la dejaría en «no dice si cumple», que es afirmar sobre
+        una historia que ni siquiera está terminada.
+        """
+        raiz, fase = self._proyecto(
+            {"resultado_pruebas.md": "## 5. Veredicto\n\n**Cumple.**\n"})
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0))
+        molde = self._molde(raiz, "10-estado-fase.md")
+        with io.open(os.path.join(fase, "estado-fase.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        self.assertEqual(fases.por_veredicto(raiz), (0, 0, 0),
+                         "una historia sin terminar entró al reparto")
+
+    # -- CA-02 · y NO se señala un documento escrito -----------------------
+    #
+    # **Es el caso crítico.** La medida anterior —contar marcadores con un
+    # umbral— señaló tres documentos escritos el mismo día en que se
+    # escribieron, porque esta casa usa comillas angulares en su prosa.
+
+    def _marcadores_del_molde_de(self, documento):
+        return fases.marcadores_de_los_moldes(self.RAIZ)[documento]
+
+    def test_no_señala_la_prosa_con_muchas_comillas(self):
+        cuerpo = ("# resultado\n\nSe decidió entre «Cumple» y «No cumple», "
+                  "y el «Veredicto por criterio de aceptación» quedó aparte. "
+                  "Las palabras «terminada», «cumplida», «propuesta», "
+                  "«aprobada», «lista», «en curso», «en prueba», «bloqueada» "
+                  "y «cancelada» son el vocabulario.\n")
+        raiz, _ = self._proyecto({"resultado_pruebas.md": cuerpo})
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0),
+                         "señaló prosa por tener comillas angulares")
+
+    def test_no_señala_los_documentos_reales_que_la_medida_vieja_marco(self):
+        """Los tres de `C-EP-004-HU-021`, escritos y publicados el mismo día."""
+        fase = os.path.join(
+            self.RAIZ, "documentacion", "epicas", "EP-004-comprobacion-automatica",
+            "HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido",
+            "C-EP-004-HU-021-cualquier-encabezado-de-veredicto-se-lee")
+        if not os.path.isdir(fase):
+            self.skipTest("la fase C de la HU-021 no está en este árbol")
+        de_cada_uno = fases.marcadores_de_los_moldes(self.RAIZ)
+        self.assertEqual(fases.moldes_sin_llenar(fase, de_cada_uno), [],
+                         "señaló documentos escritos de la fase C")
+
+    def test_señala_un_plan_de_pruebas_real_que_si_es_el_molde(self):
+        fase = os.path.join(
+            self.RAIZ, "documentacion", "epicas", "EP-004-comprobacion-automatica",
+            "HU-011-molde-de-las-reglas",
+            "B-EP-004-HU-011-no-afirmar-sobre-lo-que-no-se-leyo")
+        if not os.path.isdir(fase):
+            self.skipTest("esa fase no está en este árbol")
+        de_cada_uno = fases.marcadores_de_los_moldes(self.RAIZ)
+        señalados = dict(fases.moldes_sin_llenar(fase, de_cada_uno))
+        self.assertIn("plan_pruebas.md", señalados,
+                      "no reconoció una plantilla sin llenar")
+
+    def test_dos_marcadores_del_molde_no_alcanzan(self):
+        """El corte es tres, y el reparto real no tiene nada entre 3 y 15."""
+        raiz, fase = self._proyecto({})
+        propios = sorted(fases.marcadores_de_los_moldes(raiz)["plan_trabajo.md"])
+        with io.open(os.path.join(fase, "plan_trabajo.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write("# escrito\n\n%s y %s.\n" % (propios[0], propios[1]))
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+
+    # -- CA-03 · el aviso dice cuáles -------------------------------------
+    def test_el_aviso_nombra_el_documento_y_un_marcador(self):
+        raiz, fase = self._proyecto({})
+        molde = self._molde(raiz, "08-plan-pruebas.md")
+        with io.open(os.path.join(fase, "plan_pruebas.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        avisos = fases.documentos_que_siguen_siendo_el_molde(raiz)
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("plan_pruebas.md", avisos[0].archivo)
+        # **Lo pidió un sabotaje que pasó en verde.** La comprobación de
+        # antes era `assertIn("«", mensaje + "«")`, que es cierta siempre:
+        # se compara contra un texto al que se le acaba de pegar lo buscado.
+        # Se exige un marcador **de los que el documento conserva de verdad**.
+        propios = fases.marcadores_de_los_moldes(raiz)["plan_pruebas.md"]
+        self.assertTrue(
+            any(m in avisos[0].mensaje for m in propios),
+            "el aviso dice cuántos pero no cuál: %s" % avisos[0].mensaje)
+
+    def test_el_aviso_llega_por_validar_no_solo_por_la_funcion(self):
+        """Una comprobación bien escrita y desconectada deja todo en verde."""
+        raiz, fase = self._proyecto({})
+        molde = self._molde(raiz, "08-plan-pruebas.md")
+        with io.open(os.path.join(fase, "plan_pruebas.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        mensajes = [h.mensaje for h in fases.validar(raiz)]
+        self.assertTrue(any("sigue siendo la plantilla" in m for m in mensajes),
+                        "el aviso no llega por `validar`")
+
+    # -- CA-04 · las plantillas se leen del repositorio --------------------
+    def test_un_marcador_nuevo_en_la_plantilla_se_reconoce_solo(self):
+        raiz, fase = self._proyecto({})
+        molde = os.path.join(raiz, *fases.MOLDES_DEL_CICLO.split("/"),
+                             "07-plan-trabajo.md")
+        with io.open(molde, "a", encoding="utf-8", newline="\n") as f:
+            f.write("\n«un marcador que nadie había visto»\n"
+                    "«ni este tampoco»\n«ni este otro»\n")
+        with io.open(os.path.join(fase, "plan_trabajo.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write("«un marcador que nadie había visto»\n"
+                    "«ni este tampoco»\n«ni este otro»\n")
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1),
+                         "no leyó los marcadores nuevos de la plantilla")
+
+    def test_sin_plantilla_no_se_afirma_nada_de_ese_documento(self):
+        """`04·R4`: sin con qué comparar, no se afirma. Y no revienta."""
+        raiz, fase = self._proyecto({})
+        os.remove(os.path.join(raiz, *fases.MOLDES_DEL_CICLO.split("/"),
+                               "08-plan-pruebas.md"))
+        with io.open(os.path.join(fase, "plan_pruebas.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write("| Fase | «A-EP01-HU03-Descripción» |\n| Módulo | «M» |\n"
+                    "| Fecha | AAAA-MM-DD |\n")
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+
+    def test_sin_ninguna_plantilla_no_queda_ninguna_lista_de_reserva(self):
+        """Que no haya marcadores copiados en el código, comprobado corriendo.
+
+        Buscar el texto en `fases.py` no sirve: los comentarios citan
+        marcadores para explicarse, y una prueba así se rompe al documentar
+        —pasó en la primera corrida—. **Se comprueba por comportamiento:**
+        sin ninguna plantilla no puede quedar nada con qué comparar.
+        """
+        raiz, fase = self._proyecto({})
+        moldes = os.path.join(raiz, *fases.MOLDES_DEL_CICLO.split("/"))
+        for nombre in os.listdir(moldes):
+            os.remove(os.path.join(moldes, nombre))
+        self.assertEqual(fases.marcadores_de_los_moldes(raiz), {},
+                         "quedaron marcadores que no salieron de una plantilla")
+        self._escribir(os.path.join(fase, "plan_pruebas.md"),
+                       "| Fase | «A-EP01-HU03-Descripción» |\n"
+                       "| Módulo | «M» |\n| Fecha | AAAA-MM-DD |\n")
+        self.assertEqual(fases.inventario(raiz), (1, 1, 0))
+        self.assertEqual(fases.documentos_que_siguen_siendo_el_molde(raiz), [])
+
+    # -- CA-05 · avisa y no corrige ---------------------------------------
+    def test_la_comprobacion_no_escribe_en_el_documento(self):
+        raiz, fase = self._proyecto({})
+        ruta = os.path.join(fase, "plan_pruebas.md")
+        molde = self._molde(raiz, "08-plan-pruebas.md")
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(molde)
+        antes = self._texto(ruta)
+        fases.validar(raiz)
+        self.assertEqual(self._texto(ruta), antes)
+
+    # -- Transversal · no regresión ---------------------------------------
+    def test_inventario_sigue_devolviendo_tres_valores(self):
+        self.assertEqual(len(fases.inventario(self.RAIZ)), 3)
+
+    def test_un_documento_que_falta_sigue_contando_como_falta(self):
+        """Lo de antes no se reemplaza: se le suma."""
+        raiz, fase = self._proyecto({})
+        os.remove(os.path.join(fase, "plan_pruebas.md"))
+        self.assertEqual(fases.inventario(raiz), (1, 0, 1))
+
+
 class VocabularioDeEstados(unittest.TestCase):
     """El estado se escribe con una palabra del glosario — EP-003 · HU-012.
 

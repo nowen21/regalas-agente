@@ -84,4 +84,4 @@
 
 No se bloqueó.
 
-**Y algo que conviene dejar dicho:** abrir esta fase movió la línea antes de escribir una sola prueba. Al crear su carpeta, la `HU-021` salió de «terminadas» — de `57 cumplen` a `56`. Es `S-053` por **cuarta** vez en el día, y queda como evidencia en el [pendiente 88](../../../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md).
+**Y algo que conviene dejar dicho:** abrir esta fase movió la línea antes de escribir una sola prueba. Al crear su carpeta, la `HU-021` salió de «terminadas» — de `57 cumplen` a `56`. Es `S-053` por **cuarta** vez en el día, y queda como evidencia en el [pendiente 88](../../../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md).

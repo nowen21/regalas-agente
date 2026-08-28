@@ -11,6 +11,35 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.3.0 — 2026-08-27
+
+**Una fase recién abierta contaba como terminada.** El andamio crea sus cinco documentos vacíos, y el conteo miraba que existieran. Ahora un documento que **sigue siendo su plantilla** no cuenta como escrito.
+
+**MENOR** (nadie tiene que hacer nada; lo que cambia es que el número deja de contar como escrito lo que no lo está).
+
+**Lo que se veía antes y lo que se ve ahora**, sobre este mismo repositorio:
+
+| Antes | Ahora |
+|---|---|
+| `32 sin terminar · 85 terminadas` | `39 sin terminar · 78 terminadas` |
+
+**No se perdió trabajo: hay siete documentos que nunca se escribieron y hasta hoy contaban como escritos.** El programa los nombra uno por uno, así que se puede ir a arreglarlos sin volver a medir:
+
+| Documento | Qué es |
+|---|---|
+| `plan_pruebas.md` de `B-EP-002-HU-003`, `B-EP-002-HU-004`, `B-EP-004-HU-011`, `B-EP-004-HU-012` y `B-EP-005-HU-002` | La plantilla `08` sin tocar, con sus 36 marcadores |
+| `estado-fase.md` de `A-EP-004-HU-021` y `A-EP-007-HU-009` | La plantilla `10` sin tocar, con 16 |
+
+**Los cinco primeros son fases con su código y sus pruebas construidas.** Lo que falta ahí no es papeleo: **nadie sabe con qué casos se comprobaron.**
+
+**Cómo se distingue un documento escrito de un formulario.** No por **cuántos** marcadores tiene, sino por **cuántos son los de su plantilla**. `«Cumple»` es prosa; `«2-4 líneas en lenguaje claro»` está en el molde y solo ahí. Contar sin cruzar ya se probó y falla: señaló tres documentos escritos, cerrados y publicados el mismo día.
+
+**El corte no se eligió: lo dio el reparto.** De los 664 documentos de fase, 577 no tienen ninguno del molde, 80 tienen uno o dos, y 7 tienen tres o más. **Ninguno tiene entre 3 y 15.**
+
+**Los marcadores se leen de las plantillas de `plantillas/ciclo-vida-proyectos/`**, no de una lista en el código: cambiar una plantilla ajusta la comprobación sola.
+
+---
+
 ## 35.2.0 — 2026-08-27
 
 **El número que responde «cuánto falta» contaba como hecho el trabajo que no cumplió.** Ahora distingue lo que se terminó de lo que además cumple, y lo dice en la misma línea.

@@ -82,7 +82,7 @@ Se suspende si al medir **no se recuperan exactamente diez**, o si **las tres qu
 
 **La segunda mitad es la que vale.** Si se recuperaran solo las siete que cumplen, el número quedaría **mejor y más falso** — y eso se vería como un éxito.
 
-**Y hay una trampa conocida de antemano:** abrir esta fase con su carpeta ya movió la línea. La `HU-021` salió de «terminadas» al existir una carpeta sin sus cinco documentos, y `56 cumplen` es la base **con esta fase ya abierta**. Es `S-053` por cuarta vez, y el [pendiente 88](../../../../../pendientes/88-el-andamio-crea-una-fase-que-ya-cuenta-como-terminada.md) lo recoge.
+**Y hay una trampa conocida de antemano:** abrir esta fase con su carpeta ya movió la línea. La `HU-021` salió de «terminadas» al existir una carpeta sin sus cinco documentos, y `56 cumplen` es la base **con esta fase ya abierta**. Es `S-053` por cuarta vez, y el [pendiente 88](../../../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md) lo recoge.
 
 ---
 
