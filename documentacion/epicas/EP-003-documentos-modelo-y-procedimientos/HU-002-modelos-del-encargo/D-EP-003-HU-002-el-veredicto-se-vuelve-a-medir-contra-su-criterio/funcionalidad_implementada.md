@@ -12,7 +12,7 @@
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.4.0` — **sin cambio**: no se toca código |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
-| **Commit** | Pendiente de aprobación del usuario |
+| **Commit** | `b3df9f1` |
 | **Reemplaza el veredicto de** | `A-EP-003-HU-002-retrodocumentar-los-modelos-del-encargo` |
 
 > **Por qué se declara el reemplazo:** Se volvió a medir el `CA-01` contra lo que su criterio pide, y cumple. Aquel rojo se puso por un hueco que el `CA-01` no menciona. **El veredicto de aquella fase no se toca** (`20·M11`): la cuenta lo deja atrás, el documento sigue diciendo lo que decía.

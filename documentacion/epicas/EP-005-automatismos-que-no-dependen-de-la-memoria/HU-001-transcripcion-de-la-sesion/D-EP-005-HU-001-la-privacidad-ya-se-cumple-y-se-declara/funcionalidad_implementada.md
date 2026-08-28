@@ -12,7 +12,7 @@
 | **Fecha de cierre** | 2026-08-27 |
 | **Versión del estándar al cerrar** | `35.4.0` — **sin cambio**: no se toca código |
 | **Veredicto** | **Cumple**, copiado del §2 del resultado |
-| **Commit** | Pendiente de aprobación del usuario |
+| **Commit** | `b3df9f1` |
 | **Reemplaza el veredicto de** | `A-EP-005-HU-001-retrodocumentar-la-transcripcion-de-la-sesion` |
 
 > **Por qué se declara el reemplazo:** Se volvió a verificar la exigencia de privacidad, ejecutándola, y hoy se cumple. Aquel rojo era cierto el 2026-08-22. **El veredicto de aquella fase no se toca** (`20·M11`): la cuenta lo deja atrás, el documento sigue diciendo lo que decía.

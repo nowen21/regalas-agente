@@ -15,7 +15,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+**Estación actual:** 13 · Publicación. **Última puerta pasada:** 12, en `b3df9f1`.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ✅ |
 | 10 | Crítico | sin hallazgos graves | ✅ |
 | 11 | Cierre documental + señales | docs y señales al día | ✅ |
-| 12 | Commit | 👤 autorizado | ☐ **Esperando aprobación del usuario** |
+| 12 | Commit | 👤 autorizado | ✅ `b3df9f1` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
@@ -72,7 +72,7 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del commit**, que se pide aparte de la aprobación del cambio.
+- **La aprobación del `push`**, que se pide aparte del commit.
 
 ---
 
