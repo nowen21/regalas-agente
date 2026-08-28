@@ -11,6 +11,47 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.7.0 — 2026-08-28
+
+**Dos moldes nuevos: el manual de usuario y el manual de instalación.** Hasta hoy cada proyecto escribía los suyos desde cero, y los dos que existían salieron llenos de nombres del proyecto que los escribió.
+
+**MENOR** (nadie tiene que cambiar nada; quien ya tenga manuales los conserva).
+
+**Qué son.** [plantillas/manual-usuario.md](plantillas/manual-usuario.md) y [plantillas/manual-instalacion.md](plantillas/manual-instalacion.md). Son **modelos**: se copian al proyecto, se reemplaza cada «…» y se llena cada sección siguiendo su recuadro 📋, que dice *qué va · cómo se escribe · de dónde sale el dato*. Los recuadros se borran al llenar; el lector final nunca los ve.
+
+**Lo que los distingue.** Abren con diez reglas de redacción para que **no asuman nada del lector** —una acción por paso, decir qué se ve antes y después, qué hacer si no pasa, ninguna palabra técnica sin explicar, nada de «simplemente»— y cierran con la lista de comprobación antes de publicar, que exige haberlos ejecutado en el sistema real siguiendo solo el texto.
+
+**No nombran ningún programa.** Las piezas se llaman por su función («la puerta de entrada», «la parte de datos», «la base de datos») y lo propio de cada sistema va en marcas «…». La primera versión, escrita en un proyecto, nombraba sus pantallas, sus programas y sus historias; el usuario la devolvió: una base con nombres propios no se puede copiar. De ahí salió la regla de la casa: **antes de entregar un molde, buscar nombres de proyecto, programas, herramientas, puertos y códigos — cero coincidencias.**
+
+**El de instalación cubre los tres momentos:** instalar desde cero, actualizar una instalación que ya existe (con la vuelta atrás escrita antes de necesitarla) y mantener la que funciona. Y deja dicho que un cambio de herramienta de construcción es un cambio de manual: un manual probado deja de estarlo cuando cambia la herramienta con la que se instala.
+
+---
+## 35.6.0 — 2026-08-27
+
+**La casilla del commit se marca sola.** Antes había que volver al documento a escribirla, y casi nadie volvía: el commit ocurre **después** de que el trabajo se dio por terminado.
+
+**MENOR** (nadie tiene que cambiar nada; los documentos que no tienen esa casilla no se tocan).
+
+**Por qué nadie la marcaba.** No era descuido: es la forma del ciclo. La última casilla es la única que se cumple **fuera del momento** en que se escribe el documento que la registra. Solo el 2026-08-27 se marcó a mano cinco veces, y cada vez costó un guardado aparte.
+
+**Lo que apareció al medir, y cambió el alcance.** De los 140 documentos de estado del proyecto:
+
+| | |
+|---|---|
+| Con la casilla marcada | 11 |
+| Sin marcar | 23 |
+| **Sin la casilla siquiera** | **106** |
+
+**Tres de cada cuatro no tienen dónde marcar.** No se les inventa: **se cuentan aparte y se nombran**, porque un programa que le agregue estructura a un documento viejo hace más daño que el problema que corrige.
+
+**Y las 23 sin marcar eran dos cosas distintas:** **22 están guardadas de hecho** —comprobado contra el historial— y **una no lo está**. Juntarlas decía «23 sin guardar» donde hay una. Ahora se dicen por separado, con nombres.
+
+**El costo, dicho de frente.** El hash **no existe hasta que el guardado está hecho**, así que la anotación llega después: **el documento queda modificado y sin guardar**, y entra en el guardado siguiente. Las otras dos salidas se descartaron con motivo — rehacer el guardado cambia el hash y el documento apuntaría a uno que ya no existe, y guardar por su cuenta sería un cambio sin aprobación.
+
+**Nunca estorba.** Si algo le falla, **el guardado queda hecho igual**: cuando esto corre, ya terminó.
+
+---
+
 ## 35.5.0 — 2026-08-27
 
 **Un trabajo marcado como «no cumple» ya se puede dar por resuelto, diciendo cuál se resolvió.** Antes esa marca no tenía forma de quitarse: se podía arreglar el problema, comprobarlo y dejarlo escrito, y el número seguía contando el trabajo como pendiente.

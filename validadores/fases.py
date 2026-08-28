@@ -22,6 +22,7 @@ import os
 import re
 
 import comun
+import estacion_commit
 from comun import AVISO, FALLA, Hallazgo
 
 CARPETA = "documentacion/epicas"
@@ -299,7 +300,8 @@ def validar(proyecto):
             + cuenta_escrita_a_mano(proyecto)
             + estado_fuera_del_vocabulario(proyecto)
             + documentos_que_siguen_siendo_el_molde(proyecto)
-            + reemplazos_que_no_resuelven(proyecto))
+            + reemplazos_que_no_resuelven(proyecto)
+            + estacion_del_commit_sin_marcar(proyecto))
 
 
 # `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.
@@ -687,6 +689,70 @@ def veredictos_reemplazados(ruta_hu, fases):
                 and veredicto_de(os.path.join(ruta_hu, nombre)) == "Cumple"):
             dejados.add(nombrada)
     return dejados
+
+
+# `EP-005·HU-019` · La estación del commit, y los tres grupos que la componen.
+#
+# **El pendiente 87 decía «casi nunca se marca», y al medir salió algo más.** De
+# los 140 `estado-fase.md` del árbol: 11 marcadas, 23 sin marcar y **106 sin la
+# fila siquiera**. Tres de cada cuatro fases no tienen dónde (`S-066`).
+#
+# **Y las 23 sin marcar son dos cosas distintas:** 22 tienen su cierre en git
+# —son solo la marca— y una no lo tiene, que es trabajo de verdad. Contarlas
+# juntas da «23 fases sin commitear» donde hay una, y con ese número nadie
+# decide bien.
+def estacion_del_commit_sin_marcar(proyecto):
+    """Un aviso por grupo, diciendo **cuáles** — no solo cuántas (`S-040`)."""
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    marcadas, solo_marca, sin_commit, sin_fila = [], [], [], []
+
+    for nombre_epica in _subcarpetas(raiz):
+        if not _EPICA.match(nombre_epica):
+            continue
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            for nombre_fase in _subcarpetas(ruta_hu):
+                if not _FASE.match(nombre_fase):
+                    continue
+                ruta_fase = os.path.join(ruta_hu, nombre_fase)
+                texto = _leer(os.path.join(ruta_fase, "estado-fase.md"))
+                if not texto:
+                    continue
+                if not estacion_commit.tiene_fila_de_estacion(texto):
+                    sin_fila.append(nombre_fase)
+                elif estacion_commit.ya_esta_marcada(texto):
+                    marcadas.append(nombre_fase)
+                elif comun.leer(os.path.join(
+                        ruta_fase, "funcionalidad_implementada.md")):
+                    solo_marca.append(nombre_fase)
+                else:
+                    sin_commit.append(nombre_fase)
+
+    hallazgos = []
+    if solo_marca:
+        hallazgos.append(Hallazgo(
+            AVISO, CARPETA, 0,
+            f"{len(solo_marca)} fase(s) con su cierre escrito y la estación 12 "
+            f"sin marcar — **es la marca, no el trabajo**: "
+            f"{', '.join(sorted(solo_marca)[:5])}"
+            + (" …" if len(solo_marca) > 5 else "") + " (EP-005·HU-019)"))
+    if sin_commit:
+        hallazgos.append(Hallazgo(
+            AVISO, CARPETA, 0,
+            f"{len(sin_commit)} fase(s) sin cierre escrito y sin marcar — "
+            f"**esto sí es trabajo**: {', '.join(sorted(sin_commit))} "
+            f"(EP-005·HU-019)"))
+    if sin_fila:
+        hallazgos.append(Hallazgo(
+            AVISO, CARPETA, 0,
+            f"{len(sin_fila)} fase(s) **sin la fila de la estación 12**: no hay "
+            f"dónde marcar, y el enganche no las toca. Se cuentan aparte porque "
+            f"no se puede afirmar sobre un campo que no existe "
+            f"(04·R4, EP-005·HU-019)"))
+    return hallazgos
 
 
 def reemplazos_que_no_resuelven(proyecto):

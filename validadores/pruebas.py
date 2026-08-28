@@ -33,6 +33,7 @@ import ci               # noqa: E402
 import citas            # noqa: E402
 import errores          # noqa: E402
 import esquema          # noqa: E402
+import estacion_commit  # noqa: E402
 import flujo            # noqa: E402
 import herramientas     # noqa: E402
 import historico        # noqa: E402
@@ -3948,6 +3949,218 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
         raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple"})
         self.assertEqual(fases.inventario(raiz), (1, 1, 0),
                          "la cuenta nueva movió lo que no debía")
+
+
+class ElHashDelCommitSeAnotaSolo(_ProyectoDePrueba):
+    """La estación del commit se marca sola — EP-005 · HU-019.
+
+    **Se prueba con repositorios de git de verdad.** Un enganche de git no se
+    puede comprobar sin commits reales: probar la función suelta dejaría fuera
+    justo lo que falla — que esté colgado, y que un fallo suyo no rompa nada.
+
+    **Lo que más se vigila es que NO escriba.** De los 140 `estado-fase.md` del
+    árbol, **106 no tienen la fila** donde marcar (`S-066`): un programa que les
+    invente estructura haría más daño que el problema que corrige.
+    """
+
+    TABLA = ("# Estado de fase\n\n"
+             "| # | Estación | Puerta | Estado |\n|---|---|---|---|\n"
+             "| 11 | Cierre | docs al día | OK |\n"
+             "| 12 | Commit | autorizado |  |\n"
+             "| 13 | Publicación | autorizado |  |\n")
+    SIN_FILA = "# Estado de fase\n\nEsta fase no tiene tabla de estaciones.\n"
+
+    # -- La lógica, sin git -----------------------------------------------
+    def test_marca_una_fila_vacia(self):
+        nuevo = estacion_commit.marcar(self.TABLA, "abc1234")
+        self.assertIsNotNone(nuevo)
+        self.assertIn("abc1234", nuevo)
+
+    def test_no_inventa_una_fila_donde_no_hay_tabla(self):
+        """**El caso crítico.** Son 106 de 140 documentos del árbol."""
+        self.assertIsNone(estacion_commit.marcar(self.SIN_FILA, "abc1234"),
+                          "inventó estructura en un documento sin tabla")
+
+    def test_no_pisa_un_hash_ya_puesto(self):
+        marcada = estacion_commit.marcar(self.TABLA, "primero")
+        self.assertIsNone(estacion_commit.marcar(marcada, "segundo"),
+                          "pisó el hash que decía qué commit cerró la fase")
+
+    def test_devuelve_nada_cuando_no_hay_que_tocar(self):
+        """`None` y no el mismo texto: sin cambio no puede haber escritura."""
+        for texto, h in ((self.SIN_FILA, "abc"), (self.TABLA, ""), ("", "abc")):
+            self.assertIsNone(estacion_commit.marcar(texto, h))
+
+    def test_solo_cambia_la_fila_doce(self):
+        nuevo = estacion_commit.marcar(self.TABLA, "abc1234")
+        viejas = [l for l in self.TABLA.splitlines() if not l.startswith("| 12 ")]
+        nuevas = [l for l in nuevo.splitlines() if not l.startswith("| 12 ")]
+        self.assertEqual(viejas, nuevas, "cambió algo fuera de la fila 12")
+
+    def test_reconoce_la_fase_por_su_forma(self):
+        """Por su forma y no por una lista: sirve en cualquier proyecto."""
+        self.assertEqual(
+            estacion_commit.fase_de(
+                "documentacion/epicas/EP-001-e/HU-001-u/A-EP-001-HU-001-x/x.md"),
+            "documentacion/epicas/EP-001-e/HU-001-u/A-EP-001-HU-001-x")
+        self.assertEqual(estacion_commit.fase_de("validadores/fases.py"), "")
+
+    # -- Con git de verdad -------------------------------------------------
+    def _repo_con_enganche(self):
+        """Un repositorio de git real, con el enganche colgado."""
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raiz = tmp.name
+        for orden in (["init", "-q"],
+                      ["config", "user.name", "prueba"],
+                      ["config", "user.email", "prueba@local"],
+                      ["config", "core.hooksPath", ".githooks"]):
+            subprocess.run(["git"] + orden, cwd=raiz, capture_output=True)
+        ganchos = os.path.join(raiz, ".githooks")
+        os.makedirs(ganchos)
+        guion = os.path.join(self.VALIDADORES, "hook_estacion.py")
+        archivo = os.path.join(ganchos, "post-commit")
+        with io.open(archivo, "w", encoding="utf-8", newline="\n") as f:
+            f.write('#!/bin/sh\npython "%s" --raiz "$(pwd)" || true\nexit 0\n'
+                    % guion.replace("\\", "/"))
+        os.chmod(archivo, 0o755)
+        return raiz
+
+    def _fase(self, raiz, nombre, estado, con_cierre=True):
+        carpeta = os.path.join(raiz, "documentacion", "epicas", "EP-001-e",
+                               "HU-001-una", nombre)
+        os.makedirs(carpeta, exist_ok=True)
+        with io.open(os.path.join(carpeta, "estado-fase.md"), "w",
+                     encoding="utf-8", newline="\n") as f:
+            f.write(estado)
+        if con_cierre:
+            with io.open(os.path.join(carpeta, "funcionalidad_implementada.md"),
+                         "w", encoding="utf-8", newline="\n") as f:
+                f.write("# cierre escrito\n")
+        return carpeta
+
+    def _commit(self, raiz, mensaje):
+        subprocess.run(["git", "add", "-A"], cwd=raiz, capture_output=True)
+        r = subprocess.run(["git", "commit", "-m", mensaje], cwd=raiz,
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace")
+        h = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=raiz,
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace").stdout.strip()
+        return r, h
+
+    def _texto(self, carpeta):
+        with io.open(os.path.join(carpeta, "estado-fase.md"),
+                     encoding="utf-8") as f:
+            return f.read()
+
+    def test_al_commitear_el_hash_queda_escrito(self):
+        raiz = self._repo_con_enganche()
+        carpeta = self._fase(raiz, "A-EP-001-HU-001-con-fila", self.TABLA)
+        r, h = self._commit(raiz, "primero")
+        self.assertEqual(r.returncode, 0)
+        self.assertIn(h, self._texto(carpeta),
+                      "el enganche no escribió el hash al commitear")
+
+    def test_al_commitear_no_se_toca_la_fase_sin_fila(self):
+        raiz = self._repo_con_enganche()
+        carpeta = self._fase(raiz, "B-EP-001-HU-001-sin-fila", self.SIN_FILA)
+        self._commit(raiz, "primero")
+        self.assertEqual(self._texto(carpeta), self.SIN_FILA,
+                         "tocó un documento sin la fila de la estación 12")
+
+    def test_al_commitear_no_se_pisa_el_hash_anterior(self):
+        raiz = self._repo_con_enganche()
+        carpeta = self._fase(raiz, "A-EP-001-HU-001-con-fila", self.TABLA)
+        _, primero = self._commit(raiz, "primero")
+        _, segundo = self._commit(raiz, "segundo")
+        texto = self._texto(carpeta)
+        self.assertIn(primero, texto)
+        self.assertNotIn(segundo, texto, "el segundo commit pisó al primero")
+
+    def test_una_fase_sin_cierre_escrito_no_se_marca(self):
+        """Marcarla diría que se commiteó algo que no se commiteó."""
+        raiz = self._repo_con_enganche()
+        carpeta = self._fase(raiz, "A-EP-001-HU-001-sin-cierre", self.TABLA,
+                             con_cierre=False)
+        _, h = self._commit(raiz, "primero")
+        self.assertNotIn(h, self._texto(carpeta))
+
+    def test_un_enganche_roto_no_rompe_el_commit(self):
+        """**De no destruir.** Un commit perdido no se recupera con un aviso."""
+        raiz = self._repo_con_enganche()
+        self._fase(raiz, "A-EP-001-HU-001-con-fila", self.TABLA)
+        gancho = os.path.join(raiz, ".githooks", "post-commit")
+        with io.open(gancho, "w", encoding="utf-8", newline="\n") as f:
+            f.write('#!/bin/sh\npython "no-existe.py" || true\nexit 0\n')
+        os.chmod(gancho, 0o755)
+        r, _ = self._commit(raiz, "con el enganche roto")
+        self.assertEqual(r.returncode, 0, "el enganche roto tumbó el commit")
+        log = subprocess.run(["git", "log", "--oneline"], cwd=raiz,
+                             capture_output=True, text=True, encoding="utf-8",
+                             errors="replace").stdout
+        self.assertIn("con el enganche roto", log, "el commit se perdió")
+
+    def test_el_enganche_no_revienta_si_no_hay_git(self):
+        """**Lo pidió un sabotaje que pasó en verde**, y es un caso real.
+
+        La prueba anterior rompía el *guion de shell* que llama al enganche, no
+        el enganche: su red de seguridad nunca se tocaba. Acá se corre
+        `hook_estacion.py` **sin `git` en el camino**, que es lo que pasa en una
+        máquina que no lo tiene instalado: sin la red, revienta con traza y
+        código 1 justo después de un commit correcto.
+        """
+        guion = os.path.join(self.VALIDADORES, "hook_estacion.py")
+        entorno = {"SYSTEMROOT": os.environ.get("SYSTEMROOT", ""),
+                   "PATH": "", "PATHEXT": os.environ.get("PATHEXT", "")}
+        salida = subprocess.run(
+            [sys.executable, guion, "--raiz", os.path.dirname(self.VALIDADORES)],
+            capture_output=True, text=True, encoding="utf-8",
+            errors="replace", env=entorno, timeout=60)
+        self.assertEqual(salida.returncode, 0,
+                         "el enganche murió sin git: %s" % salida.stderr[:200])
+        self.assertEqual(salida.stderr.strip(), "",
+                         "el enganche alarmó después de un commit correcto")
+
+    # -- El conteo, con sus tres grupos ------------------------------------
+    def test_el_conteo_separa_los_tres_grupos(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raiz = tmp.name
+        self._fase(raiz, "A-EP-001-HU-001-solo-marca", self.TABLA)
+        self._fase(raiz, "B-EP-001-HU-001-sin-cierre", self.TABLA,
+                   con_cierre=False)
+        self._fase(raiz, "C-EP-001-HU-001-sin-fila", self.SIN_FILA)
+        mensajes = [h.mensaje for h in
+                    fases.estacion_del_commit_sin_marcar(raiz)]
+        self.assertEqual(len(mensajes), 3, "no salieron los tres grupos")
+        self.assertTrue(any("es la marca, no el trabajo" in m for m in mensajes))
+        self.assertTrue(any("esto sí es trabajo" in m for m in mensajes))
+        self.assertTrue(any("sin la fila" in m for m in mensajes))
+
+    def test_el_conteo_dice_cuales_y_no_solo_cuantas(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self._fase(tmp.name, "A-EP-001-HU-001-solo-marca", self.TABLA)
+        mensajes = [h.mensaje for h in
+                    fases.estacion_del_commit_sin_marcar(tmp.name)]
+        self.assertTrue(
+            any("A-EP-001-HU-001-solo-marca" in m for m in mensajes),
+            "el conteo dice cuántas pero no cuáles")
+
+    def test_el_conteo_llega_por_validar(self):
+        raiz = os.path.dirname(self.VALIDADORES)
+        mensajes = [h.mensaje for h in fases.validar(raiz)]
+        self.assertTrue(any("estación 12" in m for m in mensajes),
+                        "el conteo no llega por `validar`")
+
+    def test_el_enganche_esta_registrado_en_el_instalador(self):
+        """Construido y no colgado no sirve de nada — `EP-002·HU-004`."""
+        nombres = [h[0] for h in instalar.HOOKS]
+        self.assertIn("post-commit", nombres,
+                      "el enganche existe pero el instalador no lo escribe")
 
 
 class UnRojoSeCierraDeclarandolo(unittest.TestCase):

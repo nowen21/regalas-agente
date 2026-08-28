@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 Commit `31d556f` | ☑ |
+| 12 | Commit | 👤 Commit `31d556f` | ✅ `31d556f` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **La estación 5 pasó sin documento aparte, y la regla que lo permite ya existe.** [`02·F19`](../../../../../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) dice que la redacción del CA es la especificación funcional.

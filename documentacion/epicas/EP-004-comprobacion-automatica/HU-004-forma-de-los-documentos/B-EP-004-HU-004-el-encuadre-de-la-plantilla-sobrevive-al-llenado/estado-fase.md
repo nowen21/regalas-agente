@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `7eaade3` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 **Sobre la puerta 7.** El usuario ordenó ejecutar el [pendiente 77](../../../../../pendientes/hecho/el-planteamiento-conserva-su-encuadre.md), y esa orden se tomó como la aprobación de los dos planes. Quedó dicho al pedirlo y quedó dicho acá.

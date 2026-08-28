@@ -30,7 +30,7 @@
 | 9 | Verificación | trazabilidad sin faltantes | ☑ 7 de 7 casos aprobados |
 | 10 | Revisión crítica | sin hallazgos graves | ☑ un hallazgo, y es de otra épica: el ID repetido no lo ve ningún programa |
 | 11 | Cierre documental | documentos y aprendizajes al día | ☑ [funcionalidad_implementada](funcionalidad_implementada.md) |
-| 12 | Commit | autorizado por el usuario | 👤 se pide al reportar |
+| 12 | Commit | autorizado por el usuario | ✅ `3fd8bb0` |
 | 13 | Publicación | autorizada por el usuario | 👤 se pide al reportar |
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.

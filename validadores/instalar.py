@@ -143,6 +143,26 @@ if [ "$FALLO" -ne 0 ]; then
 fi
 """
 
+# `EP-005·HU-019` · **El hash del commit se anota solo.**
+#
+# La estacion 12 del ciclo es «commit», y el commit ocurre despues de que el
+# agente termina de escribir: nadie vuelve a marcar la casilla. Solo el
+# 2026-08-27 se marco a mano cinco veces.
+#
+# **Corre despues del commit porque antes el hash no existe**, asi que el
+# archivo queda modificado y sin guardar: entra en el commit siguiente. Las
+# otras dos salidas se descartaron con argumento — reescribir el commit se
+# muerde la cola, y hacer un segundo commit automatico cruza `00·N1`. Es
+# `S-067`.
+#
+# **Nunca falla el commit.** Cuando esto corre, el commit ya esta hecho: lo
+# unico que puede hacer un fallo aca es ensuciar la salida. Termina en 0
+# siempre.
+PLANTILLA_POST_COMMIT = _PREAMBULO + """
+"$PY" "$ESTANDAR/validadores/hook_estacion.py" --raiz "$(pwd)" || true
+exit 0
+"""
+
 HOOKS = [
     ("commit-msg", PLANTILLA_COMMIT_MSG,
      "Revisa el mensaje del commit antes de aceptarlo (09-git.md · G2, G8)."),
@@ -150,6 +170,8 @@ HOOKS = [
      "Revisa que no entren secretos ni artefactos (09-git.md · G3)."),
     ("pre-push", PLANTILLA_PRE_PUSH,
      "Corre la batería antes de publicar (09-git.md · G6 · 00-nucleo-blindado.md · N2)."),
+    ("post-commit", PLANTILLA_POST_COMMIT,
+     "Anota el hash en la fase que el commit cierra (EP-005·HU-019). Nunca falla."),
 ]
 
 

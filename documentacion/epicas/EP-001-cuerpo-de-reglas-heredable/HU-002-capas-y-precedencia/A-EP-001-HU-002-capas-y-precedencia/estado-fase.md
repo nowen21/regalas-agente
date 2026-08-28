@@ -28,7 +28,7 @@
 | 9 | Verificación | trazabilidad sin faltantes | ☑ |
 | 10 | Revisión crítica | sin hallazgos graves | ☑ |
 | 11 | Cierre documental | documentos y aprendizajes al día | ☑ |
-| 12 | Commit | autorizado por el usuario | 👤 se pide al reportar |
+| 12 | Commit | autorizado por el usuario | ✅ `2cf37cf` |
 | 13 | Publicación | autorizada por el usuario | 👤 se pide al reportar |
 
 **Lo que se saltó y por qué.** Las estaciones 1, 5 y 6 no se recorrieron como paso aparte, por el mismo motivo que en la fase A de HU-001. Queda anotado acá para que no se lea como que se cumplieron: si el usuario decide que la 5 aplica, esta fase no puede avanzar a la 8 sin ella.

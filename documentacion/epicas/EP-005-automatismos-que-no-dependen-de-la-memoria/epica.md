@@ -151,6 +151,7 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-016](HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md) | La traza de la sesión, paso a paso | Should | S |
 | [HU-017](HU-017-el-commit-no-se-lleva-lo-ajeno/HU-017-el-commit-no-se-lleva-lo-ajeno.md) | Que el commit no se lleve el trabajo de otra sesión | Must | S |
 | [HU-018](HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md) | Que los guiones de apoyo queden en el repositorio, sin depender de que el agente se acuerde | Must | S |
+| [HU-019](HU-019-el-hash-del-commit-se-anota-solo/HU-019-el-hash-del-commit-se-anota-solo.md) | Que el hash del commit se anote solo, y que se sepa a cuántas fases alcanza | Must | M |
 
 ## 10. Consideraciones técnicas
 

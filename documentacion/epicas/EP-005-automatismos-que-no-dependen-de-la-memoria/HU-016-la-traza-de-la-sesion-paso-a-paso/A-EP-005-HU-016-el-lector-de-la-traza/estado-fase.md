@@ -28,7 +28,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ (`funcionalidad_implementada.md` §2, sin faltantes) |
 | 10 | Crítico | sin hallazgos graves | ☑ (los dos tropiezos del cierre — el mapa del amarre y la entrada del registro — los atraparon sus pruebas y quedaron corregidos) |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ (S-017; especificación, mapas, README del histórico, CHANGELOG 28.0.0) |
-| 12 | Commit | 👤 autorizado | ☐ **esperando la autorización del usuario** (`00·N2`) |
+| 12 | Commit | 👤 autorizado | ✅ `eedad93` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☑ no aplica aparte: viaja con `validadores/` en el `git pull` |
 
 ---
