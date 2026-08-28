@@ -243,4 +243,4 @@ Entonces el commit queda hecho igual
 
 | Fecha | Autor | Cambio |
 |---|---|---|
-| 2026-08-27 | Agente, con el usuario | Creación de la HU. Baja del [pendiente 87](../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md) con las salidas **1 y 3**; la **2** queda fuera. Al medir apareció que **106 de 140 fases no tienen dónde marcar** (`S-066`), y eso entró como `CA-03` y `CA-04` |
+| 2026-08-27 | Agente, con el usuario | Creación de la HU. Baja del [pendiente 87](../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md) con las salidas **1 y 3**; la **2** queda fuera. Al medir apareció que **106 de 140 fases no tienen dónde marcar** (`S-066`), y eso entró como `CA-03` y `CA-04` |

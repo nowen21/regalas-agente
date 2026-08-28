@@ -22,7 +22,7 @@ Comprobar que el hash **se escribe solo** donde hay dónde, **y que no se escrib
 |---|---|
 | [plan_trabajo.md](plan_trabajo.md) | El reparto de las 140, y la duda que se resuelve midiendo |
 | `S-066` | Que 106 de 140 no tienen dónde marcar |
-| [pendiente 87](../../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md) | Las tres salidas, y cuál quedó fuera |
+| [pendiente 87](../../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md) | Las tres salidas, y cuál quedó fuera |
 
 ---
 

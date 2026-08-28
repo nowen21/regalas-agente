@@ -7,7 +7,7 @@ Contenido inmediato de esta carpeta.
 | [HU-019-el-hash-del-commit-se-anota-solo.md](HU-019-el-hash-del-commit-se-anota-solo.md) | La historia de usuario: que la casilla del commit se marque sola |
 | [A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/](A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/) | **Cerrada, Cumple.** Un enganche de git anota el hash, solo donde hay dónde |
 
-Baja del [pendiente 87](../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md), con las salidas 1 y 3.
+Baja del [pendiente 87](../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md), con las salidas 1 y 3.
 
 **Nadie marcaba la casilla, y no era descuido:** el commit ocurre después de que el trabajo se dio por terminado, y esa es la única casilla que se cumple fuera del momento en que se escribe el documento.
 

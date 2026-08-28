@@ -17,7 +17,7 @@
 | **Rama** | `main` |
 
 **ORIGEN** (`13·DOC12`):
-- 📋 **Baja del [pendiente 87](../../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md)**, con las salidas **1 y 3 aprobadas** y la **2** —que la estación 12 deje de ser casilla— dejada fuera: cambia el ciclo.
+- 📋 **Baja del [pendiente 87](../../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md)**, con las salidas **1 y 3 aprobadas** y la **2** —que la estación 12 deje de ser casilla— dejada fuera: cambia el ciclo.
 
 **CA de la HU que cubre esta fase:** los cinco.
 

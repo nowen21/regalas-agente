@@ -656,7 +656,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **Why:** el problema no era solo que nadie volviera a marcar. **Tres de cada cuatro fases no tienen dónde.** Se escribieron con otra estructura, o sin la tabla de estaciones, y un programa que ponga el hash no tendría en qué escribirlo. **Un automatismo sobre un campo que no existe en el 76% de los casos no es una solución: es una solución para la minoría que ya estaba bien.**
 - **Also:** es el mismo patrón de `S-053` y `S-064` una vez más — **medir antes de construir cambió el alcance**. Sin la medición, la historia se habría escrito para «los que no marcan», y al correrla habría tocado 34 fases de 140 sin que nadie entendiera por qué las otras no se movían.
 - **And:** el reparto separa dos trabajos que se ven igual. De las 23 sin marcar, **22 son solo la marca** —su documento de cierre ya está en git, comprobado contra el historial— y **una es trabajo de verdad**. Contarlas juntas daría 23 «fases sin commitear» donde hay una.
-- **Where:** la medición, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/) · el [pendiente 87](../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md).
+- **Where:** la medición, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/) · el [pendiente 87](../pendientes/hecho/el-hash-del-commit-se-anota-solo.md).
 - **Learned:** antes de automatizar el llenado de un campo, **hay que contar en cuántos documentos ese campo existe**. La pregunta es corta y ahorra el trabajo entero: **¿sobre cuántos de los casos reales puede actuar esto?** Si la respuesta es «sobre los que ya estaban bien», el automatismo no resuelve el problema que lo motivó — y el resto queda igual, pero ahora con la apariencia de estar cubierto.
 - **When/Who:** 2026-08-27 · agente y usuario, al bajar el pendiente 87 a historia.
 - **Scope:** estándar; aplica a todo automatismo que escriba en un campo de un documento.
@@ -716,3 +716,36 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-28 · agente y usuario, al no cuadrar el número de versión de un cambio de una línea.
 - **Scope:** estándar; aplica a toda comprobación que cruce lo que entra a un commit con un registro que puede estar incompleto.
 - **Rel:** S-068 (un sabotaje que no se pudo aplicar no es uno que pasó), S-062 (tres formas de que una prueba mienta en verde).
+
+## S-072 · El hueco por el que entró lo ajeno es el mismo por el que pasa casi todo lo propio  ·  decisión · activa
+- **What:** para que la comprobación de sesiones viera los archivos que **ninguna sesión registró** —por ahí entraron 712 líneas ajenas— se propuso avisar de ellos cuando al menos uno de los que entran al commit sí tuviera registro. **Medido sobre los últimos doce commits: avisaría en siete, con hasta 31 archivos de una vez.** Eso no es una comprobación, es ruido — y un aviso que se aprende a ignorar apaga también lo que sí importaba.
+- **Why:** el registro se llena desde las herramientas de escritura del agente, y **la mayoría de los archivos se escriben desde guiones que se corren en la terminal**, que el enganche no ve. Así que *«sin registro»* no significa *«de otro»*: significa *«escrito de la forma habitual»*. **El hueco por el que entró lo ajeno es el mismo por el que pasa casi todo lo propio**, y con ese registro no hay forma de separarlos.
+- **Also:** la medición mató el diseño obvio antes de escribirlo, que es exactamente para lo que sirve medir. La idea se veía razonable y estaba bien argumentada; **lo único que la descartó fue correrla contra el historial real**. Sin ese paso se habría construido, habría avisado siete de doce veces, y se habría apagado.
+- **And:** eso reencuadra el problema. No es que la comprobación esté mal escrita: es que **su fuente de datos no cubre cómo se trabaja de verdad**. Arreglar la comprobación sin arreglar el registro sería afinar un instrumento que mide otra cosa — el defecto que este repositorio ya cometió cuatro veces con el número de avance.
+- **Where:** la medición, en [historico-chat/scripts/2026-08-28/](../historico-chat/scripts/2026-08-28/) · `validar_preparados` en `validadores/sesiones.py`.
+- **Learned:** antes de afinar una comprobación que calla, **hay que preguntar por qué calla** — y si la respuesta es que su registro está incompleto, el trabajo no está en la comprobación sino en el registro. La prueba barata: **correr la regla nueva contra el historial y contar cuántas veces habría hablado.** Si habla en más de la mitad de los casos, no distingue nada.
+- **When/Who:** 2026-08-28 · agente y usuario, midiendo antes de construir el arreglo obvio.
+- **Scope:** estándar; aplica a toda comprobación que se apoye en un registro que el agente llena mientras trabaja.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-059 (una medida que separó bien cuatro casos no separa bien seiscientos).
+
+## S-073 · Una clase de pruebas en verde no dice nada sobre las de al lado  ·  error-resuelto · activa
+- **What:** al agregar una aserción a la prueba de un enganche, la búsqueda del texto a reemplazar coincidió **primero con la prueba de otro enganche**, y ahí quedó pegada — usando una variable que en esa clase ni existe. Corrí la clase nueva sola, en verde, y seguí. La suite completa habría reventado con un `NameError`.
+- **Why:** para ahorrar los tres minutos de la suite entera, corrí solo la clase que estaba escribiendo. **Es exactamente donde el error no estaba.** Un cambio hecho por reemplazo de texto no cae necesariamente donde se cree: cae en la primera coincidencia.
+- **Also:** lo destapó un sabotaje que *«se coló»* sin razón aparente. Al perseguir por qué no lo cazaban las pruebas, apareció el verdadero desorden. **El sabotaje encontró un defecto distinto del que buscaba.**
+- **And:** la clase sola tardaba 5 segundos; la suite, 185. Esa proporción es la que empuja a saltarse la suite, y **es la misma que hace que el error tarde en aparecer**.
+- **Where:** `validadores/pruebas.py`, entre `ElAgenteNoEscribeFuera` y `ElTurnoAnotaLoQueCambio`.
+- **Learned:** **un reemplazo de texto se verifica mirando dónde cayó, no mirando si el archivo compila.** Y antes de dar una fase por terminada, la suite completa corre entera aunque tarde: el verde de una clase es una afirmación sobre esa clase y nada más.
+- **When/Who:** 2026-08-28 · agente, depurando por qué un sabotaje no se cazaba.
+- **Scope:** estándar; aplica a todo cambio hecho por búsqueda y reemplazo sobre un archivo grande.
+- **Rel:** S-062 (tres formas de que una prueba mienta en verde), S-068 (un sabotaje que no se pudo aplicar no es uno que pasó).
+
+## S-074 · Un sabotaje que se cuela sin razón aparente suele señalar código muerto  ·  aprendizaje · activa
+- **What:** rompí a propósito la línea que ponía la hora del registro —`os.utime(ruta, None)`— esperando que las pruebas lo cazaran. **No lo cazaron, y tenían razón:** el archivo se acababa de crear en el renglón anterior, así que ya traía la hora de ahora. La línea no hacía nada.
+- **Why:** se escribió por costumbre, para «asegurar» un estado que la operación anterior ya garantizaba. Ninguna prueba podía distinguir el antes del después, porque **no había diferencia que distinguir**.
+- **Also:** la reacción instintiva fue la equivocada: agregar una prueba que cazara ese sabotaje. Habría sido una prueba de una línea inútil, y **el código muerto habría quedado con una prueba encima que lo hace parecer necesario**.
+- **And:** el otro sabotaje que se coló en la misma tanda sí era un defecto de verdad —el enganche creaba carpetas fuera de todo proyecto—, así que la tanda separó dos cosas distintas con la misma señal: **una prueba que falta, y una línea que sobra.**
+- **Where:** `anotar_el_turno` en `validadores/sesiones.py`, fase `A-EP-005-HU-020`.
+- **Learned:** cuando un sabotaje se cuela, hay dos preguntas y en este orden: **¿falta una prueba, o sobra el código?** Si nadie puede observar la diferencia entre romper la línea y dejarla, la línea no está haciendo nada. Se quita, y el sabotaje se apunta al renglón que sí decide.
+- **When/Who:** 2026-08-28 · agente, corriendo la tanda de sabotajes de la fase.
+- **Scope:** estándar; aplica a toda revisión por sabotaje.
+- **Rel:** S-073 (una clase en verde no dice nada sobre las de al lado), S-062 (tres formas de que una prueba mienta en verde).

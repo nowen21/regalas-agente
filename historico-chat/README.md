@@ -194,3 +194,4 @@ La respuesta, tal como se dio.
 ```
 
 <!-- huella: 29387570ce96 · estandar 35.7.0 -->
+- [2026-08-28-sesion.md](2026-08-28-sesion.md) — sesión del 2026-08-28.

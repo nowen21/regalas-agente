@@ -49,7 +49,7 @@
 - **Corregir las filas que faltan.** No se corrigen: la tabla entera se quita.
 - **Cambiar cómo se cuenta.** `inventario` en `validadores/fases.py` no se toca.
 - **Los demás pendientes que traigan números a mano.** Si los hay, salen de un barrido aparte, que no es esta fase.
-- **Marcar la estación del commit**, que es el pendiente [87](../../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md).
+- **Marcar la estación del commit**, que es el pendiente [87](../../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md).
 
 ---
 

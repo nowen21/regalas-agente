@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.8.0 — 2026-08-28
+
+**El registro de lo que toca cada conversación dejó de depender de cómo se escribió el archivo.** Antes solo anotaba lo que el agente escribía con sus herramientas de edición; ahora anota **lo que cambió durante el turno**, sin mirar quién lo escribió.
+
+**MENOR** (nadie tiene que cambiar nada; el registro no se guarda en el control de versiones y caduca solo).
+
+**El daño que lo hizo falta.** Un guardado se llevó **712 líneas de trabajo de otra conversación**, barridas al agregar todo de una vez. La comprobación que existe para eso **corrió y dijo que estaba bien**: pregunta si lo que entra lo tocaron **dos conversaciones registradas**, y a esos archivos no los había registrado ninguna. **Un archivo sin registro no parece de otro: parece de nadie.**
+
+**Por qué no se arregló la comprobación.** Se probó la idea obvia —avisar de lo que no tiene registro— y se midió contra los doce guardados anteriores: **habría hablado en siete, con hasta 31 archivos de una vez**. La causa es que la mayoría de los archivos se escriben desde programas que se corren en la terminal, y esos no dejaban rastro. **«Sin registro» no significaba «de otro»: significaba «escrito como se escribe casi todo».**
+
+**Lo que se agrega:** al terminar cada turno, la conversación anota los archivos que cambiaron **dentro de ese turno**. Si otra estaba escribiendo al mismo tiempo, **las dos lo anotan**, y la comprobación que ya existía ve el choque. **No hizo falta comprobación nueva: hizo falta que su registro dejara de tener el hueco.**
+
+**Dos cosas dichas de frente.** La primera vuelta **no reclama nada**: sin una hora anterior contra la cual comparar, cualquier criterio se llevaría todo lo que estuviera a medias, y la primera conversación del día se atribuiría el proyecto entero. Y **anotar de más es deliberado**: que dos conversaciones toquen el mismo archivo es justo lo que hay que ver.
+
+**Nunca estorba.** Si algo le falla, el turno termina igual: cuando esto corre, la respuesta ya se dio.
+
+---
+
 ## 35.7.1 — 2026-08-28
 
 **Se recortó el texto de la regla nueva sobre dónde van los programas de apoyo.** Medía más de lo que el molde admite.
@@ -38,6 +56,8 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 **Y no cuentan lo que pasó: lo convierten en pasos.** El primer manual escrito con el molde salió relatando la instalación de pruebas (fechas, duraciones, «en este servidor salió...», «no hizo falta...») y con marcas «(por verificar)» donde algo no se había ejecutado. El usuario lo devolvió: un manual no asume nada, ni siquiera que al lector le va a pasar lo mismo. La regla 7 de los dos moldes quedó así: lo aprendido en una ejecución anterior se vuelve un paso más, una bifurcación dentro del paso o una fila de solución de problemas; nada se marca «(por verificar)». La tabla de instalaciones hechas salió del molde (es operación, vive en el seguimiento) y el control de cambios perdió la columna de motivos históricos.
 
 > **De qué commit salió esta entrada, dicho porque el registro atribuía mal.** Los dos moldes y este texto se escribieron en una sesión y quedaron sin guardar. **Los guardó el commit `6abffdc` de otra sesión**, que trataba de algo distinto —el hash del commit— y los barrió con un `git add -A` sin nombrarlos en su mensaje. Se descubrió el 2026-08-28 porque el número de versión no cuadraba. **Nada se perdió**; lo que fallaba era la autoría. Está en `S-071`.
+
+**Y en tercera persona.** Ni «usted» ni imperativos: impersonal («se abre», «se escribe») o con sujeto («quien instala», «el ciudadano»). Es la regla 11 de los dos moldes; el usuario la pidió al revisar el primer manual escrito de «usted».
 
 **El de instalación cubre los tres momentos:** instalar desde cero, actualizar una instalación que ya existe (con la vuelta atrás escrita antes de necesitarla) y mantener la que funciona. Y deja dicho que un cambio de herramienta de construcción es un cambio de manual: un manual probado deja de estarlo cuando cambia la herramienta con la que se instala.
 

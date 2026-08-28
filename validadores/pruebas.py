@@ -47,6 +47,7 @@ import rendimiento      # noqa: E402
 import rutas_fuera      # noqa: E402
 import resumen          # noqa: E402
 import secretos         # noqa: E402
+import sesiones         # noqa: E402
 import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import version          # noqa: E402
@@ -3949,6 +3950,219 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
         raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple"})
         self.assertEqual(fases.inventario(raiz), (1, 1, 0),
                          "la cuenta nueva movió lo que no debía")
+
+
+class ElTurnoAnotaLoQueCambio(unittest.TestCase):
+    """El registro deja de depender de la herramienta — EP-005 · HU-020.
+
+    **El caso que lo hizo falta:** un commit se llevó 712 líneas ajenas y la
+    comprobación de sesiones dijo OK, porque a esos archivos no los había
+    registrado ninguna (`S-071`).
+
+    **Lo que más se vigila es que NO reclame de más.** Sin eso, la primera
+    sesión del día se atribuye todo lo que esté sucio, y la comprobación pasa
+    de callar siempre a hablar siempre — el mismo defecto por el otro extremo.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _repo(self):
+        """Un repositorio de git de verdad: sin él, `git status` no dice nada."""
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        raiz = tmp.name
+        for orden in (["init", "-q"],
+                      ["config", "user.name", "prueba"],
+                      ["config", "user.email", "prueba@local"]):
+            subprocess.run(["git"] + orden, cwd=raiz, capture_output=True)
+        return raiz
+
+    def _escribir(self, raiz, rel, texto, cuando=None):
+        ruta = os.path.join(raiz, *rel.split("/"))
+        os.makedirs(os.path.dirname(ruta), exist_ok=True)
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write(texto)
+        if cuando is not None:
+            os.utime(ruta, (cuando, cuando))
+        return ruta
+
+    def _registro(self, raiz, sesion):
+        ruta = os.path.join(raiz, "historico-chat", ".tocado", sesion + ".txt")
+        return sesiones.leer_sesion(ruta)
+
+    # -- CA-01 · lo escrito con un guion queda registrado ------------------
+    def test_lo_escrito_sin_las_herramientas_queda_anotado(self):
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")          # arranca el reloj
+        antes = os.path.getmtime(os.path.join(
+            raiz, "historico-chat", ".tocado", "s1.txt"))
+        self._escribir(raiz, "del-guion.md", "x\n", cuando=antes + 10)
+        sesiones.anotar_el_turno(raiz, "s1")
+        self.assertIn("del-guion.md", self._registro(raiz, "s1"),
+                      "no anotó lo que escribió un guion")
+
+    def test_un_archivo_nuevo_sin_seguimiento_tambien_se_anota(self):
+        """Los dos moldes que causaron el daño eran archivos nuevos."""
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")
+        reloj = os.path.join(raiz, "historico-chat", ".tocado", "s1.txt")
+        self._escribir(raiz, "nuevo.md", "x\n",
+                       cuando=os.path.getmtime(reloj) + 10)
+        sesiones.anotar_el_turno(raiz, "s1")
+        self.assertIn("nuevo.md", self._registro(raiz, "s1"))
+
+    # -- CA-02 · y NO se reclama lo de antes -------------------------------
+    #
+    # **Es el crítico.** Reclamar lo viejo cambia un silencio inútil por un
+    # ruido inútil, y el ruido apaga también lo que servía.
+
+    def test_no_reclama_un_archivo_de_antes_del_turno(self):
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")
+        reloj = os.path.join(raiz, "historico-chat", ".tocado", "s1.txt")
+        self._escribir(raiz, "viejo.md", "x\n",
+                       cuando=os.path.getmtime(reloj) - 3600)
+        sesiones.anotar_el_turno(raiz, "s1")
+        self.assertNotIn("viejo.md", self._registro(raiz, "s1"),
+                         "reclamó un archivo modificado antes del turno")
+
+    def test_la_primera_vuelta_no_reclama_el_arbol_entero(self):
+        """El caso que se cuela: sin fecha anterior, todo parece del turno."""
+        raiz = self._repo()
+        for i in range(5):
+            self._escribir(raiz, "sucio-%d.md" % i, "x\n")
+        anotados = sesiones.anotar_el_turno(raiz, "s1")
+        self.assertEqual(anotados, [],
+                         "la primera vuelta se llevó el árbol: %s" % anotados)
+        self.assertEqual(self._registro(raiz, "s1"), set())
+
+    def test_la_primera_vuelta_deja_el_reloj_puesto(self):
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")
+        self.assertTrue(os.path.isfile(os.path.join(
+            raiz, "historico-chat", ".tocado", "s1.txt")),
+            "sin reloj, la vuelta siguiente tampoco anota nada")
+
+    def test_solo_entra_lo_modificado_despues_del_reloj(self):
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")
+        reloj = os.path.getmtime(os.path.join(
+            raiz, "historico-chat", ".tocado", "s1.txt"))
+        self._escribir(raiz, "antes.md", "x\n", cuando=reloj - 60)
+        self._escribir(raiz, "despues.md", "x\n", cuando=reloj + 60)
+        sesiones.anotar_el_turno(raiz, "s1")
+        registro = self._registro(raiz, "s1")
+        self.assertIn("despues.md", registro)
+        self.assertNotIn("antes.md", registro)
+
+    def test_un_borrado_se_anota_aunque_no_tenga_fecha(self):
+        """No tiene fecha de modificación: si se filtrara por fecha, se perdería."""
+        raiz = self._repo()
+        self._escribir(raiz, "condenado.md", "x\n")
+        subprocess.run(["git", "add", "-A"], cwd=raiz, capture_output=True)
+        subprocess.run(["git", "commit", "-qm", "base"], cwd=raiz,
+                       capture_output=True)
+        sesiones.anotar_el_turno(raiz, "s1")
+        os.remove(os.path.join(raiz, "condenado.md"))
+        sesiones.anotar_el_turno(raiz, "s1")
+        self.assertIn("condenado.md", self._registro(raiz, "s1"),
+                      "el borrado se perdió: dos sesiones que borran lo mismo "
+                      "es justo lo que hay que ver")
+
+    # -- CA-03 · dos sesiones producen colisión ----------------------------
+    def test_dos_sesiones_con_el_mismo_archivo_avisan(self):
+        raiz = self._repo()
+        self._escribir(raiz, "compartido.md", "x\n")
+        for sesion in ("s1", "s2"):
+            sesiones.anotar(raiz, sesion,
+                            os.path.join(raiz, "compartido.md"))
+        subprocess.run(["git", "add", "compartido.md"], cwd=raiz,
+                       capture_output=True)
+        hallazgos = sesiones.validar_preparados(raiz)
+        self.assertEqual(len(hallazgos), 1, "no vio la colisión")
+        self.assertIn("2 sesiones", hallazgos[0].mensaje)
+
+    def test_el_caso_real_una_sesion_escribe_y_otra_commitea(self):
+        """Reproduce el daño: una escribe dos archivos, otra los commitea."""
+        raiz = self._repo()
+        for nombre in ("manual-a.md", "manual-b.md"):
+            self._escribir(raiz, nombre, "x\n")
+        sesiones.anotar_el_turno(raiz, "otra")
+        reloj = os.path.getmtime(os.path.join(
+            raiz, "historico-chat", ".tocado", "otra.txt"))
+        for nombre in ("manual-a.md", "manual-b.md"):
+            self._escribir(raiz, nombre, "cambiado\n", cuando=reloj + 10)
+        sesiones.anotar_el_turno(raiz, "otra")          # la otra los anota
+        sesiones.anotar_el_turno(raiz, "mia")           # arranca su reloj
+        mio = os.path.getmtime(os.path.join(
+            raiz, "historico-chat", ".tocado", "mia.txt"))
+        self._escribir(raiz, "manual-a.md", "y otra vez\n", cuando=mio + 10)
+        sesiones.anotar_el_turno(raiz, "mia")           # y esta también
+        subprocess.run(["git", "add", "-A"], cwd=raiz, capture_output=True)
+        hallazgos = sesiones.validar_preparados(raiz)
+        self.assertEqual(len(hallazgos), 1,
+                         "el caso que causó el daño sigue sin verse")
+
+    # -- CA-04 · no se duplica lo que ya estaba ----------------------------
+    def test_no_duplica_lo_que_la_herramienta_ya_anoto(self):
+        raiz = self._repo()
+        sesiones.anotar_el_turno(raiz, "s1")
+        reloj = os.path.join(raiz, "historico-chat", ".tocado", "s1.txt")
+        ruta = self._escribir(raiz, "doble.md", "x\n",
+                              cuando=os.path.getmtime(reloj) + 10)
+        sesiones.anotar(raiz, "s1", ruta)               # como la herramienta
+        sesiones.anotar_el_turno(raiz, "s1")            # y como el turno
+        with io.open(reloj, encoding="utf-8") as f:
+            crudo = f.read().split()
+        self.assertEqual(crudo.count("doble.md"), 1,
+                         "el archivo quedó dos veces en el registro")
+
+    # -- CA-05 · un fallo no rompe el turno --------------------------------
+    def test_sin_git_no_revienta_y_no_anota(self):
+        """Caso real: una máquina sin git instalado."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.assertEqual(sesiones.cambios_del_turno(tmp.name, 0), [],
+                         "afirmó sobre una carpeta que no es un repositorio")
+
+    def test_sin_sesion_no_hace_nada(self):
+        raiz = self._repo()
+        self.assertEqual(sesiones.anotar_el_turno(raiz, ""), [])
+        self.assertFalse(os.path.isdir(
+            os.path.join(raiz, "historico-chat", ".tocado")))
+
+    def test_el_enganche_calla_y_sale_bien_con_entrada_rota(self):
+        adaptador = os.path.join(os.path.dirname(self.RAIZ), "agente",
+                                 "adaptadores", "claude-code")
+        guion = os.path.join(adaptador, "hook_turno.py")
+        if not os.path.isfile(guion):
+            guion = os.path.join(self.RAIZ, "adaptadores", "claude-code",
+                                 "hook_turno.py")
+        ausente = os.path.join(tempfile.gettempdir(), "cimiento-no-existe")
+        shutil.rmtree(ausente, ignore_errors=True)      # que la falta sea de esta vuelta
+        for entrada in ("", "no soy json", "[]",
+                        json.dumps({"cwd": ausente, "session_id": "s"})):
+            salida = subprocess.run(
+                [sys.executable, guion], input=entrada, capture_output=True,
+                text=True, encoding="utf-8", errors="replace", timeout=60)
+            self.assertEqual(salida.returncode, 0,
+                             "el enganche murió con %r" % entrada)
+            self.assertEqual(salida.stdout.strip(), "",
+                             "el enganche habló con %r" % entrada)
+        self.assertFalse(os.path.exists(ausente),
+                         "el enganche escribió fuera de todo proyecto")
+
+    # -- Conexión y no regresión -------------------------------------------
+    def test_el_enganche_esta_registrado_en_el_instalador(self):
+        guiones = [h[2] for h in instalar.HOOKS_CLAUDE]
+        self.assertIn("hook_turno.py", guiones,
+                      "el enganche existe pero nadie lo cuelga")
+
+    def test_validar_preparados_no_cambio_de_firma(self):
+        """No se toca la comprobación: se le arregla el registro."""
+        self.assertEqual(sesiones.validar_preparados(self._repo()), [])
 
 
 class ElHashDelCommitSeAnotaSolo(_ProyectoDePrueba):

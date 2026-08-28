@@ -368,7 +368,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Qué se decidió:** se tocó **solo** `estado-fase.md`. Los documentos de cierre son de un molde anterior sin fila de commit: no mienten, simplemente no registran ese dato, y agregarles una fila sería reescribir un documento cerrado para meterle algo que su molde no pedía.
 - **Estado:** resuelto acá lo de las 23; anotado lo de que se repita.
 - **Responde a:** —
-- **Dispara:** [pendiente 87](../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md), con las tres salidas posibles sin elegir por el usuario.
+- **Dispara:** [pendiente 87](../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md), con las tres salidas posibles sin elegir por el usuario.
 - **Orden de resolución:** —
 - **Dónde queda:** los 23 `estado-fase.md`, cada uno diciendo de dónde salió su hash.
 - **Nace en:** 2026-08-22 · sesion-6
@@ -837,6 +837,89 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-53 · Un commit se llevó 712 líneas ajenas y la comprobación hecha para eso dijo OK
+
+- **Qué pasó:** el commit `6abffdc` barrió con `git add -A` **712 líneas de otra conversación** —dos moldes de manual y su entrada del registro de cambios— sin nombrarlas en su mensaje. Estuvo publicado. Se descubrió dos commits después, y **no por una comprobación: porque el número de versión no cuadraba**.
+- **Por qué importa:** la comprobación que existe para exactamente esto **corrió y dijo OK**. Pregunta si lo que entra al commit lo tocaron **dos sesiones registradas**, y a esos archivos **no los había registrado ninguna**. Un archivo sin registro no parece de otro: **parece de nadie**.
+- **Qué lo soluciona:** la `HU-020`, que completa el registro. Y la mitad barata: **al aprobar un commit, mirar los nombres de los archivos, no cuántos son** — se contaron «43» sin mirar cuáles.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** `HU-020`
+- **Orden de resolución:** antes que `H-54`
+- **Dónde queda:** la señal `S-071` · la constancia en la entrada `35.7.0` del registro de cambios.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-54 · El hueco por el que entró lo ajeno es el mismo por el que pasa casi todo lo propio
+
+- **Qué pasó:** el arreglo obvio era avisar de los archivos **sin registro**. Se midió contra los últimos doce commits antes de escribirlo: **habría hablado en siete, con hasta 31 archivos de una vez**.
+- **Por qué importa:** el registro se llenaba desde las herramientas de escritura, y **la mayoría de los archivos los escriben guiones que se corren en la terminal**. Así que *«sin registro»* no significaba *«de otro»*: significaba *«escrito como se escribe casi todo»*. Un aviso que habla en más de la mitad de los casos no distingue nada, y **el ruido apaga también lo que servía**.
+- **Qué lo soluciona:** no tocar la comprobación y **arreglar su registro**. Al terminar cada turno, la conversación anota lo que cambió en él. Medido igual: **0 de 12**.
+- **Qué se decidió:** antes de afinar una comprobación que calla, **preguntar por qué calla**. Si la respuesta es que su fuente está incompleta, el trabajo no está en la comprobación. Es el mismo defecto que este repositorio cometió cuatro veces con el número de avance: **afinar un instrumento que mide la cosa de al lado**.
+- **Estado:** resuelto acá.
+- **Responde a:** `H-53`
+- **Dispara:** —
+- **Orden de resolución:** después de `H-53`
+- **Dónde queda:** la señal `S-072` · las dos mediciones, en [historico-chat/scripts/2026-08-28/](../../scripts/2026-08-28/).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-55 · Una clase de pruebas en verde no dice nada sobre las de al lado
+
+- **Qué pasó:** al agregar una aserción por reemplazo de texto, cayó en **la primera coincidencia** — la prueba de **otro** enganche, donde su variable ni existe. Corrí solo la clase nueva, en verde, y seguí. La suite completa habría reventado.
+- **Por qué importa:** la clase sola tarda 5 segundos; la suite, 185. **Esa proporción es la que empuja a saltarse la suite, y es la misma que hace que el error tarde en aparecer.**
+- **Qué lo soluciona:** un reemplazo de texto se verifica **mirando dónde cayó**, no mirando si el archivo compila. Y la suite entera corre antes de cerrar, aunque tarde.
+- **Y lo destapó un sabotaje**, no una lectura: perseguir por qué uno *«se colaba»* llevó al desorden de al lado.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-073` · la aserción, en su prueba.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-56 · Un sabotaje que se cuela sin razón aparente suele señalar código muerto
+
+- **Qué pasó:** rompí la línea que ponía la hora del registro y las pruebas no lo cazaron. **Tenían razón:** el archivo se acababa de crear en el renglón anterior y ya traía la hora. La línea no hacía nada.
+- **Por qué importa:** la reacción instintiva —agregar una prueba que cazara el sabotaje— habría dejado **código muerto con una prueba encima que lo hace parecer necesario**.
+- **Qué lo soluciona:** cuando un sabotaje se cuela hay dos preguntas, en este orden: **¿falta una prueba, o sobra el código?** Si nadie puede observar la diferencia entre romper la línea y dejarla, la línea no está haciendo nada.
+- **Y la misma tanda separó los dos casos:** el otro que se coló sí era un defecto —el enganche creaba carpetas **fuera de todo proyecto**, contra `04·S9`— y ese sí necesitaba la prueba.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-074` · los siete sabotajes, en [sabotajes-hu020.py](../../scripts/2026-08-28/sabotajes-hu020.py).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
+### H-57 · El índice de la épica venía cuatro historias atrasado, y se vio al firmar la casilla
+
+- **Qué pasó:** el molde de cierre pide marcar *«índice `README.md` actualizado»*. Al ir a marcarlo **miré primero**, y el índice de `EP-005` no tenía las historias `HU-017` a `HU-020`.
+- **Por qué importa:** es `H-52` otra vez, en el archivo de al lado. **La carpeta se crea al trabajar y el índice vive en otro archivo que se edita en otro momento**; nada obliga a volver. Y es `S-070`: una casilla que se firma sin mirar es una afirmación sin respaldo, aunque el trabajo esté bien hecho.
+- **Qué lo soluciona:** se agregaron las cuatro filas, **en vez de anotarlas como pendiente** — lo que el usuario ya había cortado en `H-52`: *«¿para qué dejar pendientes si se puede solucionar?»*.
+- **Estado:** resuelto acá.
+- **Responde a:** `H-52`
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el `README.md` de `EP-005` · declarado como archivo fuera del plan en el cierre de la fase (`02·F8`).
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -851,7 +934,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cincuenta y dos hallazgos, cincuenta y uno cerrados.**
+**Cincuenta y siete hallazgos, cincuenta y cinco cerrados.** (La cuenta anterior decía «cincuenta y uno cerrados» de cincuenta y dos, y dos renglones después decía que quedaban **dos** abiertos. Sobraba uno: los dos abiertos son `H-40` y `H-44`, los dos **parcialmente resueltos**.)
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 

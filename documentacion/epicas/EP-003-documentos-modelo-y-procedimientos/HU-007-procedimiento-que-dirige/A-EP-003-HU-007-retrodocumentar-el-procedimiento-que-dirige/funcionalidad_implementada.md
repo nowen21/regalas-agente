@@ -83,7 +83,7 @@ El procedimiento se sigue al abrir una fase. Su estado en vivo vive en el `estad
 
 **`D-01` es la que más pesa, y esta jornada lo demostró.** Varias veces hubo que medir la línea base antes de construir, porque el plan afirmaba cosas que el árbol ya no decía. El procedimiento no lo manda: se hizo por criterio.
 
-**Y `D-02` se ve hoy con más claridad que cuando se escribió**: el pendiente [87](../../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md) mostró que 23 fases estaban cerradas de hecho y nadie lo había marcado. Una estación que no sabe cuánto lleva esperando es una estación donde el trabajo se pierde de vista.
+**Y `D-02` se ve hoy con más claridad que cuando se escribió**: el pendiente [87](../../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md) mostró que 23 fases estaban cerradas de hecho y nadie lo había marcado. Una estación que no sabe cuánto lleva esperando es una estación donde el trabajo se pierde de vista.
 
 ---
 

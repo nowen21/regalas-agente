@@ -57,7 +57,7 @@
 
 - **Cambiar cómo se cuenta.** Qué es una historia completa lo define la `HU-017` y no se toca.
 - **Corregir las 34 filas que faltan.** No se corrigen: se quitan, junto con las otras 78.
-- **Marcar la estación del commit**, que es el pendiente [87](../../../../pendientes/87-la-estacion-del-commit-casi-nunca-se-marca.md) y otro problema.
+- **Marcar la estación del commit**, que es el pendiente [87](../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md) y otro problema.
 - **Que un programa escriba el pendiente.** Está prohibido por `RN-04`, y por eso ni siquiera es una alternativa diferida.
 - **Los demás pendientes con números a mano.** Si los hay, salen de un barrido aparte.
 

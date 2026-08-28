@@ -1,6 +1,10 @@
 # Pendiente · La estación del commit casi nunca se marca, porque ocurre después de que el agente termina
 
-**Estado:** abierto, anotado el 2026-08-25.
+**Estado:** cerrado el 2026-08-27, versión 35.6.0 · anotado el 2026-08-25.
+
+> **Se construyó por la cadena** (`02·F23`): bajó a la [HU-019](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-019-el-hash-del-commit-se-anota-solo/HU-019-el-hash-del-commit-se-anota-solo.md) con las salidas **1 y 3**; la **2** —que la estación 12 deje de ser casilla— la dejó fuera el usuario porque cambia el ciclo.
+
+> **Y al medir apareció lo que este pendiente no sabía:** de los 140 documentos de estado, **106 no tienen la fila siquiera**. No eran 23 fases sin marcar sino tres grupos distintos — 22 marcas, 1 trabajo, y 106 sin dónde. Está en `S-066`.
 
 | | |
 |---|---|

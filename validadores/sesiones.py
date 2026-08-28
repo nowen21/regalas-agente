@@ -70,6 +70,102 @@ def anotar(raiz, sesion, archivo):
         f.write(rel + "\n")
 
 
+# `EP-005·HU-020` · El registro deja de depender de con qué se escribió.
+#
+# **El caso que lo hizo falta.** Un commit se llevó 712 líneas ajenas y la
+# comprobación de arriba dijo OK: pregunta si **dos sesiones registradas**
+# tocaron lo mismo, y a esos archivos **no los había registrado ninguna**. Un
+# archivo sin registro no parece de otro: parece de nadie (`S-071`).
+#
+# **Y afinar la comprobación no servía.** Avisar de lo que no tiene registro
+# habría hablado en **siete de los últimos doce commits, con hasta 31 archivos**:
+# el registro solo se llenaba desde las herramientas de escritura, y la mayoría
+# de los archivos los escriben guiones que se corren en la terminal. *«Sin
+# registro»* significaba *«escrito como se escribe casi todo»* (`S-072`).
+#
+# **Lo que sí separa es anotar lo que cambió, mire quien lo mire.** Si otra
+# sesión escribe mientras esta trabaja, **las dos lo anotan**, y la comprobación
+# que ya existe ve la colisión. No hizo falta comprobación nueva: hizo falta que
+# su registro dejara de tener el hueco.
+def _estado_de_git(raiz):
+    """`(cambiadas, borradas)` según git. Vacías si acá no hay repositorio."""
+    try:
+        salida = subprocess.check_output(
+            ["git", "status", "--porcelain"],
+            cwd=raiz, stderr=subprocess.DEVNULL)
+    except (OSError, subprocess.CalledProcessError):
+        return ([], [])
+    cambiadas, borradas = [], []
+    for linea in salida.decode("utf-8", "replace").splitlines():
+        if len(linea) < 4:
+            continue
+        marca, ruta = linea[:2], linea[3:].strip().strip('"')
+        if " -> " in ruta:                  # renombrado: cuenta el destino
+            ruta = ruta.split(" -> ")[-1]
+        # Los ignorados no salen sin `--ignored`, y **no se piden a propósito**:
+        # no son trabajo versionado, y el propio registro vive en uno de ellos.
+        if "D" in marca:
+            borradas.append(ruta)
+        else:
+            cambiadas.append(ruta)
+    return (cambiadas, borradas)
+
+
+def cambios_del_turno(raiz, desde):
+    """Lo que cambió después de `desde`. Con `desde` en `None`, **nada**.
+
+    **La primera vuelta no reclama nada, y es deliberado.** Sin una fecha
+    anterior contra la cual comparar, cualquier criterio se llevaría todo lo que
+    estuviera sucio — y la primera sesión del día se atribuiría el árbol entero.
+    El registro arranca su reloj y anota desde la vuelta siguiente.
+
+    **Un borrado se anota siempre.** No tiene fecha que mirar, así que no se
+    puede saber si cayó dentro de la ventana. Se prefiere anotar de más: dos
+    sesiones que borran lo mismo es justo lo que hay que ver.
+    """
+    if desde is None:
+        return []
+    cambiadas, borradas = _estado_de_git(raiz)
+    salida = list(borradas)
+    for ruta in cambiadas:
+        completa = os.path.join(raiz, *ruta.split("/"))
+        try:
+            if os.path.getmtime(completa) > desde:
+                salida.append(ruta)
+        except OSError:
+            continue                        # desapareció entre medias: no se afirma
+    return salida
+
+
+def anotar_el_turno(raiz, sesion, ahora=None):
+    """Anota lo que cambió desde la última vuelta. Devuelve lo anotado.
+
+    Se apoya en la fecha del propio registro: **no hace falta estado nuevo**, y
+    lo que no se pudo saber no se inventa.
+    """
+    if not sesion:
+        return []
+    raiz = raiz or RAIZ
+    if not os.path.isdir(raiz):
+        # La herramienta puede mandar una carpeta que ya no está. Crearla sería
+        # escribir fuera de todo proyecto (`04·S9`).
+        return []
+    ruta = os.path.join(_carpeta(raiz), _limpio(sesion) + ".txt")
+    desde = os.path.getmtime(ruta) if os.path.isfile(ruta) else None
+
+    nuevos = cambios_del_turno(raiz, desde)
+    for archivo in nuevos:
+        anotar(raiz, sesion, os.path.join(raiz, *archivo.split("/")))
+
+    if desde is None:
+        # Arranca el reloj sin reclamar nada: recién creado, el archivo ya trae
+        # la hora de ahora, y desde la vuelta siguiente hay contra qué comparar.
+        if not os.path.isdir(_carpeta(raiz)):
+            os.makedirs(_carpeta(raiz))
+        io.open(ruta, "a", encoding="utf-8").close()
+    return nuevos
+
+
 def _limpio(sesion):
     """El identificador, sin nada que pueda salirse de la carpeta."""
     return "".join(c for c in str(sesion) if c.isalnum() or c in "-_")[:64]

@@ -274,6 +274,11 @@ HOOKS_CLAUDE = [
      "Revisando las señales del proyecto...", ""),
     ("PostToolUse", "Write|Edit", "hook_relacionadas.py",
      "Buscando las reglas relacionadas...", ""),
+    # `EP-005 · HU-020`: al terminar el turno, el registro anota lo que
+    # cambio —mire quien lo mire—, para que la comprobacion de sesiones deje de
+    # tener el hueco por el que entraron 712 lineas ajenas.
+    ("Stop", None, "hook_turno.py",
+     "Anotando lo que tocó este turno...", ""),
     ("Stop", None, "hook_presupuesto.py",
      "Sumando el consumo de la sesión...", ""),
     ("UserPromptSubmit", None, "hook_presupuesto.py",

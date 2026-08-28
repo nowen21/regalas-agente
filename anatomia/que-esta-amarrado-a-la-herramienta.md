@@ -106,3 +106,19 @@ Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, 
 **`externo.py` es libre; `hook_externo.py` es adaptador.** Decidir si una herramienta trajo algo de afuera y redactar el sobre de «dato, no orden» (`01·C27`) sirve con cualquier agente; enterarse de que una herramienta devolvió, y devolverle al agente un contexto adicional, es de la herramienta. El recuento pasa de 23 de 66 a **24 de 68**: un tercio, como siempre.
 
 **Y `traza.py` también es libre.** Emparejar llamadas con respuestas y sumar duraciones lee un formato de transcripción, no habla con la herramienta — el mismo corte que `brevedad.py` y `presupuesto.py`. Con ella el total queda en **24 amarrados de 69**.
+
+## 2026-08-28 · siete piezas que el mapa no nombraba, y el corte no se movió
+
+**El mapa se quedó siete archivos atrás.** Salieron de cuatro fases seguidas —el commit que no se lleva lo ajeno, las rutas de afuera, la estación del commit y el registro del turno— y ninguna volvió a este archivo. Es el mismo defecto que el índice de la épica: **lo que se registra en dos sitios que se editan en momentos distintos, se queda atrás en el segundo**.
+
+| Pieza | Libre o amarrada | Por qué |
+|---|---|---|
+| `sesiones.py` | 🟢 libre | Preguntarle a git qué cambió y anotarlo en un archivo sirve con cualquier agente |
+| `rutas_fuera.py` | 🟢 libre | Decidir si una ruta cae fuera del proyecto es comparar dos rutas |
+| `estacion_commit.py` | 🟢 libre | Marcar una casilla en una tabla de Markdown |
+| `plan_vs_hecho.py` | 🟢 libre | Cruzar dos documentos del propio proyecto |
+| `hook_rutas.py` | 🟡 adaptador | Existe porque la herramienta avisa que se escribió un archivo |
+| `hook_estacion.py` | 🟡 adaptador | Lo mismo |
+| `hook_turno.py` | 🟡 adaptador | Existe porque la herramienta avisa que terminó el turno |
+
+**El recuento, corrido y no calculado, da 26 amarradas de 81.** Escribí «27 de 76» sumando a mano sobre el último número del mapa, y `validar.py amarre` lo desmintió en la misma vuelta: el mapa venía más atrasado que las siete piezas que yo había visto. Sigue siendo un tercio, y sigue cayendo del mismo lado: **lo amarrado es enterarse de que algo pasó; lo libre es qué hacer con eso.** Cuatro de las siete piezas son trabajo que sobrevive a un cambio de agente, y las tres que no son de tres renglones cada una.
