@@ -694,3 +694,25 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-27 · agente, al ir a ejecutar el trabajo que él mismo había recomendado tres veces.
 - **Scope:** estándar; aplica a toda priorización que se apoye en un veredicto ajeno.
 - **Rel:** S-063 (un veredicto puede estar mal el día que se escribe), S-061 (un veredicto en rojo es una foto y nadie la vuelve a mirar).
+
+## S-070 · Un checklist que uno firma sobre su propio trabajo no comprueba nada  ·  error-resuelto · activa
+- **What:** la regla `04·S18`, escrita el mismo día, llevaba su bloque de checklist declarando **«CUMPLE» en las veinte filas**. La fila 10 —que el cuerpo quepa en el molde— **era falsa**: medía 360 caracteres para un límite de 320. Lo destapó `validar.py metareglas` al ir a mirar otra cosa, horas después y por casualidad.
+- **Why:** el checklist se escribió **a la vez que la regla y por la misma mano**, en el mismo minuto, sin correr la comprobación que existe para eso. **Un checklist así no es una verificación: es una declaración de intenciones con forma de tabla** — y su peor efecto no es que falle, sino que **queda escrito como si alguien hubiera comprobado**, y el siguiente que lo lea no vuelve a mirar.
+- **Also:** el defecto no era invisible: hay un programa que lo mide y bastaba correrlo. **La regla se firmó y se publicó sin ejecutarlo**, en una jornada en la que el agente había escrito tres señales sobre no afirmar lo que no se midió. Lo que fallaba no era saberlo.
+- **And:** lo que sobraba tampoco era exigencia. Al recortar quedó a la vista que el cuerpo mezclaba **la orden** —dónde va el guion— con **el porqué** —que sin eso el resultado queda y el cómo se borra—. El porqué se movió al bloque del checklist, que es donde las demás reglas lo ponen. **Pasarse del molde suele ser el síntoma de eso, no un problema de longitud.**
+- **Where:** `04·S18` en [base/04-seguridad.md](../base/04-seguridad.md), con su fila 10 corregida y el porqué debajo.
+- **Learned:** **el checklist de una regla se llena corriendo el validador, no leyendo la regla** — y menos si lo llena quien acaba de escribirla. La comprobación cuesta un comando. Y hay una señal barata de que un checklist es de intenciones: **si sus veinte filas dan ✅ a la primera**, alguien lo dedujo en vez de medirlo.
+- **When/Who:** 2026-08-27 · agente, al mirar por qué la columna «falla hoy» de `vigencia.py` estaba vacía.
+- **Scope:** estándar; aplica a toda regla nueva y a todo checklist que se firme sobre trabajo propio.
+- **Rel:** S-062 (tres formas de que una prueba mienta en verde), S-069 (recomendar sin leer el criterio).
+
+## S-071 · Un archivo que ninguna sesión registró no parece ajeno: parece de nadie  ·  error-resuelto · activa
+- **What:** un commit se llevó **712 líneas de trabajo ajeno** —dos moldes de manual y su entrada del registro de cambios— barridas por un `git add -A`. El commit trataba de otra cosa y **no las nombra en su mensaje**. Se descubrió dos commits después, y no por una comprobación: **el número de versión no cuadraba**. Se había escrito `35.6.0` en `VERSION` y lo guardado decía `35.7.0`.
+- **Why:** la comprobación que existe para esto —*«el commit no se lleva lo ajeno»*— **corrió y dijo OK**. Pregunta si lo que entra al commit **lo tocaron dos sesiones distintas**, y los archivos ajenos **no los había registrado ninguna**. Un archivo sin registro no se ve como de otro: se ve como de nadie, y la comprobación solo se dispara cuando dos registros chocan.
+- **Also:** las tres formas de quedar sin registro son normales, no excepciones. **La sesión que lo escribió cerró hace más de doce horas** y su registro caducó a propósito; **se escribió antes de que el enganche existiera**; o **se escribió por fuera de las herramientas que el enganche ve** — una redirección dentro de un comando no deja rastro.
+- **And:** la señal que sí estaba a la vista era el propio archivo. **`VERSION` cambió de contenido bajo la mano de quien lo editaba**: se escribió un número y se guardó otro. Nadie lo miró porque al revisar el commit se contaron los archivos —«43»— **sin mirar cuáles**.
+- **Where:** el commit `6abffdc`, y la constancia puesta en la entrada `35.7.0` del [CHANGELOG](../CHANGELOG.md) para que el registro no siga atribuyendo mal.
+- **Learned:** **una comprobación que compara dos fuentes solo ve lo que ambas conocen.** Cuando una de las dos puede estar vacía —por caducidad, por antigüedad o por no cubrir todos los caminos—, su silencio significa «no lo sé», y se está leyendo como «está bien». La pregunta que lo destapa: **¿qué pasa si el registro no tiene nada de este archivo?** Y la otra mitad, más barata: **antes de aprobar un commit, mirar los nombres de los archivos, no cuántos son.**
+- **When/Who:** 2026-08-28 · agente y usuario, al no cuadrar el número de versión de un cambio de una línea.
+- **Scope:** estándar; aplica a toda comprobación que cruce lo que entra a un commit con un registro que puede estar incompleto.
+- **Rel:** S-068 (un sabotaje que no se pudo aplicar no es uno que pasó), S-062 (tres formas de que una prueba mienta en verde).

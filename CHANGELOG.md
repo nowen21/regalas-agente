@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.7.1 — 2026-08-28
+
+**Se recortó el texto de la regla nueva sobre dónde van los programas de apoyo.** Medía más de lo que el molde admite.
+
+**PARCHE** (no cambia qué se exige: la regla pide lo mismo, dicho más corto).
+
+**Y su lista de comprobación decía que cumplía, sin haberla corrido.** Veinte casillas marcadas, y una era falsa — justo la del tamaño. Se firmó en el mismo minuto en que se escribió la regla, por la misma mano, sin ejecutar el programa que lo mide.
+
+**Lo que sobraba no era largo: era el porqué.** El texto mezclaba **la orden** —dónde va el programa— con **la explicación** —que sin eso queda el resultado y se pierde el cómo—. La explicación se movió a la nota de abajo, que es donde la ponen las demás reglas.
+
+---
+
 ## 35.7.0 — 2026-08-28
 
 **Dos moldes nuevos: el manual de usuario y el manual de instalación.** Hasta hoy cada proyecto escribía los suyos desde cero, y los dos que existían salieron llenos de nombres del proyecto que los escribió.
@@ -22,6 +34,10 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 **Lo que los distingue.** Abren con diez reglas de redacción para que **no asuman nada del lector** —una acción por paso, decir qué se ve antes y después, qué hacer si no pasa, ninguna palabra técnica sin explicar, nada de «simplemente»— y cierran con la lista de comprobación antes de publicar, que exige haberlos ejecutado en el sistema real siguiendo solo el texto.
 
 **No nombran ningún programa.** Las piezas se llaman por su función («la puerta de entrada», «la parte de datos», «la base de datos») y lo propio de cada sistema va en marcas «…». La primera versión, escrita en un proyecto, nombraba sus pantallas, sus programas y sus historias; el usuario la devolvió: una base con nombres propios no se puede copiar. De ahí salió la regla de la casa: **antes de entregar un molde, buscar nombres de proyecto, programas, herramientas, puertos y códigos — cero coincidencias.**
+
+**Y no cuentan lo que pasó: lo convierten en pasos.** El primer manual escrito con el molde salió relatando la instalación de pruebas (fechas, duraciones, «en este servidor salió...», «no hizo falta...») y con marcas «(por verificar)» donde algo no se había ejecutado. El usuario lo devolvió: un manual no asume nada, ni siquiera que al lector le va a pasar lo mismo. La regla 7 de los dos moldes quedó así: lo aprendido en una ejecución anterior se vuelve un paso más, una bifurcación dentro del paso o una fila de solución de problemas; nada se marca «(por verificar)». La tabla de instalaciones hechas salió del molde (es operación, vive en el seguimiento) y el control de cambios perdió la columna de motivos históricos.
+
+> **De qué commit salió esta entrada, dicho porque el registro atribuía mal.** Los dos moldes y este texto se escribieron en una sesión y quedaron sin guardar. **Los guardó el commit `6abffdc` de otra sesión**, que trataba de algo distinto —el hash del commit— y los barrió con un `git add -A` sin nombrarlos en su mensaje. Se descubrió el 2026-08-28 porque el número de versión no cuadraba. **Nada se perdió**; lo que fallaba era la autoría. Está en `S-071`.
 
 **El de instalación cubre los tres momentos:** instalar desde cero, actualizar una instalación que ya existe (con la vuelta atrás escrita antes de necesitarla) y mantener la que funciona. Y deja dicho que un cambio de herramienta de construcción es un cambio de manual: un manual probado deja de estarlo cuando cambia la herramienta con la que se instala.
 
