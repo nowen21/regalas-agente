@@ -123,7 +123,7 @@ Es `S-044` otra vez, en forma nueva: allá el guion no corría nada y decía OK;
 
 ### 4.5 Rastros
 
-**Uno, y se declara.** El guion de sabotaje guarda su copia de restauración en la carpeta temporal del sistema, igual que los guiones anteriores del repositorio. Se borró al terminar. **Es un resto de lo mismo que destapó `S-057`**, y queda anotado en el [pendiente 89](../../../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md): la regla dice «nada se escribe por fuera», y una copia de respaldo también es escribir.
+**Uno, y se declara.** El guion de sabotaje guarda su copia de restauración en la carpeta temporal del sistema, igual que los guiones anteriores del repositorio. Se borró al terminar. **Es un resto de lo mismo que destapó `S-057`**, y queda anotado en el [pendiente 89](../../../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md): la regla dice «nada se escribe por fuera», y una copia de respaldo también es escribir.
 
 ### 4.6 Ninguna prueba usa credenciales
 

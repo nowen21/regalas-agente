@@ -260,6 +260,12 @@ HOOKS_CLAUDE = [
      "Revisando el checkpoint de la fase...", ""),
     ("PostToolUse", "Write|Edit", "hook_veredicto.py",
      "Copiando el veredicto de la fase...", ""),
+    # `EP-005 · HU-018`: avisa si el archivo cayó fuera del proyecto. La regla
+    # ya existía (`04·S9`) y se incumplió cuatro días seguidos, porque la
+    # herramienta ofrece una carpeta temporal y la nombra como el sitio
+    # recomendado: el camino cómodo apunta al lado contrario.
+    ("PostToolUse", "Write|Edit", "hook_rutas.py",
+     "Mirando dónde quedó lo que se escribió...", ""),
     # El portero (`EP-005 · HU-015`): lo que llega de afuera llega marcado.
     # El filtro es regex; el programa vuelve a decidir por si deja pasar de más.
     ("PostToolUse", "WebFetch|WebSearch|Read|mcp__.*", "hook_externo.py",

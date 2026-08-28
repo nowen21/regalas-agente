@@ -356,7 +356,7 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 89 | **P1** | [Nada hace cumplir que los guiones queden en el repositorio](89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) | La regla se fijó el 2026-08-20, se precisó el 22 y **se dejó de cumplir el 24**: 38 programas en la carpeta temporal del sistema durante cuatro días. El resultado de cada cambio quedaba versionado y el **cómo** se borraba con el temporal. Vive en un recuerdo y nada la hace cumplir, mientras la herramienta empuja al lado contrario. Sale de `S-057`. |
+| ~~89~~ | — | **hecho** → [Los guiones de apoyo quedan en el repositorio](hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md) | La regla se fijó el 2026-08-20, se precisó el 22 y **se dejó de cumplir el 24**: 38 programas en la carpeta temporal del sistema durante cuatro días. El resultado de cada cambio quedaba versionado y el **cómo** se borraba con el temporal. Se construyó en la `HU-018` con las salidas 1 y 3: la regla `04·S18` dice **dónde sí** van, y un enganche avisa al escribir fuera nombrando el destino. Sale de `S-057`. |
 
 ---
 
@@ -420,8 +420,6 @@ El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra 
 **El [85](85-las-conversaciones-completas-no-se-pueden-analizar.md) y el [86](86-conectar-un-proyecto-no-tiene-reversa.md) todavía no tienen historia, y es a propósito.** Son del producto, no del cuerpo de reglas, y su historia nace cuando el usuario apruebe el cambio de requisitos que piden. Anotarlos bajo una historia que todavía no existe sería inventarles un destino.
 
 **El [87](87-la-estacion-del-commit-casi-nunca-se-marca.md) tampoco, y por otra razón:** es del estándar, y su historia depende de cuál de las tres salidas se elija. Escribirla antes de esa decisión sería fijar el cómo antes del qué.
-
-**El [89](89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) tampoco:** sus tres salidas no son intercambiables — una evita, otra detecta, y la tercera sube la regla a `base/`. Cuáles entran es decisión del usuario.
 
 **Los cuatro que no son un ítem** —el [01](hecho/validadores-de-codigo-de-proyecto.md), el [09](hecho/autonomia-sin-ia.md), el [10](10-ideas.md) y el [33](hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md)— no tienen una historia sola, porque no son una cosa sola. Cada uno de sus puntos nombra la suya adentro, y se promueve a pendiente propio al construirse. Su ficha lo dice así, en vez de mentir con una historia que no los cubriría.
 

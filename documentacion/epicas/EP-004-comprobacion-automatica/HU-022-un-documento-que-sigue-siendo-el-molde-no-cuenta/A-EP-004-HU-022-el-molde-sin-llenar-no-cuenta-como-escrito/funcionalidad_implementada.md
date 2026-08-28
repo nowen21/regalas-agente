@@ -111,7 +111,7 @@ La línea dice el reparto de siempre, y ahora hay **un aviso por documento** que
 | **Los cinco `plan_pruebas.md` que nunca se escribieron** | **Abierta, y ahora visible.** `B-EP-002-HU-003`, `B-EP-002-HU-004`, `B-EP-004-HU-011`, `B-EP-004-HU-012`, `B-EP-005-HU-002`. Son fases con código y pruebas: **nadie sabe con qué casos se comprobaron** |
 | **Los dos `estado-fase.md` en blanco** | **Abierta.** `A-EP-004-HU-021` y `A-EP-007-HU-009` |
 | Que el andamio deje de crear los cinco documentos de entrada | **Fuera de alcance por decisión del usuario.** Es la salida 2 del [pendiente 88](../../../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md), y cambia cómo se abre una fase |
-| Los guiones de sabotaje guardan su copia de restauración **fuera del repositorio** | **Abierta.** [Pendiente 89](../../../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
+| Los guiones de sabotaje guardan su copia de restauración **fuera del repositorio** | **Abierta.** [Pendiente 89](../../../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md) |
 
 **La primera es la que más vale**, y no se veía hasta hoy.
 

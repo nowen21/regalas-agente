@@ -567,3 +567,38 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 **Escrita en concepto, sin nombrar herramienta.** El original decía `destroy()`, `SoftDeletes`, `deleted_at`; [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md) no lo admite en la base, y **el nombre del método era el argumento** —que suene a borrar es justamente el peligro—, así que se reescribió en concepto en vez de quitarse.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## S18 · El guion de apoyo se escribe dentro del repositorio y se queda
+
+El programa que el agente escribe **para aplicar un cambio en lote o medir algo** va en `historico-chat/scripts/AAAA-MM-DD/`, con su README diciendo qué hizo cada uno, y **se queda ahí versionado**. Dice **dónde sí** escribir lo que [`04·S9`](#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas) prohíbe dejar fuera. Sin él, el **resultado** del cambio queda guardado y el **cómo** se borra con la carpeta temporal.
+
+```
+INCORRECTO: el guion que recortó treinta reglas vive en la carpeta temporal de la
+            sesión → «¿con qué se recortaron?» no tiene respuesta en ninguna parte
+CORRECTO:   el guion queda en `historico-chat/scripts/2026-08-27/`, junto al resultado
+            que produjo
+```
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v35.4.0**, el **2026-08-27**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-27 de que la regla se incumpliera cuatro días seguidos viviendo solo en un recuerdo.** Se fijó el 2026-08-20 y el usuario la precisó el 22 — *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*—. **Se dejó de cumplir el 24**: 38 guiones en la carpeta temporal del sistema, más dos clones enteros de la plataforma. Del [pendiente 89](../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md) y `S-057`.
+
+**Por qué merece regla propia y no una línea dentro de `S9`.** `S9` dice **dónde no** se escribe; esta dice **dónde sí**. Se incumplen por separado: se puede respetar `S9` a la perfección —no tocar nada del sistema— y aun así dejar el guion en una carpeta temporal, que es lo que pasó los cuatro días.
+
+**Y tiene quien la haga cumplir**, que es la mitad que le faltaba: un enganche avisa al escribir fuera del proyecto, nombrando el destino. Una regla que depende de que el agente se acuerde ya está incumplida; solo falta saber desde cuándo.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

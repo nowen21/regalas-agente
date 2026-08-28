@@ -102,7 +102,7 @@ Sin cambios en el uso. `veredicto_de` y `por_veredicto` **conservan su firma**; 
 | **Las cinco que de verdad no dicen si cumplen** | **Abierta.** Bajaron de 15, y las que quedan son reales. Cada una se resuelve escribiendo su veredicto |
 | **Las 130 fases escriben el veredicto con seis títulos distintos** | **Abierta, y no se toca.** El molde fija uno para lo nuevo; reescribir lo cerrado borra el rastro |
 | El andamio deja una fase contando como terminada antes de tener una línea (`S-053`) | **Abierta.** Esta fase lo demostró por **cuarta** vez: crear su carpeta sacó la `HU-021` de las terminadas antes de escribir nada. Es el [pendiente 88](../../../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md) |
-| Los guiones de sabotaje guardan su copia de restauración **fuera del repositorio** | **Abierta.** Resto de lo mismo que destapó `S-057`; anotado en el [pendiente 89](../../../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
+| Los guiones de sabotaje guardan su copia de restauración **fuera del repositorio** | **Abierta.** Resto de lo mismo que destapó `S-057`; anotado en el [pendiente 89](../../../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md) |
 
 ---
 

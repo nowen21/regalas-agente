@@ -697,7 +697,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Y algo que no se trajo, a propósito:** los dos clones de la plataforma, 6.831 archivos con su `.venv`. Lo que valía era el resultado del experimento —que la configuración de git **no viaja al clonar**— y ya estaba escrito en su fase. Cada README del día dice qué se dejó afuera y por qué.
 - **Estado:** parcialmente resuelto. **Los 38 guiones, adentro; nada impide que vuelva a pasar mañana.**
 - **Responde a:** —
-- **Dispara:** el [pendiente 89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md), con sus tres salidas y sin elegir por el usuario.
+- **Dispara:** el [pendiente 89](../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md), con sus tres salidas y sin elegir por el usuario.
 - **Orden de resolución:** —
 - **Dónde queda:** [historico-chat/scripts/](../../scripts/), con una carpeta por día · la señal `S-057` · el recuerdo, que ahora dice que él solo no alcanza.
 - **Nace en:** 2026-08-22 · sesion-6
@@ -755,6 +755,38 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
 
+### H-48 · Hay tres formas de que una prueba mienta en verde, y ninguna se ve leyéndola
+
+- **Qué pasó:** al sabotear dos fases del día aparecieron tres pruebas que pasaban sin comprobar nada. Una **atada a un caso que iba a desaparecer** —apuntaba a un `plan_pruebas.md` real que seguía siendo el molde, y se cayó sola cuando ese documento se escribió unas horas después, que era el objetivo—. Otra **que no podía fallar**: `assertIn("«", mensaje + "«")`, cierta siempre porque compara contra un texto al que se le acaba de pegar lo que busca. Y una tercera **que no tocaba la rama que decía tocar**: usó una ruta con un byte nulo creyendo que reventaría al resolverse, y **no revienta**.
+- **Por qué importa:** las tres se ven **exactamente igual** desde el reporte que una prueba que funciona. Un punto verde. Y dos de ellas dejaron pasar sabotajes: el código se podía romper sin que nada se cayera.
+- **Qué lo soluciona:** se resolvieron acá, cada una con el porqué escrito encima.
+- **Qué se decidió:** **ninguna se descubre leyendo la prueba** — las tres salieron rompiendo el código a propósito y viendo qué no se caía. La pregunta que las separa: **¿qué tendría que cambiar en el código para que esta prueba fallara?** Si la respuesta es «nada» o «algo que no es el tema», la prueba no está probando.
+- **Y un hueco que era del plan:** un sabotaje pasó en verde porque faltaba el caso de la **ruta relativa** — que el plan de pruebas exigía y no se escribió. `normpath` colapsa un `..` sin tocar el disco, así que todos los casos con `..` pasan igual aunque la ruta no se resuelva: **la relativa es la única que los distingue**.
+- **Estado:** resuelto acá.
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la señal `S-062` · las tres pruebas reescritas en `validadores/pruebas.py`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
+### H-49 · Los identificadores de un capítulo no están en orden, y mirar la cola de un `grep` da el último equivocado
+
+- **Qué pasó:** al agregar una regla al capítulo de seguridad se numeró como `S13`, porque `grep "^## S"` mostraba `S10, S11, S12` al final. **`S13` ya existía**, en la línea 206: los identificadores del capítulo **no están en orden de aparición**. Lo cazó `validar.py metareglas` en el acto.
+- **Por qué importa:** es el defecto del día en su forma más pequeña — **mirar la cola de una lista y concluir sobre el conjunto**. La misma clase que contar las formas del veredicto que uno ya reconoce (`S-058`) o validar una medida sobre los casos que la motivaron (`S-059`), en tres líneas de terminal.
+- **Qué lo soluciona:** se enumeraron los 18 y quedó como `S18`.
+- **Qué se decidió:** cuando hace falta «el siguiente libre», **se enumera y se ordena**; la cola de un listado no es el máximo salvo que esté ordenado, y nadie lo había comprobado.
+- **Y una deuda que cobró sola:** la regla nueva no declaraba si es validable, que `M9` exige. También lo cazó el validador. **Dos veces en una hora el estándar comprobó al agente**, que es exactamente para lo que existe.
+- **Estado:** resuelto acá.
+- **Responde a:** H-46.
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la regla [`04·S18`](../../../base/04-seguridad.md) y su fila en `validadores/reglas-validables.md`.
+- **Nace en:** 2026-08-22 · sesion-6
+- **Cerrado en:** 2026-08-22 · sesion-6
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -767,11 +799,11 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Para cerrar | Estado |
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
-| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md) y el [89](../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md) |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ · el [88](../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md) y el [89](../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md) |
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cuarenta y siete hallazgos, cuarenta y seis cerrados.**
+**Cuarenta y nueve hallazgos, cuarenta y ocho cerrados.**
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 

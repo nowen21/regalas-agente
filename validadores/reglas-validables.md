@@ -73,6 +73,14 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | Regla | Validador | Comprueba |
 |---|---|---|
 | `20·M15` | `enlaces.py` | que toda cita a otra regla lleve su enlace; reporta «la cita X no lleva enlace» |
+
+**Y una que nace ya con quien la haga cumplir** (agregada el 2026-08-27):
+
+| Regla | Validador | Comprueba |
+|---|---|---|
+| `04·S18` | `rutas_fuera.py`, por el enganche `hook_rutas.py` | que el archivo escrito caiga dentro del proyecto, y si no, avisa nombrando `historico-chat/scripts/AAAA-MM-DD/` |
+
+**Lo que este validador no ve, dicho para que la clasificación no se lea de más:** lo que se escribe desde una línea de comandos, porque la herramienta no entrega esa ruta. Cubre `Write` y `Edit`, que es por donde se escribieron los 38 guiones que originaron la regla.
 | `02·F12` | `fases.py` | la nomenclatura de la fase, que no se repita el consecutivo, que declare la épica y la historia donde está guardada, y su ruta física |
 
 ## 🟡 Validables, faltan (PENDIENTE)

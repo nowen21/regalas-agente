@@ -1,6 +1,10 @@
 # Pendiente · Nada hace cumplir que los guiones de apoyo queden en el repositorio
 
-**Estado:** abierto, anotado el 2026-08-27.
+**Estado:** cerrado el 2026-08-27, versión 35.4.0 · anotado el 2026-08-27.
+
+> **Se construyó por la cadena** (`02·F23`): bajó a la [HU-018](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md) y se construyó en su fase [`A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera/funcionalidad_implementada.md), con las salidas **1 y 3**. La **2** —un validador que compare al cierre— la dejó fuera el usuario: detecta lo que el enganche evita.
+
+> **Queda un resto, y ahora se ve solo:** los guiones de sabotaje guardan su copia de restauración en la carpeta temporal del sistema. **El enganche nuevo lo va a avisar la próxima vez que corran**, que es exactamente para lo que se construyó.
 
 | | |
 |---|---|

@@ -149,6 +149,8 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-014](HU-014-el-consumo-se-ve-a-tiempo/HU-014-el-consumo-se-ve-a-tiempo.md) | El consumo de la sesión se ve mientras se puede actuar | Should | S |
 | [HU-015](HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md) | Lo que llega de afuera llega marcado | Must | S |
 | [HU-016](HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md) | La traza de la sesión, paso a paso | Should | S |
+| [HU-017](HU-017-el-commit-no-se-lleva-lo-ajeno/HU-017-el-commit-no-se-lleva-lo-ajeno.md) | Que el commit no se lleve el trabajo de otra sesión | Must | S |
+| [HU-018](HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md) | Que los guiones de apoyo queden en el repositorio, sin depender de que el agente se acuerde | Must | S |
 
 ## 10. Consideraciones técnicas
 

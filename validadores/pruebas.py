@@ -43,6 +43,7 @@ import plantillas       # noqa: E402
 import rama             # noqa: E402
 import recuerdos        # noqa: E402
 import rendimiento      # noqa: E402
+import rutas_fuera      # noqa: E402
 import resumen          # noqa: E402
 import secretos         # noqa: E402
 import seguridad        # noqa: E402
@@ -2915,6 +2916,196 @@ class GenerarLosAutomatismos(_ProyectoDePrueba):
         self.assertIn("hook_sesion.py", puestos)
 
 
+class ElGuionSeQuedaEnElRepositorio(unittest.TestCase):
+    """Avisar al escribir fuera del proyecto — EP-005 · HU-018.
+
+    **La regla ya existía y se incumplió cuatro días seguidos.** `04·S9` dice
+    que el agente escribe solo dentro del proyecto; el usuario lo precisó el
+    2026-08-22 y se dejó de cumplir el 24: 38 guiones en la carpeta temporal
+    del sistema (`S-057`).
+
+    **Lo que se vigila no es que avise: es que NO avise de más.** El agente
+    escribe decenas de archivos del proyecto por sesión, y un solo falso
+    positivo por sesión convierte esto en ruido — que se apaga, y con él lo que
+    sí avisaba.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ADAPTADOR = os.path.join(RAIZ, "adaptadores", "claude-code")
+
+    def _casa(self, nombre="agente"):
+        """Un proyecto de verdad en disco: resolver una ruta que no existe
+        no comprueba lo mismo."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        casa = os.path.join(tmp.name, nombre)
+        os.makedirs(os.path.join(casa, "validadores"))
+        os.makedirs(os.path.join(casa, "historico-chat", "scripts"))
+        return tmp.name, casa
+
+    # -- CA-01 · escribir fuera avisa, y dice dónde iba --------------------
+    def test_escribir_fuera_avisa(self):
+        padre, casa = self._casa()
+        texto = rutas_fuera.aviso(os.path.join(padre, "suelto.py"), casa)
+        self.assertTrue(texto, "no avisó de un archivo fuera del proyecto")
+
+    def test_el_aviso_nombra_la_ruta_y_el_destino(self):
+        padre, casa = self._casa()
+        fuera = os.path.join(padre, "suelto.py")
+        texto = rutas_fuera.aviso(fuera, casa)
+        self.assertIn("suelto.py", texto, "el aviso no dice qué archivo")
+        self.assertIn(rutas_fuera.DESTINO, texto,
+                      "el aviso no dice dónde debía ir")
+
+    # -- CA-02 · y NO avisa al escribir dentro ----------------------------
+    #
+    # **Es el caso crítico.** Un enganche que habla en cada escritura se apaga
+    # el mismo día, y entonces no queda nada.
+
+    def test_no_avisa_por_las_rutas_del_proyecto(self):
+        _, casa = self._casa()
+        dentro = [
+            os.path.join(casa, "validadores", "x.py"),
+            os.path.join(casa, "historico-chat", "scripts", "y.py"),
+            os.path.join(casa, "README.md"),
+            casa,
+        ]
+        for ruta in dentro:
+            self.assertEqual(rutas_fuera.aviso(ruta, casa), "",
+                             "avisó por una ruta del proyecto: %s" % ruta)
+
+    def test_no_avisa_por_una_ruta_relativa_dentro_del_proyecto(self):
+        """**Lo pidió un sabotaje que pasó en verde**, y el plan ya lo exigía.
+
+        `normpath` colapsa un `..` sin tocar el disco, así que los casos con
+        `..` pasan igual aunque la ruta no se resuelva. **La relativa es la
+        única que distingue resolver de no resolver**: sin `abspath` no tiene
+        con qué compararse contra el proyecto.
+        """
+        _, casa = self._casa()
+        antes = os.getcwd()
+        os.chdir(casa)
+        self.addCleanup(os.chdir, antes)
+        for ruta in ("README.md", os.path.join("validadores", "x.py"), "."):
+            self.assertEqual(rutas_fuera.aviso(ruta, casa), "",
+                             "avisó por una ruta relativa del proyecto: %s" % ruta)
+
+    def test_no_avisa_por_una_ruta_que_sale_y_vuelve_a_entrar(self):
+        _, casa = self._casa()
+        vuelve = os.path.join(casa, "validadores", "..", "README.md")
+        self.assertEqual(rutas_fuera.aviso(vuelve, casa), "")
+
+    def test_no_avisa_por_los_dos_separadores(self):
+        _, casa = self._casa()
+        for ruta in (casa + "/validadores/x.py", casa + "\\validadores\\x.py"):
+            self.assertEqual(rutas_fuera.aviso(ruta, casa), "", ruta)
+
+    # -- CA-03 · el borde que un `startswith` no ve -----------------------
+    def test_la_carpeta_hermana_con_el_mismo_prefijo_si_avisa(self):
+        """`…/agente` es prefijo de `…/agente-viejo`.
+
+        Comparando cadenas, la hermana pasa por dentro — y el aviso calla
+        justo donde debía hablar.
+        """
+        padre, casa = self._casa("agente")
+        hermana = os.path.join(padre, "agente-viejo", "x.py")
+        self.assertTrue(rutas_fuera.aviso(hermana, casa),
+                        "una carpeta hermana pasó por dentro del proyecto")
+
+    def test_una_ruta_que_empieza_dentro_y_termina_fuera_avisa(self):
+        padre, casa = self._casa()
+        sale = os.path.join(casa, "validadores", "..", "..", "afuera.py")
+        self.assertTrue(rutas_fuera.aviso(sale, casa))
+
+    # -- CA-05 · ninguna entrada mala detiene el trabajo ------------------
+    def test_no_revienta_con_entradas_malas(self):
+        _, casa = self._casa()
+        for ruta in ("", None, "   "):
+            self.assertEqual(rutas_fuera.aviso(ruta, casa), "", repr(ruta))
+        self.assertEqual(rutas_fuera.aviso("x.py", ""), "")
+
+    def test_si_la_ruta_no_se_deja_resolver_se_calla(self):
+        """**Lo pidió un sabotaje que pasó en verde.**
+
+        Ante la duda no se acusa (`04·R4`): sin poder resolver la ruta no hay
+        con qué afirmar que esté fuera, y un aviso falso apaga el enganche
+        entero.
+
+        **Se fuerza el fallo a propósito.** El primer intento usó una ruta con
+        un byte nulo creyendo que reventaría, y **no revienta**: se resuelve
+        contra el directorio actual como cualquier otra. Una prueba que no
+        toca la rama que dice probar es peor que no tenerla.
+        """
+        _, casa = self._casa()
+        original = os.path.realpath
+
+        def revienta(_ruta):
+            raise OSError("de mentira, para tocar la rama")
+
+        os.path.realpath = revienta
+        self.addCleanup(setattr, os.path, "realpath", original)
+        self.assertEqual(rutas_fuera.aviso(os.path.join(casa, "..", "x.py"), casa), "",
+                         "acusó por una ruta que no pudo resolver")
+
+    def test_el_enganche_calla_y_sale_bien_con_entrada_rota(self):
+        for entrada in ("", "no soy json", "[]", '{"tool_input":{}}'):
+            salida = subprocess.run(
+                [sys.executable, os.path.join(self.ADAPTADOR, "hook_rutas.py"),
+                 "--raiz", self.RAIZ],
+                input=entrada, capture_output=True, text=True,
+                encoding="utf-8", timeout=60)
+            self.assertEqual(salida.returncode, 0,
+                             "el enganche murió con %r" % entrada)
+            self.assertEqual(salida.stdout.strip(), "",
+                             "el enganche habló con %r" % entrada)
+
+    # -- CA-01 · conexión: el enganche corre de verdad --------------------
+    def test_el_enganche_avisa_por_una_ruta_de_afuera(self):
+        entrada = json.dumps({"tool_input": {
+            "file_path": os.path.join(tempfile.gettempdir(), "suelto.py")}})
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.ADAPTADOR, "hook_rutas.py"),
+             "--raiz", self.RAIZ],
+            input=entrada, capture_output=True, text=True,
+            encoding="utf-8", timeout=60)
+        self.assertEqual(salida.returncode, 0)
+        self.assertIn("fuera del proyecto", salida.stdout)
+
+    def test_el_enganche_calla_por_una_ruta_del_proyecto(self):
+        entrada = json.dumps({"tool_input": {
+            "file_path": os.path.join(self.RAIZ, "validadores", "comun.py")}})
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.ADAPTADOR, "hook_rutas.py"),
+             "--raiz", self.RAIZ],
+            input=entrada, capture_output=True, text=True,
+            encoding="utf-8", timeout=60)
+        self.assertEqual(salida.stdout.strip(), "",
+                         "avisó por un archivo del propio repositorio")
+
+    def test_el_enganche_esta_registrado_en_el_instalador(self):
+        """**Construido y no colgado no sirve de nada.**
+
+        Es el defecto de `EP-002·HU-004`: el aviso de desfase estaba escrito,
+        probado y en verde, y el arranque no lo llamaba.
+        """
+        guiones = [h[2] for h in instalar.HOOKS_CLAUDE]
+        self.assertIn("hook_rutas.py", guiones,
+                      "el enganche existe pero nadie lo cuelga")
+
+    # -- CA-04 · la regla dice dónde van los guiones ----------------------
+    def test_la_regla_esta_en_base_y_nombra_la_carpeta(self):
+        texto = comun.leer(os.path.join(self.RAIZ, "base", "04-seguridad.md"))
+        self.assertIn("historico-chat/scripts/", texto,
+                      "`base/` no dice dónde van los guiones de apoyo")
+
+    def test_la_regla_declara_su_dependencia_con_s9(self):
+        """`M7` y `M12`: se declara de qué cuelga, y no se repite."""
+        texto = comun.leer(os.path.join(self.RAIZ, "base", "04-seguridad.md"))
+        bloque = texto.split("## S18")[-1].split("\n## ")[0]
+        self.assertIn("S9", bloque,
+                      "la regla nueva no declara su dependencia con `04·S9`")
+
+
 class NoPisarLoEscrito(_ProyectoDePrueba):
     """Lo que la persona llenó no se pierde — EP-007 · HU-005."""
 
@@ -3891,17 +4082,27 @@ class ElMoldeSinLlenarNoCuenta(unittest.TestCase):
         self.assertEqual(fases.moldes_sin_llenar(fase, de_cada_uno), [],
                          "señaló documentos escritos de la fase C")
 
-    def test_señala_un_plan_de_pruebas_real_que_si_es_el_molde(self):
-        fase = os.path.join(
-            self.RAIZ, "documentacion", "epicas", "EP-004-comprobacion-automatica",
-            "HU-011-molde-de-las-reglas",
-            "B-EP-004-HU-011-no-afirmar-sobre-lo-que-no-se-leyo")
-        if not os.path.isdir(fase):
-            self.skipTest("esa fase no está en este árbol")
+    def test_señala_un_documento_que_es_la_plantilla_real(self):
+        """La plantilla de verdad, copiada tal cual, tiene que señalarse.
+
+        **Antes esta prueba apuntaba a un `plan_pruebas.md` real** que seguía
+        siendo el molde. Se escribió el 2026-08-27 —que era el objetivo— y la
+        prueba se cayó sola. **Una prueba que se rompe cuando el repositorio
+        mejora está atada al síntoma, no a la regla**: ahora copia la plantilla
+        a un árbol de mentira, que es lo que no cambia.
+        """
+        raiz, fase = self._proyecto({})
+        molde = os.path.join(self.RAIZ, "plantillas", "ciclo-vida-proyectos",
+                             "08-plan-pruebas.md")
+        if not os.path.isfile(molde):
+            self.skipTest("no está la plantilla en este árbol")
+        with io.open(molde, encoding="utf-8") as f:
+            texto = f.read()
+        self._escribir(os.path.join(fase, "plan_pruebas.md"), texto)
         de_cada_uno = fases.marcadores_de_los_moldes(self.RAIZ)
         señalados = dict(fases.moldes_sin_llenar(fase, de_cada_uno))
         self.assertIn("plan_pruebas.md", señalados,
-                      "no reconoció una plantilla sin llenar")
+                      "no reconoció la plantilla real copiada tal cual")
 
     def test_dos_marcadores_del_molde_no_alcanzan(self):
         """El corte es tres, y el reparto real no tiene nada entre 3 y 15."""

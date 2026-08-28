@@ -158,7 +158,7 @@ Cuatro fallas. **Tres por una causa inocente:** este documento y el de cierre no
 
 ### 4.5 Rastros
 
-**Uno, declarado.** La copia de restauración vive en la carpeta temporal del sistema. Es el resto anotado en el [pendiente 89](../../../../../pendientes/89-nada-hace-cumplir-que-los-guiones-queden-en-el-repositorio.md).
+**Uno, declarado.** La copia de restauración vive en la carpeta temporal del sistema. Es el resto anotado en el [pendiente 89](../../../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md).
 
 ### 4.6 Ninguna prueba usa credenciales
 

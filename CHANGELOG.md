@@ -11,6 +11,29 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.4.0 — 2026-08-27
+
+**Escribir un archivo fuera de la carpeta del proyecto ahora avisa en el momento, y dice dónde debía ir.** Antes solo estaba escrito que no se hiciera, y nada lo comprobaba.
+
+**MENOR** (nadie tiene que cambiar nada de lo que ya tiene; lo que cambia es que ahora hay quien lo diga).
+
+**Por qué hizo falta.** La regla existía desde el 2026-08-20 y se precisó el 22. **Se dejó de cumplir el 24**, y siguió cuatro días: 38 programas de apoyo quedaron en una carpeta temporal del sistema en vez de en el repositorio.
+
+**El daño no era de orden.** El **resultado** de cada cambio quedaba guardado y **el cómo se borraba con el temporal**: a la pregunta «¿con qué se hizo esto?» no había respuesta en ninguna parte. Es la segunda vez que esa pregunta se queda sin respuesta — la primera es la que originó la regla.
+
+**Qué se agrega:**
+
+| Pieza | Qué hace |
+|---|---|
+| La regla `04·S18` | Dice **dónde sí** van los programas de apoyo, que es la mitad que le faltaba a `04·S9` |
+| Un enganche | Avisa al escribir fuera, **nombrando el destino**. Avisa: no mueve ni borra |
+
+**Lo que no cubre, dicho para que no se lea de más:** lo que se escribe desde una línea de comandos no se ve, porque la herramienta no entrega esa ruta.
+
+**Por qué un aviso y no un bloqueo.** Quien escribe fuera suele estar a mitad de algo; detenerlo rompe el trabajo y esconde el problema en vez de mostrarlo. Y un aviso que se equivoca una vez por sesión se apaga: por eso la mitad de las comprobaciones nuevas verifican que **no** hable donde no debe.
+
+---
+
 ## 35.3.0 — 2026-08-27
 
 **Una fase recién abierta contaba como terminada.** El andamio crea sus cinco documentos vacíos, y el conteo miraba que existieran. Ahora un documento que **sigue siendo su plantilla** no cuenta como escrito.
