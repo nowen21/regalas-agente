@@ -4,12 +4,11 @@
 #   python validadores/validar.py internas
 
 [FALLA] validadores/tests/test_el_andamio_levanta_la_historia_y_el_pendiente.py — CA04LaHistoria.test_cp_004_no_escribe_contenido — AssertionError: -1 != 68
-[FALLA] validadores/tests/test_el_consumo_se_ve_a_tiempo.py — RNF02NoSeNota.test_cp_007_la_transcripcion_mas_grande_se_lee_rapido — AssertionError: 6.417804599972442 not less than 2.0
 [FALLA] validadores/tests/test_el_texto_del_enlace_dice_donde_vive.py — ElEstandarNoTieneEnlacesEntreCarpetasMalEscritos.test_cero_entre_carpetas_fuera_de_prompts — AssertionError: 0 != 98
-[FALLA] validadores/tests/test_la_corrida_completa_en_una_linea.py — LaCorridaCompleta.test_cp005_la_corrida_termina_con_un_resumen_unico — AssertionError: False is not true : el resumen final no está al final: 'Cambió desde la corrida anterior:\n  (sin regla)  257 → 256  (baja)\n  S3           145 
+[FALLA] validadores/tests/test_la_corrida_completa_en_una_linea.py — LaCorridaCompleta.test_cp005_la_corrida_termina_con_un_resumen_unico — AssertionError: False is not true : el resumen final no está al final: '  E1           15\n  R2           13\n  (y 19 regla(s) más con menos hallazgos)'
 [FALLA] validadores/tests/test_la_frontera_del_adaptador.py — LaFronteraSeSostiene.test_no_queda_ningun_enganche_en_validadores — + ['hook_estacion.py'] : estos van en adaptadores/claude-code/: ['hook_estacion.py']
 [FALLA] validadores/tests/test_ninguno_termina_en_silencio.py — NingunoTerminaEnSilencio.test_el_codigo_de_salida_distingue_no_comprobe_de_hay_fallas — + ['estacion_commit.py (código 0)', 'rutas_fuera.py (código 0)'] : estos no salen con código 2: estacion_commit.py (código 0), rutas_fuera.py (código 0)
 [FALLA] validadores/tests/test_ninguno_termina_en_silencio.py — NingunoTerminaEnSilencio.test_el_que_no_es_entrada_dice_por_donde_se_corre — + ['estacion_commit.py (código 0)', 'rutas_fuera.py (código 0)'] : estos no dicen por dónde se corren: estacion_commit.py (código 0), rutas_fuera.py (código 0)
 [FALLA] validadores/tests/test_ninguno_termina_en_silencio.py — NingunoTerminaEnSilencio.test_ninguno_sale_con_cero_sin_decir_nada — + ['estacion_commit.py', 'rutas_fuera.py'] : estos salen con 0 sin imprimir nada, y ese silencio se lee como «no hay hallazgos»: estacion_commit.py, rutas_fuera
-[AVISO] validadores/tests — 650 prueba(s) en 67 archivo(s) · 8 falla(s) · 0 error(es)
-8 falla(s), 11 aviso(s).
+[AVISO] validadores/tests — 650 prueba(s) en 67 archivo(s) · 7 falla(s) · 0 error(es)
+7 falla(s), 11 aviso(s).
