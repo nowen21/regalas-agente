@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `2a7bb85` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — el estándar no se despliega |
 
 > **La fila 12 estuvo marcada por error, y se corrigió a mano.** El enganche de `post-commit` la selló con `7d665b2` — el commit que **creó** esta carpeta. Ese commit no cerró la fase: la abrió. Queda anotado en §3 como defecto del enganche.
@@ -61,10 +61,10 @@
 | T-05 | Terminada | `pre-push`, línea 46, con `|| true` |
 | T-06 | Terminada | Las dos suites en el `README`, con su tiempo |
 | T-07 | Terminada | Uno cerrado, cinco enrutados a dos destinos |
-| T-08 | Terminada | 20 pruebas, clase `LasPruebasQueExistenSeCorren` |
+| T-08 | Terminada | 22 pruebas, clase `LasPruebasQueExistenSeCorren` |
 | T-09 | Terminada | Instalador corrido; el enganche real comprobado |
 | T-10 | Terminada | `35.9.0` |
-| T-11 | Terminada | **11 de 11 cazados**, tras corregir dos mal armados |
+| T-11 | Terminada | **12 de 12 cazados**, tras corregir tres mal armados |
 
 **Hechas:** 12 de 12. **Bloqueadas:** ninguna.
 

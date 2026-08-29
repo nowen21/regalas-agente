@@ -19,7 +19,7 @@ De qué sesión salen: [2026-08-22 · sesion-6](../../2026-08-22-sesion-6.md), q
 | `corren-las-pruebas-de-tests.py` | Corrió los 67 archivos **uno por uno**, porque la orden documentada se caía antes de correr nada. **61 en verde, 6 en rojo.** Con `--todos` deja la lista completa: sin los nombres, un rojo nuevo no se distingue de uno de siempre |
 | `todos-en-un-proceso.py` | La pregunta que decidió el diseño: **cargados juntos dan las mismas fallas en los mismos archivos**, así que no se estorban y el corredor puede cargarlos de una vez en lugar de arrancar Python 67 veces |
 | `t04-donde-cuelga.py` | **Tumbó el enganche que se planeaba.** 9,6 minutos × 245 commits en 14 días = 39,3 horas. Ninguna opción que *corriera* las pruebas cabía en el umbral, así que se cuelga el reclamo |
-| `sabotajes-hu021.py` | Los once sabotajes, **cazados los once**. Dos estaban mal armados y uno de esos destapó una prueba que **no podía fallar** |
+| `sabotajes-hu021.py` | Los doce sabotajes, **cazados los doce**. Tres estaban mal armados: uno destapó una prueba que **no podía fallar**, y otro se reportaba como cazado cuando lo único que rompía era la sintaxis. Por eso el guion ahora marca **NO VALE** ante un `SyntaxError` (`S-078`) |
 
 | Salida | Qué es |
 |---|---|

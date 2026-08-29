@@ -194,7 +194,8 @@ Pruebas: `test_se_puede_pedir_un_solo_archivo`, `test_un_nombre_que_no_existe_es
 |---|---|---|---|
 | 1 | Que el enganche quedó en el archivo de verdad, no solo en la plantilla | Correr el instalador y leer `.githooks/pre-push` | Está, línea 46, con `\|\| true` para que no detenga el push |
 | 2 | Que el reclamo cuesta lo que dice costar | `validar.py internas --reclamo` | Responde de inmediato: lee una fecha |
-| 3 | Que los sabotajes se cazan | `sabotajes-hu021.py` | **11 de 11**, tras corregir dos sabotajes mal armados |
+| 3 | Que los sabotajes se cazan | `sabotajes-hu021.py` | **12 de 12**, tras corregir **tres** mal armados |
+| 4 | Que el reclamo diga la verdad **después** de una corrida entera | Correr las 650 y leer el aviso | Dice «la última corrida (21:57:12) dejó **8 falla(s)**», no «nunca corrieron» |
 
 ---
 
@@ -205,10 +206,14 @@ Pruebas: `test_se_puede_pedir_un_solo_archivo`, `test_un_nombre_que_no_existe_es
 | DEF-01 | `corredor.py` nació sin entrada en el mapa del amarre, y sumó 4 fallas que parecían del `__init__.py` | `CP-001` | Media | Corregido | Su fila en `anatomia/que-esta-amarrado-a-la-herramienta.md` |
 | DEF-02 | El plan estimó ~3 minutos y son **9,6** | `CP-003` | **Alta** — el número decidía dónde colgar la corrida | Corregido en el diseño | `CP-006`: se cuelga el reclamo, no la corrida |
 | DEF-03 | Dos sabotajes mal armados: uno cambiaba el texto sin cambiar el comportamiento, el otro no aplicaba | `T-11` | Media | Corregidos | `sabotajes-hu021.py` |
+| DEF-06 | **El reclamo decía «nunca corrieron» sobre unas pruebas que habían corrido dos veces ese día.** El sello solo se escribía en verde, y la carpeta tiene ocho fallas conocidas | El primer `push` de verdad, **después del ciclo** | **Alta** — manda a esperar 10 minutos para volver a leer lo mismo | Corregido | El sello guarda el conteo; el reclamo dice **tres motivos distintos**. Señal `S-077` |
+| DEF-07 | Un sabotaje se reportó **CAZADO** y no cazaba nada: dejaba el archivo sin compilar, así que las pruebas fallában por sintaxis | Mirar la salida de la tanda, no su total | Media | Corregido | El guion marca **NO VALE** ante `SyntaxError`. Señal `S-078` |
 | DEF-05 | La corrida de cierre dio **8 fallas**, no las 7 de la primera. La octava es `test_cp001_cada_subcomando_sigue_corriendo_por_separado`, y la causó **cerrar el pendiente 90 a mano**: al moverlo a `hecho/` quedaron cuatro enlaces rotos, y ese caso corre `validar.py estandar` esperando cero | `CP-003`, segunda corrida | Media | Corregido | Las citas arrastradas; `validar.py estandar` en verde |
 | DEF-04 | Una prueba **no podía fallar**: buscaba «internas» en un bloque donde la exclusión no vive | `T-11`, sabotaje 11 | **Alta** — es el patrón `S-062` | Corregida | Ahora mira `FUERA_DE_LA_CORRIDA` |
 
 **Defectos abiertos que se aceptan y por qué:** ninguno. Los cuatro quedaron corregidos dentro del ciclo 1.
+
+**`DEF-06` no lo encontró ninguna de las 22 pruebas ni ninguno de los once sabotajes: lo encontró correrlo de verdad, una vez, en el momento en que sirve.** Las pruebas cubrían «sin sello reclama» y «con sello limpio calla»; el caso real —sello ausente **porque** hubo fallas— caía justo entre las dos. Está en `S-077`.
 
 **`DEF-04` es el que más enseña, y lo destapó un sabotaje que dijo «NO APLICA».** Ese aviso parecía un problema del guion de sabotaje —el texto que buscaba no existía— y era cierto; pero al buscar el texto correcto apareció que **la prueba miraba el sitio equivocado**, y por lo tanto no podía fallar. Es la tercera forma de `S-062`, encontrada por accidente.
 
@@ -241,8 +246,8 @@ Pruebas: `test_se_puede_pedir_un_solo_archivo`, `test_un_nombre_que_no_existe_es
 | **Casos donde cero pruebas da verde** | Plan §12 | **0** | **0** | Sí |
 | **Lo que agrega lo colgado, por commit** | Plan §12 | menos de 1 min | **Lee una fecha.** Correrlas habría costado 9,6 min | Sí |
 | Rojos declarados de los 6 | Plan §12 | 6 | 6 — uno cerrado, cinco enrutados | Sí |
-| Sabotajes cazados | Plan §12 | Todos | **11 de 11** | Sí |
-| Fallas en `pruebas.py` | Plan §12 | 0, con conteo ≠ 0 | **535 pruebas, 0 fallas** (4 esperadas) | Sí |
+| Sabotajes cazados | Plan §12 | Todos | **12 de 12**, ninguno por error de sintaxis | Sí |
+| Fallas en `pruebas.py` | Plan §12 | 0, con conteo ≠ 0 | **537 pruebas, 0 fallas** (4 esperadas) | Sí |
 | Fallas nuevas en la carpeta de 650 | Plan §12 | 0 sobre la línea base | **0 archivos nuevos en rojo**: 5, contra 6 de la línea base. Las fallas quedaron en 8, las mismas que al empezar | Sí |
 | Criterios de suspensión | Plan §4.3 | Ninguno alcanzado | Ninguno | Sí |
 
@@ -266,13 +271,13 @@ Pruebas: `test_se_puede_pedir_un_solo_archivo`, `test_un_nombre_que_no_existe_es
 |---|---|---|
 | EV-00 | La línea base, los 67 con nombre | [linea-base-t00.txt](../../../../../historico-chat/scripts/2026-08-28/linea-base-t00.txt) |
 | EV-01 | La misma corrida con el `__init__.py` | [t01-con-init.txt](../../../../../historico-chat/scripts/2026-08-28/t01-con-init.txt) |
-| EV-02 | Las 20 pruebas de la fase | `validadores/pruebas.py`, clase `LasPruebasQueExistenSeCorren` |
+| EV-02 | Las 22 pruebas de la fase | `validadores/pruebas.py`, clase `LasPruebasQueExistenSeCorren` |
 | EV-03 | La corrida de las 650 | [salida-internas.txt](../../../../../historico-chat/scripts/2026-08-28/salida-internas.txt) |
 | EV-04 | La orden documentada | `validadores/README.md`, sección de las dos suites |
 | EV-05 | La medición de dónde colgar | [t04-donde-cuelga.py](../../../../../historico-chat/scripts/2026-08-28/t04-donde-cuelga.py) |
 | EV-06 | El enganche | `.githooks/pre-push`, línea 46 |
 | EV-07 | Los seis rojos declarados | [funcionalidad_implementada.md](funcionalidad_implementada.md) §6 |
-| EV-08 | Los once sabotajes | [sabotajes-hu021.py](../../../../../historico-chat/scripts/2026-08-28/sabotajes-hu021.py) |
+| EV-08 | Los doce sabotajes | [sabotajes-hu021.py](../../../../../historico-chat/scripts/2026-08-28/sabotajes-hu021.py) |
 
 ---
 

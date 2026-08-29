@@ -771,3 +771,47 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-28 · agente, al leer lo que el enganche imprimió después de guardar.
 - **Scope:** estándar; aplica a todo automatismo que selle un hito a partir de qué archivos cambiaron.
 - **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-075 (cuatro registros llevados a mano se quedaron atrás).
+
+## S-077 · Un aviso que dice «nunca» sobre algo que pasó dos veces manda a repetir trabajo inútil  ·  error-resuelto · activa
+- **What:** el reclamo de las pruebas del estándar corrió por primera vez de verdad —en un `push`— y dijo: *«las pruebas del estándar nunca corrieron en esta copia»*. **Habían corrido dos veces ese mismo día.** Lo que pasaba es que el sello solo se escribía cuando la corrida quedaba **limpia**, y la carpeta tiene ocho fallas conocidas.
+- **Why:** el programa confundía dos cosas distintas: **«no hay constancia» y «no corrió»**. Son la misma ausencia de archivo y llevan a acciones opuestas. Con la primera lectura, el aviso manda a esperar diez minutos para volver a leer exactamente lo mismo — y **un aviso que manda a hacer algo que no cambia nada se aprende a ignorar en dos intentos.**
+- **Also:** el defecto no lo encontró ninguna de las 22 pruebas de la fase, ni los once sabotajes: **lo encontró correrlo de verdad, una vez, en el momento en que sirve.** Las pruebas cubrían «sin sello reclama» y «con sello limpio calla», y el caso real —sello ausente *porque* hubo fallas— caía entre las dos.
+- **And:** el arreglo dice **tres cosas distintas** en vez de una: nunca corrieron, la última dejó N fallas, o hay commits que no vieron. Y el sello guarda el conteo, así que un sello viejo sin él se lee como limpio: es lo único que aquella versión sabía escribir.
+- **Where:** `validadores/corredor.py` · `sellar` y `reclamo`, fase `A-EP-005-HU-021`.
+- **Learned:** **antes de escribir un mensaje que afirma algo, preguntar qué otra situación produce la misma señal.** Acá la señal era «no hay archivo» y el mensaje eligió una de sus tres causas, la menos probable. La prueba barata: leer el aviso en voz alta y preguntar **«¿qué hago con esto, y qué pasa si lo hago?»**. Si la respuesta es «lo mismo otra vez», el mensaje está mal.
+- **When/Who:** 2026-08-28 · agente y usuario, en el primer push con el enganche puesto.
+- **Scope:** estándar; aplica a todo aviso que se dispare por la **ausencia** de algo.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-075 (cuatro registros llevados a mano se quedaron atrás), S-068 (un sabotaje que no se pudo aplicar no es uno que pasó).
+
+## S-078 · Un sabotaje que deja el archivo sin compilar no cazó nada  ·  error-resuelto · activa
+- **What:** uno de los doce sabotajes se reportó como **CAZADO** y no había cazado nada: el texto que insertaba dejaba un paréntesis suelto, así que las pruebas fallaban con `SyntaxError`. **Fallaban por la sintaxis, no por el comportamiento.**
+- **Why:** el guion juzga por el código de salida de `unittest`, y un archivo que no compila da el mismo código de salida que una prueba que atrapa un defecto. **La misma señal, dos causas, y la que interesa es la otra.**
+- **Also:** es `S-068` con otra forma. Allá el sabotaje **no se aplicaba** —los acentos no calzaban— y el verde se leyó como que la prueba lo había atrapado. Acá sí se aplicó, y aun así lo que se midió fue el intérprete de Python.
+- **And:** la corrección es de tres líneas y vale para siempre: si la salida trae `SyntaxError` o `IndentationError`, el resultado no es *cazado* ni *se coló*, sino **NO VALE** — y cuenta como fallo del guion, para que nadie lo lea como cobertura.
+- **Where:** `historico-chat/scripts/2026-08-28/sabotajes-hu021.py`.
+- **Learned:** **un sabotaje se juzga por lo que rompió, no por el color que sale.** Antes de dar uno por bueno hay que poder decir *qué comportamiento* dejó de cumplirse; si la respuesta es «no sé, pero falló», no probó nada. Las tres formas de mentir en verde que lleva esta casa son ya: no aplicarse, dejar el archivo sin compilar, y apuntar a una línea que no hace nada.
+- **When/Who:** 2026-08-28 · agente, mirando la salida de la tanda en vez de solo su total.
+- **Scope:** estándar; aplica a toda revisión por sabotaje.
+- **Rel:** S-068 (un sabotaje que no se pudo aplicar no es uno que pasó), S-074 (un sabotaje que se cuela suele señalar código muerto), S-062 (tres formas de que una prueba mienta en verde).
+
+## S-079 · El sello de una corrida se contaba como una conversación viva  ·  error-resuelto · activa
+- **What:** el sello de la última corrida de pruebas se guardó en `historico-chat/.tocado/`, la carpeta del registro de sesiones. `sesiones.registros()` lee **todo** `.txt` de ahí como el registro de una conversación, así que el sello apareció como **una sesión viva llamada «internas» con dos archivos** — que en realidad eran una fecha y un número.
+- **Why:** las dos cosas son «estado de trabajo de esta máquina que no se versiona», y esa semejanza bastó para meterlas en el mismo cajón. Pero **el cajón tiene un lector que asume que todo lo que hay dentro es del mismo tipo**, y ese lector alimenta la comprobación que evita que un commit se lleve trabajo ajeno.
+- **Also:** el daño era pequeño y silencioso: infla el número de sesiones que el aviso reporta. Se volvía grave el día que dos conversaciones sí chocaran y el mensaje dijera «3 sesiones» contando una que no existe.
+- **And:** **apareció al ir a comprobar otra cosa.** El usuario preguntó si el defecto del commit que se llevó 712 líneas ya estaba cerrado; al medirlo —listando las sesiones vivas para responder con datos y no de memoria— salió una sesión de más. **Verificar una afirmación destapó un defecto que nadie buscaba.**
+- **Where:** `validadores/corredor.py` · `SELLO`, ahora en `historico-chat/.estado/`.
+- **Learned:** **antes de guardar algo junto a otra cosa, preguntar quién lee esa carpeta y qué asume de lo que hay dentro.** «Es del mismo tipo de dato» no basta: lo que decide es si algún programa recorre el sitio entero. Y la prueba que lo fija no mira el archivo del sello: mira que **el registro de sesiones siga vacío** después de sellar.
+- **When/Who:** 2026-08-28 · agente y usuario, al pedir la comprobación de si un defecto anterior estaba cerrado.
+- **Scope:** estándar; aplica a toda carpeta que un programa recorra entera.
+- **Rel:** S-077 (un aviso que dice «nunca» sobre algo que pasó), S-075 (cuatro registros llevados a mano se quedaron atrás), S-071 (un archivo sin registro parece de nadie).
+
+## S-080 · «Sí, con un límite» es un «cumple con observaciones» disfrazado  ·  error-resuelto · activa
+- **What:** el usuario preguntó si un defecto ya estaba cerrado. Respondí **«sí, con un límite»**: el arreglo está construido, probado y publicado, pero **no se ha observado funcionando** porque el caso —dos conversaciones simultáneas chocando— no se ha dado desde que se instaló. El usuario cortó la respuesta: *«si hay un límite no es sí»*.
+- **Why:** el límite no era un matiz sobre algo cumplido: **era la parte que falta.** Lo pedido es que la colisión se vea; lo que hay es una prueba con repositorios armados a mano. Poner eso bajo un «sí» hace que quien lea la respuesta deje de mirar, y **el trabajo que falta desaparece detrás de la palabra que lo aprueba.**
+- **Also:** el estándar ya había peleado esto mismo y ganado. Hasta la versión 35.1.0 el molde de cierre ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo cada una a su manera, y ningún programa podía leerlo. **Volví a cometer en una respuesta de chat el defecto que el molde ya no permite en un documento.**
+- **And:** los documentos de la fase sí lo decían bien \u2014 el `CP-006` declara el límite con su número y dice que el cero no prueba que las colisiones se vean\u2014. **El defecto no fue de análisis sino de redacción del veredicto**, que es donde menos se vigila porque «ya está escrito bien más abajo».
+- **Where:** la respuesta al usuario · el molde `11-funcionalidad-implementada.md`, que desde la 35.1.0 solo admite Cumple / No cumple.
+- **Learned:** **el veredicto se da con la misma regla en el chat que en el documento: si algo de lo pedido falta, es «no».** El detalle va después, y va completo — pero no dentro de la palabra que aprueba. La prueba barata: si la respuesta necesita un «pero», «con», «salvo» o «falta» para ser cierta, empieza por **no**.
+- **When/Who:** 2026-08-28 · usuario, corrigiendo un «sí, con un límite».
+- **Scope:** estándar; aplica a todo veredicto que el agente entregue, escrito o hablado (`00·ID8`).
+- **Rel:** S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada), S-077 (un aviso que dice «nunca» sobre algo que pasó dos veces).

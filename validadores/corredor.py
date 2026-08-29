@@ -37,10 +37,15 @@ from comun import AVISO, FALLA, Hallazgo
 
 CARPETA = os.path.join("validadores", "tests")
 
-# El sello de la última corrida completa **en verde**. Vive junto al registro
-# de sesiones, que ya está fuera del control de versiones: es estado de
-# trabajo de esta máquina, no memoria del proyecto.
-SELLO = os.path.join("historico-chat", ".tocado", "internas-verde.txt")
+# El sello de la última corrida completa. Es estado de trabajo de esta máquina,
+# no memoria del proyecto, así que no se versiona.
+#
+# **Y va en su propia carpeta, no junto al registro de sesiones.** La primera
+# versión lo puso en `.tocado/`, donde `sesiones.registros()` lee **todo** `.txt`
+# como si fuera el registro de una conversación: el sello se contaba como una
+# sesión viva llamada «internas», con dos archivos que en realidad eran una
+# fecha y un número. Dos cosas distintas en el mismo cajón.
+SELLO = os.path.join("historico-chat", ".estado", "internas.txt")
 
 
 def carpeta_de(raiz=None):
@@ -173,15 +178,38 @@ def _ultima_linea(traza):
     return lineas[-1][:160] if lineas else "sin detalle"
 
 
-def sellar(raiz=None, cuando=None):
-    """Deja escrito que la carpeta entera pasó en verde, y cuándo."""
+def sellar(raiz=None, fallas=0, cuando=None):
+    """Deja constancia de la última corrida entera, **y de cómo le fue**.
+
+    **Se sella toda corrida entera, no solo la limpia.** La primera versión
+    sellaba únicamente el verde, y el reclamo decía «nunca corrieron» sobre una
+    carpeta que había corrido dos veces ese día — lo dijo en el primer push de
+    verdad. Quien leyera eso iría a correr diez minutos para volver a leer lo
+    mismo. **Un aviso que manda a hacer algo que no cambia nada se apaga.**
+    """
     ruta = os.path.join(raiz or comun.RAIZ, SELLO)
     carpeta = os.path.dirname(ruta)
     if not os.path.isdir(carpeta):
         os.makedirs(carpeta)
     with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
-        f.write("%s\n" % (cuando or time.strftime("%Y-%m-%d %H:%M:%S")))
+        f.write("%s\n%d\n" % (cuando or time.strftime("%Y-%m-%d %H:%M:%S"),
+                              fallas))
     return ruta
+
+
+def _sello(raiz):
+    """`(cuando, fallas)` de la última corrida entera. `None` si no hay."""
+    ruta = os.path.join(raiz, SELLO)
+    if not os.path.isfile(ruta):
+        return None
+    try:
+        with io.open(ruta, encoding="utf-8") as f:
+            lineas = [l.strip() for l in f if l.strip()]
+        # Un sello viejo trae solo la fecha: se lee como corrida limpia, que es
+        # lo único que aquella versión sellaba.
+        return (lineas[0], int(lineas[1]) if len(lineas) > 1 else 0)
+    except (OSError, ValueError, IndexError):
+        return None
 
 
 def _ultimo_commit(raiz):
@@ -195,41 +223,54 @@ def _ultimo_commit(raiz):
         return None
 
 
+ORDEN = "`python validadores/validar.py internas` (tarda ~10 min; no detiene el push)"
+
+
 def reclamo(raiz=None):
-    """Avisa si lo que se va a publicar es más nuevo que la última corrida.
+    """Dice si hace falta correr las pruebas, y **por qué hace falta**.
 
-    **Reclama, no corre.** Las 650 pruebas tardan 9,6 minutos, y este
-    repositorio hace 16 commits por día: correrlas en cada uno costaría 39
-    horas cada dos semanas. Un peaje así se apaga en una tarde, y entonces
-    quedamos peor que hoy — con un control que figura como puesto.
+    **Reclama, no corre.** Las 650 tardan 9,6 minutos y este repositorio hace 16
+    commits por día: correrlas en cada uno costaría 39 horas cada dos semanas.
+    Un peaje así se apaga en una tarde, y entonces quedamos peor que hoy — con
+    un control que figura como puesto. Esto cuesta leer un archivo.
 
-    Lo que cuesta esto es mirar la fecha de un archivo.
+    **Los tres motivos se dicen distinto**, porque llevan a cosas distintas:
+    nunca corrieron, la última dejó fallas, o hay trabajo que no vieron.
     """
     raiz = raiz or comun.RAIZ
     ruta = os.path.join(raiz, SELLO)
-    if not os.path.isfile(ruta):
+    sello = _sello(raiz)
+
+    if sello is None:
         return [Hallazgo(AVISO, ruta, 0,
                          "las pruebas del estándar nunca corrieron en esta "
-                         "copia — `python validadores/validar.py internas` "
-                         "(tarda ~10 min; no detiene el push)")]
+                         "copia — " + ORDEN)]
+
+    cuando, fallas = sello
+    if fallas:
+        return [Hallazgo(AVISO, ruta, 0,
+                         "la última corrida de las pruebas del estándar "
+                         "(%s) dejó **%d falla(s)** — %s"
+                         % (cuando, fallas, ORDEN))]
+
     commit = _ultimo_commit(raiz)
     if commit is None or os.path.getmtime(ruta) >= commit:
         return []
     return [Hallazgo(AVISO, ruta, 0,
                      "hay commits posteriores a la última corrida de las "
-                     "pruebas del estándar — `python validadores/validar.py "
-                     "internas` (tarda ~10 min; no detiene el push)")]
+                     "pruebas del estándar (%s) — %s" % (cuando, ORDEN))]
 
 
 def validar(raiz=None, solo=None):
     """`[Hallazgo]`, más el resumen como aviso. Para `validar.py`."""
     resultado, hallazgos, corridos = correr(raiz, solo)
     if resultado is not None:
-        # **Solo sella la corrida entera y limpia.** Sellar un subconjunto
-        # diría «esto se comprobó» sobre lo que no se miró, que es el defecto
-        # del que sale toda esta pieza.
-        if not solo and not [h for h in hallazgos if h.severidad == FALLA]:
-            sellar(raiz)
+        # **Se sella la corrida entera, con su resultado.** Un subconjunto no
+        # se sella: diría «esto se comprobó» sobre lo que no se miró, que es el
+        # defecto del que sale toda esta pieza.
+        if not solo:
+            sellar(raiz, len([h for h in hallazgos
+                              if h.severidad == FALLA]))
         hallazgos.append(Hallazgo(
             AVISO, carpeta_de(raiz), 0,
             "%d prueba(s) en %d archivo(s) · %d falla(s) · %d error(es)"

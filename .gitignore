@@ -37,3 +37,4 @@ interfaz/.env
 # Es estado de trabajo, no memoria: versionarlo lo volvería el próximo archivo
 # que dos sesiones se pisan.
 historico-chat/.tocado/
+historico-chat/.estado/

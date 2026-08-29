@@ -1,10 +1,10 @@
 # validar.py todo al cerrar la fase.
-# Recortado: los 1798 avisos no se listan.
+# Recortado: los 1799 avisos no se listan.
 # Se reproduce con: python validadores/validar.py todo
 
 == Coherencia del estándar ==
 == Épica → HU → Fase · . ==
-0 falla(s), 48 aviso(s).
+0 falla(s), 47 aviso(s).
 HU: 123 en total · 32 sin terminar · 91 terminadas, de las cuales 73 cumplen, 13 no cumplen y 5 no dicen si cumplen (F12.2)
 == Numeración de pendientes · . ==
 0 falla(s), 26 aviso(s).
@@ -56,7 +56,7 @@ HU: 123 en total · 32 sin terminar · 91 terminadas, de las cuales 73 cumplen, 
 == Plan de trabajo · . ==
 0 falla(s), 523 aviso(s).
 == Concatenación e inyección · . ==
-0 falla(s), 156 aviso(s).
+0 falla(s), 158 aviso(s).
 == Funciones largas · . ==
 0 falla(s), 19 aviso(s).
 == Integración continua · . ==

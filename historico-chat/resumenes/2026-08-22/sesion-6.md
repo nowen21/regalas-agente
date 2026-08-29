@@ -983,6 +983,60 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-63 · El aviso decía «nunca» sobre algo que había pasado dos veces ese día
+
+- **Qué pasó:** el reclamo de las pruebas del estándar corrió por primera vez de verdad —en un `push`— y dijo *«las pruebas del estándar nunca corrieron en esta copia»*. **Habían corrido dos veces ese mismo día.** El sello solo se escribía cuando la corrida quedaba limpia, y la carpeta tiene ocho fallas conocidas.
+- **Por qué importa:** el programa confundía **«no hay constancia»** con **«no corrió»**. Son la misma ausencia de archivo y llevan a acciones opuestas: con esa lectura, el aviso manda a esperar diez minutos para volver a leer lo mismo. **Un aviso que manda a hacer algo que no cambia nada se aprende a ignorar en dos intentos.**
+- **Qué lo soluciona:** el sello guarda el conteo de fallas, y el reclamo dice **tres cosas distintas**: nunca corrieron, la última dejó N fallas, o hay commits que no vieron.
+- **Y no lo encontró ninguna de las 22 pruebas ni ninguno de los once sabotajes.** Lo encontró **correrlo de verdad, una vez, en el momento en que sirve**. Las pruebas cubrían «sin sello reclama» y «con sello limpio calla»; el caso real —sello ausente **porque** hubo fallas— caía entre las dos.
+- **Estado:** resuelto acá.
+- **Responde a:** `H-59` · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** la señal `S-077` · `corredor.sellar` y `corredor.reclamo`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-64 · Un sabotaje se reportó «cazado» y solo había roto la sintaxis
+
+- **Qué pasó:** uno de los doce sabotajes dejó un paréntesis suelto. Las pruebas fallaron con `SyntaxError`, el guion vio código de salida distinto de cero, y lo dio por **cazado**.
+- **Por qué importa:** el guion juzga por el código de salida, y **un archivo que no compila da el mismo código que una prueba que atrapa un defecto.** La misma señal, dos causas, y la que interesa es la otra. Es `S-068` con otra forma: allá el sabotaje **no se aplicaba**; acá sí se aplicó, y aun así lo que se midió fue el intérprete de Python.
+- **Qué lo soluciona:** tres líneas — si la salida trae `SyntaxError` o `IndentationError`, el resultado no es *cazado* ni *se coló*, sino **NO VALE**, y cuenta como fallo del guion.
+- **Y ya van tres formas de mentir en verde con sabotajes**: no aplicarse, dejar el archivo sin compilar, y apuntar a una línea que no hace nada.
+- **Estado:** resuelto acá.
+- **Responde a:** — · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** la señal `S-078` · `sabotajes-hu021.py`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+
+---
+
+### H-65 · El sello de una corrida se contaba como una conversación viva
+
+- **Qué pasó:** guardé el sello de la última corrida de pruebas en `historico-chat/.tocado/`, la carpeta del registro de sesiones. `sesiones.registros()` lee **todo** `.txt` de ahí como el registro de una conversación, así que el sello apareció como **una sesión viva llamada «internas» con dos archivos** — una fecha y un número.
+- **Por qué importa:** pequeño y callado hoy; grave el día que dos conversaciones sí choquen y el aviso diga «3 sesiones» contando una que no existe. Las dos cosas son «estado de trabajo que no se versiona», y esa semejanza bastó para meterlas en el mismo cajón — **pero el cajón tiene un lector que asume que todo lo de dentro es del mismo tipo.**
+- **Qué lo soluciona:** el sello vive en `historico-chat/.estado/`. La prueba que lo fija **no mira el sello**: mira que el registro de sesiones siga vacío después de sellar.
+- **Y apareció al ir a comprobar otra cosa.** El usuario preguntó si el defecto de las 712 líneas estaba cerrado; al listar las sesiones vivas para responder con datos y no de memoria, salió una de más. **Verificar una afirmación destapó un defecto que nadie buscaba.**
+- **Estado:** resuelto acá.
+- **Responde a:** — · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** la señal `S-079` · `corredor.SELLO`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-66 · Respondí «sí, con un límite», que es un «cumple con observaciones»
+
+- **Qué pasó:** el usuario preguntó si el defecto de las 712 líneas estaba cerrado. Respondí **«sí, con un límite»**: construido, probado y publicado, pero **sin haberse observado funcionando**, porque el caso no se ha dado desde que se instaló. El usuario lo cortó: *«si hay un límite no es sí»*.
+- **Por qué importa:** el límite no era un matiz sobre algo cumplido, **era la parte que falta**. Bajo un «sí», quien lee deja de mirar, y el trabajo pendiente desaparece detrás de la palabra que lo aprueba.
+- **Qué lo soluciona:** el mismo criterio que el molde de cierre: **si algo de lo pedido falta, es «no»**. El detalle va después y va completo, pero no dentro de la palabra que aprueba.
+- **Y el estándar ya había ganado esta pelea.** Hasta la 35.1.0 el molde ofrecía «Cumple / Cumple con observaciones» y no tenía forma de decir «No cumple»: diecinueve fases tuvieron que escribirlo cada una a su manera. **Volví a cometer en el chat el defecto que el molde ya no permite en un documento** — y los documentos de la fase sí lo decían bien. **Falló la redacción del veredicto, no el análisis.**
+- **Estado:** resuelto acá.
+- **Responde a:** — · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** la señal `S-080`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -997,7 +1051,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Sesenta y dos hallazgos, cincuenta y nueve cerrados.** Quedan tres abiertos: `H-40`, `H-44` y `H-62`, los tres **parcialmente resueltos** — el caso tapado, la causa viva.
+**Sesenta y seis hallazgos, sesenta y tres cerrados.** Quedan tres abiertos: `H-40`, `H-44` y `H-62`, los tres **parcialmente resueltos** — el caso tapado, la causa viva.
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 

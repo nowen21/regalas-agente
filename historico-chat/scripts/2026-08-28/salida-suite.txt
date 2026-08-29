@@ -1,6 +1,6 @@
 # pruebas.py al cerrar la fase A-EP-005-HU-021.
 # Recortado. Se reproduce con: python validadores/pruebas.py
 
-Ran 535 tests in 213.519s
+Ran 537 tests in 369.127s
 OK (expected failures=4)
 OK: sin incumplimientos.

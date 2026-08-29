@@ -51,20 +51,30 @@ SABOTAJES = [
      '            "corrio (s) en (s) archivo(s)'),
 
     # -- el sello, que es lo que hace posible el reclamo ------------------
-    ("sella tambien las corridas que fallaron",
+    ("el sello miente: dice cero fallas pase lo que pase",
      "validadores/corredor.py",
-     "        if not solo and not [h for h in hallazgos if h.severidad == FALLA]:",
-     "        if True:"),
+     "                              if h.severidad == FALLA]))",
+     "                              if False]))"),
 
     ("sella un subconjunto como si fuera la carpeta entera",
      "validadores/corredor.py",
-     "        if not solo and not [h for h in hallazgos if h.severidad == FALLA]:",
-     "        if not [h for h in hallazgos if h.severidad == FALLA]:"),
+     "        if not solo:",
+     "        if True:"),
+
+    ("el sello vuelve al cajon de las sesiones",
+     "validadores/corredor.py",
+     'SELLO = os.path.join("historico-chat", ".estado", "internas.txt")',
+     'SELLO = os.path.join("historico-chat", ".tocado", "internas.txt")'),
 
     ("no reclama cuando nunca corrio",
      "validadores/corredor.py",
-     "    if not os.path.isfile(ruta):",
+     "    if sello is None:",
      "    if False:"),
+
+    ("los tres motivos se dicen igual: el aviso se vuelve ruido",
+     "validadores/corredor.py",
+     '                         "la última corrida de las pruebas del estándar "',
+     '                         "las pruebas del estándar nunca corrieron "'),
 
     # -- un archivo roto no puede llevarse el resto -----------------------
     ("un archivo que no carga tumba la corrida entera",
@@ -149,10 +159,19 @@ def main():
                 cazado, resumen = corren_las_pruebas()
             finally:
                 shutil.copy2(copias[rel], os.path.join(RAIZ, rel))
-            print("%-10s %-56s %s"
-                  % ("CAZADO" if cazado else "SE COLO", nombre, resumen[-52:]))
-            if not cazado:
+            roto = ("SyntaxError" in resumen or "IndentationError" in resumen)
+            if roto:
+                # `S-068`, con otra forma: si el archivo queda sin compilar, las
+                # pruebas fallan por la sintaxis y no por el comportamiento.
+                # Eso no es cazar el sabotaje: es no haberlo aplicado.
+                marca = "NO VALE"
+                fallos.append(nombre + " -- dejo el archivo sin compilar")
+            elif cazado:
+                marca = "CAZADO"
+            else:
+                marca = "SE COLO"
                 fallos.append(nombre)
+            print("%-10s %-56s %s" % (marca, nombre, resumen[-52:]))
     finally:
         for rel, copia in copias.items():
             shutil.copy2(copia, os.path.join(RAIZ, rel))

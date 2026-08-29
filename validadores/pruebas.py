@@ -4083,17 +4083,55 @@ class LasPruebasQueExistenSeCorren(unittest.TestCase):
         self.assertTrue(avisos, "no reclamó sin haber corrido nunca")
         self.assertIn("nunca corrieron", avisos[0].mensaje)
 
-    def test_la_corrida_entera_y_limpia_deja_el_sello(self):
+    def test_la_corrida_entera_y_limpia_deja_el_sello_en_cero(self):
         raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
         corredor.validar(raiz)
         self.assertTrue(os.path.isfile(os.path.join(raiz, corredor.SELLO)),
                         "una corrida limpia no dejó constancia")
+        self.assertEqual([], corredor.reclamo(raiz),
+                         "reclamó con la última corrida limpia y sin commits nuevos")
 
-    def test_una_corrida_con_fallas_no_sella(self):
+    def test_una_corrida_con_fallas_sella_diciendo_cuantas(self):
+        """**Lo dijo el primer push de verdad.** La primera versión solo sellaba
+        el verde, así que el reclamo decía «nunca corrieron» sobre una carpeta
+        que había corrido dos veces ese día. Quien lo leyera iría a esperar diez
+        minutos para volver a leer lo mismo.
+        """
         raiz = self._proyecto([("test_dos.py", self.UNA_QUE_FALLA)])
         corredor.validar(raiz)
-        self.assertFalse(os.path.isfile(os.path.join(raiz, corredor.SELLO)),
-                         "selló una corrida que falló")
+        avisos = corredor.reclamo(raiz)
+        self.assertTrue(avisos, "no reclamó con la última corrida en rojo")
+        self.assertIn("1 falla(s)", avisos[0].mensaje)
+        self.assertNotIn("nunca corrieron", avisos[0].mensaje,
+                         "dice que nunca corrieron, y corrieron")
+
+    def test_los_tres_motivos_se_dicen_distinto(self):
+        """Nunca corrieron, la última dejó fallas, o hay trabajo que no vieron.
+
+        Llevan a cosas distintas, así que decirlos igual convierte el aviso en
+        ruido — y un aviso que manda a hacer algo que no cambia nada se apaga.
+        """
+        vacia = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        nunca = corredor.reclamo(vacia)[0].mensaje
+
+        roja = self._proyecto([("test_dos.py", self.UNA_QUE_FALLA)])
+        corredor.validar(roja)
+        con_fallas = corredor.reclamo(roja)[0].mensaje
+
+        self.assertNotEqual(nunca, con_fallas)
+        self.assertIn("nunca corrieron", nunca)
+        self.assertIn("dejó", con_fallas)
+
+    def test_un_sello_viejo_sin_conteo_se_lee_como_limpio(self):
+        """Los sellos que ya existan traen solo la fecha: aquella versión solo
+        sellaba el verde, así que leerlos como limpios es lo que decían."""
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        ruta = os.path.join(raiz, corredor.SELLO)
+        os.makedirs(os.path.dirname(ruta))
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write("2026-08-28 10:00:00\n")
+        self.assertEqual([], corredor.reclamo(raiz),
+                         "un sello viejo se leyó como corrida con fallas")
 
     def test_un_subconjunto_no_sella(self):
         """Sellar un subconjunto diría «esto se comprobó» sobre lo que no se miró."""
@@ -4120,6 +4158,20 @@ class LasPruebasQueExistenSeCorren(unittest.TestCase):
         corredor.sellar(raiz)
         self.assertEqual([], corredor.reclamo(raiz),
                          "afirmó sobre una carpeta que no es repositorio")
+
+    def test_el_sello_no_se_cuenta_como_una_sesion(self):
+        """**Dos cosas distintas no van en el mismo cajón.**
+
+        La primera versión puso el sello en `historico-chat/.tocado/`, donde
+        `sesiones.registros()` lee **todo** `.txt` como el registro de una
+        conversación: el sello apareció como una sesión viva llamada «internas»
+        con dos archivos, que eran una fecha y un número.
+        """
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        corredor.validar(raiz)
+        self.assertTrue(os.path.isfile(os.path.join(raiz, corredor.SELLO)))
+        self.assertEqual({}, sesiones.registros(raiz),
+                         "el sello se cuenta como una sesión viva")
 
     def test_el_reclamo_esta_colgado_del_pre_push(self):
         """Es la lección de `EP-002·HU-004`: construido, y nadie lo llamaba."""

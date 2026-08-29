@@ -36,7 +36,7 @@
 | CA-03 — subconjunto | servicio | `corredor.correr(solo=…)` · `validar.py internas <nombres>` | ✅ | `CP-005` |
 | CA-04 — colgado de algo | adaptador | `corredor.sellar` / `corredor.reclamo` · `instalar.PLANTILLA_PRE_PUSH` | ✅ | `CP-006`, `CP-007` |
 | CA-05 — los seis rojos declarados | doc | §6 de este documento | ✅ | `CP-008` |
-| Las pruebas de los cinco criterios | prueba | `validadores/pruebas.py` · `LasPruebasQueExistenSeCorren` | ✅ | 20 pruebas |
+| Las pruebas de los cinco criterios | prueba | `validadores/pruebas.py` · `LasPruebasQueExistenSeCorren` | ✅ | 22 pruebas |
 | Versión y registro de cambios (`20·M10`) | doc | `VERSION`, `CHANGELOG.md` | ✅ | `35.9.0` |
 
 **Faltantes / diferimientos:** ninguno.
@@ -53,10 +53,10 @@
 | T-05 | Colgarlo | ✅ hecha | `instalar.py` · `.githooks/pre-push` | `CP-007` |
 | T-06 | La orden documentada, corregida | ✅ hecha | `validadores/README.md` | Las dos suites, con su tiempo y su motivo |
 | T-07 | Declarar los seis rojos | ✅ hecha | §6 de este documento | Uno cerrado, cinco enrutados |
-| T-08 | Las pruebas de los CA | ✅ hecha | `validadores/pruebas.py` | 20 pruebas |
+| T-08 | Las pruebas de los CA | ✅ hecha | `validadores/pruebas.py` | 22 pruebas |
 | T-09 | Correrlo de verdad | ✅ hecha | — | El instalador corrido; el enganche real, línea 46 |
 | T-10 | `CHANGELOG` y `VERSION` | ✅ hecha | — | `35.9.0` |
-| T-11 | Sabotear | ✅ hecha | `sabotajes-hu021.py` | **11 de 11 cazados** |
+| T-11 | Sabotear | ✅ hecha | `sabotajes-hu021.py` | **12 de 12 cazados** |
 
 **Correspondencia con el plan:** 12 tareas en el plan, 12 acá.
 
@@ -83,12 +83,12 @@
 | **Veredicto** | **Cumple** |
 
 - **Suites ejecutadas + resultado:** las **dos**, que es lo que esta fase vino a hacer posible.
-  - `pruebas.py`: **535 pruebas, 0 fallas** (4 esperadas, declaradas de antes). Esta fase aporta 20.
+  - `pruebas.py`: **537 pruebas, 0 fallas** (4 esperadas, declaradas de antes). Esta fase aporta 22.
   - `validar.py internas`: **650 pruebas en 67 archivos, 8 fallas en 5 archivos** — contra 8 fallas en 6 archivos de la línea base. **Un archivo menos en rojo; las fallas quedaron igual**, y la octava la causó cerrar el pendiente 90 a mano (`DEF-05`).
 - **Verificaciones manuales** (`08·T4`):
   - El enganche quedó en `.githooks/pre-push`, no solo en la plantilla.
   - El reclamo responde de inmediato: lee una fecha.
-  - **11 de 11 sabotajes cazados**, tras corregir dos que estaban mal armados.
+  - **12 de 12 sabotajes cazados**, tras corregir tres mal armados — uno de ellos se reportaba como cazado y solo rompía la sintaxis (`S-078`).
 - **Defectos abiertos que se aceptaron:** ninguno.
 
 ---
@@ -116,6 +116,7 @@ python validadores/validar.py internas --reclamo    # no corre: dice si hace fal
 | **Un solo proceso** | Medido: los 650 juntos dan las mismas fallas que uno por uno. 67 arranques de Python para el mismo resultado | — |
 | **El sello solo lo pone la corrida entera y limpia** | Sellar un subconjunto diría «esto se comprobó» sobre lo que no se miró — el defecto del que sale toda la pieza | — |
 | **Las dos suites siguen separadas** | Juntarlas daría 1165 pruebas y 13 minutos en cada fase, justo lo que `02·F5` evita. `internas` queda fuera de `validar.py todo`, declarado con su motivo | — |
+| **El sello guarda el conteo de fallas, no solo el verde** | La primera versión sellaba solo la corrida limpia, y el reclamo decía «nunca corrieron» sobre unas pruebas que habían corrido dos veces. **Lo destapó el primer push de verdad, no las pruebas** | `S-077` |
 | **Un archivo que no carga se reporta y no tumba el resto** | `EP-004·HU-003`: un archivo roto no puede llevarse lo que ya se sabía | — |
 
 ---
