@@ -53,9 +53,19 @@ SALTAR = re.compile(
 # **Se nombran una por una, no por carpeta.** Exceptuar `tests/` entero dejaría
 # ciego al detector sobre todo lo que se escriba ahí mañana, que es exactamente
 # el agujero por el que se cuela una clave real.
+# **Se nombran uno por uno, nunca por carpeta.** Exceptuar `tests/` entero
+# dejaría ciego al detector sobre todo lo que se escriba ahí mañana — que es
+# justo el agujero por el que se cuela una clave real.
+#
+# **El precio de esa decisión es que la lista se queda atrás, y ya pasó.** Los
+# dos últimos se agregaron el 2026-08-22 y nadie volvió acá: `validar.py todo`
+# estuvo seis días en rojo por eso. Si agregas una prueba que necesita algo con
+# **forma** de clave, su nombre va acá en la misma vuelta.
 EXENTOS = (
     "validadores/tests/test_la_clave_no_llega_al_historico.py",
     "validadores/tests/test_el_validador_no_revisa_lo_ajeno.py",
+    "validadores/tests/test_la_clave_sin_comillas_se_enmascara.py",
+    "validadores/tests/test_el_conteo_por_regla.py",
     "validadores/pruebas.py",
 )
 

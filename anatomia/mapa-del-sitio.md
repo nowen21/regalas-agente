@@ -14,8 +14,8 @@ El repositorio se divide en **cuatro zonas**. Toda carpeta pertenece a una:
 
 | Zona | Qué guarda | Carpetas |
 |---|---|---|
-| 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` |
-| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `interfaz/` · `evals/` |
+| 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` · `cvds/` |
+| 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `interfaz/` · `evals/` · `plataforma/` |
 | 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` · `documentacion/` · `analisis/` |
 | ⬜ **Apoyo** | Configuración y empaquetado. | `.claude/` · `.claude-plugin/` · `.githooks/` |
 
@@ -202,6 +202,18 @@ agente/
 │       └── proyectos/ ................ EL REGISTRO DE PROYECTOS: modelo, pantallas, medir (expediente), importar/exportar el .md
 │   ├── README.md
 │   └── (la base de Cimiento es MariaDB, puerto 3307, base `cimiento`; credenciales en .env)
+│
+├── 🟩 plataforma/ .................... CIMIENTO COMO APLICACIÓN (Django; índice SQLite local)
+│   ├── manage.py ...................... python plataforma/manage.py runserver
+│   ├── config/ ........................ urls, wsgi, asgi y settings/
+│   ├── nucleo/ ........................ almacen · auditoria · importacion · proyectos · seguridad · constancia.py
+│   ├── requirements/ .................. base.txt · local.txt
+│   └── indice.sqlite3 ................. el índice local (NO se versiona)
+│
+├── 🟦 cvds/ .......................... LAS SIETE ETAPAS DEL CICLO DE VIDA, Y QUÉ QUEDA ESCRITO EN CADA UNA
+│   ├── planificacion/ · analisis-requisitos/ · diseno/ · implementacion/
+│   ├── pruebas/ · despliegue/ · mantenimiento/
+│   └── cumplimiento.md ................ los moldes NO se copian acá: se enlazan a plantillas/ciclo-vida-proyectos/
 │
 ├── 🟨 anatomia/ ...................... CÓMO ESTÁ HECHO EL AGENTE
 │   ├── componentes-del-agente.md ..... qué hace cada pieza y cuál necesita IA

@@ -153,6 +153,7 @@ Se repite trabajo ya hecho, se contradicen decisiones ya tomadas, y una clave pe
 | [HU-018](HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md) | Que los guiones de apoyo queden en el repositorio, sin depender de que el agente se acuerde | Must | S |
 | [HU-019](HU-019-el-hash-del-commit-se-anota-solo/HU-019-el-hash-del-commit-se-anota-solo.md) | Que el hash del commit se anote solo, y que se sepa a cuántas fases alcanza | Must | M |
 | [HU-020](HU-020-el-registro-de-la-sesion-no-depende-de-la-herramienta/HU-020-el-registro-de-la-sesion-no-depende-de-la-herramienta.md) | Que el registro de la sesión no dependa de con qué herramienta se escribió | Must | M |
+| [HU-021](HU-021-las-pruebas-que-existen-se-corren/HU-021-las-pruebas-que-existen-se-corren.md) | Que las pruebas que ya existen se corran — 650 escritas que ningún comando ejecuta | Must | M |
 
 ## 10. Consideraciones técnicas
 
