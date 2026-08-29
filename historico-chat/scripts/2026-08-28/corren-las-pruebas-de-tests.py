@@ -39,8 +39,17 @@ for nombre in archivos:
         rojos += 1
         detalle.append(("ROJO ", nombre, resumen))
 
+# La lista COMPLETA, no solo los rojos: sin saber cuales estaban verdes antes,
+# un rojo nuevo despues no se distingue de uno de siempre (`CP-000`).
 for marca, nombre, resumen in detalle:
     print("%s %-58s %s" % (marca, nombre, resumen[:60]))
+
+if "--todos" in sys.argv:
+    print("")
+    print("LINEA BASE, archivo por archivo:")
+    for nombre in archivos:
+        estado = "ROJO " if any(d[1] == nombre for d in detalle) else "verde"
+        print("   %s  %s" % (estado, nombre))
 
 print("")
 print("De %d archivos: %d en verde, %d en rojo, %d sin pruebas." %

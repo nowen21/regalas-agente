@@ -135,6 +135,12 @@ done
 # **Se ve, y no bloquea**, hasta que la deuda se cierre.
 "$PY" "$ESTANDAR/validadores/validar.py" metareglas --raiz "$(pwd)" ||     echo "pre-push: hay reglas que no pasan su propio checklist (no detiene)."
 
+# **Reclama, no corre.** Las pruebas del propio estándar tardan ~10 minutos y
+# este repositorio hace 16 commits por día: correrlas acá costaría 39 horas
+# cada dos semanas, y un peaje así se apaga en una tarde. Esto solo mira una
+# fecha y dice si hay commits que esas pruebas no vieron.
+"$PY" "$ESTANDAR/validadores/validar.py" internas --reclamo || true
+
 if [ "$FALLO" -ne 0 ]; then
     echo "" >&2
     echo "Push rechazado: la batería encontró fallas." >&2

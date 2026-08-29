@@ -8,7 +8,7 @@
 
 **Que las 650 pruebas de `validadores/tests/` se puedan correr, se corran, y que cero pruebas no pase por verde.**
 
-- 📝 **Sale de un daño medido.** La lista de exentos del detector de secretos quedó vieja y `validar.py todo` estuvo **seis días en rojo** diciendo «posible secreto en el código». La prueba que lo cazaba estaba escrita hacía diez días y nunca se corrió (`S-075`, [pendiente 90](../../../../../pendientes/90-las-pruebas-de-validadores-tests-no-las-corre-nada.md)).
+- 📝 **Sale de un daño medido.** La lista de exentos del detector de secretos quedó vieja y `validar.py todo` estuvo **seis días en rojo** diciendo «posible secreto en el código». La prueba que lo cazaba estaba escrita hacía diez días y nunca se corrió (`S-075`, [pendiente 90](../../../../../pendientes/hecho/las-pruebas-que-existen-se-corren.md)).
 
 ### 1.1 Fuera de alcance
 

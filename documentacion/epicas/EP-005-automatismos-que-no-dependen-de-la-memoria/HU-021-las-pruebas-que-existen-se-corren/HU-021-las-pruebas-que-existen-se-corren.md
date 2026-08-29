@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso |
+| **Estado** | Terminada |
 
 ---
 
@@ -166,7 +166,7 @@ Entonces está escrito cuáles son, qué dice cada uno y adónde va
 
 ## 6. Diseño y referencias
 
-- **De dónde sale:** el [pendiente 90](../../../../pendientes/90-las-pruebas-de-validadores-tests-no-las-corre-nada.md).
+- **De dónde sale:** el [pendiente 90](../../../../pendientes/hecho/las-pruebas-que-existen-se-corren.md).
 - **La señal:** `S-075` — cuatro registros llevados a mano se quedaron atrás, y tres tenían comprobador que nadie corría.
 - **Las mediciones:** [historico-chat/scripts/2026-08-28/](../../../../historico-chat/scripts/2026-08-28/) — `corren-las-pruebas-de-tests.py` y `todos-en-un-proceso.py`.
 - **La regla que hoy no se puede cumplir acá:** `02·F5`.
@@ -175,14 +175,14 @@ Entonces está escrito cuáles son, qué dice cada uno y adónde va
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] «Backend» Un corredor que cargue la carpeta y reporte el conteo.
-- [ ] «Backend» Que acepte un subconjunto por nombre.
-- [ ] «Backend» Que cero pruebas sea rojo.
-- [ ] «Adaptador» Colgar la corrida completa de algo.
-- [ ] «Documentación» Corregir la orden que el `CHANGELOG` documenta y no funciona.
-- [ ] «Documentación» Declarar los seis rojos, con su destino.
-- [ ] «Pruebas» Los cinco criterios, con el de la carpeta vacía.
-- [ ] «Documentación» Entrada en el `CHANGELOG` y subir `VERSION`.
+- [x] «Backend» Un corredor que cargue la carpeta y reporte el conteo.
+- [x] «Backend» Que acepte un subconjunto por nombre.
+- [x] «Backend» Que cero pruebas sea rojo.
+- [x] «Adaptador» Colgar la corrida completa de algo.
+- [x] «Documentación» Corregir la orden que el `CHANGELOG` documenta y no funciona.
+- [x] «Documentación» Declarar los seis rojos, con su destino.
+- [x] «Pruebas» Los cinco criterios, con el de la carpeta vacía.
+- [x] «Documentación» Entrada en el `CHANGELOG` y subir `VERSION`.
 
 ---
 
@@ -190,7 +190,7 @@ Entonces está escrito cuáles son, qué dice cada uno y adónde va
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| [A-EP-005-HU-021-el-corredor-que-si-las-corre](A-EP-005-HU-021-el-corredor-que-si-las-corre/) | CA-01 a CA-05 | (vacío) | [plan_trabajo](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_trabajo.md) | [plan_pruebas](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_pruebas.md) | — | **Planes por aprobar** |
+| [A-EP-005-HU-021-el-corredor-que-si-las-corre](A-EP-005-HU-021-el-corredor-que-si-las-corre/) | CA-01 a CA-05 | (vacío) | [plan_trabajo](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_trabajo.md) | [plan_pruebas](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_pruebas.md) | [resultado](A-EP-005-HU-021-el-corredor-que-si-las-corre/resultado_pruebas.md) — **Cumple** | Terminada |
 
 **La línea base, medida antes de abrir la carpeta:** `122 en total · 32 sin terminar · 90 terminadas, de las cuales 72 cumplen, 13 no cumplen y 5 no dicen si cumplen`.
 

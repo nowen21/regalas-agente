@@ -1,16 +1,6 @@
-# La suite completa al cerrar la fase A-EP-005-HU-020
-#
-# Recortado a lo que se lee. El volcado entero eran 71 KB;
-# lo que queda es lo que alguien mira: el resumen y lo que falló.
-# Se reproduce con: python validadores/pruebas.py
+# pruebas.py al cerrar la fase A-EP-005-HU-021.
+# Recortado. Se reproduce con: python validadores/pruebas.py
 
-**Falla hoy** (defecto `D-01` de la fase): `metareglas.reglas()` ... expected failure
-CP-001, paso 5: en el almac?n local puede haber archivos de la ... expected failure
-CA-02: cada archivo que la simulaci?n anuncia aparece de verdad al ... expected failure
-CP-005 y el transversal de no regresi?n: entre dos entradas ... expected failure
-Ran 515 tests in 180.314s
+Ran 535 tests in 213.519s
 OK (expected failures=4)
 OK: sin incumplimientos.
-
-# 511 terminaron en `ok`; las 4 restantes son fallas esperadas,
-# declaradas de antes y listadas arriba. Las que pasaron no se listan.

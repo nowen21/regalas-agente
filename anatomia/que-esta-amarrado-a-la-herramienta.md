@@ -120,5 +120,6 @@ Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, 
 | `hook_rutas.py` | 🟡 adaptador | Existe porque la herramienta avisa que se escribió un archivo |
 | `hook_estacion.py` | 🟡 adaptador | Lo mismo |
 | `hook_turno.py` | 🟡 adaptador | Existe porque la herramienta avisa que terminó el turno |
+| `corredor.py` | 🟢 libre | Cargar archivos de prueba y contar lo que corrieron sirve con cualquier agente — y con ninguno |
 
-**El recuento, corrido y no calculado, da 26 amarradas de 81.** Escribí «27 de 76» sumando a mano sobre el último número del mapa, y `validar.py amarre` lo desmintió en la misma vuelta: el mapa venía más atrasado que las siete piezas que yo había visto. Sigue siendo un tercio, y sigue cayendo del mismo lado: **lo amarrado es enterarse de que algo pasó; lo libre es qué hacer con eso.** Cuatro de las siete piezas son trabajo que sobrevive a un cambio de agente, y las tres que no son de tres renglones cada una.
+**El recuento, corrido y no calculado, da 26 amarrados de 82** —con `corredor.py`, que nació al día siguiente de esta línea y entró acá en la misma vuelta, porque su prueba lo reclamó.

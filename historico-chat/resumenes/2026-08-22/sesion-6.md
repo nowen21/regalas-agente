@@ -920,6 +920,69 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 
 ---
 
+### H-58 · Tres claves «escritas» eran datos de prueba, y el problema era la lista que los exime
+
+- **Qué pasó:** `validar.py todo` daba tres fallas de «posible secreto en el código». No eran credenciales: eran los datos con forma de clave que necesitan las pruebas **del propio detector**. Existe una lista de exentos para eso, se lleva a mano, y **se quedó atrás** cuando se agregaron dos pruebas el 22.
+- **Por qué importa:** el árbol estuvo **seis días en rojo**, con el mismo mensaje que daría una fuga de verdad. **Un control que lleva días en rojo por una lista vieja ya no distingue lo nuevo** — que es, con esas palabras, lo que el pendiente que creó esa lista había advertido diez días antes.
+- **Qué lo soluciona:** los dos nombres en la lista, y un comentario que dice **cuándo hay que volver acá**. La lista sigue a mano a propósito: una que se llenara sola sería el agujero por donde pasa una clave real.
+- **Estado:** resuelto acá.
+- **Responde a:** — · **Dispara:** `H-59` · **Orden de resolución:** —
+- **Dónde queda:** `validadores/secretos.py` · la señal `S-075`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-59 · 650 pruebas escritas que ningún comando corría
+
+- **Qué pasó:** buscando qué prueba debía haber cazado lo de `H-58`, apareció que **esa prueba existe, está escrita hace diez días y nunca corrió**. No es una: `validadores/tests/` tiene 67 archivos y 650 pruebas, y **ninguno de los cuatro comandos del repositorio las ejecutaba**. La orden que el registro de cambios documenta desde la primera prueba **se caía antes de correr nada**, por un `__init__.py` que faltaba, y su error se leía como ruido.
+- **Por qué importa:** esas 650 aparecen en el registro de cambios fase tras fase —«9 casos», «23 casos»— como constancia de que algo quedó comprobado. **Una prueba que nadie corre es peor que no tenerla: figura como cobertura.** Al correrlas: **61 archivos en verde y 6 en rojo**, uno con 98 enlaces mal escritos donde su criterio exige cero.
+- **Qué lo soluciona:** la `HU-021` — un corredor que las corre y **dice cuántas corrió**, donde cero es rojo, y que acepta un subconjunto para que `02·F5` se pueda cumplir acá.
+- **Estado:** resuelto acá.
+- **Responde a:** `H-58` · **Dispara:** `H-60` · **Orden de resolución:** después de `H-58`
+- **Dónde queda:** el [pendiente cerrado](../../../pendientes/hecho/las-pruebas-que-existen-se-corren.md) · la fase `A-EP-005-HU-021`.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-60 · El número que debía confirmar el diseño lo tumbó
+
+- **Qué pasó:** el plan estimaba que las 650 tardaban **3 minutos** y planteaba colgarlas de algo. Medido: **9,6 minutos**, y este repositorio hace **16 commits por día** — 245 en catorce días. Colgarlas de cada commit costaría **39,3 horas cada dos semanas**; de cada push, 2,4 horas.
+- **Por qué importa:** **ninguna opción que corriera las pruebas cabía en el umbral escrito.** Un peaje así se apaga en una tarde, y entonces queda algo peor que su ausencia: un control que figura como puesto.
+- **Qué lo soluciona:** cambió la pregunta. No *«¿dónde las corro?»* sino *«¿cómo me entero de que hace falta correrlas sin pagar 9,6 minutos?»*. El corredor sella la última corrida entera y limpia; el `pre-push` compara esa fecha con el último commit. Cuesta leer un archivo.
+- **Y es la segunda vez en dos días que una medición mata el diseño obvio antes de escribirlo** — la primera fue el arreglo de la comprobación de sesiones, que habría hablado en 7 de 12 commits. **El caso escrito para poder fracasar fracasó, y por eso sirvió.**
+- **Estado:** resuelto acá.
+- **Responde a:** `H-59` · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** `t04-donde-cuelga.py` · el `CP-006` de la fase.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-61 · Una prueba que no podía fallar, encontrada por un sabotaje que dijo «NO APLICA»
+
+- **Qué pasó:** un sabotaje avisó de que el texto que buscaba no existía. Parecía defecto del guion —y lo era— pero al buscar el texto correcto apareció que **la prueba miraba el sitio equivocado**: buscaba «internas» en un bloque de código donde esa exclusión no vive. **No podía fallar nunca.**
+- **Por qué importa:** es la tercera forma de `S-062`, encontrada por accidente. Y el accidente no fue casual: **el sabotaje no cazaba porque el sabotaje estaba mal, y la prueba tampoco cazaba porque la prueba estaba mal.** Dos errores que se tapaban entre sí y daban verde.
+- **Qué lo soluciona:** la prueba ahora mira `FUERA_DE_LA_CORRIDA`, que es donde vive la decisión. Y la lección operativa: **un «NO APLICA» del guion de sabotaje no es ruido — es una pista de que alguien está mirando el sitio equivocado, y puede ser la prueba.**
+- **Estado:** resuelto acá.
+- **Responde a:** — · **Dispara:** — · **Orden de resolución:** —
+- **Dónde queda:** `test_la_corrida_de_todos_no_arrastra_las_650` · el `DEF-04` de la fase.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** 2026-08-22 · sesion-6 · **Con qué se retoma:** —
+
+---
+
+### H-62 · El sello de «commit autorizado» se puso sobre una fase recién abierta
+
+- **Qué pasó:** el enganche de `post-commit` selló la estación 12 —«Commit · autorizado»— de una fase que iba por la estación 7, con el hash del commit **que la estaba creando**.
+- **Por qué importa:** un documento de fase que dice «commit autorizado» sin que nadie lo autorizara es exactamente lo que el estándar existe para impedir, y quien lo lea después no tiene cómo saber que lo escribió un programa.
+- **Qué lo soluciona:** la fila se corrigió a mano y quedó dicho en el propio documento. El arreglo del enganche va con su cadena: es defecto de `A-EP-005-HU-019`, no de la fase que lo sufrió.
+- **Y se vio porque el enganche imprime lo que hace.** Si callara —que es la tentación de todo automatismo que «no molesta»— el sello falso se habría quedado. **Un automatismo que escribe tiene que decir qué escribió.**
+- **Estado:** parcialmente resuelto. **La fila, corregida; el enganche sigue igual.**
+- **Responde a:** — · **Dispara:** una fase de arreglo sobre `HU-019` · **Orden de resolución:** —
+- **Dónde queda:** la señal `S-076` · el §3 del `estado-fase.md` de la fase.
+- **Nace en:** 2026-08-22 · sesion-6 · **Cerrado en:** — · **Con qué se retoma:** el `§6` del cierre de la `HU-021`, que agrupa los rojos de `HU-019`.
+
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -934,7 +997,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ |
 | Lo que se hizo está aprobado y guardado | ☑ · la fase `B` de la `HU-021`, en `b194424` |
 
-**Cincuenta y siete hallazgos, cincuenta y cinco cerrados.** (La cuenta anterior decía «cincuenta y uno cerrados» de cincuenta y dos, y dos renglones después decía que quedaban **dos** abiertos. Sobraba uno: los dos abiertos son `H-40` y `H-44`, los dos **parcialmente resueltos**.)
+**Sesenta y dos hallazgos, cincuenta y nueve cerrados.** Quedan tres abiertos: `H-40`, `H-44` y `H-62`, los tres **parcialmente resueltos** — el caso tapado, la causa viva.
 
 **Quedan dos abiertos, y los dos son la misma clase de cosa: una causa raíz que nadie hace cumplir.**
 

@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.9.0 — 2026-08-28
+
+**Había 650 pruebas escritas que ningún comando corría.** Ahora se corren con una orden, esa orden dice cuántas corrió, y **cero pruebas es rojo**.
+
+**MENOR** (aditivo: un subcomando y un corredor; nadie tiene que cambiar nada).
+
+**Cómo apareció.** Buscando qué prueba debía haber cazado que una lista se quedara vieja seis días. **La prueba existía, escrita diez días antes, y nunca había corrido.** No era una: `validadores/tests/` tiene 67 archivos y 650 pruebas, y ninguno de los cuatro comandos que podrían ejecutarlas lo hacía. La orden documentada desde la primera prueba del repositorio **se caía antes de correr nada**, por un archivo vacío que faltaba, y su error se leía como ruido.
+
+**Lo que aparece al correrlas: 61 archivos en verde y 6 en rojo.** Uno cuenta 98 enlaces entre carpetas mal escritos donde su criterio exige cero; otro dice que un enganche se quedó del lado equivocado de la frontera del adaptador. Varias son de trabajo de estos días.
+
+**Por qué no bastó con crear el archivo que faltaba.** Con él, la orden carga. Pero `unittest discover` sobre una carpeta vacía **termina en cero**, y eso es el defecto que estábamos arreglando, no su arreglo: un silencio que se lee como éxito. Se creó igual —que la documentación mienta es la otra mitad del problema— y encima va un corredor que **cuenta lo que corrió**.
+
+**Y no se cuelga de cada commit, porque se midió.** Las 650 tardan **9,6 minutos**, y este repositorio hace **16 commits por día**: correrlas ahí costaría **39 horas cada dos semanas**. Un peaje así se apaga en una tarde, y entonces quedamos peor que antes, con un control que figura como puesto. **Así que el enganche reclama en vez de correr:** al publicar, mira una fecha y dice si hay commits que esas pruebas no vieron. Cuesta lo que cuesta leer un archivo.
+
+**Se puede pedir un subconjunto**, que es lo que hace cumplible `02·F5` sobre esta carpeta: una fase corre las pruebas que toca, no las 650. **Y las dos suites siguen separadas a propósito**: juntarlas daría 1165 pruebas y 13 minutos en cada fase, que es justo lo que esa regla evita.
+
+**Lo que ya se cerró de los seis rojos:** uno. El mapa del amarre decía «26 amarradas» y su prueba busca la frase exacta «26 amarrados». Los otros cinco quedan **declarados con su nombre y lo que dice cada uno**, para que ninguno se arrastre sin decisión escrita.
+
+---
+
 ## 35.8.0 — 2026-08-28
 
 **El registro de lo que toca cada conversación dejó de depender de cómo se escribió el archivo.** Antes solo anotaba lo que el agente escribía con sus herramientas de edición; ahora anota **lo que cambió durante el turno**, sin mirar quién lo escribió.

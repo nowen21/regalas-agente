@@ -1,18 +1,15 @@
-# Todos los comprobadores, en el mismo momento
-#
-# Recortado a lo que se lee. El volcado entero eran 334 KB;
-# lo que queda es lo que alguien mira: el resumen y lo que falló.
+# validar.py todo al cerrar la fase.
+# Recortado: los 1798 avisos no se listan.
 # Se reproduce con: python validadores/validar.py todo
 
 == Coherencia del estándar ==
-OK: sin incumplimientos.
 == Épica → HU → Fase · . ==
 0 falla(s), 48 aviso(s).
-HU: 122 en total · 32 sin terminar · 90 terminadas, de las cuales 72 cumplen, 13 no cumplen y 5 no dicen si cumplen (F12.2)
+HU: 123 en total · 32 sin terminar · 91 terminadas, de las cuales 73 cumplen, 13 no cumplen y 5 no dicen si cumplen (F12.2)
 == Numeración de pendientes · . ==
 0 falla(s), 26 aviso(s).
 == Trazabilidad épica↔HU · plan · cierre · . ==
-0 falla(s), 43 aviso(s).
+0 falla(s), 44 aviso(s).
 == Qué está versionado (todo el repositorio) · . ==
 0 falla(s), 8 aviso(s).
 == El estándar contra sus meta-reglas · . ==
@@ -20,7 +17,6 @@ HU: 122 en total · 32 sin terminar · 90 terminadas, de las cuales 72 cumplen, 
 == Fases reabiertas · . ==
 0 falla(s), 9 aviso(s).
 == Índices · . ==
-OK: ningún índice tiene líneas que agregar.
 0 falla(s), 7 aviso(s).
 == Marcas de generación automática · . ==
 0 falla(s), 747 aviso(s).
@@ -32,9 +28,7 @@ OK: ningún índice tiene líneas que agregar.
 == El mapa del amarre a la herramienta · . ==
 0 falla(s), 7 aviso(s).
 == El mapa del sitio · . ==
-[FALLA] anatomia/mapa-del-sitio.md — `cvds/` no está en el mapa — quien lo lea va a creer que esa carpeta no existe
-[FALLA] anatomia/mapa-del-sitio.md — `plataforma/` no está en el mapa — quien lo lea va a creer que esa carpeta no existe
-2 falla(s), 7 aviso(s).
+0 falla(s), 7 aviso(s).
 == Histórico que solo crece · . ==
 0 falla(s), 7 aviso(s).
 == Brevedad de las respuestas · . ==
@@ -46,10 +40,7 @@ OK: ningún índice tiene líneas que agregar.
 == Cruces entre módulos · . ==
 0 falla(s), 10 aviso(s).
 == Secretos en el código · . ==
-[FALLA] validadores/tests/test_el_conteo_por_regla.py:76 — posible secreto en el código (clave de acceso AWS) · S4/N6
-[FALLA] validadores/tests/test_la_clave_sin_comillas_se_enmascara.py:87 — posible secreto en el código (clave de acceso AWS) · S4/N6
-[FALLA] validadores/tests/test_la_clave_sin_comillas_se_enmascara.py:88 — posible secreto en el código (token de GitHub) · S4/N6
-3 falla(s), 15 aviso(s).
+0 falla(s), 14 aviso(s).
 == Lockfile versionado · . ==
 0 falla(s), 9 aviso(s).
 == Rama de trabajo · . ==
@@ -63,9 +54,9 @@ OK: ningún índice tiene líneas que agregar.
 == Integridad de esquema · . ==
 0 falla(s), 9 aviso(s).
 == Plan de trabajo · . ==
-0 falla(s), 509 aviso(s).
+0 falla(s), 523 aviso(s).
 == Concatenación e inyección · . ==
-0 falla(s), 149 aviso(s).
+0 falla(s), 156 aviso(s).
 == Funciones largas · . ==
 0 falla(s), 19 aviso(s).
 == Integración continua · . ==
@@ -73,5 +64,3 @@ OK: ningún índice tiene líneas que agregar.
 == Pruebas aisladas · . ==
 0 falla(s), 9 aviso(s).
 == Corrida completa · . ==
-
-# Los 1777 avisos no se listan: son de otras fases y no detienen nada.

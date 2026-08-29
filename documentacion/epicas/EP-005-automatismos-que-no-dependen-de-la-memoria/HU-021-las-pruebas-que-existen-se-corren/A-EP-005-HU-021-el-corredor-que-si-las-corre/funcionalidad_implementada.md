@@ -1,6 +1,4 @@
-# Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> Documento de **cierre de una fase** ([`02·F6`](../../../../../base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](../../../../../base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la **trazabilidad especificación → código** ([`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
+# Funcionalidad implementada — Fase `A-EP-005-HU-021-el-corredor-que-si-las-corre` (módulo Pruebas)   ·   `[CAPA 3]`
 
 ---
 
@@ -8,136 +6,150 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
-| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
-| **Fecha de cierre** | AAAA-MM-DD |
-| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
-| **Commit** | «hash — se completa al commitear» |
-
-> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
+| **Fase** (identificador · `02·F12.6`) | `A-EP-005-HU-021-el-corredor-que-si-las-corre` |
+| **Módulo** | Pruebas |
+| **Especificación del módulo** | La redacción de los CA de la [HU-021](../HU-021-las-pruebas-que-existen-se-corren.md) es la especificación funcional (`02·F19`) |
+| **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
+| **HU / CA cubiertas** | HU-021 (CA-01 a CA-05) |
+| **Fecha de cierre** | 2026-08-28 |
+| **Versión del estándar al cerrar** | `35.9.0` |
+| **Commit** | Se completa al commitear |
 
 ---
 
 ## 1. Qué se implementó — resumen
 
-«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
+**Las 650 pruebas que ningún comando corría ahora se corren con una orden, y esa orden dice cuántas corrió.** Cero pruebas es rojo, se puede pedir un subconjunto, y la orden que la documentación nombraba —y que se caía antes de correr nada— vuelve a funcionar.
+
+**La corrida completa no se cuelga de nada, y eso se decidió midiendo:** tarda 9,6 minutos y este repositorio hace 16 commits por día. Lo que se cuelga del `pre-push` es **el reclamo**: mira una fecha y avisa si hay commits que esas pruebas no vieron.
 
 ---
 
-## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
-
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+## 2. Trazabilidad  ·  `13·DOC11`
 
 ### 2.1 Especificación → implementación
 
-> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
->
-> **Estados:** ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ, no se difiere como N/A.
-
-| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
+| Ítem | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
+| CA-01 — una orden, y es la documentada | servicio | `validadores/corredor.py` · `validadores/tests/__init__.py` · `validar.py internas` | ✅ | `CP-003`, `CP-004` |
+| CA-02 — cero pruebas es rojo | servicio | `corredor.correr`, el bloque de `testsRun == 0` | ✅ | `CP-002`, el crítico |
+| CA-03 — subconjunto | servicio | `corredor.correr(solo=…)` · `validar.py internas <nombres>` | ✅ | `CP-005` |
+| CA-04 — colgado de algo | adaptador | `corredor.sellar` / `corredor.reclamo` · `instalar.PLANTILLA_PRE_PUSH` | ✅ | `CP-006`, `CP-007` |
+| CA-05 — los seis rojos declarados | doc | §6 de este documento | ✅ | `CP-008` |
+| Las pruebas de los cinco criterios | prueba | `validadores/pruebas.py` · `LasPruebasQueExistenSeCorren` | ✅ | 20 pruebas |
+| Versión y registro de cambios (`20·M10`) | doc | `VERSION`, `CHANGELOG.md` | ✅ | `35.9.0` |
 
-**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
+**Faltantes / diferimientos:** ninguno.
 
 ### 2.2 Plan de trabajo → ejecución
 
-> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
-
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
+| T-00 | La línea base, archivo por archivo | ✅ hecha | `linea-base-t00.txt` | 61 verdes, 6 rojos, con nombres |
+| T-01 | ¿El `__init__.py` rompe alguno? | ✅ hecha | `t01-con-init.txt` | **No.** La subida a 5 fallas era de `corredor.py` |
+| T-02 | El corredor y su conteo | ✅ hecha | `validadores/corredor.py` | `650 prueba(s) en 67 archivo(s)` |
+| T-03 | Cero en rojo, y el subconjunto | ✅ hecha | el mismo | `CP-002`, `CP-005` |
+| T-04 | ¿Dónde cuelga, con el número? | ✅ hecha | `t04-donde-cuelga.py` | **Ninguna opción que corra cabe.** Se cuelga el reclamo |
+| T-05 | Colgarlo | ✅ hecha | `instalar.py` · `.githooks/pre-push` | `CP-007` |
+| T-06 | La orden documentada, corregida | ✅ hecha | `validadores/README.md` | Las dos suites, con su tiempo y su motivo |
+| T-07 | Declarar los seis rojos | ✅ hecha | §6 de este documento | Uno cerrado, cinco enrutados |
+| T-08 | Las pruebas de los CA | ✅ hecha | `validadores/pruebas.py` | 20 pruebas |
+| T-09 | Correrlo de verdad | ✅ hecha | — | El instalador corrido; el enganche real, línea 46 |
+| T-10 | `CHANGELOG` y `VERSION` | ✅ hecha | — | `35.9.0` |
+| T-11 | Sabotear | ✅ hecha | `sabotajes-hu021.py` | **11 de 11 cazados** |
 
-**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
+**Correspondencia con el plan:** 12 tareas en el plan, 12 acá.
 
-**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
+**Tareas que no se hicieron:** ninguna.
 
-**Archivos tocados que el plan no declaraba**, [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
+**Archivos tocados que el plan no declaraba**, `02·F8`:
 
 | Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
 |---|---|---|
-| `«ruta»` | | |
+| `anatomia/que-esta-amarrado-a-la-herramienta.md` | **Toda pieza nueva de `validadores/` exige su fila ahí, y `corredor.py` es una.** Lo reclamó su propia prueba, que sumó 4 fallas hasta que la fila estuvo | Es requisito del repositorio, no una decisión: sin la fila, `validar.py amarre` queda en rojo |
+| `documentacion/senales.md` | `S-076`, el sello de la estación 12 puesto sobre una fase recién abierta | El plan §9 manda registrar como señal lo decidido (`13·DOC5`) |
+| Los dos planes y la HU | **Sus citas al pendiente 90 se rompieron cuando el pendiente se cerró y se movió a `hecho/`.** Se arrastraron a la ruta nueva; el texto no cambió | No es cambiar un plan aprobado: es que su cita apunte al mismo documento donde quedó |
+| `validadores/README.md` | Estaba en el plan como T-06, pero declarado como «el `README` de `validadores/`» sin nombrar el archivo | Es el mismo archivo; se anota por precisión |
 
-> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
+**El pendiente se movió a mano, y existe un programa para eso.** `cerrar.py` arrastra las citas al cerrar un pendiente; acá se movió con `os.remove` y se escribió el destino, así que **cuatro enlaces quedaron rotos** — tres apuntando al archivo viejo y tres salientes que subían un nivel de menos. Los cerró `validar.py estandar`, no la revisión. **Es el mismo error de esta semana: hacer a mano lo que un programa ya hace.**
 
-**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
-
----
-
-## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
-
-> **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
-
-| **Fuente** | «`resultado_pruebas.md`» |
-| **Veredicto** | «Cumple» o «No cumple», **copiado del §6 del resultado**. No hay tercer valor: si algo de lo pedido falta, es «No cumple» |
-
-> **Va como campo, no en prosa.** Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo arriba del todo, cada una a su manera, y así ningún programa podía leerlo.
-
-| **Reemplaza el veredicto de** | **Opcional.** El nombre de otra fase **de esta misma historia** cuyo «No cumple» esta fase deja atrás, porque volvió a verificar ese criterio y hoy se cumple |
-
-> **Solo se escribe si esta fase verificó ese criterio, y solo vale si esta fase cumple.** Un rojo no se cierra con otro rojo, y **no se cierra por venir después**: hay fases posteriores que trabajaron otro criterio y no arreglaron nada. Se declara para que el conteo no lo adivine.
->
-> **El veredicto reemplazado no se toca.** Aquella fase sigue diciendo lo que dijo: el rastro de que estuvo en rojo es la información, y borrarlo la perdería. Existe desde la versión 35.5.0, porque hasta entonces **un rojo no tenía forma de cerrarse**: se podía hacer el trabajo, medirlo y declararlo, y el número no lo leía.
-
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
-  - «Lista de comprobaciones hechas a mano y su resultado.»
-- **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
+**Esfuerzo real contra estimado:** cerca de 10 h contra las 11,5 del plan. **Lo que se subestimó fue el tiempo de correr las 650** — 3 minutos estimados contra 9,6 reales — y ese error no costó horas: **cambió el diseño del enganche**.
 
 ---
 
-## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
+## 3. Qué se probó  ·  `08` / `02·F5`
 
-- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
-- **Permisos o datos base sembrados:** «si aplica».
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
+| **Veredicto** | **Cumple** |
+
+- **Suites ejecutadas + resultado:** las **dos**, que es lo que esta fase vino a hacer posible.
+  - `pruebas.py`: **535 pruebas, 0 fallas** (4 esperadas, declaradas de antes). Esta fase aporta 20.
+  - `validar.py internas`: **650 pruebas en 67 archivos, 8 fallas en 5 archivos** — contra 8 fallas en 6 archivos de la línea base. **Un archivo menos en rojo; las fallas quedaron igual**, y la octava la causó cerrar el pendiente 90 a mano (`DEF-05`).
+- **Verificaciones manuales** (`08·T4`):
+  - El enganche quedó en `.githooks/pre-push`, no solo en la plantilla.
+  - El reclamo responde de inmediato: lee una fecha.
+  - **11 de 11 sabotajes cazados**, tras corregir dos que estaban mal armados.
+- **Defectos abiertos que se aceptaron:** ninguno.
 
 ---
 
-## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-| Decisión | Por qué (y qué se descartó) | Señal registrada |
+```
+python validadores/validar.py internas              # las 650, ~10 min
+python validadores/validar.py internas test_x       # solo esas (02·F5)
+python validadores/validar.py internas --reclamo    # no corre: dice si hace falta
+```
+
+- **Lo que corre solo:** el `pre-push` pregunta si hace falta correrlas. **Avisa y no detiene.**
+- **Permisos o datos base sembrados:** ninguno. El sello vive en `historico-chat/.tocado/`, que no se versiona.
+
+---
+
+## 5. Decisiones no obvias  ·  `13·DOC2` / `13·DOC5`
+
+| Decisión | Por qué (y qué se descartó) | Señal |
 |---|---|---|
-| | | «id / enlace en la memoria» |
+| **El enganche reclama, no corre** | Se descartó correr las 650 al publicar: 9,6 min × 245 commits en 14 días = **39,3 horas**. Un peaje así se apaga en una tarde, y deja algo peor que su ausencia | `S-075` |
+| **Se creó el `__init__.py` igual, aunque el corredor no lo necesite** | Cargar por ruta habría bastado. Pero la orden documentada desde la primera prueba del repositorio tenía que funcionar: **que la documentación mienta es la otra mitad del defecto** | — |
+| **Cero pruebas es rojo** | `discover` da 0 y por eso el defecto duró semanas. Se dejó una prueba que **comprueba que `discover` sigue dando 0**: si cambia, avisa de que la razón de esta pieza cambió | — |
+| **Un solo proceso** | Medido: los 650 juntos dan las mismas fallas que uno por uno. 67 arranques de Python para el mismo resultado | — |
+| **El sello solo lo pone la corrida entera y limpia** | Sellar un subconjunto diría «esto se comprobó» sobre lo que no se miró — el defecto del que sale toda la pieza | — |
+| **Las dos suites siguen separadas** | Juntarlas daría 1165 pruebas y 13 minutos en cada fase, justo lo que `02·F5` evita. `internas` queda fuera de `validar.py todo`, declarado con su motivo | — |
+| **Un archivo que no carga se reporta y no tumba el resto** | `EP-004·HU-003`: un archivo roto no puede llevarse lo que ya se sabía | — |
 
 ---
 
-## 6. Deuda técnica y pendientes generados
+## 6. Los seis rojos, declarados  ·  `CA-05`
 
-| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|---|
-| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
+**Uno se cerró en el camino.** El mapa del amarre decía «26 amarrad**a**s de 82» y su prueba busca la frase exacta «26 amarrad**o**s». Una letra.
 
-**Los cuatro orígenes**, y qué dice cada uno:
+**Los cinco que quedan, con lo que dice cada uno y adónde va:**
 
-| Origen | Qué pasó | Qué significa |
-|---|---|---|
-| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../../../../../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
-| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
-| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
-| **Diferido por el plan** | El propio [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
+| Archivo | Qué falla | De dónde viene | Adónde va |
+|---|---|---|---|
+| `test_ninguno_termina_en_silencio` (3 fallas) | `estacion_commit.py` no dice por dónde se corre; y códigos de salida que no distinguen «no comprobé» de «hay fallas» | `A-EP-005-HU-019` | **Fase de arreglo sobre `HU-019`** |
+| `test_la_frontera_del_adaptador` | `hook_estacion.py` se quedó en `validadores/` y su sitio es `adaptadores/claude-code/` | `A-EP-005-HU-019` | **La misma** |
+| `test_el_texto_del_enlace_dice_donde_vive` | **98 enlaces entre carpetas mal escritos**, donde el criterio exige 0 | Acumulado, muchas fases | **Pendiente propio:** es limpieza grande y mecánica, no cabe dentro de otra fase |
+| `test_el_andamio_levanta_la_historia_y_el_pendiente` | El andamio escribe contenido donde el criterio pide que no | `EP-004`, el andamio | **Pendiente propio** |
+| `test_la_corrida_completa_en_una_linea` | La corrida no termina con un resumen único | `EP-004·HU-008` | **Pendiente propio** |
 
-> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
+**Cuatro de las siete fallas salen de una sola fase**, `A-EP-005-HU-019`. Agrupar por causa y no por archivo convierte cinco rojos sueltos en **dos destinos**: una fase de arreglo y tres pendientes.
 
----
-
-## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
-
-- [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
-- [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
-- [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](../../../../../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizado con lo realmente implementado.
+**Ninguno queda como «se verá».**
 
 ---
 
-## 8. Despliegue — si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
+## 7. Índices y mapas actualizados  ·  `13·DOC9` / `13·DOC13`
 
-Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
+- [x] Mapa de dependencias vivo — la matriz del plan §2.4; ningún contrato cambió.
+- [x] **Mapa del amarre a la herramienta** — `corredor.py` entró con su fila, y su prueba lo reclamó.
+- [x] Catálogo de módulos: no se creó módulo nuevo.
+- [x] Índice `README.md` de la carpeta de docs — el de `EP-005` quedó al día en el commit anterior.
+- [x] `validadores/README.md` — **las dos órdenes, con su tiempo y el motivo de estar separadas.**
 
-- Cambios de esquema / migraciones a correr: «orden».
-- Datos base / permisos a sembrar: «comandos».
-- Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto, ver §7 del `plan_trabajo`».
+---
+
+## 8. Despliegue — si aplica  ·  `13·DOC4`
+
+**No aplica: el estándar no se despliega.** Quien lo tenga instalado recoge el reclamo la próxima vez que corra `python validadores/instalar.py`; hasta entonces nada suyo cambia, y el reclamo **nunca detiene un push**.

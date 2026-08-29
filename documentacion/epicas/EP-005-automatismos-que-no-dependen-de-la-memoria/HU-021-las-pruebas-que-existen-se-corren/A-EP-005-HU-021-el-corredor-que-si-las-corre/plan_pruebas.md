@@ -22,7 +22,7 @@ Comprobar que las 650 pruebas **se corren**, que **cero no pasa por verde**, y q
 |---|---|
 | [plan_trabajo.md](plan_trabajo.md) | La línea base 61/6 y las dos dudas que se miden |
 | `S-075` | Tres registros tenían comprobador y estuvieron rotos días igual |
-| [pendiente 90](../../../../../pendientes/90-las-pruebas-de-validadores-tests-no-las-corre-nada.md) | Los cuatro comandos que podrían correrlas y no lo hacen |
+| [pendiente 90](../../../../../pendientes/hecho/las-pruebas-que-existen-se-corren.md) | Los cuatro comandos que podrían correrlas y no lo hacen |
 
 ---
 

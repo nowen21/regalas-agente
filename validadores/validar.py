@@ -64,6 +64,7 @@ import traza            # noqa: E402
 import comun                                                      # noqa: E402
 import conteo                                                     # noqa: E402
 import plan_vs_hecho                                              # noqa: E402
+import corredor                                                   # noqa: E402
 from comun import RAIZ, leer, preparar_salida, relativo, reportar  # noqa: E402
 
 
@@ -94,6 +95,7 @@ FUERA_DE_LA_CORRIDA = {
     "todo": "es esta misma",
     "linter": "corre la herramienta del proyecto y tarda; va aparte",
     "suite": "corre la suite del proyecto y tarda; va aparte",
+    "internas": "corre las pruebas del propio estándar y tarda; va aparte",
     "audit": "sale a la red a preguntar por vulnerabilidades; va aparte",
     "plantilla": "necesita que le digan qué documento revisar",
     "commit": "necesita el mensaje del commit",
@@ -577,6 +579,21 @@ def cmd_suite(a):
     return reportar(herramientas.suite(raiz), f"Suite de pruebas · {relativo(raiz)}")
 
 
+def cmd_internas(a):
+    """Las pruebas de `validadores/tests/`, que hasta hoy no corría nada.
+
+    Apunta a `RAIZ` y no a donde esté parado quien lo corre: son las pruebas
+    **del estándar**, no las del proyecto que lo hereda. `suite` es la otra.
+    """
+    if a.reclamo:
+        # Mirar una fecha, no correr las pruebas: es lo que puede colgarse de
+        # algo que pasa seguido sin volverse un peaje de 9,6 minutos.
+        return reportar(corredor.reclamo(RAIZ),
+                        "¿Hace falta correr las pruebas del estándar?")
+    return reportar(corredor.validar(RAIZ, a.solo),
+                    "Pruebas del estándar · validadores/tests/")
+
+
 def cmd_auditoria(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(herramientas.auditoria(raiz),
@@ -855,6 +872,14 @@ def main():
                         help="corre la suite de pruebas del stack · 08·T5")
     su.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
     su.set_defaults(func=cmd_suite)
+
+    inte = sub.add_parser("internas",
+                          help="corre las pruebas del propio estándar · 08·T5")
+    inte.add_argument("solo", nargs="*",
+                      help="archivos a correr; sin esto, todos (02·F5)")
+    inte.add_argument("--reclamo", action="store_true",
+                      help="no corre nada: solo dice si hace falta correrlas")
+    inte.set_defaults(func=cmd_internas)
 
     au = sub.add_parser("audit",
                         help="audit de vulnerabilidades del stack · 10·DEP3")

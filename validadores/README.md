@@ -34,9 +34,16 @@ python validadores/validar.py plantilla doc.md --contra plantillas/ciclo-vida-pr
 python validadores/validar.py commit                          # HEAD
 python validadores/validar.py commit --archivo .git/COMMIT_EDITMSG
 
-# Suite
-python validadores/pruebas.py
+# Las dos suites, y son dos a propósito (`02·F5`)
+python validadores/pruebas.py                       # 515 pruebas, ~3 min
+python validadores/validar.py internas              # 650 pruebas, ~10 min
+python validadores/validar.py internas test_x test_y  # solo esas
+python validadores/validar.py internas --reclamo    # no corre: dice si hace falta
 ```
+
+**Por qué dos y no una.** `02·F5` pide que una fase corra **las suites que toca**, no todo el proyecto. Juntarlas daría 1165 pruebas y 13 minutos en cada fase, que es exactamente lo que esa regla evita. Por eso `internas` acepta nombres de archivo.
+
+**Y por qué `internas` y no `unittest discover`.** `discover` sobre una carpeta vacía **termina en 0**: un silencio que se lee como éxito. Es el defecto que dejó esas 650 pruebas sin correr durante semanas (`S-075`). Acá cero pruebas es rojo.
 
 ## Qué comprueba cada uno
 

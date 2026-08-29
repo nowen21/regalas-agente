@@ -1,0 +1,77 @@
+ROJO  test_el_andamio_levanta_la_historia_y_el_pendiente.py      FAILED (failures=1)
+ROJO  test_el_mapa_del_amarre_no_envejece.py                     FAILED (failures=1)
+ROJO  test_el_texto_del_enlace_dice_donde_vive.py                FAILED (failures=1)
+ROJO  test_la_corrida_completa_en_una_linea.py                   FAILED (failures=1)
+ROJO  test_la_frontera_del_adaptador.py                          FAILED (failures=1)
+ROJO  test_ninguno_termina_en_silencio.py                        FAILED (failures=3)
+
+LINEA BASE, archivo por archivo:
+   verde  test_aviso_de_vuelta.py
+   verde  test_cerrar_arrastra_las_citas.py
+   verde  test_checklist_cadena.py
+   verde  test_citas_y_enlaces_de_ejemplo.py
+   verde  test_dos_sesiones_no_se_pisan.py
+   ROJO   test_el_andamio_levanta_la_historia_y_el_pendiente.py
+   verde  test_el_andamio_no_deja_enlaces_rotos.py
+   verde  test_el_andamio_no_escribe_contenido.py
+   verde  test_el_aviso_de_desfase_llega_y_dice_que_cambio.py
+   verde  test_el_cambio_de_reglas_lleva_su_version.py
+   verde  test_el_checklist_no_distingue_mayusculas_de_unidad.py
+   verde  test_el_checkpoint_se_reclama_solo.py
+   verde  test_el_consumo_se_ve_a_tiempo.py
+   verde  test_el_conteo_por_regla.py
+   verde  test_el_enganche_de_publicar.py
+   verde  test_el_expediente_se_mide.py
+   verde  test_el_gate_del_arranque_resuelve.py
+   verde  test_el_historico_se_busca_por_tema.py
+   verde  test_el_identificador_no_se_repite.py
+   verde  test_el_indice_se_completa_solo.py
+   verde  test_el_largo_se_mide_por_lo_que_se_lee.py
+   ROJO   test_el_mapa_del_amarre_no_envejece.py
+   verde  test_el_mapa_del_sitio_no_envejece.py
+   verde  test_el_plan_contra_lo_hecho.py
+   verde  test_el_registro_de_version_no_se_duplica.py
+   verde  test_el_respaldo_antes_de_lo_irreversible.py
+   verde  test_el_resumen_ilegible_no_es_vacio.py
+   verde  test_el_sello_no_se_contradice.py
+   ROJO   test_el_texto_del_enlace_dice_donde_vive.py
+   verde  test_el_trinquete_de_las_marcas.py
+   verde  test_el_validador_no_revisa_lo_ajeno.py
+   verde  test_el_veredicto_se_copia_solo.py
+   verde  test_encuadre_de_la_plantilla.py
+   verde  test_enganche_de_senales.py
+   verde  test_enlaces_marcador.py
+   verde  test_fases_veredicto.py
+   verde  test_historico_renombrar.py
+   verde  test_indice_de_dias.py
+   verde  test_instalar_agrega_al_readme_heredado.py
+   verde  test_instalar_marcadores.py
+   verde  test_instalar_reparar.py
+   verde  test_la_base_no_nombra_stack.py
+   verde  test_la_brevedad_se_mide.py
+   verde  test_la_clave_no_llega_al_historico.py
+   verde  test_la_clave_sin_comillas_se_enmascara.py
+   ROJO   test_la_corrida_completa_en_una_linea.py
+   verde  test_la_entrada_del_registro_se_entiende.py
+   verde  test_la_fase_reabierta_se_distingue.py
+   ROJO   test_la_frontera_del_adaptador.py
+   verde  test_la_regla_que_nadie_vuelve_a_mirar.py
+   verde  test_la_sesion_tiene_traza.py
+   verde  test_la_version_adoptada_se_comprueba.py
+   verde  test_las_acciones_tienen_su_riesgo.py
+   verde  test_las_entidades_no_acusan_a_ciegas.py
+   verde  test_las_marcas_de_ia_se_cuentan.py
+   verde  test_las_reglas_llegan_al_propio_estandar.py
+   verde  test_llegan_las_reglas_relacionadas.py
+   verde  test_lo_que_llega_de_afuera_llega_marcado.py
+   verde  test_los_indices_nacen_legibles.py
+   verde  test_metareglas_no_afirma_sobre_un_proyecto.py
+   ROJO   test_ninguno_termina_en_silencio.py
+   verde  test_pendientes_historia.py
+   verde  test_plantillas_origen_regla.py
+   verde  test_registro_no_se_lista_a_si_mismo.py
+   verde  test_sello_del_checklist_vencido.py
+   verde  test_una_sola_numeracion.py
+   verde  test_version_derogaciones.py
+
+De 67 archivos: 61 en verde, 6 en rojo, 0 sin pruebas.

@@ -56,7 +56,7 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | [Pregunta, afirmación o indicación](pregunta-no-es-instruccion.md) | Pregunta: solo se responde. Observación: se explica y se espera. Indicación: se ejecuta. En la duda, no se toca. |
 | [Convención de commits](sin-coauthored-by.md) | El cuerpo arranca con la idea del usuario y sigue con lo que hizo el agente; nunca `Co-Authored-By`. |
 
-<!-- huella: 83db0387a355 · estandar 35.7.0 -->
+<!-- huella: 83db0387a355 · estandar 35.9.0 -->
 - [Los guiones de apoyo van dentro del repositorio, y se quedan](guiones-de-apoyo-dentro-del-repo.md) — en `historico-chat/scripts/AAAA-MM-DD/`, versionados: si solo queda el resultado, el cómo se pierde (`04·S9`).
 - [La orden se resuelve de una](la-orden-se-resuelve-de-una.md) — lo ordenado se hace; el impedimento se muestra y se analiza juntos, sin determinaciones unilaterales.
 - [Cada informe cierra con lo que falta, en orden](informar-que-falta-en-orden.md) — el panorama completo, medido, al final de cada informe.

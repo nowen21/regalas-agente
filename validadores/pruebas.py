@@ -48,6 +48,7 @@ import rutas_fuera      # noqa: E402
 import resumen          # noqa: E402
 import secretos         # noqa: E402
 import sesiones         # noqa: E402
+import corredor        # noqa: E402
 import seguridad        # noqa: E402
 import trazabilidad     # noqa: E402
 import version          # noqa: E402
@@ -3950,6 +3951,218 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
         raiz = self._arbol({"A-EP-001-HU-001-x": "No cumple"})
         self.assertEqual(fases.inventario(raiz), (1, 1, 0),
                          "la cuenta nueva movió lo que no debía")
+
+
+class LasPruebasQueExistenSeCorren(unittest.TestCase):
+    """`EP-005·HU-021` · 650 pruebas escritas que ningún comando ejecutaba.
+
+    **El caso que lo hizo falta:** una prueba escrita para cazar exactamente el
+    defecto que tuvimos seis días en rojo **nunca se corrió**, porque la orden
+    documentada se caía antes de correr nada (`S-075`).
+
+    **Lo que más se vigila es que cero pruebas NO pase por verde.** Ese es el
+    defecto original, y un corredor que lo repita no arregla nada: lo disfraza.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    UNA_QUE_PASA = ("import unittest\n"
+                    "class C(unittest.TestCase):\n"
+                    "    def test_a(self): self.assertTrue(True)\n"
+                    "    def test_b(self): self.assertTrue(True)\n")
+    UNA_QUE_FALLA = ("import unittest\n"
+                     "class D(unittest.TestCase):\n"
+                     "    def test_c(self): self.assertEqual(1, 2)\n")
+
+    def _proyecto(self, con=()):
+        """Un proyecto de mentira con su `validadores/tests/`."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, "validadores", "tests")
+        os.makedirs(carpeta)
+        for nombre, cuerpo in con:
+            with io.open(os.path.join(carpeta, nombre), "w",
+                         encoding="utf-8", newline="\n") as f:
+                f.write(cuerpo)
+        return tmp.name
+
+    # -- CA-02 · cero pruebas es rojo -------------------------------------
+    #
+    # **Es el crítico.** Es el defecto original, y reconstruirlo sería cambiar
+    # una orden que no corría nada por otra que tampoco.
+
+    def test_la_carpeta_vacia_es_roja(self):
+        raiz = self._proyecto()
+        fallas = [h for h in corredor.validar(raiz) if h.severidad == FALLA]
+        self.assertTrue(fallas, "una carpeta vacía pasó por verde")
+        self.assertIn("0 pruebas", fallas[0].mensaje)
+
+    def test_la_carpeta_que_no_existe_es_roja(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        fallas = [h for h in corredor.validar(tmp.name)
+                  if h.severidad == FALLA]
+        self.assertTrue(fallas, "sin carpeta, dijo que estaba bien")
+        self.assertIn("no existe", fallas[0].mensaje)
+
+    def test_archivos_sin_ninguna_prueba_dentro_es_rojo(self):
+        raiz = self._proyecto([("test_vacio.py", "x = 1\n")])
+        fallas = [h for h in corredor.validar(raiz) if h.severidad == FALLA]
+        self.assertTrue(fallas, "un archivo sin pruebas pasó por verde")
+
+    def test_unittest_discover_solo_daria_cero_y_por_eso_hace_falta(self):
+        """No prueba el corredor: **prueba que el corredor hace falta**.
+
+        `discover` sobre una carpeta vacía termina en 0. Si algún día dejara de
+        hacerlo, esta prueba avisa de que la justificación cambió.
+        """
+        raiz = self._proyecto()
+        with io.open(os.path.join(raiz, "validadores", "tests", "__init__.py"),
+                     "w", encoding="utf-8") as f:
+            f.write("")
+        salida = subprocess.run(
+            [sys.executable, "-m", "unittest", "discover", "-s", "tests"],
+            cwd=os.path.join(raiz, "validadores"), capture_output=True,
+            text=True, encoding="utf-8", errors="replace", timeout=120)
+        self.assertEqual(salida.returncode, 0,
+                         "`discover` ya no da 0 con cero pruebas — la razón "
+                         "por la que existe el corredor cambió")
+
+    # -- CA-01 · corre y cuenta -------------------------------------------
+    def test_corre_y_dice_cuantas(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        hallazgos = corredor.validar(raiz)
+        self.assertEqual([], [h for h in hallazgos if h.severidad == FALLA])
+        avisos = [h for h in hallazgos if h.severidad == AVISO]
+        self.assertTrue(any("2 prueba(s)" in h.mensaje for h in avisos),
+                        "no dijo cuántas corrió: %s"
+                        % [h.mensaje for h in avisos])
+
+    def test_una_falla_nombra_su_archivo_y_su_caso(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA),
+                               ("test_dos.py", self.UNA_QUE_FALLA)])
+        fallas = [h for h in corredor.validar(raiz) if h.severidad == FALLA]
+        self.assertEqual(1, len(fallas))
+        self.assertIn("test_dos.py", fallas[0].archivo)
+        self.assertIn("test_c", fallas[0].mensaje)
+
+    def test_un_archivo_que_no_carga_se_reporta_y_no_tumba_el_resto(self):
+        """`EP-004·HU-003`: un archivo roto no se lleva lo que ya se sabía."""
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA),
+                               ("test_roto.py", "import no_existe_este_modulo\n")])
+        hallazgos = corredor.validar(raiz)
+        fallas = [h for h in hallazgos if h.severidad == FALLA]
+        self.assertTrue(any("no se pudo cargar" in h.mensaje for h in fallas))
+        self.assertTrue(
+            any("2 prueba(s)" in h.mensaje for h in hallazgos),
+            "el archivo roto se llevó el conteo del que sí cargó")
+
+    # -- CA-03 · subconjunto ----------------------------------------------
+    def test_se_puede_pedir_un_solo_archivo(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA),
+                               ("test_dos.py", self.UNA_QUE_FALLA)])
+        hallazgos = corredor.validar(raiz, solo=["test_uno"])
+        self.assertEqual([], [h for h in hallazgos if h.severidad == FALLA],
+                         "corrió el que no se le pidió")
+        self.assertTrue(any("2 prueba(s) en 1 archivo(s)" in h.mensaje
+                            for h in hallazgos))
+
+    def test_un_nombre_que_no_existe_es_rojo_no_una_corrida_vacia(self):
+        """Pedir mal y recibir verde es el defecto original por la puerta de al lado."""
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        fallas = [h for h in corredor.validar(raiz, solo=["test_no_esta"])
+                  if h.severidad == FALLA]
+        self.assertTrue(any("no está en la carpeta" in h.mensaje
+                            for h in fallas),
+                        "un nombre mal escrito no se reportó")
+
+    # -- CA-04 · el reclamo, y que esté colgado ---------------------------
+    def test_sin_sello_reclama(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        avisos = corredor.reclamo(raiz)
+        self.assertTrue(avisos, "no reclamó sin haber corrido nunca")
+        self.assertIn("nunca corrieron", avisos[0].mensaje)
+
+    def test_la_corrida_entera_y_limpia_deja_el_sello(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        corredor.validar(raiz)
+        self.assertTrue(os.path.isfile(os.path.join(raiz, corredor.SELLO)),
+                        "una corrida limpia no dejó constancia")
+
+    def test_una_corrida_con_fallas_no_sella(self):
+        raiz = self._proyecto([("test_dos.py", self.UNA_QUE_FALLA)])
+        corredor.validar(raiz)
+        self.assertFalse(os.path.isfile(os.path.join(raiz, corredor.SELLO)),
+                         "selló una corrida que falló")
+
+    def test_un_subconjunto_no_sella(self):
+        """Sellar un subconjunto diría «esto se comprobó» sobre lo que no se miró."""
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA),
+                               ("test_tres.py", self.UNA_QUE_PASA)])
+        corredor.validar(raiz, solo=["test_uno"])
+        self.assertFalse(os.path.isfile(os.path.join(raiz, corredor.SELLO)),
+                         "un subconjunto en verde selló la carpeta entera")
+
+    def test_el_reclamo_calla_cuando_el_sello_es_posterior_al_commit(self):
+        if not shutil.which("git"):
+            self.skipTest("sin git")
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        for orden in (["init", "-q"], ["config", "user.name", "p"],
+                      ["config", "user.email", "p@l"],
+                      ["add", "-A"], ["commit", "-qm", "base"]):
+            subprocess.run(["git"] + orden, cwd=raiz, capture_output=True)
+        corredor.sellar(raiz)
+        self.assertEqual([], corredor.reclamo(raiz),
+                         "reclamó con el sello más nuevo que el último commit")
+
+    def test_el_reclamo_no_revienta_sin_repositorio(self):
+        raiz = self._proyecto([("test_uno.py", self.UNA_QUE_PASA)])
+        corredor.sellar(raiz)
+        self.assertEqual([], corredor.reclamo(raiz),
+                         "afirmó sobre una carpeta que no es repositorio")
+
+    def test_el_reclamo_esta_colgado_del_pre_push(self):
+        """Es la lección de `EP-002·HU-004`: construido, y nadie lo llamaba."""
+        self.assertIn("internas --reclamo", instalar.PLANTILLA_PRE_PUSH,
+                      "el reclamo existe pero el enganche no lo llama")
+
+    def test_el_pre_push_no_corre_las_pruebas(self):
+        """9,6 minutos por push se apagan en una tarde. **Reclama, no corre.**"""
+        sin_reclamo = instalar.PLANTILLA_PRE_PUSH.replace(
+            "internas --reclamo", "")
+        self.assertNotIn("validar.py internas", sin_reclamo,
+                         "el enganche corre las 650: eso es un peaje, no un control")
+
+    # -- Conexión y no regresión -------------------------------------------
+    def test_el_subcomando_existe_en_validar(self):
+        salida = subprocess.run(
+            [sys.executable, os.path.join(self.RAIZ, "validadores", "validar.py"),
+             "internas", "--reclamo"],
+            capture_output=True, text=True, encoding="utf-8",
+            errors="replace", timeout=120)
+        self.assertIn(salida.returncode, (0, 1))
+        self.assertIn("pruebas del estándar", salida.stdout.lower())
+
+    def test_la_carpeta_de_verdad_es_un_paquete(self):
+        """Sin esto, la orden documentada se cae antes de correr nada."""
+        self.assertTrue(
+            os.path.isfile(os.path.join(self.RAIZ, "validadores", "tests",
+                                        "__init__.py")),
+            "falta el `__init__.py`: `unittest discover` no puede cargarla")
+
+    def test_la_corrida_de_todos_no_arrastra_las_650(self):
+        """`02·F5`: juntarlas daría 13 minutos en cada corrida de rutina.
+
+        No se mira si `pruebas.py` nombra al corredor —esta misma clase lo
+        nombra— sino si `internas` está declarado **fuera** de la corrida
+        completa, que es lo único que impide que se arrastre.
+        """
+        import validar
+        self.assertIn("internas", validar.FUERA_DE_LA_CORRIDA,
+                      "`validar.py todo` arrastraría las 650: son 10 minutos "
+                      "en cada corrida de rutina")
+        self.assertIn("tarda", validar.FUERA_DE_LA_CORRIDA["internas"],
+                      "queda fuera sin decir por qué")
 
 
 class ElTurnoAnotaLoQueCambio(unittest.TestCase):

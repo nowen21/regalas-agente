@@ -2,7 +2,7 @@
 
 | Items | Lo que se debe hacer |
 |---|---|
-| **Historia de usuario** | [EP-005 · HU-021 — Las pruebas que existen se corren](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-021-las-pruebas-que-existen-se-corren/HU-021-las-pruebas-que-existen-se-corren.md) |
+| **Historia de usuario** | [EP-005 · HU-021 — Las pruebas que existen se corren](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-021-las-pruebas-que-existen-se-corren/HU-021-las-pruebas-que-existen-se-corren.md) |
 
 **Prioridad:** `P0` — se está perdiendo algo, y el daño se sigue produciendo cada día.
 
@@ -58,4 +58,38 @@ Tres cosas, y la tercera es la que evita que vuelva:
 
 ## Cómo se midió
 
-[historico-chat/scripts/2026-08-28/](../historico-chat/scripts/2026-08-28/) — `corren-las-pruebas-de-tests.py` (uno por uno) y `todos-en-un-proceso.py` (los 650 juntos, para decidir si se estorban).
+[historico-chat/scripts/2026-08-28/](../../historico-chat/scripts/2026-08-28/) — `corren-las-pruebas-de-tests.py` (uno por uno) y `todos-en-un-proceso.py` (los 650 juntos, para decidir si se estorban).
+
+---
+
+# Cómo cerró — 2026-08-28
+
+**Las tres cosas que pedía, y la tercera cambió de forma al medirla.**
+
+## 1 · La carpeta se corre con una orden
+
+`python validadores/validar.py internas` — **650 pruebas en 67 archivos**, con el conteo a la vista. Y se puede pedir un subconjunto por nombre, que es lo que hace cumplible `02·F5` acá: una fase corre lo que toca, no 9,6 minutos.
+
+**Y la orden que estaba documentada también funciona**, con el `__init__.py` que faltaba. Que la documentación mienta era la otra mitad del defecto.
+
+## 2 · La corrida está colgada — pero es el reclamo, no la corrida
+
+Acá el plan cambió, y lo cambió un número. Las 650 tardan **9,6 minutos**, no los 3 estimados, y este repositorio hace **16 commits por día**: colgarlas de cada commit costaría **39,3 horas cada dos semanas**.
+
+**Ninguna opción que las corriera cabía en el umbral escrito**, así que la pregunta cambió: no *«dónde corrolas»* sino *«cómo me entero de que hace falta correrlas sin pagar 9,6 minutos»*. El corredor sella la última corrida entera y limpia; el `pre-push` mira esa fecha contra el último commit. Cuesta leer un archivo.
+
+## 3 · Los seis rojos
+
+**Uno se cerró en el camino** — el mapa del amarre decía «26 amarradas» y su prueba busca «26 amarrados». Una letra.
+
+**Los cinco que quedan están declarados con nombre y destino**, agrupados por causa: cuatro de las siete fallas salen de una sola fase, `A-EP-005-HU-019`. Eso convierte cinco rojos sueltos en **dos destinos**: una fase de arreglo y tres pendientes por abrir. Está en el §6 del cierre de la fase.
+
+## Y una cosa que el reporte no pedía y hay que subrayar
+
+**El defecto no era que faltara una prueba: era que 650 escritas no corrían.** Aparecían en el registro de cambios fase tras fase —«9 casos», «23 casos»— como evidencia de que algo había quedado comprobado. **Una prueba que nadie corre es peor que no tenerla: figura como cobertura.**
+
+## Comprobado
+
+**20 casos** en `validadores/pruebas.py`, clase `LasPruebasQueExistenSeCorren`, y **11 de 11 sabotajes cazados**. Las dos suites corridas: `pruebas.py` en 535 sin fallas, e `internas` en 650 con las 7 de la línea base.
+
+Fase [`A-EP-005-HU-021-el-corredor-que-si-las-corre`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-021-las-pruebas-que-existen-se-corren/A-EP-005-HU-021-el-corredor-que-si-las-corre/) · versión `35.9.0`.

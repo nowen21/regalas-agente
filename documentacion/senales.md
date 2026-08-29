@@ -760,3 +760,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-28 · agente, al correr todos los comprobadores antes de cerrar una fase.
 - **Scope:** estándar; aplica a todo dato que se escriba en dos sitios que se editan en momentos distintos.
 - **Rel:** S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada), S-064 (una historia se crea y nadie vuelve a la tabla de su épica), S-057 (la regla se fijó y se dejó de cumplir al día siguiente).
+
+## S-076 · El sello de «commit autorizado» no distingue el commit que cierra una fase del que la abre  ·  error-resuelto · activa
+- **What:** el enganche de `post-commit` selló la estación 12 —«Commit · 👤 autorizado»— de una fase **recién creada**, con el hash del commit que la estaba creando. La fase iba por la estación 7 y su documento decía que ya había pasado la 12.
+- **Why:** el enganche marca **toda fase cuya carpeta toque el commit**, y esa condición no separa los dos casos: el commit que guarda una fase terminada toca su carpeta, y el que la abre también. Es la misma forma de error que `S-071` —una condición que parece discriminar y en realidad cubre los dos lados— con otro disfraz.
+- **Also:** el daño es de los caros porque **es silencioso y afirma de más**. Un documento de fase que dice «commit autorizado» sin que nadie lo autorizara es exactamente lo que el estándar existe para impedir, y quien lo lea después no tiene cómo saber que lo escribió un programa.
+- **And:** se vio **en la misma vuelta en que ocurrió**, porque el enganche imprime lo que hizo. Si callara —que es la tentación de todo automatismo que «no molesta»— el sello falso se habría quedado. **Un automatismo que escribe tiene que decir qué escribió**, aunque nadie se lo pregunte.
+- **Where:** `validadores/hook_estacion.py` y `validadores/estacion_commit.py`, de la fase `A-EP-005-HU-019` · la fila corregida a mano en el `estado-fase.md` de `A-EP-005-HU-021`.
+- **Learned:** cuando un automatismo marca un hito, la pregunta no es «¿tocó esto el commit?» sino **«¿este commit es el hito?»**. Lo que distingue los dos casos acá está a la vista y no se está mirando: una fase que se cierra trae su `resultado_pruebas.md` lleno y su veredicto escrito; una que se abre trae los moldes en blanco.
+- **When/Who:** 2026-08-28 · agente, al leer lo que el enganche imprimió después de guardar.
+- **Scope:** estándar; aplica a todo automatismo que selle un hito a partir de qué archivos cambiaron.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-075 (cuatro registros llevados a mano se quedaron atrás).
