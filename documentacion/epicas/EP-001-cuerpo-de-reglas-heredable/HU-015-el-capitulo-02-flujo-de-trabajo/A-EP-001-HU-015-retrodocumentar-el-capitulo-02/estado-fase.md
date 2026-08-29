@@ -1,6 +1,4 @@
-# Estado de fase — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> **Checkpoint del orquestador** (`sdd-orchestrator`): el estado persistido en cada puerta para **sobrevivir a la compactación** ("la compactación mata decisiones"). Se escribe/actualiza en **cada puerta** que pasa. Al reanudar, el director lee este archivo y continúa desde la última puerta pasada. Se guarda en `documentacion/<modulo>/estado-fase.md`. Reemplaza los `«…»` y borra esta caja.
+# Estado de fase — Fase `A-EP-001-HU-015-retrodocumentar-el-capitulo-02` (módulo Cuerpo de reglas)   ·   `[CAPA 3]`
 
 ---
 
@@ -8,75 +6,75 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Planteamiento / Épica / HU** | «punteros» |
-| **Última actualización** | AAAA-MM-DD |
+| **Fase** (identificador · `02·F12.6`) | `A-EP-001-HU-015-retrodocumentar-el-capitulo-02` |
+| **Módulo** | Cuerpo de reglas |
+| **Planteamiento / Épica / HU** | [EP-001](../../epica.md) · [HU-015](../HU-015-el-capitulo-02-flujo-de-trabajo.md) |
+| **Última actualización** | 2026-08-28 |
 
 ---
 
 ## 1. En qué estación va
 
-**Estación actual:** «número y nombre». **Última puerta pasada:** «N».
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorador · análisis | contexto entendido | ☐ |
-| 2 | Proponente · alcance | 👤 alcance aprobado | ☐ |
-| 3 | Escritor de épica | 👤 épica aprobada | ☐ |
-| 4 | Escritor de historia | 👤 HUs aprobadas | ☐ |
-| 5 | Escritor de especificación | 👤 especificación aprobada | ☐ |
-| 6 | Diseñador | diseño coherente | ☐ |
-| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☐ |
-| 8 | Implementador | implementado + pruebas verdes | ☐ |
-| 9 | Verificador | trazabilidad sin faltantes | ☐ |
-| 10 | Crítico | sin hallazgos graves | ☐ |
-| 11 | Cierre documental + señales | docs y señales al día | ☐ |
+| 1 | Explorador · análisis | contexto entendido | ☑ |
+| 2 | Proponente · alcance | 👤 alcance aprobado | ☑ |
+| 3 | Escritor de épica | 👤 épica aprobada | ☑ |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ☑ |
+| 5 | Escritor de especificación | 👤 especificación aprobada | ☑ (la redacción de los CA es la especificación, `02·F19`) |
+| 6 | Diseñador | diseño coherente | ☑ |
+| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☑ 2026-08-28, con el molde de las veintiuna |
+| 8 | Implementador | implementado + pruebas verdes | ☑ — **no se construyó: se comprobó** (`13·DOC6`) |
+| 9 | Verificador | trazabilidad sin faltantes | ☑ |
+| 10 | Crítico | sin hallazgos graves | ☑ |
+| 11 | Cierre documental + señales | docs y señales al día | ☑ |
 | 12 | Commit | 👤 autorizado | ☐ |
-| 13 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 13 | Publicación / despliegue | 👤 autorizado | N/A — el estándar no se despliega |
 
 ---
 
 ## 1.1 Veredicto de las pruebas
 
-> De dónde sale el estado de la estación 9. **No se escribe de memoria ni "porque se vio funcionar"**: se copia del `resultado_pruebas.md` de la fase, §6.
-
 | Campo | Valor |
 |---|---|
-| **Concepto** | «Cumple / No cumple / Todavía no se ejecutó». Sin estado intermedio: lo que falta hace que sea No cumple |
-| **CA cumplidos** | «cuántos de cuántos» |
-| **CA en "No"** | «cuáles. Con uno solo, la fase no cierra» |
-| **Defectos abiertos aceptados** | «cuáles y quién los aceptó» |
-| **Fuente** | «`resultado_pruebas.md`» |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | 2 de 2 |
+| **CA en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | Ninguno |
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §6 |
 
 ---
 
 ## 1.2 Avance de las tareas del plan
 
-> El seguimiento **en vivo**, mientras la fase corre. Los identificadores se copian del `plan_trabajo` §3, que no se toca. Al cerrar, esto se consolida en el `funcionalidad_implementada.md` §2.2, que es la verificación de registro.
-
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Uno de [los estados del glosario](../../../../../base/glosario.md#5--en-qué-estado-está-algo) para una tarea: Pendiente, En curso, Terminada o Bloqueada | «si está bloqueada, por qué» |
+| T-00 | Terminada | **21 de 21** nombran su historia |
+| T-01 | Terminada | El enlace de la cabecera **resuelve** |
+| T-02 | Terminada | La HU-015 recibe la fila en su §8 |
+| T-03 | Terminada | [resultado_pruebas.md](resultado_pruebas.md) |
+| T-04 | Terminada | [funcionalidad_implementada.md](funcionalidad_implementada.md) y la fila |
 
-**Hechas:** «N de N». **Bloqueadas:** «cuáles».
+**Hechas:** 5 de 5. **Bloqueadas:** ninguna.
 
 ---
 
-## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 2. Decisiones y señales generadas  ·  `13·DOC5`
 
-| Decisión / aprendizaje | Señal registrada (id/enlace) |
+| Decisión / aprendizaje | Señal registrada |
 |---|---|
-| | |
+| El molde de las veintiuna se aprueba una vez: veintiuna aprobaciones de un documento idéntico vuelven la puerta un trámite | `S-081` |
 
 ---
 
 ## 3. Pendiente / preguntas abiertas
 
-- «Qué falta, qué se está esperando (una aprobación, una respuesta del usuario, una dependencia).»
+- **La aprobación del commit.**
 
 ---
 
 ## 4. Si se bloqueó
 
-- **Estación:** «N». **Motivo:** «pruebas rojas / hallazgo grave del Crítico / alcance rechazado / dependencia faltante». **Qué falta para desbloquear:** «…».
+No se bloqueó.

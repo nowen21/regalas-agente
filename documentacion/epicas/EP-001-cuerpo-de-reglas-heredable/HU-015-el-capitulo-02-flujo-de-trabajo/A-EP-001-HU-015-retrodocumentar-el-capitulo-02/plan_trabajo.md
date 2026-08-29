@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Dice **qué se va a hacer en esta fase, en qué orden, sobre qué archivos y cómo se comprueba** cada criterio de aceptación antes de darlo por cumplido. Lo que se pide vive en la [HU-015](../HU-015-el-capitulo-02-flujo-de-trabajo.md); con qué casos se comprueba, en el [plan_pruebas.md](plan_pruebas.md).
 
-> **Esta fase es el molde de veintiuna.** `EP-001` tiene una historia por cada capítulo de `base/`, y las veintiuna piden lo mismo con distinto número. Lo que se apruebe acá se repite para las otras veinte, cambiando el capítulo y sus cifras. **Se dice de frente para que la aprobación se dé una vez y no veintiuna.**
+> **Una de veintiuna, con el molde aprobado el 2026-08-28.** `EP-001` tiene una historia por cada capítulo de `base/`, y las veintiuna piden lo mismo con distinto número. El molde se aprobó una vez, en la fase del capítulo `02`: **veintiuna aprobaciones de un documento idéntico convierten la puerta en trámite, y una puerta que es trámite deja de mirar.** Lo que cambia entre una y otra son **las cifras de este capítulo, medidas acá**.
 
 ---
 
@@ -31,16 +31,17 @@
 |---|---|---|
 | Historias de `EP-001` que son «un capítulo cada una» | **21** | `t00-las-22-historias-de-capitulo.py` |
 | De ellas, con el `CA-01` **ya cumplido** | **21 de 21** | el mismo |
-| Reglas del capítulo `02` | **32** | la propia HU §3 |
-| Fases que tiene hoy la `HU-015` | **0** | `validar.py fases` |
+| Reglas del capítulo `02` | **32** | `metareglas.reglas()`, no contadas a mano |
+| Forma del capítulo en el disco | carpeta con `base.md` | `retrodocumentar-los-capitulos.py` |
+| Fases que tenía la HU-015 antes de esta | **0** | `validar.py fases` |
 
-**La segunda fila es la que decide qué clase de fase es esta.** Si el capítulo ya nombra su historia, no hay nada que construir: hay algo que **comprobar y dejar escrito**. Y si la medición hubiera dado alguno en «no», ese sería trabajo de verdad y esta fase cambiaría de forma.
+
 
 ### 2.2 Lo que ya existe y no se rehace
 
 | Pieza | Estado | Qué hace |
 |---|---|---|
-| El capítulo `base/02-flujo-de-trabajo/` | **Existe, con 32 reglas** | No se toca |
+| El capítulo `base/02-flujo-de-trabajo/base.md` | **Existe** | No se toca |
 | Su cabecera con la historia dueña enlazada | **Ya está** | Es el `CA-01`, cumplido |
 | La [HU-015](../HU-015-el-capitulo-02-flujo-de-trabajo.md) | **Escrita** | Es el `CA-02`: el sitio donde baja un cambio |
 | `validar.py enlaces` | **Existe** | Comprueba que el enlace de la cabecera no esté roto |
@@ -50,14 +51,14 @@
 | Archivo | Qué se le hace |
 |---|---|
 | Los cinco documentos de esta carpeta | Se llenan |
-| `HU-015-…md` §8 | La fila de la fase, y el estado |
-| **Nada de `base/`** | El capítulo no se toca: se comprueba |
+| `HU-015-el-capitulo-02-flujo-de-trabajo.md` §8 | La fila de la fase, y el estado |
+| **Nada de `base/`** | El capítulo se lee, no se escribe |
 
 ### 2.4 Matriz de dependencias
 
 | Archivo | Cambio de contrato | Quién depende | Dónde rompe |
 |---|---|---|---|
-| Ninguno | **Ninguno.** La fase no cambia código ni norma | — | No rompe nada: solo se escribe documentación de fase |
+| Ninguno | **Ninguno.** La fase no cambia código ni norma | — | No rompe nada |
 
 ### 2.5 Punto de entrada
 
@@ -71,14 +72,13 @@ Ninguno. Lo que esta fase comprueba se lee en la cabecera del capítulo.
 
 | Decisión | Alternativa descartada | Justificación |
 |---|---|---|
-| **Una fase por historia**, veintiuna en total | Una sola fase que cubra las veintiuna | `02·F12.1` pide que una fase pertenezca a una sola historia. Juntarlas dejaría veinte historias sin dónde bajar sus cambios, que es justo lo que el `CA-02` pide |
-| **El `CA-01` se comprueba con un programa, no leyendo** | Abrir los 21 capítulos a ojo | Leer 21 cabeceras a ojo da un «sí» que nadie puede repetir. El programa deja la lista con nombres |
-| **No se toca `base/`** | Aprovechar y arreglar lo que se vea | Cambiar el capítulo para acomodar la fase es al revés. Lo que aparezca se anota |
-| **Se dice que es el molde de veintiuna** | Presentar cada una como si fuera nueva | Veintiuna aprobaciones de un documento idéntico convierten la puerta en un trámite, y una puerta que es trámite deja de mirar |
+| **Una fase por historia** | Una sola que cubra las veintiuna | `02·F12.1`: una fase pertenece a una sola historia. Juntarlas dejaría veinte historias sin dónde bajar sus cambios, que es lo que el `CA-02` pide |
+| **Las cifras se miden, no se copian** | Repetir las del capítulo `02` en las veintiuna | Copiar ciento cinco documentos es la forma más segura de que uno diga algo falso sin que nadie lo note |
+| **No se toca `base/`** | Arreglar de paso lo que se vea | Cambiar el capítulo para acomodar la fase es al revés |
 
 ### 2.8 Dudas por resolver antes de codificar
 
-**Ninguna.** La única que había —¿el `CA-01` se cumple o hay que construirlo?— se resolvió midiendo antes de abrir la carpeta: **21 de 21**.
+**Ninguna.** La única —¿el `CA-01` se cumple o hay que construirlo?— se resolvió midiendo antes de abrir la carpeta: **21 de 21**.
 
 ---
 
@@ -86,15 +86,15 @@ Ninguno. Lo que esta fase comprueba se lee en la cabecera del capítulo.
 
 | ID | Tarea | Capa | Est. | Depende de | Ev. |
 |---|---|:--:|---|---|---|
-| T-00 | **Antes de abrir la carpeta:** medir el `CA-01` en las 21 | Calidad | 0,5 h | — | EV-00 |
+| T-00 | **Antes de abrir la carpeta:** medir el `CA-01` en las 21 | Calidad | — | — | EV-00 |
 | T-01 | Comprobar que la cabecera del `02` nombra su historia **y el enlace resuelve** | Test | 0,3 h | T-00 | EV-01 |
-| T-02 | Comprobar que la `HU-015` existe y su §8 admite la fila de una fase | Test | 0,2 h | — | EV-02 |
+| T-02 | Comprobar que la HU-015 existe y su §8 admite la fila | Test | 0,2 h | — | EV-02 |
 | T-03 | Escribir el resultado de pruebas | Documentación | 0,5 h | T-01, T-02 | EV-03 |
-| T-04 | Escribir el cierre y la fila en la §8 de la HU | Documentación | 0,5 h | T-03 | EV-03 |
+| T-04 | Escribir el cierre y la fila en la §8 | Documentación | 0,5 h | T-03 | EV-03 |
 
-**Total estimado:** 2 h. **Y ese número importa más que de costumbre:** por veintiuna son **42 horas**, y es lo que hay que saber antes de decidir seguir.
+**Total estimado:** 1,5 h.
 
-**Versión: no sube.** No cambia `base/` ni `plantillas/`, así que `20·M10` no aplica: es documentación de fase.
+**Versión: no sube.** No cambia `base/` ni `plantillas/`, así que `20·M10` no aplica.
 
 ---
 
@@ -102,7 +102,7 @@ Ninguno. Lo que esta fase comprueba se lee en la cabecera del capítulo.
 
 **Ruta crítica:** T-00 → T-01 → T-03 → T-04
 
-**La `T-00` ya está corrida y va primero por eso:** si hubiera dado algún capítulo sin su historia dueña, esta fase no sería retro-documentación sino construcción, y su plan sería otro.
+**La `T-00` va primero por una razón:** si hubiera dado este capítulo sin su historia dueña, la fase no sería retro-documentación sino construcción, y su plan sería otro.
 
 > Solo se tocan los archivos declarados (`02·F8`).
 
@@ -112,8 +112,8 @@ Ninguno. Lo que esta fase comprueba se lee en la cabecera del capítulo.
 
 | CA | Cómo se comprueba | Evidencia | Resultado | Estado |
 |---|---|---|---|---|
-| CA-01 · el capítulo nombra su historia dueña | El programa sobre las 21, y el enlace resuelto | EV-00, EV-01 | | ☐ |
-| CA-02 · un cambio tiene dónde bajarse | La historia existe y su §8 recibe la fila | EV-02 | | ☐ |
+| CA-01 · el capítulo nombra su historia dueña | El programa sobre las 21, y el enlace resuelto | EV-00, EV-01 | Nombra la HU-015 | ☑ |
+| CA-02 · un cambio tiene dónde bajarse | La historia existe y su §8 recibe la fila | EV-02 | Recibe la fila | ☑ |
 
 ---
 
@@ -149,9 +149,9 @@ Se revierte borrando la carpeta de la fase y su fila en la §8. **Nada más se t
 
 | # | Riesgo | Qué pasa si ocurre | Qué lo controla |
 |---|---|---|---|
-| R-01 | Que veintiuna fases idénticas vuelvan la aprobación un trámite | Una puerta que no mira deja de ser puerta | **Se declara de frente** en la caja de arriba: se aprueba el molde una vez |
-| R-02 | Que la fase parezca terminada por tener sus cinco archivos, sin decir nada | Es `H-40`: un molde sin llenar contando como documento | El comprobador ya rechaza los moldes sin llenar |
-| R-03 | Que al leer el capítulo aparezca algo mal y se corrija de paso | La fase se vuelve otra cosa, sin plan | `02·F20`: se anota como hallazgo |
+| R-01 | Que veintiuna fases idénticas vuelvan la aprobación un trámite | Una puerta que no mira deja de ser puerta | El molde se aprobó **una vez**, declarado |
+| R-02 | Que la fase parezca terminada por tener sus cinco archivos | Es `H-40` | El comprobador rechaza los moldes sin llenar |
+| R-03 | Que las cifras se copien de otra fase | Un documento que afirma sobre un capítulo que no miró | **Se miden acá**, capítulo por capítulo |
 
 ---
 
@@ -159,4 +159,4 @@ Se revierte borrando la carpeta de la fase y su fila en la §8. **Nada más se t
 
 | Rol | Estado |
 |---|---|
-| Usuario | **Aprobado** el 2026-08-28, **como molde de las veintiuna** |
+| Usuario | **Aprobado** el 2026-08-28, con el molde de las veintiuna |
