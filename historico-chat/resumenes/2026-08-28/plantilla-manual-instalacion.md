@@ -38,7 +38,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Responde a:** —
 - **Dispara:** EP-001 · HU nueva — «La norma de redacción sube a `base/`»
 - **Orden de resolución:** 1 de 2 · va primero: la plantilla ya quedó fundida y es la que va a citar la regla nueva.
-- **Dónde queda:** pendiente por crear
+- **Dónde queda:** [pendiente 93](../../../pendientes/93-la-norma-de-redaccion-vive-dentro-de-dos-plantillas.md)
 - **Nace en:** 2026-08-28 · plantilla-manual-instalacion
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿La regla fija persona y forma verbal para todo documento, o solo para los que lee alguien que no es del oficio?
@@ -58,7 +58,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Responde a:** —
 - **Dispara:** EP-004 · HU nueva — «El validador de marcas dice qué no comprueba»
 - **Orden de resolución:** 2 de 2 · es el que menos bloquea: se puede resolver sin esperar al otro.
-- **Dónde queda:** pendiente por crear
+- **Dónde queda:** [pendiente 91](../../../pendientes/91-el-validador-de-marcas-no-dice-que-no-comprueba.md)
 - **Nace en:** 2026-08-28 · plantilla-manual-instalacion
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿Basta con que la salida lo diga, o el checklist de entrega tiene que pedir la lectura a mano?
@@ -93,7 +93,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Responde a:** —
 - **Dispara:** EP-004 · HU nueva — «Los caracteres de control invisibles se cuentan y se quitan»
 - **Orden de resolución:** 3 de 3 · el más barato de los tres abiertos, y el que menos bloquea.
-- **Dónde queda:** pendiente por crear
+- **Dónde queda:** [pendiente 92](../../../pendientes/92-hay-caracteres-de-control-invisibles-en-26-documentos.md)
 - **Nace en:** 2026-08-28 · plantilla-manual-instalacion
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿La lista de invisibles de `marcas.py` se amplía a todo el rango de control, o solo a los que aparecieron?
@@ -116,17 +116,17 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 ### H-7 · El agente escribió fuera del proyecto tres guiones que producían documentos del repositorio
 
 - **Qué pasó:** Los guiones que escribieron los documentos de dos fases se crearon en el bloc temporal de la herramienta, fuera del repositorio, porque el heredoc de la terminal se rompía con las comillas. Lo notó el usuario.
-- **Por qué importa:** Es [`04·S9`](../../../base/04-seguridad.md), y además deja sin evidencia lo que el documento afirma: los guiones son de dónde salen las cifras de esas fases. El repositorio ya tiene sitio propio, `historico-chat/scripts/`, y ahí sí habían quedado los dos guiones anteriores. La causa no fue una duda sobre dónde va: fue tomar el camino que no fallaba.
+- **Por qué importa:** La regla existe y es [`04·S18`](../../../base/04-seguridad.md#s18--el-guion-de-apoyo-se-escribe-dentro-del-repositorio-y-se-queda), que salió del pendiente 89 justamente por esto. **Y el enganche que avisa también existe, está colgado y disparó las tres veces**: comprobado corriéndolo, `hook_rutas.py` imprime el aviso y nombra el destino correcto. Avisa con código 0, y el agente siguió de largo. Eso es lo que hay que anotar: no faltaba el control, el control habló y no cambió nada. Además deja sin evidencia lo que el documento afirma: los guiones son de dónde salen las cifras de esas fases.
 - **Qué lo soluciona:** Ya movidos a [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/) y borrados del bloc temporal.
 - **Qué se decidió:** Que las carpetas de `c:\\tmp` donde se provocan los casos sí se quedan: es lo que manda la decisión 35 del pendiente 59, y las pruebas las crean y las borran solas. Lo que no puede salir del repositorio es el guion que produce un documento del repositorio.
-- **Estado:** resuelto acá
-- **Responde a:** —
-- **Dispara:** —
+- **Estado:** resuelto acá en lo suyo; **abierto** lo que destapó
+- **Responde a:** `EP-005` · `HU-018`, que construyó el enganche
+- **Dispara:** la pregunta de si un aviso alcanza para esto, o si escribir un guion fuera del repositorio tiene que detener como detiene un enlace roto
 - **Orden de resolución:** —
-- **Dónde queda:** [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/)
+- **Dónde queda:** [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/), y el aviso sin efecto queda dicho acá
 - **Nace en:** 2026-08-28 · plantilla-manual-instalacion
 - **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
-- **Con qué se retoma:** —
+- **Con qué se retoma:** ¿Un aviso con código 0 alcanza para una regla que ya se dejó de cumplir dos veces?
 
 ---
 
@@ -139,10 +139,12 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☐ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ [91](../../../pendientes/91-el-validador-de-marcas-no-dice-que-no-comprueba.md), [92](../../../pendientes/92-hay-caracteres-de-control-invisibles-en-26-documentos.md), [93](../../../pendientes/93-la-norma-de-redaccion-vive-dentro-de-dos-plantillas.md) |
+| Toda historia disparada está escrita en su épica | ☐ Las tres salen de su pendiente **cuando el usuario las apruebe**, que es la puerta 4 |
+| Lo que se hizo está aprobado y guardado | ☐ Falta guardar los tres pendientes y este resumen |
+
+**Lo que impide cerrar, en una línea:** las cinco decisiones del usuario sobre los rojos que quedan, y la aprobación de las tres historias que estos pendientes disparan.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

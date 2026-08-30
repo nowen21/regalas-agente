@@ -863,3 +863,48 @@ Estado: **104 cumplen, 5 no cumplen**. Sin commitear: los cambios de `metareglas
 
 ### 19 · Usuario — 2026-08-30 13:44:25
 > si
+
+**Agente** — 2026-08-30 13:47:42
+<!-- agente: 3de20474-de5c-4bf9-9da4-89577b160ef2 -->
+
+Commiteado: `e048420` (28 archivos) y `73988d4` (los hashes de la estación 12 y las dos rayas que marcó el enganche).
+
+Estado: **104 cumplen, 5 no cumplen.** Los cinco son tus decisiones.
+
+Sin pushear todavía. ¿Lo hago?
+
+### 20 · Usuario — 2026-08-30 13:51:15
+> si
+
+**Agente** — 2026-08-30 13:52:24
+<!-- agente: 7168bda1-9663-4c8b-a21c-a33acea89ad9 -->
+
+Pusheado: `870ef69..73988d4`. La batería pasó: coherencia, versionado y meta-reglas en 0 fallas.
+
+Quedan los 5 rojos, todos esperando decisión tuya:
+
+| Historia | Qué decides |
+|---|---|
+| EP-001·HU-003 | ¿Tapar la clave dicha en prosa, con riesgo de tapar de más? |
+| EP-006·HU-001 | ¿Escribo la regla que prohíbe guardar datos personales en las señales? |
+| EP-006·HU-002 | ¿Versionar `senales.db`, o basta `senales.md`? |
+| EP-006·HU-005 | «Cimiento» o «Claude Code»: ¿cuál manda? |
+| EP-006·HU-006 | ¿El recogido distingue qué es recuerdo, o se lleva todo? |
+
+Y sigue pendiente crear los archivos en `pendientes/` de los tres hallazgos abiertos de la sesión (H-2, H-3, H-5), que es lo que falta para poder cerrar el resumen.
+
+### 21 · Usuario — 2026-08-30 13:56:09
+> 00id9
+
+**Agente** — 2026-08-30 13:56:13
+<!-- agente: efa22850-6fb2-4047-b0f3-5643e8654f27 -->
+
+Pusheado `870ef69..73988d4`, batería en verde.
+
+Faltan tus cinco decisiones (EP-001·HU-003 y las cuatro de EP-006) y crear los `pendientes/` de H-2, H-3 y H-5.
+
+### 22 · Usuario — 2026-08-30 13:57:19
+> sigasiga
+
+### 23 · Usuario — 2026-08-30 14:06:57
+> siga
