@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-01 y CA-02 cumplidos; el CA-03, no |
+| **Estado** | Terminada — CA-01 y CA-02 cumplidos, y el CA-03 se volvió a medir en la fase `D` |
 ---
 
 ## 2. Narrativa
@@ -160,6 +160,7 @@ Y al cerrar un pendiente, su fila del índice del backlog queda en la forma de h
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [D-EP-005-HU-003-el-ca-03-se-vuelve-a-medir](D-EP-005-HU-003-el-ca-03-se-vuelve-a-medir/estado-fase.md) | CA-03, otra vez | **Ejecutada el 2026-08-29.** Veredicto: [**Cumple**](D-EP-005-HU-003-el-ca-03-se-vuelve-a-medir/resultado_pruebas.md#2-veredicto-de-la-fase) — el enlace roto devuelve 2 y el documento sano devuelve 0. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 y el CA-02 sí; el CA-03 no. Pendiente el commit |
 
 **La fase retro-documenta.** El enganche corre con cada escritura y comprueba los enlaces. Lo que tiene que responder es el CA-03: hoy devuelve el detalle y no distingue entre detener y avisar, como sí hace la línea de comandos.

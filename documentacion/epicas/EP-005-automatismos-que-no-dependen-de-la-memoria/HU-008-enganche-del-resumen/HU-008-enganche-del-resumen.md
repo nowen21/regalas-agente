@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso |
+| **Estado** | Terminada — el criterio de salida se cumplió en una sesión real, medido en la fase `D` |
 ---
 
 ## 2. Narrativa
@@ -168,6 +168,7 @@ Y el enlace que lleva de vuelta a la transcripción abre
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [D-EP-005-HU-008-el-criterio-de-salida-se-vuelve-a-medir](D-EP-005-HU-008-el-criterio-de-salida-se-vuelve-a-medir/estado-fase.md) | el criterio de salida, otra vez | **Ejecutada el 2026-08-29.** Veredicto: [**Cumple**](D-EP-005-HU-008-el-criterio-de-salida-se-vuelve-a-medir/resultado_pruebas.md#2-veredicto-de-la-fase) — el enganche está colgado y la sesión real dejó su resumen con el índice coherente tras renombrar. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-005-HU-008-enganche-del-resumen](A-EP-005-HU-008-enganche-del-resumen/README.md) | CA-01, CA-02 y CA-03 | Estación 11: las siete exigencias en verde, esperando el commit |
 | [B-EP-005-HU-008-renombrar-deja-el-resumen-coherente](B-EP-005-HU-008-renombrar-deja-el-resumen-coherente/README.md) | CA-04 | En ejecución |
 | [C-EP-005-HU-008-vacio-no-es-lo-mismo-que-ilegible](C-EP-005-HU-008-vacio-no-es-lo-mismo-que-ilegible/README.md) | CA-02, el caso que no distinguía | Cerrada 2026-08-18 |
