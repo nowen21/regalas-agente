@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 35.10.0 — 2026-08-29
+
+**El molde del manual de instalación se rehízo entero.** El anterior daba por hecho un servidor y dos piezas. El nuevo pregunta por cada ambiente, por cómo se entra a cada uno, y por cómo se vuelve atrás cuando la instalación falla.
+
+**MENOR** (nadie tiene que cambiar nada: quien ya tenga un manual escrito lo conserva).
+
+**Qué cambió.** [plantillas/manual-instalacion.md](plantillas/manual-instalacion.md) pasó de 14 secciones a 25, y de 407 líneas a 777. Lo que no tenía: la tabla de ambientes (desarrollo, pruebas, QA, producción) con un bloque de datos por cada uno; las herramientas de acceso, que ahora son un bloque reemplazable para que cambiar de herramienta no obligue a reescribir el manual; el procedimiento de reversión, que antes solo existía como paso suelto dentro de la actualización; y la tabla de solución de problemas con las columnas de diagnóstico y verificación.
+
+**Los comandos ahora dicen dónde se ejecutan, con etiqueta.** `[LOCAL]`, `[SERVIDOR]`, `[CONTENEDOR]`, `[BASE DE DATOS]` y `[HERRAMIENTA]`, definidas en su propia sección, y ningún comando aparece sin la suya. El molde anterior lo pedía en prosa («en su computador» o «dentro del servidor»), y en un manual con contenedores esa frase no alcanza.
+
+**Cada paso tiene cuatro partes con nombre:** precondición, acción, resultado esperado y validación. Antes eran cuatro también, descritas en la regla 1 pero sin rótulo, así que en el manual escrito quedaban mezcladas con la prosa del paso.
+
+**Y los bloques que se repiten están marcados como tales.** Ambientes, herramientas, dependencias, componentes y servicios llevan un aviso de «bloque repetible»: se copia uno por cada cosa que el proyecto tenga y se borran los que sobren, sin que la numeración de las demás secciones se mueva. Un proyecto con tres componentes y otro con uno usan el mismo molde.
+
+**Lo que se conservó del molde anterior**, porque es lo que lo hacía distinto de una lista de comandos: las reglas de redacción de la cabecera (ahora trece), la carpeta `seguimiento/` donde queda la salida de la ejecución real, la exigencia de que lo aprendido en una instalación se vuelva paso y no relato, el control de cambios sin motivos históricos, y la lista de comprobación antes de publicar.
+
+**Por qué es MENOR y no MAYOR.** Ninguna regla de `base/` obliga a que un manual ya escrito siga la plantilla vigente. El que exista se conserva; el próximo sale del molde nuevo.
+
+---
+
 ## 35.9.0 — 2026-08-28
 
 **Había 650 pruebas escritas que ningún comando corría.** Ahora se corren con una orden, esa orden dice cuántas corrió, y **cero pruebas es rojo**.

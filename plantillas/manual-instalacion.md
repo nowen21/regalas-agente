@@ -1,399 +1,777 @@
-# Manual de instalación — «nombre del sistema»   ·   `[CAPA 3]`
+# Manual de instalación — `<NOMBRE_PROYECTO>`   ·   `[CAPA 3]`
 
-> **Qué es este archivo.** Es la **base** de un manual de instalación: tiene todas las partes que un
-> manual de instalación debe llevar, en el orden en que se ejecutan, y en cada parte dice **qué va
-> ahí, cómo se escribe y de dónde se saca la información**. No está atado a ningún sistema ni a ninguna
-> herramienta: se copia para cada desarrollo y se llena con lo de ese desarrollo. Cuando todas las
-> partes están llenas, la copia **es** el manual.
+> **Qué es este archivo.** La base de un manual de instalación. Trae todas las partes que un manual
+> debe llevar, en el orden en que van, y en cada parte dice qué información lleva y de dónde sale. No
+> está atada a ningún lenguaje, sistema operativo, servidor, motor de base de datos ni herramienta:
+> para cada proyecto hay que copiarla y llenarla con los datos de ese proyecto. Cuando todas las
+> partes quedan llenas, la copia es el manual.
 >
-> **Cómo se usa.** 1) Copiar este archivo con el nombre del sistema. 2) Reemplazar cada «así» por el
-> dato real. 3) Llenar cada sección siguiendo su recuadro 📋. 4) Borrar los recuadros 📋: son
-> instrucciones para quien escribe, y la persona que instala nunca debe verlos. 5) Ejecutar el manual
-> completo en una máquina real antes de publicarlo. 6) Pasar la lista de comprobación del final.
+> **Cómo se llena.**
 >
-> Cubre los tres momentos de la vida de una instalación: **instalar desde cero**, **actualizar** una
-> instalación que ya existe, y **mantener** la que está funcionando. Si el sistema tiene varias piezas
-> (por ejemplo, una parte que ve la gente y una parte que guarda los datos), cada pieza tiene su
-> propia parte del manual, en el orden en que se instalan.
+> 1. Copiar este archivo con el nombre del proyecto.
+> 2. Reemplazar cada `<PLACEHOLDER>` por el dato real.
+> 3. Llenar cada sección siguiendo su recuadro «Para quien escribe».
+> 4. Repetir los bloques marcados «bloque repetible» una vez por componente, ambiente, servicio o
+>    herramienta. Borrar los que el proyecto no tenga. La numeración de las secciones que quedan no cambia.
+> 5. Borrar todos los recuadros «Para quien escribe»: son instrucciones para quien redacta, y quien
+>    instala nunca debe verlos.
+> 6. Ejecutar el manual completo, de principio a fin, en una máquina real antes de publicarlo.
+> 7. Pasar la lista de comprobación de la sección 23.
+
+## Convenciones de escritura (leer antes de llenar cualquier sección)
+
+Este manual lo va a seguir alguien que no conoce el proyecto y que puede no haber instalado nunca una
+aplicación en un servidor. Por eso:
+
+1. **Cuatro partes por procedimiento**, siempre en este orden: precondición, acción, resultado
+   esperado y validación. Un comando suelto no es un procedimiento.
+2. **Ningún comando sin su etiqueta de ubicación.** La sección 8 las define, y son obligatorias.
+3. **Los valores que cambian de un proyecto a otro van como `<PLACEHOLDER>`**, en mayúsculas y entre
+   ángulos. Al llenar el manual hay que reemplazarlos todos: no debe quedar ninguno.
+4. **Ninguna contraseña, token, llave privada ni secreto real** en el texto. En su lugar va qué es,
+   quién lo entrega y dónde queda guardado. Lo que alguna vez estuvo escrito en un documento se
+   considera conocido, y hay que cambiarlo.
+5. **Nada por supuesto.** Cada requisito lleva primero el comando que comprueba si ya está, y solo
+   después el comando que lo instala.
+6. **Decir qué es cada cosa la primera vez que aparece.** «Servidor (el computador, casi siempre en
+   otro sitio, donde el sistema queda funcionando para todos)». «Terminal (la ventana donde se
+   escriben comandos en texto)».
+7. **Antes de cambiar algo, mirar cómo está.** Todo paso que escribe, reemplaza o borra abre con el
+   comando que muestra el estado actual, y cierra diciendo cómo volver atrás.
+8. **Un paso, una cosa.** Si un paso tiene una «y» en el medio, probablemente son dos pasos.
+9. **La comprobación va al final de cada paso**, no al final del manual. Si algo falla, así se sabe en
+   qué paso falló.
+10. **Las diferencias por sistema operativo o por tecnología van en subsecciones dentro del paso**
+    (`16.4.1 Windows`, `16.4.2 Linux`), sin alterar la numeración principal.
+11. **Acciones en infinitivo, explicaciones en tercera persona.** Lo que el lector hace va en
+    infinitivo («Abrir la terminal y escribir el comando»); lo que se explica lleva su sujeto («El
+    servidor pide la contraseña»). El impersonal con «se» no sirve para las acciones. Lo que aparece
+    en pantalla va citado tal cual, aunque diga «usted».
+12. **Lo que está escrito se ejecuta, y lo que pasó al ejecutarlo no se cuenta: se vuelve paso.**
+    Ninguna sección se da por buena sin haberla corrido en una máquina real, con su salida guardada en
+    una carpeta `seguimiento/` al lado del manual. Pero el manual no relata esa ejecución: ni fechas,
+    ni duraciones, ni «en este servidor salió...», ni «no hizo falta...». Cada cosa que se aprendió se
+    vuelve un paso más, una bifurcación dentro del paso («comprobar con este comando; si sale A,
+    seguir; si sale B, hacer esto») o una fila de la sección 19. Nada queda marcado «(por verificar)».
+13. **Releer preguntando: «¿alguien que nunca ha abierto una terminal sabría qué tecla oprimir?».**
+
+### Molde del procedimiento
+
+Todo paso que instale, configure o cambie algo va con este molde:
+
+> **Precondición.** Qué debe estar hecho o disponible antes de empezar. Si no se cumple, no se sigue.
 >
-> Base creada el **2026-08-27**.
+> **Acción.**
+>
+> `[UBICACION]` usuario `<USUARIO>`, directorio `<RUTA_APLICACION>`
+>
+> ```
+> <COMANDO>
+> ```
+>
+> **Resultado esperado.** Lo que aparece en pantalla o lo que queda creado cuando el paso sale bien.
+>
+> **Validación.** El comando o la comprobación independiente que confirma el resultado, con su salida buena.
+>
+> **Si sale otra cosa.** Qué significa y a qué fila de la sección 19 ir.
 
 ---
 
-## Reglas para escribir el manual (leerlas antes de llenar cualquier parte)
+## 1. Información general
 
-Lo va a seguir alguien que **no conoce el sistema** y que puede no haber instalado nunca una aplicación
-en un servidor. Por eso:
-
-1. **Cada paso tiene cuatro partes, siempre en este orden:** *qué se va a hacer y por qué*, *el
-   comando o la acción exacta, para copiar y pegar*, *lo que debe salir en pantalla* y *qué significa
-   y qué hacer si sale otra cosa*. Un comando suelto no es un paso.
-2. **Ningún comando sin decir dónde se escribe:** «en su computador» o «dentro del servidor (después de
-   entrar)». Confundirlos es la causa más común de que «no funcione».
-3. **Decir qué es cada cosa la primera vez.** «Servidor (el computador, normalmente en otro sitio,
-   donde el sistema queda funcionando para todos)». «Terminal (la ventana donde se escriben comandos
-   en texto)».
-4. **Nunca dar por hecho que algo está instalado.** Cada requisito lleva primero el comando para
-   **comprobar** si ya está, y solo después el comando para instalarlo.
-5. **Antes de cambiar algo, mirar cómo está.** Cada paso que escribe o borra empieza con «ver el estado
-   actual», y dice cómo volver atrás.
-6. **Ninguna contraseña, clave ni secreto escrito en el manual.** Se dice de dónde sale y quién lo
-   entrega. Lo que se escribió alguna vez en un documento se considera conocido y hay que cambiarlo.
-7. **Lo que se escribe se ejecuta.** Ninguna sección se da por buena sin haberla corrido en una máquina
-   real, con su salida guardada en una carpeta `seguimiento/` junto al manual. Lo no ejecutado se marca
-   «(por verificar)».
-8. **Un paso, una cosa.** Si un paso tiene «y», probablemente son dos pasos.
-9. **Comprobar al final de cada paso, no al final del manual.** Si algo falla, se sabe en qué paso.
-10. **Releer preguntando: «¿alguien que nunca ha abierto una terminal sabría qué tecla pulsar?».**
-
----
-
-## 0. Portada e identificación
-
-> 📋 **Qué va aquí:** nombre del sistema, versión del código que instala este manual (del código, no
-> del manual), fecha, sistema operativo y versiones para las que se probó, y en qué máquina se probó.
-> **De dónde sale:** de la etiqueta o marca de versión del código y del registro de la instalación
-> real que se hizo para escribirlo.
+> **Para quien escribe.** Los datos de identificación del documento y del software que instala. La
+> versión del proyecto y la versión del manual son distintas y las dos van.
 
 | Dato | Valor |
 |---|---|
-| Sistema | «nombre del sistema» |
-| Versión del código que instala | «marca de versión de cada pieza» |
-| Probado en | «sistema operativo y versión» · «versiones de las herramientas necesarias» |
-| Fecha de este manual | «fecha» |
-| Tiempo estimado | «medido en la última instalación real» |
+| Nombre del proyecto | `<NOMBRE_PROYECTO>` |
+| Código o identificador | `<CODIGO_PROYECTO>` |
+| Versión del software que instala este manual | `<VERSION>` |
+| Versión del manual | `<VERSION_MANUAL>` |
+| Fecha | `<FECHA>` |
+| Responsable | `<RESPONSABLE>` |
+| Estado del documento | Borrador · En revisión · Aprobado · Obsoleto |
+| Ambiente al que aplica | `<AMBIENTE>` |
+| Tiempo estimado de instalación | `<DURACION>` |
+| Probado en | `<SISTEMA_OPERATIVO>` `<VERSION_SO>` |
 
----
+## 2. Objetivo del manual
 
-## 1. Cómo leer este manual
+> **Para quien escribe.** Dos o tres frases: qué proceso cubre el documento, sobre qué software y para
+> quién. Sin antecedentes ni justificación.
 
-> 📋 **Qué va aquí:** las convenciones para el lector: cómo se muestran los comandos, cómo se distingue
-> lo que se escribe de lo que sale, los avisos, y qué hacer si un paso falla (parar, no seguir).
-> **Cómo se escribe:** un ejemplo de cada cosa.
+Este manual describe el procedimiento para instalar y dejar operativo `<NOMBRE_PROYECTO>` versión
+`<VERSION>` en el ambiente `<AMBIENTE>`. Está dirigido a `<PERFIL_DESTINATARIO>`.
 
-Modelo de lo que debe decir:
+## 3. Alcance
 
-- Los bloques grises son comandos: se copian **completos**, se pegan en la terminal y se pulsa
-  **Enter**. Si un bloque tiene varias líneas, se pegan de a una.
-- Lo que empieza con `#` dentro de un bloque es una explicación, no se ejecuta.
-- «**Debe salir:**» muestra lo que aparece si todo va bien. Si aparece otra cosa, **no siga**: vaya al
-  «Si sale otra cosa» de ese paso o a la sección «Solución de problemas».
-- `«así»` es un valor que usted reemplaza por el suyo (una dirección, un nombre de usuario).
-- ⚠️ marca lo que no se puede deshacer o lo que afecta a otros sistemas de la misma máquina.
+> **Para quien escribe.** Dos listas: lo que el manual cubre y lo que no. Lo que queda fuera va con el
+> nombre de quien sí lo resuelve, para que el lector sepa a quién pedirlo.
 
----
+**Incluido**
 
-## 2. Qué se va a instalar y cómo queda armado
+- Componentes: `<COMPONENTE_1>`, `<COMPONENTE_2>`.
+- Ambientes: `<AMBIENTE_1>`, `<AMBIENTE_2>`.
+- Infraestructura: `<INFRAESTRUCTURA>`.
 
-> 📋 **Qué va aquí:** el dibujo de las piezas y cómo se conectan, en palabras de todos los días. Sin
-> esto el lector ejecuta comandos sin saber para qué, y no puede diagnosticar nada.
-> **Cómo se escribe:** un diagrama y una tabla «pieza → qué hace → dónde queda → por dónde se habla
-> con ella». Nombrar cada pieza por su función («la puerta de entrada», «la parte que guarda los
-> datos») y, entre paréntesis, el nombre del programa concreto que se eligió para este sistema.
-> **De dónde sale:** de la arquitectura del sistema y de cómo quedó montada la última instalación.
+**Fuera del alcance**
+
+| Qué queda fuera | Quién lo resuelve |
+|---|---|
+| `<TEMA_FUERA_DE_ALCANCE>` | `<AREA_O_ROL>` |
+
+## 4. Arquitectura y componentes
+
+> **Para quien escribe.** El dibujo de las piezas y cómo se conectan, en palabras corrientes. Sin esto
+> el lector ejecuta comandos sin saber para qué y no puede diagnosticar nada. Nombrar cada pieza por su
+> función y, entre paréntesis, la tecnología concreta que eligió el proyecto. Borrar las filas de
+> componentes que el proyecto no tenga.
 
 ```
-Quien usa el sistema (navegador o aplicación)
-        │
-        ▼
- «Puerta de entrada» (recibe todas las visitas y las reparte)
-        ├── «parte visible»  → los archivos que ve la persona, en «carpeta»
-        └── «parte de datos» → el servicio que hace el trabajo, escuchando solo dentro de la máquina
-                                    │
-                                    ├── «base de datos» (dónde está, quién la administra)
-                                    ├── «correo saliente», si el sistema envía correos
-                                    └── «otros programas de apoyo» (por ejemplo, uno que genera documentos)
+<DIAGRAMA_DE_COMPONENTES>
 ```
 
-| Pieza | Qué hace | Dónde queda | Por dónde se habla con ella |
-|---|---|---|---|
-| «pieza 1» | «…» | «carpeta o servicio» | «puerto o dirección; público o interno» |
-| «pieza 2» | «…» | «…» | «…» |
+| Componente | Qué hace | Tecnología | Dónde queda | Depende de | Obligatorio |
+|---|---|---|---|---|---|
+| Frontend | `<QUE_HACE>` | `<TECNOLOGIA>` | `<RUTA_O_SERVICIO>` | `<COMPONENTE>` | Sí / No |
+| Backend | | | | | |
+| Base de datos | | | | | |
+| Servidor web | | | | | |
+| Colas | | | | | |
+| Caché | | | | | |
+| Almacenamiento | | | | | |
+| Servicios adicionales | | | | | |
+| Servicios externos | | | | | |
+| Contenedores | | | | | |
+| `<OTRO_COMPONENTE>` | | | | | |
 
----
+## 5. Requisitos previos
 
-## 3. Quién instala, y qué debe tener antes de empezar
+> **Para quien escribe.** Cada requisito lleva, en la columna «Verificación», el comando que comprueba
+> si ya está instalado. La versión va con su operador (`>= 3.11`), no en una frase.
 
-> 📋 **Qué va aquí:** la lista de accesos y datos que hay que **pedir** antes de sentarse, a quién se le
-> piden, y cuánto suelen tardar. Es la sección que evita quedarse a medias el primer día.
-> **Cómo se escribe:** lista de chequeo. Por cada ítem: qué es, para qué paso se necesita, quién lo
-> entrega. **Sin valores**: nunca la contraseña, solo «la entrega el área de ...».
-> **De dónde sale:** de los requisitos del sistema y de lo que en la instalación anterior tocó pedir a
-> otras áreas.
+### 5.1 Software y dependencias de base
 
-- [ ] Acceso a la máquina donde se instala (usuario, forma de entrar). Lo entrega «quién».
-- [ ] Permiso para ejecutar como administrador en esa máquina.
-- [ ] Credenciales de la base de datos. Las entrega «quién». ⚠️ Si traen caracteres especiales,
-      ver la sección del archivo de configuración.
-- [ ] Datos del correo saliente, si el sistema envía correos. Los entrega «quién».
-- [ ] Confirmación de que la red deja llegar a la máquina desde donde estarán los usuarios. La da «quién».
-- [ ] El paquete del código de cada pieza. Lo arma el equipo de desarrollo (la sección 9.1 dice cómo).
-- [ ] Un computador propio con las herramientas para entrar a la máquina y para subir archivos.
-
----
-
-## 4. Requisitos de la máquina
-
-> 📋 **Qué va aquí:** cada programa que la máquina necesita, **con el comando para comprobar si ya
-> está** y, solo si falta, el comando para instalarlo. Versiones mínimas.
-> **Cómo se escribe:** una subsección por requisito, con las cuatro partes de la regla 1. Incluir los
-> programas de apoyo que solo se usan en un momento puntual (por ejemplo, uno que convierte documentos):
-> son los que se olvidan, y el sistema arranca bien y falla después.
-> **De dónde sale:** del archivo de requisitos del proyecto y de lo que la instalación anterior
-> descubrió que faltaba.
-
-### 4.1 Sistema operativo, y quién más vive en la máquina
-> 📋 Qué sistema operativo y versión. ⚠️ Si la máquina está **compartida con otro sistema**, decirlo
-> aquí y nombrar qué no se puede tocar (sus archivos, su puerta de entrada, sus puertos). Cómo verlo.
-
-### 4.2 «Lenguaje o entorno de ejecución de la parte de datos»
-### 4.3 «Herramienta para compilar la parte visible», si hace falta
-### 4.4 «Puerta de entrada» (el programa que recibe las visitas)
-### 4.5 «Programas de apoyo» (los que se usan en un momento puntual)
-### 4.6 Controles de seguridad del sistema operativo que van a aparecer
-> 📋 Explicar en dos frases cada control que la máquina tenga activo: el que decide qué programa puede
-> leer qué archivo, y el que decide qué puertos se ven desde fuera. Aclarar que **no se apagan**: se
-> les da permiso puntual, y el manual dice cuál en cada paso.
-### 4.7 Espacio en disco y memoria
-
----
-
-## 5. Antes de tocar nada: inventario y respaldo
-
-> 📋 **Qué va aquí:** los comandos para dejar escrito cómo estaba la máquina antes (usuarios, puertos en
-> uso, archivos de configuración de la puerta de entrada, servicios activos) y cómo guardar copia de lo
-> que se va a cambiar.
-> **Por qué:** es lo que permite volver atrás y demostrar que lo que ya estaba no se tocó.
-> **Cómo se escribe:** cada comando con su salida esperada, y la instrucción de guardar esa salida en
-> `seguimiento/` con la fecha.
-
----
-
-## 6. Parte A — Instalar «la parte de datos» (el servicio que hace el trabajo)
-
-> 📋 **Cómo se escribe toda esta parte:** un paso por subsección, con las cuatro partes de la regla 1 y,
-> al final de cada uno, «Si hay que deshacer lo hecho hasta aquí». El orden de abajo es el habitual;
-> se ajusta al sistema, pero **la comprobación va siempre después del paso que comprueba**, no al final.
-> **De dónde sale:** del manual anterior de esta pieza si existe (con sus correcciones aplicadas), del
-> archivo de configuración de ejemplo del proyecto y de la instalación real.
-
-### 6.1 Crear el usuario de servicio y la carpeta
-> 📋 Por qué un usuario propio para este sistema y no reutilizar otro. Qué carpeta. Cómo deshacer.
-
-### 6.2 Copiar el código a la máquina
-> 📋 Qué contiene el paquete (lista exacta), cómo subirlo, cómo descomprimirlo, y **cerrar los
-> permisos después** (un paquete armado en otro sistema operativo puede llegar con permisos abiertos).
-> Cómo comprobar los permisos.
-
-### 6.3 Paquetes del sistema operativo
-> 📋 Qué se instala y por qué. Decir qué **no** hizo falta en la instalación real, para que nadie lo
-> instale por si acaso.
-
-### 6.4 Entorno aislado y dependencias
-> 📋 Qué es un entorno aislado (una carpeta con las librerías solo de esta aplicación, para no mezclar
-> con las del sistema). Cómo crearlo, cómo instalar las dependencias, cómo comprobar.
-
-### 6.5 Comprobar que se llega a la base de datos
-> 📋 Dos comprobaciones separadas: que la máquina **alcanza** la base (red) y que el usuario **entra**
-> (credenciales). Cada una con su comando, su salida buena y su salida mala con causa.
-
-### 6.6 El archivo de configuración
-> 📋 Qué es (el único archivo con los datos propios de esta máquina; **no se versiona**). Tabla con
-> **cada variable**: nombre, qué controla, ejemplo de valor **ficticio**, obligatoria o no, en qué paso
-> se llena. Qué hacer si una clave trae caracteres especiales. Con qué permisos queda el archivo.
-> **De dónde sale:** del archivo de configuración de ejemplo del proyecto y de donde el código lee la
-> configuración.
-
-### 6.7 Crear las tablas y los datos base
-> 📋 Qué hace el proceso (crea tablas, siembra listas y usuarios iniciales). La clave inicial: de dónde
-> sale, dónde la muestra el sistema **si la genera él**, y qué hacer con ella (guardarla donde
-> corresponda; nunca en este manual). Qué hacer si el proceso falla a medias.
-
-### 6.8 Primer arranque a mano
-> 📋 Arrancar en primer plano, ver el arranque con los ojos, probar la dirección de comprobación de
-> salud desde la propia máquina. Es para ver los errores **antes** de esconderlo en un servicio. Cómo
-> detenerlo.
-
-### 6.9 Dejarlo como servicio permanente
-> 📋 Qué es un servicio (algo que arranca solo al encender la máquina y se levanta si se cae). El
-> archivo del servicio completo con cada línea explicada. Cómo activarlo, arrancarlo, ver su estado y
-> ver su registro.
-
-### 6.10 Conectar la puerta de entrada con esta pieza
-> 📋 El bloque de configuración que manda las peticiones de esta pieza al servicio, con cada línea
-> explicada. Los permisos del control de seguridad que hagan falta. Comprobar la configuración antes de
-> aplicarla. Si el archivo ya existe porque otra pieza se instaló primero, **agregar**, no reescribir.
-> Poner aquí, con su explicación, cada detalle que en la instalación real costó encontrar.
-
-### 6.11 Abrir el puerto en la máquina
-> 📋 Comprobar si ya está abierto; abrirlo solo si falta. Aclarar que esto abre el puerto **en la
-> máquina**; que la red deje llegar hasta ella lo habilita otra área, y sin eso solo se entra por un
-> acceso remoto directo.
-
-### 6.12 Configuraciones que dependen de cómo se publica (orígenes permitidos, correo)
-> 📋 Qué hay que ajustar si la parte visible y la parte de datos se sirven desde direcciones distintas.
-> Correo: qué variables llenar y con qué comando se prueba; qué hacer si el método de envío está
-> bloqueado por política de la organización.
-
----
-
-## 7. Parte B — Instalar «la parte visible» (lo que ve la persona)
-
-> 📋 **Cómo se escribe:** igual que la Parte A. Si la parte visible se compila (se convierte de código a
-> archivos listos para publicar), el paso que más falla es **decir a dónde apunta**: dedicarle una
-> subsección propia con el porqué. Si el proyecto cambia de herramienta de compilación o de instalación
-> de dependencias, **este manual cambia en el mismo momento**: un manual probado deja de estarlo cuando
-> cambia la herramienta con la que se instala.
-
-### 7.1 Instalar las herramientas para compilar
-### 7.2 Copiar el código
-> 📋 Las entradas exactas que se suben (y cuáles **no**: carpetas de dependencias, resultados de
-> compilaciones anteriores), cómo armar el paquete, tamaño esperado.
-
-### 7.3 Decir a dónde apunta — el paso que más falla
-> 📋 Dónde se configura la dirección de la parte de datos, por qué conviene una dirección relativa
-> (el mismo compilado sirve desde cualquier dirección sin recompilar), cómo ver qué tiene ahora, cómo
-> cambiarla, cómo comprobar que no queda rastro de otra dirección.
-
-### 7.4 Instalar dependencias y compilar
-> 📋 ⚠️ No correr ninguna corrección automática de dependencias durante la instalación: cambia
-> versiones y puede romper la compilación. Qué preguntas hace la herramienta y qué responder. Dónde
-> queda el resultado.
-
-### 7.5 Publicar en su carpeta y dar los permisos
-> 📋 Copiar, poner dueño y permisos, aplicar el control de seguridad si lo hay. Comprobar.
-
-### 7.6 Conectar la puerta de entrada con esta pieza
-> 📋 El bloque de configuración para servir los archivos, con cada línea explicada (incluida la que hace
-> que recargar cualquier pantalla no dé «no encontrado»). Si el archivo ya existe, **agregar**, no
-> reemplazar.
-
-### 7.7 Comprobar
-> 📋 Que la dirección raíz devuelve la pantalla de inicio, que la parte de datos sigue respondiendo, y
-> que en lo publicado no queda ninguna dirección absoluta.
-
----
-
-## 8. Verificación final: cómo saber que quedó bien
-
-> 📋 **Qué va aquí:** una lista de comprobaciones **en orden**, cada una con su comando, su resultado
-> bueno y qué significa si falla. Termina con una prueba de extremo a extremo que atraviese todas las
-> piezas a la vez (por ejemplo: entrar por el navegador, iniciar sesión y ver una lista que salga de la
-> base de datos).
-> **De dónde sale:** de la verificación de cada pieza y de la instalación real.
-
-### 8.1 Desde la propia máquina
-### 8.2 Desde su computador
-> 📋 Si la red todavía no deja llegar, cómo hacer un acceso remoto directo (explicar qué es, el
-> comando exacto, y qué dirección abrir después).
-### 8.3 La prueba de extremo a extremo
-### 8.4 Comprobar que lo que ya estaba en la máquina sigue en pie
-### 8.5 Dejar constancia
-> 📋 Qué se anota y dónde: fecha, versión instalada de cada pieza, quién, y cualquier desvío del manual.
-
----
-
-## 9. Actualizar una instalación que ya existe
-
-> 📋 **Qué va aquí:** el procedimiento cuando el sistema **ya está** instalado y llega código nuevo. Es
-> distinto de instalar desde cero: hay datos, configuración y archivos de los usuarios que no se pueden
-> perder.
-> **Cómo se escribe:** los pasos de abajo, cada uno con las cuatro partes, y la «vuelta atrás» escrita
-> **antes** de necesitarla.
-
-### 9.1 Preparar los paquetes (en el computador del equipo de desarrollo)
-### 9.2 Subirlos y comprobar que llegaron completos
-### 9.3 Respaldo de lo que está
-### 9.4 Parte de datos: desempaquetar aparte, traer lo que solo vive en la máquina (configuración, entorno aislado, archivos subidos por los usuarios), corregir permisos, e intercambiar
-### 9.5 Reiniciar el servicio y comprobar (si el arranque hace trabajo previo, decir cuánto esperar)
-### 9.6 Parte visible: intercambiar la carpeta publicada y volver a dar los permisos
-### 9.7 Comprobar que se desplegó **lo que se creía** (marca de versión; algo que solo exista en la versión nueva)
-### 9.8 Vuelta atrás, paso por paso
-### 9.9 Limpieza, cuando lleve unos días estable
-
----
-
-## 10. Seguridad después de instalar
-
-> 📋 **Qué va aquí:** lo que se hace **una vez que funciona** y que suele olvidarse: cerrar permisos de
-> carpetas y archivos (la configuración más cerrada que el resto), **cambiar las claves** que se usaron
-> durante la instalación (en qué orden, para no dejar el servicio sin acceso), confirmar que la
-> configuración real no está en el control de versiones, cambiar las claves iniciales de los usuarios
-> de fábrica, y quién custodia cada secreto.
-
----
-
-## 11. Mantenimiento
-
-> 📋 **Qué va aquí:** las tareas de rutina con su comando: ver el registro del servicio, reiniciarlo,
-> ver el estado de la puerta de entrada, dónde quedan los archivos de los usuarios y cómo respaldarlos,
-> cómo limpiar espacio, y qué revisar una vez al mes.
-
----
-
-## 12. Solución de problemas
-
-> 📋 **Qué va aquí:** tabla **síntoma → causa más probable → cómo confirmarla → qué hacer**, ordenada
-> por lo que ve la persona, no por la pieza técnica. Empezar con lo que ya pasó de verdad en la
-> instalación anterior: cada tropiezo registrado es una fila.
-> **Cómo se escribe:** cada fila se puede seguir sin leer el resto del manual.
-
-| Lo que se ve | Causa probable | Cómo confirmarlo | Qué hacer |
-|---|---|---|---|
-| «síntoma» | «causa» | «comando o comprobación» | «acción, con el número de la sección» |
-
----
-
-## 13. Lo que este manual no resuelve (depende de terceros)
-
-> 📋 **Qué va aquí:** lo que hay que pedir a otras áreas y que ninguna cantidad de comandos reemplaza
-> (acceso de red, método de envío de correo, cuentas institucionales, custodia de claves), **con el
-> mensaje ya redactado** para pedirlo y cómo comprobar cuando respondan.
-
----
-
-## 14. Registro de instalaciones y control de cambios
-
-> 📋 Dos tablas. **Instalaciones hechas:** fecha, máquina, versión, quién, enlace al seguimiento.
-> **Cambios del manual:** fecha, qué cambió, por qué (qué instalación lo enseñó), quién.
-
-| Fecha | Máquina | Versión | Quién | Seguimiento |
+| Requisito | Versión | Obligatorio | Verificación | Observaciones |
 |---|---|---|---|---|
-| «fecha» | «máquina» | «versión» | «quién» | «enlace» |
+| `<REQUISITO>` | `<VERSION>` | Sí / No | `[LOCAL]` `<COMANDO_DE_VERIFICACION>` | `<NOTA>` |
 
-| Fecha | Qué cambió en el manual | Motivo | Quién |
+### 5.2 Sistema operativo y hardware
+
+| Requisito | Valor mínimo | Obligatorio | Verificación | Observaciones |
+|---|---|---|---|---|
+| Sistema operativo | `<SISTEMA_OPERATIVO>` `<VERSION_SO>` | Sí | `[SERVIDOR]` `<COMANDO>` | |
+| Memoria | `<MEMORIA>` | | `[SERVIDOR]` `<COMANDO>` | |
+| Disco libre | `<ESPACIO>` | | `[SERVIDOR]` `<COMANDO>` | |
+| CPU | `<CPU>` | | | |
+
+### 5.3 Accesos, permisos y credenciales
+
+> **Para quien escribe.** Lo que hay que pedir antes de sentarse, a quién y cuánto suele tardar. Es la
+> sección que evita quedarse a medias el primer día. Sin valores: nunca la contraseña, solo quién la
+> entrega.
+
+| Requisito | Obligatorio | Quién lo entrega | Verificación | Observaciones |
+|---|---|---|---|---|
+| Acceso al servidor `<SERVIDOR>` | Sí | `<AREA_O_ROL>` | `[LOCAL]` `<COMANDO_DE_CONEXION>` | |
+| Permisos de administrador en el servidor | | | | |
+| Credenciales de base de datos | | | | |
+| Acceso al repositorio `<REPOSITORIO>` | | | | |
+| Credenciales de servicios externos | | | | |
+| Acceso de red hacia `<SERVIDOR>`:`<PUERTO>` | | | | |
+| Certificados | | | | |
+| Variables de entorno con valores propios del ambiente | | | | |
+
+### 5.4 Puertos
+
+| Puerto | Componente | Protocolo | Alcance | Verificación |
+|---|---|---|---|---|
+| `<PUERTO>` | `<COMPONENTE>` | `<PROTOCOLO>` | Público / Interno | `[SERVIDOR]` `<COMANDO>` |
+
+## 6. Ambientes y servidores
+
+> **Para quien escribe.** Una fila por ambiente en el resumen, y después un bloque por ambiente con sus
+> datos. Cuando un procedimiento cambia según el ambiente, la diferencia va en subsecciones dentro de
+> ese paso, nunca en un párrafo suelto.
+
+### 6.1 Resumen de ambientes
+
+| Ambiente | Servidor o hostname | Sistema operativo | Usuario | Ubicación de la aplicación | Estado |
+|---|---|---|---|---|---|
+| Desarrollo | `<SERVIDOR>` | `<SISTEMA_OPERATIVO>` | `<USUARIO>` | `<RUTA_APLICACION>` | Activo / Inactivo |
+| Pruebas | | | | | |
+| QA | | | | | |
+| Producción | | | | | |
+
+### 6.2 Detalle por ambiente
+
+> **Bloque repetible.** Copiar una vez por cada ambiente de la tabla 6.1.
+
+#### 6.2.N Ambiente `<AMBIENTE>`
+
+| Dato | Valor |
+|---|---|
+| Nombre | `<AMBIENTE>` |
+| Dirección IP o hostname | `<SERVIDOR>` |
+| Sistema operativo y versión | `<SISTEMA_OPERATIVO>` `<VERSION_SO>` |
+| Usuario requerido | `<USUARIO>` |
+| Usuario de servicio | `<USUARIO_SERVICIO>` |
+| Servicios que corren allí | `<SERVICIO_1>`, `<SERVICIO_2>` |
+| Puertos | `<PUERTO>` |
+| Ubicación de la aplicación | `<RUTA_APLICACION>` |
+| Ubicación de los registros | `<RUTA_LOGS>` |
+| Otros sistemas en la misma máquina | `<SISTEMA_VECINO>`, y qué no se puede tocar de él |
+| Observaciones | `<NOTA>` |
+
+## 7. Herramientas de acceso
+
+> **Para quien escribe.** Las herramientas para entrar a cada ambiente y para administrarlo. Si el
+> proyecto usa una herramienta distinta, basta con reemplazar este bloque completo, sin tocar el resto
+> del manual.
+
+> **Bloque repetible.** Copiar una vez por herramienta.
+
+### 7.N `<HERRAMIENTA>`
+
+| Dato | Valor |
+|---|---|
+| Nombre | `<HERRAMIENTA>` |
+| Versión | `<VERSION_HERRAMIENTA>` |
+| Para qué se usa | `<PROPOSITO>` |
+| Dónde se obtiene | `<ORIGEN_DE_DESCARGA>` |
+| Ambientes en los que aplica | `<AMBIENTE>` |
+| Configuración requerida | `<CONFIGURACION>` |
+
+**Procedimiento de conexión**
+
+> **Precondición.** `<QUE_DEBE_ESTAR_LISTO>`
+>
+> **Acción.**
+>
+> `[LOCAL]`
+>
+> ```
+> <COMANDO_DE_CONEXION>
+> ```
+>
+> **Resultado esperado.** `<LO_QUE_APARECE_EN_PANTALLA>`
+>
+> **Validación.** `<COMO_SE_CONFIRMA_QUE_LA_SESION_QUEDO_ABIERTA>`
+
+## 8. Ubicación de los comandos
+
+Ningún comando de este manual aparece sin decir antes dónde se ejecuta. La etiqueta va en la línea
+inmediatamente anterior al bloque de comando.
+
+| Etiqueta | Dónde se ejecuta |
+|---|---|
+| `[LOCAL]` | Terminal del computador de quien instala |
+| `[SERVIDOR]` | Terminal del servidor, después de haber entrado con la herramienta de la sección 7 |
+| `[CONTENEDOR]` | Terminal dentro del contenedor, después de haber entrado en él |
+| `[BASE DE DATOS]` | Consola del motor de base de datos |
+| `[HERRAMIENTA]` | Dentro de la herramienta indicada, no en una terminal |
+
+Cuando el comando depende del usuario o del directorio, los dos van en la misma línea de la etiqueta:
+
+```
+[SERVIDOR] usuario <USUARIO>, directorio <RUTA_APLICACION>
+```
+
+**Ejemplo de la convención**
+
+> **Precondición.** La sesión contra `<SERVIDOR>` está abierta.
+>
+> **Acción.**
+>
+> `[SERVIDOR]` usuario `<USUARIO>`, directorio `<RUTA_APLICACION>`
+>
+> ```
+> <COMANDO>
+> ```
+>
+> **Resultado esperado.** `<SALIDA_ESPERADA>`
+>
+> **Validación.**
+>
+> `[SERVIDOR]` usuario `<USUARIO>`
+>
+> ```
+> <COMANDO_DE_VERIFICACION>
+> ```
+
+Confundir `[LOCAL]` con `[SERVIDOR]` es la causa más común de que un paso «no funcione». Si un paso
+falla, lo primero que hay que revisar es la etiqueta.
+
+## 9. Obtención del código fuente
+
+| Dato | Valor |
+|---|---|
+| Repositorio | `<REPOSITORIO>` |
+| Rama o etiqueta de versión | `<RAMA>` |
+| Método de descarga | `<METODO>` |
+| Credenciales o permisos necesarios | `<QUIEN_LOS_ENTREGA>` |
+| Ubicación de destino | `<RUTA_APLICACION>` |
+| Qué no viaja en el paquete | `<EXCLUSIONES>` |
+
+> **Precondición.** El acceso al repositorio está confirmado (sección 5.3).
+>
+> **Acción.**
+>
+> `[UBICACION]` usuario `<USUARIO>`, directorio `<RUTA_DESTINO>`
+>
+> ```
+> <COMANDO_DE_DESCARGA>
+> ```
+>
+> **Resultado esperado.** El código queda en `<RUTA_APLICACION>`.
+>
+> **Validación.** Comprobar que la versión obtenida es `<VERSION>`.
+>
+> `[UBICACION]`
+>
+> ```
+> <COMANDO_QUE_MUESTRA_LA_VERSION>
+> ```
+
+## 10. Configuración del proyecto
+
+> **Para quien escribe.** Una fila por variable. En la columna de ejemplo van valores ficticios, nunca
+> los reales. Marcar las variables que llevan secretos: su valor lo entrega quien indica la
+> sección 5.3.
+
+### 10.1 Archivos de configuración
+
+| Archivo | Ubicación | Se versiona | De dónde sale | Permisos |
+|---|---|---|---|---|
+| `<ARCHIVO_CONFIGURACION>` | `<RUTA>` | No | `<ARCHIVO_DE_EJEMPLO>` | `<PERMISOS>` |
+
+### 10.2 Variables de entorno y parámetros
+
+| Variable | Qué controla | Obligatoria | Ejemplo ficticio | Es secreto | En qué paso se llena |
+|---|---|---|---|---|---|
+| `<VARIABLE>` | `<QUE_CONTROLA>` | Sí / No | `<VALOR_FICTICIO>` | Sí / No | `<SECCION>` |
+
+### 10.3 Conexiones a otros servicios
+
+| Servicio | Dirección | Puerto | Usuario | Dónde se configura | Cómo se prueba |
+|---|---|---|---|---|---|
+| `<SERVICIO_EXTERNO>` | `<HOST>` | `<PUERTO>` | `<USUARIO>` | `<VARIABLE_O_ARCHIVO>` | `<COMANDO>` |
+
+### 10.4 Certificados
+
+| Certificado | Para qué | Ubicación | Vence | Quién lo renueva |
+|---|---|---|---|---|
+| `<CERTIFICADO>` | `<PROPOSITO>` | `<RUTA>` | `<FECHA>` | `<AREA_O_ROL>` |
+
+## 11. Instalación de dependencias
+
+> **Para quien escribe.** Un bloque por componente. Si el gestor de dependencias cambia, este manual
+> cambia en el mismo momento: un manual probado deja de estarlo cuando cambia la herramienta con la que
+> se instala. **Aviso:** ninguna corrección automática de dependencias durante la instalación. Cambia
+> versiones por su cuenta y rompe lo que ya estaba probado.
+
+> **Bloque repetible.** Copiar una vez por componente.
+
+### 11.N Dependencias de `<COMPONENTE>`
+
+| Dependencia | Versión | Componente | Comando de instalación | Ubicación | Verificación |
+|---|---|---|---|---|---|
+| `<DEPENDENCIA>` | `<VERSION>` | `<COMPONENTE>` | `<COMANDO>` | `[UBICACION]` | `<COMANDO_DE_VERIFICACION>` |
+
+> **Precondición.** `<REQUISITO_PREVIO>` está instalado y el código está en `<RUTA_APLICACION>`.
+>
+> **Acción.**
+>
+> `[UBICACION]` usuario `<USUARIO>`, directorio `<RUTA_APLICACION>`
+>
+> ```
+> <COMANDO_DE_INSTALACION>
+> ```
+>
+> **Resultado esperado.** `<SALIDA_ESPERADA>`
+>
+> **Validación.** `<COMANDO_QUE_LISTA_LO_INSTALADO>`
+
+## 12. Base de datos
+
+| Dato | Valor |
+|---|---|
+| Motor | `<MOTOR_BD>` |
+| Versión | `<VERSION_BD>` |
+| Host | `<HOST_BD>` |
+| Puerto | `<PUERTO_BD>` |
+| Nombre de la base | `<NOMBRE_BD>` |
+| Usuario de la aplicación | `<USUARIO_BD>` |
+| Permisos que necesita ese usuario | `<PERMISOS_BD>` |
+| Quién administra el motor | `<AREA_O_ROL>` |
+
+### 12.1 Comprobar el acceso
+
+> **Para quien escribe.** Dos comprobaciones separadas, cada una con su salida buena y su salida mala:
+> que la máquina alcanza el motor por red, y que el usuario entra con sus credenciales. Confundirlas
+> hace perder horas.
+
+### 12.2 Crear la base y el esquema
+
+### 12.3 Ejecutar las migraciones
+
+### 12.4 Ejecutar los scripts adicionales
+
+### 12.5 Cargar los datos iniciales
+
+> **Para quien escribe.** Qué queda sembrado: listas base, parámetros, usuarios iniciales. Si el proceso
+> genera una clave inicial, decir dónde la muestra y qué hacer con ella. La clave nunca va escrita aquí.
+
+### 12.6 Validar la conexión desde la aplicación
+
+## 13. Instalación y configuración de componentes
+
+> **Para quien escribe.** Una subsección por componente de la tabla de la sección 4, en el orden de
+> instalación. Agregar o quitar un componente no cambia el resto del manual. Dentro de cada uno, los
+> pasos van con el molde de cuatro partes, y cada paso cierra diciendo cómo deshacer lo hecho hasta ahí.
+
+> **Bloque repetible.** Copiar una vez por componente.
+
+### 13.N `<COMPONENTE>`
+
+#### 13.N.1 Preparación: usuario de servicio, directorios y permisos
+
+#### 13.N.2 Ubicar el código
+
+#### 13.N.3 Configurar
+
+#### 13.N.4 Decir a dónde apunta
+
+> **Para quien escribe.** En los componentes que se compilan, este es el paso que más falla: el
+> compilado queda apuntando a la dirección equivocada y el error aparece mucho después. Dónde se
+> configura la dirección del componente con el que habla, por qué conviene una dirección relativa (el
+> mismo compilado sirve desde cualquier dirección, sin volver a compilar), cómo ver cuál tiene ahora y
+> cómo comprobar que no quedó rastro de otra.
+
+#### 13.N.5 Construir o compilar, si aplica
+
+#### 13.N.6 Primer arranque en primer plano
+
+> **Para quien escribe.** Arrancar a la vista antes de esconderlo en un servicio es lo que deja ver los
+> errores de configuración. Incluir cómo detenerlo.
+
+#### 13.N.7 Conectar con el servidor web o con el componente que lo expone
+
+> **Para quien escribe.** Si el archivo de configuración ya existe porque otro componente entró
+> primero, hay que agregar al final, nunca reescribirlo.
+
+#### 13.N.8 Comprobar
+
+#### 13.N.9 Cómo deshacer este componente
+
+## 14. Servicios y procesos
+
+> **Para quien escribe.** Todo lo que debe quedar corriendo después de la instalación. Un bloque por
+> servicio. Incluir los procesos programados y los trabajos en segundo plano: son los que se olvidan, y
+> el sistema arranca bien y falla después.
+
+> **Bloque repetible.** Copiar una vez por servicio.
+
+### 14.N `<SERVICIO>`
+
+| Dato | Valor |
+|---|---|
+| Nombre | `<SERVICIO>` |
+| Para qué sirve | `<PROPOSITO>` |
+| Comando que ejecuta | `<COMANDO>` |
+| Dónde se ejecuta | `[UBICACION]` |
+| Usuario | `<USUARIO_SERVICIO>` |
+| Puerto | `<PUERTO>` |
+| Arranca solo al encender la máquina | Sí / No |
+| Cómo se inicia | `<COMANDO_DE_INICIO>` |
+| Cómo se detiene | `<COMANDO_DE_DETENCION>` |
+| Cómo se verifica | `<COMANDO_DE_ESTADO>` |
+| Dónde quedan sus registros | `<RUTA_LOGS>` |
+| Cómo se leen sus registros | `<COMANDO_DE_LOGS>` |
+
+## 15. Configuración del servidor
+
+> **Para quien escribe.** Solo lo que hay que tocar en la máquina, no en la aplicación. Los controles
+> de seguridad del sistema operativo no se apagan nunca: en lugar de eso, darles el permiso puntual, y
+> el manual dice cuál es.
+
+### 15.1 Servidor web
+
+### 15.2 Puertos y firewall
+
+> **Para quien escribe.** Aclarar que abrir el puerto en la máquina no es lo mismo que la red deje llegar
+> hasta ella. Lo segundo lo habilita `<AREA_O_ROL>`.
+
+### 15.3 Usuarios, directorios y permisos
+
+### 15.4 Certificados y cifrado del tránsito
+
+### 15.5 Variables de entorno del sistema
+
+### 15.6 Servicios del sistema operativo
+
+### 15.7 Procesos programados
+
+## 16. Despliegue
+
+> **Para quien escribe.** El orden completo, de principio a fin. Esta sección no repite los detalles:
+> remite a la sección donde está cada paso. Sirve para ejecutar y para saber cuánto falta.
+
+| Orden | Paso | Sección | Verificación de salida |
 |---|---|---|---|
-| «fecha» | Se crea el manual a partir de la base | «…» | «…» |
+| 1 | Preparación: accesos confirmados, inventario y respaldo de lo que está | 5, 6, 7, 16.1 | `<COMPROBACION>` |
+| 2 | Obtención del código | 9 | |
+| 3 | Configuración | 10 | |
+| 4 | Instalación de dependencias | 11 | |
+| 5 | Base de datos | 12 | |
+| 6 | Compilación o construcción | 13 | |
+| 7 | Configuración de servicios y del servidor | 14, 15 | |
+| 8 | Inicio | 14 | |
+| 9 | Validación | 17, 18 | |
 
----
+### 16.1 Inventario y respaldo previos
 
-## Anexos
+> **Para quien escribe.** Los comandos que dejan escrito cómo estaba la máquina antes: puertos en uso,
+> servicios activos, configuración del servidor web, versión instalada. Sin eso no hay cómo volver
+> atrás, ni cómo demostrar que lo que ya estaba quedó intacto. Guardar cada salida con su fecha en
+> `<RUTA_EVIDENCIAS>`.
 
-### A. Todas las variables de configuración, en una tabla
-> 📋 Nombre, qué controla, si es obligatoria, ejemplo ficticio y en qué paso se llena.
+### 16.2 Ventana de ejecución y avisos
+
+| Dato | Valor |
+|---|---|
+| Ambiente | `<AMBIENTE>` |
+| Ventana acordada | `<FECHA_Y_HORA>` |
+| Interrupción del servicio | Sí / No, `<DURACION>` |
+| A quién se avisa antes y después | `<AREA_O_ROL>` |
+
+## 17. Verificación de la instalación
+
+> **Para quien escribe.** Comprobaciones en orden, cada una con su comando y su resultado bueno. Van
+> una vez terminado el despliegue. Borrar las filas que el proyecto no tenga.
+
+| # | Qué se comprueba | Ubicación | Comando o acción | Resultado esperado | Cumple |
+|---|---|---|---|---|---|
+| 1 | La aplicación responde en `<URL>` | `[LOCAL]` | `<COMANDO>` | `<RESULTADO>` | Sí / No |
+| 2 | El frontend carga | | | | |
+| 3 | El backend responde | | | | |
+| 4 | La API contesta | | | | |
+| 5 | La base de datos es accesible desde la aplicación | | | | |
+| 6 | Los servicios están activos | | | | |
+| 7 | Los puertos están escuchando | | | | |
+| 8 | Los procesos están corriendo | | | | |
+| 9 | Los registros no tienen errores críticos | | | | |
+| 10 | Lo que ya estaba en la máquina sigue funcionando | | | | |
+
+## 18. Prueba funcional posterior a la instalación
+
+> **Para quien escribe.** Una prueba corta que atraviese todas las piezas a la vez. Estar instalado no
+> es funcionar, y esta sección comprueba lo segundo. Escribirla como la haría una persona usando la
+> aplicación, con el resultado exacto que tiene que ver.
+
+| Dato | Valor |
+|---|---|
+| Qué se prueba | `<FUNCIONALIDAD_MINIMA>` |
+| Con qué usuario | `<USUARIO_DE_PRUEBA>`, lo entrega `<AREA_O_ROL>` |
+| Datos de entrada | `<DATOS_FICTICIOS>` |
+
+> **Precondición.** Todas las filas de la sección 17 están en «Sí».
+>
+> **Acción.** `<PASOS_DE_LA_PRUEBA>`
+>
+> **Resultado esperado.** `<LO_QUE_DEBE_VERSE>`
+>
+> **Validación.** `<COMO_SE_CONFIRMA_EN_LOS_REGISTROS_O_EN_LA_BASE_DE_DATOS>`
+>
+> **Limpieza.** Qué se borra después de la prueba, si dejó datos.
+
+## 19. Solución de problemas
+
+> **Para quien escribe.** Ordenar la tabla por lo que ve la persona, no por la pieza técnica. Cada fila
+> se debe poder seguir sin leer el resto del manual. Empezar con lo que ya pasó de verdad en la
+> instalación anterior: cada tropiezo registrado es una fila.
+
+| Problema | Posible causa | Diagnóstico | Solución | Verificación |
+|---|---|---|---|---|
+| `<SINTOMA>` | Dependencia faltante o con otra versión | `<COMANDO>` | `<ACCION>`, sección `<N>` | `<COMANDO>` |
+| | Permisos insuficientes sobre `<RUTA>` | | | |
+| | Puerto ocupado o cerrado | | | |
+| | La base de datos no responde o rechaza al usuario | | | |
+| | Variable de entorno vacía o mal escrita | | | |
+| | El servicio no arranca, o se cae al poco tiempo | | | |
+| | La red no deja llegar al servidor | | | |
+| | Credenciales vencidas | | | |
+| | Certificado vencido o no confiable | | | |
+| | El comando se ejecutó en el lugar equivocado (sección 8) | | | |
+
+## 20. Mantenimiento y operaciones posteriores
+
+| Operación | Cuándo | Ubicación | Comando o procedimiento | Verificación |
+|---|---|---|---|---|
+| Reiniciar el sistema | `<CUANDO>` | `[UBICACION]` | `<COMANDO>` | `<COMPROBACION>` |
+| Actualizar a una versión nueva | | | | |
+| Desplegar un cambio | | | | |
+| Revisar los registros | | | | |
+| Rotar y limpiar registros | | | | |
+| Liberar espacio en disco | | | | |
+| Respaldar la base de datos | | | | |
+| Respaldar los archivos de los usuarios | | | | |
+| Restaurar desde un respaldo | | | | |
+| Ejecutar migraciones nuevas | | | | |
+| Verificar que los servicios siguen activos | | | | |
+| Renovar certificados | | | | |
+
+## 21. Seguridad
+
+> **Para quien escribe.** Lo que queda por hacer una vez que el sistema funciona, y que suele
+> olvidarse. Ninguna contraseña, token, llave privada ni secreto real va escrito en esta sección ni en
+> ninguna otra.
+
+### 21.1 Credenciales y secretos
+
+| Secreto | Para qué | Dónde se guarda | Quién lo custodia | Cada cuánto se cambia |
+|---|---|---|---|---|
+| `<NOMBRE_DEL_SECRETO>` | `<PROPOSITO>` | `<GESTOR_O_UBICACION>` | `<AREA_O_ROL>` | `<PERIODO>` |
+
+### 21.2 Cambios obligatorios después de instalar
+
+- [ ] Cambiar las claves usadas durante la instalación, en el orden que no deje al servicio sin acceso.
+- [ ] Cambiar las claves iniciales de los usuarios que el sistema crea de fábrica.
+- [ ] Confirmar que el archivo de configuración real no quedó en el control de versiones.
+- [ ] Cerrar los permisos del archivo de configuración y de los directorios de la aplicación.
+
+### 21.3 Usuarios y permisos
+
+| Usuario | Para qué | Permisos | Puede iniciar sesión | Quién lo aprueba |
+|---|---|---|---|---|
+| `<USUARIO>` | `<PROPOSITO>` | `<PERMISOS>` | Sí / No | `<AREA_O_ROL>` |
+
+### 21.4 Superficie expuesta
+
+| Puerto o dirección | Qué expone | Alcance | Por qué está abierto |
+|---|---|---|---|
+| `<PUERTO>` | `<COMPONENTE>` | Público / Interno | `<JUSTIFICACION>` |
+
+## 22. Reversión
+
+> **Para quien escribe.** El procedimiento para volver a la versión anterior. Escribirlo antes de
+> necesitarlo y probarlo al menos una vez. Una reversión que nunca corrió no cuenta como probada.
+
+| Dato | Valor |
+|---|---|
+| Cuándo se decide revertir | `<CRITERIO>` |
+| Quién lo autoriza | `<AREA_O_ROL>` |
+| Tiempo estimado | `<DURACION>` |
+| Qué se pierde al revertir | `<IMPACTO>` |
+
+| Orden | Paso | Ubicación | Comando o procedimiento | Verificación |
+|---|---|---|---|---|
+| 1 | Detener los servicios | `[UBICACION]` | `<COMANDO>` | `<COMPROBACION>` |
+| 2 | Restaurar el código de la versión anterior | | | |
+| 3 | Restaurar la configuración | | | |
+| 4 | Revertir los cambios de base de datos | | | |
+| 5 | Restaurar los archivos de los usuarios | | | |
+| 6 | Iniciar los servicios | | | |
+| 7 | Repetir la verificación de la sección 17 | | | |
+| 8 | Avisar a `<AREA_O_ROL>` | | | |
+
+## 23. Lista de comprobación final
+
+- [ ] Requisitos previos instalados y verificados.
+- [ ] Accesos y credenciales validados.
+- [ ] Código fuente obtenido, en la versión `<VERSION>`.
+- [ ] Dependencias instaladas.
+- [ ] Configuración aplicada.
+- [ ] Base de datos creada, migrada y con sus datos iniciales.
+- [ ] Servicios configurados y arrancando solos.
+- [ ] Aplicación iniciada y respondiendo.
+- [ ] Verificación de la sección 17 completa.
+- [ ] Prueba funcional de la sección 18 superada.
+- [ ] Registros revisados, sin errores críticos.
+- [ ] Cambios de seguridad de la sección 21.2 hechos.
+- [ ] Procedimiento de reversión probado.
+- [ ] Instalación aprobada por `<RESPONSABLE>`.
+
+**Comprobaciones del documento, antes de publicarlo**
+
+- [ ] Todos los recuadros «Para quien escribe» se borraron.
+- [ ] No queda ningún `<PLACEHOLDER>` sin reemplazar.
+- [ ] Cada procedimiento tiene precondición, acción, resultado esperado y validación.
+- [ ] Cada comando lleva su etiqueta de ubicación.
+- [ ] No hay ninguna contraseña, token ni llave escrita.
+- [ ] El manual se ejecutó completo en una máquina real, siguiendo solo el texto, y su salida quedó en
+      `seguimiento/`.
+- [ ] Cada tropiezo de la instalación anterior quedó convertido en paso, en bifurcación o en fila de la
+      sección 19, y el manual no lo cuenta como historia: sin fechas, sin duraciones, sin «en este
+      servidor».
+- [ ] No queda ninguna marca «(por verificar)».
+- [ ] Los comandos usan la herramienta que el proyecto usa hoy, no la de la versión anterior.
+- [ ] Alguien que nunca instaló el sistema lo siguió y llegó a la verificación final sin preguntar nada.
+
+## 24. Control de cambios
+
+> **Para quien escribe.** Qué cambió en el manual, sin el motivo histórico: el manual no cuenta qué
+> instalación enseñó qué. El registro de qué máquina quedó con qué versión tampoco va acá, porque es
+> operación y vive en el seguimiento.
+
+| Versión | Fecha | Cambio realizado | Responsable |
+|---|---|---|---|
+| `<VERSION_MANUAL>` | `<FECHA>` | Se crea el manual a partir de la plantilla | `<RESPONSABLE>` |
+
+## 25. Anexos
+
+### A. Comandos frecuentes
+
+| Comando | Qué hace | Ubicación |
+|---|---|---|
+| `<COMANDO>` | `<QUE_HACE>` | `[UBICACION]` |
 
 ### B. Puertos y direcciones
-> 📋 Qué escucha dónde, qué es público y qué es interno.
 
-### C. Comandos de un vistazo
-> 📋 Los diez comandos que se usan a diario (estado, reinicio, registro, recargar la puerta de entrada,
-> acceso remoto), cada uno con una línea de qué hace.
+| Puerto | Componente | Alcance | Ambiente |
+|---|---|---|---|
+| `<PUERTO>` | `<COMPONENTE>` | Público / Interno | `<AMBIENTE>` |
 
-### D. Glosario
-> 📋 Terminal, servidor, administrador, servicio, puerto, puerta de entrada, entorno aislado, acceso
-> remoto, compilar, archivo de configuración, marca de versión. Una frase cada uno, sin otra palabra
-> técnica dentro.
+### C. Variables de entorno, en una sola tabla
 
----
+| Variable | Obligatoria | Ejemplo ficticio | Ambiente |
+|---|---|---|---|
+| `<VARIABLE>` | Sí / No | `<VALOR_FICTICIO>` | `<AMBIENTE>` |
 
-## Lista de comprobación antes de publicar el manual
+### D. Archivos de configuración
 
-- [ ] Todos los recuadros 📋 se borraron y no queda ningún «así» sin reemplazar.
-- [ ] Cada paso tiene las cuatro partes: qué se hace, comando, qué sale y qué hacer si no.
-- [ ] Cada comando dice si va en el computador propio o dentro de la máquina.
-- [ ] No hay ninguna contraseña, clave ni secreto escrito.
-- [ ] Todo se ejecutó de principio a fin en una máquina real siguiendo **solo** el texto, y la salida
-      quedó en `seguimiento/`.
-- [ ] Cada tropiezo de la instalación anterior está incorporado en su paso o en la solución de problemas.
-- [ ] Los comandos usan la herramienta que el proyecto usa **hoy**, no la de la versión anterior.
-- [ ] Alguien que nunca instaló el sistema lo siguió y llegó a la verificación final sin preguntar nada.
+| Archivo | Ubicación | Se versiona |
+|---|---|---|
+| `<ARCHIVO_CONFIGURACION>` | `<RUTA>` | Sí / No |
+
+### E. Diagramas
+
+```
+<DIAGRAMA>
+```
+
+### F. Glosario
+
+> **Para quien escribe.** Una frase por término, sin meter otra palabra técnica dentro. Los mínimos:
+> terminal, servidor, servicio, puerto, contenedor, entorno aislado, migración, compilar, registro,
+> archivo de configuración, respaldo.
+
+| Término | Qué es |
+|---|---|
+| `<TERMINO>` | `<EXPLICACION_EN_UNA_FRASE>` |
+
+### G. Referencias
+
+| Documento | Dónde está |
+|---|---|
+| `<DOCUMENTO>` | `<UBICACION>` |
+
+### H. Lo que este manual no resuelve
+
+> **Para quien escribe.** Lo que hay que pedir a otras áreas y que ningún comando reemplaza: acceso de
+> red, cuentas institucionales, certificados, custodia de secretos. Dejar redactado el mensaje con el
+> que se pide, y la comprobación para cuando respondan.
+
+| Qué falta | A quién se pide | Cómo se comprueba cuando respondan |
+|---|---|---|
+| `<PENDIENTE_EXTERNO>` | `<AREA_O_ROL>` | `<COMPROBACION>` |
