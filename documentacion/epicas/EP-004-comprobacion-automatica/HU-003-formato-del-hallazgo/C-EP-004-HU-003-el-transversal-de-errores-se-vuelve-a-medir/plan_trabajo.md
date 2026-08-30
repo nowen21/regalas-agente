@@ -18,9 +18,9 @@
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo`](../A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md) cerró con «No cumple» el 2026-08-17 por **Transversal de errores · un `.md` ilegible no tumba la corrida**: los tres criterios numerados quedaron verificados, y lo que falló fue el transversal: un `.md` que no se podía decodificar **terminaba la corrida entera con un volcado de Python**. **Era cierto entonces.** Lo resolvió después `B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida`.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo`](../A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md) cerró con «No cumple» el 2026-08-17 por el **transversal de errores**, que pide que un `.md` ilegible no tumbe la corrida: los tres criterios numerados quedaron verificados, y lo que falló fue el transversal: un `.md` que no se podía decodificar **terminaba la corrida entera con un volcado de Python**. **Era cierto entonces.** Lo resolvió después `B-EP-004-HU-003-el-archivo-ilegible-no-tumba-la-corrida`.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 

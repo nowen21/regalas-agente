@@ -18,9 +18,9 @@
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase`](../A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por **CA-01 · El proyecto atrasado recibe el aviso al abrir sesión**: el aviso **existía y decía lo que tenía que decir**, pero solo aparecía si alguien escribía el comando a mano: ni `sesion.py` ni `cargador.py` nombraban la versión, y el criterio dice «al abrir sesión». **Era cierto entonces.** Lo resolvió después `B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio`.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase`](../A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por el **CA-01**, que pide que el proyecto atrasado reciba el aviso al abrir sesión: el aviso **existía y decía lo que tenía que decir**, pero solo aparecía si alguien escribía el comando a mano: ni `sesion.py` ni `cargador.py` nombraban la versión, y el criterio dice «al abrir sesión». **Era cierto entonces.** Lo resolvió después `B-EP-002-HU-004-el-aviso-llega-al-abrir-y-dice-que-cambio`.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 

@@ -18,9 +18,9 @@
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-002-HU-003-retrodocumentar-la-version-adoptada`](../A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por **CA-02 · Una versión que no existe se detecta**: `99.9.9` pasaba en silencio y, **por ser mayor que la vigente, apagaba el aviso de desfase**: declarar una versión falsa hacia adelante callaba la única comprobación que había. **Era cierto entonces.** Lo resolvió después `B-EP-002-HU-003-la-version-declarada-se-comprueba`.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-002-HU-003-retrodocumentar-la-version-adoptada`](../A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por el **CA-02**, que pide que una versión que no existe se detecte: `99.9.9` pasaba en silencio y, **por ser mayor que la vigente, apagaba el aviso de desfase**: declarar una versión falsa hacia adelante callaba la única comprobación que había. **Era cierto entonces.** Lo resolvió después `B-EP-002-HU-003-la-version-declarada-se-comprueba`.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 

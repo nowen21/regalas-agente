@@ -50,6 +50,7 @@ LOS_CINCO = (
         roja="A-EP-002-HU-003-retrodocumentar-la-version-adoptada",
         fecha_rojo="2026-08-22",
         criterio="CA-02 · Una versión que no existe se detecta",
+        criterio_prosa=u"el **CA-02**, que pide que una versión que no existe se detecte",
         criterio_corto="CA-02",
         decia=u"`99.9.9` pasaba en silencio y, **por ser mayor que la vigente, "
               u"apagaba el aviso de desfase**: declarar una versión falsa hacia "
@@ -73,6 +74,7 @@ LOS_CINCO = (
         roja="A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase",
         fecha_rojo="2026-08-22",
         criterio="CA-01 · El proyecto atrasado recibe el aviso al abrir sesión",
+        criterio_prosa=u"el **CA-01**, que pide que el proyecto atrasado reciba el aviso al abrir sesión",
         criterio_corto="CA-01",
         decia=u"el aviso **existía y decía lo que tenía que decir**, pero solo "
               u"aparecía si alguien escribía el comando a mano: ni `sesion.py` "
@@ -97,6 +99,7 @@ LOS_CINCO = (
         roja="A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo",
         fecha_rojo="2026-08-17",
         criterio="Transversal de errores · un `.md` ilegible no tumba la corrida",
+        criterio_prosa=u"el **transversal de errores**, que pide que un `.md` ilegible no tumbe la corrida",
         criterio_corto="el transversal de errores",
         decia=u"los tres criterios numerados quedaron verificados, y lo que "
               u"falló fue el transversal: un `.md` que no se podía decodificar "
@@ -120,6 +123,7 @@ LOS_CINCO = (
         roja="A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir",
         fecha_rojo="2026-08-17",
         criterio="CA-03 · El hallazgo grave detiene, y el resto avisa",
+        criterio_prosa=u"el **CA-03**, que pide que el hallazgo grave detenga y el resto avise",
         criterio_corto="CA-03",
         decia=u"el disparo corría en el momento y callaba con lo que no le "
               u"tocaba, pero **todo avisaba**: nada distinguía el hallazgo "
@@ -142,6 +146,7 @@ LOS_CINCO = (
         roja="A-EP-005-HU-008-enganche-del-resumen",
         fecha_rojo="2026-08-22",
         criterio="Criterio de salida · la comprobación en una sesión real",
+        criterio_prosa=u"el **criterio de salida**, que pide la comprobación en una sesión real",
         criterio_corto="el criterio de salida",
         decia=u"los siete criterios de aceptación quedaron cubiertos y las "
               u"métricas dieron por encima de la meta; lo que faltaba era "
@@ -272,9 +277,9 @@ def plan_trabajo(d, evidencia, base):
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`%(roja)s`](../%(roja)s/resultado_pruebas.md) cerró con «No cumple» el %(fecha_rojo)s por **%(criterio)s**: %(decia)s. **Era cierto entonces.** Lo resolvió después `%(lo_hizo)s`.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`%(roja)s`](../%(roja)s/resultado_pruebas.md) cerró con «No cumple» el %(fecha_rojo)s por %(criterio_prosa)s: %(decia)s. **Era cierto entonces.** Lo resolvió después `%(lo_hizo)s`.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 

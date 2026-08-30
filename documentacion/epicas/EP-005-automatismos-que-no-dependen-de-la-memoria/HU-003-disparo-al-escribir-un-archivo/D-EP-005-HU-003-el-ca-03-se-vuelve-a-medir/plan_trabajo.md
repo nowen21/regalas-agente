@@ -18,9 +18,9 @@
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir`](../A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md) cerró con «No cumple» el 2026-08-17 por **CA-03 · El hallazgo grave detiene, y el resto avisa**: el disparo corría en el momento y callaba con lo que no le tocaba, pero **todo avisaba**: nada distinguía el hallazgo grave del que solo informa. **Era cierto entonces.** Lo resolvió después `B-EP-005-HU-003-el-hallazgo-grave-detiene`.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir`](../A-EP-005-HU-003-retrodocumentar-el-disparo-al-escribir/resultado_pruebas.md) cerró con «No cumple» el 2026-08-17 por el **CA-03**, que pide que el hallazgo grave detenga y el resto avise: el disparo corría en el momento y callaba con lo que no le tocaba, pero **todo avisaba**: nada distinguía el hallazgo grave del que solo informa. **Era cierto entonces.** Lo resolvió después `B-EP-005-HU-003-el-hallazgo-grave-detiene`.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 

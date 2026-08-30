@@ -18,9 +18,9 @@
 
 **ORIGEN** (`13·DOC12`):
 
-- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-005-HU-008-enganche-del-resumen`](../A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por **Criterio de salida · la comprobación en una sesión real**: los siete criterios de aceptación quedaron cubiertos y las métricas dieron por encima de la meta; lo que faltaba era **la corrida manual en una sesión de verdad**, y la fase prefirió esperar antes que darse por buena. **Era cierto entonces.** Lo resolvió después `la sesión `2026-08-28-plantilla-manual-instalacion``.
+- **Cierra un rojo que dejó de ser cierto.** La fase [`A-EP-005-HU-008-enganche-del-resumen`](../A-EP-005-HU-008-enganche-del-resumen/resultado_pruebas.md) cerró con «No cumple» el 2026-08-22 por el **criterio de salida**, que pide la comprobación en una sesión real: los siete criterios de aceptación quedaron cubiertos y las métricas dieron por encima de la meta; lo que faltaba era **la corrida manual en una sesión de verdad**, y la fase prefirió esperar antes que darse por buena. **Era cierto entonces.** Lo resolvió después `la sesión `2026-08-28-plantilla-manual-instalacion``.
 
-**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`) —reescribirlo borraría el rastro de que el criterio estuvo en rojo—, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
+**Por qué hace falta una fase y no basta con anotarlo:** el veredicto de la fase roja **no se toca** (`20·M11`), porque reescribirlo borraría el rastro de que el criterio estuvo en rojo, y **nadie vuelve a mirar un rojo por su cuenta** (`S-061`). El mecanismo que lo permite es `EP-004·HU-023`: la fase que cumple **declara** qué veredicto deja atrás, y el conteo lo lee.
 
 ---
 
