@@ -11,7 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien administra un proyecto |
-| **Estado** | Pendiente |
+| **Estado** | Terminada — el CA-03 se provocó por primera vez en la fase `B`, falló, y la comprobación que faltaba quedó construida |
 ## 2. Narrativa
 
 - **Como** quien administra un proyecto con su lenguaje, su dominio y su cliente
@@ -119,6 +119,7 @@ Entonces sigue mandando el núcleo
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-001-HU-006-el-ajuste-que-afloja-el-nucleo-se-reprueba](B-EP-001-HU-006-el-ajuste-que-afloja-el-nucleo-se-reprueba/estado-fase.md) | CA-03 | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-001-HU-006-el-ajuste-que-afloja-el-nucleo-se-reprueba/resultado_pruebas.md#2-veredicto-de-la-fase) — el ajuste que declara aflojar una `[BLINDADA]` ahora se reprueba, y el que la endurece sigue pasando. Declara reemplazar el veredicto de la fase `A` |
 **Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-001-HU-006-retrodocumentar-la-capa-del-proyecto/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 y el CA-02 sí; el CA-03 no se pudo provocar sin escribir contra el núcleo en un proyecto real. Se probó sobre **AgroSystem**, no sobre el proyecto propuesto |
 
 **La fase retro-documenta y no toca `base/` ni `plantillas/`.** La capa propia existe, tiene su molde y su regla de respaldo. Lo que falta es probar el desempate — que el ajuste propio gane a la convención general y pierda contra el núcleo — y decir que la comprobación de `20·M16` hoy no se puede correr.

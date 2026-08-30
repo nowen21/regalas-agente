@@ -98,6 +98,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿La lista de invisibles de `marcas.py` se amplía a todo el rango de control, o solo a los que aparecieron?
 
+### H-6 · Tres rojos más, y los cinco que quedan son decisiones, no trabajo
+
+- **Qué pasó:** Se midieron los ocho rojos sin fase posterior. Tres eran trabajo y se hicieron: un ajuste de proyecto que declara aflojar una `[BLINDADA]` pasaba sin reclamo (`EP-001·HU-006`); la prueba del número de versión exigía una unicidad que el registro decidió no cumplir (`EP-002·HU-001`); y la simulación del instalador no anunciaba el registro de versión (`EP-007·HU-002`). Los otros cinco no son trabajo: son decisiones del usuario, y cuatro de ellas ya estaban escritas como tales en el propio repositorio.
+- **Por qué importa:** «Ocho historias en rojo» se lee como ocho tareas. Medirlas una por una mostró que son dos cosas distintas, y confundirlas lleva a lo peor de los dos lados: o el agente decide por su cuenta lo que no le toca, o el trabajo hecho se queda sin declarar. La prueba de `EP-006·HU-006` lo dice textual: *«elegir entre ellas no es del que ejecuta»*.
+- **Qué lo soluciona:** Las tres primeras, hechas. Las cinco restantes esperan respuesta, cada una con su pregunta escrita.
+- **Qué se decidió:** En `EP-002·HU-001`, que la prueba exija lo que el registro sostiene —que un número repetido esté declarado— en vez de una unicidad que se decidió no cumplir. El `CHANGELOG.md` no se tocó.
+- **Estado:** abierto, por los cinco que faltan
+- **Responde a:** EP-001 · HU-006 · EP-002 · HU-001 · EP-007 · HU-002
+- **Dispara:** —
+- **Orden de resolución:** 1 de 4 · las cinco decisiones bloquean todo lo demás de esta cuenta.
+- **Dónde queda:** Tres fases nuevas · [`validadores/metareglas.py`](../../../validadores/metareglas.py), [`instalar.py`](../../../validadores/instalar.py) y [`versiones.py`](../../../validadores/versiones.py) · los guiones en [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/) · el conteo, de 8 rojos a 5
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** —
+- **Con qué se retoma:** Las cinco preguntas: la clave en prosa, y las cuatro de EP-006 sobre qué se guarda y dónde.
+
+### H-7 · El agente escribió fuera del proyecto tres guiones que producían documentos del repositorio
+
+- **Qué pasó:** Los guiones que escribieron los documentos de dos fases se crearon en el bloc temporal de la herramienta, fuera del repositorio, porque el heredoc de la terminal se rompía con las comillas. Lo notó el usuario.
+- **Por qué importa:** Es [`04·S9`](../../../base/04-seguridad.md), y además deja sin evidencia lo que el documento afirma: los guiones son de dónde salen las cifras de esas fases. El repositorio ya tiene sitio propio, `historico-chat/scripts/`, y ahí sí habían quedado los dos guiones anteriores. La causa no fue una duda sobre dónde va: fue tomar el camino que no fallaba.
+- **Qué lo soluciona:** Ya movidos a [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/) y borrados del bloc temporal.
+- **Qué se decidió:** Que las carpetas de `c:\\tmp` donde se provocan los casos sí se quedan: es lo que manda la decisión 35 del pendiente 59, y las pruebas las crean y las borran solas. Lo que no puede salir del repositorio es el guion que produce un documento del repositorio.
+- **Estado:** resuelto acá
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/)
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

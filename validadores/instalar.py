@@ -1111,6 +1111,17 @@ def _huellas(ruta):
     return {e.id: e.sellada for e in versiones.estado(ruta, RAIZ)}
 
 
+def _huellas_previstas(ruta):
+    """{id: huella que va a quedar} cuando se aplique: la central de cada uno.
+
+    Al terminar de instalar, cada documento heredado del proyecto tiene la
+    huella de su plantilla en el estándar. Eso es lo que la simulación tiene
+    que comparar, porque **lo que ella ve todavía no ha cambiado**.
+    """
+    import versiones
+    return {e.id: e.actual for e in versiones.estado(ruta, RAIZ)}
+
+
 def _version_anterior(ruta):
     """Con qué versión venía el proyecto: "" si es la primera instalación."""
     import versiones
@@ -1156,7 +1167,22 @@ def registrar_version(ruta, antes, pasos, aplicar, anterior=""):
         return []
 
     actual = version.version_estandar() or "?"
-    despues = _huellas(ruta)
+
+    # `EP-007·HU-002` · Lo que muestra es lo que hace, también acá.
+    #
+    # **El caso.** La simulación decía *«ni las plantillas ni la versión
+    # cambiaron, no hay actualización que registrar»* y al aplicar aparecía
+    # igual el registro. El archivo que se colaba sin anunciarse era
+    # justamente **el que deja constancia de qué se instaló**.
+    #
+    # **Por qué.** En simulación no se ha copiado nada todavía, así que la
+    # huella del proyecto es la de antes y la comparación no ve ningún cambio.
+    # Al aplicar, los archivos ya están y el registro se escribe. La simulación
+    # no estaba mintiendo sobre lo que iba a hacer: se estaba mirando en el
+    # espejo equivocado.
+    #
+    # **Lo que se compara ahora al simular** es la huella que **va a quedar**.
+    despues = _huellas(ruta) if aplicar else _huellas_previstas(ruta)
     cambios = [id for id in despues if antes.get(id, "") != despues.get(id, "")]
     subio = bool(anterior) and anterior != actual
 
@@ -1166,7 +1192,11 @@ def registrar_version(ruta, antes, pasos, aplicar, anterior=""):
 
     if not aplicar:
         detalle = ", ".join(sorted(cambios)) if cambios else f"{anterior} → {actual}"
-        return [f"registrar la actualización en {versiones.CARPETA} ({detalle})"]
+        # Se nombra el archivo, no la carpeta: anunciar el sitio y no la cosa
+        # deja el registro fuera de la lista que después se compara.
+        previsto = os.path.join(versiones.CARPETA,
+                                versiones.nombre_previsto(ruta, actual))
+        return [f"registrar {previsto} ({detalle})"]
 
     archivo = versiones.registrar(
         ruta, actual, antes, despues, pasos,

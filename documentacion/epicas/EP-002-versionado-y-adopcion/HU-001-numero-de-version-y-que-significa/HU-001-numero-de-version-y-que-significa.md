@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-02, CA-03 y transversales cumplidos; el CA-01, no |
+| **Estado** | Terminada — el CA-01 se mide contra lo que el registro sostiene: el número repetido se declara, y así se comprueba desde la fase `B` |
 ---
 
 ## 2. Narrativa
@@ -141,6 +141,7 @@ Entonces sube solo la parte de corrección
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-002-HU-001-el-numero-repetido-se-declara](B-EP-002-HU-001-el-numero-repetido-se-declara/estado-fase.md) | CA-01 | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-002-HU-001-el-numero-repetido-se-declara/resultado_pruebas.md#2-veredicto-de-la-fase) — la prueba dejó de exigir unicidad y exige que lo repetido esté declarado; el `CHANGELOG.md` no se tocó. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-002-HU-001-retrodocumentar-el-numero-de-version](A-EP-002-HU-001-retrodocumentar-el-numero-de-version/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-002-HU-001-retrodocumentar-el-numero-de-version/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no. Pendiente el commit |
 
 **La fase retro-documenta y no toca `VERSION` ni el registro.** El número existe y se usó 23 veces; lo que falta es la prueba de que es la única fuente y de que ninguna parte se saltó.

@@ -854,6 +854,44 @@ def validar(raiz=None):
             + _identificador_repetido(catalogo))
 
 
+# `EP-001·HU-006` · Un ajuste del proyecto no afloja el núcleo, y ahora se ve.
+#
+# **El caso que lo hizo falta.** El `CA-03` de esa historia cerró en rojo el
+# 2026-08-17 con una razón honesta: *«no se pudo provocar sin escribir en un
+# proyecto real»*, y hacerlo ahí está prohibido. Provocado el 2026-08-30 en una
+# carpeta temporal, **falló**: un proyecto que escribe `P1` con respaldo
+# *«afloja `N2`»* y `P2` con *«deroga `N6`»* pasaba con **cero hallazgos**.
+#
+# **Por qué pasaba.** `validar_catalogo` comprueba lo que pide `M16`: que haya
+# respaldo y que el ID citado exista. `N2` y `N6` existen, así que el respaldo
+# era válido. La prohibición vive en [`20·M7`] —nada extiende ni deroga una
+# `[BLINDADA]`— y esa comprobación solo recorría las reglas del estándar, nunca
+# las del proyecto. La regla estaba escrita y no se aplicaba donde importa.
+#
+# **Qué se mira, y qué no.** Solo el verbo con el que la propia regla declara su
+# respaldo. Endurecer una `[BLINDADA]` es legítimo y sigue pasando; aflojarla,
+# derogarla o reemplazarla, no. Un proyecto que contradiga el núcleo **sin
+# decirlo** sigue sin detectarse: eso no se lee de un verbo, y esta comprobación
+# no lo promete.
+_AFLOJAN = ("afloja", "aflojan", "ablanda", "ablandan", "relaja", "relajan",
+            "deroga", "derogan", "anula", "anulan", "suspende", "suspenden",
+            "reemplaza", "reemplazan", "exceptúa", "exceptua", "excepciona",
+            "contradice", "contradicen", "extiende", "extienden")
+
+
+def _afloja_una_blindada(respaldo, blindadas):
+    """`(verbo, id)` si el respaldo declara aflojar una blindada. Si no, `None`."""
+    bajo = respaldo.lower()
+    verbo = next((v for v in _AFLOJAN
+                  if re.search(r"\b%s\b" % re.escape(v), bajo)), None)
+    if not verbo:
+        return None
+    for id in re.findall(r"([A-Z]{1,4}\d+(?:\.\d+)?)", respaldo):
+        if id in blindadas:
+            return (verbo, id)
+    return None
+
+
 def validar_catalogo(proyecto, raiz=None):
     """`M16` · toda regla `P` del proyecto nombra la regla de base que concreta.
 
@@ -867,7 +905,9 @@ def validar_catalogo(proyecto, raiz=None):
         return [Hallazgo(AVISO, ruta, 0,
                          f"el proyecto no tiene `{CATALOGO_PROYECTO}`")]
 
-    indice = {r.id for r in reglas(raiz)}
+    del_estandar = list(reglas(raiz))
+    indice = {r.id for r in del_estandar}
+    blindadas = {r.id for r in del_estandar if r.blindada}
     texto = leer(ruta)
     hallazgos = []
     actual, linea_actual, respaldo = None, 0, None
@@ -875,6 +915,14 @@ def validar_catalogo(proyecto, raiz=None):
     def cerrar():
         if actual is None:
             return
+        afloja = _afloja_una_blindada(respaldo or "", blindadas)
+        if afloja:
+            verbo, id = afloja
+            hallazgos.append(Hallazgo(
+                FALLA, ruta, linea_actual,
+                f"`{actual}` declara que {verbo} `{id}`, que está "
+                f"`[BLINDADA]` — M7 lo prohíbe: un ajuste del proyecto endurece "
+                f"el núcleo, nunca lo afloja"))
         if not respaldo:
             hallazgos.append(Hallazgo(
                 FALLA, ruta, linea_actual,

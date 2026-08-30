@@ -2364,31 +2364,74 @@ class NumeroDeVersion(unittest.TestCase):
         self.assertEqual(self._versiones_del_registro()[0],
                          tuple(int(p) for p in crudo.split(".")))
 
-    @unittest.expectedFailure
-    def test_las_tres_partes_avanzan_sin_saltos_ni_reinicios(self):
-        """CP-005 y el transversal de no regresión: entre dos entradas
-        consecutivas, o sube la mayor y las otras van a cero, o sube la menor
-        y el parche va a cero, o sube el parche. Nunca baja el número.
+    def _entradas_del_registro(self):
+        """`[(versión, encabezado)]`, de la más nueva a la más vieja."""
+        import re as _re
+        texto = comun.leer(os.path.join(self.RAIZ, "CHANGELOG.md"))
+        return [(tuple(int(p) for p in m.group(1).split(".")), m.group(0))
+                for m in _re.finditer(r"^## (\d+\.\d+\.\d+).*$", texto, _re.M)]
 
-        **Falla hoy** (defecto `D-01` de la fase): **`15.4.0` aparece dos veces
-        en el registro**, con fechas distintas —2026-08-14 y 2026-08-15—. Dos
-        cambios distintos comparten número, así que un proyecto que declare
-        «adopté la 15.4.0» no puede saber cuál de los dos tiene."""
-        versiones = list(reversed(self._versiones_del_registro()))
-        for antes, ahora in zip(versiones, versiones[1:]):
-            self.assertGreater(ahora, antes,
-                               f"la versión bajó: {antes} → {ahora}")
+    @staticmethod
+    def _reclamos(entradas):
+        """Lo que está mal en una secuencia `[(versión, encabezado)]` vieja→nueva.
+
+        **Un número repetido no se renumera: se declara.** El registro ya lo
+        decidió el 2026-08-15, y el motivo está escrito ahí: un proyecto pudo
+        haber adoptado ese número, y cambiárselo después le mueve el piso sin
+        que se entere. Lo que se exige, entonces, no es que el número sea único
+        —eso ya se decidió no cumplirlo— sino que **la repetición esté dicha**,
+        con las dos entradas a la vista. Un repetido callado sigue siendo un
+        defecto, y por eso este método existe aparte: para poder probar también
+        ese caso, que en el registro real no ocurre.
+        """
+        malos = []
+        for (antes, previo), (ahora, encabezado) in zip(entradas, entradas[1:]):
+            if ahora == antes:
+                # La marca puede ir en cualquiera de las dos: lo que importa es
+                # que la repeticion este dicha donde se lee el numero.
+                if "repetido" not in (previo + encabezado).lower():
+                    malos.append(f"`{'.'.join(map(str, ahora))}` está dos veces "
+                                 f"y la segunda no lo declara")
+                continue
+            if ahora < antes:
+                malos.append(f"la versión bajó: {antes} → {ahora}")
+                continue
             ma, me, pa = antes
             Ma, Me, Pa = ahora
-            if Ma != ma:
-                self.assertEqual((Ma, Me, Pa), (ma + 1, 0, 0),
-                                 f"salto de MAYOR mal formado: {antes} → {ahora}")
-            elif Me != me:
-                self.assertEqual((Me, Pa), (me + 1, 0),
-                                 f"salto de MENOR mal formado: {antes} → {ahora}")
-            else:
-                self.assertEqual(Pa, pa + 1,
-                                 f"salto de PARCHE mal formado: {antes} → {ahora}")
+            if Ma != ma and (Ma, Me, Pa) != (ma + 1, 0, 0):
+                malos.append(f"salto de MAYOR mal formado: {antes} → {ahora}")
+            elif Ma == ma and Me != me and (Me, Pa) != (me + 1, 0):
+                malos.append(f"salto de MENOR mal formado: {antes} → {ahora}")
+            elif Ma == ma and Me == me and Pa != pa + 1:
+                malos.append(f"salto de PARCHE mal formado: {antes} → {ahora}")
+        return malos
+
+    def test_las_tres_partes_avanzan_y_lo_repetido_se_declara(self):
+        """CP-005 y el transversal de no regresión: entre dos entradas
+        consecutivas, o sube la mayor y las otras van a cero, o sube la menor y
+        el parche va a cero, o sube el parche. Nunca baja.
+
+        **La excepción está declarada, no escondida:** `15.4.0` aparece dos
+        veces, del 2026-08-14 y del 2026-08-15, porque dos sesiones numeraron a
+        la vez. La segunda entrada lo dice en su encabezado y explica por qué no
+        se renumera. Quien adoptó ese número tiene las dos cosas."""
+        self.assertEqual(self._reclamos(list(reversed(
+            self._entradas_del_registro()))), [])
+
+    def test_el_numero_repetido_que_no_se_declara_si_falla(self):
+        """La contraprueba de la anterior. Sin esto, aceptar el repetido
+        declarado sería aceptar cualquier repetido: la prueba pasaría igual con
+        un registro que pisa números en silencio, que es el defecto de verdad."""
+        callado = [((1, 0, 0), "## 1.0.0 — 2026-01-01"),
+                   ((1, 1, 0), "## 1.1.0 — 2026-01-02"),
+                   ((1, 1, 0), "## 1.1.0 — 2026-01-03")]
+        self.assertEqual(len(self._reclamos(callado)), 1,
+                         "un número repetido sin declarar pasó sin reclamo")
+
+        dicho = callado[:2] + [((1, 1, 0),
+                                "## 1.1.0 — 2026-01-03  ·  número repetido")]
+        self.assertEqual(self._reclamos(dicho), [],
+                         "el repetido declarado no debería reclamarse")
 
     def test_toda_entrada_del_registro_declara_su_tipo(self):
         """CA-02 y CA-03: cada entrada dice si es MAYOR, MENOR o PARCHE. Sin
@@ -2783,19 +2826,17 @@ class MostrarAntesDeHacer(_ProyectoDePrueba):
                          "el modo simulación escribió algo")
         self.assertIn("SIMULACIÓN", salida.stdout)
 
-    @unittest.expectedFailure
     def test_lo_que_muestra_es_lo_que_hace(self):
         """CA-02: cada archivo que la simulación anuncia aparece de verdad al
         aplicar, y no aparece ninguno que no hubiera anunciado.
 
-        **Falla hoy** (defecto `D-01` de la fase): la simulación dice
-        «versiones: ni las plantillas ni la versión cambiaron, no hay
-        actualización que registrar» y al aplicar **sí** aparece
-        `documentacion/versiones/<fecha>-<version>.md`. La causa es que en
-        simulación no se ha copiado nada todavía, así que la comparación de
-        huellas no ve cambios; al aplicar, los archivos ya están y el registro
-        se escribe. Lo que muestra no es lo que hace, justo en el archivo que
-        deja constancia de qué se instaló."""
+        **Pasa desde el 2026-08-30**, al cerrarse el defecto `D-01` de la
+        fase `A`. Antes la simulación decía «ni las plantillas ni la versión
+        cambiaron, no hay actualización que registrar» y al aplicar aparecía
+        igual el registro de versión: en simulación no se ha copiado nada
+        todavía, así que la comparación de huellas no veía ningún cambio. Ahora
+        la simulación compara la huella que **va a quedar**, y nombra el
+        archivo en vez de la carpeta."""
         import re
         raiz = self._proyecto()
         simulado = self._instalar(raiz, aplicar=False).stdout
@@ -5725,6 +5766,51 @@ class ClasificacionDeCadaRegla(unittest.TestCase):
                                                       "validar.py")))
         self.assertIn("metareglas", entradas,
                       "`metareglas.py` no se puede correr desde `validar.py`")
+
+
+class ElAjusteDelProyectoNoAflojaElNucleo(unittest.TestCase):
+    """`EP-001·HU-006` · CA-03: el ajuste que contradice el núcleo no aplica.
+
+    **Por qué estas dos pruebas y no una.** La que importa no es la que caza al
+    tramposo: es la que deja pasar al que endurece. Una comprobación que
+    reprobara cualquier mención de una regla del núcleo cazaría el caso malo y
+    volvería inútil la capa propia, que existe justamente para concretar.
+
+    El caso se provoca en una carpeta temporal. Escribir un ajuste que
+    contradiga el núcleo **en un proyecto real** está prohibido, y por eso este
+    criterio se quedó dieciséis días sin poder ejecutarse.
+    """
+
+    RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def _proyecto(self, cuerpo):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, ".agente")
+        os.makedirs(carpeta)
+        with open(os.path.join(carpeta, "reglas-proyecto.md"),
+                  "w", encoding="utf-8") as f:
+            f.write(cuerpo)
+        return tmp.name
+
+    def test_la_regla_que_afloja_una_blindada_se_reprueba(self):
+        proyecto = self._proyecto(
+            "# Reglas propias\n\n"
+            "## P1 · El agente puede commitear sin pedir permiso\n\n"
+            "- **Respaldo:** afloja `N2`, que exige pedido explícito.\n")
+        fallas = [h for h in metareglas.validar_catalogo(proyecto, self.RAIZ)
+                  if "N2" in h.mensaje and "BLINDADA" in h.mensaje]
+        self.assertEqual(len(fallas), 1,
+                         "un ajuste que afloja el núcleo pasó sin reclamo")
+
+    def test_la_regla_que_endurece_una_blindada_pasa(self):
+        proyecto = self._proyecto(
+            "# Reglas propias\n\n"
+            "## P1 · Toda migración se revisa en pareja antes de correr\n\n"
+            "- **Respaldo:** concreta `N4`, que exige autorización para lo "
+            "destructivo sobre datos reales.\n")
+        self.assertEqual(metareglas.validar_catalogo(proyecto, self.RAIZ), [],
+                         "endurecer el núcleo es legítimo y se reprobó")
 
 
 class TodoEnganchePreparaSuSalida(unittest.TestCase):

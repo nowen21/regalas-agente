@@ -293,6 +293,18 @@ def _nombre_libre(carpeta, fecha, version):
     return f"{base}-{n}.md"
 
 
+def nombre_previsto(proyecto, version_nueva):
+    """El nombre que va a tener el próximo registro, sin escribir nada.
+
+    Lo usa la simulación del instalador. Anunciar *«se registra la
+    actualización»* sin decir en qué archivo dejaba fuera del anuncio
+    justamente el documento que deja constancia de qué se instaló
+    (`EP-007·HU-002`).
+    """
+    fecha = datetime.now().strftime("%Y-%m-%d")
+    return _nombre_libre(carpeta_registros(proyecto), fecha, version_nueva)
+
+
 _CABECERA_INDICE = """# Versiones del estándar en este proyecto
 
 Un archivo por actualización. Cada uno dice **desde cuándo** este proyecto usa
