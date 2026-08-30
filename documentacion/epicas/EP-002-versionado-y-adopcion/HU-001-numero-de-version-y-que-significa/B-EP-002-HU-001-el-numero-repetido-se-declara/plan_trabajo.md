@@ -27,7 +27,7 @@
 
 ## 1. Objetivo y alcance  ·  `02·F14` Q4
 
-**Objetivo:** que la prueba exija lo que de verdad se sostiene —que un número repetido esté declarado, con las dos entradas a la vista— y que salga del fallo esperado.
+**Objetivo:** que la prueba exija lo que de verdad se sostiene, que un número repetido esté declarado con las dos entradas a la vista, y que salga del fallo esperado.
 
 **Fuera de alcance:**
 

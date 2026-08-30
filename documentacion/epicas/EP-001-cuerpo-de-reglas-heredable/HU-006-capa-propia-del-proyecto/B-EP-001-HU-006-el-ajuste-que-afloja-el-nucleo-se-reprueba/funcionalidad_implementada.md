@@ -23,7 +23,7 @@
 
 **Que `validar_catalogo` vea lo que `20·M7` prohíbe.**
 
-La fase `A` cerró en rojo con una razón honesta: el caso no se pudo provocar sin escribir en un proyecto real, y eso está prohibido. Provocado en una carpeta temporal, **falló**: un proyecto que declaraba «afloja `N2`» y «deroga `N6`» pasaba con cero hallazgos, porque la comprobación solo miraba lo que pide `20·M16` —que haya respaldo y que el ID exista— y esos dos IDs existen.
+La fase `A` cerró en rojo con una razón honesta: el caso no se pudo provocar sin escribir en un proyecto real, y eso está prohibido. Provocado en una carpeta temporal, **falló**: un proyecto que declaraba «afloja `N2`» y «deroga `N6`» pasaba con cero hallazgos, porque la comprobación solo miraba lo que pide `20·M16`, que haya respaldo y que el ID exista, y esos dos IDs existen.
 
 | Antes | Ahora |
 |---|---|
