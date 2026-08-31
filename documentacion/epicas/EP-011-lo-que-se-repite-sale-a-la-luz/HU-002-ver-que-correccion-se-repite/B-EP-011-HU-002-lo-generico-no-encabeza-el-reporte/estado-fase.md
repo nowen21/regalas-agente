@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Tres defectos, todos cerrados acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `27dd028` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A |
 
 > **La mejora aprobada no era la que servía, y se supo antes de construirla.** El usuario aprobó ordenar por sesiones distintas; medido, dejaba «debe quedar» de primero igual. Lo que sirvió fue descartar las frases hechas con el vocabulario del propio corpus. Se construyó eso, con el mismo objetivo aprobado, y queda dicho acá en vez de entregarse lo que no funcionaba.
