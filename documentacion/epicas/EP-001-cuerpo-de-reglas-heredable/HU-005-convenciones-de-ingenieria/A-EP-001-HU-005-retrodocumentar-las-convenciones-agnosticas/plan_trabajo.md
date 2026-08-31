@@ -102,7 +102,7 @@ Ninguno.
 
 | # | Duda | A quién se consulta | Estado |
 |---|---|---|---|
-| 1 | Cuáles dos proyectos se usan para el CA-01, y de qué lenguajes | Usuario | **Resuelta** el 2026-08-22, propuesta 11 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **AgroSystem** (`C:\wamp64\www\proyectos\personalesgro-system`, Laravel + Livewire + Spatie) y **RNI** (`C:\DesarrollosClaude\dp`, Angular más Python). Son los dos stacks más distintos del registro, que es lo que la prueba necesita; los dos tienen el estándar instalado |
+| 1 | Cuáles dos proyectos se usan para el CA-01, y de qué lenguajes | Usuario | **Resuelta** el 2026-08-22, propuesta 11 del [pendiente 59](../../../../../pendientes/hecho/las-42-dudas-que-detenian-26-fases.md), comprobada contra el registro de proyectos: **AgroSystem** (`C:\wamp64\www\proyectos\personalesgro-system`, Laravel + Livewire + Spatie) y **RNI** (`C:\DesarrollosClaude\dp`, Angular más Python). Son los dos stacks más distintos del registro, que es lo que la prueba necesita; los dos tienen el estándar instalado |
 
 La duda 1 bloquea T-01. Los CA-02 y CA-03 no dependen de ella.
 

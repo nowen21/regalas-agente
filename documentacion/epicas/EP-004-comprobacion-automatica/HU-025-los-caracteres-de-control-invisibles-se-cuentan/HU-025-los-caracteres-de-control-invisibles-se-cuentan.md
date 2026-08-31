@@ -17,7 +17,7 @@
 | **Sprint** | Sin asignar |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Pendiente |
+| **Estado** | Terminada — los tres criterios se cerraron en la fase `A` |
 
 ---
 
@@ -139,7 +139,7 @@ Entonces no lo reporta
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| Sin abrir todavía | — | — | — | — | — | Sin empezar |
+| [`A-EP-004-HU-025-el-rango-de-control-se-cuenta-y-se-limpia`](A-EP-004-HU-025-el-rango-de-control-se-cuenta-y-se-limpia/) | CA-01 a CA-03 | — | [plan_trabajo](A-EP-004-HU-025-el-rango-de-control-se-cuenta-y-se-limpia/plan_trabajo.md) | [plan_pruebas](A-EP-004-HU-025-el-rango-de-control-se-cuenta-y-se-limpia/plan_pruebas.md) | [resultado](A-EP-004-HU-025-el-rango-de-control-se-cuenta-y-se-limpia/resultado_pruebas.md) · cumple | Terminada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

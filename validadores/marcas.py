@@ -55,6 +55,23 @@ INVISIBLES = {
     " ": "espacio fino sin salto (U+202F)",
 }
 
+# `EP-004·HU-025` · Los caracteres de control, que tampoco se ven y rompen mas.
+#
+# **El caso que lo hizo falta.** Al ir a agregarle una fila a la tabla de fases
+# de una historia, la fila que ya estaba **empezaba con un `U+0001`** en vez de
+# con la barra de la tabla. Esa fila no se renderiza como fila: desaparece del
+# cuadro y queda como un parrafo suelto debajo. Estaba en **26 archivos**.
+#
+# **Se barre el rango completo, no los que aparecieron.** Agregar de a uno
+# deja el trabajo a medias por definicion: el proximo se cuela igual. Quedan
+# fuera los tres que si significan algo en un texto: salto de linea, retorno y
+# tabulador.
+_CONTROL = tuple(chr(c) for c in list(range(0x00, 0x20)) + [0x7F]
+                 if c not in (0x09, 0x0A, 0x0D))
+
+for _c in _CONTROL:
+    INVISIBLES[_c] = "caracter de control (U+%04X)" % ord(_c)
+
 # ── Sección 2 del anexo · lo que se cuenta sin opinar ─────────────────────
 # El punto medio que **no** forma parte de una cita `NN·ID` ni de un `A · B`
 # de encabezado: los dos son notación definida del estándar.
@@ -203,6 +220,43 @@ def contar(raiz=None, incluir_historico=False):
     return por_marca, por_archivo, nombres
 
 
+HEREDADAS = ("base", "plantillas")
+
+# Cuántos archivos miró la última corrida de `validar`. Lo lee
+# `alcance()` para no inventarse el número.
+MIRADOS = None
+
+# `EP-004·HU-024` · La salida dice sobre qué corrió y qué no cuenta.
+#
+# **El caso que lo hizo falta.** El 2026-08-30 el agente corrió este comando
+# sobre veinticinco documentos de `documentacion/`, obtuvo cero, y escribió en
+# el cuerpo de un commit que estaban limpios. El enganche del commit encontró
+# trece avisos en esos mismos archivos: el cero salía de **no mirar**.
+#
+# Un validador que no dice sobre qué corrió no entrega un veredicto: entrega
+# un número que el lector completa con lo que quiere creer.
+NO_SE_CUENTAN = ("el español de otra parte, la estructura demasiado pareja, el tono, y el contraste con lo escrito antes",)
+
+
+def alcance(raiz=None, mirados=None):
+    """Las dos frases que acompañan al resultado: qué se miró y qué no.
+
+    Se arma con lo que la corrida **de verdad** recorrió, no con un texto
+    escrito aparte: si el alcance cambia y nadie actualiza la frase, la frase
+    miente, y este defecto nació justamente de creerle a un número.
+    """
+    carpetas = ", ".join("`%s/`" % c for c in HEREDADAS)
+    if mirados == 0:
+        primera = ("no se miró ningún archivo: en %s no hay ninguno que revisar"
+                   % carpetas)
+    else:
+        cuantos = "" if mirados is None else " (%d archivos)" % mirados
+        primera = "se recorrió %s%s, que es lo que viaja a los proyectos" % (
+            carpetas, cuantos)
+    return (primera,
+            "no se cuenta lo que hay que leer para verlo: %s" % NO_SE_CUENTAN[0])
+
+
 def validar(raiz=None):
     """Las marcas de lo que se hereda: `base/` y `plantillas/`.
 
@@ -212,12 +266,15 @@ def validar(raiz=None):
     """
     raiz = raiz or RAIZ
     hallazgos = []
+    global MIRADOS
+    MIRADOS = 0
     for archivo in recorrer_md(raiz):
         if _excluido(raiz, archivo):
             continue
         rel = os.path.relpath(archivo, raiz).replace("\\", "/").split("/")[0]
-        if rel not in ("base", "plantillas"):
+        if rel not in HEREDADAS:
             continue
+        MIRADOS += 1
         for n, linea in lineas_utiles(leer(archivo)):
             vistas = set()
             for clave, nombre in marcas_de_linea(sin_codigo_en_linea(linea)):
@@ -252,6 +309,11 @@ REEMPLAZOS = {
     "\u201c": '"',       # comilla curva de apertura
     "\u201d": '"',       # comilla curva de cierre
 }
+
+# Los de control se borran: no hay reemplazo que elegir, no significan nada
+# dentro de un texto (`EP-004·HU-025`).
+for _c in _CONTROL:
+    REEMPLAZOS[_c] = ""
 
 
 def limpiar_texto(texto):

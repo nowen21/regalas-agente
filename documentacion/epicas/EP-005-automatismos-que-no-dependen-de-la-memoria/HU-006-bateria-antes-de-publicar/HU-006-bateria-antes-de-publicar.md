@@ -125,7 +125,7 @@ Y se dice cuál lo impidió
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-005-HU-006-la-bateria-antes-de-publicar/resultado_pruebas.md) — con el reparto entre lo que detiene y lo que informa, y su motivo escrito |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-005-HU-006-la-bateria-antes-de-publicar/resultado_pruebas.md) — con el reparto entre lo que detiene y lo que informa, y su motivo escrito |
 
 **La fase construye, y depende de otra:** la batería es la corrida completa de EP-004 · HU-008. Y tiene un límite claro — publicar lo autoriza una persona (`00·N2`), así que la batería niega el visto bueno, no impide la acción de nadie.
 

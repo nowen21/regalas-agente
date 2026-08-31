@@ -49,6 +49,7 @@ No se ven leyendo: se encuentran buscando. Sobreviven a cualquier reescritura de
 | Espacio duro (`U+00A0`) entre palabras o antes de un signo | el espacio normal del teclado |
 | Caracteres de ancho cero (`U+200B`, `U+FEFF`) | se borran; no se ven y quedan pegados al copiar |
 | Guion suave (`U+00AD`) dentro de una palabra | nada: la palabra entera |
+| Cualquier carácter de control (`U+0000` a `U+001F`, `U+007F`), salvo el salto de línea, el retorno y el tabulador | se borran. No significan nada dentro de un texto, y donde caen rompen: un `U+0001` al principio de una fila hace que esa fila **deje de ser fila** y desaparezca del cuadro |
 | Puntos suspensivos como un solo carácter (`…`) | tres puntos seguidos |
 | Semiraya (`–`) donde va un guion corriente | el guion del teclado (`-`) |
 | Comillas y guiones que el editor cambia solo al escribir | revisarlos antes de entregar; el editor los mete sin avisar |

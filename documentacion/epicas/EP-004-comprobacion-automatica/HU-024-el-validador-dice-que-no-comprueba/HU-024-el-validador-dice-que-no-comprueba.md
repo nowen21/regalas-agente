@@ -17,7 +17,7 @@
 | **Sprint** | Sin asignar |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Pendiente |
+| **Estado** | Terminada — los tres criterios se cerraron en la fase `A` |
 
 ---
 
@@ -142,7 +142,7 @@ Y no dice que esté limpio
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| Sin abrir todavía | — | — | — | — | — | Sin empezar |
+| [`A-EP-004-HU-024-la-salida-dice-sobre-que-corrio`](A-EP-004-HU-024-la-salida-dice-sobre-que-corrio/) | CA-01 a CA-03 | — | [plan_trabajo](A-EP-004-HU-024-la-salida-dice-sobre-que-corrio/plan_trabajo.md) | [plan_pruebas](A-EP-004-HU-024-la-salida-dice-sobre-que-corrio/plan_pruebas.md) | [resultado](A-EP-004-HU-024-la-salida-dice-sobre-que-corrio/resultado_pruebas.md) · cumple | Terminada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

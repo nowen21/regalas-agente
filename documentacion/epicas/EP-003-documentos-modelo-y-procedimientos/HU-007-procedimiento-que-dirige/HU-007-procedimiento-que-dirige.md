@@ -147,7 +147,7 @@ Entonces se puede saber en qué paso quedó y qué falta
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-007-retrodocumentar-el-procedimiento-que-dirige/resultado_pruebas.md) — probada sobre tres sesiones y cinco días de distancia |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-007-retrodocumentar-el-procedimiento-que-dirige/resultado_pruebas.md) — probada sobre tres sesiones y cinco días de distancia |
 
 **La fase retro-documenta.** El director existe, con sus trece estaciones y sus puertas. El CA-03 —retomar en otra sesión sin perder el hilo— es el que más ha fallado en la práctica, y la fase lo prueba con el resultado que dé.
 

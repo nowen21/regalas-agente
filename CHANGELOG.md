@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 36.0.3 — 2026-08-30
+
+**Había caracteres invisibles metidos dentro de veintiséis documentos, y donde caían rompían la tabla sin que nadie lo viera.** Uno de ellos, al principio de una fila, hacía que esa fila dejara de ser fila: desaparecía del cuadro y quedaba como un párrafo suelto debajo. En un documento del proyecto, eso hacía que una línea entera de una tabla no se viera.
+
+**PARCHE**: quita lo que no se ve y no significa nada; ninguna palabra del texto cambia.
+
+**Qué se hizo.** El programa que cuenta lo invisible ahora barre el rango completo de caracteres de control, no los que fueron apareciendo: agregarlos de a uno deja el trabajo a medias por definición, porque el próximo se cuela igual. Quedan fuera los tres que sí significan algo al escribir, que son el salto de línea, el retorno y el tabulador.
+
+**Y la lista escrita dice lo mismo que el programa.** El anexo que enumera estas marcas recibió su fila, para que no vuelvan a separarse.
+
+**Se limpiaron catorce archivos.** Los que quedan están en la carpeta de datos de la plataforma, que es una copia traída, y en el histórico, que no se reescribe.
+
+---
+
 ## 36.0.2 — 2026-08-30
 
 **Cuatro reglas del capítulo de cumplimiento llevaban meses publicadas sin que nadie las hubiera revisado.** No por descuido: el programa que revisa las reglas no las reconocía como reglas, porque estaban escritas un nivel más abajo que las demás. El capítulo salía en verde por el mismo motivo por el que pasaría un examen que no se corrige.

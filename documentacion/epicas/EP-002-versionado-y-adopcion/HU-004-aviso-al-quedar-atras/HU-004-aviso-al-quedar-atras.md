@@ -142,7 +142,7 @@ Y ningún archivo del proyecto cambió por el aviso
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [C-EP-002-HU-004-el-ca-01-se-vuelve-a-medir](C-EP-002-HU-004-el-ca-01-se-vuelve-a-medir/estado-fase.md) | CA-01, otra vez | **Ejecutada el 2026-08-29.** Veredicto: [**Cumple**](C-EP-002-HU-004-el-ca-01-se-vuelve-a-medir/resultado_pruebas.md#2-veredicto-de-la-fase) — el aviso sale y la apertura pasa por él: `hook_sesion` llama a `sesion.revisar`, que llama a `version.validar`. Declara reemplazar el veredicto de la fase `A` |
-**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no: el aviso existe y hay que pedirlo a mano |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-004-retrodocumentar-el-aviso-de-desfase/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-02 y el CA-03 sí; el CA-01 no: el aviso existe y hay que pedirlo a mano |
 
 **La fase retro-documenta.** El aviso sale solo al abrir la sesión. Lo que le falta es la tercera parte de la RN-02: **no dice qué cambió entre las dos versiones**. Y el CA-03 tiene una excepción que hay que dejar escrita — la derogación sin adoptar sí detiene la fase (`02·F22`).
 

@@ -433,8 +433,18 @@ def cmd_marcas(a):
         return reportar(marcas.validar_preparados(raiz),
                         f"Marcas nuevas en lo que se va a guardar · "
                         f"{relativo(raiz)}")
-    return reportar(marcas.validar(raiz),
-                    f"Marcas de generación automática · {relativo(raiz)}")
+    # `EP-004·HU-024` · El resultado no se entrega solo: va con el alcance.
+    #
+    # Un cero de este comando decía dos cosas distintas y no las separaba:
+    # «no hay marcas» y «acá no se miró». Las dos frases salen de lo que la
+    # corrida recorrió, no de un texto escrito aparte.
+    hallazgos = marcas.validar(raiz)
+    salida = reportar(hallazgos,
+                      f"Marcas de generación automática · {relativo(raiz)}")
+    donde, sin_contar = marcas.alcance(raiz, marcas.MIRADOS)
+    print(f"Alcance: {donde}.")
+    print(f"Y {sin_contar}.")
+    return salida
 
 
 def cmd_sesiones(a):

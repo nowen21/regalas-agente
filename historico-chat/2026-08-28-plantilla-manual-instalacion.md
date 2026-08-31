@@ -1589,3 +1589,76 @@ Falta el hash de la estación 12 y las señales de esta tanda.
 
 ### 62 · Usuario — 2026-08-30 21:10:01
 > siga
+
+**Agente** — 2026-08-30 21:12:29
+<!-- agente: 45a85140-7f61-4be9-8b13-0d3f53ec53ca -->
+
+El `git add documentacion/` se llevó los veintiún `estado-fase` de otra sesión. Los saco.
+
+Pusheado `a5ecf44..caee602`. Señales **S-086 a S-089** escritas, y el hash de la última fase anotado.
+
+Una cosa que pasó al preparar el commit y que vale decir: un `git add` de la carpeta entera se llevó los veintiún `estado-fase` de otra sesión. Los saqué antes de guardar. Es el mismo descuido de las 712 líneas, y esta vez lo vi porque revisé el índice antes de commitear, no porque nada me avisara.
+
+**Estado de la sesión:** 119 historias cumplen, cero rojas, cero mudas, ninguna fase detenida. Quedan siete historias sin terminar: las tres que aprobó hoy y cuatro de producto sin fase.
+
+### 63 · Usuario — 2026-08-30 21:15:14
+> 00 id9
+
+**Agente** — 2026-08-30 21:15:19
+<!-- agente: 11471750-f985-4f4f-bec6-7372d9f88a2a -->
+
+Pusheado `a5ecf44..caee602`: señales S-086 a S-089 y el hash de la última fase.
+
+**119 cumplen, cero rojas, cero mudas, ninguna fase detenida.** Quedan siete historias sin terminar: las tres de hoy y cuatro de producto.
+
+Un descuido que vi a tiempo: un `git add` de la carpeta entera se llevó veintiún archivos de otra sesión. Los saqué antes de guardar.
+
+### 64 · Usuario — 2026-08-30 21:15:40
+> siga
+
+**Agente** — 2026-08-30 21:21:05
+<!-- agente: 8d5a8d35-3442-4794-ade6-c00e61191505 -->
+
+Sigo con `HU-024`, que es la de mayor prioridad: el validador que dice sobre qué corrió.
+
+Los tres criterios se cumplen. Ahora sus pruebas.
+
+**120 cumplen, cero rojas, cero mudas.** `HU-024` cerrada.
+
+Ahora `validar.py marcas` responde así:
+
+```
+0 falla(s), 746 aviso(s).
+Alcance: se recorrió `base/`, `plantillas/` (189 archivos), que es lo que viaja a los proyectos.
+Y no se cuenta lo que hay que leer para verlo: el español de otra parte, la
+estructura demasiado pareja, el tono, y el contraste con lo escrito antes.
+```
+
+Y sobre un árbol sin nada en su alcance dice «no se miró ningún archivo», que antes era el mismo cero.
+
+Dos cosas que quedaron fijadas en las pruebas: el número de archivos va en la frase porque «se recorrió `base/`» es cierto también con cero archivos, y **la frase sale de lo que el programa recorre**, no de un texto escrito aparte. Si alguien amplía el alcance y no toca la frase, la prueba se cae en vez de dejar que el reporte mienta.
+
+Sigo con `HU-025`, la de los caracteres invisibles.
+
+### 65 · Usuario — 2026-08-30 21:21:13
+> siga
+
+**Agente** — 2026-08-30 21:29:54
+<!-- agente: 30674c05-35e0-4936-b1a2-8da9e2cfdf9a -->
+
+La limpieza general tocaría 59 archivos por todas las invisibles. La historia es solo de los caracteres de control, así que la acoto a eso.
+
+Catorce archivos limpios. Los trece que quedan están en `plataforma/datos/`, que es una copia del repo traída a la plataforma, y los del histórico no se reescriben. Escribo la prueba.
+
+**121 cumplen, cero rojas, cero mudas.** `HU-025` cerrada.
+
+Lo medible: el contador conocía **siete** caracteres invisibles y ninguno de control. Ahora barre el rango completo —no los que fueron apareciendo, porque agregar de a uno deja el trabajo a medias por definición: el próximo se cuela igual y nadie lo ve, que es justo el defecto. Quedan fuera los tres que sí significan algo al escribir.
+
+Limpié **14 archivos**. Los que quedan están en dos sitios que no se tocan a propósito: la carpeta de datos de la plataforma, que es una copia traída, y el histórico, que no se reescribe. Comprobé el registro de sesiones antes de limpiar: ninguno era de otra.
+
+Y el anexo de la norma recibió su fila, para que la lista escrita no diga menos que el programa. Versión `36.0.3`, parche.
+
+Queda `HU-037`, la norma de redacción, que necesita su decisión de alcance. ¿Commiteo lo de estas dos primero?
+
+### 66 · Usuario — 2026-08-30 21:31:17
+> si
