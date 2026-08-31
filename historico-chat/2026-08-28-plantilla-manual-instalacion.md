@@ -1493,3 +1493,99 @@ Faltan los documentos de cierre de las tres fases y poner las historias al día.
 
 ### 56 · Usuario — 2026-08-30 20:49:21
 > siga
+
+**Agente** — 2026-08-30 20:52:43
+<!-- agente: d8b08611-ed62-46f9-a076-326233879a9f -->
+
+Las tres cerradas. **118 cumplen, cero rojas, cero mudas.**
+
+Pusheado `9656125..14f604b`. **118 historias cumplen, cero rojas, cero mudas.**
+
+Cuatro de las cinco fases detenidas quedaron ejecutadas. La más grave dejaba la memoria inservible cuando faltaba un modelo opcional: se caía entera y se llevaba por delante la búsqueda por palabra, que no necesita ni modelo ni red. Una parte opcional que al fallar tumba la que no lo es, no es opcional.
+
+Y vale la pena dejar dicho por qué salió bien: esas fases no podían arreglar lo que encontraron, porque su plan declaraba no tocar el programa. En vez de anotarlo en prosa, dejaron **la prueba escrita y marcada como fallo esperado**. Al arreglarlo hoy, la corrida reportó «éxitos inesperados» y obligó a volver a destapar cada una. Un defecto anotado en un documento se pierde; uno anotado así reclama solo el día que deja de ser cierto.
+
+Queda una sola fase detenida, `A-EP-004-HU-010`, la de las convenciones declaradas por el proyecto: sus cinco criterios piden correr las comprobaciones contra un proyecto real, y eso es una sesión propia.
+
+### 57 · Usuario — 2026-08-30 20:55:11
+> 00 id9
+
+**Agente** — 2026-08-30 20:55:15
+<!-- agente: bd88a8bf-16df-480c-b0aa-85f3ebd1c7c2 -->
+
+Pusheado `9656125..14f604b`. **118 cumplen, cero rojas, cero mudas.**
+
+Cuatro de las cinco fases detenidas, ejecutadas. Queda `A-EP-004-HU-010`: sus cinco criterios piden correr las comprobaciones contra un proyecto real, y eso es una sesión propia.
+
+### 58 · Usuario — 2026-08-30 20:55:38
+> hágale
+
+**Agente** — 2026-08-30 21:02:08
+<!-- agente: aa1f85b3-f66f-4f90-b8db-e2753dcce25f -->
+
+Empiezo midiendo: qué existe y qué reporta hoy contra un proyecto real.
+
+**CA-01 verificado.** Ahora los otros cuatro, contra el proyecto que sí declara.
+
+CA-01 y CA-05 verificados contra proyectos reales. Los otros tres no se pueden ver ahí —uno tiene las migraciones en un formato que no se lee y el otro no declara entidades—, así que los provoco en un proyecto de prueba.
+
+El proyecto de prueba no se lee como esperaba. Miro dónde busca las migraciones y qué forma de `CREATE` reconoce.
+
+El programa solo mira archivos versionados, así que el proyecto de prueba tiene que ser un repositorio. Lo corrijo.
+
+CA-04 lo estaba midiendo con una aguja que también caza el mensaje de CA-03. Miro qué reporta de verdad.
+
+CA-04 sí se reporta: mi aguja cazaba también el mensaje de CA-03. Corrijo eso y dejo el proyecto limpio de verdad, con su permiso y sus claves únicas.
+
+Mis dos declaraciones estaban mal escritas, no el programa: los estados se buscan como valores entre comillas y el permiso lleva `<recurso>`. Lo corrijo.
+
+**Defecto real del programa, no de mi prueba.** `re.escape("<recurso>")` ya no escapa los ángulos en las versiones actuales de Python, así que el reemplazo nunca ocurre: la expresión queda literal y **el permiso no se encuentra nunca**. Ese reclamo salía en todo proyecto con una entidad inmutable, siempre.
+
+**4 de 4 criterios provocados y verificados**, cada uno con su contraprueba: el proyecto sin el defecto no reclama nada.
+
+Y apareció un defecto de verdad, que es lo que justifica haber provocado los casos en vez de leerlos. El patrón del permiso se arma reemplazando `<recurso>` **sobre el texto ya escapado**, y desde Python 3.7 `re.escape` dejó de escapar los ángulos. El reemplazo dejó de ocurrir en silencio: la expresión quedaba literal, no encontraba ningún permiso, y **toda entidad inmutable de todo proyecto recibía ese reclamo, siempre**. Un reclamo que sale siempre es el que se aprende a ignorar.
+
+Falta escribirle la prueba al defecto y cerrar la fase. ¿Sigo?
+
+### 59 · Usuario — 2026-08-30 21:02:17
+> 00 id9
+
+**Agente** — 2026-08-30 21:02:22
+<!-- agente: 32269096-9947-4bd8-b5ba-3d4dad17cc40 -->
+
+**4 de 4 criterios verificados**, cada uno con su contraprueba.
+
+Apareció un defecto real: el patrón del permiso reemplaza `<recurso>` sobre texto ya escapado, y desde Python 3.7 `re.escape` no escapa los ángulos. El reemplazo no ocurría, no se encontraba ningún permiso, y **toda entidad inmutable de todo proyecto recibía ese reclamo siempre**.
+
+Falta su prueba y cerrar la fase. ¿Sigo?
+
+### 60 · Usuario — 2026-08-30 21:05:37
+> siga
+
+**Agente** — 2026-08-30 21:09:00
+<!-- agente: 9a98c3cf-c777-481d-bdb0-45776a48f8a1 -->
+
+Siete pruebas en verde. Cierro la fase.
+
+Pusheado `14f604b..a5ecf44`. **No queda ninguna fase detenida: 119 historias cumplen, cero rojas, cero mudas.**
+
+Lo que valió la pena de esta última: dos criterios se verificaron contra proyectos reales, pero los otros tres no se podían ver en ninguno —uno tiene las migraciones en un formato que el programa no lee y el otro no declara entidades—, así que hubo que provocarlos en un proyecto temporal, cada uno con su contraprueba.
+
+Y provocarlos encontró lo que leyendo no se veía: **el reclamo de que una entidad inmutable no tiene su permiso salía siempre, en todo proyecto**. El patrón `anular_<recurso>` se arma reemplazando el marcador sobre texto ya escapado, y desde Python 3.7 `re.escape` dejó de escapar los ángulos. El reemplazo dejó de ocurrir en silencio. Un reclamo que sale siempre es el que se aprende a ignorar, y ese es el daño: no el falso positivo, sino lo que le enseña al que lo lee.
+
+Falta el hash de la estación 12 sin guardar, y las señales de esta tanda sin escribir.
+
+### 61 · Usuario — 2026-08-30 21:09:24
+> 00 id9
+
+**Agente** — 2026-08-30 21:09:29
+<!-- agente: 7207c7bb-6a05-42ec-8f87-4cfc1216aae2 -->
+
+Pusheado `14f604b..a5ecf44`. **Ninguna fase detenida: 119 cumplen, cero rojas, cero mudas.**
+
+Provocar los tres criterios encontró un defecto que leyendo no se veía: el reclamo del permiso de anular salía en **todo** proyecto, porque desde Python 3.7 `re.escape` no escapa los ángulos y el marcador `<recurso>` nunca se reemplazaba.
+
+Falta el hash de la estación 12 y las señales de esta tanda.
+
+### 62 · Usuario — 2026-08-30 21:10:01
+> siga

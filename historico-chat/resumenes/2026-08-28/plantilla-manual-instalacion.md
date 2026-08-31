@@ -218,6 +218,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
 - **Con qué se retoma:** —
 
+### H-14 · Provocar el caso encontró lo que trece días de lectura no vieron
+
+- **Qué pasó:** la última fase detenida tenía cinco criterios sin ejecutar. Dos se verificaron contra proyectos reales; los otros tres **no se pueden ver en ninguno** —uno tiene las migraciones en un formato que el programa no lee, el otro no declara sus entidades— y hubo que provocarlos en un proyecto de prueba. Al hacerlo apareció un defecto de meses: el reclamo de que una entidad inmutable no tiene su permiso **salía en todo proyecto**, porque desde Python 3.7 `re.escape` no escapa los ángulos y el marcador `<recurso>` nunca se reemplazaba.
+- **Por qué importa:** se rompió **sin que nadie tocara el código**: cambió lo que hacía una función de la biblioteca estándar por debajo. Y el daño no es el falso positivo sino lo que enseña: un reclamo que sale siempre deja de leerse, y con él los que sí eran ciertos.
+- **Qué lo soluciona:** ya está hecho, con su prueba de no regresión y su contraprueba.
+- **Qué se decidió:** cada criterio provocado lleva su contraprueba, porque un validador que reclamara siempre pasaría igual. Y las declaraciones del proyecto de prueba se escribieron dos veces mal antes de acertar: un caso mal armado se lee idéntico a un programa roto, y lo que los separa es mirar qué espera el programa antes de acusarlo.
+- **Estado:** resuelto acá
+- **Responde a:** EP-004 · HU-010
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** [`S-086`](../../../documentacion/senales.md) y [`S-087`](../../../documentacion/senales.md) · el guion que provoca los cuatro casos, en [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/)
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

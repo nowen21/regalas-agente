@@ -30,7 +30,7 @@
 | 9 | Verifier | trazabilidad sin faltantes | ☐ |
 | 10 | Crítico | sin hallazgos graves | ☐ |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `a5ecf44` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 La estación 5 queda pendiente de una decisión, no de un documento: se propone que la HU haga de especificación, como en la fase `A-EP-001-HU-001-molde-de-regla`. Es la duda 1 del plan de trabajo §2.7.
