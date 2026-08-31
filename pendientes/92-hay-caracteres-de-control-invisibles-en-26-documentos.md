@@ -1,6 +1,6 @@
 # Pendiente · Veintiséis documentos traen un carácter de control invisible que rompe tablas
 
-**Estado:** abierto, anotado el 2026-08-30.
+**Estado:** **hecho** el 2026-08-30, en la misma sesión que lo anotó.
 
 | | |
 |---|---|

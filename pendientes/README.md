@@ -360,13 +360,13 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 ---
 
-### Lo que dejó cerrar rojos viejos midiendo cada criterio (91-93)
+### Lo que dejó cerrar rojos viejos midiendo cada criterio (91-93) — los tres hechos el 2026-08-30
 
 | # | P | Pendiente | Qué resuelve |
 |---|---|---|---|
-| 91 | **P1** | [El validador de marcas dice «cero» sobre lo que no mira](91-el-validador-de-marcas-no-dice-que-no-comprueba.md) | `validar.py marcas` solo recorre `base/` y `plantillas/`, y su «cero» se lee como «cumple `00·ID8`». Cobró el 2026-08-30: el agente publicó en un mensaje de commit que el validador no reportaba nada de veinticinco documentos, y el enganche del commit encontró trece avisos en esos mismos archivos. Falta que la salida diga qué recorrió y qué secciones del anexo no cuenta. |
-| 92 | **P2** | [Hay caracteres de control invisibles en 26 documentos](92-hay-caracteres-de-control-invisibles-en-26-documentos.md) | Un `U+0001` pegado dentro de la fila de una tabla hace que esa fila no se renderice: la historia muestra una fase menos de las que tiene. Está en 26 archivos `.md`, trece en `documentacion/`, y `marcas.py` no cuenta ningún carácter de control. |
-| 93 | **P3** | [La norma de redacción vive dentro de dos plantillas](93-la-norma-de-redaccion-vive-dentro-de-dos-plantillas.md) | «Acciones en infinitivo, explicaciones en tercera persona» rige lo que el agente entrega y solo está escrita como regla 11 de dos plantillas. El anexo de marcadores ya declara el hueco: la norma del español «necesita su propia regla, y todavía no existe». Antes de escribirla hay que decidir su alcance. |
+| ~~91~~ | — | **hecho** → [El validador de marcas dice «cero» sobre lo que no mira](91-el-validador-de-marcas-no-dice-que-no-comprueba.md) | `validar.py marcas` solo recorre `base/` y `plantillas/`, y su «cero» se lee como «cumple `00·ID8`». Cobró el 2026-08-30: el agente publicó en un mensaje de commit que el validador no reportaba nada de veinticinco documentos, y el enganche del commit encontró trece avisos en esos mismos archivos. Falta que la salida diga qué recorrió y qué secciones del anexo no cuenta. |
+| ~~92~~ | — | **hecho** → [Hay caracteres de control invisibles en 26 documentos](92-hay-caracteres-de-control-invisibles-en-26-documentos.md) | Un `U+0001` pegado dentro de la fila de una tabla hace que esa fila no se renderice: la historia muestra una fase menos de las que tiene. Está en 26 archivos `.md`, trece en `documentacion/`, y `marcas.py` no cuenta ningún carácter de control. |
+| ~~93~~ | — | **hecho** → [La norma de redacción vive dentro de dos plantillas](93-la-norma-de-redaccion-vive-dentro-de-dos-plantillas.md) | «Acciones en infinitivo, explicaciones en tercera persona» rige lo que el agente entrega y solo está escrita como regla 11 de dos plantillas. El anexo de marcadores ya declara el hueco: la norma del español «necesita su propia regla, y todavía no existe». Antes de escribirla hay que decidir su alcance. |
 
 ---
 

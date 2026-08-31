@@ -1,6 +1,6 @@
 # Pendiente · El validador de marcas dice «cero» sobre lo que no mira
 
-**Estado:** abierto, anotado el 2026-08-30.
+**Estado:** **hecho** el 2026-08-30, en la misma sesión que lo anotó.
 
 | | |
 |---|---|

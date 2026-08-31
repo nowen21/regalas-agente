@@ -1,6 +1,6 @@
 # Pendiente · La norma de redacción del estándar vive dentro de dos plantillas, no en `base/`
 
-**Estado:** abierto, anotado el 2026-08-30.
+**Estado:** **hecho** el 2026-08-30, en la misma sesión que lo anotó.
 
 | | |
 |---|---|

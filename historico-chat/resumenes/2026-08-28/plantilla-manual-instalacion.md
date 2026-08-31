@@ -261,10 +261,12 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ [91](../../../pendientes/91-el-validador-de-marcas-no-dice-que-no-comprueba.md), [92](../../../pendientes/92-hay-caracteres-de-control-invisibles-en-26-documentos.md), [93](../../../pendientes/93-la-norma-de-redaccion-vive-dentro-de-dos-plantillas.md) |
-| Toda historia disparada está escrita en su épica | ☐ Las tres salen de su pendiente **cuando el usuario las apruebe**, que es la puerta 4 |
-| Lo que se hizo está aprobado y guardado | ☐ Falta guardar los tres pendientes y este resumen |
+| Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
+| Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**Lo que impide cerrar, en una línea:** las cinco decisiones del usuario sobre los rojos que quedan, y la aprobación de las tres historias que estos pendientes disparan.
+**La sesión se puede cerrar.** Los quince hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**.
+
+**Lo que sigue no es de esta sesión:** cuatro historias de producto sin ninguna fase, y los tres pendientes que hoy se abrieron y se cerraron el mismo día.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

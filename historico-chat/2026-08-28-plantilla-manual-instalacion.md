@@ -1712,3 +1712,27 @@ El modelo de manual de instalación ya cita la regla en vez de repetirla. El de 
 
 ### 69 · Usuario — 2026-08-31 07:36:48
 > si
+
+**Agente** — 2026-08-31 07:39:38
+<!-- agente: 35f0952d-f237-4cb1-8b88-019268f78af9 -->
+
+Pusheado `6ff05c1..ae65bc1`, versión **`37.0.0`**.
+
+**Estado del árbol: 122 historias cumplen, cero rojas, cero mudas, ninguna fase detenida.**
+
+De lo que había esta mañana:
+
+| Al empezar | Ahora |
+|---|---|
+| 13 historias en rojo | 0 |
+| 5 terminadas sin decir si cumplían | 0 |
+| 5 fases detenidas esperando su firma | 0 |
+| 7 pruebas del estándar en rojo | 5, y las cinco son de archivos de otra sesión |
+| 3 pendientes sin historia | 3 historias escritas, y las tres cerradas |
+
+Quedan cuatro historias sin ninguna fase, todas de producto: buscar en lo conversado, ver qué corrección se repite, los capítulos opcionales de dominio, y hacer cumplir lo que solo se recuerda.
+
+Falta escribir la señal de esto último y el resumen de la sesión ya tiene quince hallazgos. ¿Sigo con eso, o paramos acá?
+
+### 70 · Usuario — 2026-08-31 07:46:53
+> siga
