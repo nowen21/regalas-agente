@@ -5986,29 +5986,29 @@ class ElAlmacenLocalQuedaVacio(unittest.TestCase):
         movidos = recuerdos.migrar(proyecto, aplicar=True, casa=casa)
         self.assertEqual(movidos, [])
 
-    @unittest.expectedFailure
-    def test_no_se_lleva_lo_que_no_es_recuerdo(self):
+    def test_se_lleva_todo_y_el_almacen_queda_vacio(self):
         """CP-001, paso 5: en el almacén local puede haber archivos de la
-        herramienta que no son recuerdos. Llevárselos al repositorio sería
-        peor que dejarlos.
+        herramienta que no son recuerdos. **Se los lleva igual.**
 
-        **Falla hoy, y el programa no está claramente equivocado.** `sueltos()`
-        devuelve *todo* archivo del almacén, no solo los `.md`, así que un
-        `config.json` termina en `historico-chat/memory/`. Pero dejarlo sería
-        incumplir [`01·C19`], que exige el almacén **vacío** — y entonces
-        `revisar()` reprobaría para siempre por un archivo que no es un
-        recuerdo.
+        **Estuvo trece días como pregunta abierta**, porque las dos salidas
+        tenían costo: llevarse un `config.json` mete al repositorio algo que no
+        es un recuerdo, y dejarlo incumple `01·C19`, que exige el almacén
+        vacío, y entonces `revisar()` reprobaría para siempre por un archivo
+        que nadie va a mover.
 
-        Las dos salidas son malas y elegir entre ellas no es del que ejecuta:
-        o el recogido distingue qué es recuerdo y `C19` acepta que quede lo que
-        no lo es, o se acepta que se lleve todo. Queda como fallo esperado y
-        como pregunta al usuario, no como parche."""
+        **El usuario decidió el 2026-08-30 que se lleva todo.** Manda `C19` tal
+        como está escrita: lo que importa es que en el almacén local no quede
+        nada, porque lo que queda ahí es lo que se pierde. Un archivo de más en
+        el repositorio se ve, se lee y se borra; uno olvidado en una carpeta de
+        la herramienta, no."""
         proyecto, casa = self._monta(locales={"algo.md": "# Algo\n",
                                               "config.json": "{}\n"})
         recuerdos.migrar(proyecto, aplicar=True, casa=casa)
         local = recuerdos.carpeta_local(proyecto, casa)
-        self.assertIn("config.json", os.listdir(local))
-        self.assertNotIn("config.json", os.listdir(recuerdos.carpeta_repo(proyecto)))
+        self.assertEqual(os.listdir(local), [],
+                         "el almacén local tiene que quedar vacío (`01·C19`)")
+        self.assertIn("config.json", os.listdir(recuerdos.carpeta_repo(proyecto)),
+                      "lo que no es recuerdo también se trae, y acá se ve")
 
     def test_no_quedan_dos_versiones_del_mismo_recuerdo(self):
         """CP-002, paso 5: lo que este vaciado evita no es perder el recuerdo,

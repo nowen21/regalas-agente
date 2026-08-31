@@ -128,6 +128,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
 - **Con qué se retoma:** ¿Un aviso con código 0 alcanza para una regla que ya se dejó de cumplir dos veces?
 
+### H-8 · Los trece rojos quedaron en cero, y once de ellos no eran trabajo
+
+- **Qué pasó:** la cuenta de veredictos pasó de **96 cumplen / 13 no cumplen** a **109 / 0**. De los trece, cinco ya no eran ciertos y solo faltaba declararlo, tres eran trabajo de verdad y se hizo, y **cinco eran decisiones del usuario** que llevaban entre ocho y trece días esperando.
+- **Por qué importa:** una lista de rojos se lee como una lista de tareas, y de trece solo tres lo eran. Los otros diez se cerraron midiendo o preguntando, no construyendo. El costo de no haber preguntado antes se mide en días: `EP-006·HU-001` estuvo trece esperando una decisión de dos frases.
+- **Qué lo soluciona:** ya está hecho. Las cinco decisiones quedaron aplicadas y cada una con su motivo escrito en el cierre de su fase.
+- **Qué se decidió:** las señales viven en la base de Cimiento, que es la línea base de todos los proyectos, y por eso no se versiona en este repositorio · manda el recuerdo sobre la señal cuando se contradicen · se escribe la regla `04·S19`, que prohíbe guardar un dato personal o un secreto en la memoria · la clave dicha dentro de una frase no se tapa, y queda declarado · el programa que vacía el almacén local se lleva todo.
+- **Estado:** resuelto acá
+- **Responde a:** las trece historias con veredicto en rojo
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** nueve fases nuevas · la regla [`04·S19`](../../../base/04-seguridad.md) · versión `36.0.0` · los guiones en [`historico-chat/scripts/2026-08-30/`](../../scripts/2026-08-30/)
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+### H-9 · Dos criterios se cerraron declarando lo que **no** cubren
+
+- **Qué pasó:** `EP-001·HU-003` cierra con tres de seis formas de clave sin tapar, y `EP-006·HU-006` cierra metiendo al repositorio archivos que no son recuerdos. Las dos son lo decidido, y las dos lo dicen en su cierre.
+- **Por qué importa:** es la diferencia entre releer un criterio y borrarlo. Un criterio que se da por cumplido escondiendo lo que no cubre deja al que lo lea después creyendo que ese frente está cubierto, y es la mentira optimista que esta cuenta existe para impedir.
+- **Qué lo soluciona:** que el límite vaya escrito en el cierre, con su motivo y con qué lo defiende en su lugar. En `HU-003` la defensa de la clave dentro de una frase no es el programa: es [`00·N6`](../../../base/00-nucleo-blindado.md), que prohíbe escribirla.
+- **Qué se decidió:** el límite se escribe, no se calla.
+- **Estado:** resuelto acá
+- **Responde a:** EP-001 · HU-003 · EP-006 · HU-006
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el §4.1 del resultado de las dos fases `B`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

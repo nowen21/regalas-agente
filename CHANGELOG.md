@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 36.0.0 — 2026-08-30
+
+**Lo que el agente recuerda de una sesión a otra ya no puede llevar el nombre de una persona ni una contraseña.** Hasta hoy nada lo prohibía: se podía anotar el caso entero, con quién era y con qué clave, y eso quedaba guardado para leerse otra vez cada mañana. Ahora lo que se guarda es qué se aprendió, sin el caso.
+
+**MAYOR** ⚠ obliga a migrar: un proyecto al día tiene que revisar su memoria y sacar lo que no debería estar.
+
+**La regla es** [`04·S19`](base/04-seguridad.md#s19--en-la-memoria-no-se-guarda-un-dato-personal-ni-un-secreto).
+
+**De dónde sale.** Una historia llevaba trece días en rojo por esto. El criterio transversal de privacidad de `EP-006·HU-001` pedía que la memoria no guardara datos personales ni claves, y al buscar la regla que lo dijera **no había ninguna**: `13·DOC5` dice qué se registra como señal, y no dice qué no.
+
+**Qué exige.** Que lo escrito en la memoria diga **qué se aprendió** y nunca el dato con el que se aprendió. El ejemplo de la regla contrapone las dos formas de anotar el mismo hallazgo: el caso con la persona y su clave, contra el aprendizaje sin el caso.
+
+**Por qué en seguridad y no en documentación.** No es una convención de cómo se escribe: es qué dato puede salir de una sesión y quedar guardado. `00·N6` ya prohíbe escribir una credencial en cualquier parte y esta no la toca: agrega el **dato personal**, que el núcleo no cubre.
+
+**Y por qué el sitio importa.** Un dato en un registro se lee una vez y envejece. Un dato en la memoria se carga al abrir cada sesión: no envejece, se vuelve a decir.
+
+**Qué se puede comprobar y qué no**, dicho en [`validadores/reglas-validables.md`](validadores/reglas-validables.md): la clave la caza `enmascarar.py`, que hoy corre sobre la transcripción y no sobre la memoria, así que falta apuntarlo ahí. El dato personal no se detecta sin decidir qué nombre propio es de una persona y cuál de un módulo, y eso es leer.
+
+---
+
 ## 35.10.0 — 2026-08-29
 
 **El molde del manual de instalación se rehízo entero.** El anterior daba por hecho un servidor y dos piezas. El nuevo pregunta por cada ambiente, por cómo se entra a cada uno, y por cómo se vuelve atrás cuando la instalación falla.

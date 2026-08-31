@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-02, RNF y transversales cumplidos; el CA-01 falla en un punto |
+| **Estado** | Terminada — el CA-01 se cerró en la fase `B`: el programa se lleva todo y el almacén queda vacío |
 ---
 
 ## 2. Narrativa
@@ -124,6 +124,7 @@ Entonces no hay ni el texto ni una nota que diga dónde quedó
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-006-HU-006-se-lleva-todo-y-el-almacen-queda-vacio](B-EP-006-HU-006-se-lleva-todo-y-el-almacen-queda-vacio/estado-fase.md) | CA-01 | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-006-HU-006-se-lleva-todo-y-el-almacen-queda-vacio/resultado_pruebas.md#2-veredicto-de-la-fase) — el programa que trae los archivos al repositorio se lleva todos, no solo los `.md`, y el almacén local queda vacío como exige `01·C19`. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-006-HU-006-retrodocumentar-el-vaciado-del-almacen-local](A-EP-006-HU-006-retrodocumentar-el-vaciado-del-almacen-local/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-006-retrodocumentar-el-vaciado-del-almacen-local/resultado_pruebas.md#6-veredicto-de-la-fase) — el almacén queda vacío; el recogido se lleva también lo que no es recuerdo. Pendiente el commit |
 
 **La fase retro-documenta.** El vaciado corre solo. La parte fina es el CA-02: que no quede un puntero — un puntero es peor que nada, porque parece que hay memoria donde no hay.

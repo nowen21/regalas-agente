@@ -169,6 +169,7 @@ pueden discutir si se cumplen → hoy las interpreta el agente.
 |---|---|---|
 | `02·F4` | que la fase tenga su plan de trabajo **y** su plan de pruebas | que existan ya se comprueba; **la aprobación explícita no**, y esa es la mitad que importa. Hoy no queda escrita en ningún archivo que un programa pueda leer |
 | `09·G9` | que el mensaje del commit nombre la historia de usuario a la que pertenece | decidir si se exige el identificador en el asunto o en el cuerpo, y agregarlo a `commits.py` |
+| `04·S19` | que un recuerdo o una señal no traiga una clave | **la mitad de la regla es validable y la otra no.** La clave la caza `enmascarar.py`, que ya corre sobre la transcripción y no sobre la memoria: falta apuntarlo ahí. El **dato personal** no se detecta sin decidir qué nombre propio es de una persona y cuál de un módulo, y eso es leer |
 
 ---
 
