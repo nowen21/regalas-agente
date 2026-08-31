@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Dos defectos aparecieron y se cerraron acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `96a356d` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — el estándar no se despliega |
 
 ---
