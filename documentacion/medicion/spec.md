@@ -36,6 +36,7 @@ Del lado de la plataforma ya existe lo que hace falta: [plataforma/nucleo/almace
 3. **Indexar no modifica, no mueve y no borra ningún archivo del histórico.** Es el caso de «que NO pase» del módulo.
 4. **El texto de la conversación no se copia a la plataforma.** Se indexa donde ya vive, versionado en el repositorio del proyecto. Es la excepción declarada a `DA-01`, y su porqué está en la §12.
 5. **Mostrar el patrón, nunca decidir la regla.** El reporte dice qué se repitió; escribir la regla que falta sigue siendo del usuario, por la cadena.
+6. **Qué cuenta como corrección: todo mensaje del usuario, menos una lista cerrada de confirmaciones.** Decidido con el usuario el 2026-08-31. Ningún programa lee intención; lo que sí puede es no contar «si», «hágale», «siga» ni «ok», que son la mitad de lo que se escribe y no corrigen nada. La lista está escrita en el código, es corta, y se lee.
 
 ## 5. Modelo de datos
 
@@ -129,7 +130,7 @@ Los cinco primeros son de `F-033`; los dos últimos, de `F-034`.
 | Funcionalidad | Requisito | Historia | Fase que lo construye |
 |---|---|---|---|
 | F-033 | RF-33 | [documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md) | [A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/estado-fase.md), cerrada el 2026-08-31 |
-| F-034 | RF-34 | [documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md) | Por abrir |
+| F-034 | RF-34 | [documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md) | [A-EP-011-HU-002-lo-que-se-repitio-sale-contado](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/A-EP-011-HU-002-lo-que-se-repitio-sale-contado/estado-fase.md), cerrada el 2026-08-31 |
 | F-032 | RF-32 | Sin historia | Versión 5 |
 
 ## 14. Cruces con otros módulos
@@ -145,4 +146,4 @@ Los cinco primeros son de `F-033`; los dos últimos, de `F-034`.
 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
-| — | — | — | — |
+| 2026-08-31 | Entra la `RN-6` de la §4: qué cuenta como corrección | La `HU-002` no podía abrirse sin eso, y era el único ítem que le faltaba a su lista de listo. La especificación decía **qué se cuenta** y no **qué es lo que se cuenta** | Ing. José Dúmar Jiménez Ruíz |

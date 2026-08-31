@@ -335,6 +335,57 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 
 ---
 
+### H-21 · Las 187 pruebas de la plataforma no las corría nada, y eso escondió un rojo toda una jornada
+
+- **Qué pasó:** la subida de versión de la mañana puso en rojo dos pruebas de la plataforma. `validar.py internas` no las mira, así que el rojo estuvo puesto todo el día y se supo por la tarde, **por casualidad**, al abrir una fase que tocaba esa carpeta.
+- **Por qué importa:** este repositorio guarda dos productos con dos baterías, y la que no corre el comando de todos los días se pudre sin avisar. El estándar tiene una historia entera sobre que las pruebas que existen se corran, y la plataforma había quedado fuera de su alcance sin que nadie lo notara.
+- **Qué lo soluciona:** ya está hecho, en la fase `B-EP-005-HU-021`. La orden corre las dos y dice las dos cifras aparte.
+- **Qué se decidió:** que **no tener plataforma sea aviso y no falla** —cada proyecto que hereda está en ese caso, y un rojo permanente se apaga—, y que la otra batería **no entre en el subconjunto**, que es la orden del día a día.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-021
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `S-097` · `validadores/corredor.py` · 920 pruebas corriendo, ninguna roja
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-22 · Lo conversado ya se busca, y lo que se repitió sale contado
+
+- **Qué pasó:** la épica `EP-011` estaba entera sin construir, esperando dos aprobaciones y una especificación que no existía. Hoy quedaron sus dos historias: **67 sesiones y 3 720 mensajes indexados**, y un reporte que dice qué correcciones se repitieron, cuántas veces y en qué sesiones.
+- **Por qué importa:** una corrección que se repite no es un descuido de quien corrige: es una regla que falta. Ese patrón se perdía en archivos que nadie vuelve a abrir. Ahora *«español colombiano»* sale como una sola fila con nueve repeticiones en tres sesiones, aunque se haya pedido de tres maneras distintas.
+- **Qué lo soluciona:** ya está hecho, en las dos fases de `EP-011`.
+- **Qué se decidió:** que el texto **no se copie** a la plataforma sino que se indexe donde vive —excepción declarada a `DA-01`—; que **quién escribe el formato es quien sabe leerlo**, así que partir la transcripción vive en el estándar; y qué cuenta como corrección: todo mensaje del usuario menos una lista cerrada de confirmaciones.
+- **Estado:** resuelto acá
+- **Responde a:** EP-011 · HU-001 y HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `documentacion/medicion/spec.md` · `plataforma/nucleo/medicion/` · las dos fases del 2026-08-31
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-23 · El primer reporte medía lo que pega la herramienta, y con datos inventados se veía perfecto
+
+- **Qué pasó:** la primera corrida del reporte de correcciones repetidas salió con **las catorce primeras filas hechas de ruido**: bloques que el editor le pega al mensaje del usuario, con «this may» y «current task» 139 veces cada una.
+- **Por qué importa:** esos bloques están **dentro** del mensaje del usuario en la transcripción, porque así llegan. Un programa que cuenta «lo que dijo el usuario» los cuenta como dichos, y mide la herramienta en vez de la persona. Un reporte cuyas primeras filas no las escribió nadie es peor que no tenerlo: da la sensación de estar mirando.
+- **Qué lo soluciona:** ya está hecho: lo que viene entre las etiquetas de la herramienta se saca antes de contar, y la lista de etiquetas se lee.
+- **Qué se decidió:** correr el reporte **sobre datos reales antes de darlo por bueno**. Las pruebas con conversaciones inventadas pasaban todas: una conversación de mentiras no trae bloques del editor.
+- **Estado:** resuelto acá
+- **Responde a:** EP-011 · HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `S-099` · `plataforma/nucleo/medicion/repeticion.py`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -349,9 +400,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
 | Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**La sesión se puede cerrar.** Los veinte hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
+**La sesión se puede cerrar.** Los veintitrés hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
 
-**Lo que sigue no es de esta sesión:** tres historias de producto sin ninguna fase —`EP-001·HU-013`, `EP-006·HU-001` y `EP-006·HU-002`—. El aviso de vuelta a `shopnest-mesa` salió el 2026-08-31, y la batería interna quedó en cero.
+**Lo que sigue no es de esta sesión:** una sola historia sin fase, `EP-001·HU-013`, que espera a propósito un proyecto real de RPA o de IA. Las otras dos se construyeron el 2026-08-31, el aviso de vuelta a `shopnest-mesa` salió, y las dos baterías del repositorio quedaron corriendo en verde.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

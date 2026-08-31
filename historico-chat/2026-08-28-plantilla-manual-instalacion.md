@@ -2330,3 +2330,87 @@ Después `EP-011·HU-002`, que es lo valioso: contar qué correcciones se repite
 
 ### 107 · Usuario — 2026-08-31 12:41:25
 > haga de una las 2
+
+**Agente** — 2026-08-31 13:09:54
+<!-- agente: 6b1c556b-d27d-4294-9506-774bce7df02e -->
+
+**La primera está hecha.** `S-097` cerrado con la fase [B-EP-005-HU-021](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-021-las-pruebas-que-existen-se-corren/B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre/estado-fase.md): la corrida del estándar ya ejecuta **las dos baterías**, 724 más 187, y dice las dos cifras aparte.
+
+Los tres silencios quedaron distinguidos: no tener plataforma **avisa**, tenerla y no correr nada es **rojo**, y correrla y fallar dice cuántas. Comprobado rompiendo una prueba a propósito, no leyendo el código. Pedir un subconjunto sigue costando lo mismo — si no, sería el peaje que esta historia existe para evitar.
+
+10 archivos preparados, batería completa en verde.
+
+**Y la segunda tiene una puerta que es suya.** `EP-011·HU-002` tiene un ítem sin marcar en su lista de listo: **está decidido qué cuenta como corrección**. Sin eso no se puede contar nada.
+
+Mi propuesta: **una corrección es un mensaje del usuario que no es confirmación ni pregunta suelta**, excluyendo una lista cerrada y declarada de continuaciones — «si», «hágale», «siga», «ok», «dale». Todo lo demás entra, y el reporte muestra el patrón para que lo juzgue quien lee. La alternativa es que el programa adivine intención, y ahí empieza a inventar.
+
+Dos preguntas, entonces: ¿se commitea la primera, y sirve esa definición para arrancar la segunda?
+
+### 108 · Usuario — 2026-08-31 13:12:54
+> <task-notification>
+> <task-id>b03thxr5i</task-id>
+> <tool-use-id>toolu_01HJRLEeZHxkPZeTSTxDY6mi</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\c1d6c769-8894-4763-9898-0b9dc23d8b8a\tasks\b03thxr5i.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Full run with both batteries" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-08-31 13:13:09
+<!-- agente: 04b5220d-a2c4-4879-b578-2f40803bf1c4 -->
+
+La corrida de fondo terminó y confirma la cifra:
+
+```
+733 prueba(s) en 73 archivo(s) · 0 falla(s) · 0 error(es) · y 187 prueba(s) de la plataforma
+```
+
+**920 pruebas, ninguna roja, y ninguna batería sin correr.**
+
+Siguen esperando las dos respuestas: si se commitea la fase, y si sirve esa definición de «corrección» para arrancar `HU-002`.
+
+### 109 · Usuario — 2026-08-31 14:12:38
+> <task-notification>
+> <task-id>b8irwndlx</task-id>
+> <tool-use-id>toolu_01Xa37HqWdNzQmA4XfSBnFxs</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\c1d6c769-8894-4763-9898-0b9dc23d8b8a\tasks\b8irwndlx.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Run the new tests" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-08-31 14:12:57
+<!-- agente: d49ae1c8-1f0d-49f3-bbec-f1d7ea8f86de -->
+
+Esa era la corrida vieja del archivo de pruebas que se colgaba, ya reemplazado. No cambia nada.
+
+Las dos preguntas siguen abiertas.
+
+### 110 · Usuario — 2026-08-31 14:21:57
+> 00 id9
+
+**Agente** — 2026-08-31 14:22:03
+<!-- agente: bb6bfb7e-4e48-49f6-8ba9-b1426e83775d -->
+
+Faltan dos respuestas:
+
+1. ¿Se commitea la fase `B-EP-005-HU-021`? (920 pruebas, 0 rojas)
+2. ¿Sirve definir «corrección» como *mensaje del usuario que no es confirmación*, con lista cerrada de excepciones?
+
+### 111 · Usuario — 2026-08-31 14:22:45
+> 1. si 
+> 2. no entiendo 00 id9
+
+**Agente** — 2026-08-31 14:23:50
+<!-- agente: c8ef6e72-346c-446b-8874-2e998f879834 -->
+
+Commiteado: `3d629b0` y `eaa9936`.
+
+**Lo segundo, en corto.** Para contar «qué corrección se repite», el programa tiene que decidir cuál de sus mensajes es una corrección. No puede leer intención.
+
+Lo que propongo: **cuentan todos sus mensajes, menos una lista corta de confirmaciones** — «si», «hágale», «siga», «ok». De esta misma sesión quedarían fuera unos quince «si», y quedarían dentro «00 id9», «recuerde el español colombiano», «no entiendo».
+
+Lo que se busca es justamente eso: que «00 id9», dicho once veces hoy, salga arriba del reporte.
+
+¿Sirve así?
+
+### 112 · Usuario — 2026-08-31 14:25:16
+> si
