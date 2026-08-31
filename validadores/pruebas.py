@@ -3786,6 +3786,48 @@ class LaCuentaMiraElVeredicto(unittest.TestCase):
         raiz = self._arbol({"A-EP-001-HU-001-x": "no cumple"})
         self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0))
 
+    # -- `EP-004·HU-021` fase D · las dos formas que faltaban -------------
+
+    def _con_texto(self, cuerpo):
+        """Un árbol de una fase cuyo resultado trae `cuerpo` tal cual."""
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        carpeta = os.path.join(tmp.name, "documentacion", "epicas", "EP-001-e",
+                               "HU-001-una", "A-EP-001-HU-001-x")
+        os.makedirs(carpeta)
+        for doc in self.CINCO:
+            with open(os.path.join(carpeta, doc), "w", encoding="utf-8") as f:
+                f.write(cuerpo if doc == "resultado_pruebas.md" else "listo\n")
+        return tmp.name
+
+    def test_el_veredicto_con_los_dos_puntos_dentro_de_la_negrita_se_lee(self):
+        """`**Concepto: Cumple.**` lo escriben tres fases del árbol, y se
+        contaban entre las que no dicen si cumplen **diciéndolo** en la
+        primera línea de su §6. La diferencia con la forma que ya se leía es
+        dónde cierran los asteriscos."""
+        raiz = self._con_texto("## 6. Veredicto de la fase\n\n"
+                               "**Concepto: Cumple.**\n")
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0))
+
+    def test_el_encabezado_que_dice_concepto_se_lee(self):
+        """`## 6. Concepto final` con la palabra debajo. Es la forma que la
+        fase B aceptaba bajo «Veredicto de la fase», con la otra palabra."""
+        raiz = self._con_texto("## 6. Concepto final\n\n**Cumple.** Los tres"
+                               " criterios quedaron verificados.\n")
+        self.assertEqual(fases.por_veredicto(raiz), (1, 0, 0))
+
+    def test_la_tabla_de_criterios_no_se_toma_por_el_veredicto(self):
+        """**La prueba que sostiene a las dos anteriores.** En un resultado la
+        palabra «Cumple» aparece en cada fila de criterio. Si el lector la
+        tomara suelta, daría por cumplida una fase que no lo está, que es
+        mentir en la dirección peor."""
+        raiz = self._con_texto(
+            "## 5. Veredicto por criterio de aceptación\n\n"
+            "| CA | Resultado |\n|---|---|\n| CA-01 | **Cumple** |\n\n"
+            "## 6. Veredicto de la fase\n\n**Concepto: No cumple.**\n")
+        self.assertEqual(fases.por_veredicto(raiz), (0, 1, 0),
+                         "se leyó la fila del criterio y no el veredicto")
+
     def test_limites_arbol_vacio_devuelve_ceros(self):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)

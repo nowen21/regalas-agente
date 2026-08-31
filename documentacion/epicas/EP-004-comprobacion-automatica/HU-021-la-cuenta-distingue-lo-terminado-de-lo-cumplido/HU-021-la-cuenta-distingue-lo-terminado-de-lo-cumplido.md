@@ -198,6 +198,7 @@ Y el molde ya no dice que una fase no cierra con un criterio en rojo
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-004-HU-021-la-cuenta-mira-el-veredicto`](A-EP-004-HU-021-la-cuenta-mira-el-veredicto/) | CA-01 a CA-05 | (vacío) | [plan_trabajo](A-EP-004-HU-021-la-cuenta-mira-el-veredicto/plan_trabajo.md) | [plan_pruebas](A-EP-004-HU-021-la-cuenta-mira-el-veredicto/plan_pruebas.md) | [resultado](A-EP-004-HU-021-la-cuenta-mira-el-veredicto/resultado_pruebas.md) · cumple | Terminada |
+| [`D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse`](D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse/) | La tercera cuenta | fase `C` | [plan_trabajo](D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse/plan_trabajo.md) | [plan_pruebas](D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse/plan_pruebas.md) | [resultado](D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse/resultado_pruebas.md) · cumple | Terminada |
 
 Van juntos porque **contar sin arreglar el molde deja 70 cierres sin dónde declarar el veredicto**, y arreglar el molde sin contar no cambia ningún número.
 

@@ -1205,3 +1205,132 @@ Las dos últimas quedaron con su límite escrito, no escondido:
 
 ### 41 · Usuario — 2026-08-30 19:34:26
 > haga push
+
+**Agente** — 2026-08-30 19:36:35
+<!-- agente: e2fce025-f883-420c-8fbb-7a87406e7a41 -->
+
+Nada está commiteado, así que commiteo y pusheo.
+
+Pusheado `d5e895b..940de4e`, con `c6068ff` (las cinco fases, la regla `04·S19` y la versión `36.0.0`) y `940de4e` (los hashes de la estación 12 y la raya que marcó el enganche). Batería en verde.
+
+**Cero rojos: 109 cumplen, 0 no cumplen, 5 sin veredicto.** De los trece con que empezó la sesión, solo tres eran trabajo; cinco ya no eran ciertos y cinco eran decisiones suyas.
+
+Lo que sigue, cuando quiera: las 5 historias terminadas que no dicen si cumplen, las 9 sin terminar, las 7 pruebas del estándar en rojo desde el 28, y los pendientes 91 a 93 con sus historias por aprobar.
+
+### 42 · Usuario — 2026-08-30 19:36:43
+> 00 id9
+
+**Agente** — 2026-08-30 19:36:47
+<!-- agente: c14ab13d-f363-4c42-aacf-b324561dd30c -->
+
+Pusheado `d5e895b..940de4e`. **Cero rojos: 109 cumplen.**
+
+Falta: 5 historias sin veredicto, 9 sin terminar, 7 pruebas en rojo, y aprobar las historias de los pendientes 91 a 93.
+
+### 43 · Usuario — 2026-08-30 19:37:03
+> termine to eso
+
+**Agente** — 2026-08-30 19:44:27
+<!-- agente: 59e281a7-e42e-49b4-9243-99ac12513f3c -->
+
+Mismo orden: medir primero. Escribo el listado de lo que queda.
+
+Los cinco **sí dicen su veredicto**: el que no sabe leerlos es el programa. Tres formas que no reconoce.
+
+Es la fase `D` de `EP-004·HU-021`. Amplío el lector.
+
+**114 cumplen, 0 no cumplen, 0 sin veredicto.** Las 35 pruebas de esa clase en verde, incluida la que impide leer la fila de un criterio como si fuera el veredicto. Escribo la fase `D`.
+
+**114 de 114 cumplen, cero sin veredicto.** Los cinco «no dicen si cumplen» sí lo decían: el que no sabía leerlos era el programa. Dos formas que no reconocía, `**Concepto: Cumple.**` con los dos puntos dentro de la negrita, y el título `## 6. Concepto final`.
+
+No toqué ninguno de los cinco resultados: son fases cerradas, así que se corrige quien lee y no lo leído. La prueba que sostiene el cambio es la que impide leer de más: una tabla de criterios en «Cumple» con el veredicto de la fase en «No cumple» tiene que seguir dando «No cumple». 35 pruebas de la clase, 35 en verde.
+
+Y quedó anotado el patrón: es la cuarta fase del mismo lector, y las tres anteriores contaron las formas que ya sabían reconocer y llamaron «otra cosa» al resto sin abrirlo. Estas cinco se resolvieron leyéndolas una por una.
+
+Sigo con las 9 sin terminar y las 7 pruebas en rojo.
+
+### 44 · Usuario — 2026-08-30 19:44:39
+> si
+
+**Agente** — 2026-08-30 19:48:46
+<!-- agente: 8539bd5f-23ea-4bc5-ae9c-fb0f1b145c98 -->
+
+Las 9 sin terminar no son trabajo mío: **cinco son fases detenidas esperando su aprobación** (cuatro en la estación 4 y una en la 7), y cuatro son historias de producto por construir. Voy a las 7 pruebas en rojo.
+
+De las 7 pruebas en rojo, **cinco son de archivos que otra sesión tiene en curso** (`corredor.py`, `hook_estacion.py`, `estacion_commit.py`, `rutas_fuera.py`). Esas no las toco. Dos son mías: el andamio y los enlaces entre carpetas.
+
+**27 de esos 59 archivos los tienen otras dos sesiones en curso.** No los toco: es exactamente el caso de las 712 líneas.
+
+Estado de lo que pediste terminar:
+
+**Las 5 sin veredicto: cerradas.** 114 de 114 cumplen, cero mudas.
+
+**Las 9 sin terminar: ninguna es trabajo mío.** Cinco son fases abiertas esperando **su aprobación** —cuatro paradas en la estación 4 con su plan escrito, y una en la 7—; las otras cuatro son historias de producto sin ninguna fase.
+
+| Fase detenida | Espera |
+|---|---|
+| `B-EP-004-HU-002-el-analizador-ve-todas-las-reglas` | Estación 4 |
+| `B-EP-006-HU-003-la-busqueda-dice-donde-esta` | Estación 4 |
+| `B-EP-006-HU-004-degradar-sin-el-modelo` | Estación 4 |
+| `B-EP-006-HU-007-marcar-deja-fecha-y-referencia` | Estación 4 |
+| `A-EP-004-HU-010-declaracion-y-comprobacion` | Estación 7 |
+
+**Las 7 pruebas en rojo: una arreglada, cinco no son mías, una no la puedo cerrar solo.**
+
+- **Arreglada:** la del andamio. Leía la plantilla de la historia en `plantillas/HU.md`, que no existe; el andamio la busca en `plantillas/ciclo-vida-proyectos/04-HU.md`. Comparaba cero contra 68. Ahora pide la ruta por donde la busca el andamio: 20 pruebas de ese archivo en verde.
+- **Cinco no son mías:** son de `corredor.py`, `hook_estacion.py`, `estacion_commit.py` y `rutas_fuera.py`, y los cuatro están en el registro de otra sesión que los tiene en curso.
+- **La de los enlaces no la puedo cerrar solo:** son 98 enlaces mal escritos en 59 archivos, y **27 de esos archivos los tienen otras dos sesiones**. Arreglando solo los 32 libres bajaría a 49 y la prueba seguiría roja, así que no los toqué a medias.
+
+Está corriendo la suite completa para confirmar el número. Te aviso.
+
+### 45 · Usuario — 2026-08-30 19:50:25
+> qué sigue?
+
+**Agente** — 2026-08-30 19:50:31
+<!-- agente: be8e81ba-f8da-4c8c-818a-8eab048b4b29 -->
+
+Lo tuyo, en orden:
+
+1. **Aprobar las cinco fases detenidas.** Cuatro tienen su plan y su plan de pruebas escritos y esperan la puerta 4. Es lo que más desbloquea.
+2. **Aprobar las tres historias** de los pendientes 91 a 93.
+
+Lo mío: commitear lo de esta tanda cuando digas, y esperar el número de la suite que está corriendo.
+
+Y una que no es de ninguno de los dos: **los 98 enlaces mal escritos necesitan que las otras dos sesiones suelten sus 27 archivos**, o que decidas que yo los toque igual.
+
+### 46 · Usuario — 2026-08-30 19:55:20
+> <task-notification>
+> <task-id>b0olh1zft</task-id>
+> <tool-use-id>toolu_01Ca5WQUtbAtSw4tfJK4bxY8</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\c1d6c769-8894-4763-9898-0b9dc23d8b8a\tasks\b0olh1zft.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Run the full internal suite to confirm the count" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-08-30 19:55:32
+<!-- agente: 23cb2949-ed06-444e-a7e0-ac442a72362d -->
+
+**650 pruebas, 6 fallas** — eran 7. La del andamio quedó cerrada.
+
+De las 6 que restan, cinco son de archivos que otra sesión tiene en curso y una es la de los 98 enlaces.
+
+Lo que sigue sigue siendo tuyo: aprobar las cinco fases detenidas y las tres historias de los pendientes 91 a 93. Y decirme si commiteo esta tanda.
+
+### 47 · Usuario — 2026-08-30 19:55:51
+> que sigue?
+
+**Agente** — 2026-08-30 19:55:57
+<!-- agente: e5be1a8e-3974-4e50-86fb-9896a41ab07a -->
+
+Sin commitear hay trabajo hecho: la fase `D` de `EP-004·HU-021`, el lector del veredicto ampliado con sus tres pruebas, y el arreglo del andamio.
+
+Digo yo: **commiteo eso primero**, para no dejarlo suelto. Después, lo que decida usted:
+
+1. Aprobar las cinco fases detenidas en la puerta 4.
+2. Aprobar las tres historias de los pendientes 91 a 93.
+3. Decidir si toco los 27 archivos que otras sesiones tienen en curso, para cerrar lo de los enlaces.
+
+¿Commiteo?
+
+### 48 · Usuario — 2026-08-30 19:56:26
+> haga push

@@ -74,7 +74,10 @@ class CA04LaHistoria(unittest.TestCase):
     def test_cp_004_no_escribe_contenido(self):
         destino, _ = andamio.crear_hu(self.tmp, EPICA, "prueba", escribir=True)
         nombre = os.path.basename(destino)
-        plantilla = leer(os.path.join(self.tmp, "plantillas", "HU.md"))
+        # La plantilla se pide **por donde la busca el andamio**. Escrita a
+        # mano aqui, la ruta quedo apuntando a un archivo que no existe:
+        # `leer()` devolvia vacio y la cuenta comparaba 0 contra 68.
+        plantilla = leer(os.path.join(self.tmp, andamio.PLANTILLA_HU))
         creada = leer(os.path.join(destino, nombre + ".md"))
         estructurales = 1 + plantilla.count(andamio.MARCADOR_RAIZ)   # «Épica padre» y la ruta
         self.assertEqual(plantilla.count("«") - estructurales, creada.count("«"))

@@ -158,6 +158,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
 - **Con qué se retoma:** —
 
+### H-10 · Las cinco historias que «no decían si cumplían» lo decían
+
+- **Qué pasó:** quedaban cinco historias contadas en la tercera cuenta, la de las que no dicen si cumplen. Al abrirlas una por una, **las cinco declaran su veredicto en la primera línea de su sección final**. El que no sabía leerlas era el programa: dos formas que no reconocía, `**Concepto: Cumple.**` con los dos puntos dentro de la negrita, y el título `## 6. Concepto final`. La cuenta quedó en **114 cumplen, 0 no cumplen, 0 sin veredicto**.
+- **Por qué importa:** es la **cuarta** fase del mismo lector, y el patrón se repite en las tres anteriores: cada una contó las formas que ya sabía reconocer y llamó «otra cosa» a todo lo demás **sin abrirlo**. La fase `B` dijo «39 sin encabezado» y eran 2. Estas cinco se resolvieron leyéndolas, que es lo que ninguna había hecho con las que le quedaban.
+- **Qué lo soluciona:** ya está hecho, en la fase `D` de `EP-004·HU-021`. Ninguno de los cinco resultados se tocó: son fases cerradas, así que se corrige quien lee y no lo leído ([`20·M11`](../../../base/20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
+- **Qué se decidió:** ampliar **qué título vale**, nunca dónde se busca. La prueba que sostiene el cambio es la que impide leer de más: una tabla de criterios en «Cumple» con el veredicto de la fase en «No cumple» tiene que seguir dando «No cumple».
+- **Estado:** resuelto acá
+- **Responde a:** EP-004 · HU-021
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la fase `D-EP-004-HU-021-las-dos-formas-que-quedaban-sin-leerse` · [`validadores/fases.py`](../../../validadores/fases.py)
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+### H-11 · Lo que queda por hacer no es trabajo del agente: son aprobaciones y archivos de otras sesiones
+
+- **Qué pasó:** al medir las 9 historias sin terminar y las 7 pruebas en rojo, casi nada resultó ser trabajo pendiente. De las 9: **cinco son fases abiertas esperando la aprobación del usuario** (cuatro en la estación 4 con su plan escrito, una en la 7) y cuatro son historias de producto sin ninguna fase. De las 7 pruebas: una era un defecto de la propia prueba y se arregló, **cinco son de archivos que otra sesión tiene en curso**, y la última pide tocar 27 archivos que tienen otras dos sesiones.
+- **Por qué importa:** «nueve sin terminar y siete en rojo» se lee como dieciséis tareas, y solo una lo era. El resto está detenido por dos cosas que el agente no puede mover: una firma y una sesión ajena. Confundirlas hace que el número parezca deuda técnica cuando es cola de aprobación.
+- **Qué lo soluciona:** las cinco fases, con la puerta 4. Lo de los enlaces, con que las otras sesiones cierren o con una decisión de tocarlos igual.
+- **Qué se decidió:** no arreglar los 32 archivos libres de los 59: bajaría de 98 enlaces a 49 y **la prueba seguiría roja**, con un cambio a medias en `base/` que obligaría a versionar sin cerrar nada.
+- **Estado:** abierto
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** 1 de 1 · es lo único que queda de esta cuenta.
+- **Dónde queda:** las cinco fases detenidas, en sus historias · la prueba `test_cero_entre_carpetas_fuera_de_prompts`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** —
+- **Con qué se retoma:** ¿Se aprueban las cinco fases detenidas, y se tocan los 27 archivos ajenos o se espera?
+
 ---
 
 ## ¿Se puede cerrar la sesión?

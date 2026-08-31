@@ -540,7 +540,14 @@ def _historia_terminada(ruta_hu, de_cada_uno):
 # que esto viene a terminar.
 _VEREDICTO = re.compile(
     r"\*\*Concepto:?\*\*:?\s*\|?\s*\**(No cumple|Cumple)"
-    r"|\|\s*\*\*(?:Concepto|Veredicto)\*\*\s*\|\s*\**(No cumple|Cumple)",
+    r"|\|\s*\*\*(?:Concepto|Veredicto)\*\*\s*\|\s*\**(No cumple|Cumple)"
+    # `EP-004·HU-021` fase D · Los dos puntos **dentro** de la negrita.
+    #
+    # `**Concepto: Cumple.**` se escribe igual de seguido que
+    # `**Concepto:** Cumple`, y la diferencia es dónde cierran los
+    # asteriscos. Tres fases lo escribían así y se contaban entre las que
+    # «no dicen si cumplen», diciéndolo en la primera línea de su §6.
+    r"|\*\*Concepto:\s*(No cumple|Cumple)",
     re.IGNORECASE)
 
 # `EP-004·HU-021` fase B · La tercera forma, y por qué hace falta el encabezado.
@@ -579,6 +586,20 @@ _VEREDICTO_TITULO_SOLO = re.compile(
     r"^##\s+\d+\.?\s*Veredicto\s*$\n+\**(No cumple|Cumple)",
     re.MULTILINE | re.IGNORECASE)
 
+# `EP-004·HU-021` fase D · El encabezado que dice «Concepto» y no «Veredicto».
+#
+# Dos fases titulan su sección final `## N. Concepto final` y ponen debajo
+# la palabra sola. Es la misma forma que la fase B ya aceptaba bajo
+# «Veredicto de la fase», con la otra palabra del glosario.
+#
+# **Sigue exigiéndose el encabezado**, por lo mismo que las otras dos: en un
+# resultado la palabra «Cumple» aparece en cada fila de criterio, y un lector
+# que la buscara suelta tomaría el primer criterio por el veredicto de la
+# fase. Lo que se amplía es **qué título vale**, nunca dónde se busca.
+_VEREDICTO_CONCEPTO_TITULO = re.compile(
+    r"^##\s+\d+\.?\s*Concepto[^\n]*\n+\**(No cumple|Cumple)",
+    re.MULTILINE | re.IGNORECASE)
+
 
 def veredicto_de(ruta_fase):
     """`"Cumple"`, `"No cumple"` o `None` si no se deja leer.
@@ -591,7 +612,8 @@ def veredicto_de(ruta_fase):
         return None
     dice = (_VEREDICTO.search(texto)
             or _VEREDICTO_BAJO_TITULO.search(texto)
-            or _VEREDICTO_TITULO_SOLO.search(texto))
+            or _VEREDICTO_TITULO_SOLO.search(texto)
+            or _VEREDICTO_CONCEPTO_TITULO.search(texto))
     if not dice:
         return None
     # `_VEREDICTO` trae dos grupos y las otras dos uno: se toma el primero que
