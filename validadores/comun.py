@@ -391,8 +391,13 @@ def reportar(hallazgos, titulo=None):
     return 1 if fallas else 0
 
 
-def no_es_punto_de_entrada(subcomando=None):
+def no_es_punto_de_entrada(subcomando=None, la_corre=None):
     """Muere diciendo por dónde se corre. Nunca devuelve.
+
+    **`la_corre` es para las piezas que no cuelgan de `validar.py`.** Hay dos
+    que las llama un enganche, y decirles «es una pieza de `validar.py`»
+    sería mandar a quien lee a un subcomando que no existe: un mensaje que
+    se equivoca al indicar es peor que no decir nada.
 
     Un módulo de comprobación **importado** por `validar.py` no hace nada al
     ejecutarse solo: cae hasta el final del archivo y sale con código 0. Y un
@@ -407,6 +412,11 @@ def no_es_punto_de_entrada(subcomando=None):
     pueda distinguir «no comprobé nada» de «comprobé y hay fallas».
     """
     modulo = os.path.basename(sys.argv[0]) or "este módulo"
+    if la_corre:
+        preparar_salida()
+        print(f"{modulo} no se corre solo: lo corre {la_corre}, "
+              f"y correrlo así **no hace nada**.", file=sys.stderr)
+        sys.exit(2)
     linea = (f"python validadores/validar.py {subcomando}" if subcomando
              else "python validadores/validar.py --help")
     preparar_salida()

@@ -118,7 +118,7 @@ Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, 
 | `estacion_commit.py` | 🟢 libre | Marcar una casilla en una tabla de Markdown |
 | `plan_vs_hecho.py` | 🟢 libre | Cruzar dos documentos del propio proyecto |
 | `hook_rutas.py` | 🟡 adaptador | Existe porque la herramienta avisa que se escribió un archivo |
-| `hook_estacion.py` | 🟡 adaptador | Lo mismo |
+| `hook_estacion.py` | 🟡 adaptador | Existe porque git avisa que el commit terminó. **Vive en el adaptador desde el 2026-08-31**; hasta entonces se había quedado en `validadores/` |
 | `hook_turno.py` | 🟡 adaptador | Existe porque la herramienta avisa que terminó el turno |
 | `corredor.py` | 🟢 libre | Cargar archivos de prueba y contar lo que corrieron sirve con cualquier agente — y con ninguno |
 
@@ -137,6 +137,22 @@ porque alguien se acordara: la prueba del mapa las reclamó en la primera corrid
 | `hook_redaccion.py` | 🟡 adaptador | Existe porque la herramienta avisa que terminó el turno, y le entrega la transcripción en su formato |
 
 **El recuento, corrido y no calculado, da 27 amarrados de 85.** Sube uno porque de las tres piezas solo el enganche está amarrado.
+
+## 2026-08-31 · el enganche del hash se mudó, y el recuento no se movió
+
+`hook_estacion.py` se había quedado en `validadores/` desde el día que nació, y
+la prueba de la frontera lo venía diciendo. Hoy vive en
+[adaptadores/claude-code/hook_estacion.py](../adaptadores/claude-code/hook_estacion.py),
+con los otros quince.
+
+**Al moverlo apareció lo que faltaba de verdad.** La comprobación de la frontera
+compara los enganches que hay con los que la instalación conecta, y miraba **un
+solo canal**: la tabla de la herramienta. Un enganche se conecta por dos, y este
+va por el otro —lo llama el `post-commit` de git—, así que recién mudado parecía
+un archivo que nadie usa. Ahora la lista se deriva de las dos tablas.
+
+**El recuento sigue en 27 de 85**, y esa igualdad es el resultado esperado:
+mover código no desamarra nada. Lo que cambió es dónde se busca, no cuánto hay.
 
 **El corte es el mismo de siempre**, y por eso se repite: lo que mide vive en
 `validadores/`, y lo que existe **porque una herramienta concreta lo llama**

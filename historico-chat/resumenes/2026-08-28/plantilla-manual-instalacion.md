@@ -301,6 +301,40 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 
 ---
 
+### H-19 · La batería interna quedó en cero por primera vez: 713 pruebas, ninguna roja
+
+- **Qué pasó:** quedaban cinco fallas heredadas, y `HU-021` las había enrutado a «una fase de arreglo y tres pendientes». **Ni la fase ni el pendiente existían.** Al medir quién era el dueño de cada una, no eran tres historias sino dos, y salieron en dos fases del mismo día.
+- **Por qué importa:** una suite en rojo por causas viejas **esconde la falla nueva**, y esta sesión lo vivió: hoy hubo que leer las fallas una por una para separar las mías de las heredadas, y una vez la cuenta engañó —dije cinco y eran seis, y la sexta era mía—.
+- **Qué lo soluciona:** ya está hecho, en las fases `C-EP-005-HU-011` y `D-EP-004-HU-008`.
+- **Qué se decidió:** **dos fases, no una**, aunque diez líneas de código en dos fases cuesten diez documentos: una fase pertenece a una sola historia (`02·F12.1`), y romper eso el mismo día que se cerró una historia sobre no dejar reglas sin quien las sostenga no se sostiene.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-011 y EP-004 · HU-008
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `historico-chat/.estado/internas.txt`, en **0** · las dos fases del 2026-08-31
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-20 · Un enrutamiento escrito que no dejó archivo
+
+- **Qué pasó:** la fase de `HU-021` cerró declarando *«ninguno queda como «se verá»»* y repartió sus cinco rojos entre una fase de arreglo y tres pendientes propios. **La fase nunca se abrió y el pendiente de la corrida nunca se escribió.** Dos de los cinco se arreglaron por otro camino; los otros tres siguieron en rojo once días.
+- **Por qué importa:** enrutar es la parte fácil, y se siente como haber cerrado. Lo que cierra de verdad es **el archivo**: la fase con su carpeta o el pendiente con su número. Un destino escrito en prosa dentro de un documento de cierre no lo lee nadie después.
+- **Qué lo soluciona:** ya está hecho —las dos fases del día—, y el aprendizaje quedó en `S-096`.
+- **Qué se decidió:** que al ampliar una comprobación que está reportando en rojo se la **sabotee en la misma vuelta**: si el caso original se sigue cazando, la ampliación era correcta; si no, lo que se hizo fue apagar el reporte.
+- **Estado:** resuelto acá
+- **Responde a:** EP-004 · HU-008
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `S-095` y `S-096` · las dos fases del 2026-08-31
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -315,9 +349,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
 | Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**La sesión se puede cerrar.** Los dieciocho hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
+**La sesión se puede cerrar.** Los veinte hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
 
-**Lo que sigue no es de esta sesión:** tres historias de producto sin ninguna fase —`EP-001·HU-013`, `EP-006·HU-001` y `EP-006·HU-002`—, y el aviso de vuelta a `shopnest-mesa`, que exige escribir en otro repositorio y se pregunta antes.
+**Lo que sigue no es de esta sesión:** tres historias de producto sin ninguna fase —`EP-001·HU-013`, `EP-006·HU-001` y `EP-006·HU-002`—. El aviso de vuelta a `shopnest-mesa` salió el 2026-08-31, y la batería interna quedó en cero.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

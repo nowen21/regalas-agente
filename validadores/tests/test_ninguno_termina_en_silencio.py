@@ -87,11 +87,19 @@ class NingunoTerminaEnSilencio(unittest.TestCase):
                          "se lee como «no hay hallazgos»: " + ", ".join(mudos))
 
     def test_el_que_no_es_entrada_dice_por_donde_se_corre(self):
+        """Dice **quién lo corre**, y no siempre es `validar.py`.
+
+        Dos piezas no cuelgan del validador: las llama un enganche. Exigirles
+        que nombren `validar.py` las obligaría a mandar a quien lee a un
+        subcomando que no existe, que es peor que callar. Lo que se exige es
+        que nombren a su corredor de verdad.
+        """
         sin_indicacion = []
         for nombre in modulos():
             r = correr(nombre)
             salida = (r.stdout + r.stderr).lower()
-            if "validar.py" not in salida:
+            if "validar.py" not in salida and "enganche" not in salida:
+                sin_indicacion.append("%s (código %d)" % (nombre, r.returncode))
                 sin_indicacion.append("%s (código %d)" % (nombre, r.returncode))
         self.assertEqual([], sin_indicacion,
                          "estos no dicen por dónde se corren: "

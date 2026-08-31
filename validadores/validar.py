@@ -159,6 +159,16 @@ def cmd_todo(a, parser=None, nombres=()):
         peor = max(peor, codigo or 0)
         print()
 
+    # `EP-004·HU-009` · El conteo por regla, que es lo que dice **qué regla
+    # cambiar**. Se anota una línea por corrida, fuera del control de
+    # versiones, con el identificador y el número: nunca el texto del hallazgo.
+    todos = list(comun.CORRIDA)
+    if todos:
+        conteo.anotar(todos, a.raiz,
+                      cuando=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        print()
+        for linea in conteo.lineas_del_conteo(todos, a.raiz):
+            print(linea)
     print("== Corrida completa · %s ==" % relativo(os.path.abspath(a.raiz)))
     con_falla = [n for n, c, _ in resumen if c == 1]
     rotos = [(n, m) for n, c, m in resumen if m and "reventó" in m]
@@ -173,16 +183,6 @@ def cmd_todo(a, parser=None, nombres=()):
     if not con_falla:
         print("Sin fallas. Los avisos de cada comprobación salen arriba.")
 
-    # `EP-004·HU-009` · El conteo por regla, que es lo que dice **qué regla
-    # cambiar**. Se anota una línea por corrida, fuera del control de
-    # versiones, con el identificador y el número: nunca el texto del hallazgo.
-    todos = list(comun.CORRIDA)
-    if todos:
-        conteo.anotar(todos, a.raiz,
-                      cuando=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-        print()
-        for linea in conteo.lineas_del_conteo(todos, a.raiz):
-            print(linea)
     return 1 if peor else 0
 
 

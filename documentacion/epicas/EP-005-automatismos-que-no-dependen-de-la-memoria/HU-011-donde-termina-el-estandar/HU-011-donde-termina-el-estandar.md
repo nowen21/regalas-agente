@@ -193,6 +193,7 @@ más — que es como se descarta una opción que servía.
 |---|---|---|---|---|---|
 | [A-EP-005-HU-011-donde-termina-el-estandar](A-EP-005-HU-011-donde-termina-el-estandar/README.md) | CA-01 a CA-03 | **Cerrada 2026-08-18 · Cumple** |
 | [B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/README.md) | CA-03 | [plan](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/plan_trabajo.md) | [pruebas](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/plan_pruebas.md) | [resultado](B-EP-005-HU-011-el-mapa-del-sitio-tampoco-envejece/resultado_pruebas.md) | **Cerrada 2026-08-22 · Cumple** (v31.2.0) |
+| [C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador](C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador/estado-fase.md) | CA-04 | [plan_trabajo.md](C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador/plan_trabajo.md) | [plan_pruebas.md](C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador/plan_pruebas.md) | [resultado_pruebas.md](C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador/resultado_pruebas.md) | **Cerrada 2026-08-31 · Cumple** |
 
 **De dónde sale esta historia:** el [pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md](../../../../pendientes/hecho/el-estandar-depende-de-una-sola-herramienta.md). Su punto 1 —el mapa— es esta historia; sus puntos 2 y 3 esperan al segundo caso.
 
@@ -255,3 +256,4 @@ más — que es como se descarta una opción que servía.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, para que el pendiente 15 deje de estar suelto |
+| 2026-08-31 | Ing. José Dúmar Jiménez Ruíz | Fase C: el último enganche que quedaba en la carpeta de lo agnóstico se mudó al adaptador, y la comprobación de la frontera pasó a mirar los dos canales por los que un enganche se conecta |

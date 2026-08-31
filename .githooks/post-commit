@@ -23,5 +23,5 @@ if [ ! -f "$ESTANDAR/validadores/validar.py" ]; then
     exit 1
 fi
 
-"$PY" "$ESTANDAR/validadores/hook_estacion.py" --raiz "$(pwd)" || true
+"$PY" "$ESTANDAR/adaptadores/claude-code/hook_estacion.py" --raiz "$(pwd)" || true
 exit 0

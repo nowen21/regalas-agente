@@ -26,6 +26,8 @@ import io
 import os
 import re
 
+import comun
+
 # La fila de la estación 12 en la tabla de estaciones del molde `10`.
 # Se exige la tabla: **no se inventa una fila donde no hay ninguna**, que es lo
 # que pasaría en 106 de los 140 documentos del árbol.
@@ -124,3 +126,8 @@ def marcar_las_fases(proyecto, archivos, hash_corto, cerrada_en_git):
             continue                    # no se detiene nada por no poder escribir
         tocadas.append(carpeta)
     return tocadas
+
+
+if __name__ == "__main__":
+    comun.no_es_punto_de_entrada(
+        la_corre="el enganche `post-commit` de git, después de cada commit")

@@ -31,6 +31,8 @@ vez de mostrarlo.
 """
 import os
 
+import comun
+
 # Dónde van los guiones de apoyo. Se nombra en el aviso porque un aviso que
 # no dice qué hacer se aprende a ignorar.
 DESTINO = "historico-chat/scripts/AAAA-MM-DD/"
@@ -77,3 +79,8 @@ def aviso(ruta, proyecto):
         "[AVISO] se escribió fuera del proyecto: %s — los guiones de apoyo van "
         "en `%s`, y se quedan ahí versionados (`04·S9`, EP-005·HU-018). "
         "Leer fuera sí vale; escribir, no." % (ruta, DESTINO))
+
+
+if __name__ == "__main__":
+    comun.no_es_punto_de_entrada(
+        la_corre="el enganche del adaptador, cada vez que se escribe un archivo")

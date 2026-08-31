@@ -169,7 +169,7 @@ fi
 # unico que puede hacer un fallo aca es ensuciar la salida. Termina en 0
 # siempre.
 PLANTILLA_POST_COMMIT = _PREAMBULO + """
-"$PY" "$ESTANDAR/validadores/hook_estacion.py" --raiz "$(pwd)" || true
+"$PY" "$ESTANDAR/adaptadores/claude-code/hook_estacion.py" --raiz "$(pwd)" || true
 exit 0
 """
 
@@ -325,6 +325,23 @@ HOOKS_CLAUDE = [
 # eso no pasa en silencio: `checklist.py` compara el comando exacto y lo reporta
 # en el primer mensaje de la siguiente sesión.
 ADAPTADOR = "adaptadores/claude-code"
+
+
+def enganches_enchufados():
+    """Los guiones del adaptador que la instalación conecta, por los dos canales.
+
+    **Son dos, y por eso no basta con la tabla de la herramienta.** Un enganche
+    se conecta o por `.claude/settings.json` —lo que el agente avisa— o por un
+    enganche de git —lo que avisa el control de versiones—. Mirar solo el
+    primero deja al segundo pareciendo un archivo que nadie llama.
+
+    Se **deriva de las mismas plantillas que se escriben**, no de una lista
+    aparte: una lista escrita al lado envejece sin avisar (`S-091`).
+    """
+    salida = {g for _e, _m, g, _msg, _a in HOOKS_CLAUDE}
+    for _nombre, plantilla, _desc in HOOKS:
+        salida |= set(re.findall(r"adaptadores/claude-code/(\w+\.py)", plantilla))
+    return sorted(salida)
 
 
 def _hook_claude(estandar, proyecto, guion, mensaje, argumentos=""):

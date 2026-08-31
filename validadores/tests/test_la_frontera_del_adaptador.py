@@ -51,11 +51,15 @@ class LaFronteraSeSostiene(unittest.TestCase):
         """Eran ocho el 2026-08-19 y el número se escribió acá; la 27.0.0 agregó
         uno sin tocarlo y la prueba quedó en rojo sin que nadie la corriera.
         Se cuenta contra la lista del instalador: la frontera es que no haya
-        un enganche que nadie enchufa, ni un enchufe a un enganche que no está."""
+        un enganche que nadie enchufa, ni un enchufe a un enganche que no está.
+
+        **Se cuentan los dos canales**, y eso costó un rojo el 2026-08-31: un
+        enganche se conecta por `.claude/settings.json` o por un enganche de
+        git, y mirando solo el primero, el que llama git parecía un archivo que
+        nadie usa."""
         hay = sorted(f for f in os.listdir(ADAPTADOR)
                      if f.startswith("hook_") and f.endswith(".py"))
-        enchufados = sorted({g for _e, _m, g, _msg, _a in instalar.HOOKS_CLAUDE})
-        self.assertEqual(enchufados, hay)
+        self.assertEqual(instalar.enganches_enchufados(), hay)
 
     def test_la_instalacion_apunta_al_adaptador(self):
         """Si esto se separa, el enganche instalado apunta a un archivo que no
