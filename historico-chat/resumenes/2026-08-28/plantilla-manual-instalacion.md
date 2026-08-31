@@ -233,6 +233,21 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
 - **Con qué se retoma:** —
 
+### H-15 · La norma de redacción existe, y rige también el chat
+
+- **Qué pasó:** la exigencia de escribir en la lengua del proyecto, en tercera persona y con las acciones en infinitivo vivía dentro de dos documentos modelo, como su regla número once. Ahora es [`00·ID10`](../../../base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md), versión `37.0.0` MAYOR. **El usuario decidió que rija todo lo que el agente entrega y también lo que contesta en el chat.**
+- **Por qué importa:** una norma escrita dentro de un documento modelo **solo la hereda quien llene ese modelo**. Todo lo demás quedaba sin ella, y la convención se aplicaba copiándola a mano, que es la forma más segura de que se copie distinta. Esta misma sesión lo vivió: el usuario tuvo que corregir tres veces cómo estaba escrito el chat.
+- **Qué lo soluciona:** ya está hecho.
+- **Qué se decidió:** que no fije un idioma —dice «el que usa el proyecto», y por eso sigue siendo heredable—, que nombre aparte el impersonal con «se», que es como se incumple sin darse cuenta, y que **el chat entre en el alcance**, porque es lo que más se lee y lo único que no queda versionado.
+- **Estado:** resuelto acá
+- **Responde a:** EP-001 · HU-037
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la regla `00·ID10` · el modelo de manual de instalación, que la cita · el pendiente 93, cerrado
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

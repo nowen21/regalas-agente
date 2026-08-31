@@ -43,10 +43,10 @@ aplicación en un servidor. Por eso:
    qué paso falló.
 10. **Las diferencias por sistema operativo o por tecnología van en subsecciones dentro del paso**
     (`16.4.1 Windows`, `16.4.2 Linux`), sin alterar la numeración principal.
-11. **Acciones en infinitivo, explicaciones en tercera persona.** Lo que el lector hace va en
-    infinitivo («Abrir la terminal y escribir el comando»); lo que se explica lleva su sujeto («El
-    servidor pide la contraseña»). El impersonal con «se» no sirve para las acciones. Lo que aparece
-    en pantalla va citado tal cual, aunque diga «usted».
+11. **Acciones en infinitivo, explicaciones en tercera persona**, que es lo que pide
+    [`00·ID10`](../base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md).
+    Acá se agrega lo propio de un manual: **lo que aparece en pantalla va citado tal cual**,
+    aunque diga «usted». Eso es una cita, no redacción del manual.
 12. **Lo que está escrito se ejecuta, y lo que pasó al ejecutarlo no se cuenta: se vuelve paso.**
     Ninguna sección se da por buena sin haberla corrido en una máquina real, con su salida guardada en
     una carpeta `seguimiento/` al lado del manual. Pero el manual no relata esa ejecución: ni fechas,

@@ -23,6 +23,7 @@ Este capítulo **no ajusta ni relaja nada**: donde nombra una obligación de otr
 | [`ID7 · Escribe para que lo entienda quien no sabe del tema`](reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md) | Palabras de todos los días; el término técnico que no se pueda evitar, explicado la primera vez. |
 | [`ID8 · Escribe sin las marcas que delatan generación automática`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Ningún documento se entrega con las marcas de la lista del capítulo. |
 | [`ID9 · Di lo mismo en menos palabras`](reglas/ID9-di-lo-mismo-en-menos-palabras.md) | La menor extensión con la que se entienda; el detalle va al archivo, no al mensaje. |
+| [`ID10 · Escribe en el idioma del proyecto, en tercera persona y en infinitivo`](reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md) | La variedad del idioma que usa el proyecto, tercera persona con sujeto para lo que se explica e infinitivo para lo que el lector hace. También en el chat. |
 
 **Anexos del capítulo:** [`acciones-y-riesgo.md`](acciones-y-riesgo.md), el inventario de lo que el agente puede hacer y qué cuesta deshacerlo, que organiza el [núcleo](../00-nucleo-blindado.md) sin cambiarlo · [`marcadores-de-ia.md`](marcadores-de-ia.md), la lista cerrada que exige [`ID8`](reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md). Es instrumento, no regla: por eso vive junto al capítulo y no en [`reglas/`](reglas/).
 

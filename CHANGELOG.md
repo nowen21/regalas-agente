@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.0.0 — 2026-08-30
+
+**Cómo escribe el agente ya no depende de qué documento esté llenando.** Hasta hoy la exigencia de escribir en la lengua del proyecto, en tercera persona y con las acciones en infinitivo vivía dentro de dos documentos modelo, como una de sus reglas internas. Quien escribiera cualquier otra cosa no tenía de dónde heredarla, y la convención se aplicaba copiándola a mano, que es la forma más segura de que se copie distinta.
+
+**MAYOR** ⚠ obliga a migrar: rige para todo lo que el agente entrega, y un proyecto al día tiene que escribir así de aquí en adelante.
+
+**La regla es** [`00·ID10`](base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md).
+
+**Qué alcance tiene, y lo decidió el usuario.** Todo documento que el agente entrega **y también lo que contesta en el chat**. No es un detalle: la respuesta del chat es lo que más se lee y lo único que no queda versionado, así que es donde la convención se pierde primero.
+
+**No fija un idioma, y eso es lo que la hace heredable.** Dice «el que usa el proyecto», que ya era exigible; lo que agrega es cuál variedad de ese idioma, la persona y la forma verbal. Un proyecto que trabaje en otro idioma la cumple igual.
+
+**El impersonal con «se» se nombra aparte**, porque es la forma en que la regla se incumple sin darse cuenta: «se copia el archivo» suena correcto y no dice quién lo hace, así que el lector no sabe si le toca a él.
+
+**Qué se puede comprobar con un programa y qué no.** La persona y la forma verbal se cuentan sobre un texto; la variedad del idioma pide leer, y es justamente la mitad que hizo falta el día que esto salió a la luz.
+
+**El modelo de manual de instalación ya la cita** en vez de repetirla. El de manual de usuario queda pendiente: tiene cambios sin guardar de otra sesión y tocarlo sería llevarse trabajo ajeno.
+
+---
+
 ## 36.0.3 — 2026-08-30
 
 **Había caracteres invisibles metidos dentro de veintiséis documentos, y donde caían rompían la tabla sin que nadie lo viera.** Uno de ellos, al principio de una fila, hacía que esa fila dejara de ser fila: desaparecía del cuadro y quedaba como un párrafo suelto debajo. En un documento del proyecto, eso hacía que una línea entera de una tabla no se viera.

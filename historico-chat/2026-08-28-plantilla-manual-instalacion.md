@@ -1662,3 +1662,53 @@ Queda `HU-037`, la norma de redacción, que necesita su decisión de alcance. ¿
 
 ### 66 · Usuario — 2026-08-30 21:31:17
 > si
+
+**Agente** — 2026-08-30 21:32:43
+<!-- agente: 668ca485-4645-4af8-bd6a-055cdc13b44b -->
+
+Pusheado `caee602..6ff05c1`. **121 historias cumplen, cero rojas, cero mudas.**
+
+De las siete que quedaban sin terminar esta mañana, cerramos dos. Quedan cinco: `HU-037` —la norma de redacción, que espera su decisión de alcance— y cuatro de producto sin ninguna fase.
+
+La decisión que falta para `HU-037`, en una línea: **¿la regla rige para todo documento que el agente entrega, o solo para los que lee alguien que no es del oficio?** Un mensaje de commit y una regla del estándar no se escriben en infinitivo, así que el alcance no es obvio.
+
+### 67 · Usuario — 2026-08-30 21:38:02
+> 00 id9
+
+**Agente** — 2026-08-30 21:38:06
+<!-- agente: 3825951e-a81b-476c-b056-82d6d2e0e9c3 -->
+
+Pusheado `caee602..6ff05c1`. **121 cumplen, cero rojas, cero mudas.**
+
+Quedan cinco sin terminar: `HU-037` y cuatro de producto.
+
+Para `HU-037` falta su decisión: **¿la norma de redacción rige para todo documento, o solo para los que lee alguien que no es del oficio?** Un mensaje de commit no se escribe en infinitivo.
+
+### 68 · Usuario — 2026-08-30 21:38:50
+> para todo documento e inclusive lo lo que contesta  claude
+
+**Agente** — 2026-08-30 21:44:27
+<!-- agente: 756a62c4-d96c-4bce-80d3-f93aa5aed664 -->
+
+Anotado: **todo documento, y también lo que Claude contesta en el chat.** Escribo la regla.
+
+`manual-usuario.md` sigue con cambios sin guardar que no son míos, así que solo toco la de instalación y lo declaro.
+
+Regla escrita y en verde. Escribo su fase.
+
+**122 cumplen, cero rojas, cero mudas.** Las tres historias que aprobó hoy quedaron cerradas, y solo faltan las cuatro de producto sin fase.
+
+La regla es [`00·ID10`](base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md), versión **`37.0.0`, MAYOR**, porque obliga: un proyecto al día tiene que escribir así de aquí en adelante.
+
+Tres decisiones que quedaron dentro:
+
+- **No fija un idioma.** Dice «la variedad del idioma que usa el proyecto». Si nombrara el español, el estándar dejaría de servir a un proyecto en otro idioma, y eso es lo que lo hace heredable.
+- **El impersonal con «se» se nombra aparte**, porque es la forma en que la regla se incumple sin darse cuenta: «se copia el archivo» suena correcto y no dice a quién le toca.
+- **Rige también el chat**, como decidió usted. Es lo que más se lee y lo único que no queda versionado.
+
+El modelo de manual de instalación ya cita la regla en vez de repetirla. El de manual de usuario **no lo toqué**: tiene cambios sin guardar de otra sesión, y queda declarado como deuda abierta en el cierre de la fase.
+
+¿Commiteo?
+
+### 69 · Usuario — 2026-08-31 07:36:48
+> si

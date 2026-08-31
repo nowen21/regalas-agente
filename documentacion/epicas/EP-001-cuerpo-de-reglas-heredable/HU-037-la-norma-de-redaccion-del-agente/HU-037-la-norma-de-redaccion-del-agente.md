@@ -17,7 +17,7 @@
 | **Sprint** | Sin asignar |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Pendiente |
+| **Estado** | Terminada — la regla `00·ID10` existe y rige todo lo que el agente entrega, incluido el chat |
 
 ---
 
@@ -141,7 +141,7 @@ Y no exige español colombiano
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| Sin abrir todavía | — | — | — | — | — | Sin empezar |
+| [`A-EP-001-HU-037-la-norma-sube-al-cuerpo-de-reglas`](A-EP-001-HU-037-la-norma-sube-al-cuerpo-de-reglas/) | CA-01 a CA-03 | — | [plan_trabajo](A-EP-001-HU-037-la-norma-sube-al-cuerpo-de-reglas/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-037-la-norma-sube-al-cuerpo-de-reglas/plan_pruebas.md) | [resultado](A-EP-001-HU-037-la-norma-sube-al-cuerpo-de-reglas/resultado_pruebas.md) · cumple | Terminada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
