@@ -74,7 +74,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Responde a:** —
 - **Dispara:** —
 - **Orden de resolución:** —
-- **Dónde queda:** [resultado_pruebas.md](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/resultado_pruebas.md) §4, D-04.
+- **Dónde queda:** [documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/resultado_pruebas.md](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/resultado_pruebas.md) §4, D-04.
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** 2026-08-22 · encuadre del planteamiento
 - **Con qué se retoma:** —
@@ -184,7 +184,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-2.md](..
 - **Responde a:** el CA-02 de EP-001 · HU-005, que quedó cumplido.
 - **Dispara:** —, por ahora.
 - **Orden de resolución:** después de las 14 fases que faltan del pendiente 59.
-- **Dónde queda:** [resultado_pruebas.md](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-005-convenciones-de-ingenieria/A-EP-001-HU-005-retrodocumentar-las-convenciones-agnosticas/resultado_pruebas.md) §2, defecto D-03.
+- **Dónde queda:** [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-005-convenciones-de-ingenieria/A-EP-001-HU-005-retrodocumentar-las-convenciones-agnosticas/resultado_pruebas.md](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-005-convenciones-de-ingenieria/A-EP-001-HU-005-retrodocumentar-las-convenciones-agnosticas/resultado_pruebas.md) §2, defecto D-03.
 - **Nace en:** 2026-08-22 · encuadre del planteamiento
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿se automatiza el barrido de solapes, sabiendo que solo alcanza los títulos?

@@ -1,6 +1,6 @@
 # Nomenclatura y relación de las fases  ·  anexo de `02·F12`
 
-> **Texto literal del usuario, 2026-08-03.** No se reescribe, no se resume y no se interpreta; cualquier ajuste lo hace el usuario (el 2026-08-22 autorizó cambiar las rayas de puntuación por dos puntos, y nada más). Es el anexo de [`02·F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md): la regla queda con la exigencia y este anexo con el detalle, como el capítulo `00` hace con [acciones-y-riesgo.md](../00-identidad-y-rol/acciones-y-riesgo.md). Los `F12.N` son **anclas de referencia** a las partes de este anexo, no identificadores de regla ([`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)); al citar se referencia la parte.
+> **Texto literal del usuario, 2026-08-03.** No se reescribe, no se resume y no se interpreta; cualquier ajuste lo hace el usuario (el 2026-08-22 autorizó cambiar las rayas de puntuación por dos puntos, y nada más). Es el anexo de [`02·F12`](reglas/F12-relacion-y-nomenclatura-de-fases.md): la regla queda con la exigencia y este anexo con el detalle, como el capítulo `00` hace con [base/00-identidad-y-rol/acciones-y-riesgo.md](../00-identidad-y-rol/acciones-y-riesgo.md). Los `F12.N` son **anclas de referencia** a las partes de este anexo, no identificadores de regla ([`20·M4`](../20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md)); al citar se referencia la parte.
 
 * **F12.1**: **Una fase pertenece exclusivamente a una sola HU.**
 

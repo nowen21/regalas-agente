@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Qué guarda la plataforma, dónde, con qué campos y qué significa cada uno. Un campo sin significado escrito se interpreta distinto cada vez que alguien lo lee.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Sale de los doce módulos de [cvds/diseno/README.md](README.md) y de [`DA-01`](decisiones-de-arquitectura.md), [`DA-02`](decisiones-de-arquitectura.md) y [`DA-07`](decisiones-de-arquitectura.md).
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Sale de los doce módulos de [cvds/diseno/README.md](README.md) y de [`DA-01`](decisiones-de-arquitectura.md), [`DA-02`](decisiones-de-arquitectura.md) y [`DA-07`](decisiones-de-arquitectura.md).
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

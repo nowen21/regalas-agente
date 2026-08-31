@@ -55,7 +55,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
 | **Dispara** | — |
 | **Orden de resolución** | — |
-| **Dónde queda** | Señal [S-022](../../../documentacion/senales.md) · molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) · [CHANGELOG 32.0.0](../../../CHANGELOG.md) · [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
+| **Dónde queda** | Señal [S-022](../../../documentacion/senales.md) · molde [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) · [CHANGELOG 32.0.0](../../../CHANGELOG.md) · [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
 | **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Con qué se retoma** | — |
@@ -64,7 +64,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 
 | Campo | |
 |---|---|
-| **Qué pasó** | `validar.py estandar` falla por un enlace roto: [indice-tematico.md](../indice-tematico.md) línea 553 apunta a `2026-08-22/sesion-3.md`, y ese archivo hoy se llama `el-encuadre-enlaza-la-cadena-no-la-copia.md`. |
+| **Qué pasó** | `validar.py estandar` falla por un enlace roto: [historico-chat/resumenes/indice-tematico.md](../indice-tematico.md) línea 553 apunta a `2026-08-22/sesion-3.md`, y ese archivo hoy se llama `el-encuadre-enlaza-la-cadena-no-la-copia.md`. |
 | **Por qué importa** | Es la única falla del comprobador en el repositorio, y detiene el `push` de cualquiera. No es de esta sesión: el renombrado lo hizo otra. |
 | **Qué lo soluciona** | Una pieza: corregir la línea del índice, o que el renombrado del histórico arregle también el índice temático, como ya hace con el índice del día. |
 | **Qué se decidió** | Se corrigió: el enlace apunta ahora al resumen renombrado. Se tocó trabajo de otra sesión porque la falla detenía la publicación de todo el repositorio, y el usuario pidió subir. |
@@ -108,7 +108,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
 | **Dispara** | — |
 | **Orden de resolución** | — |
-| **Dónde queda** | [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) y el molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) |
+| **Dónde queda** | [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) y el molde [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) |
 | **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Con qué se retoma** | — |
@@ -125,7 +125,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
 | **Dispara** | — |
 | **Orden de resolución** | — |
-| **Dónde queda** | El molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
+| **Dónde queda** | El molde [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
 | **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Cerrado en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Con qué se retoma** | — |
@@ -143,7 +143,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-el-inventario-d
 | **Responde a** | EP-003 · Documentos modelo y procedimientos guiados |
 | **Dispara** | 1. **EP-003 · HU nueva — «la ficha de funcionalidad alimenta la historia»**. Como dueño del proyecto / quiero que los criterios escritos en la ficha bajen tal cual a la historia y a sus pruebas / para no escribirlos dos veces ni distinto. Contexto: el molde ya lo declara en su cierre, pero ninguna regla lo exige ni ninguna revisión lo comprueba. |
 | **Orden de resolución** | Segundo de los abiertos, detrás de la aprobación del inventario. |
-| **Dónde queda** | El molde [02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
+| **Dónde queda** | El molde [plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md](../../../plantillas/ciclo-vida-proyectos/02-inventario-funcionalidades.md) y [prompts/cimiento-inventario-funcionalidades.md](../../../prompts/cimiento-inventario-funcionalidades.md) |
 | **Nace en** | 2026-08-22 · el-inventario-de-cimiento |
 | **Cerrado en** | — |
 | **Con qué se retoma** | Las cuatro preguntas que quedaron abiertas en el inventario, y la aprobación de las 37 fichas. |

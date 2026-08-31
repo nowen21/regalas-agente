@@ -5,7 +5,7 @@ Contenido inmediato de esta carpeta.
 | Qué | De qué se trata |
 |---|---|
 | [HU-019-el-hash-del-commit-se-anota-solo.md](HU-019-el-hash-del-commit-se-anota-solo.md) | La historia de usuario: que la casilla del commit se marque sola |
-| [A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/](A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/) | **Cerrada, Cumple.** Un enganche de git anota el hash, solo donde hay dónde |
+| [documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-019-el-hash-del-commit-se-anota-solo/A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/](A-EP-005-HU-019-el-enganche-de-git-pone-el-hash/) | **Cerrada, Cumple.** Un enganche de git anota el hash, solo donde hay dónde |
 
 Baja del [pendiente 87](../../../../pendientes/hecho/el-hash-del-commit-se-anota-solo.md), con las salidas 1 y 3.
 

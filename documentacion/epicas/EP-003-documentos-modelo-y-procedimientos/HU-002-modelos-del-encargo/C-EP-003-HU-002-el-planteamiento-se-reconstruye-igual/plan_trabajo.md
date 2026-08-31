@@ -12,7 +12,7 @@
 | **Épica** | `EP-003` Documentos modelo y procedimientos |
 | **HU** | `HU-002` Modelos del encargo — **una sola** (`F12.1`) |
 | **Módulo** | Documentos modelo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)) |
-| **Especificación del módulo** | [epica.md](../../epica.md) §5.1 y §5.4 fila 10 ([`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)) |
+| **Especificación del módulo** | [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/epica.md](../../epica.md) §5.1 y §5.4 fila 10 ([`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)) |
 | **Fecha apertura** | 2026-08-22 |
 | **Rama** | `main` (repositorio del estándar, sin ramas de fase) |
 

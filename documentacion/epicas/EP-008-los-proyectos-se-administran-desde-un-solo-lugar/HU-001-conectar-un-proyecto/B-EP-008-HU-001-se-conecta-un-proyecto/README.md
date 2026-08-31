@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/B-EP-008-HU-001-se-conecta-un-proyecto/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** Conectar un proyecto a la plataforma: su nombre, dónde vive su código, su carpeta de documentación, y la acción registrada. Y **la primera pantalla**.
 

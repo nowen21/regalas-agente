@@ -36,7 +36,7 @@
 | Ítem de la historia | Categoría | Ubicación | Estado | Evidencia |
 |---|---|---|---|---|
 | `RN-01` el glosario define, y es el único sitio | documento | [base/glosario.md](../../../../../base/glosario.md) §5 | ✅ | CP-001 |
-| `RN-02` los moldes citan en vez de listar | documento | Los cuatro de [ciclo-vida-proyectos/](../../../../../plantillas/ciclo-vida-proyectos/) | ✅ | CP-001 |
+| `RN-02` los moldes citan en vez de listar | documento | Los cuatro de [plantillas/ciclo-vida-proyectos/](../../../../../plantillas/ciclo-vida-proyectos/) | ✅ | CP-001 |
 | `RN-03` un estado por concepto | documento | La tabla de nueve estados | ✅ | CP-001 paso 2 |
 | `RN-04` `En implementación` pasa a `En curso` | documento | 19 historias | ✅ | CP-002 |
 | `RN-05` se normalizan los existentes | documento | 111 de 115 | ✅ | CP-002 |

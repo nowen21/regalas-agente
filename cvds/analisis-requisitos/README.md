@@ -24,8 +24,8 @@
 | Lo que ya se intentó | El autor | Revisión de lo que falló: documentar dentro de cada proyecto, corregir por chat | Antes de empezar | Sección 1 de [planificación](../planificacion/README.md) |
 | El giro de producto | El autor | Conversación del 2026-08-24: qué debe llegar a ser Cimiento, no qué es hoy | 2026-08-24 | Sección 19 de [planificación](../planificacion/README.md) |
 | Los proyectos que administra | Ninguno consultado como tal | Sin consultar | — | Nada |
-| Lo que el usuario tuvo que repetir | El autor | Ver qué correcciones volvieron a decirse en la misma sesión | 2026-08-25 | [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
-| Ver la plataforma funcionando | El autor | Mirar la primera pantalla y preguntar qué falta | 2026-08-25 | [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) |
+| Lo que el usuario tuvo que repetir | El autor | Ver qué correcciones volvieron a decirse en la misma sesión | 2026-08-25 | [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
+| Ver la plataforma funcionando | El autor | Mirar la primera pantalla y preguntar qué falta | 2026-08-25 | [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) |
 
 **Quién no se consultó, y por qué:** nadie ajeno al autor. **Todos los requisitos salen de una sola persona**, y eso es un límite del análisis, no un detalle.
 
@@ -243,7 +243,7 @@ Uno por fila, con quién lo aprobó. La línea base no se edita en silencio: si 
 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
-| 2026-08-25 | Entran `RF-33` y `RF-34`, con sus funcionalidades `F-033` y `F-034` | El histórico ya guarda cada mensaje y cada respuesta, y no hay cómo contar qué se repite. Una corrección que se repite es una regla que falta. Sale de [pendientes/85](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) | Ing. José Dúmar Jiménez Ruíz |
-| 2026-08-25 | Entra `RF-35`, con su funcionalidad `F-035` | La especificación de Proyectos ya decidía cómo se comporta desconectar, y ninguna funcionalidad lo pedía: un documento aprobado prometía algo que ninguna fase iba a construir. Mientras tanto, conectar no tiene reversa. Sale de [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
+| 2026-08-25 | Entran `RF-33` y `RF-34`, con sus funcionalidades `F-033` y `F-034` | El histórico ya guarda cada mensaje y cada respuesta, y no hay cómo contar qué se repite. Una corrección que se repite es una regla que falta. Sale de [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) | Ing. José Dúmar Jiménez Ruíz |
+| 2026-08-25 | Entra `RF-35`, con su funcionalidad `F-035` | La especificación de Proyectos ya decidía cómo se comporta desconectar, y ninguna funcionalidad lo pedía: un documento aprobado prometía algo que ninguna fase iba a construir. Mientras tanto, conectar no tiene reversa. Sale de [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
 
 **Qué NO cambió con esto:** la especificación del módulo Auditoría. `RF-33` y `RF-34` entran a la versión 2; `RF-35` entra a la 1, porque mientras no exista, cada proyecto conectado por error queda así para siempre.

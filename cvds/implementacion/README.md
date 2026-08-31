@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Deja escrito en qué versiones se parte la construcción de Cimiento, qué unidad de trabajo cubre cada funcionalidad, en qué orden se hacen y cómo se deshace lo que salga mal. El detalle de cada unidad vive en su propia fase; acá queda el gobierno de todas.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Sale de los doce módulos del [diseño](../diseno/README.md) y de las 32 fichas del [inventario](../analisis-requisitos/inventario-funcionalidades.md), aprobados el 2026-08-24.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Sale de los doce módulos del [diseño](../diseno/README.md) y de las 32 fichas del [inventario](../analisis-requisitos/inventario-funcionalidades.md), aprobados el 2026-08-24.
 
 **Estado: APROBADO** (2026-08-25, por Ing. José Dúmar Jiménez Ruíz).
 

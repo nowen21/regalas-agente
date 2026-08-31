@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-001-traer-un-proyecto/E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** Traer a la plataforma la documentación que un proyecto ya tiene escrita, para empezar a gobernarlo sin rehacer su historia.
 

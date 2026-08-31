@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** Que el usuario sepa en qué va cualquiera de sus proyectos sin entrar a su carpeta: qué etapas tienen documento, qué fases están abiertas, y qué está aprobado.
 

@@ -165,4 +165,4 @@ Entonces ningún archivo cambia, se mueve ni se borra
 
 | Fecha | Qué pasó |
 |---|---|
-| 2026-08-25 | Nace de `F-033`, que entró al inventario ese día desde [pendientes/85](../../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
+| 2026-08-25 | Nace de `F-033`, que entró al inventario ese día desde [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |

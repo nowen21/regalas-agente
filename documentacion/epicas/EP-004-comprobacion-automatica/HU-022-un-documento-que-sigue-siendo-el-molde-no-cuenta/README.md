@@ -5,7 +5,7 @@ Contenido inmediato de esta carpeta.
 | Qué | De qué se trata |
 |---|---|
 | [HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md](HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) | La historia de usuario: que una fase recién abierta no cuente como terminada |
-| [A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito/](A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito/) | **Cerrada, Cumple.** El conteo compara cada documento con su plantilla, y nombra los siete que siguen en blanco |
+| [documentacion/epicas/EP-004-comprobacion-automatica/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito/](A-EP-004-HU-022-el-molde-sin-llenar-no-cuenta-como-escrito/) | **Cerrada, Cumple.** El conteo compara cada documento con su plantilla, y nombra los siete que siguen en blanco |
 
 Nace del [pendiente 88](../../../../pendientes/hecho/el-molde-sin-llenar-no-cuenta-como-escrito.md), con las salidas 1 y 3 aprobadas por el usuario y la 2 dejada fuera.
 

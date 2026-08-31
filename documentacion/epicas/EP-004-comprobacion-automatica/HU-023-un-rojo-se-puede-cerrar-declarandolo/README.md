@@ -5,7 +5,7 @@ Contenido inmediato de esta carpeta.
 | Qué | De qué se trata |
 |---|---|
 | [HU-023-un-rojo-se-puede-cerrar-declarandolo.md](HU-023-un-rojo-se-puede-cerrar-declarandolo.md) | La historia de usuario: que un veredicto en rojo se pueda cerrar, declarándolo |
-| [A-EP-004-HU-023-la-fase-declara-que-veredicto-deja-atras/](A-EP-004-HU-023-la-fase-declara-que-veredicto-deja-atras/) | **Cerrada, Cumple.** Un campo opcional en el cierre, y las tres condiciones que lo hacen válido |
+| [documentacion/epicas/EP-004-comprobacion-automatica/HU-023-un-rojo-se-puede-cerrar-declarandolo/A-EP-004-HU-023-la-fase-declara-que-veredicto-deja-atras/](A-EP-004-HU-023-la-fase-declara-que-veredicto-deja-atras/) | **Cerrada, Cumple.** Un campo opcional en el cierre, y las tres condiciones que lo hacen válido |
 
 Nace de `S-065`, y se descubrió haciéndolo: **dos fases verificaron criterios en rojo, midieron que hoy se cumplen, cerraron con «Cumple», y el número no se movió.**
 

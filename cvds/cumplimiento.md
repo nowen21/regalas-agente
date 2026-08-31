@@ -85,7 +85,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | # | Qué |
 |---|---|
-| 1 | requisitos no funcionales, ninguno escrito hasta el llenado de prueba de [cvds/analisis-requisitos/](analisis-requisitos/README.md) |
+| 1 | requisitos no funcionales, ninguno escrito hasta el llenado de prueba de [cvds/analisis-requisitos/README.md/](analisis-requisitos/README.md) |
 | 2 | el inventario de funcionalidades del propio proyecto, que es **la puerta que el estándar le exige a los demás** (`02·F26`) y que él mismo no tiene |
 | 3 | la línea base aprobada |
 
@@ -95,16 +95,16 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
 |---|---|---|
-| Los módulos y sus límites | Qué archivo hace qué, y qué está amarrado a la herramienta | [anatomia/](../anatomia/mapa-del-sitio.md) |
+| Los módulos y sus límites | Qué archivo hace qué, y qué está amarrado a la herramienta | [anatomia/mapa-del-sitio.md/](../anatomia/mapa-del-sitio.md) |
 | La seguridad | Capítulo propio, con el enmascarado de credenciales corriendo solo | [base/04-seguridad.md](../base/04-seguridad.md) y [validadores/secretos.py](../validadores/secretos.py) |
-| Entorno técnico y estándares | Calidad de código, dependencias, entornos y estructura, cada uno con su capítulo | Capítulos 07, 10, 11 y 14 de [base/](../base/README.md) |
+| Entorno técnico y estándares | Calidad de código, dependencias, entornos y estructura, cada uno con su capítulo | Capítulos 07, 10, 11 y 14 de [base/README.md/](../base/README.md) |
 
 **A medias**
 
 | # | Qué |
 |---|---|
 | 1 | la arquitectura está en las tres capas del [README.md](../README.md) pero sin dibujo ni contrato entre componentes |
-| 2 | el porqué de las decisiones vive en [notas/](../notas/README.md), que no es el molde de decisión y no lista alternativas descartadas |
+| 2 | el porqué de las decisiones vive en [notas/README.md/](../notas/README.md), que no es el molde de decisión y no lista alternativas descartadas |
 | 3 | el modelo de datos existe como [memoria/esquema.sql](../memoria/esquema.sql) sin diccionario de campos |
 | 4 | la interfaz tiene su [README](../interfaz/README.md) pero no documento de diseño |
 | 5 | la trazabilidad requisito a módulo no está escrita |
@@ -123,8 +123,8 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
 |---|---|---|
-| Cómo se parte el trabajo | 119 fases, cada una con su plan, sus pruebas y su cierre | [documentacion/epicas/](../documentacion/epicas/README.md) |
-| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | [interfaz/requirements/](../interfaz/README.md) |
+| Cómo se parte el trabajo | 119 fases, cada una con su plan, sus pruebas y su cierre | [documentacion/epicas/README.md/](../documentacion/epicas/README.md) |
+| Con qué se trabaja | Versiones exactas fijadas, y estáticos con huella verificada | [interfaz/README.md/](../interfaz/README.md) |
 | Orden y dependencias | Mapa de dependencias, que se actualiza al cerrar cada unidad | `13·DOC18` |
 | Cómo se escribe el código | Capítulos de calidad y de estructura, comprobados por programa | [validadores/codigo.py](../validadores/codigo.py) y [validadores/calidad.py](../validadores/calidad.py) |
 | Documentar mientras se construye | El estado de la fase se escribe en el repositorio, no en el chat | `13·DOC1` y el molde 10 del ciclo |
@@ -149,7 +149,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 |---|---|---|
 | Plan de pruebas junto al de trabajo | Se aprueban juntos, y sin eso no se ejecuta | `02·F4` |
 | Probar que lo que no debe pasar no pase | Buena parte de las pruebas comprueban el rechazo, no el caso feliz | Las 38 pruebas de la versión 33.1.0, en [CHANGELOG.md](../CHANGELOG.md) |
-| La evidencia | 115 resultados de prueba con lo que se ejecutó y su salida | [documentacion/epicas/](../documentacion/epicas/README.md) |
+| La evidencia | 115 resultados de prueba con lo que se ejecutó y su salida | [documentacion/epicas/README.md/](../documentacion/epicas/README.md) |
 | Veredicto por criterio | Comprobado por programa, no por lectura | [validadores/veredicto.py](../validadores/veredicto.py) |
 | Qué quedó sin probar | Lo no probado se declara «sin verificar», y esa es la regla | `08·T1` y el molde 09 del ciclo |
 
@@ -157,8 +157,8 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | # | Qué |
 |---|---|
-| 1 | los niveles de prueba existen de hecho (68 pruebas de validadores más [evals/](../evals/README.md)) pero nadie los declaró como tales |
-| 2 | los defectos se registran en [pendientes/](../pendientes/README.md) sin gravedad ni tiempo de respuesta |
+| 1 | los niveles de prueba existen de hecho (68 pruebas de validadores más [evals/README.md/](../evals/README.md)) pero nadie los declaró como tales |
+| 2 | los defectos se registran en [pendientes/README.md/](../pendientes/README.md) sin gravedad ni tiempo de respuesta |
 | 3 | la corrida completa existe como [validadores/validar.py](../validadores/validar.py) pero no hay política escrita de qué se vuelve a correr antes de entregar |
 | 4 | el usuario acepta cada cambio, pero sin acta de aceptación |
 
@@ -172,7 +172,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 |---|---|---|
 | Instalación desde cero | Un programa que la hace, y que no pisa lo que ya existe | [validadores/instalar.py](../validadores/instalar.py) |
 | Lista previa que se marca | Existe como molde, y como recordatorio de lo que la instalación olvida | [plantillas/checklist-despliegue.md](../plantillas/checklist-despliegue.md) |
-| Qué trae cada versión, para quien la usa | Registro escrito en castellano llano, exigido por `M17` | [CHANGELOG.md](../CHANGELOG.md) y [documentacion/versiones/](../documentacion/versiones/README.md) |
+| Qué trae cada versión, para quien la usa | Registro escrito en castellano llano, exigido por `M17` | [CHANGELOG.md](../CHANGELOG.md) y [documentacion/versiones/README.md/](../documentacion/versiones/README.md) |
 
 **A medias**
 
@@ -198,7 +198,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 
 | Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
 |---|---|---|
-| Por dónde entra una solicitud | Todo pedido se escribe como pendiente; 81 cerrados y 3 abiertos | [pendientes/](../pendientes/README.md) |
+| Por dónde entra una solicitud | Todo pedido se escribe como pendiente; 81 cerrados y 3 abiertos | [pendientes/README.md/](../pendientes/README.md) |
 | Un cambio grande vuelve a entrar por el ciclo | El pendiente no se ejecuta desde su archivo: baja a historia y se construye como fase | `02·F23` |
 | Rutinas periódicas | Al cerrar cada versión se barre lo que el usuario pidió dos veces | `M20` y [plantillas/candidatas-a-regla.md](../plantillas/candidatas-a-regla.md) |
 | Versiones y su numeración | Mayor, menor y parche, con la regla de qué obliga a migrar | [CHANGELOG.md](../CHANGELOG.md) y [VERSION](../VERSION) |
@@ -210,7 +210,7 @@ Es coherente con cómo nació: el estándar se escribió resolviendo incumplimie
 |---|---|
 | 1 | los cuatro tipos de trabajo no se distinguen, así que no se puede decir cuánto se va en corregir |
 | 2 | el impacto de un cambio se evalúa como grado de versión, no como qué se rompe |
-| 3 | la vigilancia existe como [metricas/](../metricas/README.md) y [validadores/rendimiento.py](../validadores/rendimiento.py), sin umbrales ni aviso |
+| 3 | la vigilancia existe como [metricas/README.md/](../metricas/README.md) y [validadores/rendimiento.py](../validadores/rendimiento.py), sin umbrales ni aviso |
 | 4 | qué hacer cuando falla está en [prompts/](../prompts/) como casos sueltos |
 
 **No existe**

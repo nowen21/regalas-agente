@@ -269,7 +269,7 @@ Ninguno.
 
 **Qué falta para que cumpla:** nada.
 
-**Lo que la fase deja sin resolver, y no es un incumplimiento:** conectar todavía no tiene reversa. Salió al ver la primera pantalla funcionando, no está en el alcance de esta fase, y quedó pedido por la cadena completa: [pendientes/86](../../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) y la [HU-004](../../HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), que es la fase H.
+**Lo que la fase deja sin resolver, y no es un incumplimiento:** conectar todavía no tiene reversa. Salió al ver la primera pantalla funcionando, no está en el alcance de esta fase, y quedó pedido por la cadena completa: [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) y la [HU-004](../../HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), que es la fase H.
 
 ---
 

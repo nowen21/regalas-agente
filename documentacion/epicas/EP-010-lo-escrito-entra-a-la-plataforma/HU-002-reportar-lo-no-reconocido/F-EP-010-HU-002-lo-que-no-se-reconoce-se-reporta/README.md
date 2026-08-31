@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-002-reportar-lo-no-reconocido/F-EP-010-HU-002-lo-que-no-se-reconoce-se-reporta/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** Que lo que no entró se pueda volver a mirar sin traer otra vez.
 

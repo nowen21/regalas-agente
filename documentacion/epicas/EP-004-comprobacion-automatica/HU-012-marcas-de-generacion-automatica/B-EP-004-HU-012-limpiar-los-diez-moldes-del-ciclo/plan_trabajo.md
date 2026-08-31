@@ -14,7 +14,7 @@
 | **Épica** | `EP-004` Comprobación automática |
 | **HU** | `HU-012` Marcas de generación automática — **una sola** (`F12.1`) |
 | **Módulo** | Documentos modelo |
-| **Especificación del módulo** | [epica.md](../../epica.md) |
+| **Especificación del módulo** | [documentacion/epicas/EP-004-comprobacion-automatica/epica.md](../../epica.md) |
 | **Fecha apertura** | 2026-08-22 |
 | **Rama** | `main` |
 

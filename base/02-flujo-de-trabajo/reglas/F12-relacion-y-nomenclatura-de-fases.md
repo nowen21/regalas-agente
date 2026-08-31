@@ -2,7 +2,7 @@
 
 ## F12 · Nombra y ubica cada fase según la nomenclatura del anexo
 
-Una fase pertenece a una sola historia, lleva consecutivo alfabético dentro de ella, se nombra `[Consecutivo]-EP-NNN-HU-NNN-[descripción]` y vive en la ruta física del anexo [nomenclatura-de-fases.md](../nomenclatura-de-fases.md), fuente única de `F12.1` a `F12.13`; no se crea una fase solo por cumplir la nomenclatura (depende de [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Una fase pertenece a una sola historia, lleva consecutivo alfabético dentro de ella, se nombra `[Consecutivo]-EP-NNN-HU-NNN-[descripción]` y vive donde dice el anexo [base/02-flujo-de-trabajo/nomenclatura-de-fases.md](../nomenclatura-de-fases.md), fuente única de `F12.1` a `F12.13`; no se crea una fase solo por la nomenclatura (depende de [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: la fase se llama «ajustes varios» y cuelga de dos historias a la vez

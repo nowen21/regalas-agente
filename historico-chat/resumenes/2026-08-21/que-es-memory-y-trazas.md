@@ -167,9 +167,9 @@ También hubo consulta: el usuario preguntó qué guardan `historico-chat/memory
 
 **Y el daño real no era el sitio:** el resultado de esos guiones quedaba versionado y **el cómo se perdía**. A la pregunta «¿con qué se recortaron esas treinta reglas al molde?» no había respuesta en ninguna parte.
 
-**Qué se decidió, con sus palabras:** *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*. Los 31 guiones entraron a [historico-chat/scripts/2026-08-22/](../../scripts/2026-08-22/README.md), con su índice de qué hizo cada uno, y el recuerdo se reescribió sin la puerta: se quedan versionados, no se borran y no se vuelven a correr.
+**Qué se decidió, con sus palabras:** *«nada se debe escribir por fuera, todo debe quedar en historico-chat»*. Los 31 guiones entraron a [historico-chat/scripts/2026-08-22/README.md/](../../scripts/2026-08-22/README.md), con su índice de qué hizo cada uno, y el recuerdo se reescribió sin la puerta: se quedan versionados, no se borran y no se vuelven a correr.
 
-**Dónde queda.** El recuerdo [guiones-de-apoyo-dentro-del-repo.md](../../memory/guiones-de-apoyo-dentro-del-repo.md) y la señal S-021, que dice lo que esto enseña: cuando el usuario repite una instrucción, lo que hay que arreglar es **el texto del recuerdo**, no la conducta de esa vez.
+**Dónde queda.** El recuerdo [historico-chat/memory/guiones-de-apoyo-dentro-del-repo.md](../../memory/guiones-de-apoyo-dentro-del-repo.md) y la señal S-021, que dice lo que esto enseña: cuando el usuario repite una instrucción, lo que hay que arreglar es **el texto del recuerdo**, no la conducta de esa vez.
 
 ---
 

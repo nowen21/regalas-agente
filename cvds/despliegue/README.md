@@ -115,7 +115,7 @@ La instalación de la sección 3 está escrita paso a paso, pero **nadie ajeno l
 |---|---|---|
 | Instalación desde cero | Un programa que la hace, y que no pisa lo que ya existe | [validadores/instalar.py](../../validadores/instalar.py) |
 | Lista previa que se marca | Existe como molde, y como recordatorio de lo que la instalación olvida | [plantillas/checklist-despliegue.md](../../plantillas/checklist-despliegue.md) |
-| Qué trae cada versión, para quien la usa | Registro escrito en castellano llano, exigido por `M17` | [CHANGELOG.md](../../CHANGELOG.md) y [documentacion/versiones/](../../documentacion/versiones/README.md) |
+| Qué trae cada versión, para quien la usa | Registro escrito en castellano llano, exigido por `M17` | [CHANGELOG.md](../../CHANGELOG.md) y [documentacion/versiones/README.md/](../../documentacion/versiones/README.md) |
 
 **A medias**
 

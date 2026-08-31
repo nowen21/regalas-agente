@@ -21,7 +21,7 @@ Medir el `CA-04` **contra sus tres exigencias escritas**, y no contra el estado 
 | Documento | Para qué |
 |---|---|
 | El `CA-04` de la historia | Las tres exigencias, palabra por palabra |
-| [revision-de-vigencia.md](../../../../../base/20-meta-reglas/revision-de-vigencia.md) | Que la ausencia de fechas es **deliberada** |
+| [base/20-meta-reglas/revision-de-vigencia.md](../../../../../base/20-meta-reglas/revision-de-vigencia.md) | Que la ausencia de fechas es **deliberada** |
 | `S-069` | Cómo se recomendó tres veces un trabajo sin leer el criterio |
 
 ---

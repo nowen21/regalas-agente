@@ -118,6 +118,6 @@ No aplica: el módulo no guarda datos de personas ni información regulada.
 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
-| 2026-08-25 | Entra `F-035`, administrar un proyecto ya conectado, al alcance de la §1 y al comportamiento de la §6 | **La especificación ya decidía cómo se comporta desconectar**, en su §7 y en su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. La §1 decía qué estaba dentro del alcance y no lo nombraba. Sale de [pendientes/86](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
+| 2026-08-25 | Entra `F-035`, administrar un proyecto ya conectado, al alcance de la §1 y al comportamiento de la §6 | **La especificación ya decidía cómo se comporta desconectar**, en su §7 y en su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. La §1 decía qué estaba dentro del alcance y no lo nombraba. Sale de [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) | Ing. José Dúmar Jiménez Ruíz |
 
 **Qué NO cambió:** las decisiones de la §12 ya estaban tomadas y siguen igual, incluida la de que desconectar no borra la documentación. Lo que faltaba no era decidir: era pedirlo.

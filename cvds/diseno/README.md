@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Deja escrito **cómo** Cimiento va a cumplir lo que exigió el análisis, antes de escribir código. Su valor está en las decisiones con su porqué: sin ellas, dentro de seis meses nadie sabe por qué está armado así y todos lo cambian a ciegas.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Sale de los 32 requisitos de [cvds/analisis-requisitos/README.md](../analisis-requisitos/README.md), aprobados el 2026-08-24.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Sale de los 32 requisitos de [cvds/analisis-requisitos/README.md](../analisis-requisitos/README.md), aprobados el 2026-08-24.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

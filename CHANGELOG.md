@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 36.0.1 — 2026-08-30
+
+**El texto de un enlace ahora dice dónde vive lo que abre.** Noventa y ocho enlaces del repositorio mostraban un texto que no correspondía con el archivo al que llevaban: quien los leía no podía saber si el documento estaba al lado o en otra carpeta, y tenía que abrirlo para averiguarlo.
+
+**PARCHE**: cambia el texto que se ve, no lo que se exige ni a dónde llevan los enlaces.
+
+**Qué se tocó.** Cincuenta y nueve archivos, dos de ellos del cuerpo de reglas. La corrección la hizo el propio programa que la comprueba, y después la comprobación quedó en cero.
+
+**Por qué estuvo tanto tiempo así.** La prueba que lo mide existía y estaba en rojo desde hacía días, en una suite que hasta el 28 de agosto no corría nadie.
+
+---
+
 ## 36.0.0 — 2026-08-30
 
 **Lo que el agente recuerda de una sesión a otra ya no puede llevar el nombre de una persona ni una contraseña.** Hasta hoy nada lo prohibía: se podía anotar el caso entero, con quién era y con qué clave, y eso quedaba guardado para leerse otra vez cada mañana. Ahora lo que se guarda es qué se aprendió, sin el caso.

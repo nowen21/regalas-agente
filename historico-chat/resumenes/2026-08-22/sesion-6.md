@@ -111,7 +111,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Responde a:** [EP-008](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md) · [HU-001](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/HU-001-conectar-un-proyecto.md). Ningún criterio de aceptación: la fase A construye la base y la B los cumple.
 - **Dispara:** —
 - **Orden de resolución:** —
-- **Dónde queda:** [plataforma/](../../../plataforma/), y el cierre en [funcionalidad_implementada.md](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/funcionalidad_implementada.md), con cuatro deudas declaradas.
+- **Dónde queda:** [plataforma/](../../../plataforma/), y el cierre en [documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/funcionalidad_implementada.md](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/funcionalidad_implementada.md), con cuatro deudas declaradas.
 - **Nace en:** 2026-08-22 · sesion-6
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
@@ -128,7 +128,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
   1. [EP-011 · HU-001](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md) buscar en lo conversado. Va primera: sin lo indexado no hay qué contar.
   2. [EP-011 · HU-002](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md) ver qué corrección se repite. Es la que da el valor.
 - **Orden de resolución:** —
-- **Dónde queda:** [pendientes/85](../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md), [EP-011](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) y la señal `S-024`.
+- **Dónde queda:** [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md), [EP-011](../../../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) y la señal `S-024`.
 - **Nace en:** 2026-08-22 · sesion-6
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —
@@ -173,7 +173,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-22-sesion-6.md](..
 - **Responde a:** —
 - **Dispara:** [EP-008 · HU-004](../../../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) administrar un proyecto conectado, como fase H de la versión 1.
 - **Orden de resolución:** —
-- **Dónde queda:** [pendientes/86](../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md), `F-035`, la §15 de la [especificación de Proyectos](../../../documentacion/proyectos/spec.md), y la señal `S-029`.
+- **Dónde queda:** [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md), `F-035`, la §15 de la [especificación de Proyectos](../../../documentacion/proyectos/spec.md), y la señal `S-029`.
 - **Nace en:** 2026-08-22 · sesion-6
 - **Cerrado en:** 2026-08-22 · sesion-6
 - **Con qué se retoma:** —

@@ -5,7 +5,7 @@ Contenido inmediato de esta carpeta.
 | Qué | De qué se trata |
 |---|---|
 | [HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md](HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio.md) | La historia de usuario: que los guiones de apoyo queden en el repositorio sin depender de que el agente se acuerde |
-| [A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera/](A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera/) | **Cerrada, Cumple.** Un enganche avisa al escribir fuera del proyecto, nombrando dónde debía ir |
+| [documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-018-los-guiones-de-apoyo-quedan-en-el-repositorio/A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera/](A-EP-005-HU-018-el-enganche-avisa-al-escribir-afuera/) | **Cerrada, Cumple.** Un enganche avisa al escribir fuera del proyecto, nombrando dónde debía ir |
 
 Nace del [pendiente 89](../../../../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md), con las salidas 1 y 3 aprobadas por el usuario y la 2 dejada fuera.
 

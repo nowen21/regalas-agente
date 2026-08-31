@@ -133,4 +133,4 @@ Versión 2, después de entregar el expediente. Postergarla no pierde nada: las 
 
 | Fecha | Qué pasó |
 |---|---|
-| 2026-08-25 | Nace de [pendientes/85](../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md), aprobado ese día. El usuario lo pidió al abrir la fase de auditoría, y quedó separado de ella a propósito |
+| 2026-08-25 | Nace de [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md), aprobado ese día. El usuario lo pidió al abrir la fase de auditoría, y quedó separado de ella a propósito |

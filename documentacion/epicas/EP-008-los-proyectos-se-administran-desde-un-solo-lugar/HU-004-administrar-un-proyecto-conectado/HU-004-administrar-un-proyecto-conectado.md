@@ -125,7 +125,7 @@ Entonces ningún archivo de su carpeta de código cambia, se mueve ni se borra
 - Funcionalidad `F-035` del [inventario](../../../../cvds/analisis-requisitos/inventario-funcionalidades.md).
 - Requisito `RF-35` del [análisis](../../../../cvds/analisis-requisitos/README.md).
 - Pantalla `P-02` Un proyecto, del [diseño de interfaz](../../../../cvds/diseno/diseno-de-interfaz.md).
-- De dónde sale: [pendientes/86](../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md).
+- De dónde sale: [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md).
 
 ---
 

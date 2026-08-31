@@ -12,9 +12,9 @@
 
 | Ítem de la especificación | Categoría | Ubicación esperada | Estado | Evidencia |
 |---|---|---|---|---|
-| El barrido tiene molde | doc | `plantillas/` | ✅ | [candidatas-a-regla.md](../../../../../plantillas/candidatas-a-regla.md), con las cuatro salidas y la regla del conteo |
+| El barrido tiene molde | doc | `plantillas/` | ✅ | [plantillas/candidatas-a-regla.md](../../../../../plantillas/candidatas-a-regla.md), con las cuatro salidas y la regla del conteo |
 | El barrido tiene disparador | regla | `base/20-meta-reglas/` | ✅ | [`M20`](../../../../../base/20-meta-reglas/reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md), checklist en CUMPLE |
-| La regla está enrutada y clasificada | doc | índices | ✅ | fila en el [índice del capítulo](../../../../../base/20-meta-reglas/base.md), en [plantillas/README.md](../../../../../plantillas/README.md) y en [reglas-validables.md](../../../../../validadores/reglas-validables.md) |
+| La regla está enrutada y clasificada | doc | índices | ✅ | fila en el [índice del capítulo](../../../../../base/20-meta-reglas/base.md), en [plantillas/README.md](../../../../../plantillas/README.md) y en [validadores/reglas-validables.md](../../../../../validadores/reglas-validables.md) |
 | El criterio existe en la historia | doc | esta HU | ✅ | `CA-06`, nacido con esta fase |
 | El cambio queda versionado | doc | `CHANGELOG.md`, `VERSION` | ✅ | v31.0.0, MAYOR |
 
