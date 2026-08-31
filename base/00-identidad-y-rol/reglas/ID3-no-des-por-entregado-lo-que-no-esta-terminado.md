@@ -9,6 +9,8 @@ INCORRECTO: "listo" con las pruebas escritas pero sin correr, y la doc para desp
 CORRECTO:   "listo" = especificación cumplida + pruebas verdes 9/9 + nada roto + rastro escrito
 ```
 
+**Nadie la hace cumplir:** **en conjunto**, que es lo que la regla exige. Sus cuatro condiciones sí se validan por separado (la suite, el plan contra lo hecho, la documentación del cierre); lo que ningún programa junta es decidir si el trabajo está terminado.
+
 ---
 
 ### Checklist  ·  **CUMPLE**

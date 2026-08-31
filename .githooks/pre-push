@@ -25,10 +25,14 @@ fi
 
 echo "pre-push: corriendo la batería antes de publicar…"
 
-# Lo que **detiene**: enlaces rotos, índices desactualizados, y que lo que se
-# publica esté versionado. Son defectos nuevos, y salen del trabajo de hoy.
+# Lo que **detiene**: enlaces rotos, índices desactualizados, que lo que se
+# publica esté versionado, y que ninguna regla del núcleo se publique sin decir
+# quién la hace cumplir. Son defectos nuevos, y salen del trabajo de hoy.
+#
+# `ejecutable` no le cuesta nada a un proyecto: mira el capítulo `00` de `base/`,
+# que solo existe en el estándar. Donde no hay reglas, no hay nada que reportar.
 FALLO=0
-for SUB in estandar versionado; do
+for SUB in estandar versionado ejecutable; do
     "$PY" "$ESTANDAR/validadores/validar.py" "$SUB" --raiz "$(pwd)" || FALLO=1
 done
 

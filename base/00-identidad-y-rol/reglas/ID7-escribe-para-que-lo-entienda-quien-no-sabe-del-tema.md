@@ -10,6 +10,8 @@ CORRECTO:   "Abre cada archivo y lo va pasando de a uno, con su nombre y su
             contenido, a quien lo revisa."
 ```
 
+**Nadie la hace cumplir:** que un texto se entienda sin saber del tema lo decide quien no sabe del tema. Contar palabras raras daría por clara una explicación sencilla y equivocada.
+
 ---
 
 ### Checklist  ·  **CUMPLE**

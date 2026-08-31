@@ -121,10 +121,14 @@ PLANTILLA_PRE_COMMIT = _PREAMBULO + """
 PLANTILLA_PRE_PUSH = _PREAMBULO + """
 echo "pre-push: corriendo la batería antes de publicar…"
 
-# Lo que **detiene**: enlaces rotos, índices desactualizados, y que lo que se
-# publica esté versionado. Son defectos nuevos, y salen del trabajo de hoy.
+# Lo que **detiene**: enlaces rotos, índices desactualizados, que lo que se
+# publica esté versionado, y que ninguna regla del núcleo se publique sin decir
+# quién la hace cumplir. Son defectos nuevos, y salen del trabajo de hoy.
+#
+# `ejecutable` no le cuesta nada a un proyecto: mira el capítulo `00` de `base/`,
+# que solo existe en el estándar. Donde no hay reglas, no hay nada que reportar.
 FALLO=0
-for SUB in estandar versionado; do
+for SUB in estandar versionado ejecutable; do
     "$PY" "$ESTANDAR/validadores/validar.py" "$SUB" --raiz "$(pwd)" || FALLO=1
 done
 
@@ -285,6 +289,12 @@ HOOKS_CLAUDE = [
     # tener el hueco por el que entraron 712 lineas ajenas.
     ("Stop", None, "hook_turno.py",
      "Anotando lo que tocó este turno...", ""),
+    # `EP-005·HU-012`: al cerrar el turno, se mide como quedo escrito lo que
+    # el agente acaba de decir. Tres reglas del nucleo hablan de eso y ninguna
+    # tenia quien la hiciera cumplir. Mide y no detiene: cuando esto corre, el
+    # texto ya salio, asi que lo unico que se puede hacer es dejarlo a la vista.
+    ("Stop", None, "hook_redaccion.py",
+     "Midiendo como quedo escrito el turno...", ""),
     ("Stop", None, "hook_presupuesto.py",
      "Sumando el consumo de la sesión...", ""),
     ("UserPromptSubmit", None, "hook_presupuesto.py",

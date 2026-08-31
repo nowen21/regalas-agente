@@ -24,6 +24,7 @@ import sesiones         # noqa: E402
 import sitio            # noqa: E402
 import temas            # noqa: E402
 import brevedad         # noqa: E402
+import ejecutable       # noqa: E402
 import calidad          # noqa: E402
 import checklist        # noqa: E402
 import citas            # noqa: E402
@@ -284,6 +285,21 @@ def cmd_metareglas(a):
     if a.catalogo:
         hallazgos += metareglas.validar_catalogo(a.catalogo, raiz)
     return reportar(hallazgos, f"El estándar contra sus meta-reglas · {relativo(raiz)}")
+
+
+def cmd_ejecutable(a):
+    """`EP-005·HU-012` · Qué regla del núcleo tiene quien la ejecute, y cuál no.
+
+    Una regla escrita **informa**; un programa o un enganche **ejecuta**. Hasta
+    hoy las dos se leían igual, y catorce de las dieciocho del núcleo dependían
+    de que el agente se acordara."""
+    raiz = os.path.abspath(a.raiz)
+    codigo = reportar(ejecutable.validar(raiz),
+                      f"Quién hace cumplir el núcleo · {relativo(raiz)}")
+    linea = ejecutable.como_texto(raiz)
+    if linea:
+        print(linea)
+    return codigo
 
 
 def cmd_acciones(a):
@@ -717,6 +733,11 @@ def main():
     mr.add_argument("--catalogo",
                     help="carpeta de un proyecto, para comprobar además su catálogo · M16")
     mr.set_defaults(func=cmd_metareglas)
+
+    ej = sub.add_parser("ejecutable",
+                        help="qué regla del núcleo declara quien la hace cumplir")
+    ej.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    ej.set_defaults(func=cmd_ejecutable)
 
     re_ = sub.add_parser("reaperturas",
                          help="qué fases volvieron atrás desde su cierre · retrabajo")

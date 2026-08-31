@@ -250,6 +250,57 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 
 ---
 
+### H-16 · Catorce de las dieciocho reglas del núcleo no tenían quien las hiciera cumplir, y ninguna lo decía
+
+- **Qué pasó:** se contaron las reglas vigentes del capítulo `00` y se buscó su identificador dentro de los programas y de los enganches. **Siete no aparecían en ninguno**; de las once que sí, solo `ID8` y `N6` tenían una pieza que de verdad las ejecutara. Hoy las dieciocho declaran quién las hace cumplir: cinco nombran su pieza y trece dicen, con su motivo, que no la tienen.
+- **Por qué importa:** el núcleo es lo que no se relaja, y ahí una regla que solo está escrita se leía igual que una que manda. Quien la abría veía una exigencia, sin manera de saber si detrás había algo o no había nada.
+- **Qué lo soluciona:** ya está hecho. `validadores/ejecutable.py` lo comprueba, y el `pre-push` no deja publicar una regla del núcleo que no lo diga.
+- **Qué se decidió:** que **las dos respuestas valen** —una pieza, o nadie con su motivo— y que la que no vale es callarse. Y que el motivo se exija: una casilla marcada sin motivo no es una decisión. **El usuario cortó la salida fácil:** catorce reglas sin pieza daban catorce pendientes, y dijo *«no las deje como pendiente de una solución»*.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-012
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** la fase `A-EP-005-HU-012` · la sección 6 de `estructura-regla.md` · `S-093`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-17 · Las tres reglas sobre cómo escribe el agente ya se miden sobre lo que acaba de escribir
+
+- **Qué pasó:** `00·ID8`, `00·ID9` e `00·ID10` dependían de que el agente se acordara. Ahora, al cerrar cada turno, se cuenta sobre su respuesta el trato directo, las marcas mecánicas y cuánto ocupa. **Si hay algo que decir, se dice; si no, se calla.**
+- **Por qué importa:** la evidencia estaba contada en otro proyecto —el usuario pidió «menos es más» siete veces en tres días y cada vez se anotó el caso sin que cambiara nada— y en esta misma sesión el usuario tuvo que corregir tres veces cómo estaba escrito el chat. Lo que faltaba no era otro recordatorio.
+- **Qué lo soluciona:** ya está hecho: `validadores/redaccion.py` y el enganche de cierre de turno, puesto por el instalador, que es el único canal.
+- **Qué se decidió:** que **mida y no detenga**. Cuando el enganche corre, el texto ya salió; devolverlo le costaría al usuario leer la versión larga primero y la corta después. Y que **se calle cuando todo está bien**: un aviso que sale en cada turno deja de leerse a la tercera.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-012
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `validadores/redaccion.py` · `adaptadores/claude-code/hook_redaccion.py` · el pendiente 58, cerrado del todo
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-18 · Una línea nueva dentro de una regla la miran cuatro comprobaciones, y ninguna sabía que existía
+
+- **Qué pasó:** al escribir la declaración en las dieciocho reglas saltaron tres defectos de golpe: ocho reglas pasaron a **reprobar el largo del molde**, catorce **sellos del checklist se dieron por vencidos**, y tres declaraciones traían raya larga, que el trinquete del `pre-commit` habría rechazado. **Ninguna regla había cambiado lo que exige.**
+- **Por qué importa:** el archivo de una regla lo leen a la vez el molde, el sello, el contador de marcas y el validador nuevo. Las cuatro tenían su idea de dónde termina la regla, y ninguna contemplaba una línea que fuera de la regla sin ser su cuerpo.
+- **Qué lo soluciona:** ya está hecho, con el mismo argumento que ya estaba escrito para la tipografía: el sello responde por lo que la regla **exige**.
+- **Qué se decidió:** correr las comprobaciones **sobre el cambio a medio hacer**, no después del rechazo. Las rayas se contaron comparando contra lo guardado, que es lo mismo que iba a hacer el enganche al rechazar el commit.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-012
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `validadores/metareglas.py` · `S-094`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -264,9 +315,9 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
 | Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**La sesión se puede cerrar.** Los quince hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**.
+**La sesión se puede cerrar.** Los dieciocho hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
 
-**Lo que sigue no es de esta sesión:** cuatro historias de producto sin ninguna fase, y los tres pendientes que hoy se abrieron y se cerraron el mismo día.
+**Lo que sigue no es de esta sesión:** tres historias de producto sin ninguna fase —`EP-001·HU-013`, `EP-006·HU-001` y `EP-006·HU-002`—, y el aviso de vuelta a `shopnest-mesa`, que exige escribir en otro repositorio y se pregunta antes.
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 

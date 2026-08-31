@@ -123,3 +123,23 @@ Se cuentan las apariciones de `.claude`, `CLAUDE.md`, `settings.json`, `hook_`, 
 | `corredor.py` | 🟢 libre | Cargar archivos de prueba y contar lo que corrieron sirve con cualquier agente — y con ninguno |
 
 **El recuento, corrido y no calculado, da 26 amarrados de 82** —con `corredor.py`, que nació al día siguiente de esta línea y entró acá en la misma vuelta, porque su prueba lo reclamó.
+
+## 2026-08-31 · tres piezas más, y el corte sigue donde estaba
+
+De la fase que le puso a cada regla del núcleo quién la hace cumplir
+(`EP-005·HU-012`). **Las tres entraron el mismo día que nacieron**, y esta vez no
+porque alguien se acordara: la prueba del mapa las reclamó en la primera corrida.
+
+| Pieza | Libre o amarrada | Por qué |
+|---|---|---|
+| `ejecutable.py` | 🟢 libre | Leer las reglas de `base/` y buscar una línea en cada una sirve con cualquier agente, y sin ninguno |
+| `redaccion.py` | 🟢 libre | Contar el trato directo sobre un texto no habla con nadie: recibe la cadena y devuelve un número |
+| `hook_redaccion.py` | 🟡 adaptador | Existe porque la herramienta avisa que terminó el turno, y le entrega la transcripción en su formato |
+
+**El recuento, corrido y no calculado, da 27 amarrados de 85.** Sube uno porque de las tres piezas solo el enganche está amarrado.
+
+**El corte es el mismo de siempre**, y por eso se repite: lo que mide vive en
+`validadores/`, y lo que existe **porque una herramienta concreta lo llama**
+vive en `adaptadores/`. Si mañana el agente es otro, `redaccion.py` se queda
+entero y lo único que hay que rehacer son las diez líneas que leen el archivo de
+la sesión.

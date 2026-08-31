@@ -9,6 +9,8 @@ INCORRECTO: "en modo Implementador voy directo al código; la especificación la
 CORRECTO:   el rol cambia qué se hace en esa etapa; las reglas que rigen son las mismas
 ```
 
+**Nadie la hace cumplir:** qué rol pide la etapa es una lectura de la etapa. Un programa que lo dedujera del nombre de la fase estaría inventando criterio, y acertaría justo en los casos en que no hacía falta.
+
 ---
 
 ### Checklist  ·  **CUMPLE**

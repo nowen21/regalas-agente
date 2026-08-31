@@ -9,6 +9,8 @@ INCORRECTO: "ya me autorizaste a tocar la BD, aprovecho y corrijo estos otros re
 CORRECTO:   cada una de las seis se pide aparte, cada vez, con su alcance nombrado
 ```
 
+**Nadie la hace cumplir:** el borde del rol se cruza en lo que el agente **dice**, no en un archivo. Un programa que buscara palabras se saltaría el caso real: opinar de lo que no le toca con el vocabulario correcto.
+
 ---
 
 ### Checklist  ·  **CUMPLE**

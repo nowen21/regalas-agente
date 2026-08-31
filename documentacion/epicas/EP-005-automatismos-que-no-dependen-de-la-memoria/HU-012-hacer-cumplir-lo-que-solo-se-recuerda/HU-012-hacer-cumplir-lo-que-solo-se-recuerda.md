@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | `shopnest-mesa`, que lo reportó |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Pendiente |
+| **Estado** | Terminada |
 ---
 
 ## 2. Narrativa
@@ -152,12 +152,12 @@ Entonces dice cuál de las tres salidas se tomó, o que no se puede hacer cumpli
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Fijar dónde se declara, en el molde de la regla.
-- [ ] Comprobación que recorre el núcleo y reporta la regla sin declaración.
-- [ ] Comprobar que la pieza declarada existe.
-- [ ] Escribir la declaración de `ID9` con la decisión del usuario.
-- [ ] Avisarle a `shopnest-mesa`.
-- [ ] Versionar el cambio (`20·M10`).
+- [x] Fijar dónde se declara, en el molde de la regla.
+- [x] Comprobación que recorre el núcleo y reporta la regla sin declaración.
+- [x] Comprobar que la pieza declarada existe.
+- [x] Escribir la declaración de `ID9` con la decisión del usuario.
+- [ ] Avisarle a `shopnest-mesa` — se pregunta antes de escribir en otro repositorio.
+- [x] Versionar el cambio (`20·M10`).
 
 ---
 
@@ -167,7 +167,7 @@ Entonces dice cuál de las tres salidas se tomó, o que no se puede hacer cumpli
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| — | — | — | — | — | Sin empezar |
+| [`A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir`](A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/estado-fase.md) | CA-01 · CA-02 · CA-03 · CA-04 | [plan_trabajo.md](A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/plan_trabajo.md) | [plan_pruebas.md](A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/plan_pruebas.md) | [resultado_pruebas.md](A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/resultado_pruebas.md) | **Cumple** |
 
 **De dónde sale esta historia:** el [pendientes/hecho/nada-hace-cumplir-id9.md](../../../../pendientes/hecho/nada-hace-cumplir-id9.md), reportado por `shopnest-mesa`.
 
@@ -200,15 +200,15 @@ Entonces dice cuál de las tres salidas se tomó, o que no se puede hacer cumpli
 - [x] Criterios de aceptación definidos y testeables
 - [x] Reglas de negocio documentadas
 - [x] Dependencias identificadas
-- [ ] Decidida la salida para `ID9` (solo bloquea el CA-04)
+- [x] Decidida la salida para `ID9` — **medir sin detener**, decidida por el usuario el 2026-08-31
 
 ## 11. Definition of Done (DoD)
 
-- [ ] Los cuatro criterios de aceptación verificados
-- [ ] `ID9` con su declaración escrita
-- [ ] `shopnest-mesa` avisado, para que cierre su pendiente 22
-- [ ] Versionada (`20·M10`)
-- [ ] El pendiente 58 cerrado nombrando la fase
+- [x] Los cuatro criterios de aceptación verificados
+- [x] `ID9` con su declaración escrita — y las otras diecisiete del capítulo `00`
+- [ ] `shopnest-mesa` avisado, para que cierre su pendiente 22 — **escribir en otro repositorio se pregunta antes** (`00·N1`)
+- [x] Versionada (`20·M10`)
+- [x] El pendiente 58 cerrado nombrando la fase
 
 ---
 
@@ -230,3 +230,4 @@ Entonces dice cuál de las tres salidas se tomó, o que no se puede hacer cumpli
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, para que el pendiente 58 deje de estar suelto |
+| 2026-08-31 | Ing. José Dúmar Jiménez Ruíz | Construida en la fase `A-EP-005-HU-012`. Las 18 reglas del núcleo declaran quién las hace cumplir: 5 nombran su pieza y 13 dicen, con su motivo, que no la tienen |

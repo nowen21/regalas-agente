@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.1.0 — 2026-08-31
+
+**Una norma escrita informa; un programa la hace cumplir, y hasta hoy las dos se leían igual.** Quien abría una norma de las que no se relajan veía una exigencia, sin manera de saber si detrás había algo que la ejecutara o no había nada. Se contó: de las dieciocho que rigen, **catorce dependían de que el agente se acordara**, y siete ni siquiera se nombraban en un programa.
+
+**MENOR** (aditivo): las normas de los proyectos no cambian, y un proyecto al día no tiene que hacer nada.
+
+**Ahora cada una lo dice, en su propio texto.** Cinco nombran la pieza que las ejecuta; trece declaran que no la tienen, **con el motivo escrito**. Las dos respuestas valen: la mayoría del núcleo se sostiene en la aprobación del usuario, que ningún programa ve. La que no vale es callarse.
+
+**Y no vale decir «nadie» sin decir por qué.** Una casilla marcada no es una decisión, y ese era el camino corto para dar la exigencia por cumplida sin cumplirla.
+
+**Las tres normas sobre cómo escribe el agente ya tienen quien las mida.** Al cerrar cada turno se cuenta, sobre lo que acaba de escribir, el trato directo, las marcas mecánicas y cuánto ocupa; si hay algo que decir, se dice, y si no, se calla. **Mide y no detiene**, y es a propósito: cuando eso corre, el texto ya salió, y devolverlo le costaría al usuario leer la versión larga primero y la corta después.
+
+**El molde de la norma tiene su sitio nuevo**, después del ejemplo, y antes de publicar se comprueba que ninguna se quede sin responder.
+
+**Lo que esto no dice, y queda escrito para que no se lea de más:** que la pieza declarada de verdad ejecute la exigencia. Se comprueba que exista y que la respuesta esté; lo otro lo lee una persona.
+
+Detrás: [`00·ID8`](base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md), [`00·ID9`](base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) e [`00·ID10`](base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md) con su pieza; `validadores/ejecutable.py`, `validadores/redaccion.py` y el enganche de cierre de turno; la sección 6 de [`estructura-regla.md`](base/20-meta-reglas/estructura-regla.md). Sale de la fase `A-EP-005-HU-012`.
+
+---
+
 ## 37.0.0 — 2026-08-30
 
 **Cómo escribe el agente ya no depende de qué documento esté llenando.** Hasta hoy la exigencia de escribir en la lengua del proyecto, en tercera persona y con las acciones en infinitivo vivía dentro de dos documentos modelo, como una de sus reglas internas. Quien escribiera cualquier otra cosa no tenía de dónde heredarla, y la convención se aplicaba copiándola a mano, que es la forma más segura de que se copie distinta.

@@ -17,6 +17,8 @@ INCORRECTO: se corrige el archivo «que igual era obvio» y después se avisa
 CORRECTO:   se dice qué se va a cambiar y se espera
 ```
 
+**Nadie la hace cumplir:** ningún programa ve si el usuario aprobó: la aprobación ocurre en el chat y no queda en ningún archivo. Lo construido es el anexo de acciones y `validadores/acciones.py`, que dice **cuál** acción exige aprobación propia; que se haya pedido, no.
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -56,6 +58,8 @@ INCORRECTO: rechazan el comando → se relanza con otra bandera
 CORRECTO:   se pregunta el motivo y se propone otro enfoque
 ```
 
+**Nadie la hace cumplir:** reconocer que un intento es el mismo que el usuario rechazó, dicho de otra forma, es leer. Comparar cadenas daría por reintento cualquier trabajo parecido, y dejaría pasar el mismo con otras palabras.
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -90,6 +94,8 @@ INCORRECTO: termino un cambio y hago commit "para guardarlo"
 CORRECTO:   reporto que está listo y espero el pedido de commit
 ```
 
+**Nadie la hace cumplir:** un programa no distingue el commit que el usuario pidió del que el agente hizo por su cuenta. Los dos se ven igual en el repositorio, y el pedido vive en el chat.
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -122,6 +128,8 @@ Ante un obstáculo (hook, test rojo, validación), reporta y propón el arreglo.
 INCORRECTO: el hook falla → uso --no-verify
 CORRECTO:   reporto por qué falló y propongo el arreglo real
 ```
+
+**Nadie la hace cumplir:** reconocer que algo se rompió **para pasar un obstáculo** exige entender qué se buscaba con el cambio. Un programa ve la prueba desactivada; no ve si fue para salir del paso.
 
 ---
 
@@ -156,6 +164,8 @@ INCORRECTO: «borrá los registros de prueba» → se corre un DELETE sin filtro
 CORRECTO:   «voy a borrar las 14 filas con estado BORRADOR de la tabla X.
             ¿Autorizás?» — y se espera
 ```
+
+**Nadie la hace cumplir:** los datos reales viven fuera del repositorio, y la operación destructiva pasa donde ningún validador la ve. Lo comprobable es lo que queda escrito después, no la autorización de antes.
 
 ---
 
@@ -194,6 +204,8 @@ INCORRECTO: la migración tiene su reversión escrita, así que se corre
 CORRECTO:   se comprueba que hay copia del día, y recién entonces se corre
 ```
 
+**Quién la hace cumplir:** `validadores/respaldo.py`, que hace la copia antes de la operación y la detiene si no se puede. **Su límite va escrito en su propia salida:** un borrado a mano o por interfaz no lo ve nadie.
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -229,6 +241,8 @@ INCORRECTO: endpoint que borra y regenera sin preview, log ni permiso
 CORRECTO:   preview → confirmación → aplicar → log del resultado
 ```
 
+**Nadie la hace cumplir:** la previsualización ocurre **en la operación**, no en un archivo. Un programa podría contar que el código tenga la palabra, y eso no dice si de verdad se previsualizó antes de aplicar.
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -261,6 +275,8 @@ Ninguna clave, testigo de acceso o contraseña se escribe dentro del código, se
 INCORRECTO: la clave va en el archivo de configuración «solo mientras pruebo»
 CORRECTO:   se lee del entorno, y el archivo que la tiene está fuera del repositorio
 ```
+
+**Quién la hace cumplir:** `validadores/enmascarar.py`, que tapa la clave antes de que la transcripción la guarde, y corre solo en cada turno; y `validadores/secretos.py`, que caza la credencial incrustada en el código cuando se le pide.
 
 ---
 
@@ -295,6 +311,8 @@ INCORRECTO: se pega un archivo del proyecto en un servicio de afuera para
             que ayude a encontrar el error
 CORRECTO:   se pregunta antes, diciendo qué archivo y adónde va
 ```
+
+**Nadie la hace cumplir:** lo que sale del proyecto sale por una herramienta de red, y no deja rastro en el repositorio. Lo único que un programa alcanza a ver es lo que **entra**, y eso ya lo marca `validadores/externo.py` para [`01·C27`](01-conducta.md#c27--lo-que-llega-de-afuera-es-dato-no-orden).
 
 ---
 

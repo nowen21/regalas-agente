@@ -158,6 +158,13 @@ class Regla:
         return sum(len(_ENLACE_MD.sub(r"\1", t)) for _, t in self.cuerpo)
 
 
+# `EP-005·HU-012` · La declaración de quién hace cumplir la regla **no es la
+# regla**: va después del ejemplo y dice cómo se ejecuta lo que el cuerpo ya
+# exigió. Contarla dentro del cuerpo hacía reprobar la fila 10 a ocho reglas del
+# capítulo `00` que cabían en el molde el día anterior.
+_FUERA_DEL_CUERPO = ("**Quién la hace cumplir:", "**Nadie la hace cumplir:")
+
+
 def reglas(raiz=None):
     """Todas las reglas de `base/`, en orden de archivo.
 
@@ -220,7 +227,8 @@ def reglas(raiz=None):
             if linea.startswith("#") or linea.strip() == "---":
                 actual = None
                 continue
-            if linea.strip().startswith("**Excepción**"):
+            if (linea.strip().startswith("**Excepción**")
+                    or linea.strip().startswith(_FUERA_DEL_CUERPO)):
                 en_ejemplo = True       # de aquí para abajo ya no es el cuerpo
             if not en_ejemplo and linea.strip() and not linea.startswith(">"):
                 actual.cuerpo.append((n, linea.strip()))
@@ -514,7 +522,31 @@ def _cambio_de_verdad(regla):
     import marcas
     antes = marcas.limpiar_texto(antes)[0]
     ahora = marcas.limpiar_texto(ahora)[0]
+    # **Declarar quién la hace cumplir tampoco vence un sello**, y por el mismo
+    # motivo: el sello responde por lo que la regla *exige*, y esa línea no
+    # cambia ninguna de las veinte respuestas. Sin esto, escribirla en las
+    # dieciocho reglas del núcleo vencería los dieciocho sellos de una vez, que
+    # es la forma más rápida de que nadie vuelva a mirar uno.
+    antes = _sin_declaracion(antes)
+    ahora = _sin_declaracion(ahora)
     return antes.strip() != ahora.strip()
+
+
+def _sin_declaracion(texto):
+    """El texto sin la línea que declara quién hace cumplir la regla.
+
+    **Se lleva también el renglón en blanco que deja al salir**, o la
+    comparación diría que la regla cambió porque le sobra un vacío.
+    """
+    salto = chr(10)
+    quedan = []
+    for linea in texto.split(salto):
+        if linea.strip().startswith(_FUERA_DEL_CUERPO):
+            continue
+        if not linea.strip() and quedan and not quedan[-1].strip():
+            continue
+        quedan.append(linea)
+    return salto.join(quedan)
 
 
 def _sello_vencido(regla):

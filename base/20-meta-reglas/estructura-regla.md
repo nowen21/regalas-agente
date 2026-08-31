@@ -36,11 +36,15 @@
 │   │
 │   └── lo que ya dice otra regla se ENLAZA (`ver 04·S4`), no se copia
 │
-└── EJEMPLO — obligatorio si la regla se puede malinterpretar   M5
-    ```
-    INCORRECTO: <el error concreto que se ve en la práctica>
-    CORRECTO:   <qué se hace en su lugar>
-    ```
+├── EJEMPLO — obligatorio si la regla se puede malinterpretar   M5
+│   ```
+│   INCORRECTO: <el error concreto que se ve en la práctica>
+│   CORRECTO:   <qué se hace en su lugar>
+│   ```
+│
+└── QUIÉN LA HACE CUMPLIR — solo en el capítulo `00`      EP-005·HU-012
+    **Quién la hace cumplir:** `ruta/de/la/pieza.py`, y qué hace
+    **Nadie la hace cumplir:** por qué ningún programa puede
 ```
 
 ---
@@ -216,6 +220,34 @@ Hay que ponerlo cuando la regla se puede entender de dos formas, o cuando el err
 
 El renglón de INCORRECTO se escribe con **el error que la gente comete de verdad**. Si se pone uno exagerado, que nadie cometería, no sirve de nada: todos lo leen, piensan "yo no hago eso", y siguen cometiendo el error de siempre.
 
+### 6 · Quién la hace cumplir — **solo las reglas del capítulo `00`**
+
+Una regla escrita **informa**; un programa o un enganche **ejecuta**. Hasta el
+2026-08-31 las dos se leían igual, y la cuenta era esta: de las 18 reglas
+vigentes del núcleo, **14 no tenían quien las ejecutara** y siete ni siquiera se
+nombraban en un programa. Desde entonces cada una lo dice, en una línea que va
+**después del ejemplo y antes del checklist**, y que abre con una de dos:
+
+| Se escribe | Cuándo | Qué lleva |
+|---|---|---|
+| `**Quién la hace cumplir:**` | hay una pieza que la ejecuta | su **ruta desde la raíz**, entre comillas invertidas, y qué hace |
+| `**Nadie la hace cumplir:**` | ningún programa puede | **el motivo**, escrito |
+
+**Las dos respuestas valen.** «Nadie» no es una falta: la mayoría del núcleo se
+sostiene en la puerta de aprobación, que ningún programa ve. Lo que no vale es
+callarse, porque entonces la regla que manda y la que solo está escrita se leen
+igual. **Y no vale «nadie» sin motivo**: una casilla marcada no es una decisión.
+
+**Medir sin bloquear cuenta**, si la medición queda a la vista de quien revisa.
+Es lo que hacen [`brevedad.py`](../../validadores/brevedad.py) y
+[`redaccion.py`](../../validadores/redaccion.py) sobre lo que el agente acaba de
+escribir: cuando el enganche corre, el texto ya salió y no hay nada que
+bloquear.
+
+Lo comprueba [`validadores/ejecutable.py`](../../validadores/ejecutable.py), y
+el `pre-push` no deja publicar una regla del núcleo que no lo diga. Lo que **no**
+comprueba es que la pieza de verdad la ejecute: eso se lee.
+
 ---
 
 ## Ejemplo completo — todas las partes
@@ -296,6 +328,10 @@ VERSION                           → se sube el número, según ese tipo       
 enlaces                           → mirar quién nombraba la regla que se tocó,
                                     y si algún número que se nombra ya no
                                     existe                                  M10
+
+quién la hace cumplir              → solo si la regla es del capítulo `00`:
+   (dentro de la propia regla)        la pieza que la ejecuta, o por qué
+                                      ninguna puede. Ver la sección 6
 ```
 
 Una regla que un programa podría revisar, pero que nadie revisa, es una regla que no se cumple.

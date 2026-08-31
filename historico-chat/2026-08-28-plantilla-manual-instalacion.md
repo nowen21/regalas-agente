@@ -1756,3 +1756,255 @@ Queda pendiente su `/rename plantilla-manual-instalacion`, que solo lo puede esc
 
 ### 71 · Usuario — 2026-08-31 07:56:12
 > si
+
+**Agente** — 2026-08-31 07:57:15
+<!-- agente: 1da66959-e702-4d63-9e2b-1d47f4c56b2d -->
+
+Pusheado `b37b43e`. **No queda nada mío sin guardar.**
+
+Lo único pendiente es el comando, que solo lo puede escribir usted:
+
+```
+/rename plantilla-manual-instalacion
+```
+
+Le pone a la pestaña y a `/resume` el mismo nombre que ya tienen la transcripción y el resumen.
+
+Lo demás que queda en el árbol es de otras sesiones: los veintiún `estado-fase` de los capítulos de EP-001, el modelo de manual de usuario y dos archivos más.
+
+### 72 · Usuario — 2026-08-31 07:59:50
+> siga
+
+**Agente** — 2026-08-31 08:01:04
+<!-- agente: b3500ee3-a118-4603-8a23-c29e0f729a43 -->
+
+Las cuatro que quedan son otra cosa. Dos son de producto para la versión 2 —buscar en lo conversado y ver qué corrección se repite— y una es de dominio opcional. La cuarta sí encaja con todo lo de hoy:
+
+**`EP-005 · HU-012` — que cada regla del núcleo diga qué la hace cumplir, o diga que no tiene forma de hacerse cumplir.** Cuatro criterios: se reporta la que no lo declara y la corrida termina en error; «no se puede hacer cumplir» vale pero con motivo; la pieza declarada tiene que existir; y `ID9` queda con su decisión escrita.
+
+Es exactamente lo que la jornada estuvo mostrando de otras formas: un aviso que disparó tres veces y no cambió nada, un reclamo que salía siempre y por eso nadie lo leía, una regla escrita que no se aplicaba donde importa. Esta historia le pone nombre: **una regla que rige no es lo mismo que una regla que está escrita**, y hoy no hay cómo distinguirlas.
+
+No es pequeña. Pide recorrer las reglas del núcleo, decidir por cada una qué pieza la hace cumplir, y que las que no tengan ninguna lo declaren con su motivo. Eso último son decisiones suyas, una por regla.
+
+¿La abro, o la dejo para su propia sesión?
+
+### 73 · Usuario — 2026-08-31 08:11:57
+> 00 id9
+
+**Agente** — 2026-08-31 08:12:02
+<!-- agente: af263e32-25fa-49d5-89a8-729b98f39ce1 -->
+
+Quedan cuatro. Dos son de producto para la versión 2, una es de dominio opcional, y la cuarta encaja con todo lo de hoy:
+
+**`EP-005 · HU-012`** — que cada regla del núcleo diga qué la hace cumplir, o declare que no tiene forma. Es lo que la jornada mostró tres veces: un aviso que disparó y no cambió nada, un reclamo que salía siempre, una regla escrita que no se aplicaba donde importa.
+
+Pide una decisión suya por cada regla del núcleo que no tenga pieza. ¿La abro?
+
+### 74 · Usuario — 2026-08-31 08:13:30
+> <ide_opened_file>The user opened the file Untitled-1 in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> si
+
+**Agente** — 2026-08-31 08:14:54
+<!-- agente: 77949c1e-4e4e-4749-8581-f1ec572018f6 -->
+
+Antes de abrirla, mido el estado: cuántas reglas del núcleo hay y cuántas declaran hoy qué las hace cumplir.
+
+Diecinueve reglas en el capítulo, una derogada: **dieciocho que tendrían que declararlo**. Mido cuáles ya tienen quien las ejecute, buscando su identificador en los programas y enganches.
+
+**Medido. De las 18 reglas vigentes del capítulo `00`, siete no aparecen en ningún programa ni en ningún enganche:** dependen hoy de que el agente se acuerde.
+
+| Regla | Qué exige |
+|---|---|
+| `N5` | Operaciones masivas: previsualizar antes de aplicar `[BLINDADA]` |
+| `N8` | El contenido del proyecto no sale sin autorización `[BLINDADA]` |
+| `ID1` | Trabaja con criterio de desarrollador senior |
+| `ID4` | Asume el ciclo completo, de entender a documentar |
+| `ID5` | No salgas del borde del rol |
+| `ID6` | Toma el rol especializado que pide la etapa |
+| `ID10` | La que escribimos hoy |
+
+Dos son blindadas, que es lo que más pesa. Y `ID10` nació esta mañana sin decir qué la hace cumplir, que es exactamente el defecto que la historia describe.
+
+Las once restantes sí se nombran en algún programa, pero **nombrarse no es hacerse cumplir**: `ID9` aparece en tres archivos y su propio pendiente dice que nada la hace cumplir, solo la mide. Eso hay que leerlo una por una.
+
+Antes de escribir el plan, una decisión suya sobre el alcance de la fase: **¿la abro para las dieciocho, o solo para construir la comprobación y declarar las siete que no tienen nada?** La primera es leer once reglas y decidir por cada una si su pieza la ejecuta o solo la menciona; la segunda deja eso para después, con la comprobación ya puesta.
+
+### 75 · Usuario — 2026-08-31 08:19:39
+> 00 id9
+
+**Agente** — 2026-08-31 08:19:45
+<!-- agente: e94df5a5-443a-4d41-8e4e-8b0decb4e515 -->
+
+De las 18 reglas vigentes del capítulo `00`, **siete no aparecen en ningún programa ni enganche**: `N5`, `N8`, `ID1`, `ID4`, `ID5`, `ID6` e `ID10`. Dos son blindadas, y la última nació esta mañana.
+
+Las otras once se nombran en algún archivo, pero nombrarse no es hacerse cumplir: `ID9` sale en tres y nada la ejecuta.
+
+¿Abro la fase para las dieciocho, o solo para la comprobación y las siete?
+
+### 76 · Usuario — 2026-08-31 08:20:24
+> que recomienda
+
+**Agente** — 2026-08-31 08:20:35
+<!-- agente: ae26d1ba-10d8-4ffd-b9e1-7dd29720b425 -->
+
+**Las dieciocho, en una sola fase.**
+
+El motivo es el defecto mismo: una comprobación que solo mira siete reglas deja once diciendo «acá no hay nada que reclamar» cuando nadie las ha leído. Es el cero de esta mañana otra vez, y hoy costó un commit con una afirmación falsa.
+
+Y las once son las que enseñan. `ID9` se nombra en tres archivos y su pendiente dice que **nada la hace cumplir, solo la mide**: esa distinción es justamente lo que la historia viene a fijar, y si no se lee ahora nadie la vuelve a mirar.
+
+Sobre el trabajo: leer once reglas no es lo caro. Lo caro es decidir, en las que no tengan pieza, si eso se acepta con su motivo o si hay que construir algo, y eso es suyo. Se lo llevo agrupado —una tabla con la propuesta por regla— en vez de once preguntas sueltas.
+
+Lo que no entra, y lo dice la propia historia: **con cuál de las tres salidas se hace cumplir `ID9`**. Esta fase exige que la decisión esté escrita, no cuál sea.
+
+¿Voy?
+
+### 77 · Usuario — 2026-08-31 08:21:47
+> si
+
+**Agente** — 2026-08-31 08:23:21
+<!-- agente: 4262979d-c07d-4da4-b39d-e8509cc03135 -->
+
+Ahora lo que no puede hacer el programa: leer cada aparición y ver si esa pieza la ejecuta o solo la nombra.
+
+Leídas las once. Esta es la tabla, con lo que propongo por regla:
+
+| Regla | Qué hay hoy | Propongo declarar |
+|---|---|---|
+| **`ID8`** sin marcas de IA | `marcas.py`, y el `pre-commit` **rechaza el commit**. Me lo rechazó dos veces hoy | **La ejecuta el enganche del commit** |
+| **`N6`** la credencial no se escribe | `secretos.py` la busca en el código, `enmascarar.py` tapa la transcripción, y hoy `04·S19` la extendió a la memoria | **La ejecutan tres piezas**, con su límite escrito: la clave dentro de una frase no se tapa |
+| **`N2`** control de versiones solo bajo pedido | El `pre-push` corre la batería, pero **no comprueba que se haya pedido** | **No tiene forma**: que se haya pedido no lo puede ver un programa |
+| **`N4`** nada destructivo sin autorización | `respaldo.py` dice «correrlo **es** la autorización», y se pide a mano | **No detiene nada.** Es el canal de la autorización, no su control |
+| **`N7`** antes de lo irreversible, de dónde volver | `respaldo.py`, y su propio texto dice «sigue siendo criterio del agente» | **No tiene forma**, y ya está dicho ahí |
+| **`ID9`** decir lo mismo en menos palabras | `brevedad.py` **mide y no detiene**, y no está en la batería del push | **Mide sin quedar a la vista**, así que no cuenta como cumplida por `RN-05` |
+| **`N1`, `N3`, `N9`, `ID3`, `ID7`** | Solo se nombran: en una prueba, en un comentario o en un docstring | **Nada las ejecuta** |
+
+Sumadas a las siete que no aparecían en ningún lado: **catorce de dieciocho reglas del núcleo no tienen quien las haga cumplir, y seis de esas catorce son blindadas.** Las que sí: `ID8` y `N6`.
+
+Lo que necesito de usted, y es una sola pregunta: **¿«no tiene forma de hacerse cumplir» se acepta como declaración para esas catorce, escribiendo el motivo en cada una?** La alternativa es abrir trabajo para construirles una pieza, y eso son catorce historias, no una fase.
+
+### 78 · Usuario — 2026-08-31 08:43:16
+> 00 id 9
+
+**Agente** — 2026-08-31 08:43:33
+<!-- agente: 9159dc35-4dd3-461f-8dff-19436ec42a88 -->
+
+**Catorce de dieciocho reglas del núcleo no tienen quien las haga cumplir**, y seis de esas catorce son blindadas.
+
+Solo dos sí: `ID8`, que el enganche del commit rechaza, y `N6`, con tres piezas. Las demás se nombran en una prueba o en un comentario, o miden sin detener, como `ID9`.
+
+Una pregunta: **¿«no tiene forma de hacerse cumplir», con su motivo escrito, se acepta para esas catorce?** Lo otro es construirles una pieza: catorce historias, no una fase.
+
+### 79 · Usuario — 2026-08-31 08:59:40
+> no entiendo
+
+**Agente** — 2026-08-31 08:59:57
+<!-- agente: 4c312486-2ebd-45c1-88ed-61bf5a4a5dbc -->
+
+Le explico con lo que pasó hoy.
+
+**Una regla puede estar escrita y no pasar nada si no se cumple.** Hoy usted me dijo cinco veces que respondiera corto. Eso es una regla del núcleo, `ID9`. Nada la hace cumplir: hay un programa que **mide** cuánto escribo, pero no lo corre nadie y no detiene nada. Por eso usted tuvo que repetirlo.
+
+**Otra regla sí se hace cumplir.** `ID8`, la de no dejar marcas de escritura automática. Hoy intenté guardar dos veces y **el enganche me rechazó el commit** hasta que las quité. Esa no depende de que yo me acuerde.
+
+La historia que abrimos pide que **cada regla del núcleo diga en cuál de las dos está**: o nombra qué la hace cumplir, o dice de frente «esta no tiene forma de hacerse cumplir, y este es el motivo».
+
+Conté las dieciocho. **Solo dos tienen quien las haga cumplir.** Las otras catorce dependen de que yo me acuerde, y seis de esas son de las que no se relajan nunca.
+
+Ahí hay dos caminos, y por eso le pregunto:
+
+- **Uno:** escribir en cada una de las catorce que no tiene forma, con el motivo. Es honesto y se hace en esta fase. Deja claro cuáles reglas son promesas mías y cuáles las sostiene un programa.
+- **Dos:** construirle una pieza a cada una para que deje de depender de mi memoria. Eso no cabe en una fase: son catorce trabajos.
+
+Mi recomendación es el uno ahora, y que del listado salgan los pendientes para el dos, empezando por las seis blindadas.
+
+### 80 · Usuario — 2026-08-31 09:00:06
+> 00 id9
+
+**Agente** — 2026-08-31 09:00:12
+<!-- agente: 1c5860e8-5950-499d-af89-0e179fa6d7b3 -->
+
+Hoy usted me pidió cinco veces que respondiera corto: esa regla no la hace cumplir nada. En cambio el enganche me rechazó dos commits por otra regla, y esa sí.
+
+De las dieciocho del núcleo, **solo dos tienen quien las haga cumplir**. Catorce dependen de que yo me acuerde, y seis de esas son blindadas.
+
+Recomiendo escribir en cada una de las catorce que no tiene forma, con su motivo, y abrir pendientes para construirles pieza, empezando por las blindadas.
+
+¿Voy?
+
+### 81 · Usuario — 2026-08-31 09:01:24
+> no las deje como pendiende de una solucione
+
+**Agente** — 2026-08-31 09:02:20
+<!-- agente: b1dc2053-4255-48c3-ae52-088b1bc47378 -->
+
+Entendido: una sola solución, no catorce pendientes.
+
+**Lo que se puede medir sobre un texto se mide en un solo enganche.** Ya hay uno de cierre que recibe lo que acabo de escribir —es el que guarda la transcripción—, así que ahí mismo se mide y se deja a la vista: `ID8` las marcas, `ID9` cuánto ocupa, `ID10` la persona y la forma verbal. Una pieza para cuatro reglas, y `brevedad.py` y `marcas.py` ya existen: falta colgarlos donde se vean.
+
+**Las otras diez no son medibles sobre un texto** —`N1` aprobación, `N4` destructivo, `N8` sacar contenido, `N9` no reintentar lo rechazado— y lo que las hace cumplir es la puerta de aprobación, que ningún programa puede ver. En esas la declaración **es** la solución: queda escrito que las sostiene el criterio, y deja de parecer que un programa las cuida.
+
+Con eso la historia cierra completa: cuatro reglas pasan a tener pieza, diez quedan declaradas con su motivo, y las dos que ya tenían se confirman. Cero pendientes nuevos.
+
+¿Voy?
+
+### 82 · Usuario — 2026-08-31 09:03:14
+> 00 id9
+
+**Agente** — 2026-08-31 09:03:20
+<!-- agente: c0163530-fd45-4c8e-93ba-fbd610620e60 -->
+
+Una sola pieza: un enganche de cierre que mida sobre lo que acabo de escribir las tres reglas medibles —`ID8`, `ID9`, `ID10`— y lo deje a la vista. Los dos programas ya existen; falta colgarlos donde se vean.
+
+Las otras diez las sostiene la puerta de aprobación, que ningún programa ve. Ahí la declaración **es** la solución.
+
+Cierra la historia sin abrir pendientes. ¿Voy?
+
+### 83 · Usuario — 2026-08-31 09:17:17
+> si
+
+**Agente** — 2026-08-31 09:59:59
+<!-- agente: 1fa0fa8c-58c5-4f10-bfa3-b3c249e52463 -->
+
+Ahora el documento de cierre de la fase.
+
+Terminada la `EP-005·HU-012`, en una fase: [A-EP-005-HU-012](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/estado-fase.md), con sus cinco documentos.
+
+**La cuenta:** 18 reglas del núcleo, **18 sin decir quién las hace cumplir → 0**. Cinco nombran su pieza (`N6`, `N7`, `ID8`, `ID9`, `ID10`), trece declaran con motivo que no la tienen. Ningún pendiente abierto: era la condición.
+
+**Lo construido**
+
+| Pieza | Qué hace |
+|---|---|
+| [ejecutable.py](validadores/ejecutable.py) | Reporta la regla del núcleo sin declaración; el `pre-push` **detiene** el envío |
+| [redaccion.py](validadores/redaccion.py) | Mide sobre el turno el trato de `ID10`, las marcas de `ID8` y el largo contra el umbral de `brevedad.py` |
+| [hook_redaccion.py](adaptadores/claude-code/hook_redaccion.py) | Lo dice al cerrar cada turno, y se calla cuando no hay nada que decir |
+| [estructura-regla.md §6](base/20-meta-reglas/estructura-regla.md) | Dónde va la declaración y con qué palabras abre |
+
+51 pruebas nuevas, todas en verde. La batería completa: 32 comprobaciones, 0 con fallas. La interna quedó en 5 rojas, las mismas cinco de archivos de otra sesión que ya estaban.
+
+**Tres defectos aparecieron al escribir la línea en las dieciocho reglas** y se cerraron acá: ocho reglas reprobaban el largo del molde, catorce sellos se daban por vencidos, y tres declaraciones traían raya larga que el `pre-commit` habría rechazado. Ninguna regla había cambiado lo que exige. Quedó como `S-094`.
+
+Versión **37.1.0** (MENOR). Señales `S-093` y `S-094`. Resumen de sesión con `H-16`, `H-17` y `H-18`.
+
+**Dos cosas esperan decisión:**
+
+1. **El commit.** 39 archivos, sin tocar los 21 de `EP-001` ni [manual-usuario.md](plantillas/manual-usuario.md), que son de otra sesión.
+2. **El aviso a `shopnest-mesa`**, que reportó el caso y tiene su pendiente 22 abierto. Exige escribir en ese repositorio, y eso no se hace sin permiso.
+
+### 84 · Usuario — 2026-08-31 10:01:12
+> qué espera?
+
+**Agente** — 2026-08-31 10:01:18
+<!-- agente: c2565cb4-69d0-4172-a3c4-283f2b8d7062 -->
+
+Dos respuestas:
+
+1. **¿Se hace el commit?** 39 archivos, sin los 21 de `EP-001` ni [manual-usuario.md](plantillas/manual-usuario.md), que son de otra sesión.
+2. **¿Se escribe el aviso en `shopnest-mesa`?** Es otro repositorio, y ahí vive el pendiente 22 que este trabajo cierra.
+
+Sin eso no queda nada más por hacer en la fase.
+
+### 85 · Usuario — 2026-08-31 10:04:48
+> 1. si
+> 2. si

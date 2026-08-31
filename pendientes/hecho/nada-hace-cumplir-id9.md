@@ -8,6 +8,7 @@
 | **Proyecto de origen** | `shopnest-mesa` — `C:/DesarrollosClaude/personales/shopnest-mesa` |
 | **De dónde sale** | El hallazgo H-4 del resumen del 2026-08-17 de ese proyecto — `historico-chat/resumenes/2026-08-17/sesion.md` |
 | **Seguimiento allá** | `pendientes/22-nada-hace-cumplir-id9.md` |
+| **Fase que lo construyó** | [`A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir`](../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-012-hacer-cumplir-lo-que-solo-se-recuerda/A-EP-005-HU-012-que-cada-regla-del-nucleo-diga-quien-la-hace-cumplir/estado-fase.md) — cerrada el 2026-08-31 (`02·F23`) |
 
 ## El problema
 
@@ -92,3 +93,13 @@ El propio pendiente ya lo había dejado escrito, y sigue valiendo:
 ## Cómo se comprueba
 
 **21 casos** en [`validadores/tests/test_la_brevedad_se_mide.py`](../../validadores/tests/test_la_brevedad_se_mide.py), incluidos los dos que fijan que **nunca detiene**: ni con diez respuestas de nueve mil caracteres sale una falla.
+
+## 2026-08-31 · lo que faltaba: quién la hace cumplir, dicho en la propia regla
+
+**Medir no era el final.** Este pendiente dejó el número a la vista y sirvió para eso: convirtió «me parece que contesta largo» en una mediana que se puede mirar al cerrar la sesión. Lo que no resolvió es el caso general, que es el de la historia: **una regla del núcleo podía existir sin decir si algo la hacía cumplir**.
+
+Al contarlo, catorce de las dieciocho estaban así. Hoy las dieciocho lo dicen, y la de este pendiente quedó con su decisión escrita: **medir sin detener**, y decirlo al cerrar cada turno — no ya sobre las sesiones guardadas, sino sobre lo que el agente acaba de escribir.
+
+Lo agregado: [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) declara su pieza; `validadores/redaccion.py` mide el turno; el enganche de cierre lo deja a la vista, y se calla cuando no hay nada que decir.
+
+**El aviso de vuelta salió el 2026-08-31**, autorizado por el usuario, y quedó en `pendientes/aviso-2026-08-31-el-nucleo-dice-quien-lo-hace-cumplir.md` de `shopnest-mesa`. Va **escrito a mano y así lo dice**: `cerrar.py` escribe el aviso al cerrar el pendiente, y este ya estaba cerrado desde agosto, así que no había cierre que lo disparara. El pendiente 22 de allá no se reabre: cerró el 2026-08-19 con lo que aquella versión traía, y esto es lo que vino después.
