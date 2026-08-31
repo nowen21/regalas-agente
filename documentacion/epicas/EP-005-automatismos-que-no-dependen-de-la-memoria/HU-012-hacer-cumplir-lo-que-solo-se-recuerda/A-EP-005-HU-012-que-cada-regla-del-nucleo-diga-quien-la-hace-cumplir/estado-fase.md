@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Tres defectos aparecieron y se cerraron en la fase |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `8946e8c` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — el estándar no se despliega |
 
 > **La estación 7 se firmó después de construir, y esta fase lo dice de frente.** La pieza de redacción (`redaccion.py` y su enganche) se construyó **antes** de que existieran estos cinco documentos, dentro de la misma jornada y bajo la aprobación que el usuario dio en el chat: *«una sola pieza», y la respuesta fue «si»*. El resto —la comprobación, las dieciocho declaraciones, el molde— sí salió del plan escrito. `02·F4` pide la aprobación explícita **antes**, y acá llegó al final: queda anotado para que la fase no se lea como si el orden se hubiera cumplido.
