@@ -99,5 +99,45 @@ class ConMigracionesLegiblesSigueAcusando(unittest.TestCase):
         self.assertIn("ninguna migración la crea", mensajes)
 
 
+class ElPermisoDeAnularSeEncuentraCuandoEsta(unittest.TestCase):
+    """`EP-004·HU-010` · El patrón del permiso reemplaza su marcador.
+
+    **El caso.** El patrón se declara como `anular_<recurso>` y la
+    comprobación arma su expresión reemplazando el marcador **sobre el
+    texto ya escapado**. Hasta Python 3.6 `re.escape` escapaba todo lo que
+    no fuera alfanumérico, así que `<recurso>` salía como `\<recurso\>` y
+    el reemplazo encajaba. Desde 3.7 solo escapa lo que significa algo en
+    una expresión, y los ángulos no.
+
+    **El reemplazo dejó de ocurrir en silencio.** La expresión quedaba
+    literal, no encontraba ningún permiso, y toda entidad inmutable de todo
+    proyecto recibía el reclamo de `15·IM5`. Un reclamo que sale siempre es
+    el que se aprende a ignorar.
+    """
+
+    def test_el_permiso_escrito_en_el_codigo_se_encuentra(self):
+        tmp = proyecto("src/ventas/permisos.py",
+                       u'PERMISOS = ["anular_factura"]\n')
+        with tmp:
+            import declaracion
+            d = declaracion.leer_declaracion(tmp.name)
+            hallados = entidades.recursos_con_permiso(
+                tmp.name, "anular_<recurso>", d)
+        self.assertIn("factura", hallados,
+                      "el marcador no se reemplazó: la expresión quedó literal")
+
+    def test_el_patron_sin_marcador_no_busca_nada(self):
+        """La contraprueba. Un patrón sin `<recurso>` no puede decir de qué
+        entidad es el permiso, así que devuelve vacío en vez de adivinar."""
+        tmp = proyecto("src/ventas/permisos.py",
+                       u'PERMISOS = ["anular_factura"]\n')
+        with tmp:
+            import declaracion
+            d = declaracion.leer_declaracion(tmp.name)
+            hallados = entidades.recursos_con_permiso(
+                tmp.name, "anular_factura", d)
+        self.assertEqual(set(), hallados)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

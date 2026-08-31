@@ -235,7 +235,20 @@ def recursos_con_permiso(raiz, patron, d):
     """
     if "<recurso>" not in patron:
         return set()
-    regex = re.compile(re.escape(patron).replace(r"\<recurso\>", r"([\w.-]+)"))
+    # `EP-004·HU-010` fase A · El marcador se reemplaza sobre lo escapado, y
+    # `re.escape` ya no escapa los ángulos.
+    #
+    # Hasta Python 3.6 `re.escape` escapaba todo lo que no fuera alfanumérico,
+    # así que `<recurso>` salía como `\<recurso\>`. Desde 3.7 solo escapa lo
+    # que de verdad significa algo en una expresión, y los ángulos no. El
+    # reemplazo dejó de ocurrir en silencio: la expresión quedaba literal, no
+    # encontraba ningún permiso, y **toda entidad inmutable de todo proyecto**
+    # recibía el reclamo de `15·IM5`. Un reclamo que sale siempre es el que se
+    # aprende a ignorar.
+    #
+    # Se busca lo mismo que se escapó, sin suponer cómo quedó escapado.
+    regex = re.compile(re.escape(patron).replace(
+        re.escape("<recurso>"), r"([\w.-]+)"))
     salida = set()
     for ruta, texto in codigo.archivos(raiz):
         if d.ignorado(ruta):

@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Pendiente |
+| **Estado** | Terminada — los cinco criterios ejecutados en la fase `A`, tres de ellos provocados con su contraprueba |
 ---
 
 ## 2. Narrativa
@@ -188,7 +188,7 @@ Y también reporta el módulo declarado que no tiene código
 
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
-| `A-EP-004-HU-010-declaracion-y-comprobacion` | CA-01 a CA-05 y RNF-01 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/plan_trabajo.md](A-EP-004-HU-010-declaracion-y-comprobacion/plan_trabajo.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/plan_pruebas.md](A-EP-004-HU-010-declaracion-y-comprobacion/plan_pruebas.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/resultado_pruebas.md](A-EP-004-HU-010-declaracion-y-comprobacion/resultado_pruebas.md) | Sin empezar: los dos planes están sin aprobar |
+| `A-EP-004-HU-010-declaracion-y-comprobacion` | CA-01 a CA-05 y RNF-01 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/plan_trabajo.md](A-EP-004-HU-010-declaracion-y-comprobacion/plan_trabajo.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/plan_pruebas.md](A-EP-004-HU-010-declaracion-y-comprobacion/plan_pruebas.md) | [documentacion/epicas/EP-004-comprobacion-automatica/HU-010-convencion-declarada-por-el-proyecto/A-EP-004-HU-010-declaracion-y-comprobacion/resultado_pruebas.md](A-EP-004-HU-010-declaracion-y-comprobacion/resultado_pruebas.md) | **Cerrada el 2026-08-30.** Veredicto: **Cumple** — los cinco criterios ejecutados, tres provocados con su contraprueba, y encontró que el reclamo del permiso de anular salía en todo proyecto |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

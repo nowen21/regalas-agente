@@ -13,7 +13,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 7 — Task Planner. **Última puerta pasada:** 4.
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+
+**Estuvo detenida trece días en la estación 7.** El usuario la aprobó el 2026-08-30 y la fase se ejecutó ese mismo día: los programas ya estaban escritos, y lo que faltaba era ejecutar los cinco criterios.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
