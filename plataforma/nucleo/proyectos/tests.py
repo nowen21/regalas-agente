@@ -16,6 +16,7 @@ import tempfile
 from django.test import TestCase, override_settings
 
 from nucleo.auditoria.models import Registro
+from nucleo.seguridad import reglas
 from . import core
 from .models import Proyecto
 
@@ -73,17 +74,29 @@ class BaseProyectos(TestCase):
         return carpeta
 
 
+def version_al_dia():
+    """La versión que el estándar publica hoy, leída de donde vive.
+
+    **No se escribe a mano.** Las dos pruebas que exigen «sin avisos» dan por
+    supuesto que el proyecto está al día, y con un número fijo eso deja de ser
+    cierto el día que el estándar sube de versión: el 2026-08-31 esas dos
+    pruebas se pusieron en rojo por un cambio que no las tocaba.
+    """
+    return reglas._lector().version_estandar()
+
+
 class ConectarTests(BaseProyectos):
     """CP-001 · un proyecto queda conectado."""
 
     def test_el_proyecto_queda_con_lo_que_lo_identifica(self):
-        carpeta = self.proyecto_de_mentira()
+        al_dia = version_al_dia()
+        carpeta = self.proyecto_de_mentira(version=al_dia)
 
         proyecto, avisos = core.conectar("Mi Proyecto Ñandú", carpeta)
 
         self.assertEqual(proyecto.nombre, "Mi Proyecto Ñandú")
         self.assertEqual(proyecto.ruta_codigo, carpeta)
-        self.assertEqual(proyecto.version_reglas, "34.1.0")
+        self.assertEqual(proyecto.version_reglas, al_dia)
         self.assertTrue(proyecto.conectado)
         self.assertEqual(proyecto.estado, "sin empezar")
         self.assertEqual(avisos, [])
@@ -724,10 +737,10 @@ class CorregirRutaTests(BaseProyectos):
     """CP-003, CP-004 y CP-005 · corregir la ruta, y lo que rechaza."""
 
     def test_corregir_la_ruta_quita_el_aviso(self):
-        carpeta = self.proyecto_de_mentira()
+        carpeta = self.proyecto_de_mentira(version=version_al_dia())
         proyecto, _ = core.conectar("El que se movió", carpeta)
         shutil.rmtree(carpeta, ignore_errors=True)
-        nueva = self.proyecto_de_mentira()
+        nueva = self.proyecto_de_mentira(version=version_al_dia())
 
         corregido = core.corregir_ruta(proyecto, nueva)
 

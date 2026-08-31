@@ -58,6 +58,16 @@ RESUMENES = "resumenes"
 HACIA_HISTORICO = "../../"
 
 # La fecha con la que empieza el nombre del archivo de una sesión.
+# `EP-011·HU-001` · Dónde empieza cada turno. **Quien escribe el formato es
+# quien sabe leerlo:** la plataforma indexa las conversaciones con esto, y
+# copiar allá las expresiones dejaría dos verdades que se separan el día que
+# una marca cambie — y la copia vieja leería mal en silencio.
+_TURNO = re.compile(
+    r"(?m)^(?:### \d+ · (Usuario) — (.+?)\s*$|\*\*(Agente)\*\* — (.+?)\s*$)")
+
+# El comentario que el enganche deja para no repetir el turno del agente.
+_SELLO_AGENTE = re.compile(r"(?m)^<!-- agente: [^>]*-->\s*$")
+
 _FECHA = re.compile(r"^(\d{4}-\d{2}-\d{2})")
 
 # El nombre que pone el enganche mientras no se sabe el tema: `2026-08-09-sesion.md`.
@@ -65,6 +75,38 @@ _GENERICO = re.compile(r"^\d{4}-\d{2}-\d{2}-sesion(?:-\d+)?\.md$", re.IGNORECASE
 
 # Queda en el archivo cuando ya se pidió el nombre, para no pedirlo otra vez.
 MARCA_NOMBRE = "<!-- nombre: preguntado -->"
+
+
+def turnos(texto):
+    """`[(quién, cuándo, lo dicho)]` de una transcripción, en orden.
+
+    `quién` es `"usuario"` o `"agente"`. `cuándo` es la hora que el enganche
+    anotó, tal como quedó escrita.
+
+    **Lee el mismo formato que este módulo escribe**, y por eso vive acá: la
+    plataforma indexa las conversaciones con esta función (`EP-011·HU-001`).
+    Copiar las expresiones allá dejaría dos verdades que se separan el día que
+    una marca cambie, y la copia vieja leería mal sin decirlo.
+
+    **Lo que no encaja no se inventa:** un archivo sin ninguna marca devuelve
+    una lista vacía, que es un dato — no un error y no un silencio.
+    """
+    salida = []
+    marcas = list(_TURNO.finditer(texto or ""))
+    for i, m in enumerate(marcas):
+        fin = marcas[i + 1].start() if i + 1 < len(marcas) else len(texto)
+        cuerpo = texto[m.end():fin]
+        if m.group(1):
+            quien, cuando = "usuario", m.group(2)
+            # El mensaje del usuario se escribe citado, con `> ` delante.
+            salto = chr(10)
+            dicho = salto.join(l[1:].lstrip() if l.startswith(">") else l
+                               for l in cuerpo.strip().split(salto))
+        else:
+            quien, cuando = "agente", m.group(4)
+            dicho = _SELLO_AGENTE.sub("", cuerpo).strip()
+        salida.append((quien, (cuando or "").strip(), dicho.strip()))
+    return salida
 
 
 def anotar_usuario(raiz, sesion, mensaje):

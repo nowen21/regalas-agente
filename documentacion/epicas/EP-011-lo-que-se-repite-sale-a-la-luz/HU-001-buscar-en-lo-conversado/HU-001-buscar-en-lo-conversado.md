@@ -12,7 +12,7 @@
 | **Prioridad** | Should |
 | **Estimación** | S |
 | **Solicitante** | El usuario |
-| **Estado** | Pendiente, sin aprobar |
+| **Estado** | Terminada el 2026-08-31, con sus cuatro criterios probados |
 ---
 
 ## 2. Narrativa
@@ -125,7 +125,7 @@ Entonces ningún archivo cambia, se mueve ni se borra
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| Por abrir | Esta historia | Sin abrir. Va en la versión 2 |
+| [A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca](A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/estado-fase.md) | Los cuatro CA y el transversal | Cerrada el 2026-08-31: **Cumple** |
 
 ---
 
@@ -142,13 +142,13 @@ Entonces ningún archivo cambia, se mueve ni se borra
 
 - ☑ La funcionalidad está en el inventario, con su cambio anotado.
 - ☑ El texto de origen existe y ya viene sin credenciales.
-- ☐ El módulo Medición tiene especificación aprobada.
+- ☑ El módulo Medición tiene especificación aprobada: [documentacion/medicion/spec.md](../../../medicion/spec.md), el 2026-08-31.
 
 ## 11. Definition of Done
 
-- ☐ Los cuatro criterios con veredicto y evidencia.
-- ☐ Comprobado que el histórico no cambió.
-- ☐ Comprobado que el índice se rehace completo.
+- ☑ Los cuatro criterios con veredicto y evidencia.
+- ☑ Comprobado que el histórico no cambió: 329 archivos, cero cambiados.
+- ☑ Comprobado que el índice se rehace completo.
 
 ## 12. Validación INVEST
 
@@ -165,4 +165,5 @@ Entonces ningún archivo cambia, se mueve ni se borra
 
 | Fecha | Qué pasó |
 |---|---|
+| 2026-08-31 | Aprobada, junto con la especificación del módulo Medición, que era el único ítem que le faltaba a la lista de listo |
 | 2026-08-25 | Nace de `F-033`, que entró al inventario ese día desde [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |

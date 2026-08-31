@@ -76,6 +76,7 @@
 ## 3. Pendiente / preguntas abiertas
 
 - **Los proyectos ya instalados** tienen el `post-commit` apuntando a la ruta vieja hasta que corran el instalador. No rompe el commit: la línea termina en `|| true`. Queda dicho, no abierto.
+- **El commit de la fase se llevó la mudanza y no el arreglo de adentro.** `git mv` deja la renombrada preparada, y la corrección de la ruta que el archivo hace a `validadores/` es un cambio **aparte** que el `git add` de esa vuelta no recogió. Lo publicado revienta al correrse, y como el enganche termina en 0 pase lo que pase, **habría fallado en silencio**. Se vio corriendo la versión publicada, no la del disco. Corregido el mismo día, y queda anotado acá porque es el defecto de esta fase.
 
 ---
 

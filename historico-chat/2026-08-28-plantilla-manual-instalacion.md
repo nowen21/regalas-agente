@@ -2114,3 +2114,148 @@ El costo real no son las quince plantillas: son diez líneas de código y tres c
 
 ### 92 · Usuario — 2026-08-31 10:37:25
 > si
+
+**Agente** — 2026-08-31 11:05:26
+<!-- agente: 26a4dd79-f9ba-4696-a350-456224ba982d -->
+
+Las dos fases están hechas y **la batería interna quedó en cero por primera vez: 713 pruebas, ninguna roja.**
+
+| Fase | Qué cerró |
+|---|---|
+| [C-EP-005-HU-011](documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-011-donde-termina-el-estandar/C-EP-005-HU-011-el-enganche-del-hash-se-muda-al-adaptador/estado-fase.md) | El enganche del hash se mudó al adaptador |
+| [D-EP-004-HU-008](documentacion/epicas/EP-004-comprobacion-automatica/HU-008-corrida-completa/D-EP-004-HU-008-ningun-programa-nuevo-se-cuela-en-silencio/estado-fase.md) | Los dos programas mudos dicen quién los corre, y el resumen vuelve a ser lo último |
+
+**Fueron dos fases y no tres.** Al medir quién es el dueño de cada falla, la regla del silencio y la del resumen son de la misma historia — `EP-004·HU-008`, que ya tiene una fase por cada una. Lo dije como tres antes de leer eso.
+
+**Tres cosas que aparecieron y no estaban previstas:**
+
+- La mudanza rompía otra prueba: la comprobación de la frontera miraba **un solo canal** de los dos por los que un enganche se conecta. Ese era el defecto de fondo, y por eso el archivo llevaba once días mal puesto.
+- Nombrar el archivo del enganche en un mensaje hizo que **dos programas agnósticos se contaran como amarrados** a la herramienta: el recuento subió de 27 a 29 y por eso se vio.
+- `HU-021` había enrutado estas fallas a «una fase y tres pendientes», y **ni la fase ni el pendiente existían**. Es `S-096`.
+
+Ampliar la prueba que reportaba el defecto se comprobó con sabotaje: un módulo que calla sigue cazándose.
+
+**Sin versión nueva**, y es a propósito: no se tocó `base/` ni `plantillas/`, que es lo que `20·M10` versiona.
+
+28 archivos preparados, sin los 25 de otras sesiones. ¿Se commitea?
+
+### 93 · Usuario — 2026-08-31 11:10:18
+> si
+
+**Agente** — 2026-08-31 11:10:58
+<!-- agente: f692698a-09d8-4a01-9b3d-2c910850597b -->
+
+Commiteado: `96a356d` (las dos fases) y `0c97e55` (el hash que el enganche anotó en las dos estaciones 12 — la primera vez que marca dos de un mismo commit).
+
+Falta publicar. ¿`push`?
+
+### 94 · Usuario — 2026-08-31 11:11:34
+> si
+
+**Agente** — 2026-08-31 11:12:05
+<!-- agente: 7b37d916-f4fd-4fb1-b838-d9a93955d3b4 -->
+
+Publicado: `7998008..0c97e55`.
+
+El reclamo dice que hay commits posteriores a la última corrida. Es cierto por fecha y no por contenido: la corrida de las 10:59 fue **después** de todo el código, y lo que entró luego son documentos y los dos sellos del hash.
+
+**Lo que queda del árbol:** tres historias de producto sin ninguna fase — `EP-001·HU-013` (capítulos opt-in de dominio), `EP-006·HU-001` (buscar en lo conversado) y `EP-006·HU-002` (ver qué corrección se repite). Es la única deuda que de verdad es trabajo.
+
+### 95 · Usuario — 2026-08-31 11:30:53
+> 00 id9
+
+**Agente** — 2026-08-31 11:31:01
+<!-- agente: 5b00f6bb-1e2a-4eab-bf58-142aeb99d0b4 -->
+
+Publicado.
+
+Queda una sola deuda real: tres historias sin fase — `EP-001·HU-013`, `EP-006·HU-001` y `EP-006·HU-002`.
+
+### 96 · Usuario — 2026-08-31 11:31:12
+> y qué necesita?
+
+**Agente** — 2026-08-31 11:32:40
+<!-- agente: 90b39f38-cb0a-4cb6-a04e-318cbc77764c -->
+
+La plataforma de la que dependen ya está terminada, así que las tres necesitan cosas distintas:
+
+| Historia | Qué necesita |
+|---|---|
+| `EP-001·HU-013` — capítulos opt-in de dominio | **Un proyecto de RPA o de IA en la mano.** Su propio documento lo dice: un capítulo escrito sin un proyecto que lo estrene se escribe con lo que uno se imagina, no con lo que duele. Es `Could` y está esperando a propósito |
+| `EP-011·HU-001` — buscar en lo conversado | Nada bloqueado: `EP-008·HU-001` cerró el 2026-08-25. Falta construir el indexado de `historico-chat/` sobre la plataforma |
+| `EP-011·HU-002` — ver qué corrección se repite | La anterior: sin lo indexado no hay qué contar |
+
+O sea: una espera un caso real, y las otras dos son una cadena de dos fases que ya se puede empezar.
+
+### 97 · Usuario — 2026-08-31 11:52:00
+> 00 id9
+
+**Agente** — 2026-08-31 11:52:09
+<!-- agente: 03312ed8-dccc-4407-a1a3-101a125d2af0 -->
+
+`EP-001·HU-013` espera un proyecto real de RPA o IA, a propósito.
+
+`EP-011·HU-001` y `HU-002` son una cadena de dos fases, y nada las bloquea: la plataforma cerró el 25.
+
+### 98 · Usuario — 2026-08-31 11:52:53
+> entoncces con qué seguimos?
+
+**Agente** — 2026-08-31 11:53:25
+<!-- agente: f2a017a6-ccc1-46fb-bd50-a1976355d551 -->
+
+Con `EP-011·HU-001` — buscar en lo conversado.
+
+Es lo que desbloquea la épica entera, y sus cuatro criterios se cierran en una fase: indexar el histórico, poder rehacer el índice, que ninguna clave quede adentro, y no tocar los archivos originales.
+
+¿La abro?
+
+### 99 · Usuario — 2026-08-31 11:54:30
+> si
+
+**Agente** — 2026-08-31 11:56:13
+<!-- agente: 94e35421-2a0f-436d-9a71-ffaf0af3dc57 -->
+
+Antes de abrir la fase hay una puerta, y es suya: **la historia está «Pendiente, sin aprobar»**, y su lista de listo tiene un ítem sin marcar — *el módulo Medición tiene especificación aprobada*.
+
+Y esa especificación **no existe**: [spec.md](documentacion/proyectos/spec.md) es la del módulo Proyectos, y no dice nada de Medición ni de `F-033`. Sin ella, `02·F2` no deja escribir código.
+
+Así que el eslabón que sigue no es la fase: es **la especificación del módulo Medición**, con el mismo molde de quince secciones que ya tiene Proyectos.
+
+La escribo y se la paso para aprobar, y con eso ya se abre la fase. ¿Voy?
+
+### 100 · Usuario — 2026-08-31 12:00:06
+> si
+
+**Agente** — 2026-08-31 12:04:47
+<!-- agente: fe055e1c-8059-4f40-80ad-ea8df74e4333 -->
+
+Escrita: [documentacion/medicion/spec.md](documentacion/medicion/spec.md), con las quince secciones del molde y cubriendo las dos funcionalidades del módulo que van en la versión 2 — `F-033` (buscar) y `F-034` (qué se repite).
+
+**Lo que hay que decidir al aprobarla** son cinco cosas; una es de peso:
+
+| Decisión | Qué significa |
+|---|---|
+| **El texto no se copia a la plataforma: se indexa donde vive** | Es una **excepción declarada a `DA-01`**. La conversación ya está escrita y versionada en el repositorio del proyecto; copiarla crea una segunda verdad. Lo que `DA-01` protege se cumple igual: el índice se rehace leyendo esos archivos |
+| El índice guarda el texto del mensaje | `CA-1` pide ver en qué mensaje se dijo; abrir el archivo por cada resultado leería el disco entero |
+| Un archivo ilegible se reporta y no detiene el resto | Uno roto no puede llevarse lo que ya se sabía |
+| `F-033` puede cerrarse sin pantalla | Su usuario es el sistema; el valor lo cobra `F-034` |
+| Si agrupar frases parecidas no sale sin red, se entrega el conteo exacto y se declara la deuda | Una lista de sinónimos escrita a mano acierta en lo que uno se imagina y falla en lo que duele |
+
+También quedó dicho que la **§9 sí aplica**, a diferencia del módulo Proyectos: una conversación de trabajo trae nombres de personas y de clientes.
+
+Falta su aprobación y la de la historia. Con las dos, abro la fase.
+
+### 101 · Usuario — 2026-08-31 12:06:24
+> 00 id 9
+
+**Agente** — 2026-08-31 12:06:29
+<!-- agente: 2ab0c89b-4e98-43e2-a7d3-d51ac92ab723 -->
+
+Escrita: [documentacion/medicion/spec.md](documentacion/medicion/spec.md).
+
+La decisión de peso: **el texto de la conversación no se copia**, se indexa donde ya vive. Es una excepción declarada a `DA-01`, y lo que esa decisión protege se cumple igual porque el índice se rehace leyendo esos archivos.
+
+Falta que apruebe la especificación y la historia.
+
+### 102 · Usuario — 2026-08-31 12:07:07
+> aprobado
