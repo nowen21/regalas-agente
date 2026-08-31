@@ -1736,3 +1736,23 @@ Falta escribir la señal de esto último y el resumen de la sesión ya tiene qui
 
 ### 70 · Usuario — 2026-08-31 07:46:53
 > siga
+
+**Agente** — 2026-08-31 07:49:57
+<!-- agente: a76a73d9-f3f7-41b5-9bfc-7b7561a3cb46 -->
+
+Pusheado `ae65bc1..dd189be`. **La sesión se puede cerrar:** las cuatro casillas del resumen quedaron marcadas.
+
+Quince hallazgos, todos resueltos o con su archivo. Once señales nuevas, `S-082` a `S-092`. Tres pendientes abiertos y cerrados el mismo día. Versión del estándar de `35.9.0` a `37.0.0`.
+
+| Al empezar | Al cerrar |
+|---|---|
+| 96 cumplen · 13 rojas · 5 mudas | **122 cumplen · 0 · 0** |
+| 5 fases detenidas | 0 |
+| 7 pruebas del estándar en rojo | 5, todas de archivos de otra sesión |
+
+Lo que deja la jornada, y está en `S-092`: treinta ítems que se leían como treinta tareas, y menos de un tercio lo era. Cinco rojos ya no eran ciertos, cinco eran decisiones suyas esperando dos frases, las cinco mudas sí decían su veredicto y el programa no sabía leerlo. Lo que los separa es ejecutar el criterio, no leer el documento que lo describe.
+
+Queda pendiente su `/rename plantilla-manual-instalacion`, que solo lo puede escribir usted.
+
+### 71 · Usuario — 2026-08-31 07:56:12
+> si
