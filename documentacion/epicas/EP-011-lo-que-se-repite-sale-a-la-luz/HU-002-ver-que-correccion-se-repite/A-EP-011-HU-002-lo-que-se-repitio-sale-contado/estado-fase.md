@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Un defecto crítico apareció al correrlo sobre lo real, y se cerró acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `9ea244d` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **La puerta que faltaba era una decisión, no un documento.** La lista de listo de la historia tenía sin marcar *«está decidido qué cuenta como corrección»*, y sin eso no hay nada que contar. La tomó el usuario el 2026-08-31, y quedó escrita como `RN-6` de la especificación.
