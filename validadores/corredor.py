@@ -27,6 +27,7 @@ existe es **rojo**, no una corrida vacía en verde.
 import importlib.util
 import io
 import os
+import re
 import subprocess
 import sys
 import time
@@ -36,6 +37,13 @@ import comun
 from comun import AVISO, FALLA, Hallazgo
 
 CARPETA = os.path.join("validadores", "tests")
+
+# `EP-005·HU-021` fase B · **La otra batería de este repositorio.** La
+# plataforma tiene sus propias pruebas y las corre su marco, no `unittest`
+# a secas: se le pide por su punto de entrada. Estuvieron fuera de esta
+# corrida hasta el 2026-08-31, y ese día una subida de versión las puso en
+# rojo por la mañana y se supo por la tarde, de casualidad (`S-097`).
+PLATAFORMA = "plataforma"
 
 # El sello de la última corrida completa. Es estado de trabajo de esta máquina,
 # no memoria del proyecto, así que no se versiona.
@@ -261,9 +269,85 @@ def reclamo(raiz=None):
                      "pruebas del estándar (%s) — %s" % (cuando, ORDEN))]
 
 
+def plataforma_de(raiz=None):
+    """La carpeta de la plataforma, exista o no."""
+    return os.path.join(raiz or comun.RAIZ, PLATAFORMA)
+
+
+# Lo que su corredor imprime al terminar: `Ran 187 tests in 28.638s`.
+_CUANTAS = re.compile(r"^Ran (\d+) tests? in ", re.MULTILINE)
+_FALLAS = re.compile(r"FAILED \(([^)]*)\)")
+_CUENTA = re.compile(r"(failures|errors)=(\d+)")
+
+
+def correr_la_plataforma(raiz=None):
+    """`(hallazgos, cuantas)` de la otra batería de este repositorio.
+
+    **Se le pide por su punto de entrada**, que es como se corre de verdad: su
+    marco arma la base de prueba, descubre las aplicaciones y las corre. Cargar
+    sus archivos a mano desde acá daría un número que nadie más obtiene.
+
+    **Si no está, se dice.** Un proyecto que hereda el estándar no tiene
+    plataforma, y saltársela en silencio es lo mismo que no mirarla: el aviso
+    distingue «no hay» de «está bien».
+    """
+    carpeta = plataforma_de(raiz)
+    entrada = os.path.join(carpeta, "manage.py")
+    if not os.path.isfile(entrada):
+        return ([Hallazgo(AVISO, carpeta, 0,
+                          "no hay plataforma en este repositorio: no se corrió "
+                          "su batería. No es lo mismo que estar en verde")], 0)
+
+    try:
+        corrida = subprocess.run(
+            [sys.executable, "manage.py", "test", "--verbosity", "1"],
+            cwd=carpeta, capture_output=True, text=True, encoding="utf-8",
+            errors="replace", timeout=900)
+    except (OSError, subprocess.SubprocessError) as falla:
+        return ([Hallazgo(FALLA, entrada, 0,
+                          "no se pudo correr la batería de la plataforma: %s"
+                          % falla)], 0)
+
+    salida = (corrida.stdout or "") + (corrida.stderr or "")
+    m = _CUANTAS.search(salida)
+    cuantas = int(m.group(1)) if m else 0
+
+    hallazgos = []
+    # **Cero pruebas es rojo también acá.** Es la misma regla, y por el mismo
+    # motivo: una corrida que no corrió nada y termina en verde es un silencio
+    # que se lee como éxito.
+    if cuantas == 0:
+        hallazgos.append(Hallazgo(
+            FALLA, carpeta, 0,
+            "la batería de la plataforma corrió **0 pruebas** — cero no es "
+            "verde: quiere decir que no se comprobó nada (08·T5)"))
+        return (hallazgos, 0)
+
+    roto = _FALLAS.search(salida)
+    if roto or corrida.returncode != 0:
+        detalle = dict((c, int(n)) for c, n in
+                       _CUENTA.findall(roto.group(1) if roto else ""))
+        hallazgos.append(Hallazgo(
+            FALLA, carpeta, 0,
+            "la batería de la plataforma falló: %d prueba(s) · %d falla(s) · "
+            "%d error(es) — se corre con `python manage.py test` desde "
+            "`plataforma/`"
+            % (cuantas, detalle.get("failures", 0), detalle.get("errors", 0))))
+    return (hallazgos, cuantas)
+
+
 def validar(raiz=None, solo=None):
     """`[Hallazgo]`, más el resumen como aviso. Para `validar.py`."""
     resultado, hallazgos, corridos = correr(raiz, solo)
+
+    # **La otra batería entra solo en la corrida entera.** Pedir un subconjunto
+    # es lo que hace cumplible `02·F5`, y arrastrar 187 pruebas ajenas a una
+    # fase que toca dos archivos convertiría esa orden en un peaje.
+    de_la_plataforma, cuantas_alla = ([], 0)
+    if not solo:
+        de_la_plataforma, cuantas_alla = correr_la_plataforma(raiz)
+        hallazgos += de_la_plataforma
+
     if resultado is not None:
         # **Se sella la corrida entera, con su resultado.** Un subconjunto no
         # se sella: diría «esto se comprobó» sobre lo que no se miró, que es el
@@ -271,11 +355,14 @@ def validar(raiz=None, solo=None):
         if not solo:
             sellar(raiz, len([h for h in hallazgos
                               if h.severidad == FALLA]))
-        hallazgos.append(Hallazgo(
-            AVISO, carpeta_de(raiz), 0,
-            "%d prueba(s) en %d archivo(s) · %d falla(s) · %d error(es)"
-            % (resultado.testsRun, len(corridos),
-               len(resultado.failures), len(resultado.errors))))
+        cuenta = ("%d prueba(s) en %d archivo(s) · %d falla(s) · %d error(es)"
+                  % (resultado.testsRun, len(corridos),
+                     len(resultado.failures), len(resultado.errors)))
+        if not solo:
+            # **Las dos baterías se dicen juntas y se cuentan aparte.** Sumarlas
+            # en un solo número escondría cuál de las dos se cayó.
+            cuenta += " · y %d prueba(s) de la plataforma" % cuantas_alla
+        hallazgos.append(Hallazgo(AVISO, carpeta_de(raiz), 0, cuenta))
     return hallazgos
 
 

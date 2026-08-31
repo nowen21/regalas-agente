@@ -1002,3 +1002,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-31 · agente.
 - **Scope:** estándar y plataforma; aplica a toda suite que no cuelgue de la corrida diaria.
 - **Rel:** S-091 (la frase que describe lo que hace un programa se deriva), S-096 (lo nuevo no pasó por donde la regla vigila).
+
+## S-098 · Una prueba que llama a la corrida completa se mete dentro de sí misma  ·  patrón · activa
+- **What:** al escribir la prueba de que el resumen de la corrida nombra las dos baterías, se la escribió llamando a la corrida completa. Esa prueba **vive dentro de esa corrida**, así que las 724 empezaron a correr dentro de la 725, con la batería de la plataforma adentro. La orden no terminaba.
+- **Why:** una comprobación sobre una pieza que recorre todo el repositorio se prueba **contra un repositorio chico**, no contra el de verdad. Contra el de verdad tarda lo que tarda todo, y si además la prueba está dentro de lo que recorre, no termina nunca.
+- **Also:** se vio porque la orden se colgó, que es la forma cara de verlo. La barata es preguntarse, antes de escribir la llamada, **qué recorre lo que estoy llamando**.
+- **And:** el arreglo es el mismo que ya usan otras pruebas de esta casa: armar un repositorio de mentiras con una sola prueba adentro, y comprobar la forma del resumen sobre eso. Queda escrito dentro del propio archivo, porque volver a caer es fácil.
+- **Where:** `validadores/tests/test_la_bateria_de_la_plataforma_se_corre.py`, la clase `LasDosBateriasSeCuentanAparte` · la fase `B-EP-005-HU-021`.
+- **Learned:** antes de que una prueba llame a una pieza que recorre el repositorio, preguntar si esa prueba está dentro de lo que la pieza recorre. Si lo está, el caso se arma aparte.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar; aplica a toda prueba de una pieza que recorra el propio repositorio.
+- **Rel:** S-096 (sabotear la comprobación que se amplía), S-097 (la batería que nadie corre).

@@ -2259,3 +2259,74 @@ Falta que apruebe la especificación y la historia.
 
 ### 102 · Usuario — 2026-08-31 12:07:07
 > aprobado
+
+**Agente** — 2026-08-31 12:34:24
+<!-- agente: f3763171-1bef-4de2-b076-a69e450b2833 -->
+
+La fase está hecha y probada. Antes de commitear:
+
+**`EP-011·HU-001` cerrada — lo conversado ya se busca.** 67 sesiones y 3 720 mensajes de este repositorio indexados en 35,7 s, y **cero archivos del histórico cambiados**, medido por huella sobre los 329 que hay.
+
+Primero hubo que abrir las dos puertas que faltaban: la historia estaba sin aprobar y el módulo Medición no tenía especificación. Las dos quedaron listas antes de tocar código.
+
+**Tres cosas aparecieron que no estaban previstas:**
+
+1. **Dos pruebas de la plataforma llevaban en rojo desde la mañana**, por la subida a `37.1.0` que hice en la primera fase del día: su proyecto de mentiras declaraba una versión escrita a mano. Lo grave no es eso — es que **`validar.py internas` no corre ninguna de las 187 pruebas de la plataforma**, así que el rojo estuvo puesto todo el día y se supo por casualidad. Es `S-097`.
+2. **El commit de la fase anterior publicó el enganche mudado sin el arreglo de adentro.** `git mv` dejó la renombrada preparada; corregir la ruta que el archivo hace a `validadores/` era un cambio aparte que el `git add` no recogió. Lo publicado revienta al correrse, y como ese enganche termina en 0 pase lo que pase, **habría fallado en silencio**. Se vio corriendo la versión publicada, no la del disco.
+3. Los tres enlaces que escribí hacia la fase de HU-011 volvieron a salir sin la ruta desde la raíz. Es la segunda vez hoy.
+
+**El `CA-03` dio dos hallazgos con forma de credencial**, y los miré uno por uno: los dos son la misma línea donde el agente explicaba cómo se tapan las claves, y en las dos el valor es literalmente `«enmascarado»`. Ninguna es una clave.
+
+31 archivos preparados, sin los de otras sesiones. La batería completa: 32 comprobaciones, 0 con fallas. ¿Se commitea?
+
+### 103 · Usuario — 2026-08-31 12:36:24
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\plantillas\CLAUDE.md.plantilla in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> si
+
+**Agente** — 2026-08-31 12:37:17
+<!-- agente: 6643bcdc-fa75-4355-bb2f-cffea7a55d1e -->
+
+Commiteado: `76d6ce7` (la fase) y `64dfcbb` (el hash de la estación 12 — la primera vez que ese enganche corre desde su carpeta nueva, así que de paso quedó probado que la mudanza funciona).
+
+¿`push`?
+
+### 104 · Usuario — 2026-08-31 12:38:40
+> si
+
+**Agente** — 2026-08-31 12:39:30
+<!-- agente: eef6ba2a-c264-428c-8b02-d7b3722876f6 -->
+
+Publicado: `0c97e55..64dfcbb`.
+
+El registro dice 1 falla porque es de la corrida de las 12:31, anterior al arreglo de los tres enlaces. Corriendo `internas` otra vez para dejarlo en cero.
+
+**Lo que queda, en orden:**
+
+1. **`S-097`** — las 187 pruebas de la plataforma no las corre nada. Es la deuda más cara de las tres: hoy escondió un rojo durante todo el día. Su dueño declarado es `EP-005·HU-021`.
+2. **`EP-011·HU-002`** — contar qué correcciones se repiten, que es lo que le da valor a lo que se acaba de indexar. Ya no está bloqueada.
+3. **`EP-001·HU-013`** — sigue esperando un proyecto real de RPA o IA, a propósito.
+
+### 105 · Usuario — 2026-08-31 12:40:09
+> 00 id9
+
+**Agente** — 2026-08-31 12:40:15
+<!-- agente: 263f8c2d-39f5-465e-8fb7-4b8933588fea -->
+
+Publicado. Corriendo `internas` para dejar el registro en cero.
+
+Lo que sigue: `S-097` (nada corre las 187 pruebas de la plataforma), y `EP-011·HU-002`, que ya se puede construir sobre lo indexado.
+
+### 106 · Usuario — 2026-08-31 12:40:34
+> qué sigue entonces?
+
+**Agente** — 2026-08-31 12:40:44
+<!-- agente: 3b9c222b-7ed3-4aac-8005-86708c693ae4 -->
+
+**`S-097` primero.** Es lo más barato y lo que evita repetir lo de hoy: un rojo de la plataforma escondido una jornada entera. Es una fase B de `EP-005·HU-021`, la historia de que las pruebas que existen se corran.
+
+Después `EP-011·HU-002`, que es lo valioso: contar qué correcciones se repiten sobre los 3 720 mensajes ya indexados.
+
+¿Arranco con la primera?
+
+### 107 · Usuario — 2026-08-31 12:41:25
+> haga de una las 2

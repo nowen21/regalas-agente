@@ -191,6 +191,7 @@ Entonces está escrito cuáles son, qué dice cada uno y adónde va
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [A-EP-005-HU-021-el-corredor-que-si-las-corre](A-EP-005-HU-021-el-corredor-que-si-las-corre/) | CA-01 a CA-05 | (vacío) | [plan_trabajo](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_trabajo.md) | [plan_pruebas](A-EP-005-HU-021-el-corredor-que-si-las-corre/plan_pruebas.md) | [resultado](A-EP-005-HU-021-el-corredor-que-si-las-corre/resultado_pruebas.md) — **Cumple** | Terminada |
+| [B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre](B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre/estado-fase.md) | CA-01 · CA-02 · CA-03 | la fase A | [plan_trabajo](B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre/plan_trabajo.md) | [plan_pruebas](B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre/plan_pruebas.md) | [resultado](B-EP-005-HU-021-la-bateria-de-la-plataforma-tambien-se-corre/resultado_pruebas.md) — **Cumple** | Terminada |
 
 **La línea base, medida antes de abrir la carpeta:** `122 en total · 32 sin terminar · 90 terminadas, de las cuales 72 cumplen, 13 no cumplen y 5 no dicen si cumplen`.
 
