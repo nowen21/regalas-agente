@@ -188,6 +188,36 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿Se aprueban las cinco fases detenidas, y se tocan los 27 archivos ajenos o se espera?
 
+### H-12 · Cuatro fases llevaban trece días detenidas esperando una firma
+
+- **Qué pasó:** cuatro de las cinco fases detenidas en la estación 4 se ejecutaron el mismo día en que el usuario las aprobó. Las cuatro arreglaban un defecto que su propia fase anterior había dejado **probado y marcado como fallo esperado**. La cuenta pasó de 115 a **118 historias que cumplen**.
+- **Por qué importa:** el trabajo no estaba pendiente: estaba escrito, planeado y probado, esperando una firma. Trece días. El más grave de los cuatro dejaba la memoria inservible cuando faltaba un modelo opcional, y se llevaba por delante la búsqueda por palabra, que no necesita nada.
+- **Qué lo soluciona:** ya está hecho. Lo que queda por decidir es si una fase que espera aprobación debería avisar sola cuando lleva días parada.
+- **Qué se decidió:** ejecutarlas en el orden en que se pidieron, y corregir en la misma fase lo que cada una destapó: el capítulo 16 fuera del molde, y una prueba que pasaba o fallaba según el mes en que se corriera.
+- **Estado:** resuelto acá
+- **Responde a:** EP-004 · HU-002 · EP-006 · HU-003, HU-004 y HU-007
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** cuatro fases `B` cerradas · las 59 pruebas de la memoria sin un solo fallo esperado, donde había cinco
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+### H-13 · El fallo esperado sirvió: al arreglar, la corrida obligó a volver
+
+- **Qué pasó:** las cuatro fases anteriores no podían arreglar su defecto, porque su plan aprobado declaraba no tocar el programa. En vez de anotarlo en prosa, lo dejaron **probado y marcado como fallo esperado**. Al arreglarlo hoy, la corrida reportó «éxitos inesperados» y obligó a volver a destapar cada prueba, una por una.
+- **Por qué importa:** un defecto anotado en un documento se pierde; uno anotado como fallo esperado **reclama solo el día que deja de ser cierto**. Es la única forma de dejar constancia que se defiende sola, y funcionó cinco veces hoy.
+- **Qué lo soluciona:** nada: es lo que hay que copiar.
+- **Qué se decidió:** cuando `02·F8` impida arreglar lo que una fase encuentra, se deja la prueba escrita y marcada, no una nota.
+- **Estado:** resuelto acá
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** el §4.1 del resultado de las tres fases de memoria
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

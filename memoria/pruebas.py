@@ -286,7 +286,6 @@ class BusquedaPorPalabra(unittest.TestCase):
         self.assertEqual(self._ids(salida), set())
         self.assertIn("sin señales relevantes", salida)
 
-    @unittest.expectedFailure
     def test_el_resultado_dice_donde_esta_la_senal(self):
         """CP-001 paso 2. **Falla hoy**, y es el hallazgo de la fase: `cmd_search`
         no selecciona ni imprime `where_`, así que el resultado no alcanza para
@@ -404,7 +403,6 @@ class BusquedaPorPalabra(unittest.TestCase):
         self._buscar("redis")
         self.assertEqual(_huella(self.db), antes)
 
-    @unittest.expectedFailure
     def test_la_busqueda_sin_resultados_cierra_su_conexion(self):
         """CP-005, borde. **Falla hoy** (defecto `D-02` de la fase): el camino
         «(sin señales relevantes)» de `cmd_search` retorna sin `con.close()`.
@@ -464,7 +462,6 @@ class MarcarLoQueDejoDeAplicar(unittest.TestCase):
         self.assertEqual(self._fila("S-001")["estado"], "reemplazada")
         self.assertIsNotNone(self._fila("S-001"), "reemplazar borró la señal")
 
-    @unittest.expectedFailure
     def test_la_reemplazada_dice_que_la_reemplazo_y_cuando(self):
         """CA-01 pide que la marcada quede «con la fecha y qué lo reemplazó».
         **Falla hoy** (defecto `D-01` de la fase): `cmd_supersede` imprime
@@ -566,7 +563,14 @@ class MarcarLoQueDejoDeAplicar(unittest.TestCase):
         """CP-004, paso 4: `meses_desde` trabaja sobre fechas ISO, no sobre
         instantes, así que el resultado no cambia con la hora ni con el huso."""
         self.assertIsNone(memoria.meses_desde("no-es-fecha"))
-        justo = (datetime.date.today() - datetime.timedelta(days=181)).isoformat()
+        # Seis meses de calendario, no 181 dias: `meses_desde` cuenta
+        # meses, y con 181 dias el resultado cambia segun el mes en
+        # que se corra la prueba.
+        hoy = datetime.date.today()
+        justo = hoy.replace(day=1)
+        for _ in range(6):
+            justo = (justo - datetime.timedelta(days=1)).replace(day=1)
+        justo = justo.isoformat()
         self.assertIn("sin verificar", memoria.marca_vigencia(justo, 6))
         self.assertEqual(memoria.marca_vigencia(datetime.date.today().isoformat(), 6), "")
 
@@ -593,7 +597,6 @@ class MarcarLoQueDejoDeAplicar(unittest.TestCase):
         fila = self._fila("S-001")
         self.assertTrue(fila["cerrada_en"] and fila["cierra_ref"])
 
-    @unittest.expectedFailure
     def test_trazabilidad_queda_cuando_se_archivo(self):
         """El transversal de trazabilidad pide «quién lo marcó y cuándo».
         **Falla hoy** (defecto `D-02`): archivar no deja fecha en ninguna
@@ -665,7 +668,6 @@ class BusquedaPorSignificado(unittest.TestCase):
             semantica.disponible = real
         self.assertEqual(sin_deps, self._buscar("redis", lexica=True)[0])
 
-    @unittest.expectedFailure
     def test_con_dependencias_pero_sin_el_modelo_la_busqueda_no_se_cae(self):
         """CA-02 dice «**sin el modelo**, la búsqueda sigue funcionando».
         **Falla hoy** (defecto `D-01` de la fase): `semantica.disponible()`

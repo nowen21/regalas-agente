@@ -1348,3 +1348,148 @@ Lo que queda sigue siendo suyo:
 
 ### 49 · Usuario — 2026-08-30 19:59:43
 > si a las 3
+
+**Agente** — 2026-08-30 20:04:13
+<!-- agente: c117b52b-c21c-4218-8810-e95f4f292859 -->
+
+Empiezo por la 3, que es mecánica y cierra una prueba. Aviso del riesgo: esas otras dos sesiones pueden estar editando esos mismos archivos ahora mismo.
+
+El `git diff --stat` muestra 83 archivos: 59 son míos y el resto son los que ya estaban modificados por otras sesiones. Verifico antes de guardar nada.
+
+Sesenta archivos míos, 109 líneas: solo texto de enlace. Los de las otras sesiones quedaron fuera. Dos están en `base/`, así que va versión de parche.
+
+El arreglo alargó el cuerpo de `F12` por encima del molde. Lo corrijo.
+
+Punto 3 hecho y pusheado: `b8177e0..9656125`. **98 enlaces corregidos en 59 archivos**, la comprobación en cero y esa prueba en verde. Versión `36.0.1`, parche.
+
+Hubo un efecto que arreglé en el acto: al alargarse el texto del enlace, el cuerpo de la regla `F12` pasó de caber en el molde a medir 335 caracteres para un máximo de 320. Recorté la redacción sin cambiar lo que exige.
+
+De los 59 archivos, dejé fuera del commit tres cosas que sí tenían cambios de otras sesiones sin guardar: `plantillas/manual-usuario.md`, la transcripción del 22, y los veintiún `estado-fase` de los capítulos de EP-001.
+
+Quedan los puntos 1 y 2: aprobar las cinco fases detenidas y las tres historias de los pendientes 91 a 93. Con eso sigo.
+
+### 50 · Usuario — 2026-08-30 20:05:01
+> si
+
+**Agente** — 2026-08-30 20:09:46
+<!-- agente: 9feeb5bb-35fe-4577-8eb4-a8c6322f82b8 -->
+
+Voy con la 2, las tres historias. Uso el andamio, que es lo que las levanta con su fila en la épica.
+
+Tengo la estructura. Escribo las tres historias completas.
+
+Punto 2 hecho: las tres historias están escritas y aprobadas.
+
+| Historia | Sale de |
+|---|---|
+| `EP-004 · HU-024` — El validador dice sobre qué corrió y qué no comprueba | Pendiente 91 |
+| `EP-004 · HU-025` — Los caracteres de control invisibles se cuentan y se quitan | Pendiente 92 |
+| `EP-001 · HU-037` — La norma de redacción del agente vive en el cuerpo de reglas | Pendiente 93 |
+
+Cada una con sus tres criterios en Gherkin y su «cómo validarlo», sus transversales, sus riesgos y su INVEST. Ningún marcador sin llenar. Las filas quedaron puestas en las dos épicas y cada pendiente ya nombra su historia en vez de decir «por crear». `indices` y `estandar` en 0 fallas.
+
+Sigo con el punto 1: las cinco fases detenidas.
+
+### 51 · Usuario — 2026-08-30 20:10:29
+> si
+
+**Agente** — 2026-08-30 20:14:14
+<!-- agente: 23910193-517f-408b-960b-5c9767970aa9 -->
+
+Empiezo por la primera. Leo su plan, que es lo que el usuario aprobó.
+
+El ensanche lee de más: toma por definición de regla lo que en el índice de un capítulo solo la nombra. Miro los dos sitios antes de decidir.
+
+La distinción es precisa: `CQ1` a `CQ4` **son** reglas escritas bajo una parte del capítulo; el `M19` de `base.md` solo **la nombra**, y la regla vive en su archivo. Uso eso.
+
+**El analizador ya ve las cuatro reglas del capítulo 16, y lo que encontró es real:** ninguna de las cuatro pasó nunca su checklist, y las cuatro están escritas con tres almohadillas donde `M5` pide dos. Llevaban meses invisibles para el programa, y por eso todo salía en verde.
+
+Lo que costó acertar fue distinguir la regla de su eco. Un `###` con forma de regla es una de dos cosas: en el capítulo 16 **es** la regla, escrita un nivel más abajo porque el capítulo agrupa en partes; en el anexo de meta-reglas solo **nombra** a `M19`, que vive en su propio archivo. Al ensanchar sin más, el analizador contaba `M19` dos veces y reclamaba un identificador repetido que no existe. Lo que las separa es que un identificador es único: un `###` cuyo ID ya se definió con `#` o `##` es un eco. Hace falta mirarlo en una pasada previa, porque en el orden del árbol el eco se lee antes que la regla.
+
+`metareglas` no detiene el push, a propósito: una deuda conocida del cuerpo de reglas no puede impedir publicar otra cosa.
+
+Antes de seguir: arreglar el capítulo 16 —bajar los títulos a dos almohadillas y aplicarle el checklist a las cuatro reglas— es cambiar `base/`, y no está en el plan que usted aprobó para esta fase. ¿Lo hago acá, o lo dejo como defecto abierto y sigo con las otras cuatro fases?
+
+### 52 · Usuario — 2026-08-30 20:14:36
+> 00 id9
+
+**Agente** — 2026-08-30 20:14:41
+<!-- agente: 7828ea8b-233f-4968-aaa7-25ba2cdfdbc0 -->
+
+El analizador ya ve las cuatro reglas del capítulo 16. Nunca pasaron su checklist y usan tres almohadillas donde `M5` pide dos: por eso todo salía en verde.
+
+Lo difícil fue separar la regla de su eco: un `###` cuyo identificador ya está definido arriba solo la nombra. Sin eso, `M19` se contaba dos veces.
+
+Arreglar el capítulo 16 es cambiar `base/` y no está en el plan aprobado. ¿Lo hago acá o lo dejo abierto?
+
+### 53 · Usuario — 2026-08-30 20:15:33
+> hágalo acá
+
+**Agente** — 2026-08-30 20:22:38
+<!-- agente: f7e64876-e9b2-4a91-b8a6-ed21730adc38 -->
+
+Capítulo 16 al día y todo en verde. Escribo los dos documentos que le faltaban a la fase.
+
+Primera de las cinco cerrada. **115 historias cumplen, cero rojas, cero mudas.**
+
+Lo que destapó, que era el punto de la fase: **las cuatro reglas del capítulo 16 nunca habían pasado su checklist**, y no por descuido. Estaban escritas un nivel más abajo que las demás porque el capítulo agrupaba en partes, así que el analizador no las reconocía como reglas. El capítulo salía en verde por el mismo motivo por el que pasaría un examen que no se corrige.
+
+Al ensancharlo apareció la trampa: `M19` empezó a contarse dos veces, porque una sección del anexo de meta-reglas la **nombra** y el programa la tomó por una segunda definición. Lo que las separa es que el identificador es único, y hay que mirarlo en una pasada previa: en el orden de los archivos, el eco se lee antes que la regla.
+
+Con su permiso corregí el capítulo: los cuatro títulos al nivel que pide el molde, las dos partes dejan de ser encabezado, `CQ3` recibió el ejemplo que nunca tuvo, y las cuatro su bloque de checklist. Versión `36.0.2`, parche: cambia la forma, no lo que exigen.
+
+Y una comprobación pasó de avisar a detener: que toda regla diga si se puede comprobar con un programa. Las derogadas siguen exentas.
+
+`fases`, `indices`, `estandar` y `metareglas` en 0 fallas. Quedan cuatro fases. ¿Sigo?
+
+### 54 · Usuario — 2026-08-30 20:24:46
+> si
+
+**Agente** — 2026-08-30 20:27:02
+<!-- agente: 8ea17764-1130-4bad-83ae-0091d76ae939 -->
+
+Commiteo esta antes de seguir, para no dejarla suelta.
+
+Commiteado `be5631d`. Sigo con la segunda fase detenida: la del `metareglas --raiz` que da veredictos falsos.
+
+Esta es de otro tamaño que las anteriores. Sus cinco criterios piden comprobar el código de un proyecto real contra la convención que ese proyecto declara, y su plan trae 27 tareas.
+
+Lo medible ahora: los tres programas que necesita existen (`declaracion.py`, `esquema.py`, `estructura.py`, entre 229 y 241 líneas), y `esquema`, `estructura` y `entidades` ya corren desde `validar.py` sin fallas. `declaracion` no tiene subcomando.
+
+O sea: buena parte se construyó, pero **verificar los cinco criterios pide correrlos contra un proyecto real** —AgroSystem o shopnest-mesa— y comparar lo que reportan con lo que ese proyecto declara. No es cerrar por medición como las anteriores; es una verificación con su propio trabajo.
+
+Dos caminos:
+
+1. **La ejecuto completa**, midiendo los cinco criterios contra un proyecto real. Es lo correcto, y es largo.
+2. **La dejo para su propia sesión** y sigo con las tres de EP-006, que son más pequeñas.
+
+Recomiendo la 2: las tres de EP-006 se cierran hoy y esta queda con el terreno medido. ¿Cuál prefiere?
+
+### 55 · Usuario — 2026-08-30 20:31:25
+> hagale
+
+**Agente** — 2026-08-30 20:36:48
+<!-- agente: 117c407a-e48a-4a93-bcae-c5d770b2ca32 -->
+
+Sigo con las tres de EP-006, que es lo que recomendé. Leo sus planes.
+
+Las tres son defectos concretos con sus pruebas ya escritas. Empiezo.
+
+El defecto de esa prueba es suyo: usa 181 días como si fueran seis meses, y el contador va por meses de calendario. Entra en la tercera fase. Empiezo por ella.
+
+Fase de HU-007 lista: 59 pruebas en verde, sin su fallo real y sin dos de sus fallos esperados. Voy por las otras dos.
+
+Quedan con un solo fallo esperado: el de HU-004, la búsqueda que se cae entera cuando falta el modelo.
+
+**59 pruebas de la memoria en verde, sin un solo fallo esperado.** Eran cinco esperados y uno real.
+
+Los tres defectos, arreglados:
+
+- **HU-007** — marcar una señal como reemplazada solo lo decía la consola: no guardaba por cuál ni cuándo. Archivar tampoco dejaba fecha. Ahora las dos escriben. Y su prueba del huso horario estaba mal: usaba 181 días como si fueran seis meses, y el contador va por meses de calendario, así que fallaba o pasaba según el mes en que se corriera.
+- **HU-003** — la búsqueda encontraba y no decía dónde. Ahora trae también ese dato y lo imprime debajo de cada resultado. Y el camino «sin señales relevantes» se iba sin cerrar la conexión, que en Windows deja el archivo tomado.
+- **HU-004** — el más grave: con las librerías puestas y el modelo ausente, la búsqueda se caía entera **y se llevaba por delante la búsqueda por palabra**, que no necesita ni modelo ni red. Ahora degrada y lo dice en el modo. Atrapo cualquier error, no una clase concreta: quien falla es una librería de terceros bajando un modelo, y el día que le cambien el nombre a su excepción la memoria no puede dejar de servir.
+
+Faltan los documentos de cierre de las tres fases y poner las historias al día. ¿Sigo?
+
+### 56 · Usuario — 2026-08-30 20:49:21
+> siga

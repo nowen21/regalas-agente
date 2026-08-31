@@ -146,10 +146,27 @@ def cmd_search(a):
 
     modo, orden = "léxica", lex
     if not a.lexica and semantica.disponible():
-        semantica.indexar(con)                          # incremental; barato si nada cambió
-        permitidos = {r[0] for r in con.execute(
-            "SELECT s.rowid FROM senales s WHERE " + filtro, fp)}
-        sem = [rid for rid, _ in semantica.buscar(con, a.query, k=50) if rid in permitidos]
+        # `EP-006·HU-004` fase B · Sin el modelo, la búsqueda sigue.
+        #
+        # `disponible()` solo comprueba que las librerías **importen**, y
+        # eso no es lo mismo que poder cargar el modelo: puede faltar el
+        # archivo, o no haber red la primera vez. Con las librerías
+        # puestas y el modelo ausente, esto se caía entero **y se llevaba
+        # por delante la búsqueda por palabra**, que no necesita ninguna
+        # de las dos cosas.
+        #
+        # Se atrapa cualquier error, no una clase concreta: quien falla es
+        # una librería de terceros bajando un modelo, y el día que cambie
+        # el nombre de su excepción la memoria no puede dejar de servir.
+        # Lo que no se hace es callarlo: se dice en el modo.
+        try:
+            semantica.indexar(con)                      # incremental; barato si nada cambió
+            permitidos = {r[0] for r in con.execute(
+                "SELECT s.rowid FROM senales s WHERE " + filtro, fp)}
+            sem = [rid for rid, _ in semantica.buscar(con, a.query, k=50)
+                   if rid in permitidos]
+        except Exception:
+            sem, modo = [], "léxica (el modelo no se pudo cargar)"
         if sem:
             orden, modo = _rrf([lex, sem]), "híbrida"   # léxica ∪ semántica (F1)
     elif not a.lexica:
@@ -157,9 +174,17 @@ def cmd_search(a):
 
     orden = orden[:a.limit]
     if not orden:
+        # `EP-006·HU-007` fase B · Se cierra antes de salir. El camino sin
+        # resultados retornaba con la conexión tomada, y en Windows eso
+        # deja el archivo bloqueado para quien venga después.
+        con.close()
         print("(sin señales relevantes)"); return
+    # `EP-006·HU-003` fase B · Se trae también dónde está.
+    # Encontrar sin decir dónde no alcanza: quien busca tiene que poder
+    # abrir lo que encontró, y ese es el criterio de la historia.
     filas = {r["rowid"]: r for r in con.execute(
-        "SELECT rowid,id,tipo,titulo,scope,revisada FROM senales WHERE rowid IN (%s)"
+        "SELECT rowid,id,tipo,titulo,scope,revisada,where_ FROM senales "
+        "WHERE rowid IN (%s)"
         % ",".join("?" * len(orden)), orden)}
     con.close()
     print(f"[búsqueda {modo}]")
@@ -167,11 +192,26 @@ def cmd_search(a):
         r = filas[rid]
         print(f"{r['id']} · {r['tipo']} · [{r['scope']}] {r['titulo']}"
               + marca_vigencia(r["revisada"], a.meses))
+        # Debajo, y solo si la señal dice dónde: una línea de más por
+        # resultado se lee; una columna más en la misma línea, no.
+        if r["where_"]:
+            print(f"    {r['where_']}")
 
 
 def cmd_supersede(a):
+    """`EP-006·HU-007` fase B · Marcar deja por cuál y cuándo.
+
+    **Antes solo lo decía la consola.** Se imprimía «S-001 marcada
+    reemplazada por S-002» y no se guardaba ni el `by` ni la fecha: de una
+    señal marcada no se sabía cuándo ni por cuál. Lo que se dice en la
+    consola se pierde al cerrarla.
+    """
     con = conectar(a.db)
-    n = con.execute("UPDATE senales SET estado='reemplazada' WHERE id=?", (a.id,)).rowcount
+    migrar(con)
+    n = con.execute(
+        "UPDATE senales SET estado='reemplazada', reemplaza=?, "
+        "cerrada_en=? WHERE id=?",
+        (a.by, datetime.date.today().isoformat(), a.id)).rowcount
     con.commit(); con.close()
     print(f"OK: {a.id} marcada reemplazada por {a.by}" if n else f"no existe {a.id}")
 
@@ -210,7 +250,11 @@ def cmd_archivar(a):
     fila = con.execute("SELECT tipo,estado FROM senales WHERE id=?", (a.id,)).fetchone()
     if not fila:
         con.close(); print(f"no existe {a.id}"); return
-    con.execute("UPDATE senales SET estado='archivada' WHERE id=?", (a.id,))
+    # `EP-006·HU-007` fase B · De una señal archivada se sabe cuándo se
+    # podó. Sin fecha, el transversal de trazabilidad —quién la marcó y
+    # cuándo— quedaba a medias.
+    con.execute("UPDATE senales SET estado='archivada', cerrada_en=? "
+                "WHERE id=?", (datetime.date.today().isoformat(), a.id))
     con.commit(); con.close()
     aviso = ("  (es historia — se conserva; sale de search pero no se borra)"
              if fila["tipo"] in ("decision", "restriccion") else "")

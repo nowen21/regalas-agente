@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-01 cumplido y medido; el CA-02, su RNF y el transversal de privacidad, no |
+| **Estado** | Terminada — el CA-02 se cerró en la fase `B`: sin el modelo, la búsqueda degrada y lo dice |
 ---
 
 ## 2. Narrativa
@@ -127,6 +127,7 @@ Y se dice que la búsqueda por significado no está disponible
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-006-HU-004-degradar-sin-el-modelo](B-EP-006-HU-004-degradar-sin-el-modelo/estado-fase.md) | CA-02, sin el modelo la búsqueda sigue funcionando | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-006-HU-004-degradar-sin-el-modelo/resultado_pruebas.md#2-veredicto-de-la-fase) — el defecto que la fase `A` dejó probado quedó arreglado. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-004-retrodocumentar-la-busqueda-por-significado/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 sí y medido; el CA-02 no. Pendiente el commit |
 | `B-EP-006-HU-004` — **propuesta, sin abrir** | CA-02 y el transversal de privacidad | Que la búsqueda degrade cuando falta el modelo, y que el modelo se cargue sin salir a la red |
 

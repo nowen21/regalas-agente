@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-02, RNF y no regresión cumplidos; el CA-01 y la trazabilidad, no |
+| **Estado** | Terminada — el CA-01 y la trazabilidad se cerraron en la fase `B`: marcar y archivar dejan fecha |
 ---
 
 ## 2. Narrativa
@@ -122,6 +122,7 @@ Y las marcadas se ven como tales
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-006-HU-007-marcar-deja-fecha-y-referencia](B-EP-006-HU-007-marcar-deja-fecha-y-referencia/estado-fase.md) | CA-01, la marcada queda con la fecha y con qué la reemplazó | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-006-HU-007-marcar-deja-fecha-y-referencia/resultado_pruebas.md#2-veredicto-de-la-fase) — el defecto que la fase `A` dejó probado quedó arreglado. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 sí, el CA-01 a medias. Pendiente el commit |
 | `B-EP-006-HU-007` — **propuesta, sin abrir** | Lo que le falta al CA-01 y al transversal de trazabilidad | Que `cmd_supersede` guarde el `--by` y la fecha, y que archivar deje fecha |
 

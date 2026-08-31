@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En curso — CA-02, RNF y transversales cumplidos; el CA-01 a medias |
+| **Estado** | Terminada — el CA-01 se cerró en la fase `B`: el resultado dice dónde está la señal |
 ---
 
 ## 2. Narrativa
@@ -123,6 +123,7 @@ Entonces solo salen las que corresponden
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-006-HU-003-la-busqueda-dice-donde-esta](B-EP-006-HU-003-la-busqueda-dice-donde-esta/estado-fase.md) | CA-01, el resultado alcanza para abrir lo que se encontró | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-006-HU-003-la-busqueda-dice-donde-esta/resultado_pruebas.md#2-veredicto-de-la-fase) — el defecto que la fase `A` dejó probado quedó arreglado. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra](A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-003-retrodocumentar-la-busqueda-por-palabra/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-02 sí, el CA-01 a medias. Pendiente el commit |
 | `B-EP-006-HU-003` — **propuesta, sin abrir** | Lo que le falta al CA-01 | Dos arreglos de una línea en `cmd_search`: imprimir `where_`, y cerrar la conexión del camino sin resultados |
 
