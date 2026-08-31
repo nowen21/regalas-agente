@@ -48,8 +48,8 @@ Corrido sobre las seis formas:
 | `usa la contraseña Patito2026 para entrar` | **intacto**, y es lo decidido |
 
 Y la contraprueba, que es la que sostiene la decisión: cinco frases corrientes
-—entre ellas `la clave del asunto es que el proceso sirva` y
-`API_KEY=os.environ['X']`— salen **intactas**. Ninguna se tapa de más.
+salen **intactas**, entre ellas `la clave del asunto es que el proceso sirva` y
+`API_KEY=os.environ['X']`. Ninguna se tapa de más.
 
 **Resultado: pasa.**
 
