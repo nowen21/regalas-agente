@@ -2414,3 +2414,175 @@ Lo que se busca es justamente eso: que «00 id9», dicho once veces hoy, salga a
 
 ### 112 · Usuario — 2026-08-31 14:25:16
 > si
+
+**Agente** — 2026-08-31 14:39:08
+<!-- agente: fd761734-b368-44af-82cf-b1db73c54e04 -->
+
+**Las dos están hechas.**
+
+**`EP-011·HU-002` — lo que se repitió sale contado.** Sobre lo indexado de este repositorio: **1 389 correcciones**, y arriba del reporte cosas que se pidieron 22, 21 y 19 veces.
+
+El criterio que la historia llamaba «lo difícil» —que tres formas de pedir lo mismo cuenten como una— se probó **con su caso real**:
+
+```
+9  espanol colombiano    3 sesiones (28-08, 22-08, 14-08)
+```
+
+Esas nueve incluyen «adapte la plantilla al español colombiano», «recurede el español colombiano» y «pero español colombiano cómo sería». Salió **sin instalar nada y sin salir a la red**, contando frases compartidas: el riesgo que la historia daba por probable no se materializó, así que no hay deuda que declarar.
+
+**Y apareció un defecto crítico que solo se ve con datos reales.** La primera corrida tenía las **catorce primeras filas hechas de ruido**: los bloques que el editor le pega a sus mensajes, con «this may» 139 veces. Con conversaciones inventadas las pruebas pasaban todas — una conversación de mentiras no trae eso. Es `S-099`.
+
+El reporte cierra diciendo lo que es: *el patrón, no la regla*.
+
+14 archivos preparados. La batería completa en verde; la corrida de las dos suites va corriendo.
+
+¿Se commitea?
+
+### 113 · Usuario — 2026-08-31 14:45:57
+> <task-notification>
+> <task-id>bhdt2h079</task-id>
+> <tool-use-id>toolu_01KNyC74d3CLPe56HpCtPzgE</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\c1d6c769-8894-4763-9898-0b9dc23d8b8a\tasks\bhdt2h079.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Both batteries, full run" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-08-31 14:46:11
+<!-- agente: 29295fc3-8edc-4c0d-adc1-a62c5feb2ac9 -->
+
+Las dos baterías terminaron:
+
+```
+733 prueba(s) en 73 archivo(s) · 0 falla(s) · 0 error(es) · y 203 prueba(s) de la plataforma
+```
+
+**936 pruebas, ninguna roja.** La plataforma subió de 187 a 203 con las 16 nuevas.
+
+Sigue esperando: ¿se commitea?
+
+### 114 · Usuario — 2026-08-31 14:50:15
+> 00 id9
+
+**Agente** — 2026-08-31 14:50:21
+<!-- agente: 5eb265bb-8c68-4896-98ca-2a0322eeb623 -->
+
+936 pruebas, ninguna roja.
+
+¿Se commitea?
+
+### 115 · Usuario — 2026-08-31 14:52:47
+> si y push
+
+**Agente** — 2026-08-31 14:54:53
+<!-- agente: 80852d3b-987a-432f-9606-6aa74d9bd7fc -->
+
+Publicado: `64dfcbb..c753232` — las dos fases y sus sellos.
+
+**El día cerró así:**
+
+| | |
+|---|---|
+| Fases construidas y cerradas | 6 |
+| Pruebas corriendo | **936**, ninguna roja |
+| Baterías sin correr | 0 de 2 |
+| Historias del árbol | 127, todas cumplen |
+| Historias sin fase | **1** — `EP-001·HU-013`, que espera un proyecto real a propósito |
+| Señales nuevas | `S-093` a `S-099` |
+
+El reclamo del final es por fecha, no por contenido: la corrida de las 14:45 fue después de todo el código, y lo que entró luego son documentos.
+
+**Queda una pregunta abierta que no es mía:** si el reporte de correcciones repetidas sirve. La historia lo mide así — *si de ahí no nace ninguna regla, no sirvió*. Vale la pena mirarlo con calma:
+
+```
+python manage.py correcciones_que_se_repiten --desde 2026-08-01
+```
+
+### 116 · Usuario — 2026-08-31 14:58:52
+> 00 id9
+
+**Agente** — 2026-08-31 14:58:57
+<!-- agente: 240e1393-e06e-451f-800b-27950eea92b2 -->
+
+Publicado.
+
+El día: 6 fases cerradas, 936 pruebas en verde, y una sola historia sin fase — la que espera un proyecto real.
+
+Falta que mire el reporte y juzgue si sirve: `python manage.py correcciones_que_se_repiten --desde 2026-08-01`
+
+### 117 · Usuario — 2026-08-31 14:59:58
+> esto: python manage.py correcciones_que_se_repiten --desde 2026-08-01 qué es?
+
+**Agente** — 2026-08-31 15:00:27
+<!-- agente: 63f653c2-6f34-4a99-8168-3c5f1597177d -->
+
+Es la orden que acabo de construir. Se corre desde la carpeta `plataforma/` y muestra qué le tocó repetir a usted desde el 1 de agosto.
+
+Se la corro para que la vea:
+
+Eso es. Y leyéndolo, mi juicio: **funciona, y todavía no sirve del todo.**
+
+Lo de arriba —«debe quedar», «debe tener», «debe estar»— no son correcciones: es la forma en que usted redacta cualquier exigencia. El reporte las cuenta porque se repiten, pero no señalan ninguna regla que falte.
+
+Lo que sí vale está más abajo: «espanol colombiano» aparece en el puesto 21, con nueve repeticiones. **Esa sí es una regla que faltaba**, y de hecho nació ayer como `00·ID10`.
+
+Es exactamente el riesgo 2 que la historia advertía: *que el reporte diga lo obvio*. La medida que ella misma propone es si nace una regla nueva, y de estas diez filas no nace ninguna.
+
+Lo que le falta, en una línea: **ordenar por en cuántas sesiones distintas aparece, no por cuántas veces**. «Debe quedar» sale 22 veces porque usted escribe así todos los días; «español colombiano» aparece en tres días distintos y eso es lo que delata un patrón.
+
+¿Lo ajusto?
+
+### 118 · Usuario — 2026-08-31 15:00:58
+> cómo entro?
+
+**Agente** — 2026-08-31 15:01:08
+<!-- agente: 82484ae8-cf92-49e6-b49b-d529a7604551 -->
+
+Este reporte **no tiene pantalla todavía** — la especificación lo permitió y quedó declarado. Se entra por consola:
+
+```
+cd "c:\Ing. Jose\ia\agente\plataforma"
+python manage.py correcciones_que_se_repiten --desde 2026-08-01
+```
+
+La plataforma sí tiene pantallas, pero solo las de proyectos:
+
+```
+python manage.py runserver
+```
+
+y se abre `http://127.0.0.1:8000`.
+
+Si quiere el reporte ahí adentro, es una fase más sobre `HU-002`. ¿La abro, junto con el ajuste del orden?
+
+### 119 · Usuario — 2026-08-31 15:02:38
+> y qué busca con que yo vea eso o que me aporta?
+
+**Agente** — 2026-08-31 15:02:53
+<!-- agente: da993c01-0822-4e8e-9d79-db5b18d7b742 -->
+
+Que deje de repetirme lo mismo.
+
+Cuando usted me corrige, esa corrección se muere en el chat. Si la tuvo que decir nueve veces en tres días, eso no es descuido suyo: es **una regla que falta en el estándar**, y hoy no hay forma de verlo.
+
+El caso ya ocurrió: *español colombiano*, nueve veces. Ayer nació como `00·ID10` y hoy un enganche la mide en cada turno. Ese es el circuito completo — se repite, se vuelve regla, y algo la hace cumplir.
+
+Lo que le aporta es el primer eslabón: **el número que dispara la regla**, en vez de acordarse.
+
+Y siendo justo: **hoy no se lo aporta todavía.** Lo de arriba del reporte es su forma de redactar, no correcciones. Hasta que ordene por sesiones distintas, no le sirve para decidir nada.
+
+### 120 · Usuario — 2026-08-31 15:03:34
+> y para qué quiere que la vea o es una corrección o necesita que le apruebe algo no es claro
+
+**Agente** — 2026-08-31 15:03:58
+<!-- agente: 4bc10a35-7b83-4902-a063-e1dce141ac9a -->
+
+Tiene razón, no fui claro. No era corrección ni aprobación: era información, y la mezclé con una pregunta.
+
+Lo único que necesito de usted es **una decisión**:
+
+**¿Ajusto el orden del reporte para que ordene por sesiones distintas en vez de por veces?** Es lo que haría que «español colombiano» suba al primer puesto y «debe quedar» baje.
+
+Sí o no. Lo demás era contexto que no le pedía nada.
+
+### 121 · Usuario — 2026-08-31 15:09:10
+> si y que sigue?

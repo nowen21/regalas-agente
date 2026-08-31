@@ -386,6 +386,40 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 
 ---
 
+### H-24 · La mejora que propuse y el usuario aprobó no funcionaba
+
+- **Qué pasó:** el reporte de correcciones repetidas salía encabezado por «debe quedar» y «debe tener», que no son correcciones sino la forma de redactar del usuario. Propuse ordenar por sesiones distintas, el usuario dijo que sí, y **al medirlo no cambiaba nada**: «debe quedar» seguía de primero con catorce sesiones.
+- **Por qué importa:** una propuesta que suena razonable se aprueba rápido y construirla cuesta una fase. Entregarla sabiendo que no sirve es peor que haber propuesto mal, porque queda **con la aprobación del usuario encima**, como si lo hubiera pedido él.
+- **Qué lo soluciona:** ya está hecho. Lo que sirvió fue descartar las frases hechas con las palabras más comunes del propio corpus, calculadas y no escritas a mano.
+- **Qué se decidió:** **medir la mejora contra los datos antes de construirla.** Costó veinte minutos, y de tres ideas dos no servían.
+- **Estado:** resuelto acá
+- **Responde a:** EP-011 · HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `S-100` · la fase `B-EP-011-HU-002` · «español colombiano» pasó del puesto 21 al cuarto
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
+### H-25 · Pedir algo sin decir qué se necesita del usuario
+
+- **Qué pasó:** el agente le mostró al usuario un reporte, opinó, señaló un defecto y ofreció dos trabajos, **sin decir qué esperaba de vuelta**. El usuario tuvo que preguntar tres veces —«¿qué es?», «¿cómo entro?», «¿qué me aporta?»— hasta decirlo de frente: *«o es una corrección o necesita que le apruebe algo, no es claro»*.
+- **Por qué importa:** el pedido se pierde entre lo demás, y quien lee tiene que adivinar si le están informando, corrigiendo o pidiendo. Tres mensajes para llegar a un sí.
+- **Qué lo soluciona:** ya está hecho: quedó como recuerdo del proyecto, con su línea en el índice.
+- **Qué se decidió:** **primero lo que se necesita, después el contexto**; una decisión por vez; y si no se necesita nada, decirlo.
+- **Estado:** resuelto acá
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `historico-chat/memory/pedir-una-cosa-a-la-vez.md`
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -400,7 +434,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
 | Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**La sesión se puede cerrar.** Los veintitrés hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
+**La sesión se puede cerrar.** Los veinticinco hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
 
 **Lo que sigue no es de esta sesión:** una sola historia sin fase, `EP-001·HU-013`, que espera a propósito un proyecto real de RPA o de IA. Las otras dos se construyeron el 2026-08-31, el aviso de vuelta a `shopnest-mesa` salió, y las dos baterías del repositorio quedaron corriendo en verde.
 

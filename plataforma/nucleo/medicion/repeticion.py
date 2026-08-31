@@ -61,6 +61,27 @@ LARGO_MINIMO = 12
 # Cuántas veces hay que haber repetido algo para que sea «repetido». Dos.
 VECES_MINIMAS = 2
 
+# **Una frase hecha con las palabras de todos los días no señala nada.** El
+# primer reporte lo encabezaban «debe quedar», «debe tener» y «debe estar»: no
+# son correcciones, es la forma en que el usuario redacta cualquier exigencia.
+# Una palabra que aparece en más de esta parte de las sesiones es vocabulario
+# de la casa, no tema.
+#
+# **Se calcula, no se escribe.** Una lista a mano acierta en las palabras que
+# uno se imagina y envejece con el proyecto; esta sale de lo que hay (`S-091`).
+PARTE_QUE_ES_VOCABULARIO = 0.25
+
+# **Con pocas sesiones no hay vocabulario de la casa que calcular.** Sobre tres
+# conversaciones, cualquier palabra dicha dos veces pasa el umbral y el filtro
+# se lleva todo. Por debajo de esto no se filtra, y se dice acá en vez de
+# dejar un reporte vacío que se lee como «no hubo nada».
+SESIONES_PARA_CALCULAR_VOCABULARIO = 8
+
+# En cuántas sesiones distintas tiene que aparecer para contar como patrón.
+# Repetir algo tres veces el mismo día es insistir; repetirlo en tres días
+# distintos es una regla que falta.
+SESIONES_MINIMAS = 2
+
 _NO_LETRA = re.compile(r"[^\w\s]", re.UNICODE)
 _ESPACIOS = re.compile(r"\s+")
 
@@ -86,9 +107,16 @@ def _sin_tildes(texto):
                    if unicodedata.category(c) != "Mn")
 
 
+# **Una ruta de archivo no es una frase.** Al pegar `c:\Ing. Jose\ia\agente` en
+# un mensaje, el nombre de la carpeta se cuenta como si el usuario lo hubiera
+# dicho: «ing jose» encabezaba el reporte con doce sesiones. Es el mismo caso que
+# lo que pega el editor — está en el mensaje y no es lo que se dijo.
+_RUTA = re.compile(r"\S*[/\\]\S*")
+
+
 def sin_lo_de_la_maquina(texto):
     """El mensaje sin lo que la herramienta le pegó. Lo que quedó lo escribió una persona."""
-    return _DE_LA_MAQUINA.sub(" ", texto or "")
+    return _RUTA.sub(" ", _DE_LA_MAQUINA.sub(" ", texto or ""))
 
 
 def normalizar(texto):
@@ -121,8 +149,32 @@ def frases_de(texto):
     return salida
 
 
+def vocabulario_de_la_casa(mensajes):
+    """Las palabras que aparecen en tantas sesiones que ya no dicen de qué se trata.
+
+    **Se calculan sobre lo que hay, no se escriben a mano.** Una lista escrita
+    acierta en las palabras que uno se imagina —«debe», «archivo»— y envejece
+    con el proyecto: el día que el trabajo cambie de tema, la lista vieja deja
+    pasar el vocabulario nuevo y sigue tapando el viejo.
+    """
+    sesiones = set()
+    donde = {}
+    for mensaje in mensajes:
+        if not es_correccion(mensaje.texto):
+            continue
+        sesiones.add(mensaje.sesion.archivo)
+        for palabra in set(normalizar(mensaje.texto).split(" ")):
+            if palabra and palabra not in PALABRAS_VACIAS and len(palabra) > 2:
+                donde.setdefault(palabra, set()).add(mensaje.sesion.archivo)
+    if len(sesiones) < SESIONES_PARA_CALCULAR_VOCABULARIO:
+        return set()
+    tope = len(sesiones) * PARTE_QUE_ES_VOCABULARIO
+    return {p for p, s in donde.items() if len(s) > tope}
+
+
 def correcciones(desde=None, hasta=None, proyecto=None,
-                 veces_minimas=VECES_MINIMAS, limite=20):
+                 veces_minimas=VECES_MINIMAS,
+                 sesiones_minimas=SESIONES_MINIMAS, limite=20):
     """Lo repetido, de lo más repetido a lo menos.
 
     Devuelve `[{"frase","veces","sesiones"}]`. Lista vacía cuando no hubo nada
@@ -137,21 +189,32 @@ def correcciones(desde=None, hasta=None, proyecto=None,
     if hasta:
         mensajes = mensajes.filter(sesion__fecha__lte=hasta)
 
+    de_la_casa = vocabulario_de_la_casa(list(mensajes))
+
     montones = {}
     for mensaje in mensajes.iterator():
         if not es_correccion(mensaje.texto):
             continue
         for frase in frases_de(mensaje.texto):
+            # **Lo hecho con el vocabulario de todos los días no señala nada.**
+            # «debe quedar» encabezaba el reporte con 22 repeticiones, y no es
+            # una corrección: es la forma de redactar cualquier exigencia.
+            if any(p in de_la_casa for p in frase.split(" ")):
+                continue
             monton = montones.setdefault(frase, {"veces": 0, "sesiones": []})
             monton["veces"] += 1
             if mensaje.sesion.archivo not in monton["sesiones"]:
                 monton["sesiones"].append(mensaje.sesion.archivo)
 
     repetidas = [{"frase": f, "veces": d["veces"], "sesiones": d["sesiones"]}
-                 for f, d in montones.items() if d["veces"] >= veces_minimas]
-    # De lo más repetido a lo menos, y entre iguales por la frase: dos corridas
-    # sobre los mismos datos tienen que dar la misma lista.
-    repetidas.sort(key=lambda r: (-r["veces"], -len(r["sesiones"]), r["frase"]))
+                 for f, d in montones.items()
+                 if d["veces"] >= veces_minimas
+                 and len(d["sesiones"]) >= sesiones_minimas]
+    # **Primero lo que aparece en más días distintos.** Repetir algo tres veces
+    # el mismo día es insistir en una conversación; repetirlo en tres días es
+    # una regla que falta. Entre iguales, por la frase: dos corridas sobre los
+    # mismos datos tienen que dar la misma lista.
+    repetidas.sort(key=lambda r: (-len(r["sesiones"]), -r["veces"], r["frase"]))
     return repetidas[:limite]
 
 

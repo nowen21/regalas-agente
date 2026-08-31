@@ -124,6 +124,7 @@ Y no se rellena con lo que solo se dijo una vez
 | Fase | Qué hace | Estado |
 |---|---|---|
 | [A-EP-011-HU-002-lo-que-se-repitio-sale-contado](A-EP-011-HU-002-lo-que-se-repitio-sale-contado/estado-fase.md) | Los cuatro CA y el transversal | Cerrada el 2026-08-31: **Cumple** |
+| [B-EP-011-HU-002-lo-generico-no-encabeza-el-reporte](B-EP-011-HU-002-lo-generico-no-encabeza-el-reporte/estado-fase.md) | El `CA-01`, otra vez: lo genérico no encabeza | Cerrada el 2026-08-31: **Cumple** |
 
 ---
 
