@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear, en `EP-004`. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-004 · HU-025](../documentacion/epicas/EP-004-comprobacion-automatica/HU-025-los-caracteres-de-control-invisibles-se-cuentan/HU-025-los-caracteres-de-control-invisibles-se-cuentan.md), aprobada el 2026-08-30 |
 | **De dónde sale** | El hallazgo `H-5` de la sesión [2026-08-28 · plantilla-manual-instalacion](../historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md) |
 | **Proyecto de origen** | El estándar mismo |
 

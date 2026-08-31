@@ -5709,7 +5709,6 @@ class ClasificacionDeCadaRegla(unittest.TestCase):
                       if not re.search(r"\b" + re.escape(rid) + r"\b", base)]
         self.assertEqual(inventadas, [], f"el registro nombra lo que no existe: {inventadas}")
 
-    @unittest.expectedFailure
     def test_el_analizador_ve_todas_las_reglas_escritas_en_base(self):
         """**Falla hoy** (defecto `D-01` de la fase): `metareglas.reglas()`
         solo reconoce las reglas escritas como `## `. Las cuatro del capítulo
@@ -5788,6 +5787,22 @@ class ClasificacionDeCadaRegla(unittest.TestCase):
         avisos = [h for h in metareglas.validar(tmp.name)
                   if "ZZ1" in h.mensaje and "no aparece en" in h.mensaje]
         self.assertEqual(len(avisos), 1, "la regla sin clasificar no se avisó")
+
+    def test_la_regla_derogada_no_tiene_que_declarar_si_se_comprueba(self):
+        """`T-08` de la fase `B`. Con la fila 18 detenido en vez de avisando, y
+        con las cuatro del capítulo 16 recién visibles, hay más reglas a la
+        vista que antes. Las derogadas siguen exentas: dejaron de regir, y
+        pedirles que declaren si se comprueban es pedirle cuentas a lo que ya
+        no se aplica."""
+        derogadas = [r for r in metareglas.reglas(self.RAIZ) if r.derogada]
+        self.assertTrue(derogadas, "no hay ninguna derogada que comprobar")
+        clasificadas = metareglas._clasificadas(self.RAIZ)
+        sin_clasificar = [r for r in derogadas if r.id not in clasificadas]
+        self.assertTrue(sin_clasificar,
+                        "todas las derogadas están clasificadas")
+        for r in sin_clasificar:
+            self.assertEqual([], metareglas._fila18_clasificada(r, clasificadas),
+                             "se le reclama a `%s`, que está derogada" % r.id)
 
     def test_la_regla_sin_clasificar_detiene_la_publicacion(self):
         """CA-03 pide que una regla nueva **no se publique** sin clasificar.

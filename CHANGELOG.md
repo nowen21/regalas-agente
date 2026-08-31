@@ -11,6 +11,20 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 36.0.2 — 2026-08-30
+
+**Cuatro reglas del capítulo de cumplimiento llevaban meses publicadas sin que nadie las hubiera revisado.** No por descuido: el programa que revisa las reglas no las reconocía como reglas, porque estaban escritas un nivel más abajo que las demás. El capítulo salía en verde por el mismo motivo por el que pasaría un examen que no se corrige.
+
+**PARCHE**: cambia la forma de las cuatro y les agrega lo que les faltaba; no cambia lo que exigen.
+
+**Qué se hizo con ellas.** Suben al nivel que el molde pide, las dos partes del capítulo dejan de ser encabezado para no chocar con ellas, la tercera recibe el ejemplo de lo incorrecto y lo correcto que nunca tuvo, y las cuatro reciben su bloque de checklist aplicado.
+
+**Y el programa aprendió a distinguir la regla de su eco.** Un título con forma de regla escrito un nivel abajo es una de dos cosas: la regla, o una sección que la nombra. Lo que las separa es que el identificador es único, así que el que ya se definió arriba es un eco. Sin esa distinción, el analizador contaba una regla dos veces y reclamaba un identificador repetido que no existía.
+
+**Una comprobación pasó de avisar a detener:** que toda regla diga si se puede comprobar con un programa. Era aviso mientras el analizador no las veía a todas, porque reclamar por algo que el propio programa no podía mirar entero es ruido que se aprende a ignorar. Las derogadas siguen exentas.
+
+---
+
 ## 36.0.1 — 2026-08-30
 
 **El texto de un enlace ahora dice dónde vive lo que abre.** Noventa y ocho enlaces del repositorio mostraban un texto que no correspondía con el archivo al que llevaban: quien los leía no podía saber si el documento estaba al lado o en otra carpeta, y tenía que abrirlo para averiguarlo.

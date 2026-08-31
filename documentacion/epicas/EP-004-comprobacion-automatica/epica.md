@@ -152,6 +152,8 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-021](HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido.md) | Que la cuenta distinga lo terminado de lo cumplido | Must | M |
 | [HU-022](HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) | Que un documento que sigue siendo el molde no cuente como escrito | Must | S |
 | [HU-023](HU-023-un-rojo-se-puede-cerrar-declarandolo/HU-023-un-rojo-se-puede-cerrar-declarandolo.md) | Que un veredicto en rojo se pueda cerrar, declarándolo | Must | S |
+| [HU-024](HU-024-el-validador-dice-que-no-comprueba/HU-024-el-validador-dice-que-no-comprueba.md) | El validador dice sobre qué corrió y qué no comprueba | Must | 2 pts |
+| [HU-025](HU-025-los-caracteres-de-control-invisibles-se-cuentan/HU-025-los-caracteres-de-control-invisibles-se-cuentan.md) | Los caracteres de control invisibles se cuentan y se quitan | Should | 2 pts |
 
 ## 10. Consideraciones técnicas
 

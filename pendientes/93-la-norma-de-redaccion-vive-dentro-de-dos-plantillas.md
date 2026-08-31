@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear, en `EP-001`. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-001 · HU-037](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-037-la-norma-de-redaccion-del-agente/HU-037-la-norma-de-redaccion-del-agente.md), aprobada el 2026-08-30 |
 | **De dónde sale** | El hallazgo `H-2` de la sesión [2026-08-28 · plantilla-manual-instalacion](../historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md) |
 | **Proyecto de origen** | El estándar mismo |
 

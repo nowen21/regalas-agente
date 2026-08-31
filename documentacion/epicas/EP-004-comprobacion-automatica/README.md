@@ -21,3 +21,5 @@ Contenido inmediato de esta carpeta.
 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-014-un-solo-veredicto-por-fase/](HU-014-un-solo-veredicto-por-fase/) | Historia de usuario: un solo veredicto por fase |
 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-015-derogacion-sin-adoptar/](HU-015-derogacion-sin-adoptar/) | Historia de usuario: derogación sin adoptar |
 | [documentacion/epicas/EP-004-comprobacion-automatica/HU-016-el-pendiente-cerrado-nombra-su-fase/](HU-016-el-pendiente-cerrado-nombra-su-fase/) | Historia de usuario: el pendiente cerrado nombra su fase |
+| [documentacion/epicas/EP-004-comprobacion-automatica/HU-024-el-validador-dice-que-no-comprueba/](HU-024-el-validador-dice-que-no-comprueba/) | Historia de usuario: «…» |
+| [documentacion/epicas/EP-004-comprobacion-automatica/HU-025-los-caracteres-de-control-invisibles-se-cuentan/](HU-025-los-caracteres-de-control-invisibles-se-cuentan/) | Historia de usuario: «…» |

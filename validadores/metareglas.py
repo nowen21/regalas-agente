@@ -46,7 +46,19 @@ LETRAS = "base/20-meta-reglas/estructura-regla.md"
 VALIDABLES = "validadores/reglas-validables.md"
 CATALOGO_PROYECTO = ".agente/reglas-proyecto.md"
 
-_REGLA = re.compile(r"^(#{1,2})\s+([A-Z]{1,4}\d+(?:\.\d+)?)\s*·\s*(.+?)\s*$")
+# `EP-004·HU-002` fase B · La regla escrita con tres almohadillas también es regla.
+#
+# **El caso que lo hizo falta.** El analizador solo reconocía `#` y `##`. Las
+# cuatro reglas del capítulo 16 están escritas con `###`, así que **no existían
+# para el programa**: ninguna de las veinte filas del checklist se les aplicó
+# nunca, y el capítulo salía en verde por el mismo motivo por el que pasaría un
+# validador que no valida nada.
+#
+# **Lo que importa no es el nivel del título: es la forma del identificador.**
+# `CQ1 · Sabe para quién construyes` es una regla esté escrita con dos
+# almohadillas o con tres. Se aceptan hasta cuatro, que es lo que el formato de
+# los documentos de esta casa usa como más profundo.
+_REGLA = re.compile(r"^(#{1,4})\s+([A-Z]{1,4}\d+(?:\.\d+)?)\s*·\s*(.+?)\s*$")
 _CERCA = re.compile(r"^\s*(```|~~~)")
 _CHECKLIST = re.compile(r"(?m)^###\s+Checklist\s*·\s*\*\*(CUMPLE|NO CUMPLE)\*\*")
 _CONTRA = re.compile(r"(?i)contra\s+\*\*v?([\d.]+)\*\*")
@@ -154,6 +166,20 @@ def reglas(raiz=None):
     """
     raiz = raiz or RAIZ
     salida = []
+    # `EP-004·HU-002` fase B · Los identificadores definidos con `#` o `##`,
+    # en una pasada previa. Hace falta que sea previa: en el orden del árbol,
+    # el anexo que **nombra** a `M19` se lee antes que el archivo donde la
+    # regla vive, así que mirando sobre la marcha el eco llegaría primero.
+    arriba = set()
+    for archivo in recorrer_md(os.path.join(raiz, BASE)):
+        for _, linea in lineas_utiles(leer(archivo)):
+            m = _REGLA.match(linea)
+            if not m or len(m.group(1)) > 2:
+                continue
+            if (len(m.group(1)) == 1
+                    and not os.path.basename(archivo).startswith(m.group(2) + "-")):
+                continue
+            arriba.add(m.group(2))
     for archivo in recorrer_md(os.path.join(raiz, BASE)):
         texto = leer(archivo)
         actual = None
@@ -166,6 +192,22 @@ def reglas(raiz=None):
                 # reglas: son el material que la regla enlaza.
                 if (len(m.group(1)) == 1
                         and not os.path.basename(archivo).startswith(m.group(2) + "-")):
+                    actual = None
+                    continue
+                # `EP-004·HU-002` fase B · Tres almohadillas: regla o eco.
+                #
+                # Un `###` con forma de regla es una de dos cosas. En el
+                # capítulo 16 **es la regla**, escrita un nivel más abajo
+                # porque el capítulo agrupa sus reglas en partes; en el anexo
+                # de meta-reglas es una sección que **nombra** a `M19`, que
+                # vive en su propio archivo.
+                #
+                # Lo que las separa es el identificador: `M4` lo exige único,
+                # así que un `###` cuyo ID ya se definió arriba es un eco.
+                # Las cuatro del 16 no están en ninguna otra parte, y por eso
+                # llevaban dos meses sin que ninguna fila del checklist les
+                # tocara.
+                if len(m.group(1)) >= 3 and m.group(2) in arriba:
                     actual = None
                     continue
                 actual = Regla(m.group(2), m.group(3), len(m.group(1)),
@@ -361,11 +403,21 @@ def _fila14_15_dependencias(regla, indice):
     return hallazgos
 
 
+# `EP-004·HU-002` fase B · La fila 18 detiene, y por eso primero se pudo ver.
+#
+# Era aviso mientras el analizador no veía todas las reglas: reclamar por algo
+# que el propio programa no era capaz de mirar entero habría sido un ruido que
+# se aprende a ignorar. Con las cuatro del capítulo 16 ya a la vista y las 256
+# clasificadas, una regla publicada sin decir si se puede comprobar es un
+# defecto, no una nota.
+#
+# **La derogada sigue exenta:** dejó de regir, y pedirle que declare si se
+# comprueba sería pedirle cuentas a lo que ya no se aplica.
 def _fila18_clasificada(regla, clasificadas):
     if regla.id in clasificadas or regla.derogada:
         return []
     return [Hallazgo(
-        AVISO, regla.archivo, regla.linea,
+        FALLA, regla.archivo, regla.linea,
         f"`{regla.id}` no aparece en `{VALIDABLES}` — M9 pide que toda regla "
         f"declare si es validable (fila 18)")]
 

@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear, en `EP-004`. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-004 · HU-024](../documentacion/epicas/EP-004-comprobacion-automatica/HU-024-el-validador-dice-que-no-comprueba/HU-024-el-validador-dice-que-no-comprueba.md), aprobada el 2026-08-30 |
 | **De dónde sale** | El hallazgo `H-3` de la sesión [2026-08-28 · plantilla-manual-instalacion](../historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md), y el agente volvió a caer en él el mismo día |
 | **Proyecto de origen** | El estándar mismo |
 
