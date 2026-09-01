@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Lo irreversible quedó impedido por construcción |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `cd6c1cd` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **Cuarto puente hacia el estándar.** Después del que tapa credenciales, el que parte una conversación en turnos y el que corre las comprobaciones, esto deja de ser una excepción y pasa a ser la forma.

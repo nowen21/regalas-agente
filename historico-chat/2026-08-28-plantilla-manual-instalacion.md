@@ -3816,3 +3816,42 @@ Reglas son seis funcionalidades, el módulo más grande. ¿Arranco?
 
 ### 178 · Usuario — 2026-09-01 15:27:11
 > arranque
+
+**Agente** — 2026-09-01 15:45:50
+<!-- agente: 68c432fe-3fd4-4927-a648-820a0c5e3f91 -->
+
+Ahora los cinco de la fase H.
+
+`EP-016` abierta y sus dos primeras historias cerradas: **Cumple** las dos. Reglas es el módulo más grande, y quedan cuatro de sus seis.
+
+**`F-006` — ningún identificador se reutiliza.** Es lo único irreversible de la épica: una especificación de hace un año, un commit, una fase cerrada, todos citan por número. Reasignarlo hace que esas citas apunten a otra cosa **y la cita sigue viéndose bien**.
+
+Medido sobre este repositorio: **257 reglas en 24 capítulos, 9 derogadas, y ningún hueco de numeración**. En tres años nadie se saltó un número.
+
+**`F-005` — escribir y derogar.** Derogar marca y conserva; el texto se queda entero.
+
+Y la prueba que valió más que las otras:
+
+```
+Identificador que le tocaría: DOC24
+
+Estas 1 hablan de lo mismo. Míralas antes de guardar: esto no dice si se
+contradicen, solo que se parecen.
+  DOC19    Marca con «…» los espacios por llenar de un documento modelo
+```
+
+**Habría evitado escribir una regla duplicada** — el caso exacto que la ficha advertía.
+
+**Lo que más cuidado costó no fue el código, sino esa frase.** Contar palabras encuentra reglas que hablan de lo mismo, no las que se contradicen. Llamarlo detector sería peor que no tenerlo: **quien confía en un detector deja de mirar**. Por eso el aviso lo dice encuentre o no, y hay una prueba que lo comprueba.
+
+| | |
+|---|---|
+| Pruebas nuevas | 29 |
+| Baterías | 733 + 382, cero rojas |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-109`. 33 archivos. **¿Commiteo y hago push?**
+
+### 179 · Usuario — 2026-09-01 17:40:14
+> si
