@@ -3264,3 +3264,48 @@ Medí el `CA-03`: **un hueco con nombre no se distingue de una cita**. De 341 ma
 
 ### 155 · Usuario — 2026-09-01 10:31:23
 > dos listas
+
+**Agente** — 2026-09-01 11:00:35
+<!-- agente: 510759ac-c620-4e99-9fd6-e500d13ff047 -->
+
+Fase construida y cerrada: **Cumple**, 5 de 5 criterios.
+
+La plataforma ya dice qué le falta por llenar a un documento:
+
+```
+python manage.py que_le_falta cimiento-el-estandar
+54 documento(s) con espacios por llenar, 77 en total
+```
+
+**La medición previa cambió el diseño.** Contar los huecos con nombre habría dado por incompleto todo documento bien escrito. Cuesta diez minutos medirlo; construirlo primero habría costado la fase, porque con documentos inventados el conteo se ve perfecto.
+
+**Y apareció algo que nadie pidió.** Comparar con el expediente dio 54 contra 31, y la diferencia está explicada entera:
+
+| | Cuántos | Por qué |
+|---|---|---|
+| Solo los ve el Ciclo de vida | **24** | Todos son índices, y un índice no entra al expediente. **Sus huecos existen y nunca se mostraron** |
+| Solo los ve el Expediente | 1 | Su marca está dentro de un bloque cercado, donde se escribe para mostrarla |
+
+Sobre los mismos 1 002 documentos, contando igual, dan 55 y 54.
+
+| | |
+|---|---|
+| Pruebas nuevas | 26 |
+| Baterías | 733 + 278, **cero rojas** |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-104`. 24 archivos preparados. **¿Commiteo?**
+
+### 156 · Usuario — 2026-09-01 11:02:54
+> si
+
+**Agente** — 2026-09-01 11:03:32
+<!-- agente: d37ee6c8-f78e-453b-b38f-c0cac0bde6a4 -->
+
+`d0ff51c`. La versión 2 quedó con **una sola funcionalidad a medias**: `F-014`, con su `HU-001` cerrada y la `HU-002` escrita, aprobada y sin construir.
+
+Pendiente el sello de la estación 12 que escribió el enganche, más la transcripción. **¿Lo commiteo?**
+
+### 157 · Usuario — 2026-09-01 11:19:57
+> si

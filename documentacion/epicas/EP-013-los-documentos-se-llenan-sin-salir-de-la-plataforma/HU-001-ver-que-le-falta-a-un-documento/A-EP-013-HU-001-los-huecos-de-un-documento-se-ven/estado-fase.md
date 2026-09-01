@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ El defecto grave se encontró midiendo antes de construir |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `d0ff51c` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **Esta fase solo lee.** Escribir es la fase de la `HU-002`. Se separaron porque fallan distinto: contar mal da un número equivocado, escribir mal daña un documento.
