@@ -2892,3 +2892,58 @@ A los dos los cazó una prueba o la corrida sobre datos reales, no la lectura. E
 
 ### 138 · Usuario — 2026-08-31 20:12:52
 > si
+
+**Agente** — 2026-08-31 20:14:28
+<!-- agente: 52801e56-9f79-4078-9a8a-f04ee867a7f9 -->
+
+Publicado: `ba33c18..48b2bc6`. El árbol quedó limpio.
+
+**Dónde va la versión 2 de la plataforma:**
+
+| Funcionalidad | Estado |
+|---|---|
+| `F-033` buscar en lo conversado | Hecha |
+| `F-034` qué corrección se repite | Hecha |
+| `F-025` armar el expediente | **Hecha hoy** |
+| `F-026` generar el entregable | Historia y especificación listas, sin construir |
+| `F-014` llenar documentos desde la plataforma | Sin historia |
+
+Lo que sigue es `F-026`: convertir el expediente en el archivo que el cliente espera. Ya tiene todo aprobado, así que se puede abrir su fase directo.
+
+Y queda un hallazgo suyo, aparte de la plataforma: **22 fases sin su documento de cierre**. Eso es deuda del repositorio, y ahora tiene nombre y lista.
+
+¿Sigo con `F-026`, o prefiere mirar primero los 22?
+
+### 139 · Usuario — 2026-08-31 20:18:06
+> siga
+
+**Agente** — 2026-08-31 20:18:40
+<!-- agente: 118bf828-112e-4fe2-998a-5551ed72bd36 -->
+
+Antes de abrir la fase, un dato nuevo que puede cambiar lo que ya decidió:
+
+**`markdown` ya está instalado en esta máquina** (versión 3.9), aunque **no está declarado** en lo que la plataforma necesita para correr.
+
+| Camino | Qué cuesta |
+|---|---|
+| **Con la librería estándar**, como acordamos | Hay que escribir el convertidor: encabezados, tablas, listas, código, citas. Es la parte que puede salir mal, y `CA-02` —listas dentro de celdas— es justo la difícil |
+| **Declarando `markdown` como dependencia** | El convertidor ya existe y es maduro. Pero la plataforma pasa a depender de algo que hay que instalar, y eso choca con lo que la épica declaró |
+
+Sigo recomendando **la librería estándar**, por una razón concreta: el entregable es lo único que sale hacia un tercero, y `CA-03` exige que dos corridas den el mismo archivo. Con una dependencia externa, una actualización cambia la salida sin que nadie lo pida.
+
+¿Mantengo esa decisión?
+
+### 140 · Usuario — 2026-08-31 20:21:12
+> 00 id9
+
+**Agente** — 2026-08-31 20:21:17
+<!-- agente: be6f3035-3714-41fd-9802-ea78d1429337 -->
+
+`markdown` ya está instalado acá, pero no es dependencia declarada de la plataforma.
+
+Sigo recomendando la librería estándar: el entregable sale hacia un tercero, y una dependencia externa cambia la salida cuando se actualiza.
+
+**¿Mantengo esa decisión?**
+
+### 141 · Usuario — 2026-08-31 20:21:48
+> si

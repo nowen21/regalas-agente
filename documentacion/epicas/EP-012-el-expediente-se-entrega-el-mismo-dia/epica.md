@@ -9,7 +9,7 @@
 | **Módulo** | Expediente |
 | **Versión del producto** | 2, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
 | **Funcionalidades que cubre** | `F-025`, `F-026` |
-| **Estado** | Aprobada el 2026-08-31 |
+| **Estado** | Cerrada el 2026-08-31: sus dos historias cumplen |
 | **Fecha de apertura** | 2026-08-31 |
 
 ---
@@ -132,14 +132,15 @@ Versión 2. Es lo que esa versión promete como valor —*entregar el expediente
 
 ## 16. Definition of Done
 
-- ☐ Las dos historias cerradas, con veredicto por criterio.
-- ☐ Un expediente real armado, con lo que le falta dicho.
-- ☐ Un entregable generado dos veces con el mismo resultado.
-- ☐ Comprobado que la auditoría y la memoria no entraron.
+- ☑ Las dos historias cerradas, con veredicto por criterio.
+- ☑ Un expediente real armado: 762 documentos, 22 faltantes dichos con nombre.
+- ☑ Un entregable generado dos veces con el mismo resultado.
+- ☑ Comprobado que la auditoría y la memoria no entraron.
 
 ## 17. Bitácora de cambios
 
 | Fecha | Qué pasó |
 |---|---|
+| 2026-08-31 | **Cerrada**: las dos historias construidas y probadas el mismo día |
 | 2026-08-31 | **Aprobada** por Ing. José Dúmar Jiménez Ruíz |
 | 2026-08-31 | Nace del inventario aprobado, para cubrir `F-025` y `F-026`, que eran las dos funcionalidades obligatorias de la versión 2 sin historia escrita. El mismo día se resolvió la duda 5, que fijaba su alcance |

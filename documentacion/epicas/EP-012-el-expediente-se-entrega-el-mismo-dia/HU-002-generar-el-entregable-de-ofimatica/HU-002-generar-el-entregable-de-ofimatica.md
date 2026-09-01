@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-31 |
+| **Estado** | Terminada el 2026-08-31, con sus cuatro criterios probados |
 ---
 
 ## 2. Narrativa
@@ -136,7 +136,7 @@ Y se genera igual si el usuario lo pide
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| Por abrir | Esta historia | Sin abrir |
+| [A-EP-012-HU-002-el-entregable-sale-del-texto](A-EP-012-HU-002-el-entregable-sale-del-texto/estado-fase.md) | Los cuatro CA | Cerrada el 2026-08-31: **Cumple** |
 
 ---
 
@@ -159,9 +159,9 @@ Y se genera igual si el usuario lo pide
 
 ## 11. Definition of Done
 
-- ☐ Los cuatro criterios con veredicto y evidencia.
-- ☐ El `CA-02` probado con un documento real con tablas y viñetas.
-- ☐ Comprobado que dos corridas dan el mismo archivo.
+- ☑ Los cuatro criterios con veredicto y evidencia.
+- ☑ El `CA-02` probado sobre los 762 documentos reales: 1 697 listas dentro de celdas, y 15 marcas a la vista en ocho millones de caracteres.
+- ☑ Comprobado que dos corridas dan el mismo archivo.
 
 ## 12. Validación INVEST
 

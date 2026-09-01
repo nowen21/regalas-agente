@@ -454,6 +454,23 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-08-28-plantilla-manua
 
 ---
 
+### H-28 · La versión 2 entrega lo que promete: el expediente sale en un archivo
+
+- **Qué pasó:** se construyó la segunda funcionalidad obligatoria. El expediente de este repositorio se convierte en **un solo archivo de 8 093 097 caracteres**, con 762 documentos, 6 205 tablas y **1 697 listas dentro de celdas**, que era la parte donde estos convertidores dejan la marca del texto a la vista.
+- **Por qué importa:** *entregar el expediente el mismo día* es lo que esa versión promete, y hoy eso costaba un día de copiar y pegar. Con la épica cerrada, la promesa se cumple.
+- **Qué lo soluciona:** ya está hecho, en la fase `A-EP-012-HU-002`.
+- **Qué se decidió:** **mantener la librería estándar** aun sabiendo que había un convertidor instalado en la máquina —el entregable es lo único que sale hacia un tercero, y una actualización cambiaría lo que el cliente ve—; y **medir la fidelidad contando**, no mirando: 205 marcas del origen a la vista, después 31, después 15.
+- **Estado:** resuelto acá
+- **Responde a:** EP-012 · HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `S-102` · `plataforma/nucleo/expediente/marcado.py` · la épica `EP-012`, cerrada
+- **Nace en:** 2026-08-28 · plantilla-manual-instalacion
+- **Cerrado en:** 2026-08-28 · plantilla-manual-instalacion
+- **Con qué se retoma:** —
+
+---
+
 ## ¿Se puede cerrar la sesión?
 
 Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
@@ -468,7 +485,7 @@ Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminad
 | Toda historia disparada está escrita en su épica | ☑ `HU-024`, `HU-025` y `HU-037`, aprobadas el 2026-08-30 **y cerradas ese mismo día** |
 | Lo que se hizo está aprobado y guardado | ☑ Todo commiteado y publicado |
 
-**La sesión se puede cerrar.** Los veintisiete hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
+**La sesión se puede cerrar.** Los veintiocho hallazgos están resueltos o anotados con su archivo, y la cuenta del árbol quedó en **122 historias que cumplen, cero rojas y cero mudas**. `HU-012` se sumó el 2026-08-31 con su fase, y con ella el núcleo dejó de tener reglas que mandan sin que nada las sostenga.
 
 **Lo que sigue no es de esta sesión:** una sola historia sin fase, `EP-001·HU-013`, que espera a propósito un proyecto real de RPA o de IA. Las otras dos se construyeron el 2026-08-31, el aviso de vuelta a `shopnest-mesa` salió, y las dos baterías del repositorio quedaron corriendo en verde.
 
