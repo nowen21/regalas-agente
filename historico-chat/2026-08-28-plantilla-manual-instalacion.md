@@ -3645,3 +3645,44 @@ Señal `S-106`. 23 archivos. **¿Commiteo y hago push?**
 
 ### 171 · Usuario — 2026-09-01 13:14:59
 > si
+
+**Agente** — 2026-09-01 13:16:07
+<!-- agente: 57c1668e-4ff4-49fa-b411-10fbaf7bead3 -->
+
+Publicado: `36ae0eb..2f2d2ef`. Árbol limpio.
+
+**Dónde quedó todo:**
+
+| Versión | Estado |
+|---|---|
+| 1 · Ver lo que hay | Cerrada |
+| 2 · Entregar | **Cerrada hoy** |
+| 3 · Gobernar al agente | Arrancada: `F-031` hecha, faltan 9 |
+| 4 y 5 | Sin abrir |
+
+De la versión 3 quedan las reglas (`F-005` a `F-010`) y las comprobaciones (`F-020` a `F-022`).
+
+**Cinco hallazgos, los cinco cerrados**, y los cuatro últimos salieron de lo mismo: medir o correr sobre datos reales antes de dar algo por bueno. Tres son la misma familia — un documento que habla de algo parece contenerlo — y el último era el peligroso, porque tapar no se deshace.
+
+Lo que queda dicho y sin pendiente: 26 espacios por llenar, 7 documentos con claves de ejemplo que se quedan como están, ninguna pantalla en los cuatro módulos nuevos, y sin responder si llenar por huecos resulta cómodo.
+
+### 172 · Usuario — 2026-09-01 13:19:22
+> 00 id9
+
+**Agente** — 2026-09-01 13:19:27
+<!-- agente: 61e44e33-fa1e-43e8-8755-cb9c106d8ec1 -->
+
+Publicado: `36ae0eb..2f2d2ef`. Árbol limpio.
+
+| Versión | Estado |
+|---|---|
+| 1 y 2 | Cerradas |
+| 3 | Arrancada: `F-031` hecha, faltan 9 |
+| 4 y 5 | Sin abrir |
+
+Cinco hallazgos cerrados. Los cuatro últimos salieron de medir sobre datos reales antes de dar algo por bueno.
+
+Sigue el resto de la versión 3: las reglas y las comprobaciones. ¿Arranco?
+
+### 173 · Usuario — 2026-09-01 13:28:00
+> si

@@ -73,6 +73,16 @@ Dos funcionalidades cerradas y andando lo demuestran:
 | `F-027` · versión 1 | `F-011` | Trae las fases que el proyecto ya tiene, en vez de crearlas |
 | `F-025` · versión 2 | `F-014` | Arma el expediente con los documentos traídos, sin llenarlos ahí |
 
+**Y la columna tiene un ciclo, encontrado el 2026-09-01.** Tres funcionalidades de la versión 3 se esperan entre sí:
+
+```
+F-008 (publicar una version) -> F-022 (comprobar que no rompio) -> F-020 (comprobar lo exigido) -> F-008
+```
+
+**Leído como orden de construcción, ninguna de las tres se puede empezar.** Leído como lo que la columna de verdad dice, se resuelve solo: `F-020` necesita que **exista** un cuerpo de reglas contra el cual comprobar, y existe desde el primer día, escrito en `base/`. No necesita que la plataforma lo publique.
+
+Es el mismo malentendido de arriba, en su forma más clara: **una cadena de necesidades puede tener vueltas sin que nada esté mal; una cadena de construcción, no.**
+
 **Para saber si algo está bloqueado no basta esta columna:** hay que preguntarse si lo que necesita ya lo trae la importación. El reparto por versiones vive en [cvds/implementacion/README.md](../implementacion/README.md) §2, y ahí está escrito por qué ninguna versión se movió por esto.
 
 ## Las funcionalidades, una por una

@@ -1101,3 +1101,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier transformación que no se pueda deshacer.
 - **Rel:** S-104 y S-105 (un documento que habla de algo parece contenerlo), S-102 (se comprueba contando sobre lo real).
+
+## S-107 · «Sin comprobar» no es «no cumple», y una cadena de necesidades puede tener vueltas  ·  patrón · activa
+- **What:** al abrir las comprobaciones aparecieron dos cosas. La primera, que la columna de dependencias del inventario **tiene una vuelta**: `F-008` espera a `F-022`, que espera a `F-020`, que espera a `F-008`. Leída como orden de construcción, ninguna de las tres arranca. La segunda, al diseñar el veredicto: un proyecto sin el estándar instalado no cabe ni en «cumple» ni en «no cumple».
+- **Why:** la vuelta no es un error del plan: **una cadena de necesidades puede tener vueltas sin que nada esté mal**, porque lo que se necesita puede existir ya. `F-020` necesita un cuerpo de reglas contra el cual comprobar, y existe escrito en `base/` desde el primer día. Una cadena de construcción, en cambio, no puede tener vueltas nunca. Son dos grafos distintos y la columna solo dibuja el primero.
+- **Also:** lo del veredicto es del mismo tipo. Devolver «cumple» a lo que no se miró es mentir, y devolver «no cumple» hace que nadie mire los rojos de verdad, porque se llenan de proyectos que solo estaban sin instalar. **La tercera respuesta hay que inventarla**, y si no se inventa, el sistema la inventa mal.
+- **And:** por el mismo camino salió un tercer caso: **cero comprobaciones corridas no es verde**. Una corrida que no comprobó nada y termina bien es un silencio que se lee como éxito. Ya estaba en el estándar, y hubo que ponerlo también acá.
+- **Where:** `plataforma/nucleo/comprobaciones/core.py` · la §5.1 de `documentacion/comprobaciones/spec.md` · la explicación de la columna en el inventario.
+- **Learned:** **cuando un estado admite «no se sabe», hay que darle su propio nombre** en vez de repartirlo entre los dos que ya existen. Y antes de leer una columna de dependencias como un orden, **buscarle ciclos**: si los tiene, es que dice qué se necesita, no qué se construye antes.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier plan con dependencias declaradas, y cualquier pieza que dé veredictos.
+- **Rel:** S-103 (reordenar por lo que dice una columna), S-106 (medir antes de encender algo irreversible).

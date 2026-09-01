@@ -90,6 +90,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-6 · La columna de dependencias tiene una vuelta, y el veredicto le faltaba una respuesta
+
+- **Qué pasó:** al abrir las comprobaciones salió que la columna «Depende de» **tiene un ciclo**: `F-008` espera a `F-022`, que espera a `F-020`, que espera a `F-008`. Leída como orden de construcción, ninguna de las tres arranca. Y al diseñar el veredicto apareció que un proyecto sin el estándar instalado no cabe ni en «cumple» ni en «no cumple».
+- **Por qué importa:** las dos son la misma clase de error. Una cadena de **necesidades** puede tener vueltas sin que nada esté mal, porque lo necesario puede existir ya; una de **construcción**, no. Y un estado que admite «no se sabe» necesita su propio nombre: devolver «cumple» a lo que no se miró es mentir, y devolver «no cumple» llena los rojos de proyectos que solo estaban sin instalar, hasta que nadie los mira.
+- **Qué lo soluciona:** ya resuelto. La vuelta queda explicada en el inventario, y el veredicto tiene **tres respuestas**: cumple, no cumple, y no se pudo comprobar.
+- **Qué se decidió:** arrancar la versión 3 por las comprobaciones, que es lo que desbloquea la vuelta, y después seguir con las reglas.
+- **Estado:** resuelto acá
+- **Responde a:** EP-015 · HU-001 · CA-03
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-107` · [cvds/analisis-requisitos/inventario-funcionalidades.md](../../../cvds/analisis-requisitos/inventario-funcionalidades.md) · `plataforma/nucleo/comprobaciones/core.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -98,11 +114,11 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
-| Toda historia disparada está escrita en su épica | ☑ no disparó ninguna |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `EP-014` |
+| Toda historia disparada está escrita en su épica | ☑ ninguna. Las dos que faltan de `EP-015` están nombradas en ella |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `EP-015` |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
 **Y la versión 3 arrancó**, por `F-031`, que era lo único con daño irreversible y estaba construido a medias sin que nadie lo hubiera declarado.
 
-**Lo que sigue no es de esta sesión:** el resto de la versión 3, que son las reglas y las comprobaciones. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Lo que sigue no es de esta sesión:** el resto de la versión 3, que son las reglas y las dos comprobaciones que faltan, `F-021` y `F-022`. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
