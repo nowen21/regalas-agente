@@ -2869,3 +2869,26 @@ La cadena de `EP-012` está completa y aprobada. **¿Abro la primera fase, la de
 
 ### 137 · Usuario — 2026-08-31 19:22:51
 > si
+
+**Agente** — 2026-08-31 19:37:46
+<!-- agente: 45d2c512-a857-42a3-a749-44a49ee2d2df -->
+
+**Cerrada la primera fase de `EP-012`.** El expediente ya se arma solo.
+
+Sobre este repositorio: **762 documentos en ocho grupos**, y sus tres listas dicen en qué estado está.
+
+**Y destapó algo:** hay **22 fases sin su documento de cierre**, todas de retro-documentación vieja. Armando a mano nadie lo veía, porque a mano no se distingue «este documento no existe» de «se me pasó».
+
+**Dos defectos aparecieron, y son de la misma familia:**
+
+1. **Se contaban las citas como huecos.** Salían **559** documentos «a medio llenar» donde hay **31** — en esta casa se cita con esas mismas comillas todo el tiempo. Ahora cuenta solo la marca que `13·DOC19` fija.
+2. **El orden «del ciclo» se caía dentro del grupo.** Entre grupos estaba bien; los cinco documentos de una fase salían por nombre de archivo, con el cierre antes que el plan.
+
+A los dos los cazó una prueba o la corrida sobre datos reales, no la lectura. Es `S-101`.
+
+20 pruebas nuevas, la plataforma en 232, la batería completa sin fallas. 20 archivos preparados.
+
+¿Se commitea?
+
+### 138 · Usuario — 2026-08-31 20:12:52
+> si

@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Dos defectos, los dos cerrados acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `6bd2b01` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **La cadena se recorrió entera y en el día**: épica, historias, especificación y fase, cada una aprobada antes de la siguiente. Es la primera vez en esta sesión que se abre una épica desde cero.
