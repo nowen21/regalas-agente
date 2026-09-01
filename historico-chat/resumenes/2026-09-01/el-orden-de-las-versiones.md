@@ -122,6 +122,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-8 · Lo que más cuidado costó de una funcionalidad fue una frase
+
+- **Qué pasó:** al escribir una regla nueva, la plataforma muestra las que hablan de lo mismo. Sobre las 248 vigentes, con un título casi idéntico al de una regla real, **encontró esa misma regla**: habría evitado un duplicado. Pero lo que decidió el diseño no fue el código: fue la frase que lo acompaña.
+- **Por qué importa:** contar palabras encuentra reglas que **hablan de lo mismo**, no las que **se contradicen**. Llamarlo detector de contradicciones sería peor que no tenerlo: **quien confía en un detector deja de mirar**. Por eso el aviso dice lo que no puede decir **encuentre o no encuentre**, y hay una prueba que lo comprueba.
+- **Qué lo soluciona:** ya construido, con su aviso y su prueba. Y en la misma tanda quedó impedido lo único irreversible de la épica: **ningún identificador se reutiliza**, ni el de una derogada.
+- **Qué se decidió:** el usuario mandó arrancar Reglas, que es el módulo más grande de la versión 3, sabiendo que iba a ser largo.
+- **Estado:** resuelto acá
+- **Responde a:** EP-016 · HU-002 · CA-03
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-109` · [documentacion/reglas/spec.md](../../../documentacion/reglas/spec.md) §5.2 · `plataforma/nucleo/reglas/parecidas.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -131,7 +147,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `F-021` y `F-022` |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `F-006` y `F-005` |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -139,4 +155,6 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 
 **Y `EP-015` cerró entera:** con `F-022` la vuelta de la columna queda cerrada, porque publicar una versión ya tiene su puerta.
 
-**Lo que sigue no es de esta sesión:** las reglas, `F-005` a `F-010`, que son las seis que le quedan a la versión 3. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y las reglas arrancaron:** `EP-016` nació con sus seis funcionalidades, y las dos primeras cerraron el mismo día.
+
+**Lo que sigue no es de esta sesión:** `F-007` a `F-010`, que son las cuatro que le quedan a la versión 3. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

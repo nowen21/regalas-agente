@@ -1123,3 +1123,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier puerta automática y cualquier lector de documentos con historia.
 - **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-109 · Una ayuda que se presenta como garantía hace que la gente deje de mirar  ·  patrón · activa
+- **What:** al escribir una regla nueva, la plataforma muestra las reglas vigentes que hablan de lo mismo. Sobre las 248 de este repositorio, preguntando por un título casi idéntico al de una regla real, encontró esa misma regla: **habría evitado escribir un duplicado**. Y lo que más cuidado costó no fue el código, sino la frase que lo acompaña.
+- **Why:** contar palabras encuentra reglas que **hablan de lo mismo**; no encuentra las que **se contradicen**, porque eso depende de lo que significan. Llamarlo detector de contradicciones sería peor que no tenerlo: **quien confía en un detector deja de mirar**, y las que se le escapen pasan sin que nadie las revise. Una ayuda honesta deja el trabajo donde estaba; una que promete de más se lo quita a quien sí podía hacerlo.
+- **Also:** por eso el aviso dice lo que no puede decir **encuentre o no encuentre**. Cuando no encuentra nada, la frase importa más: es justo el momento en que alguien podría leer «no hay ninguna parecida» como «no hay ninguna que la contradiga».
+- **And:** en la misma tanda quedó escrito por qué un identificador no se reutiliza nunca, **ni el de una regla derogada**. Una especificación de hace un año, un commit, una fase cerrada: todos citan por número. Reasignarlo hace que esas citas apunten a otra cosa, **y la cita sigue viéndose bien**. Por eso el siguiente es el que sigue al mayor y no el primer hueco: rellenar huecos es la única forma de reutilizar sin darse cuenta.
+- **Where:** `plataforma/nucleo/reglas/parecidas.py` y `numeracion.py` · las §5.1 y §5.2 de `documentacion/reglas/spec.md`.
+- **Learned:** cuando una pieza ayuda a decidir sin poder garantizar, **el texto que la acompaña es parte de la funcionalidad**, y se escribe con el mismo cuidado que el código. Y se prueba: hay una prueba que comprueba que el aviso dice lo que no puede decir.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier ayuda que sugiera sin garantizar.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-108 (un rojo falso enseña a ignorar la puerta).

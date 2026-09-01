@@ -3778,3 +3778,41 @@ Señal `S-108`. 29 archivos. **¿Commiteo y hago push?**
 
 ### 176 · Usuario — 2026-09-01 15:22:56
 > si
+
+**Agente** — 2026-09-01 15:24:59
+<!-- agente: ce9dc997-82d8-43fb-9b2f-7c965bc390e5 -->
+
+Publicado: `ffd6f5b..acf33de`. Árbol limpio.
+
+**Versión 3:** de 10 funcionalidades, **cuatro hechas** — `F-020`, `F-021`, `F-022` y `F-031`. Quedan las seis de Reglas, `F-005` a `F-010`.
+
+| Módulo | Estado |
+|---|---|
+| Seguridad | Completo |
+| Comprobaciones | **Completo** |
+| Reglas | Sin abrir |
+
+Y una cifra que ahora la plataforma sabe decir sola: **14 funcionalidades verificadas de 35**, derivadas de la fase que corrió y no de lo que alguien escribió.
+
+Siete hallazgos en la sesión, los siete cerrados. Los cinco últimos tienen la misma raíz: **algo se veía bien leyéndolo y estaba mal al correrlo**. Tres eran documentos que hablaban de la cosa y parecían contenerla; dos eran convenciones que cambiaron con el tiempo y dejaron atrás al lector.
+
+Sigo con Reglas si quiere, pero le aviso de una: son seis funcionalidades y es el módulo más grande de la versión. Va a ser bastante más largo que lo de hoy.
+
+### 177 · Usuario — 2026-09-01 15:25:23
+> 00 id9
+
+**Agente** — 2026-09-01 15:25:28
+<!-- agente: a3e5def1-8e81-4263-b917-9649f1055bdd -->
+
+Publicado: `ffd6f5b..acf33de`. Árbol limpio.
+
+**Versión 3: cuatro de diez.** Seguridad y Comprobaciones completos; quedan las seis de Reglas.
+
+La plataforma ya dice sola: **14 funcionalidades verificadas de 35**, derivadas de la fase que corrió.
+
+Siete hallazgos cerrados. Los cinco últimos con la misma raíz: se veía bien leyéndolo y estaba mal al correrlo.
+
+Reglas son seis funcionalidades, el módulo más grande. ¿Arranco?
+
+### 178 · Usuario — 2026-09-01 15:27:11
+> arranque
