@@ -21,6 +21,12 @@ que una vez dio 559 documentos incompletos donde había 31.
 —`F-011`, de la versión 5— el documento **será** el molde, y entonces cada hueco
 con nombre sí es cierto. Dejarlos listados evita rehacer esta pieza.
 
+**Lo que va en código no es un hueco, ni en un bloque ni en la misma línea.**
+Ahí la marca se escribe **para que se vea**. Se vio corriendo sobre lo real: de
+77 marcas contadas, 51 estaban dentro de código en línea, y la peor era la
+especificación de la propia marca. Un documento que habla de la convención no
+está incompleto.
+
 **Y una tercera clase que no se le pregunta a nadie:** `«RUTA-ESTANDAR»`, que la
 reemplaza la instalación. Sin apartarla, un molde le pide al usuario 134 cosas
 que él no responde. Se cuenta aparte, porque borrarla en silencio es perder en
@@ -45,6 +51,15 @@ _MARCA = re.compile(u"«[^»\n]{0,120}»")
 # El principio o el final de un bloque cercado. Lo que va adentro es un ejemplo,
 # y una marca ahí se escribe **para que se vea**, no para llenarla.
 _CERCA = re.compile(r"^\s*(```|~~~)")
+
+# Código en la misma línea, entre acentos graves. **Vale lo mismo que el bloque
+# cercado, y faltaba.** Se vio corriendo sobre los documentos reales: de 77
+# marcas contadas, **51 estaban ahí**. La peor era la especificación de la
+# propia marca, cuyos siete «huecos» eran las siete veces que la nombra.
+#
+# Un documento que **habla de** la convención no está incompleto, y es
+# justamente lo que un estándar escribe todo el tiempo.
+_EN_LINEA = re.compile(u"`[^`\n]*`")
 
 
 def _lineas_en_codigo(texto):
@@ -80,7 +95,12 @@ def encontrar(texto, del_molde=()):
     for numero, linea in enumerate((texto or "").split("\n"), 1):
         if numero in en_codigo:
             continue
+        entre_acentos = [(uno.start(), uno.end())
+                         for uno in _EN_LINEA.finditer(linea)]
         for encontrada in _MARCA.finditer(linea):
+            if any(desde <= encontrada.start() < hasta
+                   for desde, hasta in entre_acentos):
+                continue
             marca = encontrada.group(0)
             if marca == MARCA_DE_INSTALACION:
                 clase = INSTALACION

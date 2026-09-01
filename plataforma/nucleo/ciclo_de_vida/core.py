@@ -14,8 +14,9 @@ import os
 
 from django.conf import settings
 
+from nucleo.auditoria.core import con_constancia
 from nucleo.importacion.models import Traido
-from . import huecos, moldes
+from . import escritura, huecos, moldes
 
 
 def _carpeta_de_plantillas():
@@ -104,3 +105,113 @@ def de_un_proyecto(proyecto):
             salida.append(falta)
     salida.sort(key=lambda uno: (-uno["cuantos"], uno["origen"]))
     return salida
+
+
+def ruta_original(proyecto, origen):
+    """Dónde vive de verdad ese documento, en el proyecto del usuario.
+
+    **No es la copia de `datos/`.** Se decidió el 2026-09-01 escribir en el
+    original: la copia se rehace al importar, así que lo escrito ahí se
+    perdería, y el proyecto quedaría igual, que es no hacer nada.
+    """
+    from nucleo.proyectos.models import Proyecto
+    try:
+        registrado = Proyecto.objects.get(identificador=proyecto)
+    except Proyecto.DoesNotExist:
+        return ""
+    return os.path.join(registrado.ruta_codigo,
+                        origen.replace("/", os.sep))
+
+
+def huecos_del_original(proyecto, origen):
+    """Lo que le falta al archivo del proyecto, no a la copia.
+
+    Devuelve `(ruta, huella, falta)`. La huella es la de ahora: se guarda para
+    comprobar, al escribir, que nadie más lo tocó mientras tanto.
+
+    **Se mira el original y no la copia** porque es donde se va a escribir. Si
+    los dos se separaron, el que manda es el del proyecto.
+    """
+    try:
+        traido = Traido.objects.get(proyecto=proyecto, origen=origen)
+    except Traido.DoesNotExist:
+        return "", "", None
+    ruta = ruta_original(proyecto, origen)
+    if not ruta or not os.path.exists(ruta):
+        return ruta, "", None
+    texto = escritura.leer_tal_cual(ruta)
+    return ruta, escritura.huella(texto), de_un_texto(texto, traido.tipo,
+                                                      traido.origen)
+
+
+def llenar(proyecto, origen, numero, con, quien="el usuario",
+           huella_de_cuando_se_leyo=""):
+    """Llena el hueco número `numero` de un documento. Devuelve qué le queda.
+
+    `numero` cuenta desde uno, y **solo sobre los huecos ciertos**: son los que
+    se le preguntan al usuario. Los posibles y los de instalación no se llenan
+    por acá.
+
+    Levanta `escritura.SeMovio` si el documento cambió donde iba el hueco, y
+    `escritura.CambioAjeno` si alguien más escribió desde que se leyó. En los
+    dos casos **no se escribe nada**.
+    """
+    ruta, huella_ahora, falta = huecos_del_original(proyecto, origen)
+    if falta is None:
+        return None
+    ciertos = falta["ciertos"]
+    if numero < 1 or numero > len(ciertos):
+        raise ValueError(
+            "Ese documento tiene %d espacio(s) por llenar; se pidió el %d."
+            % (len(ciertos), numero))
+
+    esperada = huella_de_cuando_se_leyo or huella_ahora
+    hueco = ciertos[numero - 1]
+
+    # La constancia va **antes** del efecto, como en el resto de la plataforma:
+    # un cambio sin registro es un cambio que nadie puede auditar (`DA-08`).
+    con_constancia(
+        lambda comprobante: escritura.llenar_el_hueco(ruta, hueco, con,
+                                                      esperada),
+        que_se_hizo="llenar un espacio de un documento del ciclo",
+        sobre_que=origen, quien=quien, proyecto=proyecto,
+        que_cambio="linea %d: %s" % (hueco["linea"], hueco["marca"]))
+
+    _poner_al_dia_la_copia(proyecto, origen, ruta)
+    _, _, quedan = huecos_del_original(proyecto, origen)
+    return quedan
+
+
+def _poner_al_dia_la_copia(proyecto, origen, ruta):
+    """Deja la copia de `datos/` igual que el original que se acaba de escribir.
+
+    Sin esto, la cuenta seguiría mostrando el hueco que ya se llenó, porque la
+    cuenta de un proyecto entero se calcula sobre lo traído.
+
+    **Se copia tal cual**, con sus finales de línea, y de un golpe: la copia se
+    rehace al importar, pero mientras tanto tiene que decir la verdad.
+    """
+    try:
+        traido = Traido.objects.get(proyecto=proyecto, origen=origen)
+    except Traido.DoesNotExist:
+        return
+    destino = os.path.join(str(settings.CARPETA_DATOS),
+                           traido.guardado_en.replace("/", os.sep))
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    escritura.guardar_de_un_golpe(destino, escritura.leer_tal_cual(ruta))
+
+
+def para_la_consola(texto):
+    """El texto sin lo que la consola no pueda escribir.
+
+    **La consola de Windows no habla el alfabeto entero.** Un documento del
+    ciclo trae emojis en sus tablas de estaciones, y mostrarlos revienta el
+    programa con un error de codificación en vez de mostrar el hueco.
+
+    Se vio corriendo la orden sobre un documento real: se cayó al llegar a un
+    renglón con una marca de aprobación. Perder un signo al mostrarlo no cuesta
+    nada; no poder ver el hueco, sí.
+    """
+    import sys
+    como_escribe = getattr(sys.stdout, "encoding", None) or "utf-8"
+    return (texto or "").encode(como_escribe, "replace").decode(como_escribe)

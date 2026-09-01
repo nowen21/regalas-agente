@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Lista: escrita y aprobada el 2026-09-01 |
+| **Estado** | Terminada el 2026-09-01, con sus cinco criterios probados |
 ---
 
 ## 2. Narrativa
@@ -33,7 +33,8 @@ La [HU-001](../HU-001-ver-que-le-falta-a-un-documento/HU-001-ver-que-le-falta-a-
 
 ### 3.1 Reglas de negocio
 
-- `RN-1` **La fuente es el texto.** Lo escrito va al archivo del proyecto. La base guarda índice, no contenido (`DA-01`).
+- `RN-1` **Lo escrito va al archivo original del proyecto**, no a la copia de `datos/`. Decidido el 2026-09-01. La copia se rehace al importar, así que lo escrito ahí se perdería; y el proyecto quedaría igual.
+- `RN-1.1` **Después de escribir se vuelve a traer ese documento**, para que la copia no se separe del original.
 - `RN-2` **Se toca solo el hueco.** Ni una línea más del documento cambia.
 - `RN-3` Escribir queda **registrado en la auditoría**: quién, cuándo, qué documento y qué hueco.
 - `RN-4` Si el archivo cambió por fuera desde que se leyó, **se avisa y no se escribe encima**.
@@ -151,7 +152,7 @@ Entonces aparece quién escribió, cuándo, en qué documento y en qué hueco
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| Por abrir | Los cinco CA | — |
+| [B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas](B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/estado-fase.md) | Los cinco CA | Cerrada el 2026-09-01: **Cumple** |
 
 ---
 
@@ -162,6 +163,7 @@ Entonces aparece quién escribió, cuándo, en qué documento y en qué hueco
 | **Depende de** | La `HU-001`: sin saber dónde está el hueco no hay dónde escribir |
 | **Riesgo 1** | Que guardar reformatee el documento. Es el riesgo que hunde la historia, y por eso el `CA-02` compara el archivo entero |
 | **Riesgo 2** | Que dos sesiones escriban a la vez sobre el mismo documento. Lo cubre el `CA-04` |
+| **Riesgo 4** | **Es la primera vez que la plataforma escribe fuera de `datos/`.** Hasta hoy solo leía los proyectos. Un guardado equivocado toca el repositorio del usuario, y por eso el `CA-02` compara el archivo entero y el `CA-04` no escribe encima de un cambio ajeno |
 | **Riesgo 3** | Que llenar por huecos resulte incómodo y nadie lo use. Se mide llenando un documento real de punta a punta, no un ejemplo de tres huecos |
 
 ---
@@ -171,15 +173,16 @@ Entonces aparece quién escribió, cuándo, en qué documento y en qué hueco
 - ☑ La funcionalidad está en el inventario, con su ficha.
 - ☑ La épica aprobada el 2026-09-01.
 - ☑ El camino decidido: se llena por huecos, no con un cuadro libre.
+- ☑ Dónde se escribe, decidido el 2026-09-01: en el archivo original del proyecto.
 - ☑ El módulo Ciclo de vida, con [especificación aprobada](../../../ciclo-de-vida/spec.md) el 2026-09-01.
-- ☐ La `HU-001`, sin construir.
+- ☑ La `HU-001`, cerrada el 2026-09-01 con **Cumple**.
 
 ## 11. Definition of Done
 
-- ☐ Los cinco criterios con veredicto y evidencia.
-- ☐ Un documento real de este repositorio llenado de punta a punta.
-- ☐ Comprobado carácter por carácter que nada cambió fuera del hueco.
-- ☐ El registro de auditoría, leído.
+- ☑ Los cinco criterios con veredicto y evidencia.
+- ☑ Un documento real de este repositorio llenado, y le quedó **cero** por llenar.
+- ☑ Comprobado carácter por carácter: **cero cambios fuera del hueco**.
+- ☑ El registro de auditoría, leído.
 
 ## 12. Validación INVEST
 

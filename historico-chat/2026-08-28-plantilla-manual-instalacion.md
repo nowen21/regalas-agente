@@ -3309,3 +3309,142 @@ Pendiente el sello de la estación 12 que escribió el enganche, más la transcr
 
 ### 157 · Usuario — 2026-09-01 11:19:57
 > si
+
+**Agente** — 2026-09-01 11:20:25
+<!-- agente: 88ceb351-9e99-479d-b2c8-fdd459c09cf7 -->
+
+`7c83a49`. Árbol limpio.
+
+**Dónde queda la versión 2:** de sus cinco funcionalidades, cuatro terminadas y `F-014` a la mitad. La `HU-002` —llenar el hueco— está escrita y aprobada, sin construir.
+
+Tres commits locales sin publicar. **¿Hago push?**
+
+### 158 · Usuario — 2026-09-01 11:29:59
+> si
+
+**Agente** — 2026-09-01 11:30:37
+<!-- agente: 814b6159-7f0a-4fdf-8b40-17e454725acd -->
+
+Publicado: `98a5d52..7c83a49`.
+
+**Lo que quedó de la sesión**, tres hallazgos, los tres cerrados:
+
+| | Qué era |
+|---|---|
+| `H-1` | La columna «Depende de» no es un orden de construcción. `F-014` nunca estuvo bloqueada |
+| `H-2` | Una marca con nombre no se distingue de una cita. De 341 marcas reales, cero eran huecos |
+| `H-3` | 24 documentos incompletos que el expediente nunca mostró, todos índices |
+
+Los dos últimos salieron de **medir antes de construir**, no de las pruebas: con documentos inventados los dos defectos se ven perfectos.
+
+Sigue la `HU-002` — llenar el hueco. Su criterio que decide ya está escrito: **guardar no cambia ni un carácter fuera del hueco**. Si reformatea, el editor gana y nadie usa la plataforma.
+
+### 159 · Usuario — 2026-09-01 11:33:50
+> 00 id9
+
+**Agente** — 2026-09-01 11:33:54
+<!-- agente: f6687807-ba0b-4df3-bdbc-941b58d5793a -->
+
+Publicado: `98a5d52..7c83a49`.
+
+Tres hallazgos, los tres cerrados: la columna de dependencias no era un orden, una marca con nombre no se distingue de una cita, y 24 documentos incompletos que el expediente nunca mostró.
+
+Sigue la `HU-002`: llenar el hueco. ¿Arranco?
+
+### 160 · Usuario — 2026-09-01 11:34:04
+> si
+
+**Agente** — 2026-09-01 11:34:28
+<!-- agente: 3d094f6a-36cc-4fb3-a0fe-91cf807aee46 -->
+
+Antes de planificar, una decisión que la `HU-002` no resuelve sola.
+
+**Hoy la plataforma no escribe en ningún proyecto.** Solo dentro de `datos/`, sobre las copias que trajo. Llenar un hueco sería la primera vez que escribe en el repositorio del usuario.
+
+| Salida | Qué pasa |
+|---|---|
+| **En el archivo original** (recomendada) | Es lo que la historia pide y lo único útil. Con el aviso del `CA-04` si cambió por fuera |
+| Solo en la copia | El proyecto queda igual. No sirve para nada |
+
+¿Escribo en el original?
+
+### 161 · Usuario — 2026-09-01 11:34:57
+> si
+
+**Agente** — 2026-09-01 11:40:38
+<!-- agente: 8e2e384f-320b-4b60-9135-1d6e25c6d71d -->
+
+Fase B abierta, con sus dos planes.
+
+- [plan_trabajo.md](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/plan_trabajo.md) — 8 tareas, 16 h
+- [plan_pruebas.md](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/plan_pruebas.md) — 6 casos
+
+Verificado sobre el código: hoy la plataforma escribe en **dos sitios, los dos dentro de `datos/`**, y en ningún proyecto. Esta fase abre el primero, así que un error acá no da un número equivocado: toca el repositorio del usuario.
+
+Cinco bloqueos declarados, tres de ellos altos:
+
+| | Riesgo | Qué lo cubre |
+|---|---|---|
+| `B-01` | Guardar reformatea el documento | El `CA-02` compara el archivo entero |
+| `B-02` | Se pisa un cambio ajeno | La huella se compara antes de escribir |
+| `B-05` | Se escribe en el hueco equivocado | Se comprueba el contexto, no solo la posición |
+
+Y una decisión pequeña que conviene que vea: **llenar con texto vacío no hace nada.** Borrar la marca sin poner nada deja el documento peor, porque ya no se ve que falta.
+
+32 validadores, cero fallas. **¿Aprueba el plan y el plan de pruebas?**
+
+### 162 · Usuario — 2026-09-01 11:41:25
+> si
+
+**Agente** — 2026-09-01 11:45:31
+<!-- agente: fe7fda03-40bf-4c5a-ba2a-3388dad21669 -->
+
+Now the console command and the tests.
+
+Correr sobre documentos reales destapó **dos defectos**, y uno cae fuera de lo que este plan me autoriza a tocar.
+
+**1. La cuenta está inflada: 51 de los 77 no son huecos.**
+
+Son la marca escrita dentro de código en línea —`` `«…»` ``— o sea, documentos **hablando de** la convención. El peor caso es [documentos-modelo/spec.md](documentacion/documentos-modelo/spec.md), que es justamente la especificación de la marca: sus 7 «huecos» son las 7 veces que la nombra.
+
+| | Cuántos |
+|---|---|
+| Contados hoy | 77, en 54 documentos |
+| Dentro de código en línea | **51** |
+| De verdad por llenar | **26, en 25 documentos** |
+
+La fase A ya excluye los bloques cercados por esta misma razón; faltó el código en línea. **El arreglo va en `huecos.py`, que este plan no declara** (`02·F8`).
+
+**2. La orden se cae al mostrar una línea con emoji.** La consola de Windows no lo puede escribir, y el programa muere en vez de mostrar el hueco.
+
+| Salida | Qué implica |
+|---|---|
+| **Arreglar los dos acá** (recomendada) | Sumar `huecos.py` y `tests.py` de la fase A al plan, y anotarlo. La cuenta pasa a 26 |
+| Solo el emoji | La fase cierra con la cuenta inflada declarada, y queda un pendiente |
+
+Recomiendo la primera: dejar el `CA-02` de la fase A sabiendo que cuenta el doble sería cerrar en verde algo que ya se sabe malo.
+
+**¿Cuál tomo?**
+
+### 163 · Usuario — 2026-09-01 11:47:49
+> 00 id9
+
+**Agente** — 2026-09-01 11:47:53
+<!-- agente: 0a83256c-d6b0-45a1-b798-9566723a7644 -->
+
+Correr sobre documentos reales destapó dos defectos:
+
+- **51 de los 77 huecos no son huecos.** Son la marca dentro de código en línea: documentos hablando de la convención. De verdad faltan **26, en 25 documentos**.
+- **La orden se cae** al mostrar una línea con emoji en la consola de Windows.
+
+El primero se arregla en `huecos.py`, que este plan no declara.
+
+| Salida | Qué implica |
+|---|---|
+| **Los dos acá** (recomendada) | Sumo `huecos.py` al plan. La cuenta pasa a 26 |
+| Solo el emoji | Cierro con la cuenta inflada y un pendiente |
+
+¿Cuál?
+
+### 164 · Usuario — 2026-09-01 11:48:32
+> los dos acá

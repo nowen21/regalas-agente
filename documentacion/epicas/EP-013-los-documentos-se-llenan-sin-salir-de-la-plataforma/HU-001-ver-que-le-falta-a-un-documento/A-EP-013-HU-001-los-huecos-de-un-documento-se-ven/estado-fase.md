@@ -81,6 +81,7 @@
 - **Si llenar por huecos resulta cómodo de verdad.** Se responde en la fase de la `HU-002`, llenando un documento real de punta a punta.
 - **24 documentos con huecos que el expediente nunca mostró**, todos índices. Aparecieron al comparar las dos cuentas. Llenarlos es trabajo de la `HU-002`; no hace falta pendiente.
 - La diferencia con el expediente quedó explicada entera en la §3 del resultado. **El `B-03` está cerrado.**
+- **Los números de esta fase quedaron viejos el mismo día.** La fase B encontró, corriendo sobre un documento real, que la marca escrita dentro de código en la misma línea se contaba como hueco: eran **51 de los 77**. La cuenta de verdad es **26, en 25 documentos**. Lo que dice esta fase era cierto ese día, con el defecto adentro, y no se reescribe: la corrección vive en la [fase B](../../HU-002-llenar-un-hueco-desde-la-plataforma/B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/resultado_pruebas.md) y en [`S-105`](../../../../senales.md).
 
 ---
 

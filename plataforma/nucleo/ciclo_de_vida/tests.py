@@ -137,6 +137,19 @@ class CP002SeListanLosHuecos(Base):
         self.assertEqual(falta["cuantos"], 1)
         self.assertEqual(falta["ciertos"][0]["linea"], 1)
 
+    def test_una_marca_entre_acentos_graves_no_se_cuenta(self):
+        """Ahí se escribe para que se vea, igual que en un bloque cercado."""
+        texto = u"La marca es `«…»` y acá falta «…»\n"
+        falta = core.de_un_texto(texto, "índice")
+        self.assertEqual(falta["cuantos"], 1)
+        self.assertGreater(falta["ciertos"][0]["columna"], 20)
+
+    def test_un_documento_que_habla_de_la_marca_no_esta_incompleto(self):
+        """Salió de lo real: la especificación de la marca daba siete huecos."""
+        texto = (u"1. Hay una sola marca, y es `«…»`.\n"
+                 u"2. Reemplaza cada `«…»` por lo que corresponda.\n")
+        self.assertTrue(core.de_un_texto(texto, "índice")["completo"])
+
     def test_un_documento_sin_huecos_lo_dice(self):
         falta = core.de_un_texto(u"# Todo escrito\n", "índice")
         self.assertTrue(falta["completo"])

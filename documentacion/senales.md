@@ -1079,3 +1079,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier pieza que reconozca marcas dentro de texto escrito por personas.
 - **Rel:** S-101 (la marca de un hueco es una convención), S-102 (se comprueba contando sobre lo real), S-103 (medir antes y después de cambiar).
+
+## S-105 · Un documento que habla de una convención parece incumplirla  ·  patrón · activa
+- **What:** el módulo contaba **77 espacios por llenar en 54 documentos**. Al correr la orden sobre un documento real resultó que **51 de los 77 no eran huecos**: era la marca escrita dentro de código en la misma línea. El caso extremo fue la especificación de la marca de espacio por llenar, cuyos siete «huecos» eran las siete veces que la nombra. La cuenta de verdad son **26, en 25 documentos**.
+- **Why:** un estándar escribe sobre sus propias convenciones todo el tiempo, así que sus documentos están llenos de la marca **citada**, no puesta. La pieza ya excluía los bloques cercados por esa razón; faltaba el código en la misma línea, que es donde se cita una marca corta. **La regla es la misma y se aplicó a medias.**
+- **Also:** las pruebas con documentos inventados no lo veían, porque a nadie se le ocurre escribir un ejemplo que hable de la marca. Salió al primer documento real, y de la peor manera posible: el documento más equivocado era **el que define la marca**.
+- **And:** el mismo intento destapó otro: la orden se caía al mostrar un renglón con emoji, porque la consola de Windows no lo puede escribir. Dos defectos en una sola corrida sobre lo real, ninguno visible en 48 pruebas verdes.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/huecos.py` · la §5.1 de `documentacion/ciclo-de-vida/spec.md`.
+- **Learned:** cuando una pieza reconoce una convención, **la exclusión de «acá se está citando» hay que aplicarla en todas sus formas de una vez**: bloque cercado y código en línea son el mismo caso. Y el documento con el que hay que probarla es **el que define esa convención**, que es el que más veces la nombra.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier pieza que reconozca marcas dentro de documentación.
+- **Rel:** S-104 (la convención que usa los signos de la prosa), S-102 (se comprueba contando sobre lo real).

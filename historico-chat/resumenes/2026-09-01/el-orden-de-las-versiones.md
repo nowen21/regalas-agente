@@ -58,6 +58,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-4 · Un documento que habla de una convención parece incumplirla
+
+- **Qué pasó:** el módulo contaba **77 espacios por llenar en 54 documentos**. Al correr la orden sobre un documento real resultó que **51 de los 77 no eran huecos**: era la marca escrita dentro de código en la misma línea. El caso extremo fue la especificación de la marca, cuyos siete «huecos» eran las siete veces que la nombra. La cuenta de verdad es **26, en 25 documentos**.
+- **Por qué importa:** un estándar escribe sobre sus propias convenciones todo el tiempo. La pieza ya excluía los bloques cercados por esa razón, y faltaba el código en la misma línea: **la regla estaba aplicada a medias**. Cincuenta pruebas verdes no lo veían, porque a nadie se le ocurre inventar un ejemplo que hable de la marca.
+- **Qué lo soluciona:** ya arreglado, con dos pruebas nuevas. El mismo intento destapó que la orden se caía al mostrar un renglón con emoji, y eso también quedó cerrado.
+- **Qué se decidió:** **arreglar los dos en la misma fase**, decidido por el usuario el 2026-09-01, ampliando el plan para tocar `huecos.py`. Cerrar en verde un criterio que ya se sabe malo no es cerrar.
+- **Estado:** resuelto acá
+- **Responde a:** EP-013 · HU-002 · CA-02
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-105` · `plataforma/nucleo/ciclo_de_vida/huecos.py` · la §5.1 de [documentacion/ciclo-de-vida/spec.md](../../../documentacion/ciclo-de-vida/spec.md)
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -67,6 +83,8 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ no disparó ninguna |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `EP-013` |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de la fase B |
 
-**Todavía no se cierra:** falta guardar. Lo que la sesión vino a hacer avanzó: `EP-013` nació, sus dos historias quedaron aprobadas, el módulo Ciclo de vida tiene especificación, y su primera fase cerró con **Cumple**. Queda la `HU-002`, que es la que escribe.
+**Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
+
+**Lo que sigue no es de esta sesión:** la versión 3, gobernar al agente. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

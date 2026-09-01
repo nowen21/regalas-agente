@@ -4,4 +4,4 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 
 | Sesión | Qué dejó |
 |---|---|
-| [el-orden-de-las-versiones.md](el-orden-de-las-versiones.md) | Nació `EP-013` y el módulo Ciclo de vida: la plataforma ya dice qué le falta por llenar a cada documento. Tres hallazgos, los tres cerrados: la columna de dependencias no era un orden, una marca con nombre no se distingue de una cita, y 24 documentos incompletos que el expediente nunca mostró. |
+| [el-orden-de-las-versiones.md](el-orden-de-las-versiones.md) | Nació `EP-013` y el módulo Ciclo de vida: la plataforma ya dice qué le falta por llenar a cada documento. **Con ella cierra la versión 2.** Cuatro hallazgos, los cuatro cerrados: la columna de dependencias no era un orden, una marca con nombre no se distingue de una cita, 24 documentos incompletos que el expediente nunca mostró, y una cuenta inflada al triple porque un documento que habla de la marca parecía no tenerla puesta. |

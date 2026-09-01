@@ -50,7 +50,7 @@ class Command(BaseCommand):
                               % falta["cuantos"])
             for uno in falta["ciertos"]:
                 self.stdout.write("  linea %d: %s" % (uno["linea"],
-                                                      uno["contexto"]))
+                                                      core.para_la_consola(uno["contexto"])))
 
         if falta["instalacion"]:
             self.stdout.write("")
@@ -66,7 +66,7 @@ class Command(BaseCommand):
             if con_posibles:
                 for uno in falta["posibles"]:
                     self.stdout.write("  linea %d: %s" % (uno["linea"],
-                                                          uno["marca"]))
+                                                          core.para_la_consola(uno["marca"])))
 
     def _todos(self, proyecto):
         lista = core.de_un_proyecto(proyecto)
@@ -79,4 +79,4 @@ class Command(BaseCommand):
         self.stdout.write("%d documento(s) con espacios por llenar, %d en total:"
                           % (len(lista), total))
         for uno in lista:
-            self.stdout.write("  %4d  %s" % (uno["cuantos"], uno["origen"]))
+            self.stdout.write("  %4d  %s" % (uno["cuantos"], core.para_la_consola(uno["origen"])))

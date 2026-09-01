@@ -9,7 +9,7 @@
 | **Módulo** | Ciclo de vida |
 | **Versión del producto** | 2, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
 | **Funcionalidades que cubre** | `F-014` |
-| **Estado** | En curso desde el 2026-09-01 |
+| **Estado** | Terminada el 2026-09-01: sus dos historias cumplen |
 | **Fecha de apertura** | 2026-09-01 |
 
 ---
@@ -88,7 +88,7 @@ Que la plataforma **muestre los huecos que le faltan a un documento y los pida u
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
 | [HU-001](HU-001-ver-que-le-falta-a-un-documento/HU-001-ver-que-le-falta-a-un-documento.md) | Ver qué le falta a un documento | `F-014` | **Terminada el 2026-09-01** |
-| [HU-002](HU-002-llenar-un-hueco-desde-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma.md) | Llenar un hueco desde la plataforma | `F-014` | Lista el 2026-09-01 |
+| [HU-002](HU-002-llenar-un-hueco-desde-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma.md) | Llenar un hueco desde la plataforma | `F-014` | **Terminada el 2026-09-01** |
 
 ## 10. Consideraciones técnicas
 
@@ -135,14 +135,15 @@ Versión 2. Es la última funcionalidad obligatoria de esa versión sin construi
 
 ## 16. Definition of Done
 
-- ☐ Las dos historias cerradas, con veredicto por criterio.
-- ☐ Un documento real de este repositorio llenado desde la plataforma.
-- ☐ Comprobado que el archivo no cambia fuera del hueco.
-- ☐ La cuenta de documentos con huecos, medida antes y después.
+- ☑ Las dos historias cerradas, con veredicto por criterio.
+- ☑ Un documento real de este repositorio llenado desde la plataforma.
+- ☑ Comprobado que el archivo no cambia fuera del hueco: **cero caracteres**.
+- ☑ La cuenta medida, y **corregida**: de 77 marcas contadas, los huecos de verdad son 26.
 
 ## 17. Bitácora de cambios
 
 | Fecha | Qué pasó |
 |---|---|
+| 2026-09-01 | **Terminada**: las dos historias construidas y probadas el mismo día. Con ella cierra `F-014`, y con `F-014` la versión 2 |
 | 2026-09-01 | **Aprobada** por Ing. José Dúmar Jiménez Ruíz, y sus dos historias escritas |
 | 2026-09-01 | Nace del inventario aprobado, para cubrir `F-014`, la última funcionalidad obligatoria de la versión 2 sin historia escrita. El mismo día se decidió que se llena por huecos y se comprobó que `F-011` no la bloquea |

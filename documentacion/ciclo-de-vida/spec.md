@@ -37,7 +37,7 @@ Cada documento del ciclo tiene su molde en `plantillas/ciclo-vida-proyectos/`, y
 2. **Un hueco se cuenta por su marca**, no por parecer incompleto. La convención no se amplía por cuenta propia.
 3. **Lo que llena la instalación no se le pregunta al usuario**, y se dice aparte para que nadie crea que se perdió.
 3.1. **Solo el hueco cierto entra en la cuenta.** El posible se lista aparte: en un documento escrito no se distingue de una cita.
-4. **La fuente es el texto.** Lo escrito va al archivo del proyecto; la base guarda índice, no contenido ([`DA-01`](../../cvds/diseno/decisiones-de-arquitectura.md)).
+4. **La fuente es el texto, y el texto es el del proyecto.** Lo escrito va al **archivo original**, no a la copia de `datos/`. La copia es índice; la base tampoco guarda contenido ([`DA-01`](../../cvds/diseno/decisiones-de-arquitectura.md)).
 5. **Se toca solo el hueco.** Ni una línea más del documento cambia al guardar.
 6. **Si el archivo cambió por fuera, se avisa y no se escribe encima.**
 7. **Escribir queda registrado en la auditoría** ([`DA-12`](../../cvds/diseno/decisiones-de-arquitectura.md)): quién, cuándo, qué documento y qué hueco.
@@ -65,6 +65,7 @@ Es lo que la `HU-001` pedía declarar. **Se midió antes de construir, y la medi
 | **Cierto** | `«…»` | Se cuenta y se pregunta. Es lo que el usuario tiene que llenar |
 | **Posible** | `«NOMBRE»` que también está en el molde | Se lista **aparte**, sin entrar en la cuenta |
 | **De instalación** | `«RUTA-ESTANDAR»` | No se pregunta: la reemplaza [validadores/instalar.py](../../validadores/instalar.py). Se dice aparte |
+| **Citada** | La marca dentro de código, cercado o en la misma línea | **No es un hueco.** Ahí se escribe para que se vea |
 
 **Por qué el hueco con nombre no es cierto.** En un documento ya escrito **no se distingue de una cita**, porque en esta casa se cita con esas mismas comillas. Medido el 2026-09-01 sobre las 130 historias de usuario reales:
 
@@ -133,6 +134,10 @@ Un documento sin huecos lo dice, en vez de devolver una lista vacía.
 - Queda registrado en la auditoría.
 - Se devuelve cuántos huecos quedan.
 
+**Dónde se escribe: en el archivo original del proyecto.** Decidido con el usuario el 2026-09-01. **Es la primera vez que la plataforma escribe fuera de `datos/`**: hasta hoy solo lee los proyectos y escribe sus propias copias. Escribir en la copia dejaría el proyecto igual, que es no hacer nada; y la copia se rehace importando, así que lo escrito ahí se perdería a la primera.
+
+**Y después de escribir se vuelve a traer ese documento**, para que la copia y el original no se separen. Si no, la cuenta de huecos seguiría mostrando el que ya se llenó.
+
 **Cómo se sabe que el archivo cambió por fuera.** Se guarda la huella del contenido leído y se compara antes de escribir. No hace falta más: si la huella no coincide, alguien lo tocó, y ahí la respuesta correcta es avisar, no adivinar cuál de los dos cambios vale.
 
 **Cómo se ubica un hueco.** Por su posición **y** por el texto que lo rodea. La posición sola no basta: si el documento cambió, apunta a otra parte.
@@ -147,7 +152,7 @@ Un solo usuario, sin credenciales propias, igual que el resto de la plataforma. 
 
 ## 9. Marco normativo
 
-**Aplica poco.** Este módulo no saca nada del sistema: escribe en los archivos del propio proyecto. Lo que sí aplica es que **ninguna credencial se escriba en un documento** ([`00·N6`](../../base/00-nucleo-blindado.md)): lo que se guarda es lo que el usuario tecleó, y eso no se filtra por cuenta del programa. Que un documento del ciclo no es sitio para una clave es una regla del estándar, no de este módulo.
+**Aplica más de lo que parecía.** Este módulo no saca nada del sistema, pero **es el primero que escribe fuera de `datos/`**: toca los archivos del proyecto del usuario. Lo que lo hace seguro no es prohibirlo, es que todo cambio quede registrado y que nada se escriba encima sin avisar. Lo que sí aplica es que **ninguna credencial se escriba en un documento** ([`00·N6`](../../base/00-nucleo-blindado.md)): lo que se guarda es lo que el usuario tecleó, y eso no se filtra por cuenta del programa. Que un documento del ciclo no es sitio para una clave es una regla del estándar, no de este módulo.
 
 ## 10. Plan de pruebas
 
@@ -187,6 +192,7 @@ Los cinco primeros son de la `HU-001`; los cinco últimos, de la `HU-002`.
 | **El posible se lista aparte, en vez de ignorarse** | Descartarlo | Cuando `F-011` cree documentos desde el molde, el documento será el molde y entonces sí serán ciertos |
 | **La marca de instalación se aparta** | Tratar toda marca igual | Sin apartarla, el usuario recibe 134 preguntas que no le tocan |
 | **Un hueco se ubica por posición y por su contexto** | Solo por posición | Si el documento cambió, la posición sola apunta a otra parte |
+| **Se escribe en el archivo original del proyecto** | Escribir en la copia de `datos/` | Decidido el 2026-09-01. La copia se rehace al importar, así que lo escrito ahí se pierde; y el proyecto quedaría igual, que es no hacer nada |
 | **Se compara la huella del archivo antes de escribir** | Escribir y confiar | Es lo único que distingue «nadie lo tocó» de «alguien más escribió» |
 | **Un tipo sin molde se lista como tal** | Asignarle el molde más parecido | Acomodarlo a la fuerza convierte un dato en una suposición |
 
@@ -195,7 +201,7 @@ Los cinco primeros son de la `HU-001`; los cinco últimos, de la `HU-002`.
 | Funcionalidad | Requisito | Historia | Fase que lo construye |
 |---|---|---|---|
 | F-014 | RF-14 | [HU-001 Ver qué le falta a un documento](../epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/HU-001-ver-que-le-falta-a-un-documento.md) | [A-EP-013-HU-001-los-huecos-de-un-documento-se-ven](../epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/A-EP-013-HU-001-los-huecos-de-un-documento-se-ven/estado-fase.md), cerrada el 2026-09-01 |
-| F-014 | RF-14 | [HU-002 Llenar un hueco desde la plataforma](../epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma.md) | Por abrir |
+| F-014 | RF-14 | [HU-002 Llenar un hueco desde la plataforma](../epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma.md) | [B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas](../epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 
@@ -210,4 +216,5 @@ Los cinco primeros son de la `HU-001`; los cinco últimos, de la `HU-002`.
 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
+| 2026-09-01 | La §5.1 suma la clase **citada**: la marca dentro de código no es un hueco | Corriendo sobre lo real, **51 de 77 marcas contadas estaban dentro de código en línea**. La peor era la especificación de la propia marca | Ing. José Dúmar Jiménez Ruíz |
 | 2026-09-01 | La §5.1 pasó de tres clases parejas a una cierta y una posible | Se midió sobre las 130 historias reales: de 341 marcas, ninguna era un hueco con nombre sin llenar | Ing. José Dúmar Jiménez Ruíz |
