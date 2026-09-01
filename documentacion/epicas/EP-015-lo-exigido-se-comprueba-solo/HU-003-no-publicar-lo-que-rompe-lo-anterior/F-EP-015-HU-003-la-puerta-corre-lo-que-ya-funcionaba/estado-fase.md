@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ El rojo falso se encontró y se cerró acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e4c1808` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **La puerta dio un rojo falso en su primera corrida**, y es el defecto exacto que viene a evitar. Está contado entero en la §3 del resultado.

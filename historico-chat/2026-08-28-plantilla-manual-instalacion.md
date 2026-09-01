@@ -3744,3 +3744,37 @@ Seis hallazgos en la sesión, los seis cerrados. El de hoy fue el más barato de
 
 ### 175 · Usuario — 2026-09-01 14:29:42
 > haga todo
+
+**Agente** — 2026-09-01 14:55:04
+<!-- agente: ce502ad0-79a8-4137-a5bd-876eadb3ae49 -->
+
+Ahora los cinco documentos de la fase F.
+
+`EP-015` cerrada entera: sus tres historias cumplen. **Comprobaciones queda completo.**
+
+**`F-021` — el estado sale de la prueba, no de quien escribe.** Antes las 35 funcionalidades del inventario decían «Sin verificar» porque nada convertía una corrida en un estado. Ahora **14 están verificadas, y son exactamente las construidas**.
+
+**`F-022` — la puerta de publicación.** Corre las 32 comprobaciones y la suite entera en una sola orden: **118,6 s**, y pasa.
+
+Los dos defectos que salieron son el mismo error visto dos veces:
+
+| Dónde | Qué pasó |
+|---|---|
+| El lector del estado | Seguía solo la convención de ahora, y **siete funcionalidades cerradas y en verde salían «sin verificar»** |
+| La puerta | Dijo **«no se publica» con las 1 082 pruebas en verde**, porque un argumento mal pasado sale con código distinto de cero igual que una prueba rota |
+
+El segundo es el peor: **un rojo falso enseña a ignorar la puerta.** La primera vez uno investiga; la tercera, la salta. Y el día que el rojo sea de verdad, ya nadie lo mira.
+
+Ninguna fase cerrada se reescribió para que un programa la entendiera: el que se adapta es el que lee.
+
+| | |
+|---|---|
+| Pruebas nuevas | 25 |
+| Baterías | 733 + 353, cero rojas |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-108`. 29 archivos. **¿Commiteo y hago push?**
+
+### 176 · Usuario — 2026-09-01 15:22:56
+> si

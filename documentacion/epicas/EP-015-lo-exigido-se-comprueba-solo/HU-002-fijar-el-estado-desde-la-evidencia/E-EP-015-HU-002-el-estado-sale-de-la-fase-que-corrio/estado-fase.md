@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Dos defectos, los dos cerrados acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e4c1808` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **Los dos defectos venían de lo mismo:** la convención cambió con el tiempo, y lo escrito antes sigue escrito como antes. Ninguna fase cerrada se reescribió.
