@@ -2947,3 +2947,29 @@ Sigo recomendando la librería estándar: el entregable sale hacia un tercero, y
 
 ### 141 · Usuario — 2026-08-31 20:21:48
 > si
+
+**Agente** — 2026-08-31 20:37:28
+<!-- agente: a2c7a808-d216-4788-817a-77cc8a689695 -->
+
+**`EP-012` cerrada.** La versión 2 ya entrega lo que promete.
+
+El expediente de este repositorio se convierte en **un archivo de 8 millones de caracteres**: 762 documentos, 6 205 tablas y **1 697 listas dentro de celdas** — la parte donde la historia decía que estos convertidores se caen.
+
+**Sin una sola dependencia nueva.** Mantuve la librería estándar como acordamos, aun sabiendo que había un convertidor instalado.
+
+**Tres defectos, y los tres salieron de contar, no de mirar:**
+
+| Qué pasaba | Cuántas marcas dejaba |
+|---|---|
+| El separador de una celda partía una negrita que lo contenía | 174 |
+| Una cita con tabla adentro salía cruda | 31 |
+| El código con asteriscos se volvía negrita | — |
+
+Con documentos inventados el convertidor se veía perfecto. Quedaron **15 marcas en 8 093 097 caracteres**, todas de énfasis dentro de énfasis, declaradas y sin arreglar: por quince no se justifica un analizador completo. Es `S-102`.
+
+252 pruebas en la plataforma, 32 comprobaciones sin fallas. 18 archivos preparados.
+
+¿Se commitea?
+
+### 142 · Usuario — 2026-08-31 20:40:38
+> si

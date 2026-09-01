@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Tres defectos, los tres cerrados acá |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `736f51a` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **La decisión de con qué generar se volvió a poner sobre la mesa antes de construir.** Al abrir la fase apareció que `markdown` ya está instalado en esta máquina, aunque no es dependencia declarada. Se le dijo al usuario con el argumento de los dos lados, y mantuvo la librería estándar. Queda escrito porque el dato era nuevo y podía cambiar lo decidido.
