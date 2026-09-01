@@ -2774,3 +2774,21 @@ Y una consecuencia que vale decir: la §9 marco normativo **sí aplica acá**, a
 
 ### 131 · Usuario — 2026-08-31 18:59:39
 > si pero primero suba a git todo lo que está pendiente
+
+**Agente** — 2026-08-31 19:02:28
+<!-- agente: 79e5e756-1421-4565-abe3-db4a000b54a0 -->
+
+Publicado: `60e960d..0e66dfd`. **Todo lo de esta sesión está subido.**
+
+Quedan **23 archivos sin subir que no son míos**: 21 `estado-fase.md` de `EP-001`, una transcripción del 22 y [manual-usuario.md](plantillas/manual-usuario.md). Son de otras sesiones y no los toco — commitearlos mezclaría el versionado, que es justo lo que `S-082` costó averiguar.
+
+La especificación quedó aprobada, así que la cadena está completa: épica → historias → especificación. Lo que sigue es la primera fase, la de armar el expediente.
+
+¿La abro?
+
+### 132 · Usuario — 2026-08-31 19:02:45
+> todo lo del proyecto
+
+### 133 · Usuario — 2026-08-31 19:03:39
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\documentacion\epicas\EP-001-cuerpo-de-reglas-heredable\HU-016-el-capitulo-03-datos-y-persistencia\A-EP-001-HU-016-retrodocumentar-el-capitulo-03\estado-fase.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> me aparecen 26 archivos que no se le han hecho commit
