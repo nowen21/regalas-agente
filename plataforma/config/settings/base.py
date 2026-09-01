@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "nucleo.medicion",
     "nucleo.expediente",
     "nucleo.ciclo_de_vida",
+    "nucleo.seguridad",
 ]
 
 # La plataforma corre en la máquina del usuario y no se expone a la red

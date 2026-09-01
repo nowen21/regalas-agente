@@ -3496,3 +3496,110 @@ Falta el sello de la estación 12 más la transcripción, y los tres commits sin
 
 ### 166 · Usuario — 2026-09-01 12:11:53
 > si
+
+**Agente** — 2026-09-01 12:12:45
+<!-- agente: a9add5ee-45d8-4aa0-bbeb-9ce4c19c2cd6 -->
+
+Publicado: `7c83a49..36ae0eb`. Árbol limpio.
+
+**La versión 2 quedó cerrada.** Sus cinco funcionalidades terminadas: entregar el expediente el mismo día, ver qué correcciones se repiten, y llenar los documentos desde la plataforma.
+
+Cuatro hallazgos de la sesión, los cuatro cerrados. Los tres últimos salieron **midiendo o corriendo sobre lo real**, no de las pruebas:
+
+| | Qué era |
+|---|---|
+| `H-1` | La columna «Depende de» no es un orden de construcción |
+| `H-2` | Una marca con nombre no se distingue de una cita: de 341, cero eran huecos |
+| `H-3` | 24 documentos incompletos que el expediente nunca mostró |
+| `H-4` | La cuenta inflada al triple: 51 de 77 eran la marca **citada** dentro de código |
+
+Lo que queda dicho y sin pendiente:
+
+- **25 documentos con 26 espacios por llenar.** Es trabajo de contenido.
+- **Si llenar por huecos resulta cómodo sigue sin responderse.** El documento con más huecos tiene dos, y eso no lo prueba.
+- Sin pantalla para Medición, Expediente ni Ciclo de vida.
+
+Lo siguiente sería la versión 3: que el agente reciba las reglas de la plataforma y que nada se publique rompiendo lo anterior.
+
+### 167 · Usuario — 2026-09-01 12:12:56
+> 00 id9
+
+**Agente** — 2026-09-01 12:13:01
+<!-- agente: fd3e9b0a-735e-483f-a817-97b971bbb184 -->
+
+Publicado: `7c83a49..36ae0eb`. **La versión 2 quedó cerrada.**
+
+Cuatro hallazgos, los cuatro cerrados. Los tres últimos salieron corriendo sobre lo real, no de las pruebas.
+
+Queda dicho y sin pendiente: 26 espacios por llenar, sin pantallas, y si llenar por huecos es cómodo sigue sin responderse.
+
+Sigue la versión 3: gobernar al agente. ¿Arranco?
+
+### 168 · Usuario — 2026-09-01 12:13:12
+> si
+
+**Agente** — 2026-09-01 12:14:28
+<!-- agente: 8f1793b5-d6e1-4ba2-8a96-f4d7e33e33db -->
+
+La versión 3 son 10 funcionalidades en tres módulos. Antes de arrancar, dos cosas medidas.
+
+**Ninguna queda antes que aquello de lo que depende.** Recorrí las 35 fichas: la versión 3 está bien ordenada. Los dos pares sueltos son los conocidos, y los dos ya están construidos.
+
+**`F-031` está construido a medias, y nadie lo declaró.** El puente que tapa claves existe y funciona, pero **solo lo usa la auditoría**. La ficha pide que ninguna clave quede escrita *«en un documento, en el registro ni en la base»*:
+
+| Camino que escribe | ¿Tapa? |
+|---|---|
+| Auditoría | **Sí** |
+| Almacén | no |
+| Importación — trajo 1 002 documentos | no |
+| Ciclo de vida — lo que escribí hoy | no |
+| Medición · Expediente | no |
+
+Cinco de seis caminos escriben sin tapar, y la ficha dice que **es el único daño de la lista que no se puede deshacer**.
+
+Por dónde arranco:
+
+| Salida | Qué implica |
+|---|---|
+| **`F-031` primero** (recomendada) | Es lo más pequeño, lo más urgente y ya tiene la mitad hecha. Cierra un agujero abierto hoy |
+| Reglas (`F-005` a `F-010`) | Seis funcionalidades, el corazón de la versión. Más largo, y el agujero sigue abierto |
+| Comprobaciones (`F-020` a `F-022`) | La plataforma corre los validadores. Ni urgente ni bloqueante |
+
+**¿Cuál tomo?**
+
+### 169 · Usuario — 2026-09-01 12:39:55
+> f-031
+
+**Agente** — 2026-09-01 12:41:22
+<!-- agente: 3b02badd-f8d6-46bb-82b9-52860ff0b132 -->
+
+Medido antes de diseñar, y el número cambia la decisión.
+
+**De 1 002 documentos guardados, el tapador tocaría 7, con 21 «claves».** Las 21 son inventadas, y están en los documentos de las fases **que construyeron el tapador**: son sus casos de prueba escritos.
+
+```
+| 1 | Registrar una acción con `password: "«enmascarado»"` | ... |
+```
+
+Es el mismo caso del hallazgo de hace un rato: **un documento que habla de la cosa parece contenerla**. Y acá pesa más, porque la ficha dice que tapar es *«el único daño de esta lista que no se puede deshacer»*: importar tapando corrompería justo los documentos que documentan el tapador, en silencio.
+
+Así que la pregunta no es «tapar en los cinco caminos», sino **cuáles**:
+
+| Camino | ¿Tapar? | Por qué |
+|---|---|---|
+| Auditoría | **Ya tapa** | Es lo que el agente escribe ahora |
+| Ciclo de vida — llenar un hueco | **Sí** | Es lo que alguien teclea ahora. Es el caso de la ficha |
+| Importación | **No** | Copia texto que ya existe. Taparlo lo altera sin vuelta atrás |
+| Almacén · Expediente · Medición | **No** | Solo mueven texto que ya pasó por otro camino |
+
+O sea: **se tapa lo que se escribe, no lo que se copia.**
+
+| Salida | Qué implica |
+|---|---|
+| **Tapar solo lo que se teclea** (recomendada) | Un camino nuevo, el de llenar. Y avisar en importación en vez de tapar |
+| Tapar en los seis | Corrompe 7 documentos reales hoy, sin vuelta atrás |
+
+**¿Cuál tomo?**
+
+### 170 · Usuario — 2026-09-01 12:45:07
+> haga todo y no me pregunte tanto

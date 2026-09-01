@@ -74,6 +74,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-5 · La protección que iba a corromper lo que protege
+
+- **Qué pasó:** al abrir la versión 3 apareció que `F-031` estaba **construida a medias y sin declarar**: el puente que tapa credenciales existía y **lo usaba un solo camino de los seis que escriben**. Lo obvio era encenderlo en los seis. Se midió primero: cambiaría **7 documentos y 21 fragmentos** de los 1 002 guardados, y **ninguno de los 21 era una clave**.
+- **Por qué importa:** los 21 son ejemplos escritos en los documentos de las fases **que construyeron el tapador**. Encenderlo en los seis habría corrompido la documentación del propio tapador, en silencio, y tapar **no se deshace**. Es la tercera vez en el día que un documento que habla de algo parece contenerlo; las dos anteriores se podían recontar, esta no.
+- **Qué lo soluciona:** ya construido. **Se tapa lo que se teclea, no lo que se copia**, y lo que no se tapa se cuenta y se nombra. Los seis caminos quedan declarados en la especificación del módulo, que no tenía.
+- **Qué se decidió:** el usuario pidió arrancar la versión 3 por `F-031` y después autorizó ejecutar la épica entera sin aprobar paso por paso.
+- **Estado:** resuelto acá
+- **Responde a:** EP-014 · HU-001 · CA-03
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-106` · [documentacion/seguridad/spec.md](../../../documentacion/seguridad/spec.md) §5.1 · `plataforma/nucleo/seguridad/revision.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -83,8 +99,10 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ no disparó ninguna |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de la fase B |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `EP-014` |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
-**Lo que sigue no es de esta sesión:** la versión 3, gobernar al agente. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y la versión 3 arrancó**, por `F-031`, que era lo único con daño irreversible y estaba construido a medias sin que nadie lo hubiera declarado.
+
+**Lo que sigue no es de esta sesión:** el resto de la versión 3, que son las reglas y las comprobaciones. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

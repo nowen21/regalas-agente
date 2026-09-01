@@ -12,7 +12,7 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-006](EP-006-memoria-de-lo-aprendido/) | Dónde queda lo aprendido y cómo se busca | Propuesta |
 | [EP-007](EP-007-instalacion-y-actualizacion/) | Que todo llegue a un proyecto con una línea | Propuesta |
 
-**Las seis de la plataforma** nacen del giro de producto del 2026-08-24, y salen del inventario aprobado, no del planteamiento:
+**Las siete de la plataforma** nacen del giro de producto del 2026-08-24, y salen del inventario aprobado, no del planteamiento:
 
 | Épica | De qué se trata | Versión | Estado |
 |---|---|---|---|
@@ -21,7 +21,8 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-010](EP-010-lo-escrito-entra-a-la-plataforma/) | Traer un proyecto con lo que ya tenga escrito | 1 | Abierta |
 | [EP-011](EP-011-lo-que-se-repite-sale-a-la-luz/) | Ver qué correcciones se repiten, para escribir la regla que falta | 2 | Abierta |
 | [EP-012](EP-012-el-expediente-se-entrega-el-mismo-dia/) | Armar el expediente de un proyecto y entregarlo el mismo día | 2 | Aprobada el 2026-08-31 |
-| [EP-013](EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/) | Llenar los huecos de un documento del ciclo sin salir de la plataforma | 2 | Abierta el 2026-09-01 |
+| [EP-013](EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/) | Llenar los huecos de un documento del ciclo sin salir de la plataforma | 2 | Terminada el 2026-09-01 |
+| [EP-014](EP-014-ninguna-clave-queda-escrita/) | Que ninguna clave quede escrita: se tapa lo que se teclea, no lo que se copia | 3 | Terminada el 2026-09-01 |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

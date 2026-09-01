@@ -16,6 +16,7 @@ from django.conf import settings
 
 from nucleo.auditoria.core import con_constancia
 from nucleo.importacion.models import Traido
+from nucleo.seguridad import claves
 from . import escritura, huecos, moldes
 
 
@@ -168,6 +169,12 @@ def llenar(proyecto, origen, numero, con, quien="el usuario",
     esperada = huella_de_cuando_se_leyo or huella_ahora
     hueco = ciertos[numero - 1]
 
+    # **Se tapa lo que se teclea.** Este es el camino por el que una persona
+    # escribe algo nuevo, y ahí es donde se le puede escapar una clave pegada.
+    # Lo importado no pasa por acá y no se toca: taparlo alteraría documentos
+    # que ya existían, sin vuelta atrás (`RN-1` y `RN-3` del módulo Seguridad).
+    con, tapadas = claves.tapar(con)
+
     # La constancia va **antes** del efecto, como en el resto de la plataforma:
     # un cambio sin registro es un cambio que nadie puede auditar (`DA-08`).
     con_constancia(
@@ -179,6 +186,9 @@ def llenar(proyecto, origen, numero, con, quien="el usuario",
 
     _poner_al_dia_la_copia(proyecto, origen, ruta)
     _, _, quedan = huecos_del_original(proyecto, origen)
+    # Cuántas se taparon va de vuelta: tapar en silencio deja al usuario
+    # creyendo que escribió otra cosa.
+    quedan["tapadas"] = tapadas
     return quedan
 
 

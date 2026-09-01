@@ -1090,3 +1090,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier pieza que reconozca marcas dentro de documentación.
 - **Rel:** S-104 (la convención que usa los signos de la prosa), S-102 (se comprueba contando sobre lo real).
+
+## S-106 · Una protección que no se deshace se mide antes de encenderla  ·  patrón · activa
+- **What:** la plataforma tapa credenciales, y lo hacía en **un solo camino de los seis que escriben**. Lo obvio era encenderlo en los seis. Antes de hacerlo se midió qué pasaría sobre los 1 002 documentos guardados: cambiaría **7 documentos y 21 fragmentos**, y **ninguno de los 21 era una clave**. Son ejemplos escritos en los documentos de las fases que construyeron el tapador.
+- **Why:** tapar no se deshace. Un conteo mal hecho se recuenta; un texto tapado se perdió. Encender la protección «por si acaso» habría corrompido **la documentación del propio tapador**, en silencio, y el daño solo se habría visto al abrir uno de esos siete meses después.
+- **Also:** la regla que salió es más simple que la duda: **se tapa lo que se teclea, no lo que se copia**. Lo que una persona acaba de escribir puede traer una clave pegada; lo que se copia de un proyecto ya existía como texto, y alterarlo es cambiarle el proyecto a alguien sin avisar.
+- **And:** lo que no se tapa **se cuenta y se nombra**. Un proyecto que trae una clave de verdad tiene que saberlo aunque la plataforma no la toque, y la decisión queda donde corresponde.
+- **Where:** `plataforma/nucleo/seguridad/revision.py` · la §5.1 de `documentacion/seguridad/spec.md`, que declara los seis caminos.
+- **Learned:** antes de encender una protección irreversible, **correrla en seco sobre los datos reales y mirar qué tocaría**. Si lo que tocaría son falsos positivos, el alcance estaba mal, y el momento de saberlo es antes. Vale para enmascarar, para borrar, para normalizar: todo lo que no tiene vuelta atrás.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier transformación que no se pueda deshacer.
+- **Rel:** S-104 y S-105 (un documento que habla de algo parece contenerlo), S-102 (se comprueba contando sobre lo real).
