@@ -3686,3 +3686,40 @@ Sigue el resto de la versión 3: las reglas y las comprobaciones. ¿Arranco?
 
 ### 173 · Usuario — 2026-09-01 13:28:00
 > si
+
+**Agente** — 2026-09-01 13:46:09
+<!-- agente: 7289053d-d609-49d6-92b1-cee93bccaacb -->
+
+Ahora el código.
+
+`EP-015` abierta y su primera historia cerrada: **Cumple**, 5 de 5. La plataforma ya dice si un proyecto cumple sin entrar a él.
+
+```
+python manage.py comprobar cimiento-el-estandar
+Comprobaciones corridas: 32 · con fallas: 1 · 116.9 s
+
+No cumple. 2 falla(s):
+  documentacion/comprobaciones/spec.md:107
+      enlace roto: .../estado-fase.md
+```
+
+**Encontró dos incumplimientos reales en su primera corrida** — dos enlaces rotos de su propio trabajo.
+
+Dos cosas que salieron al planificar, y son la misma clase de error:
+
+- **La columna de dependencias tiene un ciclo:** `F-008` → `F-022` → `F-020` → `F-008`. Leída como orden de construcción, ninguna de las tres arranca. No está mal: una cadena de *necesidades* puede tener vueltas, porque lo necesario ya existe escrito en `base/`. Una de *construcción*, nunca.
+- **Al veredicto le faltaba una respuesta.** Un proyecto sin el estándar instalado no cabe en «cumple» ni en «no cumple». Devolver lo primero es mentir; lo segundo llena los rojos de proyectos que solo estaban sin instalar, hasta que nadie los mira. Ahora son tres respuestas.
+
+Y un número que dejo declarado sin esconder: **116,9 segundos.** Se aguantan para pedirlo a mano; no para pedirlo cada vez que se guarda un archivo. Quien lo enchufe en algún sitio lo decide con el número delante.
+
+| | |
+|---|---|
+| Pruebas nuevas | 13 |
+| Baterías | 733 + 328, cero rojas |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-107`. 22 archivos. **¿Commiteo y hago push?**
+
+### 174 · Usuario — 2026-09-01 14:28:20
+> si
