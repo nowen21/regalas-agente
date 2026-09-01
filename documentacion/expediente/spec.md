@@ -143,7 +143,7 @@ Los cinco primeros son de `F-025`; los cuatro últimos, de `F-026`.
 
 | Funcionalidad | Requisito | Historia | Fase que lo construye |
 |---|---|---|---|
-| F-025 | RF-25 | [documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md](../epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md) | Por abrir |
+| F-025 | RF-25 | [documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md](../epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md) | [A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta](../epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta/estado-fase.md), cerrada el 2026-08-31 |
 | F-026 | RF-26 | [documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-002-generar-el-entregable-de-ofimatica/HU-002-generar-el-entregable-de-ofimatica.md](../epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-002-generar-el-entregable-de-ofimatica/HU-002-generar-el-entregable-de-ofimatica.md) | Por abrir |
 
 ## 14. Cruces con otros módulos

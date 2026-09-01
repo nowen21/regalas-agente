@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "nucleo.proyectos",
     "nucleo.importacion",
     "nucleo.medicion",
+    "nucleo.expediente",
 ]
 
 # La plataforma corre en la máquina del usuario y no se expone a la red

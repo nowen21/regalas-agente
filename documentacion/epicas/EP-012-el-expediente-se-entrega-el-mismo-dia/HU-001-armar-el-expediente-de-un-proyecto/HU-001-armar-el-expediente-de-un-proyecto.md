@@ -12,7 +12,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Aprobada el 2026-08-31 |
+| **Estado** | Terminada el 2026-08-31, con sus cinco criterios probados |
 ---
 
 ## 2. Narrativa
@@ -150,7 +150,7 @@ Entonces salen los documentos hasta ahí, y se dice cuáles quedaron fuera
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| Por abrir | Esta historia | Sin abrir |
+| [A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta](A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta/estado-fase.md) | Los cinco CA | Cerrada el 2026-08-31: **Cumple** |
 
 ---
 
@@ -173,9 +173,9 @@ Entonces salen los documentos hasta ahí, y se dice cuáles quedaron fuera
 
 ## 11. Definition of Done
 
-- ☐ Los cinco criterios con veredicto y evidencia.
-- ☐ Un expediente real armado, sobre este repositorio.
-- ☐ Comprobado que la auditoría y la memoria no entraron.
+- ☑ Los cinco criterios con veredicto y evidencia.
+- ☑ Un expediente real armado sobre este repositorio: 762 documentos, 22 faltantes y 31 a medio llenar.
+- ☑ Comprobado que la auditoría y la memoria no entraron.
 
 ## 12. Validación INVEST
 

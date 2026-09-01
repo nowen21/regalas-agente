@@ -2844,3 +2844,28 @@ Y de paso cierra el pendiente que quedó abierto ayer: *el manual de usuario deb
 
 ### 136 · Usuario — 2026-08-31 19:08:04
 > si
+
+**Agente** — 2026-08-31 19:15:39
+<!-- agente: 238a3efe-6ee3-4d87-996c-e8c66ae13258 -->
+
+**El repositorio quedó limpio: cero archivos sin subir.**
+
+Los 26 entraron en dos commits, porque el estándar frenó los dos últimos hasta versionarlos:
+
+| Commit | Qué llevó |
+|---|---|
+| `51775db` | Los 24 de otras sesiones: 21 sellos de estación 12, dos transcripciones, un guion |
+| `ba33c18` | Los dos modelos, ya corregidos, con la versión **37.2.0** |
+
+**Lo que hubo que arreglar en los modelos antes de que pasaran:**
+
+- **936 huecos** marcados con notación propia → la de la casa. Cada proyecto que copiara uno habría marcado los suyos de una forma que su propio validador le reporta.
+- **Dieciséis líneas** que le hablaban al lector de tú a tú.
+- Los dos ahora **citan** `00·ID10` en vez de repetirla o callarla. Eso cierra el pendiente que quedó abierto ayer.
+
+Y una cosa que vale contar: al reemplazar el manual de usuario se perdió entero su bloque de reglas de redacción. Era justo el caso que hizo nacer esa regla ayer — lo escrito dentro de un modelo solo lo hereda quien llene ese modelo.
+
+La cadena de `EP-012` está completa y aprobada. **¿Abro la primera fase, la de armar el expediente?**
+
+### 137 · Usuario — 2026-08-31 19:22:51
+> si
