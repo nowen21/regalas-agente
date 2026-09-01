@@ -138,6 +138,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-9 · Un aviso llevaba 54 versiones saliendo vacío, y por eso nadie lo notó
+
+- **Qué pasó:** el aviso de desfase de un proyecto trae dos partes, y la segunda —**qué cambió desde entonces**— llevaba 54 versiones saliendo vacía. El lector del registro reconocía **143 de 197** entradas, y la más reciente que entendía era la **34.2.0**. En la misma tanda apareció su pariente: comparando fechas, **185 de 248** reglas tenían el sello anulado, y el estándar dice que ninguna.
+- **Por qué importa:** **un aviso vacío se ve exactamente igual que un aviso que no tenía nada que decir.** No hay error, no hay rojo, no hay nada: solo falta lo único que servía para decidir. Y su pariente es el opuesto: un aviso que sale de más enseña a ignorarlo. Los dos vuelven inútil una señal sin que nadie lo note.
+- **Qué lo soluciona:** ya arreglado. El lector acepta los dos órdenes del registro, versionado como **PARCHE 37.2.1**; y la comparación barata se llama `parece_vencido`, con una prueba que comprueba que no exista una que se llame como si decidiera.
+- **Qué se decidió:** el usuario mandó hacer todo lo que hacía falta de la versión 3. **Ninguna de las 197 entradas del registro se reescribió**, ni ninguna fase cerrada: el que se adapta es el que lee.
+- **Estado:** resuelto acá
+- **Responde a:** EP-016 · HU-006 · CA-01
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-110` · `validadores/version.py` · `plataforma/nucleo/reglas/desfase.py` y `sello.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -147,7 +163,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `F-006` y `F-005` |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de las cuatro últimas de Reglas |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -155,6 +171,6 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 
 **Y `EP-015` cerró entera:** con `F-022` la vuelta de la columna queda cerrada, porque publicar una versión ya tiene su puerta.
 
-**Y las reglas arrancaron:** `EP-016` nació con sus seis funcionalidades, y las dos primeras cerraron el mismo día.
+**Y las reglas cerraron enteras:** `EP-016` nació con sus seis funcionalidades y las seis quedaron construidas el mismo día. **Con ellas cierra la versión 3.**
 
-**Lo que sigue no es de esta sesión:** `F-007` a `F-010`, que son las cuatro que le quedan a la versión 3. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Lo que sigue no es de esta sesión:** las versiones 4 y 5, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

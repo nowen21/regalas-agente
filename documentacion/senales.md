@@ -1134,3 +1134,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier ayuda que sugiera sin garantizar.
 - **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-108 (un rojo falso enseña a ignorar la puerta).
+
+## S-110 · Un aviso que sale vacío se ve igual que uno que no tenía nada que decir  ·  antipatrón · activa
+- **What:** el aviso de desfase de un proyecto trae dos partes: que quedó atrás, y **qué cambió desde entonces**. La segunda **llevaba 54 versiones saliendo vacía**. El lector del registro de cambios reconocía **143 de 197** entradas, y la más reciente que entendía era la **34.2.0**.
+- **Why:** una convención cambió y el lector se quedó atrás. El registro se escribía con el tipo delante; cuando `M17` pidió que la entrada abriera contando qué pasó, el orden se invirtió. **Y nadie lo notó porque un aviso vacío se ve exactamente igual que un aviso que no tenía nada que decir.** No hay error, no hay rojo, no hay nada: solo falta lo único que servía para decidir.
+- **Also:** es la tercera vez en la misma jornada que aparece el mismo patrón. Antes fue el veredicto de una fase, escrito de otra forma en la versión 1, y la marca de un espacio por llenar. **Las tres se resolvieron igual: el que se adapta es el que lee.** Ninguna de las 197 entradas se reescribió, ni ninguna fase cerrada.
+- **And:** en la misma tanda apareció su pariente en el sello de una regla. Comparar fechas decía que **185 de 248** tenían el sello anulado; el estándar dice que ninguna, porque compara el cuerpo y descuenta la tipografía. Ahí la respuesta fue un **nombre**: la función se llama `parece_vencido`, no `esta_vencido`, y hay una prueba que comprueba que la otra no exista.
+- **Where:** `validadores/version.py`, versionado como PARCHE 37.2.1 · `plataforma/nucleo/reglas/desfase.py` y `sello.py`.
+- **Learned:** **a un aviso hay que preguntarle cuántas veces sale con contenido**, no si funciona. Un aviso que nunca dice nada y uno que no encuentra nada son indistinguibles desde afuera, y el primero puede llevar años así. Y cuando algo se lee de documentos con historia, **contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva**.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier aviso derivado, y cualquier lector de documentos con historia.
+- **Rel:** S-108 (un rojo falso enseña a ignorar la puerta), S-105 (un documento que habla de algo parece contenerlo).

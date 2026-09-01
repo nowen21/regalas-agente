@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `G-EP-016-HU-001-ningun-numero-se-reutiliza` |
 | **Épica** | [EP-016](../../epica.md) |
-| **HU** | [HU-001 Dar el identificador sin reutilizar ninguno](../HU-001-dar-el-identificador-sin-reutilizar-ninguno.md) — **una sola** (`F12.1`) |
+| **HU** | [HU-001 Dar el identificador sin reutilizar ninguno](../HU-001-dar-el-identificador-sin-reutilizar-ninguno.md): **una sola** (`F12.1`) |
 | **Módulo** | Reglas |
 | **Especificación del módulo** | [documentacion/reglas/spec.md](../../../../reglas/spec.md) |
 | **Fecha apertura** | 2026-09-01 |
@@ -158,7 +158,7 @@ Nada que revertir: no escribe.
 
 | ID | Riesgo / Bloqueo | Impacto | Acción | Estado |
 |---|---|---|---|---|
-| B-01 | **Que se rellene un hueco creyendo que está libre** | **Alto — no se deshace** | El siguiente es el que sigue al mayor | Cerrado por diseño |
+| B-01 | **Que se rellene un hueco creyendo que está libre** | **Alto: no se deshace** | El siguiente es el que sigue al mayor | Cerrado por diseño |
 | B-02 | Que el lector no esté y se devuelva vacío | Alto | Se revienta en vez de callar | Cerrado |
 | B-03 | Que un identificador con punto consuma un número | Medio | `F12.1` cuenta como 12: es parte de otra regla | Cerrado |
 

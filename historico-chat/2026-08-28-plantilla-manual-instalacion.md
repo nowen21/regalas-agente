@@ -3855,3 +3855,92 @@ Señal `S-109`. 33 archivos. **¿Commiteo y hago push?**
 
 ### 179 · Usuario — 2026-09-01 17:40:14
 > si
+
+**Agente** — 2026-09-01 17:41:36
+<!-- agente: 3096127c-ffc2-4b36-b7fe-98b9e212e1ad -->
+
+Publicado: `acf33de..c349d6a`. Árbol limpio.
+
+**Dónde quedó todo hoy:**
+
+| Versión | Estado |
+|---|---|
+| 1 · Ver lo que hay | Cerrada |
+| 2 · Entregar | **Cerrada hoy** |
+| 3 · Gobernar al agente | **6 de 10** |
+| 4 y 5 | Sin abrir |
+
+De la versión 3 quedan cuatro, todas de Reglas: `F-007` el sello del checklist, `F-008` publicar una versión, `F-009` entregarle las reglas al agente y `F-010` avisarle al que quedó atrás.
+
+**Ocho hallazgos, los ocho cerrados.** Y hay un hilo que los une, que quizá sea lo más útil que dejó el día:
+
+| | |
+|---|---|
+| Tres | Un documento que **habla de** algo parecía contenerlo |
+| Dos | Una convención cambió con el tiempo y dejó atrás al lector |
+| Dos | Un veredicto no tenía nombre para «no se sabe», y el que faltaba se inventó mal |
+| Uno | Lo más difícil de una funcionalidad fue la frase que dice lo que no puede hacer |
+
+Ninguno se veía leyendo el código. Todos salieron de correr sobre datos reales o de medir antes de construir.
+
+Lo que queda dicho y sin pendiente: 26 espacios por llenar, 7 documentos con claves de ejemplo, 21 funcionalidades sin verificar porque nadie las construyó, y ninguna pantalla en los seis módulos nuevos.
+
+### 180 · Usuario — 2026-09-01 17:42:18
+> 00 id9
+
+**Agente** — 2026-09-01 17:42:24
+<!-- agente: 8ac48951-b6a8-401c-a926-7091feb8e529 -->
+
+Publicado: `acf33de..c349d6a`. Árbol limpio.
+
+| Versión | Estado |
+|---|---|
+| 1 y 2 | Cerradas |
+| 3 | **6 de 10** |
+| 4 y 5 | Sin abrir |
+
+Quedan cuatro, todas de Reglas: el sello, publicar, entregarle las reglas al agente y avisar al que quedó atrás.
+
+**Ocho hallazgos cerrados**, y ninguno se veía leyendo el código: todos salieron de correr sobre datos reales o de medir antes de construir.
+
+¿Sigo con las cuatro que faltan?
+
+### 181 · Usuario — 2026-09-01 17:42:41
+> si siga con todo lo que hace falta
+
+**Agente** — 2026-09-01 18:28:21
+<!-- agente: 4ac44576-6bf6-4d43-9d8b-ed604f742fdd -->
+
+Faltan los cinco de la fase L.
+
+`EP-016` cerrada entera: sus **seis historias** cumplen. **Con ella cierra la versión 3.**
+
+Las cuatro que faltaban:
+
+| | Qué quedó |
+|---|---|
+| `F-007` sello | Las 20 filas del checklist, y el sello con su versión y su fecha |
+| `F-008` publicar | Sin decir qué cambió no se publica, y la puerta va antes |
+| `F-009` entregar | 248 reglas, 679 511 caracteres, **en 0,17 s** contra un límite de 2 |
+| `F-010` desfase | El aviso ya dice qué cambió y cuáles obligan a migrar |
+
+**Dos hallazgos, y son la misma cosa vista al derecho y al revés:**
+
+- **Un aviso llevaba 54 versiones saliendo vacío.** El lector del registro reconocía **143 de 197** entradas, y la más reciente que entendía era la 34.2.0. Nadie lo notó porque **un aviso vacío se ve igual que uno que no tenía nada que decir**. Arreglado y versionado como **PARCHE 37.2.1**.
+- **Y su opuesto:** comparando fechas, **185 de 248** reglas tenían el sello anulado; el estándar dice que ninguna. Ahí la respuesta fue un nombre: la función se llama `parece_vencido`, y hay una prueba que comprueba que no exista una que se llame como si decidiera.
+
+Ninguna de las 197 entradas del registro se reescribió, ni ninguna fase cerrada. **El que se adapta es el que lee.**
+
+Una corrección mía: al limpiar rayas largas hice una barrida demasiado amplia que tocó 21 archivos y dañó celdas de tabla en 7. Las restauré y los validadores están en cero.
+
+| | |
+|---|---|
+| Pruebas nuevas | 43 |
+| Baterías | 733 + 426, cero rojas |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-110`. 45 archivos. **¿Commiteo y hago push?**
+
+### 182 · Usuario — 2026-09-01 18:34:46
+> si

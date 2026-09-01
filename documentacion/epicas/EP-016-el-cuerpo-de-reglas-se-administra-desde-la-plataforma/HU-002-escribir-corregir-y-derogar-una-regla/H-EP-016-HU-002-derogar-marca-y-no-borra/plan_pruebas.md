@@ -87,9 +87,9 @@ Se suspende si **derogar pierde una línea del texto original**. Es la parte que
 
 | CA | Caso | Tipo |
 |---|---|---|
-| CA-01 — la regla queda con su identificador | CP-005 | De contenido |
-| CA-02 — derogar marca y conserva | CP-006 | Que **no** pase |
-| CA-03 — se muestran las que hablan de lo mismo | CP-007 | De sistema |
+| CA-01: la regla queda con su identificador | CP-005 | De contenido |
+| CA-02: derogar marca y conserva | CP-006 | Que **no** pase |
+| CA-03: se muestran las que hablan de lo mismo | CP-007 | De sistema |
 
 ---
 

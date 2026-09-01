@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.2.1 — 2026-09-01
+
+**El aviso de «qué cambió desde entonces» salía vacío, y llevaba así cincuenta y cuatro versiones.** Un proyecto que quedó atrás recibe el aviso de desfase; lo único que le sirve para decidir si sube hoy es qué pasó en el camino, y esa parte no salía.
+
+**PARCHE** (corrección): un proyecto al día no tiene que hacer nada. Lo que cambia es que el aviso vuelve a contar lo que tenía que contar.
+
+**Lo que pasó fue que la convención cambió y el lector se quedó atrás.** El registro se escribía con el tipo delante y el título después; cuando `M17` pidió que la entrada abriera contando qué pasó, el orden se invirtió. El lector solo entendía el orden viejo.
+
+**Medido:** reconocía **143 de 197** entradas, y la más reciente que entendía era la **34.2.0**. Todo lo posterior era invisible, así que un proyecto en la 35 preguntando qué cambió recibía **nada**, sin que nadie dijera por qué. Ahora reconoce 162, y la más reciente es la del día.
+
+**Y no se tocó ninguna entrada del registro.** Las dos formas valen y el lector lee las dos: reescribir cincuenta y cuatro entradas para que un programa las entienda es al revés.
+
 ## 37.2.0 — 2026-08-31
 
 **Dos modelos de documento entran, y los dos marcan sus huecos como los marca la casa.** Uno es nuevo —el documento de arquitectura de un sistema— y el otro es el manual de usuario, reescrito entero con otra estructura: pasó de dieciséis secciones a veintiséis.

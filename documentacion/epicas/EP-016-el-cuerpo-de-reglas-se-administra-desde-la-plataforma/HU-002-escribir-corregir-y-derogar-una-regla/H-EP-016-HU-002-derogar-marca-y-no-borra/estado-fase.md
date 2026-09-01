@@ -31,7 +31,7 @@
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
 | 12 | Commit | 👤 autorizado | ✅ `cd6c1cd` |
-| 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
+| 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **Lo que más cuidado costó no fue el código, sino una frase.** El aviso dice, cada vez, que esto no detecta contradicciones. Sin ella la funcionalidad sería peor que no existir.
 

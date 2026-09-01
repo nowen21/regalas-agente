@@ -29,11 +29,20 @@ _ADOPTADA = re.compile(
 # `## 31.9.0 — 2026-08-22` — la cabecera de una entrada del registro.
 _ENTRADA_DEL_REGISTRO = re.compile(r"^##\s+(\d+\.\d+\.\d+)\b", re.M)
 
-# `2026-08-20-28.0.0.md` — el registro que el instalador deja por adopción.
-# `## 31.9.0 — 2026-08-22` con su tipo y su titulo en las lineas siguientes.
+# `## 31.9.0 — 2026-08-22` con su tipo y su titulo, **en cualquiera de los dos
+# ordenes**. El registro se escribio primero con el tipo delante, y despues con
+# el titulo delante, cuando `M17` pidio que la entrada abriera contando que
+# paso. Las dos formas valen, y hay que leer las dos.
+#
+# **Se vio midiendo, el 2026-09-01:** el lector reconocia 143 de 197 entradas, y
+# la mas reciente que entendia era la 34.2.0. Todo lo posterior quedaba
+# invisible, asi que el aviso de «que cambio desde entonces» salia vacio sin
+# decir por que. Una convencion cambio y el lector se quedo atras.
 _ENTRADA_CON_TIPO = re.compile(
-    r"^##\s+(\d+\.\d+\.\d+)\b[^\n]*\n+\*\*(MAYOR|MENOR|PARCHE)\*\*"
-    r"[^\n]*\n+\*\*([^*]{10,90})", re.M)
+    r"^##\s+(\d+\.\d+\.\d+)\b[^\n]*\n+"
+    r"(?:\*\*(MAYOR|MENOR|PARCHE)\*\*[^\n]*\n+\*\*([^*]{10,90})"
+    r"|\*\*([^*]{10,90})[^\n]*(?:\n(?!##\s)[^\n]*)*?\*\*(MAYOR|MENOR|PARCHE)\*\*)",
+    re.M)
 
 _NOMBRE_DE_ADOPCION = re.compile(r"^\d{4}-\d{2}-\d{2}-(\d+\.\d+\.\d+)\.md$")
 
@@ -158,7 +167,13 @@ def tramo(adoptada, estandar, raiz_estandar=None):
         return []
     desde, hasta = _tupla(adoptada), _tupla(estandar)
     salida = []
-    for version, tipo, titulo in _ENTRADA_CON_TIPO.findall(leer(ruta)):
+    for encontrada in _ENTRADA_CON_TIPO.finditer(leer(ruta)):
+        version = encontrada.group(1)
+        # Los dos ordenes del registro: tipo primero, o titulo primero. La
+        # forma que no casó deja sus grupos vacios, y por eso se toma la que
+        # tenga algo en vez de una posicion fija.
+        tipo = encontrada.group(2) or encontrada.group(5) or ""
+        titulo = encontrada.group(3) or encontrada.group(4) or ""
         if desde < _tupla(version) <= hasta:
             salida.append((version, tipo, titulo.strip()))
     return salida

@@ -85,10 +85,10 @@ Se suspende si **se entrega un identificador que ya existe**. No hay arreglo pos
 
 | CA | Caso | Tipo |
 |---|---|---|
-| Transversal — se lee el cuerpo | CP-001 | De sistema |
-| CA-01 — el siguiente libre | CP-002 | De partición |
-| CA-03 — no se guarda con uno usado | CP-003 | Que **no** pase |
-| CA-02 — el de una derogada no se reasigna | CP-004 | Que **no** pase |
+| Transversal: se lee el cuerpo | CP-001 | De sistema |
+| CA-01: el siguiente libre | CP-002 | De partición |
+| CA-03: no se guarda con uno usado | CP-003 | Que **no** pase |
+| CA-02: el de una derogada no se reasigna | CP-004 | Que **no** pase |
 
 ---
 

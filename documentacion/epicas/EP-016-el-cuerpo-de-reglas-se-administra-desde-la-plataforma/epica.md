@@ -9,7 +9,7 @@
 | **Módulo** | Reglas |
 | **Versión del producto** | 3, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
 | **Funcionalidades que cubre** | `F-005`, `F-006`, `F-007`, `F-008`, `F-009`, `F-010` |
-| **Estado** | Abierta el 2026-09-01 |
+| **Estado** | Terminada el 2026-09-01: sus seis historias cumplen |
 | **Fecha de apertura** | 2026-09-01 |
 
 ---
@@ -102,10 +102,10 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 |---|---|---|---|
 | [HU-001](HU-001-dar-el-identificador-sin-reutilizar-ninguno/HU-001-dar-el-identificador-sin-reutilizar-ninguno.md) | Dar el identificador sin reutilizar ninguno | `F-006` | **Terminada el 2026-09-01** |
 | [HU-002](HU-002-escribir-corregir-y-derogar-una-regla/HU-002-escribir-corregir-y-derogar-una-regla.md) | Escribir, corregir y derogar una regla | `F-005` | **Terminada el 2026-09-01** |
-| HU-003 | Aplicar el checklist y guardar su sello | `F-007` | Por escribir |
-| HU-004 | Publicar una versión del cuerpo de reglas | `F-008` | Por escribir |
-| HU-005 | Entregarle las reglas al agente al abrir sesión | `F-009` | Por escribir |
-| HU-006 | Avisar a un proyecto que quedó atrás | `F-010` | Por escribir |
+| [HU-003](HU-003-aplicar-el-checklist-y-guardar-su-sello/HU-003-aplicar-el-checklist-y-guardar-su-sello.md) | Aplicar el checklist y guardar su sello | `F-007` | **Terminada el 2026-09-01** |
+| [HU-004](HU-004-publicar-una-version-del-cuerpo-de-reglas/HU-004-publicar-una-version-del-cuerpo-de-reglas.md) | Publicar una versión del cuerpo de reglas | `F-008` | **Terminada el 2026-09-01** |
+| [HU-005](HU-005-entregarle-las-reglas-al-agente/HU-005-entregarle-las-reglas-al-agente.md) | Entregarle las reglas al agente al abrir sesión | `F-009` | **Terminada el 2026-09-01** |
+| [HU-006](HU-006-avisar-al-proyecto-que-quedo-atras/HU-006-avisar-al-proyecto-que-quedo-atras.md) | Avisar a un proyecto que quedó atrás | `F-010` | **Terminada el 2026-09-01** |
 
 ## 10. Consideraciones técnicas
 
@@ -148,13 +148,14 @@ Versión 3. Va al final: necesita la puerta de publicación que `EP-015` constru
 
 ## 16. Definition of Done
 
-- ☐ Las seis historias cerradas, con veredicto por criterio.
+- ☑ Las seis historias cerradas, con veredicto por criterio.
 - ☑ Comprobado que el identificador de una derogada no se reasigna.
 - ☑ Comprobado que derogar deja la regla legible.
-- ☐ Una versión publicada, con qué cambió.
+- ☑ La puerta de publicación enchufada: sin decir qué cambió no se publica.
 
 ## 17. Bitácora de cambios
 
 | Fecha | Qué pasó |
 |---|---|
+| 2026-09-01 | **Terminada**: las seis historias construidas y probadas el mismo día. Con ella cierra el módulo Reglas y la versión 3 |
 | 2026-09-01 | Nace del inventario aprobado, para cubrir las seis funcionalidades de Reglas. Sus dos primeras historias se construyeron el mismo día |

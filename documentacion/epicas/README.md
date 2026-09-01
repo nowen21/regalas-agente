@@ -24,7 +24,7 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-013](EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/) | Llenar los huecos de un documento del ciclo sin salir de la plataforma | 2 | Terminada el 2026-09-01 |
 | [EP-014](EP-014-ninguna-clave-queda-escrita/) | Que ninguna clave quede escrita: se tapa lo que se teclea, no lo que se copia | 3 | Terminada el 2026-09-01 |
 | [EP-015](EP-015-lo-exigido-se-comprueba-solo/) | Que la plataforma diga si un proyecto cumple, sin entrar a él | 3 | Terminada el 2026-09-01: sus tres historias cumplen |
-| [EP-016](EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/) | Escribir, numerar y derogar reglas sin reutilizar ningún identificador | 3 | Abierta el 2026-09-01. `F-006` y `F-005` cerradas |
+| [EP-016](EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/) | Escribir, numerar y derogar reglas sin reutilizar ningún identificador | 3 | Terminada el 2026-09-01: sus seis historias cumplen |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

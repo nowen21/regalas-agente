@@ -10,7 +10,7 @@
 |---|---|
 | **Fase** (identificador · `02·F12.6`) | `H-EP-016-HU-002-derogar-marca-y-no-borra` |
 | **Épica** | [EP-016](../../epica.md) |
-| **HU** | [HU-002 Escribir, corregir y derogar una regla](../HU-002-escribir-corregir-y-derogar-una-regla.md) — **una sola** (`F12.1`) |
+| **HU** | [HU-002 Escribir, corregir y derogar una regla](../HU-002-escribir-corregir-y-derogar-una-regla.md): **una sola** (`F12.1`) |
 | **Módulo** | Reglas |
 | **Especificación del módulo** | [documentacion/reglas/spec.md](../../../../reglas/spec.md) |
 | **Fecha apertura** | 2026-09-01 |
@@ -167,8 +167,8 @@ Lo que esta fase escriba queda en archivos versionados. **En las pruebas nunca e
 
 | ID | Riesgo / Bloqueo | Impacto | Acción | Estado |
 |---|---|---|---|---|
-| B-01 | **Que alguien crea que detecta contradicciones** | **Alto — deja de mirar** | El aviso lo dice cada vez, incluso cuando no encuentra nada | Cerrado por diseño |
-| B-02 | Que derogar pierda el texto | **Alto — no se deshace** | El `CA-02` lee el archivo entero después | Cerrado |
+| B-01 | **Que alguien crea que detecta contradicciones** | **Alto: deja de mirar** | El aviso lo dice cada vez, incluso cuando no encuentra nada | Cerrado por diseño |
+| B-02 | Que derogar pierda el texto | **Alto: no se deshace** | El `CA-02` lee el archivo entero después | Cerrado |
 | B-03 | Que se derogue una blindada | Alto | Está impedido, y se dice por qué | Cerrado |
 | B-04 | Que la lista de parecidas se llene de coincidencias sin sentido | Medio | Palabras vacías declaradas, y un mínimo de dos en común | Abierto hasta T-09 |
 

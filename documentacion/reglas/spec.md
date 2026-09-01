@@ -111,7 +111,16 @@ Un solo usuario, sin credenciales propias.
 - `CA-5` Derogar deja la regla legible y marcada.
 - `CA-6` Antes de guardar se muestran las que hablan de lo mismo.
 
-Los tres primeros son de `F-006`; los tres siguientes, de `F-005`. Los de `F-007` a `F-010` se agregan cuando lleguen sus historias.
+Los tres primeros son de `F-006`; los tres siguientes, de `F-005`. Y los de las otras cuatro:
+
+- `CA-7` Una regla queda con su sello, su versión y su fecha; una fila que no aplica lleva su motivo (`F-007`).
+- `CA-8` **La comparación por fechas no es el veredicto:** el estándar es el que decide (`F-007`).
+- `CA-9` Sin entrada en el registro no se publica, y la entrada dice su tipo (`F-008`).
+- `CA-10` Si la puerta no pasa, no se publica (`F-008`).
+- `CA-11` Las reglas se entregan enteras, en menos de dos segundos (`F-009`).
+- `CA-12` **Si no se pueden entregar, se dice dónde está la fuente** (`F-009`).
+- `CA-13` El aviso de desfase dice qué cambió y cuáles obligan a migrar (`F-010`).
+- `CA-14` **Un número que nunca se publicó se dice como lo que es** (`F-010`).
 
 ## 12. Decisiones tomadas
 
@@ -124,6 +133,10 @@ Los tres primeros son de `F-006`; los tres siguientes, de `F-005`. Los de `F-007
 | **La regla nace con sus huecos puestos** | Nacer vacía | Una regla incompleta que no se nota se publica incompleta |
 | **Una blindada no se deroga desde acá** | Dejarlo pasar | Sostienen a las demás, y derogarlas por una orden de consola es demasiado fácil |
 | **La fuente es el archivo** | Guardar la regla en la base | El texto pasaría a ser una copia, y se queda vieja al primer cambio a mano |
+| **La comparación por fechas se llama `parece_vencido`** | Llamarla `esta_vencido` | Medida así, 185 de 248 reglas salían con el sello anulado, y el estándar dice que ninguna |
+| **La plataforma no escribe la entrada del registro** | Generarla | Es prosa: dice qué pasó y por qué importa. Generada, diría lo mismo siempre |
+| **La fuente se nombra siempre al entregar** | Solo cuando falla | Recuerda que esta pieza no es un intermediario obligatorio |
+| **El desfase tiene tres respuestas** | Al día / atrasado | Un número inventado no cabe en ninguna, y se parece a ir adelantado |
 
 ## 13. Trazabilidad
 
@@ -131,10 +144,10 @@ Los tres primeros son de `F-006`; los tres siguientes, de `F-005`. Los de `F-007
 |---|---|---|---|
 | F-006 | RF-06 | [HU-001 Dar el identificador sin reutilizar ninguno](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-001-dar-el-identificador-sin-reutilizar-ninguno/HU-001-dar-el-identificador-sin-reutilizar-ninguno.md) | [G-EP-016-HU-001-ningun-numero-se-reutiliza](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-001-dar-el-identificador-sin-reutilizar-ninguno/G-EP-016-HU-001-ningun-numero-se-reutiliza/estado-fase.md), cerrada el 2026-09-01 |
 | F-005 | RF-05 | [HU-002 Escribir, corregir y derogar una regla](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-002-escribir-corregir-y-derogar-una-regla/HU-002-escribir-corregir-y-derogar-una-regla.md) | [H-EP-016-HU-002-derogar-marca-y-no-borra](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-002-escribir-corregir-y-derogar-una-regla/H-EP-016-HU-002-derogar-marca-y-no-borra/estado-fase.md), cerrada el 2026-09-01 |
-| F-007 | RF-07 | Por escribir | — |
-| F-008 | RF-08 | Por escribir | — |
-| F-009 | RF-09 | Por escribir | — |
-| F-010 | RF-10 | Por escribir | — |
+| F-007 | RF-07 | [HU-003 Aplicar el checklist y guardar su sello](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-003-aplicar-el-checklist-y-guardar-su-sello/HU-003-aplicar-el-checklist-y-guardar-su-sello.md) | [I-EP-016-HU-003-un-sello-no-sobrevive-a-un-cambio](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-003-aplicar-el-checklist-y-guardar-su-sello/I-EP-016-HU-003-un-sello-no-sobrevive-a-un-cambio/estado-fase.md), cerrada el 2026-09-01 |
+| F-008 | RF-08 | [HU-004 Publicar una versión del cuerpo de reglas](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-004-publicar-una-version-del-cuerpo-de-reglas/HU-004-publicar-una-version-del-cuerpo-de-reglas.md) | [J-EP-016-HU-004-sin-decir-que-cambio-no-se-publica](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-004-publicar-una-version-del-cuerpo-de-reglas/J-EP-016-HU-004-sin-decir-que-cambio-no-se-publica/estado-fase.md), cerrada el 2026-09-01 |
+| F-009 | RF-09 | [HU-005 Entregarle las reglas al agente](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-005-entregarle-las-reglas-al-agente/HU-005-entregarle-las-reglas-al-agente.md) | [K-EP-016-HU-005-las-reglas-llegan-y-la-fuente-sigue-ahi](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-005-entregarle-las-reglas-al-agente/K-EP-016-HU-005-las-reglas-llegan-y-la-fuente-sigue-ahi/estado-fase.md), cerrada el 2026-09-01 |
+| F-010 | RF-10 | [HU-006 Avisar al proyecto que quedó atrás](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-006-avisar-al-proyecto-que-quedo-atras/HU-006-avisar-al-proyecto-que-quedo-atras.md) | [L-EP-016-HU-006-el-aviso-dice-que-cambio](../epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-006-avisar-al-proyecto-que-quedo-atras/L-EP-016-HU-006-el-aviso-dice-que-cambio/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 
@@ -150,4 +163,4 @@ Los tres primeros son de `F-006`; los tres siguientes, de `F-005`. Los de `F-007
 
 | Fecha | Qué cambió | Por qué | Aprobado por |
 |---|---|---|---|
-| — | — | — | — |
+| 2026-09-01 | Las §5.1 y §5.2 y los criterios `CA-7` a `CA-14` | Nacieron con las cuatro historias que faltaban, construidas el mismo día | Ing. José Dúmar Jiménez Ruíz |
