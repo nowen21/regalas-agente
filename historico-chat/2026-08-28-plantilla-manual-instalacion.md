@@ -3603,3 +3603,45 @@ O sea: **se tapa lo que se escribe, no lo que se copia.**
 
 ### 170 · Usuario — 2026-09-01 12:45:07
 > haga todo y no me pregunte tanto
+
+**Agente** — 2026-09-01 12:58:07
+<!-- agente: fc249405-9918-4e7d-84d6-2352bdc05f40 -->
+
+Now the tests.
+
+`EP-014` construida y cerrada: **Cumple**, 5 de 5. Hice la épica entera sin volver a preguntar.
+
+**`F-031` estaba construida a medias y sin declarar**: el puente que tapa credenciales existía y lo usaba **un camino de los seis** que escriben.
+
+Lo obvio era encenderlo en los seis. Lo medí antes, y era un error grave:
+
+| Si taparan los seis | |
+|---|---|
+| Documentos que cambiarían | **7** |
+| Fragmentos que se taparían | **21** |
+| De esos, claves de verdad | **Ninguna** |
+
+Los 21 son ejemplos escritos en los documentos de **las fases que construyeron el tapador**. Encenderlo habría corrompido su propia documentación, en silencio, y tapar no se deshace.
+
+La regla que salió: **se tapa lo que se teclea, no lo que se copia.** Los seis caminos quedan declarados en la especificación, que el módulo no tenía desde que nació.
+
+```
+python manage.py revisar_claves cimiento-el-estandar
+Documentos revisados: 1002
+Parecen traer credenciales: 7 documento(s), 21 fragmento(s).
+**No se tocó ninguno.**
+```
+
+| | |
+|---|---|
+| Pruebas nuevas | 13 |
+| Baterías | 733 + 315, cero rojas |
+| Validadores | 32, cero fallas |
+| Documentos alterados | **0** |
+
+Y guardé su instrucción como memoria: [preguntar solo lo que no se puede decidir](historico-chat/memory/preguntar-solo-lo-que-no-se-puede-decidir.md) — se ejecuta lo que ya tiene recomendación medida; se sigue preguntando el commit y lo que no se deshace.
+
+Señal `S-106`. 23 archivos. **¿Commiteo y hago push?**
+
+### 171 · Usuario — 2026-09-01 13:14:59
+> si

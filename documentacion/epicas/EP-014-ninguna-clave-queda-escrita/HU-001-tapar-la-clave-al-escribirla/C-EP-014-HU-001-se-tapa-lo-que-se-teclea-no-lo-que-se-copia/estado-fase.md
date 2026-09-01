@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ El grave se evitó midiendo antes de construir |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `4828b06` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A — la plataforma corre en la máquina del usuario |
 
 > **El usuario autorizó la épica entera de una vez.** Lo dijo el 2026-09-01: *«haga todo y no me pregunte tanto»*. Las puertas 2 a 7 se pasaron con esa autorización, no una por una. Queda escrito porque `02·F0` pide aprobación por eslabón, y acá se dio agrupada.
