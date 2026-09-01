@@ -192,7 +192,7 @@ Cada palabra del negocio con una sola definición, para que nadie la use de dos 
 | 2 | ¿Qué se audita de la sesión del agente? | El autor | Construir la auditoría | **Resuelta el 2026-08-25:** las acciones, más lo que la sesión dejó escrito. La transcripción se guarda aparte y no entra a la auditoría |
 | 3 | ¿La documentación de todos los proyectos vive en un solo repositorio, o en uno por proyecto? | El autor | Diseñar el modelo de datos | **Resuelta el 2026-08-24:** todo en el repositorio de la plataforma, una carpeta por proyecto |
 | 4 | Cuando la plataforma no esté disponible, ¿el agente trabaja leyendo la fuente o se detiene? | El autor | Diseñar la carga de reglas | Abierta, con propuesta: que trabaje y lo diga |
-| 5 | ¿El expediente que recibe un cliente incluye la auditoría y la memoria, o solo los entregables? | El autor | Construir el expediente | Abierta, con propuesta: solo los entregables |
+| 5 | ¿El expediente que recibe un cliente incluye la auditoría y la memoria, o solo los entregables? | El autor | Construir el expediente | **Resuelta el 2026-08-31: solo los entregables.** La auditoría y la memoria son de Cimiento, para saber cómo se llegó; el cliente recibe lo entregable |
 | 6 | ¿Sirve para alguien que no sea el autor? | Un usuario ajeno | Declararla como algo más que una herramienta personal | Abierta |
 
 ## 11. Cómo se pide un cambio a lo ya acordado

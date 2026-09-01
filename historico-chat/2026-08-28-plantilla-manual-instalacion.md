@@ -2586,3 +2586,191 @@ Sí o no. Lo demás era contexto que no le pedía nada.
 
 ### 121 · Usuario — 2026-08-31 15:09:10
 > si y que sigue?
+
+**Agente** — 2026-08-31 15:34:02
+<!-- agente: 43ac2bcd-6ed9-4af2-8d12-d0720280988e -->
+
+Probé lo que aprobó y **no funcionó**: ordenando por sesiones distintas, «debe quedar» sigue de primero con 14 sesiones. Y pesar las frases por lo raras que son sus palabras se va al otro extremo: arriba quedan términos técnicos que solo aparecen juntos.
+
+Lo que sí funciona lo acabo de medir: **descartar las frases hechas con las palabras más comunes del propio corpus**, calculadas y no escritas a mano.
+
+```
+  8s 11v  estoy preguntando
+  7s 15v  plan trabajo
+  5s  9v  espanol colombiano
+  5s  5v  aplicando id9
+  5s  5v  estoy pidiendo
+  4s 11v  escribir aprendido
+```
+
+Ahí sí hay correcciones de verdad: «estoy preguntando» ocho sesiones distintas —usted diciéndome que pregunta, no que ordena—, «aplicando id9», «español colombiano».
+
+Voy con eso, que es lo mismo que aprobó con un mecanismo que sí sirve.
+
+**Hecho.** El reporte ya no se encabeza con su forma de redactar:
+
+| Antes | Después |
+|---|---|
+| `22 debe quedar` | `11 estoy preguntando · 8 sesiones` |
+| `21 meta reglas` | `15 plan trabajo · 7 sesiones` |
+| `19 puede cerrar` | `7 historico chat · 7 sesiones` |
+| `19 historico chat` | `9 espanol colombiano · 5 sesiones` |
+
+**«Español colombiano» pasó del puesto 21 al cuarto**, que era la comprobación que importaba: un filtro que limpia de más deja un reporte limpio y vacío.
+
+Y arriba apareció algo que vale mirar: **«estoy preguntando», en ocho sesiones distintas**. Usted aclarándome que pregunta, no que ordena — que es exactamente lo que pasó hace un rato en esta conversación.
+
+Quedó dicho que la mejora que propuse y usted aprobó **no funcionaba**: ordenar por sesiones dejaba «debe quedar» de primero igual. Medirlo costó veinte minutos y evitó entregarle algo inservible con su aprobación encima. Es `S-100`.
+
+945 pruebas en verde, 32 comprobaciones sin fallas. 14 archivos preparados.
+
+¿Se commitea?
+
+### 122 · Usuario — 2026-08-31 16:04:44
+> si
+
+**Agente** — 2026-08-31 16:06:09
+<!-- agente: 2f8ecb29-39ad-4df6-b1c9-7b7566b4b023 -->
+
+Publicado: `c753232..60e960d`.
+
+**Lo que queda por hacer, medido:**
+
+| Qué | Estado |
+|---|---|
+| `EP-001·HU-013` — capítulos opt-in de RPA e IA | Espera un proyecto real, **a propósito** |
+| Pantalla para los dos reportes de Medición | Sin historia; llega cuando la vista de un proyecto la pida |
+| Si de «estoy preguntando» nace una regla | **Suyo**: ocho sesiones distintas es el patrón más fuerte del reporte |
+
+El árbol: 128 historias, todas cumplen, ninguna roja. 945 pruebas en verde entre las dos baterías.
+
+### 123 · Usuario — 2026-08-31 16:08:39
+> 00 id9
+
+**Agente** — 2026-08-31 16:08:45
+<!-- agente: 02988330-516c-4c3a-a702-2b59e199fc33 -->
+
+Publicado.
+
+Queda una historia sin fase —la que espera un proyecto real— y una decisión suya: si «estoy preguntando», ocho sesiones distintas, amerita regla.
+
+### 124 · Usuario — 2026-08-31 16:09:12
+> qué necesita de mi?
+
+**Agente** — 2026-08-31 16:09:18
+<!-- agente: 612c08db-b132-486b-839b-919ae2fb97f3 -->
+
+Nada. Todo lo que había está hecho, commiteado y publicado.
+
+Lo de «estoy preguntando» era una sugerencia, no un pedido: si quiere, la miramos otro día.
+
+### 125 · Usuario — 2026-08-31 16:09:42
+> qué sigue?
+
+**Agente** — 2026-08-31 16:10:05
+<!-- agente: 38aa925b-af64-4a35-a6c3-335567827e82 -->
+
+Medido: la **versión 2** de la plataforma tiene tres funcionalidades obligatorias que **ni siquiera tienen historia escrita**.
+
+| Qué falta | Módulo |
+|---|---|
+| `F-014` Llenar los documentos del ciclo desde la plataforma | Ciclo de vida |
+| `F-025` Armar el expediente de un proyecto | Expediente |
+| `F-026` Generar el entregable de ofimática | Expediente |
+
+Lo que ya se hizo hoy —buscar y contar— era la mitad opcional de esa versión. Esta es la obligatoria.
+
+Recomiendo empezar por **el expediente** (`F-025` y `F-026`): es lo que la versión promete como valor, *entregar el expediente el mismo día*.
+
+¿Arranco por ahí?
+
+### 126 · Usuario — 2026-08-31 16:12:01
+> si
+
+**Agente** — 2026-08-31 16:12:33
+<!-- agente: ce551d0e-6ee2-4966-a720-18133681a9df -->
+
+Antes de escribir nada hay una duda del análisis que sigue abierta, y es la que fija el alcance:
+
+**¿El expediente que recibe un cliente incluye la auditoría y la memoria, o solo los entregables?**
+
+La propuesta escrita en el análisis es **solo los entregables**. Si la confirma, arranco con la épica de Expediente y sus dos historias.
+
+### 127 · Usuario — 2026-08-31 16:13:13
+> solo los entregables el resto es memora para cimiento
+
+**Agente** — 2026-08-31 16:16:11
+<!-- agente: e6385969-2a00-4143-b7c1-df1759886fc7 -->
+
+Escrita la épica: [EP-012 — El expediente se entrega el mismo día](documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/epica.md).
+
+**Lo que fija, en corto:**
+
+- Junta los documentos en el orden del ciclo, **dice qué falta** y qué está a medio llenar.
+- Genera el archivo de ofimática desde el texto, y nunca al revés (`DA-09`).
+- **La auditoría y la memoria quedan fuera**, con su decisión de hoy citada.
+- Se puede empezar sin `F-014`: hoy los documentos entran por importación.
+
+El riesgo de peso queda escrito: que el generador rompa listas y tablas. Se probará con un documento real, no con uno de mentiras.
+
+**¿Aprueba la épica?** Con eso escribo las dos historias.
+
+### 128 · Usuario — 2026-08-31 16:33:35
+> si
+
+**Agente** — 2026-08-31 16:36:19
+<!-- agente: 09cc2256-0d26-404d-b91c-96efc17e1e30 -->
+
+Escritas las dos historias de `EP-012`:
+
+| Historia | Lo que decide |
+|---|---|
+| [HU-001 — Armar el expediente](documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md) | Cinco criterios. El que más protege es que **lo que falta se lista y no se inventa**, y que lo acotado diga qué dejó fuera |
+| [HU-002 — Generar el entregable](documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-002-generar-el-entregable-de-ofimatica/HU-002-generar-el-entregable-de-ofimatica.md) | Cuatro criterios. El que decide es que **las listas dentro de celdas salgan como listas** — donde estos generadores se caen |
+
+**Dos ítems de su lista de listo quedan sin marcar a propósito**, y los dos son decisiones:
+
+1. El **orden del ciclo, tipo por tipo** — va en la especificación del módulo.
+2. **Con qué se genera el archivo de ofimática**, y si eso obliga a instalar algo que salga a la red. No lo decido yo.
+
+**¿Aprueba las dos historias?** Con eso escribo la especificación del módulo Expediente, que es el eslabón que sigue.
+
+### 129 · Usuario — 2026-08-31 18:51:35
+> si
+
+**Agente** — 2026-08-31 18:52:36
+<!-- agente: 9ba94cd3-c583-4ebe-81e6-ff2eaf3af729 -->
+
+Las dos historias quedan aprobadas. Para escribir la especificación necesito **una decisión**:
+
+**¿Con qué se genera el archivo de ofimática?**
+
+| Opción | Qué implica |
+|---|---|
+| **HTML, con la librería estándar** (recomendada) | No instala nada, cumple `RNF-03`. Word y LibreOffice lo abren y lo guardan como `.docx` si el cliente lo pide. Las tablas con viñetas adentro salen bien |
+| `.docx` de verdad, instalando `python-docx` | El archivo es el que el cliente espera sin pasos extra, pero **obliga a instalar** algo que sale a la red, y eso choca con `RNF-03` |
+
+Recomiendo la primera: el `CA-02` —las listas dentro de celdas— es más fácil de cumplir bien, y no rompe la restricción que la épica declaró.
+
+### 130 · Usuario — 2026-08-31 18:53:11
+> hágale con la que recomienda
+
+**Agente** — 2026-08-31 18:55:49
+<!-- agente: fb7ac380-c570-436e-ad85-11120853d280 -->
+
+Escrita: [documentacion/expediente/spec.md](documentacion/expediente/spec.md).
+
+**Lo que decide, y necesito que revise:**
+
+1. **El orden del ciclo, tipo por tipo** — nueve grupos, de planificación a registros de versión. Es lo que la `HU-001` pedía declarar y sale de las siete etapas más el árbol de trabajo.
+2. **El expediente no se guarda: se calcula al pedirlo.** Guardarlo crearía una segunda verdad que envejece.
+3. **Lo que no encaja se lista aparte**, no se acomoda al grupo más parecido.
+4. **El entregable en formato abierto**, con la librería estándar, como acordamos.
+5. **Avisar de lo incompleto sin impedir generar**: la decisión de entregar es suya.
+
+Y una consecuencia que vale decir: la §9 marco normativo **sí aplica acá**, a diferencia de los otros módulos. El entregable es la única salida del sistema hacia un tercero.
+
+**¿Aprueba la especificación?** Con eso abro la primera fase.
+
+### 131 · Usuario — 2026-08-31 18:59:39
+> si pero primero suba a git todo lo que está pendiente
