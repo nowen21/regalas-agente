@@ -3064,3 +3064,203 @@ Recomiendo la primera. ¿Deshago?
 
 ### 146 · Usuario — 2026-09-01 07:49:53
 > si
+
+**Agente** — 2026-09-01 07:57:37
+<!-- agente: b81081dc-1ae4-4ceb-a481-9f5dabfeb423 -->
+
+Deshecho. El reparto de versiones quedó como estaba, y lo que se corrigió fue el error de verdad.
+
+| Archivo | Qué quedó |
+|---|---|
+| [inventario-funcionalidades.md](cvds/analisis-requisitos/inventario-funcionalidades.md) | Sección nueva: qué dice la columna «Depende de» y qué no, con `F-027` y `F-025` como prueba |
+| [implementacion/README.md](cvds/implementacion/README.md) §2 | Por qué `F-014` se queda en la 2, y una tabla de cambios a la línea base |
+| [senales.md](documentacion/senales.md) | `S-103`: reordenar un plan por una columna sin comprobar que la columna dice la verdad |
+| [resumenes/2026-09-01/](historico-chat/resumenes/2026-09-01/el-orden-de-las-versiones.md) | El resumen de hoy, con su hallazgo `H-1` |
+
+Pares fuera de orden: **de vuelta en 2**, los dos refutados por código que corre. Los 32 validadores en verde, cero fallas.
+
+7 archivos preparados. **¿Commiteo?**
+
+### 147 · Usuario — 2026-09-01 09:04:54
+> si
+
+**Agente** — 2026-09-01 09:05:54
+<!-- agente: 821b4500-61d3-4b86-bd65-fe2117283ec7 -->
+
+`e4c3c61`. Ahora `F-014`, y necesita una decisión antes de abrir la épica.
+
+La ficha trae su propia advertencia: *«Si escribir ahí es más incómodo que en un editor, nadie lo va a usar»*. Así que la pregunta es qué significa «llenar desde la plataforma».
+
+| Camino | Qué hace | Contra |
+|---|---|---|
+| **Llenar por huecos** (recomendado) | La plataforma sabe qué molde sigue cada documento, muestra solo los `«…»` que faltan y pide uno por uno | No sirve para redactar libre |
+| Editor en el navegador | Un cuadro de texto por documento, se guarda al archivo | Compite con el editor del usuario, y pierde |
+| Los dos | Redactar libre, y una vista de huecos aparte | Es el doble de trabajo |
+
+Recomiendo el primero: es lo único que un editor no puede hacer, porque exige conocer el molde. Y es exactamente el `CA-2` de la ficha — *ver cuántos espacios le faltan por llenar*. La pieza que los cuenta ya existe: el expediente reporta hoy 31 documentos con huecos.
+
+**¿Cuál tomo?**
+
+### 148 · Usuario — 2026-09-01 09:43:50
+> 00 id9
+
+**Agente** — 2026-09-01 09:43:58
+<!-- agente: c0a44fd2-ae82-48dc-84de-52b46d1bdafe -->
+
+`F-014`: ¿qué es llenar un documento desde la plataforma?
+
+| Camino | Qué hace |
+|---|---|
+| **Por huecos** (recomendado) | Muestra los `«…»` que faltan y pide uno por uno |
+| Editor libre | Un cuadro de texto por documento |
+| Los dos | El doble de trabajo |
+
+El primero es lo único que un editor no puede hacer: exige conocer el molde.
+
+¿Cuál?
+
+### 149 · Usuario — 2026-09-01 09:50:42
+> primero
+
+**Agente** — 2026-09-01 09:53:53
+<!-- agente: 5c5feaa1-ba8d-4d7d-87a3-99b5dcdf01b0 -->
+
+Épica escrita: [EP-013 — Los documentos se llenan sin salir de la plataforma](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/epica.md).
+
+Lo que la define:
+
+| | |
+|---|---|
+| **Cubre** | `F-014`, sola. Módulo Ciclo de vida, versión 2 |
+| **Dentro** | Decir qué molde sigue un documento, qué huecos le faltan, y llenarlos con registro |
+| **Fuera** | Redactar libre · crear fases nuevas (`F-011`, versión 5) · las puertas (`F-012`, `F-013`) |
+| **Historias** | `HU-001` ver qué le falta · `HU-002` llenar un hueco |
+| **Riesgo mayor** | El de la ficha: que sea más incómodo que un editor. Por eso llena huecos en vez de competir |
+
+Dos cosas que quedaron escritas ahí y conviene que vea:
+
+- **La evidencia es medida, no opinada:** 31 documentos de este repositorio tienen huecos sin llenar, contados por el expediente el 31 de agosto.
+- **Un criterio que no estaba en la ficha:** llenar un hueco no reescribe el resto del documento. Si guardar cambia el formato, la plataforma es peor que el editor.
+
+`documentacion/epicas/README.md` ya la lista. **¿Aprueba la épica?**
+
+### 150 · Usuario — 2026-09-01 09:54:25
+> si
+
+**Agente** — 2026-09-01 09:59:34
+<!-- agente: 2e49f35b-e2ca-47c2-890e-62cbff989817 -->
+
+Épica aprobada, y las dos historias escritas:
+
+- [HU-001 — Ver qué le falta a un documento](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/HU-001-ver-que-le-falta-a-un-documento.md)
+- [HU-002 — Llenar un hueco desde la plataforma](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma.md)
+
+Escribirlas obligó a contar los huecos de `plantillas/`, y salieron **tres clases**, no una:
+
+| Forma | Cuántos | Cómo se pregunta |
+|---|---|---|
+| `«NOMBRE»` | 2 079 | Por su nombre: `«RESPONSABLE»`, `«OBJETIVO»` |
+| `«…»` | 707 | Con la línea que lo rodea, porque no dice qué va |
+| `«RUTA-ESTANDAR»` | 134 | **No se pregunta:** la reemplaza [instalar.py](validadores/instalar.py) |
+
+Sin esa tercera clase, la plataforma le haría al usuario 134 preguntas que él no responde. Quedó como `CA-04` de la `HU-001`.
+
+El criterio que decide la `HU-002` es el `CA-02`: **llenar un hueco no cambia ni un carácter del resto del archivo**. Si guardar reformatea, el editor gana y nadie usa la plataforma.
+
+32 validadores, cero fallas. **¿Aprueba las dos historias?**
+
+### 151 · Usuario — 2026-09-01 10:06:07
+> si
+
+**Agente** — 2026-09-01 10:12:14
+<!-- agente: 8ed74f22-22d8-435c-b0a4-b802ac6efeae -->
+
+Especificación escrita: [documentacion/ciclo-de-vida/spec.md](documentacion/ciclo-de-vida/spec.md). Módulo nuevo, alcance solo `F-014`; `F-011`, `F-012` y `F-013` quedan declaradas fuera hasta la versión 5.
+
+Lo que obligó a averiguar, y no se sabía:
+
+**El molde de cada tipo no se deduce del nombre.** Importación reconoce 19 tipos; **17 tienen molde y dos no**, y tres de los moldes viven fuera de `plantillas/ciclo-vida-proyectos/`:
+
+| Tipo | Dónde está su molde |
+|---|---|
+| señales | `plantillas/senales.md` |
+| decisiones de arquitectura | `plantillas/cvds/diseno/decisiones-de-arquitectura.md` |
+| etapa del ciclo de vida | `plantillas/cvds/<etapa>/README.md` |
+
+**Y dos tipos no tienen molde**, declarados en vez de acomodados: el índice (es el `README.md` de una carpeta cualquiera) y el registro de versión (nunca se escribió).
+
+Dos decisiones técnicas que la spec fija:
+
+- **Cómo se sabe que el archivo cambió por fuera:** se guarda la huella del contenido leído y se compara antes de escribir. Si no coincide, se avisa; adivinar cuál de los dos cambios vale no es del programa.
+- **Cómo se ubica un hueco:** por posición **y** por el texto que lo rodea. La posición sola apunta a otra parte si el documento se movió.
+
+32 validadores, cero fallas. **¿Aprueba la especificación?**
+
+### 152 · Usuario — 2026-09-01 10:13:39
+> si
+
+**Agente** — 2026-09-01 10:20:05
+<!-- agente: b731988b-0ab1-41fe-ac84-90b8755f4779 -->
+
+Fase abierta: `A-EP-013-HU-001-los-huecos-de-un-documento-se-ven`, con sus dos planes.
+
+- [plan_trabajo.md](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/A-EP-013-HU-001-los-huecos-de-un-documento-se-ven/plan_trabajo.md) — 8 tareas, 16 h estimadas
+- [plan_pruebas.md](documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/A-EP-013-HU-001-los-huecos-de-un-documento-se-ven/plan_pruebas.md) — 6 casos
+
+**Esta fase solo lee**; escribir es la fase de la `HU-002`. Se separan porque fallan distinto: contar mal da un número equivocado, escribir mal daña un documento.
+
+Dos cosas que salieron al planificar:
+
+- **La cuenta de esta fase va a dar mayor que la del expediente.** El expediente cuenta solo `«…»` (31 documentos); esta cuenta también los que tienen nombre. No es contradicción, son dos preguntas, pero hay que correr las dos y explicar la diferencia con números. Está como `B-03` del plan.
+- **El riesgo mayor ya ocurrió una vez:** contar `«texto»` daba 559 documentos incompletos en vez de 31. Por eso el `CA-02` se comprueba contando sobre los documentos reales y contrastando con contarlo a mano.
+
+Ningún archivo, ninguna entidad, ninguna dependencia nueva.
+
+**¿Aprueba el plan y el plan de pruebas?**
+
+### 153 · Usuario — 2026-09-01 10:20:12
+> si
+
+**Agente** — 2026-09-01 10:21:55
+<!-- agente: 66474908-01f8-4af2-9872-0590166c0064 -->
+
+Antes de codificar, medí el `CA-03` y no se sostiene como estaba escrito.
+
+**Un hueco con nombre no se distingue de una cita** en un documento ya escrito, porque en esta casa se cita con esas mismas comillas. Medido sobre las 130 historias reales:
+
+| Prueba | Huecos que sobreviven |
+|---|---|
+| Cualquier `«...»` | 341 |
+| Solo los que están en el molde | 75, en 17 documentos |
+| Los que además siguen en la línea del molde | **0** |
+
+Los 75 son el autor usando el vocabulario del molde como etiqueta — `«Documentación»`, `«Backend»`, `«Pruebas»` — no huecos. **Ninguno de los 341 es un hueco con nombre sin llenar.**
+
+Lo cierto sigue siendo `«…»`, que es lo que el expediente ya cuenta.
+
+Dos salidas:
+
+| Salida | Qué entrega la `HU-001` |
+|---|---|
+| **Dos listas** (recomendada) | *Ciertos* (`«…»`) y *posibles* aparte. Se actúa sobre los ciertos; los posibles se ven y no molestan |
+| Solo los ciertos | Más simple, pero cuando `F-011` cree documentos desde el molde en la versión 5, los con nombre **sí** serán ciertos y habrá que volver |
+
+Recomiendo la primera. ¿Cuál tomo?
+
+### 154 · Usuario — 2026-09-01 10:30:20
+> 00 id9
+
+**Agente** — 2026-09-01 10:30:24
+<!-- agente: 8ccc3d19-a0e3-4aee-b4ca-6bfd05243769 -->
+
+Medí el `CA-03`: **un hueco con nombre no se distingue de una cita**. De 341 marcas en las 130 historias, ninguna es hueco sin llenar. Lo cierto es `«…»`.
+
+| Salida | Qué entrega la `HU-001` |
+|---|---|
+| **Dos listas** (recomendada) | Ciertos y posibles aparte |
+| Solo ciertos | Habrá que volver en la versión 5 |
+
+¿Cuál?
+
+### 155 · Usuario — 2026-09-01 10:31:23
+> dos listas

@@ -1068,3 +1068,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier plan por versiones, tandas o entregas con dependencias declaradas.
 - **Rel:** S-099 (el reporte medía la herramienta y no el trabajo), S-102 (se comprueba contando, no mirando).
+
+## S-104 · Una convención que se parece a la prosa no se puede contar  ·  patrón · activa
+- **What:** el módulo iba a contar dos clases de espacio por llenar: el anónimo `«…»` y el que trae nombre, como `«RESPONSABLE»`. Se midió antes de construir sobre las 130 historias de usuario reales: 341 marcas en total, 75 también presentes en el molde, y **cero** todavía en la línea del molde. Ninguna era un hueco: eran el autor usando el vocabulario del molde como etiqueta.
+- **Why:** acá se cita con esas mismas comillas todo el tiempo. Una convención que usa los mismos signos que la prosa **no se puede distinguir de la prosa leyendo el documento**, por más que el molde diga otra cosa. Contarlas habría dado por incompleto todo documento bien escrito, que es el mismo error que una vez dio 559 documentos incompletos donde había 31.
+- **Also:** la medición costó diez minutos y cambió un criterio de aceptación ya aprobado. Construirlo primero habría costado la fase entera, porque el defecto no se ve en las pruebas: con documentos inventados el conteo se ve perfecto.
+- **And:** el que sí se puede contar es el anónimo, porque `«…»` no se escribe por accidente. Y comparar con el módulo Expediente, que ya contaba ese mismo, dio **54 contra 31**: los 24 de diferencia son índices, que no entran al expediente, y el uno que falta es una marca dentro de un bloque cercado, donde se escribe para mostrarla. Las dos cuentas coinciden, y una corrige a la otra.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/huecos.py` · la §5.1 de `documentacion/ciclo-de-vida/spec.md`.
+- **Learned:** antes de construir sobre una convención de marcado, **contar en el texto real cuántas de sus apariciones son de verdad la convención**. Si la marca comparte signos con la escritura normal, la respuesta va a ser menos de lo que uno cree, y el número decide el diseño.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier pieza que reconozca marcas dentro de texto escrito por personas.
+- **Rel:** S-101 (la marca de un hueco es una convención), S-102 (se comprueba contando sobre lo real), S-103 (medir antes y después de cambiar).

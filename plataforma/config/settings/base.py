@@ -18,6 +18,8 @@ CARPETA_DATOS = RAIZ / "datos"
 # claves, y nunca escribe. Copiarlo dejaría dos listas de secretos que se
 # separan; moverlo obligaría a tocar el estándar sin comprar nada.
 CARPETA_VALIDADORES = RAIZ.parent / "validadores"
+# Los moldes del estándar. Se leen cuando se piden: copiarlos los envejece.
+CARPETA_PLANTILLAS = RAIZ.parent / "plantillas"
 
 # La clave solo firma las sesiones del navegador en esta máquina. Si no está
 # puesta, se usa una de desarrollo: la plataforma no expone nada a la red.
@@ -36,6 +38,7 @@ INSTALLED_APPS = [
     "nucleo.importacion",
     "nucleo.medicion",
     "nucleo.expediente",
+    "nucleo.ciclo_de_vida",
 ]
 
 # La plataforma corre en la máquina del usuario y no se expone a la red
