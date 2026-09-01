@@ -3448,3 +3448,51 @@ El primero se arregla en `huecos.py`, que este plan no declara.
 
 ### 164 · Usuario — 2026-09-01 11:48:32
 > los dos acá
+
+**Agente** — 2026-09-01 12:04:36
+<!-- agente: 5db1dcab-05e4-4e24-9317-dd31b08adba8 -->
+
+Fase B cerrada: **Cumple**, 5 de 5.
+
+**Con esto `F-014` queda completa, y con `F-014` cierra la versión 2.**
+
+Correr sobre un documento real destapó los dos defectos que ya le conté, más uno que salió al construir:
+
+| Defecto | Cómo apareció |
+|---|---|
+| 51 de 77 «huecos» eran la marca citada dentro de código | Al primer documento real. El peor: la especificación de la marca |
+| La orden se caía con un renglón con emoji | En la misma corrida |
+| **Traducir los finales de línea cambia todos los renglones** | Al escribir la prueba del `CA-02`. No se ve mirando el texto |
+
+El `CA-02` medido sobre un archivo real:
+
+```
+antes  : 237 caracteres
+después: 350
+el único cambio es el hueco: True
+```
+
+Y el control de versiones ve **una línea cambiada**. El documento que se llenó quedó en cero huecos.
+
+| | |
+|---|---|
+| Espacios por llenar, corregido | **26 en 25 documentos** (antes decía 77 en 54) |
+| Pruebas nuevas | 24, más 2 de la cuenta corregida |
+| Baterías | 733 + 302, **cero rojas** |
+| Validadores | 32, cero fallas |
+| Dependencias nuevas | **0** |
+
+Señal `S-105`. 23 archivos preparados. **¿Commiteo?**
+
+### 165 · Usuario — 2026-09-01 12:06:36
+> si
+
+**Agente** — 2026-09-01 12:07:03
+<!-- agente: 5f57bb93-ee95-4d66-b001-39fdad92900a -->
+
+`c545ca7`. **La versión 2 quedó cerrada**: `F-014`, `F-025`, `F-026`, `F-033` y `F-034`, las cinco terminadas.
+
+Falta el sello de la estación 12 más la transcripción, y los tres commits sin publicar. **¿Commiteo y hago push?**
+
+### 166 · Usuario — 2026-09-01 12:11:53
+> si
