@@ -1057,3 +1057,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-31 · agente.
 - **Scope:** estándar y plataforma; aplica a toda pieza que transforme documentos.
 - **Rel:** S-099 (el reporte medía la herramienta), S-101 (la marca de un hueco es una convención).
+
+## S-103 · Reordenar el plan por lo que dice una columna, antes de comprobar que la columna dice la verdad  ·  antipatrón · activa
+- **What:** al ir a construir `F-014` apareció que estaba en la versión 2 y su ficha decía **Depende de F-011**, que estaba en la 5. Se propuso mover las dos de versión y se movieron. **Al medir después, los pares fuera de orden pasaron de dos a tres:** `F-014` arrastraba a `F-015` y `F-025`, que dependen de ella. El movimiento se deshizo entero.
+- **Why:** el arreglo se hizo sobre las dos fichas que se estaban mirando, sin recorrer las otras treinta y tres. Una dependencia no es un par suelto: es una cadena, y mover un eslabón mueve lo que cuelga de él. **El grafo se recorre entero antes de tocarlo, aunque el choque parezca local.**
+- **Also:** recorrerlo entero mostró el error de verdad, que era otro. `F-027`, que es de la versión 1 y está cerrada, dice depender de `F-011`; `F-025`, de la versión 2 y también cerrada, dice depender de `F-014`. Las dos están construidas y funcionando **sin su dependencia**, porque la importación trae los documentos y las fases ya escritos. La columna dice qué necesita que exista, no qué hay que construir antes; y quien la lee como orden de trabajo reordena un plan que no estaba mal.
+- **And:** dos funcionalidades andando refutan una columna mejor que cualquier lectura. El dato que decidía estaba en el código que ya corre, no en el documento.
+- **Where:** `cvds/analisis-requisitos/inventario-funcionalidades.md`, con la sección que ahora explica la columna · `cvds/implementacion/README.md` §2 y su tabla de cambios a la línea base.
+- **Learned:** antes de reordenar un plan por una dependencia, **contar los pares fuera de orden antes y después**. Si el número sube, el arreglo era el síntoma. Y antes de eso, mirar si algo ya construido incumple esa misma dependencia: si funciona, la columna miente.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier plan por versiones, tandas o entregas con dependencias declaradas.
+- **Rel:** S-099 (el reporte medía la herramienta y no el trabajo), S-102 (se comprueba contando, no mirando).

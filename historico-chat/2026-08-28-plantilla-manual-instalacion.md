@@ -2973,3 +2973,94 @@ Con documentos inventados el convertidor se veía perfecto. Quedaron **15 marcas
 
 ### 142 · Usuario — 2026-08-31 20:40:38
 > si
+
+**Agente** — 2026-08-31 20:41:59
+<!-- agente: 923c6446-64f0-48f3-ab80-a9201eb0d02a -->
+
+Publicado: `48b2bc6..98a5d52`.
+
+**Dónde quedó la versión 2:**
+
+| Funcionalidad | Estado |
+|---|---|
+| `F-025` armar el expediente | Hecha |
+| `F-026` generar el entregable | **Hecha** |
+| `F-033` buscar en lo conversado | Hecha |
+| `F-034` qué corrección se repite | Hecha |
+| `F-014` llenar documentos desde la plataforma | **Sin historia escrita** |
+
+Queda una sola funcionalidad obligatoria de esa versión, y es la que arrastra las demás: hoy los documentos entran solo por importación, así que llenarlos desde la plataforma es lo que la cierra.
+
+**Y algo que puede querer mirar antes:** el entregable está en `plataforma/datos/proyectos/cimiento-el-estandar/entregable/expediente.html`. Se abre con doble clic. Es lo único de todo esto que no puedo comprobar yo — si se ve presentable lo decide usted abriéndolo.
+
+¿Sigo con `F-014`, o lo abre primero?
+
+### 143 · Usuario — 2026-09-01 07:37:53
+> siga
+
+**Agente** — 2026-09-01 07:38:52
+<!-- agente: ed2b644d-759a-41ec-a82a-1da7070bddb9 -->
+
+**Antes de construir, un problema en el plan de versiones que hay que decidir.**
+
+`F-014` está en la **versión 2** y **depende de `F-011`**, que está en la **versión 5**. Tal como está escrito, la versión 2 no se puede terminar.
+
+`F-011` es *crear épicas, historias y fases con su molde* — o sea: para llenar un documento del ciclo desde la plataforma, primero tiene que existir ahí la fase que lo contiene. Hoy los documentos entran solo importados de un proyecto que ya los tiene.
+
+Tres salidas, y la elección cambia bastante el trabajo:
+
+| Salida | Qué implica |
+|---|---|
+| **Subir `F-011` a la versión 2** (recomendada) | Es lo que la dependencia pide. Crece la versión 2, pero queda coherente y `F-014` se puede construir de verdad |
+| Bajar `F-014` a la versión 5 | La versión 2 queda con lo del expediente y la medición, que ya está hecho — o sea, **la versión 2 estaría terminada hoy** |
+| Construir `F-014` solo sobre documentos importados | Rompe la dependencia escrita, y deja la mitad de la funcionalidad sin poder usarse |
+
+Recomiendo la primera si quiere seguir hoy con esto, y la segunda si prefiere cerrar la versión 2 y pasar a la 3.
+
+**¿Cuál tomo?**
+
+### 144 · Usuario — 2026-09-01 07:39:03
+> 00 id9
+
+**Agente** — 2026-09-01 07:39:12
+<!-- agente: ed0b92bd-1556-4679-9177-bc2f4a6a8966 -->
+
+`F-014` está en la versión 2 y depende de `F-011`, que está en la 5. Así, la versión 2 no se puede terminar.
+
+| Salida | Qué pasa |
+|---|---|
+| **Subir `F-011` a la versión 2** | Crece el trabajo, pero queda coherente |
+| **Bajar `F-014` a la versión 5** | **La versión 2 queda terminada hoy** |
+
+¿Cuál tomo?
+
+### 145 · Usuario — 2026-09-01 07:43:03
+> hágalo: las dos
+
+**Agente** — 2026-09-01 07:48:23
+<!-- agente: 69f0c3c1-9d28-421d-a01a-aefa4990430f -->
+
+Hecho, y medido después: **empeoró**.
+
+| | Pares fuera de orden |
+|---|---|
+| Antes | 2 — `F-014`◄`F-011`, `F-027`◄`F-011` |
+| **Después** | **3** — `F-015`◄`F-014`, `F-025`◄`F-014`, `F-027`◄`F-011` |
+
+Mover `F-014` a la 5 arrastró a `F-015` y `F-025`, que dependen de ella.
+
+**Y al mirar esos tres, la columna «Depende de» no es de fiar:** `F-027` (versión 1) y `F-025` (versión 2) **ya están construidas y funcionando**, cada una sin la funcionalidad de la que dice depender. Se pudo porque la importación trae los documentos y las fases ya escritos. La épica `EP-012` lo dijo con todas sus letras: *«Se puede empezar sin ella»*.
+
+O sea: la columna dice *«necesita que eso exista»*, no *«no se puede construir sin eso»*. `F-014` nunca estuvo bloqueada.
+
+Cambios en disco, sin commit. Dos salidas:
+
+| Salida | Qué pasa |
+|---|---|
+| **Deshacer el movimiento y arreglar la columna** | `F-014` vuelve a la 2 y se construye ya, sobre lo importado. Queda 2 pares en el papel, los dos refutados por código andando |
+| Dejarlo como quedó | La versión 2 termina hoy, pero con 3 pares fuera de orden y dos versiones tocadas sin necesidad |
+
+Recomiendo la primera. ¿Deshago?
+
+### 146 · Usuario — 2026-09-01 07:49:53
+> si

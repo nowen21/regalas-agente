@@ -60,6 +60,21 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 
 > **`F-033`, `F-034` y `F-035` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 35 por eso, y no por un error de conteo.
 
+## Qué dice la columna «Depende de», y qué no dice
+
+**Dice qué tiene que existir para que la funcionalidad sirva. No dice en qué orden hay que construir.** Son dos cosas distintas y confundirlas hace leer el plan al revés.
+
+Lo que una ficha nombra ahí puede llegar por dos caminos: construído en la plataforma, o **traído por la importación**, que incorpora los documentos y las fases que un proyecto ya tiene escritos. El segundo camino existe desde la versión 1.
+
+Dos funcionalidades cerradas y andando lo demuestran:
+
+| Ficha | Dice depender de | Se construyó sin ella porque |
+|---|---|---|
+| `F-027` · versión 1 | `F-011` | Trae las fases que el proyecto ya tiene, en vez de crearlas |
+| `F-025` · versión 2 | `F-014` | Arma el expediente con los documentos traídos, sin llenarlos ahí |
+
+**Para saber si algo está bloqueado no basta esta columna:** hay que preguntarse si lo que necesita ya lo trae la importación. El reparto por versiones vive en [cvds/implementacion/README.md](../implementacion/README.md) §2, y ahí está escrito por qué ninguna versión se movió por esto.
+
 ## Las funcionalidades, una por una
 
 ### Conectar un proyecto

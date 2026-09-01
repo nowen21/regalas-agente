@@ -49,3 +49,4 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [historico-chat/resumenes/2026-08-21/](2026-08-21/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-08-22/](2026-08-22/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-08-28/](2026-08-28/) — sin escribir todavía.
+- [historico-chat/resumenes/2026-09-01/](2026-09-01/) — una sesión: la columna de dependencias del inventario no era un orden de construcción, y dos funcionalidades cerradas lo prueban.
