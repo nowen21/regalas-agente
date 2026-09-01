@@ -2792,3 +2792,55 @@ La especificación quedó aprobada, así que la cadena está completa: épica �
 ### 133 · Usuario — 2026-08-31 19:03:39
 > <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\documentacion\epicas\EP-001-cuerpo-de-reglas-heredable\HU-016-el-capitulo-03-datos-y-persistencia\A-EP-001-HU-016-retrodocumentar-el-capitulo-03\estado-fase.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
 > me aparecen 26 archivos que no se le han hecho commit
+
+**Agente** — 2026-08-31 19:06:25
+<!-- agente: 87bacecb-a762-499b-8ed1-a8707abd5fda -->
+
+Subí **24 de los 26**. Los otros dos los frenó el propio estándar, y con razón.
+
+**Por qué:** `plantillas/` es lo que viaja a todos los proyectos, así que `20·M10` no deja guardarlo sin subir `VERSION` y escribir su entrada en el registro. Son [manual-usuario.md](plantillas/manual-usuario.md) y [documento-arquitectura.md](plantillas/documento-arquitectura.md).
+
+**Y al mirarlos encontré tres cosas que conviene que sepa antes de versionarlos:**
+
+1. **El manual de usuario no se reescribió: se reemplazó.** Pasó de 16 secciones a 26 y de 313 líneas a 807, con otra estructura. En el camino **perdió su bloque de reglas de redacción**, que era donde vivía la norma que ayer subió a `00·ID10`.
+2. **Ninguno de los dos cita `00·ID10`.**
+3. **El documento de arquitectura marca sus huecos con `<PLACEHOLDER>`, 218 veces**, en vez de la notación que `13·DOC19` fija para todo el estándar. Y le corregí un carácter que bloqueaba el commit.
+
+**La decisión es suya:** ¿los versiono yo como **MENOR**, describiendo en el registro exactamente eso, o los dejo para la sesión que los escribió?
+
+### 134 · Usuario — 2026-08-31 19:06:39
+> 00 id9
+
+**Agente** — 2026-08-31 19:06:44
+<!-- agente: 16c52c92-ee92-47cf-b05f-23b17570ed49 -->
+
+Subí 24. Los otros dos son plantillas, y el estándar no las deja entrar sin versión.
+
+Al mirarlas: el manual de usuario **se reemplazó entero** y perdió su bloque de reglas de redacción; ninguno de los dos cita `00·ID10`; y el de arquitectura usa una notación propia para sus huecos.
+
+**¿Los versiono yo como MENOR, o los deja para la sesión que los escribió?**
+
+### 135 · Usuario — 2026-08-31 19:07:44
+> que sugiere que se haga?
+
+**Agente** — 2026-08-31 19:08:00
+<!-- agente: 8c377e67-c4d4-4c1b-86da-1771423426c8 -->
+
+**Arreglar los tres defectos y versionar después**, en una sola vuelta.
+
+El motivo: lo que entra a `plantillas/` lo copia cada proyecto. Publicar ahora el documento de arquitectura significa que **cada proyecto marque sus huecos con una notación que el propio validador le va a reportar**.
+
+Los tres arreglos son chicos:
+
+| Qué | Cuánto |
+|---|---|
+| Los 218 `<PLACEHOLDER>` a la notación de la casa | Mecánico |
+| Que los dos citen `00·ID10` en vez de callarlo | Dos líneas |
+| El manual de usuario recupera su bloque de redacción, **citando** la regla en vez de repetirla | Una línea |
+
+Y de paso cierra el pendiente que quedó abierto ayer: *el manual de usuario debe citar `00·ID10`*.
+
+¿Lo hago así?
+
+### 136 · Usuario — 2026-08-31 19:08:04
+> si

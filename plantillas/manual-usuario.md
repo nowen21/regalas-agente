@@ -1,313 +1,809 @@
-# Manual de usuario — «nombre del sistema»   ·   `[CAPA 3]`
+# Manual de Usuario — `«NOMBRE_SISTEMA»`
 
-> **Qué es este archivo.** Es la **base** de un manual de usuario: tiene todas las partes que un manual
-> de usuario debe llevar, en el orden en que se leen, y en cada parte dice **qué va ahí, cómo se
-> escribe y de dónde se saca la información**. No está atado a ningún sistema: se copia para cada
-> desarrollo y se llena con lo de ese desarrollo. Cuando todas las partes están llenas, la copia **es**
-> el manual.
->
-> **Cómo se usa.** 1) Copiar este archivo con el nombre del sistema. 2) Reemplazar cada «así» (entre
-> comillas angulares) por el dato real. 3) Llenar cada sección siguiendo su recuadro 📋. 4) Borrar los
-> recuadros 📋: son instrucciones para quien escribe, y el lector final nunca debe verlos. 5) Pasar la
-> lista de comprobación del final antes de publicar.
->
-> Base creada el **2026-08-27**.
+> **Cómo se escribe lo que se llena.** En la variedad del idioma que usa el proyecto, en tercera persona para lo que se explica y en infinitivo para lo que el lector hace. La regla es [`00·ID10`](../base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md), y se cita en vez de repetirla: lo que se copia a mano se copia distinto (`S-090`). Los espacios por llenar van marcados `«…»`, que es la marca de todos los modelos ([`13·DOC19`](../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md)).
+
+> **Modelo reutilizable.** Reemplazar cada `«…»` con lo que el sistema hace de verdad, y borrar las secciones que no apliquen conservando la numeración de las que quedan. Acá no va código, ni instalación, ni configuración: eso vive en el [modelo de manual de instalación](manual-instalacion.md).
 
 ---
 
-## Reglas para escribir el manual (leerlas antes de llenar cualquier parte)
+## 1. Información general del documento
 
-El manual lo va a leer alguien que **no sabe nada** del sistema, y puede que tampoco sepa mucho de
-computadores. Por eso:
-
-1. **Una acción por paso.** «Haga clic en el botón azul que dice **Guardar**». No: «Guarde los cambios».
-2. **Decir siempre qué se ve.** Cada paso dice qué aparece en la pantalla **antes** de la acción y qué
-   aparece **después**. Si el lector no ve lo que el manual dice, sabe que algo va mal y en qué punto.
-3. **Decir qué hacer si no pasa lo esperado.** Cada paso que pueda fallar lleva un «Si en vez de eso
-   ve...» con la causa más común y la salida.
-4. **Ninguna palabra técnica sin explicarla la primera vez.** «Navegador (el programa con el que entra
-   a internet)». Después de explicada se usa normal.
-5. **Nombrar las cosas exactamente como salen en pantalla**, en negrita: el botón **Enviar**, el campo
-   **Correo electrónico**. Si el texto de la pantalla cambia, el manual cambia.
-6. **Una captura de pantalla por paso** que tenga pantalla, con un recuadro señalando dónde se hace
-   clic. Las capturas van en una carpeta `imagenes/` junto al manual, con nombre `NN-que-muestra.png`.
-7. **Nada de «obviamente», «simplemente», «solo tiene que».** Si fuera obvio no haría falta el manual.
-8. **No prometer lo que el sistema no hace.** Lo que se escribe se comprueba haciéndolo en el sistema
-   real, no leyendo el código. Lo que no se pudo comprobar se marca «(por verificar)».
-9. **Frases cortas. Párrafos de tres líneas o menos.** Listas numeradas para pasos; viñetas para
-   opciones.
-10. **Releer cada sección preguntando: «¿un niño de doce años entendería qué tiene que hacer?».** Si
-    no, reescribir.
+| Campo | Valor |
+| ----- | ----- |
+| Nombre del sistema | `«NOMBRE_SISTEMA»` |
+| Código o identificador | `«CODIGO_SISTEMA»` |
+| Versión del sistema | `«VERSION_SISTEMA»` |
+| Versión del manual | `«VERSION_MANUAL»` |
+| Fecha de elaboración | `«FECHA_ELABORACION»` |
+| Fecha de actualización | `«FECHA_ACTUALIZACION»` |
+| Responsable | `«RESPONSABLE»` |
+| Estado del documento | `<BORRADOR / EN REVISIÓN / APROBADO / OBSOLETO>` |
+| Dirigido a | `«PERFILES_DESTINATARIOS»` |
 
 ---
 
-## 0. Portada e identificación
+## 2. Introducción
 
-> 📋 **Qué va aquí:** nombre del sistema, nombre del manual, versión del sistema que documenta, fecha,
-> quién lo publica, y a quién va dirigido.
-> **Cómo se escribe:** una página, sin texto corrido. Una tabla.
-> **De dónde sale:** la versión es la del sistema que está publicado, no la del código en desarrollo.
+**¿Qué es el sistema?**
+`«DESCRIPCIÓN_FUNCIONAL_DEL_SISTEMA»`
 
-| Dato | Valor |
-|---|---|
-| Sistema | «nombre del sistema» |
-| Quién lo publica | «entidad o empresa» |
-| Versión del sistema que describe | «versión» |
-| Fecha de este manual | «fecha» |
-| Para quién es | «tipos de persona que lo usan» |
-| Versión de este manual | «número» |
+**¿Para qué sirve?**
+`«UTILIDAD_PRINCIPAL»`
 
----
+**¿Qué necesidad o proceso resuelve?**
+`«NECESIDAD_O_PROCESO»`
 
-## 1. Cómo leer este manual
+**¿Quiénes lo utilizan?**
+`«USUARIOS_PRINCIPALES»`
 
-> 📋 **Qué va aquí:** las convenciones: qué significa la negrita, qué son los recuadros de aviso, cómo
-> se numeran los pasos, y cómo saltar directo a lo que se necesita.
-> **Cómo se escribe:** media página. Un ejemplo de cada convención, para que el lector la reconozca
-> después.
+**¿Qué procesos pueden realizarse en el sistema?**
 
-Modelo de lo que debe decir:
-
-- Lo que está en **negrita** es texto que aparece tal cual en la pantalla (un botón, un menú, un campo).
-- Los recuadros con ⚠️ avisan de algo que puede salir mal o que no se puede deshacer.
-- Los recuadros con 💡 dan un atajo o una aclaración; se pueden saltar.
-- Cada procedimiento es una lista numerada: se hace en ese orden y no se salta ninguno.
-- Si solo necesita una cosa, busque su pregunta en la sección «Qué hacer si...» o en el índice.
+- `«PROCESO_1»`
+- `«PROCESO_2»`
+- `«PROCESO_N»`
 
 ---
 
-## 2. Qué es el sistema y para qué sirve
+## 3. Objetivo del manual
 
-> 📋 **Qué va aquí:** en una página, qué problema resuelve, qué hace una persona en él de principio a
-> fin, y qué obtiene al final.
-> **Cómo se escribe:** como se lo contaría a alguien que pregunta en la calle. Sin siglas sin explicar.
-> Un dibujo simple del recorrido completo, de la primera acción al resultado final:
-> *«entro → hago A → hago B → alguien revisa → obtengo C»*.
-> **De dónde sale:** de la definición del sistema y de las historias de usuario; **no** del código.
+**Objetivo:** `«OBJETIVO_DEL_MANUAL»`
 
----
+**Al finalizar la lectura, el usuario podrá:**
 
-## 3. Quién usa el sistema
-
-> 📋 **Qué va aquí:** cada tipo de persona que entra al sistema, qué puede hacer, qué no, y por dónde
-> entra si hay más de una puerta (por ejemplo, una parte pública y una parte interna).
-> **Cómo se escribe:** una tabla, una fila por tipo de persona. Los nombres técnicos de los roles se
-> traducen: «Revisor (la persona que aprueba lo que otros envían)».
-> **De dónde sale:** de la definición de roles y permisos del sistema.
-
-| Quién | Qué hace en el sistema | Por dónde entra |
-|---|---|---|
-| «tipo de persona 1» | «qué hace» | «pantalla o dirección de entrada» |
-| «tipo de persona 2» | «qué hace» | «…» |
-| Cualquier persona, sin registrarse | «qué puede hacer sin cuenta, si algo» | «…» |
+- `«CAPACIDAD_1»`
+- `«CAPACIDAD_2»`
+- `«CAPACIDAD_N»`
 
 ---
 
-## 4. Lo que necesita antes de empezar
+## 4. Alcance
 
-> 📋 **Qué va aquí:** lista de lo que la persona debe tener a la mano **antes** de sentarse: equipo,
-> conexión, navegador (cuáles sirven), una cuenta o un correo al que pueda entrar en ese momento, sus
-> documentos o datos, y en qué formato.
-> **Cómo se escribe:** lista de chequeo con casillas. Por cada archivo que se vaya a subir: nombre,
-> formato, tamaño máximo, y un ejemplo de nombre de archivo.
-> **De dónde sale:** de los requisitos del sistema y de los límites configurados para subir archivos.
+### 4.1 Incluido en este manual
 
-- [ ] «requisito 1»
-- [ ] «requisito 2»
-- [ ] «documento o dato que debe tener listo»
+| Elemento | Descripción |
+| -------- | ----------- |
+| `«MÓDULO_O_FUNCIONALIDAD»` | `«DESCRIPCIÓN»` |
 
----
+### 4.2 Tipos de usuario contemplados
 
-## 5. Cómo entrar al sistema
+| Tipo de usuario | Descripción |
+| --------------- | ----------- |
+| `«TIPO_USUARIO»` | `«DESCRIPCIÓN»` |
 
-> 📋 **Qué va aquí:** la dirección exacta que se escribe en el navegador (o cómo se abre la
-> aplicación), qué se ve al llegar, y las puertas que existan (una por tipo de persona si son
-> distintas).
-> **Cómo se escribe:** un procedimiento corto por puerta, con captura de la pantalla de llegada.
-> Aviso: si hay una dirección de pruebas y una definitiva, poner la que aplique y decir cuál es.
-> **De dónde sale:** de quien publica el sistema (la dirección la define la instalación, no el código).
+### 4.3 Fuera del alcance
+
+| Elemento | Motivo | Documento de referencia |
+| -------- | ------ | ----------------------- |
+| `«ELEMENTO_EXCLUIDO»` | `«MOTIVO»` | `«DOCUMENTO»` |
 
 ---
 
-## 6. Parte A — Lo que hace «el tipo de persona externa» (por ejemplo, el usuario final o el cliente)
+## 5. Conceptos básicos
 
-> 📋 **Cómo se escribe toda esta parte:** en segunda persona y de usted («usted escribe», «le llega»).
-> Cada subsección es un procedimiento completo con cinco partes fijas: **para qué sirve**, **qué
-> necesita**, **pasos** numerados con captura, **qué ve al terminar** y **si algo sale mal**.
-> Una subsección por cada cosa que esa persona puede hacer, en el orden en que normalmente las hace.
-> **De dónde sale:** de la lista de pantallas de esa parte del sistema y de sus textos exactos. Los
-> estados o etapas por los que pasa lo que la persona hace se sacan de donde el sistema los defina, y
-> se traducen a palabras de todos los días.
+### 5.1 Conceptos del negocio
 
-### 6.1 «Primera acción» (por ejemplo: crear su cuenta)
-> 📋 Pantalla, datos que pide, qué pasa al confirmar, errores que puede mostrar y qué hacer en cada uno.
+| Concepto | Explicación | Dónde se utiliza en el sistema |
+| -------- | ----------- | ------------------------------ |
+| `«CONCEPTO»` | `«EXPLICACIÓN»` | `«MÓDULO_O_PANTALLA»` |
 
-### 6.2 «Segunda acción» (por ejemplo: confirmar su identidad o su correo)
-> 📋 Dónde buscar lo que le llega, cuánto tiempo sirve, qué hacer si venció o se escribió mal.
+### 5.2 Estados de los registros
 
-### 6.3 «Tercera acción» (por ejemplo: completar su información)
-> 📋 Secciones o pestañas, campos obligatorios y cómo se marcan, cómo agregar más de un elemento, cómo
-> guardar y cómo saber que quedó guardado.
+| Estado | Significado | Acciones permitidas | Estado siguiente |
+| ------ | ----------- | ------------------- | ---------------- |
+| `«ESTADO»` | `«SIGNIFICADO»` | `«ACCIONES»` | `«ESTADO_SIGUIENTE»` |
 
-### 6.4 «Cuarta acción» (por ejemplo: subir archivos)
-> 📋 Cuáles, cuáles son obligatorios, cómo subir cada uno, cómo saber que subió bien, cómo reemplazar
-> uno, qué significa borrar uno.
+### 5.3 Tipos de documentos o registros
 
-### 6.5 «Quinta acción» (por ejemplo: enviar para revisión)
-> 📋 Qué significa enviar y qué ya no se puede cambiar después. Qué exige el sistema para dejar enviar
-> y qué mensaje sale si falta algo. Qué se recibe al enviar (un número, un comprobante) y para qué
-> sirve guardarlo.
+| Tipo | Descripción | Módulo asociado |
+| ---- | ----------- | --------------- |
+| `«TIPO»` | `«DESCRIPCIÓN»` | `«MÓDULO»` |
 
-### 6.6 Consultar cómo va lo que envió
-> 📋 La pantalla de seguimiento. Cada estado en palabras de todos los días, en una tabla:
+### 5.4 Botones y acciones especiales
 
-| Lo que muestra la pantalla | Qué significa para usted | Qué puede hacer |
-|---|---|---|
-| «estado 1» | «…» | «…» |
-| «estado 2» | «…» | «…» |
-
-### 6.7 Corregir lo que le devolvieron
-> 📋 Cómo ver el motivo, cómo corregir, cómo volver a enviar. Aclarar qué se corrige y qué no.
-
-### 6.8 Obtener el resultado final (por ejemplo: descargar un documento)
-> 📋 Desde dónde, con qué botón, qué archivo baja y dónde queda. Qué pasa si la descarga falla.
-
-### 6.9 «Acciones que puede hacer cualquier persona sin cuenta», si las hay
-> 📋 Por ejemplo, comprobar si un documento es auténtico. Aclarar que no hace falta registrarse.
-
-### 6.10 Avisos y notificaciones
-> 📋 Qué avisos le llegan, por dónde, en qué momento, y qué hacer si no llegan.
+| Botón o ícono | Nombre | Qué hace | Dónde aparece |
+| ------------- | ------ | -------- | ------------- |
+| `«ÍCONO_O_BOTÓN»` | `«NOMBRE»` | `«ACCIÓN»` | `«UBICACIÓN»` |
 
 ---
 
-## 7. Parte B — Lo que hace «el tipo de persona interna» (por ejemplo, el funcionario u operador)
+## 6. Requisitos para utilizar el sistema
 
-> 📋 **Cómo se escribe toda esta parte:** igual que la Parte A, pero el lector es alguien con cuenta
-> interna. Una subsección por cada pantalla o función del menú. Antes de cada procedimiento decir **qué
-> rol lo puede hacer**: si el lector no ve el botón, es porque su rol no lo tiene, no porque el manual
-> esté mal.
-> **De dónde sale:** de la lista de pantallas de la parte interna y de la tabla de permisos por rol.
-> Si ya existe un manual parcial de alguna función, se toma de base y se ajusta a estas reglas.
+| Requisito | Detalle | Obligatorio | Cómo obtenerlo |
+| --------- | ------- | ----------- | -------------- |
+| Acceso al sistema | `«DETALLE»` | `<Sí / No>` | `«RESPONSABLE_O_PROCEDIMIENTO»` |
+| Usuario y contraseña | `«DETALLE»` | `<Sí / No>` | `«RESPONSABLE_O_PROCEDIMIENTO»` |
+| Navegador soportado | `«NAVEGADOR_Y_VERSION»` | `<Sí / No>` | `«PROCEDIMIENTO»` |
+| Conexión requerida | `<INTERNET / RED_INSTITUCIONAL / VPN>` | `<Sí / No>` | `«PROCEDIMIENTO»` |
+| Permisos o rol asignado | `«PERMISO_O_ROL»` | `<Sí / No>` | `«RESPONSABLE»` |
+| `«OTRO_REQUISITO»` | `«DETALLE»` | `<Sí / No>` | `«PROCEDIMIENTO»` |
 
-### 7.1 Iniciar sesión
-> 📋 Pantalla, usuario y contraseña, segundo factor si lo hay, mensajes de error y qué significan, qué
-> hacer si olvidó la clave, aviso de sesión por vencer y cómo extenderla.
-
-### 7.2 La pantalla de inicio o tablero
-> 📋 Qué muestra cada cifra o tarjeta, qué **no** significa, y cómo llegar desde ahí a la lista que
-> respalda cada número.
-
-### 7.3 «Función 1» (por ejemplo: repartir el trabajo)
-### 7.4 «Función 2» (por ejemplo: revisar y aprobar o devolver)
-> 📋 Cómo abrir cada elemento, cómo aprobar o devolver, qué escribir en el motivo (lo va a leer la
-> persona externa: escribirlo para ella), y qué le pasa al elemento después de cada decisión.
-
-### 7.5 «Función 3» (por ejemplo: consultar y ver el detalle)
-> 📋 Buscar, filtrar, ordenar; abrir el detalle y qué pestañas tiene; imprimir; exportar. Si alguna
-> exportación **no está disponible**, el manual lo dice y explica por qué; no se promete.
-
-### 7.6 «Función 4» (por ejemplo: aprobar de forma definitiva)
-> 📋 Quién puede, qué exige el sistema antes, qué pasa al confirmar, y qué mensaje sale si algo falla.
-
-### 7.7 Usuarios, roles y permisos
-> 📋 Crear un usuario, asignarle rol, desactivarlo. Qué es un rol (un paquete de permisos) y cuáles
-> vienen de fábrica. Cambiar permisos y qué efecto tiene de inmediato.
-
-### 7.8 Listas de opciones configurables (catálogos)
-> 📋 Qué son, cómo agregar, editar y desactivar un valor, y qué pasa con los registros que ya lo usaban.
-
-### 7.9 Estadísticas e informes
-> 📋 Qué muestra cada gráfico, para qué periodo, y cómo leerlo.
-
-### 7.10 Avisos del usuario interno
-> 📋 Qué avisos recibe, dónde los ve, cómo marcarlos como leídos.
-
-### 7.11 Cerrar sesión
-> 📋 Dónde está el botón, por qué importa en un equipo compartido, qué pasa si se deja abierta.
+**Recomendaciones adicionales:** `«RECOMENDACIONES»`
 
 ---
 
-## 8. El recorrido completo (de principio a fin)
+## 7. Acceso al sistema
 
-> 📋 **Qué va aquí:** un solo dibujo o tabla con los estados por los que pasa lo que la persona externa
-> envía, quién lo mueve de cada estado al siguiente, y qué ve cada quien en ese momento. Es la sección
-> que une las Partes A y B.
-> **Cómo se escribe:** diagrama de cajas y flechas, seguido de una tabla «estado → quién lo cambia →
-> qué ve la persona externa → qué ve la persona interna».
-> **De dónde sale:** de donde el sistema defina sus estados (una sola fuente; si hay dos, preguntar
-> cuál manda).
+### 7.1 Punto de acceso
 
-```
-«estado inicial» ──(quién / qué acción)──▶ «estado 2» ──(quién / qué acción)──▶ «estado 3»
-       ▲                                                                        │
-       └───────────── «estado de devolución» ◀──(quién / qué acción)────────────┤
-                                                                                │
-                                               (quién / qué acción) ──▶ «estado final» ──▶ «resultado»
-```
+| Campo | Valor |
+| ----- | ----- |
+| Dirección del sistema | `«URL_SISTEMA»` |
+| Ambiente | `«AMBIENTE»` |
+| Requiere red específica | `<Sí / No — DETALLE>` |
 
----
+### 7.2 Inicio de sesión
 
-## 9. Mensajes que muestra el sistema y qué significan
+**Objetivo:** ingresar al sistema con las credenciales asignadas.
 
-> 📋 **Qué va aquí:** tabla con cada mensaje que puede aparecer (texto exacto), en qué pantalla, qué lo
-> causa y qué debe hacer la persona.
-> **Cómo se escribe:** una fila por mensaje, ordenados por pantalla. Se llena recorriendo el sistema y
-> buscando en el código los textos que se muestran al usuario (avisos, ventanas de error, respuestas de
-> error del servidor).
+**Precondiciones:** `«PRECONDICIONES»`
 
-| Mensaje (texto exacto) | Dónde sale | Por qué sale | Qué hacer |
-|---|---|---|---|
-| «texto» | «pantalla» | «causa» | «acción» |
+**Pasos:**
 
----
+1. Ingrese a `«URL_SISTEMA»`.
+2. Diligencie el campo `«CAMPO_USUARIO»`.
+3. Diligencie el campo `«CAMPO_CONTRASEÑA»`.
+4. `«PASO_ADICIONAL_SI_APLICA»`
+5. Seleccione la opción `«BOTON_INGRESAR»`.
 
-## 10. Qué hacer si... (preguntas frecuentes)
+**Resultado esperado (credenciales correctas):** `«RESULTADO_ESPERADO»`
 
-> 📋 **Qué va aquí:** las situaciones reales que llegan a soporte, en forma de pregunta, con la
-> respuesta en pasos. Fuentes: lo que ya preguntaron los usuarios, y **cada defecto que un usuario
-> vivió** (cada uno es una pregunta de esta lista, aunque ya esté corregido).
-> **Cómo se escribe:** «**No me llegó el correo.** → 1. Revise correo no deseado. 2. Espere dos
-> minutos. 3. Pulse **Reenviar**. 4. Si en diez minutos no llega, escriba a ...».
+**Resultado cuando las credenciales son incorrectas:** `«MENSAJE_Y_COMPORTAMIENTO»`
 
----
+| Situación | Mensaje mostrado | Qué debe hacer el usuario |
+| --------- | ---------------- | ------------------------- |
+| `«SITUACIÓN»` | `«MENSAJE»` | `«ACCIÓN»` |
 
-## 11. Glosario
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
 
-> 📋 **Qué va aquí:** cada palabra que el sistema usa y que no es de uso diario, con su explicación en
-> una frase, sin otra palabra técnica dentro. Orden alfabético.
+### 7.3 Recuperación de contraseña
 
-| Palabra | Qué significa |
-|---|---|
-| «término» | «explicación en una frase» |
+> Incluir esta subsección únicamente si el sistema ofrece la funcionalidad.
 
----
+**Acceso:** `«UBICACIÓN_DE_LA_OPCIÓN»`
 
-## 12. A quién pedir ayuda
+**Pasos:**
 
-> 📋 **Qué va aquí:** el canal de soporte para cada tipo de persona (correo, teléfono, horario), y qué
-> información dar al escribir (número o identificador, pantalla donde estaba, texto del mensaje,
-> hora). **No inventar datos de contacto**: se piden a quien publica el sistema.
+1. `«PASO_1»`
+2. `«PASO_2»`
+3. `«PASO_N»`
 
----
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
 
-## 13. Control de cambios de este manual
+**Consideraciones:** `«CONSIDERACIONES»`
 
-> 📋 Una fila por cada vez que el manual cambia: fecha, qué cambió, por qué (qué versión del sistema o
-> qué hallazgo lo motivó), quién.
+### 7.4 Cierre de sesión
 
-| Fecha | Qué cambió | Motivo | Quién |
-|---|---|---|---|
-| «fecha» | Se crea el manual a partir de la base | «…» | «…» |
+**Acceso:** `«UBICACIÓN_DE_LA_OPCIÓN»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_2»`
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
 
 ---
 
-## Anexo — Lista de comprobación antes de publicar el manual
+## 8. Interfaz principal
 
-- [ ] Todos los recuadros 📋 se borraron y no queda ningún «así» sin reemplazar.
-- [ ] Cada procedimiento se ejecutó en el sistema real siguiendo **solo** el texto del manual, y salió.
-- [ ] Cada paso con pantalla tiene su captura, y la captura muestra lo que el texto dice.
-- [ ] Cada palabra técnica está explicada la primera vez que aparece, o está en el glosario.
-- [ ] Alguien que **no** conoce el sistema lo leyó y pudo hacer el recorrido completo sin preguntar.
-- [ ] Los textos en negrita coinciden letra por letra con la pantalla.
-- [ ] Ninguna sección dice «obviamente», «simplemente» ni «solo tiene que».
-- [ ] Los datos de contacto de la sección 12 los confirmó quien publica el sistema.
+**Captura general de la interfaz:** `«INSERTAR_CAPTURA»`
+
+| # | Elemento | Ubicación en pantalla | Descripción | Disponible para |
+| - | -------- | --------------------- | ----------- | --------------- |
+| 1 | Encabezado | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 2 | Menú principal | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 3 | Menú lateral | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 4 | Área de trabajo | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 5 | Panel de usuario | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 6 | Notificaciones | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 7 | Botones principales | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 8 | Indicadores | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 9 | Buscador | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 10 | Filtros | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+| 11 | Acciones rápidas | `«UBICACIÓN»` | `«DESCRIPCIÓN»` | `«ROL»` |
+
+### 8.1 Navegación general
+
+| Acción | Cómo se realiza | Resultado |
+| ------ | --------------- | --------- |
+| `«ACCIÓN»` | `«PROCEDIMIENTO»` | `«RESULTADO»` |
+
+---
+
+## 9. Roles y permisos
+
+| Rol | Descripción | Módulos disponibles | Principales acciones |
+| --- | ----------- | ------------------- | -------------------- |
+| `«ROL_ADMINISTRADOR»` | `«DESCRIPCIÓN»` | `«MÓDULOS»` | `«ACCIONES»` |
+| `«ROL_USUARIO»` | `«DESCRIPCIÓN»` | `«MÓDULOS»` | `«ACCIONES»` |
+| `«ROL_CONSULTA»` | `«DESCRIPCIÓN»` | `«MÓDULOS»` | `«ACCIONES»` |
+
+### 9.1 Matriz de permisos por funcionalidad
+
+| Funcionalidad | `«ROL_1»` | `«ROL_2»` | `«ROL_3»` |
+| ------------- | --------- | --------- | --------- |
+| `«FUNCIONALIDAD»` | `<Sí / No>` | `<Sí / No>` | `<Sí / No>` |
+
+> Cuando una funcionalidad se comporte de forma distinta según el rol, indíquelo explícitamente en la sección del módulo correspondiente.
+
+---
+
+## 10. Módulos del sistema
+
+> Duplicar la estructura `10.X` por cada módulo del sistema, y borrar las subsecciones que no apliquen sin renumerar las demás.
+
+### 10.1 `«NOMBRE_DEL_MÓDULO»`
+
+#### 10.1.1 Objetivo del módulo
+
+`«PARA_QUÉ_SIRVE_EL_MÓDULO»`
+
+**Roles con acceso:** `«ROLES»`
+
+#### 10.1.2 Acceso al módulo
+
+**Ruta de navegación:** `«MENÚ» → «OPCIÓN» → «SUBOPCIÓN»`
+
+**Precondiciones:** `«PRECONDICIONES»`
+
+#### 10.1.3 Pantalla principal
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+| # | Elemento | Descripción | Acción que permite |
+| - | -------- | ----------- | ------------------ |
+| 1 | `<Tabla / Formulario / Botón / Filtro / Buscador / Paginación / Indicador>` | `«DESCRIPCIÓN»` | `«ACCIÓN»` |
+
+**Columnas de la tabla (si aplica)**
+
+| Columna | Descripción | Observaciones |
+| ------- | ----------- | ------------- |
+| `«COLUMNA»` | `«DESCRIPCIÓN»` | `«OBSERVACIONES»` |
+
+#### 10.1.4 Consultar información
+
+**Objetivo:** `«OBJETIVO»`
+
+**Acceso:** `«UBICACIÓN»`
+
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_2»`
+3. `«PASO_N»`
+
+**Filtros disponibles**
+
+| Filtro | Descripción | Valores posibles | Obligatorio |
+| ------ | ----------- | ---------------- | ----------- |
+| `«FILTRO»` | `«DESCRIPCIÓN»` | `«VALORES»` | `<Sí / No>` |
+
+**Cómo interpretar los resultados:** `«EXPLICACIÓN»`
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+#### 10.1.5 Crear un registro
+
+**Objetivo:** `«OBJETIVO»`
+
+**Acceso:** `«UBICACIÓN_DE_LA_OPCIÓN»`
+
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Campos del formulario**
+
+| Campo | Descripción | Obligatorio | Formato | Ejemplo | Validaciones |
+| ----- | ----------- | ----------- | ------- | ------- | ------------ |
+| `«CAMPO»` | `«DESCRIPCIÓN»` | `<Sí / No>` | `«FORMATO»` | `«EJEMPLO»` | `«VALIDACIÓN»` |
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_2»`
+3. Seleccione `«BOTON_GUARDAR»`.
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+**Errores frecuentes y solución**
+
+| Situación | Causa probable | Qué debe hacer el usuario |
+| --------- | -------------- | ------------------------- |
+| `«SITUACIÓN»` | `«CAUSA»` | `«ACCIÓN»` |
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+#### 10.1.6 Consultar un registro
+
+**Objetivo:** `«OBJETIVO»`
+
+**Acceso:** `«UBICACIÓN»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_N»`
+
+**Información visible**
+
+| Sección / campo | Descripción |
+| --------------- | ----------- |
+| `«SECCIÓN_O_CAMPO»` | `«DESCRIPCIÓN»` |
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+#### 10.1.7 Editar un registro
+
+**Objetivo:** `«OBJETIVO»`
+
+**Acceso:** `«UBICACIÓN»`
+
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Pasos:**
+
+1. Seleccione el registro: `«PROCEDIMIENTO_DE_SELECCIÓN»`
+2. `«PASO_2»`
+3. Seleccione `«BOTON_GUARDAR»`.
+
+**Campos modificables**
+
+| Campo | Modificable | Condición | Observaciones |
+| ----- | ----------- | --------- | ------------- |
+| `«CAMPO»` | `<Sí / No>` | `«CONDICIÓN»` | `«OBSERVACIONES»` |
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+**Cómo verificar la actualización:** `«VERIFICACIÓN»`
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+#### 10.1.8 Eliminar o desactivar un registro
+
+> Incluir únicamente si la funcionalidad existe en el sistema.
+
+**Objetivo:** `«OBJETIVO»`
+
+**Acceso:** `«UBICACIÓN»`
+
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. Confirme la acción en `«MENSAJE_O_VENTANA_DE_CONFIRMACIÓN»`.
+
+**Consecuencias de la acción:** `«CONSECUENCIAS»`
+
+**¿Es reversible?** `<Sí / No — DETALLE>`
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+#### 10.1.9 Otras funcionalidades del módulo
+
+> Acá van las funcionalidades propias del módulo, con la convención del anexo A.
+
+##### `«NOMBRE_DE_LA_FUNCIONALIDAD»`
+
+**Objetivo:** `«OBJETIVO»`
+**Acceso:** `«ACCESO»`
+**Precondiciones:** `«PRECONDICIONES»`
+**Pasos:** `«PASOS»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+**Validaciones:** `«VALIDACIONES»`
+**Errores frecuentes:** `«ERRORES»`
+**Solución:** `«SOLUCIÓN»`
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+### 10.2 `«NOMBRE_DEL_MÓDULO»`
+
+`<REPETIR_ESTRUCTURA_10.X>`
+
+---
+
+## 11. Formularios
+
+> Acá van los formularios transversales o de uso frecuente. Los formularios propios de un módulo pueden documentarse en su sección correspondiente.
+
+### 11.1 `«NOMBRE_DEL_FORMULARIO»`
+
+**Objetivo:** `«OBJETIVO»`
+**Acceso:** `«UBICACIÓN»`
+**Roles con acceso:** `«ROLES»`
+
+| Campo | Descripción | Obligatorio | Formato | Ejemplo | Validaciones |
+| ----- | ----------- | ----------- | ------- | ------- | ------------ |
+| `«CAMPO»` | `«DESCRIPCIÓN»` | `<Sí / No>` | `«FORMATO»` | `«EJEMPLO»` | `«VALIDACIÓN»` |
+
+**Botones y acciones disponibles**
+
+| Botón | Acción | Resultado |
+| ----- | ------ | --------- |
+| `«BOTÓN»` | `«ACCIÓN»` | `«RESULTADO»` |
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+---
+
+## 12. Búsquedas y filtros
+
+### 12.1 Búsqueda simple
+
+**Ubicación:** `«UBICACIÓN»`
+**Qué permite buscar:** `«CAMPOS_O_CRITERIOS»`
+**Pasos:** `«PASOS»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+### 12.2 Búsqueda avanzada
+
+> Incluir únicamente si el sistema la ofrece.
+
+**Ubicación:** `«UBICACIÓN»`
+**Pasos:** `«PASOS»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+### 12.3 Filtros disponibles
+
+| Filtro | Módulo | Descripción | Valores posibles | Se combina con |
+| ------ | ------ | ----------- | ---------------- | -------------- |
+| `«FILTRO»` | `«MÓDULO»` | `«DESCRIPCIÓN»` | `«VALORES»` | `«OTROS_FILTROS»` |
+
+### 12.4 Combinación de filtros
+
+`«EXPLICACIÓN_DEL_COMPORTAMIENTO»`
+
+### 12.5 Limpieza de filtros
+
+**Cómo se realiza:** `«PROCEDIMIENTO»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+
+### 12.6 Ordenamiento
+
+| Columna / criterio | Permite ordenar | Cómo se realiza |
+| ------------------ | --------------- | --------------- |
+| `«COLUMNA»` | `<Sí / No>` | `«PROCEDIMIENTO»` |
+
+### 12.7 Paginación
+
+**Cómo funciona:** `«EXPLICACIÓN»`
+**Opciones disponibles:** `«OPCIONES»`
+
+---
+
+## 13. Reportes
+
+### 13.1 Reportes disponibles
+
+| Reporte | Objetivo | Módulo | Roles con acceso | Formato de salida |
+| ------- | -------- | ------ | ---------------- | ----------------- |
+| `«NOMBRE_REPORTE»` | `«OBJETIVO»` | `«MÓDULO»` | `«ROLES»` | `«FORMATO»` |
+
+### 13.2 `«NOMBRE_REPORTE»`
+
+**Objetivo:** `«OBJETIVO»`
+**Acceso:** `«RUTA_DE_NAVEGACIÓN»`
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Filtros disponibles**
+
+| Filtro | Descripción | Obligatorio | Valores posibles |
+| ------ | ----------- | ----------- | ---------------- |
+| `«FILTRO»` | `«DESCRIPCIÓN»` | `<Sí / No>` | `«VALORES»` |
+
+**Pasos para generarlo:**
+
+1. `«PASO_1»`
+2. `«PASO_N»`
+
+**Cómo interpretar el reporte**
+
+| Columna / indicador | Significado |
+| ------------------- | ----------- |
+| `«COLUMNA»` | `«SIGNIFICADO»` |
+
+**Formato de salida:** `«FORMATO»`
+**Opciones de descarga:** `«OPCIONES»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+---
+
+## 14. Exportación de información
+
+> Incluir únicamente si el sistema permite exportar.
+
+| Información exportable | Módulo | Formatos disponibles | Filtros que se aplican | Roles con acceso |
+| ---------------------- | ------ | -------------------- | ---------------------- | ---------------- |
+| `«INFORMACIÓN»` | `«MÓDULO»` | `«FORMATOS»` | `«FILTROS»` | `«ROLES»` |
+
+**Procedimiento de exportación**
+
+1. `«PASO_1»`
+2. `«PASO_2»`
+3. `«PASO_N»`
+
+**Dónde se obtiene el archivo:** `«UBICACIÓN_DEL_ARCHIVO»`
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+**Consideraciones:** `«CONSIDERACIONES»`
+
+---
+
+## 15. Notificaciones y mensajes del sistema
+
+### 15.1 Tipos de mensaje
+
+| Tipo | Cómo se identifica | Significado general |
+| ---- | ------------------ | ------------------- |
+| Éxito | `«IDENTIFICACIÓN_VISUAL»` | `«SIGNIFICADO»` |
+| Advertencia | `«IDENTIFICACIÓN_VISUAL»` | `«SIGNIFICADO»` |
+| Error | `«IDENTIFICACIÓN_VISUAL»` | `«SIGNIFICADO»` |
+| Información | `«IDENTIFICACIÓN_VISUAL»` | `«SIGNIFICADO»` |
+| Confirmación | `«IDENTIFICACIÓN_VISUAL»` | `«SIGNIFICADO»` |
+
+### 15.2 Mensajes del sistema
+
+| Mensaje | Significado | Acción recomendada |
+| ------- | ----------- | ------------------ |
+| `«MENSAJE»` | `«SIGNIFICADO»` | `«ACCIÓN»` |
+
+### 15.3 Notificaciones
+
+| Notificación | Cuándo se genera | Dónde se consulta | Acción del usuario |
+| ------------ | ---------------- | ----------------- | ------------------ |
+| `«NOTIFICACIÓN»` | `«CONDICIÓN»` | `«UBICACIÓN»` | `«ACCIÓN»` |
+
+---
+
+## 16. Validaciones y errores frecuentes
+
+| Situación | Causa probable | Qué debe hacer el usuario |
+| --------- | -------------- | ------------------------- |
+| `«SITUACIÓN»` | `«CAUSA»` | `«ACCIÓN»` |
+
+### 16.1 Validaciones generales del sistema
+
+| Validación | Dónde aplica | Qué exige | Mensaje asociado |
+| ---------- | ------------ | --------- | ---------------- |
+| `«VALIDACIÓN»` | `«MÓDULO_O_FORMULARIO»` | `«REGLA»` | `«MENSAJE»` |
+
+---
+
+## 17. Flujos completos de operación
+
+> Acá van los procesos que involucran varias funcionalidades o módulos.
+
+### 17.1 `«NOMBRE_DEL_PROCESO»`
+
+**Objetivo:** `«OBJETIVO»`
+**Roles participantes:** `«ROLES»`
+**Precondiciones:** `«PRECONDICIONES»`
+
+| Paso | Responsable / rol | Módulo | Acción | Resultado |
+| ---- | ----------------- | ------ | ------ | --------- |
+| 1 | `«ROL»` | `«MÓDULO»` | `«ACCIÓN»` | `«RESULTADO»` |
+| 2 | `«ROL»` | `«MÓDULO»` | `«ACCIÓN»` | `«RESULTADO»` |
+| 3 | `«ROL»` | `«MÓDULO»` | `«ACCIÓN»` | `«RESULTADO»` |
+| N | `«ROL»` | `«MÓDULO»` | `«ACCIÓN»` | `«RESULTADO»` |
+
+**Resultado esperado del proceso:** `«RESULTADO_ESPERADO»`
+
+**Diagrama del flujo:** `«INSERTAR_DIAGRAMA»`
+
+**Consideraciones:** `«CONSIDERACIONES»`
+
+### 17.2 `«NOMBRE_DEL_PROCESO»`
+
+`«REPETIR_ESTRUCTURA»`
+
+---
+
+## 18. Casos de uso frecuentes
+
+| # | Caso de uso | Rol | Módulo | Sección de referencia |
+| - | ----------- | --- | ------ | --------------------- |
+| 1 | `«CASO_DE_USO»` | `«ROL»` | `«MÓDULO»` | `«SECCIÓN»` |
+
+### 18.1 `«NOMBRE_DEL_CASO_DE_USO»`
+
+**Situación:** `«SITUACIÓN_DEL_USUARIO»`
+**Precondiciones:** `«PRECONDICIONES»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_N»`
+
+**Resultado esperado:** `«RESULTADO_ESPERADO»`
+**Si algo falla:** `«QUÉ_HACER»`
+
+---
+
+## 19. Preguntas frecuentes (FAQ)
+
+### ¿`«PREGUNTA»`?
+
+**Respuesta:** `«RESPUESTA»`
+
+### ¿`«PREGUNTA»`?
+
+**Respuesta:** `«RESPUESTA»`
+
+---
+
+## 20. Buenas prácticas de uso
+
+| Ámbito | Recomendación |
+| ------ | ------------- |
+| Manejo de información | `«RECOMENDACIÓN»` |
+| Validación de datos antes de guardar | `«RECOMENDACIÓN»` |
+| Uso de filtros y búsquedas | `«RECOMENDACIÓN»` |
+| Protección de credenciales | `«RECOMENDACIÓN»` |
+| Cierre de sesión | `«RECOMENDACIÓN»` |
+| Manejo de archivos | `«RECOMENDACIÓN»` |
+| Uso de las funcionalidades | `«RECOMENDACIÓN»` |
+| `«OTRO_ÁMBITO»` | `«RECOMENDACIÓN»` |
+
+---
+
+## 21. Soporte y atención de incidentes
+
+### 21.1 Canales de soporte
+
+| Canal | Dato de contacto | Horario de atención | Tipo de solicitud |
+| ----- | ---------------- | ------------------- | ----------------- |
+| `«CANAL»` | `«CONTACTO»` | `«HORARIO»` | `«TIPO»` |
+
+### 21.2 Información que debe proporcionar el usuario
+
+- Nombre y usuario: `«DATO»`
+- Módulo donde ocurrió: `«DATO»`
+- Acción realizada antes del error: `«DATO»`
+- Mensaje mostrado por el sistema: `«DATO»`
+- Fecha y hora del incidente: `«DATO»`
+- `«OTRA_INFORMACIÓN»`
+
+### 21.3 Evidencias recomendadas
+
+- Captura de pantalla completa del error.
+- Captura de la información ingresada (sin credenciales).
+- `«OTRA_EVIDENCIA»`
+
+### 21.4 Procedimiento de reporte
+
+1. `«PASO_1»`
+2. `«PASO_N»`
+
+**Tiempo de respuesta estimado:** `«TIEMPO»`
+
+---
+
+## 22. Glosario
+
+| Término | Definición |
+| ------- | ---------- |
+| `«TÉRMINO»` | `«DEFINICIÓN»` |
+
+---
+
+## 23. Historial de cambios del manual
+
+| Versión | Fecha | Descripción del cambio | Responsable |
+| ------- | ----- | ---------------------- | ----------- |
+| `«VERSION_MANUAL»` | `«FECHA»` | `«CAMBIO»` | `«RESPONSABLE»` |
+
+---
+
+## 24. Anexos
+
+### 24.1 Capturas adicionales
+
+`«INSERTAR_CAPTURAS»`
+
+### 24.2 Flujos y diagramas
+
+`«INSERTAR_DIAGRAMAS»`
+
+### 24.3 Tablas de referencia
+
+| Referencia | Descripción | Ubicación |
+| ---------- | ----------- | --------- |
+| `«REFERENCIA»` | `«DESCRIPCIÓN»` | `«UBICACIÓN»` |
+
+### 24.4 Catálogos
+
+| Catálogo | Valores | Dónde se utiliza |
+| -------- | ------- | ---------------- |
+| `«CATÁLOGO»` | `«VALORES»` | `«MÓDULO»` |
+
+### 24.5 Instructivos complementarios
+
+| Documento | Propósito | Ubicación |
+| --------- | --------- | --------- |
+| `«DOCUMENTO»` | `«PROPÓSITO»` | `«UBICACIÓN»` |
+
+### 24.6 Información adicional
+
+`«INFORMACIÓN_ADICIONAL»`
+
+---
+
+## Anexo A. Convención para documentar funcionalidades
+
+Toda funcionalidad documentada en este manual debe seguir esta estructura:
+
+### `«NOMBRE_DE_LA_FUNCIONALIDAD»`
+
+**Objetivo:** `«QUÉ_PERMITE_REALIZAR»`
+
+**Acceso:** `«DESDE_DÓNDE_SE_ACCEDE»`
+
+**Precondiciones:** `«QUÉ_DEBE_CUMPLIRSE_ANTES»`
+
+**Pasos:**
+
+1. `«PASO_1»`
+2. `«PASO_2»`
+3. `«PASO_3»`
+4. `«PASO_N»`
+
+**Resultado esperado:** `«QUÉ_DEBE_OCURRIR»`
+
+**Validaciones:** `«REGLAS_A_TENER_EN_CUENTA»`
+
+**Errores frecuentes:** `«SITUACIONES_QUE_IMPIDEN_COMPLETAR_LA_OPERACIÓN»`
+
+**Solución:** `«QUÉ_PUEDE_HACER_EL_USUARIO»`
+
+**Captura de pantalla:** `«INSERTAR_CAPTURA»`
+
+### Regla fundamental
+
+Cada funcionalidad debe responder, en este orden:
+
+**¿Qué puedo hacer? → ¿Dónde lo hago? → ¿Qué debo ingresar o seleccionar? → ¿Qué debo hacer? → ¿Qué debe ocurrir? → ¿Qué hago si ocurre un problema?**
+
+---
+
+## Anexo B. Instrucciones de uso de la plantilla
+
+1. Llenar la sección 1 antes que cualquier otra.
+2. Borrar las secciones y subsecciones que no apliquen, sin renumerar las que quedan.
+3. Duplicar la estructura `10.X` por cada módulo, manteniendo el mismo orden de subsecciones.
+4. Documentar cada funcionalidad con la convención del anexo A.
+5. Cuando una funcionalidad se comporte de forma distinta según el rol, indíquelo en la subsección correspondiente y refleje la diferencia en la matriz de la sección 9.1.
+6. Las capturas de pantalla son apoyo: no deben reemplazar las instrucciones escritas.
+7. No duplique información entre módulos; use referencias cruzadas a la sección correspondiente.
+8. Describa las acciones en el mismo orden en que aparecen en el sistema.
+9. No registre credenciales reales, datos personales ni información sensible.
+10. Todos los placeholders deben quedar reemplazados o eliminados antes de aprobar el documento.
+
+### Placeholders estándar
+
+| Placeholder | Significado |
+| ----------- | ----------- |
+| `«NOMBRE_SISTEMA»` | Nombre del sistema |
+| `«CODIGO_SISTEMA»` | Código o identificador |
+| `«VERSION_SISTEMA»` | Versión del sistema |
+| `«VERSION_MANUAL»` | Versión del manual |
+| `«URL_SISTEMA»` | Dirección de acceso al sistema |
+| `«CAMPO_USUARIO»` | Nombre del campo de usuario en el formulario de ingreso |
+| `«CAMPO_CONTRASEÑA»` | Nombre del campo de contraseña |
+| `«ROL_ADMINISTRADOR»` | Rol con permisos administrativos |
+| `«ROL_USUARIO»` | Rol operativo |
+| `«ROL_CONSULTA»` | Rol de solo lectura |
+| `«NOMBRE_DEL_MÓDULO»` | Nombre del módulo documentado |
+| `«NOMBRE_DE_LA_FUNCIONALIDAD»` | Nombre de la funcionalidad |
+| `«CAMPO»` | Campo de un formulario |
+| `«FILTRO»` | Filtro de búsqueda |
+| `«MENSAJE»` | Mensaje mostrado por el sistema |
+| `«INSERTAR_CAPTURA»` | Espacio para una captura de pantalla |
+| `«INSERTAR_DIAGRAMA»` | Espacio para un diagrama de flujo |
+| `«RESPONSABLE»` | Persona o rol responsable |
+| `«FECHA»` | Fecha en formato `AAAA-MM-DD` |

@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.2.0 — 2026-08-31
+
+**Dos modelos de documento entran, y los dos marcan sus huecos como los marca la casa.** Uno es nuevo —el documento de arquitectura de un sistema— y el otro es el manual de usuario, reescrito entero con otra estructura: pasó de dieciséis secciones a veintiséis.
+
+**MENOR** (aditivo): un proyecto al día no tiene que hacer nada. Lo que copie de ahora en adelante viene con la marca correcta.
+
+**Los dos llegaron marcando sus huecos con una notación propia**, y así no podían entrar. Son 936 huecos entre los dos: cada proyecto que copiara uno de esos modelos habría marcado los suyos de una forma que su propia comprobación le reporta. Ahora usan la de todos los modelos.
+
+**Y los dos le hablaban al lector de tú a tú** —«reemplace», «elimine», «no invente»—, que es justo lo que la norma de redacción descarta. Dieciséis líneas pasaron a decir lo mismo sin señalar a nadie.
+
+**La norma de redacción se cita, no se copia.** Es lo que hizo falta aprender: cuando estaba escrita **dentro** de un modelo, solo la heredaba quien llenara ese modelo, y al reemplazar el manual de usuario se perdió entera. Ahora los dos apuntan a la regla, y la regla vive en un solo sitio.
+
+**Qué no cambió:** el contenido de los dos modelos. Lo que se tocó es cómo se marcan los huecos, cómo se le habla a quien los llena, y la cita de la norma.
+
+Detrás: [`13·DOC19`](base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md) y [`00·ID10`](base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md). Los modelos son `plantillas/documento-arquitectura.md` y `plantillas/manual-usuario.md`.
+
+---
+
 ## 37.1.0 — 2026-08-31
 
 **Una norma escrita informa; un programa la hace cumplir, y hasta hoy las dos se leían igual.** Quien abría una norma de las que no se relajan veía una exigencia, sin manera de saber si detrás había algo que la ejecutara o no había nada. Se contó: de las dieciocho que rigen, **catorce dependían de que el agente se acordara**, y siete ni siquiera se nombraban en un programa.
