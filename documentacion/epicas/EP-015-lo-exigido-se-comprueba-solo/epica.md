@@ -9,7 +9,7 @@
 | **Módulo** | Comprobaciones |
 | **Versión del producto** | 3, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
 | **Funcionalidades que cubre** | `F-020`, `F-021`, `F-022` |
-| **Estado** | Aprobada el 2026-09-01 |
+| **Estado** | Terminada el 2026-09-01: sus tres historias cumplen |
 | **Fecha de apertura** | 2026-09-01 |
 
 ---
@@ -88,9 +88,9 @@ Que se pida «¿este proyecto cumple?» desde la plataforma y salga la respuesta
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-comprobar-un-proyecto-desde-la-plataforma/HU-001-comprobar-un-proyecto-desde-la-plataforma.md) | Comprobar un proyecto desde la plataforma | `F-020` | Aprobada el 2026-09-01 |
-| HU-002 | Fijar el estado desde la evidencia | `F-021` | Por escribir |
-| HU-003 | No publicar lo que rompe lo anterior | `F-022` | Por escribir |
+| [HU-001](HU-001-comprobar-un-proyecto-desde-la-plataforma/HU-001-comprobar-un-proyecto-desde-la-plataforma.md) | Comprobar un proyecto desde la plataforma | `F-020` | **Terminada el 2026-09-01** |
+| [HU-002](HU-002-fijar-el-estado-desde-la-evidencia/HU-002-fijar-el-estado-desde-la-evidencia.md) | Fijar el estado desde la evidencia | `F-021` | **Terminada el 2026-09-01** |
+| [HU-003](HU-003-no-publicar-lo-que-rompe-lo-anterior/HU-003-no-publicar-lo-que-rompe-lo-anterior.md) | No publicar lo que rompe lo anterior | `F-022` | **Terminada el 2026-09-01** |
 
 ## 10. Consideraciones técnicas
 
@@ -133,13 +133,14 @@ Versión 3. Va después de `EP-014` y antes de las reglas: **desbloquea la vuelt
 
 ## 16. Definition of Done
 
-- ☐ Las tres historias cerradas, con veredicto por criterio.
-- ☑ Un proyecto real comprobado desde la plataforma, con el tiempo medido.
-- ☐ Una funcionalidad que no se puede cerrar sin evidencia.
-- ☐ Una publicación detenida por romper algo.
+- ☑ Las tres historias cerradas, con veredicto por criterio.
+- ☑ Un proyecto real comprobado desde la plataforma: **32 comprobaciones en 116,9 s**.
+- ☑ Una funcionalidad que no se puede cerrar sin evidencia: **21 de 35 sin verificar**.
+- ☑ Una publicación detenida por romper algo, probada con cada rojo por separado.
 
 ## 17. Bitácora de cambios
 
 | Fecha | Qué pasó |
 |---|---|
+| 2026-09-01 | **Terminada**: las tres historias construidas y probadas el mismo día. Con ella cierra la vuelta de la columna: `F-008` ya tiene su puerta |
 | 2026-09-01 | Nace del inventario aprobado, para cubrir las tres funcionalidades de Comprobaciones. El mismo día apareció la vuelta de la columna, que se resolvió antes de abrirla |

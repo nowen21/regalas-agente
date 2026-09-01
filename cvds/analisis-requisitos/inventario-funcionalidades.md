@@ -60,6 +60,18 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 
 > **`F-033`, `F-034` y `F-035` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 35 por eso, y no por un error de conteo.
 
+## La columna «Verificado» ya no se mantiene a mano
+
+**Desde el 2026-09-01 el estado de una funcionalidad se deriva de la fase que la construyó**, siguiendo la cadena que ya está escrita: el inventario, la §13 de la especificación de su módulo, la fase, y el veredicto que esa fase declaró. Se pide así:
+
+```
+python manage.py estado_funcionalidades <identificador>
+```
+
+**Lo que dicen las fichas de abajo es lo que se escribió el día que se aprobó el inventario**, y no se actualiza a mano: mantener a mano un dato que se puede derivar termina en dos verdades, y la escrita es la que nadie mira. Al 2026-09-01: **14 verificadas de 35**, y son exactamente las construidas.
+
+**Sin verificar no es lo mismo que no cumple.** Una es que nadie comprobó; la otra, que se comprobó y salió mal.
+
 ## Qué dice la columna «Depende de», y qué no dice
 
 **Dice qué tiene que existir para que la funcionalidad sirva. No dice en qué orden hay que construir.** Son dos cosas distintas y confundirlas hace leer el plan al revés.

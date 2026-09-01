@@ -3723,3 +3723,24 @@ Señal `S-107`. 22 archivos. **¿Commiteo y hago push?**
 
 ### 174 · Usuario — 2026-09-01 14:28:20
 > si
+
+**Agente** — 2026-09-01 14:29:33
+<!-- agente: c68bfad1-e374-4993-9d9d-265593c55e6a -->
+
+Publicado: `2f2d2ef..ffd6f5b`. Árbol limpio.
+
+**Versión 3:** de 10 funcionalidades, dos hechas — `F-031` y `F-020`. Faltan 8.
+
+| Qué sigue | Cuántas |
+|---|---|
+| Comprobaciones: `F-021`, `F-022` | 2, y `EP-015` ya está abierta para ellas |
+| Reglas: `F-005` a `F-010` | 6, épica sin abrir |
+
+Con `F-020` hecha, **la vuelta de la columna quedó desbloqueada**: `F-022` ya puede construirse, y con ella `F-008`.
+
+Seis hallazgos en la sesión, los seis cerrados. El de hoy fue el más barato de todos: buscarle ciclos a la columna de dependencias antes de leerla como un orden.
+
+¿Sigo con `F-021` y `F-022`, que cierran Comprobaciones, o abro las reglas?
+
+### 175 · Usuario — 2026-09-01 14:29:42
+> haga todo

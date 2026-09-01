@@ -94,7 +94,7 @@ No aplica. Si algún día la plataforma guarda datos de clientes, esta sección 
 
 | Funcionalidad | Requisito | Fase que lo construye |
 |---|---|---|
-| F-018 | RF-18 | D |
+| F-018 | RF-18 | `D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto` |
 | F-019 | RF-19 | Versión 4 |
 
 ## 14. Cruces con otros módulos
@@ -102,3 +102,4 @@ No aplica. Si algún día la plataforma guarda datos de clientes, esta sección 
 - **Todos los módulos** le entregan sus acciones.
 - **Proyectos:** aporta en qué proyecto ocurrió cada una.
 - **Seguridad:** tapa las credenciales antes de que lleguen al registro.
+| 2026-09-01 | La §13 nombra cada fase completa, no por su letra | Al derivar el estado de una funcionalidad desde la fase que la construyó, una letra sola no se puede seguir: cada épica tiene su «A». Se descubrió construyendo `F-021` | Ing. José Dúmar Jiménez Ruíz |

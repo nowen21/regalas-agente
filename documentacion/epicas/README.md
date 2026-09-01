@@ -23,7 +23,7 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-012](EP-012-el-expediente-se-entrega-el-mismo-dia/) | Armar el expediente de un proyecto y entregarlo el mismo día | 2 | Aprobada el 2026-08-31 |
 | [EP-013](EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/) | Llenar los huecos de un documento del ciclo sin salir de la plataforma | 2 | Terminada el 2026-09-01 |
 | [EP-014](EP-014-ninguna-clave-queda-escrita/) | Que ninguna clave quede escrita: se tapa lo que se teclea, no lo que se copia | 3 | Terminada el 2026-09-01 |
-| [EP-015](EP-015-lo-exigido-se-comprueba-solo/) | Que la plataforma diga si un proyecto cumple, sin entrar a él | 3 | Abierta el 2026-09-01. `F-020` cerrada |
+| [EP-015](EP-015-lo-exigido-se-comprueba-solo/) | Que la plataforma diga si un proyecto cumple, sin entrar a él | 3 | Terminada el 2026-09-01: sus tres historias cumplen |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

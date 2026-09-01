@@ -93,11 +93,12 @@ No aplica, con una advertencia: **la documentación de un proyecto puede contene
 
 | Funcionalidad | Requisito | Fase que lo construye |
 |---|---|---|
-| F-027 | RF-27 | E |
-| F-028 | RF-28 | F |
+| F-027 | RF-27 | `E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito` |
+| F-028 | RF-28 | `F-EP-010-HU-002-lo-que-no-se-reconoce-se-reporta` |
 
 ## 14. Cruces con otros módulos
 
 - **Proyectos:** solo se trae a un proyecto ya conectado.
 - **Auditoría:** traer queda registrado, con cuántos documentos entraron y cuántos no.
 - **Ciclo de vida:** lo traído se convierte en sus épicas, historias y fases, y desde la versión 5 se opera desde la plataforma.
+| 2026-09-01 | La §13 nombra cada fase completa, no por su letra | Al derivar el estado de una funcionalidad desde la fase que la construyó, una letra sola no se puede seguir: cada épica tiene su «A». Se descubrió construyendo `F-021` | Ing. José Dúmar Jiménez Ruíz |

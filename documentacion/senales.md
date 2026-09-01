@@ -1112,3 +1112,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier plan con dependencias declaradas, y cualquier pieza que dé veredictos.
 - **Rel:** S-103 (reordenar por lo que dice una columna), S-106 (medir antes de encender algo irreversible).
+
+## S-108 · Un rojo falso es peor que no tener puerta  ·  antipatrón · activa
+- **What:** la puerta que decide si se puede publicar corría las pruebas del proyecto con un subcomando que **no acepta el argumento que se le pasaba**. El intérprete de argumentos lo rechazó y salió con código 2. La puerta leyó ese código como «rojo» y dijo **«no se publica» con las 1 082 pruebas en verde**.
+- **Why:** un código de salida distinto de cero puede querer decir dos cosas muy distintas: **«las pruebas fallaron»** y **«no entendí lo que me pediste»**. Tratarlas igual convierte un error propio en un veredicto sobre el trabajo ajeno. Y del lado de quien lo recibe se ve idéntico.
+- **Also:** el daño no es la molestia. **Un rojo falso enseña a ignorar la puerta:** la primera vez uno investiga, la tercera la salta, y el día que el rojo sea de verdad ya nadie lo mira. Una puerta en la que no se confía es peor que ninguna, porque da la sensación de que algo está cuidando.
+- **And:** en la misma tanda apareció su pariente al derivar el estado de una funcionalidad: el lector seguía solo la convención de ahora, y **siete funcionalidades cerradas y en verde salían «sin verificar»** porque sus fases escriben el veredicto como se escribía antes. **Una fase cerrada no se reescribe para que un programa la entienda:** el que se adapta es el que lee.
+- **Where:** `plataforma/nucleo/comprobaciones/puerta.py` y `estado.py`.
+- **Learned:** cuando algo automatiza un veredicto, **separar «falló» de «no pude» desde el primer día**, y probarlo con las dos. Y al leer documentos que llevan tiempo escritos, **contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva**.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier puerta automática y cualquier lector de documentos con historia.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-105 (un documento que habla de algo parece contenerlo).

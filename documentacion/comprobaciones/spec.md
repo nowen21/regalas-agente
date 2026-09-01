@@ -40,7 +40,23 @@ Es la misma forma que ya tienen otros dos puentes de la plataforma: el que tapa 
 - **Valores configurables:** dónde vive `validadores/`, que ya lo declara la configuración.
 - **Migración:** no aplica.
 
-### 5.1 Por qué se corren en un proceso aparte
+### 5.1 De dónde sale el estado de una funcionalidad
+
+La cadena ya existe escrita, y se sigue; no se inventa:
+
+```
+inventario -> especificacion del modulo (13) -> fase -> veredicto
+```
+
+| Lo que se encuentra | El estado |
+|---|---|
+| Una fase que declaró que cumple | **verificado** |
+| Una fase que declaró que no cumple | **no cumple**, con cuál fase |
+| Ninguna fase, o una que no declara | **sin verificar**, y no se cierra |
+
+**Y se leen las dos formas de escribir el veredicto.** Las fases de la versión 1 lo ponen como «Veredicto de las pruebas»; las de ahora, en una tabla con «Concepto». Con solo la de ahora, siete funcionalidades cerradas salían sin verificar.
+
+### 5.2 Por qué se corren en un proceso aparte
 
 **Se le pide al estándar por su punto de entrada**, que es como se corre de verdad: arma su contexto, descubre sus comprobaciones y las corre. Cargar sus archivos desde la plataforma daría un número que nadie más obtiene, y el día que el estándar cambie por dentro, la plataforma se rompe sin que nadie lo note.
 
@@ -88,7 +104,19 @@ Un solo usuario, sin credenciales propias.
 - `CA-4` Comprobar no modifica nada.
 - `CA-5` Cero comprobaciones corridas es rojo.
 
-Los cinco son de `F-020`. Los de `F-021` y `F-022` se agregan cuando lleguen sus historias.
+Los cinco son de `F-020`. Los de `F-021`:
+
+- `CA-6` Con prueba y evidencia, la funcionalidad queda verificada.
+- `CA-7` Sin prueba queda «sin verificar», y no se cierra.
+- `CA-8` Con prueba fallida queda «no cumple», con cuál fase.
+- `CA-9` **Las dos formas de escribir un veredicto se leen las dos.**
+
+Y los de `F-022`:
+
+- `CA-10` Una versión que rompe algo no se publica.
+- `CA-11` Lo que obliga a rehacer se declara.
+- `CA-12` Lo que no rompe nada pasa, con una sola orden.
+- `CA-13` **No haber podido revisar tampoco pasa.**
 
 ## 12. Decisiones tomadas
 
@@ -105,8 +133,8 @@ Los cinco son de `F-020`. Los de `F-021` y `F-022` se agregan cuando lleguen sus
 | Funcionalidad | Requisito | Historia | Fase que lo construye |
 |---|---|---|---|
 | F-020 | RF-20 | [HU-001 Comprobar un proyecto desde la plataforma](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-001-comprobar-un-proyecto-desde-la-plataforma/HU-001-comprobar-un-proyecto-desde-la-plataforma.md) | [D-EP-015-HU-001-la-plataforma-corre-lo-que-el-estandar-exige](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-001-comprobar-un-proyecto-desde-la-plataforma/D-EP-015-HU-001-la-plataforma-corre-lo-que-el-estandar-exige/estado-fase.md), cerrada el 2026-09-01 |
-| F-021 | RF-21 | Por escribir | — |
-| F-022 | RF-22 | Por escribir | — |
+| F-021 | RF-21 | [HU-002 Fijar el estado desde la evidencia](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-002-fijar-el-estado-desde-la-evidencia/HU-002-fijar-el-estado-desde-la-evidencia.md) | [E-EP-015-HU-002-el-estado-sale-de-la-fase-que-corrio](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-002-fijar-el-estado-desde-la-evidencia/E-EP-015-HU-002-el-estado-sale-de-la-fase-que-corrio/estado-fase.md), cerrada el 2026-09-01 |
+| F-022 | RF-22 | [HU-003 No publicar lo que rompe lo anterior](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-003-no-publicar-lo-que-rompe-lo-anterior/HU-003-no-publicar-lo-que-rompe-lo-anterior.md) | [F-EP-015-HU-003-la-puerta-corre-lo-que-ya-funcionaba](../epicas/EP-015-lo-exigido-se-comprueba-solo/HU-003-no-publicar-lo-que-rompe-lo-anterior/F-EP-015-HU-003-la-puerta-corre-lo-que-ya-funcionaba/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 

@@ -106,6 +106,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-7 · La puerta de publicación dio un rojo falso en su primera corrida
+
+- **Qué pasó:** la puerta que decide si se puede publicar corría las pruebas del proyecto con un subcomando que **no acepta el argumento que se le pasaba**. Salió con código 2, la puerta lo leyó como rojo, y dijo **«no se publica» con las 1 082 pruebas en verde**. Su pariente apareció en la fase anterior: el lector del estado seguía solo la convención de ahora, y **siete funcionalidades cerradas y en verde salían «sin verificar»**.
+- **Por qué importa:** un código de salida distinto de cero puede querer decir «las pruebas fallaron» o «no entendí lo que me pediste», y tratarlos igual convierte un error propio en un veredicto ajeno. **Un rojo falso enseña a ignorar la puerta:** la primera vez uno investiga, la tercera la salta, y el día que el rojo sea de verdad ya nadie lo mira.
+- **Qué lo soluciona:** ya arreglado. La puerta corre la suite del proyecto, y el «no se pudo» tiene su propia respuesta. El lector del estado lee las dos formas de veredicto, sin reescribir ninguna fase cerrada.
+- **Qué se decidió:** el usuario mandó hacer todo lo que faltaba de la versión 3 sin aprobar paso por paso.
+- **Estado:** resuelto acá
+- **Responde a:** EP-015 · HU-003 · CA-04
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-108` · `plataforma/nucleo/comprobaciones/puerta.py` y `estado.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -114,11 +130,13 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 |---|---|
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
-| Toda historia disparada está escrita en su épica | ☑ ninguna. Las dos que faltan de `EP-015` están nombradas en ella |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `EP-015` |
+| Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de `F-021` y `F-022` |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
 **Y la versión 3 arrancó**, por `F-031`, que era lo único con daño irreversible y estaba construido a medias sin que nadie lo hubiera declarado.
 
-**Lo que sigue no es de esta sesión:** el resto de la versión 3, que son las reglas y las dos comprobaciones que faltan, `F-021` y `F-022`. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y `EP-015` cerró entera:** con `F-022` la vuelta de la columna queda cerrada, porque publicar una versión ya tiene su puerta.
+
+**Lo que sigue no es de esta sesión:** las reglas, `F-005` a `F-010`, que son las seis que le quedan a la versión 3. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
