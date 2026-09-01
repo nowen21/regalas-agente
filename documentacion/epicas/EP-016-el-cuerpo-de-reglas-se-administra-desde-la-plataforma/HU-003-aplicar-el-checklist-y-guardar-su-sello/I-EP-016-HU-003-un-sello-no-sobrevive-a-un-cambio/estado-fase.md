@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Los 185 falsos se vieron antes de que salieran |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `4c0de39` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **Lo más importante de esta fase es un nombre.** La comparación barata se llama `parece_vencido`, y hay una prueba que comprueba que no exista una que se llame como si las fechas decidieran.
