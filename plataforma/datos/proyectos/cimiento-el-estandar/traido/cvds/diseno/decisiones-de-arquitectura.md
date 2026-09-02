@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Las decisiones que cuestan caro de revertir, cada una con las alternativas que se descartaron y por qué. Sin las alternativas, una decisión no se puede defender ni revisar después: solo se puede obedecer o romper.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reescrito el 2026-08-24, cuando el producto pasó a ser una plataforma que administra proyectos. Las ocho decisiones anteriores describían un estándar que viajaba dentro de cada proyecto.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Reescrito el 2026-08-24, cuando el producto pasó a ser una plataforma que administra proyectos. Las ocho decisiones anteriores describían un estándar que viajaba dentro de cada proyecto.
 
 **Cómo se citan.** Cada decisión lleva un número que empieza por `DA`, de **decisión de arquitectura**: `DA-01`, `DA-02`. Ese número se usa para nombrarla en cualquier otro documento, y no se le da a otra decisión aunque esta se cambie después.
 

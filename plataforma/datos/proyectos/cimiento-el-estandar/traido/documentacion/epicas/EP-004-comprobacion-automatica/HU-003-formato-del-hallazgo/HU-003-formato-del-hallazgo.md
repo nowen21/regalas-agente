@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación — los tres CA cumplidos; el transversal de errores, no |
-
+| **Estado** | Terminada — los tres CA cumplidos, y el transversal de errores se volvió a medir en la fase `C` |
 ---
 
 ## 2. Narrativa
@@ -146,6 +145,7 @@ Y la corrida termina con error
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [C-EP-004-HU-003-el-transversal-de-errores-se-vuelve-a-medir](C-EP-004-HU-003-el-transversal-de-errores-se-vuelve-a-medir/estado-fase.md) | el transversal de errores, otra vez | **Ejecutada el 2026-08-29.** Veredicto: [**Cumple**](C-EP-004-HU-003-el-transversal-de-errores-se-vuelve-a-medir/resultado_pruebas.md#2-veredicto-de-la-fase) — el archivo ilegible ya no tumba la corrida, y la corrida sigue contando lo que sí puede leer. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo](A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/README.md) | CA-01, CA-02 y CA-03 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-004-HU-003-retrodocumentar-el-formato-del-hallazgo/resultado_pruebas.md#6-veredicto-de-la-fase) — los tres CA numerados sí; el transversal de errores no. Pendiente el commit |
 
 **La fase retro-documenta.** El formato existe y lo usan los 24 subcomandos, con sus dos severidades. Falta el contrato escrito y la prueba de que el código de salida es el que corresponde.

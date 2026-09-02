@@ -24,8 +24,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
-
+| 12 | Commit | 👤 autorizado | ✅ `da94174` |
 **Sobre la puerta 7:** el usuario ordenó resolver los pendientes del 81 al 84, y esa orden se tomó como la aprobación de los planes.
 
 ---

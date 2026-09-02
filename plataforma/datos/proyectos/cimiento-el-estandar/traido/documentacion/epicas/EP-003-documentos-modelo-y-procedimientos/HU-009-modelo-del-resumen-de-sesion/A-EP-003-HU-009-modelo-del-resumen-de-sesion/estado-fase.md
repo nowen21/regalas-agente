@@ -28,7 +28,7 @@
 | 9 | Verifier | trazabilidad sin faltantes | ☑ las seis exigencias en verde |
 | 10 | Crítico | sin hallazgos graves | ☑ un defecto abierto, DEF-01, declarado fuera de alcance |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ **acá está detenida**: falta el `funcionalidad_implementada.md` |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e998cc2` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---

@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ 2026-08-21: `funcionalidad_implementada.md` §2 — 5 de 5 ítems ✅, 7 de 7 tareas, sin archivos fuera de plan |
 | 10 | Crítico | sin hallazgos graves | ☑ un desvío declarado (CP-002 paso 1: cita atribuida al ítem 01 siendo del 08), sin efecto en el veredicto |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ 2026-08-21: cierre escrito, señal S-018, versión 28.1.0, pendiente 16 en `hecho/`, HU al día |
-| 12 | Commit | 👤 autorizado | ☐ **esperando al usuario** — se pregunta aparte |
+| 12 | Commit | 👤 autorizado | ✅ `eedad93` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---

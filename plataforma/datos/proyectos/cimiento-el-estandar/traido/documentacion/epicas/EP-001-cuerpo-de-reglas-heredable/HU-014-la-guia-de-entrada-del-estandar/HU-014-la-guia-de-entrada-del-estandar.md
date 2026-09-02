@@ -11,8 +11,7 @@
 | **Prioridad** | Should |
 | **Estimación** | S |
 | **Solicitante** | El usuario, vía el proyecto `matematica` (pendiente 73) |
-| **Estado** | Done |
-
+| **Estado** | Terminada |
 ## 2. Narrativa
 
 - **Como** quien llega a un proyecto que hereda el estándar sin conocer sus reglas

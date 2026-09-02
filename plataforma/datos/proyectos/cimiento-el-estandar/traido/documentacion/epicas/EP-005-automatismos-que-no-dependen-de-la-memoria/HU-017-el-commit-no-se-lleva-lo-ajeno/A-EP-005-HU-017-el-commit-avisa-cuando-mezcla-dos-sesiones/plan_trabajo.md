@@ -12,7 +12,7 @@
 | **Épica** | `EP-005` Automatismos que no dependen de la memoria |
 | **HU** | `HU-017` El commit no se lleva el trabajo de otra sesión |
 | **Módulo** | Enganches de git |
-| **Especificación del módulo** | [epica.md](../../epica.md) |
+| **Especificación del módulo** | [documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/epica.md](../../epica.md) |
 | **Fecha apertura** | 2026-08-22 |
 | **Rama** | `main` |
 

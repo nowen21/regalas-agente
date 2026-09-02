@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Qué se le puede pedir a la plataforma desde la misma máquina, qué devuelve, y qué se promete que no va a cambiar. **No se expone nada a la red** ([`DA-03`](decisiones-de-arquitectura.md)): este es el contrato de lo que corre en la propia máquina, y el que usa el agente al abrir sesión.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reescrito el 2026-08-24: la versión anterior describía un contrato de solo lectura.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Reescrito el 2026-08-24: la versión anterior describía un contrato de solo lectura.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

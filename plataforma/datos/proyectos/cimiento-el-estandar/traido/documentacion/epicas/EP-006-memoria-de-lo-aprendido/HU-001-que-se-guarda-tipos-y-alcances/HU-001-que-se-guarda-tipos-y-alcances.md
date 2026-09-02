@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación — CA-01 y CA-02 cumplidos y probados; el transversal de privacidad, no |
-
+| **Estado** | Terminada — CA-01 y CA-02 cumplidos, y el transversal de privacidad quedó cubierto por la regla `04·S19`, escrita en la fase `B` |
 ---
 
 ## 2. Narrativa
@@ -123,6 +122,7 @@ Entonces dice de qué tipo es y a quién le sirve
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-006-HU-001-la-regla-de-privacidad-de-la-memoria](B-EP-006-HU-001-la-regla-de-privacidad-de-la-memoria/estado-fase.md) | El transversal de privacidad | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-006-HU-001-la-regla-de-privacidad-de-la-memoria/resultado_pruebas.md#2-veredicto-de-la-fase) — se escribió la regla `04·S19`, que no existía, y el estándar sube a `36.0.0`. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-006-HU-001-retrodocumentar-que-se-guarda-y-con-que-alcance/resultado_pruebas.md#6-veredicto-de-la-fase) — los dos CA que cubre quedaron verificados, y los dos transversales de la HU no. Pendiente el commit |
 | `B-EP-006-HU-001` — **propuesta, sin abrir** | Los dos transversales: privacidad y límites | Sale del veredicto de la fase A. Abrirla la decide el usuario: el de privacidad toca `13·DOC5`, que es `base/` |
 

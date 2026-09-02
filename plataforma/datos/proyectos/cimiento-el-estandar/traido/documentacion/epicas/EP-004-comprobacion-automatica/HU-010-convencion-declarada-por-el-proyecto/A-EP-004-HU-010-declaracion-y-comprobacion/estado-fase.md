@@ -13,7 +13,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 7 — Task Planner. **Última puerta pasada:** 4.
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+
+**Estuvo detenida trece días en la estación 7.** El usuario la aprobó el 2026-08-30 y la fase se ejecutó ese mismo día: los programas ya estaban escritos, y lo que faltaba era ejecutar los cinco criterios.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -28,7 +30,7 @@
 | 9 | Verifier | trazabilidad sin faltantes | ☐ |
 | 10 | Crítico | sin hallazgos graves | ☐ |
 | 11 | Cierre documental + señales | docs y señales al día | ☐ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `a5ecf44` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 La estación 5 queda pendiente de una decisión, no de un documento: se propone que la HU haga de especificación, como en la fase `A-EP-001-HU-001-molde-de-regla`. Es la duda 1 del plan de trabajo §2.7.

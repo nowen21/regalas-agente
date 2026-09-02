@@ -28,7 +28,7 @@
 | 9 | Verifier | trazabilidad sin faltantes | ☑ las seis exigencias con su caso y su evidencia |
 | 10 | Crítico | sin hallazgos graves | ☑ ninguno: el único punto en duda lo decidió el usuario |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ [funcionalidad_implementada.md](funcionalidad_implementada.md) |
-| 12 | Commit | 👤 autorizado | ☑ autorizado el 2026-08-15 |
+| 12 | Commit | 👤 autorizado | ✅ `cd94e5b` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---

@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | S |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ## 2. Narrativa
 
 - **Como** quien define el estándar

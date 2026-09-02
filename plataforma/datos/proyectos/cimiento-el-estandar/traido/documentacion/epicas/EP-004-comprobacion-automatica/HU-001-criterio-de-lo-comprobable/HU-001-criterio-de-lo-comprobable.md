@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada |
 ---
 
 ## 2. Narrativa
@@ -145,7 +144,7 @@ Y está escrito qué mitad revisa el programa y qué mitad se lee
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-004-HU-001-retrodocumentar-el-criterio-de-lo-comprobable/resultado_pruebas.md) — el criterio aplicado a las 175 reglas, no a un ejemplo |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-004-HU-001-retrodocumentar-el-criterio-de-lo-comprobable/resultado_pruebas.md) — el criterio aplicado a las 175 reglas, no a un ejemplo |
 
 **La fase retro-documenta.** El criterio existe y se aplicó a las 188 reglas. Lo que falta: **vive en `validadores/`, no en `base/`**, así que un proyecto que hereda recibe la obligación de clasificar y no el criterio con que se decide.
 

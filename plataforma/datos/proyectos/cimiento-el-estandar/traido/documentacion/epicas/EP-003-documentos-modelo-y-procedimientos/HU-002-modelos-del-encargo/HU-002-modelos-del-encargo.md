@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación. CA-01 cerrado en la fase B; CA-02, CA-03 y transversales cumplidos; el CA-04, abierto en la fase C |
-
+| **Estado** | En curso. CA-01 cerrado en la fase B; CA-02, CA-03 y transversales cumplidos; el CA-04, abierto en la fase C |
 ---
 
 ## 2. Narrativa

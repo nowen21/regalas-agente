@@ -1252,3 +1252,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · agente.
 - **Scope:** cualquier lista de trabajo pendiente que conviva con un inventario de funcionalidades.
 - **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-116 (una carpeta vacía no la ve nadie que no recorra el disco).
+
+## S-121 · El expediente respondía sobre una copia de hace días, y contaba huecos con sus propias reglas  ·  error-resuelto · activa
+- **What:** el expediente decía que faltaban **22 documentos** y que había **70 huecos** en 38 documentos. Los 22 existían: la copia traída del proyecto tenía **546 documentos menos** que el disco, y al traerlo de nuevo pasó a **falta: 0**. De los 70 huecos quedaron **2**: los otros 68 eran citas de la marca dentro de bloques de código, o marcas del propio molde.
+- **Why:** son dos causas distintas y las dos dan el mismo síntoma —una respuesta con seguridad sobre algo que ya no es cierto—. La primera es **una foto vieja**: el módulo lee la copia guardada, y nadie había traído el proyecto en días. La segunda es **dos módulos contando lo mismo con reglas distintas**: `expediente` hacía `texto.count("«…»")` a secas, mientras `ciclo_de_vida` ya sabía descontar la marca citada y la del molde desde el 2026-09-01.
+- **Also:** **lo grave no era el número, era lo que habría pasado al hacerle caso.** De esas 22 «faltas», catorce eran fases en la estación 6 de 11 —abiertas—, y **cinco tenían veredicto «No cumple»**. Escribirles un `funcionalidad_implementada.md` habría documentado como terminado un trabajo que no terminó, y lo habría hecho obedeciendo a un reporte de la propia plataforma.
+- **And:** el mismo día, el validador del expediente daba «falta» sobre el molde 16 buscándolo solo como `documentacion-de-api.md`, cuando el estándar llama a ese entregable **«contrato de la interfaz»** en su propia tabla de moldes. Tres formas del mismo error en una jornada.
+- **Where:** `plataforma/nucleo/expediente/core.py` (ahora le pregunta los huecos a Ciclo de vida) · `validadores/expediente.py`, versionado como PARCHE **37.2.2**.
+- **Learned:** **antes de actuar sobre un reporte, comprobar de cuándo son los datos que lo produjeron.** Y cuando dos módulos cuentan lo mismo, uno de los dos tiene que preguntarle al otro: dos contadores son dos verdades, y gana la que alguien mira primero. **La segunda pregunta —«¿y si el reporte tuviera razón, qué escribiría?»— fue la que salvó el caso:** la respuesta era documentar fases sin terminar como si hubieran terminado.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier módulo que responda sobre una copia, y cualquier medida que se calcule en dos lugares.
+- **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-114 (conviven varios modelos y el lector suponía uno).

@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Deja escrito, antes de comprometer trabajo, si el proyecto es viable y por qué camino: qué es posible técnicamente, qué cuesta, cuánto toma y qué alternativas se evaluaron. Su valor está en las alternativas descartadas: sin ellas, la decisión no se puede defender ni revisar después.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reemplaza al estudio firmado el 2026-08-24, que evaluaba otro producto: un estándar que viajaba dentro de cada proyecto.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Reemplaza al estudio firmado el 2026-08-24, que evaluaba otro producto: un estándar que viajaba dentro de cada proyecto.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

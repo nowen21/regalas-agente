@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada — el CA-02 se cerró en la fase `B`: se tapa la clave que va con su nombre, y la que se dice dentro de una frase queda declarada como límite |
 ## 2. Narrativa
 
 - **Como** quien trabaja con la IA en proyectos con datos y con clientes reales
@@ -121,7 +120,8 @@ Y no presenta el trabajo como terminado
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/resultado_pruebas.md) — el CA-01 y el CA-03 sí; el CA-02 no: una clave pegada sin comillas queda en claro |
+| [B-EP-001-HU-003-la-clave-dentro-de-una-frase-no-se-tapa](B-EP-001-HU-003-la-clave-dentro-de-una-frase-no-se-tapa/estado-fase.md) | CA-02 | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-001-HU-003-la-clave-dentro-de-una-frase-no-se-tapa/resultado_pruebas.md#2-veredicto-de-la-fase) — tres de seis formas se tapan, que son las que llevan la clave junto a su nombre. Las otras tres quedan declaradas como límite, con su motivo. Declara reemplazar el veredicto de la fase `A` |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-001-HU-003-retrodocumentar-el-nucleo-blindado/resultado_pruebas.md) — el CA-01 y el CA-03 sí; el CA-02 no: una clave pegada sin comillas queda en claro |
 
 **La fase retro-documenta.** Las seis reglas del núcleo existen y mandan desde la primera versión; lo que faltaba era la cadena. Lo único nuevo que le entra a `base/` es el criterio de entrada al núcleo, que la RN-06 pide y no está escrito.
 

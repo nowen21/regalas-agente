@@ -147,6 +147,13 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-016](HU-016-el-pendiente-cerrado-nombra-su-fase/HU-016-el-pendiente-cerrado-nombra-su-fase.md) | Comprobar que un pendiente marcado hecho nombre la historia y la fase donde se construyó | Should | S |
 | [HU-017](HU-017-inventario-de-hu-sin-fase/HU-017-inventario-de-hu-sin-fase.md) | Decir cuántas HU quedan sin su fase completa | Should | S |
 | [HU-018](HU-018-numero-de-pendiente-ya-tomado/HU-018-numero-de-pendiente-ya-tomado.md) | Avisar cuando dos pendientes se disputan el mismo número | Should | S |
+| [HU-019](HU-019-inventario-que-no-se-mantiene-a-mano/HU-019-inventario-que-no-se-mantiene-a-mano.md) | Que el inventario de historias deje de mantenerse a mano | Should | S |
+| [HU-020](HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano/HU-020-el-inventario-heredado-tampoco-se-mantiene-a-mano.md) | Que el inventario que heredan los proyectos tampoco se mantenga a mano | Should | S |
+| [HU-021](HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido.md) | Que la cuenta distinga lo terminado de lo cumplido | Must | M |
+| [HU-022](HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md) | Que un documento que sigue siendo el molde no cuente como escrito | Must | S |
+| [HU-023](HU-023-un-rojo-se-puede-cerrar-declarandolo/HU-023-un-rojo-se-puede-cerrar-declarandolo.md) | Que un veredicto en rojo se pueda cerrar, declarándolo | Must | S |
+| [HU-024](HU-024-el-validador-dice-que-no-comprueba/HU-024-el-validador-dice-que-no-comprueba.md) | El validador dice sobre qué corrió y qué no comprueba | Must | 2 pts |
+| [HU-025](HU-025-los-caracteres-de-control-invisibles-se-cuentan/HU-025-los-caracteres-de-control-invisibles-se-cuentan.md) | Los caracteres de control invisibles se cuentan y se quitan | Should | 2 pts |
 
 ## 10. Consideraciones técnicas
 
@@ -208,6 +215,11 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | Fase 7 | Retrodocumentar la comprobación de la derogación sin adoptar, que se construyó antes de tener su fase | HU-015 |
 | Fase 8 | Que el backlog no se construya saltándose la cadena: el pendiente cerrado nombra su fase | HU-016 |
 | Fase 9 | Contar lo que falta sin recorrerlo a mano: HU sin fase y números de pendiente disputados | HU-017, HU-018 |
+| Fase 10 | Que la cuenta no exista dos veces: el inventario enlaza lo que el árbol sabe en vez de copiarlo | HU-019 |
+| Fase 11 | Que lo mismo llegue a quien hereda el estándar: la plantilla y la comprobación | HU-020 |
+| Fase 12 | Que el número que dice cuánto falta no cuente como hecha una fase que no cumplió | HU-021 |
+| Fase 13 | Que una fase recién abierta no cuente como terminada: el molde sin llenar no es un documento | HU-022 |
+| Fase 14 | Que un rojo tenga salida: la fase que lo resuelve lo declara, y la cuenta lo lee | HU-023 |
 
 ## 15. Definition of Ready
 

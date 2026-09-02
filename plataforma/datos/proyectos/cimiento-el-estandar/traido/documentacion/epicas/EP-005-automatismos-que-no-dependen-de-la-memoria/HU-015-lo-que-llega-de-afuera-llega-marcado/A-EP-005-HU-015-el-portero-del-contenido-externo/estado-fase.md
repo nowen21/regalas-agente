@@ -28,7 +28,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ (`funcionalidad_implementada.md` §2, sin faltantes) |
 | 10 | Crítico | sin hallazgos graves | ☑ (las fallas de las suites son ajenas y anteriores; documentado en el resultado, CP-008) |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ (S-016; contrato, mapas, registro, especificación, CHANGELOG 28.0.0; pendiente 72 en `hecho/`) |
-| 12 | Commit | 👤 autorizado | ☐ **esperando la autorización del usuario** (`00·N2`) |
+| 12 | Commit | 👤 autorizado | ✅ `eedad93` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☑ parcial: instalado en los 9 proyectos por el T-07 del plan aprobado; el commit del estándar sigue pendiente |
 
 ---

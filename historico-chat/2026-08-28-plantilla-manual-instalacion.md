@@ -4290,3 +4290,132 @@ Queda declarado: **seis módulos sin pantalla** — Auditoría, Medición, Exped
 
 ### 196 · Usuario — 2026-09-02 09:55:37
 > si
+
+**Agente** — 2026-09-02 09:57:01
+<!-- agente: 77a81e8a-9f84-4a4a-ad6c-e25e91ccb2e9 -->
+
+Subido: `e6afdf0..3ccb0ec`, 44 archivos.
+
+El enganche del commit rechazó el primer intento: unos puntos suspensivos en un solo carácter dentro del plan de pruebas de la fase Z. Se corrigieron y pasó.
+
+**Lo que queda en el repositorio:**
+
+| | |
+|---|---|
+| Módulos | 13, cinco con pantalla nueva |
+| Funcionalidades | 35 de 35, las 35 con veredicto |
+| Avisos vivos | 1 — una historia sin fase |
+| Pendientes abiertos | 0 |
+| Pruebas | 571 de la plataforma + 733 del estándar, en verde |
+
+Declarado y sin fecha: **seis módulos sin pantalla** —Auditoría, Medición, Expediente, Reglas, Seguridad, Almacén—, nada se cambia desde la pantalla, **33 fases con la frase y la tabla en desacuerdo** porque arreglarlas sería reescribir fases cerradas, y la medición inicial que no existe.
+
+### 197 · Usuario — 2026-09-02 09:58:12
+> 00 id9
+
+**Agente** — 2026-09-02 09:58:19
+<!-- agente: 478638ad-a07e-4c00-8fa6-dff18de76231 -->
+
+Subido: `e6afdf0..3ccb0ec`.
+
+35 de 35 funcionalidades con veredicto · **1 aviso vivo** · **0 pendientes abiertos** · 571 + 733 pruebas verdes.
+
+Sin fecha: seis módulos sin pantalla, 33 fases con la frase y la tabla en desacuerdo, y la medición inicial que no existe.
+
+### 198 · Usuario — 2026-09-02 09:58:46
+> que sigue? ya se termino?
+
+**Agente** — 2026-09-02 10:01:58
+<!-- agente: 5074c8a3-05ab-4be2-8d72-bacc64b03598 -->
+
+No. El software está construido; **el proyecto no está entregado.** Se lo pregunté a la propia plataforma:
+
+**762 documentos en el expediente, y tres huecos:**
+
+| Qué falta | Cuánto |
+|---|---|
+| Fases cerradas sin su `funcionalidad_implementada.md` | **22** |
+| Documentos a medio llenar, con huecos sin cerrar | **31** |
+| Documentos del ciclo que no existen | **6** |
+
+Los seis que no existen son los de **entregar y operar**: documentación de API, manual técnico, notas de versión, acta de entrega, bitácora de operación y plan de mantenimiento. Y se nota por qué: de las siete etapas del ciclo, **las últimas cuatro —implementación, pruebas, despliegue y mantenimiento— tienen solo su README**. Las tres primeras sí están escritas.
+
+Eso es lo que sigue, y en ese orden:
+
+1. **Los 22 `funcionalidad_implementada` que faltan.** Son fases cerradas a las que les falta el documento que dice qué quedó hecho: la trazabilidad está cortada hacia abajo en 22 puntos.
+2. **Los seis documentos del ciclo.** El estándar dice que si no tienen materia, existen igual y declaran por qué no aplica — así que ninguno se salta, se responde.
+3. **Los 31 documentos a medio llenar.**
+
+Lo demás que quedó declarado —seis módulos sin pantalla, 33 fases en desacuerdo, la medición inicial— no impide entregar. Esto sí.
+
+Arranco por el 1. ¿O prefiere otro orden?
+
+### 199 · Usuario — 2026-09-02 10:22:39
+> todos
+
+**Agente** — 2026-09-02 11:12:04
+<!-- agente: 00e38b24-6add-439b-9fa7-8f682827a30f -->
+
+Los 22 no son 22 documentos por escribir. Miro el estado real antes de escribir nada.
+
+El expediente reporta como faltantes archivos que sí están. Trabaja sobre lo traído, no sobre el disco. Vuelvo a traer y comparo.
+
+**Falta: 0.** Los 22 documentos «faltantes» existían: la copia del proyecto tenía 546 documentos menos que el disco. Escribirlos habría sido inventar — cinco de esas fases tienen veredicto «No cumple».
+
+**70 huecos en 38 documentos.** Uso la propia plataforma para verlos.
+
+El expediente cuenta los huecos con `texto.count("«…»")` a secas. El módulo Ciclo de vida ya sabe descontar los del molde y los que están dentro de código. Dos módulos contando lo mismo con reglas distintas.
+
+De 38 documentos y 70 huecos quedan **un documento y dos huecos**. Los otros 68 eran citas de la marca o marcas del propio molde.
+
+La fase existe y cerró con veredicto **Cumple**; la fila de la historia quedó vieja. Lleno los dos huecos con la propia plataforma.
+
+Quedan los seis documentos del ciclo. Antes de escribirlos miro qué considera el validador que falta — uno de ellos puede existir con otro nombre.
+
+El validador busca por nombre de archivo: `contrato-de-la-interfaz.md` es el molde 16 y no lo reconoce. Lo mismo de siempre — el que se adapta es el que lee.
+
+**Cero documentos del ciclo faltantes.** Los 22 moldes están. Registro la señal y le pongo prueba al contador.
+
+Una falla en la batería del estándar: el cambio al validador rompió una prueba.
+
+La prueba tiene razón: la entrada del registro abría con jerga de la casa. `M17` pide dos frases que se entiendan sin conocer el proyecto.
+
+**Los tres, hechos.** Y ninguno era lo que parecía.
+
+| | Parecía | Era |
+|---|---|---|
+| **1 · Los 22 faltantes** | 22 documentos por escribir | **0.** La copia traída tenía 546 documentos menos que el disco |
+| **2 · Los 6 del ciclo** | 6 por escribir | **5.** Uno ya estaba, con el otro nombre que el propio estándar le da |
+| **3 · Los 70 huecos** | 70 en 38 documentos | **2 en 1.** Los otros 68 eran citas de la marca o marcas del molde |
+
+**Lo grave del primero no era el número: era lo que habría pasado al obedecerlo.** De esas 22 «faltas», catorce eran fases en la estación 6 de 11 y **cinco tenían veredicto «No cumple»**. Escribirles un `funcionalidad_implementada.md` habría documentado como terminado un trabajo que no terminó, obedeciendo a un reporte de la propia plataforma.
+
+Lo que quedó: el expediente le pregunta los huecos a Ciclo de vida en vez de contarlos por su cuenta, el validador aprendió el segundo nombre del molde 16 (**PARCHE 37.2.2**), y se escribieron **manual técnico, notas de versión, acta de entrega, bitácora de operación y plan de mantenimiento**.
+
+**El acta de entrega dice lo que no se puede disimular:** quien entrega y quien recibe son la misma persona, y la firma de recibido queda en blanco. La bitácora no tiene un solo incidente, y dice por qué: un renglón vacío no es un sistema estable, es uno que nadie ha usado.
+
+**Expediente: 1290 documentos, cero faltantes, cero a medio llenar.** 575 + 733 pruebas, 32 validadores, sin fallas.
+
+---
+
+Antes de commitear, una decisión suya: de los 326 archivos sin guardar, **310 son la copia que la plataforma hace de los documentos del propio repositorio** — el mismo texto dos veces, y ya hay 1005 así versionados. `09·G3` deja lo generado fuera del control de versiones, y esa copia se rehace sola al traer.
+
+**¿Los commiteo los 326, o ignoro `plataforma/datos/proyectos/` y saco de git los 1005 que ya están?**
+
+### 200 · Usuario — 2026-09-02 11:27:14
+> 7lsl
+
+**Agente** — 2026-09-02 11:27:22
+<!-- agente: 5b692ec5-7d75-4cc5-aa86-01894f1f9299 -->
+
+No entendí «7lsl».
+
+La pregunta era cuál de las dos:
+
+1. **Commitear los 326** — se guarda la copia como hasta ahora.
+2. **Ignorar `plataforma/datos/proyectos/`** y sacar de git los 1005 ya versionados — el texto deja de estar dos veces, y la copia se rehace sola al traer.
+
+Recomiendo la 2, pero saca archivos del control de versiones y eso lo decide usted.
+
+### 201 · Usuario — 2026-09-02 11:29:01
+> cimitar TODOY

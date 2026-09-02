@@ -304,6 +304,36 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-02 · el orden de las versiones
 - **Con qué se retoma:** —
 
+### H-20 · Los 22 documentos faltantes existían, y escribirlos habría documentado trabajo sin terminar
+
+- **Qué pasó:** el expediente decía que faltaban **22 documentos** y que había **70 huecos** en 38. Los 22 existían: la copia traída del proyecto tenía **546 documentos menos** que el disco. De los 70 huecos quedaron **2**; los otros 68 eran citas de la marca dentro de bloques de código, o marcas del propio molde, porque `expediente` contaba con `texto.count()` a secas mientras `ciclo_de_vida` ya sabía descontarlas.
+- **Por qué importa:** **lo grave no era el número, sino lo que habría pasado al hacerle caso.** De esas 22 «faltas», catorce eran fases en la estación 6 de 11 —abiertas— y **cinco tenían veredicto «No cumple»**. Escribirles un `funcionalidad_implementada.md` habría documentado como terminado un trabajo que no terminó, obedeciendo a un reporte de la propia plataforma.
+- **Qué lo soluciona:** ya hecho. Se trajo el proyecto de nuevo —de 1002 a 1548 documentos—, el expediente le pregunta los huecos a Ciclo de vida en vez de contarlos por su cuenta, y el validador aprendió que el molde 16 tiene dos nombres (**PARCHE 37.2.2**). Los dos huecos reales se llenaron con la propia plataforma.
+- **Qué se decidió:** **antes de actuar sobre un reporte, comprobar de cuándo son los datos que lo produjeron.** Y la segunda pregunta —«si el reporte tuviera razón, ¿qué escribiría?»— es la que salvó el caso.
+- **Estado:** resuelto acá
+- **Responde a:** EP-012 · HU-001
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-121` · `plataforma/nucleo/expediente/core.py` · `validadores/expediente.py`
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-21 · El acta de entrega la firman las dos partes, y son la misma persona
+
+- **Qué pasó:** faltaban seis documentos del ciclo, los de entregar y operar. Se escribieron los cinco que faltaban de verdad —manual técnico, notas de versión, acta de entrega, bitácora de operación y plan de mantenimiento—, y al escribir el acta apareció lo que no se puede disimular: **quien entrega y quien recibe son la misma persona.**
+- **Por qué importa:** un acta firmada de ida y vuelta por el mismo no prueba que el producto sirva; prueba que está terminado y que se sabe qué es. Lo mismo con la bitácora de operación, que no tiene un solo incidente: **un renglón vacío no es un sistema estable, es un sistema que nadie ha usado.** Escribir esos dos documentos como si hubiera un tercero recibiendo habría sido el peor documento del expediente.
+- **Qué lo soluciona:** los cinco existen y cada uno declara su propio límite. El acta deja **la firma de recibido en blanco**: marcarla desde acá sería que el agente firme por el usuario.
+- **Qué se decidió:** **un documento sin materia existe igual y dice por qué no la tiene.** Uno ausente y uno vacío no se distinguen desde afuera; uno que declara su límite sí.
+- **Estado:** resuelto acá
+- **Responde a:** el ciclo de vida del proyecto
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** `cvds/despliegue/` y `cvds/mantenimiento/`
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -313,7 +343,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ las versiones 4 y 5 quedaron subidas; falta el commit de las pantallas |
+| Lo que se hizo está aprobado y guardado | ☐ subidas las versiones 4, 5 y las pantallas; falta el commit del expediente |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -328,5 +358,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 **Y la versión 5 cerró entera:** `EP-019` con el ciclo operable —abrir una fase, ver en cuál estación va, y no dejar pasar la puerta que falta—, `EP-020` con los avisos y el reporte, `EP-008` con la configuración por proyecto y `EP-011` con la medición del tiempo de revisión. **Siete funcionalidades, cuatro hallazgos, y las cinco versiones del plan cerradas el mismo día en que se decidió el orden.**
 
 **Y después de subir la 5, el usuario preguntó «qué sigue» y mandó hacer los tres frentes de una.** Los tres salieron más chicos de lo que parecían, y por la misma razón: **lo que se escribe a mano al lado de lo que un programa deriva termina diciendo otra cosa.** Las 35 funcionalidades «sin verificar» eran 0 —la columna estaba vieja, y el lector tenía un defecto—; los cinco pendientes abiertos eran dos, y a los dos los había cerrado la plataforma sin que nadie lo anotara; y de once módulos sin pantalla, cinco ya la tienen.
+
+**Y al preguntar si ya se había terminado, la respuesta fue que no: el software estaba construido y el proyecto no estaba entregado.** Faltaban 22 documentos, 70 huecos y seis documentos del ciclo. **Los 22 existían** —la copia traída tenía 546 documentos menos que el disco—, **68 de los 70 huecos eran citas de la marca**, y de los seis documentos uno ya estaba escrito con otro nombre. Quedaron cinco por escribir, y se escribieron. **El expediente: 1290 documentos, cero faltantes, cero a medio llenar.**
 
 **Lo que queda, declarado:** seis módulos siguen sin pantalla —Auditoría, Medición, Expediente, Reglas, Seguridad y Almacén—, nada se cambia desde la pantalla y así se quiso, y hay 33 fases cuya frase y cuya tabla no coinciden porque arreglarlas sería reescribir fases cerradas. Y una que no tiene arreglo: la medición inicial, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

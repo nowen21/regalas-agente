@@ -1,6 +1,4 @@
-# Estado de fase — Fase B-EP-006-HU-007-marcar-deja-fecha-y-referencia (módulo Memoria)   ·   `[CAPA 3]`
-
-**Para qué sirve este documento.** Dice **en qué estación va la fase y qué la tiene detenida**, para que una sesión nueva lo lea y siga desde ahí sin releer la conversación.
+# Estado de fase — Fase `B-EP-006-HU-007-marcar-deja-fecha-y-referencia` (módulo Memoria)   ·   `[CAPA 3]`
 
 ---
 
@@ -8,32 +6,34 @@
 
 | Campo | Valor |
 |---|---|
-| **Fase** ([`02·F12.6`](../../../../../base/02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md)) | `B-EP-006-HU-007-marcar-deja-fecha-y-referencia` |
-| **Módulo** | Memoria — [`memoria/memoria.py`](../../../../../memoria/memoria.py) |
-| **Épica / HU / origen** | [EP-006](../../epica.md) · [HU-007](../HU-007-marcar-lo-que-dejo-de-aplicar.md) · **defecto** de la fase [`A`](../A-EP-006-HU-007-retrodocumentar-la-marca-de-lo-que-dejo-de-aplicar/resultado_pruebas.md) |
-| **Última actualización** | 2026-08-17 |
+| **Fase** (identificador · `02·F12.6`) | `B-EP-006-HU-007-marcar-deja-fecha-y-referencia` |
+| **Módulo** | Memoria |
+| **Planteamiento / Épica / HU** | [EP-006](../../epica.md) · [HU-007](../HU-007-marcar-lo-que-dejo-de-aplicar.md) |
+| **Última actualización** | 2026-08-30 |
 
 ---
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
 
-| # | Etapa | Puerta | Estado |
+**Estuvo detenida trece días en la estación 4**, con su plan y su plan de pruebas escritos y sin aprobar. El usuario la aprobó el 2026-08-30 y la fase se ejecutó ese mismo día.
+
+| # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Declaración macro de la fase | bloque de fase con su identificador | ☑ |
-| 2 | Disparo / autorización de inicio | 🐞 el veredicto «No cumple» de la fase A | ☑ |
-| 3 | Diseño del plan detallado | plan de trabajo y plan de pruebas escritos | ☑ |
-| 4 | Pausa y presentación | 👤 pendiente: falta presentarlo | ☐ |
-| 5 | Aprobación del plan detallado | 👤 pendiente | ☐ |
-| 6 | Ejecución continua | 7 tareas, ninguna empezada | ☐ |
-| 7 | Pruebas | `resultado_pruebas` con veredicto | ☐ |
-| 8 | Cierre documental | trazabilidad sin faltantes | ☐ |
-| 9 | Commit único | 👤 pendiente de autorización | ☐ |
-| 10 | Reporte al usuario | — | ☐ |
-| 11 | Publicación / despliegue | 👤 pendiente | ☐ |
-
-**Nada se ejecutó todavía.** **Sin migración:** las tres columnas que hacen falta ya existen desde el pendiente 03.
+| 1 | Explorador · análisis | contexto entendido | ✅ La fase `A` dejó el defecto probado |
+| 2 | Proponente · alcance | 👤 alcance aprobado | ✅ 2026-08-30 |
+| 3 | Escritor de épica | 👤 épica aprobada | ✅ Ya existía |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ✅ Ya existía |
+| 5 | Escritor de especificación | 👤 especificación aprobada | ✅ El CA no cambia |
+| 6 | Diseñador | diseño coherente | ✅ |
+| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ✅ Escritos el 2026-08-17, aprobados el 2026-08-30 |
+| 8 | Implementador | implementado + pruebas verdes | ✅ 59 pruebas de la memoria, 59 en verde |
+| 9 | Verificador | trazabilidad sin faltantes | ✅ 4 tareas, 4 con resultado |
+| 10 | Crítico | sin hallazgos graves | ✅ |
+| 11 | Cierre documental + señales | docs y señales al día | ✅ |
+| 12 | Commit | 👤 autorizado | ✅ `be0d456` |
+| 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---
 
@@ -41,52 +41,40 @@
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | **Todavía no se ejecutó** |
-| **CA cumplidos** | 0 de 2. El CA-02 ya estaba en «Sí» tras la fase A y hay que mantenerlo |
-| **CA en "No"** | El **CA-01** y el **transversal de trazabilidad** vienen en «No» desde la fase A, y son lo que esta viene a cerrar |
-| **Defectos abiertos aceptados** | Ninguno propio. Hereda los dos de la fase A, que son su motivo |
-| **Fuente** | El `resultado_pruebas.md` de esta fase, que aún no existe. Los casos están en [`plan_pruebas.md`](plan_pruebas.md) §6 |
+| **Concepto** | **Cumple** |
+| **CA cumplidos** | El CA-01, la marcada queda con la fecha y con qué la reemplazó |
+| **CA en "No"** | Ninguno |
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) §2 |
 
 ---
 
 ## 1.2 Avance de las tareas del plan
 
-> Los identificadores se copian del [`plan_trabajo.md`](plan_trabajo.md) §3, que no se toca.
-
-| Tarea | Estado | Nota |
+| Tarea | Estado | Evidencia |
 |---|---|---|
-| T-01 | Pendiente | `cmd_supersede` guarda el `--by` y la fecha |
-| T-02 | Pendiente | Destapar la prueba del reemplazo |
-| T-03 | Pendiente | Caso del enlace en los dos sentidos — CP-001 |
-| T-04 | Pendiente | `cmd_archivar` guarda la fecha |
-| T-05 | Pendiente | Destapar la prueba de archivar |
-| T-06 | Pendiente | Caso de la señal vieja que **no** se rellena — CP-004 |
-| T-07 | Pendiente | Correr, escribir el resultado y cerrar la trazabilidad |
+| T-01 · marcar guarda por cuál y cuándo | Terminada | CP-001 |
+| T-02 · archivar deja fecha | Terminada | CP-002 |
+| T-03 · destapar las dos pruebas | Terminada | 59 en verde |
+| T-04 · arreglar la prueba que dependía del mes | Terminada | CP-004 |
 
-**Hechas:** 0 de 7. **Bloqueadas:** ninguna.
+**Hechas:** 4 de 4. **Bloqueadas:** ninguna.
 
 ---
 
-## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 2. Decisiones y señales generadas  ·  `13·DOC5`
 
-| Decisión / aprendizaje | Señal registrada |
+| Decisión / aprendizaje | Dónde queda |
 |---|---|
-| Se reutilizan `cerrada_en` y `cierra_ref` para los tres caminos: tres pares de columnas para lo mismo obliga a migrar y a mirar tres sitios | §2.6 del [`plan_trabajo.md`](plan_trabajo.md) |
-| Las columnas **no se renombran**, aunque el nombre quede corto: renombrar obliga a migrar las bases que existen, y el costo no lo paga un nombre | §2.6 del plan |
-| **Las señales marcadas antes del cambio se quedan sin fecha.** Rellenarlas con hoy sería inventar cuándo se marcaron: se vería más prolijo y sería falso | CP-004 del [`plan_pruebas.md`](plan_pruebas.md) |
-| «Quién» se cubre con la referencia: no hay identidad de usuario en la base, y agregarla es otra decisión | §2.6 del plan |
-| Lo que dice **qué** pasó es el estado; la fecha solo dice **cuándo**. Por eso reutilizar la columna no confunde archivada con cerrada | CP-002, paso 5 |
+| Un defecto que la fase anterior dejó probado con fallo esperado se arregla y se destapa, no se borra | §4 del resultado |
 
 ---
 
 ## 3. Pendiente / preguntas abiertas
 
-- **La aprobación del plan.** Es lo único que falta para arrancar: §2.7 no dejó dudas.
-- **Si alguien rellena después las señales viejas «para que queden completas»** (riesgo `R-03`): queda escrito por qué se dejan vacías. Es el riesgo de que un arreglo cosmético falsee historia.
-- **Registrar quién marcó** queda fuera: no hay identidad en la base. Si alguna vez se quiere, es una decisión aparte.
+- **La autorización del commit**, que se pide aparte.
 
 ---
 
 ## 4. Si se bloqueó
 
-No se bloqueó. Está detenida en la etapa 4 esperando la aprobación del plan, que es la puerta normal, no un bloqueo.
+No se bloqueó. Estuvo esperando una aprobación, que es distinto.

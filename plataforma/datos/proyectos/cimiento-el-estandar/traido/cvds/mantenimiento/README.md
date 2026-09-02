@@ -115,7 +115,7 @@ Lo que este documento deja a la vista antes de empezar: **el mantenimiento enter
 
 | Qué exige el ciclo | Qué lo cumple hoy | Dónde está |
 |---|---|---|
-| Por dónde entra una solicitud | Todo pedido se escribe como pendiente; 81 cerrados y 3 abiertos | [pendientes/](../../pendientes/README.md) |
+| Por dónde entra una solicitud | Todo pedido se escribe como pendiente; 81 cerrados y 3 abiertos | [pendientes/README.md/](../../pendientes/README.md) |
 | Un cambio grande vuelve a entrar por el ciclo | El pendiente no se ejecuta desde su archivo: baja a historia y se construye como fase | `02·F23` |
 | Rutinas periódicas | Al cerrar cada versión se barre lo que el usuario pidió dos veces | `M20` y [plantillas/candidatas-a-regla.md](../../plantillas/candidatas-a-regla.md) |
 | Versiones y su numeración | Mayor, menor y parche, con la regla de qué obliga a migrar | [CHANGELOG.md](../../CHANGELOG.md) y [VERSION](../../VERSION) |
@@ -127,7 +127,7 @@ Lo que este documento deja a la vista antes de empezar: **el mantenimiento enter
 |---|---|
 | 1 | los cuatro tipos de trabajo no se distinguen, así que no se puede decir cuánto se va en corregir |
 | 2 | el impacto de un cambio se evalúa como grado de versión, no como qué se rompe |
-| 3 | la vigilancia existe como [metricas/](../../metricas/README.md) y [validadores/rendimiento.py](../../validadores/rendimiento.py), sin umbrales ni aviso |
+| 3 | la vigilancia existe como [metricas/README.md/](../../metricas/README.md) y [validadores/rendimiento.py](../../validadores/rendimiento.py), sin umbrales ni aviso |
 | 4 | qué hacer cuando falla está en [prompts/](../../prompts/) como casos sueltos |
 
 **No existe**

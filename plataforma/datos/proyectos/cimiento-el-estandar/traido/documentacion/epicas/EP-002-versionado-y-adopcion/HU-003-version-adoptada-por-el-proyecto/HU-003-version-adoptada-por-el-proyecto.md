@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada — el CA-02 se volvió a medir y hoy cumple, en la fase `C` |
 ---
 
 ## 2. Narrativa
@@ -139,7 +138,8 @@ Entonces se ve desde cuándo usó cada versión
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-01 y el CA-03 sí; el CA-02 no: una versión inventada pasa y apaga el aviso. Probada sobre **shopnest-mesa** |
+| [C-EP-002-HU-003-el-ca-02-se-vuelve-a-medir](C-EP-002-HU-003-el-ca-02-se-vuelve-a-medir/estado-fase.md) | CA-02, otra vez | **Ejecutada el 2026-08-29.** Veredicto: [**Cumple**](C-EP-002-HU-003-el-ca-02-se-vuelve-a-medir/resultado_pruebas.md#2-veredicto-de-la-fase) — el CA-02 se ejecutó de nuevo y hoy se cumple: la versión inventada sale como falla. Declara reemplazar el veredicto de la fase `A` |
+**Ejecutada el 2026-08-22.** Veredicto: [**No cumple**](A-EP-002-HU-003-retrodocumentar-la-version-adoptada/resultado_pruebas.md#5-veredicto-de-la-fase) — el CA-01 y el CA-03 sí; el CA-02 no: una versión inventada pasa y apaga el aviso. Probada sobre **shopnest-mesa** |
 
 **La fase retro-documenta y mide sin corregir.** La declaración se lee y el historial de adopciones existe. Lo que falta: que la versión declarada **exista de verdad** no lo comprueba nadie, y el registro arrastra los pendientes 44 y 46.
 

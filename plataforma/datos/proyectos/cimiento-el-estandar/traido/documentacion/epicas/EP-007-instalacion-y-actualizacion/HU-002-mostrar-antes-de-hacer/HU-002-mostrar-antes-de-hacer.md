@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | En implementación — CA-01 y los transversales cumplidos; el CA-02, no |
-
+| **Estado** | Terminada — el CA-02 se cerró en la fase `B`: la simulación anuncia también el registro de versión |
 ---
 
 ## 2. Narrativa
@@ -124,6 +123,7 @@ Entonces hace exactamente eso
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
+| [B-EP-007-HU-002-el-registro-de-version-se-anuncia](B-EP-007-HU-002-el-registro-de-version-se-anuncia/estado-fase.md) | CA-02 | **Ejecutada el 2026-08-30.** Veredicto: [**Cumple**](B-EP-007-HU-002-el-registro-de-version-se-anuncia/resultado_pruebas.md#2-veredicto-de-la-fase) — la simulación compara la huella que va a quedar y nombra el archivo del registro. Declara reemplazar el veredicto de la fase `A` |
 | [A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/README.md) | CA-01 y CA-02 | **Ejecutada el 2026-08-17.** Veredicto: [**No cumple**](A-EP-007-HU-002-retrodocumentar-el-mostrar-antes-de-hacer/resultado_pruebas.md#6-veredicto-de-la-fase) — el CA-01 sí; el CA-02 no. Pendiente el commit |
 
 **La fase retro-documenta, y empieza midiendo.** Si el instalador **muestra antes** lo que va a hacer o lo cuenta mientras lo hace es lo que nadie anotó. Se mide antes de proponer: ya pasó que una HU naciera pidiendo algo que ya existía.

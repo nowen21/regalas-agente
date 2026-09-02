@@ -28,7 +28,7 @@
 | 9 | Verificación | trazabilidad sin faltantes | Pasada el 2026-08-16, cuando el ciclo 3 cerró RNF-01 |
 | 10 | Revisión crítica | sin hallazgos graves | Cinco defectos: tres corregidos, dos aceptados. Ninguno grave |
 | 11 | Cierre documental | documentos y aprendizajes al día | Hecho. El CP-006 corrió en el ciclo 3 y sí destapó: se rehicieron las 72 definiciones, se quitó el anuncio de idioma de seis entradas y `brief` pasó a **planteamiento** (v18.0.0) |
-| 12 | Commit | autorizado por el usuario | Autorizado por el usuario el 2026-08-16 |
+| 12 | Commit | autorizado por el usuario | ✅ `439c47e` |
 | 13 | Publicación | autorizada por el usuario | Pendiente |
 
 ## 1.1 Veredicto de las pruebas

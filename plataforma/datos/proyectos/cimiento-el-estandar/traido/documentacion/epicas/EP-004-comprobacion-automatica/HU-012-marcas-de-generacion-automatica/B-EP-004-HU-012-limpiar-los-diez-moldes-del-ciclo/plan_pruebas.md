@@ -1,364 +1,87 @@
-# Plan de Pruebas — «alcance»   ·   `[CAPA 3]`
+# Plan de Pruebas — Fase `B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo`   ·   `[CAPA 3]`
 
-**Para qué sirve este documento.** Dice **cómo se comprueba que lo construido hace lo que la HU pidió**: con qué casos, con qué datos, en qué ambiente y qué resultado se espera de cada paso. Su exigencia central es que **ningún criterio de aceptación quede sin al menos un caso**, para que nadie pueda dar por probado lo que nunca se probó. Se aprueba **antes** de correr la primera prueba y **no se modifica al ejecutar**: lo que pasó al correrlas va en el `resultado_pruebas.md` de la misma fase, para no perder la línea base aprobada. La lista de tareas vive en el `plan_trabajo` de esta misma fase.
-
-| Campo | Valor |
-|---|---|
-| **Código** | PP-000 |
-| **Versión** | 1.0 |
-| **Alcance del plan** | Proyecto / Release / Épica EP-000 / HU-000 |
-| **Fecha** | AAAA-MM-DD |
-| **Elaborado por** | «Nombre — QA Lead» |
-| **Revisado por** | «Nombre» |
-| **Aprobado por** | «Nombre — PO» |
-| **Estado** | Borrador / Aprobado / En ejecución / Cerrado |
-
-> Basado en ISO/IEC/IEEE 29119-3. Va **junto con el `plan_trabajo` de la fase** (`planes/trabajo.md`); se guarda en la carpeta de la fase (ruta `02·F12.13`), como `plan_pruebas.md`. Al llenar la plantilla se borra esta caja, pero **la línea de arriba, la de para qué sirve, se queda**.
+> **Retrodocumentado el 2026-08-27.** La fase se construyó y se cerró el 2026-08-22 y **este documento se quedó siendo la plantilla en blanco**: 363 líneas de molde con 36 marcadores sin reemplazar. Lo destapó la [HU-022](../../HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta/HU-022-un-documento-que-sigue-siendo-el-molde-no-cuenta.md).
 >
-> **Proporcionalidad:** este formato completo es para un release/épica. Para una **sola fase o HU**, usar únicamente las secciones **3, 5, 6, 9 y 12** — el resto es opcional. No inflar una fase chica con un plan de release.
+> **No se inventa nada.** Los casos y las cifras salen del [resultado_pruebas.md](resultado_pruebas.md), que sí se escribió y documenta paso por paso qué se hizo y qué salió. **Lo que no se puede reconstruir —qué se pensó antes de ejecutar— no se escribe.**
 
 ---
 
-## 1. Introducción
+## 1. Propósito y alcance
 
-### 1.1 Propósito
+Comprobar el `CA-04` de la [HU-012](../HU-012-marcas-de-generacion-automatica.md): **que los moldes del ciclo de vida no le pasen adorno de prosa al proyecto que los copia.**
 
-«Qué se busca validar con este plan y ante quién responde.»
+**Es una limpieza en lote sobre 10 archivos que se reparten a todos los proyectos.** Ese es el riesgo: un reemplazo automático sobre texto que otros programas leen.
 
-### 1.2 Alcance
+**Entra:** quitar la raya larga de inciso, el punto medio de prosa y las citas de regla mal formadas, dejando la notación.
 
-**Se prueba**
-- «Módulo, funcionalidad, integración incluida»
-
-**No se prueba**
-- «Exclusión explícita y su justificación»
-
-### 1.3 Documentos de referencia
-
-| Documento | Ubicación |
-|---|---|
-| Historias de usuario / Épica | «enlace» |
-| Contrato de API | «enlace» |
-| Diseño / Prototipos | «enlace» |
-| Normativa aplicable | «enlace» |
+**No entra:** llegar a cero marcas, que es lo que pedía el [pendiente 78](../../../../../pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md). Lo que quede siendo notación se conserva, y qué hacer con ella lo decide el usuario.
 
 ---
 
-## 2. Elementos a probar
+## 2. Estrategia
 
-| ID | Componente / Módulo | Versión | Responsable de desarrollo |
-|---|---|---|---|
-| CMP-01 | | | |
-| CMP-02 | | | |
+**De lote con revisión a mano encima.** Un reemplazo masivo sobre texto no se comprueba solo con un recuento: hay que **mirar línea por línea lo que cambió**, porque el daño típico es una frase que queda casi bien.
+
+**Y hay que comprobar lo que NO cambió**, que es lo que de verdad importa: ninguna sección puede desaparecer ni cambiar de nombre. Los 650 documentos ya escritos dependen de esos nombres.
 
 ---
 
-## 3. Estrategia de pruebas
+## 3. Casos de prueba
 
-### 3.1 Niveles de prueba
-
-| Nivel | Objetivo | Responsable | Ambiente | Automatizado |
-|---|---|---|---|---|
-| Unitarias | Lógica aislada de funciones y servicios | Desarrollo | Local | Sí |
-| Integración | Interacción entre componentes y BD | Desarrollo / QA | DEV | Parcial |
-| Sistema | Flujos completos end-to-end | QA | QA | Parcial |
-| Aceptación (UAT) | Validación del usuario final | Usuario clave | QA / Staging | No |
-| Regresión | Que lo existente siga funcionando | QA | QA | Sí |
-
-### 3.2 Tipos de prueba
-
-| Tipo | Aplica | Criterio |
-|---|:--:|---|
-| Funcional | ☑ | Criterios de aceptación de las HU |
-| Seguridad | ☐ | Autenticación, autorización, OWASP Top 10 |
-| Rendimiento | ☐ | Tiempo de respuesta y carga concurrente |
-| Usabilidad | ☐ | Flujo comprensible sin capacitación |
-| Compatibilidad | ☐ | Navegadores y dispositivos soportados |
-| Accesibilidad | ☐ | WCAG 2.1 nivel «A/AA» |
-| Migración de datos | ☐ | Integridad y completitud |
-| Recuperación | ☐ | Comportamiento ante fallo y rollback |
-
-### 3.3 Técnicas de diseño de casos
-
-- **Partición de equivalencia** — clases válidas e inválidas de cada entrada.
-- **Valores límite** — mínimo, mínimo±1, máximo, máximo±1, vacío, nulo.
-- **Tabla de decisión** — combinaciones de reglas de negocio.
-- **Transición de estados** — flujos con estados (borrador → aprobado → anulado).
-- **Pruebas exploratorias** — sesiones con carta de exploración documentada.
-
-### 3.4 Priorización
-
-| Prioridad | Criterio | Cobertura exigida |
+| Caso | Qué se hace | Qué debe salir |
 |---|---|---|
-| Crítica | Flujo principal de negocio o riesgo legal | 100% |
-| Alta | Funcionalidad frecuente | 100% |
-| Media | Funcionalidad secundaria | ≥ 80% |
-| Baja | Casos poco frecuentes | Según tiempo |
+| **CP-001** · volcar antes de tocar | cada marca con archivo, línea y clase | El reparto completo, clasificado |
+| **CP-002** · citas de regla al formato canónico | `` `01`·C3 `` → `` `01·C3` `` | Menos marcas, **y citas que ahora sí son citas** |
+| **CP-003** · raya de inciso a puntuación normal | las líneas que la usan como inciso | Cambiadas |
+| **CP-004** · **revisión a mano de cada línea cambiada** | las del `CP-003`, una por una | Las que quedaron mal, corregidas |
+| **CP-005** · punto medio de prosa a coma | las líneas que lo usan fuera de una cita | Cambiadas |
+| **CP-006** · **el marcador `«…»` sigue entero** | los moldes tras el `CP-005` | **Ningún marcador roto** |
+| **CP-007** · recontar y reclasificar | los 10 moldes | Lo que queda es **todo notación** |
+| **CP-008** · ninguna sección desapareció ni cambió de nombre | comparación sección por sección | Idénticas |
+| **CP-009** · las suites que dependen de los moldes | marcas, trinquete, andamio, instalador, origen de reglas | En verde |
+| **CP-010** · las comprobaciones del repositorio | `estandar`, `fases`, `pendientes` | Sin incumplimientos nuevos |
 
-### 3.5 Alcance de la ejecución automatizada  ·  [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+**El `CP-006` es el crítico, y se aprendió rompiéndolo.** El reemplazo del punto medio **partió el marcador `«…»` en 24 sitios**, y ese marcador lo leen `flujo.py`, `comun.py` y `andamio.py` para saber si una celda quedó sin llenar. El [pendiente 11](../../../../../pendientes/hecho/limpiar-marcadores-de-ia-del-texto-del-estandar.md) lo advertía por escrito **y no se leyó antes de ejecutar**.
 
-La ejecución de una fase es **quirúrgica**, no la suite completa "por si acaso":
+**El `CP-004` existe porque el `CP-003` no basta.** De 25 líneas cambiadas, **6 quedaron mal**: la coma donde iban dos puntos. Un recuento no lo ve; leerlas sí.
 
-1. La **suite del módulo** nuevo/refactorizado (obligatoria).
-2. Las suites que la fase **refactorizó explícitamente** (declaradas en el `plan_trabajo`).
-3. Las suites que **dependen directamente** de los archivos tocados (matriz de dependencias del refactor · [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)).
-
-**NO** correr por defecto la suite entera del proyecto ni módulos ajenos a la matriz. Una **regresión total** se declara aparte y explícita (ej. pre-release), no como parte del flujo normal de fase.
-
----
-
-## 4. Criterios de entrada y salida
-
-### 4.1 Criterios de entrada
-
-- [ ] Build desplegado y estable en el ambiente de pruebas
-- [ ] Criterios de aceptación de las HU documentados
-- [ ] Casos de prueba diseñados y revisados
-- [ ] Datos de prueba cargados
-- [ ] Ambiente y accesos disponibles
-- [ ] Pruebas unitarias del desarrollador pasando
-
-### 4.2 Criterios de salida
-
-- [ ] 100% de los casos críticos y altos ejecutados
-- [ ] ≥ «95»% de casos ejecutados en total
-- [ ] 0 defectos abiertos de severidad crítica o alta
-- [ ] Defectos medios/bajos documentados y aceptados por el PO
-- [ ] Pruebas de regresión ejecutadas sin nuevos hallazgos
-- [ ] Informe de pruebas emitido y aprobado
-
-### 4.3 Criterios de suspensión y reanudación
-
-**Suspender si:** el ambiente cae, un defecto bloqueante impide más del «30»% de los casos, o el build no cumple las pruebas de humo.
-**Reanudar cuando:** se despliegue una corrección verificada y las pruebas de humo pasen.
+**El `CP-008` es el que protege a los demás.** Renombrar una sección haría que 650 documentos ya escritos reporten «sección de la plantilla ausente».
 
 ---
 
-## 5. Matriz de trazabilidad
+## 4. Criterio de aprobación
 
-> Ningún criterio de aceptación **ni requisito no funcional** puede quedar sin al menos un caso de prueba. Los `RNF-0N` van en esta misma tabla, con su fila propia: un requisito sin caso es un requisito que nadie comprobó.
->
-> **Cada `CP-00N` se escribe como enlace a su caso de §6, y cada `CA-0N` o `RNF-0N` como enlace a su exigencia en la HU**, acá y en el `resultado_pruebas`. Un identificador suelto obliga a buscarlo a mano, y así es como se termina juzgando un caso sin haber leído lo que exigía.
-
-| HU | CA | Caso(s) de prueba | Tipo | Prioridad | Automatizado | Estado |
-|---|---|---|---|---|:--:|---|
-| HU-001 | CA-01 | [CP-001](#cp-001--título-del-caso), [CP-002](#cp-002--título-del-caso-negativo) | Funcional | Crítica | Sí | ☐ |
-| HU-001 | CA-02 | «CP-003» | Funcional | Alta | Sí | ☐ |
-| HU-001 | RNF-01 | «CP-004» | Seguridad | Crítica | No | ☐ |
-| HU-002 | CA-01 | «CP-005» | Funcional | Alta | No | ☐ |
-
-**Cobertura:** «n» de «n» exigencias cubiertas = «%». Cuentan los `CA-0N` y los `RNF-0N`, cada uno por separado.
+- **Ninguna marca que quede es adorno de prosa**, comprobado clasificando una por una.
+- Ningún molde perdió una exigencia, ni una sección cambió de nombre.
+- Las suites que dependen de los moldes, en verde.
+- **El recuento no tiene que dar cero**, y decirlo por escrito con el motivo.
 
 ---
 
-## 6. Casos de prueba
+## 5. Qué se ejecutó, y con qué resultado
 
-### CP-001 — «Título del caso»
+Está en el [resultado_pruebas.md](resultado_pruebas.md). En corto:
 
-| Campo | Valor |
-|---|---|
-| **HU / CA** | HU-001 / CA-01 |
-| **Tipo** | Funcional — camino feliz |
-| **Prioridad** | Crítica |
-| **Precondiciones** | «Estado previo del sistema y datos requeridos» |
-| **Datos de entrada** | «Valores concretos» |
-| **Diseñado por** | |
-
-**Pasos**
-
-| # | Acción | Resultado esperado |
+| Métrica | Antes | Después |
 |---|---|---|
-| 1 | «Acción del usuario» | «Respuesta del sistema» |
-| 2 | | |
-| 3 | | |
+| Marcas en los 10 moldes | 197 | **126** |
+| Raya larga como inciso | 92 | 59 |
+| Punto medio fuera de cita | 62 | 24 |
 
-**Un paso, una acción.** Cada fila lleva un solo verbo y un solo resultado esperado. Dos acciones en la misma fila comparten un único renglón de resultado: al ejecutar se registra el de la segunda y el de la primera se pierde, sin que nadie lo note.
+**Se quitaron 71, y las 126 que quedan son todas notación**, clasificadas una por una: 43 etiquetas de campo, 40 celdas de tabla, 23 títulos y 21 identificadores con su enunciado.
 
-```
-INCORRECTO: | 1 | Tomar la lista de origen y contar cuántos términos tiene | Queda un número por grupo |
-            — se anota el conteo y no queda rastro de qué lista se tomó
-CORRECTO:   | 1 | Tomar la lista de origen                | Queda a la vista, con su archivo |
-            | 2 | Contar cuántos términos tiene por grupo | Queda un número por grupo        |
-```
-
-**Resultado esperado final:** «Estado observable del sistema»
-**Postcondiciones:** «Registros creados, estados modificados, eventos de auditoría»
-
-> El resultado de haberlo corrido **no se anota acá**: va en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`).
+**Cuatro defectos**, tres reales y uno falso — y el falso también enseña: se reportó que el recuento contaba marcas dentro de bloques de código, y **era mentira**; las había contado un clasificador improvisado del propio agente, no `marcas.py`.
 
 ---
 
-### CP-002 — «Título del caso negativo»
+## 6. Herramientas y datos
 
-| Campo | Valor |
-|---|---|
-| **HU / CA** | HU-001 / CA-02 |
-| **Tipo** | Funcional — validación |
-| **Prioridad** | Alta |
-| **Precondiciones** | |
-| **Datos de entrada** | «Datos inválidos deliberados» |
+`marcas.py` para el recuento, los 10 moldes reales, y las 47 pruebas de las suites que dependen de ellos. **Ninguna prueba usa credenciales** (`00·N6`).
 
-**Pasos**
+---
 
-| # | Acción | Resultado esperado |
+## 7. Control de versiones
+
+| Versión | Fecha | Cambio |
 |---|---|---|
-| 1 | | «Mensaje de error específico; el estado no cambia» |
-
----
-
-## 7. Datos y ambientes de prueba
-
-### 7.1 Ambientes
-
-| Ambiente | URL | Uso | Versión de datos | Responsable |
-|---|---|---|---|---|
-| DEV | | Integración continua | Sintéticos | |
-| QA | | Pruebas de sistema | Copia anonimizada | |
-| Staging | | UAT y regresión | Réplica de producción | |
-
-### 7.2 Datos de prueba
-
-| Conjunto | Descripción | Origen | Anonimización |
-|---|---|---|---|
-| DS-01 | «Usuarios y roles de prueba» | Script `seed.sql` | N/A |
-| DS-02 | «Registros de negocio» | Copia de producción | Requerida |
-
-> **Regla:** ningún dato personal real sin anonimizar en ambientes distintos de producción ([`00·N4`](../../../../../base/00-nucleo-blindado.md#n4--proteger-los-datos-reales-blindada) · `12` privacidad). La norma concreta de protección de datos que aplica se declara en `.agente/marco-normativo.md` (no se asume una jurisdicción aquí).
-
-### 7.3 Usuarios de prueba
-
-| Usuario | Rol | Permisos | Propósito |
-|---|---|---|---|
-| `qa.admin` | Administrador | Todos | Flujos completos |
-| `qa.operador` | Operador | Limitados | Verificar restricciones |
-| `qa.consulta` | Consulta | Solo lectura | Pruebas negativas de autorización |
-
-### 7.4 Qué NO reproduce el entorno de pruebas  ·  [`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
-
-Lo que el entorno automático **no** cubre y exige **verificación manual documentada** (para no dar por probado lo que no se probó):
-
-- «Integraciones externas reales, comportamiento del navegador, permisos del SO, symlinks/rutas especiales, concurrencia real, archivos con encoding/tamaño extremos, rendimiento sobre volúmenes reales, etc.»
-
----
-
-## 8. Herramientas
-
-| Propósito | Herramienta | Responsable |
-|---|---|---|
-| Gestión de casos y defectos | «Jira / Azure Test Plans» | |
-| Automatización UI | «Playwright / Cypress / Selenium» | |
-| Automatización API | «Postman / pytest / RestAssured» | |
-| Pruebas unitarias | «pytest / PHPUnit / Jest» | |
-| Rendimiento | «k6 / JMeter» | |
-| Análisis estático y seguridad | «SonarQube / OWASP ZAP» | |
-| Cobertura de código | «coverage.py / Istanbul» | |
-
----
-
-## 9. Gestión de defectos
-
-### 9.1 Clasificación por severidad
-
-| Severidad | Definición | Tiempo de atención |
-|---|---|---|
-| **Crítica** | Bloquea el flujo principal, pérdida de datos o brecha de seguridad | Inmediato |
-| **Alta** | Funcionalidad importante inoperante sin alternativa | 24 h |
-| **Media** | Falla con alternativa disponible | Dentro del sprint |
-| **Baja** | Cosmético o de bajo impacto | Backlog |
-
-### 9.2 Flujo del defecto
-
-```
-Nuevo → Asignado → En corrección → Listo para pruebas → Verificado → Cerrado
-                                                       ↘ Reabierto ↗
-```
-
-### 9.3 Contenido mínimo de un reporte
-
-- ID, título descriptivo, severidad y prioridad
-- Ambiente, build y usuario utilizado
-- Pasos exactos para reproducir
-- Resultado esperado vs. resultado obtenido
-- Evidencia (captura, log, request/response)
-- Caso de prueba y HU asociados
-
-### 9.4 Registro
-
-| ID | Título | CP | Severidad | Estado | Asignado | Fecha | Cierre |
-|---|---|---|---|---|---|---|---|
-| DEF-01 | | CP-001 | Alta | Abierto | | | |
-
----
-
-## 10. Cronograma
-
-| Actividad | Inicio | Fin | Responsable |
-|---|---|---|---|
-| Diseño de casos de prueba | | | QA |
-| Preparación de ambiente y datos | | | DevOps / QA |
-| Ejecución — ciclo 1 | | | QA |
-| Corrección de defectos | | | Desarrollo |
-| Ejecución — ciclo 2 (reprueba) | | | QA |
-| Pruebas de regresión | | | QA |
-| UAT | | | Usuario clave |
-| Informe y cierre | | | QA Lead |
-
----
-
-## 11. Roles y responsabilidades
-
-| Rol | Responsabilidad |
-|---|---|
-| QA Lead | Elabora el plan, define estrategia, aprueba el cierre |
-| Analista de pruebas | Diseña y ejecuta casos, reporta defectos |
-| Desarrollador | Pruebas unitarias, corrige defectos |
-| Product Owner | Aprueba criterios de salida y acepta defectos residuales |
-| Usuario clave | Ejecuta UAT y firma la aceptación |
-| DevOps | Provisiona ambientes y despliega builds |
-
----
-
-## 12. Métricas e informe
-
-### 12.1 Métricas
-
-| Métrica | Fórmula | Meta |
-|---|---|---|
-| Cobertura de exigencias | (CA + RNF) con caso / (CA + RNF) totales | 100% |
-| Casos ejecutados | Ejecutados / diseñados | ≥ 95% |
-| Tasa de aprobación | Aprobados / ejecutados | ≥ 95% |
-| Densidad de defectos | Defectos / punto de historia | ≤ «n» |
-| Efectividad de detección | Defectos en QA / (QA + producción) | ≥ 90% |
-| Tasa de reapertura | Reabiertos / corregidos | ≤ 10% |
-
-### 12.2 Dónde se miden
-
-El resumen de la ejecución, el veredicto por criterio y el concepto final **no van acá**: son resultado de ejecutar, y viven en el `resultado_pruebas.md` de la fase (plantilla `planes/resultados.md`). Este plan define **qué se va a medir**; aquel documento dice **cuánto dio**.
-
----
-
-## 13. Riesgos del proceso de pruebas
-
-| ID | Riesgo | Impacto | Mitigación |
-|---|---|---|---|
-| RP-01 | Ambiente inestable | Retrasa la ejecución | Ventana de despliegue acordada |
-| RP-02 | Datos insuficientes | Casos no ejecutables | Scripts de carga versionados |
-| RP-03 | Entrega tardía de desarrollo | Compresión del ciclo | Pruebas por incrementos |
-
----
-
-## 14. Control de versiones
-
-| Versión | Fecha | Autor | Cambio |
-|---|---|---|---|
-| 1.0 | | | Versión inicial |
-
----
-
-## 15. Aprobación
-
-| Rol | Nombre | Firma | Fecha |
-|---|---|---|---|
-| QA Lead | | | |
-| Product Owner | | | |
-| Líder técnico | | | |
+| 1 | 2026-08-27 | **Retrodocumentado.** La fase cerró el 2026-08-22 sin este documento |

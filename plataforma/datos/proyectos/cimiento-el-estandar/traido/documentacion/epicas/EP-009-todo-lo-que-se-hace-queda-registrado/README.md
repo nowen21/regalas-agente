@@ -5,6 +5,6 @@ Que quede constancia de qué se hizo, quién, cuándo y sobre qué, enlazada con
 | Qué | De qué se trata |
 |---|---|
 | [epica.md](epica.md) | La épica: su alcance, sus criterios y sus historias |
-| [HU-001-registrar-cada-accion/](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que cambia algo |
+| [documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md/](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que cambia algo |
 
 Épica de la versión 1 de Cimiento, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md).

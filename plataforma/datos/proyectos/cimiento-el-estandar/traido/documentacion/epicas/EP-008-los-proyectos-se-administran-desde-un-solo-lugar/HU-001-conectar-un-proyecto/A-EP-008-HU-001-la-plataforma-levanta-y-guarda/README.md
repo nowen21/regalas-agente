@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** La base de la plataforma: levantar, guardar en texto, y reconstruir el índice desde ahí.
 

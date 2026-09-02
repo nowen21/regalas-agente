@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Qué pantallas hay, qué se ve y qué se hace en cada una, cómo se llega de una a otra, y qué pasa cuando algo falta. La interfaz **administra**: desde ella se crea, se edita y se publica, y todo cambio queda firmado y registrado ([`DA-12`](decisiones-de-arquitectura.md)).
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reescrito el 2026-08-24: la versión anterior describía una pantalla que solo dejaba mirar.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Reescrito el 2026-08-24: la versión anterior describía una pantalla que solo dejaba mirar.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

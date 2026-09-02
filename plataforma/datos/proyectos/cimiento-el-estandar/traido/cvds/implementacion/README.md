@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Deja escrito en qué versiones se parte la construcción de Cimiento, qué unidad de trabajo cubre cada funcionalidad, en qué orden se hacen y cómo se deshace lo que salga mal. El detalle de cada unidad vive en su propia fase; acá queda el gobierno de todas.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Sale de los doce módulos del [diseño](../diseno/README.md) y de las 32 fichas del [inventario](../analisis-requisitos/inventario-funcionalidades.md), aprobados el 2026-08-24.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Sale de los doce módulos del [diseño](../diseno/README.md) y de las 32 fichas del [inventario](../analisis-requisitos/inventario-funcionalidades.md), aprobados el 2026-08-24.
 
 **Estado: APROBADO** (2026-08-25, por Ing. José Dúmar Jiménez Ruíz).
 
@@ -34,6 +34,12 @@
 **Lo que la versión 1 no da, y conviene saberlo:** el agente sigue trabajando como hoy hasta la versión 3. La plataforma muestra y guarda, pero todavía no gobierna.
 
 **Por qué `F-035` entró a la primera después de aprobado el plan.** Salió al ver la primera pantalla funcionando: conectar no tenía reversa. Un proyecto registrado con el nombre o la ruta equivocados quedaba así para siempre, y el único arreglo era editar a mano lo que la plataforma administra. Postergarlo acumula errores que después hay que limpiar de otra forma, así que entra a la versión 1 como fase H.
+
+**Por qué `F-014` se queda en la segunda aunque su ficha diga que depende de una de la quinta.** Al ir a construirla apareció el choque: `F-014` está en la segunda y su ficha dice **Depende de F-011**, que está en la quinta. Se revisó el reparto entero cruzando las 35 fichas contra las cinco versiones, y el choque resultó ser de la columna, no del orden.
+
+**La columna «Depende de» dice qué necesita que exista, no qué hay que construir antes.** Lo demuestran dos funcionalidades ya andando: `F-027`, que es de la versión 1 y está cerrada, dice depender de `F-011`; `F-025`, de la versión 2 y también cerrada, dice depender de `F-014`. Ninguna de las dos tenía construida su dependencia y las dos funcionan, porque **la importación trae los documentos y las fases ya escritos**. Lo que `F-014` necesita para empezar es que haya documentos en la plataforma, y los hay.
+
+**Por qué no se movieron de versión.** Se probó: llevar `F-014` a la quinta arrastra a `F-015` y `F-025`, que dependen de ella, y los pares fuera de orden pasan de dos a tres. El desorden aparente se arregla en la columna, que es donde estaba el error, no en el reparto.
 
 **Por qué `F-033` y `F-034` van en la segunda y no en la primera.** Entraron el 2026-08-25, después de aprobado el inventario. Postergarlas no pierde nada: las conversaciones ya están escritas y versionadas, así que se pueden indexar hacia atrás el día que se construya. Es lo contrario de `F-018`, que sí tuvo que adelantarse porque una acción no registrada en el momento no queda escrita en ninguna otra parte.
 
@@ -231,3 +237,11 @@ De ahí salieron cuatro reglas que quedaron escritas como señales, y que valen 
 Falta la puerta: la especificación de los módulos que toca la versión 1, que son **Proyectos, Auditoría e Importación**. Las de los otros nueve módulos se escriben al llegar a su versión, para no documentar hoy lo que va a cambiar en meses.
 
 **Las cinco versiones y su orden quedan fijados acá.** Un cambio de orden se anota como cambio a la línea base, no se hace en silencio.
+
+### Cambios a la línea base
+
+| Fecha | Qué cambió | Por qué |
+|---|---|---|
+| 2026-08-25 | `F-035` entra a la versión 1 | Conectar un proyecto no tenía reversa |
+| 2026-08-25 | `F-033` y `F-034` entran a la versión 2 | Salieron después de aprobado el inventario |
+| 2026-09-01 | **Nada** | Se revisó el reparto contra las dependencias de las 35 fichas. Ninguna versión se movió; lo que se corrigió fue la columna del inventario |

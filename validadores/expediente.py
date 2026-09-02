@@ -50,8 +50,13 @@ ENTREGABLES = (
     ("14", "Modelo de datos", ("modelo-de-datos.md", "modelo-datos.md")),
     ("15", "Diseño de interfaz", ("diseno-de-interfaz.md",
                                   "diseño-de-interfaz.md")),
+    # `contrato-de-la-interfaz.md` es el mismo entregable con el nombre que el
+    # estándar le da en su tabla de moldes: el tipo «contrato de la interfaz»
+    # apunta a `16-documentacion-de-api.md`. Buscarlo solo por el nombre del
+    # molde daba «falta» sobre un documento escrito.
     ("16", "Documentación de API", ("documentacion-de-api.md",
-                                    "documentacion-api.md")),
+                                    "documentacion-api.md",
+                                    "contrato-de-la-interfaz.md")),
     ("17", "Manual de instalación", ("manual-de-instalacion.md",
                                      "manual-instalacion.md")),
     ("18", "Manual técnico y de operación",

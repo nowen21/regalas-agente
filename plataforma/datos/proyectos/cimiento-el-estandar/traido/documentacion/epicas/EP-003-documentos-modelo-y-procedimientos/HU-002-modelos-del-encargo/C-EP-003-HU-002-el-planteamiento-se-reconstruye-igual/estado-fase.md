@@ -30,10 +30,10 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `9b808e0` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
-**De las estaciones 1 a 6.** La épica y la historia ya existían; el CA-04 se agregó a HU-002 el 2026-08-22 con la aprobación del usuario. La especificación del módulo vive en [epica.md](../../epica.md) §5.1 y §5.4 fila 10. El diseño de lo que hay que escribir está en §2.6 del [plan de trabajo](plan_trabajo.md), con sus cuatro decisiones y la alternativa que se descartó en cada una.
+**De las estaciones 1 a 6.** La épica y la historia ya existían; el CA-04 se agregó a HU-002 el 2026-08-22 con la aprobación del usuario. La especificación del módulo vive en [documentacion/epicas/EP-003-documentos-modelo-y-procedimientos/epica.md](../../epica.md) §5.1 y §5.4 fila 10. El diseño de lo que hay que escribir está en §2.6 del [plan de trabajo](plan_trabajo.md), con sus cuatro decisiones y la alternativa que se descartó en cada una.
 
 ---
 

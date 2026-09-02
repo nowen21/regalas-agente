@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Es la autorización formal del proyecto y su plan de conjunto: quién lo encarga, qué autoriza exactamente, con qué hitos y qué riesgos se asumen. El planteamiento dice **qué problema** se resuelve; esta dice **que se autoriza resolverlo**, con nombre, fecha y límites.
 
-> **Escrito desde la propuesta**, igual que el resto de [cvds/](../README.md). Reemplaza al acta firmada el 2026-08-24, que autorizaba otro producto. Quien encarga y quien autoriza son la misma persona, y eso se escribe igual: la firma de uno mismo también fija el compromiso.
+> **Escrito desde la propuesta**, igual que el resto de [cvds/README.md/](../README.md). Reemplaza al acta firmada el 2026-08-24, que autorizaba otro producto. Quien encarga y quien autoriza son la misma persona, y eso se escribe igual: la firma de uno mismo también fija el compromiso.
 
 **Estado: APROBADO** (2026-08-24, por Ing. José Dúmar Jiménez Ruíz).
 

@@ -104,7 +104,7 @@ Lo que este documento deja fijado antes de empezar es la sección 3: buena parte
 |---|---|---|
 | Plan de pruebas junto al de trabajo | Se aprueban juntos, y sin eso no se ejecuta | `02·F4` |
 | Probar que lo que no debe pasar no pase | Buena parte de las pruebas comprueban el rechazo, no el caso feliz | Las 38 pruebas de la versión 33.1.0, en [CHANGELOG.md](../../CHANGELOG.md) |
-| La evidencia | 115 resultados de prueba con lo que se ejecutó y su salida | [documentacion/epicas/](../../documentacion/epicas/README.md) |
+| La evidencia | 115 resultados de prueba con lo que se ejecutó y su salida | [documentacion/epicas/README.md/](../../documentacion/epicas/README.md) |
 | Veredicto por criterio | Comprobado por programa, no por lectura | [validadores/veredicto.py](../../validadores/veredicto.py) |
 | Qué quedó sin probar | Lo no probado se declara «sin verificar», y esa es la regla | `08·T1` y el molde 09 del ciclo |
 
@@ -112,8 +112,8 @@ Lo que este documento deja fijado antes de empezar es la sección 3: buena parte
 
 | # | Qué |
 |---|---|
-| 1 | los niveles de prueba existen de hecho (68 pruebas de validadores más [evals/](../../evals/README.md)) pero nadie los declaró como tales |
-| 2 | los defectos se registran en [pendientes/](../../pendientes/README.md) sin gravedad ni tiempo de respuesta |
+| 1 | los niveles de prueba existen de hecho (68 pruebas de validadores más [evals/README.md/](../../evals/README.md)) pero nadie los declaró como tales |
+| 2 | los defectos se registran en [pendientes/README.md/](../../pendientes/README.md) sin gravedad ni tiempo de respuesta |
 | 3 | la corrida completa existe como [validadores/validar.py](../../validadores/validar.py) pero no hay política escrita de qué se vuelve a correr antes de entregar |
 | 4 | el usuario acepta cada cambio, pero sin acta de aceptación |
 

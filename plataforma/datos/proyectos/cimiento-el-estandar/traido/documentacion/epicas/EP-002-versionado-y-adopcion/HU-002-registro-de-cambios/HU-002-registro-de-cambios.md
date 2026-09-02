@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada |
 ---
 
 ## 2. Narrativa
@@ -141,7 +140,7 @@ Entonces entiende qué le van a exigir de más y por qué
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-002-HU-002-retrodocumentar-el-registro-de-cambios/resultado_pruebas.md) — y la comprobación reprobó una entrada escrita ese mismo día |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-002-HU-002-retrodocumentar-el-registro-de-cambios/resultado_pruebas.md) — y la comprobación reprobó una entrada escrita ese mismo día |
 | [B-EP-002-HU-002-la-entrada-se-entiende-sin-conocer-el-proyecto](B-EP-002-HU-002-la-entrada-se-entiende-sin-conocer-el-proyecto/README.md) | CA-03 | Cerrada 2026-08-18 (v23.9.0) |
 
 **La fase retro-documenta y no toca el registro.** Y trae un hallazgo: el CA-02 —«un cambio sin entrada no pasa»— hoy no lo impide nada. La fila 19 del checklist lo decidiría, y su programa no se puede correr.

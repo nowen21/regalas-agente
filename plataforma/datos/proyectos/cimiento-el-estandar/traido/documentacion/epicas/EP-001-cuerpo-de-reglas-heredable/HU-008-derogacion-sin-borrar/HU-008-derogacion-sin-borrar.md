@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | S |
 | **Solicitante** | Quien define el estándar |
-| **Estado** | Cumplida — los tres CA y los dos transversales verificados el 2026-08-17 |
-
+| **Estado** | Terminada — los tres CA y los dos transversales verificados el 2026-08-17 |
 ## 2. Narrativa
 
 - **Como** quien va a leer dentro de dos años un documento que cita una regla

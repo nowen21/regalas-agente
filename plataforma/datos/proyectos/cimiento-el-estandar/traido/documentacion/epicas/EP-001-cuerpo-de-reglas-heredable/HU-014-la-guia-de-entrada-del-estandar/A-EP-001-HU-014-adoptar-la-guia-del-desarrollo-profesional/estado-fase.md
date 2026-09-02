@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ 2026-08-21: cierre §2, 5 de 5 ítems y 5 de 5 tareas |
 | 10 | Crítico | sin hallazgos graves | ☑ un desvío declarado (línea de índice de 102 bytes), aceptado en el resultado §4 |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ 2026-08-21: cierre, versión 28.2.0, pendiente 73 en hecho/ con 9 avisos |
-| 12 | Commit | 👤 autorizado | ☐ **esperando al usuario** |
+| 12 | Commit | 👤 autorizado | ✅ `98468b6` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---

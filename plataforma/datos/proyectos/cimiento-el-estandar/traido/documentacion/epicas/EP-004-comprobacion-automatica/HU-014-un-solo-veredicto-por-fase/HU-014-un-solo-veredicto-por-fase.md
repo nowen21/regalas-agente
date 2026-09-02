@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ---
 
 ## 2. Narrativa
@@ -148,7 +147,7 @@ Entonces sale un hallazgo por cada número que no cuadra
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| «…» | «…» | Sin abrir |
+| [A-EP-004-HU-014-comparar-los-dos-veredictos](A-EP-004-HU-014-comparar-los-dos-veredictos/estado-fase.md) | Los tres: CA-01, CA-02 y CA-03 | Sin abrir |
 
 ---
 

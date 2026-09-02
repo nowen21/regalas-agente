@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada |
 ---
 
 ## 2. Narrativa
@@ -141,7 +140,7 @@ Entonces se pide esa aprobación aparte
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-008-retrodocumentar-los-puntos-de-aprobacion/resultado_pruebas.md) — la lista sí llega a los proyectos: está en el molde del estado de fase |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-008-retrodocumentar-los-puntos-de-aprobacion/resultado_pruebas.md) — la lista sí llega a los proyectos: está en el molde del estado de fase |
 
 **Mitad retro-documentación, mitad construcción.** Los puntos existen y las reglas que los sostienen también. Lo que falta es la lista: hoy vive dentro de un procedimiento y no en `base/`, así que un proyecto que hereda no la recibe.
 

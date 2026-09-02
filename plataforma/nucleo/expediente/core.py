@@ -48,13 +48,23 @@ def _texto_de(traido):
         return ""
 
 
-def huecos_de(texto):
+def huecos_de(texto, tipo="", relativa=""):
     """Cuántos espacios por llenar conserva un documento.
 
-    Cuenta la marca de la casa. Un hueco escrito con texto adentro no se
-    cuenta, y el porqué está arriba: no se distingue de una cita.
+    **No los cuenta este módulo: se los pregunta a Ciclo de vida**, que es el
+    dueño de saber qué es un hueco. Contarlos acá con `texto.count()` daba de
+    más, y mucho: una marca dentro de un bloque de código es una **cita** de la
+    marca, no un hueco, y la que también está en el molde no se distingue de la
+    del molde. Con la cuenta a secas este módulo reportaba **70 huecos** en
+    documentos que Ciclo de vida daba por completos.
+
+    Dos módulos contando lo mismo con reglas distintas es tener dos verdades, y
+    la que gana es la que alguien mira primero.
     """
-    return (texto or "").count(MARCA_DEL_HUECO)
+    if not texto:
+        return 0
+    from nucleo.ciclo_de_vida import core as ciclo
+    return ciclo.de_un_texto(texto, tipo, relativa)["cuantos"]
 
 
 def fase_de(origen):
@@ -164,7 +174,7 @@ def _lo_incompleto(por_grupo):
     incompletos = []
     for documentos in por_grupo.values():
         for traido in documentos:
-            cuantos = huecos_de(_texto_de(traido))
+            cuantos = huecos_de(_texto_de(traido), traido.tipo, traido.origen)
             if cuantos:
                 incompletos.append({"origen": traido.origen,
                                     "tipo": traido.tipo,

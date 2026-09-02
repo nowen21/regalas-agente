@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ---
 
 ## 2. Narrativa
@@ -145,7 +144,7 @@ Entonces tienen las mismas secciones y el mismo nivel de detalle
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-006-retrodocumentar-los-procedimientos-por-rol/resultado_pruebas.md) — probada sobre once corridas del mismo encargo, que es el que la fase esperaba y ocurrió solo |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-003-HU-006-retrodocumentar-los-procedimientos-por-rol/resultado_pruebas.md) — probada sobre once corridas del mismo encargo, que es el que la fase esperaba y ocurrió solo |
 
 **La fase retro-documenta.** Los diez procedimientos de rol existen y se invocan. Falta la tabla que diga, con su cita, qué recibe y qué entrega cada uno — y la prueba de que el mismo encargo da el mismo tipo de resultado, que nunca se midió.
 

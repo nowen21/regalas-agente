@@ -197,7 +197,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 ## S-021 · Un recuerdo que se cumple a medias se sigue incumpliendo, y el hueco es siempre el mismo  ·  error-resuelto · activa
 - **What:** el 2026-08-20 quedó escrito el recuerdo «los guiones de apoyo van dentro del repositorio», después de que el usuario preguntara por qué el agente escribía en la carpeta temporal de la herramienta. El 2026-08-22 el agente escribió **31 guiones** en esa misma carpeta durante una jornada entera, y el usuario volvió a preguntar lo mismo.
 - **Why:** el recuerdo decía «dentro del repositorio (en una carpeta temporal ignorada por git) **o no se escribe**», y esa puerta —la carpeta temporal— dejaba el cumplimiento a interpretación. El agente leyó «temporal» y usó la de la herramienta. Y el daño no era el sitio: era que **el resultado quedaba versionado y el cómo se perdía**; a la pregunta «¿con qué se recortaron esas treinta reglas?» no había respuesta en ninguna parte.
-- **Where:** el recuerdo [guiones-de-apoyo-dentro-del-repo.md](../historico-chat/memory/guiones-de-apoyo-dentro-del-repo.md), reescrito sin la puerta · la carpeta nueva [historico-chat/scripts/](../historico-chat/scripts/README.md), con los 31 de esa jornada.
+- **Where:** el recuerdo [historico-chat/memory/guiones-de-apoyo-dentro-del-repo.md](../historico-chat/memory/guiones-de-apoyo-dentro-del-repo.md), reescrito sin la puerta · la carpeta nueva [historico-chat/scripts/README.md/](../historico-chat/scripts/README.md), con los 31 de esa jornada.
 - **Learned:** un recuerdo con una alternativa («esto o aquello») se cumple por la alternativa más cómoda. Y la prueba de que un recuerdo funciona no es que esté escrito: es que el usuario no tenga que repetirlo. Cuando lo repite, lo que hay que arreglar es **el texto del recuerdo**, no la conducta de esa vez.
 - **When/Who:** 2026-08-22 · usuario: «nada se debe escribir por fuera, todo debe quedar en historico-chat».
 - **Scope:** estándar; aplica a cualquier proyecto donde el agente escriba guiones de apoyo.
@@ -226,7 +226,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **What:** el usuario pidió que las conversaciones completas entraran a la base «porque eso va a permitir sacar estadísticas y encontrar soluciones: algo que se repita mucho es porque el agente no lo está contemplando». Eso choca de frente con `RN-4` de la especificación de Auditoría, aprobada el mismo día: «se registra la acción, no la conversación», con su razón escrita: la transcripción pesa, se llena de ruido y arrastra credenciales.
 - **Why:** el choque era aparente, y el agente estuvo a punto de resolverlo por el camino caro: cambiar la especificación aprobada y la regla. Lo que había era **otra funcionalidad**. La auditoría responde *qué se hizo* y sirve para demostrar; el índice de conversaciones responde *qué se conversó* y sirve para descubrir lo que nadie escribió. Dos preguntas, dos almacenamientos, y ninguna regla que tocar.
 - **Also:** la razón que motivaba `RN-4` ya no aplicaba, y comprobarlo tomó un `grep`: [validadores/historico.py:82](../validadores/historico.py#L82) enmascara el mensaje y la respuesta antes de escribir, así que el texto del histórico ya está sin claves. El riesgo que la regla evitaba estaba resuelto desde el pendiente 84.
-- **Where:** [pendientes/85](../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) · épica [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) · `F-033` y `F-034` del inventario · sección 14.1 del [análisis](../cvds/analisis-requisitos/README.md).
+- **Where:** [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) · épica [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md) · `F-033` y `F-034` del inventario · sección 14.1 del [análisis](../cvds/analisis-requisitos/README.md).
 - **Learned:** cuando una petición del usuario choca con algo ya aprobado, la primera pregunta no es «¿cambio lo aprobado?» sino «¿es lo mismo que lo aprobado, o es otra cosa?». Casi siempre es otra cosa, y entonces no hay conflicto: hay una funcionalidad que faltaba. Cambiar la línea base es lo último que se intenta, no lo primero.
 - **When/Who:** 2026-08-25 · usuario: «la idea es que todo ese historial también se vaya guardando en la DB».
 - **Scope:** estándar; aplica a cualquier petición que parezca contradecir un documento aprobado.
@@ -275,7 +275,7 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **What:** al ver la primera pantalla de la plataforma, el usuario preguntó «pero eso no tiene administración?». Buscando la respuesta apareció esto: la especificación del módulo Proyectos decidía en su §7 que **desconectar** pide confirmación, y en su §12 que **desconectar no borra la documentación**, con su alternativa descartada y su porqué. Y no existía ninguna funcionalidad `F-` ni requisito `RF-` que lo pidiera. Su propia §1, la de alcance, no lo nombraba.
 - **Why:** una decisión escrita en una especificación **no construye nada**. Lo que baja a fase es el inventario, y si la funcionalidad no está ahí, ninguna fase la va a hacer. El documento queda prometiendo un comportamiento que nadie va a implementar, y el hueco no se ve leyendo la especificación: se ve usando el producto, que es tarde.
 - **Also:** el daño concreto era que conectar no tenía reversa. Un proyecto registrado con el nombre o la ruta equivocados quedaba así para siempre, y el arreglo era editar a mano el texto que la plataforma administra. Se comportaba como una acción **que no se deshace** cuando debía ser de las que se deshacen solas.
-- **Where:** [pendientes/86](../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) · `F-035` y `RF-35` · [HU-004](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) · la §15 de la [especificación de Proyectos](proyectos/spec.md), donde quedó anotado el cambio.
+- **Where:** [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) · `F-035` y `RF-35` · [HU-004](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md) · la §15 de la [especificación de Proyectos](proyectos/spec.md), donde quedó anotado el cambio.
 - **Learned:** al cerrar una especificación, contrastar sus secciones de comportamiento y de decisiones contra su propia sección de alcance, y contra el inventario. Todo lo que la especificación **describe cómo se comporta** tiene que tener una fila en el inventario, o no se va a construir. Y al revés: una decisión tomada sobre algo que no está pedido es la señal de que falta pedirlo.
 - **When/Who:** 2026-08-25 · usuario, con una sola pregunta sobre la pantalla.
 - **Scope:** estándar; aplica a cualquier proyecto que escriba especificaciones de módulo.
@@ -389,3 +389,866 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-08-25 · agente y usuario, en la fase F.
 - **Scope:** estándar; aplica a cualquier proyecto con registro de auditoría.
 - **Rel:** S-024 (guardar la acción y guardar el contenido son cosas distintas).
+
+## S-041 · Un validador que lo recorre todo termina juzgando lo que no es suyo  ·  decisión · activa
+- **What:** la plataforma trajo 1005 documentos de un proyecto y los dejó dentro del repositorio. Los validadores del estándar los revisaron como si fueran documentación propia y reportaron **3840 enlaces rotos**. Ninguno lo estaba: son enlaces relativos que resuelven en el proyecto de origen y no en la copia. El validador no encontró un defecto, encontró que estaba mirando el árbol equivocado.
+- **Why:** la pregunta que abrió esto era otra —«¿lo traído se versiona?»— y parecía de arquitectura. No lo era: [`DA-02`](../cvds/diseno/decisiones-de-arquitectura.md) ya dice que **se clona la plataforma y está todo**, y [`DA-10`](../cvds/diseno/decisiones-de-arquitectura.md) ya aceptó la duplicación como costo declarado. Lo traído se versiona porque está decidido desde antes. Lo que faltaba decidir era **hasta dónde llega un validador**.
+- **Also:** el arreglo fácil era sacar lo traído del control de versiones, y contradice las dos decisiones aprobadas. El segundo arreglo fácil era saltar toda carpeta llamada `datos`, y **esconde documentación de verdad**: cualquier proyecto puede darle ese nombre a una carpeta suya. Se salta por **ruta**, no por nombre.
+- **Also (2):** el filtro sobre el recorrido del disco **no alcanzó**. El trinquete de marcas no recorre el disco: lee **lo preparado en git**, y por ahí volvió a entrar lo traído. Se vio por el reloj antes que por el veredicto — el enganche de guardar se quedó minutos, porque compara contra el historial **una llamada a git por archivo**: mil documentos ajenos, mil llamadas. Con el corte puesto, dos segundos. **Un mismo error de categoría entra por tantas puertas como formas haya de listar archivos**, y arreglar una no arregla las otras.
+- **Where:** `EXCLUIDAS_POR_RUTA`, `es_ruta_de_datos` y `es_dato_de_la_plataforma` en [validadores/comun.py](../validadores/comun.py), usados por los cuatro caminos que llegaban hasta ahí: `recorrer_md`, [cerrar.py](../validadores/cerrar.py), [expediente.py](../validadores/expediente.py) y el trinquete de [marcas.py](../validadores/marcas.py).
+- **Learned:** un validador tiene un **dominio**, y conviene escribirlo antes de que un directorio nuevo se lo amplíe solo. Lo que otro proyecto escribió no se juzga con las reglas de este: ni sus enlaces, porque resuelven en otra parte, ni sus marcas, porque `00·ID8` habla de lo que **el agente entrega**. Y una falla de 3840 no es 3840 problemas: casi siempre es uno.
+- **When/Who:** 2026-08-25 · agente y usuario, al decidir si lo traído se versiona.
+- **Scope:** estándar; aplica a cualquier proyecto cuyos validadores recorran el repositorio entero.
+- **Rel:** S-037 (una fase puede probar todo lo que promete y aun así no cumplir lo que declaró).
+
+## S-042 · Anidar la documentación de un proyecto dentro de otro la empuja fuera del tope de Windows  ·  error-resuelto · activa
+- **What:** al guardar lo que la plataforma trajo, `git add` se negó: **`Filename too long`**. Anidar la documentación de un proyecto bajo `plataforma/datos/proyectos/<identificador>/traido/` le suma 54 caracteres a cada ruta, y eso empujó **59 archivos** por encima del tope de 260 de Windows — el más largo llegó a **307**. En su sitio de origen las mismas rutas caben sin problema.
+- **Why:** el que se pasa no es el archivo, es **la suma**: una carpeta de historia de usuario con nombre descriptivo, más una de fase que repite el identificador, más el prefijo de la plataforma. Cada tramo por separado es razonable y el total no lo es. Y no aparece al escribir —la plataforma copió los 1005 archivos sin quejarse— sino al **guardar**, que es cuando ya se decidió todo lo demás.
+- **Also:** se activó `core.longpaths` en el repositorio, y con eso entró. **No es una solución completa y conviene no creer que lo sea:** es configuración local, así que quien clone en Windows tiene que activarla también o le faltarán esos 59 archivos — justo lo que `DA-02` promete al decir que se clona la plataforma y está todo.
+- **Where:** `git config core.longpaths true` en este repositorio · el commit que guardó lo traído lo deja dicho en su cuerpo.
+- **Measured:** la primera explicación —«el prefijo de la plataforma es muy largo»— se midió y **resultó falsa**. El prefijo son 55 caracteres y acortarlo al mínimo razonable ahorra 15: la ruta más larga pasaría de 307 a 292, **sigue sin caber**. Lo que de verdad consume el presupuesto es este repositorio en su propio sitio: su ruta más larga mide **252 caracteres sin prefijo ninguno**, a ocho del tope, y **81 archivos** están a menos de 55 del límite antes de que nadie los anide. La carpeta de fase repite el identificador completo de la épica y de la historia que ya vienen en las dos carpetas de encima.
+- **Learned:** una ruta que cabe deja de caber al anidarse, y es tentador culpar al prefijo porque es lo último que se agregó. **Medir dice otra cosa**: el que no deja margen es el árbol de origen. Por eso `core.longpaths` no es aquí un parche sino la única salida barata — las otras dos son renombrar la convención de carpetas del estándar entero, o dejar de anidar, que es el diseño. Y de paso: **cuando una explicación de un tope numérico suena obvia, se resta antes de creerla.**
+- **When/Who:** 2026-08-25 · agente, al guardar lo traído.
+- **Scope:** estándar; aplica a cualquier proyecto que copie árboles de documentación dentro de sí mismo y se trabaje en Windows.
+- **Rel:** S-041 (lo traído se versiona, y por eso llega a git).
+
+## S-043 · Una comprobación puede estar bien escrita y no estar conectada, y sus pruebas no lo notan  ·  error-resuelto · activa
+- **What:** la fase construyó una comprobación con seis pruebas que la cubrían. Un sabotaje la **descolgó de la corrida** —le quitó la llamada desde `validar`— y **las seis siguieron en verde**. La función existía, funcionaba, y por el comando que la gente corre no salía nada.
+- **Why:** las seis pruebas llamaban a la función **directo**, que es lo natural al escribirlas: se prueba lo que se acaba de escribir. Ninguna preguntaba si alguien la llama. Una comprobación que no sale por el comando que la gente corre es una comprobación que no existe, y este es el modo de fallar que las pruebas de la propia función no pueden ver **por construcción**.
+- **Also:** el mismo sabotaje trajo el caso contrario y conviene no confundirlos. Otro sabotaje también pasó en verde y ahí **la prueba tenía razón**: reemplazaba una de las tres veces que el pendiente nombra el comando, así que el archivo seguía diciéndolo. Es `S-033` otra vez, y solo se distinguen corriendo el escenario y mirando el estado final.
+- **Where:** `test_el_aviso_sale_en_la_corrida_de_fases` en [validadores/pruebas.py](../validadores/pruebas.py), que busca el aviso **a través de `validar`** y no llamando a la función · `DEF-01` de la fase `A-EP-004-HU-019`.
+- **Learned:** toda comprobación nueva necesita **una prueba que la busque por el punto de entrada de verdad**, no por su nombre. Las pruebas de la función dicen que hace bien lo suyo; solo esa dice que alguien la llama. Y la forma de descubrir que falta es sabotear la conexión, no el cuerpo.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-019.
+- **Scope:** estándar; aplica a cualquier proyecto donde una comprobación se sume a un recorrido que ya existía.
+- **Rel:** S-033 (un sabotaje en verde tiene dos diagnósticos opuestos).
+
+## S-044 · Un guion de sabotaje dijo «suite completa en verde» sin haber corrido una sola prueba  ·  error-resuelto · activa
+- **What:** el guion terminaba corriendo la suite entera, que es lo que dice si algo quedó saboteado. Usaba `unittest discover` sobre la carpeta, **encontró cero pruebas**, y reportó `OK`. La salida decía `Ran 0 tests in 0.000s` seguida de `OK`, y se lee como éxito.
+- **Why:** el veredicto que cierra una fase salía de una corrida vacía. Dos ciclos antes se habría leído como «todo bien» y la fase habría cerrado sobre nada. **Cero pruebas y `OK` no son lo mismo, y el formato de salida los muestra igual.**
+- **Also:** el guion existe justamente para no confiar en que las pruebas sirven. Que él mismo mintiera sobre su corrida final es el mismo error un nivel más arriba: quien vigila también necesita que lo vigilen.
+- **Where:** el guion lanza `pruebas.py` como programa en vez de `discover`, y **se cae con error si la corrida final no dice `OK` o dice `Ran 0`** · `DEF-02` de la fase `A-EP-004-HU-019`.
+- **Learned:** una corrida de pruebas se valida por **dos** cosas, no una: que no haya fallas **y que haya corrido algo**. Cualquier automatismo que decida sobre una suite tiene que mirar el conteo, porque el caso «no corrió nada» sale con el mismo `OK` que el caso bueno.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-019.
+- **Scope:** estándar; aplica a cualquier automatismo que lea el resultado de una suite.
+- **Rel:** S-043 (una comprobación que nadie llama), S-035 (los rastros que un sabotaje deja fuera).
+
+## S-045 · Un estándar puede arreglar algo para sí mismo y seguir repartiendo el defecto  ·  decisión · activa
+- **What:** el estándar le quitó a su inventario de historias la cuenta escrita a mano, después de que se le desfasara tres veces. **La plantilla que reparte a los proyectos seguía enseñando exactamente eso** — los tres campos por llenar, la tabla de una fila por historia, y seis pasos titulados «Cómo se llena la tabla». Y la comprobación que impedía que la copia volviera miraba `pendientes/48-inventario-hu.md`, escrito fijo: en un proyecto el inventario vive en `documentacion/`, así que no veía nada. **La guardia protegía al estándar y a nadie más.**
+- **Why:** arreglar algo puertas adentro se siente terminado, porque la molestia desaparece. Pero un estándar tiene dos superficies —lo que hace y lo que reparte— y **la segunda se multiplica**: cada proyecto que instale la plantilla hereda el defecto entero. El costo del descuido no es uno, es uno por proyecto.
+- **Also:** las dos mitades no se descubrieron igual. La de la plantilla quedó declarada en el cierre de la fase anterior, porque apareció mientras se escribía. **La de la ruta fija no la vio nadie**: salió de preguntarse, al abrir la historia siguiente, si un proyecto podía siquiera correr el comando. La pregunta era sobre otra cosa.
+- **Where:** [plantillas/inventario-hu.md](../plantillas/inventario-hu.md) reescrita, y `CARPETAS_DEL_INVENTARIO` con `_donde_puede_estar_el_inventario` en [validadores/fases.py](../validadores/fases.py) · versión 34.2.0.
+- **Learned:** al cerrar algo que el estándar arregló para sí, la pregunta que falta es **«¿y lo que reparto?»** — plantillas, moldes, instaladores. Y la que la acompaña: **«¿la comprobación que lo vigila mira una ruta fija?»** Una guardia atada a la ruta del propio estándar es una guardia que no viaja.
+- **When/Who:** 2026-08-26 · agente y usuario, en la fase A de la HU-020.
+- **Scope:** estándar; aplica a cualquier proyecto que reparta plantillas o moldes.
+- **Rel:** S-043 (una comprobación que nadie llama).
+
+## S-046 · El mismo defecto tiene dos formas, y una sola expresión no caza las dos  ·  error-resuelto · activa
+- **What:** la comprobación busca el rótulo de la cuenta **con un número al lado** — `| **Total de HU** | 113 |` — porque en un inventario de verdad el defecto es un número escrito. Un sabotaje devolvió el campo a la **plantilla** y la suite quedó en verde: en una plantilla el mismo defecto viene como `| **Total de HU** | «N» |`, con el hueco por llenar. Sin número, no había coincidencia.
+- **Why:** la plantilla es lo que se copia, así que un defecto ahí se multiplica. Y era invisible **justo en el archivo donde más caro sale**. El sabotaje sí saboteaba; la prueba era la que miraba mal.
+- **Also:** conviene no arreglarlo haciendo la expresión más laxa. Que el inventario de verdad exija un número **es correcto**: la narrativa del propio inventario tiene cifras, y marcarlas volvería el aviso ruido. Son dos comprobaciones con dos formas, no una comprobación mal escrita.
+- **Where:** `test_la_plantilla_no_trae_campos_de_cuenta` en [validadores/pruebas.py](../validadores/pruebas.py), que busca **el rótulo como campo, valga lo que valga** · el sabotaje 5 de la fase `A-EP-004-HU-020`.
+- **Learned:** un defecto que puede aparecer en un archivo lleno **y** en la plantilla de la que ese archivo sale tiene **dos formas**: el valor puesto y el hueco por llenar. Reconocer una y creer que se cubrió el caso es lo fácil. Y la plantilla es la que hay que cubrir primero, porque es la que se reparte.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-020.
+- **Scope:** estándar; aplica a cualquier comprobación que valga tanto para un documento como para su plantilla.
+- **Rel:** S-045 (lo que el estándar reparte se multiplica), S-033 (los dos diagnósticos de un sabotaje en verde).
+
+## S-047 · «No dupliques lo derivable» no aplica a un hecho histórico  ·  error-resuelto · activa
+- **What:** al cerrar una fase se escribió, en el campo «Versión del estándar al cerrar», **«la que declara `VERSION`»** en vez del número. Parecía lo correcto —no duplicar un dato que vive en otro archivo—, y venía de haber pasado el día entero quitando copias. Al subir `VERSION` a la 34.2.0, ese cierre pasó a afirmar que había cerrado bajo una versión que **todavía no existía** cuando cerró.
+- **Why:** es el error **inverso** al que se acababa de arreglar, cometido por aplicar bien la regla en el sitio equivocado. La cuenta de historias es derivable: se recalcula del árbol y siempre da lo de hoy. **La versión al cerrar es una foto**: su valor es justamente el de aquel momento, y un puntero al valor de hoy lo destruye.
+- **Also:** lo cazó el validador que exige el sello de versión en cada cierre, no una lectura. Y lo cazó **una hora después**, cuando el número cambió: mientras `VERSION` no se movió, el puntero decía lo correcto por casualidad.
+- **Where:** el campo del cierre de la fase `A-EP-004-HU-019`, con su número literal.
+- **Learned:** antes de reemplazar un dato por un puntero, la pregunta es **si el dato es una foto o una cuenta**. Una cuenta se recalcula y el puntero la mejora; una foto se fecha, y el puntero la falsifica el día que la fuente cambie. Y el síntoma es traicionero: **mientras la fuente no cambie, el puntero parece correcto**.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-020, sobre lo escrito en la fase anterior.
+- **Scope:** estándar; aplica a todo campo que registre el estado de algo en un momento dado.
+- **Rel:** S-040 (un registro que resume enlaza el detalle) — esta señal marca **dónde deja de valer** aquella.
+
+## S-048 · Se citó cuatro veces una historia como «abierta» sin leer su estado, y estaba cerrada  ·  error-resuelto · activa
+- **What:** cuatro fases seguidas declararon no llevar especificación aparte, y las cuatro lo justificaron diciendo que la [EP-001 · HU-010](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-010-cuando-no-aplica-la-especificacion/HU-010-cuando-no-aplica-la-especificacion.md) **estaba abierta esperando escribir esa regla**. Sobre esa base se levantó un hallazgo entero, `H-34`, que decía «cuatro ya no es un caso suelto: es la regla que falta». **Era falso.** Esa historia dice `Estado: Done`, cerró el 2026-08-18 con su commit, y su pendiente está en `pendientes/hecho/`.
+- **Why:** peor todavía, cerró **diciendo justamente lo contrario**: «nada nuevo, y ese es el resultado». La regla ya existía dos reglas más abajo en el mismo capítulo — [`02·F19`](../base/02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md), *«la redacción del CA es la especificación funcional»*—, y en su momento se intentó agregar otra que decía lo mismo y **chocaba con `02·F0`**. Se citó como pendiente algo que ya se había resuelto, y se propuso rehacer un trabajo que además se había descartado con razón.
+- **Also:** el error se cometió una vez y se **copió** tres. Cada fase nueva tomó la redacción de la anterior sin volver a la fuente, y **la repetición hizo la afirmación más creíble**, no menos: para la cuarta, «es la regla que falta» se leía como un hecho establecido por acumulación. Lo que se leyó de la historia fue su **narrativa**, que describe el problema en presente porque se escribió antes de resolverlo. Nadie miró el campo `Estado`, que está en la primera tabla.
+- **Where:** los cinco documentos corregidos, cada uno diciendo qué afirmaba y por qué era falso · el hallazgo `H-34` del resumen, reescrito.
+- **Learned:** **el estado de un documento se lee en su campo de estado, no en su narrativa.** Una historia sin resolver y una resuelta se leen igual en el cuerpo: las dos describen el problema en presente. Y hay una comprobación barata que habría bastado: si la historia dice que falta una regla, **buscar la regla**. Estaba a un `grep` del capítulo que la historia misma nombraba.
+- **When/Who:** 2026-08-26 · agente, al ir a construir lo que creía pendiente.
+- **Scope:** estándar; aplica a toda cita de un documento como pendiente o abierto.
+- **Rel:** S-026 (marcar como siguiente una fase que no lo era) — el mismo error de leer el cuerpo y no el estado.
+
+## S-049 · El desorden que se le echa a la gente suele estar enseñado por el molde  ·  decisión · activa
+- **What:** 111 de 115 historias declaraban su estado con una palabra que su propio molde no decía. La lectura fácil era descuido acumulado. **No lo era:** cuatro moldes del estándar enseñaban tres palabras distintas para «terminado» —`Completada` en la épica, `Done` en la historia, `Hecha` en la tarea— y la lista de la épica estaba escrita **dos veces sin coincidir**, con `Cancelada` en una y no en la otra. Quien escribía una historia justo después de una épica repetía lo que acababa de leer.
+- **Why:** si el diagnóstico hubiera sido «descuido», el arreglo habría sido corregir 111 documentos y pedir más cuidado — y en seis meses estarían otra vez repartidos, porque los moldes seguirían enseñando lo mismo. **El diagnóstico decide el arreglo**, y el barato es siempre culpar a quien escribe.
+- **Also:** el número se movió de 51 a 111 al mirarlo bien. Con el vocabulario que cada molde traía, 63 «cumplían»; contra un vocabulario único y en español, solo 4. **Lo que parecía menos de la mitad era casi todo**, y la diferencia era qué se tomaba por correcto.
+- **Where:** la sección 5 de [base/glosario.md](../base/glosario.md), única definición · los cuatro moldes citándola · `vocabulario_de_estados` en [validadores/fases.py](../validadores/fases.py) · versión 35.0.0.
+- **Learned:** ante muchos documentos que incumplen lo mismo, la primera pregunta no es quién se descuidó sino **qué les enseñó a hacerlo**. Un incumplimiento repartido y constante casi nunca es descuido: es un molde. Y la prueba está en contar cuántas fuentes distintas dicen la misma cosa — si son más de una, ahí está.
+- **When/Who:** 2026-08-26 · agente y usuario, en la fase A de la HU-012.
+- **Scope:** estándar; aplica a cualquier proyecto con documentos modelo.
+- **Rel:** S-040 (dos copias de un dato se separan) — acá eran cuatro copias de un vocabulario.
+
+## S-050 · Una comprobación que reporta lo que no vino a comprobar apaga las demás  ·  error-resuelto · activa
+- **What:** la comprobación del vocabulario reportaba también las historias **sin campo de estado**. El plan lo pedía. Al correr la suite completa, dejó **siete pruebas de estructura en rojo**: sus árboles de mentira no traen ese campo porque no están probando eso.
+- **Why:** el rojo no era de las siete: era de haber ampliado el alcance de la comprobación un paso más allá de su tema. Y en un proyecto habría hecho lo mismo con **cualquier historia mínima** — un aviso permanente sobre documentos que están bien para lo que son. **Un aviso que no se puede atender se aprende a ignorar, y el que aprende a ignorarlo ignora también los buenos.**
+- **Also:** que el campo falte **sí es** un problema, y no desaparece por sacarlo de acá: pasa a quien comprueba que un documento traiga sus campos, que es otra cosa. Sacarlo no es taparlo; es ponerlo donde se puede atender.
+- **Where:** el comentario junto al `continue` en `estado_fuera_del_vocabulario`, en [validadores/fases.py](../validadores/fases.py), diciendo qué decidió y por qué · `test_limites_sin_campo_de_estado_no_lo_reporta_esta_comprobacion`.
+- **Learned:** una comprobación tiene **un tema**, y lo que reporte fuera de él sale caro en ruido. La señal de que se pasó es barata de leer: **si al agregarla se ponen en rojo pruebas que no hablan de su tema, el alcance se fue de más** — no las pruebas.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-012.
+- **Scope:** estándar; aplica a cualquier comprobación que se sume a un recorrido compartido.
+- **Rel:** S-043 (una comprobación que nadie llama), S-046 (el mismo defecto con dos formas).
+
+## S-051 · Un rastro fuera del repositorio no lo muestra ningún `git status`  ·  error-resuelto · activa
+- **What:** un sabotaje comprobaba que el instalador no escribiera en la configuración **global** de la máquina. Para eso, el sabotaje la escribía. El guion limpiaba los rastros **al final**, así que los tres sabotajes siguientes corrieron con la global puesta: sus fallas se leyeron como «cazado» y venían del rastro anterior, no del sabotaje.
+- **Why:** es `S-035` un nivel más arriba. Allá el rastro era un archivo suelto en el repositorio, y `git status` lo mostraba. **Acá queda fuera del repositorio**, en la configuración de la máquina de quien corre las pruebas: ningún `git status`, ningún validador y ninguna corrida lo delatan. Se descubrió leyendo por qué un sabotaje de **documentación** hacía fallar pruebas de código.
+- **Also:** y la prueba que existía justo para ese sabotaje **no lo cazó**. Compara el valor global antes y después dentro de sí misma; si otra prueba ya lo dejó puesto, antes y después son iguales y pasa. Se cambió por preguntar el valor **local** del repositorio: si el instalador escribiera afuera, ahí no habría nada. **Eso no depende del orden en que corran las pruebas**, y lo anterior sí.
+- **Where:** el guion limpia el rastro **después de cada sabotaje**, no al final · `test_no_se_toca_la_configuracion_global_de_la_maquina` pregunta por `--local`.
+- **Learned:** cuando lo que se prueba es que algo **no** salga de su sitio, el sabotaje tiene que salirse — y entonces el rastro cae donde nada lo vigila. Dos cosas se siguen de ahí: **limpiar entre sabotajes y no al final**, y **desconfiar de una prueba que compara un estado global contra sí mismo**, porque otra prueba pudo dejarlo ya cambiado.
+- **When/Who:** 2026-08-26 · agente, en la fase A de la HU-009.
+- **Scope:** estándar; aplica a cualquier prueba que toque estado fuera del proyecto.
+- **Rel:** S-035 (los rastros que un sabotaje deja fuera del archivo saboteado), S-033 (los dos diagnósticos de un sabotaje en verde).
+
+## S-052 · Una deuda bien escrita en una fase sin cerrar es una deuda que nadie lee  ·  decisión · activa
+- **What:** al cerrar seis fases que llevaban cuatro días ejecutadas y sin su documento de cierre, apareció que una de ellas ya había registrado, el 2026-08-22, que **el enganche no viaja con el repositorio: un clon nuevo no lo tiene hasta correr el instalador**. Eso mismo se volvió a descubrir el 2026-08-26 por otro camino —clonando un repositorio de prueba— y se trató como hallazgo nuevo.
+- **Why:** la deuda estaba **escrita, fechada y bien redactada**. Lo que fallaba era dónde vivía: en el resultado de una fase que el inventario contaba entre las incompletas, y a la que nadie volvía. **Cerrar no es papeleo: es lo que pone la deuda donde se lee.**
+- **Also:** la misma fase traía otra deuda que también se cobró sola. Decía que la batería de antes de publicar **no corre las pruebas de los validadores**, así que un cambio que rompa una prueba se publica igual. Ese mismo día, la suite completa destapó tres defectos que ninguna otra comprobación vio, y **ninguno habría detenido una publicación**.
+- **Where:** los seis cierres del 2026-08-26, cada uno con su tabla de deudas y su estado real · el de `A-EP-005-HU-006`, que dice de dónde venía y cuándo se volvió a descubrir.
+- **Learned:** una fase que se queda en la estación de cierre **no deja el trabajo a medias: deja el trabajo invisible**. Lo construido funciona, y lo aprendido se pierde. Y hay una señal barata de que está pasando: **cuando un hallazgo «nuevo» resulta estar escrito en un documento propio con fecha anterior**, lo que falló no fue la memoria — fue que ese documento vivía donde nadie lo cuenta.
+- **When/Who:** 2026-08-26 · agente y usuario, al cerrar seis fases de golpe.
+- **Scope:** estándar; aplica a cualquier proyecto que registre deuda en documentos de fase.
+- **Rel:** S-048 (el estado se lee en su campo, no en la narrativa).
+
+## S-053 · Contar archivos presentes da por terminado un molde sin llenar  ·  error-resuelto · activa
+- **What:** cuatro fases figuraban completas en el inventario y su `estado-fase` decía **«Ejecutada y cerrada»**. Su documento de cierre era **el molde en blanco**, con 31 marcadores por reemplazar cada uno: todavía decía `«2-4 líneas en lenguaje claro»` y `AAAA-MM-DD`. El trabajo estaba hecho y probado; lo que faltaba era decir qué quedó.
+- **Why:** el inventario cuenta que **el archivo exista**, no que diga algo. Un andamio que crea los cinco documentos vacíos convierte una fase recién abierta en una fase «completa» — y el número que dice cuánto falta se vuelve optimista sin que nadie mienta a propósito. **Es el mismo defecto que el inventario a mano, un nivel más adentro**: antes el número se copiaba, ahora se calcula bien y cuenta lo que no debe.
+- **Also:** costó dos veces el mismo día. Primero se afirmó que esas fases «están completas con sus cinco documentos» leyendo la **lista de archivos**; se volvió a leer la existencia y no el contenido, que es `S-048` otra vez. Y una de las cuatro traía escrita una deuda que se volvió a descubrir por otro camino cuatro días después, porque su cierre en blanco la dejaba invisible.
+- **Where:** los cuatro cierres escritos el 2026-08-27, cada uno diciendo desde cuándo estaba en blanco · la medida que los encontró: contar marcadores `«…»` y `AAAA-MM-DD` por documento, y separar 4 con 31 de 12 con cinco a siete, que son comillas de prosa.
+- **Learned:** cuando algo se cuenta por su presencia, **hay que preguntarse qué pasa si está y está vacío**. Y hay una medida barata que lo destapa: **contar los marcadores del molde que quedaron sin reemplazar**. Un documento con treinta no es un documento: es un formulario. La misma cuenta separa el molde en blanco de la prosa que usa comillas angulares, sin falsos positivos.
+- **When/Who:** 2026-08-27 · agente y usuario, al ir a cerrar las fases con criterios en rojo.
+- **Scope:** estándar; aplica a cualquier conteo que mire si un archivo existe.
+- **Rel:** S-052 (una deuda en una fase sin cerrar no la lee nadie), S-048 (leer la existencia y no el contenido).
+
+## S-054 · El inventario cuenta fases terminadas, no criterios cumplidos  ·  decisión · activa
+- **What:** al cerrar cinco fases cuyo veredicto es **«No cumple»**, el inventario pasó de 37 incompletas a 32. Las cinco tienen sus cinco documentos, así que cuentan como completas — **y una de ellas dice que su criterio sigue roto hoy**: `250 de 250 reglas no dicen cuándo se revisó si todavía sirven`, un número que además **crece con cada regla nueva**.
+- **Why:** el número que responde «cuánto falta» mide **documentos escritos**, no **exigencias cumplidas**. Y los dos se separan justo donde importa: una fase que midió, encontró un rojo y lo dejó bien documentado está terminada como fase y **no resolvió nada**. Contarla igual que una que cumplió hace que el avance se vea mejor de lo que es.
+- **Also:** es la tercera forma del mismo defecto en dos días. Primero el número se copiaba a mano y se desfasaba (`S-049`). Después contaba archivos presentes, y un molde en blanco pasaba por terminado (`S-053`). Ahora cuenta fases cerradas sin mirar su veredicto. **Cada arreglo dejó el conteo más honesto y siguió midiendo la cosa de al lado.**
+- **Where:** las cinco fases cerradas el 2026-08-27, cada una declarando su rojo arriba del todo y adónde fue a parar · tres de ellas enlazan la fase que lo resolvió; dos siguen sin resolver.
+- **Learned:** un conteo de avance necesita decir **qué mide, en su propio nombre**. «Historias completas» se lee como «historias que cumplen» y son cosas distintas. Y el patrón para detectarlo es este: **si mejorar el trabajo no mueve el número, o moverlo no mejora el trabajo, el número mide otra cosa.** Las dos mitades pasaron hoy: llenar cuatro cierres vacíos no movió nada, y cerrar cinco fases con «No cumple» bajó el número en cinco.
+- **When/Who:** 2026-08-27 · agente y usuario, al cerrar las fases con criterios en rojo.
+- **Scope:** estándar; aplica a cualquier medición de avance.
+- **Rel:** S-053 (contar archivos presentes), S-049 (el molde enseñó el desorden).
+
+## S-055 · Un número de avance necesita una prueba que lo contradiga  ·  decisión · activa
+- **What:** la cuenta de historias dejó de contar como hechas las fases que no cumplieron. El número real apareció al medirlo: de **85 terminadas, 51 cumplen** — once cerraron declarando que no, y **23 no dicen si cumplen**. El anterior, `85 completas`, estaba sobrestimado en un **40%**.
+- **Why:** «completas» se leía como «cumplen», y no era lo mismo. Con ese número se decidió todo el trabajo de dos días, incluida la decisión de construir esto. **Un número de avance que solo puede subir no informa: acompaña.**
+- **Also:** la mejor prueba de que hacía falta se dio sola. La historia que se creó para arreglarlo, sin una línea de trabajo hecha, **contaba como terminada**: el andamio le había creado los cinco documentos vacíos. Con la cuenta nueva cae donde corresponde — entre las 23 que no dicen si cumplen.
+- **And:** la causa no era descuido. El molde del cierre ofrecía `Cumple / Cumple con observaciones` y **no tenía forma de decir «No cumple»**, así que diecinueve fases lo escribieron en prosa suelta, cada una a su manera, donde ningún programa lo lee. Y los moldes decían que una fase con un criterio en rojo **no cierra**, mientras diecinueve cerradas lo hacían con razón. **Se corrigió la regla, no la práctica**: cerrar no es aprobar, y dejar la fase abierta esconde su deuda.
+- **Where:** `veredicto_de` y `por_veredicto` en [validadores/fases.py](../validadores/fases.py) · los tres moldes con un solo vocabulario · versión 35.2.0, con los dos números en su entrada.
+- **Learned:** todo número que mida avance necesita **una forma de empeorar**, y hay que buscarla a propósito. Si no la tiene, no está midiendo el avance: está contando actividad. **La pregunta que lo destapa es qué tendría que pasar para que este número baje** — si no hay respuesta, el número no sirve para decidir.
+- **When/Who:** 2026-08-27 · agente y usuario, en la fase A de la HU-021.
+- **Scope:** estándar; aplica a cualquier medición de avance.
+- **Rel:** S-054 (el inventario cuenta fases terminadas, no criterios cumplidos), S-053 (contar archivos presentes), S-049 (el molde enseñó el desorden).
+
+## S-056 · Un criterio de parada con número exacto caza lo que uno «redondeado» deja pasar  ·  decisión · activa
+- **What:** el plan de la fase exigía que las historias que «no dicen si cumplen» bajaran **en siete exactamente**. Bajaron seis según la línea, así que se paró y se investigó. La causa no era el arreglo: **la base se había movido**. Al levantar esa misma fase con el andamio, sus cinco documentos vacíos volvieron a meter su historia entre las «no dicen». La base real era 23, no 22 — y 23 − 7 = 16. El arreglo estaba bien.
+- **Why:** si el criterio hubiera dicho «que bajen unas siete» o «que bajen», la diferencia de uno se habría atribuido a un error de la cuenta anterior y se habría seguido de largo. **El número exacto convirtió una discrepancia de una unidad en una investigación**, y esa investigación destapó que la fase creada para arreglar el problema volvía a provocarlo — `S-053` por tercera vez en el día, conmigo adentro.
+- **Also:** el caso crítico de esta fase no fue leer la forma que faltaba, sino **no leer de más**. En un resultado la palabra «Cumple» aparece en cada fila de criterio: un lector que la buscara sin exigir su encabezado tomaría el primer criterio por el veredicto de la fase. Eso miente **en la dirección optimista**, que es peor que el defecto que se corregía. Cuatro de las ocho pruebas nuevas comprueban que **no** lea.
+- **Where:** `_VEREDICTO_BAJO_TITULO` en [validadores/fases.py](../validadores/fases.py) · el §4.2 del [resultado de la fase](epicas/EP-004-comprobacion-automatica/HU-021-la-cuenta-distingue-lo-terminado-de-lo-cumplido/B-EP-004-HU-021-el-veredicto-se-lee-en-sus-tres-formas/resultado_pruebas.md), que cuenta la investigación completa.
+- **Learned:** un criterio de suspensión sirve cuando **falla por poco**. El que dice «que mejore» nunca se activa; el que dice un número exacto se activa por una unidad, y esa unidad suele ser el hilo. Y cuando se mide algo mientras se trabaja sobre ello, **hay que preguntar si el propio trabajo mueve la medición** — abrir una fase para arreglar un conteo es, literalmente, agregarle un caso al conteo.
+- **When/Who:** 2026-08-27 · agente y usuario, en la fase B de la HU-021.
+- **Scope:** estándar; aplica a cualquier plan de pruebas con criterio de suspensión.
+- **Rel:** S-055 (un número de avance necesita una prueba que lo contradiga), S-053 (contar archivos presentes da por terminado un molde sin llenar).
+
+## S-057 · Una regla que solo vive en un recuerdo se deja de cumplir al día siguiente  ·  error-resuelto · activa
+- **What:** los guiones de apoyo deben escribirse dentro del repositorio, en `historico-chat/scripts/`. La regla se fijó el 2026-08-20 y el usuario la precisó el 2026-08-22 —*«nada se debe escribir por fuera, todo debe quedar en historico-chat»*— porque se estaba cumpliendo a medias. **Se dejó de cumplir el 2026-08-24**, al día siguiente, y siguió incumplida cuatro días: **38 programas** en la carpeta temporal del sistema, más dos clones enteros de la plataforma con su entorno virtual, 6.831 archivos. Lo destapó el usuario preguntando por qué se seguía escribiendo allá.
+- **Why:** la regla estaba escrita, era clara y era del usuario. **Lo que no tenía era quién la hiciera cumplir.** Vivía en un recuerdo, y un recuerdo se consulta cuando uno se acuerda de consultarlo — que es exactamente cuando ya no hace falta. La herramienta, además, ofrece una carpeta temporal en cada sesión y la nombra como el sitio recomendado: **el camino fácil apunta al lado contrario de la regla**, y ahí no gana la buena intención.
+- **Also:** el daño no es de orden. El resultado de cada cambio quedaba versionado y **el cómo se borraba con el temporal**: cuatro días de sabotajes, de guiones de cierre y de mediciones no tenían respuesta a «¿con qué se hizo esto?». Y es la segunda vez que se responde esa misma pregunta con nada.
+- **Where:** los 38 programas traídos a [`historico-chat/scripts/`](../historico-chat/scripts/) con su fecha real, cada día con su README diciendo qué hizo cada uno y qué se dejó afuera a propósito.
+- **Learned:** **una regla que depende de que el agente se acuerde ya está incumplida; solo falta saber desde cuándo.** Es el motivo por el que existe este estándar, aplicado a él mismo. Y hay una prueba barata para saber si una regla necesita programa: **preguntar si la herramienta empuja hacia el otro lado**. Si el camino cómodo la incumple, el recuerdo no alcanza — hace falta un enganche que avise, o un validador que la mire.
+- **When/Who:** 2026-08-27 · usuario, preguntando por qué el agente seguía escribiendo en la carpeta temporal.
+- **Scope:** estándar; aplica a toda regla del proyecto que hoy solo viva en `historico-chat/memory/`.
+- **Rel:** S-055 (un número de avance necesita una prueba que lo contradiga), S-050 (una comprobación que reporta lo que no vino a comprobar).
+
+## S-058 · Contar las formas que uno ya reconoce no es enumerarlas  ·  error-resuelto · activa
+- **What:** una fase declaró que el veredicto está escrito de **tres formas** y que **39 fases no lo dicen**. Media hora después, al enumerar de verdad los encabezados de los 130 resultados, salieron **seis títulos distintos** que empiezan por «Veredicto» y **dos** fases sin ningún encabezado. No 39: **2**. Diez historias figuraban como mudas **diciéndolo**, y tres de ellas dicen «No cumple».
+- **Why:** la medición contó `**Concepto:**`, la tabla y el encabezado `Veredicto de la fase` —**las formas que el programa ya sabía buscar**— y llamó «sin encabezado» a todo el resto, sin abrirlo. **Eso es `04·R4` cometido en la fase que venía a hacer cumplir `04·R4`.** La diferencia entre contar y enumerar es la que separa una verificación de una confirmación: contar lo que uno reconoce siempre devuelve lo que uno esperaba.
+- **Also:** el arreglo tuvo su propia trampa, y no era la obvia. El primer patrón aceptaba **cualquier** título que empezara por «Veredicto», y **hoy no habría fallado** — los 70 encabezados «por criterio de aceptación» van seguidos de tabla, no de la palabra suelta. Pero era **un patrón más ancho que el hecho**, que es exactamente cómo nació el defecto que se estaba corrigiendo. Se ajustó a título exacto tras medir cuál de los seis va seguido de la palabra: **uno solo, quince veces**.
+- **And:** el criterio de parada no fue «que se recuperen diez», sino **«que se recuperen diez y que las tres que dicen No cumple estén entre ellas»**. Recuperar solo las siete que cumplen habría dejado el número **mejor y más falso**, y se habría leído como un éxito.
+- **Where:** `_VEREDICTO_TITULO_SOLO` en [validadores/fases.py](../validadores/fases.py), con los seis títulos y su cuenta escrita al lado · los guiones que lo midieron, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/), guardados para poder repetir la enumeración.
+- **Learned:** **una medición que solo mira lo que ya se reconoce confirma; no verifica.** La forma de romperla es barata y hay que hacerla a propósito: **enumerar la categoría entera y contar cuántas clases distintas hay**, en vez de contar los casos de las clases conocidas. Y para el arreglo, la regla que se sigue: **el patrón se ajusta al hecho medido, no a lo que podría existir** — un patrón que hoy no falla por casualidad es el defecto de mañana.
+- **When/Who:** 2026-08-27 · agente, al reanudar el trabajo y mirar una de las «39 sin encabezado».
+- **Scope:** estándar; aplica a cualquier medición sobre un conjunto de documentos escritos a mano.
+- **Rel:** S-056 (un criterio de parada con número exacto), S-055 (un número de avance necesita una prueba que lo contradiga).
+
+## S-059 · Una medida que separó bien cuatro casos no separa bien seiscientos  ·  error-resuelto · activa
+- **What:** `S-053` propuso una medida para saber si un documento sigue siendo el molde sin llenar: **contar los marcadores `«…»` y `AAAA-MM-DD`**. Se comprobó sobre los casos del momento —cuatro con 31 marcadores contra doce con cinco a siete— y separaba limpio. Se recomendó como «ya probada, sin falsos positivos». **En la primera corrida sobre los 664 documentos dio 38, y tres eran de una fase escrita, cerrada y publicada media hora antes**, con 11, 12 y 13 marcadores.
+- **Why:** el repositorio usa comillas angulares en prosa todo el tiempo —`«Cumple»`, `«No cumple»`, `«por criterio de aceptación»`—, así que **la cuenta mide el estilo de la casa, no el formulario sin llenar**. Un documento bien escrito y largo acumula más marcadores que un molde corto: la señal y el ruido crecen juntos.
+- **Also:** lo que hacía verdadera la afirmación era **el tamaño de la muestra**, no la medida. Dieciséis casos elegidos por ser los sospechosos del día no dicen nada sobre los 648 restantes, y sin embargo la frase «no da falsos positivos» se escribió como si sí.
+- **And:** la medida buena no cuenta **cuántos** marcadores hay, sino **cuántos son los del molde**, cruzando cada documento con su plantilla de `plantillas/ciclo-vida-proyectos/`. `«Cumple»` es prosa; `«2-4 líneas en lenguaje claro»` es el formulario. Con ese cruce: **577 sin ninguno, 80 con uno o dos, y 7 que siguen siendo el molde** — cinco `plan_pruebas.md` con 36 marcadores y dos `estado-fase.md` con 16, todos verificados uno por uno.
+- **Where:** los dos guiones, el malo y el bueno, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/) — se guardan los dos, porque la diferencia entre ellos es el aprendizaje.
+- **Learned:** **una medida se valida sobre el conjunto entero, no sobre los casos que la motivaron.** Los casos que motivan una medida están elegidos por ser extremos, así que cualquier umbral los separa. La pregunta que lo destapa es: **¿qué pasa con los casos que NO me hicieron pensar en esto?** Y hay una forma general de arreglarlo cuando falla: **comparar contra la fuente en vez de contar síntomas** — no «cuántas comillas hay» sino «cuáles de estas comillas están en la plantilla».
+- **When/Who:** 2026-08-27 · agente, al medir la línea base del pendiente 88 antes de abrir su fase.
+- **Scope:** estándar; aplica a cualquier umbral propuesto desde un puñado de ejemplos.
+- **Rel:** S-058 (contar las formas que uno ya reconoce no es enumerarlas), S-053 (contar archivos presentes da por terminado un molde sin llenar).
+
+## S-060 · Un guion que rompe a propósito tiene que restaurar pase lo que pase  ·  error-resuelto · activa
+- **What:** el guion de sabotaje de la fase se cayó **entre romper el archivo y restaurarlo**. La causa fue tonta: `print` de una línea de resultado con caracteres que la consola de Windows no sabe escribir. **El repositorio quedó con el sabotaje puesto** — `fases.py` sin la mitad que compara contra la plantilla — y el guion no dijo nada.
+- **Why:** un guion que rompe a propósito **es el único programa del repositorio cuyo estado intermedio es un defecto real**. Si muere ahí, no deja un trabajo a medias: deja el código roto y con apariencia de sano, porque nadie vuelve a mirar un archivo que «ya se restauró». La restauración no puede depender de que el guion llegue vivo hasta ella: va en `try/finally`.
+- **Also:** el fallo **no se notó al correrlo**, y esa es la mitad peor. El guion se lanzó con `| tail -45`, así que el código de salida que se vio fue el de `tail` —cero— y no el de Python. **Canalizar un guion de sabotaje esconde exactamente lo que se quiere saber.** Se redirige a un archivo y se lee.
+- **And:** es la tercera vez en el día que la herramienta que juzga falla, y las tres de la misma familia: un guion que dijo «suite completa OK» sin haber corrido nada (`S-044`), otro que buscaba «OK» en un texto que trae «OK: sin incumplimientos.», y este. **El código que se está construyendo se prueba; el que lo comprueba, no.**
+- **Where:** el `try/finally` y la limpieza de la salida en [historico-chat/scripts/2026-08-27/sabotaje_hu022a.py](../historico-chat/scripts/2026-08-27/sabotaje_hu022a.py), con el arreglo escrito en su propio guion al lado.
+- **Learned:** cuando un programa deja el sistema en un estado malo a mitad de camino, **la vuelta atrás va en `finally`, no al final del bloque feliz** — y la prueba de que hace falta es preguntarse qué pasa si revienta la línea de en medio. Y para correrlo: **nunca por una tubería**, porque el código de salida que se lee es el del último eslabón. La restauración con copia salvó esto: el archivo bueno estaba en la carpeta de copias, intacto.
+- **When/Who:** 2026-08-27 · agente, corriendo los seis sabotajes de la fase A de la `HU-022`.
+- **Scope:** estándar; aplica a todo guion que modifique el repositorio para comprobar algo.
+- **Rel:** S-044 (un guion dijo «suite completa en verde» sin correr nada), S-051 (un rastro fuera del repositorio no lo muestra ningún `git status`).
+
+## S-061 · Un veredicto «No cumple» es una foto, y nadie la vuelve a mirar  ·  decisión · activa
+- **What:** de las tres historias que aparecieron diciendo «No cumple» al enseñarle al programa a leer sus veredictos, **dos ya estaban resueltas de hecho**. `EP-003·HU-002` no cumplía porque *«el planteamiento de esta casa está vacío»* — se llenó el 2026-08-22, y hoy tiene 106 líneas sin un solo marcador. `EP-005·HU-001` no cumplía por *«nada enmascara»* — el enmascarado existe, está conectado al enganche del histórico, y lo construyó `EP-005·HU-002`. **Solo una sigue viva.**
+- **Why:** el veredicto se escribe una vez, el día que se cierra la fase, y **nada vuelve a mirarlo**. Lo que arregla el rojo suele ser **otra fase, de otra historia, meses después**, y esa no tiene por qué saber a quién le estaba fallando el criterio. El resultado es un número de trabajo abierto que **solo puede subir**: entra cuando una fase cierra en rojo y no sale nunca.
+- **Also:** es el mismo defecto de la jornada, en la dirección contraria. Todo el día el número mintió siendo **optimista** —contaba como hecho lo que no lo estaba— y este lo hace **pesimista**: cuenta como pendiente lo que ya se resolvió. Las dos mitades vienen de lo mismo: **el número se escribe a mano una vez y después vive solo**.
+- **And:** hay una asimetría que lo explica. Cuando una fase cierra bien, su rastro apunta hacia adelante —qué dejó, dónde quedó—. Cuando cierra en rojo, **el rastro que haría falta apunta hacia atrás**: quién viene después a arreglarlo. Y ese eslabón no lo escribe nadie, porque en el momento de cerrar todavía no existe.
+- **Where:** los tres veredictos, en `EP-001·HU-007`, `EP-003·HU-002` y `EP-005·HU-001` · la comprobación que los hizo visibles, en `veredicto_de` de [validadores/fases.py](../validadores/fases.py).
+- **Learned:** **hacer visible un número no lo vuelve cierto.** Un rojo declarado necesita algo que lo cierre —una fase que lo nombre, una comprobación que lo vuelva a correr— o se convierte en deuda perpetua que nadie se atreve a borrar porque nadie sabe si sigue siendo cierta. **La pregunta que lo destapa: ¿qué tendría que pasar para que este número baje, y quién lo haría?** Si la respuesta es «alguien que se acuerde», ya está mal.
+- **When/Who:** 2026-08-27 · agente, al ir a recomendar por dónde seguir y comprobar los tres rojos uno por uno en vez de creerles.
+- **Scope:** estándar; aplica a todo veredicto o hallazgo que se escriba con fecha y no se vuelva a evaluar.
+- **Rel:** S-055 (un número de avance necesita una prueba que lo contradiga), S-052 (una deuda en una fase sin cerrar no la lee nadie).
+
+## S-062 · Una prueba que se rompe cuando el repositorio mejora está atada al síntoma  ·  error-resuelto · activa
+- **What:** una prueba comprobaba que `B-EP-004-HU-011/plan_pruebas.md` fuera reconocido como plantilla sin llenar. **Era cierto cuando se escribió, y dejó de serlo el mismo día**: ese documento se escribió unas horas después — que era exactamente el objetivo del trabajo. La prueba se cayó **porque el repositorio mejoró**.
+- **Why:** apuntaba a **un caso concreto del árbol real**, no a la regla. Un documento sin llenar es un estado transitorio por definición: el trabajo consiste en que deje de estarlo. **Atar una prueba a un ejemplo que se quiere eliminar la condena a fallar el día que se cumple el objetivo.** Se reescribió copiando la plantilla real a un árbol de mentira: la plantilla no cambia, el caso sí.
+- **Also:** el mismo día se encontró la falla gemela, y peor. Una comprobación decía `assertIn("«", mensaje + "«")` — **cierta siempre**, porque compara contra un texto al que se le acaba de pegar lo que busca. Pasaba con cualquier mensaje, incluso vacío, y por eso un sabotaje que vaciaba el aviso pasó en verde. **Una comprobación que no puede fallar da la misma señal verde que una que funciona.**
+- **And:** un tercer caso de la misma familia, el más engañoso: una prueba usó una ruta con un byte nulo creyendo que reventaría al resolverse, para tocar la rama de «ante la duda se calla». **No revienta** — se resuelve contra el directorio actual como cualquier otra, así que la prueba nunca tocó la rama que decía probar. Se reescribió forzando el fallo a propósito.
+- **Where:** las tres, en `validadores/pruebas.py`, cada una con el porqué escrito encima · los sabotajes que destaparon dos de ellas, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/).
+- **Learned:** hay tres formas de que una prueba mienta en verde, y las tres se ven igual desde el reporte: **está atada a un caso que va a desaparecer**, **no puede fallar**, o **no toca la rama que dice tocar**. Ninguna se descubre leyendo la prueba — las tres salieron **rompiendo el código a propósito y viendo qué no se cayó**. La pregunta que las separa: *¿qué tendría que cambiar en el código para que esta prueba fallara?* Si la respuesta es «nada» o «algo que no es el tema», la prueba no está probando.
+- **When/Who:** 2026-08-27 · agente, saboteando las fases `A` de la `HU-022` y de la `HU-018`.
+- **Scope:** estándar; aplica a toda prueba que nombre un archivo del árbol real o compare contra algo construido en la propia comprobación.
+- **Rel:** S-043 (una comprobación puede estar bien escrita y no estar conectada), S-060 (un guion que rompe a propósito restaura en `finally`).
+
+## S-063 · Un veredicto puede estar mal el día que se escribe, no solo envejecer  ·  error-resuelto · activa
+- **What:** de los dos rojos que parecían resueltos de hecho, **solo uno lo era**. `EP-005·HU-001` no cumplía su exigencia de privacidad porque *«nada enmascara»*, y hoy sí enmascara — el veredicto **fue cierto y dejó de serlo**, que es `S-061`. Pero `EP-003·HU-002` no cumplía porque *«el planteamiento de esta casa está vacío»*, **y su `CA-01` no pide eso**: pide que existan los tres modelos y que la cadena se recorra en los dos sentidos. La propia fase escribió que los tres existen y que **no hay una sola falla en 68 historias**. **Se reprobó a sí misma por algo que su criterio no exige.**
+- **Why:** un criterio de aceptación es el contrato de la fase, y **medirla contra algo de al lado la deja en rojo sin que nadie pueda cerrarlo** — no hay trabajo que hacer, porque el trabajo que pedía el criterio ya estaba hecho. El rojo queda ahí, se hereda a la historia, y quien lo lea después va a buscar un defecto que no existe.
+- **Also:** cómo se cuela. El criterio dice *«existen los tres modelos»*, y el modelo del planteamiento existía; lo que faltaba era **el documento que ese modelo produce en este repositorio**. Son dos cosas: **el molde y lo que se llena con él**. La fase encontró un hueco real —la casa no tenía su planteamiento, y lo anotó bien— y **lo cobró en la factura equivocada**.
+- **And:** es el mismo defecto de toda la jornada, en otra escala. El conteo de historias midió cuatro veces la cosa de al lado; acá lo hizo un veredicto. **Un rojo mal puesto cuesta más que un verde mal puesto**: el verde se descubre cuando algo falla, y el rojo no se descubre nunca, porque nadie duda de una mala noticia.
+- **Where:** los dos veredictos, en las fases `A` de `EP-003·HU-002` y `EP-005·HU-001` · el enmascarado comprobado corriéndolo, no leyéndolo: `API_KEY=…` sale tapado y «la clave del asunto» no se toca.
+- **Learned:** antes de aceptar un «No cumple», **hay que leer el criterio y preguntar si lo que falló es lo que el criterio pide**. Y hay una señal barata de que está mal puesto: **si la justificación del rojo nombra algo que no aparece en el criterio**, o si «qué falta para que cumpla» resulta ser trabajo de otra historia, el veredicto está midiendo otra cosa. El hallazgo se conserva; lo que se corrige es dónde se cobra.
+- **When/Who:** 2026-08-27 · agente, al ir a cerrar dos rojos que creía envejecidos y encontrar que uno nunca fue cierto.
+- **Scope:** estándar; aplica a todo veredicto de fase.
+- **Rel:** S-061 (un veredicto «No cumple» es una foto y nadie la vuelve a mirar), S-054 (el inventario cuenta fases terminadas, no criterios cumplidos).
+
+## S-064 · Una historia se crea, se le hace su carpeta, y nadie vuelve a la tabla de su épica  ·  error-resuelto · activa
+- **What:** al volver a medir la cadena de trazabilidad sobre el árbol real —en vez de citar la medición de otra fase— apareció que **tres historias no estaban en la tabla de su épica**: `HU-036` en `EP-001`, y `HU-017` y `HU-018` en `EP-005`. Las tres tenían su carpeta, su documento y su trabajo; lo que faltaba era la fila.
+- **Why:** la carpeta y el documento se crean en el momento de trabajar, y **la tabla de la épica se edita en otro archivo y en otro momento**. Nada obliga a volver. La historia queda accesible por su ruta, así que el hueco no molesta a nadie hasta que alguien intenta recorrer la cadena **de arriba abajo** — y ahí no existe.
+- **Also:** la detección ya estaba construida y funcionando. `trazabilidad.py` reportaba las tres, con su nombre, desde el día que se crearon. **El problema no era que no se supiera: era que el hallazgo salía entre otros cuarenta y cinco avisos**, y un aviso que convive con cuarenta y cuatro no se lee. Se arreglaron las tres y la cadena quedó en **cero fallas sobre 11 épicas y 119 historias**.
+- **And:** lo destapó una regla del plan, no la casualidad. La fase decía *«se corre, no se cita»* — apoyarse en la medición de otra fase habría heredado su resultado de hace diez días, cuando la cadena sí estaba limpia. **Una medición vieja no es una medición.**
+- **Where:** las tres filas, en las tablas de `EP-001` y `EP-005` · el guion que volvió a medir, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/).
+- **Learned:** cuando el trabajo se registra **en dos sitios que se editan en momentos distintos**, el segundo se queda atrás — y da igual cuál sea el segundo. La pregunta que lo destapa: **¿qué archivo hay que tocar después, en otro rato, para que esto quede completo?** Ese es el que va a faltar. Y si ya hay un programa que lo detecta, el trabajo no es construir otro: **es que su hallazgo no se pierda entre los demás**.
+- **When/Who:** 2026-08-27 · agente y usuario. El usuario cortó la propuesta de anotarlo como pendiente: *«¿para qué dejar pendientes si se puede solucionar?»*.
+- **Scope:** estándar; aplica a todo dato que viva en un documento y en el índice de otro.
+- **Rel:** S-063 (un veredicto puede estar mal el día que se escribe), S-057 (una regla que solo vive en un recuerdo se deja de cumplir al día siguiente).
+
+## S-065 · Hacer el trabajo y verificarlo no cierra un rojo: nada lee la corrección  ·  decisión · activa
+- **What:** se construyeron dos fases que volvían a verificar criterios declarados en rojo, se midió que hoy se cumplen —enmascarado corriendo por sus dos mitades, cadena de trazabilidad en cero sobre 11 épicas y 119 historias— y las dos cerraron con «Cumple». **El número no se movió: `16 no cumplen` siguió siendo 16.** El conteo mira **todas** las fases de la historia, y las fases `A` siguen diciendo «No cumple».
+- **Why:** la regla que lo causa es correcta para su caso — *«basta una fase que no cumpla»* impide que cerrar la primera fase cierre la historia. Lo que le falta es distinguir **«todavía no se hizo»** de **«se hizo después, y una fase posterior lo verificó»**. Sin esa distinción, **un rojo no tiene forma de cerrarse**: se puede hacer el trabajo, medirlo y declararlo, y el número no lo lee.
+- **Also:** es la vuelta de `S-061` con la prueba en la mano. Aquella dijo que un rojo declarado necesita algo que lo cierre; **esto comprueba que hacerlo a mano tampoco basta**. Y explica por qué el número solo sabe empeorar en esa cuenta: entra cuando una fase cierra en rojo y **no sale nunca**.
+- **And:** lo medido antes de diseñar cambia el diseño. De las **16 historias con un rojo, 8 tienen una fase posterior y 8 no**. Pero **tener fase posterior no es haber resuelto el rojo**: una fase que trabajó otro criterio no arregla el anterior. De las ocho, solo dos volvieron a verificar de verdad. **Por eso el reemplazo se declara y no se deduce** — deducirlo por el orden taparía rojos vivos con trabajo ajeno, que es la forma optimista de mentir.
+- **Where:** las dos fases `D` de `EP-003·HU-002` y `EP-005·HU-001` · `por_veredicto` en [validadores/fases.py](../validadores/fases.py) · la medición, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/).
+- **Learned:** **un estado que solo tiene camino de entrada no es un estado: es una marca.** Al diseñar cualquier cuenta hay que preguntar **cómo sale algo de acá, y quién lo saca** — si la respuesta es «nadie», la cuenta va a crecer para siempre y dejará de mirarse. Y la salida se **declara**, no se infiere del orden: lo implícito tapa por accidente justo lo que la cuenta viene a mostrar.
+- **When/Who:** 2026-08-27 · agente y usuario, al terminar dos fases que verificaban rojos y ver que el número no se movía.
+- **Scope:** estándar; aplica a cualquier cuenta de deuda o de hallazgos.
+- **Rel:** S-061 (un veredicto en rojo es una foto y nadie la vuelve a mirar), S-055 (un número de avance necesita una prueba que lo contradiga).
+
+## S-066 · La mayoría de las fases no tiene dónde marcar la casilla que nadie marca  ·  decisión · activa
+- **What:** el pendiente 87 decía que **la estación del commit casi nunca se marca**, porque el commit ocurre después de que el agente termina de escribir. Al medirlo antes de construir salió lo esperado —**22 fases cerradas de hecho con la casilla en blanco**— y algo que no: **de los 140 `estado-fase.md` del árbol, 106 ni siquiera traen la fila de la estación 12**.
+- **Why:** el problema no era solo que nadie volviera a marcar. **Tres de cada cuatro fases no tienen dónde.** Se escribieron con otra estructura, o sin la tabla de estaciones, y un programa que ponga el hash no tendría en qué escribirlo. **Un automatismo sobre un campo que no existe en el 76% de los casos no es una solución: es una solución para la minoría que ya estaba bien.**
+- **Also:** es el mismo patrón de `S-053` y `S-064` una vez más — **medir antes de construir cambió el alcance**. Sin la medición, la historia se habría escrito para «los que no marcan», y al correrla habría tocado 34 fases de 140 sin que nadie entendiera por qué las otras no se movían.
+- **And:** el reparto separa dos trabajos que se ven igual. De las 23 sin marcar, **22 son solo la marca** —su documento de cierre ya está en git, comprobado contra el historial— y **una es trabajo de verdad**. Contarlas juntas daría 23 «fases sin commitear» donde hay una.
+- **Where:** la medición, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/) · el [pendiente 87](../pendientes/hecho/el-hash-del-commit-se-anota-solo.md).
+- **Learned:** antes de automatizar el llenado de un campo, **hay que contar en cuántos documentos ese campo existe**. La pregunta es corta y ahorra el trabajo entero: **¿sobre cuántos de los casos reales puede actuar esto?** Si la respuesta es «sobre los que ya estaban bien», el automatismo no resuelve el problema que lo motivó — y el resto queda igual, pero ahora con la apariencia de estar cubierto.
+- **When/Who:** 2026-08-27 · agente y usuario, al bajar el pendiente 87 a historia.
+- **Scope:** estándar; aplica a todo automatismo que escriba en un campo de un documento.
+- **Rel:** S-064 (una historia se crea y nadie vuelve a la tabla de su épica), S-053 (contar archivos presentes da por terminado un molde sin llenar).
+
+## S-067 · Un enganche que arregla algo después del commit no puede meterlo dentro de ese commit  ·  decisión · activa
+- **What:** para que la casilla del commit se marcara sola hacía falta el hash, y **el hash no existe hasta que el commit está hecho**. Se midió en un repositorio de mentira antes de escribir código: el enganche escribe bien, el commit se hace, el hash es el correcto — **y el archivo queda modificado y sin guardar**. Lo que quedó dentro del commit sigue diciendo `PENDIENTE`.
+- **Why:** es una consecuencia del orden, no un defecto que se pueda pulir. **Cualquier automatismo que necesite el resultado de una operación para completarla llega tarde por definición**, y solo tiene tres salidas: dejar el rastro para después, reescribir la operación, o hacer otra encima.
+- **And:** las tres se descartaron o se eligieron **por argumento, no por gusto**. Reescribir el commit (`--amend`) **se muerde la cola**: cambia el hash, así que el documento apuntaría a un commit que ya no existe. Hacer un segundo commit automático **cruza `00·N1`** — un cambio de estado sin aprobación, y eso es núcleo blindado. Queda dejar el archivo modificado, que es la única donde **nada se reescribe y nada se guarda sin que el usuario lo apruebe**.
+- **Also:** el costo se declara en vez de disimularse: **después de cada commit el árbol queda sucio**, con un archivo y una línea, que entra en el commit siguiente. Puede confundirse con trabajo sin guardar, y por eso el conteo tiene que decir por nombre cuáles son.
+- **Where:** la medición, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/) · la duda declarada en el §2.7 del plan, con su instrucción de parar si el resultado no se explicaba en una línea.
+- **Learned:** **cuando un automatismo necesita el resultado de lo que quiere completar, no hay solución limpia: hay tres costos y se elige uno.** Escribirlos los tres antes de decidir es lo que evita descubrir el elegido por sus efectos. Y la pregunta que ordena la elección no es cuál es más cómoda, sino **cuál no rompe una regla de núcleo** — acá dos de las tres la rompían, y eso dejó una sola.
+- **When/Who:** 2026-08-27 · agente y usuario, resolviendo la duda declarada antes de construir.
+- **Scope:** estándar; aplica a todo enganche que actúe después de la operación que documenta.
+- **Rel:** S-066 (la mayoría de las fases no tiene dónde marcar), S-060 (un guion que rompe a propósito restaura en `finally`).
+
+## S-068 · Un sabotaje que no se pudo aplicar no es un sabotaje que pasó  ·  decisión · activa
+- **What:** al sabotear la fase se rompieron cinco piezas y **cuatro se cazaron**. La quinta no: el guion imprimió *«NO SE PUDO SABOTEAR: el texto cambió»*. La causa era boba — el texto del sabotaje se escribió **sin los acentos** que el archivo real tiene, así que la búsqueda no encontró nada y no se rompió nada.
+- **Why:** **un sabotaje que no se aplica produce exactamente la misma salida que un sabotaje que las pruebas no detectan: todo en verde.** Sin la guardia que lo dice, se habría leído como «las pruebas no cazan este caso» —y se habrían escrito pruebas nuevas para un defecto que nunca se introdujo— o, peor, como «cinco de cinco cazados». Las dos lecturas llevan a decisiones equivocadas y ninguna se distingue del resultado.
+- **Also:** la guardia era una línea, y estaba puesta desde el primer guion de la jornada. **Lo que la hace valiosa no es lo que evita: es que convierte un silencio en un mensaje.** Un guion que sabotea sin comprobar que sabteó de verdad no está midiendo la calidad de las pruebas — está midiendo si acertó a escribir el texto.
+- **And:** el mismo día, la suite completa cazó un defecto que las pruebas propias no vieron: un hallazgo nuevo **no nombraba la regla que se incumple** en la forma que el estándar exige. **La clase propia estaba en verde**; lo encontró una prueba transversal escrita meses antes. Es la tercera vez en la jornada que el estándar comprueba al agente.
+- **Where:** el `sabotaje_hu019a.py` y su línea de guardia, en [historico-chat/scripts/2026-08-27/](../historico-chat/scripts/2026-08-27/).
+- **Learned:** **todo guion que rompe algo a propósito tiene que comprobar que lo rompió**, y decirlo cuando no. La regla general: **cuando una herramienta puede fallar en silencio produciendo el mismo resultado que el éxito, hay que hacerla hablar** — no por prolijidad, sino porque el silencio se lee como la conclusión que uno esperaba. Y correr la suite entera, no solo la clase propia: lo que vigila el trabajo de uno rara vez es lo que uno acaba de escribir.
+- **When/Who:** 2026-08-27 · agente, saboteando la fase A de la `HU-019`.
+- **Scope:** estándar; aplica a todo guion de sabotaje y a toda comprobación que pueda no ejecutarse.
+- **Rel:** S-062 (tres formas de que una prueba mienta en verde), S-044 (un guion dijo «suite completa en verde» sin correr nada).
+
+## S-069 · Recomendar trabajo sin leer el criterio repite el error que uno acaba de señalar  ·  error-resuelto · activa
+- **What:** se recomendó tres veces revisar las 250 reglas del estándar, presentándolo como la deuda que sostenía un veredicto en rojo — *«`251 de 251` sin fecha de revisión»*. **El `CA-04` de esa historia no pide que las reglas estén revisadas:** pide que **se sepa cuáles llevan más tiempo sin revisarse**, ordenadas, con su fecha y sus incumplimientos. `vigencia.py` hace exactamente eso.
+- **Why:** y no era ambiguo. El documento del procedimiento lo dice en una línea: *«arranca ausente en todas las reglas, a propósito; ponérsela de una vez a las doscientas habría sido escribir doscientas fechas que no responden por ninguna revisión»*. **La ausencia de fechas es el diseño**, y tratarla como deuda habría llevado a sellar 250 reglas sin revisarlas — exactamente el sello vacío que ese documento existe para evitar.
+- **Also:** es el mismo defecto que se había señalado **dos horas antes** en otra fase, y escrito como `S-063`: un veredicto que reprueba por algo que su criterio no pide. **Haberlo nombrado no evitó repetirlo** — y esta vez el error no estaba en un documento viejo sino en la recomendación que se le daba al usuario para decidir en qué trabajar.
+- **And:** lo que lo destapó fue leer el procedimiento **para poder ejecutarlo**, no para revisarlo. La recomendación se sostuvo tres veces sin abrir ni el criterio ni el documento que lo explica; bastó ir a hacer el trabajo para que se cayera en la primera lectura.
+- **Where:** el `CA-04` de `EP-001·HU-007` · [base/20-meta-reglas/revision-de-vigencia.md](../base/20-meta-reglas/revision-de-vigencia.md) · la salida real de `vigencia.py`, que ordena las 251 y dice cuántos incumplimientos produce cada una.
+- **Learned:** **antes de recomendar trabajo, leer el criterio que lo justifica** — no el resumen de quien lo declaró en rojo. Un rojo heredado se cita con la misma confianza que un hecho medido, y **nadie duda de una mala noticia**. La comprobación es barata y cabe en una pregunta: **¿lo que falta es lo que el criterio pide, o es un estado de los datos que alguien interpretó como falta?**
+- **When/Who:** 2026-08-27 · agente, al ir a ejecutar el trabajo que él mismo había recomendado tres veces.
+- **Scope:** estándar; aplica a toda priorización que se apoye en un veredicto ajeno.
+- **Rel:** S-063 (un veredicto puede estar mal el día que se escribe), S-061 (un veredicto en rojo es una foto y nadie la vuelve a mirar).
+
+## S-070 · Un checklist que uno firma sobre su propio trabajo no comprueba nada  ·  error-resuelto · activa
+- **What:** la regla `04·S18`, escrita el mismo día, llevaba su bloque de checklist declarando **«CUMPLE» en las veinte filas**. La fila 10 —que el cuerpo quepa en el molde— **era falsa**: medía 360 caracteres para un límite de 320. Lo destapó `validar.py metareglas` al ir a mirar otra cosa, horas después y por casualidad.
+- **Why:** el checklist se escribió **a la vez que la regla y por la misma mano**, en el mismo minuto, sin correr la comprobación que existe para eso. **Un checklist así no es una verificación: es una declaración de intenciones con forma de tabla** — y su peor efecto no es que falle, sino que **queda escrito como si alguien hubiera comprobado**, y el siguiente que lo lea no vuelve a mirar.
+- **Also:** el defecto no era invisible: hay un programa que lo mide y bastaba correrlo. **La regla se firmó y se publicó sin ejecutarlo**, en una jornada en la que el agente había escrito tres señales sobre no afirmar lo que no se midió. Lo que fallaba no era saberlo.
+- **And:** lo que sobraba tampoco era exigencia. Al recortar quedó a la vista que el cuerpo mezclaba **la orden** —dónde va el guion— con **el porqué** —que sin eso el resultado queda y el cómo se borra—. El porqué se movió al bloque del checklist, que es donde las demás reglas lo ponen. **Pasarse del molde suele ser el síntoma de eso, no un problema de longitud.**
+- **Where:** `04·S18` en [base/04-seguridad.md](../base/04-seguridad.md), con su fila 10 corregida y el porqué debajo.
+- **Learned:** **el checklist de una regla se llena corriendo el validador, no leyendo la regla** — y menos si lo llena quien acaba de escribirla. La comprobación cuesta un comando. Y hay una señal barata de que un checklist es de intenciones: **si sus veinte filas dan ✅ a la primera**, alguien lo dedujo en vez de medirlo.
+- **When/Who:** 2026-08-27 · agente, al mirar por qué la columna «falla hoy» de `vigencia.py` estaba vacía.
+- **Scope:** estándar; aplica a toda regla nueva y a todo checklist que se firme sobre trabajo propio.
+- **Rel:** S-062 (tres formas de que una prueba mienta en verde), S-069 (recomendar sin leer el criterio).
+
+## S-071 · Un archivo que ninguna sesión registró no parece ajeno: parece de nadie  ·  error-resuelto · activa
+- **What:** un commit se llevó **712 líneas de trabajo ajeno** —dos moldes de manual y su entrada del registro de cambios— barridas por un `git add -A`. El commit trataba de otra cosa y **no las nombra en su mensaje**. Se descubrió dos commits después, y no por una comprobación: **el número de versión no cuadraba**. Se había escrito `35.6.0` en `VERSION` y lo guardado decía `35.7.0`.
+- **Why:** la comprobación que existe para esto —*«el commit no se lleva lo ajeno»*— **corrió y dijo OK**. Pregunta si lo que entra al commit **lo tocaron dos sesiones distintas**, y los archivos ajenos **no los había registrado ninguna**. Un archivo sin registro no se ve como de otro: se ve como de nadie, y la comprobación solo se dispara cuando dos registros chocan.
+- **Also:** las tres formas de quedar sin registro son normales, no excepciones. **La sesión que lo escribió cerró hace más de doce horas** y su registro caducó a propósito; **se escribió antes de que el enganche existiera**; o **se escribió por fuera de las herramientas que el enganche ve** — una redirección dentro de un comando no deja rastro.
+- **And:** la señal que sí estaba a la vista era el propio archivo. **`VERSION` cambió de contenido bajo la mano de quien lo editaba**: se escribió un número y se guardó otro. Nadie lo miró porque al revisar el commit se contaron los archivos —«43»— **sin mirar cuáles**.
+- **Where:** el commit `6abffdc`, y la constancia puesta en la entrada `35.7.0` del [CHANGELOG](../CHANGELOG.md) para que el registro no siga atribuyendo mal.
+- **Learned:** **una comprobación que compara dos fuentes solo ve lo que ambas conocen.** Cuando una de las dos puede estar vacía —por caducidad, por antigüedad o por no cubrir todos los caminos—, su silencio significa «no lo sé», y se está leyendo como «está bien». La pregunta que lo destapa: **¿qué pasa si el registro no tiene nada de este archivo?** Y la otra mitad, más barata: **antes de aprobar un commit, mirar los nombres de los archivos, no cuántos son.**
+- **When/Who:** 2026-08-28 · agente y usuario, al no cuadrar el número de versión de un cambio de una línea.
+- **Scope:** estándar; aplica a toda comprobación que cruce lo que entra a un commit con un registro que puede estar incompleto.
+- **Rel:** S-068 (un sabotaje que no se pudo aplicar no es uno que pasó), S-062 (tres formas de que una prueba mienta en verde).
+
+## S-072 · El hueco por el que entró lo ajeno es el mismo por el que pasa casi todo lo propio  ·  decisión · activa
+- **What:** para que la comprobación de sesiones viera los archivos que **ninguna sesión registró** —por ahí entraron 712 líneas ajenas— se propuso avisar de ellos cuando al menos uno de los que entran al commit sí tuviera registro. **Medido sobre los últimos doce commits: avisaría en siete, con hasta 31 archivos de una vez.** Eso no es una comprobación, es ruido — y un aviso que se aprende a ignorar apaga también lo que sí importaba.
+- **Why:** el registro se llena desde las herramientas de escritura del agente, y **la mayoría de los archivos se escriben desde guiones que se corren en la terminal**, que el enganche no ve. Así que *«sin registro»* no significa *«de otro»*: significa *«escrito de la forma habitual»*. **El hueco por el que entró lo ajeno es el mismo por el que pasa casi todo lo propio**, y con ese registro no hay forma de separarlos.
+- **Also:** la medición mató el diseño obvio antes de escribirlo, que es exactamente para lo que sirve medir. La idea se veía razonable y estaba bien argumentada; **lo único que la descartó fue correrla contra el historial real**. Sin ese paso se habría construido, habría avisado siete de doce veces, y se habría apagado.
+- **And:** eso reencuadra el problema. No es que la comprobación esté mal escrita: es que **su fuente de datos no cubre cómo se trabaja de verdad**. Arreglar la comprobación sin arreglar el registro sería afinar un instrumento que mide otra cosa — el defecto que este repositorio ya cometió cuatro veces con el número de avance.
+- **Where:** la medición, en [historico-chat/scripts/2026-08-28/](../historico-chat/scripts/2026-08-28/) · `validar_preparados` en `validadores/sesiones.py`.
+- **Learned:** antes de afinar una comprobación que calla, **hay que preguntar por qué calla** — y si la respuesta es que su registro está incompleto, el trabajo no está en la comprobación sino en el registro. La prueba barata: **correr la regla nueva contra el historial y contar cuántas veces habría hablado.** Si habla en más de la mitad de los casos, no distingue nada.
+- **When/Who:** 2026-08-28 · agente y usuario, midiendo antes de construir el arreglo obvio.
+- **Scope:** estándar; aplica a toda comprobación que se apoye en un registro que el agente llena mientras trabaja.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-059 (una medida que separó bien cuatro casos no separa bien seiscientos).
+
+## S-073 · Una clase de pruebas en verde no dice nada sobre las de al lado  ·  error-resuelto · activa
+- **What:** al agregar una aserción a la prueba de un enganche, la búsqueda del texto a reemplazar coincidió **primero con la prueba de otro enganche**, y ahí quedó pegada — usando una variable que en esa clase ni existe. Corrí la clase nueva sola, en verde, y seguí. La suite completa habría reventado con un `NameError`.
+- **Why:** para ahorrar los tres minutos de la suite entera, corrí solo la clase que estaba escribiendo. **Es exactamente donde el error no estaba.** Un cambio hecho por reemplazo de texto no cae necesariamente donde se cree: cae en la primera coincidencia.
+- **Also:** lo destapó un sabotaje que *«se coló»* sin razón aparente. Al perseguir por qué no lo cazaban las pruebas, apareció el verdadero desorden. **El sabotaje encontró un defecto distinto del que buscaba.**
+- **And:** la clase sola tardaba 5 segundos; la suite, 185. Esa proporción es la que empuja a saltarse la suite, y **es la misma que hace que el error tarde en aparecer**.
+- **Where:** `validadores/pruebas.py`, entre `ElAgenteNoEscribeFuera` y `ElTurnoAnotaLoQueCambio`.
+- **Learned:** **un reemplazo de texto se verifica mirando dónde cayó, no mirando si el archivo compila.** Y antes de dar una fase por terminada, la suite completa corre entera aunque tarde: el verde de una clase es una afirmación sobre esa clase y nada más.
+- **When/Who:** 2026-08-28 · agente, depurando por qué un sabotaje no se cazaba.
+- **Scope:** estándar; aplica a todo cambio hecho por búsqueda y reemplazo sobre un archivo grande.
+- **Rel:** S-062 (tres formas de que una prueba mienta en verde), S-068 (un sabotaje que no se pudo aplicar no es uno que pasó).
+
+## S-074 · Un sabotaje que se cuela sin razón aparente suele señalar código muerto  ·  aprendizaje · activa
+- **What:** rompí a propósito la línea que ponía la hora del registro —`os.utime(ruta, None)`— esperando que las pruebas lo cazaran. **No lo cazaron, y tenían razón:** el archivo se acababa de crear en el renglón anterior, así que ya traía la hora de ahora. La línea no hacía nada.
+- **Why:** se escribió por costumbre, para «asegurar» un estado que la operación anterior ya garantizaba. Ninguna prueba podía distinguir el antes del después, porque **no había diferencia que distinguir**.
+- **Also:** la reacción instintiva fue la equivocada: agregar una prueba que cazara ese sabotaje. Habría sido una prueba de una línea inútil, y **el código muerto habría quedado con una prueba encima que lo hace parecer necesario**.
+- **And:** el otro sabotaje que se coló en la misma tanda sí era un defecto de verdad —el enganche creaba carpetas fuera de todo proyecto—, así que la tanda separó dos cosas distintas con la misma señal: **una prueba que falta, y una línea que sobra.**
+- **Where:** `anotar_el_turno` en `validadores/sesiones.py`, fase `A-EP-005-HU-020`.
+- **Learned:** cuando un sabotaje se cuela, hay dos preguntas y en este orden: **¿falta una prueba, o sobra el código?** Si nadie puede observar la diferencia entre romper la línea y dejarla, la línea no está haciendo nada. Se quita, y el sabotaje se apunta al renglón que sí decide.
+- **When/Who:** 2026-08-28 · agente, corriendo la tanda de sabotajes de la fase.
+- **Scope:** estándar; aplica a toda revisión por sabotaje.
+- **Rel:** S-073 (una clase en verde no dice nada sobre las de al lado), S-062 (tres formas de que una prueba mienta en verde).
+
+## S-075 · Cuatro registros llevados a mano se quedaron atrás, y ninguno avisó  ·  error-resuelto · activa
+- **What:** en una sola jornada aparecieron **cuatro listas que alguien mantiene a mano y que estaban desactualizadas**: el índice de la épica `EP-005` (cuatro historias atrás), el mapa del amarre a la herramienta (siete archivos), el mapa del sitio (dos carpetas) y la lista de exentos del detector de secretos (dos archivos). Ninguna se descubrió trabajando: las cuatro las destapó correr los comprobadores.
+- **Why:** los cuatro son **el segundo sitio**. El primero —la carpeta de la historia, el archivo del validador, la carpeta nueva, la prueba nueva— se crea al trabajar y no se puede olvidar, porque es el trabajo. El segundo se edita en otro rato, y nada obliga a volver. **La pregunta que lo destapa: ¿qué archivo hay que tocar después, en otro momento, para que esto quede completo?**
+- **Also:** la de exentos es la más cara de las cuatro, y muestra el costo real. Dejó `validar.py todo` **en rojo seis días**, y el rojo era «posible secreto en el código» — el mismo mensaje que daría una credencial de verdad. **Un control que lleva días en rojo por una lista vieja ya no distingue lo nuevo**, que es exactamente lo que el pendiente que creó esa lista había advertido, con esas palabras, diez días antes.
+- **And:** tres de las cuatro **sí tienen comprobador** —`amarre`, `sitio`, `secretos` los ven— y aun así estuvieron rotas días. **Tener el comprobador no alcanza si nadie lo corre entre commit y commit.** El cuarto, el índice de la épica, ni comprobador tiene: se vio porque el molde de cierre pide marcar una casilla y esta vez se miró antes de firmarla.
+- **Where:** `validadores/secretos.py` (`EXENTOS`) · `anatomia/mapa-del-sitio.md` · `anatomia/que-esta-amarrado-a-la-herramienta.md` · el `README.md` de `EP-005`.
+- **Learned:** **un registro llevado a mano no se mantiene solo por tener un comprobador; se mantiene si el comprobador corre.** Automatizarlo tampoco sirve cuando el registro es una *decisión* —cuáles pruebas pueden traer algo con forma de clave lo decide una persona, y una lista que se llena sola sería el agujero—. Lo que falta no es la lista ni el comprobador: es **que la corrida completa sea parte de cerrar, no algo que se recuerda**.
+- **When/Who:** 2026-08-28 · agente, al correr todos los comprobadores antes de cerrar una fase.
+- **Scope:** estándar; aplica a todo dato que se escriba en dos sitios que se editan en momentos distintos.
+- **Rel:** S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada), S-064 (una historia se crea y nadie vuelve a la tabla de su épica), S-057 (la regla se fijó y se dejó de cumplir al día siguiente).
+
+## S-076 · El sello de «commit autorizado» no distingue el commit que cierra una fase del que la abre  ·  error-resuelto · activa
+- **What:** el enganche de `post-commit` selló la estación 12 —«Commit · 👤 autorizado»— de una fase **recién creada**, con el hash del commit que la estaba creando. La fase iba por la estación 7 y su documento decía que ya había pasado la 12.
+- **Why:** el enganche marca **toda fase cuya carpeta toque el commit**, y esa condición no separa los dos casos: el commit que guarda una fase terminada toca su carpeta, y el que la abre también. Es la misma forma de error que `S-071` —una condición que parece discriminar y en realidad cubre los dos lados— con otro disfraz.
+- **Also:** el daño es de los caros porque **es silencioso y afirma de más**. Un documento de fase que dice «commit autorizado» sin que nadie lo autorizara es exactamente lo que el estándar existe para impedir, y quien lo lea después no tiene cómo saber que lo escribió un programa.
+- **And:** se vio **en la misma vuelta en que ocurrió**, porque el enganche imprime lo que hizo. Si callara —que es la tentación de todo automatismo que «no molesta»— el sello falso se habría quedado. **Un automatismo que escribe tiene que decir qué escribió**, aunque nadie se lo pregunte.
+- **Where:** `validadores/hook_estacion.py` y `validadores/estacion_commit.py`, de la fase `A-EP-005-HU-019` · la fila corregida a mano en el `estado-fase.md` de `A-EP-005-HU-021`.
+- **Learned:** cuando un automatismo marca un hito, la pregunta no es «¿tocó esto el commit?» sino **«¿este commit es el hito?»**. Lo que distingue los dos casos acá está a la vista y no se está mirando: una fase que se cierra trae su `resultado_pruebas.md` lleno y su veredicto escrito; una que se abre trae los moldes en blanco.
+- **When/Who:** 2026-08-28 · agente, al leer lo que el enganche imprimió después de guardar.
+- **Scope:** estándar; aplica a todo automatismo que selle un hito a partir de qué archivos cambiaron.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-075 (cuatro registros llevados a mano se quedaron atrás).
+
+## S-077 · Un aviso que dice «nunca» sobre algo que pasó dos veces manda a repetir trabajo inútil  ·  error-resuelto · activa
+- **What:** el reclamo de las pruebas del estándar corrió por primera vez de verdad —en un `push`— y dijo: *«las pruebas del estándar nunca corrieron en esta copia»*. **Habían corrido dos veces ese mismo día.** Lo que pasaba es que el sello solo se escribía cuando la corrida quedaba **limpia**, y la carpeta tiene ocho fallas conocidas.
+- **Why:** el programa confundía dos cosas distintas: **«no hay constancia» y «no corrió»**. Son la misma ausencia de archivo y llevan a acciones opuestas. Con la primera lectura, el aviso manda a esperar diez minutos para volver a leer exactamente lo mismo — y **un aviso que manda a hacer algo que no cambia nada se aprende a ignorar en dos intentos.**
+- **Also:** el defecto no lo encontró ninguna de las 22 pruebas de la fase, ni los once sabotajes: **lo encontró correrlo de verdad, una vez, en el momento en que sirve.** Las pruebas cubrían «sin sello reclama» y «con sello limpio calla», y el caso real —sello ausente *porque* hubo fallas— caía entre las dos.
+- **And:** el arreglo dice **tres cosas distintas** en vez de una: nunca corrieron, la última dejó N fallas, o hay commits que no vieron. Y el sello guarda el conteo, así que un sello viejo sin él se lee como limpio: es lo único que aquella versión sabía escribir.
+- **Where:** `validadores/corredor.py` · `sellar` y `reclamo`, fase `A-EP-005-HU-021`.
+- **Learned:** **antes de escribir un mensaje que afirma algo, preguntar qué otra situación produce la misma señal.** Acá la señal era «no hay archivo» y el mensaje eligió una de sus tres causas, la menos probable. La prueba barata: leer el aviso en voz alta y preguntar **«¿qué hago con esto, y qué pasa si lo hago?»**. Si la respuesta es «lo mismo otra vez», el mensaje está mal.
+- **When/Who:** 2026-08-28 · agente y usuario, en el primer push con el enganche puesto.
+- **Scope:** estándar; aplica a todo aviso que se dispare por la **ausencia** de algo.
+- **Rel:** S-071 (un archivo que ninguna sesión registró parece de nadie), S-075 (cuatro registros llevados a mano se quedaron atrás), S-068 (un sabotaje que no se pudo aplicar no es uno que pasó).
+
+## S-078 · Un sabotaje que deja el archivo sin compilar no cazó nada  ·  error-resuelto · activa
+- **What:** uno de los doce sabotajes se reportó como **CAZADO** y no había cazado nada: el texto que insertaba dejaba un paréntesis suelto, así que las pruebas fallaban con `SyntaxError`. **Fallaban por la sintaxis, no por el comportamiento.**
+- **Why:** el guion juzga por el código de salida de `unittest`, y un archivo que no compila da el mismo código de salida que una prueba que atrapa un defecto. **La misma señal, dos causas, y la que interesa es la otra.**
+- **Also:** es `S-068` con otra forma. Allá el sabotaje **no se aplicaba** —los acentos no calzaban— y el verde se leyó como que la prueba lo había atrapado. Acá sí se aplicó, y aun así lo que se midió fue el intérprete de Python.
+- **And:** la corrección es de tres líneas y vale para siempre: si la salida trae `SyntaxError` o `IndentationError`, el resultado no es *cazado* ni *se coló*, sino **NO VALE** — y cuenta como fallo del guion, para que nadie lo lea como cobertura.
+- **Where:** `historico-chat/scripts/2026-08-28/sabotajes-hu021.py`.
+- **Learned:** **un sabotaje se juzga por lo que rompió, no por el color que sale.** Antes de dar uno por bueno hay que poder decir *qué comportamiento* dejó de cumplirse; si la respuesta es «no sé, pero falló», no probó nada. Las tres formas de mentir en verde que lleva esta casa son ya: no aplicarse, dejar el archivo sin compilar, y apuntar a una línea que no hace nada.
+- **When/Who:** 2026-08-28 · agente, mirando la salida de la tanda en vez de solo su total.
+- **Scope:** estándar; aplica a toda revisión por sabotaje.
+- **Rel:** S-068 (un sabotaje que no se pudo aplicar no es uno que pasó), S-074 (un sabotaje que se cuela suele señalar código muerto), S-062 (tres formas de que una prueba mienta en verde).
+
+## S-079 · El sello de una corrida se contaba como una conversación viva  ·  error-resuelto · activa
+- **What:** el sello de la última corrida de pruebas se guardó en `historico-chat/.tocado/`, la carpeta del registro de sesiones. `sesiones.registros()` lee **todo** `.txt` de ahí como el registro de una conversación, así que el sello apareció como **una sesión viva llamada «internas» con dos archivos** — que en realidad eran una fecha y un número.
+- **Why:** las dos cosas son «estado de trabajo de esta máquina que no se versiona», y esa semejanza bastó para meterlas en el mismo cajón. Pero **el cajón tiene un lector que asume que todo lo que hay dentro es del mismo tipo**, y ese lector alimenta la comprobación que evita que un commit se lleve trabajo ajeno.
+- **Also:** el daño era pequeño y silencioso: infla el número de sesiones que el aviso reporta. Se volvía grave el día que dos conversaciones sí chocaran y el mensaje dijera «3 sesiones» contando una que no existe.
+- **And:** **apareció al ir a comprobar otra cosa.** El usuario preguntó si el defecto del commit que se llevó 712 líneas ya estaba cerrado; al medirlo —listando las sesiones vivas para responder con datos y no de memoria— salió una sesión de más. **Verificar una afirmación destapó un defecto que nadie buscaba.**
+- **Where:** `validadores/corredor.py` · `SELLO`, ahora en `historico-chat/.estado/`.
+- **Learned:** **antes de guardar algo junto a otra cosa, preguntar quién lee esa carpeta y qué asume de lo que hay dentro.** «Es del mismo tipo de dato» no basta: lo que decide es si algún programa recorre el sitio entero. Y la prueba que lo fija no mira el archivo del sello: mira que **el registro de sesiones siga vacío** después de sellar.
+- **When/Who:** 2026-08-28 · agente y usuario, al pedir la comprobación de si un defecto anterior estaba cerrado.
+- **Scope:** estándar; aplica a toda carpeta que un programa recorra entera.
+- **Rel:** S-077 (un aviso que dice «nunca» sobre algo que pasó), S-075 (cuatro registros llevados a mano se quedaron atrás), S-071 (un archivo sin registro parece de nadie).
+
+## S-080 · «Sí, con un límite» es un «cumple con observaciones» disfrazado  ·  error-resuelto · activa
+- **What:** el usuario preguntó si un defecto ya estaba cerrado. Respondí **«sí, con un límite»**: el arreglo está construido, probado y publicado, pero **no se ha observado funcionando** porque el caso —dos conversaciones simultáneas chocando— no se ha dado desde que se instaló. El usuario cortó la respuesta: *«si hay un límite no es sí»*.
+- **Why:** el límite no era un matiz sobre algo cumplido: **era la parte que falta.** Lo pedido es que la colisión se vea; lo que hay es una prueba con repositorios armados a mano. Poner eso bajo un «sí» hace que quien lea la respuesta deje de mirar, y **el trabajo que falta desaparece detrás de la palabra que lo aprueba.**
+- **Also:** el estándar ya había peleado esto mismo y ganado. Hasta la versión 35.1.0 el molde de cierre ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo cada una a su manera, y ningún programa podía leerlo. **Volví a cometer en una respuesta de chat el defecto que el molde ya no permite en un documento.**
+- **And:** los documentos de la fase sí lo decían bien \u2014 el `CP-006` declara el límite con su número y dice que el cero no prueba que las colisiones se vean\u2014. **El defecto no fue de análisis sino de redacción del veredicto**, que es donde menos se vigila porque «ya está escrito bien más abajo».
+- **Where:** la respuesta al usuario · el molde `11-funcionalidad-implementada.md`, que desde la 35.1.0 solo admite Cumple / No cumple.
+- **Learned:** **el veredicto se da con la misma regla en el chat que en el documento: si algo de lo pedido falta, es «no».** El detalle va después, y va completo — pero no dentro de la palabra que aprueba. La prueba barata: si la respuesta necesita un «pero», «con», «salvo» o «falta» para ser cierta, empieza por **no**.
+- **When/Who:** 2026-08-28 · usuario, corrigiendo un «sí, con un límite».
+- **Scope:** estándar; aplica a todo veredicto que el agente entregue, escrito o hablado (`00·ID8`).
+- **Rel:** S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada), S-077 (un aviso que dice «nunca» sobre algo que pasó dos veces).
+
+## S-081 · Veintiún documentos idénticos: el molde se aprueba una vez, y las cifras se miden una por una  ·  decisión · activa
+- **What:** `EP-001` tiene una historia por cada capítulo de `base/`, y las veintiuna pedían lo mismo con distinto número. Cerrarlas exigía **105 documentos** de fase. Se hicieron dos cosas distintas con esa repetición: **el molde se aprobó una sola vez**, declarándolo en los dos planes, y **las cifras de cada documento las midió un programa capítulo por capítulo** en vez de copiarse.
+- **Why:** son dos riesgos opuestos y los dos reales. Pedir veintiuna aprobaciones de un texto idéntico **convierte la puerta en trámite**, y una puerta que es trámite deja de mirar — el mismo mecanismo por el que se firma un checklist sin correrlo (`S-070`). Y copiar ciento cinco documentos **es la forma más segura de que uno diga algo falso sin que nadie lo note**, porque nadie relee el número veinte de una serie.
+- **Also:** la medición pagó en el acto. El capítulo `16` salió con **cero reglas**, y no porque esté vacío: su encabezado usa una forma que el analizador no reconoce. Copiando cifras, ese documento habría dicho un número inventado; midiendo, dice el cero **con su explicación y su defecto abierto**, enrutado a la fase que existe para eso.
+- **And:** lo que hace legítimo automatizar la escritura no es que ahorre tiempo, sino que **cada documento afirme solo sobre lo que se leyó** (`04·R4`). El programa lee el capítulo de cada uno: cuántas reglas tiene, de qué forma está en el disco, si su cabecera nombra la historia y si el enlace resuelve. **Y trae el criterio de suspensión adentro**: si el enlace no resolviera, esa fase no se escribe.
+- **Where:** `historico-chat/scripts/2026-08-28/retrodocumentar-los-capitulos.py` · las 21 fases `A-EP-001-HU-0NN-retrodocumentar-el-capitulo-NN`.
+- **Learned:** cuando hay que producir N documentos casi iguales, **la pregunta no es «cómo los escribo más rápido» sino «qué dato de cada uno es distinto, y quién lo mide»**. Si la respuesta es «ninguno», sobran los documentos; si hay datos distintos, los mide un programa y no la paciencia. Y la aprobación se pide **una vez sobre el molde**, diciéndolo, en vez de N veces sobre copias.
+- **When/Who:** 2026-08-28 · agente y usuario, al cerrar las 21 historias de capítulo de `EP-001`.
+- **Scope:** estándar; aplica a toda tanda de documentos que compartan estructura.
+- **Rel:** S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada), S-075 (cuatro registros llevados a mano se quedaron atrás), S-064 (una historia se crea y nadie vuelve a la tabla de su épica).
+
+## S-082 · El aviso disparó las tres veces y no cambió nada  ·  error-resuelto · activa
+- **What:** el agente escribió tres guiones de apoyo en la carpeta temporal de la herramienta, fuera del repositorio, y los documentos de fase que esos guiones produjeron quedaron sin su evidencia. **El enganche que avisa de eso existe, está colgado y disparó las tres veces**: se comprobó corriéndolo, `hook_rutas.py` imprime el aviso y nombra el destino correcto.
+- **Why:** la regla es `04·S18` y salió del [pendiente 89](../pendientes/hecho/los-guiones-de-apoyo-quedan-en-el-repositorio.md), que se cerró seis días antes por exactamente esto. **No faltaba el control: el control habló y no cambió nada.** El enganche sale con código 0, así que avisa y sigue.
+- **Also:** lo notó el usuario, no el agente ni el enganche. La causa no fue una duda sobre dónde va el guion: fue tomar el camino que no fallaba, porque el heredoc de la terminal se rompía con las comillas.
+- **And:** el contraste está dentro de la misma sesión. El enganche del commit **sí detiene**, con código 2, y rechazó un commit por dos puntos suspensivos de un solo carácter. Ese se notó en el acto y se corrigió en el acto.
+- **Where:** `adaptadores/claude-code/hook_rutas.py` · `historico-chat/scripts/2026-08-30/` · el `H-7` del resumen de la sesión.
+- **Learned:** un aviso con código 0 sobre una regla **que ya se dejó de cumplir dos veces** no es un control, es una nota al pie. Lo que distingue a los dos enganches de esta sesión no es qué comprueban: es si detienen. Antes de dar por cubierta una regla con un aviso, vale preguntar cuántas veces se ha incumplido con el aviso puesto.
+- **When/Who:** 2026-08-30 · el usuario lo vio y preguntó por qué el agente escribía afuera.
+- **Scope:** estándar; aplica a toda regla que hoy se sostiene solo con un aviso.
+- **Rel:** S-057 (los guiones de apoyo se borraban con el temporal), S-070 (un checklist que uno firma sobre su propio trabajo no comprueba nada).
+
+## S-083 · Un cero que salía de no mirar se publicó como «limpio»  ·  error-resuelto · activa
+- **What:** el agente corrió `validar.py marcas` sobre veinticinco documentos nuevos, obtuvo cero, y escribió en el cuerpo de un commit que el validador no reportaba ninguna línea de esos archivos. El enganche del commit, que lee lo que entra al índice, encontró **trece avisos en esos mismos archivos**.
+- **Why:** el subcomando solo recorre `base/` y `plantillas/`. Sobre `documentacion/` devuelve cero **porque no mira**, no porque esté limpio, y la salida no distingue una cosa de la otra.
+- **Also:** el mismo programa tiene el otro filo, más viejo: cuenta las secciones 2 y 3 del anexo de marcadores y las de la 4 en adelante piden lectura. Su «0 en 0 archivos» tampoco lo dice.
+- **And:** la afirmación falsa quedó publicada y hubo que corregirla en el commit siguiente. El commit no se enmendó porque el enganche `post-commit` ya había escrito su hash dentro de los documentos de fase.
+- **Where:** [pendiente 91](../pendientes/91-el-validador-de-marcas-no-dice-que-no-comprueba.md) · `validadores/marcas.py` · commits `b7b8fc0` y `870ef69`.
+- **Learned:** antes de citar un cero como evidencia, hay que saber **sobre qué corrió el programa**. Un validador que no dice qué recorrió no entrega un veredicto: entrega un número que el lector completa con lo que quiere creer.
+- **When/Who:** 2026-08-30 · agente, al cerrar cinco veredictos en rojo.
+- **Scope:** estándar; aplica a toda salida de validador que se cite en un documento o en un commit.
+- **Rel:** S-081 (las cifras de cada documento las mide un programa), S-061 (nadie vuelve a mirar un veredicto en rojo).
+
+## S-084 · Una prueba que exige lo que la casa decidió no cumplir no mide nada  ·  decisión · activa
+- **What:** la versión `15.4.0` aparece dos veces en el registro porque dos sesiones numeraron a la vez. El registro decidió el 2026-08-15 **no renumerar**, con el motivo escrito: un proyecto pudo haber adoptado ese número. La prueba del criterio seguía exigiendo unicidad, y llevaba ocho días marcada como fallo esperado.
+- **Why:** el veredicto de la historia quedaba en rojo por una exigencia que nadie pensaba cumplir. **Un fallo esperado permanente enseña a mirar los fallos esperados como paisaje**, y entonces el que aparezca de verdad tampoco se mira.
+- **Also:** la salida no fue aflojar la prueba. Pasó a exigir lo que sí se sostiene, que la repetición esté declarada con sus dos entradas a la vista, y se le agregó la contraprueba: un número repetido **sin** declarar sí falla. Sin esa segunda mitad, aceptar el declarado era aceptar cualquiera.
+- **And:** el `CHANGELOG.md` no se tocó. Lo que estaba mal no era el dato: era la exigencia.
+- **Where:** `validadores/pruebas.py`, clase `NumeroDeVersion` · la fase `B-EP-002-HU-001-el-numero-repetido-se-declara`.
+- **Learned:** cuando una prueba lleva días en fallo esperado, la primera pregunta no es cómo arreglarla sino **si lo que exige sigue siendo lo que la casa quiere**. A veces el rojo no señala trabajo pendiente: señala una decisión que se tomó y que nadie bajó a la prueba.
+- **When/Who:** 2026-08-30 · usuario decide la lectura del criterio, agente la implementa.
+- **Scope:** estándar; aplica a toda prueba marcada como fallo esperado por más de una sesión.
+- **Rel:** S-065 (un rojo entraba en la cuenta y no salía nunca), S-061 (nadie vuelve a mirar un veredicto en rojo).
+
+## S-085 · «Ocho historias en rojo» eran dos cosas distintas  ·  aprendizaje · activa
+- **What:** ocho historias terminadas arrastraban un «No cumple» y ninguna tenía fase posterior. Medidas una por una, tres eran trabajo y se hicieron; **las otras cinco no son trabajo: son decisiones del usuario**, y cuatro de ellas ya estaban escritas como tales dentro del propio repositorio.
+- **Why:** «ocho en rojo» se lee como ocho tareas, y confundirlas lleva a lo peor de los dos lados: o el agente decide por su cuenta lo que no le toca (`01·C4`), o el trabajo que sí está hecho se queda sin declarar.
+- **Also:** el repositorio lo tenía dicho y nadie lo estaba leyendo. La prueba de `EP-006·HU-006` lo escribe textual: *«las dos salidas son malas y elegir entre ellas no es del que ejecuta... queda como fallo esperado y como pregunta al usuario, no como parche»*.
+- **And:** la partición sale de **ejecutar el criterio**, no de leer el documento de la fase. Dos de los tres que resultaron ser trabajo estaban en rojo por razones honestas que ya no eran ciertas o que nunca se habían podido provocar.
+- **Where:** `historico-chat/scripts/2026-08-30/` · las fases `B` de `EP-001·HU-006`, `EP-002·HU-001` y `EP-007·HU-002`.
+- **Learned:** antes de estimar una lista de rojos, medirla. La pregunta que la parte en dos es **«¿esto se cierra construyendo, o se cierra decidiendo?»**, y la respuesta cambia quién tiene que hacer el siguiente movimiento.
+- **When/Who:** 2026-08-30 · el usuario pidió terminar las ocho.
+- **Scope:** estándar; aplica a cualquier lote de veredictos en rojo.
+- **Rel:** S-081 (el molde se aprueba una vez y las cifras se miden), S-061 (nadie vuelve a mirar un rojo).
+
+## S-086 · Un reclamo que sale siempre es el que se aprende a ignorar  ·  error-resuelto · activa
+- **What:** el reclamo de que una entidad inmutable no tiene su permiso salía en **todo proyecto con una entidad inmutable**, desde hacía meses. El patrón se declara como `anular_<recurso>` y la expresión se arma reemplazando el marcador **sobre el texto ya escapado**: hasta Python 3.6 `re.escape` escapaba los ángulos y el reemplazo encajaba; desde 3.7 no. La expresión quedaba literal y no encontraba ningún permiso.
+- **Why:** el daño no es el falso positivo: es **lo que le enseña al que lo lee**. Un veredicto que sale siempre deja de leerse, y con él dejan de leerse los que sí eran ciertos. Es el mismo mecanismo por el que un enganche que estorba se apaga en una tarde.
+- **Also:** se rompió **en silencio y sin tocar el código**. Nadie editó esa línea: cambió lo que hacía una función de la biblioteca estándar por debajo. Una prueba lo habría cazado el día del cambio de versión, y no la había.
+- **And:** apareció al **provocar** el criterio en un proyecto de prueba, no al leerlo. Los cinco criterios de esa historia llevaban trece días sin ejecutarse, y el defecto llevaba meses.
+- **Where:** `validadores/entidades.py`, `recursos_con_permiso` · la fase `A-EP-004-HU-010-declaracion-y-comprobacion`.
+- **Learned:** cuando un reemplazo depende de **cómo quedó** un texto después de pasar por otra función, se busca lo mismo que se transformó (`re.escape("<recurso>")`) en vez de escribir a mano el resultado esperado. Y todo validador merece la pregunta: **¿este reclamo puede salir siempre?** Si puede, hay que probar el caso en que no debe salir.
+- **When/Who:** 2026-08-30 · agente, al ejecutar los cinco criterios de `EP-004·HU-010`.
+- **Scope:** estándar; aplica a toda comprobación que arme una expresión desde un patrón declarado.
+- **Rel:** S-083 (un cero que salía de no mirar se publicó como limpio), S-082 (el aviso disparó y no cambió nada).
+
+## S-087 · Un caso mal armado se lee igual que un programa roto  ·  aprendizaje · activa
+- **What:** al provocar los criterios de `EP-004·HU-010`, las dos primeras vueltas dieron «no cumple» y el programa tenía razón: la declaración de prueba nombraba los estados por el **nombre de la columna** cuando se buscan como **valores entre comillas**, y el patrón del permiso iba **sin su marcador**. El proyecto de prueba tampoco era un repositorio, y las comprobaciones solo miran lo versionado.
+- **Why:** el resultado se lee idéntico en los dos casos: «el programa no reporta lo que debería». Acusar al programa cuando el caso está mal armado lleva a «arreglar» lo que funcionaba, y eso sí rompe.
+- **Also:** la tercera vuelta sí encontró un defecto de verdad (`S-086`). Las tres se distinguen por lo mismo: **mirar qué espera el programa antes de acusarlo**.
+- **And:** que el proyecto de prueba no fuera un repositorio no dio error: dio **cero hallazgos**, que se lee como «todo bien». El silencio otra vez.
+- **Where:** `historico-chat/scripts/2026-08-30/provocar-los-ca-de-hu010.py`.
+- **Learned:** antes de reportar que una comprobación no reporta, hay que leer **qué busca exactamente**: qué formato, en qué archivos y bajo qué condición. Y el caso de prueba se arma con las mismas exigencias que el real, incluida la de estar versionado.
+- **When/Who:** 2026-08-30 · agente.
+- **Scope:** estándar; aplica a toda provocación de un criterio en un proyecto de prueba.
+- **Rel:** S-086 (el reclamo que salía siempre), S-081 (las cifras las mide un programa).
+
+## S-088 · El fallo esperado es la única nota que reclama sola  ·  patrón · activa
+- **What:** cinco fases anteriores encontraron defectos que **no podían arreglar**, porque su plan aprobado declaraba no tocar el programa. En vez de anotarlo en prosa, dejaron la prueba escrita y marcada como **fallo esperado**. Al arreglarlos el 2026-08-30, la corrida reportó «éxitos inesperados» y obligó a volver a destapar cada una.
+- **Why:** un defecto anotado en un documento se pierde: nadie relee el §6 de una fase cerrada. Uno anotado como fallo esperado **reclama solo el día que deja de ser cierto**, y no hay forma de cerrarlo sin verlo.
+- **Also:** funcionó cinco veces el mismo día, en dos archivos de pruebas distintos. Ninguna de las cinco se habría encontrado leyendo.
+- **And:** tiene su límite, y conviene decirlo: un fallo esperado que se queda años deja de avisar y pasa a ser paisaje. Eso es lo que le pasó al de la versión repetida, que llevaba ocho días exigiendo algo que la casa ya había decidido no cumplir (`S-084`).
+- **Where:** `validadores/pruebas.py` y `memoria/pruebas.py`, en las fases `B` cerradas el 2026-08-30.
+- **Learned:** cuando `02·F8` impida arreglar lo que una fase encuentra, se deja **la prueba escrita y marcada**, no una nota. Y se revisa: un fallo esperado con más de una sesión encima es una decisión pendiente, no una tarea.
+- **When/Who:** 2026-08-30 · agente y usuario, al ejecutar las cinco fases detenidas.
+- **Scope:** estándar; aplica a todo defecto que una fase encuentra y no puede tocar.
+- **Rel:** S-084 (una prueba que exige lo que se decidió no cumplir no mide nada), S-061 (nadie vuelve a mirar un rojo).
+
+## S-089 · Cuatro reglas invisibles: el capítulo salía en verde porque nadie lo corregía  ·  error-resuelto · activa
+- **What:** las cuatro reglas del capítulo de cumplimiento estaban escritas un nivel más abajo que las demás, porque el capítulo agrupa en partes. El analizador solo reconocía los dos niveles de arriba, así que **no existían para el programa**: ninguna de las veinte filas del checklist se les aplicó nunca. Ninguna traía su bloque de checklist y una no tenía su ejemplo.
+- **Why:** el capítulo pasaba **por el mismo motivo por el que pasaría un examen que no se corrige**. Y no había forma de notarlo desde el resultado: cero incumplimientos se lee igual que cumplir.
+- **Also:** ensanchar el analizador sin más creaba un defecto nuevo. Una sección del anexo de meta-reglas **nombra** a una regla que vive en su propio archivo, y pasó a contarse como una segunda definición: reclamaba un identificador repetido que no existe.
+- **And:** lo que separa la regla de su eco es que **el identificador es único**: el que ya se definió arriba no puede ser otra definición. Y hay que mirarlo en una **pasada previa** sobre todo el árbol, porque en el orden de los archivos el eco se lee antes que la regla.
+- **Where:** `validadores/metareglas.py`, `reglas()` · `base/16-cumplimiento-y-calidad.md` · la fase `B-EP-004-HU-002-el-analizador-ve-todas-las-reglas`.
+- **Learned:** cuando un analizador recorre por forma —el nivel de un título, la posición de una marca—, lo que no encaja **desaparece sin decir nada**. La pregunta que lo caza es «¿cuántas encontró?», no «¿cuántas fallaron?». Y al ensanchar el criterio hay que preguntar de inmediato qué **más** empieza a encajar.
+- **When/Who:** 2026-08-30 · agente, con la decisión del usuario de corregir el capítulo en la misma fase.
+- **Scope:** estándar; aplica a todo programa que reconozca documentos por su forma.
+- **Rel:** S-081 (las cifras las mide un programa), S-083 (un cero que salía de no mirar).
+
+## S-090 · Una norma escrita dentro de un documento modelo solo la hereda quien llene ese modelo  ·  aprendizaje · activa
+- **What:** la exigencia de escribir en la lengua del proyecto, en tercera persona y con las acciones en infinitivo estaba escrita como **la regla once de dos manuales**. El usuario la pidió para un documento cualquiera y no hubo regla que citar. Subió al cuerpo de reglas como `00·ID10` el 2026-08-30, en la versión `37.0.0`.
+- **Why:** un documento modelo se copia para llenarlo, y lo que dice adentro viaja con esa copia y con ninguna otra. Todo lo demás que el agente entrega quedaba sin la norma, y la convención se aplicaba **copiándola a mano** de una plantilla a otra: lo que se copia a mano se copia distinto.
+- **Also:** el propio estándar ya lo tenía escrito y nadie lo había leído como una tarea. El anexo de marcas de generación automática decía en su cierre que la norma del idioma «necesita su propia regla, y todavía no existe».
+- **And:** el alcance lo decidió el usuario, e incluye **lo que el agente contesta en el chat**. Es lo que más se lee y lo único que no queda versionado, así que es donde la convención se pierde primero: en esta misma sesión hubo que corregirla tres veces.
+- **Where:** `base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md` · la fase `A-EP-001-HU-037`.
+- **Learned:** cuando una exigencia aparece escrita dentro de un documento modelo, la pregunta es **quién más debería cumplirla**. Si la respuesta es «cualquiera que entregue algo», está en el sitio equivocado y se aplica por copia, que es la forma en que una norma se deforma sin que nadie lo decida.
+- **When/Who:** 2026-08-30 · el usuario decidió el alcance; el agente escribió la regla.
+- **Scope:** estándar; aplica a toda exigencia que hoy viva dentro de una plantilla.
+- **Rel:** S-084 (una prueba que exige lo que se decidió no cumplir), S-089 (cuatro reglas invisibles).
+
+## S-091 · La frase que describe lo que hace un programa se deriva, no se escribe  ·  patrón · activa
+- **What:** el validador de marcas decía «0» sin decir sobre qué había corrido, y ese cero se publicó en un commit como si dijera que veinticinco documentos estaban limpios. Al arreglarlo, la frase del alcance **se arma con lo que la corrida recorrió**: las carpetas salen de la misma constante que el recorrido usa, y el número de archivos lo cuenta la propia pasada.
+- **Why:** una frase escrita aparte **envejece sin avisar**. El día que alguien amplíe el alcance y no la toque, el reporte empieza a mentir y nada se cae. Derivada, la prueba se cae en vez de dejar que mienta.
+- **Also:** el número importa tanto como el nombre de la carpeta. «Se recorrió `base/`» es cierto también cuando no había un solo archivo, y ese es justamente el otro cero que se confundía.
+- **And:** el mismo patrón resolvió un defecto distinto el mismo día. El patrón del permiso de anular se armaba reemplazando `<recurso>` sobre el texto ya escapado, con el resultado del escapado **escrito a mano**; cuando la biblioteca cambió, el reemplazo dejó de encajar y el reclamo salió en todos los proyectos (`S-086`). La cura fue la misma: buscar lo mismo que se transformó, sin suponer cómo quedó.
+- **Where:** `validadores/marcas.py`, `alcance()` · `validadores/entidades.py`, `recursos_con_permiso` · `validadores/tests/test_el_validador_dice_sobre_que_corrio.py`.
+- **Learned:** todo texto que describa lo que un programa hace —su alcance, su cobertura, su patrón— se **deriva de lo que el programa usa**. Escribirlo aparte crea dos verdades que empiezan iguales y se separan sin que nadie lo note.
+- **When/Who:** 2026-08-30 · agente.
+- **Scope:** estándar; aplica a toda salida que describa el propio recorrido de un programa.
+- **Rel:** S-083 (un cero que salía de no mirar), S-086 (un reclamo que sale siempre).
+
+## S-092 · Trece rojos, cinco fases detenidas y siete pruebas: casi nada era trabajo  ·  aprendizaje · activa
+- **What:** la jornada empezó con 13 historias en rojo, 5 terminadas sin decir si cumplían, 5 fases detenidas y 7 pruebas del estándar en rojo. Al medirlas una por una: **cinco rojos ya no eran ciertos**, cinco eran decisiones del usuario, tres eran trabajo; las cinco mudas **sí decían su veredicto** y el programa no sabía leerlo; las cinco fases estaban escritas y esperando una firma; y de las siete pruebas, una era un defecto de la propia prueba y cinco eran de archivos de otra sesión.
+- **Why:** treinta ítems se leen como treinta tareas, y **menos de un tercio lo era**. Tratarlos como deuda técnica lleva a estimar mal y, peor, a no preguntar lo que hay que preguntar: cinco de esos ítems llevaban entre ocho y trece días esperando una respuesta de dos frases.
+- **Also:** lo que separa una cosa de la otra es siempre lo mismo: **ejecutar el criterio**, no leer el documento que lo describe. Los cinco rojos que ya no eran ciertos se vieron corriéndolos; los tres que sí eran trabajo, también.
+- **And:** la cuenta terminó en 122 historias que cumplen, cero rojas y cero mudas. Lo que queda son cuatro historias de producto sin ninguna fase, que es la única deuda que de verdad era trabajo.
+- **Where:** `historico-chat/scripts/2026-08-30/` · el resumen de la sesión `2026-08-28 · plantilla-manual-instalacion`.
+- **Learned:** antes de estimar una lista de pendientes, medirla. Las preguntas que la parten son tres: **¿esto se cierra construyendo, decidiendo, o solo declarándolo?** Y una cuarta que aparece cuando hay varias sesiones a la vez: **¿es mío?**
+- **When/Who:** 2026-08-30 · usuario y agente, en una sola jornada.
+- **Scope:** estándar; aplica a toda revisión de una cuenta de pendientes.
+- **Rel:** S-085 («ocho historias en rojo» eran dos cosas distintas), S-088 (el fallo esperado es la única nota que reclama sola).
+
+## S-093 · Una regla escrita informa; un programa ejecuta, y el estándar no distinguía las dos  ·  aprendizaje · activa
+- **What:** se contaron las 18 reglas vigentes del capítulo `00` y se buscó su identificador dentro de los programas y de los enganches. **Siete no aparecían en ninguno**, y de las once que sí, solo dos tenían una pieza que de verdad las ejecutara. **Catorce de dieciocho** dependían de que el agente se acordara, y ninguna lo decía.
+- **Why:** el núcleo es lo que no se relaja, así que es justo donde una regla que solo está escrita se lee igual que una que manda. Quien la abre ve una exigencia; lo que hay detrás puede ser un programa que la rechaza o nada en absoluto, y hasta el 2026-08-31 no había forma de saber cuál de las dos.
+- **Also:** «nombrarse en un programa» no es «hacerse cumplir». Once reglas se nombraban en algún archivo, casi siempre en un comentario que explicaba por qué esa comprobación existe. El paso que separa una cosa de la otra no lo da ningún guion: hay que leer la pieza y decidir si ejecuta la exigencia.
+- **And:** el usuario cortó la salida fácil. Catorce reglas sin quién las ejecute daban catorce pendientes, y dijo *«no las deje como pendiente de una solución»*. Salió **una sola pieza** para las tres que sí son medibles (`ID8`, `ID9`, `ID10`) y, para las otras once, la declaración escrita de que la sostiene la puerta de aprobación, que ningún programa ve.
+- **Where:** `validadores/ejecutable.py` · `base/20-meta-reglas/estructura-regla.md` sección 6 · la fase `A-EP-005-HU-012`.
+- **Learned:** cuando una regla se escribe, la pregunta que falta casi siempre es **quién la ejecuta**. Las dos respuestas valen —una pieza, o nadie con su motivo—; la que no vale es callarse, porque entonces la regla que manda y la que solo está escrita se leen igual.
+- **When/Who:** 2026-08-31 · el usuario decidió el alcance; el agente construyó.
+- **Scope:** estándar; hoy solo el capítulo `00`, y se extiende si el caso aparece fuera.
+- **Rel:** S-089 (cuatro reglas invisibles), S-090 (una norma escrita dentro de un documento modelo).
+
+## S-094 · Una línea nueva dentro de una regla la miran cuatro comprobaciones, y ninguna sabía que existía  ·  patrón · activa
+- **What:** al escribir en las dieciocho reglas del núcleo la línea que dice quién las hace cumplir, saltaron tres defectos de golpe: ocho reglas empezaron a **reprobar el largo del molde**, catorce **sellos del checklist se dieron por vencidos**, y tres declaraciones traían raya larga, que el trinquete del `pre-commit` habría rechazado. Ninguna regla había cambiado lo que exige.
+- **Why:** el archivo de una regla lo leen a la vez el molde (`M5`, el largo del cuerpo), el sello (¿cambió el texto desde que se aplicó el checklist?), el contador de marcas de `00·ID8` y el validador nuevo. Las cuatro tenían su idea de dónde termina la regla, y **ninguna contemplaba una línea que fuera de la regla sin ser su cuerpo**.
+- **Also:** los tres se arreglaron con el mismo argumento, que ya estaba escrito para otro caso: el sello responde por lo que la regla **exige**, y cambiar la tipografía no cambia ninguna respuesta del checklist. La declaración tampoco. Que el argumento ya existiera es la señal de que el defecto era de familia conocida.
+- **And:** los tres se vieron **antes de commitear**, corriendo las comprobaciones sobre el trabajo a medio hacer. El de las rayas se contó comparando las marcas nuevas contra lo guardado, que es exactamente lo que el enganche iba a hacer al rechazar el commit.
+- **Where:** `validadores/metareglas.py`, `_FUERA_DEL_CUERPO` y `_sin_declaracion` · la fase `A-EP-005-HU-012`.
+- **Learned:** agregar una línea de molde a un documento que ya tiene comprobaciones cuesta más que escribirla: hay que preguntarse **quién más lee ese archivo**. Y la forma barata de averiguarlo es correr las comprobaciones sobre el cambio a medio hacer, no después del rechazo.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar; aplica a todo campo nuevo dentro de un documento que ya se valida.
+- **Rel:** S-091 (la frase que describe lo que hace un programa se deriva), S-084 (una prueba que exige lo que se decidió no cumplir).
+
+## S-095 · La comprobación de la frontera miraba un canal, y había dos  ·  patrón · activa
+- **What:** al mover `hook_estacion.py` de `validadores/` al adaptador, la prueba que vigila la frontera dio rojo. Comparaba los enganches que hay contra los que el instalador conecta, y para eso leía **una sola tabla**: la de la herramienta. Ese enganche va por el otro canal, el `post-commit` de git, así que recién mudado parecía un archivo que nadie usa.
+- **Why:** la pieza estaba mal puesta desde el día que nació y la prueba lo decía; lo que impedía arreglarlo era que **arreglarlo rompía otra prueba**. El defecto no era el archivo: era que la cuenta de lo conectado estaba incompleta, y nadie lo iba a ver hasta que alguien intentara la mudanza.
+- **Also:** la lista ahora se **deriva de las mismas plantillas que el instalador escribe**, no de una escrita al lado. Es el patrón de `S-091` otra vez: dos verdades que empiezan iguales se separan sin que nadie lo note.
+- **And:** al escribir los mensajes nuevos apareció un efecto lateral medible. Decir «lo corre el enganche `hook_rutas.py`» hizo que el contador del amarre leyera **dos programas agnósticos como amarrados a la herramienta**: busca la palabra dentro del texto y no distingue nombrar de ser. El recuento subió de 27 a 29, y por eso se vio. Se resolvió nombrando al corredor sin su archivo.
+- **Where:** `validadores/instalar.py`, `enganches_enchufados()` · `validadores/tests/test_la_frontera_del_adaptador.py` · la fase `C-EP-005-HU-011`.
+- **Learned:** cuando una prueba lleva meses en rojo y el arreglo obvio rompe otra, el defecto casi nunca está donde apunta la falla. Está en el criterio que la otra prueba da por supuesto.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar; aplica a toda comprobación que compare «lo que hay» contra «lo que se conecta».
+- **Rel:** S-091 (la frase que describe lo que hace un programa se deriva), S-094 (una línea nueva la miran cuatro comprobaciones).
+
+## S-096 · Dos reglas puestas se rompieron igual: lo nuevo no pasó por donde la regla vigila  ·  aprendizaje · activa
+- **What:** dos criterios de la misma historia estaban cumplidos y dejaron de estarlo. Ningún programa termina en silencio: dos nacidos después no lo cumplían. La corrida termina con un resumen único: un bloque agregado después quedó **debajo** de ese resumen. Las dos pruebas lo decían desde entonces.
+- **Why:** una regla escrita se cumple el día que se escribe y se rompe el día siguiente, cuando alguien agrega algo por un camino donde la regla no vigila. La prueba existía, pasaba a rojo, y **nadie la corría**: es la misma raíz que hizo falta cerrar en `EP-005·HU-021`, cuando 650 pruebas escritas no las ejecutaba ningún comando.
+- **Also:** el arreglo obligó a **ampliar la comprobación que reportaba el defecto**, y ahí está el riesgo: es la forma más fácil de hacer desaparecer un rojo sin arreglar nada. Se cubrió con sabotaje — un módulo de mentiras que no imprime nada y sale con 0, escrito y borrado por la propia prueba, para comprobar que el silencio se sigue cazando.
+- **And:** lo que se amplió no fue cuánto silencio se acepta, sino **qué cuenta como decir por dónde se corre**. Dos programas no cuelgan del validador: los llama un enganche, y exigirles que nombraran `validar.py` era obligarlos a mandar al lector a un subcomando que no existe.
+- **Where:** `validadores/comun.py`, `no_es_punto_de_entrada` · `validadores/validar.py`, `cmd_todo` · la fase `D-EP-004-HU-008`.
+- **Learned:** al ampliar una comprobación para que deje de reportar algo, **sabotearla en la misma vuelta**. Si el caso original sigue cazándose, la ampliación era correcta; si no, lo que se hizo fue apagar el reporte.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar; aplica a todo cambio sobre una prueba que está reportando en rojo.
+- **Rel:** S-093 (una regla escrita informa; un programa ejecuta), S-075 (tres registros con comprobador y rotos días igual).
+
+## S-097 · La batería de la plataforma no la corre nadie, y una subida de versión la puso en rojo  ·  aprendizaje · activa
+- **What:** al abrir la primera fase de la plataforma en once días, dos de sus 187 pruebas estaban en rojo. **No por esa fase:** su proyecto de mentiras declaraba la versión del estándar escrita a mano, y esa misma mañana el estándar había subido de `37.0.0` a `37.1.0`. Las dos pruebas daban por supuesto que el proyecto estaba al día, y dejó de ser cierto.
+- **Why:** `validar.py internas` corre las pruebas de `validadores/tests/` y **ninguna de las 187 de `plataforma/`**. Así que el rojo estuvo puesto desde la mañana y se supo por la tarde, y solo porque hubo que tocar la plataforma. El estándar tiene una historia entera sobre esto —que las pruebas que existen se corran— y la plataforma quedó fuera de su alcance sin que nadie lo notara.
+- **Also:** el defecto de las dos pruebas es el mismo patrón de siempre: **un número escrito a mano al lado de otro que se mueve**. La cura fue la de siempre: leerlo de donde vive. Ahora el proyecto de mentiras declara la versión que el estándar publica, y la prueba no se cae la próxima vez que suba.
+- **And:** lo que lo destapó fue correr la batería entera **antes** de dar la fase por buena, no después. Si esta fase solo hubiera corrido sus propias pruebas —que era lo que `02·F5` permite— el rojo seguiría puesto.
+- **Where:** `plataforma/nucleo/proyectos/tests.py`, `version_al_dia()` · la fase `A-EP-011-HU-001`.
+- **Learned:** cuando un repositorio guarda dos productos con dos baterías, la que no corre el comando de todos los días **se pudre sin avisar**. Y una prueba que escribe a mano un número que otro programa mueve tiene fecha de caducidad desde que se escribe.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar y plataforma; aplica a toda suite que no cuelgue de la corrida diaria.
+- **Rel:** S-091 (la frase que describe lo que hace un programa se deriva), S-096 (lo nuevo no pasó por donde la regla vigila).
+
+## S-098 · Una prueba que llama a la corrida completa se mete dentro de sí misma  ·  patrón · activa
+- **What:** al escribir la prueba de que el resumen de la corrida nombra las dos baterías, se la escribió llamando a la corrida completa. Esa prueba **vive dentro de esa corrida**, así que las 724 empezaron a correr dentro de la 725, con la batería de la plataforma adentro. La orden no terminaba.
+- **Why:** una comprobación sobre una pieza que recorre todo el repositorio se prueba **contra un repositorio chico**, no contra el de verdad. Contra el de verdad tarda lo que tarda todo, y si además la prueba está dentro de lo que recorre, no termina nunca.
+- **Also:** se vio porque la orden se colgó, que es la forma cara de verlo. La barata es preguntarse, antes de escribir la llamada, **qué recorre lo que estoy llamando**.
+- **And:** el arreglo es el mismo que ya usan otras pruebas de esta casa: armar un repositorio de mentiras con una sola prueba adentro, y comprobar la forma del resumen sobre eso. Queda escrito dentro del propio archivo, porque volver a caer es fácil.
+- **Where:** `validadores/tests/test_la_bateria_de_la_plataforma_se_corre.py`, la clase `LasDosBateriasSeCuentanAparte` · la fase `B-EP-005-HU-021`.
+- **Learned:** antes de que una prueba llame a una pieza que recorre el repositorio, preguntar si esa prueba está dentro de lo que la pieza recorre. Si lo está, el caso se arma aparte.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar; aplica a toda prueba de una pieza que recorra el propio repositorio.
+- **Rel:** S-096 (sabotear la comprobación que se amplía), S-097 (la batería que nadie corre).
+
+## S-099 · El primer reporte medía lo que pega la herramienta, no lo que escribió la persona  ·  patrón · activa
+- **What:** el reporte de qué correcciones se repiten salió, en su primera corrida sobre datos reales, con **las catorce primeras filas hechas de ruido**: «this may», «current task», «the user», «ide_opened_file the», cada una 139 veces en 41 sesiones. Son los bloques que el editor le pega al mensaje del usuario para decir qué archivo tiene abierto y qué líneas seleccionó.
+- **Why:** esos bloques **están dentro del mensaje del usuario** en la transcripción, porque así llegan. Un programa que cuenta «lo que dijo el usuario» los cuenta como dichos, y entonces mide la herramienta en vez de la persona. Un reporte cuyas primeras filas no las escribió nadie es peor que no tenerlo: da la sensación de estar mirando.
+- **Also:** **con datos inventados se habría visto perfecto.** Una conversación de mentiras no trae bloques del editor, así que las pruebas del módulo pasaban todas. Lo que lo destapó fue correrlo sobre las 67 sesiones reales, que es lo que el plan pedía como último paso.
+- **And:** el arreglo es de una línea de idea y varias de lista: lo que viene entre las etiquetas de la herramienta se saca antes de contar. La lista de etiquetas está escrita y se lee, porque el día que la herramienta agregue una nueva, esta cuenta vuelve a ensuciarse en silencio.
+- **Where:** `plataforma/nucleo/medicion/repeticion.py`, `sin_lo_de_la_maquina` · la fase `A-EP-011-HU-002`.
+- **Learned:** un reporte sobre lo que dijo una persona se corre **sobre datos reales antes de darlo por bueno**. Los inventados no traen lo que la herramienta agrega, y eso es justamente lo que ensucia la cuenta.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar y plataforma; aplica a toda medición sobre texto conversado.
+- **Rel:** S-087 (un caso mal armado se lee igual que un programa roto), S-097 (la batería que nadie corría).
+
+## S-100 · La mejora propuesta y aprobada no funcionaba, y medirla costó veinte minutos  ·  aprendizaje · activa
+- **What:** el reporte de correcciones repetidas salía encabezado por «debe quedar», «puede cerrar» y «debe tener», que no son correcciones sino la forma en que el usuario redacta cualquier exigencia. El agente propuso ordenar por sesiones distintas en vez de por veces, el usuario lo aprobó, y **al medirlo no cambiaba nada**: «debe quedar» seguía de primero, con catorce sesiones.
+- **Why:** una propuesta que suena razonable se aprueba rápido, y construirla cuesta una fase entera. Medirla contra los datos de verdad costó veinte minutos y evitó entregar algo que no servía **con la aprobación del usuario encima**, que es la peor forma de entregar algo inservible: queda como si lo hubiera pedido él.
+- **Also:** la segunda idea también se midió y también se descartó. Pesar cada frase por lo raras que son sus palabras se va al otro extremo: arriba quedan términos técnicos que solo aparecen juntos. **Dos de tres ideas no servían**, y eso solo se sabe probando.
+- **And:** lo que sí sirvió fue **descartar las frases hechas con las palabras más comunes del propio corpus**, calculadas y no escritas a mano. «Español colombiano» pasó del puesto 21 al cuarto, y arriba apareció «estoy preguntando» en ocho sesiones distintas: el usuario aclarando que pregunta, no que ordena.
+- **Where:** `plataforma/nucleo/medicion/repeticion.py`, `vocabulario_de_la_casa` · la fase `B-EP-011-HU-002`.
+- **Learned:** cuando el agente propone una mejora y el usuario la aprueba, **medirla contra los datos antes de construirla**. Si no funciona, se dice y se propone la que sí: entregar lo aprobado sabiendo que no sirve es peor que haber propuesto mal.
+- **When/Who:** 2026-08-31 · el usuario aprobó la primera; el agente midió y propuso la que funciona.
+- **Scope:** estándar; aplica a toda mejora que el agente proponga sobre algo ya construido.
+- **Rel:** S-092 (medir la lista de pendientes antes de estimarla), S-099 (el reporte medía la herramienta).
+
+## S-101 · La marca de un hueco es una convención, no una forma tipográfica  ·  patrón · activa
+- **What:** al contar qué documentos del expediente estaban a medio llenar, la primera versión conto como hueco cualquier texto entre comillas angulares. Sobre los 1 002 documentos traídos de este repositorio dio **559 «a medio llenar»**. Contando solo la marca que el estándar fija para eso, quedan **31**.
+- **Why:** en esta casa se cita con esas mismas comillas todo el tiempo, y por eso el conteo daba por incompleto cualquier documento bien escrito. Un reporte que marca 559 de 762 no lo mira nadie: se lee como que el proyecto entero está a medio hacer, y ahí se pierde la información de los 31 que sí lo están.
+- **Also:** el otro defecto de la misma fase es de la misma familia. **Ordenar «por el ciclo» se cae dentro del grupo, no entre grupos:** los cinco documentos de una fase salían por nombre de archivo, con el cierre antes que el plan. Entre grupos el orden estaba bien y se veía bien; el error vivía un nivel más adentro.
+- **And:** los dos los cazó una prueba o la corrida sobre datos reales, no la lectura del código. Con documentos de mentiras el conteo de huecos se ve perfecto: una conversación inventada no trae citas, igual que no trae lo que pega el editor (`S-099`).
+- **Where:** `plataforma/nucleo/expediente/core.py`, `MARCA_DEL_HUECO` · `orden.posicion_en_grupo` · la fase `A-EP-012-HU-001`.
+- **Learned:** cuando algo se cuenta buscando una forma —unas comillas, una raya, una etiqueta— hay que preguntarse **qué más tiene esa forma** en el texto real. Y un orden se comprueba en el nivel más profundo que tenga, porque el de arriba casi siempre sale bien.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar y plataforma; aplica a toda medición que reconozca algo por su forma.
+- **Rel:** S-099 (el reporte medía la herramienta), S-095 (nombrar un enganche no es serlo).
+
+## S-102 · Un convertidor se comprueba contando lo que quedó a la vista, no mirando un ejemplo  ·  patrón · activa
+- **What:** el convertidor que produce el entregable pasaba todas sus pruebas con documentos inventados. Sobre los 762 documentos reales dejó **205 marcas del texto de origen a la vista**: 174 asteriscos porque el separador de una celda partía una negrita que lo contenía, y 31 barras porque una cita con una tabla adentro salía cruda. Un tercer defecto salió por el mismo camino: el código con asteriscos se volvía negrita, que es justo lo contrario de para qué se escribe.
+- **Why:** los ejemplos de una prueba se eligen, y uno elige los casos que entiende. El texto real trae las combinaciones que a nadie se le ocurren: una negrita que contiene el separador de listas, una cita que trae una tabla, un trozo de código que muestra marcado para que no actúe. **Ninguno de los tres se ve leyendo el código.**
+- **Also:** lo que los encontró fue contar, no mirar. Buscar cuántas marcas quedaron fuera de los bloques de código da un número que se puede seguir arreglo tras arreglo: 205, después 31, después 15. Mirar el archivo y decir «se ve bien» no distingue esos tres estados.
+- **And:** las 15 que quedaron son de un solo caso —énfasis dentro de énfasis— y se dejaron declaradas. Quince en ocho millones de caracteres es dos milésimas de por mil; resolverlo bien pide un analizador de verdad, y eso se decide con el número delante, no con la impresión.
+- **Where:** `plataforma/nucleo/expediente/marcado.py` · la fase `A-EP-012-HU-002`.
+- **Learned:** cuando algo transforma texto, la prueba que vale es **contar sobre el texto real cuánto quedó mal**, y seguir ese número. Un ejemplo bien elegido dice que funciona; el conteo dice cuánto.
+- **When/Who:** 2026-08-31 · agente.
+- **Scope:** estándar y plataforma; aplica a toda pieza que transforme documentos.
+- **Rel:** S-099 (el reporte medía la herramienta), S-101 (la marca de un hueco es una convención).
+
+## S-103 · Reordenar el plan por lo que dice una columna, antes de comprobar que la columna dice la verdad  ·  antipatrón · activa
+- **What:** al ir a construir `F-014` apareció que estaba en la versión 2 y su ficha decía **Depende de F-011**, que estaba en la 5. Se propuso mover las dos de versión y se movieron. **Al medir después, los pares fuera de orden pasaron de dos a tres:** `F-014` arrastraba a `F-015` y `F-025`, que dependen de ella. El movimiento se deshizo entero.
+- **Why:** el arreglo se hizo sobre las dos fichas que se estaban mirando, sin recorrer las otras treinta y tres. Una dependencia no es un par suelto: es una cadena, y mover un eslabón mueve lo que cuelga de él. **El grafo se recorre entero antes de tocarlo, aunque el choque parezca local.**
+- **Also:** recorrerlo entero mostró el error de verdad, que era otro. `F-027`, que es de la versión 1 y está cerrada, dice depender de `F-011`; `F-025`, de la versión 2 y también cerrada, dice depender de `F-014`. Las dos están construidas y funcionando **sin su dependencia**, porque la importación trae los documentos y las fases ya escritos. La columna dice qué necesita que exista, no qué hay que construir antes; y quien la lee como orden de trabajo reordena un plan que no estaba mal.
+- **And:** dos funcionalidades andando refutan una columna mejor que cualquier lectura. El dato que decidía estaba en el código que ya corre, no en el documento.
+- **Where:** `cvds/analisis-requisitos/inventario-funcionalidades.md`, con la sección que ahora explica la columna · `cvds/implementacion/README.md` §2 y su tabla de cambios a la línea base.
+- **Learned:** antes de reordenar un plan por una dependencia, **contar los pares fuera de orden antes y después**. Si el número sube, el arreglo era el síntoma. Y antes de eso, mirar si algo ya construido incumple esa misma dependencia: si funciona, la columna miente.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier plan por versiones, tandas o entregas con dependencias declaradas.
+- **Rel:** S-099 (el reporte medía la herramienta y no el trabajo), S-102 (se comprueba contando, no mirando).
+
+## S-104 · Una convención que se parece a la prosa no se puede contar  ·  patrón · activa
+- **What:** el módulo iba a contar dos clases de espacio por llenar: el anónimo `«…»` y el que trae nombre, como `«RESPONSABLE»`. Se midió antes de construir sobre las 130 historias de usuario reales: 341 marcas en total, 75 también presentes en el molde, y **cero** todavía en la línea del molde. Ninguna era un hueco: eran el autor usando el vocabulario del molde como etiqueta.
+- **Why:** acá se cita con esas mismas comillas todo el tiempo. Una convención que usa los mismos signos que la prosa **no se puede distinguir de la prosa leyendo el documento**, por más que el molde diga otra cosa. Contarlas habría dado por incompleto todo documento bien escrito, que es el mismo error que una vez dio 559 documentos incompletos donde había 31.
+- **Also:** la medición costó diez minutos y cambió un criterio de aceptación ya aprobado. Construirlo primero habría costado la fase entera, porque el defecto no se ve en las pruebas: con documentos inventados el conteo se ve perfecto.
+- **And:** el que sí se puede contar es el anónimo, porque `«…»` no se escribe por accidente. Y comparar con el módulo Expediente, que ya contaba ese mismo, dio **54 contra 31**: los 24 de diferencia son índices, que no entran al expediente, y el uno que falta es una marca dentro de un bloque cercado, donde se escribe para mostrarla. Las dos cuentas coinciden, y una corrige a la otra.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/huecos.py` · la §5.1 de `documentacion/ciclo-de-vida/spec.md`.
+- **Learned:** antes de construir sobre una convención de marcado, **contar en el texto real cuántas de sus apariciones son de verdad la convención**. Si la marca comparte signos con la escritura normal, la respuesta va a ser menos de lo que uno cree, y el número decide el diseño.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier pieza que reconozca marcas dentro de texto escrito por personas.
+- **Rel:** S-101 (la marca de un hueco es una convención), S-102 (se comprueba contando sobre lo real), S-103 (medir antes y después de cambiar).
+
+## S-105 · Un documento que habla de una convención parece incumplirla  ·  patrón · activa
+- **What:** el módulo contaba **77 espacios por llenar en 54 documentos**. Al correr la orden sobre un documento real resultó que **51 de los 77 no eran huecos**: era la marca escrita dentro de código en la misma línea. El caso extremo fue la especificación de la marca de espacio por llenar, cuyos siete «huecos» eran las siete veces que la nombra. La cuenta de verdad son **26, en 25 documentos**.
+- **Why:** un estándar escribe sobre sus propias convenciones todo el tiempo, así que sus documentos están llenos de la marca **citada**, no puesta. La pieza ya excluía los bloques cercados por esa razón; faltaba el código en la misma línea, que es donde se cita una marca corta. **La regla es la misma y se aplicó a medias.**
+- **Also:** las pruebas con documentos inventados no lo veían, porque a nadie se le ocurre escribir un ejemplo que hable de la marca. Salió al primer documento real, y de la peor manera posible: el documento más equivocado era **el que define la marca**.
+- **And:** el mismo intento destapó otro: la orden se caía al mostrar un renglón con emoji, porque la consola de Windows no lo puede escribir. Dos defectos en una sola corrida sobre lo real, ninguno visible en 48 pruebas verdes.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/huecos.py` · la §5.1 de `documentacion/ciclo-de-vida/spec.md`.
+- **Learned:** cuando una pieza reconoce una convención, **la exclusión de «acá se está citando» hay que aplicarla en todas sus formas de una vez**: bloque cercado y código en línea son el mismo caso. Y el documento con el que hay que probarla es **el que define esa convención**, que es el que más veces la nombra.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier pieza que reconozca marcas dentro de documentación.
+- **Rel:** S-104 (la convención que usa los signos de la prosa), S-102 (se comprueba contando sobre lo real).
+
+## S-106 · Una protección que no se deshace se mide antes de encenderla  ·  patrón · activa
+- **What:** la plataforma tapa credenciales, y lo hacía en **un solo camino de los seis que escriben**. Lo obvio era encenderlo en los seis. Antes de hacerlo se midió qué pasaría sobre los 1 002 documentos guardados: cambiaría **7 documentos y 21 fragmentos**, y **ninguno de los 21 era una clave**. Son ejemplos escritos en los documentos de las fases que construyeron el tapador.
+- **Why:** tapar no se deshace. Un conteo mal hecho se recuenta; un texto tapado se perdió. Encender la protección «por si acaso» habría corrompido **la documentación del propio tapador**, en silencio, y el daño solo se habría visto al abrir uno de esos siete meses después.
+- **Also:** la regla que salió es más simple que la duda: **se tapa lo que se teclea, no lo que se copia**. Lo que una persona acaba de escribir puede traer una clave pegada; lo que se copia de un proyecto ya existía como texto, y alterarlo es cambiarle el proyecto a alguien sin avisar.
+- **And:** lo que no se tapa **se cuenta y se nombra**. Un proyecto que trae una clave de verdad tiene que saberlo aunque la plataforma no la toque, y la decisión queda donde corresponde.
+- **Where:** `plataforma/nucleo/seguridad/revision.py` · la §5.1 de `documentacion/seguridad/spec.md`, que declara los seis caminos.
+- **Learned:** antes de encender una protección irreversible, **correrla en seco sobre los datos reales y mirar qué tocaría**. Si lo que tocaría son falsos positivos, el alcance estaba mal, y el momento de saberlo es antes. Vale para enmascarar, para borrar, para normalizar: todo lo que no tiene vuelta atrás.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier transformación que no se pueda deshacer.
+- **Rel:** S-104 y S-105 (un documento que habla de algo parece contenerlo), S-102 (se comprueba contando sobre lo real).
+
+## S-107 · «Sin comprobar» no es «no cumple», y una cadena de necesidades puede tener vueltas  ·  patrón · activa
+- **What:** al abrir las comprobaciones aparecieron dos cosas. La primera, que la columna de dependencias del inventario **tiene una vuelta**: `F-008` espera a `F-022`, que espera a `F-020`, que espera a `F-008`. Leída como orden de construcción, ninguna de las tres arranca. La segunda, al diseñar el veredicto: un proyecto sin el estándar instalado no cabe ni en «cumple» ni en «no cumple».
+- **Why:** la vuelta no es un error del plan: **una cadena de necesidades puede tener vueltas sin que nada esté mal**, porque lo que se necesita puede existir ya. `F-020` necesita un cuerpo de reglas contra el cual comprobar, y existe escrito en `base/` desde el primer día. Una cadena de construcción, en cambio, no puede tener vueltas nunca. Son dos grafos distintos y la columna solo dibuja el primero.
+- **Also:** lo del veredicto es del mismo tipo. Devolver «cumple» a lo que no se miró es mentir, y devolver «no cumple» hace que nadie mire los rojos de verdad, porque se llenan de proyectos que solo estaban sin instalar. **La tercera respuesta hay que inventarla**, y si no se inventa, el sistema la inventa mal.
+- **And:** por el mismo camino salió un tercer caso: **cero comprobaciones corridas no es verde**. Una corrida que no comprobó nada y termina bien es un silencio que se lee como éxito. Ya estaba en el estándar, y hubo que ponerlo también acá.
+- **Where:** `plataforma/nucleo/comprobaciones/core.py` · la §5.1 de `documentacion/comprobaciones/spec.md` · la explicación de la columna en el inventario.
+- **Learned:** **cuando un estado admite «no se sabe», hay que darle su propio nombre** en vez de repartirlo entre los dos que ya existen. Y antes de leer una columna de dependencias como un orden, **buscarle ciclos**: si los tiene, es que dice qué se necesita, no qué se construye antes.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier plan con dependencias declaradas, y cualquier pieza que dé veredictos.
+- **Rel:** S-103 (reordenar por lo que dice una columna), S-106 (medir antes de encender algo irreversible).
+
+## S-108 · Un rojo falso es peor que no tener puerta  ·  antipatrón · activa
+- **What:** la puerta que decide si se puede publicar corría las pruebas del proyecto con un subcomando que **no acepta el argumento que se le pasaba**. El intérprete de argumentos lo rechazó y salió con código 2. La puerta leyó ese código como «rojo» y dijo **«no se publica» con las 1 082 pruebas en verde**.
+- **Why:** un código de salida distinto de cero puede querer decir dos cosas muy distintas: **«las pruebas fallaron»** y **«no entendí lo que me pediste»**. Tratarlas igual convierte un error propio en un veredicto sobre el trabajo ajeno. Y del lado de quien lo recibe se ve idéntico.
+- **Also:** el daño no es la molestia. **Un rojo falso enseña a ignorar la puerta:** la primera vez uno investiga, la tercera la salta, y el día que el rojo sea de verdad ya nadie lo mira. Una puerta en la que no se confía es peor que ninguna, porque da la sensación de que algo está cuidando.
+- **And:** en la misma tanda apareció su pariente al derivar el estado de una funcionalidad: el lector seguía solo la convención de ahora, y **siete funcionalidades cerradas y en verde salían «sin verificar»** porque sus fases escriben el veredicto como se escribía antes. **Una fase cerrada no se reescribe para que un programa la entienda:** el que se adapta es el que lee.
+- **Where:** `plataforma/nucleo/comprobaciones/puerta.py` y `estado.py`.
+- **Learned:** cuando algo automatiza un veredicto, **separar «falló» de «no pude» desde el primer día**, y probarlo con las dos. Y al leer documentos que llevan tiempo escritos, **contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva**.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier puerta automática y cualquier lector de documentos con historia.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-109 · Una ayuda que se presenta como garantía hace que la gente deje de mirar  ·  patrón · activa
+- **What:** al escribir una regla nueva, la plataforma muestra las reglas vigentes que hablan de lo mismo. Sobre las 248 de este repositorio, preguntando por un título casi idéntico al de una regla real, encontró esa misma regla: **habría evitado escribir un duplicado**. Y lo que más cuidado costó no fue el código, sino la frase que lo acompaña.
+- **Why:** contar palabras encuentra reglas que **hablan de lo mismo**; no encuentra las que **se contradicen**, porque eso depende de lo que significan. Llamarlo detector de contradicciones sería peor que no tenerlo: **quien confía en un detector deja de mirar**, y las que se le escapen pasan sin que nadie las revise. Una ayuda honesta deja el trabajo donde estaba; una que promete de más se lo quita a quien sí podía hacerlo.
+- **Also:** por eso el aviso dice lo que no puede decir **encuentre o no encuentre**. Cuando no encuentra nada, la frase importa más: es justo el momento en que alguien podría leer «no hay ninguna parecida» como «no hay ninguna que la contradiga».
+- **And:** en la misma tanda quedó escrito por qué un identificador no se reutiliza nunca, **ni el de una regla derogada**. Una especificación de hace un año, un commit, una fase cerrada: todos citan por número. Reasignarlo hace que esas citas apunten a otra cosa, **y la cita sigue viéndose bien**. Por eso el siguiente es el que sigue al mayor y no el primer hueco: rellenar huecos es la única forma de reutilizar sin darse cuenta.
+- **Where:** `plataforma/nucleo/reglas/parecidas.py` y `numeracion.py` · las §5.1 y §5.2 de `documentacion/reglas/spec.md`.
+- **Learned:** cuando una pieza ayuda a decidir sin poder garantizar, **el texto que la acompaña es parte de la funcionalidad**, y se escribe con el mismo cuidado que el código. Y se prueba: hay una prueba que comprueba que el aviso dice lo que no puede decir.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier ayuda que sugiera sin garantizar.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-108 (un rojo falso enseña a ignorar la puerta).
+
+## S-110 · Un aviso que sale vacío se ve igual que uno que no tenía nada que decir  ·  antipatrón · activa
+- **What:** el aviso de desfase de un proyecto trae dos partes: que quedó atrás, y **qué cambió desde entonces**. La segunda **llevaba 54 versiones saliendo vacía**. El lector del registro de cambios reconocía **143 de 197** entradas, y la más reciente que entendía era la **34.2.0**.
+- **Why:** una convención cambió y el lector se quedó atrás. El registro se escribía con el tipo delante; cuando `M17` pidió que la entrada abriera contando qué pasó, el orden se invirtió. **Y nadie lo notó porque un aviso vacío se ve exactamente igual que un aviso que no tenía nada que decir.** No hay error, no hay rojo, no hay nada: solo falta lo único que servía para decidir.
+- **Also:** es la tercera vez en la misma jornada que aparece el mismo patrón. Antes fue el veredicto de una fase, escrito de otra forma en la versión 1, y la marca de un espacio por llenar. **Las tres se resolvieron igual: el que se adapta es el que lee.** Ninguna de las 197 entradas se reescribió, ni ninguna fase cerrada.
+- **And:** en la misma tanda apareció su pariente en el sello de una regla. Comparar fechas decía que **185 de 248** tenían el sello anulado; el estándar dice que ninguna, porque compara el cuerpo y descuenta la tipografía. Ahí la respuesta fue un **nombre**: la función se llama `parece_vencido`, no `esta_vencido`, y hay una prueba que comprueba que la otra no exista.
+- **Where:** `validadores/version.py`, versionado como PARCHE 37.2.1 · `plataforma/nucleo/reglas/desfase.py` y `sello.py`.
+- **Learned:** **a un aviso hay que preguntarle cuántas veces sale con contenido**, no si funciona. Un aviso que nunca dice nada y uno que no encuentra nada son indistinguibles desde afuera, y el primero puede llevar años así. Y cuando algo se lee de documentos con historia, **contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva**.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier aviso derivado, y cualquier lector de documentos con historia.
+- **Rel:** S-108 (un rojo falso enseña a ignorar la puerta), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-111 · Una firma que no dice sobre qué texto se dio no caduca nunca  ·  aprendizaje · activa
+- **What:** este repositorio tiene **21 aprobaciones escritas a mano** dentro de los documentos, y **ninguna dice sobre qué texto se dio**. Se aprobaron tres documentos y al día siguiente el cambio de producto los dejó sin valor; nada avisó, porque no había con qué avisar.
+- **Why:** una marca de aprobación parece completa cuando dice **quién** y **cuándo**. Le falta el tercer dato, que es el único que la vuelve verificable: **qué**. Sin la huella del texto, la marca sigue diciendo «aprobado» para siempre, aunque debajo el documento se haya reescrito entero.
+- **Also:** es el segundo módulo de la plataforma que guarda en la base en vez de calcular sobre el texto, y por la misma razón que el primero (`medicion`): **el texto no sabe quién lo aprobó**. `DA-01` manda calcular lo que el texto contiene; un hecho que ocurrió fuera del texto no se puede calcular desde él.
+- **And:** el caso que se olvida al implementarlo no es el documento editado, sino el **borrado**. Nadie edita lo que ya no está, así que una aprobación sobre un archivo que desapareció se quedaría en verde. También caduca.
+- **Where:** `plataforma/nucleo/aprobaciones/` · `documentacion/aprobaciones/spec.md` · fases `M`, `N` y `O` de [EP-017](epicas/EP-017-una-aprobacion-dice-sobre-que-texto/epica.md).
+- **Learned:** **a una marca de aprobación hay que preguntarle sobre qué responde**, no si está. Y cuando un veredicto admite «hubo un juicio y ya no vale», eso necesita su propio nombre: son tres estados —aprobado, caducada, sin aprobación— y meter el del medio en cualquiera de los otros dos miente.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier registro de autorización sobre algo que puede cambiar después.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).
+
+## S-112 · Cuando el hecho es el texto, guardar una copia en la base crea dos verdades  ·  decisión · activa
+- **What:** el módulo Memoria **no tiene ninguna entidad en la base**, y el de Aprobaciones sí. Los dos se construyeron el mismo día y la diferencia no es de estilo: es de dónde ocurrió el hecho.
+- **Why:** `DA-01` manda que el texto sea la verdad y que los módulos calculen al pedir. La pregunta útil para decidir no es «¿esto es importante?» sino **«¿el texto sabe la respuesta?»**. Un recuerdo dado de baja se reconoce por su marca y uno corregido por lo que quedó escrito debajo: **el texto sabe**. Quién aprobó un documento no está en ninguna parte del documento: **el texto no sabe**, y por eso ahí sí se guarda.
+- **Also:** guardar de más no es neutral. Una copia en la base y un archivo que cambia por fuera son dos verdades, y la que gana es la peor: la que nadie está mirando.
+- **And:** en un módulo cuyo único trabajo es no perder nada, la prueba que hay que escribir primero es la de que **guardar no pisa**. Es el fallo irreparable, y es el que no salta solo.
+- **Where:** `plataforma/nucleo/memoria/core.py` (sin entidad) · `plataforma/nucleo/aprobaciones/models.py` (con entidad) · [EP-018](epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/epica.md) y [EP-017](epicas/EP-017-una-aprobacion-dice-sobre-que-texto/epica.md).
+- **Learned:** **antes de crear una tabla, preguntarle al texto si ya sabe la respuesta.** Y lo que deja de valer se marca, no se borra — igual que las reglas derogadas de `20·M11`, y por la misma razón: sigue siendo la respuesta a por qué algo se hizo como se hizo.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier módulo que responda sobre documentos.
+- **Rel:** S-111 (una firma que no dice sobre qué texto se dio no caduca nunca), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).
+
+## S-113 · Un rango sobre fechas guardadas como texto corta el último día en la medianoche  ·  error-resuelto · activa
+- **What:** la búsqueda de la auditoría filtra por rango de fechas. La fecha se guarda como texto con la hora pegada, así que comparar contra el `hasta` tal cual **deja por fuera todo lo registrado ese día después de la medianoche**: el último día entero, que es justo lo que uno busca.
+- **Why:** el borde no se ve leyendo el código, porque leyendo parece correcto — el `hasta` está ahí, el filtro compara. Se ve **probando con un registro de las once de la noche**. Un rango que pierde el día más reciente es peor que uno que falla: devuelve resultados, y parecen completos.
+- **Also:** el mismo día apareció el pariente de este problema en la misma función. Un resultado que se recorta **sin avisar** se lee como «eso es todo lo que hay». La respuesta trae ahora `se_recorto`, y los tipos de acción disponibles se sacan **de lo registrado**, no de una lista fija en el código que envejecería sin avisar.
+- **And:** el criterio pedía «menos de un segundo con un año de registros». Se midió con lo que hay y **el número que salió es el que quedó escrito**, con la advertencia de que hay que volver a medirlo cuando la auditoría real llegue a ese volumen. Un tiempo supuesto y un tiempo medido se escriben igual; solo uno de los dos sirve.
+- **Where:** `plataforma/nucleo/auditoria/busqueda.py` · fase `R` de [EP-009](epicas/EP-009-todo-lo-que-se-hace-queda-registrado/epica.md).
+- **Learned:** **a un rango hay que probarlo por los bordes, con la hora más tardía del último día.** Y a toda respuesta acortada hay que preguntarle si dice que la acortaron.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier consulta por rango sobre fechas guardadas como texto, y cualquier respuesta con tope.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-108 (un rojo falso enseña a ignorar la puerta).
+
+## S-114 · Conviven dos modelos de estación y dos marcas de cumplida, y el lector suponía uno solo  ·  aprendizaje · activa
+- **What:** al leer las **209 fases** del repositorio para decir en cuál estación va cada una, salió que **107 no usan la tabla de trece estaciones**: 83 traen once y 24 traen menos o ninguna. Y de las que sí, **76 cierran con `✅` en vez de `☑`**.
+- **Why:** el lector comparaba la frase «Estación actual: 12» contra la tabla y acusaba de contradicción a fases que hablaban de otro modelo — la estación 12 de una tabla de once no existe, y la de trece quiere decir otra cosa. Reconocer solo `☑` daba 18 fases terminadas; reconociendo las dos marcas son 76. **El mismo error dos veces en la misma función: suponer que todo sigue la convención de hoy.**
+- **Also:** apareció una tercera distinción que no estaba: **«sin marcar» no es «pendiente»**. Las fases más viejas no marcan la casilla, escriben qué pasó con esa estación («no se hizo como estación aparte»). Decir de esas que la puerta está pendiente inventa un estado que el documento nunca declaró. Son tres respuestas —cumplida, pendiente, sin marcar— y meter la tercera en la segunda miente.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/estaciones.py` · fase `T` de [EP-019](epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/epica.md).
+- **Learned:** **antes de comparar dos documentos, comprobar que hablen del mismo modelo**; y contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva. Ninguna fase cerrada se reescribió: el que se adapta es el que lee, por cuarta vez en este proyecto.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier lector de documentos con historia.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-115 · Buscar la marca en todo el archivo marcó 52 reglas como opcionales, y una era la cadena entera  ·  error-resuelto · activa
+- **What:** para saber qué reglas puede apagar un proyecto se buscaba `*opt-in*` en cada archivo de `base/`. Daba **52 reglas opcionales**, y entre ellas **`02·F0`**, que es la cadena completa del flujo de trabajo: planteamiento → épica → historia → especificación → plan → código. Las reales son **49**.
+- **Why:** un archivo de capítulo nombra varias reglas y solo una puede ser la opcional. Buscar la marca en el texto entero contagia a todas las que lo acompañan; y en `02-flujo-de-trabajo` la palabra aparecía de paso, hablando de otra cosa. **El fallo no se ve leyendo el resultado**: 52 y 49 se parecen, y hay que mirar la lista nombre por nombre para ver que sobra `F0`.
+- **Also:** también sobraban `R7` y `R8`, que ni siquiera son reglas: son los **ejemplos** que el capítulo 20 usa para explicar cómo se escribe una regla. Un buscador que no distingue una regla de su ejemplo termina dejando apagar cosas que no existen.
+- **And:** lo que estaba en juego no era la cuenta. `CA-2` de `F-004` exige que una obligatoria no se pueda apagar, **y esta lista era justamente la que decidía cuáles se podían**. Con `F0` dentro, la plataforma habría dejado apagar la cadena entera del flujo de trabajo: el estándar convertido en sugerencia por una expresión regular ancha.
+- **Where:** `plataforma/nucleo/proyectos/configuracion.py` · fase `V` de [EP-008](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md).
+- **Learned:** **una marca vale donde está escrita, no en el archivo que la contiene.** Y cuando una lista decide qué se puede apagar, hay que leerla entera nombre por nombre: el número solo no delata al que sobra.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier marca que se busque en documentos que agrupan varios elementos.
+- **Rel:** S-114 (conviven dos modelos y el lector suponía uno), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-116 · Una carpeta vacía no la ve ni el control de versiones ni una búsqueda de texto  ·  gotcha · activa
+- **What:** el aviso de «historia sin fase» encontró **cinco carpetas vacías** de un `EP-018` con otro nombre —`EP-018-la-memoria-se-ve-y-se-corrige`—, sobrantes de un plan anterior de la misma jornada. Antes de eso se habían buscado sin éxito: `git status` no las mostraba, `grep` sobre todo el repositorio no daba nada, y una lectura byte a byte de todos los archivos tampoco. **No aparecían en ningún archivo porque no había ningún archivo.**
+- **Why:** el control de versiones no versiona carpetas vacías, y una búsqueda de texto necesita texto. Lo único que las ve es algo que **recorre el disco**. Estuvieron ahí varias horas, y el validador venía avisando de ellas todo el tiempo —proponía las rutas de sus documentos faltantes— sin que se entendiera de dónde salían esas rutas.
+- **Also:** la funcionalidad que las encontró se acababa de construir, y las encontró en su primera corrida contra datos reales. **Una comprobación nueva se estrena mirando lo que ya está**, no lo que venga después.
+- **Where:** `plataforma/nucleo/avisos/core.py` · fase `W` de [EP-020](epicas/EP-020-lo-que-se-desvia-se-avisa/epica.md).
+- **Learned:** cuando algo aparece en un aviso y **no aparece en ningún archivo**, la respuesta no es que el aviso mienta: es que existe algo sin contenido. Y se quitan con `rmdir`, no con un borrado recursivo: `rmdir` se niega si adentro hay algo, y esa negativa es la comprobación.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier búsqueda de restos en un repositorio.
+- **Rel:** S-113 (a un rango hay que probarlo por los bordes), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-117 · La línea base que debió tomarse antes de empezar no se tomó, y ninguna reconstrucción la reemplaza  ·  restricción · activa
+- **What:** `F-032` pide medir cuánto tiempo se gasta revisando y compararlo contra un antes. **Ese antes no existe.** Lo advertía la propia ficha —*«la medición inicial debió tomarse antes de empezar y no se tomó: sin ella pierde la mitad del valor»*— y al construirlo se confirmó: lo más viejo que quedó grabado ya es el proyecto en marcha.
+- **Why:** medido sobre el histórico real hay **1615 revisiones, 144 horas y una mediana de 99 segundos**, todo dentro de **un solo mes**. Con un mes no hay contra qué comparar, y el módulo se niega a hacerlo en vez de inventar un porcentaje. Lo que sí se hizo fue que la línea base salga **siempre marcada como reconstruida**: presentarla como un antes de verdad haría que cualquier mejora futura pareciera mayor de lo que es.
+- **Also:** medir no le cuesta nada al usuario, y esa parte sí se cumplió. El tiempo sale de las horas que el enganche ya escribe en cada mensaje; nadie cronometra nada. De 3720 mensajes, **55 no tienen hora** y se dicen aparte en vez de rellenarse.
+- **And:** un hueco de cuatro horas entre la respuesta del agente y el mensaje siguiente **no es revisión, es que se fue**. Contarlo convertiría un almuerzo en el mejor dato del reporte. Se descartan los mayores a dos horas y se dice cuántos.
+- **Where:** `plataforma/nucleo/medicion/revision.py` · fase `Y` de [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md).
+- **Learned:** **una medición inicial no se puede reconstruir después.** Lo único honesto es decir que la que hay no lo es, cada vez que se muestre. Y en un proyecto que va a querer demostrar que mejoró, la primera medida se toma **antes** de la primera línea de código, aunque todavía no se sepa qué se va a medir.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier proyecto que se proponga demostrar una mejora.
+- **Rel:** S-113 (un tiempo supuesto y uno medido se escriben igual), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-118 · La columna se escribía a mano mientras el programa ya sabía la respuesta  ·  error-resuelto · activa
+- **What:** el inventario declaraba **35 funcionalidades sin verificar**. Preguntado el módulo Comprobaciones, la respuesta era **31 verificadas**; y arreglado un defecto de lectura, **35**. La columna llevaba semanas diciendo lo contrario de lo que la plataforma sabía, porque se escribía a mano.
+- **Why:** el defecto de lectura es el que vale contar. La fila de trazabilidad de una especificación se buscaba exigiendo la columna del requisito y el identificador sin comillas — `| F-001 | RF-01 | …` —, y **dos de las once especificaciones no la traían así**. Sus cuatro funcionalidades, construidas y probadas el mismo día, salían como «ninguna fase la construye todavía».
+- **Also:** eso es lo grave, y no el número. **El módulo daba un defecto del lector con la forma de un hecho del proyecto.** «No supe leer esa fila» y «nadie la construyó» salían con el mismo texto, y solo uno de los dos es culpa del proyecto. Ahora se dicen distinto.
+- **And:** la divergencia no venía de documentos viejos, como las cuatro veces anteriores del mismo patrón. **La introdujo el agente ese mismo día**, escribiendo dos tablas con otra forma. Por eso acá sí se emparejaron las tablas —son de hoy, y hay una forma canónica— además de volver tolerante al lector.
+- **Where:** `plataforma/nucleo/comprobaciones/estado.py` · `documentacion/memoria/spec.md` y `documentacion/avisos/spec.md` · `cvds/analisis-requisitos/inventario-funcionalidades.md`.
+- **Learned:** **si un programa puede derivar un dato, escribirlo a mano al lado es garantizar que un día digan cosas distintas.** Y a todo lector hay que darle una respuesta para «no supe leer esto», separada de «esto no existe»: sin ella, sus defectos se leen como hallazgos.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier dato que se escriba a mano pudiendo derivarse, y cualquier lector de documentos con más de una forma.
+- **Rel:** S-114 (conviven varios modelos y el lector suponía uno), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-119 · Una pantalla en blanco se lee como un error de la plataforma, y casi nunca lo es  ·  patrón · activa
+- **What:** al construir las cinco pantallas nuevas, lo que costó no fue mostrar los datos: fue **el caso vacío**. Y no es uno, son cinco: no tener fases no es lo mismo que no tener aprobaciones, ni que no tener memoria escrita, ni que no tener inventario. Cada uno se dice distinto, y ninguno es un error.
+- **Why:** **un proyecto recién conectado ve las cinco pantallas vacías**, y esa es la primera impresión que se lleva de la plataforma. Una pantalla en blanco no dice «no hay nada»: dice «esto está roto», y quien lo lee así deja de confiar también en las que sí traen datos.
+- **Also:** el mismo cuidado va del otro lado. **Una pantalla que no dice qué deja por fuera da a entender que muestra todo.** Las aprobaciones solo listan los documentos con alguna aprobación registrada, y callarlo haría creer que los demás están sin aprobar. El tablero dice que «vencida» es un número puesto acá y no un vencimiento acordado. Las fases avisan cuáles usan otra tabla.
+- **And:** las advertencias **viajan impresas con los datos**, no en la especificación. Una advertencia que vive en otro archivo no se lee, y la que se lee tarde ya dejó decidir mal.
+- **Where:** `plataforma/templates/` (avisos, ciclo_de_vida, comprobaciones, aprobaciones, memoria) · fase `Z` de [EP-021](epicas/EP-021-la-plataforma-se-mira-sin-consola/epica.md).
+- **Learned:** **el caso vacío de una pantalla se diseña, no se hereda.** Y se prueba: es el estado en que un usuario nuevo la ve por primera vez, y el que nadie prueba porque no tiene datos que mirar.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier pantalla que muestre una lista.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-120 · Un pendiente no se entera de que lo resolvieron  ·  aprendizaje · activa
+- **What:** el backlog tenía cinco archivos abiertos. Tres estaban marcados **hechos** dentro de su propio texto desde el 2026-08-30. Los otros dos —el `85` y el `86`, uno de ellos con prioridad **P0**— pedían cosas que la plataforma había construido el 2026-08-31 como `F-033`, `F-034` y `F-035`. **Ninguna de las dos partes se enteró de la otra.**
+- **Why:** un pendiente se escribe en el momento en que se ve el problema, y desde entonces no lo vuelve a mirar nadie hasta que alguien planea trabajo. Mientras tanto el problema se resuelve por otro camino —una funcionalidad del inventario, una fase de otra épica— y el archivo se queda diciendo que hace falta. **El backlog envejece hacia arriba: pide trabajo que ya se hizo.**
+- **Also:** el daño no es tener un archivo de más. Es que **la lista de lo que falta deja de ser confiable**, y una lista de pendientes en la que uno de cada dos ya está hecho se lee entera o no se lee.
+- **Where:** `pendientes/85-…md`, `pendientes/86-…md` y su índice · las funcionalidades que los cerraron, `F-033`, `F-034` y `F-035`.
+- **Learned:** **antes de planear trabajo nuevo, el backlog se revisa contra lo que ya existe**, no contra lo que se recuerda. Y cuando una funcionalidad cierra, vale preguntarse qué pendiente venía pidiendo eso: la respuesta suele estar escrita meses antes y con mejores palabras.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier lista de trabajo pendiente que conviva con un inventario de funcionalidades.
+- **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-116 (una carpeta vacía no la ve nadie que no recorra el disco).

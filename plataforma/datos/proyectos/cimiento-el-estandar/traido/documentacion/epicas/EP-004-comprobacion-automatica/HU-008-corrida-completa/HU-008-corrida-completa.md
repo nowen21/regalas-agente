@@ -13,8 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Backlog |
-
+| **Estado** | Pendiente |
 ---
 
 ## 2. Narrativa
@@ -161,6 +160,9 @@ Y un índice recién escrito por un enganche cumple la regla del enlace legible
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-004-HU-008-la-corrida-completa-en-una-linea](A-EP-004-HU-008-la-corrida-completa-en-una-linea/README.md) | CA-01, CA-02 y CA-03 | Abierta 2026-08-17, con su plan de trabajo escrito y sin aprobar |
+| [B-EP-004-HU-008-ningun-validador-termina-en-silencio](B-EP-004-HU-008-ningun-validador-termina-en-silencio/estado-fase.md) | CA-03 | Cerrada: Cumple |
+| [C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde](C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde/README.md) | CA-04 | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
+| [D-EP-004-HU-008-ningun-programa-nuevo-se-cuela-en-silencio](D-EP-004-HU-008-ningun-programa-nuevo-se-cuela-en-silencio/estado-fase.md) | CA-03 · CA-04 | Cerrada el 2026-08-31: Cumple, 2 de 2 CA |
 
 **Mitad retro-documentación, mitad construcción.** Los 24 subcomandos existen; **ninguno los corre todos**. Hoy, para saber cómo está el proyecto, hay que acordarse de los 24 y leer 24 resúmenes.
 
@@ -221,6 +223,6 @@ Y un índice recién escrito por un enganche cumple la regla del enlace legible
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la épica |
-| [C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde](C-EP-004-HU-008-la-corrida-entera-vuelve-a-verde/README.md) | CA-04 | Cerrada el 2026-08-20: Cumple, 1 de 1 CA |
 | 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Nace el `CA-04` desde el pendiente 68: la corrida entera estaba en rojo por un resumen sin la `H-` y por cuatro enlaces `DOC14`, dos escritos por los enganches. Se abre la fase C |
 | 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase C ejecutada y cerrada: la suite entera en `OK`; los enganches escriben índices legibles. 27.2.0 |
+| 2026-08-31 | Ing. José Dúmar Jiménez Ruíz | Fase D: dos programas nacidos después de la fase B salían con 0 sin decir nada, y el conteo por regla había quedado debajo del resumen. Las dos reglas vuelven a cumplirse, y la fila de la fase C se movió de esta bitácora a la tabla de fases, donde iba |

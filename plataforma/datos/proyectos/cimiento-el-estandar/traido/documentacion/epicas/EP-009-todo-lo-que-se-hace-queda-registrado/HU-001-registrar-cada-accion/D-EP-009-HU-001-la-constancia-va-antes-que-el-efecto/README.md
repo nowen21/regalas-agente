@@ -7,7 +7,7 @@
 | [resultado_pruebas.md](resultado_pruebas.md) | Qué se corrió de verdad y qué salió |
 | [funcionalidad_implementada.md](funcionalidad_implementada.md) | Qué quedó, qué no, y qué deuda deja |
 | [estado-fase.md](estado-fase.md) | En qué estación va |
-| [evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
+| [documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/evidencias/](evidencias/) | Las salidas de las corridas, tal como salieron |
 
 **Qué construye.** El registro de auditoría: que ninguna acción cambie algo sin dejar constancia, y que la constancia quede antes del cambio.
 

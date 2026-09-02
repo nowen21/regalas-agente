@@ -14,8 +14,8 @@
 |---|---|---|---|---|
 | Las 27 reglas en NO CUMPLE pasan a CUMPLE | doc | `base/`, capítulos 01, 02, 04, 08, 10, 18, 19, 20 | ✅ | v30.8.0 · `metareglas` de 27 fallas a 0 |
 | Ninguna regla pasa de 320 caracteres | doc | `base/`, capítulos 00, 01, 02, 03, 13, 20 | ✅ | v30.8.1 a v30.9.1 · sin avisos de largo |
-| El texto que no cabe se conserva entero | doc | tres anexos de capítulo | ✅ | [nomenclatura-de-fases.md](../../../../../base/02-flujo-de-trabajo/nomenclatura-de-fases.md), [tabla-de-trazabilidad.md](../../../../../base/13-documentacion/tabla-de-trazabilidad.md), [desempate.md](../../../../../base/20-meta-reglas/desempate.md) |
-| Los porqués recortados no se pierden | doc | `notas/` | ✅ | [porques-recortados-al-molde.md](../../../../../notas/porques-recortados-al-molde.md), 34 filas |
+| El texto que no cabe se conserva entero | doc | tres anexos de capítulo | ✅ | [base/02-flujo-de-trabajo/nomenclatura-de-fases.md](../../../../../base/02-flujo-de-trabajo/nomenclatura-de-fases.md), [base/13-documentacion/tabla-de-trazabilidad.md](../../../../../base/13-documentacion/tabla-de-trazabilidad.md), [base/20-meta-reglas/desempate.md](../../../../../base/20-meta-reglas/desempate.md) |
+| Los porqués recortados no se pierden | doc | `notas/` | ✅ | [notas/porques-recortados-al-molde.md](../../../../../notas/porques-recortados-al-molde.md), 34 filas |
 | Las 26 candidatas a partirse quedan resueltas | doc | `base/` | ✅ | 23 partidas desde el 2026-08-18, `EST2` y `PR3` resueltas sin partirse, `I3` decidida por el usuario |
 | Cada cambio versionado y registrado | doc | `CHANGELOG.md`, `VERSION` | ✅ | seis entradas, de la 30.8.0 a la 30.9.1 |
 | Lo aprendido queda como señal | doc | `documentacion/senales.md` | ✅ | S-020 |

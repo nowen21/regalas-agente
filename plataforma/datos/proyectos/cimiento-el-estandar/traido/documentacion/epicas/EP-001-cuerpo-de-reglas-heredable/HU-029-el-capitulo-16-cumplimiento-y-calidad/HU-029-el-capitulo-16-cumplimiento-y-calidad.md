@@ -11,8 +11,7 @@
 | **Prioridad** | Should |
 | **Estimación** | S |
 | **Solicitante** | Quien define el estándar (pendiente 60, salida «una historia por capítulo», decidida por el usuario el 2026-08-22) |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada |
 ## 2. Narrativa
 
 - **Como** quien mantiene el estándar
@@ -85,7 +84,7 @@ Entonces la fase nace bajo esta historia y su plan declara qué reglas toca
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-| (ninguna todavía) | | La primera fase será la retrodocumentación del capítulo |
+| [A-EP-001-HU-029-retrodocumentar-el-capitulo-16](A-EP-001-HU-029-retrodocumentar-el-capitulo-16/) | CA-01, CA-02 | **Terminada** · [Cumple](A-EP-001-HU-029-retrodocumentar-el-capitulo-16/resultado_pruebas.md) |
 
 ## 8. Dependencias y riesgos
 

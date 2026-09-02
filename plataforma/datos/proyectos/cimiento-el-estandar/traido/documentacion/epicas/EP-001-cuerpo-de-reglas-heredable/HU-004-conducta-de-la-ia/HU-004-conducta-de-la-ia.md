@@ -11,8 +11,7 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | Quien trabaja con la IA |
-| **Estado** | Backlog |
-
+| **Estado** | Terminada |
 ## 2. Narrativa
 
 - **Como** quien trabaja con la IA todos los días
@@ -121,7 +120,7 @@ Entonces el documento no trae esas marcas
 
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
-**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia/resultado_pruebas.md) — los tres criterios con conducta real de la jornada, incluidos dos incumplimientos que quedaron reportados |
+**Ejecutada el 2026-08-22.** Veredicto: [**Cumple**](A-EP-001-HU-004-retrodocumentar-la-conducta-de-la-ia/resultado_pruebas.md) — los tres criterios con conducta real de la jornada, incluidos dos incumplimientos que quedaron reportados |
 
 **La fase es mitad retro-documentación y mitad construcción.** Cinco de las siete reglas de negocio ya son regla del estándar. Las de la pregunta que no es orden y del defecto que se corrige sin preguntar **no lo son**: viven como preferencia del usuario en la memoria del repositorio, y subirlas a `base/` es decisión suya.
 

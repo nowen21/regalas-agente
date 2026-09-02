@@ -129,7 +129,7 @@ El primer proyecto conectado de verdad es el propio repositorio del estándar, q
 
 | Descripción | Origen | Destino |
 |---|---|---|
-| **Conectar no tiene reversa.** No se puede desconectar, renombrar ni corregir la versión declarada | No previsto | Fase H, por [pendientes/86](../../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) y la [HU-004](../../HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), ya escritas |
+| **Conectar no tiene reversa.** No se puede desconectar, renombrar ni corregir la versión declarada | No previsto | Fase H, por [pendientes/86-conectar-un-proyecto-no-tiene-reversa.md](../../../../../pendientes/86-conectar-un-proyecto-no-tiene-reversa.md) y la [HU-004](../../HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), ya escritas |
 | Conectar todavía no pide confirmación, aunque la especificación lo exige en su §7 | No previsto | Fase H, junto con lo anterior |
 | El estado siempre responde `sin empezar` | Diferido por el plan | Fase G, que es la que lo calcula |
 | La plataforma no se entera si el proyecto cambia la versión que declara en su `CLAUDE.md` después de conectado | No previsto | Fase H, `CA-03` de la HU-004 |

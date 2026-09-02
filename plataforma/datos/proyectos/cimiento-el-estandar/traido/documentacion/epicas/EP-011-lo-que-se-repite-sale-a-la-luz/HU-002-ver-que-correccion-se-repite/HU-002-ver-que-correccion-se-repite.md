@@ -12,8 +12,7 @@
 | **Prioridad** | Should |
 | **Estimación** | L |
 | **Solicitante** | El usuario |
-| **Estado** | Escrita, sin aprobar |
-
+| **Estado** | Terminada el 2026-08-31, con sus cuatro criterios probados |
 ---
 
 ## 2. Narrativa
@@ -124,7 +123,8 @@ Y no se rellena con lo que solo se dijo una vez
 
 | Fase | Qué hace | Estado |
 |---|---|---|
-| Por abrir | Esta historia | Sin abrir. Va en la versión 2, después de `HU-001` |
+| [A-EP-011-HU-002-lo-que-se-repitio-sale-contado](A-EP-011-HU-002-lo-que-se-repitio-sale-contado/estado-fase.md) | Los cuatro CA y el transversal | Cerrada el 2026-08-31: **Cumple** |
+| [B-EP-011-HU-002-lo-generico-no-encabeza-el-reporte](B-EP-011-HU-002-lo-generico-no-encabeza-el-reporte/estado-fase.md) | El `CA-01`, otra vez: lo genérico no encabeza | Cerrada el 2026-08-31: **Cumple** |
 
 ---
 
@@ -142,14 +142,14 @@ Y no se rellena con lo que solo se dijo una vez
 
 - ☑ La funcionalidad está en el inventario, con su cambio anotado.
 - ☑ Hay un caso real con el que probar `CA-03`.
-- ☐ El módulo Medición tiene especificación aprobada.
-- ☐ Está decidido qué cuenta como corrección.
+- ☑ El módulo Medición tiene especificación aprobada: [documentacion/medicion/spec.md](../../../medicion/spec.md), el 2026-08-31.
+- ☑ Está decidido qué cuenta como corrección, el 2026-08-31: **todo mensaje del usuario menos una lista cerrada de confirmaciones**. Queda en la §4 de la especificación del módulo.
 
 ## 11. Definition of Done
 
-- ☐ Los cuatro criterios con veredicto y evidencia.
-- ☐ `CA-03` probado con las tres formas del caso real.
-- ☐ Si la agrupación no salió, la deuda declarada.
+- ☑ Los cuatro criterios con veredicto y evidencia.
+- ☑ `CA-03` probado con las tres formas del caso real: salen como una fila, nueve veces en tres sesiones.
+- ☑ **La agrupación sí salió**, sin instalar nada y sin salir a la red: no hay deuda que declarar.
 
 ## 12. Validación INVEST
 
@@ -166,4 +166,5 @@ Y no se rellena con lo que solo se dijo una vez
 
 | Fecha | Qué pasó |
 |---|---|
-| 2026-08-25 | Nace de `F-034`, que entró al inventario ese día desde [pendientes/85](../../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |
+| 2026-08-31 | Aprobada, y decidido qué cuenta como corrección: el programa no lee intención, así que cuentan todos los mensajes del usuario menos las confirmaciones |
+| 2026-08-25 | Nace de `F-034`, que entró al inventario ese día desde [pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md](../../../../pendientes/85-las-conversaciones-completas-no-se-pueden-analizar.md) |

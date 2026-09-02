@@ -32,7 +32,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ 2026-08-21: cierre §2, 6 de 6 ítems y 8 de 8 tareas |
 | 10 | Crítico | sin hallazgos graves | ☑ dos desvíos declarados (validar.py plantilla no valida moldes; el índice real era el mapa), sin efecto en el veredicto |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ 2026-08-21: cierre, versión 29.0.0, pendiente 74 en hecho/ con 9 avisos |
-| 12 | Commit | 👤 autorizado | ☐ **esperando al usuario** — se pregunta aparte |
+| 12 | Commit | 👤 autorizado | ✅ `60ff67e` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ---

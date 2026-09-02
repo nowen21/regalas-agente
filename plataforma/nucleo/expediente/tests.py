@@ -216,3 +216,34 @@ class ArmarNoTocaNada(Base):
         antes = self.retrato()
         core.armar("de-prueba")
         self.assertEqual(antes, self.retrato())
+
+
+class CP009LosHuecosLosCuentaCicloDeVida(TestCase):
+    """Lo que salió al preguntarle al expediente qué le faltaba al proyecto.
+
+    **Contaba `texto.count("«…»")` a secas**, y reportaba 70 huecos en 38
+    documentos que Ciclo de vida daba por completos. Los 68 de más eran citas de
+    la marca dentro de un bloque de código, o marcas del propio molde.
+
+    Dos módulos contando lo mismo con reglas distintas es tener dos verdades.
+    """
+
+    def test_la_marca_dentro_de_un_bloque_de_codigo_no_es_un_hueco(self):
+        texto = (u"# Un documento\n\nSe escribe la marca así:\n\n"
+                 u"```\n«…»\n```\n")
+        self.assertEqual(0, core.huecos_de(texto, "historia de usuario",
+                                           "documentacion/x.md"))
+
+    def test_la_marca_en_codigo_de_una_linea_tampoco(self):
+        texto = u"# Un documento\n\nLa marca es `«…»` y se reemplaza.\n"
+        self.assertEqual(0, core.huecos_de(texto, "historia de usuario",
+                                           "documentacion/x.md"))
+
+    def test_una_marca_de_verdad_si_se_cuenta(self):
+        texto = u"# Un documento\n\n| Responsable | «…» |\n"
+        self.assertEqual(1, core.huecos_de(texto, "historia de usuario",
+                                           "documentacion/x.md"))
+
+    def test_un_texto_vacio_no_revienta(self):
+        self.assertEqual(0, core.huecos_de(""))
+        self.assertEqual(0, core.huecos_de(None))

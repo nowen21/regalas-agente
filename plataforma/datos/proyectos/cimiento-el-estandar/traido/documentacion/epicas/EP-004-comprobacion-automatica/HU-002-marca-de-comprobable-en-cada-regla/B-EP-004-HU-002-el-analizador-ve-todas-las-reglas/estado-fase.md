@@ -17,7 +17,9 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 4 — pausa y presentación. **Última puerta pasada:** 3, con el plan de trabajo y el plan de pruebas escritos.
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
+
+**Estuvo detenida trece días en la estación 4**, con su plan escrito y sin aprobar. El usuario la aprobó el 2026-08-30 y la fase se ejecutó ese mismo día. Las tareas `T-05` y `T-07` ya estaban hechas por otro trabajo cuando llegó la aprobación.
 
 | # | Etapa | Puerta | Estado |
 |---|---|---|---|

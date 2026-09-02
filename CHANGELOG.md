@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.2.2 — 2026-09-02
+
+**Un documento que ya estaba escrito se contaba como si no existiera.** La revisión del expediente buscaba cada entregable por el nombre de su archivo, y a uno de ellos el estándar le da dos nombres distintos: lo llama «documentación de API» en un lado y «contrato de la interfaz» en el otro.
+
+Quien lo escribiera con el segundo nombre —el que el propio estándar usa en su tabla de moldes— lo veía reportado como faltante, y podía terminar escribiéndolo dos veces.
+
+**PARCHE** (corrección): un proyecto al día no tiene que hacer nada. Lo que cambia es que un documento que ya existía deja de contarse como ausente.
+
+**Lo que pasó es lo de siempre en este repositorio:** una convención tiene dos nombres y el lector conocía uno. El nombre no se cambió en ningún proyecto; el que se adaptó fue el que busca.
+
+- `validadores/expediente.py` — el molde 16 acepta también `contrato-de-la-interfaz.md`.
+
 ## 37.2.1 — 2026-09-01
 
 **El aviso de «qué cambió desde entonces» salía vacío, y llevaba así cincuenta y cuatro versiones.** Un proyecto que quedó atrás recibe el aviso de desfase; lo único que le sirve para decidir si sube hoy es qué pasó en el camino, y esa parte no salía.
