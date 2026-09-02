@@ -131,7 +131,7 @@ Los cinco primeros son de `F-033`; los dos últimos, de `F-034`.
 |---|---|---|---|
 | F-033 | RF-33 | [documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md) | [A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/estado-fase.md), cerrada el 2026-08-31 |
 | F-034 | RF-34 | [documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md) | [A-EP-011-HU-002-lo-que-se-repitio-sale-contado](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/A-EP-011-HU-002-lo-que-se-repitio-sale-contado/estado-fase.md), cerrada el 2026-08-31 |
-| F-032 | RF-32 | Sin historia | Versión 5 |
+| F-032 | RF-32 | [HU-003 Medir el tiempo que se gasta revisando](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-003-medir-el-tiempo-que-se-gasta-revisando/HU-003-medir-el-tiempo-que-se-gasta-revisando.md) | [Y-EP-011-HU-003-la-linea-base-dice-que-es-reconstruida](../epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-003-medir-el-tiempo-que-se-gasta-revisando/Y-EP-011-HU-003-la-linea-base-dice-que-es-reconstruida/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 

@@ -199,6 +199,66 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+### H-13 · Conviven tres modelos de tabla de estaciones, y el lector suponía uno solo
+
+- **Qué pasó:** al leer las **209 fases** para decir en cuál estación va cada una, salió que **107 no usan la tabla de trece estaciones** —83 traen once y 24 traen menos o ninguna—, y que **76 cierran con `✅` en vez de `☑`**. Reconociendo una sola marca daban 18 fases terminadas; reconociendo las dos, 76. Y comparando la frase contra tablas de otro modelo se acusaba de contradicción a fases que hablaban de otra cosa.
+- **Por qué importa:** es la cuarta vez en este proyecto que el mismo patrón aparece — **suponer que todo sigue la convención de hoy**. Y trajo una distinción nueva: **«sin marcar» no es «pendiente»**. Las fases más viejas escriben qué pasó con la estación en vez de marcarla, y decir que está pendiente inventa un estado que el documento nunca declaró.
+- **Qué lo soluciona:** ya hecho. **Ninguna fase cerrada se reescribió**: el lector reconoce las dos marcas, le da nombre propio a «sin marcar», y solo compara la frase con la tabla cuando las dos hablan del mismo modelo.
+- **Qué se decidió:** quedan **33 fases** cuya frase y cuya tabla no coinciden de verdad. **No se arreglan**: arreglarlas es reescribir fases cerradas, y eso no se hace.
+- **Estado:** resuelto acá
+- **Responde a:** EP-019 · HU-002 · CA-01
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-114` · `plataforma/nucleo/ciclo_de_vida/estaciones.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-14 · La lista que decide qué se puede apagar incluía la cadena entera del flujo de trabajo
+
+- **Qué pasó:** para saber qué reglas puede apagar un proyecto se buscaba `*opt-in*` en cada archivo de `base/`. Daba **52 reglas opcionales**; las reales son **49**. Entre las tres que sobraban estaba **`02·F0`**, que es la cadena completa: planteamiento → épica → historia → especificación → plan → código. Las otras dos eran `R7` y `R8`, que ni siquiera son reglas: son los **ejemplos** con que el capítulo 20 explica cómo se escribe una.
+- **Por qué importa:** un archivo de capítulo nombra varias reglas, y buscar la marca en el texto entero la contagia a todas. Lo grave no es la cuenta: **esa lista es justamente la que decide qué se puede apagar**. Con `F0` dentro, la plataforma habría dejado apagar la cadena entera del flujo de trabajo — el estándar convertido en sugerencia por una expresión regular ancha.
+- **Qué lo soluciona:** ya arreglado, con cuatro pruebas propias. La marca vale donde está escrita: en la línea de la regla, o en la cabecera del capítulo cuando rige a todas las suyas.
+- **Qué se decidió:** **ante la duda, una regla es obligatoria.** Una regla que no aparezca en la lista no se puede apagar, y una desconocida tampoco.
+- **Estado:** resuelto acá
+- **Responde a:** EP-008 · HU-005 · CA-02
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-115` · `plataforma/nucleo/proyectos/configuracion.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-15 · La medición inicial no se tomó, y ninguna reconstrucción la reemplaza
+
+- **Qué pasó:** `F-032` pide medir cuánto tiempo se gasta revisando y compararlo contra un antes. **Ese antes no existe**, y la propia ficha lo advertía. Medido sobre el histórico real hay **1615 revisiones, 144 horas y una mediana de 99 segundos**, todo dentro de **un solo mes**.
+- **Por qué importa:** con un mes no hay contra qué comparar. El módulo **se niega a comparar** en vez de inventar un porcentaje, y la línea base sale **siempre marcada como reconstruida**: presentarla como un antes de verdad haría que cualquier mejora futura pareciera mayor de lo que es.
+- **Qué lo soluciona:** nada la reconstruye. Lo que sí se hizo fue que medir **no le cueste nada al usuario**: el tiempo sale de las horas que el enganche ya escribe, y de 3720 mensajes los **55 sin hora** se dicen aparte en vez de rellenarse.
+- **Qué se decidió:** **la parte más difícil de esta funcionalidad fue una frase, no un cálculo.** Y queda la lección para el próximo proyecto: en uno que va a querer demostrar que mejoró, la primera medida se toma antes de la primera línea de código.
+- **Estado:** resuelto acá, con una restricción declarada
+- **Responde a:** EP-011 · HU-003 · CA-01
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-117` · `plataforma/nucleo/medicion/revision.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-16 · Cinco carpetas vacías que ni git ni una búsqueda de texto podían ver
+
+- **Qué pasó:** el aviso de «historia sin fase», recién construido, encontró en su primera corrida **cinco carpetas vacías** de un `EP-018` con otro nombre, sobrantes de un plan anterior de la misma jornada. Se habían buscado antes sin éxito: `git status` no las mostraba, `grep` sobre todo el repositorio no daba nada, y una lectura byte a byte de todos los archivos tampoco.
+- **Por qué importa:** **no aparecían en ningún archivo porque no había ningún archivo.** El control de versiones no versiona carpetas vacías y una búsqueda de texto necesita texto; lo único que las ve es algo que **recorre el disco**. Estuvieron ahí varias horas, y el validador venía proponiendo las rutas de sus documentos faltantes sin que se entendiera de dónde salían.
+- **Qué lo soluciona:** se quitaron con `rmdir`, una por una. `rmdir` se niega si adentro hay algo, y esa negativa es la comprobación de que estaban vacías.
+- **Qué se decidió:** cuando algo aparece en un aviso y **no aparece en ningún archivo**, la respuesta no es que el aviso mienta: es que existe algo sin contenido. Y una comprobación nueva se estrena mirando lo que ya está.
+- **Estado:** resuelto acá
+- **Responde a:** EP-020 · HU-001 · CA-02
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-116` · `plataforma/nucleo/avisos/core.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -208,7 +268,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de las versiones 3 y 4 |
+| Lo que se hizo está aprobado y guardado | ☐ la versión 4 quedó subida; falta el commit de la 5 |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -220,4 +280,6 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 
 **Y la versión 4 cerró entera:** `EP-017` con las aprobaciones que dicen sobre qué texto, `EP-018` con la memoria que se ve y se corrige, y `EP-009` completa por fin — registrar y consultar, las dos mitades. **Seis funcionalidades, tres épicas, tres hallazgos.**
 
-**Lo que sigue no es de esta sesión:** la versión 5, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y la versión 5 cerró entera:** `EP-019` con el ciclo operable —abrir una fase, ver en cuál estación va, y no dejar pasar la puerta que falta—, `EP-020` con los avisos y el reporte, `EP-008` con la configuración por proyecto y `EP-011` con la medición del tiempo de revisión. **Siete funcionalidades, cuatro hallazgos, y las cinco versiones del plan cerradas el mismo día en que se decidió el orden.**
+
+**Lo que no es de esta sesión:** las pantallas —ninguno de los once módulos tiene una—, verificar las 35 funcionalidades construidas, y las 33 fases cuya frase y cuya tabla no coinciden. Y una pregunta que no tiene arreglo: la medición inicial, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `d4bf878` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **El texto no sabe quién lo aprobó.** Es la razón de que esta sí guarde, cuando ningún otro módulo lo hace.

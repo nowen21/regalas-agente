@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "nucleo.reglas",
     "nucleo.aprobaciones",
     "nucleo.memoria",
+    "nucleo.avisos",
 ]
 
 # La plataforma corre en la máquina del usuario y no se expone a la red

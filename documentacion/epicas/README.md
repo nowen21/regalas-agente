@@ -27,6 +27,8 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-016](EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/) | Escribir, numerar y derogar reglas sin reutilizar ningún identificador | 3 | Terminada el 2026-09-01: sus seis historias cumplen |
 | [EP-017](EP-017-una-aprobacion-dice-sobre-que-texto/) | Que una aprobación diga sobre qué texto se dio, y caduque cuando ese texto cambia | 4 | Terminada el 2026-09-01: sus tres historias cumplen |
 | [EP-018](EP-018-lo-aprendido-no-se-pierde-entre-sesiones/) | Que lo aprendido en una sesión llegue a la siguiente, y el usuario lo pueda corregir | 4 | Terminada el 2026-09-01: sus dos historias cumplen |
+| [EP-019](EP-019-el-ciclo-se-opera-desde-la-plataforma/) | Abrir una fase, ver en cuál estación va, y no dejar pasar la puerta que falta | 5 | Terminada el 2026-09-01: sus tres historias cumplen |
+| [EP-020](EP-020-lo-que-se-desvia-se-avisa/) | Que lo que se salió de lo acordado salga solo, y que comparar proyectos no engañe | 5 | Terminada el 2026-09-01: sus dos historias cumplen |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

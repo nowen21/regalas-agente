@@ -1178,3 +1178,45 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier consulta por rango sobre fechas guardadas como texto, y cualquier respuesta con tope.
 - **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-108 (un rojo falso enseña a ignorar la puerta).
+
+## S-114 · Conviven dos modelos de estación y dos marcas de cumplida, y el lector suponía uno solo  ·  aprendizaje · activa
+- **What:** al leer las **209 fases** del repositorio para decir en cuál estación va cada una, salió que **107 no usan la tabla de trece estaciones**: 83 traen once y 24 traen menos o ninguna. Y de las que sí, **76 cierran con `✅` en vez de `☑`**.
+- **Why:** el lector comparaba la frase «Estación actual: 12» contra la tabla y acusaba de contradicción a fases que hablaban de otro modelo — la estación 12 de una tabla de once no existe, y la de trece quiere decir otra cosa. Reconocer solo `☑` daba 18 fases terminadas; reconociendo las dos marcas son 76. **El mismo error dos veces en la misma función: suponer que todo sigue la convención de hoy.**
+- **Also:** apareció una tercera distinción que no estaba: **«sin marcar» no es «pendiente»**. Las fases más viejas no marcan la casilla, escriben qué pasó con esa estación («no se hizo como estación aparte»). Decir de esas que la puerta está pendiente inventa un estado que el documento nunca declaró. Son tres respuestas —cumplida, pendiente, sin marcar— y meter la tercera en la segunda miente.
+- **Where:** `plataforma/nucleo/ciclo_de_vida/estaciones.py` · fase `T` de [EP-019](epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/epica.md).
+- **Learned:** **antes de comparar dos documentos, comprobar que hablen del mismo modelo**; y contar cuántos siguen la convención vieja antes de suponer que todos siguen la nueva. Ninguna fase cerrada se reescribió: el que se adapta es el que lee, por cuarta vez en este proyecto.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier lector de documentos con historia.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-115 · Buscar la marca en todo el archivo marcó 52 reglas como opcionales, y una era la cadena entera  ·  error-resuelto · activa
+- **What:** para saber qué reglas puede apagar un proyecto se buscaba `*opt-in*` en cada archivo de `base/`. Daba **52 reglas opcionales**, y entre ellas **`02·F0`**, que es la cadena completa del flujo de trabajo: planteamiento → épica → historia → especificación → plan → código. Las reales son **49**.
+- **Why:** un archivo de capítulo nombra varias reglas y solo una puede ser la opcional. Buscar la marca en el texto entero contagia a todas las que lo acompañan; y en `02-flujo-de-trabajo` la palabra aparecía de paso, hablando de otra cosa. **El fallo no se ve leyendo el resultado**: 52 y 49 se parecen, y hay que mirar la lista nombre por nombre para ver que sobra `F0`.
+- **Also:** también sobraban `R7` y `R8`, que ni siquiera son reglas: son los **ejemplos** que el capítulo 20 usa para explicar cómo se escribe una regla. Un buscador que no distingue una regla de su ejemplo termina dejando apagar cosas que no existen.
+- **And:** lo que estaba en juego no era la cuenta. `CA-2` de `F-004` exige que una obligatoria no se pueda apagar, **y esta lista era justamente la que decidía cuáles se podían**. Con `F0` dentro, la plataforma habría dejado apagar la cadena entera del flujo de trabajo: el estándar convertido en sugerencia por una expresión regular ancha.
+- **Where:** `plataforma/nucleo/proyectos/configuracion.py` · fase `V` de [EP-008](epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md).
+- **Learned:** **una marca vale donde está escrita, no en el archivo que la contiene.** Y cuando una lista decide qué se puede apagar, hay que leerla entera nombre por nombre: el número solo no delata al que sobra.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier marca que se busque en documentos que agrupan varios elementos.
+- **Rel:** S-114 (conviven dos modelos y el lector suponía uno), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-116 · Una carpeta vacía no la ve ni el control de versiones ni una búsqueda de texto  ·  gotcha · activa
+- **What:** el aviso de «historia sin fase» encontró **cinco carpetas vacías** de un `EP-018` con otro nombre —`EP-018-la-memoria-se-ve-y-se-corrige`—, sobrantes de un plan anterior de la misma jornada. Antes de eso se habían buscado sin éxito: `git status` no las mostraba, `grep` sobre todo el repositorio no daba nada, y una lectura byte a byte de todos los archivos tampoco. **No aparecían en ningún archivo porque no había ningún archivo.**
+- **Why:** el control de versiones no versiona carpetas vacías, y una búsqueda de texto necesita texto. Lo único que las ve es algo que **recorre el disco**. Estuvieron ahí varias horas, y el validador venía avisando de ellas todo el tiempo —proponía las rutas de sus documentos faltantes— sin que se entendiera de dónde salían esas rutas.
+- **Also:** la funcionalidad que las encontró se acababa de construir, y las encontró en su primera corrida contra datos reales. **Una comprobación nueva se estrena mirando lo que ya está**, no lo que venga después.
+- **Where:** `plataforma/nucleo/avisos/core.py` · fase `W` de [EP-020](epicas/EP-020-lo-que-se-desvia-se-avisa/epica.md).
+- **Learned:** cuando algo aparece en un aviso y **no aparece en ningún archivo**, la respuesta no es que el aviso mienta: es que existe algo sin contenido. Y se quitan con `rmdir`, no con un borrado recursivo: `rmdir` se niega si adentro hay algo, y esa negativa es la comprobación.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier búsqueda de restos en un repositorio.
+- **Rel:** S-113 (a un rango hay que probarlo por los bordes), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-117 · La línea base que debió tomarse antes de empezar no se tomó, y ninguna reconstrucción la reemplaza  ·  restricción · activa
+- **What:** `F-032` pide medir cuánto tiempo se gasta revisando y compararlo contra un antes. **Ese antes no existe.** Lo advertía la propia ficha —*«la medición inicial debió tomarse antes de empezar y no se tomó: sin ella pierde la mitad del valor»*— y al construirlo se confirmó: lo más viejo que quedó grabado ya es el proyecto en marcha.
+- **Why:** medido sobre el histórico real hay **1615 revisiones, 144 horas y una mediana de 99 segundos**, todo dentro de **un solo mes**. Con un mes no hay contra qué comparar, y el módulo se niega a hacerlo en vez de inventar un porcentaje. Lo que sí se hizo fue que la línea base salga **siempre marcada como reconstruida**: presentarla como un antes de verdad haría que cualquier mejora futura pareciera mayor de lo que es.
+- **Also:** medir no le cuesta nada al usuario, y esa parte sí se cumplió. El tiempo sale de las horas que el enganche ya escribe en cada mensaje; nadie cronometra nada. De 3720 mensajes, **55 no tienen hora** y se dicen aparte en vez de rellenarse.
+- **And:** un hueco de cuatro horas entre la respuesta del agente y el mensaje siguiente **no es revisión, es que se fue**. Contarlo convertiría un almuerzo en el mejor dato del reporte. Se descartan los mayores a dos horas y se dice cuántos.
+- **Where:** `plataforma/nucleo/medicion/revision.py` · fase `Y` de [EP-011](epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md).
+- **Learned:** **una medición inicial no se puede reconstruir después.** Lo único honesto es decir que la que hay no lo es, cada vez que se muestre. Y en un proyecto que va a querer demostrar que mejoró, la primera medida se toma **antes** de la primera línea de código, aunque todavía no se sepa qué se va a medir.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier proyecto que se proponga demostrar una mejora.
+- **Rel:** S-113 (un tiempo supuesto y uno medido se escriben igual), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).

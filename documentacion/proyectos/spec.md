@@ -105,6 +105,7 @@ No aplica: el módulo no guarda datos de personas ni información regulada.
 | F-002 | RF-02 | `C-EP-008-HU-002-la-ruta-perdida-se-avisa` |
 | F-003 | RF-03 | `G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto` |
 | F-035 | RF-35 | `H-EP-008-HU-004-un-proyecto-conectado-se-administra` |
+| F-004 | RF-04 | [V-EP-008-HU-005-lo-obligatorio-no-se-apaga](../epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-005-configurar-que-rige-en-cada-proyecto/V-EP-008-HU-005-lo-obligatorio-no-se-apaga/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 

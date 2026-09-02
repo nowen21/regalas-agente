@@ -4100,3 +4100,102 @@ Tres señales nuevas:
 
 ### 189 · Usuario — 2026-09-01 20:24:11
 > si
+
+**Agente** — 2026-09-01 20:54:48
+<!-- agente: f8fcfee2-5252-4330-9351-809bcec5deb0 -->
+
+Commit `d4bf878` — 70 archivos, 7005 líneas. El enganche estampó la estación 12 en las seis fases; esas marcas quedan sueltas y entran en el commit siguiente.
+
+Sigo con la versión 5.
+
+Ahora las pruebas de las tres funcionalidades.
+
+El lector se quedó corto contra los datos reales: las fases viejas marcan con `✅` y describen en vez de marcar. Lo corrijo.
+
+Medido: **107 de 209 fases no usan la tabla de trece estaciones.** El lector no puede comparar contra un modelo que la fase no usa.
+
+El detector marcaba de más: `02·F0` no es opcional, y salía. Basta con que la palabra aparezca en cualquier parte del archivo.
+
+El aviso encontró algo real: hay carpetas vacías de un `EP-018` anterior.
+
+El módulo se niega a comparar, y tiene razón: todo el histórico cabe en un mes. **1615 revisiones medidas, 144 horas, mediana de 99 segundos.**
+
+Versión 5, código terminado: **552 pruebas de la plataforma + 733 del estándar, 32 validadores, cero fallas.**
+
+Las siete funcionalidades, y lo que salió al correrlas contra los datos reales:
+
+| Qué se construyó | Lo que apareció |
+|---|---|
+| `F-011` abrir una fase con sus cinco documentos | El nombre sale del identificador; una fase sin historia no se abre |
+| `F-012` ver en qué estación va cada fase | **107 de 209 fases no usan la tabla de trece estaciones**: 83 traen once y 24 menos. Y 76 cierran con `✅`, no con `☑` |
+| `F-013` impedir avanzar sin la puerta | Tres puertas comprobables, no trece: una puerta que estorba se salta |
+| `F-004` qué rige en cada proyecto | Buscar `*opt-in*` en todo el archivo marcaba **52 reglas como opcionales, entre ellas `02·F0`** — la cadena entera del flujo. Son 49, y F0 no está |
+| `F-029` avisar lo que se desvía | 31 avisos reales acá: 3 historias sin fase y 28 funcionalidades construidas sin verificar |
+| `F-030` cómo va cada proyecto | Un proyecto sin fases dice «sin datos», no «0 %» |
+| `F-032` cuánto se gasta revisando | **1615 revisiones medidas, 144 horas, mediana de 99 segundos.** Se niega a comparar: todo el histórico cabe en un mes |
+
+Dos cosas que quiero decirle antes de seguir:
+
+**«Vencida» hubo que definirla.** El estándar nunca le puso fecha a una deuda, así que acá quiere decir *sin moverse hace más de 30 días*. Sale escrito en el reporte, para que nadie lo lea como un vencimiento acordado.
+
+**Y el aviso encontró algo que ni git ni el grep veían:** cinco carpetas vacías de un `EP-018` anterior —`EP-018-la-memoria-se-ve-y-se-corrige`—, sobrantes de esta misma sesión. Git no versiona carpetas vacías y una búsqueda de texto no las ve; solo las vio algo que recorre el disco.
+
+**¿Las borro?** No tienen ningún archivo dentro, pero borrar no se deshace desde el repositorio.
+
+### 190 · Usuario — 2026-09-01 20:58:15
+> 00 id9
+
+**Agente** — 2026-09-01 20:58:22
+<!-- agente: b0597b7e-3034-4a7e-98a0-19ab0ecfdb48 -->
+
+Versión 5, código listo: **552 + 733 pruebas, 32 validadores, cero fallas.** Las siete funcionalidades.
+
+Lo que salió de correrlas contra los datos reales:
+
+- **107 de 209 fases no usan la tabla de trece estaciones**, y 76 cierran con `✅`, no con `☑`. El lector se adaptó; ninguna fase se reescribió.
+- Buscar `*opt-in*` en todo el archivo marcaba **52 reglas como opcionales, entre ellas `02·F0`**. Son 49.
+- **1615 revisiones medidas, 144 horas, mediana de 99 s.** Se niega a comparar: el histórico entero cabe en un mes.
+- «Vencida» hubo que definirla: el estándar nunca le puso fecha a una deuda. Acá son 30 días sin moverse, y sale escrito.
+
+Y el aviso vio lo que git y el grep no ven: **cinco carpetas vacías de un `EP-018` anterior**, de esta misma sesión.
+
+**¿Las borro?**
+
+### 191 · Usuario — 2026-09-01 21:00:50
+> suba primero
+
+**Agente** — 2026-09-01 21:32:45
+<!-- agente: b120c4b2-b326-489b-b771-d4c9e71646fa -->
+
+Subido: `890b010..d4bf878`. La batería del pre-push pasó.
+
+`rmdir` las quitó una por una — no habría borrado ninguna que tuviera algo dentro. Ahora las señales de lo que apareció.
+
+Faltan los 35 documentos de las siete fases. Escribo un generador con el esqueleto y el contenido propio de cada una.
+
+Versión 5 cerrada: código y documentación. **552 pruebas de la plataforma + 733 del estándar, 32 validadores, cero fallas.**
+
+Y la plataforma ya se mide a sí misma:
+
+```
+proyecto                  avance   deuda  vencida  quietas
+cimiento-el-estandar      35.2 %      36        0        0
+```
+
+**Las cinco versiones del plan quedaron cerradas** — 35 funcionalidades construidas de las 43 del inventario.
+
+Cuatro hallazgos nuevos, ya en `senales.md` y en el resumen:
+
+| Señal | Qué |
+|---|---|
+| `S-114` | **107 de 209 fases no usan la tabla de trece estaciones**, y 76 cierran con `✅`. Cuarta vez del mismo patrón: suponer que todo sigue la convención de hoy |
+| `S-115` | La lista que decide qué se puede apagar **incluía `02·F0`**, la cadena entera del flujo. 52 y 49 se parecen; se vio leyendo nombre por nombre |
+| `S-116` | Cinco carpetas vacías que ni git ni el grep ven. Se quitaron con `rmdir`, que se niega si adentro hay algo |
+| `S-117` | La medición inicial no existe. **La parte más difícil de esa funcionalidad fue una frase, no un cálculo** |
+
+Lo que queda declarado, sin arreglar: **ninguno de los once módulos tiene pantalla**, 35 funcionalidades construidas sin verificar, y 33 fases cuya frase y cuya tabla no coinciden — arreglarlas sería reescribir fases cerradas.
+
+35 archivos sin guardar. **¿Commiteo?**
+
+### 192 · Usuario — 2026-09-02 09:13:16
+> suba a git
