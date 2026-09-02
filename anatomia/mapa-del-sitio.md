@@ -16,7 +16,7 @@ El repositorio se divide en **cuatro zonas**. Toda carpeta pertenece a una:
 |---|---|---|
 | 🟦 **Norma** | Lo que se exige y con qué molde se escribe. Es lo que heredan los proyectos. | `base/` · `plantillas/` · `skills/` · `cvds/` |
 | 🟩 **Herramientas** | Programas que comprueban, recuerdan, miden y muestran. Corren sin IA. | `validadores/` · `adaptadores/` · `memoria/` · `metricas/` · `interfaz/` · `evals/` · `plataforma/` |
-| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` · `documentacion/` · `analisis/` |
+| 🟨 **Bitácora** | Qué pasó y por qué. No es norma: es memoria escrita. | `historico-chat/` · `notas/` · `pendientes/` · `prompts/` · `anatomia/` · `documentacion/` · `analisis/` · `manuales/` |
 | ⬜ **Apoyo** | Configuración y empaquetado. | `.claude/` · `.claude-plugin/` · `.githooks/` |
 
 La distinción importa: **solo la zona Norma viaja a los proyectos** que heredan el estándar. Lo demás se queda aquí.
@@ -235,6 +235,9 @@ agente/
 │   ├── compactacion-mata-decisiones.md · aislamiento-checkpoints-memoria.md
 │   ├── agente-24-7-y-tareas.md · subagentes-y-entorno.md
 │   ├── velocidad-consistencia-calidad.md · que-es-triangulacion-de-pruebas.md
+│
+├── 🟨 manuales/ ...................... LO QUE LEE QUIEN USA LA PLATAFORMA
+│   └── manual-de-usuario.md .......... las siete pantallas y las órdenes, paso a paso
 │
 ├── 🟨 prompts/ ....................... LO QUE PIDIÓ EL USUARIO, CON SUS PALABRAS
 │   ├── README.md ..................... índice: qué pidió cada uno y en qué quedó

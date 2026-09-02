@@ -4722,3 +4722,64 @@ Un detalle de esa prueba: primero la escribí buscando también `{%` y `{{`, y d
 
 ### 214 · Usuario — 2026-09-02 18:37:16
 > si
+
+**Agente** — 2026-09-02 18:39:01
+<!-- agente: 578fc9f0-179e-45b0-9884-008109c43b3f -->
+
+Commit `09d9b6f`, 21 archivos. `terceros/` no entró: son 8 archivos de biblioteca que trae el descargador.
+
+La plataforma sigue andando en **`http://127.0.0.1:8015/`**.
+
+¿La subo?
+
+### 215 · Usuario — 2026-09-02 18:39:29
+> si
+
+**Agente** — 2026-09-02 18:40:08
+<!-- agente: 3095518f-97ac-4ca0-8e48-03883752b8f3 -->
+
+Subido: `4eba1d1..09d9b6f`.
+
+La plataforma queda andando en **`http://127.0.0.1:8015/`**, y desde ahora `python manage.py runserver` la levanta ahí sola.
+
+Quien clone el repositorio necesita dos pasos una sola vez, y están en el manual técnico:
+
+```
+cp .env.example .env
+python descargar_estaticos.py
+```
+
+Ese segundo es lo único que sale a la red, y trae AdminLTE, Bootstrap y los iconos comprobando su huella. Después funciona sin conexión.
+
+### 216 · Usuario — 2026-09-02 18:40:58
+> en la carpeta manuales cree el manual de usuario de cimiento
+
+**Agente** — 2026-09-02 18:51:24
+<!-- agente: 651025b8-0736-4c06-9008-85448000f431 -->
+
+Hay molde (`plantillas/manual-usuario.md`) y un recuerdo suyo sobre cómo quiere los manuales. Los leo antes de escribir.
+
+El validador atrapó lo que faltaba: una carpeta nueva de primer nivel tiene que estar en el mapa.
+
+Escrito: [manuales/manual-de-usuario.md](manuales/manual-de-usuario.md).
+
+Seguí su recuerdo `manuales-claros.md`: **tercera persona e impersonal**, sin etiquetar al lector por rol ni nivel, paso a paso literal, y el camino más simple que funcione. Título neutro: «Manual de uso».
+
+Las 24 secciones del molde, con contenido real:
+
+- **Cada término explicado la primera vez** — proyecto, épica, fase, estación, puerta, veredicto, espacio por llenar. Un lector que no sepa nada de esto puede seguir.
+- **Los pasos de instalación son los que corrí**, con qué se ve en pantalla si sale bien y qué hacer si falla.
+- **Cada orden de consola está verificada**: las saqué de `manage.py help`, no de memoria.
+- **Cómo leer los colores**, y por qué una pantalla vacía no es una falla.
+- **Cuatro flujos completos**: empezar con un proyecto, trabajar una fase, aprobar y ver caducar, y la revisión semanal.
+
+Y dos cosas que el manual dice sin adornos: **no hay soporte** —lo mantiene una persona, sin turnos ni guardia— y en el anexo, que Cimiento **casi no se ha usado**: un proyecto conectado, cero aprobaciones, diez acciones registradas.
+
+El validador atrapó lo que se me pasó: **una carpeta nueva de primer nivel tiene que estar en el mapa del sitio**, o quien lo lea va a creer que no existe. Ya está agregada.
+
+32 validadores sin fallas.
+
+¿Commiteo?
+
+### 217 · Usuario — 2026-09-02 18:51:36
+> si
