@@ -1263,3 +1263,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · agente.
 - **Scope:** cualquier módulo que responda sobre una copia, y cualquier medida que se calcule en dos lugares.
 - **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-114 (conviven varios modelos y el lector suponía uno).
+
+## S-122 · El `.env` existía, decía «copiar y llenar», y nadie lo leía  ·  error-resuelto · activa
+- **What:** la plataforma traía un `.env.example` con la instrucción «copiar a `.env` y llenar», y los ajustes buscaban la clave con `os.environ.get(...)` — que lee **el ambiente del proceso, no el archivo**. Quien copiara el ejemplo y lo llenara no cambiaba absolutamente nada.
+- **Why:** **no había forma de notarlo.** La clave tiene un valor de desarrollo por defecto, así que la plataforma arranca igual, funciona igual y no se queja. Un archivo de configuración que nadie lee y un archivo de configuración bien puesto se ven exactamente iguales desde afuera; la diferencia solo aparece el día que alguien confía en él.
+- **Also:** salió al levantar la plataforma para mirarla, no al probarla. **El puerto 8000 lo tenían tres servidores viejos** con el código de antes, y por eso las pantallas nuevas daban 404; el 8010 lo tenía otra aplicación de la misma máquina. Escribir el puerto a mano en cada arranque es cómo se terminan levantando tres servidores en el mismo puerto sin que nadie lo note.
+- **And:** se resolvió sin dependencia nueva —leer líneas `CLAVE=valor` son diez líneas— y con una regla que importa: **el ambiente gana sobre el archivo**. Si ganara el archivo, poner una variable para una sola corrida no serviría de nada, y entender por qué cuesta media hora.
+- **Where:** `plataforma/config/ambiente.py`, `plataforma/manage.py`, `plataforma/.env.example` · 12 pruebas en `nucleo/almacen/tests_ambiente.py`.
+- **Learned:** **a un archivo de configuración hay que preguntarle quién lo lee**, no si está bien escrito. Y lo que es de una máquina —un puerto, una clave— vive en un archivo que no se versiona, no en el código ni en la memoria de quien arranca.
+- **When/Who:** 2026-09-02 · usuario + agente.
+- **Scope:** cualquier configuración que se declare en un archivo.
+- **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).

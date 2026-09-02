@@ -24,11 +24,14 @@
 
 ```
 cd plataforma
+cp .env.example .env      # una sola vez
 python manage.py migrate
 python manage.py runserver
 ```
 
-Y se abre `http://127.0.0.1:8000/`.
+Y se abre el puerto que diga el `.env`. **El puerto vive ahí y no en el código**, porque es de cada máquina: en esta, el 8000 y el 8010 los tienen otras aplicaciones, y por eso dice `PUERTO=8015`. Sin `.env`, arranca en el 8000 de siempre.
+
+**El `.env` no se versiona** (`00·N6`). `.env.example` es el que viaja, y dice qué llenar.
 
 **La primera vez no hay nada, y la pantalla lo dice.** Conectar el primer proyecto es lo que le da algo que mirar.
 
