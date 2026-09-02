@@ -9,6 +9,7 @@ sabe» en un cero. Cero por ciento dice «va mal»; sin datos dice otra cosa.
 """
 import io
 import os
+import re
 import shutil
 import tempfile
 
@@ -64,6 +65,16 @@ class Base(TestCase):
     def tearDown(self):
         shutil.rmtree(self.raiz, ignore_errors=True)
 
+    def cuerpo(self, ruta):
+        """Lo que la pantalla dice, con los espacios juntados.
+
+        **Se compara la frase, no dónde la plantilla parte la línea.** Una
+        prueba que se rompe al reacomodar el HTML no comprueba lo que dice la
+        pantalla: comprueba su envoltura.
+        """
+        crudo = self.cliente.get(ruta).content.decode("utf-8")
+        return re.sub(r"\s+", " ", crudo)
+
     def escribir(self, relativa, texto):
         completa = os.path.join(self.raiz, *relativa.split("/"))
         carpeta = os.path.dirname(completa)
@@ -86,7 +97,7 @@ class CP001LasCincoPantallasResponden(Base):
             self.assertEqual(200, respuesta.status_code, ruta)
 
     def test_a_las_cuatro_de_un_proyecto_se_llega_desde_su_ficha(self):
-        cuerpo = self.cliente.get("/proyecto/de-prueba/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/")
         for ruta in ("/proyecto/de-prueba/fases/",
                      "/proyecto/de-prueba/funcionalidades/",
                      "/proyecto/de-prueba/aprobaciones/",
@@ -94,7 +105,7 @@ class CP001LasCincoPantallasResponden(Base):
             self.assertIn(ruta, cuerpo)
 
     def test_al_tablero_se_llega_desde_cualquier_pantalla(self):
-        cuerpo = self.cliente.get("/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/")
         self.assertIn("/tablero/", cuerpo)
 
     def test_un_proyecto_que_no_existe_da_404_y_no_revienta(self):
@@ -107,14 +118,12 @@ class CP002LoVacioSeDice(Base):
     """**El caso que decide.** Una pantalla en blanco se lee como una falla."""
 
     def test_sin_fases_se_dice_que_no_hay(self):
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/fases/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/fases/")
         self.assertIn("no tiene ninguna fase", cuerpo)
         self.assertIn("No es un error", cuerpo)
 
     def test_sin_aprobaciones_se_dice_que_no_hay_ninguna_registrada(self):
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/aprobaciones/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/aprobaciones/")
         self.assertIn("registrado ninguna", cuerpo)
         self.assertIn("No es que estén todos sin aprobar", cuerpo)
 
@@ -124,8 +133,7 @@ class CP002LoVacioSeDice(Base):
         self.assertIn("memoria", respuesta.content.decode("utf-8").lower())
 
     def test_sin_inventario_se_dice_que_no_hay_que_contar(self):
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/funcionalidades/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/funcionalidades/")
         self.assertIn("no hay qué contar", cuerpo)
 
 
@@ -133,7 +141,7 @@ class CP003NingunaPantallaConvierteUnNoSeSabeEnCero(Base):
     """`CA-3` de `F-030`, llevado a la pantalla."""
 
     def test_el_tablero_escribe_sin_datos_y_no_cero(self):
-        cuerpo = self.cliente.get("/tablero/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/tablero/")
         self.assertIn("sin datos", cuerpo)
         self.assertIn("Sin datos no es cero", cuerpo)
 
@@ -143,15 +151,13 @@ class CP003NingunaPantallaConvierteUnNoSeSabeEnCero(Base):
             u"| **Última actualización** | |")
         self.escribir("documentacion/epicas/EP-001-x/HU-001-y/A-x/estado-fase.md",
                       sin_fecha)
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/fases/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/fases/")
         self.assertIn("no lo dice", cuerpo)
 
     def test_la_pantalla_de_funcionalidades_separa_los_tres_estados(self):
         self.escribir("cvds/analisis-requisitos/inventario-funcionalidades.md",
                       INVENTARIO)
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/funcionalidades/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/funcionalidades/")
         self.assertIn("Sin verificar no es lo mismo que no cumple", cuerpo)
 
 
@@ -170,8 +176,7 @@ class CP004CadaPantallaDiceQueNoMuestra(Base):
 """
         self.escribir("documentacion/epicas/EP-001-x/HU-001-y/A-x/estado-fase.md",
                       de_once)
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/fases/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/fases/")
         self.assertIn("no se compara", cuerpo)
 
     def test_las_aprobaciones_dicen_que_no_son_todos_los_documentos(self):
@@ -179,12 +184,11 @@ class CP004CadaPantallaDiceQueNoMuestra(Base):
         Aprobacion.objects.create(
             proyecto="de-prueba", documento="documentacion/x.md",
             quien="Ing. José", cuando="2026-09-01", huella="x", tamano=7)
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/aprobaciones/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/aprobaciones/")
         self.assertIn("No son todos los del proyecto", cuerpo)
 
     def test_el_tablero_dice_que_vencida_es_un_numero_puesto_aca(self):
-        cuerpo = self.cliente.get("/tablero/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/tablero/")
         self.assertIn("nunca le puso fecha a una deuda", cuerpo)
 
     def test_la_memoria_dice_que_lo_de_baja_no_se_borra(self):
@@ -193,7 +197,6 @@ class CP004CadaPantallaDiceQueNoMuestra(Base):
         with io.open(os.path.join(carpeta, "uno.md"), "w",
                      encoding="utf-8", newline="") as abierto:
             abierto.write(u"# Un recuerdo\n\nLo que sea.\n")
-        cuerpo = self.cliente.get(
-            "/proyecto/de-prueba/memoria/").content.decode("utf-8")
+        cuerpo = self.cuerpo("/proyecto/de-prueba/memoria/")
         self.assertIn("no se borra", cuerpo)
         self.assertIn("Un recuerdo", cuerpo)

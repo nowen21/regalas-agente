@@ -4601,3 +4601,124 @@ Lo que quedó:
 
 ### 209 · Usuario — 2026-09-02 17:51:20
 > si
+
+**Agente** — 2026-09-02 17:52:06
+<!-- agente: d4e9f413-c96f-4a97-bcd8-11bfcfb7b6fb -->
+
+Commit `4eba1d1`, 8 archivos.
+
+La plataforma sigue levantada en **`http://127.0.0.1:8015/`**.
+
+¿La subo?
+
+### 210 · Usuario — 2026-09-02 18:15:51
+> si
+
+**Agente** — 2026-09-02 18:16:36
+<!-- agente: 5edd50c7-f9fa-415e-a12b-b03bb7348792 -->
+
+Subido: `e923222..4eba1d1`.
+
+**La plataforma está andando en `http://127.0.0.1:8015/`**, y de ahora en adelante `python manage.py runserver` la levanta ahí sin que haya que decírselo.
+
+Para bajarla, `Ctrl+C` en su terminal, o me avisa.
+
+### 211 · Usuario — 2026-09-02 18:18:39
+> pero qué espero ver en esa url?
+
+**Agente** — 2026-09-02 18:19:13
+<!-- agente: c80fa463-6bf4-4e16-b23e-212aa94f3ae1 -->
+
+Al abrir `http://127.0.0.1:8015/` va a ver esto:
+
+**Arriba una barra negra:** «Cimiento · Tablero». Esos dos enlaces son toda la navegación.
+
+**Debajo, una tabla con un solo proyecto:**
+
+| Proyecto | Dónde vive su código | Versión de reglas | Estado |
+|---|---|---|---|
+| Cimiento, el estandar | `c:\Ing. Jose\ia\agente` | ninguna todavía | en curso |
+
+**Y abajo un formulario** para conectar otro: nombre y ruta. Dice que conectar no toca nada dentro de la carpeta, solo anota dónde está.
+
+**Los dos caminos desde ahí:**
+
+**«Tablero»**, arriba → cómo va cada proyecto: avance **38,7 %**, deuda **1**. Debajo, qué mide cada columna, y la lista de lo que se desvió — hoy hay un solo aviso: una historia escrita sin ninguna fase.
+
+**El nombre del proyecto** → su ficha, con cuatro enlaces nuevos bajo «Mirar por dentro»:
+
+- **En qué va cada fase** — 217 fases, 84 terminadas, y le advierte que 107 usan una tabla vieja
+- **Qué está comprobado** — 35 funcionalidades, 35 verificadas
+- **Qué está aprobado** — vacía, y dice por qué
+- **Qué recuerda el agente** — 24 recuerdos
+
+Todo es de mirar. Lo único que cambia algo desde el navegador es conectar un proyecto y traer sus documentos.
+
+Una advertencia: **«versión de reglas: ninguna todavía»** es de verdad — este proyecto nunca declaró qué versión del estándar adoptó, aunque sea el repositorio del estándar mismo.
+
+### 212 · Usuario — 2026-09-02 18:21:51
+> eso no es nada amigable ni se entiende lo que hace. instale adminlte 4
+
+**Agente** — 2026-09-02 18:34:30
+<!-- agente: 853e9f96-c310-45c0-85fb-95008b723b00 -->
+
+AdminLTE 4.1.0 **ya está en este repositorio**, en `interfaz/terceros/`, con un descargador que fija versión y comprueba SHA-256. Y el estándar prohíbe copiar terceros al repo: se declaran y se instalan.
+
+Copio el mismo patrón del visor: descargador con huella, y `terceros/` fuera del repositorio.
+
+Ahora las plantillas de contenido, con las mismas frases —las pruebas las comprueban— y la forma de AdminLTE.
+
+La prueba se rompe por dónde parte la línea, no por lo que dice. Corrijo la prueba para que compare la frase, no su envoltura.
+
+Las pantallas responden pero los estáticos dan 404. Miro por qué.
+
+Es la misma trampa del 8000: el servidor viejo sigue tomando el puerto. Lo bajo y levanto el nuevo.
+
+Todo sirve: AdminLTE, Bootstrap y los iconos cargan desde la máquina. Marco la sección activa también en la ficha del proyecto.
+
+Listo. **`http://127.0.0.1:8015/`** — recárguela.
+
+**AdminLTE 4.1.0 ya estaba en este repositorio**, en `interfaz/`, con un descargador que fija la versión y comprueba SHA-256. El estándar prohíbe copiar terceros al repo: se declaran y se instalan. Copié ese mismo patrón a la plataforma.
+
+Lo que va a ver ahora:
+
+- **Menú lateral** con todo: Proyectos, Tablero, y —al entrar a un proyecto— sus seis pantallas, con la actual resaltada.
+- **Tarjetas de cifra** arriba de cada pantalla: 217 fases · 84 terminadas · 107 con tabla vieja · 33 en desacuerdo.
+- **Etiquetas de color** en vez de texto plano: verde para verificada, rojo para no cumple, gris para sin verificar.
+- **Modo claro y oscuro**, en el icono de la derecha.
+- Las advertencias siguen ahí, ahora como avisos con color: por qué «sin datos» no es cero, qué mide cada columna, qué deja por fuera cada pantalla.
+
+Dos cosas que aparecieron al hacerlo:
+
+**Usted tenía razón y las pruebas no lo veían.** Quince pruebas en verde decían que cada frase estaba; ninguna decía que la pantalla se entendiera. A una pantalla hay que abrirla, no solo probarla — quedó como `S-123`.
+
+**Y otra vez el servidor viejo.** Al levantarla, el proceso anterior seguía tomando el 8015 y respondía con las plantillas de antes: la pantalla salía vieja y los estáticos daban 404, sin ningún error. Es la tercera vez hoy. Está en la tabla de fallas del manual.
+
+587 pruebas verdes, 32 validadores sin fallas. `terceros/` no entra al repositorio.
+
+¿Commiteo?
+
+### 213 · Usuario — 2026-09-02 18:34:46
+> esto está saliendo en la viesta: "{# Nada sale a la red: los terceros los trae `descargar_estaticos.py` con su huella, y la plataforma sirve sin conexión (RNF-03). #}"
+
+**Agente** — 2026-09-02 18:36:48
+<!-- agente: d8deadc2-7b86-4bf2-bfbc-2b03840dc54b -->
+
+`{# #}` de Django **no admite varias líneas**: la primera se traga y el resto sale impreso. El comentario ocupaba dos.
+
+El `}}` viene del JavaScript legítimo, no de una plantilla. Estrecho la prueba a lo que nunca puede salir.
+
+Corregido. Recargue **`http://127.0.0.1:8015/`** — las siete pantallas salen limpias.
+
+**Qué pasó:** `{# … #}` de Django **solo admite una línea**. El mío ocupaba dos, así que se tragó la primera y escupió el resto como texto visible — en todas las pantallas a la vez, porque estaba en la plantilla base. Va con `{% comment %}`, que sí aguanta varias.
+
+**Y otra vez lo vio usted, no una prueba.** Las quince pruebas de pantalla preguntan si una frase **está**; ninguna preguntaba si **sobra** algo. Agregué la que faltaba: recorre las siete pantallas y falla si alguna imprime `{#` o `#}`.
+
+Un detalle de esa prueba: primero la escribí buscando también `{%` y `{{`, y dio rojo falso — esas aparecen legítimamente en el JavaScript de la página. Un rojo falso enseña a ignorar la prueba, así que quedó solo con las marcas de comentario, que nunca pueden salir.
+
+589 pruebas verdes.
+
+¿Commiteo lo de AdminLTE junto con esto?
+
+### 214 · Usuario — 2026-09-02 18:37:16
+> si

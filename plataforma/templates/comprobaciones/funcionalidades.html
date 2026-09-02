@@ -1,43 +1,79 @@
 {% extends "base.html" %}
 {% block titulo %}Funcionalidades de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block encabezado %}{{ proyecto.nombre }}{% endblock %}
+{% block titulo_pagina %}Qué está comprobado{% endblock %}
 {% block cuerpo %}
 
-<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
-<h1>Qué está comprobado</h1>
-
 {% if cuantas %}
-  <p>{{ cuantas }} funcionalidad{{ cuantas|pluralize:"es" }} ·
-     {{ verificadas }} verificada{{ verificadas|pluralize:"s" }} ·
-     {{ no_cumplen }} que no cumple{{ no_cumplen|pluralize:"n" }} ·
-     {{ sin_verificar }} sin verificar.</p>
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-primary">
+        <div class="inner"><h3>{{ cuantas }}</h3><p>funcionalidad{{ cuantas|pluralize:"es" }}</p></div>
+        <i class="small-box-icon bi bi-list-check"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-success">
+        <div class="inner"><h3>{{ verificadas }}</h3><p>verificada{{ verificadas|pluralize:"s" }}</p></div>
+        <i class="small-box-icon bi bi-check2-square"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box {% if no_cumplen %}text-bg-danger{% else %}text-bg-light{% endif %}">
+        <div class="inner"><h3>{{ no_cumplen }}</h3><p>que no cumple{{ no_cumplen|pluralize:"n" }}</p></div>
+        <i class="small-box-icon bi bi-x-octagon"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-secondary">
+        <div class="inner"><h3>{{ sin_verificar }}</h3><p>sin verificar</p></div>
+        <i class="small-box-icon bi bi-question-circle"></i>
+      </div>
+    </div>
+  </div>
 
-  <p class="aviso"><strong>Sin verificar no es lo mismo que no cumple.</strong>
-  Una es que nadie comprobó; la otra, que se comprobó y salió mal. Y
-  <strong>verificada</strong> quiere decir que la fase que la construyó cerró con
-  veredicto <em>Cumple</em>, no que alguien de afuera la haya auditado.</p>
+  <div class="alert alert-secondary">
+    <strong>Sin verificar no es lo mismo que no cumple.</strong>
+    Una es que nadie comprobó; la otra, que se comprobó y salió mal. Y
+    <strong>verificada</strong> quiere decir que la fase que la construyó cerró
+    con veredicto <em>Cumple</em>, no que alguien de afuera la haya auditado.
+  </div>
 
-  <table>
-    <tr><th>Funcionalidad</th><th>Estado</th><th>De dónde sale</th></tr>
-    {% for una in funcionalidades %}
-      <tr>
-        <td><code>{{ una.funcionalidad }}</code></td>
-        <td>
-          {% if una.estado == NO_CUMPLE %}<strong>{{ una.estado }}</strong>
-          {% elif una.estado == VERIFICADO %}{{ una.estado }}
-          {% else %}<span class="apagado">{{ una.estado }}</span>{% endif %}
-        </td>
-        <td>
-          {{ una.porque }}
-          {% if una.fases %}
-            <br><span class="apagado">{% for fase in una.fases %}<code>{{ fase }}</code>{% if not forloop.last %} · {% endif %}{% endfor %}</span>
-          {% endif %}
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+  <div class="card">
+    <div class="card-header"><h3 class="card-title">Una por una</h3></div>
+    <div class="card-body p-0 table-responsive">
+      <table class="table table-hover table-sm tabla-angosta mb-0">
+        <thead><tr><th>Funcionalidad</th><th>Estado</th><th>De dónde sale</th></tr></thead>
+        <tbody>
+        {% for una in funcionalidades %}
+          <tr>
+            <td><code>{{ una.funcionalidad }}</code></td>
+            <td>
+              {% if una.estado == NO_CUMPLE %}
+                <span class="badge text-bg-danger">{{ una.estado }}</span>
+              {% elif una.estado == VERIFICADO %}
+                <span class="badge text-bg-success">{{ una.estado }}</span>
+              {% else %}
+                <span class="badge text-bg-secondary">{{ una.estado }}</span>
+              {% endif %}
+            </td>
+            <td>
+              {{ una.porque }}
+              {% if una.fases %}
+                <br><span class="apagado small">{% for fase in una.fases %}<code>{{ fase }}</code>{% if not forloop.last %} · {% endif %}{% endfor %}</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {% else %}
-  <p class="vacio">Este proyecto no tiene inventario de funcionalidades, o el que
-  tiene no declara ninguna. No es un cero: es que no hay qué contar.</p>
+  <div class="vacio">
+    Este proyecto no tiene inventario de funcionalidades, o el que tiene no
+    declara ninguna. No es un cero: es que no hay qué contar.
+  </div>
 {% endif %}
 
 {% endblock %}

@@ -20,6 +20,7 @@ def traer(request, identificador):
 
     if request.method != "POST" or not request.POST.get("confirmado"):
         return render(request, "importacion/traer.html", {
+        "seccion": "traer",
             "proyecto": proyecto,
             "hallazgo": hallazgo,
         })
@@ -30,12 +31,14 @@ def traer(request, identificador):
             sesion=(request.POST.get("sesion") or "").strip())
     except core.NoSePudoTraer as falla:
         return render(request, "importacion/traer.html", {
+        "seccion": "traer",
             "proyecto": proyecto,
             "hallazgo": hallazgo,
             "error": str(falla),
         })
 
     return render(request, "importacion/traer.html", {
+        "seccion": "traer",
         "proyecto": proyecto,
         "hallazgo": hallazgo,
         "nuevos": nuevos,

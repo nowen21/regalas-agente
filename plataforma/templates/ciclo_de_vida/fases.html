@@ -1,79 +1,118 @@
 {% extends "base.html" %}
 {% block titulo %}Fases de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block encabezado %}{{ proyecto.nombre }}{% endblock %}
+{% block titulo_pagina %}En qué va cada fase{% endblock %}
 {% block cuerpo %}
 
-<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
-<h1>En qué va cada fase</h1>
-
 {% if cuenta.cuantas %}
-  <p>{{ cuenta.cuantas }} fase{{ cuenta.cuantas|pluralize:"s" }} ·
-     {{ cuenta.terminadas }} con las trece estaciones pasadas.</p>
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-primary">
+        <div class="inner"><h3>{{ cuenta.cuantas }}</h3><p>fase{{ cuenta.cuantas|pluralize:"s" }} en total</p></div>
+        <i class="small-box-icon bi bi-signpost-split"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-success">
+        <div class="inner"><h3>{{ cuenta.terminadas }}</h3><p>con las trece pasadas</p></div>
+        <i class="small-box-icon bi bi-check2-all"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-secondary">
+        <div class="inner"><h3>{{ cuenta.de_otro_modelo }}</h3><p>con tabla de otro modelo</p></div>
+        <i class="small-box-icon bi bi-layers"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-warning">
+        <div class="inner"><h3>{{ cuenta.sin_coincidir }}</h3><p>con la frase y la tabla en desacuerdo</p></div>
+        <i class="small-box-icon bi bi-exclamation-diamond"></i>
+      </div>
+    </div>
+  </div>
 
   {% if cuenta.de_otro_modelo %}
-    <p class="aviso"><strong>{{ cuenta.de_otro_modelo }} usan una tabla que no es
-    la de {{ trece }} estaciones.</strong> Son fases viejas: no se reescriben, y su
-    estación no se compara con la de las demás.</p>
+    <div class="alert alert-secondary">
+      <strong>{{ cuenta.de_otro_modelo }} usan una tabla que no es la de
+      {{ trece }} estaciones.</strong> Son fases viejas: no se reescriben, y su
+      estación no se compara con la de las demás.
+    </div>
   {% endif %}
   {% if cuenta.con_estaciones_sin_marcar %}
-    <p class="aviso"><strong>{{ cuenta.con_estaciones_sin_marcar }} tienen alguna
-    estación sin marcar.</strong> El documento cuenta qué pasó con ella en vez de
-    marcarla, y eso no es lo mismo que estar pendiente.</p>
+    <div class="alert alert-secondary">
+      <strong>{{ cuenta.con_estaciones_sin_marcar }} tienen alguna estación sin
+      marcar.</strong> El documento cuenta qué pasó con ella en vez de marcarla,
+      y eso no es lo mismo que estar pendiente.
+    </div>
   {% endif %}
   {% if cuenta.sin_coincidir %}
-    <p class="aviso"><strong>{{ cuenta.sin_coincidir }} dicen ir en una estación
-    distinta de la que marca su tabla.</strong> Manda la tabla.</p>
+    <div class="alert alert-warning">
+      <strong>{{ cuenta.sin_coincidir }} dicen ir en una estación distinta de la
+      que marca su tabla.</strong> Manda la tabla.
+    </div>
   {% endif %}
 
-  <p class="apagado">
-    {% if solo_abiertas %}
-      Se muestran solo las que no han pasado las trece.
-      <a href="?">Ver todas</a>.
-    {% else %}
-      Se muestran todas. <a href="?abiertas=si">Ver solo las abiertas</a>.
-    {% endif %}
-  </p>
-
-  <table>
-    <tr><th>Fase</th><th>Estación</th><th>Qué falta</th><th>Sin tocarse</th></tr>
-    {% for una in fases %}
-      <tr>
-        <td><code>{{ una.fase }}</code></td>
-        <td>
-          {% if una.actual == terminada %}
-            <span class="apagado">las trece pasadas</span>
-          {% else %}
-            {{ una.actual }} · {{ una.nombre }}
-          {% endif %}
-        </td>
-        <td>
-          {% if una.actual == terminada %}
-            —
-          {% elif una.como_quedo == "sin marcar" %}
-            <strong>no se marcó</strong> — el documento cuenta qué pasó con
-            «{{ una.puerta }}» en vez de marcarla
-          {% else %}
-            {{ una.puerta }}
-          {% endif %}
-          {% if not una.comparable %}
-            <br><span class="apagado">su tabla es de {{ una.modelo }} estaciones,
-            no de {{ trece }}: no se compara con lo que dice su frase</span>
-          {% elif not una.coincide %}
-            <br><span class="apagado">el documento dice ir en la
-            {{ una.declarada }}, y su tabla dice {{ una.actual }}</span>
-          {% endif %}
-        </td>
-        <td>
-          {% if una.actual == terminada %}—
-          {% elif una.dias is None %}<span class="apagado">no lo dice</span>
-          {% else %}{{ una.dias }} día{{ una.dias|pluralize:"s" }}{% endif %}
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        {% if solo_abiertas %}Las que no han pasado las trece{% else %}Todas{% endif %}
+      </h3>
+      <div class="card-tools">
+        {% if solo_abiertas %}
+          <a class="btn btn-sm btn-outline-secondary" href="?">Ver todas</a>
+        {% else %}
+          <a class="btn btn-sm btn-outline-secondary" href="?abiertas=si">Ver solo las abiertas</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="card-body p-0 table-responsive">
+      <table class="table table-hover table-sm tabla-angosta mb-0">
+        <thead><tr><th>Fase</th><th>Estación</th><th>Qué falta</th><th class="text-end">Sin tocarse</th></tr></thead>
+        <tbody>
+        {% for una in fases %}
+          <tr>
+            <td><code>{{ una.fase }}</code></td>
+            <td>
+              {% if una.actual == terminada %}
+                <span class="badge text-bg-success">las trece pasadas</span>
+              {% else %}
+                <span class="badge text-bg-primary">{{ una.actual }}</span> {{ una.nombre }}
+              {% endif %}
+            </td>
+            <td>
+              {% if una.actual == terminada %}
+                —
+              {% elif una.como_quedo == "sin marcar" %}
+                <strong>no se marcó</strong> — el documento cuenta qué pasó con
+                «{{ una.puerta }}» en vez de marcarla
+              {% else %}
+                {{ una.puerta }}
+              {% endif %}
+              {% if not una.comparable %}
+                <br><span class="apagado small">su tabla es de {{ una.modelo }}
+                estaciones, no de {{ trece }}: no se compara con lo que dice su frase</span>
+              {% elif not una.coincide %}
+                <br><span class="apagado small">el documento dice ir en la
+                {{ una.declarada }}, y su tabla dice {{ una.actual }}</span>
+              {% endif %}
+            </td>
+            <td class="text-end">
+              {% if una.actual == terminada %}—
+              {% elif una.dias is None %}<span class="apagado">no lo dice</span>
+              {% else %}{{ una.dias }} día{{ una.dias|pluralize:"s" }}{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {% else %}
-  <p class="vacio">Este proyecto no tiene ninguna fase con su
-  <code>estado-fase.md</code>. No es un error: puede que todavía no se haya
-  abierto ninguna.</p>
+  <div class="vacio">
+    Este proyecto no tiene ninguna fase con su <code>estado-fase.md</code>.
+    No es un error: puede que todavía no se haya abierto ninguna.
+  </div>
 {% endif %}
 
 {% endblock %}

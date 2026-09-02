@@ -1,41 +1,139 @@
-<!doctype html>
+{% load static %}<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block titulo %}Cimiento{% endblock %}</title>
-  {# Sin nada que salga a la red: la plataforma tiene que servir sin conexión (RNF-03). #}
+  {# El tema guardado se aplica antes de pintar, para que no parpadee. #}
+  <script>(function(){try{document.documentElement.setAttribute(
+    'data-bs-theme', localStorage.getItem('tema')||'light');}catch(e){}})();</script>
+  {% comment %}
+    Nada sale a la red: los terceros los trae `descargar_estaticos.py` con su
+    huella, y la plataforma sirve sin conexión (RNF-03).
+
+    Va con `{% comment %}` y no con la llave-almohadilla porque **esa solo
+    admite una línea**: en varias se traga la primera y el resto sale impreso
+    en la pantalla.
+  {% endcomment %}
+  <link rel="stylesheet" href="{% static 'bootstrap-icons/bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'adminlte/adminlte.min.css' %}">
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0; color: #1c1c1c;
-           background: #f6f6f4; }
-    header { background: #23303d; color: #fff; padding: 1rem 1.5rem; }
-    header a { color: #fff; text-decoration: none; font-weight: 600; }
-    main { max-width: 60rem; margin: 0 auto; padding: 1.5rem; }
-    h1 { font-size: 1.4rem; margin: 0 0 1rem; }
-    h2 { font-size: 1.1rem; margin: 2rem 0 .6rem; }
-    table { border-collapse: collapse; width: 100%; background: #fff; }
-    th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid #e3e3e0; }
-    th { background: #eeeeea; font-weight: 600; }
-    .vacio { background: #fff; border: 1px dashed #c9c9c4; padding: 1.2rem;
-             color: #555; }
-    .aviso { background: #fff8e1; border-left: 4px solid #d5a021; padding: .7rem 1rem;
-             margin: .5rem 0; }
-    .error { background: #fdecea; border-left: 4px solid #c0392b; padding: .7rem 1rem;
-             margin: .5rem 0; }
-    .bien { background: #eaf6ec; border-left: 4px solid #3a8f4f; padding: .7rem 1rem;
-            margin: .5rem 0; }
-    form { background: #fff; padding: 1rem; border: 1px solid #e3e3e0; }
-    label { display: block; margin: .6rem 0 .2rem; font-weight: 600; }
-    input[type=text] { width: 100%; padding: .5rem; border: 1px solid #c9c9c4; }
-    button { margin-top: .9rem; padding: .55rem 1.1rem; background: #23303d;
-             color: #fff; border: 0; cursor: pointer; }
-    .apagado { color: #777; }
-    pre { background: #fff; border: 1px solid #e3e3e0; padding: 1rem;
-          overflow-x: auto; white-space: pre-wrap; }
+    /* Lo poco que AdminLTE no trae y esta plataforma sí necesita. */
+    .apagado { color: var(--bs-secondary-color); }
+    .vacio { border: 1px dashed var(--bs-border-color); border-radius: .5rem;
+             padding: 1.5rem; color: var(--bs-secondary-color);
+             background: var(--bs-body-bg); }
+    code { font-size: .86em; word-break: break-all; }
+    .tabla-angosta td, .tabla-angosta th { padding: .45rem .6rem; }
   </style>
 </head>
-<body>
-  <header><a href="{% url 'proyectos-lista' %}">Cimiento</a> &nbsp;·&nbsp; <a href="{% url 'avisos-tablero' %}">Tablero</a></header>
-  <main>{% block cuerpo %}{% endblock %}</main>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<div class="app-wrapper">
+
+  <nav class="app-header navbar navbar-expand bg-body">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"
+             title="Mostrar u ocultar el menú"><i class="bi bi-list"></i></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+          <span class="nav-link fw-semibold">{% block encabezado %}Cimiento{% endblock %}</span>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="cambiar-tema" role="button"
+             title="Modo claro u oscuro"><i class="bi bi-circle-half"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <div class="sidebar-brand">
+      <a href="{% url 'proyectos-lista' %}" class="brand-link">
+        <i class="bi bi-bricks me-2"></i><span class="brand-text fw-light">Cimiento</span>
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <nav class="mt-2">
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview"
+            role="menu" data-accordion="false">
+
+          <li class="nav-header">TODOS LOS PROYECTOS</li>
+          <li class="nav-item">
+            <a href="{% url 'proyectos-lista' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+              <i class="nav-icon bi bi-diagram-3"></i><p>Proyectos</p></a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'avisos-tablero' %}" class="nav-link {% if request.path == '/tablero/' %}active{% endif %}">
+              <i class="nav-icon bi bi-speedometer2"></i><p>Tablero</p></a>
+          </li>
+
+          {% if proyecto %}
+            <li class="nav-header">{{ proyecto.nombre|upper|truncatechars:26 }}</li>
+            <li class="nav-item">
+              <a href="{% url 'proyectos-uno' proyecto.identificador %}" class="nav-link {% if seccion == 'ficha' %}active{% endif %}">
+                <i class="nav-icon bi bi-card-list"></i><p>Su ficha</p></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'ciclo-fases' proyecto.identificador %}" class="nav-link {% if seccion == 'fases' %}active{% endif %}">
+                <i class="nav-icon bi bi-signpost-split"></i><p>En qué va cada fase</p></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'comprobaciones-funcionalidades' proyecto.identificador %}" class="nav-link {% if seccion == 'funcionalidades' %}active{% endif %}">
+                <i class="nav-icon bi bi-check2-square"></i><p>Qué está comprobado</p></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'aprobaciones-lista' proyecto.identificador %}" class="nav-link {% if seccion == 'aprobaciones' %}active{% endif %}">
+                <i class="nav-icon bi bi-patch-check"></i><p>Qué está aprobado</p></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'memoria-lista' proyecto.identificador %}" class="nav-link {% if seccion == 'memoria' %}active{% endif %}">
+                <i class="nav-icon bi bi-bookmark-star"></i><p>Qué recuerda el agente</p></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'importacion-traer' proyecto.identificador %}" class="nav-link {% if seccion == 'traer' %}active{% endif %}">
+                <i class="nav-icon bi bi-box-arrow-in-down"></i><p>Traer lo escrito</p></a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="app-main">
+    <div class="app-content-header">
+      <div class="container-fluid">
+        <h3 class="mb-0">{% block titulo_pagina %}{% endblock %}</h3>
+        {% block bajada %}{% endblock %}
+      </div>
+    </div>
+    <div class="app-content">
+      <div class="container-fluid">
+        {% block cuerpo %}{% endblock %}
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="float-end d-none d-sm-inline">Corre en esta máquina. Nada sale a la red.</div>
+    <strong>Cimiento</strong> — la plataforma que administra el estándar.
+  </footer>
+</div>
+
+<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'adminlte/adminlte.min.js' %}"></script>
+<script>
+  document.getElementById('cambiar-tema').addEventListener('click', function (e) {
+    e.preventDefault();
+    var raiz = document.documentElement;
+    var nuevo = raiz.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+    raiz.setAttribute('data-bs-theme', nuevo);
+    try { localStorage.setItem('tema', nuevo); } catch (err) {}
+  });
+</script>
 </body>
 </html>

@@ -29,6 +29,7 @@ def aprobaciones(peticion, identificador):
 
     return render(peticion, "aprobaciones/aprobaciones.html", {
         "proyecto": registrado,
+        "seccion": "aprobaciones",
         "estados": estados,
         "cuantos": len(estados),
         "aprobados": cuenta.get(core.APROBADO, 0),

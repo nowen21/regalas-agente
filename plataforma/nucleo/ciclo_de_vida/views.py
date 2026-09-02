@@ -36,6 +36,7 @@ def fases(peticion, identificador):
 
     return render(peticion, "ciclo_de_vida/fases.html", {
         "proyecto": registrado,
+        "seccion": "fases",
         "fases": mostradas,
         "cuenta": estaciones.resumen(todas),
         "solo_abiertas": solo_abiertas,

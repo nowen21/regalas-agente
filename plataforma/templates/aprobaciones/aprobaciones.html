@@ -1,44 +1,72 @@
 {% extends "base.html" %}
 {% block titulo %}Aprobaciones de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block encabezado %}{{ proyecto.nombre }}{% endblock %}
+{% block titulo_pagina %}Qué está aprobado{% endblock %}
 {% block cuerpo %}
 
-<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
-<h1>Qué está aprobado</h1>
-
 {% if cuantos %}
-  <p>{{ cuantos }} documento{{ cuantos|pluralize:"s" }} con alguna aprobación ·
-     {{ aprobados }} aprobado{{ aprobados|pluralize:"s" }} ·
-     {{ caducadas }} caducada{{ caducadas|pluralize:"s" }}.</p>
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-4">
+      <div class="small-box text-bg-primary">
+        <div class="inner"><h3>{{ cuantos }}</h3><p>documento{{ cuantos|pluralize:"s" }} con alguna aprobación</p></div>
+        <i class="small-box-icon bi bi-file-earmark-text"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-4">
+      <div class="small-box text-bg-success">
+        <div class="inner"><h3>{{ aprobados }}</h3><p>aprobado{{ aprobados|pluralize:"s" }}</p></div>
+        <i class="small-box-icon bi bi-patch-check"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-4">
+      <div class="small-box {% if caducadas %}text-bg-warning{% else %}text-bg-light{% endif %}">
+        <div class="inner"><h3>{{ caducadas }}</h3><p>caducada{{ caducadas|pluralize:"s" }}</p></div>
+        <i class="small-box-icon bi bi-hourglass-bottom"></i>
+      </div>
+    </div>
+  </div>
 
-  <table>
-    <tr><th>Documento</th><th>Estado</th><th>Desde</th><th>Quién</th><th>Cuánto cambió</th></tr>
-    {% for uno in estados %}
-      <tr>
-        <td><code>{{ uno.documento }}</code></td>
-        <td>
-          {% if uno.estado == CADUCADA %}<strong>{{ uno.en_palabras }}</strong>
-          {% else %}{{ uno.en_palabras }}{% endif %}
-        </td>
-        <td>{{ uno.desde|default:"—" }}</td>
-        <td>{{ uno.quien|default:"—" }}</td>
-        <td>
-          {% if uno.estado == CADUCADA and uno.existe %}
-            {{ uno.cambio_desde }} caracteres
-          {% elif not uno.existe %}
-            <span class="apagado">el documento ya no está</span>
-          {% else %}—{% endif %}
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
-
-  <p class="apagado"><strong>Solo salen los documentos que tienen alguna
-  aprobación.</strong> No son todos los del proyecto: los que nunca se aprobaron
-  no aparecen acá.</p>
+  <div class="card">
+    <div class="card-header"><h3 class="card-title">Documento por documento</h3></div>
+    <div class="card-body p-0 table-responsive">
+      <table class="table table-hover table-sm tabla-angosta mb-0">
+        <thead><tr><th>Documento</th><th>Estado</th><th>Desde</th><th>Quién</th><th class="text-end">Cuánto cambió</th></tr></thead>
+        <tbody>
+        {% for uno in estados %}
+          <tr>
+            <td><code>{{ uno.documento }}</code></td>
+            <td>
+              {% if uno.estado == CADUCADA %}
+                <span class="badge text-bg-warning">{{ uno.en_palabras }}</span>
+              {% else %}
+                <span class="badge text-bg-success">{{ uno.en_palabras }}</span>
+              {% endif %}
+            </td>
+            <td>{{ uno.desde|default:"—" }}</td>
+            <td>{{ uno.quien|default:"—" }}</td>
+            <td class="text-end">
+              {% if uno.estado == CADUCADA and uno.existe %}
+                {{ uno.cambio_desde }} caracteres
+              {% elif not uno.existe %}
+                <span class="apagado">el documento ya no está</span>
+              {% else %}—{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer apagado small">
+      <strong>Solo salen los documentos que tienen alguna aprobación.</strong>
+      No son todos los del proyecto: los que nunca se aprobaron no aparecen acá.
+    </div>
+  </div>
 {% else %}
-  <p class="vacio">Ningún documento de este proyecto tiene una aprobación
-  registrada. No es que estén todos sin aprobar: es que la plataforma no ha
-  registrado ninguna todavía.</p>
+  <div class="vacio">
+    Ningún documento de este proyecto tiene una aprobación registrada. No es que
+    estén todos sin aprobar: es que la plataforma no ha registrado ninguna
+    todavía.
+  </div>
 {% endif %}
 
 {% endblock %}

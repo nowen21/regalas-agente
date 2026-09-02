@@ -1,71 +1,131 @@
 {% extends "base.html" %}
 {% block titulo %}Tablero · Cimiento{% endblock %}
+{% block encabezado %}Tablero{% endblock %}
+{% block titulo_pagina %}Cómo van los proyectos{% endblock %}
+{% block bajada %}<p class="apagado mb-0">Medido hoy, {{ hoy }}.</p>{% endblock %}
 {% block cuerpo %}
 
-<h1>Cómo van los proyectos</h1>
-<p class="apagado">Medido hoy, {{ hoy }}.</p>
-
 {% if filas %}
-  <table>
-    <tr><th>Proyecto</th><th>Avance</th><th>Deuda</th><th>Vencida</th><th>Sin fecha</th></tr>
-    {% for una in filas %}
-      <tr>
-        <td><a href="{% url 'proyectos-uno' una.proyecto %}">{{ una.proyecto }}</a></td>
-        <td>{% if una.avance is None %}<span class="apagado">sin datos</span>{% else %}{{ una.avance }} %{% endif %}</td>
-        <td>{{ una.deuda }}</td>
-        <td>{{ una.vencida }}</td>
-        <td>{{ una.quietas }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-primary">
+        <div class="inner"><h3>{{ filas|length }}</h3><p>proyecto{{ filas|length|pluralize:"s" }} conectado{{ filas|length|pluralize:"s" }}</p></div>
+        <i class="small-box-icon bi bi-diagram-3"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box {% if cuantos %}text-bg-warning{% else %}text-bg-success{% endif %}">
+        <div class="inner"><h3>{{ cuantos }}</h3><p>aviso{{ cuantos|pluralize:"s" }} vivo{{ cuantos|pluralize:"s" }}</p></div>
+        <i class="small-box-icon bi bi-exclamation-triangle"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-secondary">
+        <div class="inner"><h3>{{ sin_datos|length }}</h3><p>sin datos que medir</p></div>
+        <i class="small-box-icon bi bi-question-circle"></i>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="small-box text-bg-light">
+        <div class="inner"><h3>{{ dias }}</h3><p>días para dar algo por vencido</p></div>
+        <i class="small-box-icon bi bi-hourglass-split"></i>
+      </div>
+    </div>
+  </div>
 
-  <h2>Qué mide cada columna</h2>
-  <table>
-    {% for nombre, definicion in que_mide %}
-      <tr><th style="width:8rem">{{ nombre }}</th><td>{{ definicion }}</td></tr>
-    {% endfor %}
-  </table>
+  <div class="card mb-3">
+    <div class="card-header"><h3 class="card-title">Proyecto por proyecto</h3></div>
+    <div class="card-body p-0">
+      <table class="table table-hover tabla-angosta mb-0">
+        <thead><tr>
+          <th>Proyecto</th><th class="text-end">Avance</th>
+          <th class="text-end">Deuda</th><th class="text-end">Vencida</th>
+          <th class="text-end">Sin fecha</th>
+        </tr></thead>
+        <tbody>
+        {% for una in filas %}
+          <tr>
+            <td><a href="{% url 'proyectos-uno' una.proyecto %}">{{ una.proyecto }}</a></td>
+            <td class="text-end">
+              {% if una.avance is None %}
+                <span class="badge text-bg-secondary">sin datos</span>
+              {% else %}{{ una.avance }} %{% endif %}
+            </td>
+            <td class="text-end">{{ una.deuda }}</td>
+            <td class="text-end">{{ una.vencida }}</td>
+            <td class="text-end">{{ una.quietas }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <p class="mb-2 fw-semibold">Qué mide cada columna</p>
+      <dl class="row mb-0 small">
+        {% for nombre, definicion in que_mide %}
+          <dt class="col-sm-2">{{ nombre }}</dt>
+          <dd class="col-sm-10">{{ definicion }}</dd>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
 
   {% if sin_datos %}
-    <p class="aviso"><strong>Sin datos no es cero.</strong> Estos proyectos no
-    tienen ninguna fase escrita, así que su avance no se puede calcular:
-    {% for uno in sin_datos %}{{ uno }}{% if not forloop.last %}, {% endif %}{% endfor %}.</p>
+    <div class="alert alert-warning">
+      <strong>Sin datos no es cero.</strong> Estos proyectos no tienen ninguna
+      fase escrita, así que su avance no se puede calcular:
+      {% for uno in sin_datos %}{{ uno }}{% if not forloop.last %}, {% endif %}{% endfor %}.
+    </div>
   {% endif %}
 {% else %}
-  <p class="vacio">No hay ningún proyecto conectado. No es un cero: es que
-  todavía no se ha conectado ninguno.
-  <a href="{% url 'proyectos-conectar' %}">Conectar uno</a>.</p>
+  <div class="vacio mb-3">
+    No hay ningún proyecto conectado. No es un cero: es que todavía no se ha
+    conectado ninguno.
+    <a href="{% url 'proyectos-conectar' %}">Conectar uno</a>.
+  </div>
 {% endif %}
 
-<h1>Lo que se salió de lo acordado</h1>
+<h3 class="mb-2">Lo que se salió de lo acordado</h3>
 
 {% if cuantos %}
-  <p>{{ cuantos }} aviso{{ cuantos|pluralize:"s" }} en total.</p>
   {% for uno in de_cada_uno %}
-    <h2>{{ uno.proyecto.nombre }}</h2>
-    <p class="apagado">{{ uno.salida.cuantos }} aviso{{ uno.salida.cuantos|pluralize:"s" }}{% if uno.salida.callados %}, y {{ uno.salida.callados }} callado{{ uno.salida.callados|pluralize:"s" }} a propósito{% endif %}.</p>
-    <table>
-      <tr><th>Qué</th><th>Sobre</th><th>Qué lo disparó</th><th>Dónde mirar</th></tr>
-      {% for aviso in uno.salida.avisos %}
-        <tr>
-          <td>{{ aviso.clase }}</td>
-          <td>{{ aviso.sobre_que }}</td>
-          <td>{{ aviso.que_lo_disparo }}</td>
-          <td><code>{{ aviso.donde_mirar }}</code></td>
-        </tr>
-      {% endfor %}
-    </table>
-    {% if uno.salida.se_recorto %}
-      <p class="aviso"><strong>Se recortó la lista.</strong> Hay más de los que
-      se muestran.</p>
-    {% endif %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="card-title">{{ uno.proyecto.nombre }}</h3>
+        <div class="card-tools apagado small">
+          {{ uno.salida.cuantos }} aviso{{ uno.salida.cuantos|pluralize:"s" }}{% if uno.salida.callados %}, y {{ uno.salida.callados }} callado{{ uno.salida.callados|pluralize:"s" }} a propósito{% endif %}
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-sm tabla-angosta mb-0">
+          <thead><tr><th>Qué</th><th>Sobre</th><th>Qué lo disparó</th><th>Dónde mirar</th></tr></thead>
+          <tbody>
+          {% for aviso in uno.salida.avisos %}
+            <tr>
+              <td><span class="badge text-bg-warning">{{ aviso.clase }}</span></td>
+              <td>{{ aviso.sobre_que }}</td>
+              <td>{{ aviso.que_lo_disparo }}</td>
+              <td><code>{{ aviso.donde_mirar }}</code></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% if uno.salida.se_recorto %}
+        <div class="card-footer">
+          <strong>Se recortó la lista.</strong> Hay más de los que se muestran.
+        </div>
+      {% endif %}
+    </div>
   {% endfor %}
 
-  <p class="apagado"><strong>«Vencida» quiere decir sin moverse hace más de
+  <p class="apagado small"><strong>«Vencida» quiere decir sin moverse hace más de
   {{ dias }} días.</strong> El estándar nunca le puso fecha a una deuda, así que
   ese número se puso acá y no es un vencimiento acordado.</p>
 {% else %}
-  <p class="bien">Nada se salió de lo acordado.</p>
+  <div class="alert alert-success mb-0">
+    <i class="bi bi-check-circle me-1"></i> Nada se salió de lo acordado.
+  </div>
 {% endif %}
 
 {% endblock %}

@@ -113,6 +113,7 @@ def conectar(request):
         return _lista_con_error(request, str(rechazo), nombre, ruta)
 
     return render(request, "proyectos/uno.html", {
+        "seccion": "ficha",
         "proyecto": proyecto,
         "avisos": avisos,
         "recien_conectado": True,
@@ -123,6 +124,7 @@ def uno(request, identificador):
     """`P-02` · un proyecto: su ruta, su versión, qué le falta y qué se le puede hacer."""
     proyecto = get_object_or_404(Proyecto, identificador=identificador)
     return render(request, "proyectos/uno.html", {
+        "seccion": "ficha",
         "proyecto": proyecto,
         "avisos": _avisos_de(proyecto),
         "estado": proyecto.detalle_del_estado,
@@ -164,12 +166,14 @@ def cambiar(request, identificador, que):
     except (core.NombreVacio, core.VersionQueNoExiste,
             core.RutaQueNoExiste, core.RutaYaRegistrada) as rechazo:
         return render(request, "proyectos/uno.html", {
+        "seccion": "ficha",
             "proyecto": proyecto,
             "avisos": _avisos_de(proyecto),
             "error": str(rechazo),
         })
 
     return render(request, "proyectos/uno.html", {
+        "seccion": "ficha",
         "proyecto": proyecto,
         "avisos": _avisos_de(proyecto),
         "hecho": confirmacion["titulo"] + ": listo.",

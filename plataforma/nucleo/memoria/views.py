@@ -37,6 +37,7 @@ def memoria(peticion, identificador):
 
     return render(peticion, "memoria/memoria.html", {
         "proyecto": registrado,
+        "seccion": "memoria",
         "recuerdos": recuerdos,
         "cuenta": cuenta,
         "palabra": palabra,

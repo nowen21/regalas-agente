@@ -25,6 +25,7 @@ def funcionalidades(peticion, identificador):
 
     return render(peticion, "comprobaciones/funcionalidades.html", {
         "proyecto": registrado,
+        "seccion": "funcionalidades",
         "funcionalidades": todas,
         "cuantas": len(todas),
         "verificadas": por_estado.get(estado.VERIFICADO, 0),

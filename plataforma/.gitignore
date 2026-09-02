@@ -7,3 +7,5 @@ __pycache__/
 # La clave de firma de esta máquina. Nunca entra al repositorio (`00·N6`).
 .env
 staticfiles/
+# Los terceros del navegador. Los trae `descargar_estaticos.py` con su huella.
+terceros/

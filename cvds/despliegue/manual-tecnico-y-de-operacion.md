@@ -24,10 +24,13 @@
 
 ```
 cd plataforma
-cp .env.example .env      # una sola vez
+cp .env.example .env               # una sola vez
+python descargar_estaticos.py      # una sola vez: trae los terceros
 python manage.py migrate
 python manage.py runserver
 ```
+
+**`descargar_estaticos.py` es lo único que sale a la red, y una sola vez.** Trae AdminLTE, Bootstrap y los iconos a `terceros/` —carpeta que no se versiona—, **fijados por versión y comprobados por huella SHA-256**: si lo descargado no coincide, se descarta y el programa falla diciendo cuál. Después de eso la plataforma sirve sin conexión.
 
 Y se abre el puerto que diga el `.env`. **El puerto vive ahí y no en el código**, porque es de cada máquina: en esta, el 8000 y el 8010 los tienen otras aplicaciones, y por eso dice `PUERTO=8015`. Sin `.env`, arranca en el 8000 de siempre.
 
@@ -102,6 +105,7 @@ Y traer de nuevo cada proyecto desde su pantalla, que vuelve a copiar sus docume
 | Una pantalla sale vacía | Casi siempre no hay datos, y la pantalla lo dice | Leer la frase: distingue «no hay» de una falla |
 | La puerta de publicación sale en rojo | Alguna batería no está en verde | Correrla aparte y leer qué falló |
 | Una orden imprime caracteres raros | La consola de Windows no habla UTF-8 | No es un fallo: el texto sale igual, solo se ve mal |
+| **Una pantalla no muestra los cambios, y los estáticos dan 404** | **Un servidor viejo sigue tomando el puerto y responde él** | Bajarlo, comprobar que el puerto quede libre, y volver a levantar |
 
 **Lo que pasó de verdad, y por eso está en la tabla:** el expediente reportó **22 documentos faltantes que existían** porque la copia traída tenía 546 documentos menos que el disco. Traer de nuevo lo resolvió.
 

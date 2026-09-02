@@ -1274,3 +1274,15 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · usuario + agente.
 - **Scope:** cualquier configuración que se declare en un archivo.
 - **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).
+
+## S-123 · La pantalla honesta era ilegible, y decirlo bien no es lo mismo que decirlo  ·  aprendizaje · activa
+- **What:** las cinco pantallas nuevas decían la verdad y la decían completa: qué mide cada columna, qué dejan por fuera, por qué un cero no es un cero. Al abrirlas, el usuario dijo que **«no es nada amigable ni se entiende lo que hace»**. Tenía razón: eran tablas sin jerarquía, sin navegación y sin una sola pista visual de qué mirar primero.
+- **Why:** **una pantalla honesta que nadie lee no informa a nadie.** Todo el cuidado puesto en que ninguna frase mintiera no sirve si el lector no llega hasta la frase. La honestidad es condición necesaria y no suficiente, y confundirlas es fácil cuando quien escribe la pantalla ya sabe qué dice.
+- **Also:** la biblioteca **ya estaba en este repositorio**. `interfaz/` traía AdminLTE 4.1.0, Bootstrap 5 y los iconos, con un descargador que fija versión y comprueba SHA-256, porque el estándar prohíbe copiar terceros al repositorio: **se declaran y se instalan**. La plataforma no lo usaba. Buscar antes de traer valió tres minutos y evitó una segunda forma de hacer lo mismo.
+- **And:** al levantarla apareció otra vez la trampa del puerto. **El servidor viejo seguía tomando el 8015** y respondía con las plantillas de antes: las pantallas salían con la forma vieja y los estáticos daban 404, sin ningún error que lo explicara. Es la tercera vez en la jornada que un proceso viejo contesta por uno nuevo.
+- **Y lo tercero también lo vio el usuario:** un comentario de plantilla escrito con llave-almohadilla ocupaba **dos líneas**, y esa forma **solo admite una**. Django se tragó la primera y escupió el resto como texto visible — en las siete pantallas a la vez, porque estaba en la plantilla base. Las quince pruebas de pantalla preguntan si una frase **está**; ninguna preguntaba si **sobra** algo, y por eso ninguna lo vio.
+- **Where:** `plataforma/descargar_estaticos.py`, `plataforma/templates/` · `terceros/` fuera del repositorio.
+- **Learned:** **a una pantalla hay que abrirla, no solo probarla.** Quince pruebas en verde decían que cada frase estaba; ninguna decía que la pantalla se entendiera. Y cuando algo servido no se actualiza y no hay error, **la primera sospecha es que responde otro proceso**, no que el código esté mal.
+- **When/Who:** 2026-09-02 · usuario + agente.
+- **Scope:** cualquier pantalla, y cualquier servicio que se levante en una máquina donde ya corren otros.
+- **Rel:** S-122 (el `.env` existía y nadie lo leía), S-119 (el caso vacío se diseña, no se hereda).

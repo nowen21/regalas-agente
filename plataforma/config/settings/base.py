@@ -81,7 +81,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [RAIZ / "static"]
+# `terceros/` no se versiona: lo trae `descargar_estaticos.py`, pineado por
+# versión y comprobado por huella. El estándar prohíbe copiar terceros al
+# repositorio; se declaran y se instalan.
+STATICFILES_DIRS = [RAIZ / "static", RAIZ / "terceros"]
 STATIC_ROOT = RAIZ / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
