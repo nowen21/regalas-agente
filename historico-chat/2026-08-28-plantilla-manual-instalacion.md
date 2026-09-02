@@ -3944,3 +3944,159 @@ Señal `S-110`. 45 archivos. **¿Commiteo y hago push?**
 
 ### 182 · Usuario — 2026-09-01 18:34:46
 > si
+
+**Agente** — 2026-09-01 18:35:52
+<!-- agente: 1b89441d-d6b9-4038-a93b-e1e3b8b7cb28 -->
+
+Publicado: `c349d6a..890b010`. Árbol limpio.
+
+**Tres versiones cerradas hoy.**
+
+| Versión | Estado |
+|---|---|
+| 1 · Ver lo que hay | Cerrada |
+| 2 · Entregar | **Cerrada hoy** |
+| 3 · Gobernar al agente | **Cerrada hoy** — sus 10 funcionalidades |
+| 4 · Dejar constancia | Sin abrir |
+| 5 · Operar el ciclo | Sin abrir |
+
+**Nueve hallazgos, los nueve cerrados.** Y hay un solo hilo:
+
+| Cuántos | Qué era |
+|---|---|
+| Tres | Un documento que **habla de** algo parecía contenerlo |
+| Tres | Una convención cambió y dejó atrás al lector |
+| Dos | A un veredicto le faltaba nombre para «no se sabe» |
+| Uno | Lo más difícil de una funcionalidad fue la frase que dice lo que **no** puede hacer |
+
+**Ninguno se veía leyendo el código.** Todos salieron de correr sobre datos reales o de medir antes de construir. Y dos casi salen al revés: 185 sellos anulados y un rojo falso con todo en verde, los dos vistos a tiempo.
+
+**Lo que queda dicho, sin pendiente:** 26 espacios por llenar, 7 documentos con claves de ejemplo, 35 entradas viejas del registro que el lector no reconoce, 21 funcionalidades sin verificar porque nadie las construyó, y **ninguna pantalla en los siete módulos nuevos**.
+
+Quedan las versiones 4 y 5: las aprobaciones firmadas, la memoria administrable, y operar el ciclo desde la plataforma.
+
+### 183 · Usuario — 2026-09-01 18:39:32
+> 00 id9
+
+**Agente** — 2026-09-01 18:39:37
+<!-- agente: 6b9d2289-239c-4f32-ae6d-279e7a7d98b5 -->
+
+Publicado: `c349d6a..890b010`. Árbol limpio.
+
+| Versión | Estado |
+|---|---|
+| 1, 2 y 3 | **Cerradas** |
+| 4 y 5 | Sin abrir |
+
+**Nueve hallazgos, los nueve cerrados**, y con un solo hilo: algo se veía bien leyéndolo y estaba mal al correrlo. Ninguno se veía en el código.
+
+Queda dicho sin pendiente: 26 espacios por llenar, 21 funcionalidades sin construir, y ninguna pantalla en los siete módulos nuevos.
+
+Quedan las versiones 4 y 5: aprobaciones, memoria y operar el ciclo. ¿Sigo?
+
+### 184 · Usuario — 2026-09-01 18:39:46
+> siga
+
+**Agente** — 2026-09-01 18:50:25
+<!-- agente: e583a40c-a14c-4f6f-a959-d82ef165b249 -->
+
+Voy a parar un momento a reportar, porque esto lleva mucho rato y conviene que sepa dónde está.
+
+**El código de la versión 4 está construido y en verde:** las seis funcionalidades, en tres módulos.
+
+| | Qué quedó |
+|---|---|
+| `F-015` | Una aprobación guarda **la huella del texto aprobado** |
+| `F-016` | Tres estados, dichos **con palabras**: aprobado, caducada, sin aprobación |
+| `F-017` | Editar quita la aprobación, y **la anterior no se borra** |
+| `F-019` | La auditoría se busca por proyecto, fecha y tipo de acción |
+| `F-023` | La memoria vive en el repo del proyecto, y no se mezcla con otro |
+| `F-024` | Corregir conserva lo anterior; **dar de baja no borra** |
+
+**473 pruebas en verde**, 32 validadores sin fallas.
+
+Dos cosas medidas que fijaron el diseño:
+
+- **21 documentos** de este repositorio traen una aprobación escrita a mano, y **ninguna dice sobre qué texto se aprobó**. No se migran: cada una diría que se aprobó algo que hoy no se puede reconstruir.
+- **Aprobaciones es el segundo módulo con entidad propia.** Los demás calculan al pedir porque su respuesta está en el texto. Esta no: **el texto no sabe quién lo aprobó**.
+
+**Lo que falta es la documentación:** llevo la especificación de Aprobaciones, la épica `EP-017` y su primera historia. Quedan unos treinta documentos entre las dos épicas nuevas, sus historias y las seis fases.
+
+Sigo con eso salvo que prefiera otra cosa.
+
+### 185 · Usuario — 2026-09-01 18:51:00
+> 00 id9
+
+**Agente** — 2026-09-01 18:51:06
+<!-- agente: 2aad391f-de7d-4123-8450-2341b54a46db -->
+
+**El código de la versión 4 está en verde:** las seis funcionalidades, tres módulos, **473 pruebas** y 32 validadores sin fallas.
+
+| | Qué quedó |
+|---|---|
+| `F-015` a `F-017` | La aprobación guarda **la huella del texto**; editar la caduca; la anterior no se borra |
+| `F-019` | La auditoría se busca por proyecto, fecha y acción |
+| `F-023` y `F-024` | La memoria no se mezcla entre proyectos; **dar de baja no borra** |
+
+Medido: **21 documentos** traen aprobación escrita a mano y ninguna dice sobre qué texto.
+
+Falta la documentación: unos treinta documentos. Sigo con eso.
+
+### 186 · Usuario — 2026-09-01 18:51:37
+> s
+
+### 187 · Usuario — 2026-09-01 18:51:45
+> si
+
+**Agente** — 2026-09-01 19:43:07
+<!-- agente: 77cd4baa-514b-4eee-a413-245fa5517b3b -->
+
+Heredoc citado funciona. Sigo con los dos que cierran la fase.
+
+Los avisos de EP-018 desaparecieron: eran rutas que el validador **proponía** para una funcionalidad sin construir. Corro las dos baterías.
+
+**Versión 4 cerrada.** Código y documentación, las dos baterías en verde.
+
+| Qué | Dónde |
+|---|---|
+| `EP-017` · aprobaciones que dicen sobre qué texto | 3 historias, fases M·N·O |
+| `EP-018` · la memoria se ve y se corrige | 2 historias, fases P·Q |
+| `EP-009` · completa por fin: registrar **y** consultar | HU-002, fase R |
+
+**473 pruebas de la plataforma · 733 del estándar · 32 validadores, cero fallas.**
+
+Tres hallazgos, ya escritos como señales y en el resumen de la sesión:
+
+- **`S-111`** — 21 aprobaciones escritas a mano en este repo, y **ninguna dice sobre qué texto se dio**. El daño ya había ocurrido: tres documentos aprobados que el cambio del día siguiente dejó sin valor. No se migran: sería inventar aprobaciones.
+- **`S-112`** — Aprobaciones guarda en la base y Memoria no, y la diferencia no es de estilo. La pregunta para decidir es **«¿el texto sabe la respuesta?»**.
+- **`S-113`** — el rango de fechas de la auditoría **cortaba el último día en la medianoche**. Devolvía resultados y parecían completos. Salió probando con un registro de las once de la noche, no leyendo.
+
+Y un aviso que se apagó solo: el validador venía proponiendo rutas para `EP-018` con nombres que nunca existieron. Eran su propuesta para una funcionalidad sin construir; al construirla, desapareció.
+
+Sin pendientes nuevos. Siguen los declarados: **26 espacios por llenar, 7 documentos con credenciales de ejemplo, 35 entradas viejas del registro que el lector aún no reconoce, y ninguna pantalla en los nueve módulos de esta etapa.**
+
+---
+
+Hay 61 archivos nuevos y 9 modificados sin guardar — todo esto es la versión 4. **¿Lo commiteo?**
+
+Después queda la versión 5: `F-004`, `F-011`, `F-012`, `F-013`, `F-029`, `F-030`, `F-032` — configurar qué rige en cada proyecto, y operar el ciclo desde la plataforma.
+
+### 188 · Usuario — 2026-09-01 20:23:54
+> <ide_opened_file>The user opened the file c:\Ing. Jose\ia\agente\documentacion\epicas\EP-001-cuerpo-de-reglas-heredable\HU-016-el-capitulo-03-datos-y-persistencia\A-EP-001-HU-016-retrodocumentar-el-capitulo-03\estado-fase.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> 00 id9
+
+**Agente** — 2026-09-01 20:24:01
+<!-- agente: b9f877ef-b681-473f-a77f-5cfce96b9adc -->
+
+**Versión 4 cerrada.** `EP-017` aprobaciones, `EP-018` memoria, `EP-009` completa. 473 + 733 pruebas, 32 validadores, cero fallas.
+
+Tres señales nuevas:
+
+- **`S-111`** — 21 aprobaciones a mano, ninguna dice sobre qué texto. No se migran.
+- **`S-112`** — antes de crear una tabla, preguntarle al texto si ya sabe la respuesta.
+- **`S-113`** — el rango de la auditoría cortaba el último día en la medianoche. Devolvía resultados y parecían completos.
+
+70 archivos sin guardar, todos de la versión 4. **¿Lo commiteo?**
+
+### 189 · Usuario — 2026-09-01 20:24:11
+> si

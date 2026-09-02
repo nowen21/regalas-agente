@@ -1145,3 +1145,36 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier aviso derivado, y cualquier lector de documentos con historia.
 - **Rel:** S-108 (un rojo falso enseña a ignorar la puerta), S-105 (un documento que habla de algo parece contenerlo).
+
+## S-111 · Una firma que no dice sobre qué texto se dio no caduca nunca  ·  aprendizaje · activa
+- **What:** este repositorio tiene **21 aprobaciones escritas a mano** dentro de los documentos, y **ninguna dice sobre qué texto se dio**. Se aprobaron tres documentos y al día siguiente el cambio de producto los dejó sin valor; nada avisó, porque no había con qué avisar.
+- **Why:** una marca de aprobación parece completa cuando dice **quién** y **cuándo**. Le falta el tercer dato, que es el único que la vuelve verificable: **qué**. Sin la huella del texto, la marca sigue diciendo «aprobado» para siempre, aunque debajo el documento se haya reescrito entero.
+- **Also:** es el segundo módulo de la plataforma que guarda en la base en vez de calcular sobre el texto, y por la misma razón que el primero (`medicion`): **el texto no sabe quién lo aprobó**. `DA-01` manda calcular lo que el texto contiene; un hecho que ocurrió fuera del texto no se puede calcular desde él.
+- **And:** el caso que se olvida al implementarlo no es el documento editado, sino el **borrado**. Nadie edita lo que ya no está, así que una aprobación sobre un archivo que desapareció se quedaría en verde. También caduca.
+- **Where:** `plataforma/nucleo/aprobaciones/` · `documentacion/aprobaciones/spec.md` · fases `M`, `N` y `O` de [EP-017](epicas/EP-017-una-aprobacion-dice-sobre-que-texto/epica.md).
+- **Learned:** **a una marca de aprobación hay que preguntarle sobre qué responde**, no si está. Y cuando un veredicto admite «hubo un juicio y ya no vale», eso necesita su propio nombre: son tres estados —aprobado, caducada, sin aprobación— y meter el del medio en cualquiera de los otros dos miente.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier registro de autorización sobre algo que puede cambiar después.
+- **Rel:** S-107 (cuando un estado admite «no se sabe» hay que darle su nombre), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).
+
+## S-112 · Cuando el hecho es el texto, guardar una copia en la base crea dos verdades  ·  decisión · activa
+- **What:** el módulo Memoria **no tiene ninguna entidad en la base**, y el de Aprobaciones sí. Los dos se construyeron el mismo día y la diferencia no es de estilo: es de dónde ocurrió el hecho.
+- **Why:** `DA-01` manda que el texto sea la verdad y que los módulos calculen al pedir. La pregunta útil para decidir no es «¿esto es importante?» sino **«¿el texto sabe la respuesta?»**. Un recuerdo dado de baja se reconoce por su marca y uno corregido por lo que quedó escrito debajo: **el texto sabe**. Quién aprobó un documento no está en ninguna parte del documento: **el texto no sabe**, y por eso ahí sí se guarda.
+- **Also:** guardar de más no es neutral. Una copia en la base y un archivo que cambia por fuera son dos verdades, y la que gana es la peor: la que nadie está mirando.
+- **And:** en un módulo cuyo único trabajo es no perder nada, la prueba que hay que escribir primero es la de que **guardar no pisa**. Es el fallo irreparable, y es el que no salta solo.
+- **Where:** `plataforma/nucleo/memoria/core.py` (sin entidad) · `plataforma/nucleo/aprobaciones/models.py` (con entidad) · [EP-018](epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/epica.md) y [EP-017](epicas/EP-017-una-aprobacion-dice-sobre-que-texto/epica.md).
+- **Learned:** **antes de crear una tabla, preguntarle al texto si ya sabe la respuesta.** Y lo que deja de valer se marca, no se borra — igual que las reglas derogadas de `20·M11`, y por la misma razón: sigue siendo la respuesta a por qué algo se hizo como se hizo.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier módulo que responda sobre documentos.
+- **Rel:** S-111 (una firma que no dice sobre qué texto se dio no caduca nunca), S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir).
+
+## S-113 · Un rango sobre fechas guardadas como texto corta el último día en la medianoche  ·  error-resuelto · activa
+- **What:** la búsqueda de la auditoría filtra por rango de fechas. La fecha se guarda como texto con la hora pegada, así que comparar contra el `hasta` tal cual **deja por fuera todo lo registrado ese día después de la medianoche**: el último día entero, que es justo lo que uno busca.
+- **Why:** el borde no se ve leyendo el código, porque leyendo parece correcto — el `hasta` está ahí, el filtro compara. Se ve **probando con un registro de las once de la noche**. Un rango que pierde el día más reciente es peor que uno que falla: devuelve resultados, y parecen completos.
+- **Also:** el mismo día apareció el pariente de este problema en la misma función. Un resultado que se recorta **sin avisar** se lee como «eso es todo lo que hay». La respuesta trae ahora `se_recorto`, y los tipos de acción disponibles se sacan **de lo registrado**, no de una lista fija en el código que envejecería sin avisar.
+- **And:** el criterio pedía «menos de un segundo con un año de registros». Se midió con lo que hay y **el número que salió es el que quedó escrito**, con la advertencia de que hay que volver a medirlo cuando la auditoría real llegue a ese volumen. Un tiempo supuesto y un tiempo medido se escriben igual; solo uno de los dos sirve.
+- **Where:** `plataforma/nucleo/auditoria/busqueda.py` · fase `R` de [EP-009](epicas/EP-009-todo-lo-que-se-hace-queda-registrado/epica.md).
+- **Learned:** **a un rango hay que probarlo por los bordes, con la hora más tardía del último día.** Y a toda respuesta acortada hay que preguntarle si dice que la acortaron.
+- **When/Who:** 2026-09-01 · agente.
+- **Scope:** cualquier consulta por rango sobre fechas guardadas como texto, y cualquier respuesta con tope.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-108 (un rojo falso enseña a ignorar la puerta).

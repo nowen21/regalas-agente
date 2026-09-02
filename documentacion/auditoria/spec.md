@@ -95,7 +95,7 @@ No aplica. Si algún día la plataforma guarda datos de clientes, esta sección 
 | Funcionalidad | Requisito | Fase que lo construye |
 |---|---|---|
 | F-018 | RF-18 | `D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto` |
-| F-019 | RF-19 | Versión 4 |
+| F-019 | RF-19 | [R-EP-009-HU-002-la-auditoria-se-puede-preguntar](../epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-002-buscar-en-la-auditoria/R-EP-009-HU-002-la-auditoria-se-puede-preguntar/estado-fase.md), cerrada el 2026-09-01 |
 
 ## 14. Cruces con otros módulos
 

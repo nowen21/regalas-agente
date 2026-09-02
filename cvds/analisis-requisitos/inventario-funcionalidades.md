@@ -20,41 +20,41 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 
 | ID | Funcionalidad | Clase | Parte del sistema | Prioridad | Estado | Verificado |
 |---|---|---|---|---|---|---|
-| F-001 | Conectar un proyecto | Obligatoria | Proyectos | Alta | Definida | Sin verificar |
-| F-002 | Avisar cuando la ruta de un proyecto se pierde | Obligatoria | Proyectos | Alta | Definida | Sin verificar |
-| F-003 | Ver el estado de un proyecto sin entrar a él | Obligatoria | Proyectos | Alta | Definida | Sin verificar |
+| F-001 | Conectar un proyecto | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
+| F-002 | Avisar cuando la ruta de un proyecto se pierde | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
+| F-003 | Ver el estado de un proyecto sin entrar a él | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
 | F-004 | Configurar qué rige en cada proyecto | Complementaria | Proyectos | Media | Definida | Sin verificar |
-| F-005 | Escribir, cambiar y derogar reglas | Obligatoria | Reglas | Alta | Definida | Sin verificar |
-| F-006 | Asignar el identificador sin reutilizar ninguno | Obligatoria | Reglas | Alta | Definida | Sin verificar |
-| F-007 | Aplicar el checklist a una regla y guardar su sello | Complementaria | Reglas | Media | Definida | Sin verificar |
-| F-008 | Publicar una versión del cuerpo de reglas | Obligatoria | Reglas | Alta | Definida | Sin verificar |
-| F-009 | Entregarle las reglas al agente al abrir sesión | Obligatoria | Reglas | Alta | Definida | Sin verificar |
-| F-010 | Avisar a un proyecto que quedó atrás | Complementaria | Reglas | Media | Definida | Sin verificar |
+| F-005 | Escribir, cambiar y derogar reglas | Obligatoria | Reglas | Alta | Construida | Sin verificar |
+| F-006 | Asignar el identificador sin reutilizar ninguno | Obligatoria | Reglas | Alta | Construida | Sin verificar |
+| F-007 | Aplicar el checklist a una regla y guardar su sello | Complementaria | Reglas | Media | Construida | Sin verificar |
+| F-008 | Publicar una versión del cuerpo de reglas | Obligatoria | Reglas | Alta | Construida | Sin verificar |
+| F-009 | Entregarle las reglas al agente al abrir sesión | Obligatoria | Reglas | Alta | Construida | Sin verificar |
+| F-010 | Avisar a un proyecto que quedó atrás | Complementaria | Reglas | Media | Construida | Sin verificar |
 | F-011 | Crear épicas, historias y fases con su molde | Obligatoria | Ciclo de vida | Alta | Definida | Sin verificar |
 | F-012 | Ver en qué estación va cada fase | Obligatoria | Ciclo de vida | Alta | Definida | Sin verificar |
 | F-013 | Impedir avanzar sin la puerta cumplida | Obligatoria | Ciclo de vida | Alta | Definida | Sin verificar |
-| F-014 | Llenar los documentos del ciclo desde la plataforma | Obligatoria | Ciclo de vida | Alta | Definida | Sin verificar |
-| F-015 | Registrar una aprobación con su firma | Obligatoria | Aprobaciones | Alta | Definida | Sin verificar |
-| F-016 | Ver qué está aprobado y qué está en borrador | Obligatoria | Aprobaciones | Alta | Definida | Sin verificar |
-| F-017 | Caducar la aprobación cuando el texto cambia | Obligatoria | Aprobaciones | Alta | Definida | Sin verificar |
-| F-018 | Registrar cada acción que se hace | Obligatoria | Auditoría | Alta | Definida | Sin verificar |
-| F-019 | Consultar lo registrado | Complementaria | Auditoría | Media | Definida | Sin verificar |
-| F-020 | Comprobar sola lo que las reglas exigen | Obligatoria | Comprobaciones | Alta | Definida | Sin verificar |
-| F-021 | Declarar sin verificar lo que no tiene prueba | Obligatoria | Comprobaciones | Alta | Definida | Sin verificar |
-| F-022 | Comprobar que lo nuevo no rompió lo anterior | Obligatoria | Comprobaciones | Alta | Definida | Sin verificar |
-| F-023 | Guardar lo aprendido y devolverlo después | Obligatoria | Memoria | Alta | Definida | Sin verificar |
-| F-024 | Consultar y corregir lo guardado | Complementaria | Memoria | Media | Definida | Sin verificar |
-| F-025 | Armar el expediente de un proyecto | Obligatoria | Expediente | Alta | Definida | Sin verificar |
-| F-026 | Generar el entregable de ofimática | Obligatoria | Expediente | Alta | Definida | Sin verificar |
-| F-027 | Traer un proyecto que ya existe | Obligatoria | Importación | Alta | Definida | Sin verificar |
-| F-028 | Reportar qué de lo traído no sigue ningún molde | Complementaria | Importación | Media | Definida | Sin verificar |
+| F-014 | Llenar los documentos del ciclo desde la plataforma | Obligatoria | Ciclo de vida | Alta | Construida | Sin verificar |
+| F-015 | Registrar una aprobación con su firma | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
+| F-016 | Ver qué está aprobado y qué está en borrador | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
+| F-017 | Caducar la aprobación cuando el texto cambia | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
+| F-018 | Registrar cada acción que se hace | Obligatoria | Auditoría | Alta | Construida | Sin verificar |
+| F-019 | Consultar lo registrado | Complementaria | Auditoría | Media | Construida | Sin verificar |
+| F-020 | Comprobar sola lo que las reglas exigen | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
+| F-021 | Declarar sin verificar lo que no tiene prueba | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
+| F-022 | Comprobar que lo nuevo no rompió lo anterior | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
+| F-023 | Guardar lo aprendido y devolverlo después | Obligatoria | Memoria | Alta | Construida | Sin verificar |
+| F-024 | Consultar y corregir lo guardado | Complementaria | Memoria | Media | Construida | Sin verificar |
+| F-025 | Armar el expediente de un proyecto | Obligatoria | Expediente | Alta | Construida | Sin verificar |
+| F-026 | Generar el entregable de ofimática | Obligatoria | Expediente | Alta | Construida | Sin verificar |
+| F-027 | Traer un proyecto que ya existe | Obligatoria | Importación | Alta | Construida | Sin verificar |
+| F-028 | Reportar qué de lo traído no sigue ningún molde | Complementaria | Importación | Media | Construida | Sin verificar |
 | F-029 | Avisar lo que se desvía | Complementaria | Avisos | Media | Definida | Sin verificar |
 | F-030 | Reportar cómo va cada proyecto | Complementaria | Avisos | Media | Definida | Sin verificar |
-| F-031 | Tapar toda credencial antes de escribirla | Obligatoria | Seguridad | Alta | Definida | Sin verificar |
+| F-031 | Tapar toda credencial antes de escribirla | Obligatoria | Seguridad | Alta | Construida | Sin verificar |
 | F-032 | Medir el tiempo que se gasta revisando | Futura | Medición | Baja | Definida | Sin verificar |
-| F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Definida | Sin verificar |
-| F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Definida | Sin verificar |
-| F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Definida | Sin verificar |
+| F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Construida | Sin verificar |
+| F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Construida | Sin verificar |
+| F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
 
 **Cuenta:** 23 obligatorias, 11 complementarias y 1 futura, de 35. Y aparte: 0 implementadas, 0 verificadas.
 
@@ -115,7 +115,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` un proyecto queda registrado y aparece en la lista · `CA-2` una ruta que no existe no se registra, y se dice por qué · `CA-3` registrar dos veces la misma ruta avisa cuál proyecto ya la tiene |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Un proyecto sin control de versiones se puede registrar, pero se advierte: su código no tiene respaldo |
 
@@ -135,7 +135,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una ruta que dejó de existir queda avisada · `CA-2` la documentación de ese proyecto se sigue viendo · `CA-3` volver a apuntar la ruta quita el aviso |
 | **Qué necesita construirse** | Lógica y pantalla |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Perder la ruta no puede borrar nada: la documentación vive en la plataforma, no allá |
 
@@ -155,7 +155,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se ve el estado sin abrir la carpeta del proyecto · `CA-2` un proyecto sin trabajo abierto lo dice, y no muestra una pantalla vacía · `CA-3` lo que está sin aprobar se distingue de lo aprobado |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Mostrar de más cansa: primero lo que decide algo, el detalle después |
 
@@ -195,7 +195,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una regla nueva queda guardada con su identificador · `CA-2` derogar deja la regla legible y marcada · `CA-3` una regla que contradice a otra vigente muestra el choque antes de guardar |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Escribir la regla es lo fácil; lo que cuesta es que no repita ni contradiga a otra |
 
@@ -215,7 +215,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una regla nueva recibe el siguiente número libre · `CA-2` el número de una derogada no se reasigna · `CA-3` no se puede guardar una regla con un identificador ya usado |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es de las pocas cosas que se pueden comprobar solas, y conviene que lo haga |
 
@@ -235,7 +235,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una regla queda con su sello y su fecha · `CA-2` editar la regla anula el sello y lo dice · `CA-3` una fila que no aplica queda escrita con su motivo |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Buena parte de las filas pide criterio: la plataforma acompaña, no decide |
 
@@ -255,7 +255,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se publica con su número, su fecha y qué cambió · `CA-2` sin registro de qué cambió no se publica · `CA-3` si rompe algo que servía, no se publica hasta corregirlo |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Publicar es lo que vuelve real un cambio: antes de eso, nada rige |
 
@@ -275,7 +275,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` al abrir, el agente tiene las reglas sin pedirlas · `CA-2` entregarlas no demora la apertura más de dos segundos · `CA-3` si la plataforma no está disponible, se avisa y se trabaja leyendo la fuente |
 | **Qué necesita construirse** | Tarea que corre sola al abrir, y lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Que el agente las reciba no garantiza que las obedezca: eso lo cubre F-020 |
 
@@ -295,7 +295,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` con versión anterior, avisa y dice qué cambió · `CA-2` con la misma, no molesta · `CA-3` con un número que no existe, lo dice en vez de concluir que va adelantado |
 | **Qué necesita construirse** | Tarea que corre sola al abrir, y lógica |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Un aviso que aparece siempre se vuelve ruido y se ignora |
 
@@ -375,7 +375,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se escribe un documento sin salir de la plataforma · `CA-2` se ve cuántos espacios le faltan por llenar · `CA-3` lo guardado queda como texto legible sin la plataforma |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Si escribir ahí es más incómodo que en un editor, nadie lo va a usar |
 
@@ -395,7 +395,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` queda registrado quién aprobó, cuándo y sobre qué texto · `CA-2` la aprobación se puede consultar meses después · `CA-3` no se puede aprobar un documento que no existe |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es la pieza que hoy no existe, y de la que se sostiene todo el gobierno |
 
@@ -415,7 +415,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se distingue lo aprobado de lo que está en borrador · `CA-2` se ve desde cuándo · `CA-3` un documento sin aprobación aparece así, no vacío |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Dicho con palabras, no solo con color: quien no distingue colores tiene que poder saberlo |
 
@@ -435,7 +435,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` editar un documento aprobado le quita la aprobación · `CA-2` se ve qué cambió respecto de lo aprobado · `CA-3` la aprobación anterior no se borra: queda como historia |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Salió de un caso real: se aprobaron tres documentos y al día siguiente el cambio de producto los dejó sin valor |
 
@@ -455,7 +455,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` toda acción que cambia algo queda registrada · `CA-2` el registro dice quién, cuándo y sobre qué · `CA-3` lo registrado no se puede editar · `CA-4` lo que la sesión dejó escrito queda enlazado desde el registro · `CA-5` la conversación completa no entra |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Registrar cada mensaje pesa mucho, se llena de ruido y arrastra credenciales. La transcripción se guarda aparte, como hasta hoy, y la auditoría enlaza el resumen |
 
@@ -475,7 +475,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se filtra por proyecto, fecha y tipo de acción · `CA-2` sin coincidencias se dice que no hay · `CA-3` responde en menos de un segundo con un año de registros |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Sin esta, la auditoría existe pero no sirve |
 
@@ -495,7 +495,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` un documento que cumple pasa · `CA-2` uno que no cumple es rechazado con el archivo y la línea · `CA-3` apuntada a algo que no le corresponde, lo dice en vez de dar veredicto |
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Una comprobación que reprueba de más se apaga a la semana, y entonces no queda nada vigilando |
 
@@ -515,7 +515,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` con prueba y evidencia queda verificado · `CA-2` sin prueba queda «sin verificar» y no se puede cerrar · `CA-3` con prueba fallida queda «no cumple», con lo que falló |
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | «Sin verificar» tiene que ser una respuesta aceptable, o se falsean las pruebas para poder cerrar |
 
@@ -535,7 +535,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una versión que rompe algo no se publica · `CA-2` una que obliga a rehacer algo lo declara · `CA-3` una que no rompe nada pasa sin trabajo manual |
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Solo puede comprobar lo que tenga prueba: lo que nunca se probó no se sabe si se rompió |
 
@@ -555,7 +555,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` lo guardado en una sesión se recupera en la siguiente · `CA-2` lo de un proyecto no se mezcla con el de otro · `CA-3` si no hay nada guardado del tema, se dice en vez de inventar |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es la mitad del problema original: sin esto, cada sesión vuelve a empezar |
 
@@ -575,7 +575,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se busca por palabra y por proyecto · `CA-2` corregir deja constancia de qué decía antes · `CA-3` dar de baja no lo borra: lo deja fuera de lo que se le entrega al agente |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es un problema de confianza antes que de comodidad: hoy solo el agente ve lo que recuerda |
 
@@ -595,7 +595,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se arma el expediente completo de un proyecto · `CA-2` los documentos que faltan se listan, y no se inventan · `CA-3` los que tienen espacios sin llenar se marcan antes de entregar |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Qué recibe un cliente, y si eso incluye la auditoría y la memoria, es la duda 5 del análisis |
 
@@ -615,7 +615,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` un expediente completo se genera con todas sus secciones · `CA-2` uno con espacios sin llenar avisa antes de generar · `CA-3` generar dos veces da el mismo resultado |
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Las listas dentro de una celda tienen que salir como listas, no con la etiqueta a la vista |
 
@@ -635,7 +635,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` los documentos que siguen un molde conocido quedan adentro, con su tipo · `CA-2` el proyecto de origen queda intacto · `CA-3` traer dos veces no duplica |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es lo que hace usable la plataforma desde el primer día: sin esto arranca vacía |
 
@@ -655,7 +655,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` lo no reconocido queda listado con su ruta · `CA-2` nada se transforma sin que el usuario lo diga · `CA-3` si todo se reconoció, se dice |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Lo que no se reconoce suele ser lo más valioso: las notas que nadie escribió con molde |
 
@@ -715,7 +715,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` una clave entre comillas queda tapada · `CA-2` una tecleada sin comillas también · `CA-3` una palabra que solo parece clave queda intacta |
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | Es el único daño de esta lista que no se puede deshacer |
 
@@ -755,7 +755,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` lo que una sesión conversó se encuentra buscando una palabra suya · `CA-2` el texto sigue siendo la fuente, y el índice se puede borrar y rehacer · `CA-3` ninguna credencial aparece en lo indexado |
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | **No es la auditoría.** La auditoría guarda qué se hizo; esto guarda qué se conversó, y `RN-4` de ese módulo sigue diciendo que la conversación no entra allá |
 
@@ -775,7 +775,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` se pide un período y salen las correcciones más repetidas · `CA-2` cada una dice cuántas veces y en qué sesiones · `CA-3` dos formas distintas de decir lo mismo cuentan como una · `CA-4` si no hay nada repetido, se dice, en vez de rellenar |
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | **`CA-3` es lo difícil.** Agrupar frases parecidas no es contar palabras iguales, y hacerlo sin depender de nada instalado aparte es la parte que puede no salir. Le da además a `F-032` la fuente que le faltaba: hoy dice que recibe cuántas correcciones se repiten, y nada las cuenta |
 
@@ -795,7 +795,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Terminada cuando** | `CA-1` desconectar saca el proyecto de la lista y **no borra su documentación** · `CA-2` renombrar cambia el nombre y **no mueve su carpeta** · `CA-3` corregir la versión declarada la vuelve a comprobar contra las publicadas · `CA-4` las tres piden confirmación y quedan en la auditoría |
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
-| **Estado** | Definida |
+| **Estado** | Construida |
 | **Verificado** | Sin verificar |
 | **Lo que hay que tener en cuenta** | **Ya estaba decidida sin estar pedida.** La especificación del módulo dice desde el 2026-08-25 cómo se comporta desconectar, en su §7 y su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. Desconectar **no borra**, y esa decisión ya está tomada |
 

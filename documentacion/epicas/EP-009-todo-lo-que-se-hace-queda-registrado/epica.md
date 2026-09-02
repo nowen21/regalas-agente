@@ -9,7 +9,7 @@
 | **Módulo** | Auditoría |
 | **Versión del producto** | 1, según [cvds/implementacion/README.md](../../../cvds/implementacion/README.md) |
 | **Funcionalidades que cubre** | `F-018`, `F-019` |
-| **Estado** | Abierta |
+| **Estado** | Terminada el 2026-09-01: sus dos historias cumplen |
 | **Fecha de apertura** | 2026-08-25 |
 
 ---
@@ -74,7 +74,8 @@ Que cualquier cambio se pueda rastrear hasta quién lo hizo, cuándo, y con qué
 
 | HU | Título | Funcionalidad | Estado |
 |---|---|---|---|
-| [HU-001](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que se hace | `F-018` | Aprobada |
+| [HU-001](HU-001-registrar-cada-accion/HU-001-registrar-cada-accion.md) | Registrar cada acción que se hace | `F-018` | **Terminada el 2026-09-01** |
+| [HU-002](HU-002-buscar-en-la-auditoria/HU-002-buscar-en-la-auditoria.md) | Buscar en la auditoría | `F-019` | **Terminada el 2026-09-01** |
 
 ## 10. Consideraciones técnicas
 

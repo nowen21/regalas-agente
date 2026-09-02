@@ -154,6 +154,51 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+### H-10 · Veintiuna aprobaciones escritas a mano, y ninguna dice sobre qué texto se dio
+
+- **Qué pasó:** este repositorio tiene **21 documentos con una marca de aprobación escrita a mano**, del estilo `| Usuario | Ing. José | ☑ |`. Ninguna dice sobre qué texto se aprobó. Y el daño no es teórico: la ficha de `F-017` cuenta que **se aprobaron tres documentos y al día siguiente el cambio de producto los dejó sin valor**. Nada avisó.
+- **Por qué importa:** una marca parece completa cuando dice **quién** y **cuándo**. Le falta el tercer dato, que es el único que la vuelve verificable: **qué**. Sin la huella del texto, la marca dice «aprobado» para siempre, aunque debajo el documento se haya reescrito entero.
+- **Qué lo soluciona:** ya hecho. `EP-017` entera, con sus tres historias: la aprobación guarda la huella, editar la caduca, y la anterior no se borra. Un documento que **desaparece** también caduca — ese es el caso que se olvida, porque nadie edita lo que borró.
+- **Qué se decidió:** **las 21 marcas a mano no se migran.** Cada una diría que se aprobó un texto que hoy no se puede reconstruir, y sería inventar aprobaciones. Se quedan como están, declaradas.
+- **Estado:** resuelto acá
+- **Responde a:** EP-017 · HU-001 a HU-003
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-111` · `plataforma/nucleo/aprobaciones/` · `documentacion/aprobaciones/spec.md`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-11 · Dos módulos del mismo día, uno con tabla y otro sin ella, y la diferencia no es de estilo
+
+- **Qué pasó:** Aprobaciones y Memoria se construyeron el mismo día. El primero **guarda en la base**; el segundo **no tiene ninguna entidad** y trabaja sobre los archivos que ya existen en `historico-chat/memory/`.
+- **Por qué importa:** `DA-01` manda que el texto sea la verdad, y la pregunta útil para decidir no es «¿esto es importante?» sino **«¿el texto sabe la respuesta?»**. Un recuerdo dado de baja se reconoce por su marca y uno corregido por lo que quedó escrito debajo: **el texto sabe**. Quién aprobó un documento no está en ninguna parte del documento: **el texto no sabe**. Guardar de más no es neutral — una copia en la base y un archivo que cambia por fuera son dos verdades, y gana la que nadie está mirando.
+- **Qué lo soluciona:** ya hecho, y quedó escrito en las dos especificaciones para que la próxima vez no se decida por costumbre.
+- **Qué se decidió:** en un módulo cuyo único trabajo es no perder nada, la primera prueba que se escribe es la de que **guardar no pisa**. Es el fallo irreparable, y es el que no salta solo.
+- **Estado:** resuelto acá
+- **Responde a:** EP-018 · HU-001 y HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-112` · `plataforma/nucleo/memoria/core.py` · `documentacion/memoria/spec.md`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-12 · El rango de fechas de la auditoría cortaba el último día en la medianoche
+
+- **Qué pasó:** la búsqueda de la auditoría filtra por rango. La fecha se guarda como texto con la hora pegada, así que comparar contra el `hasta` tal cual **deja por fuera todo lo registrado ese día después de la medianoche**: el último día entero.
+- **Por qué importa:** un rango que pierde el día más reciente **es peor que uno que falla**, porque devuelve resultados y parecen completos. Y el último día es justo el que uno está buscando. El borde no se ve leyendo el código —leyendo parece correcto—; se ve probando con un registro de las once de la noche.
+- **Qué lo soluciona:** ya arreglado, con prueba propia. En la misma función quedaron dos hermanos suyos: el resultado que se recorta **avisa que se recortó**, y los tipos de acción disponibles salen **de lo registrado**, no de una lista fija que envejecería sin avisar.
+- **Qué se decidió:** el criterio pedía «menos de un segundo con un año de registros». **Se midió con lo que hay y el número que salió es el que quedó escrito**, con la advertencia de volver a medirlo cuando la auditoría real llegue a ese volumen. Un tiempo supuesto y uno medido se escriben igual; solo uno sirve.
+- **Estado:** resuelto acá
+- **Responde a:** EP-009 · HU-002 · CA-01 y CA-03
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-113` · `plataforma/nucleo/auditoria/busqueda.py`
+- **Nace en:** 2026-09-01 · el orden de las versiones
+- **Cerrado en:** 2026-09-01 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -163,7 +208,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ falta el commit de las cuatro últimas de Reglas |
+| Lo que se hizo está aprobado y guardado | ☐ falta el commit de las versiones 3 y 4 |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -173,4 +218,6 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 
 **Y las reglas cerraron enteras:** `EP-016` nació con sus seis funcionalidades y las seis quedaron construidas el mismo día. **Con ellas cierra la versión 3.**
 
-**Lo que sigue no es de esta sesión:** las versiones 4 y 5, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y la versión 4 cerró entera:** `EP-017` con las aprobaciones que dicen sobre qué texto, `EP-018` con la memoria que se ve y se corrige, y `EP-009` completa por fin — registrar y consultar, las dos mitades. **Seis funcionalidades, tres épicas, tres hallazgos.**
+
+**Lo que sigue no es de esta sesión:** la versión 5, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
