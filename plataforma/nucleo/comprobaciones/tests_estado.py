@@ -170,3 +170,67 @@ class CP005SobreLoReal(TestCase):
         self.assertEqual(cuenta[estado.VERIFICADO], 2)
         self.assertEqual(cuenta[estado.SIN_VERIFICAR], 1)
         self.assertEqual(cuenta[estado.NO_CUMPLE], 0)
+
+
+class CP007LaFilaSeLeeEnSusFormas(Base):
+    """Lo que salió al preguntarle al módulo por las once especificaciones.
+
+    **Cuatro funcionalidades construidas y probadas el mismo día salían como si
+    nadie las hubiera construido.** El lector exigía la columna del requisito y
+    el identificador sin comillas, y dos de las once especificaciones no lo
+    traían así. El módulo lo decía como un hecho del proyecto —«ninguna fase la
+    construye»— cuando lo que pasaba era que no supo leer.
+    """
+
+    def test_la_fila_sin_la_columna_del_requisito_tambien_se_lee(self):
+        self.escribir("documentacion/uno/spec.md", u"""# Especificación
+
+## 13. Trazabilidad
+
+| Funcionalidad | Fase | Estado |
+|---|---|---|
+| F-001 | `A-EP-001-HU-001-la-primera` | Cerrada |
+""")
+        self.fase("A-EP-001-HU-001-la-primera")
+        self.assertEqual(estado.VERIFICADO, self.de("F-001")["estado"])
+
+    def test_el_identificador_entre_comillas_tambien_se_lee(self):
+        self.escribir("documentacion/uno/spec.md", u"""# Especificación
+
+## 13. Trazabilidad
+
+| Funcionalidad | Fase | Estado |
+|---|---|---|
+| `F-001` | `A-EP-001-HU-001-la-primera` | Cerrada |
+""")
+        self.fase("A-EP-001-HU-001-la-primera")
+        self.assertEqual(estado.VERIFICADO, self.de("F-001")["estado"])
+
+    def test_una_fila_que_no_dice_quien_la_construye_no_cuenta(self):
+        """Una fila cualquiera que empiece por un identificador no es traza."""
+        self.escribir("documentacion/uno/spec.md", u"""# Especificación
+
+## 12. Decisiones
+
+| Funcionalidad | Por qué |
+|---|---|
+| F-001 | porque sí |
+""")
+        self.assertEqual(estado.SIN_VERIFICAR, self.de("F-001")["estado"])
+
+    def test_no_supe_leer_se_dice_distinto_de_no_existe(self):
+        """**El defecto que se leía como un hecho del proyecto.**"""
+        self.escribir("documentacion/uno/spec.md", u"""# Especificación
+
+## 12. Decisiones
+
+| Funcionalidad | Por qué |
+|---|---|
+| F-001 | porque sí |
+""")
+        nombrada = self.de("F-001")
+        sin_nombrar = self.de("F-002")
+        self.assertEqual(estado.SIN_VERIFICAR, nombrada["estado"])
+        self.assertIn("no se pudo leer", nombrada["porque"])
+        self.assertIn("ninguna fase la construye", sin_nombrar["porque"])
+        self.assertNotEqual(nombrada["porque"], sin_nombrar["porque"])

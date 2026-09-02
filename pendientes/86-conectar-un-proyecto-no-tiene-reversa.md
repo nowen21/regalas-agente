@@ -2,11 +2,11 @@
 
 > **Este pendiente es del producto, no del cuerpo de reglas.** Entra por acá porque es el camino que la etapa de análisis dejó escrito en su sección 11: un cambio a lo ya acordado se pide como pendiente, el agente dice a qué le pega, y el usuario aprueba.
 
-**Estado:** abierto, anotado el 2026-08-25.
+**Estado:** **hecho** el 2026-09-02. Lo cerró `F-035`, construida el 2026-08-31: desconectar, reconectar, renombrar, corregir la ruta y corregir la versión declarada. Las cinco cosas que este pendiente pedía.
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-008 · HU-004](../documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), cerrada el 2026-08-31 |
 | **De dónde sale** | El usuario lo vio al mirar la primera pantalla, el 2026-08-25: *"pero eso no tiene administración?"* |
 | **Proyecto de origen** | Cimiento, como producto |
 

@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ Un defecto crítico hallado leyendo la lista nombre por nombre |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e6afdf0` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **El número no delataba al que sobraba.** 52 y 49 se parecen; `02·F0` en la lista de lo que se puede apagar, no.

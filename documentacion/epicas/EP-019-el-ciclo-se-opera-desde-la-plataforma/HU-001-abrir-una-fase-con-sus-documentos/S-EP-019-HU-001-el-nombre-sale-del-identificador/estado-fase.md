@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑  |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e6afdf0` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **La fase se define por aquello a lo que se niega:** sin historia no se abre, y lo que ya existe no se toca.

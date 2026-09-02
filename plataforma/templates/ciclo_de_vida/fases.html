@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block titulo %}Fases de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block cuerpo %}
+
+<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
+<h1>En qué va cada fase</h1>
+
+{% if cuenta.cuantas %}
+  <p>{{ cuenta.cuantas }} fase{{ cuenta.cuantas|pluralize:"s" }} ·
+     {{ cuenta.terminadas }} con las trece estaciones pasadas.</p>
+
+  {% if cuenta.de_otro_modelo %}
+    <p class="aviso"><strong>{{ cuenta.de_otro_modelo }} usan una tabla que no es
+    la de {{ trece }} estaciones.</strong> Son fases viejas: no se reescriben, y su
+    estación no se compara con la de las demás.</p>
+  {% endif %}
+  {% if cuenta.con_estaciones_sin_marcar %}
+    <p class="aviso"><strong>{{ cuenta.con_estaciones_sin_marcar }} tienen alguna
+    estación sin marcar.</strong> El documento cuenta qué pasó con ella en vez de
+    marcarla, y eso no es lo mismo que estar pendiente.</p>
+  {% endif %}
+  {% if cuenta.sin_coincidir %}
+    <p class="aviso"><strong>{{ cuenta.sin_coincidir }} dicen ir en una estación
+    distinta de la que marca su tabla.</strong> Manda la tabla.</p>
+  {% endif %}
+
+  <p class="apagado">
+    {% if solo_abiertas %}
+      Se muestran solo las que no han pasado las trece.
+      <a href="?">Ver todas</a>.
+    {% else %}
+      Se muestran todas. <a href="?abiertas=si">Ver solo las abiertas</a>.
+    {% endif %}
+  </p>
+
+  <table>
+    <tr><th>Fase</th><th>Estación</th><th>Qué falta</th><th>Sin tocarse</th></tr>
+    {% for una in fases %}
+      <tr>
+        <td><code>{{ una.fase }}</code></td>
+        <td>
+          {% if una.actual == terminada %}
+            <span class="apagado">las trece pasadas</span>
+          {% else %}
+            {{ una.actual }} · {{ una.nombre }}
+          {% endif %}
+        </td>
+        <td>
+          {% if una.actual == terminada %}
+            —
+          {% elif una.como_quedo == "sin marcar" %}
+            <strong>no se marcó</strong> — el documento cuenta qué pasó con
+            «{{ una.puerta }}» en vez de marcarla
+          {% else %}
+            {{ una.puerta }}
+          {% endif %}
+          {% if not una.comparable %}
+            <br><span class="apagado">su tabla es de {{ una.modelo }} estaciones,
+            no de {{ trece }}: no se compara con lo que dice su frase</span>
+          {% elif not una.coincide %}
+            <br><span class="apagado">el documento dice ir en la
+            {{ una.declarada }}, y su tabla dice {{ una.actual }}</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if una.actual == terminada %}—
+          {% elif una.dias is None %}<span class="apagado">no lo dice</span>
+          {% else %}{{ una.dias }} día{{ una.dias|pluralize:"s" }}{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p class="vacio">Este proyecto no tiene ninguna fase con su
+  <code>estado-fase.md</code>. No es un error: puede que todavía no se haya
+  abierto ninguna.</p>
+{% endif %}
+
+{% endblock %}

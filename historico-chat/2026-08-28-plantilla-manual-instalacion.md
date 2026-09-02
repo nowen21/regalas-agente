@@ -4199,3 +4199,94 @@ Lo que queda declarado, sin arreglar: **ninguno de los once módulos tiene panta
 
 ### 192 · Usuario — 2026-09-02 09:13:16
 > suba a git
+
+**Agente** — 2026-09-02 09:15:40
+<!-- agente: 0825bb05-283f-4f6f-b6a8-b7ff91f5c9aa -->
+
+Subido: `d4bf878..e6afdf0`, 83 archivos.
+
+**Las cinco versiones del plan quedaron cerradas y en el remoto.** Once módulos, 35 de 43 funcionalidades construidas, 552 + 733 pruebas en verde.
+
+El pre-push dejó un aviso: hay commits posteriores a la última corrida de las pruebas del estándar. Las corrí antes de commitear —733 en verde— y desde entonces no se tocó nada de `validadores/`; es la marca de tiempo la que quedó atrás, no las pruebas.
+
+Lo que queda declarado, sin arreglar y sin fecha:
+
+- **Ninguno de los once módulos tiene pantalla.** Todo se opera por consola.
+- **35 funcionalidades construidas siguen sin verificar** — y ahora la propia plataforma las cuenta como deuda.
+- **33 fases tienen su frase y su tabla en desacuerdo.** Arreglarlas sería reescribir fases cerradas.
+- **La medición inicial no existe**, y no hay cómo reconstruirla.
+
+### 193 · Usuario — 2026-09-02 09:19:31
+> 00 id9
+
+**Agente** — 2026-09-02 09:19:44
+<!-- agente: fcb90c99-9285-43a9-907c-633e99249ae4 -->
+
+Subido: `d4bf878..e6afdf0`. **Las cinco versiones cerradas y en el remoto.** 35 de 43 funcionalidades, 552 + 733 pruebas verdes.
+
+Queda declarado: **ninguna pantalla en los once módulos**, 35 funcionalidades sin verificar, 33 fases con la frase y la tabla en desacuerdo, y la medición inicial que no existe.
+
+### 194 · Usuario — 2026-09-02 09:31:48
+> qué sigue?
+
+**Agente** — 2026-09-02 09:34:23
+<!-- agente: 10450a75-3e59-40af-a4e4-c5f873dbd4e2 -->
+
+Antes de responder, dos correcciones a lo que dije:
+
+**El inventario tiene 35 funcionalidades, no 43.** Están las 35 construidas.
+
+**Y no hay 35 sin verificar: hay 4.** La columna del inventario está vieja; el módulo Comprobaciones, preguntado, dice **31 verificadas, 0 que no cumplen, 4 sin verificar**.
+
+Las cuatro son `F-023`, `F-024`, `F-029` y `F-030` — y no es que no estén construidas. Es que el lector no las encuentra:
+
+```
+_FILA = ^\|\s*(F-\d+)\s*\|\s*RF-\d+\s*\|
+```
+
+Exige que la fila traiga la columna `RF-nn` y el identificador sin comillas. Las §13 de `memoria/spec.md` y `avisos/spec.md` —las dos que escribí hoy— no la traen. **Cuatro funcionalidades construidas y probadas hoy figuran como que nadie las construyó**, y el módulo lo dice como si fuera un hecho del proyecto, no como que no supo leer.
+
+Es el mismo patrón de `S-110` y `S-114` por quinta vez, con una diferencia que importa: las otras veces la divergencia venía de documentos viejos que no se tocan. **Esta la introduje hoy**, escribiendo dos tablas con otra forma.
+
+Lo que sigue, en orden:
+
+1. **Emparejar las dos tablas y enseñarle al lector a decir «no supe leer» en vez de «no existe».** Es media hora y cierra el hueco entre lo que la plataforma sabe y lo que reporta.
+2. **Las pantallas.** Once módulos, ninguna. Es lo único grande que falta del producto.
+3. **Cinco pendientes abiertos**, entre ellos 26 documentos con un carácter de control invisible que rompe tablas, y que conectar un proyecto no tiene reversa.
+
+Arranco por el 1, que es un defecto y está a mano. ¿O prefiere otro?
+
+### 195 · Usuario — 2026-09-02 09:36:04
+> haga los tres de una
+
+**Agente** — 2026-09-02 09:55:26
+<!-- agente: 0a8f9d93-a835-4087-8407-edf96fcf171e -->
+
+Punto 1 listo: de **36 avisos a 1**. Registro la señal.
+
+Los cinco pendientes no son cinco. Tres ya están marcados hechos, y los otros dos parece que los cerró la propia plataforma. Lo compruebo.
+
+Los dos están resueltos: las cinco operaciones del 86 existen, y el 85 ya cuenta —«estoy preguntando» se repitió en 8 sesiones—. Los cierro.
+
+Puntos 1 y 3 hechos. Antes del 2, miro qué hay de pantallas: el repositorio tiene una carpeta `interfaz/`.
+
+Corrección: no son once módulos sin pantalla. Son **trece módulos, dos con pantalla de verdad** — proyectos e importación. Miro el estilo que ya hay para seguirlo.
+
+Cinco pantallas, 571 pruebas verdes. Ahora la documentación — y hay cinco especificaciones que dicen «sin pantalla» y ya no es cierto.
+
+Los tres, hechos. **571 pruebas de la plataforma + 733 del estándar, 32 validadores, cero fallas.**
+
+**1 · El lector.** Exigía una forma de fila que dos de las once especificaciones no traían — las dos escritas ayer por mí. Cuatro funcionalidades construidas figuraban como que nadie las construyó, y el módulo lo decía como un hecho del proyecto. Ahora acepta las dos formas y tiene respuesta para «no supe leer», distinta de «no existe». La columna del inventario dejó de escribirse a mano: **de 36 avisos a 1.**
+
+**2 · Las pantallas.** Cinco nuevas, de solo mirar: tablero, fases, funcionalidades, aprobaciones y memoria. Lo que costó no fue mostrar: fue **el caso vacío**, que son cinco frases distintas. Un proyecto recién conectado ve las cinco vacías, y esa es su primera impresión. Cada una dice además **qué deja por fuera**. Cambiar algo sigue por consola: son cambios de estado y quieren su confirmación.
+
+**3 · Los pendientes.** No eran cinco. Tres estaban marcados hechos desde el 30 de agosto, y a los otros dos —uno **P0**— los había resuelto la plataforma el 31 sin que nadie los cerrara. Comprobado corriendo las órdenes: el `85` pedía contar qué se repite, y responde que «estoy preguntando» salió en 8 sesiones.
+
+Tres señales: `S-118` (lo que se escribe a mano al lado de lo que un programa deriva termina diciendo otra cosa), `S-119` (el caso vacío se diseña, no se hereda), `S-120` (un pendiente no se entera de que lo resolvieron).
+
+Queda declarado: **seis módulos sin pantalla** — Auditoría, Medición, Expediente, Reglas, Seguridad y Almacén.
+
+38 archivos sin guardar. **¿Commiteo y subo?**
+
+### 196 · Usuario — 2026-09-02 09:55:37
+> si

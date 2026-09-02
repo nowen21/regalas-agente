@@ -20,43 +20,49 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 
 | ID | Funcionalidad | Clase | Parte del sistema | Prioridad | Estado | Verificado |
 |---|---|---|---|---|---|---|
-| F-001 | Conectar un proyecto | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
-| F-002 | Avisar cuando la ruta de un proyecto se pierde | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
-| F-003 | Ver el estado de un proyecto sin entrar a él | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
-| F-004 | Configurar qué rige en cada proyecto | Complementaria | Proyectos | Media | Construida | Sin verificar |
-| F-005 | Escribir, cambiar y derogar reglas | Obligatoria | Reglas | Alta | Construida | Sin verificar |
-| F-006 | Asignar el identificador sin reutilizar ninguno | Obligatoria | Reglas | Alta | Construida | Sin verificar |
-| F-007 | Aplicar el checklist a una regla y guardar su sello | Complementaria | Reglas | Media | Construida | Sin verificar |
-| F-008 | Publicar una versión del cuerpo de reglas | Obligatoria | Reglas | Alta | Construida | Sin verificar |
-| F-009 | Entregarle las reglas al agente al abrir sesión | Obligatoria | Reglas | Alta | Construida | Sin verificar |
-| F-010 | Avisar a un proyecto que quedó atrás | Complementaria | Reglas | Media | Construida | Sin verificar |
-| F-011 | Crear épicas, historias y fases con su molde | Obligatoria | Ciclo de vida | Alta | Construida | Sin verificar |
-| F-012 | Ver en qué estación va cada fase | Obligatoria | Ciclo de vida | Alta | Construida | Sin verificar |
-| F-013 | Impedir avanzar sin la puerta cumplida | Obligatoria | Ciclo de vida | Alta | Construida | Sin verificar |
-| F-014 | Llenar los documentos del ciclo desde la plataforma | Obligatoria | Ciclo de vida | Alta | Construida | Sin verificar |
-| F-015 | Registrar una aprobación con su firma | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
-| F-016 | Ver qué está aprobado y qué está en borrador | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
-| F-017 | Caducar la aprobación cuando el texto cambia | Obligatoria | Aprobaciones | Alta | Construida | Sin verificar |
-| F-018 | Registrar cada acción que se hace | Obligatoria | Auditoría | Alta | Construida | Sin verificar |
-| F-019 | Consultar lo registrado | Complementaria | Auditoría | Media | Construida | Sin verificar |
-| F-020 | Comprobar sola lo que las reglas exigen | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
-| F-021 | Declarar sin verificar lo que no tiene prueba | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
-| F-022 | Comprobar que lo nuevo no rompió lo anterior | Obligatoria | Comprobaciones | Alta | Construida | Sin verificar |
-| F-023 | Guardar lo aprendido y devolverlo después | Obligatoria | Memoria | Alta | Construida | Sin verificar |
-| F-024 | Consultar y corregir lo guardado | Complementaria | Memoria | Media | Construida | Sin verificar |
-| F-025 | Armar el expediente de un proyecto | Obligatoria | Expediente | Alta | Construida | Sin verificar |
-| F-026 | Generar el entregable de ofimática | Obligatoria | Expediente | Alta | Construida | Sin verificar |
-| F-027 | Traer un proyecto que ya existe | Obligatoria | Importación | Alta | Construida | Sin verificar |
-| F-028 | Reportar qué de lo traído no sigue ningún molde | Complementaria | Importación | Media | Construida | Sin verificar |
-| F-029 | Avisar lo que se desvía | Complementaria | Avisos | Media | Construida | Sin verificar |
-| F-030 | Reportar cómo va cada proyecto | Complementaria | Avisos | Media | Construida | Sin verificar |
-| F-031 | Tapar toda credencial antes de escribirla | Obligatoria | Seguridad | Alta | Construida | Sin verificar |
-| F-032 | Medir el tiempo que se gasta revisando | Futura | Medición | Baja | Construida | Sin verificar |
-| F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Construida | Sin verificar |
-| F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Construida | Sin verificar |
-| F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Construida | Sin verificar |
+| F-001 | Conectar un proyecto | Obligatoria | Proyectos | Alta | Construida | Verificada |
+| F-002 | Avisar cuando la ruta de un proyecto se pierde | Obligatoria | Proyectos | Alta | Construida | Verificada |
+| F-003 | Ver el estado de un proyecto sin entrar a él | Obligatoria | Proyectos | Alta | Construida | Verificada |
+| F-004 | Configurar qué rige en cada proyecto | Complementaria | Proyectos | Media | Construida | Verificada |
+| F-005 | Escribir, cambiar y derogar reglas | Obligatoria | Reglas | Alta | Construida | Verificada |
+| F-006 | Asignar el identificador sin reutilizar ninguno | Obligatoria | Reglas | Alta | Construida | Verificada |
+| F-007 | Aplicar el checklist a una regla y guardar su sello | Complementaria | Reglas | Media | Construida | Verificada |
+| F-008 | Publicar una versión del cuerpo de reglas | Obligatoria | Reglas | Alta | Construida | Verificada |
+| F-009 | Entregarle las reglas al agente al abrir sesión | Obligatoria | Reglas | Alta | Construida | Verificada |
+| F-010 | Avisar a un proyecto que quedó atrás | Complementaria | Reglas | Media | Construida | Verificada |
+| F-011 | Crear épicas, historias y fases con su molde | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
+| F-012 | Ver en qué estación va cada fase | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
+| F-013 | Impedir avanzar sin la puerta cumplida | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
+| F-014 | Llenar los documentos del ciclo desde la plataforma | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
+| F-015 | Registrar una aprobación con su firma | Obligatoria | Aprobaciones | Alta | Construida | Verificada |
+| F-016 | Ver qué está aprobado y qué está en borrador | Obligatoria | Aprobaciones | Alta | Construida | Verificada |
+| F-017 | Caducar la aprobación cuando el texto cambia | Obligatoria | Aprobaciones | Alta | Construida | Verificada |
+| F-018 | Registrar cada acción que se hace | Obligatoria | Auditoría | Alta | Construida | Verificada |
+| F-019 | Consultar lo registrado | Complementaria | Auditoría | Media | Construida | Verificada |
+| F-020 | Comprobar sola lo que las reglas exigen | Obligatoria | Comprobaciones | Alta | Construida | Verificada |
+| F-021 | Declarar sin verificar lo que no tiene prueba | Obligatoria | Comprobaciones | Alta | Construida | Verificada |
+| F-022 | Comprobar que lo nuevo no rompió lo anterior | Obligatoria | Comprobaciones | Alta | Construida | Verificada |
+| F-023 | Guardar lo aprendido y devolverlo después | Obligatoria | Memoria | Alta | Construida | Verificada |
+| F-024 | Consultar y corregir lo guardado | Complementaria | Memoria | Media | Construida | Verificada |
+| F-025 | Armar el expediente de un proyecto | Obligatoria | Expediente | Alta | Construida | Verificada |
+| F-026 | Generar el entregable de ofimática | Obligatoria | Expediente | Alta | Construida | Verificada |
+| F-027 | Traer un proyecto que ya existe | Obligatoria | Importación | Alta | Construida | Verificada |
+| F-028 | Reportar qué de lo traído no sigue ningún molde | Complementaria | Importación | Media | Construida | Verificada |
+| F-029 | Avisar lo que se desvía | Complementaria | Avisos | Media | Construida | Verificada |
+| F-030 | Reportar cómo va cada proyecto | Complementaria | Avisos | Media | Construida | Verificada |
+| F-031 | Tapar toda credencial antes de escribirla | Obligatoria | Seguridad | Alta | Construida | Verificada |
+| F-032 | Medir el tiempo que se gasta revisando | Futura | Medición | Baja | Construida | Verificada |
+| F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Construida | Verificada |
+| F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Construida | Verificada |
+| F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Construida | Verificada |
 
-**Cuenta:** 23 obligatorias, 11 complementarias y 1 futura, de 35. Y aparte: 0 implementadas, 0 verificadas.
+**Cuenta:** 23 obligatorias, 11 complementarias y 1 futura, de 35. **Las 35 construidas, y las 35 con veredicto.**
+
+> **De dónde salen esas dos columnas.** No se escriben a mano: las deriva la plataforma, y se preguntan con `python manage.py estado_funcionalidades <proyecto>`. **Construida** quiere decir que hay una fase que la construye; **verificada**, que esa fase cerró con veredicto *Cumple*.
+>
+> **Verificada no quiere decir que alguien de afuera la comprobó.** Quiere decir que la fase que la construyó corrió sus pruebas y las declaró en verde. Es lo que el estándar entiende por verificar, y no es lo mismo que una auditoría ajena.
+>
+> Esta columna estuvo en «sin verificar» para las 35 hasta el 2026-09-02, por escribirse a mano mientras la plataforma ya sabía la respuesta.
 
 > **`F-033`, `F-034` y `F-035` entraron el 2026-08-25**, después de aprobado el inventario. Quedan anotadas en la sección 14.1 de [README.md](README.md), con quién las aprobó. La cuenta cambió de 32 a 35 por eso, y no por un error de conteo.
 
@@ -116,7 +122,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Un proyecto sin control de versiones se puede registrar, pero se advierte: su código no tiene respaldo |
 
 ### Avisar cuando la ruta de un proyecto se pierde
@@ -136,7 +142,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y pantalla |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Perder la ruta no puede borrar nada: la documentación vive en la plataforma, no allá |
 
 ### Ver el estado de un proyecto sin entrar a él
@@ -156,7 +162,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Mostrar de más cansa: primero lo que decide algo, el detalle después |
 
 ### Configurar qué rige en cada proyecto
@@ -176,7 +182,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Cada opción que se agrega es una forma más de que dos proyectos no se parezcan |
 
 ### Escribir, cambiar y derogar reglas
@@ -196,7 +202,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Escribir la regla es lo fácil; lo que cuesta es que no repita ni contradiga a otra |
 
 ### Asignar el identificador sin reutilizar ninguno
@@ -216,7 +222,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es de las pocas cosas que se pueden comprobar solas, y conviene que lo haga |
 
 ### Aplicar el checklist a una regla y guardar su sello
@@ -236,7 +242,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Buena parte de las filas pide criterio: la plataforma acompaña, no decide |
 
 ### Publicar una versión del cuerpo de reglas
@@ -256,7 +262,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Publicar es lo que vuelve real un cambio: antes de eso, nada rige |
 
 ### Entregarle las reglas al agente al abrir sesión
@@ -276,7 +282,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Tarea que corre sola al abrir, y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Que el agente las reciba no garantiza que las obedezca: eso lo cubre F-020 |
 
 ### Avisar a un proyecto que quedó atrás
@@ -296,7 +302,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Tarea que corre sola al abrir, y lógica |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Un aviso que aparece siempre se vuelve ruido y se ignora |
 
 ### Crear épicas, historias y fases con su molde
@@ -316,7 +322,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es donde más se nota si los moldes son pesados: se llenan en cada fase |
 
 ### Ver en qué estación va cada fase
@@ -336,7 +342,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Sirve para ver todas las fases a la vez: una sola se ve mirando su documento |
 
 ### Impedir avanzar sin la puerta cumplida
@@ -356,7 +362,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Una puerta que estorba se termina saltando: cada una tiene que justificarse |
 
 ### Llenar los documentos del ciclo desde la plataforma
@@ -376,7 +382,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Si escribir ahí es más incómodo que en un editor, nadie lo va a usar |
 
 ### Registrar una aprobación con su firma
@@ -396,7 +402,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es la pieza que hoy no existe, y de la que se sostiene todo el gobierno |
 
 ### Ver qué está aprobado y qué está en borrador
@@ -416,7 +422,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Dicho con palabras, no solo con color: quien no distingue colores tiene que poder saberlo |
 
 ### Caducar la aprobación cuando el texto cambia
@@ -436,7 +442,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Salió de un caso real: se aprobaron tres documentos y al día siguiente el cambio de producto los dejó sin valor |
 
 ### Registrar cada acción que se hace
@@ -456,7 +462,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Registrar cada mensaje pesa mucho, se llena de ruido y arrastra credenciales. La transcripción se guarda aparte, como hasta hoy, y la auditoría enlaza el resumen |
 
 ### Consultar lo registrado
@@ -476,7 +482,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Sin esta, la auditoría existe pero no sirve |
 
 ### Comprobar sola lo que las reglas exigen
@@ -496,7 +502,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Una comprobación que reprueba de más se apaga a la semana, y entonces no queda nada vigilando |
 
 ### Declarar sin verificar lo que no tiene prueba
@@ -516,7 +522,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | «Sin verificar» tiene que ser una respuesta aceptable, o se falsean las pruebas para poder cerrar |
 
 ### Comprobar que lo nuevo no rompió lo anterior
@@ -536,7 +542,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Solo puede comprobar lo que tenga prueba: lo que nunca se probó no se sabe si se rompió |
 
 ### Guardar lo aprendido y devolverlo después
@@ -556,7 +562,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es la mitad del problema original: sin esto, cada sesión vuelve a empezar |
 
 ### Consultar y corregir lo guardado
@@ -576,7 +582,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es un problema de confianza antes que de comodidad: hoy solo el agente ve lo que recuerda |
 
 ### Armar el expediente de un proyecto
@@ -596,7 +602,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Qué recibe un cliente, y si eso incluye la auditoría y la memoria, es la duda 5 del análisis |
 
 ### Generar el entregable de ofimática
@@ -616,7 +622,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Las listas dentro de una celda tienen que salir como listas, no con la etiqueta a la vista |
 
 ### Traer un proyecto que ya existe
@@ -636,7 +642,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es lo que hace usable la plataforma desde el primer día: sin esto arranca vacía |
 
 ### Reportar qué de lo traído no sigue ningún molde
@@ -656,7 +662,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Lo que no se reconoce suele ser lo más valioso: las notas que nadie escribió con molde |
 
 ### Avisar lo que se desvía
@@ -676,7 +682,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y pantalla |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Demasiados avisos se vuelven ruido, y el ruido se ignora completo |
 
 ### Reportar cómo va cada proyecto
@@ -696,7 +702,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Comparar proyectos distintos con la misma medida engaña si no se dice qué mide |
 
 ### Tapar toda credencial antes de escribirla
@@ -716,7 +722,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Es el único daño de esta lista que no se puede deshacer |
 
 ### Medir el tiempo que se gasta revisando
@@ -736,7 +742,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica |
 | **Prioridad** | Baja |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | La medición inicial debió tomarse antes de empezar y no se tomó: sin ella pierde la mitad del valor |
 
 ### Guardar las conversaciones donde se pueda buscar
@@ -756,7 +762,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Lógica y almacenamiento |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | **No es la auditoría.** La auditoría guarda qué se hizo; esto guarda qué se conversó, y `RN-4` de ese módulo sigue diciendo que la conversación no entra allá |
 
 ### Decir qué correcciones se repiten
@@ -776,7 +782,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla y lógica |
 | **Prioridad** | Media |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | **`CA-3` es lo difícil.** Agrupar frases parecidas no es contar palabras iguales, y hacerlo sin depender de nada instalado aparte es la parte que puede no salir. Le da además a `F-032` la fuente que le faltaba: hoy dice que recibe cuántas correcciones se repiten, y nada las cuenta |
 
 ### Administrar un proyecto ya conectado
@@ -796,7 +802,7 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
-| **Verificado** | Sin verificar |
+| **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | **Ya estaba decidida sin estar pedida.** La especificación del módulo dice desde el 2026-08-25 cómo se comporta desconectar, en su §7 y su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. Desconectar **no borra**, y esa decisión ya está tomada |
 
 ## Lo que todavía no se sabe si entra

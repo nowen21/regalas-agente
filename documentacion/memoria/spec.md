@@ -89,7 +89,11 @@ Es lo contrario de [Aprobaciones](../aprobaciones/spec.md), y por el motivo sim�
 
 ## 7. Interfaz
 
-Órdenes de consola. **Sin pantalla todavía**, como el resto de los módulos de esta etapa.
+**La memoria** (`P-07`, en `/proyecto/<id>/memoria/`): qué recuerda el agente sobre este proyecto, con lo dado de baja incluido. Es la mitad que faltaba del problema de la ficha de `F-024` —*hoy solo el agente ve lo que recuerda*—: la de mirar.
+
+**Lo dado de baja también sale**, en gris. Esconderlo dejaría al usuario sin saber que existió, y lo que ya no vale sigue siendo la respuesta a por qué algo se hizo como se hizo.
+
+Corregir y dar de baja siguen por consola: son cambios de estado.
 
 ---
 
@@ -144,10 +148,10 @@ La misma confianza del resto: quien corre la orden es el usuario en su máquina.
 
 ## 13. Trazabilidad
 
-| Funcionalidad | Fase | Estado |
-|---|---|---|
-| `F-023` | [P-EP-018-HU-001-lo-guardado-vuelve-en-la-sesion-siguiente](../epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-001-guardar-lo-aprendido/P-EP-018-HU-001-lo-guardado-vuelve-en-la-sesion-siguiente/estado-fase.md) | Cerrada el 2026-09-01 |
-| `F-024` | [Q-EP-018-HU-002-corregir-conserva-lo-que-decia-antes](../epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-002-consultar-y-corregir-lo-guardado/Q-EP-018-HU-002-corregir-conserva-lo-que-decia-antes/estado-fase.md) | Cerrada el 2026-09-01 |
+| Funcionalidad | Requisito | Fase | Estado |
+|---|---|---|---|
+| F-023 | RF-23 | [P-EP-018-HU-001-lo-guardado-vuelve-en-la-sesion-siguiente](../epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-001-guardar-lo-aprendido/P-EP-018-HU-001-lo-guardado-vuelve-en-la-sesion-siguiente/estado-fase.md) | Cerrada el 2026-09-01 |
+| F-024 | RF-24 | [Q-EP-018-HU-002-corregir-conserva-lo-que-decia-antes](../epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-002-consultar-y-corregir-lo-guardado/Q-EP-018-HU-002-corregir-conserva-lo-que-decia-antes/estado-fase.md) | Cerrada el 2026-09-01 |
 
 ---
 

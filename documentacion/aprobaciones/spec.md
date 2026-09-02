@@ -74,7 +74,11 @@ Los demás módulos calculan al pedir porque su respuesta **está** en el texto.
 
 ## 7. Interfaz
 
-Sin pantalla en esta versión. Se pide por orden de consola.
+**Las aprobaciones** (`P-06`, en `/proyecto/<id>/aprobaciones/`): el estado de cada documento con alguna aprobación, dicho con palabras y no con color, y cuánto cambió desde lo aprobado.
+
+**La pantalla dice lo que no muestra:** solo salen los documentos que tienen alguna aprobación registrada, y no son todos los del proyecto. Callarlo haría creer que esos son todos.
+
+Aprobar sigue por orden de consola: es un cambio de estado, y va con su confirmación.
 
 ## 8. Permisos y autorización
 

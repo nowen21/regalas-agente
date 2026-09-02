@@ -27,10 +27,20 @@ VERIFICADO = "verificado"
 NO_CUMPLE = "no cumple"
 SIN_VERIFICAR = "sin verificar"
 
-# La fila de trazabilidad de una especificación de módulo: la funcionalidad, su
-# requisito, la historia y la fase que la construye. Las columnas de la derecha
-# varían entre módulos, así que se toma la fila entera y se busca la fase dentro.
-_FILA = re.compile(u"(?m)^\\|\\s*(F-\\d+)\\s*\\|\\s*RF-\\d+\\s*\\|(.*)$")
+# La fila de trazabilidad de una especificación de módulo: la funcionalidad y,
+# a la derecha, la fase que la construye. Las columnas del medio **varían entre
+# módulos** —unos traen el requisito, otros la historia, otros las dos—, así que
+# se toma la fila entera y se busca la fase dentro.
+#
+# **El identificador puede venir entre comillas o sin ellas, y la columna del
+# requisito puede no estar.** Exigir `RF-nn` dejaba fuera dos especificaciones, y
+# sus cuatro funcionalidades salían como si nadie las hubiera construido.
+_FILA = re.compile(u"(?m)^\\|\\s*`?(F-\\d+)`?\\s*\\|(.*)$")
+
+# Para no confundir una fila de trazabilidad con cualquier otra que empiece por
+# un identificador, la fila tiene que traer **o** el requisito **o** el nombre de
+# una fase. Una que no trae ninguno de los dos no dice quién la construye.
+_REQUISITO = re.compile(u"RF-\\d+")
 
 # El nombre de una fase, donde aparezca: `A-EP-015-HU-001-lo-que-sea`.
 _FASE = re.compile(u"([A-Z]-EP-\\d+-HU-\\d+-[a-z0-9-]+)")
@@ -78,11 +88,34 @@ def _fases_declaradas(raiz):
         if not os.path.isfile(spec):
             continue
         for funcionalidad, resto in _FILA.findall(_leer(spec)):
+            if not (_REQUISITO.search(resto) or _FASE.search(resto)):
+                continue
             declaradas.setdefault(funcionalidad, [])
             for fase in _FASE.findall(resto):
                 if fase not in declaradas[funcionalidad]:
                     declaradas[funcionalidad].append(fase)
     return declaradas
+
+
+def nombradas_en_alguna_especificacion(raiz):
+    """Qué funcionalidades aparecen escritas en alguna `spec.md`, como sea.
+
+    Sirve para una sola cosa, y es la que faltaba: **distinguir «ninguna
+    especificación la nombra» de «la nombran y no supe leer su fila»**. Las dos
+    salían con el mismo texto, y la segunda es un defecto del lector que se leía
+    como un hecho del proyecto.
+    """
+    carpeta = os.path.join(raiz, "documentacion")
+    nombradas = set()
+    if not os.path.isdir(carpeta):
+        return nombradas
+    for modulo in sorted(os.listdir(carpeta)):
+        spec = os.path.join(carpeta, modulo, "spec.md")
+        if not os.path.isfile(spec):
+            continue
+        for una in re.findall(u"F-\\d+", _leer(spec)):
+            nombradas.add(una)
+    return nombradas
 
 
 def _veredicto_de(raiz, fase):
@@ -103,13 +136,19 @@ def estado_de_todas(raiz):
     `porque`. **El estado no se lee de ninguna parte: se deriva.**
     """
     declaradas = _fases_declaradas(raiz)
+    nombradas = nombradas_en_alguna_especificacion(raiz)
     salida = []
     for funcionalidad in funcionalidades_del_inventario(raiz):
         fases = declaradas.get(funcionalidad, [])
         if not fases:
+            if funcionalidad in nombradas:
+                porque = ("una especificación la nombra, pero su fila de "
+                          "trazabilidad no se pudo leer: no se sabe")
+            else:
+                porque = "ninguna fase la construye todavía"
             salida.append({
                 "funcionalidad": funcionalidad, "estado": SIN_VERIFICAR,
-                "fases": [], "porque": "ninguna fase la construye todavía"})
+                "fases": [], "porque": porque})
             continue
 
         veredictos = [(fase, _veredicto_de(raiz, fase)) for fase in fases]

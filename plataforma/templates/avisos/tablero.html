@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block titulo %}Tablero · Cimiento{% endblock %}
+{% block cuerpo %}
+
+<h1>Cómo van los proyectos</h1>
+<p class="apagado">Medido hoy, {{ hoy }}.</p>
+
+{% if filas %}
+  <table>
+    <tr><th>Proyecto</th><th>Avance</th><th>Deuda</th><th>Vencida</th><th>Sin fecha</th></tr>
+    {% for una in filas %}
+      <tr>
+        <td><a href="{% url 'proyectos-uno' una.proyecto %}">{{ una.proyecto }}</a></td>
+        <td>{% if una.avance is None %}<span class="apagado">sin datos</span>{% else %}{{ una.avance }} %{% endif %}</td>
+        <td>{{ una.deuda }}</td>
+        <td>{{ una.vencida }}</td>
+        <td>{{ una.quietas }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Qué mide cada columna</h2>
+  <table>
+    {% for nombre, definicion in que_mide %}
+      <tr><th style="width:8rem">{{ nombre }}</th><td>{{ definicion }}</td></tr>
+    {% endfor %}
+  </table>
+
+  {% if sin_datos %}
+    <p class="aviso"><strong>Sin datos no es cero.</strong> Estos proyectos no
+    tienen ninguna fase escrita, así que su avance no se puede calcular:
+    {% for uno in sin_datos %}{{ uno }}{% if not forloop.last %}, {% endif %}{% endfor %}.</p>
+  {% endif %}
+{% else %}
+  <p class="vacio">No hay ningún proyecto conectado. No es un cero: es que
+  todavía no se ha conectado ninguno.
+  <a href="{% url 'proyectos-conectar' %}">Conectar uno</a>.</p>
+{% endif %}
+
+<h1>Lo que se salió de lo acordado</h1>
+
+{% if cuantos %}
+  <p>{{ cuantos }} aviso{{ cuantos|pluralize:"s" }} en total.</p>
+  {% for uno in de_cada_uno %}
+    <h2>{{ uno.proyecto.nombre }}</h2>
+    <p class="apagado">{{ uno.salida.cuantos }} aviso{{ uno.salida.cuantos|pluralize:"s" }}{% if uno.salida.callados %}, y {{ uno.salida.callados }} callado{{ uno.salida.callados|pluralize:"s" }} a propósito{% endif %}.</p>
+    <table>
+      <tr><th>Qué</th><th>Sobre</th><th>Qué lo disparó</th><th>Dónde mirar</th></tr>
+      {% for aviso in uno.salida.avisos %}
+        <tr>
+          <td>{{ aviso.clase }}</td>
+          <td>{{ aviso.sobre_que }}</td>
+          <td>{{ aviso.que_lo_disparo }}</td>
+          <td><code>{{ aviso.donde_mirar }}</code></td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% if uno.salida.se_recorto %}
+      <p class="aviso"><strong>Se recortó la lista.</strong> Hay más de los que
+      se muestran.</p>
+    {% endif %}
+  {% endfor %}
+
+  <p class="apagado"><strong>«Vencida» quiere decir sin moverse hace más de
+  {{ dias }} días.</strong> El estándar nunca le puso fecha a una deuda, así que
+  ese número se puso acá y no es un vencimiento acordado.</p>
+{% else %}
+  <p class="bien">Nada se salió de lo acordado.</p>
+{% endif %}
+
+{% endblock %}

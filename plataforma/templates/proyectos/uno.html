@@ -63,6 +63,13 @@
 {% endif %}
 
 <h2>Su documentación</h2>
+<h2>Mirar por dentro</h2>
+<p><a href="{% url 'ciclo-fases' proyecto.identificador %}">En qué va cada fase</a></p>
+<p><a href="{% url 'comprobaciones-funcionalidades' proyecto.identificador %}">Qué está comprobado</a></p>
+<p><a href="{% url 'aprobaciones-lista' proyecto.identificador %}">Qué está aprobado</a></p>
+<p><a href="{% url 'memoria-lista' proyecto.identificador %}">Qué recuerda el agente</a></p>
+
+<h2>Traer lo escrito</h2>
 <p><a href="{% url 'importacion-traer' proyecto.identificador %}">Traer lo que ya tiene escrito</a></p>
 <p><a href="{% url 'importacion-reportes' proyecto.identificador %}">Ver qué no entró en cada traída</a></p>
 

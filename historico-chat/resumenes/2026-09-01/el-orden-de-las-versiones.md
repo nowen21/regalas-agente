@@ -259,6 +259,51 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-01 · el orden de las versiones
 - **Con qué se retoma:** —
 
+### H-17 · La columna se escribía a mano mientras el programa ya sabía la respuesta
+
+- **Qué pasó:** el inventario declaraba **35 funcionalidades sin verificar**. Preguntado el módulo Comprobaciones, la respuesta era **31 verificadas**; arreglado un defecto de lectura, **35**. La columna llevaba semanas diciendo lo contrario de lo que la plataforma sabía.
+- **Por qué importa:** el defecto de lectura es lo que vale contar. La fila de trazabilidad se buscaba exigiendo la columna del requisito y el identificador sin comillas, y **dos de las once especificaciones no la traían así** — las dos las había escrito el agente ese mismo día. Sus cuatro funcionalidades salían como «ninguna fase la construye todavía». **El módulo daba un defecto del lector con la forma de un hecho del proyecto.**
+- **Qué lo soluciona:** ya hecho. El lector acepta las dos formas y ahora tiene una respuesta para «no supe leer esta fila», separada de «esto no existe». Las dos tablas de hoy se emparejaron con las nueve demás, y la columna del inventario dejó de escribirse a mano.
+- **Qué se decidió:** **verificada quiere decir que la fase que la construyó cerró con veredicto Cumple**, no que alguien de afuera la haya auditado. Queda escrito debajo de la tabla, para que la columna no prometa más de lo que mide.
+- **Estado:** resuelto acá
+- **Responde a:** EP-015 · HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-118` · `plataforma/nucleo/comprobaciones/estado.py`
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-18 · La mitad del backlog pedía trabajo que ya estaba hecho
+
+- **Qué pasó:** cinco pendientes abiertos. Tres estaban marcados **hechos** dentro de su propio texto desde el 2026-08-30. Los otros dos —el `85` y el `86`, este último **P0**— pedían exactamente lo que `F-033`, `F-034` y `F-035` habían construido el 2026-08-31. Se comprobó corriendo las órdenes: el `85` pedía contar qué correcciones se repiten, y la plataforma responde que «estoy preguntando» se repitió en **8 sesiones**; el `86` pedía desconectar, reconectar, renombrar y corregir, y las cinco operaciones existen.
+- **Por qué importa:** **el backlog envejece hacia arriba.** Un pendiente se escribe cuando se ve el problema y nadie lo vuelve a mirar hasta que alguien planea; mientras tanto el problema se resuelve por otro camino y el archivo sigue pidiendo. Una lista en la que uno de cada dos ya está hecho se lee entera o no se lee.
+- **Qué lo soluciona:** los dos quedaron cerrados, diciendo qué los cerró y cuándo.
+- **Qué se decidió:** **antes de planear trabajo nuevo, el backlog se revisa contra lo que ya existe**, no contra lo que se recuerda.
+- **Estado:** resuelto acá
+- **Responde a:** —
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-120` · `pendientes/85-…` y `pendientes/86-…`
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
+### H-19 · Lo que costó de cinco pantallas nuevas no fue mostrar: fue el caso vacío
+
+- **Qué pasó:** de trece módulos, solo dos tenían pantalla. Se construyeron cinco —tablero, fases, funcionalidades, aprobaciones y memoria—, y el trabajo de verdad no estuvo en mostrar los datos sino en **los cinco casos vacíos**, que son cinco frases distintas: no tener fases no es lo mismo que no tener aprobaciones, ni que no tener memoria escrita.
+- **Por qué importa:** **un proyecto recién conectado ve las cinco pantallas vacías**, y esa es la primera impresión que se lleva. Una pantalla en blanco no dice «no hay nada»: dice «esto está roto», y quien la lee así desconfía también de las que sí traen datos.
+- **Qué lo soluciona:** ya hecho, con quince pruebas. Y el mismo cuidado va del otro lado: cada pantalla dice **qué deja por fuera** —las aprobaciones, que no son todos los documentos; el tablero, que «vencida» es un número puesto acá; las fases, cuáles usan otra tabla—, y esas advertencias van impresas con los datos, no en la especificación.
+- **Qué se decidió:** **son pantallas de solo mirar.** Aprobar, corregir un recuerdo o abrir una fase son cambios de estado y quieren su confirmación (`00·N1`); hacerlos desde la pantalla ahora sería media confirmación. Y seis módulos siguen sin pantalla, declarados.
+- **Estado:** resuelto acá
+- **Responde a:** EP-021 · HU-001
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señal `S-119` · `plataforma/templates/`
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -268,7 +313,7 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 | Todo hallazgo resuelto tiene su decisión escrita | ☑ |
 | Todo hallazgo abierto tiene su pendiente creado | ☑ no quedó ninguno abierto |
 | Toda historia disparada está escrita en su épica | ☑ ninguna quedó sin escribir |
-| Lo que se hizo está aprobado y guardado | ☐ la versión 4 quedó subida; falta el commit de la 5 |
+| Lo que se hizo está aprobado y guardado | ☐ las versiones 4 y 5 quedaron subidas; falta el commit de las pantallas |
 
 **Falta guardar, y con eso se cierra.** Lo que la sesión vino a hacer quedó hecho: `EP-013` nació y **cerró el mismo día** con sus dos historias, el módulo Ciclo de vida tiene especificación, y con él `F-014` queda completa. **Con `F-014` cierra la versión 2.**
 
@@ -282,4 +327,6 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 
 **Y la versión 5 cerró entera:** `EP-019` con el ciclo operable —abrir una fase, ver en cuál estación va, y no dejar pasar la puerta que falta—, `EP-020` con los avisos y el reporte, `EP-008` con la configuración por proyecto y `EP-011` con la medición del tiempo de revisión. **Siete funcionalidades, cuatro hallazgos, y las cinco versiones del plan cerradas el mismo día en que se decidió el orden.**
 
-**Lo que no es de esta sesión:** las pantallas —ninguno de los once módulos tiene una—, verificar las 35 funcionalidades construidas, y las 33 fases cuya frase y cuya tabla no coinciden. Y una pregunta que no tiene arreglo: la medición inicial, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.
+**Y después de subir la 5, el usuario preguntó «qué sigue» y mandó hacer los tres frentes de una.** Los tres salieron más chicos de lo que parecían, y por la misma razón: **lo que se escribe a mano al lado de lo que un programa deriva termina diciendo otra cosa.** Las 35 funcionalidades «sin verificar» eran 0 —la columna estaba vieja, y el lector tenía un defecto—; los cinco pendientes abiertos eran dos, y a los dos los había cerrado la plataforma sin que nadie lo anotara; y de once módulos sin pantalla, cinco ya la tienen.
+
+**Lo que queda, declarado:** seis módulos siguen sin pantalla —Auditoría, Medición, Expediente, Reglas, Seguridad y Almacén—, nada se cambia desde la pantalla y así se quiso, y hay 33 fases cuya frase y cuya tabla no coinciden porque arreglarlas sería reescribir fases cerradas. Y una que no tiene arreglo: la medición inicial, que son las aprobaciones, la memoria y operar el ciclo. Y una pregunta que quedó viva sin ser un hallazgo: si llenar por huecos resulta cómodo. Hoy el documento con más huecos tiene dos, y eso no lo responde.

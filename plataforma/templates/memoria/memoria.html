@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}Memoria de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block cuerpo %}
+
+<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
+<h1>Qué recuerda el agente</h1>
+
+{% if error %}
+  <p class="vacio">{{ error }}</p>
+{% elif cuenta.todos %}
+  <p>{{ cuenta.todos }} recuerdo{{ cuenta.todos|pluralize:"s" }} ·
+     {{ cuenta.vigentes }} vigente{{ cuenta.vigentes|pluralize:"s" }} ·
+     {{ cuenta.de_baja }} dado{{ cuenta.de_baja|pluralize:"s" }} de baja.</p>
+
+  <p class="aviso"><strong>Lo dado de baja no se borra.</strong> Sigue acá, y
+  sigue siendo la respuesta a por qué algo se hizo como se hizo; lo que cambia es
+  que deja de entregársele al agente.</p>
+
+  <table>
+    <tr><th>Recuerdo</th><th>Vale hoy</th><th>Archivo</th></tr>
+    {% for uno in recuerdos %}
+      <tr>
+        <td>{% if uno.de_baja %}<span class="apagado">{{ uno.titulo }}</span>{% else %}{{ uno.titulo }}{% endif %}</td>
+        <td>{% if uno.de_baja %}<span class="apagado">ya no vale</span>{% else %}sí{% endif %}</td>
+        <td><code>{{ uno.nombre }}</code></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <p class="apagado"><strong>La memoria es un archivo del repositorio, no un
+  ajuste de la herramienta.</strong> Vive en <code>historico-chat/memory/</code>,
+  uno por recuerdo, y viaja con el proyecto.</p>
+{% else %}
+  <p class="vacio">Este proyecto no tiene ningún recuerdo escrito. No es que el
+  agente no recuerde nada: es que todavía nadie ha escrito uno.</p>
+{% endif %}
+
+{% endblock %}

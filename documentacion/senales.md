@@ -1220,3 +1220,35 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-01 · agente.
 - **Scope:** cualquier proyecto que se proponga demostrar una mejora.
 - **Rel:** S-113 (un tiempo supuesto y uno medido se escriben igual), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-118 · La columna se escribía a mano mientras el programa ya sabía la respuesta  ·  error-resuelto · activa
+- **What:** el inventario declaraba **35 funcionalidades sin verificar**. Preguntado el módulo Comprobaciones, la respuesta era **31 verificadas**; y arreglado un defecto de lectura, **35**. La columna llevaba semanas diciendo lo contrario de lo que la plataforma sabía, porque se escribía a mano.
+- **Why:** el defecto de lectura es el que vale contar. La fila de trazabilidad de una especificación se buscaba exigiendo la columna del requisito y el identificador sin comillas — `| F-001 | RF-01 | …` —, y **dos de las once especificaciones no la traían así**. Sus cuatro funcionalidades, construidas y probadas el mismo día, salían como «ninguna fase la construye todavía».
+- **Also:** eso es lo grave, y no el número. **El módulo daba un defecto del lector con la forma de un hecho del proyecto.** «No supe leer esa fila» y «nadie la construyó» salían con el mismo texto, y solo uno de los dos es culpa del proyecto. Ahora se dicen distinto.
+- **And:** la divergencia no venía de documentos viejos, como las cuatro veces anteriores del mismo patrón. **La introdujo el agente ese mismo día**, escribiendo dos tablas con otra forma. Por eso acá sí se emparejaron las tablas —son de hoy, y hay una forma canónica— además de volver tolerante al lector.
+- **Where:** `plataforma/nucleo/comprobaciones/estado.py` · `documentacion/memoria/spec.md` y `documentacion/avisos/spec.md` · `cvds/analisis-requisitos/inventario-funcionalidades.md`.
+- **Learned:** **si un programa puede derivar un dato, escribirlo a mano al lado es garantizar que un día digan cosas distintas.** Y a todo lector hay que darle una respuesta para «no supe leer esto», separada de «esto no existe»: sin ella, sus defectos se leen como hallazgos.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier dato que se escriba a mano pudiendo derivarse, y cualquier lector de documentos con más de una forma.
+- **Rel:** S-114 (conviven varios modelos y el lector suponía uno), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-119 · Una pantalla en blanco se lee como un error de la plataforma, y casi nunca lo es  ·  patrón · activa
+- **What:** al construir las cinco pantallas nuevas, lo que costó no fue mostrar los datos: fue **el caso vacío**. Y no es uno, son cinco: no tener fases no es lo mismo que no tener aprobaciones, ni que no tener memoria escrita, ni que no tener inventario. Cada uno se dice distinto, y ninguno es un error.
+- **Why:** **un proyecto recién conectado ve las cinco pantallas vacías**, y esa es la primera impresión que se lleva de la plataforma. Una pantalla en blanco no dice «no hay nada»: dice «esto está roto», y quien lo lee así deja de confiar también en las que sí traen datos.
+- **Also:** el mismo cuidado va del otro lado. **Una pantalla que no dice qué deja por fuera da a entender que muestra todo.** Las aprobaciones solo listan los documentos con alguna aprobación registrada, y callarlo haría creer que los demás están sin aprobar. El tablero dice que «vencida» es un número puesto acá y no un vencimiento acordado. Las fases avisan cuáles usan otra tabla.
+- **And:** las advertencias **viajan impresas con los datos**, no en la especificación. Una advertencia que vive en otro archivo no se lee, y la que se lee tarde ya dejó decidir mal.
+- **Where:** `plataforma/templates/` (avisos, ciclo_de_vida, comprobaciones, aprobaciones, memoria) · fase `Z` de [EP-021](epicas/EP-021-la-plataforma-se-mira-sin-consola/epica.md).
+- **Learned:** **el caso vacío de una pantalla se diseña, no se hereda.** Y se prueba: es el estado en que un usuario nuevo la ve por primera vez, y el que nadie prueba porque no tiene datos que mirar.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier pantalla que muestre una lista.
+- **Rel:** S-110 (un aviso que sale vacío se ve igual que uno que no tenía nada que decir), S-107 (cuando un estado admite «no se sabe» hay que darle su nombre).
+
+## S-120 · Un pendiente no se entera de que lo resolvieron  ·  aprendizaje · activa
+- **What:** el backlog tenía cinco archivos abiertos. Tres estaban marcados **hechos** dentro de su propio texto desde el 2026-08-30. Los otros dos —el `85` y el `86`, uno de ellos con prioridad **P0**— pedían cosas que la plataforma había construido el 2026-08-31 como `F-033`, `F-034` y `F-035`. **Ninguna de las dos partes se enteró de la otra.**
+- **Why:** un pendiente se escribe en el momento en que se ve el problema, y desde entonces no lo vuelve a mirar nadie hasta que alguien planea trabajo. Mientras tanto el problema se resuelve por otro camino —una funcionalidad del inventario, una fase de otra épica— y el archivo se queda diciendo que hace falta. **El backlog envejece hacia arriba: pide trabajo que ya se hizo.**
+- **Also:** el daño no es tener un archivo de más. Es que **la lista de lo que falta deja de ser confiable**, y una lista de pendientes en la que uno de cada dos ya está hecho se lee entera o no se lee.
+- **Where:** `pendientes/85-…md`, `pendientes/86-…md` y su índice · las funcionalidades que los cerraron, `F-033`, `F-034` y `F-035`.
+- **Learned:** **antes de planear trabajo nuevo, el backlog se revisa contra lo que ya existe**, no contra lo que se recuerda. Y cuando una funcionalidad cierra, vale preguntarse qué pendiente venía pidiendo eso: la respuesta suele estar escrita meses antes y con mejores palabras.
+- **When/Who:** 2026-09-02 · agente.
+- **Scope:** cualquier lista de trabajo pendiente que conviva con un inventario de funcionalidades.
+- **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-116 (una carpeta vacía no la ve nadie que no recorra el disco).

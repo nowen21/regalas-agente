@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block titulo %}Aprobaciones de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block cuerpo %}
+
+<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
+<h1>Qué está aprobado</h1>
+
+{% if cuantos %}
+  <p>{{ cuantos }} documento{{ cuantos|pluralize:"s" }} con alguna aprobación ·
+     {{ aprobados }} aprobado{{ aprobados|pluralize:"s" }} ·
+     {{ caducadas }} caducada{{ caducadas|pluralize:"s" }}.</p>
+
+  <table>
+    <tr><th>Documento</th><th>Estado</th><th>Desde</th><th>Quién</th><th>Cuánto cambió</th></tr>
+    {% for uno in estados %}
+      <tr>
+        <td><code>{{ uno.documento }}</code></td>
+        <td>
+          {% if uno.estado == CADUCADA %}<strong>{{ uno.en_palabras }}</strong>
+          {% else %}{{ uno.en_palabras }}{% endif %}
+        </td>
+        <td>{{ uno.desde|default:"—" }}</td>
+        <td>{{ uno.quien|default:"—" }}</td>
+        <td>
+          {% if uno.estado == CADUCADA and uno.existe %}
+            {{ uno.cambio_desde }} caracteres
+          {% elif not uno.existe %}
+            <span class="apagado">el documento ya no está</span>
+          {% else %}—{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <p class="apagado"><strong>Solo salen los documentos que tienen alguna
+  aprobación.</strong> No son todos los del proyecto: los que nunca se aprobaron
+  no aparecen acá.</p>
+{% else %}
+  <p class="vacio">Ningún documento de este proyecto tiene una aprobación
+  registrada. No es que estén todos sin aprobar: es que la plataforma no ha
+  registrado ninguna todavía.</p>
+{% endif %}
+
+{% endblock %}

@@ -30,7 +30,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ En su primera corrida encontró cinco carpetas que nadie veía |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `e6afdf0` |
 | 13 | Publicación / despliegue | 👤 autorizado | N/A: la plataforma corre en la máquina del usuario |
 
 > **Una comprobación nueva se estrena mirando lo que ya está**, y esta encontró en su primera corrida cinco carpetas vacías que ni git ni una búsqueda de texto veían.

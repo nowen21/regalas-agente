@@ -2,11 +2,11 @@
 
 > **Este pendiente es del producto, no del cuerpo de reglas.** Entra por acá porque es el camino que la etapa de análisis dejó escrito en su sección 11: un cambio a lo ya acordado se pide como pendiente, el agente dice a qué le pega, y el usuario aprueba.
 
-**Estado:** abierto, anotado el 2026-08-25.
+**Estado:** **hecho** el 2026-09-02. Lo cerró la plataforma, no una sesión que viniera a cerrarlo: las dos mitades que pedía se construyeron como `F-033` y `F-034` el 2026-08-31, y nadie volvió a mirar este archivo.
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-011 · HU-001](../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/HU-001-buscar-en-lo-conversado.md) y [HU-002](../documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/HU-002-ver-que-correccion-se-repite.md), las dos cerradas el 2026-08-31 |
 | **De dónde sale** | Lo pidió el usuario el 2026-08-25: *"la idea es que todo ese historial también se vaya guardando en la DB, porque eso va a permitir sacar estadísticas y encontrar soluciones. Por ejemplo, algo que se repita mucho es porque el agente no lo está contemplando"* |
 | **Proyecto de origen** | Cimiento, como producto |
 

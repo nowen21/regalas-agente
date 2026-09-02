@@ -74,7 +74,11 @@ Si corrieron **cero**, es rojo: cero no es verde.
 
 ## 7. Interfaz
 
-Sin pantalla en esta versión. Se pide por orden de consola, como el resto de los módulos de esta etapa.
+**Las funcionalidades** (`P-05`, en `/proyecto/<id>/funcionalidades/`): el estado de cada una, con de dónde sale. Los tres estados se dicen con palabras y no con color, y el del medio no se junta con ninguno de los otros dos.
+
+**Y cada estado dice su porqué.** Un estado sin él obliga a creerle a la pantalla, y esta no quiere que le crean: quiere que la comprueben.
+
+Comprobar y la puerta de publicación siguen por consola.
 
 ## 8. Permisos y autorización
 

@@ -87,7 +87,11 @@ Porque callar un aviso es una decisión, y una decisión que solo vive en la bas
 
 ## 7. Interfaz
 
-Órdenes de consola. **Sin pantalla todavía**, como el resto de los módulos de esta etapa.
+**El tablero** (`P-03`, en `/tablero/`): los proyectos con su avance y su deuda, y debajo los avisos de todos juntos. Es la pantalla que la ficha de `F-029` pedía sin nombrarla — *que enterarse no dependa de ir a mirar* —, porque una orden de consola sigue pidiendo ir a mirar; lo que cambia es dónde.
+
+**Lleva encima lo que no se puede callar:** la definición de cada columna, la advertencia de que «vencida» es un número puesto acá, y el aviso de cuándo la lista se recortó.
+
+Las órdenes de consola siguen: `avisos` y `como_van`.
 
 ---
 
@@ -145,10 +149,10 @@ La misma confianza del resto: quien corre la orden es el usuario en su máquina.
 
 ## 13. Trazabilidad
 
-| Funcionalidad | Historia | Fase que lo construye |
-|---|---|---|
-| `F-029` | [HU-001 Avisar lo que se desvía](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-001-avisar-lo-que-se-desvia/HU-001-avisar-lo-que-se-desvia.md) | [W-EP-020-HU-001-todo-aviso-dice-que-lo-disparo](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-001-avisar-lo-que-se-desvia/W-EP-020-HU-001-todo-aviso-dice-que-lo-disparo/estado-fase.md), cerrada el 2026-09-01 |
-| `F-030` | [HU-002 Reportar cómo va cada proyecto](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-002-reportar-como-va-cada-proyecto/HU-002-reportar-como-va-cada-proyecto.md) | [X-EP-020-HU-002-sin-datos-no-es-cero](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-002-reportar-como-va-cada-proyecto/X-EP-020-HU-002-sin-datos-no-es-cero/estado-fase.md), cerrada el 2026-09-01 |
+| Funcionalidad | Requisito | Historia | Fase que lo construye |
+|---|---|---|---|
+| F-029 | RF-29 | [HU-001 Avisar lo que se desvía](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-001-avisar-lo-que-se-desvia/HU-001-avisar-lo-que-se-desvia.md) | [W-EP-020-HU-001-todo-aviso-dice-que-lo-disparo](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-001-avisar-lo-que-se-desvia/W-EP-020-HU-001-todo-aviso-dice-que-lo-disparo/estado-fase.md), cerrada el 2026-09-01 |
+| F-030 | RF-30 | [HU-002 Reportar cómo va cada proyecto](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-002-reportar-como-va-cada-proyecto/HU-002-reportar-como-va-cada-proyecto.md) | [X-EP-020-HU-002-sin-datos-no-es-cero](../epicas/EP-020-lo-que-se-desvia-se-avisa/HU-002-reportar-como-va-cada-proyecto/X-EP-020-HU-002-sin-datos-no-es-cero/estado-fase.md), cerrada el 2026-09-01 |
 
 ---
 

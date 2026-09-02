@@ -144,7 +144,11 @@ Un documento sin huecos lo dice, en vez de devolver una lista vacía.
 
 ## 7. Interfaz
 
-Una pantalla dentro de la vista de un documento: la lista de lo que falta, y un campo por hueco. **La `HU-001` puede terminarse sin pantalla**, con orden de consola, como se hizo en Medición y en Expediente.
+**Las fases** (`P-04`, en `/proyecto/<id>/fases/`): en cuál estación va cada una, qué puerta le falta y cuántos días lleva sin tocarse. Es lo que vuelve útil a `F-012`: una fase se mira abriendo su documento, y doscientas no se miran de ninguna forma.
+
+**La pantalla no inventa lo que la fase no dice.** Una tabla de otro modelo no se compara con su frase, una casilla con prosa no es una casilla pendiente, y una fase sin fecha no lleva cero días quietos: no se sabe, y lo dice así.
+
+Llenar los huecos sigue por orden de consola: `que_le_falta` y `llenar_hueco`.
 
 ## 8. Permisos y autorización
 

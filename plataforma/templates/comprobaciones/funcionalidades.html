@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block titulo %}Funcionalidades de {{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block cuerpo %}
+
+<p class="apagado"><a href="{% url 'proyectos-uno' proyecto.identificador %}">&larr; {{ proyecto.nombre }}</a></p>
+<h1>Qué está comprobado</h1>
+
+{% if cuantas %}
+  <p>{{ cuantas }} funcionalidad{{ cuantas|pluralize:"es" }} ·
+     {{ verificadas }} verificada{{ verificadas|pluralize:"s" }} ·
+     {{ no_cumplen }} que no cumple{{ no_cumplen|pluralize:"n" }} ·
+     {{ sin_verificar }} sin verificar.</p>
+
+  <p class="aviso"><strong>Sin verificar no es lo mismo que no cumple.</strong>
+  Una es que nadie comprobó; la otra, que se comprobó y salió mal. Y
+  <strong>verificada</strong> quiere decir que la fase que la construyó cerró con
+  veredicto <em>Cumple</em>, no que alguien de afuera la haya auditado.</p>
+
+  <table>
+    <tr><th>Funcionalidad</th><th>Estado</th><th>De dónde sale</th></tr>
+    {% for una in funcionalidades %}
+      <tr>
+        <td><code>{{ una.funcionalidad }}</code></td>
+        <td>
+          {% if una.estado == NO_CUMPLE %}<strong>{{ una.estado }}</strong>
+          {% elif una.estado == VERIFICADO %}{{ una.estado }}
+          {% else %}<span class="apagado">{{ una.estado }}</span>{% endif %}
+        </td>
+        <td>
+          {{ una.porque }}
+          {% if una.fases %}
+            <br><span class="apagado">{% for fase in una.fases %}<code>{{ fase }}</code>{% if not forloop.last %} · {% endif %}{% endfor %}</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p class="vacio">Este proyecto no tiene inventario de funcionalidades, o el que
+  tiene no declara ninguna. No es un cero: es que no hay qué contar.</p>
+{% endif %}
+
+{% endblock %}
