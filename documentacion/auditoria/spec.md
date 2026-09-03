@@ -55,7 +55,9 @@ En la versión 1 no tiene pantalla: solo registra. La pantalla `P-09` llega en l
 
 ## 8. Permisos y autorización
 
-Un solo usuario. El campo `quién` distingue si la acción la hizo el usuario o el agente, que es lo único que hoy hay que separar.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
+
+El campo `quién` guarda **la cuenta** que hizo la acción. Lo registrado antes de que hubiera cuentas **no se reescribe**: ponerle una cuenta sería inventar quién lo hizo.
 
 ## 9. Marco normativo
 

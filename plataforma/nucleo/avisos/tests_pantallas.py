@@ -17,6 +17,7 @@ from django.test import Client, TestCase
 
 from nucleo.aprobaciones.models import Aprobacion
 from nucleo.proyectos.models import Proyecto
+from nucleo.acceso import para_probar
 
 FASE = u"""# Estado de fase
 
@@ -61,6 +62,8 @@ class Base(TestCase):
             ruta_codigo=self.raiz, ruta_normalizada=self.raiz.lower(),
             conectado="conectado")
         self.cliente = Client()
+        # Todo exige haber entrado: la prueba entra como quien manda.
+        para_probar.como_usuario(self.cliente)
 
     def tearDown(self):
         shutil.rmtree(self.raiz, ignore_errors=True)

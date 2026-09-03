@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Dice **cómo se pone a andar Cimiento, cómo se opera y qué hacer cuando algo falla**. Lo que el sistema hace está en las [especificaciones de módulo](../../documentacion/); acá está cómo se corre.
 
-> **Alcance real, dicho de una:** Cimiento corre en la máquina de quien lo usa. No hay servidor y no hay control de acceso construido. Este manual describe eso, y no un montaje que no existe. **No es que no haga falta:** `RNF-09` pide que pueda correr en un servidor, y el día que lo haga el control de acceso deja de ser opcional.
+> **Alcance real, dicho de una:** Cimiento corre en la máquina de quien lo usa. **Sí tiene control de acceso** —cuentas, grupos y permisos, desde el 2026-09-02—, pero no está puesto en ningún servidor. Este manual describe eso, y no un montaje que no existe.
 
 ---
 
@@ -81,7 +81,7 @@ python manage.py puerta_de_publicacion <proyecto>
 | `plataforma/indice.sqlite3` | **No hace falta** | Es índice, no fuente; se rehace |
 | `plataforma/datos/` | **No hace falta** | Son copias de lo traído; se rehacen al traer otra vez |
 
-**La única excepción son las aprobaciones**, que sí viven solo en la base: quién aprobó y sobre qué texto es un hecho que ocurrió fuera del documento y no se puede reconstruir leyéndolo.
+**Las excepciones son dos, y viven solo en la base:** las **aprobaciones** —quién aprobó y sobre qué texto es un hecho que ocurrió fuera del documento— y las **cuentas** con sus grupos. Ninguna de las dos se reconstruye leyendo el proyecto.
 
 ---
 
@@ -114,5 +114,5 @@ Y traer de nuevo cada proyecto desde su pantalla, que vuelve a copiar sus docume
 ## 7. Qué NO cubre este manual
 
 - **Poner Cimiento en un servidor.** No se ha hecho, y el diseño no lo contempla: corre en la máquina de quien lo usa.
-- **Varios usuarios a la vez.** No hay cuentas ni permisos **construidos** — el análisis sí los definió, en su sección 6—, y `Qué está aprobado` registra el nombre que se escriba sin comprobarlo. **El diseño advierte que con dos usuarios esto es una falla**, no una limitación aceptable.
+- **La plataforma puesta a la vista de varios a la vez.** Ya hay cuentas, grupos y permisos, y `aprobar` solo acepta una cuenta que exista. Lo que falta para un servidor es otra cosa: **no hay límite de intentos** al entrar ni demora entre uno y otro.
 - **Recuperar una aprobación borrada de la base.** Es lo único no reconstruible; por eso es lo único que hay que respaldar aparte del repositorio.

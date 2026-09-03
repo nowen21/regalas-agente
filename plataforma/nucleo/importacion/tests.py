@@ -22,6 +22,7 @@ from django.test import TestCase, override_settings
 
 from nucleo.auditoria.models import Registro
 from nucleo.proyectos import core as proyectos
+from nucleo.acceso import para_probar
 from . import core, moldes
 from .models import Traido
 
@@ -50,6 +51,8 @@ class BaseImportacion(TestCase):
     """Cada prueba corre sobre su propia carpeta de datos y su propio proyecto."""
 
     def setUp(self):
+        # Todas las pantallas exigen haber entrado desde `EP-022`.
+        para_probar.como_usuario(self.client)
         self.datos = tempfile.mkdtemp(prefix="prueba-datos-")
         self.contexto = override_settings(CARPETA_DATOS=self.datos)
         self.contexto.enable()
@@ -420,6 +423,8 @@ class CasoRealTests(TestCase):
     """
 
     def setUp(self):
+        # Todas las pantallas exigen haber entrado desde `EP-022`.
+        para_probar.como_usuario(self.client)
         self.datos = tempfile.mkdtemp(prefix="prueba-caso-real-")
         self.contexto = override_settings(CARPETA_DATOS=self.datos)
         self.contexto.enable()

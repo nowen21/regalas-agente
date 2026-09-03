@@ -70,6 +70,8 @@
 | RF-33 | Guardar las conversaciones del agente en la plataforma, para poder buscarlas sin abrir archivo por archivo | El usuario | Lo que el usuario tuvo que repetir | 2 | Debería |
 | RF-34 | Decir qué correcciones se repiten, y cuántas veces | El usuario | Lo que el usuario tuvo que repetir | 2, 3 | Debería |
 | RF-35 | Desconectar un proyecto, renombrarlo y corregir la versión que declara, sin borrar su documentación | El usuario | Ver la plataforma funcionando | 1, 6 | Debe |
+| RF-36 | Entrar a la plataforma con cuenta y contraseña, y que ninguna pantalla responda sin haber entrado | El usuario y el agente | El aplazamiento del control de acceso, levantado el 2026-09-02 | 6 | Debe |
+| RF-37 | Separar lo que cada grupo puede hacer: el agente no aprueba, no publica versiones ni deroga reglas | El usuario | La sección 6 de este análisis, que lo definió y nadie construyó | 6 | Debe |
 
 **El alcance ítem por ítem, con la ficha de cada uno, está en [inventario-funcionalidades.md](inventario-funcionalidades.md).** Esta tabla es el resumen que se acuerda; aquel es el detalle que se construye.
 

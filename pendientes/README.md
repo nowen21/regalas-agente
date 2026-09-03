@@ -331,7 +331,7 @@ El usuario preguntó el 2026-08-20 cómo hacer que Cimiento haga más y gaste me
 
 | # | Prio | Pendiente | De qué se trata |
 |---|---|---|---|
-| 94 | **P1** | [El control de acceso está definido y no construido](94-el-control-de-acceso-esta-definido-y-no-construido.md) | El análisis definió los permisos de cada actor y el diseño los aplazó a «un solo usuario en esta versión», diciendo que **con dos es una falla**. No hay nada construido: ni login, ni permisos, ni comprobación de quién aprueba. Y `RNF-09` pide poder correr en un servidor, que es justo cuando el aplazamiento deja de sostenerse. |
+| ~~94~~ | — | **hecho** → [El control de acceso está definido y no construido](94-el-control-de-acceso-esta-definido-y-no-construido.md) | El análisis definió los permisos de cada actor y el diseño los aplazó a «un solo usuario en esta versión», diciendo que **con dos es una falla**. No hay nada construido: ni login, ni permisos, ni comprobación de quién aprueba. Y `RNF-09` pide poder correr en un servidor, que es justo cuando el aplazamiento deja de sostenerse. |
 
 ### Lo que dejó ver la plataforma funcionando (85-86)
 

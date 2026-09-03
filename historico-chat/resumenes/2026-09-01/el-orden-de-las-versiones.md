@@ -334,6 +334,22 @@ Lo que dejó esta sesión. La conversación literal vive en la transcripción; a
 - **Cerrado en:** 2026-09-02 · el orden de las versiones
 - **Con qué se retoma:** —
 
+
+### H-22 · El aplazamiento que se levantó, y el hueco que la propia funcionalidad había dejado abierto
+
+- **Qué pasó:** al leer el manual de uso, el usuario respondió a la frase «no hay usuarios ni permisos, confía en quien lo abre»: **«el que yo lo use no significa que no pueda tener seguridad»**. La revisión mostró que el agente había contado un **aplazamiento** como si fuera una **postura**, y que el aplazamiento tenía condición escrita: *«con dos usuarios, es una falla»*. El usuario decidió levantarlo antes de esa fecha y mandó construirlo con `django.contrib.auth`.
+- **Por qué importa:** al construirlo apareció algo peor que la falta de login. **`aprobar --quien "cualquier cosa"` aceptaba cualquier texto**: la funcionalidad que existía justamente para que una aprobación dijera **sobre qué texto** se dio, seguía dejando que dijera **quién** sin probarlo. Una funcionalidad puede tapar un hueco y dejarlo abierto en su propia puerta de entrada.
+- **Qué lo soluciona:** ya hecho. `EP-022`, con dos historias: ninguna pantalla responde sin haber entrado, y dos grupos con sus permisos. **El guardián va como middleware y no como decorador por vista**, para que una pantalla nueva nazca protegida; y la prueba recorre **las rutas del propio enrutador**, no una lista escrita a mano.
+- **Qué se decidió:** **dos grupos y no cuatro.** De los cuatro actores del análisis, dos no entran: un proyecto administrado es una carpeta, y quien recibe un proyecto tiene escrito que no puede entrar. Y **catorce pruebas que se pusieron en rojo fueron la comprobación, no el daño**: aprobaban con nombres inventados.
+- **Estado:** resuelto acá
+- **Responde a:** EP-022 · HU-001 y HU-002
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** señales `S-124` y `S-125` · `plataforma/nucleo/acceso/` · `cvds/diseno/README.md` §8 · pendiente 94, cerrado
+- **Nace en:** 2026-09-02 · el orden de las versiones
+- **Cerrado en:** 2026-09-02 · el orden de las versiones
+- **Con qué se retoma:** —
+
 ---
 
 ## ¿Se puede cerrar la sesión?

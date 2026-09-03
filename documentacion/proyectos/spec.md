@@ -63,7 +63,7 @@ Pantallas `P-01` Inicio y `P-02` Un proyecto, del [diseño de interfaz](../../cv
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias: quien tenga la máquina, entra. Es lo declarado en la sección 8 del [diseño](../../cvds/diseno/README.md), y se rehace el día que la plataforma corra en un servidor.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ## 9. Marco normativo
 

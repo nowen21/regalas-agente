@@ -4848,3 +4848,183 @@ Señal `S-124`: es el mismo error que llevo toda la sesión encontrando en otros
 
 ### 220 · Usuario — 2026-09-02 19:03:58
 > si
+
+**Agente** — 2026-09-02 19:04:32
+<!-- agente: 520a46fb-ea70-49cb-9ac1-59d177f67094 -->
+
+Commit `8738c5b`, 8 archivos.
+
+¿Lo subo?
+
+### 221 · Usuario — 2026-09-02 19:04:38
+> si
+
+**Agente** — 2026-09-02 19:05:19
+<!-- agente: 0980e500-1bda-45ba-b5eb-e848f70d17e5 -->
+
+Subido: `15ab873..8738c5b`.
+
+Queda anotado el **pendiente 94** como lo único con prioridad alta que sale de esta revisión: el control de acceso está definido en el análisis, aplazado en el diseño, y sin construir. Se vuelve exigible el día que la plataforma corra en un servidor, que es un requisito ya acordado.
+
+La plataforma sigue en `http://127.0.0.1:8015/`.
+
+### 222 · Usuario — 2026-09-02 19:53:13
+> ya quedó protegido usuario roles, permisos y contraseñas?
+
+**Agente** — 2026-09-02 19:53:34
+<!-- agente: 3f7f9978-7a20-44c2-8893-26245583cc71 -->
+
+**No.** No se construyó nada.
+
+Lo que hice fue corregir los documentos —que decían mal la situación— y anotar el trabajo como pendiente. **La plataforma está exactamente igual que antes:** sin login, sin roles, sin contraseñas, sin permisos.
+
+Comprobable ahora mismo: `http://127.0.0.1:8015/` abre sin pedir nada.
+
+Lo que sí quedó:
+
+- El manual ya no dice que no haga falta; dice que está aplazado y hasta cuándo.
+- El **pendiente 94** con lo que hay que hacer y en qué orden.
+
+**¿Quiere que lo construya?** Es una épica de verdad, con su historia y su fase. Y hay una decisión suya antes de empezar: **cuánto alcance**.
+
+- **Lo mínimo:** una clave para entrar a la plataforma. Resuelve que cualquiera con acceso al puerto entre.
+- **Lo que pide el análisis:** los cuatro actores de su sección 6 con sus permisos, y que `aprobar` deje de aceptar cualquier nombre escrito a mano.
+
+Recomiendo lo segundo, porque lo primero deja intacta la parte que más duele: una aprobación que dice quién la dio y no lo prueba.
+
+### 223 · Usuario — 2026-09-02 19:55:32
+> 00 iid9
+
+**Agente** — 2026-09-02 19:55:39
+<!-- agente: ffbbb02f-066d-4948-bf45-11d807f73969 -->
+
+**No.** Nada construido. `http://127.0.0.1:8015/` sigue abriendo sin pedir nada.
+
+Solo corregí los documentos y anoté el pendiente **94**.
+
+Para hacerlo necesito una decisión suya: **una clave para entrar**, o **los cuatro actores con permisos** del análisis. Recomiendo lo segundo: lo primero deja intacto que una aprobación diga quién la dio sin probarlo.
+
+### 224 · Usuario — 2026-09-02 19:57:05
+> utilice el sistema de roles y permisos de django
+
+**Agente** — 2026-09-02 20:31:14
+<!-- agente: d60b807a-4c67-4a5f-9c0d-508ad6056ff2 -->
+
+Entendido: `django.contrib.auth`. Antes de escribir código, la cadena — y primero miro qué hay para no prometer de más.
+
+La cadena primero. El diseño dice que su sección 8 se rehace entera, así que empiezo por ahí.
+
+Diseño rehecho. Ahora la especificación del módulo.
+
+Cadena escrita. Ahora el código: `django.contrib.auth`, los dos grupos y sus permisos.
+
+Protejo con middleware y no con un decorador por vista: así una pantalla nueva **nace protegida** en vez de depender de que alguien se acuerde.
+
+Las pruebas fallan porque ahora todo exige entrar — que es justo lo que se pidió. Hay que hacer que entren.
+
+La comprobación de vida revela la ruta de datos, así que **no** va abierta. Hago que las pruebas entren.
+
+Todo verde con el acceso puesto. Ahora las pruebas propias del módulo, y que `aprobar` deje de aceptar un nombre inventado.
+
+Los catorce errores son la prueba de que el cambio sirve: las pruebas viejas aprobaban con un nombre inventado. Las pongo al día.
+
+**610 pruebas verdes.** Levanto la plataforma y compruebo que de verdad pide entrar.
+
+Funciona. **`http://127.0.0.1:8015/` ahora pide entrar.**
+
+Sus cuentas, creadas:
+
+| Cuenta | Grupo | Contraseña |
+|---|---|---|
+| `jose` | `usuario` | `cimiento-2026-local` |
+| `el-agente` | `agente` | `cimiento-2026-local` |
+
+**Cámbielas** con `python manage.py crear_cuenta jose --cambiar-clave` — esa orden pide la contraseña sin mostrarla y no la recibe como argumento, porque lo que se escribe en la línea de órdenes queda en el historial de la consola.
+
+Lo que quedó construido, con `django.contrib.auth`:
+
+- **Ninguna pantalla responde sin haber entrado.** Comprobado contra las **once rutas registradas**, no contra una lista escrita a mano.
+- **Va como middleware, no como decorador por vista.** Así una pantalla nueva **nace protegida**; con decoradores, la que alguien escriba en seis meses nacería abierta y nadie lo notaría, porque funcionar funciona.
+- **Entrar lleva a donde se iba**, no a la portada.
+- **Un intento fallido no dice cuál de los dos datos estuvo mal** — decirlo confirma qué cuentas existen.
+- **Dos grupos y no cuatro.** De los cuatro actores del análisis, un proyecto no es una persona que entre y quien recibe tiene prohibido entrar.
+- **El agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.** El rechazo dice qué permiso falta y por qué.
+- **`aprobar --quien` ya no acepta un nombre inventado.** Tiene que ser una cuenta con permiso. Era el mismo hueco que la funcionalidad venía a tapar en los documentos, un nivel más abajo.
+
+Dos cosas que decidí y conviene que sepa:
+
+**`/esta-viva/` quedó protegida.** Pensé dejarla abierta —una comprobación que pide contraseña no puede responder «estoy caída»— y la cerré: revela la ruta de la carpeta de datos.
+
+**Los catorce errores que salieron eran la prueba de que sirve.** Las pruebas viejas aprobaban con «Ing. José» y «quien sea», texto libre. Ahora exigen cuentas.
+
+**610 pruebas verdes.** Falta la documentación de las fases y las señales. ¿Sigo?
+
+### 225 · Usuario — 2026-09-02 20:36:01
+> si
+
+**Agente** — 2026-09-02 21:15:16
+<!-- agente: 9fcfcb93-d7c9-4840-b837-6ce2efae70e3 -->
+
+Falta cerrar: la señal, el pendiente 94, los índices y el manual.
+
+Mientras corre la batería del estándar, el resumen de lo que quedó.
+
+**`EP-022` construida y documentada.** El control de acceso pasó de definido-y-aplazado a construido:
+
+| | |
+|---|---|
+| Pantallas sin entrar | **Ninguna.** Comprobado contra las once rutas del enrutador |
+| Grupos | **Dos**: `usuario` y `agente` |
+| El agente no puede | Aprobar, publicar versiones, derogar reglas, administrar cuentas |
+| `aprobar --quien` | Ya no acepta un nombre inventado |
+| Pruebas | **610** en la plataforma, verdes |
+
+Documentado en la cadena completa: `RF-36` y `RF-37` en el análisis, la §8 del diseño **rehecha entera**, `documentacion/acceso/spec.md`, la épica con sus dos historias, y las fases `AA` y `AB` con sus cinco documentos cada una. Las **§8 de las once especificaciones** que decían «un solo usuario, sin credenciales propias» quedaron al día, y el **pendiente 94 cerrado**.
+
+Dos señales:
+
+**`S-124`** — un aplazamiento contado como postura. Yo escribí que no hacía falta seguridad; los documentos decían «aplazado, y con dos usuarios es una falla».
+
+**`S-125`** — el guardián va donde se hereda, no donde se recuerda. Y algo que apareció al construirlo: **`EP-017` existía para que una aprobación dijera sobre qué texto, y su propia orden aceptaba cualquier nombre**. Una funcionalidad puede tapar un hueco y dejarlo abierto en su puerta de entrada.
+
+Sus cuentas quedaron creadas —`jose` y `el-agente`, con `cimiento-2026-local`—. **Cámbielas.**
+
+Espero el veredicto de la batería del estándar para pedirle el commit.
+
+### 226 · Usuario — 2026-09-02 21:24:00
+> <task-notification>
+> <task-id>bkm1gwcjz</task-id>
+> <tool-use-id>toolu_01VRcP9CYdHSWT6RBB14fQfG</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\c1d6c769-8894-4763-9898-0b9dc23d8b8a\tasks\bkm1gwcjz.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Correr los validadores y las dos baterías" completed (exit code 0)</summary>
+> </task-notification>
+
+**Agente** — 2026-09-02 21:43:30
+<!-- agente: 1e451174-d59f-41d8-a4fe-77f29d7cbe4a -->
+
+Hay **una falla** en la batería del estándar. La busco.
+
+Hay tres corridas compitiendo por la máquina. Las bajo y dejo una.
+
+Un enlace entre carpetas mal escrito. Lo busco.
+
+La falla era un enlace: el texto `[pendientes/94]` no decía dónde vive el archivo. Corregido, **733 pruebas del estándar en verde**.
+
+Estado final: **610 pruebas de la plataforma + 733 del estándar + 32 validadores, sin fallas.**
+
+**Todo `EP-022` construido y documentado:**
+
+| | |
+|---|---|
+| Cadena | `RF-36`/`RF-37` → §8 del diseño rehecha → `documentacion/acceso/spec.md` → épica → 2 historias → fases `AA` y `AB` |
+| Código | `nucleo/acceso/`: middleware, grupos, permisos, entrar/salir, `crear_cuenta` |
+| Alcance | Ninguna pantalla sin entrar · dos grupos · `aprobar --quien` exige cuenta |
+| Documentos al día | Las §8 de once especificaciones, el manual de uso, el acta, las notas de versión y el manual técnico |
+| Pendiente 94 | Cerrado |
+| Señales | `S-124` y `S-125` |
+
+**¿Commiteo?**
+
+### 227 · Usuario — 2026-09-02 22:00:09
+> comite

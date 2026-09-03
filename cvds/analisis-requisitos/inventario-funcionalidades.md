@@ -55,6 +55,8 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | F-033 | Guardar las conversaciones donde se pueda buscar | Complementaria | Medición | Media | Construida | Verificada |
 | F-034 | Decir qué correcciones se repiten | Complementaria | Medición | Media | Construida | Verificada |
 | F-035 | Administrar un proyecto ya conectado | Obligatoria | Proyectos | Alta | Construida | Verificada |
+| F-036 | Entrar con cuenta y contraseña | Obligatoria | Acceso | Alta | Construida | Verificada |
+| F-037 | Separar lo que cada grupo puede hacer | Obligatoria | Acceso | Alta | Construida | Verificada |
 
 **Cuenta:** 23 obligatorias, 11 complementarias y 1 futura, de 35. **Las 35 construidas, y las 35 con veredicto.**
 
@@ -804,6 +806,46 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Estado** | Construida |
 | **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | **Ya estaba decidida sin estar pedida.** La especificación del módulo dice desde el 2026-08-25 cómo se comporta desconectar, en su §7 y su §12, y ninguna funcionalidad lo pedía: ninguna fase lo iba a construir. Desconectar **no borra**, y esa decisión ya está tomada |
+
+### Entrar con cuenta y contraseña
+
+| Campo | Valor |
+|---|---|
+| **Identificador** | `F-036` |
+| **De qué se trata** | Que la plataforma pida cuenta y contraseña, y que ninguna pantalla responda sin haber entrado |
+| **Para qué sirve** | Que se sepa quién hizo cada cosa, y que no entre cualquiera que alcance el puerto |
+| **Parte del sistema** | Acceso |
+| **Quién la usa** | El usuario y el agente |
+| **Qué recibe** | La cuenta y la contraseña |
+| **Qué entrega** | La sesión abierta, o el rechazo |
+| **Reglas que debe respetar** | `RN-2` la contraseña se guarda cifrada y nunca en claro · `RN-7` un intento fallido no dice cuál de los dos datos estuvo mal |
+| **Depende de** | F-001 |
+| **Terminada cuando** | `CA-1` ninguna pantalla responde sin haber entrado · `CA-2` entrar lleva a donde se iba, no a la portada · `CA-3` un intento fallido no dice cuál dato estuvo mal |
+| **Qué necesita construirse** | Pantalla, lógica y almacenamiento |
+| **Prioridad** | Alta |
+| **Estado** | Construida |
+| **Verificado** | Verificada |
+| **Lo que hay que tener en cuenta** | **Estaba definida y aplazada, no descartada.** La sección 6 del análisis ya decía qué puede hacer cada actor; el diseño lo aplazó «mientras haya un solo usuario» y advirtió que con dos es una falla. El usuario levantó el aplazamiento el 2026-09-02 |
+
+### Separar lo que cada grupo puede hacer
+
+| Campo | Valor |
+|---|---|
+| **Identificador** | `F-037` |
+| **De qué se trata** | Dos grupos, `usuario` y `agente`, con lo que cada uno puede hacer |
+| **Para qué sirve** | Que la aprobación siga siendo de una persona, y no un trámite que el agente se dé a sí mismo |
+| **Parte del sistema** | Acceso |
+| **Quién la usa** | El usuario |
+| **Qué recibe** | La cuenta que pide hacer algo |
+| **Qué entrega** | El permiso, o el rechazo diciendo qué permiso falta |
+| **Reglas que debe respetar** | `RN-4` el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas · `RN-5` una orden solo acepta una cuenta que exista |
+| **Depende de** | F-036 |
+| **Terminada cuando** | `CA-1` el agente no puede aprobar, publicar ni derogar · `CA-2` el rechazo dice qué permiso falta · `CA-3` una orden con una cuenta que no existe se rechaza |
+| **Qué necesita construirse** | Lógica |
+| **Prioridad** | Alta |
+| **Estado** | Construida |
+| **Verificado** | Verificada |
+| **Lo que hay que tener en cuenta** | **De los cuatro actores del análisis, solo dos son cuentas.** Un proyecto administrado no es una persona que entre, y quien recibe un proyecto tiene prohibido entrar. Construir cuatro grupos habría sido construir de más |
 
 ## Lo que todavía no se sabe si entra
 

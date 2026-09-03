@@ -29,9 +29,14 @@ DEBUG = False
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
+    # `auth` trae las cuentas, los grupos y los permisos, con el cifrado de
+    # contraseñas ya resuelto. **No se escribe uno propio**: autenticación
+    # escrita a mano es la forma más común de escribirla mal (diseño §8.1).
+    "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
+    "nucleo.acceso",
     "nucleo.almacen",
     "nucleo.auditoria",
     "nucleo.proyectos",
@@ -54,6 +59,11 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    # Pone en cada petición quién entró. Va después de la sesión porque la lee.
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # Y esto exige haber entrado para todo lo que no esté en su lista corta.
+    # Va acá y no como decorador por vista: una vista nueva nace protegida.
+    "nucleo.acceso.middleware.ExigirHaberEntrado",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -64,6 +74,8 @@ TEMPLATES = [{
     "APP_DIRS": True,
     "OPTIONS": {"context_processors": [
         "django.template.context_processors.request",
+        # Para que la barra de arriba pueda decir quién entró.
+        "django.contrib.auth.context_processors.auth",
     ]},
 }]
 
@@ -86,5 +98,11 @@ STATIC_URL = "static/"
 # repositorio; se declaran y se instalan.
 STATICFILES_DIRS = [RAIZ / "static", RAIZ / "terceros"]
 STATIC_ROOT = RAIZ / "staticfiles"
+
+# A dónde se manda a quien pide una pantalla sin haber entrado, y a dónde vuelve
+# después. `LOGIN_REDIRECT_URL` casi nunca se usa: Django respeta a dónde iba.
+LOGIN_URL = "entrar"
+LOGIN_REDIRECT_URL = "proyectos-lista"
+LOGOUT_REDIRECT_URL = "entrar"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

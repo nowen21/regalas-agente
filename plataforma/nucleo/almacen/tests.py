@@ -13,6 +13,7 @@ import tempfile
 from django.test import TestCase, override_settings
 
 from nucleo.constancia import Constancia, SinConstancia
+from nucleo.acceso import para_probar
 from . import core
 from .models import Anotado
 
@@ -32,6 +33,8 @@ class AlmacenTests(TestCase):
     """Guardar, leer, reconstruir, y no salirse de la carpeta."""
 
     def setUp(self):
+        # Todas las pantallas exigen haber entrado desde `EP-022`.
+        para_probar.como_usuario(self.client)
         self.carpeta = tempfile.mkdtemp(prefix="prueba-plataforma-")
         self.contexto = override_settings(CARPETA_DATOS=self.carpeta)
         self.contexto.enable()
@@ -107,7 +110,16 @@ class EstaVivaTests(TestCase):
     La ruta se movió de «/» a «/esta-viva/» en la fase B, cuando la raíz pasó a
     ser la lista de proyectos. **La comprobación sigue haciendo falta**: dice
     si la plataforma responde sin depender de que haya proyectos conectados.
+
+    **Y exige haber entrado, como todo lo demás.** Se pensó dejarla abierta —una
+    comprobación de vida que pide contraseña no puede responder «estoy caída»—,
+    y se descartó: esta dice **la ruta de la carpeta de datos**, que es
+    información. Una comprobación que revela dónde vive algo no responde a
+    cualquiera.
     """
+
+    def setUp(self):
+        para_probar.como_usuario(self.client)
 
     def test_responde_que_esta_viva(self):
         respuesta = self.client.get("/esta-viva/")
@@ -124,6 +136,8 @@ class SinRedTests(TestCase):
     """
 
     def setUp(self):
+        # Todas las pantallas exigen haber entrado desde `EP-022`.
+        para_probar.como_usuario(self.client)
         import socket
         self.conectar = socket.socket.connect
         adentro = ("127.0.0.1", "localhost", "::1")

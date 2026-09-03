@@ -69,7 +69,16 @@ def aprobar(proyecto, documento, quien, cuando=""):
 
     **No se puede aprobar un documento que no existe.** Aprobar algo que no
     está sería firmar en blanco: cuando aparezca, diría que ya se aprobó.
+
+    **Y `quien` tiene que ser una cuenta de la plataforma, con permiso para
+    aprobar.** Hasta el 2026-09-02 era texto libre: una aprobación decía quién
+    la dio y no lo probaba, que es exactamente lo que esta funcionalidad vino a
+    arreglar en los documentos. Tenerlo abierto acá dejaba el mismo hueco un
+    nivel más abajo.
     """
+    from nucleo.acceso import core as acceso
+    acceso.exigir(quien, "aprobar_documento")
+
     ruta = _ruta(proyecto, documento)
     if not ruta:
         raise NoSePuedeAprobar(

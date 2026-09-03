@@ -2,11 +2,11 @@
 
 > **Este pendiente es del producto, no del cuerpo de reglas.** Entra por acá porque es el camino que la etapa de análisis dejó escrito en su sección 11: un cambio a lo ya acordado se pide como pendiente, el agente dice a qué le pega, y el usuario aprueba.
 
-**Estado:** abierto, anotado el 2026-09-02.
+**Estado:** **hecho** el 2026-09-02, en la misma jornada que lo anotó. Lo construyó [EP-022](../documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/epica.md), con `django.contrib.auth`: dos grupos, ninguna pantalla sin entrar, y `aprobar --quien` que ya no acepta un nombre inventado.
 
 | | |
 |---|---|
-| **Historia de usuario** | Por crear. Sale de este pendiente cuando se apruebe |
+| **Historia de usuario** | [EP-022 · HU-001](../documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/HU-001-entrar-con-cuenta-y-contrasena/HU-001-entrar-con-cuenta-y-contrasena.md) y [HU-002](../documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/HU-002-separar-lo-que-cada-grupo-puede-hacer/HU-002-separar-lo-que-cada-grupo-puede-hacer.md), las dos cerradas el 2026-09-02 |
 | **De dónde sale** | El usuario lo vio leyendo el manual de uso, el 2026-09-02: *«el que yo lo use no significa que no pueda tener seguridad»* |
 | **Proyecto de origen** | Cimiento, como producto |
 

@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 """Aprueba un documento, sobre el texto que hay.
 
-    python manage.py aprobar cimiento-el-estandar documentacion/x/spec.md --quien "Ing. José"
+    python manage.py aprobar cimiento-el-estandar documentacion/x/spec.md --quien jose
+
+**`--quien` ya no es un nombre cualquiera: es una cuenta de la plataforma**, y
+tiene que tener permiso para aprobar. Las cuentas se crean con
+`python manage.py crear_cuenta`.
 """
 from django.core.management.base import BaseCommand
 
 from nucleo.aprobaciones import core
 from nucleo.ciclo_de_vida import core as ciclo
+from nucleo.acceso import core as acceso
 
 
 class Command(BaseCommand):
@@ -21,6 +26,10 @@ class Command(BaseCommand):
         try:
             aprobacion = core.aprobar(opciones["proyecto"],
                                       opciones["documento"], opciones["quien"])
+        except acceso.NoPuede as porque:
+            self.stdout.write("No se aprobó: %s"
+                              % ciclo.para_la_consola(str(porque)))
+            return
         except core.NoSePuedeAprobar as porque:
             self.stdout.write("No se aprobó: %s"
                               % ciclo.para_la_consola(str(porque)))

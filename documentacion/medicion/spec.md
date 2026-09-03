@@ -86,7 +86,7 @@ Una pantalla de búsqueda y una de lo repetido, dentro de la vista de un proyect
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias, igual que el resto de la plataforma. Se rehace el día que corra en un servidor.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ## 9. Marco normativo
 

@@ -85,7 +85,9 @@ Sin pantalla en esta versión. Se pide por orden de consola, como el resto de lo
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
+
+**Publicar una versión y derogar una regla son del grupo `usuario`**: las dos obligan a los proyectos que heredan.
 
 ## 9. Marco normativo
 

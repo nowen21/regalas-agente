@@ -1297,3 +1297,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · usuario + agente.
 - **Scope:** cualquier documento que describa lo que un sistema no hace.
 - **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-121 (el reporte respondía sobre una copia vieja).
+
+## S-125 · Un guardián por vista se olvida; uno por middleware hace que lo nuevo nazca protegido  ·  decisión · activa
+- **What:** al ponerle control de acceso a la plataforma, la decisión que más protege no fue cuál biblioteca —esa estaba clara, la de Django— sino **dónde va el guardián**. Puesto como decorador en cada vista, hay que acordarse de ponerlo: **la pantalla que alguien escriba dentro de seis meses nace abierta**, y nadie lo nota, porque funcionar funciona. Puesto como middleware, **nace protegida**, y abrirla exige escribirlo en una lista de dos renglones que se lee de un vistazo.
+- **Why:** es la diferencia entre una protección que depende de la memoria y una que depende de que alguien escriba lo contrario a propósito. Lo mismo vale para la prueba: **recorre las rutas del propio enrutador, no una lista escrita a mano**. Una lista a mano se queda corta justo el día que alguien agrega una pantalla, que es el día en que hay que enterarse.
+- **Also:** **el hueco que se cerró era el mismo que `EP-017` había cerrado en los documentos, un nivel más abajo.** Aquella épica arregló que una aprobación escrita a mano dijera quién sin decir sobre qué texto; pero su propia orden aceptaba `--quien "cualquier cosa"`, así que seguía diciendo quién **sin probarlo**. Una funcionalidad puede tapar un hueco y dejarlo abierto en su propia puerta de entrada.
+- **And:** de los **cuatro** actores que el análisis define, solo **dos** necesitan cuenta. «Un proyecto administrado» es una carpeta que se observa, y «quien recibe un proyecto» tiene escrito que **no puede entrar**. Construir cuatro grupos habría dejado dos sin usar, y nadie lo habría notado hasta querer borrarlos.
+- **Where:** `plataforma/nucleo/acceso/` · `cvds/diseno/README.md` §8, rehecha entera · [EP-022](epicas/EP-022-quien-entra-y-que-puede-hacer/epica.md).
+- **Learned:** **poner la protección donde se hereda, no donde se recuerda.** Y cuando un cambio así se hace, **las pruebas que se ponen en rojo son la comprobación, no el daño**: acá fueron catorce, todas de módulos que pedían pantallas o aprobaban con un nombre inventado.
+- **When/Who:** 2026-09-02 · usuario + agente.
+- **Scope:** cualquier protección que haya que aplicar a todo lo que venga.
+- **Rel:** S-124 (un aplazamiento contado como postura), S-111 (una firma que no dice sobre qué texto se dio no caduca nunca).

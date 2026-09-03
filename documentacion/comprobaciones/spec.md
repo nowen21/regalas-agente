@@ -82,7 +82,7 @@ Comprobar y la puerta de publicación siguen por consola.
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ## 9. Marco normativo
 

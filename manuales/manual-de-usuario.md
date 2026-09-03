@@ -107,6 +107,7 @@ Estos términos aparecen en todas las pantallas. Se explican una vez acá.
 | Python 3.11 o superior | El lenguaje en que está escrita la plataforma | Escribir `python --version` en la consola |
 | Django | La biblioteca web que usa | Se instala con los pasos del punto 7 |
 | Un navegador | Cualquiera | — |
+| Una cuenta | Se crea en la máquina, en el punto 9.2 | `python manage.py crear_cuenta` |
 | Internet | **Solo una vez**, para traer los archivos de apariencia | Después funciona sin conexión |
 
 **No hace falta** ninguna base de datos aparte, ningún servidor, ninguna cuenta y ninguna contraseña.
@@ -205,27 +206,65 @@ Todas las pantallas tienen la misma forma:
 
 ## 9. Roles y permisos
 
-**Esta versión no los trae, y eso es una decisión aplazada, no una postura.**
+**Para entrar hace falta una cuenta y su contraseña.** Ninguna pantalla responde sin haber entrado.
 
-El [diseño](../cvds/diseno/README.md) lo dejó escrito en su sección 8: *«un solo usuario en esta versión, sin credenciales propias: quien tenga la máquina, entra»*. Y en la misma frase dejó escrito el límite de esa decisión:
+### 9.1 Los dos grupos
 
-> **El día que la plataforma corra en un servidor, esta sección se rehace entera. Con un solo usuario en su máquina, no tener credenciales es razonable; con dos, es una falla.**
-
-**Los permisos ya están definidos; lo que falta es construirlos.** El [análisis](../cvds/analisis-requisitos/README.md) fijó en su sección 6 qué puede hacer cada actor, incluido que **quien recibe un proyecto no entra a la plataforma**. Hoy nada de eso lo hace cumplir un programa: se cumple porque solo hay una persona.
-
-**Qué significa en la práctica, hoy:**
-
-| Qué | Cómo está |
+| Grupo | Qué puede hacer |
 |---|---|
-| Entrar a la plataforma | Cualquiera que tenga acceso a la máquina y sepa el puerto |
-| El nombre en `--quien "Nombre"` | **Se escribe y no se comprueba.** Deja constancia; no autentica |
-| Datos de personas | No se guardan (`RNF-06`) |
-| Credenciales | No se guardan, y hay un módulo que las tapa si aparecen (`RNF-05`) |
-| Registro de lo que se hace | Sí, y no se puede editar (`RNF-12`) |
+| **usuario** | Todo: administra, aprueba, corrige, publica versiones |
+| **agente** | Ver cualquier pantalla, escribir documentos y abrir fases |
 
-**Lo que sí está resuelto es la seguridad de los datos**: no hay credenciales ni datos personales guardados, y toda acción queda registrada. **Lo que falta es el control de acceso**, y está anotado como pendiente.
+**Lo que el agente no puede**, y por qué:
 
----
+| Acción | Por qué no |
+|---|---|
+| Aprobar un documento | La aprobación es de una persona. Un agente que aprueba lo que él mismo construyó la vuelve un trámite |
+| Publicar una versión de las reglas | Publicar obliga a todos los proyectos que heredan |
+| Derogar una regla | Cambia lo que se le exige a otros proyectos |
+| Administrar cuentas | Quien se da permisos a sí mismo no tiene permisos |
+
+**Son dos grupos y no cuatro**, aunque el análisis defina cuatro actores: un proyecto administrado no es una persona que entre, y quien recibe un proyecto tiene escrito que no puede entrar.
+
+### 9.2 Crear una cuenta
+
+```
+python manage.py crear_cuenta jose --grupo usuario
+python manage.py crear_cuenta el-agente --grupo agente
+```
+
+La contraseña **se pide sin mostrarla** y no se escribe en la orden: lo que se teclea en la línea de órdenes queda en el historial de la consola. Mínimo ocho caracteres.
+
+Para cambiar una que ya existe:
+
+```
+python manage.py crear_cuenta jose --cambiar-clave
+```
+
+### 9.3 Entrar y salir
+
+Al abrir la plataforma sale el formulario. **Si se pidió una pantalla concreta, después de entrar se llega a esa pantalla**, no a la portada.
+
+Para salir, el botón de la flecha en la barra de arriba, al lado del nombre de la cuenta.
+
+**Si la cuenta o la contraseña están mal, el mensaje es el mismo para los dos casos.** Es a propósito: decir «esa cuenta no existe» le confirmaría a cualquiera qué cuentas hay.
+
+### 9.4 En las órdenes de consola
+
+**Las órdenes no piden contraseña**: quien alcanza la consola de la máquina ya tiene la máquina. Lo que sí exigen es que **el nombre que se declara sea una cuenta que exista y tenga el permiso**.
+
+```
+python manage.py aprobar <proyecto> <documento> --quien jose
+```
+
+Con un nombre que no sea una cuenta, la orden se rechaza y dice por qué: una constancia diría quién lo hizo **sin probarlo**.
+
+### 9.5 Lo que esto no cubre
+
+- **No hay límite de intentos** para entrar, ni demora entre uno y otro.
+- **No hay recuperación por correo.** No hay correo: se restablece desde la consola.
+- **Las cuentas se pierden si se borra la base.** Es lo segundo que no se reconstruye leyendo el proyecto, junto con las aprobaciones.
+- **La plataforma sigue sin exponerse a la red.** Tener cuentas lo vuelve posible; no lo vuelve probado.
 
 ## 10. Módulos del sistema
 

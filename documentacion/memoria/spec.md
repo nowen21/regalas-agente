@@ -99,7 +99,7 @@ Corregir y dar de baja siguen por consola: son cambios de estado.
 
 ## 8. Permisos y autorización
 
-La misma confianza del resto: quien corre la orden es el usuario en su máquina.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ---
 

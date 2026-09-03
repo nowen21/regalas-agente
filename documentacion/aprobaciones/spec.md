@@ -82,7 +82,9 @@ Aprobar sigue por orden de consola: es un cambio de estado, y va con su confirma
 
 ## 8. Permisos y autorización
 
-Un solo usuario. **Quién aprueba se registra tal como se declara**, y por ahora no se comprueba contra nada: es la misma confianza que rige el resto de la plataforma.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
+
+**Y `quien` dejó de ser un texto libre:** tiene que ser una cuenta con permiso para aprobar. Una aprobación que dice quién la dio y no lo prueba es el mismo problema que este módulo vino a resolver en los documentos.
 
 ## 9. Marco normativo
 

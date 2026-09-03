@@ -14,6 +14,7 @@ import re
 from django.test import Client, TestCase
 
 from nucleo.proyectos.models import Proyecto
+from nucleo.acceso import para_probar
 
 # Lo que nunca puede llegar al navegador. **Solo las marcas de comentario**: las
 # de etiqueta y variable —`{%`, `{{`— aparecen legítimamente dentro del
@@ -26,6 +27,8 @@ class NingunaPantallaImprimeSusComentarios(TestCase):
 
     def setUp(self):
         self.cliente = Client()
+        # Todo exige haber entrado: la prueba entra como quien manda.
+        para_probar.como_usuario(self.cliente)
         Proyecto.objects.create(
             identificador="de-prueba", nombre="De prueba",
             ruta_codigo="/no-existe", ruta_normalizada="/no-existe",

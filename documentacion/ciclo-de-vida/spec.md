@@ -152,7 +152,7 @@ Llenar los huecos sigue por orden de consola: `que_le_falta` y `llenar_hueco`.
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias, igual que el resto de la plataforma. Lo que el registro distingue es **quién escribió**: el usuario o el agente.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ## 9. Marco normativo
 

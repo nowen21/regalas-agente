@@ -7,6 +7,7 @@ depender de que haya proyectos conectados.
 """
 from django.urls import path
 
+from nucleo.acceso import views as acceso
 from nucleo.almacen import views
 from nucleo.aprobaciones import views as aprobaciones
 from nucleo.avisos import views as avisos
@@ -26,6 +27,8 @@ urlpatterns = [
          name="importacion-reportes"),
     path("proyecto/<str:identificador>/reportes/<str:cuando>/",
          importacion.reporte, name="importacion-reporte"),
+    path("entrar/", acceso.Entrar.as_view(), name="entrar"),
+    path("salir/", acceso.Salir.as_view(), name="salir"),
     path("tablero/", avisos.tablero, name="avisos-tablero"),
     path("proyecto/<str:identificador>/fases/", ciclo_de_vida.fases,
          name="ciclo-fases"),

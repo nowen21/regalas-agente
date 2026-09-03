@@ -113,15 +113,52 @@
 
 ## 8. La seguridad
 
+> **Esta sección se rehizo el 2026-09-02.** La anterior decía «un solo usuario en esta versión, sin credenciales propias», y se aplazaba hasta el día que la plataforma corriera en un servidor. Ese aplazamiento se levantó antes de esa fecha, por decisión del usuario: *«el que yo lo use no significa que no pueda tener seguridad»*. Lo que sigue es lo que rige.
+
 | Qué se define | Cómo queda |
 |---|---|
-| Quién entra | Un solo usuario en esta versión, sin credenciales propias: quien tenga la máquina, entra |
-| Qué puede hacer cada perfil | No hay perfiles todavía: es la candidata C-2 del inventario |
-| Qué se cifra | Nada propio: no se guardan credenciales ni datos de personas |
-| Qué queda registrado para auditar | Toda acción que cambia algo, sin poder editarse |
+| Quién entra | **Quien tenga una cuenta y su contraseña.** Ninguna pantalla responde sin haber entrado |
+| Con qué se construye | **El sistema de autenticación de Django**, `django.contrib.auth`. No se escribe uno propio |
+| Qué puede hacer cada perfil | Dos grupos: **usuario** y **agente**, con los permisos de la sección 6 del [análisis](../analisis-requisitos/README.md) |
+| Qué se cifra | **Las contraseñas**, con el algoritmo que trae Django. Nada más: no se guardan credenciales de terceros ni datos de personas |
+| Qué queda registrado para auditar | Toda acción que cambia algo, sin poder editarse, y **con la cuenta que la hizo** |
 | Dónde viven las credenciales del usuario | Fuera del repositorio, y el enmascarado las tapa antes de que algo las escriba |
 
-> **El día que la plataforma corra en un servidor, esta sección se rehace entera.** Con un solo usuario en su máquina, no tener credenciales es razonable; con dos, es una falla.
+### 8.1 Por qué el de Django y no uno propio
+
+**Porque escribir autenticación es la forma más común de escribirla mal.** Guardar contraseñas, compararlas sin filtrar tiempos, expirar sesiones, invalidarlas al cambiar la clave: cada una tiene una manera correcta y varias que parecen correctas. Django ya las tiene resueltas y probadas por mucha más gente de la que va a mirar este repositorio.
+
+**Y porque el modelo encaja sin forzarlo.** Los perfiles de la sección 6 del análisis son **grupos** de Django, y lo que cada uno puede hacer son **permisos**. No hace falta inventar ninguna tabla.
+
+### 8.2 Cuáles de los cuatro actores son cuentas
+
+**Dos de los cuatro, y decirlo evita construir de más.**
+
+| Actor del análisis | ¿Es una cuenta? | Por qué |
+|---|---|---|
+| El usuario | **Sí**, grupo `usuario` | Administra, aprueba, corrige y publica |
+| El agente | **Sí**, grupo `agente` | Entra a leer reglas y a escribir documentos |
+| Un proyecto administrado | **No** | No es una persona ni un programa que entre: es una carpeta que se observa |
+| Quien recibe un proyecto | **No, y a propósito** | El análisis dice que **no puede entrar a la plataforma**. Recibe el expediente ya generado, por fuera |
+
+### 8.3 Qué separa a los dos grupos
+
+De la sección 6 del análisis, lo que el agente **no** puede hacer:
+
+| Acción | `usuario` | `agente` | Por qué |
+|---|---|---|---|
+| Ver cualquier pantalla | Sí | Sí | Leer no cambia nada |
+| Escribir documentos y abrir fases | Sí | Sí | Es su trabajo |
+| **Aprobar un documento** | **Sí** | **No** | Aprobar es del usuario: `00·N1` |
+| **Publicar una versión de las reglas** | **Sí** | **No** | Publicar obliga a otros proyectos |
+| **Derogar una regla** | **Sí** | **No** | Lo mismo |
+| **Administrar cuentas** | **Sí** | **No** | Quien se da permisos a sí mismo no tiene permisos |
+
+### 8.4 Lo que este diseño NO resuelve
+
+- **La plataforma sigue sin exponerse a la red** (`DA-03`). Tener cuentas no la vuelve un servidor: lo vuelve posible sin rehacerla, que es lo que pide `RNF-09`.
+- **Las órdenes de consola no piden contraseña.** Quien alcanza la consola de la máquina ya tiene la máquina. Lo que sí cambia es que **el nombre que se declara tiene que ser una cuenta que exista**: se acabó el campo de texto libre.
+- **No hay recuperación de contraseña por correo.** No hay correo. Se restablece desde la consola de la máquina.
 
 ## 9. El entorno técnico y los estándares
 

@@ -96,7 +96,7 @@ Una pantalla dentro de la vista de un proyecto: pedir el expediente, ver las tre
 
 ## 8. Permisos y autorización
 
-Un solo usuario, sin credenciales propias, igual que el resto de la plataforma.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
 
 ## 9. Marco normativo
 

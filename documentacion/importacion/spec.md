@@ -55,7 +55,9 @@ Pantalla `P-11` del [diseño de interfaz](../../cvds/diseno/diseno-de-interfaz.m
 
 ## 8. Permisos y autorización
 
-Un solo usuario. Traer es una acción que cambia el estado de la plataforma, así que pide confirmación y queda registrada en la auditoría.
+**Desde `EP-022` hay cuentas, dos grupos y permisos.** Quién puede qué está en la [especificación de Acceso](../acceso/spec.md) §8. Acá vale la regla general: **el agente no aprueba, no publica versiones, no deroga reglas y no administra cuentas.**
+
+Traer cambia el estado de la plataforma, así que pide confirmación y queda registrada en la auditoría.
 
 ## 9. Marco normativo
 
