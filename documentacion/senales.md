@@ -1286,3 +1286,14 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · usuario + agente.
 - **Scope:** cualquier pantalla, y cualquier servicio que se levante en una máquina donde ya corren otros.
 - **Rel:** S-122 (el `.env` existía y nadie lo leía), S-119 (el caso vacío se diseña, no se hereda).
+
+## S-124 · Un aplazamiento contado como postura: «no hay permisos» donde el diseño decía «todavía no»  ·  error-resuelto · activa
+- **What:** el manual de uso decía *«Cimiento no tiene usuarios, ni contraseñas, ni permisos. Corre en la máquina de quien lo usa y **confía en quien lo abre**»*. El usuario lo leyó y respondió: **«el que yo lo use no significa que no pueda tener seguridad»**. Tenía razón.
+- **Why:** los documentos no decían eso. El análisis **ya había definido los permisos** de cada actor en su sección 6 —incluido que quien recibe un proyecto no entra a la plataforma—, y el diseño los **aplazó** en su sección 8 con una condición escrita al lado: *«el día que la plataforma corra en un servidor, esta sección se rehace entera. Con un solo usuario en su máquina, no tener credenciales es razonable; **con dos, es una falla**»*. El manual se quedó con la primera mitad y borró la segunda.
+- **Also:** **es el mismo error que este proyecto lleva toda la jornada cazando en otros, cometido al escribir.** Un hueco presentado como decisión se ve exactamente igual que una decisión, y con más aplomo: «confía en quien la abre» suena a criterio, y era una tarea sin hacer. Lo mismo que la columna escrita a mano, que el aviso que salía vacío, que el reporte sobre una copia vieja.
+- **And:** la confusión escondía algo que sí estaba bien resuelto. **La seguridad de los datos existe** —no se guardan credenciales (`RNF-05`), no se guardan datos de personas (`RNF-06`), y toda acción queda registrada sin poder editarse (`RNF-12`)—. Lo que falta es **el control de acceso**, que es otra cosa. Meterlas en la misma frase hacía parecer descuidado lo cuidado, y decidido lo pendiente.
+- **Where:** `manuales/manual-de-usuario.md` §9 · `cvds/despliegue/acta-de-entrega.md` · `notas-de-version.md` · `manual-tecnico-y-de-operacion.md` · pendiente [94](../pendientes/94-el-control-de-acceso-esta-definido-y-no-construido.md).
+- **Learned:** **al escribir que algo no existe, hay que ir a buscar si alguien decidió que no exista, y con qué condición.** Un aplazamiento tiene fecha de vencimiento escrita; una postura, no. Y cuando la condición aparece —acá, «el día que corra en un servidor», que es el `RNF-09`—, **se copia entera o no se copia**: quedarse con la mitad tranquilizadora es peor que no decir nada.
+- **When/Who:** 2026-09-02 · usuario + agente.
+- **Scope:** cualquier documento que describa lo que un sistema no hace.
+- **Rel:** S-118 (la columna se escribía a mano mientras el programa ya sabía la respuesta), S-121 (el reporte respondía sobre una copia vieja).

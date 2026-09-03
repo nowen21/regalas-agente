@@ -105,4 +105,4 @@
 
 - **Seis módulos no tienen pantalla:** Auditoría, Medición, Expediente, Reglas, Seguridad y Almacén. Se operan por consola.
 - **Nada se cambia desde la pantalla.** Aprobar, corregir un recuerdo o abrir una fase son cambios de estado y van por consola, con su confirmación.
-- **No hay usuarios ni permisos.** La plataforma corre en la máquina de quien la usa, y confía en quien la corre.
+- **El control de acceso no está construido.** El análisis definió los permisos de cada actor y el diseño los aplazó mientras haya un solo usuario en una sola máquina. Con dos, el propio diseño lo llama una falla.

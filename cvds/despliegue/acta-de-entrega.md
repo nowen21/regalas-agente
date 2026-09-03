@@ -54,7 +54,7 @@
 | **Verificada quiere decir que la fase cerró con veredicto «Cumple»** | No que alguien de afuera haya auditado nada. Nadie ajeno ha revisado este producto |
 | **Seis módulos no tienen pantalla** | Auditoría, Medición, Expediente, Reglas, Seguridad y Almacén se operan por consola |
 | **Nada se cambia desde la pantalla** | Los cambios de estado van por consola, con su confirmación |
-| **No hay usuarios ni permisos** | La plataforma confía en quien la corre |
+| **El control de acceso está aplazado, no descartado** | El análisis definió los permisos de cada actor (§6) y el diseño los aplazó a «un solo usuario en esta versión» (§8). **El mismo diseño dice que con dos usuarios eso es una falla.** Hoy no hay login ni permisos en el código |
 | **No está puesta en ningún servidor** | Corre en la máquina de quien la usa, y el diseño no contempla otra cosa |
 | **33 fases tienen su frase y su tabla en desacuerdo** | Son fases cerradas, y arreglarlas sería reescribirlas |
 | **La medición inicial no existe** | El objetivo del proyecto era reducir el tiempo de revisión, y **no hay un antes contra el cual comparar**: debió tomarse antes de empezar y no se tomó |

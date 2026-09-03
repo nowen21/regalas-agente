@@ -205,9 +205,25 @@ Todas las pantallas tienen la misma forma:
 
 ## 9. Roles y permisos
 
-**No hay.** Cimiento no tiene usuarios, ni contraseñas, ni permisos. Corre en la máquina de quien lo usa y confía en quien lo abre.
+**Esta versión no los trae, y eso es una decisión aplazada, no una postura.**
 
-Esto tiene una consecuencia que conviene saber: cuando una orden pide `--quien "Nombre"`, ese nombre **se escribe y no se comprueba**. Sirve para dejar constancia, no para autenticar a nadie.
+El [diseño](../cvds/diseno/README.md) lo dejó escrito en su sección 8: *«un solo usuario en esta versión, sin credenciales propias: quien tenga la máquina, entra»*. Y en la misma frase dejó escrito el límite de esa decisión:
+
+> **El día que la plataforma corra en un servidor, esta sección se rehace entera. Con un solo usuario en su máquina, no tener credenciales es razonable; con dos, es una falla.**
+
+**Los permisos ya están definidos; lo que falta es construirlos.** El [análisis](../cvds/analisis-requisitos/README.md) fijó en su sección 6 qué puede hacer cada actor, incluido que **quien recibe un proyecto no entra a la plataforma**. Hoy nada de eso lo hace cumplir un programa: se cumple porque solo hay una persona.
+
+**Qué significa en la práctica, hoy:**
+
+| Qué | Cómo está |
+|---|---|
+| Entrar a la plataforma | Cualquiera que tenga acceso a la máquina y sepa el puerto |
+| El nombre en `--quien "Nombre"` | **Se escribe y no se comprueba.** Deja constancia; no autentica |
+| Datos de personas | No se guardan (`RNF-06`) |
+| Credenciales | No se guardan, y hay un módulo que las tapa si aparecen (`RNF-05`) |
+| Registro de lo que se hace | Sí, y no se puede editar (`RNF-12`) |
+
+**Lo que sí está resuelto es la seguridad de los datos**: no hay credenciales ni datos personales guardados, y toda acción queda registrada. **Lo que falta es el control de acceso**, y está anotado como pendiente.
 
 ---
 

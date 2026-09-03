@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Dice **cómo se pone a andar Cimiento, cómo se opera y qué hacer cuando algo falla**. Lo que el sistema hace está en las [especificaciones de módulo](../../documentacion/); acá está cómo se corre.
 
-> **Alcance real, dicho de una:** Cimiento corre en la máquina de quien lo usa. No hay servidor, no hay usuarios, no hay despliegue. Este manual describe eso, y no un montaje que no existe.
+> **Alcance real, dicho de una:** Cimiento corre en la máquina de quien lo usa. No hay servidor y no hay control de acceso construido. Este manual describe eso, y no un montaje que no existe. **No es que no haga falta:** `RNF-09` pide que pueda correr en un servidor, y el día que lo haga el control de acceso deja de ser opcional.
 
 ---
 
@@ -114,5 +114,5 @@ Y traer de nuevo cada proyecto desde su pantalla, que vuelve a copiar sus docume
 ## 7. Qué NO cubre este manual
 
 - **Poner Cimiento en un servidor.** No se ha hecho, y el diseño no lo contempla: corre en la máquina de quien lo usa.
-- **Varios usuarios a la vez.** No hay cuentas ni permisos, y `Qué está aprobado` confía en quien escribe el nombre.
+- **Varios usuarios a la vez.** No hay cuentas ni permisos **construidos** — el análisis sí los definió, en su sección 6—, y `Qué está aprobado` registra el nombre que se escriba sin comprobarlo. **El diseño advierte que con dos usuarios esto es una falla**, no una limitación aceptable.
 - **Recuperar una aprobación borrada de la base.** Es lo único no reconstruible; por eso es lo único que hay que respaldar aparte del repositorio.

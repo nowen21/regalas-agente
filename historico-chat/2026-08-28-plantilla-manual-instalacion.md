@@ -4783,3 +4783,68 @@ El validador atrapó lo que se me pasó: **una carpeta nueva de primer nivel tie
 
 ### 217 · Usuario — 2026-09-02 18:51:36
 > si
+
+**Agente** — 2026-09-02 18:52:33
+<!-- agente: 5d79e8ca-218c-4c31-896f-08b0dcf6ee5c -->
+
+Commit `15ab873`. El enganche rechazó el primer intento por tres puntos suspensivos de un solo carácter en la prosa; los `«…»` de la marca sí se conservaron, que es como se escribe.
+
+¿Lo subo?
+
+### 218 · Usuario — 2026-09-02 18:54:42
+> si
+
+**Agente** — 2026-09-02 18:55:16
+<!-- agente: 5f358d5f-ef7d-42f8-a970-044d341c1c88 -->
+
+Subido: `09d9b6f..15ab873`.
+
+El manual queda en [manuales/manual-de-usuario.md](manuales/manual-de-usuario.md), y la plataforma sigue andando en `http://127.0.0.1:8015/`.
+
+### 219 · Usuario — 2026-09-02 18:55:46
+> no entiendo de dónde sacó esto: "Cimiento no tiene usuarios, ni contraseñas, ni permisos. Corre en la máquina de quien lo usa y confía en quien lo abre." el que yo lo use no significa que no pueda tener seguridad
+
+**Agente** — 2026-09-02 19:01:33
+<!-- agente: d58378bb-6fc1-488b-b043-a7c08b38e8e3 -->
+
+Buena pregunta. Déjeme ver de dónde salió, porque puede que lo haya inferido yo.
+
+Tiene razón, y el error es grave. Déjeme comprobarlo bien antes de decir nada más.
+
+Comprobado, y me equivoqué en algo que importa.
+
+Encontré de dónde salió, y el resumen es este: **la decisión existe, pero yo la conté mal.**
+
+`cvds/diseno/README.md` §8 dice: *«Un solo usuario en esta versión, sin credenciales propias»* — y agrega algo que yo omití:
+
+> **El día que la plataforma corra en un servidor, esta sección se rehace entera. Con un solo usuario en su máquina, no tener credenciales es razonable; con dos, es una falla.**
+
+Y el análisis, en §6, **ya definió permisos por actor** — incluido *«Quien recibe un proyecto: no puede entrar a la plataforma»*. Nada de eso está construido: no hay `django.contrib.auth`, ni login, ni un solo permiso en el código.
+
+Usted tiene razón en lo de fondo. Escribí *«confía en quien la abre»* como si la seguridad fuera innecesaria, cuando lo que dicen los documentos es que **está aplazada** — y que con un segundo usuario es una falla. Lo corrijo.
+
+Corregido en cuatro documentos, y abierto el pendiente.
+
+**Dónde estaba el error:** los documentos decían *«aplazado, y con dos usuarios es una falla»*. Yo escribí *«confía en quien la abre»* — me quedé con la mitad tranquilizadora y borré la condición. Un aplazamiento tiene fecha de vencimiento escrita; una postura, no.
+
+**Y la frase escondía algo que sí está bien resuelto.** Conviene separarlo:
+
+| | Cómo está |
+|---|---|
+| Credenciales guardadas | **Ninguna**, y hay un módulo que las tapa si aparecen |
+| Datos de personas | **Ninguno** |
+| Registro de lo que se hace | **Sí**, y no se puede editar |
+| **Control de acceso** | **No construido.** Ni login, ni permisos, ni comprobación de quién aprueba |
+
+Los tres primeros son requisitos cumplidos. El cuarto es el que falta, y ahora está escrito como tal.
+
+**Lo que lo vuelve urgente y no cosmético:** `RNF-09` pide que la plataforma pueda correr en un servidor sin rehacer la aplicación. Ese es exactamente el momento en que el aplazamiento deja de sostenerse — y hasta hoy nadie lo había anotado. Quedó como **pendiente 94, prioridad P1**.
+
+Y un detalle que sale del mismo hueco: `aprobar --quien "Nombre"` **escribe el nombre y no lo comprueba**. Con una persona da igual; con dos, la firma deja de valer justo cuando empieza a hacer falta.
+
+Señal `S-124`: es el mismo error que llevo toda la sesión encontrando en otros —un hueco presentado como decisión— cometido al escribir.
+
+¿Commiteo?
+
+### 220 · Usuario — 2026-09-02 19:03:58
+> si
