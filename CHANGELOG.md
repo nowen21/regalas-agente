@@ -11,6 +11,28 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.3.0 ,  2026-09-16
+
+**El agente trabajó una sesión completa sin reglas, y el banner decía que las tenía.** El arranque las carga en el contexto por un canal que tiene límite de tamaño, y pasarse de ese límite no recorta: la herramienta **descarta el paquete entero**, lo guarda en un archivo y sigue. Nadie avisa. El proyecto `master-ciberseguridad` lo encontró el 2026-09-15 con un paquete de **82,4 KB**: reglas 62,3, índice del resto 15,6, memoria 3,8, histórico 0,7.
+
+**Lo que hacía el fallo invisible era el propio techo de la prueba.** Vigilaba 90 KB cuando el canal corta cerca de 80, así que los 82,4 la aprobaban y aun así no llegaban. Un techo por encima del límite del canal no es un techo.
+
+**MENOR** (aditivo): un proyecto al día no tiene que hacer nada más que volver a correr la instalación, que le pone el enganche nuevo. Ninguna norma cambió.
+
+**El recorte tiene un orden, y no es negociable:** primero se colapsa el índice del resto de las reglas a un renglón por capítulo, después se quita entero, y **las reglas literales no se tocan nunca**. Un paquete sin índice deja al agente sin el mapa del resto; un paquete sin reglas lo deja creyendo que las tiene. El arranque de `master-ciberseguridad` quedó en **69,7 KB** con las reglas completas.
+
+**Y lo que no cupo se dice por los dos canales**, el del usuario y el del agente. Un recorte callado es el mismo defecto otra vez.
+
+**Aparte, el volcado del arranque no alcanza aunque entre**, y lo decía `cargador.py` desde antes: llenar la ventana adelanta el resumen automático del contexto, y lo primero que se resume es justo lo inyectado al abrir. Por eso entra un enganche que recuerda en **cada turno** las cuatro reglas que rigen todos los turnos, en 969 bytes, y que además devuelve al turno siguiente la cuenta de `hook_redaccion.py`, que hasta hoy se imprimía donde ni el usuario ni el modelo la veían.
+
+- `validadores/cargador.py`, con la nueva `paquete()`, que recibe el tope del canal, recorta en ese orden y devuelve por escrito qué dejó afuera. `contexto()` queda como envoltura: ningún llamador anterior cambia.
+- `adaptadores/claude-code/hook_sesion.py`, donde el tope vive en el adaptador, que es quien conoce la herramienta (`TOPE_DEL_CANAL`, 72 KB). Descuenta lo que viaja al lado, mide lo que de verdad manda y avisa lo que no cupo.
+- `adaptadores/claude-code/hook_reglas.py`, **nuevo**, enganche `UserPromptSubmit`. Saca el encabezado de cada regla de su archivo, así que no duplica la norma ni envejece (`20·M2`).
+- `validadores/instalar.py`, que registra el enganche nuevo en todos los proyectos.
+- `validadores/pruebas.py`, con dos casos nuevos: el paquete **con tope** cabe conservando `N1` e `ID8`, y todo recorte se declara.
+- `adaptadores/claude-code/hook_estacion.py`, que ahora llama a `preparar_salida()`, que le faltaba desde que nació. Imprime, y sin eso su salida no se puede decodificar por una tubería.
+- `validadores/pruebas.py`: tres casos buscaban `hook_estacion.py` en `validadores/` desde que se mudó al adaptador el 2026-08-31. La suite queda en **547 en verde**.
+
 ## 37.2.2 — 2026-09-02
 
 **Un documento que ya estaba escrito se contaba como si no existiera.** La revisión del expediente buscaba cada entregable por el nombre de su archivo, y a uno de ellos el estándar le da dos nombres distintos: lo llama «documentación de API» en un lado y «contrato de la interfaz» en el otro.

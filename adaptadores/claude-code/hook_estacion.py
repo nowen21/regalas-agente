@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.join(
     "validadores"))
 
 import estacion_commit                                   # noqa: E402
+from comun import preparar_salida                         # noqa: E402
 
 
 def raiz_pedida(argv):
@@ -36,6 +37,10 @@ def _git(raiz, *args):
 
 
 def main():
+    # Este enganche **imprime**, y sin esto la salida sale en la codificación
+    # de la consola: por una tubería ni se puede decodificar. Es la misma
+    # razón por la que lo llaman los otros quince.
+    preparar_salida()
     raiz = raiz_pedida(sys.argv[1:])
 
     hash_corto = _git(raiz, "rev-parse", "--short", "HEAD").stdout.strip()

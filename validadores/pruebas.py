@@ -2068,6 +2068,37 @@ class RepartoDeLasReglas(unittest.TestCase):
         self.assertGreater(kb, 1)
         self.assertLess(kb, 90, "el arranque creció más de lo medido en la fase")
 
+    # CP-006 · con el tope del canal, el paquete cabe — y las reglas siguen
+    def test_con_tope_el_paquete_cabe_en_el_canal(self):
+        """**Este techo es el que faltaba.**
+
+        El de arriba vigila 90 KB, y el canal del adaptador corta cerca de 80:
+        el 2026-09-15 pasó un paquete de 82,4 KB, que aprobaba esta prueba y
+        aun así **no llegó al agente**. La herramienta lo guardó en un archivo
+        y el banner siguió diciendo «Estándar cargado», así que la sesión
+        trabajó sin reglas creyendo que las tenía.
+
+        Un techo por encima del límite del canal no es un techo.
+        """
+        tope = 72 * 1024
+        texto, avisos = cargador.paquete(comun.RAIZ, True, tope)
+        if not texto:
+            self.skipTest("sin base/ en la raíz de la corrida")
+        self.assertLessEqual(len(texto.encode("utf-8")), tope,
+                             f"el paquete no cabe en el canal: {avisos}")
+        # Lo que se recorta es el índice, nunca las reglas.
+        for marca in ("## N1", "## ID8", "CARGADAS, OBLIGATORIAS"):
+            self.assertIn(marca, texto)
+
+    def test_el_recorte_se_dice_en_vez_de_hacerse_en_silencio(self):
+        """**Un recorte callado es el defecto otra vez.** Lo que se pierde hay
+        que decirlo, porque es lo único que permite darse cuenta."""
+        raiz = self._base("00-nucleo.md", "05-tema/base.md", "06-otro/base.md")
+        # Un tope que solo alcanza para el núcleo obliga a recortar el índice.
+        texto, avisos = cargador.paquete(raiz, True, tope=1)
+        self.assertTrue(avisos, "recortó sin decir qué dejó afuera")
+        self.assertIn("Cuerpo de 00-nucleo.md", texto)
+
     # CP-005 · el sello no viaja al arranque
     def test_el_arranque_no_lleva_los_bloques_de_checklist(self):
         """**El sello no le sirve al agente para obedecer.**
@@ -4582,7 +4613,7 @@ class ElHashDelCommitSeAnotaSolo(_ProyectoDePrueba):
             subprocess.run(["git"] + orden, cwd=raiz, capture_output=True)
         ganchos = os.path.join(raiz, ".githooks")
         os.makedirs(ganchos)
-        guion = os.path.join(self.VALIDADORES, "hook_estacion.py")
+        guion = os.path.join(self.ADAPTADOR, "hook_estacion.py")
         archivo = os.path.join(ganchos, "post-commit")
         with io.open(archivo, "w", encoding="utf-8", newline="\n") as f:
             f.write('#!/bin/sh\npython "%s" --raiz "$(pwd)" || true\nexit 0\n'
@@ -4674,7 +4705,7 @@ class ElHashDelCommitSeAnotaSolo(_ProyectoDePrueba):
         máquina que no lo tiene instalado: sin la red, revienta con traza y
         código 1 justo después de un commit correcto.
         """
-        guion = os.path.join(self.VALIDADORES, "hook_estacion.py")
+        guion = os.path.join(self.ADAPTADOR, "hook_estacion.py")
         entorno = {"SYSTEMROOT": os.environ.get("SYSTEMROOT", ""),
                    "PATH": "", "PATHEXT": os.environ.get("PATHEXT", "")}
         salida = subprocess.run(

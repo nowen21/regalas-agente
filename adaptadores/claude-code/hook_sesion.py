@@ -45,6 +45,23 @@ import recuerdos                                # noqa: E402
 import sesion                                   # noqa: E402
 from comun import RAIZ, preparar_salida         # noqa: E402
 
+# El tope del canal, en bytes. **Pasarse no recorta: tira el paquete entero.**
+#
+# Medido el 2026-09-15 en `master-ciberseguridad`: un `additionalContext` de
+# 82,4 KB no llegó al agente. La herramienta lo guardó en un archivo, le dejó
+# 2 KB de vista previa y no dijo que hubiera perdido nada; el banner siguió
+# diciendo «Estándar cargado» y la sesión trabajó sin reglas.
+#
+# **El número exacto del límite no está documentado.** Lo que se sabe es lo
+# medido: 82,4 KB no pasaron, y la herramienta reportó el corte en 80,5. Así
+# que el tope queda un 10% por debajo de ahí, que es margen y no frontera.
+#
+# **No se puede apretar más de lo que pesan las reglas.** Solas ocupan 62,3 KB,
+# y son lo único que no se recorta: un tope por debajo de eso obligaría a
+# botar el índice en cada arranque sin necesidad. Si el paquete vuelve a
+# perderse por tamaño, se baja este número y se recortará el índice solo.
+TOPE_DEL_CANAL = 72 * 1024
+
 
 def raiz_pedida(argv):
     if "--raiz" in argv:
@@ -76,11 +93,9 @@ def main():
     # pero recibe las reglas igual que cualquiera —sin el gate `F13`, que es
     # para proyectos— más su memoria y su histórico, que son los del usuario.
     if os.path.normcase(proyecto) == os.path.normcase(RAIZ):
-        try:
-            reglas = cargador.contexto(RAIZ, True)
-        except Exception as e:  # noqa: BLE001 — nunca romper el arranque
-            reglas = f"[No se pudieron cargar las reglas base: {e}]"
-        _responder("", [], f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas)
+        reglas, avisos = _reglas(True, del_proyecto)
+        _responder("", [], f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas,
+                   avisos)
         return 0
 
     try:
@@ -93,17 +108,31 @@ def main():
     # Las reglas se cargan aunque la revisión encuentre fallas: un CLAUDE.md
     # desactualizado no es motivo para trabajar sin reglas. La excepción es
     # F13, que es un gate — ahí `cargador` decide solo qué corresponde dar.
-    try:
-        reglas = cargador.contexto(RAIZ, instalar.cumple_f13(proyecto))
-    except Exception as e:      # noqa: BLE001 — nunca romper el arranque
-        reglas = f"[No se pudieron cargar las reglas base: {e}]"
+    reglas, avisos = _reglas(instalar.cumple_f13(proyecto), del_proyecto)
 
     _responder(sesion.resumen(proyecto, hallazgos), hallazgos,
-               f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas)
+               f"{reglas}\n\n{del_proyecto}" if del_proyecto else reglas,
+               avisos)
     return 0
 
 
-def _responder(resumen, hallazgos, reglas):
+def _reglas(gate_ok, del_proyecto):
+    """Las reglas recortadas a lo que cabe, y los avisos de lo que no cupo.
+
+    **El tope se le descuenta lo que viaja al lado.** La memoria y el índice
+    del histórico van en el mismo `additionalContext`, así que medir solo las
+    reglas contra el tope dejaría pasar un paquete que igual se pierde. Eso es
+    exactamente lo que ocurrió el 2026-09-15: las reglas pesaban 62,3 KB y lo
+    que se perdió fueron los 82,4 del total.
+    """
+    margen = TOPE_DEL_CANAL - len(del_proyecto.encode("utf-8")) - 1024
+    try:
+        return cargador.paquete(RAIZ, gate_ok, max(margen, 8 * 1024))
+    except Exception as e:      # noqa: BLE001 — nunca romper el arranque
+        return f"[No se pudieron cargar las reglas base: {e}]", []
+
+
+def _responder(resumen, hallazgos, reglas, avisos=()):
     """Sale por dos canales, a propósito.
 
     `systemMessage` lo muestra Claude Code al usuario. `additionalContext` se
@@ -114,6 +143,11 @@ def _responder(resumen, hallazgos, reglas):
 
     Las reglas van **solo** por `additionalContext`. En `systemMessage` serían
     decenas de KB de banner en la pantalla del usuario.
+
+    **Lo que no cupo sí se dice por los dos canales.** Un recorte silencioso es
+    el defecto del 2026-09-15 otra vez: el banner decía que todo estaba
+    cargado mientras el paquete se perdía. Un aviso que nadie ve no es un
+    aviso.
     """
     partes = []
     if resumen:
@@ -123,6 +157,24 @@ def _responder(resumen, hallazgos, reglas):
     if reglas:
         partes.append(reglas)
     contexto = "\n\n".join(partes)
+
+    # La última comprobación es sobre lo que de verdad se manda, ya armado.
+    # Medir solo las reglas dejaba afuera el encabezado de la revisión, la
+    # memoria y el histórico, que viajan en el mismo campo.
+    exceso = len(contexto.encode("utf-8")) - TOPE_DEL_CANAL
+    avisos = list(avisos)
+    if exceso > 0:
+        avisos.append(
+            f"el paquete quedó {exceso // 1024 + 1} KB por encima del tope del "
+            "canal y la herramienta puede descartarlo entero. Si esta sesión "
+            "arranca sin reglas, es esto: leerlas con Read desde `base/00-*` y "
+            "`base/01-*`, y reportarlo (`02·F24`)")
+
+    if avisos:
+        pie = "\n".join(f"  - {a}" for a in avisos)
+        contexto += f"\n\n[LO QUE NO CUPO EN EL ARRANQUE]\n{pie}"
+        resumen = (f"{resumen}\n" if resumen else "") + \
+            "[arranque] no cupo todo en el canal:\n" + pie
 
     print(json.dumps({
         "systemMessage": resumen,

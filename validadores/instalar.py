@@ -272,6 +272,16 @@ HOOKS_CLAUDE = [
      "Anotando en el histórico...", "--modo agente"),
     ("UserPromptSubmit", None, "hook_checklist.py",
      "Revisando la instalación del agente...", ""),
+    # Medido el 2026-09-15 en `master-ciberseguridad`: el paquete del arranque
+    # pesaba 82,4 KB, la herramienta corta cerca de los 80, lo guardó en un
+    # archivo y el agente trabajó sin reglas mientras el banner decía
+    # «Estándar cargado». Y aun cuando entra, `cargador.py` advierte que lo
+    # inyectado al arrancar es lo primero que el contexto resume. Este
+    # enganche recuerda en cada turno las reglas de cada turno, y devuelve al
+    # turno siguiente la cuenta que `hook_redaccion.py` imprime donde nadie
+    # la ve.
+    ("UserPromptSubmit", None, "hook_reglas.py",
+     "Recordando las reglas de cada turno...", ""),
     ("SessionStart", None, "hook_recuerdos.py",
      "Recogiendo la memoria del agente...", ""),
     ("PostToolUse", "Write|Edit", "hook_recuerdos.py",
