@@ -11,7 +11,27 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
-## 37.3.0 ,  2026-09-16
+## 37.4.0 — 2026-09-16
+
+**Del `02` en adelante, las reglas llegaban solo como índice y con una orden: leer el archivo antes de tocar el tema.** Esa orden depende de que el agente se acuerde de cumplirla, y cuando no se acuerda trabaja sin la regla y nadie se entera. Es el mismo patrón que acababa de fallar en el arranque: una promesa en vez de un hecho.
+
+**MENOR** (aditivo): un proyecto al día vuelve a correr la instalación y ya. Ninguna norma cambió, y lo que se recupera es el texto que la regla ya tenía.
+
+**Ahora el mensaje del usuario decide qué reglas llegan.** `recuperar.py` lo lee y trae el texto completo de las que ese mensaje pide, cada una con el motivo por el que entró: la cita explícita, un disparador, la semejanza con su título, o la cadena de lo que extiende o deroga. Medido el 2026-09-16: «hola» trae 0 reglas, «haga commit y suba» trae `N2` más tres del `09` en 3,0 KB, y un pedido destructivo trae `N4`, `N5` y `N7`. De 1 a 4 KB por mensaje, contra los 82,4 KB que el arranque mandaba de una sola vez.
+
+**Lo que no se puede fallar no se decide por semejanza.** La palabra «commit» no aparece en el título de `N2`, así que un recuperador que solo compare palabras la deja afuera justo cuando más importa. Las blindadas y los temas con capítulo propio entran por lista.
+
+**Y un capítulo no entra entero.** El primer intento traía las once reglas del `09` ante la palabra «commit», que es casi lo mismo que mandar el índice y deja al agente buscando cuál aplica. Entran sus mejores contra el mensaje, y si ninguna destaca el capítulo queda como puntero.
+
+**Ninguna derogada se inyecta.** Obedecer la vieja creyendo que rige es peor que no tener ninguna.
+
+**No hay archivo de índice, a propósito.** Armarlo desde las reglas cuesta 0,20 s para las 257. Guardarlo ahorraría eso y agregaría lo que este repositorio ya sabe que duele: una copia que queda vieja sin avisar.
+
+- `validadores/recuperar.py`, **nuevo**. El recuperador, con su presupuesto y con lo que deja afuera dicho por escrito.
+- `adaptadores/claude-code/hook_reglas.py`, que lo llama en cada turno. Si el recuperador falla, el turno sigue con el recordatorio fijo.
+- `validadores/pruebas.py`, con diez casos. El primero es que ante un saludo no traiga nada: un recuperador que siempre trae algo enseña a ignorarlo. La suite queda en **557 en verde**.
+
+## 37.3.0 — 2026-09-16
 
 **El agente trabajó una sesión completa sin reglas, y el banner decía que las tenía.** El arranque las carga en el contexto por un canal que tiene límite de tamaño, y pasarse de ese límite no recorta: la herramienta **descarta el paquete entero**, lo guarda en un archivo y sigue. Nadie avisa. El proyecto `master-ciberseguridad` lo encontró el 2026-09-15 con un paquete de **82,4 KB**: reglas 62,3, índice del resto 15,6, memoria 3,8, histórico 0,7.
 

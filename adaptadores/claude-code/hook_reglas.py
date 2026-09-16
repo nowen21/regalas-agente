@@ -34,6 +34,13 @@ cambia solo; si la renombra, también. Un resumen escrito a mano acá se
 convertiría en una segunda versión de la norma, y la que manda es la del
 capítulo (`20·M2`).
 
+**Y recupera las reglas que pide el mensaje.** Del `02` en adelante las reglas
+llegan al arranque solo como índice, con la orden de leer el archivo antes de
+tocar el tema. Esa orden depende de que el agente se acuerde, y cuando no se
+acuerda trabaja sin la regla. `recuperar.py` lee el mensaje y trae el texto
+completo de las que ese mensaje pide, con su presupuesto y diciendo por qué
+entró cada una.
+
 **El recordatorio va al agente, no a la pantalla.** Es contexto, no alerta: por
 eso sale por `additionalContext` en todos los turnos sin cansar a nadie. Por
 `systemMessage` sale **solo** la medición, y solo cuando hay algo que decir —
@@ -54,6 +61,7 @@ sys.path.insert(0, os.path.join(
     "validadores"))
 
 import historico                                    # noqa: E402
+import recuperar                                    # noqa: E402
 import redaccion                                    # noqa: E402
 from comun import RAIZ, leer, preparar_salida       # noqa: E402
 
@@ -161,6 +169,18 @@ def medicion(raiz, entrada):
         return ""
 
 
+def reglas_del_mensaje(entrada):
+    """Las reglas que pide este mensaje, o `""`.
+
+    Nunca cuesta el turno: si el recuperador falla, el turno sigue con el
+    recordatorio fijo, que es lo que no puede faltar.
+    """
+    try:
+        return recuperar.como_texto(entrada.get("prompt", ""), RAIZ)
+    except Exception:                     # noqa: BLE001
+        return ""
+
+
 def main():
     preparar_salida()
     entrada = _entrada()
@@ -171,6 +191,10 @@ def main():
     aviso = recordatorio(RAIZ)
     if aviso:
         partes.append(aviso)
+
+    pedidas = reglas_del_mensaje(entrada)
+    if pedidas:
+        partes.append(pedidas)
 
     cuenta = medicion(raiz, entrada)
     if cuenta:

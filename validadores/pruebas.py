@@ -43,6 +43,7 @@ import migraciones      # noqa: E402
 import plantillas       # noqa: E402
 import rama             # noqa: E402
 import recuerdos        # noqa: E402
+import recuperar        # noqa: E402
 import rendimiento      # noqa: E402
 import rutas_fuera      # noqa: E402
 import resumen          # noqa: E402
@@ -2123,6 +2124,96 @@ class RepartoDeLasReglas(unittest.TestCase):
             self.skipTest("sin base/ en la raíz de la corrida")
         for marca in ("## N1", "## N9", "INCORRECTO:", "CORRECTO:"):
             self.assertIn(marca, texto)
+
+
+class LasReglasQuePideLaSolicitud(unittest.TestCase):
+    """`recuperar.py` trae del `02` en adelante lo que el mensaje pide.
+
+    **Por qué hace falta.** Al arrancar, esas reglas llegan solo como índice,
+    con la orden de leer el archivo antes de tocar el tema. La orden depende de
+    que el agente se acuerde, y cuando no se acuerda trabaja sin la regla y
+    nadie se entera. Es el mismo patrón que ya falló con el arranque: una
+    promesa en vez de un hecho.
+    """
+
+    def test_un_saludo_no_trae_ninguna_regla(self):
+        """**Lo más importante que puede hacer es callarse.** Un recuperador que
+        siempre trae algo gasta presupuesto y enseña a ignorarlo."""
+        elegidas, _descartadas, temas = recuperar.elegir("hola", comun.RAIZ)
+        self.assertEqual(elegidas, [])
+        self.assertEqual(temas, {})
+
+    def test_la_regla_citada_en_el_mensaje_llega_entera(self):
+        texto = recuperar.como_texto("qué dice 02·F24?", comun.RAIZ)
+        self.assertIn("F24", texto)
+        self.assertIn("no lo toca", texto)
+
+    def test_un_pedido_de_commit_trae_la_blindada_del_nucleo(self):
+        """**`N2` no se decide por semejanza.** La palabra «commit» no aparece
+        en su título, así que un recuperador que solo compare palabras la deja
+        afuera justo cuando más importa."""
+        ids = [i for i, _ in recuperar.elegir("haga commit y suba",
+                                              comun.RAIZ)[0]]
+        self.assertIn("N2", ids)
+
+    def test_borrar_en_produccion_trae_las_tres_que_lo_gobiernan(self):
+        ids = [i for i, _ in recuperar.elegir(
+            "borre los registros de producción", comun.RAIZ)[0]]
+        for id in ("N4", "N5", "N7"):
+            self.assertIn(id, ids, f"faltó {id} en un pedido destructivo")
+
+    def test_el_nucleo_va_primero(self):
+        """El orden es la precedencia: lo blindado antes que la convención."""
+        ids = [i for i, _ in recuperar.elegir("haga commit y suba",
+                                              comun.RAIZ)[0]]
+        self.assertTrue(ids[0].startswith("N"), f"abrió con {ids[0]}")
+
+    def test_un_capitulo_no_entra_entero(self):
+        """**El defecto que se cazó al construirlo.** «commit» traía las once
+        reglas del `09`, que es casi lo mismo que mandar el índice y deja al
+        agente buscando la que aplica."""
+        elegidas = recuperar.elegir("haga commit y suba", comun.RAIZ)[0]
+        del_nueve = [i for i, _ in elegidas
+                     if recuperar.indice(comun.RAIZ)[i].capitulo == "09"]
+        self.assertLessEqual(len(del_nueve), 4,
+                             f"volcó el capítulo entero: {del_nueve}")
+
+    def test_ninguna_derogada_se_inyecta(self):
+        """Inyectar una regla que dejó de regir es peor que no inyectar
+        ninguna: el agente obedece la vieja creyendo que rige."""
+        idx = recuperar.indice(comun.RAIZ)
+        for mensaje in ("escriba el plan de trabajo de la fase",
+                        "corra las pruebas y documente",
+                        "haga commit de la migración"):
+            for id, _ in recuperar.elegir(mensaje, comun.RAIZ)[0]:
+                self.assertFalse(idx[id].derogada,
+                                 f"«{mensaje}» inyectó la derogada {id}")
+
+    def test_cada_regla_llega_con_su_motivo(self):
+        """Sin el motivo no se puede auditar: el turno siguiente no sabe si la
+        regla entró por una cita, por un disparador o por semejanza."""
+        for id, motivo in recuperar.elegir("haga commit y suba", comun.RAIZ)[0]:
+            self.assertTrue(motivo.strip(), f"{id} llegó sin motivo")
+
+    def test_respeta_el_presupuesto_y_dice_que_dejo_afuera(self):
+        """**Un recorte callado es el defecto del arranque otra vez.**"""
+        elegidas, descartadas, _temas = recuperar.elegir(
+            "borre los registros de producción y corra las pruebas",
+            comun.RAIZ, tope=1200)
+        peso = sum(len(recuperar._cuerpo(recuperar.indice(comun.RAIZ)[i])
+                       .encode("utf-8")) + 64 for i, _ in elegidas)
+        self.assertLessEqual(peso, 1200)
+        self.assertTrue(descartadas, "recortó sin decir qué dejó afuera")
+
+    def test_lo_que_trae_cabe_en_el_presupuesto_de_un_turno(self):
+        """Medido el 2026-09-16: de 1 a 4 KB por mensaje, contra los 82,4 KB
+        que el arranque mandaba de una sola vez."""
+        for mensaje in ("haga commit y suba",
+                        "borre los registros de producción",
+                        "escriba el README del módulo"):
+            kb = len(recuperar.como_texto(mensaje, comun.RAIZ)
+                     .encode("utf-8")) / 1024
+            self.assertLess(kb, 11, f"«{mensaje}» se pasó del tope: {kb:.1f} KB")
 
 
 class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
