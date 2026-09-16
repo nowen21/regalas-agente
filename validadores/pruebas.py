@@ -2158,6 +2158,57 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
             self.assertEqual(elegidas, [], f"«{mensaje}» trajo reglas de más")
             self.assertEqual(temas, {})
 
+    def _con_opt_in(self, apagados=("21",)):
+        """Un proyecto de mentira con su `CLAUDE.md`, como lo escribe el
+        instalador en el punto 5.1."""
+        raiz = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, raiz, True)
+        lineas = ["# Configuración", "", "## 5.1 Ajustes", ""]
+        for capitulo in ("15", "16", "17", "18", "19", "21", "22"):
+            valor = "no" if capitulo in apagados else "sí"
+            lineas.append("- **Patrón opt-in `%s` (lo que sea):** %s"
+                          % (capitulo, valor))
+        io.open(os.path.join(raiz, "CLAUDE.md"), "w",
+                encoding="utf-8").write(chr(10).join(lineas))
+        return raiz
+
+    def test_no_ofrece_una_regla_de_un_capitulo_opt_in_apagado(self):
+        """**Lo destapó el uso, no la mesa.** El 2026-09-16 la palabra
+        «prueba» trajo `21·AU6` a un proyecto con el `21` en `no`.
+
+        Ofrecer una regla de un capítulo apagado es peor que no ofrecer
+        ninguna: el agente aplica algo que en ese proyecto no rige.
+        """
+        proyecto = self._con_opt_in(apagados=("21",))
+        ids = [i for i, _ in recuperar.elegir("prueba", comun.RAIZ,
+                                              proyecto=proyecto)[0]]
+        self.assertNotIn("AU6", ids)
+        self.assertIn("T1", ids, "se llevó también las que sí rigen")
+
+    def test_si_el_opt_in_esta_encendido_la_regla_si_llega(self):
+        proyecto = self._con_opt_in(apagados=("15",))
+        idx = recuperar.indice(comun.RAIZ)
+        ids = [i for i, _ in recuperar.elegir("prueba", comun.RAIZ,
+                                              proyecto=proyecto)[0]]
+        self.assertTrue(any(idx[i].capitulo == "21" for i in ids),
+                        "apagó un capítulo que el proyecto encendió")
+
+    def test_la_cita_explicita_manda_sobre_el_opt_in_apagado(self):
+        """Si el mensaje nombra la regla, el usuario la está pidiendo. Llega,
+        y con la advertencia de que su capítulo está apagado."""
+        proyecto = self._con_opt_in(apagados=("21",))
+        elegidas = recuperar.elegir("qué dice 21·AU6?", comun.RAIZ,
+                                    proyecto=proyecto)[0]
+        motivos = dict(elegidas)
+        self.assertIn("AU6", motivos)
+        self.assertIn("apagado", motivos["AU6"])
+
+    def test_sin_claude_md_no_apaga_nada(self):
+        """Prefiere ofrecer de más antes que callar una regla que sí rige."""
+        self.assertEqual(recuperar.opt_in_apagados(tempfile.mkdtemp()),
+                         frozenset())
+        self.assertEqual(recuperar.opt_in_apagados(None), frozenset())
+
     def test_la_regla_citada_en_el_mensaje_llega_entera(self):
         texto = recuperar.como_texto("qué dice 02·F24?", comun.RAIZ)
         self.assertIn("F24", texto)

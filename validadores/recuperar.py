@@ -31,7 +31,7 @@ import unicodedata
 
 import comun
 import metareglas
-from comun import RAIZ
+from comun import RAIZ, leer
 
 # Cuánto se permite inyectar por turno. El recordatorio fijo del enganche pesa
 # menos de 1 KB, así que esto es el grueso de lo que se agrega a un mensaje.
@@ -104,9 +104,43 @@ DISPARADORES = (
     (("observabilidad", "monitoreo", "metrica", "metricas", "alerta"), ("19",)),
 )
 
+# Los siete capítulos que son patrones opt-in: rigen solo si el proyecto los
+# encendió en el punto 5.1 de su `CLAUDE.md`. Ofrecer una regla de un capítulo
+# apagado es peor que no ofrecer ninguna: el agente aplica algo que en este
+# proyecto no rige. Lo destapó el uso el 2026-09-16, cuando la palabra
+# «prueba» trajo `21·AU6` a un proyecto con el `21` en `no`.
+_OPT_IN = re.compile(r"Patr[oó]n opt-in\s*`?(\d{2})`?[^:]*:\**\s*(.+)")
+
 # Los capítulos que rigen todos los turnos. No se recuperan por semejanza: al
 # arrancar llegan enteros, y el enganche de cada turno recuerda los suyos.
 SIEMPRE = ("00", "01")
+
+
+def opt_in_apagados(proyecto):
+    """Los capítulos opt-in que este proyecto dejó en `no`.
+
+    Se leen del `CLAUDE.md` del proyecto, que es donde el punto 5.1 los
+    declara. Sin proyecto o sin archivo no se apaga nada: el recuperador
+    prefiere ofrecer de más antes que callar una regla que sí rige.
+    """
+    if not proyecto:
+        return frozenset()
+    ruta = os.path.join(proyecto, "CLAUDE.md")
+    if not os.path.isfile(ruta):
+        return frozenset()
+    try:
+        texto = leer(ruta)
+    except Exception:                     # noqa: BLE001 — nunca romper el turno
+        return frozenset()
+    apagados = set()
+    for linea in texto.splitlines():
+        m = _OPT_IN.search(linea)
+        if not m:
+            continue
+        valor = _limpio(m.group(2)).strip(" *`.«»")
+        if not valor.startswith("si"):
+            apagados.add(m.group(1))
+    return frozenset(apagados)
 
 
 def _limpio(texto):
@@ -242,7 +276,7 @@ def _orden(id, idx):
     return (0 if regla.blindada else 1, regla.capitulo, regla.linea)
 
 
-def elegir(mensaje, raiz=None, tope=TOPE):
+def elegir(mensaje, raiz=None, tope=TOPE, proyecto=None):
     """`(elegidas, descartadas, temas)` para este mensaje.
 
     `elegidas` es `[(id, motivo)]` en orden de precedencia y ya recortado al
@@ -289,6 +323,20 @@ def elegir(mensaje, raiz=None, tope=TOPE):
     for id, motivo in _cadena(list(motivos), idx).items():
         motivos.setdefault(id, motivo)
 
+    # Un capítulo opt-in apagado no rige en este proyecto, así que no se
+    # ofrece. **La cita explícita manda:** si el mensaje nombra la regla, el
+    # usuario la está pidiendo y se entrega con su advertencia.
+    apagados = opt_in_apagados(proyecto)
+    for id in list(motivos):
+        if idx[id].capitulo in apagados:
+            if motivos[id] == "el mensaje la cita":
+                motivos[id] += " (capítulo opt-in, apagado en este proyecto)"
+            else:
+                del motivos[id]
+    for capitulo in list(temas):
+        if capitulo in apagados:
+            del temas[capitulo]
+
     # La derogada no va: su reemplazo ya entró por la cadena, y mandar las dos
     # obliga a adivinar cuál rige.
     for id in list(motivos):
@@ -306,7 +354,7 @@ def elegir(mensaje, raiz=None, tope=TOPE):
     return elegidas, descartadas, temas
 
 
-def como_texto(mensaje, raiz=None, tope=TOPE):
+def como_texto(mensaje, raiz=None, tope=TOPE, proyecto=None):
     """El bloque que se le inyecta al agente, o `""` si el mensaje no pide nada.
 
     **Dice qué trae y por qué.** Un recuperador que entrega reglas sin decir
@@ -314,7 +362,7 @@ def como_texto(mensaje, raiz=None, tope=TOPE):
     con la regla o sin ella.
     """
     idx = indice(raiz)
-    elegidas, descartadas, temas = elegir(mensaje, raiz, tope)
+    elegidas, descartadas, temas = elegir(mensaje, raiz, tope, proyecto)
     if not elegidas and not temas:
         return ""
 

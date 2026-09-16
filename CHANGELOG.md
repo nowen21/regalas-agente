@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.4.2 — 2026-09-16
+
+**El recuperador ofrecía reglas de capítulos que el proyecto tenía apagados.** La palabra «prueba» trajo `21·AU6` a `master-ciberseguridad`, que tiene el `21` en `no`. Lo destapó el uso, no la mesa.
+
+**PARCHE** (corrección): un proyecto al día no tiene que hacer nada.
+
+**Ofrecer una regla de un capítulo apagado es peor que no ofrecer ninguna**, porque el agente aplica algo que en ese proyecto no rige, y lo hace con la confianza de haberlo recibido del estándar. Ahora el recuperador lee los siete patrones opt-in del punto 5.1 del `CLAUDE.md` y descarta los que estén en `no`.
+
+**La cita explícita manda.** Si el mensaje nombra la regla, el usuario la está pidiendo: llega, y con la advertencia de que su capítulo está apagado en este proyecto.
+
+**Sin `CLAUDE.md` no se apaga nada.** Ante la duda, el recuperador prefiere ofrecer de más antes que callar una regla que sí rige.
+
+- `validadores/recuperar.py`, con `opt_in_apagados()` y el descarte, que corre junto al de las derogadas: los dos filtran lo que no rige.
+- `adaptadores/claude-code/hook_reglas.py`, que le pasa la raíz del proyecto. Las reglas salen del estándar; qué rige acá lo dice el `CLAUDE.md` de acá.
+- `validadores/pruebas.py`, con cuatro casos: el apagado no llega, el encendido sí, la cita manda, y sin `CLAUDE.md` no se apaga nada. La suite queda en **562 en verde**.
+
 ## 37.4.1 — 2026-09-16
 
 **El recuperador traía reglas que no tenían nada que ver, y lo cazó el uso, no la mesa.** La pregunta «¿ya detecta el nuevo cambio?» recuperó `D2`, `T1`, `G6` y `EST1`, ninguna del tema: «cambio» está en el título de medio estándar.

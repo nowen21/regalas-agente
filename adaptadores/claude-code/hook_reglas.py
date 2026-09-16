@@ -169,14 +169,19 @@ def medicion(raiz, entrada):
         return ""
 
 
-def reglas_del_mensaje(entrada):
+def reglas_del_mensaje(entrada, raiz):
     """Las reglas que pide este mensaje, o `""`.
+
+    `raiz` es la del **proyecto**, y hace falta para descartar los capítulos
+    opt-in que ese proyecto dejó apagados. Las reglas salen del estándar
+    (`RAIZ`); qué rige acá lo dice el `CLAUDE.md` de allá.
 
     Nunca cuesta el turno: si el recuperador falla, el turno sigue con el
     recordatorio fijo, que es lo que no puede faltar.
     """
     try:
-        return recuperar.como_texto(entrada.get("prompt", ""), RAIZ)
+        return recuperar.como_texto(entrada.get("prompt", ""), RAIZ,
+                                    proyecto=raiz)
     except Exception:                     # noqa: BLE001
         return ""
 
@@ -192,7 +197,7 @@ def main():
     if aviso:
         partes.append(aviso)
 
-    pedidas = reglas_del_mensaje(entrada)
+    pedidas = reglas_del_mensaje(entrada, raiz)
     if pedidas:
         partes.append(pedidas)
 
