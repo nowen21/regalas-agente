@@ -53,7 +53,17 @@ puede pueden poder debe deben deber estar estan estado siendo ser soy eres
 que los las del con por una uno unos unas sus mis tus nos les lles
 favor gracias entiendo entonces bueno bien mal ver vea vean mira miren
 archivo archivos carpeta carpetas proyecto proyectos regla reglas estandar
+cambio cambios cambiar cambie cambia nuevo nueva nuevos nuevas viejo vieja
+cosa cosas forma formas parte partes punto puntos caso casos tema temas
+trabajo trabajar tarea tareas detecta detectar detecto funciona funcionar
+sirve sirven queda quedar quedo agente herramienta esto eso aquello
 """.split())
+
+# **De dónde sale esta lista.** No de una teoría del idioma: de ver qué
+# traía de más. El 2026-09-16, la pregunta «¿ya detecta el nuevo cambio?»
+# recuperó `D2`, `T1`, `G6` y `EST1`, ninguna de ellas del tema, porque
+# «cambio» está en el título de medio estándar. Una palabra que aparece en
+# todas partes no distingue nada, y el ruido enseña a ignorar el aviso.
 
 # Lo que **no se puede fallar**: el mensaje nombra una acción de las que no se
 # deshacen, o un tema con capítulo propio. La semejanza de palabras acierta

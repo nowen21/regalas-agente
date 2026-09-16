@@ -2143,6 +2143,21 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
         self.assertEqual(elegidas, [])
         self.assertEqual(temas, {})
 
+    def test_una_pregunta_con_palabras_genericas_no_trae_nada(self):
+        """**El caso que se cazó en uso, no en la mesa.** El 2026-09-16 la
+        pregunta «¿ya detecta el nuevo cambio?» recuperó `D2`, `T1`, `G6` y
+        `EST1`, ninguna del tema: «cambio» está en el título de medio estándar.
+
+        Una palabra que aparece en todas partes no distingue nada, y el ruido
+        enseña a ignorar el aviso.
+        """
+        for mensaje in ("ya detecta el nuevo cambio?",
+                        "eso funciona?",
+                        "qué quedó de ese trabajo"):
+            elegidas, _d, temas = recuperar.elegir(mensaje, comun.RAIZ)
+            self.assertEqual(elegidas, [], f"«{mensaje}» trajo reglas de más")
+            self.assertEqual(temas, {})
+
     def test_la_regla_citada_en_el_mensaje_llega_entera(self):
         texto = recuperar.como_texto("qué dice 02·F24?", comun.RAIZ)
         self.assertIn("F24", texto)

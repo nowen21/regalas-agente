@@ -11,6 +11,19 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 37.4.1 — 2026-09-16
+
+**El recuperador traía reglas que no tenían nada que ver, y lo cazó el uso, no la mesa.** La pregunta «¿ya detecta el nuevo cambio?» recuperó `D2`, `T1`, `G6` y `EST1`, ninguna del tema: «cambio» está en el título de medio estándar.
+
+**PARCHE** (corrección): un proyecto al día no tiene que hacer nada. Lo que cambia es que una pregunta sin tema deja de gastar presupuesto.
+
+**Una palabra que aparece en todas partes no distingue nada**, y el ruido enseña a ignorar el aviso, que es como muere un automatismo. Entran a la lista de vacías las genéricas del oficio: «cambio», «nuevo», «trabajo», «tarea», «funciona», «detecta» y las suyas. Las temáticas de verdad se quedan: «datos», «módulo» y «código» siguen pesando, porque cada una tiene capítulo.
+
+**La lista no sale de una teoría del idioma, sale de medir qué traía de más.** Queda dicho en el archivo, con el caso y la fecha, para que nadie la «mejore» a ciegas.
+
+- `validadores/recuperar.py`, con las genéricas en `_VACIAS` y el porqué escrito al lado.
+- `validadores/pruebas.py`, con el caso de regresión: tres preguntas sin tema no traen ninguna regla. La suite queda en **558 en verde**.
+
 ## 37.4.0 — 2026-09-16
 
 **Del `02` en adelante, las reglas llegaban solo como índice y con una orden: leer el archivo antes de tocar el tema.** Esa orden depende de que el agente se acuerde de cumplirla, y cuando no se acuerda trabaja sin la regla y nadie se entera. Es el mismo patrón que acababa de fallar en el arranque: una promesa en vez de un hecho.
