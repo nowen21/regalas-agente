@@ -132,7 +132,7 @@ def _gitignore(proyecto, estandar):
     if not os.path.isfile(archivo):
         return False, "no hay .gitignore"
     lineas = {l.strip() for l in leer(archivo).splitlines()}
-    faltan = [x for x in ("CLAUDE.md", ".agente/") if x not in lineas]
+    faltan = [x for x in instalar.IGNORADOS if x not in lineas]
     return not faltan, f"al .gitignore le faltan: {', '.join(faltan)}"
 
 

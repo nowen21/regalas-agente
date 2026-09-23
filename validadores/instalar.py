@@ -785,12 +785,14 @@ def _reparar_marcadores(archivo, ruta, aplicar, etiqueta):
     return [f"rellenar los marcadores que quedaron crudos en {etiqueta}"]
 
 
-def _secciones(texto):
-    """[(título, líneas)] por cada encabezado `##` o menor. Ignora el H1.
+def _partir(texto):
+    """`(preámbulo, [(título, líneas)])`, partido por cada `##` o menor.
 
-    El H1 lleva el nombre del proyecto, así que nunca coincide entre la
-    plantilla y el archivo local — compararlo solo daría falsos faltantes.
+    El preámbulo es el H1 y todo lo que va antes del primer `##`. Se devuelve
+    aparte porque el H1 lleva el nombre del proyecto y nunca coincide entre la
+    plantilla y el archivo local: compararlo daría falsos faltantes.
     """
+    preambulo = []
     salida = []
     dentro_de_codigo = False
     for linea in texto.splitlines():
@@ -801,7 +803,14 @@ def _secciones(texto):
             salida.append((m.group(2).strip(), [linea]))
         elif salida:
             salida[-1][1].append(linea)
-    return salida
+        else:
+            preambulo.append(linea)
+    return preambulo, salida
+
+
+def _secciones(texto):
+    """[(título, líneas)] por cada encabezado `##` o menor. Ignora el H1."""
+    return _partir(texto)[1]
 
 
 def _completar_secciones(local, plantilla):
@@ -823,6 +832,87 @@ def _completar_secciones(local, plantilla):
     return "\n\n".join(partes) + "\n", [t for t, _ in faltan]
 
 
+# Los ajustes del punto 5 son del proyecto y no se tocan ni por error. El resto
+# del `CLAUDE.md` es texto del estándar, pero el proyecto también puede haberle
+# escrito encima, así que tampoco se pisa a ciegas: ver `_sincronizar_secciones`.
+SECCIONES_DEL_PROYECTO = ("5.1", "5.2")
+
+
+def _es_del_proyecto(titulo):
+    return titulo.lstrip().startswith(SECCIONES_DEL_PROYECTO)
+
+
+def _mismo_texto(a, b):
+    return [l.rstrip() for l in a] == [l.rstrip() for l in b]
+
+
+def copia_sellada(ruta):
+    """Dónde se guarda la plantilla contra la que se selló el `CLAUDE.md`.
+
+    Va en `./.agente/`, que es local y se ignora: no es conocimiento del
+    proyecto, es el punto de comparación del instalador.
+    """
+    return os.path.join(ruta, ".agente", "plantillas-selladas", "CLAUDE.md")
+
+
+def _guardar_copia_sellada(ruta, limpio, aplicar):
+    """Deja la plantilla contra la que se acaba de sellar, para la próxima."""
+    copia = copia_sellada(ruta)
+    if not aplicar:
+        return
+    os.makedirs(os.path.dirname(copia), exist_ok=True)
+    with open(copia, "w", encoding="utf-8", newline="\n") as f:
+        f.write(limpio)
+
+
+def _sincronizar_secciones(local, plantilla, base):
+    """Pone al día el texto del estándar sin pisar lo que el proyecto escribió.
+
+    Comparación de tres vías. `base` es la plantilla contra la que se selló la
+    vez pasada, guardada en `copia_sellada()`. Una sección se reemplaza solo si
+    el proyecto **no la tocó**, o sea si su texto local sigue siendo idéntico al
+    de esa base. Si difiere, el proyecto le escribió encima y se respeta
+    (`01·C18`): se avisa y no se toca.
+
+    Sin base —un proyecto de antes de la 37.6.0— no se reemplaza nada: no hay
+    con qué distinguir lo que cambió la plantilla de lo que escribió el
+    proyecto, y ante la duda manda el proyecto.
+
+    Devuelve `(texto, [puestas al día], [las que el proyecto tocó y quedaron
+    viejas])`.
+    """
+    pre_local, secciones_local = _partir(local)
+    de_plantilla = dict(_partir(plantilla)[1])
+    de_base = dict(_partir(base)[1]) if base else {}
+
+    al_dia, a_mano = [], []
+    cuerpo = []
+    for titulo, lineas in secciones_local:
+        nueva = de_plantilla.get(titulo)
+        vieja = de_base.get(titulo)
+        cambio_la_plantilla = (vieja is not None and nueva is not None
+                               and not _mismo_texto(vieja, nueva))
+        if (nueva is None or _es_del_proyecto(titulo)
+                or _mismo_texto(lineas, nueva)):
+            cuerpo.extend(lineas)
+        elif vieja is not None and _mismo_texto(lineas, vieja):
+            cuerpo.extend(nueva)
+            al_dia.append(titulo)
+        else:
+            cuerpo.extend(lineas)
+            # Solo se avisa de lo que la plantilla cambió y no se pudo
+            # aplicar. Que el local difiera de la plantilla sin que la
+            # plantilla se haya movido es asunto del proyecto, y avisarlo en
+            # cada corrida es el ruido que apaga los avisos de verdad.
+            if cambio_la_plantilla:
+                a_mano.append(titulo)
+
+    if not al_dia:
+        return local, [], a_mano
+    return ("\n".join(pre_local + cuerpo).rstrip("\n") + "\n",
+            al_dia, a_mano)
+
+
 def instalar_claude_md(ruta, aplicar):
     """Deja el `CLAUDE.md` del proyecto puesto, lleno y sellado.
 
@@ -836,6 +926,16 @@ def instalar_claude_md(ruta, aplicar):
         sabe calcular, incluidos los de plantillas anteriores.
       - **existe y la plantilla ganó secciones** -> se agregan al final, sin
         tocar una línea de lo que el proyecto escribió.
+      - **existe y la plantilla cambió el texto de una sección que ya estaba**
+        -> se pone al día, siempre que el proyecto no le haya escrito encima
+        (ver `_sincronizar_secciones`). Antes solo se refrescaba el sello, así
+        que el archivo quedaba marcado «al día» con el texto viejo adentro.
+
+    Poner al día el punto 1 mueve también la **versión adoptada**, porque sale
+    de la plantilla rellenada con la versión de esta máquina. Es lo coherente:
+    correr la instalación es la decisión del usuario de adoptar, y el registro
+    de `documentacion/versiones/` ya se escribía solo. Declarar una versión y
+    registrar otra era la contradicción que reprobaba `validar.py version`.
 
     El sello **no** es la huella del `CLAUDE.md`: es la de la plantilla contra
     la que se sincronizó. Tiene que ser así porque cada proyecto lo llena con lo
@@ -854,9 +954,12 @@ def instalar_claude_md(ruta, aplicar):
     rellenos = _rellenos(ruta)
     molde = _rellenar(leer(plantilla), rellenos)
 
+    limpio = versiones.quitar_sello(molde)
+
     if not os.path.isfile(archivo):
         if aplicar:
             _escribir_sellado(archivo, molde, comp, ruta)
+        _guardar_copia_sellada(ruta, limpio, aplicar)
         return ["crear CLAUDE.md desde la plantilla, con las rutas y la "
                 "versión de esta máquina"]
 
@@ -866,10 +969,22 @@ def instalar_claude_md(ruta, aplicar):
     pasos = []
     if _MARCADOR.search(original) and not _MARCADOR.search(cuerpo):
         pasos.append("llenar en CLAUDE.md los marcadores que quedaban sin valor")
-    cuerpo, agregadas = _completar_secciones(cuerpo, versiones.quitar_sello(molde))
+    cuerpo, agregadas = _completar_secciones(cuerpo, limpio)
     if agregadas:
         pasos.append("agregar a CLAUDE.md lo que la plantilla sumó: "
                      + ", ".join(agregadas))
+    copia = copia_sellada(ruta)
+    base = leer(copia) if os.path.isfile(copia) else ""
+    cuerpo, al_dia, a_mano = _sincronizar_secciones(cuerpo, limpio, base)
+    if al_dia:
+        pasos.append("poner al día en CLAUDE.md lo que la plantilla cambió: "
+                     + ", ".join(al_dia))
+    if a_mano:
+        pasos.append("AVISO: en CLAUDE.md la plantilla cambió una sección que "
+                     "este proyecto tiene escrita a su manera, así que no se "
+                     "tocó: " + ", ".join(a_mano))
+    if base != limpio:
+        _guardar_copia_sellada(ruta, limpio, aplicar)
 
     if not pasos:
         return _refrescar_sello(archivo, comp, ruta, aplicar, "CLAUDE.md")
@@ -896,8 +1011,10 @@ CARPETAS_BASE = ["proyectos", "documentacion", "prompts", "pendientes"]
 CONFIG_AGENTE = ["stack.md", "dominio.md", "mapeo-nombres.md",
                  "marco-normativo.md"]
 
-# Configuración local de la máquina: no es del repositorio.
-IGNORADOS = ["CLAUDE.md", ".agente/"]
+# Lo que no es del repositorio: configuración local de la máquina y el estado
+# de trabajo que escriben los enganches. `checklist.py` lee esta lista de acá
+# (`20·M2`), para que no haya dos versiones de la misma verdad.
+IGNORADOS = ["CLAUDE.md", ".agente/", "historico-chat/.tocado/"]
 
 
 def instalar_estructura(ruta, aplicar):

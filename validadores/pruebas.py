@@ -1156,6 +1156,100 @@ class Instalador(unittest.TestCase):
         self.assertEqual(instalar.instalar_gitignore(raiz, aplicar=True),
                          ["el .gitignore ya ignoraba la configuración local"])
 
+    def test_el_registro_de_sesiones_tocadas_no_se_versiona(self):
+        """`historico-chat/.tocado/` es estado de trabajo del enganche.
+
+        Lo escribe `sesiones.py` con un archivo por id de sesión: no le sirve a
+        quien clone y choca en cada `pull`. La carpeta la crea el estándar, así
+        que la línea la tiene que poner el estándar.
+        """
+        raiz = self._espacio()
+        instalar.instalar_gitignore(raiz, aplicar=True)
+        with open(os.path.join(raiz, ".gitignore"), encoding="utf-8") as f:
+            lineas = f.read().splitlines()
+        self.assertIn("historico-chat/.tocado/", lineas)
+
+    def test_el_checklist_lee_la_lista_de_ignorados_del_instalador(self):
+        """Una sola lista, no dos que se desincronizan (`20·M2`)."""
+        raiz = self._espacio()
+        with open(os.path.join(raiz, ".gitignore"), "w", encoding="utf-8") as f:
+            f.write(("\n".join(instalar.IGNORADOS)) + "\n")
+        ok, _ = checklist._gitignore(raiz, None)
+        self.assertTrue(ok, "lo que instala el instalador debe pasar el checklist")
+
+        with open(os.path.join(raiz, ".gitignore"), "w", encoding="utf-8") as f:
+            f.write("CLAUDE.md\n.agente/\n")
+        ok, msg = checklist._gitignore(raiz, None)
+        self.assertFalse(ok)
+        self.assertIn("historico-chat/.tocado/", msg)
+
+    def _texto(self, *lineas):
+        return "\n".join(lineas) + "\n"
+
+    def test_el_claude_md_se_pone_al_dia_con_lo_que_la_plantilla_cambio(self):
+        """Sellar sin sincronizar dejaba el texto viejo marcado como al día.
+
+        Es el defecto que el sello existe para impedir: afirma «sincronizado
+        con la plantilla» sobre un archivo que ya no lo está.
+        """
+        base = self._texto("# C — X", "", "## 1. Ubicación", "", "Rutas viejas.")
+        plantilla = self._texto("# C — X", "", "## 1. Ubicación", "",
+                                "Rutas nuevas.")
+        texto, al_dia, a_mano = instalar._sincronizar_secciones(
+            base, plantilla, base)
+
+        self.assertEqual((al_dia, a_mano), (["1. Ubicación"], []))
+        self.assertIn("Rutas nuevas.", texto)
+        self.assertNotIn("Rutas viejas.", texto)
+
+    def test_lo_que_el_proyecto_escribio_encima_no_se_pisa(self):
+        """`01·C18`: si el local ya no es la base, el proyecto le escribió.
+
+        Se avisa y se deja como está. Pisarlo sería borrar lo único que el
+        instalador no puede reponer.
+        """
+        base = self._texto("# C — X", "", "## 1. Ubicación", "", "Rutas viejas.")
+        plantilla = self._texto("# C — X", "", "## 1. Ubicación", "",
+                                "Rutas nuevas.")
+        local = self._texto("# C — X", "", "## 1. Ubicación", "",
+                            "Rutas viejas.", "", "Y una nota mía.")
+        texto, al_dia, a_mano = instalar._sincronizar_secciones(
+            local, plantilla, base)
+
+        self.assertEqual((al_dia, a_mano), ([], ["1. Ubicación"]))
+        self.assertIn("Y una nota mía.", texto)
+        self.assertEqual(texto, local)
+
+    def test_sin_base_no_se_reemplaza_nada(self):
+        """Un proyecto de antes: ante la duda manda el proyecto."""
+        plantilla = self._texto("# C — X", "", "## 1. Ubicación", "",
+                                "Rutas nuevas.")
+        local = self._texto("# C — X", "", "## 1. Ubicación", "",
+                            "Rutas viejas.")
+        texto, al_dia, a_mano = instalar._sincronizar_secciones(
+            local, plantilla, "")
+        self.assertEqual((al_dia, a_mano, texto), ([], [], local))
+
+    def test_los_ajustes_del_punto_5_no_se_pisan_nunca(self):
+        """Ni siquiera cuando el local es idéntico a la base."""
+        base = self._texto("# C — X", "", "## 5.1 Ajustar", "", "- Idioma: es.")
+        plantilla = self._texto("# C — X", "", "## 5.1 Ajustar", "",
+                                "- Idioma: en.")
+        texto, al_dia, a_mano = instalar._sincronizar_secciones(
+            base, plantilla, base)
+        self.assertEqual((al_dia, a_mano, texto), ([], [], base))
+
+        for titulo in ("5.1 Ajustar una regla", "5.2 Agregar reglas nuevas"):
+            self.assertTrue(instalar._es_del_proyecto(titulo), titulo)
+        for titulo in ("1. Ubicación", "4. Precedencia", "6. Cómo pedir"):
+            self.assertFalse(instalar._es_del_proyecto(titulo), titulo)
+
+    def test_sin_diferencias_el_claude_md_no_se_toca(self):
+        igual = self._texto("# T", "", "## 1. Ubicación", "", "Lo mismo.")
+        texto, al_dia, a_mano = instalar._sincronizar_secciones(
+            igual, igual, igual)
+        self.assertEqual((al_dia, a_mano, texto), ([], [], igual))
+
     def test_los_cuatro_archivos_de_agente_se_ponen_y_no_se_pisan(self):
         raiz = self._espacio()
         instalar.instalar_agente_config(raiz, aplicar=True)

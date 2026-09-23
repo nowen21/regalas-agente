@@ -16,7 +16,7 @@ Eso es **todo** el proceso de instalación. Deja el entorno completo y operativo
 
 - la estructura base — `proyectos/`, `documentacion/`, `prompts/` ([`02·F13`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md));
 - este mismo `CLAUDE.md`, generado desde la plantilla central con las rutas y la versión de esta máquina;
-- el `.gitignore` con `CLAUDE.md` y `.agente/`;
+- el `.gitignore` con `CLAUDE.md`, `.agente/` y `historico-chat/.tocado/`;
 - los 4 archivos de configuración de `./.agente/`;
 - `historico-chat/` con su `README.md`, y `historico-chat/memory/` con su índice;
 - los enganches de git (`commit-msg`, `pre-commit`) en cada repositorio;
@@ -38,7 +38,7 @@ Eso es **todo** el proceso de instalación. Deja el entorno completo y operativo
 - **Base módulo:** `«RUTA-ESTANDAR»/_base_modulo.md`
 - **Memoria (señales):** `«RUTA-ESTANDAR»/memoria/memoria.py` — base central buscable (SQLite+FTS5), compartida por todos los proyectos. Skill `usar-memoria`.
 - **Validadores:** `«RUTA-ESTANDAR»/validadores/validar.py` — hacen cumplir las reglas que se pueden medir. Se llaman **en su sitio**, no se copian al proyecto.
-- **Versión del estándar adoptada:** `«VERSION-ESTANDAR»` · sellada `«FECHA»`. Es la versión de `base/`+`plantillas/` que este proyecto sigue (ver `VERSION`/`CHANGELOG.md` del estándar). Un cambio de norma **no reabre** fases ya cerradas: quedan selladas con su versión. Subir de versión es una decisión explícita del usuario, no automática.
+- **Versión del estándar adoptada:** `«VERSION-ESTANDAR»` · sellada `«FECHA»`. Es la versión de `base/`+`plantillas/` que este proyecto sigue (ver `VERSION`/`CHANGELOG.md` del estándar). Un cambio de norma **no reabre** fases ya cerradas: quedan selladas con su versión. Esta línea la mueve el instalador al adoptar: correr la instalación **es** la decisión de adoptar, y de ahí sale también el registro de `documentacion/versiones/`. Lo que nunca se toca es el trabajo ya cerrado.
 
 > Estas rutas las escribe el instalador. Si el estándar se muda de carpeta, se vuelve a correr la instalación desde la carpeta nueva y quedan al día solas.
 >
@@ -98,7 +98,7 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
    python "«RUTA-ESTANDAR»/validadores/validar.py" version --raiz "«RUTA-PROYECTO»"
    ```
 
-   Compara la **versión adoptada** (punto 1) con la `VERSION` del estándar. Si el proyecto quedó por detrás, **avisa** (no migra solo): subir de versión es decisión del usuario, y las fases ya cerradas quedan selladas con su versión.
+   Compara la **versión adoptada** (punto 1) con la `VERSION` del estándar. Solo queda por detrás si la instalación del paso 1 no se corrió, porque es ella la que adopta. **Avisa, no migra el trabajo:** las fases ya cerradas quedan selladas con la versión bajo la que cerraron.
 
 7. **Comprobar que la instalación esté completa** — correr desde la carpeta del estándar:
 

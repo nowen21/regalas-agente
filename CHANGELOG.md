@@ -11,6 +11,39 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.0.0 — 2026-09-22
+
+**El sello del `CLAUDE.md` decía «al día» sobre texto viejo.** Al adoptar la 37.5.0 en `agro-system`, el instalador refrescó el sello y registró la adopción, pero dejó adentro la línea vieja del `.gitignore` y la versión adoptada anterior. `instalar_claude_md()` solo agregaba secciones que la plantilla hubiera ganado: un cambio de redacción dentro de una sección existente no se aplicaba, y se volvía a sellar igual.
+
+**MAYOR** ⚠ obliga a migrar: un proyecto al día tiene que **revisar una vez su `CLAUDE.md`**. La primera corrida con esta versión no sincroniza nada —no hay con qué comparar todavía— y solo guarda la base; de la segunda en adelante se pone al día solo. Lo que haya quedado viejo de antes hay que mirarlo a mano esa única vez.
+
+**Un sello que miente es peor que no tener sello**, porque es justo el mecanismo que debería avisar. El checklist daba verde sobre un archivo desincronizado, que es el defecto que el sello existe para impedir.
+
+**No se pisa a ciegas: se compara contra la base.** El instalador guarda en `.agente/plantillas-selladas/CLAUDE.md` la plantilla contra la que selló. Una sección se reemplaza **solo** si el proyecto no la tocó, o sea si su texto sigue siendo idéntico al de esa base. Si difiere, el proyecto le escribió encima y manda el proyecto (`01·C18`): no se toca y se avisa, pero únicamente cuando la plantilla sí cambió esa sección — avisar de todo lo demás en cada corrida es el ruido que apaga los avisos de verdad. Los ajustes del punto 5 no se tocan ni aunque coincidan con la base.
+
+**La versión adoptada la mueve el instalador.** Salía de la plantilla rellenada, así que poner al día el punto 1 la mueve sola. Es lo coherente: el registro de `documentacion/versiones/` ya se escribía solo, y declarar una versión mientras se registra otra era la contradicción que reprobaba `validar.py version` — el defecto que se destapó en `agro-system` con la declarada seis semanas atrás de los registros. La plantilla deja de decir que subir es «una decisión explícita del usuario, no automática»: correr la instalación **es** esa decisión. Lo que sigue sin tocarse es el trabajo ya cerrado, que queda sellado con su versión.
+
+- `validadores/instalar.py`, con `_partir()`, `_sincronizar_secciones()` de tres vías, `copia_sellada()` y `_guardar_copia_sellada()`, que también corre al crear el archivo para que la primera pasada deje la base puesta.
+- `plantillas/CLAUDE.md.plantilla`, con el punto 1 y el paso 6 del punto 3 diciendo cómo se adopta de verdad.
+- `validadores/pruebas.py`, con cinco casos: se pone al día, no se pisa lo escrito encima, sin base no se reemplaza nada, el punto 5 nunca se toca, y sin diferencias no se toca nada. La suite queda en **569 en verde**.
+
+## 37.5.0 — 2026-09-22
+
+**La carpeta que escribe el enganche del histórico se ofrecía al repositorio.** `historico-chat/.tocado/` lleva un archivo por id de sesión con las rutas que esa sesión tocó. La crea el estándar, pero la línea del `.gitignore` no la ponía nadie: en `agro-system` apareció sin seguimiento a la hora de commitear, y lo mismo iba a pasar en todos los demás.
+
+**MENOR** (aditivo): un proyecto al día no tiene que hacer nada más que volver a correr la instalación, que le agrega la línea. Ninguna norma cambió.
+
+**Lo que crea el estándar lo ignora el estándar.** Dejarlo en manos de cada proyecto es pedirle que adivine qué carpeta es suya y cuál es del andamiaje. Y el daño no es cosmético: son ids de sesión de una sola máquina, que no le sirven a quien clone y que chocan en cada `pull`.
+
+**El texto ya lo daba por hecho.** `sesiones.py` decía desde su versión inicial que el registro «vive en `historico-chat/.tocado/` y está en el `.gitignore`». Estaba escrito, pero no instalado: la clase de defecto que solo destapa el uso.
+
+**Había dos listas de ignorados, no una.** `instalar.py` tenía la suya y `checklist.py` repetía la pareja `("CLAUDE.md", ".agente/")` a mano, aunque el comentario del instalador afirmara que el checklist la leía de allá (`20·M2`). Agregar una línea en un solo sitio habría dejado al validador aprobando lo que el instalador ya no considera completo. Ahora el checklist sí lee `instalar.IGNORADOS`.
+
+- `validadores/instalar.py`, con `historico-chat/.tocado/` en `IGNORADOS` y el comentario diciendo qué es la lista.
+- `validadores/checklist.py`, que deja de repetirla.
+- `plantillas/stack-instalacion.md` y `plantillas/CLAUDE.md.plantilla`, que nombran las tres líneas.
+- `validadores/pruebas.py`, con dos casos: la línea queda instalada, y lo que instala el instalador pasa el checklist. La suite queda en **564 en verde**.
+
 ## 37.4.2 — 2026-09-16
 
 **El recuperador ofrecía reglas de capítulos que el proyecto tenía apagados.** La palabra «prueba» trajo `21·AU6` a `master-ciberseguridad`, que tiene el `21` en `no`. Lo destapó el uso, no la mesa.
