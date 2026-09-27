@@ -431,7 +431,7 @@ Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabece
 | **[EP-007 · HU-008](../documentacion/epicas/EP-007-instalacion-y-actualizacion/HU-008-el-proyecto-reporta-al-estandar/HU-008-el-proyecto-reporta-al-estandar.md)** — El proyecto reporta al estándar | 36 |
 | [EP-005 · HU-015](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-015-lo-que-llega-de-afuera-llega-marcado/HU-015-lo-que-llega-de-afuera-llega-marcado.md) — Lo que llega de afuera llega marcado | 72 |
 | [EP-005 · HU-016](../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-016-la-traza-de-la-sesion-paso-a-paso/HU-016-la-traza-de-la-sesion-paso-a-paso.md) — La traza de la sesión, paso a paso | 73 |
-| [EP-001 · HU-038](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md) — El agente escribe solo sobre el asunto en curso | 95 |
+| [EP-001 · HU-038](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md) — El agente agrega información irrelevante al asunto que está tratando | 95 |
 
 El [48](48-inventario-hu.md) también está enrutado, aunque se trabaje en otra sesión: la fila va en su archivo igual que en los demás.
 

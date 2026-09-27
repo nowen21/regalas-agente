@@ -214,6 +214,11 @@ def crear(raiz, epica, hu, descripcion, escribir=False):
     return destino, escritos
 
 
+def _nombre_de_titulo(titulo):
+    """`HU-003 · Nombre` o `HU-003 — Nombre` → `Nombre`. La plantilla usa el punto medio desde la 38.0.2."""
+    return re.split(r"\s[·—]\s", titulo, 1)[-1].strip()
+
+
 def _titulo_de(ruta):
     m = _TITULO.search(leer(ruta))
     return m.group(1) if m else os.path.basename(ruta)
@@ -291,7 +296,7 @@ def crear_pendiente(raiz, descripcion, hu_ref, escribir=False):
     hu_id = re.match(r"^HU-\d+", hu).group(0)
     titulo_hu = _titulo_de(hu_md)
     enlace_hu = "[%s · %s — %s](../%s/%s/%s/%s.md)" % (
-        ep_id, hu_id, titulo_hu.split("—", 1)[-1].strip(),
+        ep_id, hu_id, _nombre_de_titulo(titulo_hu),
         CARPETA.replace(os.sep, "/"), epica, hu, hu)
 
     texto = _reenlazar(leer(origen), origen, os.path.dirname(destino), raiz)
@@ -338,7 +343,7 @@ def _mapa(indice, ep_id, hu_id, titulo_hu, epica, hu, numero, escribir):
         return
     fila = "| [%s · %s](../%s/%s/%s/%s.md) — %s | %d |" % (
         ep_id, hu_id, CARPETA.replace(os.sep, "/"), epica, hu, hu,
-        titulo_hu.split("—", 1)[-1].strip(), numero)
+        _nombre_de_titulo(titulo_hu), numero)
     _agregar_fila(indice, fila, MAPA, escribir)
 
 

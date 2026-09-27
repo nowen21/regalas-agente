@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.0.3 — 2026-09-27
+
+**La plantilla de historia de usuario toma del pendiente su título y su problema tal cual, y deja de usar la raya larga.** En [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), el título de la historia es el mismo del pendiente que la genera, y su contexto es el problema de ese pendiente, copiado tal cual está. El título y los criterios de aceptación separan con punto medio (`HU-000 · «…»`, `CA-01 · «…»`), y los criterios transversales abren con su nombre y dos puntos, sin negrita (`00·ID8`). `validadores/andamio.py` lee el nombre de la historia con cualquiera de los dos separadores, así las historias viejas siguen enlazándose bien.
+
+**PARCHE:** cambia la redacción de la plantilla, no qué se exige.
+
+---
+
 ## 38.0.2 — 2026-09-27
 
 **La plantilla de historia de usuario dice de dónde sale su contexto.** En [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), el contexto de la historia es el problema del pendiente que la genera.

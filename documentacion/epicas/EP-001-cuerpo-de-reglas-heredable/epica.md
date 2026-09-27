@@ -169,7 +169,7 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-035](HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos/HU-035-el-capitulo-22-sistemas-que-aprenden-de-datos.md) | El capítulo `22` · Sistemas que aprenden de datos: su texto tiene dueña | Should | S |
 | [HU-036](HU-036-el-pedido-dice-que-se-espera/HU-036-el-pedido-dice-que-se-espera.md) | El pedido dice qué se espera del agente | Must | S |
 | [HU-037](HU-037-la-norma-de-redaccion-del-agente/HU-037-la-norma-de-redaccion-del-agente.md) | La norma de redacción del agente vive en el cuerpo de reglas | Should | 3 pts |
-| [HU-038](HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md) | El agente escribe solo sobre el asunto en curso | Must | 2 pts |
+| [HU-038](HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md) | El agente agrega información irrelevante al asunto que está tratando | Must | 2 pts |
 
 Sin estimar en puntos todavía.
 
