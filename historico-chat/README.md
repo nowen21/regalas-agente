@@ -197,3 +197,4 @@ La respuesta, tal como se dio.
 - [2026-08-28-sesion.md](2026-08-28-sesion.md) — sesión del 2026-08-28.
 - [2026-08-28-plantilla-manual-instalacion.md](2026-08-28-plantilla-manual-instalacion.md) — Se creó la plantilla base del manual de instalación y se adaptó a la norma de redacción del estándar. · [historico-chat/resumenes/2026-08-28/plantilla-manual-instalacion.md](resumenes/2026-08-28/plantilla-manual-instalacion.md)
 - [2026-08-31-sesion.md](2026-08-31-sesion.md) — sesión del 2026-08-31.
+- [2026-09-27-sesion.md](2026-09-27-sesion.md) — sesión del 2026-09-27.

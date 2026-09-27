@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.0.1 — 2026-09-27
+
+**La plantilla de historia de usuario dice con qué reglas se redacta.** [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md) dice en su cabecera que toda HU creada con ella se redacta aplicando `00·ID8` y `00·ID9`, y que esa nota se borra al llenarla.
+
+**PARCHE:** las dos reglas ya regían toda historia que el agente entrega. La plantilla ahora lo dice donde se llena.
+
+---
+
 ## 38.0.0 — 2026-09-22
 
 **El sello del `CLAUDE.md` decía «al día» sobre texto viejo.** Al adoptar la 37.5.0 en `agro-system`, el instalador refrescó el sello y registró la adopción, pero dejó adentro la línea vieja del `.gitignore` y la versión adoptada anterior. `instalar_claude_md()` solo agregaba secciones que la plantilla hubiera ganado: un cambio de redacción dentro de una sección existente no se aplicaba, y se volvía a sellar igual.

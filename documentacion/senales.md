@@ -1308,3 +1308,13 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 - **When/Who:** 2026-09-02 · usuario + agente.
 - **Scope:** cualquier protección que haya que aplicar a todo lo que venga.
 - **Rel:** S-124 (un aplazamiento contado como postura), S-111 (una firma que no dice sobre qué texto se dio no caduca nunca).
+
+## S-126 · El orden es hallazgo → pendiente → HU → fase, y el andamio lo invierte  ·  decisión · activa
+- **What:** al anotar el pendiente de la norma colombiana, `andamio.py pendiente` rechazó crearlo porque su historia no existía. El agente creó primero el esqueleto de `HU-038` para que pasara. El usuario lo corrigió: **el orden es hallazgo → pendiente → HU → fase**. El hallazgo puede ser del agente o de otro proyecto, y la HU siempre sabe de qué épica es hija.
+- **Why:** una HU creada antes del pendiente fija el alcance antes de que nadie apruebe qué falta. `02·F23` ya decía «el pendiente baja a HU», y la herramienta pedía lo contrario.
+- **Also:** el orden completo no está escrito en ninguna regla. `F0` arranca en el planteamiento, `F23` cubre de pendiente a fase, y el tramo hallazgo → pendiente no lo cubre nadie.
+- **Where:** `validadores/andamio.py:281-282` · pendientes [96](../pendientes/96-la-norma-del-espanol-de-colombia-no-tiene-regla.md) y [97](../pendientes/97-el-andamio-exige-la-historia-antes-que-el-pendiente.md).
+- **Learned:** **cuando la herramienta y la regla piden cosas distintas, manda la regla**, y la diferencia se anota como hallazgo en vez de resolverla por la herramienta.
+- **When/Who:** 2026-09-27 · usuario + agente.
+- **Scope:** cualquier artefacto de la cadena que se cree con el andamio.
+- **Rel:** S-124 (un hueco presentado como decisión).
