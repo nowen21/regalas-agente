@@ -1,5 +1,12 @@
 # Señales del proyecto «NOMBRE»  ·  `[CAPA 3 · memoria por señales]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Qué es.** El registro de **señales**: conocimiento de alto valor que **no se puede recuperar del código**. Se guardan señales, **no la conversación**. Vive en `documentacion/senales.md` y **se versiona** (es conocimiento del proyecto).
 >
 > **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje...), se agrega una entrada abajo con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, verificar que sigue vigente (regla `01`·C2).

@@ -1,5 +1,12 @@
 # Catálogo de módulos — «Proyecto»   ·   `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Índice **vivo** de alto nivel ([`13·DOC13`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)): **qué módulos tiene el proyecto y qué hace cada uno**. Se consulta al inicio de cada unidad de trabajo ([`02·F1`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md)) y **cada módulo nuevo se registra antes de cerrar** la unidad que lo crea (obligatorio, no se pregunta). Distinto del mapa de dependencias ([`13·DOC9`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md), detalle técnico interno). La capa 3 declara su ruta (ej. `documentacion/modulos.md` o `.agente/dominio.md`). Reemplaza los `«…»` y borra esta caja.
 
 ---

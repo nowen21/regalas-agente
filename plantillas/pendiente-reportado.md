@@ -1,5 +1,12 @@
 # Pendiente · «qué se encontró, en una línea»
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Modelo del pendiente que un proyecto le reporta al estándar** (`02·F24`). Se copia en `pendientes/` **del estándar**, no del proyecto. Su gemelo —el que queda en el proyecto— es [plantillas/pendiente-de-seguimiento.md](pendiente-de-seguimiento.md), y los dos se escriben **en la misma sesión**: uno sin el otro es la mitad que ya falló dos veces. Reemplaza los `«…»` y borra esta caja.
 
 **Estado:** abierto · anotado «AAAA-MM-DD».

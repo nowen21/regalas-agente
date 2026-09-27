@@ -1,5 +1,12 @@
 # Checklist de despliegue — «servicio / versión»   ·   `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 Parte del entregable de cada despliegue no trivial ([`18·DP6`](«RUTA-ESTANDAR»/base/18-despliegue-e-infraestructura.md#dp6--checklist-de-despliegue)). Se llena y se versiona junto al release. **Ejecutar contra producción lo autoriza el usuario** ([`00·N2`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)).
 
 - **Artefacto:** «imagen/paquete + tag» · **commit:** «hash» · **entorno destino:** «staging / producción»

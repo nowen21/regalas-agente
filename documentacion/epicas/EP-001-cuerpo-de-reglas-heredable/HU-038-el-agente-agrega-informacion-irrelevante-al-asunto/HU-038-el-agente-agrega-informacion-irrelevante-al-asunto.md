@@ -172,7 +172,7 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| `A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto` | CA-01 a CA-06 | | por escribir | por escribir | | Sin empezar |
+| [`A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto`](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/) | CA-01 a CA-06 | | [plan_trabajo](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_pruebas.md) | [resultado](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/resultado_pruebas.md) · sin ejecutar | En curso |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 

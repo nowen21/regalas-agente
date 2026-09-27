@@ -2,13 +2,6 @@
 
 **Para qué sirve este documento.** Registra **qué se ejecutó de verdad y con qué resultado**, y de ahí sale el **veredicto de la fase**: si cada criterio de aceptación quedó cumplido o no. Es lo que alimenta el `estado-fase.md` para pasar la puerta de verificación, y la fuente de la sección "qué se probó" del `funcionalidad_implementada.md`. El diseño de los casos vive en el `plan_pruebas.md` de esta misma fase, que **no se modifica** al ejecutar: se aprobó antes y así se queda.
 
-> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
->
-> | Regla | Qué exige |
-> |---|---|
-> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-
 > Plantilla del `resultado_pruebas` de una **fase**. Se guarda en la carpeta de la fase (ruta `02·F12.13`), como `resultado_pruebas.md`. **Se crea junto con los dos planes**, aunque todavía no se haya ejecutado nada: el formato puesto desde el principio se ve, se revisa y no se olvida. Lo que no se ha corrido se escribe **"no ejecutado"**, nunca en blanco ni como aprobado, y el veredicto arranca en *"todavía no se ejecutó"*. Reemplaza los `«…»`, borra las secciones que no apliquen y borra esta caja. **La línea de arriba, la de para qué sirve, se queda.**
 >
 > **Por qué es un documento aparte y no una sección del plan.** El plan se aprueba **antes** de ejecutar. Si los resultados se escriben encima, se pierde la línea base aprobada y ya no se puede comparar lo que se acordó probar contra lo que se probó. Es también la separación que hace la norma en que se apoya el plan de pruebas (ISO/IEC/IEEE 29119-3), entre el plan y el registro de ejecución.
@@ -122,7 +115,7 @@ CORRECTO:   | CP-002 | CA-02 | Crítica | 2026-01-05 | `qa.consulta` pidió `POS
 
 ---
 
-## 3. Verificaciones manuales  ·  [`08·T4`](../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
+## 3. Verificaciones manuales  ·  [`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)
 
 > Lo que el entorno automático **no** reproduce y hubo que comprobar a mano. Se listan aunque hayan salido bien: lo que no está acá se lee como no probado.
 

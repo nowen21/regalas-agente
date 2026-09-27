@@ -1,5 +1,12 @@
 # Mapeo de nombres  ·  `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. La base habla en abstracto ("catálogo", "auditoría", "permiso"). Aquí declaras **cómo se llama cada cosa en este proyecto**, para que el agente aplique la regla con el nombre real. Reemplaza los `«…»` y borra esta caja.
 >
 > Son dos tablas y no se pisan: la primera la lee **el agente** y admite frases y matices; la segunda la lee **un programa** y por eso tiene forma fija. Lo que ya está en la segunda no se repite en la primera.

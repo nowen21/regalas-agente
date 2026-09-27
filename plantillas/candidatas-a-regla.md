@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Junta lo que el usuario pidió más de una vez en un tramo de trabajo y decide, para cada cosa, si se convierte en regla, si ya está cubierta por una, o si no es regla del estándar. Se escribe **antes de publicar la versión** que cierra el tramo, y su resultado es lo único que autoriza a crear una regla nueva de ese tramo.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Cómo se llena.** Reemplaza los `«…»`, borra las filas de ejemplo y borra esta caja. La línea de arriba se queda: le dice a quien lo abra dentro de un año qué está leyendo.
 
 ## 0. Identificación

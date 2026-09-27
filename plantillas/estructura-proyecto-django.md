@@ -1,5 +1,12 @@
 # Estructura de un proyecto Django  ·  `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. La estructura estándar de **todo** proyecto Django: se copia a la documentación de
 > arquitectura del proyecto, se reemplazan los `«…»` con lo propio y se borra esta caja. Lo que no
 > lleva marca no es opcional: es la parte que todo proyecto Django cumple igual.

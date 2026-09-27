@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Deja constancia de qué se entregó, con qué evidencia de que funciona, y de que quien encargó **lo aceptó**. Es el cierre formal de una entrega: después de la firma, lo pendiente que se aceptó como pendiente ya no es sorpresa sino acuerdo.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Una por entrega (una versión, un hito del [plan de proyecto](13-acta-de-constitucion-y-plan-de-proyecto.md), o la entrega final). En un proyecto personal, quien entrega y quien acepta son la misma persona y el acta vale igual: obliga a mirar la evidencia antes de darse por satisfecho. Reemplaza los `«…»` y borra esta caja.
 
 ## 1. Qué se entrega

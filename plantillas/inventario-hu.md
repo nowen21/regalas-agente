@@ -1,5 +1,12 @@
 # Inventario de HU — «nombre del proyecto o del conjunto»
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Es el tablero de **qué historias de usuario están completas y cuáles no**. Reemplace los `«…»`, borre esta caja y las notas entre paréntesis.
 >
 > **No reemplaza a la HU ni a la fase.** Solo dice qué existe y qué falta, para no tener que recorrer las carpetas a mano cada vez que alguien pregunta cuánto falta.

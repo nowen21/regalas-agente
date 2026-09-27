@@ -1,5 +1,12 @@
 # Pendiente · Esperando una corrección del estándar: «qué»
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Modelo del pendiente que queda en el proyecto** cuando lo que hay que corregir es del estándar (`02·F24`). Su gemelo —el que se abre en el estándar— es [plantillas/pendiente-reportado.md](pendiente-reportado.md). Reemplaza los `«…»` y borra esta caja.
 
 **Estado:** abierto · anotado «AAAA-MM-DD». **No se cierra al reportar**: se cierra cuando llega el aviso y se comprueba.

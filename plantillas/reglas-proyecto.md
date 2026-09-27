@@ -1,5 +1,12 @@
 # Reglas del proyecto — «Nombre»   ·   `[CAPA 3 · LOCAL]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Catálogo de reglas **propias de este proyecto** ([`13·DOC10`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md)) que sobrescriben o complementan la base común. Cada regla va numerada `P<N>` para poder citarse de forma estable desde especificaciones, planes y señales. Vive en `.agente/reglas-proyecto.md` (**local, no versionado** — es configuración del agente). Reemplaza los `«…»` y borra esta caja.
 
 ---

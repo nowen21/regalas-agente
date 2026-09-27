@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Dice cómo se sostiene el sistema después de entregado: con qué cadencia se revisa, cómo se mantienen al día las dependencias, cuándo se prueba la restauración y qué pasa con la deuda declarada. Un sistema sin plan de mantenimiento no está terminado: está abandonado con retraso.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Se escribe al preparar la primera entrega y se revisa en cada acta de entrega. Mientras no haya nada entregado, existe y dice: «No aplica todavía porque «el porqué»». Reemplaza los `«…»` y borra esta caja.
 
 ## 1. Las rutinas, con su cadencia

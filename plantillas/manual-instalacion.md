@@ -1,5 +1,12 @@
 # Manual de instalación — `<NOMBRE_PROYECTO>`   ·   `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Qué es este archivo.** La base de un manual de instalación. Trae todas las partes que un manual
 > debe llevar, en el orden en que van, y en cada parte dice qué información lleva y de dónde sale. No
 > está atada a ningún lenguaje, sistema operativo, servidor, motor de base de datos ni herramienta:

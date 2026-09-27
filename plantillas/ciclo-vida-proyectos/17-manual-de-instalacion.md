@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Con esto, alguien que no estuvo en el desarrollo levanta el sistema desde cero en una máquina limpia, sin preguntar nada. Es la prueba escrita de la reproducibilidad: si un paso vive solo en la memoria de alguien, el sistema no se puede instalar, se puede *volver a adivinar*.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Se alimenta desde la primera fase (cuando el entorno se arma por primera vez) y se corrige cada vez que un paso cambia. La forma de saber que está bien: seguirlo literal en una máquina limpia y que funcione ([`11·CE1`](../../base/11-configuracion-entornos.md)). Reemplaza los `«…»` y borra esta caja.
 
 ## 1. Requisitos previos

@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Es el contrato de la API con quien la consume: qué expone, cómo se autentica, qué recibe y qué devuelve cada punto, y qué errores da. Se escribe para quien integra **sin leer el código**, y se actualiza en la misma fase que cambia el contrato: una API documentada con retraso es una API documentada mal.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Acompaña a la estación 06 y madura con el sistema. Si el proyecto genera su documentación desde el código (OpenAPI o equivalente), este documento no la duplica: dice dónde vive la generada y conserva solo lo que aquella no cuenta (autenticación, convenciones, versionado). Si el proyecto no expone API, existe igual y dice: «No aplica porque «el porqué»». Reemplaza los `«…»` y borra esta caja.
 
 ## 1. Las convenciones

@@ -1,5 +1,12 @@
 # Lo que sale de una sesión  ·  `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. **No es el resumen del final**: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena **en el momento en que aparece el hallazgo**, con doce campos. Reemplaza los `«…»` y borra esta caja.
 >
 > La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/«tema».md`: **una carpeta por día y un archivo por sesión**, con su línea en el índice de ese día.

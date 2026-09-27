@@ -1,5 +1,12 @@
 # Estado de fase — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Checkpoint del orquestador** (`sdd-orchestrator`): el estado persistido en cada puerta para **sobrevivir a la compactación** ("la compactación mata decisiones"). Se escribe/actualiza en **cada puerta** que pasa. Al reanudar, el director lee este archivo y continúa desde la última puerta pasada. Se guarda en `documentacion/<modulo>/estado-fase.md`. Reemplaza los `«…»` y borra esta caja.
 
 ---

@@ -1,5 +1,12 @@
 # Stack de instalación del agente
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 Todo lo que un proyecto debe tener para que el agente funcione completo. Mientras falte un punto, la instalación está **incompleta** y el agente lo dice en cada mensaje.
 
 Este archivo vive en el estándar y se copia a `./.agente/stack-instalacion.md` de cada proyecto. La copia es el retrato de lo que ese proyecto tiene instalado; el original es la verdad. Si el original cambia, la copia queda vieja y eso mismo se reporta como actualización pendiente.

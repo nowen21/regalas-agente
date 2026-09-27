@@ -1,5 +1,12 @@
 # Documento de Arquitectura de Software — `«NOMBRE_PROYECTO»`
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > **Cómo se escribe lo que se llena.** En la variedad del idioma que usa el proyecto, en tercera persona para lo que se explica y en infinitivo para lo que el lector hace. La regla es [`00·ID10`](../base/00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md), y se cita en vez de repetirla: lo que se copia a mano se copia distinto (`S-090`). Los espacios por llenar van marcados `«…»`, que es la marca de todos los modelos ([`13·DOC19`](../base/13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md)).
 
 > **Modelo reutilizable.** Reemplazar cada `«…»` con lo que el proyecto tenga de verdad, y borrar las secciones que no apliquen conservando la numeración de las que quedan. **Nada se inventa**: ni componentes, ni tecnologías, ni versiones, ni servidores, ni integraciones, ni requisitos. El dato que no se tenga se deja marcado, que es lo que distingue un hueco de un olvido. Cada elemento se clasifica con la convención de estados del anexo A.

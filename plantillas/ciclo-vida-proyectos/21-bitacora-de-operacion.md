@@ -2,6 +2,13 @@
 
 **Para qué sirve este documento.** Es el registro de lo que le pasa al sistema en producción, en orden: despliegues, respaldos, incidentes, mantenimientos. Cuando algo falle, la primera pregunta será «¿qué cambió antes?», y la respuesta debe estar acá y no en la memoria de alguien.
 
+> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
+>
+> | Regla | Qué exige |
+> |---|---|
+> | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+
 > Plantilla. Se escribe **en el momento** en que el evento ocurre, el más reciente arriba; nunca se reescribe lo anotado (si algo se corrigió después, se anota la corrección como evento nuevo). Mientras no haya producción, existe con su primera línea: «No aplica todavía porque «el porqué»». Reemplaza los `«…»` y borra esta caja.
 
 ## El registro
