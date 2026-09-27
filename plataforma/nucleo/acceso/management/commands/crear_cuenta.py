@@ -3,6 +3,11 @@
 
     python manage.py crear_cuenta jose --grupo usuario
     python manage.py crear_cuenta el-agente --grupo agente
+    python manage.py crear_cuenta jefe --grupo usuario --staff
+
+**Lo que esta orden agrega es el grupo.** Lo demás lo trae Django y no se
+reescribe: `createsuperuser` para la cuenta de rescate y `changepassword` para
+cambiar una contraseña.
 
 **La contraseña se pide sin mostrarla y no se recibe como argumento.** Una
 contraseña escrita en la línea de órdenes queda en el historial de la consola,
@@ -24,8 +29,8 @@ class Command(BaseCommand):
         parser.add_argument("nombre")
         parser.add_argument("--grupo", default=grupos.USUARIO,
                             choices=[grupos.USUARIO, grupos.AGENTE])
-        parser.add_argument("--cambiar-clave", action="store_true",
-                            help="solo cambiar la contraseña de una que ya está")
+        parser.add_argument("--staff", action="store_true",
+                            help="además, que pueda administrar cuentas en /admin/")
 
     def handle(self, *args, **opciones):
         grupos.poner_al_dia()
@@ -33,10 +38,14 @@ class Command(BaseCommand):
         nombre = opciones["nombre"]
         ya_estaba = Cuenta.objects.filter(username=nombre).first()
 
-        if ya_estaba and not opciones["cambiar_clave"]:
+        if ya_estaba:
+            # **Cambiar una contraseña no se escribe acá.** Django ya trae
+            # `changepassword`, y tener dos formas de hacer lo mismo es tener
+            # dos que un día se comportan distinto.
             self.stdout.write(
-                "Ya hay una cuenta llamada «%s». No se toca: para cambiarle la "
-                "contraseña, agregue --cambiar-clave." % nombre)
+                "Ya hay una cuenta llamada «%s». No se toca.\n"
+                "Para cambiarle la contraseña: "
+                "python manage.py changepassword %s" % (nombre, nombre))
             return
 
         clave = getpass.getpass("Contraseña para «%s»: " % nombre)
@@ -48,17 +57,14 @@ class Command(BaseCommand):
             self.stdout.write("Muy corta: mínimo ocho. No se hizo nada.")
             return
 
-        if ya_estaba:
-            ya_estaba.set_password(clave)
-            ya_estaba.save()
-            self.stdout.write("Contraseña cambiada para «%s»." % nombre)
-            return
-
         cuenta = Cuenta.objects.create_user(username=nombre, password=clave)
         cuenta.groups.add(Group.objects.get(name=opciones["grupo"]))
+        if opciones["staff"]:
+            cuenta.is_staff = True
+            cuenta.save()
         self.stdout.write(
             "Cuenta «%s» creada, en el grupo «%s»." % (nombre, opciones["grupo"]))
         if opciones["grupo"] == grupos.AGENTE:
             self.stdout.write(
-                "Ese grupo NO puede aprobar, publicar versiones, derogar "
-                "reglas ni administrar cuentas.")
+                "Ese grupo NO puede aprobar, publicar versiones ni derogar "
+                "reglas.")

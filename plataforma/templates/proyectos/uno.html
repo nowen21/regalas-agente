@@ -1,80 +1,287 @@
 {% extends "base.html" %}
 {% block titulo %}{{ proyecto.nombre }} · Cimiento{% endblock %}
+{% block encabezado %}{{ proyecto.nombre }}{% endblock %}
+{% block titulo_pagina %}{{ proyecto.nombre }}{% endblock %}
+
 {% block cuerpo %}
-<h1>{{ proyecto.nombre }}</h1>
 
-{% if recien_conectado %}<p class="bien">Quedó conectado.</p>{% endif %}
-{% if hecho %}<p class="bien">{{ hecho }}</p>{% endif %}
-{% if error %}<p class="error">{{ error }}</p>{% endif %}
-{% for aviso in avisos %}<p class="aviso">{{ aviso }}</p>{% endfor %}
 
-<table>
-  <tr><th>Dónde vive su código</th><td>{{ proyecto.ruta_codigo }}</td></tr>
-  <tr><th>¿Esa ruta existe?</th><td>{% if proyecto.ruta_viva %}Sí{% else %}No{% endif %}</td></tr>
-  <tr><th>Versión de reglas adoptada</th>
-      <td>{% if proyecto.adopto_el_estandar %}{{ proyecto.version_reglas }}{% else %}<span class="apagado">ninguna todavía</span>{% endif %}</td></tr>
-  <tr><th>Conectado el</th><td>{{ proyecto.conectado }}</td></tr>
-  {% if not proyecto.esta_conectado %}
-  <tr><th>Desconectado el</th><td>{{ proyecto.desconectado }}</td></tr>
+<div class="card mb-3 border-primary">
+  <div class="card-body py-2">
+    <p class="mb-0">
+      <i class="bi bi-info-circle me-1 text-primary"></i>
+      {{ proposito }}
+    </p>
+  </div>
+</div>
+
+{% if recien_conectado %}
+  <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i>
+  Quedó conectado.</div>
+{% endif %}
+{% if hecho %}<div class="alert alert-success">{{ hecho }}</div>{% endif %}
+{% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+{% for aviso in avisos %}<div class="alert alert-warning">{{ aviso }}</div>{% endfor %}
+
+{% if not estado.esta_sin_empezar %}
+  {# Las cuatro cifras, cada una con el color de lo que significa. #}
+  <div class="row g-3 mb-3">
+    <div class="col-12 col-lg-4">
+      <div class="small-box text-bg-primary">
+        <div class="inner">
+          <h3>{{ estado.documentos }}</h3>
+          <p>documentos leídos</p>
+        </div>
+        <i class="small-box-icon bi bi-files"></i>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="small-box {% if estado.fases_abiertas %}text-bg-warning{% else %}text-bg-success{% endif %}">
+        <div class="inner">
+          <h3>{{ estado.fases_abiertas }}</h3>
+          <p>{% if estado.fases_abiertas %}trabajos sin terminar, de {{ estado.fases }}{% else %}trabajos sin terminar: ninguno, de {{ estado.fases }}{% endif %}</p>
+        </div>
+        <i class="small-box-icon bi bi-hourglass-split"></i>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="small-box text-bg-secondary">
+        <div class="inner">
+          <h3>{{ estado.aprobados }}</h3>
+          <p>documentos aprobados</p>
+        </div>
+        <i class="small-box-icon bi bi-patch-check"></i>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}
+    Y qué quiere decir cada una, en palabras. Un número sin lectura obliga a
+    saber de antemano si es bueno o malo.
+  {% endcomment %}
+  <div class="card mb-3">
+    <div class="card-header"><h3 class="card-title">Qué dicen esos números</h3></div>
+    <div class="card-body">
+      <dl class="row mb-0">
+        <dt class="col-sm-3">Documentos leídos</dt>
+        <dd class="col-sm-9">Cuántos documentos del proyecto tiene Cimiento
+          guardados para poder responder sobre ellos. <strong>Es una foto</strong>:
+          se rehace con «Traer lo que ya tiene escrito».</dd>
+
+        <dt class="col-sm-3">Trabajos sin terminar</dt>
+        <dd class="col-sm-9">
+          {% if estado.fases_abiertas %}
+            <strong>{{ estado.fases_abiertas }} de {{ estado.fases }} siguen abiertos.</strong>
+            No es malo por sí solo: lo que hay que mirar es cuánto llevan
+            quietos, y eso está en
+            <a href="{% url 'ciclo-fases' proyecto.identificador %}">En qué va cada fase</a>.
+          {% else %}
+            <strong>Ninguno de los {{ estado.fases }} quedó a medias.</strong>
+          {% endif %}
+        </dd>
+
+        <dt class="col-sm-3">Documentos aprobados</dt>
+        <dd class="col-sm-9">
+          {% if estado.aprobados %}
+            {{ estado.aprobados }} de {{ estado.documentos }} llevan una marca de
+            aprobación{% if estado.ultima_aprobacion %}, y la última es del
+            {{ estado.ultima_aprobacion }}{% endif %}.
+            <strong>No todos los documentos necesitan aprobarse</strong>, así que
+            este número no busca llegar al total.
+          {% else %}
+            <strong>Ninguno todavía.</strong> No quiere decir que estén mal: quiere
+            decir que nadie los ha firmado.
+          {% endif %}
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  {% if estado.fases_ilegibles %}
+    <div class="alert alert-warning">
+      <strong>{{ estado.fases_ilegibles|length }} trabajo{{ estado.fases_ilegibles|length|pluralize:"s" }}
+      no dice{{ estado.fases_ilegibles|length|pluralize:"n" }} en qué van de una forma que se pueda leer.</strong>
+      No se cuentan ni como abiertos ni como terminados: <em>no se sabe</em>.
+      Son estos:
+      <ul class="mb-0 mt-2">
+        {% for ruta in estado.fases_ilegibles %}<li><code>{{ ruta }}</code></li>{% endfor %}
+      </ul>
+    </div>
   {% endif %}
-  <tr><th>Estado</th><td>{{ proyecto.estado }}</td></tr>
-</table>
+{% else %}
+  <div class="vacio mb-3">
+    <strong>Sin empezar.</strong> Todavía no hay nada que mirar de este
+    proyecto. {{ estado.que_haria_falta }}
+  </div>
+{% endif %}
+
+<h3 class="mb-1">Las siete etapas por las que pasa un proyecto</h3>
+<p class="apagado">Van en orden, de planear a mantener. Cada una deja escrito lo
+suyo; una etapa sin documento es una parte del trabajo de la que no quedó
+constancia.
+{% if estado.etapas_con_documento %}
+  Este proyecto tiene <strong>{{ estado.etapas_con_documento|length }} de 7</strong>.
+{% endif %}</p>
+
+<div class="row g-3 mb-4">
+  {% for etapa in etapas %}
+    <div class="col-12 col-md-6 col-xl-4">
+      <div class="card h-100 {% if not etapa.escrita %}border-warning{% endif %}">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h3 class="card-title mb-0">
+            <span class="apagado me-1">{{ forloop.counter }}.</span>{{ etapa.nombre }}
+          </h3>
+          {% if etapa.escrita %}
+            <span class="badge text-bg-success">escrita</span>
+          {% else %}
+            <span class="badge text-bg-warning">sin escribir</span>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p class="mb-2"><strong>{{ etapa.pregunta }}</strong></p>
+          <p class="apagado small mb-0">
+            {% if etapa.escrita %}
+              Queda escrito: {{ etapa.queda|lower }}.
+            {% else %}
+              Debería quedar escrito: {{ etapa.queda|lower }}.
+              <strong>Hoy no hay nada.</strong>
+            {% endif %}
+          </p>
+        </div>
+        <div class="card-footer apagado small">
+          <code>cvds/{{ etapa.carpeta }}/</code>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header"><h3 class="card-title">Dónde vive</h3></div>
+      <div class="card-body p-0">
+        <table class="table tabla-angosta mb-0">
+          <tr>
+            <th style="width:14rem">Carpeta de su código</th>
+            <td><code>{{ proyecto.ruta_codigo }}</code></td>
+          </tr>
+          <tr>
+            <th>¿Esa carpeta sigue ahí?</th>
+            <td>
+              {% if proyecto.ruta_viva %}
+                <span class="badge text-bg-success">sí</span>
+              {% else %}
+                <span class="badge text-bg-danger">no</span>
+                — se movió o se borró. Corríjala abajo.
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th>Versión de reglas que sigue</th>
+            <td>
+              {% if proyecto.adopto_el_estandar %}
+                {{ proyecto.version_reglas }}
+              {% else %}
+                <span class="badge text-bg-secondary">ninguna todavía</span>
+              {% endif %}
+            </td>
+          </tr>
+          <tr><th>Conectado el</th><td>{{ proyecto.conectado }}</td></tr>
+          {% if not proyecto.esta_conectado %}
+            <tr><th>Desconectado el</th><td>{{ proyecto.desconectado }}</td></tr>
+          {% endif %}
+          <tr>
+            <th>Estado</th>
+            <td>
+              {% if proyecto.esta_conectado %}
+                <span class="badge text-bg-success">{{ proyecto.estado }}</span>
+              {% else %}
+                <span class="badge text-bg-secondary">{{ proyecto.estado }}</span>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer apagado small">
+        <i class="bi bi-shield-check me-1"></i>
+        <strong>De esa carpeta, Cimiento solo lee los documentos.</strong> No
+        abre el código, no lo cambia y no lo borra.
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card h-100">
+      <div class="card-header"><h3 class="card-title">Mirar por dentro</h3></div>
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'ciclo-fases' proyecto.identificador %}">
+          <i class="bi bi-signpost-split me-2"></i><strong>En qué va cada fase</strong>
+          <div class="apagado small">En qué paso está cada trabajo y qué le falta</div>
+        </a>
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'comprobaciones-funcionalidades' proyecto.identificador %}">
+          <i class="bi bi-check2-square me-2"></i><strong>Qué está comprobado</strong>
+          <div class="apagado small">Qué se probó, qué no cumplió y qué nadie miró</div>
+        </a>
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'aprobaciones-lista' proyecto.identificador %}">
+          <i class="bi bi-patch-check me-2"></i><strong>Qué está aprobado</strong>
+          <div class="apagado small">Quién firmó cada documento, y si cambió después</div>
+        </a>
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'memoria-lista' proyecto.identificador %}">
+          <i class="bi bi-bookmark-star me-2"></i><strong>Qué recuerda el agente</strong>
+          <div class="apagado small">Lo que se decidió y conviene no volver a discutir</div>
+        </a>
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'importacion-traer' proyecto.identificador %}">
+          <i class="bi bi-box-arrow-in-down me-2"></i><strong>Traer lo que ya tiene escrito</strong>
+          <div class="apagado small">Vuelve a leer sus documentos. Hágalo cuando el proyecto cambie</div>
+        </a>
+        <a class="list-group-item list-group-item-action"
+           href="{% url 'importacion-reportes' proyecto.identificador %}">
+          <i class="bi bi-clipboard-x me-2"></i><strong>Ver qué no entró en cada traída</strong>
+          <div class="apagado small">Documentos que Cimiento no supo reconocer</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% if proyecto.esta_conectado %}
-<h2>Qué se le puede hacer</h2>
-<p class="apagado">Los tres preguntan antes de hacerse, y ninguno borra ni mueve nada.</p>
-<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'renombrar' %}">{% csrf_token %}
-  <button type="submit">Renombrar</button>
-</form>
-<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-ruta' %}">{% csrf_token %}
-  <button type="submit">Corregir dónde vive su código</button>
-</form>
-<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-version' %}">{% csrf_token %}
-  <button type="submit">Corregir la versión de reglas</button>
-</form>
-<form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'desconectar' %}">{% csrf_token %}
-  <button type="submit">Desconectar</button>
-</form>
+  <div class="card mt-3">
+    <div class="card-header">
+      <h3 class="card-title">Cambiar algo de este proyecto</h3>
+      <div class="card-tools apagado small">
+        Los cuatro preguntan antes de hacerse, y ninguno borra ni mueve nada
+      </div>
+    </div>
+    <div class="card-body d-flex flex-wrap gap-2">
+      <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'renombrar' %}">{% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">
+          <i class="bi bi-pencil me-1"></i>Cambiarle el nombre</button>
+      </form>
+      <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-ruta' %}">{% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">
+          <i class="bi bi-folder me-1"></i>Corregir dónde vive su código</button>
+      </form>
+      <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'corregir-version' %}">{% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">
+          <i class="bi bi-tag me-1"></i>Corregir la versión de reglas</button>
+      </form>
+      <form method="post" action="{% url 'proyectos-cambiar' proyecto.identificador 'desconectar' %}">{% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger">
+          <i class="bi bi-plug me-1"></i>Desconectar</button>
+      </form>
+    </div>
+    <div class="card-footer apagado small">
+      <strong>Desconectar no borra nada.</strong> El proyecto deja de aparecer
+      entre los conectados; su documentación se queda guardada y su código no se
+      toca. Se puede volver a conectar.
+    </div>
+  </div>
 {% endif %}
 
-<h2>En qué va</h2>
-{% if estado.esta_sin_empezar %}
-<p class="vacio"><strong>Sin empezar.</strong> {{ estado.que_haria_falta }}</p>
-{% else %}
-<table>
-  <tr><th>Documentos traídos</th><td>{{ estado.documentos }}</td></tr>
-  <tr><th>Etapas del ciclo con documento</th>
-      <td>{{ estado.etapas_con_documento|length }} de 7:
-        {% for etapa in estado.etapas_con_documento %}{{ etapa }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
-  <tr><th>Etapas todavía sin documento</th>
-      <td>{% if estado.etapas_sin_documento %}{% for etapa in estado.etapas_sin_documento %}{{ etapa }}{% if not forloop.last %}, {% endif %}{% endfor %}{% else %}ninguna: las siete tienen{% endif %}</td></tr>
-  <tr><th>Fases</th>
-      <td>{{ estado.fases }} en total, <strong>{{ estado.fases_abiertas }} todavía abierta{{ estado.fases_abiertas|pluralize:"s" }}</strong></td></tr>
-  <tr><th>Documentos aprobados</th>
-      <td>{{ estado.aprobados }} de {{ estado.documentos }} <strong>están aprobados</strong>{% if estado.ultima_aprobacion %}; la última aprobación es del {{ estado.ultima_aprobacion }}{% endif %}</td></tr>
-</table>
-
-{% if estado.fases_ilegibles %}
-<p class="aviso"><strong>{{ estado.fases_ilegibles|length }} fase{{ estado.fases_ilegibles|length|pluralize:"s" }} no dice{{ estado.fases_ilegibles|length|pluralize:"n" }} en qué estación va{{ estado.fases_ilegibles|length|pluralize:"n" }} de una forma que se pueda leer</strong>, así que no se cuentan como abiertas ni como cerradas. Son estas:</p>
-<ul>
-  {% for ruta in estado.fases_ilegibles %}<li>{{ ruta }}</li>{% endfor %}
-</ul>
-{% endif %}
-{% endif %}
-
-<h2>Su documentación</h2>
-<h2>Mirar por dentro</h2>
-<p><a href="{% url 'ciclo-fases' proyecto.identificador %}">En qué va cada fase</a></p>
-<p><a href="{% url 'comprobaciones-funcionalidades' proyecto.identificador %}">Qué está comprobado</a></p>
-<p><a href="{% url 'aprobaciones-lista' proyecto.identificador %}">Qué está aprobado</a></p>
-<p><a href="{% url 'memoria-lista' proyecto.identificador %}">Qué recuerda el agente</a></p>
-
-<h2>Traer lo escrito</h2>
-<p><a href="{% url 'importacion-traer' proyecto.identificador %}">Traer lo que ya tiene escrito</a></p>
-<p><a href="{% url 'importacion-reportes' proyecto.identificador %}">Ver qué no entró en cada traída</a></p>
-
-<h2>Qué todavía no muestra esta pantalla</h2>
-<p class="apagado">Sus etapas del ciclo de vida, sus fases abiertas y qué falta aprobar. Llegan cuando la plataforma pueda traer lo que el proyecto ya tiene escrito.</p>
-
-<p><a href="{% url 'proyectos-lista' %}">Volver a todos los proyectos</a></p>
 {% endblock %}

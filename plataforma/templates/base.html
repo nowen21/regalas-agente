@@ -47,6 +47,11 @@
           <a class="nav-link" href="#" id="cambiar-tema" role="button"
              title="Modo claro u oscuro"><i class="bi bi-circle-half"></i></a>
         </li>
+        {% if user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/" title="Cuentas, grupos y permisos"><i class="bi bi-people"></i></a>
+          </li>
+        {% endif %}
         {% if user.is_authenticated %}
           <li class="nav-item d-none d-sm-block">
             <span class="nav-link"><i class="bi bi-person me-1"></i>{{ user.username }}</span>

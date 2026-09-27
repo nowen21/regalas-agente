@@ -36,6 +36,11 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
+    # El sitio de administración: es **lo que Django trae para administrar
+    # cuentas, grupos y permisos**. Se declaró un permiso propio para eso y no
+    # hacía falta: `is_staff` y estas pantallas ya responden esa pregunta.
+    "django.contrib.messages",
+    "django.contrib.admin",
     "nucleo.acceso",
     "nucleo.almacen",
     "nucleo.auditoria",
@@ -50,6 +55,7 @@ INSTALLED_APPS = [
     "nucleo.aprobaciones",
     "nucleo.memoria",
     "nucleo.avisos",
+    "nucleo.ajustes",
 ]
 
 # La plataforma corre en la máquina del usuario y no se expone a la red
@@ -61,6 +67,8 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     # Pone en cada petición quién entró. Va después de la sesión porque la lee.
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # El sitio de administración lo pide para sus mensajes.
+    "django.contrib.messages.middleware.MessageMiddleware",
     # Y esto exige haber entrado para todo lo que no esté en su lista corta.
     # Va acá y no como decorador por vista: una vista nueva nace protegida.
     "nucleo.acceso.middleware.ExigirHaberEntrado",
@@ -76,6 +84,7 @@ TEMPLATES = [{
         "django.template.context_processors.request",
         # Para que la barra de arriba pueda decir quién entró.
         "django.contrib.auth.context_processors.auth",
+        "django.contrib.messages.context_processors.messages",
     ]},
 }]
 

@@ -46,6 +46,36 @@ class NingunaPantallaImprimeSusComentarios(TestCase):
                 "%s imprime %r: era una etiqueta de plantilla y salió a la "
                 "pantalla" % (ruta, sobra))
 
+    def test_la_ficha_con_datos_tampoco_imprime_etiquetas(self):
+        """**La primera versión de esta prueba no lo habría visto.**
+
+        El proyecto que usaba estaba vacío, así que media pantalla —la que
+        muestra las cifras y su lectura— no se dibujaba. Un comentario mal
+        escrito ahí adentro pasaba entero. Se prueba con datos y sin ellos.
+        """
+        import os as sistema
+        import tempfile as temporal
+        raiz = temporal.mkdtemp(prefix="prueba-ficha-")
+        try:
+            carpeta = sistema.path.join(raiz, "cvds", "planificacion")
+            sistema.makedirs(carpeta)
+            with open(sistema.path.join(carpeta, "README.md"), "w",
+                      encoding="utf-8") as abierto:
+                abierto.write("# Planificacion\n")
+            from nucleo.importacion.models import Traido
+            Traido.objects.create(proyecto="con-datos",
+                                  origen="cvds/planificacion/README.md",
+                                  tipo="etapa del ciclo de vida",
+                                  guardado_en="x.md")
+            Proyecto.objects.create(
+                identificador="con-datos", nombre="Con datos",
+                ruta_codigo=raiz, ruta_normalizada=raiz.lower(),
+                conectado="conectado")
+            self._revisar("/proyecto/con-datos/")
+        finally:
+            import shutil as borrar
+            borrar.rmtree(raiz, ignore_errors=True)
+
     def test_las_siete_pantallas_no_imprimen_etiquetas(self):
         for ruta in ("/", "/tablero/",
                      "/proyecto/de-prueba/",

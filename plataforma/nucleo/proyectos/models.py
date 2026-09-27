@@ -22,6 +22,17 @@ class Proyecto(models.Model):
     # forma comparable, y en `ruta_codigo` la que el usuario escribió.
     ruta_normalizada = models.CharField(max_length=500, db_index=True)
     version_reglas = models.CharField(max_length=40, blank=True)
+    # **Se declara, no se adivina.** Un proyecto que hereda dice qué versión
+    # adoptó; el estándar no adopta nada: él es esa versión, y la lleva en su
+    # archivo `VERSION`. Reconocerlo mirando qué archivos tiene sería un
+    # supuesto disfrazado de hecho —otro proyecto podría tener los mismos—, así
+    # que lo dice quien administra, desde `/admin/`.
+    es_el_estandar = models.BooleanField(
+        default=False,
+        verbose_name="Es el estándar mismo",
+        help_text="Marcar solo en el repositorio del estándar. A ese no se le "
+                  "reclama qué versión sigue: la versión que es está en su "
+                  "archivo VERSION.")
     conectado = models.CharField(max_length=20)
     # Vacío mientras el proyecto esté conectado. Con fecha, está desconectado y
     # su documentación se quedó donde estaba. **La marca vive también en la

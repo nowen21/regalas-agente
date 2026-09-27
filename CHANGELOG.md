@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.0.2 — 2026-09-27
+
+**La plantilla de historia de usuario dice de dónde sale su contexto.** En [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), el contexto de la historia es el problema del pendiente que la genera.
+
+**PARCHE:** cambia la indicación del campo, no qué se exige.
+
+---
+
 ## 38.0.1 — 2026-09-27
 
 **La plantilla de historia de usuario dice con qué reglas se redacta.** [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md) dice en su cabecera que toda HU creada con ella se redacta aplicando `00·ID8` y `00·ID9`, y que esa nota se borra al llenarla.

@@ -216,3 +216,72 @@ class CP004ElAgenteNoAprueba(Base):
         Cuenta.objects.create_superuser(username="raiz", password="x" * 12)
         aprobada = aprobaciones.aprobar("de-prueba", self.documento(), "raiz")
         self.assertEqual("raiz", aprobada.quien)
+
+
+class CP005LosTresPermisosSeExigenDeVerdad(Base):
+    """Lo que el usuario vio al preguntar en qué se diferencian los dos grupos.
+
+    **Tres permisos declarados, y solo uno se comprobaba.** `publicar_version` y
+    `derogar_regla` estaban escritos en la especificación como si rigieran, y sus
+    órdenes ni preguntaban quién las corría. Un permiso declarado y sin conectar
+    se lee igual que uno que rige.
+    """
+
+    def donde_se_exige(self, clave):
+        """En qué archivos del núcleo se le pregunta a `exigir` por esa clave.
+
+        **Se busca en todo el módulo, no en una ruta escrita a mano.** Dónde se
+        exige un permiso es una decisión de diseño que puede cambiar —hoy
+        `aprobar_documento` se exige en el núcleo y los otros dos en su orden—;
+        lo que no puede cambiar es que **se exija en alguna parte**.
+        """
+        import os as sistema
+        hallados = []
+        for base, carpetas, archivos in sistema.walk("nucleo"):
+            carpetas[:] = [c for c in carpetas if c != "__pycache__"]
+            for nombre in archivos:
+                if not nombre.endswith(".py") or nombre.startswith("tests"):
+                    continue
+                if base.replace("\\", "/").endswith("nucleo/acceso"):
+                    continue    # acá se declaran; no cuenta como exigirlos
+                ruta = sistema.path.join(base, nombre)
+                with io.open(ruta, encoding="utf-8", errors="replace") as abierto:
+                    fuente = abierto.read()
+                if "exigir(" in fuente and clave in fuente:
+                    hallados.append(ruta)
+        return hallados
+
+    def test_cada_permiso_restringido_lo_exige_alguna_parte(self):
+        """**Un permiso declarado y sin conectar se lee igual que uno que rige.**"""
+        for clave, _n, _p in grupos.SOLO_DEL_USUARIO:
+            self.assertTrue(
+                self.donde_se_exige(clave),
+                "el permiso «%s» está declarado y no lo exige nadie: se lee "
+                "como si rigiera y no rige" % clave)
+
+    def test_administrar_cuentas_ya_no_es_un_permiso_propio(self):
+        """Django ya responde esa pregunta con `is_staff` y su sitio."""
+        declarados = [clave for clave, _n, _p in grupos.SOLO_DEL_USUARIO]
+        self.assertNotIn("administrar_cuentas", declarados)
+
+
+class CP006ElSitioDeAdministracionEsElDeDjango(Base):
+    """Administrar cuentas no se escribió: lo trae la biblioteca."""
+
+    def test_administrar_exige_haber_entrado(self):
+        self.assertEqual(302, self.cliente.get("/admin/").status_code)
+
+    def test_un_usuario_normal_no_administra(self):
+        """Entrar no basta: administrar pide además ser del personal."""
+        para_probar.como_usuario(self.cliente)
+        respuesta = self.cliente.get("/admin/", follow=True)
+        self.assertNotIn("de-prueba", respuesta.content.decode("utf-8"))
+
+    def test_el_del_personal_si_administra(self):
+        cuenta = para_probar.como_usuario(self.cliente, "jefe")
+        cuenta.is_staff = True
+        cuenta.is_superuser = True
+        cuenta.save()
+        cuerpo = self.cliente.get("/admin/").content.decode("utf-8")
+        self.assertIn("Grupos", cuerpo)
+        self.assertIn("Usuarios", cuerpo)

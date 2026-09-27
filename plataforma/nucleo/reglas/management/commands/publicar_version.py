@@ -6,6 +6,8 @@
 """
 from django.core.management.base import BaseCommand
 
+from nucleo.acceso import core as acceso
+
 from nucleo.auditoria.core import con_constancia
 from nucleo.ciclo_de_vida import core as ciclo
 from nucleo.proyectos.models import Proyecto
@@ -18,10 +20,20 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("proyecto")
         parser.add_argument("version")
+        parser.add_argument("--quien", required=True,
+                            help="la cuenta que lo autoriza")
         parser.add_argument("--igual-la-publico", action="store_true",
                             dest="publicar")
 
     def handle(self, *args, **opciones):
+        # Lo primero, antes de tocar nada: quién lo autoriza. Un
+        # rechazo después de escribir algo deja el trabajo a medias.
+        try:
+            acceso.exigir(opciones["quien"], "publicar_version")
+        except acceso.NoPuede as porque:
+            self.stdout.write("No se hizo: %s" % porque)
+            return
+
         try:
             proyecto = Proyecto.objects.get(identificador=opciones["proyecto"])
         except Proyecto.DoesNotExist:

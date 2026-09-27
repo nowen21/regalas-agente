@@ -9,8 +9,14 @@ de más, y dos de ellos no los habría usado nadie.
 
 **Lo que separa a los dos es qué obliga a otros.** El agente escribe documentos,
 abre fases y comprueba: todo eso es su trabajo. Lo que no hace es **aprobar,
-publicar una versión, derogar una regla ni administrar cuentas**, porque las
-cuatro obligan a alguien más — y `00·N1` pide que eso lo autorice una persona.
+publicar una versión ni derogar una regla**, porque las tres obligan a alguien
+más — y `00·N1` pide que eso lo autorice una persona.
+
+**Administrar cuentas no está en esta lista, y es lo que se aprendió acá.** Se
+había declarado como un permiso propio; sobraba, porque Django ya responde esa
+pregunta con `is_staff` y su sitio de administración. Escribir una segunda
+respuesta a una pregunta que la biblioteca ya contesta es tener dos, y un día
+dicen cosas distintas.
 
 **Un agente que se aprobara a sí mismo volvería la aprobación un trámite.** Esa
 es la frase entera; lo demás es cómo se escribe en Django.
@@ -37,9 +43,13 @@ SOLO_DEL_USUARIO = (
      "responde por ellos"),
     ("derogar_regla", "Derogar una regla",
      "derogar cambia lo que se le exige a otros proyectos"),
-    ("administrar_cuentas", "Administrar cuentas",
-     "quien se da permisos a sí mismo no tiene permisos"),
 )
+
+# **Administrar cuentas no está acá, y es a propósito.** Se declaró como permiso
+# propio y sobraba: Django ya responde esa pregunta con `is_staff` y su sitio de
+# administración, en `/admin/`. Un permiso inventado para algo que la biblioteca
+# ya resuelve es una segunda respuesta a la misma pregunta, y un día dicen cosas
+# distintas.
 
 # Lo que los dos pueden. Se declara, en vez de darse por hecho: un permiso que
 # no está escrito es un permiso que nadie sabe si existe.

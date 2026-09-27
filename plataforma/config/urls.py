@@ -5,6 +5,7 @@
 `esta-viva` queda de la fase A: sirve para saber si la plataforma responde sin
 depender de que haya proyectos conectados.
 """
+from django.contrib import admin
 from django.urls import path
 
 from nucleo.acceso import views as acceso
@@ -27,6 +28,9 @@ urlpatterns = [
          name="importacion-reportes"),
     path("proyecto/<str:identificador>/reportes/<str:cuando>/",
          importacion.reporte, name="importacion-reporte"),
+    # Administrar cuentas, grupos y permisos: lo que Django trae. Pide haber
+    # entrado —lo exige el middleware— y además ser del personal (`is_staff`).
+    path("admin/", admin.site.urls),
     path("entrar/", acceso.Entrar.as_view(), name="entrar"),
     path("salir/", acceso.Salir.as_view(), name="salir"),
     path("tablero/", avisos.tablero, name="avisos-tablero"),

@@ -32,6 +32,7 @@ documentación del anterior sin dueño.
 **qué ruta se buscó**, y corregirla comprueba lo mismo que al conectar. Perder
 la ruta no pierde nada: la documentación vive en la plataforma, no allá.
 """
+import io
 import os
 import re
 import unicodedata
@@ -108,30 +109,53 @@ def _texto_de_la_ficha(nombre, ruta, version, conectado, desconectado=""):
            desconectado or "sigue conectado"))
 
 
-def avisos_de(ruta, version_declarada):
-    """Lo que hay que decirle al usuario, sin impedirle conectar."""
+def version_que_es(ruta):
+    """El número de edición del estándar, leído de su `VERSION`. `""` si no hay."""
+    try:
+        with io.open(os.path.join(str(ruta), "VERSION"), encoding="utf-8",
+                     errors="replace") as abierto:
+            return abierto.read().strip()
+    except OSError:
+        return ""
+
+
+def avisos_de(ruta, version_declarada, es_el_estandar=False):
+    """Lo que hay que decirle al usuario, sin impedirle conectar.
+
+    **Los textos no están acá: se piden a los ajustes**, y se cambian desde
+    `/admin/` sin abrir el código. Lo que queda escrito en esta función es
+    **cuándo** sale cada aviso, que sí es lógica.
+    """
+    from nucleo.ajustes import core as ajustes
     dichos = []
     if not os.path.isdir(str(ruta)):
         # **El aviso nombra la ruta**, no solo dice que falló (`RN-2` de la
         # historia). Sin ella el usuario no puede ver si fue un renombre, un
         # movimiento, o un disco que no está montado.
-        dichos.append(
-            "La carpeta de su código ya no está donde estaba. Se buscó en "
-            "«%s». Su documentación sigue guardada acá." % ruta)
+        dichos.append(ajustes.texto(
+            "aviso.ruta_perdida",
+            ajustes.de_fabrica("aviso.ruta_perdida")).format(ruta=ruta))
         return dichos
-    if not version_declarada:
-        dichos.append(
-            "Este proyecto todavía no declara qué versión del estándar sigue. "
-            "Se conecta igual, y el aviso de desfase no va a servir hasta que "
-            "la declare en su CLAUDE.md.")
+    if es_el_estandar:
+        # **Al reglamento no se le pregunta qué edición sigue: él es una.**
+        # Que este proyecto sea el estándar no se adivina mirando qué archivos
+        # tiene —otro podría tenerlos—: se marca en `/admin/`.
+        edicion = version_que_es(ruta)
+        dichos.append(ajustes.texto(
+            "aviso.es_el_estandar",
+            ajustes.de_fabrica("aviso.es_el_estandar")).format(
+                version=(", y hoy es la %s" % edicion) if edicion else ""))
+    elif not version_declarada:
+        dichos.append(ajustes.texto(
+            "aviso.sin_version", ajustes.de_fabrica("aviso.sin_version")))
     else:
         desfase = reglas.quedo_atras(version_declarada)
         if desfase:
             dichos.append("Quedó atrás: %s" % desfase)
     if not os.path.isdir(os.path.join(ruta, ".git")):
-        dichos.append(
-            "La carpeta de este proyecto no está bajo control de versiones: "
-            "su código no tiene respaldo.")
+        dichos.append(ajustes.texto(
+            "aviso.sin_control_de_versiones",
+            ajustes.de_fabrica("aviso.sin_control_de_versiones")))
     return dichos
 
 

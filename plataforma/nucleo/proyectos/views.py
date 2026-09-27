@@ -16,7 +16,9 @@ confirma, adivina.
 """
 from django.shortcuts import get_object_or_404, redirect, render
 
-from . import core
+from nucleo.ajustes import core as ajustes
+
+from . import core, etapas
 from .models import Proyecto
 
 # Cada cambio, con lo que la pantalla tiene que decir antes de hacerlo.
@@ -123,11 +125,19 @@ def conectar(request):
 def uno(request, identificador):
     """`P-02` · un proyecto: su ruta, su versión, qué le falta y qué se le puede hacer."""
     proyecto = get_object_or_404(Proyecto, identificador=identificador)
+    detalle = proyecto.detalle_del_estado
     return render(request, "proyectos/uno.html", {
         "seccion": "ficha",
         "proyecto": proyecto,
         "avisos": _avisos_de(proyecto),
-        "estado": proyecto.detalle_del_estado,
+        "estado": detalle,
+        # Las siete etapas, cada una diciendo qué se responde en ella. **También
+        # las que faltan**: la tarjeta que más falta hace es la de la etapa sin
+        # documento, que es la que explica qué se está perdiendo.
+        "etapas": etapas.de_un_proyecto(detalle.etapas_con_documento),
+        "proposito": ajustes.texto(
+            "proposito.ficha_del_proyecto",
+            ajustes.de_fabrica("proposito.ficha_del_proyecto")),
     })
 
 
@@ -185,7 +195,8 @@ def _avisos_de(proyecto):
         return ["Este proyecto está desconectado desde el %s. Su documentación "
                 "sigue guardada acá, y vuelve si se conecta otra vez."
                 % proyecto.desconectado]
-    return core.avisos_de(proyecto.ruta_codigo, proyecto.version_reglas)
+    return core.avisos_de(proyecto.ruta_codigo, proyecto.version_reglas,
+                          proyecto.es_el_estandar)
 
 
 def _lista_con_error(request, error, nombre, ruta):

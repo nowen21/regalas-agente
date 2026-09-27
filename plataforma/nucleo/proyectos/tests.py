@@ -9,6 +9,7 @@ ajenas, y escribir donde no debe es el error que nadie perdona.
 de estas pruebas se crean y se borran acá mismo.
 """
 import io
+import re
 import os
 import shutil
 import tempfile
@@ -216,7 +217,11 @@ class AvisosTests(BaseProyectos):
         self.assertEqual(Proyecto.objects.count(), 1)
         self.assertEqual(proyecto.version_reglas, "")
         self.assertFalse(proyecto.adopto_el_estandar)
-        self.assertTrue(any("no declara" in aviso for aviso in avisos))
+        # **No se fija la frase**: ese texto se edita desde `/admin/` y
+        # fijarlo acá rompería la prueba cada vez que alguien lo mejore.
+        # Lo que se comprueba es que salga un aviso sobre la versión.
+        self.assertTrue(any("versión del estándar" in aviso
+                            for aviso in avisos))
 
     def test_el_claude_sin_version_declarada_tambien_se_conecta(self):
         carpeta = self.proyecto_de_mentira(version="")
@@ -224,7 +229,11 @@ class AvisosTests(BaseProyectos):
         proyecto, avisos = core.conectar("Con CLAUDE pero sin versión", carpeta)
 
         self.assertEqual(proyecto.version_reglas, "")
-        self.assertTrue(any("no declara" in aviso for aviso in avisos))
+        # **No se fija la frase**: ese texto se edita desde `/admin/` y
+        # fijarlo acá rompería la prueba cada vez que alguien lo mejore.
+        # Lo que se comprueba es que salga un aviso sobre la versión.
+        self.assertTrue(any("versión del estándar" in aviso
+                            for aviso in avisos))
 
     def test_vacio_y_falso_no_se_resuelven_igual(self):
         """Si los dos caminos se juntan, uno de los dos casos quedó mal."""
@@ -328,7 +337,7 @@ class PantallasTests(BaseProyectos):
         cuerpo = self.client.get(
             "/proyecto/%s/" % proyecto.identificador).content.decode("utf-8")
 
-        self.assertIn("no declara", cuerpo)
+        self.assertIn("versión del estándar", cuerpo)
 
 
 class NoTocarElProyectoTests(BaseProyectos):
@@ -1013,7 +1022,9 @@ class EtapasEnElEstadoTests(BaseEstado):
         cuerpo = self.client.get(
             "/proyecto/%s/" % proyecto.identificador).content.decode("utf-8")
 
-        self.assertIn("Etapas todavía sin documento", cuerpo)
+        # Se listan las que faltan, con su nombre.
+        # Cada etapa tiene su tarjeta, y la que falta lo dice en la suya.
+        self.assertIn("sin escribir", cuerpo)
         self.assertIn("mantenimiento", cuerpo)
 
 
@@ -1075,7 +1086,8 @@ class FasesEnElEstadoTests(BaseEstado):
         cuerpo = self.client.get(
             "/proyecto/%s/" % proyecto.identificador).content.decode("utf-8")
 
-        self.assertIn("no dice en qué estación va", cuerpo)
+        self.assertIn("no dice en qué van de una forma que se pueda leer",
+                      cuerpo)
         self.assertIn("EP-001/A", cuerpo)
 
 
@@ -1116,7 +1128,10 @@ class AprobadoTests(BaseEstado):
         cuerpo = self.client.get(
             "/proyecto/%s/" % proyecto.identificador).content.decode("utf-8")
 
-        self.assertIn("están aprobados", cuerpo)
+        # La frase cambió al rehacer la pantalla; lo que se protege es que el
+        # número salga **dicho con palabras**, no solo como cifra.
+        self.assertIn("llevan una marca de aprobación",
+                      re.sub(r"\s+", " ", cuerpo))
         self.assertIn("2026-08-25", cuerpo)
 
 
@@ -1195,7 +1210,7 @@ class SinLeerLaCarpetaTests(BaseEstado):
         cuerpo = self.client.get(
             "/proyecto/%s/" % proyecto.identificador).content.decode("utf-8")
 
-        self.assertIn("Etapas del ciclo con documento", cuerpo)
+        self.assertIn("Las siete etapas por las que pasa un proyecto", cuerpo)
         self.assertIn("ya no está donde estaba", cuerpo)
 
 

@@ -1,8 +1,8 @@
-# Cimiento, el estandar
+# Cimiento
 
 | Campo | Valor |
 |---|---|
-| Nombre | Cimiento, el estandar |
+| Nombre | Cimiento |
 | Ruta del código | c:\Ing. Jose\ia\agente |
 | Versión de reglas adoptada | ninguna todavía |
 | Fecha de conexión | 2026-08-25 |
