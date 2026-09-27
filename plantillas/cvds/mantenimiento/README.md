@@ -1,6 +1,6 @@
 # Mantenimiento: ¿cómo se sostiene vivo?   ·   `[CAPA 3]`
 
-**Para qué sirve este documento.** Deja escrito qué hay que hacer para que el sistema siga sirviendo después de entregado: quién atiende, cómo entra un cambio, respaldos probados, vigilancia, qué hacer cuando falla, y cuándo se apaga. **Es la etapa más larga de todas y la que menos se planea.**
+**Para qué sirve este documento.** Deja escrito qué hay que hacer para que el sistema siga sirviendo después de entregado: quién atiende, cómo entra un cambio, respaldos probados, vigilancia, qué hacer cuando falla, y cuándo se apaga. Es la etapa más larga de todas y la que menos se planea.
 
 > Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
 >
@@ -11,15 +11,15 @@
 
 > Plantilla. Se llena antes de la primera entrega, no después, y se revisa cada vez que el sistema cambia. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra. Reemplaza los `«…»` y borra esta caja.
 
-> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
+> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. Si en una celda va más de una cosa, se escribe como lista: una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
-> **Se escribe desde la propuesta, no desde lo que ya está construido.** Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
+> Se escribe desde la propuesta, no desde lo que ya está construido. Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
 
 **Estado: «BORRADOR / VIGENTE»** («AAAA-MM-DD»).
 
----
-
 ## 1. Qué entra a esta etapa
+
+> Lista lo que el mantenimiento recibe de las etapas anteriores y si llegó aprobado.
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
@@ -29,7 +29,7 @@
 
 ## 2. Los cuatro trabajos que caben acá
 
-> Se llaman igual y cuestan distinto. Separarlos es lo que permite decir **cuánto del esfuerzo se va en apagar incendios** y cuánto en mejorar: si todo entra como «mantenimiento», nadie puede defender el presupuesto del año que viene.
+> Separa los cuatro tipos de trabajo de mantenimiento, que se llaman igual y cuestan distinto. Separarlos permite decir cuánto del esfuerzo se va en apagar incendios y cuánto en mejorar; si todo entra como mantenimiento, nadie puede defender el presupuesto del año siguiente.
 
 | Tipo | Qué es | Ejemplo | Cuánto del esfuerzo se lleva |
 |---|---|---|---|
@@ -40,6 +40,8 @@
 
 ## 3. Quién lo sostiene
 
+> Dice quién responde por cada actividad, con qué frecuencia y quién la cubre cuando esa persona falta.
+
 | Qué actividad | Quién responde | Con qué frecuencia | Qué pasa si esa persona no está |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
@@ -48,7 +50,7 @@
 
 ## 4. Cómo entra una solicitud, y con qué prioridad
 
-> **Todo entra por el mismo lugar y queda escrito.** Lo que se pide de palabra no existe, y lo que no tiene prioridad acordada la define quien grita más fuerte.
+> Fija por dónde entra cada solicitud, cómo se clasifica su gravedad y en cuánto se atiende. Todo entra por el mismo lugar y queda escrito: lo que se pide de palabra no existe, y la prioridad que no se acordó la define quien grita más fuerte.
 
 | Gravedad | Qué significa | En cuánto se responde | En cuánto se resuelve |
 |---|---|---|---|
@@ -65,6 +67,8 @@
 
 ## 5. Antes de tocar: qué se mira
 
+> Dice qué se evalúa de un cambio antes de hacerlo y quién lo aprueba según su impacto.
+
 | Qué se evalúa | Cómo queda |
 |---|---|
 | A qué le pega el cambio | «Qué módulos, qué datos, qué integraciones» |
@@ -74,13 +78,15 @@
 
 ## 6. Los respaldos
 
-> **Un respaldo que nunca se restauró no es un respaldo: es un archivo.** Lo que se escribe acá no es la configuración, es la última restauración probada.
+> Lista qué se respalda, dónde y por cuánto tiempo, con la fecha de la última restauración probada. Un respaldo que nunca se restauró no ha demostrado que sirva.
 
 | Qué se respalda | Cada cuánto | Dónde queda | Cuánto se conserva | Última restauración probada |
 |---|---|---|---|---|
 | «…» | «…» | «…» | «…» | «AAAA-MM-DD, por quién» |
 
 ## 7. Qué se vigila
+
+> Dice qué se mide del sistema en operación, desde qué valor es un problema y quién se entera.
 
 | Qué se mira | Cuándo se considera problema | Quién se entera, y cómo |
 |---|---|---|
@@ -92,6 +98,8 @@
 
 ## 8. Qué hacer cuando falla
 
+> Es la guía para atender una falla: qué revisar primero, cómo se arregla y a quién se avisa.
+
 | Síntoma | Qué revisar primero | Cómo se arregla | A quién se avisa |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
@@ -102,6 +110,8 @@
 
 ## 9. Las rutinas periódicas
 
+> Lista las tareas que se repiten con fecha fija, quién las hace y para qué.
+
 | Rutina | Cada cuánto | Quién | Para qué |
 |---|---|---|---|
 | «Restaurar un respaldo de verdad» | «…» | «…» | «Saber que sirve, no que existe» |
@@ -110,6 +120,8 @@
 | «Revisar quién tiene acceso, y quitarle al que ya no está» | «…» | «…» | «…» |
 
 ## 10. Cómo se sube una versión de mantenimiento
+
+> Dice cada cuánto se publica una versión de mantenimiento, cómo se numera y qué se hace con lo urgente.
 
 | Qué se define | Cómo queda |
 |---|---|
@@ -120,6 +132,8 @@
 
 ## 11. Qué se mide, y a quién se le reporta
 
+> Dice qué se mide de la atención y a quién se le reporta.
+
 | Qué se mide | Cada cuánto | A quién se le reporta |
 |---|---|---|
 | «Solicitudes recibidas, atendidas y pendientes» | «…» | «…» |
@@ -129,13 +143,15 @@
 
 ## 12. Cómo se pide un cambio grande
 
-> Un cambio que agrega alcance no se hace porque alguien lo pida en una conversación: **vuelve a entrar por planificación**. El ciclo es un anillo.
+> Dice por dónde entra un cambio que agrega alcance. No se hace porque alguien lo pida en una conversación: vuelve a entrar por planificación, porque el ciclo es un anillo.
 
 | Quién pide | Por dónde entra | Quién decide | Qué se le responde |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
 
 ## 13. El fin de vida
+
+> Dice cuándo y cómo se apaga el sistema, y qué pasa con sus datos y con quien lo usa.
 
 | Qué se define | Cómo queda |
 |---|---|
@@ -145,6 +161,8 @@
 | Qué lo reemplaza, si algo lo reemplaza | «…» |
 
 ## 14. Los entregables de esta etapa, y a quién van
+
+> Lista los documentos que produce la etapa y a quién se entregan.
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
@@ -157,6 +175,8 @@
 
 ## 15. Las puertas de esta etapa
 
+> Son las condiciones que bloquean el avance: lo que no se hace hasta que se cumpla algo, con la regla que lo exige.
+
 | Qué no se puede hacer | Hasta que | Regla |
 |---|---|---|
 | Dar el sistema por operable | haya una restauración de respaldo probada | Sección 6 de este documento |
@@ -165,6 +185,8 @@
 | Hacer un cambio que agranda el alcance | entre por planificación como trabajo nuevo | Sección 12 de este documento |
 
 ## 16. La revisión de esta etapa
+
+> Registra cada cuánto se revisa este documento, cuándo fue la última vez y qué dejó de ser cierto.
 
 **Se revisa cada «…».** Última revisión: «AAAA-MM-DD», por «quién».
 

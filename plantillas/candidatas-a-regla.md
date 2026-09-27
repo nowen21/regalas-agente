@@ -13,6 +13,8 @@
 
 ## 0. Identificación
 
+> Dice qué tramo se barrió, quién lo barrió, cuándo, sobre qué versión del estándar y de dónde salió lo que se leyó.
+
 | Campo | Valor |
 |---|---|
 | **Tramo barrido** | «desde la versión X.Y.Z hasta la A.B.C», o «desde AAAA-MM-DD hasta AAAA-MM-DD» |
@@ -23,7 +25,7 @@
 
 ## 1. Qué se barrió
 
-**El material, dicho para poder repetirlo.** Un barrido que no dice qué leyó no se puede volver a correr ni contrastar.
+> Es el material leído, dicho para poder repetir el barrido: uno que no dice qué leyó no se puede volver a correr ni contrastar.
 
 | Fuente | Cuántos documentos | Qué se buscó en ellos |
 |---|---|---|
@@ -33,7 +35,7 @@
 
 ## 2. Las candidatas
 
-Una fila por candidata. **La salida es una de cuatro**, y ninguna otra: *ya está cubierta*, *regla nueva*, *afinar una existente*, *no es regla del estándar*.
+> Es lo que el usuario pidió más de una vez, con una fila por candidata. La salida es una de cuatro, y ninguna otra: *ya está cubierta*, *regla nueva*, *afinar una existente*, *no es regla del estándar*.
 
 | # | Qué se pidió, con las palabras del usuario | Cuántas veces | Salida | Regla relacionada | Versión que implicaría |
 |---|---|---|---|---|---|
@@ -42,9 +44,11 @@ Una fila por candidata. **La salida es una de cuatro**, y ninguna otra: *ya est�
 | 3 | «…» | «2» | **Afinar una existente** | «`NN·XN`» | PARCHE |
 | 4 | «…» | «2» | No es regla del estándar | «dónde vive entonces» | ninguna |
 
-**Regla del conteo:** cuenta lo pedido **dos veces o más**, en sesiones distintas. Lo pedido una sola vez no es patrón; si igual parece regla, se anota abajo y se espera a que vuelva.
+Regla del conteo: cuenta lo pedido dos veces o más, en sesiones distintas. Lo pedido una sola vez no es patrón; si igual parece regla, se anota abajo y se espera a que vuelva.
 
 ## 3. Lo que se vio una sola vez
+
+> Es lo que pareció regla pero apareció una sola vez, con el motivo para esperar. Si no hubo nada así, se escribe «Ninguno».
 
 | Qué | Dónde apareció | Por qué se deja esperando |
 |---|---|---|
@@ -52,16 +56,20 @@ Una fila por candidata. **La salida es una de cuatro**, y ninguna otra: *ya est�
 
 ## 4. Qué se hace con esto
 
+> Dice qué pasa con cada salida de la sección 2 y quién lo decide.
+
 | Salida | Qué se hace | Quién decide |
 |---|---|---|
 | Ya está cubierta | nada, y queda escrito cuál la cubre para no volver a proponerla | agente |
-| Regla nueva | se baja a fase de la historia dueña del capítulo y se escribe por el procedimiento completo | 👤 usuario |
-| Afinar una existente | se baja a fase de la historia dueña de ese capítulo | 👤 usuario |
+| Regla nueva | se baja a fase de la historia dueña del capítulo y se escribe por el procedimiento completo | usuario |
+| Afinar una existente | se baja a fase de la historia dueña de ese capítulo | usuario |
 | No es regla | se enruta a donde le toque: instructivo, nota, molde o catálogo del proyecto | agente |
 
-**Ninguna candidata se convierte en regla desde este documento.** Acá se decide **qué merece serlo**; escribirla es el procedimiento del capítulo de meta-reglas, con su molde, su checklist y su versión.
+Ninguna candidata se convierte en regla desde este documento. Acá se decide qué merece serlo; escribirla es el procedimiento del capítulo de meta-reglas, con su molde, su checklist y su versión.
 
 ## 5. Bitácora
+
+> Registra cada cambio del documento: cuándo, quién y qué.
 
 | Fecha | Quién | Qué cambió |
 |---|---|---|

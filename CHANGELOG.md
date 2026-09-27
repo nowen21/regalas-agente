@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.0.5 — 2026-09-27
+
+**Todas las plantillas de documento quedan con el formato de la del plan de trabajo.** Cada sección trae debajo de su título una nota que dice qué es y qué se escribe si no aplica, y la redacción cumple `00·ID8` y `00·ID9`: sin raya larga, emojis, separadores, negrita sobre frases, flechas en prosa ni notas que repiten a otras. Son 53 plantillas; las de historia de usuario y plan de trabajo ya lo tenían.
+
+**No cambian** los marcadores, las tablas, la numeración ni los encabezados y campos que leen los programas. Donde un documento ya escrito use un encabezado que cambió de redacción, `validar.py plantilla` avisa que la sección falta; es un aviso, no una falla. Los proyectos instalados ven desactualizados el índice de memoria y la lista de instalación hasta que se vuelva a correr la instalación, que es como se ponen al día.
+
+**PARCHE**: cambia la redacción, no qué se exige.
+
+---
+
 ## 38.0.4 — 2026-09-27
 
 **La plantilla del plan de trabajo define cada una de sus secciones.** Quien la llena ya no tiene que adivinar qué pide el origen, el objetivo, la matriz de dependencias o la reversión: cada sección trae, debajo de su título, una nota que dice qué es y cuándo se escribe «No aplica».
@@ -19,7 +29,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **Cada plantilla de documento dice con qué reglas se redacta.** Las 55 plantillas que el agente llena traen al comienzo una tabla con `00·ID8` y `00·ID9` y lo que exige cada una, que se borra al llenarlas. Quedan fuera los índices, la transcripción que escribe el enganche, el prompt del usuario, las guías de etapa del CVDS y el registro de proyectos, porque no son documentos que el agente redacte.
 
-**PARCHE:** explica las secciones y corrige la redacción, no cambia qué se exige.
+**PARCHE**: explica las secciones y corrige la redacción, no cambia qué se exige.
 
 ---
 
@@ -27,7 +37,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **La plantilla de historia de usuario toma del pendiente su título y su problema tal cual, y deja de usar la raya larga.** En [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), el título de la historia es el mismo del pendiente que la genera, y su contexto es el problema de ese pendiente, copiado tal cual está. El título y los criterios de aceptación separan con punto medio (`HU-000 · «…»`, `CA-01 · «…»`), y los criterios transversales abren con su nombre y dos puntos, sin negrita (`00·ID8`). `validadores/andamio.py` lee el nombre de la historia con cualquiera de los dos separadores, así las historias viejas siguen enlazándose bien.
 
-**PARCHE:** cambia la redacción de la plantilla, no qué se exige.
+**PARCHE**: cambia la redacción de la plantilla, no qué se exige.
 
 ---
 
@@ -35,7 +45,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **La plantilla de historia de usuario dice de dónde sale su contexto.** En [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md), el contexto de la historia es el problema del pendiente que la genera.
 
-**PARCHE:** cambia la indicación del campo, no qué se exige.
+**PARCHE**: cambia la indicación del campo, no qué se exige.
 
 ---
 
@@ -43,7 +53,7 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 **La plantilla de historia de usuario dice con qué reglas se redacta.** [`plantillas/ciclo-vida-proyectos/04-HU.md`](plantillas/ciclo-vida-proyectos/04-HU.md) dice en su cabecera que toda HU creada con ella se redacta aplicando `00·ID8` y `00·ID9`, y que esa nota se borra al llenarla.
 
-**PARCHE:** las dos reglas ya regían toda historia que el agente entrega. La plantilla ahora lo dice donde se llena.
+**PARCHE**: las dos reglas ya regían toda historia que el agente entrega. La plantilla ahora lo dice donde se llena.
 
 ---
 

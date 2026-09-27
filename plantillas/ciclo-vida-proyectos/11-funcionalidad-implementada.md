@@ -1,4 +1,4 @@
-# Funcionalidad implementada — Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
+# Funcionalidad implementada · Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
 
 > Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
 >
@@ -7,11 +7,15 @@
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Documento de **cierre de una fase** ([`02·F6`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la **trazabilidad especificación → código** ([`13·DOC11`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, **antes del commit** de la fase. Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`), como `funcionalidad_implementada.md`. Reemplaza los `«…»` y borra esta caja.
-
----
+> Plantilla del documento de cierre de una fase ([`02·F6`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la trazabilidad de la especificación al código ([`13·DOC11`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, antes del commit de la fase, y se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`) como `funcionalidad_implementada.md`.
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
 
 ## 0. Identificación
+
+> Identifica la fase que cierra, los documentos de los que sale, las HU y los CA que cubre, y cuándo, bajo qué versión del estándar y en qué commit se cerró.
+>
+> El sello de versión dice bajo qué reglas se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma no reabre lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
 
 | Campo | Valor |
 |---|---|
@@ -24,25 +28,21 @@
 | **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
 | **Commit** | «hash — se completa al commitear» |
 
-> **Para qué el sello de versión.** Dice **bajo qué reglas** se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma **no reabre** lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
+## 1. Qué se implementó, resumen
 
----
-
-## 1. Qué se implementó — resumen
+> Es el resumen del cierre para quien no va a leer el resto del documento.
 
 «2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
 
----
-
 ## 2. Trazabilidad  ·  [`13·DOC11`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
 
-Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la otra**: la especificación dice **qué había que lograr**, el plan dice **qué se iba a hacer para lograrlo**. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+> Compara lo hecho contra sus dos fuentes, que responden preguntas distintas y ninguna reemplaza a la otra: la especificación dice qué había que lograr y el plan dice qué se iba a hacer para lograrlo. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
 
 ### 2.1 Especificación → implementación
 
-> Una fila por **afirmación técnica del especificación**. No se cierra con faltantes sin justificar.
+> Cruza cada afirmación técnica de la especificación con el archivo donde quedó, una fila por afirmación. No se cierra con faltantes sin justificar.
 >
-> **Estados:** ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige in situ, no se difiere como N/A.
+> Estados: ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige en el momento y no se difiere como N/A.
 
 | Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
@@ -52,7 +52,7 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 
 ### 2.2 Plan de trabajo → ejecución
 
-> **Aquí se verifica que se hizo lo que se dijo que se iba a hacer.** Una fila por **tarea del `plan_trabajo` §3**, copiada de allá con su identificador: el plan aprobado **no se modifica** para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté acá y no en el plan, o al revés, se explica antes de cerrar.
+> Verifica que se hizo lo que el plan dijo que se iba a hacer, una fila por tarea del `plan_trabajo` §3, copiada de allá con su identificador. El plan aprobado no se modifica para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté aquí y no en el plan, o al revés, se explica antes de cerrar.
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
@@ -68,51 +68,48 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 |---|---|---|
 | `«ruta»` | | |
 
-> "Ninguno" es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito es lo que permite ver si eso pasa seguido y por qué.
+> «Ninguno» es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito permite ver si eso pasa seguido y por qué.
 
 **Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
 
----
-
 ## 3. Qué se probó  ·  `08` / [`02·F5`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
 
-> **Se resume de acá, no se redacta:** el detalle vive en el `resultado_pruebas.md` de la fase. Si esta sección dice algo que aquel documento no respalda, manda aquel.
+> Resume el `resultado_pruebas.md` de la fase, donde vive el detalle; aquí no se redacta nada nuevo. Si esta sección dice algo que aquel documento no respalda, manda aquel.
 
 | **Fuente** | «`resultado_pruebas.md`» |
 | **Veredicto** | «Cumple» o «No cumple», **copiado del §6 del resultado**. No hay tercer valor: si algo de lo pedido falta, es «No cumple» |
 
-> **Va como campo, no en prosa.** Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y **no tenía forma de decir «No cumple»**: las diecinueve fases que no cumplían tuvieron que escribirlo arriba del todo, cada una a su manera, y así ningún programa podía leerlo.
+> El veredicto va como campo y no en prosa para que un programa lo pueda leer. Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y no tenía forma de decir «No cumple»: las diecinueve fases que no cumplían lo escribieron arriba del todo, cada una a su manera, y ningún programa podía leerlo.
 
 | **Reemplaza el veredicto de** | **Opcional.** El nombre de otra fase **de esta misma historia** cuyo «No cumple» esta fase deja atrás, porque volvió a verificar ese criterio y hoy se cumple |
 
-> **Solo se escribe si esta fase verificó ese criterio, y solo vale si esta fase cumple.** Un rojo no se cierra con otro rojo, y **no se cierra por venir después**: hay fases posteriores que trabajaron otro criterio y no arreglaron nada. Se declara para que el conteo no lo adivine.
+> El campo Reemplaza el veredicto de solo se escribe si esta fase verificó ese criterio, y solo vale si esta fase cumple. Un rojo no se cierra con otro rojo ni por venir después: hay fases posteriores que trabajaron otro criterio y no arreglaron nada. Se declara para que el conteo no lo adivine.
 >
-> **El veredicto reemplazado no se toca.** Aquella fase sigue diciendo lo que dijo: el rastro de que estuvo en rojo es la información, y borrarlo la perdería. Existe desde la versión 35.5.0, porque hasta entonces **un rojo no tenía forma de cerrarse**: se podía hacer el trabajo, medirlo y declararlo, y el número no lo leía.
+> El veredicto reemplazado no se toca: aquella fase sigue diciendo lo que dijo, porque el rastro de que estuvo en rojo es la información, y borrarlo la perdería. El campo existe desde la versión 35.5.0; hasta entonces un rojo no tenía forma de cerrarse: se podía hacer el trabajo, medirlo y declararlo, y el número no lo leía.
 
 - **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Verificaciones manuales** — lo que el entorno automático **no** reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
+- **Verificaciones manuales**, lo que el entorno automático no reproduce ([`08·T4`](«RUTA-ESTANDAR»/base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
   - «Lista de comprobaciones hechas a mano y su resultado.»
 - **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
 
----
-
 ## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
+
+> Dice por dónde llega el usuario a lo implementado y qué hubo que sembrar para que funcione.
 
 - **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
 - **Permisos o datos base sembrados:** «si aplica».
 
----
-
 ## 5. Decisiones no obvias  ·  [`13·DOC2`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+
+> Registra las decisiones que no se deducen leyendo el código, con su porqué, lo que se descartó y la señal donde quedaron. Si no hubo, se escribe «Ninguna».
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
 | | | «id / enlace en la memoria» |
 
----
-
 ## 6. Deuda técnica y pendientes generados
+
+> Registra lo que la fase deja pendiente, de dónde salió cada deuda y a dónde se traslada. Si no quedó deuda, se escribe «Ninguna».
 
 | Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
 |---|---|---|
@@ -127,22 +124,20 @@ Dos trazabilidades, que responden preguntas distintas y **ninguna reemplaza a la
 | **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
 | **Diferido por el plan** | El propio [`02·F17`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
 
-> **Para qué sirve la columna.** Un análisis bueno no elimina la deuda: convierte la **descubierta** en **declarada**. Si fase tras fase el origen que se repite es *"no previsto"*, el problema no es la deuda, es que la línea base se está haciendo por encima.
-
----
+> Un análisis bueno no elimina la deuda: la convierte de descubierta en declarada, y la columna Origen muestra cuál de las dos es. Si fase tras fase el origen que se repite es *no previsto*, la línea base se está haciendo por encima.
 
 ## 7. Índices y mapas actualizados  ·  [`13·DOC9`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
+
+> Es la lista de índices y mapas del proyecto que el cierre deja al día.
 
 - [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
 - [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
 - [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizado con lo realmente implementado.
+- [ ] Especificación del módulo actualizada con lo realmente implementado.
 
----
+## 8. Despliegue, si aplica  ·  [`13·DOC4`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
 
-## 8. Despliegue — si aplica  ·  [`13·DOC4`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
-
-Pasos **auto-suficientes y ejecutables** para producción (quien despliega lo hace leyendo esto, sin mirar el código):
+> Son los pasos para llevar la fase a producción, autosuficientes y ejecutables: quien despliega los sigue leyendo solo esto, sin mirar el código. Si la fase no se despliega, se escribe «No aplica» con su motivo.
 
 - Cambios de esquema / migraciones a correr: «orden».
 - Datos base / permisos a sembrar: «comandos».

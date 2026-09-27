@@ -7,11 +7,13 @@
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. **No es el resumen del final**: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena **en el momento en que aparece el hallazgo**, con doce campos. Reemplaza los `«…»` y borra esta caja.
+> Plantilla del resumen de una sesión. No se escribe al final: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena en el momento en que aparece el hallazgo, con doce campos. Al llenarla se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
 >
-> La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/«tema».md`: **una carpeta por día y un archivo por sesión**, con su línea en el índice de ese día.
+> La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/«tema».md`: una carpeta por día y un archivo por sesión, con su línea en el índice de ese día.
 
 ## Doce campos
+
+> Define los campos de cada hallazgo y qué se escribe en cada uno.
 
 | Campo | Qué se escribe |
 |---|---|
@@ -28,7 +30,7 @@
 | **Cerrado en** | La sesión donde se cerró: `AAAA-MM-DD · tema`. Mientras esté abierto, `—`. |
 | **Con qué se retoma** | La pregunta que quedó viva. En los resueltos, `—`. |
 
-**«Qué lo soluciona» es la semilla de las historias que dispara.** No basta con decir a dónde se llega: quien tome el hallazgo mañana tiene que poder escribir la historia sin haber estado en la conversación. Por eso cada pieza se escribe con las dos secciones que abren una historia de usuario:
+«Qué lo soluciona» es la semilla de las historias que dispara. No basta con decir a dónde se llega: quien tome el hallazgo mañana tiene que poder escribir la historia sin haber estado en la conversación. Por eso cada pieza se escribe con las dos secciones que abren una historia de usuario:
 
 ```
 **EP-000 · HU nueva — «título»**
@@ -38,9 +40,9 @@
 - **Contexto:** qué hay hoy, qué falta y qué se rompe si no se hace.
 ```
 
-**Una pieza, una historia.** Si una pieza no aparece en «dispara», o una historia disparada no sale de ninguna pieza, el hallazgo está mal escrito.
+Una pieza, una historia. Si una pieza no aparece en «dispara», o una historia disparada no sale de ninguna pieza, el hallazgo está mal escrito.
 
-**El orden de las historias se escribe en el hallazgo, y en ninguna otra parte.** Las épicas están cortadas por tipo de entregable (un documento modelo y el programa que lo llena caen en épicas distintas), así que un problema partido en dos historias no deja ver su orden desde ninguna de las dos. El hallazgo es el único sitio donde el problema está entero. Por eso «dispara» los numera, y nombra también lo que las bloquea aunque este hallazgo no lo haya disparado:
+El orden de las historias se escribe en el hallazgo, y en ninguna otra parte. Las épicas están cortadas por tipo de entregable (un documento modelo y el programa que lo llena caen en épicas distintas), así que un problema partido en dos historias no deja ver su orden desde ninguna de las dos. El hallazgo es el único sitio donde el problema está entero. Por eso «dispara» los numera, y nombra también lo que las bloquea aunque este hallazgo no lo haya disparado:
 
 ```
 **Dispara:**
@@ -48,19 +50,21 @@
 2. EP-000 · HU-000 — «por qué va después de la anterior».
 ```
 
-**Nace en y cerrado en son el rastro del hallazgo.** El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
+«Nace en» y «cerrado en» son el rastro del hallazgo. El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
 
-**Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`.** Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada: "el H-4" existe en todas las sesiones que tuvieron cuatro hallazgos. La numeración corrida entre sesiones no sirve: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen.
+Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`. Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada: «el H-4» existe en todas las sesiones que tuvieron cuatro hallazgos. La numeración corrida entre sesiones no sirve: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen.
 
-**El hallazgo que se hereda no se copia.** La sesión que retoma un hallazgo abierto de otra lo **nombra** en su «viene de» y trabaja sobre el original: ahí actualiza el estado, el «cerrado en» y lo que se decidió. Copiarlo al resumen nuevo deja dos versiones del mismo hallazgo, y la que manda termina siendo la que nadie está mirando.
+El hallazgo que se hereda no se copia. La sesión que retoma un hallazgo abierto de otra lo **nombra** en su «viene de» y trabaja sobre el original: ahí actualiza el estado, el «cerrado en» y lo que se decidió. Copiarlo al resumen nuevo deja dos versiones del mismo hallazgo, y la que manda termina siendo la que nadie está mirando.
 
-**Los dos del medio son los que enganchan el hallazgo con el trabajo.** Uno mira hacia atrás: esto que apareció, ¿ya estaba pedido en alguna parte? El otro mira hacia adelante: resolverlo, ¿obliga a abrir una historia nueva? Un hallazgo con los dos en `—` no es trabajo: es una nota, y probablemente sea una señal y nada más.
+«Responde a» y «dispara» son los que enganchan el hallazgo con el trabajo. Uno mira hacia atrás: esto que apareció, ¿ya estaba pedido en alguna parte? El otro mira hacia adelante: resolverlo, ¿obliga a abrir una historia nueva? Un hallazgo con los dos en `—` es una nota y no trabajo: probablemente sea una señal y nada más.
 
-**Toda regla que se nombre va enlazada.** Citarla por su ID no basta: quien lea el resumen meses después tiene que llegar a la regla en un clic, no salir a buscarla ([`20·M15`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). Vale para cualquier campo del hallazgo, no solo para «dónde queda».
+Toda regla que se nombre va enlazada. Citarla por su ID no basta: quien lea el resumen meses después tiene que llegar a la regla en un clic, no salir a buscarla ([`20·M15`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md)). Vale para cualquier campo del hallazgo, no solo para «dónde queda».
 
-**Se anotan todos**, los resueltos también. El que se resolvió en la sesión sirve para que nadie vuelva a discutirlo, y el que quedó abierto sirve para arrancar la próxima discusión sin empezar de cero. Por eso el estado, el «cerrado en» y el «con qué se retoma» importan más que el resto: dicen si está cerrado, dónde se cerró y por dónde sigue.
+Se anotan todos los hallazgos, los resueltos también. El que se resolvió en la sesión sirve para que nadie vuelva a discutirlo, y el que quedó abierto sirve para arrancar la próxima discusión sin empezar de cero. Por eso el estado, el «cerrado en» y el «con qué se retoma» importan más que el resto: dicen si está cerrado, dónde se cerró y por dónde sigue.
 
 ## Dónde termina cada cosa
+
+> Dice a qué archivo va cada hallazgo según lo que es.
 
 | Si es... | Va a... |
 |---|---|
@@ -71,9 +75,9 @@
 
 Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era conversación, y ya quedó en la transcripción.
 
----
-
 ## De dónde viene esta sesión
+
+> Nombra los hallazgos de otras sesiones que esta retoma, todos si son varios, o dice que es trabajo nuevo.
 
 Una sesión se abre por dos motivos: porque hay trabajo nuevo, o porque alguien fue a buscar un hallazgo que otra sesión dejó abierto. En el segundo caso hay que decir **cuál**, con su fecha, su tema y su número:
 
@@ -81,15 +85,15 @@ Una sesión se abre por dos motivos: porque hay trabajo nuevo, o porque alguien 
 
 Es el enlace hacia adelante. El de vuelta ya existe: el «cerrado en» de ese hallazgo apunta a esta sesión el día que se cierre. Sin los dos, un hallazgo que se arrastra tres sesiones no se puede seguir en ninguna dirección.
 
-Si la sesión atiende más de un hallazgo, se nombran todos.
-
-**Ese hallazgo no se copia acá.** Se nombra, y lo que se decida se escribe en el resumen donde nació. Este resumen anota los hallazgos **nuevos**, los que aparecieron en esta sesión.
-
----
+Ese hallazgo no se copia acá. Se nombra, y lo que se decida se escribe en el resumen donde nació. Este resumen anota los hallazgos **nuevos**, los que aparecieron en esta sesión.
 
 ## Hallazgos de esta sesión
 
+> Lleva un bloque `### H-N` por cada hallazgo que apareció en esta sesión, resuelto o abierto.
+
 ### H-1 · «título corto»
+
+> Ejemplo de un hallazgo con sus doce campos y una pieza de «Qué lo soluciona».
 
 - **Qué pasó:** «…»
 - **Por qué importa:** «…»
@@ -111,6 +115,8 @@ Si la sesión atiende más de un hallazgo, se nombran todos.
 
 ### H-2 · «…»
 
+> Molde del hallazgo siguiente.
+
 - **Qué pasó:** «…»
 - **Por qué importa:** «…»
 - **Qué lo soluciona:** «una pieza por cada historia que dispara, con su narrativa y su contexto»
@@ -124,14 +130,12 @@ Si la sesión atiende más de un hallazgo, se nombran todos.
 - **Cerrado en:** «…»
 - **Con qué se retoma:** «…»
 
----
-
 ## ¿Se puede cerrar la sesión?
 
-Se cierra cuando **ningún hallazgo queda a medias**. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
+Se cierra cuando ningún hallazgo queda a medias. Un hallazgo está terminado de una de dos formas, y las dos valen igual:
 
-- **Resuelto acá**, con lo que se hizo escrito en el campo de dónde queda.
-- **Anotado**, con su pendiente creado y su historia de usuario disparada escrita. Anotar no es decir "quedó pendiente": es dejar el archivo.
+- Resuelto acá, con lo que se hizo escrito en el campo de dónde queda.
+- Anotado, con su pendiente creado y su historia de usuario disparada escrita. Anotar es dejar el archivo, no decir «quedó pendiente».
 
 | Para cerrar | Estado |
 |---|---|
@@ -144,6 +148,4 @@ Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se a
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
----
-
-_(Si la sesión no dejó nada, se escribe "nada": es un dato, no un olvido.)_
+_(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_

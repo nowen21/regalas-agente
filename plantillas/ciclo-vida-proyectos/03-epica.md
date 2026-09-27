@@ -1,4 +1,4 @@
-# EP-000 — «Título de la épica»
+# EP-000 · «Título de la épica»
 
 > Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
 >
@@ -9,9 +9,9 @@
 
 > Plantilla general de Épica. Una épica agrupa historias de usuario que comparten un objetivo de negocio común y suele abarcar varios sprints. Reemplaza los `«…»` y borra esta caja. La sección que no aplique se escribe `N/A`, no se borra ([`13·DOC21`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md)).
 
----
-
 ## 1. Identificación
+
+> Identifica la épica, de dónde sale, a qué objetivo responde, su prioridad y su tamaño, y quién responde por ella.
 
 | Campo | Valor |
 |---|---|
@@ -27,33 +27,39 @@
 | **Tech Lead / Arquitecto** | «Nombre» |
 | **Estado** | Uno de [los estados del glosario](«RUTA-ESTANDAR»/base/glosario.md#5--en-qué-estado-está-algo): Propuesta, Aprobada, En curso, Terminada o Cancelada |
 
----
-
 ## 2. Resumen ejecutivo
+
+> Es la presentación de la épica, para leerla sin entrar al detalle.
 
 «Dos o tres párrafos que expliquen, en lenguaje de negocio, qué se va a construir y por qué. Debe entenderlo alguien ajeno al equipo técnico.»
 
----
-
 ## 3. Problema y oportunidad
 
+> Explica por qué hace falta la épica.
+
 ### 3.1 Situación actual
+
+> Describe el problema tal como se vive hoy.
 
 «Cómo se resuelve hoy el problema y qué duele: procesos manuales, costos, tiempos, incumplimientos, quejas de usuarios.»
 
 ### 3.2 Impacto de no hacerlo
 
+> Dice qué se pierde o se arriesga si la épica no se hace.
+
 «Consecuencias de mantener el estado actual: riesgo operativo, legal, financiero o reputacional.»
 
 ### 3.3 Evidencia
+
+> Son los datos que prueban que el problema existe, cada uno con su fuente.
 
 | Fuente | Hallazgo |
 |---|---|
 | «Métrica, entrevista, incidente, auditoría» | «Dato concreto» |
 
----
-
 ## 4. Objetivo y propuesta de valor
+
+> Dice qué resultado se espera y cómo se sabrá que la épica aportó valor.
 
 **Objetivo:** «Una frase con el resultado esperado.»
 
@@ -62,35 +68,43 @@
 
 ### 4.1 Beneficios esperados
 
+> Son los beneficios concretos para cada rol o área.
+
 | Beneficiario | Beneficio | Tipo |
 |---|---|---|
 | «Rol / área» | «Beneficio concreto» | Cuantitativo / Cualitativo |
 
----
-
 ## 5. Alcance
 
+> Delimita qué entra en la épica y qué no.
+
 ### 5.1 Dentro del alcance
+
+> Son las capacidades o procesos que la épica incluye.
 
 - «Capacidad o proceso incluido»
 
 ### 5.2 Fuera del alcance
 
-- «Lo que explícitamente NO se abordará en esta épica»
+> Es lo que la épica deja fuera, para cerrar expectativas.
+
+- «Lo que explícitamente no se abordará en esta épica»
 
 ### 5.3 Diferido a fases posteriores
 
+> Es lo que se pospone, con la condición para retomarlo. Si no se difiere nada, se escribe «Ninguno».
+
 - «Funcionalidad postergada y en qué condiciones se retomaría»
 
-### 5.4 Alcance funcional completo — el detalle que la épica resuelve ANTES de crear las HU
+### 5.4 Alcance funcional completo · el detalle que la épica resuelve ANTES de crear las HU
 
-La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que el alcance se descubra al crear las HU. Debe dar la **visión completa del proceso, de inicio a fin**. Las **HU son la descomposición** de este alcance en unidades implementables y verificables, por eso el alcance se define **primero**, aquí. Con este detalle se identifican las funcionalidades, se dividen en HU, se derivan sus CA y se fijan dependencias y orden de implementación.
-
-> **Agnóstico:** las preguntas aplican a **cualquier** épica de **cualquier** proyecto. Reemplaza el ejemplo por tu caso. Marca **"No aplica porque ..."** en las que no correspondan, no se omiten en silencio.
+> Es la visión completa del proceso, de inicio a fin, que la épica fija antes de crear las HU: las HU son la descomposición de este alcance en unidades implementables y verificables (§9), y con él se identifican las funcionalidades, se derivan sus CA y se fijan las dependencias y el orden de implementación. Una épica que se queda en un título (por ejemplo *"Gestión de socios"*) deja que el alcance se descubra a mitad de camino, y eso rompe la trazabilidad y la estimación.
 >
-> **Nivel de detalle (de alcance, no de especificación.** La épica dice **QUÉ existe y su forma**, no el detalle exhaustivo. Ej.: reconoce que la entidad **tiene campos** (y qué se debe definir de cada uno)) pero **no los nombra ni los especifica** aquí. El detalle fino (lista de campos con tipos/longitudes/formatos, validaciones exactas, Gherkin) **baja a la HU / especificación de módulo**. Si la épica specea campo por campo, **duplica las HU** y se vuelve inmanejable.
+> **Agnóstico.** Las preguntas aplican a cualquier épica de cualquier proyecto. Reemplaza el ejemplo por tu caso. Marca "No aplica porque..." en las que no correspondan: no se omiten en silencio.
+>
+> **Nivel de detalle.** Es de alcance y no de especificación: la épica dice qué existe y su forma. Por ejemplo, reconoce que la entidad tiene campos y qué se debe definir de cada uno, pero no los nombra ni los especifica aquí. El detalle fino (lista de campos con tipos, longitudes y formatos, validaciones exactas, Gherkin) baja a la HU o a la especificación de módulo. Si la épica especifica campo por campo, duplica las HU y se vuelve inmanejable.
 
-**La épica debe responder, como mínimo:**
+La épica debe responder, como mínimo:
 
 | # | Pregunta | Qué precisar |
 |---|---|---|
@@ -111,7 +125,7 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | 15 | **Auditoría / trazabilidad** | qué acciones se registran, qué se conserva, quién hizo cada operación |
 | 16 | **Resultado final** | cómo debe quedar el sistema al terminar y qué condiciones dan la épica por completa |
 
-**Detalle adicional (cuando aplique):**
+Detalle adicional, cuando aplique:
 
 | # | Pregunta | Qué precisar |
 |---|---|---|
@@ -126,11 +140,9 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | 25 | **Migración / convivencia** | si reemplaza o convive con algo existente y cómo migran los datos |
 | 26 | **Idioma / formato / zona** | idioma de textos, formato de fechas/números/moneda, zona horaria (si aplica) |
 
-**Cierre:** la épica da la **visión completa** de lo que se quiere lograr; las **HU** son la **descomposición** de ese alcance en unidades implementables y verificables (§9). Sin este detalle, el alcance se "descubre" a mitad de camino, lo que rompe la trazabilidad y la estimación.
-
----
-
 ## 6. Usuarios y actores
+
+> Son los perfiles que participan en el proceso, qué hace cada uno y qué espera, y cuánto uso se prevé.
 
 | Actor | Rol en el proceso | Necesidad principal |
 |---|---|---|
@@ -138,27 +150,25 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 **Volumetría estimada:** «usuarios concurrentes, transacciones/día, registros esperados»
 
----
-
 ## 7. Criterios de aceptación de la épica
 
-> A nivel de épica los criterios son de resultado, no de comportamiento de pantalla. Cada uno debe ser verificable.
+> Son los resultados de negocio que dan la épica por lograda; el comportamiento de pantalla va en los CA de cada HU. Cada uno debe ser verificable.
 
 - [ ] **CAE-01** — «Resultado observable a nivel de negocio»
 - [ ] **CAE-02** — «Capacidad completa disponible en producción»
 - [ ] **CAE-03** — «Cumplimiento normativo o técnico verificado»
 
----
-
 ## 8. Métricas de éxito
+
+> Son los indicadores que dicen si la épica cumplió su objetivo, con su valor de hoy, su meta y dónde se miden.
 
 | Métrica | Línea base | Meta | Plazo de medición | Instrumento |
 |---|---|---|---|---|
 | «KPI» | «Valor actual» | «Valor objetivo» | «30/60/90 días» | «Dónde se mide» |
 
----
-
 ## 9. Historias de usuario
+
+> Son las HU en que se descompone el alcance de la sección 5.4.
 
 | ID | Título | Prioridad | Estimación | Sprint | Estado |
 |---|---|---|---|---|---|
@@ -168,11 +178,13 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 **Total estimado:** «suma de puntos», **Sprints previstos:** «n»
 
----
-
 ## 10. Consideraciones técnicas
 
+> Reúne lo técnico que la épica afecta o exige.
+
 ### 10.1 Arquitectura y componentes afectados
+
+> Son los componentes que la épica crea o cambia, y cómo los afecta.
 
 | Componente | Impacto | Observaciones |
 |---|---|---|
@@ -180,14 +192,20 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 ### 10.2 Decisiones de arquitectura (ADR)
 
-- **ADR-00:** «Decisión y justificación breve» → «enlace al ADR completo, plantilla `plantillas/ADR.md`»
+> Son las decisiones de arquitectura que la épica toma, cada una con su ADR. Si no hay, se escribe «Ninguna».
+
+- **ADR-00:** «Decisión y justificación breve». Enlace: «enlace al ADR completo, plantilla `plantillas/ADR.md`»
 
 ### 10.3 Integraciones
+
+> Son los sistemas externos con que se conecta la épica y el estado del acuerdo con cada uno. Si no hay, se escribe «Ninguna».
 
 | Sistema externo | Protocolo | Responsable | Estado del acuerdo |
 |---|---|---|---|
 
 ### 10.4 Requisitos no funcionales transversales
+
+> Son los requisitos de calidad que valen para toda la épica, por categoría.
 
 | Categoría | Requisito |
 |---|---|
@@ -200,35 +218,37 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 ### 10.5 Deuda técnica generada o pagada
 
+> Es la deuda técnica que la épica crea o salda, con su plan. Si no hay, se escribe «Ninguna».
+
 - «Elemento y plan de atención»
 
----
-
 ## 11. Cumplimiento y normativa
+
+> Son las normas y políticas que aplican a la épica y cómo se cumple cada una.
 
 | Norma / Política | Requisito aplicable | Cómo se cumple |
 |---|---|---|
 | «Ley, ISO, política interna» | | |
 
----
-
 ## 12. Dependencias
+
+> Es lo que la épica necesita de otros para avanzar. Si no depende de nada, se escribe «Ninguna».
 
 | ID | Dependencia | Tipo | Responsable | Fecha requerida | Estado |
 |---|---|---|---|---|---|
 | DEP-01 | «Descripción» | Interna / Externa / Técnica | | | Bloqueante / Resuelta |
 
----
-
 ## 13. Riesgos
+
+> Es lo que puede frenar o dañar la épica y cómo se mitiga.
 
 | ID | Riesgo | Probabilidad | Impacto | Mitigación | Responsable |
 |---|---|:--:|:--:|---|---|
 | R-01 | | Alta/Media/Baja | Alto/Medio/Bajo | | |
 
----
-
 ## 14. Supuestos y restricciones
+
+> Es lo que se da por cierto sin haberlo confirmado y los límites dentro de los que se trabaja.
 
 **Supuestos**
 - «Condición que se asume verdadera»
@@ -236,9 +256,9 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 **Restricciones**
 - «Presupuesto, tecnología obligatoria, fecha inamovible, personal disponible»
 
----
-
 ## 15. Hoja de ruta
+
+> Reparte las HU en fases de entrega, cada una con su fecha y su entregable.
 
 | Fase | Contenido | HU incluidas | Fecha objetivo | Entregable |
 |---|---|---|---|---|
@@ -246,9 +266,9 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 | Fase 2 | | HU-003 | | |
 | Fase 3 | | | | |
 
----
-
 ## 16. Estrategia de entrega
+
+> Dice cómo llega la épica a los usuarios y cómo se deshace si falla.
 
 - **Despliegue:** «progresivo, big bang, feature flags»
 - **Migración de datos:** «aplica / no aplica, estrategia»
@@ -256,9 +276,9 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 - **Capacitación y gestión del cambio:** «acciones con usuarios finales»
 - **Soporte post-despliegue:** «ventana de acompañamiento»
 
----
-
 ## 17. Definition of Ready (épica)
+
+> Es la lista de condiciones que la épica cumple antes de empezar a construirla.
 
 - [ ] Problema y objetivo validados con el negocio
 - [ ] Alcance delimitado (dentro y fuera)
@@ -270,6 +290,8 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 
 ## 18. Definition of Done (épica)
 
+> Es la lista de condiciones que deben cumplirse para dar la épica por terminada.
+
 - [ ] Todas las HU obligatorias completadas y aceptadas
 - [ ] Criterios de aceptación de la épica verificados
 - [ ] Requisitos no funcionales validados en producción
@@ -279,18 +301,18 @@ La épica **no se limita a un título** (ej. *"Gestión de socios"*) dejando que
 - [ ] Deuda técnica registrada en el backlog
 - [ ] Aceptación formal del Product Owner y del área usuaria
 
----
-
 ## 19. Referencias
+
+> Son los documentos de apoyo de la épica.
 
 - **Documento de visión:** «enlace»
 - **Prototipos / Figma:** «enlace»
 - **Diagramas de arquitectura:** «enlace»
 - **Actas de reunión relevantes:** «enlace»
 
----
-
 ## 20. Bitácora de cambios
+
+> Registra cada cambio de la épica: cuándo, quién y qué.
 
 | Fecha | Autor | Cambio |
 |---|---|---|

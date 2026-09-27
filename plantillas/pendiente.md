@@ -7,7 +7,7 @@
 > | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> **Modelo del pendiente propio del estándar**: lo que esta casa encontró que le falta a sí misma. El que reporta un proyecto tiene el suyo, [plantillas/pendiente-reportado.md](pendiente-reportado.md). Lo levanta el andamio (`python validadores/andamio.py pendiente <slug> --hu <épica>/<HU>`), que rellena la historia y deja el resto con sus marcadores. Reemplaza los `«…»` y borra esta caja.
+> Modelo del pendiente propio del estándar: lo que esta casa encontró que le falta a sí misma. El que reporta un proyecto tiene el suyo, [plantillas/pendiente-reportado.md](pendiente-reportado.md). Lo levanta el andamio (`python validadores/andamio.py pendiente <slug> --hu <épica>/<HU>`), que rellena la historia y deja el resto con sus marcadores. Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas como ella.
 
 **Estado:** abierto, anotado el «AAAA-MM-DD».
 
@@ -19,20 +19,30 @@
 
 ## El problema
 
+> Es el hallazgo que abre el pendiente.
+
 «Qué se encontró, con el detalle que necesita quien va a corregirlo y no vio el caso. Con rutas y líneas, verificadas.»
 
 ## Por qué importa
+
+> Es el daño que hace dejarlo como está.
 
 «Qué se rompe o qué se pierde. Si no bloquea nada, decirlo, y decir entonces qué daño hace, porque casi siempre hay uno más lento.»
 
 ## Qué falta
 
+> Es el trabajo que cierra el pendiente.
+
 «Qué debe construirse o corregirse. Si hay más de una salida, las dos con su costo y cuál conviene.»
 
 ## El límite
 
+> Marca hasta dónde llega el pendiente.
+
 «Lo que este pendiente **no** cubre, para que nadie lo dé por cerrado de más.»
 
 ## Cómo se sabrá que cerró
+
+> Es la prueba que da el pendiente por cerrado.
 
 «La comprobación concreta que alguien puede correr para verificarlo. No «cuando esté arreglado».»

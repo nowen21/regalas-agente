@@ -9,11 +9,13 @@
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. Se escribe una entrada por versión **entregada**, en el momento de entregarla; la versión más reciente va arriba. La primera frase de cada entrada la entiende alguien que no conoce el proyecto por dentro, igual que exige [`20·M17`](../../base/20-meta-reglas/reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) para el registro del estándar. Reemplaza los `«…»` y borra esta caja.
-
----
+> Plantilla. Se escribe una entrada por versión **entregada**, en el momento de entregarla; la versión más reciente va arriba. La primera frase de cada entrada la entiende alguien que no conoce el proyecto por dentro, igual que exige [`20·M17`](../../base/20-meta-reglas/reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md) para el registro del estándar.
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
 
 ## «X.Y.Z» · «AAAA-MM-DD»
+
+> Agrupa la entrada de una versión, con su número y la fecha en que se entregó. La lista que no tenga nada dice «Ninguno».
 
 **«Qué trae, en una frase que entiende cualquiera.»**
 

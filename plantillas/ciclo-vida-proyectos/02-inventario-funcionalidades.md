@@ -8,16 +8,16 @@
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
 > Plantilla. Se copia a la carpeta de la propuesta del proyecto, se reemplazan los `«…»` y se borra esta caja.
-> **Se llena con todo lo que ya se sabe del proyecto, y se escribe como si nada estuviera construido:**
+> Se llena con todo lo que ya se sabe del proyecto, y se escribe como si nada estuviera construido:
 > sin fechas, sin estado de trámite, sin contar qué se preguntó y qué se contestó.
-> **La prueba de que quedó bien escrita: un niño la lee y entiende qué hace el producto.**
+> La prueba de que quedó bien escrita: un **niño** la lee y entiende qué hace el producto.
 > Vale para el documento entero: el nombre, la descripción y el objetivo de cada funcionalidad.
 > Si para entender algo hay que saber del proyecto, está escrito para adentro y se rehace.
 > **Claro no es infantil:** se usan palabras comunes y frases cortas, no se rodea lo que se quiere decir
 > ni se explica de más. Se dice qué hace, en el tono con que se le explica algo a un adulto que no es del oficio
 > ([`00·ID7`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md),
 > [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)).
-> **Nada de acá nombra un lenguaje, un framework ni una herramienta.** «Necesita pantalla» sí; «necesita React» no.
+> Nada de acá nombra un lenguaje, un framework ni una herramienta. «Necesita pantalla» sí; «necesita React» no.
 > Eso vive en la capa del proyecto y en su ficha de tecnología.
 > Sin esta lista aprobada por el usuario no se parte el trabajo en bloques
 > ([`02·F26`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md)).
@@ -28,15 +28,19 @@ Esta es la lista completa de lo que «el producto» debe hacer. De acá salen de
 
 ## Cómo se lee
 
-**Están todas: las hechas y las que faltan.** Ninguna se saca porque ya exista, porque ya se haya hablado de ella o porque aparezca en otro papel. Esta lista no dice qué falta: dice qué es el producto.
+> Son las convenciones con que se lee la lista entera, antes de ver las funcionalidades.
 
-**No dice cuándo ni quién.** Sin fechas, sin quién decidió qué, sin las preguntas que ya se contestaron. Eso se guarda en otros papeles del proyecto. Una pregunta contestada deja de ser pregunta: sube a funcionalidad, o se va.
+Están todas: las hechas y las que faltan. Ninguna se saca porque ya exista, porque ya se haya hablado de ella o porque aparezca en otro papel. Esta lista no dice qué falta: dice qué es el producto.
 
-**Estado y Verificado no son lo mismo, y por eso hay dos casillas.** «Estado» es lo que alguien dice que va pasando. «Verificado» es lo único que prueba que está hecho, y solo lo llena una prueba corrida. Una funcionalidad puede estar «implementada» y **sin verificar**: quiere decir que se construyó y que nadie lo ha demostrado.
+No dice cuándo ni quién. Sin fechas, sin quién decidió qué, sin las preguntas que ya se contestaron. Eso se guarda en otros papeles del proyecto. Una pregunta contestada deja de ser pregunta: sube a funcionalidad, o se va.
 
-**Cada funcionalidad tiene un número que no se repite ni se reutiliza.** Aunque se descarte, su número queda quemado: hay planes, tareas y pruebas que la nombran por ahí.
+Estado y Verificado no son lo mismo, y por eso hay dos casillas. «Estado» es lo que alguien dice que va pasando. «Verificado» es lo único que prueba que está hecho, y solo lo llena una prueba corrida. Una funcionalidad puede estar «implementada» y **sin verificar**: quiere decir que se construyó y que nadie lo ha demostrado.
+
+Cada funcionalidad tiene un número que no se repite ni se reutiliza. Aunque se descarte, su número queda quemado: hay planes, tareas y pruebas que la nombran por ahí.
 
 ## Las tres clases
+
+> Es la clase que lleva cada funcionalidad, según qué tan indispensable es para el producto.
 
 | Clase | Qué quiere decir |
 |---|---|
@@ -44,7 +48,7 @@ Esta es la lista completa de lo que «el producto» debe hacer. De acá salen de
 | **Complementaria** | Suma valor, pero el producto arranca sin ella |
 | **Futura** | Se sabe que se quiere, y se decidió que no ahora |
 
-Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive en su propia sección más abajo.
+Lo que no se sabe todavía si entra no es una clase: es una pregunta, y vive en su propia sección más abajo.
 
 ## Resumen
 
@@ -62,6 +66,8 @@ Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive
 > Una ficha por cada línea del resumen, en el mismo orden. Un campo que no aplique se escribe «no aplica» y se dice por qué en una línea: en blanco no se distingue de olvidado.
 
 ### «El nombre, en palabras que cualquiera entienda»
+
+> Agrupa los campos de una funcionalidad, un campo por fila.
 
 | Campo | Qué dice |
 |---|---|
@@ -83,6 +89,8 @@ Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive
 
 ### «…»
 
+> Agrupa los campos de la funcionalidad siguiente, con la misma tabla.
+
 «Se repite la ficha por cada funcionalidad.»
 
 ## Lo que todavía no se sabe si entra
@@ -100,6 +108,8 @@ Lo que **no se sabe todavía si entra** no es una clase: es una pregunta, y vive
 - **P-1 · «¿La pregunta, completa?»** «Las opciones, con lo que cuesta cada una. Propuesta del agente: «cuál y por qué».»
 
 ## Qué pasa cuando esto se apruebe
+
+> Dice qué se hace con la lista, en orden, una vez el usuario la aprueba.
 
 1. El papel donde se pidió el proyecto se revisa para que diga esto, y no lo que alguien hubiera supuesto antes.
 2. El trabajo se parte en bloques a partir de esta lista, y cada bloque dice qué funcionalidades cubre por su ID ([`02·F26`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md)).

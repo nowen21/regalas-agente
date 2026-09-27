@@ -11,15 +11,15 @@
 
 > Plantilla. Se llena durante la etapa y se cierra al pasar a la siguiente. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra. Reemplaza los `«…»` y borra esta caja.
 
-> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
+> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. Si en una celda va más de una cosa, se escribe como lista: una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
-> **Se escribe desde la propuesta, no desde lo que ya está construido.** Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
+> Se escribe desde la propuesta, no desde lo que ya está construido. Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
----
-
 ## 1. Qué entra a esta etapa
+
+> Lista lo que el diseño recibe de las etapas anteriores y si llegó aprobado.
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
@@ -29,7 +29,7 @@
 
 ## 2. La arquitectura, en una frase y un dibujo
 
-> **El diseño tiene dos niveles y se confunden seguido.** El **alto nivel** dice qué piezas hay y cómo se hablan; el **bajo nivel** dice qué hace cada pieza por dentro. Esta sección es el alto nivel, y cabe en un párrafo: si no cabe, es que todavía no está decidida.
+> Es el alto nivel del diseño: qué piezas hay y cómo se hablan. Se confunde seguido con el bajo nivel, lo que hace cada pieza por dentro, que no va acá. Cabe en un párrafo; si no cabe, todavía no está decidida.
 
 **Cómo está armado:** «Monolito, servicios separados, cliente y servidor, por capas, por eventos. En una frase, y por qué ese.»
 
@@ -37,7 +37,7 @@
 
 ## 3. Los módulos y sus límites
 
-> **Un módulo se define por lo que deja afuera.** Si no se puede decir qué NO hace, todavía no está separado de los demás.
+> Define cada módulo por lo que hace y por lo que deja fuera. Si no se puede decir qué no hace, todavía no está separado de los demás.
 
 | Módulo | Qué hace | Qué deja explícitamente fuera | Requisitos que cubre | Con qué otros habla |
 |---|---|---|---|---|
@@ -45,9 +45,7 @@
 
 ## 4. Las decisiones de arquitectura
 
-> **Una decisión de arquitectura es la que cuesta cara de revertir.** Se escribe con las alternativas que se descartaron: sin ellas no se puede defender ni revisar después. Cada una va a su propio documento, y acá queda la lista.
-
-> **`DA` es de decisión de arquitectura.** Es el número con que se cita cada una desde cualquier otro documento, y no se reutiliza.
+> Lista las decisiones que cuestan caro de revertir, cada una con las alternativas que se descartaron: sin ellas no se puede defender ni revisar después. Cada decisión se desarrolla en su propio documento. `DA` es de decisión de arquitectura: es el número con que se cita desde cualquier otro documento, y no se reutiliza.
 
 | # | Qué se decidió | Alternativas descartadas | Por qué | Documento |
 |---|---|---|---|---|
@@ -55,6 +53,8 @@
 | DA-02 | «…» | «…» | «…» | «…» |
 
 ## 5. Los datos
+
+> Dice cómo se guardan, se protegen y se conservan los datos del sistema. Si no guarda datos, se escribe `N/A porque «…»`.
 
 | Qué se define | Cómo queda |
 |---|---|
@@ -66,6 +66,8 @@
 
 ## 6. La interfaz y la navegación
 
+> Dice cómo se le presenta el sistema a quien lo usa. Si no tiene pantallas para personas, se escribe `N/A porque «…»`.
+
 | Qué se define | Cómo queda |
 |---|---|
 | Inventario de pantallas y los flujos que importan | [plantillas/ciclo-vida-proyectos/15-diseno-de-interfaz.md](../../ciclo-vida-proyectos/15-diseno-de-interfaz.md) |
@@ -73,6 +75,8 @@
 | Qué mensajes ve quien se equivoca | «…» |
 
 ## 7. El contrato con quien integra
+
+> Es lo que el sistema le promete a otro sistema que se conecta con él. Si nadie se integra, se escribe `N/A porque «…»`.
 
 | Qué se define | Cómo queda |
 |---|---|
@@ -82,7 +86,7 @@
 
 ## 8. La seguridad
 
-> No es un capítulo aparte del diseño: es parte de cada módulo. Acá queda lo que atraviesa a todos.
+> Recoge la seguridad que atraviesa a todos los módulos. La que es propia de uno se diseña con ese módulo.
 
 | Qué se define | Cómo queda |
 |---|---|
@@ -94,6 +98,8 @@
 
 ## 9. El entorno técnico y los estándares
 
+> Fija la plataforma técnica y las convenciones con que se construye, para que todo el equipo trabaje igual.
+
 | Qué se define | Cómo queda |
 |---|---|
 | Lenguaje, marco de trabajo y versiones exactas | «…» |
@@ -104,7 +110,7 @@
 
 ## 10. Cómo se cumple lo no funcional
 
-> Los requisitos no funcionales del análisis no se cumplen solos: cada uno necesita una decisión de diseño. La fila sin decisión es un requisito que nadie va a cumplir.
+> Pone al lado de cada requisito no funcional del análisis la decisión de diseño que lo cumple. La fila sin decisión es un requisito que nadie va a cumplir.
 
 | Exigencia del análisis | Cómo la cumple el diseño |
 |---|---|
@@ -112,11 +118,15 @@
 
 ## 11. Qué puede salir mal, y qué se hace
 
+> Lista las fallas previsibles, lo que ve el usuario cuando ocurren y cómo se recupera el sistema.
+
 | Qué falla | Qué ve quien lo usa | Cómo se recupera |
 |---|---|---|
 | «…» | «…» | «…» |
 
 ## 12. La trazabilidad
+
+> Une cada requisito con el módulo que lo implementa y la decisión de la que depende, para que ninguno quede sin módulo.
 
 | Requisito | Módulo que lo implementa | Decisión de la que depende |
 |---|---|---|
@@ -125,6 +135,8 @@
 **Requisitos sin módulo:** «ninguno, o cuáles y por qué.»
 
 ## 13. Los entregables de esta etapa, y a quién van
+
+> Lista los documentos que produce la etapa y a quién se entregan.
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
@@ -138,6 +150,8 @@
 
 ## 14. Las puertas de esta etapa
 
+> Son las condiciones que bloquean el avance: lo que no se hace hasta que se cumpla algo, con la regla que lo exige.
+
 | Qué no se puede hacer | Hasta que | Regla |
 |---|---|---|
 | Escribir código | la especificación del módulo esté acordada | [`02·F2`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md) |
@@ -145,6 +159,8 @@
 | Dar por diseñado | ningún requisito quede sin módulo en la sección 12 | «…» |
 
 ## 15. La decisión de cierre
+
+> Registra si el diseño pasa a implementación, quién lo decidió y qué riesgo se acepta con lo que quedó sin diseñar.
 
 **«Se pasa a implementación / No se pasa»**, decidido por «quién» el «AAAA-MM-DD».
 

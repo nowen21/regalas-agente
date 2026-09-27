@@ -7,9 +7,11 @@
 > | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla del capítulo opt-in [`22`](../base/22-sistemas-que-aprenden-de-datos.md). Una ficha por modelo. Los `«…»` se reemplazan; lo que no aplique se escribe `N/A` con el motivo (`13·DOC21`).
+> Plantilla del capítulo opt-in [`22`](../base/22-sistemas-que-aprenden-de-datos.md). Una ficha por modelo. Los `«…»` se reemplazan y las notas como esta se borran; lo que no aplique se escribe `N/A` con el motivo (`13·DOC21`).
 
 ## Qué decide
+
+> Dice qué pregunta responde el modelo, si solo sugiere o actúa por su cuenta, desde cuándo corre y quién responde por él.
 
 | | |
 |---|---|
@@ -20,6 +22,8 @@
 
 ## Qué tan grave es que se equivoque
 
+> Mide el daño de un error: a quién alcanza la decisión, qué pasa en concreto, en qué nivel queda y qué control le toca por ese nivel.
+
 | | |
 |---|---|
 | **A quién afecta la decisión** | «a una persona identificable» / «a nadie en particular» |
@@ -29,7 +33,7 @@
 
 ## De qué datos aprendió
 
-Una fila por conjunto (`IA7`).
+> Lista los conjuntos de datos con que se entrenó el modelo, una fila por conjunto (`IA7`), y dice si entre ellos hay datos de personas.
 
 | Conjunto | De dónde salió | Periodo | Quién lo cedió | Para qué usos se puede |
 |---|---|---|---|---|
@@ -39,6 +43,8 @@ Una fila por conjunto (`IA7`).
 
 ## Qué medida persigue
 
+> Registra la medida que el modelo optimiza, qué se buscaba de verdad con ella y qué saldría mal si la persigue al extremo.
+
 | | |
 |---|---|
 | **Qué se le pidió optimizar** | «la medida, escrita como se le dio» |
@@ -46,6 +52,8 @@ Una fila por conjunto (`IA7`).
 | **Qué comportamiento indeseado podría producir** | «lo que pasaría si la persigue al extremo» |
 
 ## Cómo se vigila
+
+> Dice cómo se sabe, mientras el modelo corre, que sigue acertando, y quién se entera cuando deja de hacerlo.
 
 | | |
 |---|---|
@@ -56,6 +64,8 @@ Una fila por conjunto (`IA7`).
 
 ## Cuándo se vuelve a revisar
 
+> Fija cuándo se vuelve a mirar el modelo y quién firmó la aprobación con que corre hoy.
+
 | | |
 |---|---|
 | **¿Sigue aprendiendo después de aprobado?** | «sí / no» |
@@ -63,6 +73,8 @@ Una fila por conjunto (`IA7`).
 | **Aprobación vigente** | «quién y cuándo» |
 
 ## Si se retira
+
+> Dice cuándo deja de usarse el modelo y qué toma sus decisiones desde entonces.
 
 | | |
 |---|---|

@@ -11,19 +11,23 @@ Todo lo que un proyecto debe tener para que el agente funcione completo. Mientra
 
 Este archivo vive en el estándar y se copia a `./.agente/stack-instalacion.md` de cada proyecto. La copia es el retrato de lo que ese proyecto tiene instalado; el original es la verdad. Si el original cambia, la copia queda vieja y eso mismo se reporta como actualización pendiente.
 
-> **No se edita la copia.** La reescribe el instalador. Lo que se ajusta por proyecto va en `CLAUDE.md` o en `.agente/reglas-proyecto.md`.
+> La copia no se edita: la reescribe el instalador. Lo que se ajusta por proyecto va en `CLAUDE.md` o en `.agente/reglas-proyecto.md`.
 
 ## Todo se instala con una sola línea
+
+> Es el comando que instala y actualiza todos los componentes de la lista.
 
 ```sh
 python validadores/instalar.py "<proyecto>" --aplicar
 ```
 
-**Ningún componente de esta lista se instala a mano.** El instalador lee el estado del proyecto, calcula qué falta y lo deja puesto; después vuelve a comprobar y dice si algo quedó fuera. Es idempotente: lo que ya está al día no se toca, no se duplica y no se pisa.
+Ningún componente de esta lista se instala a mano. El instalador lee el estado del proyecto, calcula qué falta y lo deja puesto; después vuelve a comprobar y dice si algo quedó fuera. Es idempotente: lo que ya está al día no se toca, no se duplica y no se pisa.
 
-Lo que **no** decide el instalador —porque no es suyo— es qué código va dentro de `proyectos/` y cuándo el proyecto sube la versión adoptada del estándar. Ni lo pregunta al arrancar: crea la carpeta vacía y deja declarada la versión con la que se instaló.
+Lo que **no** decide el instalador, porque no es suyo, es qué código va dentro de `proyectos/` y cuándo el proyecto sube la versión adoptada del estándar. Ni lo pregunta al arrancar: crea la carpeta vacía y deja declarada la versión con la que se instaló.
 
 ## Componentes
+
+> Es la lista de lo que un proyecto debe tener para que el agente funcione completo, un componente por fila.
 
 La columna `id` es la que usa el validador; no se renombra ni se reordena por gusto. Todos se instalan con la línea de arriba: la tercera columna dice qué hace el instalador con cada uno.
 
@@ -46,6 +50,8 @@ La columna `id` es la que usa el validador; no se renombra ni se reordena por gu
 
 ## Cómo se comprueba
 
+> Dice con qué comando se verifica la instalación y en qué momentos corre sola.
+
 ```sh
 python validadores/validar.py checklist --raiz "<proyecto>"
 ```
@@ -54,9 +60,11 @@ El instalador la corre solo al terminar, así que instalar y comprobar son el mi
 
 Y además: en cada mensaje de la sesión, el enganche `UserPromptSubmit` repite la comprobación. Si falta algo, escribe `./.agente/INSTALACION-INCOMPLETA.md` con la lista y se lo pasa al agente, que debe decirlo. Cuando ya no falta nada, **borra** ese archivo: su ausencia es la señal de instalación completa.
 
-No bloquea el trabajo. Lo que aparezca después de haber instalado es, por definición, algo que exige una decisión del usuario — y entonces se dice cuál es y por qué.
+No bloquea el trabajo. Lo que aparezca después de haber instalado es, por definición, algo que exige una decisión del usuario, y entonces se dice cuál es y por qué.
 
 ## Nada de lo que el proyecto usa puede quedar viejo
+
+> Explica el sello con el que se sabe si un documento heredado sigue al día con su plantilla.
 
 Todo documento que el proyecto **heredó** del estándar lleva al final su **sello**:
 
@@ -64,9 +72,9 @@ Todo documento que el proyecto **heredó** del estándar lleva al final su **sel
 <!-- huella: a1b2c3d4e5f6 · estandar 1.5.0 -->
 ```
 
-La huella no es la del documento local: es la de la **plantilla contra la que se sincronizó**. Tiene que ser así porque el `CLAUDE.md` lo llena cada proyecto —su contenido nunca coincide con el original— y aun así hay que poder decir si quedó viejo.
+La huella no es la del documento local: es la de la plantilla contra la que se sincronizó. Tiene que ser así porque el `CLAUDE.md` lo llena cada proyecto (su contenido nunca coincide con el original) y aun así hay que poder decir si quedó viejo.
 
-Si la plantilla cambia en el estándar, la huella deja de coincidir y el componente **reprueba**: no es un aviso que se pueda ignorar, es instalación incompleta.
+Si la plantilla cambia en el estándar, la huella deja de coincidir y el componente **reprueba** como instalación incompleta, y ese aviso no se puede ignorar.
 
 | Documento heredado | Su plantilla |
 |---|---|
@@ -75,9 +83,11 @@ Si la plantilla cambia en el estándar, la huella deja de coincidir y el compone
 | `historico-chat/README.md` | `plantillas/historico-chat.md` |
 | `historico-chat/memory/memory.md` | `plantillas/memoria.md` |
 
-Del `CLAUDE.md`, del README del histórico y del índice de la memoria **solo se refresca el sello**: el contenido es del proyecto y no se pisa. La copia del stack sí se reescribe entera — no la llena nadie.
+Del `CLAUDE.md`, del README del histórico y del índice de la memoria solo se refresca el sello: el contenido es del proyecto y no se pisa. La copia del stack sí se reescribe entera, porque no la llena nadie.
 
 ## Cómo se detectan las actualizaciones
+
+> Dice cómo se nota cada clase de cambio del estándar que el proyecto tiene que aplicar, y qué comando la aplica.
 
 Cuatro cosas distintas, y se reportan por separado porque se arreglan distinto:
 
@@ -87,9 +97,9 @@ Cuatro cosas distintas, y se reportan por separado porque se arreglan distinto:
 | **Un componente** (un enganche, una carpeta) | Su propia comprobación falla: falta, o apunta a otro estándar. |
 | **Una actualización sin registrar** | Lo instalado declara una versión y el último registro de `documentacion/versiones/` dice otra. |
 
-**Al proyecto no le interesan todos los cambios del estándar: solo los que tiene que aplicar.** Por eso el número de versión **no reprueba**. Que el estándar vaya en 2.1.0 y el proyecto declare 1.8.0 no dice nada por sí solo — puede que ninguno de esos cambios lo toque. Lo que sí reprueba es el sello: se queja cuando cambió un documento que **este** proyecto usa. El desfase de número se informa al margen, para que el usuario decida si sube la versión adoptada.
+Al proyecto no le interesan todos los cambios del estándar: solo los que tiene que aplicar. Por eso el número de versión **no reprueba**. Que el estándar vaya en 2.1.0 y el proyecto declare 1.8.0 no dice nada por sí solo: puede que ninguno de esos cambios lo toque. Lo que sí reprueba es el sello: se queja cuando cambió un documento que **este** proyecto usa. El desfase de número se informa al margen, para que el usuario decida si sube la versión adoptada.
 
-**La única excepción es la derogación.** Si entre la versión que el proyecto declara y la vigente se derogó una regla que el proyecto cumplía, el desfase deja de ser informativo: el proyecto no abre ni cierra fase hasta adoptarla (`02·F22`).
+La única excepción es la derogación. Si entre la versión que el proyecto declara y la vigente se derogó una regla que el proyecto cumplía, el desfase deja de ser informativo: el proyecto no abre ni cierra fase hasta adoptarla (`02·F22`).
 
 Aplicar la actualización es siempre lo mismo:
 
@@ -97,13 +107,15 @@ Aplicar la actualización es siempre lo mismo:
 python validadores/instalar.py "<proyecto>" --aplicar
 ```
 
-Es la misma línea que instala desde cero: instalar y actualizar son el mismo proceso, y es idempotente. Lo único que no aplica solo es subir la **versión adoptada** del estándar — esa es decisión del usuario, porque un cambio de norma no reabre fases ya cerradas.
+Es la misma línea que instala desde cero: instalar y actualizar son el mismo proceso, y es idempotente. Lo único que no aplica solo es subir la **versión adoptada** del estándar: esa es decisión del usuario, porque un cambio de norma no reabre fases ya cerradas.
 
-**Uno de los catorce no se instala.** El punto `cadena` no mira si falta un archivo del andamiaje: mira si el proyecto empezó por donde `02·F0` manda empezar. Está en esta lista porque es lo que el agente lee en cada mensaje para saber si el entorno está completo, y decir «completo» con la cadena vacía es afirmar algo que `F0` contradice. Se apaga escribiendo el planteamiento, no corriendo el instalador.
+Uno de los catorce no se instala. El punto `cadena` no mira si falta un archivo del andamiaje: mira si el proyecto empezó por donde `02·F0` manda empezar. Está en esta lista porque es lo que el agente lee en cada mensaje para saber si el entorno está completo, y decir «completo» con la cadena vacía es afirmar algo que `F0` contradice. Se apaga escribiendo el planteamiento, no corriendo el instalador.
 
 ## Dónde queda registrada cada actualización
 
-En `./documentacion/versiones/`, un archivo por actualización — `AAAA-MM-DD-<versión>.md` — que deja escrito **desde cuándo** el proyecto usa esa versión:
+> Dice dónde queda escrito desde cuándo el proyecto usa cada versión del estándar y qué cambió al adoptarla.
+
+En `./documentacion/versiones/`, un archivo por actualización (`AAAA-MM-DD-<versión>.md`) que deja escrito **desde cuándo** el proyecto usa esa versión:
 
 - versión anterior y versión instalada, con fecha y hora;
 - qué componentes se actualizaron, con la huella antes y después;
@@ -112,4 +124,4 @@ En `./documentacion/versiones/`, un archivo por actualización — `AAAA-MM-DD-<
 
 Los escribe el instalador y no se editan a mano. El `README.md` de esa carpeta es el índice.
 
-**Va en `documentacion/` y no en `.agente/` a propósito:** `.agente/` está en el `.gitignore` y se queda en una sola máquina. Un cambio de norma no reabre fases ya cerradas — quedan selladas con la versión bajo la que cerraron—, y para saber cuál era hay que poder mirarlo desde cualquier copia del repositorio.
+Va en `documentacion/` y no en `.agente/` a propósito: `.agente/` está en el `.gitignore` y se queda en una sola máquina. Un cambio de norma no reabre fases ya cerradas (quedan selladas con la versión bajo la que cerraron), y para saber cuál era hay que poder mirarlo desde cualquier copia del repositorio.

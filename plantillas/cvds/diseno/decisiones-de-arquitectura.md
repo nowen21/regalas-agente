@@ -17,13 +17,15 @@
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
-> **La aprobación vale para el texto que se leyó.** Si una decisión se edita después de firmada, la firma deja de valer y hay que volver a aprobarla. Lo mismo para cualquier documento de este ciclo.
-
----
+> La aprobación vale para el texto que se leyó. Si una decisión se edita después de firmada, la firma deja de valer y hay que volver a aprobarla. Lo mismo para cualquier documento de este ciclo.
 
 ## Decisiones
 
+> Reúne una ficha por cada decisión cara de revertir, agregada el día en que se toma. Si la etapa no tomó ninguna, se escribe `N/A porque «…»`.
+
 ### «La decisión, dicha como afirmación, no como tema»
+
+> Agrupa los campos de una sola decisión: qué se decide, qué la obliga, qué se descartó, qué se pierde y cuándo se revisaría.
 
 | Campo | Valor |
 |---|---|
@@ -37,11 +39,13 @@
 
 ### «…»
 
+> Agrupa la decisión siguiente, con los mismos campos.
+
 «Se repite la ficha por cada decisión.»
 
----
-
 ## Lo que tienen en común
+
+> Dice qué se repite entre las decisiones y cuál de ellas es la más expuesta a cambiar.
 
 «Qué se repite entre ellas: la misma alternativa descartada por la misma razón, o la misma restricción del proyecto asomando en varias. Si no se repite nada, se escribe `N/A porque cada una responde a algo distinto`.»
 

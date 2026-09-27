@@ -9,11 +9,13 @@
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. Acompaña a la estación 06 (especificación) y **madura con el sistema**: cada fase que toque el esquema actualiza acá su parte, en la misma fase ([`03·D2`](../../base/03-datos.md)). Si el proyecto no tiene base de datos, el documento existe igual y dice: «No aplica porque «el porqué»». Reemplaza los `«…»` y borra esta caja.
+> Plantilla del modelo de datos. Acompaña a la estación 06 (especificación) y madura con el sistema: cada fase que toque el esquema actualiza aquí su parte, en la misma fase ([`03·D2`](../../base/03-datos.md)). Si el proyecto no tiene base de datos, el documento existe igual y dice: «No aplica porque «el porqué»».
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta. El párrafo «Para qué sirve este documento» se queda.
 
 ## 1. El mapa de entidades
 
-> El dibujo general: qué se conecta con qué. Con Mermaid se mantiene como texto; un dibujo que no se puede editar envejece solo.
+> Es el dibujo general de qué entidad se conecta con cuál. Va en Mermaid para mantenerlo como texto: un dibujo que no se puede editar envejece solo.
 
 ```mermaid
 erDiagram
@@ -22,7 +24,7 @@ erDiagram
 
 ## 2. Las entidades
 
-> Una fila por entidad, con su propósito en lenguaje del negocio: qué representa, no cómo se guarda.
+> Lista las entidades del sistema, una por fila, con lo que representa cada una en lenguaje del negocio, no cómo se guarda.
 
 | Entidad | Qué representa | Módulo dueño |
 |---|---|---|
@@ -30,9 +32,11 @@ erDiagram
 
 ## 3. Diccionario de datos
 
-> Un bloque por entidad. La columna «regla» lleva lo que el sistema exige del campo (obligatorio, único, rango, catálogo); es lo que las validaciones implementan y las pruebas comprueban.
+> Describe cada campo de cada entidad, un bloque por entidad. La columna Regla lleva lo que el sistema exige del campo (obligatorio, único, rango, catálogo): es lo que las validaciones implementan y las pruebas comprueban.
 
 ### «Entidad»
+
+> Agrupa los campos de una entidad, con su tipo, su regla y su significado.
 
 | Campo | Tipo | Regla | Qué significa |
 |---|---|---|---|
@@ -40,13 +44,15 @@ erDiagram
 
 ## 4. Relaciones y cardinalidades
 
+> Dice cómo se relacionan las entidades, cuántos registros de cada lado y qué pasa con los relacionados cuando se borra uno.
+
 | Relación | Cardinalidad | Qué pasa al borrar |
 |---|---|---|
 | «A → B» | «1 a muchos» | «se restringe / se propaga / queda huérfano y por qué se acepta» |
 
 ## 5. Decisiones del modelo
 
-> Las que alguien va a cuestionar en seis meses: por qué se desnormalizó algo, por qué un catálogo y no un campo libre, por qué se guarda histórico de un valor. Cada una con su alternativa descartada.
+> Registra las decisiones que alguien va a cuestionar en seis meses, como por qué se desnormalizó algo, por qué un catálogo y no un campo libre o por qué se guarda el histórico de un valor.
 
 | Decisión | Alternativa descartada | Por qué |
 |---|---|---|
@@ -54,7 +60,7 @@ erDiagram
 
 ## 6. Lo que se calcula, y por eso no se guarda
 
-> **Un dato guardado que también se puede calcular es una segunda verdad, y envejece.** El estado que sale de leer otros datos se calcula al pedirlo; si hay que guardarlo por velocidad, se dice que es un índice y de dónde se rehace.
+> Lista los datos que se calculan al pedirlos en vez de guardarse. Un dato guardado que también se puede calcular es una segunda verdad, y envejece; si hay que guardarlo por velocidad, se dice que es un índice y de dónde se rehace.
 
 | Dato | De dónde sale | ¿Se guarda? |
 |---|---|---|
@@ -62,6 +68,6 @@ erDiagram
 
 ## 7. Lo que este modelo deja fuera a propósito
 
-> Lo que alguien va a buscar acá y no está. Escribirlo evita que la próxima persona lo agregue creyendo que se olvidó.
+> Es lo que alguien va a buscar aquí y no está, porque se dejó fuera a propósito. Escribirlo evita que la próxima persona lo agregue creyendo que se olvidó. Si no hay nada, se escribe «Ninguno».
 
 - **«Qué queda fuera».** «Por qué, y qué habría que cambiar para que entrara.»

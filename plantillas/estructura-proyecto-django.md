@@ -9,9 +9,11 @@
 
 > Plantilla. La estructura estándar de **todo** proyecto Django: se copia a la documentación de
 > arquitectura del proyecto, se reemplazan los `«…»` con lo propio y se borra esta caja. Lo que no
-> lleva marca no es opcional: es la parte que todo proyecto Django cumple igual.
+> lleva marca es obligatorio: es la parte que todo proyecto Django cumple igual.
 
 ## La estructura
+
+> Es el árbol de carpetas y archivos del proyecto, con lo que va en cada uno y lo que no se versiona.
 
 ```
 «nombre-del-proyecto»/
@@ -44,24 +46,26 @@
 
 ## Cuatro cosas que esta estructura da por sentadas
 
-**El proyecto descarga sus dependencias.** Nada de terceros se copia al repositorio. Se declara en
+> Explica las cuatro convenciones que el árbol da por sentadas y por qué existen.
+
+**Dependencias.** El proyecto las descarga, y nada de terceros se copia al repositorio. Se declara en
 `requirements/` y lo instala pip dentro de `.venv/`. Por eso no hay `static/vendor/`: lo que un
 paquete trae de estáticos lo junta `collectstatic` en `staticfiles/`, que tampoco se versiona porque
 se regenera con una orden. `lock.txt` fija las versiones exactas, transitivas incluidas, para que dos
 equipos instalen lo mismo ([`10·DEP2`](../base/10-dependencias.md)).
 
-**Las credenciales no viven en el código.** El archivo que las tiene (`.env`) no entra al
+**Credenciales.** No viven en el código. El archivo que las tiene (`.env`) no entra al
 repositorio. Lo que sí entra es `.env.example`, con las mismas variables y sin un solo valor: es la
 lista de lo que hay que llenar para que el proyecto arranque en otro equipo (base `11`).
 
-**Un módulo, una carpeta.** No se agrupa por tipo de archivo (un `models/` con todos los modelos, un
+**Módulos.** Un módulo, una carpeta. No se agrupa por tipo de archivo (un `models/` con todos los modelos, un
 `views/` con todas las vistas), sino por módulo: cada carpeta tiene adentro su modelo, su panel, sus
 formularios, sus vistas y sus pruebas. Así se localiza cualquier archivo por convención, borrar un
 módulo es borrar una carpeta, y quien llega abre una carpeta y ve el dominio
 ([`14·EST1`](../base/14-estructura-codigo.md)). La ruta queda declarada en
 `.agente/mapeo-nombres.md`, que es lo que la hace comprobable por un programa.
 
-**Cada módulo es una aplicación de Django.** Es lo que hace que la carpeta sea de verdad
+**Aplicaciones.** Cada módulo es una aplicación de Django, y eso es lo que hace que la carpeta sea de verdad
 autocontenida: cada una tiene su `apps.py` y sus propias migraciones, y se registra en
 `INSTALLED_APPS` en orden de dependencia: los catálogos y tablas de referencia primero, las
 operaciones que cruzan entidades al final.

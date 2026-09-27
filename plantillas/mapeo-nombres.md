@@ -7,11 +7,13 @@
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. La base habla en abstracto ("catálogo", "auditoría", "permiso"). Aquí declaras **cómo se llama cada cosa en este proyecto**, para que el agente aplique la regla con el nombre real. Reemplaza los `«…»` y borra esta caja.
+> Plantilla. La base habla en abstracto («catálogo», «auditoría», «permiso»). Aquí se declara cómo se llama cada cosa en este proyecto, para que el agente aplique la regla con el nombre real. Al llenarla se reemplazan los `«…»` y se borran esta caja y las notas como ella.
 >
-> Son dos tablas y no se pisan: la primera la lee **el agente** y admite frases y matices; la segunda la lee **un programa** y por eso tiene forma fija. Lo que ya está en la segunda no se repite en la primera.
+> Son dos tablas y no se pisan: la primera la lee el agente y admite frases y matices; la segunda la lee un programa y por eso tiene forma fija. Lo que ya está en la segunda no se repite en la primera.
 
 ## Conceptos de la base → nombre concreto aquí
+
+> Traduce cada concepto que la base nombra en abstracto al nombre y la ubicación que tiene en este proyecto. El concepto que el proyecto no tenga se escribe «No aplica», con su motivo.
 
 | Concepto en la base | En este proyecto | Ejemplo / ubicación |
 |---|---|---|
@@ -28,9 +30,9 @@
 
 ## Convenciones que un programa comprueba
 
-> Esta es la que hace comprobables `14`·EST1, `14`·EST2, `03`·D1, `15`·IM2 y `15`·IM5: sin ella, "sigue la convención" no se puede decidir sin opinar, y esas cinco reglas se quedan en criterio del agente.
+> Es la tabla que hace comprobables `14·EST1`, `14·EST2`, `03·D1`, `15·IM2` y `15·IM5`: sin ella, «sigue la convención» no se puede decidir sin opinar, y esas cinco reglas se quedan en criterio del agente.
 >
-> **Cómo se llena.** La primera columna es la **clave**: no se cambia, no se traduce y no se reordena. La segunda es el valor, escrito como dice el vocabulario de abajo. Lo que este proyecto no quiera declarar se deja en `libre`, y el validador se salta esa parte — no inventa una convención que nadie acordó.
+> La primera columna es la **clave**: no se cambia, no se traduce y no se reordena. La segunda es el valor, escrito como dice el vocabulario de abajo. Lo que este proyecto no quiera declarar se deja en `libre`, y el validador se salta esa parte: no inventa una convención que nadie acordó.
 
 | Clave | Valor |
 |---|---|
@@ -66,8 +68,10 @@
 | `inmutables.permiso` | el permiso propio de anular ([`15·IM5`](«RUTA-ESTANDAR»/base/15-registros-inmutables.md#im5--permiso-propio-para-anular)) | el permiso con `<recurso>` en el lugar de la entidad | `<recurso>.anular` |
 | `legacy.ignorar` | qué código quedó fuera de la convención y no se renombra ([`14·EST3`](«RUTA-ESTANDAR»/base/14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo)) | rutas o patrones separados por coma; lo que encaje no se revisa | `app/Legacy/*, database/migrations/2019_*` |
 
-Qué entidades son de dominio y cuáles son inmutables **no se declara aquí**: eso es dominio, y va en la tabla de entidades de `dominio.md`, el archivo vecino de esta misma carpeta.
+Qué entidades son de dominio y cuáles son inmutables **no** se declara aquí: eso es dominio, y va en la tabla de entidades de `dominio.md`, el archivo vecino de esta misma carpeta.
 
 ## Código legacy (concreta `14` · EST3)
 
-- Elementos existentes que **no** siguen la convención y **no se renombran:** «lista o criterio». Lo que además deba saltarse el validador va en `legacy.ignorar`, arriba.
+> Es el código que ya existía fuera de la convención y conserva su nombre. Si no hay, se escribe «Ninguno».
+
+- Elementos existentes que **no** siguen la convención y **no** se renombran: «lista o criterio». Lo que además deba saltarse el validador va en `legacy.ignorar`, arriba.

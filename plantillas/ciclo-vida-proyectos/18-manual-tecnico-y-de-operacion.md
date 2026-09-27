@@ -9,13 +9,19 @@
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. Se alimenta desde que existe algo que operar, y cada procedimiento se escribe **probado**: un respaldo que nunca se restauró es una esperanza, no un respaldo ([`03·D6`](../../base/03-datos.md)). Mientras el proyecto no esté en producción, las secciones que dependan de ella dicen «No aplica todavía porque «el porqué»» y se llenan al desplegar. Reemplaza los `«…»` y borra esta caja.
+> Plantilla. Se alimenta desde que existe algo que operar, y cada procedimiento se escribe después de **probarlo**: de un respaldo que nunca se restauró no se sabe si sirve ([`03·D6`](../../base/03-datos.md)). Mientras el proyecto no esté en producción, las secciones que dependan de ella dicen «No aplica todavía porque «el porqué»» y se llenan al desplegar.
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
 
 ## 1. El sistema en una página
+
+> Da a quien llega a operar el sistema la vista completa, sin entrar en detalle.
 
 «Qué es, de qué piezas se compone (aplicación, base de datos, tareas, integraciones) y dónde corre cada una. El detalle vive en el [modelo de datos](14-modelo-de-datos.md) y las especificaciones; acá va el mapa que orienta a quien llega a operar.»
 
 ## 2. Respaldo y restauración
+
+> Dice qué se respalda, cada cuánto, con qué comando y dónde queda, y cuándo se comprobó por última vez que la restauración funciona.
 
 | Qué se respalda | Con qué frecuencia | Cómo (comando) | Dónde queda | Última restauración **probada** |
 |---|---|---|---|---|
@@ -25,6 +31,8 @@
 
 ## 3. Cómo se sabe que está vivo
 
+> Son las señales que muestran si el sistema funciona: dónde se miran, qué valor es normal y cuál obliga a actuar.
+
 | Señal | Dónde se mira | Qué es normal | Qué obliga a actuar |
 |---|---|---|---|
 | «disponibilidad, errores, disco» | «…» | «…» | «…» |
@@ -33,18 +41,22 @@
 
 ## 4. Lo que corre solo
 
+> Son las tareas programadas que corren sin que nadie las lance, y lo que se daña si una deja de correr. Si no hay, se escribe «Ninguna».
+
 | Tarea programada | Cuándo corre | Qué hace | Qué pasa si no corre |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
 
 ## 5. Cuando algo falla
 
-> Los incidentes que ya se conocen, con su remedio probado. Cada incidente nuevo que se resuelva agrega su fila: este manual crece con las cicatrices.
+> Son los incidentes ya conocidos, cada uno con su remedio probado. Cada incidente nuevo que se resuelve agrega su fila.
 
 | Síntoma | Causa probable | Qué hacer |
 |---|---|---|
 | «…» | «…» | «…» |
 
 ## 6. Accesos y contactos
+
+> Reúne los roles con acceso al sistema y a quién se acude en cada tipo de problema.
 
 «Quién tiene acceso a qué (roles, no credenciales: [`00·N6`](../../base/00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada)) y a quién se llama para qué.»

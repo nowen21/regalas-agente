@@ -9,11 +9,13 @@
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. Se escribe al preparar la primera entrega y se revisa en cada acta de entrega. Mientras no haya nada entregado, existe y dice: «No aplica todavía porque «el porqué»». Reemplaza los `«…»` y borra esta caja.
+> Plantilla. Se escribe al preparar la primera entrega y se revisa en cada acta de entrega. Mientras no haya nada entregado, existe y dice: «No aplica todavía porque «el porqué»».
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
 
 ## 1. Las rutinas, con su cadencia
 
-> Cada rutina con su disparador: una fecha, un evento o un umbral. «Cuando se pueda» no es una cadencia.
+> Son las tareas que se repiten para sostener el sistema, cada una con su disparador: una fecha, un evento o un umbral. «Cuando se pueda» no es una cadencia.
 
 | Rutina | Cadencia | Qué se hace | Dónde queda constancia |
 |---|---|---|---|
@@ -24,9 +26,13 @@
 
 ## 2. Cómo entra un cambio después de entregado
 
+> Dice por dónde entra una corrección o una mejora pedida después de la entrega.
+
 «El mismo ciclo, no un atajo: la corrección o mejora entra por el paso 1 (necesidad), toca el [inventario](02-inventario-funcionalidades.md) si cambia el alcance, y baja por sus fases. El mantenimiento no suspende las reglas: las repite en chico.»
 
 ## 3. Quién responde
+
+> Dice quién atiende cada frente del sistema entregado y hasta cuándo se compromete.
 
 | Frente | Quién | Hasta cuándo se compromete |
 |---|---|---|
@@ -34,5 +40,7 @@
 | Operación (respaldos, monitoreo) | «…» | «…» |
 
 ## 4. El fin de vida
+
+> Dice qué se hace con el sistema y con sus datos el día que deje de usarse.
 
 «Qué pasa el día que el sistema se apague: qué datos se entregan o archivan, a quién, y qué se destruye. Decidirlo al final, con el sistema lleno de datos, es decidirlo tarde.»

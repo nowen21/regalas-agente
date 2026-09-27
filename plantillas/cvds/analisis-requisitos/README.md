@@ -9,19 +9,19 @@
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 
-> Plantilla. Se llena durante la etapa y se cierra al pasar a la siguiente. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra. Reemplaza los `«…»` y borra esta caja.
+> Plantilla. Se llena durante la etapa y se cierra al pasar a la siguiente. La envergadura ajusta la profundidad, nunca la existencia: la sección sin materia se llena con `N/A porque «…»`, nunca se borra.
+>
+> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
 
-> **Cómo se redacta lo que va dentro de cada `«…»`.** En el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. **Si en una celda va más de una cosa, se escribe como lista:** una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
+> Lo que va dentro de cada `«…»` se redacta en el idioma del proyecto ([`01·C8`](«RUTA-ESTANDAR»/base/01-conducta.md#c8--habla-el-idioma-del-proyecto)) y en la menor cantidad de palabras con la que se entienda ([`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md)): el dato primero, sin repaso, sin justificación que nadie pidió y sin paso a paso. Lo que no cabe se escribe en su documento y se enlaza. Si en una celda va más de una cosa, se escribe como lista: una por renglón, con `<br>` entre ellas y viñeta al empezar. Separarlas con puntos medios en un solo párrafo las vuelve ilegibles.
 
-> **Se escribe desde la propuesta, no desde lo que ya está construido.** Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
+> El documento se escribe desde la propuesta, no desde lo que ya está construido. Lo que existe sirve para saber qué se conserva y qué se rehace, nunca para fijar el alcance. La prueba: si se borra mentalmente lo construido y el documento sigue siendo cierto, está bien escrito.
 
 **Estado: «BORRADOR / APROBADO»** («AAAA-MM-DD», aprobado por «quién»).
 
----
-
 ## 1. Qué entra a esta etapa
 
-> **Lo que la etapa recibe ya aprobado.** Si algo llega sin aprobar, esta etapa no arranca: se trabaja sobre un acuerdo que puede cambiar.
+> Es lo que la etapa recibe ya aprobado de la planificación. Si algo llega sin aprobar, la etapa no arranca, porque se trabajaría sobre un acuerdo que puede cambiar.
 
 | Qué se recibe | De dónde viene | ¿Aprobado? |
 |---|---|---|
@@ -30,7 +30,7 @@
 
 ## 2. De dónde salieron los requisitos
 
-> **Un requisito sin origen no se puede discutir después.** Acá va con quién se habló, cómo y cuándo. Preguntarle solo a los jefes y no a quien va a usar el sistema todos los días es el error que más requisitos falsos produce.
+> Dice con quién se habló, cómo y cuándo para sacar los requisitos: uno sin origen no se puede discutir después. Preguntarle solo a los jefes y no a quien va a usar el sistema todos los días es el error que más requisitos falsos produce.
 
 | Fuente | Quién | Técnica | Cuándo | Dónde quedó lo acordado |
 |---|---|---|---|---|
@@ -40,7 +40,7 @@
 
 ## 3. Los requisitos funcionales
 
-> **Un requisito funcional es algo que el sistema debe hacer**, dicho como resultado y no como pantalla ni como tabla. Molde de redacción: **el sistema debe «acción» «objeto» «condición» «criterio medible»**.
+> Un requisito funcional es algo que el sistema debe hacer, dicho como resultado y no como pantalla ni como tabla. Molde de redacción: el sistema debe «acción» «objeto» «condición» «criterio medible».
 >
 > Cada uno se comprueba contra ocho preguntas: ¿es **único** (una sola condición)? ¿**completo** (no depende de lo que no está escrito)? ¿**consistente** (no contradice a otro)? ¿**verificable** (existe una prueba que lo demuestra)? ¿**medible** (los números están escritos)? ¿**trazable** (tiene identificador propio)? ¿**factible** (cabe en el tiempo y el dinero)? ¿**necesario** (si se quita, alguien pierde algo real)?
 >
@@ -55,7 +55,7 @@
 
 ## 4. Los requisitos no funcionales
 
-> **Un requisito no funcional es una exigencia sobre cómo se comporta el sistema**, no sobre qué hace. Es el que nadie escribe y todos reclaman cuando falta, casi siempre en producción y casi siempre tarde. Se escribe con número: «rápido» no es un requisito, «responde en menos de dos segundos con cien usuarios» sí.
+> Un requisito no funcional es una exigencia sobre cómo se comporta el sistema, no sobre qué hace. Es el que nadie escribe y todos reclaman cuando falta, casi siempre en producción y casi siempre tarde. Se escribe con número: «rápido» no es un requisito, «responde en menos de dos segundos con cien usuarios» sí.
 
 | ID | Frente | Exigencia, con su número | Cómo se comprueba |
 |---|---|---|---|
@@ -70,7 +70,7 @@
 
 ## 5. Las reglas del negocio
 
-> **Una regla del negocio manda sobre el sistema y sobre todo lo demás:** existe aunque el sistema no exista. No se inventa acá, se recoge de quien la dicta, y se escribe con su origen para poder discutirla después.
+> Una regla del negocio manda sobre el sistema: existe aunque el sistema no exista. No se inventa acá: se recoge de quien la dicta y se escribe con su origen, para poder discutirla después.
 
 | # | Regla | Quién la dicta | Qué pasa si se rompe |
 |---|---|---|---|
@@ -78,13 +78,15 @@
 
 ## 6. Los actores y sus permisos
 
+> Son los tipos de usuario que intervienen en el sistema, con lo que cada uno hace y lo que no puede hacer.
+
 | Actor | Qué hace en el sistema | Qué no puede hacer |
 |---|---|---|
 | «…» | «…» | «…» |
 
 ## 7. Los casos de uso
 
-> **Un caso de uso cuenta el camino completo, no el feliz.** Los flujos alternos y de excepción son la mitad del trabajo de la etapa y la mitad que se omite: de ahí salen las validaciones que después nadie programó.
+> Un caso de uso cuenta el camino completo, no solo el feliz. Los flujos alternos y de excepción son la mitad del trabajo de la etapa y la mitad que se omite: de ahí salen las validaciones que después nadie programó.
 
 | # | Caso de uso | Actor | Precondición | Qué debe quedar al terminar | Flujos alternos y de error |
 |---|---|---|---|---|---|
@@ -94,7 +96,7 @@
 
 ## 8. La trazabilidad
 
-> **Cada requisito se sigue hasta la prueba que lo demuestra.** La fila que se corta a mitad de camino señala trabajo que nadie va a comprobar, o código que nadie pidió.
+> Sigue cada requisito hasta la prueba que lo demuestra. La fila que se corta a mitad de camino señala trabajo que nadie va a comprobar, o código que nadie pidió.
 
 | Requisito | Historia que lo ejecuta | Módulo que lo implementa | Caso de prueba que lo demuestra |
 |---|---|---|---|
@@ -102,7 +104,7 @@
 
 ## 9. Lo que se preguntó y no tiene respuesta
 
-> Una duda escrita detiene un supuesto inventado. Cada una con quién la responde y para cuándo se necesita.
+> Son las dudas abiertas, cada una con quién la responde y para cuándo se necesita. Una duda escrita detiene un supuesto inventado.
 
 | # | Duda | Quién responde | Se necesita antes de | Estado |
 |---|---|---|---|---|
@@ -110,13 +112,15 @@
 
 ## 10. Cómo se pide un cambio a lo ya acordado
 
-> Cuando esta etapa cierra, lo aprobado queda como **línea base**: el punto contra el cual se mide todo cambio posterior. Sin línea base no hay con qué negociar, y el alcance crece sin que nadie note cuánto costó.
+> Dice por dónde entra un cambio a lo aprobado y quién lo evalúa y lo aprueba. Cuando esta etapa cierra, lo aprobado queda como **línea base**: el punto contra el cual se mide todo cambio posterior. Sin línea base no hay con qué negociar, y el alcance crece sin que nadie note cuánto costó.
 
 | Quién pide | Por dónde entra | Quién evalúa el impacto | Quién aprueba |
 |---|---|---|---|
 | «…» | «…» | «…» | «…» |
 
 ## 11. Los entregables de esta etapa, y a quién van
+
+> Lista los documentos que produce la etapa, el molde de cada uno, a quién van y en qué estado están.
 
 | Documento | Molde | Va a | Estado |
 |---|---|---|---|
@@ -132,6 +136,8 @@
 
 ## 12. Las puertas de esta etapa
 
+> Son las condiciones que deben cumplirse antes de dar el paso siguiente, cada una con la regla o la sección que la exige.
+
 | Qué no se puede hacer | Hasta que | Regla |
 |---|---|---|
 | Derivar épicas | el inventario esté aprobado por el usuario | [`02·F26`](«RUTA-ESTANDAR»/base/02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md) |
@@ -140,8 +146,10 @@
 
 ## 13. La decisión de cierre
 
+> Registra el veredicto de la etapa, quién lo dio y cuándo.
+
 **«Se pasa a diseño / No se pasa»**, decidido por «quién» el «AAAA-MM-DD».
 
-**Lo aprobado queda como línea base de requisitos** desde esa fecha: lo que venga después entra por la sección 10.
+Lo aprobado queda como **línea base** de requisitos desde esa fecha: lo que venga después entra por la sección 10.
 
 «Qué quedó fuera de esta etapa a propósito, y qué duda de la sección 9 sigue abierta con su riesgo.»
