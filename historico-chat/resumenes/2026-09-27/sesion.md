@@ -23,7 +23,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-27-sesion.md](../.
 ### H-3 · Ninguna regla exige quedarse en el asunto
 
 - **Qué pasó:** el pendiente 96 llevaba una frase que no aportaba nada. El agente citó `00·ID9`, y el usuario mostró que esa regla exige extensión, no foco.
-- **Dónde queda:** anotado en el [pendiente 95](../../../pendientes/95-el-agente-agrega-informacion-irrelevante-al-asunto.md), que el usuario aprobó y bajó a [HU-038](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md). Borrador de `00·ID11` acordado.
+- **Dónde queda:** anotado en el [pendiente 95](../../../pendientes/95-el-agente-agrega-informacion-irrelevante-al-asunto.md), que el usuario aprobó y bajó a [HU-038](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto.md). Borrador de `00·ID11` acordado.
 
 ---
 

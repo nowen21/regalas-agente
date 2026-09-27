@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | [EP-001 · HU-038 — El agente agrega información irrelevante al asunto que está tratando](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-escribir-solo-sobre-el-asunto-en-curso/HU-038-escribir-solo-sobre-el-asunto-en-curso.md) |
+| **Historia de usuario** | [EP-001 · HU-038 — El agente agrega información irrelevante al asunto que está tratando](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto.md) |
 | **De dónde sale** | La sesión del 2026-09-27: el usuario preguntó qué aportaba al [pendiente 96](96-la-norma-del-espanol-de-colombia-no-tiene-regla.md) la frase «No entra en HU-037, que está terminada y dejó la norma fuera de su alcance». No aportaba nada, y ninguna regla lo prohibía |
 | **Proyecto de origen** | El estándar mismo |
 
