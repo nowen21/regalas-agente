@@ -15,7 +15,7 @@
 | **Sprint** | Sin asignar |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Pendiente |
+| **Estado** | Terminada |
 
 ## 2. Narrativa
 
@@ -116,33 +116,6 @@ Entonces aparece como no validable, porque decidir si un dato es pertinente pide
 
 Se aprueba cuando la fila existe con su motivo.
 
-### CA-05 · Los pendientes 96 y 97 cumplen la regla
-
-```gherkin
-Dado que la regla existe
-Cuando se releen los pendientes 96 y 97 contra ella
-Entonces ninguno lleva un dato que no sea pertinente a su asunto
-```
-
-**Cómo validarlo:**
-1. Releer `pendientes/96-la-norma-del-espanol-de-colombia-no-tiene-regla.md` → resultado esperado: sin la frase sobre HU-037 ni otro dato ajeno a la norma colombiana.
-2. Releer `pendientes/97-el-andamio-exige-la-historia-antes-que-el-pendiente.md` → resultado esperado: sin la frase sobre la épica candidata ni otro dato ajeno al andamio.
-
-Se aprueba cuando el usuario lee los dos y no encuentra nada que sobre.
-
-### CA-06 · Un dato que parece ajeno pero es pertinente se conserva
-
-```gherkin
-Dado que la regla existe
-Cuando se aplica a un texto con un dato que no nombra el asunto pero sirve a su tema, objetivo y alcance
-Entonces ese dato se conserva
-```
-
-**Cómo validarlo:**
-1. Abrir `pendientes/96-la-norma-del-espanol-de-colombia-no-tiene-regla.md` y releerlo contra la regla → resultado esperado: la mención de `00·ID10` en «El problema» sigue en el texto, porque explica qué cubre ya el estándar.
-
-Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de releerlo.
-
 ### Criterios de aceptación transversales
 
 - [ ] No regresión: `validar.py metareglas`, `estandar` y `pendientes` quedan sin fallas.
@@ -152,7 +125,7 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 | ID | Categoría | Requisito |
 |---|---|---|
 | RNF-01 | **Trazabilidad** | La regla se registra en `CHANGELOG.md` y sube `VERSION` como MENOR |
-| RNF-02 | **Compatibilidad** | Rige lo que se entregue de aquí en adelante: ningún documento ya escrito se reescribe por ella, salvo los del CA-05 |
+| RNF-02 | **Compatibilidad** | Rige lo que se entregue de aquí en adelante: ningún documento ya escrito se reescribe por ella |
 
 ## 6. Diseño y referencias
 
@@ -161,18 +134,17 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Escribir la regla, con las cuatro reglas de negocio y su checklist aplicado
-- [ ] Agregarla a la tabla del capítulo 00
-- [ ] Clasificarla en `validadores/reglas-validables.md`
-- [ ] Releer los pendientes 96 y 97 contra ella
-- [ ] Versionar y registrar el cambio
-- [ ] Cerrar el pendiente 95
+- [x] Escribir la regla, con las cuatro reglas de negocio y su checklist aplicado
+- [x] Agregarla a la tabla del capítulo 00
+- [x] Clasificarla en `validadores/reglas-validables.md`
+- [x] Versionar y registrar el cambio
+- [x] Cerrar el pendiente 95
 
 ## 8. Fases que la implementan
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| [`A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto`](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/) | CA-01 a CA-06 | | [plan_trabajo](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_pruebas.md) | [resultado](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/resultado_pruebas.md) · sin ejecutar | En curso |
+| [`A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto`](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/) | CA-01 a CA-04 | | [plan_trabajo](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/plan_pruebas.md) | [resultado](A-EP-001-HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/resultado_pruebas.md) · cumple | Cerrada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -190,7 +162,7 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 | Tipo | Descripción | Impacto |
 |---|---|---|
 | Riesgo | Que la regla se lea como otra forma de pedir textos cortos | La RN-04 y el ejemplo de la regla muestran una frase corta que igual sobra |
-| Riesgo | Que al aplicarla se quite un dato que sí era pertinente | La RN-02 pide juzgar cada dato contra el tema, el objetivo y el alcance del elemento, no contra el gusto de quien relee. El CA-06 lo comprueba |
+| Riesgo | Que al aplicarla se quite un dato que sí era pertinente | La RN-02 pide juzgar cada dato contra el tema, el objetivo y el alcance del elemento, no contra el gusto de quien relee |
 
 ## 10. Definition of Ready (DoR)
 
@@ -203,10 +175,10 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 
 ## 11. Definition of Done (DoD)
 
-- [ ] Regla escrita y en rama principal
-- [ ] Validadores sin fallas
-- [ ] Todos los criterios de aceptación verificados
-- [ ] Requisitos no funcionales validados
+- [ ] Regla escrita y en rama principal (al commitear)
+- [x] Validadores sin fallas
+- [x] Todos los criterios de aceptación verificados
+- [x] Requisitos no funcionales validados
 - [ ] Aceptada por el usuario
 
 ## 12. Validación INVEST
@@ -216,9 +188,9 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 | **I**ndependiente | ☑ | No espera a otra historia |
 | **N**egociable | ☑ | La redacción del cuerpo se ajusta en la fase |
 | **V**aliosa | ☑ | Hoy un dato que no es pertinente no incumple ninguna regla |
-| **E**stimable | ☑ | Una regla, un registro y dos pendientes para releer |
+| **E**stimable | ☑ | Una regla y su registro |
 | **S**mall (pequeña) | ☑ | Una fase |
-| **T**esteable | ☑ | Dos criterios se comprueban con validadores y cuatro leyendo |
+| **T**esteable | ☑ | Dos criterios se comprueban con validadores y dos leyendo |
 
 ## 13. Bitácora
 
@@ -228,3 +200,5 @@ Se aprueba cuando la mención de `00·ID10` sigue en el pendiente después de re
 | 2026-09-27 | El usuario | Título y contexto tomados del pendiente 95; narrativa y reglas de negocio RN-01 a RN-04 redactadas por el usuario |
 | 2026-09-27 | El agente | Reescrita con la plantilla: CA-02 para las reglas de negocio, riesgo de quitar lo pertinente, referencias a `00·ID7`, `00·ID8` y `00·ID9` |
 | 2026-09-27 | El agente | CA-06: el caso borde de un dato que parece ajeno pero es pertinente |
+| 2026-09-27 | El usuario | Salen el CA-05 y el CA-06: aplicar la regla a los pendientes 96 y 97 no es parte de esta HU |
+| 2026-09-27 | El agente | Fase `A` cerrada con veredicto Cumple: la regla `00·ID11` existe, versión 38.1.0 |

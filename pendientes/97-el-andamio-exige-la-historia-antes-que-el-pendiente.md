@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | Por asignar: nace al aprobarse este pendiente. La épica candidata es la que tenga `andamio.py` y el flujo de pendientes a su cargo |
+| **Historia de usuario** | Por asignar: nace al aprobarse este pendiente |
 | **De dónde sale** | La sesión del 2026-09-27: al crear el [pendiente 96](96-la-norma-del-espanol-de-colombia-no-tiene-regla.md), el agente creó primero el esqueleto de una HU porque el andamio no lo dejaba de otra forma. El usuario lo corrigió |
 | **Proyecto de origen** | El estándar mismo |
 

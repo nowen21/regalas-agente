@@ -1,6 +1,6 @@
 # Pendiente · El agente agrega información irrelevante al asunto que está tratando
 
-**Estado:** abierto, anotado el 2026-09-27. Aprobado el mismo día y bajado a historia.
+**Estado:** **hecho** el 2026-09-27, en la misma sesión que lo anotó. Lo construyó la fase `A` de HU-038: la regla [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md), versión 38.1.0.
 
 | | |
 |---|---|

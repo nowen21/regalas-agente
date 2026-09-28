@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Historia de usuario** | Por asignar: nace al aprobarse este pendiente, como hija de [EP-001 · Cuerpo de reglas heredable](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/epica.md). No entra en [HU-037](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-037-la-norma-de-redaccion-del-agente/HU-037-la-norma-de-redaccion-del-agente.md), que está terminada y dejó la norma fuera de su alcance |
+| **Historia de usuario** | Por asignar: nace al aprobarse este pendiente, como hija de [EP-001 · Cuerpo de reglas heredable](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/epica.md) |
 | **De dónde sale** | La sesión del 2026-09-27: el usuario preguntó cuál era la regla del español colombiano y no había una que lo dijera |
 | **Proyecto de origen** | El estándar mismo |
 

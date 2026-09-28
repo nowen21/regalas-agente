@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.1.0 — 2026-09-27
+
+**Nace `00·ID11`: el agente escribe solo lo pertinente al asunto.** `ID9` y `01·C5` miden extensión, así que un dato corto y claro que no tenía que ver con el tema no incumplía ninguna regla. La nueva exige que cada dato se relacione con el tema, el objetivo y el alcance de lo que se trata, y que lo que no, se omita aunque sea breve y correcto. Rige los documentos y el chat, y extiende `ID7`, `ID8` e `ID9`.
+
+**MENOR** (aditivo): rige lo que se entregue de aquí en adelante; ningún documento ya escrito se reabre. Sale del pendiente 95 y la construye la fase `A` de HU-038.
+
+---
+
 ## 38.0.5 — 2026-09-27
 
 **Todas las plantillas de documento quedan con el formato de la del plan de trabajo.** Cada sección trae debajo de su título una nota que dice qué es y qué se escribe si no aplica, y la redacción cumple `00·ID8` y `00·ID9`: sin raya larga, emojis, separadores, negrita sobre frases, flechas en prosa ni notas que repiten a otras. Son 53 plantillas; las de historia de usuario y plan de trabajo ya lo tenían.
