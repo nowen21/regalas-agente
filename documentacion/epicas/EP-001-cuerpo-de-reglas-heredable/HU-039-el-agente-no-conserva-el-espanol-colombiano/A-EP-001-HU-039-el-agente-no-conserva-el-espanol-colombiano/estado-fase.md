@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ✅ 8 de 8 exigencias con caso aprobado |
 | 10 | Crítico | sin hallazgos graves | ✅ Un defecto de severidad baja, corregido |
 | 11 | Cierre documental + señales | docs y señales al día | ✅ `funcionalidad_implementada.md` escrito |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `227333e` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.1 Veredicto de las pruebas
