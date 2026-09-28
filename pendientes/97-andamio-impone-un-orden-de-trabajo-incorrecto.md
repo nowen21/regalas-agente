@@ -1,6 +1,6 @@
 # Pendiente · andamio.py impone un orden de trabajo incorrecto
 
-**Estado:** abierto, anotado el 2026-09-27. Aprobado el mismo día y bajado a historia.
+**Estado:** **hecho** el 2026-09-27, en la misma sesión que lo anotó. Lo construyó la fase `A` de HU-022 en EP-005, versión 38.3.0.
 
 | | |
 |---|---|

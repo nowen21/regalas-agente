@@ -2,7 +2,7 @@
 
 ## F23 · Ejecuta un pendiente como fase de una historia de usuario
 
-Un pendiente no se implementa desde su archivo: baja a historia de usuario de la épica que le corresponda y se construye como fase de esa historia. Que la mejora ya esté acordada y escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Un hallazgo se anota como pendiente; el pendiente aprobado baja a una historia de usuario hija de la épica que le corresponda, y se construye como fase de esa historia. Que la mejora ya esté escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: el pendiente dice qué hay que arreglar → se edita el código, se sube
@@ -16,7 +16,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v38.3.0**, el **2026-09-27**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -32,7 +32,11 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 La fila **2** se buscó por concepto y se leyó el capítulo entero. [`02·F21`](F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md) también habla de pendientes, pero de otra cosa: aquella dice que lo ya anotado no se vuelve a producir; esta dice por dónde entra al trabajo lo que el pendiente pide. Y [`20·M13`](../../20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md) dice dónde **vive** un pendiente, no cómo se ejecuta.
 
-La fila **9** es una sola exigencia: bajar a HU y construir como fase no se cumplen por separado — una HU que nadie baja a fase no construye nada, y una fase sin HU es el eslabón saltado que la regla prohíbe.
+**Precisada el 2026-09-27 (`EP-005·HU-022`):** el cuerpo nombra el tramo que faltaba, de hallazgo a pendiente, y dice que el pendiente baja a HU cuando está aprobado. Hasta entonces el orden completo, hallazgo, pendiente, HU y fase, no estaba escrito en ninguna regla, y `andamio.py` obligaba a crear la HU antes que el pendiente.
+
+La fila **10** sigue aprobando: el cuerpo nuevo cabe en el molde de 320 caracteres leídos.
+
+La fila **9** es una sola exigencia, el orden de la cadena de principio a fin: sus eslabones no se cumplen por separado. Una HU que nadie baja a fase no construye nada, una fase sin HU es el eslabón saltado, y una HU creada antes que su pendiente fija el alcance antes de que alguien lo apruebe.
 
 La fila **17** obligó a corregir dos procedimientos que autorizaban lo contrario: el §2 del [`CLAUDE.md`](../../../CLAUDE.md) del estándar y los nueve pasos de [`20 · base.md`](../../20-meta-reglas/base.md), que describían cambiar una regla como *buscar → enrutar → escribir → versionar*, sin cadena. Los dos quedan diciendo que cuando el cambio sale de un pendiente, la cadena va primero.
 

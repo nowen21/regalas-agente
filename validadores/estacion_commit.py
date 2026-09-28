@@ -102,6 +102,23 @@ def fases_que_toca(archivos):
     return vistas
 
 
+def cierre_escrito(proyecto, ruta_cierre):
+    """`True` si el `funcionalidad_implementada.md` de la fase ya no es el molde.
+
+    `EP-005·HU-022` · El andamio crea el cierre vacío en cuanto abre la fase, así
+    que estar en git no dice que la fase cerró: una fase recién abierta quedaba
+    marcada como commiteada. Se compara contra el molde con lo mismo que usa
+    `fases.py`. **Sin molde contra qué comparar, no se afirma** (`04·R4`), y
+    se deja marcar como antes.
+    """
+    import fases                                    # aquí: fases importa este módulo
+    moldes = fases.marcadores_de_los_moldes(proyecto) or         fases.marcadores_de_los_moldes(comun.RAIZ)
+    propios = moldes.get("funcionalidad_implementada.md")
+    if not propios:
+        return True
+    return fases.sigue_siendo_el_molde(ruta_cierre, propios) is None
+
+
 def marcar_las_fases(proyecto, archivos, hash_corto, cerrada_en_git):
     """Escribe el hash en las fases que el commit cierra. Devuelve las tocadas.
 
@@ -116,6 +133,8 @@ def marcar_las_fases(proyecto, archivos, hash_corto, cerrada_en_git):
         cierre = os.path.join(ruta, "funcionalidad_implementada.md")
         if not os.path.isfile(estado) or not cerrada_en_git(cierre):
             continue
+        if not cierre_escrito(proyecto, cierre):
+            continue                    # recién abierta: su cierre sigue siendo el molde
         nuevo = marcar(_leer(estado), hash_corto)
         if nuevo is None:
             continue

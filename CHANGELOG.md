@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.3.0 — 2026-09-27
+
+**El pendiente se anota antes que su historia, como pide el orden de la cadena.** `andamio.py pendiente` exigía `--hu`, así que para anotar un pendiente había que inventarle antes su historia. Ahora `--hu` es opcional: sin él, la ficha dice «Por asignar» y el pendiente no entra al mapa de historias hasta tenerla. Un `--hu` que apunta a una historia que no existe sigue siendo un error.
+
+**`02·F23` escribe el orden completo: hallazgo, pendiente, HU y fase.** El tramo de hallazgo a pendiente no lo nombraba ninguna regla. La plantilla del pendiente y el índice de pendientes dicen cuándo vale «Por asignar».
+
+**El enganche `post-commit` deja de marcar como commiteada una fase recién abierta.** Marcaba la estación 12 de toda fase cuyo cierre estuviera en git, y el andamio crea ese cierre vacío al abrir la fase. Ahora exige que `funcionalidad_implementada.md` ya no sea el molde.
+
+**MENOR** (aditivo): quien usa `--hu` no cambia nada. Sale del pendiente 97 y lo construye la fase `A` de HU-022 en EP-005.
+
+---
+
 ## 38.2.0 — 2026-09-27
 
 **Nace `00·ID12`: el agente escribe con la norma del español de Colombia cuando el proyecto la declara.** Ninguna regla exigía la ortografía, el léxico, la gramática ni la redacción de la variedad: `ID10` fijaba la variedad y no qué es escribirla bien. La regla trae un anexo nuevo, `base/00-identidad-y-rol/espanol-de-colombia.md`, con los cuatro frentes, y el léxico que estaba en la sección 5 de `marcadores-de-ia.md` se mueve allá para quedar en un solo sitio.

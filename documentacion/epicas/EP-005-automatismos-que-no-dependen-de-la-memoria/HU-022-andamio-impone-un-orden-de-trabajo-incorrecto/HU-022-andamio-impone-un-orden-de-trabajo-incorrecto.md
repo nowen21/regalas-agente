@@ -15,7 +15,7 @@
 | **Sprint** | Sin asignar |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Pendiente |
+| **Estado** | Terminada |
 
 ## 2. Narrativa
 
@@ -38,6 +38,7 @@ Ese orden tampoco está escrito en ninguna regla: [`02·F0`](../../../../base/02
 | RN-03 | Mientras el pendiente no esté aprobado, su historia se declara «Por asignar» |
 | RN-04 | La herramienta hace cumplir el mismo orden que la regla, no otro |
 | RN-05 | El orden queda escrito en una regla del estándar |
+| RN-06 | La estación 12 solo se marca en una fase cuyo cierre está escrito: una fase recién abierta no se da por commiteada |
 
 ### 3.2 Supuestos
 
@@ -47,6 +48,7 @@ Ese orden tampoco está escrito en ninguna regla: [`02·F0`](../../../../base/02
 
 - Cuándo se construye un pendiente: sigue necesitando su HU y su fase (`02·F23`).
 - Asignar la historia de los pendientes que hoy dicen «Por asignar».
+- Las fases que el enganche ya marcó de más antes de esta corrección.
 
 ## 4. Criterios de aceptación
 
@@ -138,6 +140,21 @@ Entonces no lo reporta como falla
 
 Se aprueba cuando la validación no da falla por esa causa.
 
+### CA-07 · Una fase recién abierta no se marca como commiteada
+
+```gherkin
+Dado una fase cuyo funcionalidad_implementada.md sigue siendo el molde
+Cuando un commit incluye archivos de esa fase
+Entonces el enganche post-commit no marca su estación 12
+Y sí la marca cuando el cierre está escrito
+```
+
+**Cómo validarlo:**
+1. Correr `python -m unittest -k ElHashDelCommitSeAnotaSolo validadores/pruebas.py` → resultado esperado: OK, con una prueba nueva que commitea una fase con el cierre en molde y comprueba que la estación 12 sigue vacía.
+2. En la misma clase → resultado esperado: la prueba que ya existe, con el cierre escrito, sigue marcando el hash.
+
+Se aprueba cuando los dos pasos dan lo esperado (RN-06).
+
 ### Criterios de aceptación transversales
 
 - [ ] No regresión: las tres pruebas de `validadores/tests/test_el_andamio_*.py`, `validar.py metareglas`, `estandar` y `pendientes` quedan sin fallas.
@@ -157,18 +174,19 @@ Se aprueba cuando la validación no da falla por esa causa.
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Hacer opcional `--hu` en `andamio.py pendiente` y escribir «Por asignar» cuando falte
-- [ ] Agregar la prueba del modo sin historia
-- [ ] Precisar `02·F23` y volver a aplicar su checklist
-- [ ] Agregar la frase sobre «Por asignar» a `pendientes/README.md`
-- [ ] Versionar y registrar el cambio
-- [ ] Cerrar el pendiente 97
+- [x] Hacer opcional `--hu` en `andamio.py pendiente` y escribir «Por asignar» cuando falte
+- [x] Agregar la prueba del modo sin historia
+- [x] Precisar `02·F23` y volver a aplicar su checklist
+- [x] Agregar la frase sobre «Por asignar» a `pendientes/README.md`
+- [x] Versionar y registrar el cambio
+- [x] Exigir en `validadores/estacion_commit.py` que el cierre esté escrito, con su prueba
+- [x] Cerrar el pendiente 97
 
 ## 8. Fases que la implementan
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| [`A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto`](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/) | CA-01 a CA-06 | | [plan_trabajo](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/plan_trabajo.md) | por escribir | | En curso |
+| [`A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto`](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/) | CA-01 a CA-07 | | [plan_trabajo](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/plan_trabajo.md) | [plan_pruebas](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/plan_pruebas.md) | [resultado](A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto/resultado_pruebas.md) · cumple | Cerrada |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -200,9 +218,9 @@ Se aprueba cuando la validación no da falla por esa causa.
 ## 11. Definition of Done (DoD)
 
 - [ ] Código y regla en rama principal
-- [ ] Pruebas del andamio en verde
-- [ ] Todos los criterios de aceptación verificados
-- [ ] Requisitos no funcionales validados
+- [x] Pruebas del andamio en verde
+- [x] Todos los criterios de aceptación verificados
+- [x] Requisitos no funcionales validados
 - [ ] Aceptada por el usuario
 
 ## 12. Validación INVEST
@@ -212,12 +230,14 @@ Se aprueba cuando la validación no da falla por esa causa.
 | **I**ndependiente | ☑ | No espera a otra historia |
 | **N**egociable | ☑ | La redacción de `F23` se ajusta en la fase |
 | **V**aliosa | ☑ | Hoy anotar un pendiente obliga a inventarle su historia |
-| **E**stimable | ☑ | Un argumento del andamio, su prueba, una regla y una frase del índice |
+| **E**stimable | ☑ | Un argumento del andamio, una condición del enganche, sus pruebas, una regla y una frase del índice |
 | **S**mall (pequeña) | ☑ | Una fase |
-| **T**esteable | ☑ | Cuatro criterios se comprueban con comandos y dos leyendo |
+| **T**esteable | ☑ | Cinco criterios se comprueban con comandos y dos leyendo |
 
 ## 13. Bitácora
 
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-09-27 | El agente | Creación de la HU, a partir del pendiente 97 |
+| 2026-09-27 | El usuario | Entra el CA-07: el enganche `post-commit` marcaba como commiteadas fases recién abiertas, y se resuelve en esta fase |
+| 2026-09-27 | El agente | Fase `A` cerrada con veredicto Cumple, versión 38.3.0 |

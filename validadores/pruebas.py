@@ -4932,6 +4932,26 @@ class ElHashDelCommitSeAnotaSolo(_ProyectoDePrueba):
         _, h = self._commit(raiz, "primero")
         self.assertNotIn(h, self._texto(carpeta))
 
+    def test_una_fase_recien_abierta_no_se_marca(self):
+        """`EP-005·HU-022` · Su cierre sigue siendo el molde que dejó el andamio.
+
+        Pasó el 2026-09-27: el commit que solo traía el plan de trabajo de una
+        fase la dejó con la estación 12 en «autorizado». Estar en git no es
+        estar cerrada.
+        """
+        raiz = self._repo_con_enganche()
+        molde = os.path.join(comun.RAIZ, "plantillas", "ciclo-vida-proyectos",
+                             "11-funcionalidad-implementada.md")
+        destino = os.path.join(raiz, "plantillas", "ciclo-vida-proyectos")
+        os.makedirs(destino)
+        shutil.copy(molde, destino)
+        carpeta = self._fase(raiz, "A-EP-001-HU-001-recien-abierta", self.TABLA,
+                             con_cierre=False)
+        shutil.copy(molde, os.path.join(carpeta, "funcionalidad_implementada.md"))
+        _, h = self._commit(raiz, "solo el plan")
+        self.assertNotIn(h, self._texto(carpeta),
+                         "marcó como commiteada una fase recién abierta")
+
     def test_un_enganche_roto_no_rompe_el_commit(self):
         """**De no destruir.** Un commit perdido no se recupera con un aviso."""
         raiz = self._repo_con_enganche()

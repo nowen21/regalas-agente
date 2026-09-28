@@ -36,7 +36,7 @@ casa: `validar.py` es la puerta de lo que **comprueba**; esto **escribe**, como
 
     python validadores/andamio.py EP-001-… HU-003-… descripcion-de-la-fase
     python validadores/andamio.py hu EP-001-… descripcion-de-la-historia
-    python validadores/andamio.py pendiente descripcion --hu EP-001-…/HU-003-…
+    python validadores/andamio.py pendiente descripcion [--hu EP-001-…/HU-003-…]
 """
 import os
 import re
@@ -274,16 +274,27 @@ SECCION_SIN_AGRUPAR = "### Sin agrupar todavía"
 MAPA = "## Ningún pendiente vive suelto"
 
 
-def crear_pendiente(raiz, descripcion, hu_ref, escribir=False):
+# `EP-005·HU-022` · El orden es hallazgo, pendiente, HU y fase: un pendiente se
+# anota antes de que exista su historia. Sin `--hu`, la ficha dice esto y el
+# pendiente no entra al mapa de historias hasta tenerla.
+POR_ASIGNAR = "Por asignar: nace al aprobarse este pendiente"
+
+
+def crear_pendiente(raiz, descripcion, hu_ref="", escribir=False):
     """Crea el pendiente desde su molde, con su fila en el backlog y su historia en el mapa.
 
-    `hu_ref` es `EP-00N-…/HU-00N-…`. Devuelve `(ruta, [archivos tocados])`.
+    `hu_ref` es `EP-00N-…/HU-00N-…`, o vacío si el pendiente todavía no tiene
+    historia: entonces la ficha dice «Por asignar» y el mapa no se toca.
+    **Un `hu_ref` que no existe sigue siendo un error**: si se confundiera con
+    «sin historia», un error de tipeo dejaría el pendiente suelto sin aviso.
+    Devuelve `(ruta, [archivos tocados])`.
     """
     raiz = os.path.abspath(raiz)
-    epica, hu = (hu_ref.replace("\\", "/").split("/") + [""])[:2]
+    con_historia = bool((hu_ref or "").strip())
+    epica, hu = (hu_ref.replace("\\", "/").split("/") + [""])[:2] if con_historia else ("", "")
     carpeta_hu = os.path.join(raiz, CARPETA, epica, hu)
     hu_md = os.path.join(carpeta_hu, hu + ".md")
-    if not os.path.isfile(hu_md):
+    if con_historia and not os.path.isfile(hu_md):
         raise ValueError("no existe la historia: %s" % hu_ref)
     origen = os.path.join(raiz, PLANTILLA_PENDIENTE)
     if not os.path.isfile(origen):
@@ -292,15 +303,18 @@ def crear_pendiente(raiz, descripcion, hu_ref, escribir=False):
     numero = _pendientes.proximo_libre(raiz)
     nombre = "%02d-%s.md" % (numero, descripcion)
     destino = os.path.join(raiz, PENDIENTES, nombre)
-    ep_id = re.match(r"^EP-\d+", epica).group(0)
-    hu_id = re.match(r"^HU-\d+", hu).group(0)
-    titulo_hu = _titulo_de(hu_md)
-    enlace_hu = "[%s · %s — %s](../%s/%s/%s/%s.md)" % (
-        ep_id, hu_id, _nombre_de_titulo(titulo_hu),
-        CARPETA.replace(os.sep, "/"), epica, hu, hu)
-
     texto = _reenlazar(leer(origen), origen, os.path.dirname(destino), raiz)
-    texto = texto.replace("«HISTORIA»", enlace_hu)
+    if con_historia:
+        ep_id = re.match(r"^EP-\d+", epica).group(0)
+        hu_id = re.match(r"^HU-\d+", hu).group(0)
+        titulo_hu = _titulo_de(hu_md)
+        enlace_hu = "[%s · %s — %s](../%s/%s/%s/%s.md)" % (
+            ep_id, hu_id, _nombre_de_titulo(titulo_hu),
+            CARPETA.replace(os.sep, "/"), epica, hu, hu)
+        texto = texto.replace("«HISTORIA»", enlace_hu)
+    else:
+        texto = texto.replace("«HISTORIA». «Por qué esa y no otra»", POR_ASIGNAR)
+        texto = texto.replace("«HISTORIA»", POR_ASIGNAR)
     _escribir(destino, texto, escribir)
     tocados = [destino]
 
@@ -323,7 +337,8 @@ def crear_pendiente(raiz, descripcion, hu_ref, escribir=False):
                 _escribir(indice, texto_i, True)
             _agregar_fila(indice, "| %d | «P?» | [«qué falta, en una línea»](%s) | «qué resuelve» |"
                           % (numero, nombre), SECCION_SIN_AGRUPAR, True)
-            _mapa(indice, ep_id, hu_id, titulo_hu, epica, hu, numero, True)
+            if con_historia:
+                _mapa(indice, ep_id, hu_id, titulo_hu, epica, hu, numero, True)
     return destino, tocados
 
 
@@ -363,7 +378,9 @@ def main():
     elif modo == "pendiente":
         p.add_argument("modo")
         p.add_argument("descripcion", help="qué falta, en minúsculas con guiones")
-        p.add_argument("--hu", required=True, help="EP-001-…/HU-003-…: la historia que lo recibe")
+        p.add_argument("--hu", default="",
+                       help="EP-001-…/HU-003-…: la historia que lo recibe. Sin ella, "
+                            "la ficha dice «Por asignar» (EP-005·HU-022)")
     else:
         p.add_argument("epica", help="carpeta de la épica, p. ej. EP-001-cuerpo-de-reglas")
         p.add_argument("hu", help="carpeta de la HU, p. ej. HU-003-nucleo")

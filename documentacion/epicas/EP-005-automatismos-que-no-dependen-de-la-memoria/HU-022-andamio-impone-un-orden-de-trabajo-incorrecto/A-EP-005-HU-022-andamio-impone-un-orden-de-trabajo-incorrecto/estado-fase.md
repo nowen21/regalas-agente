@@ -1,88 +1,59 @@
-# Estado de fase · Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
->
-> | Regla | Qué exige |
-> |---|---|
-> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-
-> Plantilla del `estado-fase` de una fase: el punto de control del orquestador (`sdd-orchestrator`), que guarda el estado de la fase para que sobreviva a la compactación del contexto, donde se pierden las decisiones. Se escribe o se actualiza en cada puerta que pasa, y al reanudar el director lo lee y sigue desde la última puerta pasada. Se guarda en `documentacion/<modulo>/estado-fase.md`.
->
-> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
+# Estado de fase · Fase `A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto` (módulo Automatismos)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
-> Identifica la fase, su módulo y los documentos de los que sale, con la fecha de la última actualización.
-
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Planteamiento / Épica / HU** | «punteros» |
-| **Última actualización** | AAAA-MM-DD |
+| **Fase** (identificador · `02·F12.6`) | `A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto` |
+| **Módulo** | Automatismos: `validadores/andamio.py`, `validadores/estacion_commit.py` y `02·F23` |
+| **Planteamiento / Épica / HU** | [EP-005](../../epica.md) · [HU-022](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md) · [pendiente 97](../../../../../pendientes/97-andamio-impone-un-orden-de-trabajo-incorrecto.md) |
+| **Última actualización** | 2026-09-27 |
 
 ## 1. En qué estación va
 
-> Dice en qué estación de la cadena va la fase y cuál fue la última puerta que pasó. La casilla de cada estación se marca cuando la fase pasa su puerta.
-
-**Estación actual:** «número y nombre». **Última puerta pasada:** «N».
+**Estación actual:** 12 · Commit. **Última puerta pasada:** 11.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
-| 1 | Explorador · análisis | contexto entendido | ☐ |
-| 2 | Proponente · alcance | 👤 alcance aprobado | ☐ |
-| 3 | Escritor de épica | 👤 épica aprobada | ☐ |
-| 4 | Escritor de historia | 👤 HUs aprobadas | ☐ |
-| 5 | Escritor de especificación | 👤 especificación aprobada | ☐ |
-| 6 | Diseñador | diseño coherente | ☐ |
-| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☐ |
-| 8 | Implementador | implementado + pruebas verdes | ☐ |
-| 9 | Verificador | trazabilidad sin faltantes | ☐ |
-| 10 | Crítico | sin hallazgos graves | ☐ |
-| 11 | Cierre documental + señales | docs y señales al día | ☐ |
+| 1 | Explorador · análisis | contexto entendido | ✅ `--hu` obligatorio en `andamio.py:366`; el enganche marca toda fase cuyo cierre esté en git |
+| 2 | Proponente · alcance | 👤 alcance aprobado | ✅ Pendiente 97 aprobado el 2026-09-27 |
+| 3 | Escritor de épica | 👤 épica aprobada | ✅ EP-005 ya existía |
+| 4 | Escritor de historia | 👤 HUs aprobadas | ✅ HU-022, 2026-09-27; el CA-07 entró a pedido del usuario |
+| 5 | Escritor de especificación | 👤 especificación aprobada | ✅ Las RN-01 a RN-06 de HU-022 |
+| 6 | Diseñador | diseño coherente | ✅ `--hu` opcional, `F23` precisada y el cierre comparado contra el molde |
+| 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ✅ 2026-09-27 |
+| 8 | Implementador | implementado + pruebas verdes | ✅ Las 14 tareas hechas |
+| 9 | Verificador | trazabilidad sin faltantes | ✅ 9 de 9 exigencias con caso aprobado |
+| 10 | Crítico | sin hallazgos graves | ✅ Sin defectos |
+| 11 | Cierre documental + señales | docs y señales al día | ✅ `funcionalidad_implementada.md` escrito |
 | 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.1 Veredicto de las pruebas
 
-> Es el veredicto de las pruebas de la fase, del que sale el estado de la estación 9. Se copia del §6 del `resultado_pruebas.md` de la fase; no se escribe de memoria ni porque se vio funcionar.
-
 | Campo | Valor |
 |---|---|
-| **Concepto** | «Cumple / No cumple / Todavía no se ejecutó». Sin estado intermedio: lo que falta hace que sea No cumple |
-| **CA cumplidos** | «cuántos de cuántos» |
-| **CA en "No"** | «cuáles. Con uno solo, la fase no cierra» |
-| **Defectos abiertos aceptados** | «cuáles y quién los aceptó» |
-| **Fuente** | «`resultado_pruebas.md`» |
+| **Concepto** | Cumple |
+| **CA cumplidos** | 7 de 7 |
+| **CA en "No"** | Ninguno |
+| **Defectos abiertos aceptados** | Ninguno |
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
 
 ## 1.2 Avance de las tareas del plan
 
-> Es el seguimiento en vivo de las tareas mientras la fase corre. Los identificadores se copian del `plan_trabajo` §3, que no se toca. Al cerrar, esto se consolida en el `funcionalidad_implementada.md` §2.2, que es la verificación de registro.
-
 | Tarea | Estado | Nota |
 |---|---|---|
-| T-01 | Uno de [los estados del glosario](../../../../../base/glosario.md#5--en-qué-estado-está-algo) para una tarea: Pendiente, En curso, Terminada o Bloqueada | «si está bloqueada, por qué» |
+| T-01 a T-14 | Terminada | Ver `funcionalidad_implementada.md` §2.2 |
 
-**Hechas:** «N de N». **Bloqueadas:** «cuáles».
+**Hechas:** 14 de 14. **Bloqueadas:** ninguna.
 
-## 2. Decisiones y señales generadas  ·  [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
+## 2. Decisiones y señales generadas  ·  `13·DOC5`
 
-> Registra cada decisión o aprendizaje de la fase que no se recupera leyendo el código, con la señal donde quedó. Si no hubo, se escribe «Ninguna».
-
-| Decisión / aprendizaje | Señal registrada (id/enlace) |
+| Decisión / aprendizaje | Señal registrada |
 |---|---|
-| | |
+| El enganche `post-commit` se corrige en esta fase y no como pendiente | Decisión del usuario, 2026-09-27 |
+| Un pendiente sin historia no entra al mapa de historias | En el plan §2.6 |
 
 ## 3. Pendiente / preguntas abiertas
 
-> Lista lo que detiene o condiciona el avance de la fase. Si no hay nada abierto, se escribe «Ninguno».
-
-- «Qué falta, qué se está esperando (una aprobación, una respuesta del usuario, una dependencia).»
-
-## 4. Si se bloqueó
-
-> Se llena cuando la fase está detenida. Si no lo está, se escribe «No aplica».
-
-- **Estación:** «N». **Motivo:** «pruebas rojas / hallazgo grave del Crítico / alcance rechazado / dependencia faltante». **Qué falta para desbloquear:** «…».
+- El commit, que autoriza el usuario.

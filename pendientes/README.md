@@ -388,7 +388,7 @@ Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es
 | ~~76~~ | — | **hecho** → [`proyectos.md` se vacía solo y el checklist reprueba el «registro»](hecho/el-registro-no-se-vacia-y-el-alta-entra-a-cimiento.md) | gestion de servicios tecnologicos | Desde el 75 el `.md` se genera desde Cimiento, pero el checklist y el instalador siguen leyendo solo el `.md`, y este queda vacío solo (tres veces en una sesión). Un proyecto bien registrado reprueba «registro» en cada mensaje. |
 | ~~95~~ | — | **hecho** → [El agente agrega información irrelevante al asunto que está tratando](95-el-agente-agrega-informacion-irrelevante-al-asunto.md) | `00·ID9` y `01·C5` exigen extensión, no foco: un dato breve que no tiene que ver con el tema cumple las dos. Falta la regla que exija tratar solo el asunto en curso. |
 | ~~96~~ | — | **hecho** → [El agente no conserva el español colombiano](96-el-agente-no-conserva-el-espanol-colombiano.md) | `00·ID10` fija la variedad, la persona y la forma verbal, pero no la ortografía, el léxico, la gramática ni la redacción del español colombiano. El anexo de marcadores declara el hueco y todavía dice que la regla «no existe». Falta `00·ID12`, que extiende `00·ID8`, con su propio anexo. |
-| 97 | **P1** | [andamio.py impone un orden de trabajo incorrecto](97-andamio-impone-un-orden-de-trabajo-incorrecto.md) | El orden es hallazgo → pendiente → HU → fase, y `andamio.py` no crea un pendiente si su historia no existe: obliga a ir al revés. Y el tramo hallazgo → pendiente no está escrito en ninguna regla. |
+| ~~97~~ | — | **hecho** → [andamio.py impone un orden de trabajo incorrecto](97-andamio-impone-un-orden-de-trabajo-incorrecto.md) | El orden es hallazgo → pendiente → HU → fase, y `andamio.py` no crea un pendiente si su historia no existe: obliga a ir al revés. Y el tramo hallazgo → pendiente no está escrito en ninguna regla. |
 
 ---
 
@@ -396,7 +396,7 @@ Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es
 
 Un pendiente dice **qué falta**; la historia dice **qué se pide y cuándo se da por aceptado**. Un pendiente sin historia no se puede construir sin saltarse la cadena, que es lo que [`02·F23`](../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md) prohíbe — y lo que costó el defecto de la [20.0.1](../CHANGELOG.md).
 
-Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabecera**, en la fila `Historia de usuario`. Este es el mapa completo, para verlo de un vistazo; la fuente es la ficha de cada archivo.
+Por eso **cada archivo de esta carpeta declara su historia en su ficha de cabecera**, en la fila `Historia de usuario`. Mientras el pendiente no esté aprobado, esa fila dice «Por asignar»: el orden es hallazgo, pendiente, HU y fase, y la historia nace cuando el pendiente se aprueba. Un pendiente «Por asignar» no entra a este mapa hasta tener su historia. Este es el mapa completo, para verlo de un vistazo; la fuente es la ficha de cada archivo.
 
 | Épica · HU | Pendientes que viven ahí |
 |---|---|

@@ -1,146 +1,98 @@
-# Funcionalidad implementada · Fase «A-EP01-HU03-Descripción» (módulo «M»)   ·   `[CAPA 3]`
-
-> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
->
-> | Regla | Qué exige |
-> |---|---|
-> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-
-> Plantilla del documento de cierre de una fase ([`02·F6`](../../../../../base/02-flujo-de-trabajo/reglas/F6-persiste-el-trabajo-y-las-decisiones-antes-de-cerrar-la-fase.md)/[`02·F7`](../../../../../base/02-flujo-de-trabajo/reglas/F7-no-cierres-una-fase-con-trazabilidad-incompleta.md)). Consolida qué se implementó, la trazabilidad de la especificación al código ([`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)), qué se probó y qué quedó. Se escribe en la estación de cierre, antes del commit de la fase, y se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`) como `funcionalidad_implementada.md`.
->
-> Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.
+# Funcionalidad implementada · Fase `A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto` (módulo Automatismos)   ·   `[CAPA 3]`
 
 ## 0. Identificación
 
-> Identifica la fase que cierra, los documentos de los que sale, las HU y los CA que cubre, y cuándo, bajo qué versión del estándar y en qué commit se cerró.
->
-> El sello de versión dice bajo qué reglas se cerró este trabajo. Sin él, una regla nueva de mañana parece incumplida hoy, y hay que reabrir lo cerrado para averiguar si lo estaba: [`20·M10`](../../../../../base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md) dice que un cambio de norma no reabre lo cerrado, y este campo es lo que lo hace comprobable. Va solo en el cierre: al abrir la fase todavía no hay nada que sellar.
-
 | Campo | Valor |
 |---|---|
-| **Fase** (identificador · `02·F12.6`) | `«A-EP01-HU03-Descripción»` |
-| **Módulo** | «M» |
-| **Especificación del módulo** | «enlace · [`02·F2`](../../../../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
-| **Plan de trabajo** | «enlace · `plan_trabajo.md`» |
-| **HU / CA cubiertas** | HU-«NNN» (CA-01, CA-02) · HU-«NNN» (CA-01). Cada `CA-0N`, enlazado a su criterio en la HU |
-| **Fecha de cierre** | AAAA-MM-DD |
-| **Versión del estándar al cerrar** | «X.Y.Z», del archivo `VERSION` en el momento de cerrar |
-| **Commit** | «hash — se completa al commitear» |
+| **Fase** (identificador · `02·F12.6`) | `A-EP-005-HU-022-andamio-impone-un-orden-de-trabajo-incorrecto` |
+| **Módulo** | Automatismos: `validadores/andamio.py`, `validadores/estacion_commit.py` y la regla `02·F23` |
+| **Especificación del módulo** | Las reglas de negocio RN-01 a RN-06 de [HU-022](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md) |
+| **Plan de trabajo** | [plan_trabajo.md](plan_trabajo.md) |
+| **HU / CA cubiertas** | HU-022 de EP-005 (CA-01 a CA-07) |
+| **Fecha de cierre** | 2026-09-27 |
+| **Versión del estándar al cerrar** | 38.3.0 |
+| **Commit** | Se completa al commitear |
 
 ## 1. Qué se implementó, resumen
 
-> Es el resumen del cierre para quien no va a leer el resto del documento.
+`andamio.py pendiente` anota un pendiente sin historia, con la ficha en «Por asignar», y un `--hu` que no existe sigue siendo un error. `02·F23` escribe el orden hallazgo, pendiente, HU y fase. El enganche `post-commit` ya no marca como commiteada una fase recién abierta.
 
-«2-4 líneas en lenguaje claro: qué quedó funcionando y para quién. Sin detalle de código.»
-
-## 2. Trazabilidad  ·  [`13·DOC11`](../../../../../base/13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md)
-
-> Compara lo hecho contra sus dos fuentes, que responden preguntas distintas y ninguna reemplaza a la otra: la especificación dice qué había que lograr y el plan dice qué se iba a hacer para lograrlo. Una fase puede cumplir todos los criterios y haber dejado tareas del plan sin tocar, o haber tocado archivos que el plan no declaraba.
+## 2. Trazabilidad  ·  `13·DOC11`
 
 ### 2.1 Especificación → implementación
 
-> Cruza cada afirmación técnica de la especificación con el archivo donde quedó, una fila por afirmación. No se cierra con faltantes sin justificar.
->
-> Estados: ✅ implementado, ❌ pendiente (con destino explícito), N/A (con motivo), parcial (qué queda y a dónde va). Si aparece un faltante que **debía** estar en esta fase, se corrige en el momento y no se difiere como N/A.
-
-| Ítem del especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
+| Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| (frase literal o resumida) | esquema · modelo · servicio · vista · prueba · permiso · ruta · doc | `«ruta real»` | ✅ / ❌ / N/A / parcial | (prueba concreta o commit) |
+| RN-01 · el pendiente se anota antes que su HU | servicio | `validadores/andamio.py`, `crear_pendiente` y `--hu` | ✅ | CP-001 |
+| RN-02 · toda HU es hija de una épica | doc | `base/02-flujo-de-trabajo/reglas/F23-…md` | ✅ | CP-004 |
+| RN-03 · «Por asignar» mientras no esté aprobado | servicio y doc | `andamio.py`, `pendientes/README.md`, `plantillas/pendiente.md` | ✅ | CP-001, CP-005 |
+| RN-04 · la herramienta hace cumplir el mismo orden que la regla | servicio | `andamio.py` | ✅ | CP-001, CP-003 |
+| RN-05 · el orden escrito en una regla | doc | `F23` | ✅ | CP-004 |
+| RN-06 · la estación 12 solo en una fase con el cierre escrito | servicio | `validadores/estacion_commit.py`, `cierre_escrito` | ✅ | CP-008 |
 
-**Faltantes / diferimientos** (si hay `❌` o parcial): «qué queda y a qué fase se traslada».
+**Faltantes / diferimientos:** ninguno.
 
 ### 2.2 Plan de trabajo → ejecución
 
-> Verifica que se hizo lo que el plan dijo que se iba a hacer, una fila por tarea del `plan_trabajo` §3, copiada de allá con su identificador. El plan aprobado no se modifica para marcarle avances, igual que el `plan_pruebas`. Una tarea que esté aquí y no en el plan, o al revés, se explica antes de cerrar.
-
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| T-01 | (resumen de la tarea, tomado del plan) | ✅ hecha / ❌ no se hizo / parcial | `«ruta real»` | (commit, prueba, archivo) |
+| T-01 | `--hu` opcional | ✅ hecha | `validadores/andamio.py` | CP-001 |
+| T-02 | Sin historia, «Por asignar» y sin tocar el mapa | ✅ hecha | `crear_pendiente` | CP-001 |
+| T-03 | Prueba del modo sin historia | ✅ hecha | `test_el_andamio_levanta_la_historia_y_el_pendiente.py` | CP-001 |
+| T-04 | Correr las pruebas que ya existen | ✅ hecha | La misma suite | CP-002 |
+| T-05 | Prueba del `--hu` inexistente | ✅ hecha | La misma suite | CP-003 |
+| T-06 | Precisar `F23` | ✅ hecha | El archivo de `F23` | CP-004 |
+| T-07 | Volver a aplicar su checklist | ✅ hecha | El mismo archivo | CP-004 |
+| T-08 | La frase del índice | ✅ hecha | `pendientes/README.md` | CP-005 |
+| T-09 | La nota de la plantilla | ✅ hecha | `plantillas/pendiente.md` | CP-005 |
+| T-10 | Correr la validación de pendientes | ✅ hecha | `validar.py pendientes` | CP-006 |
+| T-11 | Versión 38.3.0 | ✅ hecha | `CHANGELOG.md` y `VERSION` | CP-007 |
+| T-12 | Cerrar el pendiente 97 y actualizar HU-022 | ✅ hecha | `pendientes/97-…md`, `pendientes/README.md` y HU-022 | — |
+| T-13 | `marcar_las_fases` exige el cierre escrito | ✅ hecha | `validadores/estacion_commit.py` | CP-008 |
+| T-14 | Prueba de la fase con el cierre en molde | ✅ hecha | `validadores/pruebas.py` | CP-008 |
 
-**Correspondencia con el plan:** «N tareas en el plan, N acá». Si no cuadra, cuáles bailan y por qué.
+**Correspondencia con el plan:** 14 tareas en el plan, 14 aquí.
 
-**Tareas que no se hicieron:** «cuáles, por qué, y a qué fase o pendiente se trasladan. "Ninguna" si se hicieron todas».
+**Tareas que no se hicieron:** ninguna.
 
-**Archivos tocados que el plan no declaraba**, [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md):
+**Archivos tocados que el plan no declaraba** (`02·F8`): ninguno.
 
-| Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
-|---|---|---|
-| `«ruta»` | | |
+**Esfuerzo real contra estimado:** cerca de 2 h reales contra 3,9 h del plan.
 
-> «Ninguno» es la respuesta esperada. Si la lista trae algo, el plan se amplió sobre la marcha, y [`02·F8`](../../../../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md) pide pausar y pedir el visto bueno en vez de editar por iniciativa. Que quede escrito permite ver si eso pasa seguido y por qué.
+## 3. Qué se probó  ·  `08` / `02·F5`
 
-**Esfuerzo real contra estimado:** «horas reales» contra «horas del plan». «Qué se subestimó, en una línea».
+| Campo | Valor |
+|---|---|
+| **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
+| **Veredicto** | Cumple |
 
-## 3. Qué se probó  ·  `08` / [`02·F5`](../../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)
+- Suites ejecutadas y resultado: las tres `test_el_andamio_*.py` en OK (12 pruebas en la principal), `ElHashDelCommitSeAnotaSolo` con 17 pruebas en OK, y `metareglas`, `estandar`, `pendientes` y `ejecutable` sin fallas.
+- Verificaciones manuales:
+  - Las pruebas no crearon archivos en el repositorio real.
+- Defectos abiertos que se aceptaron: ninguno.
 
-> Resume el `resultado_pruebas.md` de la fase, donde vive el detalle; aquí no se redacta nada nuevo. Si esta sección dice algo que aquel documento no respalda, manda aquel.
+## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-| **Fuente** | «`resultado_pruebas.md`» |
-| **Veredicto** | «Cumple» o «No cumple», **copiado del §6 del resultado**. No hay tercer valor: si algo de lo pedido falta, es «No cumple» |
+- Punto de entrada: `python validadores/andamio.py pendiente <slug>`, con `--hu <épica>/<HU>` si la historia ya existe.
+- Permisos o datos base sembrados: no aplica.
 
-> El veredicto va como campo y no en prosa para que un programa lo pueda leer. Hasta la versión 35.1.0 este molde ofrecía «Cumple / Cumple con observaciones» y no tenía forma de decir «No cumple»: las diecinueve fases que no cumplían lo escribieron arriba del todo, cada una a su manera, y ningún programa podía leerlo.
-
-| **Reemplaza el veredicto de** | **Opcional.** El nombre de otra fase **de esta misma historia** cuyo «No cumple» esta fase deja atrás, porque volvió a verificar ese criterio y hoy se cumple |
-
-> El campo Reemplaza el veredicto de solo se escribe si esta fase verificó ese criterio, y solo vale si esta fase cumple. Un rojo no se cierra con otro rojo ni por venir después: hay fases posteriores que trabajaron otro criterio y no arreglaron nada. Se declara para que el conteo no lo adivine.
->
-> El veredicto reemplazado no se toca: aquella fase sigue diciendo lo que dijo, porque el rastro de que estuvo en rojo es la información, y borrarlo la perdería. El campo existe desde la versión 35.5.0; hasta entonces un rojo no tenía forma de cerrarse: se podía hacer el trabajo, medirlo y declararlo, y el número no lo leía.
-
-- **Suites ejecutadas + resultado:** «X/X verdes» (alcance quirúrgico, solo las suites que la fase toca).
-- **Verificaciones manuales**, lo que el entorno automático no reproduce ([`08·T4`](../../../../../base/08-pruebas.md#t4--protege-los-datos-reales-al-probar)):
-  - «Lista de comprobaciones hechas a mano y su resultado.»
-- **Defectos abiertos que se aceptaron:** «cuáles y quién los aceptó, o "ninguno"».
-
-## 4. Cómo se usa / puntos de entrada  ·  [`13·DOC1`](../../../../../base/13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md)
-
-> Dice por dónde llega el usuario a lo implementado y qué hubo que sembrar para que funcione.
-
-- **Punto de entrada** (UI / endpoint / comando): «dónde y cómo se accede».
-- **Permisos o datos base sembrados:** «si aplica».
-
-## 5. Decisiones no obvias  ·  [`13·DOC2`](../../../../../base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md) / [`13·DOC5`](../../../../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)
-
-> Registra las decisiones que no se deducen leyendo el código, con su porqué, lo que se descartó y la señal donde quedaron. Si no hubo, se escribe «Ninguna».
+## 5. Decisiones no obvias  ·  `13·DOC2` / `13·DOC5`
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| | | «id / enlace en la memoria» |
+| Un pendiente sin historia no entra al mapa | El mapa cruza historias con pendientes; se descartó una fila «Por asignar» que no cruza nada | En el plan §2.6 |
+| El cierre se compara contra el molde del proyecto, y si no hay, contra el del estándar | En un proyecto que hereda, las plantillas viven en el estándar; sin molde con qué comparar no se afirma y se marca como antes | En el docstring de `cierre_escrito` |
+| El enganche `post-commit` entra en esta fase | El usuario pidió resolverlo en la misma fase en vez de anotarlo como pendiente | En el `estado-fase.md` §2 |
 
 ## 6. Deuda técnica y pendientes generados
 
-> Registra lo que la fase deja pendiente, de dónde salió cada deuda y a dónde se traslada. Si no quedó deuda, se escribe «Ninguna».
+Ninguna.
 
-| Descripción | Origen | Destino (fase futura / ticket / `pendientes/`) |
-|---|---|---|
-| | No previsto / Atajo decidido / Cambio del entorno / Diferido por el plan | |
+## 7. Índices y mapas actualizados  ·  `13·DOC9` / `13·DOC13`
 
-**Los cuatro orígenes**, y qué dice cada uno:
+- [x] Índice de pendientes con el 97 cerrado y la frase sobre «Por asignar».
+- [x] Nota de la plantilla del pendiente.
 
-| Origen | Qué pasó | Qué significa |
-|---|---|---|
-| **No previsto** | No se vio lo que se iba a romper, se descubrió a mitad y se parchó | La línea base de [`02·F17`](../../../../../base/02-flujo-de-trabajo/base.md) se hizo floja. Es el único origen que un análisis mejor habría evitado |
-| **Atajo decidido** | Se vio el camino correcto y se tomó el corto, por tiempo o por alcance | El análisis estuvo bien; la deuda se decidió. Debe decir **quién** la decidió |
-| **Cambio del entorno** | Cambió la librería, el requerimiento o el cliente después de planear | Nadie lo pudo anticipar. No es defecto de nadie |
-| **Diferido por el plan** | El propio [`02·F17`](../../../../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) mandó dejarlo fuera de esta fase y así se declaró | La produjo el análisis, a propósito. Ya estaba en el fuera-de-alcance del plan |
+## 8. Despliegue, si aplica  ·  `13·DOC4`
 
-> Un análisis bueno no elimina la deuda: la convierte de descubierta en declarada, y la columna Origen muestra cuál de las dos es. Si fase tras fase el origen que se repite es *no previsto*, la línea base se está haciendo por encima.
-
-## 7. Índices y mapas actualizados  ·  [`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) / [`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)
-
-> Es la lista de índices y mapas del proyecto que el cierre deja al día.
-
-- [ ] Mapa de dependencias vivo actualizado ([`13·DOC9`](../../../../../base/13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md)).
-- [ ] Catálogo de módulos actualizado, si se creó o cambió un módulo ([`13·DOC13`](../../../../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)).
-- [ ] Índice `README.md` de la carpeta de docs actualizado ([`13·DOC15`](../../../../../base/13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md)).
-- [ ] Especificación del módulo actualizada con lo realmente implementado.
-
-## 8. Despliegue, si aplica  ·  [`13·DOC4`](../../../../../base/13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md)
-
-> Son los pasos para llevar la fase a producción, autosuficientes y ejecutables: quien despliega los sigue leyendo solo esto, sin mirar el código. Si la fase no se despliega, se escribe «No aplica» con su motivo.
-
-- Cambios de esquema / migraciones a correr: «orden».
-- Datos base / permisos a sembrar: «comandos».
-- Comandos post-deploy: «si aplica».
-- Reversión: «rollback previsto, ver §7 del `plan_trabajo`».
+No aplica: el cambio entra con la versión 38.3.0, y los proyectos lo reciben al actualizar el estándar.

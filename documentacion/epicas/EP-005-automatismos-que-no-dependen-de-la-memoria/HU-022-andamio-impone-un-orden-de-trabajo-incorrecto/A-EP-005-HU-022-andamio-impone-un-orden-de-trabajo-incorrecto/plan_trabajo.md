@@ -28,10 +28,11 @@
 | [CA-04](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md#ca-04--el-orden-queda-escrito-en-la-regla) | ☐ |
 | [CA-05](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md#ca-05--el-índice-dice-cuándo-vale-por-asignar) | ☐ |
 | [CA-06](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md#ca-06--un-pendiente-por-asignar-no-reprueba-la-validación) | ☐ |
+| [CA-07](../HU-022-andamio-impone-un-orden-de-trabajo-incorrecto.md#ca-07--una-fase-recién-abierta-no-se-marca-como-commiteada) | ☐ |
 
 ## 1. Objetivo y alcance  ·  `02·F14` Q4
 
-**Objetivo:** que `andamio.py` deje anotar un pendiente sin historia, y que `02·F23` escriba el orden hallazgo, pendiente, HU y fase.
+**Objetivo:** que `andamio.py` deje anotar un pendiente sin historia, que `02·F23` escriba el orden hallazgo, pendiente, HU y fase, y que el enganche `post-commit` no marque como commiteada una fase recién abierta.
 
 **Resumen de CA a cubrir:**
 
@@ -43,6 +44,7 @@
 | CA-04 | `F23` nombra el orden | Funcional, camino feliz | Media |
 | CA-05 | El índice dice cuándo vale «Por asignar» | Funcional, camino feliz | Baja |
 | CA-06 | «Por asignar» no reprueba la validación | Funcional, caso borde | Baja |
+| CA-07 | Una fase recién abierta no se marca como commiteada | Funcional, error | Media |
 | RNF-01 | Versionada como MENOR | No funcional | Baja |
 | RNF-02 | Quien usa `--hu` no cambia nada | No funcional | Baja |
 
@@ -70,9 +72,11 @@ VERSION 38.1.2
 | `validadores/andamio.py` | Modificar | Validador | `--hu` opcional; `crear_pendiente` sin historia escribe «Por asignar» y no toca el mapa |
 | `validadores/tests/test_el_andamio_levanta_la_historia_y_el_pendiente.py` | Modificar | Test | Pruebas del modo sin historia y del `--hu` inexistente |
 | `base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md` | Modificar | Estándar | El orden y la épica de la HU; checklist vuelto a aplicar |
+| `validadores/estacion_commit.py` | Modificar | Validador | `marcar_las_fases` exige que el cierre no sea el molde |
+| `validadores/pruebas.py` | Modificar | Test | Prueba de la fase con el cierre en molde, en `ElHashDelCommitSeAnotaSolo` |
 | `plantillas/pendiente.md` | Modificar | Estándar | La nota que da el comando del andamio dice que `--hu` es opcional |
 | `pendientes/README.md` | Modificar | Documentación | La frase sobre «Por asignar» en «Ningún pendiente vive suelto» |
-| `CHANGELOG.md` y `VERSION` | Modificar | Estándar | `38.2.0`, MENOR |
+| `CHANGELOG.md` y `VERSION` | Modificar | Estándar | `38.3.0`, MENOR |
 | `pendientes/97-andamio-impone-un-orden-de-trabajo-incorrecto.md` | Modificar | Documentación | Cerrar el pendiente |
 | Los documentos de esta fase y la sección 8 de HU-022 | Modificar | Documentación | Estado y enlaces |
 
@@ -148,19 +152,26 @@ Ninguna.
 |---|---|---|:--:|---|---|
 | T-10 | Correr `validar.py pendientes` con los pendientes «Por asignar» que ya existen | Validador | 0,1 h | — | CP-006 |
 
+### CA-07 · Una fase recién abierta no se marca como commiteada
+
+| ID | Tarea | Capa | Est. | Depende de | Ev. |
+|---|---|---|:--:|---|---|
+| T-13 | En `marcar_las_fases`, no marcar la fase cuyo `funcionalidad_implementada.md` siga siendo el molde, con la misma comparación que usa `fases.py` | Validador | 0,5 h | — | CP-008 |
+| T-14 | Prueba de la fase con el cierre en molde | Test | 0,3 h | T-13 | CP-008 |
+
 ### RNF · Requisitos no funcionales
 
 | ID | Tarea | Categoría | Est. | Ev. |
 |---|---|---|:--:|---|
-| T-11 | Registrar el cambio en `CHANGELOG.md` y subir `VERSION` a `38.2.0` | Trazabilidad | 0,2 h | CP-007 |
+| T-11 | Registrar el cambio en `CHANGELOG.md` y subir `VERSION` a `38.3.0` | Trazabilidad | 0,2 h | CP-007 |
 | T-12 | Cerrar el pendiente 97 y actualizar la sección 8 de HU-022 | Trazabilidad | 0,2 h | — |
 
-**Total estimado:** 3,1 h
+**Total estimado:** 3,9 h
 
 ## 4. Secuencia de ejecución
 
 **Ruta crítica:** T-01, T-02, T-03, T-05, T-04, T-11, T-12
-**Paralelizables:** T-06 y T-07, T-08 y T-10, en cualquier momento; T-09 después de la T-01.
+**Paralelizables:** T-06 y T-07, T-08, T-10, T-13 y T-14, en cualquier momento; T-09 después de la T-01.
 
 ## 5. Verificación de criterios de aceptación  ·  `02·F14` Q10
 
@@ -172,6 +183,7 @@ Ninguna.
 | CA-04 | Leer `F23` y correr `validar.py metareglas` | CP-004 | | ☐ |
 | CA-05 | Leer la sección del índice y la nota de la plantilla | CP-005 | | ☐ |
 | CA-06 | `validar.py pendientes` | CP-006 | | ☐ |
+| CA-07 | Pruebas de `ElHashDelCommitSeAnotaSolo` | CP-008 | | ☐ |
 | RNF-01 | Leer `CHANGELOG.md` y `VERSION` | CP-007 | | ☐ |
 | RNF-02 | Prueba `test_la_llamada_de_siempre` | CP-002 | | ☐ |
 
@@ -179,7 +191,7 @@ Ninguna.
 
 | ID | Tipo | Ubicación |
 |---|---|---|
-| CP-001 a CP-007 | Resultado de cada caso | [resultado_pruebas.md](resultado_pruebas.md) |
+| CP-001 a CP-008 | Resultado de cada caso | [resultado_pruebas.md](resultado_pruebas.md) |
 
 ## 6. Datos y ambiente de prueba
 

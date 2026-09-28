@@ -123,6 +123,48 @@ class CA04ElPendiente(unittest.TestCase):
         self.assertEqual(antes, leer(os.path.join(self.tmp, "pendientes", "README.md")))
 
 
+class HU022ElPendienteNaceSinHistoria(unittest.TestCase):
+    """`EP-005 · HU-022` — el orden es hallazgo, pendiente, HU y fase."""
+
+    def setUp(self):
+        self.tmp = arbol()
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.indice = os.path.join(self.tmp, "pendientes", "README.md")
+
+    def test_cp_001_sin_historia_dice_por_asignar_y_no_toca_el_mapa(self):
+        mapa_antes = leer(self.indice).split(andamio.MAPA, 1)[1]
+        destino, _ = andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True)
+        texto = leer(destino)
+        self.assertIn("| **Historia de usuario** | %s |" % andamio.POR_ASIGNAR, texto)
+        self.assertNotIn("«HISTORIA»", texto)
+        indice = leer(self.indice)
+        self.assertIn("(02-prueba-sin-historia.md)", indice)
+        self.assertEqual(mapa_antes, indice.split(andamio.MAPA, 1)[1],
+                         "un pendiente sin historia no entra al mapa de historias")
+
+    def test_cp_003_una_historia_que_no_existe_sigue_fallando(self):
+        antes = sorted(os.listdir(os.path.join(self.tmp, "pendientes")))
+        with self.assertRaises(ValueError) as e:
+            andamio.crear_pendiente(self.tmp, "prueba", "%s/HU-999-no-existe" % EPICA,
+                                    escribir=True)
+        self.assertIn("no existe la historia", str(e.exception))
+        self.assertEqual(antes, sorted(os.listdir(os.path.join(self.tmp, "pendientes"))))
+
+    def test_cp_006_por_asignar_no_reprueba_la_validacion(self):
+        andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True)
+        fallas = [h for h in pendientes.abierto_nombra_su_historia(self.tmp)
+                  if h.severidad == FALLA and "prueba-sin-historia" in str(h)]
+        self.assertEqual([], fallas)
+
+    def test_sin_hu_por_la_linea_de_ordenes(self):
+        r = subprocess.run([sys.executable, os.path.join(VALIDADORES, "andamio.py"),
+                            "pendiente", "prueba-sin-historia", "--raiz", self.tmp],
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=60)
+        self.assertEqual(0, r.returncode, r.stderr)
+        self.assertIn("simulado", r.stdout)
+
+
 class CP006ElModoDeFaseSigueIgual(unittest.TestCase):
 
     def test_la_llamada_de_siempre(self):
