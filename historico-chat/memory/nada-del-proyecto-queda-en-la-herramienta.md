@@ -10,4 +10,6 @@ Todo lo que pertenece al agente o al proyecto vive **dentro** del agente o del p
 - Si la herramienta guarda algo por su cuenta fuera del repositorio, eso es una falla que hay que arreglar en su origen. Leer esa copia no la arregla.
 - Extiende lo que ya exigen [`01·C19`](../../base/01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) para la memoria y [`04·S9`](../../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas) para lo que escribe el agente. Esas dos cubren lo que hace el agente. Esta cubre también lo que hace la herramienta.
 
+**El 2026-09-28 subió a regla:** [`01·C29`](../../base/01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto). Este recuerdo se queda con el registro de que el usuario lo pidió y cuándo.
+
 Relacionado: [los guiones de apoyo van dentro del repositorio](guiones-de-apoyo-dentro-del-repo.md) · [trabajo confinado a la carpeta](trabajo-confinado-a-la-carpeta.md).

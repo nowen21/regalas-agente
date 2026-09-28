@@ -43,6 +43,7 @@ Es el mismo daño que produce no preguntar, por el camino contrario. No pregunta
 | RN-03 | Si la respuesta está escrita, no se pregunta: se cita el archivo donde está y se sigue |
 | RN-04 | Si lo escrito y lo que el usuario acaba de pedir se contradicen, se muestra la contradicción y se pregunta cuál manda — eso sí es pregunta legítima |
 | RN-05 | Si la respuesta no está escrita, se pregunta. Esta regla no reduce las preguntas: cambia cuáles |
+| RN-06 | Todo lo que pertenece al agente o al proyecto vive en el repositorio, y a su contenido se llega por un enlace. Si la herramienta guarda algo del proyecto fuera, se corrige en su origen y no se lee de allá. Viene del [pendiente 99](../../../../pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md) |
 
 ### 3.2 Supuestos
 
@@ -106,6 +107,23 @@ Y pregunta cuál de las dos manda antes de tocar nada
 3. Comprobar que no tocó ningún archivo antes de preguntar.
 - **Aprobado cuando:** la contradicción se muestra con su cita y nada se modificó antes de la respuesta del usuario.
 
+### CA-04 · Nada del agente ni del proyecto queda fuera de ellos
+
+```gherkin
+Dado que algo pertenece al agente o al proyecto
+Cuando se guarda o se necesita su contenido
+Entonces vive en el repositorio y se llega a él por un enlace
+Y lo que la herramienta guardó afuera se corrige en su origen, no se lee de allá
+```
+
+**Cómo validarlo:**
+
+1. Abrir `base/01-conducta.md`. Resultado esperado: una regla `C29` con una sola exigencia, su ejemplo INCORRECTO y CORRECTO, la línea de quién la hace cumplir y su checklist en CUMPLE.
+2. Leer su cuerpo. Resultado esperado: dice lo que pide RN-06.
+3. Leer `01·C19`. Resultado esperado: declara que extiende `C29`, sigue diciendo solo lo suyo y tiene su checklist vuelto a aplicar. Leer el cuerpo de `C29`. Resultado esperado: enlaza `04·S9` para lo que escribe el agente y dice que leer afuera vale para lo que no es del proyecto. `S9` no se toca: su capítulo tiene su propia historia dueña.
+4. Correr `python validadores/validar.py metareglas` y `python validadores/validar.py estandar`. Resultado esperado: sin fallas.
+- **Aprobado cuando:** los cuatro pasos dan lo esperado.
+
 ### Criterios de aceptación transversales
 
 - [x] **Límites** — el orden para en cuanto encuentra, así que la decisión escrita en dos sitios se resuelve por el primero; la que el orden no cubre cae en «no está» y se pregunta.
@@ -148,6 +166,7 @@ Y pregunta cuál de las dos manda antes de tocar nada
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
 | [`A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar`](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/) | CA-01, CA-02, CA-03 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_trabajo.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/plan_pruebas.md) | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-011-buscar-antes-de-preguntar/A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md](A-EP-001-HU-011-la-regla-de-buscar-antes-de-preguntar/resultado_pruebas.md) · **Cumple** | Cerrada |
+| [`B-EP-001-HU-011-nada-del-proyecto-queda-fuera-del-proyecto`](B-EP-001-HU-011-nada-del-proyecto-queda-fuera-del-proyecto/) | CA-04 | [plan_trabajo](B-EP-001-HU-011-nada-del-proyecto-queda-fuera-del-proyecto/plan_trabajo.md) | [plan_pruebas](B-EP-001-HU-011-nada-del-proyecto-queda-fuera-del-proyecto/plan_pruebas.md) | [resultado](B-EP-001-HU-011-nada-del-proyecto-queda-fuera-del-proyecto/resultado_pruebas.md) · **Cumple** | Cerrada 2026-09-28 |
 
 **De dónde sale esta historia:** el [pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md](../../../../pendientes/hecho/buscar-en-el-repositorio-antes-de-preguntar.md), que la redactó y le puso este mismo identificador.
 
@@ -210,3 +229,5 @@ Y pregunta cuál de las dos manda antes de tocar nada
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, para que el pendiente 24 deje de estar suelto |
+| 2026-09-28 | El agente | Suma RN-06 y CA-04 del pendiente 99, aprobado por el usuario. Va en esta HU porque es la historia dueña del capítulo 01; se abre la fase `B` |
+| 2026-09-28 | El agente | Fase `B` cerrada con veredicto Cumple: la regla `01·C29`, versión 39.1.0 |

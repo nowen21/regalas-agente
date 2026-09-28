@@ -43,7 +43,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 - **Responde a:** —
 - **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
 - **Orden de resolución:** 2 de 7, después de H-6 y antes de H-7: define que el mapa y las reglas viven en el repositorio y al agente le llega un enlace
-- **Dónde queda:** memoria · falta crear el pendiente
+- **Dónde queda:** memoria y [pendiente 99](../../../pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md), hecho: la regla [`01·C29`](../../../base/01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto), versión 39.1.0, construida en la fase `B` de HU-011. Falta el commit
 - **Nace en:** 2026-09-28 · por qué el agente olvida las reglas
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿sube a `base/` como regla nueva o como cambio de `C19`?
@@ -114,14 +114,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Para** que las reglas se cumplan siempre, y cambiarlas sea una decisión escrita y no un descuido
   - **Contexto:** la memoria lo dice y `base/` no. Según [memory.md](../../memory/memory.md), la preferencia que vale para todos sube a `base/` como regla y el recuerdo se queda.
 - **Qué se decidió:** el usuario aprobó el pendiente 98 y decidió que la regla va en el núcleo `00`, como blindada. Pidió escribir una HU y su fase, pero el núcleo tiene historia dueña ([HU-012](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md)) y todo cambio del capítulo baja por ella; el agente no creó la HU nueva y se lo dijo.
-- **Estado:** abierto
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 1 de 7: las demás piezas hacen cumplir las reglas, y primero tiene que quedar escrito que las reglas mandan
-- **Dónde queda:** [pendiente 98](../../../pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md), hecho: la regla blindada [`00·N10`](../../../base/00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada), versión 39.0.0, construida en la fase `B` de HU-012. Falta el commit
+- **Dispara:** EP-001 · HU-012 · CA-05, fase `B` (no una HU nueva: HU-012 es la historia dueña del núcleo)
+- **Orden de resolución:** —
+- **Dónde queda:** [pendiente 98](../../../pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md), hecho: la regla blindada [`00·N10`](../../../base/00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada), versión 39.0.0, construida en la fase `B` de HU-012 y subida en el commit `5421ece`
 - **Nace en:** 2026-09-28, por qué el agente olvida las reglas
-- **Cerrado en:** —
-- **Con qué se retoma:** ¿va en el núcleo `00` o en conducta `01`?
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
+- **Con qué se retoma:** —
 
 ### H-7 · No hay un mapa que diga qué reglas aplican a cada tarea
 
@@ -149,7 +149,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 
 | Puesto | Hallazgo | Por qué va ahí |
 |---|---|---|
-| 1 | H-6, las reglas mandan sobre lo que pida el usuario | Las demás piezas hacen cumplir las reglas; primero tiene que quedar escrito que mandan |
+| — | ~~H-6, las reglas mandan sobre lo que pida el usuario~~ | Cerrado el 2026-09-28 con `00·N10` |
 | 2 | H-2, nada queda fuera del repositorio | Define que las reglas y el mapa viven en el repositorio y al agente le llega un enlace |
 | 3 | H-7, el mapa de qué reglas aplican a cada tarea | La instrucción de arranque y el enganche lo usan |
 | 4 | H-1, la instrucción corta al arrancar | Enlaza el mapa, que tiene que existir primero |

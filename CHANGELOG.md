@@ -11,6 +11,18 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.1.0 — 2026-09-28
+
+**Todo lo que pertenece al agente o al proyecto se guarda dentro del repositorio, y a su contenido se llega por un enlace.** Lo que la herramienta guarde por su cuenta afuera se corrige en su origen, en vez de leerse de allá.
+
+Hasta hoy eso se exigía por partes: la memoria del agente por un lado y lo que escribe el agente por otro. Lo que la herramienta guardaba sola no lo cubría nada, y así las reglas de una sesión terminaron en un archivo que nadie versiona.
+
+**Nace `01·C29`**, y `01·C19` la extiende: la memoria es un caso del principio. Su cuerpo se acortó para que la dependencia cupiera, sin cambiar qué exige. `04·S9` no cambia; la regla nueva la enlaza y dice que leer afuera vale solo para lo que no es del proyecto. `validadores/reglas-validables.md` la registra como no validable.
+
+**MENOR** (aditivo): una regla de conducta nueva que no obliga a un proyecto a tocar ningún archivo. Sale del pendiente 99 y la construye la fase `B` de HU-011 en EP-001.
+
+---
+
 ## 39.0.0 — 2026-09-28
 
 **Una regla escrita manda sobre lo que el usuario pida en el momento.** Si un pedido choca con una regla, el agente dice cuál es y no hace lo pedido. Quien quiera otra cosa cambia la regla por su procedimiento, en vez de saltársela.

@@ -697,9 +697,9 @@ Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendie
 
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
 
-Lo que el agente deba recordar entre sesiones —cómo quiere el usuario que se trabaje— va a `historico-chat/memory/` del proyecto, **un archivo por recuerdo**, y el almacén de la herramienta queda **vacío**: lo que aparezca ahí se mueve.
+Las preferencias del usuario sobre cómo trabajar que el agente deba recordar van a `historico-chat/memory/` del proyecto, **un archivo por recuerdo**, y el almacén de la herramienta queda **vacío**: lo que aparezca ahí se mueve (extiende [`01·C29`](#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)).
 
-No es la memoria por señales ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)), que guarda lo que aprendió el proyecto.
+No es la memoria por señales ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)), que guarda lo aprendido.
 
 ```
 INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá
@@ -713,21 +713,23 @@ CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionad
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.7.5**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v39.0.0**, el **2026-09-28**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
 | C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A: la fila 16, porque no tiene excepción.
 
-**La fila 10 reprobaba y se corrigió en esta pasada: de 533 caracteres a 317**, para un molde de 320. Se fue el porqué —que lo no versionado no se revisa, no viaja y se pierde al clonar—, que ya está dicho en el índice de la memoria.
+**Vuelto a aplicar el 2026-09-28, porque el texto cambió.** Ahora extiende [`C29`](#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): la memoria es un caso de lo que vive en el repositorio. Las filas 14 y 15 pasan de N/A a ✅; `C29` no depende de esta, así que no hay ciclo.
 
-**No cambia qué exige.** Lo que se fue era explicación, no norma.
+**La fila 10 sigue cumpliendo: 314 caracteres de 320.** Para que cupiera la dependencia, el inciso «cómo quiere el usuario que se trabaje» pasó a «las preferencias del usuario sobre cómo trabajar», y «lo que aprendió el proyecto» a «lo aprendido». No cambia qué exige.
+
+**La primera pasada, del 2026-08-18,** bajó el cuerpo de 533 caracteres a 317 quitando el porqué, que ya está dicho en el índice de la memoria.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
@@ -931,5 +933,48 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v33.
 **Fila 16 · N/A:** no tiene excepción. Que un pedido obvio también necesite su palabra no es un caso exento: **«obvio» lo decide el agente**, y eso es justo lo que la regla quita.
 
 **Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../validadores/reglas-validables.md): ningún programa puede leer un pedido y decir si el agente actuó de más.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
+## C29 · Guarda dentro del repositorio todo lo del agente y del proyecto
+
+Todo lo que pertenece al agente o al proyecto vive en el repositorio, y a su contenido se llega por un enlace. Si la herramienta guarda algo del proyecto afuera, se corrige en su origen y no se lee de allá. Leer afuera vale solo para lo que no es del proyecto; escribir afuera lo cubre [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas).
+
+```
+INCORRECTO: el arranque entrega las reglas enteras, la herramienta las guarda
+            en su almacén de la sesión y el agente las lee de allá
+CORRECTO:   el arranque entrega enlaces a las reglas, y el agente las abre
+            desde el repositorio
+```
+
+**Nadie la hace cumplir:** lo que la herramienta guarda por su cuenta no pasa por el repositorio, y ningún programa lo ve. Dos partes sí tienen quien las cuide: la memoria, que un enganche mueve al repositorio ([`C19`](#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto)), y lo que escribe el agente, del que otro enganche avisa (`S9`).
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v39.0.0**, el **2026-09-28**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+
+**Fila 2 · se buscó por concepto y se leyó el capítulo entero.** Dos reglas cubren una parte y ninguna el principio: [`C19`](#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto) pide la memoria dentro del repositorio, y [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas) que el agente escriba solo dentro del proyecto. Ninguna cubre lo que la herramienta guarda por su cuenta.
+
+**Filas 14 y 15 · N/A:** no depende de ninguna regla. `C19` la extiende a ella, y no al revés.
+
+**Fila 16 · N/A:** no tiene excepción.
+
+**Fila 17 · el choque con `S9` quedó resuelto en el texto.** `S9` dice «Leer fuera sí». Esta regla dice que leer afuera vale solo para lo que no es del proyecto: las dos se cumplen a la vez, y `S9` no cambia. Su capítulo tiene su propia historia dueña.
+
+**Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../validadores/reglas-validables.md): lo que la herramienta guarda por su cuenta no deja rastro en el repositorio.
+
+Del [pendiente 99](../pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md), fase `B` de HU-011.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
