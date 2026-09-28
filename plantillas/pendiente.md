@@ -6,6 +6,7 @@
 > |---|---|
 > | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Modelo del pendiente propio del estándar: lo que esta casa encontró que le falta a sí misma. El que reporta un proyecto tiene el suyo, [plantillas/pendiente-reportado.md](pendiente-reportado.md). Lo levanta el andamio (`python validadores/andamio.py pendiente <slug> --hu <épica>/<HU>`), que rellena la historia y deja el resto con sus marcadores. Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas como ella.
 

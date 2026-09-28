@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.1.2 — 2026-09-27
+
+**Las plantillas nombran también `00·ID11` entre las reglas con que se redactan.** La tabla del comienzo de las 55 plantillas de documento suma la fila de escribir solo lo pertinente al asunto, junto a `00·ID8` y `00·ID9`.
+
+**PARCHE**: la regla ya regía todo lo que el agente entrega; la plantilla ahora lo dice donde se llena.
+
+---
+
 ## 38.1.1 — 2026-09-27
 
 **`00·ID11` dice que nadie la hace cumplir con el formato que el validador lee.** La línea decía «Quién la hace cumplir: nadie por programa», y `ejecutable.py` la leía como si nombrara una pieza que no existe. Ahora abre con «Nadie la hace cumplir:» y dice el motivo.

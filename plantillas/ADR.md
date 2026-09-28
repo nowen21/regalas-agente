@@ -6,6 +6,7 @@
 > |---|---|
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > **Architecture Decision Record**: registra una decisión de arquitectura **no obvia** y su porqué ([`13·DOC2`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md)), para que no se pierda ni se vuelva a discutir. La produce la estación de diseño (`disenar-arquitectura`) y la referencia la épica (`epica.md §10.2`). Se guarda en `documentacion/adr/ADR-<NNN>-<slug>.md`. Reemplaza los `«…»` y borra esta caja.
 

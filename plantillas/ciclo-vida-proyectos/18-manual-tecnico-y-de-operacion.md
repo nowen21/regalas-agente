@@ -8,6 +8,7 @@
 > |---|---|
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Plantilla. Se alimenta desde que existe algo que operar, y cada procedimiento se escribe después de **probarlo**: de un respaldo que nunca se restauró no se sabe si sirve ([`03·D6`](../../base/03-datos.md)). Mientras el proyecto no esté en producción, las secciones que dependan de ella dicen «No aplica todavía porque «el porqué»» y se llenan al desplegar.
 >

@@ -6,6 +6,7 @@
 > |---|---|
 > | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Plantilla del capítulo opt-in [`22`](../base/22-sistemas-que-aprenden-de-datos.md). Una ficha por modelo. Los `«…»` se reemplazan y las notas como esta se borran; lo que no aplique se escribe `N/A` con el motivo (`13·DOC21`).
 

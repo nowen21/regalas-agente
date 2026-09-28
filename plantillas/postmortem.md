@@ -6,6 +6,7 @@
 > |---|---|
 > | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 Se escribe tras un incidente relevante ([`19·OB5`](«RUTA-ESTANDAR»/base/19-observabilidad-y-operacion.md#ob5--postmortem-sin-culpa)). **Sin culpa:** el foco es el sistema y el proceso, no la persona. El objetivo es que no vuelva a pasar, no señalar a nadie.
 

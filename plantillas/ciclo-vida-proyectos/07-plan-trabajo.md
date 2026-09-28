@@ -8,6 +8,7 @@
 > |---|---|
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Plantilla del `plan_trabajo` de una fase. Responde las 13 preguntas de [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) sobre una línea base verificada ([`02·F16`](../../base/02-flujo-de-trabajo/reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md), [`02·F17`](../../base/02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md)). Se guarda en la carpeta de la fase (ruta `02·F12.13`, identificador `02·F12.6`) como `plan_trabajo.md`, junto con su `plan_pruebas`. No se toca código hasta que los dos estén aprobados ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
 >

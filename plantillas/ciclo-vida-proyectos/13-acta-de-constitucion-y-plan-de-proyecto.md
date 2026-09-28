@@ -8,6 +8,7 @@
 > |---|---|
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Plantilla del acta de constitución. Acompaña a las estaciones 01 y 02: se firma cuando el planteamiento y el inventario están aprobados. En un proyecto personal, quien encarga y quien autoriza son la misma persona, y el acta se escribe igual: la firma de uno mismo también fija el compromiso.
 >

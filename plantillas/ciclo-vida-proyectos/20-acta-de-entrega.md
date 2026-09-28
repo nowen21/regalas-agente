@@ -8,6 +8,7 @@
 > |---|---|
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 
 > Plantilla. Una por entrega: una versión, un hito del [plan de proyecto](13-acta-de-constitucion-y-plan-de-proyecto.md) o la entrega final. En un proyecto personal, quien entrega y quien acepta son la misma persona y el acta vale igual: obliga a mirar la evidencia antes de darse por satisfecho.
 >
