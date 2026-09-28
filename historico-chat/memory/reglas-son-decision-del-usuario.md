@@ -8,4 +8,6 @@ Caso concreto: el histórico de sesión se abre con el **primer** mensaje, aunqu
 
 **Cómo se aplica:** cumplir primero, discutir después. Si la redacción parece admitir interpretación, se elige la lectura que cumple, no la que aplaza. Cambiar el estándar solo si el usuario lo pide, y siguiendo `base/20-meta-reglas/`.
 
+**El 2026-09-28 subió a regla:** [`00·N10`](../../base/00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada), blindada. El usuario lo pidió con estas palabras: *«las reglas deben tener prioridad sobre lo que yo diga, porque precisamente se crean para establecer las condiciones que el agente debe cumplir»*. Este recuerdo se queda con el registro de que lo pidió y cuándo.
+
 Relacionado: [histórico de sesiones](historico-chat.md) · [aprobar antes de commit](aprobar-antes-de-commit.md).

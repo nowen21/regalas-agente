@@ -14,6 +14,6 @@ Cuando el agente necesita un guion intermedio para generar o editar archivos, es
 - La carpeta del día lleva su `README.md` diciendo qué hizo cada uno. El de la carpeta madre explica qué son y qué no.
 - **No se borran, y no se vuelven a correr**: se guardan para leerlos. Casi todos escriben sobre texto que ya cambió.
 - Si un guion sirve dos veces, deja de ser de un solo uso y baja a `validadores/` por la cadena, con su contrato y sus pruebas.
-- Leer lo que la herramienta guarda por fuera (su transcripción, lo que inyectó cada enganche) sí vale, porque es leer. Lo que no se hace es **escribir** allá.
+- ~~Leer lo que la herramienta guarda por fuera sí vale, porque es leer.~~ Ya no: desde el 2026-09-28, lo que es del proyecto no debe estar allá en primer lugar. Ver [nada del agente ni del proyecto queda por fuera de ellos](nada-del-proyecto-queda-en-la-herramienta.md).
 
 Relacionado: [trabajo confinado a la carpeta](trabajo-confinado-a-la-carpeta.md) · [histórico de sesiones](historico-chat.md).

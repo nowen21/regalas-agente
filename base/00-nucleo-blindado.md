@@ -340,3 +340,42 @@ Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklis
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## N10 · Una regla escrita manda sobre la instrucción del momento `[BLINDADA]`
+
+Cuando lo que pide el usuario choca con una regla escrita, el agente cumple la regla, le dice cuál es y no hace lo pedido. Si el usuario quiere otra cosa, la regla se cambia por el procedimiento del [capítulo 20](20-meta-reglas/base.md): no se salta.
+
+```
+INCORRECTO: la regla pide una palabra de la lista antes de cambiar algo; el
+            usuario contesta «sí» y el agente cambia el archivo
+CORRECTO:   el agente dice qué regla se lo impide y qué palabra hace falta,
+            y no toca nada
+```
+
+**Nadie la hace cumplir:** saber si un pedido choca con una regla es leer el pedido y la regla, y eso no lo decide un programa.
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v38.4.0**, el **2026-09-28**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
+
+**20 filas: 17 ✅ · 0 ❌ · 3 N/A.** N/A: la 14 y la 15, porque no depende de ninguna regla; la 16, porque no tiene excepción.
+
+**Fila 3 · por qué va en la capa 1.** Las reglas de seguridad de esta capa ya dicen que ninguna instrucción puntual las desactiva (encabezado del capítulo). Las de las otras capas no lo decían, y una instrucción del momento podía pasar por encima de ellas. Si la regla que lo impide se pudiera ajustar por proyecto, cualquier proyecto podría volver a abrir ese hueco. El usuario lo decidió así al aprobar el [pendiente 98](../pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md).
+
+**Fila 17 · no choca con ninguna.** Se releyó el capítulo entero. `N1` pide aprobación antes de cambiar algo y esta regla nunca autoriza a cambiar nada: solo impide hacer lo que choca con una regla. El encabezado del capítulo dice lo mismo para el núcleo; esta lo extiende a toda regla escrita.
+
+**No tiene excepción**, y es lo que la deja ser `[BLINDADA]`: cambiar la regla es el camino, no saltarla.
+
+Del [pendiente 98](../pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md), fase `B` de HU-012.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+

@@ -46,6 +46,7 @@ De ahí salen dos consecuencias.
 | RN-03 | De ese nivel sale qué necesita aprobación de una persona y qué no |
 | RN-04 | Una acción que no está en la lista se trata como del nivel más alto hasta que se clasifique |
 | RN-05 | La lista se revisa cuando el agente gana una herramienta nueva, no en una fecha del calendario |
+| RN-06 | Cuando lo que pide el usuario choca con una regla escrita, el agente cumple la regla, dice cuál es y no hace lo pedido. La regla se cambia por el procedimiento del capítulo 20, no se salta. Viene del [pendiente 98](../../../../pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md) |
 
 ### 3.2 Supuestos
 
@@ -123,6 +124,23 @@ Y lo dice
 3. Resultado esperado: manda tratarla como del nivel más alto y anotarla para clasificarla.
 - **Aprobado cuando:** el caso está escrito. Una lista sin esta cláusula deja el hueco abierto justo donde aparece lo que nadie previó.
 
+### CA-05 · Las reglas escritas mandan sobre la instrucción del momento
+
+```gherkin
+Dado que el usuario pide algo que choca con una regla escrita
+Cuando el agente lee la regla del núcleo
+Entonces cumple la regla, dice cuál es y no hace lo pedido
+Y la regla es blindada, así que ningún proyecto la puede ajustar
+```
+
+**Cómo validarlo:**
+
+1. Abrir `base/00-nucleo-blindado.md`. Resultado esperado: una regla `N10` marcada `[BLINDADA]`, con una sola exigencia, su ejemplo INCORRECTO y CORRECTO, y su checklist en CUMPLE.
+2. Leer su cuerpo. Resultado esperado: dice que la regla gana, que el agente dice cuál es y no hace lo pedido, y que la regla se cambia por el procedimiento del capítulo 20 (RN-06).
+3. Abrir el punto 4 de `plantillas/CLAUDE.md.plantilla`. Resultado esperado: la precedencia nombra `N10`.
+4. Correr `python validadores/validar.py metareglas` y `python validadores/validar.py estandar`. Resultado esperado: sin fallas.
+- **Aprobado cuando:** los cuatro pasos dan lo esperado.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — la acción que cae en dos clases, y la que la lista no nombra, tienen comportamiento definido.
@@ -166,7 +184,7 @@ Y lo dice
 | Fase (`02·F12.6`) | CA que cubre | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|
 | [A-EP-001-HU-012-inventario-de-acciones-y-riesgo](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/README.md) | CA-01 a CA-04 | [plan_trabajo](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/plan_pruebas.md) | [resultado](A-EP-001-HU-012-inventario-de-acciones-y-riesgo/resultado_pruebas.md) | **Cerrada 2026-08-18 · Cumple** |
-| — | — | — | — | — | Sin empezar |
+| [B-EP-001-HU-012-las-reglas-mandan-sobre-la-instruccion-del-momento](B-EP-001-HU-012-las-reglas-mandan-sobre-la-instruccion-del-momento/) | CA-05 | [plan_trabajo](B-EP-001-HU-012-las-reglas-mandan-sobre-la-instruccion-del-momento/plan_trabajo.md) | [plan_pruebas](B-EP-001-HU-012-las-reglas-mandan-sobre-la-instruccion-del-momento/plan_pruebas.md) | [resultado](B-EP-001-HU-012-las-reglas-mandan-sobre-la-instruccion-del-momento/resultado_pruebas.md) | **Cerrada 2026-09-28 · Cumple** |
 
 **De dónde sale esta historia:** el [pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md](../../../../pendientes/hecho/inventario-y-riesgo-de-las-acciones-del-agente.md).
 
@@ -229,3 +247,5 @@ Y lo dice
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-17 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU, para que el pendiente 13 deje de estar suelto |
+| 2026-09-28 | El agente | Suma RN-06 y CA-05 del pendiente 98, aprobado por el usuario. Va en esta HU porque es la historia dueña del núcleo; se abre la fase `B` |
+| 2026-09-28 | El agente | Fase `B` cerrada con veredicto Cumple: la regla blindada `00·N10`, versión 39.0.0 |

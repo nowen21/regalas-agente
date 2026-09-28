@@ -62,3 +62,4 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 - [Cada informe cierra con lo que falta, en orden](informar-que-falta-en-orden.md) — el panorama completo, medido, al final de cada informe.
 - [Lo que se le pide al usuario se dice como una sola pregunta](pedir-una-cosa-a-la-vez.md) — primero qué se necesita de él, después el contexto; y si no se necesita nada, se dice.
 - [Se pregunta lo que el agente no puede decidir, y nada más](preguntar-solo-lo-que-no-se-puede-decidir.md) — si ya hay recomendación medida, se ejecuta y se cuenta; se pregunta el commit, lo que no se deshace y lo que sale del alcance.
+- [Nada del agente ni del proyecto queda por fuera de ellos](nada-del-proyecto-queda-en-la-herramienta.md) — todo vive en el repositorio y el acceso a su contenido es un enlace; nada en el almacén de Claude Code. Vale para todo.

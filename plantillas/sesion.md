@@ -54,7 +54,7 @@ El orden de las historias se escribe en el hallazgo, y en ninguna otra parte. La
 
 «Nace en» y «cerrado en» son el rastro del hallazgo. El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
 
-Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`. Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada: «el H-4» existe en todas las sesiones que tuvieron cuatro hallazgos. La numeración corrida entre sesiones no sirve: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen.
+Un hallazgo se nombra `AAAA-MM-DD · tema · H-N`. El número dice en qué orden apareció, no en qué orden se resuelve: ese va en «Orden de resolución», y un hallazgo que aparece después puede tener que resolverse primero. El número no se cambia para acomodarlo, porque otros documentos lo citan. Cada resumen numera los suyos desde `H-1`, así que el número solo no identifica nada: «el H-4» existe en todas las sesiones que tuvieron cuatro hallazgos. La numeración corrida entre sesiones no sirve: obligaría a un contador único, y dos sesiones abiertas a la vez lo rompen.
 
 El hallazgo que se hereda no se copia. La sesión que retoma un hallazgo abierto de otra lo **nombra** en su «viene de» y trabaja sobre el original: ahí actualiza el estado, el «cerrado en» y lo que se decidió. Copiarlo al resumen nuevo deja dos versiones del mismo hallazgo, y la que manda termina siendo la que nadie está mirando.
 
@@ -131,6 +131,14 @@ Ese hallazgo no se copia acá. Se nombra, y lo que se decida se escribe en el re
 - **Nace en:** «…»
 - **Cerrado en:** «…»
 - **Con qué se retoma:** «…»
+
+## Orden de resolución de los hallazgos abiertos
+
+> Reúne en una tabla el puesto de cada hallazgo abierto, para ver en un solo sitio por dónde se empieza. Cada fila coincide con el campo «Orden de resolución» de su hallazgo. Si no quedó ninguno abierto, se escribe «Ninguno».
+
+| Puesto | Hallazgo | Por qué va ahí |
+|---|---|---|
+| «1» | «H-N · título» | «qué lo obliga a ir en este puesto» |
 
 ## ¿Se puede cerrar la sesión?
 

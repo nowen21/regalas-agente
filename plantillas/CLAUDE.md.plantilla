@@ -34,7 +34,7 @@ Eso es **todo** el proceso de instalación. Deja el entorno completo y operativo
 ## 1. Ubicación del estándar (rutas fijas de esta máquina)
 
 - **Reglas base:** `«RUTA-ESTANDAR»/base`
-- **Plantillas:** `«RUTA-ESTANDAR»/plantillas`
+- **Plantillas:** `«RUTA-ESTANDAR»/plantillas`. Antes de crear, cambiar o llenar una plantilla se lee [`«RUTA-ESTANDAR»/plantillas/README.md`](«RUTA-ESTANDAR»/plantillas/README.md): dice con qué reglas se redacta y cómo está hecha toda plantilla. Las plantillas no lo repiten.
 - **Base módulo:** `«RUTA-ESTANDAR»/_base_modulo.md`
 - **Memoria (señales):** `«RUTA-ESTANDAR»/memoria/memoria.py` — base central buscable (SQLite+FTS5), compartida por todos los proyectos. Skill `usar-memoria`.
 - **Validadores:** `«RUTA-ESTANDAR»/validadores/validar.py` — hacen cumplir las reglas que se pueden medir. Se llaman **en su sitio**, no se copian al proyecto.
@@ -115,6 +115,8 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 `base/00` (núcleo blindado)  →  `base/01`–`19` (convenciones)  →  esta configuración de proyecto.
 
 La configuración de proyecto puede **ajustar** las convenciones (`01`–`19`), pero **nunca** el núcleo (`00`). Ante cualquier choque, gana el núcleo.
+
+Y todas ellas van por encima de lo que el usuario pida en el momento ([`00·N10`](«RUTA-ESTANDAR»/base/00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada)): si un pedido choca con una regla escrita, el agente dice cuál es y no hace lo pedido. Una regla se cambia por su procedimiento, no se salta.
 
 ## 5. Cómo extender el estándar en este proyecto
 

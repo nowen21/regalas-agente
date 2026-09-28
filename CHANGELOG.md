@@ -11,6 +11,38 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.0.0 — 2026-09-28
+
+**Una regla escrita manda sobre lo que el usuario pida en el momento.** Si un pedido choca con una regla, el agente dice cuál es y no hace lo pedido. Quien quiera otra cosa cambia la regla por su procedimiento, en vez de saltársela.
+
+Hasta hoy solo las reglas de seguridad decían que ninguna instrucción puntual las desactiva. Las demás se podían pasar por encima con un pedido, y así una regla dejaba de obligar justo cuando hacía falta.
+
+**Nace `00·N10`, blindada**, en `base/00-nucleo-blindado.md`. La precedencia de `plantillas/CLAUDE.md.plantilla` la nombra, y `validadores/reglas-validables.md` la registra como no validable. El recuerdo `reglas-son-decision-del-usuario.md`, que decía lo mismo como preferencia, se queda con el registro de cuándo lo pidió el usuario.
+
+**MAYOR** (cambia el núcleo: nace una regla blindada, con el mismo criterio que `N7`, `N8` y `N9`). Un proyecto no tiene que tocar ningún archivo: la regla le llega con el núcleo y su `CLAUDE.md` se sincroniza solo. Sale del pendiente 98 y la construye la fase `B` de HU-012 en EP-001.
+
+---
+
+## 38.4.0 — 2026-09-28
+
+**La forma que debe tener toda plantilla queda escrita en un solo documento.** Hasta hoy solo se sacaba mirando las plantillas una por una, y quien armaba una nueva no tenía dónde verla.
+
+Ese documento es ahora el maestro: las plantillas no repiten lo que dice, y el agente lo lee antes de crear, cambiar o llenar una.
+
+`plantillas/README.md` suma la sección «Cómo está hecho un modelo», con el formato que 38.0.4 y 38.0.5 fijaron tomando como modelo la plantilla del plan de trabajo: las siete partes en su orden, lo que la plantilla cumple de las reglas de redacción, qué pasa al llenarla y lo que queda por fuera.
+
+**La nota de definición de cada sección pide ahora un ejemplo** y dice qué no va en la sección. Las plantillas actuales todavía no los traen.
+
+**El README abre con la tabla de reglas de redacción**, la misma que llevan las plantillas en su caja, y su texto se reescribió con esas reglas.
+
+**`CLAUDE.md.plantilla` manda leer ese README antes de crear, cambiar o llenar una plantilla.** Es el documento maestro de las plantillas: lo que dice no se repite en cada una. Llega a cada proyecto con la sincronización de `01·C18`.
+
+**La plantilla del resumen de sesión aclara qué dice el número de un hallazgo:** el orden en que apareció. El orden en que se resuelve va en su propio campo, y el número no se cambia para acomodarlo. Suma además la sección «Orden de resolución de los hallazgos abiertos», con una tabla que los muestra todos juntos.
+
+**MENOR** (aditivo): pide algo nuevo a las plantillas del estándar, y a los proyectos solo una lectura que les llega sola.
+
+---
+
 ## 38.3.1 — 2026-09-27
 
 **Las plantillas nombran también `00·ID12` entre las reglas con que se redactan.** La tabla del comienzo de las 55 plantillas de documento suma la fila de seguir la norma del español de Colombia, si el proyecto la declara.

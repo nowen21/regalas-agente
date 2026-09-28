@@ -389,6 +389,7 @@ Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es
 | ~~95~~ | — | **hecho** → [El agente agrega información irrelevante al asunto que está tratando](95-el-agente-agrega-informacion-irrelevante-al-asunto.md) | `00·ID9` y `01·C5` exigen extensión, no foco: un dato breve que no tiene que ver con el tema cumple las dos. Falta la regla que exija tratar solo el asunto en curso. |
 | ~~96~~ | — | **hecho** → [El agente no conserva el español colombiano](96-el-agente-no-conserva-el-espanol-colombiano.md) | `00·ID10` fija la variedad, la persona y la forma verbal, pero no la ortografía, el léxico, la gramática ni la redacción del español colombiano. El anexo de marcadores declara el hueco y todavía dice que la regla «no existe». Falta `00·ID12`, que extiende `00·ID8`, con su propio anexo. |
 | ~~97~~ | — | **hecho** → [andamio.py impone un orden de trabajo incorrecto](97-andamio-impone-un-orden-de-trabajo-incorrecto.md) | El orden es hallazgo → pendiente → HU → fase, y `andamio.py` no crea un pendiente si su historia no existe: obliga a ir al revés. Y el tramo hallazgo → pendiente no está escrito en ninguna regla. |
+| ~~98~~ | — | **hecho** → [Las reglas mandan sobre la instrucción del momento](98-las-reglas-mandan-sobre-la-instruccion-del-momento.md) | Ninguna regla dice que una regla escrita manda sobre lo que el usuario pida en el momento; solo lo dice un recuerdo. Falta decidir si va en el núcleo o en conducta, y el mapa de tareas y el enganche que muestra las reglas dependen de ella. |
 
 ---
 
