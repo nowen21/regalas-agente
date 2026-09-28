@@ -10,7 +10,7 @@ INCORRECTO: el pendiente de la norma colombiana dice "No entra en HU-037,
 CORRECTO:   la fila dice "Por asignar: nace al aprobarse este pendiente"
 ```
 
-**Quién la hace cumplir:** nadie por programa. Decidir si un dato sirve al tema, al objetivo y al alcance pide leerlo, así que se cumple releyendo antes de entregar, junto con la lista de marcas de `ID8` y el recorte de `ID9`.
+**Nadie la hace cumplir:** decidir si un dato sirve al tema, al objetivo y al alcance pide leerlo, así que se cumple releyendo antes de entregar, junto con la lista de marcas de `ID8` y el recorte de `ID9`.
 
 ---
 

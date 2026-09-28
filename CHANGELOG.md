@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.1.1 — 2026-09-27
+
+**`00·ID11` dice que nadie la hace cumplir con el formato que el validador lee.** La línea decía «Quién la hace cumplir: nadie por programa», y `ejecutable.py` la leía como si nombrara una pieza que no existe. Ahora abre con «Nadie la hace cumplir:» y dice el motivo.
+
+**PARCHE**: corrige la forma de la declaración, no qué exige la regla.
+
+---
+
 ## 38.1.0 — 2026-09-27
 
 **Nace `00·ID11`: el agente escribe solo lo pertinente al asunto.** `ID9` y `01·C5` miden extensión, así que un dato corto y claro que no tenía que ver con el tema no incumplía ninguna regla. La nueva exige que cada dato se relacione con el tema, el objetivo y el alcance de lo que se trata, y que lo que no, se omita aunque sea breve y correcto. Rige los documentos y el chat, y extiende `ID7`, `ID8` e `ID9`.

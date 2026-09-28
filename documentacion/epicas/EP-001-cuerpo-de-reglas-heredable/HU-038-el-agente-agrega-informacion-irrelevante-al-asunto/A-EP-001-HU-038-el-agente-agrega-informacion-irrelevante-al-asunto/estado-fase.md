@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ✅ 5 de 5 exigencias con caso aprobado |
 | 10 | Crítico | sin hallazgos graves | ✅ Un defecto de severidad baja, corregido en la fase |
 | 11 | Cierre documental + señales | docs y señales al día | ✅ `funcionalidad_implementada.md` escrito; HU-038 en Terminada |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `3c85fe3` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.1 Veredicto de las pruebas

@@ -15,7 +15,7 @@
 
 ## 1. Qué se implementó, resumen
 
-Existe la regla `00·ID11` · Escribe solo lo pertinente al asunto. Exige que lo que el agente entrega, en documentos y en el chat, se limite al asunto: un dato es pertinente si se relaciona con el tema, el objetivo y el alcance de lo que se trata, y el que no lo es se omite aunque sea corto y correcto.
+Existe la regla `00·ID11`, «Escribe solo lo pertinente al asunto». Exige que lo que el agente entrega, en documentos y en el chat, se limite al asunto: un dato es pertinente si se relaciona con el tema, el objetivo y el alcance de lo que se trata, y el que no lo es se omite aunque sea corto y correcto.
 
 ## 2. Trazabilidad  ·  `13·DOC11`
 
@@ -61,15 +61,15 @@ Existe la regla `00·ID11` · Escribe solo lo pertinente al asunto. Exige que lo
 | **Fuente** | [resultado_pruebas.md](resultado_pruebas.md) |
 | **Veredicto** | Cumple |
 
-- **Suites ejecutadas y resultado:** `metareglas`, `estandar` y `pendientes`, sin fallas; `test_toda_entrada_del_registro_declara_su_tipo`, OK.
-- **Verificaciones manuales:**
+- Suites ejecutadas y resultado: `metareglas`, `estandar` y `pendientes`, sin fallas; `test_toda_entrada_del_registro_declara_su_tipo`, OK.
+- Verificaciones manuales:
   - Que las cuatro RN estén en el cuerpo de la regla: están.
-- **Defectos abiertos que se aceptaron:** ninguno.
+- Defectos abiertos que se aceptaron: ninguno.
 
 ## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-- **Punto de entrada:** la regla le llega al agente al abrir la sesión, porque el arranque carga todas las reglas de `base/`.
-- **Permisos o datos base sembrados:** no aplica.
+- Punto de entrada: la regla le llega al agente al abrir la sesión, porque el arranque carga todas las reglas de `base/`.
+- Permisos o datos base sembrados: no aplica.
 
 ## 5. Decisiones no obvias  ·  `13·DOC2` / `13·DOC5`
 
