@@ -26,8 +26,8 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
-| 13 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `388c792` |
+| 13 | Publicación / despliegue | 👤 autorizado | ☑ Autorizada por el usuario el 2026-09-28 |
 
 ## 1.1 Veredicto de las pruebas
 
