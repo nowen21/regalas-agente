@@ -11,6 +11,14 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.3.1 — 2026-09-27
+
+**Las plantillas nombran también `00·ID12` entre las reglas con que se redactan.** La tabla del comienzo de las 55 plantillas de documento suma la fila de seguir la norma del español de Colombia, si el proyecto la declara.
+
+**PARCHE**: la regla ya regía lo que el agente entrega; la plantilla ahora lo dice donde se llena.
+
+---
+
 ## 38.3.0 — 2026-09-27
 
 **El pendiente se anota antes que su historia, como pide el orden de la cadena.** `andamio.py pendiente` exigía `--hu`, así que para anotar un pendiente había que inventarle antes su historia. Ahora `--hu` es opcional: sin él, la ficha dice «Por asignar» y el pendiente no entra al mapa de historias hasta tenerla. Un `--hu` que apunta a una historia que no existe sigue siendo un error.

@@ -7,6 +7,7 @@
 > | [`00·ID8`](../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 > | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Modelo del pendiente propio del estándar: lo que esta casa encontró que le falta a sí misma. El que reporta un proyecto tiene el suyo, [plantillas/pendiente-reportado.md](pendiente-reportado.md). Lo levanta el andamio (`python validadores/andamio.py pendiente <slug>`). Sin `--hu`, la historia queda «Por asignar» hasta que el pendiente se apruebe; con `--hu <épica>/<HU>`, el andamio la rellena. El resto queda con sus marcadores. Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas como ella.
 

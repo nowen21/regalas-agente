@@ -9,6 +9,7 @@
 > | [`00·ID8`](../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
 > | [`00·ID9`](../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
 > | [`00·ID11`](../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Plantilla de la documentación de la API. Acompaña a la estación 06 y madura con el sistema. Si el proyecto genera su documentación desde el código (OpenAPI o equivalente), este documento no la duplica: dice dónde vive la generada y conserva solo lo que aquella no cuenta (autenticación, convenciones, versionado). Si el proyecto no expone API, el documento existe igual y dice: «No aplica porque «el porqué»».
 >
