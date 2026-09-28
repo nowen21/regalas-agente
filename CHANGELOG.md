@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.3.1 — 2026-09-28
+
+**La sección de condiciones para empezar una historia se llama ahora «Precondiciones».** El nombre en inglés queda entre paréntesis, para quien lo busque así.
+
+Lo cambió el usuario en la plantilla de historia de usuario. No cambia qué pide la sección, solo cómo se llama.
+
+**PARCHE**: cambia un título de `plantillas/ciclo-vida-proyectos/04-HU.md`, no lo que se exige.
+
+---
+
 ## 39.3.0 — 2026-09-28
 
 **Con cada mensaje, el agente recibe las reglas de lo que ese mensaje le pide hacer.** Si el mensaje pide subir a git, le llegan las de control de versiones; si pide redactar, las de redacción; y siempre las que rigen todo pedido y toda respuesta.
