@@ -14,6 +14,8 @@ CORRECTO:   la propuesta llega con su inventario; el usuario aprueba o corrige e
             alcance ahí, y las épicas se derivan citando los ítems que cubren
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

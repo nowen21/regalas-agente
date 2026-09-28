@@ -122,13 +122,14 @@ PLANTILLA_PRE_PUSH = _PREAMBULO + """
 echo "pre-push: corriendo la batería antes de publicar…"
 
 # Lo que **detiene**: enlaces rotos, índices desactualizados, que lo que se
-# publica esté versionado, y que ninguna regla del núcleo se publique sin decir
-# quién la hace cumplir. Son defectos nuevos, y salen del trabajo de hoy.
+# publica esté versionado, que ninguna regla del núcleo se publique sin decir
+# quién la hace cumplir, y que ninguna regla se publique sin decir a qué tareas
+# aplica. Son defectos nuevos, y salen del trabajo de hoy.
 #
-# `ejecutable` no le cuesta nada a un proyecto: mira el capítulo `00` de `base/`,
-# que solo existe en el estándar. Donde no hay reglas, no hay nada que reportar.
+# `ejecutable` y `tareas` no le cuestan nada a un proyecto: miran `base/`, que
+# solo existe en el estándar. Donde no hay reglas, no hay nada que reportar.
 FALLO=0
-for SUB in estandar versionado ejecutable; do
+for SUB in estandar versionado ejecutable tareas; do
     "$PY" "$ESTANDAR/validadores/validar.py" "$SUB" --raiz "$(pwd)" || FALLO=1
 done
 

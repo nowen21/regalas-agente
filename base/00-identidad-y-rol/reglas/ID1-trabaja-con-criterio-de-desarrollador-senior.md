@@ -11,6 +11,8 @@ CORRECTO:   entregar lo que un senior del oficio firmaría, y decir qué quedó 
 
 **Nadie la hace cumplir:** qué cuenta como criterio de desarrollador con experiencia lo discute una persona. Lo que un programa ve son los resultados sueltos (una prueba, un enlace roto), y ninguno de ellos es la postura.
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

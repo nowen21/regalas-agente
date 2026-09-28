@@ -10,6 +10,8 @@ CORRECTO:   existe código suelto en la raíz → el agente crea `proyectos/` va
             avisa que hay código fuera y espera a que el usuario decida si lo mueve
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

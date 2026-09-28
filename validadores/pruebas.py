@@ -2221,36 +2221,84 @@ class RepartoDeLasReglas(unittest.TestCase):
 
 
 class LasReglasQuePideLaSolicitud(unittest.TestCase):
-    """`recuperar.py` trae del `02` en adelante lo que el mensaje pide.
+    """`recuperar.py` trae las reglas de las tareas que pide el mensaje.
 
-    **Por qué hace falta.** Al arrancar, esas reglas llegan solo como índice,
-    con la orden de leer el archivo antes de tocar el tema. La orden depende de
-    que el agente se acuerde, y cuando no se acuerda trabaja sin la regla y
-    nadie se entera. Es el mismo patrón que ya falló con el arranque: una
-    promesa en vez de un hecho.
+    **Por qué hace falta.** Al arrancar, las reglas llegan cortadas, y leer el
+    resto depende de que el agente se acuerde. Desde `EP-005·HU-023` elige por
+    tareas: cada regla dice a qué tareas aplica, y las palabras que señalan cada
+    tarea están en `base/tareas.md`.
     """
 
-    def test_un_saludo_no_trae_ninguna_regla(self):
-        """**Lo más importante que puede hacer es callarse.** Un recuperador que
-        siempre trae algo gasta presupuesto y enseña a ignorarlo."""
-        elegidas, _descartadas, temas = recuperar.elegir("hola", comun.RAIZ)
+    def test_un_saludo_trae_solo_las_de_todo_mensaje(self):
+        """Un saludo también es un pedido y lleva respuesta: rigen `C28` y las
+        de redacción. Lo que no trae son reglas de ninguna otra tarea."""
+        elegidas, _descartadas, siempre = recuperar.elegir("hola", comun.RAIZ)
         self.assertEqual(elegidas, [])
-        self.assertEqual(temas, {})
+        for id in ("C28", "ID8", "ID9", "ID11"):
+            self.assertIn(id, siempre)
 
-    def test_una_pregunta_con_palabras_genericas_no_trae_nada(self):
-        """**El caso que se cazó en uso, no en la mesa.** El 2026-09-16 la
-        pregunta «¿ya detecta el nuevo cambio?» recuperó `D2`, `T1`, `G6` y
-        `EST1`, ninguna del tema: «cambio» está en el título de medio estándar.
-
-        Una palabra que aparece en todas partes no distingue nada, y el ruido
-        enseña a ignorar el aviso.
-        """
+    def test_una_pregunta_con_palabras_genericas_no_trae_ninguna_tarea(self):
+        """**El caso que se cazó en uso el 2026-09-16.** «¿ya detecta el nuevo
+        cambio?» recuperaba cuatro reglas que no eran del tema. Ninguna de esas
+        palabras señala una tarea, así que no entra ninguna completa."""
         for mensaje in ("ya detecta el nuevo cambio?",
                         "eso funciona?",
                         "qué quedó de ese trabajo"):
-            elegidas, _d, temas = recuperar.elegir(mensaje, comun.RAIZ)
+            elegidas, _d, _s = recuperar.elegir(mensaje, comun.RAIZ)
             self.assertEqual(elegidas, [], f"«{mensaje}» trajo reglas de más")
-            self.assertEqual(temas, {})
+
+    def test_lo_que_agrega_el_editor_no_cuenta_como_pedido(self):
+        """Visto en uso el 2026-09-28: «qué sigue?» traía reglas de documentos
+        y de la cadena porque el editor agregó la ruta del archivo abierto."""
+        mensaje = ("<ide_opened_file>The user opened the file c:\\x\\HU-023\\"
+                   "plan_trabajo.md in the IDE.</ide_opened_file>qué sigue?")
+        elegidas, descartadas, _s = recuperar.elegir(mensaje, comun.RAIZ)
+        self.assertEqual([], elegidas)
+        self.assertEqual([], descartadas)
+
+    def test_la_de_todo_mensaje_no_se_repite_entre_las_que_no_cupieron(self):
+        _e, descartadas, siempre = recuperar.elegir(
+            "aplique las reglas de la caja de reglas de redacción al readme",
+            comun.RAIZ)
+        self.assertFalse(set(descartadas) & set(siempre))
+
+    def test_suba_a_git_trae_la_regla_del_control_de_versiones(self):
+        """**El caso que abrió la sesión del 2026-09-28.** «suba a git» no traía
+        nada: solo contaban las palabras de cuatro letras o más, y «suba» no era
+        «subir». Ahora «git» y «suba» señalan `tocar-git`."""
+        ids = [i for i, _ in recuperar.elegir("suba a git", comun.RAIZ)[0]]
+        self.assertIn("N2", ids)
+
+    def test_un_pedido_de_redaccion_trae_las_reglas_de_redaccion(self):
+        """Del 2026-09-28: este pedido traía `DOC17` y ninguna de redacción,
+        porque el recuperador excluía los capítulos `00` y `01`.
+
+        Las cuatro llegan; la que no cabe completa en el tope llega por su
+        título en el bloque de todo mensaje, con la orden de leerla. `ID8`, la
+        de la lista cerrada, llega completa."""
+        mensaje = "aplique las reglas de la caja de reglas de redacción al readme"
+        ids = [i for i, _ in recuperar.elegir(mensaje, comun.RAIZ)[0]]
+        texto = recuperar.como_texto(mensaje, comun.RAIZ)
+        self.assertIn("ID8", ids)
+        for id in ("ID8", "ID9", "ID11", "ID12"):
+            self.assertIn("00·" + id, texto, f"faltó {id}")
+
+    def test_un_pendiente_trae_la_cadena_y_la_palabra_del_pedido(self):
+        elegidas, _d, siempre = recuperar.elegir("cree el pendiente del H2",
+                                                 comun.RAIZ)
+        self.assertIn("F23", [i for i, _ in elegidas])
+        self.assertIn("C28", siempre)
+
+    def test_todo_lo_que_inyecta_cabe_en_el_tope(self):
+        """**Todo cuenta**: encabezado, reglas completas, las que no cupieron y
+        las de todo mensaje. Por encima del tope, la herramienta guarda la
+        salida aparte y deja ver solo el comienzo, como pasó con el arranque."""
+        for mensaje in ("suba a git", "hola", "cree el pendiente del H2",
+                        "aplique las reglas de la caja de reglas de redacción al readme",
+                        "cambie el código del validador y corra las pruebas"):
+            peso = len(recuperar.como_texto(mensaje, comun.RAIZ).encode("utf-8"))
+            self.assertLessEqual(peso, recuperar.TOPE,
+                                 f"«{mensaje}» pesa {peso} bytes")
 
     def _con_opt_in(self, apagados=("21",)):
         """Un proyecto de mentira con su `CLAUDE.md`, como lo escribe el
@@ -2328,15 +2376,19 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
                                               comun.RAIZ)[0]]
         self.assertTrue(ids[0].startswith("N"), f"abrió con {ids[0]}")
 
-    def test_un_capitulo_no_entra_entero(self):
-        """**El defecto que se cazó al construirlo.** «commit» traía las once
-        reglas del `09`, que es casi lo mismo que mandar el índice y deja al
-        agente buscando la que aplica."""
-        elegidas = recuperar.elegir("haga commit y suba", comun.RAIZ)[0]
-        del_nueve = [i for i, _ in elegidas
-                     if recuperar.indice(comun.RAIZ)[i].capitulo == "09"]
-        self.assertLessEqual(len(del_nueve), 4,
-                             f"volcó el capítulo entero: {del_nueve}")
+    def test_lo_que_no_cabe_de_la_tarea_sale_nombrado(self):
+        """Antes se limitaba a cuatro reglas por capítulo para no volcarlo
+        entero. Con tareas, todas las de `tocar-git` aplican a un commit, así
+        que entran las que caben y el resto sale nombrado: ninguna se calla."""
+        elegidas, descartadas, _s = recuperar.elegir("haga commit y suba",
+                                                     comun.RAIZ)
+        idx = recuperar.indice(comun.RAIZ)
+        de_la_tarea = {r.id for r in recuperar.mapa_tareas.reglas_por_tarea(
+            comun.RAIZ)["tocar-git"]}
+        vistas = {i for i, _ in elegidas} | set(descartadas)
+        self.assertTrue(de_la_tarea <= vistas,
+                        f"se calló: {sorted(de_la_tarea - vistas)}")
+        self.assertTrue(all(not idx[i].derogada for i in vistas))
 
     def test_ninguna_derogada_se_inyecta(self):
         """Inyectar una regla que dejó de regir es peor que no inyectar
@@ -2357,13 +2409,16 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
 
     def test_respeta_el_presupuesto_y_dice_que_dejo_afuera(self):
         """**Un recorte callado es el defecto del arranque otra vez.**"""
-        elegidas, descartadas, _temas = recuperar.elegir(
+        elegidas, descartadas, _s = recuperar.elegir(
             "borre los registros de producción y corra las pruebas",
-            comun.RAIZ, tope=1200)
-        peso = sum(len(recuperar._cuerpo(recuperar.indice(comun.RAIZ)[i])
-                       .encode("utf-8")) + 64 for i, _ in elegidas)
-        self.assertLessEqual(peso, 1200)
+            comun.RAIZ, tope=6000)
+        texto = recuperar.como_texto(
+            "borre los registros de producción y corra las pruebas",
+            comun.RAIZ, tope=6000)
+        self.assertLessEqual(len(texto.encode("utf-8")), 6000)
         self.assertTrue(descartadas, "recortó sin decir qué dejó afuera")
+        for id in descartadas:
+            self.assertIn(id, texto, f"{id} no cupo y no quedó nombrada")
 
     def test_lo_que_trae_cabe_en_el_presupuesto_de_un_turno(self):
         """Medido el 2026-09-16: de 1 a 4 KB por mensaje, contra los 82,4 KB

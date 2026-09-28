@@ -9,6 +9,8 @@ INCORRECTO: "hago el cambio 1, ¿procedo?" → "el 2, ¿procedo?" → ...
 CORRECTO:   ejecuto todo el plan → reporto el resultado
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

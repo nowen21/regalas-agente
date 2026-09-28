@@ -9,6 +9,8 @@ INCORRECTO: <el error concreto que se ve en la práctica>
 CORRECTO:   <qué se hace en su lugar>
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -15,6 +15,8 @@ INCORRECTO: un commit "varios cambios" con feature + fix + reformateo
 CORRECTO:   uno por la feature, otro por el fix, otro por el formateo
 ```
 
+**Aplica a:** tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -45,6 +47,8 @@ CORRECTO:   "Corrige el saldo cuando hay documentos anulados
 
             Se sumaban al total; ahora se excluyen en la consulta."
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -78,6 +82,8 @@ Al archivo de exclusión (`.gitignore`): **secretos** (claves, tokens, entorno r
 INCORRECTO: commitear el archivo de entorno con la clave de producción
 CORRECTO:   ignorar el real; versionar solo la plantilla sin secretos
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -113,6 +119,8 @@ CORRECTO:   rama para el cambio, al día con la principal, y la principal
             siempre en verde
 ```
 
+**Aplica a:** tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -143,6 +151,8 @@ Reescribir historia (rebase, enmienda, purga) y **push forzado** solo sobre hist
 INCORRECTO: rechazan el push → hago push --force por mi cuenta
 CORRECTO:   reporto el rechazo, explico la causa y espero decisión
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -175,6 +185,8 @@ INCORRECTO: «las corrí en mi máquina y pasaban» → se integra
 CORRECTO:   corren solas sobre el cambio propuesto, y si algo falla no entra
 ```
 
+**Aplica a:** tocar-git, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -203,6 +215,8 @@ El enganche local es una ayuda para no mandar lo evidente, **no la comprobación
 INCORRECTO: se salta el enganche local «porque el pipeline igual lo va a revisar»
 CORRECTO:   se arregla lo que el enganche señaló, y el pipeline vuelve a mirarlo
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -236,6 +250,8 @@ Aceptar el cambio **no** autoriza a guardarlo: son dos permisos ([`00·N2`](00-n
 INCORRECTO: hago el cambio y en el mismo paso hago commit/push · "ya que estaba, lo subí"
 CORRECTO:   hago el cambio → muestro el mensaje + los archivos → espero "sube / aprobado" → recién ahí commit/push
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -271,6 +287,8 @@ CORRECTO:   «Pediste que no se pudiera cerrar una venta sin cliente. Va la
             validación en el servicio, con sus tres casos.»
 ```
 
+**Aplica a:** tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -303,6 +321,8 @@ El mensaje no lleva **ninguna marca de con qué se escribió**: ni coautoría de
 INCORRECTO: al final del mensaje, una línea que declara la herramienta como coautora
 CORRECTO:   el mensaje termina en lo último que había que contar del cambio
 ```
+
+**Aplica a:** tocar-git
 
 ---
 
@@ -341,6 +361,8 @@ CORRECTO:   un commit por historia; la épica sin historias espera a tenerlas
 
 Comprobable: un commit que toca dos carpetas de HU distintas se detecta comparando rutas.
 
+
+**Aplica a:** tocar-git, trabajar-cadena
 
 ---
 

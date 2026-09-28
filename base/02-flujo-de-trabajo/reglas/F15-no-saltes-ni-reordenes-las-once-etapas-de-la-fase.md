@@ -13,6 +13,8 @@ CORRECTO:   disparo → plan detallado → pausa y presentación → OK del usua
             → ejecución
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

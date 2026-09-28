@@ -9,6 +9,8 @@ INCORRECTO: la regla cierra con un párrafo en prosa que "se relaciona con" medi
 CORRECTO:   (extiende 09·G6), en el cuerpo y entre paréntesis
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

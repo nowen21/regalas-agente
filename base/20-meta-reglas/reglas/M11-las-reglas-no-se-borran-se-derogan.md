@@ -9,6 +9,8 @@ INCORRECTO: la regla ya no rige → se borra del capítulo
 CORRECTO:   se marca [DEROGADA en X.Y.Z → ver ID] y se conserva su texto debajo
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

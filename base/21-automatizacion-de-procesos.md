@@ -21,6 +21,8 @@ CORRECTO:   la secuencia dice «confirmar», y en otro sitio está cómo se
             alcanza «confirmar» hoy
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -49,6 +51,8 @@ Cada elemento con el que el proceso interactúa se identifica por **algo que lo 
 INCORRECTO: hacer clic en la coordenada 340, 512
 CORRECTO:   hacer clic en el elemento cuyo nombre es «Guardar»
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -80,6 +84,8 @@ INCORRECTO: se leen las 400 facturas al empezar y se procesan en un bucle;
 CORRECTO:   cada factura es un ítem de la cola, y su estado dice si se hizo
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -109,6 +115,8 @@ INCORRECTO: la factura sin cliente hace fallar el proceso entero
 CORRECTO:   esa factura se aparta con su motivo y las otras 399 siguen
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -137,6 +145,8 @@ Las credenciales con las que el proceso entra a los sistemas se piden a un **alm
 INCORRECTO: la clave del sistema va en la configuración del proceso
 CORRECTO:   el proceso la pide al almacén cuando la necesita y no la conserva
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -168,6 +178,8 @@ CORRECTO:   se prueba contra el de prueba, y lo que solo existe en el real
             se verifica a mano y se anota
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -196,6 +208,8 @@ Todo proceso automatizado lleva una **ficha versionada** que dice qué hace, qu�
 INCORRECTO: el proceso corre hace un año y lo que hace solo lo sabe quien lo escribió
 CORRECTO:   su ficha dice qué hace y qué toca, y se actualizó con el último cambio
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 
@@ -226,6 +240,8 @@ INCORRECTO: el proceso corre cada noche y nadie sabe que hace tres semanas
             aparta el 90 % de los ítems
 CORRECTO:   el resumen de cada corrida queda a la vista, con lo apartado y su motivo
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

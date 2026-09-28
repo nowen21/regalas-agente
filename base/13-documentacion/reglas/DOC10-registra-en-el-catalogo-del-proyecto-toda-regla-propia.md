@@ -10,6 +10,8 @@ INCORRECTO: el usuario dice "de aquí en adelante siempre X" · se aplica · nad
 CORRECTO:   se aplica + se crea la `P` en el catálogo + se registra su señal
 ```
 
+**Aplica a:** cambiar-estandar, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

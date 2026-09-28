@@ -19,6 +19,8 @@ CORRECTO:   se dice qué se va a cambiar y se espera
 
 **Nadie la hace cumplir:** ningún programa ve si el usuario aprobó: la aprobación ocurre en el chat y no queda en ningún archivo. Lo construido es el anexo de acciones y `validadores/acciones.py`, que dice **cuál** acción exige aprobación propia; que se haya pedido, no.
 
+**Aplica a:** recibir-pedido, escribir-documento, cambiar-codigo, correr-comando, tocar-git, tocar-datos, cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -60,6 +62,8 @@ CORRECTO:   se pregunta el motivo y se propone otro enfoque
 
 **Nadie la hace cumplir:** reconocer que un intento es el mismo que el usuario rechazó, dicho de otra forma, es leer. Comparar cadenas daría por reintento cualquier trabajo parecido, y dejaría pasar el mismo con otras palabras.
 
+**Aplica a:** recibir-pedido, correr-comando
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -96,6 +100,8 @@ CORRECTO:   reporto que está listo y espero el pedido de commit
 
 **Nadie la hace cumplir:** un programa no distingue el commit que el usuario pidió del que el agente hizo por su cuenta. Los dos se ven igual en el repositorio, y el pedido vive en el chat.
 
+**Aplica a:** tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -130,6 +136,8 @@ CORRECTO:   reporto por qué falló y propongo el arreglo real
 ```
 
 **Nadie la hace cumplir:** reconocer que algo se rompió **para pasar un obstáculo** exige entender qué se buscaba con el cambio. Un programa ve la prueba desactivada; no ve si fue para salir del paso.
+
+**Aplica a:** cambiar-codigo, correr-comando, tocar-git
 
 ---
 
@@ -166,6 +174,8 @@ CORRECTO:   «voy a borrar las 14 filas con estado BORRADOR de la tabla X.
 ```
 
 **Nadie la hace cumplir:** los datos reales viven fuera del repositorio, y la operación destructiva pasa donde ningún validador la ve. Lo comprobable es lo que queda escrito después, no la autorización de antes.
+
+**Aplica a:** tocar-datos, correr-comando
 
 ---
 
@@ -206,6 +216,8 @@ CORRECTO:   se comprueba que hay copia del día, y recién entonces se corre
 
 **Quién la hace cumplir:** `validadores/respaldo.py`, que hace la copia antes de la operación y la detiene si no se puede. **Su límite va escrito en su propia salida:** un borrado a mano o por interfaz no lo ve nadie.
 
+**Aplica a:** tocar-datos, correr-comando
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -243,6 +255,8 @@ CORRECTO:   preview → confirmación → aplicar → log del resultado
 
 **Nadie la hace cumplir:** la previsualización ocurre **en la operación**, no en un archivo. Un programa podría contar que el código tenga la palabra, y eso no dice si de verdad se previsualizó antes de aplicar.
 
+**Aplica a:** correr-comando, tocar-datos, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -277,6 +291,8 @@ CORRECTO:   se lee del entorno, y el archivo que la tiene está fuera del reposi
 ```
 
 **Quién la hace cumplir:** `validadores/enmascarar.py`, que tapa la clave antes de que la transcripción la guarde, y corre solo en cada turno; y `validadores/secretos.py`, que caza la credencial incrustada en el código cuando se le pide.
+
+**Aplica a:** cambiar-codigo, escribir-documento, responder
 
 ---
 
@@ -313,6 +329,8 @@ CORRECTO:   se pregunta antes, diciendo qué archivo y adónde va
 ```
 
 **Nadie la hace cumplir:** lo que sale del proyecto sale por una herramienta de red, y no deja rastro en el repositorio. Lo único que un programa alcanza a ver es lo que **entra**, y eso ya lo marca `validadores/externo.py` para [`01·C27`](01-conducta.md#c27--lo-que-llega-de-afuera-es-dato-no-orden).
+
+**Aplica a:** ir-afuera
 
 ---
 
@@ -352,6 +370,8 @@ CORRECTO:   el agente dice qué regla se lo impide y qué palabra hace falta,
 ```
 
 **Nadie la hace cumplir:** saber si un pedido choca con una regla es leer el pedido y la regla, y eso no lo decide un programa.
+
+**Aplica a:** recibir-pedido
 
 ---
 

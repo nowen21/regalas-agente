@@ -102,9 +102,35 @@ class CA03ElMapaSeQuedaViejoYSeNota(unittest.TestCase):
         self._pieza(tmp, "zzz_prueba.py", u"# usa CLAUDE.md\n")
         ruta = os.path.join(tmp.name, *amarre.MAPA.split(os.sep))
         with io.open(ruta, "a", encoding="utf-8") as f:
-            f.write(u"\n\n`zzz_prueba.py` — clasificada.\n")
+            f.write(u"\n\n| Pieza | Libre o amarrada | Por qué |\n|---|---|---|\n"
+                    u"| `zzz_prueba.py` | 🟡 adaptador | Nombra la herramienta |\n")
         self.assertEqual([], [h for h in amarre.validar(tmp.name)
                               if h.severidad == FALLA])
+
+    def test_nombrarla_en_una_frase_no_la_clasifica(self):
+        """`EP-005·HU-023` CA-06. El 2026-09-28, una frase que decía que dos
+        piezas seguían sin clasificar, nombrándolas, las dio por clasificadas:
+        el validador pasó a verde con el mapa incompleto."""
+        tmp = arbol()
+        self.addCleanup(tmp.cleanup)
+        self._pieza(tmp, "zzz_prueba.py", u"# usa CLAUDE.md\n")
+        ruta = os.path.join(tmp.name, *amarre.MAPA.split(os.sep))
+        with io.open(ruta, "a", encoding="utf-8") as f:
+            f.write(u"\n\n`zzz_prueba.py` sigue sin clasificar: no es de esta fase.\n")
+        self.assertTrue([h for h in amarre.validar(tmp.name)
+                         if h.severidad == FALLA and "zzz_prueba.py" in h.mensaje])
+
+    def test_la_linea_que_solo_lista_nombres_la_clasifica(self):
+        """La lista de las piezas libres va en una línea de nombres, y esa sí
+        clasifica."""
+        tmp = arbol()
+        self.addCleanup(tmp.cleanup)
+        self._pieza(tmp, "zzz_libre.py", u"# solo lee archivos\n")
+        ruta = os.path.join(tmp.name, *amarre.MAPA.split(os.sep))
+        with io.open(ruta, "a", encoding="utf-8") as f:
+            f.write(u"\n\n`otra.py` · `zzz_libre.py`\n")
+        self.assertFalse([h for h in amarre.validar(tmp.name)
+                          if "zzz_libre.py" in h.mensaje])
 
     def test_una_pieza_que_el_mapa_nombra_y_ya_no_existe_se_reporta(self):
         """`CP-006` · **el mapa envejece por los dos lados**, y la historia solo

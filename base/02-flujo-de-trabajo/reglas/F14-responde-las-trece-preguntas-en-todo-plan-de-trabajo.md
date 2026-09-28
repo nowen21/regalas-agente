@@ -11,6 +11,8 @@ CORRECTO:   plan que responde las trece → nadie ejecuta a medias, porque hay q
             declarar cada respuesta antes de aprobar
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

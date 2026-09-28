@@ -9,6 +9,8 @@ INCORRECTO: «dale, arrancá con la fase B» → se escribe el plan y se ejecuta
 CORRECTO:   se abre la fase, se escribe el plan, se presenta, y se espera el segundo sí
 ```
 
+**Aplica a:** recibir-pedido, trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

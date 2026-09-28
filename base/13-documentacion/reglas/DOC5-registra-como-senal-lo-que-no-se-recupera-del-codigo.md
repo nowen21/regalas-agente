@@ -9,6 +9,8 @@ INCORRECTO: "elegimos X y no Y porque Z" queda solo en el chat → se pierde al 
 CORRECTO:   se registra como señal de tipo decisión, con qué / por qué / dónde / qué se aprendió
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

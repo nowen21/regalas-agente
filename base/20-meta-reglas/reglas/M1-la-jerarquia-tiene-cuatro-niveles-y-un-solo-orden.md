@@ -9,6 +9,8 @@ INCORRECTO: el proyecto declara "aquí sí se puede hacer push sin pedir" (ajust
 CORRECTO:   el proyecto declara "los commits van en inglés" (ajusta 09·G2)
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -9,6 +9,8 @@ INCORRECTO: cerrar con la tabla a medias o con un "N/A porque sí"
 CORRECTO:   tabla completa · faltantes justificados · diferimientos con destino explícito
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

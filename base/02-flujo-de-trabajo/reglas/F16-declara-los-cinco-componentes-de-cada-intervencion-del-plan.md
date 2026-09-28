@@ -10,6 +10,8 @@ CORRECTO:   "modificar `<ruta>`: agregar el parámetro `bar` a `foo()` para cerr
             el gap-3; rompe los dos llamadores de `<ruta B>`, que también entran"
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

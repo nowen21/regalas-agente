@@ -9,6 +9,8 @@ INCORRECTO: el documento de A dice "ver B para más" · B no se entera
 CORRECTO:   A declara qué consume de B y por qué · B lo registra en su historial cruzado
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

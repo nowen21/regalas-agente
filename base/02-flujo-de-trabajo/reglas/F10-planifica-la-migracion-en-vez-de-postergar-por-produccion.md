@@ -13,6 +13,8 @@ CORRECTO:   el plan asume "probablemente está en prod" y declara la estrategia
             (aditiva · rename reversible · drop con aviso · tipo con aviso)
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

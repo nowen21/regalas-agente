@@ -13,6 +13,8 @@ CORRECTO:   correr la suite del módulo + las declaradas en el plan + las que la
             matriz de dependencias señala
 ```
 
+**Aplica a:** trabajar-cadena, correr-comando
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -73,6 +73,35 @@ def piezas(raiz=None):
     return salida
 
 
+# `EP-005·HU-023` · Una línea que no dice nada más que nombres: la lista de las
+# piezas libres, `` `acciones.py` · `aislamiento.py` · … ``.
+_SOLO_NOMBRES = re.compile(r"^(`[\w.]+`[\s·,.]*)+$")
+
+
+def _clasificacion(texto):
+    """Solo las líneas que clasifican: filas de tabla y listas de nombres.
+
+    **Por qué no todo el texto** (`EP-005·HU-023`, CA-06). Antes bastaba con que
+    el nombre apareciera en cualquier parte, y una frase que decía «estas dos
+    piezas siguen sin clasificar», nombrándolas, las daba por clasificadas: el
+    validador pasó de dos fallas a verde con el mapa incompleto. Nombrar una pieza
+    en una frase no dice en qué columna va; una fila de tabla o la lista de
+    libres, sí.
+    """
+    return "\n".join(l.strip() for l in texto.splitlines()
+                     if l.strip().startswith("|") or _SOLO_NOMBRES.match(l.strip()))
+
+
+def _clasificada(nombre, clasificacion):
+    """Si la pieza aparece, entre comillas invertidas, en una línea que clasifica.
+
+    Los enganches van a veces sin la extensión (`` `hook_resumen` ``), y por eso
+    se acepta el nombre con `.py` o sin él.
+    """
+    base = re.escape(nombre[:-3])
+    return re.search(r"`%s(\.py)?`" % base, clasificacion) is not None
+
+
 def _mapa(raiz):
     archivo = os.path.join(raiz or comun.RAIZ, *MAPA.split(os.sep))
     return archivo, (leer(archivo) if os.path.isfile(archivo) else "")
@@ -89,10 +118,11 @@ def validar(raiz=None):
 
     hallazgos = []
     encontradas = piezas(raiz)
+    clasificacion = _clasificacion(texto)
 
-    # 1 · La que existe y el mapa no nombra.
+    # 1 · La que existe y el mapa no clasifica.
     for nombre in sorted(encontradas):
-        if nombre not in texto and nombre[:-3] not in texto:
+        if not _clasificada(nombre, clasificacion):
             hallazgos.append(Hallazgo(
                 FALLA, archivo, 0,
                 f"`{nombre}` no está en el mapa — nadie sabe si se queda o hay "

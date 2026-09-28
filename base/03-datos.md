@@ -15,6 +15,8 @@ INCORRECTO: una columna «etiquetas» con los valores separados por comas
 CORRECTO:   una tabla de etiquetas y otra que la une con su dueño
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -45,6 +47,8 @@ Cada tabla lleva **quién creó, quién editó por última vez, y cuándo** cada
 INCORRECTO: el registro cambió y nadie puede decir quién ni cuándo
 CORRECTO:   la fila dice quién la creó, quién la tocó por última vez y en qué momento
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -79,6 +83,8 @@ INCORRECTO: la unicidad del documento se valida en el formulario y nada más
 CORRECTO:   además, el almacén la declara y la rechaza aunque entre por otro lado
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -110,6 +116,8 @@ INCORRECTO: falta una columna, así que se edita la migración que ya corrió en
             producción → las máquinas que ya la aplicaron nunca la ven
 CORRECTO:   una migración nueva que agrega la columna; la vieja no se toca
 ```
+
+**Aplica a:** cambiar-codigo, tocar-datos
 
 ---
 
@@ -148,6 +156,8 @@ INCORRECTO: columna obligatoria sin default → falla si ya hay filas
 CORRECTO:   default equivalente al comportamiento previo, luego endurecer
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -179,6 +189,8 @@ INCORRECTO: el descuento máximo es un número escrito en la condición
 CORRECTO:   el descuento máximo se consulta del catálogo, y negocio lo cambia sin tocar código
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -207,6 +219,8 @@ Cuando el programa se bifurca según un valor del catálogo, compara **el códig
 INCORRECTO: si el estado es 3, no dejar editar
 CORRECTO:   si el estado es «ANULADO», no dejar editar
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -238,6 +252,8 @@ Si la base ya está en producción su estructura es un contrato: la validación 
 INCORRECTO: la migración falla contra los datos → editar la BD a la fuerza
 CORRECTO:   validación en el servicio + prueba + nota en la migración
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -275,6 +291,8 @@ INCORRECTO: el usuario hace doble clic y quedan dos pagos idénticos
 CORRECTO:   el segundo intento reconoce que ese pago ya se aplicó y no hace nada
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -305,6 +323,8 @@ INCORRECTO: se lee el saldo, se resta en memoria y se guarda → dos ventas
 CORRECTO:   el descuento se hace en una sola operación atómica, o se revalida
             la versión al guardar y el segundo reintenta
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -338,6 +358,8 @@ Cómo se guarda y qué se prueba: [`notas/como-se-guarda-la-historia-de-un-valor
 INCORRECTO: «el total de marzo» se calcula sumando lo que hoy está vivo
 CORRECTO:   se lee el tramo que estaba vigente en marzo, con lo que valía entonces
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -379,6 +401,8 @@ CORRECTO:   filtrar por la columna de pertenencia (el contenedor activo); la
 ```
 
 (extiende [`03·D1`](#d1--la-tabla-nueva-nace-normalizada); depende de [`03·D6`](#d6--concurrencia-e-idempotencia) y de [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible))
+
+**Aplica a:** cambiar-codigo
 
 ---
 

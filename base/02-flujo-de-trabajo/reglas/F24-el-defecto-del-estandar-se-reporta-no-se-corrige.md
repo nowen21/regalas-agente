@@ -11,6 +11,8 @@ CORRECTO:   se reporta en el estándar, se anota acá el seguimiento, y el
             proyecto sigue con su trabajo
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

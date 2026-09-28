@@ -19,6 +19,8 @@ INCORRECTO: oculto el botón "Eliminar" y confío en que no llamen al endpoint
 CORRECTO:   verifico permiso en el servidor + valido el scope del registro
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -55,6 +57,8 @@ INCORRECTO: renderizar directo lo que escribió el usuario
 CORRECTO:   escapar la salida al renderizar (XSS)
 ```
 
+**Aplica a:** cambiar-codigo, ir-afuera
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -86,6 +90,8 @@ INCORRECTO: la consulta se arma sumando el texto que llegó del formulario
 CORRECTO:   la instrucción va fija y el texto viaja aparte, como dato
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -114,6 +120,8 @@ Al construir o actualizar un registro con lo que llegó de afuera, se **declara 
 INCORRECTO: se vuelca todo lo que llegó sobre el registro, «que ya viene validado»
 CORRECTO:   se toman los tres campos del formulario y el resto se descarta
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -145,6 +153,8 @@ Las claves, credenciales y tokens viven en la **configuración de entorno**, fue
 INCORRECTO: const API_KEY = "sk-live-abc123"
 CORRECTO:   leerla de la configuración de entorno; el valor real no se versiona
 ```
+
+**Aplica a:** cambiar-codigo, tocar-git
 
 ---
 
@@ -181,6 +191,8 @@ INCORRECTO: se apaga la comprobación del token porque estorba al probar el form
 CORRECTO:   la prueba obtiene el token como lo haría el navegador
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -213,6 +225,8 @@ INCORRECTO: cerrar sesión borra la cookie en el navegador y el identificador
 CORRECTO:   cerrar sesión la invalida en el servidor; la cookie ya no sirve
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -242,6 +256,8 @@ INCORRECTO: «esto va por la red interna, no hace falta cifrarlo»
 CORRECTO:   se cifra igual, porque la red interna también se escucha
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -270,6 +286,8 @@ La contraseña se guarda con una función **pensada para ser lenta**, con sal po
 INCORRECTO: la contraseña se guarda cifrada, «que total está protegida»
 CORRECTO:   se guarda su huella irreversible, con sal, y nadie la puede leer
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -301,6 +319,8 @@ INCORRECTO: el contrato queda en la carpeta pública con un nombre difícil de a
 CORRECTO:   queda en almacenamiento privado y se entrega tras comprobar el permiso
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -329,6 +349,8 @@ Dar de baja la entidad que referencia un archivo **no lo borra**. Quitarlo de ve
 INCORRECTO: se da de baja al proveedor y desaparecen sus facturas escaneadas
 CORRECTO:   el proveedor queda de baja y sus archivos siguen ahí
 ```
+
+**Aplica a:** cambiar-codigo, tocar-datos
 
 ---
 
@@ -397,6 +419,8 @@ INCORRECTO: mostrar la traza y el SQL en una página de error
 CORRECTO:   loguear el detalle; al usuario, mensaje claro sin internos
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -431,6 +455,8 @@ INCORRECTO: durante una fase, escribir en la carpeta home del usuario o en Progr
 CORRECTO:   quedarse dentro del proyecto; si algo fuera realmente es necesario,
             reportarlo y esperar autorización de la ruta exacta
 ```
+
+**Aplica a:** escribir-documento, cambiar-codigo, correr-comando
 
 ---
 
@@ -470,6 +496,8 @@ INCORRECTO: "hay procesos node colgados" → `killall node` → matas el IDE del
 CORRECTO:   identificar el PID exacto del proceso que arrancó la fase actual y matar
             solo ese PID
 ```
+
+**Aplica a:** correr-comando
 
 ---
 
@@ -511,6 +539,8 @@ CORRECTO:   «voy a correr UPDATE pedidos SET estado='X' WHERE id IN (12,13).
             ¿Autorizas?» — y se espera el sí para esa frase
 ```
 
+**Aplica a:** tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -543,6 +573,8 @@ El método que **suena a borrar y en realidad marca un campo** —una fecha de b
 INCORRECTO: «esto no borra nada, solo lo marca como inactivo» → se corre sin pedirlo
 CORRECTO:   marcar la baja se describe y se autoriza como cualquier escritura
 ```
+
+**Aplica a:** tocar-datos
 
 ---
 
@@ -578,6 +610,8 @@ INCORRECTO: el guion que recortó treinta reglas vive en la carpeta temporal de 
 CORRECTO:   el guion queda en `historico-chat/scripts/2026-08-27/`, junto al resultado
             que produjo
 ```
+
+**Aplica a:** escribir-documento, correr-comando
 
 ---
 
@@ -617,6 +651,8 @@ INCORRECTO: «Ana Gómez, cédula 1020…, no pudo entrar con la clave Patito202
 CORRECTO:   «cuando la contraseña trae caracteres especiales, el archivo de
             configuración necesita comillas» → el aprendizaje, sin el caso
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 

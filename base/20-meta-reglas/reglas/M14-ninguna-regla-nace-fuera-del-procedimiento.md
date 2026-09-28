@@ -9,6 +9,8 @@ INCORRECTO: la regla se escribe, se lee bien, y entra al capítulo
 CORRECTO:   se escribe, se responde su checklist, y entra solo si da CUMPLE
 ```
 
+**Aplica a:** cambiar-estandar
+
 ### Checklist  ·  **CUMPLE**
 
 Aplicado el [checklist del estándar](../checklist.md) contra **v2.2.0**, el **2026-08-07**.

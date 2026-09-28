@@ -15,6 +15,8 @@ INCORRECTO: el archivo nuevo trae un estilo distinto al del módulo
 CORRECTO:   se mimetiza con el código vecino
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -46,6 +48,8 @@ INCORRECTO: function proc(d) { ... }
 CORRECTO:   function calcularSaldoDisponible(cuenta) { ... }
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -75,6 +79,8 @@ INCORRECTO: una función de 200 líneas que valida, calcula, guarda y notifica
 CORRECTO:   una que orquesta validar(), calcular(), guardar(), notificar()
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -103,6 +109,8 @@ Lógica de negocio duplicada se extrae a un punto único. **Pero** no abstraigas
 INCORRECTO: la misma regla copiada en tres lados → se corrige en dos y se olvida el tercero
 CORRECTO:   la regla en un servicio; los tres lo llaman
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -139,6 +147,8 @@ INCORRECTO: i = i + 1 // incrementa i
 CORRECTO:   // reintenta 3 veces porque el servicio externo falla intermitente
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -170,6 +180,8 @@ CORRECTO:   se decide si la regla aplica al proyecto; si no, se apaga en la
             config, una vez y a la vista de todos
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -195,6 +207,8 @@ Está clasificada y con validador escrito —`herramientas.py`—, así que la f
 ## Q7 · Deja el código mejor, pero en tu alcance
 
 Corregir algo pequeño y cercano está bien; mejorar de paso lo que no es de la tarea sale del alcance ([`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea)) e infla el diff. Si algo cercano merece mejora, **dilo y déjalo para su tarea**.
+
+**Aplica a:** cambiar-codigo
 
 ---
 

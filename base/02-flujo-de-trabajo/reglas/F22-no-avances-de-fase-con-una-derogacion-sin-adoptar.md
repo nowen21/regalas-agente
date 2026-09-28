@@ -11,6 +11,8 @@ CORRECTO:   se abre una fase por cada HU que la implementaba, se aplica la regla
             que la reemplazó, y al cerrarla se sube la versión declarada
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

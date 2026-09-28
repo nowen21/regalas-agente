@@ -10,6 +10,8 @@ CORRECTO:   la épica lista sus HU y cada HU nombra su épica · al mover una, s
             actualizan los dos
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

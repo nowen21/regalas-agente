@@ -11,6 +11,8 @@ CORRECTO:   listar la carpeta → localizar el archivo → leerlo → plan dice
             "<ruta real>, sección <X>: agregar el ítem con permiso <permiso.ver>"
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

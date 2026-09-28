@@ -1,0 +1,242 @@
+C1	escribir-documento, cambiar-codigo, cambiar-estandar
+C2	responder, escribir-documento, cambiar-codigo
+C3	escribir-documento, cambiar-codigo
+C4	recibir-pedido, cambiar-codigo
+C5	responder
+C6	escribir-documento, cambiar-codigo
+C7	recibir-pedido
+C8	responder, escribir-documento, cambiar-codigo
+C9	responder, correr-comando
+C10	recibir-pedido, cambiar-estandar
+C26	cambiar-estandar
+C11	recibir-pedido
+C12	escribir-documento, cambiar-codigo, tocar-git
+C13	responder
+C14	escribir-documento, cambiar-codigo
+C25	recibir-pedido, cambiar-codigo
+C15	cambiar-codigo
+C16	escribir-documento, cambiar-codigo
+C17	recibir-pedido
+C24	recibir-pedido
+C18	escribir-documento, correr-comando
+C19	escribir-documento
+C20	responder, escribir-documento
+C21	recibir-pedido
+C22	recibir-pedido, correr-comando
+C23	recibir-pedido, responder
+C27	ir-afuera
+C28	recibir-pedido
+C29	escribir-documento, cambiar-codigo, correr-comando
+D1	cambiar-codigo
+D10	cambiar-codigo
+D11	cambiar-codigo
+D2	cambiar-codigo, tocar-datos
+D3	cambiar-codigo, tocar-datos
+D4	cambiar-codigo
+D12	cambiar-codigo
+D5	cambiar-codigo
+D6	cambiar-codigo
+D9	cambiar-codigo
+D7	cambiar-codigo
+D8	cambiar-codigo
+S1	cambiar-codigo
+S2	cambiar-codigo, ir-afuera
+S3	cambiar-codigo
+S16	cambiar-codigo
+S4	cambiar-codigo, tocar-git
+S5	cambiar-codigo
+S13	cambiar-codigo
+S14	cambiar-codigo
+S15	cambiar-codigo
+S6	cambiar-codigo
+S17	cambiar-codigo, tocar-datos
+S8	cambiar-codigo
+S9	escribir-documento, cambiar-codigo, correr-comando
+S10	correr-comando
+S11	tocar-datos
+S12	tocar-datos
+S18	escribir-documento, correr-comando
+S19	escribir-documento
+E1	cambiar-codigo
+E2	cambiar-codigo
+E6	cambiar-codigo, tocar-datos
+E3	cambiar-codigo
+E4	cambiar-codigo
+E5	cambiar-codigo
+R1	cambiar-codigo
+R2	cambiar-codigo
+R3	cambiar-codigo
+R4	cambiar-codigo
+R5	cambiar-codigo
+R6	cambiar-codigo
+Q1	cambiar-codigo
+Q2	cambiar-codigo
+Q3	cambiar-codigo
+Q4	cambiar-codigo
+Q5	cambiar-codigo
+Q6	cambiar-codigo
+Q7	cambiar-codigo
+T1	cambiar-codigo, trabajar-cadena
+T2	cambiar-codigo
+T3	cambiar-codigo
+T4	cambiar-codigo, tocar-datos
+T5	cambiar-codigo, correr-comando
+T6	cambiar-codigo
+T7	cambiar-codigo
+T8	cambiar-codigo
+G1	tocar-git
+G2	tocar-git
+G3	tocar-git
+G4	tocar-git
+G5	tocar-git
+G6	tocar-git, cambiar-codigo
+G11	tocar-git
+G7	tocar-git
+G8	tocar-git
+G10	tocar-git
+G9	tocar-git, trabajar-cadena
+DEP1	cambiar-codigo, ir-afuera
+DEP2	cambiar-codigo
+DEP3	cambiar-codigo, correr-comando
+DEP4	tocar-git
+DEP5	cambiar-codigo
+CFG1	cambiar-codigo
+CFG2	cambiar-codigo, tocar-git
+CFG3	cambiar-codigo
+CFG5	escribir-documento
+CFG4	cambiar-codigo
+PR1	cambiar-codigo, tocar-datos
+PR2	cambiar-codigo, tocar-datos, ir-afuera
+PR3	cambiar-codigo, tocar-datos
+PR4	cambiar-codigo
+PR5	cambiar-codigo, tocar-datos
+EST1	cambiar-codigo
+EST2	cambiar-codigo
+EST3	cambiar-codigo
+IM1	cambiar-codigo, tocar-datos
+IM2	cambiar-codigo
+IM3	cambiar-codigo
+IM7	cambiar-codigo
+IM4	cambiar-codigo
+IM5	cambiar-codigo
+IM6	cambiar-codigo
+CQ1	trabajar-cadena
+CQ2	trabajar-cadena, cambiar-codigo
+CQ3	cambiar-codigo
+CQ4	cambiar-codigo
+I1	cambiar-codigo
+I2	cambiar-codigo
+I3	cambiar-codigo
+I4	cambiar-codigo
+I5	cambiar-codigo
+I6	cambiar-codigo
+DP1	cambiar-codigo
+DP2	cambiar-codigo
+DP3	cambiar-codigo
+DP4	cambiar-codigo
+DP5	cambiar-codigo, tocar-datos
+DP6	escribir-documento
+DP7	cambiar-codigo
+DP8	correr-comando, tocar-datos
+OB1	cambiar-codigo
+OB2	cambiar-codigo
+OB3	cambiar-codigo
+OB4	escribir-documento
+OB5	escribir-documento
+OB6	correr-comando
+AU1	cambiar-codigo
+AU2	cambiar-codigo
+AU3	cambiar-codigo
+AU4	cambiar-codigo
+AU5	cambiar-codigo
+AU6	cambiar-codigo
+AU7	escribir-documento
+AU8	cambiar-codigo
+IA1	escribir-documento, cambiar-codigo
+IA2	escribir-documento
+IA3	escribir-documento
+IA4	cambiar-codigo
+IA5	escribir-documento
+IA6	cambiar-codigo
+IA7	escribir-documento
+IA8	escribir-documento
+IA9	escribir-documento
+ID1	cambiar-codigo
+ID10	responder, escribir-documento
+ID11	responder, escribir-documento
+ID12	responder, escribir-documento
+ID3	trabajar-cadena, cambiar-codigo
+ID4	trabajar-cadena
+ID5	recibir-pedido
+ID6	trabajar-cadena
+ID7	responder, escribir-documento
+ID8	responder, escribir-documento
+ID9	responder, escribir-documento
+F0	trabajar-cadena
+F1	trabajar-cadena, recibir-pedido
+F10	trabajar-cadena
+F11	trabajar-cadena
+F12	trabajar-cadena
+F13	trabajar-cadena
+F14	trabajar-cadena
+F15	trabajar-cadena
+F16	trabajar-cadena
+F17	trabajar-cadena
+F18	trabajar-cadena
+F19	trabajar-cadena, cambiar-codigo
+F2	trabajar-cadena, cambiar-codigo
+F20	recibir-pedido, cambiar-codigo
+F21	trabajar-cadena
+F22	trabajar-cadena
+F23	trabajar-cadena
+F24	trabajar-cadena
+F25	recibir-pedido, trabajar-cadena
+F26	trabajar-cadena
+F3	trabajar-cadena
+F4	trabajar-cadena, cambiar-codigo
+F5	trabajar-cadena, correr-comando
+F8	trabajar-cadena, escribir-documento, cambiar-codigo
+F9	trabajar-cadena
+DOC1	trabajar-cadena, escribir-documento
+DOC10	cambiar-estandar, escribir-documento
+DOC11	trabajar-cadena
+DOC12	trabajar-cadena
+DOC13	trabajar-cadena, escribir-documento
+DOC14	escribir-documento
+DOC15	trabajar-cadena
+DOC16	trabajar-cadena
+DOC17	trabajar-cadena, escribir-documento
+DOC18	trabajar-cadena
+DOC19	escribir-documento
+DOC2	escribir-documento
+DOC20	escribir-documento
+DOC21	escribir-documento
+DOC22	escribir-documento
+DOC23	escribir-documento
+DOC3	trabajar-cadena
+DOC4	escribir-documento
+DOC5	escribir-documento
+DOC6	trabajar-cadena
+DOC7	escribir-documento
+DOC8	escribir-documento
+DOC9	trabajar-cadena
+M1	cambiar-estandar
+M10	cambiar-estandar
+M11	cambiar-estandar
+M12	cambiar-estandar
+M13	cambiar-estandar
+M14	cambiar-estandar
+M15	cambiar-estandar
+M16	cambiar-estandar
+M17	cambiar-estandar
+M18	cambiar-estandar
+M19	cambiar-estandar
+M2	cambiar-estandar
+M20	cambiar-estandar
+M3	cambiar-estandar
+M4	cambiar-estandar
+M5	cambiar-estandar
+M6	cambiar-estandar
+M7	cambiar-estandar
+M8	cambiar-estandar
+M9	cambiar-estandar

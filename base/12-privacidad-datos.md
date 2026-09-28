@@ -15,6 +15,8 @@ INCORRECTO: guardar documento y dirección "por si acaso"
 CORRECTO:   guardar solo lo que la función usa de verdad
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ CORRECTO:   para la campaña se pide consentimiento aparte, y quien no lo da
             sigue recibiendo el aviso del pedido
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos, ir-afuera
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -73,6 +77,8 @@ La fila **9** pasa: no reutilizar para otro fin y no enviar a terceros son la mi
 ## PR3 · Protégelos en reposo y en tránsito
 
 **El dato personal se trata como sensible aunque nadie lo haya clasificado así**: le aplican las mismas protecciones que el capítulo [`04`](04-seguridad.md) exige para lo sensible —cifrado en tránsito, almacenamiento restringido, acceso por permiso—, sin esperar a que el proyecto lo declare.
+
+**Aplica a:** cambiar-codigo, tocar-datos
 
 ---
 
@@ -120,6 +126,8 @@ CORRECTO:   el reporte muestra el dato solo a quien tiene derecho a verlo; al
             resto le llega el caso sin el dato de contacto
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -156,6 +164,8 @@ Define **cuánto tiempo** se conservan; no indefinido "porque sí". Prevé **bor
 INCORRECTO: conservar para siempre los datos de cuentas inactivas
 CORRECTO:   retención definida + borrado/anonimización al cumplirse el plazo
 ```
+
+**Aplica a:** cambiar-codigo, tocar-datos
 
 ---
 

@@ -10,6 +10,8 @@ INCORRECTO: el CA pide "botón oculto en la interfaz" → se implementa además 
 CORRECTO:   se implementa lo que el CA dice, tal cual
 ```
 
+**Aplica a:** trabajar-cadena, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

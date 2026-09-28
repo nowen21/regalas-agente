@@ -9,6 +9,8 @@ INCORRECTO: se borra la R3 y se corre la R4 a R3 "para dejarlo ordenado"
 CORRECTO:   el hueco se queda; la regla nueva toma el siguiente consecutivo libre
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

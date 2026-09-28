@@ -12,6 +12,8 @@ CORRECTO:   busco X en la especificación → si no está: "no está en la espec
             o es dominio nuevo?" → aprueban → actualizo especificación → implemento + pruebas
 ```
 
+**Aplica a:** trabajar-cadena, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

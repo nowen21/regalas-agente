@@ -13,6 +13,8 @@ CORRECTO:   cada línea del plan muestra "intervención → CA"; lo de Y se prop
             como fase aparte con su propia HU
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

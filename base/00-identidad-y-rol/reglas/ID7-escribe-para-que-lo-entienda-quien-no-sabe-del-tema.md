@@ -12,6 +12,8 @@ CORRECTO:   "Abre cada archivo y lo va pasando de a uno, con su nombre y su
 
 **Nadie la hace cumplir:** que un texto se entienda sin saber del tema lo decide quien no sabe del tema. Contar palabras raras daría por clara una explicación sencilla y equivocada.
 
+**Aplica a:** responder, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

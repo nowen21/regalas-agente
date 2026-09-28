@@ -11,6 +11,8 @@ CORRECTO:   leer la plantilla central → rellenarla con datos reales → guarda
             donde manda la nomenclatura de fases
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

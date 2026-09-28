@@ -12,6 +12,8 @@ CORRECTO:   "toda unidad entregada lleva pruebas automáticas; el marco y el
              umbral los declara el proyecto (.agente/stack.md)"
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

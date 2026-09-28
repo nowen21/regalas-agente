@@ -9,6 +9,8 @@ INCORRECTO: P4 · El catálogo se cachea 10 minutos · Por qué: lo acordó el e
 CORRECTO:   P4 · El catálogo se cachea 10 minutos · Respaldo 06·R4: fija aquí el tiempo
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

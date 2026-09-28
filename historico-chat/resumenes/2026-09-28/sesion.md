@@ -38,15 +38,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Quiero** que todo lo del agente y del proyecto viva en el repositorio y se alcance por enlaces
   - **Para** que nada importante quede donde no se versiona ni se revisa
   - **Contexto:** hoy el enganche de arranque copia 79,7 KB de reglas y Claude Code lo guarda fuera del repositorio (H-1). Hay que decidir si esto sube a `base/` como regla general que absorba lo que exigen `C19` y `S9`, y qué validador la hace cumplir.
-- **Qué se decidió:** quedó como recuerdo, [nada del agente ni del proyecto queda por fuera de ellos](../../memory/nada-del-proyecto-queda-en-la-herramienta.md), y se corrigió el recuerdo de los guiones que lo contradecía. Falta aprobar si sube a regla.
-- **Estado:** abierto
+- **Qué se decidió:** quedó como recuerdo, [nada del agente ni del proyecto queda por fuera de ellos](../../memory/nada-del-proyecto-queda-en-la-herramienta.md), y se corrigió el recuerdo de los guiones que lo contradecía. Después el usuario aprobó el pendiente 99 y eligió una regla nueva en conducta, en vez de ampliar `S9`.
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 2 de 7, después de H-6 y antes de H-7: define que el mapa y las reglas viven en el repositorio y al agente le llega un enlace
-- **Dónde queda:** memoria y [pendiente 99](../../../pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md), hecho: la regla [`01·C29`](../../../base/01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto), versión 39.1.0, construida en la fase `B` de HU-011. Falta el commit
+- **Dispara:** EP-001 · HU-011 · CA-04, fase `B` (no una HU nueva: HU-011 es la historia dueña del capítulo 01)
+- **Orden de resolución:** —
+- **Dónde queda:** memoria y [pendiente 99](../../../pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md), hecho: la regla [`01·C29`](../../../base/01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto), versión 39.1.0, construida en la fase `B` de HU-011 y subida en el commit `5398149`
 - **Nace en:** 2026-09-28 · por qué el agente olvida las reglas
-- **Cerrado en:** —
-- **Con qué se retoma:** ¿sube a `base/` como regla nueva o como cambio de `C19`?
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
+- **Con qué se retoma:** —
 
 ### H-3 · El formato de las plantillas no estaba escrito en ninguna parte
 
@@ -133,25 +133,55 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Quiero** un mapa que lleve de la tarea a las reglas que le aplican, con su enlace
   - **Para** leer solo esas, sin cargar todas
   - **Contexto:** hoy hay que saber en qué capítulo está cada regla. El enganche de H-4 y H-5 leería este mapa para decidir qué mostrar.
-- **Qué se decidió:** sin decidir.
-- **Estado:** abierto
+- **Qué se decidió:** el usuario aprobó el pendiente 100: el mapa se genera desde las reglas, y el recuperador lo usa para entregar las reglas de cada mensaje (H-9).
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 3 de 7, después de H-2 y antes de H-1, H-4 y H-5: la instrucción de arranque y el enganche lo usan
-- **Dónde queda:** falta crear el pendiente
+- **Dispara:** EP-005 · HU-023, fases `A` y `B`
+- **Orden de resolución:** —
+- **Dónde queda:** [pendiente 100](../../../pendientes/100-cada-tarea-sabe-que-reglas-le-aplican.md), aprobado por el usuario: el mapa se genera desde las reglas. Lo construye [HU-023 de EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/HU-023-cada-tarea-sabe-que-reglas-le-aplican.md). La fase `A` cerró con Cumple (versión 39.2.0): la lista de tareas en [base/tareas.md](../../../base/tareas.md), el núcleo anotado y el mapa en [base/mapa-de-tareas.md](../../../base/mapa-de-tareas.md). La fase `B` cerró con Cumple (versión 39.3.0): las 252 reglas vigentes declaran sus tareas, `validar.py tareas` lo exige antes de publicar, y el recuperador entrega con cada mensaje las reglas de sus tareas
 - **Nace en:** 2026-09-28, por qué el agente olvida las reglas
-- **Cerrado en:** —
-- **Con qué se retoma:** ¿el mapa es un archivo en `base/` o sale solo de las reglas, cada una declarando a qué tareas aplica? El agente recomendó lo segundo, con la tabla generada en `base/mapa-de-tareas.md`. Hay un antecedente: [validadores/reglas-antes-de-la-accion.md](../../../validadores/reglas-antes-de-la-accion.md), del 2026-09-16, clasifica las 248 reglas por cuándo se pueden comprobar antes de la acción.
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
+- **Con qué se retoma:** —
 
 ---
+
+### H-8 · El validador del amarre da por clasificado un programa con solo nombrarlo
+
+- **Qué pasó:** al clasificar `mapa_tareas.py` en [anatomia/que-esta-amarrado-a-la-herramienta.md](../../../anatomia/que-esta-amarrado-a-la-herramienta.md), el agente escribió que otros dos programas seguían sin clasificar, nombrándolos. `validar.py amarre` pasó de 3 fallas a «sin incumplimientos»: tomó la mención como clasificación. Al quitar los nombres volvió a reportarlos.
+- **Por qué importa:** cualquier frase que nombre un programa lo saca del reporte, aunque diga lo contrario. El mapa puede quedar incompleto con el validador en verde.
+- **Qué lo soluciona:** que el validador cuente como clasificado solo lo que aparece en una fila de tabla con su columna, no cualquier mención en el texto.
+- **Qué se decidió:** el usuario decidió que se resuelve dentro de HU-023, en su fase `B`: *«debe quedar todo solucionado, porque el problema se presentó precisamente en esa HU. Si queda algo pendiente, significa que la HU no cumple con lo que se espera de ella»*.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-023 · CA-06
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** fase `B` de HU-023: `validadores/amarre.py` da por clasificado un programa solo si lo nombra una fila de tabla o una línea de nombres, y el mapa del amarre clasifica los dos que faltaban
+- **Nace en:** 2026-09-28, por qué el agente olvida las reglas
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
+- **Con qué se retoma:** —
+
+### H-9 · El recuperador de reglas por solicitud ya existía y no está conectado en el estándar
+
+- **Qué pasó:** en la fase `B` de HU-023, al clasificar los programas que faltaban en el mapa del amarre, apareció [validadores/recuperar.py](../../../validadores/recuperar.py), del 2026-09-16: con cada mensaje del usuario inyecta el texto de las reglas que ese mensaje pide, por cita, por palabras disparadoras y por semejanza, y lo usa [hook_reglas.py](../../../adaptadores/claude-code/hook_reglas.py). `instalar.py` lo conecta en los proyectos, pero el `.claude/settings.json` de este repositorio no lo tiene, y en toda la sesión no llegó ninguna regla recuperada. El agente no lo buscó antes de proponer y construir el mapa de tareas (`01·C23`).
+- **Por qué importa:** H-1, H-4, H-5 y H-7 se diseñaron como si no existiera nada que llevara la regla al agente en el momento. Existía, con una decisión escrita en contra de un archivo índice. La fase `A` de HU-023 se cruza con él.
+- **Qué lo soluciona:** que el recuperador elija por las tareas del mensaje con el mapa, sin excluir capítulos, y que esté conectado en el estándar.
+- **Qué se decidió:** el usuario eligió que la fase `B` de HU-023 lo resuelva; el plan pasó a la versión 2.
+- **Estado:** resuelto acá
+- **Responde a:** EP-005 · HU-023 · CA-07
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** fase `B` de HU-023, versión 39.3.0: `validadores/recuperar.py` elige por tareas, `base/tareas.md` dice qué palabras señalan cada una, y `.claude/settings.json` conecta `hook_reglas.py`. Con los mensajes de la sesión, «suba a git» trae `N2` y el pedido de redacción trae sus reglas
+- **Nace en:** 2026-09-28, por qué el agente olvida las reglas
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
+- **Con qué se retoma:** el usuario señaló que el recuperador existe pero no funciona, y que por eso se abrió esta sesión. Se probó con mensajes de la sesión: «suba a git» no trae nada (solo compara palabras de cuatro letras o más, así que «git» no cuenta, y no reconoce «suba» como «subir»); «aplique las reglas de la caja de reglas de redacción al readme» trae `DOC17` y ninguna de `ID8`, `ID9`, `ID11` o `ID12`, porque nunca recupera los capítulos `00` y `01`: supone que llegaron enteros al arrancar, y H-1 mostró que llegan cortados en 2 KB. En agro-system está conectado; en el estándar, no. La recomendación pasa a ser que el recuperador use el mapa de tareas en vez de la semejanza de palabras.
 
 ## Orden de resolución de los hallazgos abiertos
 
 | Puesto | Hallazgo | Por qué va ahí |
 |---|---|---|
 | — | ~~H-6, las reglas mandan sobre lo que pida el usuario~~ | Cerrado el 2026-09-28 con `00·N10` |
-| 2 | H-2, nada queda fuera del repositorio | Define que las reglas y el mapa viven en el repositorio y al agente le llega un enlace |
-| 3 | H-7, el mapa de qué reglas aplican a cada tarea | La instrucción de arranque y el enganche lo usan |
+| — | ~~H-2, nada queda fuera del repositorio~~ | Cerrado el 2026-09-28 con `01·C29` |
+| — | ~~H-7, el mapa de qué reglas aplican a cada tarea~~ | Cerrado el 2026-09-28 con HU-023, junto con H-8 y H-9 |
 | 4 | H-1, la instrucción corta al arrancar | Enlaza el mapa, que tiene que existir primero |
 | 5 | H-4, el enganche que revisa la redacción al escribir | Lee el mapa para saber qué reglas mostrar |
 | 6 | H-5, el enganche muestra `C28` al recibir un pedido | Es el mismo enganche de H-4 |

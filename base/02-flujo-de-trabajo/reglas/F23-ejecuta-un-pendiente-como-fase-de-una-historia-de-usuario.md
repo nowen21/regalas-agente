@@ -12,6 +12,8 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
             construye, se prueba, y solo entonces el pendiente se marca hecho
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -10,6 +10,8 @@ CORRECTO:   B-EP-001-HU-003-Implementación de la lógica de negocio, dentro de 
             con sus cinco documentos en la ruta del anexo
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

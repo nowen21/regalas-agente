@@ -19,6 +19,8 @@ INCORRECTO: try { ... } catch (e) { }
 CORRECTO:   try { ... } catch (e) { log.error(...); manejar o propagar }
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -54,6 +56,8 @@ INCORRECTO: se recorre la lista, se procesan cuatro y al quinto falta un dato
 CORRECTO:   se comprueba que los cinco tengan el dato y, si no, no se procesa ninguno
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -83,6 +87,8 @@ INCORRECTO: se descuenta del inventario y falla al escribir el movimiento
             → el inventario quedó mal y nadie lo sabe
 CORRECTO:   las dos escrituras van juntas; si una falla, ninguna queda
 ```
+
+**Aplica a:** cambiar-codigo, tocar-datos
 
 ---
 
@@ -117,6 +123,8 @@ INCORRECTO: al usuario: "SQLSTATE[23000]... INSERT INTO..."
 CORRECTO:   al usuario: "Ese registro ya existe."  ·  al log: la excepción completa
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -148,6 +156,8 @@ Cada registro lleva su nivel —**error** lo que pide atención, **warning** lo 
 INCORRECTO: log.error("error")
 CORRECTO:   log.error("Falló causar factura", { factura_id, usuario_id, causa })
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -185,6 +195,8 @@ Blindado en [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no
 INCORRECTO: log.info("Login", { email, password })
 CORRECTO:   log.info("Login", { usuario_id })
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

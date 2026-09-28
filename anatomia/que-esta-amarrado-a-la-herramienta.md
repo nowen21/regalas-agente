@@ -159,3 +159,19 @@ mover código no desamarra nada. Lo que cambió es dónde se busca, no cuánto h
 vive en `adaptadores/`. Si mañana el agente es otro, `redaccion.py` se queda
 entero y lo único que hay que rehacer son las diez líneas que leen el archivo de
 la sesión.
+
+## 2026-09-28 · el mapa de tareas
+
+De la fase que junta las reglas por tarea (`EP-005·HU-023`).
+
+| Pieza | Libre o amarrada | Por qué |
+|---|---|---|
+| `mapa_tareas.py` | 🟢 libre | Lee las reglas de `base/` y escribe un archivo de Markdown; no habla con ninguna herramienta |
+| `hook_reglas.py` | 🟡 adaptador | Existe porque la herramienta avisa que llegó un mensaje del usuario, y le entrega el texto en su formato |
+| `recuperar.py` | 🟡 a medias | Elegir las reglas de un mensaje con el mapa de tareas sirve con cualquier agente; lo único amarrado es que lee los capítulos opcionales apagados del `CLAUDE.md` del proyecto |
+
+**El recuento, corrido y no calculado, da 29 amarrados de 88.** Sube el total y
+no los amarrados, porque la pieza nueva es libre. Las dos que se clasifican
+acá ya estaban en el recuento desde que nacieron, el 2026-09-16: el programa
+las contaba y el mapa no las nombraba, y el validador no lo veía porque otra
+frase del mapa las mencionaba (H-8 de la sesión del 2026-09-28).

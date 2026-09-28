@@ -12,6 +12,8 @@ INCORRECTO: "Fase 7 — cambios menores" · quien lee no sabe si continúa la 6
 CORRECTO:   ORIGEN declarado: qué fase modifica y qué defecto retoma, o qué agrega
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

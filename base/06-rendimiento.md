@@ -15,6 +15,8 @@ INCORRECTO: for (factura in facturas) { imprimir(factura.cliente.nombre) }  // 1
 CORRECTO:   cargar facturas con su cliente por adelantado → 1-2 consultas
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -50,6 +52,8 @@ INCORRECTO: cargar 200.000 registros en la vista y renderizarlos todos
 CORRECTO:   paginar (25-50 por página) y consultar solo lo visible
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -80,6 +84,8 @@ Las columnas por las que se filtra, une u ordena seguido llevan **índice** (FKs
 INCORRECTO: filtrar por fecha sin índice en una tabla grande → escaneo completo
 CORRECTO:   índice en la columna de fecha del filtro
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -114,6 +120,8 @@ INCORRECTO: cachear un saldo y no invalidarlo nunca
 CORRECTO:   cachearlo e invalidarlo en el evento que lo modifica
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -145,6 +153,8 @@ INCORRECTO: enviar 5.000 correos dentro de la petición → timeout
 CORRECTO:   encolar → responder de inmediato → procesar aparte
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -175,6 +185,8 @@ Ante lentitud, **mide** (profiler, tiempos, conteo de consultas) para hallar el 
 INCORRECTO: reescribir "porque parece lento", sin medir, y romper legibilidad
 CORRECTO:   medir → localizar el cuello → optimizar ahí → volver a medir
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

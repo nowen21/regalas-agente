@@ -10,6 +10,8 @@ INCORRECTO: se crea un módulo · las sesiones siguientes asumen que el proyecto
 CORRECTO:   al cerrar la unidad que lo creó, su entrada queda en el catálogo
 ```
 
+**Aplica a:** trabajar-cadena, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -9,6 +9,8 @@ INCORRECTO: comentar el porqué en el código y confiar en que lo relean
 CORRECTO:   registrar la decisión y su motivo en la doc, enlazando al código
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

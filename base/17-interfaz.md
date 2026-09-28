@@ -19,6 +19,8 @@ INCORRECTO: la tabla aparece vacía sin explicar si no hay datos o si falló la 
 CORRECTO:   estado vacío ("no hay registros"), estado cargando, y estado de error diferenciados
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -49,6 +51,8 @@ Cuando el usuario se equivoca en un formulario, se le dice **qué campo** y **qu
 INCORRECTO: "Error al guardar" sin decir qué campo está mal
 CORRECTO:   "El correo no es válido" junto al campo correspondiente
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -87,6 +91,8 @@ INCORRECTO: la pantalla tiene etiquetas impecables y se entrega como accesible,
             indicado solo con un punto de color
 CORRECTO:   los cuatro puntos de la lista, comprobados juntos antes de entregar
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -128,6 +134,8 @@ INCORRECTO: "Error 422: constraint violation en FK proyecto_id"
 CORRECTO:   "No se pudo guardar: primero elegí un proyecto"
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -161,6 +169,8 @@ CORRECTO:   los componentes que ya existen, y las acciones donde el usuario
             ya sabe buscarlas
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -192,6 +202,8 @@ INCORRECTO: una tabla de doce columnas que empuja el layout y saca una barra
             de desplazamiento a la página entera
 CORRECTO:   la tabla se desplaza dentro de su contenedor; la página no
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

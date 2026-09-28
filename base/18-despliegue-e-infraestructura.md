@@ -16,6 +16,8 @@ INCORRECTO: la cola de mensajes se crea a mano en la consola de la nube y «qued
 CORRECTO:   el recurso se declara en el manifiesto versionado y se aplica desde ahí
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ La infraestructura (contenedor, red, servicios, recursos de nube) se declara en 
 INCORRECTO: el servidor nuevo se configura siguiendo un instructivo de doce pasos
 CORRECTO:   se corre la declaración versionada y el entorno queda igual al anterior
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -83,6 +87,8 @@ INCORRECTO: se vuelve a compilar «para producción» con otra bandera: lo que l
 CORRECTO:   la misma imagen que pasó las pruebas se promueve, etiquetada con su commit
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -116,6 +122,8 @@ INCORRECTO: la clave de producción va dentro de la imagen «para que no se olvi
 CORRECTO:   la imagen lee la clave del entorno al arrancar; la misma imagen corre en
             pruebas y en producción cambiando solo su configuración
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -153,6 +161,8 @@ CORRECTO:   antes de aplicar está escrito cómo se vuelve a la versión anterio
             con la migración inversa y el respaldo
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -188,6 +198,8 @@ INCORRECTO: quien despliega lo hace de memoria y esta vez olvida el respaldo pre
 CORRECTO:   el checklist marcado paso a paso viaja con la entrega
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -221,6 +233,8 @@ INCORRECTO: el orquestador enruta tráfico a una instancia que todavía está mi
 CORRECTO:   el punto de readiness responde «no listo» hasta que la migración termina
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -253,6 +267,8 @@ El agente **prepara** el despliegue; **ejecutarlo contra producción** o contra 
 INCORRECTO: «probé el despliegue contra producción para confirmar que el pipeline sirve»
 CORRECTO:   se prepara todo y se espera la autorización para ejecutar contra producción
 ```
+
+**Aplica a:** correr-comando, tocar-datos
 
 ---
 

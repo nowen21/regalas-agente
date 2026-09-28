@@ -11,6 +11,8 @@ CORRECTO:   Al anotar que una prueba pasó ahora hay que decir con qué se prob�
             Antes se anotaba solo «aprobado», y así nadie podía repetirla.
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

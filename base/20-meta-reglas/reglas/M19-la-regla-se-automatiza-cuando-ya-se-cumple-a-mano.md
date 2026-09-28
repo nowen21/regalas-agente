@@ -11,6 +11,8 @@ CORRECTO:   se mira por qué se incumplió → estaba mal escrita → se parte e
             validador se construye sobre la regla corregida
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

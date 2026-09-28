@@ -13,6 +13,8 @@ CORRECTO:   "Listo, les dejé el archivo en el computador. El equipo lo
 
 **Quién la hace cumplir:** `validadores/redaccion.py`, que cuenta *vosotros* y *os* sobre lo que el agente acaba de escribir. El resto del anexo se lee.
 
+**Aplica a:** responder, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

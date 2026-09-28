@@ -15,6 +15,8 @@ INCORRECTO: editar un documento materializado con un update, sin revertir su efe
 CORRECTO:   anularlo (con motivo, revirtiendo el efecto en transacción) y preservar la fila
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ INCORRECTO: la factura salió mal, se edita el registro ya emitido
 CORRECTO:   se anula la emitida —queda su fila— y se emite otra
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -78,6 +82,8 @@ INCORRECTO: se marca anulado, se revierte el movimiento y falla el saldo
 CORRECTO:   o se revierten los tres y la marca, o no se revierte ninguno
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -106,6 +112,8 @@ La anulación **avisa** a los demás módulos para que descarten lo que tenían 
 INCORRECTO: la factura se anula y el total del mes la sigue contando
 CORRECTO:   al anularla, lo que la había sumado se entera y se rehace
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -138,6 +146,8 @@ INCORRECTO: un reporte que suma incluyendo anulados "y que el usuario tenga cuid
 CORRECTO:   la consulta excluye anulados por defecto
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -161,6 +171,8 @@ Título declarativo, como el de `IM1`: enuncia la norma. La fila **9** pasa porq
 ## IM5 · Permiso propio para anular
 
 Anular pesa más que crear o editar: **permiso separado** del de eliminar, para roles con responsabilidad ([`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible)). En la UI, los materializados ofrecen "Anular" (motivo obligatorio) en vez de "Eliminar"; los anulados quedan visibles, marcados y con su motivo.
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -200,6 +212,8 @@ La anulación guarda **quién la hizo, cuándo, y el motivo** — un motivo con 
 INCORRECTO: motivo: «error»
 CORRECTO:   motivo: «se emitió al cliente equivocado; se rehace con el 4021»
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

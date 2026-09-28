@@ -9,6 +9,8 @@ INCORRECTO: la convención de un equipo entra en base/ como si aplicara a cualqu
 CORRECTO:   entra en el catálogo de ese proyecto; base/ solo lleva lo universal
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

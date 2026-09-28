@@ -15,6 +15,8 @@ CORRECTO:   [documentacion/area/unidad/plan_trabajo.md](../../area/unidad/plan_t
 
 No aplica a los nombres cortos usados como identificador en medio de una frase, cuando quien lee ya sabe dónde viven.
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

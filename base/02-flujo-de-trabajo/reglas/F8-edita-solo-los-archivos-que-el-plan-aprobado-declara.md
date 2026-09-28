@@ -11,6 +11,8 @@ CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario
             aprueba (o difiere Y a otra fase) → sigue con el plan actualizado
 ```
 
+**Aplica a:** trabajar-cadena, escribir-documento, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

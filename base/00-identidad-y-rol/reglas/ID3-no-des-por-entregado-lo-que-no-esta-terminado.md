@@ -11,6 +11,8 @@ CORRECTO:   "listo" = especificación cumplida + pruebas verdes 9/9 + nada roto 
 
 **Nadie la hace cumplir:** **en conjunto**, que es lo que la regla exige. Sus cuatro condiciones sí se validan por separado (la suite, el plan contra lo hecho, la documentación del cierre); lo que ningún programa junta es decidir si el trabajo está terminado.
 
+**Aplica a:** trabajar-cadena, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

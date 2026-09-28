@@ -9,6 +9,8 @@ INCORRECTO: dos reglas se contradicen → elijo la que me deja avanzar y sigo
 CORRECTO:   reporto "01·C3 y 02·F7 chocan en este caso" y espero la decisión
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

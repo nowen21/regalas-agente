@@ -1,0 +1,371 @@
+# Mapa de tareas
+
+Qué reglas se leen antes de cada tarea. Lo escribe `validadores/mapa_tareas.py` leyendo la línea `**Aplica a:**` de cada regla: no se edita a mano. Para cambiarlo se cambia la regla y se vuelve a correr el programa.
+
+Las tareas son las de [base/tareas.md](tareas.md).
+
+## `recibir-pedido`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N9`](00-nucleo-blindado.md#n9--lo-que-el-usuario-rechazó-no-se-reintenta-de-otra-forma-blindada): Lo que el usuario rechazó no se reintenta de otra forma
+- [`00·N10`](00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada): Una regla escrita manda sobre la instrucción del momento
+- [`01·C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta): No decidas por tu cuenta
+- [`01·C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta): Ante dos lecturas, pregunta
+- [`01·C10`](01-conducta.md#c10--lo-que-el-usuario-pide-dos-veces-se-propone-como-regla): Lo que el usuario pide dos veces se propone como regla
+- [`01·C11`](01-conducta.md#c11--confía-en-las-afirmaciones-del-usuario-sobre-estado-del-sistema): Confía en las afirmaciones del usuario sobre estado del sistema
+- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
+- [`01·C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada): Ante un pedido que admite dos lecturas, reformula antes de mover nada
+- [`01·C24`](01-conducta.md#c24--solo-la-palabra-del-usuario-aprueba): Solo la palabra del usuario aprueba
+- [`01·C21`](01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar): Pide el dato que falte antes de arrancar
+- [`01·C22`](01-conducta.md#c22--ante-un-comando-rechazado-corrige-el-comando--la-orden-sigue-en-pie): Ante un comando rechazado, corrige el comando, la orden sigue en pie
+- [`01·C23`](01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar): Busca en el repositorio antes de preguntar
+- [`01·C28`](01-conducta.md#c28--sin-la-palabra-que-diga-qué-se-espera-el-agente-no-actúa): Sin la palabra que diga qué se espera, el agente no actúa
+- [`00·ID5`](00-identidad-y-rol/reglas/ID5-no-salgas-del-borde-del-rol.md#id5--no-salgas-del-borde-del-rol): No salgas del borde del rol
+- [`02·F1`](02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md#f1--carga-el-contexto-antes-de-actuar): Carga el contexto antes de actuar
+- [`02·F20`](02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca): Para y propón lo que descubras fuera del CA
+- [`02·F25`](02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md#f25--autorizar-el-arranque-no-aprueba-el-plan): Autorizar el arranque no aprueba el plan
+
+## `responder`
+
+- [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada): Una credencial no se escribe, no se registra y no se guarda
+- [`01·C2`](01-conducta.md#c2--no-inventes-verifica): No inventes: verifica
+- [`01·C5`](01-conducta.md#c5--responde-corto): Responde corto
+- [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto): Habla el idioma del proyecto
+- [`01·C9`](01-conducta.md#c9--reporta-los-tropiezos): Reporta los tropiezos
+- [`01·C13`](01-conducta.md#c13--preguntas-de-análisis-van-en-chat-abierto-no-en-formulario-cerrado): Preguntas de análisis van en chat abierto, no en formulario cerrado
+- [`01·C20`](01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica): La palabra de otro idioma se traduce, y si no se puede, se explica
+- [`01·C23`](01-conducta.md#c23--busca-en-el-repositorio-antes-de-preguntar): Busca en el repositorio antes de preguntar
+- [`00·ID10`](00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md#id10--escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo): Escribe en el idioma del proyecto, en tercera persona y en infinitivo
+- [`00·ID11`](00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md#id11--escribe-solo-lo-pertinente-al-asunto): Escribe solo lo pertinente al asunto
+- [`00·ID12`](00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md#id12--escribe-con-la-norma-del-español-de-colombia): Escribe con la norma del español de Colombia
+- [`00·ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md#id7--escribe-para-que-lo-entienda-quien-no-sabe-del-tema): Escribe para que lo entienda quien no sabe del tema
+- [`00·ID8`](00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md#id8--escribe-sin-las-marcas-que-delatan-generación-automática): Escribe sin las marcas que delatan generación automática
+- [`00·ID9`](00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md#id9--di-lo-mismo-en-menos-palabras): Di lo mismo en menos palabras
+
+## `escribir-documento`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada): Una credencial no se escribe, no se registra y no se guarda
+- [`01·C1`](01-conducta.md#c1--avisa-antes-de-tocar): Avisa antes de tocar
+- [`01·C2`](01-conducta.md#c2--no-inventes-verifica): No inventes: verifica
+- [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea): Quédate en tu tarea
+- [`01·C6`](01-conducta.md#c6--confirma-que-es-tu-archivo): Confirma que es tu archivo
+- [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto): Habla el idioma del proyecto
+- [`01·C12`](01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto): No agregues calificativos al nombre del artefacto
+- [`01·C14`](01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción): Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
+- [`01·C16`](01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo): Re-lee justo antes de editar, nunca sobre contexto viejo
+- [`01·C18`](01-conducta.md#c18--auto-sincronización-del-claudemd-con-la-plantilla-central): Auto-sincronización del `CLAUDE.md` con la plantilla central
+- [`01·C19`](01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto): Escribe la memoria del agente dentro del repositorio del proyecto
+- [`01·C20`](01-conducta.md#c20--la-palabra-de-otro-idioma-se-traduce-y-si-no-se-puede-se-explica): La palabra de otro idioma se traduce, y si no se puede, se explica
+- [`01·C29`](01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): Guarda dentro del repositorio todo lo del agente y del proyecto
+- [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas): No toques rutas del sistema fuera del proyecto, solo autorizadas exactas
+- [`04·S18`](04-seguridad.md#s18--el-guion-de-apoyo-se-escribe-dentro-del-repositorio-y-se-queda): El guion de apoyo se escribe dentro del repositorio y se queda
+- [`04·S19`](04-seguridad.md#s19--en-la-memoria-no-se-guarda-un-dato-personal-ni-un-secreto): En la memoria no se guarda un dato personal ni un secreto
+- [`11·CFG5`](11-configuracion-entornos.md#cfg5--lo-que-producción-necesita-se-escribe-antes-de-aplicarlo): Lo que producción necesita se escribe antes de aplicarlo
+- [`18·DP6`](18-despliegue-e-infraestructura.md#dp6--checklist-de-despliegue): Checklist de despliegue
+- [`19·OB4`](19-observabilidad-y-operacion.md#ob4--runbooks-para-lo-que-se-opera): Runbooks para lo que se opera
+- [`19·OB5`](19-observabilidad-y-operacion.md#ob5--postmortem-sin-culpa): Postmortem sin culpa
+- [`21·AU7`](21-automatizacion-de-procesos.md#au7--cada-proceso-trae-su-ficha-y-la-ficha-se-mantiene): Cada proceso trae su ficha, y la ficha se mantiene
+- [`22·IA1`](22-sistemas-que-aprenden-de-datos.md#ia1--todo-modelo-en-marcha-está-en-un-inventario-antes-de-recibir-tráfico): Todo modelo en marcha está en un inventario antes de recibir tráfico
+- [`22·IA2`](22-sistemas-que-aprenden-de-datos.md#ia2--cada-modelo-tiene-a-cargo-una-persona-con-nombre-no-un-área): Cada modelo tiene a cargo una persona con nombre, no un área
+- [`22·IA3`](22-sistemas-que-aprenden-de-datos.md#ia3--el-control-se-gradúa-por-lo-que-la-decisión-puede-dañar): El control se gradúa por lo que la decisión puede dañar
+- [`22·IA5`](22-sistemas-que-aprenden-de-datos.md#ia5--un-modelo-que-sigue-aprendiendo-se-vuelve-a-revisar-en-un-plazo-escrito): Un modelo que sigue aprendiendo se vuelve a revisar en un plazo escrito
+- [`22·IA7`](22-sistemas-que-aprenden-de-datos.md#ia7--la-ficha-del-modelo-dice-de-dónde-salieron-los-datos-y-qué-permiten-hacer): La ficha del modelo dice de dónde salieron los datos y qué permiten hacer
+- [`22·IA8`](22-sistemas-que-aprenden-de-datos.md#ia8--se-escribe-qué-medida-se-le-pidió-optimizar-y-por-qué-esa): Se escribe qué medida se le pidió optimizar y por qué esa
+- [`22·IA9`](22-sistemas-que-aprenden-de-datos.md#ia9--retirar-un-modelo-se-registra-con-qué-queda-en-su-lugar): Retirar un modelo se registra con qué queda en su lugar
+- [`00·ID10`](00-identidad-y-rol/reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md#id10--escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo): Escribe en el idioma del proyecto, en tercera persona y en infinitivo
+- [`00·ID11`](00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md#id11--escribe-solo-lo-pertinente-al-asunto): Escribe solo lo pertinente al asunto
+- [`00·ID12`](00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md#id12--escribe-con-la-norma-del-español-de-colombia): Escribe con la norma del español de Colombia
+- [`00·ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md#id7--escribe-para-que-lo-entienda-quien-no-sabe-del-tema): Escribe para que lo entienda quien no sabe del tema
+- [`00·ID8`](00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md#id8--escribe-sin-las-marcas-que-delatan-generación-automática): Escribe sin las marcas que delatan generación automática
+- [`00·ID9`](00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md#id9--di-lo-mismo-en-menos-palabras): Di lo mismo en menos palabras
+- [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara
+- [`13·DOC1`](13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md#doc1--persiste-el-trabajo-de-cada-unidad-completada): Persiste el trabajo de cada unidad completada
+- [`13·DOC10`](13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md#doc10--registra-en-el-catálogo-del-proyecto-toda-regla-propia): Registra en el catálogo del proyecto toda regla propia
+- [`13·DOC13`](13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md#doc13--registra-cada-módulo-nuevo-en-el-catálogo-de-módulos): Registra cada módulo nuevo en el catálogo de módulos
+- [`13·DOC14`](13-documentacion/reglas/DOC14-enlaza-cada-md-con-ruta-legible-y-destino-relativo.md#doc14--enlaza-cada-md-con-ruta-legible-y-destino-relativo): Enlaza cada `.md` con ruta legible y destino relativo
+- [`13·DOC17`](13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md#doc17--mantén-un-readmemd-en-cada-nivel-del-árbol-de-trabajo): Mantén un `README.md` en cada nivel del árbol de trabajo
+- [`13·DOC19`](13-documentacion/reglas/DOC19-marca-con-la-misma-marca-los-espacios-por-llenar.md#doc19--marca-con--los-espacios-por-llenar-de-un-documento-modelo): Marca con `«…»` los espacios por llenar de un documento modelo
+- [`13·DOC2`](13-documentacion/reglas/DOC2-documenta-las-decisiones-no-obvias-y-su-porque.md#doc2--documenta-las-decisiones-no-obvias-y-su-porqué): Documenta las decisiones no obvias y su porqué
+- [`13·DOC20`](13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md#doc20--no-entregues-como-terminado-un-documento-que-todavía-trae-marcas): No entregues como terminado un documento que todavía trae marcas
+- [`13·DOC21`](13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md#doc21--escribe-na-en-la-sección-del-modelo-que-no-aplica): Escribe `N/A` en la sección del modelo que no aplica
+- [`13·DOC22`](13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md#doc22--escribe-en-su-propio-documento-lo-que-cada-sesión-dejó): Escribe en su propio documento lo que cada sesión dejó
+- [`13·DOC23`](13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md#doc23--escribe-el-glosario-de-los-términos-del-proyecto): Escribe el glosario de los términos del proyecto
+- [`13·DOC4`](13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md#doc4--documenta-lo-que-producción-necesita): Documenta lo que producción necesita
+- [`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md#doc5--registra-como-señal-lo-que-no-se-recupera-del-código--opt-in): Registra como señal lo que no se recupera del código
+- [`13·DOC7`](13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md#doc7--registra-el-cruce-en-los-dos-documentos-que-se-referencian): Registra el cruce en los dos documentos que se referencian
+- [`13·DOC8`](13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md#doc8--cierra-todo-análisis-con-su-tabla-de-decisiones): Cierra todo análisis con su tabla de decisiones
+
+## `cambiar-codigo`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada): No romper cosas para pasar un obstáculo
+- [`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada): Operaciones masivas: previsualizar antes de aplicar
+- [`00·N6`](00-nucleo-blindado.md#n6--una-credencial-no-se-escribe-no-se-registra-y-no-se-guarda-blindada): Una credencial no se escribe, no se registra y no se guarda
+- [`01·C1`](01-conducta.md#c1--avisa-antes-de-tocar): Avisa antes de tocar
+- [`01·C2`](01-conducta.md#c2--no-inventes-verifica): No inventes: verifica
+- [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea): Quédate en tu tarea
+- [`01·C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta): No decidas por tu cuenta
+- [`01·C6`](01-conducta.md#c6--confirma-que-es-tu-archivo): Confirma que es tu archivo
+- [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto): Habla el idioma del proyecto
+- [`01·C12`](01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto): No agregues calificativos al nombre del artefacto
+- [`01·C14`](01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción): Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
+- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
+- [`01·C15`](01-conducta.md#c15--al-replicar-un-patrón-replicar-la-paridad-completa): Al replicar un patrón, replicar la paridad completa
+- [`01·C16`](01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo): Re-lee justo antes de editar, nunca sobre contexto viejo
+- [`01·C29`](01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): Guarda dentro del repositorio todo lo del agente y del proyecto
+- [`03·D1`](03-datos.md#d1--la-tabla-nueva-nace-normalizada): La tabla nueva nace normalizada
+- [`03·D10`](03-datos.md#d10--toda-tabla-guarda-quién-la-tocó-y-cuándo): Toda tabla guarda quién la tocó y cuándo
+- [`03·D11`](03-datos.md#d11--la-integridad-vive-en-el-almacén-no-solo-en-la-aplicación): La integridad vive en el almacén, no solo en la aplicación
+- [`03·D2`](03-datos.md#d2--cada-cambio-de-esquema-es-una-migración-reversible): Cada cambio de esquema es una migración reversible
+- [`03·D3`](03-datos.md#d3--migraciones-retrocompatibles-con-los-datos-existentes): Migraciones retrocompatibles con los datos existentes
+- [`03·D4`](03-datos.md#d4--lo-que-puede-cambiar-por-decisión-de-alguien-va-a-catálogo): Lo que puede cambiar por decisión de alguien va a catálogo
+- [`03·D12`](03-datos.md#d12--el-código-decide-por-el-código-del-catálogo-no-por-su-identificador): El código decide por el código del catálogo, no por su identificador
+- [`03·D5`](03-datos.md#d5--con-la-bd-desplegada-la-validación-nueva-va-en-la-app): Con la BD desplegada, la validación nueva va en la app
+- [`03·D6`](03-datos.md#d6--la-operación-repetida-no-duplica-su-efecto): La operación repetida no duplica su efecto
+- [`03·D9`](03-datos.md#d9--dos-operaciones-simultáneas-no-se-pisan): Dos operaciones simultáneas no se pisan
+- [`03·D7`](03-datos.md#d7--la-consulta-histórica-lee-la-historia-no-la-recalcula): La consulta histórica lee la historia, no la recalcula
+- [`03·D8`](03-datos.md#d8--distingue-pertenencia-de-autoría-en-el-modelo-de-datos): Distingue pertenencia de autoría en el modelo de datos
+- [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible): Autorización en cada acción sensible
+- [`04·S2`](04-seguridad.md#s2--valida-y-sanea-toda-entrada-externa): Valida y sanea toda entrada externa
+- [`04·S3`](04-seguridad.md#s3--la-entrada-del-usuario-nunca-se-pega-dentro-de-una-instrucción): La entrada del usuario nunca se pega dentro de una instrucción
+- [`04·S16`](04-seguridad.md#s16--solo-se-asigna-lo-que-está-declarado): Solo se asigna lo que está declarado
+- [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso): Guarda los secretos fuera del código y rota el que se expuso
+- [`04·S5`](04-seguridad.md#s5--la-acción-que-cambia-estado-desde-el-navegador-lleva-su-token): La acción que cambia estado desde el navegador lleva su token
+- [`04·S13`](04-seguridad.md#s13--la-sesión-se-cierra-de-verdad-y-no-viaja-al-alcance-de-nadie): La sesión se cierra de verdad y no viaja al alcance de nadie
+- [`04·S14`](04-seguridad.md#s14--el-dato-sensible-no-viaja-en-claro): El dato sensible no viaja en claro
+- [`04·S15`](04-seguridad.md#s15--la-contraseña-se-guarda-irreversible-y-con-sal): La contraseña se guarda irreversible y con sal
+- [`04·S6`](04-seguridad.md#s6--el-archivo-no-público-se-guarda-privado-y-se-sirve-por-un-punto-controlado): El archivo no público se guarda privado y se sirve por un punto controlado
+- [`04·S17`](04-seguridad.md#s17--el-archivo-sobrevive-a-la-baja-de-su-dueño): El archivo sobrevive a la baja de su dueño
+- [`04·S8`](04-seguridad.md#s8--no-filtres-información-en-errores): No filtres información en errores
+- [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas): No toques rutas del sistema fuera del proyecto, solo autorizadas exactas
+- [`05·E1`](05-errores-y-logging.md#e1--no-te-tragues-los-errores-en-silencio): No te tragues los errores en silencio
+- [`05·E2`](05-errores-y-logging.md#e2--valida-al-entrar-y-aborta-temprano): Valida al entrar y aborta temprano
+- [`05·E6`](05-errores-y-logging.md#e6--lo-que-toca-varios-registros-va-en-transacción): Lo que toca varios registros va en transacción
+- [`05·E3`](05-errores-y-logging.md#e3--mensajes-en-dos-niveles-usuario-y-diagnóstico): Mensajes en dos niveles: usuario y diagnóstico
+- [`05·E4`](05-errores-y-logging.md#e4--loguea-con-niveles-y-con-propósito): Loguea con niveles y con propósito
+- [`05·E5`](05-errores-y-logging.md#e5--nunca-registres-secretos-ni-datos-sensibles): Nunca registres secretos ni datos sensibles
+- [`06·R1`](06-rendimiento.md#r1--evita-consultas-en-bucle-n1): Evita consultas en bucle (N+1)
+- [`06·R2`](06-rendimiento.md#r2--nunca-cargues-conjuntos-sin-límite): Nunca cargues conjuntos sin límite
+- [`06·R3`](06-rendimiento.md#r3--índices-en-lo-que-se-filtra-y-ordena): Índices en lo que se filtra y ordena
+- [`06·R4`](06-rendimiento.md#r4--cachea-lo-caro-y-estable-con-invalidación-clara): Cachea lo caro y estable, con invalidación clara
+- [`06·R5`](06-rendimiento.md#r5--trabajo-pesado-fuera-del-ciclo-de-petición): Trabajo pesado fuera del ciclo de petición
+- [`06·R6`](06-rendimiento.md#r6--mide-antes-de-optimizar): Mide antes de optimizar
+- [`07·Q1`](07-calidad-de-codigo.md#q1--escribe-como-el-código-que-lo-rodea): Escribe como el código que lo rodea
+- [`07·Q2`](07-calidad-de-codigo.md#q2--nombres-que-dicen-la-intención): Nombres que dicen la intención
+- [`07·Q3`](07-calidad-de-codigo.md#q3--funciones-pequeñas-una-responsabilidad): Funciones pequeñas, una responsabilidad
+- [`07·Q4`](07-calidad-de-codigo.md#q4--no-repitas-dry-pero-no-abstraigas-de-más): No repitas (DRY), pero no abstraigas de más
+- [`07·Q5`](07-calidad-de-codigo.md#q5--comenta-el-porqué-no-el-qué): Comenta el porqué, no el qué
+- [`07·Q6`](07-calidad-de-codigo.md#q6--linter-y-formateador-automáticos): Linter y formateador automáticos
+- [`07·Q7`](07-calidad-de-codigo.md#q7--deja-el-código-mejor-pero-en-tu-alcance): Deja el código mejor, pero en tu alcance
+- [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba): Todo cambio con lógica lleva prueba
+- [`08·T2`](08-pruebas.md#t2--prueba-el-comportamiento-no-la-implementación): Prueba el comportamiento, no la implementación
+- [`08·T3`](08-pruebas.md#t3--aisladas-deterministas-repetibles): Aisladas, deterministas, repetibles
+- [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar): Protege los datos reales al probar
+- [`08·T5`](08-pruebas.md#t5--ejecuta-y-reporta): Ejecuta y reporta
+- [`08·T6`](08-pruebas.md#t6--cobertura-con-criterio-no-por-porcentaje): Cobertura con criterio, no por porcentaje
+- [`08·T7`](08-pruebas.md#t7--los-casos-se-derivan-con-método-no-se-eligen-a-ojo): Los casos se derivan con método, no se eligen a ojo
+- [`08·T8`](08-pruebas.md#t8--el-resultado-esperado-no-sale-del-código-que-se-está-probando): El resultado esperado no sale del código que se está probando
+- [`09·G6`](09-git.md#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto): Las pruebas y el linter corren solos en cada cambio propuesto
+- [`10·DEP1`](10-dependencias.md#dep1--agregar-una-dependencia-es-una-decisión): Agregar una dependencia es una decisión
+- [`10·DEP2`](10-dependencias.md#dep2--versiones-fijadas-y-reproducibles): Versiones fijadas y reproducibles
+- [`10·DEP3`](10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día): Audita vulnerabilidades y mantén al día
+- [`10·DEP5`](10-dependencias.md#dep5--aísla-la-dependencia-que-puede-cambiar): Aísla la dependencia que puede cambiar
+- [`11·CFG1`](11-configuracion-entornos.md#cfg1--la-configuración-vive-fuera-del-código): La configuración vive fuera del código
+- [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla): El entorno real no se versiona; sí una plantilla
+- [`11·CFG3`](11-configuracion-entornos.md#cfg3--los-entornos-se-parecen-lo-suficiente-para-que-probar-signifique-algo): Los entornos se parecen lo suficiente para que probar signifique algo
+- [`11·CFG4`](11-configuracion-entornos.md#cfg4--cambios-de-comportamiento-tras-banderas): Cambios de comportamiento tras banderas
+- [`12·PR1`](12-privacidad-datos.md#pr1--recolecta-solo-lo-necesario-minimización): Recolecta solo lo necesario (minimización)
+- [`12·PR2`](12-privacidad-datos.md#pr2--úsalos-solo-para-lo-que-se-recolectaron): Úsalos solo para lo que se recolectaron
+- [`12·PR3`](12-privacidad-datos.md#pr3--protégelos-en-reposo-y-en-tránsito): Protégelos en reposo y en tránsito
+- [`12·PR4`](12-privacidad-datos.md#pr4--no-los-expongas-en-logs-errores-ni-mensajes): No los expongas en logs, errores ni mensajes
+- [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después): Define cuánto se conservan y qué pasa después
+- [`14·EST1`](14-estructura-codigo.md#est1--organiza-el-código-nuevo-por-módulo-en-ubicación-predecible): Organiza el código nuevo por módulo, en ubicación predecible
+- [`14·EST2`](14-estructura-codigo.md#est2--nomenclatura-consistente): Nomenclatura consistente
+- [`14·EST3`](14-estructura-codigo.md#est3--respeta-el-legacy--la-convención-es-para-lo-nuevo): Respeta el legacy, la convención es para lo nuevo
+- [`15·IM1`](15-registros-inmutables.md#im1--un-registro-materializado-es-inmutable): Un registro materializado es inmutable
+- [`15·IM2`](15-registros-inmutables.md#im2--el-registro-tiene-tres-estados-y-solo-uno-es-editable): El registro tiene tres estados y solo uno es editable
+- [`15·IM3`](15-registros-inmutables.md#im3--la-anulación-revierte-todo-o-no-revierte-nada): La anulación revierte todo o no revierte nada
+- [`15·IM7`](15-registros-inmutables.md#im7--al-anular-se-avisa-a-quien-tenía-el-dato-calculado): Al anular se avisa a quien tenía el dato calculado
+- [`15·IM4`](15-registros-inmutables.md#im4--las-consultas-agregadoras-excluyen-los-anulados): Las consultas agregadoras excluyen los anulados
+- [`15·IM5`](15-registros-inmutables.md#im5--permiso-propio-para-anular): Permiso propio para anular
+- [`15·IM6`](15-registros-inmutables.md#im6--anular-deja-escrito-quién-cuándo-y-por-qué): Anular deja escrito quién, cuándo y por qué
+- [`16·CQ2`](16-cumplimiento-y-calidad.md#cq2--cumple-por-construcción-y-déjalo-trazable): Cumple por construcción y déjalo trazable
+- [`16·CQ3`](16-cumplimiento-y-calidad.md#cq3--seguridad-de-software-por-defecto-owasp): Seguridad de software por defecto (OWASP)
+- [`16·CQ4`](16-cumplimiento-y-calidad.md#cq4--atributos-de-calidad-como-checklist-isoiec-25010): Atributos de calidad como checklist (ISO/IEC 25010)
+- [`17·I1`](17-interfaz.md#i1--toda-vista-resuelve-sus-tres-estados): Toda vista resuelve sus tres estados
+- [`17·I2`](17-interfaz.md#i2--feedback-de-validación-claro): Feedback de validación claro
+- [`17·I3`](17-interfaz.md#i3--accesibilidad-mínima): Accesibilidad mínima
+- [`17·I4`](17-interfaz.md#i4--texto-para-el-usuario-no-jerga): Texto para el usuario, no jerga
+- [`17·I5`](17-interfaz.md#i5--consistencia-con-el-sistema-de-diseño): Consistencia con el sistema de diseño
+- [`17·I6`](17-interfaz.md#i6--funciona-en-los-tamaños-de-pantalla-que-el-proyecto-soporta): Funciona en los tamaños de pantalla que el proyecto soporta
+- [`18·DP1`](18-despliegue-e-infraestructura.md#dp1--el-despliegue-es-un-artefacto-versionado-no-una-serie-de-clics): El despliegue es un artefacto versionado, no una serie de clics
+- [`18·DP2`](18-despliegue-e-infraestructura.md#dp2--infraestructura-como-código): Infraestructura como código
+- [`18·DP3`](18-despliegue-e-infraestructura.md#dp3--build-una-vez-promover-el-mismo-artefacto): Build una vez, promover el mismo artefacto
+- [`18·DP4`](18-despliegue-e-infraestructura.md#dp4--config-por-entorno-fuera-del-artefacto): Config por entorno, fuera del artefacto
+- [`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta): Release reversible, con plan de vuelta
+- [`18·DP7`](18-despliegue-e-infraestructura.md#dp7--la-app-expone-su-salud): La app expone su salud
+- [`19·OB1`](19-observabilidad-y-operacion.md#ob1--logs-estructurados-y-correlacionables): Logs estructurados y correlacionables
+- [`19·OB2`](19-observabilidad-y-operacion.md#ob2--se-mide-lo-que-le-duele-al-usuario): Se mide lo que le duele al usuario
+- [`19·OB3`](19-observabilidad-y-operacion.md#ob3--slo-y-alertas-como-código-sobre-síntomas): SLO y alertas como código, sobre síntomas
+- [`21·AU1`](21-automatizacion-de-procesos.md#au1--lo-que-el-proceso-hace-se-separa-de-dónde-lo-hace): Lo que el proceso hace se separa de dónde lo hace
+- [`21·AU2`](21-automatizacion-de-procesos.md#au2--el-elemento-se-alcanza-por-lo-que-es-no-por-dónde-está): El elemento se alcanza por lo que es, no por dónde está
+- [`21·AU3`](21-automatizacion-de-procesos.md#au3--el-trabajo-se-toma-de-una-cola-y-cada-ítem-se-cierra-solo): El trabajo se toma de una cola y cada ítem se cierra solo
+- [`21·AU4`](21-automatizacion-de-procesos.md#au4--el-fallo-del-negocio-y-el-fallo-del-sistema-no-se-tratan-igual): El fallo del negocio y el fallo del sistema no se tratan igual
+- [`21·AU5`](21-automatizacion-de-procesos.md#au5--el-proceso-no-guarda-con-qué-entra-a-ningún-sistema): El proceso no guarda con qué entra a ningún sistema
+- [`21·AU6`](21-automatizacion-de-procesos.md#au6--se-prueba-contra-un-entorno-que-no-es-el-de-verdad): Se prueba contra un entorno que no es el de verdad
+- [`21·AU8`](21-automatizacion-de-procesos.md#au8--una-corrida-que-no-se-mira-no-está-terminada): Una corrida que no se mira no está terminada
+- [`22·IA1`](22-sistemas-que-aprenden-de-datos.md#ia1--todo-modelo-en-marcha-está-en-un-inventario-antes-de-recibir-tráfico): Todo modelo en marcha está en un inventario antes de recibir tráfico
+- [`22·IA4`](22-sistemas-que-aprenden-de-datos.md#ia4--que-el-modelo-sugiera-y-que-el-modelo-ejecute-se-aprueban-por-separado): Que el modelo sugiera y que el modelo ejecute se aprueban por separado
+- [`22·IA6`](22-sistemas-que-aprenden-de-datos.md#ia6--el-modelo-en-marcha-se-vigila-por-si-sigue-acertando-no-solo-por-si-responde): El modelo en marcha se vigila por si sigue acertando, no solo por si responde
+- [`00·ID1`](00-identidad-y-rol/reglas/ID1-trabaja-con-criterio-de-desarrollador-senior.md#id1--trabaja-con-criterio-de-desarrollador-senior): Trabaja con criterio de desarrollador senior
+- [`00·ID3`](00-identidad-y-rol/reglas/ID3-no-des-por-entregado-lo-que-no-esta-terminado.md#id3--no-des-por-entregado-lo-que-no-está-terminado): No des por entregado lo que no está terminado
+- [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md#f19--implementa-literal-el-criterio-de-aceptación): Implementa literal el criterio de aceptación
+- [`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md#f2--sin-especificación-acordada-no-hay-código): Sin especificación acordada no hay código
+- [`02·F20`](02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca): Para y propón lo que descubras fuera del CA
+- [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
+- [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara
+
+## `correr-comando`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N9`](00-nucleo-blindado.md#n9--lo-que-el-usuario-rechazó-no-se-reintenta-de-otra-forma-blindada): Lo que el usuario rechazó no se reintenta de otra forma
+- [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada): No romper cosas para pasar un obstáculo
+- [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada): Nada destructivo sobre datos reales sin autorización de esa operación
+- [`00·N7`](00-nucleo-blindado.md#n7--antes-de-lo-irreversible-se-comprueba-que-hay-de-dónde-volver-blindada): Antes de lo irreversible se comprueba que hay de dónde volver
+- [`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada): Operaciones masivas: previsualizar antes de aplicar
+- [`01·C9`](01-conducta.md#c9--reporta-los-tropiezos): Reporta los tropiezos
+- [`01·C18`](01-conducta.md#c18--auto-sincronización-del-claudemd-con-la-plantilla-central): Auto-sincronización del `CLAUDE.md` con la plantilla central
+- [`01·C22`](01-conducta.md#c22--ante-un-comando-rechazado-corrige-el-comando--la-orden-sigue-en-pie): Ante un comando rechazado, corrige el comando, la orden sigue en pie
+- [`01·C29`](01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): Guarda dentro del repositorio todo lo del agente y del proyecto
+- [`04·S9`](04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas): No toques rutas del sistema fuera del proyecto, solo autorizadas exactas
+- [`04·S10`](04-seguridad.md#s10--no-mates-procesos-globales--solo-pid-exacto-y-estrictamente-necesario): No mates procesos globales, solo PID exacto y estrictamente necesario
+- [`04·S18`](04-seguridad.md#s18--el-guion-de-apoyo-se-escribe-dentro-del-repositorio-y-se-queda): El guion de apoyo se escribe dentro del repositorio y se queda
+- [`08·T5`](08-pruebas.md#t5--ejecuta-y-reporta): Ejecuta y reporta
+- [`10·DEP3`](10-dependencias.md#dep3--audita-vulnerabilidades-y-mantén-al-día): Audita vulnerabilidades y mantén al día
+- [`18·DP8`](18-despliegue-e-infraestructura.md#dp8--correr-contra-producción-lo-autoriza-el-humano): Correr contra producción lo autoriza el humano
+- [`19·OB6`](19-observabilidad-y-operacion.md#ob6--operar-en-vivo-lo-hace-el-humano): Operar en vivo lo hace el humano
+- [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca): Corre solo las suites que la fase toca
+
+## `tocar-git`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N2`](00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada): Control de versiones solo bajo pedido
+- [`00·N3`](00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada): No romper cosas para pasar un obstáculo
+- [`01·C12`](01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto): No agregues calificativos al nombre del artefacto
+- [`04·S4`](04-seguridad.md#s4--guarda-los-secretos-fuera-del-código-y-rota-el-que-se-expuso): Guarda los secretos fuera del código y rota el que se expuso
+- [`09·G1`](09-git.md#g1--commits-atómicos-un-solo-propósito): Commits atómicos, un solo propósito
+- [`09·G2`](09-git.md#g2--mensajes-que-explican-qué-y-por-qué): Mensajes que explican qué y por qué
+- [`09·G3`](09-git.md#g3--deja-fuera-del-control-de-versiones-los-secretos-y-lo-generado): Deja fuera del control de versiones los secretos y lo generado
+- [`09·G4`](09-git.md#g4--trabaja-en-ramas-integra-limpio): Trabaja en ramas, integra limpio
+- [`09·G5`](09-git.md#g5--no-reescribas-historia-compartida-ni-fuerces-sin-necesidad): No reescribas historia compartida ni fuerces sin necesidad
+- [`09·G6`](09-git.md#g6--las-pruebas-y-el-linter-corren-solos-en-cada-cambio-propuesto): Las pruebas y el linter corren solos en cada cambio propuesto
+- [`09·G11`](09-git.md#g11--lo-que-corre-en-tu-máquina-complementa-no-reemplaza): Lo que corre en tu máquina complementa, no reemplaza
+- [`09·G7`](09-git.md#g7--todo-commit-se-muestra-al-usuario-y-se-aprueba-antes-de-ejecutarlo): Todo commit se muestra al usuario y se aprueba antes de ejecutarlo
+- [`09·G8`](09-git.md#g8--el-cuerpo-del-commit-abre-con-la-idea-del-usuario): El cuerpo del commit abre con la idea del usuario
+- [`09·G10`](09-git.md#g10--el-commit-no-se-firma-con-la-herramienta): El commit no se firma con la herramienta
+- [`09·G9`](09-git.md#g9--la-historia-de-usuario-es-la-unidad-del-commit): La historia de usuario es la unidad del commit
+- [`10·DEP4`](10-dependencias.md#dep4--no-versiones-lo-instalado): No versiones lo instalado
+- [`11·CFG2`](11-configuracion-entornos.md#cfg2--el-entorno-real-no-se-versiona-sí-una-plantilla): El entorno real no se versiona; sí una plantilla
+
+## `tocar-datos`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`00·N4`](00-nucleo-blindado.md#n4--nada-destructivo-sobre-datos-reales-sin-autorización-de-esa-operación-blindada): Nada destructivo sobre datos reales sin autorización de esa operación
+- [`00·N7`](00-nucleo-blindado.md#n7--antes-de-lo-irreversible-se-comprueba-que-hay-de-dónde-volver-blindada): Antes de lo irreversible se comprueba que hay de dónde volver
+- [`00·N5`](00-nucleo-blindado.md#n5--operaciones-masivas-previsualizar-antes-de-aplicar-blindada): Operaciones masivas: previsualizar antes de aplicar
+- [`03·D2`](03-datos.md#d2--cada-cambio-de-esquema-es-una-migración-reversible): Cada cambio de esquema es una migración reversible
+- [`03·D3`](03-datos.md#d3--migraciones-retrocompatibles-con-los-datos-existentes): Migraciones retrocompatibles con los datos existentes
+- [`04·S17`](04-seguridad.md#s17--el-archivo-sobrevive-a-la-baja-de-su-dueño): El archivo sobrevive a la baja de su dueño
+- [`04·S11`](04-seguridad.md#s11--cada-escritura-contra-datos-reales-se-autoriza-por-separado): Cada escritura contra datos reales se autoriza por separado
+- [`04·S12`](04-seguridad.md#s12--el-borrado-lógico-es-una-escritura): El borrado lógico es una escritura
+- [`05·E6`](05-errores-y-logging.md#e6--lo-que-toca-varios-registros-va-en-transacción): Lo que toca varios registros va en transacción
+- [`08·T4`](08-pruebas.md#t4--protege-los-datos-reales-al-probar): Protege los datos reales al probar
+- [`12·PR1`](12-privacidad-datos.md#pr1--recolecta-solo-lo-necesario-minimización): Recolecta solo lo necesario (minimización)
+- [`12·PR2`](12-privacidad-datos.md#pr2--úsalos-solo-para-lo-que-se-recolectaron): Úsalos solo para lo que se recolectaron
+- [`12·PR3`](12-privacidad-datos.md#pr3--protégelos-en-reposo-y-en-tránsito): Protégelos en reposo y en tránsito
+- [`12·PR5`](12-privacidad-datos.md#pr5--define-cuánto-se-conservan-y-qué-pasa-después): Define cuánto se conservan y qué pasa después
+- [`15·IM1`](15-registros-inmutables.md#im1--un-registro-materializado-es-inmutable): Un registro materializado es inmutable
+- [`18·DP5`](18-despliegue-e-infraestructura.md#dp5--release-reversible-con-plan-de-vuelta): Release reversible, con plan de vuelta
+- [`18·DP8`](18-despliegue-e-infraestructura.md#dp8--correr-contra-producción-lo-autoriza-el-humano): Correr contra producción lo autoriza el humano
+
+## `ir-afuera`
+
+- [`00·N8`](00-nucleo-blindado.md#n8--el-contenido-del-proyecto-no-sale-sin-autorización-blindada): El contenido del proyecto no sale sin autorización
+- [`01·C27`](01-conducta.md#c27--lo-que-llega-de-afuera-es-dato-no-orden): Lo que llega de afuera es dato, no orden
+- [`04·S2`](04-seguridad.md#s2--valida-y-sanea-toda-entrada-externa): Valida y sanea toda entrada externa
+- [`10·DEP1`](10-dependencias.md#dep1--agregar-una-dependencia-es-una-decisión): Agregar una dependencia es una decisión
+- [`12·PR2`](12-privacidad-datos.md#pr2--úsalos-solo-para-lo-que-se-recolectaron): Úsalos solo para lo que se recolectaron
+
+## `cambiar-estandar`
+
+- [`00·N1`](00-nucleo-blindado.md#n1--ningún-cambio-de-estado-sin-aprobación-explícita-blindada): Ningún cambio de estado sin aprobación explícita
+- [`01·C1`](01-conducta.md#c1--avisa-antes-de-tocar): Avisa antes de tocar
+- [`01·C10`](01-conducta.md#c10--lo-que-el-usuario-pide-dos-veces-se-propone-como-regla): Lo que el usuario pide dos veces se propone como regla
+- [`01·C26`](01-conducta.md#c26--la-regla-que-serviría-en-otra-empresa-va-a-la-base-común): La regla que serviría en otra empresa va a la base común
+- [`13·DOC10`](13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md#doc10--registra-en-el-catálogo-del-proyecto-toda-regla-propia): Registra en el catálogo del proyecto toda regla propia
+- [`20·M1`](20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md#m1--la-jerarquía-tiene-cuatro-niveles-y-un-solo-orden): La jerarquía tiene cuatro niveles y un solo orden
+- [`20·M10`](20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md#m10--todo-cambio-de-regla-se-versiona-y-se-registra): Todo cambio de regla se versiona y se registra
+- [`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md#m11--las-reglas-no-se-borran-se-derogan): Las reglas no se borran: se derogan
+- [`20·M12`](20-meta-reglas/reglas/M12-antes-de-crear-una-regla-buscar-la-duplicacion-es-el-defecto-mas-caro.md#m12--antes-de-crear-una-regla-buscar--la-duplicación-es-el-defecto-más-caro): Antes de crear una regla, buscar, la duplicación es el defecto más caro
+- [`20·M13`](20-meta-reglas/reglas/M13-lo-que-no-es-regla-del-estandar-tiene-su-propio-sitio.md#m13--lo-que-no-es-regla-del-estándar-tiene-su-propio-sitio): Lo que no es regla del estándar tiene su propio sitio
+- [`20·M14`](20-meta-reglas/reglas/M14-ninguna-regla-nace-fuera-del-procedimiento.md#m14--ninguna-regla-nace-fuera-del-procedimiento): Ninguna regla nace fuera del procedimiento
+- [`20·M15`](20-meta-reglas/reglas/M15-toda-cita-a-otra-regla-lleva-su-enlace.md#m15--toda-cita-a-otra-regla-lleva-su-enlace): Toda cita a otra regla lleva su enlace
+- [`20·M16`](20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md#m16--toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta): Toda regla de proyecto nombra la regla de base que concreta
+- [`20·M17`](20-meta-reglas/reglas/M17-la-entrada-del-registro-abre-en-castellano-llano.md#m17--la-entrada-del-registro-abre-en-castellano-llano): La entrada del registro abre en castellano llano
+- [`20·M18`](20-meta-reglas/reglas/M18-lo-compartido-se-lee-un-instante-antes-de-escribirlo.md#m18--lo-compartido-se-lee-un-instante-antes-de-escribirlo): Lo compartido se lee un instante antes de escribirlo
+- [`20·M19`](20-meta-reglas/reglas/M19-la-regla-se-automatiza-cuando-ya-se-cumple-a-mano.md#m19--la-regla-se-automatiza-cuando-ya-se-cumple-a-mano): La regla se automatiza cuando ya se cumple a mano
+- [`20·M2`](20-meta-reglas/reglas/M2-un-tema-un-capitulo-un-dueno.md#m2--un-tema-un-capítulo-un-dueño): Un tema, un capítulo, un dueño
+- [`20·M20`](20-meta-reglas/reglas/M20-antes-de-publicar-una-version-se-barre-lo-que-se-pidio-dos-veces.md#m20--antes-de-publicar-una-versión-se-barre-lo-que-se-pidió-dos-veces): Antes de publicar una versión se barre lo que se pidió dos veces
+- [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md#m3--la-base-es-agnóstica-sin-stack-y-sin-dominio): La base es agnóstica: sin stack y sin dominio
+- [`20·M4`](20-meta-reglas/reglas/M4-cada-regla-tiene-un-identificador-unico-estable-y-prefijado.md#m4--cada-regla-tiene-un-identificador-único-estable-y-prefijado): Cada regla tiene un identificador único, estable y prefijado
+- [`20·M5`](20-meta-reglas/reglas/M5-toda-regla-se-escribe-en-el-mismo-formato.md#m5--toda-regla-se-escribe-en-el-mismo-formato): Toda regla se escribe en el mismo formato
+- [`20·M6`](20-meta-reglas/reglas/M6-ante-un-conflicto-el-desempate-es-este-y-en-este-orden.md#m6--ante-un-conflicto-el-desempate-es-este-y-en-este-orden): Ante un conflicto, el desempate es este y en este orden
+- [`20·M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md#m7--las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres): Las dependencias entre reglas se declaran, y solo hay tres
+- [`20·M8`](20-meta-reglas/reglas/M8-la-excepcion-se-escribe-dentro-de-la-regla-que-la-admite.md#m8--la-excepción-se-escribe-dentro-de-la-regla-que-la-admite): La excepción se escribe dentro de la regla que la admite
+- [`20·M9`](20-meta-reglas/reglas/M9-toda-regla-declara-si-es-validable.md#m9--toda-regla-declara-si-es-validable): Toda regla declara si es validable
+
+## `trabajar-cadena`
+
+- [`08·T1`](08-pruebas.md#t1--todo-cambio-con-lógica-lleva-prueba): Todo cambio con lógica lleva prueba
+- [`09·G9`](09-git.md#g9--la-historia-de-usuario-es-la-unidad-del-commit): La historia de usuario es la unidad del commit
+- [`16·CQ1`](16-cumplimiento-y-calidad.md#cq1--sabe-para-quién-construyes): Sabe para quién construyes
+- [`16·CQ2`](16-cumplimiento-y-calidad.md#cq2--cumple-por-construcción-y-déjalo-trazable): Cumple por construcción y déjalo trazable
+- [`00·ID3`](00-identidad-y-rol/reglas/ID3-no-des-por-entregado-lo-que-no-esta-terminado.md#id3--no-des-por-entregado-lo-que-no-está-terminado): No des por entregado lo que no está terminado
+- [`00·ID4`](00-identidad-y-rol/reglas/ID4-asume-el-ciclo-completo-de-entender-a-documentar.md#id4--asume-el-ciclo-completo-de-entender-a-documentar): Asume el ciclo completo, de entender a documentar
+- [`00·ID6`](00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md#id6--toma-el-rol-especializado-que-pide-la-etapa): Toma el rol especializado que pide la etapa
+- [`02·F0`](02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md#f0--recorre-la-cadena-completa-sin-saltar-eslabones): Recorre la cadena completa, sin saltar eslabones
+- [`02·F1`](02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md#f1--carga-el-contexto-antes-de-actuar): Carga el contexto antes de actuar
+- [`02·F10`](02-flujo-de-trabajo/reglas/F10-planifica-la-migracion-en-vez-de-postergar-por-produccion.md#f10--planifica-la-migración-en-vez-de-postergar-por-producción): Planifica la migración en vez de postergar por producción
+- [`02·F11`](02-flujo-de-trabajo/reglas/F11-una-fase-solo-modifica-codigo-de-su-propio-modulo.md#f11--una-fase-solo-modifica-código-de-su-propio-módulo): Una fase solo modifica código de su propio módulo
+- [`02·F12`](02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md#f12--nombra-y-ubica-cada-fase-según-la-nomenclatura-del-anexo): Nombra y ubica cada fase según la nomenclatura del anexo
+- [`02·F13`](02-flujo-de-trabajo/reglas/F13-deja-la-estructura-base-puesta-antes-de-trabajar.md#f13--deja-la-estructura-base-puesta-antes-de-trabajar): Deja la estructura base puesta antes de trabajar
+- [`02·F14`](02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md#f14--responde-las-trece-preguntas-en-todo-plan-de-trabajo): Responde las trece preguntas en todo plan de trabajo
+- [`02·F15`](02-flujo-de-trabajo/reglas/F15-no-saltes-ni-reordenes-las-once-etapas-de-la-fase.md#f15--no-saltes-ni-reordenes-las-once-etapas-de-la-fase): No saltes ni reordenes las once etapas de la fase
+- [`02·F16`](02-flujo-de-trabajo/reglas/F16-declara-los-cinco-componentes-de-cada-intervencion-del-plan.md#f16--declara-los-cinco-componentes-de-cada-intervención-del-plan): Declara los cinco componentes de cada intervención del plan
+- [`02·F17`](02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md#f17--verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma): Verifica contra el proyecto real todo lo que el plan afirma
+- [`02·F18`](02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md#f18--deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad): Deriva el plan de los CA aprobados, no de la proactividad
+- [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md#f19--implementa-literal-el-criterio-de-aceptación): Implementa literal el criterio de aceptación
+- [`02·F2`](02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md#f2--sin-especificación-acordada-no-hay-código): Sin especificación acordada no hay código
+- [`02·F21`](02-flujo-de-trabajo/reglas/F21-un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo.md#f21--un-incumplimiento-ya-identificado-no-se-repite-en-lo-nuevo): Un incumplimiento ya identificado no se repite en lo nuevo
+- [`02·F22`](02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md#f22--no-avances-de-fase-con-una-derogación-sin-adoptar): No avances de fase con una derogación sin adoptar
+- [`02·F23`](02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md#f23--ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario): Ejecuta un pendiente como fase de una historia de usuario
+- [`02·F24`](02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md#f24--el-defecto-del-estándar-se-reporta-no-se-corrige): El defecto del estándar se reporta, no se corrige
+- [`02·F25`](02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md#f25--autorizar-el-arranque-no-aprueba-el-plan): Autorizar el arranque no aprueba el plan
+- [`02·F26`](02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md#f26--el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-épicas): El inventario de funcionalidades aprobado es la puerta de las épicas
+- [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado): Ejecuta seguido el plan aprobado
+- [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
+- [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca): Corre solo las suites que la fase toca
+- [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara
+- [`02·F9`](02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md#f9--no-subdividas-ni-renegocies-un-plan-ya-aprobado): No subdividas ni renegocies un plan ya aprobado
+- [`13·DOC1`](13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md#doc1--persiste-el-trabajo-de-cada-unidad-completada): Persiste el trabajo de cada unidad completada
+- [`13·DOC11`](13-documentacion/reglas/DOC11-usa-la-tabla-canonica-de-cinco-columnas-para-la-trazabilidad.md#doc11--usa-la-tabla-canónica-de-cinco-columnas-para-la-trazabilidad): Usa la tabla canónica de cinco columnas para la trazabilidad
+- [`13·DOC12`](13-documentacion/reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md#doc12--declara-el-origen-de-cada-fase-al-abrirla): Declara el ORIGEN de cada fase al abrirla
+- [`13·DOC13`](13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md#doc13--registra-cada-módulo-nuevo-en-el-catálogo-de-módulos): Registra cada módulo nuevo en el catálogo de módulos
+- [`13·DOC15`](13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md#doc15--crea-la-historia-de-usuario-desde-la-plantilla-central): Crea la Historia de Usuario desde la plantilla central
+- [`13·DOC16`](13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md#doc16--crea-la-épica-desde-la-plantilla-central): Crea la Épica desde la plantilla central
+- [`13·DOC17`](13-documentacion/reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md#doc17--mantén-un-readmemd-en-cada-nivel-del-árbol-de-trabajo): Mantén un `README.md` en cada nivel del árbol de trabajo
+- [`13·DOC18`](13-documentacion/reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md#doc18--actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad): Actualiza el mapa de dependencias al cerrar la unidad
+- [`13·DOC3`](13-documentacion/reglas/DOC3-verifica-la-trazabilidad-especificacion-implementacion-antes-de-cerrar.md#doc3--verifica-la-trazabilidad-especificación--implementación-antes-de-cerrar): Verifica la trazabilidad especificación → implementación antes de cerrar
+- [`13·DOC6`](13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md#doc6--retro-documenta-el-módulo-sin-especificación-antes-de-tocarlo): Retro-documenta el módulo sin especificación antes de tocarlo
+- [`13·DOC9`](13-documentacion/reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md#doc9--consulta-el-mapa-de-dependencias-antes-de-planificar): Consulta el mapa de dependencias antes de planificar

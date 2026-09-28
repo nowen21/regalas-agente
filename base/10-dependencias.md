@@ -15,6 +15,8 @@ INCORRECTO: sumar una librería pesada para formatear una fecha en un solo lugar
 CORRECTO:   resolverlo con la utilidad estándar
 ```
 
+**Aplica a:** cambiar-codigo, ir-afuera
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ INCORRECTO: no versionar el lockfile → cada máquina instala versiones distint
 CORRECTO:   versionarlo → instalación idéntica en todos lados
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -78,6 +82,8 @@ INCORRECTO: la auditoría reporta una vulnerabilidad alta y se anota «para la
 CORRECTO:   se arreglan las dos pruebas y se actualiza; si de verdad no se
             puede, queda escrito qué la mitiga y hasta cuándo
 ```
+
+**Aplica a:** cambiar-codigo, correr-comando
 
 ---
 
@@ -114,6 +120,8 @@ INCORRECTO: commitear la carpeta de dependencias instaladas
 CORRECTO:   versionar manifiesto + lockfile; ignorar la carpeta instalada
 ```
 
+**Aplica a:** tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -145,6 +153,8 @@ INCORRECTO: el cliente del proveedor de correo llamado desde quince sitios;
             cambiar de proveedor toca los quince
 CORRECTO:   un envío propio por delante; cambiar de proveedor toca ese
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

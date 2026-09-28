@@ -16,6 +16,8 @@ CORRECTO:   un registro con nivel, hora, identificador de correlación y el id d
             pedido; nada del cliente
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -54,6 +56,8 @@ CORRECTO:   se mide la latencia y la tasa de error que sufre el usuario, y de ah
             las alertas
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -89,6 +93,8 @@ INCORRECTO: una alerta por cada pico de CPU, que todos aprenden a silenciar
 CORRECTO:   una alerta cuando el error del usuario supera el umbral, versionada y con
             su runbook
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -127,6 +133,8 @@ INCORRECTO: «la restauración la sabe hacer una sola persona del equipo»
 CORRECTO:   el runbook de restauración versionado y probado; cualquiera lo sigue
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -162,6 +170,8 @@ INCORRECTO: el postmortem concluye «fue un error humano de tal persona»
 CORRECTO:   concluye qué del sistema permitió el error y qué cambia para que no
             vuelva, y queda registrado como señal
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 
@@ -201,6 +211,8 @@ La fila **11** pasa: enlaza [plantillas/postmortem.md](../plantillas/postmortem.
 INCORRECTO: el agente se queda vigilando el tablero y reinicia servicios por su cuenta
 CORRECTO:   deja salud, alertas y runbooks escritos; operar en vivo lo hace el humano
 ```
+
+**Aplica a:** correr-comando
 
 ---
 

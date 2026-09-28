@@ -9,6 +9,8 @@ INCORRECTO: implementar, mostrar todo en el chat y cerrar
 CORRECTO:   implementar + persistir plan, pruebas y resultado
 ```
 
+**Aplica a:** trabajar-cadena, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

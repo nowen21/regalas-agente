@@ -9,6 +9,8 @@ INCORRECTO: "agregá validación X" → la diseño desde cero
 CORRECTO:   reviso docs → ya hay un servicio que hace algo similar → propongo extenderlo
 ```
 
+**Aplica a:** trabajar-cadena, recibir-pedido
+
 ---
 
 ### Checklist  ·  **CUMPLE**

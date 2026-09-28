@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import acciones         # noqa: E402
 import aislamiento      # noqa: E402
 import amarre           # noqa: E402
+import mapa_tareas      # noqa: E402
 import sesiones         # noqa: E402
 import sitio            # noqa: E402
 import temas            # noqa: E402
@@ -311,6 +312,13 @@ def cmd_acciones(a):
     if linea:
         print(linea)
     return codigo
+
+
+def cmd_tareas(a):
+    """`EP-005·HU-023` · Toda regla dice a qué tareas aplica, y el mapa las junta."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(mapa_tareas.validar(raiz),
+                    f"El mapa de tareas · {relativo(raiz)}")
 
 
 def cmd_amarre(a):
@@ -783,6 +791,11 @@ def main():
                         help="qué piezas están atadas a la herramienta · el mapa no envejece")
     am.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
     am.set_defaults(func=cmd_amarre)
+
+    tm = sub.add_parser("tareas",
+                        help="toda regla dice a qué tareas aplica y el mapa está al día")
+    tm.add_argument("--raiz", default=RAIZ, help="carpeta del estándar")
+    tm.set_defaults(func=cmd_tareas)
 
     pv = sub.add_parser("plan",
                         help="lo hecho contra el plan aprobado · 02·F8 y sus casos")

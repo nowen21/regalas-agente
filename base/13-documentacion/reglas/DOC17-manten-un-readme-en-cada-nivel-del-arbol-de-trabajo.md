@@ -10,6 +10,8 @@ INCORRECTO: la carpeta de la épica tiene ocho HU dentro y ningún índice ·
 CORRECTO:   su README lista las ocho, cada una con su título y su estado
 ```
 
+**Aplica a:** trabajar-cadena, escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

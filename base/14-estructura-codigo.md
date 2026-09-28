@@ -16,6 +16,8 @@ INCORRECTO: archivos de un módulo dispersos por carpetas globales según tipo
 CORRECTO:   el módulo agrupado en una ubicación predecible
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -51,6 +53,8 @@ CORRECTO:   "es_principal" — el contexto de la tabla ya aclara
 INCORRECTO: dejar autogenerar el índice en una tabla de nombre largo → excede el límite
 CORRECTO:   pasar un nombre corto y explícito
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -92,6 +96,8 @@ Las convenciones aplican a lo **nuevo**. El código existente que no las sigue *
 INCORRECTO: mover y renombrar legacy "de paso" mientras hago otra cosa
 CORRECTO:   crear lo nuevo con la convención; dejar el legacy intacto salvo tarea explícita
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

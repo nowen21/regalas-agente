@@ -12,6 +12,8 @@ CORRECTO:   "cliente" definido en una línea en el glosario del proyecto, y los
             dos documentos usándolo igual
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

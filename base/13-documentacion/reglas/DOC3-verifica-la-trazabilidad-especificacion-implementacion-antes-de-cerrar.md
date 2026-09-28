@@ -9,6 +9,8 @@ INCORRECTO: "pruebas verdes → cierro"
 CORRECTO:   "pruebas verdes + tabla de trazabilidad sin faltantes → cierro"
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

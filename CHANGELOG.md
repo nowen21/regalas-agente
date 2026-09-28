@@ -11,6 +11,37 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.3.0 — 2026-09-28
+
+**Con cada mensaje, el agente recibe las reglas de lo que ese mensaje le pide hacer.** Si el mensaje pide subir a git, le llegan las de control de versiones; si pide redactar, las de redacción; y siempre las que rigen todo pedido y toda respuesta.
+
+Antes ya existía un mecanismo para esto, pero elegía las reglas por parecido de palabras y fallaba justo en los pedidos más comunes: «suba a git» no traía ninguna, y un pedido de redacción no traía las reglas de redacción. En este repositorio, además, estaba desconectado.
+
+**Lo que entra:**
+
+- Las 252 reglas vigentes dicen a qué tareas aplican, y `base/mapa-de-tareas.md` las junta todas.
+- `base/tareas.md` suma las palabras del pedido que señalan cada tarea.
+- `validadores/recuperar.py` elige por tareas con el mapa. Ya no excluye los capítulos `00` y `01`, y todo lo que inyecta cabe en el tope de la herramienta, contando lo que suma el enganche.
+- `.claude/settings.json` del estándar conecta `hook_reglas.py`, como ya lo hacía `instalar.py` en los proyectos.
+- `validar.py tareas`, que corre solo antes de cada publicación, falla si una regla no dice sus tareas, si nombra una tarea fuera de la lista o si el mapa quedó viejo.
+- `validar.py amarre` ya no da por clasificado un programa por nombrarlo en una frase, y el mapa del amarre clasifica los dos que le faltaban.
+
+**MENOR** (aditivo): ninguna regla cambia qué exige, y un proyecto no tiene que tocar ningún archivo; al reinstalar, su enganche de publicación suma `tareas`, que no reporta nada donde no hay reglas en `base/`. Cierra el pendiente 100 con la fase `B` de HU-023 en EP-005.
+
+---
+
+## 39.2.0 — 2026-09-28
+
+**Hay un mapa que dice qué reglas se leen antes de cada tarea.** Antes, para encontrar una regla había que saber de antemano en qué capítulo estaba; ahora se busca la tarea y ahí están las reglas que le aplican, cada una con su enlace.
+
+El mapa no lo escribe una persona. Cada regla dice a qué tareas aplica, y un programa las junta; si una regla cambia, el mapa se vuelve a armar.
+
+**Lo que entra:** la lista cerrada de diez tareas en `base/tareas.md`; la línea `**Aplica a:**` en las diez reglas del núcleo; `validadores/mapa_tareas.py`, que escribe `base/mapa-de-tareas.md`, con sus pruebas. `validadores/metareglas.py` deja esa línea fuera del cuerpo de la regla, igual que la de quién la hace cumplir: no cuenta para el largo ni anula el checklist. `mapa_tareas.py` queda clasificado como libre en el mapa del amarre.
+
+**MENOR** (aditivo): ninguna regla cambia qué exige, y ningún proyecto tiene que tocar un archivo. Las 242 reglas vigentes que faltan y el validador que exige la línea en todas son la fase `B`. Sale del pendiente 100 y lo construye la fase `A` de HU-023 en EP-005.
+
+---
+
 ## 39.1.0 — 2026-09-28
 
 **Todo lo que pertenece al agente o al proyecto se guarda dentro del repositorio, y a su contenido se llega por un enlace.** Lo que la herramienta guarde por su cuenta afuera se corrige en su origen, en vez de leerse de allá.

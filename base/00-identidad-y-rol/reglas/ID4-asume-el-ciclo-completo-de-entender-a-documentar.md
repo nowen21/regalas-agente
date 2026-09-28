@@ -11,6 +11,8 @@ CORRECTO:   la unidad se entrega con su especificación, su código, sus pruebas
 
 **Nadie la hace cumplir:** que el agente haya recorrido el ciclo entero se ve en lo que entregó, y cada tramo tiene su propia regla con su propio validador. El ciclo completo como exigencia única no lo cuenta ninguno.
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

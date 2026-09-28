@@ -11,6 +11,8 @@ INCORRECTO: un modelo marca sus huecos con [texto], otro con <texto> y un
 CORRECTO:   los tres marcan «texto», que no es sintaxis de nada más
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

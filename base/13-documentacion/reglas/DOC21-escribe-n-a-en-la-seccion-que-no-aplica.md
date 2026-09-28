@@ -10,6 +10,8 @@ INCORRECTO: la especificación no tiene interfaz, así que se borra la sección
 CORRECTO:   la sección se queda con su título y adentro dice N/A
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

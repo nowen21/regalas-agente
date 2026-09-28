@@ -9,6 +9,8 @@ INCORRECTO: la regla de índices se escribe en el capítulo de datos y otra vez 
 CORRECTO:   vive en el de rendimiento; el de datos la enlaza
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

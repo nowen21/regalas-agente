@@ -17,6 +17,8 @@ INCORRECTO: la URL del servicio de pago en el código con un if por entorno
 CORRECTO:   leerla de la configuración; cada entorno trae la suya
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ INCORRECTO: versionar el archivo de entorno con las claves reales
 CORRECTO:   versionar la plantilla vacía; el real queda en cada entorno
 ```
 
+**Aplica a:** cambiar-codigo, tocar-git
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -77,6 +81,8 @@ INCORRECTO: se prueba contra una versión distinta del motor «porque es lo que 
 CORRECTO:   se iguala la versión, o se anota qué queda sin probar y cómo se comprueba
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -105,6 +111,8 @@ Todo cambio que haya que hacer en producción —una variable, un permiso, un pa
 INCORRECTO: «también hay que subirle la variable nueva, me acuerdo cuando toque»
 CORRECTO:   el paso queda escrito con su valor y quién lo aplica
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 
@@ -138,6 +146,8 @@ INCORRECTO: la bandera se enciende al liberar y nadie la quita; dos años despu�
 CORRECTO:   la bandera nace con la fecha en que se retira, y al retirarla se borra
             también la rama que ya no se usa
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

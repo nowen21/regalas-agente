@@ -9,6 +9,8 @@ INCORRECTO: la regla se escribe y nadie decide si un script puede comprobarla
 CORRECTO:   se responde al escribirla y queda registrada en validadores/reglas-validables.md
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

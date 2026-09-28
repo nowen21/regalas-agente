@@ -11,6 +11,8 @@ CORRECTO:   su resumen los lista, cada uno con su estado y con la pregunta
             que quedó viva
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

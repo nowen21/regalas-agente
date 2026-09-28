@@ -162,7 +162,12 @@ class Regla:
 # regla**: va después del ejemplo y dice cómo se ejecuta lo que el cuerpo ya
 # exigió. Contarla dentro del cuerpo hacía reprobar la fila 10 a ocho reglas del
 # capítulo `00` que cabían en el molde el día anterior.
-_FUERA_DEL_CUERPO = ("**Quién la hace cumplir:", "**Nadie la hace cumplir:")
+#
+# `EP-005·HU-023` · La línea que dice a qué tareas aplica la regla tampoco es la
+# regla: la lee `mapa_tareas.py` para armar el mapa. Si contara, anotar las 261
+# reglas anularía sus 261 checklists sin haber cambiado qué exige ninguna.
+_FUERA_DEL_CUERPO = ("**Quién la hace cumplir:", "**Nadie la hace cumplir:",
+                     "**Aplica a:**")
 
 
 def reglas(raiz=None):

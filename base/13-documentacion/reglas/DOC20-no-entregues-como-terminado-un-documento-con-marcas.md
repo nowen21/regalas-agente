@@ -11,6 +11,8 @@ CORRECTO:   se completan las tres, o se entrega diciendo que faltan esas tres
             y que el documento todavía no está terminado
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -9,6 +9,8 @@ INCORRECTO: a media sesión se sube VERSION a 10.0.0 y se sigue trabajando dos h
 CORRECTO:   el número se lee de lo guardado y se sube en el mismo movimiento
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

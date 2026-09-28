@@ -9,6 +9,8 @@ INCORRECTO: se escribe una regla nueva sin abrir el capítulo dueño, y termina 
 CORRECTO:   se busca por concepto → ya existe → se afina la que está
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

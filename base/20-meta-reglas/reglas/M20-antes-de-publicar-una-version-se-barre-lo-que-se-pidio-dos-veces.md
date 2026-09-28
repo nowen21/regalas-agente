@@ -11,6 +11,8 @@ CORRECTO:   al cerrar la versión se barre el tramo, sale la candidata con las
             tres veces que se pidió, y el usuario decide si se escribe
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

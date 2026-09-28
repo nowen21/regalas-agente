@@ -20,6 +20,8 @@ CORRECTO:   "¿Qué sector y jurisdicción? ¿Qué normas/frameworks aplican?" a
 ```
 
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -54,6 +56,8 @@ CORRECTO:   mapear cada requisito del marco a un control real + evidencia en la 
 ```
 
 
+**Aplica a:** trabajar-cadena, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -87,6 +91,8 @@ INCORRECTO: revisar la seguridad "a ojo", con lo que cada quien recuerde
 CORRECTO:   recorrer los controles de OWASP y decir cuáles aplican y dónde quedan
 ```
 
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -123,6 +129,8 @@ INCORRECTO: "está listo" sin mirar mantenibilidad ni fiabilidad
 CORRECTO:   revisar el cambio contra los atributos de 25010 y nombrar los trade-offs
 ```
 
+
+**Aplica a:** cambiar-codigo
 
 ---
 

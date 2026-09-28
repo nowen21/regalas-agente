@@ -13,6 +13,8 @@ CORRECTO:   si el volumen era problema, la subdivisión se propone ANTES de apro
             después, ejecución continua
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

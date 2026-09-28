@@ -11,6 +11,8 @@ CORRECTO:   la secuencia exacta, con cada comando, su orden y qué verificar
             después de cada uno
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

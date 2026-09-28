@@ -9,6 +9,8 @@ INCORRECTO: abrir la unidad y explorar el proyecto entero como si fuera la prime
 CORRECTO:   leer el mapa → si hay duda puntual, verificarla en el archivo concreto
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

@@ -11,6 +11,8 @@ Las pruebas permiten cambiar el código sin miedo y prueban que la especificaci�
 Toda funcionalidad o corrección con lógica se acompaña de pruebas, y su plan se aprueba junto con el plan de trabajo ([`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
 **Excepción** — el cambio sin lógica, como mover un texto o ajustar un color, va sin prueba **si se declara en el plan cuál es y por qué** (condición). No vale para nada que decida, calcule o valide (límite), y lo aprueba el usuario al aprobar el plan (autorizador).
 
+**Aplica a:** cambiar-codigo, trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -48,6 +50,8 @@ INCORRECTO: la prueba verifica que se llamó a tal método interno en tal orden
 CORRECTO:   dado el input X, la respuesta/efecto es Y
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -78,6 +82,8 @@ Cumplía en el análisis del 2026-08-07 y se volvió a contar: 275 de 320.
 INCORRECTO: prueba que depende de la fecha de hoy y falla el día 31
 CORRECTO:   fijar la fecha para que el resultado sea estable
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -114,6 +120,8 @@ INCORRECTO: «para que la prueba tenga datos de verdad» se apunta la suite a la
 CORRECTO:   la suite levanta su base efímera; lo que no se pueda reproducir se verifica a mano y queda escrito
 ```
 
+**Aplica a:** cambiar-codigo, tocar-datos
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -149,6 +157,8 @@ INCORRECTO: implementar + escribir pruebas + "listo"
 CORRECTO:   implementar + escribir + EJECUTAR + "Verdes 4/4"
 ```
 
+**Aplica a:** cambiar-codigo, correr-comando
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -182,6 +192,8 @@ INCORRECTO: pruebas que suben el porcentaje verificando un getter
 CORRECTO:   pruebas sobre reglas, límites y errores que importan
 ```
 
+**Aplica a:** cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -210,6 +222,8 @@ INCORRECTO: tres casos que se le ocurrieron a quien escribió el código
 CORRECTO:   los límites, un caso por grupo, las combinaciones que se cruzan,
             y lo que no debería aceptarse
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -241,6 +255,8 @@ INCORRECTO: se corre la función, sale 1 240, y se escribe que el esperado es 1 
 CORRECTO:   se calcula aparte a partir de la especificación, da 1 260, y se
             descubre que el código estaba mal
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 

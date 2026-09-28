@@ -10,6 +10,8 @@ INCORRECTO: el pendiente dice que 354 enlaces no cumplen DOC14,
 CORRECTO:   los 354 siguen en su pendiente y los de hoy nacen bien
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

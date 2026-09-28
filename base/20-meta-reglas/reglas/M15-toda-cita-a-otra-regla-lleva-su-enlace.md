@@ -9,6 +9,8 @@ INCORRECTO: No se saltan (`00` · N3).
 CORRECTO:   No se saltan ([`00·N3`](../../00-nucleo-blindado.md#n3--no-romper-cosas-para-pasar-un-obstáculo-blindada)).
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

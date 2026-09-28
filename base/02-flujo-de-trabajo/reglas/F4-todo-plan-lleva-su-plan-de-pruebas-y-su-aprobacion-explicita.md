@@ -13,6 +13,8 @@ CORRECTO:   usuario dice "arranque con Fase X" → agente redacta plan + pruebas
             PAUSA + presenta → usuario aprueba (o pide cambios) → agente implementa
 ```
 
+**Aplica a:** trabajar-cadena, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

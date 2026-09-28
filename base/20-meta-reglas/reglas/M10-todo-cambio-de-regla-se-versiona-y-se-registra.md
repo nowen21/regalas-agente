@@ -9,6 +9,8 @@ INCORRECTO: se afina la redacción de una regla y el CHANGELOG queda "para despu
 CORRECTO:   el cambio, su entrada en el CHANGELOG y la subida de VERSION van en el mismo movimiento
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**

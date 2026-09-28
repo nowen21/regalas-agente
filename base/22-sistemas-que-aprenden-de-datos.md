@@ -23,6 +23,8 @@ CORRECTO:   el modelo está en el inventario antes de recibir su primera
             petición, con qué decide y de qué datos aprendió
 ```
 
+**Aplica a:** escribir-documento, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -52,6 +54,8 @@ INCORRECTO: responsable: equipo de datos
 CORRECTO:   responsable: «nombre de la persona», y su reemplazo mientras
             no esté
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 
@@ -84,6 +88,8 @@ CORRECTO:   el que ordena un catálogo se aprueba una vez; el que le niega
             algo a una persona lleva revisión humana y medición de sesgo
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -114,6 +120,8 @@ INCORRECTO: el modelo venía sugiriendo bien seis meses, así que se le
 CORRECTO:   ejecutar directo se autoriza aparte, con quién lo autorizó y
             qué pasa cuando se equivoque
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -146,6 +154,8 @@ CORRECTO:   se aprobó en marzo, se revisa cada tres meses, y la fecha de
             la próxima está en la ficha
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -176,6 +186,8 @@ INCORRECTO: el tablero muestra disponibilidad y tiempo de respuesta, y
 CORRECTO:   además se mide si acierta como el día que se aprobó, y hay un
             umbral con un aviso a la persona a cargo
 ```
+
+**Aplica a:** cambiar-codigo
 
 ---
 
@@ -208,6 +220,8 @@ CORRECTO:   dice de qué sistema salieron, de qué periodo, quién los cedió
             y para qué usos
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -239,6 +253,8 @@ CORRECTO:   se optimiza «tiempo en la aplicación» porque se buscaba X, y
             queda escrito qué comportamiento indeseado podría producir
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**
@@ -269,6 +285,8 @@ INCORRECTO: se apagó el modelo y las peticiones empezaron a devolver el
 CORRECTO:   se apagó, y queda escrito que desde esa fecha lo decide una
             regla fija, con cuál
 ```
+
+**Aplica a:** escribir-documento
 
 ---
 

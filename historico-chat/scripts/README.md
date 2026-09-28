@@ -29,3 +29,4 @@
 | [2026-08-25](2026-08-25/) | Las fases C a H de la versión 1 de la plataforma, con sus pruebas y sus cinco sabotajes, y las 23 estaciones de commit que nadie marcó |
 | [2026-08-26](2026-08-26/) | El inventario que dejó de mantenerse a mano, el tope de ruta de Windows, el vocabulario del estado, y los cinco documentos que citaban una historia cerrada como abierta |
 | [2026-08-27](2026-08-27/) | La `HU-021` en sus dos fases, el resumen de la sesión que iba nueve hallazgos atrás, y el pendiente 88 |
+| [2026-09-28](2026-09-28/) | La fase `B` de `EP-005·HU-023`: la línea de tareas en las 242 reglas que faltaban |

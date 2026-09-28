@@ -12,6 +12,8 @@ CORRECTO:   idea → análisis → objetivo y alcance → épica → HU → espe
             → plan → construir
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

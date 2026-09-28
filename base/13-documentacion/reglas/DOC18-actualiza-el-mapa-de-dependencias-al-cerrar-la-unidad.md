@@ -9,6 +9,8 @@ INCORRECTO: cerrar la unidad y dejar el mapa para más adelante
 CORRECTO:   el cambio que cierra la unidad incluye el mapa al día
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

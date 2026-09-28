@@ -10,6 +10,8 @@ INCORRECTO: el análisis abre 15 preguntas, el usuario las responde en el chat
 CORRECTO:   análisis → respuestas → archivo de cierre con la tabla + aviso en el original
 ```
 
+**Aplica a:** escribir-documento
+
 ---
 
 ### Checklist  ·  **CUMPLE**

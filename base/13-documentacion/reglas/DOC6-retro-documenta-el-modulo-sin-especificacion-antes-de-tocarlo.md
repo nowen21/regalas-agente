@@ -10,6 +10,8 @@ CORRECTO:   retro-documentarlo primero · el análisis persistido queda como fot
             del punto de partida
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

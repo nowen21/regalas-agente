@@ -1,119 +1,61 @@
 # -*- coding: utf-8 -*-
 """Qué reglas pide **esta** solicitud del usuario.
 
-**El problema que cierra.** Al abrir la sesión llegan literales los capítulos
-`00` y `01`, y del resto solo el índice, con la orden de leer el archivo antes
-de tocar el tema. Esa orden depende de que el agente se acuerde de cumplirla, y
-cuando no se acuerda trabaja sin la regla y nadie se entera. Es el mismo patrón
-que ya falló con el arranque: una promesa en vez de un hecho.
+**El problema que cierra.** Al abrir la sesión, las reglas llegan cortadas: la
+herramienta guarda aparte todo lo que pase de su tope y deja ver solo el
+comienzo. Leer el resto depende de que el agente se acuerde, y cuando no se
+acuerda trabaja sin la regla y nadie se entera.
 
-**Lo que hace.** Lee el mensaje del usuario y devuelve el **texto completo** de
-las reglas que ese mensaje pide, con su presupuesto y con el porqué de cada
-una. No resume: una regla resumida es una regla distinta.
+**Lo que hace.** Lee el mensaje del usuario, reconoce qué tareas pide y le
+entrega al agente las reglas que el mapa de tareas pone bajo ellas:
 
-**No hay archivo de índice, a propósito.** Armarlo desde las reglas mismas
-cuesta 0,20 s para las 257, medido el 2026-09-16. Un índice generado ahorraría
-eso y agregaría lo que este repositorio ya sabe que duele: una copia que se
-queda vieja sin avisar. Se arma cada vez y siempre corresponde a lo que hay en
-`base/`.
+- las de las tareas que van en **todo** mensaje (`recibir-pedido` y
+  `responder`), con su título y dónde viven;
+- las de las tareas que **este** mensaje pide, con su texto completo mientras
+  quepan en el presupuesto, y nombradas las que no quepan.
 
-**De qué se ocupa y de qué no.** Recupera de los capítulos que al arrancar solo
-llegan como índice (`02` en adelante), más las **blindadas** del núcleo cuando
-el mensaje nombra una acción que no se deshace. Los capítulos `00` y `01` no se
-recuperan por semejanza: esos rigen todos los turnos y no dependen del tema.
+**Por qué por tareas y no por semejanza** (`EP-005·HU-023`, fase `B`). Hasta el
+2026-09-28 elegía comparando palabras del mensaje con el título de cada regla,
+más una lista de disparadores. Con los mensajes reales de esa sesión falló:
+«suba a git» no trajo nada, porque solo comparaba palabras de cuatro letras o
+más y no reconocía «suba» como «subir»; un pedido de redacción trajo una regla
+de índices y ninguna de las de redacción, porque excluía los capítulos `00` y
+`01` suponiendo que habían llegado al arrancar. Cada regla dice ahora a qué
+tareas aplica, y las palabras que señalan cada tarea están escritas en
+`base/tareas.md`: no hay nada que adivinar.
 
-**La derogada nunca va sola.** Inyectar una regla que dejó de regir es peor que
-no inyectar ninguna, así que va marcada y con su reemplazo al lado, o no va.
+**La derogada nunca va.** Inyectar una regla que dejó de regir es peor que no
+inyectar ninguna.
 """
 import os
 import re
 import unicodedata
 
 import comun
+import mapa_tareas
 import metareglas
 from comun import RAIZ, leer
 
-# Cuánto se permite inyectar por turno. El recordatorio fijo del enganche pesa
-# menos de 1 KB, así que esto es el grueso de lo que se agrega a un mensaje.
-TOPE = 10 * 1024
+# Cuánto se permite inyectar por turno. Por encima de 10 KB, la herramienta
+# guarda la salida del enganche en un archivo aparte y deja ver solo el
+# comienzo, que es lo que le pasó al arranque. El enganche que llama a este
+# recuperador le suma su recordatorio fijo y la medición de la respuesta
+# anterior, así que se le dejan 1,5 KB: medido el 2026-09-28, esas dos partes
+# juntas no pasan de 1 KB.
+TOPE = 10 * 1024 - 1536
 
 # Un identificador citado en el mensaje: `02·F24`, `F24`, `13·DOC22`. Se acepta
 # solo si existe en el índice, que es lo que descarta un `B2C` o un `PPT`.
 _CITA = re.compile(r"(?:(\d{2})·)?\b([A-Z]{1,4}\d+(?:\.\d+)?)\b")
 
-# Palabras que no distinguen nada y ensucian el puntaje.
-_VACIAS = frozenset("""
-para pero porque como cuando donde desde hasta sobre entre cada todo toda
-todos todas este esta estos estas ese esa esos esas aquel esto eso nada algo
-alguien alguno alguna cual cuales quien quienes cuanto cuanta mucho mucha
-poco poca otro otra otros otras mismo misma tanto tanta segun ademas tambien
-solo solamente siempre nunca ahora luego antes despues entonces aunque
-mientras sino salvo hacer hace hecho haces haber habia tiene tienen tener
-puede pueden poder debe deben deber estar estan estado siendo ser soy eres
-que los las del con por una uno unos unas sus mis tus nos les lles
-favor gracias entiendo entonces bueno bien mal ver vea vean mira miren
-archivo archivos carpeta carpetas proyecto proyectos regla reglas estandar
-cambio cambios cambiar cambie cambia nuevo nueva nuevos nuevas viejo vieja
-cosa cosas forma formas parte partes punto puntos caso casos tema temas
-trabajo trabajar tarea tareas detecta detectar detecto funciona funcionar
-sirve sirven queda quedar quedo agente herramienta esto eso aquello
-""".split())
-
-# **De dónde sale esta lista.** No de una teoría del idioma: de ver qué
-# traía de más. El 2026-09-16, la pregunta «¿ya detecta el nuevo cambio?»
-# recuperó `D2`, `T1`, `G6` y `EST1`, ninguna de ellas del tema, porque
-# «cambio» está en el título de medio estándar. Una palabra que aparece en
-# todas partes no distingue nada, y el ruido enseña a ignorar el aviso.
-
-# Lo que **no se puede fallar**: el mensaje nombra una acción de las que no se
-# deshacen, o un tema con capítulo propio. La semejanza de palabras acierta
-# casi siempre y «casi» no alcanza para `N4`, así que estas van por lista.
-#
-# Cada entrada es `(términos, identificadores o capítulos)`. Un capítulo trae
-# sus reglas vigentes; un identificador, esa sola.
-DISPARADORES = (
-    (("commit", "commitear", "push", "pushear", "rama", "ramas", "git",
-      "versionar", "subir"), ("N2", "09")),
-    (("borrar", "borre", "eliminar", "elimine", "truncar", "vaciar",
-      "migrar", "migracion", "produccion", "restaurar", "respaldo"),
-     ("N4", "N5", "N7", "03")),
-    (("credencial", "credenciales", "clave", "claves", "contrasena",
-      "token", "secreto", "secretos", "llave"), ("N6", "04")),
-    (("publicar", "instalar", "desinstalar", "descargar", "externo",
-      "internet", "servicio"), ("N8", "10")),
-    (("prueba", "pruebas", "test", "tests", "suite", "cobertura"), ("08",)),
-    (("documentar", "documento", "documentacion", "readme", "especificacion",
-      "glosario", "trazabilidad", "historia", "epica"), ("13",)),
-    (("plan", "planear", "planificar", "fase", "fases", "etapa", "alcance"),
-     ("02",)),
-    (("seguridad", "vulnerabilidad", "inyeccion", "permiso", "permisos",
-      "autenticacion", "autorizacion"), ("04",)),
-    (("privacidad", "personales", "cedula", "anonimizar", "enmascarar"),
-     ("12",)),
-    (("error", "errores", "excepcion", "log", "logs", "registro"), ("05",)),
-    (("rendimiento", "lento", "lentitud", "consulta", "consultas", "indice"),
-     ("06",)),
-    (("dependencia", "dependencias", "paquete", "paquetes", "libreria",
-      "version"), ("10",)),
-    (("configuracion", "entorno", "entornos", "variable", "variables"),
-     ("11",)),
-    (("refactor", "refactorizar", "limpieza", "duplicado", "complejidad"),
-     ("07", "14")),
-    (("interfaz", "pantalla", "boton", "formulario", "usabilidad"), ("17",)),
-    (("despliegue", "desplegar", "servidor", "contenedor", "docker"), ("18",)),
-    (("observabilidad", "monitoreo", "metrica", "metricas", "alerta"), ("19",)),
-)
-
 # Los siete capítulos que son patrones opt-in: rigen solo si el proyecto los
 # encendió en el punto 5.1 de su `CLAUDE.md`. Ofrecer una regla de un capítulo
 # apagado es peor que no ofrecer ninguna: el agente aplica algo que en este
-# proyecto no rige. Lo destapó el uso el 2026-09-16, cuando la palabra
-# «prueba» trajo `21·AU6` a un proyecto con el `21` en `no`.
+# proyecto no rige.
 _OPT_IN = re.compile(r"Patr[oó]n opt-in\s*`?(\d{2})`?[^:]*:\**\s*(.+)")
 
-# Los capítulos que rigen todos los turnos. No se recuperan por semejanza: al
-# arrancar llegan enteros, y el enganche de cada turno recuerda los suyos.
-SIEMPRE = ("00", "01")
+# La marca del encabezado no hace falta en el bloque de todo mensaje.
+_MARCA = re.compile(r"\s*(`\[[^\]]+\]`|\*opt-in\*)\s*$")
 
 
 def opt_in_apagados(proyecto):
@@ -150,10 +92,21 @@ def _limpio(texto):
     return sin.lower()
 
 
-def _terminos(texto):
-    """Las palabras con las que vale la pena comparar."""
-    return {p for p in re.findall(r"[a-z]{4,}", _limpio(texto))
-            if p not in _VACIAS}
+def _palabras(texto):
+    """Todas las palabras, de cualquier largo: «git» cuenta igual que «commit»."""
+    return set(re.findall(r"[a-z0-9]+", _limpio(texto)))
+
+
+# Lo que el editor le agrega al mensaje sin que el usuario lo escriba: qué
+# archivo tiene abierto y qué seleccionó. Visto en uso el 2026-09-28: «qué
+# sigue?» traía reglas de documentos y de la cadena porque la ruta del archivo
+# abierto decía `.md`, `HU` y `plan`.
+_DEL_EDITOR = re.compile(r"<(ide_[a-z_]+|system-reminder)>.*?</\1>", re.S)
+
+
+def _lo_que_escribio(mensaje):
+    """El mensaje sin lo que agregó el editor."""
+    return _DEL_EDITOR.sub(" ", mensaje or "")
 
 
 def indice(raiz=None):
@@ -161,13 +114,22 @@ def indice(raiz=None):
     return {r.id: r for r in metareglas.reglas(raiz or RAIZ)}
 
 
+def tareas_del_mensaje(mensaje, raiz=None):
+    """`{tarea: palabras del mensaje que la señalan}`, sin las que van siempre."""
+    dichas = _palabras(mensaje)
+    salida = {}
+    for tarea, suyas in mapa_tareas.palabras(raiz or RAIZ).items():
+        comunes = dichas & suyas
+        if comunes:
+            salida[tarea] = comunes
+    return salida
+
+
 def _ejemplo(regla):
     """El bloque `INCORRECTO / CORRECTO` de la regla, o `""`.
 
-    **`regla.ejemplo` es un booleano**, no el texto: dice si la regla trae
-    ejemplo, que es lo que el checklist necesita saber. El texto hay que
-    sacarlo del archivo, y vale la pena: el ejemplo es la mitad que evita
-    interpretar mal el cuerpo.
+    `regla.ejemplo` es un booleano, no el texto: el texto hay que sacarlo del
+    archivo, y vale la pena, porque el ejemplo evita interpretar mal el cuerpo.
     """
     dentro, bloque = False, []
     for linea in (regla.texto or "").splitlines():
@@ -183,12 +145,7 @@ def _ejemplo(regla):
 
 
 def _cuerpo(regla):
-    """Lo que se inyecta de una regla: encabezado, cuerpo y ejemplo.
-
-    **Sin el sello del checklist**, por lo mismo que lo quita `cargador.py`: es
-    el registro de que alguien la revisó, y no le sirve a quien tiene que
-    obedecerla.
-    """
+    """Lo que se inyecta de una regla: encabezado, cuerpo y ejemplo, sin el sello."""
     partes = [regla.encabezado.strip()]
     partes += [t for _, t in regla.cuerpo]
     ejemplo = _ejemplo(regla)
@@ -207,58 +164,8 @@ def _citadas(mensaje, idx):
     return encontrados
 
 
-def _de_los_disparadores(terminos, idx):
-    """Lo que la lista obliga a traer: `({id: motivo}, {capitulo: motivo})`.
-
-    **Un capítulo no entra entero.** «commit» traía las once reglas del `09`,
-    que es casi lo mismo que mandar el índice y deja al agente buscando. El
-    capítulo entra como tema, y después se eligen sus mejores reglas contra el
-    mensaje. Lo que sí entra completo es el identificador nombrado acá: `N4` no
-    se decide por semejanza.
-    """
-    obligados, capitulos = {}, {}
-    for palabras, destinos in DISPARADORES:
-        cuales = terminos.intersection(palabras)
-        if not cuales:
-            continue
-        motivo = "el mensaje dice «%s»" % "», «".join(sorted(cuales))
-        for destino in destinos:
-            if len(destino) == 2 and destino.isdigit():
-                capitulos.setdefault(destino, motivo)
-            elif destino in idx:
-                obligados.setdefault(destino, motivo)
-    return obligados, capitulos
-
-
-def _por_semejanza(terminos, idx, capitulo=None):
-    """`{id: puntaje}` por las palabras que comparten mensaje y regla.
-
-    El título pesa más que el cuerpo: una palabra en el título dice de qué
-    trata la regla, y en el cuerpo puede ser del ejemplo.
-    """
-    puntajes = {}
-    for id, regla in idx.items():
-        if regla.derogada:
-            continue
-        if capitulo is None and regla.capitulo in SIEMPRE:
-            continue
-        if capitulo is not None and regla.capitulo != capitulo:
-            continue
-        del_titulo = terminos.intersection(_terminos(regla.titulo))
-        del_cuerpo = terminos.intersection(
-            _terminos(" ".join(t for _, t in regla.cuerpo)))
-        punto = 6 * len(del_titulo) + len(del_cuerpo - del_titulo)
-        if punto:
-            puntajes[id] = punto
-    return puntajes
-
-
 def _cadena(ids, idx):
-    """Lo que las elegidas extienden, derogan o de lo que dependen.
-
-    Sin esto se inyecta media cadena: la regla que dice «extiende `C7`» sin
-    `C7` al lado obliga a suponer qué decía la otra.
-    """
+    """Lo que las elegidas extienden, derogan o de lo que dependen."""
     salida = {}
     for id in ids:
         regla = idx.get(id)
@@ -270,123 +177,178 @@ def _cadena(ids, idx):
     return salida
 
 
-def _orden(id, idx):
-    """La precedencia: primero el núcleo, después por capítulo."""
-    regla = idx[id]
-    return (0 if regla.blindada else 1, regla.capitulo, regla.linea)
+# Palabras que en este repositorio están en todas partes y no distinguen una
+# regla de otra. **Solo pesan fuera del orden**, no de reconocer la tarea: «cree
+# una regla» sí es cambiar el estándar, pero «reglas» en el título no dice cuál
+# regla viene al caso. Lo aprendió el recuperador anterior el 2026-09-16, y se
+# volvió a ver el 2026-09-28: «aplique las reglas de redacción» ponía delante
+# `M7` y `M11` por decir «reglas», y dejaba afuera `ID8`.
+_GENERICAS = frozenset("""
+regla reglas estandar archivo archivos proyecto proyectos cambio cambios cambiar
+cambie nuevo nueva nuevos nuevas cosa cosas parte partes caso casos tema temas
+trabajo trabajar tarea tareas agente herramienta aplique aplicar hacer haga
+""".split())
+
+
+def _con_contenido(palabras):
+    """Sin las palabras cortas («el», «del») ni las que están en todas partes."""
+    return {p for p in palabras if len(p) >= 4 and p not in _GENERICAS}
+
+
+def _afinidad(regla, dichas):
+    """Cuántas palabras con contenido del mensaje están en el título de la regla.
+
+    **No elige: ordena.** Dentro de una tarea con muchas reglas, las que
+    comparten palabras con el pedido van primero, para que sean las que entren
+    completas si el presupuesto no alcanza para todas.
+    """
+    return len(_con_contenido(dichas) & _palabras(regla.titulo))
 
 
 def elegir(mensaje, raiz=None, tope=TOPE, proyecto=None):
-    """`(elegidas, descartadas, temas)` para este mensaje.
+    """`(elegidas, descartadas, siempre)` para este mensaje.
 
-    `elegidas` es `[(id, motivo)]` en orden de precedencia y ya recortado al
-    presupuesto. `descartadas` es lo que quedó afuera por el tope. `temas` son
-    los capítulos que el mensaje nombró y de los que **ninguna** regla destacó:
-    van como puntero, porque decir «el capítulo 09 rige esto» es más honesto
-    que mandar sus once reglas o que callar.
-
-    Las tres se devuelven **por escrito**: un recuperador que no dice qué dejó
-    afuera repite el defecto del arranque, que fallaba en silencio.
+    - `elegidas`: `[(id, motivo)]` que entran con su texto completo, ya
+      recortadas al presupuesto que deja el bloque de `siempre`.
+    - `descartadas`: las de las tareas del mensaje que no cupieron. Van
+      **nombradas**: un recuperador que no dice qué dejó afuera repite el
+      defecto del arranque, que fallaba en silencio.
+    - `siempre`: `[id]` de las reglas de las tareas que van en todo mensaje.
     """
+    raiz = raiz or RAIZ
+    mensaje = _lo_que_escribio(mensaje)
     idx = indice(raiz)
-    terminos = _terminos(mensaje)
+    por_tarea = mapa_tareas.reglas_por_tarea(raiz)
+    apagados = opt_in_apagados(proyecto)
+    dichas = _palabras(mensaje)
 
+    def rige(id):
+        return (id in idx and not idx[id].derogada
+                and idx[id].capitulo not in apagados)
+
+    fijas = []
+    for tarea in mapa_tareas.siempre(raiz):
+        for regla in por_tarea.get(tarea, []):
+            if rige(regla.id) and regla.id not in fijas:
+                fijas.append(regla.id)
+
+    # **La cita explícita manda:** si el mensaje nombra la regla, el usuario la
+    # está pidiendo, y llega aunque su capítulo opt-in esté apagado, con la
+    # advertencia al lado.
     motivos = {}
     for id in _citadas(mensaje, idx):
-        motivos[id] = "el mensaje la cita"
-
-    obligados, capitulos = _de_los_disparadores(terminos, idx)
-    for id, motivo in obligados.items():
-        motivos.setdefault(id, motivo)
-
-    # De cada capítulo disparado por tema, sus tres mejores contra el mensaje.
-    # Si ninguna destaca, el capítulo queda como puntero y no como volcado.
-    temas = {}
-    for capitulo, motivo in capitulos.items():
-        mejores = sorted(_por_semejanza(terminos, idx, capitulo).items(),
-                         key=lambda p: -p[1])[:3]
-        mejores = [(i, p) for i, p in mejores if p >= 6]
-        if not mejores:
-            temas[capitulo] = motivo
+        if idx[id].derogada:
             continue
-        for id, _ in mejores:
+        motivos[id] = "el mensaje la cita"
+        if idx[id].capitulo in apagados:
+            motivos[id] += " (capítulo opt-in, apagado en este proyecto)"
+    for tarea, comunes in tareas_del_mensaje(mensaje, raiz).items():
+        motivo = "tarea `%s`: el mensaje dice «%s»" % (tarea, "», «".join(sorted(comunes)))
+        for regla in por_tarea.get(tarea, []):
+            if rige(regla.id):
+                motivos.setdefault(regla.id, motivo)
+    for id, motivo in _cadena(list(motivos), idx).items():
+        if rige(id):
             motivos.setdefault(id, motivo)
 
-    # La semejanza suelta aporta las mejores, y solo si el título coincide:
-    # abrirle la puerta a todas las que comparten una palabra del cuerpo
-    # devuelve medio estándar.
-    for id, punto in sorted(_por_semejanza(terminos, idx).items(),
-                            key=lambda p: -p[1])[:4]:
-        if punto >= 6:
-            motivos.setdefault(id, "coincide con su título")
+    # El orden, de lo que más pesa a lo que menos: lo citado; lo blindado; y
+    # después un puntaje: dos puntos por cada palabra del pedido en el título,
+    # y uno si la regla además rige todo mensaje (en un pedido de redacción,
+    # las reglas de cómo se escribe). A igual puntaje, el orden de `base/`.
+    def orden(id):
+        regla = idx[id]
+        citada = motivos[id].startswith("el mensaje la cita")
+        puntaje = 2 * _afinidad(regla, dichas) + (1 if id in fijas else 0)
+        return (0 if citada else 1, 0 if regla.blindada else 1, -puntaje,
+                regla.capitulo, regla.linea)
 
-    for id, motivo in _cadena(list(motivos), idx).items():
-        motivos.setdefault(id, motivo)
+    # **Todo lo que se inyecta cuenta contra el tope**: el encabezado, las
+    # completas, la lista de las que no cupieron y las de todo mensaje. Se mide
+    # el texto que de verdad saldría, regla por regla.
+    candidatas = sorted(motivos, key=orden)
+    elegidas = []
+    # La que rige todo mensaje y no cupo completa ya llega en su bloque: no se
+    # repite entre las que no cupieron.
+    def fuera(dentro):
+        return [i for i in candidatas if i not in dentro and i not in fijas]
 
-    # Un capítulo opt-in apagado no rige en este proyecto, así que no se
-    # ofrece. **La cita explícita manda:** si el mensaje nombra la regla, el
-    # usuario la está pidiendo y se entrega con su advertencia.
-    apagados = opt_in_apagados(proyecto)
-    for id in list(motivos):
-        if idx[id].capitulo in apagados:
-            if motivos[id] == "el mensaje la cita":
-                motivos[id] += " (capítulo opt-in, apagado en este proyecto)"
-            else:
-                del motivos[id]
-    for capitulo in list(temas):
-        if capitulo in apagados:
-            del temas[capitulo]
+    for id in candidatas:
+        prueba = elegidas + [(id, motivos[id])]
+        resto = fuera({i for i, _ in prueba})
+        if len(_armar(prueba, resto, fijas, idx, raiz).encode("utf-8")) <= tope:
+            elegidas = prueba
+    return elegidas, fuera({i for i, _ in elegidas}), fijas
 
-    # La derogada no va: su reemplazo ya entró por la cadena, y mandar las dos
-    # obliga a adivinar cuál rige.
-    for id in list(motivos):
-        if idx[id].derogada:
-            del motivos[id]
 
-    elegidas, descartadas, gasto = [], [], 0
-    for id in sorted(motivos, key=lambda i: _orden(i, idx)):
-        pieza = len(_cuerpo(idx[id]).encode("utf-8")) + 64
-        if gasto + pieza > tope:
-            descartadas.append(id)
-            continue
-        elegidas.append((id, motivos[id]))
-        gasto += pieza
-    return elegidas, descartadas, temas
+_ENCABEZADO = ("[REGLAS QUE PIDE ESTA SOLICITUD, RECUPERADAS Y OBLIGATORIAS]\n"
+               "Rigen esta respuesta igual que las del arranque. Ante cualquier "
+               "choque gana el núcleo, y el desempate es el de `20·M6`.\n")
+
+
+def _pieza(regla, motivo):
+    """Lo que ocupa una regla completa en el texto: su línea de motivo y su cuerpo.
+
+    Se mide el texto exacto que se inyecta, no una estimación: con un motivo
+    largo, calcularlo por encima dejaba el total unos bytes sobre el tope.
+    """
+    sello = " `[BLINDADA]`" if regla.blindada else ""
+    return "<<< %s·%s%s  ·  %s >>>\n%s\n\n" % (regla.capitulo, regla.id, sello,
+                                               motivo, _cuerpo(regla))
+
+
+def _donde(regla, raiz):
+    return os.path.relpath(regla.archivo, raiz).replace(os.sep, "/")
+
+
+def _bloque_descartadas(ids, idx):
+    """Las que no cupieron, en una línea: dónde vive cada una lo dice el mapa."""
+    if not ids:
+        return ""
+    return ("[DE LAS TAREAS DE ESTE MENSAJE, NO CUPIERON: leerlas antes de "
+            "tocar su tema; dónde vive cada una lo dice base/mapa-de-tareas.md]\n  "
+            + ", ".join("%s·%s" % (idx[i].capitulo, i) for i in ids) + "\n")
+
+
+def _bloque_siempre(fijas, idx, raiz):
+    """Las reglas de todo mensaje: identificador, título y dónde viven."""
+    if not fijas:
+        return ""
+    # Sin la ruta de cada una: la dice el mapa, y así el bloque ocupa la mitad y
+    # deja lugar para que entren completas las de la tarea del mensaje.
+    lineas = ["[LAS QUE RIGEN TODO MENSAJE: se leen antes de responder; dónde "
+              "vive cada una lo dice base/mapa-de-tareas.md]"]
+    for id in fijas:
+        regla = idx[id]
+        lineas.append("  %s·%s · %s" % (regla.capitulo, id, _MARCA.sub("", regla.titulo)))
+    return "\n".join(lineas)
 
 
 def como_texto(mensaje, raiz=None, tope=TOPE, proyecto=None):
-    """El bloque que se le inyecta al agente, o `""` si el mensaje no pide nada.
+    """El bloque que se le inyecta al agente, o `""` si no hay reglas que dar.
 
     **Dice qué trae y por qué.** Un recuperador que entrega reglas sin decir
-    cuáles eligió no se puede auditar, y el turno siguiente no sabe si trabajó
-    con la regla o sin ella.
+    cuáles eligió no se puede auditar.
     """
+    raiz = raiz or RAIZ
     idx = indice(raiz)
-    elegidas, descartadas, temas = elegir(mensaje, raiz, tope, proyecto)
-    if not elegidas and not temas:
+    elegidas, descartadas, fijas = elegir(mensaje, raiz, tope, proyecto)
+    if not elegidas and not fijas:
         return ""
+    return _armar(elegidas, descartadas, fijas, idx, raiz)
 
-    lineas = ["[REGLAS QUE PIDE ESTA SOLICITUD, RECUPERADAS Y OBLIGATORIAS]",
-              "Rigen esta respuesta igual que las del arranque. Ante cualquier "
-              "choque gana el núcleo, y el desempate es el de `20·M6`.",
-              ""]
+
+def _armar(elegidas, descartadas, fijas, idx, raiz):
+    """El texto tal como se inyecta. Lo usan `como_texto` y la medición."""
+    lineas = [_ENCABEZADO]
     for id, motivo in elegidas:
-        regla = idx[id]
-        sello = " `[BLINDADA]`" if regla.blindada else ""
-        lineas.append("<<< %s·%s%s  ·  %s >>>" % (regla.capitulo, id, sello,
-                                                  motivo))
-        lineas.append(_cuerpo(regla))
-        lineas.append("")
-    if temas:
-        lineas.append("[CAPÍTULOS QUE ESTE MENSAJE TOCA, SIN CARGAR]")
-        for capitulo, motivo in sorted(temas.items()):
-            lineas.append("  base/%s  (%s). Leerlo con Read antes de tocar "
-                          "su tema." % (capitulo, motivo))
-        lineas.append("")
+        lineas.append(_pieza(idx[id], motivo).rstrip("\n") + "\n")
     if descartadas:
-        lineas.append("[NO CUPO EN EL PRESUPUESTO]")
-        lineas.append("  " + ", ".join(sorted(descartadas))
-                      + ". Leerlas con Read antes de tocar su tema.")
+        lineas.append(_bloque_descartadas(descartadas, idx))
+    # La que ya va completa no se repite en el bloque de todo mensaje.
+    completas = {i for i, _ in elegidas}
+    bloque = _bloque_siempre([i for i in fijas if i not in completas], idx, raiz)
+    if bloque:
+        lineas.append(bloque)
     return "\n".join(lineas).strip()
 
 

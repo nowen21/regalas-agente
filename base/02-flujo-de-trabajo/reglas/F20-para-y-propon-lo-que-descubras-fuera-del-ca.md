@@ -11,6 +11,8 @@ CORRECTO:   para, muestra qué observó y qué costaría, y espera el sí, el no
             el "después"
 ```
 
+**Aplica a:** recibir-pedido, cambiar-codigo
+
 ---
 
 ### Checklist  ·  **CUMPLE**

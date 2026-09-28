@@ -13,6 +13,8 @@ CORRECTO:   la fase A toca solo archivos de A; lo necesario en B, C y D se agend
             como fases propias o se difiere en §Fuera-de-scope
 ```
 
+**Aplica a:** trabajar-cadena
+
 ---
 
 ### Checklist  ·  **CUMPLE**

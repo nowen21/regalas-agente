@@ -10,6 +10,8 @@ CORRECTO:   reporto el costo, propongo el arreglo y espero; si se acepta un
             criterio nuevo, entra escrito en la regla
 ```
 
+**Aplica a:** cambiar-estandar
+
 ---
 
 ### Checklist  ·  **CUMPLE**
