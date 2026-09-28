@@ -50,7 +50,7 @@ Existe la regla `00·ID11`, «Escribe solo lo pertinente al asunto». Exige que 
 
 | Archivo | Por qué hubo que tocarlo | Quién autorizó ampliar el plan |
 |---|---|---|
-| `pendientes/96-la-norma-del-espanol-de-colombia-no-tiene-regla.md` y `pendientes/97-el-andamio-exige-la-historia-antes-que-el-pendiente.md` | El plan aprobado los incluía, y se les quitó una frase no pertinente a cada uno. Después el usuario decidió que aplicar la regla a esos pendientes no es parte de esta fase y salió del plan; las dos frases quedan quitadas | El usuario, 2026-09-27 |
+| `pendientes/96-el-agente-no-conserva-el-espanol-colombiano.md` y `pendientes/97-andamio-impone-un-orden-de-trabajo-incorrecto.md` | El plan aprobado los incluía, y se les quitó una frase no pertinente a cada uno. Después el usuario decidió que aplicar la regla a esos pendientes no es parte de esta fase y salió del plan; las dos frases quedan quitadas | El usuario, 2026-09-27 |
 
 **Esfuerzo real contra estimado:** cerca de 1,5 h reales contra 1,9 h del plan. Se subestimó la conversación sobre el título: el imperativo de `20·M5` no se había mirado al elegirlo.
 

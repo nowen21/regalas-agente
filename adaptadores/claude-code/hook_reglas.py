@@ -80,6 +80,12 @@ CADA_TURNO = (
     ("00·ID10", "base/00-identidad-y-rol/reglas/"
                 "ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-"
                 "y-en-infinitivo.md", "## ID10 "),
+    ("00·ID11", "base/00-identidad-y-rol/reglas/"
+                "ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md",
+     "## ID11 "),
+    ("00·ID12", "base/00-identidad-y-rol/reglas/"
+                "ID12-el-agente-no-conserva-el-espanol-colombiano.md",
+     "## ID12 "),
 )
 
 # La lista cerrada que exige `ID8`. Se nombra aparte porque es un anexo y no una

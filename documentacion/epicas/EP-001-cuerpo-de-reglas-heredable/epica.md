@@ -170,6 +170,7 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-036](HU-036-el-pedido-dice-que-se-espera/HU-036-el-pedido-dice-que-se-espera.md) | El pedido dice qué se espera del agente | Must | S |
 | [HU-037](HU-037-la-norma-de-redaccion-del-agente/HU-037-la-norma-de-redaccion-del-agente.md) | La norma de redacción del agente vive en el cuerpo de reglas | Should | 3 pts |
 | [HU-038](HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto.md) | El agente agrega información irrelevante al asunto que está tratando | Must | 2 pts |
+| [HU-039](HU-039-el-agente-no-conserva-el-espanol-colombiano/HU-039-el-agente-no-conserva-el-espanol-colombiano.md) | El agente no conserva el español colombiano | Should | 3 pts |
 
 Sin estimar en puntos todavía.
 

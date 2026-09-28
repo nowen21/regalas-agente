@@ -74,13 +74,11 @@ No se ven leyendo: se encuentran buscando. Sobreviven a cualquier reescritura de
 
 El modelo escribe por defecto en un español de traducción, sin acento de ninguna parte, y cuando se le escapa un giro suele ser de España. En Colombia eso salta a la primera lectura.
 
+El léxico, la gramática y la ortografía del español de Colombia son norma, no marca: están en [`espanol-de-colombia.md`](espanol-de-colombia.md), el anexo de [`ID12`](reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md). Aquí quedan solo las dos marcas que delatan el texto generado.
+
 | Marca | Qué se escribe en su lugar |
 |---|---|
-| Léxico de España: *ordenador, fichero, móvil, coche, zumo, chaval, vale, gafas* | *computador, archivo, celular, carro, jugo, muchacho, listo, lentes* |
-| *Vosotros, os, vuestro*, y el imperativo en `-ad` (*mirad, tened*) | *ustedes, les, su*, y el imperativo en `-en` (*miren, tengan*) |
-| Pretérito compuesto donde acá se usa el simple: *«he llegado hoy»*, *«ya lo he revisado»* | *«llegué hoy»*, *«ya lo revisé»* |
 | Mezclar *usted* y *tú* en el mismo documento | uno de los dos, sostenido de principio a fin |
-| Calcos del inglés: *aplicar a un cargo, remover, asumir* (por suponer), *eventualmente* (por finalmente), *en orden de* (por para) | *postularse, quitar, suponer, con el tiempo, para* |
 | Español neutro sin un solo giro propio, del que nadie reconoce de dónde es | el giro que se usa acá, sin caer en jerga cerrada ni en localismo que el lector de afuera no entienda |
 
 ## 6 · Contenido y tono
@@ -132,7 +130,7 @@ Cuando el documento continúa a otro que ya existe, se escribe en el registro de
 
 ## Lo que este anexo no cubre
 
-La **norma del español**: ortografía, gramática, sintaxis y variedad del país. Escribir bien no es lo mismo que no sonar a máquina, y hoy el estándar solo fija el idioma ([`01·C8`](../01-conducta.md#c8--habla-el-idioma-del-proyecto)), no cómo se escribe en él. La sección 5 toca el tema por un solo lado: el español de ninguna parte delata al que lo escribió. Exigir norma correcta y variedad colombiana necesita su propia regla, y todavía no existe.
+La **norma del español**: ortografía, léxico, gramática y redacción. Escribir bien no es lo mismo que no sonar a máquina. La variedad del idioma, la persona y la forma verbal las exige [`ID10`](reglas/ID10-escribe-en-el-idioma-del-proyecto-en-tercera-persona-y-en-infinitivo.md), y la norma del español de Colombia la exige [`ID12`](reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md), con su anexo [`espanol-de-colombia.md`](espanol-de-colombia.md).
 
 
 ---

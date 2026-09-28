@@ -11,6 +11,16 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 38.2.0 — 2026-09-27
+
+**Nace `00·ID12`: el agente escribe con la norma del español de Colombia cuando el proyecto la declara.** Ninguna regla exigía la ortografía, el léxico, la gramática ni la redacción de la variedad: `ID10` fijaba la variedad y no qué es escribirla bien. La regla trae un anexo nuevo, `base/00-identidad-y-rol/espanol-de-colombia.md`, con los cuatro frentes, y el léxico que estaba en la sección 5 de `marcadores-de-ia.md` se mueve allá para quedar en un solo sitio.
+
+**El recordatorio de cada turno suma `ID11` e `ID12`.** `adaptadores/claude-code/hook_reglas.py` le recordaba al agente en cada mensaje `C5`, `ID8`, `ID9` e `ID10`, y no la regla de escribir solo lo pertinente, que nació en la 38.1.0.
+
+**MENOR** (aditivo): la regla se activa con una declaración que el proyecto ya hace, y un proyecto en otro idioma no queda obligado. Sale del pendiente 96 y la construye la fase `A` de HU-039.
+
+---
+
 ## 38.1.2 — 2026-09-27
 
 **Las plantillas nombran también `00·ID11` entre las reglas con que se redactan.** La tabla del comienzo de las 55 plantillas de documento suma la fila de escribir solo lo pertinente al asunto, junto a `00·ID8` y `00·ID9`.

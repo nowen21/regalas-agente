@@ -12,13 +12,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-27-sesion.md](../.
 
 - **Qué pasó:** `00·ID10` fija la variedad, la persona y la forma verbal. La ortografía, el léxico, la gramática y la redacción colombianas no las exige ninguna regla, y la línea 135 de `marcadores-de-ia.md` sigue diciendo que la regla «no existe».
 - **Qué se decidió:** el usuario pidió una regla que las cubra todas y que extienda `00·ID8`. El borrador de `00·ID12` quedó acordado.
-- **Dónde queda:** anotado en el [pendiente 96](../../../pendientes/96-la-norma-del-espanol-de-colombia-no-tiene-regla.md). La HU se crea al aprobarse.
+- **Dónde queda:** anotado en el [pendiente 96](../../../pendientes/96-el-agente-no-conserva-el-espanol-colombiano.md). La HU se crea al aprobarse.
 
 ### H-2 · El andamio obliga a crear la HU antes que el pendiente
 
 - **Qué pasó:** `andamio.py pendiente` falla si la historia no existe. El agente creó un esqueleto de HU-038 para poder crear el pendiente, y el usuario lo corrigió: el orden es hallazgo → pendiente → HU (hija de una épica) → fase.
 - **Qué se decidió:** se quitó el esqueleto de HU-038. El orden completo no está escrito en ninguna regla, y eso también entra al pendiente.
-- **Dónde queda:** anotado en el [pendiente 97](../../../pendientes/97-el-andamio-exige-la-historia-antes-que-el-pendiente.md), y en la señal `S-126`.
+- **Dónde queda:** anotado en el [pendiente 97](../../../pendientes/97-andamio-impone-un-orden-de-trabajo-incorrecto.md), y en la señal `S-126`.
 
 ### H-3 · Ninguna regla exige quedarse en el asunto
 
