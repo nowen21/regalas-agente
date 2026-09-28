@@ -4,4 +4,4 @@ Resúmenes de las sesiones de este día. Uno por sesión.
 
 | Sesión | Qué dejó |
 |---|---|
-| [sesion.md](sesion.md) | Sin escribir todavía. |
+| [reglas-de-redaccion-y-orden-de-la-cadena.md](reglas-de-redaccion-y-orden-de-la-cadena.md) | Sin escribir todavía. |

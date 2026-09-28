@@ -1,7 +1,7 @@
 <!-- sesion: 2dada38e-4d9d-4ee7-92e2-fda67733166c -->
 <!-- nombre: preguntado -->
 
-# 2026-09-27 — Sesión
+# 2026-09-27 — Reglas de redaccion y orden de la cadena
 
 ## Conversación
 
@@ -3757,3 +3757,44 @@ La copia local no tiene cambios pendientes.
 
 ### 176 · Usuario — 2026-09-27 21:16:25
 > ahora agregue la nueva regla a la tabla de las plantillas y suba a git
+
+**Agente** — 2026-09-27 21:18:13
+<!-- agente: 00c1d491-0750-4490-bfd4-a07b7229fe28 -->
+
+Agregué la fila de `00·ID12` a la tabla de reglas de las **55 plantillas**, debajo de `00·ID11`:
+
+| Regla | Qué exige |
+|---|---|
+| `00·ID8` | Escribir sin las marcas que delatan generación automática |
+| `00·ID9` | Decir lo mismo en menos palabras |
+| `00·ID11` | Escribir solo lo pertinente al asunto |
+| **`00·ID12`** | **Seguir la norma del español de Colombia, si el proyecto la declara** |
+
+Quedó subido en el commit `e4e8e1c`, con la versión 38.3.1 (PARCHE). `estandar` no encontró incumplimientos y pasaron las pruebas de plantillas, enlaces, instalador, andamio y del registro. La copia local no tiene cambios pendientes.
+
+### 177 · Usuario — 2026-09-28 07:46:32
+> osea que ya podemos cerrar esta sesion?
+
+**Agente** — 2026-09-28 07:49:26
+<!-- agente: 54b836c1-7acf-44b5-8e56-3e845c982b3f -->
+
+Antes de responder reviso el resumen de la sesión, porque es lo que decide si se puede cerrar.
+
+Sí, ya se puede cerrar. Los cinco hallazgos de la sesión quedaron resueltos y en GitHub:
+
+| Hallazgo | Cómo se resolvió |
+|---|---|
+| Ninguna regla exigía quedarse en el asunto | `00·ID11`, HU-038 |
+| La norma del español de Colombia no tenía regla | `00·ID12` y su anexo, HU-039 |
+| El andamio exigía la HU antes que el pendiente | `--hu` opcional y `F23` precisada, HU-022 |
+| El enganche marcaba fases recién abiertas | Corregido en la HU-022 |
+| El recordatorio de cada turno no traía las reglas nuevas | `ID11` e `ID12` agregadas en la HU-039 |
+
+No quedan pendientes abiertos de esta sesión.
+
+Me faltaba poner al día el resumen de la sesión: todavía decía que los tres primeros hallazgos seguían como pendientes y no tenía los dos últimos. Ya lo corregí, y `sesiones` y `estandar` terminaron sin fallas. Ese resumen y la transcripción son lo único que falta subir.
+
+¿Los subo, y guardo la sesión como `2026-09-27-reglas-de-redaccion-y-orden-de-la-cadena.md`? Si le parece bien el nombre, escriba también `/rename reglas-de-redaccion-y-orden-de-la-cadena` para que la sesión se llame igual en Claude Code.
+
+### 178 · Usuario — 2026-09-28 08:07:02
+> listo suba
