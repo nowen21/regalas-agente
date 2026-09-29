@@ -19,13 +19,13 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Para** trabajar con las reglas completas y no con una vista previa
   - **Contexto:** hoy se cargan 79,7 KB y entran 2 KB. Propuesta del usuario: medir qué reglas se usan más y cargar esas. Límite de esa idea: que una regla se use seguido no la hace importante (`N6` casi nunca se usa y es grave). Por eso se proponen tres niveles: el núcleo blindado siempre; después, las más usadas hasta llenar el tope; el resto, buscadas por tema cuando la tarea las pide (`hook_relacionadas` ya hace parte de eso). Guardarlas en una base de datos no arregla esto por sí solo: el tope es el del contexto, no el del almacén.
 - **Qué se decidió:** el usuario descartó cargar reglas, sean todas o las más usadas: *«Lo importante es que tenga claro que existen reglas que debe cumplir y que, antes de realizar una tarea, debe identificar y consultar las que correspondan a lo que está haciendo»*. Al arrancar la sesión, el agente recibe esa instrucción y dónde buscar; las reglas se leen cuando la tarea las pide. Los tres niveles quedan descartados.
-- **Estado:** abierto
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 4 de 7, después de H-7: la instrucción corta que recibe el agente al arrancar enlaza el mapa, y el mapa tiene que existir primero
-- **Dónde queda:** falta crear el pendiente
+- **Dispara:** EP-005 · HU-009, fase `C`
+- **Orden de resolución:** —
+- **Dónde queda:** lo principal lo resolvió HU-023: el recuperador entrega las reglas de cada tarea con cada mensaje. El arranque lo resolvió el [pendiente 101](../../../pendientes/101-el-arranque-deja-de-mandar-las-reglas.md) con la fase `C` de [HU-009 de EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) (versión 39.4.0): ya no manda las reglas sino la instrucción de cómo llegan y dónde está el mapa, y todo lo que entrega cabe en los 10.000 caracteres de la herramienta. La fase `A` de HU-005 de EP-016 corrigió la plataforma, que prometía las reglas al abrir
 - **Nace en:** 2026-09-28 · por qué el agente olvida las reglas
-- **Cerrado en:** —
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
 - **Con qué se retoma:** ¿cuál es el tope exacto, cuántos de los 79,7 KB aporta cada enganche, y cómo se mide qué regla se usa? H-2 cambia la solución: el enganche no copia las reglas, entrega enlaces a `base/`.
 
 ### H-2 · Nada del agente ni del proyecto queda por fuera de ellos
@@ -182,7 +182,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | — | ~~H-6, las reglas mandan sobre lo que pida el usuario~~ | Cerrado el 2026-09-28 con `00·N10` |
 | — | ~~H-2, nada queda fuera del repositorio~~ | Cerrado el 2026-09-28 con `01·C29` |
 | — | ~~H-7, el mapa de qué reglas aplican a cada tarea~~ | Cerrado el 2026-09-28 con HU-023, junto con H-8 y H-9 |
-| 4 | H-1, la instrucción corta al arrancar | Enlaza el mapa, que tiene que existir primero |
+| — | ~~H-1, la instrucción corta al arrancar~~ | Cerrado el 2026-09-28 con la fase `C` de HU-009 |
 | 5 | H-4, el enganche que revisa la redacción al escribir | Lee el mapa para saber qué reglas mostrar |
 | 6 | H-5, el enganche muestra `C28` al recibir un pedido | Es el mismo enganche de H-4 |
 | 7 | H-3, sacar de las plantillas lo que ya dice el README | No afecta el olvido de las reglas y puede esperar |

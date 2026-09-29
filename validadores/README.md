@@ -158,7 +158,7 @@ Es el otro que **escribe**, por el mismo motivo que el histórico: dónde guarda
 
 | Qué se carga | De dónde | Cómo |
 |---|---|---|
-| Las reglas base | [`cargador.py`](cargador.py) · `base/` | `00` y `01` literales; del resto, el índice |
+| Las reglas base | [`cargador.py`](cargador.py) · `base/` | Al abrir, cómo llegan las reglas; llegan con cada mensaje por `recuperar.py` |
 | La memoria del proyecto | [`recuerdos.py`](recuerdos.py) · `historico-chat/memory/memory.md` | el índice completo — dice de qué trata cada recuerdo |
 | El histórico de sesiones | [`historico.py`](historico.py) · `historico-chat/README.md` | el índice de las últimas 40, con el tema de cada una |
 

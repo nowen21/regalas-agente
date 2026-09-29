@@ -32,7 +32,7 @@
 | 2 | Ejecutar el instalador apuntando al proyecto que va a heredar | Dice qué archivos va a agregar, y pide aprobación antes |
 | 3 | Aprobar la instalación | Deja el archivo de instrucciones del proyecto y el enganche de sesión |
 | 4 | Anotar qué versión se adoptó | El proyecto declara su versión, y el número existe de verdad |
-| 5 | Abrir una sesión en el proyecto | Las reglas se cargan solas, y el aviso dice qué versión rige |
+| 5 | Abrir una sesión en el proyecto | El agente sabe cómo le llegan las reglas, y el aviso dice qué versión rige |
 | 6 | Correr las comprobaciones sobre el proyecto | Reportan sobre ese proyecto, no sobre el estándar |
 | 7 | Levantar la interfaz local, si se quiere ver en pantalla | Lista los documentos del ciclo y lo guardado en la memoria |
 

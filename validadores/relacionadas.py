@@ -40,8 +40,7 @@ def _capitulo_de(ruta, raiz):
     ninguno.
 
     **Por carpeta y no por tipo de documento** (duda 41): el tipo hay que
-    adivinarlo; la carpeta se lee de la ruta, que es lo mismo que ya hace
-    `cargador.py` al repartir las reglas al arrancar.
+    adivinarlo; la carpeta se lee de la ruta.
     """
     rel = os.path.relpath(os.path.abspath(ruta), raiz).replace("\\", "/")
     tramos = rel.split("/")

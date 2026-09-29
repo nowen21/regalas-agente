@@ -4,7 +4,7 @@ Acá viven **las reglas del agente**: qué puede hacer, qué no, y cómo tiene q
 
 Son las reglas que sirven para **cualquier** proyecto. Lo que solo vale para un lenguaje, un cliente o un negocio no va acá ([`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md)): eso lo declara cada proyecto por su cuenta.
 
-Cada proyecto que use el estándar recibe esta carpeta entera. Al empezar a trabajar, [`validadores/cargador.py`](../validadores/cargador.py) arma con ella el texto que se le entrega al agente.
+Cada proyecto que use el estándar recibe esta carpeta entera. Con cada mensaje, [`validadores/recuperar.py`](../validadores/recuperar.py) le entrega al agente las reglas de esta carpeta que aplican a lo que se pide.
 
 **¿Se atravesó una palabra?** Está en el [glosario](glosario.md): cada término del estándar explicado en una línea, con qué regla lo manda y dónde vive.
 

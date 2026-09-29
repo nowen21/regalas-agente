@@ -116,11 +116,15 @@ Por ejemplo, `c:\Ing. Jose\ia\agente` se convierte en `c--Ing--Jose-ia-agente`.
 - **Recibe:** la lista que retorna `migrar`.
 - **Retorna:** una lista de textos, uno por movimiento, avisando cuando el nombre tuvo que cambiar.
 
-**`contexto(proyecto)`**
+**`contexto(proyecto, tope=None)`**
 
-- **Recibe:** la carpeta del proyecto.
-- **Hace:** lee el índice de la memoria.
-- **Retorna:** el texto que se le entrega al agente al arrancar: el índice completo y el aviso de que tiene que abrir el recuerdo que le haga falta. Texto vacío si no hay índice.
+- **Recibe:** la carpeta del proyecto y, si hace falta, un tope en caracteres.
+- **Hace:** lee el índice de la memoria. Si con el tope no cabe entero, deja solo las filas de los recuerdos, y si tampoco, las primeras que quepan, con la ruta del índice completo.
+- **Retorna:** el texto que se le entrega al agente al arrancar: el índice y el aviso de que tiene que abrir el recuerdo que le haga falta. Texto vacío si no hay índice.
+
+**`_hasta_caber(cabeza, filas, indice, tope)`**
+
+- **Retorna:** la cabeza con las filas que caben en el tope, y la ruta donde está el índice completo.
 
 Va el índice y no los recuerdos enteros: es corto y ya dice de qué trata cada uno.
 

@@ -145,7 +145,7 @@ agente/
 │   ├── checklist.py .................. qué componentes le faltan al proyecto
 │   ├── version.py .................... desfase de versión estándar vs proyecto
 │   ├── sesion.py ..................... revisión de arranque de sesión
-│   ├── cargador.py ................... carga las reglas base al contexto del agente
+│   ├── cargador.py ................... al abrir sesión, dice cómo llegan las reglas
 │   ├── historico.py .................. ESCRIBE la transcripción de la sesión
 │   ├── recuerdos.py .................. MUEVE la memoria del agente al repositorio
 │   ├── presupuesto.py ................ suma el consumo de la sesión y decide si cruzó un tramo
@@ -157,7 +157,7 @@ agente/
 │   │
 │   ├── ── enganches (los llama Claude Code) ──
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
-│   ├── hook_sesion.py ................ al abrir sesión → revisa y carga reglas, memoria e histórico
+│   ├── hook_sesion.py ................ al abrir sesión → revisa y dice cómo llegan las reglas; memoria e histórico
 │   ├── hook_historico.py ............. cada mensaje y cada respuesta → al histórico
 │   ├── hook_checklist.py ............. cada mensaje → revisa la instalación
 │   ├── hook_recuerdos.py ............. al abrir sesión y al escribir → recoge la memoria
@@ -275,7 +275,7 @@ El mapa de arriba dice *dónde está*. Este dice *qué depende de qué*:
 |---|---|---|
 | `validadores/plantillas.py` | `plantillas/*.md` | La norma no se duplica en el código: si cambia la plantilla, cambia la comprobación. |
 | `validadores/checklist.py` | `plantillas/stack-instalacion.md` | La lista de componentes vive en la plantilla, no en el código. Una prueba exige que coincidan. |
-| `validadores/cargador.py` | `base/*.md` | Mete las reglas al contexto del agente al abrir la sesión, sin depender de que se acuerde. |
+| `validadores/cargador.py` | `base/*.md` | Le dice al agente, al abrir la sesión, cómo le llegan las reglas; si falta la estructura base, le da la regla que manda detenerse. |
 | `validadores/sesion.py` | `plantillas/CLAUDE.md.plantilla` | Avisa si el `CLAUDE.md` del proyecto quedó desfasado. |
 | `validadores/instalar.py` | `plantillas/CLAUDE.md.plantilla` · `plantillas/stack-instalacion.md` · `.githooks/` · `historico-chat/` · `historico-chat/memory/` · `plantillas/proyectos.md` | Es lo que deja el agente instalado y operativo en otro proyecto, sin pasos manuales. |
 | `validadores/recuerdos.py` | `~/.claude/projects/<proyecto>/memory/` | Vacía el almacén de la herramienta hacia el repositorio: la memoria que no se versiona no se puede revisar (`01·C19`). |

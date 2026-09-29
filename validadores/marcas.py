@@ -385,8 +385,8 @@ def limpiar(raiz=None, carpetas=None, escribir=False):
 # momento de escribir enseña más que una limpieza de una sola vez.
 HEREDADO = ("base", "plantillas")
 
-# El bloque de checklist de una regla. Se reconoce igual que en `cargador.py`,
-# que ya lo trata aparte — y por el mismo motivo: **no es texto de nadie**.
+# El bloque de checklist de una regla. Se trata aparte porque **no es texto
+# de nadie**.
 _SELLO = re.compile(r"(?ms)^(?:---\s*\n+)?### Checklist.*?(?=^## |\Z)")
 
 
@@ -419,7 +419,7 @@ def _cuenta(texto):
     a la regla, y su forma —`A · Dónde va`, `B · Cómo se identifica`— la fija
     [`checklist.md`](../base/20-meta-reglas/checklist.md), no quien escribe.
     Contarlo sería contar el molde, y ninguna limpieza podría arreglarlo sin
-    romper el sello. `cargador.py` ya trata el sello aparte por lo mismo.
+    romper el sello.
     """
     salida = {}
     for _n, linea in lineas_utiles(_sin_sellos(texto)):

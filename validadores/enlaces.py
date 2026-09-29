@@ -21,7 +21,7 @@ HISTORICO = "historico-chat"
 #
 # El histórico entra aquí aunque nadie lo escriba a mano: una sesión que no está
 # en el índice es una sesión que la siguiente no va a encontrar — y el índice es
-# lo único que se le carga al agente al arrancar. La línea la pone el enganche
+# lo que se le carga al agente al arrancar. La línea la pone el enganche
 # al crear el archivo; esto detecta la que se perdió o quedó vieja tras un
 # renombre.
 CON_INDICE = ["pendientes", "notas", HISTORICO]

@@ -63,8 +63,8 @@ def _arranque(raiz):
 def correr_caso(caso):
     """`(paso, detalle)` de un caso."""
     if caso["tipo"] == "arranque":
-        # La primera promesa del estándar: las reglas llegan al abrir. Quince
-        # días faltaron en su propia carpeta sin que nadie lo midiera.
+        # Al abrir, el agente tiene que saber cómo le llegan las reglas. Quince
+        # días faltó en su propia carpeta sin que nadie lo midiera.
         contexto = _arranque(RAIZ if caso["raiz"] == "estandar" else caso["raiz"])
         paso = caso["espera_texto"] in contexto
         return paso, ("trae" if paso else "no trae") + f" «{caso['espera_texto'][:40]}…»"

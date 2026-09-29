@@ -88,7 +88,7 @@ Son **cinco** carpetas distintas, con reglas propias de versionado. **Todas las 
 ## 3. Qué hace el agente al iniciar CADA sesión (en este orden exacto)
 
 1. **Instalar o actualizar el entorno** — correr el comando de la sección **Instalación**. Es idempotente y no pregunta: si ya está todo, no toca nada; si falta o quedó viejo algo, lo deja al día y lo dice.
-2. **Cargar y obedecer las reglas base** desde la ruta de `base` del punto 1: **todos** los archivos numerados de `base/` (de `00` en adelante — así, si el estándar agrega secciones nuevas, se cargan solas). El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
+2. **Obedecer las reglas base** de la ruta de `base` del punto 1. No se cargan todas al abrir: con cada mensaje llegan las que aplican a lo que se pide, y las que no cupieron llegan nombradas. Antes de una tarea, leer las que [`base/mapa-de-tareas.md`](«RUTA-ESTANDAR»/base/mapa-de-tareas.md) pone bajo ella. El archivo `00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
 3. **Leer los 4 archivos de `./.agente/`** y trabajar según lo que declaran. **No sobrescribirlos** (guardan datos del proyecto). Lo que esté sin llenar, completarlo **deduciéndolo del proyecto** (lenguaje, dependencias, estructura de carpetas). Lo que no se pueda deducir —reglas de negocio, sector, normas— se deja marcado como pendiente de confirmar y **no detiene el trabajo**: se pregunta cuando el trabajo lo necesite, no al arrancar. No inventar datos.
 4. **Si existe `./.agente/reglas-proyecto.md`,** leerlo y aplicarlo (reglas propias del proyecto — ver punto 5.2).
 5. **Aplicar los ajustes** del punto 5.1.

@@ -113,7 +113,7 @@ class CA04ElPendiente(unittest.TestCase):
         hu = "%s/HU-009-lo-que-rige-cada-frase-llega-puesto" % EPICA
         andamio.crear_pendiente(self.tmp, "otra", hu, escribir=True)
         indice = leer(os.path.join(self.tmp, "pendientes", "README.md"))
-        self.assertRegex(indice, r"\| \[EP-005 · HU-009\]\([^)]+\) — Lo que gobierna cada frase llega puesto al abrir la sesión \| 2 \|")
+        self.assertRegex(indice, r"\| \[EP-005 · HU-009\]\([^)]+\) — Lo que gobierna cada frase llega a tiempo \| 2 \|")
 
     def test_sin_aplicar_no_escribe(self):
         hu = "%s/HU-008-enganche-del-resumen" % EPICA

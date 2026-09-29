@@ -4,22 +4,19 @@
 
     python hook_reglas.py --raiz "C:/ruta/del/proyecto"
 
-**Por qué existe.** `hook_sesion.py` carga las reglas una vez, al abrir, y esa
-apuesta pierde de dos maneras distintas. Las dos se midieron el 2026-09-15 en
-`master-ciberseguridad`:
+**Por qué existe.** Las reglas no se cargan al abrir la sesión. Cargarlas una
+vez perdía de dos maneras:
 
-  - **El paquete puede no entrar.** Pesaba 82,4 KB (62,3 de reglas, 15,6 del
-    índice, 3,8 de memoria, 0,7 del histórico) y la herramienta corta la salida
-    de un enganche cerca de los 80: la guardó en un archivo y le dejó al agente
-    2 KB de vista previa. El banner, mientras tanto, decía «Estándar cargado».
-    **El fallo se vio como éxito**, que es lo peor que puede pasarle a un aviso.
-  - **Lo que entra se resume primero.** Lo dice `cargador.py` en su propia
-    documentación: llenar la ventana adelanta el resumen automático del
-    contexto, y lo primero que se resume es justo lo que se inyectó al arrancar.
+  - **El paquete no entraba.** La herramienta acepta 10.000 caracteres por
+    enganche; lo demás lo guarda en un archivo fuera del repositorio y le deja
+    al agente un avance de 2.000. Hasta la 39.3.1 el arranque mandaba unos
+    86.000 (`EP-005 · HU-009 · CA-04`).
+  - **Lo que entra se resume primero.** Llenar la ventana adelanta el resumen
+    automático del contexto, y lo primero que se resume es lo que se inyectó
+    al arrancar.
 
-Así que el volcado grande de una sola vez no alcanza, y este enganche pone lo
-que falta: **un recordatorio corto en cada turno**, por el canal que sí llega y
-que no se resume.
+Así que este enganche entrega las reglas donde sí sirven: **en cada turno**,
+un recordatorio corto y las que pide el mensaje.
 
 **Y devuelve la medición.** `hook_redaccion.py` ya cuenta las marcas de lo que
 el agente acaba de escribir, pero corre en `Stop` e imprime donde nadie lo ve:
@@ -34,9 +31,8 @@ cambia solo; si la renombra, también. Un resumen escrito a mano acá se
 convertiría en una segunda versión de la norma, y la que manda es la del
 capítulo (`20·M2`).
 
-**Y recupera las reglas que pide el mensaje.** Del `02` en adelante las reglas
-llegan al arranque solo como índice, con la orden de leer el archivo antes de
-tocar el tema. Esa orden depende de que el agente se acuerde, y cuando no se
+**Y recupera las reglas que pide el mensaje.** Una orden de leer el archivo
+antes de tocar el tema depende de que el agente se acuerde, y cuando no se
 acuerda trabaja sin la regla. `recuperar.py` lee el mensaje y trae el texto
 completo de las que ese mensaje pide, con su presupuesto y diciendo por qué
 entró cada una.
@@ -147,8 +143,9 @@ def recordatorio(estandar):
         return ""
     return (
         "[LAS REGLAS DE CADA TURNO — RIGEN ESTA RESPUESTA]\n"
-        "Se recuerdan acá porque el volcado del arranque puede no haber "
-        "entrado, y porque lo que entró es lo primero que el contexto resume.\n"
+        "Se recuerdan en cada mensaje porque al abrir la sesión no se cargan "
+        "las reglas, y porque lo de hace rato es lo primero que el contexto "
+        "resume.\n"
         + "\n".join(lineas) + "\n"
         f"La lista cerrada que exige `00·ID8`, incluido el español colombiano "
         f"de su sección 5, está en `{ANEXO_ID8}`: se relee **antes** de "

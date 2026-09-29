@@ -4,9 +4,9 @@ Este repo **es el estándar**: las reglas que otros proyectos heredan (`base/`, 
 
 Este archivo manda sobre el trabajo **dentro de este repo** — mantener el estándar. No viaja a los proyectos que lo heredan; lo que sí les llega es `base/` (`00·M13`).
 
-## 0 · Cargar y obedecer `base/` antes de tocar nada
+## 0 · Obedecer `base/` antes de tocar nada
 
-Al abrir la sesión se cargan **todos** los archivos numerados de `base/`, del `00` en adelante, y se obedecen. Si el estándar agrega capítulos, se cargan solos. `base/00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
+Las reglas de `base/` se obedecen. No se cargan todas al abrir: con cada mensaje llegan las que aplican a lo que se pide, y las que no cupieron llegan nombradas. Antes de una tarea se leen las que [`base/mapa-de-tareas.md`](base/mapa-de-tareas.md) pone bajo ella. `base/00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
 
 Es el mismo paso 2 que el `CLAUDE.md` instalado le exige a cualquier proyecto que hereda ([`plantillas/CLAUDE.md.plantilla`](plantillas/CLAUDE.md.plantilla)). Acá faltaba, y la consecuencia era esta: el agente escribía el estándar sin haber leído el estándar, así que lo incumplía escribiéndolo. Un proyecto heredero cumplía más que el repo del que hereda.
 

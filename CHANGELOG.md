@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.4.0 — 2026-09-28
+
+**Todo lo que el agente recibe al abrir la sesión ahora le llega completo.** Antes le llegaba cortado: la herramienta acepta un tamaño máximo, lo que pasaba de ahí lo guardaba aparte, fuera del proyecto, y el agente solo veía el comienzo. Creía tener las reglas y no las tenía.
+
+Al abrir ya no se mandan las reglas, porque desde la versión anterior llegan con cada mensaje, según lo que el mensaje pide. Se manda una nota corta que dice eso y dónde está el mapa que las ordena por tarea, más los recuerdos del usuario y la lista de conversaciones anteriores. Si algo no cabe, se recorta por renglones enteros y se dice dónde está completo.
+
+**Lo que entra:**
+
+- `adaptadores/claude-code/hook_sesion.py` mide en caracteres, con el tope de 10.000 que dice la documentación de la herramienta. El de antes, 72 KB, salía de una medición equivocada.
+- `validadores/cargador.py` entrega la nota en vez de las reglas. Si el proyecto no tiene su estructura base, sigue entregando solo la regla que manda detenerse.
+- `validadores/recuerdos.py` e `historico.py` aceptan un tope y recortan por renglones, con la ruta de lo completo.
+- `CLAUDE.md` y `plantillas/CLAUDE.md.plantilla` ya no piden cargar todas las reglas al abrir.
+- Los avisos que llegan con cada mensaje, la fila «Cargador» de `base/glosario.md`, `anatomia/mapa-del-sitio.md` y las notas ya no dicen que las reglas se cargan al abrir.
+
+**MENOR** (aditivo): ninguna regla cambia qué exige, y un proyecto no tiene que tocar nada; el instalador le reescribe el `CLAUDE.md`. Cierra el pendiente 101 con la fase `C` de HU-009 en EP-005.
+
+---
+
 ## 39.3.1 — 2026-09-28
 
 **La sección de condiciones para empezar una historia se llama ahora «Precondiciones».** El nombre en inglés queda entre paréntesis, para quien lo busque así.

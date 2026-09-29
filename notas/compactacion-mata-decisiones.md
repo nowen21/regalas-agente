@@ -35,7 +35,7 @@ Es una de sus razones de existir. `13` arranca con: *"El chat se pierde y el con
 |---|---|
 | 1 Memoria externa (docs) | ✅ |
 | 3 Registro de decisiones (ADR) | ✅ |
-| 7 Re-inyección tras compactar | ✅ (del harness) |
+| 7 Re-inyección tras compactar | ✅ Al resumir, el arranque vuelve a entregar la memoria y el histórico, dentro del tope de 10.000 caracteres de la herramienta. Hasta la 39.4.0 llegaba cortado. Las reglas llegan con cada mensaje (`EP-005 · HU-009 · CA-04`) |
 | 4 Scratchpad/state + captura automática | ⏳ |
 | 5 Checkpointing durable | ⏳ (orquestador) |
 | 6 Aislamiento por sub-agentes | ⏳ |

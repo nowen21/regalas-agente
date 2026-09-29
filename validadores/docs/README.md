@@ -37,7 +37,7 @@ Git es el programa que guarda la historia del proyecto: qué archivo cambió, cu
 | `versiones.py` | [versiones.md](versiones.md) | Le pone una marca a cada documento copiado del estándar y avisa cuando quedó viejo. |
 | `version.py` | [version.md](version.md) | Compara la versión del estándar con la que dice usar el proyecto. |
 | `sesion.py` | [sesion.md](sesion.md) | Al empezar a trabajar, revisa si el estándar quedó bien puesto. |
-| `cargador.py` | [cargador.md](cargador.md) | Arma el texto de las reglas que se le entrega al agente cuando arranca. |
+| `cargador.py` | [cargador.md](cargador.md) | Arma el texto que le dice al agente, al abrir la sesión, cómo le llegan las reglas. |
 
 ### Memoria e histórico
 

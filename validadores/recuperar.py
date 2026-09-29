@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Qué reglas pide **esta** solicitud del usuario.
 
-**El problema que cierra.** Al abrir la sesión, las reglas llegan cortadas: la
-herramienta guarda aparte todo lo que pase de su tope y deja ver solo el
-comienzo. Leer el resto depende de que el agente se acuerde, y cuando no se
-acuerda trabaja sin la regla y nadie se entera.
+**El problema que cierra.** Al abrir la sesión no se cargan las reglas: la
+herramienta acepta 10.000 caracteres por enganche y el cuerpo de reglas pesa
+mucho más (`EP-005·HU-009·CA-04`). Si leerlas dependiera de que el agente se
+acuerde, trabajaría sin la regla y nadie se enteraría.
 
 **Lo que hace.** Lee el mensaje del usuario, reconoce qué tareas pide y le
 entrega al agente las reglas que el mapa de tareas pone bajo ellas:
@@ -281,7 +281,7 @@ def elegir(mensaje, raiz=None, tope=TOPE, proyecto=None):
 
 
 _ENCABEZADO = ("[REGLAS QUE PIDE ESTA SOLICITUD, RECUPERADAS Y OBLIGATORIAS]\n"
-               "Rigen esta respuesta igual que las del arranque. Ante cualquier "
+               "Rigen esta respuesta. Ante cualquier "
                "choque gana el núcleo, y el desempate es el de `20·M6`.\n")
 
 

@@ -188,7 +188,7 @@ def pasos(movidos):
     return salida
 
 
-def contexto(proyecto):
+def contexto(proyecto, tope=None):
     """La memoria del agente, para inyectarla al abrir la sesión.
 
     Va el índice completo —es corto y dice de qué trata cada recuerdo—, no los
@@ -196,6 +196,12 @@ def contexto(proyecto):
 
     Sin esto, la memoria que pasó al repositorio no la vería nadie: la
     herramienta solo carga sola lo que guarda ella, y ahí ya no hay nada.
+
+    **Con `tope`, en caracteres, cabe siempre.** El índice entero pasa de 7.000
+    caracteres y el arranque tiene 10.000 para todo (`EP-005 · HU-009 · CA-04`).
+    Si no cabe, van solo las filas de los recuerdos, sin la explicación de
+    arriba; si tampoco, las primeras que quepan, con la ruta del índice para
+    leer el resto. Nunca se corta una fila a la mitad.
     """
     archivo = ruta_indice(proyecto)
     if not os.path.isfile(archivo):
@@ -207,14 +213,33 @@ def contexto(proyecto):
         return ""
 
     ruta = CARPETA.replace(os.sep, "/")
-    return ("[MEMORIA DEL AGENTE — ÍNDICE, OBLIGATORIA]\n"
-            "Es cómo pide el usuario que se trabaje en este proyecto, y rige "
-            "esta sesión completa. Antes de tocar un tema que aparezca abajo, "
-            "leer con Read el archivo del recuerdo: el índice dice de qué "
-            "trata, no qué exige.\n"
-            f"Un recuerdo nuevo se escribe en `{ruta}/`, nunca en el almacén de "
-            "la herramienta (`01·C19`).\n\n"
-            f"<<< {ruta}/{INDICE} >>>\n{texto}")
+    cabeza = ("[MEMORIA DEL AGENTE — ÍNDICE, OBLIGATORIA]\n"
+              "Es cómo pide el usuario que se trabaje en este proyecto, y rige "
+              "esta sesión completa. Antes de tocar un tema que aparezca abajo, "
+              "leer con Read el archivo del recuerdo: el índice dice de qué "
+              "trata, no qué exige.\n"
+              f"Un recuerdo nuevo se escribe en `{ruta}/`, nunca en el almacén de "
+              "la herramienta (`01·C19`).\n\n")
+    entero = f"{cabeza}<<< {ruta}/{INDICE} >>>\n{texto}"
+    if tope is None or len(entero) <= tope:
+        return entero
+
+    filas = [l for l in texto.splitlines() if l.startswith(("| [", "- ["))]
+    return _hasta_caber(cabeza, filas, f"{ruta}/{INDICE}", tope)
+
+
+def _hasta_caber(cabeza, filas, indice, tope):
+    """Las filas que caben en `tope`, y la ruta donde está el índice entero."""
+    for cuantas in range(len(filas), -1, -1):
+        if cuantas == len(filas):
+            pie = f"El índice completo, con cómo se usa, está en `{indice}`."
+        else:
+            pie = (f"Se listan {cuantas} de {len(filas)} recuerdos; el resto, "
+                   f"en `{indice}`.")
+        salida = cabeza + pie + "\n\n" + "\n".join(filas[:cuantas])
+        if len(salida.rstrip()) <= tope:
+            return salida.rstrip()
+    return ""
 
 
 def revisar(proyecto, casa=None):

@@ -92,9 +92,9 @@ Que el mensaje sea «escrito de verdad por la persona» importa: los resultados 
 
 Se lee del índice y no de la carpeta porque el índice es lo que dice de qué trató cada sesión.
 
-**`contexto(raiz, limite=LIMITE)`**
+**`contexto(raiz, limite=LIMITE, tope=None)`**
 
-- **Recibe:** la carpeta del proyecto y cuántas sesiones listar.
+- **Recibe:** la carpeta del proyecto, cuántas sesiones listar y, si hace falta, un tope en caracteres. Con el tope lista menos sesiones hasta caber; la cabeza dice dónde está el índice entero.
 - **Hace:** toma las últimas sesiones y arma el bloque de texto que se le entrega al agente al arrancar, con la advertencia de que ahí solo está el índice y de que hay que abrir la sesión que corresponda.
 - **Retorna:** ese texto, o texto vacío si no hay sesiones.
 

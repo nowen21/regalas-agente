@@ -1,4 +1,4 @@
-# HU-009 — Lo que gobierna cada frase llega puesto al abrir la sesión
+# HU-009 — Lo que gobierna cada frase llega a tiempo
 
 ## 1. Identificación
 
@@ -32,21 +32,22 @@ Lo que falta no es construirlo: es que exista escrito **qué se exige** de ese r
 
 **Lo que el reparto no cubre, y no es de esta historia.** El capítulo [`02 · flujo de trabajo`](../../../../base/02-flujo-de-trabajo/base.md) llega como índice, y ahí está lo que gobierna cada movimiento de una fase. Eso es [HU-010](../HU-010-la-regla-llega-al-escribir-el-archivo/HU-010-la-regla-llega-al-escribir-el-archivo.md).
 
-**Y una advertencia que esta historia no resuelve.** El 2026-08-14 se incumplió [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante toda una sesión, y esa regla **sí llegaba completa**. Que la regla llegue es necesario y no es suficiente: lo que falta después es comprobar lo que se entregó ([EP-004 · HU-013](../../EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md)).
+**Y una advertencia que esta historia no resuelve.** El 2026-08-14 se incumplió [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) durante toda una sesión, y esa regla **sí llegaba completa**. Que la regla llegue es necesario y no es suficiente: lo que falta después es comprobar lo que se entregó ([EP-004, HU-013](../../EP-004-comprobacion-automatica/HU-013-comparar-el-plan-con-lo-hecho/HU-013-comparar-el-plan-con-lo-hecho.md)).
 
 ### 3.1 Reglas de negocio
 
 | ID | Regla |
 |---|---|
-| RN-01 | Al abrir la sesión llegan con su texto completo los capítulos que gobiernan cómo se escribe y cómo se responde: [`00 · identidad`](../../../../base/00-identidad-y-rol/base.md) y [`01 · conducta`](../../../../base/01-conducta.md) |
-| RN-02 | Llegan también sus anexos, incluida la [lista de marcadores de generación automática](../../../../base/00-identidad-y-rol/marcadores-de-ia.md), que es la que se relee antes de entregar |
-| RN-03 | El resto de `base/` sigue llegando como índice: se consulta cuando el tema lo pide |
+| RN-01 | **Reemplazada por RN-06.** Al abrir la sesión llegan con su texto completo los capítulos que gobiernan cómo se escribe y cómo se responde: [`00 · identidad`](../../../../base/00-identidad-y-rol/base.md) y [`01 · conducta`](../../../../base/01-conducta.md) |
+| RN-02 | **Reemplazada por RN-06.** Llegan también sus anexos, incluida la [lista de marcadores de generación automática](../../../../base/00-identidad-y-rol/marcadores-de-ia.md), que es la que se relee antes de entregar |
+| RN-03 | **Reemplazada por RN-06.** El resto de `base/` sigue llegando como índice: se consulta cuando el tema lo pide |
 | RN-04 | Lo que llega puesto se dice, para que se sepa qué se cargó y qué no |
 | RN-05 | Vale igual en cualquier proyecto que herede el estándar: es el mismo programa el que carga |
+| RN-06 | Todo lo que entrega el arranque cabe en el tope de la herramienta: 10.000 caracteres por enganche. Las reglas no van en el arranque, porque desde la versión 39.3.0 llegan con cada mensaje por el recuperador; va la instrucción de cómo llegan y dónde está el mapa de tareas. **Reemplaza a RN-01, RN-02 y RN-03**, que pedían mandar `00` y `01` completos y no caben. Viene del [pendiente 101](../../../../pendientes/101-el-arranque-deja-de-mandar-las-reglas.md) |
 
 ### 3.2 Supuestos
 
-- Lo que se carga cabe en el arranque sin que se note. Si no cabe, se decide qué parte del capítulo `01` va puesta, pero la lista de marcadores va completa.
+- **Reemplazado por RN-06.** Lo que se carga cabe en el arranque sin que se note. Si no cabe, se decide qué parte del capítulo `01` va puesta, pero la lista de marcadores va completa.
 
 ### 3.3 Fuera de alcance
 
@@ -58,6 +59,8 @@ Lo que falta no es construirlo: es que exista escrito **qué se exige** de ese r
 ## 4. Criterios de aceptación
 
 ### CA-01 — Los capítulos que rigen cada frase llegan con su texto
+
+**Reemplazado por el CA-04.** Se cumplió en la fase `A` y dejó de valer en la fase `C`: el texto no cabía en el canal de la herramienta.
 
 ```gherkin
 Dado que se abre una sesión en un proyecto con el estándar instalado
@@ -71,7 +74,7 @@ Y el resto de base/ sigue como índice
 1. Abrir una sesión en un proyecto de prueba.
 2. Mirar lo que se le entregó. Resultado esperado: el texto de las reglas de esos dos capítulos, no sus títulos.
 3. Mirar un capítulo cualquiera de los otros. Resultado esperado: sigue como una línea de índice.
-- **Aprobado cuando:** una regla de esos capítulos se puede citar sin abrir ningún archivo.
+Se aprobaba cuando una regla de esos capítulos se puede citar sin abrir ningún archivo.
 
 ### CA-02 — Se dice qué llegó puesto y qué llegó como índice
 
@@ -85,7 +88,7 @@ Entonces sabe cuáles capítulos tiene completos y cuáles tiene que abrir
 
 1. Abrir la sesión y leer el encabezado del contexto.
 2. Resultado esperado: dice cuáles van puestos y cuáles no.
-- **Aprobado cuando:** no hay que adivinar si una regla se leyó o solo se nombró.
+Se aprueba cuando no hay que adivinar si una regla se leyó o solo se nombró.
 
 ### CA-03 — El arranque no se vuelve lento
 
@@ -99,7 +102,24 @@ Entonces la demora sigue sin notarse
 
 1. Medir el arranque antes del cambio.
 2. Medirlo después. Resultado esperado: la diferencia no cambia cómo se trabaja.
-- **Aprobado cuando:** lo que se gana en cumplimiento no se paga con una espera.
+Se aprueba cuando lo que se gana en cumplimiento no se paga con una espera.
+
+### CA-04 · Lo que entrega el arranque cabe entero, y dice cómo llegan las reglas
+
+```gherkin
+Dado que se abre una sesión, en el estándar o en un proyecto instalado
+Cuando el enganche de arranque entrega su texto
+Entonces tiene 10.000 caracteres o menos, y la herramienta no lo guarda aparte
+Y dice que las reglas llegan con cada mensaje y dónde está el mapa de tareas
+```
+
+**Cómo validarlo:**
+
+1. Correr `adaptadores/claude-code/hook_sesion.py` en la carpeta del estándar y contar los caracteres de lo que entrega. Resultado esperado: 10.000 o menos.
+2. Hacer lo mismo en un proyecto de prueba instalado. Resultado esperado: 10.000 o menos.
+3. Leer lo que entrega. Resultado esperado: dice que las reglas llegan con cada mensaje y nombra `base/mapa-de-tareas.md`; trae el índice de los recuerdos.
+4. Abrir el `CLAUDE.md` del estándar y la plantilla del de los proyectos. Resultado esperado: ninguno pide cargar todos los archivos de `base/` al arrancar.
+Se aprueba cuando los cuatro pasos dan lo esperado. **Reemplaza al CA-01**, que pedía `00` y `01` completos al abrir.
 
 ### Criterios de aceptación transversales
 
@@ -120,8 +140,8 @@ Entonces la demora sigue sin notarse
 
 ## 6. Diseño y referencias
 
-- **Documento funcional:** el [pendiente 25](../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) y el hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen`.
-- **Modelo de datos afectado:** ninguno.
+- El documento funcional es el [pendiente 25](../../../../pendientes/hecho/las-reglas-de-como-se-escribe-si-llegaban-puestas.md) y el hallazgo H-4 del 2026-08-14 · `el-enganche-del-resumen-no-crea-el-resumen`.
+- No afecta ningún modelo de datos.
 
 ---
 
@@ -142,6 +162,7 @@ Entonces la demora sigue sin notarse
 |---|---|---|
 | [A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas](A-EP-005-HU-009-retrodocumentar-el-reparto-de-las-reglas/README.md) | CA-01, CA-02 y CA-03 | Cerrada el 2026-08-15 |
 | [B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar](B-EP-005-HU-009-las-reglas-llegan-tambien-al-propio-estandar/README.md) | CA-01, en la carpeta del propio estándar, donde no se cumplía | Cerrada el 2026-08-20: Cumple, 7 de 7 casos |
+| [C-EP-005-HU-009-el-arranque-cabe-en-el-canal](C-EP-005-HU-009-el-arranque-cabe-en-el-canal/) | CA-04, que reemplaza al CA-01 | Cerrada el 2026-09-28: Cumple, 5 de 5 casos |
 
 ---
 
@@ -193,3 +214,6 @@ Entonces la demora sigue sin notarse
 | 2026-08-15 | Ing. José Dúmar Jiménez Ruíz | Corregido el contexto contra el programa real: el reparto ya manda literales `00` y `01` desde la 5.0.0, así que la historia no construye, **retro-documenta**. Se cae la premisa de que `ID8` llegaba como índice: llegaba completa y se incumplió igual, y eso queda escrito como advertencia |
 | 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Se abre la fase B: el `CA-01` no se cumplía en la carpeta del propio estándar (pendiente 66). La `RN-05` decía «cualquier proyecto que herede» y la carpeta del estándar no hereda: por eso nadie lo midió |
 | 2026-08-20 | Ing. José Dúmar Jiménez Ruíz | Fase B ejecutada y cerrada: `hook_sesion.py` entrega `base/` también en la carpeta del estándar, con caso en `evals/`. 27.1.0 |
+| 2026-09-28 | El agente | Suma RN-06 y CA-04 del pendiente 101, aprobado por el usuario, y se abre la fase `C`. El tope del canal es de 10.000 caracteres (documentación de la herramienta), no de 72 KB: el arranque de 103 KB llegaba cortado a un avance de 2.000. Las reglas pasan a llegar con cada mensaje (HU-023), así que el arranque deja de mandarlas |
+| 2026-09-28 | El agente | El título pasa de «llega puesto al abrir la sesión» a «llega a tiempo», decidido por el usuario: al abrir ya no llegan las reglas. La carpeta conserva su nombre para no romper los enlaces |
+| 2026-09-28 | El agente | Fase C ejecutada y cerrada: el arranque entrega 9.499 caracteres en el estándar, 960 en un proyecto y 4.735 con el gate; ningún texto vigente dice que las reglas llegan al abrir. Lo de la plataforma lo cerró la fase `A` de EP-016 HU-005. 39.4.0 |

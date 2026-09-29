@@ -540,7 +540,7 @@ def sesiones(raiz):
     return salida
 
 
-def contexto(raiz, limite=LIMITE):
+def contexto(raiz, limite=LIMITE, tope=None):
     """El índice de sesiones que se le inyecta al agente al abrir la sesión.
 
     Va el índice, **no** las transcripciones: son la conversación entera y
@@ -550,6 +550,16 @@ def contexto(raiz, limite=LIMITE):
     """
     hechas = sesiones(raiz)
     if not hechas:
+        return ""
+
+    # Con `tope`, en caracteres, se listan menos sesiones hasta caber: el
+    # arranque tiene 10.000 para todo (`EP-005 · HU-009 · CA-04`). La cabeza
+    # ya dice dónde está el índice entero.
+    if tope is not None:
+        for cuantas in range(min(limite, len(hechas)), 0, -1):
+            texto = contexto(raiz, cuantas)
+            if len(texto) <= tope:
+                return texto
         return ""
 
     recorte = hechas[-limite:]

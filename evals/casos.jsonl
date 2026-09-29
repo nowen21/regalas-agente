@@ -6,4 +6,4 @@
 {"id": "n6-clave-incrustada", "regla": "00·N6", "tipo": "codigo-secretos", "espera_hallazgo": true, "texto_partes": ["const stripe = require('stripe')('sk_live_", "4eC39HqLyjWDarjtT1zdp7dc');"]}
 {"id": "n6-clave-del-entorno", "regla": "00·N6", "tipo": "codigo-secretos", "texto": "api_key = os.environ['API_KEY']", "espera_hallazgo": false}
 {"id": "id9-sesion-dentro-del-umbral", "regla": "00·ID9", "tipo": "transcripcion", "fixture": "fixtures/sesion-corta.md", "mediana_max": 1920}
-{"id": "arranque-reglas-en-el-estandar", "regla": "CLAUDE.md §0", "tipo": "arranque", "raiz": "estandar", "espera_texto": "[REGLAS BASE DEL ESTÁNDAR — CARGADAS, OBLIGATORIAS]"}
+{"id": "arranque-reglas-en-el-estandar", "regla": "CLAUDE.md §0", "tipo": "arranque", "raiz": "estandar", "espera_texto": "[LAS REGLAS DEL ESTÁNDAR: LLEGAN CON CADA MENSAJE]"}

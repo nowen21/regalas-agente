@@ -2078,12 +2078,12 @@ class ResumenDeLaSesion(unittest.TestCase):
 
 
 class RepartoDeLasReglas(unittest.TestCase):
-    """Qué llega puesto al abrir la sesión y qué llega como índice.
+    """Qué le dice el arranque al agente sobre las reglas.
 
-    El reparto existía desde la 5.0.0 y nadie lo probaba: una línea cambiada
-    dejaba al agente sin identidad y nada avisaba. Estas pruebas son esa red.
-    Se comprueba **el reparto**, no el texto de una regla concreta, para que
-    renombrar una regla no las rompa.
+    Hasta la 39.3.1 el arranque mandaba `00` y `01` enteros, y no cabían en el
+    canal de la herramienta: 10.000 caracteres por enganche. Desde la 39.4.0
+    las reglas llegan con cada mensaje y el arranque solo dice cómo
+    (`EP-005 · HU-009 · CA-04`).
     """
 
     def _base(self, *nombres):
@@ -2097,45 +2097,19 @@ class RepartoDeLasReglas(unittest.TestCase):
                 f.write(f"# Título de {nombre}\n\nCuerpo de {nombre}.\n")
         return raiz
 
-    # CP-001 · los capítulos que rigen cada frase llegan con su texto
-    def test_los_capitulos_00_y_01_llegan_completos(self):
-        raiz = self._base("00-nucleo.md", "00-identidad/base.md",
-                          "01-conducta.md", "05-tema/base.md")
-        texto = cargador.contexto(raiz)
-        for nombre in ("00-nucleo.md", "00-identidad/base.md", "01-conducta.md"):
-            self.assertIn(f"Cuerpo de {nombre}", texto, nombre)
-
-    def test_el_resto_llega_solo_como_indice(self):
+    def test_dice_como_llegan_las_reglas(self):
         raiz = self._base("00-nucleo.md", "05-tema/base.md")
         texto = cargador.contexto(raiz)
-        self.assertNotIn("Cuerpo de 05-tema/base.md", texto)
-        self.assertIn("base/05-tema/base.md", texto)
-        self.assertIn("Título de 05-tema/base.md", texto)
+        self.assertIn("LLEGAN CON CADA MENSAJE", texto)
+        self.assertIn("base/mapa-de-tareas.md", texto)
+        self.assertIn("`01·C28`", texto)
 
-    def test_un_capitulo_nuevo_del_prefijo_entra_solo(self):
-        # El reparto mira el prefijo de la ruta, así que un `01-` nuevo no
-        # obliga a tocar el programa (RN-14).
-        raiz = self._base("00-nucleo.md", "01-conducta.md", "01-otro-nuevo.md")
-        self.assertIn("Cuerpo de 01-otro-nuevo.md", cargador.contexto(raiz))
-
-    def test_el_capitulo_en_carpeta_no_cae_al_indice(self):
-        # Se decide por el primer tramo de la ruta y no por el nombre del
-        # archivo: si no, `00-identidad/base.md` caería al índice (RN-12).
-        raiz = self._base("00-identidad/base.md")
-        self.assertIn("Cuerpo de 00-identidad/base.md", cargador.contexto(raiz))
-
-    # CP-002 · el contexto dice qué llegó puesto y qué hay que abrir
-    def test_dice_que_lo_cargado_es_obligatorio(self):
-        raiz = self._base("00-nucleo.md", "05-tema/base.md")
-        self.assertIn("CARGADAS, OBLIGATORIAS", cargador.contexto(raiz))
-
-    def test_dice_que_el_indice_hay_que_abrirlo(self):
-        raiz = self._base("00-nucleo.md", "05-tema/base.md")
+    def test_no_manda_el_texto_de_ninguna_regla(self):
+        raiz = self._base("00-nucleo.md", "01-conducta.md", "05-tema/base.md")
         texto = cargador.contexto(raiz)
-        self.assertIn("NO ESTÁN CARGADAS, SOLO EL ÍNDICE", texto)
-        self.assertIn("leer el archivo completo", texto)
+        for nombre in ("00-nucleo.md", "01-conducta.md", "05-tema/base.md"):
+            self.assertNotIn(f"Cuerpo de {nombre}", texto, nombre)
 
-    # CP-003 · sin cuerpo de reglas no entrega nada
     def test_sin_carpeta_base_no_entrega_nada(self):
         raiz = tempfile.mkdtemp()
         self.assertEqual(cargador.contexto(raiz), "")
@@ -2146,85 +2120,30 @@ class RepartoDeLasReglas(unittest.TestCase):
         os.makedirs(os.path.join(raiz, "base"))
         self.assertEqual(cargador.contexto(raiz), "")
 
-    # CP-005 · con el gate sin pasar entrega solo esa regla
     def test_sin_pasar_el_gate_entrega_solo_esa_regla(self):
         raiz = self._base("00-nucleo.md", cargador.GATE)
         texto = cargador.contexto(raiz, gate_ok=False)
         self.assertIn("ARRANQUE DETENIDO", texto)
         self.assertIn(f"Cuerpo de {cargador.GATE}", texto)
-        self.assertNotIn("Cuerpo de 00-nucleo.md", texto)
+        self.assertNotIn("LLEGAN CON CADA MENSAJE", texto)
 
-    # CP-004 · lo que cuesta el arranque, medido contra el repositorio real
-    def test_lo_que_se_inyecta_de_este_repositorio_se_puede_medir(self):
-        texto = cargador.contexto(comun.RAIZ if hasattr(comun, "RAIZ") else ".")
-        if not texto:
-            self.skipTest("sin base/ en la raíz de la corrida")
-        kb = len(texto.encode("utf-8")) / 1024
-        self.assertGreater(kb, 1)
-        self.assertLess(kb, 90, "el arranque creció más de lo medido en la fase")
-
-    # CP-006 · con el tope del canal, el paquete cabe — y las reglas siguen
-    def test_con_tope_el_paquete_cabe_en_el_canal(self):
-        """**Este techo es el que faltaba.**
-
-        El de arriba vigila 90 KB, y el canal del adaptador corta cerca de 80:
-        el 2026-09-15 pasó un paquete de 82,4 KB, que aprobaba esta prueba y
-        aun así **no llegó al agente**. La herramienta lo guardó en un archivo
-        y el banner siguió diciendo «Estándar cargado», así que la sesión
-        trabajó sin reglas creyendo que las tenía.
-
-        Un techo por encima del límite del canal no es un techo.
-        """
-        tope = 72 * 1024
-        texto, avisos = cargador.paquete(comun.RAIZ, True, tope)
-        if not texto:
-            self.skipTest("sin base/ en la raíz de la corrida")
-        self.assertLessEqual(len(texto.encode("utf-8")), tope,
-                             f"el paquete no cabe en el canal: {avisos}")
-        # Lo que se recorta es el índice, nunca las reglas.
-        for marca in ("## N1", "## ID8", "CARGADAS, OBLIGATORIAS"):
-            self.assertIn(marca, texto)
-
-    def test_el_recorte_se_dice_en_vez_de_hacerse_en_silencio(self):
-        """**Un recorte callado es el defecto otra vez.** Lo que se pierde hay
-        que decirlo, porque es lo único que permite darse cuenta."""
-        raiz = self._base("00-nucleo.md", "05-tema/base.md", "06-otro/base.md")
-        # Un tope que solo alcanza para el núcleo obliga a recortar el índice.
-        texto, avisos = cargador.paquete(raiz, True, tope=1)
-        self.assertTrue(avisos, "recortó sin decir qué dejó afuera")
-        self.assertIn("Cuerpo de 00-nucleo.md", texto)
-
-    # CP-005 · el sello no viaja al arranque
-    def test_el_arranque_no_lleva_los_bloques_de_checklist(self):
-        """**El sello no le sirve al agente para obedecer.**
-
-        Es el registro de que alguien revisó la regla contra el molde, y le
-        sirve a quien mantiene el estándar. Medido el 2026-08-19: de los
-        **122,6 KB** que se inyectaban, **70 eran sellos** — el 57 %.
-
-        **Lo destapó esta prueba, no la lectura.** El techo saltó al partir las
-        reglas del núcleo, y en vez de subirlo se miró qué había adentro.
-        """
+    def test_lo_de_este_repositorio_es_corto(self):
+        """Deja espacio en el canal para la memoria y el histórico."""
         texto = cargador.contexto(comun.RAIZ)
         if not texto:
             self.skipTest("sin base/ en la raíz de la corrida")
-        self.assertNotIn("### Checklist", texto)
-
-    def test_pero_las_reglas_llegan_enteras(self):
-        """**Quitar el sello no puede quitar la regla.** Sin este caso, un
-        recorte de más pasaría por ahorro."""
-        texto = cargador.contexto(comun.RAIZ)
-        if not texto:
-            self.skipTest("sin base/ en la raíz de la corrida")
-        for marca in ("## N1", "## N9", "INCORRECTO:", "CORRECTO:"):
-            self.assertIn(marca, texto)
+        self.assertLess(len(texto), 1000)
+        for ruta in ("base/mapa-de-tareas.md",
+                     "base/01-conducta/palabras-clave.md",
+                     "base/00-nucleo-blindado.md"):
+            self.assertTrue(os.path.isfile(os.path.join(comun.RAIZ, ruta)), ruta)
 
 
 class LasReglasQuePideLaSolicitud(unittest.TestCase):
     """`recuperar.py` trae las reglas de las tareas que pide el mensaje.
 
-    **Por qué hace falta.** Al arrancar, las reglas llegan cortadas, y leer el
-    resto depende de que el agente se acuerde. Desde `EP-005·HU-023` elige por
+    **Por qué hace falta.** Al arrancar no se cargan las reglas, y leerlas
+    no puede depender de que el agente se acuerde. Desde `EP-005·HU-023` elige por
     tareas: cada regla dice a qué tareas aplica, y las palabras que señalan cada
     tarea están en `base/tareas.md`.
     """
