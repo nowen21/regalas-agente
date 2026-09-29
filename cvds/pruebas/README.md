@@ -20,7 +20,7 @@
 
 | Criterio de aceptación | Casos que lo cubren | Tipo | Automática |
 |---|---|---|---|
-| Las reglas se cargan al abrir la sesión | Abrir con reglas, abrir sin ellas, abrir con una regla rota | Integración | Sí |
+| Las reglas llegan con cada mensaje | Un mensaje que pide una tarea, un saludo, una regla rota | Integración | Sí |
 | Nada cambia de estado sin aprobación | Intento de borrado sin aprobar, con aprobación, y de una acción no incluida en el plan | Integración | Sí |
 | Lo escrito se comprueba solo | Un documento que cumple, uno que no, y uno a medio llenar | Unitaria | Sí |
 | Lo no probado se declara sin verificar | Funcionalidad con prueba, sin prueba, y con prueba fallida | Unitaria | Sí |

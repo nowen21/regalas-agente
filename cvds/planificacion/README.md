@@ -70,7 +70,7 @@ Desarrollar una plataforma que administre la documentación, el seguimiento y la
 
 | # | Se da por cierto que | Qué pasa si resulta falso | Quién lo confirma |
 |---|---|---|---|
-| 1 | El agente obedece lo que la plataforma le entrega al abrir | La plataforma administra pero no gobierna: habría que hacerla cumplir por fuera | El uso diario |
+| 1 | El agente obedece las reglas que le llegan con cada mensaje | La plataforma administra pero no gobierna: habría que hacerla cumplir por fuera | El uso diario |
 | 2 | Guardar la documentación fuera del proyecto no estorba al trabajo diario | Habría que devolver parte al proyecto, y se pierde la vista de conjunto | Las primeras semanas de uso |
 | 3 | La fuente cabe en texto, y la base solo hace de índice | El respaldo deja de ser el repositorio y hay que construirle uno propio | Al crecer la memoria |
 | 4 | Un solo usuario alcanza para la primera versión | Aparecen permisos, roles y datos de terceros antes de lo previsto | Cuando alguien más la use |
@@ -95,7 +95,7 @@ Desarrollar una plataforma que administre la documentación, el seguimiento y la
 
 | De quién o de qué | Qué se necesita | Para cuándo | Qué se hace si no llega |
 |---|---|---|---|
-| La herramienta donde corre el agente | Que siga permitiendo enganches al abrir y cerrar sesión | Permanente | Las reglas quedan servidas, pero se cargan a mano |
+| La herramienta donde corre el agente | Que siga permitiendo enganches al abrir sesión, con cada mensaje y al cerrar | Permanente | Las reglas quedan servidas, pero se leen a mano |
 | El control de versiones | Que siga siendo el respaldo de la fuente | Permanente | Habría que construir un respaldo propio |
 | Un proyecto ajeno | Alguien que no sea el autor que la adopte | Sin fecha | Sigue siendo una herramienta personal, y se dice así |
 
@@ -166,7 +166,7 @@ N/A porque no hay costo monetario que asignar: el único recurso es tiempo del a
 | Código | Paquete de trabajo | Objetivos que atiende | Depende de | Duración | Responsable |
 |---|---|---|---|---|---|
 | 1 | Plataforma base: proyectos conectados, con su ruta y su configuración | 1, 14 | — | Sin estimar | Autor |
-| 2 | Las reglas: administrarlas, versionarlas y servírselas al agente al abrir | 2, 6 | 1 | Sin estimar | Autor |
+| 2 | Las reglas: administrarlas, versionarlas y servírselas al agente con cada mensaje | 2, 6 | 1 | Sin estimar | Autor |
 | 3 | El ciclo de vida operado: épicas, historias, fases, puertas y estado | 1, 10 | 1 | Sin estimar | Autor |
 | 4 | Aprobaciones: qué se aprobó, quién, cuándo y sobre qué texto | 7 | 3 | Sin estimar | Autor |
 | 5 | Auditoría: qué se hizo, cuándo y a raíz de qué | 8 | 1 | Sin estimar | Autor |
@@ -237,7 +237,7 @@ Quién tiene algo que ganar o perder con el proyecto, y qué recibe de él.
 | Interesado | Qué papel tiene | Influencia | Qué recibe | Cada cuánto | En qué formato |
 |---|---|---|---|---|---|
 | Ing. José Dúmar Jiménez Ruíz | Paga, usa y aprueba, los tres | Alta | El cambio antes de guardarlo | Por sesión | En el chat, con el enlace al archivo |
-| Los proyectos que administra | Consumen las reglas y aportan su documentación | Ninguna | Reglas al abrir, y avisos de lo que se desvía | Al abrir sesión | Aviso automático |
+| Los proyectos que administra | Consumen las reglas y aportan su documentación | Ninguna | Reglas con cada mensaje, y avisos de lo que se desvía | Con cada mensaje y al abrir sesión | Aviso automático |
 | Quien reciba un proyecto | Recibe el expediente | Baja | Los entregables de cada fase | Al entregar | `.docx` generado |
 | El agente de la sesión siguiente | Ejecuta lo escrito | Ninguna | Lo que la sesión anterior dejó | Al abrir sesión | Desde la plataforma |
 

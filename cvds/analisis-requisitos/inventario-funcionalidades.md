@@ -28,7 +28,7 @@ Una línea por funcionalidad, para verlas todas juntas. El detalle de cada una e
 | F-006 | Asignar el identificador sin reutilizar ninguno | Obligatoria | Reglas | Alta | Construida | Verificada |
 | F-007 | Aplicar el checklist a una regla y guardar su sello | Complementaria | Reglas | Media | Construida | Verificada |
 | F-008 | Publicar una versión del cuerpo de reglas | Obligatoria | Reglas | Alta | Construida | Verificada |
-| F-009 | Entregarle las reglas al agente al abrir sesión | Obligatoria | Reglas | Alta | Construida | Verificada |
+| F-009 | Entregarle al agente las reglas que rigen en el proyecto | Obligatoria | Reglas | Alta | Construida | Verificada |
 | F-010 | Avisar a un proyecto que quedó atrás | Complementaria | Reglas | Media | Construida | Verificada |
 | F-011 | Crear épicas, historias y fases con su molde | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
 | F-012 | Ver en qué estación va cada fase | Obligatoria | Ciclo de vida | Alta | Construida | Verificada |
@@ -267,21 +267,21 @@ Es el mismo malentendido de arriba, en su forma más clara: **una cadena de nece
 | **Verificado** | Verificada |
 | **Lo que hay que tener en cuenta** | Publicar es lo que vuelve real un cambio: antes de eso, nada rige |
 
-### Entregarle las reglas al agente al abrir sesión
+### Entregarle al agente las reglas que rigen en el proyecto
 
 | Campo | Valor |
 |---|---|
 | **Identificador** | `F-009` |
-| **De qué se trata** | Que al abrir sesión en cualquier proyecto, el agente reciba las reglas que rigen ahí |
+| **De qué se trata** | Que en cualquier proyecto el agente reciba las reglas que rigen ahí: con cada mensaje las de la tarea que pide, y enteras cuando las pide. Al abrir la sesión no caben: la herramienta acepta 10.000 caracteres por enganche |
 | **Para qué sirve** | Es lo que hace que la plataforma gobierne, y no solo guarde |
 | **Parte del sistema** | Reglas |
-| **Quién la usa** | El agente, sin que nadie lo pida |
+| **Quién la usa** | El agente: el enganche de cada mensaje, sin que nadie lo pida, y la orden de entrega cuando las pide |
 | **Qué recibe** | Qué proyecto abre, y qué versión adoptó |
 | **Qué entrega** | Las reglas vigentes para ese proyecto, y el aviso de qué versión rige |
 | **Reglas que debe respetar** | `RN-7` si la plataforma no responde, la fuente en texto sigue siendo legible |
 | **Depende de** | F-001, F-008 |
-| **Terminada cuando** | `CA-1` al abrir, el agente tiene las reglas sin pedirlas · `CA-2` entregarlas no demora la apertura más de dos segundos · `CA-3` si la plataforma no está disponible, se avisa y se trabaja leyendo la fuente |
-| **Qué necesita construirse** | Tarea que corre sola al abrir, y lógica |
+| **Terminada cuando** | `CA-1` cuando se piden, salen las reglas con su texto · `CA-2` entregarlas no demora más de dos segundos · `CA-3` si la plataforma no está disponible, se avisa y se trabaja leyendo la fuente |
+| **Qué necesita construirse** | Tarea que corre sola con cada mensaje, y lógica |
 | **Prioridad** | Alta |
 | **Estado** | Construida |
 | **Verificado** | Verificada |

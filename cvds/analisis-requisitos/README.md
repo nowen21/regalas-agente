@@ -43,7 +43,7 @@
 | RF-06 | Asignar el identificador de una regla sin reutilizar ninguno | El usuario | Lo que ya se intentó | 1 | Debe |
 | RF-07 | Aplicar el checklist a una regla y guardar su resultado | El usuario | Observación del propio trabajo | 4 | Debería |
 | RF-08 | Publicar una versión del cuerpo de reglas, con su registro de qué cambió | El usuario | Observación del propio trabajo | 1 | Debe |
-| RF-09 | Entregarle al agente las reglas al abrir sesión, en cualquier proyecto | El usuario | El giro de producto | 2, 6 | Debe |
+| RF-09 | Entregarle al agente las reglas que rigen, en cualquier proyecto: con cada mensaje las de la tarea, y enteras cuando las pide | El usuario | El giro de producto | 2, 6 | Debe |
 | RF-10 | Avisar a un proyecto cuando la versión que adoptó quedó atrás, y qué cambió | El usuario | Lo que el usuario pidió dos veces | 14 | Debería |
 | RF-11 | Crear épicas, historias y fases desde la plataforma, con su molde | El usuario | El giro de producto | 1, 10 | Debe |
 | RF-12 | Mostrar en qué estación va cada fase y qué puerta falta | El usuario | El giro de producto | 1 | Debe |

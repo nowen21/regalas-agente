@@ -12,18 +12,20 @@
 | **Prioridad** | Must |
 | **Estimación** | M |
 | **Solicitante** | El usuario |
-| **Estado** | Terminada el 2026-09-01, con sus tres criterios probados |
+| **Estado** | Terminada el 2026-09-28: la fase `A` corrigió la promesa de cuándo llegan las reglas |
 ---
 
 ## 2. Narrativa
 
 - **Como** el agente que abre sesión en un proyecto
-- **Quiero** recibir las reglas que rigen ahí, sin pedirlas
+- **Quiero** recibir las reglas que rigen ahí: con cada mensaje las de la tarea, y enteras cuando las pido
 - **Para** trabajar bajo las reglas de ese proyecto desde el primer mensaje
 
 ---
 
 ## 3. Contexto y descripción
+
+**Al abrir la sesión no se entregan.** La herramienta acepta 10.000 caracteres por enganche y las reglas enteras pasan de 680.000. Con cada mensaje llegan las de la tarea que se pide ([EP-005 · HU-023](../../EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/HU-023-cada-tarea-sabe-que-reglas-le-aplican.md)); enteras, cuando se piden, por esta pieza.
 
 **Lo que se entrega es el texto, no un resumen.** Un resumen de una regla es otra regla, y la que el agente obedecería sería la del resumen.
 
@@ -51,7 +53,7 @@ Por eso, cuando algo falla, se dice dónde está la fuente. **Devolver una lista
 
 ## 4. Criterios de aceptación
 
-### CA-01 — Al abrir, el agente tiene las reglas sin pedirlas
+### CA-01 — Cuando se piden, salen las reglas con su texto
 
 ```gherkin
 Dado un proyecto con su cuerpo de reglas
@@ -125,6 +127,7 @@ Y se dice dónde está la fuente
 | Fase | Qué hace | Estado |
 |---|---|---|
 | [K-EP-016-HU-005-las-reglas-llegan-y-la-fuente-sigue-ahi](K-EP-016-HU-005-las-reglas-llegan-y-la-fuente-sigue-ahi/estado-fase.md) | Los tres CA | Cerrada el 2026-09-01: **Cumple** |
+| [A-EP-016-HU-005-la-promesa-dice-cuando-llegan-las-reglas](A-EP-016-HU-005-la-promesa-dice-cuando-llegan-las-reglas/estado-fase.md) | El título del CA-01 y la promesa de `F-009` | Cerrada el 2026-09-28: **Cumple** |
 
 ---
 
@@ -133,7 +136,7 @@ Y se dice dónde está la fuente
 | Qué | Cuál |
 |---|---|
 | **Depende de** | `F-006`, que aporta el lector del cuerpo de reglas |
-| **Riesgo 1** | Que tarde demasiado y se vuelva un estorbo al abrir. Se mide |
+| **Riesgo 1** | Que tarde demasiado y se vuelva un estorbo. Se mide |
 | **Riesgo 2** | Que un fallo se lea como «no hay reglas». Se dice dónde está la fuente |
 
 ---
@@ -166,3 +169,4 @@ Y se dice dónde está la fuente
 | Fecha | Qué pasó |
 |---|---|
 | 2026-09-01 | **Aprobada** por Ing. José Dúmar Jiménez Ruíz, y cerrada el mismo día |
+| 2026-09-28 | Se reabre con la fase `A`: desde la 39.4.0 las reglas no llegan al abrir la sesión, porque no caben en el canal de la herramienta, y la promesa decía que sí. Decidido por el usuario |

@@ -52,4 +52,4 @@
 
 El estado se consulta en la plataforma, no se reporta aparte: qué proyectos hay, en qué va cada uno, qué se aprobó y qué se desvió. Se revisa al cerrar cada versión, y ahí se decide qué entra en la siguiente.
 
-Los proyectos reciben lo suyo sin pedirlo: las reglas al abrir sesión, y el aviso de lo que se desvía.
+Los proyectos reciben lo suyo sin pedirlo: las reglas con cada mensaje, y el aviso de lo que se desvía.

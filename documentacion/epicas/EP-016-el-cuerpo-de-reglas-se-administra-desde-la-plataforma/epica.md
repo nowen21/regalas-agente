@@ -51,7 +51,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 - Escribir, corregir y derogar una regla (`F-005`).
 - Aplicar la lista de comprobación y guardar el sello (`F-007`).
 - Publicar una versión, con qué cambió (`F-008`).
-- Entregarle las reglas al agente al abrir sesión (`F-009`).
+- Entregarle al agente las reglas que rigen en el proyecto (`F-009`).
 - Avisarle a un proyecto que quedó atrás (`F-010`).
 
 **Fuera:**
@@ -68,7 +68,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 | `F-005` Escribir, cambiar y derogar reglas | La regla guardada, con su identificador | 3 |
 | `F-007` Aplicar el checklist y guardar su sello | El sello, y contra qué versión | 3 |
 | `F-008` Publicar una versión del cuerpo de reglas | La versión publicada, con qué cambió | 3 |
-| `F-009` Entregarle las reglas al agente al abrir sesión | Las reglas vigentes de ese proyecto | 3 |
+| `F-009` Entregarle al agente las reglas que rigen en el proyecto | Las reglas vigentes de ese proyecto | 3 |
 | `F-010` Avisar a un proyecto que quedó atrás | El aviso, y qué cambió desde entonces | 3 |
 
 ## 6. Usuarios y actores
@@ -76,7 +76,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 | Actor | Qué hace acá |
 |---|---|
 | El usuario | Escribe las reglas y decide qué se deroga y qué se publica |
-| El agente | Recibe las reglas al abrir sesión, y las obedece |
+| El agente | Recibe las reglas con cada mensaje, y las obedece |
 | El estándar | **Sabe leer su propio cuerpo de reglas.** La plataforma no lo duplica |
 
 ## 7. Criterios de aceptación de la épica
@@ -104,7 +104,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 | [HU-002](HU-002-escribir-corregir-y-derogar-una-regla/HU-002-escribir-corregir-y-derogar-una-regla.md) | Escribir, corregir y derogar una regla | `F-005` | **Terminada el 2026-09-01** |
 | [HU-003](HU-003-aplicar-el-checklist-y-guardar-su-sello/HU-003-aplicar-el-checklist-y-guardar-su-sello.md) | Aplicar el checklist y guardar su sello | `F-007` | **Terminada el 2026-09-01** |
 | [HU-004](HU-004-publicar-una-version-del-cuerpo-de-reglas/HU-004-publicar-una-version-del-cuerpo-de-reglas.md) | Publicar una versión del cuerpo de reglas | `F-008` | **Terminada el 2026-09-01** |
-| [HU-005](HU-005-entregarle-las-reglas-al-agente/HU-005-entregarle-las-reglas-al-agente.md) | Entregarle las reglas al agente al abrir sesión | `F-009` | **Terminada el 2026-09-01** |
+| [HU-005](HU-005-entregarle-las-reglas-al-agente/HU-005-entregarle-las-reglas-al-agente.md) | Entregarle al agente las reglas que rigen en el proyecto | `F-009` | **Terminada el 2026-09-28**, con la fase `A` que corrigió la promesa |
 | [HU-006](HU-006-avisar-al-proyecto-que-quedo-atras/HU-006-avisar-al-proyecto-que-quedo-atras.md) | Avisar a un proyecto que quedó atrás | `F-010` | **Terminada el 2026-09-01** |
 
 ## 10. Consideraciones técnicas

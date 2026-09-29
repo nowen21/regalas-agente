@@ -19,7 +19,7 @@
 
 ## 2. La arquitectura, en una frase y un dibujo
 
-**Cómo está armado:** una aplicación que corre en la máquina de quien trabaja, con la verdad en archivos de texto y una base local que solo hace de índice. El agente le pide las reglas al abrir sesión, y si no la encuentra lee el texto directamente ([`DA-01`](decisiones-de-arquitectura.md), [`DA-03`](decisiones-de-arquitectura.md), [`DA-04`](decisiones-de-arquitectura.md)).
+**Cómo está armado:** una aplicación que corre en la máquina de quien trabaja, con la verdad en archivos de texto y una base local que solo hace de índice. El agente recibe con cada mensaje las reglas de la tarea y le pide las demás cuando las necesita; si no la encuentra lee el texto directamente ([`DA-01`](decisiones-de-arquitectura.md), [`DA-03`](decisiones-de-arquitectura.md), [`DA-04`](decisiones-de-arquitectura.md)).
 
 ```
         [ Usuario ]                         [ Agente, en un proyecto ]
@@ -176,7 +176,7 @@ De la sección 6 del análisis, lo que el agente **no** puede hacer:
 
 | Exigencia del análisis | Cómo la cumple el diseño |
 |---|---|
-| RNF-01 entregar reglas en menos de dos segundos | El cargador lee texto y el índice, sin red ni consultas complejas |
+| RNF-01 entregar reglas en menos de dos segundos | El recuperador lee texto y el mapa de tareas, sin red ni consultas complejas |
 | RNF-02 listar proyectos en menos de un segundo | El estado de cada proyecto vive en el índice, no se recalcula leyendo todo |
 | RNF-03 funciona sin red | Nada consulta afuera: `DA-03` |
 | RNF-04 perder la base no pierde información | La base es índice y se reconstruye: `DA-01` |

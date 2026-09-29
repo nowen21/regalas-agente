@@ -70,7 +70,7 @@
 | **Alternativas descartadas** | Juntar las reglas de un tema en un archivo, porque al cambiar una las demás se corren de sitio y quien las citó por su posición ya no las encuentra. Renumerar al reordenar, porque los documentos y trabajos cerrados citan esos números, y todos quedarían apuntando a otra cosa |
 | **Por qué esta** | Un documento escrito hace un año tiene que seguir sirviendo, y para eso el número no puede cambiar de dueño |
 | **Qué se pierde** | Muchos archivos pequeños, que hay que indexar |
-| **Cuándo se revisaría** | Si tantos archivos llegaran a hacer lenta la entrega de reglas al abrir la sesión |
+| **Cuándo se revisaría** | Si tantos archivos llegaran a hacer lenta la entrega de reglas con cada mensaje |
 
 ### Las comprobaciones leen y avisan, pero no corrigen
 
