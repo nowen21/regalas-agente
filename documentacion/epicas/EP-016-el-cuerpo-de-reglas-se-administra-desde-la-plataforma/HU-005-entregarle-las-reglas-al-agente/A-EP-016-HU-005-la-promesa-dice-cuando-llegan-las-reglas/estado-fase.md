@@ -11,7 +11,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 12, commit. **Última puerta pasada:** 11.
+**Estación actual:** cerrada. **Última puerta pasada:** 13.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -26,8 +26,8 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ |
 | 10 | Crítico | sin hallazgos graves | ☑ |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ |
-| 12 | Commit | 👤 autorizado | ☐ |
-| 13 | Publicación / despliegue | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `37c9650` |
+| 13 | Publicación / despliegue | 👤 autorizado | ☑ Autorizada por el usuario el 2026-09-28 |
 
 ## 1.1 Veredicto de las pruebas
 
@@ -44,4 +44,4 @@
 
 ## 3. Pendiente / preguntas abiertas
 
-- Que el usuario lea el cambio y autorice el commit.
+- Ninguna.
