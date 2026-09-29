@@ -412,6 +412,39 @@ def archivos_preparados(raiz):
             if l.strip().lower().endswith(".md")]
 
 
+# Qué se escribe en lugar de cada marca, con las palabras del anexo.
+EN_SU_LUGAR = {
+    "raya": "coma, dos puntos o paréntesis",
+    "punto-medio": "punto, coma o la palabra que une las frases",
+    "comilla": "comillas rectas, o las angulares « »",
+    "vineta": "texto normal, o una tabla si son campos; negrita solo donde resalta algo",
+    "flecha": "guion de lista, o la palabra que dice la relación",
+    "semaforo": "la palabra: cumple, en riesgo o no cumple",
+    "encabezado": "el mismo encabezado sin los dos puntos",
+}
+
+
+def medir_texto(texto):
+    """Las marcas de un texto suelto: `[(línea, clave, qué es, qué va en su lugar)]`.
+
+    `EP-004·HU-012·CA-05` · Es lo que mide el enganche de escritura sobre lo
+    que el agente **acaba de escribir**, no sobre el archivo entero: el
+    archivo trae marcas viejas, y repetirlas en cada edición es ruido.
+    Salta el código, los cercados y los sellos, igual que `_cuenta`.
+    """
+    salida = []
+    for n, linea in lineas_utiles(_sin_sellos(texto)):
+        for clave, nombre in marcas_de_linea(sin_codigo_en_linea(linea)):
+            if clave in REEMPLAZOS:
+                nuevo = REEMPLAZOS[clave]
+                lugar = ("un espacio normal" if nuevo == " " else
+                         "quitarlo" if not nuevo else f"«{nuevo}»")
+            else:
+                lugar = EN_SU_LUGAR.get(clave, "lo que dice el anexo de marcas")
+            salida.append((n, clave, nombre, lugar))
+    return salida
+
+
 def _cuenta(texto):
     """`{clave: cuántas}` de un texto, saltando código, cercados y **sellos**.
 

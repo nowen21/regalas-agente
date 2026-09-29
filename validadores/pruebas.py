@@ -2496,8 +2496,8 @@ class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
         with open(os.path.join(dia, "pepito.md"), "w", encoding="utf-8") as f:
             f.write("### H-9 · nada que ver\n- **Estado:** abierto\n")
         texto = comun.leer(ruta).replace(
-            "**Viene de:** «...»",
-            f"**Viene de:** {os.path.basename(dia)} · maracuya · H-4")
+            "| Viene de | «...» |",
+            f"| Viene de | {os.path.basename(dia)} · maracuya · H-4 |")
         with open(ruta, "w", encoding="utf-8") as f:
             f.write(texto)
 

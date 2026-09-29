@@ -32,24 +32,20 @@
 | **Cerrado en** | La sesión donde se cerró: `AAAA-MM-DD · tema`. Mientras esté abierto, `—`. |
 | **Con qué se retoma** | La pregunta que quedó viva. En los resueltos, `—`. |
 
-«Qué lo soluciona» es la semilla de las historias que dispara. No basta con decir a dónde se llega: quien tome el hallazgo mañana tiene que poder escribir la historia sin haber estado en la conversación. Por eso cada pieza se escribe con las dos secciones que abren una historia de usuario:
+«Qué lo soluciona» es la semilla de las historias que dispara. No basta con decir a dónde se llega: quien tome el hallazgo mañana tiene que poder escribir la historia sin haber estado en la conversación. Por eso cada pieza se escribe con las dos secciones que abren una historia de usuario. Va dentro de la celda, con `<br>` entre renglones:
 
 ```
-**EP-000 · HU nueva — «título»**
-- **Como** «rol»
-- **Quiero** «capacidad»
-- **Para** «beneficio»
-- **Contexto:** qué hay hoy, qué falta y qué se rompe si no se hace.
+| Qué lo soluciona | **EP-000 · HU nueva — «título»**<br>Como «rol»<br>Quiero «capacidad»<br>Para «beneficio»<br>Contexto: qué hay hoy, qué falta y qué se rompe si no se hace |
 ```
+
+Los campos van en tabla y no en viñetas con el nombre en negrita: una viñeta así, llena, es una marca de [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/marcadores-de-ia.md), y la tabla no lo es.
 
 Una pieza, una historia. Si una pieza no aparece en «dispara», o una historia disparada no sale de ninguna pieza, el hallazgo está mal escrito.
 
 El orden de las historias se escribe en el hallazgo, y en ninguna otra parte. Las épicas están cortadas por tipo de entregable (un documento modelo y el programa que lo llena caen en épicas distintas), así que un problema partido en dos historias no deja ver su orden desde ninguna de las dos. El hallazgo es el único sitio donde el problema está entero. Por eso «dispara» los numera, y nombra también lo que las bloquea aunque este hallazgo no lo haya disparado:
 
 ```
-**Dispara:**
-1. EP-000 · HU-000 — «por qué va primero». No sale de este hallazgo: la bloquea.
-2. EP-000 · HU-000 — «por qué va después de la anterior».
+| Dispara | 1. EP-000 · HU-000: «por qué va primero». No sale de este hallazgo: la bloquea.<br>2. EP-000 · HU-000: «por qué va después de la anterior». |
 ```
 
 «Nace en» y «cerrado en» son el rastro del hallazgo. El primero no cambia nunca; el segundo se llena el día que se cierra, aunque sea tres sesiones después. Sin los dos no se puede seguir un hallazgo que se arrastra.
@@ -83,7 +79,9 @@ Un hallazgo que no cabe en ninguno de los cuatro no era un hallazgo: era convers
 
 Una sesión se abre por dos motivos: porque hay trabajo nuevo, o porque alguien fue a buscar un hallazgo que otra sesión dejó abierto. En el segundo caso hay que decir **cuál**, con su fecha, su tema y su número:
 
-**Viene de:** «AAAA-MM-DD · tema · H-N» / «—, es trabajo nuevo»
+| Campo | Valor |
+|---|---|
+| Viene de | «AAAA-MM-DD · tema · H-N» / «—, es trabajo nuevo» |
 
 Es el enlace hacia adelante. El de vuelta ya existe: el «cerrado en» de ese hallazgo apunta a esta sesión el día que se cierre. Sin los dos, un hallazgo que se arrastra tres sesiones no se puede seguir en ninguna dirección.
 
@@ -97,40 +95,39 @@ Ese hallazgo no se copia acá. Se nombra, y lo que se decida se escribe en el re
 
 > Ejemplo de un hallazgo con sus doce campos y una pieza de «Qué lo soluciona».
 
-- **Qué pasó:** «…»
-- **Por qué importa:** «…»
-- **Qué lo soluciona:**
-  **EP-000 · HU nueva — «título»**
-  - **Como** «rol»
-  - **Quiero** «capacidad»
-  - **Para** «beneficio»
-  - **Contexto:** «qué hay hoy, qué falta y qué se rompe si no se hace».
-- **Qué se decidió:** «…»
-- **Estado:** «resuelto acá / abierto»
-- **Responde a:** «EP-000 · HU-000 · CA-00» / «—»
-- **Dispara:** «EP-000 · HU-000 nueva» / «numeradas, si son varias» / «—»
-- **Orden de resolución:** «n de N · por qué va ahí» / «—»
-- **Dónde queda:** «señal S-00 / pendiente NN / [`NN·Xn`](«ruta a la regla») / memoria»
-- **Nace en:** «AAAA-MM-DD · tema de la sesión»
-- **Cerrado en:** «AAAA-MM-DD · tema de la sesión» / «—»
-- **Con qué se retoma:** «la pregunta que quedó viva» / «—»
+| Campo | Valor |
+|---|---|
+| Qué pasó | «…» |
+| Por qué importa | «…» |
+| Qué lo soluciona | **EP-000 · HU nueva — «título»**<br>Como «rol»<br>Quiero «capacidad»<br>Para «beneficio»<br>Contexto: «qué hay hoy, qué falta y qué se rompe si no se hace» |
+| Qué se decidió | «…» |
+| Estado | «resuelto acá / abierto» |
+| Responde a | «EP-000 · HU-000 · CA-00» / «—» |
+| Dispara | «EP-000 · HU-000 nueva» / «numeradas, si son varias» / «—» |
+| Orden de resolución | «n de N · por qué va ahí» / «—» |
+| Dónde queda | «señal S-00 / pendiente NN / [`NN·Xn`](«ruta a la regla») / memoria» |
+| Nace en | «AAAA-MM-DD · tema de la sesión» |
+| Cerrado en | «AAAA-MM-DD · tema de la sesión» / «—» |
+| Con qué se retoma | «la pregunta que quedó viva» / «—» |
 
 ### H-2 · «…»
 
 > Molde del hallazgo siguiente.
 
-- **Qué pasó:** «…»
-- **Por qué importa:** «…»
-- **Qué lo soluciona:** «una pieza por cada historia que dispara, con su narrativa y su contexto»
-- **Qué se decidió:** «…»
-- **Estado:** «…»
-- **Responde a:** «…»
-- **Dispara:** «…»
-- **Orden de resolución:** «…»
-- **Dónde queda:** «…»
-- **Nace en:** «…»
-- **Cerrado en:** «…»
-- **Con qué se retoma:** «…»
+| Campo | Valor |
+|---|---|
+| Qué pasó | «…» |
+| Por qué importa | «…» |
+| Qué lo soluciona | «una pieza por cada historia que dispara, con su narrativa y su contexto, separada con `<br>`» |
+| Qué se decidió | «…» |
+| Estado | «…» |
+| Responde a | «…» |
+| Dispara | «…» |
+| Orden de resolución | «…» |
+| Dónde queda | «…» |
+| Nace en | «…» |
+| Cerrado en | «…» |
+| Con qué se retoma | «…» |
 
 ## Orden de resolución de los hallazgos abiertos
 

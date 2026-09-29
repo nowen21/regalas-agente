@@ -13,7 +13,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Quien define el estándar |
 | **Responsable** | Una sola persona cumple los roles de dueño de producto y líder técnico |
-| **Estado** | Pendiente |
+| **Estado** | Terminada el 2026-09-28, con la fase `D` |
 ---
 
 ## 2. Narrativa
@@ -41,6 +41,8 @@ Hoy nadie cuenta ni siquiera las mecánicas, y son las más fáciles: una raya l
 | RN-03 | La notación que el estándar define no es una marca: la cita por identificador, las marcas de regla y los símbolos del resultado del checklist |
 | RN-04 | Todo hallazgo es aviso: quitar una marca puede volver el texto confuso, y ahí manda escribir claro |
 | RN-05 | La comprobación se corre sobre el documento que se va a entregar, no sobre todo el repositorio |
+| RN-06 | Lo que el agente acaba de escribir en un `.md` se mide en ese momento, y las marcas le llegan en el mismo turno, con la línea y qué poner en su lugar. Se mide el texto escrito, no el archivo entero, para no repetir las marcas viejas. Viene del [pendiente 102](../../../../pendientes/102-las-reglas-de-redaccion-se-miden-al-escribir-el-documento.md) |
+| RN-07 | Los campos del molde del resumen de sesión van en tabla, para que llenarlos no produzca la viñeta que abre con negrita. Decidido por el usuario el 2026-09-28 |
 
 ### 3.2 Supuestos
 
@@ -118,6 +120,39 @@ Y el molde sigue pidiendo exactamente lo mismo que pedía
 4. Correr `validar.py estandar` y la batería de los validadores. Resultado esperado: sin incumplimientos nuevos.
 - **Aprobado cuando:** el adorno se fue, la notación quedó, y ningún molde pide menos que antes.
 
+### CA-05 · Lo que se escribe se mide al escribirlo
+
+```gherkin
+Dado que el agente escribe o edita un documento .md
+Cuando termina de escribirlo
+Entonces le llegan en ese turno las marcas de lo que escribió, con su línea y qué poner en su lugar
+Y lo que ya estaba escrito antes no se vuelve a reportar
+```
+
+**Cómo validarlo:**
+
+1. Escribir un `.md` de prueba con una raya larga como inciso y una viñeta que abre con negrita y dos puntos. Resultado esperado: el agente recibe las dos marcas en ese mismo turno.
+2. Editar otra línea del mismo archivo sin marcas. Resultado esperado: no llega ningún aviso.
+3. Escribir un archivo que no es `.md`. Resultado esperado: no llega nada.
+
+Se aprueba cuando el aviso llega en el turno de la escritura y solo por lo recién escrito.
+
+### CA-06 · El molde del resumen de sesión no produce marcas al llenarse
+
+```gherkin
+Dado un resumen de sesión nuevo, hecho con plantillas/sesion.md
+Cuando se llenan los campos de un hallazgo
+Entonces el recuento de marcas de ese hallazgo da cero
+Y los programas que leen el estado del hallazgo lo siguen leyendo
+```
+
+**Cómo validarlo:**
+
+1. Llenar un hallazgo de prueba con el molde nuevo. Resultado esperado: cero marcas.
+2. Pedirle a `resumen.py` los hallazgos abiertos de ese resumen y de uno viejo. Resultado esperado: los lee en los dos.
+
+Se aprueba cuando el molde lleno no suma marcas y nada que leía el resumen se rompe.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Límites** — un documento sin texto, uno que es solo código y uno con una tabla larga tienen comportamiento definido.
@@ -162,6 +197,7 @@ Y el molde sigue pidiendo exactamente lo mismo que pedía
 | [A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica](A-EP-004-HU-012-contar-las-marcas-de-generacion-automatica/README.md) | CA-01, CA-02 y CA-03 | **Cerrada 2026-08-18** · Cumple · 16 477 marcas contadas, 4 491 en lo que se hereda |
 | [B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo](B-EP-004-HU-012-limpiar-los-diez-moldes-del-ciclo/funcionalidad_implementada.md) | CA-04 | Cerrada 2026-08-22 — Cumple. Del [pendiente 78](../../../../pendientes/hecho/los-moldes-se-entregan-limpios-de-marcas.md): el adorno de prosa, de 197 a 126 |
 | [C-EP-004-HU-012-el-recuento-no-cuenta-la-notacion](C-EP-004-HU-012-el-recuento-no-cuenta-la-notacion/funcionalidad_implementada.md) | CA-03 | Cerrada 2026-08-22 — Cumple. Lo que quedaba de las 126 no era adorno sino notación, y el contador era más ancho que el anexo. Los moldes del ciclo quedan en **0**; el árbol entero baja de 15 485 a 6 440 |
+| [D-EP-004-HU-012-las-marcas-se-miden-al-escribir](D-EP-004-HU-012-las-marcas-se-miden-al-escribir/estado-fase.md) | CA-05 y CA-06 | Cerrada el 2026-09-28: Cumple, 3 de 3 casos |
 
 **La fase construye.** La exigencia existe —`00·ID8` y su lista— y ningún programa la comprueba. Lo que decide si sirve es el CA-03: el estándar usa a propósito el punto medio y las comillas angulares, y un programa ingenuo reportaría casi cada línea.
 
@@ -222,3 +258,4 @@ Y el molde sigue pidiendo exactamente lo mismo que pedía
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-08-14 | Ing. José Dúmar Jiménez Ruíz | Creación de la HU desde la lista de marcadores |
+| 2026-09-28 | El agente | Suma RN-06, RN-07, CA-05 y CA-06 del pendiente 102, aprobado por el usuario, y abre la fase `D`. Sale del H-4 de la sesión del 2026-09-28 |

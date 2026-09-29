@@ -1,6 +1,6 @@
 # `hook_md.py`
 
-Arranca solo después de escribir o cambiar un archivo y, si era un documento del proyecto, revisa que no hayan quedado enlaces rotos.
+Arranca solo después de escribir o cambiar un archivo y, si era un documento del proyecto, revisa que no hayan quedado enlaces rotos y mide las marcas de redacción de lo que se acaba de escribir.
 
 ## Qué hace
 
@@ -8,6 +8,7 @@ Lee el aviso que manda Claude Code cada vez que el agente escribe o cambia un ar
 
 - Si no es un `.md`, o es un `.md` que está fuera de la carpeta que se está revisando, no hace nada.
 - Si lo es, corre las dos comprobaciones de `enlaces.py`: enlaces rotos e índices a los que les falta algo.
+- Además mide las marcas de redacción (`00·ID8`) del texto que se acaba de escribir, no del archivo entero: el archivo puede traer marcas viejas, y repetirlas en cada edición sería ruido. Si hay, se las entrega al agente en ese mismo turno, con la línea y qué poner en su lugar. No detiene nada.
 
 Si el cambio rompió algo, le retorna el detalle al agente para que lo arregle ahí mismo, sin esperar a que alguien lo note después.
 
@@ -15,14 +16,15 @@ De todos los programas que arrancan solos, este es el único que puede terminar 
 
 | Cómo termina | Qué significa |
 |---|---|
-| `0` | Todo bien, o no había nada que revisar. |
-| `2` | Hay fallas. Claude Code se las retorna al agente para que las arregle. |
+| `0` | Todo bien, no había nada que revisar, o solo hay marcas: esas le llegan al agente por su contexto. |
+| `2` | Hay enlaces rotos. Claude Code se los retorna al agente para que los arregle, y si hay marcas van en el mismo mensaje. |
 
 ## De qué depende y quién lo usa
 
 ```
 hook_md.py
    ├── enlaces.py ··· validar_enlaces() y validar_indices()
+   ├── marcas.py ···· medir_texto()
    └── comun.py ····· FALLA, RAIZ y preparar_salida
 ```
 
@@ -44,6 +46,17 @@ Ningún archivo lo usa a él. Lo llama Claude Code después de cada archivo que 
 - **Hace:** busca dónde está el archivo en tres sitios: primero en lo que se le pidió a la herramienta, y después en dos formas distintas de la respuesta.
 - **Retorna:** esa dirección, o texto vacío.
 
+**`texto_escrito(datos)`**
+
+- **Recibe:** lo que manda Claude Code.
+- **Retorna:** lo que se acaba de escribir: el `content` de `Write`, o los `new_string` de `Edit` y de `MultiEdit`.
+
+**`aviso_de_marcas(ruta, texto)`**
+
+- **Recibe:** el archivo y lo que se escribió en él.
+- **Hace:** mide las marcas con `marcas.medir_texto` y nombra hasta 15, cada una con su línea y qué poner en su lugar.
+- **Retorna:** el aviso, o texto vacío si no hay marcas.
+
 **`es_md_de(ruta, raiz)`**
 
 - **Recibe:** la dirección de un archivo y la carpeta que se está revisando.
@@ -57,9 +70,10 @@ Ningún archivo lo usa a él. Lo llama Claude Code después de cada archivo que 
   1. Deja la pantalla lista y averigua qué carpeta hay que revisar.
   2. Lee lo que le mandaron. Si viene mal escrito, termina bien y no hace nada.
   3. Si el archivo que se tocó no es un `.md` de esa carpeta, termina bien.
-  4. Corre las dos comprobaciones de enlaces y se queda solo con las fallas.
-  5. Si no hay fallas, termina bien.
-  6. Si las hay, las escribe aparte y termina con `2`.
+  4. Mide las marcas de lo que se acaba de escribir.
+  5. Corre las dos comprobaciones de enlaces y se queda solo con las fallas.
+  6. Si no hay fallas, entrega el aviso de marcas, si lo hay, y termina bien.
+  7. Si las hay, las escribe aparte junto con las marcas y termina con `2`.
 - **Retorna:** `0` o `2`.
 
 ## Cómo se ejecuta

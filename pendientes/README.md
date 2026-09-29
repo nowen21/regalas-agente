@@ -393,6 +393,7 @@ Los que el andamio dejó acá y nadie movió todavía a su sección. Moverlos es
 | ~~99~~ | — | **hecho** → [Nada del agente ni del proyecto queda fuera de ellos](99-nada-del-proyecto-queda-fuera-del-proyecto.md) | La herramienta puede guardar contenido del proyecto fuera del repositorio, y ninguna regla lo impide: `01·C19` cubre solo la memoria y `04·S9` solo lo que escribe el agente. Falta decidir si va como regla nueva o ampliando `S9`. |
 | ~~100~~ | — | **hecho** → [Cada tarea sabe qué reglas le aplican](100-cada-tarea-sabe-que-reglas-le-aplican.md) | No hay mapa que lleve de una tarea a sus reglas: los índices van por capítulo. El agente no sabe qué leer antes de cada tarea, y el enganche que muestre la regla en el momento no sabe cuál mostrar. Falta decidir la lista cerrada de tareas. |
 | ~~101~~ | — | **hecho** → [El arranque deja de mandar las reglas](101-el-arranque-deja-de-mandar-las-reglas.md) | El arranque manda 103 KB y la herramienta corta lo que pasa de 10 KB: guarda el resto fuera del repositorio y el agente ve solo el comienzo, sin aviso. Las reglas ya llegan con cada mensaje; falta que el arranque quepa. |
+| ~~102~~ | — | **hecho** → [Las reglas de redacción se miden al escribir el documento](102-las-reglas-de-redaccion-se-miden-al-escribir-el-documento.md) | Al escribir un documento nada cuenta sus marcas: el aviso llega recién al commit. Y el molde de `sesion.md` produce una marca en cada campo lleno. |
 
 ---
 

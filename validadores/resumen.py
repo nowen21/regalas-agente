@@ -32,8 +32,18 @@ MODELO = os.path.join("plantillas", "sesion.md")
 # `### H-1 · título del hallazgo`
 _HALLAZGO = re.compile(r"^### (H-\d+) \u00b7 (.+)$", re.MULTILINE)
 
-# `- **Estado:** resuelto acá.` / `- **Estado:** abierto.`
-_ESTADO = re.compile(r"^- \*\*Estado:\*\*\s*(.+?)\s*$", re.MULTILINE)
+# `| Estado | abierto |`, la fila del molde desde la 39.5.0, o la viñeta
+# `- **Estado:** abierto.` de los resúmenes anteriores, que no se reescriben.
+# El molde pasó a tabla porque la viñeta llena es una marca de `00·ID8`
+# (`EP-004·HU-012·CA-06`).
+def _campo(nombre, vineta="- "):
+    """El valor de un campo del resumen, en la fila de tabla o en la viñeta."""
+    return re.compile(r"^(?:" + re.escape(vineta) + r"\*\*" + re.escape(nombre)
+                      + r":\*\*|\| " + re.escape(nombre) + r" \|)\s*(.+?)\s*\|?\s*$",
+                      re.MULTILINE)
+
+
+_ESTADO = _campo("Estado")
 
 # La sección de cierre y sus casillas.
 _CIERRE = "## ¿Se puede cerrar la sesión?"
@@ -131,7 +141,7 @@ def _desde_modelo(modelo, transcripcion):
             f"[{CARPETA}/{transcripcion}](../../{transcripcion}). C\u00f3mo se llena "
             f"est\u00e1 en [{CARPETA}/README.md](../../README.md). "
             f"La conversaci\u00f3n est\u00e1 all\u00e1; ac\u00e1 queda lo que la sesi\u00f3n dej\u00f3.\n\n"
-            f"**Viene de:** \u00ab...\u00bb\n\n---\n\n"
+            f"| Campo | Valor |\n|---|---|\n| Viene de | \u00ab...\u00bb |\n\n---\n\n"
             f"## Hallazgos de esta sesi\u00f3n{cola}")
 
 
@@ -272,7 +282,7 @@ def viene_de(ruta):
     """El propósito declarado de la sesión: el texto de su «viene de», o ""."""
     if not os.path.isfile(ruta):
         return ""
-    m = re.search(r"^\*\*Viene de:\*\*\s*(.+?)\s*$", _leer(ruta), re.MULTILINE)
+    m = _campo("Viene de", vineta="").search(_leer(ruta))
     if not m:
         return ""
     crudo = m.group(1).strip()
@@ -309,8 +319,7 @@ def _retoma(ruta, hid):
     bloque = re.split(r"^### H-\d+ \u00b7 ", texto, flags=re.MULTILINE)
     for i, m in enumerate(re.finditer(r"^### (H-\d+) \u00b7 ", texto, re.MULTILINE)):
         if m.group(1) == hid and i + 1 < len(bloque):
-            r = re.search(r"^- \*\*Con qu\u00e9 se retoma:\*\*\s*(.+?)\s*$",
-                          bloque[i + 1], re.MULTILINE)
+            r = _campo("Con qu\u00e9 se retoma").search(bloque[i + 1])
             return r.group(1) if r else ""
     return ""
 

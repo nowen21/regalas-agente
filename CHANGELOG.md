@@ -11,6 +11,23 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.5.0 — 2026-09-28
+
+**El agente se entera de las marcas de redacción en el momento en que escribe un documento.** Antes solo se contaban al guardar el cambio, cuando el documento ya se había entregado y leído.
+
+Además, llenar el resumen de una sesión ya no produce esas marcas por la forma del modelo: sus campos pasan de renglones con el nombre en negrita a una tabla.
+
+**Lo que entra:**
+
+- `adaptadores/claude-code/hook_md.py` mide lo que se acaba de escribir en un `.md`, no el archivo entero, y le devuelve al agente cada marca con su línea y qué poner en su lugar. Es aviso: no detiene nada.
+- `validadores/marcas.py` suma `medir_texto`, que mide un texto suelto.
+- `plantillas/sesion.md` lleva en tabla los campos del hallazgo y el «Viene de».
+- `validadores/resumen.py` lee los campos en la tabla y en la forma anterior, para que los resúmenes ya escritos se sigan leyendo.
+
+**MENOR** (aditivo): ninguna regla cambia qué exige y un proyecto no tiene que tocar nada; los resúmenes nuevos salen con el modelo nuevo. Cierra el pendiente 102 con la fase `D` de HU-012 en EP-004.
+
+---
+
 ## 39.4.0 — 2026-09-28
 
 **Todo lo que el agente recibe al abrir la sesión ahora le llega completo.** Antes le llegaba cortado: la herramienta acepta un tamaño máximo, lo que pasaba de ahí lo guardaba aparte, fuera del proyecto, y el agente solo veía el comienzo. Creía tener las reglas y no las tenía.
