@@ -62,8 +62,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 - **Estado:** abierto: el formato ya está escrito; falta la historia de reemplazar la caja por un enlace y corregir `04-HU.md` y `ADR.md`.
 - **Responde a:** —
 - **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 7 de 7: sacar de las plantillas lo que ya dice el README no afecta el olvido de las reglas, y puede esperar a que lo demás esté hecho
-- **Dónde queda:** [plantillas/README.md](../../../plantillas/README.md) · falta crear el pendiente
+- **Orden de resolución:** 5 de 5: sacar de las plantillas lo que ya dice el README no afecta el olvido de las reglas, y puede esperar a que lo demás esté hecho
+- **Dónde queda:** [plantillas/README.md](../../../plantillas/README.md) · [pendiente 107](../../../pendientes/107-las-plantillas-enlazan-el-readme-en-vez-de-copiarlo.md)
 - **Nace en:** 2026-09-28 · por qué el agente olvida las reglas
 - **Cerrado en:** —
 - **Con qué se retoma:** ¿la caja se reemplaza por un enlace a la sección del README, y eso es PARCHE o MAYOR para los proyectos?
@@ -187,7 +187,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Responde a | — |
 | Dispara | EP-005 · HU nueva: lo que se ejecuta está en el plan aprobado |
 | Orden de resolución | 3 de 5 · necesita la plantilla de H-11 para leer el plan |
-| Dónde queda | este resumen; falta el pendiente |
+| Dónde queda | [pendiente 105](../../../pendientes/105-nada-se-ejecuta-fuera-del-plan-aprobado.md) |
 | Nace en | 2026-09-29 · por qué el agente olvida las reglas |
 | Cerrado en | — |
 | Con qué se retoma | ¿Qué hace el freno cuando no hay fase activa y el usuario pide un arreglo pequeño fuera de la cadena? |
@@ -204,7 +204,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Responde a | — |
 | Dispara | EP-001 · HU nueva: el plan de trabajo se puede comprobar |
 | Orden de resolución | 2 de 5 · depende de H-13; H-10 lo necesita |
-| Dónde queda | este resumen; falta el pendiente |
+| Dónde queda | [pendiente 104](../../../pendientes/104-la-plantilla-del-plan-se-puede-comprobar.md) |
 | Nace en | 2026-09-29 · por qué el agente olvida las reglas |
 | Cerrado en | — |
 | Con qué se retoma | ¿Se permite declarar una carpeta entera en la tabla 2.1, o solo archivos? |
@@ -221,7 +221,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Responde a | EP-005 · HU-023 · CA-09 |
 | Dispara | EP-005 · HU-023, fase nueva |
 | Orden de resolución | 4 de 5 · es chico y no bloquea |
-| Dónde queda | este resumen; falta el pendiente |
+| Dónde queda | [pendiente 106](../../../pendientes/106-la-cita-con-espacio-trae-la-regla.md) |
 | Nace en | 2026-09-29 · por qué el agente olvida las reglas |
 | Cerrado en | — |
 | Con qué se retoma | — |
@@ -238,7 +238,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Responde a | — |
 | Dispara | EP-001 · HU nueva: cada documento de la cadena sale del anterior |
 | Orden de resolución | 1 de 5 · fija el alcance del que dependen H-11 y H-10 |
-| Dónde queda | este resumen; falta el pendiente |
+| Dónde queda | [pendiente 103](../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
 | Nace en | 2026-09-29 · por qué el agente olvida las reglas |
 | Cerrado en | — |
 | Con qué se retoma | ¿Gana `02·F19` sobre `01·C14` dentro de una cadena aprobada, y la regla va en `02·F0` o aparte? |
@@ -247,12 +247,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 
 | Puesto | Hallazgo | Por qué va ahí |
 |---|---|---|
-| — | ~~H-6, las reglas mandan sobre lo que pida el usuario~~ | Cerrado el 2026-09-28 con `00·N10` |
-| — | ~~H-2, nada queda fuera del repositorio~~ | Cerrado el 2026-09-28 con `01·C29` |
-| — | ~~H-7, el mapa de qué reglas aplican a cada tarea~~ | Cerrado el 2026-09-28 con HU-023, junto con H-8 y H-9 |
-| — | ~~H-1, las reglas según la palabra de `01·C28`, sin adivinar~~ | Cerrado el 2026-09-29 con el ciclo 4 de la fase `C` de HU-023 |
-| — | ~~H-4, el enganche que revisa la redacción al escribir~~ | Cerrado el 2026-09-28 con la fase `D` de HU-012 de EP-004 |
-| — | ~~H-5, el enganche muestra `C28` al recibir un pedido~~ | Cerrado el 2026-09-28: lo resolvió HU-023 |
 | 1 | H-13, cada documento de la cadena sale del anterior | Fija el alcance del que dependen H-11 y H-10 |
 | 2 | H-11, la plantilla del plan se puede comprobar | H-10 la necesita para leer el plan |
 | 3 | H-10, nada se ejecuta fuera del plan aprobado | Es lo que evita que el agente decida por su cuenta |
