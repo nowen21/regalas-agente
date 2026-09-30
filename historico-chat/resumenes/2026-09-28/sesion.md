@@ -25,8 +25,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 - **Orden de resolución:** —
 - **Dónde queda:** lo principal lo resolvió HU-023: el recuperador entrega las reglas de cada tarea con cada mensaje. El arranque lo resolvió el [pendiente 101](../../../pendientes/101-el-arranque-deja-de-mandar-las-reglas.md) con la fase `C` de [HU-009 de EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-009-lo-que-rige-cada-frase-llega-puesto/HU-009-lo-que-rige-cada-frase-llega-puesto.md) (versión 39.4.0): ya no manda las reglas sino la instrucción de cómo llegan y dónde está el mapa, y todo lo que entrega cabe en los 10.000 caracteres de la herramienta. La fase `A` de HU-005 de EP-016 corrigió la plataforma, que prometía las reglas al abrir
 - **Nace en:** 2026-09-28 · por qué el agente olvida las reglas
-- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
-- **Con qué se retoma:** ¿cuál es el tope exacto, cuántos de los 79,7 KB aporta cada enganche, y cómo se mide qué regla se usa? H-2 cambia la solución: el enganche no copia las reglas, entrega enlaces a `base/`.
+- **Cerrado en:** 2026-09-29, con el ciclo 4 de la fase `C` de HU-023
+- **Con qué se retoma:** reabierto porque el agente corrió las 568 pruebas de `pruebas.py` contra `02·F5`, que le llegó solo por su nombre, y porque la palabra «reglas» trajo las reglas de cambiar el estándar a un mensaje que preguntaba. El usuario decidió: *«nada de adivinar»*, las tareas salen de la palabra clave y de la acción, y el agente lee las reglas completas antes de actuar. Lo construyó la fase `C` de HU-023 de EP-005 (39.6.0): antes de cada acción y de cada respuesta, el agente lee completas las reglas de esa tarea en `base/reglas-por-tarea/`, o un enganche lo detiene. El agente dio H-1 por cerrado con tres cosas que el usuario no autorizó (los archivos en la raíz, la relectura solo al resumirse, y el cierre mismo), y el usuario pidió corregirlas. Corregido en el ciclo 2 de la fase: los archivos en `base/`, la relectura con cada mensaje del usuario, la lectura parcial que ya no cuenta y la escritura fuera del proyecto detenida; 163 pruebas en OK. Visto en vivo: con cada mensaje se borra lo leído. Pero la herramienta de lectura no volvía a mandar un archivo que no cambió, y el enganche contaba ese aviso sin texto como lectura. El ciclo 3 lo corrigió: el aviso no cuenta y las reglas se leen con un comando que siempre devuelve el texto; 111 pruebas en OK, y en vivo la lectura por comando quedó anotada. El 2026-09-29 el usuario descartó la lectura obligatoria: llenaba la conversación y no hacía cumplir nada. Pidió que, sin la palabra de `01·C28`, el agente la recuerde y espere, y que las reglas salgan de la respuesta sin que el agente muestre que las lee. Lo hizo el ciclo 4: el recuperador entrega el aviso, `hook_antes.py` quedó solo con el freno de escrituras fuera del proyecto y `leidas.py` se borró; 121 pruebas en OK y probado en vivo con los mensajes de ese día. Antes: ¿cuál es el tope exacto, cuántos de los 79,7 KB aporta cada enganche, y cómo se mide qué regla se usa? H-2 cambia la solución: el enganche no copia las reglas, entrega enlaces a `base/`.
 
 ### H-2 · Nada del agente ni del proyecto queda por fuera de ellos
 
@@ -78,14 +78,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Quiero** que cada escritura en un documento hecho con plantilla se mida contra las reglas de redacción
   - **Para** que el documento las cumpla durante toda la sesión y no solo al nacer
   - **Contexto:** hoy `hook_md.py` revisa los enlaces al escribir, pero nada cuenta las marcas del documento escrito. Además, el formato de campos de `sesion.md` produce marcas por sí solo al llenarse.
-- **Qué se decidió:** sin decidir.
-- **Estado:** abierto
+- **Qué se decidió:** el usuario aprobó el pendiente 102 y eligió pasar a tabla los campos del molde de `sesion.md`.
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** EP-? · HU nueva (falta decidir en qué épica va)
-- **Orden de resolución:** 5 de 7, después de H-7: el enganche lee el mapa para saber qué reglas de redacción mostrar
-- **Dónde queda:** falta crear el pendiente
+- **Dispara:** EP-004 · HU-012, fase `D`
+- **Orden de resolución:** —
+- **Dónde queda:** [pendiente 102](../../../pendientes/102-las-reglas-de-redaccion-se-miden-al-escribir-el-documento.md), hecho con la fase `D` de [HU-012 de EP-004](../../../documentacion/epicas/EP-004-comprobacion-automatica/HU-012-marcas-de-generacion-automatica/HU-012-marcas-de-generacion-automatica.md) (39.5.0): el enganche de escritura mide lo recién escrito y el molde del resumen lleva sus campos en tabla. Ya resuelto por HU-023: la respuesta del chat se mide y vuelve al turno siguiente, y las reglas de redacción llegan cuando el mensaje pide escribir
 - **Nace en:** 2026-09-28, por qué el agente olvida las reglas
-- **Cerrado en:** —
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
 - **Con qué se retoma:** ¿el aviso al escribir basta, o el campo de formulario lleno se acepta como formato y se cambia el anexo de marcas? El usuario precisó: *«todo debe saber en tiempo real que se deben aplicar esas reglas»*. El recordatorio de cada turno (`hook_reglas.py`) ya nombra `ID8`, `ID9`, `ID11` e `ID12`, y aun así el agente llenó este resumen con marcas: recordar no alcanza, hace falta medir en el momento de escribir. Después amplió el alcance: *«todo el historico-chat lo debe cumplir porque desde ahí se está haciendo todo mal»*. Medido: `resumenes/` tiene 5550 marcas en 68 de 90 archivos, las transcripciones 4696 en 67 de 70 y `memory/` 112 en 25 de 26 (parte de las de los resúmenes son campos de formulario llenos). [hook_redaccion.py](../../../adaptadores/claude-code/hook_redaccion.py) mide cada respuesta del agente pero, según su propio comentario, nunca le devuelve nada al modelo: mide y el agente no se entera. Las transcripciones son literales y no se retocan; se corrigen en el origen, avisándole al agente cuando responde.
 
 ### H-5 · El agente actuó sin la palabra que exige `01·C28`
@@ -93,14 +93,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 - **Qué pasó:** el usuario preguntó qué regla obliga a decirle al agente qué debe hacer. El agente citó solo [`01·C21`](../../../base/01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar), y el usuario señaló [base/01-conducta/palabras-clave.md](../../../base/01-conducta/palabras-clave.md), el anexo de [`01·C28`](../../../base/01-conducta.md#c28--sin-la-palabra-que-diga-qué-se-espera-el-agente-no-actúa). Revisada la sesión, el agente cambió archivos sin esa palabra: con un «si» escribió la sección del README y la línea de `CLAUDE.md.plantilla`; sin «Recuerde» escribió un recuerdo; con «revise» corrigió la tabla del README.
 - **Por qué importa:** la regla existe para que el agente no lea una pregunta como una orden, y el agente la incumplió sin tenerla presente. Es el mismo caso de H-1 y H-4: la regla no estaba a la vista cuando hacía falta.
 - **Qué lo soluciona:** lo mismo que H-1 y H-4. La regla tiene que llegarle al agente en el momento de actuar, no solo al arrancar la sesión.
-- **Qué se decidió:** sin decidir.
-- **Estado:** abierto
+- **Qué se decidió:** el usuario aprobó marcarlo como resuelto: `01·C28` ya llega en cada mensaje.
+- **Estado:** resuelto acá
 - **Responde a:** —
-- **Dispara:** —, cae en la historia de H-4
-- **Orden de resolución:** 6 de 7, junto con H-4: es el mismo enganche, que además muestra `C28` al recibir un pedido
-- **Dónde queda:** falta crear el pendiente
+- **Dispara:** —
+- **Orden de resolución:** —
+- **Dónde queda:** lo resolvió la fase `B` de [HU-023 de EP-005](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/HU-023-cada-tarea-sabe-que-reglas-le-aplican.md) (versión 39.3.0): la tarea `recibir-pedido` va en todo mensaje, y `01·C28` llega con ella en la lista de las que rigen todo mensaje
 - **Nace en:** 2026-09-28, por qué el agente olvida las reglas
-- **Cerrado en:** —
+- **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
 - **Con qué se retoma:** ¿cómo le llega `C28` al agente en el momento de actuar? Los cambios hechos sin la palabra se dejan, por decisión del usuario.
 
 ### H-6 · Ninguna regla pone las reglas por encima de lo que el usuario pida en el momento
@@ -175,6 +175,74 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 - **Cerrado en:** 2026-09-28, por qué el agente olvida las reglas
 - **Con qué se retoma:** el usuario señaló que el recuperador existe pero no funciona, y que por eso se abrió esta sesión. Se probó con mensajes de la sesión: «suba a git» no trae nada (solo compara palabras de cuatro letras o más, así que «git» no cuenta, y no reconoce «suba» como «subir»); «aplique las reglas de la caja de reglas de redacción al readme» trae `DOC17` y ninguna de `ID8`, `ID9`, `ID11` o `ID12`, porque nunca recupera los capítulos `00` y `01`: supone que llegaron enteros al arrancar, y H-1 mostró que llegan cortados en 2 KB. En agro-system está conectado; en el estándar, no. La recomendación pasa a ser que el recuperador use el mapa de tareas en vez de la semejanza de palabras.
 
+### H-10 · Nada detiene al agente cuando trabaja fuera del plan aprobado
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | En la fase `C` de HU-023 el agente cambió el código seis veces después de aprobado el plan, sin escribir antes la ampliación: tocó archivos que el plan no declaraba y borró `leidas.py`. `02·F8`, `01·C4` y `00·N1` lo prohíben, y las plantillas lo dicen dos veces. El plan y el código dejaron de coincidir hasta que se escribió la sección 12 del plan, aprobada el 2026-09-29. |
+| Por qué importa | La regla existe y el texto de la plantilla también; lo que falla es que cumplirla depende de que el agente se acuerde. El freno de `01·C28` impide actuar sin la palabra, pero después de «Hágalo» nada revisa que el agente se quede dentro de lo aprobado. |
+| Qué lo soluciona | **EP-005 · HU nueva: lo que se ejecuta está en el plan aprobado**<br>Como usuario que aprueba un plan<br>Quiero que el agente no pueda escribir un archivo, ni correr una suite de pruebas, que el plan de la fase activa no declara<br>Para que ampliar el plan sea la única forma de salirse de él<br>Contexto: un freno antes de cada escritura que compara la ruta con la tabla 2.1 del plan aprobado de la fase activa, y las suites con las del `plan_pruebas`; sin fase activa, solo se escriben documentos de trabajo. La ampliación se escribe en el plan y pasa cuando el usuario escribe «Apruebo», que el enganche de cada mensaje anota. Además, el commit se rechaza si trae archivos fuera del plan, y cada detención queda anotada sola como hallazgo. Depende de H-11. |
+| Qué se decidió | El usuario lo analizó el 2026-09-29 y pidió registrarlo. |
+| Estado | abierto |
+| Responde a | — |
+| Dispara | EP-005 · HU nueva: lo que se ejecuta está en el plan aprobado |
+| Orden de resolución | 3 de 5 · necesita la plantilla de H-11 para leer el plan |
+| Dónde queda | este resumen; falta el pendiente |
+| Nace en | 2026-09-29 · por qué el agente olvida las reglas |
+| Cerrado en | — |
+| Con qué se retoma | ¿Qué hace el freno cuando no hay fase activa y el usuario pide un arreglo pequeño fuera de la cadena? |
+
+### H-11 · La plantilla del plan de trabajo no se puede comprobar con un programa
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | La tabla 2.1 de [07-plan-trabajo.md](../../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) acepta filas como «`validadores/docs/`» o «Los documentos de esta fase», que un programa no puede comparar con una ruta. La plantilla no tiene un campo de quién aprobó el plan y cuándo, ni una sección para las ampliaciones: la sección 12 del plan de la fase `C` de HU-023 se agregó a mano. |
+| Por qué importa | Sin eso, el freno de H-10 no puede saber qué está permitido ni desde cuándo. |
+| Qué lo soluciona | **EP-001 · HU nueva: el plan de trabajo se puede comprobar**<br>Como agente que ejecuta un plan<br>Quiero una tabla de archivos con rutas exactas, un campo de aprobación con fecha y una sección fija de ampliaciones aprobadas<br>Para que un programa pueda decir si una escritura está dentro del plan<br>Contexto: hoy la regla de `02·F8` está escrita en la plantilla y el agente la incumplió igual. |
+| Qué se decidió | El usuario lo analizó el 2026-09-29 y pidió registrarlo. |
+| Estado | abierto |
+| Responde a | — |
+| Dispara | EP-001 · HU nueva: el plan de trabajo se puede comprobar |
+| Orden de resolución | 2 de 5 · depende de H-13; H-10 lo necesita |
+| Dónde queda | este resumen; falta el pendiente |
+| Nace en | 2026-09-29 · por qué el agente olvida las reglas |
+| Cerrado en | — |
+| Con qué se retoma | ¿Se permite declarar una carpeta entera en la tabla 2.1, o solo archivos? |
+
+### H-12 · La cita «00 id9» no trae la regla
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El usuario corrige con «00 id9», con espacio y en minúscula. El recuperador solo reconoce la forma `00·ID9`, así que la regla citada no llegó; con «00·ID9» sí llegó. Visto en vivo el 2026-09-29. |
+| Por qué importa | Es la forma en que el usuario pide cumplir una regla, y el agente responde sin su texto. |
+| Qué lo soluciona | Que el recuperador reconozca la cita con espacio o punto medio, en mayúscula o minúscula, cuando el número de capítulo y el identificador existen. Es una corrección de la fase `C` de HU-023 de EP-005. |
+| Qué se decidió | Registrarlo. |
+| Estado | abierto |
+| Responde a | EP-005 · HU-023 · CA-09 |
+| Dispara | EP-005 · HU-023, fase nueva |
+| Orden de resolución | 4 de 5 · es chico y no bloquea |
+| Dónde queda | este resumen; falta el pendiente |
+| Nace en | 2026-09-29 · por qué el agente olvida las reglas |
+| Cerrado en | — |
+| Con qué se retoma | — |
+
+### H-13 · La cadena de documentos no obliga a que cada uno salga del anterior
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Entre el pendiente y la historia de usuario no hay un documento que fije el alcance exacto, y nada obliga a que cada documento salga del anterior. Por eso el alcance queda abierto y el agente agrega lo que no se pidió: con el pedido «crear la clase `Matematica`», le suma métodos. |
+| Por qué importa | Cada eslabón puede traer asuntos que el anterior no nombró, y el plan termina con trabajo que nadie aprobó. Es la raíz de H-10: el freno sirve si el plan es fiel a lo pedido. |
+| Qué lo soluciona | **EP-001 · HU nueva: cada documento de la cadena sale del anterior**<br>Como usuario que aprueba el trabajo por eslabones<br>Quiero que la cadena sea hallazgo, pendiente, `analisis.md`, historia de usuario y plan de trabajo, y que cada documento amplíe el anterior en profundidad y nunca en alcance<br>Para que ningún eslabón agregue lo que el anterior no pidió<br>Contexto: el análisis es el eslabón nuevo; fija el alcance con dos listas, lo que se hace y lo que no se hace. Cada documento nace de su padre con su enlace, no avanza sin el padre aprobado y se revisa si el padre cambia. Cada punto cita de qué punto del documento anterior sale, y un validador sigue la cadena desde el plan hasta el hallazgo: lo que no tiene origen se detiene. |
+| Qué se decidió | El usuario lo definió el 2026-09-29 en el análisis de esta sesión: la cadena, el análisis entre el pendiente y la historia, ampliar en profundidad y no en alcance, y la dependencia de cada documento con el anterior. Quedan por decidir dos cosas: si el análisis también prohíbe lo que «el oficio da por sentado» ([`01·C14`](../../../base/01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)), y si va como regla nueva en `02` o dentro de [`02·F0`](../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md). |
+| Estado | abierto |
+| Responde a | — |
+| Dispara | EP-001 · HU nueva: cada documento de la cadena sale del anterior |
+| Orden de resolución | 1 de 5 · fija el alcance del que dependen H-11 y H-10 |
+| Dónde queda | este resumen; falta el pendiente |
+| Nace en | 2026-09-29 · por qué el agente olvida las reglas |
+| Cerrado en | — |
+| Con qué se retoma | ¿Gana `02·F19` sobre `01·C14` dentro de una cadena aprobada, y la regla va en `02·F0` o aparte? |
+
 ## Orden de resolución de los hallazgos abiertos
 
 | Puesto | Hallazgo | Por qué va ahí |
@@ -182,10 +250,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | — | ~~H-6, las reglas mandan sobre lo que pida el usuario~~ | Cerrado el 2026-09-28 con `00·N10` |
 | — | ~~H-2, nada queda fuera del repositorio~~ | Cerrado el 2026-09-28 con `01·C29` |
 | — | ~~H-7, el mapa de qué reglas aplican a cada tarea~~ | Cerrado el 2026-09-28 con HU-023, junto con H-8 y H-9 |
-| — | ~~H-1, la instrucción corta al arrancar~~ | Cerrado el 2026-09-28 con la fase `C` de HU-009 |
-| 5 | H-4, el enganche que revisa la redacción al escribir | Lee el mapa para saber qué reglas mostrar |
-| 6 | H-5, el enganche muestra `C28` al recibir un pedido | Es el mismo enganche de H-4 |
-| 7 | H-3, sacar de las plantillas lo que ya dice el README | No afecta el olvido de las reglas y puede esperar |
+| — | ~~H-1, las reglas según la palabra de `01·C28`, sin adivinar~~ | Cerrado el 2026-09-29 con el ciclo 4 de la fase `C` de HU-023 |
+| — | ~~H-4, el enganche que revisa la redacción al escribir~~ | Cerrado el 2026-09-28 con la fase `D` de HU-012 de EP-004 |
+| — | ~~H-5, el enganche muestra `C28` al recibir un pedido~~ | Cerrado el 2026-09-28: lo resolvió HU-023 |
+| 1 | H-13, cada documento de la cadena sale del anterior | Fija el alcance del que dependen H-11 y H-10 |
+| 2 | H-11, la plantilla del plan se puede comprobar | H-10 la necesita para leer el plan |
+| 3 | H-10, nada se ejecuta fuera del plan aprobado | Es lo que evita que el agente decida por su cuenta |
+| 4 | H-12, la cita «00 id9» trae la regla | Chico, no bloquea |
+| 5 | H-3, sacar de las plantillas lo que ya dice el README | No afecta el olvido de las reglas y puede esperar |
 
 ## ¿Se puede cerrar la sesión?
 

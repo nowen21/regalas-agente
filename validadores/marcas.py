@@ -506,6 +506,11 @@ def validar_preparados(raiz=None):
     for rel in archivos_preparados(raiz):
         if rel in CATALOGO or rel.split("/")[0] == HISTORICO:
             continue
+        # `EP-005·HU-023` · `base/reglas-por-tarea/` son copias que escribe un
+        # programa: sus marcas son las de las reglas que copian, y esas ya se
+        # midieron en su archivo. Contarlas acá las cuenta dos veces.
+        if any(p in comun.EXCLUIDAS for p in rel.split("/")[:-1]):
+            continue
         # `00-ID8` habla de lo que **el agente entrega**, y lo que la
         # plataforma trajo lo escribio otro proyecto. Ademas `_crecimiento`
         # llama a git una vez por archivo: sin este corte, guardar una traida

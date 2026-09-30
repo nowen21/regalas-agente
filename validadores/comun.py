@@ -19,7 +19,12 @@ FALLA = "FALLA"
 AVISO = "AVISO"
 
 # Carpetas que nunca se recorren.
-EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor"}
+EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor",
+             # `base/reglas-por-tarea/` son copias de las reglas de `base/`,
+             # que escribe `mapa_tareas.py` (`EP-005·HU-023`). Recorridas, los
+             # validadores las contarían como reglas repetidas; su coincidencia
+             # con las de verdad la comprueba `validar.py tareas`.
+             "reglas-por-tarea"}
 
 # Y lo que se salta por su **ruta**, no por su nombre.
 #

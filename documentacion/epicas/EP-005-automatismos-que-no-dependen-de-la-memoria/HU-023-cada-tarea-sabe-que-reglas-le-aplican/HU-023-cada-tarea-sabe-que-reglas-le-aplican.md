@@ -15,7 +15,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | El usuario |
 | **Responsable** | El agente |
-| **Estado** | Terminada |
+| **Estado** | Terminada el 2026-09-29, con el ciclo 4 de la fase `C` |
 
 ## 2. Narrativa
 
@@ -41,6 +41,10 @@ Va en esta épica y no por la historia dueña de cada capítulo porque toca las 
 | RN-04 | Un validador falla si una regla vigente no declara sus tareas, si nombra una tarea fuera de la lista o si el mapa no coincide con lo que declaran las reglas. Corre solo antes de publicar, sin que nadie tenga que llamarlo |
 | RN-05 | El validador del mapa del amarre da por clasificado un programa solo si lo nombra una fila de tabla o una línea que lista nombres, no una frase cualquiera. Todo programa de `validadores/` y del adaptador queda clasificado. Viene de H-8 de la sesión del 2026-09-28, que salió en la fase `A` |
 | RN-06 | Con cada mensaje del usuario, el recuperador reconoce las tareas que el mensaje pide y le entrega al agente las reglas que el mapa pone bajo esas tareas. `recibir-pedido` y `responder` van siempre, porque todo mensaje es un pedido y lleva respuesta. Ningún capítulo queda fuera por suponer que llegó al arrancar. Viene de H-9 de la sesión del 2026-09-28 |
+| RN-07 | **Nada se elige adivinando.** Con cada mensaje, las tareas salen de la palabra clave de [`01·C28`](../../../../base/01-conducta.md#c28--sin-la-palabra-que-diga-qué-se-espera-el-agente-no-actúa), que es una lista cerrada, y no de las demás palabras del mensaje. Antes de cada acción del agente, las tareas salen de la acción misma: el comando que va a correr, el archivo que va a escribir o el servicio que va a consultar. Las dos correspondencias están escritas en `base/tareas.md`. **Reemplaza la elección por palabras del mensaje de RN-06**, que tomó «reglas» como pedido de cambiar el estándar |
+| RN-08 | Las reglas de cada tarea se juntan, con su texto completo, en un archivo por tarea que escribe un programa, como el mapa, en `base/reglas-por-tarea/`. Los validadores que recorren `base/` no cuentan esos archivos como reglas repetidas. El agente lee ese archivo con la herramienta de lectura, así que le llega entero: el texto de un enganche se corta en 10.000 caracteres, y las reglas de una tarea suman de 9.946 a 217.871 |
+| RN-09 | Si el mensaje del usuario no abre con una palabra de `01·C28`, el agente no actúa: la recuerda en una línea y espera. Las reglas salen de la palabra con que el usuario responda, y le llegan al agente por dentro, sin que muestre que las lee. Viene de lo decidido por el usuario el 2026-09-29: *«cada vez que el usuario escriba algo que no esté de acuerdo con la C28, me la recuerde y, a partir de la respuesta que yo le dé, determine cuáles son las reglas que debe utilizar»*. **Reemplaza la versión anterior de esta RN**, que obligaba a leer por comando las reglas antes de cada acción y de cada respuesta: llenaba la conversación y no hacía cumplir nada |
+| RN-10 | El enganche detiene toda escritura de archivo fuera de la carpeta del proyecto, y dice dónde va el guion de apoyo ([`04·S9`](../../../../base/04-seguridad.md#s9--no-toques-rutas-del-sistema-fuera-del-proyecto--solo-autorizadas-exactas), [`04·S18`](../../../../base/04-seguridad.md#s18--el-guion-de-apoyo-se-escribe-dentro-del-repositorio-y-se-queda)). Viene del 2026-09-28: el agente escribió guiones en la carpeta temporal de la herramienta y el usuario pidió corregirlo |
 
 ### 3.2 Supuestos
 
@@ -49,7 +53,6 @@ Va en esta épica y no por la historia dueña de cada capítulo porque toca las 
 ### 3.3 Fuera de alcance
 
 - La instrucción que el agente recibe al arrancar la sesión.
-- El enganche que le muestra al agente la regla en el momento de actuar.
 - Cambiar qué exige cualquier regla.
 
 ## 4. Criterios de aceptación
@@ -167,6 +170,58 @@ Y siempre las de recibir-pedido y responder
 4. Abrir `.claude/settings.json` del estándar. Resultado esperado: el enganche `hook_reglas.py` está en `UserPromptSubmit`.
 - **Aprobado cuando:** los cuatro pasos dan lo esperado.
 
+### CA-08 · La palabra clave dice las tareas del mensaje
+
+```gherkin
+Dado que el usuario escribe un mensaje
+Cuando el recuperador elige las reglas
+Entonces las tareas salen solo de la palabra clave del mensaje
+Y un mensaje sin palabra clave trae solo las reglas que rigen todo mensaje
+```
+
+**Cómo validarlo:**
+
+1. Pasarle «Suba». Resultado esperado: las tareas son `tocar-git`, `recibir-pedido` y `responder`.
+2. Pasarle «es sencillo, debe entender las reglas». Resultado esperado: solo `recibir-pedido` y `responder`; ninguna de `cambiar-estandar`.
+3. Pasarle «Escriba el plan del estándar». Resultado esperado: `escribir-documento`, sin `cambiar-estandar` ni `trabajar-cadena`.
+
+Se aprueba cuando ninguna tarea sale de una palabra que no sea la clave.
+
+### CA-09 · Sin la palabra de C28 el agente no actúa, y nada se escribe fuera del proyecto
+
+```gherkin
+Dado que el usuario escribe un mensaje que no abre con una palabra de 01·C28
+Cuando el enganche de cada mensaje llama al recuperador
+Entonces el agente recibe el aviso de que falta la palabra, con la lista, y no actúa
+Y si el mensaje cita una regla, recibe también su texto
+Y si una escritura queda fuera del proyecto, se detiene
+```
+
+**Cómo validarlo:**
+
+1. Pasarle al recuperador «pero por qué no funciona». Resultado esperado: el aviso de `01·C28` con la lista completa de palabras, y ninguna instrucción de leer archivos.
+2. Pasarle «Suba». Resultado esperado: las reglas de `tocar-git`, con `00·N2`, sin el aviso.
+3. Pasarle «qué dice 02·F24?». Resultado esperado: el aviso y el texto de `02·F24`.
+4. Simular la escritura de un archivo en la carpeta temporal del sistema. Resultado esperado: se detiene y dice que el guion va en `historico-chat/scripts/AAAA-MM-DD/`.
+5. Simular un comando. Resultado esperado: pasa sin detenerse.
+
+Se aprueba cuando un mensaje sin la palabra no produce acción y ninguna escritura sale del proyecto.
+
+### CA-10 · Los archivos de reglas por tarea no envejecen
+
+```gherkin
+Dado que una regla cambia o cambia la línea de sus tareas
+Cuando corre el validador de tareas
+Entonces falla si algún archivo de reglas por tarea no coincide con lo que dicen las reglas
+```
+
+**Cómo validarlo:**
+
+1. Escribir los archivos y correr `validar.py tareas`. Resultado esperado: sin fallas.
+2. En una copia, cambiar una regla sin volver a escribirlos. Resultado esperado: falla nombrando el archivo viejo.
+
+Se aprueba cuando el archivo de una tarea no puede quedar distinto de sus reglas.
+
 ### Criterios de aceptación transversales
 
 - [ ] No regresión: `metareglas`, `estandar` y la suite de pruebas quedan sin fallas nuevas (`08`, [`02·F5`](../../../../base/02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md)).
@@ -200,6 +255,7 @@ Y siempre las de recibir-pedido y responder
 |---|---|---|---|---|---|---|
 | [`A-EP-005-HU-023-la-lista-de-tareas-y-el-mapa`](A-EP-005-HU-023-la-lista-de-tareas-y-el-mapa/) | CA-01, CA-02, CA-03 | | [plan_trabajo](A-EP-005-HU-023-la-lista-de-tareas-y-el-mapa/plan_trabajo.md) | [plan_pruebas](A-EP-005-HU-023-la-lista-de-tareas-y-el-mapa/plan_pruebas.md) | [resultado](A-EP-005-HU-023-la-lista-de-tareas-y-el-mapa/resultado_pruebas.md) | Cerrada 2026-09-28 · Cumple |
 | [`B-EP-005-HU-023-todas-las-reglas-declaran-sus-tareas`](B-EP-005-HU-023-todas-las-reglas-declaran-sus-tareas/) | CA-04, CA-05, CA-06, CA-07 | CA-01, CA-02 | [plan_trabajo](B-EP-005-HU-023-todas-las-reglas-declaran-sus-tareas/plan_trabajo.md) | [plan_pruebas](B-EP-005-HU-023-todas-las-reglas-declaran-sus-tareas/plan_pruebas.md) | [resultado](B-EP-005-HU-023-todas-las-reglas-declaran-sus-tareas/resultado_pruebas.md) | Cerrada 2026-09-28 · Cumple |
+| [`C-EP-005-HU-023-las-reglas-llegan-antes-de-actuar`](C-EP-005-HU-023-las-reglas-llegan-antes-de-actuar/) | CA-08, CA-09, CA-10 | CA-07 | [plan_trabajo](C-EP-005-HU-023-las-reglas-llegan-antes-de-actuar/plan_trabajo.md) | [plan_pruebas](C-EP-005-HU-023-las-reglas-llegan-antes-de-actuar/plan_pruebas.md) | [resultado](C-EP-005-HU-023-las-reglas-llegan-antes-de-actuar/resultado_pruebas.md) | Cerrada el 2026-09-29: Cumple, ciclo 4 |
 
 **Qué documento responde qué**, para no buscar en el que no es:
 
@@ -256,3 +312,7 @@ Y siempre las de recibir-pedido y responder
 | 2026-09-28 | El agente | Suma RN-05 y CA-06 por H-8, que salió en la fase `A`: el usuario decidió que se resuelve en esta HU. Se abre la fase `B`, con CA-04 a CA-06 |
 | 2026-09-28 | El agente | Suma RN-06 y CA-07 por H-9: el recuperador de reglas ya existía y fallaba, y el usuario eligió que la fase `B` lo haga trabajar con el mapa. El plan de la fase se reescribe y vuelve a aprobación |
 | 2026-09-28 | El agente | Fase `B` cerrada con veredicto Cumple: las 252 reglas con sus tareas, el validador, la corrección del amarre y el recuperador por tareas conectado en el estándar, versión 39.3.0 |
+| 2026-09-28 | El agente | Suma RN-07 a RN-09 y CA-08 a CA-10, y abre la fase `C`. El agente corrió las 568 pruebas de `pruebas.py` contra `02·F5`, que le había llegado solo por su nombre; y la elección por palabras tomó «reglas» como pedido de cambiar el estándar. El usuario decidió que las reglas se elijan sin adivinar y que el agente las tenga completas antes de actuar. Se reabre H-1 de la sesión, que es el mismo problema |
+| 2026-09-28 | El agente | Se reabre la fase `C`. El agente la cerró con tres cosas que el usuario no autorizó: los archivos por tarea en la raíz y no en `base/` como decía el plan, la relectura solo al resumirse y no en cada interacción, y H-1 cerrado antes de tiempo. El usuario pidió corregirlo. Suma RN-10 porque el agente escribió guiones fuera del repositorio, y CA-09 gana los pasos 4 a 7 |
+| 2026-09-28 | El agente | Ciclo 3 de la fase `C`: la herramienta de lectura no volvía a mandar un archivo que no cambió, y el enganche contaba ese aviso como lectura. RN-09 dice ahora que ese aviso no cuenta y que las reglas se leen con un comando; CA-09 gana los pasos 8 y 9 |
+| 2026-09-29 | El agente | El usuario descartó la lectura obligatoria: llenaba la conversación y no hacía cumplir nada. Pidió que, sin la palabra de `01·C28`, el agente la recuerde y espere, y que las reglas salgan de la respuesta. RN-09 y CA-09 se reescriben; se quitan `leidas.py` y los modos de lectura de `hook_antes.py`, que queda solo con el freno de escrituras fuera del proyecto |

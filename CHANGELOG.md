@@ -11,6 +11,26 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 39.6.0 — 2026-09-28
+
+**Las reglas que le llegan al agente salen de la palabra con que se pide algo, sin adivinar.** Si el mensaje no trae esa palabra, el agente no hace nada: la recuerda y espera. Y ya no puede escribir fuera de la carpeta del proyecto.
+
+Antes elegía las reglas adivinando por las palabras del mensaje: una pregunta que decía «reglas» traía las reglas de cambiar el estándar. Se probó también obligar al agente a leer por comando las reglas antes de cada acción y de cada respuesta; el usuario lo descartó porque llenaba la conversación de lecturas y no hacía cumplir nada.
+
+**Lo que entra:**
+
+- `base/reglas-por-tarea/`: un archivo por tarea con sus reglas completas, escrito por `validadores/mapa_tareas.py`. Las tareas grandes se parten para que cada archivo se lea de una vez. Son copias, así que `comun.EXCLUIDAS` los saca de los recorridos de `base/`.
+- `base/tareas.md` cambia la columna de palabras por dos: las palabras clave que piden cada tarea y las acciones que la señalan.
+- `validadores/recuperar.py` elige por la palabra clave y nombra el archivo donde están completas las que no caben. Si el mensaje no abre con una palabra de la lista, entrega solo el aviso de que falta, con la lista, y las reglas que el mensaje cite.
+- `adaptadores/claude-code/hook_antes.py` detiene toda escritura fuera del proyecto.
+- `validadores/marcas.py` no cuenta como marcas nuevas las de `base/reglas-por-tarea/`, que son copias.
+- `validar.py tareas` también falla si un archivo por tarea quedó viejo o sobra.
+- `CLAUDE.md` y su plantilla dicen cómo llegan ahora las reglas.
+
+**MENOR** (aditivo): ninguna regla cambia qué exige y un proyecto no tiene que tocar nada; el instalador pone los enganches. Cierra la fase `C` de HU-023 en EP-005.
+
+---
+
 ## 39.5.0 — 2026-09-28
 
 **El agente se entera de las marcas de redacción en el momento en que escribe un documento.** Antes solo se contaban al guardar el cambio, cuando el documento ya se había entregado y leído.

@@ -38,6 +38,8 @@ Git es el programa que guarda la historia del proyecto: qué archivo cambió, cu
 | `version.py` | [version.md](version.md) | Compara la versión del estándar con la que dice usar el proyecto. |
 | `sesion.py` | [sesion.md](sesion.md) | Al empezar a trabajar, revisa si el estándar quedó bien puesto. |
 | `cargador.py` | [cargador.md](cargador.md) | Arma el texto que le dice al agente, al abrir la sesión, cómo le llegan las reglas. |
+| `mapa_tareas.py` | [mapa_tareas.md](mapa_tareas.md) | Escribe el mapa de qué reglas aplican a cada tarea, y las reglas completas de cada una. |
+| `recuperar.py` | [recuperar.md](recuperar.md) | Con cada mensaje, entrega las reglas de las tareas que pide su palabra clave. |
 
 ### Memoria e histórico
 
@@ -95,6 +97,7 @@ Un **enganche** (*hook*) es un programa que arranca solo cuando pasa algo, sin q
 | `hook_checklist.py` | [hook_checklist.md](hook_checklist.md) | Al enviar un mensaje. |
 | `hook_recuerdos.py` | [hook_recuerdos.md](hook_recuerdos.md) | Al empezar a trabajar y cada vez que se escribe un archivo. |
 | `hook_md.py` | [hook_md.md](hook_md.md) | Al escribir o cambiar un archivo. |
+| `hook_antes.py` | [hook_antes.md](hook_antes.md) | Antes de cada escritura de archivo: la detiene si queda fuera del proyecto. |
 | `pruebas.py` | [pruebas.md](pruebas.md) | A mano, con `python validadores/pruebas.py`. |
 
 ### Documentos de la carpeta

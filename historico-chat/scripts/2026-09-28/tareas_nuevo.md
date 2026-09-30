@@ -1,6 +1,6 @@
 # Las tareas del agente
 
-Antes de hacer una tarea, el agente lee las reglas que le aplican. Para encontrarlas, cada regla dice a qué tareas aplica con una línea `**Aplica a:**`, y [base/mapa-de-tareas.md](mapa-de-tareas.md) las junta por tarea. El texto completo de las reglas de cada tarea está en [base/reglas-por-tarea/](reglas-por-tarea/README.md).
+Antes de hacer una tarea, el agente lee las reglas que le aplican. Para encontrarlas, cada regla dice a qué tareas aplica con una línea `**Aplica a:**`, y [base/mapa-de-tareas.md](../../../base/mapa-de-tareas.md) las junta por tarea. El texto completo de las reglas de cada tarea está en [base/reglas-por-tarea/](../../../base/reglas-por-tarea/README.md).
 
 Esta es la lista cerrada de esas tareas. Una regla solo puede nombrar las que están aquí. Si una regla no cabe en ninguna, se agrega una tarea a esta lista antes de anotarla.
 
@@ -23,7 +23,7 @@ La línea va después del ejemplo de la regla, igual que la de quién la hace cu
 
 ## Cómo se elige la tarea, sin adivinar
 
-**Con cada mensaje, por la palabra clave.** La tercera columna trae las palabras de [base/01-conducta/palabras-clave.md](01-conducta/palabras-clave.md) que piden cada tarea, sin tildes y en minúscula. Cuentan solo si abren el mensaje o una de sus frases, que es donde [`01·C28`](01-conducta.md#c28--sin-la-palabra-que-diga-qué-se-espera-el-agente-no-actúa) dice que van. Las demás palabras del mensaje no cuentan: «reglas» en una pregunta no es un pedido de cambiar el estándar. `siempre` quiere decir que la tarea va en todo mensaje, porque todo mensaje es un pedido y lleva respuesta. Las palabras clave que no piden ninguna tarea («pregunta», «revise», «corrija», «pare» y las demás) dejan solo las de `siempre`; lo que haga falta después lo dice la acción.
+**Con cada mensaje, por la palabra clave.** La tercera columna trae las palabras de [base/01-conducta/palabras-clave.md](../../../base/01-conducta/palabras-clave.md) que piden cada tarea, sin tildes y en minúscula. Cuentan solo si abren el mensaje o una de sus frases, que es donde [`01·C28`](../../../base/01-conducta.md#c28--sin-la-palabra-que-diga-qué-se-espera-el-agente-no-actúa) dice que van. Las demás palabras del mensaje no cuentan: «reglas» en una pregunta no es un pedido de cambiar el estándar. `siempre` quiere decir que la tarea va en todo mensaje, porque todo mensaje es un pedido y lleva respuesta. Las palabras clave que no piden ninguna tarea («pregunta», «revise», «corrija», «pare» y las demás) dejan solo las de `siempre`; lo que haga falta después lo dice la acción.
 
 **Antes de cada acción, por la acción.** La cuarta columna dice qué acciones del agente la señalan:
 
@@ -34,7 +34,7 @@ La línea va después del ejemplo de la regla, igual que la de quién la hace cu
 | `escribe otro` | Escribir o editar un archivo que no es `.md` |
 | `escribe en <carpetas>` | Escribir o editar un archivo dentro de alguna de esas carpetas del proyecto |
 | `comando` | Correr cualquier comando |
-| `comando <programas>` | Correr un comando que nombra alguno de esos programas |
+| `comando <programas>` | Correr un comando que llama a alguno de esos programas |
 | `herramienta <nombres>` | Usar una herramienta cuyo nombre empieza por alguno de esos |
 
 Una acción puede señalar varias tareas: un `git commit` es `comando` y `comando git`, y pide `correr-comando` y `tocar-git`.

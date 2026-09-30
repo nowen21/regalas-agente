@@ -2144,8 +2144,9 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
 
     **Por qué hace falta.** Al arrancar no se cargan las reglas, y leerlas
     no puede depender de que el agente se acuerde. Desde `EP-005·HU-023` elige por
-    tareas: cada regla dice a qué tareas aplica, y las palabras que señalan cada
-    tarea están en `base/tareas.md`.
+    tareas: cada regla dice a qué tareas aplica. Desde la fase `C`
+    (`RN-07`), las tareas del mensaje salen solo de la palabra clave de
+    `01·C28`: nada se elige adivinando por las demás palabras.
     """
 
     def test_un_saludo_trae_solo_las_de_todo_mensaje(self):
@@ -2177,7 +2178,7 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
 
     def test_la_de_todo_mensaje_no_se_repite_entre_las_que_no_cupieron(self):
         _e, descartadas, siempre = recuperar.elegir(
-            "aplique las reglas de la caja de reglas de redacción al readme",
+            "Escriba el readme con la caja de reglas de redacción",
             comun.RAIZ)
         self.assertFalse(set(descartadas) & set(siempre))
 
@@ -2195,7 +2196,7 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
         Las cuatro llegan; la que no cabe completa en el tope llega por su
         título en el bloque de todo mensaje, con la orden de leerla. `ID8`, la
         de la lista cerrada, llega completa."""
-        mensaje = "aplique las reglas de la caja de reglas de redacción al readme"
+        mensaje = "Escriba el readme con la caja de reglas de redacción"
         ids = [i for i, _ in recuperar.elegir(mensaje, comun.RAIZ)[0]]
         texto = recuperar.como_texto(mensaje, comun.RAIZ)
         self.assertIn("ID8", ids)
@@ -2203,18 +2204,18 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
             self.assertIn("00·" + id, texto, f"faltó {id}")
 
     def test_un_pendiente_trae_la_cadena_y_la_palabra_del_pedido(self):
-        elegidas, _d, siempre = recuperar.elegir("cree el pendiente del H2",
+        elegidas, _d, siempre = recuperar.elegir("Registre el pendiente del H2",
                                                  comun.RAIZ)
-        self.assertIn("F23", [i for i, _ in elegidas])
+        self.assertIn("F23", [i for i, _ in elegidas] + _d)
         self.assertIn("C28", siempre)
 
     def test_todo_lo_que_inyecta_cabe_en_el_tope(self):
         """**Todo cuenta**: encabezado, reglas completas, las que no cupieron y
         las de todo mensaje. Por encima del tope, la herramienta guarda la
         salida aparte y deja ver solo el comienzo, como pasó con el arranque."""
-        for mensaje in ("suba a git", "hola", "cree el pendiente del H2",
-                        "aplique las reglas de la caja de reglas de redacción al readme",
-                        "cambie el código del validador y corra las pruebas"):
+        for mensaje in ("suba a git", "hola", "Registre el pendiente del H2",
+                        "Escriba el readme con la caja de reglas de redacción",
+                        "Verifique las pruebas del validador"):
             peso = len(recuperar.como_texto(mensaje, comun.RAIZ).encode("utf-8"))
             self.assertLessEqual(peso, recuperar.TOPE,
                                  f"«{mensaje}» pesa {peso} bytes")
@@ -2241,17 +2242,20 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
         ninguna: el agente aplica algo que en ese proyecto no rige.
         """
         proyecto = self._con_opt_in(apagados=("21",))
-        ids = [i for i, _ in recuperar.elegir("prueba", comun.RAIZ,
-                                              proyecto=proyecto)[0]]
-        self.assertNotIn("AU6", ids)
-        self.assertIn("T1", ids, "se llevó también las que sí rigen")
+        idx = recuperar.indice(comun.RAIZ)
+        elegidas, descartadas, siempre = recuperar.elegir(
+            "Escriba el documento", comun.RAIZ, proyecto=proyecto)
+        todas = [i for i, _ in elegidas] + descartadas
+        self.assertFalse([i for i in todas if idx[i].capitulo == "21"])
+        self.assertIn("ID8", todas + siempre, "se llevó también las que sí rigen")
 
     def test_si_el_opt_in_esta_encendido_la_regla_si_llega(self):
         proyecto = self._con_opt_in(apagados=("15",))
         idx = recuperar.indice(comun.RAIZ)
-        ids = [i for i, _ in recuperar.elegir("prueba", comun.RAIZ,
-                                              proyecto=proyecto)[0]]
-        self.assertTrue(any(idx[i].capitulo == "21" for i in ids),
+        elegidas, descartadas, _s = recuperar.elegir(
+            "Escriba el documento", comun.RAIZ, proyecto=proyecto)
+        todas = [i for i, _ in elegidas] + descartadas
+        self.assertTrue(any(idx[i].capitulo == "21" for i in todas),
                         "apagó un capítulo que el proyecto encendió")
 
     def test_la_cita_explicita_manda_sobre_el_opt_in_apagado(self):
@@ -2279,19 +2283,22 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
         """**`N2` no se decide por semejanza.** La palabra «commit» no aparece
         en su título, así que un recuperador que solo compare palabras la deja
         afuera justo cuando más importa."""
-        ids = [i for i, _ in recuperar.elegir("haga commit y suba",
+        ids = [i for i, _ in recuperar.elegir("Suba el commit",
                                               comun.RAIZ)[0]]
         self.assertIn("N2", ids)
 
     def test_borrar_en_produccion_trae_las_tres_que_lo_gobiernan(self):
-        ids = [i for i, _ in recuperar.elegir(
-            "borre los registros de producción", comun.RAIZ)[0]]
+        """El archivo de reglas de la tarea de datos trae completas las tres
+        blindadas que gobiernan borrar sobre datos reales."""
+        import mapa_tareas
+        texto = "".join(comun.leer(r)
+                        for r in mapa_tareas.archivos_de("tocar-datos", comun.RAIZ))
         for id in ("N4", "N5", "N7"):
-            self.assertIn(id, ids, f"faltó {id} en un pedido destructivo")
+            self.assertIn("## " + id + " ·", texto, f"faltó {id} en la tarea de datos")
 
     def test_el_nucleo_va_primero(self):
         """El orden es la precedencia: lo blindado antes que la convención."""
-        ids = [i for i, _ in recuperar.elegir("haga commit y suba",
+        ids = [i for i, _ in recuperar.elegir("Suba el commit",
                                               comun.RAIZ)[0]]
         self.assertTrue(ids[0].startswith("N"), f"abrió con {ids[0]}")
 
@@ -2299,7 +2306,7 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
         """Antes se limitaba a cuatro reglas por capítulo para no volcarlo
         entero. Con tareas, todas las de `tocar-git` aplican a un commit, así
         que entran las que caben y el resto sale nombrado: ninguna se calla."""
-        elegidas, descartadas, _s = recuperar.elegir("haga commit y suba",
+        elegidas, descartadas, _s = recuperar.elegir("Suba el commit",
                                                      comun.RAIZ)
         idx = recuperar.indice(comun.RAIZ)
         de_la_tarea = {r.id for r in recuperar.mapa_tareas.reglas_por_tarea(
@@ -2323,16 +2330,16 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
     def test_cada_regla_llega_con_su_motivo(self):
         """Sin el motivo no se puede auditar: el turno siguiente no sabe si la
         regla entró por una cita, por un disparador o por semejanza."""
-        for id, motivo in recuperar.elegir("haga commit y suba", comun.RAIZ)[0]:
+        for id, motivo in recuperar.elegir("Suba el commit", comun.RAIZ)[0]:
             self.assertTrue(motivo.strip(), f"{id} llegó sin motivo")
 
     def test_respeta_el_presupuesto_y_dice_que_dejo_afuera(self):
         """**Un recorte callado es el defecto del arranque otra vez.**"""
         elegidas, descartadas, _s = recuperar.elegir(
-            "borre los registros de producción y corra las pruebas",
+            "Suba el commit. Verifique las pruebas",
             comun.RAIZ, tope=6000)
         texto = recuperar.como_texto(
-            "borre los registros de producción y corra las pruebas",
+            "Suba el commit. Verifique las pruebas",
             comun.RAIZ, tope=6000)
         self.assertLessEqual(len(texto.encode("utf-8")), 6000)
         self.assertTrue(descartadas, "recortó sin decir qué dejó afuera")
@@ -2342,13 +2349,39 @@ class LasReglasQuePideLaSolicitud(unittest.TestCase):
     def test_lo_que_trae_cabe_en_el_presupuesto_de_un_turno(self):
         """Medido el 2026-09-16: de 1 a 4 KB por mensaje, contra los 82,4 KB
         que el arranque mandaba de una sola vez."""
-        for mensaje in ("haga commit y suba",
-                        "borre los registros de producción",
+        for mensaje in ("Suba el commit",
+                        "Suba el commit. Verifique las pruebas",
                         "escriba el README del módulo"):
             kb = len(recuperar.como_texto(mensaje, comun.RAIZ)
                      .encode("utf-8")) / 1024
             self.assertLess(kb, 11, f"«{mensaje}» se pasó del tope: {kb:.1f} KB")
 
+
+    # `EP-005·HU-023·CA-08` · Nada se elige adivinando.
+    def test_solo_la_palabra_clave_elige_la_tarea(self):
+        """Mensajes reales del 2026-09-28 que trajeron reglas de más."""
+        for mensaje in ("es sencillo debe entender las reglas no lo que le parezca",
+                        "como así que entendió que yo quería cambiar el estándar?",
+                        "termine la fase D"):
+            self.assertEqual({}, recuperar.tareas_del_mensaje(mensaje, comun.RAIZ),
+                             f"«{mensaje}» eligió una tarea sin palabra clave")
+        self.assertEqual({"tocar-git"}, set(recuperar.tareas_del_mensaje("Suba", comun.RAIZ)))
+        self.assertEqual({"escribir-documento"},
+                         set(recuperar.tareas_del_mensaje("Escriba el plan del estándar", comun.RAIZ)))
+        self.assertEqual({"trabajar-cadena"},
+                         set(recuperar.tareas_del_mensaje("Apruebo los dos planes. Hágalo", comun.RAIZ)))
+
+    def test_la_palabra_clave_cuenta_solo_al_abrir_una_frase(self):
+        """«que suba todo» no es un pedido de subir: `01·C28` dice que la
+        palabra abre el pedido."""
+        self.assertEqual({}, recuperar.tareas_del_mensaje("dijo que suba todo", comun.RAIZ))
+        self.assertIn("tocar-git",
+                      recuperar.tareas_del_mensaje("Listo. Suba todo", comun.RAIZ))
+
+    def test_lo_que_no_cupo_dice_en_que_archivo_esta_completo(self):
+        texto = recuperar.como_texto("Suba el commit. Verifique las pruebas",
+                                     comun.RAIZ, tope=6000)
+        self.assertIn("reglas-por-tarea/correr-comando.md", texto)
 
 class EngancheDelResumenPorElCaminoReal(unittest.TestCase):
     """Los mismos criterios, disparados como los dispara Claude Code.

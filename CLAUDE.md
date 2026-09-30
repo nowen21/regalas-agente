@@ -6,7 +6,7 @@ Este archivo manda sobre el trabajo **dentro de este repo** — mantener el est�
 
 ## 0 · Obedecer `base/` antes de tocar nada
 
-Las reglas de `base/` se obedecen. No se cargan todas al abrir: con cada mensaje llegan las que aplican a lo que se pide, y las que no cupieron llegan nombradas. Antes de una tarea se leen las que [`base/mapa-de-tareas.md`](base/mapa-de-tareas.md) pone bajo ella. `base/00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
+Las reglas de `base/` se obedecen. No se cargan todas al abrir: con cada mensaje llegan las de las tareas que pide su palabra clave de `01·C28`. Si el mensaje no trae la palabra, el agente no actúa: la recuerda y espera. Las reglas de cada tarea están completas en [`base/reglas-por-tarea/`](base/reglas-por-tarea/README.md). Qué reglas tiene cada tarea lo dice [`base/mapa-de-tareas.md`](base/mapa-de-tareas.md). `base/00-nucleo-blindado.md` tiene prioridad absoluta y no se contradice nunca.
 
 Es el mismo paso 2 que el `CLAUDE.md` instalado le exige a cualquier proyecto que hereda ([`plantillas/CLAUDE.md.plantilla`](plantillas/CLAUDE.md.plantilla)). Acá faltaba, y la consecuencia era esta: el agente escribía el estándar sin haber leído el estándar, así que lo incumplía escribiéndolo. Un proyecto heredero cumplía más que el repo del que hereda.
 

@@ -321,6 +321,11 @@ HOOKS_CLAUDE = [
     # El filtro es regex; el programa vuelve a decidir por si deja pasar de más.
     ("PostToolUse", "WebFetch|WebSearch|Read|mcp__.*", "hook_externo.py",
      "Marcando lo que llegó de afuera...", ""),
+    # `EP-005 · HU-023 · RN-10`: ninguna escritura sale del proyecto. Obligar a
+    # leer las reglas antes de actuar se quitó el 2026-09-29: llenaba la
+    # conversación de lecturas y no hacía cumplir nada.
+    ("PreToolUse", "Write|Edit|MultiEdit|NotebookEdit", "hook_antes.py",
+     "Revisando que la escritura quede dentro del proyecto...", "--modo accion"),
 ]
 
 

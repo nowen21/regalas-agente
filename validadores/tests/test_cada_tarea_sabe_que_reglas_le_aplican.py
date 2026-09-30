@@ -23,11 +23,11 @@ import metareglas    # noqa: E402
 
 LISTA = u"""# Las tareas del agente
 
-| Tarea | Cuándo aplica |
-|---|---|
-| `cambiar-codigo` | Se cambia código |
-| `escribir-documento` | Se escribe un documento |
-| `tocar-git` | Se hace commit |
+| Tarea | Cuándo aplica | Palabras clave que la piden | Acciones que la señalan |
+|---|---|---|---|
+| `cambiar-codigo` | Se cambia código | | `escribe otro` |
+| `escribir-documento` | Se escribe un documento | escriba | `escribe .md` |
+| `tocar-git` | Se hace commit | suba | `comando git` |
 """
 
 CUERPO = u"Nombra cada cosa por lo que hace, no por cómo se construyó."
@@ -150,8 +150,29 @@ class ElValidadorDetectaLoQueNoCuadra(Repo):
         raiz = self.al_dia(u"cambiar-codigo")
         self.escribir(raiz, "base/07-calidad.md", capitulo(u"tocar-git"))
         h = mapa_tareas.validar(raiz)
+        self.assertTrue(any(u"el mapa no coincide" in x.mensaje for x in h))
+        # `CA-10` · Los archivos de reglas por tarea también quedaron viejos.
+        viejos = {os.path.basename(x.archivo) for x in h
+                  if u"reglas de esta tarea no coinciden" in x.mensaje}
+        self.assertIn(u"cambiar-codigo.md", viejos)
+        self.assertIn(u"tocar-git.md", viejos)
+
+    def test_el_archivo_que_sobra_falla(self):
+        """`CA-10` · Un archivo por tarea que ninguna tarea produce se reporta."""
+        raiz = self.al_dia(u"cambiar-codigo")
+        self.escribir(raiz, "base/reglas-por-tarea/bailar.md", u"# Bailar\n")
+        h = mapa_tareas.validar(raiz)
         self.assertEqual(1, len(h))
-        self.assertIn(u"no coincide", h[0].mensaje)
+        self.assertIn(u"sobra", h[0].mensaje)
+
+    def test_la_regla_completa_llega_al_archivo_de_su_tarea(self):
+        """`CA-10` · El archivo de la tarea trae la regla entera, con su ejemplo."""
+        raiz = self.al_dia(u"cambiar-codigo")
+        texto = io.open(os.path.join(raiz, "base", "reglas-por-tarea", "cambiar-codigo.md"),
+                        encoding="utf-8").read()
+        self.assertIn(u"## Q1 · Nombra bien las cosas", texto)
+        self.assertIn(CUERPO, texto)
+        self.assertIn(u"INCORRECTO: x", texto)
 
     def test_la_regla_derogada_no_se_reporta(self):
         raiz = self.repo(None)

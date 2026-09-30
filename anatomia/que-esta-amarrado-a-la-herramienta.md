@@ -175,3 +175,15 @@ no los amarrados, porque la pieza nueva es libre. Las dos que se clasifican
 acá ya estaban en el recuento desde que nacieron, el 2026-09-16: el programa
 las contaba y el mapa no las nombraba, y el validador no lo veía porque otra
 frase del mapa las mencionaba (H-8 de la sesión del 2026-09-28).
+
+## 2026-09-28 · las reglas antes de actuar
+
+De la fase `C` de `EP-005·HU-023`: antes de una acción, el agente lee las reglas completas de esa tarea.
+
+| Pieza | Libre o amarrada | Por qué |
+|---|---|---|
+| `hook_antes.py` | 🟡 adaptador | Existe porque la herramienta avisa antes de cada escritura y recibe la detención en su formato |
+
+El 2026-09-29 se quitó `leidas.py`, que llevaba la cuenta de las reglas leídas: el usuario descartó obligar a leerlas antes de actuar. `hook_antes.py` quedó solo con el freno de las escrituras fuera del proyecto.
+
+**El recuento, corrido y no calculado, da 30 amarrados de 89.** Baja el total y no los amarrados: `leidas.py` se contaba como libre.

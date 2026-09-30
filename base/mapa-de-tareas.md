@@ -2,7 +2,7 @@
 
 Qué reglas se leen antes de cada tarea. Lo escribe `validadores/mapa_tareas.py` leyendo la línea `**Aplica a:**` de cada regla: no se edita a mano. Para cambiarlo se cambia la regla y se vuelve a correr el programa.
 
-Las tareas son las de [base/tareas.md](tareas.md).
+Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las reglas de cada una está en [base/reglas-por-tarea/](reglas-por-tarea/README.md).
 
 ## `recibir-pedido`
 
