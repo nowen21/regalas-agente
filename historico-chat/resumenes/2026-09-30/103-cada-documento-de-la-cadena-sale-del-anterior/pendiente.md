@@ -4,7 +4,7 @@ Reúne los pendientes 103, 104 y 105.
 
 | | |
 |---|---|
-| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13 |
+| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13 |
 
 ## El problema
 

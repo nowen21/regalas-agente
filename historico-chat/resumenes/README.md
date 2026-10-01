@@ -53,3 +53,4 @@ Se anotan todos los hallazgos, resueltos y abiertos. Los resueltos, para que nad
 - [historico-chat/resumenes/2026-08-31/](2026-08-31/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-09-27/](2026-09-27/) — sin escribir todavía.
 - [historico-chat/resumenes/2026-09-28/](2026-09-28/) — sin escribir todavía.
+- [historico-chat/resumenes/2026-09-30/](2026-09-30/) — sin escribir todavía.

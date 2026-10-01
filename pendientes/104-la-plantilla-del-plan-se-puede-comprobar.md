@@ -1,5 +1,7 @@
 # Pendiente · La plantilla del plan de trabajo se puede comprobar
 
+> Unido en el [pendiente 103](103-cada-documento-de-la-cadena-sale-del-anterior.md).
+
 **Estado:** abierto. Espera la aprobación del usuario.
 
 | | |

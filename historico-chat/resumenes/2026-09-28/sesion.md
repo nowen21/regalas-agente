@@ -177,6 +177,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 
 ### H-10 · Nada detiene al agente cuando trabaja fuera del plan aprobado
 
+> Unido en el [H-13](#h-13--lo-que-se-construye-se-aparta-de-lo-aprobado).
+
 | Campo | Valor |
 |---|---|
 | Qué pasó | En la fase `C` de HU-023 el agente cambió el código seis veces después de aprobado el plan, sin escribir antes la ampliación: tocó archivos que el plan no declaraba y borró `leidas.py`. `02·F8`, `01·C4` y `00·N1` lo prohíben, y las plantillas lo dicen dos veces. El plan y el código dejaron de coincidir hasta que se escribió la sección 12 del plan, aprobada el 2026-09-29. |
@@ -193,6 +195,8 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Con qué se retoma | ¿Qué hace el freno cuando no hay fase activa y el usuario pide un arreglo pequeño fuera de la cadena? |
 
 ### H-11 · La plantilla del plan de trabajo no se puede comprobar con un programa
+
+> Unido en el [H-13](#h-13--lo-que-se-construye-se-aparta-de-lo-aprobado).
 
 | Campo | Valor |
 |---|---|
@@ -226,22 +230,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 | Cerrado en | — |
 | Con qué se retoma | — |
 
-### H-13 · La cadena de documentos no obliga a que cada uno salga del anterior
+### H-13 · Lo que se construye se aparta de lo aprobado
+
+Reúne los hallazgos H-10, H-11 y H-13.
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Entre el pendiente y la historia de usuario no hay un documento que fije el alcance exacto, y nada obliga a que cada documento salga del anterior. Por eso el alcance queda abierto y el agente agrega lo que no se pidió: con el pedido «crear la clase `Matematica`», le suma métodos. |
-| Por qué importa | Cada eslabón puede traer asuntos que el anterior no nombró, y el plan termina con trabajo que nadie aprobó. Es la raíz de H-10: el freno sirve si el plan es fiel a lo pedido. |
-| Qué lo soluciona | **EP-001 · HU nueva: cada documento de la cadena sale del anterior**<br>Como usuario que aprueba el trabajo por eslabones<br>Quiero que la cadena sea hallazgo, pendiente, `analisis.md`, historia de usuario y plan de trabajo, y que cada documento amplíe el anterior en profundidad y nunca en alcance<br>Para que ningún eslabón agregue lo que el anterior no pidió<br>Contexto: el análisis es el eslabón nuevo; fija el alcance con dos listas, lo que se hace y lo que no se hace. Cada documento nace de su padre con su enlace, no avanza sin el padre aprobado y se revisa si el padre cambia. Cada punto cita de qué punto del documento anterior sale, y un validador sigue la cadena desde el plan hasta el hallazgo: lo que no tiene origen se detiene. |
-| Qué se decidió | El usuario lo definió el 2026-09-29 en el análisis de esta sesión: la cadena, el análisis entre el pendiente y la historia, ampliar en profundidad y no en alcance, y la dependencia de cada documento con el anterior. Quedan por decidir dos cosas: si el análisis también prohíbe lo que «el oficio da por sentado» ([`01·C14`](../../../base/01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)), y si va como regla nueva en `02` o dentro de [`02·F0`](../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md). |
-| Estado | abierto |
-| Responde a | — |
-| Dispara | EP-001 · HU nueva: cada documento de la cadena sale del anterior |
-| Orden de resolución | 1 de 5 · fija el alcance del que dependen H-11 y H-10 |
-| Dónde queda | [pendiente 103](../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
-| Nace en | 2026-09-29 · por qué el agente olvida las reglas |
-| Cerrado en | — |
-| Con qué se retoma | ¿Gana `02·F19` sobre `01·C14` dentro de una cadena aprobada, y la regla va en `02·F0` o aparte? |
+| Qué pasó | En la fase `C` de HU-023, el agente agregó lo que no se pidió y el plan y el código terminaron diciendo cosas distintas. Además, cambió el código seis veces después de aprobado el plan, tocó archivos que el plan no declaraba y borró `leidas.py`. La plantilla del plan acepta filas que un programa no puede comparar con una ruta, y no registra quién aprobó ni las ampliaciones. |
+| Por qué importa | Las reglas existen (`02·F8`, `01·C4`, `00·N1`) y se incumplieron, porque cumplirlas depende de que el agente se acuerde. Cada eslabón puede traer lo que nadie pidió, nada lo detiene y ningún programa lo puede comprobar. Por eso aparecen hallazgos al ejecutar el plan. |
+| Pendiente | [103](../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
 
 ## Orden de resolución de los hallazgos abiertos
 

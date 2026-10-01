@@ -1,5 +1,7 @@
 # Pendiente · Nada se ejecuta fuera del plan aprobado
 
+> Unido en el [pendiente 103](103-cada-documento-de-la-cadena-sale-del-anterior.md).
+
 **Estado:** abierto. Espera la aprobación del usuario.
 
 | | |
