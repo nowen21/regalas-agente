@@ -2,6 +2,26 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## F27 · Cada punto dice de qué punto del anterior sale
+Cada punto de un documento de la cadena lleva «Sale de» con el punto del documento anterior: el pendiente, su hallazgo; la conclusión del análisis, su turno; el criterio de la HU, su punto de «Lo que se tiene que hacer». Lo que no tiene origen no entra (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)).
+```
+INCORRECTO: la HU trae un CA-04 sin «Sale de», porque «se veía necesario»
+CORRECTO:   el CA-04 dice «Sale de: análisis 6, punto 2», y ese punto existe
+            en «Lo que se tiene que hacer» del análisis 6
+```
+
+Fuente: [02·F27](../02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale)
+
+## F28 · El cambio se aplica donde nace y baja en orden
+Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Ningún documento de abajo cambia antes que el de arriba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+```
+INCORRECTO: el usuario cambia lo que necesita y se corrige el plan; la HU
+            sigue diciendo lo de antes
+CORRECTO:   se corrige la HU, después la especificación y al final el plan
+```
+
+Fuente: [02·F28](../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden)
+
 ## F8 · Edita solo los archivos que el plan aprobado declara
 Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera el OK. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
 ```

@@ -58,6 +58,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Un análisis aprobado no se reescribe (`13·DOC24`). Cada turno que pasa queda escrito dentro de él. Viene de la fase `B` de la HU-001, que está cerrada. |
 | Pendiente | Resuelto el 2026-10-02 por «Corrija»: `pasar()` deja fuera los turnos posteriores al que aprobó, y apaga el análisis apenas llega el turno siguiente; el enganche lo llama también al recibir cada mensaje. Pruebas nuevas en `validadores/tests/test_analisis_en_curso.py`. El análisis 6 quedó hasta el turno 116 |
 
+
+### H-7. La plantilla de la HU no tiene dónde poner «Sale de»
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al escribir la fase `A` de la [HU-002](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) de EP-023, el 2026-10-02, se encontró que los criterios de `plantillas/ciclo-vida-proyectos/04-HU.md` no tienen el campo «Sale de». La regla nueva del CA-01 lo exige en cada criterio, y `13·DOC15` manda crear la HU desde esa plantilla. Las de análisis, pendiente y plan sí tienen su campo. |
+| Por qué importa | Una HU hecha con la plantilla, como manda `DOC15`, no cumpliría la regla nueva, y el validador la detendría: dos reglas chocarían (análisis 1, conclusión 12). Cambiar la plantilla no está en los criterios de la HU-002. |
+| Pendiente | Resuelto en el [análisis 7](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
 ---
 
 ## ¿Se puede cerrar la sesión?

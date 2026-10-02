@@ -2,6 +2,17 @@
 
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
+## F5 · Corre solo las suites que la fase toca
+La ejecución que cierra una fase alcanza la suite del módulo de la fase, las suites que la fase refactorizó y las que dependen de los archivos tocados según la matriz de [`02·F17`](../02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) — no la suite completa del proyecto (extiende [`08·T5`](../08-pruebas.md#t5--ejecuta-y-reporta), que ya obliga a correrlas y a reportar el conteo).
+```
+INCORRECTO: al terminar la fase, correr toda la suite del proyecto "por si acaso"
+            → cientos de pruebas, minutos de espera y rojos que ya existían antes
+CORRECTO:   correr la suite del módulo + las declaradas en el plan + las que la
+            matriz de dependencias señala
+```
+
+Fuente: [02·F5](../02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca)
+
 ## F8 · Edita solo los archivos que el plan aprobado declara
 Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera el OK. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
 ```

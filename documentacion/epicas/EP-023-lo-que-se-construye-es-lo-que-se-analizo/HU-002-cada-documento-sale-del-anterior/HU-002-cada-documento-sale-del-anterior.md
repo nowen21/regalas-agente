@@ -1,6 +1,6 @@
 # HU-002 · Cada documento sale del anterior
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 4 y 5, y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 4 y 5, del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), punto 1, y del [análisis 7](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-01 |
+| **Estado** | Lista: aprobada el 2026-10-02 |
 
 ---
 
@@ -89,21 +89,22 @@ Entonces el cambio se aplica en el documento donde nace y baja en orden
 
 **Aprobado cuando:** la regla existe y dice lo del criterio.
 
-### CA-03 · La plantilla de la HU distingue de dónde sale su contexto
+### CA-03 · La plantilla de la HU distingue de dónde sale su contexto, y cada criterio dice de dónde sale
 
-**Sale de:** análisis 4, punto 1.
+**Sale de:** análisis 4, punto 1, y análisis 7, punto 1.
 
 ```gherkin
 Dada la plantilla de la HU
 Cuando se lee su sección «Contexto y descripción»
 Entonces dice que, si la HU sale directo de un pendiente, el contexto es el problema del pendiente
 Y que, si sale de una épica, es la parte del problema de la épica que le toca, con el enlace a la épica
+Y cada criterio de la plantilla lleva «Sale de», con el punto de «Lo que se tiene que hacer» del análisis
 ```
 
 **Cómo validarlo:**
 1. Abrir [`04-HU.md`](../../../../plantillas/ciclo-vida-proyectos/04-HU.md).
 
-**Aprobado cuando:** la sección pide lo del criterio para los dos casos.
+**Aprobado cuando:** la sección pide lo del criterio para los dos casos, y cada criterio de la plantilla tiene «Sale de».
 
 ---
 
@@ -140,7 +141,7 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| N/A: todavía no se descompone en fases | | | | | | |
+| `A-EP-023-HU-002-cada-punto-dice-de-donde-sale` | CA-01, CA-02, CA-03 | HU-001 | [plan](A-EP-023-HU-002-cada-punto-dice-de-donde-sale/plan_trabajo.md) | [pruebas](A-EP-023-HU-002-cada-punto-dice-de-donde-sale/plan_pruebas.md) | [resultado](A-EP-023-HU-002-cada-punto-dice-de-donde-sale/resultado_pruebas.md) | Cumple |
 
 ---
 
@@ -191,3 +192,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU, corregida según el análisis 3 |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Según el análisis 7: el CA-03 pide además «Sale de» en cada criterio de la plantilla. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-03 del análisis 7 |

@@ -24,6 +24,7 @@ import mapa_tareas      # noqa: E402
 import sesiones         # noqa: E402
 import sitio            # noqa: E402
 import analisis         # noqa: E402
+import origen           # noqa: E402
 import temas            # noqa: E402
 import brevedad         # noqa: E402
 import ejecutable       # noqa: E402
@@ -338,6 +339,13 @@ def cmd_analisis(a):
     raiz = os.path.abspath(a.raiz)
     return reportar(analisis.validar(raiz),
                     f"Las cuatro partes de cada análisis aprobado · {relativo(raiz)}")
+
+
+def cmd_origen(a):
+    """`02·F27` · `EP-023·HU-002·CA-01` · Cada punto dice de qué punto del anterior sale."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(origen.validar(raiz),
+                    f"Cada punto dice de dónde sale · {relativo(raiz)}")
 
 
 def cmd_sitio(a):
@@ -823,6 +831,11 @@ def main():
                         help="cada análisis aprobado trae sus cuatro partes · EP-023·HU-001")
     an.add_argument("--raiz", default=RAIZ, help="carpeta del repositorio")
     an.set_defaults(func=cmd_analisis)
+
+    og = sub.add_parser("origen",
+                        help="cada punto dice de qué punto del anterior sale · 02·F27")
+    og.add_argument("--raiz", default=RAIZ, help="carpeta del repositorio")
+    og.set_defaults(func=cmd_origen)
 
     si = sub.add_parser("sitio",
                         help="el mapa del sitio nombra toda carpeta que existe · no envejece")

@@ -11,6 +11,29 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 42.0.0 — 2026-10-02
+
+**Cada punto de un documento dice de qué punto del anterior sale, y un programa lo comprueba.** Lo que no tiene origen no entra. Y si cambia la necesidad, el cambio se escribe primero donde nace y baja en orden.
+
+**MAYOR** ⚠ obliga a migrar: en los documentos nuevos, cada punto tiene que citar su origen.
+
+**Lo que tiene que hacer cada proyecto:**
+
+- Adoptar la versión con el instalador.
+- En las épicas que nacen de un análisis, escribir «Sale de» en cada punto: el pendiente cita su hallazgo; la conclusión, su turno; la fila de «Lo que se tiene que hacer», su conclusión; el criterio de la HU, su punto. Las épicas anteriores no se reabren.
+- Si cambia la necesidad, cambiar primero el documento donde nace y bajar en orden.
+
+**Lo que entra:**
+
+- `02·F27`, «Cada punto dice de qué punto del anterior sale», que extiende `02·F18`.
+- `02·F28`, «El cambio se aplica donde nace y baja en orden», que extiende `02·F0`.
+- `validadores/origen.py` y `validar.py origen`: en las épicas que nacen de un análisis, falla por cada punto sin origen o con un origen que no existe.
+- `plantillas/ciclo-vida-proyectos/04-HU.md`: el contexto distingue la HU que sale de un pendiente de la que sale de una épica, y cada criterio lleva «Sale de».
+
+Cierra la fase `A` de la HU-002 de EP-023.
+
+---
+
 ## 41.0.0 — 2026-10-02
 
 **El agente ya no agrega lo que nadie pidió.** Lo pedido es el criterio de aceptación más lo que exigen las reglas del estándar. Lo que el oficio suele incluir y nadie pidió se pregunta en el análisis, y lo decide el usuario.

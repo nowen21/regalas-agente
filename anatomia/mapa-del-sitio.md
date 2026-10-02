@@ -118,6 +118,7 @@ agente/
 │   ├── plantillas.py ................. un documento contra su plantilla
 │   ├── analisis.py ................... cada análisis aprobado trae sus cuatro partes
 │   ├── analisis_en_curso.py .......... prender, pausar y apagar el análisis; pasarle la conversación
+│   ├── origen.py ..................... cada punto dice de qué punto del anterior sale
 │   ├── fases.py ...................... jerarquía épica → HU → fase
 │   ├── trazabilidad.py ............... enlace bidireccional, ORIGEN, tabla de cierre
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre

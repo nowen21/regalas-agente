@@ -79,6 +79,8 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`00·ID7`](00-identidad-y-rol/reglas/ID7-escribe-para-que-lo-entienda-quien-no-sabe-del-tema.md#id7--escribe-para-que-lo-entienda-quien-no-sabe-del-tema): Escribe para que lo entienda quien no sabe del tema
 - [`00·ID8`](00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md#id8--escribe-sin-las-marcas-que-delatan-generación-automática): Escribe sin las marcas que delatan generación automática
 - [`00·ID9`](00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md#id9--di-lo-mismo-en-menos-palabras): Di lo mismo en menos palabras
+- [`02·F27`](02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale): Cada punto dice de qué punto del anterior sale
+- [`02·F28`](02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden): El cambio se aplica donde nace y baja en orden
 - [`02·F8`](02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara): Edita solo los archivos que el plan aprobado declara
 - [`13·DOC1`](13-documentacion/reglas/DOC1-persiste-el-trabajo-de-cada-unidad-completada.md#doc1--persiste-el-trabajo-de-cada-unidad-completada): Persiste el trabajo de cada unidad completada
 - [`13·DOC10`](13-documentacion/reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md#doc10--registra-en-el-catálogo-del-proyecto-toda-regla-propia): Registra en el catálogo del proyecto toda regla propia
@@ -354,6 +356,8 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`02·F24`](02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md#f24--el-defecto-del-estándar-se-reporta-no-se-corrige): El defecto del estándar se reporta, no se corrige
 - [`02·F25`](02-flujo-de-trabajo/reglas/F25-autorizar-el-arranque-no-aprueba-el-plan.md#f25--autorizar-el-arranque-no-aprueba-el-plan): Autorizar el arranque no aprueba el plan
 - [`02·F26`](02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md#f26--el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-épicas): El inventario de funcionalidades aprobado es la puerta de las épicas
+- [`02·F27`](02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale): Cada punto dice de qué punto del anterior sale
+- [`02·F28`](02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden): El cambio se aplica donde nace y baja en orden
 - [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado): Ejecuta seguido el plan aprobado
 - [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
 - [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca): Corre solo las suites que la fase toca

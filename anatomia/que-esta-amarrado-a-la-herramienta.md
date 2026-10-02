@@ -172,6 +172,7 @@ De la fase que junta las reglas por tarea (`EP-005·HU-023`).
 | `hook_analisis.py` | 🟡 adaptador | Existe porque la herramienta avisa que llegó un mensaje y que terminó el turno, y le entrega el aviso en su formato |
 | `analisis.py` | 🟢 libre | Lee los análisis del repositorio y busca sus secciones; no habla con ninguna herramienta |
 | `analisis_en_curso.py` | 🟡 a medias | Prender, pausar, apagar y pasar la conversación sirve con cualquier agente; lo único amarrado son las etiquetas que quita, que son las que esta herramienta le pone al mensaje |
+| `origen.py` | 🟢 libre | Lee las épicas, los análisis, los pendientes y las HU del repositorio y sigue sus «Sale de»; no habla con ninguna herramienta |
 
 **El recuento, corrido y no calculado, da 29 amarrados de 88.** Sube el total y
 no los amarrados, porque la pieza nueva es libre. Las dos que se clasifican

@@ -265,6 +265,26 @@ CORRECTO:   la propuesta llega con su inventario; el usuario aprueba o corrige e
 
 Fuente: [02·F26](../02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md#f26--el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-épicas)
 
+## F27 · Cada punto dice de qué punto del anterior sale
+Cada punto de un documento de la cadena lleva «Sale de» con el punto del documento anterior: el pendiente, su hallazgo; la conclusión del análisis, su turno; el criterio de la HU, su punto de «Lo que se tiene que hacer». Lo que no tiene origen no entra (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)).
+```
+INCORRECTO: la HU trae un CA-04 sin «Sale de», porque «se veía necesario»
+CORRECTO:   el CA-04 dice «Sale de: análisis 6, punto 2», y ese punto existe
+            en «Lo que se tiene que hacer» del análisis 6
+```
+
+Fuente: [02·F27](../02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale)
+
+## F28 · El cambio se aplica donde nace y baja en orden
+Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Ningún documento de abajo cambia antes que el de arriba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+```
+INCORRECTO: el usuario cambia lo que necesita y se corrige el plan; la HU
+            sigue diciendo lo de antes
+CORRECTO:   se corrige la HU, después la especificación y al final el plan
+```
+
+Fuente: [02·F28](../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden)
+
 ## F3 · Ejecuta seguido el plan aprobado
 Aprobado el plan, ejecuta **todos** sus cambios seguidos, sin pedir permiso por cada archivo. Solo pausa si surge algo **no cubierto** por el plan.
 ```
@@ -284,14 +304,3 @@ CORRECTO:   usuario dice "arranque con Fase X" → agente redacta plan + pruebas
 ```
 
 Fuente: [02·F4](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita)
-
-## F5 · Corre solo las suites que la fase toca
-La ejecución que cierra una fase alcanza la suite del módulo de la fase, las suites que la fase refactorizó y las que dependen de los archivos tocados según la matriz de [`02·F17`](../02-flujo-de-trabajo/reglas/F17-verifica-contra-el-proyecto-real-todo-lo-que-el-plan-afirma.md) — no la suite completa del proyecto (extiende [`08·T5`](../08-pruebas.md#t5--ejecuta-y-reporta), que ya obliga a correrlas y a reportar el conteo).
-```
-INCORRECTO: al terminar la fase, correr toda la suite del proyecto "por si acaso"
-            → cientos de pruebas, minutos de espera y rojos que ya existían antes
-CORRECTO:   correr la suite del módulo + las declaradas en el plan + las que la
-            matriz de dependencias señala
-```
-
-Fuente: [02·F5](../02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca)
