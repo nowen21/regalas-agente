@@ -10,10 +10,10 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`00·N9`](00-nucleo-blindado.md#n9--lo-que-el-usuario-rechazó-no-se-reintenta-de-otra-forma-blindada): Lo que el usuario rechazó no se reintenta de otra forma
 - [`00·N10`](00-nucleo-blindado.md#n10--una-regla-escrita-manda-sobre-la-instrucción-del-momento-blindada): Una regla escrita manda sobre la instrucción del momento
 - [`01·C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta): No decidas por tu cuenta
+- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
 - [`01·C7`](01-conducta.md#c7--ante-dos-lecturas-pregunta): Ante dos lecturas, pregunta
 - [`01·C10`](01-conducta.md#c10--lo-que-el-usuario-pide-dos-veces-se-propone-como-regla): Lo que el usuario pide dos veces se propone como regla
 - [`01·C11`](01-conducta.md#c11--confía-en-las-afirmaciones-del-usuario-sobre-estado-del-sistema): Confía en las afirmaciones del usuario sobre estado del sistema
-- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
 - [`01·C17`](01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada): Ante un pedido que admite dos lecturas, reformula antes de mover nada
 - [`01·C24`](01-conducta.md#c24--solo-la-palabra-del-usuario-aprueba): Solo la palabra del usuario aprueba
 - [`01·C21`](01-conducta.md#c21--pide-el-dato-que-falte-antes-de-arrancar): Pide el dato que falte antes de arrancar
@@ -52,7 +52,7 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`01·C6`](01-conducta.md#c6--confirma-que-es-tu-archivo): Confirma que es tu archivo
 - [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto): Habla el idioma del proyecto
 - [`01·C12`](01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto): No agregues calificativos al nombre del artefacto
-- [`01·C14`](01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción): Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
+- [`01·C30`](01-conducta.md#c30--no-agregues-lo-que-no-se-pidió): No agregues lo que no se pidió
 - [`01·C16`](01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo): Re-lee justo antes de editar, nunca sobre contexto viejo
 - [`01·C18`](01-conducta.md#c18--auto-sincronización-del-claudemd-con-la-plantilla-central): Auto-sincronización del `CLAUDE.md` con la plantilla central
 - [`01·C19`](01-conducta.md#c19--escribe-la-memoria-del-agente-dentro-del-repositorio-del-proyecto): Escribe la memoria del agente dentro del repositorio del proyecto
@@ -107,11 +107,11 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`01·C2`](01-conducta.md#c2--no-inventes-verifica): No inventes: verifica
 - [`01·C3`](01-conducta.md#c3--quédate-en-tu-tarea): Quédate en tu tarea
 - [`01·C4`](01-conducta.md#c4--no-decidas-por-tu-cuenta): No decidas por tu cuenta
+- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
 - [`01·C6`](01-conducta.md#c6--confirma-que-es-tu-archivo): Confirma que es tu archivo
 - [`01·C8`](01-conducta.md#c8--habla-el-idioma-del-proyecto): Habla el idioma del proyecto
 - [`01·C12`](01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto): No agregues calificativos al nombre del artefacto
-- [`01·C14`](01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción): Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
-- [`01·C25`](01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta): Lo que es del usuario se pregunta, aunque sepas la respuesta
+- [`01·C30`](01-conducta.md#c30--no-agregues-lo-que-no-se-pidió): No agregues lo que no se pidió
 - [`01·C15`](01-conducta.md#c15--al-replicar-un-patrón-replicar-la-paridad-completa): Al replicar un patrón, replicar la paridad completa
 - [`01·C16`](01-conducta.md#c16--re-lee-justo-antes-de-editar--nunca-sobre-contexto-viejo): Re-lee justo antes de editar, nunca sobre contexto viejo
 - [`01·C29`](01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): Guarda dentro del repositorio todo lo del agente y del proyecto

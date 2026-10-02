@@ -42,6 +42,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Escrita así, la regla no puede quedar sellada como CUMPLE. Partirla en dos reglas agrega un archivo que el plan aprobado no declara (`02·F8`), así que la fase se detuvo antes de empezar. |
 | Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 5](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
 
+### H-5. Derogar `01·C14` deja otras dos reglas apoyadas en ella
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al escribir la fase `A` de la [HU-005](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) de EP-023, el 2026-10-02, se encontró que además de `01·C25` hay dos reglas que citan `01·C14`: `01·C15` la extiende, y `00·ID1` dice que `C14` fija «dónde queda el listón» del oficio. El análisis 1 solo nombró a `C25` (punto 22). |
+| Por qué importa | Si `C14` se deroga y las otras dos no se tocan, quedan apoyadas en una regla que no rige. Y `ID1` pide trabajar con el criterio del oficio, que es lo que `C14` permitía agregar: puede chocar con la regla nueva (análisis 1, conclusión 12). Cambiar lo que `ID1` exige está fuera de los criterios de la HU-005. |
+| Pendiente | Resuelto en el [análisis 6](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) |
+
+### H-6. El análisis aprobado sigue recibiendo la conversación
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El análisis 6 se aprobó en el turno 116, el 2026-10-02, y el enganche le siguió sumando turnos: el 117 ya está dentro. El archivo `historico-chat/.estado/analisis-en-curso.txt` no se borró. `pasar()` de `validadores/analisis_en_curso.py` solo lo borra si la respuesta del agente ya está en la transcripción, y los dos enganches corren en el mismo evento: cuando `pasar()` mira, la respuesta todavía no está. |
+| Por qué importa | Un análisis aprobado no se reescribe (`13·DOC24`). Cada turno que pasa queda escrito dentro de él. Viene de la fase `B` de la HU-001, que está cerrada. |
+| Pendiente | Resuelto el 2026-10-02 por «Corrija»: `pasar()` deja fuera los turnos posteriores al que aprobó, y apaga el análisis apenas llega el turno siguiente; el enganche lo llama también al recibir cada mensaje. Pruebas nuevas en `validadores/tests/test_analisis_en_curso.py`. El análisis 6 quedó hasta el turno 116 |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

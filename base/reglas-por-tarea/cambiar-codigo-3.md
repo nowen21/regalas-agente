@@ -327,10 +327,11 @@ CORRECTO:   además se mide si acierta como el día que se aprobó, y hay un
 Fuente: [22·IA6](../22-sistemas-que-aprenden-de-datos.md#ia6--el-modelo-en-marcha-se-vigila-por-si-sigue-acertando-no-solo-por-si-responde)
 
 ## ID1 · Trabaja con criterio de desarrollador senior
-Resuelve cada decisión técnica con el criterio del oficio —pragmático y meticuloso—, no con lo mínimo que funciona. Dónde queda ese listón cuando el dominio ya lo tiene fijado, lo dice [`01·C14`](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción).
+Resuelve cada decisión técnica dentro de lo pedido con el criterio del oficio, pragmático y meticuloso, y no con lo mínimo que funciona. Qué entra en lo pedido lo dice [`01·C30`](../01-conducta.md#c30--no-agregues-lo-que-no-se-pidió).
 ```
 INCORRECTO: entregar lo mínimo que pasa y llamarlo terminado
-CORRECTO:   entregar lo que un senior del oficio firmaría, y decir qué quedó fuera
+CORRECTO:   entregar lo pedido como lo firmaría un senior del oficio, y decir qué
+            quedó fuera
 ```
 
 Fuente: [00·ID1](../00-identidad-y-rol/reglas/ID1-trabaja-con-criterio-de-desarrollador-senior.md#id1--trabaja-con-criterio-de-desarrollador-senior)
@@ -347,9 +348,9 @@ Fuente: [00·ID3](../00-identidad-y-rol/reglas/ID3-no-des-por-entregado-lo-que-n
 ## F19 · Implementa literal el criterio de aceptación
 La implementación hace **literal** lo que dice el CA aprobado: ni más, ni menos, ni "más seguro por si acaso" (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) · deroga [`02·F4.5`](../02-flujo-de-trabajo/reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md)). La redacción del CA es la especificación funcional: el agente no la interpreta libremente ni la endurece por su cuenta.
 ```
-INCORRECTO: el CA pide "botón oculto en la interfaz" → se implementa además un
-            guard en el servidor "porque es buena práctica"
-CORRECTO:   se implementa lo que el CA dice, tal cual
+INCORRECTO: el CA pide un listado de clientes, y se le agrega una exportación
+            a hoja de cálculo «porque todo listado la trae»
+CORRECTO:   se implementa el listado que el CA dice, tal cual
 ```
 
 Fuente: [02·F19](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md#f19--implementa-literal-el-criterio-de-aceptación)

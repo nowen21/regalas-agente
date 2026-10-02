@@ -183,9 +183,9 @@ Fuente: [02·F18](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-apr
 ## F19 · Implementa literal el criterio de aceptación
 La implementación hace **literal** lo que dice el CA aprobado: ni más, ni menos, ni "más seguro por si acaso" (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) · deroga [`02·F4.5`](../02-flujo-de-trabajo/reglas/F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md)). La redacción del CA es la especificación funcional: el agente no la interpreta libremente ni la endurece por su cuenta.
 ```
-INCORRECTO: el CA pide "botón oculto en la interfaz" → se implementa además un
-            guard en el servidor "porque es buena práctica"
-CORRECTO:   se implementa lo que el CA dice, tal cual
+INCORRECTO: el CA pide un listado de clientes, y se le agrega una exportación
+            a hoja de cálculo «porque todo listado la trae»
+CORRECTO:   se implementa el listado que el CA dice, tal cual
 ```
 
 Fuente: [02·F19](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md#f19--implementa-literal-el-criterio-de-aceptación)

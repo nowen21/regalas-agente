@@ -11,6 +11,30 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 41.0.0 — 2026-10-02
+
+**El agente ya no agrega lo que nadie pidió.** Lo pedido es el criterio de aceptación más lo que exigen las reglas del estándar. Lo que el oficio suele incluir y nadie pidió se pregunta en el análisis, y lo decide el usuario.
+
+**MAYOR** ⚠ obliga a migrar: deja sin efecto la regla que mandaba construir de entrada lo que el oficio da por sentado, y un proyecto que no adopte esta versión no puede seguir avanzando su trabajo.
+
+**Lo que tiene que hacer cada proyecto:**
+
+- Saber que `01·C14` queda derogada. Por [`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md), un proyecto que no adopte esta versión no abre ni cierra fase.
+- Adoptar la versión con el instalador.
+- Quien cite `01·C14` pasa a citar `01·C30`.
+
+**Lo que entra:**
+
+- `01·C30`, «No agregues lo que no se pidió», que deroga a `01·C14` y extiende a `02·F19`.
+- `01·C25` extiende ahora a `01·C4` y va debajo de ella; `01·C15` extiende a `01·C30`. Lo que exigen no cambia.
+- `00·ID1` pide el criterio del oficio dentro de lo pedido, y ya no remite a `C14`.
+- `02·F19` cambia su ejemplo: el anterior ponía como incorrecto revisar el permiso en el servidor, que exige `04·S1`. Lo que exige no cambia.
+- `validadores/analisis_en_curso.py` y su enganche apagan el análisis aprobado aunque la respuesta llegue a la transcripción después de cerrar el turno, y no le dejan entrar turnos posteriores a la aprobación.
+
+Cierra la fase `A` de la HU-005 de EP-023.
+
+---
+
 ## 40.1.0 — 2026-10-02
 
 **Lo que se habla mientras se analiza un pendiente pasa solo al análisis, y se prende, se pausa y se apaga con tres palabras.** Antes había que preparar a mano un guion distinto para cada análisis y acordarse de apagarlo al aprobar.

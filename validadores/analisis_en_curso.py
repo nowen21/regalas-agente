@@ -37,6 +37,7 @@ FIN = "> acá termina la conversación"
 
 _ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
 _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
+_TURNO_APROBADO = re.compile(r"^> \*\*Aprobado\*\* .*?en el turno (\d+)", re.M)
 _TURNO = re.compile(r"^### (\d+) · Usuario", re.M)
 _PENDIENTE = re.compile(r"\bpendiente\s+(\d+)\b")
 _HU = re.compile(r"\bHU[- ]0*(\d+)\b")
@@ -140,6 +141,12 @@ def _analisis_de(carpeta):
 
 def aprobado(ruta):
     return bool(_APROBADO.search(leer(ruta)))
+
+
+def turno_aprobado(ruta):
+    """El turno en que se aprobó el análisis, o `None`."""
+    m = _TURNO_APROBADO.search(leer(ruta)) if os.path.isfile(ruta) else None
+    return int(m.group(1)) if m else None
 
 
 def _hu_terminada(raiz, epica, hu):
@@ -297,8 +304,10 @@ def conversacion(estado, raiz):
     if estado.get("pausa"):
         tramos.append((estado["pausa"], 10 ** 9))
     partes, anunciados = [], set()
+    # Lo que llega después del turno que lo aprobó no entra (`13·DOC24`).
+    tope = turno_aprobado(estado["analisis"])
     for turno, bloque in _bloques(texto):
-        if turno < estado["desde"]:
+        if turno < estado["desde"] or (tope is not None and turno > tope):
             continue
         tramo = next((t for t in tramos if t[0] <= turno <= t[1]), None)
         if tramo:
@@ -341,10 +350,17 @@ def pasar(raiz):
     nuevo = texto[:inicio] + conversacion(estado, raiz) + "\n" + texto[fin:]
     if nuevo != texto:
         _escribir(estado["analisis"], nuevo)
-    transcripcion = leer(estado["transcripcion"]) if os.path.isfile(estado["transcripcion"]) else ""
-    ultimo = transcripcion.rfind("\n### ")
-    if aprobado(estado["analisis"]) and transcripcion.find("\n**Agente**", ultimo) != -1:
-        _borrar_estado(raiz)
+    # Se apaga cuando la respuesta al turno que lo aprobó ya entró. Al cerrar
+    # ese turno puede no estar todavía, porque el histórico la escribe en el
+    # mismo evento; por eso también se apaga apenas llega el turno siguiente.
+    tope = turno_aprobado(estado["analisis"])
+    if tope is not None:
+        transcripcion = leer(estado["transcripcion"]) if os.path.isfile(estado["transcripcion"]) else ""
+        bloques = dict(_bloques(transcripcion))
+        siguiente = any(n > tope for n in bloques)
+        respondido = "\n**Agente**" in bloques.get(tope, "")
+        if siguiente or respondido:
+            _borrar_estado(raiz)
     return True
 
 

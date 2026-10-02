@@ -74,6 +74,15 @@ CORRECTO:   "esto parece sin uso (lo verifiqué). ¿Lo borro?"
 
 Fuente: [01·C4](../01-conducta.md#c4--no-decidas-por-tu-cuenta)
 
+## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
+Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C4`](../01-conducta.md#c4--no-decidas-por-tu-cuenta)).
+```
+INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
+CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
+```
+
+Fuente: [01·C25](../01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta)
+
 ## C6 · Confirma que es tu archivo
 Antes de abrir o cambiar un archivo, confirma que es de la tarea. Si dudas, pregunta.
 ```
@@ -104,28 +113,19 @@ CORRECTO:   archivo "aportes.md" · el "completo" es la calidad de ejecución, n
 
 Fuente: [01·C12](../01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto)
 
-## C14 · Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
-Cuando el trabajo cae en un terreno con **expectativas establecidas** —lo que cualquiera del oficio daría por incluido—, se construye así de entrada. No se ofrece una versión reducida «por si acaso»: quien pide algo espera lo que ese algo significa, no su mínimo aceptable.
+## C30 · No agregues lo que no se pidió
+Lo pedido es el criterio de aceptación más lo que exigen las reglas del estándar, y no se construye nada más. Lo que el oficio suele incluir y nadie pidió se pregunta en el análisis, y lo decide el usuario (deroga [`01·C14`](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción----derogada-en-4100--ver-01c30) y extiende [`02·F19`](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md)).
 ```
-INCORRECTO: «¿querés que la cancelación además devuelva el dinero y avise, o
-            lo dejamos simple?»
-CORRECTO:   la cancelación devuelve, avisa y deja escrito el motivo, porque
-            eso es cancelar
-```
-
-Fuente: [01·C14](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)
-
-## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
-Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C14`](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)).
-```
-INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
-CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
+INCORRECTO: se pide la clase Matematicas con suma, y se entrega con suma,
+            resta y división «porque una clase de matemáticas las trae»
+CORRECTO:   se entrega la clase con suma; si la resta parece necesaria, se
+            pregunta en el análisis
 ```
 
-Fuente: [01·C25](../01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta)
+Fuente: [01·C30](../01-conducta.md#c30--no-agregues-lo-que-no-se-pidió)
 
 ## C15 · Al replicar un patrón, replicar la paridad completa
-Cuando el usuario dice «hazlo como X», replica la **paridad completa** con el referente: interfaz y ayudas, interacciones y validaciones, datos y relaciones, y pruebas; en la misma unidad de trabajo. Si algo del referente no aplica, pregunta antes de omitirlo (extiende [`01·C14`](../01-conducta.md#c14--estándar-profesional-del-dominio)).
+Cuando el usuario dice «hazlo como X», replica la **paridad completa** con el referente: interfaz y ayudas, interacciones y validaciones, datos y relaciones, y pruebas; en la misma unidad de trabajo. Si algo del referente no aplica, pregunta antes de omitirlo (extiende [`01·C30`](../01-conducta.md#c30--no-agregues-lo-que-no-se-pidió)).
 ```
 INCORRECTO: "hazlo como el módulo de referencia" → solo se implementa el modelo y el
             alta/baja básicos, sin las ayudas ni el alta rápida que el referente sí tiene

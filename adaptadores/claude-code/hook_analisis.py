@@ -10,7 +10,8 @@
   análisis» pone la marca. Después le dice al agente a qué análisis entra la
   conversación, o que ninguno está prendido.
 - **`--modo cierre`** (`Stop`): pasa la conversación al análisis prendido, y
-  lo apaga cuando ya está aprobado y la respuesta entró.
+  lo apaga cuando ya está aprobado y la respuesta entró. Si al cerrar la
+  respuesta todavía no estaba, lo apaga el mensaje siguiente.
 
 **Vive en el adaptador, no en `validadores/`.** Acá solo está lo que habla con
 esta herramienta; el trabajo está en `validadores/analisis_en_curso.py`.
@@ -58,6 +59,9 @@ def mensaje(raiz, entrada):
     transcripcion = historico.archivo_de_sesion(raiz, entrada.get("session_id") or "")
     curso.esperar(transcripcion)
     turno = curso.ultimo_turno(transcripcion)
+    # El análisis aprobado que quedó prendido se cierra aquí: la respuesta al
+    # turno que lo aprobó ya está en la transcripción.
+    curso.pasar(raiz)
     limpio = curso._limpio(texto)
     nota = ""
 

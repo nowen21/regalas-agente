@@ -40,6 +40,15 @@ CORRECTO:   "esto parece sin uso (lo verifiqué). ¿Lo borro?"
 
 Fuente: [01·C4](../01-conducta.md#c4--no-decidas-por-tu-cuenta)
 
+## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
+Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C4`](../01-conducta.md#c4--no-decidas-por-tu-cuenta)).
+```
+INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
+CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
+```
+
+Fuente: [01·C25](../01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta)
+
 ## C7 · Ante dos lecturas, pregunta
 Si una petición se puede entender de dos formas y cada una da un resultado distinto, pregunta con opciones **antes** de hacer. No adivines.
 ```
@@ -68,15 +77,6 @@ CORRECTO:   el agente ejecuta como si no existiera; si aparece en el runtime, ah
 ```
 
 Fuente: [01·C11](../01-conducta.md#c11--confía-en-las-afirmaciones-del-usuario-sobre-estado-del-sistema)
-
-## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
-Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C14`](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)).
-```
-INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
-CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
-```
-
-Fuente: [01·C25](../01-conducta.md#c25--lo-que-es-del-usuario-se-pregunta-aunque-sepas-la-respuesta)
 
 ## C17 · Ante un pedido que admite dos lecturas, reformula antes de mover nada
 Si el pedido se puede entender de más de una forma razonable, **antes** de tocar código o escribir un plan se escriben una a tres líneas diciendo **qué se entendió**, y se espera. No aplica al trabajo mecánico —leer, listar, correr algo que se pidió por su nombre— ni a seguir una fase ya aprobada ([`02·F9`](../02-flujo-de-trabajo/reglas/F9-no-subdividas-ni-renegocies-un-plan-ya-aprobado.md)).

@@ -37,9 +37,9 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | Recuerdo | De qué se trata |
 |---|---|
 | [Aprobar antes de commit](aprobar-antes-de-commit.md) | No hay commit ni push hasta que el usuario lea el cambio y lo apruebe; "sí" al cambio no es "sí" al commit. |
-| [Corregir el defecto detectado](corregir-el-defecto-que-uno-mismo-detecta.md) | Lo que el agente reporta como mal, lo arregla; no pregunta "¿lo corrijo?". Vale solo mientras ejecuta algo ya autorizado. |
+| [Corregir el defecto detectado](corregir-el-defecto-que-uno-mismo-detecta.md) | Lo que el agente reporta como mal, lo arregla; no pregunta "¿lo corrijo?". Vale solo dentro del plan aprobado; lo de afuera es un hallazgo. |
 | [Decidir es del usuario](decidir-es-del-usuario.md) | Las opciones se escriben en el chat, con recomendación, y se espera. Ni las decide el agente ni van en el formulario de la herramienta. |
-| [Una instrucción se cumple entera](una-instruccion-se-cumple-entera.md) | Las unidades de una misma orden se hacen todas y se reporta al final; no se pregunta «¿sigo?» con una orden ya dada. |
+| [Una instrucción se cumple entera](una-instruccion-se-cumple-entera.md) | Las unidades de una misma orden se hacen todas y se reporta al final; no se pregunta «¿sigo?». Un hallazgo sí detiene la ejecución. |
 | [Estilo de redacción simple](estilo-redaccion-simple.md) | Todo lo que se escribe lo entiende quien no sabe del tema, e idealmente un niño — también las reglas (`00·ID7`). |
 | [Español colombiano](espanol-colombiano.md) | Se escribe con las palabras que se usan en Colombia, no solo «en español»: la palabra correcta pero ajena no se entiende. |
 | [Fixtures sin secretos literales](fixtures-sin-secretos-literales.md) | En tests y ejemplos, los tokens se arman en runtime: GitHub bloquea el push si ve un secreto con forma real. |

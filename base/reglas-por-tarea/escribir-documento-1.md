@@ -77,16 +77,16 @@ CORRECTO:   archivo "aportes.md" · el "completo" es la calidad de ejecución, n
 
 Fuente: [01·C12](../01-conducta.md#c12--no-agregues-calificativos-al-nombre-del-artefacto)
 
-## C14 · Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
-Cuando el trabajo cae en un terreno con **expectativas establecidas** —lo que cualquiera del oficio daría por incluido—, se construye así de entrada. No se ofrece una versión reducida «por si acaso»: quien pide algo espera lo que ese algo significa, no su mínimo aceptable.
+## C30 · No agregues lo que no se pidió
+Lo pedido es el criterio de aceptación más lo que exigen las reglas del estándar, y no se construye nada más. Lo que el oficio suele incluir y nadie pidió se pregunta en el análisis, y lo decide el usuario (deroga [`01·C14`](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción----derogada-en-4100--ver-01c30) y extiende [`02·F19`](../02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md)).
 ```
-INCORRECTO: «¿querés que la cancelación además devuelva el dinero y avise, o
-            lo dejamos simple?»
-CORRECTO:   la cancelación devuelve, avisa y deja escrito el motivo, porque
-            eso es cancelar
+INCORRECTO: se pide la clase Matematicas con suma, y se entrega con suma,
+            resta y división «porque una clase de matemáticas las trae»
+CORRECTO:   se entrega la clase con suma; si la resta parece necesaria, se
+            pregunta en el análisis
 ```
 
-Fuente: [01·C14](../01-conducta.md#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)
+Fuente: [01·C30](../01-conducta.md#c30--no-agregues-lo-que-no-se-pidió)
 
 ## C16 · Re-lee justo antes de editar — nunca sobre contexto viejo
 Antes de editar un archivo que el usuario pudo haber cambiado desde tu última lectura (lo tiene abierto, el control de versiones lo da por modificado, la sesión se compactó o pasaron varios turnos), relee la sección exacta que vas a reemplazar y edita contra ese texto, nunca sobre contexto viejo (extiende [`01·C2`](../01-conducta.md#c2--no-inventes-verifica)).

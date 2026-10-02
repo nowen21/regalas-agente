@@ -145,6 +145,39 @@ class PrenderPausarApagar(Base):
 
         self.assertIsNone(curso.pendiente_pedido("Analicemos por qué falla esto"))
 
+    def test_h6_se_apaga_aunque_la_respuesta_llegue_tarde(self):
+        """H-6: al cerrar el turno que aprobó, la respuesta aún no está escrita."""
+        self.agregar(turno(1, "Analicemos: el pendiente 7"))
+        curso.prender(self.raiz, 7, self.trans, 1)
+        a1 = os.path.join(self.p7, "analisis-1.md")
+        self.agregar("### 2 · Usuario — 2026-10-02 10:02:00\n> Apruebo el análisis\n\n")
+        self.assertTrue(curso.aprobar(self.raiz, 2, "2026-10-02"))
+        curso.pasar(self.raiz)
+        self.assertIsNotNone(curso.leer_estado(self.raiz))
+        self.agregar("**Agente** — 2026-10-02 10:02:30\n\nAprobado.\n\n" + turno(3, "Escriba"))
+        curso.pasar(self.raiz)
+        self.assertIsNone(curso.leer_estado(self.raiz))
+        texto = self.leer(a1)
+        self.assertIn("Aprobado.", texto)
+        self.assertNotIn("### 3 · Usuario", texto)
+
+    def test_h6_lo_que_entro_despues_de_aprobar_sale(self):
+        self.agregar(turno(1, "Analicemos: el pendiente 7"))
+        curso.prender(self.raiz, 7, self.trans, 1)
+        a1 = os.path.join(self.p7, "analisis-1.md")
+        self.agregar(turno(2, "Apruebo el análisis"))
+        estado = curso.leer_estado(self.raiz)
+        self.agregar(turno(3, "Escriba"))
+        curso.pasar(self.raiz)
+        self.assertIn("### 3 · Usuario", self.leer(a1))
+        curso.aprobar(self.raiz, 2, "2026-10-02")
+        curso._guardar_estado(self.raiz, estado)
+        curso.pasar(self.raiz)
+        texto = self.leer(a1)
+        self.assertIn("### 2 · Usuario", texto)
+        self.assertNotIn("### 3 · Usuario", texto)
+        self.assertIsNone(curso.leer_estado(self.raiz))
+
 
 class UnSoloAnalisisAbierto(Base):
 

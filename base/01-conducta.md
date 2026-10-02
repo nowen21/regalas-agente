@@ -143,6 +143,43 @@ Cumplía en el análisis del 2026-08-07. Se volvió a contar: 122 de 320.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
+## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
+
+Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C4`](#c4--no-decidas-por-tu-cuenta)).
+
+```
+INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
+CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
+```
+
+**Aplica a:** recibir-pedido, cambiar-codigo
+
+---
+
+### Checklist  ·  **CUMPLE**
+
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v41.0.0**, el **2026-10-02**.
+
+| Bloque | Filas | Resultado |
+|---|---|---|
+| A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
+| B · Cómo se identifica | 5-6 | ✅ ✅ |
+| C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
+| E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
+
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Nace el 2026-08-18 de partir [`C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción----derogada-en-4100--ver-01c30).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
+
+**Por qué merece regla propia.** `C14` combate el defecto de **preguntar de más** —ofrecer versiones reducidas de lo que ya se sabe cómo se hace—; esta combate el contrario, **decidir de más**. Son dos errores opuestos y una sola regla que los junta empuja hacia uno de los dos según cómo se lea.
+
+**La frontera quedó en tres clases y no en una lista de casos**: la lista se queda corta el día que aparece el caso que nadie anotó, y la pregunta que la reemplaza es corta — *«¿esto lo sabe el oficio, o lo sabe el dueño?»*.
+
+**Movida el 2026-10-02 debajo de `C4`.** Extendía a `C14`, que quedó derogada. Lo que pide, no decidir por cuenta propia lo que es del usuario, es el asunto de `C4`. Lo que exige no cambió. Fase `A` de la HU-005 de EP-023.
+
+> Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
+
 ## C5 · Responde corto
 
 Lo que el agente escribe en el chat va corto, la conclusión primero: respuesta, reporte y **también la explicación**. La que no cabe en dos o tres frases no se entendió: se piensa más en vez de escribir más. Un **«menos es más»** del usuario dice que lo anterior fue largo: se responde otra vez, más corto.
@@ -486,7 +523,9 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## C14 · Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción
+## C14 · Lo que el oficio ya da por sentado se aplica sin ofrecerlo como opción  ·  `[DEROGADA en 41.0.0 → ver 01·C30]`
+
+> Dejó de regir: pedía construir de entrada lo que el oficio da por sentado, y con eso el agente agregaba lo que nadie pidió. Ahora lo que no se pidió no se agrega ([`01·C30`](#c30--no-agregues-lo-que-no-se-pidió)). El texto original se conserva porque hay fases y análisis que la citan ([`20·M11`](20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
 
 Cuando el trabajo cae en un terreno con **expectativas establecidas** —lo que cualquiera del oficio daría por incluido—, se construye así de entrada. No se ofrece una versión reducida «por si acaso»: quien pide algo espera lo que ese algo significa, no su mínimo aceptable.
 
@@ -521,44 +560,52 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
-## C25 · Lo que es del usuario se pregunta, aunque sepas la respuesta
+## C30 · No agregues lo que no se pidió
 
-Tres cosas no se deciden por cuenta propia por más obvias que parezcan: **cómo se ve**, **qué decide el negocio**, y **lo que cuesta caro deshacer**. Ahí se pregunta, aunque haya una respuesta razonable a mano (extiende [`01·C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción)).
+Lo pedido es el criterio de aceptación más lo que exigen las reglas del estándar, y no se construye nada más. Lo que el oficio suele incluir y nadie pidió se pregunta en el análisis, y lo decide el usuario (deroga [`01·C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción----derogada-en-4100--ver-01c30) y extiende [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md)).
 
 ```
-INCORRECTO: se elige el plazo de la mora «porque treinta días es lo normal»
-CORRECTO:   se pregunta el plazo: es una política del negocio, no del oficio
+INCORRECTO: se pide la clase Matematicas con suma, y se entrega con suma,
+            resta y división «porque una clase de matemáticas las trae»
+CORRECTO:   se entrega la clase con suma; si la resta parece necesaria, se
+            pregunta en el análisis
 ```
 
-**Aplica a:** recibir-pedido, cambiar-codigo
+**Aplica a:** escribir-documento, cambiar-codigo
 
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v23.25.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v41.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
 | C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | N/A N/A N/A ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 17 ✅ · 0 ❌ · 3 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
-**Nace el 2026-08-18 de partir [`C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción).** Del [pendiente 19](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
+**Fila 2 · se buscó por concepto y se leyó el capítulo entero.** [`C14`](#c14--lo-que-el-oficio-ya-da-por-sentado-se-aplica-sin-ofrecerlo-como-opción----derogada-en-4100--ver-01c30) decía lo contrario y queda derogada por esta. [`02·F19`](02-flujo-de-trabajo/reglas/F19-implementa-literal-el-criterio-de-aceptacion.md) pide implementar literal el criterio, y [`02·F20`](02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) parar y proponer lo que aparezca fuera de él; ninguna dice qué es lo pedido ni dónde se decide lo que el oficio suele incluir.
 
-**Por qué merece regla propia.** `C14` combate el defecto de **preguntar de más** —ofrecer versiones reducidas de lo que ya se sabe cómo se hace—; esta combate el contrario, **decidir de más**. Son dos errores opuestos y una sola regla que los junta empuja hacia uno de los dos según cómo se lea.
+**Fila 15 · sin ciclos:** `F19` no se apoya en esta.
 
-**La frontera quedó en tres clases y no en una lista de casos**: la lista se queda corta el día que aparece el caso que nadie anotó, y la pregunta que la reemplaza es corta — *«¿esto lo sabe el oficio, o lo sabe el dueño?»*.
+**Fila 16 · N/A:** no tiene excepción.
+
+**Fila 17 · los choques quedaron resueltos en el texto de las otras reglas.** [`00·ID1`](00-identidad-y-rol/reglas/ID1-trabaja-con-criterio-de-desarrollador-senior.md) pide el criterio del oficio dentro de lo pedido, y el ejemplo de `F19` dejó de prohibir lo que exige [`04·S1`](04-seguridad.md#s1--autorización-en-cada-acción-sensible).
+
+**Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../validadores/reglas-validables.md): decidir si algo estaba pedido exige leer el criterio y las reglas.
+
+Del [análisis 1](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (conclusiones 7 y 17) y el [análisis 6](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) (conclusión 5) del pendiente «Lo que se construye se aparta de lo aprobado», fase `A` de la HU-005 de EP-023.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
 ## C15 · Al replicar un patrón, replicar la paridad completa
 
-Cuando el usuario dice «hazlo como X», replica la **paridad completa** con el referente: interfaz y ayudas, interacciones y validaciones, datos y relaciones, y pruebas; en la misma unidad de trabajo. Si algo del referente no aplica, pregunta antes de omitirlo (extiende [`01·C14`](#c14--estándar-profesional-del-dominio)).
+Cuando el usuario dice «hazlo como X», replica la **paridad completa** con el referente: interfaz y ayudas, interacciones y validaciones, datos y relaciones, y pruebas; en la misma unidad de trabajo. Si algo del referente no aplica, pregunta antes de omitirlo (extiende [`01·C30`](#c30--no-agregues-lo-que-no-se-pidió)).
 
 ```
 INCORRECTO: "hazlo como el módulo de referencia" → solo se implementa el modelo y el
@@ -573,23 +620,25 @@ CORRECTO:   listar lo que el referente tiene (pantalla, interacciones, datos, pr
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v41.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
 | A · Dónde va | 1-4 | ✅ ✅ ✅ ✅ |
 | B · Cómo se identifica | 5-6 | ✅ ✅ |
 | C · Cómo está escrita | 7-13 | ✅ ✅ ✅ ✅ ✅ ✅ ✅ |
-| D · Cómo se relaciona | 14-17 | ✅ N/A N/A ✅ |
+| D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 18 ✅ · 0 ❌ · 2 N/A.**
+**20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
 
 **Corregida el 2026-08-22 (pendiente 19):** medía 1441 caracteres y declaraba su dependencia en un bloque `Encadenamiento` que [`M7`](20-meta-reglas/reglas/M7-las-dependencias-entre-reglas-se-declaran-y-solo-hay-tres.md) no admite. La lista de qué incluye la paridad quedó en una frase (interfaz, interacciones, datos, pruebas) y la dependencia, entre paréntesis: extiende `C14`.
 
 **La fila 5 reprobaba y se corrigió en esta pasada.** Nombraba «el módulo Aportes», de un proyecto real, contra [`20·M3`](20-meta-reglas/reglas/M3-la-base-es-agnostica-sin-stack-y-sin-dominio.md). Pasa a «el módulo de referencia», que es lo que la regla quería decir. **No cambia qué exige.**
 
 Lo que queda va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md).
+
+**Cambió de dependencia el 2026-10-02.** Extendía a `C14`, que quedó derogada; ahora extiende a `C30`. Lo que exige no cambió. Fase `A` de la HU-005 de EP-023.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 
