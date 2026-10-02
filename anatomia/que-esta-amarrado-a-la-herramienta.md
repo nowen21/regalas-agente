@@ -169,6 +169,9 @@ De la fase que junta las reglas por tarea (`EP-005·HU-023`).
 | `mapa_tareas.py` | 🟢 libre | Lee las reglas de `base/` y escribe un archivo de Markdown; no habla con ninguna herramienta |
 | `hook_reglas.py` | 🟡 adaptador | Existe porque la herramienta avisa que llegó un mensaje del usuario, y le entrega el texto en su formato |
 | `recuperar.py` | 🟡 a medias | Elegir las reglas de un mensaje con el mapa de tareas sirve con cualquier agente; lo único amarrado es que lee los capítulos opcionales apagados del `CLAUDE.md` del proyecto |
+| `hook_analisis.py` | 🟡 adaptador | Existe porque la herramienta avisa que llegó un mensaje y que terminó el turno, y le entrega el aviso en su formato |
+| `analisis.py` | 🟢 libre | Lee los análisis del repositorio y busca sus secciones; no habla con ninguna herramienta |
+| `analisis_en_curso.py` | 🟡 a medias | Prender, pausar, apagar y pasar la conversación sirve con cualquier agente; lo único amarrado son las etiquetas que quita, que son las que esta herramienta le pone al mensaje |
 
 **El recuento, corrido y no calculado, da 29 amarrados de 88.** Sube el total y
 no los amarrados, porque la pieza nueva es libre. Las dos que se clasifican

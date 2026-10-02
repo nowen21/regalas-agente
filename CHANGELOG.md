@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 40.1.0 — 2026-10-02
+
+**Lo que se habla mientras se analiza un pendiente pasa solo al análisis, y se prende, se pausa y se apaga con tres palabras.** Antes había que preparar a mano un guion distinto para cada análisis y acordarse de apagarlo al aprobar.
+
+**MENOR** (aditivo): un proyecto al día no tiene que hacer nada más que volver a correr la instalación.
+
+**Lo que entra:**
+
+- `adaptadores/claude-code/hook_analisis.py`, en cada mensaje y al terminar cada turno, y `validadores/analisis_en_curso.py`, con el trabajo que no depende de la herramienta.
+- «Analicemos: el pendiente N» prende el análisis siguiente del pendiente, y lo crea desde `plantillas/analisis.md` si no existe; «Pare» lo pausa y deja la línea de los turnos en pausa; «Apruebo el análisis» pone la marca con la fecha y el turno, y lo apaga cuando la respuesta entró.
+- No se prende el análisis de otro pendiente mientras uno siga abierto: sin aprobar, o aprobado con alguna HU de su plan sin terminar.
+- `validadores/instalar.py` registra el enganche; el guion de sesión que lo hacía antes deja de estar registrado y se conserva.
+- `anatomia/` clasifica y nombra el enganche y el módulo, y también `validadores/analisis.py`, que la fase anterior dejó sin clasificar.
+
+Cierra la fase `B` de la HU-001 de EP-023.
+
+---
+
 ## 40.0.0 — 2026-10-01
 
 **Antes de repartir el trabajo se analiza qué se va a hacer, y lo que se aprueba ya no se reescribe.** Pasa antes de partir un proyecto en bloques grandes, antes de partir cada bloque en historias y cada vez que entra una mejora pendiente, para que lo que se construye salga de lo que se decidió.

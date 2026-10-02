@@ -271,6 +271,12 @@ HOOKS_CLAUDE = [
      "Anotando en el histórico...", "--modo usuario"),
     ("Stop", None, "hook_historico.py",
      "Anotando en el histórico...", "--modo agente"),
+    # `EP-023 · HU-001 · fase B`: la conversación pasa sola al análisis
+    # prendido. Va después del histórico porque lee lo que este anota.
+    ("UserPromptSubmit", None, "hook_analisis.py",
+     "Revisando el análisis en curso...", "--modo mensaje"),
+    ("Stop", None, "hook_analisis.py",
+     "Pasando la conversación al análisis...", "--modo cierre"),
     ("UserPromptSubmit", None, "hook_checklist.py",
      "Revisando la instalación del agente...", ""),
     # Al abrir la sesión no se cargan las reglas: la herramienta acepta 10.000

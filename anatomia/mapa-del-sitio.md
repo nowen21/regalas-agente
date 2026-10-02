@@ -117,6 +117,7 @@ agente/
 │   ├── enlaces.py .................... enlaces rotos e índices desactualizados
 │   ├── plantillas.py ................. un documento contra su plantilla
 │   ├── analisis.py ................... cada análisis aprobado trae sus cuatro partes
+│   ├── analisis_en_curso.py .......... prender, pausar y apagar el análisis; pasarle la conversación
 │   ├── fases.py ...................... jerarquía épica → HU → fase
 │   ├── trazabilidad.py ............... enlace bidireccional, ORIGEN, tabla de cierre
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre
@@ -160,6 +161,7 @@ agente/
 │   ├── hook_md.py .................... tras editar un .md → revisa enlaces
 │   ├── hook_sesion.py ................ al abrir sesión → revisa y dice cómo llegan las reglas; memoria e histórico
 │   ├── hook_historico.py ............. cada mensaje y cada respuesta → al histórico
+│   ├── hook_analisis.py .............. cada mensaje y cada respuesta → al análisis prendido
 │   ├── hook_checklist.py ............. cada mensaje → revisa la instalación
 │   ├── hook_recuerdos.py ............. al abrir sesión y al escribir → recoge la memoria
 │   ├── hook_presupuesto.py ........... al terminar → el consumo de la sesión; cada mensaje → aviso por tramo

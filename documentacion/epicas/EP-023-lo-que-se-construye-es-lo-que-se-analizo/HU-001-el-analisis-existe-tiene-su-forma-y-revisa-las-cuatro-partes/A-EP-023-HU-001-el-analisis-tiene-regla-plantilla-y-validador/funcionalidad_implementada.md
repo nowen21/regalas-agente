@@ -82,6 +82,7 @@ El análisis quedó en el estándar como eslabón de la cadena: `02·F0` lo pide
 | Descripción | Origen | Destino |
 |---|---|---|
 | El plan de pruebas nombraba tres subcomandos equivocados | No previsto | La lección queda en el estado de la fase |
+| `validadores/analisis.py` quedó fuera de `anatomia/que-esta-amarrado-a-la-herramienta.md`, y `validar.py amarre` fallaba; esta fase no declaró ese mapa | No previsto | Corregido en la fase `B` (DEF-02), por decisión del usuario el 2026-10-02 |
 
 ## 7. Índices y mapas actualizados  ·  `13·DOC9` / `13·DOC13`
 

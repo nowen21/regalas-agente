@@ -353,7 +353,7 @@ Las fija el plan de cada fase (`02·F14`).
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador`](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/estado-fase.md) | CA-01, CA-02, CA-04, CA-05, CA-06, CA-07, CA-16 | | [plan](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_trabajo.md) | [pruebas](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_pruebas.md) | [resultado](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/resultado_pruebas.md) | Cumple; falta el commit |
-| `B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis` | CA-03, CA-09 a CA-15 | CA-02 | | | | Sin empezar |
+| [`B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis`](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/estado-fase.md) | CA-03, CA-09 a CA-15 | CA-02 | [plan](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/plan_trabajo.md) | [pruebas](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/plan_pruebas.md) | [resultado](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/resultado_pruebas.md) | Cumple; falta el commit |
 | `C-EP-023-HU-001-el-analisis-principal-de-cimiento` | CA-08 | CA-02, CA-05 | | | | Sin empezar |
 
 ---
