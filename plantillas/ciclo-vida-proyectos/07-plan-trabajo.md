@@ -37,7 +37,7 @@
 > - Funcionalidad nueva: la fase agrega algo que no existía y no retoma ninguna fase. Se dice qué introduce que no estaba en el roadmap, es decir, en lo que el proyecto tenía previsto construir.
 > - Híbrido: la fase hace las dos cosas. Se dice qué fases modifica y qué funcionalidad nueva introduce.
 
-- Modifica fase(s): «cuáles y qué gap o promesa retoma», con la referencia al cierre de análisis ([`13·DOC8`](../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)) si aplica.
+- Modifica fase(s): «cuáles y qué gap o promesa retoma», con la referencia al análisis que la originó ([`13·DOC24`](../../base/13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md)) si aplica.
 - Funcionalidad nueva: «qué introduce que no estaba en el roadmap».
 - Híbrido: «qué fases modifica y qué funcionalidad nueva introduce».
 

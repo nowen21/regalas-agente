@@ -2,7 +2,7 @@
 
 ## F23 · Ejecuta un pendiente como fase de una historia de usuario
 
-Un hallazgo se anota como pendiente; el pendiente aprobado baja a una historia de usuario hija de la épica que le corresponda, y se construye como fase de esa historia. Que la mejora ya esté escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Un hallazgo se anota como pendiente; el pendiente aprobado pasa por su análisis, baja a una historia de usuario hija de su épica y se construye como fase de esa historia. Que la mejora ya esté escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni se comprueba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: el pendiente dice qué hay que arreglar → se edita el código, se sube
@@ -18,7 +18,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v38.3.0**, el **2026-09-27**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v40.0.0**, el **2026-10-01**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -41,5 +41,7 @@ La fila **10** sigue aprobando: el cuerpo nuevo cabe en el molde de 320 caracter
 La fila **9** es una sola exigencia, el orden de la cadena de principio a fin: sus eslabones no se cumplen por separado. Una HU que nadie baja a fase no construye nada, una fase sin HU es el eslabón saltado, y una HU creada antes que su pendiente fija el alcance antes de que alguien lo apruebe.
 
 La fila **17** obligó a corregir dos procedimientos que autorizaban lo contrario: el §2 del [`CLAUDE.md`](../../../CLAUDE.md) del estándar y los nueve pasos de [`20 · base.md`](../../20-meta-reglas/base.md), que describían cambiar una regla como *buscar → enrutar → escribir → versionar*, sin cadena. Los dos quedan diciendo que cuando el cambio sale de un pendiente, la cadena va primero.
+
+**Precisada el 2026-10-01 (`EP-023·HU-001`, fase `A`):** el pendiente aprobado pasa por su análisis antes de bajar a la HU (análisis 1 del pendiente 103, punto 15). Para que siga cabiendo en 320 caracteres se acortó la redacción, sin cambiar lo que exige.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

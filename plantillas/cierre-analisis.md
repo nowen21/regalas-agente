@@ -9,6 +9,8 @@
 > | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
+> **La regla que pedía esta plantilla, `13·DOC8`, está derogada desde la versión 40.0.0.** Un análisis nuevo cierra al final de su mismo archivo ([`13·DOC24`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md)) con la plantilla [`analisis.md`](analisis.md). Esta se conserva porque la citan análisis cerrados.
+>
 > Consolida un análisis persistido ([`13·DOC8`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)): qué se preguntó, qué se decidió, qué quedó. Se crea al terminar un análisis: el `analisis/<...>.md` de [`13·DOC6`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md), una exploración o una auditoría. Ruta canónica: `analisis/<modulo>-YYYY-MM-DD-cierre.md`.
 >
 > Al llenarla se reemplazan los `«…»` y se borran todas las notas como esta.

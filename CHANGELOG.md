@@ -11,6 +11,31 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 40.0.0 — 2026-10-01
+
+**Antes de repartir el trabajo se analiza qué se va a hacer, y lo que se aprueba ya no se reescribe.** Pasa antes de partir un proyecto en bloques grandes, antes de partir cada bloque en historias y cada vez que entra una mejora pendiente, para que lo que se construye salga de lo que se decidió.
+
+**MAYOR** ⚠ obliga a migrar: deja sin efecto la regla que pedía cerrar el análisis en un archivo aparte, y un proyecto que no adopte esta versión no puede seguir avanzando su trabajo.
+
+**Lo que tiene que hacer cada proyecto:**
+
+- Saber que `13·DOC8` queda derogada. Por [`20·M10`](base/20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md), un cambio de norma no reabre fases cerradas; por [`02·F22`](base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md), un proyecto que no adopte esta versión no abre ni cierra fase.
+- Adoptar la versión con el instalador.
+- Los análisis que ya cerró con `DOC8` quedan como están.
+- Un análisis nuevo se escribe con `plantillas/analisis.md` y cierra al final de su mismo archivo (`13·DOC24`); el análisis principal del proyecto o del módulo se reescribe con su lista de cambios (`13·DOC25`).
+- Un pendiente pasa por su análisis antes de bajar a la HU (`02·F23`).
+
+**Lo que entra:**
+
+- `02·F0`: el análisis en los tres puntos donde algo se reparte. `02·F23`: el pendiente pasa por su análisis. Las dos se acortaron para seguir cabiendo en el molde.
+- `13·DOC24` y `13·DOC25`, que reemplazan a `13·DOC8`; sus citas en `base/` y `plantillas/` cambian a las nuevas.
+- `plantillas/analisis.md`, con la parte del problema que resuelve cada HU; `plantillas/cierre-analisis.md` se conserva con una nota.
+- `validadores/analisis.py` y `validar.py analisis`: un análisis aprobado sin sus secciones de Cimiento, el proyecto, lo aprendido y el entorno, falla.
+
+Cierra la fase `A` de la HU-001 de EP-023.
+
+---
+
 ## 39.6.0 — 2026-09-28
 
 **Las reglas que le llegan al agente salen de la palabra con que se pide algo, sin adivinar.** Si el mensaje no trae esa palabra, el agente no hace nada: la recuerda y espera. Y ya no puede escribir fuera de la carpeta del proyecto.

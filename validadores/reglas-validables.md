@@ -62,7 +62,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | `DOC16` · `DOC12` · `DOC3/DOC11` | `trazabilidad.py` | enlace bidireccional épica↔HU · ORIGEN en el plan · tabla de cierre |
 | `F0` · `F14` · `F17` | `flujo.py` | cada fase tiene sus padres (épica/HU) · el plan trae las 13 preguntas · sin incertidumbre |
 | [`02·F22`](../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md) | `version.py` (`validar_fase`) · `flujo.py` | ninguna regla derogada entre la versión que el proyecto declara y la vigente; se cobra donde hay fases. Falta el filtro fino: si la derogada era una `*opt-in*` que el proyecto nunca encendió, hoy igual la cuenta |
-| `DOC1` · `DOC8` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (cierre, análisis, reglas, catálogo, HU) |
+| `DOC1` · `DOC10` · `DOC13` · `DOC15` | `plantillas.py` | completitud contra su plantilla (análisis, reglas, catálogo, HU) |
 | `DOC17` | `enlaces.py` | cada carpeta del árbol lleva su `README.md` y lista lo que cuelga de ella |
 | [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (existencia) | `resumen.py` · `hook_resumen.py` | el resumen existe, se mueve con la transcripción, y se avisa qué le falta |
 | `16·CQ1` | `plantillas.py` | completitud de `marco-normativo.md` |
@@ -108,6 +108,8 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | [`13·DOC21`](../base/13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md) | ninguna sección de un documento queda con su marca puesta en vez de `N/A` | va con [`13·DOC20`](../base/13-documentacion/reglas/DOC20-no-entregues-como-terminado-un-documento-con-marcas.md): el mismo recorrido distingue hueco sin llenar de sección no aplicable |
 | [`13·DOC22`](../base/13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md) (contenido) | que el resumen traiga hallazgos de verdad y no solo el molde | reconocer un hallazgo es criterio; el programa solo ve si hay alguno |
 | [`13·DOC23`](../base/13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md) (existencia) | que el proyecto tenga su glosario y que no esté vacío | un programa ve si el documento existe y si tiene entradas; que la definición se entienda, no |
+| [`13·DOC24`](../base/13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md) | que ningún análisis aprobado cambie después de su marca | se necesita la versión del archivo en el momento de la aprobación, y hoy nadie la guarda |
+| [`13·DOC25`](../base/13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md) | que todo cambio del análisis principal enlace el análisis individual que lo produjo | reconocer qué parte del texto cambió por cuál análisis es criterio |
 
 ### Meta-reglas (`20`) — se validan **en seco**, sobre el propio estándar
 

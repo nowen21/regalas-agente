@@ -23,6 +23,7 @@ import amarre           # noqa: E402
 import mapa_tareas      # noqa: E402
 import sesiones         # noqa: E402
 import sitio            # noqa: E402
+import analisis         # noqa: E402
 import temas            # noqa: E402
 import brevedad         # noqa: E402
 import ejecutable       # noqa: E402
@@ -330,6 +331,13 @@ def cmd_amarre(a):
     if linea:
         print(linea)
     return codigo
+
+
+def cmd_analisis(a):
+    """`13·DOC24` · `EP-023·HU-001·CA-06` · Un análisis aprobado trae sus cuatro partes."""
+    raiz = os.path.abspath(a.raiz)
+    return reportar(analisis.validar(raiz),
+                    f"Las cuatro partes de cada análisis aprobado · {relativo(raiz)}")
 
 
 def cmd_sitio(a):
@@ -810,6 +818,11 @@ def main():
     te.add_argument("--aplicar", action="store_true",
                     help="escribe el índice; sin esto solo dice si quedó atrás")
     te.set_defaults(func=cmd_temas)
+
+    an = sub.add_parser("analisis",
+                        help="cada análisis aprobado trae sus cuatro partes · EP-023·HU-001")
+    an.add_argument("--raiz", default=RAIZ, help="carpeta del repositorio")
+    an.set_defaults(func=cmd_analisis)
 
     si = sub.add_parser("sitio",
                         help="el mapa del sitio nombra toda carpeta que existe · no envejece")

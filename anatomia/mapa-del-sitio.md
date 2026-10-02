@@ -116,6 +116,7 @@ agente/
 │   ├── ── documentación ──
 │   ├── enlaces.py .................... enlaces rotos e índices desactualizados
 │   ├── plantillas.py ................. un documento contra su plantilla
+│   ├── analisis.py ................... cada análisis aprobado trae sus cuatro partes
 │   ├── fases.py ...................... jerarquía épica → HU → fase
 │   ├── trazabilidad.py ............... enlace bidireccional, ORIGEN, tabla de cierre
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre

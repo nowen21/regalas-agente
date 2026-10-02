@@ -28,7 +28,8 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 |---|---|
 | [`DOC6`](reglas/DOC6-retro-documenta-el-modulo-sin-especificacion-antes-de-tocarlo.md) | Un módulo productivo sin especificación se retro-documenta antes de intervenirlo. |
 | [`DOC7`](reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md) | Si A consume a B, los dos lo registran. |
-| [`DOC8`](reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) | Todo análisis termina en un archivo de cierre con qué se decidió. |
+| [`DOC24`](reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md) | El análisis individual cierra al final de su mismo archivo y, aprobado, no se reescribe. |
+| [`DOC25`](reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md) | El análisis principal dice lo vigente y lleva la lista de cambios con su enlace. |
 | [`DOC9`](reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) | Antes de planificar se consulta el mapa, no se explora de cero. |
 | [`DOC10`](reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md) | Toda regla propia del proyecto queda numerada en su catálogo. |
 | [`DOC12`](reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md) | Toda fase declara de dónde sale: arregla, agrega o ambas. |
@@ -38,6 +39,8 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 | [`DOC17`](reglas/DOC17-manten-un-readme-en-cada-nivel-del-arbol-de-trabajo.md) | Ninguna carpeta del árbol queda muda: cada una lista lo suyo. |
 | [`DOC18`](reglas/DOC18-actualiza-el-mapa-de-dependencias-al-cerrar-la-unidad.md) | El mapa se actualiza en el mismo cambio que cierra la unidad. |
 | [`DOC23`](reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md) | Cada proyecto define en una línea las palabras de su negocio. |
+
+**Derogada** ([`20·M11`](../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md), el texto se conserva y el ID no se reutiliza): [`DOC8`](reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) → [`DOC24`](reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md) y [`DOC25`](reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md).
 
 **(c) Cómo se llena un documento modelo**
 

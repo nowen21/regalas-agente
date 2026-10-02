@@ -1,6 +1,8 @@
 > Regla del capítulo [`13 · Documentación`](../base.md).
 
-## DOC8 · Cierra todo análisis con su tabla de decisiones
+## DOC8 · Cierra todo análisis con su tabla de decisiones  ·  `[DEROGADA en 40.0.0 → ver 13·DOC24 y 13·DOC25]`
+
+> Dejó de regir: pedía cerrar el análisis en un archivo aparte y congelar el original. Ahora el análisis individual cierra al final de su mismo archivo ([`13·DOC24`](DOC24-cierra-el-analisis-en-su-mismo-archivo.md)) y el principal se reescribe con su lista de cambios ([`13·DOC25`](DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md)). El texto original se conserva porque hay fases y análisis que lo citan ([`20·M11`](../../20-meta-reglas/reglas/M11-las-reglas-no-se-borran-se-derogan.md)).
 
 Un análisis persistido termina en un **archivo de cierre** con una fila por pregunta abierta o hallazgo: qué se preguntó, qué se decidió, en qué estado quedó y qué hueco dejó. Formato: [`plantillas/cierre-analisis.md`](../../../plantillas/cierre-analisis.md). El análisis original pasa a ser fotografía inmutable, con un aviso al inicio que apunta al cierre.
 

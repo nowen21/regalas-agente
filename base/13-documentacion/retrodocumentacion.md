@@ -26,4 +26,4 @@
 
 En el primer audit profundo del módulo —una fase dedicada— cuando la especificación se completa según la plantilla canónica. Hasta entonces, quien la lea tiene que saber que es una reconstrucción, no un acuerdo.
 
-Las preguntas del paso 4, cuando el usuario las responda, se cierran con la tabla de decisiones que pide [`13·DOC8`](reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) — no en el chat.
+Las preguntas del paso 4, cuando el usuario las responda, se cierran al final del mismo análisis, como pide [`13·DOC24`](reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md), y no en el chat.

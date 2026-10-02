@@ -42,6 +42,7 @@ POR_NOMBRE = {
     "pruebas": "plantillas/ciclo-vida-proyectos/08-plan-pruebas.md",
     "marco-normativo": "plantillas/marco-normativo.md",
     "mapeo-nombres": "plantillas/mapeo-nombres.md",
+    "analisis": "plantillas/analisis.md",
     "cierre-analisis": "plantillas/cierre-analisis.md",
     "estado-fase": "plantillas/ciclo-vida-proyectos/10-estado-fase.md",
     # Documentos del proyecto con su nombre real en `documentacion/…`.

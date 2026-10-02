@@ -1,6 +1,6 @@
 # HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -121,21 +121,22 @@ Entonces pasa primero por su análisis
 
 **Aprobado cuando:** la regla pone el análisis entre el pendiente y la HU.
 
-### CA-05 · `13·DOC8` queda derogada y reemplazada
+### CA-05 · `13·DOC8` queda derogada y reemplazada por dos reglas
 
-**Sale de:** análisis 1, punto 16.
+**Sale de:** análisis 1, punto 16, y análisis 5, punto 1.
 
 ```gherkin
 Dado que 13·DOC8 congela el análisis y lo cierra en un archivo aparte
 Cuando se deroga según 20·M11
-Entonces una regla nueva dice que el análisis principal se reescribe con su lista de cambios
-Y que el individual cierra al final de su mismo archivo
+Entonces la regla queda marcada como derogada, sin borrarse
+Y 13·DOC24 dice que el análisis individual cierra al final de su mismo archivo y no se reescribe
+Y 13·DOC25 dice que el análisis principal se reescribe con su lista de cambios
 ```
 
 **Cómo validarlo:**
-1. Abrir [`13·DOC8`](../../../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) y la regla que la reemplaza.
+1. Abrir [`13·DOC8`](../../../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md), `13·DOC24` y `13·DOC25`.
 
-**Aprobado cuando:** `DOC8` está derogada según `20·M11` y la nueva dice lo del criterio.
+**Aprobado cuando:** `DOC8` está derogada según `20·M11` y cada regla nueva dice su parte del criterio, con su checklist en CUMPLE.
 
 ### CA-06 · El análisis sin una de las cuatro partes no cierra
 
@@ -351,7 +352,9 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| N/A: todavía no se descompone en fases | | | | | | |
+| [`A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador`](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/estado-fase.md) | CA-01, CA-02, CA-04, CA-05, CA-06, CA-07, CA-16 | | [plan](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_trabajo.md) | [pruebas](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_pruebas.md) | [resultado](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/resultado_pruebas.md) | Cumple; falta el commit |
+| `B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis` | CA-03, CA-09 a CA-15 | CA-02 | | | | Sin empezar |
+| `C-EP-023-HU-001-el-analisis-principal-de-cimiento` | CA-08 | CA-02, CA-05 | | | | Sin empezar |
 
 ---
 
@@ -405,3 +408,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | La aprobación queda sin efecto: la HU cambió por el análisis 4 y se revisa de nuevo |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-05 pasa a dos reglas, `DOC24` y `DOC25`, según el análisis 5. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-05 del análisis 5 |

@@ -128,6 +128,28 @@ CORRECTO:   "cliente" definido en una línea en el glosario del proyecto, y los
 
 Fuente: [13·DOC23](../13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md#doc23--escribe-el-glosario-de-los-términos-del-proyecto)
 
+## DOC24 · Cierra el análisis en su mismo archivo
+Un análisis individual cierra al final de su mismo archivo, con sus conclusiones, sus lecciones y lo que se tiene que hacer, y desde que se aprueba no se reescribe: lo que aparezca después abre el análisis siguiente (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+```
+INCORRECTO: el análisis se cierra en otro archivo con su tabla de decisiones,
+            y meses después alguien le corrige una conclusión al original
+CORRECTO:   las conclusiones van al final del mismo análisis; aprobado, queda
+            como está, y el hallazgo nuevo abre analisis-2.md
+```
+
+Fuente: [13·DOC24](../13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md#doc24--cierra-el-análisis-en-su-mismo-archivo)
+
+## DOC25 · Reescribe el análisis principal con su lista de cambios
+El análisis principal del proyecto o del módulo dice siempre lo que se va a construir hoy: cuando un análisis individual cambia algo, se reescribe y suma a su lista de cambios la fecha y el enlace a ese análisis (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+```
+INCORRECTO: el principal dice «la clase con suma», un análisis individual
+            agregó sus propiedades y el principal quedó congelado
+CORRECTO:   el principal dice «la clase con suma y sus propiedades» y su
+            lista de cambios enlaza el análisis que lo cambió
+```
+
+Fuente: [13·DOC25](../13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md#doc25--reescribe-el-análisis-principal-con-su-lista-de-cambios)
+
 ## DOC4 · Documenta lo que producción necesita
 Los pasos de despliegue —cambios de esquema, datos base, permisos, comandos posteriores— se documentan **auto-suficientes y ejecutables**: quien despliega lo hace leyendo el entregable, sin volver a mirar el código.
 ```
@@ -156,13 +178,3 @@ CORRECTO:   A declara qué consume de B y por qué · B lo registra en su histor
 ```
 
 Fuente: [13·DOC7](../13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md#doc7--registra-el-cruce-en-los-dos-documentos-que-se-referencian)
-
-## DOC8 · Cierra todo análisis con su tabla de decisiones
-Un análisis persistido termina en un **archivo de cierre** con una fila por pregunta abierta o hallazgo: qué se preguntó, qué se decidió, en qué estado quedó y qué hueco dejó. Formato: [`plantillas/cierre-analisis.md`](../../plantillas/cierre-analisis.md). El análisis original pasa a ser fotografía inmutable, con un aviso al inicio que apunta al cierre.
-```
-INCORRECTO: el análisis abre 15 preguntas, el usuario las responde en el chat
-            y el archivo se queda como si nadie hubiera contestado
-CORRECTO:   análisis → respuestas → archivo de cierre con la tabla + aviso en el original
-```
-
-Fuente: [13·DOC8](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md#doc8--cierra-todo-análisis-con-su-tabla-de-decisiones)

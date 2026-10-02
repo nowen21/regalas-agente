@@ -34,6 +34,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Si el texto cambia, hay que corregirlo en todos: es el riesgo de un registro en dos sitios (S-064). Y el contexto no dice qué parte del problema de la épica resuelve cada HU. Pedir «el problema del pendiente tal cual» sirve cuando un pendiente da una sola HU; cuando hay épica, ese texto le corresponde a la épica. |
 | Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 4](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) |
 
+### H-4. El CA-05 pide una regla con dos exigencias
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al preparar la fase `A` de la [HU-001](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) de EP-023, la tarea T-03 pide escribir `13·DOC24` con dos exigencias, como dice el CA-05: que el análisis principal se reescribe con su lista de cambios, y que el individual cierra al final de su mismo archivo y no se reescribe. El checklist de toda regla (fila 9, `20·M5`) admite una sola exigencia, y estas dos se pueden cumplir por separado. |
+| Por qué importa | Escrita así, la regla no puede quedar sellada como CUMPLE. Partirla en dos reglas agrega un archivo que el plan aprobado no declara (`02·F8`), así que la fase se detuvo antes de empezar. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 5](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -55,3 +63,5 @@ Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se a
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
 _(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_
+
+<!-- aviso: resumen sin hallazgos -->

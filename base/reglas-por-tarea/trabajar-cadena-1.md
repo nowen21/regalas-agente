@@ -65,7 +65,7 @@ CORRECTO:   el rol cambia qué se hace en esa etapa; las reglas que rigen son la
 Fuente: [00·ID6](../00-identidad-y-rol/reglas/ID6-toma-el-rol-especializado-que-pide-la-etapa.md#id6--toma-el-rol-especializado-que-pide-la-etapa)
 
 ## F0 · Recorre la cadena completa, sin saltar eslabones
-Todo desarrollo —funcionalidad nueva o cambio de comportamiento— recorre `planteamiento → épica → HU → especificación → plan → código`, grande o chico: ningún eslabón se salta ni se fusiona. Si falta el anterior, se pausa y se crea primero (depende de [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), [`13·DOC15`](../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), [`13·DOC16`](../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md)).
+Todo desarrollo, nuevo o cambio de comportamiento, recorre `planteamiento → épica → HU → especificación → plan → código`, con un análisis antes de las épicas, de las HU de cada épica y de cada pendiente. Ningún eslabón se salta ni se fusiona; si falta uno, se crea primero (depende de [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md), [`13·DOC15`](../13-documentacion/reglas/DOC15-crea-la-historia-de-usuario-desde-la-plantilla-central.md), [`13·DOC16`](../13-documentacion/reglas/DOC16-crea-la-epica-desde-la-plantilla-central.md)).
 ```
 INCORRECTO: llega una idea → se escribe el plan de trabajo directo
 CORRECTO:   idea → análisis → objetivo y alcance → épica → HU → especificación
@@ -222,7 +222,7 @@ CORRECTO:   se abre una fase por cada HU que la implementaba, se aplica la regla
 Fuente: [02·F22](../02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md#f22--no-avances-de-fase-con-una-derogación-sin-adoptar)
 
 ## F23 · Ejecuta un pendiente como fase de una historia de usuario
-Un hallazgo se anota como pendiente; el pendiente aprobado baja a una historia de usuario hija de la épica que le corresponda, y se construye como fase de esa historia. Que la mejora ya esté escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni cómo se comprueba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Un hallazgo se anota como pendiente; el pendiente aprobado pasa por su análisis, baja a una historia de usuario hija de su épica y se construye como fase de esa historia. Que la mejora ya esté escrita no salta ningún eslabón: el pendiente dice **qué falta**, no cómo se construye ni se comprueba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 ```
 INCORRECTO: el pendiente dice qué hay que arreglar → se edita el código, se sube
             la versión y se marca hecho; como no hubo fase, nadie escribió el

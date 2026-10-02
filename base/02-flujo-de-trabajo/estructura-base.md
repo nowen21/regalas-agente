@@ -31,7 +31,7 @@
 └── documentacion/                    # VERSIONADO — lo que produce el flujo — la crea el instalador
     ├── modulos.md                    #   catálogo de módulos (DOC13)
     ├── adr/                          #   ADR-NNN-<slug>.md (transversal)
-    ├── analisis/                     #   <modulo>-YYYY-MM-DD-cierre.md (DOC8, transversal)
+    ├── analisis/                     #   análisis principal del proyecto o del módulo (DOC25, transversal)
     └── epicas/                       #   Épica → HU → Fase · jerarquía y ruta: fuente única 02·F12 (F12.11 · F12.13)
 ```
 
