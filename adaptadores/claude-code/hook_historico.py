@@ -81,6 +81,15 @@ def main():
     try:
         if modo == "agente":
             historico.anotar_agente(raiz, sesion, datos.get("transcript_path", ""))
+            # La respuesta pasa al análisis prendido aquí mismo, después de
+            # escribirla: si lo hiciera otro enganche del mismo evento, correría
+            # antes de que la respuesta existiera (H-9 de la sesión del
+            # 2026-10-01).
+            try:
+                import analisis_en_curso
+                analisis_en_curso.pasar(raiz)
+            except Exception as e:       # noqa: BLE001 — nunca romper la sesión
+                print(f"No se pasó la respuesta al análisis: {e}", file=sys.stderr)
         else:
             ruta = historico.anotar_usuario(raiz, sesion, datos.get("prompt", ""))
             aviso = historico.aviso_de_nombre(ruta)

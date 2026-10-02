@@ -9,9 +9,11 @@
   mensaje. «Analicemos: el pendiente N» prende, «Pare» pausa y «Apruebo el
   análisis» pone la marca. Después le dice al agente a qué análisis entra la
   conversación, o que ninguno está prendido.
-- **`--modo cierre`** (`Stop`): pasa la conversación al análisis prendido, y
-  lo apaga cuando ya está aprobado y la respuesta entró. Si al cerrar la
-  respuesta todavía no estaba, lo apaga el mensaje siguiente.
+- **`--modo cierre`**: pasa la conversación al análisis prendido, y lo apaga
+  cuando ya está aprobado y la respuesta entró. El instalador ya no lo
+  registra en `Stop`: lo hace `hook_historico.py` apenas escribe la
+  respuesta, para que no corran a la vez. Queda para las instalaciones que
+  todavía lo llaman.
 
 **Vive en el adaptador, no en `validadores/`.** Acá solo está lo que habla con
 esta herramienta; el trabajo está en `validadores/analisis_en_curso.py`.

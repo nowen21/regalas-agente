@@ -1,6 +1,6 @@
 # HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2) y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) (puntos 2, 3, 5, 7 y 8). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-01 |
+| **Estado** | Lista: aprobada el 2026-10-02 |
 
 ---
 
@@ -316,6 +316,105 @@ Entonces pide, junto a cada HU, la parte del problema que resuelve
 
 **Aprobado cuando:** la tabla de HU de la propuesta final pide la parte del problema de cada una.
 
+### CA-17 · El análisis abre todas las posibilidades
+
+**Sale de:** análisis 8, punto 2.
+
+```gherkin
+Dada la plantilla del análisis
+Cuando se lee
+Entonces trae la sección «Dónde más puede pasar», con el caso, dónde se presenta, el riesgo si queda sin cubrir y lo que lo cubre
+Y el validador no deja cerrar un análisis con un caso sin cubrir ni razón
+```
+
+**Cómo validarlo:**
+1. Abrir la plantilla del análisis.
+2. Correr el validador sobre un análisis aprobado con un caso sin cubrir.
+
+**Aprobado cuando:** la sección está y el análisis del paso 2 no cierra.
+
+### CA-18 · Las HU salen con su dependencia y su orden
+
+**Sale de:** análisis 8, punto 3.
+
+```gherkin
+Dada la tabla de HU de la propuesta final del análisis
+Entonces lleva de qué HU depende cada una, su orden de ejecución y por qué
+Y la hoja de ruta de la épica copia ese orden
+Y el validador detiene una HU que va antes de una de la que depende, o un puesto sin razón
+```
+
+**Cómo validarlo:**
+1. Abrir la plantilla del análisis y la de la épica.
+2. Correr el validador sobre una tabla con una HU antes de la que depende.
+
+**Aprobado cuando:** las dos plantillas lo piden y el validador detiene el paso 2.
+
+### CA-19 · Las recomendaciones del análisis
+
+**Sale de:** análisis 8, punto 5.
+
+```gherkin
+Dado el archivo de recomendaciones del análisis
+Entonces cada recomendación dice qué se hace, por qué y de qué análisis sale
+Y hay dos niveles: las de Cimiento y las de cada proyecto
+Y la plantilla del análisis abre con una sección que lo enlaza y dice cuáles aplican
+Y el validador revisa el origen, que no haya repetidas y que el análisis aprobado diga cuáles consultó
+Y el archivo arranca con las que dejaron las lecciones de los análisis 1 a 8
+```
+
+**Cómo validarlo:**
+1. Abrir el archivo de recomendaciones y la plantilla del análisis.
+2. Correr el validador sobre una recomendación sin origen y otra repetida.
+
+**Aprobado cuando:** el archivo y la sección existen, las de arranque están y el validador detiene el paso 2.
+
+### CA-20 · El análisis principal al día
+
+**Sale de:** análisis 8, punto 7.
+
+```gherkin
+Dado el análisis principal
+Entonces su lista de cambios tiene las líneas de los análisis 6, 7 y 8
+Y el validador avisa cuando un análisis aprobado cambia una HU y no aparece en esa lista
+```
+
+**Cómo validarlo:**
+1. Leer la lista de cambios del análisis principal.
+2. Correr el validador con un análisis aprobado que no aparece en ella.
+
+**Aprobado cuando:** las tres líneas están y el validador avisa en el paso 2.
+
+### CA-21 · Medir la respuesta antes de entregarla
+
+**Sale de:** análisis 8, punto 8.
+
+```gherkin
+Dadas las recomendaciones de arranque
+Entonces una dice que la respuesta se mide contra 00·ID9 antes de entregarla
+```
+
+**Cómo validarlo:**
+1. Leer las recomendaciones de arranque.
+
+**Aprobado cuando:** la recomendación está, con su origen.
+
+### CA-22 · Las secciones nuevas no reabren los análisis aprobados
+
+**Sale de:** análisis 8, punto 11.
+
+```gherkin
+Dado un análisis aprobado antes de la versión que trae las secciones nuevas
+Cuando corre el validador
+Entonces no le exige esas secciones
+Y a uno aprobado desde esa versión sí
+```
+
+**Cómo validarlo:**
+1. Correr el validador sobre los análisis 1 a 7 y sobre uno nuevo sin las secciones.
+
+**Aprobado cuando:** los análisis 1 a 7 pasan y el nuevo no.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -410,3 +509,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-05 pasa a dos reglas, `DOC24` y `DOC25`, según el análisis 5. La aprobación queda sin efecto hasta que se revise |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-05 del análisis 5 |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nacen los CA-17 a CA-22, para la fase D, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |

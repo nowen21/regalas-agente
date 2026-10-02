@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 42.0.1 — 2026-10-02
+
+**La respuesta del agente entra al análisis apenas termina, y no un turno después.**
+
+**PARCHE**: corrige un enganche; lo que se exige no cambia. Un proyecto al día solo vuelve a correr la instalación.
+
+**Lo que entra:**
+
+- `adaptadores/claude-code/hook_historico.py` pasa la respuesta al análisis prendido apenas la escribe en la transcripción. Antes lo hacía un enganche aparte que corría al mismo tiempo y copiaba antes de que la respuesta existiera.
+- `validadores/instalar.py` deja de registrar `hook_analisis.py` al cerrar el turno; sigue al recibir cada mensaje.
+- `validadores/analisis_en_curso.py`: un enlace de la conversación cuyo destino ya no existe pasa como texto, con su ruta, en vez de quedar roto.
+
+Del H-9 de la sesión del 2026-10-01, resuelto en el análisis 8 del pendiente 103.
+
+---
+
 ## 42.0.0 — 2026-10-02
 
 **Cada punto de un documento dice de qué punto del anterior sale, y un programa lo comprueba.** Lo que no tiene origen no entra. Y si cambia la necesidad, el cambio se escribe primero donde nace y baja en orden.

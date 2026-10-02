@@ -1,6 +1,6 @@
 # HU-007 · Nada se escribe fuera del plan aprobado
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-01 |
+| **Estado** | Lista: aprobada el 2026-10-02 |
 
 ---
 
@@ -73,22 +73,25 @@ Y el plan registra quién lo aprobó y cuándo
 
 **Aprobado cuando:** la plantilla pide quién aprobó y cuándo, y el validador rechaza la fila.
 
-### CA-02 · El freno detiene lo que no está en el plan ni autorizado
+### CA-02 · El freno detiene lo que no está en el plan ni autorizado, por cualquier canal
 
-**Sale de:** análisis 1, punto 26.
+**Sale de:** análisis 1, punto 26, y análisis 8, punto 1.
 
 ```gherkin
 Dado un plan aprobado en la fase activa
-Cuando se va a escribir un archivo o a correr pruebas que no coinciden con el plan
-Entonces el freno detiene, anota el hallazgo en el resumen y vuelve al análisis
+Cuando se va a escribir, borrar, ejecutar o publicar algo que no coincide con el plan, por cualquier canal de la herramienta
+Entonces el freno lo detiene antes de actuar, lo encuentra después comparando el estado de git con el plan, lo rechaza al guardar el commit o lo detiene en la integración continua
+Y anota el hallazgo en el resumen y vuelve al análisis
 Y si una regla ya lo autoriza, según la lista donde cada entrada cita su regla, no lo frena
+Y cada adaptador declara qué capas cubre en su herramienta y por qué no las demás
 ```
 
 **Cómo validarlo:**
-1. Con un plan aprobado, intentar escribir un archivo que el plan no declara.
-2. Intentar escribir un archivo que la lista de lo autorizado incluye.
+1. Con un plan aprobado, intentar escribir fuera del plan con la herramienta de escritura, con una redirección de la consola, con un programa y en segundo plano.
+2. Leer el contrato del adaptador.
+3. Intentar escribir algo que la lista de lo autorizado incluye.
 
-**Aprobado cuando:** el primero se detiene con su hallazgo anotado en el resumen y el segundo pasa.
+**Aprobado cuando:** cada intento del paso 1 se detiene en alguna capa con su hallazgo anotado, el contrato dice qué capa cubre cada canal y el paso 3 pasa. Las fases que hagan falta las reparte el plan.
 
 ### CA-03 · El commit se rechaza si trae archivos no declarados
 
@@ -165,6 +168,7 @@ Las fija el plan de cada fase (`02·F14`).
 |---|---|---|
 | Dependencia | HU-001: las demás HU se apoyan en el análisis | Bloqueante |
 | Dependencia | HU-004: define qué pasa con un hallazgo | Bloqueante |
+| Dependencia | HU-003: da la forma del hallazgo que el freno anota | Bloqueante |
 
 ---
 
@@ -207,3 +211,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-02 pasa a la versión siguiente: el freno en cuatro capas, por cualquier canal; depende también de la HU-003, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |

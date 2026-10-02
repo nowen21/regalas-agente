@@ -66,6 +66,30 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Qué pasó | Al escribir la fase `A` de la [HU-002](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) de EP-023, el 2026-10-02, se encontró que los criterios de `plantillas/ciclo-vida-proyectos/04-HU.md` no tienen el campo «Sale de». La regla nueva del CA-01 lo exige en cada criterio, y `13·DOC15` manda crear la HU desde esa plantilla. Las de análisis, pendiente y plan sí tienen su campo. |
 | Por qué importa | Una HU hecha con la plantilla, como manda `DOC15`, no cumpliría la regla nueva, y el validador la detendría: dos reglas chocarían (análisis 1, conclusión 12). Cambiar la plantilla no está en los criterios de la HU-002. |
 | Pendiente | Resuelto en el [análisis 7](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
+
+### H-8. El freno de las escrituras solo mira algunas herramientas
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-02, al cerrar la fase `A` de la HU-002 de EP-023, el agente escribió fuera del proyecto dos veces: redirigió la salida de las pruebas a la carpeta temporal de la herramienta y corrió la suite en segundo plano, que deja su salida en esa misma carpeta. `04·S9` lo prohíbe, y el freno `hook_antes.py` no lo detuvo porque solo se engancha a `Write`, `Edit`, `MultiEdit` y `NotebookEdit`. El CA-02 de la [HU-007](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md), que es el freno que viene, dice «escribir un archivo» sin nombrar los demás canales. |
+| Por qué importa | Una regla rige en todas partes, no solo donde un programa la mira. Cimiento lo heredan proyectos con otras herramientas y otros agentes, y cada uno escribe por canales distintos: consola, programas, segundo plano, subagentes y servicios externos. Si el freno cubre solo algunos, la regla se rompe por los demás. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 8 |
+
+### H-9. La respuesta del agente entra al análisis un turno tarde
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-02, en el análisis 8, el usuario vio que la última respuesta del agente no estaba en la conversación del análisis: aparecía solo cuando él volvía a escribir. Al cerrar el turno corrían a la vez `hook_historico.py`, que escribe la respuesta en la transcripción, y `hook_analisis.py`, que la copia al análisis; el segundo copiaba antes de que el primero escribiera. La corrección del H-6 solo hacía que la copia se repitiera con el mensaje siguiente. |
+| Por qué importa | Mientras el usuario lee una respuesta, el análisis no la tiene. El análisis 8 es el piloto: lo que falle acá falla en todos los que vengan. |
+| Pendiente | Resuelto el 2026-10-02 por «Corrija»: `hook_historico.py` pasa la respuesta al análisis apenas la escribe, y el enganche del análisis dejó de correr al cerrar el turno. Prueba nueva en `validadores/tests/test_analisis_en_curso.py` |
+
+### H-10. Las respuestas cortas a una pregunta del agente se detienen
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-02, durante el análisis 8, `01·C28` detuvo «sí» y «A» dados después de una pregunta del agente, y «00 id9», que pide aplicar la regla a la última respuesta. Hubo que repetirlos con su palabra. El agente lo metió primero en el análisis 8, que no trata eso, y se sacó de ahí. |
+| Por qué importa | Cuesta turnos y corta la conversación cuando el usuario decide. |
+| Pendiente | [La respuesta corta a una pregunta del agente cuenta como respuesta](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/pendientes/108-la-respuesta-corta-a-una-pregunta-cuenta-como-respuesta/pendiente.md) |
 ---
 
 ## ¿Se puede cerrar la sesión?

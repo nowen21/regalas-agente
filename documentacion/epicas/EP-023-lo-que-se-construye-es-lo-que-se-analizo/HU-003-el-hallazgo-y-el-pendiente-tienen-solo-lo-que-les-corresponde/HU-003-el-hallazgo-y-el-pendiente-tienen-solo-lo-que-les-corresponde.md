@@ -1,6 +1,6 @@
 # HU-003 · El hallazgo y el pendiente tienen solo lo que les corresponde
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21, y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 10. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-01 |
+| **Estado** | Lista: aprobada el 2026-10-02 |
 
 ---
 
@@ -173,6 +173,28 @@ Y los pendientes cerrados y sus enlaces no se tocan
 
 **Aprobado cuando:** las reglas dicen lo del criterio, los pendientes viejos pasan, el proyecto nuevo no tiene `pendientes/` y los cerrados no cambiaron.
 
+### CA-08 · La carpeta `pendientes/` vive dentro de lo que origina cada pendiente
+
+**Sale de:** análisis 8, punto 10.
+
+```gherkin
+Dado un pendiente
+Entonces vive en una carpeta pendientes/ dentro de lo que lo origina: una épica, una HU o el resumen del día mientras su análisis no decide a dónde va
+Y dentro de ella, en su propia carpeta, con pendiente.md y sus análisis
+Y el número es uno solo en todo el proyecto
+Y un programa arma el índice de todos, con su número, dónde viven y si su plan cerró
+Y el validador de fases acepta pendientes/ dentro de una épica, de una HU o de un resumen del día
+Y los pendientes abiertos de la carpeta pendientes/ de la raíz y el 103 se trasladan, con sus enlaces al día
+Y los cerrados no se tocan (CA-07)
+```
+
+**Cómo validarlo:**
+1. Correr el validador de fases.
+2. Correr el programa del índice.
+3. Buscar los pendientes abiertos y el 103 en su lugar nuevo.
+
+**Aprobado cuando:** el validador de fases pasa, el índice lista todos y los abiertos están en su lugar con los enlaces sanos.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -259,3 +281,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU, corregida según el análisis 3 |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nace el CA-08, sobre la carpeta `pendientes/` dentro de lo que origina cada pendiente, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |

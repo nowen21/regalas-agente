@@ -161,6 +161,29 @@ class PrenderPausarApagar(Base):
         self.assertIn("Aprobado.", texto)
         self.assertNotIn("### 3 · Usuario", texto)
 
+    def test_h9_la_respuesta_pasa_apenas_se_escribe(self):
+        """H-9: la respuesta la pasa el histórico después de escribirla, no un enganche paralelo."""
+        adaptador = os.path.join(os.path.dirname(HOOK), "hook_historico.py")
+        with open(adaptador, encoding="utf-8") as f:
+            texto = f.read()
+        self.assertLess(texto.index("historico.anotar_agente("), texto.index("analisis_en_curso.pasar(raiz)"))
+        import instalar
+        self.assertFalse([h for h in instalar.HOOKS_CLAUDE if h[0] == "Stop" and h[2] == "hook_analisis.py"])
+        # Lo que hace el histórico al cerrar: anota la respuesta y pasa; la respuesta queda.
+        self.agregar(turno(1, "Analicemos: el pendiente 7").split("**Agente**")[0])
+        curso.prender(self.raiz, 7, self.trans, 1)
+        self.agregar("**Agente** — 2026-10-02 10:01:30\n\nLa respuesta.\n\n")
+        curso.pasar(self.raiz)
+        self.assertIn("La respuesta.", self.leer(os.path.join(self.p7, "analisis-1.md")))
+
+    def test_el_enlace_a_lo_que_se_movio_pasa_como_texto(self):
+        self.agregar(turno(1, "Analicemos: el pendiente 7", "Quedó en [el archivo](otro/movido.md)."))
+        curso.prender(self.raiz, 7, self.trans, 1)
+        curso.pasar(self.raiz)
+        texto = self.leer(os.path.join(self.p7, "analisis-1.md"))
+        self.assertIn("el archivo (`otro/movido.md`, ya no está ahí)", texto)
+        self.assertNotIn("](", texto.split("## Conversación")[1].split("acá termina")[0])
+
     def test_h6_lo_que_entro_despues_de_aprobar_sale(self):
         self.agregar(turno(1, "Analicemos: el pendiente 7"))
         curso.prender(self.raiz, 7, self.trans, 1)

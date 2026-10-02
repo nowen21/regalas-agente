@@ -160,15 +160,18 @@ N/A: ninguna norma ni ley aplica (análisis 1 y análisis 2, sección del entorn
 
 ## 15. Hoja de ruta
 
-| Orden | HU | Por qué en ese orden |
-|---|---|---|
-| 1 | HU-001 | Las demás se apoyan en el análisis |
-| 2 | HU-005 | Es pequeña y ataca la causa más directa |
-| 3 | HU-002 | Sigue el orden de la propuesta final |
-| 4 | HU-003 | Sigue el orden de la propuesta final |
-| 5 | HU-004 | Sigue el orden de la propuesta final |
-| 6 | HU-007 | Necesita que la HU-004 defina qué pasa con un hallazgo |
-| 7 | HU-006 | Sigue el orden de la propuesta final |
+El número identifica a la HU y no cambia; el orden de ejecución sale de las dependencias ([análisis 8](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), conclusiones 5 y 8).
+
+| Orden | HU | Depende de | Por qué en ese orden | Estado |
+|---|---|---|---|---|
+| 1 | HU-001, fases A a C | Ninguna | Las demás se apoyan en el análisis | Hecha |
+| 2 | HU-005 | HU-001 | Es pequeña y ataca la causa más directa | Hecha |
+| 3 | HU-002 | HU-001 | Cada documento sale del anterior | Hecha |
+| 4 | HU-001, fase D | Ninguna | Todo análisis que venga usa la plantilla | Por hacer |
+| 5 | HU-003 | HU-001 | Da la forma del hallazgo y del pendiente que usan la HU-004 y la HU-007, y resuelve las fallas de `fases` y de `pendientes` | Por hacer |
+| 6 | HU-006 | HU-001, fase D | Las lecciones alimentan las recomendaciones que crea la fase D | Por hacer |
+| 7 | HU-004 | HU-003 | Detener la ejecución necesita la forma del hallazgo | Por hacer |
+| 8 | HU-007 | HU-003, HU-004 | El freno anota el hallazgo y vuelve al análisis | Por hacer |
 
 Las fechas se fijan al planear cada HU.
 

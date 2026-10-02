@@ -1,6 +1,6 @@
 # HU-006 · Lo aprendido incluye las lecciones
 
-> Su criterio sale de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), punto 9. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Su criterio sale de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), punto 9, y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 6. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-01 |
+| **Estado** | Lista: aprobada el 2026-10-02 |
 
 ---
 
@@ -70,6 +70,22 @@ Y la tabla de lecciones del análisis la enlaza
 
 **Aprobado cuando:** la categoría existe y el análisis enlaza la lección.
 
+### CA-02 · Las lecciones alimentan las recomendaciones
+
+**Sale de:** análisis 8, punto 6.
+
+```gherkin
+Dada la tabla de lecciones del análisis
+Entonces cada lección dice si complementa una recomendación, crea una nueva o no aplica
+Y antes de crear una se busca si ya existe
+```
+
+**Cómo validarlo:**
+1. Abrir la tabla de lecciones de la plantilla del análisis.
+2. Llenarla con una lección que complementa una recomendación.
+
+**Aprobado cuando:** la columna existe y la recomendación queda complementada, sin una nueva repetida.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -114,6 +130,7 @@ Las fija el plan de cada fase (`02·F14`).
 | Tipo | Descripción | Impacto |
 |---|---|---|
 | Dependencia | HU-001: las demás HU se apoyan en el análisis | Bloqueante |
+| Dependencia | HU-001, fase D: crea las recomendaciones que las lecciones alimentan | Bloqueante |
 
 ---
 
@@ -156,3 +173,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nace el CA-02, las lecciones alimentan las recomendaciones; depende de la fase D de la HU-001, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |

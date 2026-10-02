@@ -272,11 +272,12 @@ HOOKS_CLAUDE = [
     ("Stop", None, "hook_historico.py",
      "Anotando en el histórico...", "--modo agente"),
     # `EP-023 · HU-001 · fase B`: la conversación pasa sola al análisis
-    # prendido. Va después del histórico porque lee lo que este anota.
+    # prendido. Al cerrar el turno no hay enganche propio: la respuesta la pasa
+    # `hook_historico.py` apenas la escribe, porque dos enganches del mismo
+    # evento corren a la vez y el del análisis copiaba antes de que la
+    # respuesta existiera (H-9 de la sesión del 2026-10-01).
     ("UserPromptSubmit", None, "hook_analisis.py",
      "Revisando el análisis en curso...", "--modo mensaje"),
-    ("Stop", None, "hook_analisis.py",
-     "Pasando la conversación al análisis...", "--modo cierre"),
     ("UserPromptSubmit", None, "hook_checklist.py",
      "Revisando la instalación del agente...", ""),
     # Al abrir la sesión no se cargan las reglas: la herramienta acepta 10.000

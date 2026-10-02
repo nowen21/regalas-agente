@@ -332,7 +332,18 @@ def conversacion(estado, raiz):
             return m.group(0)
         return "](" + subir + ruta + ")"
 
-    return re.sub(r"\]\((?!https?:|#|\.\./)([^)]+)\)", ajustar, cuerpo)
+    cuerpo = re.sub(r"\]\((?!https?:|#|\.\./)([^)]+)\)", ajustar, cuerpo)
+
+    # Un enlace cuyo destino ya no existe (se movió después de la respuesta)
+    # pasa como texto: lo dicho se conserva y el análisis no queda con un
+    # enlace roto.
+    def vigente(m):
+        destino = m.group(2).split("#")[0]
+        if re.match(r"https?:", destino) or os.path.exists(os.path.normpath(os.path.join(carpeta, destino))):
+            return m.group(0)
+        return "%s (`%s`, ya no está ahí)" % (m.group(1), destino.replace("../", "").lstrip("./"))
+
+    return re.sub(r"\[([^\]]+)\]\(([^)]+)\)", vigente, cuerpo)
 
 
 def pasar(raiz):
