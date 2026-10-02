@@ -1,0 +1,407 @@
+# HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes
+
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+
+---
+
+## 1. Identificación
+
+| Campo | Valor |
+|---|---|
+| **ID** | HU-001 |
+| **Épica / Feature** | [EP-023 Lo que se construye es lo que se analizó](../epica.md) |
+| **Módulo / Componente** | `base/02-flujo-de-trabajo/`, `base/13-documentacion/`, `plantillas/`, `adaptadores/claude-code/`, `validadores/instalar.py` |
+| **Tipo** | Técnica |
+| **Prioridad** | Orden 1 de 7: las demás HU se apoyan en el análisis |
+| **Estimación** | L |
+| **Sprint** | N/A |
+| **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
+| **Responsable** | Claude |
+| **Estado** | Lista: aprobada el 2026-10-01 |
+
+---
+
+## 2. Narrativa
+
+- **Como** el usuario, que plantea la necesidad y aprueba (análisis 1, conclusión 40)
+- **Quiero** que el análisis exista, tenga su forma y revise las cuatro partes
+- **Para** que al ejecutar un plan solo aparezcan los hallazgos que no se podían prever
+
+---
+
+## 3. Contexto y descripción
+
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que no hay un documento que fije el alcance antes de la HU, y lo que pasa la conversación al análisis hay que configurarlo a mano ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+
+### 3.1 Reglas de negocio
+
+Son las conclusiones de las que salen los puntos de esta HU.
+
+| ID | Regla | Sale de |
+|---|---|---|
+| RN-01 | Hay un análisis en cada punto donde algo se reparte: antes de las épicas, antes de las HU de cada épica y cada vez que entra un pendiente | Análisis 1, conclusión 2 |
+| RN-02 | Lo que aportan el usuario y Claude queda en la conversación; el análisis lleva una sección para Cimiento, el proyecto, lo aprendido y el entorno | Análisis 1, conclusión 40 |
+| RN-03 | El análisis principal se reescribe con su lista de cambios; el individual nunca se reescribe | Análisis 1, conclusión 32 |
+| RN-04 | El análisis arranca en el turno donde se dice «Analicemos: el pendiente N» | Análisis 2, conclusión 1 |
+| RN-05 | Al cerrar, primero pasan el hallazgo y el pendiente a su versión siguiente en los originales, después se aprueba y por último se apaga | Análisis 2, conclusiones 11 y 12 |
+| RN-06 | No se abre el análisis de otro pendiente mientras no se cumpla el plan del análisis abierto | Análisis 2, conclusión 6 |
+
+### 3.2 Supuestos
+
+Ninguno.
+
+### 3.3 Fuera de alcance
+
+- Los puntos que la propuesta final reparte a las HU 2 a 7.
+- El punto 29 del análisis 1: lo superan los puntos del análisis 2 (análisis 2, conclusión 9).
+
+---
+
+## 4. Criterios de aceptación
+
+### CA-01 · `02·F0` lleva el análisis en cada punto de reparto
+
+**Sale de:** análisis 1, punto 1.
+
+```gherkin
+Dado que se lee 02·F0
+Cuando se buscan los puntos donde algo se reparte
+Entonces en cada uno la cadena pide un análisis
+```
+
+**Cómo validarlo:**
+1. Abrir [`02·F0`](../../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md).
+
+**Aprobado cuando:** la regla pide el análisis antes de las épicas, antes de las HU de cada épica y cada vez que entra un pendiente.
+
+### CA-02 · Existe la plantilla del análisis
+
+**Sale de:** análisis 1, punto 2.
+
+```gherkin
+Dado que se abre la plantilla del análisis
+Cuando se recorren sus secciones
+Entonces trae la tabla de reglas de redacción, el hallazgo y el pendiente de origen, la conversación, lo que aportó cada parte, las conclusiones, las lecciones aprendidas y lo que se tiene que hacer
+```
+
+**Cómo validarlo:**
+1. Abrir la plantilla del análisis en `plantillas/`.
+
+**Aprobado cuando:** tiene las siete partes del criterio.
+
+### CA-03 · La conversación pasa al análisis en tiempo real
+
+**Sale de:** análisis 1, punto 3.
+
+```gherkin
+Dado un análisis prendido
+Cuando el usuario envía un mensaje y el agente responde
+Entonces los dos turnos entran en el análisis
+Y lo que el usuario agregó en el análisis no se toca
+```
+
+**Cómo validarlo:**
+1. Con un análisis prendido, enviar un mensaje y esperar la respuesta.
+2. Abrir el análisis.
+
+**Aprobado cuando:** los dos turnos están y lo agregado por el usuario sigue igual.
+
+### CA-04 · El pendiente pasa por el análisis antes de la HU
+
+**Sale de:** análisis 1, punto 15.
+
+```gherkin
+Dado que se lee 02·F23
+Cuando se busca cómo baja un pendiente a una HU
+Entonces pasa primero por su análisis
+```
+
+**Cómo validarlo:**
+1. Abrir [`02·F23`](../../../../base/02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md).
+
+**Aprobado cuando:** la regla pone el análisis entre el pendiente y la HU.
+
+### CA-05 · `13·DOC8` queda derogada y reemplazada
+
+**Sale de:** análisis 1, punto 16.
+
+```gherkin
+Dado que 13·DOC8 congela el análisis y lo cierra en un archivo aparte
+Cuando se deroga según 20·M11
+Entonces una regla nueva dice que el análisis principal se reescribe con su lista de cambios
+Y que el individual cierra al final de su mismo archivo
+```
+
+**Cómo validarlo:**
+1. Abrir [`13·DOC8`](../../../../base/13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md) y la regla que la reemplaza.
+
+**Aprobado cuando:** `DOC8` está derogada según `20·M11` y la nueva dice lo del criterio.
+
+### CA-06 · El análisis sin una de las cuatro partes no cierra
+
+**Sale de:** análisis 1, punto 23.
+
+```gherkin
+Dado un análisis al que le falta una de las secciones de Cimiento, el proyecto, lo aprendido o el entorno
+Cuando se intenta cerrar
+Entonces el validador detiene el cierre
+```
+
+**Cómo validarlo:**
+1. Correr el validador del cierre sobre un análisis sin una de las cuatro secciones.
+2. Correrlo sobre un análisis con las cuatro.
+
+**Aprobado cuando:** el primero se detiene y el segundo pasa.
+
+### CA-07 · La versión 40.0.0
+
+**Sale de:** análisis 1, punto 30.
+
+```gherkin
+Dado el cambio de esta épica
+Cuando se publica
+Entonces la versión es 40.0.0, con «⚠ obliga a migrar»
+Y el CHANGELOG dice lo que cada proyecto tiene que hacer, citando 20·M10 y 02·F22
+```
+
+**Cómo validarlo:**
+1. Abrir `VERSION` y `CHANGELOG.md`.
+
+**Aprobado cuando:** dicen lo del criterio.
+
+### CA-08 · Existe el análisis principal de Cimiento
+
+**Sale de:** análisis 1, punto 32.
+
+```gherkin
+Dado que el análisis 1 está aprobado
+Cuando se crea el análisis principal de Cimiento
+Entonces está en analisis/ y se basa en todo el proyecto y en el análisis 1
+```
+
+**Cómo validarlo:**
+1. Abrir la carpeta `analisis/`.
+
+**Aprobado cuando:** el análisis principal está ahí y se basa en lo que dice el criterio.
+
+### CA-09 · La conversación copiada cumple `00·ID8`
+
+**Sale de:** análisis 2, punto 1, y su lección 2: lo que se copia a un documento pasa por las reglas del documento.
+
+```gherkin
+Dado un análisis prendido
+Cuando la herramienta le pasa la conversación
+Entonces lo que escribe cumple 00·ID8
+```
+
+**Cómo validarlo:**
+1. Con un análisis prendido, enviar un mensaje.
+2. Medir el análisis con `validadores/marcas.py`.
+
+**Aprobado cuando:** lo que escribió la herramienta no trae ninguna marca de [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md).
+
+### CA-10 · La herramienta es del estándar y lee el análisis prendido
+
+**Sale de:** análisis 2, punto 2.
+
+```gherkin
+Dado que historico-chat/.estado/analisis-en-curso.txt nombra un análisis
+Cuando la herramienta pasa la conversación
+Entonces escribe en ese análisis
+Y la herramienta vive en adaptadores/claude-code/
+```
+
+**Cómo validarlo:**
+1. Buscar la herramienta en `adaptadores/claude-code/`.
+2. Con el archivo de estado nombrando un análisis, enviar un mensaje.
+
+**Aprobado cuando:** la herramienta está ahí y el turno entra en el análisis nombrado.
+
+### CA-11 · Prender, pausar y apagar
+
+**Sale de:** análisis 2, punto 3.
+
+```gherkin
+Dado que el usuario escribe «Analicemos: el pendiente N»
+Entonces se prende el análisis, que arranca en ese turno
+Cuando escribe «Pare»
+Entonces los turnos siguientes no entran y queda la línea de turnos en pausa
+Cuando escribe «Apruebo el análisis», con el hallazgo y el pendiente ya en su versión siguiente
+Entonces el análisis queda con la marca y el último turno, y se apaga
+Y «Analicemos» sin pendiente no prende nada
+```
+
+**Cómo validarlo:**
+1. Escribir «Analicemos: el pendiente N» y abrir el análisis: arranca en ese turno.
+2. Escribir «Pare», enviar otro mensaje, prender otra vez y abrir el análisis: está la línea de turnos en pausa.
+3. Escribir «Apruebo el análisis» y abrir el análisis: tiene la marca con el último turno.
+4. Escribir «Analicemos» sin pendiente.
+
+**Aprobado cuando:** se cumplen los pasos 1 a 3 y en el paso 4 no se prende ningún análisis.
+
+### CA-12 · Cada turno avisa a qué análisis entra
+
+**Sale de:** análisis 2, punto 4.
+
+```gherkin
+Dado un análisis prendido, o ninguno
+Cuando el usuario envía un mensaje
+Entonces el aviso del turno dice a qué análisis entra la conversación, o que ninguno está prendido
+```
+
+**Cómo validarlo:**
+1. Enviar un mensaje con un análisis prendido y otro sin ninguno.
+
+**Aprobado cuando:** salen los dos avisos.
+
+### CA-13 · Las etiquetas de la herramienta no entran
+
+**Sale de:** análisis 2, punto 5.
+
+```gherkin
+Dado un mensaje del usuario con etiquetas que le puso la herramienta
+Cuando pasa al análisis
+Entonces quedan las palabras del usuario sin esas etiquetas
+```
+
+**Cómo validarlo:**
+1. Con un análisis prendido, enviar un mensaje con texto pegado y abrir el análisis.
+
+**Aprobado cuando:** no aparece ninguna etiqueta de la herramienta.
+
+### CA-14 · No se prende otro pendiente con un análisis abierto
+
+**Sale de:** análisis 2, punto 6.
+
+```gherkin
+Dado un análisis abierto cuyo plan no se ha cumplido
+Cuando se intenta prender el análisis de otro pendiente
+Entonces la herramienta no lo prende
+```
+
+**Cómo validarlo:**
+1. Con un análisis abierto, escribir «Analicemos: el pendiente M», de otro pendiente.
+
+**Aprobado cuando:** no se prende.
+
+### CA-15 · El instalador registra la herramienta
+
+**Sale de:** análisis 2, punto 8.
+
+```gherkin
+Dado un proyecto que hereda Cimiento
+Cuando se corre el instalador
+Entonces la herramienta queda registrada en el proyecto
+```
+
+**Cómo validarlo:**
+1. Correr `validadores/instalar.py` sobre un proyecto.
+2. Abrir su `.claude/settings.json`.
+
+**Aprobado cuando:** la herramienta está registrada.
+
+### CA-16 · La plantilla del análisis pide la parte del problema de cada HU
+
+**Sale de:** análisis 4, punto 2.
+
+```gherkin
+Dada la propuesta final de la plantilla del análisis
+Cuando se lee la tabla de las HU que salen
+Entonces pide, junto a cada HU, la parte del problema que resuelve
+```
+
+**Cómo validarlo:**
+1. Abrir la plantilla del análisis en `plantillas/`.
+
+**Aprobado cuando:** la tabla de HU de la propuesta final pide la parte del problema de cada una.
+
+---
+
+## 5. Requisitos no funcionales
+
+| ID | Categoría | Requisito |
+|---|---|---|
+| RNF-01 | **Rendimiento** | N/A |
+| RNF-02 | **Seguridad** | N/A |
+| RNF-03 | **Auditoría** | N/A |
+| RNF-04 | **Accesibilidad** | N/A |
+| RNF-05 | **Compatibilidad** | N/A |
+| RNF-06 | **Trazabilidad** | Cada criterio cita el punto de lo que se tiene que hacer del que sale (análisis 1, conclusión 39) |
+
+---
+
+## 6. Diseño y referencias
+
+| Campo | Valor |
+|---|---|
+| Punto de partida de la plantilla | el [borrador de la plantilla del análisis](../103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md) (análisis 3, punto 3). |
+| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md). |
+| Mockup / Prototipo | N/A |
+| Contrato de API | N/A |
+
+---
+
+## 7. Tareas técnicas derivadas
+
+Las fija el plan de cada fase (`02·F14`).
+
+---
+
+## 8. Fases que la implementan
+
+| Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
+|---|---|---|---|---|---|---|
+| N/A: todavía no se descompone en fases | | | | | | |
+
+---
+
+## 9. Dependencias y riesgos
+
+| Tipo | Descripción | Impacto |
+|---|---|---|
+| Dependencia | Ninguna: es la primera de la épica | N/A |
+| Por confirmar en el plan | Cómo sabe la herramienta del CA-14 que el plan del análisis abierto se cumplió (análisis 3, punto 4) | N/A |
+
+---
+
+## 10. Precondiciones  (Definition of Ready - DoR)
+
+- [x] Narrativa clara con rol, acción y beneficio
+- [x] Criterios de aceptación definidos y testeables
+- [x] Reglas de negocio documentadas
+- [ ] Diseño / mockup disponible: N/A
+- [x] Dependencias identificadas y desbloqueadas
+- [x] Estimada
+- [ ] Cumple criterios INVEST: no es pequeña
+
+## 11. Poscondiciones (Definition of Done - DoD)
+
+- [ ] Todos los criterios de aceptación verificados
+- [ ] Pruebas pasando
+- [ ] `VERSION` y `CHANGELOG.md` actualizados
+- [ ] Aceptada por el usuario
+
+---
+
+## 12. Validación INVEST
+
+| Criterio | ✅ | Observación |
+|---|:--:|---|
+| **I**ndependiente | ✅ | No depende de otra HU |
+| **N**egociable | ✅ | |
+| **V**aliosa | ✅ | Las demás HU se apoyan en ella |
+| **E**stimable | ✅ | Talla L |
+| **S**mall (pequeña) | ☐ | Tiene 16 criterios: puede pedir más de una fase |
+| **T**esteable | ✅ | Cada criterio dice dónde mirar |
+
+---
+
+## 13. Bitácora
+
+| Fecha | Autor | Cambio |
+|---|---|---|
+| 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU, corregida según el análisis 3 |
+| 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
+| 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | La aprobación queda sin efecto: la HU cambió por el análisis 4 y se revisa de nuevo |
+| 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |

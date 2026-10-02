@@ -32,6 +32,12 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | [EP-021](EP-021-la-plataforma-se-mira-sin-consola/) | Que lo que la plataforma sabe se pueda mirar sin abrir una consola | 5 | Terminada el 2026-09-02: su historia cumple |
 | [EP-022](EP-022-quien-entra-y-que-puede-hacer/) | Que la plataforma sepa quién entró, y que no todos puedan hacer lo mismo | 5 | Terminada el 2026-09-02: sus dos historias cumplen |
 
+**La que nace de un pendiente**, con su carpeta y sus análisis adentro:
+
+| Épica | De qué se trata | Estado |
+|---|---|---|
+| [EP-023](EP-023-lo-que-se-construye-es-lo-que-se-analizo/) | Que al ejecutar un plan solo aparezcan los hallazgos que no se podían prever | Propuesta: sus 7 historias aprobadas el 2026-10-01 |
+
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 
 El número es el orden en que se ejecutan, y las dependencias lo confirman: EP-004 no arranca sin EP-001 y EP-003.

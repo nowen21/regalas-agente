@@ -12,7 +12,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-30-sesion.md](../.
 
 ### H-1. Análisis del pendiente 103
 
-El análisis está en [103-cada-documento-de-la-cadena-sale-del-anterior/](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), junto con la versión vigente del [pendiente](103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md). Queda ahí mientras se decide dónde debe vivir.
+El análisis está en [103-cada-documento-de-la-cadena-sale-del-anterior/](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), junto con la versión vigente del [pendiente](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md). Queda ahí mientras se decide dónde debe vivir.
 
 ### H-2. El enganche del análisis solo sirve para un análisis
 
@@ -20,7 +20,7 @@ El análisis está en [103-cada-documento-de-la-cadena-sale-del-anterior/](103-c
 |---|---|
 | Qué pasó | El análisis 1 del pendiente 103 se llenó en tiempo real con un guion hecho solo para él, [crear_analisis_103.py](../../scripts/2026-09-30/crear_analisis_103.py), que tiene la ruta de ese análisis escrita adentro. Al aprobarlo hubo que apagarlo a mano en `.claude/settings.json`, y antes de apagarlo alcanzó a pasarle al análisis cerrado un turno posterior a la aprobación. El punto 29 del análisis pide una herramienta general, pero no dice cómo se prende ni cómo se apaga. |
 | Por qué importa | Cualquier proyecto que herede Cimiento tendría que configurar a mano el enganche de cada análisis y acordarse de apagarlo al aprobar. Si no se acuerda, la conversación entra en un análisis que ya no se reescribe. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 2](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 2](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
 
 ---
 

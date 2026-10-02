@@ -1,6 +1,6 @@
 # Pendiente: lo que se construye se aparta de lo aprobado
 
-Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md).
+Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md).
 
 | | |
 |---|---|

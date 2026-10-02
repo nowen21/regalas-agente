@@ -21,7 +21,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El análisis 1 del pendiente 103 se llenó en tiempo real con un guion hecho solo para él, [crear_analisis_103.py](../../../scripts/2026-09-30/crear_analisis_103.py), que tiene la ruta de ese análisis escrita adentro. Al aprobarlo hubo que apagarlo a mano en `.claude/settings.json`, y antes de apagarlo alcanzó a pasarle al análisis cerrado un turno posterior a la aprobación. El punto 29 del análisis pide una herramienta general, pero no dice cómo se prende ni cómo se apaga. |
+| Qué pasó | El análisis 1 del pendiente 103 se llenó en tiempo real con un guion hecho solo para él, [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py), que tiene la ruta de ese análisis escrita adentro. Al aprobarlo hubo que apagarlo a mano en `.claude/settings.json`, y antes de apagarlo alcanzó a pasarle al análisis cerrado un turno posterior a la aprobación. El punto 29 del análisis pide una herramienta general, pero no dice cómo se prende ni cómo se apaga. |
 | Por qué importa | Cualquier proyecto que herede Cimiento tendría que configurar a mano el enganche de cada análisis y acordarse de apagarlo al aprobar. Si no se acuerda, la conversación entra en un análisis que ya no se reescribe. |
 
 ## Pendiente
@@ -40,7 +40,7 @@ Reúne los pendientes 103, 104 y 105.
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../2026-09-30-sesion.md), a partir del turno 142, el que sigue a la aprobación del análisis 1.
+> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-09-30-sesion.md), a partir del turno 142, el que sigue a la aprobación del análisis 1.
 
 ### 142 · Usuario, 2026-10-01 15:45:14
 > si
@@ -102,7 +102,7 @@ Pasos:
 Ya quedó abierto el análisis 2.
 
 - **El hallazgo H-2**, «El enganche del análisis solo sirve para un análisis», quedó en el [resumen de hoy](../../../../historico-chat/resumenes/2026-09-30/sesion.md), solo con «Qué pasó» y «Por qué importa», y con el enlace a su pendiente.
-- **El [analisis-2.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md)** se armó desde el borrador de la plantilla. Tiene la copia del H-2, la del pendiente vigente y una nota que dice que su conversación empieza en el turno 145 de la transcripción y se copia al cerrar.
+- **El [analisis-2.md](analisis-2.md)** se armó desde el borrador de la plantilla. Tiene la copia del H-2, la del pendiente vigente y una nota que dice que su conversación empieza en el turno 145 de la transcripción y se copia al cerrar.
 
 Los enlaces funcionan y quité las marcas que señaló el revisor.
 
@@ -436,7 +436,7 @@ Quedó como la conclusión 8.
 **Agente**, 2026-10-01 17:58:38
 <!-- agente: a9e5c473-6cb0-4786-9cab-2f0b0a235df6 -->
 
-El análisis 2 quedó completo. En el [analisis-2.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) hay:
+El análisis 2 quedó completo. En el [analisis-2.md](analisis-2.md) hay:
 
 - **10 conclusiones**, cada una con su turno. La 9 dice qué cambia en lo ya hecho y la 10 trata las etiquetas.
 - **Las cuatro partes llenas**:
@@ -505,7 +505,7 @@ El ejemplo deja ver dos cosas que hay que corregir:
 **Agente**, 2026-10-01 18:11:39
 <!-- agente: 79bff274-7b98-40bc-8367-f14bd8bdd01a -->
 
-Corregido en el [analisis-2.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md):
+Corregido en el [analisis-2.md](analisis-2.md):
 
 - **Conclusión 1:** el análisis arranca en el turno donde se dice «Analicemos: el pendiente N». Hoy coincidió con el turno siguiente a la aprobación solo porque todo pasó en la misma sesión.
 - **Conclusión 2:** «Analicemos» prende un análisis solo si nombra un pendiente. Sin pendiente, sigue siendo analizar en el chat.
@@ -613,7 +613,7 @@ Los pasos 4 y 5 conviene hacerlos en una sesión nueva. ¿Arranco con el paso 1?
 **Agente**, 2026-10-01 19:01:57
 <!-- agente: 625e361c-470e-4f35-9158-f138382c509c -->
 
-El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) de la carpeta del análisis.
+El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](pendiente.md) de la carpeta del análisis.
 
 - **De dónde sale:** ahora incluye el H-2 junto al H-13.
 - **El problema:** suma la frase sobre configurar a mano lo que pasa la conversación al análisis.

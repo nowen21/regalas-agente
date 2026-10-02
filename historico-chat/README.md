@@ -200,3 +200,4 @@ La respuesta, tal como se dio.
 - [2026-09-27-reglas-de-redaccion-y-orden-de-la-cadena.md](2026-09-27-reglas-de-redaccion-y-orden-de-la-cadena.md) — Nacen 00·ID11 (solo lo pertinente) y 00·ID12 (norma del español de Colombia); el andamio anota el pendiente antes que su HU; las plantillas toman el formato del plan de trabajo. · [historico-chat/resumenes/2026-09-27/reglas-de-redaccion-y-orden-de-la-cadena.md](resumenes/2026-09-27/reglas-de-redaccion-y-orden-de-la-cadena.md)
 - [2026-09-28-sesion.md](2026-09-28-sesion.md) — sesión del 2026-09-28.
 - [2026-09-30-sesion.md](2026-09-30-sesion.md) — sesión del 2026-09-30.
+- [2026-10-01-sesion.md](2026-10-01-sesion.md) — sesión del 2026-10-01.

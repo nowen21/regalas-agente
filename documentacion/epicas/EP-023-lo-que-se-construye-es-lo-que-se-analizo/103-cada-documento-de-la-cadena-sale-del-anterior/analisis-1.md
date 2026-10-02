@@ -868,7 +868,7 @@ Corregí el guion, pero no quedó en tiempo real: la herramienta bloqueó el cam
 
 Lo que sí quedó hecho:
 - [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py) ahora reemplaza solo la conversación, que va desde el turno 2 hasta la línea «acá es donde continua el primer análisis». Lo que usted agregó de esa línea hacia abajo no se toca.
-- Lo corrí una vez y [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) quedó con la conversación hasta el turno 39. Sus tres secciones están intactas.
+- Lo corrí una vez y [analisis-1.md](analisis-1.md) quedó con la conversación hasta el turno 39. Sus tres secciones están intactas.
 
 Para que se actualice solo después de cada mensaje y de cada respuesta, hay que agregar este bloque al final de las listas `UserPromptSubmit` y `Stop` en [.claude/settings.json](../../../../.claude/settings.json):
 
@@ -894,7 +894,7 @@ Lo puede pegar usted, o autorizar la acción para que yo lo haga. Mientras tanto
 
 Al correr el guion se duplicó un pedazo del análisis. Lo reviso y lo arreglo antes de seguir.
 
-Ya está agregado en [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), y sus indicaciones siguen en su lugar:
+Ya está agregado en [analisis-1.md](analisis-1.md), y sus indicaciones siguen en su lugar:
 
 - **Hallazgo V1 y Pendiente V1:** el H-13 del 2026-09-28 y el pendiente 103, copiados tal cual con los enlaces ajustados a la nueva ubicación.
 - **Conclusiones:** una tabla de 13 puntos y, debajo, las 3 decisiones que siguen abiertas.
@@ -990,7 +990,7 @@ Para quitar esos campos del `analisis-1.md`, hace falta la orden «Corrija».
 **Agente** — 2026-10-01 00:13:11
 <!-- agente: b34039b7-6678-42fc-8c28-4d5bb6baeed5 -->
 
-Corregido. En el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Corregido. En el [analisis-1.md](analisis-1.md):
 
 - **Hallazgo:** quedó solo con «Qué pasó» y «Por qué importa».
 - **Pendiente:** salieron «Qué falta» y «El límite».
@@ -1021,7 +1021,7 @@ De la tabla quedan tres campos. Así los leo:
 **Agente** — 2026-10-01 00:16:14
 <!-- agente: ab76ad71-307e-410d-8ed3-9c99a5648d0c -->
 
-Listo. En el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), el pendiente quedó solo con «De dónde sale», «El problema» y «Por qué importa». Quité «Estado», «Historia de usuario», «Proyecto de origen» y «Cómo se sabrá que cerró».
+Listo. En el [analisis-1.md](analisis-1.md), el pendiente quedó solo con «De dónde sale», «El problema» y «Por qué importa». Quité «Estado», «Historia de usuario», «Proyecto de origen» y «Cómo se sabrá que cerró».
 
 ### 49 · Usuario — 2026-10-01 00:17:26
 > pero del documento pendiente y hallazgo también deben salir esos adornos
@@ -1033,7 +1033,7 @@ Para no suponer, necesito saber de qué archivos se habla:
 
 | Documento | Dónde está |
 |---|---|
-| Pendiente | [pendiente.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en la carpeta nueva, y el original en [pendientes/103-...](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
+| Pendiente | [pendiente.md](pendiente.md), en la carpeta nueva, y el original en [pendientes/103-...](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
 | Hallazgo | No tiene archivo propio. Es el H-13, dentro del [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md) |
 
 ¿Se limpian los dos del pendiente o solo el `pendiente.md` de la carpeta nueva? Y en el caso del hallazgo, ¿se toca el H-13 dentro del resumen del 2026-09-28?
@@ -1076,7 +1076,7 @@ No los estaba modificando: solo iba a correr sus pruebas para ver cuáles fallan
 El recorte quedó hecho en los tres archivos:
 
 - El **H-13**, en el [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), quedó solo con «Qué pasó» y «Por qué importa».
-- El **pendiente 103**, en [pendientes/](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y en el [pendiente.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) de la carpeta nueva, quedó solo con «De dónde sale», «El problema» y «Por qué importa».
+- El **pendiente 103**, en [pendientes/](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y en el [pendiente.md](pendiente.md) de la carpeta nueva, quedó solo con «De dónde sale», «El problema» y «Por qué importa».
 
 Ahora la copia del análisis coincide con los originales.
 
@@ -1104,7 +1104,7 @@ Porque dejé de correr el guion. Cuando se rechazó la última vez que lo iba a 
 
 Entendido. Supuse que había un rechazo sin preguntar, y eso quedó anotado como la lección 6.
 
-El [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) ya está al día:
+El [analisis-1.md](analisis-1.md) ya está al día:
 
 - **Conversación:** llega hasta este mensaje.
 - **Conclusiones:** se agregaron la 14 (qué tiene el hallazgo), la 15 (qué tiene el pendiente) y la 16 (el cierre lo marca el plan).
@@ -1145,7 +1145,7 @@ Con cualquiera de las dos, el análisis se actualiza solo después de cada mensa
 
 Ya quedó agregado el enganche en [.claude/settings.json](../../../../.claude/settings.json), al final de `UserPromptSubmit` y de `Stop`. Comprobé que el archivo se lee bien y que el guion corre como enganche sin errores.
 
-Desde el próximo mensaje, el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) se actualiza solo y yo dejo de correr el guion a mano. Si Claude Code no toma el cambio en esta sesión, se activa al abrir la siguiente.
+Desde el próximo mensaje, el [analisis-1.md](analisis-1.md) se actualiza solo y yo dejo de correr el guion a mano. Si Claude Code no toma el cambio en esta sesión, se activa al abrir la siguiente.
 
 ### 57 · Usuario — 2026-10-01 07:54:51
 > ok
@@ -1245,7 +1245,7 @@ Entonces la tabla de lecciones del análisis necesitaría una columna «Tipo» p
 **Agente** — 2026-10-01 08:10:07
 <!-- agente: 5818a55a-d8cd-48b5-abf8-f1f7c4022d94 -->
 
-Ya está en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Ya está en el [analisis-1.md](analisis-1.md):
 
 - **Lecciones:** la tabla tiene ahora la columna «Tipo». Hay 6 lecciones de lo que falló y 3 nuevas de lo que funcionó.
 - **Conclusión 13:** ahora dice que la señal y la lección son las dos aprendizaje, y que la lección sale tanto de lo que funcionó como de lo que falló.
@@ -1259,7 +1259,7 @@ Ya está en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/1
 Según lo que concluyó el propio análisis, el orden es este:
 
 1. **Cerrar la última decisión abierta.** Falta definir si la secuencia lógica va dentro de `02·F0` o en una regla propia. Mi recomendación es una regla propia.
-2. **Aprobar el análisis.** Antes, el usuario revisa el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) completo y dice si está bien o qué hay que corregir.
+2. **Aprobar el análisis.** Antes, el usuario revisa el [analisis-1.md](analisis-1.md) completo y dice si está bien o qué hay que corregir.
 3. **Decidir dónde vive el pendiente 103.** Al aprobarse el análisis se define si amplía el planteamiento, si crea una épica o si crea una HU.
 4. **Escribir la HU.** Sus criterios de aceptación son los 12 puntos de «Lo que se tiene que hacer», y cada uno cita su conclusión.
 5. **Seguir la cadena:** especificación, plan y construcción.
@@ -1297,7 +1297,7 @@ Queda una pregunta: cuando aparece el hallazgo, ¿la ejecución del plan se deti
 **Agente** — 2026-10-01 08:40:57
 <!-- agente: 898c51cd-b797-48e4-b7b9-aca30f7990eb -->
 
-Entendido. Lo anoté en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Entendido. Lo anoté en el [analisis-1.md](analisis-1.md):
 
 | # | Conclusión |
 |---|---|
@@ -1312,7 +1312,7 @@ Por eso se agregaron los puntos 13 y 14 a «Lo que se tiene que hacer».
 **Agente** — 2026-10-01 08:49:56
 <!-- agente: cef3a5a7-c5e3-4b72-8424-386b835a788f -->
 
-Tiene razón: varias conclusiones se acordaron en la conversación pero no habían pasado a la tabla. Revisé la conversación y agregué las que faltaban, de la 20 a la 27, en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Tiene razón: varias conclusiones se acordaron en la conversación pero no habían pasado a la tabla. Revisé la conversación y agregué las que faltaban, de la 20 a la 27, en el [analisis-1.md](analisis-1.md):
 
 | # | Tema |
 |---|---|
@@ -1333,7 +1333,7 @@ Si se acordó algo más que no esté en la tabla, ¿cuál es?
 **Agente** — 2026-10-01 08:51:39
 <!-- agente: 1f1f838f-6cc1-454b-9f0b-7a668d06d968 -->
 
-Corregí la conclusión 20 en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). Ahora dice que la estructura de la carpeta es siempre la misma y que solo cambia dónde queda: dentro de lo que la genera, o en la carpeta del resumen del día mientras no se sepa.
+Corregí la conclusión 20 en el [analisis-1.md](analisis-1.md). Ahora dice que la estructura de la carpeta es siempre la misma y que solo cambia dónde queda: dentro de lo que la genera, o en la carpeta del resumen del día mientras no se sepa.
 
 ### 68 · Usuario — 2026-10-01 08:56:40
 > Pregunta: qué sigue?4
@@ -1344,7 +1344,7 @@ Corregí la conclusión 20 en el [analisis-1.md](../../../../historico-chat/resu
 Sigue lo mismo que antes, porque ninguno de esos pasos se ha dado:
 
 1. **La última decisión abierta.** ¿La secuencia lógica va dentro de `02·F0` o en una regla propia? Mi recomendación es una regla propia.
-2. **Revisar y aprobar el análisis.** El usuario lee el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) completo y lo aprueba, o dice qué falta.
+2. **Revisar y aprobar el análisis.** El usuario lee el [analisis-1.md](analisis-1.md) completo y lo aprueba, o dice qué falta.
 3. **Al aprobarlo**, se decide dónde vive el pendiente 103 y se escribe la HU con los 14 puntos de «Lo que se tiene que hacer» como criterios de aceptación.
 
 ¿Qué se decide sobre el punto 1?
@@ -1701,7 +1701,7 @@ Según la conclusión 2, el análisis que se hace antes de las HU decidiría cu�
 **Agente** — 2026-10-01 09:41:12
 <!-- agente: 99c2a2f6-4348-4662-9c66-3d52cd3e71d4 -->
 
-Quedó anotado en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Quedó anotado en el [analisis-1.md](analisis-1.md):
 
 - **Conclusión 30:** el pendiente 103 va en una épica nueva, y este análisis cumple el papel del inventario que exige `02·F26`.
 - **Conclusión 31:** lo que la revisión encontró en conflicto se resuelve antes de escribir la regla nueva.
@@ -1971,7 +1971,7 @@ Para las conclusiones de este mismo análisis, eso significa agregarles después
 **Agente** — 2026-10-01 10:31:18
 <!-- agente: 500f30da-3eef-4fb7-bdf2-aca3b60bd8d3 -->
 
-Listo. Quedó así en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Listo. Quedó así en el [analisis-1.md](analisis-1.md):
 
 - **Conclusión 39:** cada punto lleva «Sale de», y el validador revisa que el punto citado exista en el documento padre.
 - **Columna «Sale de»:** ya la tienen las 39 conclusiones, con el turno de la conversación donde se acordó cada una. Así el análisis cumple su propia regla.
@@ -2041,7 +2041,7 @@ Además sigue abierto lo de la medición: que cada plan registre cuántos hallaz
 **Agente** — 2026-10-01 10:46:19
 <!-- agente: 33b0bf30-329c-4814-92d8-39432f9a06df -->
 
-Quedó agregado en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Quedó agregado en el [analisis-1.md](analisis-1.md):
 
 - **Conclusión 40:** en el análisis participan seis partes: el usuario, Claude, Cimiento, el proyecto, lo aprendido y el entorno.
 - **Conclusión 41:** cada plan registra cuántos hallazgos salieron al ejecutarlo.
@@ -2071,7 +2071,7 @@ Mi recomendación es ajustar el punto 23 para que el validador exija una secció
 **Agente** — 2026-10-01 10:50:40
 <!-- agente: b4907b31-c0da-4b66-88fc-04d17a55f472 -->
 
-Ajustado en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Ajustado en el [analisis-1.md](analisis-1.md):
 
 - **Punto 23:** todo análisis tiene una sección por cada una de las seis partes, y el validador detiene el cierre si falta alguna.
 - **Conclusión 42:** lo que se busca minimizar son los hallazgos evitables, porque algunos solo aparecen al construir.
@@ -2228,7 +2228,7 @@ Quedó todo unido:
 
 - **Hallazgo:** el H-13 del [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md) ahora se llama «Lo que se construye se aparta de lo aprobado» y tiene el texto unificado. El H-10 y el H-11 llevan «Unido en el H-13».
 - **Pendiente:** el [103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y su copia en la carpeta del análisis tienen el texto unificado. El 104 y el 105 llevan «Unido en el pendiente 103».
-- **Análisis:** el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) muestra arriba la copia exacta de los dos textos nuevos. Además:
+- **Análisis:** el [analisis-1.md](analisis-1.md) muestra arriba la copia exacta de los dos textos nuevos. Además:
   - la **conclusión 44** registra la unión;
   - los **puntos 25 a 27** traen lo que aportaban el 104 y el 105: rutas exactas en el plan, un freno antes de cada escritura y el rechazo del commit.
 
@@ -2508,7 +2508,7 @@ En el caso del usuario y de Claude, lo que aportaron ya está en la conversació
 **Agente** — 2026-10-01 13:49:58
 <!-- agente: 4d5f57ad-c3c9-42e5-9c15-0cbd3b1641eb -->
 
-La sección «Lo que aportó cada parte» ya está en el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), justo antes de las conclusiones:
+La sección «Lo que aportó cada parte» ya está en el [analisis-1.md](analisis-1.md), justo antes de las conclusiones:
 
 - **El usuario y Claude:** citan los turnos de la conversación donde está lo central, sin copiarlo.
 - **Cimiento:** las reglas que aplican y las que chocan, con la remisión a los puntos 15 a 22.
@@ -2528,7 +2528,7 @@ Solo falta aprobar el reparto final en HU. ¿Lo armo con los 31 puntos?
 
 Estoy midiendo con el validador de marcas lo que yo escribí en el análisis, porque al escribirlo con guiones no pasó por la revisión automática de redacción.
 
-Listo. En el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md):
+Listo. En el [analisis-1.md](analisis-1.md):
 
 - **Tabla de reglas:** quedó al principio, la misma de todas las plantillas (`00·ID8`, `00·ID9`, `00·ID11` y `00·ID12`), con los enlaces funcionando.
 - **Punto 2 de lo que se tiene que hacer:** ahora dice que la plantilla del análisis lleva esa tabla y la sección de las seis partes.
@@ -2598,7 +2598,7 @@ Según la cadena (`02·F23`), esa plantilla se construye como parte de la HU 1, 
 **Agente** — 2026-10-01 14:05:37
 <!-- agente: 0414201f-ef8e-40b8-abf0-91657185a07f -->
 
-El borrador quedó en la carpeta del análisis: [borrador-plantilla-analisis.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md). No lo puse en `plantillas/`, porque eso le toca a la HU 1, con su versión y sus pruebas. La HU 1 parte de este borrador.
+El borrador quedó en la carpeta del análisis: [borrador-plantilla-analisis.md](borrador-plantilla-analisis.md). No lo puse en `plantillas/`, porque eso le toca a la HU 1, con su versión y sus pruebas. La HU 1 parte de este borrador.
 
 El borrador sigue la forma del `analisis-1.md`, que es el piloto:
 
@@ -2991,7 +2991,7 @@ Los dos archivos pasaron el validador de redacción sin marcas.
 
 Sigue cerrar el análisis. Solo falta una cosa: la aprobación del usuario.
 
-Antes de dar la palabra conviene leer completo el [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). Lo que se aprueba es esto:
+Antes de dar la palabra conviene leer completo el [analisis-1.md](analisis-1.md). Lo que se aprueba es esto:
 - **51 conclusiones**, cada una con el turno de donde sale.
 - **12 lecciones**: 9 de lo que falló y 3 de lo que funcionó.
 - **32 puntos** de lo que se tiene que hacer, repartidos en las siete HU de EP-023 en la columna «Pasó a».
@@ -3096,7 +3096,7 @@ Los dos archivos pasaron el validador de redacción sin marcas. Con esto, el an�
 **Agente** — 2026-10-01 15:44:13
 <!-- agente: df960e32-84ab-49b5-b0d7-2e14ffca8f26 -->
 
-Quedó bendecido y aprobado 🙏. En la cabecera del [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) ya dice que se aprobó el 2026-10-01, en el turno 141, y que desde ahí no se reescribe.
+Quedó bendecido y aprobado 🙏. En la cabecera del [analisis-1.md](analisis-1.md) ya dice que se aprobó el 2026-10-01, en el turno 141, y que desde ahí no se reescribe.
 
 Por esa misma razón hay que apagar el enganche que le agrega la conversación. Si sigue encendido, cualquier cosa que se hable desde ahora entraría en un análisis cerrado. Para apagarlo hay que quitar las dos entradas que agregué en `.claude/settings.json`, y eso necesita una orden aparte.
 
