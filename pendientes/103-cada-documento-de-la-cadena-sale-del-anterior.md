@@ -1,14 +1,14 @@
-# Pendiente · Lo que se construye se aparta de lo aprobado
+# Pendiente: lo que se construye se aparta de lo aprobado
 
-Reúne los pendientes 103, 104 y 105.
+Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md).
 
 | | |
 |---|---|
-| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13 |
+| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../historico-chat/resumenes/2026-09-30/sesion.md) |
 
 ## El problema
 
-No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. Y la plantilla del plan no permite comprobarlo con un programa.
+No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis.
 
 ## Por qué importa
 

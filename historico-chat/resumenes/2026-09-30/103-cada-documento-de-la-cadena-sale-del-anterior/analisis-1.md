@@ -1,5 +1,7 @@
 # Análisis 1: lo que se construye se aparta de lo aprobado
 
+> **Aprobado** por el usuario el 2026-10-01, en el turno 141. Desde ese momento este análisis no se reescribe.
+
 > Este análisis se redacta aplicando estas reglas, igual que todo documento que sale de una plantilla.
 >
 > | Regla | Qué exige |
@@ -3005,6 +3007,107 @@ Aparte queda una pregunta: todo lo de esta sesión sigue sin guardarse en git. L
 ### 136 · Usuario — 2026-10-01 15:28:21
 > suba a git
 
+**Agente** — 2026-10-01 15:30:03
+<!-- agente: ad929d46-86a6-4d79-80d0-d8769e251b40 -->
+
+Ya está en git y subido: el commit `186f2b6` llegó a `main` en GitHub.
+
+**Lo que entró:**
+- el análisis con su borrador de plantilla y la copia del pendiente;
+- el resumen y la transcripción de hoy;
+- el guion;
+- el H-13 unificado en el resumen del 2026-09-28;
+- los pendientes 103, 104 y 105.
+
+**Lo que dejé fuera:** `historico-chat/2026-09-28-sesion.md`, que ya estaba modificado cuando empezó esta sesión y es trabajo de otra.
+
+Las revisiones del commit y del push pasaron sin fallas. Hubo dos avisos que no tienen que ver con este cambio: una versión repetida en el CHANGELOG, que ya estaba reconocida, y una prueba vieja del 2026-09-02.
+
+El análisis sigue abierto, y el enganche sigue agregándole la conversación. Lo que se hable desde ahora entra en el próximo commit.
+
+### 137 · Usuario — 2026-10-01 15:32:21
+> cual es la propuesta final del análisis ese otro apartado de la plantilla
+> De acuerdo al análisis cómo quedó el pendiente y el hallazgo osea V2
+
+### 138 · Usuario — 2026-10-01 15:33:15
+> ¿Cuál es la propuesta final del análisis? Ese debería ser otro apartado de la plantilla, donde se indique cómo quedaron finalmente el pendiente y el hallazgo de acuerdo con lo determinado en el análisis, es decir, la **versión V2**.
+
+**Agente** — 2026-10-01 15:33:31
+<!-- agente: 2e3f30c9-aa40-4bb3-bbde-04ce21f0aea6 -->
+
+Tiene razón: falta esa sección. Hoy el análisis muestra de dónde partió, con el hallazgo y el pendiente V1, pero no dice cómo quedaron al final.
+
+Propongo una sección **«Propuesta final: hallazgo y pendiente V2»**. Iría después de las conclusiones y antes de «Lo que se tiene que hacer», porque de las conclusiones sale la V2, y de la V2 salen los criterios de las HU. Con los textos ya acordados quedaría así:
+
+**Hallazgo V2.** H-13: lo que se construye se aparta de lo aprobado. Reúne H-10, H-11 y H-13.
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | En la fase `C` de HU-023, el agente agregó lo que no se pidió y el plan y el código terminaron diciendo cosas distintas. Además, cambió el código seis veces después de aprobado el plan, tocó archivos que el plan no declaraba y borró `leidas.py`. La plantilla del plan acepta filas que un programa no puede comparar con una ruta, y no registra quién aprobó ni las ampliaciones. |
+| Por qué importa | Las reglas existen (`02·F8`, `01·C4`, `00·N1`) y se incumplieron, porque cumplirlas depende de que el agente se acuerde. Cada eslabón puede traer lo que nadie pidió, nada lo detiene y ningún programa lo puede comprobar. Por eso aparecen hallazgos al ejecutar el plan. |
+
+**Pendiente V2.** Lo que se construye se aparta de lo aprobado. Reúne los pendientes 103, 104 y 105.
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | El H-13 V2 |
+| El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. Y la plantilla del plan no permite comprobarlo con un programa. |
+| Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
+
+Hay algo que el orden del piloto deja ver. Los originales del resumen del 2026-09-28 y de `pendientes/103` ya los cambié a la V2, y eso pasó antes de aprobar el análisis. El orden correcto debería ser: el análisis propone la V2, se aprueba, y solo entonces se cambian los originales. Lo anotaría como la lección 13.
+
+¿Agrego la sección al análisis y al borrador de la plantilla, junto con la lección?
+
+### 139 · Usuario — 2026-10-01 15:37:02
+> si
+
+**Agente** — 2026-10-01 15:37:33
+<!-- agente: 9d54f201-a738-4c8a-8d69-e425dfc3b15b -->
+
+Listo, en el análisis y en el borrador de la plantilla:
+
+- **«Propuesta final: hallazgo y pendiente V2»** quedó después de las conclusiones, con los textos acordados.
+  - En el borrador, la sección se llama «V«N+1»» y aclara que los originales no se tocan hasta que se apruebe el análisis.
+- **Conclusión 52:** el análisis termina con la V2, y esta se copia en los originales solo al aprobarse.
+- **Lección 13:** se cambiaron los originales antes de aprobar el análisis.
+
+Los dos archivos pasaron el validador de redacción sin marcas.
+
+### 140 · Usuario — 2026-10-01 15:39:17
+> falta la épica y las hu
+
+**Agente** — 2026-10-01 15:39:52
+<!-- agente: 4f67be0b-6df3-4dee-b524-4d9d45ee3581 -->
+
+Agregué la épica y las HU a la propuesta final, que ahora se llama «Propuesta final: hallazgo y pendiente V2, épica y HU».
+
+- **En el análisis:**
+  - EP-023 con su resultado y las siete HU, cada una con su título y sus puntos.
+  - El orden en que se construyen y por qué.
+  - La conclusión 53: la épica y las HU se escriben como documentos cuando se apruebe el análisis.
+  - En «Siguen abiertas» ahora dice «ninguna».
+- **En el borrador de la plantilla:** el mismo apartado, con los campos para llenar.
+
+Los dos archivos pasaron el validador de redacción sin marcas. Con esto, el análisis ya no tiene nada abierto y solo falta la palabra «Apruebo».
+
+### 141 · Usuario — 2026-10-01 15:43:46
+> Muy bien, apruebo. Échele la bendición, que lo que analizamos nos quedó bien. 🙏
+
+**Agente** — 2026-10-01 15:44:13
+<!-- agente: df960e32-84ab-49b5-b0d7-2e14ffca8f26 -->
+
+Quedó bendecido y aprobado 🙏. En la cabecera del [analisis-1.md](../../../../historico-chat/resumenes/2026-09-30/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) ya dice que se aprobó el 2026-10-01, en el turno 141, y que desde ahí no se reescribe.
+
+Por esa misma razón hay que apagar el enganche que le agrega la conversación. Si sigue encendido, cualquier cosa que se hable desde ahora entraría en un análisis cerrado. Para apagarlo hay que quitar las dos entradas que agregué en `.claude/settings.json`, y eso necesita una orden aparte.
+
+Lo que sigue, en este orden:
+1. Apagar el enganche.
+2. Crear el análisis principal de Cimiento en `analisis/`.
+3. Escribir EP-023 y sus siete HU.
+4. Guardar todo en git.
+
+¿Arranco por apagar el enganche?
+
 > acá es donde continua el primer análisis
 
 ## Lo que aportó cada parte
@@ -3107,10 +3210,49 @@ Chocan, y se resuelven en los puntos 15 a 22 de lo que se tiene que hacer: `02·
 | 49 | El análisis principal de Cimiento | No existe. Se crea en `analisis/` después de aprobar este análisis, con base en todo el proyecto y en lo que este concluyó. | Turno 127 |
 | 50 | Dónde van los hijos | El análisis no lleva una tabla de enlaces: no registra decisiones. El padre ya está en la copia del pendiente y la conversación en el mismo archivo. Los hijos van en la columna «Pasó a» de lo que se tiene que hacer, que muestra en qué HU terminó cada punto y deja comprobar que ninguno quedó sin destino. | Turnos 130, 131 |
 | 51 | Solo lo que sirve para decidir | El análisis solo lleva información que ayude a entender qué pasa y a tomar una decisión, como un buen diagrama estadístico. Los datos y las tablas que no aportan a decidir no entran, porque solo suman volumen. | Turno 132 |
+| 52 | La propuesta final | El análisis termina con el hallazgo y el pendiente V2, tal como quedan según sus conclusiones. Al aprobarse el análisis se copian en los originales; antes, no. | Turnos 138, 139 |
+| 53 | La épica y las HU en la propuesta | La propuesta final también dice qué épica y qué HU salen del análisis, cada una con su título y los puntos de lo que se tiene que hacer que le tocan. Se escriben como documentos al aprobarse el análisis. | Turno 140 |
 
-Siguen abiertas:
+Siguen abiertas: ninguna.
 
-1. Cuántas HU salen de la épica nueva y cuáles son.
+## Propuesta final: hallazgo y pendiente V2, épica y HU
+
+> Así quedan el hallazgo y el pendiente según lo que concluyó el análisis. Al aprobarse, se copian en los originales: el hallazgo en el resumen de su sesión y el pendiente en su archivo.
+
+### Hallazgo V2. H-13: lo que se construye se aparta de lo aprobado
+
+Reúne los hallazgos H-10, H-11 y H-13 (conclusión 44).
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | En la fase `C` de HU-023, el agente agregó lo que no se pidió y el plan y el código terminaron diciendo cosas distintas. Además, cambió el código seis veces después de aprobado el plan, tocó archivos que el plan no declaraba y borró `leidas.py`. La plantilla del plan acepta filas que un programa no puede comparar con una ruta, y no registra quién aprobó ni las ampliaciones. |
+| Por qué importa | Las reglas existen (`02·F8`, `01·C4`, `00·N1`) y se incumplieron, porque cumplirlas depende de que el agente se acuerde. Cada eslabón puede traer lo que nadie pidió, nada lo detiene y ningún programa lo puede comprobar. Por eso aparecen hallazgos al ejecutar el plan. |
+
+### Pendiente V2. Lo que se construye se aparta de lo aprobado
+
+Reúne los pendientes 103, 104 y 105 (conclusión 44).
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | El H-13 V2 |
+| El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. Y la plantilla del plan no permite comprobarlo con un programa. |
+| Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
+
+### Épica y HU que salen del análisis
+
+EP-023: lo que se construye es lo que se analizó (conclusiones 30 y 43). Su resultado: al ejecutar un plan solo aparecen los hallazgos que no se podían prever.
+
+| HU | Título | Puntos de lo que se tiene que hacer |
+|---|---|---|
+| 1 | El análisis existe, tiene su forma y revisa las cuatro partes | 1, 2, 3, 15, 16, 23, 29, 30, 32 |
+| 2 | Cada documento sale del anterior | 4, 5 |
+| 3 | El hallazgo y el pendiente tienen solo lo que les corresponde | 7, 10, 11, 12, 19, 20, 21 |
+| 4 | Un hallazgo detiene la ejecución y vuelve al análisis | 6, 13, 14, 17, 18, 24 |
+| 5 | Nada se agrega fuera de lo pedido | 8, 22, 28 |
+| 6 | Lo aprendido incluye las lecciones | 9 |
+| 7 | Nada se escribe fuera del plan aprobado | 25, 26, 27, 31 |
+
+Orden: 1, 5, 2, 3, 4, 7 y 6. La 1 va primero porque las demás se apoyan en el análisis; la 5 es pequeña y ataca la causa más directa; la 7 necesita que la 4 defina qué pasa con un hallazgo.
 
 ## Lecciones aprendidas del primer análisis
 > crear una tabla para que se vea bien presentado como lo acordamos
@@ -3129,6 +3271,7 @@ Siguen abiertas:
 | 10 | Revisar lo que ya existía en el proyecto encontró ocho choques antes de escribir nada. Sin esa revisión habrían salido como hallazgos al ejecutar. | Funcionó | Por escribir |
 | 11 | El agente escribió el análisis con guiones de Python y no con la herramienta de edición, así que la revisión automática de redacción no lo midió. Hubo que medirlo a mano. | Falló | Por escribir |
 | 12 | El agente cambió la copia del hallazgo y del pendiente dentro del análisis, y la conversación dejó de entenderse contra lo copiado. Los cambios van al original. | Falló | Por escribir |
+| 13 | El agente cambió los originales del hallazgo y del pendiente a la V2 antes de aprobar el análisis. El orden es: el análisis propone la V2, se aprueba y luego se cambian los originales. | Falló | Por escribir |
 
 ## Lo que se tiene que hacer del primer análisis
 > Se convierte en los CA de la HU

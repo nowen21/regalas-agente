@@ -83,6 +83,35 @@ Siguen abiertas:
 
 1. «pregunta sin decidir, o "ninguna"»
 
+## Propuesta final: hallazgo y pendiente V«N+1», épica y HU
+
+> Así quedan el hallazgo y el pendiente según lo que concluyó el análisis, con solo los campos que les corresponden. Antes de aprobar, se pasan a los originales con la conversación prendida, para que el cambio quede en el análisis: el hallazgo en el resumen de su sesión y el pendiente en su archivo. Después de aprobar no se cambia nada.
+
+### Hallazgo V«N+1». «título que diga de qué se trata»
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | «…» |
+| Por qué importa | «…» |
+
+### Pendiente V«N+1». «título que diga de qué se trata»
+
+| Campo | Valor |
+|---|---|
+| De dónde sale | «el hallazgo V«N+1», con su título» |
+| El problema | «…» |
+| Por qué importa | «…» |
+
+### Épica y HU que salen del análisis
+
+«épica: título que diga su resultado, o la épica existente a la que se suman las HU»
+
+| HU | Título | Puntos de lo que se tiene que hacer |
+|---|---|---|
+| «n» | «título que diga su resultado» | «números» |
+
+«orden en que se construyen y por qué»
+
 ## Lecciones aprendidas
 
 > Salen de lo que funcionó, para repetirlo, y de lo que falló, para no repetirlo. El texto completo vive en el almacén de señales; aquí va el enlace.
