@@ -192,6 +192,37 @@ class LoQueExigeLa44(unittest.TestCase):
         self.escribir("analisis/proyecto-analisis-principal.md", PRINCIPAL)
         self.assertEqual(self.fallas(nuevo()), [])
 
+    # ── EP-023 · HU-006 · fase A: las lecciones ─────────────────────────
+
+    def con_lecciones(self, version, senal="S-001", recomendacion="complementa R-1"):
+        self.escribir("documentacion/senales.md",
+                      "# Señales\n\n## S-001 · Algo se aprendió  ·  lección · activa\n\n"
+                      "## S-002 · Otra cosa  ·  decisión · activa\n")
+        self.escribir("plantillas/recomendaciones-del-analisis.md",
+                      "| # | Qué se hace | Por qué | Sale de |\n|---|---|---|---|\n"
+                      "| R-1 | Listar los casos | Para no dejar huecos | Análisis 8, lección 1 |\n")
+        tabla = ("## Lecciones aprendidas\n\n| # | Lección | Tipo | Señal | Recomendación |\n|---|---|---|---|---|\n"
+                 "| 1 | Algo | Funcionó | %s | %s |\n\n" % (senal, recomendacion))
+        texto = nuevo(version=version).replace("## Lo que aporta", tabla + "## Lo que aporta")
+        return self.fallas(texto)
+
+    def test_hu006_cp001_la_leccion_que_enlaza_su_senal_pasa(self):
+        self.assertEqual([], self.con_lecciones("46.0.0"))
+
+    def test_hu006_cp001_la_leccion_sin_senal_de_tipo_leccion_falla(self):
+        for senal in ("Por escribir", "S-002", "S-009"):
+            fallas = self.con_lecciones("46.0.0", senal=senal)
+            self.assertEqual(1, len(fallas), senal)
+            self.assertIn("no enlaza una señal de tipo `leccion`", fallas[0])
+
+    def test_hu006_cp002_la_recomendacion_vacia_o_que_no_existe_falla(self):
+        self.assertIn("no dice qué recomendación", self.con_lecciones("46.0.0", recomendacion="")[0])
+        self.assertIn("la R-9, que no existe", self.con_lecciones("46.0.0", recomendacion="nueva R-9")[0])
+        self.assertEqual([], self.con_lecciones("46.0.0", recomendacion="no aplica"))
+
+    def test_hu006_cp003_lo_aprobado_antes_no_se_reabre(self):
+        self.assertEqual([], self.con_lecciones("45.0.0", senal="Por escribir", recomendacion=""))
+
     def test_los_prompts_no_son_analisis(self):
         self.escribir("analisis/proyecto-analisis-principal.md", PRINCIPAL)
         self.escribir("prompts/analisis/un-pedido.md", "# Lo que pidió el usuario\n")

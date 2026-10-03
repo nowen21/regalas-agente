@@ -8,6 +8,8 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 
 `decisión` · `error-resuelto` · `patrón` · `aprendizaje` · `alternativa-descartada` · `supuesto` · `restricción` · `pregunta-abierta` · `gotcha` · `deuda-técnica`
 
+Desde la 46.0.0 hay uno más, `lección`: lo que un análisis aprendió de cómo se analizó, que enlaza su tabla de lecciones.
+
 **Estado:** `activa` · `reemplazada` · `revertida`.
 
 ---

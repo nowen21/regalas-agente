@@ -222,14 +222,14 @@ class TiposYAlcances(unittest.TestCase):
         self.assertEqual((filas[0]["tipo"], filas[0]["scope"], filas[0]["estado"]),
                          ("restriccion", "modulo:memoria", "activa"))
 
-    # -- los diez tipos declarados son los diez que acepta ------------------
-    def test_los_diez_tipos_declarados_se_aceptan(self):
-        self.assertEqual(len(memoria.TIPOS), 10)
+    # -- los once tipos declarados son los once que acepta -------------------
+    def test_los_once_tipos_declarados_se_aceptan(self):
+        self.assertEqual(len(memoria.TIPOS), 11)
         for i, tipo in enumerate(sorted(memoria.TIPOS), start=1):
             memoria.cmd_add(_ns(db=self.db, tipo=tipo, titulo=f"t{i}", what="", why="",
                                 learned="", scope="proyecto:x", reemplaza=None,
                                 autor="test", **{"where": ""}))
-        self.assertEqual(len(self._filas()), 10)
+        self.assertEqual(len(self._filas()), 11)
 
 
 class BusquedaPorPalabra(unittest.TestCase):

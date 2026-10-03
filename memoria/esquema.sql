@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS senales (
   id        TEXT UNIQUE NOT NULL,                 -- S-001, S-002…
   tipo      TEXT NOT NULL,                        -- decision, error-resuelto, patron, aprendizaje,
                                                   -- alternativa-descartada, supuesto, restriccion,
-                                                  -- pregunta-abierta, gotcha, deuda-tecnica
+                                                  -- pregunta-abierta, gotcha, deuda-tecnica, leccion
   titulo    TEXT NOT NULL,
   what      TEXT,
   why       TEXT,

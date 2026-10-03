@@ -121,7 +121,7 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| N/A: todavía no se descompone en fases | | | | | | |
+| [`A-EP-023-HU-006-la-leccion-tiene-su-categoria-y-alimenta-las-recomendaciones`](A-EP-023-HU-006-la-leccion-tiene-su-categoria-y-alimenta-las-recomendaciones/estado-fase.md) | CA-01, CA-02 | HU-001 | [plan](A-EP-023-HU-006-la-leccion-tiene-su-categoria-y-alimenta-las-recomendaciones/plan_trabajo.md) | [pruebas](A-EP-023-HU-006-la-leccion-tiene-su-categoria-y-alimenta-las-recomendaciones/plan_pruebas.md) | [resultado](A-EP-023-HU-006-la-leccion-tiene-su-categoria-y-alimenta-las-recomendaciones/resultado_pruebas.md) | Cumple; falta el commit |
 
 ---
 

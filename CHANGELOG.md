@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 46.0.0 — 2026-10-02
+
+**Cada lección de un análisis queda guardada como señal y alimenta las recomendaciones.** ⚠ obliga a migrar
+
+**MAYOR**: un análisis nuevo no se da por bueno si sus lecciones no enlazan su señal ni dicen qué recomendación alimentan. Un proyecto al día corre la instalación; sus análisis ya aprobados no cambian.
+
+**Lo que entra:**
+
+- `memoria/memoria.py` acepta el tipo de señal `leccion`, y `documentacion/senales.md` lo nombra.
+- `plantillas/analisis.md`: la tabla de lecciones enlaza la señal de cada una y suma la columna «Recomendación» («complementa R-n», «nueva R-n» o «no aplica»).
+- `validadores/analisis.py`: desde esta versión, cada lección de un análisis aprobado enlaza una señal de tipo `leccion` y nombra una recomendación que existe.
+
+Del análisis 1 y del análisis 8 del pendiente 103, fase `A` de la HU-006 de EP-023.
+
+---
+
 ## 45.0.0 — 2026-10-02
 
 **El hallazgo y el pendiente tienen solo lo suyo, y cada pendiente vive con su dueño.** ⚠ obliga a migrar

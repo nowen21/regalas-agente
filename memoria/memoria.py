@@ -28,7 +28,8 @@ DB_DEFAULT = os.environ.get("MEMORIA_DB", os.path.join(AQUI, "senales.db"))
 ESQUEMA = os.path.join(AQUI, "esquema.sql")
 
 TIPOS = {"decision","error-resuelto","patron","aprendizaje","alternativa-descartada",
-         "supuesto","restriccion","pregunta-abierta","gotcha","deuda-tecnica"}
+         "supuesto","restriccion","pregunta-abierta","gotcha","deuda-tecnica",
+         "leccion"}   # EP-023·HU-006 · lo que un análisis aprendió de cómo se analizó
 
 MESES_VIGENCIA = 6      # sin revisar más que esto -> se muestra "sin verificar"
 

@@ -157,6 +157,53 @@ def lo_nuevo(texto):
     return salida
 
 
+# `EP-023·HU-006` · Desde esta versión cada lección enlaza su señal y dice qué
+# recomendación alimenta.
+DESDE_LECCIONES = (46, 0, 0)
+_SENAL = re.compile(r"^## (S-\d+) · .*·\s*([\w-]+)\s*·", re.M)
+_SENAL_CITADA = re.compile(r"\bS-\d+\b")
+_RECOMENDACION_CITADA = re.compile(r"\b(?:complementa|nueva)\s+(R-\d+|RP-\d+)", re.I)
+
+
+def _version_de(texto):
+    m = _VERSION.search(texto)
+    return tuple(int(x) for x in m.groups()) if m else None
+
+
+def _tipos_de_senal(raiz):
+    """`{S-NNN: tipo}` de `documentacion/senales.md`."""
+    texto = leer(os.path.join(raiz, "documentacion", "senales.md"))
+    return {s: t.lower().replace("ó", "o") for s, t in _SENAL.findall(texto)}
+
+
+def _recomendaciones_existentes(raiz):
+    numeros = set()
+    for relativa in RECOMENDACIONES:
+        numeros |= {n for n, _ in _RECOMENDACION.findall(leer(os.path.join(raiz, *relativa.split("/"))))}
+    return numeros
+
+
+def lecciones(texto, raiz):
+    """`CA-01` y `CA-02` de la HU-006 · lo que le falta a la tabla de lecciones."""
+    salida = []
+    filas = _tabla(curso.seccion(texto, "Lecciones aprendidas"), "Lección", "Señal") or []
+    senales = _tipos_de_senal(raiz)
+    existentes = _recomendaciones_existentes(raiz)
+    for fila in filas:
+        numero = fila.get("#", "")
+        citadas = _SENAL_CITADA.findall(fila.get("Señal", ""))
+        if not citadas or any(senales.get(s) != "leccion" for s in citadas):
+            salida.append("la lección %s no enlaza una señal de tipo `leccion`" % numero)
+        recomendacion = fila.get("Recomendación", "")
+        if not recomendacion:
+            salida.append("la lección %s no dice qué recomendación alimenta" % numero)
+            continue
+        for r in _RECOMENDACION_CITADA.findall(recomendacion):
+            if r not in existentes:
+                salida.append("la lección %s nombra la %s, que no existe" % (numero, r))
+    return salida
+
+
 def recomendaciones(raiz=None):
     """`[(ruta, mensaje)]`: una recomendación sin origen o dos que dicen lo mismo (CA-19)."""
     raiz = raiz or comun.RAIZ
@@ -222,6 +269,10 @@ def revisar(raiz=None):
             salida.append(f"{relativa}: falta la sección «{parte}»: el análisis se aprobó sin revisar esa parte")
         if exige_lo_nuevo(texto):
             for mensaje in lo_nuevo(texto):
+                salida.append(f"{relativa}: {mensaje}")
+        version = _version_de(texto)
+        if version and version >= DESDE_LECCIONES:
+            for mensaje in lecciones(texto, raiz):
                 salida.append(f"{relativa}: {mensaje}")
     for ruta, mensaje in recomendaciones(raiz) + copias(raiz):
         salida.append(f"{os.path.relpath(ruta, raiz)}: {mensaje}")
