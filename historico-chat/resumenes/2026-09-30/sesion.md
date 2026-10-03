@@ -10,11 +10,11 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-30-sesion.md](../.
 
 ## Hallazgos de esta sesión
 
-### H-1. Análisis del pendiente 103
+### H-1 · Análisis del pendiente 103
 
 El análisis está en [103-cada-documento-de-la-cadena-sale-del-anterior/](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), junto con la versión vigente del [pendiente](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md). Queda ahí mientras se decide dónde debe vivir.
 
-### H-2. El enganche del análisis solo sirve para un análisis
+### H-2 · El enganche del análisis solo sirve para un análisis
 
 | Campo | Valor |
 |---|---|
@@ -33,10 +33,10 @@ Se cierra cuando ningún hallazgo queda a medias. Un hallazgo está terminado de
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☐ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ H-1 y H-2, en sus análisis aprobados |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ El pendiente 103, dentro de EP-023 |
+| Toda historia disparada está escrita en su épica | ☑ EP-023, HU-001 a HU-007 |
+| Lo que se hizo está aprobado y guardado | ☑ Commits `186f2b6` y `a1aa94a` |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
