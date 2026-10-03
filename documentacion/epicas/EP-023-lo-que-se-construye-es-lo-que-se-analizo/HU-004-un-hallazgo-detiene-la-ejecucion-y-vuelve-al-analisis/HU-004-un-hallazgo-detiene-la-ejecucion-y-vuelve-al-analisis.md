@@ -204,7 +204,7 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| [`A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis`](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/estado-fase.md) | CA-01 a CA-07 | HU-003 | [plan](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_trabajo.md) | [pruebas](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_pruebas.md) | [resultado](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/resultado_pruebas.md) | Cumple; falta el commit |
+| [`A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis`](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/estado-fase.md) | CA-01 a CA-07 | HU-003 | [plan](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_trabajo.md) | [pruebas](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_pruebas.md) | [resultado](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/resultado_pruebas.md) | Cumple |
 
 ---
 

@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ `origen` y `flujo` sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Ninguno |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado de pruebas, HU y registro de cambios |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `cfcc89d` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan
