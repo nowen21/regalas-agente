@@ -6,6 +6,7 @@ le falta una sección se le nombra; el abierto todavía no se juzga, porque se
 está llenando.
 """
 import os
+import sqlite3
 import sys
 import tempfile
 import unittest
@@ -195,9 +196,15 @@ class LoQueExigeLa44(unittest.TestCase):
     # ── EP-023 · HU-006 · fase A: las lecciones ─────────────────────────
 
     def con_lecciones(self, version, senal="S-001", recomendacion="complementa R-1"):
-        self.escribir("documentacion/senales.md",
-                      "# Señales\n\n## S-001 · Algo se aprendió  ·  lección · activa\n\n"
-                      "## S-002 · Otra cosa  ·  decisión · activa\n")
+        # La base de señales es la única fuente (análisis 10 del pendiente 103, acuerdo 7).
+        base = os.path.join(self.raiz, "senales.db")
+        con = sqlite3.connect(base)
+        con.execute("CREATE TABLE IF NOT EXISTS senales (id TEXT UNIQUE, tipo TEXT)")
+        con.execute("INSERT OR IGNORE INTO senales VALUES ('S-001', 'leccion'), ('S-002', 'decision')")
+        con.commit()
+        con.close()
+        os.environ["MEMORIA_DB"] = base
+        self.addCleanup(os.environ.pop, "MEMORIA_DB", None)
         self.escribir("plantillas/recomendaciones-del-analisis.md",
                       "| # | Qué se hace | Por qué | Sale de |\n|---|---|---|---|\n"
                       "| R-1 | Listar los casos | Para no dejar huecos | Análisis 8, lección 1 |\n")

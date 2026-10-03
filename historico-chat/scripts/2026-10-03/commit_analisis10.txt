@@ -1,0 +1,15 @@
+docs(analisis): el análisis 10 y las señales con una sola fuente
+
+El usuario pidió analizar por qué los planes se escribían sin leer lo
+que el análisis decidió (H-13), y que el defecto de las señales con dos
+numeraciones se corrigiera de una, con la base como única fuente.
+
+Lo que hizo el agente:
+- El análisis 10 del pendiente 103, aprobado: los acuerdos le llegan al
+  agente con cada mensaje, el plan marca lo que propone por su cuenta,
+  la fase activa del freno y la integración continua que se activa sola.
+- validadores/analisis.py lee el tipo de la señal de cada lección en la
+  base de señales; senales.md queda sin señales nuevas.
+- Las plantillas del análisis y de las señales y el aviso de señales
+  dicen que la señal va a la base.
+- Versión 49.0.0.

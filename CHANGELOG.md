@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 49.0.0 — 2026-10-03
+
+**Cada señal nueva se guarda en un solo sitio, la base de señales, y recibe ahí su número.** ⚠ obliga a migrar
+
+**MAYOR**: había dos fuentes de señales que numeraban cada una por su lado, y el mismo número tenía contenidos distintos en cada una. Desde esta versión la señal nueva entra solo a la base, con `python memoria/memoria.py add`. El archivo de señales de cada proyecto se queda como está, sin señales nuevas y sin renumerar.
+
+**Lo que entra:**
+
+- `validadores/analisis.py`: el tipo de la señal de cada lección se lee en la base.
+- `documentacion/senales.md`, `plantillas/senales.md` y `plantillas/analisis.md`: dicen que la señal va a la base.
+- El aviso de señales del adaptador de Claude Code dice lo mismo.
+
+Del análisis 10 del pendiente 103, acuerdo 7, corregido de una por ser el piloto.
+
+---
+
 ## 48.0.0 — 2026-10-02
 
 **El commit no deja entrar un archivo que el plan aprobado no nombra, salvo que una regla autorice escribirlo.** ⚠ obliga a migrar

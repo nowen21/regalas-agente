@@ -28,6 +28,7 @@
 """
 import os
 import re
+import sqlite3
 
 import analisis_en_curso as curso
 import comun
@@ -160,7 +161,6 @@ def lo_nuevo(texto):
 # `EP-023·HU-006` · Desde esta versión cada lección enlaza su señal y dice qué
 # recomendación alimenta.
 DESDE_LECCIONES = (46, 0, 0)
-_SENAL = re.compile(r"^## (S-\d+) · .*·\s*([\w-]+)\s*·", re.M)
 _SENAL_CITADA = re.compile(r"\bS-\d+\b")
 _RECOMENDACION_CITADA = re.compile(r"\b(?:complementa|nueva)\s+(R-\d+|RP-\d+)", re.I)
 
@@ -170,10 +170,25 @@ def _version_de(texto):
     return tuple(int(x) for x in m.groups()) if m else None
 
 
-def _tipos_de_senal(raiz):
-    """`{S-NNN: tipo}` de `documentacion/senales.md`."""
-    texto = leer(os.path.join(raiz, "documentacion", "senales.md"))
-    return {s: t.lower().replace("ó", "o") for s, t in _SENAL.findall(texto)}
+def _base_de_senales():
+    return os.environ.get("MEMORIA_DB") or os.path.join(comun.RAIZ, "memoria", "senales.db")
+
+
+def _tipos_de_senal(raiz=None):
+    """`{S-NNN: tipo}` de la base de señales, que es la única fuente (análisis 10
+    del pendiente 103, acuerdo 7). Sin base en esta máquina, `None`: no hay con
+    qué comparar, y la lección no se da por mala."""
+    ruta = _base_de_senales()
+    if not os.path.isfile(ruta):
+        return None
+    try:
+        con = sqlite3.connect(ruta)
+        try:
+            return dict(con.execute("SELECT id, tipo FROM senales"))
+        finally:
+            con.close()
+    except sqlite3.Error:
+        return None
 
 
 def _recomendaciones_existentes(raiz):
@@ -192,7 +207,7 @@ def lecciones(texto, raiz):
     for fila in filas:
         numero = fila.get("#", "")
         citadas = _SENAL_CITADA.findall(fila.get("Señal", ""))
-        if not citadas or any(senales.get(s) != "leccion" for s in citadas):
+        if not citadas or (senales is not None and any(senales.get(s) != "leccion" for s in citadas)):
             salida.append("la lección %s no enlaza una señal de tipo `leccion`" % numero)
         recomendacion = fila.get("Recomendación", "")
         if not recomendacion:

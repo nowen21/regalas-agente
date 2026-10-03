@@ -10,6 +10,8 @@ Una señal revertida no se borra: se marca `reemplazada` y se enlaza la nueva. A
 
 Desde la 46.0.0 hay uno más, `lección`: lo que un análisis aprendió de cómo se analizó, que enlaza su tabla de lecciones.
 
+**Desde la 49.0.0 este archivo no recibe señales nuevas.** La única fuente es la base de señales, y cada señal nueva entra con `python memoria/memoria.py add`, que le da su número. Las de abajo se quedan como están, porque otros documentos las citan por su número.
+
 **Estado:** `activa` · `reemplazada` · `revertida`.
 
 ---

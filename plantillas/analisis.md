@@ -130,11 +130,11 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 
 ## Lecciones aprendidas
 
-> Salen de lo que funcionó, para repetirlo, y de lo que falló, para no repetirlo. Cada una se escribe como señal de tipo `leccion` (`python memoria/memoria.py add --tipo leccion`) y aquí va su enlace. «Recomendación» dice si la lección complementa una de las [recomendaciones](«RUTA-ESTANDAR»/plantillas/recomendaciones-del-analisis.md), crea una nueva o no aplica; antes de crear una se busca si ya existe.
+> Salen de lo que funcionó, para repetirlo, y de lo que falló, para no repetirlo. Cada una se escribe como señal de tipo `leccion` en la base de señales (`python memoria/memoria.py add --tipo leccion`) y aquí va el número que le da. «Recomendación» dice si la lección complementa una de las [recomendaciones](«RUTA-ESTANDAR»/plantillas/recomendaciones-del-analisis.md), crea una nueva o no aplica; antes de crear una se busca si ya existe.
 
 | # | Lección | Tipo | Señal | Recomendación |
 |---|---|---|---|---|
-| 1 | «lección» | Funcionó / Falló | «enlace a la señal S-NNN» | «complementa R-n» / «nueva R-n» / «no aplica» |
+| 1 | «lección» | Funcionó / Falló | «S-NNN» | «complementa R-n» / «nueva R-n» / «no aplica» |
 
 ## Lo que se tiene que hacer
 

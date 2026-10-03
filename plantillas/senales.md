@@ -9,9 +9,9 @@
 > | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> **Qué es.** El registro de señales: conocimiento de alto valor que no se puede recuperar del código. Se guardan señales, no la conversación. Vive en `documentacion/senales.md` y se versiona, porque es conocimiento del proyecto.
+> **Qué es.** El registro de señales: conocimiento de alto valor que no se puede recuperar del código. Se guardan señales, no la conversación. Vive en la base de señales, dentro del proyecto, y cada señal entra con `python memoria/memoria.py add`, que le da su número. Este archivo guarda solo las señales escritas antes de la 49.0.0.
 >
-> **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje...), se agrega una entrada abajo con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, se verifica que siga vigente (regla `01·C2`).
+> **Cómo se usa.** Cada vez que aparece una señal (una decisión, un error resuelto, un patrón, un aprendizaje...), se registra en la base con `python memoria/memoria.py add`, con el formato estándar. No se borran las señales revertidas: se marcan `reemplazada` y se enlaza la nueva. Antes de confiar en una señal vieja, se verifica que siga vigente (regla `01·C2`).
 
 ## Lo que se aprendió va acá; lo que falta hacer, a `pendientes/`
 

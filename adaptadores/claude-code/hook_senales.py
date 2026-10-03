@@ -49,8 +49,9 @@ MARCA = "<!-- avisado: %s -->"
 
 _AVISO = """[LA SEÑAL SE ESCRIBE CUANDO APARECE, NO AL CERRAR]
 Lo que se decidió, lo que costó averiguar y lo que no se recupera leyendo el
-código va a `%s` — con el molde corto: **qué pasó · por qué importa · qué se
-decidió · dónde queda**.
+código va a la base de señales, con `python memoria/memoria.py add` — con el
+molde corto: **qué pasó · por qué importa · qué se decidió · dónde queda**.
+`%s` guarda las de antes y ya no recibe señales nuevas.
 
 No es al final de la sesión: un chat no tiene final. Se escribe en el momento.
 
