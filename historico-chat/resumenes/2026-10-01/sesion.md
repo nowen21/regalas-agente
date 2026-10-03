@@ -106,6 +106,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Qué pasó | El 2026-10-02, la corrida completa de pruebas creó `plataforma/datos/auditoria/2026-10.md` con unas 60 aprobaciones del proyecto «de-prueba», por usuarios como «quien-manda» o «raiz», que nunca pasaron. Las escriben las pruebas de `plataforma/nucleo/` que aprueban documentos, en el registro del repositorio y no en una carpeta temporal. No es la primera vez: `2026-09.md`, ya en git desde el commit `c5c035f`, tiene 627 filas de «de-prueba». |
 | Por qué importa | El registro de auditoría es la constancia de lo que la plataforma cambió de verdad, y solo se agrega: nada se edita ni se borra. Cada corrida de pruebas lo llena de aprobaciones falsas, y borrarlas a mano va contra esa misma regla. Mientras tanto, `2026-10.md` queda sin tocar y fuera de los commits. |
 | Pendiente | Por crear: el usuario decide dónde vive |
+
+### H-13 · Los planes se escriben sin leer lo que el análisis decidió
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-02, al escribir los planes de las HU-003 y HU-004, el agente trabajó con los criterios de la HU y no leyó las conclusiones del análisis de las que salen. Preguntó tres veces lo que el análisis ya había decidido: dónde vive el 103, dónde va el índice de pendientes, y si se ajustan el anexo de fases y la frase «el plan aprobado no se modifica» (análisis 1 del pendiente 103, conclusiones 24, 33 y 41 y punto 18). Además, en el análisis 8 había agregado un traslado que ninguna conclusión decía. |
+| Por qué importa | El análisis es lo que el usuario ya decidió. Un plan que no lo lee vuelve a abrir decisiones cerradas, gasta la atención del usuario y mete lo que nadie pidió. La recomendación R-6 ya lo pedía, y no bastó con que estuviera escrita: nada comprueba que el plan la siguió. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis siguiente |
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -129,3 +137,5 @@ Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer l
 _(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_
 
 <!-- aviso: resumen sin hallazgos -->
+
+<!-- aviso: falta decir si la sesión se puede cerrar -->

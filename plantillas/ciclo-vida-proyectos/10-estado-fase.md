@@ -86,4 +86,4 @@
 
 > Se llena cuando la fase está detenida. Si no lo está, se escribe «No aplica».
 
-- **Estación:** «N». **Motivo:** «pruebas rojas / hallazgo grave del Crítico / alcance rechazado / dependencia faltante». **Qué falta para desbloquear:** «…».
+- **Estación:** «N». **Motivo:** «hallazgo al ejecutar, con el enlace al análisis que abrió / pruebas rojas / hallazgo grave del Crítico / alcance rechazado / dependencia faltante». **Qué falta para desbloquear:** «…».

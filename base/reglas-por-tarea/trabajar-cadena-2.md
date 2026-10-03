@@ -14,12 +14,12 @@ CORRECTO:   correr la suite del módulo + las declaradas en el plan + las que la
 Fuente: [02·F5](../02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca)
 
 ## F8 · Edita solo los archivos que el plan aprobado declara
-Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera el OK. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
+Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución** y vuelve al análisis: el plan pasa a su versión siguiente con aprobación nueva. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
 ```
 INCORRECTO: durante la ejecución el agente descubre que también hay que editar el
             archivo Y → lo edita en el mismo commit "porque era necesario"
-CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario
-            aprueba (o difiere Y a otra fase) → sigue con el plan actualizado
+CORRECTO:   descubre Y → se detiene → vuelve al análisis → el plan pasa a
+            su versión siguiente y el usuario la aprueba → sigue
 ```
 
 Fuente: [02·F8](../02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara)

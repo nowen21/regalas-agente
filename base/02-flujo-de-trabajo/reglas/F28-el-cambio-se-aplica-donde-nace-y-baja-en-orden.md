@@ -2,12 +2,13 @@
 
 ## F28 · El cambio se aplica donde nace y baja en orden
 
-Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Ningún documento de abajo cambia antes que el de arriba (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Cada uno cambia en su mismo archivo, que pasa a su versión siguiente; el análisis no se reescribe, se numera el siguiente (extiende [`02·F0`](F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 
 ```
 INCORRECTO: el usuario cambia lo que necesita y se corrige el plan; la HU
             sigue diciendo lo de antes
-CORRECTO:   se corrige la HU, después la especificación y al final el plan
+CORRECTO:   se corrige la HU en su mismo archivo, después la especificación
+            y al final el plan, cada uno en su versión siguiente
 ```
 
 **Aplica a:** trabajar-cadena, escribir-documento
@@ -16,7 +17,7 @@ CORRECTO:   se corrige la HU, después la especificación y al final el plan
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v42.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

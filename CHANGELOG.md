@@ -11,6 +11,25 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 47.0.0 — 2026-10-02
+
+**Un hallazgo al ejecutar un plan lo detiene y vuelve al análisis, y el trabajo no se da por terminado hasta resolverlo.** ⚠ obliga a migrar
+
+**MAYOR**: cambia lo que hace el agente cuando aparece algo que el plan no previó. Ya no amplía el plan y sigue: se detiene, vuelve al análisis y el plan pasa a su versión siguiente con aprobación nueva. Un proyecto al día corre la instalación; lo que ya cerró no cambia.
+
+**Lo que entra:**
+
+- `02·F8` y `02·F9`: el descubrimiento que el plan no previó detiene la ejecución y vuelve al análisis.
+- `02·F28`: cada documento cambia en su mismo archivo, que pasa a su versión siguiente; el análisis no se reescribe.
+- `13·DOC24`: el análisis siguiente trata solo lo que falló y decide primero si es parte del plan en curso.
+- `02/base.md`, el anexo de `02·F12` y `13·DOC12`: el plan pasa de versión, y la fase cerrada se reabre si aparece un hallazgo sobre lo que construyó.
+- Las plantillas del plan, del estado de la fase y del análisis: el plan dice cuántos hallazgos salieron, y el estado anota el que la detuvo.
+- `validadores/fases.py`: la fase y su HU no pueden decir que cerraron mientras el análisis del hallazgo siga sin aprobar.
+
+Del análisis 1 y del análisis 2 del pendiente 103, fase `A` de la HU-004 de EP-023.
+
+---
+
 ## 46.0.0 — 2026-10-02
 
 **Cada lección de un análisis queda guardada como señal y alimenta las recomendaciones.** ⚠ obliga a migrar

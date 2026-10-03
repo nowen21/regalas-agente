@@ -23,7 +23,7 @@ import re
 
 import comun
 import estacion_commit
-from comun import AVISO, FALLA, Hallazgo
+from comun import AVISO, FALLA, Hallazgo, leer
 
 CARPETA = "documentacion/epicas"
 
@@ -307,7 +307,62 @@ def validar(proyecto):
             + estado_fuera_del_vocabulario(proyecto)
             + documentos_que_siguen_siendo_el_molde(proyecto)
             + reemplazos_que_no_resuelven(proyecto)
-            + estacion_del_commit_sin_marcar(proyecto))
+            + estacion_del_commit_sin_marcar(proyecto)
+            + detenidas_por_un_hallazgo(proyecto))
+
+
+# `EP-023·HU-004·CA-02` · Un hallazgo al ejecutar el plan abre el análisis
+# siguiente de su pendiente (análisis 1 del pendiente 103, conclusión 10).
+# Mientras ese análisis siga sin aprobar, la fase está detenida: ni ella ni su
+# HU cierran (conclusión 18).
+_ENLACE_ANALISIS = re.compile(r"\]\(([^)#\s]*analisis-(\d+)\.md)")
+_APROBADO_ANALISIS = re.compile(r"^> \*\*Aprobado\*\*", re.M)
+
+
+def _analisis_abierto_despues(plan):
+    """El análisis sin aprobar que sigue al último que cita el plan, o ""."""
+    texto = leer(plan)
+    citados = {}
+    for enlace, numero in _ENLACE_ANALISIS.findall(texto):
+        carpeta = os.path.dirname(os.path.normpath(os.path.join(os.path.dirname(plan), enlace)))
+        if os.path.isfile(os.path.join(carpeta, "pendiente.md")):
+            citados[carpeta] = max(citados.get(carpeta, 0), int(numero))
+    for carpeta, ultimo in citados.items():
+        for nombre in sorted(os.listdir(carpeta)):
+            m = re.match(r"^analisis-(\d+)\.md$", nombre)
+            if m and int(m.group(1)) > ultimo and                     not _APROBADO_ANALISIS.search(leer(os.path.join(carpeta, nombre))):
+                return os.path.join(carpeta, nombre)
+    return ""
+
+
+def detenidas_por_un_hallazgo(proyecto):
+    """La fase o la HU que dicen haber cerrado mientras el análisis de un hallazgo sigue abierto."""
+    raiz = os.path.join(os.path.abspath(proyecto), *CARPETA.split("/"))
+    salida = []
+    if not os.path.isdir(raiz):
+        return salida
+    for nombre_epica in _subcarpetas(raiz):
+        ruta_epica = os.path.join(raiz, nombre_epica)
+        for nombre_hu in _subcarpetas(ruta_epica):
+            if not _HU.match(nombre_hu):
+                continue
+            ruta_hu = os.path.join(ruta_epica, nombre_hu)
+            hu_md = os.path.join(ruta_hu, nombre_hu + ".md")
+            for fase in _subcarpetas(ruta_hu):
+                plan = os.path.join(ruta_hu, fase, "plan_trabajo.md")
+                if not os.path.isfile(plan):
+                    continue
+                abierto = _analisis_abierto_despues(plan)
+                if not abierto:
+                    continue
+                motivo = (f"el análisis del hallazgo, `{comun.relativo(abierto)}`, sigue sin aprobar: "
+                          "la fase está detenida (EP-023·HU-004)")
+                estado = os.path.join(ruta_hu, fase, "estado-fase.md")
+                if re.search(r"^\|\s*\*\*Concepto\*\*\s*\|\s*Cumple", leer(estado), re.M):
+                    salida.append(Hallazgo(FALLA, estado, 0, "la fase dice «Cumple» y " + motivo))
+                if re.search(r"^\|\s*\*\*Estado\*\*\s*\|\s*Terminada", leer(hu_md), re.M):
+                    salida.append(Hallazgo(FALLA, hu_md, 0, "la HU dice «Terminada» y " + motivo))
+    return salida
 
 
 # `EP-004·HU-019` · El inventario no guarda la cuenta: se pregunta.

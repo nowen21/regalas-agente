@@ -4,7 +4,7 @@
 
 Aprobado un plan, se entrega **completo**: no se parte en sub-fases nuevas, no se vuelve a preguntar por decisiones que ya cabían dentro ni se ofrecen opciones sobre detalles ya resueltos con criterio profesional. Si el volumen pide subdividir, se propone **antes** de aprobar (extiende [`02·F3`](F3-ejecuta-seguido-el-plan-aprobado.md)).
 
-**Excepción** — interrumpen el flujo el descubrimiento genuino que el plan no anticipó y requiere decisión del usuario, y el hallazgo bloqueante que impide continuar (condición). Se reportan como hallazgo derivado, no como opción a elegir, y no habilitan a repartir el trabajo restante (límite). Retomar lo decide el usuario (autoriza).
+**Excepción** — interrumpen el flujo el descubrimiento genuino que el plan no anticipó y requiere decisión del usuario, y el hallazgo bloqueante que impide continuar (condición). Detienen la ejecución y vuelven al análisis, no se ofrecen como opción a elegir, y no habilitan a repartir el trabajo restante (límite). Retomar lo decide el usuario al aprobar el análisis (autoriza).
 
 ```
 INCORRECTO: usuario aprueba el plan → agente lo divide en 4 sub-fases y vuelve a
@@ -19,7 +19,7 @@ CORRECTO:   si el volumen era problema, la subdivisión se propone ANTES de apro
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

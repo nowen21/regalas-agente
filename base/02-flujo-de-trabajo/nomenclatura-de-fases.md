@@ -45,6 +45,8 @@
 
 Ej.: `D-B-EP-001-HU-003-Ajuste de la validación de permisos` (la fase `D` complementa a la `B`).
 
+**Ajuste aprobado por el usuario en el análisis 1 del pendiente 103 (punto 18), 2026-10-02:** el complemento es para trabajo nuevo. Si aparece un hallazgo sobre lo que una fase ya construyó, esa fase se reabre y su plan pasa a la versión siguiente; no se crea otra que la complemente.
+
 ---
 
 **F12.13 · Materialización física** (fuente única de la ruta):

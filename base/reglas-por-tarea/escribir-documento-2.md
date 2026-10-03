@@ -13,22 +13,23 @@ CORRECTO:   el CA-04 dice «Sale de: análisis 6, punto 2», y ese punto existe
 Fuente: [02·F27](../02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale)
 
 ## F28 · El cambio se aplica donde nace y baja en orden
-Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Ningún documento de abajo cambia antes que el de arriba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Cada uno cambia en su mismo archivo, que pasa a su versión siguiente; el análisis no se reescribe, se numera el siguiente (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 ```
 INCORRECTO: el usuario cambia lo que necesita y se corrige el plan; la HU
             sigue diciendo lo de antes
-CORRECTO:   se corrige la HU, después la especificación y al final el plan
+CORRECTO:   se corrige la HU en su mismo archivo, después la especificación
+            y al final el plan, cada uno en su versión siguiente
 ```
 
 Fuente: [02·F28](../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden)
 
 ## F8 · Edita solo los archivos que el plan aprobado declara
-Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera el OK. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
+Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](../02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución** y vuelve al análisis: el plan pasa a su versión siguiente con aprobación nueva. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../02-flujo-de-trabajo/base.md)).
 ```
 INCORRECTO: durante la ejecución el agente descubre que también hay que editar el
             archivo Y → lo edita en el mismo commit "porque era necesario"
-CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario
-            aprueba (o difiere Y a otra fase) → sigue con el plan actualizado
+CORRECTO:   descubre Y → se detiene → vuelve al análisis → el plan pasa a
+            su versión siguiente y el usuario la aprueba → sigue
 ```
 
 Fuente: [02·F8](../02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md#f8--edita-solo-los-archivos-que-el-plan-aprobado-declara)
@@ -149,7 +150,7 @@ CORRECTO:   "cliente" definido en una línea en el glosario del proyecto, y los
 Fuente: [13·DOC23](../13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md#doc23--escribe-el-glosario-de-los-términos-del-proyecto)
 
 ## DOC24 · Cierra el análisis en su mismo archivo
-Un análisis individual cierra al final de su mismo archivo, con sus conclusiones, sus lecciones y lo que se tiene que hacer, y desde que se aprueba no se reescribe: lo que aparezca después abre el análisis siguiente (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+Un análisis individual cierra en su mismo archivo y, aprobado, no se reescribe: lo que aparezca después abre el siguiente, que trata solo lo que falló y sus implicaciones, y decide primero si es parte del plan en curso; si lo es, se resuelve antes de seguir, y si no, nace su pendiente (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
 ```
 INCORRECTO: el análisis se cierra en otro archivo con su tabla de decisiones,
             y meses después alguien le corrige una conclusión al original

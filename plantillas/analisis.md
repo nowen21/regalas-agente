@@ -15,7 +15,7 @@
 > | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo, se abre `analisis-«N+1»`.md, que trata solo lo que falló y sus implicaciones sobre lo ya hecho.
+> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo, se abre `analisis-«N+1»`.md, que trata solo lo que falló y sus implicaciones sobre lo ya hecho. Primero decide si el hallazgo es parte del plan en curso: si lo es, el pendiente se mejora y se resuelve antes de seguir; si no, se crea su pendiente y el plan continúa.
 
 ---
 

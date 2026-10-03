@@ -272,4 +272,6 @@ Errores:  400 | 401 | 403 | 404 | 422
 
 ## 13. Cierre
 
-> El cierre de la fase no se escribe aquí: va en `funcionalidad_implementada.md` (plantilla `funcionalidad-implementada.md`), con qué se hizo de cada tarea (§2.2), qué se probó (§3), qué se decidió (§5) y qué deuda quedó (§6). Este plan se queda como se aprobó, para comparar lo que se dijo contra lo que pasó.
+> El cierre de la fase no se escribe aquí: va en `funcionalidad_implementada.md` (plantilla `funcionalidad-implementada.md`), con qué se hizo de cada tarea (§2.2), qué se probó (§3), qué se decidió (§5) y qué deuda quedó (§6). Este plan se queda como se aprobó, para comparar lo que se dijo contra lo que pasó. Lo único que se le anota al cerrar es cuántos hallazgos salieron al ejecutarlo, para saber si el análisis funcionó.
+
+**Hallazgos al ejecutar:** «número», con el enlace al análisis que abrió cada uno, o «ninguno».

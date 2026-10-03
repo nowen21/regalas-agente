@@ -4,7 +4,7 @@
 
 Toda fase nueva abre declarando de dónde sale, en una de tres formas: **modifica** fases anteriores, nombrándolas; **agrega** lo que no existía; o **ambas**. El formato del bloque está en [`plantillas/ciclo-vida-proyectos/05-fase.md`](../../../plantillas/ciclo-vida-proyectos/05-fase.md) y la carpeta de la fase repite el ORIGEN de su especificación.
 
-**Excepción** — una fase **ya cerrada** no se reabre para ponerle ORIGEN (condición): queda inmutable y su origen se infiere del historial; no habilita a abrir fases nuevas sin declararlo (límite). Si hay duda de si una fase está cerrada, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza).
+**Excepción** — una fase **ya cerrada** no se reabre para ponerle ORIGEN (condición): queda inmutable y su origen se infiere del historial; no habilita a abrir fases nuevas sin declararlo (límite). Si hay duda de si una fase está cerrada, decide el usuario ([`01·C7`](../../01-conducta.md#c7--ante-dos-lecturas-pregunta)) (autoriza). Un hallazgo sobre lo que una fase cerrada construyó sí la reabre, y su plan pasa a la versión siguiente ([`02·F28`](../../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md)).
 
 ```
 INCORRECTO: "Fase 7 — cambios menores" · quien lee no sabe si continúa la 6
@@ -18,7 +18,7 @@ CORRECTO:   ORIGEN declarado: qué fase modifica y qué defecto retoma, o qué a
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

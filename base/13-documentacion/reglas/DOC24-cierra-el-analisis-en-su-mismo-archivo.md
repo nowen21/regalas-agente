@@ -2,7 +2,7 @@
 
 ## DOC24 · Cierra el análisis en su mismo archivo
 
-Un análisis individual cierra al final de su mismo archivo, con sus conclusiones, sus lecciones y lo que se tiene que hacer, y desde que se aprueba no se reescribe: lo que aparezca después abre el análisis siguiente (deroga [`13·DOC8`](DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+Un análisis individual cierra en su mismo archivo y, aprobado, no se reescribe: lo que aparezca después abre el siguiente, que trata solo lo que falló y sus implicaciones, y decide primero si es parte del plan en curso; si lo es, se resuelve antes de seguir, y si no, nace su pendiente (deroga [`13·DOC8`](DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
 
 ```
 INCORRECTO: el análisis se cierra en otro archivo con su tabla de decisiones,
@@ -17,7 +17,7 @@ CORRECTO:   las conclusiones van al final del mismo análisis; aprobado, queda
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v40.0.0**, el **2026-10-01**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

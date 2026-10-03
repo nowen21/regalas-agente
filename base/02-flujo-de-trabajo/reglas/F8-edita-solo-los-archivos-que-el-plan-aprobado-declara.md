@@ -2,13 +2,13 @@
 
 ## F8 · Edita solo los archivos que el plan aprobado declara
 
-Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución**: se pausa, se reporta, se propone ampliar el plan y se espera el OK. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../base.md)).
+Se editan únicamente los archivos de la tabla del plan aprobado ([`02·F14`](F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md), pregunta 9). Descubrir a mitad que hace falta otro **detiene la ejecución** y vuelve al análisis: el plan pasa a su versión siguiente con aprobación nueva. Que el cambio sea obvio no autoriza; la aprobación sí ([`base.md`](../base.md)).
 
 ```
 INCORRECTO: durante la ejecución el agente descubre que también hay que editar el
             archivo Y → lo edita en el mismo commit "porque era necesario"
-CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario
-            aprueba (o difiere Y a otra fase) → sigue con el plan actualizado
+CORRECTO:   descubre Y → se detiene → vuelve al análisis → el plan pasa a
+            su versión siguiente y el usuario la aprueba → sigue
 ```
 
 **Aplica a:** trabajar-cadena, escribir-documento, cambiar-codigo
@@ -17,7 +17,7 @@ CORRECTO:   descubre Y → PAUSA + reporta + propone ampliar el plan → usuario
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

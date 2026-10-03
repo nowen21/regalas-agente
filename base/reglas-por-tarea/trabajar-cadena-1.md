@@ -276,11 +276,12 @@ CORRECTO:   el CA-04 dice «Sale de: análisis 6, punto 2», y ese punto existe
 Fuente: [02·F27](../02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale)
 
 ## F28 · El cambio se aplica donde nace y baja en orden
-Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Ningún documento de abajo cambia antes que el de arriba (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
+Si cambia la necesidad, el cambio se escribe primero en el documento donde nace, aunque sea el planteamiento, y baja en orden por la épica, la HU, la especificación y el plan. Cada uno cambia en su mismo archivo, que pasa a su versión siguiente; el análisis no se reescribe, se numera el siguiente (extiende [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md)).
 ```
 INCORRECTO: el usuario cambia lo que necesita y se corrige el plan; la HU
             sigue diciendo lo de antes
-CORRECTO:   se corrige la HU, después la especificación y al final el plan
+CORRECTO:   se corrige la HU en su mismo archivo, después la especificación
+            y al final el plan, cada uno en su versión siguiente
 ```
 
 Fuente: [02·F28](../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden)
