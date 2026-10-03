@@ -13,11 +13,13 @@ CORRECTO:   las conclusiones van al final del mismo análisis; aprobado, queda
 
 **Aplica a:** escribir-documento
 
+**Autoriza escribir:** `**/pendientes/*/analisis-*.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v47.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

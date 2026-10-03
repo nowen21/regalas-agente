@@ -11,6 +11,25 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 48.0.0 — 2026-10-02
+
+**El commit no deja entrar un archivo que el plan aprobado no nombra, salvo que una regla autorice escribirlo.** ⚠ obliga a migrar
+
+**MAYOR**: el plan aprobado dice quién lo aprobó, cuándo y con qué versión, y su lista de archivos lleva solo rutas exactas. El commit que toca su fase se rechaza si trae algo más. Un proyecto al día corre la instalación, que pone el enganche nuevo; los planes aprobados antes no se revisan.
+
+**Lo que entra:**
+
+- La plantilla del plan: la fila de la aprobación y la nota de rutas exactas en la 2.1.
+- `20·M5` y la plantilla de las reglas del proyecto: la línea «Autoriza escribir», que va después de «Aplica a».
+- La línea en las diez reglas que autorizan escribir sin plan: `13·DOC22`, `13·DOC24`, `13·DOC25`, `13·DOC5`, `04·S18`, `01·C19`, `01·C28`, `20·M10`, `20·M13` y `02·F12`.
+- `validadores/autorizado.py`: dice qué regla, de la base o del proyecto, autoriza escribir una ruta.
+- `validadores/flujo.py`: falla el plan aprobado desde esta versión que no dice quién lo aprobó o que trae algo distinto de rutas exactas.
+- `validar.py plan --preparados`, que corre en el `pre-commit`: falla por el archivo que ni el plan declara, ni es de la fase, ni una regla autoriza.
+
+Del análisis 1 y del análisis 8 del pendiente 103, fase `A` de la HU-007 de EP-023.
+
+---
+
 ## 47.0.0 — 2026-10-02
 
 **Un hallazgo al ejecutar un plan lo detiene y vuelve al análisis, y el trabajo no se da por terminado hasta resolverlo.** ⚠ obliga a migrar

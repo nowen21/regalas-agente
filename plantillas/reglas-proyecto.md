@@ -47,6 +47,7 @@ Si ningún criterio de la base la cubre, la regla no se escribe todavía: primer
 - **Respaldo:** [`NN·Xn · Título de la regla de la base`](«enlace al archivo de la regla») · «concreta / endurece: qué mitad pone esta `P`». Obligatorio ([`20·M16`](«RUTA-ESTANDAR»/base/20-meta-reglas/reglas/M16-toda-regla-de-proyecto-nombra-la-regla-de-base-que-concreta.md)).
 - **Por qué:** «el motivo: qué problema evita o qué convención del equipo fija».
 - **Ejemplo:** «un caso concreto» (si ayuda a entenderla).
+- **Autoriza escribir:** «solo si la regla autoriza escribir algo sin plan: las rutas entre comillas invertidas, como en [`20·M5`](«RUTA-ESTANDAR»/base/20-meta-reglas/estructura-regla.md); si no, se borra la línea»
 - **Señal asociada:** «id o enlace en la memoria ([`13·DOC5`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md))».
 
 ### P2 · «…»

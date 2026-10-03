@@ -13,11 +13,13 @@ CORRECTO:   su frase pasa tal cual al principal, y la lista de análisis
 
 **Aplica a:** escribir-documento
 
+**Autoriza escribir:** `**/analisis/*-analisis-principal.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v44.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

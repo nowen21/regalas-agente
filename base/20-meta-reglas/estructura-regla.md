@@ -248,6 +248,26 @@ Lo comprueba [`validadores/ejecutable.py`](../../validadores/ejecutable.py), y
 el `pre-push` no deja publicar una regla del núcleo que no lo diga. Lo que **no**
 comprueba es que la pieza de verdad la ejecute: eso se lee.
 
+### 7 · Lo que autoriza escribir — **solo la regla que lo autoriza**
+
+Hay archivos que se escriben siempre, sin que ningún plan los nombre: la
+transcripción, el resumen, el análisis, los guiones de apoyo. La regla que los
+pide es la que los autoriza, y lo dice en una línea que va **justo después de
+`**Aplica a:**`**:
+
+```
+**Autoriza escribir:** `historico-chat/resumenes/**`, `historico-chat/*.md`
+```
+
+Cada ruta va entre comillas invertidas, desde la raíz del proyecto; `*` vale por
+un tramo del nombre y `**` por cualquier cantidad de carpetas. La lee
+[`validadores/autorizado.py`](../../validadores/autorizado.py), y con ella el
+`pre-commit` y el freno dejan pasar lo que una regla ya autoriza (análisis 1 del
+pendiente 103, conclusión 46). La regla propia de un proyecto usa la misma línea
+en `.agente/reglas-proyecto.md`.
+
+La regla que no autoriza escribir nada no lleva la línea.
+
 ---
 
 ## Ejemplo completo — todas las partes

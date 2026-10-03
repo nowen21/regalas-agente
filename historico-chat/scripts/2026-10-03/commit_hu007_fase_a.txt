@@ -1,0 +1,16 @@
+feat(plan): el commit no deja entrar lo que el plan aprobado no nombra
+
+El usuario pidió que nada se escriba fuera del plan aprobado: el plan dice
+qué toca y quién lo aprobó, y lo que una regla ya autoriza no se frena
+(análisis 1 y 8 del pendiente 103, HU-007 de EP-023, fase A).
+
+Lo que hizo el agente:
+- La plantilla del plan pide la aprobación con quién, cuándo y versión, y
+  solo rutas exactas en la 2.1; flujo.py lo exige a los planes aprobados
+  desde 48.0.0.
+- La línea «Autoriza escribir» en 20·M5, en la plantilla de las reglas del
+  proyecto y en las diez reglas que autorizan escribir sin plan.
+- validadores/autorizado.py dice qué regla autoriza una ruta.
+- validar.py plan --preparados, en el pre-commit: falla por el archivo que
+  ni el plan declara, ni es de la fase, ni una regla autoriza.
+- Pruebas de la fase y versión 48.0.0.

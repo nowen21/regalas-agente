@@ -802,11 +802,13 @@ CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionad
 
 **Aplica a:** escribir-documento
 
+**Autoriza escribir:** `historico-chat/memory/**`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v39.0.0**, el **2026-09-28**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -1013,9 +1015,11 @@ CORRECTO:   "falta la palabra: ¿pregunta, revise, proponga o hágalo?"
 
 **Aplica a:** recibir-pedido
 
+**Autoriza escribir:** `base/mapa-de-tareas.md`, `base/reglas-por-tarea/*.md`
+
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v33.4.0**, el **2026-08-24**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

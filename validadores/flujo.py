@@ -19,6 +19,8 @@ comprueba sin criterio:
   F18 · toda intervención del plan cuelga de un **criterio de aceptación**: cada
          tarea vive bajo su `### CA-nn`, cada CA declarado tiene su desglose y
          no aparece un CA que la fase no declaró.
+  F4, F8 · el plan aprobado desde 48.0.0 dice quién lo aprobó y cuándo, y su
+         §2.1 trae solo rutas exactas (EP-023·HU-007). Es FALLA: ya se aprobó.
 
 No juzga el contenido de cada sección (eso es humano); solo presencia, marcas de
 duda y a qué cuelga cada tarea. **AVISO**: un plan en curso puede estar
@@ -32,6 +34,7 @@ import re
 
 import declaracion
 import fases
+import plan_vs_hecho
 import version
 import comun
 from comun import AVISO, FALLA, Hallazgo, filas_de, leer, valor_limpio
@@ -247,6 +250,11 @@ def validar(proyecto):
                         AVISO, donde, linea,
                         f"marca de incertidumbre `{frag}` en el plan — F17 pide "
                         f"la línea base verificada"))
+
+                # EP-023·HU-007 · el plan aprobado desde 48.0.0 dice quién lo
+                # aprobó y declara rutas exactas.
+                for linea, motivo in plan_vs_hecho.revisar_aprobado(texto_plan):
+                    hallazgos.append(Hallazgo(FALLA, donde, linea, motivo))
         if epica_con_fases and not tiene_doc_epica:
             hallazgos.append(Hallazgo(
                 AVISO, f"{CARPETA}/{nombre_epica}", 0,

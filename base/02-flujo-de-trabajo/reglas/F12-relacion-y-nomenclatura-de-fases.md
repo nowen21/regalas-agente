@@ -12,11 +12,13 @@ CORRECTO:   B-EP-001-HU-003-Implementación de la lógica de negocio, dentro de 
 
 **Aplica a:** trabajar-cadena
 
+**Autoriza escribir:** `documentacion/epicas/*/HU-*/*/*.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

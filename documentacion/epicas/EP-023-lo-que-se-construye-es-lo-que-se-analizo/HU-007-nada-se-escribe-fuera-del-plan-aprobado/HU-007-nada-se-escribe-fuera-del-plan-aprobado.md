@@ -158,7 +158,7 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| N/A: todavía no se descompone en fases | | | | | | |
+| [`A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple`](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/estado-fase.md) | CA-01, CA-03, CA-04 | HU-003, HU-004 | [plan](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/plan_trabajo.md) | [pruebas](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/plan_pruebas.md) | [resultado](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/resultado_pruebas.md) | Cumple |
 
 ---
 

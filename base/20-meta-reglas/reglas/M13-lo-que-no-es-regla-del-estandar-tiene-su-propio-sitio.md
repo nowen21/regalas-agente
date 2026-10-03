@@ -11,11 +11,13 @@ CORRECTO:   entra en el catálogo de ese proyecto; base/ solo lleva lo universal
 
 **Aplica a:** cambiar-estandar
 
+**Autoriza escribir:** `documentacion/pendientes.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../checklist.md) contra **v2.2.0**, el **2026-08-07**.
+Aplicado el [checklist del estándar](../checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

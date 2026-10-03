@@ -11,11 +11,13 @@ CORRECTO:   se registra como señal de tipo decisión, con qué / por qué / dó
 
 **Aplica a:** escribir-documento
 
+**Autoriza escribir:** `documentacion/senales.md`, `memoria/senales.db`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

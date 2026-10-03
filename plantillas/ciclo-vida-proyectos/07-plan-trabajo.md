@@ -27,6 +27,7 @@
 | **Módulo** | «M» ([`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)) |
 | **Especificación del módulo** | «enlace a la especificación · [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
 | **Fecha apertura** | AAAA-MM-DD |
+| **Aprobación** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) | «quién», el «AAAA-MM-DD», con la versión «X.Y.Z» |
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
 
@@ -82,6 +83,7 @@
 ### 2.1 Archivos que se crean o modifican  ·  [`02·F14`](../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q9
 
 > Es la lista exacta de archivos que la fase crea o modifica. Fuera de ella no se toca ningún archivo (`02·F8`).
+> Cada fila lleva una o más rutas exactas entre comillas invertidas, separadas por coma. No valen comodines (`*`), carpetas (`ruta/`) ni descripciones: lo que una regla ya autoriza escribir no se lista acá ([`02·F8`](../../base/02-flujo-de-trabajo/reglas/F8-edita-solo-los-archivos-que-el-plan-aprobado-declara.md)).
 
 | Archivo (ruta real verificada) | Tipo | Capa | Nota |
 |---|---|---|---|

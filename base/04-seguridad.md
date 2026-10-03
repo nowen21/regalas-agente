@@ -613,11 +613,13 @@ CORRECTO:   el guion queda en `historico-chat/scripts/2026-08-27/`, junto al res
 
 **Aplica a:** escribir-documento, correr-comando
 
+**Autoriza escribir:** `historico-chat/scripts/**`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v35.4.0**, el **2026-08-27**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

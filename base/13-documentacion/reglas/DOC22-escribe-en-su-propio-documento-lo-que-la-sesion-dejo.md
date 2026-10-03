@@ -13,11 +13,13 @@ CORRECTO:   su resumen los lista, cada uno con su pendiente enlazado, y el
 
 **Aplica a:** escribir-documento
 
+**Autoriza escribir:** `historico-chat/*.md`, `historico-chat/resumenes/**`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v45.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

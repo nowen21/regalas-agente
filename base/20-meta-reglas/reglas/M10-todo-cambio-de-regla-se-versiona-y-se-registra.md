@@ -11,11 +11,13 @@ CORRECTO:   el cambio, su entrada en el CHANGELOG y la subida de VERSION van en 
 
 **Aplica a:** cambiar-estandar
 
+**Autoriza escribir:** `CHANGELOG.md`, `VERSION`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../checklist.md) contra **v2.2.0**, el **2026-08-07**.
+Aplicado el [checklist del estándar](../checklist.md) contra **v48.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
