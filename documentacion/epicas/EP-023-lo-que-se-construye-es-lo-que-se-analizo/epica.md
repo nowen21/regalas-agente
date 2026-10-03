@@ -1,13 +1,13 @@
 # EP-023 · Lo que se construye es lo que se analizó
 
-> El alcance, los criterios y las HU salen de la propuesta final y de «Lo que se tiene que hacer» del [análisis 1](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y del [análisis 2](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md). Los campos que no son alcance (tipo, prioridad, estimación, beneficios, riesgos, supuestos) son propuesta del agente y esperan la aprobación del usuario.
+> El alcance, los criterios y las HU salen de la propuesta final y de «Lo que se tiene que hacer» del [análisis 1](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y del [análisis 2](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md). Los campos que no son alcance (tipo, prioridad, estimación, beneficios, riesgos, supuestos) son propuesta del agente y esperan la aprobación del usuario.
 
 ## 1. Identificación
 
 | Campo | Valor |
 |---|---|
 | **ID** | EP-023 |
-| **Planteamiento de origen** | El pendiente [Lo que se construye se aparta de lo aprobado](103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), V3 |
+| **Planteamiento de origen** | El pendiente [Lo que se construye se aparta de lo aprobado](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), V3 |
 | **Iniciativa / Objetivo estratégico** | Al ejecutar un plan solo aparecen los hallazgos que no se podían prever |
 | **Producto / Sistema** | Cimiento |
 | **Tipo** | Técnica (habilitadora): cambia cómo trabaja el estándar, no lo que entrega un producto |
@@ -160,7 +160,7 @@ N/A: ninguna norma ni ley aplica (análisis 1 y análisis 2, sección del entorn
 
 ## 15. Hoja de ruta
 
-El número identifica a la HU y no cambia; el orden de ejecución sale de las dependencias ([análisis 8](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), conclusiones 5 y 8).
+El número identifica a la HU y no cambia; el orden de ejecución sale de las dependencias ([análisis 8](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), conclusiones 5 y 8).
 
 | Orden | HU | Depende de | Por qué en ese orden | Estado |
 |---|---|---|---|---|
@@ -206,8 +206,8 @@ Las fechas se fijan al planear cada HU.
 
 | Campo | Valor |
 |---|---|
-| Pendiente | [Lo que se construye se aparta de lo aprobado](103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
-| Análisis | [análisis 1](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), [análisis 2](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md), [análisis 3](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md), [análisis 4](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) y [análisis 5](103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+| Análisis | [análisis 1](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), [análisis 2](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md), [análisis 3](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md), [análisis 4](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) y [análisis 5](pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
 
 ## 20. Bitácora de cambios
 

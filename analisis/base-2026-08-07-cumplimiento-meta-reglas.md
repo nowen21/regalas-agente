@@ -1039,7 +1039,7 @@ En los dos casos el diagnóstico estaba escrito, con la solución al lado, y el 
 
 ## Lo que aporta al análisis principal
 
-> Se agregó en el piloto, por el [análisis 9](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+> Se agregó en el piloto, por el [análisis 9](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
 **Resultado:** Aclara.
 

@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 6](analisis-6.md), aprobado el 2026-10-02. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Al escribir la fase `A` de la [HU-002](../HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) de EP-023, el 2026-10-02, se encontró que los criterios de `plantillas/ciclo-vida-proyectos/04-HU.md` no tienen el campo «Sale de». La regla nueva del CA-01 lo exige en cada criterio, y `13·DOC15` manda crear la HU desde esa plantilla. Las de análisis, pendiente y plan sí tienen su campo. |
+| Qué pasó | Al escribir la fase `A` de la [HU-002](../../HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) de EP-023, el 2026-10-02, se encontró que los criterios de `plantillas/ciclo-vida-proyectos/04-HU.md` no tienen el campo «Sale de». La regla nueva del CA-01 lo exige en cada criterio, y `13·DOC15` manda crear la HU desde esa plantilla. Las de análisis, pendiente y plan sí tienen su campo. |
 | Por qué importa | Una HU hecha con la plantilla, como manda `DOC15`, no cumpliría la regla nueva, y el validador la detendría: dos reglas chocarían (análisis 1, conclusión 12). Cambiar la plantilla no está en los criterios de la HU-002. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 129, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 129, donde se dijo «Analicemos: el pendiente 103».
 
 ### 129 · Usuario, 2026-10-02 08:15:11
 > Analicemos: el pendiente 103
@@ -87,7 +87,7 @@ Sí, son las dos partes de la misma recomendación:
 **Agente**, 2026-10-02 08:18:28
 <!-- agente: 0db45c23-92d5-4acf-8a7f-3e95b9977b23 -->
 
-Ya escribí lo que faltaba del [análisis 7](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md):
+Ya escribí lo que faltaba del [análisis 7](analisis-7.md):
 
 - **Conclusiones:**
   1. El H-7 frena la fase A.
@@ -186,7 +186,7 @@ Aplican `13·DOC15` (la HU se crea desde la plantilla central), `02·F18` y la r
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Pasar el CA-03 de la HU-002 a la versión siguiente: además del contexto, cada criterio de la plantilla de la HU lleva «Sale de» | 2, 3 | EP-023, [HU-002](../HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) |
+| 1 | Pasar el CA-03 de la HU-002 a la versión siguiente: además del contexto, cada criterio de la plantilla de la HU lleva «Sale de» | 2, 3 | EP-023, [HU-002](../../HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) |
 | 2 | Pasar el plan de la fase `A` de la HU-002 a su versión siguiente con ese campo, y volver a aprobarlo | 1, 3 | EP-023, HU-002, fase `A` |
 
 ## Lo que aporta al análisis principal

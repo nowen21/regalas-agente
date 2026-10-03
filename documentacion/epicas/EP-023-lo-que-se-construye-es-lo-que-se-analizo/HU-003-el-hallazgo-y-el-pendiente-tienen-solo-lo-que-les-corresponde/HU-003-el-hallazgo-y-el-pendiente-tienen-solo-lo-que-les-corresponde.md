@@ -1,6 +1,6 @@
 # HU-003 · El hallazgo y el pendiente tienen solo lo que les corresponde
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21, y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 10. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 10. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que el hallazgo y el pendiente cargan campos que son del análisis ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que el hallazgo y el pendiente cargan campos que son del análisis ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -184,16 +184,14 @@ Y dentro de ella, en su propia carpeta, con pendiente.md y sus análisis
 Y el número es uno solo en todo el proyecto
 Y un programa arma el índice de todos, con su número, dónde viven y si su plan cerró
 Y el validador de fases acepta pendientes/ dentro de una épica, de una HU o de un resumen del día
-Y los pendientes abiertos de la carpeta pendientes/ de la raíz y el 103 se trasladan, con sus enlaces al día
 Y los cerrados no se tocan (CA-07)
 ```
 
 **Cómo validarlo:**
 1. Correr el validador de fases.
 2. Correr el programa del índice.
-3. Buscar los pendientes abiertos y el 103 en su lugar nuevo.
 
-**Aprobado cuando:** el validador de fases pasa, el índice lista todos y los abiertos están en su lugar con los enlaces sanos.
+**Aprobado cuando:** el validador de fases pasa y el índice lista todos.
 
 ---
 
@@ -214,7 +212,7 @@ Y los cerrados no se tocan (CA-07)
 
 | Campo | Valor |
 |---|---|
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 
@@ -230,7 +228,7 @@ Las fija el plan de cada fase (`02·F14`).
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
-| N/A: todavía no se descompone en fases | | | | | | |
+| [`A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo`](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/estado-fase.md) | CA-01 a CA-08 | HU-001 | [plan](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_trabajo.md) | [pruebas](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_pruebas.md) | [resultado](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/resultado_pruebas.md) | Cumple; falta el commit |
 
 ---
 
@@ -283,3 +281,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
 | 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nace el CA-08, sobre la carpeta `pendientes/` dentro de lo que origina cada pendiente, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Sale del CA-08 el traslado de los pendientes viejos y del 103: lo agregó el agente sin origen en el análisis 8. Lo acordado es que pasan a la forma nueva cuando se vayan a trabajar (análisis 1, conclusión 38). La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-08 sin el traslado |

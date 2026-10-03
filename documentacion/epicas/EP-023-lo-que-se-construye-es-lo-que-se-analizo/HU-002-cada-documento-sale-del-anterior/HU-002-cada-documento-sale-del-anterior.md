@@ -1,6 +1,6 @@
 # HU-002 · Cada documento sale del anterior
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 4 y 5, del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), punto 1, y del [análisis 7](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 4 y 5, del [análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), punto 1, y del [análisis 7](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada obliga a que cada documento salga del anterior ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada obliga a que cada documento salga del anterior ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -125,7 +125,7 @@ Y cada criterio de la plantilla lleva «Sale de», con el punto de «Lo que se t
 
 | Campo | Valor |
 |---|---|
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md). |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 

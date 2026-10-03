@@ -11,12 +11,12 @@ Cimiento es el estándar que hace que una IA que programa trabaje siempre igual 
 | Fecha | Resultado | Análisis |
 |---|---|---|
 | 2026-08-07 | Aclara | [Análisis de cumplimiento del estándar de reglas contra `20 · Meta-reglas`](base-2026-08-07-cumplimiento-meta-reglas.md) |
-| 2026-10-01 | Cambia lo que se construye y modifica la idea | [Análisis 1 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
-| 2026-10-01 | Cambia lo que se construye | [Análisis 2 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
-| 2026-10-01 | Aclara | [Análisis 3 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md) |
-| 2026-10-01 | Aclara | [Análisis 4 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) |
-| 2026-10-01 | Modifica la idea | [Análisis 5 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
-| 2026-10-02 | Modifica la idea | [Análisis 6 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) |
-| 2026-10-02 | Cambia lo que se construye | [Análisis 7 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
-| 2026-10-02 | Cambia lo que se construye y amplía la idea | [Análisis 8 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) |
-| 2026-10-02 | Modifica la idea | [Análisis 9 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md) |
+| 2026-10-01 | Cambia lo que se construye y modifica la idea | [Análisis 1 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
+| 2026-10-01 | Cambia lo que se construye | [Análisis 2 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
+| 2026-10-01 | Aclara | [Análisis 3 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md) |
+| 2026-10-01 | Aclara | [Análisis 4 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) |
+| 2026-10-01 | Modifica la idea | [Análisis 5 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
+| 2026-10-02 | Modifica la idea | [Análisis 6 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) |
+| 2026-10-02 | Cambia lo que se construye | [Análisis 7 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
+| 2026-10-02 | Cambia lo que se construye y amplía la idea | [Análisis 8 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) |
+| 2026-10-02 | Modifica la idea | [Análisis 9 del pendiente 103](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md) |

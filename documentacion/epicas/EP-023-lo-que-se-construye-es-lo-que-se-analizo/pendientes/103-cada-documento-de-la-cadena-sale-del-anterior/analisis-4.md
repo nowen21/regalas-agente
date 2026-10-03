@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 3](analisis-3.md), aprobado el 2026-10-01. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Las siete HU de [EP-023](../epica.md) tienen el mismo «Contexto y descripción»: el problema del pendiente copiado tal cual, como pide la [plantilla de la HU](../../../../plantillas/ciclo-vida-proyectos/04-HU.md). Ese problema ya está en la épica, en su sección 3.1, así que el mismo texto queda en ocho sitios. |
+| Qué pasó | Las siete HU de [EP-023](../../epica.md) tienen el mismo «Contexto y descripción»: el problema del pendiente copiado tal cual, como pide la [plantilla de la HU](../../../../../plantillas/ciclo-vida-proyectos/04-HU.md). Ese problema ya está en la épica, en su sección 3.1, así que el mismo texto queda en ocho sitios. |
 | Por qué importa | Si el texto cambia, hay que corregirlo en todos: es el riesgo de un registro en dos sitios (S-064). Y el contexto no dice qué parte del problema de la épica resuelve cada HU. Pedir «el problema del pendiente tal cual» sirve cuando un pendiente da una sola HU; cuando hay épica, ese texto le corresponde a la épica. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 46, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 46, donde se dijo «Analicemos: el pendiente 103».
 
 ### 46 · Usuario, 2026-10-01 22:29:42
 > Analicemos: el pendiente 103
@@ -60,8 +60,8 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 El análisis 4 quedó prendido.
 
-- Parte del H-2, que ahora enlaza a este análisis desde el [resumen de hoy](../../../../historico-chat/resumenes/2026-10-01/sesion.md).
-- El archivo es [analisis-4.md](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), en la carpeta del pendiente, y ya le entró el turno 46.
+- Parte del H-2, que ahora enlaza a este análisis desde el [resumen de hoy](../../../../../historico-chat/resumenes/2026-10-01/sesion.md).
+- El archivo es [analisis-4.md](analisis-4.md), en la carpeta del pendiente, y ya le entró el turno 46.
 
 **Lo primero, según la conclusión 7 del análisis 2: ¿el H-2 es parte del plan en curso?**
 
@@ -97,7 +97,7 @@ Falta la palabra que dice qué se espera (`01·C28`). Con «Registre» anoto ese
 **Agente**, 2026-10-01 22:36:14
 <!-- agente: 4d1bdad0-0c08-438c-a791-8921e48b426f -->
 
-Quedó registrado como H-3, «Las HU de una épica repiten el contexto del pendiente», en el [resumen de hoy](../../../../historico-chat/resumenes/2026-10-01/sesion.md). Lleva solo «Qué pasó» y «Por qué importa», con el texto del usuario.
+Quedó registrado como H-3, «Las HU de una épica repiten el contexto del pendiente», en el [resumen de hoy](../../../../../historico-chat/resumenes/2026-10-01/sesion.md). Lleva solo «Qué pasó» y «Por qué importa», con el texto del usuario.
 
 - **El análisis 4** ahora parte del H-3. Cambiaron su título y la copia del hallazgo.
 - **El H-2** volvió a tener su pendiente «por definir».
@@ -158,7 +158,7 @@ Así se reparte el problema del pendiente entre las siete HU. Es propuesta mía:
 **Agente**, 2026-10-01 22:47:19
 <!-- agente: 705508d7-f99a-4ab6-be40-93a5b41a86aa -->
 
-Quedó escrito en el [análisis 4](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md):
+Quedó escrito en el [análisis 4](analisis-4.md):
 
 - **5 conclusiones**: el H-3 es parte del plan; el contexto de una HU que sale de una épica es la parte del problema que le toca, con el enlace; esa parte la fija la propuesta final; el reparto de las siete HU; y el cambio a la plantilla de la HU.
 - **3 puntos de lo que se tiene que hacer**:
@@ -235,8 +235,8 @@ Aplican `13·DOC15` (la HU se escribe desde la plantilla central) y `13·DOC16` 
 
 | Qué | Lo que hay hoy |
 |---|---|
-| EP-023 | El problema del pendiente está en la sección 3.1 de la [épica](../epica.md) y copiado en la sección 3 de sus siete HU |
-| Plantilla de la HU | [`04-HU.md`](../../../../plantillas/ciclo-vida-proyectos/04-HU.md) no distingue la HU que sale de un pendiente de la que sale de una épica |
+| EP-023 | El problema del pendiente está en la sección 3.1 de la [épica](../../epica.md) y copiado en la sección 3 de sus siete HU |
+| Plantilla de la HU | [`04-HU.md`](../../../../../plantillas/ciclo-vida-proyectos/04-HU.md) no distingue la HU que sale de un pendiente de la que sale de una épica |
 
 ### Lo aprendido: señales, lecciones y análisis anteriores
 

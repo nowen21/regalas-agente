@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 45.0.0 — 2026-10-02
+
+**El hallazgo y el pendiente tienen solo lo suyo, y cada pendiente vive con su dueño.** ⚠ obliga a migrar
+
+**MAYOR**: los pendientes y los hallazgos nuevos cambian de forma y de sitio. Un proyecto al día corre la instalación y escribe los nuevos con las plantillas nuevas; los que ya tiene no se mueven ni se reescriben, y pasan a la forma nueva cuando se vayan a trabajar.
+
+**Lo que entra:**
+
+- Las tres plantillas del pendiente quedan con «De dónde sale», «El problema» y «Por qué importa». El pendiente es una carpeta con su `pendiente.md` y sus análisis, dentro de `pendientes/` de su dueño: una épica, una HU o el resumen del día mientras no tiene dueño.
+- `plantillas/sesion.md`: el hallazgo lleva «Qué pasó», «Por qué importa» y el enlace a su pendiente; su estado y por dónde se retoma se calculan.
+- `13·DOC22`, `02·F24`, `02·F13` y la tabla de `20·M13` dicen lo mismo; nadie pide ya «Proyecto de origen», y el instalador deja de crear `pendientes/`, que queda como historia.
+- `validadores/pendientes.py` calcula el estado del pendiente (cierra cuando se cumple el plan que salió de él), cuenta la numeración en todas las carpetas y arma el índice en `documentacion/pendientes.md` con `validar.py pendientes --indice`. `resumen.py` calcula el estado del hallazgo, y `fases.py` acepta `pendientes/` dentro de una épica o una HU.
+- El pendiente 103 pasa a `EP-023/pendientes/`, con sus enlaces al día.
+
+Del análisis 1 y del análisis 8 del pendiente 103, fase `A` de la HU-003 de EP-023.
+
+---
+
 ## 44.0.0 — 2026-10-02
 
 **Todo análisis aprobado queda anotado en el análisis principal, y el análisis revisa más antes de cerrarse.** ⚠ obliga a migrar

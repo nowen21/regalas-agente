@@ -91,68 +91,57 @@ class CA04LaHistoria(unittest.TestCase):
 
 
 class CA04ElPendiente(unittest.TestCase):
+    """`EP-023 · HU-003 · CA-01 y CA-08` — el pendiente nace como carpeta, en
+    `pendientes/` de su dueño, y ya no toca `pendientes/README.md`."""
 
     def setUp(self):
         self.tmp = arbol()
         self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
 
-    def test_cp_003_el_pendiente_nace_con_su_fila_y_su_historia_en_el_mapa(self):
+    def test_cp_003_con_su_hu_nace_en_pendientes_de_la_hu(self):
         hu = "%s/HU-008-enganche-del-resumen" % EPICA
+        antes = leer(os.path.join(self.tmp, "pendientes", "README.md"))
         destino, tocados = andamio.crear_pendiente(self.tmp, "prueba", hu, escribir=True)
-        self.assertEqual("02-prueba.md", os.path.basename(destino))
+        self.assertEqual(os.path.join(self.tmp, "documentacion", "epicas", EPICA,
+                                      "HU-008-enganche-del-resumen", "pendientes",
+                                      "002-prueba", "pendiente.md"), destino)
         texto = leer(destino)
-        self.assertIn("[EP-005 · HU-008 — El enganche que sostiene el resumen de la sesión](../documentacion/epicas/%s/HU-008-enganche-del-resumen/HU-008-enganche-del-resumen.md)" % EPICA, texto)
-        self.assertNotIn("«HISTORIA»", texto)
-        indice = leer(os.path.join(self.tmp, "pendientes", "README.md"))
-        self.assertIn(andamio.SECCION_SIN_AGRUPAR, indice)
-        self.assertIn("| 2 | «P?» | [«qué falta, en una línea»](02-prueba.md) |", indice)
-        self.assertIn("— Enganche del resumen | 32, 2 |", indice)
+        self.assertIn("**De dónde sale**", texto)
+        self.assertNotIn("Historia de usuario", texto)
+        self.assertEqual([destino], tocados)
+        self.assertEqual(antes, leer(os.path.join(self.tmp, "pendientes", "README.md")))
         self.assertEqual(3, pendientes.proximo_libre(self.tmp))
-
-    def test_la_historia_que_no_estaba_en_el_mapa_entra(self):
-        hu = "%s/HU-009-lo-que-rige-cada-frase-llega-puesto" % EPICA
-        andamio.crear_pendiente(self.tmp, "otra", hu, escribir=True)
-        indice = leer(os.path.join(self.tmp, "pendientes", "README.md"))
-        self.assertRegex(indice, r"\| \[EP-005 · HU-009\]\([^)]+\) — Lo que gobierna cada frase llega a tiempo \| 2 \|")
 
     def test_sin_aplicar_no_escribe(self):
         hu = "%s/HU-008-enganche-del-resumen" % EPICA
-        antes = leer(os.path.join(self.tmp, "pendientes", "README.md"))
         destino, _ = andamio.crear_pendiente(self.tmp, "prueba", hu, escribir=False)
         self.assertFalse(os.path.exists(destino))
-        self.assertEqual(antes, leer(os.path.join(self.tmp, "pendientes", "README.md")))
 
 
 class HU022ElPendienteNaceSinHistoria(unittest.TestCase):
-    """`EP-005 · HU-022` — el orden es hallazgo, pendiente, HU y fase."""
+    """`EP-005 · HU-022` — el orden es hallazgo, pendiente, HU y fase. Sin dueño,
+    el pendiente nace en el resumen del día (`EP-023 · HU-003`)."""
 
     def setUp(self):
         self.tmp = arbol()
         self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
-        self.indice = os.path.join(self.tmp, "pendientes", "README.md")
 
-    def test_cp_001_sin_historia_dice_por_asignar_y_no_toca_el_mapa(self):
-        mapa_antes = leer(self.indice).split(andamio.MAPA, 1)[1]
-        destino, _ = andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True)
-        texto = leer(destino)
-        self.assertIn("| **Historia de usuario** | %s |" % andamio.POR_ASIGNAR, texto)
-        self.assertNotIn("«HISTORIA»", texto)
-        indice = leer(self.indice)
-        self.assertIn("(02-prueba-sin-historia.md)", indice)
-        self.assertEqual(mapa_antes, indice.split(andamio.MAPA, 1)[1],
-                         "un pendiente sin historia no entra al mapa de historias")
+    def test_cp_001_sin_dueno_nace_en_el_resumen_del_dia(self):
+        import datetime
+        destino, _ = andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True,
+                                             hoy=datetime.date(2026, 10, 2))
+        self.assertEqual(os.path.join(self.tmp, "historico-chat", "resumenes", "2026-10-02",
+                                      "pendientes", "002-prueba-sin-historia", "pendiente.md"), destino)
 
     def test_cp_003_una_historia_que_no_existe_sigue_fallando(self):
-        antes = sorted(os.listdir(os.path.join(self.tmp, "pendientes")))
         with self.assertRaises(ValueError) as e:
             andamio.crear_pendiente(self.tmp, "prueba", "%s/HU-999-no-existe" % EPICA,
                                     escribir=True)
         self.assertIn("no existe la historia", str(e.exception))
-        self.assertEqual(antes, sorted(os.listdir(os.path.join(self.tmp, "pendientes"))))
 
-    def test_cp_006_por_asignar_no_reprueba_la_validacion(self):
+    def test_cp_006_el_pendiente_nuevo_pasa_la_validacion(self):
         andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True)
-        fallas = [h for h in pendientes.abierto_nombra_su_historia(self.tmp)
+        fallas = [h for h in pendientes.validar(self.tmp)
                   if h.severidad == FALLA and "prueba-sin-historia" in str(h)]
         self.assertEqual([], fallas)
 

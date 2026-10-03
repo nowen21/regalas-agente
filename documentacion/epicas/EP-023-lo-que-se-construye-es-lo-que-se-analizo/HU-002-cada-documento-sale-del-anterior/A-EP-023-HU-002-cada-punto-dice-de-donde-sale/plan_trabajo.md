@@ -14,9 +14,9 @@
 | **Fecha apertura** | 2026-10-02 |
 | **Rama** | `main` |
 
-**ORIGEN** (`13·DOC12`): funcionalidad nueva, la única fase de la HU-002. Sale de los puntos 4 y 5 de «Lo que se tiene que hacer» del [análisis 1](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) del punto 1 del [análisis 4](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) y de los puntos 1 y 2 del [análisis 7](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md). Depende de la HU-001, que ya cumple.
+**ORIGEN** (`13·DOC12`): funcionalidad nueva, la única fase de la HU-002. Sale de los puntos 4 y 5 de «Lo que se tiene que hacer» del [análisis 1](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) del punto 1 del [análisis 4](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) y de los puntos 1 y 2 del [análisis 7](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md). Depende de la HU-001, que ya cumple.
 
-**Carencias que cierra** (`02·F14` Q3): nada obliga a que cada documento salga del anterior ([análisis 4](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+**Carencias que cierra** (`02·F14` Q3): nada obliga a que cada documento salga del anterior ([análisis 4](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 **Versión 2, del análisis 7.** La versión 1 se escribió el 2026-10-02 y no se aprobó por el H-7: los criterios de la plantilla de la HU no tenían «Sale de». Esta versión suma ese campo al CA-03.
 

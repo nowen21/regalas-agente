@@ -14,11 +14,11 @@
 | **Fecha apertura** | 2026-10-02 |
 | **Rama** | `main` |
 
-**ORIGEN** (`13·DOC12`): funcionalidad nueva, la única fase de la HU-005. Sale de los puntos 8, 22 y 28 de «Lo que se tiene que hacer» del [análisis 1](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y de los puntos 1 a 4 del [análisis 6](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md). Depende de la HU-001, que ya cumple.
+**ORIGEN** (`13·DOC12`): funcionalidad nueva, la única fase de la HU-005. Sale de los puntos 8, 22 y 28 de «Lo que se tiene que hacer» del [análisis 1](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y de los puntos 1 a 4 del [análisis 6](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md). Depende de la HU-001, que ya cumple.
 
 **Versión 2, del análisis 6.** La versión 1 se escribió el 2026-10-02 y no se aprobó por el H-5: `01·C15` y `00·ID1` también se apoyaban en `01·C14`. Al revisarla salió además que el ejemplo de `02·F19` choca con `04·S1`. Esta versión suma `C15`, `ID1` y el ejemplo de `F19`.
 
-**Carencias que cierra** (`02·F14` Q3): el agente agrega lo que no se pidió, porque `01·C14` se lo permite ([análisis 4](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+**Carencias que cierra** (`02·F14` Q3): el agente agrega lo que no se pidió, porque `01·C14` se lo permite ([análisis 4](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 **Aprobación** (`02·F4`): el usuario aprobó este plan y el de pruebas el 2026-10-02.
 

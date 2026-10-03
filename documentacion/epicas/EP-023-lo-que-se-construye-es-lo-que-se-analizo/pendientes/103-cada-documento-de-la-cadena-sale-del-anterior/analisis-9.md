@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 8](analisis-8.md), aprobado el 2026-10-02. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Al escribir la fase `D` de la [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), el 2026-10-02, salió que el aviso del CA-20 saltaría siempre por el análisis 3, que nunca se anotó en el análisis principal porque no cambió lo que se construye. `13·DOC25` pide anotar solo «cuando un análisis individual cambia algo». El usuario dijo que todo análisis se anota, porque en él se trataron temas que aclararon cosas aunque no haya cambios. |
+| Qué pasó | Al escribir la fase `D` de la [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), el 2026-10-02, salió que el aviso del CA-20 saltaría siempre por el análisis 3, que nunca se anotó en el análisis principal porque no cambió lo que se construye. `13·DOC25` pide anotar solo «cuando un análisis individual cambia algo». El usuario dijo que todo análisis se anota, porque en él se trataron temas que aclararon cosas aunque no haya cambios. |
 | Por qué importa | Un análisis que no se anota se pierde para quien lea el análisis principal: no sabe que ese tema ya se discutió ni qué se aclaró, y lo vuelve a abrir. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 193, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 193, donde se dijo «Analicemos: el pendiente 103».
 
 ### 193 · Usuario, 2026-10-02 12:15:36
 > Analicemos: el pendiente 103
@@ -182,7 +182,7 @@ Queda acordado. Para escribir las conclusiones del análisis 9 falta «Hágalo»
 **Agente**, 2026-10-02 12:44:31
 <!-- agente: de96da23-95f8-4ad3-8a20-3391c9019d0a -->
 
-Ya está escrito en el [análisis 9](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md). Esto es lo que quedó acordado:
+Ya está escrito en el [análisis 9](analisis-9.md). Esto es lo que quedó acordado:
 
 1. **Todo análisis se anota** en el análisis principal, aunque no cambie el sistema.
 2. **Un análisis también confirma, aclara, amplía o modifica la idea.** Ratificar algo es un resultado que vale.
@@ -302,7 +302,7 @@ Queda acordado. Para escribir en el análisis 9 la sección «Lo acordado» y po
 
 La numeración de «Lo que se tiene que hacer» quedó saltando el 4. La corrijo.
 
-Ya está escrito en el [análisis 9](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md):
+Ya está escrito en el [análisis 9](analisis-9.md):
 
 - **La sección «Lo acordado»**, después de la conversación, con los 9 puntos y el turno de cada uno. Este análisis la estrena.
 - **Las conclusiones 7, 8 y 9:** la «Lista de análisis», la sección «Lo acordado» y que todo análisis decide algo. La conclusión 3 dice ahora los tres sitios donde queda el resultado. No queda nada abierto.
@@ -891,7 +891,7 @@ Ya actualicé en el análisis 9 lo que había quedado atrás:
   - El punto 4 dice que se anotan todos los análisis, del viejo al 9.
   - El punto 13 dice que la tabla de HU ya está en los análisis 1 y 2, y que las recomendaciones se agregan a los nueve análisis en la fase D.
 - **Conclusiones:** cambié la 3, la 4 y la 11 de la misma forma.
-- **Un error que ya está corregido:** en el primer intento cambié también dos líneas de la conversación (turno 201), que no se edita a mano. Ya las devolví a su texto original. El guion es [analisis9_al_dia.py](../../../../historico-chat/scripts/2026-10-02/analisis9_al_dia.py).
+- **Un error que ya está corregido:** en el primer intento cambié también dos líneas de la conversación (turno 201), que no se edita a mano. Ya las devolví a su texto original. El guion es [analisis9_al_dia.py](../../../../../historico-chat/scripts/2026-10-02/analisis9_al_dia.py).
 - Los validadores `estandar`, `origen` y `analisis` pasan sin errores, y no hay marcas.
 
 **2. Dónde se anotan los dos trabajos:** en la tabla «Lo que se tiene que hacer» del mismo análisis 9, como puntos 9 y 10:
@@ -1053,7 +1053,7 @@ Hice dos de los tres cambios. El tercero, quitar «Conclusiones» de los anális
   - Cambié la conclusión 13 y agregué la 15 y la 16.
   - En «Lo que se tiene que hacer» ajusté los puntos 2 y 3 y agregué el 9 (recomendaciones), el 10 (revisión del piloto) y el 11 (quitar «Conclusiones» y la nueva «Lista de análisis»).
   - Agregué la lección 4, la del ejemplo de `Matematicas`.
-- Los validadores `estandar`, `origen` y `analisis` pasan sin errores, y no hay marcas. El guion es [analisis9_sin_redundancia.py](../../../../historico-chat/scripts/2026-10-02/analisis9_sin_redundancia.py).
+- Los validadores `estandar`, `origen` y `analisis` pasan sin errores, y no hay marcas. El guion es [analisis9_sin_redundancia.py](../../../../../historico-chat/scripts/2026-10-02/analisis9_sin_redundancia.py).
 
 **Lo que no hice:** quitar «Conclusiones» de los análisis. La regla `02·F27` y `validar.py origen` exigen hoy que cada fila de «Lo que se tiene que hacer» cite una conclusión, y además las HU citan conclusiones por su número. Si las quito ahora, falla el validador y esas citas quedan apuntando a algo que no existe.
 
@@ -1339,14 +1339,14 @@ Aplica `13·DOC25`, que hoy pide anotar en el análisis principal solo «cuando 
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Cambiar `13·DOC25`: cada análisis aprobado se anota en el análisis principal de su alcance con lo que aportó, copiado tal cual | 1, 2, 3, 5 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 2 | Sumar a la plantilla del análisis la sección «Lo que aporta al análisis principal», con el resultado y lo que suma al principal; que el enganche de aprobar lo pase tal cual al principal y que el validador compare las copias | 3, 15 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 3 | Pasar el CA-20 de la HU-001 a su versión siguiente: el análisis principal con la redacción que forman los aportes de los análisis, la «Lista de análisis», con fecha, resultado y enlace, y las líneas de los análisis 1 a 9 y del análisis con la forma anterior; el aviso revisa todos los aprobados | 2, 4, 7, 17 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 1 | Cambiar `13·DOC25`: cada análisis aprobado se anota en el análisis principal de su alcance con lo que aportó, copiado tal cual | 1, 2, 3, 5 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 2 | Sumar a la plantilla del análisis la sección «Lo que aporta al análisis principal», con el resultado y lo que suma al principal; que el enganche de aprobar lo pase tal cual al principal y que el validador compare las copias | 3, 15 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 3 | Pasar el CA-20 de la HU-001 a su versión siguiente: el análisis principal con la redacción que forman los aportes de los análisis, la «Lista de análisis», con fecha, resultado y enlace, y las líneas de los análisis 1 a 9 y del análisis con la forma anterior; el aviso revisa todos los aprobados | 2, 4, 7, 17 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
 | 4 | Sumar a la plantilla del análisis la sección «Lo acordado», después de la conversación | 8 | Este análisis, de una y sin fase |
-| 5 | Que el validador no deje aprobar un análisis sin filas en «Lo que se tiene que hacer» | 9 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 5 | Que el validador no deje aprobar un análisis sin filas en «Lo que se tiene que hacer» | 9 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
 | 6 | Pasar el plan de la fase `D` a su versión siguiente | 6 | EP-023, HU-001, fase D |
 | 7 | Agregar a los análisis 1 a 8 «Lo acordado», «Dónde más puede pasar» y «Lo que aporta al análisis principal», y al de la forma anterior esta última, sacadas de sus conclusiones y con la nota del piloto, y que el usuario las apruebe | 12, 13 | Este análisis, de una y sin fase: hecho el 2026-10-02 |
-| 8 | Que el programa de aprobar no ponga la marca si falta la sección, y que las demás secciones nuevas se exijan desde la versión que las trae | 11, 13 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 8 | Que el programa de aprobar no ponga la marca si falta la sección, y que las demás secciones nuevas se exijan desde la versión que las trae | 11, 13 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
 | 9 | Agregar a los análisis 1 a 9 las recomendaciones consultadas, cuando la fase `D` cree su archivo | 18 | EP-023, HU-001, fase D |
 | 10 | Al quedar construida EP-023, revisar todos los documentos del piloto contra la base construida | 16, 18 | Cierre del pendiente 103 |
 | 11 | Quitar «Conclusiones» de la plantilla del análisis y de los análisis del piloto, y que `validar.py origen` y `02·F27` citen el punto de «Lo acordado» | 17 | Este análisis, de una y sin fase |

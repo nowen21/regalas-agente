@@ -8,7 +8,7 @@
 
 - La orden sigue en pie hasta que el usuario la retire diciéndolo (es lo mismo que exige [`01·C22`](../../base/01-conducta.md#c22--ante-un-comando-rechazado-corrige-el-comando--la-orden-sigue-en-pie) para el comando rechazado).
 - Dentro del plan aprobado, lo que falte para seguir **no se pregunta si se puede decidir con criterio**: se decide, se deja escrito el supuesto y se continúa.
-- Lo que el plan no previó es un hallazgo: la ejecución se detiene en ese momento y vuelve al análisis, porque seguir puede desencadenar algo mayor ([análisis 1](../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), conclusión 18). Eso no es preguntar «¿sigo?».
+- Lo que el plan no previó es un hallazgo: la ejecución se detiene en ese momento y vuelve al análisis, porque seguir puede desencadenar algo mayor ([análisis 1](../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), conclusión 18). Eso no es preguntar «¿sigo?».
 - Las preguntas que igual haya que hacer se **acumulan** y van en el reporte final, no interrumpiendo.
 - Esto no toca las puertas del núcleo: el commit y la publicación se siguen autorizando aparte ([`00·N2`](../../base/00-nucleo-blindado.md#n2--control-de-versiones-solo-bajo-pedido-blindada)), y eso no es «preguntar si sigo».
 

@@ -1,6 +1,6 @@
 # HU-004 · Un hallazgo detiene la ejecución y vuelve al análisis
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 6, 13, 14, 17, 18 y 24) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (punto 7). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 6, 13, 14, 17, 18 y 24) y del [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (punto 7). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada detiene al agente cuando aparece un hallazgo al ejecutar el plan ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada detiene al agente cuando aparece un hallazgo al ejecutar el plan ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -188,7 +188,7 @@ Y si no, se crea su pendiente y el plan continúa
 
 | Campo | Valor |
 |---|---|
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 

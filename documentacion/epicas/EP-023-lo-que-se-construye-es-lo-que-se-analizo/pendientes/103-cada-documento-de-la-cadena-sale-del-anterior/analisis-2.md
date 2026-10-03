@@ -1,15 +1,15 @@
 # Análisis 2: el enganche del análisis solo sirve para un análisis
 
-> **Aprobado** por el usuario el 2026-10-01, en el turno 173. Antes de aprobarlo, el pendiente pasó a la V3 en sus originales: [pendientes/103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y [pendiente.md](pendiente.md). Desde ese momento este análisis no se reescribe.
+> **Aprobado** por el usuario el 2026-10-01, en el turno 173. Antes de aprobarlo, el pendiente pasó a la V3 en sus originales: [pendientes/103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y [pendiente.md](pendiente.md). Desde ese momento este análisis no se reescribe.
 
 > Este análisis se redacta aplicando estas reglas.
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 1](analisis-1.md), aprobado el 2026-10-01. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El análisis 1 del pendiente 103 se llenó en tiempo real con un guion hecho solo para él, [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py), que tiene la ruta de ese análisis escrita adentro. Al aprobarlo hubo que apagarlo a mano en `.claude/settings.json`, y antes de apagarlo alcanzó a pasarle al análisis cerrado un turno posterior a la aprobación. El punto 29 del análisis pide una herramienta general, pero no dice cómo se prende ni cómo se apaga. |
+| Qué pasó | El análisis 1 del pendiente 103 se llenó en tiempo real con un guion hecho solo para él, [crear_analisis_103.py](../../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py), que tiene la ruta de ese análisis escrita adentro. Al aprobarlo hubo que apagarlo a mano en `.claude/settings.json`, y antes de apagarlo alcanzó a pasarle al análisis cerrado un turno posterior a la aprobación. El punto 29 del análisis pide una herramienta general, pero no dice cómo se prende ni cómo se apaga. |
 | Por qué importa | Cualquier proyecto que herede Cimiento tendría que configurar a mano el enganche de cada análisis y acordarse de apagarlo al aprobar. Si no se acuerda, la conversación entra en un análisis que ya no se reescribe. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105.
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13 |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13 |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. Y la plantilla del plan no permite comprobarlo con un programa. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105.
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-09-30-sesion.md), a partir del turno 142, el que sigue a la aprobación del análisis 1.
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-09-30-sesion.md), a partir del turno 142, el que sigue a la aprobación del análisis 1.
 
 ### 142 · Usuario, 2026-10-01 15:45:14
 > si
@@ -58,7 +58,7 @@ Reúne los pendientes 103, 104 y 105.
 **Agente**, 2026-10-01 15:45:58
 <!-- agente: 05eef870-81b6-4ee7-92f3-a3e810c8f255 -->
 
-El enganche quedó apagado. Quité sus dos entradas de [.claude/settings.json](../../../../.claude/settings.json) y comprobé que el archivo sigue siendo válido.
+El enganche quedó apagado. Quité sus dos entradas de [.claude/settings.json](../../../../../.claude/settings.json) y comprobé que el archivo sigue siendo válido.
 
 Antes de apagarlo, el enganche alcanzó a pasar al análisis el «sí» de este mensaje. Lo quité, y la conversación del análisis termina ahora en el turno 141, el de la aprobación, con su respuesta.
 
@@ -111,7 +111,7 @@ Pasos:
 
 Ya quedó abierto el análisis 2.
 
-- **El hallazgo H-2**, «El enganche del análisis solo sirve para un análisis», quedó en el [resumen de hoy](../../../../historico-chat/resumenes/2026-09-30/sesion.md), solo con «Qué pasó» y «Por qué importa», y con el enlace a su pendiente.
+- **El hallazgo H-2**, «El enganche del análisis solo sirve para un análisis», quedó en el [resumen de hoy](../../../../../historico-chat/resumenes/2026-09-30/sesion.md), solo con «Qué pasó» y «Por qué importa», y con el enlace a su pendiente.
 - **El [analisis-2.md](analisis-2.md)** se armó desde el borrador de la plantilla. Tiene la copia del H-2, la del pendiente vigente y una nota que dice que su conversación empieza en el turno 145 de la transcripción y se copia al cerrar.
 
 Los enlaces funcionan y quité las marcas que señaló el revisor.
@@ -198,7 +198,7 @@ Ese cambio deja algo por decidir. Si hay pausas, al copiar la conversación hay 
 
 El análisis 2 ya está prendido y le entró la conversación desde el turno 142 hasta este mensaje.
 
-Esta vez no hice otro guion para un solo análisis. El guion nuevo, [pasar_conversacion.py](../../../../historico-chat/scripts/2026-09-30/pasar_conversacion.py), no tiene la ruta de ningún análisis escrita adentro. La lee de un archivo de estado, `historico-chat/.estado/analisis-en-curso.txt`, que tiene tres líneas: qué análisis, qué transcripción y desde qué turno. Si el archivo no existe, no hace nada.
+Esta vez no hice otro guion para un solo análisis. El guion nuevo, [pasar_conversacion.py](../../../../../historico-chat/scripts/2026-09-30/pasar_conversacion.py), no tiene la ruta de ningún análisis escrita adentro. La lee de un archivo de estado, `historico-chat/.estado/analisis-en-curso.txt`, que tiene tres líneas: qué análisis, qué transcripción y desde qué turno. Si el archivo no existe, no hace nada.
 
 - **Prender:** escribir ese archivo.
 - **Apagar:** borrarlo.
@@ -218,7 +218,7 @@ Todavía faltan tres cosas, que son parte de lo que este análisis tiene que def
 **Agente**, 2026-10-01 16:14:37
 <!-- agente: 39863f51-7252-4cd0-b9fc-ccc8cd3ec895 -->
 
-Tenía razón. Las rayas largas no venían de lo que yo escribo: salían del formato de la transcripción. El programa del histórico ([validadores/historico.py](../../../../validadores/historico.py), líneas 127 y 153) separa cada turno de su hora con una raya, así: `### 142 · Usuario — 2026-10-01`.
+Tenía razón. Las rayas largas no venían de lo que yo escribo: salían del formato de la transcripción. El programa del histórico ([validadores/historico.py](../../../../../validadores/historico.py), líneas 127 y 153) separa cada turno de su hora con una raya, así: `### 142 · Usuario — 2026-10-01`.
 
 La transcripción está exenta de la regla, pero el análisis no, y al copiarla al análisis las rayas pasaban tal cual.
 
@@ -623,7 +623,7 @@ Los pasos 4 y 5 conviene hacerlos en una sesión nueva. ¿Arranco con el paso 1?
 **Agente**, 2026-10-01 19:01:57
 <!-- agente: 625e361c-470e-4f35-9158-f138382c509c -->
 
-El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](pendiente.md) de la carpeta del análisis.
+El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](pendiente.md) de la carpeta del análisis.
 
 - **De dónde sale:** ahora incluye el H-2 junto al H-13.
 - **El problema:** suma la frase sobre configurar a mano lo que pasa la conversación al análisis.

@@ -1,6 +1,6 @@
 # HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2) y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) (puntos 2, 3, 5, 7 y 8) y del [análisis 9](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md) (puntos 1, 2, 3, 5, 8 y 9; el 6 lo cumple el plan de la fase D). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2) y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) (puntos 2, 3, 5, 7 y 8) y del [análisis 9](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md) (puntos 1, 2, 3, 5, 8 y 9; el 6 lo cumple el plan de la fase D). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que no hay un documento que fije el alcance antes de la HU, y lo que pasa la conversación al análisis hay que configurarlo a mano ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que no hay un documento que fije el alcance antes de la HU, y lo que pasa la conversación al análisis hay que configurarlo a mano ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -500,8 +500,8 @@ Entonces no queda aprobado y el aviso dice qué falta
 
 | Campo | Valor |
 |---|---|
-| Punto de partida de la plantilla | el [borrador de la plantilla del análisis](../103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md) (análisis 3, punto 3). |
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md). |
+| Punto de partida de la plantilla | el [borrador de la plantilla del análisis](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md) (análisis 3, punto 3). |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) y [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md). |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 

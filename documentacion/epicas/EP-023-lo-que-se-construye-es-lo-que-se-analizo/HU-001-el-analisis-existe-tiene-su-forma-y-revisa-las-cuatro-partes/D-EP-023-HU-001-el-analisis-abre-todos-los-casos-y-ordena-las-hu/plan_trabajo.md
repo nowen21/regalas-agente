@@ -2,7 +2,7 @@
 
 **Para qué sirve este documento.** Dice qué se hace en esta fase, en qué orden, sobre qué archivos y cómo se comprueba cada criterio. Se aprueba antes de tocar nada. El requisito vive en la HU y las pruebas en el `plan_pruebas` de esta fase.
 
-**Versión 2**, del 2026-10-02. Cambia frente a la 1 por el [análisis 9](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md): el CA-20 en su versión siguiente, los CA-23 a CA-26, las recomendaciones consultadas de los análisis 1 a 9 en el CA-19, la versión 44.0.0 y la duda de 2.7 resuelta.
+**Versión 2**, del 2026-10-02. Cambia frente a la 1 por el [análisis 9](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md): el CA-20 en su versión siguiente, los CA-23 a CA-26, las recomendaciones consultadas de los análisis 1 a 9 en el CA-19, la versión 44.0.0 y la duda de 2.7 resuelta.
 
 ## 0. Identificación y origen  ·  `02·F14` Q1-Q2 · `13·DOC12`
 
@@ -16,7 +16,7 @@
 | **Fecha apertura** | 2026-10-02 |
 | **Rama** | `main` |
 
-**ORIGEN** (`13·DOC12`): complementa las fases A a C de la HU-001. Sale de los puntos 2, 3, 5, 7, 8 y 11 de «Lo que se tiene que hacer» del [análisis 8](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) y de los puntos 1, 2, 3, 5, 6, 8 y 9 del [análisis 9](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md). El punto 6 del análisis 9 es esta versión del plan.
+**ORIGEN** (`13·DOC12`): complementa las fases A a C de la HU-001. Sale de los puntos 2, 3, 5, 7, 8 y 11 de «Lo que se tiene que hacer» del [análisis 8](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) y de los puntos 1, 2, 3, 5, 6, 8 y 9 del [análisis 9](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md). El punto 6 del análisis 9 es esta versión del plan.
 
 **Carencias que cierra** (`02·F14` Q3): el análisis se quedaba en el caso que lo destapó, el orden de las HU no tenía razón, lo aprendido no quedaba para el análisis siguiente (análisis 8, H-8), y el análisis principal solo anotaba los análisis que cambiaban algo (análisis 9, H-11).
 

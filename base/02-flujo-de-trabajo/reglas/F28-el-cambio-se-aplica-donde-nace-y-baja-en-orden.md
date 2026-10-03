@@ -36,6 +36,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 **Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../../../validadores/reglas-validables.md): saber dónde nació un cambio exige leer la conversación que lo pidió.
 
-Del [análisis 1](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (conclusión 8) del pendiente «Lo que se construye se aparta de lo aprobado», fase `A` de la HU-002 de EP-023.
+Del [análisis 1](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (conclusión 8) del pendiente «Lo que se construye se aparta de lo aprobado», fase `A` de la HU-002 de EP-023.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

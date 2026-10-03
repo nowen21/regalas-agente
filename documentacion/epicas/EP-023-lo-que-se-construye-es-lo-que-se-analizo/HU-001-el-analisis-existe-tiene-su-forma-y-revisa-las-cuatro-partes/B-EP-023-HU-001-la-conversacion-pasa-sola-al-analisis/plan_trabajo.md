@@ -16,7 +16,7 @@
 
 **ORIGEN** (`13·DOC12`): funcionalidad nueva. Continúa la [fase `A`](../A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/funcionalidad_implementada.md), que dejó la plantilla del análisis; esta fase hace que la conversación pase sola a él.
 
-**Carencias que cierra** (`02·F14` Q3): la última frase del problema del [pendiente](../../103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md): lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis.
+**Carencias que cierra** (`02·F14` Q3): la última frase del problema del [pendiente](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md): lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis.
 
 **Aprobación** (`02·F4`): el usuario aprobó este plan y el de pruebas el 2026-10-02.
 

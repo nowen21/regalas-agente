@@ -266,24 +266,24 @@ class ElAvisoQueNoLlegaSeDice(unittest.TestCase):
 
 class LaCarpetaDePendientesSeInstala(unittest.TestCase):
     """`61` · Ocho de nueve proyectos no tenían dónde recibir un aviso porque
-    el instalador no dejaba la carpeta puesta. El aviso solo lo hizo visible:
-    lo de fondo es que **ninguno de esos ocho tenía dónde escribir un pendiente**.
+    el instalador no dejaba la carpeta puesta. Desde la 45.0.0
+    (`EP-023·HU-003·CA-07`) cada pendiente vive en la carpeta `pendientes/` de
+    lo que lo origina, así que el instalador ya no crea la de la raíz: la deja
+    como historia donde existe, y no la toca.
     """
 
-    def test_pendientes_esta_en_la_estructura_base(self):
+    def test_pendientes_ya_no_esta_en_la_estructura_base(self):
         import instalar
-        self.assertIn("pendientes", instalar.CARPETAS_BASE)
+        self.assertNotIn("pendientes", instalar.CARPETAS_BASE)
 
-    def test_el_que_ya_esta_instalado_la_recibe(self):
-        """La lista se recorre en **cada** instalación, no solo en la primera:
-        por eso los ocho la reciben al ponerse al día, sin hacer nada."""
+    def test_el_proyecto_nuevo_no_la_recibe(self):
         import instalar
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
-        for n in ("proyectos", "documentacion", "prompts"):
-            os.makedirs(os.path.join(tmp.name, n))          # instalado, sin pendientes/
         instalar.instalar_estructura(tmp.name, aplicar=True)
-        self.assertTrue(os.path.isdir(os.path.join(tmp.name, "pendientes")))
+        self.assertFalse(os.path.isdir(os.path.join(tmp.name, "pendientes")))
+        import pendientes
+        self.assertEqual([], [h for h in pendientes.validar(tmp.name) if h.severidad == "FALLA"])
 
     def test_no_pisa_lo_que_ya_estaba(self):
         import instalar

@@ -2,7 +2,7 @@
 
 ## F24 · El defecto del estándar se reporta, no se corrige
 
-Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá nombrando el proyecto de origen, otro acá diciendo que espera esa corrección, y sigue con lo suyo. El de acá queda abierto hasta que llegue el aviso de que se corrigió (extiende [`02·F23`](F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
+Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá que enlaza el hallazgo de acá, otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá (extiende [`02·F23`](F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 ```
 INCORRECTO: se parchea el estándar en la copia local del proyecto → los otros
@@ -17,7 +17,7 @@ CORRECTO:   se reporta en el estándar, se anota acá el seguimiento, y el
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v23.7.0**, el **2026-08-18**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v45.0.0**, el **2026-10-02**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -37,8 +37,8 @@ La fila **16** es N/A: no tiene excepción. Que el proyecto pueda seguir trabaja
 
 La fila **17** resuelve un choque que estaba abierto y conviene dejarlo dicho: [`02·F20`](F20-para-y-propon-lo-que-descubras-fuera-del-ca.md) manda parar y proponer lo que se descubre fuera del criterio de aceptación, y **no decía qué hacer cuando lo descubierto es del estándar y no del proyecto**. Ahí `F20` para y esta dice a dónde va lo que se propuso. Era el hueco anotado en el punto 8 del [pendiente 33](../../../pendientes/hecho/lo-que-quedo-abierto-en-las-sesiones-viejas.md).
 
-**Validable a medias, y la mitad que se puede ya corre:** `validar.py pendientes` comprueba que un pendiente que declara «Proyecto de origen» lo **nombre** de verdad, en vez de dejar la casilla vacía o con el marcador sin llenar.
+**Validable a medias:** desde la 45.0.0 nadie escribe «Proyecto de origen»: el enlace de «De dónde sale» ya dice de qué proyecto viene, y el estado del de acá lo calcula `validadores/pendientes.py` siguiendo ese enlace (análisis 1 del pendiente 103, conclusión 36).
 
-Lo que **no** puede ver ningún programa de acá: si el pendiente del otro lado existe —vive en otro repositorio— ni si el aviso de vuelta llegó. Queda dicho para que nadie lo dé por cubierto.
+Lo que **no** puede ver ningún programa de acá: el pendiente del otro lado cuando vive en un repositorio que no está en esta máquina. Queda dicho para que nadie lo dé por cubierto.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

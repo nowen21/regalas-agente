@@ -28,6 +28,6 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A — **16**: no tiene excepción. Es la primera de las dos partes que [`F4.5`](F4.5-implementa-literal-el-ca-y-propon-lo-que-sobre.md) declaraba *"indivisibles"* y no lo eran: se puede implementar de menos sin haber descubierto nada. La segunda es [`F20`](F20-para-y-propon-lo-que-descubras-fuera-del-ca.md).
 
-**El ejemplo cambió el 2026-10-02.** El anterior ponía como incorrecto revisar el permiso en el servidor cuando el CA pedía ocultar un botón, y eso lo exige [`04·S1`](../../04-seguridad.md#s1--autorización-en-cada-acción-sensible). Lo que exige la regla no cambió. Del [análisis 6](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) (conclusión 6), fase `A` de la HU-005 de EP-023.
+**El ejemplo cambió el 2026-10-02.** El anterior ponía como incorrecto revisar el permiso en el servidor cuando el CA pedía ocultar un botón, y eso lo exige [`04·S1`](../../04-seguridad.md#s1--autorización-en-cada-acción-sensible). Lo que exige la regla no cambió. Del [análisis 6](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) (conclusión 6), fase `A` de la HU-005 de EP-023.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.

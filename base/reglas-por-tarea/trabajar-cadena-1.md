@@ -116,7 +116,7 @@ CORRECTO:   B-EP-001-HU-003-Implementación de la lógica de negocio, dentro de 
 Fuente: [02·F12](../02-flujo-de-trabajo/reglas/F12-relacion-y-nomenclatura-de-fases.md#f12--nombra-y-ubica-cada-fase-según-la-nomenclatura-del-anexo)
 
 ## F13 · Deja la estructura base puesta antes de trabajar
-Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md))— el agente crea las carpetas que la norma exige: `proyectos/` para el código del usuario y, al lado, `.agente/`, `prompts/`, `documentacion/` y `pendientes/`. Crearlas no es decisión suya; **qué va dentro sí**, y ahí no mueve nada.
+Antes de cualquier paso del flujo —incluso antes de cargar contexto ([`02·F1`](../02-flujo-de-trabajo/reglas/F1-carga-el-contexto-antes-de-actuar.md))— el agente crea las carpetas que la norma exige: `proyectos/` para el código del usuario y, al lado, `.agente/`, `prompts/` y `documentacion/`. Crearlas no es decisión suya; **qué va dentro sí**, y ahí no mueve nada.
 ```
 INCORRECTO: existe código suelto en la raíz → el agente crea `proyectos/` y mueve
             el código del usuario adentro
@@ -234,7 +234,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 Fuente: [02·F23](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md#f23--ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario)
 
 ## F24 · El defecto del estándar se reporta, no se corrige
-Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá nombrando el proyecto de origen, otro acá diciendo que espera esa corrección, y sigue con lo suyo. El de acá queda abierto hasta que llegue el aviso de que se corrigió (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
+Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá que enlaza el hallazgo de acá, otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 ```
 INCORRECTO: se parchea el estándar en la copia local del proyecto → los otros
             proyectos siguen con el defecto y nadie se entera

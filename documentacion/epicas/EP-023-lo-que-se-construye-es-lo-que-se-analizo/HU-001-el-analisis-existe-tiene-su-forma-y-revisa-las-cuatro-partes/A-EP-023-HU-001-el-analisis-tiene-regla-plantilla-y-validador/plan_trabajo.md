@@ -14,11 +14,11 @@
 | **Fecha apertura** | 2026-10-01 |
 | **Rama** | `main` |
 
-**ORIGEN** (`13·DOC12`): primera fase de la HU-001, que sale de los análisis 1, 2 y 4 del pendiente [Lo que se construye se aparta de lo aprobado](../../103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md).
+**ORIGEN** (`13·DOC12`): primera fase de la HU-001, que sale de los análisis 1, 2 y 4 del pendiente [Lo que se construye se aparta de lo aprobado](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md).
 
-**Carencias que cierra** (`02·F14` Q3): las que nombra el [pendiente](../../103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md): no hay un documento que fije el alcance antes de la HU. En esta fase, el análisis entra a la cadena con su regla, su plantilla y su validador.
+**Carencias que cierra** (`02·F14` Q3): las que nombra el [pendiente](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md): no hay un documento que fije el alcance antes de la HU. En esta fase, el análisis entra a la cadena con su regla, su plantilla y su validador.
 
-**Versión 2, del [análisis 5](../../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md).** La versión 1 se aprobó el 2026-10-01 y se detuvo antes de la T-01 por el H-4: el CA-05 pedía una regla con dos exigencias. Esta versión parte esa regla en `DOC24` y `DOC25`, suma los dos archivos que faltaban y acorta `F0` y `F23`. El usuario la aprobó el 2026-10-01 (`02·F4`).
+**Versión 2, del [análisis 5](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md).** La versión 1 se aprobó el 2026-10-01 y se detuvo antes de la T-01 por el H-4: el CA-05 pedía una regla con dos exigencias. Esta versión parte esa regla en `DOC24` y `DOC25`, suma los dos archivos que faltaban y acorta `F0` y `F23`. El usuario la aprobó el 2026-10-01 (`02·F4`).
 
 **Disparo** (`02·F15`, etapa 2): el usuario pidió escribir la especificación y el plan de la HU-001 el 2026-10-01, con «Escriba».
 
@@ -68,7 +68,7 @@ Medido el 2026-10-01:
 - `validadores/sitio.py` exige que cada validador esté en `anatomia/mapa-del-sitio.md`.
 - Una regla derogada conserva su texto, lleva `[DEROGADA en X → ver Y]` en el título y una nota de por qué; el modelo es `00·ID2`.
 - Citan `DOC8` o `cierre-analisis`: `validadores/plantillas.py`, `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`, `base/02-flujo-de-trabajo/estructura-base.md`, `base/13-documentacion/base.md`, `base/13-documentacion/retrodocumentacion.md`, `base/glosario.md` y `base/mapa-de-tareas.md`.
-- No hay plantilla del análisis. El punto de partida es el [borrador](../../103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md) (análisis 3, punto 3).
+- No hay plantilla del análisis. El punto de partida es el [borrador](../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/borrador-plantilla-analisis.md) (análisis 3, punto 3).
 - `validadores/validar.py` registra cada validador como subcomando; no hay ninguno para el análisis.
 - `VERSION` dice 39.6.0.
 

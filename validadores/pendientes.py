@@ -127,39 +127,6 @@ def _existe_la_fase(raiz, nombre):
     return False
 
 
-def abierto_nombra_su_historia(raiz):
-    """`CA-02` · un pendiente abierto dice a qué historia baja.
-
-    **Falla, no aviso.** Un pendiente abierto sin historia no se puede
-    ejecutar: `02·F23` manda bajarlo a fase de una historia, y sin ella nadie
-    sabe de cuál. El enrutamiento del 2026-08-17 dejó las 33 con la suya, y
-    esto es lo que impide que la 34 nazca sin ella.
-    """
-    carpeta = os.path.join(raiz, CARPETA)
-    if not os.path.isdir(carpeta):
-        return []
-    hallazgos = []
-    for nombre in sorted(os.listdir(carpeta)):
-        if not re.match(r"^\d+-.+\.md$", nombre, re.I):
-            continue
-        ruta = os.path.join(carpeta, nombre)
-        texto = _leer(ruta)
-        m = _FILA_HISTORIA.search(texto)
-        if not m:
-            hallazgos.append(Hallazgo(
-                FALLA, ruta, 0,
-                "no trae la fila **Historia de usuario** en su ficha — sin ella "
-                "nadie sabe a qué historia baja este pendiente (02·F23)"))
-            continue
-        dicho = m.group(1).strip()
-        if not dicho or dicho in ("—", "-"):
-            hallazgos.append(Hallazgo(
-                FALLA, ruta, 0,
-                "la fila **Historia de usuario** está vacía — o nombra la "
-                "historia, o dice por qué todavía no tiene"))
-    return hallazgos
-
-
 def _archivos(carpeta):
     if not os.path.isdir(carpeta):
         return []
@@ -195,7 +162,7 @@ def numeros_del_indice(proyecto):
 def tomados(proyecto):
     """Todos los números que **no se pueden reutilizar**: los de la carpeta y
     los que el índice recuerda de los ya cerrados."""
-    return set(numerados(proyecto)) | numeros_del_indice(proyecto)
+    return set(numerados(proyecto)) | numeros_del_indice(proyecto) | set(numeros_nuevos(proyecto))
 
 
 def sin_numero(proyecto):
@@ -253,18 +220,30 @@ def validar(proyecto):
     raiz = os.path.join(proyecto, CARPETA)
     hallazgos = []
 
-    if not os.path.isdir(raiz):
-        return [Hallazgo(FALLA, CARPETA, 0,
-                         "no existe la carpeta de pendientes (HU-018)")]
+    # `EP-023·HU-003` · Desde la 45.0.0 `pendientes/` es historia: el proyecto
+    # nuevo no la tiene, y eso no es una falla.
+    hallazgos += forma_nueva(proyecto)
 
-    # CA-02 · el número repetido.
-    for numero, nombres in sorted(numerados(proyecto).items()):
+    # CA-02 · el número repetido, en las dos formas. El pendiente que pasó a
+    # la forma nueva deja su archivo viejo como historia, con el mismo número
+    # y el mismo nombre: es el mismo pendiente, no un choque.
+    todos = numerados(proyecto)
+    for numero, rutas in numeros_nuevos(proyecto).items():
+        for ruta in rutas:
+            viejos = todos.get(numero, [])
+            if os.path.basename(ruta) + ".md" in viejos:
+                continue
+            todos.setdefault(numero, []).append(comun.relativo(ruta))
+    for numero, nombres in sorted(todos.items()):
         if len(nombres) > 1:
             hallazgos.append(Hallazgo(
                 FALLA, f"{CARPETA}/", 0,
                 f"el número {numero} está tomado por {len(nombres)} pendientes: "
                 + ", ".join(f"`{n}`" for n in nombres)
                 + " — un número no se reutiliza (HU-018)"))
+
+    if not os.path.isdir(raiz):
+        return hallazgos
 
     # Transversal de errores · el nombre que no se puede interpretar se
     # reporta y **no detiene**: un archivo suelto no puede invalidar la
@@ -297,19 +276,229 @@ def validar(proyecto):
             f"sabe a quién avisarle al cerrar, y ese proyecto se queda "
             f"esperando para siempre (02·F24)"))
 
-    # `EP-004·HU-016` · Las dos direcciones de la trazabilidad de un pendiente:
-    # hacia arriba (el abierto dice a qué historia baja) y hacia abajo (el
-    # cerrado dice en qué fase se hizo).
-    hallazgos += abierto_nombra_su_historia(proyecto)
+    # `EP-004·HU-016` · El cerrado dice en qué fase se hizo. La historia a la
+    # que baja el abierto ya no se escribe en el pendiente: la decide su
+    # análisis (`EP-023·HU-003`, análisis 1 del pendiente 103, conclusión 15).
     hallazgos += cerrado_declara_su_fase(proyecto)
 
     return hallazgos
 
 
+# ── `EP-023·HU-003` · La forma nueva ─────────────────────────────────────────
+#
+# Cada pendiente es una carpeta `NNN-<slug>/` con su `pendiente.md` y sus
+# análisis, dentro de una carpeta `pendientes/` de lo que lo origina: una épica,
+# una HU o el resumen del día mientras no tiene dueño (análisis 8 del pendiente
+# 103, punto 15 de «Lo acordado»). Solo tiene «De dónde sale», «El problema» y
+# «Por qué importa»; su estado lo calcula `estado()` siguiendo los enlaces.
+
+# Donde puede vivir una carpeta `pendientes/`.
+DONDE = (("documentacion", "epicas"), ("historico-chat", "resumenes"))
+INDICE_NUEVO = os.path.join("documentacion", "pendientes.md")
+
+_CARPETA_PENDIENTE = re.compile(r"^(\d+)-[^.]+$")
+_ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
+_APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
+_DE_DONDE = re.compile(r"^\|\s*\*\*De dónde sale\*\*\s*\|(.+?)\|\s*$", re.M)
+_ENLACE = re.compile(r"\]\(([^)#\s]+)")
+_HU_EN_TEXTO = re.compile(r"EP-0*(\d+)\D{1,40}?HU-0*(\d+)")
+_FILA = re.compile(r"^\| *\d+ *\|(.*)\|\s*$", re.M)
+_PARTES = (("De dónde sale", re.compile(r"^\|\s*\*\*De dónde sale\*\*\s*\|", re.M)),
+           ("El problema", re.compile(r"^## El problema\s*$", re.M)),
+           ("Por qué importa", re.compile(r"^## Por qué importa\s*$", re.M)))
+
+
+def carpetas(proyecto):
+    """Las carpetas de pendiente de la forma nueva: `[ruta absoluta]`."""
+    proyecto = os.path.abspath(proyecto)
+    salida = []
+    for partes in DONDE:
+        base = os.path.join(proyecto, *partes)
+        for actual, subcarpetas, archivos in os.walk(base):
+            subcarpetas[:] = [s for s in subcarpetas if not s.startswith(".")]
+            if "pendiente.md" in archivos and _CARPETA_PENDIENTE.match(os.path.basename(actual)):
+                salida.append(actual)
+    return sorted(salida)
+
+
+def numeros_nuevos(proyecto):
+    """`{numero: [carpetas]}` de los pendientes de la forma nueva."""
+    salida = {}
+    for carpeta in carpetas(proyecto):
+        numero = int(_CARPETA_PENDIENTE.match(os.path.basename(carpeta)).group(1))
+        salida.setdefault(numero, []).append(carpeta)
+    return salida
+
+
+def forma_nueva(proyecto):
+    """`CA-03` · el pendiente de la forma nueva trae sus tres partes, y vive en `pendientes/`."""
+    hallazgos = []
+    for carpeta in carpetas(proyecto):
+        ruta = os.path.join(carpeta, "pendiente.md")
+        texto = _leer(ruta)
+        faltan = [nombre for nombre, patron in _PARTES if not patron.search(texto)]
+        if faltan:
+            hallazgos.append(Hallazgo(
+                FALLA, ruta, 0,
+                "le falta " + ", ".join(f"«{f}»" for f in faltan)
+                + " — un pendiente trae de dónde sale, el problema y por qué importa (EP-023·HU-003)"))
+        if os.path.basename(os.path.dirname(carpeta)) != CARPETA:
+            hallazgos.append(Hallazgo(
+                AVISO, carpeta, 0,
+                "no está dentro de una carpeta `pendientes/` de lo que lo origina (EP-023·HU-003)"))
+    return hallazgos
+
+
+def _destino(enlace, desde):
+    """La ruta a la que lleva un enlace relativo escrito en `desde`."""
+    return os.path.normpath(os.path.join(os.path.dirname(desde), enlace.replace("/", os.sep)))
+
+
+def padre(carpeta):
+    """El pendiente que enlaza su «De dónde sale», si es otro pendiente: su carpeta, o ""."""
+    ruta = os.path.join(carpeta, "pendiente.md")
+    m = _DE_DONDE.search(_leer(ruta))
+    if not m:
+        return ""
+    for enlace in _ENLACE.findall(m.group(1)):
+        destino = _destino(enlace, ruta)
+        if os.path.basename(destino) == "pendiente.md":
+            destino = os.path.dirname(destino)
+        if os.path.isfile(os.path.join(destino, "pendiente.md")) and \
+                os.path.normcase(destino) != os.path.normcase(carpeta):
+            return destino
+    return ""
+
+
+def analisis_de(carpeta):
+    """Los `analisis-N.md` de la carpeta, en orden."""
+    nombres = [n for n in os.listdir(carpeta) if _ANALISIS.match(n)] if os.path.isdir(carpeta) else []
+    return [os.path.join(carpeta, n) for n in sorted(nombres, key=lambda n: int(_ANALISIS.match(n).group(1)))]
+
+
+def _hu_terminada(ruta):
+    return bool(re.search(r"^\|\s*\*\*Estado\*\*\s*\|\s*Terminada", _leer(ruta), re.M))
+
+
+def _hu_por_numero(proyecto, epica, hu):
+    base = os.path.join(proyecto, "documentacion", "epicas")
+    if not os.path.isdir(base):
+        return ""
+    for e in os.listdir(base):
+        if re.match(r"EP-0*%d-" % epica, e):
+            for h in os.listdir(os.path.join(base, e)):
+                if re.match(r"HU-0*%d-" % hu, h):
+                    ruta = os.path.join(base, e, h, h + ".md")
+                    if os.path.isfile(ruta):
+                        return ruta
+    return ""
+
+
+def _fila_cumplida(celda, analisis, proyecto):
+    """Si el trabajo de una fila de «Lo que se tiene que hacer» ya está hecho."""
+    if re.search(r"(?i)este análisis", celda):
+        return True
+    hus = [_destino(e, analisis) for e in _ENLACE.findall(celda)]
+    hus = [h for h in hus if re.match(r"HU-\d+", os.path.basename(h)) and h.endswith(".md")]
+    if not hus:
+        hus = [r for r in (_hu_por_numero(proyecto, int(e), int(h)) for e, h in _HU_EN_TEXTO.findall(celda)) if r]
+    return bool(hus) and all(_hu_terminada(h) for h in hus)
+
+
+def estado(carpeta, proyecto=None, _vistos=None):
+    """`CA-04` · «abierto» o «cerrado», calculado: nadie lo escribe.
+
+    Cerrado cuando tiene al menos un análisis aprobado y cada fila de su «Lo que
+    se tiene que hacer» está cumplida: dice «Este análisis», o toda HU que nombra
+    está terminada. El pendiente de seguimiento toma el estado de su padre
+    (análisis 1 del pendiente 103, conclusiones 16 y 36).
+    """
+    proyecto = os.path.abspath(proyecto or comun.RAIZ)
+    vistos = _vistos or set()
+    clave = os.path.normcase(os.path.abspath(carpeta))
+    if clave in vistos:
+        return "abierto"
+    vistos.add(clave)
+    arriba = padre(carpeta)
+    if arriba:
+        return estado(arriba, proyecto, vistos)
+    aprobados = [a for a in analisis_de(carpeta) if _APROBADO.search(_leer(a))]
+    if not aprobados:
+        return "abierto"
+    for analisis in aprobados:
+        texto = _leer(analisis)
+        m = re.search(r"^## Lo que se tiene que hacer.*$", texto, re.M)
+        if not m:
+            continue
+        fin = re.search(r"^## ", texto[m.end():], re.M)
+        seccion = texto[m.end():m.end() + fin.start()] if fin else texto[m.end():]
+        for resto in _FILA.findall(seccion):
+            celda = resto.split("|")[-1]
+            if not _fila_cumplida(celda, analisis, proyecto):
+                return "abierto"
+    return "cerrado"
+
+
+def _titulo(ruta):
+    primera = _leer(ruta).split("\n", 1)[0]
+    return re.sub(r"^#\s*(Pendiente\s*[:·]\s*)?", "", primera).strip()
+
+
+def indice(proyecto=None):
+    """`CA-08` · El índice de todos los pendientes, armado por el programa."""
+    proyecto = os.path.abspath(proyecto or comun.RAIZ)
+    destino = os.path.dirname(os.path.join(proyecto, INDICE_NUEVO))
+    filas = []
+    for carpeta in carpetas(proyecto):
+        numero = int(_CARPETA_PENDIENTE.match(os.path.basename(carpeta)).group(1))
+        ruta = os.path.join(carpeta, "pendiente.md")
+        enlace = os.path.relpath(ruta, destino).replace(os.sep, "/")
+        donde = os.path.relpath(carpeta, proyecto).replace(os.sep, "/")
+        filas.append((numero, f"[{_titulo(ruta)}]({enlace})", f"`{donde}`", estado(carpeta, proyecto)))
+    viejos = os.path.join(proyecto, CARPETA)
+    nuevos = set(numeros_nuevos(proyecto))
+    for numero, nombres in numerados(proyecto).items():
+        if numero in nuevos:
+            continue                    # pasó a la forma nueva: cuenta allá
+        for nombre in nombres:
+            sub = "" if os.path.isfile(os.path.join(viejos, nombre)) else CERRADOS + "/"
+            ruta = os.path.join(viejos, sub + nombre)
+            texto = _leer(ruta)
+            cerrado = sub or re.search(r"(?i)\*\*Estado:\*\*\s*\**hecho", texto)
+            enlace = os.path.relpath(ruta, destino).replace(os.sep, "/")
+            filas.append((numero, f"[{_titulo(ruta)}]({enlace})", f"`{CARPETA}/{sub}`, forma anterior",
+                          "cerrado" if cerrado else "abierto"))
+    # Los cerrados de la forma anterior que perdieron su número al moverse a
+    # `hecho/`: entran igual, porque el índice es de todos.
+    sin_numero_cerrados = []
+    for nombre in _archivos(os.path.join(viejos, CERRADOS)):
+        if not _NUMERADO.match(nombre):
+            ruta = os.path.join(viejos, CERRADOS, nombre)
+            enlace = os.path.relpath(ruta, destino).replace(os.sep, "/")
+            sin_numero_cerrados.append(f"| — | [{_titulo(ruta)}]({enlace}) | `{CARPETA}/{CERRADOS}/`, forma anterior | cerrado |")
+    lineas = ["# Pendientes", "",
+              "> Lo arma `python validadores/validar.py pendientes --indice`; no se edita a mano. "
+              "El estado se calcula: un pendiente cierra cuando se cumple el plan que salió de él. "
+              "Los de la forma anterior dicen el estado que tenían escrito; los cerrados que perdieron "
+              "su número al pasar a `pendientes/hecho/` van al final, sin número.", "",
+              "| # | Pendiente | Dónde vive | Estado |", "|---|---|---|---|"]
+    lineas += ["| %d | %s | %s | %s |" % f for f in sorted(filas)]
+    lineas += sorted(sin_numero_cerrados)
+    return "\n".join(lineas) + "\n"
+
+
+def escribir_indice(proyecto=None):
+    """Escribe el índice en `documentacion/pendientes.md` y devuelve su ruta."""
+    proyecto = os.path.abspath(proyecto or comun.RAIZ)
+    ruta = os.path.join(proyecto, INDICE_NUEVO)
+    os.makedirs(os.path.dirname(ruta), exist_ok=True)
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+        f.write(indice(proyecto))
+    return ruta
+
+
 def linea_proximo(proyecto):
     """La línea que dice el próximo número libre — CA-01."""
-    if not os.path.isdir(os.path.join(os.path.abspath(proyecto), CARPETA)):
-        return ""
     ocupados = tomados(proyecto)
     abiertos = len(numerados(proyecto))
     return (f"Pendientes: {abiertos} con archivo · {len(ocupados)} números "

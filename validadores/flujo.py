@@ -188,8 +188,10 @@ def validar(proyecto):
             for n in ("epica.md", f"{nombre_epica}.md"))
         epica_con_fases = False
         for nombre_hu in fases._subcarpetas(ruta_epica):
+            if nombre_hu == fases.PENDIENTES:
+                continue                # EP-023·HU-003 · los pendientes de la épica
             ruta_hu = os.path.join(ruta_epica, nombre_hu)
-            tiene_fases = bool(fases._subcarpetas(ruta_hu))
+            tiene_fases = bool([f for f in fases._subcarpetas(ruta_hu) if f != fases.PENDIENTES])
             epica_con_fases = epica_con_fases or tiene_fases
             # F0 · la HU existe como documento.
             if tiene_fases and not os.path.isfile(os.path.join(ruta_hu, f"{nombre_hu}.md")):

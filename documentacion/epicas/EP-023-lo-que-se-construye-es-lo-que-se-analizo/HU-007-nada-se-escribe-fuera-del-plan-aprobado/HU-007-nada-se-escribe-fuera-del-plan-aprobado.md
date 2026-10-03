@@ -1,6 +1,6 @@
 # HU-007 · Nada se escribe fuera del plan aprobado
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada detiene al agente cuando trabaja fuera del plan aprobado, y la plantilla del plan no permite comprobarlo con un programa ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que nada detiene al agente cuando trabaja fuera del plan aprobado, y la plantilla del plan no permite comprobarlo con un programa ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -142,7 +142,7 @@ Entonces la lista incluye lo que autorizan esas reglas
 
 | Campo | Valor |
 |---|---|
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 

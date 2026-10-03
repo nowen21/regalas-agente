@@ -49,32 +49,23 @@ class PendienteTrazable(unittest.TestCase):
         with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
             f.write(texto)
 
-    # ── hacia arriba: el abierto nombra su historia ──────────────────────
+    # ── hacia arriba: ya no se escribe en el pendiente ───────────────────
+    #
+    # `EP-023 · HU-003 · CA-03` · La historia a la que baja un pendiente la
+    # decide su análisis (análisis 1 del pendiente 103, conclusión 15). El
+    # abierto sin la fila ya no falla, y el formato viejo se acepta tal cual.
 
-    def test_cp001_el_abierto_sin_la_fila_se_reporta(self):
+    def test_cp001_el_abierto_sin_la_fila_ya_no_falla(self):
         self.escribir("pendientes/77-algo.md",
                       FICHA % (u"Algo", u"abierto", u"| **Tamaño** | chico |"))
-        h = pendientes.abierto_nombra_su_historia(self.tmp)
-        self.assertEqual(1, len(h))
-        self.assertEqual(FALLA, h[0].severidad, "un abierto sin historia no se puede ejecutar")
+        fallas = [h for h in pendientes.validar(self.tmp) if h.severidad == FALLA]
+        self.assertEqual([], fallas)
 
-    def test_cp003_el_tema_declarado_pasa_y_la_fila_vacia_no(self):
-        """No toda idea tiene historia todavía, y decirlo es una respuesta."""
+    def test_cp003_el_que_trae_la_fila_tambien_pasa(self):
         self.escribir("pendientes/77-libreta.md", FICHA % (
-            u"Libreta", u"abierto",
-            u"| **Historia de usuario** | No es un ítem, es la libreta: cada idea "
-            u"nombra la suya al promoverse |"))
-        self.assertEqual([], pendientes.abierto_nombra_su_historia(self.tmp))
-
-        self.escribir("pendientes/78-vacio.md", FICHA % (
-            u"Vacío", u"abierto", u"| **Historia de usuario** |  |"))
-        h = pendientes.abierto_nombra_su_historia(self.tmp)
-        self.assertTrue(any("vacía" in x.mensaje for x in h))
-
-    def test_cp006_lo_que_no_es_un_pendiente_numerado_no_cuenta(self):
-        """El índice de la carpeta no es un pendiente."""
-        self.escribir("pendientes/README.md", u"# Índice\n\nnada.\n")
-        self.assertEqual([], pendientes.abierto_nombra_su_historia(self.tmp))
+            u"Libreta", u"abierto", u"| **Historia de usuario** | La que diga su análisis |"))
+        fallas = [h for h in pendientes.validar(self.tmp) if h.severidad == FALLA]
+        self.assertEqual([], fallas)
 
     # ── hacia abajo: el cerrado declara su fase ──────────────────────────
 

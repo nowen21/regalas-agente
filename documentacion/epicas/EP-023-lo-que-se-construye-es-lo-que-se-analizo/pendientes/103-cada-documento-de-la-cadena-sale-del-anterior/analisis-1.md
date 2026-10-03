@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 ## Recomendaciones
 
@@ -17,7 +17,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -38,7 +38,7 @@
 
 |Campo |Detalle |
 |---|---|
-| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), sobre por qué el agente olvida las reglas |
+| **De dónde sale** | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), sobre por qué el agente olvida las reglas |
 
 #### El problema
 
@@ -46,7 +46,7 @@ Entre el pendiente y la historia de usuario no hay un documento que fije el alca
 
 #### Por qué importa
 
-Cada eslabón puede traer asuntos que el anterior no nombró, y el plan termina con trabajo que nadie aprobó. El freno del [pendiente 105](../../../../pendientes/105-nada-se-ejecuta-fuera-del-plan-aprobado.md) sirve solo si el plan es fiel a lo pedido.
+Cada eslabón puede traer asuntos que el anterior no nombró, y el plan termina con trabajo que nadie aprobó. El freno del [pendiente 105](../../../../../pendientes/105-nada-se-ejecuta-fuera-del-plan-aprobado.md) sirve solo si el plan es fiel a lo pedido.
 
 ---
 
@@ -60,7 +60,7 @@ Corrijo la redacción del hallazgo que anoté en el resumen y sigo.
 
 El pendiente 103 está bien planteado, pero antes de escribir la regla hay que decidir tres cosas. La tercera no estaba en el pendiente: sale de compararlo con `02·F0`.
 
-**1. ¿Qué cadena vale?** El pendiente dice hallazgo, pendiente, análisis, historia y plan. [`02·F0`](../../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) dice planteamiento, épica, HU, especificación, plan y código. Además, su ejemplo CORRECTO nombra un «análisis» que el cuerpo de la regla no incluye. Quedó anotado como H-1 en el [resumen de la sesión](../../../../historico-chat/resumenes/2026-09-30/sesion.md).
+**1. ¿Qué cadena vale?** El pendiente dice hallazgo, pendiente, análisis, historia y plan. [`02·F0`](../../../../../base/02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md) dice planteamiento, épica, HU, especificación, plan y código. Además, su ejemplo CORRECTO nombra un «análisis» que el cuerpo de la regla no incluye. Quedó anotado como H-1 en el [resumen de la sesión](../../../../../historico-chat/resumenes/2026-09-30/sesion.md).
 - **Recomendación:** que manden los eslabones de `F0` y que el análisis entre entre el pendiente y la épica, o la HU cuando no haya épica. Con eso, `F0` se corrige para que su cuerpo diga lo mismo que su ejemplo.
 
 **2. `01·C14` frente a `02·F19`.**
@@ -68,7 +68,7 @@ El pendiente 103 está bien planteado, pero antes de escribir la regla hay que d
 
 **3. ¿Regla nueva o dentro de `F0`?**
 - **Recomendación:** regla nueva en `02`. `F0` exige el orden de los eslabones y esta exige que el contenido de cada uno venga del anterior. Son dos exigencias, y `M5` pide una por regla.
-- Ya existe el modelo: [`02·F18`](../../../../base/02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) exige que cada tarea del plan cite un criterio de aceptación. La regla nueva lleva eso a todos los eslabones, y `F18` queda como el caso del plan.
+- Ya existe el modelo: [`02·F18`](../../../../../base/02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md) exige que cada tarea del plan cite un criterio de aceptación. La regla nueva lleva eso a todos los eslabones, y `F18` queda como el caso del plan.
 - Los puntos 2 y 4 del pendiente se reducen a esa sola exigencia: si todo punto cita su origen, no puede aparecer alcance nuevo.
 
 Falta que usted decida los tres puntos.
@@ -102,7 +102,7 @@ Aparte: propongo guardar la sesión como `2026-09-30-analisis-pendiente-103.md`,
 
 Me equivoqué. «Analicemos» pide analizar en el chat, no escribir archivos. Tomé el resumen de la sesión como un registro que podía llenar sin permiso, porque el aviso automático dice que se llena cuando aparece cada hallazgo. Ese aviso no reemplaza su palabra (`01·C28`, `00·N1`).
 
-Ya lo había hecho en la respuesta anterior: escribí el hallazgo H-1 en [historico-chat/resumenes/2026-09-30/sesion.md](../../../../historico-chat/resumenes/2026-09-30/sesion.md) sin que usted lo pidiera, y además con una lectura equivocada de su propuesta. Ese texto sigue en el archivo. Si quiere que lo quite, dígalo con «Revierta».
+Ya lo había hecho en la respuesta anterior: escribí el hallazgo H-1 en [historico-chat/resumenes/2026-09-30/sesion.md](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) sin que usted lo pidiera, y además con una lectura equivocada de su propuesta. Ese texto sigue en el archivo. Si quiere que lo quite, dígalo con «Revierta».
 
 ### 5 · Usuario — 2026-09-30 15:50:32
 > Revierta
@@ -112,7 +112,7 @@ Ya lo había hecho en la respuesta anterior: escribí el hallazgo H-1 en [histor
 
 Restore "Nada todavía." in place of H-1.
 
-Listo, quité el hallazgo H-1. En la sección de hallazgos del [resumen de la sesión](../../../../historico-chat/resumenes/2026-09-30/sesion.md) volvió a quedar «Nada todavía.».
+Listo, quité el hallazgo H-1. En la sección de hallazgos del [resumen de la sesión](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) volvió a quedar «Nada todavía.».
 
 ### 6 · Usuario — 2026-09-30 15:51:43
 > Entonces sigamos analizando
@@ -156,7 +156,7 @@ No se puede. Los criterios de aceptación y las precondiciones ya son el alcance
 
 pendiente → **análisis** → HU → especificación → plan
 
-Eso choca con lo que se dijo antes, que el `analisis.md` iba «entre la HU y el plan de trabajo». Coincide, en cambio, con lo que ya dice el [pendiente 103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md): «entre el pendiente y la historia». Lo que no cambia es que `02·F0` sigue igual y el análisis se agrega sin reemplazar ningún eslabón.
+Eso choca con lo que se dijo antes, que el `analisis.md` iba «entre la HU y el plan de trabajo». Coincide, en cambio, con lo que ya dice el [pendiente 103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md): «entre el pendiente y la historia». Lo que no cambia es que `02·F0` sigue igual y el análisis se agrega sin reemplazar ningún eslabón.
 
 ¿Queda el análisis antes de la HU?
 
@@ -174,7 +174,7 @@ El mensaje no abre con ninguna palabra de `01·C28`. ¿El árbol va solo en el c
 **Agente** — 2026-09-30 16:43:27
 <!-- agente: 7dd415c6-9ff5-4d32-91c2-ec03b6fdd6b4 -->
 
-El árbol quedó como hallazgo H-1 en el [resumen de la sesión](../../../../historico-chat/resumenes/2026-09-30/sesion.md). Lo puse ahí y no en la transcripción porque la transcripción la escribe el programa, no el agente.
+El árbol quedó como hallazgo H-1 en el [resumen de la sesión](../../../../../historico-chat/resumenes/2026-09-30/sesion.md). Lo puse ahí y no en la transcripción porque la transcripción la escribe el programa, no el agente.
 
 Queda así:
 
@@ -288,7 +288,7 @@ Con eso, un hallazgo al ejecutar el plan ya no sería algo normal: indicaría qu
 **Agente** — 2026-09-30 19:14:01
 <!-- agente: bf6c0489-217d-4b69-b18d-bab22306cea7 -->
 
-Para identificarlas con datos y no de memoria, hay que revisar los hallazgos que ya salieron durante la ejecución de planes. Están en dos lugares: los [pendientes](../../../../pendientes/), que van más o menos por el 107, y los resúmenes de sesión en `historico-chat/resumenes/`.
+Para identificarlas con datos y no de memoria, hay que revisar los hallazgos que ya salieron durante la ejecución de planes. Están en dos lugares: los [pendientes](../../../../../pendientes), que van más o menos por el 107, y los resúmenes de sesión en `historico-chat/resumenes/`.
 
 La revisión consiste en tomar cada hallazgo que apareció con una HU y su plan ya aprobados, y anotar por qué no se vio antes. Con eso se arma la lista real de causas, contada, y se ve qué debe traer el análisis para atajar cada una.
 
@@ -388,7 +388,7 @@ Así queda:
 - **Hallazgo, pendiente, HU y plan:** quedan en un solo archivo con la redacción vigente. La historia de cómo se llegó ahí la guarda la secuencia de análisis (análisis-1, análisis-2…), que nunca se borra.
 - **Lecciones aprendidas:** salen de los análisis y sirven para no repetir errores.
 
-Sobre lo último hay una relación que conviene revisar: el repositorio ya tiene un lugar para lo aprendido. Según [historico-chat/memory/memory.md](../../../../historico-chat/memory/memory.md), un **aprendizaje** («`git add -A` arrastró un archivo local y se publicó») va como señal en `memoria/senales.db`. Una lección aprendida parece ser exactamente eso.
+Sobre lo último hay una relación que conviene revisar: el repositorio ya tiene un lugar para lo aprendido. Según [historico-chat/memory/memory.md](../../../../../historico-chat/memory/memory.md), un **aprendizaje** («`git add -A` arrastró un archivo local y se publicó») va como señal en `memoria/senales.db`. Una lección aprendida parece ser exactamente eso.
 
 Quedan dos preguntas:
 
@@ -430,7 +430,7 @@ Las dos son aprendizaje, pero la señal habla del proyecto y la lección habla d
 **Agente** — 2026-09-30 20:58:15
 <!-- agente: 1153a043-7e1b-4854-8653-4df9587067ed -->
 
-Hay un choque con una norma que ya existe. [memory.md](../../../../historico-chat/memory/memory.md) dice: «Nada se guarda en dos sitios. Si algo ya está en uno, el otro lo enlaza; nunca lo copia». Ya pasó una vez: la terminología quedó en un recuerdo y en una señal, y con el tiempo terminaron diciendo cosas distintas.
+Hay un choque con una norma que ya existe. [memory.md](../../../../../historico-chat/memory/memory.md) dice: «Nada se guarda en dos sitios. Si algo ya está en uno, el otro lo enlaza; nunca lo copia». Ya pasó una vez: la terminología quedó en un recuerdo y en una señal, y con el tiempo terminaron diciendo cosas distintas.
 
 Para cumplirla, la lección se escribe completa en uno de los dos sitios y el otro solo la enlaza:
 
@@ -476,8 +476,8 @@ Quedan abiertas las dos decisiones que el pendiente ya tenía:
 Sí, y eso lo convierte en el primer caso de prueba de su propia propuesta. Según lo que concluyó, al cerrarlo pasa esto:
 
 1. La conversación queda guardada como el análisis-1 del pendiente 103 y no se modifica después.
-2. El [pendiente 103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) se reescribe como v2, con la tabla de la respuesta anterior.
-3. El hallazgo que lo originó, el H-13 del [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), también se reescribe como v2.
+2. El [pendiente 103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) se reescribe como v2, con la tabla de la respuesta anterior.
+3. El hallazgo que lo originó, el H-13 del [resumen del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), también se reescribe como v2.
 4. Lo que se aprendió en el camino queda como lección aprendida. Ya hay una: el pendiente-v1 dejó la ubicación del análisis tan imprecisa que este análisis tuvo que corregirla dos veces.
 
 Hay un hueco que este mismo caso deja al descubierto: todavía no existe un lugar definido para guardar los análisis. La transcripción de la sesión mezcla todos los temas que se hablaron, así que no sirve como análisis-1.
@@ -680,7 +680,7 @@ Con estos tres puntos el análisis cubre lo que trataba el pendiente. ¿Falta al
 **Agente** — 2026-09-30 22:59:17
 <!-- agente: 4d3a90fd-9d5b-42d3-8eed-735e8a388cf3 -->
 
-**1.** Ya quedó escrito. Las conclusiones del análisis-1 están en el hallazgo H-1 del [resumen de la sesión](../../../../historico-chat/resumenes/2026-09-30/sesion.md): la cadena con un análisis en cada nivel, la secuencia lógica, la corrección que baja en cascada, las versiones, el lugar del pendiente y las lecciones aprendidas. También anota lo que sigue abierto y la primera lección.
+**1.** Ya quedó escrito. Las conclusiones del análisis-1 están en el hallazgo H-1 del [resumen de la sesión](../../../../../historico-chat/resumenes/2026-09-30/sesion.md): la cadena con un análisis en cada nivel, la secuencia lógica, la corrección que baja en cascada, las versiones, el lugar del pendiente y las lecciones aprendidas. También anota lo que sigue abierto y la primera lección.
 
 **2.** Lo que entendí, contado para un niño:
 
@@ -791,7 +791,7 @@ historico-chat/resumenes/2026-09-30/
     └── analisis-1.md    la conversación de hoy, copiada tal cual de la transcripción
 ```
 
-La conversación no la reescribí a mano. La copia el guion [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py) desde la transcripción, así que quedan las mismas palabras y las mismas horas.
+La conversación no la reescribí a mano. La copia el guion [crear_analisis_103.py](../../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py) desde la transcripción, así que quedan las mismas palabras y las mismas horas.
 
 Hay que decidir dos cosas:
 
@@ -840,7 +840,7 @@ Para llenar las tablas y hacer estos ajustes, hace falta la orden «Escriba».
 **Agente** — 2026-09-30 23:44:31
 <!-- agente: 50926a4e-4575-44f7-8420-93c3a4c25c40 -->
 
-**1.** El archivo es el guion [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py). Es el que copió la conversación desde la transcripción a `analisis-1.md`, y si se vuelve a correr, reemplaza el archivo completo y se pierde lo que se agregó a mano. Para traer el resto de la conversación sin perder nada, hay que ajustarlo para que inserte los turnos nuevos antes de la línea «acá es donde continúa el primer análisis».
+**1.** El archivo es el guion [crear_analisis_103.py](../../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py). Es el que copió la conversación desde la transcripción a `analisis-1.md`, y si se vuelve a correr, reemplaza el archivo completo y se pierde lo que se agregó a mano. Para traer el resto de la conversación sin perder nada, hay que ajustarlo para que inserte los turnos nuevos antes de la línea «acá es donde continúa el primer análisis».
 
 **3.** Entendido: la tabla de lecciones sigue la opción B.
 
@@ -877,10 +877,10 @@ Así, la sección «Qué falta» del pendiente-v1 queda fuera de la v2, porque e
 Corregí el guion, pero no quedó en tiempo real: la herramienta bloqueó el cambio a `.claude/settings.json` porque es la configuración de los enganches del agente.
 
 Lo que sí quedó hecho:
-- [crear_analisis_103.py](../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py) ahora reemplaza solo la conversación, que va desde el turno 2 hasta la línea «acá es donde continua el primer análisis». Lo que usted agregó de esa línea hacia abajo no se toca.
+- [crear_analisis_103.py](../../../../../historico-chat/scripts/2026-09-30/crear_analisis_103.py) ahora reemplaza solo la conversación, que va desde el turno 2 hasta la línea «acá es donde continua el primer análisis». Lo que usted agregó de esa línea hacia abajo no se toca.
 - Lo corrí una vez y [analisis-1.md](analisis-1.md) quedó con la conversación hasta el turno 39. Sus tres secciones están intactas.
 
-Para que se actualice solo después de cada mensaje y de cada respuesta, hay que agregar este bloque al final de las listas `UserPromptSubmit` y `Stop` en [.claude/settings.json](../../../../.claude/settings.json):
+Para que se actualice solo después de cada mensaje y de cada respuesta, hay que agregar este bloque al final de las listas `UserPromptSubmit` y `Stop` en [.claude/settings.json](../../../../../.claude/settings.json):
 
 ```json
 {
@@ -1043,8 +1043,8 @@ Para no suponer, necesito saber de qué archivos se habla:
 
 | Documento | Dónde está |
 |---|---|
-| Pendiente | [pendiente.md](pendiente.md), en la carpeta nueva, y el original en [pendientes/103-...](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
-| Hallazgo | No tiene archivo propio. Es el H-13, dentro del [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md) |
+| Pendiente | [pendiente.md](pendiente.md), en la carpeta nueva, y el original en [pendientes/103-...](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
+| Hallazgo | No tiene archivo propio. Es el H-13, dentro del [resumen del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md) |
 
 ¿Se limpian los dos del pendiente o solo el `pendiente.md` de la carpeta nueva? Y en el caso del hallazgo, ¿se toca el H-13 dentro del resumen del 2026-09-28?
 
@@ -1060,8 +1060,8 @@ Antes de tocar los originales encontré un impedimento: hay validadores que exig
 
 | Validador | Qué exige |
 |---|---|
-| [validadores/resumen.py](../../../../validadores/resumen.py) | Los campos del hallazgo en el resumen de sesión |
-| [test_pendientes_historia.py](../../../../validadores/tests/test_pendientes_historia.py) | Que cada pendiente tenga su «Historia de usuario» |
+| [validadores/resumen.py](../../../../../validadores/resumen.py) | Los campos del hallazgo en el resumen de sesión |
+| [test_pendientes_historia.py](../../../../../validadores/tests/test_pendientes_historia.py) | Que cada pendiente tenga su «Historia de usuario» |
 
 Si se quitan los campos del H-13 y del pendiente 103 para que coincidan con la copia del análisis, es probable que esos validadores marquen error. Todavía no lo he comprobado.
 
@@ -1085,8 +1085,8 @@ No los estaba modificando: solo iba a correr sus pruebas para ver cuáles fallan
 
 El recorte quedó hecho en los tres archivos:
 
-- El **H-13**, en el [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), quedó solo con «Qué pasó» y «Por qué importa».
-- El **pendiente 103**, en [pendientes/](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y en el [pendiente.md](pendiente.md) de la carpeta nueva, quedó solo con «De dónde sale», «El problema» y «Por qué importa».
+- El **H-13**, en el [resumen del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), quedó solo con «Qué pasó» y «Por qué importa».
+- El **pendiente 103**, en [pendientes/](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y en el [pendiente.md](pendiente.md) de la carpeta nueva, quedó solo con «De dónde sale», «El problema» y «Por qué importa».
 
 Ahora la copia del análisis coincide con los originales.
 
@@ -1096,7 +1096,7 @@ Ahora la copia del análisis coincide con los originales.
 **Agente** — 2026-10-01 00:25:51
 <!-- agente: 78d87225-a891-401e-9980-602701e34131 -->
 
-Porque dejé de correr el guion. Cuando se rechazó la última vez que lo iba a correr, lo tomé como una orden de no volver a hacerlo, y desde entonces ([`00·N9`](../../../../base/00-nucleo-blindado.md)) no lo he intentado. Por eso al análisis le faltan dos cosas:
+Porque dejé de correr el guion. Cuando se rechazó la última vez que lo iba a correr, lo tomé como una orden de no volver a hacerlo, y desde entonces ([`00·N9`](../../../../../base/00-nucleo-blindado.md)) no lo he intentado. Por eso al análisis le faltan dos cosas:
 
 1. **La conversación** desde «En el hallazgo también hay muchas cosas que realmente corresponden al análisis» hasta ahora.
 2. **Las conclusiones nuevas**, que todavía no están en la tabla:
@@ -1131,7 +1131,7 @@ Voy a correr el guion al final de cada respuesta hasta que se autorice el enganc
 Hay dos formas de autorizarlo:
 
 1. **Con una orden explícita.** Escribir, por ejemplo: «Hágalo: agregue a `.claude/settings.json` el enganche que pasa la conversación al análisis del pendiente 103». El bloqueo de antes salió porque intenté cambiar la configuración de los enganches sin una orden suya que lo pidiera. Con la orden escrita, lo vuelvo a intentar. Si la herramienta pide permiso, aparece un aviso para aprobarlo.
-2. **A mano.** Abrir [.claude/settings.json](../../../../.claude/settings.json) y pegar este bloque al final de la lista `UserPromptSubmit` y otra vez al final de la lista `Stop`:
+2. **A mano.** Abrir [.claude/settings.json](../../../../../.claude/settings.json) y pegar este bloque al final de la lista `UserPromptSubmit` y otra vez al final de la lista `Stop`:
 
 ```json
 {
@@ -1153,7 +1153,7 @@ Con cualquiera de las dos, el análisis se actualiza solo después de cada mensa
 **Agente** — 2026-10-01 07:49:09
 <!-- agente: 24eb8821-4a61-47f7-864d-4ffaf8ec86ed -->
 
-Ya quedó agregado el enganche en [.claude/settings.json](../../../../.claude/settings.json), al final de `UserPromptSubmit` y de `Stop`. Comprobé que el archivo se lee bien y que el guion corre como enganche sin errores.
+Ya quedó agregado el enganche en [.claude/settings.json](../../../../../.claude/settings.json), al final de `UserPromptSubmit` y de `Stop`. Comprobé que el archivo se lee bien y que el guion corre como enganche sin errores.
 
 Desde el próximo mensaje, el [analisis-1.md](analisis-1.md) se actualiza solo y yo dejo de correr el guion a mano. Si Claude Code no toma el cambio en esta sesión, se activa al abrir la siguiente.
 
@@ -1223,7 +1223,7 @@ Son dos controles distintos, y el estándar pide una sola exigencia por regla (`
 
 Sí. Una lección aprendida es lo que queda después de aprender de un error: el error es lo que pasó y la lección es el resultado.
 
-Eso encaja con lo que ya está en [memory.md](../../../../historico-chat/memory/memory.md), que llama **aprendizaje** a lo que va en el almacén de señales. Entonces el aprendizaje sería la categoría grande, con dos tipos adentro:
+Eso encaja con lo que ya está en [memory.md](../../../../../historico-chat/memory/memory.md), que llama **aprendizaje** a lo que va en el almacén de señales. Entonces el aprendizaje sería la categoría grande, con dos tipos adentro:
 
 | Aprendizaje | De qué trata |
 |---|---|
@@ -2236,8 +2236,8 @@ Para los originales (H-10, H-11, 104 y 105) propongo no borrarlos. Cada uno qued
 
 Quedó todo unido:
 
-- **Hallazgo:** el H-13 del [resumen del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md) ahora se llama «Lo que se construye se aparta de lo aprobado» y tiene el texto unificado. El H-10 y el H-11 llevan «Unido en el H-13».
-- **Pendiente:** el [103](../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y su copia en la carpeta del análisis tienen el texto unificado. El 104 y el 105 llevan «Unido en el pendiente 103».
+- **Hallazgo:** el H-13 del [resumen del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md) ahora se llama «Lo que se construye se aparta de lo aprobado» y tiene el texto unificado. El H-10 y el H-11 llevan «Unido en el H-13».
+- **Pendiente:** el [103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y su copia en la carpeta del análisis tienen el texto unificado. El 104 y el 105 llevan «Unido en el pendiente 103».
 - **Análisis:** el [analisis-1.md](analisis-1.md) muestra arriba la copia exacta de los dos textos nuevos. Además:
   - la **conclusión 44** registra la unión;
   - los **puntos 25 a 27** traen lo que aportaban el 104 y el 105: rutas exactas en el plan, un freno antes de cada escritura y el rechazo del commit.
@@ -2475,7 +2475,7 @@ Aparecieron dos cosas que hay que decidir:
 Entendido en los dos puntos. Quedaron anotados así:
 
 - **Conclusión 47:** cada cambio se analiza por cómo afecta a los proyectos que heredan Cimiento.
-- **Conclusión 48:** la retroactividad la define [`20·M10`](../../../../base/20-meta-reglas/base.md), y la conclusión solo la cita. Al citarla apareció algo que no se había visto: como este cambio deroga `C14` y `DOC8`, también aplica [`02·F22`](../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md). Un proyecto que no adopte la versión nueva no puede abrir ni cerrar fases. Ese es el efecto más fuerte que tiene este cambio sobre los proyectos que heredan.
+- **Conclusión 48:** la retroactividad la define [`20·M10`](../../../../../base/20-meta-reglas/base.md), y la conclusión solo la cita. Al citarla apareció algo que no se había visto: como este cambio deroga `C14` y `DOC8`, también aplica [`02·F22`](../../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md). Un proyecto que no adopte la versión nueva no puede abrir ni cerrar fases. Ese es el efecto más fuerte que tiene este cambio sobre los proyectos que heredan.
 - **Puntos 29 a 31 de lo que se tiene que hacer:**
   - volver general la herramienta del análisis en tiempo real;
   - publicar la versión 40.0.0 con su CHANGELOG;
@@ -2548,7 +2548,7 @@ Propongo una sola sección, ubicada antes de las conclusiones, con una subsecci�
 45. Qué es un hallazgo: Algo que el análisis no previó y que queda fuera del plan o de los criterios. Un error dentro de lo aprobado, como una prueba que falla por una letra mal escrita en un archivo del plan, no es hallazgo: se corrige y se sigue. El permiso que antes tenía el agente para corregir por su cuenta lo que detectaba lo llevó a hacer lo que no se pedía y a dejar pendientes; por eso queda limitado a lo que está dentro del plan aprobado (Turno 104).
 46. Qué frena el freno: Solo lo que no está autorizado en ninguna parte. Lo que una regla ya autoriza sin pedir permiso, como la transcripción de la sesión, el resumen y el análisis, nunca lo frena. El freno lee el plan aprobado y la lista de lo que las reglas autorizan, y cada entrada de esa lista cita la regla que la autoriza (Turnos 105, 106).
 47. El efecto en los proyectos que heredan: Nada se diseña solo para Cimiento: cada cambio se analiza por cómo afecta a los proyectos que lo heredan. Lo que se construya llega a ellos por el instalador, sin configurar nada a mano, y la lista de lo autorizado que lee el freno incluye también las reglas propias de cada proyecto (Turnos 108, 109).
-48. La retroactividad: La dice [`20·M10`](../../../../base/20-meta-reglas/base.md#m10--los-tipos-qué-más-se-revisa-y-la-retroactividad) y no se repite aquí. Como este cambio deroga `01·C14` y `13·DOC8`, aplica además [`02·F22`](../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md): un proyecto que no adopte la versión nueva no abre ni cierra fase (Turno 109).
+48. La retroactividad: La dice [`20·M10`](../../../../../base/20-meta-reglas/base.md#m10--los-tipos-qué-más-se-revisa-y-la-retroactividad) y no se repite aquí. Como este cambio deroga `01·C14` y `13·DOC8`, aplica además [`02·F22`](../../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md): un proyecto que no adopte la versión nueva no abre ni cierra fase (Turno 109).
 49. El análisis principal de Cimiento: No existe. Se crea en `analisis/` después de aprobar este análisis, con base en todo el proyecto y en lo que este concluyó (Turno 127).
 50. Dónde van los hijos: El análisis no lleva una tabla de enlaces: no registra decisiones. El padre ya está en la copia del pendiente y la conversación en el mismo archivo. Los hijos van en la columna «Pasó a» de lo que se tiene que hacer, que muestra en qué HU terminó cada punto y deja comprobar que ninguno quedó sin destino (Turnos 130, 131).
 51. Solo lo que sirve para decidir: El análisis solo lleva información que ayude a entender qué pasa y a tomar una decisión, como un buen diagrama estadístico. Los datos y las tablas que no aportan a decidir no entran, porque solo suman volumen (Turno 132).
@@ -2821,7 +2821,7 @@ La fila del análisis principal deja ver un hueco: Cimiento no tiene un análisi
 
 **3. La transcripción** puede ir como una fila más de esa misma tabla, así no queda una línea suelta:
 
-| Conversación | [Transcripción del 2026-09-30](../../../../historico-chat/2026-09-30-sesion.md) |
+| Conversación | [Transcripción del 2026-09-30](../../../../../historico-chat/2026-09-30-sesion.md) |
 
 **4. Los detalles menores** del `analisis-1.md` son tres:
 - líneas 21 y 22: dos renglones en blanco seguidos, después de la tabla del hallazgo;
@@ -2938,7 +2938,7 @@ El mismo cambio iría en el borrador de la plantilla. Ahí el título quedaría 
 > | Análisis anterior | Ninguno: este es el primero |
 > | Análisis principal que alimenta | Por crear en `analisis/` cuando se apruebe este análisis, con base en todo el proyecto y en lo que concluyó este |
 > | Hijos | EP-023 y sus siete HU, cuando se apruebe |
-> | Conversación | [Transcripción del 2026-09-30](../../../../historico-chat/2026-09-30-sesion.md) |
+> | Conversación | [Transcripción del 2026-09-30](../../../../../historico-chat/2026-09-30-sesion.md) |
 >
 > This may or may not be related to the current task.</ide_selection>
 > B. Eso también debe quedar en la plantilla, nada de cosas genéricas
@@ -2969,7 +2969,7 @@ La cabecera de la conversación copiada tiene una cita del mismo texto, porque a
 > | Análisis anterior | Ninguno: este es el primero |
 > | Análisis principal que alimenta | Por crear en `analisis/` cuando se apruebe este análisis, con base en todo el proyecto y en lo que concluyó este |
 > | Hijos | EP-023 y sus siete HU, cuando se apruebe |
-> | Conversación | [Transcripción del 2026-09-30](../../../../historico-chat/2026-09-30-sesion.md) |
+> | Conversación | [Transcripción del 2026-09-30](../../../../../historico-chat/2026-09-30-sesion.md) |
 > </pasted_content id="67ea">
 >
 > "
@@ -3194,8 +3194,8 @@ Chocan, y se resuelven en los puntos 15 a 22 de lo que se tiene que hacer: `02·
 
 | Qué | Lo que hay hoy |
 |---|---|
-| Análisis | [`plantillas/cierre-analisis.md`](../../../../plantillas/cierre-analisis.md) cierra un análisis en un archivo aparte. No hay plantilla del análisis mismo. La carpeta `analisis/` tiene un solo análisis. |
-| Hallazgo | [`plantillas/sesion.md`](../../../../plantillas/sesion.md) pide doce campos. `validadores/resumen.py` usa «Estado» y «Con qué se retoma». |
+| Análisis | [`plantillas/cierre-analisis.md`](../../../../../plantillas/cierre-analisis.md) cierra un análisis en un archivo aparte. No hay plantilla del análisis mismo. La carpeta `analisis/` tiene un solo análisis. |
+| Hallazgo | [`plantillas/sesion.md`](../../../../../plantillas/sesion.md) pide doce campos. `validadores/resumen.py` usa «Estado» y «Con qué se retoma». |
 | Pendiente | Tres plantillas (`pendiente.md`, `pendiente-reportado.md`, `pendiente-de-seguimiento.md`). `validadores/pendientes.py` exige «Historia de usuario» y «Proyecto de origen». |
 | Carpeta `pendientes/` | 21 abiertos, 85 cerrados, 17 programas que dependen de ella y unos 1054 enlaces. |
 | Trazabilidad | `validadores/flujo.py` ya comprueba `02·F18` (cada tarea del plan bajo su criterio). Nada comprueba que los demás documentos citen su origen. |
@@ -3215,7 +3215,7 @@ Chocan, y se resuelven en los puntos 15 a 22 de lo que se tiene que hacer: `02·
 | S-086, S-108 | Una alarma falsa se aprende a ignorar. Lo resuelve la conclusión 46. |
 | `02·F8`, `02·F18`, `02·F19`, `02·F23`, `01·C4`, `00·N1`, `01·C28` | Intentos previos: reglas escritas que se volvieron a incumplir. |
 | Recuerdos «Corregir el defecto detectado» y «Una instrucción se cumple entera» | Chocaban con detener la ejecución. Lo resuelve la conclusión 45. |
-| [`notas/compactacion-mata-decisiones.md`](../../../../notas/compactacion-mata-decisiones.md) | Las decisiones se pierden si no quedan en archivos. Confirma guardar la conversación. |
+| [`notas/compactacion-mata-decisiones.md`](../../../../../notas/compactacion-mata-decisiones.md) | Las decisiones se pierden si no quedan en archivos. Confirma guardar la conversación. |
 
 ### El entorno: normas, herramientas y proyectos que heredan
 

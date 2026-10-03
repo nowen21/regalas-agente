@@ -55,7 +55,7 @@
 
 1. **Se le aplica la exigencia del nivel más alto** — aprobación de esa acción concreta.
 2. **Se dice que no está clasificada**, en el mismo mensaje en que se pide la aprobación. Quien aprueba tiene derecho a saber que está decidiendo sin tabla.
-3. **Se anota para clasificarla**, en `pendientes/`, para que la próxima vez sí esté.
+3. **Se anota para clasificarla**, como pendiente, para que la próxima vez sí esté.
 
 **Una lista sin esta cláusula deja el hueco abierto justo donde aparece lo que nadie previó**, que es de donde salen los accidentes.
 

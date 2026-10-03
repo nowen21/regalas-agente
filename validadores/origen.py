@@ -75,8 +75,18 @@ def epicas(raiz=None):
     for carpeta, subcarpetas, archivos in os.walk(raiz):
         subcarpetas[:] = [s for s in subcarpetas if s not in FUERA]
         if any(_ANALISIS.match(n) for n in archivos):
-            salida.setdefault(os.path.dirname(carpeta), []).append(carpeta)
+            salida.setdefault(_epica_de(carpeta), []).append(carpeta)
     return salida
+
+
+def _epica_de(carpeta):
+    """La carpeta que contiene la del pendiente, saltando la carpeta `pendientes/`.
+
+    `EP-023·HU-003·CA-08` · el pendiente vive en `pendientes/` de su dueño, y
+    las HU que salen de él son hijas de la épica que contiene esa carpeta.
+    """
+    arriba = os.path.dirname(carpeta)
+    return os.path.dirname(arriba) if os.path.basename(arriba) == "pendientes" else arriba
 
 
 def _revisar_analisis(ruta, datos):

@@ -1,15 +1,14 @@
-# Lo que sale de una sesión  ·  `[CAPA 3]`
+# -*- coding: utf-8 -*-
+"""Fase A de la HU-003, T-02: el hallazgo de la plantilla del resumen queda con «Qué pasó», «Por qué
+importa» y el enlace a su pendiente (análisis 1, conclusiones 14, 34 y 35). Su estado y por dónde se
+retoma los calcula el programa siguiendo los enlaces. Se conserva la caja de reglas de redacción."""
+import os
+import re
 
-> Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
->
-> | Regla | Qué exige |
-> |---|---|
-> | [`00·ID8`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+RUTA = os.path.join(RAIZ, "plantillas", "sesion.md")
 
-> Plantilla del resumen de una sesión. No se escribe al final: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena en el momento en que aparece el hallazgo, con qué pasó, por qué importa y el enlace a su pendiente. Al llenarla se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
+RESTO = """> Plantilla del resumen de una sesión. No se escribe al final: un chat no tiene final, y lo que se deja para el cierre no se escribe nunca. Se llena en el momento en que aparece el hallazgo, con qué pasó, por qué importa y el enlace a su pendiente. Al llenarla se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
 >
 > La conversación entera ya queda en la transcripción de la sesión (`historico-chat/`), que sigue su curso y no se toca. Esto es lo otro: lo que la sesión **dejó** y hay que poder encontrar sin releerla. Se guarda en `historico-chat/resumenes/AAAA-MM-DD/«tema».md`: una carpeta por día y un archivo por sesión, con su línea en el índice de ese día.
 
@@ -79,3 +78,17 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
 _(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_
+"""
+
+
+def main():
+    with open(RUTA, encoding="utf-8") as f:
+        texto = f.read()
+    m = re.search(r"^> Todo documento creado con esta plantilla.*?\n\n", texto, re.M | re.S)
+    titulo = texto[:m.start()]
+    with open(RUTA, "w", encoding="utf-8", newline="\n") as f:
+        f.write(titulo + m.group(0) + RESTO)
+
+
+if __name__ == "__main__":
+    main()

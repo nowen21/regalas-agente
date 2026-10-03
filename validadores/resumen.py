@@ -203,8 +203,49 @@ def hallazgos(ruta):
     for i, (hid, titulo, pos) in enumerate(ids):
         fin = ids[i + 1][2] if i + 1 < len(ids) else len(texto)
         estado = next((e for e, p in estados if pos < p < fin), "")
+        if not estado:
+            # `EP-023·HU-003` · El hallazgo de la forma nueva no escribe su
+            # estado: se calcula. El escrito, de los resúmenes anteriores, se
+            # lee como siempre.
+            estado = estado_calculado(ruta, texto[pos:fin])[0]
         salida.append((hid, titulo, estado.rstrip(".").strip().lower()))
     return salida
+
+
+_PENDIENTE = _campo("Pendiente")
+
+
+def carpeta_del_pendiente(ruta, bloque):
+    """La carpeta del pendiente que enlaza el hallazgo, o "" si no enlaza ninguno."""
+    m = _PENDIENTE.search(bloque)
+    if not m:
+        return ""
+    for enlace in re.findall(r"\]\(([^)#\s]+)", m.group(1)):
+        destino = os.path.normpath(os.path.join(os.path.dirname(ruta), enlace.replace("/", os.sep)))
+        if os.path.basename(destino) == "pendiente.md":
+            destino = os.path.dirname(destino)
+        if os.path.isfile(os.path.join(destino, "pendiente.md")):
+            return destino
+    return ""
+
+
+def estado_calculado(ruta, bloque):
+    """`EP-023·HU-003·CA-05` · (estado, retoma) de un hallazgo, siguiendo su enlace.
+
+    Sin pendiente: «abierto, sin pendiente». Con pendiente abierto: «abierto,
+    anotado», y se retoma por el último análisis del pendiente, que es donde
+    quedó la conversación. Con el plan cumplido: «resuelto» (análisis 1 del
+    pendiente 103, conclusión 35).
+    """
+    import pendientes
+    carpeta = carpeta_del_pendiente(ruta, bloque)
+    if not carpeta:
+        return "abierto, sin pendiente", ""
+    if pendientes.estado(carpeta) == "cerrado":
+        return "resuelto", ""
+    analisis = pendientes.analisis_de(carpeta)
+    retoma = analisis[-1] if analisis else os.path.join(carpeta, "pendiente.md")
+    return "abierto, anotado", comun.relativo(retoma)
 
 
 def falta(ruta):
@@ -320,7 +361,10 @@ def _retoma(ruta, hid):
     for i, m in enumerate(re.finditer(r"^### (H-\d+) \u00b7 ", texto, re.MULTILINE)):
         if m.group(1) == hid and i + 1 < len(bloque):
             r = _campo("Con qu\u00e9 se retoma").search(bloque[i + 1])
-            return r.group(1) if r else ""
+            if r:
+                return r.group(1)
+            # En la forma nueva no se escribe: es el \u00faltimo an\u00e1lisis de su pendiente.
+            return estado_calculado(ruta, bloque[i + 1])[1]
     return ""
 
 

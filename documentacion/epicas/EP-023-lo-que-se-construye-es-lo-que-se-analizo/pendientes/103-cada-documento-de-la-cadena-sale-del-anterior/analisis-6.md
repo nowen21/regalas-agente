@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 5](analisis-5.md), aprobado el 2026-10-01. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Al escribir la fase `A` de la [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) de EP-023, el 2026-10-02, se encontró que además de `01·C25` hay dos reglas que citan `01·C14`: `01·C15` la extiende, y `00·ID1` dice que `C14` fija «dónde queda el listón» del oficio. El análisis 1 solo nombró a `C25` (punto 22). |
+| Qué pasó | Al escribir la fase `A` de la [HU-005](../../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) de EP-023, el 2026-10-02, se encontró que además de `01·C25` hay dos reglas que citan `01·C14`: `01·C15` la extiende, y `00·ID1` dice que `C14` fija «dónde queda el listón» del oficio. El análisis 1 solo nombró a `C25` (punto 22). |
 | Por qué importa | Si `C14` se deroga y las otras dos no se tocan, quedan apoyadas en una regla que no rige. Y `ID1` pide trabajar con el criterio del oficio, que es lo que `C14` permitía agregar: puede chocar con la regla nueva (análisis 1, conclusión 12). Cambiar lo que `ID1` exige está fuera de los criterios de la HU-005. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 101, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 101, donde se dijo «Analicemos: el pendiente 103».
 
 ### 101 · Usuario, 2026-10-02 00:49:54
 > Analicemos: el pendiente 103
@@ -277,7 +277,7 @@ Para pasarlo a las conclusiones del análisis 6, falta «Escriba».
 **Agente**, 2026-10-02 01:03:59
 <!-- agente: 377cb4ff-5663-408b-b11f-31cbc11aa43c -->
 
-Ya está escrito en el [análisis 6](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md):
+Ya está escrito en el [análisis 6](analisis-6.md):
 
 - **Conclusión 5:** lo pedido es el criterio de aceptación más lo que exigen las reglas de Cimiento.
 - **Conclusión 6:** el ejemplo de `F19` cambia para no chocar con `S1`.
@@ -382,10 +382,10 @@ Aplican `20·M7` (una regla declara de cuál se apoya con «extiende»), `20·M1
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Pasar el CA-02 de la HU-005 a la versión siguiente: `C25` y `C15` reubicadas, `C15` extendiendo a `C30` | 2, 4 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
-| 2 | Sumar a la HU-005 el CA-04: `00·ID1` rige dentro de lo pedido y no cita a `C14` | 3, 4 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
+| 1 | Pasar el CA-02 de la HU-005 a la versión siguiente: `C25` y `C15` reubicadas, `C15` extendiendo a `C30` | 2, 4 | EP-023, [HU-005](../../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
+| 2 | Sumar a la HU-005 el CA-04: `00·ID1` rige dentro de lo pedido y no cita a `C14` | 3, 4 | EP-023, [HU-005](../../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
 | 3 | Pasar el plan de la fase `A` a su versión siguiente con `C15`, `ID1` y el ejemplo de `F19`, y volver a aprobarlo | 4, 6 | EP-023, HU-005, fase `A` |
-| 4 | Pasar el CA-01 de la HU-005 a la versión siguiente: `C30` dice que lo pedido es el criterio más lo que exigen las reglas de Cimiento, y el ejemplo de `F19` deja de chocar con `04·S1` | 5, 6 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
+| 4 | Pasar el CA-01 de la HU-005 a la versión siguiente: `C30` dice que lo pedido es el criterio más lo que exigen las reglas de Cimiento, y el ejemplo de `F19` deja de chocar con `04·S1` | 5, 6 | EP-023, [HU-005](../../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
 
 ## Lo que aporta al análisis principal
 

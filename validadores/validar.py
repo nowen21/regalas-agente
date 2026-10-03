@@ -238,6 +238,9 @@ def cmd_pendientes(a):
     linea = pendientes.linea_proximo(raiz)
     if linea:
         print(linea)
+    # `EP-023·HU-003·CA-08` · el índice lo arma el programa, no se edita a mano.
+    if getattr(a, "indice", False):
+        print(f"Índice escrito en {relativo(pendientes.escribir_indice(raiz))}")
     return codigo
 
 
@@ -737,6 +740,8 @@ def main():
     pd = sub.add_parser("pendientes",
                         help="numeración de `pendientes/` y cruce con su índice · HU-018")
     pd.add_argument("--raiz", default=None, help="carpeta del proyecto (por defecto, donde estás parado)")
+    pd.add_argument("--indice", action="store_true",
+                    help="escribe `documentacion/pendientes.md` con todos los pendientes · EP-023·HU-003")
     pd.set_defaults(func=cmd_pendientes)
 
     tz = sub.add_parser("trazabilidad",

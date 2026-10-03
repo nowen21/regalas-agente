@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 4](analisis-4.md), aprobado el 2026-10-01. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | Al preparar la fase `A` de la [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) de EP-023, la tarea T-03 pide escribir `13·DOC24` con dos exigencias, como dice el CA-05: que el análisis principal se reescribe con su lista de cambios, y que el individual cierra al final de su mismo archivo y no se reescribe. El checklist de toda regla (fila 9, `20·M5`) admite una sola exigencia, y estas dos se pueden cumplir por separado. |
+| Qué pasó | Al preparar la fase `A` de la [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) de EP-023, la tarea T-03 pide escribir `13·DOC24` con dos exigencias, como dice el CA-05: que el análisis principal se reescribe con su lista de cambios, y que el individual cierra al final de su mismo archivo y no se reescribe. El checklist de toda regla (fila 9, `20·M5`) admite una sola exigencia, y estas dos se pueden cumplir por separado. |
 | Por qué importa | Escrita así, la regla no puede quedar sellada como CUMPLE. Partirla en dos reglas agrega un archivo que el plan aprobado no declara (`02·F8`), así que la fase se detuvo antes de empezar. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 64, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 64, donde se dijo «Analicemos: el pendiente 103».
 
 ### 64 · Usuario, 2026-10-01 23:19:07
 > Registre y después Analicemos: el pendiente 103
@@ -58,7 +58,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 **Agente**, 2026-10-01 23:19:54
 <!-- agente: 1e64bb88-9796-472d-8535-a2a0e7744488 -->
 
-Quedó registrado el H-4 en el [resumen de hoy](../../../../historico-chat/resumenes/2026-10-01/sesion.md), y el [análisis 5](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) está prendido desde el turno 64.
+Quedó registrado el H-4 en el [resumen de hoy](../../../../../historico-chat/resumenes/2026-10-01/sesion.md), y el [análisis 5](analisis-5.md) está prendido desde el turno 64.
 
 **Primera pregunta (conclusión 7 del análisis 2): ¿el H-4 es parte del plan en curso?** Sí: frena la fase A de la HU-001. Lo que queda por decidir es la salida:
 
@@ -85,7 +85,7 @@ Falta la palabra que dice qué se espera (`01·C28`). Con «Escriba», la opció
 **Agente**, 2026-10-01 23:22:19
 <!-- agente: f937b456-f9a8-490a-9386-85c1cba2fd94 -->
 
-Quedó escrito el [análisis 5](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md), con cero marcas.
+Quedó escrito el [análisis 5](analisis-5.md), con cero marcas.
 
 **Conclusiones:**
 1. El H-4 es parte del plan en curso.
@@ -121,7 +121,7 @@ Lo que propongo es agregar al análisis 5 una conclusión con estos dos archivos
 **Agente**, 2026-10-01 23:26:10
 <!-- agente: ee395ac3-83e4-42c2-8d51-baf4957dcc9d -->
 
-Quedó en el [análisis 5](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md), con cero marcas:
+Quedó en el [análisis 5](analisis-5.md), con cero marcas:
 
 - **Conclusión 4:** el plan de la fase A tampoco declaraba `validadores/reglas-validables.md` ni `anatomia/mapa-del-sitio.md`.
 - **Punto 2 de lo que se tiene que hacer:** el plan pasa a su versión siguiente con `DOC25` y esos dos archivos, y se vuelve a aprobar.
@@ -152,7 +152,7 @@ No hace falta otro análisis: son los mismos archivos y las mismas tareas del pl
 **Agente**, 2026-10-01 23:28:17
 <!-- agente: 5794a94e-54f4-4a64-857e-00b9feadcc1a -->
 
-Quedó en el [análisis 5](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md), con cero marcas:
+Quedó en el [análisis 5](analisis-5.md), con cero marcas:
 
 - **Conclusión 5:** `02·F0` tiene 291 caracteres y `02·F23` tiene 320. Para sumar el análisis, las tareas T-01 y T-02 acortan su texto sin cambiar lo que exigen.
 - **Punto 3 de lo que se tiene que hacer:** esas dos tareas del plan lo dicen.

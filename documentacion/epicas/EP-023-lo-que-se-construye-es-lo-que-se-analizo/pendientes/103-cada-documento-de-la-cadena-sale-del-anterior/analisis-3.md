@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 2](analisis-2.md), aprobado el 2026-10-01. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 14, donde se dijo «Analicemos: el pendiente 103».
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 14, donde se dijo «Analicemos: el pendiente 103».
 
 ### 14 · Usuario, 2026-10-01 19:39:52
 > Analicemos: el pendiente 103
@@ -62,7 +62,7 @@ Prendo el análisis 3 como lo fijó el análisis 2: anoto el hallazgo, creo `ana
 
 El análisis 3 quedó prendido.
 
-- **Hallazgo:** H-1 en el [resumen de hoy](../../../../historico-chat/resumenes/2026-10-01/sesion.md), con solo «Qué pasó» y «Por qué importa».
+- **Hallazgo:** H-1 en el [resumen de hoy](../../../../../historico-chat/resumenes/2026-10-01/sesion.md), con solo «Qué pasó» y «Por qué importa».
 - **Análisis:** [analisis-3.md](analisis-3.md), armado desde el borrador. Ya le entró el turno 14.
 
 **Lo primero, según la conclusión 7 del análisis 2:** el hallazgo es parte del plan en curso, porque detiene la escritura de EP-023. Se resuelve antes de seguir.
@@ -110,7 +110,7 @@ El error fue el mismo de antes: leí los turnos antes de cotejarlos con las conc
 Quedaron tres cosas de más:
 
 1. `analisis-3.md`.
-2. El H-1 en el [resumen de hoy](../../../../historico-chat/resumenes/2026-10-01/sesion.md).
+2. El H-1 en el [resumen de hoy](../../../../../historico-chat/resumenes/2026-10-01/sesion.md).
 3. El archivo de estado, que sigue prendido y le pasa la conversación al análisis 3, incluido este turno.
 
 Con «Revierta» se quitan las tres. Después, con «Corrija», se arreglan los puntos 1, 3 y 4 de la revisión: mover la épica y las tres HU a `documentacion/epicas/`, llevar ahí la carpeta del pendiente, quitar lo que no sale de los análisis y nombrar el borrador en la HU-001. Luego siguen las HU 4 a 7.

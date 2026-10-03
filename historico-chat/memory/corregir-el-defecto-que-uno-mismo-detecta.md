@@ -8,7 +8,7 @@ Cuando el agente encuentra algo mal —un enlace roto, una cita a una regla dero
 
 **Dónde vale esta regla:** **dentro del plan aprobado**. Si el error está en lo que el plan aprobó, como un enlace roto en un archivo que el plan toca, lo arregla sin preguntar y sigue.
 
-**Lo que queda fuera del plan no se corrige:** es un hallazgo. La ejecución se detiene en ese momento y vuelve al análisis ([análisis 1](../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), conclusiones 18 y 45). Este permiso, sin ese límite, llevó al agente a hacer lo que no se pedía y a dejar pendientes.
+**Lo que queda fuera del plan no se corrige:** es un hallazgo. La ejecución se detiene en ese momento y vuelve al análisis ([análisis 1](../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), conclusiones 18 y 45). Este permiso, sin ese límite, llevó al agente a hacer lo que no se pedía y a dejar pendientes.
 
 **Dónde no vale:** cuando el usuario **pregunta** o **observa** algo. Ahí el defecto se reporta y se espera, aunque sea evidente ([pregunta, afirmación o indicación](pregunta-no-es-instruccion.md)). El usuario lo cortó así — *"no asuma que porque digo algo ya tiene que modificar"*. Y sigue necesitando permiso aparte el `commit` y el `push` ([aprobar antes de commit](aprobar-antes-de-commit.md)).
 

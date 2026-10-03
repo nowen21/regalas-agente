@@ -34,6 +34,10 @@ DOCUMENTOS = ["plan_trabajo.md", "plan_pruebas.md", "resultado_pruebas.md",
 _EPICA = re.compile(r"^EP-(\d+)-(.+)$")
 _HU = re.compile(r"^HU-(\d+)-(.+)$")
 
+# `EP-023·HU-003·CA-08` · La carpeta de los pendientes de una épica o de una
+# HU: no es una HU ni una fase, y la revisa `validar.py pendientes`.
+PENDIENTES = "pendientes"
+
 # `EP-004·HU-022` · Un documento que sigue siendo el molde no cuenta escrito.
 #
 # El andamio crea los cinco documentos vacíos al abrir una fase, así que hasta
@@ -279,6 +283,8 @@ def validar(proyecto):
         for nombre_hu in hijas:
             ruta_hu = os.path.join(ruta_epica, nombre_hu)
             donde_hu = f"{donde_epica}/{nombre_hu}"
+            if nombre_hu == PENDIENTES:
+                continue                # EP-023·HU-003 · los pendientes de la épica
 
             m_hu = _HU.match(nombre_hu)
             if not m_hu:
@@ -924,7 +930,7 @@ def veredicto(ruta_fase, donde):
 
 def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
     hallazgos = []
-    fases = _subcarpetas(ruta_hu)
+    fases = [f for f in _subcarpetas(ruta_hu) if f != PENDIENTES]
 
     if not fases:
         # F12.2 · toda HU tiene al menos una fase. AVISO y no FALLA: una HU
@@ -935,6 +941,8 @@ def _validar_fases(ruta_hu, donde_hu, num_epica, num_hu):
     vistos = {}
     for nombre in fases:
         donde = f"{donde_hu}/{nombre}"
+        if nombre == PENDIENTES:
+            continue                    # EP-023·HU-003 · los pendientes de la HU
         m = _FASE.match(nombre)
 
         if not m:

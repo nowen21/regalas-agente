@@ -1,6 +1,6 @@
 # HU-005 · Nada se agrega fuera de lo pedido
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 8, 22 y 28, y del [análisis 6](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md), puntos 1, 2 y 4. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 8, 22 y 28, y del [análisis 6](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md), puntos 1, 2 y 4. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 3. Contexto y descripción
 
-Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que el agente agrega lo que no se pidió, porque `01·C14` se lo permite ([análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
+Del [problema de la épica](../epica.md#31-situación-actual), esta HU resuelve que el agente agrega lo que no se pidió, porque `01·C14` se lo permite ([análisis 4](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md), conclusión 4).
 
 ### 3.1 Reglas de negocio
 
@@ -140,7 +140,7 @@ Y no cita a 01·C14
 
 | Campo | Valor |
 |---|---|
-| Documento funcional | [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
+| Documento funcional | [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) |
 | Mockup / Prototipo | N/A |
 | Contrato de API | N/A |
 

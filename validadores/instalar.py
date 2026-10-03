@@ -1014,7 +1014,11 @@ def instalar_claude_md(ruta, aplicar):
 # —ni dónde escribir un pendiente propio—, y el aviso se caía sin ruido. Como
 # esta lista se recorre en cada instalación, los que ya estaban la reciben al
 # ponerse al día.
-CARPETAS_BASE = ["proyectos", "documentacion", "prompts", "pendientes"]
+#
+# `EP-023·HU-003` · **`pendientes/` salió el 2026-10-02.** Cada pendiente vive
+# ahora en una carpeta `pendientes/` dentro de lo que lo origina; la de la raíz
+# queda como historia donde ya existe, y el instalador no la crea ni la borra.
+CARPETAS_BASE = ["proyectos", "documentacion", "prompts"]
 
 # Los 4 archivos de configuración del proyecto. La lista vive aquí porque es el
 # instalador quien los pone; `checklist.py` la lee de acá (`20·M2`).

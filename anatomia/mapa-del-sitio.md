@@ -248,8 +248,8 @@ agente/
 │   ├── README.md ..................... índice: qué pidió cada uno y en qué quedó
 │   └── regla-reglas-proyecto.md ...... el pedido del que salió `20·M16`
 │
-├── 🟨 pendientes/ .................... BACKLOG DEL ESTÁNDAR
-│   ├── README.md ..................... el número es el orden, no la prioridad
+├── 🟨 pendientes/ .................... BACKLOG VIEJO: historia desde la 45.0.0; cada pendiente nuevo vive en `pendientes/` de su dueño
+│   ├── README.md ..................... el índice viejo, a mano; el de todos lo arma `validar.py pendientes --indice` en `documentacion/pendientes.md`
 │   ├── 01-validadores-de-codigo-de-proyecto.md
 │   ├── 08-patrones-rpa.md
 │   └── hecho/ ........................ 7 pendientes ya cerrados, uno por tema

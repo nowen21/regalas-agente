@@ -16,7 +16,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Al escribir EP-023 y sus HU desde los análisis 1 y 2 del pendiente 103, apareció que lo aprobado dice dos cosas sobre el análisis principal de Cimiento. La propuesta final del análisis 1 pone su creación, el punto 32, dentro de la HU 1 de EP-023. Los turnos 141, 167 y 171 del mismo pendiente lo ponen antes de la épica, porque es el que decide las épicas. |
 | Por qué importa | El orden decide si EP-023 se escribe ya o espera al análisis principal. Lo que se escriba con el orden equivocado hay que rehacerlo. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 3](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md) |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 3](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-3.md) |
 
 ### H-2. Las plantillas tienen campos que pueden quedar vacíos sin justificación
 
@@ -32,7 +32,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Las siete HU de [EP-023](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/epica.md) tienen el mismo «Contexto y descripción»: el problema del pendiente copiado tal cual, como pide la [plantilla de la HU](../../../plantillas/ciclo-vida-proyectos/04-HU.md). Ese problema ya está en la épica, en su sección 3.1, así que el mismo texto queda en ocho sitios. |
 | Por qué importa | Si el texto cambia, hay que corregirlo en todos: es el riesgo de un registro en dos sitios (S-064). Y el contexto no dice qué parte del problema de la épica resuelve cada HU. Pedir «el problema del pendiente tal cual» sirve cuando un pendiente da una sola HU; cuando hay épica, ese texto le corresponde a la épica. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 4](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 4](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) |
 
 ### H-4. El CA-05 pide una regla con dos exigencias
 
@@ -40,7 +40,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Al preparar la fase `A` de la [HU-001](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) de EP-023, la tarea T-03 pide escribir `13·DOC24` con dos exigencias, como dice el CA-05: que el análisis principal se reescribe con su lista de cambios, y que el individual cierra al final de su mismo archivo y no se reescribe. El checklist de toda regla (fila 9, `20·M5`) admite una sola exigencia, y estas dos se pueden cumplir por separado. |
 | Por qué importa | Escrita así, la regla no puede quedar sellada como CUMPLE. Partirla en dos reglas agrega un archivo que el plan aprobado no declara (`02·F8`), así que la fase se detuvo antes de empezar. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 5](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 5](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) |
 
 ### H-5. Derogar `01·C14` deja otras dos reglas apoyadas en ella
 
@@ -48,7 +48,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Al escribir la fase `A` de la [HU-005](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) de EP-023, el 2026-10-02, se encontró que además de `01·C25` hay dos reglas que citan `01·C14`: `01·C15` la extiende, y `00·ID1` dice que `C14` fija «dónde queda el listón» del oficio. El análisis 1 solo nombró a `C25` (punto 22). |
 | Por qué importa | Si `C14` se deroga y las otras dos no se tocan, quedan apoyadas en una regla que no rige. Y `ID1` pide trabajar con el criterio del oficio, que es lo que `C14` permitía agregar: puede chocar con la regla nueva (análisis 1, conclusión 12). Cambiar lo que `ID1` exige está fuera de los criterios de la HU-005. |
-| Pendiente | Resuelto en el [análisis 6](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) |
+| Pendiente | Resuelto en el [análisis 6](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) |
 
 ### H-6. El análisis aprobado sigue recibiendo la conversación
 
@@ -65,7 +65,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Al escribir la fase `A` de la [HU-002](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) de EP-023, el 2026-10-02, se encontró que los criterios de `plantillas/ciclo-vida-proyectos/04-HU.md` no tienen el campo «Sale de». La regla nueva del CA-01 lo exige en cada criterio, y `13·DOC15` manda crear la HU desde esa plantilla. Las de análisis, pendiente y plan sí tienen su campo. |
 | Por qué importa | Una HU hecha con la plantilla, como manda `DOC15`, no cumpliría la regla nueva, y el validador la detendría: dos reglas chocarían (análisis 1, conclusión 12). Cambiar la plantilla no está en los criterios de la HU-002. |
-| Pendiente | Resuelto en el [análisis 7](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
+| Pendiente | Resuelto en el [análisis 7](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-7.md) |
 
 ### H-8. El freno de las escrituras solo mira algunas herramientas
 
@@ -73,7 +73,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-02, al cerrar la fase `A` de la HU-002 de EP-023, el agente escribió fuera del proyecto dos veces: redirigió la salida de las pruebas a la carpeta temporal de la herramienta y corrió la suite en segundo plano, que deja su salida en esa misma carpeta. `04·S9` lo prohíbe, y el freno `hook_antes.py` no lo detuvo porque solo se engancha a `Write`, `Edit`, `MultiEdit` y `NotebookEdit`. El CA-02 de la [HU-007](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md), que es el freno que viene, dice «escribir un archivo» sin nombrar los demás canales. |
 | Por qué importa | Una regla rige en todas partes, no solo donde un programa la mira. Cimiento lo heredan proyectos con otras herramientas y otros agentes, y cada uno escribe por canales distintos: consola, programas, segundo plano, subagentes y servicios externos. Si el freno cubre solo algunos, la regla se rompe por los demás. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 8 |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 8 |
 
 ### H-9. La respuesta del agente entra al análisis un turno tarde
 
@@ -97,7 +97,15 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | Al escribir la fase `D` de la [HU-001](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), el 2026-10-02, salió que el aviso del CA-20 saltaría siempre por el análisis 3, que nunca se anotó en el análisis principal porque no cambió lo que se construye. `13·DOC25` pide anotar solo «cuando un análisis individual cambia algo». El usuario dijo que todo análisis se anota, porque en él se trataron temas que aclararon cosas aunque no haya cambios. |
 | Por qué importa | Un análisis que no se anota se pierde para quien lea el análisis principal: no sabe que ese tema ya se discutió ni qué se aclaró, y lo vuelve a abrir. |
-| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 9 |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 9 |
+
+### H-12. Las pruebas de la plataforma escriben en el registro real de auditoría
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-02, la corrida completa de pruebas creó `plataforma/datos/auditoria/2026-10.md` con unas 60 aprobaciones del proyecto «de-prueba», por usuarios como «quien-manda» o «raiz», que nunca pasaron. Las escriben las pruebas de `plataforma/nucleo/` que aprueban documentos, en el registro del repositorio y no en una carpeta temporal. No es la primera vez: `2026-09.md`, ya en git desde el commit `c5c035f`, tiene 627 filas de «de-prueba». |
+| Por qué importa | El registro de auditoría es la constancia de lo que la plataforma cambió de verdad, y solo se agrega: nada se edita ni se borra. Cada corrida de pruebas lo llena de aprobaciones falsas, y borrarlas a mano va contra esa misma regla. Mientras tanto, `2026-10.md` queda sin tocar y fuera de los commits. |
+| Pendiente | Por crear: el usuario decide dónde vive |
 ---
 
 ## ¿Se puede cerrar la sesión?

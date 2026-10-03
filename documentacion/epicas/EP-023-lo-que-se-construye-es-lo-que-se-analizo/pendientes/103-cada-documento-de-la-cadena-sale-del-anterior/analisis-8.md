@@ -6,10 +6,10 @@
 >
 > | Regla | Qué exige |
 > |---|---|
-> | [`00·ID8`](../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
-> | [`00·ID9`](../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
-> | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
-> | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
+> | [`00·ID8`](../../../../../base/00-identidad-y-rol/reglas/ID8-escribe-sin-las-marcas-que-delatan-generacion-automatica.md) | Escribir sin las marcas que delatan generación automática |
+> | [`00·ID9`](../../../../../base/00-identidad-y-rol/reglas/ID9-di-lo-mismo-en-menos-palabras.md) | Decir lo mismo en menos palabras |
+> | [`00·ID11`](../../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
+> | [`00·ID12`](../../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
 > Viene del [análisis 7](analisis-7.md), aprobado el 2026-10-02. Trata solo lo que falló y sus implicaciones sobre lo ya hecho (conclusión 19 del análisis 1).
 
@@ -21,7 +21,7 @@
 
 | Recomendación | Cómo se aplica en este análisis |
 |---|---|
-| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../../plantillas/recomendaciones-del-analisis.md) nació después |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | El 2026-10-02, al cerrar la fase `A` de la HU-002 de EP-023, el agente escribió fuera del proyecto dos veces: redirigió la salida de las pruebas a la carpeta temporal de la herramienta y corrió la suite en segundo plano, que deja su salida en esa misma carpeta. `04·S9` lo prohíbe, y el freno `hook_antes.py` no lo detuvo porque solo se engancha a `Write`, `Edit`, `MultiEdit` y `NotebookEdit`. El CA-02 de la [HU-007](../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md), que es el freno que viene, dice «escribir un archivo» sin nombrar los demás canales. |
+| Qué pasó | El 2026-10-02, al cerrar la fase `A` de la HU-002 de EP-023, el agente escribió fuera del proyecto dos veces: redirigió la salida de las pruebas a la carpeta temporal de la herramienta y corrió la suite en segundo plano, que deja su salida en esa misma carpeta. `04·S9` lo prohíbe, y el freno `hook_antes.py` no lo detuvo porque solo se engancha a `Write`, `Edit`, `MultiEdit` y `NotebookEdit`. El CA-02 de la [HU-007](../../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md), que es el freno que viene, dice «escribir un archivo» sin nombrar los demás canales. |
 | Por qué importa | Una regla rige en todas partes, no solo donde un programa la mira. Cimiento lo heredan proyectos con otras herramientas y otros agentes, y cada uno escribe por canales distintos: consola, programas, segundo plano, subagentes y servicios externos. Si el freno cubre solo algunos, la regla se rompe por los demás. |
 
 ## Pendiente
@@ -42,7 +42,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 | Campo | Valor |
 |---|---|
-| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
+| De dónde sale | [H-13 de la sesión del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md), que reúne H-10, H-11 y H-13, y [H-2 de la sesión del 2026-09-30](../../../../../historico-chat/resumenes/2026-09-30/sesion.md) |
 | El problema | No hay un documento que fije el alcance antes de la HU. Nada obliga a que cada documento salga del anterior. Nada detiene al agente cuando trabaja fuera del plan aprobado. La plantilla del plan no permite comprobarlo con un programa. Y lo que pasa la conversación al análisis hay que configurarlo a mano para cada análisis. |
 | Por qué importa | Al ejecutar el plan aparecen hallazgos que se podían evitar, y cada uno se vuelve un pendiente más. |
 
@@ -50,7 +50,7 @@ Reúne los pendientes 103, 104 y 105. Versión 3, del [análisis 2](analisis-2.m
 
 ## Conversación
 
-> La pasa el enganche desde la [transcripción del día](../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 141, donde empezó la discusión; el análisis se prendió en el turno 146.
+> La pasa el enganche desde la [transcripción del día](../../../../../historico-chat/2026-10-01-sesion.md), a partir del turno 141, donde empezó la discusión; el análisis se prendió en el turno 146.
 
 ### 141 · Usuario, 2026-10-02 08:45:04
 > 
@@ -161,8 +161,8 @@ Ahora el recuerdo.
 Listo, quedaron hechas las tres cosas:
 
 1. **H-8** anotado en el resumen de la sesión: el freno de las escrituras solo mira algunas herramientas.
-2. **[Análisis 8](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md)** prendido. Su conversación arranca en el turno 141, donde empezó esta discusión, así que ya entran la tabla de los nueve canales y las seis propuestas.
-3. **Recuerdo** [El análisis cubre todos los casos](../../../../historico-chat/memory/el-analisis-cubre-todos-los-casos.md), con su línea en el índice de la memoria.
+2. **[Análisis 8](analisis-8.md)** prendido. Su conversación arranca en el turno 141, donde empezó esta discusión, así que ya entran la tabla de los nueve canales y las seis propuestas.
+3. **Recuerdo** [El análisis cubre todos los casos](../../../../../historico-chat/memory/el-analisis-cubre-todos-los-casos.md), con su línea en el índice de la memoria.
 
 `validar.py estandar` no muestra incumplimientos.
 
@@ -230,9 +230,9 @@ Ya moví la copia al análisis dentro de `hook_historico.py` y quité el enganch
 Ya está corregido. Desde esta respuesta, la del agente debe quedar en el análisis 8 apenas termina, sin esperar al siguiente mensaje del usuario.
 
 **Qué cambié:**
-- **[hook_historico.py](../../../../adaptadores/claude-code/hook_historico.py):** después de escribir la respuesta en la transcripción, la pasa él mismo al análisis prendido. El orden queda fijo y ya no hay dos programas compitiendo.
-- **[instalar.py](../../../../validadores/instalar.py) y `.claude/settings.json`:** el enganche del análisis ya no corre al cerrar el turno. Al llegar cada mensaje sí sigue corriendo, porque es el que prende, pausa y apaga el análisis.
-- **Prueba nueva:** la del H-9 está en [test_analisis_en_curso.py](../../../../validadores/tests/test_analisis_en_curso.py). Las 23 pruebas del análisis pasan.
+- **[hook_historico.py](../../../../../adaptadores/claude-code/hook_historico.py):** después de escribir la respuesta en la transcripción, la pasa él mismo al análisis prendido. El orden queda fijo y ya no hay dos programas compitiendo.
+- **[instalar.py](../../../../../validadores/instalar.py) y `.claude/settings.json`:** el enganche del análisis ya no corre al cerrar el turno. Al llegar cada mensaje sí sigue corriendo, porque es el que prende, pausa y apaga el análisis.
+- **Prueba nueva:** la del H-9 está en [test_analisis_en_curso.py](../../../../../validadores/tests/test_analisis_en_curso.py). Las 23 pruebas del análisis pasan.
 - **Suite del estándar:** pasan 570 de 571. La que falla ya fallaba antes, por el pendiente 103 al que le falta la fila «Historia de usuario».
 - **Resumen de la sesión:** el H-9 quedó anotado como resuelto.
 
@@ -360,7 +360,7 @@ Además, rehacer aquí el orden de las HU 003, 004, 006 y 007 de EP-023.
 
 El texto rompió el comando de la consola. Lo paso por un guion dentro del repositorio, como pide `04·S18`.
 
-Ya escribí lo que faltaba del [análisis 8](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md):
+Ya escribí lo que faltaba del [análisis 8](analisis-8.md):
 
 - **Las cuatro partes**, y **la sección «Dónde más puede pasar»** puesta a prueba aquí mismo: 12 casos, cada uno con su riesgo y con lo que lo cubre.
 - **Ocho conclusiones**: el freno en cuatro capas, la sección nueva, las HU con su dependencia y su orden, y la fase D de la HU-001, entre otras.
@@ -415,7 +415,7 @@ Propuesta, pensando en cualquier proyecto que herede Cimiento:
 
 The HU-006 folder name differs from what I wrote (`…las-lecciones`); I fix the link.
 
-Ya agregué al [análisis 8](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) lo de las recomendaciones:
+Ya agregué al [análisis 8](analisis-8.md) lo de las recomendaciones:
 
 - **Conclusión 9:** dónde viven las recomendaciones, sus dos niveles y su forma, la búsqueda antes de crear una, el validador y las de arranque.
 - **Conclusión 10:** se alimentan de las lecciones. Eso va en la HU-006, que por eso pasa a depender de la fase D de la HU-001.
@@ -434,7 +434,7 @@ Para cerrarlo: «Apruebo el análisis».
 
 Sí, revisando toda la conversación quedan cinco cosas que este análisis podría tomar:
 
-1. **El análisis principal está atrasado.** `13·DOC25` pide que cada análisis que cambia lo que se construye sume su línea a la lista de cambios de [`analisis/proyecto-2026-10-02-analisis-principal.md`](../../../../analisis/proyecto-2026-10-02-analisis-principal.md). Los análisis 6 y 7 no la sumaron, y el 8 tampoco la tiene. Propongo sumar las tres y que el validador avise cuando un análisis aprobado cambia una HU y no aparece en esa lista.
+1. **El análisis principal está atrasado.** `13·DOC25` pide que cada análisis que cambia lo que se construye sume su línea a la lista de cambios de [`analisis/proyecto-2026-10-02-analisis-principal.md`](../../../../../analisis/proyecto-2026-10-02-analisis-principal.md). Los análisis 6 y 7 no la sumaron, y el 8 tampoco la tiene. Propongo sumar las tres y que el validador avise cuando un análisis aprobado cambia una HU y no aparece en esa lista.
 2. **Las respuestas a una pregunta del agente se bloquean.** Hoy, «sí», «A», «00 id9» y «explique para niño» se detuvieron por `01·C28` aunque eran respuestas claras. Propongo que, cuando el agente acaba de hacer una pregunta, una respuesta corta del usuario cuente como respuesta, y que «00 id9», o cualquier cita de una regla, valga como «aplique esa regla».
 3. **El largo de las respuestas solo se mide después.** `00·ID9` se incumplió muchas veces hoy, porque la medida llega en el turno siguiente. Propongo que se vuelva recomendación del análisis medir la respuesta antes de entregarla. Además, que «00 id9» repetido varias veces en una sesión quede como lección.
 4. **Los hallazgos al escribir el plan.** El H-5 y el H-7 salieron al escribir el plan, y cada uno costó un análisis. Propongo como recomendación de arranque revisar, antes de cerrar un análisis, qué reglas, plantillas y validadores toca cada punto de «Lo que se tiene que hacer».
@@ -506,7 +506,7 @@ Queda acordado. Para escribirlo en el análisis 8 falta «Hágalo», que es just
 **Agente**, 2026-10-02 10:53:15
 <!-- agente: 9880b7ad-0779-466d-a014-3544ee9c6012 -->
 
-Ya está escrito en el [análisis 8](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md):
+Ya está escrito en el [análisis 8](analisis-8.md):
 
 - **Conclusiones 11 a 15:**
   - El análisis principal se pone al día.
@@ -587,7 +587,7 @@ Ahora anoto el H-10 y creo el pendiente 108.
 
 Ya está hecho:
 
-- **[Análisis 8](../../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md):** saqué la conclusión de las respuestas cortas, su punto de «Lo que se tiene que hacer» y su caso en «Dónde más puede pasar». Quedan 14 conclusiones y 9 puntos, numerados de nuevo y con sus citas al día.
+- **[Análisis 8](analisis-8.md):** saqué la conclusión de las respuestas cortas, su punto de «Lo que se tiene que hacer» y su caso en «Dónde más puede pasar». Quedan 14 conclusiones y 9 puntos, numerados de nuevo y con sus citas al día.
 - **H-10** anotado en el resumen de la sesión.
 - **Pendiente 108 (`pendientes/108-la-respuesta-corta-a-una-pregunta-cuenta-como-respuesta.md`, ya no está ahí)** creado con su línea en el índice. Lo asigné a la HU-036 de EP-001, que es la dueña de `01·C28`. Enlaza el pendiente 106 en vez de repetirlo, porque el 106 solo trata de que la cita traiga el texto de la regla.
 
@@ -774,7 +774,7 @@ Es el mismo caso de antes: un enlace de la conversación copiada apunta a la rut
 
 Listo:
 
-- **Pendiente 108**: quedó en [`HU-036/pendientes/108-…/pendiente.md`](../../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/pendientes/108-la-respuesta-corta-a-una-pregunta-cuenta-como-respuesta/pendiente.md), solo con sus tres campos: «De dónde sale», «El problema» y «Por qué importa». El H-10 apunta a esa ruta.
+- **Pendiente 108**: quedó en [`HU-036/pendientes/108-…/pendiente.md`](../../../EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/pendientes/108-la-respuesta-corta-a-una-pregunta-cuenta-como-respuesta/pendiente.md), solo con sus tres campos: «De dónde sale», «El problema» y «Por qué importa». El H-10 apunta a esa ruta.
 - **Análisis 8**:
   - La conclusión 15 dice dónde vive el pendiente: la carpeta `pendientes/` dentro de lo que lo origina, la numeración única, el índice que se arma solo, el validador de fases y el traslado.
   - El punto 10 de «Lo que se tiene que hacer» pasa todo eso a la HU-003.
@@ -891,8 +891,8 @@ Aplican `04·S9` (escribir solo dentro del proyecto), `01·C29` (todo lo del pro
 | Qué | Lo que hay hoy |
 |---|---|
 | `adaptadores/claude-code/hook_antes.py` | Freno antes de escribir, enganchado solo a `Write`, `Edit`, `MultiEdit` y `NotebookEdit`; nació en EP-005, HU-023 |
-| CA-02 de la [HU-007](../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | El freno que compara con el plan; dice «escribir un archivo», sin nombrar los demás canales |
-| `plantillas/analisis.md` y `validadores/analisis.py` | De la [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md): la plantilla no pide considerar otros casos ni las dependencias de las HU; el validador mira cuatro secciones |
+| CA-02 de la [HU-007](../../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | El freno que compara con el plan; dice «escribir un archivo», sin nombrar los demás canales |
+| `plantillas/analisis.md` y `validadores/analisis.py` | De la [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md): la plantilla no pide considerar otros casos ni las dependencias de las HU; el validador mira cuatro secciones |
 | Hoja de ruta de EP-023 | Orden con razón solo en tres puestos; los demás dicen «sigue el orden de la propuesta final» |
 | Enganche del análisis | La respuesta entraba un turno tarde; corregido en este análisis (H-9) |
 
@@ -964,17 +964,17 @@ Aplican `04·S9` (escribir solo dentro del proyecto), `01·C29` (todo lo del pro
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Reescribir el CA-02 de la HU-007 con el freno en cuatro capas y el contrato de cada adaptador, y repartirlo en las fases que haga falta | 1, 2, 3 | EP-023, [HU-007](../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) |
-| 2 | Sumar a la HU-001 el criterio de la sección «Dónde más puede pasar», en la plantilla y en el validador | 4, 6 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 3 | Sumar a la HU-001 el criterio de la tabla de HU con dependencia, orden de ejecución y razón, en la plantilla del análisis, la hoja de ruta de la épica y el validador | 5, 6 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 4 | Reescribir la hoja de ruta de EP-023 con el orden de este análisis | 8, 10 | EP-023, [épica](../epica.md) |
-| 5 | Sumar a la HU-001 el criterio de las recomendaciones: el archivo con su forma y sus dos niveles, la sección que lo enlaza al inicio de la plantilla, el validador, y las recomendaciones de arranque | 9 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 6 | Sumar a la HU-006 el criterio de alimentar las recomendaciones desde las lecciones, con la columna nueva en su tabla | 10 | EP-023, [HU-006](../HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) |
-| 7 | Sumar las líneas de los análisis 6, 7 y 8 a la lista de cambios del análisis principal, y el criterio de que el validador avise cuando falte la de un análisis aprobado | 11 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
-| 8 | Sumar a las recomendaciones de arranque medir la respuesta contra `00·ID9` antes de entregarla | 12 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 1 | Reescribir el CA-02 de la HU-007 con el freno en cuatro capas y el contrato de cada adaptador, y repartirlo en las fases que haga falta | 1, 2, 3 | EP-023, [HU-007](../../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) |
+| 2 | Sumar a la HU-001 el criterio de la sección «Dónde más puede pasar», en la plantilla y en el validador | 4, 6 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 3 | Sumar a la HU-001 el criterio de la tabla de HU con dependencia, orden de ejecución y razón, en la plantilla del análisis, la hoja de ruta de la épica y el validador | 5, 6 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 4 | Reescribir la hoja de ruta de EP-023 con el orden de este análisis | 8, 10 | EP-023, [épica](../../epica.md) |
+| 5 | Sumar a la HU-001 el criterio de las recomendaciones: el archivo con su forma y sus dos niveles, la sección que lo enlaza al inicio de la plantilla, el validador, y las recomendaciones de arranque | 9 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 6 | Sumar a la HU-006 el criterio de alimentar las recomendaciones desde las lecciones, con la columna nueva en su tabla | 10 | EP-023, [HU-006](../../HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) |
+| 7 | Sumar las líneas de los análisis 6, 7 y 8 a la lista de cambios del análisis principal, y el criterio de que el validador avise cuando falte la de un análisis aprobado | 11 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 8 | Sumar a las recomendaciones de arranque medir la respuesta contra `00·ID9` antes de entregarla | 12 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
 | 9 | Subir la corrección del H-9 con su línea en el CHANGELOG y su versión | 14 | Este análisis, en el commit que la sube |
-| 10 | Sumar a la HU-003 la carpeta `pendientes/` dentro de lo que origina cada pendiente, con la numeración única, el índice que se arma solo, el validador de fases y el traslado de los pendientes de `pendientes/` y del 103 | 15 | EP-023, [HU-003](../HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) |
-| 11 | Que el validador del análisis exija las secciones nuevas solo a los análisis aprobados desde la versión que las trae | 16 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+| 10 | Sumar a la HU-003 la carpeta `pendientes/` dentro de lo que origina cada pendiente, con la numeración única, el índice que se arma solo, el validador de fases y el traslado de los pendientes de `pendientes/` y del 103 | 15 | EP-023, [HU-003](../../HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) |
+| 11 | Que el validador del análisis exija las secciones nuevas solo a los análisis aprobados desde la versión que las trae | 16 | EP-023, [HU-001](../../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
 
 ## Lo que aporta al análisis principal
 

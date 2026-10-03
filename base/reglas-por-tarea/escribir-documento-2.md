@@ -126,12 +126,12 @@ CORRECTO:   la sección se queda con su título y adentro dice N/A
 Fuente: [13·DOC21](../13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md#doc21--escribe-na-en-la-sección-del-modelo-que-no-aplica)
 
 ## DOC22 · Escribe en su propio documento lo que cada sesión dejó
-Cada sesión deja su resumen en un documento aparte de la transcripción, escrito con el modelo del estándar y llenado **en el momento en que aparece cada hallazgo**, no al cerrar. Cada hallazgo dice si quedó resuelto o abierto, dónde quedó, qué trabajo dispara y con qué pregunta se retoma.
+Cada sesión deja su resumen en un documento aparte de la transcripción, escrito con el modelo del estándar y llenado **en el momento en que aparece cada hallazgo**, no al cerrar. Cada hallazgo dice qué pasó y por qué importa, y enlaza su pendiente; si quedó resuelto y por dónde se retoma se calculan siguiendo ese enlace.
 ```
 INCORRECTO: la sesión produjo cinco aprendizajes y nueve pendientes, y para
             encontrarlos hay que releer la conversación entera
-CORRECTO:   su resumen los lista, cada uno con su estado y con la pregunta
-            que quedó viva
+CORRECTO:   su resumen los lista, cada uno con su pendiente enlazado, y el
+            programa dice cuáles siguen abiertos y por dónde se retoman
 ```
 
 Fuente: [13·DOC22](../13-documentacion/reglas/DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md#doc22--escribe-en-su-propio-documento-lo-que-cada-sesión-dejó)

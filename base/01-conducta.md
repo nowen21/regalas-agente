@@ -599,7 +599,7 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v41.
 
 **Fila 18 · no validable, y así queda registrada** en [validadores/reglas-validables.md](../validadores/reglas-validables.md): decidir si algo estaba pedido exige leer el criterio y las reglas.
 
-Del [análisis 1](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (conclusiones 7 y 17) y el [análisis 6](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) (conclusión 5) del pendiente «Lo que se construye se aparta de lo aprobado», fase `A` de la HU-005 de EP-023.
+Del [análisis 1](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (conclusiones 7 y 17) y el [análisis 6](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-6.md) (conclusión 5) del pendiente «Lo que se construye se aparta de lo aprobado», fase `A` de la HU-005 de EP-023.
 
 > Vale mientras el texto de arriba no cambie. Si la regla se edita, este resultado queda **anulado** y se vuelve a aplicar el checklist.
 

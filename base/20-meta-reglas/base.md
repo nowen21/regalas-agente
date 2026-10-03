@@ -149,7 +149,7 @@ Buscar, en este orden:
 
 1. **Por concepto** en `base/` — no solo por la palabra: el mismo criterio puede estar escrito con otro término.
 2. **El capítulo dueño del tema** ([`M2`](reglas/M2-un-tema-un-capitulo-un-dueno.md)), de arriba abajo.
-3. **La memoria** (señales) y `pendientes/`: puede estar decidido o en cola.
+3. **La memoria** (señales) y el índice de pendientes, `documentacion/pendientes.md`: puede estar decidido o en cola.
 
 Y decidir, en este orden de preferencia:
 
@@ -167,7 +167,7 @@ Dos reglas que dicen lo mismo con palabras distintas terminan contradiciéndose 
 | Regla de **este** proyecto (convención del equipo, regla de negocio) | `.agente/reglas-proyecto.md` del proyecto (capa 3) |
 | Instructivo para **mantener el estándar** (cómo redactar, qué versionar) | `CLAUDE.md` raíz del repo del estándar |
 | **Por qué** se diseñó algo así (razonamiento, alternativas) | `notas/` |
-| Mejora acordada pero **aún no hecha** | `pendientes/` |
+| Mejora acordada pero **aún no hecha** | Un pendiente, en la carpeta `pendientes/` de lo que lo origina (épica, HU, o el resumen del día mientras no tiene dueño); `pendientes/` de la raíz queda como historia |
 | Preferencia del usuario sobre cómo trabajar | memoria del agente |
 | Qué pasó en una sesión | `historico-chat/` |
 

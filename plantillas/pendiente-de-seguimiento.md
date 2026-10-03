@@ -1,4 +1,4 @@
-# Pendiente · Esperando una corrección del estándar: «qué»
+# Pendiente: esperando una corrección del estándar, «qué»
 
 > Todo documento creado con esta plantilla se redacta aplicando estas reglas. Esta nota se borra al llenarla.
 >
@@ -9,33 +9,16 @@
 > | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Modelo del pendiente que queda en el proyecto cuando lo que hay que corregir es del estándar (`02·F24`). Su gemelo, el que se abre en el estándar, es [plantillas/pendiente-reportado.md](pendiente-reportado.md). Al llenarlo se reemplazan los `«…»` y se borran esta caja y las notas de cada sección.
-
-**Estado:** abierto, anotado el «AAAA-MM-DD». No se cierra al reportar: se cierra cuando llega el aviso y se comprueba.
+> Modelo del pendiente que queda en el proyecto cuando lo que hay que corregir es del estándar (`02·F24`). Su «De dónde sale» enlaza el pendiente que se abrió en el estándar: ese es su padre, y este cierra cuando cierra el plan de aquel, sin que nadie lo escriba acá. Su gemelo es [plantillas/pendiente-reportado.md](pendiente-reportado.md). Al llenarlo se reemplazan los `«…»` y se borran las notas.
 
 | | |
 |---|---|
-| **Dónde está el defecto** | El estándar — `«ruta o archivo»` |
-| **Qué se reportó allá** | `«pendientes/NN-…md»` del estándar |
-| **Qué se espera** | «la corrección, en una línea» |
-| **Cuándo cierra** | Cuando el estándar avise y **acá se compruebe** corriendo «qué» |
+| **De dónde sale** | «el pendiente que se abrió en el estándar, con su enlace» |
 
-## Qué nos pasó
+## El problema
 
-> Es el defecto visto desde este proyecto, contado para quien no estuvo cuando apareció.
+«El defecto visto desde este proyecto: qué se intentó, qué salió mal y qué se hace mientras tanto.»
 
-«El caso concreto en este proyecto: qué se intentó, qué salió mal, qué se hizo mientras tanto.»
+## Por qué importa
 
-## Por qué no lo arreglamos acá
-
-> Deja escrito por qué el arreglo espera al estándar y qué se usa mientras tanto. Si no hay rodeo, se escribe «Ninguno».
-
-Porque es del estándar, y `02·F24` lo prohíbe: parchearlo en la copia local deja a los demás proyectos con el defecto y al estándar sin enterarse.
-
-**Lo que sí se hace mientras tanto:** «el rodeo, si lo hay, y que quede claro que es un rodeo y no la solución».
-
-## Cómo se comprueba cuando llegue el aviso
-
-> Es la prueba que cierra este pendiente, corrida en este proyecto.
-
-«Los pasos para verificar acá que la corrección funciona. Cerrar sin comprobar es dar por buena una promesa.»
+«Qué se rompe o qué se pierde mientras el estándar no lo corrija.»
