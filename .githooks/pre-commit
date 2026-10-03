@@ -37,6 +37,13 @@ fi
     echo "Commit rechazado: quita las marcas nuevas y vuelve a intentar." >&2
     exit 1
 }
+# `EP-023 - HU-007` - Lo que entra en el commit contra el plan aprobado de la
+# fase que toca. Solo compara los planes aprobados desde 48.0.0.
+"$PY" "$ESTANDAR/validadores/validar.py" plan --raiz "$(pwd)" --preparados || {
+    echo "" >&2
+    echo "Commit rechazado: el plan no declara ese archivo ni una regla lo autoriza." >&2
+    exit 1
+}
 # `80` - Que el commit no se lleve el trabajo de otra sesion. **Avisa y deja
 # pasar**: retomar lo que otra dejo a medias a veces es lo correcto; hacerlo
 # sin darse cuenta, no. Por eso no lleva `|| exit`.
