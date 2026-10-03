@@ -11,6 +11,25 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 44.0.0 — 2026-10-02
+
+**Todo análisis aprobado queda anotado en el análisis principal, y el análisis revisa más antes de cerrarse.** ⚠ obliga a migrar
+
+**MAYOR**: un análisis nuevo trae secciones que antes no tenía, y no se aprueba sin ellas. Un proyecto al día corre la instalación, pone en su análisis principal la «Lista de análisis» con fecha, resultado y enlace, y anota ahí los análisis que ya tiene aprobados.
+
+**Lo que entra:**
+
+- `plantillas/analisis.md`: abre con «Recomendaciones», suma «Dónde más puede pasar», la tabla de HU con dependencia, orden y razón, y cierra con «Lo que aporta al análisis principal».
+- `plantillas/recomendaciones-del-analisis.md`, nueva: 17 recomendaciones sacadas de las lecciones de los análisis 1 a 8 del pendiente 103, y el nivel del proyecto en `analisis/recomendaciones.md`.
+- `plantillas/ciclo-vida-proyectos/03-epica.md`: la hoja de ruta lleva el orden de las HU, de cuál depende cada una y por qué.
+- `13·DOC25`: cada análisis aprobado se anota en el principal de su alcance, aunque no cambie el sistema, con lo que aportó tal cual.
+- `validadores/analisis_en_curso.py`: al aprobar, la marca dice la versión; no se aprueba sin filas en «Lo que se tiene que hacer» ni sin «Lo que aporta», y lo que suma pasa tal cual al principal.
+- `validadores/analisis.py`: desde esta versión exige las recomendaciones consultadas, «Dónde más puede pasar» y el orden de las HU; revisa las recomendaciones y que lo que suma esté tal cual en el principal, y avisa del análisis que no está en la lista. Los análisis aprobados antes no se reabren.
+
+Del análisis 8 y del análisis 9 del pendiente 103, fase `D` de la HU-001 de EP-023.
+
+---
+
 ## 43.0.0 — 2026-10-02
 
 **El análisis dice cada decisión una sola vez: «Lo acordado» reemplaza a «Conclusiones».** ⚠ obliga a migrar

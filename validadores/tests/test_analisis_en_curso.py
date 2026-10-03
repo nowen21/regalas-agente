@@ -250,6 +250,90 @@ class ElAvisoDeCadaTurno(Base):
         self.assertEqual(codigo, 0)
         self.assertIn("analisis-1.md", texto)
 
+    def test_cp010_el_aviso_dice_por_que_no_se_aprobo(self):
+        a1 = os.path.join(self.p7, "analisis-1.md")
+        self.escribir(a1, ANALISIS.replace(FILA, ""))
+        curso._guardar_estado(self.raiz, {"analisis": a1, "transcripcion": self.trans,
+                                          "desde": 1, "pausa": None, "pausas": []})
+        _, texto = self.correr("Apruebo el análisis")
+        self.assertIn("No se aprobó: falta al menos una fila", texto)
+        self.assertNotIn("**Aprobado**", self.leer(a1))
+
+
+# ── Fase D: aprobar revisa, marca la versión y pasa lo que suma ─────────────
+
+FILA = "| 1 | Hacer algo | 1 | EP-009, HU-001 |\n"
+APORTA = ("## Lo que aporta al análisis principal\n\n**Resultado:** Ratifica.\n\n"
+          "**Lo que suma al análisis principal:** La clase tiene suma.\n")
+ANALISIS = ("# Análisis 1: algo\n\n## Conversación\n\n> acá termina la conversación\n\n"
+            "## Lo que se tiene que hacer\n\n| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |\n"
+            "|---|---|---|---|\n" + FILA + "\n" + APORTA)
+PRINCIPAL = ("# Análisis principal\n\n## Qué es\n\nCimiento es algo.\n\n"
+             "## Lista de análisis\n\n| Fecha | Resultado | Análisis |\n|---|---|---|\n")
+
+
+class AprobarRevisaYPasaAlPrincipal(Base):
+
+    def preparar(self, texto, carpeta=None):
+        carpeta = carpeta or self.p7
+        ruta = os.path.join(carpeta, "analisis-1.md")
+        self.escribir(ruta, texto)
+        curso._guardar_estado(self.raiz, {"analisis": ruta, "transcripcion": self.trans,
+                                          "desde": 1, "pausa": None, "pausas": []})
+        return ruta
+
+    def test_cp006_la_marca_dice_la_version(self):
+        a1 = self.preparar(ANALISIS)
+        self.assertTrue(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertIn(", con la versión %s." % curso.version(), self.leer(a1))
+        self.assertTrue(curso.aprobado(a1))
+        self.assertEqual(curso.turno_aprobado(a1), 7)
+
+    def test_cp009_lo_que_suma_pasa_tal_cual_al_principal(self):
+        principal = os.path.join(self.raiz, "analisis", "proyecto-analisis-principal.md")
+        self.escribir(principal, PRINCIPAL)
+        a1 = self.preparar(ANALISIS)
+        self.assertTrue(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        texto = self.leer(principal)
+        self.assertIn("Cimiento es algo. La clase tiene suma.\n\n## Lista de análisis", texto)
+        self.assertTrue(texto.endswith(
+            "| 2026-10-02 | Ratifica | [Análisis 1 del pendiente 7](../documentacion/7-algo-que-falla/analisis-1.md) |\n"))
+        import analisis
+        self.assertEqual(analisis.copias(self.raiz), [])
+        self.assertEqual(analisis.fuera_de_la_lista(self.raiz), [])
+        self.assertTrue(os.path.isfile(a1))
+
+    def test_cp009_el_modulo_con_principal_propio_lo_usa(self):
+        del_proyecto = os.path.join(self.raiz, "analisis", "proyecto-analisis-principal.md")
+        del_modulo = os.path.join(self.raiz, "ventas", "analisis", "ventas-analisis-principal.md")
+        self.escribir(del_proyecto, PRINCIPAL)
+        self.escribir(del_modulo, PRINCIPAL)
+        self.preparar(ANALISIS, os.path.join(self.raiz, "ventas", "documentacion", "8-otra-cosa"))
+        self.assertTrue(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertIn("La clase tiene suma.", self.leer(del_modulo))
+        self.assertNotIn("La clase tiene suma.", self.leer(del_proyecto))
+
+    def test_cp010_sin_filas_no_se_aprueba(self):
+        a1 = self.preparar(ANALISIS.replace(FILA, ""))
+        self.assertEqual(curso.por_que_no_se_aprueba(self.raiz), ["falta al menos una fila en «Lo que se tiene que hacer»"])
+        self.assertFalse(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertFalse(curso.aprobado(a1))
+
+    def test_cp011_sin_lo_que_aporta_no_se_aprueba(self):
+        a1 = self.preparar(ANALISIS.replace(APORTA, ""))
+        self.assertFalse(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertFalse(curso.aprobado(a1))
+        self.assertIn("Lo que aporta al análisis principal", curso.por_que_no_se_aprueba(self.raiz)[0])
+
+    def test_cp011_sin_lo_que_suma_no_se_aprueba(self):
+        a1 = self.preparar(ANALISIS.replace("**Lo que suma al análisis principal:** La clase tiene suma.\n", ""))
+        self.assertFalse(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertFalse(curso.aprobado(a1))
+
+    def test_la_plantilla_trae_lo_que_pide_aprobar(self):
+        with open(os.path.join(curso.comun.RAIZ, curso.PLANTILLA), encoding="utf-8") as f:
+            self.assertEqual(curso.faltantes(f.read()), [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -15,6 +15,16 @@
 
 ---
 
+## Recomendaciones
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md): este análisis no consultó recomendaciones, porque el archivo no existía. De sus lecciones salen: R-11, R-12 y R-15.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+
+---
+
 ## Hallazgo
 
 ### H-2. El enganche del análisis solo sirve para un análisis

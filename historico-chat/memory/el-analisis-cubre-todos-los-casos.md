@@ -6,7 +6,7 @@
 
 **Cómo se aplica.**
 
-- Antes de proponer, listar todas las formas en que puede pasar lo mismo, en cualquier herramienta o proyecto, y decir cuáles cubre cada propuesta.
+- Es la recomendación R-1 de las [recomendaciones del análisis](../../plantillas/recomendaciones-del-analisis.md), y se aplica como ella dice; aquí queda el registro de que el usuario lo pidió.
 - En el análisis se proponen todas las opciones que haga falta, con su recomendación. Fuera del análisis rige [`01·C30`](../../base/01-conducta.md#c30--no-agregues-lo-que-no-se-pidió): no se agrega lo que no se pidió.
 
 Relacionado: [decidir es del usuario](decidir-es-del-usuario.md) · [todo multiproyecto](todo-multiproyecto.md).

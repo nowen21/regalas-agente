@@ -15,6 +15,16 @@
 
 ---
 
+## Recomendaciones
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md): este análisis no consultó recomendaciones, porque el archivo no existía. De sus lecciones salen: R-2, R-10 y R-15.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+
+---
+
 ## Hallazgo
 
 ### H-5. Derogar `01·C14` deja otras dos reglas apoyadas en ella

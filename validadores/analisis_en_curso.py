@@ -23,6 +23,7 @@ de su columna «Pasó a» no está terminada (análisis 3, punto 4).
 análisis nuevo: qué hallazgo lo origina lo sabe la conversación. No corrige las
 palabras copiadas: la conversación no se edita (análisis 1, conclusión 21).
 """
+import glob
 import os
 import re
 import time
@@ -34,6 +35,8 @@ from comun import leer
 ESTADO = os.path.join("historico-chat", ".estado", "analisis-en-curso.txt")
 PLANTILLA = os.path.join("plantillas", "analisis.md")
 FIN = "> acá termina la conversación"
+APORTA = "Lo que aporta al análisis principal"
+LISTA = "## Lista de análisis"
 
 _ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
 _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
@@ -42,6 +45,9 @@ _TURNO = re.compile(r"^### (\d+) · Usuario", re.M)
 _PENDIENTE = re.compile(r"\bpendiente\s+(\d+)\b")
 _HU = re.compile(r"\bHU[- ]0*(\d+)\b")
 _EPICA = re.compile(r"\bEP-0*(\d+)\b")
+_RESULTADO = re.compile(r"^\*\*Resultado:\*\* *(\S.*?)\s*$", re.M)
+_SUMA = re.compile(r"^\*\*Lo que suma al análisis principal:\*\* *(\S.*?)\s*$", re.M)
+_FILA = re.compile(r"^\| *\d+ *\|", re.M)
 
 # Lo que no es del repositorio: local, generado o de terceros.
 FUERA = {".git", ".venv", "venv", "__pycache__", "node_modules", "terceros"}
@@ -258,18 +264,113 @@ def pausar(raiz, turno):
     return True
 
 
+def seccion(texto, titulo):
+    """El texto de la sección `## <titulo>` hasta la siguiente `## `."""
+    m = re.search(r"^## %s.*$" % re.escape(titulo), texto, re.M)
+    if not m:
+        return ""
+    fin = re.search(r"^## ", texto[m.end():], re.M)
+    return texto[m.end():m.end() + fin.start()] if fin else texto[m.end():]
+
+
+def aporte(texto):
+    """`(resultado, lo que suma)` de «Lo que aporta al análisis principal», o `None`."""
+    parte = seccion(texto, APORTA)
+    resultado, suma = _RESULTADO.search(parte), _SUMA.search(parte)
+    if not (resultado and suma):
+        return None
+    return resultado.group(1).strip(), suma.group(1).strip()
+
+
+def faltantes(texto):
+    """Lo que le falta a un análisis para poder aprobarse (análisis 9, CA-25 y CA-26)."""
+    salida = []
+    if not _FILA.search(seccion(texto, "Lo que se tiene que hacer")):
+        salida.append("falta al menos una fila en «Lo que se tiene que hacer»")
+    if aporte(texto) is None:
+        salida.append("falta «%s», con el resultado y lo que suma" % APORTA)
+    return salida
+
+
+def por_que_no_se_aprueba(raiz):
+    """Lo que le falta al análisis prendido para aprobarse; vacío si nada."""
+    estado = leer_estado(raiz)
+    if not estado or not os.path.isfile(estado["analisis"]):
+        return []
+    return faltantes(leer(estado["analisis"]))
+
+
+def version():
+    """La versión del estándar que corre, la que queda en la marca de aprobado."""
+    ruta = os.path.join(comun.RAIZ, "VERSION")
+    return leer(ruta).strip() if os.path.isfile(ruta) else ""
+
+
+def principal_de(raiz, ruta):
+    """El análisis principal del alcance de `ruta`: el primero que aparece subiendo de carpeta.
+
+    Un módulo con su propio `analisis/<nombre>-analisis-principal.md` lo usa; si no lo
+    tiene, se llega al del proyecto (análisis 9, punto 5 de «Lo acordado»).
+    """
+    raiz = os.path.abspath(raiz)
+    carpeta = os.path.dirname(os.path.abspath(ruta))
+    while True:
+        hallados = sorted(glob.glob(os.path.join(carpeta, "analisis", "*analisis-principal*.md")))
+        if hallados:
+            return hallados[0]
+        if os.path.normcase(carpeta) == os.path.normcase(raiz) or os.path.dirname(carpeta) == carpeta:
+            return None
+        carpeta = os.path.dirname(carpeta)
+
+
+def nombre_del_analisis(ruta):
+    """El texto del enlace en la «Lista de análisis»."""
+    m = _ANALISIS.match(os.path.basename(ruta))
+    if m:
+        p = re.match(r"^(\d+)-", os.path.basename(os.path.dirname(ruta)))
+        return "Análisis %s del pendiente %s" % (m.group(1), p.group(1)) if p else "Análisis %s" % m.group(1)
+    return leer(ruta).split("\n", 1)[0].lstrip("# ").strip()
+
+
+def anotar_en_principal(raiz, ruta, fecha):
+    """Pasa tal cual lo que suma el análisis al principal de su alcance (CA-24).
+
+    Lo que suma va al final de la redacción y la fila al final de la «Lista de
+    análisis». Devuelve la ruta del principal, o `None` si no hay dónde anotarlo.
+    """
+    datos = aporte(leer(ruta))
+    principal = principal_de(raiz, ruta)
+    if not datos or not principal:
+        return None
+    texto = leer(principal)
+    i = texto.find(LISTA)
+    if i < 0:
+        return None
+    resultado, suma = datos
+    enlace = os.path.relpath(ruta, os.path.dirname(principal)).replace(os.sep, "/")
+    fila = "| %s | %s | [%s](%s) |\n" % (fecha, resultado.rstrip("."), nombre_del_analisis(ruta), enlace)
+    _escribir(principal, texto[:i].rstrip("\n") + " " + suma + "\n\n" + texto[i:].rstrip("\n") + "\n" + fila)
+    return principal
+
+
 def aprobar(raiz, turno, fecha):
-    """Pone la marca «Aprobado» con la fecha y el turno, una sola vez."""
+    """Pone la marca «Aprobado» con la fecha, el turno y la versión, una sola vez.
+
+    No la pone si al análisis le falta algo de `faltantes()`. Puesta la marca,
+    pasa lo que el análisis suma al análisis principal.
+    """
     estado = leer_estado(raiz)
     if not estado or not os.path.isfile(estado["analisis"]):
         return False
     texto = leer(estado["analisis"])
-    if _APROBADO.search(texto):
+    if _APROBADO.search(texto) or faltantes(texto):
         return False
-    marca = ("> **Aprobado** por el usuario el %s, en el turno %d. Desde ese momento "
-             "este análisis no se reescribe.\n" % (fecha, turno))
+    con = ", con la versión %s" % version() if version() else ""
+    marca = ("> **Aprobado** por el usuario el %s, en el turno %d%s. Desde ese momento "
+             "este análisis no se reescribe.\n" % (fecha, turno, con))
     primera, _, resto = texto.partition("\n")
     _escribir(estado["analisis"], primera + "\n\n" + marca + resto)
+    anotar_en_principal(raiz, estado["analisis"], fecha)
     return True
 
 

@@ -28,16 +28,16 @@
 
 | CA de HU-001 | Estado |
 |---|---|
-| CA-17 · El análisis abre todas las posibilidades | ☐ |
-| CA-18 · Las HU salen con su dependencia y su orden | ☐ |
-| CA-19 · Las recomendaciones del análisis | ☐ |
-| CA-20 · El análisis principal al día | ☐ |
-| CA-21 · Medir la respuesta antes de entregarla | ☐ |
-| CA-22 · Las secciones nuevas no reabren los análisis aprobados | ☐ |
-| CA-23 · Todo análisis aprobado se anota en el principal | ☐ |
-| CA-24 · La sección «Lo que aporta al análisis principal» | ☐ |
-| CA-25 · Sin una fila en «Lo que se tiene que hacer» no se aprueba | ☐ |
-| CA-26 · Sin «Lo que aporta» no se aprueba | ☐ |
+| CA-17 · El análisis abre todas las posibilidades | ☑ |
+| CA-18 · Las HU salen con su dependencia y su orden | ☑ |
+| CA-19 · Las recomendaciones del análisis | ☑ |
+| CA-20 · El análisis principal al día | ☑ |
+| CA-21 · Medir la respuesta antes de entregarla | ☑ |
+| CA-22 · Las secciones nuevas no reabren los análisis aprobados | ☑ |
+| CA-23 · Todo análisis aprobado se anota en el principal | ☑ |
+| CA-24 · La sección «Lo que aporta al análisis principal» | ☑ |
+| CA-25 · Sin una fila en «Lo que se tiene que hacer» no se aprueba | ☑ |
+| CA-26 · Sin «Lo que aporta» no se aprueba | ☑ |
 
 ## 1. Objetivo y alcance  ·  `02·F14` Q4
 

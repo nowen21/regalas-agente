@@ -11,6 +11,16 @@
 > | [`00·ID11`](../../../../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](../../../../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
+## Recomendaciones
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md): este análisis no consultó recomendaciones, porque el archivo no existía. De sus lecciones salen: R-2, R-7, R-8, R-9, R-10 y R-11.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| Ninguna | El archivo de [recomendaciones del análisis](../../../../plantillas/recomendaciones-del-analisis.md) nació después |
+
+---
+
 ## Hallazgo V1
 > Agregarlo acá tal cual ya que este es el que desencadena el análisis
 

@@ -44,6 +44,7 @@ POR_NOMBRE = {
     "mapeo-nombres": "plantillas/mapeo-nombres.md",
     "analisis": "plantillas/analisis.md",
     "cierre-analisis": "plantillas/cierre-analisis.md",
+    "recomendaciones-del-analisis": "plantillas/recomendaciones-del-analisis.md",
     "estado-fase": "plantillas/ciclo-vida-proyectos/10-estado-fase.md",
     # Documentos del proyecto con su nombre real en `documentacion/…`.
     "plan_trabajo": "plantillas/ciclo-vida-proyectos/07-plan-trabajo.md",

@@ -11,7 +11,7 @@
 
 ## 1. En qué estación va
 
-**Estación actual:** 8, implementador. **Última puerta pasada:** 7.
+**Estación actual:** 12, commit. **Última puerta pasada:** 11.
 
 | # | Estación | Puerta | Estado |
 |---|---|---|---|
@@ -22,23 +22,23 @@
 | 5 | Escritor de especificación | 👤 especificación aprobada | N/A: la especificación son los CA-17 a CA-26 |
 | 6 | Diseñador | diseño coherente | ☑ |
 | 7 | Planificador de tareas | 👤 plan + pruebas aprobados | ☑ Versión 2, aprobada el 2026-10-02 |
-| 8 | Implementador | implementado + pruebas verdes | ☐ |
-| 9 | Verificador | trazabilidad sin faltantes | ☐ |
-| 10 | Crítico | sin hallazgos graves | ☐ |
-| 11 | Cierre documental + señales | docs y señales al día | ☐ |
+| 8 | Implementador | implementado + pruebas verdes | ☑ Las 21 tareas; sin fallas nuevas en la suite |
+| 9 | Verificador | trazabilidad sin faltantes | ☑ `origen` y `flujo` sin fallas |
+| 10 | Crítico | sin hallazgos graves | ☑ Ninguno |
+| 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado de pruebas, HU y registro de cambios |
 | 12 | Commit | 👤 autorizado | ☐ |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan
 
-**Hechas:** 0 de 21. **Bloqueadas:** ninguna.
+**Hechas:** 21 de 21. **Bloqueadas:** ninguna.
 
 ## 1.1 Veredicto de las pruebas
 
 | Campo | Valor |
 |---|---|
-| **Concepto** | Sin ejecutar |
-| **CA cumplidos** | 0 de 10 |
+| **Concepto** | Cumple |
+| **CA cumplidos** | 10 de 10 |
 | **Defectos abiertos aceptados** | Ninguno |
 | **Fuente** | `resultado_pruebas.md` |
 

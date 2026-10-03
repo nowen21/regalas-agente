@@ -58,17 +58,17 @@ Para una fase, la plantilla pide las secciones 3, 5, 6, 9 y 12; las demás son o
 
 | HU | CA | Caso de prueba | Tipo | Prioridad | Automatizado | Estado |
 |---|---|---|---|---|:--:|---|
-| HU-001 | CA-17 | CP-001 | Funcional | Alta | Parcial | ☐ |
-| HU-001 | CA-18 | CP-002 | Funcional | Alta | Parcial | ☐ |
-| HU-001 | CA-19 | CP-003 | Funcional | Alta | Parcial | ☐ |
-| HU-001 | CA-20 | CP-004 | Funcional | Media | Parcial | ☐ |
-| HU-001 | CA-21 | CP-005 | Funcional | Media | No | ☐ |
-| HU-001 | CA-22 | CP-006 | Compatibilidad | Alta | Sí | ☐ |
-| HU-001 | CA-23 | CP-008 | Funcional | Media | No | ☐ |
-| HU-001 | CA-24 | CP-009 | Funcional | Alta | Parcial | ☐ |
-| HU-001 | CA-25 | CP-010 | Funcional | Alta | Sí | ☐ |
-| HU-001 | CA-26 | CP-011 | Funcional | Alta | Sí | ☐ |
-| HU-001 | RNF-06 | CP-007 | Trazabilidad | Media | Parcial | ☐ |
+| HU-001 | CA-17 | CP-001 | Funcional | Alta | Parcial | ☑ |
+| HU-001 | CA-18 | CP-002 | Funcional | Alta | Parcial | ☑ |
+| HU-001 | CA-19 | CP-003 | Funcional | Alta | Parcial | ☑ |
+| HU-001 | CA-20 | CP-004 | Funcional | Media | Parcial | ☑ |
+| HU-001 | CA-21 | CP-005 | Funcional | Media | No | ☑ |
+| HU-001 | CA-22 | CP-006 | Compatibilidad | Alta | Sí | ☑ |
+| HU-001 | CA-23 | CP-008 | Funcional | Media | No | ☑ |
+| HU-001 | CA-24 | CP-009 | Funcional | Alta | Parcial | ☑ |
+| HU-001 | CA-25 | CP-010 | Funcional | Alta | Sí | ☑ |
+| HU-001 | CA-26 | CP-011 | Funcional | Alta | Sí | ☑ |
+| HU-001 | RNF-06 | CP-007 | Trazabilidad | Media | Parcial | ☑ |
 
 **Cobertura:** 10 de 10 criterios y el RNF-06.
 

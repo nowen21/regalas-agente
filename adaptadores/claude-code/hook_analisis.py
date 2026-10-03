@@ -74,7 +74,10 @@ def mensaje(raiz, entrada):
         if curso.pausar(raiz, turno):
             nota = "pausado en el turno %d" % turno
     elif limpio.startswith("apruebo el analisis"):
-        if curso.aprobar(raiz, turno, datetime.date.today().isoformat()):
+        faltan = curso.por_que_no_se_aprueba(raiz)
+        if faltan:
+            nota = "no se aprobó: " + "; ".join(faltan)
+        elif curso.aprobar(raiz, turno, datetime.date.today().isoformat()):
             nota = "marca de aprobado puesta en el turno %d; se apaga al terminar esta respuesta" % turno
     return curso.aviso(raiz, nota)
 

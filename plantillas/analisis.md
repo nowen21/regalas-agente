@@ -19,6 +19,16 @@
 
 ---
 
+## Recomendaciones
+
+> Antes de analizar se leen las [recomendaciones de Cimiento](«RUTA-ESTANDAR»/plantillas/recomendaciones-del-analisis.md) y las del proyecto, en `analisis/recomendaciones.md` si existe. Aquí se dice cuáles se consultaron y cómo se aplican; la que no aplica se nombra y se dice por qué.
+
+| Recomendación | Cómo se aplica en este análisis |
+|---|---|
+| «R-n o RP-n» | «qué se hizo por ella, o por qué no aplica» |
+
+---
+
 ## Hallazgo
 
 > Copia del hallazgo que origina el análisis, tal como estaba al empezar. No se toca nunca: si el análisis concluye que el hallazgo debe cambiar, el cambio se hace en el resumen de la sesión donde nació.
@@ -79,6 +89,14 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 | Normas y leyes | «cuáles aplican, o "ninguna"» |
 | Herramientas | «qué condiciona lo que se va a construir» |
 
+### Dónde más puede pasar
+
+> Lo que destapó el hallazgo puede pasar en otros sitios, otros proyectos u otras herramientas. Cada caso dice qué lo cubre: un punto de «Lo que se tiene que hacer», un punto de «Lo acordado» o la razón por la que no hace falta cubrirlo. Ningún caso queda sin esa columna.
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
+|---|---|---|---|
+| «caso» | «sitio, proyecto o herramienta» | «qué pasa» | «punto, o la razón» |
+
 ---
 
 ## Propuesta final: hallazgo y pendiente V«N+1», épica y HU
@@ -104,11 +122,11 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 
 «épica: título que diga su resultado, o la épica existente a la que se suman las HU»
 
-| HU | Título | Parte del problema que resuelve | Puntos de lo que se tiene que hacer |
-|---|---|---|---|
-| «n» | «título que diga su resultado» | «la frase del problema que le toca a esta HU; es lo que va en su contexto» | «números» |
+> El número identifica a la HU; el orden de construcción sale de sus dependencias. Una HU no va antes de otra de la que depende, y cada puesto dice por qué va ahí.
 
-«orden en que se construyen y por qué»
+| Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|---|
+| 1 | «n» | «título que diga su resultado» | «la frase del problema que le toca a esta HU; es lo que va en su contexto» | «HU de las que depende, o "Ninguna"» | «razón» | «números» |
 
 ## Lecciones aprendidas
 
@@ -125,3 +143,11 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | «qué hay que hacer» | «número» | «épica y HU, con su título y su enlace» |
+
+## Lo que aporta al análisis principal
+
+> Todo análisis se anota en el análisis principal de su alcance, aunque no cambie el sistema ([`13·DOC25`](«RUTA-ESTANDAR»/base/13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md)). Al aprobar, el programa pasa tal cual lo que suma al final de la redacción del principal, y una fila con la fecha, el resultado y el enlace a su «Lista de análisis». Sin esta sección el análisis no se aprueba.
+
+**Resultado:** «ratifica, aclara, amplía, modifica la idea o cambia lo que se construye».
+
+**Lo que suma al análisis principal:** «la frase que se agrega a la redacción del principal, escrita para leerse dentro de ella»

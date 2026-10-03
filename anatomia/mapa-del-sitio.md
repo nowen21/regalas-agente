@@ -91,6 +91,7 @@ agente/
 │   ├── senales.md .................... formato de las señales de memoria
 │   ├── inventario-hu.md ............. qué HU están completas y qué documento le falta a cada una
 │   ├── historico-chat.md · cierre-analisis.md
+│   ├── recomendaciones-del-analisis.md  lo que todo análisis consulta antes de empezar
 │   ├── checklist-despliegue.md · postmortem.md
 │   └── proyectos.md .................. registro local de proyectos (no se versiona)
 │
@@ -116,7 +117,7 @@ agente/
 │   ├── ── documentación ──
 │   ├── enlaces.py .................... enlaces rotos e índices desactualizados
 │   ├── plantillas.py ................. un documento contra su plantilla
-│   ├── analisis.py ................... cada análisis aprobado trae sus cuatro partes
+│   ├── analisis.py ................... lo que un análisis aprobado tiene que traer, y su anotación en el principal
 │   ├── analisis_en_curso.py .......... prender, pausar y apagar el análisis; pasarle la conversación
 │   ├── origen.py ..................... cada punto dice de qué punto del anterior sale
 │   ├── fases.py ...................... jerarquía épica → HU → fase

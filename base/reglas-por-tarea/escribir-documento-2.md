@@ -160,12 +160,12 @@ CORRECTO:   las conclusiones van al final del mismo análisis; aprobado, queda
 Fuente: [13·DOC24](../13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md#doc24--cierra-el-análisis-en-su-mismo-archivo)
 
 ## DOC25 · Reescribe el análisis principal con su lista de cambios
-El análisis principal del proyecto o del módulo dice siempre lo que se va a construir hoy: cuando un análisis individual cambia algo, se reescribe y suma a su lista de cambios la fecha y el enlace a ese análisis (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+El análisis principal del proyecto o del módulo se forma con lo que aportan los análisis individuales: cada uno que se aprueba se anota en él, aunque no cambie el sistema, y lo que suma pasa tal cual a su redacción, con la fecha, el resultado y el enlace en su lista de análisis (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
 ```
-INCORRECTO: el principal dice «la clase con suma», un análisis individual
-            agregó sus propiedades y el principal quedó congelado
-CORRECTO:   el principal dice «la clase con suma y sus propiedades» y su
-            lista de cambios enlaza el análisis que lo cambió
+INCORRECTO: un análisis solo confirmó que «la clase con suma» estaba bien
+            entendida, y no se anotó porque no cambió nada
+CORRECTO:   su frase pasa tal cual al principal, y la lista de análisis
+            dice la fecha, «Ratifica» y el enlace
 ```
 
 Fuente: [13·DOC25](../13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md#doc25--reescribe-el-análisis-principal-con-su-lista-de-cambios)

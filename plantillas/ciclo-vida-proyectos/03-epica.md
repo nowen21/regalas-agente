@@ -260,13 +260,12 @@ Detalle adicional, cuando aplique:
 
 ## 15. Hoja de ruta
 
-> Reparte las HU en fases de entrega, cada una con su fecha y su entregable.
+> El orden en que se construyen las HU, copiado de la tabla de HU del análisis que las sacó. Una HU no va antes de otra de la que depende, y cada puesto dice por qué va ahí.
 
-| Fase | Contenido | HU incluidas | Fecha objetivo | Entregable |
+| Orden | HU | Depende de | Por qué en ese orden | Estado |
 |---|---|---|---|---|
-| Fase 1 — MVP | | HU-001, HU-002 | | |
-| Fase 2 | | HU-003 | | |
-| Fase 3 | | | | |
+| 1 | HU-001 | Ninguna | | |
+| 2 | HU-002 | HU-001 | | |
 
 ## 16. Estrategia de entrega
 
