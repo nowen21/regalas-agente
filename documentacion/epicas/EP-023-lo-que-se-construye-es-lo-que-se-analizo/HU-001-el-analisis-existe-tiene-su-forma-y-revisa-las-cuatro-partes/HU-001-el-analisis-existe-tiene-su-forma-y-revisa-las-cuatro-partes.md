@@ -1,6 +1,6 @@
 # HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2) y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) (puntos 2, 3, 5, 7 y 8). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 1, 2, 3, 15, 16, 23, 30 y 32) y del [análisis 2](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (puntos 1 a 6 y 8), del [análisis 5](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-5.md) (punto 1) y del [análisis 4](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-4.md) (punto 2) y del [análisis 8](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md) (puntos 2, 3, 5, 7 y 8) y del [análisis 9](../103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md) (puntos 1, 2, 3, 5, 8 y 9; el 6 lo cumple el plan de la fase D). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -352,7 +352,7 @@ Y el validador detiene una HU que va antes de una de la que depende, o un puesto
 
 ### CA-19 · Las recomendaciones del análisis
 
-**Sale de:** análisis 8, punto 5.
+**Sale de:** análisis 8, punto 5, y análisis 9, punto 9.
 
 ```gherkin
 Dado el archivo de recomendaciones del análisis
@@ -361,6 +361,7 @@ Y hay dos niveles: las de Cimiento y las de cada proyecto
 Y la plantilla del análisis abre con una sección que lo enlaza y dice cuáles aplican
 Y el validador revisa el origen, que no haya repetidas y que el análisis aprobado diga cuáles consultó
 Y el archivo arranca con las que dejaron las lecciones de los análisis 1 a 8
+Y los análisis 1 a 9 dicen qué recomendaciones consultaron
 ```
 
 **Cómo validarlo:**
@@ -371,19 +372,20 @@ Y el archivo arranca con las que dejaron las lecciones de los análisis 1 a 8
 
 ### CA-20 · El análisis principal al día
 
-**Sale de:** análisis 8, punto 7.
+**Sale de:** análisis 8, punto 7, y análisis 9, punto 3.
 
 ```gherkin
 Dado el análisis principal
-Entonces su lista de cambios tiene las líneas de los análisis 6, 7 y 8
-Y el validador avisa cuando un análisis aprobado cambia una HU y no aparece en esa lista
+Entonces su contenido es la redacción que forman los aportes de los análisis, sin «Lo que está definido» ni «Qué se construye hoy»
+Y su «Lista de análisis» tiene una fila por cada análisis aprobado, del de la forma anterior al 9, con fecha, resultado y enlace
+Y el validador avisa cuando un análisis aprobado no aparece en esa lista
 ```
 
 **Cómo validarlo:**
-1. Leer la lista de cambios del análisis principal.
+1. Leer el análisis principal y su «Lista de análisis».
 2. Correr el validador con un análisis aprobado que no aparece en ella.
 
-**Aprobado cuando:** las tres líneas están y el validador avisa en el paso 2.
+**Aprobado cuando:** la redacción y las diez filas están, y el validador avisa en el paso 2.
 
 ### CA-21 · Medir la respuesta antes de entregarla
 
@@ -401,7 +403,7 @@ Entonces una dice que la respuesta se mide contra 00·ID9 antes de entregarla
 
 ### CA-22 · Las secciones nuevas no reabren los análisis aprobados
 
-**Sale de:** análisis 8, punto 11.
+**Sale de:** análisis 8, punto 11, y análisis 9, punto 8.
 
 ```gherkin
 Dado un análisis aprobado antes de la versión que trae las secciones nuevas
@@ -414,6 +416,70 @@ Y a uno aprobado desde esa versión sí
 1. Correr el validador sobre los análisis 1 a 7 y sobre uno nuevo sin las secciones.
 
 **Aprobado cuando:** los análisis 1 a 7 pasan y el nuevo no.
+
+### CA-23 · Todo análisis aprobado se anota en el principal
+
+**Sale de:** análisis 9, punto 1.
+
+```gherkin
+Dada la regla 13·DOC25
+Entonces pide anotar cada análisis aprobado en el análisis principal de su alcance, aunque no cambie el sistema
+Y lo que aportó pasa tal cual, sin redactarlo de nuevo
+```
+
+**Cómo validarlo:**
+1. Leer `13·DOC25` y aplicarle el checklist del estándar.
+
+**Aprobado cuando:** la regla lo pide y el checklist cumple.
+
+### CA-24 · La sección «Lo que aporta al análisis principal»
+
+**Sale de:** análisis 9, punto 2.
+
+```gherkin
+Dada la plantilla del análisis
+Entonces trae la sección «Lo que aporta al análisis principal», con el resultado y lo que suma al principal
+Cuando el usuario escribe «Apruebo el análisis»
+Entonces el enganche pasa lo que suma, tal cual, al análisis principal
+Y el validador avisa si las dos copias no coinciden
+```
+
+**Cómo validarlo:**
+1. Abrir la plantilla del análisis.
+2. Aprobar un análisis de prueba y comparar lo que suma con lo que quedó en el principal.
+3. Cambiar una palabra en el principal y correr el validador.
+
+**Aprobado cuando:** la sección está, el texto del paso 2 es idéntico y el validador avisa en el paso 3.
+
+### CA-25 · Sin una fila en «Lo que se tiene que hacer» no se aprueba
+
+**Sale de:** análisis 9, punto 5.
+
+```gherkin
+Dado un análisis sin filas en «Lo que se tiene que hacer»
+Cuando el usuario escribe «Apruebo el análisis»
+Entonces no queda aprobado y el aviso dice que falta al menos una fila
+```
+
+**Cómo validarlo:**
+1. Aprobar un análisis de prueba con la tabla vacía.
+
+**Aprobado cuando:** no tiene la marca y el aviso lo dice.
+
+### CA-26 · Sin «Lo que aporta» no se aprueba
+
+**Sale de:** análisis 9, punto 8.
+
+```gherkin
+Dado un análisis sin la sección «Lo que aporta al análisis principal»
+Cuando el usuario escribe «Apruebo el análisis»
+Entonces no queda aprobado y el aviso dice qué falta
+```
+
+**Cómo validarlo:**
+1. Aprobar un análisis de prueba sin la sección.
+
+**Aprobado cuando:** no tiene la marca y el aviso lo dice.
 
 ---
 
@@ -454,6 +520,7 @@ Las fija el plan de cada fase (`02·F14`).
 | [`A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador`](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/estado-fase.md) | CA-01, CA-02, CA-04, CA-05, CA-06, CA-07, CA-16 | | [plan](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_trabajo.md) | [pruebas](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/plan_pruebas.md) | [resultado](A-EP-023-HU-001-el-analisis-tiene-regla-plantilla-y-validador/resultado_pruebas.md) | Cumple; falta el commit |
 | [`B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis`](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/estado-fase.md) | CA-03, CA-09 a CA-15 | CA-02 | [plan](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/plan_trabajo.md) | [pruebas](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/plan_pruebas.md) | [resultado](B-EP-023-HU-001-la-conversacion-pasa-sola-al-analisis/resultado_pruebas.md) | Cumple; falta el commit |
 | [`C-EP-023-HU-001-el-analisis-principal-de-cimiento`](C-EP-023-HU-001-el-analisis-principal-de-cimiento/estado-fase.md) | CA-08 | CA-02, CA-05 | [plan](C-EP-023-HU-001-el-analisis-principal-de-cimiento/plan_trabajo.md) | [pruebas](C-EP-023-HU-001-el-analisis-principal-de-cimiento/plan_pruebas.md) | [resultado](C-EP-023-HU-001-el-analisis-principal-de-cimiento/resultado_pruebas.md) | Cumple; falta el commit |
+| [`D-EP-023-HU-001-el-analisis-abre-todos-los-casos-y-ordena-las-hu`](D-EP-023-HU-001-el-analisis-abre-todos-los-casos-y-ordena-las-hu/estado-fase.md) | CA-17 a CA-26 | CA-02, CA-06, CA-08 | [plan](D-EP-023-HU-001-el-analisis-abre-todos-los-casos-y-ordena-las-hu/plan_trabajo.md) | [pruebas](D-EP-023-HU-001-el-analisis-abre-todos-los-casos-y-ordena-las-hu/plan_pruebas.md) | Pendiente | Planes aprobados; sin ejecutar |
 
 ---
 
@@ -493,7 +560,7 @@ Las fija el plan de cada fase (`02·F14`).
 | **N**egociable | ✅ | |
 | **V**aliosa | ✅ | Las demás HU se apoyan en ella |
 | **E**stimable | ✅ | Talla L |
-| **S**mall (pequeña) | ☐ | Tiene 16 criterios: puede pedir más de una fase |
+| **S**mall (pequeña) | ☐ | Tiene 26 criterios: puede pedir más de una fase |
 | **T**esteable | ✅ | Cada criterio dice dónde mirar |
 
 ---
@@ -511,3 +578,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-05 del análisis 5 |
 | 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nacen los CA-17 a CA-22, para la fase D, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |
+| 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-20 pasa a su versión siguiente, los CA-19 y CA-22 suman su origen y nacen los CA-23 a CA-26, según el análisis 9. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 9 |

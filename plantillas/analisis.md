@@ -41,6 +41,16 @@
 
 ---
 
+## Lo acordado
+
+> Se escribe en el mismo turno en que el usuario acepta algo: un punto por cada decisión, con su tema y el turno de la conversación donde se acordó.
+
+1. «tema»: «lo que se decidió» (turno «N»).
+
+Siguen abiertas: «pregunta sin decidir, o "ninguna"».
+
+---
+
 ## Lo que aportó cada parte
 
 > Cada subsección es obligatoria: el validador detiene el cierre si falta una. Lo que aportan el usuario y Claude queda en la conversación y no se repite aquí.
@@ -59,7 +69,7 @@
 
 | Fuente | Qué aporta |
 |---|---|
-| «señal, lección o análisis anterior» | «si confirma, contradice o muestra un intento que falló, y qué conclusión lo recoge» |
+| «señal, lección o análisis anterior» | «si confirma, contradice o muestra un intento que falló, y qué punto de «Lo acordado» lo recoge» |
 
 ### El entorno: normas, herramientas y proyectos que heredan
 
@@ -70,18 +80,6 @@
 | Herramientas | «qué condiciona lo que se va a construir» |
 
 ---
-
-## Conclusiones
-
-> Una fila por cada decisión acordada. «Sale de» cita el turno de la conversación donde se acordó.
-
-| # | Tema | Conclusión | Sale de |
-|---|---|---|---|
-| 1 | «tema» | «lo que se decidió» | Turno «N» |
-
-Siguen abiertas:
-
-1. «pregunta sin decidir, o "ninguna"»
 
 ## Propuesta final: hallazgo y pendiente V«N+1», épica y HU
 
@@ -122,8 +120,8 @@ Siguen abiertas:
 
 ## Lo que se tiene que hacer
 
-> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita la conclusión de donde sale; lo que no tenga conclusión no entra.
+> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el punto de «Lo acordado» de donde sale; lo que no tenga punto acordado no entra.
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | «qué hay que hacer» | «número» | «épica y HU, con su título y su enlace» |

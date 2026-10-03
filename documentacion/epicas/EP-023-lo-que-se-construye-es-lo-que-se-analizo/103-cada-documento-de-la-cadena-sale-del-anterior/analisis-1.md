@@ -2487,6 +2487,68 @@ Con esto, el entorno quedó analizado. Faltan dos pasos para cerrar:
 Propongo una sola sección, ubicada antes de las conclusiones, con una subsección por cada parte:
 
 ```
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Objetivo: Que al ejecutar un plan salgan pocos hallazgos y, por lo tanto, pocos pendientes (Turno 15).
+2. La cadena: `02·F0` conserva sus eslabones. Se agrega un análisis en cada punto donde algo se reparte: antes de las épicas, antes de las HU de cada épica y cada vez que entra un pendiente (Turnos 3, 9, 14).
+3. Es un ciclo: De la HU sale el código; del código, un hallazgo; el hallazgo se vuelve pendiente y el pendiente entra al análisis (Turnos 12, 13).
+4. Qué es el análisis: La conversación completa, que queda en tiempo real para consultarla al ejecutar el plan. Arranca con el hallazgo y el pendiente que lo originan, y cierra con sus conclusiones, sus lecciones aprendidas y lo que se tiene que hacer (Turnos 18, 24, 39).
+5. Qué hace cada documento: El hallazgo dice lo que se encontró; el pendiente, el problema y por qué importa; el análisis, lo que se hace y lo que no; la HU, los criterios que salen de lo que se tiene que hacer (Turno 38).
+6. Secuencia lógica: Cada documento conserva lo del anterior y le agrega precisión, sin cambiarlo: «mi», «mi mamá», «mi mamá me mima». Lo que no sale del anterior no entra (Turno 29).
+7. Nada fuera de lo pedido: Si se pide la clase `Matematicas` con `suma`, se hace eso y nada más. El nombre de lo pedido no autoriza agregar lo que sugiere (Turnos 32, 34).
+8. Si cambia la necesidad: El cambio se aplica en el documento donde nace, aunque sea el planteamiento, y baja en orden: épica, HU, especificación y plan (Turno 30).
+9. Versiones: El hallazgo, el pendiente, la HU y el plan se reescriben en su mismo archivo con la versión vigente. El análisis nunca se reescribe: guarda la historia (Turnos 19, 20).
+10. Hallazgo al ejecutar el plan: No abre un pendiente nuevo. Vuelve al último análisis, se abre el siguiente (`analisis-2.md`) y el hallazgo y el pendiente pasan a la versión siguiente. Lo ya construido se adapta al plan nuevo (Turnos 19, 26).
+11. Dónde vive el pendiente: Dentro de lo que lo genera, y la carpeta `pendientes/` desaparece. Si nace de una conversación, su análisis decide si amplía el planteamiento o crea una épica o una HU; mientras tanto, queda en la carpeta del resumen del día (Turnos 28, 29, 30).
+12. Reglas: Las reglas no se contradicen, se complementan (Turno 28).
+13. Lecciones aprendidas: Las dos son aprendizaje, pero distintas: la señal habla del proyecto y la lección, de cómo se analizó. La lección sale tanto de lo que funcionó, para repetirlo, como de lo que falló, para no repetirlo. Se escriben en el almacén de señales con su propia categoría y el análisis las enlaza. Mejorar esa categorización es parte de este pendiente (Turnos 20, 22, 23, 60, 61).
+14. Qué tiene el hallazgo: Solo «Qué pasó» y «Por qué importa». Lo demás (solución, decisiones, estado, a qué dispara, orden de resolución) es del análisis (Turnos 41, 45).
+15. Qué tiene el pendiente: Solo «De dónde sale», «El problema» y «Por qué importa». La HU que dispara y dónde vive los decide el análisis (Turnos 47, 48).
+16. Quién dice que algo cerró: El plan, al cumplirse. Al hallazgo y al pendiente no les toca (Turno 47).
+17. `01·C14`: Se cambia: el agente solo puede preguntar en el análisis si se agrega lo que el oficio suele incluir, y decide el usuario. Nunca lo agrega por su cuenta (Turno 59).
+18. Hallazgo durante la ejecución: La ejecución del plan se detiene en ese momento, porque seguir con el problema puede desencadenar algo mayor en lo que falta. Nada se cierra: ni el plan ni la HU (Turnos 64, 65).
+19. El análisis siguiente: Se centra solo en lo que falló y en qué implicaciones tiene sobre lo que ya se hizo. Desde ahí se decide qué pasa con la HU y con lo que salió de ella (Turno 65).
+20. Estructura del pendiente: Cada pendiente es una carpeta, siempre con la misma estructura: `pendiente.md` con la versión vigente, `analisis-1.md`, y `analisis-2.md` y los siguientes si aparecen hallazgos al ejecutar. Lo único que cambia es dónde queda la carpeta: dentro de lo que lo genera, o en la carpeta del resumen del día mientras no se sepa (Turnos 27, 32, 67).
+21. Estructura del análisis: Arriba, la copia exacta del hallazgo y del pendiente que lo originan. Después, la conversación. Al final, las conclusiones, las lecciones aprendidas y lo que se tiene que hacer (Turnos 36, 40).
+22. La copia no se toca: El hallazgo y el pendiente copiados en el análisis muestran lo que originó la discusión, tal como estaba al empezar, y nunca cambian: si cambiaran, la discusión perdería su razón de ser. Si el análisis concluye que deben cambiar, el cambio se hace en el original: el hallazgo en el resumen de su sesión y el pendiente en su archivo (Turnos 19, 118, 119).
+23. De dónde salen los criterios: Lo que se tiene que hacer se convierte en los criterios de aceptación de la HU (Turno 36).
+24. La HU y el plan no se duplican: Si el análisis cambia lo pedido, la HU y el plan pasan a la versión siguiente en su mismo archivo. No se crean una HU ni un plan nuevos, para que la documentación muestre lo que funciona y no los intentos (Turno 20).
+25. Dónde no hay análisis: De la HU hacia abajo no hay reparto: una HU tiene una especificación y un plan. Ahí no se agrega análisis (Turno 14).
+26. El análisis del planteamiento: Es distinto del que se agrega en cada vuelta del ciclo: se hace una sola vez, al arrancar el proyecto (Turno 12).
+27. Este es el primer análisis: Esta conversación es el análisis 1 del pendiente 103 y sirve de primer caso de la forma nueva (Turno 24).
+28. Dónde va la secuencia lógica: En una regla nueva que extiende `02·F18`. `F18` no se toca y sigue siendo el caso del plan frente a los criterios, con su validador (Turno 75).
+29. Reglas sin contradicción: Como las tres leyes de la robótica: cada regla se apoya en las otras y ninguna contradice a otra. Lo nuevo extiende lo que existe antes que crear, y lo que choca se resuelve antes de escribir (Turno 75).
+30. Dónde vive el pendiente 103: En una épica nueva, porque el cambio tiene un solo resultado y ninguna de las 22 épicas lo cubre. Este análisis hace de inventario que pide `02·F26` antes de crear la épica (Turno 76).
+31. Lo que ya existe y choca: La revisión del proyecto encontró reglas, plantillas y validadores que contradicen las conclusiones. Se resuelven antes de escribir la regla nueva (ver lo que se tiene que hacer, puntos 15 a 22) (Turno 69).
+32. Análisis principal e individuales: El análisis principal del proyecto o del módulo sigue en `analisis/` y no se congela: se reescribe con lo que se va a construir hoy y lleva una lista de cambios, cada uno con el enlace al análisis individual que lo produjo. Los análisis individuales (`analisis-N.md` de cada pendiente) nunca se reescriben y alimentan al principal. Ejemplo: el principal dice «`Matematicas` con `suma`»; un hallazgo pide las propiedades de la suma; el análisis individual lo concluye y el principal pasa a decir «`suma` y sus propiedades», con el enlace (Turnos 79, 81).
+33. Hallazgo después de cerrar: Si la fase ya cerró y después aparece un hallazgo sobre lo construido, la fase se reabre y la HU y el plan pasan a la versión siguiente en su mismo archivo. Lo que se busca es corregir lo que no quedó bien, porque la documentación muestra lo que funciona. La historia de lo que pasó la guardan los análisis, en vivo, y git (Turno 82).
+34. Padres e hijos: Cada documento de la cadena enlaza en los dos lados: el padre nombra a sus hijos y cada hijo nombra a su padre, como ya hace `13·DOC16` entre la épica y sus HU. El enlace es navegación, no contenido: el hallazgo sigue con «Qué pasó» y «Por qué importa», más el enlace a su pendiente (Turnos 83, 84).
+35. Estado y retoma sin campos propios: Si un hallazgo quedó anotado, si ya se resolvió y por dónde se retoma se calcula siguiendo esos enlaces: tiene pendiente, el plan de su HU se cumplió, y el último análisis de su pendiente es donde quedó la conversación (Turno 84).
+36. Cuándo cierra un pendiente: Cuando cierra el plan de trabajo que salió de él. Vale también entre proyectos (`02·F24`): el pendiente de seguimiento sabe quién es su padre en el estándar y cierra cuando cierra ese plan. «Proyecto de origen» sobra, porque el enlace de «De dónde sale» ya dice de qué proyecto viene (Turno 85).
+37. Vale para cualquier proyecto: Todo lo que define este análisis se plantea de forma general: lo sigue Cimiento y cualquier proyecto que lo herede, sin importar su tamaño ni su stack (Turno 86).
+38. Paso a la forma nueva: En cualquier proyecto que se actualice: los pendientes cerrados no se tocan y quedan como historia; los abiertos pasan a la forma nueva uno por uno cuando se vayan a trabajar, empezando por su análisis; los nuevos nacen con la forma nueva y `pendientes/` no recibe ninguno. Los validadores aceptan el formato viejo solo dentro de `pendientes/`. El instalador no mueve nada y deja de crear esa carpeta en los proyectos nuevos (Turno 87).
+39. Cómo se cita el origen: Cada punto de un documento lleva «Sale de» con el punto del documento padre: el pendiente, su hallazgo; la conclusión del análisis, el turno de la conversación donde se acordó; el criterio de la HU, el punto de «Lo que se tiene que hacer»; la tarea del plan, el criterio. El validador revisa que cada punto lo tenga y que el punto citado exista; lo que no tenga origen se detiene. Vale igual en cualquier proyecto (Turno 88).
+40. Quiénes participan en el análisis: Seis partes. El usuario plantea la necesidad y lo que espera. Claude ayuda a estructurar, cuestionar y definir. Cimiento pone las reglas que se deben cumplir. El proyecto muestra qué existe, qué funciona, qué falta y sus condiciones reales. Lo aprendido trae las señales, las lecciones y los análisis anteriores. El entorno trae lo que manda desde afuera: normas, documentación de las herramientas y los otros proyectos a los que el cambio afecta. Quedarse solo con lo que deciden el usuario y Claude abre brechas. Lo que aportan el usuario y Claude queda en la conversación; el análisis lleva una sección para cada una de las otras cuatro (Turnos 89, 90, 91, 133, 134).
+41. Medir si el análisis funcionó: Cada plan registra cuántos hallazgos salieron al ejecutarlo. Sin ese número no se sabe si bajaron (Turnos 89, 91).
+42. Qué se busca minimizar: Los hallazgos evitables. Algunos solo aparecen al construir, como una falla de una herramienta de terceros, y esos no los elimina ningún análisis. La revisión de las seis partes se comprueba: el análisis tiene una sección por cada una de las cuatro que no están en la conversación y el validador detiene el cierre si falta alguna (Turnos 92, 93).
+43. Nombre de la épica: EP-023 · Lo que se construye es lo que se analizó. Nombra el resultado y no el mecanismo, como pide `13·DOC16` (Turnos 94, 95).
+44. Un solo hallazgo y un solo pendiente: Los pendientes 104 (la plantilla del plan se puede comprobar) y 105 (nada se ejecuta fuera del plan aprobado) se unen al 103, y sus hallazgos H-10 y H-11 al H-13, para resolver todo de una. Los originales no se borran: quedan con «Unido en» y el enlace. Lo que el 105 llamaba «ampliar el plan» se reemplaza por volver al análisis (conclusión 18) (Turnos 98, 99, 100).
+45. Qué es un hallazgo: Algo que el análisis no previó y que queda fuera del plan o de los criterios. Un error dentro de lo aprobado, como una prueba que falla por una letra mal escrita en un archivo del plan, no es hallazgo: se corrige y se sigue. El permiso que antes tenía el agente para corregir por su cuenta lo que detectaba lo llevó a hacer lo que no se pedía y a dejar pendientes; por eso queda limitado a lo que está dentro del plan aprobado (Turno 104).
+46. Qué frena el freno: Solo lo que no está autorizado en ninguna parte. Lo que una regla ya autoriza sin pedir permiso, como la transcripción de la sesión, el resumen y el análisis, nunca lo frena. El freno lee el plan aprobado y la lista de lo que las reglas autorizan, y cada entrada de esa lista cita la regla que la autoriza (Turnos 105, 106).
+47. El efecto en los proyectos que heredan: Nada se diseña solo para Cimiento: cada cambio se analiza por cómo afecta a los proyectos que lo heredan. Lo que se construya llega a ellos por el instalador, sin configurar nada a mano, y la lista de lo autorizado que lee el freno incluye también las reglas propias de cada proyecto (Turnos 108, 109).
+48. La retroactividad: La dice [`20·M10`](../../../../base/20-meta-reglas/base.md#m10--los-tipos-qué-más-se-revisa-y-la-retroactividad) y no se repite aquí. Como este cambio deroga `01·C14` y `13·DOC8`, aplica además [`02·F22`](../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md): un proyecto que no adopte la versión nueva no abre ni cierra fase (Turno 109).
+49. El análisis principal de Cimiento: No existe. Se crea en `analisis/` después de aprobar este análisis, con base en todo el proyecto y en lo que este concluyó (Turno 127).
+50. Dónde van los hijos: El análisis no lleva una tabla de enlaces: no registra decisiones. El padre ya está en la copia del pendiente y la conversación en el mismo archivo. Los hijos van en la columna «Pasó a» de lo que se tiene que hacer, que muestra en qué HU terminó cada punto y deja comprobar que ninguno quedó sin destino (Turnos 130, 131).
+51. Solo lo que sirve para decidir: El análisis solo lleva información que ayude a entender qué pasa y a tomar una decisión, como un buen diagrama estadístico. Los datos y las tablas que no aportan a decidir no entran, porque solo suman volumen (Turno 132).
+52. La propuesta final: El análisis termina con el hallazgo y el pendiente V2, tal como quedan según sus conclusiones. Al aprobarse el análisis se copian en los originales; antes, no (Turnos 138, 139).
+53. La épica y las HU en la propuesta: La propuesta final también dice qué épica y qué HU salen del análisis, cada una con su título y los puntos de lo que se tiene que hacer que le tocan. Se escriben como documentos al aprobarse el análisis (Turno 140).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 ### El usuario: la necesidad y lo que espera
 ### Claude: lo que preguntó, propuso y cuestionó
@@ -3154,66 +3216,18 @@ Chocan, y se resuelven en los puntos 15 a 22 de lo que se tiene que hacer: `02·
 | Claude Code | Los enganches viven en `.claude/settings.json`, y la herramienta pide autorización para cambiarlos. El instalador debe tenerlo en cuenta. |
 | Normas y leyes | Ninguna aplica a este cambio. |
 
-## Conclusiones del primer análisis
-> crear una tabla para que se vea bien presentado
+### Dónde más puede pasar
 
-| # | Tema | Conclusión | Sale de |
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Objetivo | Que al ejecutar un plan salgan pocos hallazgos y, por lo tanto, pocos pendientes. | Turno 15 |
-| 2 | La cadena | `02·F0` conserva sus eslabones. Se agrega un análisis en cada punto donde algo se reparte: antes de las épicas, antes de las HU de cada épica y cada vez que entra un pendiente. | Turnos 3, 9, 14 |
-| 3 | Es un ciclo | De la HU sale el código; del código, un hallazgo; el hallazgo se vuelve pendiente y el pendiente entra al análisis. | Turnos 12, 13 |
-| 4 | Qué es el análisis | La conversación completa, que queda en tiempo real para consultarla al ejecutar el plan. Arranca con el hallazgo y el pendiente que lo originan, y cierra con sus conclusiones, sus lecciones aprendidas y lo que se tiene que hacer. | Turnos 18, 24, 39 |
-| 5 | Qué hace cada documento | El hallazgo dice lo que se encontró; el pendiente, el problema y por qué importa; el análisis, lo que se hace y lo que no; la HU, los criterios que salen de lo que se tiene que hacer. | Turno 38 |
-| 6 | Secuencia lógica | Cada documento conserva lo del anterior y le agrega precisión, sin cambiarlo: «mi», «mi mamá», «mi mamá me mima». Lo que no sale del anterior no entra. | Turno 29 |
-| 7 | Nada fuera de lo pedido | Si se pide la clase `Matematicas` con `suma`, se hace eso y nada más. El nombre de lo pedido no autoriza agregar lo que sugiere. | Turnos 32, 34 |
-| 8 | Si cambia la necesidad | El cambio se aplica en el documento donde nace, aunque sea el planteamiento, y baja en orden: épica, HU, especificación y plan. | Turno 30 |
-| 9 | Versiones | El hallazgo, el pendiente, la HU y el plan se reescriben en su mismo archivo con la versión vigente. El análisis nunca se reescribe: guarda la historia. | Turnos 19, 20 |
-| 10 | Hallazgo al ejecutar el plan | No abre un pendiente nuevo. Vuelve al último análisis, se abre el siguiente (`analisis-2.md`) y el hallazgo y el pendiente pasan a la versión siguiente. Lo ya construido se adapta al plan nuevo. | Turnos 19, 26 |
-| 11 | Dónde vive el pendiente | Dentro de lo que lo genera, y la carpeta `pendientes/` desaparece. Si nace de una conversación, su análisis decide si amplía el planteamiento o crea una épica o una HU; mientras tanto, queda en la carpeta del resumen del día. | Turnos 28, 29, 30 |
-| 12 | Reglas | Las reglas no se contradicen, se complementan. | Turno 28 |
-| 13 | Lecciones aprendidas | Las dos son aprendizaje, pero distintas: la señal habla del proyecto y la lección, de cómo se analizó. La lección sale tanto de lo que funcionó, para repetirlo, como de lo que falló, para no repetirlo. Se escriben en el almacén de señales con su propia categoría y el análisis las enlaza. Mejorar esa categorización es parte de este pendiente. | Turnos 20, 22, 23, 60, 61 |
-| 14 | Qué tiene el hallazgo | Solo «Qué pasó» y «Por qué importa». Lo demás (solución, decisiones, estado, a qué dispara, orden de resolución) es del análisis. | Turnos 41, 45 |
-| 15 | Qué tiene el pendiente | Solo «De dónde sale», «El problema» y «Por qué importa». La HU que dispara y dónde vive los decide el análisis. | Turnos 47, 48 |
-| 16 | Quién dice que algo cerró | El plan, al cumplirse. Al hallazgo y al pendiente no les toca. | Turno 47 |
-| 17 | `01·C14` | Se cambia: el agente solo puede preguntar en el análisis si se agrega lo que el oficio suele incluir, y decide el usuario. Nunca lo agrega por su cuenta. | Turno 59 |
-| 18 | Hallazgo durante la ejecución | La ejecución del plan se detiene en ese momento, porque seguir con el problema puede desencadenar algo mayor en lo que falta. Nada se cierra: ni el plan ni la HU. | Turnos 64, 65 |
-| 19 | El análisis siguiente | Se centra solo en lo que falló y en qué implicaciones tiene sobre lo que ya se hizo. Desde ahí se decide qué pasa con la HU y con lo que salió de ella. | Turno 65 |
-| 20 | Estructura del pendiente | Cada pendiente es una carpeta, siempre con la misma estructura: `pendiente.md` con la versión vigente, `analisis-1.md`, y `analisis-2.md` y los siguientes si aparecen hallazgos al ejecutar. Lo único que cambia es dónde queda la carpeta: dentro de lo que lo genera, o en la carpeta del resumen del día mientras no se sepa. | Turnos 27, 32, 67 |
-| 21 | Estructura del análisis | Arriba, la copia exacta del hallazgo y del pendiente que lo originan. Después, la conversación. Al final, las conclusiones, las lecciones aprendidas y lo que se tiene que hacer. | Turnos 36, 40 |
-| 22 | La copia no se toca | El hallazgo y el pendiente copiados en el análisis muestran lo que originó la discusión, tal como estaba al empezar, y nunca cambian: si cambiaran, la discusión perdería su razón de ser. Si el análisis concluye que deben cambiar, el cambio se hace en el original: el hallazgo en el resumen de su sesión y el pendiente en su archivo. | Turnos 19, 118, 119 |
-| 23 | De dónde salen los criterios | Lo que se tiene que hacer se convierte en los criterios de aceptación de la HU. | Turno 36 |
-| 24 | La HU y el plan no se duplican | Si el análisis cambia lo pedido, la HU y el plan pasan a la versión siguiente en su mismo archivo. No se crean una HU ni un plan nuevos, para que la documentación muestre lo que funciona y no los intentos. | Turno 20 |
-| 25 | Dónde no hay análisis | De la HU hacia abajo no hay reparto: una HU tiene una especificación y un plan. Ahí no se agrega análisis. | Turno 14 |
-| 26 | El análisis del planteamiento | Es distinto del que se agrega en cada vuelta del ciclo: se hace una sola vez, al arrancar el proyecto. | Turno 12 |
-| 27 | Este es el primer análisis | Esta conversación es el análisis 1 del pendiente 103 y sirve de primer caso de la forma nueva. | Turno 24 |
-| 28 | Dónde va la secuencia lógica | En una regla nueva que extiende `02·F18`. `F18` no se toca y sigue siendo el caso del plan frente a los criterios, con su validador. | Turno 75 |
-| 29 | Reglas sin contradicción | Como las tres leyes de la robótica: cada regla se apoya en las otras y ninguna contradice a otra. Lo nuevo extiende lo que existe antes que crear, y lo que choca se resuelve antes de escribir. | Turno 75 |
-| 30 | Dónde vive el pendiente 103 | En una épica nueva, porque el cambio tiene un solo resultado y ninguna de las 22 épicas lo cubre. Este análisis hace de inventario que pide `02·F26` antes de crear la épica. | Turno 76 |
-| 31 | Lo que ya existe y choca | La revisión del proyecto encontró reglas, plantillas y validadores que contradicen las conclusiones. Se resuelven antes de escribir la regla nueva (ver lo que se tiene que hacer, puntos 15 a 22). | Turno 69 |
-| 32 | Análisis principal e individuales | El análisis principal del proyecto o del módulo sigue en `analisis/` y no se congela: se reescribe con lo que se va a construir hoy y lleva una lista de cambios, cada uno con el enlace al análisis individual que lo produjo. Los análisis individuales (`analisis-N.md` de cada pendiente) nunca se reescriben y alimentan al principal. Ejemplo: el principal dice «`Matematicas` con `suma`»; un hallazgo pide las propiedades de la suma; el análisis individual lo concluye y el principal pasa a decir «`suma` y sus propiedades», con el enlace. | Turnos 79, 81 |
-| 33 | Hallazgo después de cerrar | Si la fase ya cerró y después aparece un hallazgo sobre lo construido, la fase se reabre y la HU y el plan pasan a la versión siguiente en su mismo archivo. Lo que se busca es corregir lo que no quedó bien, porque la documentación muestra lo que funciona. La historia de lo que pasó la guardan los análisis, en vivo, y git. | Turno 82 |
-| 34 | Padres e hijos | Cada documento de la cadena enlaza en los dos lados: el padre nombra a sus hijos y cada hijo nombra a su padre, como ya hace `13·DOC16` entre la épica y sus HU. El enlace es navegación, no contenido: el hallazgo sigue con «Qué pasó» y «Por qué importa», más el enlace a su pendiente. | Turnos 83, 84 |
-| 35 | Estado y retoma sin campos propios | Si un hallazgo quedó anotado, si ya se resolvió y por dónde se retoma se calcula siguiendo esos enlaces: tiene pendiente, el plan de su HU se cumplió, y el último análisis de su pendiente es donde quedó la conversación. | Turno 84 |
-| 36 | Cuándo cierra un pendiente | Cuando cierra el plan de trabajo que salió de él. Vale también entre proyectos (`02·F24`): el pendiente de seguimiento sabe quién es su padre en el estándar y cierra cuando cierra ese plan. «Proyecto de origen» sobra, porque el enlace de «De dónde sale» ya dice de qué proyecto viene. | Turno 85 |
-| 37 | Vale para cualquier proyecto | Todo lo que define este análisis se plantea de forma general: lo sigue Cimiento y cualquier proyecto que lo herede, sin importar su tamaño ni su stack. | Turno 86 |
-| 38 | Paso a la forma nueva | En cualquier proyecto que se actualice: los pendientes cerrados no se tocan y quedan como historia; los abiertos pasan a la forma nueva uno por uno cuando se vayan a trabajar, empezando por su análisis; los nuevos nacen con la forma nueva y `pendientes/` no recibe ninguno. Los validadores aceptan el formato viejo solo dentro de `pendientes/`. El instalador no mueve nada y deja de crear esa carpeta en los proyectos nuevos. | Turno 87 |
-| 39 | Cómo se cita el origen | Cada punto de un documento lleva «Sale de» con el punto del documento padre: el pendiente, su hallazgo; la conclusión del análisis, el turno de la conversación donde se acordó; el criterio de la HU, el punto de «Lo que se tiene que hacer»; la tarea del plan, el criterio. El validador revisa que cada punto lo tenga y que el punto citado exista; lo que no tenga origen se detiene. Vale igual en cualquier proyecto. | Turno 88 |
-| 40 | Quiénes participan en el análisis | Seis partes. El usuario plantea la necesidad y lo que espera. Claude ayuda a estructurar, cuestionar y definir. Cimiento pone las reglas que se deben cumplir. El proyecto muestra qué existe, qué funciona, qué falta y sus condiciones reales. Lo aprendido trae las señales, las lecciones y los análisis anteriores. El entorno trae lo que manda desde afuera: normas, documentación de las herramientas y los otros proyectos a los que el cambio afecta. Quedarse solo con lo que deciden el usuario y Claude abre brechas. Lo que aportan el usuario y Claude queda en la conversación; el análisis lleva una sección para cada una de las otras cuatro. | Turnos 89, 90, 91, 133, 134 |
-| 41 | Medir si el análisis funcionó | Cada plan registra cuántos hallazgos salieron al ejecutarlo. Sin ese número no se sabe si bajaron. | Turnos 89, 91 |
-| 42 | Qué se busca minimizar | Los hallazgos evitables. Algunos solo aparecen al construir, como una falla de una herramienta de terceros, y esos no los elimina ningún análisis. La revisión de las seis partes se comprueba: el análisis tiene una sección por cada una de las cuatro que no están en la conversación y el validador detiene el cierre si falta alguna. | Turnos 92, 93 |
-| 43 | Nombre de la épica | EP-023 · Lo que se construye es lo que se analizó. Nombra el resultado y no el mecanismo, como pide `13·DOC16`. | Turnos 94, 95 |
-| 44 | Un solo hallazgo y un solo pendiente | Los pendientes 104 (la plantilla del plan se puede comprobar) y 105 (nada se ejecuta fuera del plan aprobado) se unen al 103, y sus hallazgos H-10 y H-11 al H-13, para resolver todo de una. Los originales no se borran: quedan con «Unido en» y el enlace. Lo que el 105 llamaba «ampliar el plan» se reemplaza por volver al análisis (conclusión 18). | Turnos 98, 99, 100 |
-| 45 | Qué es un hallazgo | Algo que el análisis no previó y que queda fuera del plan o de los criterios. Un error dentro de lo aprobado, como una prueba que falla por una letra mal escrita en un archivo del plan, no es hallazgo: se corrige y se sigue. El permiso que antes tenía el agente para corregir por su cuenta lo que detectaba lo llevó a hacer lo que no se pedía y a dejar pendientes; por eso queda limitado a lo que está dentro del plan aprobado. | Turno 104 |
-| 46 | Qué frena el freno | Solo lo que no está autorizado en ninguna parte. Lo que una regla ya autoriza sin pedir permiso, como la transcripción de la sesión, el resumen y el análisis, nunca lo frena. El freno lee el plan aprobado y la lista de lo que las reglas autorizan, y cada entrada de esa lista cita la regla que la autoriza. | Turnos 105, 106 |
-| 47 | El efecto en los proyectos que heredan | Nada se diseña solo para Cimiento: cada cambio se analiza por cómo afecta a los proyectos que lo heredan. Lo que se construya llega a ellos por el instalador, sin configurar nada a mano, y la lista de lo autorizado que lee el freno incluye también las reglas propias de cada proyecto. | Turnos 108, 109 |
-| 48 | La retroactividad | La dice [`20·M10`](../../../../base/20-meta-reglas/base.md#m10--los-tipos-qué-más-se-revisa-y-la-retroactividad) y no se repite aquí. Como este cambio deroga `01·C14` y `13·DOC8`, aplica además [`02·F22`](../../../../base/02-flujo-de-trabajo/reglas/F22-no-avances-de-fase-con-una-derogacion-sin-adoptar.md): un proyecto que no adopte la versión nueva no abre ni cierra fase. | Turno 109 |
-| 49 | El análisis principal de Cimiento | No existe. Se crea en `analisis/` después de aprobar este análisis, con base en todo el proyecto y en lo que este concluyó. | Turno 127 |
-| 50 | Dónde van los hijos | El análisis no lleva una tabla de enlaces: no registra decisiones. El padre ya está en la copia del pendiente y la conversación en el mismo archivo. Los hijos van en la columna «Pasó a» de lo que se tiene que hacer, que muestra en qué HU terminó cada punto y deja comprobar que ninguno quedó sin destino. | Turnos 130, 131 |
-| 51 | Solo lo que sirve para decidir | El análisis solo lleva información que ayude a entender qué pasa y a tomar una decisión, como un buen diagrama estadístico. Los datos y las tablas que no aportan a decidir no entran, porque solo suman volumen. | Turno 132 |
-| 52 | La propuesta final | El análisis termina con el hallazgo y el pendiente V2, tal como quedan según sus conclusiones. Al aprobarse el análisis se copian en los originales; antes, no. | Turnos 138, 139 |
-| 53 | La épica y las HU en la propuesta | La propuesta final también dice qué épica y qué HU salen del análisis, cada una con su título y los puntos de lo que se tiene que hacer que le tocan. Se escriben como documentos al aprobarse el análisis. | Turno 140 |
+| Hallazgo que aparece al ejecutar el plan | Cualquier proyecto | Se abre otro pendiente y el trabajo se duplica | Conclusiones 10 y 18 |
+| Pendiente que nace de una conversación | Cualquier proyecto | No se sabe dónde vive | Conclusión 11 |
+| Cambia la necesidad | Cualquier documento de la cadena | Se corrige abajo y arriba sigue lo viejo | Conclusión 8 |
+| Punto sin origen | Cualquier documento de la cadena | Entra lo que no se pidió | Conclusión 39 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente V2, épica y HU
 
@@ -3242,17 +3256,17 @@ Reúne los pendientes 103, 104 y 105 (conclusión 44).
 
 EP-023: lo que se construye es lo que se analizó (conclusiones 30 y 43). Su resultado: al ejecutar un plan solo aparecen los hallazgos que no se podían prever.
 
-| HU | Título | Puntos de lo que se tiene que hacer |
-|---|---|---|
-| 1 | El análisis existe, tiene su forma y revisa las cuatro partes | 1, 2, 3, 15, 16, 23, 29, 30, 32 |
-| 2 | Cada documento sale del anterior | 4, 5 |
-| 3 | El hallazgo y el pendiente tienen solo lo que les corresponde | 7, 10, 11, 12, 19, 20, 21 |
-| 4 | Un hallazgo detiene la ejecución y vuelve al análisis | 6, 13, 14, 17, 18, 24 |
-| 5 | Nada se agrega fuera de lo pedido | 8, 22, 28 |
-| 6 | Lo aprendido incluye las lecciones | 9 |
-| 7 | Nada se escribe fuera del plan aprobado | 25, 26, 27, 31 |
+> Orden puesto al día en el piloto, por el [análisis 9](analisis-9.md), con el que fijó el [análisis 8](analisis-8.md), conclusión 8. El número identifica a la HU; el orden sale de sus dependencias.
 
-Orden: 1, 5, 2, 3, 4, 7 y 6. La 1 va primero porque las demás se apoyan en el análisis; la 5 es pequeña y ataca la causa más directa; la 7 necesita que la 4 defina qué pasa con un hallazgo.
+| Orden | HU | Título | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|---|
+| 1 | 1 | El análisis existe, tiene su forma y revisa las cuatro partes | Ninguna | Las demás se apoyan en el análisis | 1, 2, 3, 15, 16, 23, 29, 30, 32 |
+| 2 | 5 | Nada se agrega fuera de lo pedido | 1 | Es pequeña y ataca la causa más directa | 8, 22, 28 |
+| 3 | 2 | Cada documento sale del anterior | 1 | Cada documento sale del anterior antes de ordenar el hallazgo y el pendiente | 4, 5 |
+| 4 | 3 | El hallazgo y el pendiente tienen solo lo que les corresponde | 1 | Da la forma del hallazgo y del pendiente que usan la 4 y la 7 | 7, 10, 11, 12, 19, 20, 21 |
+| 5 | 6 | Lo aprendido incluye las lecciones | 1 | Las lecciones alimentan las recomendaciones del análisis | 9 |
+| 6 | 4 | Un hallazgo detiene la ejecución y vuelve al análisis | 3 | Detener la ejecución necesita la forma del hallazgo | 6, 13, 14, 17, 18, 24 |
+| 7 | 7 | Nada se escribe fuera del plan aprobado | 3, 4 | El freno anota el hallazgo y vuelve al análisis | 25, 26, 27, 31 |
 
 ## Lecciones aprendidas del primer análisis
 > crear una tabla para que se vea bien presentado como lo acordamos
@@ -3276,7 +3290,7 @@ Orden: 1, 5, 2, 3, 4, 7 y 6. La 1 va primero porque las demás se apoyan en el a
 ## Lo que se tiene que hacer del primer análisis
 > Se convierte en los CA de la HU
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Agregar a `02·F0` el análisis en cada punto donde algo se reparte. | 2 | EP-023, HU 1 |
 | 2 | Crear la plantilla del análisis con la tabla de reglas de redacción que llevan todas las plantillas, el hallazgo y el pendiente de origen, la conversación, lo que aportó cada parte, las conclusiones, las lecciones aprendidas y lo que se tiene que hacer. | 4, 21, 40 | EP-023, HU 1 |
@@ -3311,8 +3325,10 @@ Orden: 1, 5, 2, 3, 4, 7 y 6. La 1 va primero porque las demás se apoyan en el a
 | 31 | Que la lista de lo autorizado que lee el freno incluya las reglas propias de cada proyecto. | 46, 47 | EP-023, HU 7 |
 | 32 | Crear el análisis principal de Cimiento en `analisis/`, con base en todo el proyecto y en este análisis, después de aprobarlo. | 32, 49 | EP-023, HU 1 |
 
+## Lo que aporta al análisis principal
 
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
+**Resultado:** Cambia lo que se construye y modifica la idea.
 
-
-
+**Lo que suma al análisis principal:** Lo que construye sale de lo que se analizó: antes de repartir el trabajo hay un análisis, cada documento sale del anterior, un hallazgo detiene la ejecución y nada se escribe fuera del plan aprobado.

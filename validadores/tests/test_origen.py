@@ -33,17 +33,15 @@ ANALISIS = """# Análisis 1: algo falla
 
 > acá termina la conversación
 
-## Conclusiones
+## Lo acordado
 
-| # | Tema | Conclusión | Sale de |
-|---|---|---|---|
-| 1 | Algo | Se hace algo | Turno {turno} |
+1. Algo: se hace algo (turno {turno}).
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Hacer algo | {conclusion} | EP-009, HU-001 |
+| 1 | Hacer algo | {acordado} | EP-009, HU-001 |
 """
 
 HU = """# HU-001 · Algo
@@ -77,12 +75,12 @@ class Origen(unittest.TestCase):
         with open(ruta, "w", encoding="utf-8") as f:
             f.write(texto)
 
-    def armar(self, turno=1, conclusion="1", sale_de="**Sale de:** análisis 1, punto 1.",
+    def armar(self, turno=1, acordado="1", sale_de="**Sale de:** análisis 1, punto 1.",
                pendiente=PENDIENTE):
         self.escribir(os.path.join(self.raiz, "resumen.md"), RESUMEN)
         self.escribir(os.path.join(self.pendiente, "pendiente.md"), pendiente)
         self.escribir(os.path.join(self.pendiente, "analisis-1.md"),
-                      ANALISIS.format(turno=turno, conclusion=conclusion))
+                      ANALISIS.format(turno=turno, acordado=acordado))
         self.escribir(os.path.join(self.epica, "HU-001-algo", "HU-001-algo.md"),
                       HU.format(sale_de=sale_de))
 
@@ -100,14 +98,14 @@ class Origen(unittest.TestCase):
         self.armar(sale_de="**Sale de:** análisis 1, punto 9.")
         self.assertEqual(self.fallas(), ["el CA-01 cita el punto 9 del análisis 1, que no existe"])
 
-    def test_paso4_conclusion_cita_un_turno_que_no_existe(self):
+    def test_paso4_punto_acordado_cita_un_turno_que_no_existe(self):
         self.armar(turno=8)
-        self.assertEqual(self.fallas(), ["la conclusión 1 cita el turno 8, que no está en la conversación"])
+        self.assertEqual(self.fallas(), ["el punto 1 de «Lo acordado» cita el turno 8, que no está en la conversación"])
 
-    def test_paso5_punto_cita_una_conclusion_que_no_existe(self):
-        self.armar(conclusion="4")
+    def test_paso5_punto_cita_un_acordado_que_no_existe(self):
+        self.armar(acordado="4")
         self.assertEqual(self.fallas(),
-                         ["el punto 1 de «Lo que se tiene que hacer» cita la conclusión 4, que no existe"])
+                         ["el punto 1 de «Lo que se tiene que hacer» cita el punto 4 de «Lo acordado», que no existe"])
 
     def test_paso6_pendiente_sin_origen_o_con_hallazgo_que_no_existe(self):
         self.armar(pendiente="# Pendiente: algo falla\n")

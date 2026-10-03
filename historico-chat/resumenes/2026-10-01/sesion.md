@@ -90,6 +90,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Qué pasó | El 2026-10-02, durante el análisis 8, `01·C28` detuvo «sí» y «A» dados después de una pregunta del agente, y «00 id9», que pide aplicar la regla a la última respuesta. Hubo que repetirlos con su palabra. El agente lo metió primero en el análisis 8, que no trata eso, y se sacó de ahí. |
 | Por qué importa | Cuesta turnos y corta la conversación cuando el usuario decide. |
 | Pendiente | [La respuesta corta a una pregunta del agente cuenta como respuesta](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-036-el-pedido-dice-que-se-espera/pendientes/108-la-respuesta-corta-a-una-pregunta-cuenta-como-respuesta/pendiente.md) |
+
+### H-11. El análisis principal solo anota los análisis que cambiaron algo
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al escribir la fase `D` de la [HU-001](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), el 2026-10-02, salió que el aviso del CA-20 saltaría siempre por el análisis 3, que nunca se anotó en el análisis principal porque no cambió lo que se construye. `13·DOC25` pide anotar solo «cuando un análisis individual cambia algo». El usuario dijo que todo análisis se anota, porque en él se trataron temas que aclararon cosas aunque no haya cambios. |
+| Por qué importa | Un análisis que no se anota se pierde para quien lea el análisis principal: no sabe que ese tema ya se discutió ni qué se aclaró, y lo vuelve a abrir. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su análisis 9 |
 ---
 
 ## ¿Se puede cerrar la sesión?

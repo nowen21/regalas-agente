@@ -262,6 +262,23 @@ Para eso hace falta «Corrija».
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Qué pasa a trabajo: La propuesta final dice qué épica y qué HU salen, y lo que se tiene que hacer se vuelve los criterios de cada HU. Las conclusiones son el paso intermedio. La conversación es contexto para entender un punto, y de ella no sale trabajo (Turnos 16 y 18).
+2. El choque no existía: El punto 32 está en la HU 1. Las conclusiones 30 y 49 del análisis 1 no ponen el análisis principal antes de la épica. El orden «análisis principal primero» venía de propuestas del agente en los turnos 141, 167 y 171, que nunca fueron conclusión. EP-023 se escribe ya (Turnos 16 y 17).
+3. El H-1 no era hallazgo: Fue un error del agente al leer el análisis, dentro de lo aprobado (conclusión 45 del análisis 1) (Turnos 16 y 17).
+4. De dónde salen los errores de hoy: No del diseño. Escribir en otra ruta, agregar lo que no salía de los análisis y crear un choque son los comportamientos que describe el pendiente, y lo que los ataja (HU 2 y HU 7) todavía no existe (Turno 17).
+5. El orden: Entre HU lo fija la propuesta final del análisis 1: 1, 5, 2, 3, 4, 7 y 6. Dentro de cada HU lo fijan la columna «Depende de» de la HU y el plan de cada fase (`02·F14`), no el análisis (Turnos 21 y 22).
+6. Un cruce entre HU: El punto 6 del análisis 2, en la HU 1, necesita saber cuándo se cumplió un plan, y el cierre por el plan es el punto 12, en la HU 3. Se puede leer con enlaces que ya existen (de «Pasó a» a la HU, de la HU a sus fases y de la fase a su cierre). Se confirma en el plan de la HU 1, antes de aprobarlo (Turno 21).
+7. Este análisis se conserva: No cambia lo decidido, pero deja aclarado qué pasa a trabajo y en qué orden (Turno 23).
+8. Lo que se corrige sin análisis: La ruta de EP-023, lo que no sale de los análisis y la falta del borrador de la plantilla en la HU 1 son errores de ejecución: se corrigen y se sigue (Turno 20).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -291,22 +308,17 @@ Aplican `02·F18` (el plan sale de los criterios de la HU), `02·F14` (el plan d
 | Normas y leyes | Ninguna aplica |
 | Herramientas | La conversación entró con el guion intermedio, prendido escribiendo a mano el archivo de estado |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Qué pasa a trabajo | La propuesta final dice qué épica y qué HU salen, y lo que se tiene que hacer se vuelve los criterios de cada HU. Las conclusiones son el paso intermedio. La conversación es contexto para entender un punto, y de ella no sale trabajo | Turnos 16 y 18 |
-| 2 | El choque no existía | El punto 32 está en la HU 1. Las conclusiones 30 y 49 del análisis 1 no ponen el análisis principal antes de la épica. El orden «análisis principal primero» venía de propuestas del agente en los turnos 141, 167 y 171, que nunca fueron conclusión. EP-023 se escribe ya | Turnos 16 y 17 |
-| 3 | El H-1 no era hallazgo | Fue un error del agente al leer el análisis, dentro de lo aprobado (conclusión 45 del análisis 1) | Turnos 16 y 17 |
-| 4 | De dónde salen los errores de hoy | No del diseño. Escribir en otra ruta, agregar lo que no salía de los análisis y crear un choque son los comportamientos que describe el pendiente, y lo que los ataja (HU 2 y HU 7) todavía no existe | Turno 17 |
-| 5 | El orden | Entre HU lo fija la propuesta final del análisis 1: 1, 5, 2, 3, 4, 7 y 6. Dentro de cada HU lo fijan la columna «Depende de» de la HU y el plan de cada fase (`02·F14`), no el análisis | Turnos 21 y 22 |
-| 6 | Un cruce entre HU | El punto 6 del análisis 2, en la HU 1, necesita saber cuándo se cumplió un plan, y el cierre por el plan es el punto 12, en la HU 3. Se puede leer con enlaces que ya existen (de «Pasó a» a la HU, de la HU a sus fases y de la fase a su cierre). Se confirma en el plan de la HU 1, antes de aprobarlo | Turno 21 |
-| 7 | Este análisis se conserva | No cambia lo decidido, pero deja aclarado qué pasa a trabajo y en qué orden | Turno 23 |
-| 8 | Lo que se corrige sin análisis | La ruta de EP-023, lo que no sale de los análisis y la falta del borrador de la plantilla en la HU 1 son errores de ejecución: se corrigen y se sigue | Turno 20 |
+| Error del agente al leer un análisis | Cualquier análisis | Se toma como hallazgo lo que no lo es | Conclusiones 3 y 8 |
+| Orden entre HU | Cualquier épica | Se construye en un orden que no se decidió | Conclusión 5 |
+| Una HU que necesita algo de otra | Cualquier épica | Se construye antes de tiempo | Conclusión 6 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente
 
@@ -323,9 +335,17 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Pasar la épica y sus HU a `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/`, con la carpeta de este pendiente adentro, y corregir los enlaces | 2, 8 | EP-023, al escribirla |
 | 2 | Dejar en la épica y en las HU solo lo que sale de la propuesta final y de lo que se tiene que hacer de los análisis 1 y 2 | 1, 8 | EP-023 y sus siete HU |
 | 3 | Nombrar en la HU 1 el borrador de la plantilla del análisis como punto de partida | 8 | EP-023, HU 1 |
 | 4 | Confirmar en el plan de la HU 1 cómo sabe la herramienta que el plan del análisis abierto se cumplió | 6 | EP-023, HU 1, en su plan |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Aclara.
+
+**Lo que suma al análisis principal:** De un análisis pasan a trabajo su propuesta final y lo que se tiene que hacer; la conversación es el contexto.

@@ -11,6 +11,22 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 43.0.0 — 2026-10-02
+
+**El análisis dice cada decisión una sola vez: «Lo acordado» reemplaza a «Conclusiones».** ⚠ obliga a migrar
+
+**MAYOR**: la revisión automática ya no lee la tabla de conclusiones. Un proyecto con análisis aprobados que la usan pasa sus puntos a «Lo acordado», con el mismo número, y cambia la columna «Sale de la conclusión» por «Sale de lo acordado».
+
+**Lo que entra:**
+
+- `plantillas/analisis.md`: la sección «Lo acordado» va después de la conversación, un punto por decisión con su tema y su turno, y cierra con «Siguen abiertas». Sale «Conclusiones». «Lo que se tiene que hacer» cita el punto acordado.
+- `02·F27`: el punto de «Lo acordado» cita su turno.
+- `validadores/origen.py`: revisa el turno de cada punto acordado y que cada fila de «Lo que se tiene que hacer» cite un punto que existe.
+
+Del análisis 9 del pendiente 103: la misma decisión escrita en dos secciones (`20·M2`).
+
+---
+
 ## 42.0.1 — 2026-10-02
 
 **La respuesta del agente entra al análisis apenas termina, y no un turno después.**

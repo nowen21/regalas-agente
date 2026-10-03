@@ -297,6 +297,21 @@ Con eso, la HU-005 vuelve a quedar para aprobación. Para hacerlo, falta «Escri
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Es parte del plan en curso: El H-5 frena la fase `A` de la HU-005 antes de aprobarse, y se resuelve antes de seguirla (Turno 101).
+2. `01·C15`: Pasa a extender a `01·C30`. Lo que exige no cambia (Turno 103).
+3. `00·ID1`: Rige cómo se hace lo pedido; `C30` rige qué se hace. `ID1` dice «dentro de lo pedido» y deja de citar a `C14` (Turno 103).
+4. Qué cambia en lo ya hecho: El cambio de `ID1` entra a la HU-005 como un criterio nuevo; el de `C15`, en el CA-02, junto a `C25`. El plan de la fase `A` pasa a su versión siguiente (Turno 103).
+5. Qué es lo pedido: Lo pedido es el criterio de aceptación más lo que exigen las reglas de Cimiento. Lo que exige una regla siempre se hace y no cuenta como agregado. Lo que ninguna regla exige no se agrega: se pregunta en el análisis (Turnos 107 a 114).
+6. El ejemplo de `02·F19`: Se cambia por uno que no choque con ninguna regla, como agregar por cuenta propia una exportación que nadie pidió. Entra al CA-01 de la HU-005 (Turnos 109 y 114).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -328,20 +343,17 @@ Aplican `20·M7` (una regla declara de cuál se apoya con «extiende»), `20·M1
 | Normas y leyes | Ninguna aplica |
 | Herramientas | La conversación entró sola, con el enganche de la fase `B` de la HU-001 |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Es parte del plan en curso | El H-5 frena la fase `A` de la HU-005 antes de aprobarse, y se resuelve antes de seguirla | Turno 101 |
-| 2 | `01·C15` | Pasa a extender a `01·C30`. Lo que exige no cambia | Turno 103 |
-| 3 | `00·ID1` | Rige cómo se hace lo pedido; `C30` rige qué se hace. `ID1` dice «dentro de lo pedido» y deja de citar a `C14` | Turno 103 |
-| 4 | Qué cambia en lo ya hecho | El cambio de `ID1` entra a la HU-005 como un criterio nuevo; el de `C15`, en el CA-02, junto a `C25`. El plan de la fase `A` pasa a su versión siguiente | Turno 103 |
-| 5 | Qué es lo pedido | Lo pedido es el criterio de aceptación más lo que exigen las reglas de Cimiento. Lo que exige una regla siempre se hace y no cuenta como agregado. Lo que ninguna regla exige no se agrega: se pregunta en el análisis | Turnos 107 a 114 |
-| 6 | El ejemplo de `02·F19` | Se cambia por uno que no choque con ninguna regla, como agregar por cuenta propia una exportación que nadie pidió. Entra al CA-01 de la HU-005 | Turnos 109 y 114 |
+| Reglas que citan una regla que se deroga | Cualquier derogación | Quedan apoyadas en lo que no rige | Conclusiones 2 y 3 |
+| Lo que exige una regla y el CA no nombra | Cualquier HU | Se deja de cumplir la regla | Conclusión 5 |
+| Ejemplo de una regla que choca con otra | Cualquier regla | Dos reglas dicen lo contrario | Conclusión 6 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente
 
@@ -358,9 +370,17 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Pasar el CA-02 de la HU-005 a la versión siguiente: `C25` y `C15` reubicadas, `C15` extendiendo a `C30` | 2, 4 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
 | 2 | Sumar a la HU-005 el CA-04: `00·ID1` rige dentro de lo pedido y no cita a `C14` | 3, 4 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
 | 3 | Pasar el plan de la fase `A` a su versión siguiente con `C15`, `ID1` y el ejemplo de `F19`, y volver a aprobarlo | 4, 6 | EP-023, HU-005, fase `A` |
 | 4 | Pasar el CA-01 de la HU-005 a la versión siguiente: `C30` dice que lo pedido es el criterio más lo que exigen las reglas de Cimiento, y el ejemplo de `F19` deja de chocar con `04·S1` | 5, 6 | EP-023, [HU-005](../HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Modifica la idea.
+
+**Lo que suma al análisis principal:** Lo pedido es el criterio de aceptación más lo que exigen las reglas; lo que nadie pidió no se agrega, se pregunta en el análisis.

@@ -845,6 +845,31 @@ Para el paso 1: «Escriba».
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Una regla rige en todas partes: No se crea una regla por cada canal: `04·S9` ya cubre toda escritura fuera del proyecto, y lo que falta es que un programa la haga cumplir por todos (Turno 142).
+2. Dónde queda el freno: En la HU-007, que ya trata del freno; no nace un pendiente aparte (Turnos 143 y 145).
+3. El freno en cuatro capas: Antes de actuar, sobre toda acción y por su efecto; después de actuar, comparando el estado de git con el plan; al guardar el commit; y en la integración continua. Cada adaptador declara qué capas cubre en su herramienta y por qué no las demás (Turnos 144, 153 y 155).
+4. El análisis abre todas las posibilidades: La plantilla del análisis lleva la sección «Dónde más puede pasar», con el caso, dónde se presenta, el riesgo si queda sin cubrir y lo que lo cubre; el validador no deja cerrar un análisis con un caso sin cubrir ni razón (Turnos 146, 152, 153 y 155).
+5. Las HU con su dependencia y su orden: La tabla de HU de la propuesta final lleva de qué HU depende cada una, su orden de ejecución y por qué. El número identifica a la HU y no cambia; el orden sale de las dependencias. El validador revisa que ninguna vaya antes de una de la que depende y que cada puesto tenga razón. La hoja de ruta de la épica copia ese orden (Turnos 152, 153 y 155).
+6. Dónde se pide lo de la plantilla: En una fase D de la HU-001, que es dueña de la plantilla y del validador del análisis (Turno 152).
+7. La respuesta entraba tarde al análisis: `hook_historico.py` la pasa apenas la escribe; ya se corrigió (H-9), porque este análisis es el piloto (Turno 148).
+8. El orden de EP-023: Primero la fase D de la HU-001, porque todo análisis que venga usa la plantilla. Después la HU-003, que da la forma del hallazgo y del pendiente y resuelve las dos fallas que hoy dejan los validadores. La HU-006 no depende de ninguna y frena las lecciones que se acumulan «por escribir». La HU-004 depende de la HU-003. La HU-007 va al final: depende de la HU-003 y de la HU-004, porque el freno anota el hallazgo y vuelve al análisis (Turnos 153 y 155).
+9. Las recomendaciones del análisis: Viven en un solo archivo, `plantillas/recomendaciones-del-analisis.md`, y la plantilla abre con una sección que lo enlaza y dice cuáles aplican. Hay dos niveles: las de Cimiento, que viajan con el estándar y llevan versión, y las de cada proyecto, en su archivo; la del proyecto que sirva a todos sube a Cimiento. Cada una dice qué se hace, por qué y de qué análisis sale. Antes de crear una se busca si ya existe (`20·M12`). Si se vuelve exigible, sube a regla. El validador revisa el origen, que no haya repetidas y que cada análisis aprobado diga cuáles consultó. Arranca con las que dejaron las lecciones de los análisis 1 a 8, y el recuerdo «El análisis cubre todos los casos» pasa a ser la R-1 (Turnos 156 y 157).
+10. Cómo se alimentan: De las lecciones de cada análisis: su tabla suma una columna que dice si la lección complementa una recomendación, crea una nueva o no aplica. Es de la HU-006, que trata de las lecciones, y por eso la HU-006 depende de la fase D de la HU-001 (Turnos 156 y 157).
+11. El análisis principal al día: Los análisis 6, 7 y 8 suman su línea a la lista de cambios del análisis principal (`13·DOC25`), y el validador avisa cuando un análisis aprobado cambia una HU y no aparece en esa lista (Turnos 158 y 159).
+12. El largo de la respuesta: Medir la respuesta contra `00·ID9` antes de entregarla queda como recomendación de arranque (Turnos 159 y 161).
+13. Revisar lo que se tiene que hacer: No nace nada nuevo: para eso existe «Lo que aportó cada parte». Lo que falló en el H-5 y el H-7 fue hacer esas partes por encima, sin revisarlas contra cada punto de «Lo que se tiene que hacer»; queda como lección (Turnos 159 y 160).
+14. La corrección del H-9: Cambió `validadores/instalar.py`, que viaja a los proyectos: entra con su línea en el CHANGELOG y su versión (`20·M10`) en el commit que la sube (Turnos 160 y 161).
+15. Dónde vive el pendiente: Dentro de lo que lo origina va una carpeta `pendientes/`, y dentro de ella cada pendiente en su carpeta, con `pendiente.md` y sus análisis. La numeración sigue siendo una sola en todo el proyecto. Un programa arma el índice de todos, con su número, dónde viven y si su plan cerró. El validador de fases acepta `pendientes/` dentro de una épica, de una HU o de un resumen del día. Cuando el análisis decide a dónde va un pendiente que esperaba en el resumen del día, la carpeta se mueve y sus enlaces se actualizan. Si ya se sabe a quién pertenece, nace allá: el 108 va en `pendientes/` de la HU-036. Precisa la conclusión 11 del análisis 1 (Turnos 173 a 177).
+16. Los análisis ya aprobados: Las secciones nuevas de la plantilla («Dónde más puede pasar», las recomendaciones y la tabla de HU con su orden) se exigen solo a los análisis que se aprueben desde la versión que las trae. Los análisis 1 a 7 no se reabren (`20·M10`) (Turnos 178 a 181).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -901,29 +926,6 @@ Aplican `04·S9` (escribir solo dentro del proyecto), `01·C29` (todo lo del pro
 
 ---
 
-## Conclusiones
-
-| # | Tema | Conclusión | Sale de |
-|---|---|---|---|
-| 1 | Una regla rige en todas partes | No se crea una regla por cada canal: `04·S9` ya cubre toda escritura fuera del proyecto, y lo que falta es que un programa la haga cumplir por todos | Turno 142 |
-| 2 | Dónde queda el freno | En la HU-007, que ya trata del freno; no nace un pendiente aparte | Turnos 143 y 145 |
-| 3 | El freno en cuatro capas | Antes de actuar, sobre toda acción y por su efecto; después de actuar, comparando el estado de git con el plan; al guardar el commit; y en la integración continua. Cada adaptador declara qué capas cubre en su herramienta y por qué no las demás | Turnos 144, 153 y 155 |
-| 4 | El análisis abre todas las posibilidades | La plantilla del análisis lleva la sección «Dónde más puede pasar», con el caso, dónde se presenta, el riesgo si queda sin cubrir y lo que lo cubre; el validador no deja cerrar un análisis con un caso sin cubrir ni razón | Turnos 146, 152, 153 y 155 |
-| 5 | Las HU con su dependencia y su orden | La tabla de HU de la propuesta final lleva de qué HU depende cada una, su orden de ejecución y por qué. El número identifica a la HU y no cambia; el orden sale de las dependencias. El validador revisa que ninguna vaya antes de una de la que depende y que cada puesto tenga razón. La hoja de ruta de la épica copia ese orden | Turnos 152, 153 y 155 |
-| 6 | Dónde se pide lo de la plantilla | En una fase D de la HU-001, que es dueña de la plantilla y del validador del análisis | Turno 152 |
-| 7 | La respuesta entraba tarde al análisis | `hook_historico.py` la pasa apenas la escribe; ya se corrigió (H-9), porque este análisis es el piloto | Turno 148 |
-| 8 | El orden de EP-023 | Primero la fase D de la HU-001, porque todo análisis que venga usa la plantilla. Después la HU-003, que da la forma del hallazgo y del pendiente y resuelve las dos fallas que hoy dejan los validadores. La HU-006 no depende de ninguna y frena las lecciones que se acumulan «por escribir». La HU-004 depende de la HU-003. La HU-007 va al final: depende de la HU-003 y de la HU-004, porque el freno anota el hallazgo y vuelve al análisis | Turnos 153 y 155 |
-| 9 | Las recomendaciones del análisis | Viven en un solo archivo, `plantillas/recomendaciones-del-analisis.md`, y la plantilla abre con una sección que lo enlaza y dice cuáles aplican. Hay dos niveles: las de Cimiento, que viajan con el estándar y llevan versión, y las de cada proyecto, en su archivo; la del proyecto que sirva a todos sube a Cimiento. Cada una dice qué se hace, por qué y de qué análisis sale. Antes de crear una se busca si ya existe (`20·M12`). Si se vuelve exigible, sube a regla. El validador revisa el origen, que no haya repetidas y que cada análisis aprobado diga cuáles consultó. Arranca con las que dejaron las lecciones de los análisis 1 a 8, y el recuerdo «El análisis cubre todos los casos» pasa a ser la R-1 | Turnos 156 y 157 |
-| 10 | Cómo se alimentan | De las lecciones de cada análisis: su tabla suma una columna que dice si la lección complementa una recomendación, crea una nueva o no aplica. Es de la HU-006, que trata de las lecciones, y por eso la HU-006 depende de la fase D de la HU-001 | Turnos 156 y 157 |
-| 11 | El análisis principal al día | Los análisis 6, 7 y 8 suman su línea a la lista de cambios del análisis principal (`13·DOC25`), y el validador avisa cuando un análisis aprobado cambia una HU y no aparece en esa lista | Turnos 158 y 159 |
-| 12 | El largo de la respuesta | Medir la respuesta contra `00·ID9` antes de entregarla queda como recomendación de arranque | Turnos 159 y 161 |
-| 13 | Revisar lo que se tiene que hacer | No nace nada nuevo: para eso existe «Lo que aportó cada parte». Lo que falló en el H-5 y el H-7 fue hacer esas partes por encima, sin revisarlas contra cada punto de «Lo que se tiene que hacer»; queda como lección | Turnos 159 y 160 |
-| 14 | La corrección del H-9 | Cambió `validadores/instalar.py`, que viaja a los proyectos: entra con su línea en el CHANGELOG y su versión (`20·M10`) en el commit que la sube | Turnos 160 y 161 |
-| 15 | Dónde vive el pendiente | Dentro de lo que lo origina va una carpeta `pendientes/`, y dentro de ella cada pendiente en su carpeta, con `pendiente.md` y sus análisis. La numeración sigue siendo una sola en todo el proyecto. Un programa arma el índice de todos, con su número, dónde viven y si su plan cerró. El validador de fases acepta `pendientes/` dentro de una épica, de una HU o de un resumen del día. Cuando el análisis decide a dónde va un pendiente que esperaba en el resumen del día, la carpeta se mueve y sus enlaces se actualizan. Si ya se sabe a quién pertenece, nace allá: el 108 va en `pendientes/` de la HU-036. Precisa la conclusión 11 del análisis 1 | Turnos 173 a 177 |
-| 16 | Los análisis ya aprobados | Las secciones nuevas de la plantilla («Dónde más puede pasar», las recomendaciones y la tabla de HU con su orden) se exigen solo a los análisis que se aprueben desde la versión que las trae. Los análisis 1 a 7 no se reabren (`20·M10`) | Turnos 178 a 181 |
-
-Siguen abiertas: ninguna.
-
 ## Propuesta final: hallazgo y pendiente
 
 > El H-8 no cambia. El pendiente sigue en la V3. EP-023 no suma HU.
@@ -950,7 +952,7 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Reescribir el CA-02 de la HU-007 con el freno en cuatro capas y el contrato de cada adaptador, y repartirlo en las fases que haga falta | 1, 2, 3 | EP-023, [HU-007](../HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) |
 | 2 | Sumar a la HU-001 el criterio de la sección «Dónde más puede pasar», en la plantilla y en el validador | 4, 6 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
@@ -963,3 +965,11 @@ Siguen abiertas: ninguna.
 | 9 | Subir la corrección del H-9 con su línea en el CHANGELOG y su versión | 14 | Este análisis, en el commit que la sube |
 | 10 | Sumar a la HU-003 la carpeta `pendientes/` dentro de lo que origina cada pendiente, con la numeración única, el índice que se arma solo, el validador de fases y el traslado de los pendientes de `pendientes/` y del 103 | 15 | EP-023, [HU-003](../HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) |
 | 11 | Que el validador del análisis exija las secciones nuevas solo a los análisis aprobados desde la versión que las trae | 16 | EP-023, [HU-001](../HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md), fase D |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Cambia lo que se construye y amplía la idea.
+
+**Lo que suma al análisis principal:** Las reglas se hacen cumplir por cualquier canal y en cualquier herramienta; el análisis considera todos los casos que pueden pasar en cualquier proyecto, ordena las HU por su dependencia y consulta las recomendaciones; y cada pendiente vive dentro de lo que lo origina.

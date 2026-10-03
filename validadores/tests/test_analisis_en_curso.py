@@ -76,7 +76,7 @@ class LaHerramientaLeeElEstado(Base):
     def test_cp002_lo_agregado_a_mano_no_se_toca(self):
         a1 = os.path.join(self.p7, "analisis-1.md")
         self.escribir(a1, "# Análisis\n\n## Conversación\n\n> Nota.\n\n> acá termina la conversación\n\n"
-                          "## Conclusiones\n\nNota del usuario.\n")
+                          "## Lo acordado\n\nNota del usuario.\n")
         curso._guardar_estado(self.raiz, {"analisis": a1, "transcripcion": self.trans,
                                           "desde": 1, "pausa": None, "pausas": []})
         self.agregar(turno(1, "uno"))
@@ -85,7 +85,7 @@ class LaHerramientaLeeElEstado(Base):
         curso.pasar(self.raiz)
         texto = self.leer(a1)
         self.assertIn("### 2 · Usuario", texto)
-        self.assertTrue(texto.endswith("## Conclusiones\n\nNota del usuario.\n"))
+        self.assertTrue(texto.endswith("## Lo acordado\n\nNota del usuario.\n"))
 
 
 class SinMarcasNiEtiquetas(Base):

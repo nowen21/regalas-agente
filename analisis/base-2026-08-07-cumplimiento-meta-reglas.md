@@ -1036,3 +1036,11 @@ En los dos casos el diagnóstico estaba escrito, con la solución al lado, y el 
 ---
 
 > **Cómo se mantiene este informe.** Es una fotografía del **2026-08-07** sobre `VERSION 1.3.0`. Cada ola cerrada actualiza la tabla de §1 y marca las filas resueltas en §5. Al terminar la Ola 5, `metareglas.py` reemplaza la parte mecánica de este documento y aquí queda solo lo que exige criterio.
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Aclara.
+
+**Lo que suma al análisis principal:** Sus reglas se escriben con el molde que fijan sus propias meta-reglas.

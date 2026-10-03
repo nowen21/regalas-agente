@@ -6,8 +6,8 @@ cadena de «Sale de» hacia arriba y detiene el punto que no cita su origen, o q
 cita uno que no existe:
 
 - el pendiente, frente al hallazgo que cita en «De dónde sale»;
-- la conclusión del análisis, frente al turno de su conversación;
-- la fila de «Lo que se tiene que hacer», frente a la conclusión que cita;
+- el punto de «Lo acordado», frente al turno de su conversación;
+- la fila de «Lo que se tiene que hacer», frente al punto de «Lo acordado» que cita;
 - el criterio de la HU, frente al punto de «Lo que se tiene que hacer».
 
 **Lo que no mira, y se declara.**
@@ -28,6 +28,7 @@ _ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
 _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
 _TURNO = re.compile(r"^### (\d+) · Usuario", re.M)
 _FILA = re.compile(r"^\| *(\d+) *\|(.*)\|\s*$", re.M)
+_PUNTO = re.compile(r"^(\d+)\. (.*)$", re.M)
 _CRITERIO = re.compile(r"^### (CA-\d+)", re.M)
 _SALE_DE = re.compile(r"^\*\*Sale de:\*\*(.*)$", re.M)
 _CITA = re.compile(r"análisis (\d+), puntos? (\d+(?:(?:, | y )\d+)*)")
@@ -51,13 +52,18 @@ def _filas(seccion):
     return {int(n): [c.strip() for c in resto.split("|")] for n, resto in _FILA.findall(seccion)}
 
 
+def _puntos(seccion):
+    """`{número: texto}` de los puntos de una lista numerada."""
+    return {int(n): resto for n, resto in _PUNTO.findall(seccion)}
+
+
 def leer_analisis(ruta):
     """Lo que el validador necesita de un análisis."""
     texto = leer(ruta)
     return {
         "aprobado": bool(_APROBADO.search(texto)),
         "turnos": {int(n) for n in _TURNO.findall(texto)},
-        "conclusiones": _filas(_seccion(texto, "Conclusiones")),
+        "acordado": _puntos(_seccion(texto, "Lo acordado")),
         "hacer": _filas(_seccion(texto, "Lo que se tiene que hacer")),
     }
 
@@ -75,20 +81,21 @@ def epicas(raiz=None):
 
 def _revisar_analisis(ruta, datos):
     salida = []
-    for n, celdas in sorted(datos["conclusiones"].items()):
-        turnos = [int(x) for x in re.findall(r"\d+", celdas[-1])] if re.search(r"[Tt]urno", celdas[-1]) else []
+    for n, texto in sorted(datos["acordado"].items()):
+        m = re.search(r"\(([^()]*[Tt]urnos? [^()]*)\)\.?\s*$", texto)
+        turnos = [int(x) for x in re.findall(r"\d+", m.group(1))] if m else []
         if not turnos:
-            salida.append((ruta, f"la conclusión {n} no dice de qué turno sale"))
+            salida.append((ruta, f"el punto {n} de «Lo acordado» no dice de qué turno sale"))
         for t in turnos:
             if t not in datos["turnos"]:
-                salida.append((ruta, f"la conclusión {n} cita el turno {t}, que no está en la conversación"))
+                salida.append((ruta, f"el punto {n} de «Lo acordado» cita el turno {t}, que no está en la conversación"))
     for n, celdas in sorted(datos["hacer"].items()):
         citas = [int(x) for x in re.findall(r"\d+", celdas[1])] if len(celdas) > 2 else []
         if not citas:
-            salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» no dice de qué conclusión sale"))
+            salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» no dice de qué punto de «Lo acordado» sale"))
         for c in citas:
-            if c not in datos["conclusiones"]:
-                salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita la conclusión {c}, que no existe"))
+            if c not in datos["acordado"]:
+                salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita el punto {c} de «Lo acordado», que no existe"))
     return salida
 
 

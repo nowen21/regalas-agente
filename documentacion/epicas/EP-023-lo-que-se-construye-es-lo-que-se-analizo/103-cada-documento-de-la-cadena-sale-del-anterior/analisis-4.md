@@ -201,6 +201,20 @@ La HU-001 estaba aprobada y cambió: tiene un contexto nuevo y el CA-16. La dej�
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Es parte del plan en curso: El H-3 apareció escribiendo EP-023 y toca sus siete HU, incluida la HU-001 ya aprobada. Se resuelve antes de aprobar las demás (Turnos 49 y 50).
+2. Qué va en el contexto de una HU que sale de una épica: La parte del problema de la épica que esa HU resuelve, con el enlace a la épica para lo general. El problema completo vive solo en la épica (Turnos 50 y 51).
+3. Quién fija esa parte: La propuesta final del análisis, junto a cada HU, para que el agente no la invente (Turnos 50 y 51).
+4. El reparto en EP-023: HU-001: no hay un documento que fije el alcance antes de la HU, y lo que pasa la conversación al análisis hay que configurarlo a mano. HU-002: nada obliga a que cada documento salga del anterior. HU-003: el hallazgo y el pendiente cargan campos que son del análisis. HU-004: nada detiene al agente cuando aparece un hallazgo al ejecutar el plan. HU-005: el agente agrega lo que no se pidió, porque `01·C14` se lo permite. HU-006: ataca el «por qué importa» del problema, para que los hallazgos evitables no se repitan. HU-007: nada detiene al agente cuando trabaja fuera del plan aprobado, y la plantilla del plan no permite comprobarlo con un programa (Turnos 50 y 51).
+5. La plantilla de la HU: Distingue dos casos: si la HU sale directo de un pendiente, el contexto es el problema del pendiente; si sale de una épica, es la parte del problema de la épica que le toca, con el enlace (Turnos 50 y 51).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -229,19 +243,16 @@ Aplican `13·DOC15` (la HU se escribe desde la plantilla central) y `13·DOC16` 
 | Normas y leyes | Ninguna aplica |
 | Herramientas | La conversación entró con el guion intermedio, prendido escribiendo a mano el archivo de estado |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Es parte del plan en curso | El H-3 apareció escribiendo EP-023 y toca sus siete HU, incluida la HU-001 ya aprobada. Se resuelve antes de aprobar las demás | Turnos 49 y 50 |
-| 2 | Qué va en el contexto de una HU que sale de una épica | La parte del problema de la épica que esa HU resuelve, con el enlace a la épica para lo general. El problema completo vive solo en la épica | Turnos 50 y 51 |
-| 3 | Quién fija esa parte | La propuesta final del análisis, junto a cada HU, para que el agente no la invente | Turnos 50 y 51 |
-| 4 | El reparto en EP-023 | HU-001: no hay un documento que fije el alcance antes de la HU, y lo que pasa la conversación al análisis hay que configurarlo a mano. HU-002: nada obliga a que cada documento salga del anterior. HU-003: el hallazgo y el pendiente cargan campos que son del análisis. HU-004: nada detiene al agente cuando aparece un hallazgo al ejecutar el plan. HU-005: el agente agrega lo que no se pidió, porque `01·C14` se lo permite. HU-006: ataca el «por qué importa» del problema, para que los hallazgos evitables no se repitan. HU-007: nada detiene al agente cuando trabaja fuera del plan aprobado, y la plantilla del plan no permite comprobarlo con un programa | Turnos 50 y 51 |
-| 5 | La plantilla de la HU | Distingue dos casos: si la HU sale directo de un pendiente, el contexto es el problema del pendiente; si sale de una épica, es la parte del problema de la épica que le toca, con el enlace | Turnos 50 y 51 |
+| HU que sale directo de un pendiente | Cualquier proyecto | El contexto repite o no dice el problema | Conclusión 5 |
+| HU que sale de una épica | Cualquier épica | Cada HU repite el problema completo | Conclusiones 2 y 3 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente
 
@@ -256,8 +267,16 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Que la plantilla de la HU distinga los dos casos de «Contexto y descripción»: el problema del pendiente, o la parte del problema de la épica con su enlace | 5 | EP-023, HU-002 |
 | 2 | Que la plantilla del análisis pida, junto a cada HU de la propuesta final, la parte del problema que resuelve | 3 | EP-023, HU-001 |
 | 3 | Reescribir el contexto de las siete HU de EP-023 con el reparto de la conclusión 4 | 2, 4 | EP-023, al aprobar este análisis |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Aclara.
+
+**Lo que suma al análisis principal:** El contexto de cada HU que sale de una épica es la parte del problema que le toca.

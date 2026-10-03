@@ -266,7 +266,7 @@ CORRECTO:   la propuesta llega con su inventario; el usuario aprueba o corrige e
 Fuente: [02·F26](../02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md#f26--el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-épicas)
 
 ## F27 · Cada punto dice de qué punto del anterior sale
-Cada punto de un documento de la cadena lleva «Sale de» con el punto del documento anterior: el pendiente, su hallazgo; la conclusión del análisis, su turno; el criterio de la HU, su punto de «Lo que se tiene que hacer». Lo que no tiene origen no entra (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)).
+Cada punto de un documento de la cadena lleva «Sale de» con el punto del documento anterior: el pendiente, su hallazgo; el punto de «Lo acordado» del análisis, su turno; el criterio de la HU, su punto de «Lo que se tiene que hacer». Lo que no tiene origen no entra (extiende [`02·F18`](../02-flujo-de-trabajo/reglas/F18-deriva-el-plan-de-los-ca-aprobados-no-de-la-proactividad.md)).
 ```
 INCORRECTO: la HU trae un CA-04 sin «Sale de», porque «se veía necesario»
 CORRECTO:   el CA-04 dice «Sale de: análisis 6, punto 2», y ese punto existe

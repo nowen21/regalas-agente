@@ -109,6 +109,18 @@ Para hacerlo: «Escriba».
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Es parte del plan en curso: El H-7 frena la fase `A` de la HU-002 antes de aprobarse, y se resuelve antes de seguirla (Turno 129).
+2. La plantilla de la HU: Cada criterio de `04-HU.md` lleva la línea «Sale de», con el punto de «Lo que se tiene que hacer» del análisis, encima del escenario (Turnos 130 y 131).
+3. Dónde queda pedido: Entra al CA-03 de la HU-002, que ya trata de la plantilla de la HU; no nace un criterio nuevo (Turnos 130 y 131).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -139,17 +151,15 @@ Aplican `13·DOC15` (la HU se crea desde la plantilla central), `02·F18` y la r
 | Normas y leyes | Ninguna aplica |
 | Herramientas | La conversación entró sola, y el análisis 6 se apagó con la corrección del H-6 |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Es parte del plan en curso | El H-7 frena la fase `A` de la HU-002 antes de aprobarse, y se resuelve antes de seguirla | Turno 129 |
-| 2 | La plantilla de la HU | Cada criterio de `04-HU.md` lleva la línea «Sale de», con el punto de «Lo que se tiene que hacer» del análisis, encima del escenario | Turnos 130 y 131 |
-| 3 | Dónde queda pedido | Entra al CA-03 de la HU-002, que ya trata de la plantilla de la HU; no nace un criterio nuevo | Turnos 130 y 131 |
+| Plantilla sin el campo que una regla nueva exige | Cualquier plantilla | El documento hecho con la plantilla incumple la regla | Conclusiones 2 y 3 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente
 
@@ -164,7 +174,15 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Pasar el CA-03 de la HU-002 a la versión siguiente: además del contexto, cada criterio de la plantilla de la HU lleva «Sale de» | 2, 3 | EP-023, [HU-002](../HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) |
 | 2 | Pasar el plan de la fase `A` de la HU-002 a su versión siguiente con ese campo, y volver a aprobarlo | 1, 3 | EP-023, HU-002, fase `A` |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Cambia lo que se construye.
+
+**Lo que suma al análisis principal:** Cada criterio de la HU dice, desde su plantilla, de qué punto del análisis sale.

@@ -641,6 +641,27 @@ Para el siguiente paso, guardar en git, hace falta la palabra «Suba».
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Dónde arranca un análisis: En el turno donde se dice «Analicemos: el pendiente N». En este análisis coincidió con el turno siguiente a la aprobación del anterior porque fue en la misma sesión; si el hallazgo aparece días después, los turnos de por medio son de otro trabajo y no entran (Turnos 146, 165, 166).
+2. Tres controles, nada más: Prender, para arrancar el análisis: «Analicemos» solo prende si el mensaje nombra un pendiente («Analicemos: el pendiente N»); sin pendiente, «Analicemos» sigue siendo analizar en el chat. Pausar, para que lo que no es parte del análisis no entre en él («Pare»); se reanuda prendiendo otra vez. Apagar, cuando se aprueba («Apruebo el análisis»), que pone la marca con el último turno. Entre prender y pausar o apagar, cada turno entra solo, sin que nadie lo pida (Turnos 147, 148, 165, 166).
+3. Cómo se controla: Un aviso en cada turno dice a qué análisis está entrando la conversación, o que ninguno está prendido. Un archivo de estado visible guarda qué análisis está prendido y se puede corregir a mano si algo falla (Turno 147).
+4. Los turnos en pausa: No entran en el análisis. En su lugar queda una línea que dice «turnos X a Y en pausa», para que se note el corte (Turno 149).
+5. El formato de la conversación copiada: Al pasar la conversación al análisis, la raya larga que separa cada turno de su hora se cambia por una coma, porque el análisis sigue `00·ID8`. Vale de aquí en adelante; el análisis 1 se deja como está (Turnos 150, 152).
+6. Un solo análisis abierto: No se abre el análisis de otro pendiente mientras no se cumpla el plan de trabajo del análisis abierto; si no, quedan varios análisis o pendientes sobre lo mismo y el trabajo se duplica. Como nunca hay dos abiertos, no hay que elegir a cuál entra la conversación. El análisis siguiente del mismo pendiente no es otro análisis: mejora el pendiente con el hallazgo nuevo (Turnos 156, 157).
+7. Qué hace el análisis de un hallazgo: Todo hallazgo que surge al ejecutar el plan abre un análisis nuevo, que primero valida las posibilidades y decide si el hallazgo es parte del plan en curso o es otra cosa. Si es parte del plan, tiene prioridad: el pendiente actual se mejora con lo que se determinó y se resuelve antes de seguir. Si no es parte del plan, se crea su propio pendiente, sigue su proceso y el plan en curso continúa sin tocarse. En los dos casos, el análisis deja claro qué se determinó y dónde se aplica (Turno 157).
+8. Cómo llega a cada proyecto: Con el instalador, como los demás enganches. La herramienta pasa a `adaptadores/claude-code/` y el instalador la registra en cada proyecto; las palabras y el aviso llegan con ella; la plantilla se lee del estándar. El archivo de estado lo crea la herramienta al prender y lo borra al apagar; es local porque `.estado/` no va a git, y lo que manda es la marca «Aprobado» del análisis (Turnos 159, 160, 161).
+9. Qué cambia en lo ya hecho: El análisis 1 no se toca y su punto 29 queda superado por los puntos de este. El hallazgo H-2 es parte del plan en curso, así que mejora el pendiente (V3) y sus puntos pasan a la HU 1 de EP-023 (Turnos 161, 162).
+10. Las marcas de la herramienta: Al pasar la conversación se quitan las etiquetas que la herramienta le pone al mensaje del usuario (texto pegado, archivo abierto en el editor), porque no son palabras del usuario (Turno 158).
+11. El orden al cerrar: Primero se pasan el hallazgo y el pendiente a su versión siguiente en los originales, dentro del análisis y con la conversación prendida; después se aprueba; y por último se apaga. Después de aprobado no se hace ningún cambio (Turnos 168, 169, 170).
+12. Nada del análisis queda por fuera: El cambio de versión del hallazgo y del pendiente es parte del análisis, porque sale de lo que se determinó en él, y queda registrado en su conversación. Corrige la conclusión 52 y la lección 13 del análisis 1, que decían que los originales se cambiaban después de aprobar (Turno 170).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -673,26 +694,18 @@ Aplican `01·C28` (la palabra clave de cada mensaje, que ya trae «Analicemos»,
 | Claude Code | Cambiar `.claude/settings.json` pide autorización; el instalador debe registrar el enganche, no el agente en cada sesión. |
 | Normas y leyes | Ninguna aplica. |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Dónde arranca un análisis | En el turno donde se dice «Analicemos: el pendiente N». En este análisis coincidió con el turno siguiente a la aprobación del anterior porque fue en la misma sesión; si el hallazgo aparece días después, los turnos de por medio son de otro trabajo y no entran. | Turnos 146, 165, 166 |
-| 2 | Tres controles, nada más | Prender, para arrancar el análisis: «Analicemos» solo prende si el mensaje nombra un pendiente («Analicemos: el pendiente N»); sin pendiente, «Analicemos» sigue siendo analizar en el chat. Pausar, para que lo que no es parte del análisis no entre en él («Pare»); se reanuda prendiendo otra vez. Apagar, cuando se aprueba («Apruebo el análisis»), que pone la marca con el último turno. Entre prender y pausar o apagar, cada turno entra solo, sin que nadie lo pida. | Turnos 147, 148, 165, 166 |
-| 3 | Cómo se controla | Un aviso en cada turno dice a qué análisis está entrando la conversación, o que ninguno está prendido. Un archivo de estado visible guarda qué análisis está prendido y se puede corregir a mano si algo falla. | Turno 147 |
-| 4 | Los turnos en pausa | No entran en el análisis. En su lugar queda una línea que dice «turnos X a Y en pausa», para que se note el corte. | Turno 149 |
-| 5 | El formato de la conversación copiada | Al pasar la conversación al análisis, la raya larga que separa cada turno de su hora se cambia por una coma, porque el análisis sigue `00·ID8`. Vale de aquí en adelante; el análisis 1 se deja como está. | Turnos 150, 152 |
-| 6 | Un solo análisis abierto | No se abre el análisis de otro pendiente mientras no se cumpla el plan de trabajo del análisis abierto; si no, quedan varios análisis o pendientes sobre lo mismo y el trabajo se duplica. Como nunca hay dos abiertos, no hay que elegir a cuál entra la conversación. El análisis siguiente del mismo pendiente no es otro análisis: mejora el pendiente con el hallazgo nuevo. | Turnos 156, 157 |
-| 7 | Qué hace el análisis de un hallazgo | Todo hallazgo que surge al ejecutar el plan abre un análisis nuevo, que primero valida las posibilidades y decide si el hallazgo es parte del plan en curso o es otra cosa. Si es parte del plan, tiene prioridad: el pendiente actual se mejora con lo que se determinó y se resuelve antes de seguir. Si no es parte del plan, se crea su propio pendiente, sigue su proceso y el plan en curso continúa sin tocarse. En los dos casos, el análisis deja claro qué se determinó y dónde se aplica. | Turno 157 |
-| 8 | Cómo llega a cada proyecto | Con el instalador, como los demás enganches. La herramienta pasa a `adaptadores/claude-code/` y el instalador la registra en cada proyecto; las palabras y el aviso llegan con ella; la plantilla se lee del estándar. El archivo de estado lo crea la herramienta al prender y lo borra al apagar; es local porque `.estado/` no va a git, y lo que manda es la marca «Aprobado» del análisis. | Turnos 159, 160, 161 |
-| 9 | Qué cambia en lo ya hecho | El análisis 1 no se toca y su punto 29 queda superado por los puntos de este. El hallazgo H-2 es parte del plan en curso, así que mejora el pendiente (V3) y sus puntos pasan a la HU 1 de EP-023. | Turnos 161, 162 |
-| 10 | Las marcas de la herramienta | Al pasar la conversación se quitan las etiquetas que la herramienta le pone al mensaje del usuario (texto pegado, archivo abierto en el editor), porque no son palabras del usuario. | Turno 158 |
-| 11 | El orden al cerrar | Primero se pasan el hallazgo y el pendiente a su versión siguiente en los originales, dentro del análisis y con la conversación prendida; después se aprueba; y por último se apaga. Después de aprobado no se hace ningún cambio. | Turnos 168, 169, 170 |
-| 12 | Nada del análisis queda por fuera | El cambio de versión del hallazgo y del pendiente es parte del análisis, porque sale de lo que se determinó en él, y queda registrado en su conversación. Corrige la conclusión 52 y la lección 13 del análisis 1, que decían que los originales se cambiaban después de aprobar. | Turno 170 |
+| Turnos que no son del análisis | Cualquier sesión | Entra al análisis lo que no se decidió ahí | Conclusión 4 |
+| Dos análisis abiertos | Cualquier proyecto | Quedan dos análisis sobre lo mismo | Conclusión 6 |
+| Etiquetas que la herramienta pone al mensaje | Cualquier herramienta | Se copian palabras que el usuario no dijo | Conclusión 10 |
+| Otro proyecto que hereda | Cualquier proyecto | La conversación hay que pasarla a mano | Conclusión 8 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: pendiente V3 y HU
 
@@ -712,6 +725,13 @@ Reúne los pendientes 103, 104 y 105.
 
 Los puntos de lo que se tiene que hacer pasan a la HU 1 de EP-023 (el análisis existe, tiene su forma y revisa las cuatro partes), menos el 7, que pasa a la HU 4 (un hallazgo detiene la ejecución y vuelve al análisis).
 
+> Orden puesto al día en el piloto, por el [análisis 9](analisis-9.md), con el que fijó el [análisis 8](analisis-8.md), conclusión 8. El número identifica a la HU; el orden sale de sus dependencias.
+
+| Orden | HU | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
+|---|---|---|---|---|
+| 1 | HU-001 · El análisis existe, tiene su forma y revisa las cuatro partes | Ninguna | Las demás se apoyan en el análisis | Todos menos el 7 |
+| 2 | HU-004 · Un hallazgo detiene la ejecución y vuelve al análisis | HU-003 | Detener la ejecución necesita la forma del hallazgo | 7 |
+
 ## Lecciones aprendidas
 
 | # | Lección | Tipo | Señal |
@@ -723,7 +743,7 @@ Los puntos de lo que se tiene que hacer pasan a la HU 1 de EP-023 (el análisis 
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Que la herramienta que pasa la conversación al análisis cambie la raya larga de los encabezados de turno por una coma. | 5 | EP-023, HU 1 |
 | 2 | Volver una herramienta del estándar, en `adaptadores/claude-code/`, el guion que pasa la conversación al análisis, que lea el análisis prendido de `historico-chat/.estado/analisis-en-curso.txt`. | 8 | EP-023, HU 1 |
@@ -733,3 +753,11 @@ Los puntos de lo que se tiene que hacer pasan a la HU 1 de EP-023 (el análisis 
 | 6 | Que la herramienta no prenda el análisis de otro pendiente mientras el plan del análisis abierto no se cumpla. | 6 | EP-023, HU 1 |
 | 7 | Que el análisis de un hallazgo decida primero si es parte del plan en curso: si lo es, mejora el pendiente y se resuelve antes de seguir; si no, se crea su pendiente y el plan continúa. | 7 | EP-023, HU 4 |
 | 8 | Que el instalador registre la herramienta en cada proyecto. | 8 | EP-023, HU 1 |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Cambia lo que se construye.
+
+**Lo que suma al análisis principal:** La conversación del análisis pasa sola a su archivo, y el análisis se prende, se pausa y se aprueba con tres palabras, con uno solo abierto a la vez.

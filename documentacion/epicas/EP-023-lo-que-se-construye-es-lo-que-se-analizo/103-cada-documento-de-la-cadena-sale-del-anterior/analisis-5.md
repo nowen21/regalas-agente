@@ -187,6 +187,20 @@ Faltan dos aprobaciones: «Apruebo la HU-001» y «Apruebo los planes de la fase
 
 ---
 
+## Lo acordado
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis, que después se quitaron para no repetirlas; cada punto conserva el número de su conclusión. No decide nada nuevo.
+
+1. Es parte del plan en curso: El H-4 frena la fase `A` de la HU-001 y se resuelve antes de seguirla (Turnos 64 y 65).
+2. Dos reglas: `DOC24`: el análisis individual cierra al final de su mismo archivo y no se reescribe. `DOC25`: el análisis principal se reescribe con lo que se va a construir y lleva su lista de cambios, cada uno con el enlace al análisis que lo produjo (Turno 65).
+3. Qué cambia en lo ya hecho: El CA-05 de la HU-001 pasa a la versión siguiente y dice las dos reglas; el plan de la fase `A` suma `DOC25` y vuelve a aprobarse (Turno 65).
+4. Lo que el plan tampoco declaraba: Al revisar el resto del plan de la fase `A` contra el checklist de las reglas faltaban dos archivos: `validadores/reglas-validables.md`, donde la fila 18 exige registrar `DOC24` y `DOC25` y donde todavía se nombra `DOC8`, y `anatomia/mapa-del-sitio.md`, que dice qué hace cada validador y no tendría `validadores/analisis.py` (Turnos 67 y 68).
+5. El largo de las reglas que cambian: La fila 10 del checklist admite un cuerpo de hasta 320 caracteres. `02·F0` tiene 291 y `02·F23`, 320. Para sumar el análisis, las tareas T-01 y T-02 acortan el texto que ya tienen esas reglas, sin cambiar lo que exigen. Son los mismos archivos y las mismas tareas del plan (Turnos 69 y 70).
+
+Siguen abiertas: ninguna.
+
+---
+
 ## Lo que aportó cada parte
 
 ### Cimiento: las reglas que aplican y las que chocan
@@ -217,19 +231,17 @@ Aplican `20·M5` (una sola exigencia por regla, fila 9 del checklist), `20·M11`
 | Normas y leyes | Ninguna aplica |
 | Herramientas | La conversación entró con el guion intermedio, prendido escribiendo a mano el archivo de estado |
 
----
+### Dónde más puede pasar
 
-## Conclusiones
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
 
-| # | Tema | Conclusión | Sale de |
+| Caso | Dónde se presenta | Riesgo si queda sin cubrir | Lo cubre |
 |---|---|---|---|
-| 1 | Es parte del plan en curso | El H-4 frena la fase `A` de la HU-001 y se resuelve antes de seguirla | Turnos 64 y 65 |
-| 2 | Dos reglas | `DOC24`: el análisis individual cierra al final de su mismo archivo y no se reescribe. `DOC25`: el análisis principal se reescribe con lo que se va a construir y lleva su lista de cambios, cada uno con el enlace al análisis que lo produjo | Turno 65 |
-| 3 | Qué cambia en lo ya hecho | El CA-05 de la HU-001 pasa a la versión siguiente y dice las dos reglas; el plan de la fase `A` suma `DOC25` y vuelve a aprobarse | Turno 65 |
-| 4 | Lo que el plan tampoco declaraba | Al revisar el resto del plan de la fase `A` contra el checklist de las reglas faltaban dos archivos: `validadores/reglas-validables.md`, donde la fila 18 exige registrar `DOC24` y `DOC25` y donde todavía se nombra `DOC8`, y `anatomia/mapa-del-sitio.md`, que dice qué hace cada validador y no tendría `validadores/analisis.py` | Turnos 67 y 68 |
-| 5 | El largo de las reglas que cambian | La fila 10 del checklist admite un cuerpo de hasta 320 caracteres. `02·F0` tiene 291 y `02·F23`, 320. Para sumar el análisis, las tareas T-01 y T-02 acortan el texto que ya tienen esas reglas, sin cambiar lo que exigen. Son los mismos archivos y las mismas tareas del plan | Turnos 69 y 70 |
+| Criterio que pide una regla con dos exigencias | Cualquier HU | La regla no pasa su checklist | Conclusión 2 |
+| Archivo que el plan no declara | Cualquier fase | Se edita fuera del plan | Conclusión 4 |
+| Regla que no cabe en su largo | Cualquier regla que cambia | La regla queda fuera del molde | Conclusión 5 |
 
-Siguen abiertas: ninguna.
+---
 
 ## Propuesta final: hallazgo y pendiente
 
@@ -244,8 +256,16 @@ Siguen abiertas: ninguna.
 
 ## Lo que se tiene que hacer
 
-| # | Lo que se tiene que hacer | Sale de la conclusión | Pasó a |
+| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Pasar el CA-05 de la HU-001 a la versión siguiente: `DOC8` derogada y reemplazada por `DOC24` y `DOC25` | 2, 3 | EP-023, HU-001 |
 | 2 | Pasar el plan de la fase `A` a la versión siguiente con `DOC25`, `validadores/reglas-validables.md` y `anatomia/mapa-del-sitio.md` en su tabla de archivos, y volver a aprobarlo | 3, 4 | EP-023, HU-001, fase `A` |
 | 3 | Que las tareas T-01 y T-02 del plan de la fase `A` digan que acortan el cuerpo de `02·F0` y de `02·F23` para que quepa en 320 caracteres con el análisis | 5 | EP-023, HU-001, fase `A` |
+
+## Lo que aporta al análisis principal
+
+> Se agregó en el piloto, por el [análisis 9](analisis-9.md), a partir de las conclusiones de este análisis; no decide nada nuevo.
+
+**Resultado:** Modifica la idea.
+
+**Lo que suma al análisis principal:** El análisis individual cierra en su mismo archivo y no se reescribe; el principal se reescribe con lo que aportan los individuales.
