@@ -14,11 +14,13 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 
 **Aplica a:** trabajar-cadena
 
+**Autoriza escribir:** `**/pendientes/*/pendiente.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v40.0.0**, el **2026-10-01**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v51.0.0**, el **2026-10-03**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

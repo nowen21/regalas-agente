@@ -1,0 +1,16 @@
+feat(freno): nada se escribe fuera del plan, por ningún canal
+
+El usuario pidió que el agente no escriba nada fuera del plan aprobado ni
+de lo que una regla autoriza, por cualquier canal (HU-007 de EP-023), y
+aprobó los análisis 11 y 12 del pendiente 103.
+
+Lo que hizo el agente:
+- validadores/freno.py y los enganches hook_antes.py, sobre toda acción,
+  y hook_despues.py, después de cada orden de consola; al detener anota
+  el hallazgo en el resumen de la sesión.
+- autorizado.py usa solo la regla vigente; DOC15, DOC16 y F23 autorizan
+  escribir la HU, la épica y el pendiente; la prueba de lo autorizado usa
+  reglas de ejemplo.
+- El pendiente 103 en su V4, y el pendiente 109 en la HU-023 de EP-005
+  por las pruebas del freno viejo.
+- Pruebas de la fase y versión 51.0.0.

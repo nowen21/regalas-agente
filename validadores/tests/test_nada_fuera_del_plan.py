@@ -126,29 +126,54 @@ class ElCommitSeComparaConElPlan(unittest.TestCase):
 
 
 class LoAutorizanLasReglas(unittest.TestCase):
-    """CP-003."""
+    """CP-003. Con reglas de ejemplo: si entra o sale una regla real, la prueba no cambia
+    (análisis 11 del pendiente 103, acuerdo 4)."""
 
-    DIEZ = ("01·C19", "01·C28", "04·S18", "02·F12", "13·DOC22", "13·DOC24",
-            "13·DOC25", "13·DOC5", "20·M10", "20·M13")
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.estandar = os.path.join(self.tmp.name, "estandar")
+        self.proyecto = os.path.join(self.tmp.name, "proyecto")
+        os.makedirs(self.proyecto)
+        self.regla("DOC90-escribe-notas.md", "## DOC90 · Escribe notas", "`notas/*.md`")
+        self.regla("DOC91-escribe-actas.md", "## DOC91 · Escribe actas  ·  `[DEROGADA en 9.0.0 → ver 13·DOC90]`", "`actas/**`")
+        self.regla("DOC92-escribe-senales.md", "## DOC92 · Escribe señales — *opt-in*", "`senales/*.md`")
+        self.regla("DOC93-con-ejemplo.md", "## DOC93 · Muestra un ejemplo",
+                   None, "```\n**Autoriza escribir:** `ejemplo/**`\n```\n")
 
-    def test_las_diez_reglas_traen_su_linea(self):
-        self.assertEqual(sorted(self.DIEZ), sorted(r for r, _ in autorizado.de_la_base()))
+    def tearDown(self):
+        self.tmp.cleanup()
 
-    def test_dice_que_regla_autoriza(self):
-        reglas = autorizado.de_la_base()
-        casos = {
-            "documentacion/epicas/EP-1-a/pendientes/103-b/analisis-2.md": "13·DOC24",
-            "historico-chat/scripts/2026-10-02/guion.py": "04·S18",
-            "historico-chat/memory/un-recuerdo.md": "01·C19",
-            "src/a.py": None,
-        }
-        for ruta, regla in casos.items():
-            self.assertEqual(regla, autorizado.quien_autoriza(ruta, reglas), ruta)
+    def regla(self, nombre, titulo, rutas, cuerpo=""):
+        ruta = os.path.join(self.estandar, "base", "13-documentacion", "reglas", nombre)
+        os.makedirs(os.path.dirname(ruta), exist_ok=True)
+        linea = "**Aplica a:** escribir-documento\n\n" + ("**Autoriza escribir:** %s\n" % rutas if rutas else "")
+        with io.open(ruta, "w", encoding="utf-8", newline="\n") as f:
+            f.write("%s\n\nTexto.\n\n%s\n%s" % (titulo, linea, cuerpo))
+
+    def reglas(self):
+        return [r for r, _ in autorizado.de_la_base(self.estandar, self.proyecto)]
+
+    def test_la_regla_vigente_autoriza(self):
+        reglas = autorizado.de_la_base(self.estandar, self.proyecto)
+        self.assertEqual("13·DOC90", autorizado.quien_autoriza("notas/hoy.md", reglas))
+        self.assertIsNone(autorizado.quien_autoriza("src/a.py", reglas))
+
+    def test_la_regla_derogada_no_autoriza(self):
+        self.assertNotIn("13·DOC91", self.reglas())
+
+    def test_la_opt_in_apagada_no_autoriza_y_la_encendida_si(self):
+        self.assertIn("13·DOC92", self.reglas())
+        with io.open(os.path.join(self.proyecto, "CLAUDE.md"), "w", encoding="utf-8") as f:
+            f.write("- Patrón opt-in `13` (documentación): no\n")
+        self.assertNotIn("13·DOC92", self.reglas())
 
     def test_el_ejemplo_dentro_de_un_bloque_de_codigo_no_cuenta(self):
-        texto = comun.leer(os.path.join(RAIZ, "base", "20-meta-reglas", "estructura-regla.md"))
-        self.assertTrue(re.search(r"(?m)^\*\*Autoriza escribir:\*\*", texto))
-        self.assertNotIn("20·F0", [r for r, _ in autorizado.de_la_base()])
+        self.assertNotIn("13·DOC93", self.reglas())
+
+    def test_una_regla_nueva_entra_sin_tocar_el_programa(self):
+        antes = len(self.reglas())
+        self.regla("DOC94-escribe-bitacoras.md", "## DOC94 · Escribe bitácoras", "`bitacoras/*.md`")
+        self.assertEqual(antes + 1, len(self.reglas()))
 
 
 if __name__ == "__main__":

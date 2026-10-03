@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 51.0.0 — 2026-10-03
+
+**El agente no escribe lo que el plan aprobado de la fase en curso no declara ni una regla autoriza, por ningún canal.** ⚠ obliga a migrar
+
+**MAYOR**: el freno corre antes de toda acción, no solo de la herramienta de escritura: mira también la consola, el segundo plano, las instalaciones y lo que se publica. Después de cada orden de consola compara lo que cambió con el plan. Al detener, anota el hallazgo en el resumen de la sesión. Un proyecto al día corre la instalación, que pone los dos enganches.
+
+**Lo que entra:**
+
+- `validadores/freno.py`: decide si una acción se deja, saca los destinos de una orden de consola, compara lo que cambió y anota el hallazgo.
+- Los enganches `hook_antes.py`, que ahora corre sobre toda acción, y `hook_despues.py`, después de cada orden de consola. El instalador los pone y deja cada enganche en un solo grupo por evento.
+- `13·DOC15`, `13·DOC16` y `02·F23` autorizan escribir la HU, la épica y el pendiente.
+- `validadores/autorizado.py`: solo autoriza la regla vigente; la derogada y la *opt-in* apagada no.
+- La plantilla del análisis: la fila que se hace «de una y sin fase» nombra sus rutas exactas.
+
+Del análisis 1, 8, 10 y 11 del pendiente 103, fase `B` de la HU-007 de EP-023.
+
+---
+
 ## 50.0.0 — 2026-10-03
 
 **El agente recibe con cada mensaje lo que el usuario ya decidió sobre lo que trabaja, y el plan marca lo que propone por su cuenta.** ⚠ obliga a migrar

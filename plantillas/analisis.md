@@ -138,7 +138,7 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 
 ## Lo que se tiene que hacer
 
-> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el punto de «Lo acordado» de donde sale; lo que no tenga punto acordado no entra.
+> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el punto de «Lo acordado» de donde sale; lo que no tenga punto acordado no entra. La fila que se hace «de una y sin fase» nombra las rutas exactas que toca, entre comillas invertidas: mientras el análisis está prendido, el freno deja escribir esas y ninguna otra.
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|

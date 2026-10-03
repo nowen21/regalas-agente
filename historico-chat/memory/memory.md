@@ -56,7 +56,7 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 | [Pregunta, afirmación o indicación](pregunta-no-es-instruccion.md) | Pregunta: solo se responde. Observación: se explica y se espera. Indicación: se ejecuta. En la duda, no se toca. |
 | [Convención de commits](sin-coauthored-by.md) | El cuerpo arranca con la idea del usuario y sigue con lo que hizo el agente; nunca `Co-Authored-By`. |
 
-<!-- huella: 83db0387a355 · estandar 37.1.0 -->
+<!-- huella: 2d0dcf421f5e · estandar 51.0.0 -->
 - [Los guiones de apoyo van dentro del repositorio, y se quedan](guiones-de-apoyo-dentro-del-repo.md) — en `historico-chat/scripts/AAAA-MM-DD/`, versionados: si solo queda el resultado, el cómo se pierde (`04·S9`).
 - [La orden se resuelve de una](la-orden-se-resuelve-de-una.md) — lo ordenado se hace; el impedimento se muestra y se analiza juntos, sin determinaciones unilaterales.
 - [Cada informe cierra con lo que falta, en orden](informar-que-falta-en-orden.md) — el panorama completo, medido, al final de cada informe.
@@ -66,3 +66,4 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 - [El registro del proceso no cuenta como trabajo por guardar](el-registro-del-proceso-no-cuenta-como-pendiente.md) — la transcripción y la anotación del commit en el estado de la fase se escriben solas y entran en el commit siguiente; no se proponen commits para ellas.
 - [El análisis cubre todos los casos](el-analisis-cubre-todos-los-casos.md) — Cimiento es la base de todos los proyectos: el análisis considera todo lo que puede pasar, no solo el caso que lo destapó, y en él se propone todo lo que haga falta discutir. Hoy es la R-1 de las recomendaciones del análisis.
 - [En una fase se corren solo las pruebas de esa fase](solo-las-pruebas-de-la-fase.md): las que escribe la fase y las de los programas que cambia; la suite completa solo si el usuario la pide.
+- [Aprobar es la orden de dejarlo funcionando](aprobar-es-la-orden-de-hacerlo.md): lo aprobado se ejecuta completo, hasta que funcione; no se pide otro «Hágalo» para instalar o activar lo construido.

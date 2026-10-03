@@ -13,11 +13,13 @@ CORRECTO:   leer la plantilla central → rellenarla con datos reales → guarda
 
 **Aplica a:** trabajar-cadena
 
+**Autoriza escribir:** `documentacion/epicas/*/HU-*/HU-*.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v51.0.0**, el **2026-10-03**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

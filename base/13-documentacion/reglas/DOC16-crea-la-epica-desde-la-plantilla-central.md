@@ -12,11 +12,13 @@ CORRECTO:   la épica lista sus HU y cada HU nombra su épica · al mover una, s
 
 **Aplica a:** trabajar-cadena
 
+**Autoriza escribir:** `documentacion/epicas/*/epica.md`, `documentacion/epicas/*/EP-*.md`
+
 ---
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v30.8.0**, el **2026-08-22**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v51.0.0**, el **2026-10-03**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|

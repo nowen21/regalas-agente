@@ -12,11 +12,18 @@ Se lee de las reglas de `base/` del estándar y de las del proyecto, en
 las rutas, `*` vale por un tramo del nombre y `**` por cualquier cantidad de
 carpetas. La usan el `pre-commit` (`validar.py plan --preparados`) y, desde la
 fase `B` de la HU-007, el freno.
+
+**Solo autoriza la regla vigente** (análisis 11 del pendiente 103, acuerdos 2 y
+3). El estado vive en la regla misma: la que sale se deroga y lleva
+`[DEROGADA…]` en su título, y la *opt-in* de un capítulo que el proyecto apagó
+no rige. Ninguna de las dos autoriza, aunque conserve su línea. Así una regla
+entra o sale sin tocar este programa.
 """
 import os
 import re
 
 import comun
+import recuperar
 
 _LINEA = re.compile(r"^(?:-\s*)?\*\*Autoriza escribir:\*\*(.*)$")
 _RUTA = re.compile(r"`([^`]+)`")
@@ -62,21 +69,31 @@ def _id_de(titulo, archivo):
 
 
 def _lineas(texto, titulo=_TITULO):
-    """`(último título, rutas)` de cada línea; la de un bloque de código es un ejemplo."""
-    ultimo = None
+    """`(id, encabezado, rutas)` de cada línea; la de un bloque de código es un ejemplo."""
+    ultimo, encabezado = None, ""
     for _, linea in comun.lineas_utiles(texto):
+        if linea.startswith("## "):
+            encabezado = linea
         t = titulo.match(linea)
         if t:
             ultimo = t.group(1)
         m = _LINEA.match(linea)
         if m:
             rutas = [r.strip().lstrip("./") for r in _RUTA.findall(m.group(1))]
-            yield ultimo, [r for r in rutas if r]
+            yield ultimo, encabezado, [r for r in rutas if r]
 
 
-def de_la_base(estandar=None):
-    """`[(regla, [rutas])]` de toda regla de `base/` que autoriza escribir."""
+def vigente(encabezado, capitulo, apagados):
+    """¿La regla rige? No si está derogada, ni si es *opt-in* de un capítulo apagado."""
+    if "[DEROGADA" in encabezado.upper():
+        return False
+    return not ("opt-in" in encabezado.lower() and capitulo in apagados)
+
+
+def de_la_base(estandar=None, proyecto=None):
+    """`[(regla, [rutas])]` de toda regla vigente de `base/` que autoriza escribir."""
     base = os.path.join(estandar or comun.RAIZ, "base")
+    apagados = recuperar.opt_in_apagados(proyecto) if proyecto else frozenset()
     salida = []
     for actual, carpetas, archivos in os.walk(base):
         # Las reglas por tarea son copias de las del capítulo: se leen una vez.
@@ -86,8 +103,10 @@ def de_la_base(estandar=None):
                 continue
             archivo = os.path.join(actual, nombre)
             texto = comun.leer(archivo)
-            for titulo, rutas in _lineas(texto):
-                salida.append((_id_de(titulo, archivo), rutas))
+            for titulo, encabezado, rutas in _lineas(texto):
+                regla = _id_de(titulo, archivo)
+                if vigente(encabezado, regla.split("·")[0], apagados):
+                    salida.append((regla, rutas))
     return salida
 
 
@@ -98,12 +117,12 @@ def del_proyecto(proyecto):
         return []
     texto = comun.leer(archivo)
     return [(titulo or "reglas-proyecto", rutas)
-            for titulo, rutas in _lineas(texto, _ID_PROYECTO)]
+            for titulo, _, rutas in _lineas(texto, _ID_PROYECTO)]
 
 
 def reglas(proyecto, estandar=None):
     """Lo autorizado para ese proyecto: lo de `base/` y lo suyo."""
-    return de_la_base(estandar) + del_proyecto(proyecto)
+    return de_la_base(estandar, proyecto) + del_proyecto(proyecto)
 
 
 def quien_autoriza(ruta, autorizadas):

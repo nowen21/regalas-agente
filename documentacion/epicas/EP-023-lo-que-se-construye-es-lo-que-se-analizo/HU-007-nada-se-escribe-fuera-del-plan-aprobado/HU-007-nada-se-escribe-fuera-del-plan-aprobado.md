@@ -165,6 +165,7 @@ Las fija el plan de cada fase (`02·F14`).
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple`](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/estado-fase.md) | CA-01, CA-03, CA-04 | HU-003, HU-004 | [plan](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/plan_trabajo.md) | [pruebas](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/plan_pruebas.md) | [resultado](A-EP-023-HU-007-el-plan-dice-que-se-toca-y-el-commit-lo-cumple/resultado_pruebas.md) | Cumple |
+| [`B-EP-023-HU-007-el-freno-detiene-antes-y-despues-de-actuar`](B-EP-023-HU-007-el-freno-detiene-antes-y-despues-de-actuar/estado-fase.md) | CA-02, capas 1 y 2 | Fase `A`, HU-002 | [plan](B-EP-023-HU-007-el-freno-detiene-antes-y-despues-de-actuar/plan_trabajo.md) | [pruebas](B-EP-023-HU-007-el-freno-detiene-antes-y-despues-de-actuar/plan_pruebas.md) | [resultado](B-EP-023-HU-007-el-freno-detiene-antes-y-despues-de-actuar/resultado_pruebas.md) | Cumple |
 
 ---
 

@@ -125,6 +125,7 @@ agente/
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre
 │   ├── autorizado.py ................. lo que una regla autoriza escribir sin que un plan lo nombre
 │   ├── acuerdos.py ................... la fase en curso y los acuerdos de los que sale lo que se trabaja
+│   ├── freno.py ...................... el freno: qué acción se deja, contra el plan y lo autorizado
 │   │
 │   ├── ── git ──
 │   ├── commits.py .................... formato del mensaje

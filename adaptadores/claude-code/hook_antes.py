@@ -1,37 +1,39 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Enganche de Claude Code: ninguna escritura sale de la carpeta del proyecto.
+"""Enganche de Claude Code: el freno antes de actuar (capa 1).
 
     python hook_antes.py --modo accion --raiz <proyecto>
 
-`EP-005·HU-023·RN-10` · **Por qué existe.** El 2026-09-28 el agente escribió
-guiones en la carpeta temporal de la herramienta, en contra de `04·S9` y
-`04·S18`, y el usuario pidió que eso no pudiera volver a pasar. Antes de cada
-escritura (`PreToolUse`), si el archivo queda fuera del proyecto, detiene la
-acción y dice dónde va el guion de apoyo.
+`EP-023·HU-007·CA-02` · Corre antes de **toda** acción (`PreToolUse` sin filtro
+de herramienta). Detiene lo que no está en el plan de la fase en curso ni lo
+autoriza una regla, por cualquier canal: la herramienta de escritura, la
+consola, el segundo plano. Lo que se publica fuera del proyecto se pregunta
+cada vez. Al detener, anota el hallazgo en el resumen de la sesión. Antes de
+cada orden de consola toma la foto que usa `hook_despues.py`.
 
-**Ya no obliga a leer las reglas.** Hasta el 2026-09-29 este enganche detenía
-cada acción y cada respuesta hasta que el agente leyera por comando las reglas
-de la tarea, y las olvidaba con cada mensaje. El usuario lo descartó: llenaba
-la conversación de lecturas y no hacía cumplir nada. Las reglas llegan con
-cada mensaje por `recuperar.py`, según la palabra de `01·C28`.
+Nació en `EP-005·HU-023·RN-10` para que ninguna escritura saliera del proyecto
+(`04·S9`); eso sigue, ahora dentro del freno. La decisión vive en
+`validadores/freno.py`; acá solo está lo que habla con esta herramienta.
 
-Nunca rompe el trabajo por un error propio: si algo falla adentro, deja pasar.
+Nunca rompe el trabajo por un error propio: si algo falla adentro, deja pasar y
+lo avisa.
 """
 import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
-# dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
-# acá sólo está lo que habla con esta herramienta.
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
 
+import freno                                    # noqa: E402
 from comun import preparar_salida               # noqa: E402
 
-ESCRITURA = ("Write", "Edit", "MultiEdit", "NotebookEdit")
+ACCION = {"Write": "una escritura", "Edit": "una edición", "MultiEdit": "una edición",
+          "NotebookEdit": "una edición", "Bash": "una orden de consola",
+          "PowerShell": "una orden de consola"}
+GUION = ("El guion de apoyo va en `historico-chat/scripts/AAAA-MM-DD/`, con su fila en el "
+         "README de esa carpeta, y se queda (`04·S18`).")
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -54,35 +56,29 @@ def _entrada():
         return {}
 
 
-def fuera_del_proyecto(herramienta, entrada, proyecto):
-    """La ruta que la acción escribiría fuera del proyecto, o `None`."""
-    if herramienta not in ESCRITURA:
-        return None
-    entrada = entrada or {}
-    ruta = entrada.get("file_path") or entrada.get("notebook_path") or ""
-    if not ruta:
-        return None
-    dentro = os.path.normcase(os.path.abspath(proyecto)).rstrip(os.sep)
-    destino = os.path.normcase(os.path.abspath(ruta))
-    if destino == dentro or destino.startswith(dentro + os.sep):
-        return None
-    return ruta
+def _decision(decision, razon):
+    print(json.dumps({"hookSpecificOutput": {
+        "hookEventName": "PreToolUse",
+        "permissionDecision": decision,
+        "permissionDecisionReason": razon}}, ensure_ascii=False))
 
 
 def accion(datos, proyecto):
-    afuera = fuera_del_proyecto(datos.get("tool_name") or "",
-                                datos.get("tool_input"), proyecto)
-    if not afuera:
-        return 0
-    print(json.dumps({"hookSpecificOutput": {
-        "hookEventName": "PreToolUse",
-        "permissionDecision": "deny",
-        "permissionDecisionReason": (
-            f"[NO SE ESCRIBE FUERA DEL PROYECTO: {afuera}]\n"
-            "Todo lo del trabajo vive en el repositorio (`04·S9`). El guion de "
-            "apoyo va en `historico-chat/scripts/AAAA-MM-DD/`, con su fila en el "
-            "README de esa carpeta, y se queda (`04·S18`).")}},
-        ensure_ascii=False))
+    herramienta = datos.get("tool_name") or ""
+    entrada = datos.get("tool_input") or {}
+    cwd = datos.get("cwd") or proyecto
+    decision, porque, ruta = freno.revisar(proyecto, herramienta, entrada, cwd)
+    if decision == "pregunta":
+        _decision("ask", "[EL FRENO PREGUNTA] " + porque[0].upper() + porque[1:] + ".")
+    elif decision == "detiene":
+        que = ACCION.get(herramienta, "una acción")
+        anotado = freno.anotar_hallazgo(proyecto, datos.get("session_id") or "", que, ruta, porque)
+        razon = freno.aviso(porque, ruta, bool(anotado))
+        if "04·S9" in porque:
+            razon += "\n" + GUION
+        _decision("deny", razon)
+    elif herramienta in freno.CONSOLA:
+        freno.tomar_foto(proyecto)
     return 0
 
 
@@ -93,7 +89,9 @@ def main():
     proyecto = os.path.abspath(opcion(sys.argv[1:], "--raiz", os.getcwd()))
     try:
         return accion(_entrada(), proyecto)
-    except Exception:           # noqa: BLE001 — un error propio no detiene el trabajo
+    except Exception as error:  # noqa: BLE001 — un error propio no detiene el trabajo
+        print(json.dumps({"systemMessage": "[EL FRENO FALLÓ Y DEJÓ PASAR] %s" % error},
+                         ensure_ascii=False))
         return 0
 
 

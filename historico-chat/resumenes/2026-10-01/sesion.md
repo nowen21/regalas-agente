@@ -115,6 +115,24 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | El análisis es lo que el usuario ya decidió. Un plan que no lo lee vuelve a abrir decisiones cerradas, gasta la atención del usuario y mete lo que nadie pidió. La recomendación R-6 ya lo pedía, y no bastó con que estuviera escrita: nada comprueba que el plan la siguió. |
 | Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 10](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-10.md), aprobado el 2026-10-03; lo resuelven la HU-002 y la HU-007 de EP-023 |
 
+
+### H-14 · El plan de la fase B de la HU-007 no declara la prueba que cuenta las reglas que autorizan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03, al ejecutar la T-03 de la fase `B` de la HU-007, `13·DOC15`, `13·DOC16` y `02·F23` sumaron su línea «Autoriza escribir». La prueba `test_las_diez_reglas_traen_su_linea` de la fase `A` exige exactamente diez reglas con esa línea y ahora falla con trece. Corregirla es tocar `validadores/tests/test_nada_fuera_del_plan.py`, que la tabla 2.1 del plan no declara. |
+| Por qué importa | Es escribir fuera del plan aprobado, justo lo que la HU-007 viene a frenar. Si se corrige sin volver al análisis, el plan deja de ser lo que se aprobó. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md), en su [análisis 11](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-11.md), aprobado el 2026-10-03; lo resuelve la fase `B` de la HU-007 |
+
+
+### H-15 · El plan de la fase B de la HU-007 no declara las pruebas del freno viejo
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03, al correr las pruebas de los programas que cambia la fase `B` de la HU-007, fallaron 3 de `validadores/tests/test_las_reglas_llegan_antes_de_actuar.py` (EP-005, HU-023). Prueban el freno viejo: que mire solo la herramienta de escritura, que una orden de consola nunca se detenga y el mensaje «FUERA DEL PROYECTO». La fase cambia ese comportamiento a propósito, y el plan no declara ese archivo. |
+| Por qué importa | Es el mismo caso del H-14: el plan no buscó qué pruebas leen lo que la tarea cambia (lección S-274). Corregirlas sin volver al análisis es escribir fuera del plan aprobado. |
+| Pendiente | [Las pruebas del freno describen el freno viejo](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/pendientes/109-las-pruebas-del-freno-describen-el-freno-viejo/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

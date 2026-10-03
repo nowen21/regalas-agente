@@ -343,8 +343,12 @@ HOOKS_CLAUDE = [
     # `EP-005 · HU-023 · RN-10`: ninguna escritura sale del proyecto. Obligar a
     # leer las reglas antes de actuar se quitó el 2026-09-29: llenaba la
     # conversación de lecturas y no hacía cumplir nada.
-    ("PreToolUse", "Write|Edit|MultiEdit|NotebookEdit", "hook_antes.py",
-     "Revisando que la escritura quede dentro del proyecto...", "--modo accion"),
+    # `EP-023 · HU-007 · CA-02`: el freno corre antes de toda acción, sin filtro
+    # de herramienta, y después de cada orden de consola compara lo que cambió.
+    ("PreToolUse", None, "hook_antes.py",
+     "Revisando la acción contra el plan y lo autorizado...", "--modo accion"),
+    ("PostToolUse", "Bash|PowerShell", "hook_despues.py",
+     "Comparando lo que cambió con el plan...", ""),
 ]
 
 
@@ -483,6 +487,17 @@ def instalar_claude(ruta, estandar, aplicar):
 
         # Se respeta lo que ya hubiera; solo se toca el grupo propio.
         ganchos = datos.setdefault("hooks", {}).setdefault(evento, [])
+
+        # Un guion vive en un solo grupo por evento: si cambió su filtro de
+        # herramientas, la entrada vieja sale del grupo anterior en vez de
+        # quedar corriendo dos veces (`EP-023 · HU-007`).
+        for otro in [g for g in ganchos if g.get("matcher") != matcher]:
+            antes = len(otro.get("hooks", []))
+            otro["hooks"] = [h for h in otro.get("hooks", []) if guion not in (h.get("command") or "")]
+            if len(otro["hooks"]) != antes:
+                pasos.append(f"quitar el enganche {evento} viejo de {destino}")
+                cambios = True
+        ganchos[:] = [g for g in ganchos if g.get("hooks")]
         grupo = next((g for g in ganchos if g.get("matcher") == matcher), None)
         if grupo is None:
             grupo = {"hooks": []}
