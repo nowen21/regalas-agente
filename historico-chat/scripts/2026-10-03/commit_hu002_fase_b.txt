@@ -1,0 +1,15 @@
+feat(acuerdos): el agente recibe lo ya decidido y el plan marca lo suyo
+
+El usuario pidió que el agente no vuelva a preguntar lo que el análisis
+ya decidió ni meta lo que nadie pidió (H-13, análisis 10 del pendiente
+103), y aprobó los criterios nuevos de la HU-002 y el CA-02 de la HU-007.
+
+Lo que hizo el agente:
+- La HU-002 suma los CA-04 y CA-05; el CA-02 de la HU-007 pasa a su
+  versión siguiente, con la fase activa y la integración continua.
+- validadores/acuerdos.py: la fase en curso y los acuerdos que le tocan,
+  y los del análisis prendido; hook_acuerdos.py los entrega con cada
+  mensaje y el instalador lo registra.
+- La tabla de decisiones del plan trae «Sale de», y origen.py detiene la
+  decisión sin acuerdo ni marca de propuesta del agente.
+- Pruebas de la fase y versión 50.0.0.

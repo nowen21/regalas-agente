@@ -129,10 +129,12 @@ Errores:  400 | 401 | 403 | 404 | 422
 ### 2.6 Decisiones técnicas
 
 > Registra cada decisión, la alternativa que se descartó y el motivo. La decisión que no es obvia se registra también como señal ([`13·DOC5`](../../base/13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)).
+>
+> «Sale de» dice de qué acuerdo del análisis sale la decisión («Análisis N, acuerdo M»). La que no sale de ninguno dice «Propuesta del agente», y el usuario la aprueba con el plan ([`02·F27`](../../base/02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md)).
 
-| Decisión | Alternativa descartada | Justificación |
-|---|---|---|
-| | | |
+| Decisión | Alternativa descartada | Justificación | Sale de |
+|---|---|---|---|
+| | | | |
 
 ### 2.7 Dudas por resolver antes de codificar
 

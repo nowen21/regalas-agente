@@ -1,6 +1,6 @@
 # HU-007 · Nada se escribe fuera del plan aprobado
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1, y del [análisis 10](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-10.md), puntos 3 y 4. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-02 |
+| **Estado** | Lista: aprobada el 2026-10-03 |
 
 ---
 
@@ -43,6 +43,8 @@ Son las conclusiones de las que salen los puntos de esta HU.
 | RN-02 | Lo que el pendiente 105 llamaba «ampliar el plan» se reemplaza por volver al análisis | Análisis 1, conclusión 44 |
 | RN-03 | El freno solo detiene lo que no está autorizado en ninguna parte. Lee el plan aprobado y la lista de lo que las reglas autorizan, y cada entrada de esa lista cita la regla que la autoriza | Análisis 1, conclusión 46 |
 | RN-04 | Lo que se construya llega a los proyectos que heredan por el instalador, y la lista de lo autorizado incluye las reglas propias de cada proyecto | Análisis 1, conclusión 47 |
+| RN-05 | La fase activa es la fase en curso. Antes de aprobarse su plan, solo se escriben los documentos de la fase y lo que una regla autoriza; sin fase en curso, solo lo autorizado | Análisis 10, acuerdo 6 |
+| RN-06 | La revisión de la integración continua se activa sola donde el proyecto la tiene, y de dónde se descarga Cimiento es un dato del proyecto | Análisis 10, acuerdo 5 |
 
 ### 3.2 Supuestos
 
@@ -75,7 +77,7 @@ Y el plan registra quién lo aprobó y cuándo
 
 ### CA-02 · El freno detiene lo que no está en el plan ni autorizado, por cualquier canal
 
-**Sale de:** análisis 1, punto 26, y análisis 8, punto 1.
+**Sale de:** análisis 1, punto 26; análisis 8, punto 1, y análisis 10, puntos 3 y 4.
 
 ```gherkin
 Dado un plan aprobado en la fase activa
@@ -84,14 +86,18 @@ Entonces el freno lo detiene antes de actuar, lo encuentra después comparando e
 Y anota el hallazgo en el resumen y vuelve al análisis
 Y si una regla ya lo autoriza, según la lista donde cada entrada cita su regla, no lo frena
 Y cada adaptador declara qué capas cubre en su herramienta y por qué no las demás
+Y la fase activa es la fase en curso: antes de aprobarse su plan solo se escriben los documentos de la fase y lo que una regla autoriza, y sin fase en curso, solo lo autorizado
+Y la revisión de la integración continua se agrega sola si el proyecto la tiene, y de dónde se descarga Cimiento es un dato del proyecto
 ```
 
 **Cómo validarlo:**
 1. Con un plan aprobado, intentar escribir fuera del plan con la herramienta de escritura, con una redirección de la consola, con un programa y en segundo plano.
 2. Leer el contrato del adaptador.
 3. Intentar escribir algo que la lista de lo autorizado incluye.
+4. Con la fase en curso y su plan sin aprobar, intentar escribir un archivo de código.
+5. Instalar en un proyecto con integración continua y en uno sin ella.
 
-**Aprobado cuando:** cada intento del paso 1 se detiene en alguna capa con su hallazgo anotado, el contrato dice qué capa cubre cada canal y el paso 3 pasa. Las fases que hagan falta las reparte el plan.
+**Aprobado cuando:** cada intento del paso 1 se detiene en alguna capa con su hallazgo anotado, el contrato dice qué capa cubre cada canal y el paso 3 pasa; el paso 4 se detiene; en el paso 5 el primero recibe el paso de revisión y el segundo no. Las fases que hagan falta las reparte el plan.
 
 ### CA-03 · El commit se rechaza si trae archivos no declarados
 
@@ -213,3 +219,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
 | 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-02 pasa a la versión siguiente: el freno en cuatro capas, por cualquier canal; depende también de la HU-003, según el análisis 8. La aprobación queda sin efecto hasta que se revise |
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |
+| 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-02 pasa a su versión siguiente: la fase activa y la integración continua, según el análisis 10. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-02 del análisis 10 |

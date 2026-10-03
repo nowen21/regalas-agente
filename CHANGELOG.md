@@ -11,6 +11,23 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 50.0.0 — 2026-10-03
+
+**El agente recibe con cada mensaje lo que el usuario ya decidió sobre lo que trabaja, y el plan marca lo que propone por su cuenta.** ⚠ obliga a migrar
+
+**MAYOR**: cada decisión del plan dice de qué acuerdo del análisis sale o que es propuesta del agente, y un plan aprobado desde esta versión no pasa la revisión de origen sin eso. Un proyecto al día corre la instalación, que registra el enganche nuevo; los planes aprobados antes no se revisan.
+
+**Lo que entra:**
+
+- `validadores/acuerdos.py`: la fase en curso y los acuerdos que le tocan, siguiendo el «Sale de» de sus criterios, y los de los análisis aprobados del pendiente del análisis prendido.
+- El enganche `hook_acuerdos.py` del adaptador de Claude Code los entrega con cada mensaje, con su propio tope; el instalador lo registra.
+- La plantilla del plan: la columna «Sale de» en su tabla de decisiones.
+- `validadores/origen.py`: detiene la decisión que no cita un acuerdo que existe ni es propuesta del agente.
+
+Del análisis 10 del pendiente 103, fase `B` de la HU-002 de EP-023.
+
+---
+
 ## 49.0.0 — 2026-10-03
 
 **Cada señal nueva se guarda en un solo sitio, la base de señales, y recibe ahí su número.** ⚠ obliga a migrar

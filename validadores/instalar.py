@@ -294,6 +294,11 @@ HOOKS_CLAUDE = [
     # siguiente la cuenta que `hook_redaccion.py` imprime donde nadie la ve.
     ("UserPromptSubmit", None, "hook_reglas.py",
      "Recordando las reglas de cada turno...", ""),
+    # `EP-023 · HU-002 · CA-04`: los acuerdos de la fase en curso y del
+    # análisis prendido llegan con cada mensaje, en un enganche propio porque
+    # el tope es por enganche y el de las reglas va casi lleno.
+    ("UserPromptSubmit", None, "hook_acuerdos.py",
+     "Trayendo los acuerdos de lo que se trabaja...", ""),
     ("SessionStart", None, "hook_recuerdos.py",
      "Recogiendo la memoria del agente...", ""),
     ("PostToolUse", "Write|Edit", "hook_recuerdos.py",

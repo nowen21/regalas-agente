@@ -124,6 +124,7 @@ agente/
 │   ├── trazabilidad.py ............... enlace bidireccional, ORIGEN, tabla de cierre
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre
 │   ├── autorizado.py ................. lo que una regla autoriza escribir sin que un plan lo nombre
+│   ├── acuerdos.py ................... la fase en curso y los acuerdos de los que sale lo que se trabaja
 │   │
 │   ├── ── git ──
 │   ├── commits.py .................... formato del mensaje

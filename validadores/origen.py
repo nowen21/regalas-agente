@@ -8,7 +8,9 @@ cita uno que no existe:
 - el pendiente, frente al hallazgo que cita en «De dónde sale»;
 - el punto de «Lo acordado», frente al turno de su conversación;
 - la fila de «Lo que se tiene que hacer», frente al punto de «Lo acordado» que cita;
-- el criterio de la HU, frente al punto de «Lo que se tiene que hacer».
+- el criterio de la HU, frente al punto de «Lo que se tiene que hacer»;
+- la decisión del plan, frente al acuerdo que cita, o marcada como propuesta del
+  agente (`EP-023 · HU-002 · CA-05`), en los planes aprobados desde 50.0.0.
 
 **Lo que no mira, y se declara.**
 
@@ -22,6 +24,7 @@ import os
 import re
 
 import comun
+import plan_vs_hecho
 from comun import FALLA, Hallazgo, leer
 
 _ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
@@ -32,6 +35,13 @@ _PUNTO = re.compile(r"^(\d+)\. (.*)$", re.M)
 _CRITERIO = re.compile(r"^### (CA-\d+)", re.M)
 _SALE_DE = re.compile(r"^\*\*Sale de:\*\*(.*)$", re.M)
 _CITA = re.compile(r"análisis (\d+), puntos? (\d+(?:(?:, | y )\d+)*)")
+# `EP-023 · HU-002 · CA-05`: desde esta versión, cada decisión del plan dice de
+# qué acuerdo sale o que es propuesta del agente. Los planes aprobados antes no
+# se reabren (`20·M10`).
+DESDE_DECISIONES = (50, 0, 0)
+_DECISIONES = re.compile(r"(?ms)^###\s*2\.6[^\n]*\n(.*?)(?=^##)")
+_PROPUESTA = re.compile(r"(?i)propuesta del agente")
+_CITA_ACUERDO = re.compile(r"[Aa]nálisis (\d+)[^,;|]*?,\s*acuerdos? (\d+(?:(?:, | y )\d+)*)")
 _ENLACE_H = re.compile(r"\[[^\]]*?(H-\d+)[^\]]*\]\(([^)#]+)(?:#[^)]*)?\)")
 
 # Lo que no es del repositorio: local, generado o de terceros.
@@ -150,6 +160,34 @@ def _revisar_hu(ruta, analisis):
     return salida
 
 
+def _revisar_plan(ruta, analisis):
+    """`CA-05` · la decisión del plan que no cita un acuerdo que existe ni es propuesta del agente."""
+    texto = leer(ruta)
+    if not plan_vs_hecho.aprobado_desde(texto, DESDE_DECISIONES):
+        return []
+    m = _DECISIONES.search(texto)
+    filas = comun.filas_de(m.group(1), "Decisión", "Sale de") if m else []
+    if m and not filas and comun.filas_de(m.group(1), "Decisión"):
+        return [(ruta, "la tabla 2.6 no tiene la columna «Sale de»")]
+    salida = []
+    for _, fila in filas:
+        decision, sale = fila.get("decisión", ""), fila.get("sale de", "")
+        if not decision.strip():
+            continue
+        corta = decision.strip()[:60]
+        if _PROPUESTA.search(sale):
+            continue
+        citas = _CITA_ACUERDO.findall(sale)
+        if not citas:
+            salida.append((ruta, f"la decisión «{corta}» no dice de qué acuerdo sale ni que es propuesta del agente"))
+        for numero, acuerdos in citas:
+            datos = analisis.get(int(numero))
+            for a in (int(x) for x in re.findall(r"\d+", acuerdos)):
+                if datos is None or a not in datos["acordado"]:
+                    salida.append((ruta, f"la decisión «{corta}» cita el acuerdo {a} del análisis {numero}, que no existe"))
+    return salida
+
+
 def revisar(raiz=None):
     """`[(ruta, mensaje)]`: un punto sin origen, o con un origen que no existe."""
     raiz = raiz or comun.RAIZ
@@ -173,6 +211,10 @@ def revisar(raiz=None):
             hu = os.path.join(epica, nombre, nombre + ".md")
             if nombre.startswith("HU-") and os.path.isfile(hu):
                 salida.extend(_revisar_hu(hu, analisis))
+                for fase in sorted(os.listdir(os.path.join(epica, nombre))):
+                    plan = os.path.join(epica, nombre, fase, "plan_trabajo.md")
+                    if os.path.isfile(plan):
+                        salida.extend(_revisar_plan(plan, analisis))
     return salida
 
 
