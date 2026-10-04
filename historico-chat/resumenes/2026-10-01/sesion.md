@@ -132,6 +132,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Qué pasó | El 2026-10-03, al correr las pruebas de los programas que cambia la fase `B` de la HU-007, fallaron 3 de `validadores/tests/test_las_reglas_llegan_antes_de_actuar.py` (EP-005, HU-023). Prueban el freno viejo: que mire solo la herramienta de escritura, que una orden de consola nunca se detenga y el mensaje «FUERA DEL PROYECTO». La fase cambia ese comportamiento a propósito, y el plan no declara ese archivo. |
 | Por qué importa | Es el mismo caso del H-14: el plan no buscó qué pruebas leen lo que la tarea cambia (lección S-274). Corregirlas sin volver al análisis es escribir fuera del plan aprobado. |
 | Pendiente | [Las pruebas del freno describen el freno viejo](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/pendientes/109-las-pruebas-del-freno-describen-el-freno-viejo/pendiente.md) |
+| Corregido con «Corrija» | El 2026-10-04 (`02·F8`, excepción): las tres pruebas esperan ahora el freno de la HU-007, que corre antes de toda acción y dice «queda fuera del proyecto». Pasan las 12 de `test_las_reglas_llegan_antes_de_actuar.py`. |
 
 ### H-16 · Un proyecto no puede reportar un pendiente a la HU del estándar que lo origina
 
@@ -164,6 +165,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Qué pasó | El 2026-10-03, el control del commit rechazó 12 archivos que las filas «de una» de los análisis 14 y 15 del pendiente 103 mandaron hacer: solo acepta esas filas mientras el análisis está prendido, y los dos ya estaban aprobados. |
 | Por qué importa | Lo que un análisis manda hacer de una no se puede guardar después de aprobarlo, y aprobarlo es el paso anterior al commit. |
 | Pendiente | [103](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+
+### H-21 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-04 00:19, el freno detuvo una orden de consola sobre `/c/Ing. Jose/ia/agente/historico-chat/scripts/2026-10-04`: queda fuera del proyecto (04·S9). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
 
 ---
 

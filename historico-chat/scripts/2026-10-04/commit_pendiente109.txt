@@ -1,0 +1,9 @@
+test(freno): las pruebas del freno describen el freno de hoy
+
+El usuario ordenó con «Corrija» poner al día las pruebas del pendiente 109,
+que describían el freno viejo.
+
+Lo que hizo el agente:
+- test_las_reglas_llegan_antes_de_actuar.py: el freno corre antes de toda
+  acción y dice «queda fuera del proyecto»; pasan sus 12 pruebas.
+- Anotado en el H-15 del resumen de la sesión (02·F8, excepción).

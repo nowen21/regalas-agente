@@ -70,7 +70,7 @@ class NingunaEscrituraSaleDelProyecto(unittest.TestCase):
 
     def test_escribir_fuera_del_proyecto_se_detiene(self):
         motivo = self.detenida("Write", os.path.join(tempfile.gettempdir(), "guion.py"))
-        self.assertIn("FUERA DEL PROYECTO", motivo)
+        self.assertIn("fuera del proyecto", motivo)          # el freno de EP-023, HU-007 (pendiente 109)
         self.assertIn("historico-chat/scripts/", motivo)
 
     def test_escribir_dentro_del_proyecto_pasa(self):
@@ -78,17 +78,18 @@ class NingunaEscrituraSaleDelProyecto(unittest.TestCase):
             "Write", os.path.join(self.proyecto, "historico-chat", "scripts", "g.py")))
 
     def test_la_carpeta_hermana_con_el_mismo_comienzo_es_afuera(self):
-        self.assertIn("FUERA DEL PROYECTO", self.detenida(
+        self.assertIn("fuera del proyecto", self.detenida(
             "Edit", os.path.join(self.proyecto + "-otro", "a.py")))
 
     def test_un_comando_no_se_detiene(self):
         self.assertEqual({}, self.correr({"tool_name": "Bash",
                                           "tool_input": {"command": "git status"}}))
 
-    def test_el_instalador_solo_pone_el_freno_de_escritura(self):
+    def test_el_instalador_pone_el_freno_antes_de_toda_accion(self):
+        """Desde EP-023, HU-007, fase B, el freno corre antes de toda herramienta (pendiente 109)."""
         import instalar
         suyos = [e for e in instalar.HOOKS_CLAUDE if e[2] == "hook_antes.py"]
-        self.assertEqual([("PreToolUse", "Write|Edit|MultiEdit|NotebookEdit", "--modo accion")],
+        self.assertEqual([("PreToolUse", None, "--modo accion")],
                          [(e[0], e[1], e[4]) for e in suyos])
 
 
