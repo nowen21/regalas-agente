@@ -55,6 +55,28 @@ def _entrada():
         return {}
 
 
+def _avisar_lo_resuelto(raiz):
+    """El aviso a los proyectos sale cuando el análisis aprobado cierra su reporte,
+    si Cimiento ya lo comprobó en el proyecto (análisis 1 del pendiente 110,
+    acuerdo 7). Solo desde el estándar."""
+    import comun
+    if os.path.normcase(os.path.abspath(raiz)) != os.path.normcase(os.path.abspath(comun.RAIZ)):
+        return ""
+    try:
+        import aviso_resuelto
+        version_txt = os.path.join(raiz, "VERSION")
+        version = open(version_txt, encoding="utf-8").read().strip() if os.path.isfile(version_txt) else ""
+        escritos, sin_entregar = aviso_resuelto.avisar(raiz, datetime.date.today().isoformat(), version)
+    except Exception as error:      # noqa: BLE001 — el aviso no puede tumbar la aprobación
+        return "; el aviso de resuelto no salió: %s" % error
+    partes = []
+    if escritos:
+        partes.append("aviso de resuelto en %s" % ", ".join(escritos))
+    if sin_entregar:
+        partes.append("sin aviso: " + "; ".join("%s (%s)" % (os.path.basename(c), p) for c, p in sin_entregar))
+    return ("; " + "; ".join(partes)) if partes else ""
+
+
 def mensaje(raiz, entrada):
     """Aplica la palabra del mensaje y devuelve el aviso para el agente."""
     texto = entrada.get("prompt", "") or ""
@@ -85,6 +107,7 @@ def mensaje(raiz, entrada):
             nota = "no se aprobó: " + "; ".join(faltan)
         elif curso.aprobar(raiz, turno, datetime.date.today().isoformat()):
             nota = "marca de aprobado puesta en el turno %d; se apaga al terminar esta respuesta" % turno
+            nota += _avisar_lo_resuelto(raiz)
     return curso.aviso(raiz, nota)
 
 

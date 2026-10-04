@@ -30,6 +30,7 @@ import sys
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
+import comun                                    # noqa: E402
 import externo                          # noqa: E402
 from comun import preparar_salida       # noqa: E402
 
@@ -45,7 +46,7 @@ def raiz_pedida(argv, datos):
 def main():
     preparar_salida()
     try:
-        datos = json.load(sys.stdin)
+        datos = comun.entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0                        # sin JSON válido no hay nada que mirar
     if not isinstance(datos, dict):

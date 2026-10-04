@@ -139,6 +139,20 @@ def preparar_salida():
             pass
 
 
+def entrada_json():
+    """El JSON que la herramienta manda por la entrada estándar, leído en UTF-8.
+
+    `json.load(sys.stdin)` decodifica con la codificación de la consola, que en
+    Windows no es UTF-8: la «í» (`C3 AD`) llegaba partida y su segundo byte
+    parecía un guion suave (pendiente 111, corregido con «Corrija»)."""
+    import json
+    try:
+        crudo = sys.stdin.buffer.read()
+    except AttributeError:
+        crudo = (sys.stdin.read() or "").encode("utf-8", "replace")
+    return json.loads(crudo.decode("utf-8", "replace") or "{}")
+
+
 def relativo(ruta):
     """Ruta relativa al repositorio; absoluta si el archivo vive fuera de él."""
     try:

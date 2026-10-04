@@ -38,8 +38,11 @@ class CA05ElEsqueletoNaceBien(unittest.TestCase):
             with self.subTest(archivo=nombre):
                 self.assertNotIn("](../../base/", texto)
                 self.assertNotIn(andamio.MARCADOR_RAIZ, texto)
+        # Las plantillas son del estándar: sus enlaces a `base/` llegan al
+        # estándar, también desde un proyecto (análisis 1 del pendiente 110).
+        hacia = os.path.relpath(RAIZ, self.fase).replace("\\", "/")
         for nombre in ("resultado_pruebas.md", "estado-fase.md"):
-            self.assertIn("](../../../../../base/", leer(os.path.join(self.fase, nombre)), nombre)
+            self.assertIn("](%s/base/" % hacia, leer(os.path.join(self.fase, nombre)), nombre)
 
     def test_cp_002_el_validador_de_enlaces_lo_da_por_bueno(self):
         rotos = [h for h in enlaces.validar_enlaces(self.tmp)
@@ -53,7 +56,7 @@ class Limites(unittest.TestCase):
         origen = os.path.join(RAIZ, "plantillas", "planes", "x.md")
         destino = os.path.join(RAIZ, "documentacion", "epicas", "EP", "HU", "A-EP-001-HU-001-p")
         texto = "ver [otra](../otra/cosa.md) y [raiz](../../base/x.md) y [fuera](../../../x.md)"
-        salida = andamio._reenlazar(texto, origen, destino, RAIZ)
+        salida = andamio._reenlazar(texto, origen, destino)
         self.assertIn("](../otra/cosa.md)", salida)
         self.assertIn("](../../../../../base/x.md)", salida)
         self.assertIn("](../../../x.md)", salida)       # más allá de la raíz: no se sabe adónde iba

@@ -43,6 +43,7 @@ sys.path.insert(0, os.path.join(
     "validadores"))
 
 import enlaces
+import comun                                    # noqa: E402
 import marcas                                           # noqa: E402
 import sesiones                                          # noqa: E402
 from comun import FALLA, RAIZ, preparar_salida          # noqa: E402
@@ -112,7 +113,7 @@ def main():
     raiz = raiz_pedida(sys.argv[1:])
 
     try:
-        datos = json.load(sys.stdin)
+        datos = comun.entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0            # sin JSON válido no hay nada que revisar
 

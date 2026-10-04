@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
 
+import comun                                    # noqa: E402
 import rutas_fuera                                       # noqa: E402
 from comun import RAIZ, preparar_salida                  # noqa: E402
 
@@ -48,7 +49,7 @@ def main():
     raiz = raiz_pedida(sys.argv[1:])
 
     try:
-        datos = json.load(sys.stdin)
+        datos = comun.entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0            # sin JSON válido no hay ruta que mirar
 

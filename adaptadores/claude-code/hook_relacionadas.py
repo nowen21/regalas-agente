@@ -86,7 +86,7 @@ def main():
     raiz = raiz_pedida(sys.argv[1:])
 
     try:
-        datos = json.load(sys.stdin)
+        datos = comun.entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0
 

@@ -13,4 +13,4 @@ El agente lee el archivo de una tarea antes de hacerla, y lo lee con la herramie
 | `tocar-datos` | 18 | [tocar-datos.md](tocar-datos.md) |
 | `ir-afuera` | 5 | [ir-afuera.md](ir-afuera.md) |
 | `cambiar-estandar` | 25 | [cambiar-estandar.md](cambiar-estandar.md) |
-| `trabajar-cadena` | 44 | [trabajar-cadena-1.md](trabajar-cadena-1.md), [trabajar-cadena-2.md](trabajar-cadena-2.md) |
+| `trabajar-cadena` | 45 | [trabajar-cadena-1.md](trabajar-cadena-1.md), [trabajar-cadena-2.md](trabajar-cadena-2.md) |

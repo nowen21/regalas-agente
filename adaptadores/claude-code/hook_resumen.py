@@ -34,6 +34,7 @@ import sys
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
+import comun                                    # noqa: E402
 import historico                        # noqa: E402
 import resumen as R                     # noqa: E402
 from comun import preparar_salida       # noqa: E402
@@ -182,7 +183,7 @@ def main():
     args = p.parse_args()
 
     try:
-        entrada = json.load(sys.stdin) if not sys.stdin.isatty() else {}
+        entrada = comun.entrada_json() if not sys.stdin.isatty() else {}
     except (json.JSONDecodeError, ValueError):
         entrada = {}
     raiz = args.raiz or entrada.get("cwd") or os.getcwd()

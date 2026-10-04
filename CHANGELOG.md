@@ -11,6 +11,29 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 53.3.0 — 2026-10-04
+
+**Lo que un proyecto reporta se corrige para todos los proyectos.**
+
+**MENOR**: una regla nueva y correcciones que no piden nada nuevo a los proyectos.
+
+**Lo que entra:**
+
+- `02·F29`: el reporte de un proyecto se corrige en la raíz del estándar y se comprueba desde un proyecto.
+- `validadores/andamio.py`: toma las plantillas del estándar y arma sus enlaces hacia él; crea el pendiente también en una épica, y agrega la HU al índice de la épica aunque esté escrito como lista.
+- `validadores/instalar.py`: `stack.md` y las demás copias de `.agente/` nacen y se reparan sin enlaces rotos; los proyectos de la carpeta temporal no entran al registro real.
+- `validadores/autorizado.py` y `validadores/freno.py`: lo que escriben el instalador y el andamio, y la carpeta de un archivo declarado, no se detienen; `/dev/null)` dentro de `$( … )` es el dispositivo nulo.
+- `validadores/comun.py` y diez enganches: la entrada se lee en UTF-8; se acabaron los guiones suaves falsos en cada «í».
+- `validadores/aviso_resuelto.py`, `validadores/origen.py` y `plantillas/pendiente-reportado.md`: el aviso de resuelto sigue el enlace directo al seguimiento del proyecto.
+- `validadores/pendientes.py`: un pendiente del estándar no toma por padre el seguimiento del proyecto, y el que se reúne en otro toma su estado.
+- `adaptadores/claude-code/hook_estacion.py`: el aviso de resuelto sale en todo commit del estándar, no solo en el que anota una fase.
+- `validadores/aviso_resuelto.py`, `02·F24`, `02·F29` y `plantillas/pendiente-de-seguimiento.md`: el estándar comprueba la corrección en una copia del proyecto que reportó antes de avisar (`prueba-en-el-proyecto.md`); el aviso llega con «Comprobado» lleno, sale también al aprobar el análisis, y el seguimiento cierra al recibirlo. **El proyecto ya no tiene que comprobar.**
+- `validadores/freno.py`: deja instalar paquetes con el intérprete o el instalador de un entorno que está dentro del proyecto (`venv/`, `.venv/`) y sigue deteniendo la instalación global; lo que «nunca se deja» tampoco lee el texto de un heredoc (pendiente 115).
+
+Sale del análisis 1 del pendiente 110, que reunió los seis reportes de scilit (110 a 115). Se borraron de la base 860 proyectos de prueba.
+
+---
+
 ## 53.2.0 — 2026-10-03
 
 **Salir del ciclo de análisis: «Corrija» arregla las herramientas del proceso sin abrir uno.**

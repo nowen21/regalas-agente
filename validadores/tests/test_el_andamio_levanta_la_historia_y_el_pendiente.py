@@ -101,16 +101,19 @@ class CA04ElPendiente(unittest.TestCase):
     def test_cp_003_con_su_hu_nace_en_pendientes_de_la_hu(self):
         hu = "%s/HU-008-enganche-del-resumen" % EPICA
         antes = leer(os.path.join(self.tmp, "pendientes", "README.md"))
+        # El número depende de los pendientes que tenga la épica copiada: se
+        # calcula, no se fija (corregido con «Corrija», 2026-10-04).
+        numero = pendientes.proximo_libre(self.tmp)
         destino, tocados = andamio.crear_pendiente(self.tmp, "prueba", hu, escribir=True)
         self.assertEqual(os.path.join(self.tmp, "documentacion", "epicas", EPICA,
                                       "HU-008-enganche-del-resumen", "pendientes",
-                                      "002-prueba", "pendiente.md"), destino)
+                                      "%03d-prueba" % numero, "pendiente.md"), destino)
         texto = leer(destino)
         self.assertIn("**De dónde sale**", texto)
         self.assertNotIn("Historia de usuario", texto)
         self.assertEqual([destino], tocados)
         self.assertEqual(antes, leer(os.path.join(self.tmp, "pendientes", "README.md")))
-        self.assertEqual(3, pendientes.proximo_libre(self.tmp))
+        self.assertEqual(numero + 1, pendientes.proximo_libre(self.tmp))
 
     def test_sin_aplicar_no_escribe(self):
         hu = "%s/HU-008-enganche-del-resumen" % EPICA
@@ -128,10 +131,11 @@ class HU022ElPendienteNaceSinHistoria(unittest.TestCase):
 
     def test_cp_001_sin_dueno_nace_en_el_resumen_del_dia(self):
         import datetime
+        numero = pendientes.proximo_libre(self.tmp)
         destino, _ = andamio.crear_pendiente(self.tmp, "prueba-sin-historia", "", escribir=True,
                                              hoy=datetime.date(2026, 10, 2))
         self.assertEqual(os.path.join(self.tmp, "historico-chat", "resumenes", "2026-10-02",
-                                      "pendientes", "002-prueba-sin-historia", "pendiente.md"), destino)
+                                      "pendientes", "%03d-prueba-sin-historia" % numero, "pendiente.md"), destino)
 
     def test_cp_003_una_historia_que_no_existe_sigue_fallando(self):
         with self.assertRaises(ValueError) as e:

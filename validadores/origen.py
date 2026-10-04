@@ -170,6 +170,10 @@ def _revisar_pendiente(ruta):
         return [(ruta, "el pendiente no tiene «De dónde sale»")]
     citas = _ENLACE_H.findall(fila.group(1))
     if not citas:
+        # El reporte de un proyecto que enlaza su pendiente de seguimiento ya
+        # dice de dónde sale (análisis 1 del pendiente 110, acuerdo 5).
+        if re.search(r"\]\(([^)]*/)?pendiente\.md\)", fila.group(1)):
+            return []
         return [(ruta, "«De dónde sale» no enlaza ningún hallazgo")]
     salida = []
     for h, destino in citas:

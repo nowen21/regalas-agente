@@ -120,9 +120,16 @@ def del_proyecto(proyecto):
             for titulo, _, rutas in _lineas(texto, _ID_PROYECTO)]
 
 
+# Lo que escriben las herramientas del estándar en todo proyecto, sin que un
+# plan lo nombre: el instalador deja constancia de cada versión adoptada y el
+# andamio crea el índice de cada carpeta (análisis 1 del pendiente 110, acuerdo 2).
+HERRAMIENTAS = ("las herramientas del estándar (análisis 1 del pendiente 110)",
+                ["documentacion/versiones/**", "documentacion/epicas/**/README.md"])
+
+
 def reglas(proyecto, estandar=None):
-    """Lo autorizado para ese proyecto: lo de `base/` y lo suyo."""
-    return de_la_base(estandar, proyecto) + del_proyecto(proyecto)
+    """Lo autorizado para ese proyecto: lo de `base/`, lo suyo y lo que escriben las herramientas."""
+    return de_la_base(estandar, proyecto) + del_proyecto(proyecto) + [HERRAMIENTAS]
 
 
 def quien_autoriza(ruta, autorizadas):

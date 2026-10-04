@@ -9,7 +9,7 @@
 > | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Modelo del pendiente que queda en el proyecto cuando lo que hay que corregir es del estándar (`02·F24`). Su «De dónde sale» enlaza el pendiente que se abrió en el estándar: ese es su padre. Cuando se cumple el plan de aquel, llega a esta carpeta un `aviso-resuelto.md`, y este cierra cuando el proyecto comprueba la corrección y pone la fecha en su línea «Comprobado». Su gemelo es [plantillas/pendiente-reportado.md](pendiente-reportado.md). Al llenarlo se reemplazan los `«…»` y se borran las notas.
+> Modelo del pendiente que queda en el proyecto cuando lo que hay que corregir es del estándar (`02·F24`). Su «De dónde sale» enlaza el pendiente que se abrió en el estándar: ese es su padre. Cuando el estándar resuelve aquel y comprueba la corrección en este proyecto, llega a esta carpeta un `aviso-resuelto.md` con «Comprobado» lleno, y este pendiente queda cerrado. Su gemelo es [plantillas/pendiente-reportado.md](pendiente-reportado.md). Al llenarlo se reemplazan los `«…»` y se borran las notas.
 
 | | |
 |---|---|

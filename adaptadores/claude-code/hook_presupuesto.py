@@ -31,6 +31,7 @@ import sys
 sys.path.insert(0, os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "validadores"))
+import comun                                    # noqa: E402
 import presupuesto                      # noqa: E402
 from comun import preparar_salida       # noqa: E402
 
@@ -77,7 +78,7 @@ def main():
     a = p.parse_args()
 
     try:
-        entrada = json.load(sys.stdin)
+        entrada = comun.entrada_json()
     except (json.JSONDecodeError, ValueError):
         entrada = {}
     ruta = entrada.get("transcript_path") or ""

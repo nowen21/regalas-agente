@@ -145,6 +145,10 @@ def motivo(proyecto, ruta_abs, lo_permitido):
     for carpeta, aprobado, declarados in lo_permitido["fases"]:
         if rel.startswith(carpeta + "/") or (aprobado and rel in declarados):
             return None
+        # La carpeta de un archivo declarado: crearla es parte de crearlo
+        # (análisis 1 del pendiente 110, acuerdo 2).
+        if aprobado and any(d.startswith(rel.rstrip("/") + "/") for d in declarados):
+            return None
     if not lo_permitido["fases"]:
         return "no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8)"
     return "el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8)"
@@ -156,12 +160,43 @@ def publica(herramienta):
     return bool(_PUBLICA.match(herramienta or ""))
 
 
-def nunca(orden, en_segundo_plano=False):
+_INSTALA = re.compile(r"(?:\bpip3?(?:\.exe)?|-m\s+pip)\s+install\b", re.I)
+_OTROS_INSTALADORES = re.compile(r"\b(?:npm|apt|apt-get|brew|choco|winget|gem)\b", re.I)
+
+
+def _instala_en_el_proyecto(orden, proyecto, cwd):
+    """Si cada instalación de paquetes de la orden corre con el intérprete o el
+    instalador de un entorno que está dentro del proyecto (`venv/`, `.venv/`):
+    instala ahí, no fuera (pendiente 115; análisis 1 del pendiente 110, acuerdo 8)."""
+    if not proyecto or _OTROS_INSTALADORES.search(orden or ""):
+        return False
+    hay = False
+    for parte in _partes(orden or ""):
+        if not _INSTALA.search(parte):
+            continue
+        hay = True
+        palabras = _palabras(parte)
+        if not palabras:
+            return False
+        programa = ruta_real(palabras[0], cwd or proyecto)
+        if relativa(proyecto, programa) is None:
+            return False
+        if not set(programa.replace("\\", "/").lower().split("/")) & {"venv", ".venv", "env", ".env"}:
+            return False
+    return hay
+
+
+def nunca(orden, en_segundo_plano=False, proyecto=None, cwd=None):
     """Por qué esa orden no se deja nunca, o `None`."""
     if en_segundo_plano:
         return "corre en segundo plano y deja su salida fuera del proyecto (04·S9)"
+    # El texto de un heredoc es lo que recibe el programa, no una orden de la
+    # consola (análisis 1 del pendiente 110, acuerdo 8).
+    orden = _sin_heredoc(orden)
     for patron, porque in _NUNCA:
         if patron.search(orden or ""):
+            if porque.startswith("instala paquetes") and _instala_en_el_proyecto(orden, proyecto, cwd):
+                continue
             return porque
     return None
 
@@ -241,6 +276,9 @@ def destinos(orden):
                 salida += args[1:]
         elif _PS_ESCRIBE.search(parte):
             salida += [m.strip("\"'") for m in _PS_RUTA.findall(parte)]
+    # Dentro de `$( … )` el destino queda pegado al paréntesis que cierra:
+    # `/dev/null)` sigue siendo el dispositivo nulo (análisis 1 del pendiente 110).
+    salida = [s.rstrip(")") if s.rstrip(")").lower() in _NULOS else s for s in salida]
     return [s for s in salida if s and s.lower() not in _NULOS]
 
 
@@ -259,7 +297,7 @@ def revisar(proyecto, herramienta, entrada, cwd=None):
         return ("detiene", porque, relativa(proyecto, ruta_abs) or ruta) if porque else ("deja", "", "")
     if herramienta in CONSOLA:
         orden = entrada.get("command") or ""
-        porque = nunca(orden, bool(entrada.get("run_in_background")))
+        porque = nunca(orden, bool(entrada.get("run_in_background")), proyecto, cwd)
         if porque:
             return ("detiene", porque, "")
         lo_permitido = None

@@ -362,14 +362,36 @@ def padre(carpeta):
     m = _DE_DONDE.search(_leer(ruta))
     if not m:
         return ""
+    estandar = os.path.normcase(os.path.abspath(comun.RAIZ)) + os.sep
+    en_el_estandar = os.path.normcase(os.path.abspath(carpeta)).startswith(estandar)
     for enlace in _ENLACE.findall(m.group(1)):
         destino = _destino(enlace, ruta)
         if os.path.basename(destino) == "pendiente.md":
             destino = os.path.dirname(destino)
+        # El pendiente que un proyecto reporta al estándar enlaza su seguimiento
+        # en el proyecto: ese seguimiento no es su padre (análisis 1 del
+        # pendiente 110, acuerdo 5).
+        if en_el_estandar and not os.path.normcase(os.path.abspath(destino)).startswith(estandar):
+            continue
         if os.path.isfile(os.path.join(destino, "pendiente.md")) and \
                 os.path.normcase(destino) != os.path.normcase(carpeta):
             return destino
     return ""
+
+
+_SE_RESUELVE = re.compile(r"^Se resuelve en el \[[^\]]*\]\(([^)#\s]+)\)", re.M)
+
+
+def resuelto_en(carpeta):
+    """La carpeta del pendiente en cuyo análisis se resuelve este, o "": el
+    pendiente que otro reúne toma su estado (análisis 1 del pendiente 110, acuerdo 4)."""
+    ruta = os.path.join(carpeta, "pendiente.md")
+    m = _SE_RESUELVE.search(_leer(ruta))
+    if not m:
+        return ""
+    destino = _destino(m.group(1), ruta)
+    destino = os.path.dirname(destino) if destino.endswith(".md") else destino
+    return destino if os.path.isfile(os.path.join(destino, "pendiente.md")) else ""
 
 
 def analisis_de(carpeta):
@@ -436,6 +458,9 @@ def estado(carpeta, proyecto=None, _vistos=None):
     if clave in vistos:
         return "abierto"
     vistos.add(clave)
+    reunido = resuelto_en(carpeta)
+    if reunido:
+        return estado(reunido, proyecto, vistos)
     arriba = padre(carpeta)
     if arriba:
         if estado(arriba, proyecto, vistos) != "cerrado":

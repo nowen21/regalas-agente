@@ -359,6 +359,7 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`02·F26`](02-flujo-de-trabajo/reglas/F26-el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-epicas.md#f26--el-inventario-de-funcionalidades-aprobado-es-la-puerta-de-las-épicas): El inventario de funcionalidades aprobado es la puerta de las épicas
 - [`02·F27`](02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md#f27--cada-punto-dice-de-qué-punto-del-anterior-sale): Cada punto dice de qué punto del anterior sale
 - [`02·F28`](02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden): El cambio se aplica donde nace y baja en orden
+- [`02·F29`](02-flujo-de-trabajo/reglas/F29-el-reporte-de-un-proyecto-se-corrige-para-todos.md#f29--el-reporte-de-un-proyecto-se-corrige-para-todos): El reporte de un proyecto se corrige para todos
 - [`02·F3`](02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado): Ejecuta seguido el plan aprobado
 - [`02·F4`](02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita): Todo plan lleva su plan de pruebas y su aprobación explícita
 - [`02·F5`](02-flujo-de-trabajo/reglas/F5-corre-solo-las-suites-que-la-fase-toca.md#f5--corre-solo-las-suites-que-la-fase-toca): Corre solo las suites que la fase toca

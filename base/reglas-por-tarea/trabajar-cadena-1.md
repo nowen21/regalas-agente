@@ -234,7 +234,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 Fuente: [02·F23](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md#f23--ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario)
 
 ## F24 · El defecto del estándar se reporta, no se corrige
-Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá, en la HU que citan la regla o el programa que fallan, o en el resumen del día si no la citan, que enlaza el hallazgo de acá; otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá y el proyecto comprueba el aviso que le llega (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
+Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá, en la HU que citan la regla o el programa que fallan, o en el resumen del día si no la citan, que enlaza el hallazgo de acá; otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando le llega el aviso, que el estándar envía después de comprobar la corrección en el proyecto (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 ```
 INCORRECTO: se parchea el estándar en la copia local del proyecto → los otros
             proyectos siguen con el defecto y nadie se entera
@@ -285,6 +285,17 @@ CORRECTO:   se corrige la HU en su mismo archivo, después la especificación
 ```
 
 Fuente: [02·F28](../02-flujo-de-trabajo/reglas/F28-el-cambio-se-aplica-donde-nace-y-baja-en-orden.md#f28--el-cambio-se-aplica-donde-nace-y-baja-en-orden)
+
+## F29 · El reporte de un proyecto se corrige para todos
+Lo que un proyecto reporta al estándar es un defecto que ya está en todos los proyectos que lo usan. Se analiza buscando su causa en el estándar, se revisa en cada proyecto registrado y se corrige en la raíz. Antes de avisar, se comprueba en el proyecto que lo reportó, en el escenario donde se presentó (complementa [`02·F24`](../02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md)).
+```
+INCORRECTO: scilit reporta que el andamio no sirve desde un proyecto → se
+            arregla para que funcione en scilit
+CORRECTO:   se busca por qué el andamio supone estar dentro del estándar, se
+            corrige ahí, se prueba en una copia de scilit y después se le avisa
+```
+
+Fuente: [02·F29](../02-flujo-de-trabajo/reglas/F29-el-reporte-de-un-proyecto-se-corrige-para-todos.md#f29--el-reporte-de-un-proyecto-se-corrige-para-todos)
 
 ## F3 · Ejecuta seguido el plan aprobado
 Aprobado el plan, ejecuta **todos** sus cambios seguidos, sin pedir permiso por cada archivo. Solo pausa si surge algo **no cubierto** por el plan.

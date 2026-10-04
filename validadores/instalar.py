@@ -787,10 +787,28 @@ def _rellenos(ruta):
     }
 
 
-def _rellenar(texto, rellenos):
+def _rellenar(texto, rellenos, proyecto=None):
     for marcador, valor in rellenos.items():
         texto = texto.replace(marcador, valor)
-    return texto
+    return _al_estandar(texto, proyecto) if proyecto else texto
+
+
+def _al_estandar(texto, proyecto):
+    """Los enlaces `](../…)` de una plantilla de `plantillas/` suben a la raíz del
+    estándar. Copiada en `.agente/` de un proyecto, esa subida llega al proyecto,
+    donde `base/` no existe: el enlace pasa a apuntar al estándar si el archivo
+    no está en el proyecto (análisis 1 del pendiente 110, acuerdo 2)."""
+    if os.path.normcase(os.path.abspath(proyecto)) == os.path.normcase(os.path.abspath(RAIZ)):
+        return texto
+    estandar = RAIZ.replace("\\", "/")
+
+    def cambio(m):
+        resto = m.group(1)
+        archivo = resto.split("#")[0]
+        if os.path.exists(os.path.join(proyecto, *archivo.split("/"))):
+            return m.group(0)
+        return "](" + estandar + "/" + resto + ")"
+    return re.sub(r"\]\(\.\./(?!\.\.)([^)\s]+)\)", cambio, texto)
 
 
 def _reparar_marcadores(archivo, ruta, aplicar, etiqueta):
@@ -812,7 +830,7 @@ def _reparar_marcadores(archivo, ruta, aplicar, etiqueta):
         return []
 
     original = leer(archivo)
-    reparado = _rellenar(original, _rellenos(ruta))
+    reparado = _rellenar(original, _rellenos(ruta), ruta)
     if reparado == original:
         return []
 
@@ -1127,7 +1145,7 @@ def instalar_agente_config(ruta, aplicar):
         if aplicar:
             os.makedirs(carpeta, exist_ok=True)
             with open(destino, "w", encoding="utf-8", newline="\n") as f:
-                f.write(_rellenar(leer(origen), rellenos))
+                f.write(_rellenar(leer(origen), rellenos, ruta))
     return pasos or ["los 4 archivos de .agente/ ya estaban"]
 
 
@@ -1166,6 +1184,17 @@ def instalar_registro(ruta, aplicar):
     """
     if not os.path.isfile(REGISTRO):
         return ["OMITIDO: falta plantillas/proyectos.md en el estándar"]
+
+    # Un proyecto en la carpeta temporal del sistema es de una prueba: no va al
+    # registro. Las pruebas del instalador dejaron 860 así en la base real
+    # (análisis 1 del pendiente 110, acuerdo 3).
+    import tempfile
+    temporal = os.path.normcase(os.path.realpath(tempfile.gettempdir())) + os.sep
+    import comun
+    real = os.path.normcase(os.path.abspath(os.path.join(comun.RAIZ, "plantillas", "proyectos.md")))
+    if os.path.normcase(os.path.abspath(REGISTRO)) == real and \
+            os.path.normcase(os.path.realpath(ruta)).startswith(temporal):
+        return ["es una carpeta temporal: no va al registro de proyectos"]
 
     esperado = os.path.normcase(os.path.abspath(ruta))
     for _, registrada in proyectos_registrados():

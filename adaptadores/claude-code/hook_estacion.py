@@ -77,7 +77,12 @@ def main():
 
     # `EP-023·HU-003·CA-11`: el commit que cumple el plan de un pendiente
     # reportado le avisa al proyecto, al lado de su pendiente de seguimiento.
-    if tocadas:
+    # Sale en todo commit del estándar, no solo en el que anota una fase: un
+    # reporte se puede resolver de una, sin fase (análisis 1 del pendiente 110,
+    # acuerdo 6). Solo en el estándar: en un proyecto, sus pendientes de
+    # seguimiento enlazan el estándar y se tomarían por reportes.
+    import comun
+    if os.path.normcase(os.path.abspath(raiz)) == os.path.normcase(os.path.abspath(comun.RAIZ)):
         import datetime
         import aviso_resuelto
         version_txt = os.path.join(raiz, "VERSION")

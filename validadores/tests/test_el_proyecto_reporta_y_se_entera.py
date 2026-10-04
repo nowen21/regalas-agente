@@ -59,11 +59,16 @@ class Base(unittest.TestCase):
             f.write(texto)
         return ruta
 
-    def cumplir(self):
+    def cumplir(self, prueba=True):
         self.escribir(self.estandar, HU + "/HU-001-una-cosa.md", HU_MD.format(estado="Terminada"))
+        if prueba is not None:
+            # `02·F29`: Cimiento probó la corrección en una copia del proyecto
+            # (análisis 1 del pendiente 110, acuerdo 7).
+            aviso_resuelto.anotar_prueba(os.path.join(self.estandar, *REPORTADO.split("/")), "2026-10-04",
+                                         "una copia del proyecto", [("el caso", "reproducirlo", prueba)])
 
     def avisar(self):
-        return aviso_resuelto.avisar(self.estandar, "2026-10-03", "53.0.0")
+        return aviso_resuelto.avisar(self.estandar, "2026-10-04", "53.0.0")
 
 
 class CP002ElAvisoLlegaAlLadoDelSeguimiento(Base):
@@ -72,13 +77,14 @@ class CP002ElAvisoLlegaAlLadoDelSeguimiento(Base):
         self.assertEqual(([], []), self.avisar())
         self.assertFalse(os.path.exists(self.aviso))
 
-    def test_2_con_el_plan_cumplido_escribe_el_aviso(self):
+    def test_2_con_el_plan_cumplido_y_la_prueba_escribe_el_aviso(self):
         self.cumplir()
         escritos, sin_entregar = self.avisar()
         self.assertEqual([self.aviso], escritos)
         self.assertEqual([], sin_entregar)
         texto = io.open(self.aviso, encoding="utf-8").read()
-        self.assertIn("**Comprobado:** no", texto)
+        self.assertIn("**Comprobado:** 2026-10-04", texto)
+        self.assertIn("| el caso | reproducirlo | Pasa |", texto)
         self.assertIn(REPORTADO, texto)
 
     def test_3_otra_vez_no_lo_duplica(self):
@@ -98,19 +104,24 @@ class CP002ElAvisoLlegaAlLadoDelSeguimiento(Base):
         self.assertFalse(os.path.exists(self.aviso))
 
 
-class CP003ElSeguimientoCierraAlComprobar(Base):
+class CP003CimientoCompruebaAntesDeAvisar(Base):
+    """Análisis 1 del pendiente 110, acuerdo 7: el proyecto no tiene que comprobar."""
 
-    def test_1_con_comprobado_no_esta_abierto(self):
-        self.cumplir()
-        self.avisar()
+    def test_1_sin_prueba_en_el_proyecto_no_hay_aviso(self):
+        self.cumplir(prueba=None)
+        escritos, sin_entregar = self.avisar()
+        self.assertEqual([], escritos)
+        self.assertIn(aviso_resuelto.PRUEBA, sin_entregar[0][1])
         self.assertEqual("abierto", pendientes.estado(self.seguimiento, self.proyecto))
 
-    def test_2_con_la_fecha_en_comprobado_esta_cerrado(self):
+    def test_2_con_la_prueba_fallida_no_hay_aviso(self):
+        self.cumplir(prueba=False)
+        self.assertEqual([], self.avisar()[0])
+        self.assertFalse(os.path.exists(self.aviso))
+
+    def test_3_con_la_prueba_aprobada_el_seguimiento_cierra_al_llegar_el_aviso(self):
         self.cumplir()
         self.avisar()
-        texto = io.open(self.aviso, encoding="utf-8").read()
-        with io.open(self.aviso, "w", encoding="utf-8", newline="\n") as f:
-            f.write(texto.replace("**Comprobado:** no", "**Comprobado:** 2026-10-04"))
         self.assertEqual("cerrado", pendientes.estado(self.seguimiento, self.proyecto))
 
 

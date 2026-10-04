@@ -121,22 +121,30 @@ def _sustituciones(consecutivo, epica, hu, descripcion, nombre_fase):
     }
 
 
-def _reenlazar(texto, origen_plantilla, destino, raiz):
+def _hacia(base, destino):
+    """El enlace de `destino` a `base`: relativo, o absoluto si están en otra unidad."""
+    try:
+        return os.path.relpath(base, destino).replace("\\", "/")
+    except ValueError:
+        return os.path.abspath(base).replace("\\", "/")
+
+
+def _reenlazar(texto, origen_plantilla, destino):
     """Traslada a la carpeta de destino los enlaces que la plantilla hace a la raíz.
 
-    Una plantilla en `plantillas/planes/` llega a la raíz con `../../`; la
-    fase, cinco niveles abajo, necesita `../../../../../`. Solo se traslada el
-    prefijo que **llega exactamente a la raíz** —un `../` que se queda en
-    `plantillas/` apunta a otra cosa y no se toca—, y el marcador de la ruta
-    del estándar, que el instalador rellena en los proyectos y acá no rellenaba
-    nadie.
+    Las plantillas son del estándar, y sus enlaces a la raíz apuntan al estándar
+    (`base/`, `plantillas/`). Desde un proyecto se arman hacia Cimiento, no hacia
+    el proyecto, donde no existen (análisis 1 del pendiente 110, acuerdo 2).
+    Solo se traslada el prefijo que **llega exactamente a la raíz** —un `../`
+    que se queda en `plantillas/` apunta a otra cosa y no se toca—, y el
+    marcador de la ruta del estándar.
     """
-    hacia_raiz = os.path.relpath(raiz, destino).replace("\\", "/")
+    hacia_estandar = _hacia(comun.RAIZ, destino)
     desde_plantilla = os.path.relpath(
-        raiz, os.path.dirname(os.path.abspath(origen_plantilla))).replace("\\", "/")
+        comun.RAIZ, os.path.dirname(os.path.abspath(origen_plantilla))).replace("\\", "/")
     patron = re.compile(r"\]\(" + re.escape(desde_plantilla) + r"/(?!\.\.)")
-    texto = patron.sub("](" + hacia_raiz + "/", texto)
-    return texto.replace(MARCADOR_RAIZ, hacia_raiz)
+    texto = patron.sub("](" + hacia_estandar + "/", texto)
+    return texto.replace(MARCADOR_RAIZ, hacia_estandar)
 
 
 def _escribir(ruta, texto, escribir):
@@ -163,6 +171,14 @@ def _agregar_fila(ruta, fila, despues_de, escribir):
         inicio = m.end()
     tabla = re.compile(r"(?m)^\|.*\n(?:\|.*\n?)*")
     bloques = list(tabla.finditer(texto, inicio))
+    if not bloques and not despues_de and re.search(r"(?m)^- \[", texto):
+        # Un índice escrito como lista, no como tabla (así lo tiene matematica):
+        # la fila entra con la misma forma (análisis 1 del pendiente 110, acuerdo 2).
+        celdas = [c.strip() for c in fila.strip().strip("|").split("|")]
+        item = "- " + " — ".join(celdas)
+        nuevo = texto.rstrip("\n") + "\n" + item + "\n"
+        _escribir(ruta, nuevo, escribir)
+        return item
     if not bloques:
         raise ValueError("no hay tabla después de «%s» en %s"
                          % (despues_de, comun.relativo(ruta)))
@@ -202,13 +218,13 @@ def crear(raiz, epica, hu, descripcion, escribir=False):
     subs = _sustituciones(consecutivo, epica, hu, descripcion, nombre)
     escritos = []
     for archivo, plantilla in DOCUMENTOS:
-        origen = os.path.join(raiz, plantilla)
+        origen = os.path.join(comun.RAIZ, plantilla)      # las plantillas son del estándar
         if not os.path.isfile(origen):
             continue
         texto = leer(origen)
         for viejo, nuevo in subs.items():
             texto = texto.replace(viejo, nuevo)
-        texto = _reenlazar(texto, origen, destino, raiz)
+        texto = _reenlazar(texto, origen, destino)
         escritos.append(archivo)
         _escribir(os.path.join(destino, archivo), texto, escribir)
     return destino, escritos
@@ -234,7 +250,7 @@ def crear_hu(raiz, epica, descripcion, escribir=False):
     epica_md = os.path.join(carpeta_epica, "epica.md")
     if not os.path.isfile(epica_md):
         raise ValueError("no existe la épica: %s" % os.path.join(CARPETA, epica))
-    origen = os.path.join(raiz, PLANTILLA_HU)
+    origen = os.path.join(comun.RAIZ, PLANTILLA_HU)      # las plantillas son del estándar
     if not os.path.isfile(origen):
         raise ValueError("falta la plantilla %s" % PLANTILLA_HU)
 
@@ -245,7 +261,7 @@ def crear_hu(raiz, epica, descripcion, escribir=False):
 
     # Primero se trasladan los enlaces de la plantilla y después se ponen los
     # propios: al revés, el `../epica.md` recién puesto se trasladaría también.
-    texto = _reenlazar(leer(origen), origen, destino, raiz)
+    texto = _reenlazar(leer(origen), origen, destino)
     texto = texto.replace("HU-000", hu_id)
     texto = texto.replace("«Épica padre»", "[%s](../epica.md)" % titulo_epica)
     tocados = []
@@ -286,21 +302,28 @@ def crear_pendiente(raiz, descripcion, hu_ref="", escribir=False, hoy=None):
     raiz = os.path.abspath(raiz)
     con_historia = bool((hu_ref or "").strip())
     if con_historia:
-        epica, hu = (hu_ref.replace("\\", "/").split("/") + [""])[:2]
-        dueno = os.path.join(raiz, CARPETA, epica, hu)
-        if not os.path.isfile(os.path.join(dueno, hu + ".md")):
-            raise ValueError("no existe la historia: %s" % hu_ref)
+        epica, hu = (hu_ref.replace("\\", "/").strip("/").split("/") + [""])[:2]
+        if hu:
+            dueno = os.path.join(raiz, CARPETA, epica, hu)
+            if not os.path.isfile(os.path.join(dueno, hu + ".md")):
+                raise ValueError("no existe la historia: %s" % hu_ref)
+        else:
+            # El pendiente de una épica entera vive en su carpeta `pendientes/`
+            # (análisis 1 del pendiente 110, acuerdo 2).
+            dueno = os.path.join(raiz, CARPETA, epica)
+            if not os.path.isfile(os.path.join(dueno, "epica.md")):
+                raise ValueError("no existe la épica: %s" % hu_ref)
     else:
         dia = (hoy or datetime.date.today()).isoformat()
         dueno = os.path.join(raiz, "historico-chat", "resumenes", dia)
-    origen = os.path.join(raiz, PLANTILLA_PENDIENTE)
+    origen = os.path.join(comun.RAIZ, PLANTILLA_PENDIENTE)      # las plantillas son del estándar
     if not os.path.isfile(origen):
         raise ValueError("falta la plantilla %s" % PLANTILLA_PENDIENTE)
 
     numero = _pendientes.proximo_libre(raiz)
     carpeta = os.path.join(dueno, PENDIENTES, "%03d-%s" % (numero, descripcion))
     destino = os.path.join(carpeta, "pendiente.md")
-    texto = _reenlazar(leer(origen), origen, carpeta, raiz)
+    texto = _reenlazar(leer(origen), origen, carpeta)
     _escribir(destino, texto, escribir)
     return destino, [destino]
 
