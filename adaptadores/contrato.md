@@ -20,6 +20,19 @@ Acá está lo que hay que poder hacer, sin nombrar ninguna herramienta. Quien va
 
 **La quinta no es del agente.** La da el control de versiones, y por eso es la única que ya funciona con cualquier herramienta: son los `.githooks/`. Se lista igual, porque quien evalúe un agente nuevo tiene que saber que esa parte **no depende de él**.
 
+## Las capas del freno que cubre cada adaptador
+
+`EP-023·HU-007·CA-02`: nada se escribe fuera del plan aprobado, por ningún canal. El freno tiene cuatro capas; cada adaptador dice cuáles cubre en su herramienta y por qué no las demás.
+
+| Capa | Qué detiene | `claude-code` | Por qué |
+|---|---|---|---|
+| **1 · Antes de actuar** | La escritura, el borrado o la publicación fuera del plan, antes de que pase | Sí: `hook_antes.py`, sobre toda herramienta (`PreToolUse` sin filtro) | La herramienta deja cortar la acción antes de correrla |
+| **2 · Después de actuar** | Lo que un programa escribió por dentro, que la capa 1 no ve | Sí: `hook_despues.py`, sobre la consola (`PostToolUse` de `Bash` y `PowerShell`), comparando git con la foto de antes | Solo la consola corre programas; las demás herramientas ya las vio la capa 1. Lo que se escribe fuera del proyecto no está en git y no se ve |
+| **3 · Al guardar el commit** | El archivo que entra al commit sin estar en el plan | No depende del adaptador: el `pre-commit` de `.githooks/` | La da el control de versiones, como la capacidad 5 |
+| **4 · En la integración continua** | Lo que llega al repositorio compartido sin pasar por las otras tres | No depende del adaptador: `validar.py plan --rango`, que la instalación agrega a la integración continua del proyecto que la tiene | Corre fuera de la máquina, con Cimiento descargado del sitio que el proyecto anota |
+
+Un adaptador nuevo llena la columna de su herramienta: las capas 3 y 4 ya las tiene.
+
 ## Qué recibe y qué devuelve cada programa
 
 **Reciben lo que pasó, por la entrada estándar, y responden por su código de salida.** Nada más. No hay estado compartido, ni base de datos, ni orden garantizado entre ellos.

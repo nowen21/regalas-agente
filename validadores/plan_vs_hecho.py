@@ -217,16 +217,36 @@ def preparados(repo):
                       for l in salida.splitlines() if l.strip()))
 
 
+def en_rango(repo, rango):
+    """Los archivos que cambian en un rango de commits, `desde..hasta`."""
+    salida = _git(repo, "diff", "--name-only", rango)
+    return sorted(set(l.strip().replace("\\", "/")
+                      for l in salida.splitlines() if l.strip()))
+
+
 def comparar_preparados(proyecto, estandar=None):
     """`CA-03` · El archivo del commit que el plan no declara y ninguna regla
     autoriza. Solo cuando el commit toca una fase cuyo plan se aprobó desde
     `DESDE`: sin ese plan no hay contra qué comparar."""
     proyecto = os.path.abspath(proyecto)
-    archivos = preparados(proyecto)
+    return comparar_archivos_contra_plan(proyecto, preparados(proyecto), estandar)
+
+
+def comparar_rango(proyecto, rango, estandar=None):
+    """`CA-02` · Lo mismo que el commit, sobre lo que trae un rango de commits:
+    lo usa la integración continua (análisis 14 del pendiente 103, acuerdo 11)."""
+    proyecto = os.path.abspath(proyecto)
+    return comparar_archivos_contra_plan(proyecto, en_rango(proyecto, rango), estandar)
+
+
+def comparar_archivos_contra_plan(proyecto, archivos, estandar=None):
+    """El archivo de la lista que el plan de su fase no declara y ninguna regla autoriza."""
     fases = []
     for carpeta in fases_de(proyecto):
         rel = os.path.relpath(carpeta, proyecto).replace("\\", "/") + "/"
-        if not any(a.startswith(rel) for a in archivos):
+        # El hash que el post-commit anota en `estado-fase.md` no es trabajo de
+        # la fase: solo él no la cuenta como tocada (análisis 16, acuerdo 2).
+        if not any(a.startswith(rel) and a != rel + "estado-fase.md" for a in archivos):
             continue
         texto = comun.leer(os.path.join(carpeta, "plan_trabajo.md"))
         if aprobado_desde(texto):
@@ -239,6 +259,13 @@ def comparar_preparados(proyecto, estandar=None):
     # freno (análisis 14 del pendiente 103, acuerdo 5).
     import freno
     de_una = freno._de_una(proyecto)
+    # Y las de todo análisis que entra en el mismo commit, prendido o aprobado:
+    # el análisis y lo que mandó hacer se guardan juntos (análisis 16, acuerdo 1).
+    for archivo in archivos:
+        if re.search(r"/pendientes/[^/]+/analisis-\d+\.md$", archivo):
+            ruta = os.path.join(proyecto, *archivo.split("/"))
+            if os.path.isfile(ruta):
+                de_una |= freno.rutas_de_una(ruta)
     nombres = ", ".join("`%s`" % os.path.basename(rel.rstrip("/")) for rel, _ in fases)
     hallazgos = []
     for archivo in archivos:
@@ -272,7 +299,49 @@ def validar(proyecto, fase=None, desde=None):
         if desde or fase:
             hallazgos += comparar_archivos(carpeta, proyecto, desde)
         hallazgos += comparar_casos(carpeta)
+    # Las pruebas que el plan no declara: en la fase nombrada o en las que
+    # están en curso, que son las que todavía pueden corregir su plan.
+    import acuerdos
+    en_curso = [os.path.abspath(fase)] if fase else [os.path.abspath(r) for r in acuerdos.fases_en_curso(proyecto)]
+    for carpeta in en_curso:
+        hallazgos += pruebas_sin_declarar(carpeta, proyecto)
     return hallazgos
+
+
+_IMPORTA = r"^\s*(?:import\s+%s\b|from\s+%s\s+import\b)"
+
+
+def pruebas_que_leen(proyecto, modulos):
+    """Las pruebas de Python que importan alguno de los módulos (`nombre` sin `.py`)."""
+    salida = set()
+    if not modulos:
+        return salida
+    patron = re.compile("|".join(_IMPORTA % (re.escape(m), re.escape(m)) for m in modulos), re.M)
+    for actual, carpetas, archivos in os.walk(proyecto):
+        carpetas[:] = [c for c in carpetas if not c.startswith(".") and c not in ("node_modules", "__pycache__")]
+        for n in archivos:
+            if n.endswith(".py") and (n.startswith("test") or n == "pruebas.py" or "tests" in actual.split(os.sep)):
+                ruta = os.path.join(actual, n)
+                if patron.search(comun.leer(ruta)):
+                    salida.add(os.path.relpath(ruta, proyecto).replace("\\", "/"))
+    return salida
+
+
+def pruebas_sin_declarar(carpeta_fase, proyecto):
+    """Aviso: la prueba que lee un archivo que el plan cambia y que el plan no
+    declara (análisis 16 del pendiente 103, acuerdo 2)."""
+    texto = comun.leer(os.path.join(carpeta_fase, "plan_trabajo.md"))
+    if not aprobado_desde(texto):
+        return []
+    declarados = set(rutas_exactas(texto))
+    modulos = [os.path.basename(r)[:-3] for r in declarados
+               if r.endswith(".py") and "test" not in os.path.basename(r) and os.path.basename(r) != "pruebas.py"]
+    faltan = sorted(pruebas_que_leen(proyecto, modulos) - declarados)
+    if not faltan:
+        return []
+    return [Hallazgo(AVISO, relativo(os.path.join(carpeta_fase, "plan_trabajo.md")), 0,
+                     "estas pruebas leen lo que el plan cambia y el plan no las declara: "
+                     + ", ".join("`%s`" % f for f in faltan))]
 
 
 def linea_resumen(proyecto):

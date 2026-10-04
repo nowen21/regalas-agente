@@ -220,5 +220,54 @@ class ElMayorQueEntreComillas(Proyecto):
         self.assertEqual("detiene", self.orden('echo "a > b" > "otra nota.txt"'))
 
 
+class LaOrdenDeSedNoEsUnArchivo(unittest.TestCase):
+    """Análisis 14 del pendiente 103, acuerdo 10."""
+
+    def test_lo_que_va_tras_e_es_la_orden(self):
+        self.assertEqual(["a.md"], freno.destinos("sed -i -e 's/x/y/' -e 's/actual:/z/' a.md"))
+        self.assertEqual(["a.md", "b.md"], freno.destinos("sed -i --expression='s/x/y/' a.md b.md"))
+
+    def test_sin_e_la_primera_palabra_es_la_orden(self):
+        self.assertEqual(["a.md"], freno.destinos("sed -i 's/x/y/' a.md"))
+
+    def test_sin_i_no_escribe(self):
+        self.assertEqual([], freno.destinos("sed -n '1,5p' a.md"))
+
+
+class CorrijaArreglaLasHerramientas(Proyecto):
+    """Análisis 16 del pendiente 103, acuerdo 2."""
+
+    def test_con_corrija_se_corrigen_las_herramientas_y_nada_mas(self):
+        self.assertEqual("detiene", self.escritura("validadores/freno.py"))
+        freno.curso.marcar_corrija(self.raiz, 7)
+        self.assertEqual("deja", self.escritura("validadores/freno.py"))
+        self.assertEqual("deja", self.escritura("adaptadores/claude-code/hook_antes.py"))
+        self.assertEqual("detiene", self.escritura("base/02-flujo-de-trabajo/reglas/F8.md"))
+        freno.curso.borrar_corrija(self.raiz)
+        self.assertEqual("detiene", self.escritura("validadores/freno.py"))
+
+
+class ElHeredocNoEsEscritura(unittest.TestCase):
+    """Análisis 16 del pendiente 103, acuerdo 2."""
+
+    def test_el_texto_del_heredoc_no_cuenta(self):
+        self.assertEqual([], freno.destinos("python - <<'EOF'\nif a > b: print(1)\nx >> y\nEOF"))
+
+    def test_la_redireccion_de_la_linea_que_lo_abre_si(self):
+        self.assertEqual(["nota.txt"], freno.destinos("cat > nota.txt <<EOF\nhola > mundo\nEOF"))
+
+
+class LaComparacionNoEsEscritura(unittest.TestCase):
+    """Análisis 15 del pendiente 103, acuerdo 1."""
+
+    def test_mayor_o_igual_y_flecha_no_escriben(self):
+        self.assertEqual([], freno.destinos("python - <<EOF\nif n >= 11: pass\nEOF"))
+        self.assertEqual([], freno.destinos("awk '$1 => 2' a.txt"))
+
+    def test_la_redireccion_sigue_viendose(self):
+        self.assertEqual(["notas.txt"], freno.destinos("echo x > notas.txt"))
+        self.assertEqual(["notas.txt"], freno.destinos("echo x >> notas.txt"))
+
+
 if __name__ == "__main__":
     unittest.main()

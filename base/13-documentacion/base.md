@@ -30,6 +30,7 @@ Las reglas viven una por archivo en [`reglas/`](reglas/). El anexo [`render-loca
 | [`DOC7`](reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md) | Si A consume a B, los dos lo registran. |
 | [`DOC24`](reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md) | El análisis individual cierra al final de su mismo archivo y, aprobado, no se reescribe. |
 | [`DOC25`](reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md) | El análisis principal dice lo vigente y lleva la lista de cambios con su enlace. |
+| [`DOC26`](reglas/DOC26-cada-analisis-deja-su-pendiente-en-la-version-siguiente.md) | Desde el segundo análisis, aprobarlo pasa el pendiente a su versión siguiente. |
 | [`DOC9`](reglas/DOC9-consulta-el-mapa-de-dependencias-antes-de-planificar.md) | Antes de planificar se consulta el mapa, no se explora de cero. |
 | [`DOC10`](reglas/DOC10-registra-en-el-catalogo-del-proyecto-toda-regla-propia.md) | Toda regla propia del proyecto queda numerada en su catálogo. |
 | [`DOC12`](reglas/DOC12-declara-el-origen-de-cada-fase-al-abrirla.md) | Toda fase declara de dónde sale: arregla, agrega o ambas. |

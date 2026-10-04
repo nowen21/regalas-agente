@@ -149,6 +149,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Pasar el pendiente a su versión siguiente sale siempre de un acuerdo de otro análisis (análisis 11, acuerdo 5). Mientras el validador no lo acepte, cada análisis que lo cite falla, o tiene que citar un número equivocado para pasar. |
 | Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
 
+### H-19 · El freno detuvo una orden de consola fuera del plan
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03 23:23, el freno detuvo una orden de consola sobre `validadores/=`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
+| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
+| Pendiente | [103](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+
+### H-20 · El commit rechaza lo que un análisis aprobado mandó hacer de una
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03, el control del commit rechazó 12 archivos que las filas «de una» de los análisis 14 y 15 del pendiente 103 mandaron hacer: solo acepta esas filas mientras el análisis está prendido, y los dos ya estaban aprobados. |
+| Por qué importa | Lo que un análisis manda hacer de una no se puede guardar después de aprobarlo, y aprobarlo es el paso anterior al commit. |
+| Pendiente | [103](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?

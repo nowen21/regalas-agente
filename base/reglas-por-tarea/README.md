@@ -6,7 +6,7 @@ El agente lee el archivo de una tarea antes de hacerla, y lo lee con la herramie
 |---|---:|---|
 | `recibir-pedido` | 18 | [recibir-pedido.md](recibir-pedido.md) |
 | `responder` | 14 | [responder.md](responder.md) |
-| `escribir-documento` | 54 | [escribir-documento-1.md](escribir-documento-1.md), [escribir-documento-2.md](escribir-documento-2.md) |
+| `escribir-documento` | 55 | [escribir-documento-1.md](escribir-documento-1.md), [escribir-documento-2.md](escribir-documento-2.md) |
 | `cambiar-codigo` | 127 | [cambiar-codigo-1.md](cambiar-codigo-1.md), [cambiar-codigo-2.md](cambiar-codigo-2.md), [cambiar-codigo-3.md](cambiar-codigo-3.md), [cambiar-codigo-4.md](cambiar-codigo-4.md) |
 | `correr-comando` | 18 | [correr-comando.md](correr-comando.md) |
 | `tocar-git` | 18 | [tocar-git.md](tocar-git.md) |

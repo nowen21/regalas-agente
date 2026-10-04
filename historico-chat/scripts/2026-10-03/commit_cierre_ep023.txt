@@ -1,0 +1,23 @@
+feat(ep023): la épica queda terminada y se sale del ciclo de análisis
+
+El usuario pidió terminar toda la épica EP-023 sin abrir más análisis,
+revisar los análisis del pendiente 103 para validar que todo se cumpliera,
+y entender por qué se generaban tantos; pidió hacer de una los cambios que
+lo evitan, sin dejar nada pendiente.
+
+Lo que hizo el agente:
+- 53.1.0: 13·DOC26 (cada análisis deja su pendiente en la versión
+  siguiente), que la plantilla del análisis cita y origen.py acepta; la
+  instalación agrega la revisión del plan a la integración continua del
+  proyecto que la tiene; validar.py plan --rango; el contrato dice qué capas
+  del freno cubre cada adaptador. Las siete HU y la épica quedan terminadas.
+- 53.1.1: pendientes.py reconoce «HU 1» y cierra la fila de la épica cuando
+  la épica termina; el freno no toma >= por escritura (análisis 15, que
+  revisó las 113 filas de los catorce análisis).
+- 53.1.2: el commit acepta lo que un análisis aprobado mandó hacer de una.
+- 53.2.0: «Corrija» corrige las herramientas del proceso sin abrir análisis
+  (excepción de 02·F8); validar.py plan avisa las pruebas que el plan no
+  declara; el freno ignora el texto de los heredocs; el hash anotado en
+  estado-fase.md no cuenta como tocar la fase (análisis 16).
+- Lecciones S-289 y S-290. Pasan las 571 pruebas de pruebas.py y las de los
+  programas que cambiaron.

@@ -70,6 +70,7 @@ Muchas reglas validables inspeccionan el **código/esquema/config del proyecto**
 | **completitud de plantillas** | `plantillas.py` | marcadores sin llenar, secciones ausentes |
 | **enlaces/índices** | `enlaces.py` | enlaces rotos, índices desactualizados |
 | [`02·F27`](../base/02-flujo-de-trabajo/reglas/F27-cada-punto-dice-de-que-punto-del-anterior-sale.md) | `origen.py` | en las épicas que nacen de un análisis, cada punto cita un origen que existe: pendiente→hallazgo, punto acordado→turno, «Lo que se tiene que hacer»→punto acordado, criterio→punto |
+| [`13·DOC26`](../base/13-documentacion/reglas/DOC26-cada-analisis-deja-su-pendiente-en-la-version-siguiente.md) | `analisis_en_curso.py` | no deja aprobar un análisis, desde el segundo, cuyo hallazgo falta en «De dónde sale» del pendiente |
 
 ---
 

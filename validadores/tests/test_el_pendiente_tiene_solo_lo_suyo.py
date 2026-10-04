@@ -91,6 +91,17 @@ class CP004ElCierreLoMarcaElPlan(Base):
         self.escribir(HU + "/HU-001-una-cosa.md", HU_MD.format(estado="Terminada"))
         self.assertEqual("cerrado", pendientes.estado(self.carpeta, self.raiz))
 
+    def test_la_hu_escrita_con_espacio_tambien_cuenta(self):
+        self.pendiente(paso="EP-009, HU 1")
+        self.escribir(HU + "/HU-001-una-cosa.md", HU_MD.format(estado="Terminada"))
+        self.assertEqual("cerrado", pendientes.estado(self.carpeta, self.raiz))
+
+    def test_la_fila_de_la_epica_espera_a_que_la_epica_termine(self):
+        self.pendiente(paso="EP-009, la épica")
+        self.assertEqual("abierto", pendientes.estado(self.carpeta, self.raiz))
+        self.escribir(EPICA + "/epica.md", HU_MD.format(estado="Terminada el 2026-10-03"))
+        self.assertEqual("cerrado", pendientes.estado(self.carpeta, self.raiz))
+
     def test_lo_hecho_en_el_mismo_analisis_no_espera_nada(self):
         self.pendiente(paso="Este análisis, de una y sin fase")
         self.assertEqual("cerrado", pendientes.estado(self.carpeta, self.raiz))

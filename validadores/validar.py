@@ -383,6 +383,11 @@ def cmd_plan(a):
         # `EP-023·HU-007` · lo que entra en el commit, contra el plan aprobado.
         return reportar(plan_vs_hecho.comparar_preparados(raiz),
                         f"Lo que entra en el commit contra el plan · {relativo(raiz)}")
+    if a.rango:
+        # `EP-023·HU-007·CA-02` · lo que trae un rango de commits, en la
+        # integración continua.
+        return reportar(plan_vs_hecho.comparar_rango(raiz, a.rango),
+                        f"Lo que trae {a.rango} contra el plan · {relativo(raiz)}")
     codigo = reportar(plan_vs_hecho.validar(raiz, a.fase, a.desde),
                       f"El plan aprobado contra lo hecho · {relativo(raiz)}")
     print(plan_vs_hecho.linea_resumen(raiz))
@@ -830,6 +835,9 @@ def main():
     pv.add_argument("--preparados", action="store_true",
                     help="lo que entra en el commit: falla por lo que el plan no "
                          "declara ni una regla autoriza")
+    pv.add_argument("--rango",
+                    help="lo que trae un rango de commits, desde..hasta: lo usa "
+                         "la integración continua")
     pv.set_defaults(func=cmd_plan)
 
     te = sub.add_parser("temas",

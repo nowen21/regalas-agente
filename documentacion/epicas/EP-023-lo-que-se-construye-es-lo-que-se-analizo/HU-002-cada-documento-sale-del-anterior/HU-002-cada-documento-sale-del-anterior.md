@@ -17,7 +17,7 @@
 | **Sprint** | N/A |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | Claude |
-| **Estado** | Lista: aprobada el 2026-10-03 |
+| **Estado** | Terminada el 2026-10-03, con sus criterios probados |
 
 ---
 

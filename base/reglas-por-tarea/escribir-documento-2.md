@@ -171,6 +171,17 @@ CORRECTO:   su frase pasa tal cual al principal, y la lista de análisis
 
 Fuente: [13·DOC25](../13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md#doc25--reescribe-el-análisis-principal-con-su-lista-de-cambios)
 
+## DOC26 · Cada análisis deja su pendiente en la versión siguiente
+Desde el segundo análisis de un pendiente, aprobarlo pasa el pendiente a su versión siguiente en su mismo archivo: «De dónde sale» suma el hallazgo que abrió ese análisis, y «El problema» y «Por qué importa» recogen lo que el análisis precisó (complementa [`13·DOC24`](../13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md)).
+```
+INCORRECTO: el análisis 2 se aprueba y el pendiente sigue diciendo lo que
+            decía antes del hallazgo que lo abrió
+CORRECTO:   al aprobarse el análisis 2, el pendiente pasa a su versión
+            siguiente con ese hallazgo en «De dónde sale»
+```
+
+Fuente: [13·DOC26](../13-documentacion/reglas/DOC26-cada-analisis-deja-su-pendiente-en-la-version-siguiente.md#doc26--cada-análisis-deja-su-pendiente-en-la-versión-siguiente)
+
 ## DOC4 · Documenta lo que producción necesita
 Los pasos de despliegue —cambios de esquema, datos base, permisos, comandos posteriores— se documentan **auto-suficientes y ejecutables**: quien despliega lo hace leyendo el entregable, sin volver a mirar el código.
 ```

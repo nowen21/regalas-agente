@@ -43,6 +43,7 @@ DESDE_DECISIONES = (50, 0, 0)
 _DECISIONES = re.compile(r"(?ms)^###\s*2\.6[^\n]*\n(.*?)(?=^##)")
 _PROPUESTA = re.compile(r"(?i)propuesta del agente")
 _CITA_ACUERDO = re.compile(r"[Aa]nálisis (\d+)[^,;|]*?,\s*acuerdos? (\d+(?:(?:, | y )\d+)*)")
+_CITA_REGLA = re.compile(r"\b(\d{2})·([A-Z]+\d+)\b")
 _ENLACE_H = re.compile(r"\[[^\]]*?(H-\d+)[^\]]*\]\(([^)#]+)(?:#[^)]*)?\)")
 
 # Lo que no es del repositorio: local, generado o de terceros.
@@ -103,8 +104,9 @@ def _epica_de(carpeta):
 def _revisar_analisis(ruta, datos, del_pendiente=None):
     """`del_pendiente`: `{número: datos}` de los análisis del mismo pendiente.
 
-    «Sale de lo acordado» es un número de este análisis, o «Análisis N, acuerdo M»
-    de otro del mismo pendiente (análisis 14 del pendiente 103, acuerdo 4).
+    «Sale de lo acordado» es un número de este análisis, «Análisis N, acuerdo M»
+    de otro del mismo pendiente (análisis 14 del pendiente 103, acuerdo 4), o una
+    regla del estándar, como `13·DOC26` (acuerdo 11).
     """
     del_pendiente = del_pendiente or {}
     salida = []
@@ -119,8 +121,9 @@ def _revisar_analisis(ruta, datos, del_pendiente=None):
     for n, celdas in sorted(datos["hacer"].items()):
         celda = celdas[1] if len(celdas) > 2 else ""
         de_otros = _CITA_ACUERDO.findall(celda)
-        citas = [int(x) for x in re.findall(r"\d+", _CITA_ACUERDO.sub("", celda))]
-        if not citas and not de_otros:
+        reglas = _CITA_REGLA.findall(celda)
+        citas = [int(x) for x in re.findall(r"\d+", _CITA_REGLA.sub("", _CITA_ACUERDO.sub("", celda)))]
+        if not citas and not de_otros and not reglas:
             salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» no dice de qué punto de «Lo acordado» sale"))
         for c in citas:
             if c not in datos["acordado"]:
@@ -131,7 +134,17 @@ def _revisar_analisis(ruta, datos, del_pendiente=None):
                 if otro is None or a not in otro["acordado"]:
                     salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita el acuerdo {a} "
                                          f"del análisis {numero}, que no existe"))
+        for capitulo, regla in reglas:
+            if not _regla_existe(capitulo, regla):
+                salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita la regla "
+                                     f"{capitulo}·{regla}, que no existe"))
     return salida
+
+
+def _regla_existe(capitulo, regla):
+    """Si el estándar tiene la regla `NN·XXN` (análisis 14 del pendiente 103, acuerdo 11)."""
+    import glob
+    return bool(glob.glob(os.path.join(comun.RAIZ, "base", capitulo + "-*", "reglas", regla + "-*.md")))
 
 
 def _del_pendiente(carpeta):

@@ -11,6 +11,70 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 53.2.0 — 2026-10-03
+
+**Salir del ciclo de análisis: «Corrija» arregla las herramientas del proceso sin abrir uno.**
+
+**MENOR**: una excepción nueva a `02·F8` y dos avisos; nadie tiene que hacer algo nuevo.
+
+**Lo que entra:**
+
+- `02·F8`: con «Corrija», el agente corrige `validadores/` y `adaptadores/` en esa respuesta sin abrir análisis, y lo anota en el resumen. El enganche del mensaje lo marca y el freno lo respeta.
+- `validar.py plan`: avisa qué pruebas leen los archivos que el plan cambia y el plan no declara.
+- `validadores/freno.py`: el texto de un heredoc no cuenta como escritura.
+- `validadores/plan_vs_hecho.py`: el hash anotado en `estado-fase.md` no cuenta como tocar la fase.
+
+Sale del análisis 16 del pendiente 103 (acuerdo 2): de sus 16 análisis, solo 4 trajeron trabajo nuevo.
+
+---
+
+## 53.1.2 — 2026-10-03
+
+**El commit acepta lo que un análisis aprobado mandó hacer de una.**
+
+**PARCHE**: una corrección que no cambia qué se exige.
+
+**Lo que entra:**
+
+- `validadores/plan_vs_hecho.py`: acepta las rutas «de una» de todo análisis que entra en el mismo commit, prendido o aprobado; `validadores/freno.py` las lee con `rutas_de_una`.
+
+Sale del análisis 16 del pendiente 103 (acuerdo 1).
+
+---
+
+## 53.1.1 — 2026-10-03
+
+**El pendiente cierra cuando su épica termina, y el freno no toma `>=` por escritura.**
+
+**PARCHE**: dos correcciones que no cambian qué se exige.
+
+**Lo que entra:**
+
+- `validadores/pendientes.py`: reconoce «HU 1» escrito con espacio, y la fila que no nombra una HU queda cumplida cuando la épica donde vive el pendiente terminó.
+- `validadores/freno.py`: `>=` compara, no redirige.
+
+Sale del análisis 15 del pendiente 103 (acuerdo 1).
+
+---
+
+## 53.1.0 — 2026-10-03
+
+**La épica EP-023 queda terminada: la regla del pendiente, la integración continua y el `sed`.**
+
+**MENOR**: lo que entra se agrega a lo que ya funcionaba; la plantilla del análisis ya pedía pasar el pendiente a su versión siguiente desde la 51.1.0.
+
+**Lo que entra:**
+
+- `13·DOC26`: desde el segundo análisis, aprobarlo pasa el pendiente a su versión siguiente. La fila 1 de `plantillas/analisis.md` la cita en lugar del análisis 11, que solo existía en este repositorio, y `validadores/origen.py` acepta la cita de una regla y comprueba que exista.
+- `validadores/instalar.py`: el proyecto que tiene integración continua recibe la revisión del plan (`.github/workflows/cimiento.yml`, o `.cimiento-ci.yml` incluido en `.gitlab-ci.yml`). De dónde se descarga Cimiento va en el archivo como dato del proyecto, y el instalador no lo vuelve a tocar.
+- `validar.py plan --rango desde..hasta`: revisa contra el plan lo que trae un rango de commits.
+- `adaptadores/contrato.md`: qué capas del freno cubre cada adaptador.
+- `validadores/freno.py`: lo que va tras `sed -e` es la orden, no un archivo.
+
+Sale del análisis 14 del pendiente 103 (acuerdos 3, 10 y 11) y del CA-02 de la [HU-007 de EP-023](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md).
+
+---
+
 ## 53.0.0 — 2026-10-03
 
 **El proyecto reporta a la HU que originó el defecto, y se entera cuando se resuelve.** ⚠ obliga a migrar

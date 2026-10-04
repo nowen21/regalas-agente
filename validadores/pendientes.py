@@ -302,7 +302,8 @@ _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
 _COMPROBADO = re.compile(r"^\*\*Comprobado:\*\*\s*\d{4}-\d{2}-\d{2}\s*$", re.M)
 _DE_DONDE = re.compile(r"^\|\s*\*\*De dónde sale\*\*\s*\|(.+?)\|\s*$", re.M)
 _ENLACE = re.compile(r"\]\(([^)#\s]+)")
-_HU_EN_TEXTO = re.compile(r"EP-0*(\d+)\D{1,40}?HU-0*(\d+)")
+# «HU-001» o «HU 1»: el análisis 1 del pendiente 103 escribe la segunda (análisis 15, acuerdo 1).
+_HU_EN_TEXTO = re.compile(r"EP-0*(\d+)\D{1,40}?HU[- ]0*(\d+)")
 _FILA = re.compile(r"^\| *\d+ *\|(.*)\|\s*$", re.M)
 _PARTES = (("De dónde sale", re.compile(r"^\|\s*\*\*De dónde sale\*\*\s*\|", re.M)),
            ("El problema", re.compile(r"^## El problema\s*$", re.M)),
@@ -403,7 +404,21 @@ def _fila_cumplida(celda, analisis, proyecto):
     hus = [h for h in hus if re.match(r"HU-\d+", os.path.basename(h)) and h.endswith(".md")]
     if not hus:
         hus = [r for r in (_hu_por_numero(proyecto, int(e), int(h)) for e, h in _HU_EN_TEXTO.findall(celda)) if r]
-    return bool(hus) and all(_hu_terminada(h) for h in hus)
+    if not hus:
+        # La fila que no nombra una HU es trabajo de la épica: queda cumplida
+        # cuando la épica donde vive el pendiente terminó (análisis 15, acuerdo 1).
+        return _epica_terminada(analisis)
+    return all(_hu_terminada(h) for h in hus)
+
+
+def _epica_terminada(analisis):
+    """Si la épica que contiene la carpeta del pendiente está terminada."""
+    carpeta = os.path.dirname(os.path.abspath(analisis))
+    while carpeta and os.path.dirname(carpeta) != carpeta:
+        if re.match(r"EP-\d+", os.path.basename(carpeta)):
+            return _hu_terminada(os.path.join(carpeta, "epica.md"))
+        carpeta = os.path.dirname(carpeta)
+    return False
 
 
 def estado(carpeta, proyecto=None, _vistos=None):

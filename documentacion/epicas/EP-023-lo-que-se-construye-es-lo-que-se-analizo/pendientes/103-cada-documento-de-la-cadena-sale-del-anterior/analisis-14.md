@@ -1,5 +1,7 @@
 # Análisis 14: el validador de origen no acepta que una fila cite el acuerdo de otro análisis
 
+> **Aprobado** por el usuario el 2026-10-03, en el turno 573, con la versión 53.1.0. Desde ese momento este análisis no se reescribe.
+
 > Este análisis se redacta aplicando estas reglas.
 >
 > | Regla | Qué exige |
@@ -938,6 +940,282 @@ Dejé aprobadas las fases C de la HU-003 y de la HU-007.
 ### 553 · Usuario, 2026-10-03 22:13:54
 > hágalo
 
+**Agente**, 2026-10-03 22:15:28
+<!-- agente: 511edea3-81f8-4517-90ab-ceb0e758a665 -->
+
+Hice el commit `2f3e0a7` y lo subí; `main` quedó igual que el remoto.
+
+- **Por fuera del commit:** la auditoría y `2026-09-30-sesion.md`, como se acordó.
+- **Pendiente para el próximo commit:** la anotación del hash en el estado de las dos fases.
+- **Aviso del push:** según su archivo de estado, la última corrida de las pruebas internas, del 2026-09-02, dejó 1 falla. El push no se detuvo.
+
+Falta:
+1. La regla del acuerdo 3 del análisis 14, cuando ese análisis se apruebe.
+2. Que el freno no tome por archivo el texto de un `sed`.
+3. La fase D de la HU-007.
+4. El pendiente 109 de la EP-005.
+
+### 554 · Usuario, 2026-10-03 22:17:08
+> pregunta: qué sigue?
+
+**Agente**, 2026-10-03 22:17:19
+<!-- agente: f28ddafc-e1ed-4047-9006-e92c5896207d -->
+
+Lo que sigue es cerrar el análisis 14.
+
+1. **Anotar lo del `sed`.** El freno confundió el texto de un `sed` con un archivo. Va como acuerdo nuevo del análisis 14, porque está prendido, y su arreglo se envía a la HU-007.
+2. **Aprobar el análisis 14.** Solo le falta la fila 5, la regla que pasa el pendiente a su versión siguiente, y esa fila se va a la HU-003. Las demás ya están hechas.
+3. **Bajar lo pendiente a sus HU.** La regla nueva queda como CA y fase D de la HU-003. Lo del `sed` entra a la fase D de la HU-007, junto con la integración continua.
+
+Después viene el pendiente 109 de la EP-005.
+
+### 555 · Usuario, 2026-10-03 22:18:00
+> va llevando la lista de los aprobados=
+
+**Agente**, 2026-10-03 22:18:08
+<!-- agente: b4c9a876-3c2e-4236-8b1f-17b279d31eef -->
+
+Falta la palabra que dice qué se espera (por ejemplo, «Pregunta» o «Hágalo»).
+
+### 556 · Usuario, 2026-10-03 22:18:24
+> pregunta: va llevando la lista de los aprobados?
+
+**Agente**, 2026-10-03 22:18:35
+<!-- agente: 438728af-38c1-485e-a59c-f3bec225bab3 -->
+
+Sí, quedan escritos en el análisis 14:
+
+- **«Lo acordado»:** los acuerdos 1 a 9.
+- **«Lo que se tiene que hacer»:** las filas 1 a 10. Todas están hechas menos la 5, que es la regla nueva para la HU-003.
+
+Las fases aprobadas quedan en el `resultado_pruebas.md` de cada fase, con su fecha.
+
+### 557 · Usuario, 2026-10-03 22:19:02
+> pregunta: qué sigue?
+
+**Agente**, 2026-10-03 22:19:10
+<!-- agente: dce88289-6b1c-4699-bfee-59a4a08a93d9 -->
+
+Sigue anotar el caso del `sed` como acuerdo 10 del análisis 14 y mandarlo a la HU-007. Con eso, el análisis 14 se puede aprobar.
+
+Para hacerlo hace falta un «Apruebo».
+
+### 558 · Usuario, 2026-10-03 22:19:30
+> Apruebo
+
+**Agente**, 2026-10-03 22:20:05
+<!-- agente: d0377254-fa4d-45e4-9900-02ef372d7bdf -->
+
+Anoté el caso del `sed` en el análisis 14: es el acuerdo 10 y la fila 11, que lo manda a la HU-007. Los validadores `origen` y `estandar` no muestran fallas.
+
+Ya se puede aprobar el análisis 14 con «Apruebo el análisis».
+
+### 559 · Usuario, 2026-10-03 22:20:37
+> que falta de la épica 23?
+
+**Agente**, 2026-10-03 22:20:45
+<!-- agente: 09d718e4-89c8-43bf-b4b3-5ecc7f4ff0a6 -->
+
+Falta la palabra que dice qué se espera (por ejemplo, «Pregunta»).
+
+### 560 · Usuario, 2026-10-03 22:23:06
+> pregunta: qué falta de la épica 23?
+
+**Agente**, 2026-10-03 22:23:50
+<!-- agente: 9f95a383-2866-4ca0-8f1b-2e8e9b73aea8 -->
+
+Reviso las HU de la épica y su estado.
+
+Las 7 HU de la épica 23 tienen todas sus fases construidas y aprobadas. Quedan tres cosas, y todas salen del análisis 14 o de la HU-007:
+
+1. **Aprobar el análisis 14.** Está completo y ya se puede aprobar.
+2. **HU-003, fase D:** la regla que obliga a pasar el pendiente a su versión siguiente, más la fila 1 de la plantilla citándola (fila 5 del análisis 14).
+3. **HU-007, fase D:**
+   - la revisión en la integración continua, que es lo que queda de su CA-02 (de dónde se descarga Cimiento es un dato del proyecto);
+   - que el freno no tome el texto de un `sed` por un archivo (fila 11 del análisis 14).
+
+Con esas dos fases, la épica queda cerrada.
+
+### 561 · Usuario, 2026-10-03 22:25:14
+> terminemos lo que falta de la épica
+
+**Agente**, 2026-10-03 22:25:21
+<!-- agente: 2d3a90ae-2bfd-4a46-a43c-2a64b73e8137 -->
+
+Falta la palabra que dice qué se espera (por ejemplo, «Hágalo» o «Escriba»).
+
+### 562 · Usuario, 2026-10-03 22:25:35
+> Hágalo: terminemos lo que falta de la épica
+
+**Agente**, 2026-10-03 22:25:52
+<!-- agente: f876c4ab-e511-4de8-8e85-d8202193caee -->
+
+Para terminar la épica hace falta primero tu «Apruebo el análisis». Esa aprobación es solo tuya, y es la que deja nacer los criterios nuevos en la HU-003 y en la HU-007.
+
+Con ella hago esto, en orden:
+1. Escribo el CA nuevo de la HU-003 (la regla del pendiente) y el de la HU-007 (el `sed`).
+2. Escribo el plan y las pruebas de la fase D de cada una. La de la HU-007 incluye también la integración continua que falta del CA-02.
+3. Te presento los dos planes para que los apruebes, construyo, cierro la épica y te pido aparte la aprobación del commit.
+
+### 563 · Usuario, 2026-10-03 22:26:49
+> vamos a terminar toda la épica desde acá ya no quiero más análisis y no está rindiento
+
+**Agente**, 2026-10-03 22:26:57
+<!-- agente: 047569de-3f8d-4452-a304-5026b634c8f5 -->
+
+Falta la palabra que dice qué se espera. Con «Hágalo», termino todo desde el análisis 14 con filas «de una», sin abrir otro análisis.
+
+### 564 · Usuario, 2026-10-03 22:27:57
+> Hágalo: vamos a terminar toda la épica desde acá ya no quiero más análisis y no está rindiento
+
+**Agente**, 2026-10-03 22:59:15
+<!-- agente: f763ab95-eef0-44e7-8f0c-c9dc630e16bc -->
+
+Voy a revisar qué ya existe para estas tres cosas: la regla del pendiente, el `sed` y la integración continua.
+
+Revisé el código: el freno toma las expresiones de `sed -e` como archivos, y `origen.py` no acepta citar una regla. Ahora leo el acuerdo del que sale la regla nueva.
+
+Ya tengo el diseño. Antes de escribir, compruebo los archivos que voy a tocar: el índice del capítulo 13, el estado de las HU y de la épica, y el despachador de `validar.py plan`.
+
+Ahora anoto en el análisis 14 lo que se decidió y las filas «de una», con sus rutas exactas.
+
+Anoté el acuerdo 11 y las filas 5 y 11 a 13 «de una». Empiezo por el `sed` en el freno.
+
+El `sed` quedó resuelto: las 22 pruebas del freno pasan. Sigo con la regla nueva y con `origen.py`.
+
+Ahora `origen.py`: que acepte la cita de una regla y compruebe que la regla existe.
+
+El patrón quedó con caracteres dañados por la consola; lo corrijo con el editor.
+
+La regla `13·DOC26` y `origen.py` funcionan: pasan 43 pruebas. Regenero el mapa de tareas y paso al trabajo de integración continua.
+
+Ahora el cambio en `plan_vs_hecho.py`: revisar contra el plan una lista cualquiera de archivos, y un rango de commits.
+
+Ahora la instalación: agrega la revisión a la integración continua del proyecto que la tenga.
+
+Ahora las pruebas de la integración continua: el rango de commits, GitHub, GitLab y un proyecto sin integración continua.
+
+Pasan las 7 pruebas de integración continua. Sigo con el contrato de los adaptadores; antes compruebo qué cubre hoy cada enganche.
+
+Escribí el contrato de los adaptadores. Corro las pruebas de los programas que cambiaron.
+
+La regla nueva tiene que figurar en el registro de reglas validables. Agrego ese archivo a la fila 5 y la anoto.
+
+Ahora cierro las 7 HU y la épica, y subo la versión. Uso un guion en la carpeta de apoyo del día.
+
+Ahora `CHANGELOG`, `VERSION` y las fechas en las filas del análisis.
+
+El freno avisó por `plataforma/datos/auditoria/2026-10.md`. Ese archivo lo escribe la plataforma, no esta sesión, y siempre queda fuera del commit; no lo toco. Espero las pruebas.
+
+Las pruebas de `validadores/tests` siguen corriendo. `pruebas.py` ya terminó y pasan las 571.
+
+### 565 · Usuario, 2026-10-03 23:00:07
+> pregunta: Esto qué es: 571?
+
+**Agente**, 2026-10-03 23:00:18
+<!-- agente: fea634a4-0bb4-4a83-a06f-a9dd62b44fe2 -->
+
+571 es la cantidad de pruebas automáticas de `validadores/pruebas.py`. Cada una comprueba que un programa del estándar haga lo que debe. Pasaron todas, así que el cambio no dañó nada de lo que ya funcionaba.
+
+### 566 · Usuario, 2026-10-03 23:01:01
+> pregunta: qué sigue?
+
+**Agente**, 2026-10-03 23:01:22
+<!-- agente: 653f68b8-9316-4db5-b4ee-4fd97291b668 -->
+
+La épica 23 quedó construida en la 53.1.0. Lo que falta:
+
+1. **Esperar las pruebas de `validadores/tests`**, que siguen corriendo.
+2. **Aprobar el análisis 14** con «Apruebo el análisis». Así cierra el pendiente 103.
+3. **Aprobar el commit** aparte. La auditoría y `2026-09-30-sesion.md` quedan por fuera.
+
+Después de eso sigue el pendiente 109 de la EP-005.
+
+### 567 · Usuario, 2026-10-03 23:02:11
+> todos los acuerdos de este análisis ya quedaron?
+
+**Agente**, 2026-10-03 23:02:22
+<!-- agente: 7de28b94-ff06-4d4e-9642-b0d9cf984236 -->
+
+Falta la palabra que dice qué se espera (por ejemplo, «Pregunta» o «Verifique»).
+
+### 568 · Usuario, 2026-10-03 23:04:06
+> Pregunta: todos los acuerdos de este análisis ya quedaron?
+
+**Agente**, 2026-10-03 23:04:31
+<!-- agente: e085cf6d-3f0f-4996-89cf-c2b11d3b681a -->
+
+Lo compruebo en el archivo.
+
+Sí. El análisis 14 tiene 11 acuerdos y 13 filas en «Lo que se tiene que hacer», y las 13 están hechas con fecha del 2026-10-03.
+
+Para cerrarlo falta tu «Apruebo el análisis».
+
+### 569 · Usuario, 2026-10-03 23:05:16
+> pregunta: de ese análisis no queda nada pendiente?
+
+**Agente**, 2026-10-03 23:05:53
+<!-- agente: 89f6b9ca-4d9f-489f-8f9d-758838edd18e -->
+
+No queda nada por hacer en el análisis 14. Sus 13 filas están hechas, y la revisión que corre antes de aprobar no encontró ninguna falla.
+
+Lo único abierto son tres aprobaciones, todas tuyas:
+
+1. **«Apruebo el análisis».** Al aprobarlo se apaga, y el pendiente 103 ya puede cerrar.
+2. **El commit y la subida a git**, que se aprueban aparte.
+3. **Las pruebas de `validadores/tests`:** siguen corriendo en segundo plano. Aviso el resultado cuando terminen.
+
+### 570 · Usuario, 2026-10-03 23:09:57
+> <task-notification>
+> <task-id>bbsaeghks</task-id>
+> <tool-use-id>toolu_0184cDc7FPcvC4hS51AbsFfC</tool-use-id>
+> <output-file>C:\Users\user\AppData\Local\Temp\claude\c--Ing--Jose-ia-agente\80e196d8-a628-4636-88bc-47f25284b684\tasks\bbsaeghks.output</output-file>
+> <status>completed</status>
+> <summary>Background command "Check pending state and run all validator tests" completed (exit code 0)</summary>
+> </task-notification>
+
+### 571 · Usuario, 2026-10-03 23:18:22
+> Revisar el resultado de las pruebas de validadores/tests y reportar el cierre de la épica EP-023.
+
+**Agente**, 2026-10-03 23:18:36
+<!-- agente: d1fe016a-de1e-4d61-9451-4dcbe2f602a8 -->
+
+No vuelvo a correr nada: la última corrida la rechazaste, y quedo a la espera de tu indicación.
+
+Lo que ya se sabe del cierre de la épica EP-023:
+
+- **Pruebas:**
+  - `validadores/pruebas.py`: las 571 pasan.
+  - Las de los programas que cambiaron: 56 de freno, origen, plan e integración continua, más 43 de origen y análisis. Todas pasan.
+  - El total de `validadores/tests` no quedó en la salida y no lo volví a correr.
+- **Validadores:** `estandar`, `origen`, `tareas`, `flujo` y `metareglas` no muestran fallas.
+- **La épica:** sus 7 HU y la épica quedan como «Terminada el 2026-10-03». La versión es la 53.1.0.
+- **Lo que necesita tu aprobación:** «Apruebo el análisis» para el análisis 14, y después, aparte, el commit.
+
+### 572 · Usuario, 2026-10-03 23:18:38
+> qué está haciendo?
+
+**Agente**, 2026-10-03 23:18:50
+<!-- agente: 78098355-14a9-49e2-8c48-5632d55d83b9 -->
+
+No estoy haciendo nada: espero tu indicación. Falta la palabra que dice qué se espera (por ejemplo, «Pregunta»).
+
+### 573 · Usuario, 2026-10-03 23:19:26
+> Apruebo el análisis
+
+**Agente**, 2026-10-03 23:20:00
+<!-- agente: 27ad4160-82ae-40e8-9314-283ca480892e -->
+
+El análisis 14 quedó aprobado, pero el pendiente 103 sigue abierto. Busco qué fila lo detiene.
+
+El análisis 14 quedó aprobado en el turno 573, con la versión 53.1.0.
+
+El pendiente 103 sigue abierto, aunque las siete HU ya están terminadas. Es un defecto del programa que calcula el estado (`pendientes.py`): las filas del análisis 1 escriben «EP-023, HU 1», con espacio, y el programa solo reconoce «HU-001». Por eso no ve que esas HU ya terminaron.
+
+Se arregla en `validadores/pendientes.py` haciendo que acepte también «HU 1», con una prueba nueva. Como el análisis 14 queda apagado al terminar esta respuesta, el arreglo necesita aprobación aparte.
+
+¿Lo apruebas? Después de eso, falta aprobar el commit.
+
 > acá termina la conversación
 
 ---
@@ -955,6 +1233,8 @@ Dejé aprobadas las fases C de la HU-003 y de la HU-007.
 7. La prueba de la fase A de la HU-003 que espera que el seguimiento cierre con su padre se pone al día con el CA-11: espera también el aviso con la fecha en «Comprobado». El plan de la fase C no la nombró, y se corrige de una aquí (turnos 538 a 550).
 8. La copia de `02·F24` que escribe `mapa_tareas.py` quedó en `base/reglas-por-tarea/trabajar-cadena-1.md`, no en la `-2` que nombró el plan de la fase C. Entra de una aquí (turnos 550 a 552).
 9. La prueba `test_limites_sin_la_carpeta_es_falla` de `validadores/pruebas.py` espera que la falta de `pendientes/` sea falla, y desde la 45.0.0 no lo es. Se pone al día de una aquí (turnos 550 a 552).
+10. El freno tomó por archivo el texto de una orden `sed` que cambia un documento, y la detuvo. Va a la HU-007, con la fase D (turnos 550 y 556 a 558).
+11. La épica se termina desde este análisis, sin abrir otro: la regla del punto 3, el `sed` del punto 10, y lo que falta del CA-02 de la HU-007 (la revisión en la integración continua, con de dónde se descarga Cimiento como dato del proyecto, y el contrato que dice qué capas cubre cada adaptador) se hacen de una aquí. Las siete HU y la épica quedan terminadas (turnos 561 a 564).
 
 Siguen abiertas: ninguna.
 
@@ -1041,7 +1321,10 @@ EP-023, Lo que se construye es lo que se analizó.
 | 8 | Que la prueba del seguimiento en `validadores/tests/test_el_pendiente_tiene_solo_lo_suyo.py` espere el aviso con la fecha en «Comprobado» antes de dar el seguimiento por cerrado | 7 | Este análisis, de una y sin fase: `validadores/tests/test_el_pendiente_tiene_solo_lo_suyo.py`, hecho el 2026-10-03 |
 | 9 | Que la copia de `02·F24` en `base/reglas-por-tarea/trabajar-cadena-1.md` entre con la fase C de la HU-003 | 8 | Este análisis, de una y sin fase: `base/reglas-por-tarea/trabajar-cadena-1.md`, hecho el 2026-10-03 |
 | 10 | Que `test_limites_sin_la_carpeta_es_falla` en `validadores/pruebas.py` espere que la falta de `pendientes/` no sea falla | 9 | Este análisis, de una y sin fase: `validadores/pruebas.py`, hecho el 2026-10-03 |
-| 5 | Crear la regla del estándar que obliga a pasar el pendiente a su versión siguiente, y que la fila 1 de la plantilla del análisis la cite en lugar del análisis 11 | 3 | EP-023, [HU-003](../../HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) |
+| 5 | Crear la regla del estándar que obliga a pasar el pendiente a su versión siguiente, que la fila 1 de la plantilla del análisis la cite en lugar del análisis 11 y que `validadores/origen.py` acepte la cita de una regla, con su prueba, y su entrada en `CHANGELOG.md` y `VERSION` | 3, 11 | Este análisis, de una y sin fase: `base/13-documentacion/reglas/DOC26-cada-analisis-deja-su-pendiente-en-la-version-siguiente.md`, `base/13-documentacion/base.md`, `plantillas/analisis.md`, `validadores/origen.py`, `validadores/tests/test_origen.py`, `validadores/reglas-validables.md`, `base/reglas-por-tarea/README.md`, `base/reglas-por-tarea/escribir-documento-1.md`, `base/reglas-por-tarea/escribir-documento-2.md`, `base/reglas-por-tarea/trabajar-cadena-1.md`, `base/reglas-por-tarea/trabajar-cadena-2.md`, `base/mapa-de-tareas.md`, `CHANGELOG.md`, `VERSION`, hecho el 2026-10-03 |
+| 11 | Que el freno no tome por archivo el texto de una orden `sed`, con su prueba | 10, 11 | Este análisis, de una y sin fase: `validadores/freno.py`, `validadores/tests/test_el_freno.py`, hecho el 2026-10-03 |
+| 12 | Que la instalación agregue la revisión del plan a la integración continua del proyecto que la tiene, con de dónde se descarga Cimiento como dato del proyecto, que `validar.py plan` revise un rango de commits, y que el contrato diga qué capas del freno cubre cada adaptador | 11 | Este análisis, de una y sin fase: `validadores/plan_vs_hecho.py`, `validadores/validar.py`, `validadores/instalar.py`, `validadores/tests/test_la_integracion_continua_revisa_el_plan.py`, `adaptadores/contrato.md`, hecho el 2026-10-03 |
+| 13 | Dejar terminadas las siete HU y la épica | 11 | Este análisis, de una y sin fase: `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md`, `documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/epica.md`, hecho el 2026-10-03 |
 
 ## Lo que aporta al análisis principal
 

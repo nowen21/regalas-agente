@@ -138,13 +138,13 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 
 ## Lo que se tiene que hacer
 
-> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el acuerdo de donde sale, de una de dos formas: un número es un punto de «Lo acordado» de este análisis, y «Análisis N, acuerdo M» es un acuerdo de otro análisis del mismo pendiente. Lo que no tenga acuerdo no entra. La fila que se hace «de una y sin fase» nombra las rutas exactas que toca, entre comillas invertidas: mientras el análisis está prendido, el freno deja escribir esas y ninguna otra.
+> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita de dónde sale, de una de tres formas: un número es un punto de «Lo acordado» de este análisis, «Análisis N, acuerdo M» es un acuerdo de otro análisis del mismo pendiente, y una regla del estándar, como `13·DOC26`, es lo que la regla exige. Lo que no tenga acuerdo no entra. La fila que se hace «de una y sin fase» nombra las rutas exactas que toca, entre comillas invertidas: mientras el análisis está prendido, el freno deja escribir esas y ninguna otra.
 >
 > La fila 1 va siempre, salvo en el análisis que origina el pendiente: pasar el pendiente a su versión siguiente, con el hallazgo de este análisis en «De dónde sale».
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | Pasar el pendiente a su versión siguiente | Análisis 11, acuerdo 5 | Este análisis, de una y sin fase: `«ruta del pendiente.md»`, hecho el «fecha» |
+| 1 | Pasar el pendiente a su versión siguiente | `13·DOC26` | Este análisis, de una y sin fase: `«ruta del pendiente.md»`, hecho el «fecha» |
 | 2 | «qué hay que hacer» | «número» | «épica y HU, con su título y su enlace» |
 
 ## Lo que aporta al análisis principal

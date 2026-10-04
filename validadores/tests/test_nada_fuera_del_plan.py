@@ -132,6 +132,35 @@ class ElCommitSeComparaConElPlan(unittest.TestCase):
         self.preparar(FASE + "/plan_trabajo.md", "src/otro.py", "src/tercero.py")
         self.assertEqual(["src/tercero.py"], self.fallas())
 
+    def test_lo_que_un_analisis_aprobado_manda_hacer_entra_con_el(self):
+        """Análisis 16 del pendiente 103, acuerdo 1."""
+        pendiente = "documentacion/epicas/EP-009-algo/pendientes/7-algo"
+        self.escribir(pendiente + "/analisis-2.md",
+                      "# Análisis 2\n\n> **Aprobado** por el usuario el 2026-10-03.\n\n## Lo que se tiene que hacer\n\n"
+                      "| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |\n|---|---|---|---|\n"
+                      "| 1 | Corregir | 1 | Este análisis, de una y sin fase: `src/otro.py` |\n\n## Otra\n")
+        self.preparar(FASE + "/plan_trabajo.md", "src/otro.py", "src/tercero.py")
+        self.assertEqual(["src/otro.py", "src/tercero.py"], sorted(self.fallas()))
+        self.preparar(FASE + "/plan_trabajo.md", "src/otro.py", "src/tercero.py", pendiente + "/analisis-2.md")
+        self.assertEqual(["src/tercero.py"], self.fallas())
+
+    def test_el_hash_anotado_solo_no_toca_la_fase(self):
+        """Análisis 16 del pendiente 103, acuerdo 2."""
+        self.preparar(FASE + "/plan_trabajo.md")
+        self.git("commit", "-q", "-m", "plan")
+        self.preparar(FASE + "/estado-fase.md", "src/tercero.py")
+        self.assertEqual([], self.fallas())
+
+    def test_avisa_la_prueba_que_lee_lo_que_cambia_y_no_se_declara(self):
+        """Análisis 16 del pendiente 103, acuerdo 2."""
+        self.escribir("src/a.py", "x = 1\n")
+        self.escribir("tests/test_a.py", "import a\n")
+        self.escribir("tests/test_otro.py", "import b\n")
+        avisos = plan_vs_hecho.pruebas_sin_declarar(os.path.join(self.raiz, *FASE.split("/")), self.raiz)
+        self.assertEqual(1, len(avisos))
+        self.assertIn("tests/test_a.py", avisos[0].mensaje)
+        self.assertNotIn("test_otro", avisos[0].mensaje)
+
     def test_el_pre_commit_lo_corre(self):
         self.assertIn("validar.py\" plan --raiz \"$(pwd)\" --preparados", instalar.PLANTILLA_PRE_COMMIT)
 

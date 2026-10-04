@@ -16,7 +16,7 @@
 | **Horizonte** | Versión 40.0.0 (análisis 1, punto 30) |
 | **Product Owner** | Ing. José Dúmar Jiménez Ruíz |
 | **Tech Lead / Arquitecto** | N/A |
-| **Estado** | Propuesta |
+| **Estado** | Terminada el 2026-10-03: sus siete historias cumplen |
 
 ## 2. Resumen ejecutivo
 
@@ -95,13 +95,13 @@ N/A: la épica no trata de una entidad con campos, estados y operaciones. Su alc
 
 | ID | Título | Puntos de lo que se tiene que hacer | Orden | Estado |
 |---|---|---|---|---|
-| [HU-001](HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) | El análisis existe, tiene su forma y revisa las cuatro partes | Análisis 1: 1, 2, 3, 15, 16, 23, 30, 32. Análisis 2: 1 a 6 y 8. Análisis 4: 2 | 1 | Lista: aprobada el 2026-10-01 |
-| [HU-002](HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) | Cada documento sale del anterior | Análisis 1: 4, 5. Análisis 4: 1 | 3 | Lista: aprobada el 2026-10-01 |
-| [HU-003](HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) | El hallazgo y el pendiente tienen solo lo que les corresponde | Análisis 1: 7, 10, 11, 12, 19, 20, 21 | 4 | Lista: aprobada el 2026-10-01 |
-| [HU-004](HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis.md) | Un hallazgo detiene la ejecución y vuelve al análisis | Análisis 1: 6, 13, 14, 17, 18, 24. Análisis 2: 7 | 5 | Lista: aprobada el 2026-10-01 |
-| [HU-005](HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) | Nada se agrega fuera de lo pedido | Análisis 1: 8, 22, 28 | 2 | Lista: aprobada el 2026-10-01 |
-| [HU-006](HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) | Lo aprendido incluye las lecciones | Análisis 1: 9 | 7 | Lista: aprobada el 2026-10-01 |
-| [HU-007](HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | Nada se escribe fuera del plan aprobado | Análisis 1: 25, 26, 27, 31 | 6 | Lista: aprobada el 2026-10-01 |
+| [HU-001](HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes/HU-001-el-analisis-existe-tiene-su-forma-y-revisa-las-cuatro-partes.md) | El análisis existe, tiene su forma y revisa las cuatro partes | Análisis 1: 1, 2, 3, 15, 16, 23, 30, 32. Análisis 2: 1 a 6 y 8. Análisis 4: 2 | 1 | Terminada el 2026-10-03 |
+| [HU-002](HU-002-cada-documento-sale-del-anterior/HU-002-cada-documento-sale-del-anterior.md) | Cada documento sale del anterior | Análisis 1: 4, 5. Análisis 4: 1 | 3 | Terminada el 2026-10-03 |
+| [HU-003](HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md) | El hallazgo y el pendiente tienen solo lo que les corresponde | Análisis 1: 7, 10, 11, 12, 19, 20, 21 | 4 | Terminada el 2026-10-03 |
+| [HU-004](HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis.md) | Un hallazgo detiene la ejecución y vuelve al análisis | Análisis 1: 6, 13, 14, 17, 18, 24. Análisis 2: 7 | 5 | Terminada el 2026-10-03 |
+| [HU-005](HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) | Nada se agrega fuera de lo pedido | Análisis 1: 8, 22, 28 | 2 | Terminada el 2026-10-03 |
+| [HU-006](HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) | Lo aprendido incluye las lecciones | Análisis 1: 9 | 7 | Terminada el 2026-10-03 |
+| [HU-007](HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | Nada se escribe fuera del plan aprobado | Análisis 1: 25, 26, 27, 31 | 6 | Terminada el 2026-10-03 |
 
 ## 10. Consideraciones técnicas
 
@@ -167,11 +167,11 @@ El número identifica a la HU y no cambia; el orden de ejecución sale de las de
 | 1 | HU-001, fases A a C | Ninguna | Las demás se apoyan en el análisis | Hecha |
 | 2 | HU-005 | HU-001 | Es pequeña y ataca la causa más directa | Hecha |
 | 3 | HU-002 | HU-001 | Cada documento sale del anterior | Hecha |
-| 4 | HU-001, fase D | Ninguna | Todo análisis que venga usa la plantilla | Por hacer |
-| 5 | HU-003 | HU-001 | Da la forma del hallazgo y del pendiente que usan la HU-004 y la HU-007, y resuelve las fallas de `fases` y de `pendientes` | Por hacer |
-| 6 | HU-006 | HU-001, fase D | Las lecciones alimentan las recomendaciones que crea la fase D | Por hacer |
-| 7 | HU-004 | HU-003 | Detener la ejecución necesita la forma del hallazgo | Por hacer |
-| 8 | HU-007 | HU-003, HU-004 | El freno anota el hallazgo y vuelve al análisis | Por hacer |
+| 4 | HU-001, fase D | Ninguna | Todo análisis que venga usa la plantilla | Hecha |
+| 5 | HU-003 | HU-001 | Da la forma del hallazgo y del pendiente que usan la HU-004 y la HU-007, y resuelve las fallas de `fases` y de `pendientes` | Hecha |
+| 6 | HU-006 | HU-001, fase D | Las lecciones alimentan las recomendaciones que crea la fase D | Hecha |
+| 7 | HU-004 | HU-003 | Detener la ejecución necesita la forma del hallazgo | Hecha |
+| 8 | HU-007 | HU-003, HU-004 | El freno anota el hallazgo y vuelve al análisis | Hecha |
 
 Las fechas se fijan al planear cada HU.
 

@@ -112,6 +112,26 @@ def _borrar_estado(raiz):
         os.remove(ruta)
 
 
+# «Corrija» deja corregir las herramientas del proceso en esa respuesta, sin
+# abrir análisis (análisis 16 del pendiente 103, acuerdo 2). Vale un solo turno:
+# el mensaje siguiente lo borra.
+CORRIJA = os.path.join("historico-chat", ".estado", "corrija.txt")
+
+
+def marcar_corrija(raiz, turno):
+    _escribir(os.path.join(raiz, CORRIJA), "turno=%d\n" % turno)
+
+
+def borrar_corrija(raiz):
+    ruta = os.path.join(raiz, CORRIJA)
+    if os.path.isfile(ruta):
+        os.remove(ruta)
+
+
+def corrija_activo(raiz):
+    return os.path.isfile(os.path.join(raiz, CORRIJA))
+
+
 def ultimo_turno(transcripcion):
     """El número del último turno del usuario en la transcripción, o 0."""
     numeros = [int(n) for n in _TURNO.findall(leer(transcripcion))] if transcripcion and os.path.isfile(transcripcion) else []

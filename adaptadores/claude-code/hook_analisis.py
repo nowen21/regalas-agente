@@ -64,8 +64,14 @@ def mensaje(raiz, entrada):
     # El análisis aprobado que quedó prendido se cierra aquí: la respuesta al
     # turno que lo aprobó ya está en la transcripción.
     curso.pasar(raiz)
+    curso.borrar_corrija(raiz)
     limpio = curso._limpio(texto)
     nota = ""
+    if limpio.startswith("corrija"):
+        curso.marcar_corrija(raiz, turno)
+        nota = ("«Corrija»: en esta respuesta se pueden corregir las herramientas del proceso "
+                "(validadores/, adaptadores/) sin abrir análisis; lo corregido se anota en el resumen "
+                "de la sesión (02·F8)")
 
     numero = curso.pendiente_pedido(texto)
     if numero is not None and transcripcion:

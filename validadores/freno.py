@@ -61,7 +61,8 @@ _NUNCA = [
      "descarta cambios de todo el proyecto (02·F8)"),
 ]
 
-_REDIRECCION = re.compile(r"(?<![<>&\d])(?:\d?>>?|&>>?)\s*(\"[^\"]+\"|'[^']+'|[^\s;|&<>]+)")
+# `>=` compara, no redirige (análisis 15 del pendiente 103, acuerdo 1).
+_REDIRECCION = re.compile(r"(?<![<>&\d=])(?:\d?>>?|&>>?)(?!=)\s*(\"[^\"]+\"|'[^']+'|[^\s;|&<>]+)")
 _ENTRE_COMILLAS = re.compile(r"\"[^\"]*\"|'[^']*'")
 _PS_RUTA = re.compile(r"-(?:FilePath|Path|LiteralPath|Destination)\s+(\"[^\"]+\"|'[^']+'|[^\s;|]+)", re.I)
 _PS_ESCRIBE = re.compile(r"\b(?:Out-File|Set-Content|Add-Content|New-Item|Remove-Item|Copy-Item|Move-Item|Rename-Item)\b", re.I)
@@ -93,8 +94,13 @@ def _de_una(proyecto):
     estado = curso.leer_estado(proyecto)
     if not estado or not os.path.isfile(estado["analisis"]):
         return set()
+    return rutas_de_una(estado["analisis"])
+
+
+def rutas_de_una(analisis):
+    """Las rutas exactas que un análisis manda hacer «de una y sin fase»."""
     rutas = set()
-    for celdas in origen.leer_analisis(estado["analisis"])["hacer"].values():
+    for celdas in origen.leer_analisis(analisis)["hacer"].values():
         if len(celdas) > 2 and re.search(r"(?i)de una", celdas[2]):
             # Los análisis nombran las rutas en «Pasó a»; también se leen en la
             # primera columna (análisis 14 del pendiente 103, acuerdo 2).
@@ -112,7 +118,13 @@ def permitido(proyecto):
         aprobado = plan_vs_hecho.aprobado_desde(texto)
         fases.append((relativa(proyecto, os.path.realpath(ruta)), aprobado,
                       set(plan_vs_hecho.rutas_exactas(texto)) if aprobado else set()))
-    return {"fases": fases, "reglas": autorizado.reglas(proyecto), "de_una": _de_una(proyecto)}
+    return {"fases": fases, "reglas": autorizado.reglas(proyecto), "de_una": _de_una(proyecto),
+            "corrija": curso.corrija_activo(proyecto)}
+
+
+# Lo que «Corrija» deja corregir sin análisis: las herramientas del proceso
+# (análisis 16 del pendiente 103, acuerdo 2).
+HERRAMIENTAS = ("validadores/", "adaptadores/")
 
 
 def motivo(proyecto, ruta_abs, lo_permitido):
@@ -123,6 +135,8 @@ def motivo(proyecto, ruta_abs, lo_permitido):
     if rel == ".git" or rel.startswith(".git/"):
         return None             # lo de git lo escribe git
     if autorizado.quien_autoriza(rel, lo_permitido["reglas"]) or rel in lo_permitido["de_una"]:
+        return None
+    if lo_permitido.get("corrija") and rel.startswith(HERRAMIENTAS):
         return None
     for carpeta, aprobado, declarados in lo_permitido["fases"]:
         if rel.startswith(carpeta + "/") or (aprobado and rel in declarados):
@@ -159,8 +173,37 @@ def _palabras(parte):
         return parte.split()
 
 
+def _archivos_de_sed(palabras):
+    """Los archivos de un `sed -i`: lo que va tras `-e` o `-f` es la orden, no un
+    archivo, y sin ellos la primera palabra suelta es la orden (análisis 14 del
+    pendiente 103, acuerdo 10)."""
+    sueltas, con_orden, i = [], False, 0
+    while i < len(palabras):
+        p = palabras[i]
+        if p in ("-e", "-f", "--expression", "--file"):
+            con_orden, i = True, i + 2
+            continue
+        if p.startswith(("--expression=", "--file=")):
+            con_orden = True
+        elif not p.startswith("-"):
+            sueltas.append(p)
+        i += 1
+    return sueltas if con_orden else sueltas[1:]
+
+
+_HEREDOC = re.compile(r"<<-?\s*(['\"]?)(\w+)\1[^\n]*\n.*?^\s*\2\s*$", re.S | re.M)
+
+
+def _sin_heredoc(orden):
+    """La orden sin el texto de sus heredocs: es lo que recibe el programa, no la
+    consola (análisis 16 del pendiente 103, acuerdo 2). Se conserva la línea que
+    abre el heredoc, que es donde va la redirección real."""
+    return _HEREDOC.sub(lambda m: m.group(0).split("\n", 1)[0], orden or "")
+
+
 def destinos(orden):
     """Las rutas que una orden de consola escribe o borra, tal como están escritas."""
+    orden = _sin_heredoc(orden)
     # Un `>` dentro de comillas es texto, no una redirección (análisis 13 del
     # pendiente 103, acuerdo 7): se borra antes de buscarlas.
     sin_texto = _ENTRE_COMILLAS.sub(lambda m: m.group(0).replace(">", " "), orden or "")
@@ -181,8 +224,8 @@ def destinos(orden):
             salida += args
         elif cmd == "tee":
             salida += args
-        elif cmd == "sed" and any(p.startswith("-i") for p in palabras[1:]) and len(args) > 1:
-            salida += args[1:]
+        elif cmd == "sed" and any(p.startswith("-i") for p in palabras[1:]):
+            salida += _archivos_de_sed(palabras[1:])
         elif cmd in ("curl", "wget"):
             for i, p in enumerate(palabras):
                 if p in ("-o", "-O", "--output") and i + 1 < len(palabras):

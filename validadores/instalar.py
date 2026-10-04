@@ -1188,6 +1188,115 @@ def instalar_registro(ruta, aplicar):
     return [f"anotar «{nombre}» en plantillas/proyectos.md"]
 
 
+# `EP-023·HU-007·CA-02` · La cuarta capa del freno: la integración continua
+# revisa que lo que trae cada cambio esté en el plan aprobado de su fase. Se
+# agrega sola donde el proyecto ya tiene integración continua, y de dónde se
+# descarga Cimiento es un dato del proyecto: va en el archivo, y el instalador no
+# lo vuelve a tocar (análisis 14 del pendiente 103, acuerdo 11).
+CI_GITHUB = ".github/workflows/cimiento.yml"
+CI_GITLAB = ".cimiento-ci.yml"
+_CI_OTROS = ("azure-pipelines.yml", "bitbucket-pipelines.yml", "Jenkinsfile",
+             ".circleci/config.yml", ".drone.yml", ".travis.yml")
+_CI_AVISO = """# Lo escribió el instalador de Cimiento (EP-023, HU-007, CA-02): revisa que lo
+# que trae cada cambio esté en el plan aprobado de su fase.
+# CIMIENTO_REPO dice de dónde se descarga Cimiento. Es un dato del proyecto: se
+# cambia aquí, y el instalador no lo vuelve a tocar.
+"""
+_CI_DESDE = ('if [ -z "$DESDE" ] || ! git cat-file -e "$DESDE^{commit}" 2>/dev/null; '
+             'then DESDE="$(git rev-list --max-parents=0 HEAD | tail -1)"; fi')
+PLANTILLA_CI_GITHUB = _CI_AVISO + """name: Cimiento
+on: [push, pull_request]
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    env:
+      CIMIENTO_REPO: __REPO__
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Descargar Cimiento
+        run: git clone --depth 1 "$CIMIENTO_REPO" "$RUNNER_TEMP/cimiento"
+      - name: Lo que trae el cambio contra el plan
+        run: |
+          DESDE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          __DESDE__
+          python3 "$RUNNER_TEMP/cimiento/validadores/validar.py" plan --raiz "$GITHUB_WORKSPACE" --rango "$DESDE..HEAD"
+"""
+PLANTILLA_CI_GITLAB = _CI_AVISO + """cimiento-plan:
+  image: python:3.12
+  variables:
+    CIMIENTO_REPO: __REPO__
+    GIT_DEPTH: 0
+  script:
+    - git clone --depth 1 "$CIMIENTO_REPO" /tmp/cimiento
+    - DESDE="${CI_MERGE_REQUEST_DIFF_BASE_SHA:-$CI_COMMIT_BEFORE_SHA}"
+    - __DESDE__
+    - python3 /tmp/cimiento/validadores/validar.py plan --raiz "$CI_PROJECT_DIR" --rango "$DESDE..HEAD"
+"""
+
+
+def _repo_del_estandar():
+    """De dónde se descarga Cimiento: el remoto del estándar instalado."""
+    return _mandar_git(RAIZ, "remote", "get-url", "origin").stdout.strip()
+
+
+def _escribir(ruta, texto):
+    os.makedirs(os.path.dirname(ruta) or ".", exist_ok=True)
+    with open(ruta, "w", encoding="utf-8", newline="\n") as f:
+        f.write(texto)
+
+
+def instalar_ci(ruta, aplicar, repo=None):
+    """Agrega la revisión del plan a la integración continua que el proyecto ya tiene."""
+    workflows = os.path.join(ruta, ".github", "workflows")
+    github = os.path.isdir(workflows) and any(
+        n.endswith((".yml", ".yaml")) and n != os.path.basename(CI_GITHUB)
+        for n in os.listdir(workflows))
+    gitlab = os.path.join(ruta, ".gitlab-ci.yml")
+    otros = [n for n in _CI_OTROS if os.path.isfile(os.path.join(ruta, n))]
+    if not (github or os.path.isfile(gitlab) or otros):
+        return ["sin integración continua: no se agrega la revisión del plan"]
+
+    pasos = []
+    repo = repo if repo is not None else _repo_del_estandar()
+    if (github or os.path.isfile(gitlab)) and not repo:
+        return ["OMITIDO: la integración continua no recibe la revisión del plan: "
+                "el estándar no tiene un remoto de dónde descargarlo"]
+
+    def llenar(plantilla):
+        return plantilla.replace("__REPO__", repo).replace("__DESDE__", _CI_DESDE)
+
+    if github:
+        destino = os.path.join(ruta, *CI_GITHUB.split("/"))
+        if os.path.isfile(destino):
+            pasos.append(f"{CI_GITHUB} ya estaba")
+        else:
+            pasos.append(f"crear {CI_GITHUB}: la integración continua revisa el plan")
+            if aplicar:
+                _escribir(destino, llenar(PLANTILLA_CI_GITHUB))
+    if os.path.isfile(gitlab):
+        destino = os.path.join(ruta, CI_GITLAB)
+        if not os.path.isfile(destino):
+            pasos.append(f"crear {CI_GITLAB}: la integración continua revisa el plan")
+            if aplicar:
+                _escribir(destino, llenar(PLANTILLA_CI_GITLAB))
+        texto = leer(gitlab)
+        if CI_GITLAB in texto:
+            pasos.append(f".gitlab-ci.yml ya incluye {CI_GITLAB}")
+        elif re.search(r"^include:", texto, re.M):
+            pasos.append(f"AVISO: .gitlab-ci.yml ya tiene «include:»; agregar ahí "
+                         f"«- local: {CI_GITLAB}»")
+        else:
+            pasos.append(f"incluir {CI_GITLAB} en .gitlab-ci.yml")
+            if aplicar:
+                _escribir(gitlab, texto.rstrip("\n") + f"\n\ninclude:\n  - local: {CI_GITLAB}\n")
+    for nombre in otros:
+        pasos.append(f"AVISO: {nombre} no se sabe ampliar solo; la revisión es "
+                     f"`validar.py plan --rango desde..hasta`")
+    return pasos
+
+
 def instalar(nombre, ruta, aplicar):
     # Prepara su propia salida. Imprime tildes y flechas, y la consola de
     # Windows tal como arranca no las admite: sin esto el programa se muere al
@@ -1257,7 +1366,7 @@ def instalar(nombre, ruta, aplicar):
         pasos += instalador(ruta, aplicar)
     if not propio:
         for instalador in (instalar_stack, instalar_agente_config,
-                           instalar_claude_md, instalar_registro):
+                           instalar_claude_md, instalar_registro, instalar_ci):
             pasos += instalador(ruta, aplicar)
 
     for paso in pasos:

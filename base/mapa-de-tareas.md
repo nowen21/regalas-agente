@@ -95,6 +95,7 @@ Las tareas son las de [base/tareas.md](tareas.md). El texto completo de las regl
 - [`13·DOC23`](13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md#doc23--escribe-el-glosario-de-los-términos-del-proyecto): Escribe el glosario de los términos del proyecto
 - [`13·DOC24`](13-documentacion/reglas/DOC24-cierra-el-analisis-en-su-mismo-archivo.md#doc24--cierra-el-análisis-en-su-mismo-archivo): Cierra el análisis en su mismo archivo
 - [`13·DOC25`](13-documentacion/reglas/DOC25-reescribe-el-analisis-principal-con-su-lista-de-cambios.md#doc25--reescribe-el-análisis-principal-con-su-lista-de-cambios): Reescribe el análisis principal con su lista de cambios
+- [`13·DOC26`](13-documentacion/reglas/DOC26-cada-analisis-deja-su-pendiente-en-la-version-siguiente.md#doc26--cada-análisis-deja-su-pendiente-en-la-versión-siguiente): Cada análisis deja su pendiente en la versión siguiente
 - [`13·DOC4`](13-documentacion/reglas/DOC4-documenta-lo-que-produccion-necesita.md#doc4--documenta-lo-que-producción-necesita): Documenta lo que producción necesita
 - [`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md#doc5--registra-como-señal-lo-que-no-se-recupera-del-código--opt-in): Registra como señal lo que no se recupera del código
 - [`13·DOC7`](13-documentacion/reglas/DOC7-registra-el-cruce-en-los-dos-documentos-que-se-referencian.md#doc7--registra-el-cruce-en-los-dos-documentos-que-se-referencian): Registra el cruce en los dos documentos que se referencian
