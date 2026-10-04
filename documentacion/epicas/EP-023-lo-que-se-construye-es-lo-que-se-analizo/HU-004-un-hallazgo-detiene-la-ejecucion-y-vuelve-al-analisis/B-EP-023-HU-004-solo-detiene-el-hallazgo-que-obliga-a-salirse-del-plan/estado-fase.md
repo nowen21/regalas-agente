@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ `estandar`, `tareas` y `origen` sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ Ninguno |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado de pruebas, funcionalidad, HU y registro de cambios |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `372c94e` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan

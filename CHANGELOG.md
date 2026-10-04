@@ -11,6 +11,52 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 53.0.0 — 2026-10-03
+
+**El proyecto reporta a la HU que originó el defecto, y se entera cuando se resuelve.** ⚠ obliga a migrar
+
+**MAYOR**: cambia dónde reporta un proyecto, y su pendiente de seguimiento ya no cierra solo.
+
+**Lo que entra:**
+
+- `02·F24`: el pendiente reportado nace en la HU que citan la regla o el programa que fallan, o en el resumen del día si no la citan; el seguimiento cierra cuando se cumple el plan y el proyecto comprueba el aviso.
+- `plantillas/pendiente-reportado.md` y `plantillas/pendiente-de-seguimiento.md`: dicen dónde se crea cada uno y cuándo cierra el seguimiento.
+- `validadores/aviso_resuelto.py`, llamado por `adaptadores/claude-code/hook_estacion.py` al anotar el commit: escribe `aviso-resuelto.md` al lado del seguimiento del proyecto, una sola vez; si un enlace falta, no escribe y dice cuál.
+- `validadores/pendientes.py`: el seguimiento queda abierto hasta que su aviso diga «Comprobado» con fecha.
+
+**Para migrar:** el proyecto que tenga un pendiente de seguimiento abierto lo deja así hasta que le llegue el aviso; al comprobar la corrección, pone la fecha en la línea «Comprobado».
+
+Sale del CA-10 y el CA-11 de la [HU-003 de EP-023](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md), fase `C`.
+
+---
+
+## 52.2.0 — 2026-10-03
+
+**Con un análisis prendido, el freno no anota hallazgos aparte, y un `>` entre comillas no es escritura.**
+
+**MENOR**: el freno detiene lo mismo y anota menos; nadie tiene que hacer algo nuevo.
+
+**Lo que entra:**
+
+- `validadores/freno.py` y `adaptadores/claude-code/hook_antes.py`: con un análisis prendido, detienen y avisan que se reporta en la conversación, sin escribir en el resumen; el texto entre comillas no se toma por redirección.
+- `13·DOC22`: con un análisis prendido, lo que aparece va a la conversación.
+
+Sale del CA-05 y el CA-06 de la [HU-007 de EP-023](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md), fase `C`.
+
+---
+
+## 52.1.2 — 2026-10-03
+
+**La conversación copiada al análisis ya no trae puntos suspensivos de un solo carácter.**
+
+**PARCHE**: al copiar, pasan a tres puntos, como la raya larga pasa a coma, y el commit ya no rechaza el análisis por eso.
+
+- `validadores/analisis_en_curso.py`, con su prueba en `test_analisis_en_curso.py`.
+
+Sale del [análisis 14 del pendiente 103](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-14.md), acuerdo 6.
+
+---
+
 ## 52.1.1 — 2026-10-03
 
 **El control del commit acepta lo que el análisis prendido manda hacer de una, igual que el freno.**

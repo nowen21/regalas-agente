@@ -299,6 +299,7 @@ INDICE_NUEVO = os.path.join("documentacion", "pendientes.md")
 _CARPETA_PENDIENTE = re.compile(r"^(\d+)-[^.]+$")
 _ANALISIS = re.compile(r"^analisis-(\d+)\.md$")
 _APROBADO = re.compile(r"^> \*\*Aprobado\*\*", re.M)
+_COMPROBADO = re.compile(r"^\*\*Comprobado:\*\*\s*\d{4}-\d{2}-\d{2}\s*$", re.M)
 _DE_DONDE = re.compile(r"^\|\s*\*\*De dónde sale\*\*\s*\|(.+?)\|\s*$", re.M)
 _ENLACE = re.compile(r"\]\(([^)#\s]+)")
 _HU_EN_TEXTO = re.compile(r"EP-0*(\d+)\D{1,40}?HU-0*(\d+)")
@@ -410,8 +411,9 @@ def estado(carpeta, proyecto=None, _vistos=None):
 
     Cerrado cuando tiene al menos un análisis aprobado y cada fila de su «Lo que
     se tiene que hacer» está cumplida: dice «Este análisis», o toda HU que nombra
-    está terminada. El pendiente de seguimiento toma el estado de su padre
-    (análisis 1 del pendiente 103, conclusiones 16 y 36).
+    está terminada. El pendiente de seguimiento cierra cuando su padre cerró y
+    su `aviso-resuelto.md` dice «Comprobado» con fecha (análisis 1 del
+    pendiente 103, conclusiones 16 y 36; análisis 13, acuerdo 4).
     """
     proyecto = os.path.abspath(proyecto or comun.RAIZ)
     vistos = _vistos or set()
@@ -421,7 +423,10 @@ def estado(carpeta, proyecto=None, _vistos=None):
     vistos.add(clave)
     arriba = padre(carpeta)
     if arriba:
-        return estado(arriba, proyecto, vistos)
+        if estado(arriba, proyecto, vistos) != "cerrado":
+            return "abierto"
+        aviso = _leer(os.path.join(carpeta, "aviso-resuelto.md"))
+        return "cerrado" if _COMPROBADO.search(aviso) else "abierto"
     aprobados = [a for a in analisis_de(carpeta) if _APROBADO.search(_leer(a))]
     if not aprobados:
         return "abierto"

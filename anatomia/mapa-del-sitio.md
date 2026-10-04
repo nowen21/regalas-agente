@@ -120,6 +120,7 @@ agente/
 │   ├── analisis.py ................... lo que un análisis aprobado tiene que traer, y su anotación en el principal
 │   ├── analisis_en_curso.py .......... prender, pausar y apagar el análisis; pasarle la conversación
 │   ├── origen.py ..................... cada punto dice de qué punto del anterior sale
+│   ├── aviso_resuelto.py ............. el aviso de resuelto, al lado del seguimiento del proyecto que reportó
 │   ├── fases.py ...................... jerarquía épica → HU → fase
 │   ├── trazabilidad.py ............... enlace bidireccional, ORIGEN, tabla de cierre
 │   ├── flujo.py ...................... el plan trae las 13 preguntas y sin incertidumbre

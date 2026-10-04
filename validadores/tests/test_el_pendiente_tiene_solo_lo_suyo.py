@@ -135,6 +135,9 @@ class CP006ElSeguimientoCierraConSuPadre(Base):
                       PENDIENTE.format(origen="[el del estándar](../../../../../%s/pendientes/110-algo-falla/pendiente.md)" % EPICA))
         self.assertEqual("abierto", pendientes.estado(hijo, self.raiz))
         self.escribir(HU + "/HU-001-una-cosa.md", HU_MD.format(estado="Terminada"))
+        self.assertEqual("abierto", pendientes.estado(hijo, self.raiz))      # falta comprobar (HU-003, CA-11)
+        self.escribir("historico-chat/resumenes/2026-10-02/pendientes/111-espera/aviso-resuelto.md",
+                      "**Comprobado:** 2026-10-03\n")
         self.assertEqual("cerrado", pendientes.estado(hijo, self.raiz))
 
 

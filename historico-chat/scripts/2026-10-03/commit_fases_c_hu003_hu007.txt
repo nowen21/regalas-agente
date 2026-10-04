@@ -1,0 +1,20 @@
+feat(pendientes): el proyecto reporta a la HU y se entera cuando se resuelve
+
+El usuario pidió que un proyecto pueda reportar su pendiente a la HU del
+estándar que lo originó y que se entere cuando se resuelve; que con un
+análisis prendido el freno no anote hallazgos aparte, y que un > entre
+comillas no cuente como escritura. Aprobó las fases C de la HU-003 y de la
+HU-007 de EP-023, y que lo que el plan no nombró se corrija de una en el
+análisis 14.
+
+Lo que hizo el agente:
+- 52.2.0: con un análisis prendido, el freno detiene y avisa sin escribir en
+  el resumen; el texto entre comillas no se toma por redirección (13·DOC22).
+- 53.0.0: 02·F24 y las dos plantillas dicen dónde nace el pendiente
+  reportado; aviso_resuelto.py, llamado al anotar el commit, deja
+  aviso-resuelto.md al lado del seguimiento del proyecto, y el seguimiento
+  cierra cuando el proyecto pone la fecha en «Comprobado».
+- Análisis 14, filas 8 a 10: la prueba del seguimiento de la fase A, la
+  copia de 02·F24 en trabajar-cadena-1.md y la prueba de pruebas.py que
+  esperaba falla sin pendientes/.
+- Pruebas de las dos fases; pasan las 571 de pruebas.py.

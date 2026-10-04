@@ -74,6 +74,19 @@ def main():
         print("post-commit: anotado `%s` en la estación 12 de %s "
               "— queda sin guardar, y entra en el commit siguiente."
               % (hash_corto, os.path.basename(carpeta)))
+
+    # `EP-023·HU-003·CA-11`: el commit que cumple el plan de un pendiente
+    # reportado le avisa al proyecto, al lado de su pendiente de seguimiento.
+    if tocadas:
+        import datetime
+        import aviso_resuelto
+        version_txt = os.path.join(raiz, "VERSION")
+        version = open(version_txt, encoding="utf-8").read().strip() if os.path.isfile(version_txt) else ""
+        escritos, sin_entregar = aviso_resuelto.avisar(raiz, datetime.date.today().isoformat(), version)
+        for ruta in escritos:
+            print("post-commit: aviso de resuelto en %s" % ruta)
+        for carpeta, porque in sin_entregar:
+            print("post-commit: el aviso de %s no llegó: %s" % (os.path.basename(carpeta), porque))
     return 0
 
 

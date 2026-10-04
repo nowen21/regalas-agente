@@ -3629,11 +3629,13 @@ class NumeracionDePendientes(unittest.TestCase):
         self.assertEqual([h for h in pendientes.validar(raiz)
                           if h.severidad == comun.FALLA], [])
 
-    def test_limites_sin_la_carpeta_es_falla(self):
+    def test_limites_sin_la_carpeta_no_es_falla(self):
+        # Desde la 45.0.0 `pendientes/` es historia: el proyecto nuevo no la
+        # tiene, y eso no es una falla (análisis 14 del pendiente 103, acuerdo 9).
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         hallazgos = pendientes.validar(tmp.name)
-        self.assertTrue(any(h.severidad == comun.FALLA for h in hallazgos))
+        self.assertFalse(any(h.severidad == comun.FALLA for h in hallazgos))
 
     def test_errores_el_archivo_sin_numero_se_reporta_y_no_detiene(self):
         """El nombre que no se puede interpretar sale como **aviso**: un

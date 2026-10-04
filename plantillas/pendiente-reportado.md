@@ -9,7 +9,7 @@
 > | [`00·ID11`](../base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](../base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Modelo del pendiente que un proyecto le reporta al estándar (`02·F24`). Se crea **en el estándar**, y su «De dónde sale» enlaza el hallazgo del proyecto que lo destapó: ese enlace ya dice de qué proyecto viene. Su gemelo, el que queda en el proyecto, es [plantillas/pendiente-de-seguimiento.md](pendiente-de-seguimiento.md), y los dos se escriben en la misma sesión. Al llenarlo se reemplazan los `«…»` y se borran las notas.
+> Modelo del pendiente que un proyecto le reporta al estándar (`02·F24`). Se crea **en el estándar**, en la carpeta `pendientes/` de la HU que citan la regla o el programa que fallan; si no la citan, en la del resumen del día, y su análisis decide adónde pertenece. Su «De dónde sale» enlaza el hallazgo del proyecto que lo destapó: ese enlace ya dice de qué proyecto viene, y por él llega el aviso de resuelto. Su gemelo, el que queda en el proyecto, es [plantillas/pendiente-de-seguimiento.md](pendiente-de-seguimiento.md), y los dos se escriben en la misma sesión. Al llenarlo se reemplazan los `«…»` y se borran las notas.
 
 | | |
 |---|---|

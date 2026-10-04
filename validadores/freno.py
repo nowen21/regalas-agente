@@ -62,6 +62,7 @@ _NUNCA = [
 ]
 
 _REDIRECCION = re.compile(r"(?<![<>&\d])(?:\d?>>?|&>>?)\s*(\"[^\"]+\"|'[^']+'|[^\s;|&<>]+)")
+_ENTRE_COMILLAS = re.compile(r"\"[^\"]*\"|'[^']*'")
 _PS_RUTA = re.compile(r"-(?:FilePath|Path|LiteralPath|Destination)\s+(\"[^\"]+\"|'[^']+'|[^\s;|]+)", re.I)
 _PS_ESCRIBE = re.compile(r"\b(?:Out-File|Set-Content|Add-Content|New-Item|Remove-Item|Copy-Item|Move-Item|Rename-Item)\b", re.I)
 
@@ -160,7 +161,10 @@ def _palabras(parte):
 
 def destinos(orden):
     """Las rutas que una orden de consola escribe o borra, tal como están escritas."""
-    salida = [m.strip("\"'") for m in _REDIRECCION.findall(orden or "")]
+    # Un `>` dentro de comillas es texto, no una redirección (análisis 13 del
+    # pendiente 103, acuerdo 7): se borra antes de buscarlas.
+    sin_texto = _ENTRE_COMILLAS.sub(lambda m: m.group(0).replace(">", " "), orden or "")
+    salida = [m.strip("\"'") for m in _REDIRECCION.findall(sin_texto)]
     for parte in _partes(orden or ""):
         palabras = [p for p in _palabras(parte) if not re.match(r"^\w+=", p)]
         while palabras and palabras[0] in ("sudo", "command", "exec"):
@@ -292,8 +296,21 @@ def transcripcion_de(proyecto, sesion):
     return ""
 
 
+def analisis_prendido(proyecto):
+    """`True` si hay un análisis que recibe la conversación y no se ha aprobado."""
+    estado = curso.leer_estado(proyecto)
+    return bool(estado and os.path.isfile(estado["analisis"]) and not curso.aprobado(estado["analisis"]))
+
+
 def anotar_hallazgo(proyecto, sesion, accion, ruta, porque, ahora=None):
-    """Suma el hallazgo al resumen de la sesión. Devuelve la ruta del resumen, o ""."""
+    """Suma el hallazgo al resumen de la sesión. Devuelve la ruta del resumen, o "".
+
+    Con un análisis prendido no anota: lo que aparece se reporta en la
+    conversación y se resuelve en ese análisis (análisis 13 del pendiente 103,
+    acuerdo 6).
+    """
+    if analisis_prendido(proyecto):
+        return ""
     transcripcion = transcripcion_de(proyecto, sesion)
     destino = resumen.ruta_de(proyecto, transcripcion) if transcripcion else ""
     if not destino or not os.path.isfile(destino):
@@ -317,14 +334,18 @@ def anotar_hallazgo(proyecto, sesion, accion, ruta, porque, ahora=None):
     return destino
 
 
-def aviso(porque, ruta, anotado):
+def aviso(porque, ruta, anotado, prendido=False):
     """El texto que recibe el agente cuando el freno detiene."""
     donde = " (`%s`)" % ruta if ruta else ""
+    if prendido:
+        cierre = ("Hay un análisis prendido: reportarlo en la conversación y resolverlo ahí; "
+                  "no va al resumen (análisis 13 del pendiente 103, acuerdo 6).")
+    else:
+        cierre = "Quedó anotado en el resumen de la sesión." if anotado else "Anotarlo en el resumen de la sesión."
     return ("[EL FRENO DETUVO ESTA ACCIÓN%s]\n%s.\n"
             "Es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, "
             "acuerdos 18 y 44). %s"
-            % (donde, porque[0].upper() + porque[1:],
-               "Quedó anotado en el resumen de la sesión." if anotado else "Anotarlo en el resumen de la sesión."))
+            % (donde, porque[0].upper() + porque[1:], cierre))
 
 
 if __name__ == "__main__":

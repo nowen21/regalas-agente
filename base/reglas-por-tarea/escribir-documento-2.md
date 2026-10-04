@@ -127,7 +127,7 @@ CORRECTO:   la sección se queda con su título y adentro dice N/A
 Fuente: [13·DOC21](../13-documentacion/reglas/DOC21-escribe-n-a-en-la-seccion-que-no-aplica.md#doc21--escribe-na-en-la-sección-del-modelo-que-no-aplica)
 
 ## DOC22 · Escribe en su propio documento lo que cada sesión dejó
-Cada sesión deja su resumen en un documento aparte de la transcripción, escrito con el modelo del estándar y llenado **en el momento en que aparece cada hallazgo**, no al cerrar. Cada hallazgo dice qué pasó y por qué importa, y enlaza su pendiente; si quedó resuelto y por dónde se retoma se calculan siguiendo ese enlace.
+Cada sesión deja su resumen en un documento aparte de la transcripción, escrito con el modelo del estándar y llenado **en el momento en que aparece cada hallazgo**, no al cerrar. Cada hallazgo dice qué pasó y por qué importa, y enlaza su pendiente; si quedó resuelto y por dónde se retoma se calculan siguiendo ese enlace. Con un análisis prendido, lo que aparece no va al resumen: se reporta en la conversación y se resuelve en ese análisis.
 ```
 INCORRECTO: la sesión produjo cinco aprendizajes y nueve pendientes, y para
             encontrarlos hay que releer la conversación entera

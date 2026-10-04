@@ -182,6 +182,43 @@ class ElHallazgoQuedaAnotado(Proyecto):
         self.assertEqual("deny", salida["permissionDecision"])
         self.assertIn("vuelve al análisis", salida["permissionDecisionReason"])
 
+    def prender(self, aprobado=False):
+        marca = "> **Aprobado** por el usuario el 2026-10-03.\n\n" if aprobado else ""
+        self.escribir(PENDIENTE + "/analisis-2.md", "# Análisis 2\n\n" + marca)
+        self.escribir("historico-chat/.estado/analisis-en-curso.txt",
+                      "analisis=%s/analisis-2.md\ntranscripcion=historico-chat/x.md\ndesde=1\n" % PENDIENTE)
+
+    def test_cp_c001_con_un_analisis_prendido_no_se_anota(self):
+        self.prender()
+        self.assertEqual("", freno.anotar_hallazgo(self.raiz, "abc", "una escritura", "src/b.py", "no está"))
+        texto = io.open(self.ruta("historico-chat/resumenes/2026-10-03/tema.md"), encoding="utf-8").read()
+        self.assertNotIn("El freno detuvo", texto)
+        self.assertIn("reportarlo en la conversación", freno.aviso("no está", "src/b.py", False, True))
+
+    def test_cp_c001_con_el_analisis_ya_aprobado_si_se_anota(self):
+        self.prender(aprobado=True)
+        self.assertTrue(freno.anotar_hallazgo(self.raiz, "abc", "una escritura", "src/b.py", "no está"))
+
+    def test_cp_c001_la_regla_lo_dice(self):
+        regla = os.path.join(RAIZ, "base", "13-documentacion", "reglas",
+                             "DOC22-escribe-en-su-propio-documento-lo-que-la-sesion-dejo.md")
+        self.assertIn("análisis prendido", io.open(regla, encoding="utf-8").read())
+
+
+class ElMayorQueEntreComillas(Proyecto):
+    """CP-002 de la fase C."""
+
+    def test_entre_comillas_no_es_escritura(self):
+        self.con_fase()
+        self.assertEqual("deja", self.orden('grep -n "> acá termina" analisis.md'))
+        self.assertEqual("deja", self.orden("grep -n '> acá termina' analisis.md"))
+        self.assertEqual("deja", self.orden('Select-String -Pattern "^## |^> acá" -Path a.md'))
+
+    def test_la_redireccion_real_sigue_detenida(self):
+        self.con_fase()
+        self.assertEqual("detiene", self.orden('grep "x" a.md > notas.txt'))
+        self.assertEqual("detiene", self.orden('echo "a > b" > "otra nota.txt"'))
+
 
 if __name__ == "__main__":
     unittest.main()

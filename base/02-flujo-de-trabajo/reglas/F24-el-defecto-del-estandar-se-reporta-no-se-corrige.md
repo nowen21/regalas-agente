@@ -2,7 +2,7 @@
 
 ## F24 · El defecto del estándar se reporta, no se corrige
 
-Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá que enlaza el hallazgo de acá, otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá (extiende [`02·F23`](F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
+Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá, en la HU que citan la regla o el programa que fallan, o en el resumen del día si no la citan, que enlaza el hallazgo de acá; otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá y el proyecto comprueba el aviso que le llega (extiende [`02·F23`](F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 
 ```
 INCORRECTO: se parchea el estándar en la copia local del proyecto → los otros
@@ -17,7 +17,7 @@ CORRECTO:   se reporta en el estándar, se anota acá el seguimiento, y el
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v45.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra **v53.0.0**, el **2026-10-03**.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -28,6 +28,8 @@ Aplicado el [checklist del estándar](../../20-meta-reglas/checklist.md) contra 
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
 **20 filas: 19 ✅ · 0 ❌ · 1 N/A.**
+
+**Cambió el 2026-10-03** en `EP-023·HU-003`, fase `C` (análisis 13 del pendiente 103, acuerdos 1 a 4): dice dónde nace el pendiente reportado y que el seguimiento cierra al comprobar el aviso. La HU de origen se cita en la regla o el programa cuando el análisis de un pendiente decide a cuál pertenece; no se completa de una vez. Fila 9: sigue siendo una exigencia, reportar sin tocar. Fila 10: el cuerpo cabe.
 
 La fila **4** puso el capítulo en duda: el defecto lo encuentra un proyecto y el canal se parece a la instalación, que es de `EP-007`. Pero **lo que la regla gobierna es un paso del flujo de trabajo** —qué hace el agente cuando lo que hay que arreglar no es suyo—, y eso es del `02`. La instalación es por dónde viaja el aviso, no de qué trata la regla.
 

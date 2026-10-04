@@ -54,6 +54,10 @@ class Base(unittest.TestCase):
         with open(self.trans, "a", encoding="utf-8") as f:
             f.write(texto)
 
+    def test_los_puntos_suspensivos_pasan_a_tres_puntos(self):
+        self.assertEqual(curso._limpiar("### 1 · Usuario — hora\n> Analicemos: …\n"),
+                         "### 1 · Usuario, hora\n> Analicemos: ...\n")
+
     def llenar(self, ruta, turno_acordado):
         """Lo mínimo para que el análisis salido de la plantilla pase la revisión de origen."""
         curso.pasar(self.raiz)

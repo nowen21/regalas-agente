@@ -422,6 +422,9 @@ def _limpiar(bloque):
     # La transcripción separa el turno de su hora con raya larga; el análisis
     # sigue `00·ID8`, así que ahí va una coma (análisis 2, conclusión 5).
     bloque = re.sub(r"^(### \d+ · Usuario|\*\*Agente\*\*) — ", r"\1, ", bloque, flags=re.M)
+    # Por lo mismo, los puntos suspensivos de un solo carácter pasan a tres
+    # puntos: el commit los rechaza (análisis 14 del pendiente 103, acuerdo 6).
+    bloque = bloque.replace("…", "...")
     # Las marcas que la herramienta le pone al mensaje no son palabras del
     # usuario (conclusión 10).
     bloque = re.sub(r"</?pasted_content[^>]*>", "", bloque)

@@ -8,7 +8,8 @@
 de herramienta). Detiene lo que no está en el plan de la fase en curso ni lo
 autoriza una regla, por cualquier canal: la herramienta de escritura, la
 consola, el segundo plano. Lo que se publica fuera del proyecto se pregunta
-cada vez. Al detener, anota el hallazgo en el resumen de la sesión. Antes de
+cada vez. Al detener, anota el hallazgo en el resumen de la sesión, salvo con
+un análisis prendido: ahí se reporta en la conversación. Antes de
 cada orden de consola toma la foto que usa `hook_despues.py`.
 
 Nació en `EP-005·HU-023·RN-10` para que ninguna escritura saliera del proyecto
@@ -73,7 +74,7 @@ def accion(datos, proyecto):
     elif decision == "detiene":
         que = ACCION.get(herramienta, "una acción")
         anotado = freno.anotar_hallazgo(proyecto, datos.get("session_id") or "", que, ruta, porque)
-        razon = freno.aviso(porque, ruta, bool(anotado))
+        razon = freno.aviso(porque, ruta, bool(anotado), freno.analisis_prendido(proyecto))
         if "04·S9" in porque:
             razon += "\n" + GUION
         _decision("deny", razon)

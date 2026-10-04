@@ -286,6 +286,7 @@ Las fija el plan de cada fase (`02·F14`).
 |---|---|---|---|---|---|---|
 | [`A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo`](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/estado-fase.md) | CA-01 a CA-08 | HU-001 | [plan](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_trabajo.md) | [pruebas](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_pruebas.md) | [resultado](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/resultado_pruebas.md) | Cumple |
 | [`B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente`](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/estado-fase.md) | CA-09 | Fase A | [plan](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/plan_trabajo.md) | [pruebas](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/plan_pruebas.md) | [resultado](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/resultado_pruebas.md) | Cumple |
+| [`C-EP-023-HU-003-el-proyecto-reporta-a-la-hu-y-se-entera`](C-EP-023-HU-003-el-proyecto-reporta-a-la-hu-y-se-entera/estado-fase.md) | CA-10, CA-11 | Fase B | [plan](C-EP-023-HU-003-el-proyecto-reporta-a-la-hu-y-se-entera/plan_trabajo.md) | [pruebas](C-EP-023-HU-003-el-proyecto-reporta-a-la-hu-y-se-entera/plan_pruebas.md) | [resultado](C-EP-023-HU-003-el-proyecto-reporta-a-la-hu-y-se-entera/resultado_pruebas.md) | Cumple |
 
 ---
 

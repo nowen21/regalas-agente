@@ -234,7 +234,7 @@ CORRECTO:   el pendiente baja a HU → fase con su plan y sus pruebas → se
 Fuente: [02·F23](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md#f23--ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario)
 
 ## F24 · El defecto del estándar se reporta, no se corrige
-Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá que enlaza el hallazgo de acá, otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
+Un proyecto que encuentra un defecto del estándar **no lo toca**: abre un pendiente allá, en la HU que citan la regla o el programa que fallan, o en el resumen del día si no la citan, que enlaza el hallazgo de acá; otro acá que enlaza el de allá, y sigue con lo suyo. El de acá cierra cuando se cumple el plan del de allá y el proyecto comprueba el aviso que le llega (extiende [`02·F23`](../02-flujo-de-trabajo/reglas/F23-ejecuta-un-pendiente-como-fase-de-una-historia-de-usuario.md)).
 ```
 INCORRECTO: se parchea el estándar en la copia local del proyecto → los otros
             proyectos siguen con el defecto y nadie se entera
@@ -294,14 +294,3 @@ CORRECTO:   ejecuto todo el plan → reporto el resultado
 ```
 
 Fuente: [02·F3](../02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado)
-
-## F4 · Todo plan lleva su plan de pruebas y su aprobación explícita
-Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** al usuario y **no se toca código hasta un OK explícito** suyo ([`01·C17`](../01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)). Si no existe la HU con sus criterios que respalde el plan, **PAUSAR y retroceder** al eslabón que falta (depende de [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)).
-```
-INCORRECTO: usuario dice "arranque con Fase X" → agente redacta plan + implementa
-            todo seguido → reporta al final
-CORRECTO:   usuario dice "arranque con Fase X" → agente redacta plan + pruebas →
-            PAUSA + presenta → usuario aprueba (o pide cambios) → agente implementa
-```
-
-Fuente: [02·F4](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md#f4--todo-plan-lleva-su-plan-de-pruebas-y-su-aprobación-explícita)
