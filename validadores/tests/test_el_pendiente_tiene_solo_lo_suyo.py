@@ -132,6 +132,11 @@ class CP005ElHallazgoCalculaSuEstado(Base):
         self.assertEqual("resuelto", resumen.hallazgos(ruta)[0][2])
         self.assertEqual([], resumen.sin_resolver(ruta))
 
+    def test_corregido_con_corrija_queda_resuelto(self):
+        """`02·F8`, excepción: corregido con «Corrija» sin abrir análisis (2026-10-04)."""
+        ruta = self.resumen("| Corregido con «Corrija» | El 2026-10-04: se corrigió el freno. |\n")
+        self.assertEqual("resuelto", resumen.hallazgos(ruta)[0][2])
+
     def test_el_resumen_viejo_se_lee_como_siempre(self):
         ruta = self.resumen("| Estado | resuelto acá |\n")
         self.assertEqual("resuelto acá", resumen.hallazgos(ruta)[0][2])

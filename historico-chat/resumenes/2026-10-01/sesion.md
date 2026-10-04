@@ -172,7 +172,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 |---|---|
 | Qué pasó | El 2026-10-04 00:19, el freno detuvo una orden de consola sobre `/c/Ing. Jose/ia/agente/historico-chat/scripts/2026-10-04`: queda fuera del proyecto (04·S9). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+| Corregido con «Corrija» | El 2026-10-04 (`02·F8`, excepción): era un falso positivo. La ruta estaba dentro del proyecto, escrita como la escribe la consola de Git en Windows (`/c/...`). `validadores/freno.py` la convierte ahora a `C:\...`, con su prueba en `test_el_freno.py`. No hace falta pendiente. |
 
 ---
 

@@ -192,6 +192,9 @@ def _indexar_dias(raiz, dia):
 
 # ── Qué le falta ──────────────────────────────────────────────────────────
 
+_CORRIJA = re.compile(r"^\|\s*Corregido con «Corrija»\s*\|", re.M)
+
+
 def hallazgos(ruta):
     """Los hallazgos escritos: lista de (id, título, estado)."""
     if not os.path.isfile(ruta):
@@ -203,6 +206,9 @@ def hallazgos(ruta):
     for i, (hid, titulo, pos) in enumerate(ids):
         fin = ids[i + 1][2] if i + 1 < len(ids) else len(texto)
         estado = next((e for e, p in estados if pos < p < fin), "")
+        if not estado and _CORRIJA.search(texto[pos:fin]):
+            # Corregido con «Corrija», sin abrir análisis (`02·F8`, excepción).
+            estado = "resuelto"
         if not estado:
             # `EP-023·HU-003` · El hallazgo de la forma nueva no escribe su
             # estado: se calcula. El escrito, de los resúmenes anteriores, se

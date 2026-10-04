@@ -1,0 +1,11 @@
+fix(freno): la ruta /c/... de la consola de Git es la del proyecto
+
+El usuario ordenó con «Corrija» arreglar el falso positivo del freno, que
+tomó por fuera del proyecto una ruta escrita como /c/..., y cerrar el
+hallazgo falso que anotó.
+
+Lo que hizo el agente:
+- freno.py: en Windows, /c/... se lee como C:\...; con su prueba.
+- resumen.py: el hallazgo con la fila «Corregido con «Corrija»» queda
+  resuelto; con su prueba. El H-21 queda cerrado como falso positivo.
+- Pasan las 80 pruebas de los dos programas que cambiaron.

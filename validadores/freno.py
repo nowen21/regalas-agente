@@ -73,6 +73,10 @@ _PS_ESCRIBE = re.compile(r"\b(?:Out-File|Set-Content|Add-Content|New-Item|Remove
 def ruta_real(ruta, cwd):
     """La ruta absoluta y resuelta: variables, `~`, `..` y enlaces."""
     ruta = os.path.expanduser(os.path.expandvars(ruta.strip().strip("\"'")))
+    # En Windows, la consola de Git escribe `C:\...` como `/c/...`; sin esto,
+    # la ruta del proyecto parecía estar afuera (corregido con «Corrija», 2026-10-04).
+    if os.name == "nt":
+        ruta = re.sub(r"^/([a-zA-Z])(?=/|$)", lambda m: m.group(1).upper() + ":", ruta)
     if not os.path.isabs(ruta):
         ruta = os.path.join(cwd, ruta)
     return os.path.realpath(ruta)

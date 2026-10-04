@@ -247,6 +247,14 @@ class CorrijaArreglaLasHerramientas(Proyecto):
         self.assertEqual("detiene", self.escritura("validadores/freno.py"))
 
 
+class LaRutaDeLaConsolaDeGit(unittest.TestCase):
+    """En Windows, `/c/...` es `C:\\...` (corregido con «Corrija», 2026-10-04)."""
+
+    @unittest.skipUnless(os.name == "nt", "solo en Windows")
+    def test_la_ruta_con_barra_y_letra_es_la_unidad(self):
+        self.assertEqual(os.path.realpath("C:/Windows/x"), freno.ruta_real("/c/Windows/x", "D:/"))
+
+
 class ElHeredocNoEsEscritura(unittest.TestCase):
     """Análisis 16 del pendiente 103, acuerdo 2."""
 
