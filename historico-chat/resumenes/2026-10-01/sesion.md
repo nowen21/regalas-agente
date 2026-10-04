@@ -174,6 +174,14 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Corregido con «Corrija» | El 2026-10-04 (`02·F8`, excepción): era un falso positivo. La ruta estaba dentro del proyecto, escrita como la escribe la consola de Git en Windows (`/c/...`). `validadores/freno.py` la convierte ahora a `C:\...`, con su prueba en `test_el_freno.py`. No hace falta pendiente. |
 
+### H-22 · scilit reportó seis defectos que eran de todos los proyectos
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-04, scilit reportó los pendientes 110 a 115: el andamio, el instalador, el freno, el control de commits y la lectura de la «í» fallaban fuera de Cimiento. Tenían tres causas: herramientas que suponían estar en Cimiento, controles que no conocían lo que escriben las herramientas y enganches que no leían en UTF-8. |
+| Por qué importa | Lo que un proyecto reporta le pasa a todos los que usan Cimiento. Corregirlo solo para el que avisó deja el defecto en los demás. |
+| Pendiente | [Análisis 1 del pendiente 110](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/pendientes/110-el-andamio-no-sirve-desde-un-proyecto/analisis-1.md), aprobado el 2026-10-04. Se corrigió en la raíz, nació la regla `02·F29` y se probó en una copia de scilit. Los seis quedaron cerrados, con el aviso en scilit. Guardado en el commit `84ce765`. |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -185,10 +193,10 @@ Se cierra cuando ningún hallazgo queda a medias. Un hallazgo está terminado de
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo resuelto tiene su decisión escrita | ☐ |
-| Todo hallazgo abierto tiene su pendiente creado | ☐ |
-| Toda historia disparada está escrita en su épica | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo resuelto tiene su decisión escrita | ☑ |
+| Todo hallazgo abierto tiene su pendiente creado | ☑ |
+| Toda historia disparada está escrita en su épica | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ hasta `84ce765` y este cierre, subidos a `main`. Fuera quedó lo de la sesión de optimizar el código |
 
 Con las cuatro marcadas, el tema cerró: la sesión se cierra y lo que siga se abre en otra, con el tema que salió de estos hallazgos.
 
