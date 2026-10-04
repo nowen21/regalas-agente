@@ -1,0 +1,9 @@
+docs(analisis): el análisis 16 queda aprobado y el pendiente 103 cierra
+
+El usuario aprobó el análisis 16 y pidió guardar y subir lo que quedaba; antes
+pidió que no se corriera la batería completa de pruebas sin pedirlo.
+
+Lo que hizo el agente:
+- Marca de aprobado del análisis 16; el pendiente 103 queda cerrado.
+- El recuerdo «solo las pruebas de la fase» dice que pruebas.py y
+  validar.py internas son la batería completa, y que no se corren sin pedirlo.
