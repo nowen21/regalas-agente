@@ -1260,3 +1260,69 @@ Si se queda, conviene agregarlo a la estructura acordada de la base como el lect
 Porque en el disco ya no existe, pero en git sí. El último commit todavía guarda los 1.789 archivos de `plataforma/`. Para que el repositorio refleje que se borraron, el próximo commit tiene que registrar ese borrado.
 
 El freno no se fija en si la carpeta existe. Revisa la lista de cambios del commit, y ahí aparecen esos 1.789 borrados como «archivos tocados» que ninguna fila del análisis autoriza. Por eso sigo nombrándola: después de ese commit, `plataforma/` deja de aparecer.
+
+### 59 · Usuario — 2026-10-04 14:33:12
+> que commit le agrego?
+
+**Agente** — 2026-10-04 14:33:23
+<!-- agente: adc693b4-c3df-4a39-9c50-0f254e24e639 -->
+
+Al mensaje le falta la palabra del comienzo. Si pide el texto del commit, se escribe «Redacte: el mensaje del commit».
+
+### 60 · Usuario — 2026-10-04 14:33:45
+> Redacte: el mensaje del commit
+
+**Agente** — 2026-10-04 14:34:00
+<!-- agente: 489a5cf6-3a7f-4f4a-9334-d489d33ea1aa -->
+
+Mensaje escrito para el historial de git de Cimiento.
+
+```
+feat(cimiento): Cimiento pasa a ser la aplicación Django y los validadores empiezan a ser clases
+
+El usuario pidió optimizar los .py de Cimiento: cada vez que se necesita
+algo se crea un archivo nuevo sin revisar si eso ya existe, como pasó con
+el manejo de rutas. Decidió que todo se centralice en Django, en
+proyectos/cimiento, partiendo de una base limpia, y que los validadores
+sean clases.
+
+Lo que hizo el agente:
+- plataforma/ sale de la raíz y queda proyectos/cimiento/ con la base
+  Django de plantillas/estructura-proyecto-django.md (config/settings por
+  entorno, requirements con lock.txt, static/, templates/ y core/).
+- core/comun/: Proyecto, Git, Archivos y Hallazgo, escritos una sola vez.
+- core/validadores/: la clase Validador, ValidadorDeCodigo y Bloques, y
+  cinco validadores pasados a clases (07·Q3, 05·E1/E5, 04·S3/S5,
+  06·R1/R2, 08·T3/T4). Dan los mismos hallazgos que los viejos en
+  Cimiento, dp y scilit; 31 pruebas en verde.
+- freno.py: una fila del análisis ya puede autorizar .gitignore y otros
+  archivos que empiezan con punto.
+- analisis_en_curso.py: un análisis aprobado ya no queda abierto para
+  siempre por una HU que no existe.
+- .gitignore: .env, db.sqlite3 y la configuración local de cada proyecto
+  en proyectos/ no entran al repositorio (00·N6).
+- Los enlaces de 51 documentos apuntan a proyectos/cimiento/.
+- Análisis 1 del pendiente 116 y pendientes 116 y 117.
+```
+
+Como los cambios ya están preparados, para guardarlo se copia el mensaje en un archivo y se corre `git commit -F archivo`, y después `git push`.
+
+### 61 · Usuario — 2026-10-04 14:37:54
+> analicemos: ese freno del git está muy cansón porque todo lo frena en el commit cuando hay archivos nuevos
+
+**Agente** — 2026-10-04 14:38:48
+<!-- agente: 8bd7f993-c3e8-488c-839f-f7702f38d6cf -->
+
+Revisé qué es lo que frena. No es git: la revisión de `pre-commit` (`validar.py plan`) pasa limpia con estos mismos cambios. El que frena es el freno del agente: después de cada orden de consola compara todo lo que cambió en git contra el plan.
+
+**Por qué frena tanto:**
+1. **Toma el registro como si fuera escritura.** `git add` y `git commit` no crean contenido, solo registran lo que ya cambió. Aun así, el freno ve cada archivo del commit como «escrito ahora» y exige que una fila del análisis lo autorice. Por eso cualquier commit con archivos nuevos se detiene.
+2. **No acepta carpetas.** Hay que nombrar archivo por archivo: los 1.789 de `plataforma/` no tienen cómo autorizarse.
+3. **No reconoce la orden del usuario.** «Suba» o «Hágalo» en el chat no cuentan como autorización. Es el [pendiente 118](historico-chat/resumenes/2026-10-04/pendientes/118-el-freno-detiene-lo-que-el-usuario-ya-autorizo/pendiente.md), que scilit ya había reportado.
+
+**Recomiendo corregir el punto 1 primero.** Que el freno no revise las órdenes de git que solo registran (`add`, `commit`, `push`), porque lo que entra al commit ya lo controla `pre-commit`. Es un cambio pequeño en `freno.py`, con su prueba, y quita el bloqueo de hoy. Los puntos 2 y 3 van en el pendiente 118.
+
+¿Lo corrijo?
+
+### 62 · Usuario — 2026-10-04 14:41:10
+> apruebo

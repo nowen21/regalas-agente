@@ -52,7 +52,7 @@ def main():
         datos = _entrada()
         if (datos.get("tool_name") or "") not in freno.CONSOLA:
             return 0
-        fuera = freno.despues(proyecto)
+        fuera = freno.despues(proyecto, (datos.get("tool_input") or {}).get("command") or "")
         if not fuera:
             return 0
         sesion = datos.get("session_id") or ""

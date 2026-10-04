@@ -323,9 +323,15 @@ def _cambiados(proyecto):
     except (OSError, subprocess.SubprocessError):
         return {}
     salida = {}
-    for item in r.stdout.decode("utf-8", "replace").split("\0"):
+    items = iter(r.stdout.decode("utf-8", "replace").split("\0"))
+    for item in items:
         if len(item) < 4:
             continue
+        # Un renombrado o una copia (`R`, `C`) trae la ruta vieja en el campo
+        # siguiente. Leída como un archivo más, le cortaba tres letras y salía
+        # «taforma/…» como escrito fuera del plan (sesión del 2026-10-04).
+        if item[0] in "RC":
+            next(items, None)
         ruta = item[3:].replace("\\", "/")
         completa = os.path.join(proyecto, *ruta.split("/"))
         try:
@@ -345,8 +351,25 @@ def tomar_foto(proyecto):
         json.dump(_cambiados(proyecto), f)
 
 
-def despues(proyecto):
+# Las órdenes de git que solo registran lo que ya cambió. No escriben contenido:
+# lo que entra al commit lo revisa el `pre-commit` (`validar.py plan`). Revisarlas
+# acá frenaba todo commit con archivos nuevos (sesión del 2026-10-04).
+_SOLO_REGISTRA = re.compile(r"^\s*git(\s+-C\s+(\"[^\"]*\"|'[^']*'|\S+))?\s+(add|commit|push|status|log|diff|show)\b")
+
+
+def solo_registra(orden):
+    """¿Cada parte de la orden es un `git` que solo registra o consulta?"""
+    # Lo que va entre comillas es texto (el mensaje del commit, una ruta): un `;`
+    # adentro no parte la orden.
+    sin_comillas = re.sub(r"'[^']*'|\"[^\"]*\"", "''", _sin_heredoc(orden))
+    partes = [p for p in _partes(sin_comillas) if not re.match(r"^\s*cd\s", p)]
+    return bool(partes) and all(_SOLO_REGISTRA.match(p) for p in partes)
+
+
+def despues(proyecto, orden=""):
     """`[(ruta, motivo)]` de lo que cambió desde la foto y no se permite."""
+    if solo_registra(orden):
+        return []
     ruta = os.path.join(proyecto, FOTO)
     try:
         with open(ruta, encoding="utf-8") as f:

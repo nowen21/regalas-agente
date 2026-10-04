@@ -1049,6 +1049,72 @@ Porque en el disco ya no existe, pero en git sí. El último commit todavía gua
 
 El freno no se fija en si la carpeta existe. Revisa la lista de cambios del commit, y ahí aparecen esos 1.789 borrados como «archivos tocados» que ninguna fila del análisis autoriza. Por eso sigo nombrándola: después de ese commit, `plataforma/` deja de aparecer.
 
+### 59 · Usuario, 2026-10-04 14:33:12
+> que commit le agrego?
+
+**Agente**, 2026-10-04 14:33:23
+<!-- agente: adc693b4-c3df-4a39-9c50-0f254e24e639 -->
+
+Al mensaje le falta la palabra del comienzo. Si pide el texto del commit, se escribe «Redacte: el mensaje del commit».
+
+### 60 · Usuario, 2026-10-04 14:33:45
+> Redacte: el mensaje del commit
+
+**Agente**, 2026-10-04 14:34:00
+<!-- agente: 489a5cf6-3a7f-4f4a-9334-d489d33ea1aa -->
+
+Mensaje escrito para el historial de git de Cimiento.
+
+```
+feat(cimiento): Cimiento pasa a ser la aplicación Django y los validadores empiezan a ser clases
+
+El usuario pidió optimizar los .py de Cimiento: cada vez que se necesita
+algo se crea un archivo nuevo sin revisar si eso ya existe, como pasó con
+el manejo de rutas. Decidió que todo se centralice en Django, en
+proyectos/cimiento, partiendo de una base limpia, y que los validadores
+sean clases.
+
+Lo que hizo el agente:
+- plataforma/ sale de la raíz y queda proyectos/cimiento/ con la base
+  Django de plantillas/estructura-proyecto-django.md (config/settings por
+  entorno, requirements con lock.txt, static/, templates/ y core/).
+- core/comun/: Proyecto, Git, Archivos y Hallazgo, escritos una sola vez.
+- core/validadores/: la clase Validador, ValidadorDeCodigo y Bloques, y
+  cinco validadores pasados a clases (07·Q3, 05·E1/E5, 04·S3/S5,
+  06·R1/R2, 08·T3/T4). Dan los mismos hallazgos que los viejos en
+  Cimiento, dp y scilit; 31 pruebas en verde.
+- freno.py: una fila del análisis ya puede autorizar .gitignore y otros
+  archivos que empiezan con punto.
+- analisis_en_curso.py: un análisis aprobado ya no queda abierto para
+  siempre por una HU que no existe.
+- .gitignore: .env, db.sqlite3 y la configuración local de cada proyecto
+  en proyectos/ no entran al repositorio (00·N6).
+- Los enlaces de 51 documentos apuntan a proyectos/cimiento/.
+- Análisis 1 del pendiente 116 y pendientes 116 y 117.
+```
+
+Como los cambios ya están preparados, para guardarlo se copia el mensaje en un archivo y se corre `git commit -F archivo`, y después `git push`.
+
+### 61 · Usuario, 2026-10-04 14:37:54
+> analicemos: ese freno del git está muy cansón porque todo lo frena en el commit cuando hay archivos nuevos
+
+**Agente**, 2026-10-04 14:38:48
+<!-- agente: 8bd7f993-c3e8-488c-839f-f7702f38d6cf -->
+
+Revisé qué es lo que frena. No es git: la revisión de `pre-commit` (`validar.py plan`) pasa limpia con estos mismos cambios. El que frena es el freno del agente: después de cada orden de consola compara todo lo que cambió en git contra el plan.
+
+**Por qué frena tanto:**
+1. **Toma el registro como si fuera escritura.** `git add` y `git commit` no crean contenido, solo registran lo que ya cambió. Aun así, el freno ve cada archivo del commit como «escrito ahora» y exige que una fila del análisis lo autorice. Por eso cualquier commit con archivos nuevos se detiene.
+2. **No acepta carpetas.** Hay que nombrar archivo por archivo: los 1.789 de `plataforma/` no tienen cómo autorizarse.
+3. **No reconoce la orden del usuario.** «Suba» o «Hágalo» en el chat no cuentan como autorización. Es el [pendiente 118](../../../../../historico-chat/resumenes/2026-10-04/pendientes/118-el-freno-detiene-lo-que-el-usuario-ya-autorizo/pendiente.md), que scilit ya había reportado.
+
+**Recomiendo corregir el punto 1 primero.** Que el freno no revise las órdenes de git que solo registran (`add`, `commit`, `push`), porque lo que entra al commit ya lo controla `pre-commit`. Es un cambio pequeño en `freno.py`, con su prueba, y quita el bloqueo de hoy. Los puntos 2 y 3 van en el pendiente 118.
+
+¿Lo corrijo?
+
+### 62 · Usuario, 2026-10-04 14:41:10
+> apruebo
+
 > acá termina la conversación
 
 ---
@@ -1179,6 +1245,7 @@ Tres épicas. `EP-023 lo que se construye es lo que se analizó` recibe el cambi
 | 12 | Marcar como retiradas las épicas `EP-008` a `EP-022`, con fecha y enlace a este análisis | 10 | Este análisis, de una y sin fase: `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/epica.md`, `documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/epica.md`, `documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/epica.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/epica.md`, `documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/epica.md`, `documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/epica.md`, `documentacion/epicas/EP-014-ninguna-clave-queda-escrita/epica.md`, `documentacion/epicas/EP-015-lo-exigido-se-comprueba-solo/epica.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/epica.md`, `documentacion/epicas/EP-017-una-aprobacion-dice-sobre-que-texto/epica.md`, `documentacion/epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/epica.md`, `documentacion/epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/epica.md`, `documentacion/epicas/EP-020-lo-que-se-desvia-se-avisa/epica.md`, `documentacion/epicas/EP-021-la-plataforma-se-mira-sin-consola/epica.md`, `documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/epica.md`, hecho el 2026-10-04 |
 | 13 | Primer paso de los validadores como clases: lo común en `core/comun/`, la clase base en `core/validadores/base.py` y el validador de funciones largas (`07·Q3`) con su recorrido de código, cada uno con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/__init__.py`, `proyectos/cimiento/core/comun/hallazgos.py`, `proyectos/cimiento/core/comun/archivos.py`, `proyectos/cimiento/core/comun/proyecto.py`, `proyectos/cimiento/core/comun/git.py`, `proyectos/cimiento/core/comun/tests.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/base.py`, `proyectos/cimiento/core/validadores/codigo.py`, `proyectos/cimiento/core/validadores/calidad.py`, `proyectos/cimiento/core/validadores/tests.py`, hecho el 2026-10-04 |
 | 14 | Pasar a clases los validadores que revisan el código (`05·E1/E5`, `04·S3/S5`, `06·R1/R2`, `08·T3/T4`), sobre una clase `ValidadorDeCodigo` que recorre el código una sola vez, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/validadores/codigo.py`, `proyectos/cimiento/core/validadores/calidad.py`, `proyectos/cimiento/core/validadores/errores.py`, `proyectos/cimiento/core/validadores/seguridad.py`, `proyectos/cimiento/core/validadores/rendimiento.py`, `proyectos/cimiento/core/validadores/aislamiento.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/tests.py`, hecho el 2026-10-04 |
+| 15 | El freno no frena el registro de git: lee bien los renombrados de `git status` y no revisa `git add`, `commit` ni `push`, cuyo contenido ya revisa el `pre-commit` | 11 | Este análisis, de una y sin fase: `validadores/freno.py`, `adaptadores/claude-code/hook_despues.py`, `validadores/tests/test_el_freno_no_frena_el_registro_de_git.py`, hecho el 2026-10-04 |
 
 ## Lo que aporta al análisis principal
 
