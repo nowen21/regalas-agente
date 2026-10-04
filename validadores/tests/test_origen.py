@@ -107,6 +107,14 @@ class Origen(unittest.TestCase):
         self.assertEqual(self.fallas(),
                          ["el punto 1 de «Lo que se tiene que hacer» cita el punto 4 de «Lo acordado», que no existe"])
 
+    def test_paso5b_la_fila_cita_el_acuerdo_de_otro_analisis_del_pendiente(self):
+        dos = os.path.join(self.pendiente, "analisis-2.md")
+        self.escribir(dos, ANALISIS.format(turno=1, acordado="Análisis 1, acuerdo 1"))
+        self.assertEqual(self.fallas(), [])
+        self.escribir(dos, ANALISIS.format(turno=1, acordado="Análisis 1, acuerdo 3"))
+        self.assertEqual(self.fallas(), ["el punto 1 de «Lo que se tiene que hacer» cita el acuerdo 3 "
+                                         "del análisis 1, que no existe"])
+
     def test_paso6_pendiente_sin_origen_o_con_hallazgo_que_no_existe(self):
         self.armar(pendiente="# Pendiente: algo falla\n")
         self.assertEqual(self.fallas(), ["el pendiente no tiene «De dónde sale»"])

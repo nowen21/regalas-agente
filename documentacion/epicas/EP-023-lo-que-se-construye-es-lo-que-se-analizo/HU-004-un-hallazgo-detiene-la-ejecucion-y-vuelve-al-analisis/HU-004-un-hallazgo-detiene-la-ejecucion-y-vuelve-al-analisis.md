@@ -1,6 +1,6 @@
 # HU-004 · Un hallazgo detiene la ejecución y vuelve al análisis
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 6, 13, 14, 17, 18 y 24) y del [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (punto 7). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md) (puntos 6, 13, 14, 17, 18 y 24) del [análisis 2](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-2.md) (punto 7) y del [análisis 12](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-12.md) (punto 1). Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -47,6 +47,7 @@ Son las conclusiones de las que salen los puntos de esta HU.
 | RN-06 | Si la fase ya cerró y aparece un hallazgo sobre lo construido, la fase se reabre | Análisis 1, conclusión 33 |
 | RN-07 | Cada plan registra cuántos hallazgos salieron al ejecutarlo | Análisis 1, conclusión 41 |
 | RN-08 | El análisis de un hallazgo decide primero si es parte del plan en curso. Si lo es, mejora el pendiente y se resuelve antes de seguir; si no, se crea su pendiente y el plan continúa | Análisis 2, conclusión 7 |
+| RN-09 | El hallazgo que no es de la épica en curso no detiene el trabajo; su pendiente nace donde pertenece. El de la épica detiene solo si obliga a tocar algo que el plan no declara | Análisis 12, acuerdo 1 |
 
 ### 3.2 Supuestos
 
@@ -169,6 +170,23 @@ Y si no, se crea su pendiente y el plan continúa
 
 **Aprobado cuando:** dicen lo del criterio.
 
+
+### CA-08 · Solo detiene el hallazgo que obliga a salirse del plan
+
+**Sale de:** análisis 12, punto 1.
+
+```gherkin
+Dado un hallazgo al ejecutar una fase
+Cuando no es de la épica en curso
+Entonces el trabajo sigue y su pendiente nace donde pertenece
+Y cuando es de la épica, detiene solo si para cerrar la fase obliga a tocar algo que el plan no declara
+```
+
+**Cómo validarlo:**
+1. Leer `02·F9`.
+
+**Aprobado cuando:** `02·F9` lo dice.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -205,6 +223,7 @@ Las fija el plan de cada fase (`02·F14`).
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis`](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/estado-fase.md) | CA-01 a CA-07 | HU-003 | [plan](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_trabajo.md) | [pruebas](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/plan_pruebas.md) | [resultado](A-EP-023-HU-004-el-hallazgo-detiene-y-vuelve-al-analisis/resultado_pruebas.md) | Cumple |
+| [`B-EP-023-HU-004-solo-detiene-el-hallazgo-que-obliga-a-salirse-del-plan`](B-EP-023-HU-004-solo-detiene-el-hallazgo-que-obliga-a-salirse-del-plan/estado-fase.md) | CA-08 | Fase A | [plan](B-EP-023-HU-004-solo-detiene-el-hallazgo-que-obliga-a-salirse-del-plan/plan_trabajo.md) | [pruebas](B-EP-023-HU-004-solo-detiene-el-hallazgo-que-obliga-a-salirse-del-plan/plan_pruebas.md) | [resultado](B-EP-023-HU-004-solo-detiene-el-hallazgo-que-obliga-a-salirse-del-plan/resultado_pruebas.md) | Cumple |
 
 ---
 
@@ -256,3 +275,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Creación de la HU |
 | 2026-10-01 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El contexto dice la parte del problema de la épica que resuelve, según el análisis 4 |
 | 2026-10-01 | Ing. José Dúmar Jiménez Ruíz | **Aprobada** |
+| 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nace el CA-08, según el análisis 12. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-08 del análisis 12 |

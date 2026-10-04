@@ -17,7 +17,8 @@ cita uno que no existe:
 - La tarea del plan frente a su criterio: la mira `flujo.py`, por `02·F18`.
 - Las épicas que no nacieron de un análisis: no se reabren (`20·M10`), y así lo
   dice la excepción de `F27`.
-- El análisis abierto: todavía se está llenando.
+- El análisis sin aprobar: todavía se está llenando. «Apruebo el análisis» lo
+  revisa con `revisar_uno()` antes de poner la marca.
 - Si el origen citado es el correcto: eso es un juicio y se lee.
 """
 import os
@@ -99,7 +100,13 @@ def _epica_de(carpeta):
     return os.path.dirname(arriba) if os.path.basename(arriba) == "pendientes" else arriba
 
 
-def _revisar_analisis(ruta, datos):
+def _revisar_analisis(ruta, datos, del_pendiente=None):
+    """`del_pendiente`: `{número: datos}` de los análisis del mismo pendiente.
+
+    «Sale de lo acordado» es un número de este análisis, o «Análisis N, acuerdo M»
+    de otro del mismo pendiente (análisis 14 del pendiente 103, acuerdo 4).
+    """
+    del_pendiente = del_pendiente or {}
     salida = []
     for n, texto in sorted(datos["acordado"].items()):
         m = re.search(r"\(([^()]*[Tt]urnos? [^()]*)\)\.?\s*$", texto)
@@ -110,13 +117,37 @@ def _revisar_analisis(ruta, datos):
             if t not in datos["turnos"]:
                 salida.append((ruta, f"el punto {n} de «Lo acordado» cita el turno {t}, que no está en la conversación"))
     for n, celdas in sorted(datos["hacer"].items()):
-        citas = [int(x) for x in re.findall(r"\d+", celdas[1])] if len(celdas) > 2 else []
-        if not citas:
+        celda = celdas[1] if len(celdas) > 2 else ""
+        de_otros = _CITA_ACUERDO.findall(celda)
+        citas = [int(x) for x in re.findall(r"\d+", _CITA_ACUERDO.sub("", celda))]
+        if not citas and not de_otros:
             salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» no dice de qué punto de «Lo acordado» sale"))
         for c in citas:
             if c not in datos["acordado"]:
                 salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita el punto {c} de «Lo acordado», que no existe"))
+        for numero, acuerdos in de_otros:
+            otro = del_pendiente.get(int(numero))
+            for a in (int(x) for x in re.findall(r"\d+", acuerdos)):
+                if otro is None or a not in otro["acordado"]:
+                    salida.append((ruta, f"el punto {n} de «Lo que se tiene que hacer» cita el acuerdo {a} "
+                                         f"del análisis {numero}, que no existe"))
     return salida
+
+
+def _del_pendiente(carpeta):
+    """`{número: datos}` de los análisis de la carpeta de un pendiente."""
+    salida = {}
+    for nombre in sorted(os.listdir(carpeta)):
+        m = _ANALISIS.match(nombre)
+        if m:
+            salida[int(m.group(1))] = leer_analisis(os.path.join(carpeta, nombre))
+    return salida
+
+
+def revisar_uno(ruta):
+    """Las fallas de origen de un análisis, aprobado o no: lo usa «Apruebo el análisis»."""
+    return [mensaje for _, mensaje in _revisar_analisis(
+        ruta, leer_analisis(ruta), _del_pendiente(os.path.dirname(ruta)))]
 
 
 def _revisar_pendiente(ruta):
@@ -195,15 +226,12 @@ def revisar(raiz=None):
     for epica, pendientes in sorted(epicas(raiz).items()):
         analisis = {}
         for carpeta in pendientes:
-            for nombre in sorted(os.listdir(carpeta)):
-                m = _ANALISIS.match(nombre)
-                if not m:
-                    continue
-                ruta = os.path.join(carpeta, nombre)
-                datos = leer_analisis(ruta)
-                analisis[int(m.group(1))] = datos
+            del_pendiente = _del_pendiente(carpeta)
+            for numero, datos in sorted(del_pendiente.items()):
+                analisis[numero] = datos
                 if datos["aprobado"]:
-                    salida.extend(_revisar_analisis(ruta, datos))
+                    ruta = os.path.join(carpeta, "analisis-%d.md" % numero)
+                    salida.extend(_revisar_analisis(ruta, datos, del_pendiente))
             pendiente = os.path.join(carpeta, "pendiente.md")
             if os.path.isfile(pendiente):
                 salida.extend(_revisar_pendiente(pendiente))

@@ -92,6 +92,16 @@ class LaHerramientaDeEscritura(Proyecto):
         self.assertEqual("deja", self.escritura("src/c.py"))
         self.assertEqual("detiene", self.escritura("src/d.py"))
 
+    def test_la_ruta_de_una_tambien_se_lee_en_paso_a(self):
+        self.escribir(PENDIENTE + "/analisis-2.md",
+                      "# Análisis 2\n\n## Lo que se tiene que hacer\n\n"
+                      "| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |\n|---|---|---|---|\n"
+                      "| 1 | Corregir la plantilla | 1 | Este análisis, de una y sin fase: `src/e.py` |\n\n## Otra\n")
+        self.escribir("historico-chat/.estado/analisis-en-curso.txt",
+                      "analisis=%s/analisis-2.md\ntranscripcion=historico-chat/x.md\ndesde=1\n" % PENDIENTE)
+        self.assertEqual("deja", self.escritura("src/e.py"))
+        self.assertEqual("detiene", self.escritura("src/d.py"))
+
     def test_fuera_del_proyecto_tambien_con_rutas_que_enganan(self):
         self.assertEqual("detiene", self.escritura("../fuera.txt"))
         self.assertEqual("detiene", self.escritura("src/../../fuera.txt"))

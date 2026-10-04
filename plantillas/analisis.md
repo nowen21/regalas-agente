@@ -15,7 +15,7 @@
 > | [`00·ID11`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID11-el-agente-agrega-informacion-irrelevante-al-asunto.md) | Escribir solo lo pertinente al asunto |
 > | [`00·ID12`](«RUTA-ESTANDAR»/base/00-identidad-y-rol/reglas/ID12-el-agente-no-conserva-el-espanol-colombiano.md) | Seguir la norma del español de Colombia, si el proyecto la declara |
 
-> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo, se abre `analisis-«N+1»`.md, que trata solo lo que falló y sus implicaciones sobre lo ya hecho. Primero decide si el hallazgo es parte del plan en curso: si lo es, el pendiente se mejora y se resuelve antes de seguir; si no, se crea su pendiente y el plan continúa.
+> Un análisis aprobado no se reescribe. Si al ejecutar el plan aparece un hallazgo que obliga a tocar algo que el plan no declara, se abre `analisis-«N+1»`.md, que trata solo lo que falló y sus implicaciones sobre lo ya hecho. El hallazgo que no obliga a eso no abre análisis: se anota con su pendiente donde pertenece y el plan continúa.
 
 ---
 
@@ -138,11 +138,14 @@ Siguen abiertas: «pregunta sin decidir, o "ninguna"».
 
 ## Lo que se tiene que hacer
 
-> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el punto de «Lo acordado» de donde sale; lo que no tenga punto acordado no entra. La fila que se hace «de una y sin fase» nombra las rutas exactas que toca, entre comillas invertidas: mientras el análisis está prendido, el freno deja escribir esas y ninguna otra.
+> Cada fila se convierte en un criterio de aceptación de una HU, y «Pasó a» dice cuál. Ninguna fila queda sin destino. «Sale de» cita el acuerdo de donde sale, de una de dos formas: un número es un punto de «Lo acordado» de este análisis, y «Análisis N, acuerdo M» es un acuerdo de otro análisis del mismo pendiente. Lo que no tenga acuerdo no entra. La fila que se hace «de una y sin fase» nombra las rutas exactas que toca, entre comillas invertidas: mientras el análisis está prendido, el freno deja escribir esas y ninguna otra.
+>
+> La fila 1 va siempre, salvo en el análisis que origina el pendiente: pasar el pendiente a su versión siguiente, con el hallazgo de este análisis en «De dónde sale».
 
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
-| 1 | «qué hay que hacer» | «número» | «épica y HU, con su título y su enlace» |
+| 1 | Pasar el pendiente a su versión siguiente | Análisis 11, acuerdo 5 | Este análisis, de una y sin fase: `«ruta del pendiente.md»`, hecho el «fecha» |
+| 2 | «qué hay que hacer» | «número» | «épica y HU, con su título y su enlace» |
 
 ## Lo que aporta al análisis principal
 

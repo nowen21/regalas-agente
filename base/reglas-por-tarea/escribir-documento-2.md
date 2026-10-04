@@ -150,7 +150,7 @@ CORRECTO:   "cliente" definido en una línea en el glosario del proyecto, y los
 Fuente: [13·DOC23](../13-documentacion/reglas/DOC23-escribe-el-glosario-de-los-terminos-del-proyecto.md#doc23--escribe-el-glosario-de-los-términos-del-proyecto)
 
 ## DOC24 · Cierra el análisis en su mismo archivo
-Un análisis individual cierra en su mismo archivo y, aprobado, no se reescribe: lo que aparezca después abre el siguiente, que trata solo lo que falló y sus implicaciones, y decide primero si es parte del plan en curso; si lo es, se resuelve antes de seguir, y si no, nace su pendiente (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
+Un análisis individual cierra en su mismo archivo y, aprobado, no se reescribe: el hallazgo que después obliga a tocar algo que el plan en curso no declara abre el siguiente, que trata solo lo que falló y sus implicaciones; el que no obliga a eso no abre análisis y se anota con su pendiente donde pertenece (deroga [`13·DOC8`](../13-documentacion/reglas/DOC8-cierra-todo-analisis-con-su-tabla-de-decisiones.md)).
 ```
 INCORRECTO: el análisis se cierra en otro archivo con su tabla de decisiones,
             y meses después alguien le corrige una conclusión al original

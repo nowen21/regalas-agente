@@ -1,6 +1,6 @@
 # HU-003 · El hallazgo y el pendiente tienen solo lo que les corresponde
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 10. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 7, 10, 11, 12, 19, 20 y 21, del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 10, del [análisis 11](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-11.md), punto 4, y del [análisis 13](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-13.md), puntos 1 a 4. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -46,6 +46,9 @@ Son las conclusiones de las que salen los puntos de esta HU.
 | RN-05 | Si un hallazgo quedó anotado, si se resolvió y por dónde se retoma se calcula siguiendo los enlaces | Análisis 1, conclusión 35 |
 | RN-06 | Un pendiente cierra cuando cierra el plan que salió de él, también entre proyectos | Análisis 1, conclusión 36 |
 | RN-07 | Los pendientes cerrados no se tocan; los abiertos pasan a la forma nueva cuando se vayan a trabajar; los nuevos nacen con ella | Análisis 1, conclusión 38 |
+| RN-08 | Cada análisis aprobado mejora a su pendiente: lo deja en su versión siguiente, con su hallazgo y lo que precisó | Análisis 11, acuerdo 5 |
+| RN-09 | El proyecto reporta el pendiente a la HU del estándar que citan la regla o el programa que fallan; si no la citan, va al resumen del día del estándar. La HU de origen se cita cuando el análisis de un pendiente decide a cuál pertenece | Análisis 13, acuerdos 1 y 2 |
+| RN-10 | El aviso de resuelto sale cuando la fase que cumple el plan del pendiente anota su commit, y va al lado del pendiente de seguimiento del proyecto; el seguimiento cierra cuando el proyecto comprueba la corrección | Análisis 13, acuerdos 3 y 4 |
 
 ### 3.2 Supuestos
 
@@ -193,6 +196,59 @@ Y los cerrados no se tocan (CA-07)
 
 **Aprobado cuando:** el validador de fases pasa y el índice lista todos.
 
+
+### CA-09 · Cada análisis deja el pendiente en su versión siguiente
+
+**Sale de:** análisis 11, punto 4.
+
+```gherkin
+Dado un análisis que se va a aprobar
+Cuando su hallazgo no está en «De dónde sale» de su pendiente
+Entonces el análisis no se aprueba, y el aviso dice qué falta
+Y al aprobarse, el pendiente queda en su versión siguiente, con el hallazgo sumado y «El problema» y «Por qué importa» con lo que el análisis precisó
+```
+
+**Cómo validarlo:**
+1. Intentar aprobar un análisis cuyo hallazgo falta en el pendiente.
+2. Leer la «Propuesta final» de la plantilla del análisis.
+
+**Aprobado cuando:** la aprobación se niega y dice qué falta, y la plantilla pide el pendiente en su versión siguiente.
+
+### CA-10 · El proyecto reporta el pendiente a la HU que lo originó
+
+**Sale de:** análisis 13, puntos 1 y 2.
+
+```gherkin
+Dado un proyecto que encuentra un defecto del estándar
+Cuando la regla o el programa que falla cita su HU
+Entonces el pendiente nace en esa HU del estándar
+Y si no la cita, nace en el resumen del día del estándar
+Y cuando el análisis de un pendiente decide a qué HU pertenece, la regla o el programa la citan desde ahí
+```
+
+**Cómo validarlo:**
+1. Leer `02·F24`.
+2. Reportar un defecto de una regla que cita su HU y otro de una que no la cita.
+
+**Aprobado cuando:** `02·F24` lo dice, el primero queda en la HU y el segundo en el resumen del día.
+
+### CA-11 · El proyecto se entera cuando su pendiente se resuelve
+
+**Sale de:** análisis 13, puntos 3 y 4.
+
+```gherkin
+Dado un pendiente que reportó un proyecto
+Cuando la fase que cumple su plan anota su commit
+Entonces queda un aviso al lado del pendiente de seguimiento del proyecto, encontrado por los enlaces
+Y el seguimiento cierra solo cuando el proyecto comprueba la corrección
+```
+
+**Cómo validarlo:**
+1. Anotar el commit de la fase que cumple el plan de un pendiente reportado.
+2. Consultar el estado del seguimiento antes y después de comprobarlo.
+
+**Aprobado cuando:** el aviso aparece al lado del seguimiento, y este cierra solo después de comprobarlo.
+
 ---
 
 ## 5. Requisitos no funcionales
@@ -229,6 +285,7 @@ Las fija el plan de cada fase (`02·F14`).
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo`](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/estado-fase.md) | CA-01 a CA-08 | HU-001 | [plan](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_trabajo.md) | [pruebas](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/plan_pruebas.md) | [resultado](A-EP-023-HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-suyo/resultado_pruebas.md) | Cumple |
+| [`B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente`](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/estado-fase.md) | CA-09 | Fase A | [plan](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/plan_trabajo.md) | [pruebas](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/plan_pruebas.md) | [resultado](B-EP-023-HU-003-cada-analisis-deja-el-pendiente-en-su-version-siguiente/resultado_pruebas.md) | Cumple |
 
 ---
 
@@ -283,3 +340,7 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |
 | 2026-10-02 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Sale del CA-08 el traslado de los pendientes viejos y del 103: lo agregó el agente sin origen en el análisis 8. Lo acordado es que pasan a la forma nueva cuando se vayan a trabajar (análisis 1, conclusión 38). La aprobación queda sin efecto hasta que se revise |
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-08 sin el traslado |
+| 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nace el CA-09, según el análisis 11. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-09 del análisis 11 |
+| 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nacen el CA-10 y el CA-11, según el análisis 13. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-10 y el CA-11 del análisis 13 |

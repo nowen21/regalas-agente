@@ -1,0 +1,20 @@
+feat(analisis): el pendiente sube de versión y solo detiene lo que sale del plan
+
+El usuario pidió que un proyecto pueda reportar su pendiente a la HU que lo
+originó y se entere cuando se resuelve; que con un análisis prendido no se
+creen hallazgos aparte; que la plantilla del análisis traiga la fila que pasa
+el pendiente a su versión siguiente, y aprobó las fases B de la HU-003 y de la
+HU-004 de EP-023.
+
+Lo que hizo el agente:
+- Análisis 13 y 14 del pendiente 103; el pendiente pasa a la V6. Los CA
+  nuevos van a la HU-003 (CA-10 y CA-11) y a la HU-007 (CA-05 y CA-06).
+- 51.1.0: la plantilla trae la fila del pendiente y las dos formas de citar
+  el origen; el freno lee las rutas de una en «Pasó a»; origen.py entiende
+  «Análisis N, acuerdo M», y aprobar un análisis corre esa revisión.
+- 52.0.0: un análisis no se aprueba si su hallazgo falta en el pendiente.
+- 52.1.0: 02·F9, 13·DOC24 y la plantilla detienen solo el hallazgo que
+  obliga a salirse del plan.
+- 52.1.1: el control del commit acepta las rutas de una del análisis
+  prendido, igual que el freno.
+- Pruebas de las fases y de los programas que cambiaron.

@@ -11,6 +11,65 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 52.1.1 — 2026-10-03
+
+**El control del commit acepta lo que el análisis prendido manda hacer de una, igual que el freno.**
+
+**PARCHE**: corrige que los dos guardias usaran listas distintas; no cambia qué se exige.
+
+- `validadores/plan_vs_hecho.py`: las rutas «de una» del análisis prendido no se rechazan en el commit. Prueba en `test_nada_fuera_del_plan.py`.
+
+Sale del [análisis 14 del pendiente 103](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-14.md), acuerdo 5.
+
+---
+
+## 52.1.0 — 2026-10-03
+
+**Solo detiene la ejecución el hallazgo que obliga a salirse del plan.**
+
+**MENOR**: las reglas detienen menos; nadie tiene que hacer algo nuevo.
+
+**Lo que entra:**
+
+- `02·F9`: su excepción detiene solo el hallazgo de la épica en curso que, para cerrar la fase, obliga a tocar algo que el plan no declara; el que no, se anota con su pendiente donde pertenece y el trabajo sigue.
+- `13·DOC24` y la nota de `plantillas/analisis.md`: solo ese hallazgo abre el análisis siguiente.
+
+Sale del CA-08 de la [HU-004 de EP-023](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis/HU-004-un-hallazgo-detiene-la-ejecucion-y-vuelve-al-analisis.md), fase `B`.
+
+---
+
+## 52.0.0 — 2026-10-03
+
+**Un análisis no se aprueba si su hallazgo falta en el pendiente.** ⚠ obliga a migrar
+
+**MAYOR**: aprobar un análisis exige algo nuevo. Desde el análisis 2 de cada pendiente, el título de «Hallazgo» trae su número (`H-N`) y ese número está en «De dónde sale» del `pendiente.md`; si no, «Apruebo el análisis» no pone la marca y dice qué falta. Un proyecto al día pasa el pendiente a su versión siguiente antes de aprobar, como ya pedía la plantilla.
+
+**Lo que entra:**
+
+- `validadores/analisis_en_curso.py`: `hallazgo_en_el_pendiente()`, que usa «Apruebo el análisis». El análisis 1 no se revisa.
+- `validadores/tests/test_el_analisis_mejora_su_pendiente.py`: los casos del plan de pruebas.
+
+Sale del CA-09 de la [HU-003 de EP-023](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde/HU-003-el-hallazgo-y-el-pendiente-tienen-solo-lo-que-les-corresponde.md), fase `B`.
+
+---
+
+## 51.1.0 — 2026-10-03
+
+**La plantilla del análisis trae la fila que pasa el pendiente a su versión siguiente, y el freno lee las rutas «de una» donde las escriben los análisis.**
+
+**MENOR**: la plantilla suma una fila fija y dice las dos formas de citar el origen; el freno deja pasar algo más. Nada que ya cumplía deja de cumplir.
+
+**Lo que entra:**
+
+- `plantillas/analisis.md`: «Lo que se tiene que hacer» trae la fila 1, que pasa el pendiente a su versión siguiente, y su nota dice que «Sale de» es un número de este análisis o «Análisis N, acuerdo M» de otro análisis del mismo pendiente.
+- `validadores/freno.py`: las rutas «de una» del análisis prendido se leen también en «Pasó a», con su prueba en `test_el_freno.py`.
+- `validadores/origen.py`: «Sale de lo acordado» acepta «Análisis N, acuerdo M», un acuerdo de otro análisis del mismo pendiente, y revisa que exista.
+- `validadores/analisis_en_curso.py`: «Apruebo el análisis» corre la revisión de origen y no pone la marca si encuentra una falla; dice cuál.
+
+Sale del [análisis 14 del pendiente 103](documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-14.md), acuerdos 1, 2 y 4.
+
+---
+
 ## 51.0.0 — 2026-10-03
 
 **El agente no escribe lo que el plan aprobado de la fase en curso no declara ni una regla autoriza, por ningún canal.** ⚠ obliga a migrar

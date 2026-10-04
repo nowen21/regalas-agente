@@ -121,6 +121,17 @@ class ElCommitSeComparaConElPlan(unittest.TestCase):
         self.assertEqual([], self.fallas())
         self.assertEqual("P1", autorizado.quien_autoriza("notas/hoy.md", autorizado.del_proyecto(self.raiz)))
 
+    def test_lo_que_el_analisis_prendido_manda_hacer_de_una_pasa(self):
+        pendiente = "documentacion/epicas/EP-009-algo/pendientes/7-algo"
+        self.escribir(pendiente + "/analisis-2.md",
+                      "# Análisis 2\n\n## Lo que se tiene que hacer\n\n"
+                      "| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |\n|---|---|---|---|\n"
+                      "| 1 | Corregir | 1 | Este análisis, de una y sin fase: `src/otro.py` |\n\n## Otra\n")
+        self.escribir("historico-chat/.estado/analisis-en-curso.txt",
+                      "analisis=%s/analisis-2.md\ntranscripcion=historico-chat/x.md\ndesde=1\n" % pendiente)
+        self.preparar(FASE + "/plan_trabajo.md", "src/otro.py", "src/tercero.py")
+        self.assertEqual(["src/tercero.py"], self.fallas())
+
     def test_el_pre_commit_lo_corre(self):
         self.assertIn("validar.py\" plan --raiz \"$(pwd)\" --preparados", instalar.PLANTILLA_PRE_COMMIT)
 

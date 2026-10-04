@@ -235,12 +235,16 @@ def comparar_preparados(proyecto, estandar=None):
         return []
 
     autorizadas = autorizado.reglas(proyecto, estandar)
+    # Lo que el análisis prendido manda hacer de una: la misma lista que usa el
+    # freno (análisis 14 del pendiente 103, acuerdo 5).
+    import freno
+    de_una = freno._de_una(proyecto)
     nombres = ", ".join("`%s`" % os.path.basename(rel.rstrip("/")) for rel, _ in fases)
     hallazgos = []
     for archivo in archivos:
         if any(archivo.startswith(rel) or archivo in dec for rel, dec in fases):
             continue                # un documento de la fase, o declarado
-        if autorizado.quien_autoriza(archivo, autorizadas):
+        if archivo in de_una or autorizado.quien_autoriza(archivo, autorizadas):
             continue
         hallazgos.append(Hallazgo(
             FALLA, archivo, 0,

@@ -1,6 +1,6 @@
 # HU-007 · Nada se escribe fuera del plan aprobado
 
-> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1, y del [análisis 10](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-10.md), puntos 3 y 4. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
+> Sus criterios salen de «Lo que se tiene que hacer» del [análisis 1](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), puntos 25, 26, 27 y 31, y del [análisis 8](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-8.md), punto 1, del [análisis 10](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-10.md), puntos 3 y 4, y del [análisis 13](../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-13.md), puntos 5 y 6. Los campos que no son alcance (módulo, tipo, estimación y responsable) son propuesta del agente y esperan la aprobación del usuario.
 
 ---
 
@@ -45,6 +45,8 @@ Son las conclusiones de las que salen los puntos de esta HU.
 | RN-04 | Lo que se construya llega a los proyectos que heredan por el instalador, y la lista de lo autorizado incluye las reglas propias de cada proyecto | Análisis 1, conclusión 47 |
 | RN-05 | La fase activa es la fase en curso. Antes de aprobarse su plan, solo se escriben los documentos de la fase y lo que una regla autoriza; sin fase en curso, solo lo autorizado | Análisis 10, acuerdo 6 |
 | RN-06 | La revisión de la integración continua se activa sola donde el proyecto la tiene, y de dónde se descarga Cimiento es un dato del proyecto | Análisis 10, acuerdo 5 |
+| RN-07 | Con un análisis prendido no se crean hallazgos: lo que aparece se reporta en la conversación y se resuelve en ese análisis | Análisis 13, acuerdo 6 |
+| RN-08 | Un `>` entre comillas es texto, no una orden de escribir | Análisis 13, acuerdo 7 |
 
 ### 3.2 Supuestos
 
@@ -128,6 +130,41 @@ Entonces la lista incluye lo que autorizan esas reglas
 1. En un proyecto con una regla propia que autoriza escribir un archivo, intentar escribirlo.
 
 **Aprobado cuando:** el freno no lo detiene.
+
+### CA-05 · Con un análisis prendido, el freno no anota hallazgos
+
+**Sale de:** análisis 13, punto 5.
+
+```gherkin
+Dado un análisis prendido
+Cuando el freno detiene una acción
+Entonces avisa al agente y no escribe en el resumen de la sesión
+Y sin un análisis prendido, anota el hallazgo en el resumen, como antes
+Y 13·DOC22 lo dice
+```
+
+**Cómo validarlo:**
+1. Con un análisis prendido, hacer que el freno detenga una acción.
+2. Sin análisis prendido, repetirlo.
+3. Leer `13·DOC22`.
+
+**Aprobado cuando:** en el paso 1 el resumen no cambia, en el paso 2 suma el hallazgo, y `13·DOC22` lo dice.
+
+### CA-06 · Un `>` entre comillas no es escritura
+
+**Sale de:** análisis 13, punto 6.
+
+```gherkin
+Dado una orden de consola que solo lee
+Cuando trae un > dentro de comillas
+Entonces el freno la deja pasar
+```
+
+**Cómo validarlo:**
+1. Correr una búsqueda cuyo texto entre comillas lleva `>`.
+2. Correr una redirección real a un archivo que el plan no declara.
+
+**Aprobado cuando:** la primera pasa y la segunda se detiene.
 
 ---
 
@@ -222,3 +259,5 @@ Las fija el plan de cada fase (`02·F14`).
 | 2026-10-02 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con los cambios del análisis 8 |
 | 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | El CA-02 pasa a su versión siguiente: la fase activa y la integración continua, según el análisis 10. La aprobación queda sin efecto hasta que se revise |
 | 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-02 del análisis 10 |
+| 2026-10-03 | Claude, por pedido de Ing. José Dúmar Jiménez Ruíz | Nacen el CA-05 y el CA-06, según el análisis 13. La aprobación queda sin efecto hasta que se revise |
+| 2026-10-03 | Ing. José Dúmar Jiménez Ruíz | **Aprobada**, con el CA-05 y el CA-06 del análisis 13 |

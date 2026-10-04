@@ -292,12 +292,44 @@ def faltantes(texto):
     return salida
 
 
+_HALLAZGO_TITULO = re.compile(r"^### (H-\d+)\b", re.M)
+_DE_DONDE_SALE = re.compile(r"^\|[^|\n]*De dónde sale[^|\n]*\|(.*)\|\s*$", re.M)
+
+
+def hallazgo_en_el_pendiente(ruta):
+    """`EP-023 · HU-003 · CA-09` · El hallazgo del análisis tiene que estar en su pendiente.
+
+    Cada análisis aprobado deja el pendiente en su versión siguiente, con su
+    hallazgo en «De dónde sale» (análisis 11 del pendiente 103, acuerdo 5). El
+    análisis 1 no se revisa: es el que origina el pendiente.
+    """
+    m = _ANALISIS.match(os.path.basename(ruta))
+    if not m or int(m.group(1)) == 1:
+        return []
+    h = _HALLAZGO_TITULO.search(seccion(leer(ruta), "Hallazgo"))
+    if not h:
+        return ["falta el número del hallazgo (H-N) en el título de «Hallazgo»"]
+    pendiente = os.path.join(os.path.dirname(ruta), "pendiente.md")
+    fila = _DE_DONDE_SALE.search(leer(pendiente)) if os.path.isfile(pendiente) else None
+    if not fila or not re.search(r"\b%s\b" % re.escape(h.group(1)), fila.group(1)):
+        return ["falta el %s en «De dónde sale» del pendiente: pasarlo a su versión siguiente antes de aprobar"
+                % h.group(1)]
+    return []
+
+
 def por_que_no_se_aprueba(raiz):
-    """Lo que le falta al análisis prendido para aprobarse; vacío si nada."""
+    """Lo que le falta al análisis prendido para aprobarse; vacío si nada.
+
+    Además de `faltantes()`, corre la revisión de origen: el punto que no dice de
+    dónde sale, o que cita algo que no existe, se corrige antes de aprobar
+    (análisis 14 del pendiente 103, acuerdo 4).
+    """
     estado = leer_estado(raiz)
     if not estado or not os.path.isfile(estado["analisis"]):
         return []
-    return faltantes(leer(estado["analisis"]))
+    import origen
+    return (faltantes(leer(estado["analisis"])) + hallazgo_en_el_pendiente(estado["analisis"])
+            + origen.revisar_uno(estado["analisis"]))
 
 
 def version():
@@ -356,14 +388,14 @@ def anotar_en_principal(raiz, ruta, fecha):
 def aprobar(raiz, turno, fecha):
     """Pone la marca «Aprobado» con la fecha, el turno y la versión, una sola vez.
 
-    No la pone si al análisis le falta algo de `faltantes()`. Puesta la marca,
+    No la pone si `por_que_no_se_aprueba()` encuentra algo. Puesta la marca,
     pasa lo que el análisis suma al análisis principal.
     """
     estado = leer_estado(raiz)
     if not estado or not os.path.isfile(estado["analisis"]):
         return False
     texto = leer(estado["analisis"])
-    if _APROBADO.search(texto) or faltantes(texto):
+    if _APROBADO.search(texto) or por_que_no_se_aprueba(raiz):
         return False
     con = ", con la versión %s" % version() if version() else ""
     marca = ("> **Aprobado** por el usuario el %s, en el turno %d%s. Desde ese momento "

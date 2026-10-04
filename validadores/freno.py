@@ -95,7 +95,10 @@ def _de_una(proyecto):
     rutas = set()
     for celdas in origen.leer_analisis(estado["analisis"])["hacer"].values():
         if len(celdas) > 2 and re.search(r"(?i)de una", celdas[2]):
-            rutas |= {r.strip().lstrip("./") for r in re.findall(r"`([^`]+)`", celdas[0]) if "/" in r or "." in r}
+            # Los análisis nombran las rutas en «Pasó a»; también se leen en la
+            # primera columna (análisis 14 del pendiente 103, acuerdo 2).
+            texto = celdas[0] + " " + celdas[2]
+            rutas |= {r.strip().lstrip("./") for r in re.findall(r"`([^`]+)`", texto) if "/" in r or "." in r}
     return rutas
 
 

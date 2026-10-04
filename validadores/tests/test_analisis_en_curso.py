@@ -7,6 +7,7 @@ temporal con una transcripción y pendientes de prueba.
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -52,6 +53,14 @@ class Base(unittest.TestCase):
     def agregar(self, texto):
         with open(self.trans, "a", encoding="utf-8") as f:
             f.write(texto)
+
+    def llenar(self, ruta, turno_acordado):
+        """Lo mínimo para que el análisis salido de la plantilla pase la revisión de origen."""
+        curso.pasar(self.raiz)
+        texto = self.leer(ruta).replace("1. «tema»: «lo que se decidió» (turno «N»).",
+                                        "1. Algo: se hace (turno %d)." % turno_acordado)
+        texto = re.sub(r"^\| 1 \| Pasar el pendiente.*\n", "", texto, flags=re.M)
+        self.escribir(ruta, texto.replace("| «número» |", "| 1 |"))
 
 
 class LaHerramientaLeeElEstado(Base):
@@ -132,6 +141,7 @@ class PrenderPausarApagar(Base):
         self.assertIn("### 6 · Usuario", texto)
 
         self.agregar("### 7 · Usuario — 2026-10-02 10:07:00\n> Apruebo el análisis\n\n")
+        self.llenar(a1, 6)
         self.assertTrue(curso.aprobar(self.raiz, 7, "2026-10-02"))
         self.assertIn("> **Aprobado** por el usuario el 2026-10-02, en el turno 7", self.leer(a1))
         curso.pasar(self.raiz)
@@ -151,6 +161,7 @@ class PrenderPausarApagar(Base):
         curso.prender(self.raiz, 7, self.trans, 1)
         a1 = os.path.join(self.p7, "analisis-1.md")
         self.agregar("### 2 · Usuario — 2026-10-02 10:02:00\n> Apruebo el análisis\n\n")
+        self.llenar(a1, 1)
         self.assertTrue(curso.aprobar(self.raiz, 2, "2026-10-02"))
         curso.pasar(self.raiz)
         self.assertIsNotNone(curso.leer_estado(self.raiz))
@@ -193,7 +204,8 @@ class PrenderPausarApagar(Base):
         self.agregar(turno(3, "Escriba"))
         curso.pasar(self.raiz)
         self.assertIn("### 3 · Usuario", self.leer(a1))
-        curso.aprobar(self.raiz, 2, "2026-10-02")
+        self.llenar(a1, 1)
+        self.assertTrue(curso.aprobar(self.raiz, 2, "2026-10-02"))
         curso._guardar_estado(self.raiz, estado)
         curso.pasar(self.raiz)
         texto = self.leer(a1)
@@ -265,7 +277,8 @@ class ElAvisoDeCadaTurno(Base):
 FILA = "| 1 | Hacer algo | 1 | EP-009, HU-001 |\n"
 APORTA = ("## Lo que aporta al análisis principal\n\n**Resultado:** Ratifica.\n\n"
           "**Lo que suma al análisis principal:** La clase tiene suma.\n")
-ANALISIS = ("# Análisis 1: algo\n\n## Conversación\n\n> acá termina la conversación\n\n"
+ANALISIS = ("# Análisis 1: algo\n\n## Conversación\n\n### 1 · Usuario, 2026-10-02 10:00:00\n> Algo\n\n"
+            "> acá termina la conversación\n\n## Lo acordado\n\n1. Algo: se hace (turno 1).\n\n"
             "## Lo que se tiene que hacer\n\n| # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |\n"
             "|---|---|---|---|\n" + FILA + "\n" + APORTA)
 PRINCIPAL = ("# Análisis principal\n\n## Qué es\n\nCimiento es algo.\n\n"
@@ -329,6 +342,25 @@ class AprobarRevisaYPasaAlPrincipal(Base):
         a1 = self.preparar(ANALISIS.replace("**Lo que suma al análisis principal:** La clase tiene suma.\n", ""))
         self.assertFalse(curso.aprobar(self.raiz, 7, "2026-10-02"))
         self.assertFalse(curso.aprobado(a1))
+
+    def test_con_una_falla_de_origen_no_se_aprueba(self):
+        a1 = self.preparar(ANALISIS.replace(FILA, "| 1 | Hacer algo | 2 | EP-009, HU-001 |\n"))
+        self.assertIn("cita el punto 2 de «Lo acordado», que no existe", curso.por_que_no_se_aprueba(self.raiz)[0])
+        self.assertFalse(curso.aprobar(self.raiz, 7, "2026-10-02"))
+        self.assertFalse(curso.aprobado(a1))
+
+    def test_la_fila_puede_citar_el_acuerdo_de_otro_analisis(self):
+        self.escribir(os.path.join(self.p7, "analisis-1.md"), "# Análisis 1\n\n## Lo acordado\n\n5. Otro: algo (turno 1).\n")
+        self.escribir(os.path.join(self.p7, "pendiente.md"),
+                      "# Pendiente: algo que falla\n\n| | |\n|---|---|\n| **De dónde sale** | H-1 |\n")
+        a2 = os.path.join(self.p7, "analisis-2.md")
+        self.escribir(a2, ANALISIS.replace("# Análisis 1: algo\n", "# Análisis 2: algo\n\n## Hallazgo\n\n### H-1 · Algo\n").replace(
+            FILA, FILA + "| 2 | Pasar el pendiente | Análisis 1, acuerdo 5 | Este análisis, de una |\n"))
+        curso._guardar_estado(self.raiz, {"analisis": a2, "transcripcion": self.trans,
+                                          "desde": 1, "pausa": None, "pausas": []})
+        self.assertEqual(curso.por_que_no_se_aprueba(self.raiz), [])
+        self.escribir(a2, self.leer(a2).replace("acuerdo 5", "acuerdo 6"))
+        self.assertIn("cita el acuerdo 6 del análisis 1, que no existe", curso.por_que_no_se_aprueba(self.raiz)[0])
 
     def test_la_plantilla_trae_lo_que_pide_aprobar(self):
         with open(os.path.join(curso.comun.RAIZ, curso.PLANTILLA), encoding="utf-8") as f:

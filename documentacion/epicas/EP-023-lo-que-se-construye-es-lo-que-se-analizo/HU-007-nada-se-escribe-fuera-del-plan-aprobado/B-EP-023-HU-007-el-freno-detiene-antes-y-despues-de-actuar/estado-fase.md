@@ -26,7 +26,7 @@
 | 9 | Verificador | trazabilidad sin faltantes | ☑ `flujo` y `origen` sin fallas |
 | 10 | Crítico | sin hallazgos graves | ☑ H-14 resuelto por el análisis 11; H-15 en el pendiente 109 |
 | 11 | Cierre documental + señales | docs y señales al día | ☑ Resultado de pruebas, cierre, HU y registro de cambios |
-| 12 | Commit | 👤 autorizado | ☐ |
+| 12 | Commit | 👤 autorizado | ✅ `2f1b9ab` |
 | 13 | Publicación / despliegue | 👤 autorizado | ☐ |
 
 ## 1.2 Avance de las tareas del plan

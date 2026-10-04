@@ -133,6 +133,22 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-01-sesion.md](../.
 | Por qué importa | Es el mismo caso del H-14: el plan no buscó qué pruebas leen lo que la tarea cambia (lección S-274). Corregirlas sin volver al análisis es escribir fuera del plan aprobado. |
 | Pendiente | [Las pruebas del freno describen el freno viejo](../../../documentacion/epicas/EP-005-automatismos-que-no-dependen-de-la-memoria/HU-023-cada-tarea-sabe-que-reglas-le-aplican/pendientes/109-las-pruebas-del-freno-describen-el-freno-viejo/pendiente.md) |
 
+### H-16 · Un proyecto no puede reportar un pendiente a la HU del estándar que lo origina
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03 el usuario pidió que un proyecto que hereda el estándar pueda reportarle un pendiente al agente, directo a la HU que lo origina. Hoy `02·F24` manda abrir «un pendiente allá» sin decir dónde, aunque desde el CA-08 de la HU-003 el pendiente vive dentro de lo que lo origina. |
+| Por qué importa | Si el reporte no dice a qué HU va, el pendiente cae en el resumen del día o en un sitio equivocado, y nadie lo encuentra junto a su dueño. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+
+### H-18 · El validador de origen no acepta que una fila cite el acuerdo de otro análisis
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-03, ya aprobado el análisis 13 del pendiente 103, `validar.py origen` falló en su fila 8 de «Lo que se tiene que hacer». La fila dice «Análisis 11, acuerdo 5», y el validador lo lee como el punto 11 de «Lo acordado» del mismo análisis, que no existe. |
+| Por qué importa | Pasar el pendiente a su versión siguiente sale siempre de un acuerdo de otro análisis (análisis 11, acuerdo 5). Mientras el validador no lo acepte, cada análisis que lo cite falla, o tiene que citar un número equivocado para pasar. |
+| Pendiente | [Lo que se construye se aparta de lo aprobado](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md) |
+
 ---
 
 ## ¿Se puede cerrar la sesión?
