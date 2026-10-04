@@ -31,8 +31,8 @@ Con esto, la versión 2 entrega lo que promete: **el expediente el mismo día**.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Un solo archivo, con su índice y sus documentos en el mismo orden» (§6) | servicio | `armar_el_texto` en [plataforma/nucleo/expediente/entregable.py](../../../../../plataforma/nucleo/expediente/entregable.py) | ✅ | CP-001 |
-| «Las listas dentro de una celda salen como listas» (`CA-7`) | servicio | `celda` en [plataforma/nucleo/expediente/marcado.py](../../../../../plataforma/nucleo/expediente/marcado.py) | ✅ | CP-002 |
+| «Un solo archivo, con su índice y sus documentos en el mismo orden» (§6) | servicio | `armar_el_texto` en [plataforma/nucleo/expediente/entregable.py](../../../../../proyectos/cimiento/nucleo/expediente/entregable.py) | ✅ | CP-001 |
+| «Las listas dentro de una celda salen como listas» (`CA-7`) | servicio | `celda` en [plataforma/nucleo/expediente/marcado.py](../../../../../proyectos/cimiento/nucleo/expediente/marcado.py) | ✅ | CP-002 |
 | «Generar dos veces da el mismo archivo» (§6) | servicio | Sin fecha adentro | ✅ | CP-003 |
 | «Se avisa antes de generar, y se genera igual» (§6) | servicio | `generar` devuelve los avisos | ✅ | CP-004 |
 | «Generar queda registrado en la auditoría» (§6) | servicio | `auditoria.con_constancia` | ✅ | Por construcción |

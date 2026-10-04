@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Un número no se publica dos veces» (`RN-1`) | servicio | `revisar` en [plataforma/nucleo/reglas/publicacion.py](../../../../../plataforma/nucleo/reglas/publicacion.py) | ✅ | CP-001 |
+| «Un número no se publica dos veces» (`RN-1`) | servicio | `revisar` en [plataforma/nucleo/reglas/publicacion.py](../../../../../proyectos/cimiento/nucleo/reglas/publicacion.py) | ✅ | CP-001 |
 | «Sin entrada no se publica» (`RN-2`) | servicio | `entrada_del_registro` | ✅ | CP-002 |
 | «Si la puerta no pasa, no se publica» (`RN-3`) | servicio | `puerta.revisar_antes_de_publicar` | ✅ | CP-003 |
 | «Lo que falta se dice todo junto» (`RN-4`) | servicio | `NoSePuedePublicar` | ✅ | CP-004 |

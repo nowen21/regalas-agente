@@ -34,10 +34,10 @@ El módulo Seguridad, que llevaba meses funcionando, **tiene especificación por
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se tapa lo que se acaba de escribir» (`RN-1`) | servicio | `llenar` en [plataforma/nucleo/ciclo_de_vida/core.py](../../../../../plataforma/nucleo/ciclo_de_vida/core.py) | ✅ | CP-001 |
+| «Se tapa lo que se acaba de escribir» (`RN-1`) | servicio | `llenar` en [plataforma/nucleo/ciclo_de_vida/core.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/core.py) | ✅ | CP-001 |
 | «El nombre de la variable queda intacto» (`RN-2`) | servicio | El enmascarador del estándar | ✅ | CP-001 |
 | «Lo importado no se altera» (`RN-3`) | servicio | `parecen_traer_claves` solo lee | ✅ | CP-003 |
-| «Sin enmascarador no se escribe» (`RN-4`) | servicio | `NoHayConQueTapar` en [plataforma/nucleo/seguridad/claves.py](../../../../../plataforma/nucleo/seguridad/claves.py) | ✅ | CP-005 |
+| «Sin enmascarador no se escribe» (`RN-4`) | servicio | `NoHayConQueTapar` en [plataforma/nucleo/seguridad/claves.py](../../../../../proyectos/cimiento/nucleo/seguridad/claves.py) | ✅ | CP-005 |
 | «El reconocimiento no se duplica» (`RN-5`) | servicio | El puente | ✅ | Por construcción |
 | «Todo camino declara si tapa» (`RN-6`) | doc | La §5.1 de la [especificación](../../../../seguridad/spec.md) | ✅ | §4 |
 

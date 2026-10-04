@@ -1,0 +1,2 @@
+# Lo que Cimiento necesita para correr. La base de datos es un archivo local.
+Django>=5.2,<6.0

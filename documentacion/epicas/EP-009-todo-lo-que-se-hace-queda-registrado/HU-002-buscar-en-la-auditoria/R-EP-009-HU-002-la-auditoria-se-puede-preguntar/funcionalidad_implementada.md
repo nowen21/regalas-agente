@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Los tres filtros» (`RN-1`) | servicio | `buscar` en [plataforma/nucleo/auditoria/busqueda.py](../../../../../plataforma/nucleo/auditoria/busqueda.py) | ✅ | CP-001 |
+| «Los tres filtros» (`RN-1`) | servicio | `buscar` en [plataforma/nucleo/auditoria/busqueda.py](../../../../../proyectos/cimiento/nucleo/auditoria/busqueda.py) | ✅ | CP-001 |
 | «De lo más reciente a lo más viejo» (`RN-2`) | servicio | `buscar` | ✅ | CP-001 |
 | «Sin coincidencias se dice» (`RN-3`) | servicio | `dicho` | ✅ | CP-003 |
 | «Si se recorta, se avisa» (`RN-4`) | servicio | `se_recorto` | ✅ | CP-004 |

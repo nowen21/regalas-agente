@@ -131,7 +131,7 @@ Entonces no se escribe nada, y se dice por qué
 - Funcionalidad `F-031` del [inventario](../../../../cvds/analisis-requisitos/inventario-funcionalidades.md).
 - Requisito `RF-31` del [análisis](../../../../cvds/analisis-requisitos/README.md).
 - Quién reconoce la credencial: `validadores/enmascarar.py`, del estándar.
-- El puente: [plataforma/nucleo/seguridad/claves.py](../../../../plataforma/nucleo/seguridad/claves.py).
+- El puente: [plataforma/nucleo/seguridad/claves.py](../../../../proyectos/cimiento/nucleo/seguridad/claves.py).
 
 ---
 

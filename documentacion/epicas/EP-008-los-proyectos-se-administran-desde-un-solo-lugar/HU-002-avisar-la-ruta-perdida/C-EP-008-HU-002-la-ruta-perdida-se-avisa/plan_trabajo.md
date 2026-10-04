@@ -29,7 +29,7 @@
 
 | Qué pide la historia | Qué hay hoy | Qué falta |
 |---|---|---|
-| `CA-01` la ruta perdida se marca en la lista | `ruta_viva` en [models.py](../../../../../plataforma/nucleo/proyectos/models.py), y la lista muestra «esa ruta ya no existe» | **El aviso no dice qué ruta se buscó.** La lista la muestra en su columna, pero el aviso en sí no la nombra, y `RN-2` pide que la diga |
+| `CA-01` la ruta perdida se marca en la lista | `ruta_viva` en [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py), y la lista muestra «esa ruta ya no existe» | **El aviso no dice qué ruta se buscó.** La lista la muestra en su columna, pero el aviso en sí no la nombra, y `RN-2` pide que la diga |
 | `CA-02` su documentación se sigue viendo | La pantalla del proyecto ya avisa, y su documentación no depende de la ruta | Nada. Falta la prueba que lo fije |
 | `CA-03` corregir la ruta quita el aviso | **Nada** | Todo. Es el grueso de la fase |
 | Transversal: listar cincuenta proyectos bajo un segundo | Nada medido | La medición |

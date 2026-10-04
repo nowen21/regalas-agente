@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Sin plan aprobado no se ejecuta» (`RN-1`) | servicio | `LAS_QUE_SE_COMPRUEBAN` en [plataforma/nucleo/ciclo_de_vida/puertas.py](../../../../../plataforma/nucleo/ciclo_de_vida/puertas.py) | ✅ | CP-006 |
+| «Sin plan aprobado no se ejecuta» (`RN-1`) | servicio | `LAS_QUE_SE_COMPRUEBAN` en [plataforma/nucleo/ciclo_de_vida/puertas.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/puertas.py) | ✅ | CP-006 |
 | «Sin veredicto no se cierra» (`RN-2`) | servicio | `veredicto_de` | ✅ | CP-006 |
 | «Sin commit no se publica» (`RN-3`) | servicio | `se_puede_pasar` | ✅ | CP-006 |
 | «El rechazo nombra la puerta» (`RN-4`) | servicio | El motivo de `se_puede_pasar` | ✅ | CP-006 |

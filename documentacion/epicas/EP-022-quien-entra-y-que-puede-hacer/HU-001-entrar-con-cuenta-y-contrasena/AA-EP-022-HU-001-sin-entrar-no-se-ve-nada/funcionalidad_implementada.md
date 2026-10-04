@@ -34,7 +34,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Ninguna pantalla sin entrar» (`RN-1`) | guardián | `ExigirHaberEntrado` en [plataforma/nucleo/acceso/middleware.py](../../../../../plataforma/nucleo/acceso/middleware.py) | ✅ | CP-001 |
+| «Ninguna pantalla sin entrar» (`RN-1`) | guardián | `ExigirHaberEntrado` en [plataforma/nucleo/acceso/middleware.py](../../../../../proyectos/cimiento/nucleo/acceso/middleware.py) | ✅ | CP-001 |
 | «La contraseña cifrada» (`RN-2`) | ajeno | Lo trae `django.contrib.auth` | ✅ | CP-002 |
 | «Lleva a donde se iba» (`RN-3`) | guardián | `redirect_to_login` con la ruta pedida | ✅ | CP-002 |
 | «El mensaje no distingue» (`RN-4`) | vista | `Entrar.form_invalid` | ✅ | CP-002 |

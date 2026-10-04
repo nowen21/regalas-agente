@@ -34,7 +34,7 @@ Sobre este repositorio: **32 comprobaciones en 116,9 segundos**, y encontró dos
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se comprueba, no se corrige» (`RN-1`) | servicio | `comprobar` en [plataforma/nucleo/comprobaciones/core.py](../../../../../plataforma/nucleo/comprobaciones/core.py) | ✅ | CP-004 |
+| «Se comprueba, no se corrige» (`RN-1`) | servicio | `comprobar` en [plataforma/nucleo/comprobaciones/core.py](../../../../../proyectos/cimiento/nucleo/comprobaciones/core.py) | ✅ | CP-004 |
 | «Lo que no cumple sale con archivo y línea» (`RN-2`) | servicio | `_FALLA` | ✅ | CP-002 |
 | «Sin comprobar no es no cumplir» (`RN-3`) | servicio | `Veredicto.se_pudo` | ✅ | CP-003 |
 | «Las comprobaciones no se duplican» (`RN-4`) | servicio | Se corre el punto de entrada del estándar | ✅ | Por construcción |

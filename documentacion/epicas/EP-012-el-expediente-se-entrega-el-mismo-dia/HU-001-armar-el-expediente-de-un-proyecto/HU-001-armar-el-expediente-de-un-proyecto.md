@@ -132,7 +132,7 @@ Entonces salen los documentos hasta ahí, y se dice cuáles quedaron fuera
 - Funcionalidad `F-025` del [inventario](../../../../cvds/analisis-requisitos/inventario-funcionalidades.md).
 - Requisito `RF-25` del [análisis](../../../../cvds/analisis-requisitos/README.md).
 - Decisión que la gobierna: [`DA-09`](../../../../cvds/diseno/decisiones-de-arquitectura.md), para lo que sigue en la `HU-002`.
-- De dónde salen los documentos: [plataforma/nucleo/importacion/moldes.py](../../../../plataforma/nucleo/importacion/moldes.py), que es quien reconoce qué es cada archivo.
+- De dónde salen los documentos: [plataforma/nucleo/importacion/moldes.py](../../../../proyectos/cimiento/nucleo/importacion/moldes.py), que es quien reconoce qué es cada archivo.
 
 ---
 

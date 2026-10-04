@@ -69,9 +69,9 @@
 | Pieza | Dónde | Qué aporta |
 |---|---|---|
 | El texto de las conversaciones | `historico-chat/` de cada proyecto | Lo escribe [validadores/historico.py](../../../../../validadores/historico.py), con las claves ya tapadas |
-| El índice reconstruible | [plataforma/nucleo/almacen/core.py](../../../../../plataforma/nucleo/almacen/core.py) | `reconstruir_indice()` y `huella()` |
-| Dónde vive cada proyecto | [plataforma/nucleo/proyectos/models.py](../../../../../plataforma/nucleo/proyectos/models.py) | `ruta_codigo` y `ruta_viva` |
-| El puente hacia el estándar | [plataforma/nucleo/seguridad/claves.py](../../../../../plataforma/nucleo/seguridad/claves.py) | El precedente: la plataforma **lee** de `validadores/` y nunca escribe |
+| El índice reconstruible | [plataforma/nucleo/almacen/core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | `reconstruir_indice()` y `huella()` |
+| Dónde vive cada proyecto | [plataforma/nucleo/proyectos/models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py) | `ruta_codigo` y `ruta_viva` |
+| El puente hacia el estándar | [plataforma/nucleo/seguridad/claves.py](../../../../../proyectos/cimiento/nucleo/seguridad/claves.py) | El precedente: la plataforma **lee** de `validadores/` y nunca escribe |
 
 ### 2.1 Archivos que se crean o modifican  ·  [`02·F14`](../../../../../base/02-flujo-de-trabajo/reglas/F14-responde-las-trece-preguntas-en-todo-plan-de-trabajo.md) Q9
 

@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Medir no obliga a anotar» (`RN-1`) | servicio | `huecos` en [plataforma/nucleo/medicion/revision.py](../../../../../plataforma/nucleo/medicion/revision.py) | ✅ | CP-001 |
+| «Medir no obliga a anotar» (`RN-1`) | servicio | `huecos` en [plataforma/nucleo/medicion/revision.py](../../../../../proyectos/cimiento/nucleo/medicion/revision.py) | ✅ | CP-001 |
 | «La base sale marcada» (`RN-2`) | servicio | `linea_base` | ✅ | CP-002 |
 | «Un hueco larguísimo no cuenta» (`RN-3`) | servicio | `TOPE_SEGUNDOS` | ✅ | CP-003 |
 | «Sin hora se dice aparte» (`RN-4`) | servicio | `_cuando` | ✅ | CP-001 |

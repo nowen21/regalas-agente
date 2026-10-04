@@ -34,8 +34,8 @@ Con esto `F-014` queda completa, y con ella **la versión 2**.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Lo escrito va al archivo original» (`RN-4`) | servicio | `ruta_original` en [plataforma/nucleo/ciclo_de_vida/core.py](../../../../../plataforma/nucleo/ciclo_de_vida/core.py) | ✅ | CP-001 |
-| «Se toca solo el hueco» (`RN-5`) | servicio | `reemplazar` en [plataforma/nucleo/ciclo_de_vida/escritura.py](../../../../../plataforma/nucleo/ciclo_de_vida/escritura.py) | ✅ | CP-002 |
+| «Lo escrito va al archivo original» (`RN-4`) | servicio | `ruta_original` en [plataforma/nucleo/ciclo_de_vida/core.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/core.py) | ✅ | CP-001 |
+| «Se toca solo el hueco» (`RN-5`) | servicio | `reemplazar` en [plataforma/nucleo/ciclo_de_vida/escritura.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/escritura.py) | ✅ | CP-002 |
 | «Si el archivo cambió por fuera, se avisa» (`RN-6`) | servicio | `llenar_el_hueco`, con la huella | ✅ | CP-004 |
 | «Escribir queda registrado» (`RN-7`) | servicio | `con_constancia`, antes del efecto | ✅ | CP-005 |
 | «El archivo nunca queda a medias» (§6) | servicio | `guardar_de_un_golpe` | ✅ | EV-01 |

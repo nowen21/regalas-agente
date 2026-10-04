@@ -30,7 +30,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «La primera sin cumplir» (`RN-1`) | servicio | `de_un_texto` en [plataforma/nucleo/ciclo_de_vida/estaciones.py](../../../../../plataforma/nucleo/ciclo_de_vida/estaciones.py) | ✅ | CP-004 |
+| «La primera sin cumplir» (`RN-1`) | servicio | `de_un_texto` en [plataforma/nucleo/ciclo_de_vida/estaciones.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/estaciones.py) | ✅ | CP-004 |
 | «Manda la tabla» (`RN-2`) | servicio | `coincide` | ✅ | CP-004 |
 | «Las dos marcas» (`RN-3`) | servicio | `CUMPLIDAS` | ✅ | CP-007 |
 | «Sin marcar no es pendiente» (`RN-4`) | servicio | `_como_quedo` | ✅ | CP-007 |

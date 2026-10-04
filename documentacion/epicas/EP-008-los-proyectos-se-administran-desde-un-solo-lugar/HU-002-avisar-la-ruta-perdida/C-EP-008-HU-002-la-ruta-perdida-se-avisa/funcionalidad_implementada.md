@@ -31,10 +31,10 @@ Corregir la ruta comprueba lo mismo que conectar, y **relee la versión de regla
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Al listar proyectos se comprueba si cada ruta existe" (§6) | modelo | `ruta_viva` en [models.py](../../../../../plataforma/nucleo/proyectos/models.py) | ✅ | CP-001, CP-006 |
-| "La que no, se marca y se avisa" (§6) | servicio · vista | `avisos_de` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py), y `templates/proyectos/` | ✅ | CP-001 |
+| "Al listar proyectos se comprueba si cada ruta existe" (§6) | modelo | `ruta_viva` en [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py) | ✅ | CP-001, CP-006 |
+| "La que no, se marca y se avisa" (§6) | servicio · vista | `avisos_de` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py), y `templates/proyectos/` | ✅ | CP-001 |
 | "Su documentación se sigue mostrando igual" (§6) | modelo | La documentación no depende de la ruta | ✅ | CP-002 |
-| "Volver a apuntar la ruta quita el aviso" (§6) | servicio · vista | `corregir_ruta` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-003 |
+| "Volver a apuntar la ruta quita el aviso" (§6) | servicio · vista | `corregir_ruta` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-003 |
 | "`RN-4` perder la ruta no borra nada" (§4) | modelo | La ficha y los documentos viven en `datos/` | ✅ | CP-002 |
 | "`RN-1` registrar un proyecto no modifica nada dentro de su carpeta" (§4) | servicio | Corregir no toca ninguna de las dos carpetas | ✅ | CP-007 |
 | `RNF-02` listar cincuenta proyectos en menos de un segundo | modelo | La comprobación de rutas | ✅ | CP-006: 0.010 s |
@@ -44,11 +44,11 @@ Corregir la ruta comprueba lo mismo que conectar, y **relee la versión de regla
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| 1 | Que el aviso diga qué ruta se buscó | ✅ hecha | `avisos_de` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-001 |
-| 2 | Corregir la ruta de un proyecto | ✅ hecha | `corregir_ruta` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) y `cambiar` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) | CP-003 |
+| 1 | Que el aviso diga qué ruta se buscó | ✅ hecha | `avisos_de` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-001 |
+| 2 | Corregir la ruta de un proyecto | ✅ hecha | `corregir_ruta` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) y `cambiar` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) | CP-003 |
 | 3 | Comprobar la ruta nueva como al conectar | ✅ hecha | `corregir_ruta`, las tres comprobaciones | CP-004 |
 | 4 | Releer la versión de reglas al corregir la ruta | ✅ hecha | `corregir_ruta` | CP-005 |
-| 5 | Medir que cincuenta proyectos listan bajo un segundo | ✅ hecha | `RendimientoTests` en [tests.py](../../../../../plataforma/nucleo/proyectos/tests.py) | CP-006: **0.010 s** |
+| 5 | Medir que cincuenta proyectos listan bajo un segundo | ✅ hecha | `RendimientoTests` en [tests.py](../../../../../proyectos/cimiento/nucleo/proyectos/tests.py) | CP-006: **0.010 s** |
 
 **Correspondencia con el plan:** 5 tareas en el plan, 5 acá.
 
@@ -94,12 +94,12 @@ En la lista, un proyecto con la ruta perdida sale marcado con **«Esa carpeta ya
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| El aviso nombra la ruta que se buscó | Sin ella, el usuario no puede ver si fue un renombre, un movimiento o un disco sin montar. Es `RN-2` de la historia | `avisos_de` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) |
+| El aviso nombra la ruta que se buscó | Sin ella, el usuario no puede ver si fue un renombre, un movimiento o un disco sin montar. Es `RN-2` de la historia | `avisos_de` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) |
 | Cuando la ruta está perdida, ese es el **único** aviso | Sumarle «no declara versión» y «no tiene control de versiones» sería ruido: no se pueden comprobar sin la carpeta, y afirmarlos sería hablar de lo que no se leyó | `avisos_de` corta ahí |
 | Corregir la ruta relee la versión de reglas | La carpeta cambió: lo que declara puede ser otra cosa | `corregir_ruta` |
 | Corregir comprueba lo mismo que conectar | Si aceptara lo que conectar rechaza, sería una puerta de atrás. Mismo criterio que la fase H con la versión | `corregir_ruta`, las tres comprobaciones |
 | Un proyecto puede apuntar a su propia ruta sin que se rechace | Una comprobación de duplicados escrita sin cuidado haría chocar al proyecto consigo mismo | El `exclude(pk=proyecto.pk)` de `corregir_ruta` |
-| La confirmación dice que **ninguna de las dos carpetas se toca** | «Corregir la ruta» suena a «mover el proyecto», y hay que decir que no lo es | `CONFIRMACIONES` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) |
+| La confirmación dice que **ninguna de las dos carpetas se toca** | «Corregir la ruta» suena a «mover el proyecto», y hay que decir que no lo es | `CONFIRMACIONES` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) |
 
 ---
 

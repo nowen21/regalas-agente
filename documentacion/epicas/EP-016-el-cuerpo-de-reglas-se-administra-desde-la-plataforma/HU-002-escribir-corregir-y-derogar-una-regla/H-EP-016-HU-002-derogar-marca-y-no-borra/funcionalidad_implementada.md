@@ -32,9 +32,9 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «La fuente es el texto» (`RN-1`) | servicio | `crear` en [plataforma/nucleo/reglas/redaccion.py](../../../../../plataforma/nucleo/reglas/redaccion.py) | ✅ | CP-005 |
+| «La fuente es el texto» (`RN-1`) | servicio | `crear` en [plataforma/nucleo/reglas/redaccion.py](../../../../../proyectos/cimiento/nucleo/reglas/redaccion.py) | ✅ | CP-005 |
 | «Nada se borra: se deroga» (`RN-2`) | servicio | `derogar` | ✅ | CP-006 |
-| «Se muestran las que se parecen» (`RN-3`) | servicio | `parecidas_a` en [plataforma/nucleo/reglas/parecidas.py](../../../../../plataforma/nucleo/reglas/parecidas.py) | ✅ | CP-007 |
+| «Se muestran las que se parecen» (`RN-3`) | servicio | `parecidas_a` en [plataforma/nucleo/reglas/parecidas.py](../../../../../proyectos/cimiento/nucleo/reglas/parecidas.py) | ✅ | CP-007 |
 | «Una blindada no se deroga desde acá» (`RN-4`) | servicio | `NoSePuedeTocar` | ✅ | CP-006 |
 | «La regla nace con sus huecos» (`RN-5`) | servicio | `molde` | ✅ | CP-005 |
 | «Escribir queda registrado» (`RN-6`) | orden | `con_constancia` | ✅ | Por construcción |

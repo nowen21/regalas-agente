@@ -31,11 +31,11 @@ Primero se mira y se cuenta sin escribir nada; se muestra el **recuento por tipo
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Se recorre la carpeta del proyecto y se identifica cada documento por su forma" (§6) | servicio | [nucleo/importacion/moldes.py](../../../../../plataforma/nucleo/importacion/moldes.py) y `mirar` en [core.py](../../../../../plataforma/nucleo/importacion/core.py) | ✅ | CP-001, CP-008 |
-| "Antes de escribir nada se muestra qué se va a traer, y el usuario confirma" (§6) | vista | [views.py](../../../../../plataforma/nucleo/importacion/views.py) y `templates/importacion/traer.html` | ✅ | CP-006 |
+| "Se recorre la carpeta del proyecto y se identifica cada documento por su forma" (§6) | servicio | [nucleo/importacion/moldes.py](../../../../../proyectos/cimiento/nucleo/importacion/moldes.py) y `mirar` en [core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | ✅ | CP-001, CP-008 |
+| "Antes de escribir nada se muestra qué se va a traer, y el usuario confirma" (§6) | vista | [views.py](../../../../../proyectos/cimiento/nucleo/importacion/views.py) y `templates/importacion/traer.html` | ✅ | CP-006 |
 | "Documento que no se reconoce: no entra, y va al reporte" (§6) | servicio | `Hallazgo.sin_reconocer` | ✅ | CP-003 |
-| "Un documento que ya se trajo antes: no se duplica" (§6) | modelo | El `unique_together` de [models.py](../../../../../plataforma/nucleo/importacion/models.py) y la búsqueda por origen | ✅ | CP-005 |
-| "Falla a mitad: se descarta lo traído en esa pasada" (§6) | servicio | `_deshacer` en [core.py](../../../../../plataforma/nucleo/importacion/core.py) | ✅ | CP-007 |
+| "Un documento que ya se trajo antes: no se duplica" (§6) | modelo | El `unique_together` de [models.py](../../../../../proyectos/cimiento/nucleo/importacion/models.py) y la búsqueda por origen | ✅ | CP-005 |
+| "Falla a mitad: se descarta lo traído en esa pasada" (§6) | servicio | `_deshacer` en [core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | ✅ | CP-007 |
 | "Si todo se reconoció, se dice" (§6) | vista | `todo_reconocido` y la plantilla | ✅ | CP-004 |
 | "`RN-1` traer no modifica el proyecto de origen" (§4) | servicio | Nada de `traer` escribe fuera de `datos/` | ✅ | CP-009 |
 | "`RN-2` lo que no se reconoce no se transforma" (§4) | servicio | `moldes.tipo_de` devuelve vacío y el documento no entra | ✅ | CP-003 |
@@ -50,13 +50,13 @@ Primero se mira y se cuenta sin escribir nada; se muestra el **recuento por tipo
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| 1 | Reconocer los documentos del ciclo por su molde | ✅ hecha | [moldes.py](../../../../../plataforma/nucleo/importacion/moldes.py) | CP-001 |
-| 2 | Recorrer y decir qué se encontró | ✅ hecha | `mirar` en [core.py](../../../../../plataforma/nucleo/importacion/core.py) | CP-001, CP-003 |
-| 3 | Mostrar qué se va a traer, y pedir confirmación | ✅ hecha | [views.py](../../../../../plataforma/nucleo/importacion/views.py) | CP-006 |
-| 4 | Traer lo reconocido, copiando | ✅ hecha | `traer` en [core.py](../../../../../plataforma/nucleo/importacion/core.py) | CP-002, CP-009 |
+| 1 | Reconocer los documentos del ciclo por su molde | ✅ hecha | [moldes.py](../../../../../proyectos/cimiento/nucleo/importacion/moldes.py) | CP-001 |
+| 2 | Recorrer y decir qué se encontró | ✅ hecha | `mirar` en [core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | CP-001, CP-003 |
+| 3 | Mostrar qué se va a traer, y pedir confirmación | ✅ hecha | [views.py](../../../../../proyectos/cimiento/nucleo/importacion/views.py) | CP-006 |
+| 4 | Traer lo reconocido, copiando | ✅ hecha | `traer` en [core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | CP-002, CP-009 |
 | 5 | No duplicar al traer dos veces | ✅ hecha | La búsqueda por origen en `traer` | CP-005 |
 | 6 | Que una falla a mitad no deje nada | ✅ hecha | `_deshacer` | CP-007 |
-| 7 | Traer este mismo repositorio, y medir | ✅ hecha | `CasoRealTests` en [tests.py](../../../../../plataforma/nucleo/importacion/tests.py) | CP-008: **973 en 13,6 s** |
+| 7 | Traer este mismo repositorio, y medir | ✅ hecha | `CasoRealTests` en [tests.py](../../../../../proyectos/cimiento/nucleo/importacion/tests.py) | CP-008: **973 en 13,6 s** |
 
 **Correspondencia con el plan:** 7 tareas en el plan, 7 acá.
 
@@ -103,14 +103,14 @@ En la pantalla de un proyecto hay un enlace **Traer lo que ya tiene escrito**. L
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| Se recorre solo la documentación del ciclo de vida | Recorrer todo dejaba un reporte de 540 líneas donde los tres casos reales se perdían. Decidido por el usuario con el conteo a la vista | [moldes.py](../../../../../plataforma/nucleo/importacion/moldes.py) |
+| Se recorre solo la documentación del ciclo de vida | Recorrer todo dejaba un reporte de 540 líneas donde los tres casos reales se perdían. Decidido por el usuario con el conteo a la vista | [moldes.py](../../../../../proyectos/cimiento/nucleo/importacion/moldes.py) |
 | Las carpetas que **no** se miran se nombran, con su porqué | Saltarse carpetas sin decirlo es perder en silencio con otro nombre (`RN-4`) | `CARPETAS_QUE_NO_SE_MIRAN` |
 | Se reconoce por nombre y ubicación, no por contenido | El estándar fija los nombres, así que el nombre **es** la forma. Adivinar por contenido es más frágil, y adivinar mal ensucia lo que sí sirve | `moldes.tipo_de` |
 | Se lee con `newline=""` | Sin eso, un documento escrito en Windows entraba transformado, y **el texto se ve idéntico**. Es `DEF-01` | El comentario al lado, en `traer` |
 | Deshacer borra los archivos **y** las filas del índice | Media importación puede vivir en cualquiera de los dos sitios. Es `DEF-02` | El comentario en `_deshacer` |
 | La constancia se deja **una vez** por pasada, no por archivo | Traer es una sola acción del usuario que produce cientos de escrituras. Un comprobante por archivo llenaría el registro de mil líneas y escondería las acciones que sí hay que poder encontrar | El comentario en `_escribir` |
 | Se muestra el recuento por tipo, no la lista de rutas | Mil líneas se confirman sin mirar, y entonces la confirmación deja de proteger | `Hallazgo.por_tipo` |
-| Un documento se identifica por su **ruta de origen** | Es lo que distingue «no duplicar» de «no actualizar»: el contenido cambia cuando alguien edita, y sigue siendo el mismo documento | El `unique_together` de [models.py](../../../../../plataforma/nucleo/importacion/models.py) |
+| Un documento se identifica por su **ruta de origen** | Es lo que distingue «no duplicar» de «no actualizar»: el contenido cambia cuando alguien edita, y sigue siendo el mismo documento | El `unique_together` de [models.py](../../../../../proyectos/cimiento/nucleo/importacion/models.py) |
 
 ---
 

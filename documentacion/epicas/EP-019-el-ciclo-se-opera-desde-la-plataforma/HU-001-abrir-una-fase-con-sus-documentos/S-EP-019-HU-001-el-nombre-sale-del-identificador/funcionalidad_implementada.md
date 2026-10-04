@@ -30,7 +30,7 @@ Lo que más cuidado costó no fue crear: fue **negarse**. Sin la historia no se 
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El nombre sale del identificador» (`RN-1`) | servicio | `nombre_de_fase` en [plataforma/nucleo/ciclo_de_vida/apertura.py](../../../../../plataforma/nucleo/ciclo_de_vida/apertura.py) | ✅ | CP-003 |
+| «El nombre sale del identificador» (`RN-1`) | servicio | `nombre_de_fase` en [plataforma/nucleo/ciclo_de_vida/apertura.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/apertura.py) | ✅ | CP-003 |
 | «Sin historia no se abre» (`RN-2`) | servicio | `donde_iria` | ✅ | CP-001 |
 | «Los cinco con el molde» (`RN-3`) | servicio | `LOS_CINCO` y `_texto_inicial` | ✅ | CP-002 |
 | «Si existe, no se toca» (`RN-4`) | servicio | `abrir_fase` | ✅ | CP-002 |

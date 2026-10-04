@@ -31,7 +31,7 @@ Es la fuente de la `HU-002`: sin poder buscar en lo conversado no hay nada que c
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se recorre `historico-chat/` y se parte en mensajes» (§6) | servicio | `indexar` en [plataforma/nucleo/medicion/core.py](../../../../../plataforma/nucleo/medicion/core.py) | ✅ | CP-001 |
+| «Se recorre `historico-chat/` y se parte en mensajes» (§6) | servicio | `indexar` en [plataforma/nucleo/medicion/core.py](../../../../../proyectos/cimiento/nucleo/medicion/core.py) | ✅ | CP-001 |
 | «Archivo que no se puede leer: se reporta y no se detiene el resto» (§6) | servicio | `indexar`, la lista `ilegibles` | ✅ | CP-003 |
 | «Archivo sin marcas: sesión sin mensajes, y se dice» (§6) | servicio | `indexar` | ✅ | CP-003 |
 | «Proyecto con la ruta perdida: se responde con la ruta que se buscó» (§6) | servicio | `NoSePuedeIndexar` | ✅ | CP-003 |
@@ -41,7 +41,7 @@ Es la fuente de la `HU-002`: sin poder buscar en lo conversado no hay nada que c
 | «`RN-3` indexar no modifica, no mueve y no borra» (§4) | servicio | `indexar` solo abre para leer | ✅ | CP-004, retrato de 329 archivos |
 | «`RN-4` el texto no se copia a la plataforma» (§4) | servicio | El índice guarda la ruta relativa, no el archivo | ✅ | CP-004 |
 | «`RN-2` ninguna credencial entra» (§4) | servicio | Se comprueba con el detector del estándar | ✅ | CP-005 |
-| Entidades `Sesión` y `Mensaje` (§5) | modelo | [plataforma/nucleo/medicion/models.py](../../../../../plataforma/nucleo/medicion/models.py) | ✅ | Las 22 pruebas |
+| Entidades `Sesión` y `Mensaje` (§5) | modelo | [plataforma/nucleo/medicion/models.py](../../../../../proyectos/cimiento/nucleo/medicion/models.py) | ✅ | Las 22 pruebas |
 | Pantalla (§7) | vista | — | **no aplica** | La §7 permite cerrar `F-033` sin pantalla |
 
 ### 2.2 Plan de trabajo → ejecución

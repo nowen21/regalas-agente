@@ -43,7 +43,7 @@ CARPETA = os.path.join("validadores", "tests")
 # a secas: se le pide por su punto de entrada. Estuvieron fuera de esta
 # corrida hasta el 2026-08-31, y ese día una subida de versión las puso en
 # rojo por la mañana y se supo por la tarde, de casualidad (`S-097`).
-PLATAFORMA = "plataforma"
+PLATAFORMA = os.path.join("proyectos", "cimiento")   # Cimiento, la aplicación Django, desde el 2026-10-04
 
 # El sello de la última corrida completa. Es estado de trabajo de esta máquina,
 # no memoria del proyecto, así que no se versiona.

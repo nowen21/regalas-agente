@@ -22,7 +22,7 @@ Comprobar que lo conversado se encuentra por una palabra suya, que el índice se
 |---|---|
 | [plan_trabajo.md](plan_trabajo.md) | Las cinco decisiones técnicas y los tres riesgos |
 | [documentacion/medicion/spec.md](../../../../medicion/spec.md) | La excepción declarada a `DA-01` y el diccionario de las dos entidades |
-| [plataforma/nucleo/seguridad/claves.py](../../../../../plataforma/nucleo/seguridad/claves.py) | El molde del puente hacia el estándar |
+| [plataforma/nucleo/seguridad/claves.py](../../../../../proyectos/cimiento/nucleo/seguridad/claves.py) | El molde del puente hacia el estándar |
 
 ---
 

@@ -34,8 +34,8 @@ Es el primer módulo del Ciclo de vida, y **sin una sola dependencia nueva**.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El molde de un documento se decide por su tipo» (`RN-1`) | servicio | `molde_de` en [plataforma/nucleo/ciclo_de_vida/moldes.py](../../../../../plataforma/nucleo/ciclo_de_vida/moldes.py) | ✅ | CP-001 |
-| «Solo el hueco cierto entra en la cuenta» (`RN-2`) | servicio | `encontrar` en [plataforma/nucleo/ciclo_de_vida/huecos.py](../../../../../plataforma/nucleo/ciclo_de_vida/huecos.py) | ✅ | CP-003 |
+| «El molde de un documento se decide por su tipo» (`RN-1`) | servicio | `molde_de` en [plataforma/nucleo/ciclo_de_vida/moldes.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/moldes.py) | ✅ | CP-001 |
+| «Solo el hueco cierto entra en la cuenta» (`RN-2`) | servicio | `encontrar` en [plataforma/nucleo/ciclo_de_vida/huecos.py](../../../../../proyectos/cimiento/nucleo/ciclo_de_vida/huecos.py) | ✅ | CP-003 |
 | «Lo que llena la instalación no se le pregunta al usuario» (`RN-3`) | servicio | La clase `INSTALACION`, contada aparte | ✅ | CP-004 |
 | «Los huecos se calculan al pedirlos» (§5) | servicio | Ninguna entidad, ninguna migración | ✅ | Por construcción |
 | «Un tipo que no se reconoce lo dice» (`RN-8`) | servicio | `sin_tipo`, `sin_molde` y `molde_perdido`, separados | ✅ | CP-005 |

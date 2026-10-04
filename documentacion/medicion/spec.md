@@ -19,7 +19,7 @@ Las conversaciones **ya se escriben**: [validadores/historico.py](../../validado
 
 Lo que no hay es forma de buscar en ellas. Para saber cuándo se dijo algo hay que abrir archivo por archivo, y para saber cuántas veces, no hay forma.
 
-Del lado de la plataforma ya existe lo que hace falta: [plataforma/nucleo/almacen/core.py](../../plataforma/nucleo/almacen/core.py) guarda texto y mantiene un índice que se puede borrar y rehacer, y el módulo Proyectos sabe dónde vive el código de cada proyecto conectado.
+Del lado de la plataforma ya existe lo que hace falta: [plataforma/nucleo/almacen/core.py](../../proyectos/cimiento/nucleo/almacen/core.py) guarda texto y mantiene un índice que se puede borrar y rehacer, y el módulo Proyectos sabe dónde vive el código de cada proyecto conectado.
 
 **Este módulo no cambia cómo se escribe la conversación.** El enganche sigue siendo el que escribe; la plataforma solo lee lo que ya está.
 

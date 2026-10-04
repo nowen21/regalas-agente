@@ -30,7 +30,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «La misma medida, y escrita» (`RN-1`) | servicio | `QUE_MIDE` en [plataforma/nucleo/avisos/reporte.py](../../../../../plataforma/nucleo/avisos/reporte.py) | ✅ | CP-004 |
+| «La misma medida, y escrita» (`RN-1`) | servicio | `QUE_MIDE` en [plataforma/nucleo/avisos/reporte.py](../../../../../proyectos/cimiento/nucleo/avisos/reporte.py) | ✅ | CP-004 |
 | «Deuda y vencida separadas» (`RN-2`) | servicio | `de_un_proyecto` | ✅ | CP-004 |
 | «Sin datos no es cero» (`RN-3`) | servicio | `como_se_escribe` | ✅ | CP-005 |
 | «Los sin datos van al final» (`RN-4`) | servicio | `de_todos` | ✅ | CP-005 |

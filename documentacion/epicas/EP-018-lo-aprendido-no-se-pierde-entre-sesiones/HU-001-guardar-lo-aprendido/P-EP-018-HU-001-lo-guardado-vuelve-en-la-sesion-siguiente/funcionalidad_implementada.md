@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Vive donde no se borra» (`RN-1`) | servicio | `CARPETA` en [plataforma/nucleo/memoria/core.py](../../../../../plataforma/nucleo/memoria/core.py) | ✅ | CP-001 |
+| «Vive donde no se borra» (`RN-1`) | servicio | `CARPETA` en [plataforma/nucleo/memoria/core.py](../../../../../proyectos/cimiento/nucleo/memoria/core.py) | ✅ | CP-001 |
 | «Guardar no pisa» (`RN-2`) | servicio | `guardar` | ✅ | CP-002 |
 | «Su línea en el índice» (`RN-3`) | servicio | `guardar` | ✅ | CP-001 |
 | «Un tema vacío se dice» (`RN-5`) | servicio | `buscar` | ✅ | CP-003 |

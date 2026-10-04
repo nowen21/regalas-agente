@@ -109,7 +109,10 @@ def rutas_de_una(analisis):
             # Los análisis nombran las rutas en «Pasó a»; también se leen en la
             # primera columna (análisis 14 del pendiente 103, acuerdo 2).
             texto = celdas[0] + " " + celdas[2]
-            rutas |= {r.strip().lstrip("./") for r in re.findall(r"`([^`]+)`", texto) if "/" in r or "." in r}
+            # Solo se quita un `./` del comienzo: `lstrip("./")` borraba también el
+            # punto de `.gitignore` y lo dejaba sin autorizar (sesión del 2026-10-04).
+            rutas |= {re.sub(r"^(\./)+", "", r.strip()) for r in re.findall(r"`([^`]+)`", texto)
+                      if "/" in r or "." in r}
     return rutas
 
 

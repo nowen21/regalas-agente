@@ -4,7 +4,11 @@
 
 **Por qué.** El 2026-10-03 se construyó el enganche que entrega los acuerdos del análisis con cada mensaje (fase B de la HU-002 de EP-023), y no se reinstaló en el repositorio. Por eso el agente volvió a preguntar lo que el acuerdo 46 del análisis 1 ya decidía. Cuando el agente pidió «Hágalo» para reinstalar, el usuario respondió: «eso es parte de la solución que se analizó, no que yo le esté diciendo hágalo. Los aprobados son hágalo, por eso se aprueba un análisis».
 
+El 2026-10-04 lo repitió al presentarse el análisis 1 del pendiente 116: «si aprueba el análisis no me tiene que estar preguntando cada rato si apruebo».
+
 **Cómo se aplica.**
+
+- Aprobado el análisis, se recorre sin pedir otra aprobación lo que su «Lo que se tiene que hacer» dice: épicas, HU, especificaciones, planes, código y pruebas, hasta dejarlo funcionando.
 
 - Al cerrar una fase, lo construido queda activo en este repositorio: se reinstala si cambió un enganche o el instalador.
 - La pregunta aparte se reserva para el commit, lo que no se deshace y lo que sale de lo aprobado.

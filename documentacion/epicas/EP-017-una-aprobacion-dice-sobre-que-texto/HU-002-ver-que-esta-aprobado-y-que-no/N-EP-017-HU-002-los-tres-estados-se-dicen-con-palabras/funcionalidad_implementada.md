@@ -30,7 +30,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Los tres estados se dicen con palabras» (`RN-1`) | servicio | `EN_PALABRAS` en [plataforma/nucleo/aprobaciones/core.py](../../../../../plataforma/nucleo/aprobaciones/core.py) | ✅ | CP-005 |
+| «Los tres estados se dicen con palabras» (`RN-1`) | servicio | `EN_PALABRAS` en [plataforma/nucleo/aprobaciones/core.py](../../../../../proyectos/cimiento/nucleo/aprobaciones/core.py) | ✅ | CP-005 |
 | «Sin aprobación aparece, no vacío» (`RN-2`) | servicio | `estado_de` | ✅ | CP-005 |
 | «Se ve desde cuándo y por quién» (`RN-3`) | servicio | Los campos `desde` y `quien` | ✅ | CP-005 |
 | «La frase de caducada dice por qué» (`RN-4`) | servicio | `EN_PALABRAS` | ✅ | CP-005 |

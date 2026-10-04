@@ -33,7 +33,7 @@ El reporte se escribe **siempre**, también cuando no quedó nada afuera, y tamb
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Al terminar, se lista qué quedó afuera y dónde está cada archivo" (§6) | servicio | `_texto_del_reporte` en [nucleo/importacion/core.py](../../../../../plataforma/nucleo/importacion/core.py) | ✅ | CP-001 |
+| "Al terminar, se lista qué quedó afuera y dónde está cada archivo" (§6) | servicio | `_texto_del_reporte` en [nucleo/importacion/core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | ✅ | CP-001 |
 | "Si todo se reconoció, se dice, en vez de mostrar una lista vacía" (§6) | servicio | El mismo, con su rama para cuando no quedó nada | ✅ | CP-003 |
 | "`RN-2` lo que no se reconoce no se transforma" (§4) | servicio | No entra y no se toca | ✅ | CP-008 |
 | "`RN-4` nada se pierde en silencio" (§4) | servicio | Lo no reconocido **y** las carpetas que no se miraron | ✅ | CP-001, CP-004 |
@@ -46,12 +46,12 @@ El reporte se escribe **siempre**, también cuando no quedó nada afuera, y tamb
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| 1 | Escribir el reporte como documento, con su fecha | ✅ hecha | `_donde_va_el_reporte` en [core.py](../../../../../plataforma/nucleo/importacion/core.py) | CP-001 |
+| 1 | Escribir el reporte como documento, con su fecha | ✅ hecha | `_donde_va_el_reporte` en [core.py](../../../../../proyectos/cimiento/nucleo/importacion/core.py) | CP-001 |
 | 2 | Que diga lo no reconocido, con su ruta, y cuántos son | ✅ hecha | `_texto_del_reporte` | CP-001 |
 | 3 | Que diga qué carpetas no se miraron, y por qué | ✅ hecha | El mismo | CP-004 |
 | 4 | Que se escriba también cuando no quedó nada afuera | ✅ hecha | El mismo, y el arreglo de `DEF-01` | CP-003, CP-008 |
 | 5 | Enlazarlo desde el registro de auditoría | ✅ hecha | `traer` | CP-005 |
-| 6 | Verlos desde la pantalla del proyecto | ✅ hecha | [views.py](../../../../../plataforma/nucleo/importacion/views.py) y sus dos plantillas | CP-007 |
+| 6 | Verlos desde la pantalla del proyecto | ✅ hecha | [views.py](../../../../../proyectos/cimiento/nucleo/importacion/views.py) y sus dos plantillas | CP-007 |
 
 **Correspondencia con el plan:** 6 tareas en el plan, 6 acá.
 

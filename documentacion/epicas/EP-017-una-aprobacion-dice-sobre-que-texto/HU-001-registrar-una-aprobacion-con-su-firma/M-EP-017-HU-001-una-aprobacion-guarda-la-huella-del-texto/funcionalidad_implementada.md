@@ -30,8 +30,8 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «La aprobación guarda la huella» (`RN-1`) | modelo | `Aprobacion` en [plataforma/nucleo/aprobaciones/models.py](../../../../../plataforma/nucleo/aprobaciones/models.py) | ✅ | CP-001 |
-| «No se aprueba lo que no existe» (`RN-2`) | servicio | `aprobar` en [plataforma/nucleo/aprobaciones/core.py](../../../../../plataforma/nucleo/aprobaciones/core.py) | ✅ | CP-002 |
+| «La aprobación guarda la huella» (`RN-1`) | modelo | `Aprobacion` en [plataforma/nucleo/aprobaciones/models.py](../../../../../proyectos/cimiento/nucleo/aprobaciones/models.py) | ✅ | CP-001 |
+| «No se aprueba lo que no existe» (`RN-2`) | servicio | `aprobar` en [plataforma/nucleo/aprobaciones/core.py](../../../../../proyectos/cimiento/nucleo/aprobaciones/core.py) | ✅ | CP-002 |
 | «Aprobar queda registrado» (`RN-3`) | servicio | `con_constancia` | ✅ | CP-001 |
 | «Nada se borra» (`RN-4`) | modelo | Cada aprobación se agrega | ✅ | CP-001 |
 

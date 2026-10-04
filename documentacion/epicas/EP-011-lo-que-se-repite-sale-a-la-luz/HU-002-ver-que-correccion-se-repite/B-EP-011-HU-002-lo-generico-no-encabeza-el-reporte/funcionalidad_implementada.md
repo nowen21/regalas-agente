@@ -36,7 +36,7 @@
 
 | Qué | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| El vocabulario de la casa | servicio | `vocabulario_de_la_casa` en [plataforma/nucleo/medicion/repeticion.py](../../../../../plataforma/nucleo/medicion/repeticion.py) | ✅ | CP-001 |
+| El vocabulario de la casa | servicio | `vocabulario_de_la_casa` en [plataforma/nucleo/medicion/repeticion.py](../../../../../proyectos/cimiento/nucleo/medicion/repeticion.py) | ✅ | CP-001 |
 | Que no se lleve lo que sí es tema | servicio | El umbral y su resguardo | ✅ | CP-002 |
 | Las rutas pegadas | servicio | `sin_lo_de_la_maquina` | ✅ | CP-003 |
 | Mínimo de sesiones distintas, y orden | servicio | `correcciones` | ✅ | CP-005 |

@@ -147,8 +147,8 @@ Y no se le aplica el molde de otro tipo
 - Funcionalidad `F-014` del [inventario](../../../../cvds/analisis-requisitos/inventario-funcionalidades.md), criterio `CA-2`.
 - Requisito `RF-14` del [análisis](../../../../cvds/analisis-requisitos/README.md).
 - Decisión que la gobierna: [`DA-12`](../../../../cvds/diseno/decisiones-de-arquitectura.md), que nombra a `RF-14`.
-- Quién reconoce el tipo: [plataforma/nucleo/importacion/moldes.py](../../../../plataforma/nucleo/importacion/moldes.py).
-- Quién ya cuenta huecos, y de dónde se parte: [plataforma/nucleo/expediente/core.py](../../../../plataforma/nucleo/expediente/core.py).
+- Quién reconoce el tipo: [plataforma/nucleo/importacion/moldes.py](../../../../proyectos/cimiento/nucleo/importacion/moldes.py).
+- Quién ya cuenta huecos, y de dónde se parte: [plataforma/nucleo/expediente/core.py](../../../../proyectos/cimiento/nucleo/expediente/core.py).
 
 ---
 

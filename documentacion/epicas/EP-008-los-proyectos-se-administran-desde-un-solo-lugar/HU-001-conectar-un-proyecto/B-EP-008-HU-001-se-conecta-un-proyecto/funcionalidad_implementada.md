@@ -31,19 +31,19 @@ El primer proyecto conectado de verdad es el propio repositorio del estándar, q
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Se recibe nombre y ruta. Se comprueba que la ruta exista y que no esté ya registrada" (§6) | servicio | [nucleo/proyectos/core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-002, CP-003 |
-| "Se crea la carpeta del proyecto en la plataforma y se guarda el registro" (§6) | servicio | `conectar` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-001 paso 5 |
+| "Se recibe nombre y ruta. Se comprueba que la ruta exista y que no esté ya registrada" (§6) | servicio | [nucleo/proyectos/core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-002, CP-003 |
+| "Se crea la carpeta del proyecto en la plataforma y se guarda el registro" (§6) | servicio | `conectar` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-001 paso 5 |
 | "Se anota la acción en la auditoría" (§6) | servicio | `con_constancia` en `conectar` | ✅ | CP-006 |
 | "Ruta que no existe: se responde con la ruta que se buscó" (§6) | servicio | `RutaQueNoExiste` | ✅ | CP-002 paso 2 |
 | "Ruta ya registrada: se responde con qué proyecto la tiene" (§6) | servicio | `RutaYaRegistrada` | ✅ | CP-003 paso 3 |
 | "Carpeta sin control de versiones: se registra, y se advierte" (§6) | servicio | `avisos_de` | ✅ | CP-005 |
 | "`RN-1` registrar un proyecto no modifica nada dentro de su carpeta" (§4) | servicio | Nada de `conectar` escribe fuera de `datos/` | ✅ | CP-009, retrato archivo por archivo |
-| "`RN-2` dos proyectos no pueden apuntar a la misma ruta" (§4) | modelo · servicio | `ruta_normalizada` en [models.py](../../../../../plataforma/nucleo/proyectos/models.py) y en `core.py` | ✅ | CP-003 paso 5 |
-| "`RN-3` la versión de reglas que declara un proyecto debe existir" (§4) | servicio | [nucleo/seguridad/reglas.py](../../../../../plataforma/nucleo/seguridad/reglas.py) | ✅ | CP-004 |
+| "`RN-2` dos proyectos no pueden apuntar a la misma ruta" (§4) | modelo · servicio | `ruta_normalizada` en [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py) y en `core.py` | ✅ | CP-003 paso 5 |
+| "`RN-3` la versión de reglas que declara un proyecto debe existir" (§4) | servicio | [nucleo/seguridad/reglas.py](../../../../../proyectos/cimiento/nucleo/seguridad/reglas.py) | ✅ | CP-004 |
 | "`RN-4` perder la ruta no borra nada" (§4) | modelo | La ficha vive en la plataforma, no en el proyecto | ✅ | CP-009 paso 6 |
-| "La ruta viva y el estado se calculan, no se guardan" (§4.2 y §5) | modelo | `ruta_viva` y `estado` de [models.py](../../../../../plataforma/nucleo/proyectos/models.py) | ✅ | Son propiedades, no campos |
-| "El texto en la carpeta del proyecto dentro del repositorio de la plataforma; el índice en la base local, reconstruible" (§5) | modelo | `reconstruir_indice` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-001 paso 7 |
-| "Pantallas `P-01` Inicio y `P-02` Un proyecto" (§7) | vista | [views.py](../../../../../plataforma/nucleo/proyectos/views.py) y `templates/proyectos/` | parcial | CP-007. Muestran y conectan; entrar a un documento, abrir una fase y pedir el expediente llegan después |
+| "La ruta viva y el estado se calculan, no se guardan" (§4.2 y §5) | modelo | `ruta_viva` y `estado` de [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py) | ✅ | Son propiedades, no campos |
+| "El texto en la carpeta del proyecto dentro del repositorio de la plataforma; el índice en la base local, reconstruible" (§5) | modelo | `reconstruir_indice` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-001 paso 7 |
+| "Pantallas `P-01` Inicio y `P-02` Un proyecto" (§7) | vista | [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) y `templates/proyectos/` | parcial | CP-007. Muestran y conectan; entrar a un documento, abrir una fase y pedir el expediente llegan después |
 | "El estado se calcula al pedirlo" (§12) | modelo | `estado` responde `sin empezar` | parcial | Calcularlo de verdad es la fase G, y así lo declaraba el plan |
 | "Conectar y desconectar piden confirmación" (§7) | vista | — | ❌ | **Desconectar no existía como funcionalidad.** Se pidió por la cadena: `F-035`, [HU-004](../../HU-004-administrar-un-proyecto-conectado/HU-004-administrar-un-proyecto-conectado.md), fase H |
 | "Avisar la ruta perdida" (`F-002`, §6) | — | — | N/A | Fase C |
@@ -56,12 +56,12 @@ El primer proyecto conectado de verdad es el propio repositorio del estándar, q
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
 | 1 | Resolver la duda de la sección 2.7 | ✅ hecha | [plan_trabajo.md](plan_trabajo.md) §2.7 | Resuelta con el usuario el 2026-08-25 |
-| 2 | Guardar un proyecto, con su carpeta de documentación | ✅ hecha | [proyectos/core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-001 |
+| 2 | Guardar un proyecto, con su carpeta de documentación | ✅ hecha | [proyectos/core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-001 |
 | 3 | Rechazar la ruta que no existe, y la ya registrada | ✅ hecha | `RutaQueNoExiste` y `RutaYaRegistrada` | CP-002, CP-003 |
-| 4 | Leer y comprobar la versión de reglas que declara | ✅ hecha | [seguridad/reglas.py](../../../../../plataforma/nucleo/seguridad/reglas.py) | CP-004, CP-008 |
+| 4 | Leer y comprobar la versión de reglas que declara | ✅ hecha | [seguridad/reglas.py](../../../../../proyectos/cimiento/nucleo/seguridad/reglas.py) | CP-004, CP-008 |
 | 5 | Advertir la carpeta sin control de versiones | ✅ hecha | `avisos_de` en `core.py` | CP-005 |
 | 6 | Dejar la acción en la auditoría | ✅ hecha | `conectar`, por `con_constancia` | CP-006 |
-| 7 | Las dos pantallas: la lista y un proyecto | ✅ hecha | [views.py](../../../../../plataforma/nucleo/proyectos/views.py), `templates/base.html` y `templates/proyectos/` | CP-007, EV-04 |
+| 7 | Las dos pantallas: la lista y un proyecto | ✅ hecha | [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py), `templates/base.html` y `templates/proyectos/` | CP-007, EV-04 |
 
 **Correspondencia con el plan:** 7 tareas en el plan, 7 acá.
 
@@ -114,14 +114,14 @@ El primer proyecto conectado de verdad es el propio repositorio del estándar, q
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| La ficha del proyecto vive **dentro** de su carpeta de documentación | Así crear la ficha crea la carpeta, y la carpeta queda con algo dentro. Una carpeta vacía no entra al control de versiones, y el respaldo es el repositorio | `_ficha` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) |
-| El identificador se deriva del nombre y **se guarda** | Derivarlo cada vez movería la carpeta al renombrar el proyecto. Es lo mismo que el histórico ya aprendió con sus archivos de sesión | `identificador_de` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) |
+| La ficha del proyecto vive **dentro** de su carpeta de documentación | Así crear la ficha crea la carpeta, y la carpeta queda con algo dentro. Una carpeta vacía no entra al control de versiones, y el respaldo es el repositorio | `_ficha` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) |
+| El identificador se deriva del nombre y **se guarda** | Derivarlo cada vez movería la carpeta al renombrar el proyecto. Es lo mismo que el histórico ya aprendió con sus archivos de sesión | `identificador_de` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) |
 | Dos proyectos con el mismo nombre reciben identificadores distintos | Un identificador derivado del nombre choca en cuanto hay dos que se llaman igual, y eso pasa el primer mes | `_identificador_libre` |
-| Las rutas se comparan normalizadas | La misma carpeta escrita en mayúsculas o con barra final es la misma carpeta, y en Windows pasa todo el tiempo | `ruta_normalizada`, y el campo aparte en [models.py](../../../../../plataforma/nucleo/proyectos/models.py) |
-| La versión declarada se comprueba contra el **registro de cambios**, no contra la vigente | Un número mayor que el real pasaría la comparación con la vigente y apagaría el aviso de desfase. Es el pendiente 82, ya resuelto en el estándar | [seguridad/reglas.py](../../../../../plataforma/nucleo/seguridad/reglas.py) |
+| Las rutas se comparan normalizadas | La misma carpeta escrita en mayúsculas o con barra final es la misma carpeta, y en Windows pasa todo el tiempo | `ruta_normalizada`, y el campo aparte en [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py) |
+| La versión declarada se comprueba contra el **registro de cambios**, no contra la vigente | Un número mayor que el real pasaría la comparación con la vigente y apagaría el aviso de desfase. Es el pendiente 82, ya resuelto en el estándar | [seguridad/reglas.py](../../../../../proyectos/cimiento/nucleo/seguridad/reglas.py) |
 | No declarar versión se acepta; declarar una falsa se rechaza | Los dos casos entran por el mismo camino y es fácil juntarlos. Si se juntan, o entran versiones inventadas o se rechazan proyectos sin estándar | `existe()` en `reglas.py`, y `CP-008` que prueba los dos juntos |
 | La pantalla no trae ninguna biblioteca de interfaz | `RNF-03` y `DA-03`: la plataforma tiene que servir sin conexión. Los estilos van en el molde, en unas pocas líneas | `templates/base.html` |
-| La comprobación de origen del formulario se puso desde ahora | Hoy la plataforma no se expone a la red, pero el formulario cambia estado. El día que corra en un servidor, ya está puesta | `MIDDLEWARE` en [config/settings/base.py](../../../../../plataforma/config/settings/base.py) |
+| La comprobación de origen del formulario se puso desde ahora | Hoy la plataforma no se expone a la red, pero el formulario cambia estado. El día que corra en un servidor, ya está puesta | `MIDDLEWARE` en [config/settings/base.py](../../../../../proyectos/cimiento/config/settings/base.py) |
 
 ---
 

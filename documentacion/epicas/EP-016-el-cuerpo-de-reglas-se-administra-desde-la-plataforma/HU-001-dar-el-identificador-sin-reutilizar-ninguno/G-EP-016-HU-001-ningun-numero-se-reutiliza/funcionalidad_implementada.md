@@ -32,10 +32,10 @@ Sobre este repositorio: **257 reglas en 24 capítulos, 9 derogadas, y ningún hu
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El siguiente es el que sigue al mayor» (`RN-1`) | servicio | `siguiente_libre` en [plataforma/nucleo/reglas/numeracion.py](../../../../../plataforma/nucleo/reglas/numeracion.py) | ✅ | CP-002 |
+| «El siguiente es el que sigue al mayor» (`RN-1`) | servicio | `siguiente_libre` en [plataforma/nucleo/reglas/numeracion.py](../../../../../proyectos/cimiento/nucleo/reglas/numeracion.py) | ✅ | CP-002 |
 | «Las derogadas cuentan» (`RN-2`) | servicio | `usados` | ✅ | CP-004 |
 | «Se comprueba antes de guardar» (`RN-3`) | servicio | `comprobar_libre` | ✅ | CP-003 |
-| «El lector no se duplica» (`RN-4`) | servicio | [plataforma/nucleo/reglas/catalogo.py](../../../../../plataforma/nucleo/reglas/catalogo.py) | ✅ | Por construcción |
+| «El lector no se duplica» (`RN-4`) | servicio | [plataforma/nucleo/reglas/catalogo.py](../../../../../proyectos/cimiento/nucleo/reglas/catalogo.py) | ✅ | Por construcción |
 | «Sin lector se revienta» (§4) | servicio | `NoHayCuerpoDeReglas` | ✅ | CP-001 |
 
 ### 2.2 Plan de trabajo → ejecución

@@ -201,11 +201,29 @@ def _plan_pendiente(raiz, ruta):
         if not linea.startswith("|"):
             continue
         celda = linea.rstrip("|").split("|")[-1]
-        ep = _EPICA.search(celda)
-        for hu in _HU.findall(celda):
-            if ep and not _hu_terminada(raiz, int(ep.group(1)), int(hu)):
-                faltan.append("EP-%03d HU-%03d" % (int(ep.group(1)), int(hu)))
+        # Lo hecho «de una y sin fase» nombra archivos, no HU por terminar; sus
+        # rutas traían HU de otras épicas (`EP-004/HU-012`) y el análisis no
+        # se cerraba nunca (sesión del 2026-10-04, «Corrija»).
+        if "de una y sin fase" in celda:
+            continue
+        # Cada HU va con la épica que la precede en la celda, no con la primera.
+        for ep, hu in _hu_con_su_epica(celda):
+            if not _hu_terminada(raiz, ep, hu):
+                faltan.append("EP-%03d HU-%03d" % (ep, hu))
     return sorted(set(faltan))
+
+
+def _hu_con_su_epica(celda):
+    """`[(épica, HU)]` de la celda: cada HU con la última épica nombrada antes."""
+    marcas = sorted([(m.start(), "ep", int(m.group(1))) for m in _EPICA.finditer(celda)]
+                    + [(m.start(), "hu", int(m.group(1))) for m in _HU.finditer(celda)])
+    salida, ep = [], None
+    for _, clase, numero in marcas:
+        if clase == "ep":
+            ep = numero
+        elif ep is not None:
+            salida.append((ep, numero))
+    return salida
 
 
 def abiertos(raiz):

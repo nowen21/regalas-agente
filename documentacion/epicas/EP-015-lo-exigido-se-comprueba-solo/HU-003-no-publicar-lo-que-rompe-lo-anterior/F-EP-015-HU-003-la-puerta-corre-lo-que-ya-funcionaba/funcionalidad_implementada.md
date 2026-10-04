@@ -41,7 +41,7 @@ Sobre este repositorio: **118,6 segundos, y pasa**.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Lo que rompe algo no se publica» (`RN-1`) | servicio | `Puerta.pasa` en [plataforma/nucleo/comprobaciones/puerta.py](../../../../../plataforma/nucleo/comprobaciones/puerta.py) | ✅ | CP-001 |
+| «Lo que rompe algo no se publica» (`RN-1`) | servicio | `Puerta.pasa` en [plataforma/nucleo/comprobaciones/puerta.py](../../../../../proyectos/cimiento/nucleo/comprobaciones/puerta.py) | ✅ | CP-001 |
 | «Lo que obliga a rehacer se declara» (`RN-2`) | servicio | `rehacer` | ✅ | CP-002 |
 | «Lo sin verificar se declara y no detiene» (`RN-3`) | servicio | `sin_verificar` | ✅ | CP-002 |
 | «No haber podido revisar no es haber pasado» (`RN-4`) | servicio | `se_pudo` y `pruebas["corrio"]` | ✅ | CP-004 |

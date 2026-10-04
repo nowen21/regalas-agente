@@ -34,7 +34,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se busca por palabra» (`RN-1`) | servicio | `buscar` en [plataforma/nucleo/memoria/core.py](../../../../../plataforma/nucleo/memoria/core.py) | ✅ | CP-004 |
+| «Se busca por palabra» (`RN-1`) | servicio | `buscar` en [plataforma/nucleo/memoria/core.py](../../../../../proyectos/cimiento/nucleo/memoria/core.py) | ✅ | CP-004 |
 | «Corregir conserva lo anterior» (`RN-2`) | servicio | `corregir` | ✅ | CP-005 |
 | «Dar de baja no borra» (`RN-3`) | servicio | `dar_de_baja` | ✅ | CP-006 |
 | «Una búsqueda vacía se dice» (`RN-4`) | servicio | `buscar` | ✅ | CP-004 |

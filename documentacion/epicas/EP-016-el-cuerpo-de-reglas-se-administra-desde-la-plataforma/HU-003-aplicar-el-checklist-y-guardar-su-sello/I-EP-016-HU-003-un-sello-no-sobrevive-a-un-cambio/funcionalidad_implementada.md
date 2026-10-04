@@ -32,7 +32,7 @@ El veredicto se le pregunta a quien sabe darlo.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El checklist se lee, no se copia» (`RN-1`) | servicio | `filas` en [plataforma/nucleo/reglas/sello.py](../../../../../plataforma/nucleo/reglas/sello.py) | ✅ | CP-001 |
+| «El checklist se lee, no se copia» (`RN-1`) | servicio | `filas` en [plataforma/nucleo/reglas/sello.py](../../../../../proyectos/cimiento/nucleo/reglas/sello.py) | ✅ | CP-001 |
 | «Una fila que no aplica lleva su motivo» (`RN-2`) | servicio | `molde_del_sello` | ✅ | CP-004 |
 | «Si la regla se edita, el sello se anula» (`RN-3`) | servicio | `parece_vencido` | ✅ | CP-003 |
 | «Las fechas no son el veredicto» (`RN-4`) | servicio | `veredicto_del_estandar` | ✅ | CP-003 |

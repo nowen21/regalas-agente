@@ -41,7 +41,12 @@ EXCLUIDAS = {".git", "__pycache__", ".venv", "venv", "node_modules", "vendor",
 # Va por ruta y no por nombre porque `datos` es una palabra que cualquier
 # proyecto puede darle a una carpeta suya, y saltarla en todas partes
 # escondería documentacion de verdad.
-EXCLUIDAS_POR_RUTA = ("plataforma/datos",)
+#
+# `proyectos/` guarda los proyectos que heredan Cimiento, cada uno con su propio
+# repositorio: se validan desde su carpeta, no desde aca (analisis 1 del
+# pendiente 116, acuerdo 7). Y `datos/proyectos` es lo traido cuando el
+# validador corre dentro de la plataforma, que ya no vive en `plataforma/`.
+EXCLUIDAS_POR_RUTA = ("proyectos", "datos/proyectos")
 
 
 def es_ruta_de_datos(relativa):

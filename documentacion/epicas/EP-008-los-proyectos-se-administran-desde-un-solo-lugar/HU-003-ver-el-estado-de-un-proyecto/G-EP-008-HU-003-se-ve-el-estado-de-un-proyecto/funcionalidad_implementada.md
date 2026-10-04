@@ -31,9 +31,9 @@ La plataforma ya dice en qué va cada proyecto **sin abrir su carpeta**: qué et
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Se lee lo que la plataforma guardó de ese proyecto" (§6) | servicio | [nucleo/proyectos/estado.py](../../../../../plataforma/nucleo/proyectos/estado.py) | ✅ | CP-009 |
+| "Se lee lo que la plataforma guardó de ese proyecto" (§6) | servicio | [nucleo/proyectos/estado.py](../../../../../proyectos/cimiento/nucleo/proyectos/estado.py) | ✅ | CP-009 |
 | "Qué etapas tienen documento" (§6) | servicio | `etapas_con_documento` y `etapas_sin_documento` | ✅ | CP-002 |
-| "Qué fases están abiertas" (§6) | servicio | `_esta_abierta` en [estado.py](../../../../../plataforma/nucleo/proyectos/estado.py) | ✅ | CP-003, CP-004 |
+| "Qué fases están abiertas" (§6) | servicio | `_esta_abierta` en [estado.py](../../../../../proyectos/cimiento/nucleo/proyectos/estado.py) | ✅ | CP-003, CP-004 |
 | "Qué falta aprobar" (§6) | servicio | `_esta_aprobado` y `aprobados` | ✅ | CP-005 |
 | "Un proyecto sin nada escrito responde «sin empezar», que es un dato" (§6) | servicio · vista | `que_haria_falta` | ✅ | CP-006 |
 | "El estado se calcula al pedirlo, y se guarda solo como índice" (§12) | modelo | `Proyecto.estado` delega en el cálculo; no hay campo | ✅ | Es una propiedad, no un campo |
@@ -45,8 +45,8 @@ La plataforma ya dice en qué va cada proyecto **sin abrir su carpeta**: qué et
 
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
-| 1 | Corregir el hueco de la fase E: `cvds/` entra, con sus moldes | ✅ hecha | [nucleo/importacion/moldes.py](../../../../../plataforma/nucleo/importacion/moldes.py) y `mirar` en su `core.py` | CP-001 |
-| 2 | Calcular qué etapas tienen documento | ✅ hecha | [estado.py](../../../../../plataforma/nucleo/proyectos/estado.py) | CP-002 |
+| 1 | Corregir el hueco de la fase E: `cvds/` entra, con sus moldes | ✅ hecha | [nucleo/importacion/moldes.py](../../../../../proyectos/cimiento/nucleo/importacion/moldes.py) y `mirar` en su `core.py` | CP-001 |
+| 2 | Calcular qué etapas tienen documento | ✅ hecha | [estado.py](../../../../../proyectos/cimiento/nucleo/proyectos/estado.py) | CP-002 |
 | 3 | Calcular qué fases hay y en qué estación van | ✅ hecha | `_esta_abierta` | CP-003, CP-004 |
 | 4 | Calcular qué está aprobado y desde cuándo | ✅ hecha | `_esta_aprobado`, `_fecha_de_aprobacion` | CP-005 |
 | 5 | Que un proyecto sin nada diga qué haría falta | ✅ hecha | `que_haria_falta` | CP-006 |
@@ -97,7 +97,7 @@ En la pantalla de un proyecto, la sección **En qué va** muestra el estado. Un 
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| El estado se calcula desde lo traído, nunca leyendo el proyecto | `CA-01` lo pide, y hay una razón práctica: un proyecto entregado o archivado tiene que seguir mostrando su estado | [estado.py](../../../../../plataforma/nucleo/proyectos/estado.py), y `CP-009` que lo comprueba borrando la carpeta |
+| El estado se calcula desde lo traído, nunca leyendo el proyecto | `CA-01` lo pide, y hay una razón práctica: un proyecto entregado o archivado tiene que seguir mostrando su estado | [estado.py](../../../../../proyectos/cimiento/nucleo/proyectos/estado.py), y `CP-009` que lo comprueba borrando la carpeta |
 | Una estación que no se deja leer queda **fuera de las dos cuentas** | Sumarla a las abiertas o a las cerradas sería afirmar sobre lo que no se leyó. Con las cinco reales, la diferencia es 41 abiertas contra 46 inventadas | `_esta_abierta` devuelve **dos** valores: si está abierta, y si se pudo saber |
 | Se busca el número que abre la línea, no la línea entera | Hay doce formas distintas de escribirla, y el número es lo único que se escribe siempre igual. Va a haber una decimotercera | El comentario junto a la expresión, en `estado.py` |
 | El `README.md` de una carpeta de etapa es el documento de esa etapa | El nombre solo no alcanza: dos archivos que se llaman igual son documentos distintos según dónde están | `tipo_de` recibe la ruta, no solo el nombre |

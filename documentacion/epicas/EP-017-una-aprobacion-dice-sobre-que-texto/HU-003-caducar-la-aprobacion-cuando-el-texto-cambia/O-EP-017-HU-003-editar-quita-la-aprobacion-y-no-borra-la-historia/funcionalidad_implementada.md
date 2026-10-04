@@ -30,7 +30,7 @@ Es la fase que cierra el caso real escrito en la ficha de `F-017`: se aprobaron 
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Editar caduca la aprobación» (`RN-1`) | servicio | `estado_de` en [plataforma/nucleo/aprobaciones/core.py](../../../../../plataforma/nucleo/aprobaciones/core.py) | ✅ | CP-003 |
+| «Editar caduca la aprobación» (`RN-1`) | servicio | `estado_de` en [plataforma/nucleo/aprobaciones/core.py](../../../../../proyectos/cimiento/nucleo/aprobaciones/core.py) | ✅ | CP-003 |
 | «Se dice cuánto cambió» (`RN-2`) | servicio | `que_cambio` | ✅ | CP-003 |
 | «La anterior no se borra» (`RN-3`) | modelo | Cada aprobación se agrega | ✅ | CP-004 |
 | «Un documento que ya no está también caduca» (`RN-4`) | servicio | `estado_de` | ✅ | CP-003 |

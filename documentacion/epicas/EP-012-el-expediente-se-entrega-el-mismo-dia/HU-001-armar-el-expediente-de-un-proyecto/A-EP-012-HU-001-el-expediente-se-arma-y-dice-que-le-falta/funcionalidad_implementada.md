@@ -37,8 +37,8 @@ Los 22 son un hallazgo sobre el propio repositorio: veintidós fases de retro-do
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se agrupan por el orden de la §5.1» (§6) | servicio | `armar` en [plataforma/nucleo/expediente/core.py](../../../../../plataforma/nucleo/expediente/core.py) | ✅ | CP-001 |
-| El orden del ciclo, tipo por tipo (§5.1) | servicio | [plataforma/nucleo/expediente/orden.py](../../../../../plataforma/nucleo/expediente/orden.py) | ✅ | CP-001 |
+| «Se agrupan por el orden de la §5.1» (§6) | servicio | `armar` en [plataforma/nucleo/expediente/core.py](../../../../../proyectos/cimiento/nucleo/expediente/core.py) | ✅ | CP-001 |
+| El orden del ciclo, tipo por tipo (§5.1) | servicio | [plataforma/nucleo/expediente/orden.py](../../../../../proyectos/cimiento/nucleo/expediente/orden.py) | ✅ | CP-001 |
 | «Lo que falta, con su nombre» (§6) | servicio | `_lo_que_falta` | ✅ | CP-002 |
 | «Lo incompleto, con cuántas» (§6) | servicio | `_lo_incompleto` y `huecos_de` | ✅ | CP-003 |
 | «Lo que no encaja» (§6) | servicio | `armar` | ✅ | CP-004 |

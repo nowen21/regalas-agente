@@ -201,3 +201,4 @@ La respuesta, tal como se dio.
 - [2026-09-28-sesion.md](2026-09-28-sesion.md) — sesión del 2026-09-28.
 - [2026-09-30-sesion.md](2026-09-30-sesion.md) — sesión del 2026-09-30.
 - [2026-10-01-sesion.md](2026-10-01-sesion.md) — sesión del 2026-10-01.
+- [2026-10-04-optimizar-el-codigo-de-cimiento.md](2026-10-04-optimizar-el-codigo-de-cimiento.md) — inventario de los .py de Cimiento y qué se puede optimizar. · [historico-chat/resumenes/2026-10-04/optimizar-el-codigo-de-cimiento.md](resumenes/2026-10-04/optimizar-el-codigo-de-cimiento.md)

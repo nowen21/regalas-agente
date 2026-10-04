@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Lo opcional lo dice el estándar» (`RN-1`) | servicio | `opcionales` en [plataforma/nucleo/proyectos/configuracion.py](../../../../../plataforma/nucleo/proyectos/configuracion.py) | ✅ | CP-004 |
+| «Lo opcional lo dice el estándar» (`RN-1`) | servicio | `opcionales` en [plataforma/nucleo/proyectos/configuracion.py](../../../../../proyectos/cimiento/nucleo/proyectos/configuracion.py) | ✅ | CP-004 |
 | «Lo obligatorio no se apaga» (`RN-2`) | servicio | `poner` | ✅ | CP-002 |
 | «De fábrica, apagado» (`RN-3`) | servicio | `rige` | ✅ | CP-001 |
 | «Vive en el proyecto» (`RN-4`) | servicio | `CARPETA` y `ARCHIVO` | ✅ | CP-001 |

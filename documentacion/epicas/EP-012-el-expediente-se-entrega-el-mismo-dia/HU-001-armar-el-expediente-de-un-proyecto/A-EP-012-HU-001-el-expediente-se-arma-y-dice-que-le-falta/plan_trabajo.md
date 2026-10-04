@@ -68,9 +68,9 @@
 
 | Pieza | Dónde | Qué aporta |
 |---|---|---|
-| Los documentos traídos y su tipo | `Traido` en [plataforma/nucleo/importacion/models.py](../../../../../plataforma/nucleo/importacion/models.py) | `proyecto`, `origen`, `tipo`, `guardado_en` |
-| Qué tipo es cada archivo | [plataforma/nucleo/importacion/moldes.py](../../../../../plataforma/nucleo/importacion/moldes.py) | Los 19 tipos y las siete etapas |
-| El texto de cada documento | `leer` en [plataforma/nucleo/almacen/core.py](../../../../../plataforma/nucleo/almacen/core.py) | Para contar los huecos sin llenar |
+| Los documentos traídos y su tipo | `Traido` en [plataforma/nucleo/importacion/models.py](../../../../../proyectos/cimiento/nucleo/importacion/models.py) | `proyecto`, `origen`, `tipo`, `guardado_en` |
+| Qué tipo es cada archivo | [plataforma/nucleo/importacion/moldes.py](../../../../../proyectos/cimiento/nucleo/importacion/moldes.py) | Los 19 tipos y las siete etapas |
+| El texto de cada documento | `leer` en [plataforma/nucleo/almacen/core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | Para contar los huecos sin llenar |
 
 ### 2.1 Archivos que se crean o modifican  ·  Q9
 

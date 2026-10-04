@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se entrega el texto» (`RN-1`) | servicio | `entregar` en [plataforma/nucleo/reglas/entrega.py](../../../../../plataforma/nucleo/reglas/entrega.py) | ✅ | CP-001 |
+| «Se entrega el texto» (`RN-1`) | servicio | `entregar` en [plataforma/nucleo/reglas/entrega.py](../../../../../proyectos/cimiento/nucleo/reglas/entrega.py) | ✅ | CP-001 |
 | «Se dice bajo qué versión rige» (`RN-2`) | servicio | `encabezado` | ✅ | CP-001 |
 | «Si no se puede, se dice dónde está la fuente» (`RN-3`) | servicio | `donde_esta_la_fuente` | ✅ | CP-003 |
 | «La fuente se nombra siempre» (`RN-4`) | servicio | El campo va en las dos salidas | ✅ | CP-003 |

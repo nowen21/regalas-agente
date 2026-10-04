@@ -36,7 +36,7 @@ Y trae su porqué: un estado sin origen es una opinión.
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El estado se deriva, no se escribe» (`RN-1`) | servicio | `estado_de_todas` en [plataforma/nucleo/comprobaciones/estado.py](../../../../../plataforma/nucleo/comprobaciones/estado.py) | ✅ | CP-001 |
+| «El estado se deriva, no se escribe» (`RN-1`) | servicio | `estado_de_todas` en [plataforma/nucleo/comprobaciones/estado.py](../../../../../proyectos/cimiento/nucleo/comprobaciones/estado.py) | ✅ | CP-001 |
 | «Sin prueba no se cierra» (`RN-2`) | servicio | `se_puede_cerrar` | ✅ | CP-002 |
 | «Con prueba fallida, no cumple» (`RN-3`) | servicio | `NO_CUMPLE` | ✅ | CP-003 |
 | «El estado dice de dónde sale» (`RN-4`) | servicio | El campo `porque` | ✅ | CP-001 |

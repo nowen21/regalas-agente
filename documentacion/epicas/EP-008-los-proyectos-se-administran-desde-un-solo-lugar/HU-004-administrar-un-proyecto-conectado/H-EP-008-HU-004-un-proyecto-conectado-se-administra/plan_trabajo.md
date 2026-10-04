@@ -25,7 +25,7 @@
 
 ## 2. Análisis previo: línea base verificada
 
-**Qué se leyó antes de escribir.** La historia con sus cinco criterios, la especificación del módulo, y el código de la fase B: [nucleo/proyectos/core.py](../../../../../plataforma/nucleo/proyectos/core.py) y [models.py](../../../../../plataforma/nucleo/proyectos/models.py).
+**Qué se leyó antes de escribir.** La historia con sus cinco criterios, la especificación del módulo, y el código de la fase B: [nucleo/proyectos/core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) y [models.py](../../../../../proyectos/cimiento/nucleo/proyectos/models.py).
 
 **Qué ya está construido y se usa tal cual.**
 

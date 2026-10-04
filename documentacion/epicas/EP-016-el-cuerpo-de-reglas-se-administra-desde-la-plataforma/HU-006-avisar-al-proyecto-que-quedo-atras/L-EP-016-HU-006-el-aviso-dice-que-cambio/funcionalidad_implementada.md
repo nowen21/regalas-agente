@@ -34,7 +34,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «El aviso dice qué cambió» (`RN-1`) | servicio | `revisar` en [plataforma/nucleo/reglas/desfase.py](../../../../../plataforma/nucleo/reglas/desfase.py) | ✅ | CP-004 |
+| «El aviso dice qué cambió» (`RN-1`) | servicio | `revisar` en [plataforma/nucleo/reglas/desfase.py](../../../../../proyectos/cimiento/nucleo/reglas/desfase.py) | ✅ | CP-004 |
 | «Lo primero es si alguna obliga a migrar» (`RN-2`) | servicio | El campo `obligan` | ✅ | CP-004 |
 | «Un número que no existe se dice» (`RN-3`) | servicio | `existe` | ✅ | CP-005 |
 | «No declarar nada no es declarar algo falso» (`RN-4`) | servicio | Lo vacío pasa la comprobación | ✅ | CP-005 |

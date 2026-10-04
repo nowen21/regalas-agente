@@ -1,0 +1,5 @@
+# Las versiones exactas, transitivas incluidas (`10·DEP2`). Se rehace al cambiar base.txt.
+asgiref==3.11.1
+Django==5.2.11
+sqlparse==0.5.5
+tzdata==2025.3

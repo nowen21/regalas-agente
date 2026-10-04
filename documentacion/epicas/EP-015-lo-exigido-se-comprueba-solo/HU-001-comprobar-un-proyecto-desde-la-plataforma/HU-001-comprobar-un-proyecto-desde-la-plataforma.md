@@ -135,7 +135,7 @@ Entonces no dice que cumple
 - Funcionalidad `F-020` del [inventario](../../../../cvds/analisis-requisitos/inventario-funcionalidades.md).
 - Requisito `RF-20` del [análisis](../../../../cvds/analisis-requisitos/README.md).
 - El punto de entrada del estándar: `validadores/validar.py`.
-- El puente que tapa: [plataforma/nucleo/seguridad/claves.py](../../../../plataforma/nucleo/seguridad/claves.py).
+- El puente que tapa: [plataforma/nucleo/seguridad/claves.py](../../../../proyectos/cimiento/nucleo/seguridad/claves.py).
 
 ---
 

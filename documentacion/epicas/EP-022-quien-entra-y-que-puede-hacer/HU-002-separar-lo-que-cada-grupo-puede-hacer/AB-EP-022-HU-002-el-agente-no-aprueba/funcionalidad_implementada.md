@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Dos grupos» (`RN-1`) | servicio | `poner_al_dia` en [plataforma/nucleo/acceso/grupos.py](../../../../../plataforma/nucleo/acceso/grupos.py) | ✅ | CP-003 |
+| «Dos grupos» (`RN-1`) | servicio | `poner_al_dia` en [plataforma/nucleo/acceso/grupos.py](../../../../../proyectos/cimiento/nucleo/acceso/grupos.py) | ✅ | CP-003 |
 | «El agente no puede las cuatro» (`RN-2`) | servicio | `SOLO_DEL_USUARIO` | ✅ | CP-003 |
 | «El usuario puede todo» (`RN-3`) | servicio | `poner_al_dia` | ✅ | CP-003 |
 | «Solo una cuenta que exista» (`RN-4`) | servicio | `cuenta` en `core.py` | ✅ | CP-004 |

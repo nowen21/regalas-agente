@@ -31,11 +31,11 @@ Un proyecto desconectado libera su ruta, y volver a conectar esa carpeta **lo re
 
 | Ítem de la especificación | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| "Desconectar: sale de la lista y su documentación se queda en la plataforma" (§6) | servicio | `desconectar` en [nucleo/proyectos/core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-001 |
-| "Renombrar: cambia el nombre y su carpeta no se mueve" (§6) | servicio | `renombrar` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-003 |
-| "Corregir la versión declarada: se vuelve a leer del proyecto y se comprueba" (§6) | servicio | `corregir_version` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | ✅ | CP-004 |
-| "Los tres piden confirmación y los tres quedan en la auditoría" (§6) | vista · servicio | `cambiar` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) y `templates/proyectos/confirmar.html` | ✅ | CP-005 |
-| "Conectar y desconectar piden confirmación" (§7) | vista | `conectar` y `cambiar` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) | parcial | Conectar solo pregunta cuando va a **reactivar** un desconectado, que es cuando hay algo que advertir. Conectar una carpeta nueva sigue sin preguntar: no hay nada que se pueda perder |
+| "Desconectar: sale de la lista y su documentación se queda en la plataforma" (§6) | servicio | `desconectar` en [nucleo/proyectos/core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-001 |
+| "Renombrar: cambia el nombre y su carpeta no se mueve" (§6) | servicio | `renombrar` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-003 |
+| "Corregir la versión declarada: se vuelve a leer del proyecto y se comprueba" (§6) | servicio | `corregir_version` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | ✅ | CP-004 |
+| "Los tres piden confirmación y los tres quedan en la auditoría" (§6) | vista · servicio | `cambiar` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) y `templates/proyectos/confirmar.html` | ✅ | CP-005 |
+| "Conectar y desconectar piden confirmación" (§7) | vista | `conectar` y `cambiar` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) | parcial | Conectar solo pregunta cuando va a **reactivar** un desconectado, que es cuando hay algo que advertir. Conectar una carpeta nueva sigue sin preguntar: no hay nada que se pueda perder |
 | "Desconectar no borra la documentación" (§12) | servicio | `desconectar` no toca la carpeta: solo reescribe la ficha | ✅ | CP-001 paso 4 |
 | "`RN-1` registrar un proyecto no modifica nada dentro de su carpeta" (§4) | servicio | Ninguna de las tres escribe fuera de `datos/` | ✅ | CP-008 |
 | "El texto es la fuente; el índice se rehace" (§5) | modelo | La fecha de desconexión va en la ficha | ✅ | CP-002 |
@@ -48,12 +48,12 @@ Un proyecto desconectado libera su ruta, y volver a conectar esa carpeta **lo re
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
 | 1 | Resolver la duda de la sección 2.7 | ✅ hecha | [plan_trabajo.md](plan_trabajo.md) §2.7 | Resuelta con el usuario el 2026-08-25 |
-| 2 | Desconectar, dejando la documentación | ✅ hecha | `desconectar` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-001 |
-| 3 | Renombrar, sin mover la carpeta | ✅ hecha | `renombrar` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-003 |
-| 4 | Corregir la versión declarada | ✅ hecha | `corregir_version` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-004 |
-| 5 | La confirmación de los cuatro, y su registro | ✅ hecha | `CONFIRMACIONES` y `cambiar` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) | CP-005, EV-04 |
+| 2 | Desconectar, dejando la documentación | ✅ hecha | `desconectar` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-001 |
+| 3 | Renombrar, sin mover la carpeta | ✅ hecha | `renombrar` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-003 |
+| 4 | Corregir la versión declarada | ✅ hecha | `corregir_version` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-004 |
+| 5 | La confirmación de los cuatro, y su registro | ✅ hecha | `CONFIRMACIONES` y `cambiar` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) | CP-005, EV-04 |
 | 6 | La sección de desconectados en la pantalla | ✅ hecha | `templates/proyectos/lista.html` | CP-006 |
-| 7 | Reconectar: reactivar en vez de crear uno nuevo | ✅ hecha | `reconectar` y `desconectado_en` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) | CP-007 |
+| 7 | Reconectar: reactivar en vez de crear uno nuevo | ✅ hecha | `reconectar` y `desconectado_en` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) | CP-007 |
 
 **Correspondencia con el plan:** 6 tareas en el plan original, 7 acá. La 7 la agregó la respuesta a la duda, y quedó anotada en el plan antes de escribirla.
 
@@ -102,11 +102,11 @@ Los desconectados se ven en su propia sección de la lista, y se vuelve a conect
 
 | Decisión | Por qué (y qué se descartó) | Señal registrada |
 |---|---|---|
-| La fecha de desconexión va en la ficha, no solo en el índice | Si viviera solo en la base, rehacer el índice resucitaría al proyecto. `CP-002` lo comprueba borrando el índice entero | [core.py](../../../../../plataforma/nucleo/proyectos/core.py), `_texto_de_la_ficha` |
-| Una ficha sin ese campo se lee como un proyecto conectado | Es lo que hizo que no hubiera que migrar las fichas de la fase B | `reconstruir_indice` en [core.py](../../../../../plataforma/nucleo/proyectos/core.py) |
+| La fecha de desconexión va en la ficha, no solo en el índice | Si viviera solo en la base, rehacer el índice resucitaría al proyecto. `CP-002` lo comprueba borrando el índice entero | [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py), `_texto_de_la_ficha` |
+| Una ficha sin ese campo se lee como un proyecto conectado | Es lo que hizo que no hubiera que migrar las fichas de la fase B | `reconstruir_indice` en [core.py](../../../../../proyectos/cimiento/nucleo/proyectos/core.py) |
 | Reconectar avisa antes, aunque reactivar sea lo correcto casi siempre | Reactivar es lo que el usuario quiere cuando está corrigiendo un error. **No** es lo que quiere si pensaba empezar de cero con esa carpeta, y entonces recibiría la historia vieja sin pedirla | `desconectado_en` y `templates/proyectos/confirmar.html` |
-| La confirmación vive en una pantalla propia, no en una ventana del navegador | Tiene que decir **qué NO va a pasar**, y eso no cabe en una ventana del navegador. Es la mitad que permite confirmar en vez de adivinar | `CONFIRMACIONES` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) |
-| Conectar una carpeta nueva **no** pregunta; reconectar sí | Preguntar por todo entrena a confirmar sin leer. Se pregunta donde hay algo que se pueda perder o recibir sin querer | `conectar` en [views.py](../../../../../plataforma/nucleo/proyectos/views.py) |
+| La confirmación vive en una pantalla propia, no en una ventana del navegador | Tiene que decir **qué NO va a pasar**, y eso no cabe en una ventana del navegador. Es la mitad que permite confirmar en vez de adivinar | `CONFIRMACIONES` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) |
+| Conectar una carpeta nueva **no** pregunta; reconectar sí | Preguntar por todo entrena a confirmar sin leer. Se pregunta donde hay algo que se pueda perder o recibir sin querer | `conectar` en [views.py](../../../../../proyectos/cimiento/nucleo/proyectos/views.py) |
 | La ruta de un desconectado queda libre | Si siguiera tomada, desconectar no serviría para corregir el error que motivó la fase | La consulta de `conectar` filtra por `desconectado=""` |
 
 ---

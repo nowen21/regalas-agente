@@ -32,7 +32,7 @@
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Todo aviso dice qué y dónde» (`RN-1`) | servicio | `_aviso` en [plataforma/nucleo/avisos/core.py](../../../../../plataforma/nucleo/avisos/core.py) | ✅ | CP-001 |
+| «Todo aviso dice qué y dónde» (`RN-1`) | servicio | `_aviso` en [plataforma/nucleo/avisos/core.py](../../../../../proyectos/cimiento/nucleo/avisos/core.py) | ✅ | CP-001 |
 | «De lo que más duele a lo que menos» (`RN-2`) | servicio | `GRAVEDAD` | ✅ | CP-001 |
 | «Lo atendido no vuelve» (`RN-3`) | servicio | `atendidos` | ✅ | CP-002 |
 | «Cuando recorta, lo dice» (`RN-4`) | servicio | `se_recorto` | ✅ | CP-003 |

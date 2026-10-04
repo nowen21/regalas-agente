@@ -31,7 +31,7 @@ Y el reporte cierra diciendo lo que es: **el patrón, no la regla**. Lo que amer
 
 | Ítem | Categoría | Ubicación (archivo real) | Estado | Evidencia |
 |---|---|---|---|---|
-| «Se miran los mensajes del usuario» (§6) | servicio | `correcciones` en [plataforma/nucleo/medicion/repeticion.py](../../../../../plataforma/nucleo/medicion/repeticion.py) | ✅ | CP-001 |
+| «Se miran los mensajes del usuario» (§6) | servicio | `correcciones` en [plataforma/nucleo/medicion/repeticion.py](../../../../../proyectos/cimiento/nucleo/medicion/repeticion.py) | ✅ | CP-001 |
 | «Se agrupan los que dicen lo mismo» (§6) | servicio | `frases_de` | ✅ | CP-002 |
 | «Los más repetidos, con cuántas veces y en qué sesiones» (§6) | servicio | `correcciones` | ✅ | CP-003 |
 | «Si no hay nada repetido, se dice» (§6) | servicio | `cuantas_correcciones` y la orden | ✅ | CP-005 |

@@ -5,6 +5,20 @@ _base_modulo.md
 # Configuración local de la herramienta
 .claude/
 
+# Lo de cada máquina dentro de los proyectos de `proyectos/`: la clave de firma
+# (`00·N6`), la base local, lo que junta `collectstatic` y la configuración
+# local del agente que deja el instalador.
+proyectos/*/.env
+proyectos/*/db.sqlite3
+proyectos/*/staticfiles/
+proyectos/*/CLAUDE.md
+proyectos/*/.agente/
+proyectos/*/.claude/
+proyectos/*/historico-chat/.tocado/
+
+
+
+
 # Datos locales de la memoria por señales (la base es del usuario, no del estándar)
 *.db
 memoria/senales.db
