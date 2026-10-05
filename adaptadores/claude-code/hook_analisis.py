@@ -16,7 +16,9 @@
   todavía lo llaman.
 
 **Vive en el adaptador, no en `validadores/`.** Acá solo está lo que habla con
-esta herramienta; el trabajo está en `validadores/analisis_en_curso.py`.
+esta herramienta; el trabajo está en
+`proyectos/cimiento/core/enganches/analisis_en_curso.py`, que guarda un estado
+por sesión: la sesión se reconoce por su transcripción.
 
 Sale siempre con código 0: un enganche que pasa la conversación no puede
 costarle el turno a nadie.
@@ -26,13 +28,13 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "validadores"))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import analisis_en_curso as curso                   # noqa: E402
 import historico                                    # noqa: E402
 from comun import preparar_salida                   # noqa: E402
+from core.enganches.analisis_en_curso import AnalisisEnCurso   # noqa: E402
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -81,34 +83,35 @@ def mensaje(raiz, entrada):
     """Aplica la palabra del mensaje y devuelve el aviso para el agente."""
     texto = entrada.get("prompt", "") or ""
     transcripcion = historico.archivo_de_sesion(raiz, entrada.get("session_id") or "")
+    curso = AnalisisEnCurso(raiz, transcripcion)
     curso.esperar(transcripcion)
     turno = curso.ultimo_turno(transcripcion)
     # El análisis aprobado que quedó prendido se cierra aquí: la respuesta al
     # turno que lo aprobó ya está en la transcripción.
-    curso.pasar(raiz)
-    curso.borrar_corrija(raiz)
-    limpio = curso._limpio(texto)
+    curso.pasar()
+    curso.borrar_corrija()
+    limpio = curso.limpio(texto)
     nota = ""
     if limpio.startswith("corrija"):
-        curso.marcar_corrija(raiz, turno)
+        curso.marcar_corrija(turno)
         nota = ("«Corrija»: en esta respuesta se pueden corregir las herramientas del proceso "
                 "(validadores/, adaptadores/) sin abrir análisis; lo corregido se anota en el resumen "
                 "de la sesión (02·F8)")
 
     numero = curso.pendiente_pedido(texto)
     if numero is not None and transcripcion:
-        _, nota = curso.prender(raiz, numero, transcripcion, turno)
+        _, nota = curso.prender(numero, transcripcion, turno)
     elif limpio.startswith("pare"):
-        if curso.pausar(raiz, turno):
+        if curso.pausar(turno):
             nota = "pausado en el turno %d" % turno
     elif limpio.startswith("apruebo el analisis"):
-        faltan = curso.por_que_no_se_aprueba(raiz)
+        faltan = curso.por_que_no_se_aprueba()
         if faltan:
             nota = "no se aprobó: " + "; ".join(faltan)
-        elif curso.aprobar(raiz, turno, datetime.date.today().isoformat()):
+        elif curso.aprobar(turno, datetime.date.today().isoformat()):
             nota = "marca de aprobado puesta en el turno %d; se apaga al terminar esta respuesta" % turno
             nota += _avisar_lo_resuelto(raiz)
-    return curso.aviso(raiz, nota)
+    return curso.aviso(nota)
 
 
 def main():
@@ -118,7 +121,8 @@ def main():
     modo = opcion(sys.argv[1:], "--modo", "mensaje")
     try:
         if modo == "cierre":
-            curso.pasar(raiz)
+            transcripcion = historico.archivo_de_sesion(raiz, entrada.get("session_id") or "")
+            AnalisisEnCurso(raiz, transcripcion).pasar()
             return 0
         texto = mensaje(raiz, entrada)
     except (OSError, ValueError) as error:

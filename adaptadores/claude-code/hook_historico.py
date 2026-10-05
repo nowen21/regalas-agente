@@ -86,8 +86,10 @@ def main():
             # antes de que la respuesta existiera (H-9 de la sesión del
             # 2026-10-01).
             try:
-                import analisis_en_curso
-                analisis_en_curso.pasar(raiz)
+                sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+                    os.path.abspath(__file__)))), "proyectos", "cimiento"))
+                from core.enganches.analisis_en_curso import AnalisisEnCurso
+                AnalisisEnCurso(raiz, historico.archivo_de_sesion(raiz, sesion)).pasar()
             except Exception as e:       # noqa: BLE001 — nunca romper la sesión
                 print(f"No se pasó la respuesta al análisis: {e}", file=sys.stderr)
         else:

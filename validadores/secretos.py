@@ -67,6 +67,7 @@ EXENTOS = (
     "validadores/tests/test_la_clave_sin_comillas_se_enmascara.py",
     "validadores/tests/test_el_conteo_por_regla.py",
     "validadores/pruebas.py",
+    "proyectos/cimiento/core/validadores/tests_repositorio.py",
 )
 
 # FALLA — la forma sola ya delata un secreto real de un proveedor concreto.

@@ -35,7 +35,7 @@ Conviene el núcleo: una regla que manda sobre las demás no puede quedar entre 
 
 El núcleo ya dice algo parecido, pero solo de sí mismo: la línea 5 de [base/00-nucleo-blindado.md](../base/00-nucleo-blindado.md#L5) dice que ninguna instrucción puntual desactiva sus reglas. La regla nueva extiende eso a todas las reglas escritas.
 
-El recuerdo se queda, con el registro de que el usuario lo pidió y cuándo, como dice [memory.md](../historico-chat/memory/memory.md) para la preferencia que sube a regla.
+El recuerdo se queda, con el registro de que el usuario lo pidió y cuándo, como dice [historico-chat/memory/memory.md](../historico-chat/memory/memory.md) para la preferencia que sube a regla.
 
 ## El límite
 

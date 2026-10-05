@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """`EP-005·HU-018` · Avisa, al escribir, si el archivo cayó fuera del proyecto.
 
-Lo que habla con esta herramienta; el trabajo vive en `validadores/rutas_fuera.py`.
+Lo que habla con esta herramienta; el trabajo vive en
+`proyectos/cimiento/core/enganches/rutas_fuera.py`.
 
 **Nunca detiene la escritura.** Un enganche que bloquea el trabajo se
 desinstala el mismo día, y entonces no queda nada avisando. Cualquier problema
@@ -16,40 +17,19 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import comun                                    # noqa: E402
-import rutas_fuera                                       # noqa: E402
-from comun import RAIZ, preparar_salida                  # noqa: E402
-
-
-def raiz_pedida(argv):
-    """La carpeta del proyecto: `--raiz X`, o el estándar si no se indica."""
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return RAIZ
-
-
-def archivo_editado(datos):
-    """La ruta escrita, mirando primero la entrada y luego la respuesta."""
-    entrada = datos.get("tool_input") or {}
-    respuesta = datos.get("tool_response") or {}
-    return (entrada.get("file_path")
-            or respuesta.get("filePath")
-            or respuesta.get("file_path")
-            or "")
+from core.comun.consola import archivo_editado, entrada_json, preparar_salida, raiz_pedida     # noqa: E402
+from core.enganches.rutas_fuera import RutasFuera                # noqa: E402
 
 
 def main():
     preparar_salida()
-    raiz = raiz_pedida(sys.argv[1:])
+    raiz = raiz_pedida(sys.argv[1:], RAIZ)
 
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0            # sin JSON válido no hay ruta que mirar
 
@@ -57,7 +37,7 @@ def main():
         return 0
 
     try:
-        texto = rutas_fuera.aviso(archivo_editado(datos), raiz)
+        texto = RutasFuera.aviso(archivo_editado(datos), raiz)
     except Exception:       # noqa: BLE001
         # **Deliberado.** Lo que este guion protege es una convención de orden;
         # lo que arriesga si revienta es la sesión entera del usuario. Ante

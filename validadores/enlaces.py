@@ -89,6 +89,38 @@ def _es_transcripcion(archivo):
             and os.path.basename(archivo).lower() != "readme.md")
 
 
+_ANALISIS = re.compile(r"^analisis-\d+\.md$")
+_SECCION = re.compile(r"^##\s+(.*?)\s*$")
+
+
+def _lineas_de_conversacion(archivo, texto):
+    """Los renglones de la «Conversación» de un `analisis-N.md`.
+
+    Es copia literal del chat, igual que una transcripción: corregirle un
+    enlace es cambiar lo que se dijo. Se salta solo esa sección; el resto del
+    análisis lo escribe el agente y sí se revisa.
+    """
+    if not _ANALISIS.match(os.path.basename(archivo)):
+        return set()
+    salida, dentro = set(), False
+    for n, linea in enumerate(texto.splitlines(), 1):
+        m = _SECCION.match(linea)
+        if m:
+            dentro = m.group(1).lower() == "conversación"
+        elif dentro:
+            salida.add(n)
+    return salida
+
+
+def _reemplazar_por_renglon(contenido, cambios):
+    """Aplica `[(renglón, viejo, nuevo)]` solo en su renglón: reemplazar en todo
+    el texto tocaba también las copias del mismo enlace que no se debían tocar."""
+    lineas = contenido.splitlines(keepends=True)
+    for n, viejo, nuevo in cambios:
+        lineas[n - 1] = lineas[n - 1].replace(viejo, nuevo)
+    return "".join(lineas)
+
+
 _CON_ESPACIO = re.compile(r"\]\(([^)\n<]*?\s[^)\n]*?)\)")
 
 
@@ -182,7 +214,11 @@ def validar_formato(raiz=None):
     for archivo in recorrer_md(raiz):
         if _es_transcripcion(archivo):
             continue
-        for n, texto, destino in enlaces(leer(archivo)):
+        contenido = leer(archivo)
+        conversacion = _lineas_de_conversacion(archivo, contenido)
+        for n, texto, destino in enlaces(contenido):
+            if n in conversacion:
+                continue
             # El mismo criterio que `reparar_formato`, y a propósito: si el
             # que reporta y el que arregla miran distinto, el arreglo deja
             # hallazgos vivos o toca lo que nadie reportó.
@@ -229,6 +265,13 @@ def _texto_esperado(raiz, archivo, texto, destino):
     if limpio.lstrip("./").rstrip("/") == esperado.rstrip("/"):
         return None
     if limpio.endswith("/"):
+        # El texto nombra una carpeta. Si el destino es un archivo de ella (su
+        # README), el texto sigue nombrando la carpeta: pegarle el archivo
+        # dejaba `[base/x/README.md/](x/README.md)` (sesión del 2026-10-04).
+        if not destino.split("#", 1)[0].endswith("/"):
+            esperado = os.path.dirname(esperado)
+            if limpio.lstrip("./").rstrip("/") == esperado:
+                return None
         esperado = esperado.rstrip("/") + "/"
     return esperado
 
@@ -269,16 +312,14 @@ def reparar_texto(contenido, archivo, raiz=None, incluir_vecinos=False):
         return contenido, 0
 
     cambios = []
-    for _n, texto, destino in enlaces(contenido):
-        if not incluir_vecinos and _es_vecino(destino):
+    conversacion = _lineas_de_conversacion(archivo, contenido)
+    for n, texto, destino in enlaces(contenido):
+        if n in conversacion or (not incluir_vecinos and _es_vecino(destino)):
             continue
         esperado = _texto_esperado(raiz, archivo, texto, destino)
         if esperado is not None:
-            cambios.append((f"[{texto}]({destino})", f"[{esperado}]({destino})"))
-
-    for viejo, nuevo in cambios:
-        contenido = contenido.replace(viejo, nuevo)
-    return contenido, len(cambios)
+            cambios.append((n, f"[{texto}]({destino})", f"[{esperado}]({destino})"))
+    return _reemplazar_por_renglon(contenido, cambios), len(cambios)
 
 
 def reparar_formato(raiz=None, escribir=False, incluir_vecinos=False):
@@ -307,23 +348,13 @@ def reparar_formato(raiz=None, escribir=False, incluir_vecinos=False):
         if _es_transcripcion(archivo) or _es_del_usuario(raiz, archivo):
             continue                    # literales del chat · palabras del usuario
         original = leer(archivo)
-        cambios = []
-        for n, texto, destino in enlaces(original):
-            if not incluir_vecinos and _es_vecino(destino):
-                continue
-            esperado = _texto_esperado(raiz, archivo, texto, destino)
-            if esperado is None:
-                continue
-            cambios.append((f"[{texto}]({destino})", f"[{esperado}]({destino})"))
-        if not cambios:
+        texto_nuevo, cuantos = reparar_texto(original, archivo, raiz, incluir_vecinos)
+        if not cuantos:
             continue
-        texto_nuevo = original
-        for viejo, nuevo in cambios:
-            texto_nuevo = texto_nuevo.replace(viejo, nuevo)
         if escribir:
             with open(archivo, "w", encoding="utf-8", newline="\n") as f:
                 f.write(texto_nuevo)
-        tocados.append((archivo, len(cambios)))
+        tocados.append((archivo, cuantos))
     return tocados
 
 

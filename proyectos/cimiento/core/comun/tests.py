@@ -4,7 +4,7 @@ import subprocess
 import tempfile
 import unittest
 
-from core.comun import AVISO, FALLA, Archivos, Git, Hallazgo, Proyecto
+from core.comun import AVISO, FALLA, Archivos, Git, Hallazgo, Markdown, Proyecto
 
 
 class ElProyectoSabeQueQuedaAdentro(unittest.TestCase):
@@ -36,6 +36,16 @@ class ElProyectoSabeQueQuedaAdentro(unittest.TestCase):
         unidad = self.raiz[0].lower()
         estilo_git = "/%s%s" % (unidad, self.raiz[2:].replace("\\", "/"))
         self.assertEqual(self.proyecto.relativa(estilo_git + "/docs/a.md"), "docs/a.md")
+
+    def test_el_recorrido_de_md_salta_lo_excluido(self):
+        for relativa in ("docs/a.md", "proyectos/x/b.md", "node_modules/c.md", "docs/d.txt"):
+            ruta = os.path.join(self.raiz, *relativa.split("/"))
+            os.makedirs(os.path.dirname(ruta), exist_ok=True)
+            open(ruta, "w").close()
+        self.assertEqual([self.proyecto.relativa(r) for r in self.proyecto.recorrer_md()], ["docs/a.md"])
+
+    def test_el_estandar_se_encuentra_subiendo(self):
+        self.assertTrue(os.path.isfile(os.path.join(Proyecto.estandar(), "base", "00-nucleo-blindado.md")))
 
     def test_la_raiz_sale_de_la_orden_o_del_valor_por_defecto(self):
         self.assertEqual(Proyecto.desde_argumentos(["x", "--raiz", self.raiz], "/otra").raiz,
@@ -81,6 +91,50 @@ class ElHallazgoDiceSuRegla(unittest.TestCase):
 
     def test_la_declarada_manda(self):
         self.assertEqual(Hallazgo(AVISO, "a", 1, "02·F8", regla="07·Q3").regla, "07·Q3")
+
+
+class LasTablasMarkdownSeLeenPorNombre(unittest.TestCase):
+
+    TEXTO = ("| Clave | Valor | Nota |\n|---|---|---|\n| `a` | uno | x |\n| b | «…» | |\n\n"
+             "```\n| Clave | Valor |\n|---|---|\n| falsa | no |\n```\n")
+
+    def test_la_fila_se_lee_por_columna_y_no_por_posicion(self):
+        filas = Markdown.filas_de(self.TEXTO, "valor", "clave")
+        self.assertEqual([f["clave"] for _, f in filas], ["`a`", "b"])
+
+    def test_la_tabla_dentro_de_un_bloque_de_codigo_no_cuenta(self):
+        self.assertEqual(len(Markdown.tablas(self.TEXTO)), 1)
+
+    def test_los_enlaces_de_muestra_no_cuentan(self):
+        texto = "[a](a.md) y `[b](b.md)`\n```\n[c](c.md)\n```\n"
+        self.assertEqual(Markdown.enlaces(texto), [(1, "a", "a.md")])
+
+    def test_encabezados_sin_el_h1_y_marcadores_sin_casillas(self):
+        texto = "# Título\n## Uno\n- [x] hecho\n[por llenar] y [enlace](a.md)\n"
+        self.assertEqual(Markdown.encabezados(texto), [(2, "Uno")])
+        self.assertEqual(Markdown.marcadores(texto), [(4, "[por llenar]")])
+
+    def test_la_celda_sin_llenar_vale_vacio(self):
+        self.assertEqual(Markdown.valor_limpio("`a`"), "a")
+        self.assertEqual(Markdown.valor_limpio("«…»"), "")
+        self.assertEqual(Markdown.valor_limpio("—"), "")
+
+
+class LosEnganchesLeenLaRaizYElArchivoIgual(unittest.TestCase):
+    """Análisis 1 del pendiente 116, fila 4: las once copias de los enganches."""
+
+    def test_la_raiz_pedida_o_la_que_dice_el_enganche(self):
+        from core.comun.consola import raiz_pedida
+        self.assertEqual(raiz_pedida(["--raiz", "x"], "y"), os.path.abspath("x"))
+        self.assertEqual(raiz_pedida(["--raiz"], "y"), os.path.abspath("y"))
+        self.assertEqual(raiz_pedida([], "y"), os.path.abspath("y"))
+
+    def test_el_archivo_de_la_entrada_y_si_no_el_de_la_respuesta(self):
+        from core.comun.consola import archivo_editado
+        self.assertEqual(archivo_editado({"tool_input": {"file_path": "a"}, "tool_response": {"filePath": "b"}}), "a")
+        self.assertEqual(archivo_editado({"tool_input": {"filePath": "c"}}), "c")
+        self.assertEqual(archivo_editado({"tool_response": {"file_path": "d"}}), "d")
+        self.assertEqual(archivo_editado(None), "")
 
 
 if __name__ == "__main__":

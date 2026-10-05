@@ -1115,6 +1115,401 @@ Revisé qué es lo que frena. No es git: la revisión de `pre-commit` (`validar.
 ### 62 · Usuario, 2026-10-04 14:41:10
 > apruebo
 
+**Agente**, 2026-10-04 14:48:23
+<!-- agente: 303d2244-ce28-47d5-b573-03290ec8f2c0 -->
+
+Ya está corregida la lectura de `git status`. Ahora ajusto la detección de las órdenes de git y conecto el cambio en el enganche.
+
+El `;` dentro del mensaje entre comillas partía la orden en dos. Antes de partirla, quito lo que va entre comillas.
+
+Pasan 34 de 34 pruebas del freno. Retomo la orden pendiente de subir: «Hágalo: suba git».
+
+Listo: el freno quedó corregido y el trabajo está en GitHub (`main`, hasta `29a30ad`).
+
+**Lo que se corrigió en el freno:**
+- Leía mal la salida de `git status` cuando había archivos renombrados. Tomaba la ruta vieja como si fuera un archivo nuevo y le cortaba las primeras letras: de ahí salían los avisos de `taforma/...`.
+- Ya no revisa `git add`, `commit` ni `push`, porque esas órdenes solo registran lo que ya cambió. Lo que entra al commit lo sigue revisando el `pre-commit`.
+- Pasan 34 de 34 pruebas del freno, 4 de ellas nuevas.
+
+**Lo que se subió:**
+1. `1123d39`: Cimiento como aplicación Django, los validadores pasados a clases y los arreglos del freno y del análisis.
+2. `29a30ad`: el arreglo del enlace roto del resumen del 2026-08-22, que era lo único que detenía el push.
+
+Los enganches revisaron los commits y solo dejaron avisos, ninguno bloqueante:
+- el asunto del primer commit es largo;
+- `CHANGELOG.md` tiene una versión repetida de antes;
+- un archivo trae marcas de dos sesiones.
+
+**Lo que falta:**
+1. Pasar los 81 validadores que quedan.
+2. Las filas 12 (épicas retiradas) y 11 (`ambiente.py` en la estructura acordada).
+3. Los puntos 2 y 3 del freno (autorizar carpetas y aceptar la palabra del usuario) siguen en el pendiente 118.
+
+### 63 · Usuario, 2026-10-04 14:49:02
+> sígalos pasando
+
+**Agente**, 2026-10-04 14:49:12
+<!-- agente: 9dc154dc-eb8b-491e-a55b-f1995518e7f0 -->
+
+Al mensaje le falta la palabra del comienzo. Para seguir pasando los validadores, escriba «Continúe» o «Hágalo: sígalos pasando».
+
+### 64 · Usuario, 2026-10-04 14:51:57
+> Continúe
+
+**Agente**, 2026-10-04 15:06:31
+<!-- agente: b3a5c797-cb7a-4af2-8ec8-5ae3371d6604 -->
+
+Sigo con lo que queda del grupo que revisa código: `esquema`, `estructura` y `entidades`.
+
+`declaracion` usa la lectura de tablas Markdown de `comun.py` (`filas_de` y `valor_limpio`). Esa pieza la necesitan muchos validadores, así que también va a `core/comun/`. La leo.
+
+Escribo primero la fila 16 del análisis y después las piezas compartidas: la lectura de tablas Markdown y el recorrido de migraciones, que se repetía tres veces.
+
+Coincide con el original. Sigo con la exportación, la declaración y las migraciones.
+
+Ahora el esquema, con su lector de tablas que también usan `estructura` y `entidades`.
+
+Ahora `entidades`, el último del grupo.
+
+Comparo los cinco validadores nuevos contra los viejos en los tres proyectos reales, antes de escribir las pruebas.
+
+Pasan las 50 pruebas. Veo qué queda en `validadores/` para seguir con el siguiente grupo.
+
+El siguiente grupo es el que revisa el repositorio y git: `versionado`, `secretos`, `dependencias`, `ci`, `rama` y `commits`. Los leo.
+
+Para `versionado` y `commits` necesito ver cómo los llama hoy `validar.py`, porque no reciben el proyecto igual que los demás.
+
+Uso `prefijo_de` en los cuatro módulos que lo repetían.
+
+Ahora los seis validadores del repositorio y de git.
+
+Comparo los seis validadores nuevos con los viejos en cuatro proyectos reales, antes de escribir las pruebas.
+
+Los seis dan lo mismo en los cuatro proyectos y en los últimos cuatro commits. Escribo sus pruebas; las claves de ejemplo se arman al correr, para que el archivo no tenga ningún secreto escrito.
+
+Avancé dos grupos más. Ya son 16 validadores pasados a clases dentro de Cimiento, y pasan 69 pruebas.
+
+**Lo que se agregó en esta vuelta:**
+
+| Grupo | Clases |
+|---|---|
+| Migraciones y esquema | `MigracionesReversibles` (`03·D2`), `IntegridadDeEsquema` (`03·D1/D3`, `14·EST2`), `ConvencionDeNombres` (`14·EST1/EST2`), `TablasDeDominio` (`03·D1`, `15·IM2/IM5`), `DeclaracionDelProyecto` |
+| Repositorio y git | `ArchivosVersionados` (`09·G3`), `LockfileVersionado` (`10·DEP2`), `IntegracionContinua` (`09·G6`), `RamaDedicada` (`09·G4`), `SecretosEnElCodigo` (`04·S4`, `00·N6`), `MensajeDeCommit` (`09·G2/G8`) |
+
+**Lo repetido que se eliminó:**
+- El recorrido de migraciones estaba en tres validadores. Ahora está una sola vez, en `RecorridoDeMigraciones`.
+- El cálculo del prefijo de cada repositorio estaba en nueve sitios. Ahora está en `Proyecto.prefijo_de`.
+- Las consultas de ramas y del mensaje del commit quedaron en `Git`.
+- La lectura de tablas Markdown quedó en `core/comun/markdown.py`.
+
+**Cómo se comprobó:** cada clase nueva da exactamente los mismos hallazgos que el validador viejo en cuatro proyectos reales: Cimiento, dp, scilit y rni-back. `estructura` y `entidades` casi no tienen datos en esos proyectos, así que también se probaron con un proyecto armado para la prueba, donde dieron 25 hallazgos y todos coincidieron. `MensajeDeCommit` dio lo mismo en los últimos cuatro commits.
+
+**Lo que sigue:** quedan unos 60 módulos en `validadores/`. Muchos no son validadores sino herramientas, como el instalador, el andamio o el histórico. El próximo grupo es el de los documentos: `enlaces`, `indices`, `marcas`, `plantillas`, `citas` y `trazabilidad`.
+
+Nada de esto está guardado en un commit todavía.
+
+### 65 · Usuario, 2026-10-04 15:08:10
+> Continué
+
+**Agente**, 2026-10-04 15:14:22
+<!-- agente: 6c0837b1-c94a-4517-a385-260fcec05780 -->
+
+Sigo con el grupo de los documentos. Empiezo por `enlaces`, que es la base de `indices`.
+
+Escribo la fila 18 del análisis y las piezas compartidas: la lectura de enlaces y encabezados en `Markdown`, y el recorrido de los `.md` y la ubicación del estándar en `Proyecto`.
+
+Coinciden con los originales. Ahora `Proyecto`: el recorrido de los `.md` y la ubicación del estándar.
+
+Ahora el módulo de enlaces: una clase con las reglas de qué enlace se comprueba, tres validadores y el reparador.
+
+Pasan las 86 pruebas. Ahora arreglo los 15 textos de enlace que quedaron diciendo la ruta vieja, con el reparador nuevo. Son de los mismos documentos de la fila 10.
+
+**Paré: el freno detuvo una acción mía.** El reparador cambió el texto de enlaces en 21 archivos, y tres no estaban autorizados por el análisis: `base/tareas.md`, `pendientes/98-...` y `pendientes/99-...`.
+
+Además, dos de los cambiados están en `base/` (`tareas.md` y `mapa-de-tareas.md`). Por las reglas de este repositorio, cualquier cambio en `base/` lleva su entrada en el `CHANGELOG`. Y `mapa-de-tareas.md` lo genera un programa, así que lo cambiado ahí puede perderse la próxima vez que se genere.
+
+**El cambio en sí es correcto:** solo cambió el texto de los enlaces, para que diga la ruta desde la raíz (`13·DOC14`), y no tocó ningún destino. Ahora el reparador encuentra cero pendientes. Pero lo hice sin mirar antes qué archivos iba a tocar.
+
+**Lo que avanzó este grupo:** `EnlacesRotos`, `FormatoDeEnlaces`, `IndicesDeCarpetas` y `ReparadorDeEnlaces` son clases. Dan lo mismo que el validador viejo en Cimiento, dp y scilit, y pasan 86 pruebas.
+
+**Falta decidir qué hago con los cambios en esos archivos:**
+1. Dejarlos y agregarlos a la fila 18 del análisis, con la entrada del `CHANGELOG` por `base/`. Lo recomiendo.
+2. Revertir los cambios en `base/` y en `pendientes/` y dejar solo los que estaban autorizados.
+
+### 66 · Usuario, 2026-10-04 15:15:20
+> 00 id9
+
+**Agente**, 2026-10-04 15:15:28
+<!-- agente: f88f5311-7830-43fa-88ed-313b9c429be4 -->
+
+Lo mismo, más corto:
+
+El freno detuvo una acción mía. Corregí el texto de enlaces en 21 archivos, y tres de ellos no estaban autorizados: `base/tareas.md`, `pendientes/98` y `pendientes/99`. El cambio en sí es correcto, porque solo toca el texto y no el destino. Pero lo que cambia en `base/` necesita su entrada en el `CHANGELOG`.
+
+Los enlaces ya son clases: dan los mismos resultados que el validador viejo en Cimiento, dp y scilit, y pasan las 86 pruebas.
+
+¿Dejo esos cambios y los agrego al análisis con su `CHANGELOG`, o los revierto?
+
+### 67 · Usuario, 2026-10-04 15:18:55
+> explique la pregunta
+
+**Agente**, 2026-10-04 15:19:07
+<!-- agente: 228ee746-8bb8-4268-a7ea-4f287d516bde -->
+
+Un enlace en Markdown tiene dos partes: el **texto** que se lee y el **destino** al que lleva. Por ejemplo, en `x.md (`base/x.md`, ya no está ahí)` el texto es `x.md` y el destino es `../../base/x.md`. La regla `13·DOC14` pide que el texto diga la ruta completa, `base/x.md`, para saber dónde está el archivo sin abrirlo.
+
+Corrí el reparador nuevo y cambió ese **texto** en 21 archivos. Ningún destino cambió, así que todos los enlaces siguen funcionando.
+
+El problema es que tres de esos archivos no los podía tocar sin permiso: `base/tareas.md`, `pendientes/98-...` y `pendientes/99-...`. Por eso el freno avisó. Además, todo lo que cambia en `base/` necesita su línea en el `CHANGELOG`.
+
+La pregunta es qué hacer con esos tres cambios:
+1. **Dejarlos.** Los anoto en el análisis como autorizados y agrego la línea al `CHANGELOG`. Lo recomiendo, porque el cambio cumple la regla.
+2. **Revertirlos.** Esos tres archivos quedan como estaban y se conservan solo los cambios que sí estaban autorizados.
+
+### 68 · Usuario, 2026-10-04 15:20:59
+> Hágalo: dejarlos
+
+**Agente**, 2026-10-04 15:25:09
+<!-- agente: 822971e8-b587-4d2f-af16-6733a610811e -->
+
+Son cinco archivos. Escribo un guion de apoyo que, en cada uno, devuelve a su versión de git solo los renglones dañados.
+
+Los cinco quedaron restaurados y `validar.py tareas` vuelve a pasar. Verifico que `base/` no tenga cambios y corrijo el error en los dos lugares.
+
+Quedan tres textos por arreglar. Antes de escribirlos, veo cómo quedarían.
+
+Quedó resuelto, aunque no exactamente como se aprobó. Al revisarlos, los cambios en `base/` resultaron mal hechos, así que los devolví a como estaban. Por eso `base/` no tiene cambios y no hace falta tocar el `CHANGELOG`.
+
+**Lo que pasó:**
+- El reparador de enlaces tenía un error, que venía del código viejo y que copié igual en la clase nueva. Cuando el texto de un enlace nombraba una carpeta, le pegaba el nombre del archivo y le dejaba una barra al final: `[base/x/README.md/](../../../../../...)`.
+- Con ese error dañó 5 archivos. Dos eran de `base/`, y uno de esos lo genera un programa, así que `validar.py tareas` fallaba.
+
+**Lo que hice:**
+1. Devolví los renglones dañados a su versión de git con un guion de apoyo ([restaurar_textos_de_enlace.py](../../../../../historico-chat/scripts/2026-10-04/restaurar_textos_de_enlace.py)). `validar.py tareas` vuelve a pasar.
+2. Corregí el error en las dos versiones, la nueva y la vieja, y agregué una prueba para ese caso.
+3. Dejé los cambios de `pendientes/98` y `pendientes/99`, que sí eran correctos, y los agregué a la fila 18 del análisis.
+
+**Resultado:** pasan 87 pruebas. Los avisos de formato de enlaces coinciden con el validador viejo en Cimiento, dp y scilit (2.360, 389 y 235), y no hay ningún enlace roto.
+
+**Queda un caso abierto:** la prueba vieja que exige «cero enlaces por arreglar» marca 2. Los dos están en la sección «Conversación» del análisis, que es copia literal del chat y no se edita. Habría que excluir esas secciones del reparador, igual que ya se excluyen las transcripciones.
+
+### 69 · Usuario, 2026-10-04 15:26:26
+> 00 id9
+
+**Agente**, 2026-10-04 15:26:39
+<!-- agente: 64bdca40-aec7-450a-b70d-9a1b3eb89633 -->
+
+Lo mismo, más corto:
+
+Los cambios en `base/` estaban mal: el reparador dejaba textos como `[base/x/README.md/](../../../../../...)`. Los devolví a como estaban, así que no hace falta tocar el `CHANGELOG`. Corregí ese error en el reparador nuevo y en el viejo, con su prueba. Pasan 87 pruebas, los resultados coinciden con el validador viejo en los tres proyectos y no queda ningún enlace roto.
+
+Falta un caso: el reparador quiere cambiar 2 enlaces dentro de la «Conversación» del análisis, que es copia literal del chat. Hay que excluir esa sección, igual que las transcripciones.
+
+### 70 · Usuario, 2026-10-04 15:27:31
+> analicemos: a esos validadores se le pueden realizar configuraciones por interfaz?
+
+**Agente**, 2026-10-04 15:27:49
+<!-- agente: 848b1a39-dad2-4f1f-a95e-fdc621a64e18 -->
+
+Hoy no se pueden configurar desde una interfaz. Pero, como ya son clases, agregarlo es sencillo.
+
+**Cómo están hoy:**
+- Lo que se puede ajustar está escrito en el código, como atributos de cada clase: el máximo de 60 líneas por función en `FuncionesLargas`, el largo del asunto del commit, las extensiones de archivo que se revisan y los archivos exentos de `SecretosEnElCodigo`.
+- Lo propio de cada proyecto ya se configura, pero a mano, en `.agente/mapeo-nombres.md` y en `.agente/dominio.md`.
+
+**Cómo quedaría con interfaz:**
+- Un módulo `core/ajustes/` con un modelo que guarde, por proyecto y por validador, tres cosas: si corre, con qué severidad y con qué valores (el máximo de líneas, los exentos...). Se edita desde la administración de Django.
+- La clase `Validador` lee esos valores antes de revisar, y si no hay ninguno usa los de siempre.
+
+**El punto que hay que decidir:** los enganches corren sin Django, para no hacer más lento cada mensaje. Por eso los ajustes no pueden quedar solo en la base de datos. Recomiendo que la interfaz los guarde también en un archivo del proyecto, `.agente/validadores.md`, que se lee sin Django. Así la interfaz sirve para editar y el archivo es lo que se usa al revisar.
+
+**Algo que conviene saber:** la plataforma vieja tenía un módulo parecido (`nucleo/ajustes`, de la HU «lo obligatorio no se apaga»), y se borró con la base limpia. Su regla sigue valiendo: los validadores del núcleo (`00·N...`) no se pueden apagar desde la interfaz.
+
+¿Lo agrego al análisis como una HU nueva, para después de pasar los validadores?
+
+### 71 · Usuario, 2026-10-04 15:28:19
+> analicemos: yo se y por eso es que lo estoy preguntando
+
+**Agente**, 2026-10-04 15:31:42
+<!-- agente: 6b6f5732-3f12-40a3-a848-c96e826b3023 -->
+
+Ya vi la HU vieja del tema. Reviso si el archivo de configuración sigue existiendo en algún proyecto.
+
+Sí se pueden configurar, y la forma ya está decidida en el estándar. La HU-005 de EP-008, «Configurar qué rige en cada proyecto», ya está terminada, y la plataforma vieja la cumplía. Hay que conectarla a las clases nuevas.
+
+Esa HU fija tres cosas:
+- Por proyecto, solo se enciende o se apaga lo opcional: 49 de 257 reglas son opcionales (`*opt-in*`). Lo obligatorio no se apaga nunca (RN-2).
+- La configuración se guarda en el proyecto, en `.agente/configuracion.md`, y no en la base de datos (RN-4). La interfaz solo edita ese archivo. Eso también resuelve lo de los enganches, que leen el archivo sin cargar Django.
+- Cada cambio queda escrito con la fecha y quién lo hizo.
+
+Para conectarla, `Validador` ya tiene el atributo `regla`. Antes de revisar, la clase mira si su regla es opcional y si el proyecto la apagó en ese archivo. Hoy ningún programa lee `configuracion.md`, y el archivo no existe en este repo ni en `proyectos/cimiento/`.
+
+Falta decidir los valores, como el tope de 60 líneas o el largo del asunto del commit. La HU no los cubre. Si cada proyecto puede cambiar un número que fija la regla, la regla pasa a ser una sugerencia, que es lo que RN-2 impide. Recomiendo que esos valores no se cambien por proyecto: si un número está mal, se cambia la regla en `base/`, para todos.
+
+¿Los valores de las reglas quedan fijos, y por proyecto solo se encienden o se apagan las reglas opcionales?
+
+### 72 · Usuario, 2026-10-04 15:56:45
+> Hágalo: siga pasando los validadores
+
+**Agente**, 2026-10-04 16:15:23
+<!-- agente: dbc68645-c358-4eac-9ee5-b6f0b4e28d9b -->
+
+Sigo con el grupo siguiente: marcas, plantillas, citas y trazabilidad. Primero miro qué queda por pasar.
+
+Leí los cuatro. Trazabilidad depende de `fases.py`; miro esa parte.
+
+Paso primero lo compartido: `Proyecto.recorrer_md` tiene que poder recorrer una sola carpeta (citas y marcas recorren `base/`).
+
+Ahora trazabilidad, con una pieza `Epicas` que después reusará `fases`.
+
+El freno exige que cada archivo nuevo esté en la tabla del análisis. Reviso cómo quedaron autorizados los anteriores.
+
+Agrego la fila 19 para este grupo, como se hizo con los anteriores (acuerdo 11).
+
+Sigue la plantilla: el documento se compara contra el molde del que salió.
+
+Ahora citas: índice de reglas, validador y enlazador, con la misma lógica de antes.
+
+Falta marcas, el más largo. Miro la API de `Git` para el trinquete.
+
+Ahora el `__init__.py`.
+
+Escribo el guion de paridad: compara lo viejo contra lo nuevo en este repo y en los proyectos reales.
+
+Paridad completa en los cuatro, sobre este repo y tres proyectos reales. Paso las pruebas viejas a las clases; las leo.
+
+Agrego las pruebas a `tests_documentos.py`.
+
+El heredoc se rompió con las comillas; hago el cambio con Edit.
+
+Dos fallas y un error. Miro el error.
+
+Ahora la prueba vieja del trinquete, para que el renombrado de verdad se pruebe.
+
+116 pruebas en verde. Vuelvo a correr la paridad con la corrección aplicada a los dos validadores.
+
+Marco la fila 19 como hecha y anoto los dos defectos en el resumen de la sesión.
+
+Pasé el grupo siguiente a clases: trazabilidad, plantilla, citas y marcas. Las 116 pruebas de `core` pasan, y lo nuevo da lo mismo que lo viejo en este repo y en tres proyectos reales (rni-back, shopnest y agro-system). En rni-back no hay épicas, así que ahí no se comparó la trazabilidad.
+
+Lo que quedó:
+- **Trazabilidad:** [trazabilidad.py](../../../../../proyectos/cimiento/core/validadores/trazabilidad.py) revisa que épicas y HU se nombren entre sí, el ORIGEN del plan y la tabla de cierre. Recorre las épicas con [epicas.py](../../../../../proyectos/cimiento/core/validadores/epicas.py), una pieza nueva que también va a usar `fases` en el grupo siguiente.
+- **Plantilla:** [plantillas.py](../../../../../proyectos/cimiento/core/validadores/plantillas.py) compara un documento con su plantilla y busca la plantilla en el estándar.
+- **Citas:** [citas.py](../../../../../proyectos/cimiento/core/validadores/citas.py) tiene el índice de reglas, el validador y el que pone los enlaces a las citas.
+- **Marcas:** [marcas.py](../../../../../proyectos/cimiento/core/validadores/marcas.py) mide y limpia un texto. El validador revisa lo que se hereda o, con `solo_preparados`, solo lo que va a entrar en el commit, y no deja que las marcas aumenten.
+- `Proyecto.recorrer_md` ahora puede recorrer una sola carpeta, por ejemplo `base/`.
+
+Las pruebas nuevas encontraron dos errores que ya estaban en los validadores viejos. Los corregí en las dos versiones:
+- `plantillas.py` decía que una regla de negocio sin origen estaba en la línea de antes de la suya.
+- Las dos pruebas de renombrado del trinquete de marcas no probaban nada: `git mv` fallaba sin avisar porque la carpeta de destino no existía.
+
+Para que el freno dejara escribir los archivos agregué la fila 19 al análisis, ya marcada como hecha. Anoté los errores en el resumen de la sesión (H-7). El guion que compara lo viejo con lo nuevo es [paridad_documentos.py](../../../../../historico-chat/scripts/2026-10-04/paridad_documentos.py).
+
+Lo que falta, en orden:
+1. Pasar a clases los demás validadores: quedan unos 60 de los 87 archivos de `validadores/`, contando los enganches y las herramientas. Sigue el grupo de flujo y fases, que es el más grande (`fases.py` tiene 1.060 líneas).
+2. Conectar `validar.py` y los enganches a las clases, y después borrar los `.py` viejos.
+3. Hacer que el reparador de enlaces no toque la «Conversación» del análisis, que es copia literal del chat.
+4. Los puntos del análisis que siguen abiertos: las HU de EP-024, parecidas.py, las filas 10 y 12, `ambiente.py` y lo de 02·F4 con 02·F25.
+5. Decidir sobre el commit: hay trabajo de varios grupos sin guardar.
+
+### 73 · Usuario, 2026-10-04 16:15:59
+> 
+> 00 id9
+
+**Agente**, 2026-10-04 16:16:11
+<!-- agente: 68ae5db9-89da-4ce3-9247-ee33b027f1f0 -->
+
+Ya están como clases trazabilidad, plantilla, citas y marcas. Las 116 pruebas pasan. Lo nuevo da lo mismo que lo viejo en este repo, shopnest y agro-system. En rni-back no hay épicas, así que la trazabilidad no se comparó.
+
+Lo nuevo:
+- [epicas.py](../../../../../proyectos/cimiento/core/validadores/epicas.py) recorre épicas, HU y fases en un solo lugar. Lo va a usar también `fases`.
+- `Proyecto.recorrer_md` ya puede recorrer una sola carpeta, como `base/`.
+
+Las pruebas encontraron dos errores que ya tenían los validadores viejos, y quedaron corregidos en las dos versiones:
+- `plantillas.py` señalaba la línea de antes de la regla sin origen.
+- Las pruebas de renombrado del trinquete no probaban nada, porque `git mv` fallaba sin avisar.
+
+Quedaron anotados en la fila 19 del análisis y en el resumen (H-7).
+
+Falta, en orden:
+1. Pasar el resto a clases. Quedan unos 60 de los 87 archivos de `validadores/`, contando enganches y herramientas, y sigue el grupo de flujo y fases.
+2. Conectar `validar.py` y los enganches a las clases, y borrar los archivos viejos.
+3. Que el reparador de enlaces no toque la «Conversación» del análisis.
+4. Cerrar los puntos abiertos del análisis.
+5. El commit.
+
+### 74 · Usuario, 2026-10-04 16:16:58
+> continué
+
+**Agente**, 2026-10-04 16:24:12
+<!-- agente: b7b3e27c-79d7-4e9c-8b8b-8108eea93f26 -->
+
+Sigo con el grupo de flujo y fases. Primero miro de qué dependen.
+
+Es el módulo más grande (1.060 líneas). Antes de escribir, reviso cómo lee `comun.leer` un archivo que no existe, porque `fases` lo usa para decidir.
+
+Ahora la lectura del veredicto.
+
+Ahora el validador de fases con el inventario.
+
+Exporto las clases y escribo la paridad.
+
+Paridad completa en los cuatro proyectos. Ahora las pruebas; leo las viejas de fases.
+
+Las dos fallas son de mis pruebas: la primera no tenía épicas (sin ellas, el validador se detiene antes, igual que el viejo) y la segunda tenía un `../` de más.
+
+140 pruebas en verde. Marco la fila 20 como hecha (quito `trazabilidad.py`, que al final no hubo que tocar).
+
+Pasé a clases el validador de fases, la pieza más grande (1.060 líneas), junto con la marca de la estación del commit. Las 140 pruebas de `core` pasan. Lo nuevo da lo mismo que lo viejo en este repo y en rni-back, shopnest y agro-system: hallazgos, inventario, veredictos y marca del commit.
+
+Quedó en cinco piezas:
+- [epicas.py](../../../../../proyectos/cimiento/core/validadores/epicas.py) recorre el árbol y lee los nombres de épica, HU y fase.
+- [moldes.py](../../../../../proyectos/cimiento/core/validadores/moldes.py) dice si un documento sigue siendo la plantilla.
+- [veredictos.py](../../../../../proyectos/cimiento/core/validadores/veredictos.py) lee Cumple o No cumple, el conteo de criterios y los rojos reemplazados.
+- [estacion.py](../../../../../proyectos/cimiento/core/validadores/estacion.py) marca la estación 12 con el hash del commit.
+- [fases.py](../../../../../proyectos/cimiento/core/validadores/fases.py) es el validador, con el inventario y la línea final.
+
+Antes, `checkpoint.py`, `veredicto.py`, `flujo.py` y `estacion_commit.py` usaban funciones internas de `fases.py`. Con estas piezas cada uno las va a pedir a la pieza que corresponde.
+
+Un cambio, a propósito: cuando una fase queda detenida por un análisis abierto, el mensaje nombra el análisis con la ruta desde el proyecto revisado y no desde el estándar. En los cuatro proyectos el resultado salió igual.
+
+Las autorizaciones están en la fila 20 del análisis, ya marcada como hecha. El guion de comparación es [paridad_fases.py](../../../../../historico-chat/scripts/2026-10-04/paridad_fases.py).
+
+Falta:
+1. Sigue `flujo.py`, que depende de `plan_vs_hecho.py` y `version.py`; después, el resto de `validadores/`.
+2. Conectar `validar.py` y los enganches a las clases, y borrar los archivos viejos.
+3. Que el reparador de enlaces no toque la «Conversación» del análisis.
+4. Cerrar los puntos abiertos del análisis.
+5. El commit.
+
+### 75 · Usuario, 2026-10-04 16:25:18
+> Hágalo: deje de estar informando tantas cosas haga todo el trabajo
+
+**Agente**, 2026-10-04 16:35:10
+<!-- agente: eeaaacb2-30dc-4f49-a8d5-f7c52061a9df -->
+
+Me pongo con todo lo que queda. Primero mido el tamaño completo para repartir el trabajo.
+
+Sigo: registro la autorización en el análisis y creo los paquetes nuevos.
+
+Antes de lanzar los agentes escribo `core/comun/consola.py` (imprimir hallazgos y preparar la salida), que van a usar todos los comandos.
+
+Lanzo la primera tanda: cuatro agentes en paralelo, cada uno con su grupo.
+
+Mientras trabajan, resuelvo lo pendiente del reparador de enlaces: que no toque la «Conversación» de los análisis.
+
+Aplico el cambio en las dos versiones: en un `analisis-N.md`, lo que está bajo «## Conversación» no se reporta ni se repara, y el reemplazo se hace por renglón, no en todo el archivo.
+
+Ahora lo mismo en la clase nueva.
+
+Agrego la prueba en la clase nueva y corro todo.
+
+Mientras los agentes trabajan, leo `validar.py` entero para planear cómo conectarlo a las clases.
+
+La primera tanda está trabajando: cuatro agentes con los grupos de reglas, instalación, proceso y sesión. Mientras tanto dejé listo el reparador de enlaces, que ya no toca la «Conversación» de los análisis. Cuando terminen sigue el grupo del freno y después la conexión de `validar.py` y los enganches.
+
+> En pausa desde el turno 76.
+
 > acá termina la conversación
 
 ---
@@ -1127,13 +1522,13 @@ Revisé qué es lo que frena. No es git: la revisión de `pre-commit` (`validar.
 4. Qué hace al encontrar una copia: avisa y no frena, y compara lo que hace la función, no solo su nombre (turno 17).
 5. Las reglas siguen el mismo camino que el código: al crear o cambiar una regla, un control busca por significado las reglas parecidas y avisa cuáles leer antes. Reutiliza la búsqueda por significado de `memoria/` y `validadores/metareglas.py`. Va como HU en `EP-004` (turnos 21 y 23).
 6. Aprobar el análisis aprueba lo que sale de él: se cambian `02·F4` y `02·F25`, sin crear una regla nueva. El plan que sale de un análisis aprobado y cumple sus filas queda aprobado; solo lo que el análisis no contempló pide aprobación otra vez. Va de primero en el orden (turnos 20, 21 y 23).
-7. La plataforma Django sale de Cimiento y pasa a `proyectos/plataforma/`, con repositorio propio e historia, como un proyecto más que hereda Cimiento y cumple lo que Cimiento les exige a los demás. La lógica sigue en `validadores/` y la plataforma la llama (turnos 24 a 27).
+7. La lógica vive en `core/` y los enganches la importan sin arrancar Django. Reemplaza lo que este acuerdo decía antes (que la plataforma salía a `proyectos/plataforma/`), que el acuerdo 8 dejó sin efecto: Cimiento es la aplicación (turnos 24 a 27; reescrito con aprobación del usuario el 2026-10-05).
 8. Cimiento es la aplicación Django: la carpeta se llama `proyectos/cimiento/` y no se le vuelve a decir «la plataforma». Ahí se junta lo que hoy está repartido en muchos `.py`, que es el propósito de esta sesión (turnos 32 a 34).
 9. Cimiento parte de una base Django limpia: se borra todo lo que no es la base, como un commit que conserva la historia, incluido `datos/`. La base sigue [`plantillas/estructura-proyecto-django.md`](../../../../../plantillas/estructura-proyecto-django.md), con la configuración separada por entorno, `requirements/` con su `lock.txt`, `static/`, `templates/` y el paquete de módulos, que se llama `core/`. Se conserva lo que dejó la instalación de Cimiento (turnos 37, 38 y 41).
 10. Las épicas `EP-008` a `EP-022`, que describen lo construido en la plataforma, se marcan como retiradas con fecha y enlace a este análisis; no se borran (`20·M11`) (turno 37).
 11. Los validadores pasan primero a Cimiento, y cada uno es una clase: comparten una clase base y lo común (rutas, git, lectura de archivos, hallazgos) vive una sola vez en `core/comun/`. `interfaz/` no entra por ahora (turno 51).
 
-Siguen abiertas: el acuerdo 7 decía que la lógica se queda en `validadores/` y la plataforma la llama; con el acuerdo 8 eso se revisa al escribir las HU de `EP-024`, junto con el costo de arrancar Django en cada enganche (2,4 s medidos contra 0,46 s).
+Ya no queda nada abierto: el acuerdo 7 reescrito resuelve también el costo de arrancar Django en cada enganche (2,4 s medidos contra 0,46 s), porque los enganches importan `core/` sin arrancarlo. `EP-024` no se crea: su trabajo quedó en las filas 21 y 22 (2026-10-05).
 
 ---
 
@@ -1209,16 +1604,13 @@ Chocan las dos mitades de `07·Q4`: «no repitas» y «no abstraigas de más». 
 
 ### Épica y HU que salen del análisis
 
-Tres épicas. `EP-023 lo que se construye es lo que se analizó` recibe el cambio de la aprobación. `EP-004 comprobación automática` recibe los dos controles. La épica nueva `EP-024 el código de Cimiento está en un solo lugar` recibe la limpieza, una HU por capa (`02·F11`).
+Dos épicas. `EP-023 lo que se construye es lo que se analizó` recibe el cambio de la aprobación. `EP-004 comprobación automática` recibe los dos controles. La limpieza iba a una épica nueva, `EP-024`, y no se crea: el código se pasó a `core/` con las filas 13 a 22, y lo que quedaba de ella está en las filas 21 y 22 (2026-10-05).
 
 | Orden | HU | Título | Parte del problema que resuelve | Depende de | Por qué en ese orden | Puntos de lo que se tiene que hacer |
 |---|---|---|---|---|---|---|
 | 1 | `EP-023` HU-008 | Aprobar el análisis aprueba lo que sale de él | `02·F4` y `02·F25` piden un OK por cada plan aunque el análisis aprobado ya lo defina | Ninguna | Las demás HU salen de este análisis: sin ella, cada una vuelve a pedir aprobación | 8 |
 | 2 | `EP-004` HU-026 | Se avisa cuando se crea una función que ya existe | Nada avisa al crear una función que ya existe, y por eso nacen las copias | `EP-023` HU-008 | Ataca la causa: sin ella, las copias siguen naciendo mientras se limpia | 2, 3 |
 | 3 | `EP-004` HU-027 | Se avisa cuando una regla nueva se parece a otra | Al crear una regla nada busca las parecidas, y así nacen reglas que se repiten o se contradicen | `EP-023` HU-008 | Misma causa que la HU anterior, del lado de las reglas | 7 |
-| 4 | `EP-024` HU-001 | Las rutas, la raíz y git están en un solo lugar | El manejo de rutas está copiado en decenas de archivos y un arreglo llega a una sola copia | `EP-004` HU-026 | Es donde ya hubo daño; el validador mide cuántas copias quedan | 4 |
-| 5 | `EP-024` HU-002 | Los validadores y los enganches no repiten funciones | `_leer`, `_entrada`, `archivo_editado` y otras están copiadas entre validadores y enganches | `EP-024` HU-001 | Usa el sitio común que deja la HU anterior | 5 |
-| 6 | `EP-024` HU-003 | La plataforma no repite funciones | `dicho`, `reconstruir_indice`, `_indexar` y `huella` están copiadas en `plataforma/nucleo/` | `EP-004` HU-026 | Es otra capa, con su propio sitio común; va al final porque no corre en cada mensaje | 6 |
 
 ## Lecciones aprendidas
 
@@ -1232,11 +1624,11 @@ Tres épicas. `EP-023 lo que se construye es lo que se analizó` recibe el cambi
 | # | Lo que se tiene que hacer | Sale de lo acordado | Pasó a |
 |---|---|---|---|
 | 1 | Pasar el pendiente a su versión siguiente | `13·DOC26` | Este análisis, de una y sin fase: `historico-chat/resumenes/2026-10-04/pendientes/116-el-codigo-de-cimiento-se-repite-en-vez-de-reusarse/pendiente.md`, hecho el 2026-10-04 |
-| 2 | Pasar la separación de funciones de `validadores/calidad.py` a `validadores/codigo.py`, para que la usen los dos validadores | 3 | `EP-004` HU-026 |
+| 2 | Dejar la separación de funciones en un solo lugar, `Funciones` de `core/validadores/codigo.py`, para que la usen los dos validadores | 3 | `EP-004` HU-026, hecho el 2026-10-04 |
 | 3 | Construir el validador de `07·Q4`: avisa sin frenar, compara lo que hace la función y no solo el nombre, corre con `validar.py` y se prueba desde un proyecto que no es Cimiento | 2, 3, 4 | `EP-004` HU-026 |
-| 4 | Juntar en un solo lugar la raíz del proyecto, las rutas (también `/c/...`), la pregunta de si una ruta queda dentro del proyecto y la llamada a git, y cambiar los validadores y enganches para que lo usen | 2 | `EP-024` HU-001 |
-| 5 | Juntar las demás funciones repetidas de los validadores y los enganches | 2 | `EP-024` HU-002 |
-| 6 | Juntar las funciones repetidas de `plataforma/nucleo/` | 2 | `EP-024` HU-003 |
+| 4 | Juntar en un solo lugar la raíz del proyecto, las rutas (también `/c/...`), la pregunta de si una ruta queda dentro del proyecto y la llamada a git. Ya viven una vez en `Proyecto` y `Git` de `core/comun/`; quedan en los enganches las copias de `raiz_pedida` y `archivo_editado` | 2 | Se termina con la fila 22 |
+| 5 | Juntar las demás funciones repetidas de los validadores y los enganches. Las que quedan están en los validadores viejos de `validadores/` y desaparecen al borrarlos | 2 | Se termina con la fila 21 |
+| 6 | Juntar las funciones repetidas de `plataforma/nucleo/` | 2 | Ya no aplica: la fila 11 borró `plataforma/nucleo/` |
 | 7 | Construir el control de reglas: al crear o cambiar una regla, busca por significado las parecidas con la búsqueda de `memoria/` y avisa cuáles leer, desde `validadores/metareglas.py` | 5, `20·M12` | `EP-004` HU-027 |
 | 8 | Cambiar `02·F4` y `02·F25`: el plan que sale de un análisis aprobado y cumple sus filas queda aprobado, y su marca cita el análisis; ajustar `validadores/plan_vs_hecho.py` para aceptar esa marca. Versión MAYOR | 6 | `EP-023` HU-008 |
 | 9 | Trasladar `plataforma/` a `proyectos/plataforma/` con su historia: Cimiento la ignora, la plataforma busca el estándar subiendo de carpeta y los enlaces de los documentos pasan a la ruta nueva | 7 | Este análisis, de una y sin fase: `.gitignore`, `validadores/comun.py`, `validadores/corredor.py`, `plataforma`, `proyectos/plataforma`, `proyectos/plataforma/.env`, `proyectos/plataforma/indice.sqlite3`, `proyectos/plataforma/terceros`, `proyectos/plataforma/datos/auditoria/2026-10.md`, `proyectos/plataforma/config/settings/base.py`, `proyectos/plataforma/nucleo/ciclo_de_vida/core.py`, `proyectos/plataforma/nucleo/comprobaciones/tests_estado.py`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/A-EP-008-HU-001-la-plataforma-levanta-y-guarda/funcionalidad_implementada.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-001-conectar-un-proyecto/B-EP-008-HU-001-se-conecta-un-proyecto/funcionalidad_implementada.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/C-EP-008-HU-002-la-ruta-perdida-se-avisa/funcionalidad_implementada.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-002-avisar-la-ruta-perdida/C-EP-008-HU-002-la-ruta-perdida-se-avisa/plan_trabajo.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-003-ver-el-estado-de-un-proyecto/G-EP-008-HU-003-se-ve-el-estado-de-un-proyecto/funcionalidad_implementada.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/H-EP-008-HU-004-un-proyecto-conectado-se-administra/funcionalidad_implementada.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-004-administrar-un-proyecto-conectado/H-EP-008-HU-004-un-proyecto-conectado-se-administra/plan_trabajo.md`, `documentacion/epicas/EP-008-los-proyectos-se-administran-desde-un-solo-lugar/HU-005-configurar-que-rige-en-cada-proyecto/V-EP-008-HU-005-lo-obligatorio-no-se-apaga/funcionalidad_implementada.md`, `documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-001-registrar-cada-accion/D-EP-009-HU-001-la-constancia-va-antes-que-el-efecto/funcionalidad_implementada.md`, `documentacion/epicas/EP-009-todo-lo-que-se-hace-queda-registrado/HU-002-buscar-en-la-auditoria/R-EP-009-HU-002-la-auditoria-se-puede-preguntar/funcionalidad_implementada.md`, `documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-001-traer-un-proyecto/E-EP-010-HU-001-se-trae-un-proyecto-con-lo-que-tenga-escrito/funcionalidad_implementada.md`, `documentacion/epicas/EP-010-lo-escrito-entra-a-la-plataforma/HU-002-reportar-lo-no-reconocido/F-EP-010-HU-002-lo-que-no-se-reconoce-se-reporta/funcionalidad_implementada.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/funcionalidad_implementada.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/plan_pruebas.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-001-buscar-en-lo-conversado/A-EP-011-HU-001-lo-conversado-se-indexa-y-se-busca/plan_trabajo.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/A-EP-011-HU-002-lo-que-se-repitio-sale-contado/funcionalidad_implementada.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-002-ver-que-correccion-se-repite/B-EP-011-HU-002-lo-generico-no-encabeza-el-reporte/funcionalidad_implementada.md`, `documentacion/epicas/EP-011-lo-que-se-repite-sale-a-la-luz/HU-003-medir-el-tiempo-que-se-gasta-revisando/Y-EP-011-HU-003-la-linea-base-dice-que-es-reconstruida/funcionalidad_implementada.md`, `documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta/funcionalidad_implementada.md`, `documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/A-EP-012-HU-001-el-expediente-se-arma-y-dice-que-le-falta/plan_trabajo.md`, `documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-001-armar-el-expediente-de-un-proyecto/HU-001-armar-el-expediente-de-un-proyecto.md`, `documentacion/epicas/EP-012-el-expediente-se-entrega-el-mismo-dia/HU-002-generar-el-entregable-de-ofimatica/A-EP-012-HU-002-el-entregable-sale-del-texto/funcionalidad_implementada.md`, `documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/A-EP-013-HU-001-los-huecos-de-un-documento-se-ven/funcionalidad_implementada.md`, `documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-001-ver-que-le-falta-a-un-documento/HU-001-ver-que-le-falta-a-un-documento.md`, `documentacion/epicas/EP-013-los-documentos-se-llenan-sin-salir-de-la-plataforma/HU-002-llenar-un-hueco-desde-la-plataforma/B-EP-013-HU-002-el-hueco-se-llena-sin-tocar-lo-demas/funcionalidad_implementada.md`, `documentacion/epicas/EP-014-ninguna-clave-queda-escrita/HU-001-tapar-la-clave-al-escribirla/C-EP-014-HU-001-se-tapa-lo-que-se-teclea-no-lo-que-se-copia/funcionalidad_implementada.md`, `documentacion/epicas/EP-014-ninguna-clave-queda-escrita/HU-001-tapar-la-clave-al-escribirla/HU-001-tapar-la-clave-al-escribirla.md`, `documentacion/epicas/EP-015-lo-exigido-se-comprueba-solo/HU-001-comprobar-un-proyecto-desde-la-plataforma/D-EP-015-HU-001-la-plataforma-corre-lo-que-el-estandar-exige/funcionalidad_implementada.md`, `documentacion/epicas/EP-015-lo-exigido-se-comprueba-solo/HU-001-comprobar-un-proyecto-desde-la-plataforma/HU-001-comprobar-un-proyecto-desde-la-plataforma.md`, `documentacion/epicas/EP-015-lo-exigido-se-comprueba-solo/HU-002-fijar-el-estado-desde-la-evidencia/E-EP-015-HU-002-el-estado-sale-de-la-fase-que-corrio/funcionalidad_implementada.md`, `documentacion/epicas/EP-015-lo-exigido-se-comprueba-solo/HU-003-no-publicar-lo-que-rompe-lo-anterior/F-EP-015-HU-003-la-puerta-corre-lo-que-ya-funcionaba/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-001-dar-el-identificador-sin-reutilizar-ninguno/G-EP-016-HU-001-ningun-numero-se-reutiliza/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-002-escribir-corregir-y-derogar-una-regla/H-EP-016-HU-002-derogar-marca-y-no-borra/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-003-aplicar-el-checklist-y-guardar-su-sello/I-EP-016-HU-003-un-sello-no-sobrevive-a-un-cambio/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-004-publicar-una-version-del-cuerpo-de-reglas/J-EP-016-HU-004-sin-decir-que-cambio-no-se-publica/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-005-entregarle-las-reglas-al-agente/K-EP-016-HU-005-las-reglas-llegan-y-la-fuente-sigue-ahi/funcionalidad_implementada.md`, `documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/HU-006-avisar-al-proyecto-que-quedo-atras/L-EP-016-HU-006-el-aviso-dice-que-cambio/funcionalidad_implementada.md`, `documentacion/epicas/EP-017-una-aprobacion-dice-sobre-que-texto/HU-001-registrar-una-aprobacion-con-su-firma/M-EP-017-HU-001-una-aprobacion-guarda-la-huella-del-texto/funcionalidad_implementada.md`, `documentacion/epicas/EP-017-una-aprobacion-dice-sobre-que-texto/HU-002-ver-que-esta-aprobado-y-que-no/N-EP-017-HU-002-los-tres-estados-se-dicen-con-palabras/funcionalidad_implementada.md`, `documentacion/epicas/EP-017-una-aprobacion-dice-sobre-que-texto/HU-003-caducar-la-aprobacion-cuando-el-texto-cambia/O-EP-017-HU-003-editar-quita-la-aprobacion-y-no-borra-la-historia/funcionalidad_implementada.md`, `documentacion/epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-001-guardar-lo-aprendido/P-EP-018-HU-001-lo-guardado-vuelve-en-la-sesion-siguiente/funcionalidad_implementada.md`, `documentacion/epicas/EP-018-lo-aprendido-no-se-pierde-entre-sesiones/HU-002-consultar-y-corregir-lo-guardado/Q-EP-018-HU-002-corregir-conserva-lo-que-decia-antes/funcionalidad_implementada.md`, `documentacion/epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/HU-001-abrir-una-fase-con-sus-documentos/S-EP-019-HU-001-el-nombre-sale-del-identificador/funcionalidad_implementada.md`, `documentacion/epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/HU-002-ver-en-que-estacion-va-cada-fase/T-EP-019-HU-002-la-tabla-manda-sobre-la-frase/funcionalidad_implementada.md`, `documentacion/epicas/EP-019-el-ciclo-se-opera-desde-la-plataforma/HU-003-impedir-avanzar-sin-la-puerta-cumplida/U-EP-019-HU-003-el-rechazo-dice-cual-puerta-falta/funcionalidad_implementada.md`, `documentacion/epicas/EP-020-lo-que-se-desvia-se-avisa/HU-001-avisar-lo-que-se-desvia/W-EP-020-HU-001-todo-aviso-dice-que-lo-disparo/funcionalidad_implementada.md`, `documentacion/epicas/EP-020-lo-que-se-desvia-se-avisa/HU-002-reportar-como-va-cada-proyecto/X-EP-020-HU-002-sin-datos-no-es-cero/funcionalidad_implementada.md`, `documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/HU-001-entrar-con-cuenta-y-contrasena/AA-EP-022-HU-001-sin-entrar-no-se-ve-nada/funcionalidad_implementada.md`, `documentacion/epicas/EP-022-quien-entra-y-que-puede-hacer/HU-002-separar-lo-que-cada-grupo-puede-hacer/AB-EP-022-HU-002-el-agente-no-aprueba/funcionalidad_implementada.md`, `documentacion/medicion/spec.md`, `documentacion/senales.md`, hecho el 2026-10-04 |
@@ -1246,6 +1638,13 @@ Tres épicas. `EP-023 lo que se construye es lo que se analizó` recibe el cambi
 | 13 | Primer paso de los validadores como clases: lo común en `core/comun/`, la clase base en `core/validadores/base.py` y el validador de funciones largas (`07·Q3`) con su recorrido de código, cada uno con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/__init__.py`, `proyectos/cimiento/core/comun/hallazgos.py`, `proyectos/cimiento/core/comun/archivos.py`, `proyectos/cimiento/core/comun/proyecto.py`, `proyectos/cimiento/core/comun/git.py`, `proyectos/cimiento/core/comun/tests.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/base.py`, `proyectos/cimiento/core/validadores/codigo.py`, `proyectos/cimiento/core/validadores/calidad.py`, `proyectos/cimiento/core/validadores/tests.py`, hecho el 2026-10-04 |
 | 14 | Pasar a clases los validadores que revisan el código (`05·E1/E5`, `04·S3/S5`, `06·R1/R2`, `08·T3/T4`), sobre una clase `ValidadorDeCodigo` que recorre el código una sola vez, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/validadores/codigo.py`, `proyectos/cimiento/core/validadores/calidad.py`, `proyectos/cimiento/core/validadores/errores.py`, `proyectos/cimiento/core/validadores/seguridad.py`, `proyectos/cimiento/core/validadores/rendimiento.py`, `proyectos/cimiento/core/validadores/aislamiento.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/tests.py`, hecho el 2026-10-04 |
 | 15 | El freno no frena el registro de git: lee bien los renombrados de `git status` y no revisa `git add`, `commit` ni `push`, cuyo contenido ya revisa el `pre-commit` | 11 | Este análisis, de una y sin fase: `validadores/freno.py`, `adaptadores/claude-code/hook_despues.py`, `validadores/tests/test_el_freno_no_frena_el_registro_de_git.py`, hecho el 2026-10-04 |
+| 16 | Pasar a clases los validadores de migraciones y esquema (`03·D1/D2/D3`, `14·EST1/EST2`, `15·IM2/IM5`) y lo que necesitan: la lectura de tablas Markdown en `core/comun/`, la declaración del proyecto y un solo recorrido de migraciones, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/__init__.py`, `proyectos/cimiento/core/comun/markdown.py`, `proyectos/cimiento/core/comun/tests.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/declaracion.py`, `proyectos/cimiento/core/validadores/migraciones.py`, `proyectos/cimiento/core/validadores/esquema.py`, `proyectos/cimiento/core/validadores/estructura.py`, `proyectos/cimiento/core/validadores/entidades.py`, `proyectos/cimiento/core/validadores/tests_esquema.py`, hecho el 2026-10-04 |
+| 17 | Pasar a clases los validadores del repositorio y de git (`09·G2/G3/G4/G6/G8`, `10·DEP2`, `04·S4`, `00·N6`); el prefijo de cada repositorio y las consultas de ramas quedan una sola vez en `Proyecto` y `Git`, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/git.py`, `proyectos/cimiento/core/comun/proyecto.py`, `proyectos/cimiento/core/comun/tests.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/codigo.py`, `proyectos/cimiento/core/validadores/migraciones.py`, `proyectos/cimiento/core/validadores/estructura.py`, `proyectos/cimiento/core/validadores/aislamiento.py`, `proyectos/cimiento/core/validadores/versionado.py`, `proyectos/cimiento/core/validadores/dependencias.py`, `proyectos/cimiento/core/validadores/ci.py`, `proyectos/cimiento/core/validadores/rama.py`, `proyectos/cimiento/core/validadores/secretos.py`, `proyectos/cimiento/core/validadores/commits.py`, `proyectos/cimiento/core/validadores/tests_repositorio.py`, `validadores/secretos.py`, hecho el 2026-10-04 |
+| 18 | Pasar a clases el validador de enlaces (enlaces rotos, formato `13·DOC14` e índices de carpetas) y su reparador; la lectura de enlaces, el recorrido de los `.md` y la ubicación del estándar quedan una sola vez en `Markdown` y `Proyecto`, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/markdown.py`, `proyectos/cimiento/core/comun/proyecto.py`, `proyectos/cimiento/core/comun/tests.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/enlaces.py`, `proyectos/cimiento/core/validadores/tests_documentos.py`, `proyectos/cimiento/config/settings/base.py`, `validadores/enlaces.py`, `pendientes/98-las-reglas-mandan-sobre-la-instruccion-del-momento.md`, `pendientes/99-nada-del-proyecto-queda-fuera-del-proyecto.md`, `historico-chat/scripts/2026-10-04/restaurar_textos_de_enlace.py`, hecho el 2026-10-04 |
+| 19 | Pasar a clases los validadores de documentos que siguen: trazabilidad de fases (`13·DOC16`), documento contra su plantilla, citas entre reglas y marcas de `00·ID8`; el recorrido de `documentacion/epicas/` queda una sola vez en `Epicas`, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/comun/proyecto.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/epicas.py`, `proyectos/cimiento/core/validadores/trazabilidad.py`, `proyectos/cimiento/core/validadores/plantillas.py`, `proyectos/cimiento/core/validadores/citas.py`, `proyectos/cimiento/core/validadores/marcas.py`, `proyectos/cimiento/core/validadores/tests_documentos.py`, `historico-chat/scripts/2026-10-04/paridad_documentos.py`, `validadores/plantillas.py`, `validadores/tests/test_el_trinquete_de_las_marcas.py`, hecho el 2026-10-04 |
+| 20 | Pasar a clases el validador de fases (`02·F12`) y lo que comparte con los enganches: el recorrido del árbol de épicas, si un documento sigue siendo la plantilla, la lectura del veredicto y la marca de la estación del commit, cada uno una sola vez, con sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/validadores/epicas.py`, `proyectos/cimiento/core/validadores/moldes.py`, `proyectos/cimiento/core/validadores/veredictos.py`, `proyectos/cimiento/core/validadores/estacion.py`, `proyectos/cimiento/core/validadores/fases.py`, `proyectos/cimiento/core/validadores/tests_fases.py`, `historico-chat/scripts/2026-10-04/paridad_fases.py`, hecho el 2026-10-04 |
+| 21 | Pasar a clases todo lo que queda en `validadores/`: las comprobaciones a `core/validadores/`, la lógica de los enganches a `core/enganches/` y las herramientas a `core/herramientas/`, cada grupo con su paridad y sus pruebas | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/validadores/metareglas.py`, `proyectos/cimiento/core/validadores/ejecutable.py`, `proyectos/cimiento/core/validadores/vigencia.py`, `proyectos/cimiento/core/validadores/numeracion.py`, `proyectos/cimiento/core/validadores/cruces.py`, `proyectos/cimiento/core/validadores/relacionadas.py`, `proyectos/cimiento/core/herramientas/mapa_tareas.py`, `proyectos/cimiento/core/herramientas/instalar.py`, `proyectos/cimiento/core/validadores/checklist.py`, `proyectos/cimiento/core/validadores/version.py`, `proyectos/cimiento/core/validadores/versiones.py`, `proyectos/cimiento/core/validadores/guardian_version.py`, `proyectos/cimiento/core/validadores/herramientas.py`, `proyectos/cimiento/core/enganches/recuerdos.py`, `proyectos/cimiento/core/enganches/sesion.py`, `proyectos/cimiento/core/validadores/pendientes.py`, `proyectos/cimiento/core/validadores/acciones.py`, `proyectos/cimiento/core/validadores/amarre.py`, `proyectos/cimiento/core/validadores/brevedad.py`, `proyectos/cimiento/core/validadores/redaccion.py`, `proyectos/cimiento/core/validadores/expediente.py`, `proyectos/cimiento/core/validadores/reaperturas.py`, `proyectos/cimiento/core/validadores/sesiones.py`, `proyectos/cimiento/core/validadores/sitio.py`, `proyectos/cimiento/core/validadores/inmutable.py`, `proyectos/cimiento/core/validadores/indices.py`, `proyectos/cimiento/core/validadores/conteo.py`, `proyectos/cimiento/core/validadores/traza.py`, `proyectos/cimiento/core/enganches/enmascarar.py`, `proyectos/cimiento/core/enganches/historico.py`, `proyectos/cimiento/core/enganches/externo.py`, `proyectos/cimiento/core/enganches/presupuesto.py`, `proyectos/cimiento/core/enganches/rutas_fuera.py`, `proyectos/cimiento/core/enganches/cargador.py`, `proyectos/cimiento/core/enganches/checkpoint.py`, `proyectos/cimiento/core/enganches/veredicto.py`, `proyectos/cimiento/core/herramientas/respaldo.py`, `proyectos/cimiento/core/herramientas/corredor.py`, `proyectos/cimiento/core/herramientas/temas.py`, `proyectos/cimiento/core/enganches/freno.py`, `proyectos/cimiento/core/enganches/plan_vs_hecho.py`, `proyectos/cimiento/core/enganches/acuerdos.py`, `proyectos/cimiento/core/enganches/autorizado.py`, `proyectos/cimiento/core/enganches/origen.py`, `proyectos/cimiento/core/enganches/analisis_en_curso.py`, `proyectos/cimiento/core/enganches/resumen.py`, `proyectos/cimiento/core/enganches/aviso_resuelto.py`, `proyectos/cimiento/core/validadores/analisis.py`, `proyectos/cimiento/core/validadores/flujo.py`, `proyectos/cimiento/core/herramientas/recuperar.py`, `proyectos/cimiento/core/herramientas/andamio.py`, `proyectos/cimiento/core/herramientas/cerrar.py`, `proyectos/cimiento/core/validadores/tests_reglas.py`, `proyectos/cimiento/core/validadores/tests_proceso.py`, `proyectos/cimiento/core/herramientas/tests_instalacion.py`, `proyectos/cimiento/core/enganches/tests_sesion.py`, `proyectos/cimiento/core/enganches/tests_freno.py`, `proyectos/cimiento/core/enganches/__init__.py`, `proyectos/cimiento/core/herramientas/__init__.py`, `proyectos/cimiento/core/validadores/__init__.py`, `proyectos/cimiento/core/comun/__init__.py`, `proyectos/cimiento/core/comun/consola.py`, `proyectos/cimiento/core/comun/tests_consola.py`, `historico-chat/scripts/2026-10-04/paridad_reglas.py`, `historico-chat/scripts/2026-10-04/paridad_instalacion.py`, `historico-chat/scripts/2026-10-04/paridad_proceso.py`, `historico-chat/scripts/2026-10-04/paridad_sesion.py`, `historico-chat/scripts/2026-10-04/paridad_freno.py` |
+| 22 | Conectar `validar.py` y los enganches de `adaptadores/claude-code/` a las clases de `core/`: el despachador pasa a `core/herramientas/validar.py` y `validadores/validar.py` queda como la puerta que llaman los `.githooks` de cada proyecto | 11 | Este análisis, de una y sin fase: `proyectos/cimiento/core/herramientas/validar.py`, `proyectos/cimiento/core/herramientas/tests_validar.py`, `validadores/validar.py`, `historico-chat/scripts/2026-10-04/paridad_validar.py`, `adaptadores/claude-code/hook_acuerdos.py`, `adaptadores/claude-code/hook_analisis.py`, `adaptadores/claude-code/hook_antes.py`, `adaptadores/claude-code/hook_checklist.py`, `adaptadores/claude-code/hook_checkpoint.py`, `adaptadores/claude-code/hook_despues.py`, `adaptadores/claude-code/hook_estacion.py`, `adaptadores/claude-code/hook_externo.py`, `adaptadores/claude-code/hook_historico.py`, `adaptadores/claude-code/hook_md.py`, `adaptadores/claude-code/hook_presupuesto.py`, `adaptadores/claude-code/hook_recuerdos.py`, `adaptadores/claude-code/hook_redaccion.py`, `adaptadores/claude-code/hook_reglas.py`, `adaptadores/claude-code/hook_relacionadas.py`, `adaptadores/claude-code/hook_resumen.py`, `adaptadores/claude-code/hook_rutas.py`, `adaptadores/claude-code/hook_senales.py`, `adaptadores/claude-code/hook_sesion.py`, `adaptadores/claude-code/hook_turno.py`, `adaptadores/claude-code/hook_veredicto.py` |
 
 ## Lo que aporta al análisis principal
 

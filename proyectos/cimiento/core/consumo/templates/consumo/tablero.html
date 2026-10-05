@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block titulo %}Gasto{% endblock %}
+{% block cabecera %}Gasto de tokens{% endblock %}
+
+{% block contenido %}
+<form class="row g-2 mb-3" method="get">
+  <div class="col-auto">
+    <select class="form-select" name="proyecto" aria-label="Proyecto" onchange="this.form.submit()">
+      <option value="">Todos los proyectos</option>
+      {% for uno in todos_los_proyectos %}
+      <option value="{{ uno.pk }}"{% if proyecto and proyecto.pk == uno.pk %} selected{% endif %}>{{ uno.nombre }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-auto">
+    <select class="form-select" name="dias" aria-label="Período" onchange="this.form.submit()">
+      {% for valor, nombre in periodos.items %}
+      <option value="{{ valor }}"{% if valor == dias %} selected{% endif %}>{{ nombre }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-auto align-self-center text-secondary">Se actualiza cada 10 segundos.</div>
+</form>
+
+<div class="row row-cards mb-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Por proyecto</h3></div>
+      <div class="card-body"><div id="grafica-proyectos"></div></div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Por día</h3></div>
+      <div class="card-body"><div id="grafica-dias"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="datos"
+     hx-get="{% url 'consumo:datos' %}?dias={{ dias }}{% if proyecto %}&amp;proyecto={{ proyecto.pk }}{% endif %}"
+     hx-trigger="every 10s" hx-swap="innerHTML">
+  {% include "consumo/_datos.html" %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var graficas = {};
+
+    function dibujar() {
+      var nodo = document.getElementById("datos-graficas");
+      if (!nodo || typeof ApexCharts === "undefined") { return; }
+      var datos = JSON.parse(nodo.textContent);
+      var series = {
+        proyectos: [{ name: "Tokens", data: datos.proyectos.totales }],
+        dias: [{ name: "Tokens", data: datos.dias.totales }]
+      };
+      if (graficas.proyectos) {
+        graficas.proyectos.updateOptions({ xaxis: { categories: datos.proyectos.nombres } }, false, false);
+        graficas.proyectos.updateSeries(series.proyectos);
+        graficas.dias.updateOptions({ xaxis: { categories: datos.dias.fechas } }, false, false);
+        graficas.dias.updateSeries(series.dias);
+        return;
+      }
+      var miles = function (valor) { return Math.round(valor).toLocaleString("es-CO"); };
+      graficas.proyectos = new ApexCharts(document.getElementById("grafica-proyectos"), {
+        chart: { type: "bar", height: 280, animations: { enabled: false } },
+        plotOptions: { bar: { horizontal: true } },
+        series: series.proyectos, xaxis: { categories: datos.proyectos.nombres, labels: { formatter: miles } },
+        dataLabels: { enabled: false }, tooltip: { y: { formatter: miles } }
+      });
+      graficas.dias = new ApexCharts(document.getElementById("grafica-dias"), {
+        chart: { type: "area", height: 280, animations: { enabled: false } },
+        series: series.dias, xaxis: { categories: datos.dias.fechas },
+        yaxis: { labels: { formatter: miles } }, dataLabels: { enabled: false }, tooltip: { y: { formatter: miles } }
+      });
+      graficas.proyectos.render();
+      graficas.dias.render();
+    }
+
+    dibujar();
+    document.body.addEventListener("htmx:afterSwap", dibujar);
+  });
+</script>
+{% endblock %}

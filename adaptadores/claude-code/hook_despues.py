@@ -10,7 +10,7 @@ sobre la consola). Compara lo que cambió en git con la foto que tomó
 dentro, aunque solo dentro del proyecto. Lo que cambió fuera del plan de la fase
 en curso y de lo autorizado es un hallazgo: lo anota en el resumen de la sesión
 y se lo devuelve al agente. Lo ya hecho no se deshace: se avisa para volver al
-análisis. La decisión vive en `validadores/freno.py`.
+análisis. La decisión vive en `proyectos/cimiento/core/enganches/freno.py`.
 
 Siempre sale con código 0.
 """
@@ -18,12 +18,11 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import freno                                    # noqa: E402
-from comun import preparar_salida               # noqa: E402
+from core.comun.consola import preparar_salida               # noqa: E402
+from core.enganches.freno import CONSOLA, Freno              # noqa: E402
 
 
 def _entrada():
@@ -50,17 +49,28 @@ def main():
     proyecto = os.path.abspath(opcion(sys.argv[1:], "--raiz", os.getcwd()))
     try:
         datos = _entrada()
-        if (datos.get("tool_name") or "") not in freno.CONSOLA:
+        if (datos.get("tool_name") or "") not in CONSOLA:
             return 0
-        fuera = freno.despues(proyecto, (datos.get("tool_input") or {}).get("command") or "")
-        if not fuera:
+        freno = Freno(proyecto)
+        # `EP-025·HU-005` · Con el nivel de cada regla: lo que frena bloquea, lo
+        # que avisa solo se cuenta, lo apagado no aparece.
+        fuera, avisan = freno.despues_por_nivel((datos.get("tool_input") or {}).get("command") or "")
+        if not fuera and not avisan:
             return 0
         sesion = datos.get("session_id") or ""
         avisos = []
         for ruta, porque in fuera:
-            anotado = freno.anotar_hallazgo(proyecto, sesion, "lo que escribió una orden de consola", ruta, porque)
-            avisos.append(freno.aviso(porque, ruta, bool(anotado)))
-        print(json.dumps({"decision": "block", "reason": "\n\n".join(avisos)}, ensure_ascii=False))
+            if not ruta:            # sin base: no es un hallazgo
+                avisos.append(Freno.aviso_sin_base(porque))
+                continue
+            anotado = freno.anotar_hallazgo(sesion, "lo que escribió una orden de consola", ruta, porque)
+            avisos.append(Freno.aviso(porque, ruta, bool(anotado)))
+        if avisos:
+            print(json.dumps({"decision": "block", "reason": "\n\n".join(avisos)}, ensure_ascii=False))
+            return 0
+        texto = "\n\n".join(Freno.aviso_de_nivel(porque, ruta) for ruta, porque in avisan)
+        print(json.dumps({"systemMessage": texto, "hookSpecificOutput": {
+            "hookEventName": "PostToolUse", "additionalContext": texto}}, ensure_ascii=False))
     except Exception as error:  # noqa: BLE001 — un error propio no detiene el trabajo
         print(json.dumps({"systemMessage": "[EL FRENO FALLÓ DESPUÉS DE LA ORDEN] %s" % error},
                          ensure_ascii=False))

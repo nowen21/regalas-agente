@@ -3,7 +3,7 @@
 """`EP-005·HU-019` · Lo que el enganche de git llama después de cada commit.
 
 Pregunta a git qué archivos entraron y cuál es el hash, y le pasa las dos cosas
-a `estacion_commit`, que decide dónde escribir. Acá no hay reglas: solo la
+a `EstacionDelCommit`, que decide dónde escribir. Acá no hay reglas: solo la
 conversación con git.
 
 **Termina en 0 pase lo que pase.** Cuando esto corre, el commit **ya está
@@ -15,20 +15,11 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import estacion_commit                                   # noqa: E402
-from comun import preparar_salida                         # noqa: E402
-
-
-def raiz_pedida(argv):
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return os.getcwd()
+from core.comun.consola import preparar_salida, raiz_pedida                   # noqa: E402
+from core.validadores.estacion import EstacionDelCommit          # noqa: E402
 
 
 def _git(raiz, *args):
@@ -41,7 +32,7 @@ def main():
     # de la consola: por una tubería ni se puede decodificar. Es la misma
     # razón por la que lo llaman los otros quince.
     preparar_salida()
-    raiz = raiz_pedida(sys.argv[1:])
+    raiz = raiz_pedida(sys.argv[1:], os.getcwd())
 
     hash_corto = _git(raiz, "rev-parse", "--short", "HEAD").stdout.strip()
     if not hash_corto:
@@ -64,7 +55,7 @@ def main():
         salida = _git(raiz, "log", "--oneline", "-1", "--", ruta_cierre)
         return bool(salida.stdout.strip())
 
-    tocadas = estacion_commit.marcar_las_fases(
+    tocadas = EstacionDelCommit.marcar_las_fases(
         raiz, archivos, hash_corto, cerrada_en_git)
 
     for carpeta in tocadas:
@@ -81,13 +72,12 @@ def main():
     # reporte se puede resolver de una, sin fase (análisis 1 del pendiente 110,
     # acuerdo 6). Solo en el estándar: en un proyecto, sus pendientes de
     # seguimiento enlazan el estándar y se tomarían por reportes.
-    import comun
-    if os.path.normcase(os.path.abspath(raiz)) == os.path.normcase(os.path.abspath(comun.RAIZ)):
+    if os.path.normcase(os.path.abspath(raiz)) == os.path.normcase(os.path.abspath(RAIZ)):
         import datetime
-        import aviso_resuelto
+        from core.enganches.aviso_resuelto import AvisoResuelto
         version_txt = os.path.join(raiz, "VERSION")
         version = open(version_txt, encoding="utf-8").read().strip() if os.path.isfile(version_txt) else ""
-        escritos, sin_entregar = aviso_resuelto.avisar(raiz, datetime.date.today().isoformat(), version)
+        escritos, sin_entregar = AvisoResuelto(raiz).avisar(datetime.date.today().isoformat(), version)
         for ruta in escritos:
             print("post-commit: aviso de resuelto en %s" % ruta)
         for carpeta, porque in sin_entregar:

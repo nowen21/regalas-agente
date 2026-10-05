@@ -154,6 +154,8 @@ Las reglas quedan sin piso: se puede incumplir una durante meses sin que nada lo
 | [HU-023](HU-023-un-rojo-se-puede-cerrar-declarandolo/HU-023-un-rojo-se-puede-cerrar-declarandolo.md) | Que un veredicto en rojo se pueda cerrar, declarándolo | Must | S |
 | [HU-024](HU-024-el-validador-dice-que-no-comprueba/HU-024-el-validador-dice-que-no-comprueba.md) | El validador dice sobre qué corrió y qué no comprueba | Must | 2 pts |
 | [HU-025](HU-025-los-caracteres-de-control-invisibles-se-cuentan/HU-025-los-caracteres-de-control-invisibles-se-cuentan.md) | Los caracteres de control invisibles se cuentan y se quitan | Should | 2 pts |
+| [HU-026](HU-026-una-funcion-que-ya-existe-se-avisa-al-crearla/HU-026-una-funcion-que-ya-existe-se-avisa-al-crearla.md) | «Título» | «Prioridad» | «Estimación» |
+| [HU-027](HU-027-una-regla-parecida-se-avisa-al-crearla/HU-027-una-regla-parecida-se-avisa-al-crearla.md) | «Título» | «Prioridad» | «Estimación» |
 
 ## 10. Consideraciones técnicas
 

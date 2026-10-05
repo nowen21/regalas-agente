@@ -21,16 +21,15 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import comun
-import relacionadas
-from comun import RAIZ, preparar_salida
+from core.comun.consola import archivo_editado, entrada_json, preparar_salida, raiz_pedida          # noqa: E402
+from core.validadores.parecidas import ReglasParecidas                # noqa: E402
+from core.validadores.relacionadas import ReglasRelacionadas          # noqa: E402
 
 # Dónde se recuerda qué se avisó ya. Es estado de una sesión, no del
 # repositorio, así que nunca se versiona.
@@ -53,18 +52,6 @@ def _donde_recordar(raiz):
                         "agente-avisado-relacionadas-%s.txt" % huella)
 
 
-def raiz_pedida(argv):
-    for i, a in enumerate(argv):
-        if a == "--raiz" and i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return os.path.abspath(RAIZ)
-
-
-def archivo_editado(datos):
-    entrada = (datos or {}).get("tool_input") or {}
-    return entrada.get("file_path") or entrada.get("filePath") or ""
-
-
 def _ya_se_aviso(raiz, sesion, rel):
     """Si ya se avisó de este archivo en esta sesión. Lo anota si no."""
     marca = _donde_recordar(raiz)
@@ -83,10 +70,10 @@ def _ya_se_aviso(raiz, sesion, rel):
 
 def main():
     preparar_salida()
-    raiz = raiz_pedida(sys.argv[1:])
+    raiz = raiz_pedida(sys.argv[1:], RAIZ)
 
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0
 
@@ -99,16 +86,18 @@ def main():
     except ValueError:                  # otra unidad en Windows
         return 0
 
-    rel = relacionadas.relacionadas(ruta, raiz)
-    texto = relacionadas.como_texto(rel, raiz)
-    if not texto:
+    rel = ReglasRelacionadas(raiz).de(ruta)
+    if not ReglasRelacionadas.como_texto(rel):
         return 0                        # `CA-03`: lo que no le toca, silencio
 
     if _ya_se_aviso(raiz, (datos or {}).get("session_id") or "",
                     os.path.relpath(os.path.abspath(ruta), raiz)):
         return 0
 
-    print(texto)
+    # `EP-004·HU-027`: las parecidas por significado van después de saber que
+    # hay que avisar, porque cargar la búsqueda es lo que más tarda.
+    rel["parecidas"] = ReglasParecidas(raiz).de(rel["propias"], list(rel["indice"].values()))
+    print(ReglasRelacionadas.como_texto(rel))
     return 0
 
 

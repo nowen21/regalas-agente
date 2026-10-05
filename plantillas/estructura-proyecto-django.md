@@ -22,6 +22,9 @@
 ├── .venv/                    · el entorno del proyecto · NO se versiona
 ├── .env                      · credenciales de este equipo · NO se versiona
 ├── .env.example              · las mismas variables, sin valores · sí se versiona
+├── package.json              «solo si usa bibliotecas del navegador»: lo que instala npm
+├── package-lock.json         las versiones exactas de npm (`10·DEP2`)
+├── node_modules/             lo que instala `npm ci`, que NO se versiona
 ├── manage.py
 ├── requirements/
 │   ├── base.txt              · las dependencias de producción: «Django x.y, motor de BD, …»
@@ -55,6 +58,11 @@
 paquete trae de estáticos lo junta `collectstatic` en `staticfiles/`, que tampoco se versiona porque
 se regenera con una orden. `lock.txt` fija las versiones exactas, transitivas incluidas, para que dos
 equipos instalen lo mismo ([`10·DEP2`](../base/10-dependencias.md)).
+
+Las bibliotecas del navegador (estilos, gráficas, scripts) siguen la misma idea con npm: se declaran
+en `package.json` con versión exacta, `package-lock.json` fija las transitivas, `npm ci` las instala
+en `node_modules/` y esa carpeta no se versiona. Django las lee agregando a `STATICFILES_DIRS` la
+carpeta `dist` de cada paquete, sin prefijo: en Windows, Django no sirve una carpeta con prefijo.
 
 **Credenciales.** No viven en el código. El archivo que las tiene (`.env`) no entra al
 repositorio. Lo que sí entra es `.env.example`, con las mismas variables y sin un solo valor: es la

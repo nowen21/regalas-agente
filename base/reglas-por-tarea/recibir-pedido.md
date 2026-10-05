@@ -169,7 +169,7 @@ CORRECTO:   para, muestra qué observó y qué costaría, y espera el sí, el no
 Fuente: [02·F20](../02-flujo-de-trabajo/reglas/F20-para-y-propon-lo-que-descubras-fuera-del-ca.md#f20--para-y-propón-lo-que-descubras-fuera-del-ca)
 
 ## F25 · Autorizar el arranque no aprueba el plan
-Decir «arranque con X» autoriza **abrir la fase**, no ejecutar su plan detallado: son dos permisos distintos y el segundo se pide aparte, con el plan a la vista (extiende [`02·F4`](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
+Decir «arranque con X» autoriza **abrir la fase**, no ejecutar su plan detallado: son dos permisos distintos y el segundo se pide aparte, con el plan a la vista, salvo que lo haya dado ya el análisis aprobado del que sale el plan (extiende [`02·F4`](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
 ```
 INCORRECTO: «dale, arrancá con la fase B» → se escribe el plan y se ejecuta seguido
 CORRECTO:   se abre la fase, se escribe el plan, se presenta, y se espera el segundo sí

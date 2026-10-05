@@ -28,26 +28,25 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
-import comun                                    # noqa: E402
-import historico                        # noqa: E402
-import resumen as R                     # noqa: E402
-from comun import preparar_salida       # noqa: E402
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
+
+from core.comun.consola import entrada_json, preparar_salida     # noqa: E402
+from core.enganches.historico import CARPETA, INDICE             # noqa: E402
+from core.enganches.resumen import Resumen as R                  # noqa: E402
 
 
 def _sesion_y_transcripcion(raiz, sesion):
     """La ruta de la transcripción de esta sesión, o "" si todavía no hay."""
-    carpeta = os.path.join(raiz, historico.CARPETA)
+    carpeta = os.path.join(raiz, CARPETA)
     if not os.path.isdir(carpeta):
         return ""
     marca = f"<!-- sesion: {sesion} -->"
     for nombre in sorted(os.listdir(carpeta)):
-        if not nombre.lower().endswith(".md") or nombre == historico.INDICE:
+        if not nombre.lower().endswith(".md") or nombre == INDICE:
             continue
         ruta = os.path.join(carpeta, nombre)
         try:
@@ -183,17 +182,16 @@ def main():
     args = p.parse_args()
 
     try:
-        entrada = comun.entrada_json() if not sys.stdin.isatty() else {}
+        entrada = entrada_json() if not sys.stdin.isatty() else {}
     except (json.JSONDecodeError, ValueError):
         entrada = {}
     raiz = args.raiz or entrada.get("cwd") or os.getcwd()
     sesion = entrada.get("session_id", "")
     # **Tres niveles, no dos**: este archivo vive en
-    # `adaptadores/claude-code/`, no en `validadores/`. Contar mal los
+    # `adaptadores/claude-code/`, no en `core/`. Contar mal los
     # niveles no revienta — apunta a una carpeta que existe y el
     # enganche deja de escribir en silencio, que es peor.
-    estandar = args.estandar or os.path.dirname(os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))))
+    estandar = args.estandar or RAIZ
 
     try:
         texto = (inicio(raiz, sesion, estandar) if args.modo == "inicio"

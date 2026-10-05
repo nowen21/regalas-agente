@@ -36,7 +36,7 @@ Hay dos salidas:
 
 Conviene la regla nueva: el principio vale para todo, y meterlo en una regla de rutas lo esconde.
 
-El recuerdo se queda, con el registro de que el usuario lo pidió y cuándo, como dice [memory.md](../historico-chat/memory/memory.md) para la preferencia que sube a regla.
+El recuerdo se queda, con el registro de que el usuario lo pidió y cuándo, como dice [historico-chat/memory/memory.md](../historico-chat/memory/memory.md) para la preferencia que sube a regla.
 
 ## El límite
 

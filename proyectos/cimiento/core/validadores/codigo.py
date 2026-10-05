@@ -45,8 +45,7 @@ class RecorridoDeCodigo:
     def archivos(self):
         """`(ruta mostrada, texto)` por cada archivo de código versionado."""
         for repo in self.proyecto.repositorios():
-            etiqueta = os.path.relpath(repo, self.proyecto.raiz).replace("\\", "/")
-            prefijo = "" if etiqueta == "." else etiqueta + "/"
+            prefijo = self.proyecto.prefijo_de(repo)
             for relativa in Git(repo).versionados():
                 if self.es_codigo(relativa):
                     yield prefijo + relativa, self.lector.leer(os.path.join(repo, relativa))
@@ -102,6 +101,42 @@ class Bloques:
                 break
             cuerpo.append(linea)
         return cuerpo
+
+
+_FUNC_LLAVES = re.compile(r"\bfunction\b\s*&?\s*(\w*)[^\n;(]*\([^;{]*\)\s*(?::\s*[\w\\|?]+\s*)?\{")
+_DEF_PYTHON = re.compile(r"^(\s*)def\s+(\w+)\s*\(")
+
+
+class Funciones:
+    """Las funciones de un texto: con llaves y `function` (PHP, JavaScript) y `def`
+    de Python. La usan el validador de funciones largas (`07·Q3`) y el de
+    funciones repetidas (`07·Q4`): separarlas dos veces es justo lo que `Q4` prohíbe."""
+
+    LLAVES = "llaves"
+    SANGRIA = "sangria"
+
+    @staticmethod
+    def de(texto):
+        """`[(nombre, línea, cuerpo, forma)]`. El cuerpo con llaves va de `{` a `}`;
+        el de sangría son las líneas del bloque, unidas."""
+        salida = []
+        for m in _FUNC_LLAVES.finditer(texto):
+            cuerpo = Bloques.llaves(texto, texto.find("{", m.start()))
+            salida.append((m.group(1), RecorridoDeCodigo.linea_de(texto, m.start()), cuerpo, Funciones.LLAVES))
+        lineas = texto.splitlines()
+        for i, linea in enumerate(lineas):
+            m = _DEF_PYTHON.match(linea)
+            if m:
+                cuerpo = "\n".join(Bloques.sangria(lineas, i + 1, len(m.group(1))))
+                salida.append((m.group(2), i + 1, cuerpo, Funciones.SANGRIA))
+        return salida
+
+    @classmethod
+    def largo(cls, cuerpo, forma):
+        """Las líneas que cuenta `07·Q3`: entre las llaves, o las no vacías del bloque."""
+        if forma == cls.LLAVES:
+            return cuerpo.count("\n") - 1
+        return sum(1 for l in cuerpo.splitlines() if l.strip())
 
 
 class ValidadorDeCodigo(Validador):

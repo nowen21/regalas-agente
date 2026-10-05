@@ -11,12 +11,15 @@ El modo `cierre` (el de siempre, y el que corre sin `--modo`) suma las fichas
 de cada turno y deja el total a la vista al terminar la respuesta. El modo
 `aviso` (`EP-005 · HU-014`) corre en cada mensaje y habla **solo** si el último
 turno cruzó un tramo de consumo, una vez por tramo: el total al cierre llega
-cuando ya se pagó; este llega mientras todavía se puede decidir.
+cuando ya se pagó; este llega mientras todavía se puede decidir. También avisa
+el enganche o el archivo del turno anterior que pasó el límite de su proyecto
+(`EP-025·HU-009`).
 
 Lee la transcripción interna de la herramienta (la ruta llega por la entrada
-estándar, en `transcript_path`). La suma y el umbral son de `validadores/presupuesto.py`,
-que sirve con cualquier herramienta; **acá vive solo la lectura del formato
-de esta**.
+estándar, en `transcript_path`). La suma y el umbral son de `proyectos/cimiento/core/enganches/presupuesto.py`,
+que sirve con cualquier herramienta; la lectura del formato de esta vive en
+`proyectos/cimiento/core/consumo/lector.py` (`EP-025·HU-006`), que también
+guarda el gasto en la base de Cimiento.
 
 Siempre sale con código 0. Un enganche que detiene el trabajo es peor que el
 problema que resuelve — y en esta herramienta, salir con 2 bloquea al usuario.
@@ -26,14 +29,15 @@ import json
 import os
 import sys
 
-# Vive en el adaptador, no en `validadores/`: por eso dice dónde están los
-# módulos agnósticos que usa.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
-import comun                                    # noqa: E402
-import presupuesto                      # noqa: E402
-from comun import preparar_salida       # noqa: E402
+# Vive en el adaptador, no en `core/`: por eso dice dónde están los módulos
+# agnósticos que usa.
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
+
+from core.comun.consola import entrada_json, preparar_salida     # noqa: E402
+from core.consumo.lector import LectorDeClaudeCode, estimar_tokens  # noqa: E402
+from core.enganches.niveles import LimitesDelProyecto            # noqa: E402
+from core.enganches.presupuesto import Presupuesto               # noqa: E402
 
 
 def consumos_de_transcripcion(ruta):
@@ -43,28 +47,21 @@ def consumos_de_transcripcion(ruta):
     `message.usage`. Una línea ilegible se salta: mejor un total corto que
     un enganche caído.
     """
-    salida = []
-    try:
-        with open(ruta, encoding="utf-8", errors="replace") as f:
-            lineas = f.readlines()
-    except OSError:
-        return salida
-    for linea in lineas:
-        try:
-            dato = json.loads(linea)
-        except (json.JSONDecodeError, ValueError):
-            continue
-        uso = ((dato.get("message") or {}).get("usage")
-               if isinstance(dato, dict) else None)
-        if not isinstance(uso, dict):
-            continue
-        salida.append({
-            "entrada": (uso.get("input_tokens") or 0)
-            + (uso.get("cache_creation_input_tokens") or 0),
-            "salida": uso.get("output_tokens") or 0,
-            "cache": uso.get("cache_read_input_tokens") or 0,
-        })
-    return salida
+    # `EP-025·HU-006` · El formato lo lee `LectorDeClaudeCode`, que cuenta una vez
+    # cada llamada aunque ocupe varias líneas: sumar por línea contaba cada una
+    # unas tres veces (sesión `c3d82767`, 2026-10-05).
+    return [llamada.como_consumo() for llamada in LectorDeClaudeCode(ruta).leer().llamadas]
+
+
+def aviso_de_limites(ruta, raiz):
+    """`EP-025·HU-009` · Lo que en el turno anterior pasó el límite del proyecto, o ""."""
+    turno = LectorDeClaudeCode(ruta).turno_anterior()
+    limite_enganche, limite_archivo = LimitesDelProyecto(raiz, RAIZ).limites()
+    enganches = Presupuesto.pasados_del_limite(
+        ((e.nombre, estimar_tokens(e.caracteres)) for e in turno.enganches), limite_enganche)
+    archivos = Presupuesto.pasados_del_limite(
+        ((a.ruta, estimar_tokens(a.caracteres)) for a in turno.archivos), limite_archivo)
+    return Presupuesto.aviso_de_limites(enganches, archivos, limite_enganche, limite_archivo)
 
 
 def main():
@@ -78,7 +75,7 @@ def main():
     a = p.parse_args()
 
     try:
-        entrada = comun.entrada_json()
+        entrada = entrada_json()
     except (json.JSONDecodeError, ValueError):
         entrada = {}
     ruta = entrada.get("transcript_path") or ""
@@ -87,15 +84,21 @@ def main():
 
     consumos = consumos_de_transcripcion(ruta)
     if a.modo == "aviso":
-        umbral = presupuesto.TRAMO if a.umbral is None else a.umbral
-        cruzo, numero, totales = presupuesto.cruzo_tramo(consumos, umbral)
+        umbral = Presupuesto.TRAMO if a.umbral is None else a.umbral
+        cruzo, numero, totales = Presupuesto.cruzo_tramo(consumos, umbral)
         if cruzo:
-            print(presupuesto.aviso_de_tramo(totales, numero, umbral))
+            print(Presupuesto.aviso_de_tramo(totales, numero, umbral))
+        try:
+            limites = aviso_de_limites(ruta, a.raiz)
+        except Exception:  # noqa: BLE001  Un aviso que falla no puede tumbar el mensaje.
+            limites = ""
+        if limites:
+            print(limites)
         return 0
 
-    totales = presupuesto.resumen(consumos)
+    totales = Presupuesto.resumen(consumos)
     if totales["turnos"]:
-        print(presupuesto.como_texto(totales, a.umbral or 0))
+        print(Presupuesto.como_texto(totales, a.umbral or 0))
     return 0
 
 

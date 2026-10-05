@@ -102,7 +102,7 @@ Y «Una instrucción se cumple entera» queda revisado contra la conclusión 18
 ```
 
 **Cómo validarlo:**
-1. Abrir [corregir-el-defecto-que-uno-mismo-detecta.md](../../../../historico-chat/memory/corregir-el-defecto-que-uno-mismo-detecta.md) y [una-instruccion-se-cumple-entera.md](../../../../historico-chat/memory/una-instruccion-se-cumple-entera.md).
+1. Abrir [historico-chat/memory/corregir-el-defecto-que-uno-mismo-detecta.md](../../../../historico-chat/memory/corregir-el-defecto-que-uno-mismo-detecta.md) y [historico-chat/memory/una-instruccion-se-cumple-entera.md](../../../../historico-chat/memory/una-instruccion-se-cumple-entera.md).
 
 **Aprobado cuando:** el primero vale solo dentro del plan aprobado y el segundo no choca con detener la ejecución ante un hallazgo.
 

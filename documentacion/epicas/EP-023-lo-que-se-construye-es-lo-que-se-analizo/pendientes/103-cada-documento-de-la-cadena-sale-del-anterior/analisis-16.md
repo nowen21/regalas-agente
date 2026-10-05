@@ -223,7 +223,7 @@ De aquí en adelante corro solo esas.
 **Agente**, 2026-10-04 00:14:09
 <!-- agente: c5b5ce5c-fc0b-4985-a35b-e3ff8899a282 -->
 
-Listo. Actualicé el recuerdo [solo-las-pruebas-de-la-fase.md](../../../../../historico-chat/memory/solo-las-pruebas-de-la-fase.md): dice que `pruebas.py` y `validar.py internas` son la batería completa y que no se corren sin que se pida. También dice que la regla vale al corregir de una, y deja anotado lo que pasó hoy.
+Listo. Actualicé el recuerdo [historico-chat/memory/solo-las-pruebas-de-la-fase.md](../../../../../historico-chat/memory/solo-las-pruebas-de-la-fase.md): dice que `pruebas.py` y `validar.py internas` son la batería completa y que no se corren sin que se pida. También dice que la regla vale al corregir de una, y deja anotado lo que pasó hoy.
 
 De aquí en adelante solo corro las pruebas de lo que cambia.
 

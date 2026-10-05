@@ -31,15 +31,14 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import recuerdos                             # noqa: E402
-from comun import preparar_salida            # noqa: E402
+from core.comun.consola import preparar_salida                    # noqa: E402
+from core.enganches.recuerdos import CARPETA, INDICE, Recuerdos   # noqa: E402
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -70,7 +69,7 @@ def main():
     evento = datos.get("hook_event_name") or "SessionStart"
 
     try:
-        movidos = recuerdos.migrar(raiz, aplicar=True)
+        movidos = Recuerdos(raiz).migrar(aplicar=True)
     except OSError as e:        # permisos, archivo en uso: se avisa, no se rompe
         print(f"No se pudo mover la memoria del agente: {e}", file=sys.stderr)
         return 0
@@ -78,8 +77,8 @@ def main():
     if not movidos:
         return 0                # la carpeta local está vacía: nada que decir
 
-    detalle = "\n".join(f"  - {p}" for p in recuerdos.pasos(movidos))
-    carpeta = recuerdos.CARPETA.replace(os.sep, "/")
+    detalle = "\n".join(f"  - {p}" for p in Recuerdos.pasos(movidos))
+    carpeta = CARPETA.replace(os.sep, "/")
     resumen = (f"Memoria del agente: {len(movidos)} archivo(s) movidos a "
                f"{carpeta}/")
 
@@ -93,7 +92,7 @@ def main():
                 f"archivo por recuerdo (`01·C19`). La carpeta local de la "
                 f"herramienta queda vacía: no escribir nada ahí, ni siquiera un "
                 f"puntero. Agregar la línea del recuerdo al índice "
-                f"`{carpeta}/{recuerdos.INDICE}`, y si algún nombre terminó en "
+                f"`{carpeta}/{INDICE}`, y si algún nombre terminó en "
                 f"`-local` decidir con el usuario cuál manda."),
         },
     }, ensure_ascii=False))

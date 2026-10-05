@@ -32,7 +32,7 @@ Todavía no conecta ningún proyecto ni muestra pantallas: lo único que respond
 | "El texto en la carpeta del proyecto dentro del repositorio de la plataforma" (§5) | servicio | [plataforma/nucleo/almacen/core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | ✅ | CP-004: `cat` leyó el archivo sin la plataforma |
 | "El índice en la base local, reconstruible" (§5) | modelo | [plataforma/nucleo/almacen/models.py](../../../../../proyectos/cimiento/nucleo/almacen/models.py), [core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | ✅ | CP-003: se borró `indice.sqlite3` entero y volvió con la misma huella |
 | "Registrar un proyecto no toca su código" (§4.1) | servicio | `_ruta_real` en [core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | parcial | CP-006 prueba que no se escribe fuera de `datos/`. Registrar todavía no existe: es la fase B |
-| "Módulo nuevo, no hay código previo" (§2) | esquema | [plataforma/](../../../../../proyectos/cimiento/) | ✅ | Carpeta nueva. `interfaz/` no cambió, EV-04 |
+| "Módulo nuevo, no hay código previo" (§2) | esquema | [proyectos/cimiento/](../../../../../proyectos/cimiento/) | ✅ | Carpeta nueva. `interfaz/` no cambió, EV-04 |
 | Registrar un proyecto con su nombre y su ruta (`F-001`, §1) | modelo · vista | — | ❌ | Va en la fase B. La trazabilidad de la especificación §13 ya lo decía: "B, y su base en A" |
 | Avisar la ruta perdida (`F-002`) | — | — | N/A | Fase C |
 | Mostrar el estado (`F-003`) | — | — | N/A | Fase G |
@@ -45,10 +45,10 @@ Todavía no conecta ningún proyecto ni muestra pantallas: lo único que respond
 | Tarea | Qué era | Estado | Dónde quedó | Evidencia |
 |---|---|---|---|---|
 | 1 | Resolver las dos dudas de la sección 2.7 | ✅ hecha | [plan_trabajo.md](plan_trabajo.md) §2.7 | Las dos, con su porqué escrito y decididas por el usuario |
-| 2 | Levantar la aplicación en la máquina, sin red | ✅ hecha | [plataforma/config/](../../../../../proyectos/cimiento/config/), [nucleo/almacen/views.py](../../../../../proyectos/cimiento/nucleo/almacen/views.py) | CP-001, EV-01 |
+| 2 | Levantar la aplicación en la máquina, sin red | ✅ hecha | [proyectos/cimiento/config/](../../../../../proyectos/cimiento/config/), [nucleo/almacen/views.py](../../../../../proyectos/cimiento/nucleo/almacen/views.py) | CP-001, EV-01 |
 | 3 | Guardar y leer un dato de prueba, en texto | ✅ hecha | [nucleo/almacen/core.py](../../../../../proyectos/cimiento/nucleo/almacen/core.py) | CP-002 y CP-004, EV-02 |
 | 4 | Construir el índice local y su reconstrucción | ✅ hecha | [models.py](../../../../../proyectos/cimiento/nucleo/almacen/models.py) y [reconstruir_indice.py](../../../../../proyectos/cimiento/nucleo/almacen/management/commands/reconstruir_indice.py) | CP-003, EV-02 |
-| 5 | Escribir cómo se levanta desde cero | ✅ hecha | [plataforma/README.md](../../../../../proyectos/cimiento/README.md) | CP-005, EV-03: la carpeta limpia levantó al primer intento |
+| 5 | Escribir cómo se levanta desde cero | ✅ hecha | [proyectos/cimiento/README.md](../../../../../proyectos/cimiento/README.md) | CP-005, EV-03: la carpeta limpia levantó al primer intento |
 
 **Correspondencia con el plan:** 5 tareas en el plan, 5 acá.
 
@@ -82,7 +82,7 @@ Todavía no conecta ningún proyecto ni muestra pantallas: lo único que respond
 
 ## 4. Cómo se usa / puntos de entrada  ·  `13·DOC1`
 
-- **Punto de entrada:** `python manage.py runserver` desde `plataforma/`, y la página en `http://127.0.0.1:8000/`. Los pasos completos, en [plataforma/README.md](../../../../../proyectos/cimiento/README.md).
+- **Punto de entrada:** `python manage.py runserver` desde `plataforma/`, y la página en `http://127.0.0.1:8000/`. Los pasos completos, en [proyectos/cimiento/README.md](../../../../../proyectos/cimiento/README.md).
 - **Comando propio:** `python manage.py reconstruir_indice` rehace el índice leyendo `datos/`.
 - **Permisos o datos base sembrados:** ninguno. La plataforma todavía no tiene usuarios.
 
@@ -122,7 +122,7 @@ Todavía no conecta ningún proyecto ni muestra pantallas: lo único que respond
 
 ## 8. Despliegue — si aplica  ·  `13·DOC4`
 
-No hay producción: la plataforma corre en la máquina del usuario. Lo que hace las veces de instalación son los cinco pasos de [plataforma/README.md](../../../../../proyectos/cimiento/README.md), probados en limpio.
+No hay producción: la plataforma corre en la máquina del usuario. Lo que hace las veces de instalación son los cinco pasos de [proyectos/cimiento/README.md](../../../../../proyectos/cimiento/README.md), probados en limpio.
 
 - **Migraciones a correr:** `python manage.py migrate`.
 - **Datos base:** ninguno.

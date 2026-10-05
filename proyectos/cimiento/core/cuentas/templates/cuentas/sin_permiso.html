@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block titulo %}Sin permiso{% endblock %}
+{% block cabecera %}Sin permiso{% endblock %}
+
+{% block contenido %}
+<div class="alert alert-warning" role="alert">
+  <h4 class="alert-title">No tiene permiso</h4>
+  <p class="mb-0">Esta pantalla es para el grupo administrador.</p>
+</div>
+{% endblock %}

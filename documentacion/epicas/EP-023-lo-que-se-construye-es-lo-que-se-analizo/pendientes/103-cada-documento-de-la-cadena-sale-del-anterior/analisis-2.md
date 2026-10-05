@@ -1,6 +1,6 @@
 # Análisis 2: el enganche del análisis solo sirve para un análisis
 
-> **Aprobado** por el usuario el 2026-10-01, en el turno 173. Antes de aprobarlo, el pendiente pasó a la V3 en sus originales: [pendientes/103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y [pendiente.md](pendiente.md). Desde ese momento este análisis no se reescribe.
+> **Aprobado** por el usuario el 2026-10-01, en el turno 173. Antes de aprobarlo, el pendiente pasó a la V3 en sus originales: [pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y [pendiente.md](pendiente.md). Desde ese momento este análisis no se reescribe.
 
 > Este análisis se redacta aplicando estas reglas.
 >
@@ -623,7 +623,7 @@ Los pasos 4 y 5 conviene hacerlos en una sesión nueva. ¿Arranco con el paso 1?
 **Agente**, 2026-10-01 19:01:57
 <!-- agente: 625e361c-470e-4f35-9158-f138382c509c -->
 
-El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](pendiente.md) de la carpeta del análisis.
+El pendiente 103 quedó en la V3, en sus dos lugares: [pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) y el [pendiente.md](pendiente.md) de la carpeta del análisis.
 
 - **De dónde sale:** ahora incluye el H-2 junto al H-13.
 - **El problema:** suma la frase sobre configurar a mano lo que pasa la conversación al análisis.

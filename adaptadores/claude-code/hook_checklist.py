@@ -22,15 +22,14 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import checklist                            # noqa: E402
-from comun import RAIZ, preparar_salida     # noqa: E402
+from core.comun.consola import preparar_salida                   # noqa: E402
+from core.validadores.checklist import MARCA, Checklist          # noqa: E402
 
 
 def opcion(argv, nombre, por_defecto=""):
@@ -64,21 +63,22 @@ def main():
         return 0
 
     try:
-        puntos = checklist.revisar(raiz)
-        checklist.escribir_marca(raiz, puntos)
+        revision = Checklist(raiz, RAIZ)
+        puntos = revision.revisar()
+        revision.escribir_marca(puntos)
     except Exception as e:      # noqa: BLE001 — nunca romper la sesión
         print(f"No se pudo revisar la instalación: {e}", file=sys.stderr)
         return 0
 
-    if not checklist.pendientes(puntos):
+    if not Checklist.pendientes(puntos):
         return 0                # instalación completa: nada que decir
 
-    resumen = checklist.resumen(raiz, puntos)
+    resumen = Checklist.resumen(raiz, puntos)
     contexto = (f"[Instalación del agente incompleta]\n{resumen}\n\n"
-                f"{checklist.detalle(puntos)}\n\n"
+                f"{Checklist.detalle(puntos)}\n\n"
                 f"Decíselo al usuario en esta respuesta: qué falta y cómo se "
                 f"arregla. El detalle también quedó en "
-                f"`{checklist.MARCA.replace(os.sep, '/')}`.")
+                f"`{MARCA.replace(os.sep, '/')}`.")
 
     print(json.dumps({
         "systemMessage": resumen,

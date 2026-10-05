@@ -1,0 +1,63 @@
+{% load static %}<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Inicio{% endblock %} - Cimiento</title>
+  <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+</head>
+<body>
+  <div class="page">
+    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+      <div class="container-fluid">
+        <h1 class="navbar-brand navbar-brand-autodark">
+          <a href="{% url 'inicio:inicio' %}">Cimiento</a>
+        </h1>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav pt-lg-3">
+            {% block menu %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'inicio:inicio' %}">
+                <span class="nav-link-title">Inicio</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'proyectos:lista' %}">
+                <span class="nav-link-title">Proyectos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'consumo:tablero' %}">
+                <span class="nav-link-title">Gasto</span>
+              </a>
+            </li>
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <div class="page-wrapper">
+      <header class="page-header d-print-none">
+        <div class="container-xl d-flex align-items-center">
+          <h2 class="page-title">{% block cabecera %}Cimiento{% endblock %}</h2>
+          {% if user.is_authenticated %}
+          <form class="ms-auto d-flex align-items-center gap-2" method="post" action="{% url 'cuentas:salir' %}">
+            {% csrf_token %}
+            <span class="text-secondary">{{ user.get_username }}</span>
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Salir</button>
+          </form>
+          {% endif %}
+        </div>
+      </header>
+      <div class="page-body">
+        <div class="container-xl">
+          {% block contenido %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/tabler.min.js' %}" defer></script>
+  <script src="{% static 'htmx.min.js' %}" defer></script>
+  <script src="{% static 'apexcharts.min.js' %}" defer></script>
+</body>
+</html>

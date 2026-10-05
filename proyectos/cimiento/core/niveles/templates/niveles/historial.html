@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block titulo %}Historial de reglas de {{ proyecto.nombre }}{% endblock %}
+{% block cabecera %}Historial de reglas de {{ proyecto.nombre }}{% endblock %}
+
+{% block contenido %}
+<div class="card">
+  <table class="table card-table table-vcenter">
+    <thead>
+      <tr><th>Fecha</th><th>Regla</th><th>Antes</th><th>Ahora</th><th>Cuenta</th></tr>
+    </thead>
+    <tbody>
+      {% for cambio in cambios %}
+      <tr>
+        <td>{{ cambio.fecha|date:"Y-m-d H:i" }}</td>
+        <td><code>{{ cambio.regla }}</code></td>
+        <td>{{ cambio.get_anterior_display }}</td>
+        <td>{{ cambio.get_nuevo_display }}</td>
+        <td>{{ cambio.cuenta.get_username|default:"(cuenta borrada)" }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5" class="text-secondary">Ningún nivel ha cambiado en este proyecto.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<p class="mt-3"><a href="{% url 'niveles:reglas' proyecto.pk %}">Volver a las reglas</a></p>
+{% endblock %}

@@ -1,0 +1,191 @@
+{% load gasto %}
+{{ graficas|json_script:"datos-graficas" }}
+<div class="row row-cards mb-3">
+  <div class="col-sm-6 col-lg-3">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Llamadas</div>
+      <div class="h2 mb-0" id="total-llamadas">{{ totales.llamadas|miles }}</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Tokens de entrada</div>
+      <div class="h2 mb-0">{{ totales.entrada|miles }}</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Tokens releídos de caché</div>
+      <div class="h2 mb-0">{{ totales.cache|miles }}</div>
+    </div></div>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <div class="card card-sm"><div class="card-body">
+      <div class="text-secondary">Tokens de salida</div>
+      <div class="h2 mb-0">{{ totales.salida|miles }}</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="row row-cards mb-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Proyectos</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Proyecto</th><th class="text-end">Llamadas</th><th class="text-end">Entrada</th><th class="text-end">Salida</th><th class="text-end">Total</th></tr></thead>
+          <tbody>
+            {% for fila in proyectos %}
+            <tr><td>{{ fila.proyecto__nombre }}</td><td class="text-end">{{ fila.llamadas|miles }}</td><td class="text-end">{{ fila.entrada_total|miles }}</td><td class="text-end">{{ fila.salida_total|miles }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-secondary">Sin gasto en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Últimas sesiones</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Sesión</th><th>Proyecto</th><th>Última llamada</th><th class="text-end">Llamadas</th><th class="text-end">Total</th></tr></thead>
+          <tbody>
+            {% for fila in sesiones %}
+            <tr><td class="text-secondary">{{ fila.sesion|slice:":8" }}</td><td>{{ fila.proyecto__nombre }}</td><td>{{ fila.fin|date:"d/m H:i" }}</td><td class="text-end">{{ fila.llamadas|miles }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-secondary">Sin sesiones en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cards">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Enganches que más agregan</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Enganche</th><th class="text-end">Veces</th><th class="text-end">Tokens (estimados)</th></tr></thead>
+          <tbody>
+            {% for fila in enganches %}
+            <tr><td>{{ fila.nombre|truncatechars:70 }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-secondary">Sin enganches en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Archivos que más pesan al leerlos</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Archivo</th><th class="text-end">Veces</th><th class="text-end">Tokens (estimados)</th></tr></thead>
+          <tbody>
+            {% for fila in archivos %}
+            <tr><td title="{{ fila.nombre }}">{{ fila.nombre|truncatechars:70 }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-secondary">Sin archivos leídos en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cards mt-1">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Lo que llena el contexto</h3></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3"><div class="text-secondary">Enganches (estimado)</div><div class="h3 mb-0">{{ contexto.enganches|miles }}</div></div>
+          <div class="col-sm-3"><div class="text-secondary">Archivos leídos (estimado)</div><div class="h3 mb-0">{{ contexto.archivos|miles }}</div></div>
+          <div class="col-sm-3"><div class="text-secondary">Otras herramientas (estimado)</div><div class="h3 mb-0">{{ contexto.otras|miles }}</div></div>
+          <div class="col-sm-3"><div class="text-secondary">Contexto más grande de una llamada</div><div class="h3 mb-0">{{ contexto.maximo|miles }}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cards mt-1">
+  {% for titulo, filas in niveles %}
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">{{ titulo }}</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th></th><th class="text-end">Llamadas</th><th class="text-end">Tokens</th></tr></thead>
+          <tbody>
+            {% for fila in filas %}
+            <tr><td>{{ fila.nombre|truncatechars:50 }}</td><td class="text-end">{{ fila.llamadas|miles }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-secondary">Sin datos en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Por tipo de token</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <tbody>
+            {% for fila in tipos %}
+            <tr><td>{{ fila.nombre }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Por herramienta</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th></th><th class="text-end">Veces</th><th class="text-end">Resultado (estimado)</th></tr></thead>
+          <tbody>
+            {% for fila in herramientas %}
+            <tr><td>{{ fila.nombre }}</td><td class="text-end">{{ fila.veces|miles }}</td><td class="text-end">{{ fila.tokens|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-secondary">Sin herramientas en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cards mt-1">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Últimos mensajes</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead><tr><th>Cuándo</th><th>Proyecto</th><th>Palabra clave</th><th>Trabajo</th><th class="text-end">Llamadas</th><th class="text-end">Tokens</th></tr></thead>
+          <tbody>
+            {% for fila in mensajes %}
+            <tr><td>{{ fila.fecha|date:"d/m H:i" }}</td><td>{{ fila.proyecto__nombre }}</td><td>{{ fila.palabra|default:"(sin palabra)" }}</td><td class="text-secondary">{{ fila.trabajo|default:"(sin trabajo)" }}</td><td class="text-end">{{ fila.n_llamadas|miles }}</td><td class="text-end">{{ fila.total|miles }}</td></tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-secondary">Sin mensajes en el período.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

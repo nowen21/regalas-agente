@@ -7,7 +7,7 @@ Se conecta en `.claude/settings.json`:
     PostToolUse (Write|Edit) -> python hook_veredicto.py --raiz <proyecto>
 
 Cuando el archivo escrito es el `resultado_pruebas.md` de una fase y su §6
-ya tiene concepto, `validadores/veredicto.py` deja ese veredicto en la fila de
+ya tiene concepto, `proyectos/cimiento/core/enganches/veredicto.py` deja ese veredicto en la fila de
 la historia y en los dos README, y acá se dice qué se tocó. Si no hay dónde
 copiarlo, se dice también: callar se leería como hecho.
 
@@ -20,43 +20,27 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
-import comun                                    # noqa: E402
-import veredicto                        # noqa: E402
-from comun import preparar_salida       # noqa: E402
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-
-def raiz_pedida(argv):
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return os.path.abspath(os.getcwd())
-
-
-def archivo_editado(datos):
-    entrada = datos.get("tool_input") or {}
-    respuesta = datos.get("tool_response") or {}
-    return (entrada.get("file_path") or respuesta.get("filePath")
-            or respuesta.get("file_path") or "")
+from core.comun.consola import archivo_editado, entrada_json, preparar_salida, raiz_pedida     # noqa: E402
+from core.enganches.veredicto import CopiaDelVeredicto           # noqa: E402
 
 
 def main():
     preparar_salida()
-    raiz = raiz_pedida(sys.argv[1:])
+    raiz = raiz_pedida(sys.argv[1:], os.getcwd())
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0
     if not isinstance(datos, dict):
         return 0
     ruta = archivo_editado(datos)
-    if not ruta or os.path.basename(ruta) != veredicto.RESULTADO:
+    if not ruta or os.path.basename(ruta) != CopiaDelVeredicto.RESULTADO:
         return 0
     try:
-        tocados, avisos = veredicto.propagar(ruta, datetime.date.today().isoformat())
+        tocados, avisos = CopiaDelVeredicto.propagar(ruta, datetime.date.today().isoformat())
     except Exception as e:                                  # noqa: BLE001
         print(f"[el enganche del veredicto no pudo correr: {e}]")
         return 0

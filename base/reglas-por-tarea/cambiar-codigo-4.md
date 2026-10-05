@@ -3,7 +3,7 @@
 Lo escribe `validadores/mapa_tareas.py` desde las reglas de `base/`: no se edita a mano. Son las reglas que [base/mapa-de-tareas.md](../mapa-de-tareas.md) pone bajo esta tarea, completas. Las que llevan *opt-in* rigen solo si el proyecto encendió su capítulo en el punto 5.1 de su `CLAUDE.md`.
 
 ## F4 · Todo plan lleva su plan de pruebas y su aprobación explícita
-Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** al usuario y **no se toca código hasta un OK explícito** suyo ([`01·C17`](../01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)). Si no existe la HU con sus criterios que respalde el plan, **PAUSAR y retroceder** al eslabón que falta (depende de [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)).
+Cada plan de trabajo se redacta junto a su plan de pruebas, se **presenta** y **no se toca código sin un OK explícito** del usuario ([`01·C17`](../01-conducta.md#c17--ante-un-pedido-que-admite-dos-lecturas-reformula-antes-de-mover-nada)); el plan que sale de un análisis aprobado que lo contempla ya lo tiene, y lo cita. Sin la HU que lo respalde, **PAUSAR y retroceder** (depende de [`02·F0`](../02-flujo-de-trabajo/reglas/F0-recorre-la-cadena-completa-sin-saltar-eslabones.md), [`02·F2`](../02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)).
 ```
 INCORRECTO: usuario dice "arranque con Fase X" → agente redacta plan + implementa
             todo seguido → reporta al final

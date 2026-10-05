@@ -27,7 +27,7 @@
 | **Módulo** | «M» ([`13·DOC13`](../../base/13-documentacion/reglas/DOC13-registra-cada-modulo-nuevo-en-el-catalogo-de-modulos.md)) |
 | **Especificación del módulo** | «enlace a la especificación · [`02·F2`](../../base/02-flujo-de-trabajo/reglas/F2-sin-especificacion-acordada-no-hay-codigo.md)» |
 | **Fecha apertura** | AAAA-MM-DD |
-| **Aprobación** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) | «quién», el «AAAA-MM-DD», con la versión «X.Y.Z» |
+| **Aprobación** ([`02·F4`](../../base/02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)) | «quién», el «AAAA-MM-DD», con la versión «X.Y.Z». Si el plan sale de un análisis aprobado que nombra su HU, en lugar de «quién» va el enlace al análisis, `[análisis N del pendiente P](«ruta»/analisis-N.md)`, el «AAAA-MM-DD», con la versión «X.Y.Z» |
 | **Rama** | `«feature/<identificador-de-fase>»` |
 | *(opcional)* Sprint · Dev · Revisor · QA | «…» |
 

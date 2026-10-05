@@ -37,6 +37,7 @@ Contenido inmediato de esta carpeta. Todas nacen de [planteamiento.md](../../pla
 | Épica | De qué se trata | Estado |
 |---|---|---|
 | [EP-023](EP-023-lo-que-se-construye-es-lo-que-se-analizo/) | Que al ejecutar un plan solo aparezcan los hallazgos que no se podían prever | Propuesta: sus 7 historias aprobadas el 2026-10-01 |
+| [EP-025](EP-025-cimiento-se-administra-y-muestra-el-gasto-de-tokens/) | Que Cimiento se administre desde sus pantallas y muestre en vivo el gasto de tokens | En curso: sus 10 historias salen del análisis 1 del pendiente 119, aprobado el 2026-10-04 |
 
 Las siete primeras tienen sus historias de usuario escritas: **60 en total**. Ninguna se ha descompuesto en fases todavía, salvo EP-001 y EP-004, que tienen una cada una.
 

@@ -1,2 +1,5 @@
-# Lo que Cimiento necesita para correr. La base de datos es un archivo local.
+# Lo que Cimiento necesita para correr. La base de datos es MariaDB.
 Django>=5.2,<6.0
+mysqlclient>=2.2,<3.0
+# El freno lee la base sin Django (EP-025·HU-005); sus pruebas corren en este ambiente.
+PyMySQL>=1.1,<2

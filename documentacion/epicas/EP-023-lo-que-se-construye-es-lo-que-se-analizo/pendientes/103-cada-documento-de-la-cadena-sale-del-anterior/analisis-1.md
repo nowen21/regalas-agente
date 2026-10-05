@@ -430,7 +430,7 @@ Las dos son aprendizaje, pero la señal habla del proyecto y la lección habla d
 **Agente** — 2026-09-30 20:58:15
 <!-- agente: 1153a043-7e1b-4854-8653-4df9587067ed -->
 
-Hay un choque con una norma que ya existe. [memory.md](../../../../../historico-chat/memory/memory.md) dice: «Nada se guarda en dos sitios. Si algo ya está en uno, el otro lo enlaza; nunca lo copia». Ya pasó una vez: la terminología quedó en un recuerdo y en una señal, y con el tiempo terminaron diciendo cosas distintas.
+Hay un choque con una norma que ya existe. [historico-chat/memory/memory.md](../../../../../historico-chat/memory/memory.md) dice: «Nada se guarda en dos sitios. Si algo ya está en uno, el otro lo enlaza; nunca lo copia». Ya pasó una vez: la terminología quedó en un recuerdo y en una señal, y con el tiempo terminaron diciendo cosas distintas.
 
 Para cumplirla, la lección se escribe completa en uno de los dos sitios y el otro solo la enlaza:
 
@@ -1043,7 +1043,7 @@ Para no suponer, necesito saber de qué archivos se habla:
 
 | Documento | Dónde está |
 |---|---|
-| Pendiente | [pendiente.md](pendiente.md), en la carpeta nueva, y el original en [pendientes/103-...](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
+| Pendiente | [pendiente.md](pendiente.md), en la carpeta nueva, y el original en [pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md](../../../../../pendientes/103-cada-documento-de-la-cadena-sale-del-anterior.md) |
 | Hallazgo | No tiene archivo propio. Es el H-13, dentro del [resumen del 2026-09-28](../../../../../historico-chat/resumenes/2026-09-28/sesion.md) |
 
 ¿Se limpian los dos del pendiente o solo el `pendiente.md` de la carpeta nueva? Y en el caso del hallazgo, ¿se toca el H-13 dentro del resumen del 2026-09-28?
@@ -1223,7 +1223,7 @@ Son dos controles distintos, y el estándar pide una sola exigencia por regla (`
 
 Sí. Una lección aprendida es lo que queda después de aprender de un error: el error es lo que pasó y la lección es el resultado.
 
-Eso encaja con lo que ya está en [memory.md](../../../../../historico-chat/memory/memory.md), que llama **aprendizaje** a lo que va en el almacén de señales. Entonces el aprendizaje sería la categoría grande, con dos tipos adentro:
+Eso encaja con lo que ya está en [historico-chat/memory/memory.md](../../../../../historico-chat/memory/memory.md), que llama **aprendizaje** a lo que va en el almacén de señales. Entonces el aprendizaje sería la categoría grande, con dos tipos adentro:
 
 | Aprendizaje | De qué trata |
 |---|---|

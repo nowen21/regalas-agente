@@ -14,7 +14,8 @@ cada orden de consola toma la foto que usa `hook_despues.py`.
 
 Nació en `EP-005·HU-023·RN-10` para que ninguna escritura saliera del proyecto
 (`04·S9`); eso sigue, ahora dentro del freno. La decisión vive en
-`validadores/freno.py`; acá solo está lo que habla con esta herramienta.
+`proyectos/cimiento/core/enganches/freno.py`; acá solo está lo que habla con esta
+herramienta.
 
 Nunca rompe el trabajo por un error propio: si algo falla adentro, deja pasar y
 lo avisa.
@@ -23,12 +24,11 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import freno                                    # noqa: E402
-from comun import preparar_salida               # noqa: E402
+from core.comun.consola import preparar_salida               # noqa: E402
+from core.enganches.freno import CONSOLA, Freno              # noqa: E402
 
 ACCION = {"Write": "una escritura", "Edit": "una edición", "MultiEdit": "una edición",
           "NotebookEdit": "una edición", "Bash": "una orden de consola",
@@ -64,22 +64,38 @@ def _decision(decision, razon):
         "permissionDecisionReason": razon}}, ensure_ascii=False))
 
 
+def _avisar(texto):
+    """`EP-025·HU-005` · La regla está en «avisa»: la acción sigue su curso normal
+    (sin decisión de permiso, para no saltar lo que la herramienta le pregunte al
+    usuario) y el aviso llega al agente y al usuario."""
+    print(json.dumps({"systemMessage": texto, "hookSpecificOutput": {
+        "hookEventName": "PreToolUse", "additionalContext": texto}}, ensure_ascii=False))
+
+
 def accion(datos, proyecto):
     herramienta = datos.get("tool_name") or ""
     entrada = datos.get("tool_input") or {}
     cwd = datos.get("cwd") or proyecto
-    decision, porque, ruta = freno.revisar(proyecto, herramienta, entrada, cwd)
+    freno = Freno(proyecto)
+    decision, porque, ruta = freno.revisar(herramienta, entrada, cwd)
     if decision == "pregunta":
         _decision("ask", "[EL FRENO PREGUNTA] " + porque[0].upper() + porque[1:] + ".")
+    elif decision == "sin_base":
+        # No es un hallazgo: no se anota en el resumen.
+        _decision("deny", Freno.aviso_sin_base(porque))
+    elif decision == "avisa":
+        _avisar(Freno.aviso_de_nivel(porque, ruta))
+        if herramienta in CONSOLA:
+            freno.tomar_foto()
     elif decision == "detiene":
         que = ACCION.get(herramienta, "una acción")
-        anotado = freno.anotar_hallazgo(proyecto, datos.get("session_id") or "", que, ruta, porque)
-        razon = freno.aviso(porque, ruta, bool(anotado), freno.analisis_prendido(proyecto))
+        anotado = freno.anotar_hallazgo(datos.get("session_id") or "", que, ruta, porque)
+        razon = Freno.aviso(porque, ruta, bool(anotado), freno.analisis_prendido())
         if "04·S9" in porque:
             razon += "\n" + GUION
         _decision("deny", razon)
-    elif herramienta in freno.CONSOLA:
-        freno.tomar_foto(proyecto)
+    elif herramienta in CONSOLA:
+        freno.tomar_foto()
     return 0
 
 

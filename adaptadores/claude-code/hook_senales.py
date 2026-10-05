@@ -30,15 +30,14 @@ import argparse
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import comun                                        # noqa: E402
-from comun import RAIZ, leer, preparar_salida       # noqa: E402
+from core.comun import Archivos                     # noqa: E402
+from core.comun.consola import preparar_salida      # noqa: E402
 
 ARCHIVO = "documentacion/senales.md"
 
@@ -85,7 +84,7 @@ def aviso(raiz, sesion):
     if not os.path.isfile(ruta):
         return ""               # el proyecto no lleva señales: no se inventa
     try:
-        texto = leer(ruta)
+        texto = Archivos().leer(ruta)
     except OSError:
         return ""
     if ya_avisado(texto, sesion):

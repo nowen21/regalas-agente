@@ -49,17 +49,17 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import historico                                    # noqa: E402
-import recuperar                                    # noqa: E402
-import redaccion                                    # noqa: E402
-from comun import RAIZ, leer, preparar_salida       # noqa: E402
+from core.comun import Archivos                                      # noqa: E402
+from core.comun.consola import preparar_salida                       # noqa: E402
+from core.enganches.historico import Transcript                      # noqa: E402
+from core.herramientas.recuperar import RecuperadorDeReglas          # noqa: E402
+from core.validadores.redaccion import Redaccion                     # noqa: E402
 
 # Las reglas que gobiernan **todos** los turnos, sin importar el tema. No es
 # una selección de gusto: son las que hablan de cómo queda escrito cualquier
@@ -122,7 +122,7 @@ def _encabezado(estandar, relativo, ancla):
     if not os.path.isfile(ruta):
         return ""
     try:
-        texto = leer(ruta)
+        texto = Archivos().leer(ruta)
     except Exception:                     # noqa: BLE001 — nunca romper el turno
         return ""
     for linea in texto.splitlines():
@@ -164,10 +164,10 @@ def medicion(raiz, entrada):
     if not ruta or not os.path.isfile(ruta):
         return ""
     try:
-        texto, _marca = historico.ultima_respuesta(ruta)
+        texto, _marca = Transcript.ultima_respuesta(ruta)
         if not texto:
             return ""
-        return redaccion.linea_de_cierre(texto)
+        return Redaccion.linea_de_cierre(texto)
     except Exception:                     # noqa: BLE001 — medir no cuesta el turno
         return ""
 
@@ -183,8 +183,7 @@ def reglas_del_mensaje(entrada, raiz):
     recordatorio fijo, que es lo que no puede faltar.
     """
     try:
-        return recuperar.como_texto(entrada.get("prompt", ""), RAIZ,
-                                    proyecto=raiz)
+        return RecuperadorDeReglas(RAIZ).como_texto(entrada.get("prompt", ""), proyecto=raiz)
     except Exception:                     # noqa: BLE001
         return ""
 

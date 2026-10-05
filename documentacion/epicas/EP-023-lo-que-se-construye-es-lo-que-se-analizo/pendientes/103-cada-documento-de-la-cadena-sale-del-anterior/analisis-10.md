@@ -342,7 +342,7 @@ Escribí todas las secciones del [análisis 10](../../../../../documentacion/epi
   - A la HU-002 van dos: que los acuerdos le lleguen al agente con cada mensaje, y que cada decisión del plan cite su acuerdo o vaya marcada como «propuesta del agente».
   - A la HU-007 van otros dos, que precisan su CA-02: la fase activa (fase B) y la integración continua (fase C).
 - **Orden:** primero la HU-002, porque la HU-007 usa la «fase en curso» que ella define.
-- **Cuatro lecciones**, registradas como S-127 a S-130 en [senales.md](../../../../../documentacion/senales.md).
+- **Cuatro lecciones**, registradas como S-127 a S-130 en [documentacion/senales.md](../../../../../documentacion/senales.md).
 
 Los validadores del análisis y de origen pasan, `estandar` también, y los enlaces existen.
 
@@ -431,7 +431,7 @@ Se corrige de una, en este análisis y sin fase, como el H-9, porque es el pilot
 
 Busco dónde se decidió cómo conviven las dos, antes de explicar.
 
-**Por qué hay dos:** nacieron en momentos distintos y nadie las unió después. Según la nota [memoria-por-senales.md](../../../../../notas/memoria-por-senales.md):
+**Por qué hay dos:** nacieron en momentos distintos y nadie las unió después. Según la nota [notas/memoria-por-senales.md](../../../../../notas/memoria-por-senales.md):
 1. Primero se hizo `senales.md`, un archivo por proyecto, versionado.
 2. Después se agregó la base (`senales.db`), única para todos los proyectos y con el proyecto de cada señal, para buscar y compartir lo aprendido entre proyectos («el agente es único, su memoria también»).
 
@@ -509,7 +509,7 @@ La corrección del acuerdo 7 quedó hecha y anotada en el análisis 10:
 
 - **El validador de lecciones** lee el tipo de la señal en la base ([analisis.py](../../../../../validadores/analisis.py)). Si en esa máquina no hay base, revisa solo que la lección traiga su número.
 - **Las cuatro lecciones** están en la base como S-270 a S-273, y el análisis las cita con esos números. Quité las S-127 a S-130 que había escrito a mano en `senales.md`.
-- **[senales.md](../../../../../documentacion/senales.md)** dice que desde la 49.0.0 no recibe señales nuevas. Lo mismo dicen las plantillas de señales y del análisis, y el aviso del enganche.
+- **[documentacion/senales.md](../../../../../documentacion/senales.md)** dice que desde la 49.0.0 no recibe señales nuevas. Lo mismo dicen las plantillas de señales y del análisis, y el aviso del enganche.
 - **`13·DOC5` no cambió**, porque no nombra dónde se guarda la señal.
 - **La versión sube a 49.0.0**, con su entrada en el registro de cambios.
 

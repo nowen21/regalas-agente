@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block cabecera %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<form class="card" method="post">
+  {% csrf_token %}
+  <div class="card-body">
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endfor %}
+    {% for campo in form %}
+    <div class="mb-3">
+      {% if campo.field.widget.input_type == "checkbox" %}
+      <label class="form-check">
+        <input class="form-check-input" type="checkbox" name="{{ campo.html_name }}" {% if campo.value %}checked{% endif %}>
+        <span class="form-check-label">{{ campo.label }}</span>
+      </label>
+      {% else %}
+      <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label|capfirst }}</label>
+      <input class="form-control{% if campo.errors %} is-invalid{% endif %}" id="{{ campo.id_for_label }}"
+             name="{{ campo.html_name }}" value="{{ campo.value|default_if_none:'' }}"
+             type="{{ campo.field.widget.input_type }}"{% if campo.field.required %} required{% endif %}>
+      {% for error in campo.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+      {% if campo.help_text %}<div class="form-hint">{{ campo.help_text }}</div>{% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="card-footer d-flex gap-2">
+    <button class="btn btn-primary" type="submit">Guardar</button>
+    <a class="btn btn-link" href="{% url 'proyectos:lista' %}">Volver</a>
+  </div>
+</form>
+{% endblock %}

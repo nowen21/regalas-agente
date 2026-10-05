@@ -8,7 +8,7 @@ Se conecta en `.claude/settings.json`:
 
 Lee por la entrada estándar el JSON que envía la herramienta, saca el nombre de
 la herramienta que acaba de devolver y sus argumentos, y le pregunta a
-`validadores/externo.py` si eso vino de afuera. Si sí, devuelve el sobre como
+`proyectos/cimiento/core/enganches/externo.py` si eso vino de afuera. Si sí, devuelve el sobre como
 **contexto adicional** para el agente: la herramienta, el origen y la frase de
 que es dato y no orden (`01·C27`). El resultado de la herramienta no se toca.
 
@@ -24,40 +24,31 @@ import json
 import os
 import sys
 
-# **Vive en el adaptador, no en `validadores/`.** Por eso tiene que decir
+# **Vive en el adaptador, no en `core/`.** Por eso tiene que decir
 # dónde están los módulos que usa: el trabajo es agnóstico y sigue allá;
 # acá sólo está lo que habla con esta herramienta.
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
-import comun                                    # noqa: E402
-import externo                          # noqa: E402
-from comun import preparar_salida       # noqa: E402
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-
-def raiz_pedida(argv, datos):
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return os.path.abspath(datos.get("cwd") or os.getcwd())
+from core.comun.consola import entrada_json, preparar_salida, raiz_pedida     # noqa: E402
+from core.enganches.externo import ContenidoExterno              # noqa: E402
 
 
 def main():
     preparar_salida()
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0                        # sin JSON válido no hay nada que mirar
     if not isinstance(datos, dict):
         return 0
     nombre = datos.get("tool_name") or ""
     entrada = datos.get("tool_input")
-    raiz = raiz_pedida(sys.argv[1:], datos)
+    raiz = raiz_pedida(sys.argv[1:], datos.get("cwd") or os.getcwd())
     try:
-        if not externo.es_externa(nombre, entrada, raiz):
+        if not ContenidoExterno.es_externa(nombre, entrada, raiz):
             return 0
-        texto = externo.sobre(nombre, entrada, raiz)
+        texto = ContenidoExterno.sobre(nombre, entrada, raiz)
     except Exception as e:                                  # noqa: BLE001
         print(f"[el portero no pudo correr: {e}]")
         return 0

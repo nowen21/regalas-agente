@@ -1,0 +1,21 @@
+{% load static %}<!doctype html>
+{# No extiende base.html: aquella muestra la cuenta, y sin base no hay cuenta que leer. #}
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sin base de datos - Cimiento</title>
+  <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
+</head>
+<body>
+  <div class="page page-center">
+    <div class="container container-tight py-4">
+      <h1 class="text-center mb-4">Cimiento</h1>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-title">Cimiento no puede usar su base de datos</h4>
+        <p class="mb-0">{{ mensaje }}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

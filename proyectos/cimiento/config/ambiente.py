@@ -20,18 +20,19 @@ import io
 import os
 
 
-def cargar(ruta):
-    """Pone en el ambiente lo que el archivo declare. Devuelve qué puso.
+def leer(ruta):
+    """`{clave: valor}` de lo que el archivo declare, sin tocar el ambiente.
 
-    Si el archivo no está, no pasa nada y no falla: correr sin `.env` es el caso
-    normal de una máquina recién clonada.
+    Lo usa también el freno (`EP-025·HU-005`), que corre fuera de Django y no
+    debe cambiar el ambiente del proceso que lo llama. Si el archivo no está,
+    devuelve `{}`.
     """
-    puestas = {}
+    valores = {}
     try:
         with io.open(ruta, encoding="utf-8", errors="replace") as abierto:
             lineas = abierto.readlines()
     except OSError:
-        return puestas
+        return valores
 
     for linea in lineas:
         limpia = linea.strip()
@@ -40,8 +41,19 @@ def cargar(ruta):
         clave, valor = limpia.split("=", 1)
         clave = clave.strip()
         valor = valor.strip().strip('"').strip("'")
-        if not clave or not valor:
-            continue
+        if clave and valor:
+            valores[clave] = valor
+    return valores
+
+
+def cargar(ruta):
+    """Pone en el ambiente lo que el archivo declare. Devuelve qué puso.
+
+    Si el archivo no está, no pasa nada y no falla: correr sin `.env` es el caso
+    normal de una máquina recién clonada.
+    """
+    puestas = {}
+    for clave, valor in leer(ruta).items():
         # Lo que ya viene del ambiente manda: es como se pisa por una corrida.
         if clave in os.environ:
             continue

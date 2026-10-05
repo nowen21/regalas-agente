@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titulo %}Reglas de {{ proyecto.nombre }}{% endblock %}
+{% block cabecera %}Reglas de {{ proyecto.nombre }}{% endblock %}
+
+{% block contenido %}
+{% for mensaje in messages %}
+<div class="alert {% if mensaje.level_tag == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="alert">{{ mensaje }}</div>
+{% endfor %}
+<p class="text-secondary">
+  Frena: el freno detiene la acción. Avisa: se deja hacer y se avisa. Apagada: no se revisa.
+  Las reglas del núcleo siempre frenan y no aparecen.
+  <a href="{% url 'niveles:historial' proyecto.pk %}">Historial</a>
+</p>
+<form method="post">
+  {% csrf_token %}
+  {% for capitulo, filas in capitulos %}
+  <div class="card mb-3">
+    <div class="card-header"><h3 class="card-title">Capítulo {{ capitulo }}</h3></div>
+    <table class="table card-table table-vcenter">
+      <tbody>
+        {% for regla, nivel in filas %}
+        <tr>
+          <td class="w-1"><code>{{ regla.id }}</code></td>
+          <td>{{ regla.titulo }}</td>
+          <td class="w-1">
+            {% if puede_cambiar %}
+            <select class="form-select form-select-sm" name="nivel-{{ regla.id }}">
+              {% for codigo, nombre in niveles %}
+              <option value="{{ codigo }}"{% if codigo == nivel %} selected{% endif %}>{{ nombre }}</option>
+              {% endfor %}
+            </select>
+            {% else %}
+            {{ nivel|capfirst }}
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+  {% if puede_cambiar %}
+  <button class="btn btn-primary" type="submit">Guardar</button>
+  {% endif %}
+</form>
+{% endblock %}

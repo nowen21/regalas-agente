@@ -130,8 +130,9 @@ def permitido(proyecto):
 
 
 # Lo que «Corrija» deja corregir sin análisis: las herramientas del proceso
-# (análisis 16 del pendiente 103, acuerdo 2).
-HERRAMIENTAS = ("validadores/", "adaptadores/")
+# (análisis 16 del pendiente 103, acuerdo 2). Desde que pasaron a clases, también
+# viven en `proyectos/cimiento/core/` (sesión del 2026-10-04, «Corrija»).
+HERRAMIENTAS = ("validadores/", "adaptadores/", "proyectos/cimiento/core/")
 
 
 def motivo(proyecto, ruta_abs, lo_permitido):

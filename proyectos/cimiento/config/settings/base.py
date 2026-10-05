@@ -26,6 +26,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "core.inicio",
+    "core.cuentas",
+    "core.proyectos",
+    "core.niveles",
+    "core.consumo",
 ]
 
 MIDDLEWARE = [
@@ -34,9 +39,18 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # La base se revisa antes que la entrada: revisar la sesión ya la usa, y
+    # su error saldría como una página 500 en vez de decir qué hacer.
+    "core.inicio.middleware.BaseApagada",
+    "django.contrib.auth.middleware.LoginRequiredMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+# Toda pantalla pide entrar (`LoginRequiredMiddleware`); estas son las rutas.
+LOGIN_URL = "cuentas:entrar"
+LOGIN_REDIRECT_URL = "inicio:inicio"
+LOGOUT_REDIRECT_URL = "cuentas:entrar"
 
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
@@ -56,11 +70,22 @@ TEMPLATES = [
     },
 ]
 
-# Un archivo local: no hay motor que levantar aparte.
+# MariaDB, con la conexión del `.env` (`00·N6`). Django usa para ella el mismo
+# motor que para MySQL. `manage.py preparar_base` la crea si falta y la migra.
+# Con `or` y no con el valor por defecto de `get`: una variable copiada de
+# `.env.example` sin llenar llega vacía, y vacía no es un nombre de base.
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": RAIZ / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("DB_NOMBRE") or "cimiento",
+        "USER": os.environ.get("DB_USUARIO") or "root",
+        "PASSWORD": os.environ.get("DB_CLAVE", ""),
+        "HOST": os.environ.get("DB_SERVIDOR") or "127.0.0.1",
+        "PORT": os.environ.get("DB_PUERTO") or "3307",
+        # InnoDB a la fuerza: el MariaDB de WAMP crea las tablas con MyISAM,
+        # que no tiene transacciones ni llaves foráneas.
+        "OPTIONS": {"charset": "utf8mb4",
+                    "init_command": "SET default_storage_engine=INNODB"},
     }
 }
 
@@ -77,7 +102,17 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [RAIZ / "static"]       # solo lo propio del proyecto
+# Lo propio del proyecto, y de lo que instala npm solo la carpeta `dist` de
+# cada paquete: Django no ve el resto de `node_modules/` (`10·DEP2`).
+# Sin prefijo: en Windows, Django 5.2 compara el prefijo con `\` y la URL llega
+# con `/`, así que una carpeta con prefijo nunca se sirve.
+NPM = RAIZ / "node_modules"
+STATICFILES_DIRS = [
+    RAIZ / "static",
+    NPM / "@tabler" / "core" / "dist",     # css/tabler.min.css, js/tabler.min.js
+    NPM / "htmx.org" / "dist",             # htmx.min.js
+    NPM / "apexcharts" / "dist",           # apexcharts.min.js
+]
 STATIC_ROOT = RAIZ / "staticfiles"         # lo junta `collectstatic`; no se versiona
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

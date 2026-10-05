@@ -22,7 +22,7 @@ La plataforma ya no promete que las reglas llegan al abrir la sesión. `F-009` s
 | Tarea | Qué se hizo | Dónde quedó | Evidencia |
 |---|---|---|---|
 | T-01 | Narrativa, contexto, título del CA-01, estado y bitácora | [HU-005](../HU-005-entregarle-las-reglas-al-agente.md) | CP-001 |
-| T-02 | Las tres líneas de `F-009`, y la del agente entre los interesados | [epica.md](../../epica.md) | CP-001 |
+| T-02 | Las tres líneas de `F-009`, y la del agente entre los interesados | [documentacion/epicas/EP-016-el-cuerpo-de-reglas-se-administra-desde-la-plataforma/epica.md](../../epica.md) | CP-001 |
 | T-03 | `RF-09` y la ficha de `F-009` | `cvds/analisis-requisitos/` | CP-001 |
 | T-04 | Pruebas, planificación y decisiones de arquitectura | `cvds/` | CP-001 |
 | T-05 | La búsqueda final, y cinco promesas más que encontró | `cvds/planificacion/`, `cvds/diseno/README.md` | CP-001 |

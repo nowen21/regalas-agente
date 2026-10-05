@@ -10,7 +10,9 @@ _base_modulo.md
 # local del agente que deja el instalador.
 proyectos/*/.env
 proyectos/*/db.sqlite3
+proyectos/*/.venv/
 proyectos/*/staticfiles/
+proyectos/*/node_modules/
 proyectos/*/CLAUDE.md
 proyectos/*/.agente/
 proyectos/*/.claude/

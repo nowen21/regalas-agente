@@ -30,3 +30,5 @@
 | [2026-08-26](2026-08-26/) | El inventario que dejó de mantenerse a mano, el tope de ruta de Windows, el vocabulario del estado, y los cinco documentos que citaban una historia cerrada como abierta |
 | [2026-08-27](2026-08-27/) | La `HU-021` en sus dos fases, el resumen de la sesión que iba nueve hallazgos atrás, y el pendiente 88 |
 | [2026-09-28](2026-09-28/) | La fase `B` de `EP-005·HU-023`: la línea de tareas en las 242 reglas que faltaban |
+| [2026-10-04](2026-10-04/) | El traslado de la plataforma a `proyectos/cimiento/`, los textos de enlace que el reparador dañó, y las paridades que comparan cada validador viejo con su clase nueva (`paridad_*.py`) |
+| [2026-10-05](2026-10-05/) | La medición del umbral de las reglas parecidas de la `HU-027`, la entrada con que se prueba su enganche sobre `02·F25`, la prueba de guardar el diccionario del modelo como tabla para no cargarlo entero, y el cierre de los documentos de `EP-025·HU-006` a `HU-010` (`cerrar_hu_006.py` a `cerrar_hu_010.py`), y la separación de lo que cada sesión dejó sin guardar (`clasificar_cambios_de_la_sesion.py`) |

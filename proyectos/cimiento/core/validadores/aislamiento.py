@@ -77,8 +77,7 @@ class PruebasAisladas(ValidadorDeCodigo):
                 "(T3: `executionOrder=\"random\"` para que no dependan del orden)")
 
     def _revisar_phpunit_de(self, repo):
-        etiqueta = os.path.relpath(repo, self.proyecto.raiz).replace("\\", "/")
-        prefijo = "" if etiqueta == "." else etiqueta + "/"
+        prefijo = self.proyecto.prefijo_de(repo)
         versionados = set(Git(repo).versionados())
         hallazgos = []
         for relativa in versionados:

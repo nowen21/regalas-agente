@@ -153,7 +153,7 @@ def reglas_sin_origen(texto, plantilla_texto=""):
             continue
         if _IDENTIFICADOR.search(regla):
             continue
-        linea = texto[:seccion.start(1) + m.start()].count("\n") + 1
+        linea = texto[:seccion.start(1) + m.start(1)].count("\n") + 1
         sin_origen.append((linea, regla))
     return sin_origen
 

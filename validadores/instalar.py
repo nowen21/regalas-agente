@@ -1150,21 +1150,17 @@ def instalar_agente_config(ruta, aplicar):
 
 
 def _registrar_en_cimiento(nombre, ruta, scope):
-    """El alta va al registro de Cimiento (la interfaz) si está instalado.
-
-    Desde el pendiente 75 la fuente de verdad de los proyectos es ese registro
-    y `plantillas/proyectos.md` se genera desde él; el instalador anotaba su
-    fila en el `.md` y la interfaz la tenía que importar (pendiente 76). Si la
-    interfaz no está lista (sin `.venv` o sin base), se vuelve al `.md` y el
-    registro la importa después: nada se pierde, solo se tarda un clic.
+    """El alta va también al registro de Cimiento (`manage.py registrar`) si
+    Cimiento tiene su ambiente. `plantillas/proyectos.md` se sigue escribiendo
+    aparte: lleva la memoria y el stack, que el registro no guarda.
     """
     # Solo contra el registro real: si una prueba redirigió REGISTRO a una
     # carpeta temporal, el alta va al .md temporal y nunca a la base de verdad.
     real = os.path.join(RAIZ, "plantillas", "proyectos.md")
     if os.path.normcase(os.path.abspath(REGISTRO)) != os.path.normcase(real):
         return False
-    manage = os.path.join(RAIZ, "interfaz", "manage.py")
-    python = os.path.join(RAIZ, "interfaz", ".venv", "Scripts", "python.exe")
+    manage = os.path.join(RAIZ, "proyectos", "cimiento", "manage.py")
+    python = os.path.join(RAIZ, "proyectos", "cimiento", ".venv", "Scripts", "python.exe")
     if not (os.path.isfile(manage) and os.path.isfile(python)):
         return False
     r = subprocess.run(
@@ -1204,16 +1200,16 @@ def instalar_registro(ruta, aplicar):
     nombre = os.path.basename(os.path.abspath(ruta).rstrip("\\/"))
     fila = (f"| {nombre} | `{os.path.abspath(ruta)}` | "
             f"`proyecto:{_slug(nombre)}` | por detectar |\n")
-    if aplicar and _registrar_en_cimiento(nombre, os.path.abspath(ruta),
-                                          f"proyecto:{_slug(nombre)}"):
-        return [f"anotar «{nombre}» en el registro de Cimiento (y regenerado "
-                f"plantillas/proyectos.md)"]
+    en_cimiento = aplicar and _registrar_en_cimiento(nombre, os.path.abspath(ruta),
+                                                     f"proyecto:{_slug(nombre)}")
     if aplicar:
         texto = leer(REGISTRO)
         if not texto.endswith("\n"):
             texto += "\n"
         with open(REGISTRO, "w", encoding="utf-8", newline="\n") as f:
             f.write(texto + fila)
+    if en_cimiento:
+        return [f"anotar «{nombre}» en plantillas/proyectos.md y en el registro de Cimiento"]
     return [f"anotar «{nombre}» en plantillas/proyectos.md"]
 
 
@@ -1365,6 +1361,19 @@ def instalar(nombre, ruta, aplicar):
     if propio:
         print("  · es la carpeta del propio estándar: se ponen los enganches, "
               "el histórico y la memoria; nada de configuración de proyecto")
+        # `EP-025·HU-001` · La aplicación de Cimiento, antes de los enganches.
+        # Vive en la clase de Cimiento (análisis 1 del pendiente 116, acuerdo 8):
+        # aquí solo se llama, para no escribirla dos veces.
+        sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
+        # `core.validadores` primero: importar el instalador de entrada cae en
+        # un ciclo de importación de Cimiento (pendiente 121).
+        import core.validadores  # noqa: F401
+        from core.herramientas.instalar import Instalador
+        instalador_cimiento = Instalador(RAIZ)
+        for paso in (instalador_cimiento.preparar_cimiento(aplicar) + instalador_cimiento.asegurar_pymysql(aplicar)
+                     + instalador_cimiento.programar_lectura(aplicar)
+                     + instalador_cimiento.activar_telemetria(aplicar)):
+            print(f"  {marca} {paso}")
     else:
         for paso in instalar_estructura(ruta, aplicar):
             print(f"  {marca} {paso}")

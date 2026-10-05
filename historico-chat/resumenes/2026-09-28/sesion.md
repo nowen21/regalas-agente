@@ -112,7 +112,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
   - **Como** usuario del estándar
   - **Quiero** que el agente cumpla la regla aunque yo le pida lo contrario, y me diga cuál es
   - **Para** que las reglas se cumplan siempre, y cambiarlas sea una decisión escrita y no un descuido
-  - **Contexto:** la memoria lo dice y `base/` no. Según [memory.md](../../memory/memory.md), la preferencia que vale para todos sube a `base/` como regla y el recuerdo se queda.
+  - **Contexto:** la memoria lo dice y `base/` no. Según [historico-chat/memory/memory.md](../../memory/memory.md), la preferencia que vale para todos sube a `base/` como regla y el recuerdo se queda.
 - **Qué se decidió:** el usuario aprobó el pendiente 98 y decidió que la regla va en el núcleo `00`, como blindada. Pidió escribir una HU y su fase, pero el núcleo tiene historia dueña ([HU-012](../../../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-012-inventario-de-acciones-y-riesgo/HU-012-inventario-de-acciones-y-riesgo.md)) y todo cambio del capítulo baja por ella; el agente no creó la HU nueva y se lo dijo.
 - **Estado:** resuelto acá
 - **Responde a:** —
@@ -200,7 +200,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-28-sesion.md](../.
 
 | Campo | Valor |
 |---|---|
-| Qué pasó | La tabla 2.1 de [07-plan-trabajo.md](../../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) acepta filas como «`validadores/docs/`» o «Los documentos de esta fase», que un programa no puede comparar con una ruta. La plantilla no tiene un campo de quién aprobó el plan y cuándo, ni una sección para las ampliaciones: la sección 12 del plan de la fase `C` de HU-023 se agregó a mano. |
+| Qué pasó | La tabla 2.1 de [plantillas/ciclo-vida-proyectos/07-plan-trabajo.md](../../../plantillas/ciclo-vida-proyectos/07-plan-trabajo.md) acepta filas como «`validadores/docs/`» o «Los documentos de esta fase», que un programa no puede comparar con una ruta. La plantilla no tiene un campo de quién aprobó el plan y cuándo, ni una sección para las ampliaciones: la sección 12 del plan de la fase `C` de HU-023 se agregó a mano. |
 | Por qué importa | Sin eso, el freno de H-10 no puede saber qué está permitido ni desde cuándo. |
 | Qué lo soluciona | **EP-001 · HU nueva: el plan de trabajo se puede comprobar**<br>Como agente que ejecuta un plan<br>Quiero una tabla de archivos con rutas exactas, un campo de aprobación con fecha y una sección fija de ampliaciones aprobadas<br>Para que un programa pueda decir si una escritura está dentro del plan<br>Contexto: hoy la regla de `02·F8` está escrita en la plantilla y el agente la incumplió igual. |
 | Qué se decidió | El usuario lo analizó el 2026-09-29 y pidió registrarlo. |

@@ -1,0 +1,10 @@
+{
+  "name": "cimiento",
+  "private": true,
+  "description": "Lo que las pantallas de Cimiento usan en el navegador. Django lo lee desde node_modules con STATICFILES_DIRS.",
+  "dependencies": {
+    "@tabler/core": "1.6.1",
+    "apexcharts": "7.8.0",
+    "htmx.org": "2.0.11"
+  }
+}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block titulo %}Proyectos{% endblock %}
+{% block cabecera %}Proyectos{% endblock %}
+
+{% block contenido %}
+<div class="card">
+  {% if puede_cambiar %}
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'proyectos:registrar' %}">Registrar</a>
+  </div>
+  {% endif %}
+  <div class="table-responsive">
+    <table class="table card-table table-vcenter">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ruta</th>
+          <th>Carpeta de Claude Code</th>
+          <th class="text-end">Límite por enganche</th>
+          <th class="text-end">Límite por archivo</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for proyecto in proyectos %}
+        <tr>
+          <td>{{ proyecto.nombre }}</td>
+          <td class="text-secondary">{{ proyecto.ruta }}</td>
+          <td class="text-secondary">{{ proyecto.carpeta_claude }}</td>
+          <td class="text-end">{{ proyecto.limite_enganche }}</td>
+          <td class="text-end">{{ proyecto.limite_archivo }}</td>
+          <td>{% if proyecto.activo %}Activo{% else %}Inactivo{% endif %}</td>
+          <td class="text-nowrap">
+            <a href="{% url 'niveles:reglas' proyecto.pk %}">Reglas</a>
+            {% if puede_cambiar %} · <a href="{% url 'proyectos:editar' proyecto.pk %}">Editar</a>{% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7" class="text-secondary">Todavía no hay proyectos registrados.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

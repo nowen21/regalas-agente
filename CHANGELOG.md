@@ -11,6 +11,80 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 54.3.0 — 2026-10-05
+
+**Al escribir una regla llegan las que se le parecen por significado.**
+
+**MENOR**: es un aviso nuevo; ningún proyecto tiene que hacer nada.
+
+**Lo que entra:**
+
+- `proyectos/cimiento/core/validadores/parecidas.py`: `ReglasParecidas` compara el título y la exigencia de cada regla con la búsqueda por significado de `memoria/`, con umbral 0,85 y hasta cinco. Sin la búsqueda instalada, dice que no pudo buscar.
+- La tabla de palabras del modelo se guarda una vez en `memoria/diccionario.db` (no se versiona) y cada regla se traduce con ella: el aviso tarda 2 s y no 4 o más, con los mismos números que la librería.
+- `validar.py parecidas --regla <ID>` o `--preparados`; queda fuera de la corrida completa.
+- El enganche de reglas relacionadas suma las parecidas a lo que ya entregaba.
+- `20·M12` pasa a tener control en `validadores/reglas-validables.md`.
+
+**Qué hace un proyecto al día:** nada.
+
+Sale del análisis 1 del pendiente 116 (acuerdo 5) por `EP-004·HU-027`.
+
+---
+
+## 54.2.0 — 2026-10-04
+
+**La plantilla de un proyecto Django admite dependencias de npm.**
+
+**MENOR**: aditivo; ningún proyecto tiene que hacer nada.
+
+**Lo que entra:**
+
+- `plantillas/estructura-proyecto-django.md`: el árbol suma `package.json`, `package-lock.json` y `node_modules/` (no se versiona), y «Dependencias» explica cómo los lee Django: la carpeta `dist` de cada paquete en `STATICFILES_DIRS`, sin prefijo.
+- `proyectos/cimiento/`: corre sobre MariaDB `cimiento`; `manage.py preparar_base` crea la base si falta y la migra; plantilla común de pantallas con Tabler, htmx y ApexCharts; la instalación del estándar prepara Cimiento antes de poner los enganches.
+- `proyectos/cimiento/core/proyectos/`: la migración `0002` trae al registro los proyectos de `plantillas/proyectos.md` cuya carpeta existe, y el instalador registra cada proyecto nuevo con `proyectos/cimiento/manage.py registrar`, ya no con `interfaz/`.
+- `proyectos/cimiento/core/consumo/`: `manage.py leer_consumo` guarda el gasto de cada llamada, enganche y archivo leído de los `.jsonl`, y la instalación la programa una vez al día. Cimiento recibe en `/v1/logs` la telemetría de Claude Code, que la instalación activa en `~/.claude/settings.json`; una llamada que llega por los dos caminos cuenta una vez. «Gasto», en el menú, muestra el gasto de todos los proyectos por proyecto, día, sesión, enganche y archivo leído, y se actualiza cada 10 segundos.
+- `hook_presupuesto.py --modo aviso`: con cada mensaje avisa el enganche o el archivo del turno anterior que pasó el límite de su proyecto, sin detener nada. El lector cuenta también lo que un enganche escribe como texto plano en `UserPromptSubmit` y `SessionStart`.
+- «Gasto» suma la segunda tanda de niveles: por mensaje con su palabra clave, por trabajo (el análisis o la fase que tocó el turno), por herramienta, por agente auxiliar (ahora se leen sus registros), por modelo, por tipo de token y lo que llena el contexto. Del mensaje no se guarda el texto.
+
+**Qué hace un proyecto al día:** nada. El que use bibliotecas del navegador las declara con npm como dice la plantilla.
+
+Sale del análisis 1 del pendiente 119 (acuerdos 6 y 15) por `EP-025·HU-001`.
+
+---
+
+## 54.1.0 — 2026-10-04
+
+**Una función que ya existe se avisa al crearla.**
+
+**MENOR**: un validador nuevo que avisa; nadie tiene que hacer algo nuevo.
+
+**Lo que entra:**
+
+- `validar.py repetidas` (`07·Q4`): avisa la función que hace lo mismo que otra, aunque tenga otro nombre y otras variables. Compara el cuerpo sin comentarios, con los textos, los números y los nombres propios igualados. Ocho copias dan siete avisos, todos nombrando la primera. Con `--preparados`, solo las funciones nuevas del commit.
+- `proyectos/cimiento/core/validadores/codigo.py`: la separación de funciones vive en `Funciones`, y la usan este validador y el de `07·Q3`.
+
+Sale del análisis 1 del pendiente 116 (acuerdos 2 a 4) por `EP-004·HU-026`, y resuelve el pendiente 117.
+
+---
+
+## 54.0.0 — 2026-10-04
+
+**Aprobar el análisis aprueba los planes que salen de él.** ⚠ obliga a migrar
+
+**MAYOR**: cambia cómo se aprueba un plan en todo proyecto.
+
+**Lo que entra:**
+
+- `02·F4` y `02·F25`: el plan que sale de un análisis aprobado y cumple sus filas ya tiene el OK, y su línea de aprobación cita ese análisis. Lo que el análisis no contempló pide el OK otra vez.
+- `plantillas/ciclo-vida-proyectos/07-plan-trabajo.md`: la fila **Aprobación** muestra las dos formas, la persona o el análisis.
+- `proyectos/cimiento/core/enganches/plan_vs_hecho.py`: `PlanDeTrabajo.aprobado()` acepta la aprobación que cita un análisis aprobado que nombra la HU del plan; el freno, la comparación del commit y el origen la usan.
+
+**Qué hace un proyecto al día:** nada para los planes ya aprobados. Desde esta versión, un plan que sale de un análisis aprobado puede citarlo en vez de esperar otro OK.
+
+Sale del análisis 1 del pendiente 116 (acuerdo 6) por `EP-023·HU-008`.
+
+---
+
 ## 53.3.0 — 2026-10-04
 
 **Lo que un proyecto reporta se corrige para todos los proyectos.**

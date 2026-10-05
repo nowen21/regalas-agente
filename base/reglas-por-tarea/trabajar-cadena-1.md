@@ -245,7 +245,7 @@ CORRECTO:   se reporta en el estándar, se anota acá el seguimiento, y el
 Fuente: [02·F24](../02-flujo-de-trabajo/reglas/F24-el-defecto-del-estandar-se-reporta-no-se-corrige.md#f24--el-defecto-del-estándar-se-reporta-no-se-corrige)
 
 ## F25 · Autorizar el arranque no aprueba el plan
-Decir «arranque con X» autoriza **abrir la fase**, no ejecutar su plan detallado: son dos permisos distintos y el segundo se pide aparte, con el plan a la vista (extiende [`02·F4`](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
+Decir «arranque con X» autoriza **abrir la fase**, no ejecutar su plan detallado: son dos permisos distintos y el segundo se pide aparte, con el plan a la vista, salvo que lo haya dado ya el análisis aprobado del que sale el plan (extiende [`02·F4`](../02-flujo-de-trabajo/reglas/F4-todo-plan-lleva-su-plan-de-pruebas-y-su-aprobacion-explicita.md)).
 ```
 INCORRECTO: «dale, arrancá con la fase B» → se escribe el plan y se ejecuta seguido
 CORRECTO:   se abre la fase, se escribe el plan, se presenta, y se espera el segundo sí
@@ -296,12 +296,3 @@ CORRECTO:   se busca por qué el andamio supone estar dentro del estándar, se
 ```
 
 Fuente: [02·F29](../02-flujo-de-trabajo/reglas/F29-el-reporte-de-un-proyecto-se-corrige-para-todos.md#f29--el-reporte-de-un-proyecto-se-corrige-para-todos)
-
-## F3 · Ejecuta seguido el plan aprobado
-Aprobado el plan, ejecuta **todos** sus cambios seguidos, sin pedir permiso por cada archivo. Solo pausa si surge algo **no cubierto** por el plan.
-```
-INCORRECTO: "hago el cambio 1, ¿procedo?" → "el 2, ¿procedo?" → ...
-CORRECTO:   ejecuto todo el plan → reporto el resultado
-```
-
-Fuente: [02·F3](../02-flujo-de-trabajo/reglas/F3-ejecuta-seguido-el-plan-aprobado.md#f3--ejecuta-seguido-el-plan-aprobado)

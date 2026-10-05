@@ -102,6 +102,7 @@ N/A: la épica no trata de una entidad con campos, estados y operaciones. Su alc
 | [HU-005](HU-005-nada-se-agrega-fuera-de-lo-pedido/HU-005-nada-se-agrega-fuera-de-lo-pedido.md) | Nada se agrega fuera de lo pedido | Análisis 1: 8, 22, 28 | 2 | Terminada el 2026-10-03 |
 | [HU-006](HU-006-lo-aprendido-incluye-las-lecciones/HU-006-lo-aprendido-incluye-las-lecciones.md) | Lo aprendido incluye las lecciones | Análisis 1: 9 | 7 | Terminada el 2026-10-03 |
 | [HU-007](HU-007-nada-se-escribe-fuera-del-plan-aprobado/HU-007-nada-se-escribe-fuera-del-plan-aprobado.md) | Nada se escribe fuera del plan aprobado | Análisis 1: 25, 26, 27, 31 | 6 | Terminada el 2026-10-03 |
+| [HU-008](HU-008-aprobar-el-analisis-aprueba-lo-que-sale-de-el/HU-008-aprobar-el-analisis-aprueba-lo-que-sale-de-el.md) | «Título» | «Prioridad» | «Estimación» | «…» |
 
 ## 10. Consideraciones técnicas
 

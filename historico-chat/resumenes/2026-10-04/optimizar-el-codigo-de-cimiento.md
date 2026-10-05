@@ -44,6 +44,15 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 | Por qué importa | Lo que el usuario ordena en el chat no pasa el freno; y la plataforma no se puede abrir en `proyectos/` sin `core.longpaths` |
 | Pendiente | [Pendiente 118: el freno detiene lo que el usuario ya autorizó](pendientes/118-el-freno-detiene-lo-que-el-usuario-ya-autorizo/pendiente.md), que scilit reportó por la misma causa |
 
+### H-7 · Pasar los validadores a clases destapa errores que la paridad copiaba
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | Al escribir las pruebas de las clases nuevas aparecieron dos errores viejos. `plantillas.py` reportaba una regla de negocio sin origen en la línea anterior a la suya. Y las dos pruebas de renombrado del trinquete de marcas no probaban nada: `git mv` fallaba callado porque la carpeta destino no existía. El enlace al README de una carpeta (fila 18) fue el tercero |
+| Por qué importa | La paridad compara lo viejo con lo nuevo, así que un error del viejo pasa igual al nuevo. Solo una prueba escrita de cero lo ve |
+| Qué se decidió | Se corrigen en las dos versiones, la vieja y la clase, y la paridad se vuelve a correr: queda igual en este repo y en tres proyectos reales |
+| Pendiente | [Pendiente 116: el código de Cimiento se repite en vez de reusarse](pendientes/116-el-codigo-de-cimiento-se-repite-en-vez-de-reusarse/pendiente.md), fila 19 de su análisis |
+
 ### H-1 · El freno detuvo una orden de consola fuera del plan
 
 | Campo | Valor |
@@ -59,6 +68,14 @@ El punto de partida fue el inventario: Cimiento tiene 663 archivos `.py` propios
 | Qué pasó | El 2026-10-04 10:29, el freno detuvo una orden de consola sobre `$f`: no hay una fase en curso y ninguna regla autoriza escribirlo (02·F8). |
 | Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
 | Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
+
+### H-3 · Apareció `proyectos/cimiento/node_modules/` y el freno lo cuenta como cambio
+
+| Campo | Valor |
+|---|---|
+| Qué pasó | El 2026-10-04, al medir el umbral de la HU-027, el freno detuvo la ejecución por cientos de archivos de `proyectos/cimiento/node_modules/` (Tabler, ApexCharts, htmx, Popper). Esta sesión no los creó: la orden solo leía. El `.gitignore` tapa `proyectos/*/.venv/` pero no `node_modules/`. |
+| Por qué importa | Es el mismo caso del `.venv` de la HU-008: lo que instala un proyecto se ve como cambio sin plan, y el freno para todo lo demás. |
+| Pendiente | Resuelto el 2026-10-05: `proyectos/*/node_modules/` ya está en el `.gitignore` y git la ignora. |
 
 ---
 

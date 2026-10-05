@@ -26,23 +26,13 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import comun                                    # noqa: E402
-import brevedad                                              # noqa: E402
-import historico                                             # noqa: E402
-import redaccion                                             # noqa: E402
-from comun import RAIZ, preparar_salida                      # noqa: E402
-
-
-def raiz_pedida(argv):
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return RAIZ
+from core.comun.consola import entrada_json, preparar_salida, raiz_pedida     # noqa: E402
+from core.enganches.historico import Historico, Transcript       # noqa: E402
+from core.validadores.brevedad import Respuestas                 # noqa: E402
+from core.validadores.redaccion import Redaccion                 # noqa: E402
 
 
 def _mediana_de_la_sesion(raiz, sesion):
@@ -53,30 +43,30 @@ def _mediana_de_la_sesion(raiz, sesion):
     viene siendo**.
     """
     try:
-        archivo = historico._archivo(raiz, sesion, crear=False)
+        archivo = Historico(raiz).archivo(sesion, crear=False)
         if not archivo:
             return 0
-        return brevedad.resumen(archivo).get("mediana", 0)
+        return Respuestas.resumen(archivo).get("mediana", 0)
     except Exception:                     # noqa: BLE001 — nunca romper el cierre
         return 0
 
 
 def main():
     preparar_salida()
-    raiz = raiz_pedida(sys.argv[1:])
+    raiz = raiz_pedida(sys.argv[1:], RAIZ)
 
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0
 
     try:
-        texto, _marca = historico.ultima_respuesta(
+        texto, _marca = Transcript.ultima_respuesta(
             datos.get("transcript_path", ""))
         if not texto:
             return 0
         mediana = _mediana_de_la_sesion(raiz, datos.get("session_id") or "")
-        linea = redaccion.linea_de_cierre(texto, mediana)
+        linea = Redaccion.linea_de_cierre(texto, mediana)
         if linea:
             print(linea)
     except Exception:                     # noqa: BLE001

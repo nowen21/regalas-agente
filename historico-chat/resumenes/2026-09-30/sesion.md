@@ -12,7 +12,7 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-09-30-sesion.md](../.
 
 ### H-1 · Análisis del pendiente 103
 
-El análisis está en [103-cada-documento-de-la-cadena-sale-del-anterior/](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), junto con la versión vigente del [pendiente](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md). Queda ahí mientras se decide dónde debe vivir.
+El análisis está en [documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/analisis-1.md), junto con la versión vigente del [pendiente](../../../documentacion/epicas/EP-023-lo-que-se-construye-es-lo-que-se-analizo/pendientes/103-cada-documento-de-la-cadena-sale-del-anterior/pendiente.md). Queda ahí mientras se decide dónde debe vivir.
 
 ### H-2 · El enganche del análisis solo sirve para un análisis
 

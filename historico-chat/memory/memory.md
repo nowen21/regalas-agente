@@ -68,3 +68,4 @@ Dicho corto: *«no me pongas `Co-Authored-By`»* es preferencia — nadie más t
 - [En una fase se corren solo las pruebas de esa fase](solo-las-pruebas-de-la-fase.md): las que escribe la fase y las de los programas que cambia; la suite completa solo si el usuario la pide.
 - [Aprobar es la orden de dejarlo funcionando](aprobar-es-la-orden-de-hacerlo.md): lo aprobado se ejecuta completo, hasta que funcione; aprobado el análisis, no se vuelve a pedir aprobación para sus HU, planes ni fases.
 - [Lo que un proyecto reporta es un defecto de todos](el-reporte-de-un-proyecto-es-de-todos.md): se busca su causa en Cimiento, se revisa en todos los proyectos de la base y se corrige en la raíz; nada se piensa solo para Cimiento.
+- [Lo del tema entra al análisis abierto](lo-del-tema-entra-al-analisis-abierto.md): mientras un análisis está abierto, lo que surja sobre su tema se trata en él; no se anota como pendiente aparte ni se manda a otro análisis.

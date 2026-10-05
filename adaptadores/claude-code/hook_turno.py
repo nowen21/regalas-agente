@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """`EP-005·HU-020` · Al terminar el turno, anota lo que cambió en él.
 
-Lo que habla con esta herramienta; el trabajo vive en `validadores/sesiones.py`.
+Lo que habla con esta herramienta; el trabajo vive en
+`proyectos/cimiento/core/validadores/sesiones.py`.
 
 **Por qué existe.** El registro de la sesión se llenaba solo desde las
 herramientas de escritura, y la mayoría de los archivos los escriben guiones que
@@ -19,28 +20,17 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-    "validadores"))
+RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(RAIZ, "proyectos", "cimiento"))
 
-import comun                                    # noqa: E402
-import sesiones                                          # noqa: E402
-from comun import RAIZ, preparar_salida                  # noqa: E402
-
-
-def raiz_pedida(argv, datos):
-    """`--raiz X`, el `cwd` que manda la herramienta, o el estándar."""
-    if "--raiz" in argv:
-        i = argv.index("--raiz")
-        if i + 1 < len(argv):
-            return os.path.abspath(argv[i + 1])
-    return os.path.abspath(datos.get("cwd") or RAIZ)
+from core.comun.consola import entrada_json, preparar_salida, raiz_pedida     # noqa: E402
+from core.validadores.sesiones import Sesiones                   # noqa: E402
 
 
 def main():
     preparar_salida()
     try:
-        datos = comun.entrada_json()
+        datos = entrada_json()
     except (json.JSONDecodeError, ValueError):
         return 0
 
@@ -52,7 +42,7 @@ def main():
         return 0
 
     try:
-        sesiones.anotar_el_turno(raiz_pedida(sys.argv[1:], datos), sesion)
+        Sesiones(raiz_pedida(sys.argv[1:], datos.get("cwd") or RAIZ)).anotar_el_turno(sesion)
     except Exception:       # noqa: BLE001
         # Deliberado y declarado: lo que esto protege es que un commit no se
         # lleve trabajo ajeno; lo que arriesga si revienta es la conversación.

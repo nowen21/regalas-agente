@@ -134,6 +134,8 @@ class Trinquete(unittest.TestCase):
         """
         self.commitear("plantillas/algo.md",
                        u"Un texto %s con inciso %s viejo.\n" % (RAYA, RAYA))
+        # Sin la carpeta destino, `git mv` falla callado y la prueba no prueba nada.
+        os.makedirs(os.path.join(self.tmp, "plantillas", "ciclo"))
         _git(self.tmp, "mv", "plantillas/algo.md", "plantillas/ciclo/algo.md")
         niveles, hallazgos = self.veredicto()
         self.assertEqual([], niveles,
@@ -142,6 +144,8 @@ class Trinquete(unittest.TestCase):
     def test_renombrar_y_agregar_marca_si_cuenta(self):
         """Lo que el trinquete mira es el crecimiento, también tras un `mv`."""
         self.commitear("plantillas/algo.md", u"Un texto %s viejo.\n" % RAYA)
+        # Sin la carpeta destino, `git mv` falla callado y la prueba no prueba nada.
+        os.makedirs(os.path.join(self.tmp, "plantillas", "ciclo"))
         _git(self.tmp, "mv", "plantillas/algo.md", "plantillas/ciclo/algo.md")
         self.preparar("plantillas/ciclo/algo.md",
                       u"Un texto %s viejo %s y una raya nueva.\n"

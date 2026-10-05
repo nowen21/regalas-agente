@@ -31,3 +31,38 @@ class Git:
     def versionados(self):
         """Lo que git tiene registrado, con `/`."""
         return [l.replace("\\", "/") for l in self.lineas("ls-files")]
+
+    def preparados(self):
+        """Lo que entra en el commit que se está por hacer (creado, copiado,
+        modificado o renombrado)."""
+        return [l.replace("\\", "/") for l in self.lineas("diff", "--cached", "--name-only", "--diff-filter=ACMR")]
+
+    def rama_actual(self):
+        salida = self.lineas("rev-parse", "--abbrev-ref", "HEAD")
+        return salida[0] if salida else None
+
+    def rama_principal(self):
+        """La principal sin suponer cuál es: la que declare el remoto
+        (`origin/HEAD`) o el primer nombre habitual que exista."""
+        ref = self.lineas("symbolic-ref", "--short", "refs/remotes/origin/HEAD")
+        if ref:
+            return ref[0].split("/", 1)[-1]
+        for candidata in ("main", "master", "trunk", "develop"):
+            if self.lineas("rev-parse", "--verify", "--quiet", "refs/heads/" + candidata):
+                return candidata
+        return None
+
+    def commits_detras(self, principal):
+        """Cuántos commits tiene la principal que HEAD no: la local si existe, si no la del remoto."""
+        for ref in (principal, "origin/" + principal):
+            salida = self.lineas("rev-list", "--count", "HEAD.." + ref)
+            if salida:
+                try:
+                    return int(salida[0])
+                except ValueError:
+                    return 0
+        return 0
+
+    def mensaje(self, revision="HEAD"):
+        """El mensaje completo de un commit ya hecho."""
+        return self.correr("log", "-1", "--pretty=%B", revision)
