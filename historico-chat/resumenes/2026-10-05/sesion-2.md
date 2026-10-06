@@ -52,21 +52,6 @@ Hallazgos de la sesión transcrita en [historico-chat/2026-10-05-sesion-2.md](..
 | Por qué importa | Cada respuesta que no encaja cuesta un mensaje más, y obliga a usar palabras que autorizan más de lo que la respuesta quería |
 | Pendiente | [Pendiente 131: responder una pregunta del agente no tiene palabra clave](../2026-10-06/pendientes/131-responder-una-pregunta-no-tiene-palabra-clave/pendiente.md) |
 
----|---|
-| Qué pasó | El 2026-10-06 12:37, el freno detuvo una orden de consola sobre `$F/plan_trabajo.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
-| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
-
----|---|
-| Qué pasó | El 2026-10-06 13:00, el freno detuvo una orden de consola sobre `$TEMP/msg131.txt`: queda fuera del proyecto (04·S9). |
-| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
-
----|---|
-| Qué pasó | El 2026-10-06 13:01, el freno detuvo una orden de consola sobre `prompts/disenio-tablero-consumo-tokens.md`: el plan de la fase en curso no lo declara, o no está aprobado, y ninguna regla lo autoriza (02·F8). |
-| Por qué importa | Lo que no está en el plan aprobado ni lo autoriza una regla es un hallazgo: la ejecución se detiene y vuelve al análisis (análisis 1 del pendiente 103, acuerdos 18 y 44). |
-| Pendiente | Por crear: lo decide el análisis siguiente del pendiente de la fase |
-
 ---
 
 ## ¿Se puede cerrar la sesión?
@@ -75,12 +60,11 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☐ |
-| Todo pendiente enlazado existe | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo enlaza su pendiente | ☑ |
+| Todo pendiente enlazado existe | ☑ |
+| Lo que se hizo está aprobado y guardado | ☑ |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 
 _(Si la sesión no dejó nada, se escribe «nada»: es un dato, no un olvido.)_
 
-<!-- aviso: falta decir si la sesión se puede cerrar -->
