@@ -15,7 +15,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | El agente |
-| **Estado** | Propuesta |
+| **Estado** | En prueba |
 
 ---
 
@@ -107,7 +107,7 @@ Aprobado cuando los tres pasos dan lo esperado.
 
 ### Criterios de aceptación transversales
 
-- [ ] No regresión: `01·C29` y `04·S9` siguen diciendo lo suyo.
+- [x] No regresión: `01·C29` y `04·S9` siguen diciendo lo suyo.
 
 ---
 
@@ -132,10 +132,10 @@ Aprobado cuando los tres pasos dan lo esperado.
 
 ## 7. Tareas técnicas derivadas
 
-- [ ] Reescribir `20·M10` y `01·C19`, y volver a aplicar su checklist.
-- [ ] Marcar como derogada la nota de la fuente de las reglas y la restricción de EP-016.
-- [ ] Ajustar `CLAUDE.md`, secciones 2 y 4.
-- [ ] CHANGELOG y VERSION, `MAYOR`.
+- [x] Reescribir `20·M10` y `01·C19`, y volver a aplicar su checklist.
+- [x] Marcar como derogada la nota de la fuente de las reglas y la restricción de EP-016.
+- [x] Ajustar `CLAUDE.md`, secciones 2 y 4.
+- [x] CHANGELOG y VERSION, `MAYOR`.
 
 ---
 
@@ -143,6 +143,7 @@ Aprobado cuando los tres pasos dan lo esperado.
 
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
+| [`A-EP-001-HU-041-las-reglas-nombran-la-base`](A-EP-001-HU-041-las-reglas-nombran-la-base/) | CA-01, CA-02, CA-03 | | [plan_trabajo](A-EP-001-HU-041-las-reglas-nombran-la-base/plan_trabajo.md) | [plan_pruebas](A-EP-001-HU-041-las-reglas-nombran-la-base/plan_pruebas.md) | [resultado](A-EP-001-HU-041-las-reglas-nombran-la-base/resultado_pruebas.md) · **Cumple** | Cumple, falta el commit |
 
 ---
 
@@ -164,8 +165,8 @@ Aprobado cuando los tres pasos dan lo esperado.
 
 ## 11. Poscondiciones (Definition of Done - DoD)
 
-- [ ] Todos los criterios de aceptación verificados
-- [ ] Documentación actualizada: reglas, checklist, CHANGELOG y VERSION
+- [x] Todos los criterios de aceptación verificados
+- [x] Documentación actualizada: reglas, checklist, CHANGELOG y VERSION
 
 ---
 
@@ -187,3 +188,4 @@ Aprobado cuando los tres pasos dan lo esperado.
 | Fecha | Autor | Cambio |
 |---|---|---|
 | 2026-10-06 | El agente | Creación de la HU, desde el análisis 1 del pendiente 132 |
+| 2026-10-06 | El agente | Fase `A` con veredicto Cumple: `20·M10` y `01·C19` en la versión 56.0.0 |

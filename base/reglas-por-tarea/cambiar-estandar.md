@@ -61,10 +61,12 @@ CORRECTO:   el proyecto declara "los commits van en inglés" (ajusta 09·G2)
 Fuente: [20·M1](../20-meta-reglas/reglas/M1-la-jerarquia-tiene-cuatro-niveles-y-un-solo-orden.md#m1--la-jerarquía-tiene-cuatro-niveles-y-un-solo-orden)
 
 ## M10 · Todo cambio de regla se versiona y se registra
-Cambiar `base/` o `plantillas/` obliga, **en el mismo movimiento**, a sumar entrada en `CHANGELOG.md` con su tipo y a subir `VERSION`. Los tipos, qué más hay que revisar y la retroactividad: [`base.md`](../20-meta-reglas/base.md).
+Todo cambio del estándar o de la configuración de un proyecto sube **en el mismo movimiento** su versión, la del estándar o la del proyecto, y deja registro de quién, cuándo, antes, después y por qué. Ese registro vive en la base de datos del agente, o en `CHANGELOG.md` y `VERSION` si aún no guarda el estándar.
 ```
-INCORRECTO: se afina la redacción de una regla y el CHANGELOG queda "para después"
-CORRECTO:   el cambio, su entrada en el CHANGELOG y la subida de VERSION van en el mismo movimiento
+INCORRECTO: se cambia un ajuste de un proyecto y el valor viejo se pierde, sin
+            versión ni registro
+CORRECTO:   el ajuste nuevo sube la versión de ese proyecto y deja quién lo
+            cambió, cuándo, el valor de antes, el de después y por qué
 ```
 
 Fuente: [20·M10](../20-meta-reglas/reglas/M10-todo-cambio-de-regla-se-versiona-y-se-registra.md#m10--todo-cambio-de-regla-se-versiona-y-se-registra)

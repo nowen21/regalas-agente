@@ -1,5 +1,7 @@
 # La fuente de las reglas es el texto
 
+> **Derogada el 2026-10-06.** El usuario decidió que el estándar vive en la base de datos de Cimiento y se administra desde su pantalla, y que todo cambio queda ahí con su historia y su versión ([análisis 1 del pendiente 132](../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md), acuerdos 2 y 15). La objeción de esta nota, que en la base se pierde la revisión, la repone ese registro. Lo que sigue queda como historia.
+
 **Decidido el 2026-08-18** por el usuario, cerrando el [pendiente 37](../pendientes/hecho/donde-vive-la-fuente-de-las-reglas.md). Nació de una pregunta suya: *¿qué pasaría si todas las reglas se guardaran en una base de datos?*
 
 ## Qué queda decidido

@@ -30,7 +30,7 @@ El procedimiento completo está en las meta-reglas del preámbulo — se sigue t
 
 **Y si el cambio sale de un pendiente, primero va la cadena.** El backlog de [`pendientes/`](pendientes/) no se ejecuta desde su archivo: cada uno se baja a historia de usuario y se construye como fase, con su plan y sus pruebas (`02·F23`). Ese procedimiento dice cómo queda escrita la regla; no reemplaza los eslabones de `02·F0`.
 
-**Versionar no es opcional** (`M10`): todo cambio de `base/` o `plantillas/` suma entrada en [`CHANGELOG.md`](CHANGELOG.md) y sube [`VERSION`](VERSION).
+**Versionar no es opcional** (`M10`): todo cambio del estándar o de la configuración de un proyecto sube su versión y deja su registro. El estándar pasa a vivir en la base de Cimiento y se administra desde su pantalla ([EP-026](documentacion/epicas/EP-026-el-estandar-vive-en-la-base-de-cimiento-y-cada-cambio-queda-versionado/epica.md)); mientras esa base no lo guarde, el registro es [`CHANGELOG.md`](CHANGELOG.md) y la versión, [`VERSION`](VERSION).
 
 - **MAYOR** — obliga a un proyecto al día a hacer algo nuevo.
 - **MENOR** — aditivo: regla opt-in, plantilla, validador, capítulo.
@@ -57,6 +57,6 @@ Regla que solo sirve a un stack o a un cliente: no va en `base/` (`M3`, `M13`).
 
 ## 4 · Antes de commitear
 
-No hacer `commit` ni `push` hasta que el usuario haya leído el cambio y lo apruebe. Que apruebe el cambio no es que apruebe el commit: se pregunta aparte.
+No hacer `commit` ni `push` hasta que el usuario haya leído el cambio y lo apruebe. Que apruebe el cambio no es que apruebe el commit: se pregunta aparte. Cuando Cimiento tenga su botón para subir a git ([EP-026·HU-007](documentacion/epicas/EP-026-el-estandar-vive-en-la-base-de-cimiento-y-cada-cambio-queda-versionado/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento.md)), esa aprobación se da desde la pantalla.
 
 En el cuerpo del commit va primero la idea del usuario y después lo que hizo el agente. Nunca `Co-Authored-By`.

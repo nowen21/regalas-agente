@@ -4,4 +4,4 @@ Contenido inmediato de esta carpeta.
 
 | Qué | De qué se trata |
 |---|---|
-| [HU-004-los-enganches-leen-el-estandar-de-la-base.md](HU-004-los-enganches-leen-el-estandar-de-la-base.md) | La historia de usuario: «…» |
+| [HU-004-los-enganches-leen-el-estandar-de-la-base.md](HU-004-los-enganches-leen-el-estandar-de-la-base.md) | La historia de usuario, con sus criterios de aceptación |

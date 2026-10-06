@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 56.0.0 — 2026-10-06
+
+**Todo cambio, del estándar o de un proyecto, sube su versión y deja su registro; el estándar pasa a vivir en la base del agente.**
+
+**MAYOR** ⚠ obliga a migrar: todo cambio de la configuración de un proyecto pasa a exigir versión y registro.
+
+**Lo que entra:**
+
+- `20·M10`: todo cambio del estándar o de la configuración de un proyecto sube su versión, la del estándar o la del proyecto, y deja registro de quién, cuándo, antes, después y por qué. El registro vive en la base de datos del agente, o en `CHANGELOG.md` y `VERSION` mientras ella no guarde el estándar. El tipo se decide con dos preguntas, escritas en `base/20-meta-reglas/base.md`.
+- `01·C19`: la memoria del proyecto vive en la base de datos del agente, y en `historico-chat/memory/` mientras no la tenga.
+- Se deroga «la fuente de las reglas es el texto»: la nota del 2026-08-18 y la restricción de EP-016.
+
+Sale del análisis 1 del pendiente 132, acuerdos 1, 2, 7, 12 a 15 y 17 (`EP-001·HU-041`).
+
+**Qué hace un proyecto al día:** nada mientras su base de datos del agente no guarde el estándar; sigue versionando en `CHANGELOG.md` y `VERSION`.
+
+---
+
 ## 55.6.0 — 2026-10-06
 
 **El histórico anota los avisos internos de Claude Code con su remitente.**

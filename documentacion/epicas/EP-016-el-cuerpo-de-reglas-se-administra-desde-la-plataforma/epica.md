@@ -86,7 +86,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 - Derogar deja la regla **legible y marcada**, nunca borrada.
 - Una regla editada pierde su sello, y lo dice.
 - Sin registro de qué cambió, no se publica.
-- La fuente sigue siendo el texto: todo se lee sin la plataforma.
+- ~~La fuente sigue siendo el texto: todo se lee sin la plataforma.~~ Derogado el 2026-10-06 por el [análisis 1 del pendiente 132](../../../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md): el estándar vive en la base de Cimiento.
 
 ## 8. Métricas de éxito
 
@@ -113,7 +113,7 @@ Que administrar una regla sea pedirlo, y que lo que no se puede deshacer esté i
 
 **Es el cuarto puente hacia el estándar**, después del que tapa credenciales, el que parte una conversación en turnos y el que corre las comprobaciones. **Ya no es una excepción: es la forma.** El estándar sabe leer su propio cuerpo de reglas, y duplicar ese lector dejaría dos que se separan.
 
-**La fuente es el texto.** Las reglas se escriben en archivos, no en la base. Guardarlas en la base y generar el texto haría del texto una copia, y la copia se queda vieja el día que alguien edite el archivo a mano, que es como se ha trabajado siempre.
+**Derogado el 2026-10-06:** el estándar vive en la base de Cimiento, con su historia y su versión ([análisis 1 del pendiente 132](../../../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md), acuerdos 2 y 15). Lo que sigue queda como historia. ~~**La fuente es el texto.**~~ Las reglas se escribían en archivos, no en la base. Guardarlas en la base y generar el texto haría del texto una copia, y la copia se queda vieja el día que alguien edite el archivo a mano, que es como se ha trabajado siempre.
 
 ## 11. Dependencias
 
@@ -133,7 +133,7 @@ Depende de `EP-015`: publicar una versión necesita la puerta que `F-022` constr
 
 **Supuestos:** que el proyecto tiene el estándar instalado, con su lector de reglas.
 
-**Restricciones:** la fuente es el texto; ningún identificador se reutiliza; nada se borra.
+**Restricciones:** ~~la fuente es el texto~~ (derogada el 2026-10-06, ver sección 10); ningún identificador se reutiliza; nada se borra.
 
 ## 14. Hoja de ruta
 

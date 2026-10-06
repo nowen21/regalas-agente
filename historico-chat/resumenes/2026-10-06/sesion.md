@@ -26,9 +26,9 @@ Se cierra cuando ningún hallazgo queda sin anotar: cada uno enlaza su pendiente
 
 | Para cerrar | Estado |
 |---|---|
-| Todo hallazgo enlaza su pendiente | ☐ |
-| Todo pendiente enlazado existe | ☐ |
-| Lo que se hizo está aprobado y guardado | ☐ |
+| Todo hallazgo enlaza su pendiente | ☑ H-1 enlaza el pendiente 132 |
+| Todo pendiente enlazado existe | ☑ |
+| Lo que se hizo está aprobado y guardado | ☐ El análisis está aprobado y en `592b426`; la construcción de EP-026 sigue abierta |
 
 Mientras alguna quede sin marcar, cerrar significa perderla: nadie va a releer la transcripción para encontrarla.
 

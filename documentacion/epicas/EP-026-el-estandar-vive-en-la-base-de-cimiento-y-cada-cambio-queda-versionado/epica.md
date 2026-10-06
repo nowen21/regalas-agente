@@ -126,16 +126,16 @@ Ninguno.
 
 | ID | Título | Prioridad | Estimación | Sprint | Estado |
 |---|---|---|---|---|---|
-| [HU-001](HU-001-todo-cambio-guardado-en-la-base-deja-quien-cuando-antes-despues-y-por-que/HU-001-todo-cambio-guardado-en-la-base-deja-quien-cuando-antes-despues-y-por-que.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-002](HU-002-cada-proyecto-tiene-su-version-y-el-estandar-la-suya/HU-002-cada-proyecto-tiene-su-version-y-el-estandar-la-suya.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-003](HU-003-el-estandar-55-1-0-entra-a-la-base/HU-003-el-estandar-55-1-0-entra-a-la-base.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-004](HU-004-los-enganches-leen-el-estandar-de-la-base/HU-004-los-enganches-leen-el-estandar-de-la-base.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-005](HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla/HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-006](HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0/HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-007](HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-008](HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente/HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-009](HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in/HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
-| [HU-010](HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente/HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente.md) | «Título» | «Prioridad» | «Estimación» | «…» | «…» |
+| [HU-001](HU-001-todo-cambio-guardado-en-la-base-deja-quien-cuando-antes-despues-y-por-que/HU-001-todo-cambio-guardado-en-la-base-deja-quien-cuando-antes-despues-y-por-que.md) | Todo cambio guardado en la base deja quién, cuándo, antes, después y por qué | Must | N/A | N/A | Propuesta |
+| [HU-002](HU-002-cada-proyecto-tiene-su-version-y-el-estandar-la-suya/HU-002-cada-proyecto-tiene-su-version-y-el-estandar-la-suya.md) | Cada proyecto tiene su versión y el estándar la suya | Must | N/A | N/A | Propuesta |
+| [HU-003](HU-003-el-estandar-55-1-0-entra-a-la-base/HU-003-el-estandar-55-1-0-entra-a-la-base.md) | El estándar 55.1.0 entra a la base | Must | N/A | N/A | Propuesta |
+| [HU-004](HU-004-los-enganches-leen-el-estandar-de-la-base/HU-004-los-enganches-leen-el-estandar-de-la-base.md) | Los enganches leen el estándar de la base | Must | N/A | N/A | Propuesta |
+| [HU-005](HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla/HU-005-el-estandar-se-administra-y-se-autoriza-desde-la-pantalla.md) | El estándar se administra y se autoriza desde la pantalla | Must | N/A | N/A | Propuesta |
+| [HU-006](HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0/HU-006-los-archivos-de-base-quedan-quietos-en-la-version-55-1-0.md) | Los archivos de `base/` quedan quietos en la versión 55.1.0 | Must | N/A | N/A | Propuesta |
+| [HU-007](HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento/HU-007-un-boton-de-la-pantalla-guarda-en-git-lo-que-cambio-en-cimiento.md) | Un botón de la pantalla guarda en git lo que cambió en Cimiento | Must | N/A | N/A | Propuesta |
+| [HU-008](HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente/HU-008-lo-que-un-proyecto-reporta-llega-al-estandar-como-pendiente.md) | Lo que un proyecto reporta llega al estándar como pendiente | Should | N/A | N/A | Propuesta |
+| [HU-009](HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in/HU-009-la-pantalla-muestra-que-reglas-llegarian-con-un-mensaje-y-prende-los-capitulos-opt-in.md) | La pantalla muestra qué reglas llegarían con un mensaje y prende los capítulos opt-in | Should | N/A | N/A | Propuesta |
+| [HU-010](HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente/HU-010-la-base-se-copia-sola-en-una-carpeta-hermana-de-agente.md) | La base se copia sola en una carpeta hermana de `agente` | Must | N/A | N/A | Propuesta |
 
 ## 10. Consideraciones técnicas
 

@@ -788,14 +788,14 @@ Va al [pendientes/hecho/ninguna-regla-reprueba-su-propio-checklist.md](../pendie
 
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
 
-Las preferencias del usuario sobre cómo trabajar que el agente deba recordar van a `historico-chat/memory/` del proyecto, **un archivo por recuerdo**, y el almacén de la herramienta queda **vacío**: lo que aparezca ahí se mueve (extiende [`01·C29`](#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)).
+Lo que el agente deba recordar de cómo trabaja el usuario va a la memoria del proyecto, **un recuerdo por registro**: la base de datos del agente o, sin ella, `historico-chat/memory/`. El almacén de la herramienta queda **vacío** (extiende [`01·C29`](#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)).
 
 No es la memoria por señales ([`13·DOC5`](13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)), que guarda lo aprendido.
 
 ```
-INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá
-            un puntero al archivo del repositorio
-CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionado,
+INCORRECTO: guardar el recuerdo en el almacén de la herramienta, o dejar allá
+            un puntero a la memoria del proyecto
+CORRECTO:   el recuerdo entero en la memoria del proyecto, con su historia,
             y el almacén de la herramienta vacío
 ```
 
@@ -808,7 +808,7 @@ CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionad
 
 ### Checklist  ·  **CUMPLE**
 
-Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.0.0**, el **2026-10-02**.
+Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v56.0.0**, el **2026-10-06**. La vez anterior fue contra v48.0.0, el 2026-10-02.
 
 | Bloque | Filas | Resultado |
 |---|---|---|
@@ -818,7 +818,9 @@ Aplicado el [checklist del estándar](20-meta-reglas/checklist.md) contra **v48.
 | D · Cómo se relaciona | 14-17 | ✅ ✅ N/A ✅ |
 | E · Fuera de su texto | 18-20 | ✅ ✅ ✅ |
 
-**20 filas: 19 ✅ · 0 ❌ · 1 N/A.** N/A: la fila 16, porque no tiene excepción.
+**20 filas: 19 ✅, 0 ❌, 1 N/A.** N/A: la fila 16, porque no tiene excepción.
+
+**Lo que cambió en v56.0.0.** La memoria del proyecto vive en la base de datos del agente, y en `historico-chat/memory/` mientras no la tenga. Sale del [análisis 1 del pendiente 132](../historico-chat/resumenes/2026-10-06/pendientes/132-la-pantalla-de-cimiento-es-el-estandar-y-versiona-cada-cambio/analisis-1.md), acuerdo 17, por [EP-001·HU-041](../documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar.md). **Fila 5:** dice «base de datos del agente», sin nombrar la plataforma. **Fila 8:** el título y el ancla se conservan porque los citan otras reglas y documentos; según `C29`, la base del agente es parte del proyecto. **Fila 10:** el cuerpo se reescribió para caber.
 
 **Vuelto a aplicar el 2026-09-28, porque el texto cambió.** Ahora extiende [`C29`](#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto): la memoria es un caso de lo que vive en el repositorio. Las filas 14 y 15 pasan de N/A a ✅; `C29` no depende de esta, así que no hay ciclo.
 

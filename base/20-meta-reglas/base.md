@@ -131,9 +131,13 @@ Las tres preguntas, por escrito, **en el pendiente que promueve el validador** (
 
 ### M10 — los tipos, qué más se revisa, y la retroactividad
 
-- **MAYOR** — obliga a hacer algo para cumplir.
-- **MENOR** — aditivo: regla opcional, capítulo opt-in, plantilla, validador.
-- **PARCHE** — redacción o ejemplos.
+El tipo se decide con dos preguntas, en este orden. La primera que se responde «sí» fija el tipo:
+
+1. ¿Un proyecto que hoy cumple deja de cumplir con este cambio? **MAYOR**: obliga a hacer algo para cumplir.
+2. ¿Se agrega algo que nadie está obligado a usar? **MENOR**: regla opcional, capítulo opt-in, plantilla, validador.
+3. Si las dos son «no», lo que se exige queda igual: **PARCHE**, redacción o ejemplos.
+
+**Qué versión sube.** Un cambio que es solo de un proyecto sube la versión de ese proyecto y no toca la del estándar. Un cambio del estándar sube la del estándar, también cuando lo hace o lo reporta un proyecto; si lo reporta, sube cuando se hace la corrección, no cuando llega el reporte.
 
 Si la regla es nueva o cambió de exigencia, revisar además los enlaces que la citan y `validadores/reglas-validables.md`.
 

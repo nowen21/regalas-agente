@@ -111,12 +111,12 @@ CORRECTO:   se mejora la plantilla una vez · cada proyecto lo aplica al arranca
 Fuente: [01·C18](../01-conducta.md#c18--auto-sincronización-del-claudemd-con-la-plantilla-central)
 
 ## C19 · Escribe la memoria del agente dentro del repositorio del proyecto
-Las preferencias del usuario sobre cómo trabajar que el agente deba recordar van a `historico-chat/memory/` del proyecto, **un archivo por recuerdo**, y el almacén de la herramienta queda **vacío**: lo que aparezca ahí se mueve (extiende [`01·C29`](../01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)).
+Lo que el agente deba recordar de cómo trabaja el usuario va a la memoria del proyecto, **un recuerdo por registro**: la base de datos del agente o, sin ella, `historico-chat/memory/`. El almacén de la herramienta queda **vacío** (extiende [`01·C29`](../01-conducta.md#c29--guarda-dentro-del-repositorio-todo-lo-del-agente-y-del-proyecto)).
 No es la memoria por señales ([`13·DOC5`](../13-documentacion/reglas/DOC5-registra-como-senal-lo-que-no-se-recupera-del-codigo.md)), que guarda lo aprendido.
 ```
-INCORRECTO: guardar el recuerdo en el almacén de la herramienta — o dejar allá
-            un puntero al archivo del repositorio
-CORRECTO:   el recuerdo entero en `historico-chat/memory/<nombre>.md`, versionado,
+INCORRECTO: guardar el recuerdo en el almacén de la herramienta, o dejar allá
+            un puntero a la memoria del proyecto
+CORRECTO:   el recuerdo entero en la memoria del proyecto, con su historia,
             y el almacén de la herramienta vacío
 ```
 
