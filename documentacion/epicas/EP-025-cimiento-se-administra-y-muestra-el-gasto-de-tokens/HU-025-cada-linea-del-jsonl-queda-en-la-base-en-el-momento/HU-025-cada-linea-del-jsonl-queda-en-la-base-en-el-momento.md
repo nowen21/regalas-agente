@@ -15,7 +15,7 @@
 | **Sprint** | No aplica: el trabajo lo lleva una sola persona, sin sprints |
 | **Solicitante** | Ing. José Dúmar Jiménez Ruíz |
 | **Responsable** | El agente |
-| **Estado** | En prueba |
+| **Estado** | En curso |
 
 ---
 
@@ -116,6 +116,22 @@ Entonces dice que lo guarda el vigilante en la base, sin telemetría
 1. Abrir `proyectos/cimiento/README.md` y buscar `/v1/logs` → resultado esperado: no aparece.
 - Aprobado cuando el párrafo nombra al vigilante y la base.
 
+### CA-05 · Lo guardado se vuelve a tapar
+
+**Sale de:** análisis 1 del pendiente 129, punto 4 de «Lo que se tiene que hacer»
+
+```gherkin
+Dado líneas guardadas antes de que el tapado aprendiera una forma nueva
+Cuando se corre manage.py retapar_lineas
+Entonces cada clave que el tapado reconoce hoy queda tapada en la base
+Y correrla otra vez no cambia nada
+```
+
+**Cómo validarlo:**
+1. En `proyectos/cimiento/`, correr `.venv/Scripts/python manage.py test core.consumo.tests_retapar` → resultado esperado: en verde.
+2. Correr `.venv/Scripts/python manage.py retapar_lineas` → resultado esperado: dice cuántas líneas cambió.
+- Aprobado cuando las pruebas pasan y, tras la orden, la base no tiene claves `sk-ant-` en claro.
+
 ### Criterios de aceptación transversales
 
 - [x] Privacidad: ninguna clave queda en la base (`00·N6`).
@@ -160,6 +176,7 @@ Entonces dice que lo guarda el vigilante en la base, sin telemetría
 | Fase (`02·F12.6`) | CA que cubre | Depende de | Plan de trabajo | Plan de pruebas | Resultado | Estado |
 |---|---|---|---|---|---|---|
 | [`A-EP-025-HU-025-lineas-a-la-base-sin-relojes`](A-EP-025-HU-025-lineas-a-la-base-sin-relojes/) | CA-01 a CA-04 | | [plan_trabajo](A-EP-025-HU-025-lineas-a-la-base-sin-relojes/plan_trabajo.md) | [plan_pruebas](A-EP-025-HU-025-lineas-a-la-base-sin-relojes/plan_pruebas.md) | [resultado](A-EP-025-HU-025-lineas-a-la-base-sin-relojes/resultado_pruebas.md) · **Cumple** | Cumple, falta el commit |
+| [`B-EP-025-HU-025-retapar-lo-guardado`](B-EP-025-HU-025-retapar-lo-guardado/) | CA-05 | | [plan_trabajo](B-EP-025-HU-025-retapar-lo-guardado/plan_trabajo.md) | [plan_pruebas](B-EP-025-HU-025-retapar-lo-guardado/plan_pruebas.md) | | En curso |
 
 ---
 

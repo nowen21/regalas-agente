@@ -11,6 +11,24 @@ Historial de versiones de `base/` y `plantillas/`. La versión vive en [`VERSION
 
 ---
 
+## 55.3.0 — 2026-10-06
+
+**El tapado de claves y el validador de secretos reconocen las claves de Anthropic y las variables de clave con prefijo.**
+
+**MENOR**: detecta más; un proyecto con una clave así escrita verá que su control de commits la señala.
+
+**Lo que entra:**
+
+- `SEGUROS` suma la forma `sk-ant-` (`EP-005·HU-002`, fase C).
+- `ASIGNA` y el tapado sin comillas reconocen toda variable que termine en `_API_KEY`, `_TOKEN`, `_SECRET` o `_PASSWORD`, como `ANTHROPIC_API_KEY` o `GITHUB_TOKEN`. Lo que lee del entorno y los moldes siguen sin tocarse.
+- `manage.py retapar_lineas` vuelve a pasar el tapado por las líneas ya guardadas en la base (`EP-025·HU-025`, fase B).
+
+**Qué hace un proyecto al día:** nada. En el ambiente de Cimiento, correr `manage.py retapar_lineas` una vez y reiniciar el vigilante.
+
+Sale del análisis 1 del pendiente 129.
+
+---
+
 ## 55.2.0 — 2026-10-06
 
 **Cada línea que Claude Code escribe queda en la base de Cimiento en el momento, sin claves, y el vigilante deja de tener relojes.**

@@ -17,7 +17,7 @@ lee del entorno, que es justo la forma correcta.
 """
 import re
 
-from ..validadores.secretos import _ENTORNO, ASIGNA, SEGUROS, SecretosEnElCodigo
+from ..validadores.secretos import _ENTORNO, ASIGNA, PREFIJO, SEGUROS, SecretosEnElCodigo
 
 MARCA = "«enmascarado»"
 
@@ -29,8 +29,10 @@ MARCA = "«enmascarado»"
 _CLAVE = (r"pass(?:word|wd)?|secret|api[_-]?key|apikey|access[_-]?key|"
           r"client[_-]?secret|auth[_-]?token|private[_-]?key|token|clave|"
           r"contraseña")
+# El nombre puede traer un prefijo con `_` (`ANTHROPIC_API_KEY`), como en `ASIGNA`
+# (`EP-005·HU-002`, fase C).
 _ASIGNA_SIN_COMILLAS = re.compile(
-    r"(?i)\b(?P<clave>" + _CLAVE + r")\b\s*[:=]>?\s*"
+    r"(?i)\b(?P<clave>" + PREFIJO + r"(?:" + _CLAVE + r"))\b\s*[:=]>?\s*"
     r"(?P<valor>[^\s'" + chr(34) + r"`,;)]{6,})")
 
 

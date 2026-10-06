@@ -84,6 +84,21 @@ Entonces entiende que ahí iba una clave y qué se estaba haciendo
 2. Revisar si se entiende el intercambio. Resultado esperado: se entiende, y se ve dónde estaba la clave.
 - **Aprobado cuando:** enmascarar no vuelve la transcripción inútil.
 
+### CA-03 · Las claves de Anthropic y las variables con prefijo también se tapan
+
+**Sale de:** análisis 1 del pendiente 129, puntos 2 y 3 de «Lo que se tiene que hacer»
+
+```gherkin
+Dado un texto con una clave sk-ant-, o con una variable como ANTHROPIC_API_KEY= o GITHUB_TOKEN= seguida de una clave
+Cuando pasa por el tapado o por el validador de secretos
+Entonces la clave queda tapada, o el validador la señala
+Y una línea que lee la variable del entorno no se toca
+```
+
+**Cómo validarlo:**
+1. En `proyectos/cimiento/`, correr `.venv/Scripts/python manage.py test core.enganches.tests_sesion core.validadores` → resultado esperado: en verde, incluidas las pruebas de Anthropic y de prefijo.
+- Aprobado cuando esas pruebas pasan sin repetir la clave en su salida.
+
 ### Criterios de aceptación transversales
 
 - [ ] **Privacidad** — el valor enmascarado no queda en ningún archivo intermedio.
@@ -125,6 +140,7 @@ Entonces entiende que ahí iba una clave y qué se estaba haciendo
 | Fase | Qué CA cubre | Estado |
 |---|---|---|
 | [A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla](A-EP-005-HU-002-enmascarar-la-clave-antes-de-escribirla/README.md) | CA-01 y CA-02 | **Cerrada 2026-08-18** · Cumple |
+| [C-EP-005-HU-002-claves-de-anthropic-y-con-prefijo](C-EP-005-HU-002-claves-de-anthropic-y-con-prefijo/plan_trabajo.md) | CA-03 | Cumple, falta el commit |
 
 **La fase construye, y es la mitad que le falta a una regla blindada.** `00·N6` prohíbe que una clave quede escrita, y ningún programa enmascara: `secretos.py` detecta las que ya están en el código, y la transcripción copia tal cual lo que se pega en el chat.
 

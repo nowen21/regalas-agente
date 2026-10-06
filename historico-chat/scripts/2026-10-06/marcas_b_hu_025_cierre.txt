@@ -1,0 +1,12 @@
+`manage.py retapar_lineas` vuelve a pasar el tapado por todas las líneas guardadas y tapa lo que hoy reconoce. Se corrió sobre la base: 8 de 102.478 líneas cambiaron, y no quedó ninguna clave de Anthropic en claro.
+ninguno.
+ninguna.
+ninguno.
+Cumple
+`python manage.py retapar_lineas`, cada vez que el tapado aprenda una forma nueva.
+La huella no cambia al volver a tapar
+Identifica la línea original; si cambiara, la próxima lectura la guardaría otra vez
+S-314
+Ninguna.
+Fila de la fase en la HU-025.
+`manage.py retapar_lineas` una vez; ya corrida en esta máquina.

@@ -48,13 +48,20 @@ SEGUROS = [
     (re.compile(r"\bgh[pousr]_[0-9A-Za-z]{20,}"), "token de GitHub"),
     (re.compile(r"\bglpat-[\w\-]{20,}"), "token de acceso de GitLab"),
     (re.compile(r"\bAIza[0-9A-Za-z_\-]{35}"), "clave de API de Google"),
+    # `EP-005·HU-002`, fase C: Anthropic tiene más de un tipo de clave con este comienzo.
+    (re.compile(r"\bsk-ant-[0-9A-Za-z_\-]{20,}"), "clave de Anthropic"),
 ]
 
 # Una variable con pinta de secreto igualada a un literal. La usa también el
 # enmascarador del histórico: la misma clave, tecleada por una persona.
+# `EP-005·HU-002`, fase C: el nombre puede traer un prefijo con `_`, como
+# `ANTHROPIC_API_KEY` o `GITHUB_TOKEN`; sin él, entre `_` y la palabra no hay
+# límite de palabra y la variable pasaba en claro (pendiente 129).
+PREFIJO = r"(?:[A-Za-z0-9]+_)*"
+CON_PREFIJO = r"(?:[A-Za-z0-9]+_)+(?:api[_-]?key|token|secret|pass(?:word|wd)?)"
 ASIGNA = re.compile(
-    r"(?i)\b(?P<clave>pass(?:word|wd)?|secret|api[_-]?key|apikey|"
-    r"access[_-]?key|client[_-]?secret|auth[_-]?token|private[_-]?key)\b"
+    r"(?i)\b(?P<clave>" + CON_PREFIJO + r"|" + PREFIJO + r"(?:pass(?:word|wd)?|secret|api[_-]?key|apikey|"
+    r"access[_-]?key|client[_-]?secret|auth[_-]?token|private[_-]?key))\b"
     r"\s*[:=]>?\s*(?P<comilla>['\"])(?P<valor>[^'\"]{6,})(?P=comilla)")
 # Si la misma línea lee del entorno o de la configuración, no hay nada escrito.
 _ENTORNO = re.compile(r"(?i)\benv\b|getenv|os\.environ|process\.env|\bconfig\(|\$\{|\bimport\b")

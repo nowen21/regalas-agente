@@ -1,0 +1,11 @@
+Cimiento local con MariaDB, sobre `2513a97` con los cambios de la fase sin guardar
+Una línea con una clave `sk-ant-` armada al correr y otra sin clave, en `tests_retapar`
+La clave salió, entró la marca, `tapadas` subió a 1 y la línea sin clave no cambió
+Una segunda corrida de `retapar_lineas` en la misma prueba
+`0 con claves que ahora se tapan`, y la huella siguió igual
+`manage.py retapar_lineas` sobre la base `cimiento`, y conteo de `sk-ant-` en claro después
+`102.478 línea(s) revisadas; 8 con claves que ahora se tapan.`, en 6 min 39 s; después, 0 `sk-ant-` en claro
+Nada.
+Ninguno.
+Los tres casos pasan, y la base real quedó sin claves de Anthropic en claro.
+`core/consumo/tests_retapar.py`, la salida de §3 y el conteo de CP-003
