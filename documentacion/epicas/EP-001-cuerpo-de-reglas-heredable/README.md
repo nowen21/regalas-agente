@@ -44,3 +44,4 @@ Contenido inmediato de esta carpeta.
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/](HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/) | Historia de usuario: el agente agrega información irrelevante al asunto que está tratando |
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-039-el-agente-no-conserva-el-espanol-colombiano/](HU-039-el-agente-no-conserva-el-espanol-colombiano/) | Historia de usuario: el agente no conserva el español colombiano |
 | [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-040-c29-reconoce-la-base-de-cimiento/](HU-040-c29-reconoce-la-base-de-cimiento/) | Historia de usuario: «…» |
+| [documentacion/epicas/EP-001-cuerpo-de-reglas-heredable/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar/](HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar/) | Historia de usuario: «…» |

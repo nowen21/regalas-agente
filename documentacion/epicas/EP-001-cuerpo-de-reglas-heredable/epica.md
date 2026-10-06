@@ -172,6 +172,7 @@ Todo lo demás que se quiera construir queda sin piso. No se puede comprobar el 
 | [HU-038](HU-038-el-agente-agrega-informacion-irrelevante-al-asunto/HU-038-el-agente-agrega-informacion-irrelevante-al-asunto.md) | El agente agrega información irrelevante al asunto que está tratando | Must | 2 pts |
 | [HU-039](HU-039-el-agente-no-conserva-el-espanol-colombiano/HU-039-el-agente-no-conserva-el-espanol-colombiano.md) | El agente no conserva el español colombiano | Should | 3 pts |
 | [HU-040](HU-040-c29-reconoce-la-base-de-cimiento/HU-040-c29-reconoce-la-base-de-cimiento.md) | `01·C29` reconoce la base de datos del agente | Must | S |
+| [HU-041](HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar/HU-041-las-reglas-reconocen-la-base-de-cimiento-como-fuente-del-estandar.md) | «Título» | «Prioridad» | «Estimación» |
 
 Sin estimar en puntos todavía.
 

@@ -206,3 +206,4 @@ La respuesta, tal como se dio.
 - [2026-10-04-sesion-3.md](2026-10-04-sesion-3.md) — sesión del 2026-10-04.
 - [2026-10-05-roles-como-subagentes.md](2026-10-05-roles-como-subagentes.md) — los roles de 00·ID6 como subagentes de Claude Code (.claude/agents/). · [historico-chat/resumenes/2026-10-05/roles-como-subagentes.md](resumenes/2026-10-05/roles-como-subagentes.md)
 - [2026-10-05-sesion-2.md](2026-10-05-sesion-2.md) — sesión del 2026-10-05.
+- [2026-10-06-sesion.md](2026-10-06-sesion.md) — sesión del 2026-10-06.
